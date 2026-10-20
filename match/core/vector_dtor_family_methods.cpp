@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 162 base-template instantiations reproduce 324 remaining retail destructor
+// 162 base-template instantiations reproduce 315 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -633,27 +633,6 @@ template class VectorClass<HouseClass::BuildChoiceClass*>;
 // VectorClass<bool> -- reseats retail vtable 0x007EAA5C; locator 0x00802D68 -> type descriptor 0x00824E70
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
-
-// FUNCTION: GAMEMD 0x005129F0
-// FUNCTION: GAMEMD 0x00512AE0
-// FUNCTION: GAMEMD 0x00512E20
-// VectorClass<const InfantryTypeClass*> -- reseats retail vtable 0x007EAC28; locator 0x00803168 -> type descriptor 0x008251C0
-//   `.?AV?$VectorClass@PBVInfantryTypeClass@@@@`.
-template class VectorClass<const InfantryTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00512A40
-// FUNCTION: GAMEMD 0x00512B30
-// FUNCTION: GAMEMD 0x005131F0
-// VectorClass<const UnitTypeClass*> -- reseats retail vtable 0x007EAC48; locator 0x00803108 -> type descriptor 0x00825128
-//   `.?AV?$VectorClass@PBVUnitTypeClass@@@@`.
-template class VectorClass<const UnitTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00512A90
-// FUNCTION: GAMEMD 0x00512B80
-// FUNCTION: GAMEMD 0x005135C0
-// VectorClass<const AircraftTypeClass*> -- reseats retail vtable 0x007EAC68; locator 0x00803138 -> type descriptor 0x00825080
-//   `.?AV?$VectorClass@PBVAircraftTypeClass@@@@`.
-template class VectorClass<const AircraftTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00538A90
 // FUNCTION: GAMEMD 0x00538AE0

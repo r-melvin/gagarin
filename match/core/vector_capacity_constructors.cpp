@@ -8,13 +8,22 @@
 // unknown. Extra emitted methods and complete derived sizes are unclaimed.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 #include "vector_class_operations.h"
-class AircraftTypeClass;
 class BuildingTypeClass;
-class InfantryTypeClass;
-class UnitTypeClass;
-
+class ParticleSystemTypeClass;
 class SmudgeTypeClass;
+class TerrainTypeClass;
 class VoxelAnimTypeClass;
+
+// FUNCTION: GAMEMD 0x45AD80
+// VectorClass<const ParticleSystemTypeClass*> capacity constructor; RET 8.
+// VTABLE: GAMEMD 0x7E4424 -- VectorClass<const ParticleSystemTypeClass*>.
+template class VectorClass<const ParticleSystemTypeClass*>;
+typedef VectorClass<const ParticleSystemTypeClass*> GgParticleSystemTypeCapacityBase;
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityBase, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityBase, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityBase, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityBase, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(sizeof(const ParticleSystemTypeClass*) == 4);
 
 // FUNCTION: GAMEMD 0x5105A0
 // VectorClass<const BuildingTypeClass*> capacity constructor; RET 8.
@@ -25,78 +34,6 @@ GG_STATIC_ASSERT(offsetof(GgBuildingCapacityBase, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgBuildingCapacityBase, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBuildingCapacityBase, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBuildingCapacityBase, IsAllocated) == 0x0D);
-
-// FUNCTION: GAMEMD 0x512DC0
-// DynamicVectorClass<const InfantryTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EAC88 -- DynamicVectorClass<const InfantryTypeClass*>.
-template class DynamicVectorClass<const InfantryTypeClass*>;
-typedef DynamicVectorClass<const InfantryTypeClass*> GgInfantryCapacityDynamic;
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityDynamic, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const InfantryTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513190
-// DynamicVectorClass<const UnitTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EACA8 -- DynamicVectorClass<const UnitTypeClass*>.
-template class DynamicVectorClass<const UnitTypeClass*>;
-typedef DynamicVectorClass<const UnitTypeClass*> GgUnitTypeCapacityDynamic;
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityDynamic, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const UnitTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513560
-// DynamicVectorClass<const AircraftTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EACC8 -- DynamicVectorClass<const AircraftTypeClass*>.
-template class DynamicVectorClass<const AircraftTypeClass*>;
-typedef DynamicVectorClass<const AircraftTypeClass*> GgAircraftTypeCapacityDynamic;
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityDynamic, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const AircraftTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x5138F0
-// VectorClass<const InfantryTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EAC28 -- VectorClass<const InfantryTypeClass*>.
-template class VectorClass<const InfantryTypeClass*>;
-typedef VectorClass<const InfantryTypeClass*> GgInfantryCapacityBase;
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityBase, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityBase, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityBase, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgInfantryCapacityBase, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(sizeof(const InfantryTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513940
-// VectorClass<const UnitTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EAC48 -- VectorClass<const UnitTypeClass*>.
-template class VectorClass<const UnitTypeClass*>;
-typedef VectorClass<const UnitTypeClass*> GgUnitTypeCapacityBase;
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityBase, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityBase, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityBase, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgUnitTypeCapacityBase, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(sizeof(const UnitTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513990
-// VectorClass<const AircraftTypeClass*> capacity constructor; RET 8.
-// VTABLE: GAMEMD 0x7EAC68 -- VectorClass<const AircraftTypeClass*>.
-template class VectorClass<const AircraftTypeClass*>;
-typedef VectorClass<const AircraftTypeClass*> GgAircraftTypeCapacityBase;
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityBase, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityBase, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityBase, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgAircraftTypeCapacityBase, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(sizeof(const AircraftTypeClass*) == 4);
 
 // FUNCTION: GAMEMD 0x5AC900
 // DynamicVectorClass<const BuildingTypeClass*> capacity constructor; RET 8.
@@ -136,6 +73,19 @@ GG_STATIC_ASSERT(offsetof(GgSmudgeTypeCapacityDynamic, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeCapacityDynamic, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(const SmudgeTypeClass*) == 4);
 
+// FUNCTION: GAMEMD 0x67B370
+// DynamicVectorClass<const TerrainTypeClass*> capacity constructor; RET 8.
+// VTABLE: GAMEMD 0x7F0E0C -- DynamicVectorClass<const TerrainTypeClass*>.
+template class DynamicVectorClass<const TerrainTypeClass*>;
+typedef DynamicVectorClass<const TerrainTypeClass*> GgTerrainTypeCapacityDynamic;
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityDynamic, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(const TerrainTypeClass*) == 4);
+
 // FUNCTION: GAMEMD 0x67C310
 // VectorClass<const VoxelAnimTypeClass*> capacity constructor; RET 8.
 // VTABLE: GAMEMD 0x7F0D5C -- VectorClass<const VoxelAnimTypeClass*>.
@@ -157,3 +107,26 @@ GG_STATIC_ASSERT(offsetof(GgSmudgeTypeCapacityBase, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeCapacityBase, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeCapacityBase, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(sizeof(const SmudgeTypeClass*) == 4);
+// FUNCTION: GAMEMD 0x67C430
+// VectorClass<const TerrainTypeClass*> capacity constructor; RET 8.
+// VTABLE: GAMEMD 0x7F0D9C -- VectorClass<const TerrainTypeClass*>.
+template class VectorClass<const TerrainTypeClass*>;
+typedef VectorClass<const TerrainTypeClass*> GgTerrainTypeCapacityBase;
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityBase, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityBase, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityBase, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeCapacityBase, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(sizeof(const TerrainTypeClass*) == 4);
+
+// FUNCTION: GAMEMD 0x717C70
+// DynamicVectorClass<const ParticleSystemTypeClass*> capacity constructor; RET 8.
+// VTABLE: GAMEMD 0x7E4444 -- DynamicVectorClass<const ParticleSystemTypeClass*>.
+template class DynamicVectorClass<const ParticleSystemTypeClass*>;
+typedef DynamicVectorClass<const ParticleSystemTypeClass*> GgParticleSystemTypeCapacityDynamic;
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeCapacityDynamic, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(const ParticleSystemTypeClass*) == 4);

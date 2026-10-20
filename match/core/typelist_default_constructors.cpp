@@ -9,24 +9,11 @@
 #include "vector_class_operations.h"
 #include "type_list.h"
 
-class AircraftTypeClass;
 class BuildingTypeClass;
 class VoxelAnimTypeClass;
 class SmudgeTypeClass;
-class InfantryTypeClass;
 class TerrainTypeClass;
 class ParticleSystemTypeClass;
-
-// FUNCTION: GAMEMD 0x512960
-// TypeList<const AircraftTypeClass*>::TypeList(); retail vptr 0x7EABC8.
-template class TypeList<const AircraftTypeClass*>;
-typedef TypeList<const AircraftTypeClass*> GgTypeListDefault0;
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault0, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x5AC400
 // TypeList<const BuildingTypeClass*>::TypeList(); retail vptr 0x7ED90C.
@@ -60,17 +47,6 @@ GG_STATIC_ASSERT(offsetof(GgTypeListDefault4, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault4, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault4, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault4, CapacityIncrement) == 0x14);
-
-// FUNCTION: GAMEMD 0x67A820
-// TypeList<const InfantryTypeClass*>::TypeList(); retail vptr 0x7EAC08.
-template class TypeList<const InfantryTypeClass*>;
-typedef TypeList<const InfantryTypeClass*> GgTypeListDefault5;
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault5, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x67A8B0
 // TypeList<const TerrainTypeClass*>::TypeList(); retail vptr 0x7F0CFC.

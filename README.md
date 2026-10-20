@@ -93,7 +93,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 158 base and 156
+  `CountedVector::Destroy` stand-ins. The family files bind 155 base and 153
   native dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
   and two compiler-generated scalar deleting destructors. ToolTipManager uses
@@ -104,39 +104,52 @@ Verified consolidation steps:
   copy constructor and two capacity constructors. The separate TypeList<int>
   specialization has three entries, including its default constructor. All
   thirteen entries from the former address-scoped copy-constructor family now
-  use native templates: the int pair, ten pointer specializations in
+  use native templates: the int pair, seven pointer specializations in
   [vector_copy_constructors.cpp](match/core/vector_copy_constructors.cpp),
-  and the AnimType pointer specialization described below.
+  the AnimType pointer specialization described below, and one copy constructor
+  in each of the UnitType, AircraftType and InfantryType implementations.
   Raw RTTI preserves their pointee const qualifiers; copying allocates and copies
   Capacity elements. Additional emitted methods and other copy specializations
   remain unverified.
-  Twelve capacity constructors for the const BuildingType, UnitType,
-  AircraftType, InfantryType, SmudgeType and VoxelAnimType pointer
-  specializations also use
+  Ten capacity constructors for the const BuildingType, SmudgeType,
+  VoxelAnimType, TerrainType and ParticleSystemType pointer specializations use
   [native templates](match/core/vector_capacity_constructors.cpp),
-  replacing twelve address-specific POD views. Their complete constructor spans
-  passed the full function regression gate. Extra emitted methods are not newly
-  claimed by this constructor file, and
-  final-link selection remains unverified. The two AnimType capacity
-  constructors are part of a separate native
-  implementation in [vector_animtype_methods.cpp](match/core/vector_animtype_methods.cpp).
-  That implementation covers seventeen matched functions across
+  replacing ten address-specific constructor views. The six UnitType, AircraftType and
+  InfantryType capacity constructors moved into their native class
+  implementations; AnimType, int and TechnoType capacity constructors remain
+  in their own translation units. Extra emitted methods are not newly claimed
+  by these constructor files, and final-link selection remains unverified.
+  Three native no-`/GX` class-cluster implementations cover 51 matched
+  functions, 17 each across the vector templates for `const UnitTypeClass*`,
+  `const AircraftTypeClass*` and `const InfantryTypeClass*`: [UnitTypeClass](match/core/vector_unittype_methods.cpp),
+  [AircraftTypeClass](match/core/vector_aircrafttype_methods.cpp) and
+  [InfantryTypeClass](match/core/vector_infantrytype_methods.cpp). They add 22
+  exact matches and rehome 29 prior address claims. The UnitType cluster has a `TypeList` default constructor at
+  `0x67A740`; its copy constructor is `TypeList` at `0x513740`. AircraftType
+  has a `TypeList` default constructor at `0x512960` and copy constructor at
+  `0x5137D0`. InfantryType's copy constructor at `0x513860` belongs to
+  `DynamicVectorClass`, while its `TypeList` default constructor is at
+  `0x67A820`. All nine seven-slot tables pass conditional COFF weak-default
+  checks against retail; final-link resolution remains unverified. The three
+  cluster files assert the member offsets they use, but do not claim complete
+  object sizes.
+  The AnimType pointer implementation in
+  [vector_animtype_methods.cpp](match/core/vector_animtype_methods.cpp) covers
+  seventeen matched functions across
   `VectorClass<const AnimTypeClass*>`,
   `DynamicVectorClass<const AnimTypeClass*>` and
   `TypeList<const AnimTypeClass*>`. All seventeen match their complete retail
-  spans in the integrated no-`/GX` implementation; eight addresses add new match claims and
-  nine rehome existing claims; the moved deleting-destructor rows use their
-  class-specific symbols. All three emitted tables pass a conditional COFF
-  weak-default check against their retail slot targets; final-link resolution
-  remains unverified. This does not establish whole-image identity.
+  spans; eight addresses add new match claims and nine rehome existing claims.
+  Its three tables also pass conditional COFF weak-default checks. These
+  results do not establish whole-image identity.
   The native integration covers fifteen entries
   across `VectorClass<TechnoTypeClass*>`, `DynamicVectorClass<TechnoTypeClass*>`
   and `TypeList<TechnoTypeClass*>`: thirteen virtual or deleting-destructor
   bodies and two capacity constructors. Seven entries are new exact matches;
   the other eight rehome existing address claims. These TechnoType specializations
   use mutable pointer elements; they do not change the const-qualified ToolTip
-  specialization above. The generic deleting-destructor family has 324
-  bindings across 162 base-template instantiation views. Their written vptr and
+  specialization above. The generic deleting-destructor family has 315
+  bindings across 159 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -149,12 +162,12 @@ Verified consolidation steps:
 - [TypeList](match/core/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
   destructor in [one implementation](match/core/typelist_int_methods.cpp).
-  Seven pointer specializations have native default constructors in
+  Five pointer specializations have native default constructors in
   [typelist_default_constructors.cpp](match/core/typelist_default_constructors.cpp),
-  and the AnimType pointer specialization has a native default constructor in
-  its vector implementation; together with the int specialization, these
-  account for nine native default-constructor entries formerly represented by
-  address-scoped views. The TechnoType pointer batch covers native
+  while AnimType, AircraftType and InfantryType defaults are in their native
+  class implementations. Together with the int specialization, these account
+  for nine migrated default-constructor entries; the new UnitType default at
+  `0x67A740` brings the current native total to ten. The TechnoType pointer batch covers native
   VectorClass, DynamicVectorClass and TypeList specializations. Their three
   seven-slot tables each pass a conditional COFF weak-default check for the
   deleting-destructor slot; final-link resolution remains unverified.
@@ -200,10 +213,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,416** | **17.3%** of 19,753 |
-| Sum of matched function lengths | 239 KiB | 6.5% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,438** | **17.4%** of 19,753 |
+| Sum of matched function lengths | 241 KiB | 6.5% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 857 | |
+| Tracked C++ translation units under `match/` | 860 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -223,7 +236,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 162 matched entries. Its candidate count is therefore
+listed entries, including 165 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

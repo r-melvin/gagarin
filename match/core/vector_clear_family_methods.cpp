@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 157
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 154
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 158 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
+//   The 155 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -550,21 +550,6 @@ template class VectorClass<const TeamTypeClass*>;
 // VectorClass<bool> -- vtable 0x007EAA5C slot 3; locator 0x00802D68 -> type descriptor 0x00824E70
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
-
-// FUNCTION: GAMEMD 0x00512D30
-// VectorClass<const InfantryTypeClass*> -- vtable 0x007EAC28 slot 3; locator 0x00803168 -> type descriptor 0x008251C0
-//   `.?AV?$VectorClass@PBVInfantryTypeClass@@@@`.
-template class VectorClass<const InfantryTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00513100
-// VectorClass<const UnitTypeClass*> -- vtable 0x007EAC48 slot 3; locator 0x00803108 -> type descriptor 0x00825128
-//   `.?AV?$VectorClass@PBVUnitTypeClass@@@@`.
-template class VectorClass<const UnitTypeClass*>;
-
-// FUNCTION: GAMEMD 0x005134D0
-// VectorClass<const AircraftTypeClass*> -- vtable 0x007EAC68 slot 3; locator 0x00803138 -> type descriptor 0x00825080
-//   `.?AV?$VectorClass@PBVAircraftTypeClass@@@@`.
-template class VectorClass<const AircraftTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00538610
 // VectorClass<CCINIClass*> -- vtable 0x007EB80C slot 3; locator 0x008037D8 -> type descriptor 0x008261B8

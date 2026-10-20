@@ -51,28 +51,6 @@ VectorCtor* VectorCtor::FUN_0042DC50(int size, void** array)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x45AD80
-VectorCtor* VectorCtor::FUN_0045AD80(int size, void** array)
-{
-    Vector = 0;
-    Length = size;
-    IsValid = 1;
-    IsAllocated = 0;
-
-    *(char**)this = VT_007E4424;
-
-    if (size != 0) {
-        if (array != 0) {
-            Vector = array;
-        } else {
-            Vector = (void**)FUN_007C8E17(size * 4);
-            IsAllocated = 1;
-        }
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x473140
 VectorCtor* VectorCtor::FUN_00473140(int size, void** array)
 {

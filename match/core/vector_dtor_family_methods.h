@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 324 remaining 73-byte deleting-destructor bodies are bound here through
-// 162 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 315 remaining 73-byte deleting-destructor bodies are bound here through
+// 159 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -166,12 +166,6 @@ extern char VT_007EA9A4;
 extern char VT_007EA7D4;
 // VTABLE: GAMEMD 0x007EAA5C -- VectorClass<bool>
 extern char VT_007EAA5C;
-// VTABLE: GAMEMD 0x007EAC28 -- VectorClass<const InfantryTypeClass*>
-extern char VT_007EAC28;
-// VTABLE: GAMEMD 0x007EAC48 -- VectorClass<const UnitTypeClass*>
-extern char VT_007EAC48;
-// VTABLE: GAMEMD 0x007EAC68 -- VectorClass<const AircraftTypeClass*>
-extern char VT_007EAC68;
 // VTABLE: GAMEMD 0x007EB80C -- VectorClass<CCINIClass*>
 extern char VT_007EB80C;
 // VTABLE: GAMEMD 0x007EBFEC -- VectorClass<const AnimClass*>

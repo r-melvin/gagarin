@@ -13,9 +13,6 @@
 #include "type_list.h"
 
 class TeamTypeClass;
-class UnitTypeClass;
-class AircraftTypeClass;
-class InfantryTypeClass;
 class BuildingTypeClass;
 struct MPlayerScoreType;
 class VoxelAnimTypeClass;
@@ -34,45 +31,6 @@ GG_STATIC_ASSERT(offsetof(GgVectorCopy0, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgVectorCopy0, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgVectorCopy0, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(const TeamTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513740
-// TypeList<const UnitTypeClass*> copy constructor; base vptr 0x7EAC48.
-// VTABLE: GAMEMD 0x7EABE8 -- TypeList<const UnitTypeClass*>.
-template class TypeList<const UnitTypeClass*>;
-typedef TypeList<const UnitTypeClass*> GgVectorCopy1;
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy1, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const UnitTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x5137D0
-// TypeList<const AircraftTypeClass*> copy constructor; base vptr 0x7EAC68.
-// VTABLE: GAMEMD 0x7EABC8 -- TypeList<const AircraftTypeClass*>.
-template class TypeList<const AircraftTypeClass*>;
-typedef TypeList<const AircraftTypeClass*> GgVectorCopy2;
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy2, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const AircraftTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x513860
-// DynamicVectorClass<const InfantryTypeClass*> copy constructor; base vptr 0x7EAC28.
-// VTABLE: GAMEMD 0x7EAC88 -- DynamicVectorClass<const InfantryTypeClass*>.
-template class DynamicVectorClass<const InfantryTypeClass*>;
-typedef DynamicVectorClass<const InfantryTypeClass*> GgVectorCopy3;
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy3, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const InfantryTypeClass*) == 4);
 
 // FUNCTION: GAMEMD 0x5AD660
 // TypeList<const BuildingTypeClass*> copy constructor; base vptr 0x7EAA08.

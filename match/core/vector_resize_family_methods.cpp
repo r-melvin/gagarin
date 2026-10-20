@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Thirty remaining four-byte-element resize bodies retain address-scoped
-// views until their actual template classes are integrated. The int and
-// TechnoType pointer entries now use native DynamicVectorClass::SetCapacity.
+// Twenty-seven remaining four-byte-element resize bodies retain address-scoped
+// views until their actual template classes are integrated. Recovered int,
+// TechnoType, UnitType, AircraftType and InfantryType entries use native methods.
 // Entry-origin spans are 0xB0 bytes. Instructions confirm Items+4, Capacity+8,
 // initialization flag+C, ownership flag+D, live count+10 and Clear slot+C.
 // Original source ownership and TU grouping are not established by this sweep.
@@ -173,45 +173,6 @@ bool VectorResizeFamily::FUN_4F2A60(int newsize, void** array)
 
 // FUNCTION: GAMEMD 0x50EA90
 bool VectorResizeFamily::FUN_50EA90(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x512E70
-bool VectorResizeFamily::FUN_512E70(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x513240
-bool VectorResizeFamily::FUN_513240(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x513610
-bool VectorResizeFamily::FUN_513610(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
         if (Length < ActiveCount) {

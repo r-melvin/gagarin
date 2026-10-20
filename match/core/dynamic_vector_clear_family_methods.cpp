@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 156
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 153
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -549,27 +549,6 @@ template class DynamicVectorClass<const TeamTypeClass*>;
 // DynamicVectorClass<bool> -- vtable 0x007EAA7C slot 3; locator 0x00802DD0 -> type descriptor 0x00824E90
 //   `.?AV?$DynamicVectorClass@_N@@`.
 template class DynamicVectorClass<bool>;
-
-// FUNCTION: GAMEMD 0x005128A0
-// DynamicVectorClass<const InfantryTypeClass*> -- vtable 0x007EAC88 slot 3; locator 0x008031A0 -> type descriptor 0x008251F8
-//   `.?AV?$DynamicVectorClass@PBVInfantryTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<InfantryTypeClass*> (0x007EAC08); DynamicVectorClass<const InfantryTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<const InfantryTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00512900
-// DynamicVectorClass<const UnitTypeClass*> -- vtable 0x007EACA8 slot 3; locator 0x008031D8 -> type descriptor 0x00825158
-//   `.?AV?$DynamicVectorClass@PBVUnitTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<UnitTypeClass*> (0x007EABE8); DynamicVectorClass<const UnitTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<const UnitTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00512990
-// DynamicVectorClass<const AircraftTypeClass*> -- vtable 0x007EACC8 slot 3; locator 0x00803210 -> type descriptor 0x008250B8
-//   `.?AV?$DynamicVectorClass@PBVAircraftTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<AircraftTypeClass*> (0x007EABC8); DynamicVectorClass<const AircraftTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<const AircraftTypeClass*>;
 
 // FUNCTION: GAMEMD 0x005384C0
 // DynamicVectorClass<CCINIClass*> -- vtable 0x007EB82C slot 3; locator 0x00803840 -> type descriptor 0x008261E8
