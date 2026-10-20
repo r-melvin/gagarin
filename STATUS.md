@@ -360,4 +360,3 @@ existing source file has received an exhaustive layout audit.
 `verify_all.py` recompiles manifest translation units and checks rows recorded
 at 100%. Partial rows are compile-checked; their stored percentages are not
 remeasured by that gate.
-
