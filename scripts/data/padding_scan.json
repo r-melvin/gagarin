@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "67ad4100aab4bfc2e88d7063763665ace834f1726a49e3ada275ac945e195b81",
+  "manifest_sha256": "a5dc87aa50b786c66c88258b1bcda9168c1f928ee05a65026786788b8b668e00",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3298,
-  "matched_entries_missed": 155,
+  "matched_entries": 3320,
+  "matched_entries_missed": 156,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5339,6 +5339,12 @@
    "addr": "0x586990",
    "tu": "match/map/map_class_update_pathfinding2_methods.cpp",
    "name": "MapClass::Update_Pathfinding_2",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x589CA0",
+   "tu": "match/movement/vector_compare_family_00589c10.cpp",
+   "name": "EqualsA",
    "reason": "no-preceding-CC-or-90"
   },
   {

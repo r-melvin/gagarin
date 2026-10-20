@@ -31138,5 +31138,221 @@
   "name": "FUN_004383F0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "addr": "0x589C10",
+  "sym": "?Find@SearchVector36_00589C10@@QBEHABUSearchRecord36_00589C10@@@Z",
+  "len": "0x3c",
+  "name": "Find",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "addr": "0x589CA0",
+  "sym": "?EqualsA@CompareVector4_00589CA0@@QBE_NABU1@@Z",
+  "len": "0x3e",
+  "name": "EqualsA",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "addr": "0x589EB0",
+  "sym": "?EqualsB@CompareVector4_00589CA0@@QBE_NABU1@@Z",
+  "len": "0x3e",
+  "name": "EqualsB",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "addr": "0x58A110",
+  "sym": "?Equals@CompareVector8_0058A110@@QBE_NABU1@@Z",
+  "len": "0x3e",
+  "name": "Equals",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_compare_family_00589c10.cpp",
+  "addr": "0x58A260",
+  "sym": "?Equals@CompareVector12_0058A260@@QBE_NABU1@@Z",
+  "len": "0x3e",
+  "name": "Equals",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/class_sweep_00581f50.cpp",
+  "addr": "0x581F50",
+  "sym": "?FUN_00581F50@ClassSweepPrefix_00581F50@@QAEXXZ",
+  "len": "0x35",
+  "name": "FUN_00581F50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_record_sweep_00582d30.cpp",
+  "addr": "0x582D30",
+  "sym": "?FUN_00582D30@MapRecordSweepPrefix_00582D30@@QAEXH@Z",
+  "len": "0x3c",
+  "name": "FUN_00582D30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_method_004b5030.cpp",
+  "addr": "0x4B5030",
+  "sym": "?FUN_004B5030@GadgetMethodView_004B5030@@QAEXI@Z",
+  "len": "0x61",
+  "name": "FUN_004B5030",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_input_methods_004b50a0.cpp",
+  "addr": "0x004B50A0",
+  "sym": "?FUN_004B50A0@GadgetInputView_004B50A0@@QAEXXZ",
+  "len": "0x1f",
+  "name": "FUN_004B50A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_input_methods_004b50a0.cpp",
+  "addr": "0x004B50C0",
+  "sym": "?FUN_004B50C0@GadgetInputView_004B50A0@@QAEXEPAIPAH@Z",
+  "len": "0xc8",
+  "name": "FUN_004B50C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_input_methods_004b50a0.cpp",
+  "addr": "0x004B5190",
+  "sym": "?FUN_004B5190@GadgetInputView_004B50A0@@QAEXXZ",
+  "len": "0x5b",
+  "name": "FUN_004B5190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_input_methods_004b50a0.cpp",
+  "addr": "0x004B51F0",
+  "sym": "?FUN_004B51F0@GadgetInputView_004B50A0@@QAEXXZ",
+  "len": "0x1f",
+  "name": "FUN_004B51F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438410",
+  "sym": "_FUN_00438410",
+  "len": "0x31",
+  "name": "FUN_00438410",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438450",
+  "sym": "_FUN_00438450",
+  "len": "0x21",
+  "name": "FUN_00438450",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438480",
+  "sym": "_FUN_00438480",
+  "len": "0x2c",
+  "name": "FUN_00438480",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x004384B0",
+  "sym": "_FUN_004384B0",
+  "len": "0x27",
+  "name": "FUN_004384B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x004384E0",
+  "sym": "_FUN_004384E0",
+  "len": "0xf",
+  "name": "FUN_004384E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x004384F0",
+  "sym": "_FUN_004384F0",
+  "len": "0x12",
+  "name": "FUN_004384F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438510",
+  "sym": "_FUN_00438510",
+  "len": "0x1a",
+  "name": "FUN_00438510",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438530",
+  "sym": "_FUN_00438530",
+  "len": "0x17",
+  "name": "FUN_00438530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438550",
+  "sym": "_FUN_00438550",
+  "len": "0x3d",
+  "name": "FUN_00438550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+  "addr": "0x00438590",
+  "sym": "_FUN_00438590",
+  "len": "0x3b",
+  "name": "FUN_00438590",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_cell_sweeps_005866c0.cpp",
+  "addr": "0x5866C0",
+  "sym": "?FUN_005866C0@MapScan_005866C0@@QAEXXZ",
+  "len": "0x5d",
+  "name": "FUN_005866C0",
+  "status": "partial",
+  "pct": 80.0
+ },
+ {
+  "tu": "match/map/map_cell_sweeps_005866c0.cpp",
+  "addr": "0x586720",
+  "sym": "?FUN_00586720@MapScan_005866C0@@QAEXXZ",
+  "len": "0x54",
+  "name": "FUN_00586720",
+  "status": "partial",
+  "pct": 78.3
  }
 ]
