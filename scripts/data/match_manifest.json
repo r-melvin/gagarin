@@ -30463,5 +30463,50 @@
   "name": "FUN_00435800",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "addr": "0x434B10",
+  "sym": "?FUN_00434B10@BitText_00434B10_View@@QAEXXZ",
+  "len": "0x2e",
+  "name": "BitText::FUN_00434B10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "addr": "0x434B40",
+  "sym": "?FUN_00434B40@@YGHPAUBitFont_00434B40@@PAUSurface@@HHH@Z",
+  "len": "0x50",
+  "name": "FUN_00434B40",
+  "status": "partial",
+  "pct": 91.4
+ },
+ {
+  "tu": "match/ui/bit_font_entries_00434b10.cpp",
+  "addr": "0x434BF0",
+  "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAUSurface@@HHHH@Z",
+  "len": "0xde",
+  "name": "FUN_00434BF0",
+  "status": "partial",
+  "pct": 72.4
+ },
+ {
+  "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+  "addr": "0x57CBE0",
+  "sym": "?FUN_0057CBE0@@YIEPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0xd4",
+  "name": "FUN_0057CBE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+  "addr": "0x57CAB0",
+  "sym": "?FUN_0057CAB0@@YIHPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0xda",
+  "name": "FUN_0057CAB0",
+  "status": "matched",
+  "pct": 100
  }
 ]

@@ -545,6 +545,62 @@
     "contains_entry": true
    },
    "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x57CAB0",
+   "length": "0xda",
+   "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+   "rea_evidence_id": "ev_e0a3f311b4979e86407b68a66bdf502a864a986a84e5c2d8065abcf41139af02",
+   "analysis_target": {
+    "format": "raw-binary",
+    "architecture": "x86",
+    "entry_point": "0x57cab0",
+    "excerpt_length": 304,
+    "excerpt_sha256": "cd3a747e7fbf010a69af0c349faeb58c031896f3a33e5f3e6ed8befb31e81374"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x57cab0",
+      "end": "0x57cb89"
+     }
+    ],
+    "total_bytes": 218,
+    "span_bytes": 218,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py plus both selector maps and six linked local table targets checked against retail"
+  },
+  {
+   "addr": "0x57CBE0",
+   "length": "0xd4",
+   "source": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
+   "rea_evidence_id": "ev_58558985c84c4e088aab1c3d10719f80e5bd67e006c93042543b8c3cfb3a9291",
+   "analysis_target": {
+    "format": "raw-binary",
+    "architecture": "x86",
+    "entry_point": "0x57cbe0",
+    "excerpt_length": 272,
+    "excerpt_sha256": "b1e7c7f9fd12eb81f4f0465e6580d6bc9d83df2df841166b76f811adb56c8c3a"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x57cbe0",
+      "end": "0x57ccb3"
+     }
+    ],
+    "total_bytes": 212,
+    "span_bytes": 212,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py plus both selector maps and six linked local table targets checked against retail"
   }
  ],
  "next_candidates": [
@@ -883,6 +939,30 @@
     "0x4535FF compares selector EAX against 6",
     "0x453602 branches above range to 0x45365D",
     "0x453604 jumps indirectly through 0x453820 indexed by EAX with stride 4"
+   ],
+   "status": "not a function entry; padding scan remains a heuristic inventory"
+  },
+  {
+   "addr": "0x57CBB0",
+   "classification": "embedded switch jump table",
+   "provenance": "own-binary: entry disassembly at 0x57CAB0; data xref from 0x57CB75",
+   "owner_entry": "0x57CAB0",
+   "evidence": [
+    "0x57CB67 compares the selector against 0x15; 0x57CB6B branches above range",
+    "0x57CB75 jumps indirectly through 0x57CBB0 with stride 4",
+    "Both selector maps and all six local targets for the owning function agree with the compiled C++ switches"
+   ],
+   "status": "not a function entry; padding scan remains a heuristic inventory"
+  },
+  {
+   "addr": "0x57CCD0",
+   "classification": "embedded switch jump table",
+   "provenance": "own-binary: entry disassembly at 0x57CBE0; data xref from 0x57CCA5",
+   "owner_entry": "0x57CBE0",
+   "evidence": [
+    "0x57CC98 compares the selector against 0xD; 0x57CC9B branches above range",
+    "0x57CCA5 jumps indirectly through 0x57CCD0 with stride 4",
+    "Both selector maps and all six local targets for the owning function agree with the compiled C++ switches"
    ],
    "status": "not a function entry; padding scan remains a heuristic inventory"
   }
