@@ -9,7 +9,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
 #include "../core/triple_timer_init_methods.h"
 
 // GLOBAL: GAMEMD 0x816380 — the volume curve.
@@ -19,20 +18,26 @@ extern int DAT_00816510[];
 
 struct Sink_0040A6D0;
 
+// Only the prefixes accessed by this function are modeled; full object and
+// vtable sizes have not been recovered. Slot displacements come from
+// CALL [EDX+0x3C/0x40/0x44] at 0x40A6FD, 0x40A728 and 0x40A761.
 struct SinkVtbl_0040A6D0
 {
-    char _pad000[0x3C];                                 // +0x0000
+    char unknown_00[0x3C];                           // +0x0000
     int (__stdcall* At_3C)(Sink_0040A6D0*, int volume); // +0x003C
     int (__stdcall* At_40)(Sink_0040A6D0*, int pan);    // +0x0040
     int (__stdcall* At_44)(Sink_0040A6D0*, int rate);   // +0x0044
 };
+GG_STATIC_ASSERT(offsetof(SinkVtbl_0040A6D0, At_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(SinkVtbl_0040A6D0, At_40) == 0x40);
 GG_STATIC_ASSERT(offsetof(SinkVtbl_0040A6D0, At_44) == 0x44);
 
 struct Sink_0040A6D0 { SinkVtbl_0040A6D0* Vptr; };
+GG_STATIC_ASSERT(offsetof(Sink_0040A6D0, Vptr) == 0x0);
 
 struct Settings_0040A6D0
 {
-    char _pad000[0x184];      // +0x0000
+    char unknown_00[0x184];   // +0x0000
     int  At_184;              // +0x0184
 };
 GG_STATIC_ASSERT(offsetof(Settings_0040A6D0, At_184) == 0x184);
@@ -40,9 +45,10 @@ GG_STATIC_ASSERT(offsetof(Settings_0040A6D0, At_184) == 0x184);
 struct Aux_0040A6D0
 {
     Settings_0040A6D0* Settings;   // +0x0000
-    char _pad004[0x60];            // +0x0004
+    char unknown_04[0x60];        // +0x0004
     Sink_0040A6D0* Sink;           // +0x0064
 };
+GG_STATIC_ASSERT(offsetof(Aux_0040A6D0, Settings) == 0x0);
 GG_STATIC_ASSERT(offsetof(Aux_0040A6D0, Sink) == 0x64);
 
 // The two values driving volume and pan are not separate members: 0xDC and 0x12C
@@ -51,9 +57,9 @@ GG_STATIC_ASSERT(offsetof(Aux_0040A6D0, Sink) == 0x64);
 // rather than settings.
 struct Voice_0040A6D0
 {
-    char _pad000[0xD8];            // +0x0000
+    char unknown_00[0xD8];        // +0x0000
     Obj_00401000 Timers;           // +0x00D8 .. +0x0150
-    char _pad150[0x8];             // +0x0150
+    char unknown_150[0x8];        // +0x0150
     Aux_0040A6D0* Aux;             // +0x0158
 
     // FUNCTION: GAMEMD 0x40A6D0
@@ -61,5 +67,11 @@ struct Voice_0040A6D0
 };
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, Timers) == 0xD8);
 GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, Aux) == 0x158);
+// Pin the complete displacement of each value load, not just the timer group.
+// 0x40A6D4 reads +0xDC; 0x40A700 reads +0x12C.
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, Timers)
+    + offsetof(Obj_00401000, First) + offsetof(Timer_00401000, Value) == 0xDC);
+GG_STATIC_ASSERT(offsetof(Voice_0040A6D0, Timers)
+    + offsetof(Obj_00401000, Third) + offsetof(Timer_00401000, Value) == 0x12C);
 
 #endif  // GG_MATCH_AUDIO_PAN_AND_PITCH_METHODS_H

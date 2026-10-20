@@ -10,15 +10,9 @@
 #ifndef GG_MATCH_AI_TAG_TYPE_CLASS_METHODS_H
 #define GG_MATCH_AI_TAG_TYPE_CLASS_METHODS_H
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-#include "../_layout/abstract_type_class.h"
-
-struct TagTypeClass : AbstractTypeClass
-{
-    // Static lookup: case-insensitive find by ID (+0x24) or Name (+0x64).
-    static TagTypeClass* __fastcall FindByNameOrID(const char* name); // 0x6E5E70
-};
+// Share the full recovered TagTypeClass with the flag and INI methods so all
+// three headers can be included together without redefining the class.
+#include "tag_type_class_flag_methods.h"
 
 // DynamicVectorClass<TagTypeClass*> — the global TagTypeClass::Array.
 // Base @0xB0E780 (vtable). Confirmed from the disasm:

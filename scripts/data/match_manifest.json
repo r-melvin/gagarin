@@ -63,6 +63,15 @@
   "pct": 5.1
  },
  {
+  "tu": "match/ai/aircraft_mission_004155f0.cpp",
+  "addr": "0x4155F0",
+  "sym": "?FUN_004155F0@Aircraft_004155F0@@QAEHXZ",
+  "len": "0x1cd",
+  "name": "AircraftClass::FUN_004155F0",
+  "status": "partial",
+  "pct": 98.6
+ },
+ {
   "tu": "match/ai/aircraft_tracker_class.cpp",
   "addr": "0x4134A0",
   "sym": "?Add@AircraftTrackerClass@@QAEXPAVTechnoClass@@@Z",
@@ -554,6 +563,24 @@
   "sym": "?HasZoneEntryByEvent@TagTypeClass@@QBE_NXZ",
   "len": "0x28",
   "name": "HasZoneEntryByEvent",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_ini_methods.cpp",
+  "addr": "0x6E6080",
+  "sym": "?ReadFromINI@TagTypeClass@@QAE_NPAUTagINI_006E6080@@@Z",
+  "len": "0xdd",
+  "name": "TagTypeClass::ReadFromINI",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_ini_methods.cpp",
+  "addr": "0x6E6160",
+  "sym": "?WriteToINI@TagTypeClass@@QAE_NPAUTagINI_006E6080@@@Z",
+  "len": "0x85",
+  "name": "TagTypeClass::WriteToINI",
   "status": "matched",
   "pct": 100
  },
@@ -1112,6 +1139,51 @@
   "sym": "?Unsorted_AudioGetTime@@YI_JXZ",
   "len": "0x10",
   "name": "Unsorted::AudioGetTime",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/dsound_access_methods.cpp",
+  "addr": "0x409FF0",
+  "sym": "?FUN_00409FF0@@YAXXZ",
+  "len": "0x94",
+  "name": "FUN_00409FF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/dsound_access_methods.cpp",
+  "addr": "0x40A770",
+  "sym": "?FUN_0040A770@@YAHXZ",
+  "len": "0x6",
+  "name": "FUN_0040A770",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/dsound_access_methods.cpp",
+  "addr": "0x40A780",
+  "sym": "?FUN_0040A780@@YAHXZ",
+  "len": "0xe",
+  "name": "FUN_0040A780",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/dsound_access_methods.cpp",
+  "addr": "0x40A790",
+  "sym": "?FUN_0040A790@@YAHXZ",
+  "len": "0xe",
+  "name": "FUN_0040A790",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/dsound_access_methods.cpp",
+  "addr": "0x40A7B0",
+  "sym": "?FUN_0040A7B0@@YAPAUSoundBuffer_0040A7B0@@XZ",
+  "len": "0x6",
+  "name": "FUN_0040A7B0",
   "status": "matched",
   "pct": 100
  },
@@ -29966,6 +30038,276 @@
   "sym": "?FUN_0050D9D0@@YI_NPAUPredicate_0050D9C0@@@Z",
   "len": "0xe",
   "name": "FUN_0050D9D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72B9E0",
+  "sym": "?FUN_0072B9E0@@YAXXZ",
+  "len": "0x22",
+  "name": "FUN_0072B9E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72BA10",
+  "sym": "?FUN_0072BA10@@YAXXZ",
+  "len": "0x16",
+  "name": "FUN_0072BA10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72BA30",
+  "sym": "?FUN_0072BA30@@YAXXZ",
+  "len": "0x42",
+  "name": "FUN_0072BA30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72BA80",
+  "sym": "?FUN_0072BA80@@YAXXZ",
+  "len": "0x37",
+  "name": "FUN_0072BA80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72CAC0",
+  "sym": "?FUN_0072CAC0@@YAXXZ",
+  "len": "0x22",
+  "name": "FUN_0072CAC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72CAF0",
+  "sym": "?FUN_0072CAF0@@YAXXZ",
+  "len": "0x16",
+  "name": "FUN_0072CAF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72CB10",
+  "sym": "?FUN_0072CB10@@YAXXZ",
+  "len": "0x42",
+  "name": "FUN_0072CB10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_menu_resource_methods.cpp",
+  "addr": "0x72CB60",
+  "sym": "?FUN_0072CB60@@YAXXZ",
+  "len": "0x37",
+  "name": "FUN_0072CB60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_reset_004cb990.cpp",
+  "addr": "0x4CB990",
+  "sym": "_FUN_004CB990",
+  "len": "0x17",
+  "name": "FUN_004CB990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_reset_004cb990.cpp",
+  "addr": "0x4CB9E0",
+  "sym": "_FUN_004CB9E0",
+  "len": "0x13",
+  "name": "FUN_004CB9E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_reset_004cb990.cpp",
+  "addr": "0x4CBA00",
+  "sym": "_FUN_004CBA00",
+  "len": "0x13",
+  "name": "FUN_004CBA00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_reset_004cb990.cpp",
+  "addr": "0x4CBA20",
+  "sym": "_FUN_004CBA20",
+  "len": "0x13",
+  "name": "FUN_004CBA20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_reset_00723e40.cpp",
+  "addr": "0x723E40",
+  "sym": "_FUN_00723E40",
+  "len": "0x17",
+  "name": "FUN_00723E40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/coordinate_005bcb60.cpp",
+  "addr": "0x5BCB60",
+  "sym": "?Convert@Point_005BCB60@@QAEPAU1@HH@Z",
+  "len": "0x30",
+  "name": "Point_005BCB60::Convert",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/font_shadow_00435340.cpp",
+  "addr": "0x435340",
+  "sym": "?FUN_00435340@TextEngine_00435340@@QAE_NPAUFont_00435340@@HPBGHHHHHHH@Z",
+  "len": "0xa4",
+  "name": "TextEngine_00435340::FUN_00435340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
+  "addr": "0x41BB30",
+  "len": "0x57",
+  "sym": "?FUN_0041BB30@AircraftClass_0041BB30@@QAEXHHH@Z",
+  "name": "AircraftClass_0041BB30::FUN_0041BB30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
+  "addr": "0x41BBD0",
+  "len": "0x60",
+  "sym": "?FUN_0041BBD0@AircraftClass_0041BB30@@QAEPAXHHH@Z",
+  "name": "AircraftClass_0041BB30::FUN_0041BBD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/tunnel_locomotion_z_adjust.cpp",
+  "addr": "0x729E50",
+  "sym": "_FUN_00729E50@4",
+  "len": "0x1ad",
+  "name": "TunnelLocomotionClass::ZAdjust (interface prefix)",
+  "status": "partial",
+  "pct": 22.1
+ },
+ {
+  "tu": "match/core/static_reset_004cb990.cpp",
+  "addr": "0x4CB9B0",
+  "sym": "_FUN_004CB9B0",
+  "len": "0x28",
+  "name": "FUN_004CB9B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/toggle_class_ctor_00723e60.cpp",
+  "addr": "0x723E60",
+  "sym": "??0ToggleClass_00723E60@@QAE@HHHHH@Z",
+  "len": "0x3e",
+  "name": "ToggleClass::ToggleClass (prefix view)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/building_coord_00453840.cpp",
+  "addr": "0x453840",
+  "sym": "?FUN_00453840@BuildingClass_00453840@@QAEPAUCoord_00453840@@PAU2@HHHH@Z",
+  "len": "0x226",
+  "name": "BuildingClass_00453840::FUN_00453840",
+  "status": "partial",
+  "pct": 3.6
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBA40",
+  "sym": "_FUN_004CBA40",
+  "len": "0x13",
+  "name": "FUN_004CBA40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBA60",
+  "sym": "_FUN_004CBA60",
+  "len": "0x13",
+  "name": "FUN_004CBA60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBA80",
+  "sym": "_FUN_004CBA80",
+  "len": "0x31",
+  "name": "FUN_004CBA80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBAC0",
+  "sym": "_FUN_004CBAC0",
+  "len": "0x21",
+  "name": "FUN_004CBAC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBAF0",
+  "sym": "_FUN_004CBAF0",
+  "len": "0x2c",
+  "name": "FUN_004CBAF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBB20",
+  "sym": "_FUN_004CBB20",
+  "len": "0x27",
+  "name": "FUN_004CBB20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBB50",
+  "sym": "_FUN_004CBB50",
+  "len": "0xf",
+  "name": "FUN_004CBB50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBB60",
+  "sym": "_FUN_004CBB60",
+  "len": "0x12",
+  "name": "FUN_004CBB60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_initializers_004cba40.cpp",
+  "addr": "0x4CBB80",
+  "sym": "_FUN_004CBB80",
+  "len": "0x1a",
+  "name": "FUN_004CBB80",
   "status": "matched",
   "pct": 100
  }

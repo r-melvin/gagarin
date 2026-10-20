@@ -1,0 +1,864 @@
+{
+ "header": {
+  "schema": "gagarin/padding_recovery/1",
+  "provenance": "own-binary-via-Ghidra | original; REA 6.7.0 with Ghidra 12.1.2",
+  "retail_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+  "status": "Derived evidence summary, not a canonical REA Evidence record; contains no retail bytes.",
+  "limitations": [
+   "REA raw-image queries do not have the full-image imports, strings, global definitions or callee signatures.",
+   "Decompiler stack types and signatures are hypotheses; member facts were checked against retail instructions.",
+   "Rea and the existing CLI both use Ghidra; agreement is not an independent analysis engine.",
+   "REA body evidence supplements rather than replaces the VC6 per-function byte oracle."
+  ]
+ },
+ "functions": [
+  {
+   "addr": "0x6E6080",
+   "length": "0xdd",
+   "source": "match/ai/tag_type_class_ini_methods.cpp",
+   "rea_evidence_id": "ev_8e515814a8710041cbd5532f29352a1b19c13387f4660934e4cda45b1d28b2ba",
+   "provider": {
+    "id": "ghidra",
+    "name": "Ghidra",
+    "version": "12.1.2"
+   },
+   "analysis_target": {
+    "format": "raw-binary",
+    "architecture": "x86",
+    "entry_point": "0x6e6080",
+    "source_file_offset": "0x2e6080",
+    "excerpt_length": 256,
+    "excerpt_sha256": "eedf0b2552d871de4e5837c714e8123af46acaf76e3a1fa2a6e0cfcb9c2dbbfb"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x6e6080",
+      "end": "0x6e615c"
+     }
+    ],
+    "total_bytes": 221,
+    "span_bytes": 221,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "scripts/vc6/verify_all.py: matched at 100%; raw_match.py fallback for unlisted reader"
+  },
+  {
+   "addr": "0x6E6160",
+   "length": "0x85",
+   "source": "match/ai/tag_type_class_ini_methods.cpp",
+   "rea_evidence_id": "ev_d5407c1ed4e9f1e74968b35be36dee5122d6fec433bfd27445cb5e888c92f9c0",
+   "provider": {
+    "id": "ghidra",
+    "name": "Ghidra",
+    "version": "12.1.2"
+   },
+   "analysis_target": {
+    "format": "raw-binary",
+    "architecture": "x86",
+    "entry_point": "0x6e6160",
+    "source_file_offset": "0x2e6160",
+    "excerpt_length": 133,
+    "excerpt_sha256": "e21a80cd6ed7623ecbe9a233784dbab72ca1f9e854f84d28e3144f57110dc890"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x6e6160",
+      "end": "0x6e61e4"
+     }
+    ],
+    "total_bytes": 133,
+    "span_bytes": 133,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "scripts/vc6/verify_all.py: matched at 100%; raw_match.py fallback for unlisted reader"
+  },
+  {
+   "addr": "0x72B9E0",
+   "length": "0x22",
+   "source": "match/renderer/screen_menu_resource_methods.cpp",
+   "rea_evidence_id": "ev_337fa4ed576fcc87b5f931c139fda3fe8a5bcc2dcff4851087ae17cc5b1d7d61",
+   "analysis_target": {
+    "entry_point": "0x72b9e0",
+    "excerpt_length": 34,
+    "excerpt_sha256": "bded2c8fa48514d0449ff02ff543c7b92081b9bcbfc11516684dad460337b791"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x72b9e0",
+      "end": "0x72ba01"
+     }
+    ],
+    "total_bytes": 34,
+    "span_bytes": 34,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all eight menu resource helpers matched at 100%; raw fallback for unlisted loaders",
+   "related_verified_entries": [
+    "0x72BA10",
+    "0x72BA30",
+    "0x72BA80",
+    "0x72CAC0",
+    "0x72CAF0",
+    "0x72CB10",
+    "0x72CB60"
+   ]
+  },
+  {
+   "addr": "0x5BCB60",
+   "length": "0x30",
+   "source": "match/core/coordinate_005bcb60.cpp",
+   "status": "matched at 100% by scripts/vc6/verify_all.py",
+   "rea_evidence_id": "ev_4353112a6c0c05e5162a14e34587fd21193317f45be91f381fad25f026067933",
+   "analysis_target": {
+    "entry_point": "0x5bcb60",
+    "excerpt_length": 48,
+    "excerpt_sha256": "88ff9ae39193eeb37c9fb6cd1e85a253b099c4495ff121d2b9379bcbe3c9c3a1"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x5bcb60",
+      "end": "0x5bcb8f"
+     }
+    ],
+    "total_bytes": 48,
+    "span_bytes": 48,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "attempts": [
+    "direct member assignments",
+    "compute both coordinate locals before stores",
+    "aggregate temporary followed by whole-point assignment"
+   ]
+  },
+  {
+   "addr": "0x41BB30",
+   "length": "0x57",
+   "source": "match/ai/aircraft_helpers_0041bb30.cpp",
+   "rea_evidence_id": "ev_09de008da03f2f3bf41e2197b0a28f741e37ae1eb5d879e824a20e4762658a44",
+   "analysis_target": {
+    "entry_point": "0x41bb30",
+    "excerpt_length": 87,
+    "excerpt_sha256": "d6a536570491794e2d2a2d798d3a1b6789071eeadbc25f3a9ceb2130285882fa"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x41bb30",
+      "end": "0x41bb51"
+     },
+     {
+      "start": "0x41bb73",
+      "end": "0x41bb86"
+     }
+    ],
+    "total_bytes": 54,
+    "span_bytes": 87,
+    "non_contiguous": true,
+    "contains_entry": true
+   },
+   "oracle": "scripts/vc6/verify_all.py: matched100; raw fallback for41BBD0",
+   "limitations": "Rea body is noncontiguous or omits final return bytes; full retail extent separately confirmed by entry-point raw disassembly and full-length oracle.",
+   "rtti": "COL7FB4C0 -> TD817B90 AircraftClass; primarytable7E22A4",
+   "vtable_slots": {
+    "0x1f4": "0x41BB30",
+    "0x528": "0x41BBD0",
+    "0x278": "0x65A970"
+   }
+  },
+  {
+   "addr": "0x41BBD0",
+   "length": "0x60",
+   "source": "match/ai/aircraft_helpers_0041bb30.cpp",
+   "rea_evidence_id": "ev_a7943afa48928ecde54d5dbe587bb5adaa0f61c7a41f9c7c7ba40bc0e39288bf",
+   "analysis_target": {
+    "entry_point": "0x41bbd0",
+    "excerpt_length": 94,
+    "excerpt_sha256": "15d5033c7b242473a28f0f904b2d659110dee0e03484c6a790dee59edad6e43b"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x41bbd0",
+      "end": "0x41bc2c"
+     }
+    ],
+    "total_bytes": 93,
+    "span_bytes": 93,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "scripts/vc6/verify_all.py: matched100; raw fallback for41BBD0",
+   "limitations": "Rea body is noncontiguous or omits final return bytes; full retail extent separately confirmed by entry-point raw disassembly and full-length oracle.",
+   "rtti": "COL7FB4C0 -> TD817B90 AircraftClass; primarytable7E22A4",
+   "vtable_slots": {
+    "0x1f4": "0x41BB30",
+    "0x528": "0x41BBD0",
+    "0x278": "0x65A970"
+   }
+  },
+  {
+   "addr": "0x435340",
+   "length": "0xa4",
+   "source": "match/ui/font_shadow_00435340.cpp",
+   "status": "matched100 by scripts/vc6/verify_all.py",
+   "rea_evidence_id": "ev_95ea396b11ba77e430fbacaf2a6899e4d5424256fb5112076eaa89f3ef2a240b",
+   "analysis_target": {
+    "entry_point": "0x435340",
+    "excerpt_length": 164,
+    "excerpt_sha256": "5753af683a939db47dd39b04ff4c855f36140501aa143d43d1aca7db37786876"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x435340",
+      "end": "0x4353e3"
+     }
+    ],
+    "total_bytes": 164,
+    "span_bytes": 164,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "score_method": "diff_retail.py comparator with retail instruction bytes/ranges from the Rea entry-point assembly and pinned PE; existing Ghidra CLI has no instruction at this entry. Raw oracle still rejects full match.",
+   "remaining_delta": "none",
+   "attempts": {
+    "source": "direct two-pass wrapper with saved short colour and boolean result",
+    "flags": {
+     "default": 50.7,
+     "O1": 11.3,
+     "Og_minus": 14.1,
+     "G6": 20.8
+    },
+    "permuter": {
+     "base_score": 175,
+     "best_score": 0,
+     "formulation": "Separate short local declared before guard, assigned shadow colour before SwapColor. Plain C++ source transferred and reverified without macros.",
+     "training_target": "Only five actual call relocation fields normalized; branches unchanged. Baseline confirmed byte-identical to committed-form source."
+    }
+   },
+   "oracle": "scripts/vc6/verify_all.py:1matched0regressed"
+  },
+  {
+   "addr": "0x4CB9B0",
+   "length": "0x28",
+   "source": "match/core/static_reset_004cb990.cpp",
+   "rea_evidence_id": "ev_3b017d634887ac983d6c5c63b43d184d69d8836fffdfce6eec637780cde37cb1",
+   "analysis_target": {
+    "entry_point": "0x4cb9b0",
+    "excerpt_length": 40,
+    "excerpt_sha256": "a899029a4bcb1468dab74b375d1f81b915d0a93804ec624c675cfcd007c32b77"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cb9b0",
+      "end": "0x4cb9d7"
+     }
+    ],
+    "total_bytes": 40,
+    "span_bytes": 40,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py:100% exact with normalized relocations"
+  },
+  {
+   "addr": "0x723E60",
+   "length": "0x3e",
+   "source": "match/ui/toggle_class_ctor_00723e60.cpp",
+   "rea_evidence_id": "ev_313d8285bf45cd6931990f17362e5723eea2328d595adee076c13bfcf9674646",
+   "analysis_target": {
+    "entry_point": "0x723e60",
+    "excerpt_length": 62,
+    "excerpt_sha256": "8e30f66b0945f61517c35083fe434ddadff7761ac4f1e03ab982c3cace65e882"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x723e60",
+      "end": "0x723e9d"
+     }
+    ],
+    "total_bytes": 62,
+    "span_bytes": 62,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py:100% exact with normalized relocations"
+  },
+  {
+   "addr": "0x4CBA40",
+   "length": "0x13",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_d3c8cd0ef686838c84737674bdb2cc2ccde12b1a6df1819564915c18b38413f6",
+   "analysis_target": {
+    "entry_point": "0x4cba40",
+    "excerpt_length": 19,
+    "excerpt_sha256": "d682425acee128481cf68790095b1a8a2daab30d66cf31f74b0d38a1e800800c"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cba40",
+      "end": "0x4cba52"
+     }
+    ],
+    "total_bytes": 19,
+    "span_bytes": 19,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBA60",
+   "length": "0x13",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_c5852e3161184c2167721d16d296881a22a10fc6e7ce24f5e37ff00b28a05e9e",
+   "analysis_target": {
+    "entry_point": "0x4cba60",
+    "excerpt_length": 19,
+    "excerpt_sha256": "a80caf8a348fadb80fe69cd4d99311ab5384f57f58992a88bcbc8a4e2f861314"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cba60",
+      "end": "0x4cba72"
+     }
+    ],
+    "total_bytes": 19,
+    "span_bytes": 19,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBA80",
+   "length": "0x31",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_ec2a01d0b93b4bc681b51d99226eb3d0146164377a5deda7828929885adaf02c",
+   "analysis_target": {
+    "entry_point": "0x4cba80",
+    "excerpt_length": 49,
+    "excerpt_sha256": "eec440b9d36965195f59bd485d439e7faf02de4ea509f261f79ac62491cd669c"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cba80",
+      "end": "0x4cbab0"
+     }
+    ],
+    "total_bytes": 49,
+    "span_bytes": 49,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBAC0",
+   "length": "0x21",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_ddf08740d1032fffcd0aa11e465624e6f786d876a0cf22e41f8bb83af16c12b9",
+   "analysis_target": {
+    "entry_point": "0x4cbac0",
+    "excerpt_length": 33,
+    "excerpt_sha256": "0d102339728087519625332cfefbc04a536495b3a83b557fac3702f7ab0a5522"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbac0",
+      "end": "0x4cbae0"
+     }
+    ],
+    "total_bytes": 33,
+    "span_bytes": 33,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBAF0",
+   "length": "0x2c",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_22ded13cceabb39bedf8eec93cf9b1f84e29a38d37c7bfe22bdcb59db437ba45",
+   "analysis_target": {
+    "entry_point": "0x4cbaf0",
+    "excerpt_length": 44,
+    "excerpt_sha256": "b96c777350a092e963eac2450059b607e5b43cde788be55a4bb4ea16d6f602ee"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbaf0",
+      "end": "0x4cbb1b"
+     }
+    ],
+    "total_bytes": 44,
+    "span_bytes": 44,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBB20",
+   "length": "0x27",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_81e53d1a64d7cc711fd8a2a9d2d2c78a49a244980c6cee3cab6e89621c75d28f",
+   "analysis_target": {
+    "entry_point": "0x4cbb20",
+    "excerpt_length": 39,
+    "excerpt_sha256": "67bbce9c390b4aeb46e1fb1afdd6c1530854a18b3f04a85c7294fd31cbd75da6"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbb20",
+      "end": "0x4cbb46"
+     }
+    ],
+    "total_bytes": 39,
+    "span_bytes": 39,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBB50",
+   "length": "0xf",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_46f0170111280894e957edb08ba1c5925a6e22fd3e8970bf37d1693351a4d4e5",
+   "analysis_target": {
+    "entry_point": "0x4cbb50",
+    "excerpt_length": 15,
+    "excerpt_sha256": "4228ac4acd4ae2b78d05fc391e7133f90a25f48ecdce3f70c4fa98d3c770e308"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbb50",
+      "end": "0x4cbb5e"
+     }
+    ],
+    "total_bytes": 15,
+    "span_bytes": 15,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBB60",
+   "length": "0x12",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_09e49fcd5e094f853c01c2050a12be77bd1864d8e4e6ed137ae8a6dd88300e23",
+   "analysis_target": {
+    "entry_point": "0x4cbb60",
+    "excerpt_length": 18,
+    "excerpt_sha256": "1400eff3ebcbe8859ddd49d569046506529598509776ca13aaf28187c32bd251"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbb60",
+      "end": "0x4cbb71"
+     }
+    ],
+    "total_bytes": 18,
+    "span_bytes": 18,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  },
+  {
+   "addr": "0x4CBB80",
+   "length": "0x1a",
+   "source": "match/core/math_initializers_004cba40.cpp",
+   "rea_evidence_id": "ev_cce9a1d890deebf286612e455f6d4f056b53539c72698ab55df90855591e5c5a",
+   "analysis_target": {
+    "entry_point": "0x4cbb80",
+    "excerpt_length": 26,
+    "excerpt_sha256": "58a3bab1fa4b8547762d97b9cc584378cf23cdce881c5087cc8c3f3216e44ee1"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4cbb80",
+      "end": "0x4cbb99"
+     }
+    ],
+    "total_bytes": 26,
+    "span_bytes": 26,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "oracle": "verify_all.py: all nine initializer entries100%,zero regressions"
+  }
+ ],
+ "next_candidates": [
+  {
+   "addr": "0x4155F0",
+   "status": "reconstructed C++ partial: 142/144 instructions (98.6%)",
+   "class": "AircraftClass",
+   "length": "0x1cd",
+   "retail_vtable": "0x7E22A4",
+   "vtable_slot_byte_offset": "0x26c",
+   "slot_address": "0x7E2510",
+   "rtti_locator": "0x7FB4C0",
+   "type_descriptor": "0x817B90",
+   "rea_evidence_id": "ev_81531b090284a3fa964156f10f60a83c0de7ce17835e1d6af8a95506fb7bf057",
+   "analysis_target": {
+    "format": "raw-binary",
+    "architecture": "x86",
+    "entry_point": "0x4155f0",
+    "excerpt_length": 461,
+    "excerpt_sha256": "78c2057ac8b784dee84ee24fad61b26c40709b7c87be90fac45ae726d343377d"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x4155f0",
+      "end": "0x4157bc"
+     }
+    ],
+    "total_bytes": 461,
+    "span_bytes": 461,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "next_action": "Per AGENTS.md, request direction after three materially different approaches. Preserve plain C++ partial; no assembly workaround.",
+   "source": "match/ai/aircraft_mission_004155f0.cpp",
+   "match_pct": 98.6,
+   "remaining_delta": [
+    {
+     "instruction_offset": "0x116",
+     "instruction": "JG",
+     "retail_target_offset": "0x1a7",
+     "compiled_target_offset": "0x1ba"
+    },
+    {
+     "instruction_offset": "0x177",
+     "instruction": "JZ",
+     "retail_target_offset": "0x1ba",
+     "compiled_target_offset": "0x1a7"
+    }
+   ],
+   "attempts": {
+    "source": "explicit comparison operators, early guards, explicit return arms, inline getters, comparison signatures",
+    "flags": {
+     "best_final_default": "98.6%",
+     "trials_on_pre_operator_source": {
+      "default": "89.6%",
+      "Og_minus": "2.5%",
+      "G6": "72.9%"
+     }
+    },
+    "permuter": {
+     "seconds": 300,
+     "last_iteration": 19219,
+     "base_score": 2,
+     "best_score": 2,
+     "branch_target_scoring": true,
+     "randomized_region": "final distance/cell-selection decision",
+     "relocation_normalization": "17 real COFF slots only; training branch displacements unchanged"
+    }
+   },
+   "final_raw_check": {
+    "length": 461,
+    "relocation_slots": 18,
+    "real_byte_differences": [
+     "0x118",
+     "0x178"
+    ],
+    "status": "partial; branch displacements remain different"
+   }
+  },
+  {
+   "addr": "0x729E50",
+   "length": "0x1ad",
+   "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+   "status": "C++ partial:31/140 instructions,22.1%; current unsigned shift correction remeasured",
+   "rea_evidence_id": "ev_147894ce9dcf1561b92ed531977257bb3d58f2740f5b1a158f9b5892077fc600",
+   "analysis_target": {
+    "entry_point": "0x729e50",
+    "excerpt_length": 429,
+    "excerpt_sha256": "91b1e63a6b591193189459e742c271f6c8a3b96daad49e42906220645bfcd508"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x729e50",
+      "end": "0x729f3f"
+     },
+     {
+      "start": "0x729fee",
+      "end": "0x729ffc"
+     }
+    ],
+    "total_bytes": 255,
+    "span_bytes": 429,
+    "non_contiguous": true,
+    "contains_entry": true
+   },
+   "limitations": "Rea raw analysis omits all five switch cases; semantics separately recovered from entry disassembly and retail jump table72A000.",
+   "switch_targets_by_value": {
+    "2": "0x729F74",
+    "3": "0x729FCC",
+    "4": "0x729F40",
+    "5": "0x729FDE",
+    "6": "0x729F52"
+   },
+   "confirmed_facts": [
+    "729EAA writes GetZPos result into coordinate.Z before second projection",
+    "729F21/28 logical shifts require unsigned direction value",
+    "729F93/9B signed comparisons retain int direction local"
+   ],
+   "attempts": {
+    "reconstruction": "Entry/stack/jump-table and unsigned-direction corrections,22.1%",
+    "flags": {
+     "default": 22.1,
+     "O1": 3.6,
+     "Op": 16.1,
+     "G6": 10.0,
+     "Ox_dropGX_dropDNDEBUG_dropGy_G3_G4_G5": 22.1
+    },
+    "permuter": {
+     "seconds": 180,
+     "approx_candidates": 17900,
+     "baseline_score": 1265,
+     "best_score": 1265,
+     "baseline_equivalence": "Temporary C++ form compiled to current source instruction sequence",
+     "result": "No better candidate suitable for source; all artifacts remained /tmp"
+    }
+   },
+   "remaining_delta": "109/140 instruction mismatches; retail140 vs compiled138, retail-onlymov2/add1 and compiled-onlylea1",
+   "next_action": "Preserve partial after reconstruction, compiler-flag bisection and bounded permuter; request direction before more matching attempts.",
+   "class": "TunnelLocomotionClass",
+   "rtti": {
+    "vtable": "0x7F5A24",
+    "slot": "0x38",
+    "slot_address": "0x7F5A5C",
+    "locator": "0x80CAE8",
+    "type_descriptor": "0x844AA0",
+    "complete_object_interface_offset": 4
+   }
+  },
+  {
+   "addr": "0x453840",
+   "source": "match/combat/building_coord_00453840.cpp",
+   "length": "0x226",
+   "status": "corrected readable C++ partial:7/194 instructions,3.6%",
+   "rea_evidence_id": "ev_cc972da4175c5254cb5a859b45ad0e49783c76754d82ce593feeebb74b423aa2",
+   "confirmed_extent": {
+    "start": "0x453840",
+    "end_inclusive": "0x453A65",
+    "next_entry": "0x453A70"
+   },
+   "rtti": {
+    "locator": "0x7FC360",
+    "type_descriptor": "0x818D60",
+    "class": "BuildingClass",
+    "vtable": "0x7E3EBC",
+    "slot_byte_offset": "0xb0",
+    "slot_address": "0x7E3F6C"
+   },
+   "confirmed_facts": [
+    "Base helper6F3AD0 takes output pointer, mode and12-byte coordinate by value; RET14",
+    "First reported4.6% source used wrong base-call ABI and is superseded",
+    "Corrected ABI source has187 instruction mismatches and differing frame/temporary layout"
+   ],
+   "attempts": {
+    "invalid_initial_model": "Explicit output and hidden return trials, plusO1/dropGy; superseded by corrected ABI",
+    "current_corrected_model": "Explicit output and Coord byvalue base call,defaultflags,3.6%"
+   },
+   "next_action": "Continue source/aggregate-return reconstruction from corrected base-call ABI; then flags/permuter if appropriate.",
+   "analysis_target": {
+    "entry_point": "0x453840",
+    "excerpt_length": 550,
+    "excerpt_sha256": "d9785444be86f05557eeee93d2fa2f20c7934c6234258759671477308fea5d9a"
+   },
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x453840",
+      "end": "0x453a65"
+     }
+    ],
+    "total_bytes": 550,
+    "span_bytes": 550,
+    "non_contiguous": false,
+    "contains_entry": true
+   }
+  }
+ ],
+ "verified_non_entries": [
+  {
+   "addr": "0x415790",
+   "enclosing_entry": "0x4155F0",
+   "instruction_start": "0x41578D",
+   "instruction": "MOV EAX,dword ptr [EAX+0x290]",
+   "reason": "Candidate lies inside an instruction displacement; the preceding displacement byte happens to equal 0x90. Confirmed from entry-point disassembly, not interior-address decoding."
+  }
+ ],
+ "subsystem_findings": [
+  {
+   "addr": "0x409FF0",
+   "subsystem": "audio",
+   "global": "0x87E89C",
+   "evidence": [
+    "0x409488 passes the global address to the creation thunk called at 0x40948E.",
+    "Thunk 0x7C89DA jumps through IAT 0x7E1050.",
+    "The retail PE import descriptor identifies DSOUND.dll ordinal 1."
+   ],
+   "scope": "Confirms the shutdown resource belongs to the audio module; nearby legacy surface terminology needs review.",
+   "source": "match/audio/dsound_access_methods.cpp"
+  },
+  {
+   "addr": "0x729E50",
+   "subsystem": "movement",
+   "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+   "evidence": [
+    "Retail7F5A5C contains729E50, slot38 of7F5A24",
+    "Table locator at7F5A20 points80CAE8; offset field is4",
+    "Locator type descriptor844AA0 names TunnelLocomotionClass"
+   ],
+   "scope": "Receiver is a secondary interface pointer; member assertions are relative to that interface."
+  },
+  {
+   "addr": "0x4CB9B0",
+   "subsystem": "core",
+   "source": "match/core/static_reset_004cb990.cpp",
+   "evidence": [
+    "Retail loads256.0 from7E1710 then2.0 from7E1708 before7C8FB0",
+    "VC6 CRT LIBC.LIB pow.obj __CIpow exactly matches all25 wrapper bytes at7C8FB0",
+    "C++ pow intrinsic and square-root helper4CAC40 compile to exact40-byte initializer"
+   ],
+   "scope": "CRT implementation remains out of scope and is only annotated LIBRARY."
+  },
+  {
+   "addr": "0x723E60",
+   "subsystem": "ui",
+   "source": "match/ui/toggle_class_ctor_00723e60.cpp",
+   "evidence": [
+    "Constructor installs table7E8118",
+    "Locator800010 at7E8114 has complete-object offset0 and descriptor8202D8",
+    "Type descriptor names ToggleClass"
+   ],
+   "scope": "Constructor uses independently asserted layout prefix; existing ToggleClass IsOn offset2D agrees with constructor byte store."
+  }
+ ],
+ "parallel_batches": [
+  {
+   "worker_model": "gpt-6-luna",
+   "verification_owner": "root",
+   "oracle": "scripts/vc6/verify_all.py",
+   "verified_rows": [
+    {
+     "tu": "match/core/static_reset_004cb990.cpp",
+     "addr": "0x4CB990",
+     "sym": "_FUN_004CB990",
+     "len": "0x17",
+     "name": "FUN_004CB990",
+     "status": "matched",
+     "pct": 100
+    },
+    {
+     "tu": "match/core/static_reset_004cb990.cpp",
+     "addr": "0x4CB9E0",
+     "sym": "_FUN_004CB9E0",
+     "len": "0x13",
+     "name": "FUN_004CB9E0",
+     "status": "matched",
+     "pct": 100
+    },
+    {
+     "tu": "match/core/static_reset_004cb990.cpp",
+     "addr": "0x4CBA00",
+     "sym": "_FUN_004CBA00",
+     "len": "0x13",
+     "name": "FUN_004CBA00",
+     "status": "matched",
+     "pct": 100
+    },
+    {
+     "tu": "match/core/static_reset_004cb990.cpp",
+     "addr": "0x4CBA20",
+     "sym": "_FUN_004CBA20",
+     "len": "0x13",
+     "name": "FUN_004CBA20",
+     "status": "matched",
+     "pct": 100
+    },
+    {
+     "tu": "match/core/static_reset_00723e40.cpp",
+     "addr": "0x723E40",
+     "sym": "_FUN_00723E40",
+     "len": "0x17",
+     "name": "FUN_00723E40",
+     "status": "matched",
+     "pct": 100
+    }
+   ],
+   "result": "5 matched, 0 partial, 0 regressed across 2 TUs",
+   "limitations": "Adjacent helper 0x4CB9B0 is not reconstructed; x87 helper calling convention remains unresolved."
+  }
+ ]
+}

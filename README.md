@@ -23,10 +23,10 @@ replacement, and it ships no game content.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,175** | **16.1%** of 19,753 |
-| Code matched | 228 KB | 6.2% of 3,708 KB in `.text` |
-| Functions in progress (partial match) | 155 | 0.8% |
-| Translation units under `match/` | 789 | |
+| Functions matched at 100% | **3,210** | **16.3%** of 19,753 |
+| Code matched | 229 KB | 6.2% of 3,708 KB in `.text` |
+| Functions in progress (partial match) | 158 | 0.8% |
+| Translation units under `match/` | 802 | |
 | Functions in the binary (Ghidra analysis, includes CRT/third-party) | 19,753 | |
 
 Matching started with the small functions, so the share of code bytes trails the
@@ -39,6 +39,23 @@ across `core` (the class hierarchy: `AbstractClass` → `ObjectClass` →
 `platform`, `ui`, `combat`, `movement`, `ai`, `economy`, `network`, `renderer`
 and `audio`, plus `_layout/` headers that pin class layouts and vtables with
 `offsetof`/`sizeof` static asserts.
+
+A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) reproduces
+19,077 aligned starts after `CC`/`90` runs. Of these, 801 are absent from the
+current Ghidra function list: 742 fall inside listed bounding spans and 59 lie
+outside them. The heuristic also misses 1,477 listed entries, including 152
+already matched functions, so its candidate count is **not an upper bound on
+the total function count**. Nine formerly unlisted entries have since been
+matched against the binary: `0x409FF0`, `0x41BB30`, `0x435340`, `0x4CB990`, `0x5BCB60`, `0x6E6080`,
+`0x723E40`, `0x72B9E0` and `0x72CAC0`. The [review list](scripts/data/padding_scan.json)
+tracks claims separately; 790 unlisted candidates remain unclaimed, including
+48 outside listed bounding spans. The AircraftClass function at `0x4155F0`
+has also been reconstructed as a 98.6% C++ partial. [Rea/Ghidra evidence summaries](scripts/data/padding_recovery.json)
+record the recovered function boundaries and their raw-image input
+identities; final match status comes from the VC6 byte oracle. Reproduce it with
+`python3 scripts/orchestration/padding_scan.py /path/to/gamemd.exe
+/path/to/ghidra-functions.json /tmp/padding-scan.json`, using an export from
+`ghidra function list --limit 100000 --json`.
 
 Statically linked CRT and third-party code is out of scope (as in other MSVC
 decomps such as LEGO Island). The goal is a per-function match across the
@@ -90,6 +107,20 @@ scripts/vc6/match.sh match/economy/storage_class.cpp \
 # Re-verify every function in the manifest against retail.
 python3 scripts/vc6/verify_all.py
 ```
+
+For functions omitted by whole-image analysis, inspect an entry and length
+already validated against retail with the local Rea CLI:
+
+```bash
+python3 scripts/orchestration/rea_function.py /path/to/gamemd.exe \
+    0x6E6080 0xDD /tmp/tag-reader-evidence.json
+```
+
+The helper checks the image hash, uses a temporary raw x86 image at the original
+address, and writes a provenance sidecar. Raw-image pseudocode lacks external
+callee signatures and global definitions; confirm inferred facts against the
+instructions and certify C++ with the VC6 oracle. Complete Rea output includes
+retail bytes and belongs outside committed source.
 
 Compiler flags are pinned by bisection per cluster, never assumed (the first
 cluster locked at `/O2 /DNDEBUG /Gy /GX`). The toolchain evidence: the retail

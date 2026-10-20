@@ -24,7 +24,10 @@
 // `pan < 0` test and re-zeroed before the return; the result zeroed between
 // the rate computation and the last call; the zero bound to a local after the
 // last call; and a `volatile int zero = 0;` carrier, which is 3.4% (it homes
-// the zero to the stack). Nothing source-level reaches the pop interleave.
+// the zero to the stack). None of these tested spellings reaches the interleave.
+// A five-minute decomp-permuter run (four local workers, original body baseline
+// validated through the VC6 adapter) also found no better candidate: score 220
+// throughout. Keep the readable C++ partial; no assembly workaround is retained.
 //
 // The pan index is biased by 0x64 so it straddles zero, and the two halves are
 // not symmetrical: a negative index reads the table below its base directly,
