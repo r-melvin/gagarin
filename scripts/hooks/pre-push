@@ -1,0 +1,24 @@
+#!/bin/sh
+# pre-push: refuse any push whose new commits touch local-only paths.
+# docs/, state/, reference/ and toolchain/ are symlinks to private storage, and
+# scripts/data/reference_*.json are private corpora; .gitignore keeps them out,
+# and this hook is the second line of defence. Install with:
+#   ln -s ../../scripts/hooks/pre-push .git/hooks/pre-push
+forbidden='^(docs|state|reference|toolchain|build-vc6)(/|$)|^scripts/data/reference_|\.(exe|dll|pdb|obj|mix)$'
+zero=0000000000000000000000000000000000000000
+status=0
+while read local_ref local_sha remote_ref remote_sha; do
+    [ "$local_sha" = "$zero" ] && continue
+    if [ "$remote_sha" = "$zero" ]; then
+        range="$local_sha --not --remotes"
+    else
+        range="$remote_sha..$local_sha"
+    fi
+    bad=$(git log --name-only --format= $range | grep -E "$forbidden" | sort -u)
+    if [ -n "$bad" ]; then
+        echo "pre-push: refusing to push $local_ref; these paths must stay local:" >&2
+        echo "$bad" | sed 's/^/  /' >&2
+        status=1
+    fi
+done
+exit $status

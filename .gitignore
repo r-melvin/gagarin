@@ -3,7 +3,7 @@
 
 # --- Period MS VC6 toolchain (itsmattkc/MSVC600) + wine prefix ---
 # MS-proprietary; fetched at build/CI time via scripts/vc6/fetch_toolchain.sh.
-toolchain/
+/toolchain
 
 # --- Build output / match artifacts ---
 build-vc6/
@@ -24,11 +24,14 @@ reference/phobos-docs/
 reference/ea_ra1/
 # Vinifera-Developers/TSpp (GPLv3) — TS class map / original Westwood names
 reference/tspp/
+# The whole folder may be a symlink to private storage outside the repo; a
+# trailing-slash pattern would not match the link itself.
+/reference
 
 # --- Ghidra-derived developer-only RE state (never ships publicly) ---
 # All of state/ is developer-only RE seeds (by_addr bodies, addr/method maps,
 # the gamemd.c/.h monolith, manifests) — kept local, never committed.
-state/
+/state
 
 # --- Python / IDE / OS noise ---
 __pycache__/
@@ -59,7 +62,7 @@ logs/
 # all still work from the on-disk copy, but the manifest no longer has version
 # history, so a silent corruption of it is no longer recoverable via git and a
 # regression is no longer bisectable. Back it up separately.
-docs/
+/docs
 
 # --- Data derived from the private reference reimplementation ---
 # Address-to-behaviour corpora mined from a private project's history. The facts
