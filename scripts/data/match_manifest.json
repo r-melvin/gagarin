@@ -30508,5 +30508,68 @@
   "name": "FUN_0057CAB0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_state_exchange_methods.cpp",
+  "addr": "0x433CE0",
+  "sym": "?SwapFlag@BitFontStateView@@QAEEE@Z",
+  "len": "0xd",
+  "name": "BitFont::SwapFlag",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_state_exchange_methods.cpp",
+  "addr": "0x434100",
+  "sym": "?SwapTabWidth@BitFontStateView@@QAEHH@Z",
+  "len": "0xd",
+  "name": "BitFont::SwapTabWidth",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/cell_probe_0057ccf0.cpp",
+  "addr": "0x57CCF0",
+  "sym": "?FUN_0057CCF0@CellProbe_0057CCF0@@QAEDPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0x26a",
+  "name": "CellProbe::FUN_0057CCF0",
+  "status": "partial",
+  "pct": 53.8
+ },
+ {
+  "tu": "match/ui/bit_font_pixel_methods_00434790.cpp",
+  "addr": "0x434790",
+  "sym": "?FUN_00434790@BitFontPixelMethods_00434790@@QAEIPAG@Z",
+  "len": "0x13",
+  "name": "BitFontPixelMethods_00434790::FUN_00434790",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_pixel_methods_00434790.cpp",
+  "addr": "0x4347B0",
+  "sym": "?FUN_004347B0@@YIXPAUBitFontPixelMethods_00434790@@@Z",
+  "len": "0x2c",
+  "name": "FUN_004347B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_pixel_methods_00434790.cpp",
+  "addr": "0x4347E0",
+  "sym": "?FUN_004347E0@@YIXPAUBitFontPixelMethods_00434790@@@Z",
+  "len": "0x55",
+  "name": "FUN_004347E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/bit_font_intersect_00434840.cpp",
+  "addr": "0x434840",
+  "sym": "?Intersect@BitFont@@QAE_NPAULTRBStruct@@00@Z",
+  "len": "0xa2",
+  "name": "BitFont::Intersect",
+  "status": "matched",
+  "pct": 100
  }
 ]

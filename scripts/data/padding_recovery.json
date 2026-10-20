@@ -601,6 +601,50 @@
     "contains_entry": true
    },
    "oracle": "verify_all.py plus both selector maps and six linked local table targets checked against retail"
+  },
+  {
+   "addr": "0x57CCF0",
+   "length": "0x26a",
+   "source": "match/movement/cell_probe_0057ccf0.cpp",
+   "rea_evidence_id": "ev_704bdf1aec79249ebacf495fd480a1cf4c995a8f53636d812e5e90275cf0a749",
+   "observed_body": {
+    "available": true,
+    "provenance": "ghidra-function-body-address-set",
+    "ranges": [
+     {
+      "start": "0x57ccf0",
+      "end": "0x57cf59"
+     }
+    ],
+    "total_bytes": 618,
+    "span_bytes": 618,
+    "non_contiguous": false,
+    "contains_entry": true
+   },
+   "status": "partial",
+   "pct": 53.8,
+   "oracle": "VC6 entry comparison:100/186 instructions,86 differing; both186instructions",
+   "confirmed_facts": [
+    "RET4 plus ECX receiver",
+    "Cell coordinates are signed shorts at offsets0/2; cell-type field at0x44",
+    "Map lookup5657A0 takes one pointer and RET4",
+    "Coordinate helper588C60 subtracts signed-short components, returns output pointer, RET8",
+    "Type ranges and every branch destination checked from entry disassembly"
+   ],
+   "matching_attempts": {
+    "source": "coordinate value construction and temporary reuse",
+    "flags": "O2 retained; O1/Og- worsened; Ox/GX removal tied before final expression variant",
+    "permuter": {
+     "seconds": 120,
+     "iterations": 2979,
+     "baseline_score": 7385,
+     "adapter_baseline_sha256": "0cfdfbdf11d90dfcfb7e1de2a203e95b0adf4b3ff11818e1c1cde90570f78aa7",
+     "promoted_score": 5437,
+     "change": "explicit zero comparison on the horizontal-neighbor range condition",
+     "rejected": "uninitialized variables, volatile reads, unrelated floating-point conversions and moved effects"
+    }
+   },
+   "remaining_delta": "retail sub1/add7/jle3 versus candidate push1/pop7/jg3; native bytes still differ"
   }
  ],
  "next_candidates": [
