@@ -79,7 +79,7 @@ void ToolTipManager::Remove(unsigned int key)
     if (!table->Ensure(key))
         return;
 
-    ToolTip* data = table->GetTip(key);
+    const ToolTip* data = table->GetTip(key);
     if (this->CurrentToolTip == data && this->CurrentToolTip != 0)
         this->MarkToRedraw(this->CurrentToolTipData);
 
@@ -87,7 +87,7 @@ void ToolTipManager::Remove(unsigned int key)
     this->ToolTips.RemoveItem(data);
 
     if (data != 0)
-        gg_free(data);
+        gg_free(const_cast<ToolTip*>(data));
 }
 
 // FUNCTION: GAMEMD 0x724AA0

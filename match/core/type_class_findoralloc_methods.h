@@ -49,7 +49,7 @@ GG_STATIC_ASSERT(offsetof(AnimTypeClass, ID) == 0x24);
 GG_STATIC_ASSERT(sizeof(AnimTypeClass) == 0x378);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
-extern DynamicVectorClass AnimTypeClassArray;
+extern DynamicVectorClassLayout AnimTypeClassArray;
 
 // ---------------------------------------------------------------------------
 // ParticleSystemTypeClass — GAMEMD 0x644890, sizeof 0x310, ctor GAMEMD 0x6440A0
@@ -67,7 +67,7 @@ GG_STATIC_ASSERT(offsetof(ParticleSystemTypeClass, ID) == 0x24);
 GG_STATIC_ASSERT(sizeof(ParticleSystemTypeClass) == 0x310);
 
 // GLOBAL: GAMEMD 0xA83D68 — ParticleSystemTypeClass::Array.
-extern DynamicVectorClass ParticleSystemTypeClassArray;
+extern DynamicVectorClassLayout ParticleSystemTypeClassArray;
 
 // ---------------------------------------------------------------------------
 // TerrainTypeClass — GAMEMD 0x71E2A0, sizeof 0x2BC, ctor GAMEMD 0x71DA80
@@ -85,7 +85,7 @@ GG_STATIC_ASSERT(offsetof(TerrainTypeClass, ID) == 0x24);
 GG_STATIC_ASSERT(sizeof(TerrainTypeClass) == 0x2BC);
 
 // GLOBAL: GAMEMD 0xA8E318 — TerrainTypeClass::Array.
-extern DynamicVectorClass TerrainTypeClassArray;
+extern DynamicVectorClassLayout TerrainTypeClassArray;
 
 // ---------------------------------------------------------------------------
 // WarheadTypeClass — GAMEMD 0x75E3B0, sizeof 0x1D0, ctor GAMEMD 0x75CEC0
@@ -103,6 +103,6 @@ GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ID) == 0x24);
 GG_STATIC_ASSERT(sizeof(WarheadTypeClass) == 0x1D0);
 
 // GLOBAL: GAMEMD 0x8874C0 — WarheadTypeClass::Array.
-extern DynamicVectorClass WarheadTypeClassArray;
+extern DynamicVectorClassLayout WarheadTypeClassArray;
 
 #endif  // GG_MATCH_CORE_TYPE_CLASS_FINDORALLOC_METHODS_H

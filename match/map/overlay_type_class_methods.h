@@ -181,7 +181,7 @@ GG_STATIC_ASSERT(offsetof(OverlayTypeClass, ImageLoaded)    == 0x2AF);
 
 // GLOBAL: GAMEMD 0xA83D80 — OverlayTypeClass::Array (Items +0x04 = 0xA83D84,
 // Count +0x10 = 0xA83D90).
-extern DynamicVectorClass OverlayTypeClass_Array;
+extern DynamicVectorClassLayout OverlayTypeClass_Array;
 
 // GLOBAL: GAMEMD 0xAC1608 — the zero-initialised CellStruct handed to
 // CreateObject's OverlayClass.

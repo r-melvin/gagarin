@@ -16,7 +16,7 @@
 // GLOBAL: GAMEMD 0xB0E720 — the engine's global list of live TagClass instances
 // (YRpp: TagClass::Array). vptr @0xB0E720, Items @0xB0E724, Count @0xB0E730 —
 // reconfirmed from the absolute loads in GetInstance.
-extern DynamicVectorClass TagClass_Array;
+extern DynamicVectorClassLayout TagClass_Array;
 
 // GLOBAL: GAMEMD 0xB0F698 — the global DynamicVectorClass<TagClass*> that Destroy
 // appends each destroyed tag to (a deferred pointer/cleanup list). vptr

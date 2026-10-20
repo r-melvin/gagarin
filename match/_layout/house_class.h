@@ -103,24 +103,24 @@ struct HouseClass : AbstractClass
     void*  Vfptr_2C;                       // +0x2C interface vptr; ctor 0x7EA7F4 @0x004F5DFB; RTTI COL base 0x2C
     int    ArrayIndex;                     // +0x30 ctor MOV [EBP+0x30],-1 @0x004F54B8
     void*  Type;                           // +0x34 HouseTypeClass*; ctor MOV [EBP+0x34],EAX(=arg) @0x004F54C2
-    DynamicVectorClass RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
-    DynamicVectorClass ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
-    DynamicVectorClass Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
-    DynamicVectorClass UnitRepairStations;          // +0x80  ctor LEA ESI @0x004F550B
-    DynamicVectorClass Grinders;                    // +0x98  ctor LEA ESI @0x004F5526
-    DynamicVectorClass Absorbers;                   // +0xB0  ctor LEA ESI @0x004F5541
-    DynamicVectorClass Bunkers;                     // +0xC8  ctor LEA ESI @0x004F555C
-    DynamicVectorClass Occupiables;                 // +0xE0  ctor LEA ESI @0x004F5577
-    DynamicVectorClass CloningVats;                 // +0xF8  ctor LEA ESI @0x004F5592
-    DynamicVectorClass SecretLabs;                  // +0x110 ctor LEA ESI @0x004F55AD
-    DynamicVectorClass PsychicDetectionBuildings;   // +0x128 ctor LEA ESI @0x004F55C8
-    DynamicVectorClass FactoryPlants;               // +0x140 ctor LEA ESI @0x004F55E3
+    DynamicVectorClassLayout RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
+    DynamicVectorClassLayout ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
+    DynamicVectorClassLayout Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
+    DynamicVectorClassLayout UnitRepairStations;          // +0x80  ctor LEA ESI @0x004F550B
+    DynamicVectorClassLayout Grinders;                    // +0x98  ctor LEA ESI @0x004F5526
+    DynamicVectorClassLayout Absorbers;                   // +0xB0  ctor LEA ESI @0x004F5541
+    DynamicVectorClassLayout Bunkers;                     // +0xC8  ctor LEA ESI @0x004F555C
+    DynamicVectorClassLayout Occupiables;                 // +0xE0  ctor LEA ESI @0x004F5577
+    DynamicVectorClassLayout CloningVats;                 // +0xF8  ctor LEA ESI @0x004F5592
+    DynamicVectorClassLayout SecretLabs;                  // +0x110 ctor LEA ESI @0x004F55AD
+    DynamicVectorClassLayout PsychicDetectionBuildings;   // +0x128 ctor LEA ESI @0x004F55C8
+    DynamicVectorClassLayout FactoryPlants;               // +0x140 ctor LEA ESI @0x004F55E3
     int    CountResourceGatherers;         // +0x158 ctor @0x004F55FE
     int    CountResourceDestinations;      // +0x15C ctor @0x004F5604
     int    CountWarfactories;              // +0x160 ctor @0x004F5610
     int    InfantrySelfHeal;               // +0x164 ctor @0x004F5617
     int    UnitsSelfHeal;                  // +0x168 ctor @0x004F5620
-    DynamicVectorClass StartingUnits;      // +0x16C ctor LEA ESI @0x004F560A
+    DynamicVectorClassLayout StartingUnits;      // +0x16C ctor LEA ESI @0x004F560A
     int    AIDifficulty;                   // +0x184 ctor @0x004F5648 (0 == Hard)
     double FirepowerMultiplier;            // +0x188 ctor halves @0x004F564E/0x004F5654
     double GroundspeedMultiplier;          // +0x190 ctor @0x004F565A/0x004F5660
@@ -176,7 +176,7 @@ struct HouseClass : AbstractClass
     unsigned char IsToLook;                // +0x24B ctor MOV byte,1 @0x004F57A7
     int    IQLevel2;                       // +0x24C ctor @0x004F57BB
     int    AIMode;                         // +0x250 ctor @0x004F57C4
-    DynamicVectorClass Supers;             // +0x254 ctor LEA ESI @0x004F57B4
+    DynamicVectorClassLayout Supers;             // +0x254 ctor LEA ESI @0x004F57B4
     int    LastBuiltBuildingType;          // +0x26C ctor @0x004F57DE
     int    LastBuiltInfantryType;          // +0x270 ctor @0x004F57E4
     int    LastBuiltAircraftType;          // +0x274 ctor @0x004F57EA
@@ -291,8 +291,8 @@ struct HouseClass : AbstractClass
     CDTimerClass AttackTimer;              // +0x55F0 ctor @0x004F5B40/0x004F637D
     int    InitialAttackDelay;             // +0x55FC ctor @0x004F5B4C
     int    EnemyHouseIndex;                // +0x5600 ctor @0x004F5B59
-    DynamicVectorClass AngerNodes;         // +0x5604 ctor LEA ECX @0x004F5B52
-    DynamicVectorClass ScoutNodes;         // +0x561C ctor LEA ECX @0x004F5B65
+    DynamicVectorClassLayout AngerNodes;         // +0x5604 ctor LEA ECX @0x004F5B52
+    DynamicVectorClassLayout ScoutNodes;         // +0x561C ctor LEA ECX @0x004F5B65
     CDTimerClass AITimer;                  // +0x5634 ctor @0x004F5BA2/0x004F5BA8
     CDTimerClass Unknown_Timer_5640;       // +0x5640 ctor @0x004F5BBA/0x004F5BB4 (name anchor confirmed)
     int    ProducingBuildingTypeIndex;     // +0x564C ctor @0x004F5BC0
@@ -336,7 +336,7 @@ struct HouseClass : AbstractClass
     int    StartingPoint;                  // +0x16058 NOT written by the ctor (union with a CellStruct)
     unsigned int StartingAllies;           // +0x1605C NOT written by the ctor
     unsigned int unknown_16060;            // +0x16060 ctor @0x004F5D5D
-    DynamicVectorClass WaypointPath;       // +0x16064 ctor LEA ESI @0x004F5D47
+    DynamicVectorClassLayout WaypointPath;       // +0x16064 ctor LEA ESI @0x004F5D47
     unsigned int unknown_1607C;            // +0x1607C ctor @0x004F5D74
     unsigned int unknown_16080;            // +0x16080 ctor @0x004F5D7A
     unsigned int unknown_16084;            // +0x16084 NOT written by the ctor

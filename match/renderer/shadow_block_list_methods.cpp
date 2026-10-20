@@ -14,7 +14,7 @@
 //   VTABLE:   GAMEMD 0x7E2070  BSurface
 //   VTABLE:   GAMEMD 0x7E2104  XSurface
 //   VTABLE:   GAMEMD 0x7E2198  Surface
-//   GLOBAL:   GAMEMD 0xAC1678  SpotlightClass::Array (DynamicVectorClass)
+//   GLOBAL:   GAMEMD 0xAC1678  SpotlightClass::Array (DynamicVectorClassLayout)
 //   GLOBAL:   GAMEMD 0xAC1698  the 74-entry BSurface gradient table
 //   GLOBAL:   GAMEMD 0xAC1834  the gradient-cache one-shot latch
 //   GLOBAL:   GAMEMD 0xAC1838  the companion heap block / fade table
@@ -45,7 +45,7 @@ SpotlightClass::~SpotlightClass() throw()
     SpotlightArray_RemoveItem(this);
 }
 
-// DynamicVectorClass::RemoveItem again, but reached as a free function over the
+// DynamicVectorClass<T>::RemoveItem again, but reached as a free function over the
 // container with the element taken *by value*. Both shapes are needed: the
 // destructor above matches only as the member call with the element bound by
 // reference, and this sweep matches only in this form. The difference is where
@@ -53,7 +53,7 @@ SpotlightClass::~SpotlightClass() throw()
 // element in the virtual call's own argument slot from the top of the loop,
 // where retail holds it in a callee-saved register and copies it into that slot
 // only at the call. 18.8% versus 100% on one edit.
-__forceinline static bool RemoveFrom(DynamicVectorClass& list,
+__forceinline static bool RemoveFrom(DynamicVectorClassLayout& list,
                                      SpotlightClass* item)
 {
     int index = (list.*((Vtbl_SpotlightArray*)list._vtable)->FindItemIndex)(item);

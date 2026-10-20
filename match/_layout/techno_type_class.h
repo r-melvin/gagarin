@@ -53,7 +53,7 @@ GG_STATIC_ASSERT(sizeof(GUIDStruct) == 0x10);
 // TypeList<T> - DynamicVectorClass (0x18) + a trailing unknown_18 dword (0x1C).
 struct TypeListLayout
 {
-    DynamicVectorClass Vector;     // +0x00 (0x18)
+    DynamicVectorClassLayout Vector;     // +0x00 (0x18)
     int                unknown_18; // +0x18
 };
 GG_STATIC_ASSERT(sizeof(TypeListLayout) == 0x1C);
@@ -383,7 +383,7 @@ struct TechnoTypeClass : ObjectTypeClass
     int             ZFudgeTunnel;                   // +0xDC8
     int             ZFudgeBridge;                   // +0xDCC
     char            PaletteFile[0x20];              // +0xDD0 (0xDD0..0xDEF)
-    DynamicVectorClass* Palette;                    // +0xDF0 (DynamicVectorClass<ColorScheme*>*)
+    DynamicVectorClassLayout* Palette;                    // +0xDF0 (DynamicVectorClass<ColorScheme*>*)
     unsigned long   align_DF4;                      // +0xDF4 (DWORD)
 };
 

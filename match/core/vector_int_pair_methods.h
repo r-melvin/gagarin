@@ -22,8 +22,8 @@
 // pad-preceded one.
 //
 // The neighbouring destructors at 0x660C80, 0x660DD0, 0x660F80 and 0x660FD0
-// are already matched in match/core/vector_counted_dtor_family_methods.cpp,
-// match/core/vector_plain_dtor_family_methods.cpp and
+// are already matched in match/core/dynamic_vector_clear_family_methods.cpp,
+// match/core/vector_clear_family_methods.cpp and
 // match/core/vector_dtor_family_methods.cpp, which is what confirms the
 // layout used here belongs to these two classes and not to a lookalike.
 //

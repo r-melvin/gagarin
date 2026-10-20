@@ -27,7 +27,7 @@
 
 struct CaptureManagerClass : AbstractClass
 {
-    DynamicVectorClass ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
+    DynamicVectorClassLayout ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
                                                //   @0x004717E6/0x004717E9/0x004717E2/0x004717FD/0x004717F6
     int           MaxControlNodes;             // +0x3C ctor = arg2 @0x00471822
     unsigned char InfiniteMindControl;         // +0x40 ctor = arg3 @0x00471825

@@ -31,7 +31,7 @@ structure has been recovered.
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
-| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h) and [StorageClass](match/economy/storage_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h) and [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | Not yet established. The current [compile gate](scripts/vc6/compile_all.sh) compiles translation units separately; the tracked tree has no top-level source-project build target or whole-engine link gate. | Provide a project-wide build that compiles and links the reconstructed engine through shared declarations and implementations. |
 | Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
@@ -59,8 +59,8 @@ Verified consolidation steps:
   the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
 - [ToolTipManager](match/ui/tooltip_manager_shared.h): seventeen verified family functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
-  used by ShapeButton's tooltip calls. Its constructor also models the embedded
-  vector's confirmed base class. The partial Find view remains separate;
+  used by ShapeButton's tooltip calls. The embedded vector now uses the shared
+  `DynamicVectorClass<const ToolTip*>` template and its confirmed base. The partial Find view remains separate;
   the manager's exact total size is not established. Its table cache lookup is
   now a native method, and tooltip bounds use a shared asserted rectangle layout.
   The table search also uses the canonical class directly, replacing its layout
@@ -77,6 +77,17 @@ Verified consolidation steps:
   base, replacing the Unlock stand-in and adding three exact methods. Its
   lock-counter offset is asserted, and its virtual table includes the two
   added slots through `+0x8C`. The complete object size remains unconfirmed.
+- [VectorClass and DynamicVectorClass](match/core/vector_class.h): 162 base
+  and 160 dynamic `Clear` entries now instantiate the real seven-slot templates,
+  replacing the `PlainVector`/`CountedVector::Destroy` stand-ins. The 335 existing
+  deleting-destructor matches retain their bytes with the same shared base
+  definition. ToolTipManager uses these templates with its RTTI-confirmed const
+  element type. [Layout assertions](match/core/vector_class_layout_asserts.cpp)
+  check actual template members and sizes under VC6. The DiskID entry at
+  `0x69C4A0` retains the `CountedVector<DiskID>::Destroy` matching stand-in
+  because its retail declaring class is unresolved; other legacy users are marked `VectorClassLayout` or
+  `DynamicVectorClassLayout`. Other virtual methods and original source-file
+  ownership remain incomplete.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
@@ -113,7 +124,7 @@ the engine scope and structural audit provide a defensible denominator.
 | Functions matched at 100% | **3,382** | **17.1%** of 19,753 |
 | Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 849 | |
+| Tracked C++ translation units under `match/` | 850 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

@@ -415,7 +415,7 @@ struct SlaveManagerClass
     TechnoClass*       Owner;           // +0x24
     InfantryTypeClass* SlaveType;       // +0x28
     char               _pad2c[0x0C];    // [0x2C .. 0x38)
-    DynamicVectorClass SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
+    DynamicVectorClassLayout SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
     char               _pad50[0x0C];    // +0x50  RespawnTimer (CDTimerClass)
     int                State;           // +0x5C
     int                LastScanFrame;   // +0x60
@@ -429,7 +429,7 @@ GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveType)     == 0x28);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes)    == 0x38);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, State)         == 0x5C);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, LastScanFrame) == 0x60);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClass, Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClass, Count) == 0x48);
+GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
 
 #endif  // GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_MORE_METHODS_H

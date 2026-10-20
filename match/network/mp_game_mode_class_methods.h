@@ -39,7 +39,7 @@ struct MPGameModeEntry
 GG_STATIC_ASSERT(offsetof(MPGameModeEntry, unknown_6B) == 0x6B);
 
 // GLOBAL: GAMEMD 0x00A8DA74
-extern DynamicVectorClass MPGameModeArray;
+extern DynamicVectorClassLayout MPGameModeArray;
 
 struct MultiplayerGameMode
 {

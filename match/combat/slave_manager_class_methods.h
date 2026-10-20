@@ -315,7 +315,7 @@ struct SlaveManagerClass
     char               _base[0x30];     // +0x00  AbstractClass + Owner..SlaveCount
     int                RegenRate;       // +0x30  respawn delay handed to the node timer
     int                ReloadRate;      // +0x34
-    DynamicVectorClass SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
+    DynamicVectorClassLayout SlaveNodes;      // +0x38  Items@0x3C, Count@0x48
     char               _respawnTimer[0x0C];  // +0x50  RespawnTimer (CDTimerClass)
     int                State;           // +0x5C  SlaveManagerStatus
     int                LastScanFrame;   // +0x60
@@ -328,7 +328,7 @@ GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes)    == 0x38);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, State)         == 0x5C);
 GG_STATIC_ASSERT(offsetof(SlaveManagerClass, LastScanFrame) == 0x60);
 // SlaveNodes.Items / .Count land at the retail offsets:
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClass, Items) == 0x3C);
-GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClass, Count) == 0x48);
+GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Items) == 0x3C);
+GG_STATIC_ASSERT(offsetof(SlaveManagerClass, SlaveNodes) + offsetof(DynamicVectorClassLayout, Count) == 0x48);
 
 #endif  // GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_METHODS_H

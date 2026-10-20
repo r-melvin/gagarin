@@ -10,7 +10,7 @@
 //   (`CMP [ESI+0xD],BL`, `MOV [ESI+0xD],BL`). Zero is held in EBX and serves
 //   both compares and all three stores.
 //
-//   This is the family of match/core/vector_plain_dtor_family_methods.cpp plus
+//   This is the family of match/core/vector_clear_family_methods.cpp plus
 //   a single vtable store: 45 bytes against that family's 39, the extra six
 //   being the one `C7 06 imm32`. These carry no name in the binary or in the
 //   YRpp map and keep their placeholder names.

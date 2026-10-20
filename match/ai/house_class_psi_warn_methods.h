@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(sizeof(AnimClass) == 0x1C8);
 int __fastcall AnimType_FindIndex(const char* name);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
-extern DynamicVectorClass AnimTypeArray;
+extern DynamicVectorClassLayout AnimTypeArray;
 
 struct HouseClass
 {

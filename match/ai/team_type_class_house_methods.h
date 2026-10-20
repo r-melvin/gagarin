@@ -83,7 +83,7 @@ GG_STATIC_ASSERT(offsetof(TeamTypeClass, Owner)    == 0xC4);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, idxHouse) == 0xC8);
 
 // Global type/instance arrays (DynamicVectorClass of pointers).
-extern DynamicVectorClass TeamTypeArray;       // GAMEMD 0xA8ECA0
-extern DynamicVectorClass TeamInstanceArray;   // GAMEMD 0x8B40E8 (TeamClass::Array)
+extern DynamicVectorClassLayout TeamTypeArray;       // GAMEMD 0xA8ECA0
+extern DynamicVectorClassLayout TeamInstanceArray;   // GAMEMD 0x8B40E8 (TeamClass::Array)
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_HOUSE_METHODS_H

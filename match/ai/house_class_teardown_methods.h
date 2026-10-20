@@ -86,8 +86,8 @@ struct HouseClass
 GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
 
 // GLOBAL: GAMEMD 0xA8EC78 — TechnoClass::Array.
-extern DynamicVectorClass TechnoArray;
+extern DynamicVectorClassLayout TechnoArray;
 // GLOBAL: GAMEMD 0xA8EAE8 — TriggerClass::Array.
-extern DynamicVectorClass TriggerArray;
+extern DynamicVectorClassLayout TriggerArray;
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_TEARDOWN_METHODS_H

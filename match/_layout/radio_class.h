@@ -34,7 +34,7 @@ struct RadioClass : MissionClass
     void SetLinkCount(int count);                        // GAMEMD 0x65AE60
 
     int         LastCommands[3];   // +0xD4  (RadioCommand enum x3)
-    VectorClass RadioLinks;        // +0xE0  (0x10; docked units etc.)
+    VectorClassLayout RadioLinks;        // +0xE0  (0x10; docked units etc.)
 };
 
 GG_STATIC_ASSERT(offsetof(RadioClass, LastCommands) == 0xD4);

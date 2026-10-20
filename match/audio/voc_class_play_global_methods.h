@@ -60,7 +60,7 @@ extern char DAT_008464AC;
 struct VocClass
 {
     // GLOBAL: GAMEMD 0xB1D378 -- VocClass::Array (Items 0xB1D37C, Count 0xB1D388).
-    static DynamicVectorClass Array;
+    static DynamicVectorClassLayout Array;
 
     // FUNCTION: GAMEMD 0x750920
     static AudioHandle_00750920* __fastcall PlayGlobal(

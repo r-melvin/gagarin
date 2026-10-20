@@ -40,7 +40,7 @@ struct VocItem
 GG_STATIC_ASSERT(offsetof(VocItem, Event) == 0x00);
 
 // VocClass::Array global (DynamicVectorClass<VocClass*> @ 0x00B1D378).
-extern DynamicVectorClass VocClass_Array;
+extern DynamicVectorClassLayout VocClass_Array;
 
 class VocClass
 {

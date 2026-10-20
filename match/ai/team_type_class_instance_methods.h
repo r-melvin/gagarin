@@ -52,6 +52,6 @@ struct TeamTypeClass
 };
 
 // Global TeamClass::Array (DynamicVectorClass<TeamClass*>) — GAMEMD 0x8B40E8.
-extern DynamicVectorClass TeamArray;
+extern DynamicVectorClassLayout TeamArray;
 
 #endif  // GG_MATCH_AI_TEAM_TYPE_CLASS_INSTANCE_METHODS_H

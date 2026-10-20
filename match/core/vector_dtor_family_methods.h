@@ -52,33 +52,8 @@
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
 extern "C" void __cdecl gg_free(void* block);
 
-// The vector template. One virtual -- the destructor -- so the vtable pointer
-// sits at +0 and slot 0 holds the scalar deleting destructor the linker binds
-// into each retail vtable below. RTTI tags it `V`, i.e. a `class`, which is
-// how it is declared here; the class/struct key does not enter the emitted
-// symbol either way, but the element types' keys do.
-template<class T>
-class VectorClass
-{
-public:
-    virtual ~VectorClass();
-
-    T*   Items;        // +0x0004
-    int  Capacity;     // +0x0008
-    char _pad00C;      // +0x000C
-    char IsAllocated;  // +0x000D
-};
-
-template<class T>
-VectorClass<T>::~VectorClass()
-{
-    if (this->Items != 0 && this->IsAllocated) {
-        gg_free(this->Items);
-        this->Items = 0;
-    }
-    this->IsAllocated = 0;
-    this->Capacity = 0;
-}
+// The shared template declares all seven confirmed virtual slots.
+#include "vector_class.h"
 
 // The retail vtables this family reseats, each with the class named by its
 // own complete object locator four bytes below it.

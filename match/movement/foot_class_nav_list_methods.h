@@ -63,7 +63,7 @@ GG_STATIC_ASSERT(offsetof(NavVector_004DA0E0, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(NavVector_004DA0E0, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(NavVector_004DA0E0, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(NavVector_004DA0E0) == 0x18);
-GG_STATIC_ASSERT(sizeof(NavVector_004DA0E0) == sizeof(DynamicVectorClass));
+GG_STATIC_ASSERT(sizeof(NavVector_004DA0E0) == sizeof(DynamicVectorClassLayout));
 
 // The building type of the radio link: only the byte at +0x16BD is read.
 struct BuildingType_004DA0E0

@@ -31,6 +31,6 @@ struct HouseTypeClass : AbstractTypeClass
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB8);
 
 // GLOBAL: GAMEMD 0x00A83C98 — HouseTypeClass::Array.
-extern DynamicVectorClass HouseTypeArray;
+extern DynamicVectorClassLayout HouseTypeArray;
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_TYPE_CLASS_FIND_METHODS_H

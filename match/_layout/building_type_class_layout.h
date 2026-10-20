@@ -213,7 +213,7 @@ struct BuildingTypeClass : TechnoTypeClass
     char              TheaterSpecificID[0x13];     // +0x176A (0x176A..0x177C)
     unsigned char     _pad_177D[3];                // +0x177D
     int               NumberOfDocks;               // +0x1780
-    VectorClass       DockingOffsets;              // +0x1784 (0x10)
+    VectorClassLayout       DockingOffsets;              // +0x1784 (0x10)
     unsigned long     align_1794;                  // +0x1794 (DWORD)
 };
 

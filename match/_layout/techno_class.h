@@ -350,9 +350,9 @@ struct TechnoClass : RadioClass
     unsigned char      unknown_bool_43A;         // +0x43A (bool)
     unsigned char      align_43B;                // +0x43B
     unsigned int       unknown_43C;              // +0x43C
-    DynamicVectorClass CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
-    DynamicVectorClass CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
-    DynamicVectorClass AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
+    DynamicVectorClassLayout CurrentTargetThreatValues;// +0x440 (0x18; vptr 0x7E4E78)
+    DynamicVectorClassLayout CurrentTargets;           // +0x458 (0x18; vptr 0x7E91EC)
+    DynamicVectorClassLayout AttackedTargets;          // +0x470 (0x18; vptr 0x7E91EC)
     AudioController    TurretRotateSoundController; // +0x488 (0x14; ctor FUN_00405BE0)
     int                IsTurretRotateSoundPlaying;  // +0x49C (BOOL, ctor = 1)
     int                TurretIsRotating;            // +0x4A0 (BOOL)

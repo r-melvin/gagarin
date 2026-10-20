@@ -64,11 +64,11 @@ struct FootClass : TechnoClass
     unsigned int    unused_574;                       // +0x574
     double          SpeedPercentage;                  // +0x578
     double          SpeedMultiplier;                  // +0x580 (ctor = 1.0)
-    DynamicVectorClass unknown_abstract_array_588;    // +0x588 (0x18; vptr 0x7E91EC)
+    DynamicVectorClassLayout unknown_abstract_array_588;    // +0x588 (0x18; vptr 0x7E91EC)
     void*           unknown_5A0;                       // +0x5A0 AbstractClass*
     void*           Destination;                       // +0x5A4 AbstractClass*
     void*           LastDestination;                   // +0x5A8 AbstractClass*
-    DynamicVectorClass NavQueue;                       // +0x5AC (0x18; vptr 0x7E91EC)
+    DynamicVectorClassLayout NavQueue;                       // +0x5AC (0x18; vptr 0x7E91EC)
     int             MegaMission;                       // +0x5C4 (Mission enum, ctor = -1)
     void*           MegaDestination;                   // +0x5C8 AbstractClass*
     void*           MegaTarget;                        // +0x5CC AbstractClass*

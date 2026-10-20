@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/geometry2d.h"
+#include "../core/vector_class_operations.h"
 #include "../core/sort_then_search_sweep.h"
 #include "../core/sorted_pair_search_family_methods.h"
 
@@ -32,8 +33,9 @@ GG_STATIC_ASSERT(offsetof(ToolTipBounds, Width) == 0x08);
 GG_STATIC_ASSERT(offsetof(ToolTipBounds, Height) == 0x0C);
 GG_STATIC_ASSERT(sizeof(ToolTipBounds) == 0x10);
 
-struct ToolTip
+class ToolTip
 {
+public:
     unsigned int GadgetID; // +0x00
     ToolTipBounds Bounds;   // +0x04
     const char* Text;       // +0x14
@@ -140,7 +142,7 @@ struct ToolTipTable
 
     // Retail's inline removal: sort on demand, find this key, slide the tail
     // down and clear the newly unused entry.
-    void RemoveEntry(ToolTip* data)
+    void RemoveEntry(const ToolTip* data)
     {
         if (Count != 0) {
             if (!IsSorted) {
@@ -180,69 +182,13 @@ GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_0D) == 0x0D);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Cached) == 0x10);
 GG_STATIC_ASSERT(sizeof(ToolTipTable) == 0x14);
 
-// Embedded tooltip pointer vector at manager+0x234. Virtual order is pinned
-// by constructor calls and the SetCapacity/Clear/FindItemIndex dispatches.
-// Retail RTTI: COL 0x80C840 -> DynamicVectorClass<const ToolTip*> derives
-// VectorClass<const ToolTip*> (COL 0x80C8B8), at offset zero. These descriptive
-// names retain that base split while template consolidation is pending.
-// The mutable ToolTip* declarations below are an ABI/layout view, not the
-// original const-qualified template API; pointer constness remains to be
-// consolidated with the other recovered vector specializations.
-// VTABLE: GAMEMD 0x7F57E8
-struct ToolTipVectorStorage
-{
-    virtual ~ToolTipVectorStorage(); // slot 0: 0x724EF0
-    virtual int operator==(const ToolTipVectorStorage& other) const; // slot 1: 0x724C90
-    virtual bool SetCapacity(int capacity, void* pMem); // slot 2: 0x724CD0
-    virtual void Clear(); // slot 3: 0x724D80
-    virtual int FindItemIndex(ToolTip* const& item) const; // slot 4: 0x724DB0
-    virtual void unknown_slot5(); // slot 5: 0x724DF0
-    virtual void unknown_slot6(); // slot 6: 0x724C80
-    ToolTipVectorStorage() : Items(0), Capacity(0), IsInitialized(1), IsAllocated(0) {}
-    ToolTip** Items;
-    int Capacity;
-    unsigned char IsInitialized;
-    unsigned char IsAllocated;
-    unsigned char unknown_0E[2];
-};
-// VTABLE: GAMEMD 0x7F57C8
-struct ToolTipVector : ToolTipVectorStorage
-{
-    virtual ~ToolTipVector(); // slot 0: 0x724F40
-    // Slots 1 and 6 retain the storage-base targets 0x724C90 and 0x724C80.
-    virtual bool SetCapacity(int capacity, void* pMem); // slot 2: 0x724E10
-    virtual void Clear(); // slot 3: 0x724C30
-    virtual int FindItemIndex(ToolTip* const& item) const; // slot 4: 0x724EC0
-    virtual void unknown_slot5(); // slot 5: 0x724C60
-    ToolTipVector() { CapacityIncrement = 10; Count = 0; }
-    int Count;
-    int CapacityIncrement;
-    bool RemoveItem(ToolTip* const& item)
-    {
-        int index = FindItemIndex(item);
-        if (index != -1 && index < Count) {
-            Count = Count - 1;
-            for (; index < Count; ++index)
-                Items[index] = Items[index + 1];
-            return true;
-        }
-        return false;
-    }
-};
-GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(sizeof(ToolTipVectorStorage) == 0x10);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(ToolTipVector, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(ToolTipVector) == 0x18);
+// RTTI confirms the embedded vector's const-qualified element type and
+// offset-zero VectorClass base (COLs 0x80C840 and 0x80C8B8).
+// VTABLE: GAMEMD 0x7F57E8 — VectorClass<const ToolTip*>
+// VTABLE: GAMEMD 0x7F57C8 — DynamicVectorClass<const ToolTip*>
+// Actual-template offset/size assertions live in vector_class_layout_asserts.cpp.
+typedef VectorClass<const ToolTip*> ToolTipVectorStorage;
+typedef DynamicVectorClass<const ToolTip*> ToolTipVector;
 
 // Primary vtable layout at 0x7F57AC: six slots precede the vector COL.
 struct ToolTipManagerVtableLayout

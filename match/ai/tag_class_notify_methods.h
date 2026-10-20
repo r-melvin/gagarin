@@ -43,7 +43,7 @@ struct TagClass
     TriggerClass* FirstTrigger;  // +0x28
 
     // Static instance registry @ 0xB0E720; Items @ +0x04, Count @ +0x10.
-    static DynamicVectorClass Array;
+    static DynamicVectorClassLayout Array;
 
     static void __fastcall NotifyGlobalChanged(int idxGlobal);   // GAMEMD 0x6E57F0
     static void __fastcall NotifyLocalChanged(int idxLocal);     // GAMEMD 0x6E5820

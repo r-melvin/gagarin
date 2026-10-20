@@ -24,7 +24,7 @@ typedef int (__fastcall* WhatAmIFunc)(AbstractClass*);
 #define LOGIC_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 
 // GLOBAL: GAMEMD 0x008B40C8 — the logic list.
-extern DynamicVectorClass LogicArray;
+extern DynamicVectorClassLayout LogicArray;
 
 struct LogicClass
 {

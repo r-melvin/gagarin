@@ -74,6 +74,6 @@ struct IonBlastClass
 };
 
 // GLOBAL: GAMEMD 0xAA0118 — IonBlastClass::Array (Items 0xAA011C, Count 0xAA0128).
-extern DynamicVectorClass IonBlastArray;
+extern DynamicVectorClassLayout IonBlastArray;
 
 #endif  // GG_MATCH_COMBAT_ION_BLAST_DRAW_METHODS_H

@@ -57,7 +57,7 @@ extern MapShim MapInstance;
 
 // GLOBAL: GAMEMD 0x00A80228 — HouseClass::Array (the object; Items lands at
 // 0x00A8022C, which is the address MakeAlly @0x4F9B50 reads directly).
-extern DynamicVectorClass HouseClassArray;
+extern DynamicVectorClassLayout HouseClassArray;
 
 // GLOBAL: GAMEMD 0x00A8B238 — SessionClass::Instance.GameMode. Campaign == 0;
 // IsControlledByHuman @0x50B730 branches on it being non-zero.

@@ -29,6 +29,6 @@ struct IonBlastClass
 
 // GLOBAL: GAMEMD 0x00AA0118 — IonBlastClass::Array. The sweep reads Items from
 // 0x00AA011C (+0x04) and Count from 0x00AA0128 (+0x10), which pins the base.
-extern DynamicVectorClass IonBlastArray;
+extern DynamicVectorClassLayout IonBlastArray;
 
 #endif  // GG_MATCH_RENDERER_EFFECT_ARRAY_UPDATE_METHODS_H

@@ -49,6 +49,6 @@ GG_STATIC_ASSERT(offsetof(ColorScheme, unknown_310) == 0x310);
 GG_STATIC_ASSERT(sizeof(ColorScheme) == 0x33C);
 
 // GLOBAL: GAMEMD 0x00B054D0 — ColorScheme::Array.
-extern DynamicVectorClass ColorSchemeArray;
+extern DynamicVectorClassLayout ColorSchemeArray;
 
 #endif  // GG_MATCH_RENDERER_COLOR_SCHEME_FIND_METHODS_H

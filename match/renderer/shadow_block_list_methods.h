@@ -16,7 +16,7 @@
 //   NAMING RECONCILED: this file and match/renderer/effect_array_update_
 //   methods.h were independently modelling the SAME retail class. The
 //   registry this file called `DAT_00AC1678 : BlockList_005FF250` is
-//   effect_array_update_methods.h's `SpotlightArray : DynamicVectorClass`
+//   effect_array_update_methods.h's `SpotlightArray : DynamicVectorClassLayout`
 //   (both read Items @0xAC167C, Count @0xAC1688 off the SAME address), and
 //   the element this file called `Entry_005FF250` is that file's forward-
 //   declared `SpotlightClass` (both own the 0x5FF850 `Draw()` / 0x5FFFA0
@@ -77,17 +77,17 @@ class SpotlightClass;
 // DynamicVectorClass<SpotlightClass*>. Reused verbatim from
 // match/_layout/vector_class.h so this and effect_array_update_methods.h
 // agree on one name and one type for the same retail global.
-extern DynamicVectorClass SpotlightArray;
+extern DynamicVectorClassLayout SpotlightArray;
 
 // SpotlightArray's two called virtuals (SetCapacity slot 2, FindItemIndex
 // slot 4) are reached through DynamicVectorClass's own `_vtable` field via the
 // project's member-function-pointer vtable-slot idiom (match/_rt/gg_vslot.h):
-// DynamicVectorClass is a complete type above, so VC6 uses the compact 4-byte
+// DynamicVectorClassLayout is a complete type above, so VC6 uses the compact 4-byte
 // member-pointer form and the calls come out byte-identical to retail's
 // `CALL [ECX+8]` / `CALL [ECX+0x10]`.
 struct Vtbl_SpotlightArray;
-typedef bool (DynamicVectorClass::*FnSetCapacity_SpotlightArray)(int capacity, void* pMem);
-typedef int  (DynamicVectorClass::*FnFindItemIndex_SpotlightArray)(SpotlightClass* const& item) const;
+typedef bool (DynamicVectorClassLayout::*FnSetCapacity_SpotlightArray)(int capacity, void* pMem);
+typedef int  (DynamicVectorClassLayout::*FnFindItemIndex_SpotlightArray)(SpotlightClass* const& item) const;
 struct Vtbl_SpotlightArray
 {
     char                            _pad00[0x08];     // slots 0..1
@@ -98,16 +98,15 @@ struct Vtbl_SpotlightArray
 GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, SetCapacity)   == 0x08);
 GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, FindItemIndex) == 0x10);
 
-// DynamicVectorClass::AddItem, expanded inline at 0x5FF278.
+// DynamicVectorClass<T>::AddItem, expanded inline at 0x5FF278.
 inline bool SpotlightArray_AddItem(SpotlightClass* item)
 {
     int cap = SpotlightArray.Capacity;
     if (SpotlightArray.Count < cap
-        // Retail reads this as the single IsAllocated byte at +0xD, not the
-        // full 4-byte cell DynamicVectorClass's shared layout names
-        // IsAllocated as (that cell also holds IsInitialized at +0xC) --
+        // Retail reads allocation state as the byte at +0xD, not the full
+        // 4-byte unknown_0C layout cell; that cell also contains byte +0xC.
         // reading the whole int here regresses to a DWORD compare (97.6%).
-        || ((*((unsigned char*)&SpotlightArray.IsAllocated + 1) || cap == 0)
+        || ((*((unsigned char*)&SpotlightArray.unknown_0C + 1) || cap == 0)
             && SpotlightArray.CapacityIncrement > 0
             && (SpotlightArray.*((Vtbl_SpotlightArray*)SpotlightArray._vtable)->SetCapacity)
                    (SpotlightArray.CapacityIncrement + cap, 0))) {
@@ -123,7 +122,7 @@ inline bool SpotlightArray_AddItem(SpotlightClass* item)
     return false;
 }
 
-// DynamicVectorClass::RemoveItem, expanded inline at 0x5FF2D1 and again
+// DynamicVectorClass<T>::RemoveItem, expanded inline at 0x5FF2D1 and again
 // inside the sweep at 0x5FF3BC.
 inline bool SpotlightArray_RemoveItem(SpotlightClass* const& item)
 {

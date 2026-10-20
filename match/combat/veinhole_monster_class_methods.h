@@ -54,7 +54,7 @@ extern Theater TheaterArray[6];
 
 // The global vein-monster registry: DynamicVectorClass<VeinholeMonsterClass*>
 // @0x00B1D290 (Items @+0x04 == 0x00B1D294, Count @+0x10 == 0x00B1D2A0).
-extern DynamicVectorClass VeinholeArray;
+extern DynamicVectorClassLayout VeinholeArray;
 
 // VeinholeMonster::VeinSHPData cache pointer @0x00B1D2EC.
 extern void* VeinSHPData;
