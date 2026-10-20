@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "233c8366f0e1fd8063931738390e0d6ca06af0af20d1a489c99103144c1b915a",
+  "manifest_sha256": "d575283b8c20fa64420ca87cd85d8d7d7fbf37fd5ebdf655a2e7d30bf60f31bd",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3401,
-  "matched_entries_missed": 160,
+  "matched_entries": 3408,
+  "matched_entries_missed": 161,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5087,6 +5087,12 @@
    "addr": "0x477F10",
    "tu": "match/core/vector_int_methods.cpp",
    "name": "DynamicVectorClass<int>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4781F0",
+   "tu": "match/core/vector_technotype_methods.cpp",
+   "name": "DynamicVectorClass<TechnoTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

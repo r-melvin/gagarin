@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4778A0 and its 158
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 157
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -16,7 +16,7 @@
 //   here for per-function verification. The retail binary does not establish
 //   their original translation-unit grouping or final linker placement.
 //   This sweep file does not establish an integrated engine link order.
-// Int and ToolTip Clear entries are bound in their native specialization TUs.
+// Int, ToolTip and TechnoType pointer entries use native specialization TUs.
 #include "vector_class.h"
 #include "vector_counted_dtor_family_methods.h"
 
@@ -208,13 +208,6 @@ struct tagCONNECTDATA;
 // ---------------------------------------------------------------------------
 
 // Legacy CountedVector<DiskID> remains an isolated stand-in; canonical layout assertions are in vector_class_layout_asserts.cpp.
-
-// FUNCTION: GAMEMD 0x004778A0
-// DynamicVectorClass<TechnoTypeClass*> -- vtable 0x007E858C slot 3; locator 0x008000E0 -> type descriptor 0x0081C0D8
-//   `.?AV?$DynamicVectorClass@PAVTechnoTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<TechnoTypeClass*> (0x007E4E18); DynamicVectorClass<TechnoTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<TechnoTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00477900
 // DynamicVectorClass<RGBClass> -- vtable 0x007F022C slot 3; locator 0x00808328 -> type descriptor 0x0081C140

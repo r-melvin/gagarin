@@ -11,6 +11,8 @@
 template<class T> class TypeList : public DynamicVectorClass<T>
 {
 public:
+    // Default-constructor stores are verified in the int and pointer TUs.
+    TypeList() : DynamicVectorClass<T>() {}
     TypeList(const TypeList<T>& other) : DynamicVectorClass<T>(other) {}
 };
 #endif

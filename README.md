@@ -93,37 +93,49 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 160 base and 158
-  dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
+  `CountedVector::Destroy` stand-ins. The family files bind 159 base and 157
+  native dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
   and two compiler-generated scalar deleting destructors. ToolTipManager uses
   these templates with its RTTI-confirmed const element type.
   [Layout assertions](match/core/vector_class_layout_asserts.cpp) check actual
   template members and sizes under VC6. The [int specialization](match/core/vector_int_methods.cpp)
-  binds thirteen entries, including both seven-slot tables' distinct methods and
-  the copy constructor, replacing its resize and copy-constructor stand-ins.
-  All thirteen entries from the former address-scoped copy-constructor family
-  now use native templates: the int pair and [eleven pointer specializations](match/core/vector_copy_constructors.cpp).
+  binds fifteen entries, including both seven-slot tables' distinct methods,
+  copy constructor and two capacity constructors. The separate TypeList<int>
+  specialization has three entries, including its default constructor. All
+  thirteen entries from the former address-scoped copy-constructor family now
+  use native templates: the int pair and [eleven pointer specializations](match/core/vector_copy_constructors.cpp).
   Raw RTTI preserves their pointee const qualifiers; copying allocates and copies
   Capacity elements. Additional emitted methods and other copy specializations
-  remain unverified. The 330 remaining generic deleting-destructor bodies use
-  164 base-template instantiation views: their written
-  vptr and RTTI identify the base-destruction path and element type, but do not
+  remain unverified. The native integration covers fifteen entries
+  across `VectorClass<TechnoTypeClass*>`, `DynamicVectorClass<TechnoTypeClass*>`
+  and `TypeList<TechnoTypeClass*>`: thirteen virtual or deleting-destructor
+  bodies and two capacity constructors. Seven entries are new exact matches;
+  the other eight rehome existing address claims. These TechnoType specializations
+  use mutable pointer elements; they do not change the const-qualified ToolTip
+  specialization above. The generic deleting-destructor family has 327
+  bindings across 163 base-template instantiation views. Their written vptr and
+  RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
   account for the slot-zero targets in their retail base and derived tables.
-  The DiskID entry at `0x69C4A0` retains the
-  `CountedVector<DiskID>::Destroy` matching stand-in because its retail declaring
-  class is unresolved; other legacy users are marked `VectorClassLayout` or
-  `DynamicVectorClassLayout`. Other virtual methods and original source-file
-  ownership remain incomplete.
-- [TypeList<int>](match/core/type_list.h): its copy constructor and generated
-  deleting destructor now use the shared `TypeList → DynamicVectorClass → VectorClass`
-  hierarchy in [one implementation](match/core/typelist_int_methods.cpp), replacing
-  two layout-view bindings. Raw RTTI and vtable slots establish the inherited
-  prefix; neither complete size nor absence of additional members is claimed.
-  Its seven compiled table slots pass the conditional weak-default check;
-  final-link resolution remains unverified.
+  The dynamic `Clear` total excludes the DiskID entry at `0x69C4A0`, which
+  retains the `CountedVector<DiskID>::Destroy` matching stand-in because its
+  retail declaring class is unresolved; other legacy users are marked
+  `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
+  original source-file ownership remain incomplete.
+- [TypeList](match/core/type_list.h): the int specialization has three native
+  entries: its copy constructor, default constructor and generated deleting
+  destructor in [one implementation](match/core/typelist_int_methods.cpp).
+  Eight pointer specializations have native default constructors in
+  [typelist_default_constructors.cpp](match/core/typelist_default_constructors.cpp),
+  completing the nine default-constructor entries formerly represented by
+  address-scoped views. The TechnoType pointer batch covers native
+  VectorClass, DynamicVectorClass and TypeList specializations. Their three
+  seven-slot tables each pass a conditional COFF weak-default check for the
+  deleting-destructor slot; final-link resolution remains unverified.
+  Raw RTTI and vtable slots establish inherited prefixes; complete sizes and
+  absence of additional members are not claimed.
 - Shared [2D geometry](match/_layout/geometry2d.h): renderer, radar, building
   layout and cell-redraw declarations use one XYWH `RectangleStruct` definition.
   BitFont's left/top/right/bottom bounds remain a distinct asserted type.
@@ -164,10 +176,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,401** | **17.2%** of 19,753 |
-| Sum of matched function lengths | 238 KiB | 6.4% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,408** | **17.3%** of 19,753 |
+| Sum of matched function lengths | 239 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 854 | |
+| Tracked C++ translation units under `match/` | 855 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -187,7 +199,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 160 matched entries. Its candidate count is therefore
+listed entries, including 161 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

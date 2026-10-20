@@ -5994,11 +5994,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_int_methods.cpp",
   "addr": "0x00477DB0",
-  "sym": "?Ctor@DynamicVectorClass_00477DB0@@QAEPAU1@IPAUDynPodElem4@@@Z",
-  "len": "0x5d",
-  "name": "DynamicVectorClass_00477DB0::Ctor",
+  "sym": "??0?$DynamicVectorClass@H@@QAE@HPAH@Z",
+  "len": "0x5D",
+  "name": "DynamicVectorClass<int> capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6111,11 +6111,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_technotype_methods.cpp",
   "addr": "0x0068C200",
-  "sym": "?Ctor@DynamicVectorClass_0068C200@@QAEPAU1@IPAUDynPodElem4@@@Z",
-  "len": "0x5d",
-  "name": "DynamicVectorClass_0068C200::Ctor",
+  "sym": "??0?$DynamicVectorClass@PAVTechnoTypeClass@@@@QAE@HPAPAVTechnoTypeClass@@@Z",
+  "len": "0x5D",
+  "name": "DynamicVectorClass<TechnoTypeClass*> capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6165,83 +6165,83 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x512960",
-  "sym": "??0DynVecLeaf_007EABC8@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVAircraftTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007EABC8::ctor",
+  "name": "TypeList<const AircraftTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x5AC400",
-  "sym": "??0DynVecLeaf_007ED90C@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVBuildingTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007ED90C::ctor",
+  "name": "TypeList<const BuildingTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x67A390",
-  "sym": "??0DynVecLeaf_007F0D3C@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVVoxelAnimTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007F0D3C::ctor",
+  "name": "TypeList<const VoxelAnimTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x67A470",
-  "sym": "??0DynVecLeaf_007EB6D4@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVAnimTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007EB6D4::ctor",
+  "name": "TypeList<const AnimTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_int_methods.cpp",
   "addr": "0x67A4F0",
-  "sym": "??0DynVecLeaf_007E4DD8@@QAE@XZ",
+  "sym": "??0?$TypeList@H@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007E4DD8::ctor",
+  "name": "TypeList<int> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x67A600",
-  "sym": "??0DynVecLeaf_007F0D1C@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVSmudgeTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007F0D1C::ctor",
+  "name": "TypeList<const SmudgeTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x67A820",
-  "sym": "??0DynVecLeaf_007EAC08@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVInfantryTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007EAC08::ctor",
+  "name": "TypeList<const InfantryTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x67A8B0",
-  "sym": "??0DynVecLeaf_007F0CFC@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVTerrainTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007F0CFC::ctor",
+  "name": "TypeList<const TerrainTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_default_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_default_constructors.cpp",
   "addr": "0x717AF0",
-  "sym": "??0DynVecLeaf_007F4F9C@@QAE@XZ",
+  "sym": "??0?$TypeList@PBVParticleSystemTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "DynVecLeaf_007F4F9C::ctor",
+  "name": "TypeList<const ParticleSystemTypeClass*> default constructor",
   "status": "matched",
   "pct": 100
  },
@@ -13455,10 +13455,10 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
-  "addr": "0x004778a0",
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4778A0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTechnoTypeClass@@@@UAEXXZ",
-  "len": "0x2a",
+  "len": "0x2A",
   "name": "DynamicVectorClass<TechnoTypeClass*>::Clear",
   "status": "matched",
   "pct": 100
@@ -14931,20 +14931,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_int_methods.cpp",
   "addr": "0x477BE0",
-  "sym": "?Ctor@VectorClass_00477BE0@@QAEPAU1@IPAUPodElem4@@@Z",
-  "len": "0x4a",
-  "name": "VectorClass_00477BE0::Ctor",
+  "sym": "??0?$VectorClass@H@@QAE@HPAH@Z",
+  "len": "0x4A",
+  "name": "VectorClass<int> capacity constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_technotype_methods.cpp",
   "addr": "0x478790",
-  "sym": "?Ctor@VectorClass_00478790@@QAEPAU1@IPAUPodElem4@@@Z",
-  "len": "0x4a",
-  "name": "VectorClass_00478790::Ctor",
+  "sym": "??0?$VectorClass@PAVTechnoTypeClass@@@@QAE@HPAPAVTechnoTypeClass@@@Z",
+  "len": "0x4A",
+  "name": "VectorClass<TechnoTypeClass*> capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -15372,11 +15372,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x00477A70",
-  "sym": "??_G?$VectorClass@PAVTechnoTypeClass@@@@UAEPAXI@Z",
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x477A70",
+  "sym": "??_G?$TypeList@PAVTechnoTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TechnoTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<TechnoTypeClass*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15408,11 +15408,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x00478680",
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x478680",
   "sym": "??_G?$VectorClass@PAVTechnoTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TechnoTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<TechnoTypeClass*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15597,11 +15597,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x004BA160",
-  "sym": "??_G?$VectorClass@PAVTechnoTypeClass@@@@UAEPAXI@Z",
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4BA160",
+  "sym": "??_G?$DynamicVectorClass@PAVTechnoTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TechnoTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TechnoTypeClass*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18855,8 +18855,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
-  "addr": "0x004780b0",
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4780B0",
   "sym": "?Clear@?$VectorClass@PAVTechnoTypeClass@@@@UAEXXZ",
   "len": "0x27",
   "name": "VectorClass<TechnoTypeClass*>::Clear",
@@ -20574,11 +20574,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_technotype_methods.cpp",
   "addr": "0x478140",
-  "sym": "?FUN_478140@VectorResizeFamily@@QAE_NHPAPAX@Z",
-  "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_478140",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVTechnoTypeClass@@@@UAE_NHPAPAVTechnoTypeClass@@@Z",
+  "len": "0xB0",
+  "name": "DynamicVectorClass<TechnoTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -32090,6 +32090,69 @@
   "sym": "?unknown_14@XSurface@@UAE_NPAURectangleStruct@@H@Z",
   "len": "0x29",
   "name": "XSurface::unknown_14",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x477FC0",
+  "sym": "??8?$VectorClass@PAVTechnoTypeClass@@@@UBE_NABV0@@Z",
+  "len": "0x3E",
+  "name": "VectorClass<TechnoTypeClass*>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x478000",
+  "sym": "?SetCapacity@?$VectorClass@PAVTechnoTypeClass@@@@UAE_NHPAPAVTechnoTypeClass@@@Z",
+  "len": "0xAE",
+  "name": "VectorClass<TechnoTypeClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4780E0",
+  "sym": "?FindItemIndex@?$VectorClass@PAVTechnoTypeClass@@@@UBEHABQAVTechnoTypeClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<TechnoTypeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x478120",
+  "sym": "?Slot5@?$VectorClass@PAVTechnoTypeClass@@@@UBEHPAPAVTechnoTypeClass@@@Z",
+  "len": "0x1B",
+  "name": "VectorClass<TechnoTypeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4778F0",
+  "sym": "?Slot6@?$VectorClass@PAVTechnoTypeClass@@@@UBEPAVTechnoTypeClass@@H@Z",
+  "len": "0x0D",
+  "name": "VectorClass<TechnoTypeClass*>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4781F0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTechnoTypeClass@@@@UBEHABQAVTechnoTypeClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<TechnoTypeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_technotype_methods.cpp",
+  "addr": "0x4778D0",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVTechnoTypeClass@@@@UBEHPAPAVTechnoTypeClass@@@Z",
+  "len": "0x1B",
+  "name": "DynamicVectorClass<TechnoTypeClass*>::Slot5",
   "status": "matched",
   "pct": 100
  }

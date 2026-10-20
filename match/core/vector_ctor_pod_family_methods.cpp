@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
 //   Bytes matched against retail gamemd.exe v1.001.
 //
-// VectorClass<T>(size, array) over trivial element types, 48 retail
+// VectorClass<T>(size, array) over trivial element types, 46 remaining retail
 // instantiations. Each body zeroes the element pointer, records the capacity,
 // marks the vector valid and not-owning, installs its vtable, and then — only
 // for a non-zero size — either adopts the caller's storage (no allocation, no
@@ -13,14 +13,6 @@
 // which scales by 8). The shared body is GG_VECTOR_CTOR_POD_BODY; the bodies
 // below are ordered ascending by retail address.
 #include "vector_ctor_pod_family_methods.h"
-
-// FUNCTION: GAMEMD 0x477BE0
-// vtable constant: 0x7E4DB8
-GG_VECTOR_CTOR_POD_BODY(VectorClass_00477BE0, PodElem4, 0x7E4DB8)
-
-// FUNCTION: GAMEMD 0x478790
-// vtable constant: 0x7E4DF8
-GG_VECTOR_CTOR_POD_BODY(VectorClass_00478790, PodElem4, 0x7E4DF8)
 
 // FUNCTION: GAMEMD 0x488080
 // vtable constant: 0x7E4514

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4780B0 and its 159
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 158
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 160 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
+//   The 159 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -18,7 +18,7 @@
 //   here for per-function verification. The retail binary does not establish
 //   their original translation-unit grouping or final linker placement.
 //   This sweep file does not establish an integrated engine link order.
-// Int and ToolTip Clear entries are bound in their native specialization TUs.
+// Int, ToolTip and TechnoType pointer entries use native specialization TUs.
 #include "vector_class.h"
 
 // ---------------------------------------------------------------------------
@@ -210,11 +210,6 @@ struct tagCONNECTDATA;
 // ---------------------------------------------------------------------------
 
 // Actual-template layout assertions are in vector_class_layout_asserts.cpp.
-
-// FUNCTION: GAMEMD 0x004780B0
-// VectorClass<TechnoTypeClass*> -- vtable 0x007E4DF8 slot 3; locator 0x007FCE60 -> type descriptor 0x0081C0A0
-//   `.?AV?$VectorClass@PAVTechnoTypeClass@@@@`.
-template class VectorClass<TechnoTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00478440
 // VectorClass<RGBClass> -- vtable 0x007E4E38 slot 3; locator 0x007FCF90 -> type descriptor 0x0081C198

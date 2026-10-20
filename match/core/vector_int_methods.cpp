@@ -23,6 +23,9 @@
 // SYNTHETIC: GAMEMD 0x477B10
 // DynamicVectorClass<int> scalar deleting destructor
 
+// FUNCTION: GAMEMD 0x477BE0
+// VectorClass<int> capacity constructor
+
 // FUNCTION: GAMEMD 0x477C30
 // VectorClass<int>::operator==
 
@@ -37,6 +40,9 @@
 
 // FUNCTION: GAMEMD 0x477D90
 // VectorClass<int>::Slot5
+
+// FUNCTION: GAMEMD 0x477DB0
+// DynamicVectorClass<int> capacity constructor
 
 // FUNCTION: GAMEMD 0x477E10
 // DynamicVectorClass<int>::SetCapacity

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 164 base-template instantiations reproduce 330 remaining retail destructor
+// 163 base-template instantiations reproduce 327 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -199,13 +199,6 @@ struct tagCONNECTDATA;
 // The instantiations, in ascending retail-address order of each group's first
 // address.
 // ---------------------------------------------------------------------------
-
-// FUNCTION: GAMEMD 0x00477A70
-// FUNCTION: GAMEMD 0x00478680
-// FUNCTION: GAMEMD 0x004BA160
-// VectorClass<TechnoTypeClass*> -- reseats retail vtable 0x007E4DF8; locator 0x007FCE60 -> type descriptor 0x0081C0A0
-//   `.?AV?$VectorClass@PAVTechnoTypeClass@@@@`.
-template class VectorClass<TechnoTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00477AC0
 // FUNCTION: GAMEMD 0x004786D0

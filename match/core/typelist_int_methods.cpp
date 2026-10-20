@@ -11,6 +11,9 @@
 // SYNTHETIC: GAMEMD 0x477990
 // TypeList<int> scalar deleting destructor, full 0x49 through RET 4.
 
+// FUNCTION: GAMEMD 0x67A4F0
+// TypeList<int>::TypeList(), full 0x22 through final RET.
+
 // VTABLE: GAMEMD 0x7E4DD8 -- TypeList<int>, seven slots.
 template class TypeList<int>;
 typedef TypeList<int> GgTypeListInt;

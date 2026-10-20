@@ -14,6 +14,29 @@
 #define GG_MATCH_CORE_VECTOR_CLASS_OPERATIONS_H
 #include "vector_class.h"
 
+// Capacity constructors at 0x477BE0/0x477DB0 and 0x478790/0x68C200 establish
+// int and TechnoType pointer specializations. Unlike SetCapacity, the allocation
+// path sets ownership without a null-result test. Other constructors are unclaimed.
+template<class T> VectorClass<T>::VectorClass(int capacity, T* pMem)
+    : Items(0), Capacity(capacity), IsInitialized(true), IsAllocated(false)
+{
+    if (capacity != 0) {
+        if (pMem != 0)
+            Items = pMem;
+        else {
+            Items = new T[capacity];
+            IsAllocated = true;
+        }
+    }
+}
+
+template<class T> DynamicVectorClass<T>::DynamicVectorClass(int capacity, T* pMem)
+    : VectorClass<T>(capacity, pMem)
+{
+    this->CapacityIncrement = 10;
+    this->Count = 0;
+}
+
 // The base copy/assignment path is expanded into DynamicVectorClass<int>'s
 // copy constructor at 0x4779E0. It copies Capacity elements, not Count, and
 // retains Capacity on allocation failure. Other copy specializations and a
