@@ -24,7 +24,7 @@ jobs:
         run: |
           sudo dpkg --add-architecture i386
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends wine wine64 p7zip-full python3
+          sudo apt-get install -y --no-install-recommends wine wine32:i386 wine64 p7zip-full python3
           wine --version
 
       - name: Fetch the period MSVC6 toolchain (never committed)
