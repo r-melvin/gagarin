@@ -92,6 +92,27 @@ struct ToolTipTable
     unsigned char unknown_0D[3];
     ToolTipTableEntry* Cached; // +0x10, manager +0x25C
 
+    // Inline search half of 0x724FC0; no independent retail entry claimed.
+    ToolTipTableEntry* SearchSorted(const unsigned int* key)
+    {
+        ToolTipTableEntry* base = Items;
+        unsigned int k = *key;
+        int count;
+        for (count = Count; count > 0; ) {
+            int half = count / 2;
+            ToolTipTableEntry* mid = base + half;
+            if (mid->Key > k) {
+                count = half;
+            } else {
+                if (mid->Key == k)
+                    return mid;
+                base = mid + 1;
+                count = count - 1 - half;
+            }
+        }
+        return 0;
+    }
+
     // FUNCTION: GAMEMD 0x724FA0 (decl; reloc) — compare the cached key.
     bool HasCachedKey(const unsigned int* key);
 
@@ -150,14 +171,6 @@ struct ToolTipTable
         }
     }
 };
-
-inline ToolTipTableEntry* ToolTipTable::Search(unsigned int* key)
-{
-    // 0x724FC0 is the existing matched unsigned-key table helper. Its table
-    // fields are byte-for-byte the same 0x14-byte prefix as ToolTipTable.
-    Table_724FC0* table = (Table_724FC0*)this;
-    return (ToolTipTableEntry*)table->Find_724FC0(key);
-}
 
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Items) == 0x00);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Count) == 0x04);

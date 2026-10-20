@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The six sort-then-search lookups, ordered ascending by retail address.
+// The five remaining sort-then-search lookups, ordered ascending by retail address.
 //
 // The phrasing lever here is the split between `Find` and `SearchSorted`.
 // Written as one function -- the empty-table guard, the lazy sort and the
@@ -34,6 +34,5 @@ GG_SORT_SEARCH_BODY(55F6E0, int)
 // FUNCTION: GAMEMD 0x7107E0
 GG_SORT_SEARCH_BODY(7107E0, int)
 
-// FUNCTION: GAMEMD 0x724FC0
-GG_SORT_SEARCH_BODY(724FC0, unsigned)
+// The unsigned-key lookup at 0x724FC0 now lives on ToolTipTable.
 

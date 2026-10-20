@@ -57,18 +57,25 @@ Verified consolidation steps:
   shared inheritance replaces Toggle's separate constructor prefix view and
   opaque virtual table. Five Control methods and three Toggle methods match;
   the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
-- [ToolTipManager](match/ui/tooltip_manager_shared.h): fifteen verified functions
+- [ToolTipManager](match/ui/tooltip_manager_shared.h): sixteen verified functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
   used by ShapeButton's tooltip calls. Its constructor also models the embedded
   vector's confirmed base class. The partial Find view remains separate;
   the manager's exact total size is not established. Its table cache lookup is
   now a native method, and tooltip bounds use a shared asserted rectangle layout.
+  The table search also uses the canonical class directly, replacing its layout
+  cast to an address-scoped helper.
 - [Surface](match/renderer/surface_class.h): BitFont and ZBuffer now share the
   confirmed Surface interface and geometry declarations. Six native methods
   live in its [implementation](match/renderer/surface_class.cpp), replacing
   three stand-ins and adding three exact default methods. The interface pins
   all 34 virtual slots; unknown signatures remain placeholders, and the complete
-  object size and derived layouts are not established.
+  object size and complete derived layouts are not established.
+- [XSurface](match/renderer/xsurface_class.h): four methods share one native
+  [implementation](match/renderer/xsurface_class.cpp) and the confirmed Surface
+  base, replacing the Unlock stand-in and adding three exact methods. Its
+  lock-counter offset is asserted, and its virtual table includes the two
+  added slots through `+0x8C`. The complete object size remains unconfirmed.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
@@ -102,10 +109,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,378** | **17.1%** of 19,753 |
+| Functions matched at 100% | **3,381** | **17.1%** of 19,753 |
 | Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 848 | |
+| Tracked C++ translation units under `match/` | 849 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

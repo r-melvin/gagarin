@@ -190,3 +190,16 @@ bool ToolTipTable::HasCachedKey(const unsigned int* key)
     }
     return false;
 }
+
+// FUNCTION: GAMEMD 0x724FC0
+ToolTipTableEntry* ToolTipTable::Search(unsigned int* key)
+{
+    if (Count == 0)
+        return 0;
+    if (!IsSorted) {
+        FUN_007C8B48(Items, Count, sizeof(ToolTipTableEntry), FUN_00725040);
+        Cached = 0;
+        IsSorted = 1;
+    }
+    return SearchSorted(key);
+}

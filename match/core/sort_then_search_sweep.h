@@ -6,7 +6,7 @@
 //   the sorted flag at [ESI+0xC] and the cached slot at [ESI+0x10]; the entry
 //   stride is 8 (`MOV ESI,[EDI+EAX*8]`, `LEA EDX,[EDI+EAX*8]`).
 //
-// Six 121-byte "sort on demand, then binary search" lookups.
+// Five remaining 121-byte "sort on demand, then binary search" lookups.
 //
 // The out-of-line form of the lookup that the 0x6E6BB0 family inlines: if the
 // table is empty there is nothing to find; if it has not been sorted since the
@@ -14,9 +14,8 @@
 // slot; then binary-search the sorted entries for the key the caller passes by
 // address, returning the entry or a null pointer.
 //
-// The six differ only in the comparator they hand to qsort, except that
-// 0x724FC0 compares its key unsigned -- one byte, JBE where the others have
-// JLE -- so it is instantiated with an unsigned key type.
+// These five use signed keys and differ in the comparator passed to qsort.
+// The former unsigned-key entry at 0x724FC0 now belongs to ToolTipTable.
 #ifndef GG_MATCH_CORE_SORT_THEN_SEARCH_SWEEP_H
 #define GG_MATCH_CORE_SORT_THEN_SEARCH_SWEEP_H
 
@@ -63,7 +62,6 @@ GG_SORT_SEARCH_TYPES(52B4F0, int);   // FUNCTION: GAMEMD 0x52B4F0
 GG_SORT_SEARCH_TYPES(52B620, int);   // FUNCTION: GAMEMD 0x52B620
 GG_SORT_SEARCH_TYPES(55F6E0, int);   // FUNCTION: GAMEMD 0x55F6E0
 GG_SORT_SEARCH_TYPES(7107E0, int);   // FUNCTION: GAMEMD 0x7107E0
-GG_SORT_SEARCH_TYPES(724FC0, unsigned);   // FUNCTION: GAMEMD 0x724FC0
 
 // The search half, kept as its own inline function on purpose. See the .cpp:
 // splitting it out is what stops cl merging the empty-table `return 0` with the
@@ -114,6 +112,5 @@ Entry_##TAG* Table_##TAG::Find_##TAG(const KEY* key)                       \
 #define GG_CMP_52B620 FUN_0052B720
 #define GG_CMP_55F6E0 FUN_0048BC20
 #define GG_CMP_7107E0 FUN_00710860
-#define GG_CMP_724FC0 FUN_00725040
 
 #endif  // GG_MATCH_CORE_SORT_THEN_SEARCH_SWEEP_H

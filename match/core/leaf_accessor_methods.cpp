@@ -99,13 +99,6 @@ int Obj_00409300::FUN_00409320()
     return value - *(volatile int*)&unknown_38;
 }
 
-// FUNCTION: GAMEMD 0x411570
-bool Obj_00411500::FUN_00411570()
-{
-    --unknown_0C;
-    return true;
-}
-
 // FUNCTION: GAMEMD 0x411630
 int Obj_00411500::FUN_00411630() const
 {

@@ -8226,11 +8226,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_accessor_methods.cpp",
+  "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x411570",
-  "sym": "?FUN_00411570@Obj_00411500@@QAE_NXZ",
-  "len": "0xa",
-  "name": "FUN_00411570",
+  "sym": "?Unlock@XSurface@@UAE_NXZ",
+  "len": "0xA",
+  "name": "XSurface::Unlock",
   "status": "matched",
   "pct": 100.0
  },
@@ -12159,11 +12159,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/sort_then_search_sweep.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724FC0",
-  "sym": "?Find_724FC0@Table_724FC0@@QAEPAUEntry_724FC0@@PBI@Z",
+  "sym": "?Search@ToolTipTable@@QAEPAUToolTipTableEntry@@PAI@Z",
   "len": "0x79",
-  "name": "FUN_00724fc0",
+  "name": "ToolTipTable::Search",
   "status": "matched",
   "pct": 100
  },
@@ -31885,5 +31885,32 @@
   "name": "Surface::unknown_84",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x411560",
+  "sym": "?Lock@XSurface@@UAEPAXUPoint2D@@@Z",
+  "len": "0xC",
+  "name": "XSurface::Lock",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x411580",
+  "sym": "?IsLocked@XSurface@@UAE_NXZ",
+  "len": "0xB",
+  "name": "XSurface::IsLocked",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x411590",
+  "sym": "?unknown_84@XSurface@@UAE_NXZ",
+  "len": "0x3",
+  "name": "XSurface::unknown_84",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
