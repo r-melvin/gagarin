@@ -1,0 +1,310 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Canonical ToolTipManager family layout recovered from retail gamemd.exe
+//   v1.001. RTTI at 0x844998 identifies ToolTipManager; its COL is 0x80C888
+//   and its primary vtable address point is 0x7F57AC. Constructor/member
+//   accesses at 0x724000, 0x7240B0, 0x724580, 0x724730, 0x7241A0 and 0x724AD0
+//   confirm the offsets asserted below. The separately address-local Find
+//   view remains in tooltip_manager_find_methods.h pending its own cleanup.
+#ifndef GG_MATCH_UI_TOOLTIP_MANAGER_SHARED_H
+#define GG_MATCH_UI_TOOLTIP_MANAGER_SHARED_H
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+#include "../core/sort_then_search_sweep.h"
+#include "../core/sorted_pair_search_family_methods.h"
+
+// Add copies this 0x1C-byte descriptor. The caller at 0x6D09C0 writes the
+// fields at these offsets; Process reads GadgetID and Text from the record.
+struct ToolTip
+{
+    unsigned int GadgetID; // +0x00
+    int X;                  // +0x04
+    int Y;                  // +0x08
+    int Width;              // +0x0C
+    int Height;             // +0x10
+    const char* Text;       // +0x14
+    bool field_18;          // +0x18
+};
+GG_STATIC_ASSERT(offsetof(ToolTip, GadgetID) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTip, X) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTip, Y) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTip, Width) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTip, Height) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTip, Text) == 0x14);
+GG_STATIC_ASSERT(offsetof(ToolTip, field_18) == 0x18);
+GG_STATIC_ASSERT(sizeof(ToolTip) == 0x1C);
+
+struct Point2D
+{
+    int X; // +0x00
+    int Y; // +0x04
+};
+GG_STATIC_ASSERT(offsetof(Point2D, X) == 0x00);
+GG_STATIC_ASSERT(offsetof(Point2D, Y) == 0x04);
+GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
+
+// Rectangle dimensions followed by a 256-code-unit UTF-16 help string.
+struct ToolTipManagerData
+{
+    int X;                   // +0x00
+    int Y;                   // +0x04
+    int Width;               // +0x08
+    int Height;              // +0x0C
+    wchar_t HelpText[0x100]; // +0x10
+};
+GG_STATIC_ASSERT(offsetof(ToolTipManagerData, X) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerData, Y) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerData, Width) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerData, Height) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerData, HelpText) == 0x10);
+GG_STATIC_ASSERT(sizeof(ToolTipManagerData) == 0x210);
+GG_STATIC_ASSERT(sizeof(wchar_t) == 2);
+
+struct ToolTipTableEntry
+{
+    unsigned int Key; // +0x00
+    ToolTip* Data;    // +0x04
+};
+GG_STATIC_ASSERT(offsetof(ToolTipTableEntry, Key) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipTableEntry, Data) == 0x04);
+GG_STATIC_ASSERT(sizeof(ToolTipTableEntry) == 0x08);
+
+// GLOBAL: GAMEMD 0x00B78820 — default tooltip record returned on a miss.
+extern ToolTip* DAT_00B78820;
+
+// FUNCTION: GAMEMD 0x7C8B3D (LIBRARY, CRT free)
+extern "C" void __cdecl gg_free(void* block);
+
+struct ToolTipTable
+{
+    ToolTipTableEntry* Items; // +0x00, manager +0x24C
+    int Count;                // +0x04, manager +0x250
+    int unknown_08;           // +0x08, manager +0x254
+    unsigned char IsSorted;   // +0x0C, manager +0x258
+    unsigned char unknown_0D[3];
+    ToolTipTableEntry* Cached; // +0x10, manager +0x25C
+
+    // FUNCTION: GAMEMD 0x724FC0 (decl; reloc) — the table lookup.
+    ToolTipTableEntry* Search(unsigned int* key);
+
+    bool Ensure(unsigned int& key)
+    {
+        ToolTipTableEntry* cached = Cached;
+        if (cached == 0 || cached->Key != key) {
+            ToolTipTableEntry* found = Search(&key);
+            if (found == 0)
+                return false;
+            Cached = found;
+        }
+        return true;
+    }
+
+    ToolTip*& GetTip(unsigned int& key)
+    {
+        if (Count != 0 && Ensure(key))
+            return Cached->Data;
+        return DAT_00B78820;
+    }
+
+    // Retail's inline removal: sort on demand, find this key, slide the tail
+    // down and clear the newly unused entry.
+    void RemoveEntry(ToolTip* data)
+    {
+        if (Count != 0) {
+            if (!IsSorted) {
+                FUN_007C8B48(Items, Count, 8, FUN_00725040);
+                Cached = 0;
+                IsSorted = 1;
+            }
+            ToolTipTableEntry probe;
+            probe.Key = data->GadgetID;
+            SortedEntryU_00725070* found = FUN_00725070(
+                (SortedEntryU_00725070*)Items, Count, &probe.Key);
+            ToolTipTableEntry* entry = (ToolTipTableEntry*)found;
+            if (entry != 0) {
+                int index = entry - Items;
+                if (index != -1) {
+                    for (int j = index + 1; j < Count; ++j)
+                        Items[j - 1] = Items[j];
+                    int last = Count - 1;
+                    ToolTipTableEntry* items = Items;
+                    ToolTipTableEntry blank;
+                    blank.Key = 0;
+                    Count = last;
+                    blank.Data = 0;
+                    items[last] = blank;
+                    Cached = (ToolTipTableEntry*)blank.Data;
+                }
+            }
+        }
+    }
+};
+
+inline ToolTipTableEntry* ToolTipTable::Search(unsigned int* key)
+{
+    // 0x724FC0 is the existing matched unsigned-key table helper. Its table
+    // fields are byte-for-byte the same 0x14-byte prefix as ToolTipTable.
+    Table_724FC0* table = (Table_724FC0*)this;
+    return (ToolTipTableEntry*)table->Find_724FC0(key);
+}
+
+GG_STATIC_ASSERT(offsetof(ToolTipTable, Items) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, Count) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, IsSorted) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_0D) == 0x0D);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, Cached) == 0x10);
+GG_STATIC_ASSERT(sizeof(ToolTipTable) == 0x14);
+
+// Embedded VectorClass<ToolTip*> at manager+0x234. Virtual order is pinned
+// by constructor calls and the SetCapacity/Clear/FindItemIndex dispatches.
+struct ToolTipVector
+{
+    // VTABLE: GAMEMD 0x7F57C8 (embedded vector at manager+0x234)
+    virtual ~ToolTipVector(); // slot 0: 0x724F40
+    virtual int operator==(const ToolTipVector& other) const; // slot 1: 0x724C90
+    virtual bool SetCapacity(int capacity, void* pMem); // slot 2: 0x724E10
+    virtual void Clear(); // slot 3: 0x724C30
+    virtual int FindItemIndex(ToolTip* const& item) const; // slot 4: 0x724EC0
+    virtual void unknown_slot5(); // slot 5: 0x724C60
+    virtual void unknown_slot6(); // slot 6: 0x724C80
+
+    ToolTip** Items;                 // +0x04
+    int Capacity;                    // +0x08
+    unsigned char IsInitialized;     // +0x0C
+    unsigned char IsAllocated;       // +0x0D
+    unsigned char unknown_0E[2];
+    int Count;                       // +0x10
+    int CapacityIncrement;           // +0x14
+
+    bool RemoveItem(ToolTip* const& item)
+    {
+        int index = FindItemIndex(item);
+        if (index != -1 && index < Count) {
+            Count = Count - 1;
+            for (; index < Count; ++index)
+                Items[index] = Items[index + 1];
+            return true;
+        }
+        return false;
+    }
+};
+GG_STATIC_ASSERT(offsetof(ToolTipVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTipVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(ToolTipVector) == 0x18);
+
+// Primary vtable layout at 0x7F57AC: six slots precede the vector COL.
+struct ToolTipManagerVtableLayout
+{
+    void* Slot0; void* Slot1; void* Slot2;
+    void* Slot3; void* Slot4; void* Slot5;
+};
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot0) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot1) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot2) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot3) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot4) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTipManagerVtableLayout, Slot5) == 0x14);
+GG_STATIC_ASSERT(sizeof(ToolTipManagerVtableLayout) == 0x18);
+
+// Embedded-vector vtable layout at 0x7F57C8: seven slots precede COL 0x7F57E4.
+struct ToolTipVectorVtableLayout
+{
+    void* Slot0; void* Slot1; void* Slot2; void* Slot3;
+    void* Slot4; void* Slot5; void* Slot6;
+};
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot0) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot1) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot2) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot3) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot4) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot5) == 0x14);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot6) == 0x18);
+GG_STATIC_ASSERT(sizeof(ToolTipVectorVtableLayout) == 0x1C);
+
+struct ToolTipManager
+{
+    // VTABLE: GAMEMD 0x7F57AC (primary ToolTipManager address point)
+    // FUNCTION: GAMEMD 0x7240B0 — regular destructor (unlisted entry).
+    virtual ~ToolTipManager(); // slot 0: 0x724C10 deleting dtor
+    virtual bool Update(ToolTipManagerData& from); // slot 1: 0x724AA0
+    virtual void MarkToRedraw(ToolTipManagerData& from); // slot 2: 0x724AB0
+    virtual void Draw(bool onSidebar); // slot 3: 0x724B80
+    virtual void DrawText(ToolTipManagerData& from); // slot 4: 0x724BB0
+    virtual wchar_t* GetToolTipText(unsigned int id); // slot 5: 0x724BD0
+
+    ToolTip* CurrentToolTip;                 // +0x04
+    void* hWnd;                              // +0x08
+    bool IsActive;                           // +0x0C
+    unsigned char unknown_0D;
+    unsigned char unknown_0E[2];
+    Point2D CurrentMousePosition;            // +0x10
+    ToolTipManagerData CurrentToolTipData;   // +0x18
+    int ToolTipDelay;                        // +0x228
+    int LastToolTipDelay;                    // +0x22C
+    int unknown_230;                         // +0x230
+    ToolTipVector ToolTips;                  // +0x234
+    ToolTipTable Table;                      // +0x24C
+
+    // FUNCTION: GAMEMD 0x724000 — constructor, one pointer argument, RET 4.
+    ToolTipManager(void* window);
+    // FUNCTION: GAMEMD 0x7241A0
+    void SetState(bool state);
+    // FUNCTION: GAMEMD 0x724520
+    void SetTimerDelay(int value);
+    // FUNCTION: GAMEMD 0x724530
+    void SaveTimerDelay();
+    // FUNCTION: GAMEMD 0x724540
+    void RestoreTimeDelay();
+    // FUNCTION: GAMEMD 0x724580
+    bool Add(ToolTip& tip);
+    // FUNCTION: GAMEMD 0x724730
+    void Remove(unsigned int key);
+    // FUNCTION: GAMEMD 0x724AD0
+    bool Process();
+    // FUNCTION: GAMEMD 0x724C00
+    bool IsToolTipShowing() const;
+};
+
+GG_STATIC_ASSERT(offsetof(ToolTipManager, CurrentToolTip) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, hWnd) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, IsActive) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, unknown_0D) == 0x0D);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, CurrentMousePosition) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, CurrentToolTipData) == 0x18);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, CurrentToolTipData)
+                 + offsetof(ToolTipManagerData, HelpText) == 0x28);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, ToolTipDelay) == 0x228);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, LastToolTipDelay) == 0x22C);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, unknown_230) == 0x230);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, ToolTips) == 0x234);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, Table) == 0x24C);
+GG_STATIC_ASSERT(offsetof(ToolTipManager, Table) + sizeof(ToolTipTable) == 0x260);
+// Exact sizeof(ToolTipManager) remains unasserted: retail constructs it as a
+// base of a larger 0x268-byte singleton object, and no base boundary is pinned.
+
+inline void ClearDimension(ToolTipManagerData& data)
+{
+    data.X = 0;
+    data.Y = 0;
+    data.Width = 0;
+    data.Height = 0;
+}
+
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) — StringTable::LoadString.
+wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
+                                           const char* file, int line);
+// FUNCTION: GAMEMD 0x7CA405 (LIBRARY, CRT wcslen).
+extern "C" unsigned int __cdecl wcslen(const wchar_t* text);
+// FUNCTION: GAMEMD 0x7CA422 (LIBRARY, CRT wcsncpy).
+extern "C" wchar_t* __cdecl wcsncpy(wchar_t* dst, const wchar_t* src,
+                                    unsigned int count);
+
+#endif // GG_MATCH_UI_TOOLTIP_MANAGER_SHARED_H

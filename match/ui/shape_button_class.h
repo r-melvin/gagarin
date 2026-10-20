@@ -3,19 +3,27 @@
 //   ShapeButtonClass member offsets and object size are confirmed by retail
 //   gamemd.exe v1.001 instructions at 0x69DE70, 0x69DEA0, 0x69DFC0,
 //   0x69DFF0, 0x69E010, and 0x6D09C0. GetButton at 0x6CFD40 indexes
-//   elements with a 0x60-byte stride. The prefix is opaque; base-class
-//   inheritance consolidation is pending evidence-backed base layouts.
+//   elements with a 0x60-byte stride. RTTI at vtable 0x7E8088 identifies
+//   the ToggleClass -> ControlClass -> GadgetClass -> LinkClass base chain.
 #ifndef GG_MATCH_UI_SHAPE_BUTTON_CLASS_H
 #define GG_MATCH_UI_SHAPE_BUTTON_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "toggle_class_methods.h"
 
 struct SHPStruct;
 
-struct ShapeButtonClass
+// VTABLE: GAMEMD 0x7E8088
+struct ShapeButtonClass : ToggleClass
 {
-    // Declarations follow ascending retail function address.
+    // Retail slot 0 reaches deleting destructor 0x4B57F0, which calls 0x69DDC0.
+    // FUNCTION: GAMEMD 0x69DDC0 (decl)
+    virtual ~ShapeButtonClass();
+    // FUNCTION: GAMEMD 0x69DEB0 (decl; slot 27 / +0x6C)
+    virtual int Draw(int forced);
+
+    // Recovered method declarations follow ascending retail function address.
     void ClearShape();                                                   // 0x69DE70
     void SetLoadedStatus(bool status);                                   // 0x69DEA0
     bool StartFlashing(int nDelay, int nInitDelay, bool bStart);         // 0x69DFC0
@@ -26,18 +34,7 @@ struct ShapeButtonClass
     static void __fastcall SetToolTip(ShapeButtonClass* pButton,
                                      const char* tip);                   // 0x6D09C0
 
-    // Opaque object prefix. The RTTI chain identifies bases, but their
-    // layouts have not yet been consolidated into this declaration.
-    char unknown_00[0x0C];
-    int X;                          // +0x0C, SetToolTip
-    int Y;                          // +0x10, SetToolTip
-    int Width;                      // +0x14, ClearShape / SetToolTip
-    int Height;                     // +0x18, ClearShape / SetToolTip
-    char unknown_1C[2];
-    bool field_1e;                  // +0x1E, AI
-    char unknown_1F[5];
-    unsigned int ID;                // +0x24, SetToolTip
-    char unknown_28[0x0C];
+    // ToggleClass supplies the confirmed prefix through +0x33.
     bool IsToFlash;                 // +0x34, AI / flashing methods
     char unknown_35[3];
     int FlashDelay;                 // +0x38, AI / flashing methods
@@ -48,16 +45,12 @@ struct ShapeButtonClass
     char unknown_5D[3];
 };
 
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, X) == 0x0C);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, Y) == 0x10);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, Width) == 0x14);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, Height) == 0x18);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_1C) == 0x1C);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, field_1e) == 0x1E);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_1F) == 0x1F);
+GG_STATIC_ASSERT(offsetof(ShapeButtonClass, IsDisabled) == 0x1E);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, ID) == 0x24);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, IsToFlash) == 0x34);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_35) == 0x35);
 GG_STATIC_ASSERT(offsetof(ShapeButtonClass, FlashDelay) == 0x38);

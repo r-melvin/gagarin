@@ -29637,7 +29637,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tool_tip_manager_process_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724AD0",
   "sym": "?Process@ToolTipManager@@QAE_NXZ",
   "len": "0xad",
@@ -29655,7 +29655,7 @@
   "pct": 15.2
  },
  {
-  "tu": "match/ui/tooltip_manager_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724520",
   "sym": "?SetTimerDelay@ToolTipManager@@QAEXH@Z",
   "len": "0xD",
@@ -29664,7 +29664,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724530",
   "sym": "?SaveTimerDelay@ToolTipManager@@QAEXXZ",
   "len": "0xD",
@@ -29673,7 +29673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724540",
   "sym": "?RestoreTimeDelay@ToolTipManager@@QAEXXZ",
   "len": "0xD",
@@ -29682,7 +29682,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724C00",
   "sym": "?IsToolTipShowing@ToolTipManager@@QBE_NXZ",
   "len": "0xB",
@@ -29691,16 +29691,16 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager_remove_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724730",
-  "sym": "?Remove@ToolTipManager_00724730@@QAEXI@Z",
-  "len": "0x17F",
+  "sym": "?Remove@ToolTipManager@@QAEXI@Z",
+  "len": "0x181",
   "name": "ToolTipManager::Remove",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager_state_methods.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x7241A0",
   "sym": "?SetState@ToolTipManager@@QAEX_N@Z",
   "len": "0x57",
@@ -30213,11 +30213,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/toggle_class_ctor_00723e60.cpp",
+  "tu": "match/ui/toggle_class_methods.cpp",
   "addr": "0x723E60",
-  "sym": "??0ToggleClass_00723E60@@QAE@HHHHH@Z",
+  "sym": "??0ToggleClass@@QAE@HHHHH@Z",
   "len": "0x3e",
-  "name": "ToggleClass::ToggleClass (prefix view)",
+  "name": "ToggleClass::ToggleClass",
   "status": "matched",
   "pct": 100
  },
@@ -31703,6 +31703,60 @@
   "sym": "_FUN_004B5B40@8",
   "len": "0x24",
   "name": "FUN_004B5B40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/control_class.cpp",
+  "addr": "0x48e520",
+  "sym": "??0ControlClass@@QAE@HHHHHID@Z",
+  "len": "0x42",
+  "name": "ControlClass::ControlClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/control_class.cpp",
+  "addr": "0x48e600",
+  "sym": "?FUN_0048E600@ControlClass@@UAEXPAUGadgetClass@@@Z",
+  "len": "0xa",
+  "name": "ControlClass::FUN_0048E600",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/control_class.cpp",
+  "addr": "0x48e610",
+  "sym": "?GetID@ControlClass@@UAEIXZ",
+  "len": "0x4",
+  "name": "ControlClass::GetID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/control_class.cpp",
+  "addr": "0x48e620",
+  "sym": "?Draw@ControlClass@@UAEHH@Z",
+  "len": "0x21",
+  "name": "ControlClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_class_ctor.cpp",
+  "addr": "0x4E12F0",
+  "sym": "??0GadgetClass@@QAE@HHHHID@Z",
+  "len": "0x4F",
+  "name": "GadgetClass::GadgetClass",
+  "status": "partial",
+  "pct": 65.4
+ },
+ {
+  "tu": "match/ui/control_class.cpp",
+  "addr": "0x48E5A0",
+  "sym": "?Action@ControlClass@@UAEHIPAIH@Z",
+  "len": "0x55",
+  "name": "ControlClass::Action",
   "status": "matched",
   "pct": 100
  }

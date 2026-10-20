@@ -44,7 +44,17 @@ Verified consolidation steps:
 - [ShapeButtonClass](match/ui/shape_button_class.h): the eight recovered methods
   share one declaration and one [implementation](match/ui/shape_button_class.cpp),
   replacing three conflicting declarations and three implementation files.
-  All eight retain their exact matches. Base-class consolidation remains pending.
+  All eight retain their exact matches. The declaration now inherits the
+  confirmed `ToggleClass → ControlClass → GadgetClass → LinkClass` chain;
+  the full set of methods for those classes is still incomplete.
+- [ControlClass](match/ui/control_class.h) and [ToggleClass](match/ui/toggle_class_methods.h):
+  shared inheritance replaces Toggle's separate constructor prefix view and
+  opaque virtual table. Five Control methods and three Toggle methods match;
+  the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
+- [ToolTipManager](match/ui/tooltip_manager_shared.h): seven recovered methods
+  share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
+  used by ShapeButton's tooltip calls. The partial Find view remains separate;
+  the manager's exact total size is not established.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
@@ -76,10 +86,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,359** | **17.0%** of 19,753 |
-| Sum of matched function lengths | 236 KiB | 6.4% of 3,708 KiB of listed function lengths |
-| Functions in progress (partial match) | 164 | 0.8% |
-| Tracked C++ translation units under `match/` | 849 | |
+| Functions matched at 100% | **3,364** | **17.0%** of 19,753 |
+| Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
+| Functions in progress (partial match) | 165 | 0.8% |
+| Tracked C++ translation units under `match/` | 847 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

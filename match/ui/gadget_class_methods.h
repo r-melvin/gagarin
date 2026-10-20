@@ -42,8 +42,12 @@
 // spelled as the base-qualified `LinkClass::Remove()` the retail bytes show — a
 // *non-tail* call (`call; pop esi; ret`), which a free-function stand-in would
 // have been tail-jumped into instead.
+// VTABLE: GAMEMD 0x7E92BC
 struct GadgetClass : public LinkClass
 {
+    // FUNCTION: GAMEMD 0x4E12F0 (decl; constructor)
+    GadgetClass(int x, int y, int width, int height, unsigned int flags, char sticky);
+
     // Overrides land in the base's slots regardless of declaration position;
     // NEW slots below are declared in exact vtable order so the compiler emits
     // the right [reg+offset] dispatch for every virtual call the matched code
@@ -62,9 +66,10 @@ struct GadgetClass : public LinkClass
     virtual void v38();                              // 0x38 MarkListToRedraw
     virtual void Disable();                          // 0x3C slot 15  <- matched
     virtual void Enable();                           // 0x40 slot 16  <- matched
-    virtual void v44();                              // 0x44 GetID
+    virtual unsigned int GetID();                    // 0x44, returns zero at 0x4AEBA0
     virtual void MarkRedraw();                       // 0x48 slot 18  <- matched
-    virtual void v4C();                              // 0x4C PeerToPeer
+    // 0x4C: 0x48E650 returns with RET 0xC; caller 0x48E5A0 passes these arguments.
+    virtual void PeerToPeer(unsigned flags, unsigned* key, GadgetClass* source);
     virtual void SetFocus();                          // 0x50 slot 20  <- matched
     virtual void KillFocus();                        // 0x54 slot 21  <- matched
     virtual bool IsFocused();                        // 0x58 slot 22  <- matched

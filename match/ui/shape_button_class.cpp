@@ -69,7 +69,7 @@ bool ShapeButtonClass::StopFlashing()
 // FUNCTION: GAMEMD 0x69E010
 bool ShapeButtonClass::AI()
 {
-    if (this->field_1e != 0)
+    if (this->IsDisabled != 0)
     {
         if (this->FlashDelay != 0)
         {
