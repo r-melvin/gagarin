@@ -30787,5 +30787,185 @@
   "name": "DriveLocomotion::Size",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/map/map_iterator_helpers_00578350.cpp",
+  "addr": "0x578350",
+  "sym": "?FUN_00578350@MapIterator_00578350@@QAEXXZ",
+  "len": "0x33",
+  "name": "FUN_00578350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_iterator_helpers_00578350.cpp",
+  "addr": "0x578850",
+  "sym": "?FUN_00578850@MapIterator_00578350@@QAEXXZ",
+  "len": "0x29",
+  "name": "FUN_00578850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_iterator_helpers_00578350.cpp",
+  "addr": "0x578AC0",
+  "sym": "?FUN_00578AC0@ScreenRedraw_00578AC0@@QAEXXZ",
+  "len": "0x7",
+  "name": "FUN_00578AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_iterator_helpers_00578350.cpp",
+  "addr": "0x578D60",
+  "sym": "?FUN_00578D60@@YIEH@Z",
+  "len": "0x16",
+  "name": "FUN_00578D60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/cell_type_predicates_00580b20.cpp",
+  "addr": "0x00580B20",
+  "sym": "?FUN_00580B20@@YIHPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0x44",
+  "name": "FUN_00580B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/cell_type_predicates_00580b20.cpp",
+  "addr": "0x00580B70",
+  "sym": "?FUN_00580B70@@YIHPAUNeighborCoord_0057CBE0@@@Z",
+  "len": "0x48",
+  "name": "FUN_00580B70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_timer_remaining_004b4d70.cpp",
+  "addr": "0x4B4D70",
+  "sym": "?FUN_004B4D70@@YIHPAUCDTimerClass@@@Z",
+  "len": "0x1c",
+  "name": "FUN_004B4D70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_reset_004349f0.cpp",
+  "addr": "0x4349F0",
+  "sym": "?FUN_004349F0@@YIXPAUBitFontResetView_004349F0@@@Z",
+  "len": "0x4a",
+  "name": "FUN_004349F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_global_reset_00434ab0.cpp",
+  "addr": "0x434AB0",
+  "sym": "?FUN_00434AB0@@YGXXZ",
+  "len": "0x17",
+  "name": "FUN_00434AB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x436900",
+  "sym": "?FUN_00436900@BuildingLightMethodView_00436900@@QAEHXZ",
+  "len": "0x6",
+  "name": "FUN_00436900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x436910",
+  "sym": "?FUN_00436910@@YGHPAXPAI@Z",
+  "len": "0x38",
+  "name": "FUN_00436910",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x4369C0",
+  "sym": "?FUN_004369C0@@YGHPAX0H@Z",
+  "len": "0x17",
+  "name": "FUN_004369C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x4369E0",
+  "sym": "?FUN_004369E0@BuildingLightMethodView_00436900@@QAEHXZ",
+  "len": "0x3",
+  "name": "FUN_004369E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x4369F0",
+  "sym": "?FUN_004369F0@BuildingLightMethodView_00436900@@QAEHXZ",
+  "len": "0x6",
+  "name": "FUN_004369F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/building_light_com_view_00436900.cpp",
+  "addr": "0x436A00",
+  "sym": "?FUN_00436A00@BuildingLightMethodView_00436900@@QAEXHD@Z",
+  "len": "0x38",
+  "name": "FUN_00436A00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/record_lookup_00589680.cpp",
+  "addr": "0x589680",
+  "sym": "?FUN_00589680@RecordEntry_00589680@@QAEPAU1@XZ",
+  "len": "0x1e",
+  "name": "RecordEntry::FUN_00589680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/record_lookup_00589680.cpp",
+  "addr": "0x5896A0",
+  "sym": "?FUN_005896A0@RecordTable_005896A0@@QAEHPBURecordKey_005896A0@@@Z",
+  "len": "0x4a",
+  "name": "RecordTable::FUN_005896A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/vector_search_00589290.cpp",
+  "addr": "0x589290",
+  "sym": "?Remove@SearchVector8_00589290@@QAE_NH@Z",
+  "len": "0x39",
+  "name": "Remove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/vector_search_00589290.cpp",
+  "addr": "0x5892D0",
+  "sym": "?Find@SearchVector8_00589290@@QBEHABUSearchRecord8_00589290@@@Z",
+  "len": "0x26",
+  "name": "Find",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/vector_search_00589290.cpp",
+  "addr": "0x589300",
+  "sym": "?Equals@SearchVector16_00589300@@QBE_NABU1@@Z",
+  "len": "0x63",
+  "name": "Equals",
+  "status": "partial",
+  "pct": 88.1
  }
 ]
