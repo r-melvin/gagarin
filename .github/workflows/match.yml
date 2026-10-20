@@ -20,6 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Binary-free match-oracle tests
+        run: python3 -m unittest discover -s scripts/vc6 -p 'test_*.py'
+
       # The pre-commit hook regenerates the README graphic; this catches a
       # commit made without it.
       - name: Progress graphic matches the manifest

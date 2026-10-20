@@ -3,8 +3,8 @@
 #
 # Reads the authoritative match manifest (scripts/data/match_manifest.json: the verified
 # {tu, addr, sym, len, status} per function), compiles each referenced TU with the
-# period VC6 toolchain, and re-runs the per-function oracle (diff_retail.py, then
-# raw_match.py as a fallback for switch/table functions) against the user's retail
+# period VC6 toolchain, and re-runs the per-function oracle (raw_match.py, then
+# diff_retail.py for remaining cases) against the user's retail
 # gamemd.exe. Emits a per-TU and overall match-% table, and FAILS if any function
 # marked `matched` no longer reaches 100% (a true regression gate). The manifest
 # carries the ground-truth len/sym so the check is exact (auto-deriving lengths
@@ -15,7 +15,7 @@
 # CLI) + the fetched toolchain — both developer-supplied, never committed.
 #
 # Usage:   scripts/vc6/verify_all.py [--md docs/match_dashboard.md]
-# Exit 0 iff every annotated function still matches (100%, modulo relocations).
+# Exit 0 iff all referenced TUs compile and every 100% row still matches.
 import argparse, json, os, subprocess, sys
 
 # NOTE: `matched` entries are re-proved on every run, but a `partial` entry's
@@ -38,9 +38,13 @@ def pct_of(stdout):
 
 
 def verify(obj, sym, addr, length):
-    """100% per diff_retail or raw_match (the gold-standard fallback)."""
+    """100% per raw_match, then instruction comparison for remaining cases.
+
+    Exact bytes with actual COFF relocations are the cheapest strong proof.
+    Trying them first avoids expensive disassembly for already-exact functions.
+    """
     last = ""
-    for tool in ("diff_retail.py", "raw_match.py"):
+    for tool in ("raw_match.py", "diff_retail.py"):
         r = subprocess.run(["python3", f"{ROOT}/scripts/vc6/{tool}", "--obj", obj,
                             "--sym", sym, "--addr", addr, "--len", length],
                            capture_output=True, text=True)
@@ -56,7 +60,8 @@ def main():
     ap.add_argument("--md", help="write a markdown dashboard to this path")
     args = ap.parse_args()
 
-    man = json.load(open(args.manifest))
+    with open(args.manifest) as manifest:
+        man = json.load(manifest)
     by_tu = {}
     for e in man:
         by_tu.setdefault(e["tu"], []).append(e)
@@ -79,15 +84,15 @@ def main():
             md.append(f"| `{tu}` | — | — | **COMPILE FAIL** |"); continue
         m = p = 0; bad = []
         for e in by_tu[tu]:
-            ok, pc = verify(obj, e["sym"], e["addr"], e["len"])
             if e.get("pct") == 100:
+                ok, pc = verify(obj, e["sym"], e["addr"], e["len"])
                 if ok:
                     m += 1
                 else:
                     regr += 1; bad.append(f"{e['name']} -> {pc}")
                     print(f"  REGRESSED {tu}::{e['name']} -> {pc}")
             else:
-                p += 1  # known partial / toolchain near-match
+                p += 1  # Compile checked above; recorded partial pct is not re-measured.
         tot_m += m; tot_p += p
         st = "OK" if not bad else "**REGRESSED: " + "; ".join(bad) + "**"
         print(f"  {tu:<46} matched {m}  partial {p}  {st if bad else ''}")

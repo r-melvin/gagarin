@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Provenance: original
 # raw_match.py — gold-standard byte-level match check for one function.
 #
 # Compares a compiled function's raw bytes (sliced straight from the i386-COFF
@@ -42,7 +44,8 @@ def obj_func_bytes(obj, sym, n):
     Returns (bytes, reloc_offsets) where reloc_offsets are relative to the start
     of the function. With /Gy each function is its own COMDAT section, so the
     section's relocation table belongs to this function alone."""
-    d = open(obj, "rb").read()
+    with open(obj, "rb") as stream:
+        d = stream.read()
     nsec, = struct.unpack_from("<H", d, 2)
     sptr, nsym = struct.unpack_from("<II", d, 8)
     strtab = sptr + nsym * 18
@@ -54,8 +57,11 @@ def obj_func_bytes(obj, sym, n):
         sec_rel[i + 1] = (struct.unpack_from("<I", d, o + 24)[0],
                           struct.unpack_from("<H", d, o + 32)[0])
     want = sym.encode()
-    for i in range(nsym):
+    i = 0
+    while i < nsym:
         o = sptr + i * 18
+        # Auxiliary records are not symbols, even if their payload resembles one.
+        i += 1 + d[o + 17]
         name = d[o:o + 8]
         if name[:4] == b"\0\0\0\0":
             so = struct.unpack_from("<I", d, o + 4)[0]
@@ -65,6 +71,11 @@ def obj_func_bytes(obj, sym, n):
         if nm == want:
             val = struct.unpack_from("<I", d, o + 8)[0]
             sec = struct.unpack_from("<h", d, o + 12)[0]
+            # VC6 can put an undefined declaration before the same name's
+            # defined COMDAT (notably template deleting destructors). Keep
+            # searching; undefined/absolute/debug symbols have no section bytes.
+            if sec <= 0:
+                continue
             base = sec_raw[sec]
             rptr, rcount = sec_rel[sec]
             relocs = set()
