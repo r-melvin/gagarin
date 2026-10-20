@@ -8,9 +8,11 @@ project; `CONTRIBUTING.md` explains the day-to-day workflow.
 
 gagarin is a matching decompilation of the *Red Alert 2 / Yuri's Revenge*
 engine, retail `gamemd.exe` **v1.001**, built with MSVC 6.0 SP5. The aim is to
-preserve source that is lost: C++ that, compiled with the period toolchain,
-reproduces the retail binary instruction for instruction at every annotated
-function.
+preserve source that is lost: a human-readable, structured C++ project, as
+close to Westwood's organization as binary evidence permits, whose complete
+build reproduces the pinned retail executable byte for byte. This is the
+ultimate completion target; it has not been achieved. Matching annotated
+functions instruction for instruction is an intermediate fidelity gate.
 
 A function is **matched** only when:
 
@@ -21,12 +23,19 @@ A function is **matched** only when:
 - every struct member offset it touches is confirmed against an instruction in
   the binary and pinned by an `offsetof`/`sizeof` static assert.
 
-The unit of matching is the function. Statically linked CRT and third-party
-code is out of scope: mark it `LIBRARY` and move on. Never promise a
-byte-identical `.exe`.
+The unit of matching is the function. Source recovery of statically linked CRT
+and third-party code is out of scope: mark it `LIBRARY` and move on. Those
+dependencies still have to be accounted for in the complete build and image
+comparison; excluding their source recovery does not exclude their bytes from
+the final target.
 
-The oracle is the per-function match percentage against the retail binary, not
-behaviour tests.
+Do not claim a byte-identical executable until a reproducible integrated build
+has produced one and the complete file equals the pinned retail image, without
+relocation normalization or other byte masking. Per-function checks, successful
+compilation and a successful link do not establish whole-image identity.
+
+For annotated functions, the oracle is the per-function match percentage against
+the retail binary, not behaviour tests.
 
 ## Legal scope (non-negotiable)
 

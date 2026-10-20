@@ -2,15 +2,16 @@
 
 **gagarin** reconstructs the *Command & Conquer: Red Alert 2 — Yuri's Revenge*
 engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ project.
-The ultimate goal is a compilable source tree whose classes, inheritance,
-interfaces, source organization and coding style are as close to Westwood's
-original project as the evidence allows. Preserving that source project is the
+The ultimate goal is a buildable, structured C++ project that reproduces the
+complete v1.001 `gamemd.exe` byte for byte. Its classes, inheritance,
+interfaces, source organization and coding style should be as close to
+Westwood's original project as the evidence allows. Preserving that project is the
 deliverable: readable C++, shared engine types and implementations, and an
-integrated build. Reconstruction is in progress.
+integrated build. This goal has not been achieved; reconstruction is in progress.
 
-Per-function instruction matching under the MSVC 6-era toolchain is the fidelity
-check on that reconstruction. Individually matching functions are intermediate
-results; the deliverable is a shared, integrated C++ project.
+Per-function instruction matching under the MSVC 6-era toolchain is an
+intermediate fidelity check. The final target requires an integrated project
+build and a comparison of the complete executable, without byte masking.
 
 ## Why
 
@@ -31,9 +32,10 @@ structure has been recovered.
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
-| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h) and [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | Not yet established. The current [compile gate](scripts/vc6/compile_all.sh) compiles translation units separately; the tracked tree has no top-level source-project build target or whole-engine link gate. | Provide a project-wide build that compiles and links the reconstructed engine through shared declarations and implementations. |
+| Complete executable reproduction | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | Reproduce and compare the entire pinned PE file byte for byte, including code, data, headers, imports, relocations and resources; account for library dependencies and deterministic build metadata. |
 | Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
 
 Address-scoped matching files and narrow layout views are working forms, not the
@@ -107,6 +109,9 @@ The remaining work toward the source-project goal is tracked by these gates:
   resolving dependencies through shared source rather than matching stand-ins.
 - [ ] Recover the remaining in-scope engine functions and verify their matches
   with the period toolchain.
+- [ ] Account for CRT/third-party dependencies and the complete PE layout,
+  data, resources and build metadata, then verify the integrated build's output
+  byte for byte against the pinned retail `gamemd.exe`.
 - [ ] Audit the integrated source tree against those gates before declaring
   the reconstruction complete.
 
@@ -159,9 +164,10 @@ python3 scripts/orchestration/padding_scan.py /path/to/gamemd.exe \
 ```
 
 The function export is produced by `ghidra function list --limit 100000 --json`.
-Statically linked CRT and third-party code is outside the matching scope under
-[AGENTS.md](AGENTS.md). Function matching checks the reconstructed project's
-fidelity; a byte-identical executable is not a completion criterion.
+Source recovery of statically linked CRT and third-party code is outside the
+matching scope under [AGENTS.md](AGENTS.md). Their bytes still belong to the
+complete executable reproduction target, so the build must account for those
+dependencies. Per-function matching does not prove whole-image identity.
 
 ## What "matched" means
 

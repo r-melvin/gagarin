@@ -3,6 +3,14 @@
 Thanks for helping preserve the Red Alert 2 / Yuri's Revenge engine. The rules
 are in `AGENTS.md`; this guide covers the practical side.
 
+The ultimate deliverable is a human-readable, structured C++ project whose
+complete build reproduces the pinned v1.001 `gamemd.exe` byte for byte. The
+per-function workflow below is an intermediate gate. Current scripts compile
+translation units and verify annotated functions; they do not yet provide an
+integrated engine link or a whole-image comparison. Completion requires those
+gates as well as the source reconstruction. CRT/third-party source recovery
+remains out of scope, but the complete build must account for those dependencies.
+
 ## What you need
 
 - A legally owned retail **`gamemd.exe` v1.001**. Its SHA-256 is in
