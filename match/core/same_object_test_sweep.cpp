@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The five identity tests, ordered ascending by retail address.
+// The four remaining identity tests, ordered ascending by retail address.
 //
 // The two conditions have to sit in one `&&` with the `true` inline: split
 // into two early-return `if`s the failure block is duplicated and the score
@@ -32,16 +32,6 @@ bool __fastcall FUN_0052B600(HandleHolder* self, int, void** other)
 
 // FUNCTION: GAMEMD 0x55F6C0
 bool __fastcall FUN_0055F6C0(HandleHolder* self, int, void** other)
-{
-    if (self->Held != 0 && *self->Held == *other) {
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x724FA0
-bool __fastcall FUN_00724FA0(HandleHolder* self, int, void** other)
 {
     if (self->Held != 0 && *self->Held == *other) {
         return true;

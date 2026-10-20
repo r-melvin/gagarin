@@ -13,13 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// Surface — an opaque drawing surface with a virtual destructor. Only slot 0
-// matters: `delete` dispatches the scalar-deleting destructor there with the
-// free flag (`PUSH 1; CALL [EAX]`).
-struct Surface
-{
-    virtual ~Surface();
-};
+#include "surface_class.h"
 
 struct ZBuffer
 {

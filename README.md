@@ -4,7 +4,9 @@
 engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ project.
 The ultimate goal is a compilable source tree whose classes, inheritance,
 interfaces, source organization and coding style are as close to Westwood's
-original project as the evidence allows. Reconstruction is in progress.
+original project as the evidence allows. Preserving that source project is the
+deliverable: readable C++, shared engine types and implementations, and an
+integrated build. Reconstruction is in progress.
 
 Per-function instruction matching under the MSVC 6-era toolchain is the fidelity
 check on that reconstruction. Individually matching functions are intermediate
@@ -22,7 +24,9 @@ Westwood's original source files.
 
 Matching coverage and project reconstruction are tracked separately. A higher
 match count does not by itself establish a coherent class hierarchy or a
-project-wide build.
+project-wide build. The status below records demonstrated capabilities and
+remaining completion gates, rather than estimating how much original source
+structure has been recovered.
 
 | Milestone | Current state and evidence | Completion gate |
 | --- | --- | --- |
@@ -53,17 +57,26 @@ Verified consolidation steps:
   shared inheritance replaces Toggle's separate constructor prefix view and
   opaque virtual table. Five Control methods and three Toggle methods match;
   the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
-- [ToolTipManager](match/ui/tooltip_manager_shared.h): fourteen verified functions
+- [ToolTipManager](match/ui/tooltip_manager_shared.h): fifteen verified functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
   used by ShapeButton's tooltip calls. Its constructor also models the embedded
   vector's confirmed base class. The partial Find view remains separate;
-  the manager's exact total size is not established.
+  the manager's exact total size is not established. Its table cache lookup is
+  now a native method, and tooltip bounds use a shared asserted rectangle layout.
+- [Surface](match/renderer/surface_class.h): BitFont and ZBuffer now share the
+  confirmed Surface interface and geometry declarations. Six native methods
+  live in its [implementation](match/renderer/surface_class.cpp), replacing
+  three stand-ins and adding three exact default methods. The interface pins
+  all 34 virtual slots; unknown signatures remain placeholders, and the complete
+  object size and derived layouts are not established.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
 
-Update this table as class-consolidation and build milestones are verified;
-do not infer their completion from the matching percentages.
+Update this table and the consolidation record after each verified batch,
+recording the affected classes, supporting source/evidence, and remaining
+gaps. Update function totals separately; do not infer structural completion
+from the matching percentages.
 
 The remaining work toward the source-project goal is tracked by these gates:
 
@@ -89,10 +102,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,374** | **17.1%** of 19,753 |
+| Functions matched at 100% | **3,378** | **17.1%** of 19,753 |
 | Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 847 | |
+| Tracked C++ translation units under `match/` | 848 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -112,7 +125,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 157 matched entries. Its candidate count is therefore
+listed entries, including 158 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

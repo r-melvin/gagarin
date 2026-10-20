@@ -180,3 +180,13 @@ bool ToolTipManager::IsToolTipShowing() const
 {
     return CurrentToolTip != 0;
 }
+
+// FUNCTION: GAMEMD 0x724FA0
+// The Add caller supplies ECX=&Table and one stack key pointer; RET 4.
+bool ToolTipTable::HasCachedKey(const unsigned int* key)
+{
+    if (Cached != 0 && Cached->Key == *key) {
+        return true;
+    }
+    return false;
+}

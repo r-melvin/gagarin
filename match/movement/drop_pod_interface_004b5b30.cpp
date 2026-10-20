@@ -23,6 +23,8 @@ struct DropPodInterfaceSlots_004B5B30 {
     void* slot0C;
     unsigned char (__stdcall* slot10)(void*);
     CoordStruct* (__stdcall* slot14)(const void*, CoordStruct*);
+    void* unknown_18[12];
+    void (__stdcall* Unknown_48)(void*);
 };
 GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot00) == 0);
 GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot04) == 4);
@@ -30,7 +32,9 @@ GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot08) == 8);
 GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot0C) == 0xC);
 GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot10) == 0x10);
 GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, slot14) == 0x14);
-GG_STATIC_ASSERT(sizeof(DropPodInterfaceSlots_004B5B30) == 0x18);
+GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(DropPodInterfaceSlots_004B5B30, Unknown_48) == 0x48);
+GG_STATIC_ASSERT(sizeof(DropPodInterfaceSlots_004B5B30) == 0x4C);
 
 // The Load body dispatches IStream::Read at slot 3 and releases an existing
 // locomotion object through IUnknown::Release at slot 2.
@@ -132,4 +136,14 @@ long __stdcall DropPodLocomotionClass::Load(IStream_0055AAC0* stream)
         }
     }
     return result;
+}
+
+// FUNCTION: GAMEMD 0x004B63A0
+// VTABLE: GAMEMD 0x007E8278 — slot 18 (+0x48) targets this entry. The
+// complete object's constructor stores this table at +0x04, so the physical
+// receiver passed on the stack is the ILocomotion subobject at complete+4.
+// The body is only RET 4: no behavior or method name beyond this slot is
+// established by the retail bytes.
+void __stdcall DropPodILocomotionView_007E8278::Unknown_48()
+{
 }

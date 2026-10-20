@@ -145,10 +145,10 @@ void __fastcall ShapeButtonClass::SetToolTip(ShapeButtonClass* pButton,
         tooltip.Text = tip;
         tooltip.field_18 = false;
         tooltip.GadgetID = pButton->ID;
-        tooltip.X = pButton->X;
-        tooltip.Y = pButton->Y;
-        tooltip.Width = pButton->Width;
-        tooltip.Height = pButton->Height;
+        tooltip.Bounds.X = pButton->X;
+        tooltip.Bounds.Y = pButton->Y;
+        tooltip.Bounds.Width = pButton->Width;
+        tooltip.Bounds.Height = pButton->Height;
         ToolTipManager_Instance->Remove(tooltip.GadgetID);
         ToolTipManager_Instance->Add(tooltip);
     }

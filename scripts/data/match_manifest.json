@@ -8208,20 +8208,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_accessor_methods.cpp",
+  "tu": "match/renderer/surface_class.cpp",
   "addr": "0x411540",
-  "sym": "?FUN_00411540@Obj_00411500@@QBEHXZ",
+  "sym": "?GetWidth@Surface@@UBEHXZ",
   "len": "0x4",
-  "name": "FUN_00411540",
+  "name": "Surface::GetWidth",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_accessor_methods.cpp",
+  "tu": "match/renderer/surface_class.cpp",
   "addr": "0x411550",
-  "sym": "?FUN_00411550@Obj_00411500@@QBEHXZ",
+  "sym": "?GetHeight@Surface@@UBEHXZ",
   "len": "0x4",
-  "name": "FUN_00411550",
+  "name": "Surface::GetHeight",
   "status": "matched",
   "pct": 100.0
  },
@@ -10134,11 +10134,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/same_object_test_sweep.cpp",
+  "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724FA0",
-  "sym": "?FUN_00724FA0@@YI_NPAUHandleHolder@@HPAPAX@Z",
+  "sym": "?HasCachedKey@ToolTipTable@@QAE_NPBI@Z",
   "len": "0x1b",
-  "name": "FUN_00724fa0",
+  "name": "ToolTipTable::HasCachedKey",
   "status": "matched",
   "pct": 100
  },
@@ -10467,11 +10467,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc14_methods.cpp",
+  "tu": "match/renderer/surface_class.cpp",
   "addr": "0x411510",
-  "sym": "?FUN_00411510@Obj_00411510@@QBE?AUQuad4i@@XZ",
+  "sym": "?GetRect@Surface@@UBE?AULTRBStruct@@XZ",
   "len": "0x24",
-  "name": "FUN_00411510",
+  "name": "Surface::GetRect",
   "status": "matched",
   "pct": 100.0
  },
@@ -28055,7 +28055,7 @@
  {
   "tu": "match/renderer/bit_font_lock_methods.cpp",
   "addr": "0x4348F0",
-  "sym": "?Lock@BitFont@@QAEXPAUSurface@@@Z",
+  "sym": "?Lock@BitFont@@QAEXPAVSurface@@@Z",
   "len": "0x9d",
   "name": "BitFont::Lock",
   "status": "matched",
@@ -31847,6 +31847,42 @@
   "sym": "??0ToolTipManager@@QAE@PAX@Z",
   "len": "0xA7",
   "name": "ToolTipManager::ToolTipManager",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
+  "addr": "0x4B63A0",
+  "sym": "?Unknown_48@DropPodILocomotionView_007E8278@@QAGXXZ",
+  "len": "0x3",
+  "name": "DropPod ILocomotion slot +0x48",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/surface_class.cpp",
+  "addr": "0x4114f0",
+  "sym": "?unknown_64@Surface@@UAE_NII@Z",
+  "len": "0x5",
+  "name": "Surface::unknown_64",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/surface_class.cpp",
+  "addr": "0x411500",
+  "sym": "?unknown_68@Surface@@UAE_NII@Z",
+  "len": "0x5",
+  "name": "Surface::unknown_68",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/surface_class.cpp",
+  "addr": "0x4115c0",
+  "sym": "?unknown_84@Surface@@UAE_NXZ",
+  "len": "0x3",
+  "name": "Surface::unknown_84",
   "status": "matched",
   "pct": 100
  }

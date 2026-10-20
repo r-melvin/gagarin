@@ -13,42 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// ---------------------------------------------------------------------------
-// Surface — the polymorphic blit surface BitFont::UnLock releases. Modelled as
-// a pure-virtual interface so cl emits the exact `MOV EAX,[ECX]; CALL [EAX+0x60]`
-// indirect-virtual sequence. Only the invoked slot (24 == 0x60, Unlock) carries
-// a real signature; the rest merely pin the slot offsets.
-//   slot 24 (0x60): Unlock()   — UnLock  CALL [EAX+0x60]
-// ---------------------------------------------------------------------------
-class Surface
-{
-public:
-    virtual void vf00() = 0;  // 0x00
-    virtual void vf04() = 0;  // 0x04
-    virtual void vf08() = 0;  // 0x08
-    virtual void vf0C() = 0;  // 0x0C
-    virtual void vf10() = 0;  // 0x10
-    virtual void vf14() = 0;  // 0x14
-    virtual void vf18() = 0;  // 0x18
-    virtual void vf1C() = 0;  // 0x1C
-    virtual void vf20() = 0;  // 0x20
-    virtual void vf24() = 0;  // 0x24
-    virtual void vf28() = 0;  // 0x28
-    virtual void vf2C() = 0;  // 0x2C
-    virtual void vf30() = 0;  // 0x30
-    virtual void vf34() = 0;  // 0x34
-    virtual void vf38() = 0;  // 0x38
-    virtual void vf3C() = 0;  // 0x3C
-    virtual void vf40() = 0;  // 0x40
-    virtual void vf44() = 0;  // 0x44
-    virtual void vf48() = 0;  // 0x48
-    virtual void vf4C() = 0;  // 0x4C
-    virtual void vf50() = 0;  // 0x50
-    virtual void vf54() = 0;  // 0x54
-    virtual void vf58() = 0;  // 0x58
-    virtual void vf5C() = 0;  // 0x5C
-    virtual bool Unlock() = 0; // 0x60
-};
+#include "surface_class.h"
 
 // ---------------------------------------------------------------------------
 // BitFont::InternalData — the loaded font's glyph table. Offsets confirmed from

@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Provenance: original
 """make_target.py — build decomp-permuter's `target.o` from retail gamemd.exe.
 
 The permuter scores a candidate object against a *target object*.  We have no
@@ -8,45 +10,45 @@ an ELF32 i386 object with a single `.text` symbol.  The permuter detects the
 architecture from that ELF header (it already ships x86 support: X86_SETTINGS in
 src/objdump.py), disassembles both sides with the same objdump, and compares.
 
-Usage: make_target.py --addr 0x5B2990 --out <rundir>/target.o [--len 0x2a]
+Usage: make_target.py --addr 0x5B2990 --len 0x2a --out <rundir>/target.o
+
+The explicit length must be validated against the complete retail entry span.
+Ghidra's function-size field can omit post-call blocks or final RET bytes.
 """
 import argparse, json, os, subprocess, sys
 
 GHIDRA = os.environ.get("GHIDRA", os.path.expanduser("~/.cargo/bin/ghidra"))
 
 
-def func_size(addr):
-    out = subprocess.run([GHIDRA, "function", "get", hex(addr), "--json"],
-                         capture_output=True, text=True).stdout
-    for r in json.loads(out):
-        if int(r["entry_point"], 16) == addr and r.get("size"):
-            return int(r["size"])
-    raise SystemExit(f"make_target: {addr:#x} is not a function entry point; "
-                     f"pass --len")
-
-
 def func_bytes(addr, length):
-    out = subprocess.run([GHIDRA, "disasm", hex(addr),
-                          "-n", str(max(64, length // 2 + 16))],
-                         capture_output=True, text=True).stdout
-    blob, consumed = b"", 0
-    for d in json.loads(out):
-        if consumed >= length:
-            break
-        b = bytes.fromhex(d["bytes"])
-        blob += b
-        consumed += len(b)
-    return blob[:length]
+    # Ghidra's instruction listing can omit blocks (notably after calls it
+    # misclassifies as noreturn). Concatenating that listing silently closes
+    # gaps and can pull bytes from the next function into the target. Read the
+    # actual contiguous memory span, independent of the analysis body shape.
+    out = subprocess.run([GHIDRA, "memory", "read", hex(addr), str(length)],
+                         capture_output=True, text=True, check=True).stdout
+    blob = bytearray()
+    for block in json.loads(out):
+        expected = addr + len(blob)
+        if int(block["address"], 16) != expected:
+            raise ValueError(f"make_target: noncontiguous memory at {expected:#x}")
+        blob.extend(bytes.fromhex(block["hex"]))
+    if len(blob) != length:
+        raise ValueError(f"make_target: got {len(blob)} of {length} memory bytes")
+    return bytes(blob)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--addr", required=True)
-    ap.add_argument("--len", default="auto")
+    ap.add_argument("--len", required=True,
+                    help="validated contiguous retail function length (hex)")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
     addr = int(a.addr, 16)
-    length = func_size(addr) if a.len == "auto" else int(a.len, 16)
+    length = int(a.len, 16)
+    if length <= 0:
+        ap.error("--len must be positive")
     blob = func_bytes(addr, length)
     if len(blob) != length:
         raise SystemExit(f"make_target: got {len(blob)} of {length} bytes")

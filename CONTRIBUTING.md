@@ -34,8 +34,10 @@ don't work on the same function.
 
 ## Matching a function
 
-1. Disassemble from the entry point (`ghidra disasm 0xADDR -n N`). That listing
-   is what you have to match. Treat the decompiler's output as a hint only.
+1. Disassemble from the validated entry point (`ghidra disasm 0xADDR -n N`).
+   Confirm the complete contiguous span, including the final `RET`, against
+   raw memory bytes: Ghidra's listing and function-size field can omit blocks
+   after calls. Treat the decompiler's output as a hint only.
 2. Write the C++ under `match/<subsystem>/`, using the original 32-bit layout:
    - members in retail order, gaps named `unknown_XX`;
    - `GG_STATIC_ASSERT(offsetof(...))` / `sizeof` for every member you rely on,
@@ -43,8 +45,12 @@ don't work on the same function.
    - the correct calling convention (`__thiscall` methods, `__stdcall` COM).
 3. Run `match.sh` and iterate on types, statement order, phrasing and flags.
    Inline `_asm` is acceptable when nothing else reproduces the output.
-4. For the last few register or ordering mismatches, try the permuter
-   (`scripts/permuter/new_run.sh`).
+4. For the last few register or ordering mismatches, try the permuter:
+   `scripts/permuter/new_run.sh <addr> <C-name> <native-symbol> /tmp/run <length>`.
+   The fifth argument is the full validated retail span in hex. Before searching,
+   check the generated target against those raw bytes and require the adapter's
+   compiled body to equal a fresh compile of the actual C++ source. Keep raw
+   targets, adapters and search output under `/tmp`.
 
 ## File conventions
 

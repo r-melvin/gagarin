@@ -9,25 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// A sixteen-byte value type, returned through a caller-supplied pointer.
-struct Quad4i
-{
-    int a, b, c, d;
-
-    Quad4i() { }
-};
-
-struct Obj_00411510
-{
-    char _pad00[0x4];
-    int  unknown_04;   // +0x0004
-    int  unknown_08;   // +0x0008
-
-    // FUNCTION: GAMEMD 0x411510
-    Quad4i FUN_00411510() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00411510, unknown_08) == 0x8);
-
 // A __thiscall callback: the element goes in ECX and nothing on the stack.
 typedef void (__fastcall* ElemFn)(void* elem);
 

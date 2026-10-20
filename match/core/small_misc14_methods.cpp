@@ -24,20 +24,6 @@ void __stdcall FUN_004068F0(char* base, int stride, int count, ElemFn fn)
     }
 }
 
-// FUNCTION: GAMEMD 0x411510
-// The first two fields come back zeroed; only the last two carry values.
-Quad4i Obj_00411510::FUN_00411510() const
-{
-    Quad4i result;
-
-    result.a = 0;
-    result.b = 0;
-    result.c = unknown_04;
-    result.d = unknown_08;
-
-    return result;
-}
-
 // FUNCTION: GAMEMD 0x431060
 // Clear bit 1 on every live slot - eight groups of three, walked as one
 // pointer. The whole sweep is skipped unless the field at +0x60 is set.

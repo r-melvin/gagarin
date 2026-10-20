@@ -115,36 +115,20 @@ struct Obj_00409300
 GG_STATIC_ASSERT(offsetof(Obj_00409300, unknown_34) == 0x34);
 GG_STATIC_ASSERT(offsetof(Obj_00409300, unknown_38) == 0x38);
 
-// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep, docs/rtti_sweep.md).
-// This one stub is the receiver for four functions whose DECLARING classes are
-// three different levels of the same chain (BSurface : XSurface : Surface), so
-// no single class name is correct for it:
-//   0x411540 -> in Surface / XSurface / DSurface / BSurface tables, slot 21
-//   0x411550 -> in Surface / XSurface / DSurface / BSurface tables, slot 22
-//   0x411570 -> in XSurface / BSurface tables only,                 slot 26
-//   0x411630 -> in BSurface's table only (0x7E2070),                slot 28
-// Naming the struct `BSurface_00411500` would over-claim the first three as
-// BSurface declarations; naming it `Surface_00411500` would be wrong for the
-// last. Splitting the stub would move bytes. It stays `Obj_` until the four are
-// separated onto their declaring classes; only 0x411630 is BSurface's own.
+// Two remaining surface-related layout views: 0x411570 reads/writes +0x0C
+// through XSurface/BSurface vtable slot +0x60; 0x411630 reads +0x10 through
+// BSurface slot +0x70. Their declaring-class layouts remain to be consolidated.
+// The width/height methods at 0x411540/550 now belong to the shared Surface.
 struct Obj_00411500
 {
-    char _pad000[0x4 - 0x0];
-    int  unknown_04;   // +0x0004
-    int  unknown_08;   // +0x0008
+    char _pad000[0xC - 0x0];
     int  unknown_0C;   // +0x000C
     int  unknown_10;   // +0x0010
-    // FUNCTION: GAMEMD 0x411540
-    int FUN_00411540() const;
-    // FUNCTION: GAMEMD 0x411550
-    int FUN_00411550() const;
     // FUNCTION: GAMEMD 0x411570
     bool FUN_00411570();
     // FUNCTION: GAMEMD 0x411630
     int FUN_00411630() const;
 };
-GG_STATIC_ASSERT(offsetof(Obj_00411500, unknown_04) == 0x4);
-GG_STATIC_ASSERT(offsetof(Obj_00411500, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(Obj_00411500, unknown_0C) == 0xC);
 GG_STATIC_ASSERT(offsetof(Obj_00411500, unknown_10) == 0x10);
 

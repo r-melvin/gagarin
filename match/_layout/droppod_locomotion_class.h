@@ -52,6 +52,19 @@ extern unsigned long DAT_007E9A7C;
 
 struct IStream_0055AAC0;
 
+// This non-virtual view models the ILocomotion subobject physically stored at
+// complete-object +0x04. Its receiver is therefore the interface pointer, not
+// the complete DropPodLocomotionClass pointer. The virtual slot is pinned in
+// drop_pod_interface_004b5b30.cpp; keeping this as a non-virtual declaration
+// does not add another vptr or change the recovered complete-object layout.
+struct DropPodILocomotionView_007E8278
+{
+    void* Vptr;
+    void __stdcall Unknown_48();
+};
+GG_STATIC_ASSERT(offsetof(DropPodILocomotionView_007E8278, Vptr) == 0x00);
+GG_STATIC_ASSERT(sizeof(DropPodILocomotionView_007E8278) == 0x04);
+
 // VTABLE: GAMEMD 0x007E8344 — DropPod IPersistStream view. The raw entries
 // at +0x0C and +0x14 target 0x004B6200 (GetClassID) and 0x004B6240 (Load).
 // COM stdcall calls pass the interface pointer on the stack.

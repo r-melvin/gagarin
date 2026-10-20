@@ -11,38 +11,43 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/geometry2d.h"
 #include "../core/sort_then_search_sweep.h"
 #include "../core/sorted_pair_search_family_methods.h"
 
 // Add copies this 0x1C-byte descriptor. The caller at 0x6D09C0 writes the
 // fields at these offsets; Process reads GadgetID and Text from the record.
+// Add at 0x724580 copies this four-DWORD group using pointers to +0x04
+// of each descriptor. The reconstructed Bounds name describes that group.
+struct ToolTipBounds
+{
+    int X;
+    int Y;
+    int Width;
+    int Height;
+};
+GG_STATIC_ASSERT(offsetof(ToolTipBounds, X) == 0x00);
+GG_STATIC_ASSERT(offsetof(ToolTipBounds, Y) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipBounds, Width) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipBounds, Height) == 0x0C);
+GG_STATIC_ASSERT(sizeof(ToolTipBounds) == 0x10);
+
 struct ToolTip
 {
     unsigned int GadgetID; // +0x00
-    int X;                  // +0x04
-    int Y;                  // +0x08
-    int Width;              // +0x0C
-    int Height;             // +0x10
+    ToolTipBounds Bounds;   // +0x04
     const char* Text;       // +0x14
     bool field_18;          // +0x18
 };
 GG_STATIC_ASSERT(offsetof(ToolTip, GadgetID) == 0x00);
-GG_STATIC_ASSERT(offsetof(ToolTip, X) == 0x04);
-GG_STATIC_ASSERT(offsetof(ToolTip, Y) == 0x08);
-GG_STATIC_ASSERT(offsetof(ToolTip, Width) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ToolTip, Height) == 0x10);
+GG_STATIC_ASSERT(offsetof(ToolTip, Bounds) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTip, Bounds) + offsetof(ToolTipBounds, X) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTip, Bounds) + offsetof(ToolTipBounds, Y) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTip, Bounds) + offsetof(ToolTipBounds, Width) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTip, Bounds) + offsetof(ToolTipBounds, Height) == 0x10);
 GG_STATIC_ASSERT(offsetof(ToolTip, Text) == 0x14);
 GG_STATIC_ASSERT(offsetof(ToolTip, field_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(ToolTip) == 0x1C);
-
-struct Point2D
-{
-    int X; // +0x00
-    int Y; // +0x04
-};
-GG_STATIC_ASSERT(offsetof(Point2D, X) == 0x00);
-GG_STATIC_ASSERT(offsetof(Point2D, Y) == 0x04);
-GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
 
 // Rectangle dimensions followed by a 256-code-unit UTF-16 help string.
 struct ToolTipManagerData
@@ -86,6 +91,9 @@ struct ToolTipTable
     unsigned char IsSorted;   // +0x0C, manager +0x258
     unsigned char unknown_0D[3];
     ToolTipTableEntry* Cached; // +0x10, manager +0x25C
+
+    // FUNCTION: GAMEMD 0x724FA0 (decl; reloc) — compare the cached key.
+    bool HasCachedKey(const unsigned int* key);
 
     // FUNCTION: GAMEMD 0x724FC0 (decl; reloc) — the table lookup.
     ToolTipTableEntry* Search(unsigned int* key);

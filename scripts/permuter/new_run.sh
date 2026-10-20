@@ -1,20 +1,26 @@
 #!/usr/bin/env bash
 # new_run.sh — scaffold a decomp-permuter run directory for one retail address.
 #
-#   scripts/permuter/new_run.sh <addr> <c-func-name> <mangled-sym> <rundir>
+#   scripts/permuter/new_run.sh <addr> <c-func-name> <mangled-sym> <rundir> <length>
 #
 # e.g. scripts/permuter/new_run.sh 0x5B2990 gg_IsWithin \
-#          '?IsWithin@Dir16@@QBE_NABU1@0@Z' ~/Projects/_permuter/runs/iswithin
+#          '?IsWithin@Dir16@@QBE_NABU1@0@Z' /tmp/iswithin 0x2a
 #
 # Creates <rundir>/{target.o,compile.sh,settings.toml} and stub base.c /
 # shim.cpp.in for you to fill in. The permuter itself is NOT part of this
 # repository (MIT, github.com/simonlindholm/decomp-permuter); clone it outside
-# the tree and run `permuter.py <rundir>`. See docs/permuter_workflow.md.
+# the tree and run `permuter.py <rundir>`. See CONTRIBUTING.md (Matching a function).
 set -euo pipefail
+if [[ $# -ne 5 ]]; then
+  echo "usage: new_run.sh <addr> <c-func-name> <mangled-sym> <rundir> <validated-length>" >&2
+  exit 2
+fi
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 ADDR="$1"; FUNC="$2"; SYM="$3"; RUNDIR="$4"
 mkdir -p "$RUNDIR"
-python3 "$REPO/scripts/permuter/make_target.py" --addr "$ADDR" --out "$RUNDIR/target.o"
+# Require the full entry-origin span validated against retail: the analysis
+# function size may omit a post-call tail or the final bytes of RET.
+python3 "$REPO/scripts/permuter/make_target.py" --addr "$ADDR" --len "$5" --out "$RUNDIR/target.o"
 
 cat > "$RUNDIR/compile.sh" <<INNER
 #!/usr/bin/env bash
