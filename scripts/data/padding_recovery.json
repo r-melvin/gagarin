@@ -860,5 +860,31 @@
    "result": "5 matched, 0 partial, 0 regressed across 2 TUs",
    "limitations": "Adjacent helper 0x4CB9B0 is not reconstructed; x87 helper calling convention remains unresolved."
   }
+ ],
+ "rejected_candidates": [
+  {
+   "addr": "0x43CE60",
+   "classification": "embedded switch jump table",
+   "provenance": "own-binary: entry disassembly at 0x43C2D0; data xref from 0x43C2F1",
+   "owner_entry": "0x43C2D0",
+   "evidence": [
+    "0x43C2E0 bounds-checks the selector against 0x12",
+    "0x43C2EB reads a byte selector map at 0x43CE88",
+    "0x43C2F1 jumps indirectly through 0x43CE60 indexed by ECX with stride 4"
+   ],
+   "status": "not a function entry; padding scan remains a heuristic inventory"
+  },
+  {
+   "addr": "0x453820",
+   "classification": "embedded switch jump table",
+   "provenance": "own-binary: entry disassembly at 0x4533A0; data xref from 0x453604",
+   "owner_entry": "0x4533A0",
+   "evidence": [
+    "0x4535FF compares selector EAX against 6",
+    "0x453602 branches above range to 0x45365D",
+    "0x453604 jumps indirectly through 0x453820 indexed by EAX with stride 4"
+   ],
+   "status": "not a function entry; padding scan remains a heuristic inventory"
+  }
  ]
 }
