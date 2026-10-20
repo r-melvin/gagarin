@@ -104,10 +104,6 @@ extern char VT_007EA184;
 extern char VT_007EA1C4;
 // VTABLE: GAMEMD 0x007EA204 -- VectorClass<TerrainTypeClass*>
 extern char VT_007EA204;
-// VTABLE: GAMEMD 0x007EA284 -- VectorClass<AircraftTypeClass*>
-extern char VT_007EA284;
-// VTABLE: GAMEMD 0x007EA2C4 -- VectorClass<UnitTypeClass*>
-extern char VT_007EA2C4;
 // VTABLE: GAMEMD 0x007EA344 -- VectorClass<InfantryTypeClass*>
 extern char VT_007EA344;
 // VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>

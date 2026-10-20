@@ -16,6 +16,20 @@
 
 #include "house_class_ally_methods.h"
 
+// Primary slot +0x3C is read by the object overload at 0x4F9A90.
+// The shared ObjectClass is an explicit-vptr layout, not a full virtual model.
+// The member-pointer owner models the call ABI; original virtual declaration
+// ownership and complete dynamic tables remain unproven here.
+typedef HouseClass* (ObjectClass::*HouseGetOwningHouse)() const;
+struct HouseObjectVtablePrefix
+{
+    char unknown_00[0x3C];
+    HouseGetOwningHouse GetOwningHouse;
+};
+GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
+GG_STATIC_ASSERT(offsetof(HouseObjectVtablePrefix, GetOwningHouse) == 0x3C);
+GG_STATIC_ASSERT(sizeof(HouseGetOwningHouse) == 4);
+
 // FUNCTION: GAMEMD 0x4F9A10  HouseClass::IsAlliedWith(int)  (__thiscall)
 bool HouseClass::IsAlliedWith(int idxHouse) const
 {
@@ -43,7 +57,9 @@ bool HouseClass::IsAlliedWith(HouseClass const* pHouse) const
 bool HouseClass::IsAlliedWith(ObjectClass const* pObject) const
 {
     if (pObject) {
-        HouseClass* pHouse = pObject->GetOwningHouse();
+        const HouseObjectVtablePrefix* vtable =
+            static_cast<const HouseObjectVtablePrefix*>(pObject->_vtable_IPersistStream);
+        HouseClass* pHouse = (pObject->*vtable->GetOwningHouse)();
         if (pHouse) {
             if (pHouse == this) return true;
             if (pHouse->ArrayIndex == this->ArrayIndex) return true;

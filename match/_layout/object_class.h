@@ -65,6 +65,12 @@ public:
     int FUN_005F5D20() const;
     // FUNCTION: GAMEMD 0x5F5DD0
     int GetHealthStatus() const;
+    // FUNCTION: GAMEMD 0x5F6220 (original name unconfirmed)
+    bool FUN_005F6220(ObjectClass* other);
+    // FUNCTION: GAMEMD 0x5F6BD0
+    int GetYSort() const;
+    // FUNCTION: GAMEMD 0x5F6CD0
+    bool IsCrushable(ObjectClass* crusher);
 
     int             unknown_24;                  // +0x24
     int             unknown_28;                  // +0x28

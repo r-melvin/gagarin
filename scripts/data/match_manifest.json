@@ -9218,7 +9218,7 @@
  {
   "tu": "match/core/object_class_crushable_methods.cpp",
   "addr": "0x5F6CD0",
-  "sym": "?IsCrushable@ObjectClass@@QAE_NPAU1@@Z",
+  "sym": "?IsCrushable@ObjectClass@@QAE_NPAV1@@Z",
   "len": "0xC3",
   "name": "ObjectClass::IsCrushable",
   "status": "matched",
@@ -9299,9 +9299,9 @@
  {
   "tu": "match/core/object_class_ysort_methods.cpp",
   "addr": "0x5F6BD0",
-  "sym": "?GetYSort@ObjectYSort@@QBEHXZ",
+  "sym": "?GetYSort@ObjectClass@@QBEHXZ",
   "len": "0x36",
-  "name": "GetYSort",
+  "name": "ObjectClass::GetYSort",
   "status": "matched",
   "pct": 100
  },
@@ -13896,7 +13896,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
   "addr": "0x004e8de0",
   "sym": "?Clear@?$DynamicVectorClass@PAVAircraftTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13905,7 +13905,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
   "addr": "0x004e8e40",
   "sym": "?Clear@?$DynamicVectorClass@PAVUnitTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16317,38 +16317,38 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
   "addr": "0x004F07F0",
   "sym": "??_G?$VectorClass@PAVAircraftTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AircraftTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<AircraftTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
   "addr": "0x004F0840",
-  "sym": "??_G?$VectorClass@PAVAircraftTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAircraftTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AircraftTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AircraftTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
   "addr": "0x004F0890",
   "sym": "??_G?$VectorClass@PAVUnitTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<UnitTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<UnitTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
   "addr": "0x004F08E0",
-  "sym": "??_G?$VectorClass@PAVUnitTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVUnitTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<UnitTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<UnitTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19305,7 +19305,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
   "addr": "0x004edbb0",
   "sym": "?Clear@?$VectorClass@PAVAircraftTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19314,7 +19314,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
   "addr": "0x004ede10",
   "sym": "?Clear@?$VectorClass@PAVUnitTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20664,11 +20664,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
   "addr": "0x4EDEA0",
-  "sym": "?FUN_4EDEA0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVUnitTypeClass@@@@UAE_NHPAPAVUnitTypeClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_4EDEA0",
+  "name": "DynamicVectorClass<UnitTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -23726,7 +23726,7 @@
  {
   "tu": "match/map/map_class_add_object_methods.cpp",
   "addr": "0x5519B0",
-  "sym": "?AddObject@LayerClass@@QAE_NPAUObjectClass@@_N@Z",
+  "sym": "?AddObject@LayerClass@@QAE_NPAVObjectClass@@_N@Z",
   "len": "0x7c",
   "name": "LayerClass::AddObject",
   "status": "matched",
@@ -34297,5 +34297,149 @@
   "tu": "match/core/vector_buildingtypeclass_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBuildingTypeClass@@@@UBEHABQAVBuildingTypeClass@@@Z",
   "name": "DynamicVectorClass<BuildingTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8E10",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAircraftTypeClass@@@@UBEHPAPAVAircraftTypeClass@@@Z",
+  "name": "DynamicVectorClass<AircraftTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8E30",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVAircraftTypeClass@@@@UBEPAVAircraftTypeClass@@H@Z",
+  "name": "VectorClass<AircraftTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EDAC0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVAircraftTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<AircraftTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EDB00",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVAircraftTypeClass@@@@UAE_NHPAPAVAircraftTypeClass@@@Z",
+  "name": "VectorClass<AircraftTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EDBE0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAircraftTypeClass@@@@UBEHABQAVAircraftTypeClass@@@Z",
+  "name": "VectorClass<AircraftTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EDC20",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVAircraftTypeClass@@@@UBEHPAPAVAircraftTypeClass@@@Z",
+  "name": "VectorClass<AircraftTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EDC40",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAircraftTypeClass@@@@UAE_NHPAPAVAircraftTypeClass@@@Z",
+  "name": "DynamicVectorClass<AircraftTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EDCF0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aircrafttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAircraftTypeClass@@@@UBEHABQAVAircraftTypeClass@@@Z",
+  "name": "DynamicVectorClass<AircraftTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8E70",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVUnitTypeClass@@@@UBEHPAPAVUnitTypeClass@@@Z",
+  "name": "DynamicVectorClass<UnitTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8E90",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVUnitTypeClass@@@@UBEPAVUnitTypeClass@@H@Z",
+  "name": "VectorClass<UnitTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EDD20",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVUnitTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<UnitTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EDD60",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVUnitTypeClass@@@@UAE_NHPAPAVUnitTypeClass@@@Z",
+  "name": "VectorClass<UnitTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EDE40",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVUnitTypeClass@@@@UBEHABQAVUnitTypeClass@@@Z",
+  "name": "VectorClass<UnitTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EDE80",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVUnitTypeClass@@@@UBEHPAPAVUnitTypeClass@@@Z",
+  "name": "VectorClass<UnitTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EDF50",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_unittypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVUnitTypeClass@@@@UBEHABQAVUnitTypeClass@@@Z",
+  "name": "DynamicVectorClass<UnitTypeClass*>::FindItemIndex"
+ },
+ {
+  "tu": "match/core/object_class_sort_methods.cpp",
+  "addr": "0x5F6220",
+  "sym": "?FUN_005F6220@ObjectClass@@QAE_NPAV1@@Z",
+  "len": "0x26",
+  "name": "ObjectClass::FUN_005F6220",
+  "status": "matched",
+  "pct": 100
  }
 ]

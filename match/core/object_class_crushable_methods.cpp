@@ -15,20 +15,26 @@
 bool ObjectClass::IsCrushable(ObjectClass* crusher)
 {
     if (crusher != 0
-        && (crusher->*crusher->Vtbl->GetTechnoType)()->OmniCrusher
+        && (crusher->*static_cast<const Vtbl_005F6CD0*>(
+                crusher->_vtable_IPersistStream)->GetTechnoType)()->OmniCrusher
         && IsTechno_005F6CD0(this)
-        && !(this->*this->Vtbl->GetTechnoType)()->OmniCrushResistant
-        && (this->*this->Vtbl->WhatAmI)() != 6
-        && !crusher->Owner->IsAlliedWith(this)
-        && !(this->*this->Vtbl->At_160)()) {
+        && !(this->*static_cast<const Vtbl_005F6CD0*>(
+                _vtable_IPersistStream)->GetTechnoType)()->OmniCrushResistant
+        && (this->*static_cast<const Vtbl_005F6CD0*>(
+                _vtable_IPersistStream)->WhatAmI)() != 6
+        && !CrushTechno(crusher)->Owner->IsAlliedWith(this)
+        && !(this->*static_cast<const Vtbl_005F6CD0*>(
+                _vtable_IPersistStream)->At_160)()) {
         return true;
     }
 
-    if ((this->*this->Vtbl->GetType)()->Crushable
+    if ((this->*static_cast<const Vtbl_005F6CD0*>(
+                _vtable_IPersistStream)->GetType)()->Crushable
         && IsTechno_005F6CD0(this)
-        && !this->Uncrushable
-        && !crusher->Owner->IsAlliedWith(this)
-        && !(this->*this->Vtbl->At_160)()) {
+        && !CrushTechno(this)->Uncrushable
+        && !CrushTechno(crusher)->Owner->IsAlliedWith(this)
+        && !(this->*static_cast<const Vtbl_005F6CD0*>(
+                _vtable_IPersistStream)->At_160)()) {
         return true;
     }
 

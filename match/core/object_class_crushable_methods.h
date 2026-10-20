@@ -18,71 +18,70 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/object_class.h"
+#include "../_layout/object_type_class.h"
+#include "../economy/house_class_ally_methods.h"
 
-struct ObjectClass;
-
-// The two type objects, modelled only for the bytes read here.
-struct TechnoTypeClass
+// Focused REA/Ghidra analysis reconfirms the full 0xC3-byte entry, including
+// RET 4 at 0x5F6D90, and each field/slot operand documented above.
+// Sparse view of the two techno-type bytes read by this function only.
+struct CrushTechnoTypeView
 {
-    char _pad000[0xD29];   // +0x0000
-    bool OmniCrusher;      // +0x0D29
-    bool OmniCrushResistant; // +0x0D2A
+    char unknown_00[0xD29];
+    bool OmniCrusher;
+    bool OmniCrushResistant;
 };
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OmniCrusher)        == 0xD29);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OmniCrushResistant) == 0xD2A);
-
-struct ObjectTypeClass
-{
-    char _pad000[0x22D];   // +0x0000
-    bool Crushable;        // +0x022D
-};
+GG_STATIC_ASSERT(offsetof(CrushTechnoTypeView, OmniCrusher) == 0xD29);
+GG_STATIC_ASSERT(offsetof(CrushTechnoTypeView, OmniCrushResistant) == 0xD2A);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Crushable) == 0x22D);
 
-struct HouseClass
+// Confirmed ObjectClass prefix plus the two techno fields read here. This is
+// a sparse view; it does not claim the intermediate direct-base hierarchy.
+struct CrushTechnoObjectView : ObjectClass
 {
-    // FUNCTION: GAMEMD 0x4F9A90 (decl; reloc) — HouseClass::IsAlliedWith.
-    bool IsAlliedWith(ObjectClass* object);
+    char unknown_AC[0x21C - 0xAC];
+    HouseClass* Owner;
+    char unknown_220[0x2A4 - 0x220];
+    bool Uncrushable;
 };
+GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
+GG_STATIC_ASSERT(offsetof(ObjectClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(CrushTechnoObjectView, Owner) == 0x21C);
+GG_STATIC_ASSERT(offsetof(CrushTechnoObjectView, Uncrushable) == 0x2A4);
 
+// Member pointers model the observed ECX-only slot-call ABI. Their owner
+// type does not establish the original declaring class or complete vtables.
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct Vtbl_005F6CD0;
 
-struct ObjectClass
-{
-    Vtbl_005F6CD0* Vtbl;    // +0x0000
-    char _pad004[0x10];     // +0x0004
-    int  AbstractFlags;     // +0x0014
-    char _pad018[0x204];    // +0x0018
-    HouseClass* Owner;      // +0x021C (TechnoClass)
-    char _pad220[0x84];     // +0x0220
-    bool Uncrushable;       // +0x02A4 (TechnoClass)
-
-    // FUNCTION: GAMEMD 0x5F6CD0
-    bool IsCrushable(ObjectClass* crusher);
-};
-GG_STATIC_ASSERT(offsetof(ObjectClass, AbstractFlags) == 0x14);
-GG_STATIC_ASSERT(offsetof(ObjectClass, Owner)         == 0x21C);
-GG_STATIC_ASSERT(offsetof(ObjectClass, Uncrushable)   == 0x2A4);
-
 typedef int              (ObjectClass::*Fn02C_005F6CD0)();
-typedef TechnoTypeClass* (ObjectClass::*Fn084_005F6CD0)();
+typedef CrushTechnoTypeView* (ObjectClass::*Fn084_005F6CD0)();
 typedef ObjectTypeClass* (ObjectClass::*Fn088_005F6CD0)();
 typedef bool             (ObjectClass::*Fn160_005F6CD0)();
 
 struct Vtbl_005F6CD0
 {
-    char _pad000[0x2C];               // +0x0000
+    char unknown_00[0x2C];               // +0x0000
     Fn02C_005F6CD0 WhatAmI;           // +0x002C
-    char _pad030[0x84 - 0x30];        // +0x0030
+    char unknown_30[0x84 - 0x30];        // +0x0030
     Fn084_005F6CD0 GetTechnoType;     // +0x0084
     Fn088_005F6CD0 GetType;           // +0x0088
-    char _pad08C[0x160 - 0x8C];       // +0x008C
+    char unknown_8C[0x160 - 0x8C];       // +0x008C
     Fn160_005F6CD0 At_160;            // +0x0160
 };
+GG_STATIC_ASSERT(sizeof(Fn02C_005F6CD0) == 4);
+GG_STATIC_ASSERT(sizeof(Fn084_005F6CD0) == 4);
+GG_STATIC_ASSERT(sizeof(Fn088_005F6CD0) == 4);
+GG_STATIC_ASSERT(sizeof(Fn160_005F6CD0) == 4);
 GG_STATIC_ASSERT(offsetof(Vtbl_005F6CD0, WhatAmI)       == 0x2C);
 GG_STATIC_ASSERT(offsetof(Vtbl_005F6CD0, GetTechnoType) == 0x84);
 GG_STATIC_ASSERT(offsetof(Vtbl_005F6CD0, GetType)       == 0x88);
 GG_STATIC_ASSERT(offsetof(Vtbl_005F6CD0, At_160)        == 0x160);
+
+inline const CrushTechnoObjectView* CrushTechno(const ObjectClass* object)
+{
+    return static_cast<const CrushTechnoObjectView*>(object);
+}
 
 // Inlined helper: is the object a techno (AbstractFlags bit 0), null-safe.
 inline bool IsTechno_005F6CD0(ObjectClass* object)

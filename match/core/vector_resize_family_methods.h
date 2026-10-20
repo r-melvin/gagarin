@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at the original 32 shape entries. 19 views remain;
+//   Ghidra CLI at the original 32 shape entries. 17 views remain;
 //   recovered entries now use native template implementations.
 //   Shape found by clustering
 //   the unmatched pool on size (176 bytes) and on the first/last eight bytes;
@@ -19,7 +19,7 @@
 //   match/core/vector_resize_methods.{h,cpp}, so that header's VectorBase
 //   layout and its clear-virtual macro are reused verbatim rather than
 //   redeclared, which keeps the two TUs from disagreeing about the layout.
-//   None of the 32 is bound by YRpp or the seed map; the placeholders stand.
+//   The remaining views are not yet bound to native template classes.
 #ifndef GG_MATCH_CORE_VECTOR_RESIZE_FAMILY_METHODS_H
 #define GG_MATCH_CORE_VECTOR_RESIZE_FAMILY_METHODS_H
 
@@ -44,8 +44,6 @@ struct VectorResizeFamily : VectorBase
     bool FUN_4E9840(int newsize, void** array);
     // FUNCTION: GAMEMD 0x4EA1C0
     bool FUN_4EA1C0(int newsize, void** array);
-    // FUNCTION: GAMEMD 0x4EDEA0
-    bool FUN_4EDEA0(int newsize, void** array);
     // FUNCTION: GAMEMD 0x4EE360
     bool FUN_4EE360(int newsize, void** array);
     // FUNCTION: GAMEMD 0x4F2A60

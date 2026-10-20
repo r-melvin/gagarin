@@ -14,22 +14,25 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct ObjectClass;
+class ObjectClass;
 
-// LayerClass — one draw layer's object list, a DynamicVectorClass<ObjectClass*>.
+// Retail RTTI names this class at 0x816B10 (`.?AVLayerClass@@`), and the
+// hierarchy metadata at 0x7FA918 references that TypeDescriptor. LayerClass —
+// one draw layer's object list, a DynamicVectorClass<ObjectClass*>.
 // Slot +0x08 is Resize(newCapacity, array): two stack arguments, `this` in ECX,
 // a byte result tested with `TEST AL,AL`.
-struct LayerClass
+class LayerClass
 {
+public:
     virtual void vt_000();
     virtual void vt_004();
     virtual bool Resize(int newCapacity, void* array);   // +0x0008
 
     ObjectClass** Items;       // +0x0004
     int   Capacity;            // +0x0008
-    char  _pad0C[0x1];
+    char  unknown_0C[0x1];
     char  IsAllocated;         // +0x000D
-    char  _pad0E[0x10 - 0x0E];
+    char  unknown_0E[0x10 - 0x0E];
     int   Count;               // +0x0010
     int   CapacityIncrement;   // +0x0014
 
@@ -67,5 +70,6 @@ GG_STATIC_ASSERT(offsetof(LayerClass, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(LayerClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(LayerClass, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(LayerClass) == 0x18);
+GG_STATIC_ASSERT(sizeof(ObjectClass*) == 4);
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_ADD_OBJECT_METHODS_H

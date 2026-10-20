@@ -1,14 +1,55 @@
 # Project status
 
-The latest verification covers **3,646 fully matched functions**, **165 partial
-rows**, **886 tracked C++ files**, and 882 manifest translation units. The
-final whole-repository check passed across all 882 manifest translation units
-with no matched function regressing. The 886/886 tracked-source object build
-and hash check passed,
-and all 68 verifier tests passed. The final compile/layout gate passed.
-The complete byte-for-byte executable target has not been achieved.
+The latest whole-repository regression passed with **3,662 fully matched
+functions**, **165 partial rows**, and 885 manifest translation units, with no
+matched function regressing. All **889 tracked C++ files** produced project
+objects and the object hash check passed. All 68 verifier tests passed; the
+final compile/layout gate passed. The complete byte-for-byte executable
+target has not been achieved.
 
-## Latest integration: native type vectors and shared class declarations
+## Latest integration: ObjectClass sorting and native type vectors
+
+The [AircraftTypeClass](match/core/vector_aircrafttypeclass_methods.cpp) and
+[UnitTypeClass](match/core/vector_unittypeclass_methods.cpp) vector pairs contain
+24 exact rows: 15 new matches and nine migrated claims, including the Unit
+resize body at `0x4EDEA0`. All four RTTI-backed seven-slot tables pass scoped
+checks against project objects with conditional `--weak-defaults` resolution.
+Paired GX/no-GX probes pin the no-GX mode for the full derived deleting bodies.
+
+[ObjectClass::FUN_005F6220](match/core/object_class_sort_methods.cpp) adds a
+38-byte exact comparator. It calls primary slot `+0xB8` on both objects and
+returns whether the receiver's signed result is greater. Its original name is
+unknown. Two compact typed-call variants changed four register-staging bytes;
+the exact source retains an explicitly documented abstract call view. This
+models the call ABI, not original virtual ownership or complete concrete tables.
+
+The shared `ObjectClass` declaration now owns the existing `GetYSort` and
+`IsCrushable` methods. The native [GetYSort implementation](match/core/object_class_ysort_methods.cpp)
+remains exact for all 54 bytes, and its separate host/interface header is
+retired. The 195-byte [IsCrushable implementation](match/core/object_class_crushable_methods.cpp)
+uses the shared object/type prefixes, sparse techno views, and the existing
+const House ally overload. All three [House ally methods](match/economy/house_class_ally_methods.cpp)
+remain exact and use the shared object layout. Their slot-call views make no
+complete hierarchy claim; existing names/const qualifiers remain source-level
+hypotheses where the instructions cannot prove them.
+
+The LayerClass declaration now uses its retail RTTI class key at `0x816B10`,
+and its `ObjectClass*` argument uses the canonical class-pointer mangling.
+`AddObject` remains exact. The bounded `SortedAdd` probe at `0x551A90` did not
+match; its draft remains outside the repository and the address is unclaimed.
+
+The local `/dll /noentry /nodefaultlib` diagnostic link still fails with 4,200
+unique unresolved symbols (6,441 reference lines) and no duplicate definitions.
+Default libraries are excluded, so these counts do not measure engine-only
+function gaps. Link closure and whole-image comparison remain unfinished.
+
+Matched function lengths total 260,937 bytes (255 KiB): 18.5% of listed
+functions and 6.9% of listed function lengths. The padding heuristic misses
+194 matched entries. Residual vector families contain 259 generic deleting
+bindings across 133 instantiation views, 130 base Clear rows, 128 native
+dynamic Clear rows plus one DiskID stand-in, and 17 resize rows.
+
+## Previous verified integration: native type vectors and shared class declarations
 
 The native [AnimTypeClass](match/core/vector_animtypeclass_methods.cpp) and
 [BuildingTypeClass](match/core/vector_buildingtypeclass_methods.cpp) vector pairs
@@ -212,7 +253,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 886 tracked C++ files and 3,811 manifest
+verified snapshot, the inventory has 889 tracked C++ files and 3,827 manifest
 rows, with no manifest TU missing from tracked sources. Four tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
@@ -528,10 +569,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,646** | **18.5%** of 19,753 |
-| Sum of matched function lengths | 254 KiB | 6.8% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,662** | **18.5%** of 19,753 |
+| Sum of matched function lengths | 255 KiB | 6.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 886 | |
+| Tracked C++ files under `match/` | 889 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -551,7 +592,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 190 matched entries. Its candidate count is therefore
+listed entries, including 194 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
