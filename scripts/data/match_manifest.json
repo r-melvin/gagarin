@@ -6012,29 +6012,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x00512DC0",
-  "sym": "?Ctor@DynamicVectorClass_00512DC0@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVInfantryTypeClass@@@@QAE@HPAPBVInfantryTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_00512DC0::Ctor",
+  "name": "DynamicVectorClass<const InfantryTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x00513190",
-  "sym": "?Ctor@DynamicVectorClass_00513190@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVUnitTypeClass@@@@QAE@HPAPBVUnitTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_00513190::Ctor",
+  "name": "DynamicVectorClass<const UnitTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x00513560",
-  "sym": "?Ctor@DynamicVectorClass_00513560@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVAircraftTypeClass@@@@QAE@HPAPBVAircraftTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_00513560::Ctor",
+  "name": "DynamicVectorClass<const AircraftTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -15093,29 +15093,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x5138F0",
-  "sym": "?Ctor@VectorClass_005138F0@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVInfantryTypeClass@@@@QAE@HPAPBVInfantryTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_005138F0::Ctor",
+  "name": "VectorClass<const InfantryTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x513940",
-  "sym": "?Ctor@VectorClass_00513940@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVUnitTypeClass@@@@QAE@HPAPBVUnitTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00513940::Ctor",
+  "name": "VectorClass<const UnitTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x513990",
-  "sym": "?Ctor@VectorClass_00513990@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVAircraftTypeClass@@@@QAE@HPAPBVAircraftTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00513990::Ctor",
+  "name": "VectorClass<const AircraftTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },

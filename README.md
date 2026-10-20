@@ -105,14 +105,16 @@ Verified consolidation steps:
   specialization has three entries, including its default constructor. All
   thirteen entries from the former address-scoped copy-constructor family now
   use native templates: the int pair and [eleven pointer specializations](match/core/vector_copy_constructors.cpp).
-  Four capacity constructors for the const AnimType and BuildingType pointer
-  specializations also use [native templates](match/core/vector_capacity_constructors.cpp),
-  replacing four address-specific POD views. Their complete constructor spans
-  match; extra emitted methods are not newly claimed by this constructor file,
-  and final-link selection remains unverified.
   Raw RTTI preserves their pointee const qualifiers; copying allocates and copies
   Capacity elements. Additional emitted methods and other copy specializations
-  remain unverified. The native integration covers fifteen entries
+  remain unverified.
+  Ten capacity constructors for the const AnimType, BuildingType, UnitType,
+  AircraftType and InfantryType pointer specializations also use
+  [native templates](match/core/vector_capacity_constructors.cpp),
+  replacing ten address-specific POD views. Their complete constructor spans
+  match; extra emitted methods are not newly claimed by this constructor file,
+  and final-link selection remains unverified.
+  The native integration covers fifteen entries
   across `VectorClass<TechnoTypeClass*>`, `DynamicVectorClass<TechnoTypeClass*>`
   and `TypeList<TechnoTypeClass*>`: thirteen virtual or deleting-destructor
   bodies and two capacity constructors. Seven entries are new exact matches;
