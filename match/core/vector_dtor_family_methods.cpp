@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 162 base-template instantiations reproduce 305 remaining retail destructor
+// 162 base-template instantiations reproduce 298 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -308,12 +308,6 @@ template class VectorClass<EgoClass*>;
 //   `.?AV?$VectorClass@PAVEMPulseClass@@@@`.
 template class VectorClass<EMPulseClass*>;
 
-// FUNCTION: GAMEMD 0x004CAB50
-// FUNCTION: GAMEMD 0x004CABA0
-// VectorClass<const TechnoTypeClass*> -- reseats retail vtable 0x007E8954; locator 0x00800640 -> type descriptor 0x00822220
-//   `.?AV?$VectorClass@PBVTechnoTypeClass@@@@`.
-template class VectorClass<const TechnoTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004D2D10
 // FUNCTION: GAMEMD 0x004D2D60
 // VectorClass<FoggedObjectClass::DrawRecord> -- reseats retail vtable 0x007E8BC0; locator 0x00800800 -> type descriptor 0x00822458
@@ -590,13 +584,6 @@ template class VectorClass<AbstractTypeClass*>;
 //   `.?AV?$VectorClass@PAVGraphicMenuItem@@@@`.
 template class VectorClass<GraphicMenuItem*>;
 
-// FUNCTION: GAMEMD 0x0050E7E0
-// FUNCTION: GAMEMD 0x0050E8C0
-// FUNCTION: GAMEMD 0x00510310
-// VectorClass<const TeamTypeClass*> -- reseats retail vtable 0x007EA9E4; locator 0x00802C20 -> type descriptor 0x00824680
-//   `.?AV?$VectorClass@PBVTeamTypeClass@@@@`.
-template class VectorClass<const TeamTypeClass*>;
-
 // FUNCTION: GAMEMD 0x00510090
 // FUNCTION: GAMEMD 0x005100E0
 // VectorClass<HouseClass::StartingTechnoStruct*> -- reseats retail vtable 0x007EA964; locator 0x00802BF0 -> type descriptor 0x008245F0
@@ -761,12 +748,6 @@ template class VectorClass<double>;
 // VectorClass<const char*> -- reseats retail vtable 0x007EE0D4; locator 0x00805F38 -> type descriptor 0x0082D9D8
 //   `.?AV?$VectorClass@PBD@@`.
 template class VectorClass<const char*>;
-
-// FUNCTION: GAMEMD 0x005C4FC0
-// FUNCTION: GAMEMD 0x005C5850
-// VectorClass<MPlayerScoreType*> -- reseats retail vtable 0x007EE3D0; locator 0x008062A0 -> type descriptor 0x0082DF68
-//   `.?AV?$VectorClass@PAUMPlayerScoreType@@@@`.
-template class VectorClass<MPlayerScoreType*>;
 
 // FUNCTION: GAMEMD 0x005C58A0
 // FUNCTION: GAMEMD 0x005C58F0

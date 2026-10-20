@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 150
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 147
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -281,11 +281,6 @@ template class DynamicVectorClass<EgoClass*>;
 //   `.?AV?$DynamicVectorClass@PAVEMPulseClass@@@@`.
 template class DynamicVectorClass<EMPulseClass*>;
 
-// FUNCTION: GAMEMD 0x004CA890
-// DynamicVectorClass<const TechnoTypeClass*> -- vtable 0x007E8934 slot 3; locator 0x00800540 -> type descriptor 0x00822258
-//   `.?AV?$DynamicVectorClass@PBVTechnoTypeClass@@@@`.
-template class DynamicVectorClass<const TechnoTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004D2930
 // DynamicVectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BA0 slot 3; locator 0x008007D0 -> type descriptor 0x00822498
 //   `.?AV?$DynamicVectorClass@UDrawRecord@FoggedObjectClass@@@@`.
@@ -531,13 +526,6 @@ template class DynamicVectorClass<ScoutStruct>;
 //   `.?AV?$DynamicVectorClass@PAUBuildChoiceClass@HouseClass@@@@`.
 template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
 
-// FUNCTION: GAMEMD 0x0050E6A0
-// DynamicVectorClass<const TeamTypeClass*> -- vtable 0x007EAAE8 slot 3; locator 0x00802EA0 -> type descriptor 0x008246B0
-//   `.?AV?$DynamicVectorClass@PBVTeamTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<TeamTypeClass*> (0x007EA9C4); DynamicVectorClass<const TeamTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<const TeamTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0050E700
 // DynamicVectorClass<bool> -- vtable 0x007EAA7C slot 3; locator 0x00802DD0 -> type descriptor 0x00824E90
 //   `.?AV?$DynamicVectorClass@_N@@`.
@@ -657,11 +645,6 @@ template class DynamicVectorClass<double>;
 // DynamicVectorClass<const char*> -- vtable 0x007EE0B4 slot 3; locator 0x00805F08 -> type descriptor 0x0082D9F8
 //   `.?AV?$DynamicVectorClass@PBD@@`.
 template class DynamicVectorClass<const char*>;
-
-// FUNCTION: GAMEMD 0x005C5010
-// DynamicVectorClass<MPlayerScoreType*> -- vtable 0x007EE3F0 slot 3; locator 0x00806308 -> type descriptor 0x0082DFA0
-//   `.?AV?$DynamicVectorClass@PAUMPlayerScoreType@@@@`.
-template class DynamicVectorClass<MPlayerScoreType*>;
 
 // FUNCTION: GAMEMD 0x005C5070
 // DynamicVectorClass<NodeNameType*> -- vtable 0x007EE370 slot 3; locator 0x00806210 -> type descriptor 0x0082DBE0

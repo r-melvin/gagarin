@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
 //   Bytes matched against retail gamemd.exe v1.001.
 //
-// VectorClass<T>(size, array) over trivial element types, 38 remaining retail
+// VectorClass<T>(size, array) over trivial element types, 37 remaining retail
 // instantiations. Each body zeroes the element pointer, records the capacity,
 // marks the vector valid and not-owning, installs its vtable, and then — only
 // for a non-zero size — either adopts the caller's storage (no allocation, no
@@ -105,10 +105,6 @@ GG_VECTOR_CTOR_POD_BODY(VectorClass_005AD820, PodElem4, 0x7ED480)
 // FUNCTION: GAMEMD 0x5ADAB0
 // vtable constant: 0x7EDA4C
 GG_VECTOR_CTOR_POD_BODY(VectorClass_005ADAB0, PodElem8, 0x7EDA4C)
-
-// FUNCTION: GAMEMD 0x5C59E0
-// vtable constant: 0x7EE3D0
-GG_VECTOR_CTOR_POD_BODY(VectorClass_005C59E0, PodElem4, 0x7EE3D0)
 
 // FUNCTION: GAMEMD 0x5C5A30
 // vtable constant: 0x7EE390

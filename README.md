@@ -93,7 +93,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 152 base and 150
+  `CountedVector::Destroy` stand-ins. The family files bind 149 base and 147
   native dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
   and two compiler-generated scalar deleting destructors. ToolTipManager uses
@@ -117,7 +117,7 @@ Verified consolidation steps:
   [vector_capacity_constructors.cpp](match/core/vector_capacity_constructors.cpp).
   Capacity constructors for BuildingType, VoxelAnimType, TerrainType and
   ParticleSystemType now reside in their native class implementations, as do
-  those for UnitType, AircraftType and InfantryType. AnimType, int and
+  those for UnitType, AircraftType and InfantryType. AnimType, int and mutable
   TechnoType capacity constructors remain in their own translation units.
   Extra emitted methods are not newly claimed by these constructor files, and
   final-link selection remains unverified.
@@ -161,13 +161,30 @@ Verified consolidation steps:
   bodies and two capacity constructors. Seven entries are new exact matches;
   the other eight rehome existing address claims. These TechnoType specializations
   use mutable pointer elements; they do not change the const-qualified ToolTip
-  specialization above. The SmudgeType pointer family remains outside the
+  specialization above. Three additional native vector clusters cover 40
+  entries across [TeamTypeClass](match/core/vector_teamtype_methods.cpp),
+  [MPlayerScoreType](match/core/vector_mplayer_score_methods.cpp) and
+  [const TechnoTypeClass](match/core/vector_const_technotype_methods.cpp).
+  TeamType and MPlayerScoreType each cover 14 entries, adding eight exact
+  matches and rehoming six claims apiece. The const-TechnoType cluster covers
+  12 entries, adding seven exact matches and rehoming five claims. TeamType
+  has three RTTI-backed tables, but this batch makes no TypeList constructor
+  claim. MPlayerScoreType uses a mutable struct-pointer
+  element type and has two RTTI-backed tables; it makes no TypeList or dynamic
+  capacity-constructor claim, and its base capacity constructor at `0x5C59E0`
+  moved from a POD helper into the native class implementation. Raw const-
+  TechnoType RTTI establishes VectorClass and DynamicVectorClass specializations
+  but no TypeList specialization or constructor address. All seven affected
+  tables pass conditional COFF weak-default checks against retail; final-link
+  resolution remains unverified. The batch passed
+  the whole-repository regression and compilation gates. The SmudgeType pointer
+  family remains outside the
   native class clusters: its verified capacity constructors, TypeList copy
   constructor and TypeList default constructor retain their existing body
   bindings, while the broader native class and vtable proof remains unresolved.
   Its existing Clear and deleting-destructor claims are not promoted by the
-  cluster probe. The generic deleting-destructor family has 305 bindings
-  across 155 base-template instantiation views. Their written vptr and
+  cluster probe. The generic deleting-destructor family has 298 bindings
+  across 152 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -177,7 +194,7 @@ Verified consolidation steps:
   retail declaring class is unresolved; other legacy users are marked
   `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
   original source-file ownership remain incomplete.
-  The resize helpers retain 24 address-specific views and five generic resize
+  The resize helpers retain 23 address-specific views and five generic resize
   views; the SmudgeType target at `0x67B050` remains bound as
   `VectorResizeFamily::FUN_67B050`, without a class-ownership claim.
 - [TypeList](match/core/type_list.h): the int specialization has three native
@@ -188,8 +205,8 @@ Verified consolidation steps:
   AnimType, BuildingType, VoxelAnimType, TerrainType, ParticleSystemType,
   UnitType, AircraftType and InfantryType defaults are in their native class
   implementations. Together with the int specialization, these account for
-  ten native default-constructor entries. The TechnoType pointer batch covers native
-  VectorClass, DynamicVectorClass and TypeList specializations. Their three
+  ten native default-constructor entries. The mutable TechnoType pointer
+  batch covers native VectorClass, DynamicVectorClass and TypeList specializations. Their three
   seven-slot tables each pass a conditional COFF weak-default check for the
   deleting-destructor slot; final-link resolution remains unverified.
   Raw RTTI and vtable slots establish inherited prefixes; complete sizes and
@@ -234,10 +251,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,466** | **17.5%** of 19,753 |
-| Sum of matched function lengths | 242 KiB | 6.5% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,489** | **17.7%** of 19,753 |
+| Sum of matched function lengths | 244 KiB | 6.6% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 864 | |
+| Tracked C++ translation units under `match/` | 867 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -257,7 +274,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 169 matched entries. Its candidate count is therefore
+listed entries, including 172 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

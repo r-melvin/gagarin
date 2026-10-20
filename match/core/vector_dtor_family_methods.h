@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 305 remaining 73-byte deleting-destructor bodies are bound here through
-// 155 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 298 remaining 73-byte deleting-destructor bodies are bound here through
+// 152 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -58,8 +58,6 @@ extern char VT_007E86AC;
 extern char VT_007E86FC;
 // VTABLE: GAMEMD 0x007E875C -- VectorClass<EMPulseClass*>
 extern char VT_007E875C;
-// VTABLE: GAMEMD 0x007E8954 -- VectorClass<const TechnoTypeClass*>
-extern char VT_007E8954;
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>
 extern char VT_007E8BC0;
 // VTABLE: GAMEMD 0x007E920C -- VectorClass<AbstractClass*>
@@ -152,8 +150,6 @@ extern char VT_007EA4C4;
 extern char VT_007EA544;
 // VTABLE: GAMEMD 0x007EA624 -- VectorClass<GraphicMenuItem*>
 extern char VT_007EA624;
-// VTABLE: GAMEMD 0x007EA9E4 -- VectorClass<const TeamTypeClass*>
-extern char VT_007EA9E4;
 // VTABLE: GAMEMD 0x007EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>
 extern char VT_007EA964;
 // VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>
@@ -210,8 +206,6 @@ extern char VT_007ED970;
 extern char VT_007EDA4C;
 // VTABLE: GAMEMD 0x007EE0D4 -- VectorClass<const char*>
 extern char VT_007EE0D4;
-// VTABLE: GAMEMD 0x007EE3D0 -- VectorClass<MPlayerScoreType*>
-extern char VT_007EE3D0;
 // VTABLE: GAMEMD 0x007EE390 -- VectorClass<NodeNameType*>
 extern char VT_007EE390;
 // VTABLE: GAMEMD 0x007EE3B0 -- VectorClass<CoopCampaignClass*>

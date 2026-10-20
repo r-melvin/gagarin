@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 151
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 148
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 152 remaining addresses are bound to VectorClass<T> tables;
+//   The 149 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -281,11 +281,6 @@ template class VectorClass<EgoClass*>;
 //   `.?AV?$VectorClass@PAVEMPulseClass@@@@`.
 template class VectorClass<EMPulseClass*>;
 
-// FUNCTION: GAMEMD 0x004CA9E0
-// VectorClass<const TechnoTypeClass*> -- vtable 0x007E8954 slot 3; locator 0x00800640 -> type descriptor 0x00822220
-//   `.?AV?$VectorClass@PBVTechnoTypeClass@@@@`.
-template class VectorClass<const TechnoTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004D2B20
 // VectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BC0 slot 3; locator 0x00800800 -> type descriptor 0x00822458
 //   `.?AV?$VectorClass@UDrawRecord@FoggedObjectClass@@@@`.
@@ -536,11 +531,6 @@ template class VectorClass<ScoutStruct>;
 //   `.?AV?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@`.
 template class VectorClass<HouseClass::BuildChoiceClass*>;
 
-// FUNCTION: GAMEMD 0x0050F830
-// VectorClass<const TeamTypeClass*> -- vtable 0x007EA9E4 slot 3; locator 0x00802C20 -> type descriptor 0x00824680
-//   `.?AV?$VectorClass@PBVTeamTypeClass@@@@`.
-template class VectorClass<const TeamTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0050FA90
 // VectorClass<bool> -- vtable 0x007EAA5C slot 3; locator 0x00802D68 -> type descriptor 0x00824E70
 //   `.?AV?$VectorClass@_N@@`.
@@ -655,11 +645,6 @@ template class VectorClass<double>;
 // VectorClass<const char*> -- vtable 0x007EE0D4 slot 3; locator 0x00805F38 -> type descriptor 0x0082D9D8
 //   `.?AV?$VectorClass@PBD@@`.
 template class VectorClass<const char*>;
-
-// FUNCTION: GAMEMD 0x005C5220
-// VectorClass<MPlayerScoreType*> -- vtable 0x007EE3D0 slot 3; locator 0x008062A0 -> type descriptor 0x0082DF68
-//   `.?AV?$VectorClass@PAUMPlayerScoreType@@@@`.
-template class VectorClass<MPlayerScoreType*>;
 
 // FUNCTION: GAMEMD 0x005C5480
 // VectorClass<NodeNameType*> -- vtable 0x007EE390 slot 3; locator 0x00806270 -> type descriptor 0x0082DBB0
