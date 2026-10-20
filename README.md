@@ -52,6 +52,24 @@ Verified consolidation steps:
 Update this table as class-consolidation and build milestones are verified;
 do not infer their completion from the matching percentages.
 
+The remaining work toward the source-project goal is tracked by these gates:
+
+- [ ] Consolidate address-scoped class views into shared declarations and real
+  inheritance, verifying member offsets and every required virtual slot.
+- [ ] Establish evidence-backed class and subsystem ownership for recovered
+  functions; record which original source boundaries remain unknown.
+- [ ] Add an integrated build and link target for the reconstructed C++ project,
+  resolving dependencies through shared source rather than matching stand-ins.
+- [ ] Recover the remaining in-scope engine functions and verify their matches
+  with the period toolchain.
+- [ ] Audit the integrated source tree against those gates before declaring
+  the reconstruction complete.
+
+These are project-wide gates, not claims that individual classes have received
+no work. Completed consolidation batches are listed above; function-level
+results are counted below. No overall completion percentage is claimed until
+the engine scope and structural audit provide a defensible denominator.
+
 ## Function-matching progress
 
 ![gagarin matching progress](.github/assets/progress.svg)
