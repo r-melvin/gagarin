@@ -19,15 +19,21 @@ replacement, and it ships no game content.
 
 ## Progress
 
-| Measure | Count |
-| --- | --- |
-| Functions matched at 100% | **3,173** (~233 KB of retail code) |
-| Functions in progress (partial match) | 155 |
-| Translation units under `match/` | 788 |
-| Functions in the binary (Ghidra analysis, includes CRT/third-party) | ~20,100 |
+![gagarin matching progress](.github/assets/progress.svg)
 
-About 16% of the binary's functions are matched so far. The game's own code
-is somewhere around 18,000 of them once CRT and library code is set aside. Work so far is spread
+| Measure | Count | Share |
+| --- | --- | --- |
+| Functions matched at 100% | **3,175** | **16.1%** of 19,753 |
+| Code matched | 228 KB | 6.2% of 3,708 KB in `.text` |
+| Functions in progress (partial match) | 155 | 0.8% |
+| Translation units under `match/` | 789 | |
+| Functions in the binary (Ghidra analysis, includes CRT/third-party) | 19,753 | |
+
+Matching started with the small functions, so the share of code bytes trails the
+share of functions. The game's own code is somewhere around 18,000 functions
+once CRT and library code is set aside. Regenerate the graphic with
+`scripts/orchestration/progress_svg.py` after updating the manifest; the totals
+it divides by live in `scripts/data/progress_totals.json`. Work so far is spread
 across `core` (the class hierarchy: `AbstractClass` → `ObjectClass` →
 `TechnoClass` → `FootClass` → units/buildings/infantry/aircraft), `map`,
 `platform`, `ui`, `combat`, `movement`, `ai`, `economy`, `network`, `renderer`
