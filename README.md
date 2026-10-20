@@ -19,10 +19,10 @@ Westwood's original source files.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,329** | **16.9%** of 19,753 |
-| Sum of matched function lengths | 235 KiB | 6.3% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,348** | **16.9%** of 19,753 |
+| Sum of matched function lengths | 236 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 164 | 0.8% |
-| Tracked C++ translation units under `match/` | 842 | |
+| Tracked C++ translation units under `match/` | 849 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
