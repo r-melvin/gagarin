@@ -77,8 +77,10 @@ def main():
         obj = f"/tmp/va_{f[:-4]}.obj"
         if os.path.exists(obj):
             os.remove(obj)
+        # Compiler output is unused. A Wine descendant can inherit a capture
+        # pipe and prevent communicate() from reaching EOF after CL exits.
         subprocess.run(f"cd {d} && bash {ROOT}/scripts/vc6/vc6cl.sh /Fo{obj} {f}",
-                       shell=True, capture_output=True, text=True)
+                       shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         if not os.path.exists(obj):
             print(f"COMPILE FAIL  {tu}"); fail = True
             md.append(f"| `{tu}` | — | — | **COMPILE FAIL** |"); continue

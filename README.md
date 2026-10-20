@@ -39,6 +39,16 @@ supports them. Each consolidation batch must retain address/provenance records,
 pass compilation, and reprove the moved functions against retail. Fewer source
 files after consolidation can represent progress without adding new matches.
 
+Verified consolidation steps:
+
+- [ShapeButtonClass](match/ui/shape_button_class.h): the eight recovered methods
+  share one declaration and one [implementation](match/ui/shape_button_class.cpp),
+  replacing three conflicting declarations and three implementation files.
+  All eight retain their exact matches. Base-class consolidation remains pending.
+- [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
+  recovered routines use one address-ordered implementation and shared global
+  declarations. Their original class or file ownership is not established.
+
 Update this table as class-consolidation and build milestones are verified;
 do not infer their completion from the matching percentages.
 
@@ -48,7 +58,7 @@ do not infer their completion from the matching percentages.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,348** | **16.9%** of 19,753 |
+| Functions matched at 100% | **3,359** | **17.0%** of 19,753 |
 | Sum of matched function lengths | 236 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 164 | 0.8% |
 | Tracked C++ translation units under `match/` | 849 | |

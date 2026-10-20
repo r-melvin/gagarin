@@ -29439,7 +29439,7 @@
   "pct": 78.9
  },
  {
-  "tu": "match/ui/shape_button_class_ai_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x69E010",
   "sym": "?AI@ShapeButtonClass@@QAE_NXZ",
   "len": "0x40",
@@ -29448,7 +29448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_ai_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x6CFCC0",
   "sym": "?FindIndex@ShapeButtonClass@@SIHPBD@Z",
   "len": "0x59",
@@ -29457,7 +29457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_ai_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x6D09C0",
   "sym": "?SetToolTip@ShapeButtonClass@@SIXPAU1@PBD@Z",
   "len": "0x53",
@@ -29466,7 +29466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x69DEA0",
   "sym": "?SetLoadedStatus@ShapeButtonClass@@QAEX_N@Z",
   "len": "0xa",
@@ -29475,7 +29475,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x69DFC0",
   "sym": "?StartFlashing@ShapeButtonClass@@QAE_NHH_N@Z",
   "len": "0x28",
@@ -29484,7 +29484,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x69DFF0",
   "sym": "?StopFlashing@ShapeButtonClass@@QAE_NXZ",
   "len": "0x18",
@@ -29493,7 +29493,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_more_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x69DE70",
   "sym": "?ClearShape@ShapeButtonClass@@QAEXXZ",
   "len": "0x2a",
@@ -29502,7 +29502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/shape_button_class_more_methods.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x6CFD40",
   "sym": "?GetButton@ShapeButtonClass@@SIPAU1@H@Z",
   "len": "0x1f",
@@ -31604,6 +31604,105 @@
   "sym": "?FUN_004393E0@@YGIXZ",
   "len": "0x6",
   "name": "FUN_004393E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x439480",
+  "sym": "?FUN_00439480@@YGXXZ",
+  "len": "0x17",
+  "name": "FUN_00439480",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x4394D0",
+  "sym": "?FUN_004394D0@@YGXXZ",
+  "len": "0x13",
+  "name": "FUN_004394D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x4394F0",
+  "sym": "?FUN_004394F0@@YGXXZ",
+  "len": "0x13",
+  "name": "FUN_004394F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x439510",
+  "sym": "?FUN_00439510@@YGXXZ",
+  "len": "0x13",
+  "name": "FUN_00439510",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x439530",
+  "sym": "?FUN_00439530@@YGXXZ",
+  "len": "0x13",
+  "name": "FUN_00439530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x439550",
+  "sym": "?FUN_00439550@@YGXXZ",
+  "len": "0x13",
+  "name": "FUN_00439550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x439570",
+  "sym": "?FUN_00439570@@YGXXZ",
+  "len": "0x31",
+  "name": "FUN_00439570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x4395B0",
+  "sym": "?FUN_004395B0@@YGXXZ",
+  "len": "0x21",
+  "name": "FUN_004395B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/periodic_state_updates_00439480.cpp",
+  "addr": "0x4395E0",
+  "sym": "?FUN_004395E0@@YGXXZ",
+  "len": "0x2C",
+  "name": "FUN_004395E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
+  "addr": "0x004B5B30",
+  "sym": "_FUN_004B5B30@4",
+  "len": "0x5",
+  "name": "FUN_004B5B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
+  "addr": "0x004B5B40",
+  "sym": "_FUN_004B5B40@8",
+  "len": "0x24",
+  "name": "FUN_004B5B40",
   "status": "matched",
   "pct": 100
  }

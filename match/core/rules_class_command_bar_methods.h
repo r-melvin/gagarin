@@ -50,7 +50,7 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x6CFCC0 (decl; reloc) -- ShapeButtonClass::FindIndex
-// (matched in match/ui/shape_button_class_ai_methods.cpp).
+// (matched in match/ui/shape_button_class.cpp).
 int __fastcall FUN_006CFCC0(const char* name);
 // FUNCTION: GAMEMD 0x6CFD20 (decl; reloc) -- store `value` in command slot
 // `index` of the table at 0xB0CB78.
