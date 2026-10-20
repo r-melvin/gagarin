@@ -30967,5 +30967,176 @@
   "name": "Equals",
   "status": "partial",
   "pct": 88.1
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x589DC0",
+  "sym": "?FindFirst@VectorLookup4_00589DC0@@QBEHABH@Z",
+  "len": "0x33",
+  "name": "FindFirst",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x589E00",
+  "sym": "?IndexFirst@VectorLookup4_00589DC0@@QBEIPBH@Z",
+  "len": "0x1b",
+  "name": "IndexFirst",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x589FD0",
+  "sym": "?FindSecond@VectorLookup4_00589DC0@@QBEHABH@Z",
+  "len": "0x33",
+  "name": "FindSecond",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x58A010",
+  "sym": "?IndexSecond@VectorLookup4_00589DC0@@QBEIPBH@Z",
+  "len": "0x1b",
+  "name": "IndexSecond",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x58A0E0",
+  "sym": "?FindActive@VectorLookup4_00589DC0@@QBEHABH@Z",
+  "len": "0x26",
+  "name": "FindActive",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x58A230",
+  "sym": "?Find@VectorLookup8_0058A230@@QBEHABH@Z",
+  "len": "0x26",
+  "name": "Find",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/vector_lookup_family_00589dc0.cpp",
+  "addr": "0x58A3A0",
+  "sym": "?Find@VectorLookup12_0058A3A0@@QBEHABH@Z",
+  "len": "0x26",
+  "name": "Find",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/unknown_00437050_cluster.cpp",
+  "addr": "0x437050",
+  "sym": "?FUN_00437050@UnknownObject_00437050@@QAE_NPBXH@Z",
+  "len": "0x31",
+  "name": "FUN_00437050",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/unknown_00437050_cluster.cpp",
+  "addr": "0x4370B0",
+  "sym": "_FUN_004370B0",
+  "len": "0x6",
+  "name": "FUN_004370B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/unknown_00437050_cluster.cpp",
+  "addr": "0x437190",
+  "sym": "_FUN_00437190",
+  "len": "0x17",
+  "name": "FUN_00437190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/unknown_00437050_cluster.cpp",
+  "addr": "0x4371B0",
+  "sym": "@FUN_004371B0@12",
+  "len": "0x14",
+  "name": "FUN_004371B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_derived_views_004b4f80.cpp",
+  "addr": "0x4B4F80",
+  "sym": "?FUN_004B4F80@GadgetDerivedView_004B4F80@@QAEXXZ",
+  "len": "0x2f",
+  "name": "FUN_004B4F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_derived_views_004b4f80.cpp",
+  "addr": "0x4B4FB0",
+  "sym": "?FUN_004B4FB0@GadgetDerivedMethodView_004B4FB0@@QAEXPAG@Z",
+  "len": "0x38",
+  "name": "FUN_004B4FB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x00438340",
+  "sym": "_FUN_00438340",
+  "len": "0x28",
+  "name": "FUN_00438340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x00438370",
+  "sym": "_FUN_00438370",
+  "len": "0x13",
+  "name": "FUN_00438370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x00438390",
+  "sym": "_FUN_00438390",
+  "len": "0x13",
+  "name": "FUN_00438390",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x004383B0",
+  "sym": "_FUN_004383B0",
+  "len": "0x13",
+  "name": "FUN_004383B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x004383D0",
+  "sym": "_FUN_004383D0",
+  "len": "0x13",
+  "name": "FUN_004383D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00438340.cpp",
+  "addr": "0x004383F0",
+  "sym": "_FUN_004383F0",
+  "len": "0x13",
+  "name": "FUN_004383F0",
+  "status": "matched",
+  "pct": 100
  }
 ]
