@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "690a8ac83c4d3a49fe57817f7f0d7b9d16fb060db31af8a94c1636bd7288767c",
+  "manifest_sha256": "a4cdf352d7ba451ad2f086e5b39cef119fbad17dc66eebe9e6af43ac0a398598",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3527,
-  "matched_entries_missed": 177,
+  "matched_entries": 3549,
+  "matched_entries_missed": 180,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5228,6 +5228,18 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4E0550",
+   "tu": "match/core/vector_abstractclass_methods.cpp",
+   "name": "DynamicVectorClass<AbstractClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4E07B0",
+   "tu": "match/core/vector_footclass_methods.cpp",
+   "name": "DynamicVectorClass<FootClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4E1570",
    "tu": "match/ui/gadget_class_methods.cpp",
    "name": "DrawAll",
@@ -5243,6 +5255,12 @@
    "addr": "0x4E8290",
    "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
    "name": "DynamicVectorClass<TagClass*>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4E9690",
+   "tu": "match/core/vector_buildingclass_methods.cpp",
+   "name": "DynamicVectorClass<BuildingClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

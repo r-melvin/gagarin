@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 143
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 140
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 144 remaining addresses are bound to VectorClass<T> tables;
+//   The 141 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -286,25 +286,10 @@ template class VectorClass<EMPulseClass*>;
 //   `.?AV?$VectorClass@UDrawRecord@FoggedObjectClass@@@@`.
 template class VectorClass<FoggedObjectClass::DrawRecord>;
 
-// FUNCTION: GAMEMD 0x004E0410
-// VectorClass<AbstractClass*> -- vtable 0x007E920C slot 3; locator 0x008009E0 -> type descriptor 0x008225B8
-//   `.?AV?$VectorClass@PAVAbstractClass@@@@`.
-template class VectorClass<AbstractClass*>;
-
-// FUNCTION: GAMEMD 0x004E0670
-// VectorClass<FootClass*> -- vtable 0x007E8C48 slot 3; locator 0x00800898 -> type descriptor 0x00822550
-//   `.?AV?$VectorClass@PAVFootClass@@@@`.
-template class VectorClass<FootClass*>;
-
 // FUNCTION: GAMEMD 0x004E92F0
 // VectorClass<TagClass*> -- vtable 0x007EA5C4 slot 3; locator 0x008024E0 -> type descriptor 0x00823F70
 //   `.?AV?$VectorClass@PAVTagClass@@@@`.
 template class VectorClass<TagClass*>;
-
-// FUNCTION: GAMEMD 0x004E9550
-// VectorClass<BuildingClass*> -- vtable 0x007E9E44 slot 3; locator 0x008012B0 -> type descriptor 0x00823240
-//   `.?AV?$VectorClass@PAVBuildingClass@@@@`.
-template class VectorClass<BuildingClass*>;
 
 // FUNCTION: GAMEMD 0x004E97B0
 // VectorClass<SuperClass*> -- vtable 0x007EA504 slot 3; locator 0x008022B8 -> type descriptor 0x00823DF8

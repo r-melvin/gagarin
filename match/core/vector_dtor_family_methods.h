@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 287 remaining 73-byte deleting-destructor bodies are bound here through
-// 147 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 281 remaining 73-byte deleting-destructor bodies are bound here through
+// 144 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -60,14 +60,8 @@ extern char VT_007E86FC;
 extern char VT_007E875C;
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>
 extern char VT_007E8BC0;
-// VTABLE: GAMEMD 0x007E920C -- VectorClass<AbstractClass*>
-extern char VT_007E920C;
-// VTABLE: GAMEMD 0x007E8C48 -- VectorClass<FootClass*>
-extern char VT_007E8C48;
 // VTABLE: GAMEMD 0x007EA5C4 -- VectorClass<TagClass*>
 extern char VT_007EA5C4;
-// VTABLE: GAMEMD 0x007E9E44 -- VectorClass<BuildingClass*>
-extern char VT_007E9E44;
 // VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
 extern char VT_007EA504;
 // VTABLE: GAMEMD 0x007E9B84 -- VectorClass<AITriggerTypeClass*>

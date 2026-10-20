@@ -1,13 +1,34 @@
 # Project status
 
-The latest whole-repository gates pass with **3,527 fully matched functions**,
-**165 partial rows**, and **869 tracked C++ translation units**; the manifest
-contains 866 translation units. The compile gate and 58 verifier tests pass; the duplicate-address check
-finds no conflicts. The ultimate goal remains a complete
-byte-for-byte reproduction of the pinned executable; that goal is not achieved.
+The latest whole-repository gates pass with **3,549 fully matched functions**,
+**165 partial rows**, and **872 tracked C++ files**; the manifest contains 869
+translation units. The compile gate passed; 58 verifier tests also passed, and
+the duplicate-address check found no conflicts. The ultimate goal remains a
+complete byte-for-byte reproduction of the pinned executable; that goal is not
+achieved.
 
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
+
+## Latest integrated batch (fully verified)
+
+Three mutable-pointer vector clusters are integrated: 12 entries each for
+`AbstractClass*`, `FootClass*` and `BuildingClass*`, across
+[AbstractClass](match/core/vector_abstractclass_methods.cpp),
+[FootClass](match/core/vector_footclass_methods.cpp) and
+[BuildingClass](match/core/vector_buildingclass_methods.cpp). Together they
+contain 36 address rows: 22 new exact-match candidates and 14 migrated claims.
+Each class has two RTTI-backed seven-slot tables; no TypeList specialization or
+constructor claim is made. The implementations assert the accessed member
+offsets and 4-byte pointer size, without asserting complete class sizes.
+The eight-shard whole-repository regression and compile gates passed. All six
+affected tables pass seven-slot checks against the integrated objects using
+`--weak-defaults` without manual symbol maps. These are conditional object-level
+checks; final-link resolution remains unverified.
+
+The verified tree has 281 generic deleting-destructor bindings across 144
+instantiation views, 141 base `Clear` rows, 139 native dynamic `Clear` rows
+plus one separate DiskID stand-in, and 19 address-specific resize views.
 
 **gagarin** reconstructs the *Command & Conquer: Red Alert 2 — Yuri's Revenge*
 engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ project.
@@ -31,7 +52,7 @@ image is identified by its SHA-256 in [reccmp-project.yml](reccmp-project.yml).
 The project works from that binary; it does not claim to have recovered
 Westwood's original source files.
 
-## Latest verified vector consolidation batch
+## Earlier verified vector consolidation snapshot (3,527 matches)
 
 Five native vector-class translation units contain 66 function rows: 12 in
 [AnimClass](match/core/vector_animclass_methods.cpp), 13 in
@@ -298,10 +319,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,527** | **17.9%** of 19,753 |
-| Sum of matched function lengths | 246 KiB | 6.6% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,549** | **18.0%** of 19,753 |
+| Sum of matched function lengths | 247 KiB | 6.7% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 869 | |
+| Tracked C++ files under `match/` | 872 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -321,7 +342,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 177 matched entries. Its candidate count is therefore
+listed entries, including 180 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
