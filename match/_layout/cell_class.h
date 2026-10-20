@@ -38,6 +38,14 @@
 
 struct CellClass : AbstractClass
 {
+    // FUNCTION: GAMEMD 0x486840
+    // Primary retail vtable slot +0x48. This layout currently represents vptrs
+    // explicitly; the entry body is bound as a const method until the full
+    // virtual hierarchy is reconstructed. CoordStruct uses a hidden result.
+    CoordStruct GetCoords() const;
+    // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
+    int GetFloorHeight(const Point2D& subcoords) const;
+
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     void*           FoggedObjects;           // +0x28 ctor @0x0047BC05 (=0)
     void*           BridgeOwnerCell;         // +0x2C CellClass*; ctor @0x0047BC08

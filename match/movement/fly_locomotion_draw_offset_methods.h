@@ -50,7 +50,7 @@ struct IFace_004CF830 { IFaceVtbl_004CF830* Vtbl; };
 // GLOBAL: GAMEMD 0x822410 — the interface id the client is queried for.
 extern const char riid_00822410[16];
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame_00A8ED84;
+#include "../core/frame_counter.h"
 
 // FUNCTION: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
 void __stdcall FUN_007DC720(long hr);

@@ -24,7 +24,7 @@ void SessionClass::Resume()
         }
         if (DAT_00A8B230->At_35A2 == 0) {
             FUN_00684240();
-            DAT_00B07784 = DAT_00A8ED84 + 3;
+            DAT_00B07784 = CurrentFrame + 3;
         }
         if (!(DAT_00887640->*DAT_00887640->Vtbl->At_1C)()) {
             (DAT_00887640->*DAT_00887640->Vtbl->At_18)();

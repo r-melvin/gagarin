@@ -82,7 +82,7 @@ extern Tactical_00729E50* DAT_00887324;
 // GLOBAL: GAMEMD 0x87F7E8 — map object passed as ECX to GetZPos.
 extern Map_00729E50 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xA8ED84 — frame value read by the progress calculation.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 // GLOBAL: GAMEMD 0x844A9C — integer scale added in switch cases.
 extern int DAT_00844A9C;
 // GLOBAL: GAMEMD 0x844A98 — integer scale used by modes 5 and 6.
@@ -119,7 +119,7 @@ extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resour
     } else {
         int elapsedProgress = resource->At_2C;
         if (resource->At_24 != -1) {
-            int elapsed = DAT_00A8ED84 - resource->At_24;
+            int elapsed = CurrentFrame - resource->At_24;
             if (elapsed < resource->At_2C) {
                 elapsedProgress -= elapsed;
             } else {

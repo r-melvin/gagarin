@@ -40,7 +40,7 @@ class HouseClass;
 
 // Unsorted::CurrentFrame — global game-frame counter @ 0x00A8ED84. Declared-only
 // so cl emits a reloc-normalised absolute load.
-extern int Unsorted_CurrentFrame;   // 0x00A8ED84
+#include "../core/frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // CDTimerClass — count-down frame timer (sizeof 0xC). StartTime @0, an

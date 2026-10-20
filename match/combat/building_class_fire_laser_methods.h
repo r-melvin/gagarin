@@ -24,7 +24,7 @@
 void* __cdecl operator new(unsigned int size);
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame_0044ABD0;
+#include "../core/frame_counter.h"
 
 struct Coord_0044ABD0
 {
@@ -91,7 +91,7 @@ GG_STATIC_ASSERT(sizeof(LaserDraw_0044ABD0) == 0x5C);
 // FrameTimer — empty clock policy whose value is CurrentFrame.
 struct FrameTimer_0044ABD0
 {
-    operator int() const { return CurrentFrame_0044ABD0; }
+    operator int() const { return CurrentFrame; }
 };
 
 // CDTimerClass<FrameTimer> (0xC bytes); CurrentTime is never written by the

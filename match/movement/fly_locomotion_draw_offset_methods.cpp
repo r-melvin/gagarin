@@ -67,7 +67,7 @@ Pair_004CF830 __stdcall FlyLocoOffset::GetDrawOffset()
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->IsFlatOnGround == 0 &&
         this->IsLanding == 0 && this->IsTakingOff == 0 &&
         (this->LinkedTo->*this->LinkedTo->Vtbl->At_1C8)() > clearance) {
-        bob = (int)(FUN_004CACB0((double)(CurrentFrame_00A8ED84 % 20)
+        bob = (int)(FUN_004CACB0((double)(CurrentFrame % 20)
                                  * 0.3141592653589793) * 1.5 + 0.5);
     }
 

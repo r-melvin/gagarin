@@ -17,7 +17,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
-extern int CurrentFrame_0070E380;
+#include "../core/frame_counter.h"
 
 // CDTimerClass — frame count-down timer (sizeof = 0xC). GetTimeLeft is the
 // inlined read seen at 0x70E380..0x70E3A3.
@@ -31,7 +31,7 @@ struct CDTimer_0070E380
     {
         int left = TimeLeft;
         if (StartTime != -1) {
-            int elapsed = CurrentFrame_0070E380 - StartTime;
+            int elapsed = CurrentFrame - StartTime;
             if (elapsed < left) {
                 left = left - elapsed;
             } else {

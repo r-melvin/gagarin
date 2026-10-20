@@ -26,7 +26,7 @@
 #include "../_rt/gg_vslot.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // CellStruct — a packed map cell coordinate. The user-declared constructor
 // makes VC6 return it through a hidden pointer, which is how the slot-0x338

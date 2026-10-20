@@ -17,7 +17,7 @@ class TechnoClass;
 class HouseClass;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by TimeToExplode).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // The Target object: Disarm clears two of its members (an int @0x38 and a
 // flag byte @0x68 — the back-link/attached-bomb flag). Only these are modelled.

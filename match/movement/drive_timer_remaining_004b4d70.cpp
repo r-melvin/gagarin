@@ -12,7 +12,7 @@
 #include "../_layout/locomotion_class.h"
 
 // GLOBAL: GAMEMD 0x00A8ED84 -- frame count read by the timer helper.
-extern int CurrentFrame_00A8ED84;
+#include "../core/frame_counter.h"
 
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime) == 0x00);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
@@ -24,7 +24,7 @@ int __fastcall FUN_004B4D70(CDTimerClass* timer)
     int startTime = timer->StartTime;
     int timeLeft = timer->TimeLeft;
     if (startTime != -1) {
-        int elapsed = CurrentFrame_00A8ED84 - startTime;
+        int elapsed = CurrentFrame - startTime;
         if (elapsed < timeLeft)
             return timeLeft - elapsed;
         return 0;

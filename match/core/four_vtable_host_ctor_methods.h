@@ -22,7 +22,7 @@ extern void* const VTBL_007E3E90[];
 extern void* const VTBL_007E43C8[];
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 
 struct Vec_0043B680
 {

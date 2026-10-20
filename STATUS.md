@@ -1,16 +1,63 @@
 # Project status
 
-The latest whole-repository gates pass with **3,595 fully matched functions**,
-**165 partial rows**, and **878 tracked C++ files**; the manifest contains 875
-translation units. The compile gate passed; 65 verifier tests also passed, and
-the duplicate-address check found no conflicts. The ultimate goal remains a
+The latest whole-repository gates pass with **3,612 fully matched functions**,
+**165 partial rows**, and **882 tracked C++ files**; the manifest contains 878
+translation units. Compilation, the 882/882 tracked-source object build and its
+hash check passed; 66 verifier tests also passed, and the duplicate-address
+check found no conflicts. The ultimate goal remains a
 complete byte-for-byte reproduction of the pinned executable; that goal is not
 achieved.
 
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
 
-## Latest integrated batch: BulletClass and CampaignClass vectors
+## Latest verified integration: AircraftClass, UnitClass, CellClass and CurrentFrame
+
+Two native vector clusters add 24 address rows across
+[AircraftClass](match/core/vector_aircraftclass_methods.cpp) and
+[UnitClass](match/core/vector_unitclass_methods.cpp): 16 new matched claims and
+eight migrated claims. Each class has vector-template methods; all four
+affected vector tables passed conditional seven-slot checks against project
+objects using `--weak-defaults` without manual symbol maps.
+
+[CellClass::GetCoords](match/map/cell_class_get_coords.cpp) at `0x486840` has a
+focused 100% comparison over its complete 73-byte span. It uses the existing
+explicit-vptr `CellClass` layout to bind a nonvirtual const-member symbol. This
+does not establish the complete virtual hierarchy or vtable.
+
+The shared [`CurrentFrame` declaration](match/core/frame_counter.h) and its
+[single definition](match/core/frame_counter.cpp) use address `0xA8ED84`. The
+retail operand audit validated 96 `DIR32` references to that address across 68
+matched functions in 41 translation units. The PE maps `.data` from VA
+`0x812000` with virtual size `0x367BE4`, while only `0x6C000` bytes are
+file-backed; `0xA8ED84` lies in the zero-filled virtual tail. This supports the
+zero-initialized `int` storage declaration, but does not recover all runtime
+writes or prove the counter's original namespace. The `DrawLinks` function at
+`0x472160` remains partial; its entry-origin evidence observes a reference to
+the counter at `0x4721A3`.
+
+The eight-shard regression, compile gate, tracked-source object build and hash
+check passed. The build produced objects for all 882 tracked C++ files; the
+manifest contains 878 translation units. The verifier suite has 66 passing
+tests, including the BSS-object parsing fixture.
+
+The `/dll /noentry /nodefaultlib` diagnostic now reports zero `LNK2005`
+duplicate definitions, 6,538 `LNK2001` unresolved-reference lines and 4,255
+unique unresolved symbols (`LNK1120`), down from 4,283. This diagnostic excludes
+default libraries and does not establish engine link closure. The shared
+[RulesClass layout and declaration](match/core/rules_class.h) use the observed
+member offsets at `0x54C` and `0x1804`, and one
+[`RulesInstance` definition](match/combat/rad_site_class_methods.cpp) serves
+both consumers. The `CurrentFrame` audit found one 4-byte BSS definition and
+resolved its former aliases in the link diagnostic. `GetFloorHeight` at
+`0x47B3A0` remains an unmatched native call target.
+
+Current vector-family totals are 271 generic deleting-destructor bindings
+across 139 instantiation views, 136 base `Clear` rows, 134 native dynamic
+`Clear` rows plus one separate DiskID stand-in (135 dynamic rows total), and 18
+address-specific resize views.
+
+## Previous fully verified batch: BulletClass and CampaignClass vectors
 
 Two native mutable-pointer vector clusters are integrated: 12 address rows
 each for `BulletClass*` and `CampaignClass*`, for 24 rows total. The batch adds
@@ -36,7 +83,7 @@ declarations](match/ui/sidebar_class_methods.h) are also shared; the distinct
 classifier at `0x6ABC60` remains separate from `GetObjectTabIdx` at `0x6ABCD0`.
 The latest diagnostic reports zero `LNK2005` conflicts after these changes.
 
-Current vector-family totals are 275 generic deleting-destructor bindings
+At that earlier snapshot, vector-family totals were 275 generic deleting-destructor bindings
 across 141 instantiation views, 138 base `Clear` rows, 136 native dynamic
 `Clear` rows plus one separate DiskID stand-in (137 dynamic rows total), and 18
 address-specific resize views.
@@ -88,8 +135,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 878 tracked C++ files and 3,760 manifest
-rows, with no manifest TU missing from tracked sources. Three tracked files
+verified snapshot, the inventory has 882 tracked C++ files and 3,777 manifest
+rows, with no manifest TU missing from tracked sources. Four tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -404,10 +451,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,595** | **18.2%** of 19,753 |
-| Sum of matched function lengths | 250 KiB | 6.7% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,612** | **18.3%** of 19,753 |
+| Sum of matched function lengths | 251 KiB | 6.8% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 878 | |
+| Tracked C++ files under `match/` | 882 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -427,7 +474,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 186 matched entries. Its candidate count is therefore
+listed entries, including 188 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

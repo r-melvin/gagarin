@@ -19,7 +19,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
-extern int CurrentFrame_004C6210;
+#include "../core/frame_counter.h"
 
 // CDTimerClass — StartTime, the frame-clock functor cell, TimeLeft (0xC bytes).
 // Constructing one from a duration stamps the current frame and the duration
@@ -33,14 +33,14 @@ struct CDTimer_004C6210
     CDTimer_004C6210() {}
     CDTimer_004C6210(int duration)
     {
-        this->StartTime = CurrentFrame_004C6210;
+        this->StartTime = CurrentFrame;
         this->TimeLeft  = duration;
     }
 
     void Start()
     {
         if (this->StartTime == -1) {
-            this->StartTime = CurrentFrame_004C6210;
+            this->StartTime = CurrentFrame;
         }
     }
 };

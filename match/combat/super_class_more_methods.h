@@ -15,7 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // SuperWeaponTypeClass — only the three members read by ShouldFlashTab:
 //   UseChargeDrain @0xE5 (mov dl,[eax+0xE5]),

@@ -58,7 +58,7 @@ Host_0043B680* Host_0043B680::Ctor(int arg)
 
     this->At_620 = zero;
     this->At_624 = (char)zero;
-    int stamp = DAT_00A8ED84;
+    int stamp = CurrentFrame;
     this->At_630 = zero;
     this->Stamp = stamp;
 

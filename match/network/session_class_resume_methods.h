@@ -26,7 +26,7 @@ extern int DAT_0083ED20;
 // GLOBAL: GAMEMD 0xA8EB60 — GameOptionsClass::Instance; first dword is the speed.
 extern int DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 // GLOBAL: GAMEMD 0xB07784 — a frame deadline re-armed at CurrentFrame + 3.
 extern int DAT_00B07784;
 

@@ -18,7 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame_004C9EA0;
+#include "../core/frame_counter.h"
 
 // TechnoClass — only TimeToBuild() is reached.
 struct Techno_004C9EA0
@@ -54,7 +54,7 @@ GG_STATIC_ASSERT(offsetof(House_004C9EA0, IHouse) == 0x24);
 // never-written middle dword of the timer.
 struct FrameTimer_004C9EA0
 {
-    operator int() const { return CurrentFrame_004C9EA0; }
+    operator int() const { return CurrentFrame; }
 };
 
 // CDTimerClass<FrameTimer> (0xC bytes): StartTime, CurrentTime (uninitialised

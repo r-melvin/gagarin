@@ -29,7 +29,7 @@ struct Cell_007235A0
 GG_STATIC_ASSERT(sizeof(Cell_007235A0) == 0x4);
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 
 // The scenario randomizer; only the raw draw is called.
 struct Random_007235A0

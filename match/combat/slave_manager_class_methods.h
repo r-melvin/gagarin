@@ -18,7 +18,7 @@
 #include "../_layout/vector_class.h"
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by AllGuard).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // The slave infantry object. AllGuard only needs its vptr to issue the virtual
 // call at vtable+0x3D0 (thiscall, no args). VC6 rejects the `__thiscall`

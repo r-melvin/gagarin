@@ -24,7 +24,7 @@
 #include "../_rt/gg_vslot.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame_004C9FF0;
+#include "../core/frame_counter.h"
 // GLOBAL: GAMEMD 0xA8E7AC — Unsorted::ScenarioInit.
 extern int DAT_00A8E7AC;
 
@@ -123,7 +123,7 @@ GG_STATIC_ASSERT(offsetof(Techno_004C9FF0, Owner) == 0x21C);
 // never-written middle dword of the timer.
 struct FrameTimer_004C9FF0
 {
-    operator int() const { return CurrentFrame_004C9FF0; }
+    operator int() const { return CurrentFrame; }
 };
 
 // CDTimerClass<FrameTimer> (0xC bytes).

@@ -21,7 +21,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 
 // A 16-bit binary-angle direction padded to 4 bytes.
 struct Dir_004C9220
@@ -41,7 +41,7 @@ struct Timer_004C9220
     int TimeLeft;             // +0x0008
 
     Timer_004C9220() {}
-    Timer_004C9220(int duration) : StartTime(DAT_00A8ED84), TimeLeft(duration) {}
+    Timer_004C9220(int duration) : StartTime(CurrentFrame), TimeLeft(duration) {}
 
     // Frames still to go: TimeLeft minus the frames elapsed since StartTime,
     // clamped at zero; a timer that was never started reports TimeLeft.
@@ -54,7 +54,7 @@ struct Timer_004C9220
     {
         int remain = this->TimeLeft;
         if (this->StartTime != -1) {
-            int value = DAT_00A8ED84 - this->StartTime;
+            int value = CurrentFrame - this->StartTime;
             if (value < remain)
                 return remain - value;
             else

@@ -256,7 +256,7 @@ GG_STATIC_ASSERT(offsetof(BuildingClass_00455D50, Settings) == 0x520);
 // comparing the argument against +0x50.
 // ---------------------------------------------------------------------------
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 
 // FUNCTION: GAMEMD 0x750010 — the mode test, __fastcall, byte result.
 bool __fastcall FUN_00750010(void* subject);

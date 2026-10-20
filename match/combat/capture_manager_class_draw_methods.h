@@ -41,7 +41,7 @@ GG_STATIC_ASSERT(offsetof(ControlNode, StartFrame) == 0x08);
 GG_STATIC_ASSERT(offsetof(ControlNode, Duration)   == 0x10);
 
 // GLOBAL: GAMEMD 0x00A8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 struct CaptureManagerClass
 {

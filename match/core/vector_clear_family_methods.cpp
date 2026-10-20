@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 137
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 135
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -355,16 +355,6 @@ template class VectorClass<SmudgeClass*>;
 // VectorClass<TerrainClass*> -- vtable 0x007E9E04 slot 3; locator 0x00801218 -> type descriptor 0x008231D8
 //   `.?AV?$VectorClass@PAVTerrainClass@@@@`.
 template class VectorClass<TerrainClass*>;
-
-// FUNCTION: GAMEMD 0x004EB810
-// VectorClass<AircraftClass*> -- vtable 0x007E9E84 slot 3; locator 0x00801348 -> type descriptor 0x008232A8
-//   `.?AV?$VectorClass@PAVAircraftClass@@@@`.
-template class VectorClass<AircraftClass*>;
-
-// FUNCTION: GAMEMD 0x004EBA70
-// VectorClass<UnitClass*> -- vtable 0x007E9EC4 slot 3; locator 0x008013E0 -> type descriptor 0x00823310
-//   `.?AV?$VectorClass@PAVUnitClass@@@@`.
-template class VectorClass<UnitClass*>;
 
 // FUNCTION: GAMEMD 0x004EBF30
 // VectorClass<AnimClass*> -- vtable 0x007E9F44 slot 3; locator 0x00801510 -> type descriptor 0x008233E0

@@ -38,7 +38,7 @@ struct TechnoIdleVtbl;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84.
 // GLOBAL: GAMEMD 0xA8ED84
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // CDTimerClass — the engine's countdown timer (sizeof 0xC). StartTime == -1
 // means "stopped", and the remaining time is then simply the stored duration.

@@ -23,7 +23,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // Two-int writers on one object, +0x08/+0x0C and +0x20/+0x24.
 struct Obj_00403800

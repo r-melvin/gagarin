@@ -25,7 +25,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // CDTimerClass (0x0C): a frame count-down.  GetTimeLeft is what retail
 // inlined into both bodies.  The arm order matters: the subtract arm falls

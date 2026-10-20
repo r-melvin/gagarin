@@ -58,8 +58,8 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
             this->At_53A6 = 1;
             this->Tabs[this->ActiveTabIndex].At_3C = 1;
             MapInstance_006A5F20.RedrawSidebar(0);
-            if (this->At_53A0 <= DAT_00A8ED84) {
-                this->At_53A0 = DAT_00A8ED84 + 2;
+            if (this->At_53A0 <= CurrentFrame) {
+                this->At_53A0 = CurrentFrame + 2;
             }
         }
     } else if (abs == ABS_BUILDINGTYPE_006A5F20) {
@@ -73,8 +73,8 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
             Strip_006A5F20* strip = &this->Tabs[3];
             strip->At_3C = 1;
             MapInstance_006A5F20.RedrawSidebar(0);
-            if (this->At_53A0 <= DAT_00A8ED84) {
-                this->At_53A0 = DAT_00A8ED84 + 2;
+            if (this->At_53A0 <= CurrentFrame) {
+                this->At_53A0 = CurrentFrame + 2;
             }
         }
     }

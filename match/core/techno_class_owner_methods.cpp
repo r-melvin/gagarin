@@ -63,7 +63,7 @@ bool TechnoClass::TargetingTimerFinished() const
 {
     int timeLeft = this->TargetingTimer.TimeLeft;
     if (this->TargetingTimer.StartTime != -1) {
-        int elapsed = Unsorted_CurrentFrame - this->TargetingTimer.StartTime;
+        int elapsed = CurrentFrame - this->TargetingTimer.StartTime;
         if (elapsed < timeLeft)
             return (timeLeft - elapsed) == 0;
         timeLeft = 0;

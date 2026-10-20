@@ -17,7 +17,7 @@
 #include "storage_class.h"
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84 (read by ForceEnd).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // WaypointPathClass — the per-slot "planning mode" path object.

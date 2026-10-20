@@ -25,7 +25,7 @@
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84
 // (read by RotationTimer.GetTimeLeft -> MOV ECX/EDX/EBX,[0x00A8ED84]).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // A 16-bit binary-angle-measure direction (Raw) padded to 4 bytes.
 struct DirStruct

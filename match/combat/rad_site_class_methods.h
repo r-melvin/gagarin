@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/rules_class.h"
 
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes. SetBaseCell
 // copies it as a single dword (mov edx,[eax]; mov [ecx+0x40],edx).
@@ -23,17 +24,6 @@ struct CellStruct
     short X;
     short Y;
 };
-
-// RulesClass::Instance pointer @0x008871E0; SetRadLevel reads the
-// RadDurationMultiple member @0x1804 (confirmed: load of [0x8871E0] then
-// [eax+0x1804]). Only that member is modelled.
-struct RulesClass
-{
-    char _pad0[0x1804];   // +0x0000
-    int  RadDurationMultiple; // +0x1804
-};
-
-extern RulesClass* RulesInstance;  // GLOBAL: GAMEMD 0x008871E0
 
 struct RadSiteClass
 {
@@ -63,6 +53,4 @@ GG_STATIC_ASSERT(offsetof(RadSiteClass, SpreadInLeptons) == 0x48);
 GG_STATIC_ASSERT(offsetof(RadSiteClass, RadLevel)        == 0x4C);
 GG_STATIC_ASSERT(offsetof(RadSiteClass, RadDuration)     == 0x6C);
 GG_STATIC_ASSERT(offsetof(RadSiteClass, RadTimeLeft)     == 0x70);
-GG_STATIC_ASSERT(offsetof(RulesClass,   RadDurationMultiple) == 0x1804);
-
 #endif  // GG_MATCH_COMBAT_RAD_SITE_CLASS_H

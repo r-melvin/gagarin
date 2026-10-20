@@ -23,7 +23,7 @@
 struct AbstractClass;
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
-extern int DAT_00A8ED84;
+#include "../core/frame_counter.h"
 
 // A frame-clocked countdown (YRpp CDTimerClass). The clock slot at +0x04 is
 // never written by the constructor, which is what retail shows: the
@@ -36,7 +36,7 @@ struct CDTimer_006B7100
 
     explicit CDTimer_006B7100(int duration)
     {
-        StartTime = DAT_00A8ED84;
+        StartTime = CurrentFrame;
         TimeLeft = duration;
     }
 };

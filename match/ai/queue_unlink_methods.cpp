@@ -67,7 +67,7 @@ void Owner_0041DC80::FUN_0041DC80(Node_0041DC80* node)
     }
 
     if (this->Active <= zero) {
-        this->field_40 = DAT_00A8ED84;
+        this->field_40 = CurrentFrame;
         this->field_3C = (char)zero;
         this->field_3D = (char)zero;
     }

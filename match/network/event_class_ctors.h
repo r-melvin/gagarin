@@ -58,7 +58,7 @@
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the frame counter every
 // constructor stamps into Frame on both arms.
-extern int CurrentFrame_004C6650;
+#include "../core/frame_counter.h"
 
 // GLOBAL: GAMEMD 0x82091C — EventClass::EventNames, the 47-entry table the
 // log line indexes by event type (`MOV ECX,[EAX*4 + 0x82091C]`).

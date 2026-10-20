@@ -16,7 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter (`MOV EDI,[0xA8ED84]`).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // RulesClass singleton pointer @0x8871E0. Two timing fields are read here and
 // neither is bound by YRpp at a computable offset, so both keep placeholder

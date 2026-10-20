@@ -75,10 +75,16 @@ def parse_coff(path):
             name = name_raw.rstrip(b"\0").decode("ascii", errors="replace")
         raw_size, raw_ptr, reloc_ptr = struct.unpack_from("<III", data, off + 16)
         reloc_count = struct.unpack_from("<H", data, off + 32)[0]
-        if raw_ptr + raw_size > len(data) or reloc_ptr + reloc_count * 10 > len(data):
+        characteristics = struct.unpack_from("<I", data, off + 36)[0]
+        # COFF BSS records the allocation size but has no file-backed bytes.
+        # VC6 emits this for legitimate uninitialised globals such as RulesInstance.
+        uninitialized = bool(characteristics & 0x80) and raw_ptr == 0
+        if (not uninitialized and raw_ptr + raw_size > len(data)) or reloc_ptr + reloc_count * 10 > len(data):
             raise VerifyError(f"truncated data/relocations in COFF section {name}")
-        if raw_size and raw_ptr < section_table_end:
+        if raw_size and not uninitialized and raw_ptr < section_table_end:
             raise VerifyError(f"COFF section {name} raw data overlaps file/section headers")
+        if uninitialized and reloc_count:
+            raise VerifyError(f"uninitialized COFF section {name} has relocations without raw data")
         if reloc_count and reloc_ptr < section_table_end:
             raise VerifyError(f"COFF section {name} relocations overlap file/section headers")
         relocs = []
@@ -87,7 +93,8 @@ def parse_coff(path):
             rva, symidx, kind = struct.unpack_from("<IIH", data, roff)
             relocs.append((rva, symidx, kind))
         sections[secno] = {"name": name, "raw_ptr": raw_ptr,
-                           "raw_size": raw_size, "relocs": relocs}
+                           "raw_size": raw_size, "relocs": relocs,
+                           "uninitialized": uninitialized}
 
     # COFF relocation symbol indices count auxiliary records. Retain those
     # indices when walking, but never treat an auxiliary record as a symbol.
@@ -265,6 +272,8 @@ def verify(obj, vtable_symbol, address, slots, binary, manifest_path,
             strong_defined.setdefault(symbol["name"], {})[(symbol["section"], symbol["value"])] = symbol
     vtable = defined_symbol(sections, symbols, vtable_symbol)
     sec = sections[vtable["section"]]
+    if sec["uninitialized"]:
+        raise VerifyError(f"vtable {vtable_symbol} is in an uninitialized COFF section")
     start = vtable["value"]
     end = start + slots * 4
     if start < 0 or end > sec["raw_size"]:

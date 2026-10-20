@@ -21,7 +21,7 @@ class TechnoClass;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84, stamped into
 // DisguiseCreationFrame (MOV EAX,[0x00A8ED84]).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // The primary vtable, modelled only as far as the one slot this TU dispatches
 // through. Slot +0x49C takes no arguments and returns the value DisguiseAs

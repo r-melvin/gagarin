@@ -13,7 +13,7 @@ from contextlib import redirect_stdout
 from pathlib import Path
 from unittest.mock import patch
 
-from verify_vtable import VerifyError, main as verifier_main, verify
+from verify_vtable import VerifyError, main as verifier_main, verify, parse_coff
 
 
 def coff_obj(target_names=("foo", "bar"), slot_targets=(0, 1),
@@ -75,6 +75,26 @@ def coff_obj(target_names=("foo", "bar"), slot_targets=(0, 1),
                                        0, len(relocs), 0, 0x40000040))
     return (file_header + b"".join(section_headers) + text_data + table_data
             + b"".join(relocs) + bytes(symdata) + string_table)
+
+
+class BssSectionTests(unittest.TestCase):
+    def test_bss_allocation_is_not_read_from_file_headers(self):
+        data = bytearray(coff_obj())
+        struct.pack_into("<8s", data, 20, b".bss")
+        struct.pack_into("<II", data, 20 + 16, 0x1000, 0)
+        struct.pack_into("<I", data, 20 + 36, 0xC0000080)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bss.obj"
+            path.write_bytes(data)
+            _, sections, _, _ = parse_coff(path)
+            self.assertTrue(sections[1]["uninitialized"])
+            self.assertEqual(sections[1]["raw_size"], 0x1000)
+            # An initialized section with the same absent raw pointer remains
+            # invalid: accepting BSS must not relax the header-overlap checks.
+            struct.pack_into("<I", data, 20 + 36, 0xC0000040)
+            path.write_bytes(data)
+            with self.assertRaises(VerifyError):
+                parse_coff(path)
 
 
 def coff_weak_alias(characteristics=3, target_index=0, strong_same_name=False,

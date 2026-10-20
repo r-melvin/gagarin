@@ -20,7 +20,7 @@ class CellClass;
 
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84. Stamped into the
 // re-armed UpdateTimer's StartTime by Clear (MOV EAX,[0x00A8ED84]).
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // Game memory free (cdecl, single pointer arg) @0x7C8B3D — `push p; call; add
 // esp,4`. Declared (no body) so cl emits a normalised call reloc. GAMEMD 0x7C8B3D.

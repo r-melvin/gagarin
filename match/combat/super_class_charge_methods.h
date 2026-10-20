@@ -28,7 +28,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x00A8ED84 — Unsorted::CurrentFrame, the global frame counter.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // ---------------------------------------------------------------------------
 // CDTimerClass = TimerStruct<FrameTimer> (sizeof 0x0C): a frame count-down.

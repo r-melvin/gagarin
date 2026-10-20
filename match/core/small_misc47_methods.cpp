@@ -70,7 +70,7 @@ bool Obj_0041D7E0::FUN_0041D7E0(int candidate)
     int delay = FUN_00750010(Subject + 0x150) ? DelayB : DelayA;
 
     if (!Suppressed) {
-        if (Start + delay <= DAT_00A8ED84) {
+        if (Start + delay <= CurrentFrame) {
             return true;
         }
     }

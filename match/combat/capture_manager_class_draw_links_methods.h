@@ -26,7 +26,7 @@ struct Color_00472160 { unsigned char R; unsigned char G; unsigned char B; };
 GG_STATIC_ASSERT(sizeof(Color_00472160) == 3);
 
 // GLOBAL: GAMEMD 0xA8ED84 -- Unsorted::CurrentFrame.
-extern int CurrentFrame_00472160;
+#include "../core/frame_counter.h"
 
 // CDTimerClass -- frame count-down timer (sizeof 0xC); the inlined GetTimeLeft
 // read is 0x47219B..0x4721B5.
@@ -40,7 +40,7 @@ struct CDTimer_00472160
     {
         int left = TimeLeft;
         if (StartTime != -1) {
-            int elapsed = CurrentFrame_00472160 - StartTime;
+            int elapsed = CurrentFrame - StartTime;
             if (elapsed < left) {
                 left = left - elapsed;
             } else {

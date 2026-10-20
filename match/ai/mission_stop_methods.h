@@ -10,16 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
-
-struct Rules_004158E0
-{
-    char _pad000[0x54C];      // +0x0000
-    int  At_54C;              // +0x054C
-};
-GG_STATIC_ASSERT(offsetof(Rules_004158E0, At_54C) == 0x54C);
-
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
-extern Rules_004158E0* RulesInstance;
+#include "../core/rules_class.h"
 
 // Declaration order matters — see match/_rt/gg_vslot.h. The class must be
 // complete before the member-function-pointer types, or VC6 uses the 8-byte

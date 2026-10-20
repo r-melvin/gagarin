@@ -39,11 +39,11 @@ EventClass::EventClass(int houseIndex, SpecialClass special)
         HouseIndex = (char)houseIndex;
         Type = EVENT_SPECIAL;
         Data.Special.Special = special;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -62,11 +62,11 @@ EventClass::EventClass(int houseIndex, int eventType, TargetClass whom)
         HouseIndex = (char)houseIndex;
         Type = (unsigned char)eventType;
         Data.Target.Whom = whom;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -87,11 +87,11 @@ EventClass::EventClass(int houseIndex, int eventType, const CellStruct& cell)
         Type = (unsigned char)eventType;
         Data.SellCell.Location.X = cell.X;
         Data.SellCell.Location.Y = cell.Y;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -108,11 +108,11 @@ EventClass::EventClass(int houseIndex, int eventType)
     if (houseIndex >= 0) {
         HouseIndex = (char)houseIndex;
         Type = (unsigned char)eventType;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -129,11 +129,11 @@ EventClass::EventClass(int houseIndex, int eventType, int data)
         HouseIndex = (char)houseIndex;
         Type = (unsigned char)eventType;
         Data.General.Data = data;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -153,11 +153,11 @@ EventClass::EventClass(int houseIndex, int eventType, TargetClass src,
         Type = (unsigned char)eventType;
         Data.Archive.Whom1 = src;
         Data.Archive.Whom2 = dest;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -176,11 +176,11 @@ EventClass::EventClass(int houseIndex, int animId, void* house,
         Data.Animation.AnimID = animId;
         Data.Animation.HouseID = (int)house;
         Data.Animation.Location = coord;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -203,11 +203,11 @@ EventClass::EventClass(int houseIndex, TargetClass src, unsigned char mission,
         Data.MegaMission.Target = target;
         Data.MegaMission.Destination = destination;
         Data.MegaMission.Follow = follow;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -231,11 +231,11 @@ EventClass::EventClass(int houseIndex, TargetClass src, unsigned char mission,
         Data.MegaMissionF.Destination = destination;
         Data.MegaMissionF.Speed = speed;
         Data.MegaMissionF.MaxSpeed = maxSpeed;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -255,11 +255,11 @@ EventClass::EventClass(int houseIndex, int eventType, RTTIType rtti, int id,
         Data.Place.RTTI = rtti;
         Data.Place.ID = id;
         Data.Place.Extra = extra;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -283,11 +283,11 @@ EventClass::EventClass(int houseIndex, int eventType, RTTIType rtti,
         Data.Place.Extra = 0;
         Data.Place.Location.X = cell.X;
         Data.Place.Location.Y = cell.Y;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -308,11 +308,11 @@ EventClass::EventClass(int houseIndex, int eventType, RTTIType rtti, int id,
         Data.Place.Extra = 0;
         Data.Place.Location.X = cell.X;
         Data.Place.Location.Y = cell.Y;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -335,11 +335,11 @@ EventClass::EventClass(int houseIndex, int eventType, RTTIType rtti, int id,
         Data.Place.Extra = extra;
         Data.Place.Location.X = cell.X;
         Data.Place.Location.Y = cell.Y;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -359,11 +359,11 @@ EventClass::EventClass(int houseIndex, int eventType, int id,
         Data.SpecialPlace.ID = id;
         Data.SpecialPlace.Location.X = cell.X;
         Data.SpecialPlace.Location.Y = cell.Y;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -381,11 +381,11 @@ EventClass::EventClass(int houseIndex, int eventType, RTTIType rtti, int id)
         Type = (unsigned char)eventType;
         Data.Place.RTTI = rtti;
         Data.Place.ID = id;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 
@@ -407,11 +407,11 @@ EventClass::EventClass(int houseIndex, IPXAddressClass* address, char playerId)
         address->GetAddress((unsigned char*)&houseIndex, node);
         Data.AddressChange.Address = *(unsigned int*)node;
         Data.AddressChange.PlayerID = playerId;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
         Type = EVENT_EMPTY;
-        Frame = CurrentFrame_004C6650;
+        Frame = CurrentFrame;
     }
 }
 

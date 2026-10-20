@@ -23,7 +23,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — the engine frame counter, read by 0x426630.
-extern int CurrentFrame;
+#include "../core/frame_counter.h"
 
 // A countdown timer: a start frame at +0x00 and a duration at +0x08, with -1
 // in the start field meaning "not running". 0x426620 sits on the same object,
