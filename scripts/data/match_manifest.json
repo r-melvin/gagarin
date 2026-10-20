@@ -31390,5 +31390,50 @@
   "name": "BombSerializeView_00438A90::FUN_00438A90",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/bomb_load_00438b40.cpp",
+  "addr": "0x438B40",
+  "sym": "_FUN_00438B40@8",
+  "len": "0x82",
+  "name": "FUN_00438B40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_dispatch_004b55a0.cpp",
+  "addr": "0x4B54E0",
+  "len": "0x47",
+  "sym": "?FUN_004B54E0@GadgetDispatchView_004B55A0@@QAEXHH@Z",
+  "name": "FUN_004B54E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_dispatch_004b55a0.cpp",
+  "addr": "0x4B55A0",
+  "len": "0x04",
+  "sym": "?FUN_004B55A0@GadgetDispatchView_004B55A0@@UAEHXZ",
+  "name": "FUN_004B55A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_dispatch_004b55a0.cpp",
+  "addr": "0x4B55B0",
+  "len": "0x12",
+  "sym": "?FUN_004B55B0@GadgetDispatchView_004B55A0@@UAEHXZ",
+  "name": "FUN_004B55B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_dispatch_004b55a0.cpp",
+  "addr": "0x4B55D0",
+  "len": "0x1A",
+  "sym": "?FUN_004B55D0@GadgetDispatchView_004B55A0@@QAEXH@Z",
+  "name": "FUN_004B55D0",
+  "status": "matched",
+  "pct": 100
  }
 ]
