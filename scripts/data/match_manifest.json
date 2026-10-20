@@ -5922,11 +5922,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_copy_constructors.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x5255F0",
   "sym": "??0?$TypeList@PBVAnimTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "TypeList<const AnimTypeClass*> copy constructor",
+  "name": "TypeList<const AnimTypeClass*>::constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6039,11 +6039,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x00525250",
   "sym": "??0?$DynamicVectorClass@PBVAnimTypeClass@@@@QAE@HPAPBVAnimTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass<const AnimTypeClass*>::DynamicVectorClass",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6084,20 +6084,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x0067AC70",
-  "sym": "?Ctor@DynamicVectorClass_0067AC70@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@QAE@HPAPBVVoxelAnimTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_0067AC70::Ctor",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x0067AFF0",
-  "sym": "?Ctor@DynamicVectorClass_0067AFF0@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVSmudgeTypeClass@@@@QAE@HPAPBVSmudgeTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_0067AFF0::Ctor",
+  "name": "DynamicVectorClass<const SmudgeTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -6192,11 +6192,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/typelist_default_constructors.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x67A470",
   "sym": "??0?$TypeList@PBVAnimTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "TypeList<const AnimTypeClass*> default constructor",
+  "name": "TypeList<const AnimTypeClass*>::constructor",
   "status": "matched",
   "pct": 100
  },
@@ -14094,7 +14094,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x00524ed0",
   "sym": "?Clear@?$DynamicVectorClass@PBVAnimTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15120,11 +15120,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x525680",
   "sym": "??0?$VectorClass@PBVAnimTypeClass@@@@QAE@HPAPBVAnimTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass<const AnimTypeClass*>::VectorClass",
+  "name": "VectorClass<const AnimTypeClass*>::constructor",
   "status": "matched",
   "pct": 100
  },
@@ -15255,20 +15255,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x67C310",
-  "sym": "?Ctor@VectorClass_0067C310@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVVoxelAnimTypeClass@@@@QAE@HPAPBVVoxelAnimTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_0067C310::Ctor",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x67C3A0",
-  "sym": "?Ctor@VectorClass_0067C3A0@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVSmudgeTypeClass@@@@QAE@HPAPBVSmudgeTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_0067C3A0::Ctor",
+  "name": "VectorClass<const SmudgeTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -16749,29 +16749,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x00524FC0",
-  "sym": "??_G?$VectorClass@PBVAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@PBVAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const AnimTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<const AnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x00525010",
   "sym": "??_G?$VectorClass@PBVAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const AnimTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<const AnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x005252B0",
-  "sym": "??_G?$VectorClass@PBVAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const AnimTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19503,7 +19503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_animtype_methods.cpp",
   "addr": "0x005251c0",
   "sym": "?Clear@?$VectorClass@PBVAnimTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -32155,5 +32155,77 @@
   "name": "DynamicVectorClass<TechnoTypeClass*>::Slot5",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "addr": "0x524F00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVAnimTypeClass@@@@UBEHPAPBVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x524FB0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PBVAnimTypeClass@@@@UBEPBVAnimTypeClass@@H@Z",
+  "name": "VectorClass<const AnimTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x5250D0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "??8?$VectorClass@PBVAnimTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<const AnimTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x525110",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PBVAnimTypeClass@@@@UAE_NHPAPBVAnimTypeClass@@@Z",
+  "name": "VectorClass<const AnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x5251F0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PBVAnimTypeClass@@@@UBEHABQBVAnimTypeClass@@@Z",
+  "name": "VectorClass<const AnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x525230",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PBVAnimTypeClass@@@@UBEHPAPBVAnimTypeClass@@@Z",
+  "name": "VectorClass<const AnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x525300",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVAnimTypeClass@@@@UAE_NHPAPBVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x525400",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVAnimTypeClass@@@@UBEHABQBVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::FindItemIndex"
  }
 ]

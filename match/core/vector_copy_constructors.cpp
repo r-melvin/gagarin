@@ -16,7 +16,6 @@ class TeamTypeClass;
 class UnitTypeClass;
 class AircraftTypeClass;
 class InfantryTypeClass;
-class AnimTypeClass;
 class BuildingTypeClass;
 struct MPlayerScoreType;
 class VoxelAnimTypeClass;
@@ -74,19 +73,6 @@ GG_STATIC_ASSERT(offsetof(GgVectorCopy3, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgVectorCopy3, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgVectorCopy3, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(const InfantryTypeClass*) == 4);
-
-// FUNCTION: GAMEMD 0x5255F0
-// TypeList<const AnimTypeClass*> copy constructor; base vptr 0x7EB6F4.
-// VTABLE: GAMEMD 0x7EB6D4 -- TypeList<const AnimTypeClass*>.
-template class TypeList<const AnimTypeClass*>;
-typedef TypeList<const AnimTypeClass*> GgVectorCopy4;
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgVectorCopy4, CapacityIncrement) == 0x14);
-GG_STATIC_ASSERT(sizeof(const AnimTypeClass*) == 4);
 
 // FUNCTION: GAMEMD 0x5AD660
 // TypeList<const BuildingTypeClass*> copy constructor; base vptr 0x7EAA08.

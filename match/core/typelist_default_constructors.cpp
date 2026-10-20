@@ -12,7 +12,6 @@
 class AircraftTypeClass;
 class BuildingTypeClass;
 class VoxelAnimTypeClass;
-class AnimTypeClass;
 class SmudgeTypeClass;
 class InfantryTypeClass;
 class TerrainTypeClass;
@@ -50,17 +49,6 @@ GG_STATIC_ASSERT(offsetof(GgTypeListDefault2, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault2, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault2, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTypeListDefault2, CapacityIncrement) == 0x14);
-
-// FUNCTION: GAMEMD 0x67A470
-// TypeList<const AnimTypeClass*>::TypeList(); retail vptr 0x7EB6D4.
-template class TypeList<const AnimTypeClass*>;
-typedef TypeList<const AnimTypeClass*> GgTypeListDefault3;
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, IsInitialized) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(GgTypeListDefault3, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x67A600
 // TypeList<const SmudgeTypeClass*>::TypeList(); retail vptr 0x7F0D1C.
