@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 139
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 137
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -286,11 +286,6 @@ template class DynamicVectorClass<EMPulseClass*>;
 //   `.?AV?$DynamicVectorClass@UDrawRecord@FoggedObjectClass@@@@`.
 template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
 
-// FUNCTION: GAMEMD 0x004E8290
-// DynamicVectorClass<TagClass*> -- vtable 0x007EA5A4 slot 3; locator 0x008024B0 -> type descriptor 0x00823FA0
-//   `.?AV?$DynamicVectorClass@PAVTagClass@@@@`.
-template class DynamicVectorClass<TagClass*>;
-
 // FUNCTION: GAMEMD 0x004E8350
 // DynamicVectorClass<SuperClass*> -- vtable 0x007EA4E4 slot 3; locator 0x00802288 -> type descriptor 0x00823E28
 //   `.?AV?$DynamicVectorClass@PAVSuperClass@@@@`.
@@ -365,11 +360,6 @@ template class DynamicVectorClass<AircraftClass*>;
 // DynamicVectorClass<UnitClass*> -- vtable 0x007E9EA4 slot 3; locator 0x008013B0 -> type descriptor 0x00823340
 //   `.?AV?$DynamicVectorClass@PAVUnitClass@@@@`.
 template class DynamicVectorClass<UnitClass*>;
-
-// FUNCTION: GAMEMD 0x004E8900
-// DynamicVectorClass<HouseClass*> -- vtable 0x007E9EE4 slot 3; locator 0x00801448 -> type descriptor 0x008233A8
-//   `.?AV?$DynamicVectorClass@PAVHouseClass@@@@`.
-template class DynamicVectorClass<HouseClass*>;
 
 // FUNCTION: GAMEMD 0x004E8960
 // DynamicVectorClass<AnimClass*> -- vtable 0x007E9F24 slot 3; locator 0x008014E0 -> type descriptor 0x00823410

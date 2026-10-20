@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 140
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 138
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -286,11 +286,6 @@ template class VectorClass<EMPulseClass*>;
 //   `.?AV?$VectorClass@UDrawRecord@FoggedObjectClass@@@@`.
 template class VectorClass<FoggedObjectClass::DrawRecord>;
 
-// FUNCTION: GAMEMD 0x004E92F0
-// VectorClass<TagClass*> -- vtable 0x007EA5C4 slot 3; locator 0x008024E0 -> type descriptor 0x00823F70
-//   `.?AV?$VectorClass@PAVTagClass@@@@`.
-template class VectorClass<TagClass*>;
-
 // FUNCTION: GAMEMD 0x004E97B0
 // VectorClass<SuperClass*> -- vtable 0x007EA504 slot 3; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
@@ -370,11 +365,6 @@ template class VectorClass<AircraftClass*>;
 // VectorClass<UnitClass*> -- vtable 0x007E9EC4 slot 3; locator 0x008013E0 -> type descriptor 0x00823310
 //   `.?AV?$VectorClass@PAVUnitClass@@@@`.
 template class VectorClass<UnitClass*>;
-
-// FUNCTION: GAMEMD 0x004EBCD0
-// VectorClass<HouseClass*> -- vtable 0x007E9F04 slot 3; locator 0x00801478 -> type descriptor 0x00823378
-//   `.?AV?$VectorClass@PAVHouseClass@@@@`.
-template class VectorClass<HouseClass*>;
 
 // FUNCTION: GAMEMD 0x004EBF30
 // VectorClass<AnimClass*> -- vtable 0x007E9F44 slot 3; locator 0x00801510 -> type descriptor 0x008233E0

@@ -1,7 +1,7 @@
 # Project status
 
-The latest whole-repository gates pass with **3,549 fully matched functions**,
-**165 partial rows**, and **872 tracked C++ files**; the manifest contains 869
+The latest whole-repository gates pass with **3,564 fully matched functions**,
+**165 partial rows**, and **874 tracked C++ files**; the manifest contains 871
 translation units. The compile gate passed; 58 verifier tests also passed, and
 the duplicate-address check found no conflicts. The ultimate goal remains a
 complete byte-for-byte reproduction of the pinned executable; that goal is not
@@ -10,7 +10,26 @@ achieved.
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
 
-## Latest integrated batch (fully verified)
+## Latest integrated batch: HouseClass and TagClass vectors
+
+The mutable-pointer `HouseClass*` and `TagClass*` clusters add 24 address rows
+across [HouseClass](match/core/vector_houseclass_methods.cpp) and
+[TagClass](match/core/vector_tagclass_methods.cpp): 15 new exact matches and
+nine migrated claims. Each class has two RTTI-backed seven-slot tables; no
+TypeList specialization, constructor, or complete object-size claim is made.
+The sources assert the accessed vector member offsets and 4-byte pointer size.
+They compile with `/O2 /DNDEBUG /Gy` and `/GX` disabled; the full-span dynamic
+deleting-destructor bodies match under those flags. Four affected tables pass
+conditional seven-slot checks against the integrated objects using
+`--weak-defaults`, without manual symbol maps. Full regression and compilation
+gates passed; final-link resolution remains unverified.
+
+The current vector-family totals are 277 generic deleting-destructor bindings
+across 142 instantiation views, 139 base `Clear` rows, 137 native dynamic
+`Clear` rows plus one separate DiskID stand-in, and 18 address-specific resize
+views.
+
+## Previous fully verified batch: AbstractClass, FootClass and BuildingClass
 
 Three mutable-pointer vector clusters are integrated: 12 entries each for
 `AbstractClass*`, `FootClass*` and `BuildingClass*`, across
@@ -26,7 +45,7 @@ affected tables pass seven-slot checks against the integrated objects using
 `--weak-defaults` without manual symbol maps. These are conditional object-level
 checks; final-link resolution remains unverified.
 
-The verified tree has 281 generic deleting-destructor bindings across 144
+After that batch, the tree had 281 generic deleting-destructor bindings across 144
 instantiation views, 141 base `Clear` rows, 139 native dynamic `Clear` rows
 plus one separate DiskID stand-in, and 19 address-specific resize views.
 
@@ -319,10 +338,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,549** | **18.0%** of 19,753 |
-| Sum of matched function lengths | 247 KiB | 6.7% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,564** | **18.0%** of 19,753 |
+| Sum of matched function lengths | 248 KiB | 6.7% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 872 | |
+| Tracked C++ files under `match/` | 874 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -342,7 +361,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 180 matched entries. Its candidate count is therefore
+listed entries, including 182 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

@@ -14,6 +14,9 @@ build-vc6/
 *.asm
 *.cod
 
+# Retail game asset archives (LEGAL.md).
+*.[mM][iI][xX]
+
 # --- reccmp per-user config (points at the user's own retail gamemd.exe) ---
 reccmp-user.yml
 reccmp-build.yml
