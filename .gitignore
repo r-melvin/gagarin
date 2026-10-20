@@ -8,6 +8,7 @@
 # --- Build output / match artifacts ---
 build-vc6/
 *.obj
+*.o
 *.exe
 *.pdb
 *.asm
@@ -69,3 +70,6 @@ logs/
 # they point at are confirmed against the binary before use, but the corpora
 # themselves carry that project's names and paths and are not ours to publish.
 scripts/data/reference_*.json
+
+# Temporary decomp-permuter debug source (never a maintained reconstruction).
+/debug_source.c
