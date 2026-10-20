@@ -1,0 +1,45 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Bytes matched against retail gamemd.exe v1.001 at 0x6E5ED0.
+
+#include "tag_type_class_load_list_methods.h"
+
+// FUNCTION: GAMEMD 0x6E5ED0
+//
+// Read every tag out of the Tags section. A key that names nothing keeps a
+// null tag; otherwise the existing tag type of that name is reused, or a
+// new one built. Either way the name is registered and the tag loads its
+// own record.
+void __fastcall TagType_006E5ED0::LoadFromINIList(CCINI_006E5ED0* ini)
+{
+    int count = ini->GetKeyCount(DAT_007F4550);
+    for (int i = 0; i < count; i++) {
+        const char* key = ini->GetKeyName(DAT_007F4550, i);
+        char buffer[0x18];
+        if (ini->ReadString(DAT_007F4550, key, STR_00889F64, buffer, 0x18) > 0) {
+            TagType_006E5ED0* tag;
+            if (gg_strcmp(STR_00817474, key) == 0
+                || gg_strcmp(STR_00817694, key) == 0) {
+                tag = 0;
+            } else {
+                for (int j = 0; j < DAT_00B0E790; j++) {
+                    if (gg_strcmp(DAT_00B0E784[j]->ID, key) == 0) {
+                        tag = DAT_00B0E784[j];
+                        goto have;
+                    }
+                }
+                {
+                    TagType_006E5ED0* fresh = (TagType_006E5ED0*)gg_new(0xA4);
+                    if (fresh == 0) {
+                        tag = 0;
+                    } else {
+                        tag = fresh->Construct(key);
+                    }
+                }
+            }
+        have:
+            FUN_006CF2C0(&DAT_00B0C110, FUN_00412610(key), tag);
+            (tag->*tag->Vtbl->At_64)(ini);
+        }
+    }
+}

@@ -1,0 +1,48 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Offsets derived from the user's retail gamemd.exe v1.001 via the local
+//   Ghidra CLI (member-access disassembly at 0x726250-0x726346), cross-checked
+//   against YRpp TriggerClass.h (consult-only; reconfirmed numerically here).
+//
+// TriggerClass event-presence queries. Each TriggerClass delegates to its
+// TriggerTypeClass (Type @0x24); the four queries here walk the optional
+// AttachedTrigger (@0x28) chain. Confirmed from the disasm:
+//   mov eax,[esi+0x28]  -> AttachedTrigger
+//   mov ecx,[esi+0x24]  -> Type
+// The TriggerTypeClass-side checks are separate retail functions (0x726f80,
+// 0x726f50, 0x726fb0, 0x726fe0); declared here without bodies so cl emits the
+// (relocation-normalised) call.
+#ifndef GG_MATCH_AI_TRIGGER_CLASS_EVENT_METHODS_H
+#define GG_MATCH_AI_TRIGGER_CLASS_EVENT_METHODS_H
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// TriggerTypeClass — only the four event-presence predicates are modelled here;
+// each is a separate retail __thiscall returning bool in AL.
+struct TriggerTypeClass
+{
+    bool HasCrossesHorizontalLineEvent() const;  // GAMEMD 0x726F80
+    bool HasCrossesVerticalLineEvent() const;    // GAMEMD 0x726F50
+    bool HasZoneEntryByEvent() const;            // GAMEMD 0x726FB0
+    bool HasAllowWinAction() const;              // GAMEMD 0x726FE0
+};
+
+// TriggerClass — only Type (@0x24) and AttachedTrigger (@0x28) are touched by
+// these four methods; the unknown base is padded to 0x24.
+struct TriggerClass
+{
+    char              _pad0[0x24];     // +0x00  (AbstractClass base; modelled in P2)
+    TriggerTypeClass* Type;            // +0x24
+    TriggerClass*     AttachedTrigger; // +0x28
+
+    bool HasCrossesHorizontalLineEvent() const;  // GAMEMD 0x726250
+    bool HasCrossesVerticalLineEvent() const;    // GAMEMD 0x726290
+    bool HasZoneEntryByEvent() const;            // GAMEMD 0x7262D0
+    bool HasAllowWinAction() const;              // GAMEMD 0x726310
+};
+
+GG_STATIC_ASSERT(offsetof(TriggerClass, Type) == 0x24);
+GG_STATIC_ASSERT(offsetof(TriggerClass, AttachedTrigger) == 0x28);
+
+#endif  // GG_MATCH_AI_TRIGGER_CLASS_EVENT_METHODS_H

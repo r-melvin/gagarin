@@ -1,0 +1,49 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp or the
+//   seed map.
+#ifndef GG_MATCH_CORE_SMALL_MISC18_METHODS_H
+#define GG_MATCH_CORE_SMALL_MISC18_METHODS_H
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+extern "C" void* __cdecl FUN_007C8E17(unsigned int size);   // operator new
+
+// Six vtable pointers over four slots: the two at +0x08 and +0x0C are written
+// twice, first with the base class's tables and then with the derived ones.
+// That is what a multiple-inheritance constructor does, and reproducing it
+// means writing both assignments out rather than collapsing them.
+extern char VT_007E1FBC[];   // VTABLE: GAMEMD 0x7E1FBC
+extern char VT_007E1FB4[];   // VTABLE: GAMEMD 0x7E1FB4
+extern char VT_007E1F50b[];  // VTABLE: GAMEMD 0x7E1F50
+extern char VT_007E1F34b[];  // VTABLE: GAMEMD 0x7E1F34
+extern char VT_007E1F2Cb[];  // VTABLE: GAMEMD 0x7E1F2C
+extern char VT_007E1F24b[];  // VTABLE: GAMEMD 0x7E1F24
+
+struct Obj_004101C0
+{
+    char* vt0;   // +0x0000
+    char* vt1;   // +0x0004
+    char* vt2;   // +0x0008
+    char* vt3;   // +0x000C
+
+    // FUNCTION: GAMEMD 0x4101C0
+    Obj_004101C0* FUN_004101C0(int flags);
+};
+
+// The constructor for the owned-buffer type released at 0x43AE50: allocate only
+// for a positive size, and record ownership only when an allocation happened.
+struct Owned_0043ADC0
+{
+    void*         Buffer;        // +0x0000
+    int           Length;        // +0x0004
+    unsigned char IsAllocated;   // +0x0008
+
+    // FUNCTION: GAMEMD 0x43ADC0
+    Owned_0043ADC0* FUN_0043ADC0(int size);
+};
+GG_STATIC_ASSERT(offsetof(Owned_0043ADC0, IsAllocated) == 0x8);
+
+#endif  // GG_MATCH_CORE_SMALL_MISC18_METHODS_H

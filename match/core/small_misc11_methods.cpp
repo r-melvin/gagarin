@@ -1,0 +1,71 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Bytes matched against retail gamemd.exe v1.001 at each address below.
+//
+// Ordered ascending by retail address.
+
+#include "small_misc11_methods.h"
+
+// FUNCTION: GAMEMD 0x4026C0
+// Notify, set the bit, notify again - the second notification is a tail call.
+//
+// The flag update goes through a volatile lvalue for two reasons at once. A
+// plain `|= 0x10` lets VC6 narrow the operation to `OR AL,0x10`, where retail
+// keeps the full dword; a volatile access must be performed at its declared
+// width, so the narrowing stops. It also pins the update ahead of the dispatch
+// load, which the optimiser otherwise hoists between the read and the store.
+void Obj_004026C0::FUN_004026C0()
+{
+    DISP(this, 0x28);
+
+    *(volatile int*)&Flags |= 0x10;
+
+    DISP(this, 0x2C);
+}
+
+// FUNCTION: GAMEMD 0x4026F0
+void Obj_004026C0::FUN_004026F0()
+{
+    DISP(this, 0x28);
+
+    *(volatile int*)&Flags &= ~0x10;
+
+    DISP(this, 0x2C);
+}
+
+// FUNCTION: GAMEMD 0x4085B0
+// The product is stored first and then halved twice for modes 1 and 2 alike -
+// both land on the same shift, so this is a two-value case rather than a
+// per-mode scale.
+void Obj_004085B0::FUN_004085B0()
+{
+    int value = unknown_10 * unknown_0C * unknown_08;
+
+    unknown_14 = value;
+
+    if (Mode == 1 || Mode == 2) {
+        unknown_14 = value >> 2;
+    }
+}
+
+// FUNCTION: GAMEMD 0x40BB90
+// Index of the first slot holding the pointed-to value, or -1. The key is
+// dereferenced once up front rather than on every comparison.
+int Obj_0040BB90::FUN_0040BB90(void* const* key)
+{
+    int count = Count;
+    int i = 0;
+
+    if (count > 0) {
+        void** items = Items;
+        void*  value = *key;
+
+        for (; i < count; i++, items++) {
+            if (*items == value) {
+                return i;
+            }
+        }
+    }
+
+    return -1;
+}

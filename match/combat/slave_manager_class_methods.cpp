@@ -1,0 +1,55 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6B0C80).
+//   Names cross-checked against YRpp SlaveManagerClass.h (consult-only).
+//
+// reccmp annotations (ascending by retail address within this TU):
+//   FUNCTION: GAMEMD 0x6B0C80  SlaveManagerClass::AllGuard  (__thiscall)
+
+#include "slave_manager_class_methods.h"
+
+// FUNCTION: GAMEMD 0x6B0A20  SlaveManagerClass::LostSlave (__thiscall)
+// A slave died or was taken: search the nodes from the top for the one that
+// owns it, break its back-link, empty the node, mark it Dead and restart the
+// respawn countdown from the regen rate.
+void SlaveManagerClass::LostSlave(SlaveObject* slave)
+{
+    for (int i = SlaveNodes.Count - 1; i >= 0; --i) {
+        if (((SlaveControl**)SlaveNodes.Items)[i]->Slave == slave) {
+            SlaveControl* node = ((SlaveControl**)SlaveNodes.Items)[i];
+            if (node->Slave)
+                node->Slave->SlaveOwner = 0;
+            node->Slave = 0;
+            node->State = 6;
+            node->RespawnTimer = SlaveTimerClass(RegenRate);
+            return;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6B0C80  (__thiscall)
+// Reset the manager to Ready (State=0) at the current frame, then order every
+// live slave (State != Dead(6), Slave != null) back to Guard via vtable+0x3D0,
+// walking the SlaveNodes vector back-to-front.
+//
+// MATCH: 24/24 exact (100%). The residual was the prologue scheduling
+// permutation - the optimiser floated the loop-count load to the top and
+// delayed the LastScanFrame store to cover the global-frame load's latency.
+// Volatile-qualified stores pin the pair in source order and it matches. The
+// earlier note here attributed it to the compiler build and said it would need
+// the genuine SP5 compiler; that was wrong on both counts - this TU was already
+// being built by the retail-matching build-8447 backend.
+void SlaveManagerClass::AllGuard()
+{
+    *(volatile int*)&State = 0;
+    *(volatile int*)&LastScanFrame = CurrentFrame;
+
+    for (int i = SlaveNodes.Count - 1; i >= 0; --i)
+    {
+        SlaveControl* node = ((SlaveControl**)SlaveNodes.Items)[i];
+        int state = node->State;
+        SlaveObject* slave = node->Slave;
+        if (state != 6 && slave != 0)
+            slave->GuardSlot();
+    }
+}

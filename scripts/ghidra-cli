@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Reliable wrapper for the rust Ghidra CLI (decompile/disasm/x-ref/memory/...).
+# Use THIS (or the full path ~/.cargo/bin/ghidra) — NOT bare `ghidra`
+# (= /usr/bin/ghidra, the wrong binary) and NOT the `ghidra-cli` fish alias
+# (not expanded in non-interactive/script shells). Developer-only; never ships.
+exec "$HOME/.cargo/bin/ghidra" "$@"

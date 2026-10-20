@@ -1,0 +1,34 @@
+# reccmp project config (P0.3) — the match harness over retail gamemd.exe v1.001.
+#
+# Target id GAMEMD matches this fork's annotation convention:
+#   // FUNCTION: GAMEMD 0xADDR   // VTABLE: GAMEMD 0xADDR
+#   // GLOBAL:   GAMEMD 0xADDR   // STRING: GAMEMD 0xADDR
+#
+# The retail binary is user-supplied and NEVER committed; its local path lives in
+# reccmp-user.yml (git-ignored). `sha256` pins the exact build (v1.001) reccmp
+# will accept, so the annotation map can never be scored against the wrong image.
+#
+# Image-level scoring (reccmp-reccmp: original vs a rebuilt gamemd.exe + PDB) is
+# wired in P5/CI once enough TUs link into a full image. Until then the per-
+# function inner loop is scripts/vc6/diff_retail.py (objdump vs Ghidra, reloc-
+# normalised) — see docs/toolchain_evidence.md §3.
+targets:
+  GAMEMD:
+    filename: gamemd.exe
+    # Matching-decompilation source root (isle/CMR2Decomp layout); kept separate
+    # from the inherited clean-track src/ tree (AGENTS.md tree-isolation rule).
+    source_root: match
+    hash:
+      sha256: 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c
+    data_sources: []
+    encoding:
+    ghidra:
+      ignore_types: []
+      ignore_functions: []
+      name_substitutions: []
+      allow_hash_mismatch: false
+    report:
+      ignore_functions: []
+      ignore_variables: []
+      icon:
+    marker_aliases: {}

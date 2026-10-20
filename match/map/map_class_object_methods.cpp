@@ -1,0 +1,74 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Target bytes: user's retail gamemd.exe (Ghidra disasm). Bodies derived
+//   directly from the disassembly at the listed addresses; signatures
+//   cross-checked against YRpp MapClass.h (consult-only, no LICENSE; every
+//   offset reconfirmed numerically below).
+//
+// reccmp annotations (ascending by retail address within this TU):
+//   FUNCTION: GAMEMD 0x551A30  LayerClass::Sort          (__thiscall)
+//   FUNCTION: GAMEMD 0x55BAE0  LogicClass::RemoveObject  (__thiscall)
+
+#include "map_class_object_methods.h"
+
+// ObjectClass::GetYSort dispatched through the element's PRIMARY vtable slot at
+// byte offset 0xB8 (no args, returns the int sort key):
+//   MOV ECX,obj; MOV reg,[obj]; CALL [reg+0xB8]
+typedef int (__fastcall* GetYSortFunc)(void* self);
+#define GET_YSORT(obj) ((*(GetYSortFunc*)(*(char**)(obj) + 0xb8))(obj))
+
+// Minimal abstract interface used solely to materialise the LayerClass virtual
+// call at byte offset 0x10 (index 4): the search-for-item dispatch that returns
+// the element's index (or -1). Indices 0..3 are dummy placeholders; never
+// instantiated, only `this` reinterpret-cast through it. A real virtual emits
+// the exact `MOV reg,[this]; CALL [reg+0x10]` __thiscall with the item-ref
+// pushed on the stack (a __fastcall function pointer would force it into EDX).
+struct LayerVCall
+{
+    virtual void _vf0();
+    virtual void _vf1();
+    virtual void _vf2();
+    virtual void _vf3();
+    // index 4 -> byte offset 0x10
+    virtual int FindItemIndex(void* itemRef);
+};
+
+// FUNCTION: GAMEMD 0x551A30  (__thiscall)
+// One ascending bubble-sort pass over the layer's object list, ordering by each
+// element's GetYSort() key. `Items`/`Count` are re-read every iteration because
+// the virtual GetYSort() calls may alias the vector.
+void LayerClass::Sort()
+{
+    for (int i = 0; i < this->Count - 1; i++)
+    {
+        void* b = ((void**)this->Items)[i + 1];
+        void* a = ((void**)this->Items)[i];
+        int kb = GET_YSORT(b);
+        int ka = GET_YSORT(a);
+        if (kb < ka)
+        {
+            ((void**)this->Items)[i + 1] = a;
+            ((void**)this->Items)[i] = b;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x55BAE0  (__thiscall)
+// Remove pObject from the layer if it is flagged in-logic: find its slot, then
+// shift the tail down one and drop Count. Clears pObject's in-logic flag last.
+void LogicClass::RemoveObject(ObjectClass* pObject)
+{
+    if (pObject->IsInLogic)
+    {
+        int idx = ((LayerVCall*)this)->FindItemIndex(&pObject);
+        if (idx != -1 && idx < this->Count)
+        {
+            this->Count = this->Count - 1;
+            for (; idx < this->Count; idx++)
+            {
+                ((void**)this->Items)[idx] = ((void**)this->Items)[idx + 1];
+            }
+        }
+        pObject->IsInLogic = 0;
+    }
+}

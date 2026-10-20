@@ -1,0 +1,416 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Read numerically off the user's retail gamemd.exe v1.001 via the local
+//   Ghidra CLI at 0x477990 and its neighbours: a family of identical 73-byte
+//   scalar-deleting destructors, laid out every 0x50 bytes and differing only
+//   in the vtable address they store. Members touched: the vtable pointer at
+//   +0, the items pointer at +4, the capacity at +8 and the allocated flag at
+//   +0xD; the block is released and, when the deleting bit of the flags is
+//   set, so is the object.
+//
+//   THE CLASS AND ITS ELEMENT TYPES ARE RTTI-CONFIRMED, NOT ASSUMED. Each
+//   body stores one retail vtable; four bytes below that vtable sits the
+//   class's complete object locator, whose +0xC is the type descriptor, whose
+//   name begins at +8. The vtable was re-read out of the binary for every one
+//   of the 335 bodies -- the `C7 06 <imm32>` vptr store at body offset +6 --
+//   rather than taken from this file's own earlier comments, and all 335
+//   agreed with them. Every one of the 165 distinct vtables so named carries
+//   a locator, so **335/335 addresses are bound and no address-suffixed
+//   stand-in is left in this family**.
+//
+//   All 165 type descriptors spell `.?AV?$VectorClass@<element>@@`: the
+//   template is retail's `VectorClass<T>` and the element type is exactly
+//   what the descriptor says. `PAVInfantryClass@@` is `InfantryClass*`,
+//   `PBVAnimClass@@` is `const AnimClass*` (the sweep's own demangler drops
+//   that const; the mangling does not), `W4DiskID@@` is the enum `DiskID`,
+//   `UDrawRecord@FoggedObjectClass@@` is the nested
+//   `FoggedObjectClass::DrawRecord`. The element declarations in the
+//   translation unit beside this header exist only to reproduce those
+//   manglings; each was checked by compiling it and reading the emitted
+//   symbol back with objdump.
+//
+//   WHY 165 INSTANTIATIONS COVER 335 ADDRESSES. These 335 bodies are not 335
+//   functions in retail's source. They are one class template's
+//   compiler-generated scalar deleting destructor,
+//   `??_G?$VectorClass@<element>@@UAEPAXI@Z`, emitted as a COMDAT into every
+//   translation unit that instantiated it. 145 element types are emitted
+//   twice, eleven three times, one four times and eight once: MSVC6 emits the
+//   instantiation per TU and the retail link did not fold the copies. The
+//   copies are relocation-identical -- compared byte for byte across all 165
+//   groups with the two `CALL` displacements zeroed, and 0 groups differ --
+//   so one source-level instantiation is the right model for every retail
+//   address in its group, and each group below lists all of its addresses.
+//   The previous model gave each address its own invented `Elem_<addr>` tag
+//   purely to force 335 distinct COMDATs out of one template; that device is
+//   gone, and with it the last placeholder in this family.
+#ifndef GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
+#define GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
+extern "C" void __cdecl gg_free(void* block);
+
+// The vector template. One virtual -- the destructor -- so the vtable pointer
+// sits at +0 and slot 0 holds the scalar deleting destructor the linker binds
+// into each retail vtable below. RTTI tags it `V`, i.e. a `class`, which is
+// how it is declared here; the class/struct key does not enter the emitted
+// symbol either way, but the element types' keys do.
+template<class T>
+class VectorClass
+{
+public:
+    virtual ~VectorClass();
+
+    T*   Items;        // +0x0004
+    int  Capacity;     // +0x0008
+    char _pad00C;      // +0x000C
+    char IsAllocated;  // +0x000D
+};
+
+template<class T>
+VectorClass<T>::~VectorClass()
+{
+    if (this->Items != 0 && this->IsAllocated) {
+        gg_free(this->Items);
+        this->Items = 0;
+    }
+    this->IsAllocated = 0;
+    this->Capacity = 0;
+}
+
+// The retail vtables this family reseats, each with the class named by its
+// own complete object locator four bytes below it.
+// VTABLE: GAMEMD 0x007E4DB8 -- VectorClass<int>
+extern char VT_007E4DB8;
+// VTABLE: GAMEMD 0x007E4DF8 -- VectorClass<TechnoTypeClass*>
+extern char VT_007E4DF8;
+// VTABLE: GAMEMD 0x007E4E38 -- VectorClass<RGBClass>
+extern char VT_007E4E38;
+// VTABLE: GAMEMD 0x007E192C -- VectorClass<ObjectClass*>
+extern char VT_007E192C;
+// VTABLE: GAMEMD 0x007E5144 -- VectorClass<DamageGroup*>
+extern char VT_007E5144;
+// VTABLE: GAMEMD 0x007E5338 -- VectorClass<ConvertClass*>
+extern char VT_007E5338;
+// VTABLE: GAMEMD 0x007E5C24 -- VectorClass<char*>
+extern char VT_007E5C24;
+// VTABLE: GAMEMD 0x007E5C04 -- VectorClass<DynamicVectorClass<char*>*>
+extern char VT_007E5C04;
+// VTABLE: GAMEMD 0x007E5C84 -- VectorClass<tagCONNECTDATA>
+extern char VT_007E5C84;
+// VTABLE: GAMEMD 0x007E5D08 -- VectorClass<IConnectionPoint*>
+extern char VT_007E5D08;
+// VTABLE: GAMEMD 0x007E5DEC -- VectorClass<_DDSURFACEDESC*>
+extern char VT_007E5DEC;
+// VTABLE: GAMEMD 0x007E5EFC -- VectorClass<DiskLaserClass*>
+extern char VT_007E5EFC;
+// VTABLE: GAMEMD 0x007E8500 -- VectorClass<ButtonFadeEffect*>
+extern char VT_007E8500;
+// VTABLE: GAMEMD 0x007E8520 -- VectorClass<CrossDissolveEffect*>
+extern char VT_007E8520;
+// VTABLE: GAMEMD 0x007E86AC -- VectorClass<EBolt*>
+extern char VT_007E86AC;
+// VTABLE: GAMEMD 0x007E86FC -- VectorClass<EgoClass*>
+extern char VT_007E86FC;
+// VTABLE: GAMEMD 0x007E875C -- VectorClass<EMPulseClass*>
+extern char VT_007E875C;
+// VTABLE: GAMEMD 0x007E8954 -- VectorClass<const TechnoTypeClass*>
+extern char VT_007E8954;
+// VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>
+extern char VT_007E8BC0;
+// VTABLE: GAMEMD 0x007E920C -- VectorClass<AbstractClass*>
+extern char VT_007E920C;
+// VTABLE: GAMEMD 0x007E8C48 -- VectorClass<FootClass*>
+extern char VT_007E8C48;
+// VTABLE: GAMEMD 0x007EA5C4 -- VectorClass<TagClass*>
+extern char VT_007EA5C4;
+// VTABLE: GAMEMD 0x007E9E44 -- VectorClass<BuildingClass*>
+extern char VT_007E9E44;
+// VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
+extern char VT_007EA504;
+// VTABLE: GAMEMD 0x007E9B84 -- VectorClass<AITriggerTypeClass*>
+extern char VT_007E9B84;
+// VTABLE: GAMEMD 0x007E9C44 -- VectorClass<BuildingLightClass*>
+extern char VT_007E9C44;
+// VTABLE: GAMEMD 0x007E9D84 -- VectorClass<ParticleClass*>
+extern char VT_007E9D84;
+// VTABLE: GAMEMD 0x007E9F84 -- VectorClass<TeamClass*>
+extern char VT_007E9F84;
+// VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
+extern char VT_007EA584;
+// VTABLE: GAMEMD 0x007E9C04 -- VectorClass<TriggerClass*>
+extern char VT_007E9C04;
+// VTABLE: GAMEMD 0x007E9BC4 -- VectorClass<TriggerTypeClass*>
+extern char VT_007E9BC4;
+// VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
+extern char VT_007E9CC4;
+// VTABLE: GAMEMD 0x007E9C84 -- VectorClass<ParticleSystemClass*>
+extern char VT_007E9C84;
+// VTABLE: GAMEMD 0x007E9D04 -- VectorClass<WaveClass*>
+extern char VT_007E9D04;
+// VTABLE: GAMEMD 0x007E9D44 -- VectorClass<OverlayClass*>
+extern char VT_007E9D44;
+// VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
+extern char VT_007E9DC4;
+// VTABLE: GAMEMD 0x007E9E04 -- VectorClass<TerrainClass*>
+extern char VT_007E9E04;
+// VTABLE: GAMEMD 0x007E9E84 -- VectorClass<AircraftClass*>
+extern char VT_007E9E84;
+// VTABLE: GAMEMD 0x007E9EC4 -- VectorClass<UnitClass*>
+extern char VT_007E9EC4;
+// VTABLE: GAMEMD 0x007E9F04 -- VectorClass<HouseClass*>
+extern char VT_007E9F04;
+// VTABLE: GAMEMD 0x007E9F44 -- VectorClass<AnimClass*>
+extern char VT_007E9F44;
+// VTABLE: GAMEMD 0x007E9FC4 -- VectorClass<FactoryClass*>
+extern char VT_007E9FC4;
+// VTABLE: GAMEMD 0x007EA004 -- VectorClass<CampaignClass*>
+extern char VT_007EA004;
+// VTABLE: GAMEMD 0x007EA044 -- VectorClass<SideClass*>
+extern char VT_007EA044;
+// VTABLE: GAMEMD 0x007EA084 -- VectorClass<HouseTypeClass*>
+extern char VT_007EA084;
+// VTABLE: GAMEMD 0x007EA0C4 -- VectorClass<TaskForceClass*>
+extern char VT_007EA0C4;
+// VTABLE: GAMEMD 0x007EA104 -- VectorClass<TeamTypeClass*>
+extern char VT_007EA104;
+// VTABLE: GAMEMD 0x007EA144 -- VectorClass<ScriptTypeClass*>
+extern char VT_007EA144;
+// VTABLE: GAMEMD 0x007EA184 -- VectorClass<OverlayTypeClass*>
+extern char VT_007EA184;
+// VTABLE: GAMEMD 0x007EA1C4 -- VectorClass<SmudgeTypeClass*>
+extern char VT_007EA1C4;
+// VTABLE: GAMEMD 0x007EA204 -- VectorClass<TerrainTypeClass*>
+extern char VT_007EA204;
+// VTABLE: GAMEMD 0x007EA244 -- VectorClass<BuildingTypeClass*>
+extern char VT_007EA244;
+// VTABLE: GAMEMD 0x007EA284 -- VectorClass<AircraftTypeClass*>
+extern char VT_007EA284;
+// VTABLE: GAMEMD 0x007EA2C4 -- VectorClass<UnitTypeClass*>
+extern char VT_007EA2C4;
+// VTABLE: GAMEMD 0x007EA304 -- VectorClass<AnimTypeClass*>
+extern char VT_007EA304;
+// VTABLE: GAMEMD 0x007EA344 -- VectorClass<InfantryTypeClass*>
+extern char VT_007EA344;
+// VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>
+extern char VT_007EA384;
+// VTABLE: GAMEMD 0x007EA3C4 -- VectorClass<VoxelAnimTypeClass*>
+extern char VT_007EA3C4;
+// VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>
+extern char VT_007EA404;
+// VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>
+extern char VT_007EA444;
+// VTABLE: GAMEMD 0x007EA484 -- VectorClass<ParticleSystemTypeClass*>
+extern char VT_007EA484;
+// VTABLE: GAMEMD 0x007EA4C4 -- VectorClass<SuperWeaponTypeClass*>
+extern char VT_007EA4C4;
+// VTABLE: GAMEMD 0x007EA544 -- VectorClass<AbstractTypeClass*>
+extern char VT_007EA544;
+// VTABLE: GAMEMD 0x007EA624 -- VectorClass<GraphicMenuItem*>
+extern char VT_007EA624;
+// VTABLE: GAMEMD 0x007EA9E4 -- VectorClass<const TeamTypeClass*>
+extern char VT_007EA9E4;
+// VTABLE: GAMEMD 0x007EAA08 -- VectorClass<const BuildingTypeClass*>
+extern char VT_007EAA08;
+// VTABLE: GAMEMD 0x007EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>
+extern char VT_007EA964;
+// VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>
+extern char VT_007EA984;
+// VTABLE: GAMEMD 0x007EA9A4 -- VectorClass<ScoutStruct>
+extern char VT_007EA9A4;
+// VTABLE: GAMEMD 0x007EA7D4 -- VectorClass<HouseClass::BuildChoiceClass*>
+extern char VT_007EA7D4;
+// VTABLE: GAMEMD 0x007EAA5C -- VectorClass<bool>
+extern char VT_007EAA5C;
+// VTABLE: GAMEMD 0x007EAC28 -- VectorClass<const InfantryTypeClass*>
+extern char VT_007EAC28;
+// VTABLE: GAMEMD 0x007EAC48 -- VectorClass<const UnitTypeClass*>
+extern char VT_007EAC48;
+// VTABLE: GAMEMD 0x007EAC68 -- VectorClass<const AircraftTypeClass*>
+extern char VT_007EAC68;
+// VTABLE: GAMEMD 0x007EB6F4 -- VectorClass<const AnimTypeClass*>
+extern char VT_007EB6F4;
+// VTABLE: GAMEMD 0x007EB80C -- VectorClass<CCINIClass*>
+extern char VT_007EB80C;
+// VTABLE: GAMEMD 0x007EBFEC -- VectorClass<const AnimClass*>
+extern char VT_007EBFEC;
+// VTABLE: GAMEMD 0x007EC07C -- VectorClass<IonBlastClass*>
+extern char VT_007EC07C;
+// VTABLE: GAMEMD 0x007ECD0C -- VectorClass<unsigned short*>
+extern char VT_007ECD0C;
+// VTABLE: GAMEMD 0x007ECBFC -- VectorClass<IsometricTileTypeClass::TileInsertType*>
+extern char VT_007ECBFC;
+// VTABLE: GAMEMD 0x007ECE9C -- VectorClass<KamikazeControl*>
+extern char VT_007ECE9C;
+// VTABLE: GAMEMD 0x007ECEFC -- VectorClass<LaserDrawClass*>
+extern char VT_007ECEFC;
+// VTABLE: GAMEMD 0x007ECF9C -- VectorClass<LightSourceClass*>
+extern char VT_007ECF9C;
+// VTABLE: GAMEMD 0x007ECFDC -- VectorClass<LightSourceClass::PendingCellClass*>
+extern char VT_007ECFDC;
+// VTABLE: GAMEMD 0x007ED0EC -- VectorClass<LineTrail*>
+extern char VT_007ED0EC;
+// VTABLE: GAMEMD 0x007ED1FC -- VectorClass<const unsigned short*>
+extern char VT_007ED1FC;
+// VTABLE: GAMEMD 0x007ED32C -- VectorClass<FileEntryClass*>
+extern char VT_007ED32C;
+// VTABLE: GAMEMD 0x007ED480 -- VectorClass<CellClass*>
+extern char VT_007ED480;
+// VTABLE: GAMEMD 0x007E177C -- VectorClass<SubzoneConnectionStruct>
+extern char VT_007E177C;
+// VTABLE: GAMEMD 0x007ED4E0 -- VectorClass<ZoneConnectionClass>
+extern char VT_007ED4E0;
+// VTABLE: GAMEMD 0x007ED560 -- VectorClass<PassabilityType>
+extern char VT_007ED560;
+// VTABLE: GAMEMD 0x007ED5C0 -- VectorClass<HashObject<unsigned int, unsigned int>>
+extern char VT_007ED5C0;
+// VTABLE: GAMEMD 0x007ED5E0 -- VectorClass<HashObject<unsigned int, SubzoneConnectionStruct>>
+extern char VT_007ED5E0;
+// VTABLE: GAMEMD 0x007ED878 -- VectorClass<MapRegionClass*>
+extern char VT_007ED878;
+// VTABLE: GAMEMD 0x007ED92C -- VectorClass<_WIN32_FIND_DATAA*>
+extern char VT_007ED92C;
+// VTABLE: GAMEMD 0x007ED970 -- VectorClass<TRect<int>>
+extern char VT_007ED970;
+// VTABLE: GAMEMD 0x007EDA4C -- VectorClass<double>
+extern char VT_007EDA4C;
+// VTABLE: GAMEMD 0x007EE0D4 -- VectorClass<const char*>
+extern char VT_007EE0D4;
+// VTABLE: GAMEMD 0x007EE3D0 -- VectorClass<MPlayerScoreType*>
+extern char VT_007EE3D0;
+// VTABLE: GAMEMD 0x007EE390 -- VectorClass<NodeNameType*>
+extern char VT_007EE390;
+// VTABLE: GAMEMD 0x007EE3B0 -- VectorClass<CoopCampaignClass*>
+extern char VT_007EE3B0;
+// VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
+extern char VT_007EEB74;
+// VTABLE: GAMEMD 0x007EEB94 -- VectorClass<MSTextEntry*>
+extern char VT_007EEB94;
+// VTABLE: GAMEMD 0x007EEBB4 -- VectorClass<MapSelection*>
+extern char VT_007EEBB4;
+// VTABLE: GAMEMD 0x007EEAB4 -- VectorClass<MapStage*>
+extern char VT_007EEAB4;
+// VTABLE: GAMEMD 0x007EEAD4 -- VectorClass<MSAnimEntry*>
+extern char VT_007EEAD4;
+// VTABLE: GAMEMD 0x007EEAF4 -- VectorClass<MSSfxEntry*>
+extern char VT_007EEAF4;
+// VTABLE: GAMEMD 0x007EEC24 -- VectorClass<MSAnim*>
+extern char VT_007EEC24;
+// VTABLE: GAMEMD 0x007EEC44 -- VectorClass<MSSfx*>
+extern char VT_007EEC44;
+// VTABLE: GAMEMD 0x007EECAC -- VectorClass<HWND__*>
+extern char VT_007EECAC;
+// VTABLE: GAMEMD 0x007EECEC -- VectorClass<AcceleratorTracker>
+extern char VT_007EECEC;
+// VTABLE: GAMEMD 0x007EEE54 -- VectorClass<MultiplayerTeam*>
+extern char VT_007EEE54;
+// VTABLE: GAMEMD 0x007EED40 -- VectorClass<MultiplayerGameMode*>
+extern char VT_007EED40;
+// VTABLE: GAMEMD 0x007EEF50 -- VectorClass<const MultiMission*>
+extern char VT_007EEF50;
+// VTABLE: GAMEMD 0x007EF28C -- VectorClass<ObjectTypeClass*>
+extern char VT_007EF28C;
+// VTABLE: GAMEMD 0x007EF6DC -- VectorClass<SpotLightClass*>
+extern char VT_007EF6DC;
+// VTABLE: GAMEMD 0x007EF7B0 -- VectorClass<ColorScheme*>
+extern char VT_007EF7B0;
+// VTABLE: GAMEMD 0x007EF7F0 -- VectorClass<HSVClass>
+extern char VT_007EF7F0;
+// VTABLE: GAMEMD 0x007EF7D0 -- VectorClass<HashObject<HashString, SchemeNode*>>
+extern char VT_007EF7D0;
+// VTABLE: GAMEMD 0x007EF844 -- VectorClass<ParasiteClass*>
+extern char VT_007EF844;
+// VTABLE: GAMEMD 0x007EFF04 -- VectorClass<PlanningMemberClass*>
+extern char VT_007EFF04;
+// VTABLE: GAMEMD 0x007EFF24 -- VectorClass<PlanningBranchClass*>
+extern char VT_007EFF24;
+// VTABLE: GAMEMD 0x007EFE64 -- VectorClass<PlanningNodeClass*>
+extern char VT_007EFE64;
+// VTABLE: GAMEMD 0x007EFE24 -- VectorClass<EventClass*>
+extern char VT_007EFE24;
+// VTABLE: GAMEMD 0x007EFEA4 -- VectorClass<PlanningTokenClass*>
+extern char VT_007EFEA4;
+// VTABLE: GAMEMD 0x007F044C -- VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>
+extern char VT_007F044C;
+// VTABLE: GAMEMD 0x007F04A4 -- VectorClass<RadBeam*>
+extern char VT_007F04A4;
+// VTABLE: GAMEMD 0x007F07C4 -- VectorClass<RadSiteClass*>
+extern char VT_007F07C4;
+// VTABLE: GAMEMD 0x007F0ACC -- VectorClass<RadarEventClass*>
+extern char VT_007F0ACC;
+// VTABLE: GAMEMD 0x007F0C4C -- VectorClass<OwnerTalkClass::ConnectionListStruct*>
+extern char VT_007F0C4C;
+// VTABLE: GAMEMD 0x007F0D5C -- VectorClass<const VoxelAnimTypeClass*>
+extern char VT_007F0D5C;
+// VTABLE: GAMEMD 0x007F0D7C -- VectorClass<const SmudgeTypeClass*>
+extern char VT_007F0D7C;
+// VTABLE: GAMEMD 0x007F0D9C -- VectorClass<const TerrainTypeClass*>
+extern char VT_007F0D9C;
+// VTABLE: GAMEMD 0x007F1274 -- VectorClass<DiskID>
+extern char VT_007F1274;
+// VTABLE: GAMEMD 0x007F1214 -- VectorClass<MultiMission*>
+extern char VT_007F1214;
+// VTABLE: GAMEMD 0x007F1234 -- VectorClass<GlobalPacketType*>
+extern char VT_007F1234;
+// VTABLE: GAMEMD 0x007F1254 -- VectorClass<PhoneEntryClass*>
+extern char VT_007F1254;
+// VTABLE: GAMEMD 0x007F324C -- VectorClass<SlaveManagerClass::SlaveControl*>
+extern char VT_007F324C;
+// VTABLE: GAMEMD 0x007F317C -- VectorClass<SlaveManagerClass*>
+extern char VT_007F317C;
+// VTABLE: GAMEMD 0x007F329C -- VectorClass<UndoInfoStruct>
+extern char VT_007F329C;
+// VTABLE: GAMEMD 0x007F36D4 -- VectorClass<SpawnManagerClass::SpawnControl*>
+extern char VT_007F36D4;
+// VTABLE: GAMEMD 0x007F3604 -- VectorClass<SpawnManagerClass*>
+extern char VT_007F3604;
+// VTABLE: GAMEMD 0x007F3748 -- VectorClass<unsigned long>
+extern char VT_007F3748;
+// VTABLE: GAMEMD 0x007F3F8C -- VectorClass<SubTitle*>
+extern char VT_007F3F8C;
+// VTABLE: GAMEMD 0x007F4154 -- VectorClass<SwizzlePointerClass>
+extern char VT_007F4154;
+// VTABLE: GAMEMD 0x007F42BC -- VectorClass<DirtyAreaStruct>
+extern char VT_007F42BC;
+// VTABLE: GAMEMD 0x007F42FC -- VectorClass<ShadowControlClass*>
+extern char VT_007F42FC;
+// VTABLE: GAMEMD 0x007F43F0 -- VectorClass<TActionClass*>
+extern char VT_007F43F0;
+// VTABLE: GAMEMD 0x007F4578 -- VectorClass<TagTypeClass*>
+extern char VT_007F4578;
+// VTABLE: GAMEMD 0x007E4424 -- VectorClass<const ParticleSystemTypeClass*>
+extern char VT_007E4424;
+// VTABLE: GAMEMD 0x007F5134 -- VectorClass<TemporalClass*>
+extern char VT_007F5134;
+// VTABLE: GAMEMD 0x007F552C -- VectorClass<TEventClass*>
+extern char VT_007F552C;
+// VTABLE: GAMEMD 0x007F56DC -- VectorClass<TiberiumClass*>
+extern char VT_007F56DC;
+// VTABLE: GAMEMD 0x007F57E8 -- VectorClass<const ToolTip*>
+extern char VT_007F57E8;
+// VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
+extern char VT_007F65F4;
+// VTABLE: GAMEMD 0x007F665C -- VectorClass<VeinholeMonsterClass*>
+extern char VT_007F665C;
+// VTABLE: GAMEMD 0x007F68CC -- VectorClass<VocClass*>
+extern char VT_007F68CC;
+// VTABLE: GAMEMD 0x007F6924 -- VectorClass<VoxClass*>
+extern char VT_007F6924;
+// VTABLE: GAMEMD 0x007F69A4 -- VectorClass<MovieHandle*>
+extern char VT_007F69A4;
+// VTABLE: GAMEMD 0x007F6E24 -- VectorClass<WaypointPathClass*>
+extern char VT_007F6E24;
+// VTABLE: GAMEMD 0x007F71A4 -- VectorClass<WorldDominationTour::Map::AnimationPalette*>
+extern char VT_007F71A4;
+// VTABLE: GAMEMD 0x007F71E0 -- VectorClass<WorldDominationTour::Centroid>
+extern char VT_007F71E0;
+// VTABLE: GAMEMD 0x007F78A4 -- VectorClass<tConnInfoStruct*>
+extern char VT_007F78A4;
+// VTABLE: GAMEMD 0x007F7A3C -- VectorClass<WinsockInterfaceClass::WinsockBufferType*>
+extern char VT_007F7A3C;
+// VTABLE: GAMEMD 0x007F7B0C -- VectorClass<unsigned char*>
+extern char VT_007F7B0C;
+
+#endif  // GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H

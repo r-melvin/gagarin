@@ -1,0 +1,4 @@
+{
+  "max_naked_bodies": 4,
+  "note": "Ratchet only downward. See scripts/vc6/check_naked.py. Was 24 before the conversion pass; every remaining body carries an in-file record of the variants tried and the residual."
+}

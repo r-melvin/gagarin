@@ -1,0 +1,5054 @@
+{
+ "BuildingClass": [
+  {
+   "addr": "0x43e900",
+   "name": "Obj_0043E900::FUN_0043E900",
+   "sym": "?FUN_0043E900@Obj_0043E900@@QAEHXZ",
+   "tu": "match/core/small_misc36_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 187
+    }
+   ]
+  },
+  {
+   "addr": "0x445F00",
+   "name": "Obj_00445F00::FUN_00445F00",
+   "sym": "?FUN_00445F00@Obj_00445F00@@QAEXIHH@Z",
+   "tu": "match/combat/damage_flags_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 241
+    }
+   ]
+  },
+  {
+   "addr": "0x447ac0",
+   "name": "Obj_00447AC0::FUN_00447AC0",
+   "sym": "?FUN_00447AC0@Obj_00447AC0@@QAE?AUPoint_00447AC0@@XZ",
+   "tu": "match/core/small_misc52_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 18
+    }
+   ]
+  },
+  {
+   "addr": "0x449410",
+   "name": "FUN_00449410",
+   "sym": "?FUN_00449410@Obj_00449410@@QAEHXZ",
+   "tu": "match/core/small_misc19_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 46
+    }
+   ]
+  },
+  {
+   "addr": "0x44eb10",
+   "name": "Obj_0044EB10::FUN_0044EB10",
+   "sym": "?FUN_0044EB10@Obj_0044EB10@@QAEHXZ",
+   "tu": "match/core/small_misc48_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 195
+    }
+   ]
+  },
+  {
+   "addr": "0x44F5C0",
+   "name": "Obj_0044F5C0::FUN_0044F5C0",
+   "sym": "?FUN_0044F5C0@Obj_0044F5C0@@QAE_NXZ",
+   "tu": "match/ai/can_retaliate_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 40
+    }
+   ]
+  },
+  {
+   "addr": "0x452630",
+   "name": "Obj_00452630::FUN_00452630",
+   "sym": "?FUN_00452630@Obj_00452630@@QAE_NXZ",
+   "tu": "match/core/small_misc38_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 37
+    }
+   ]
+  },
+  {
+   "addr": "0x455d50",
+   "name": "Obj_00455D50::FUN_00455D50",
+   "sym": "?FUN_00455D50@Obj_00455D50@@QAEXPAX0@Z",
+   "tu": "match/core/small_misc47_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 288
+    }
+   ]
+  },
+  {
+   "addr": "0x455da0",
+   "name": "Obj_00455D50::FUN_00455DA0",
+   "sym": "?FUN_00455DA0@Obj_00455D50@@QAE_NXZ",
+   "tu": "match/core/small_misc47_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 161
+    }
+   ]
+  },
+  {
+   "addr": "0x456580",
+   "name": "Obj_00456580::FUN_00456580",
+   "sym": "?FUN_00456580@Obj_00456580@@QAEXXZ",
+   "tu": "match/map/foundation_occupy_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 293
+    }
+   ]
+  },
+  {
+   "addr": "0x458DB0",
+   "name": "FUN_00458DB0",
+   "sym": "?FUN_00458DB0@Obj_00458DB0@@QAE_NXZ",
+   "tu": "match/core/small_misc4_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 171
+    }
+   ]
+  },
+  {
+   "addr": "0x458e00",
+   "name": "Obj_00458E00::FUN_00458E00",
+   "sym": "?FUN_00458E00@Obj_00458E00@@QAEHXZ",
+   "tu": "match/core/small_misc46_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 257
+    }
+   ]
+  },
+  {
+   "addr": "0x459C00",
+   "name": "FUN_00459C00",
+   "sym": "?FUN_00459C00@Obj_00459C00@@QAEXXZ",
+   "tu": "match/core/small_misc4_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 79
+    }
+   ]
+  },
+  {
+   "addr": "0x459F20",
+   "name": "FUN_00459F20",
+   "sym": "?FUN_00459F20@Obj_00459F00@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "AircraftClass": [
+  {
+   "addr": "0x4158E0",
+   "name": "Obj_004158E0::FUN_004158E0",
+   "sym": "?FUN_004158E0@Obj_004158E0@@QAEHXZ",
+   "tu": "match/ai/mission_stop_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 152
+    }
+   ]
+  },
+  {
+   "addr": "0x417f80",
+   "name": "Obj_00417F80::FUN_00417F80",
+   "sym": "?FUN_00417F80@Obj_00417F80@@QAEHHHH@Z",
+   "tu": "match/core/small_misc52_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 28
+    }
+   ]
+  },
+  {
+   "addr": "0x41A590",
+   "name": "FUN_0041A590",
+   "sym": "?FUN_0041A590@Obj_0041A590@@QAEXHHH@Z",
+   "tu": "match/core/small_misc9_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 93
+    }
+   ]
+  },
+  {
+   "addr": "0x41ADC0",
+   "name": "FUN_0041ADC0",
+   "sym": "?FUN_0041ADC0@Obj_0041ADC0@@QAEXXZ",
+   "tu": "match/core/small_misc10_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 30
+    }
+   ]
+  },
+  {
+   "addr": "0x41B890",
+   "name": "Obj_0041B890::FUN_0041B890",
+   "sym": "?FUN_0041B890@Obj_0041B890@@QAE_NXZ",
+   "tu": "match/ai/deploy_ready_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 311
+    }
+   ]
+  },
+  {
+   "addr": "0x41b920",
+   "name": "Obj_0041B920::FUN_0041B920",
+   "sym": "?FUN_0041B920@Obj_0041B920@@QAEHXZ",
+   "tu": "match/core/com_gated_predicate_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 21
+    }
+   ]
+  },
+  {
+   "addr": "0x41b980",
+   "name": "Obj_0041B920::FUN_0041B980",
+   "sym": "?FUN_0041B980@Obj_0041B920@@QAEHXZ",
+   "tu": "match/core/com_gated_predicate_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 20
+    }
+   ]
+  },
+  {
+   "addr": "0x41C210",
+   "name": "FUN_0041C210",
+   "sym": "?FUN_0041C210@Obj_0041C200b@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<TechnoClass*>": [
+  {
+   "addr": "0x40B6A0",
+   "name": "FUN_0040B6A0",
+   "sym": "?FUN_0040B6A0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40BAE0",
+   "name": "FUN_0040BAE0",
+   "sym": "?FUN_0040BAE0@VectorResize@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x40BB90",
+   "name": "FUN_0040BB90",
+   "sym": "?FUN_0040BB90@Obj_0040BB90@@QAEHPBQAX@Z",
+   "tu": "match/core/small_misc11_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 4
+    }
+   ]
+  },
+  {
+   "addr": "0x40BCB0",
+   "name": "FUN_0040BCB0",
+   "sym": "?FUN_0040BCB0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "AnimClass": [
+  {
+   "addr": "0x422BC0",
+   "name": "FUN_00422BC0",
+   "sym": "?FUN_00422BC0@Obj_00422B00@@QAEHXZ",
+   "tu": "match/core/misc_leaf_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimClass",
+     "base_offset": 0,
+     "slot": 46
+    }
+   ]
+  },
+  {
+   "addr": "0x422BE0",
+   "name": "Obj_00422BE0::FUN_00422BE0",
+   "sym": "?FUN_00422BE0@Obj_00422BE0@@QAE?AUCoord_00422BE0@@XZ",
+   "tu": "match/core/combined_coords_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimClass",
+     "base_offset": 0,
+     "slot": 18
+    }
+   ]
+  },
+  {
+   "addr": "0x4253b0",
+   "name": "FUN_004253B0",
+   "sym": "?FUN_004253B0@@YGJPAUSubject_004253B0@@PAX1@Z",
+   "tu": "match/core/small_misc50_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimClass",
+     "base_offset": 0,
+     "slot": 6
+    }
+   ]
+  },
+  {
+   "addr": "0x426590",
+   "name": "FUN_00426590",
+   "sym": "?FUN_00426590@Obj_00426500@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "BSurface": [
+  {
+   "addr": "0x4115f0",
+   "name": "Obj_004115F0::FUN_004115F0",
+   "sym": "?FUN_004115F0@Obj_004115F0@@QAEHHH@Z",
+   "tu": "match/core/small_misc36_methods.cpp",
+   "classes": [
+    {
+     "cls": "BSurface",
+     "base_offset": 0,
+     "slot": 23
+    }
+   ]
+  },
+  {
+   "addr": "0x411630",
+   "name": "FUN_00411630",
+   "sym": "?FUN_00411630@Obj_00411500@@QBEHXZ",
+   "tu": "match/core/leaf_accessor_methods.cpp",
+   "classes": [
+    {
+     "cls": "BSurface",
+     "base_offset": 0,
+     "slot": 28
+    }
+   ]
+  },
+  {
+   "addr": "0x411640",
+   "name": "FUN_00411640",
+   "sym": "?FUN_00411640@Obj_00411600@@QAEHXZ",
+   "tu": "match/core/misc_leaf_methods.cpp",
+   "classes": [
+    {
+     "cls": "BSurface",
+     "base_offset": 0,
+     "slot": 29
+    }
+   ]
+  },
+  {
+   "addr": "0x411650",
+   "name": "FUN_00411650",
+   "sym": "?FUN_00411650@Obj_00411650@@QAEPAXI@Z",
+   "tu": "match/core/small_misc12_methods.cpp",
+   "classes": [
+    {
+     "cls": "BSurface",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BuildingTypeClass": [
+  {
+   "addr": "0x45E880",
+   "name": "FUN_0045E880",
+   "sym": "?FUN_0045E880@Obj_0045E880@@QAEPADH@Z",
+   "tu": "match/core/small_misc15_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingTypeClass",
+     "base_offset": 0,
+     "slot": 35
+    }
+   ]
+  },
+  {
+   "addr": "0x45ED50",
+   "name": "Obj_0045ED50::FUN_0045ED50",
+   "sym": "?FUN_0045ED50@Obj_0045ED50@@QAEHXZ",
+   "tu": "match/ai/threat_budget_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingTypeClass",
+     "base_offset": 0,
+     "slot": 43
+    }
+   ]
+  },
+  {
+   "addr": "0x465DC0",
+   "name": "FUN_00465DC0",
+   "sym": "?FUN_00465DC0@Obj_00465D00b@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<unsigned int>": [
+  {
+   "addr": "0x42D540",
+   "name": "FUN_0042D540",
+   "sym": "?FUN_0042D540@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<unsigned int>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x42D780",
+   "name": "FUN_0042D780",
+   "sym": "?FUN_0042D780@VectorResize@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<unsigned int>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x42DB60",
+   "name": "FUN_0042DB60",
+   "sym": "?FUN_0042DB60@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<unsigned int>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<FoggedObjectClass*>": [
+  {
+   "addr": "0x45A070",
+   "name": "FUN_0045A070",
+   "sym": "?FUN_0045A070@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<FoggedObjectClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x45A680",
+   "name": "FUN_0045A680",
+   "sym": "?FUN_0045A680@VectorResize@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<FoggedObjectClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x45AB00",
+   "name": "FUN_0045AB00",
+   "sym": "?FUN_0045AB00@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<FoggedObjectClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<ControlNode*>": [
+  {
+   "addr": "0x472A80",
+   "name": "FUN_00472A80",
+   "sym": "?FUN_00472A80@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ControlNode*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x472CC0",
+   "name": "FUN_00472CC0",
+   "sym": "?FUN_00472CC0@VectorResize@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ControlNode*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x473050",
+   "name": "FUN_00473050",
+   "sym": "?FUN_00473050@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ControlNode*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "FootClass": [
+  {
+   "addr": "0x4DA2B0",
+   "name": "thunk_FUN_005b2ef0",
+   "sym": "?FUN_004DA2B0@@YIXPAX@Z",
+   "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+   "classes": [
+    {
+     "cls": "FootClass",
+     "base_offset": 0,
+     "slot": 143
+    }
+   ]
+  },
+  {
+   "addr": "0x4DB250",
+   "name": "FUN_004DB250",
+   "sym": "?FUN_004DB250@@YGXII@Z",
+   "tu": "match/core/misc_leaf_methods.cpp",
+   "classes": [
+    {
+     "cls": "FootClass",
+     "base_offset": 0,
+     "slot": 69
+    }
+   ]
+  },
+  {
+   "addr": "0x4E0170",
+   "name": "FUN_004e0170",
+   "sym": "?FUN_4E0170@Obj_4E0170@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "FootClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "ApplicationClass": [
+  {
+   "addr": "0x429420",
+   "name": "FUN_00429420",
+   "sym": "?FUN_00429420@@YGJPAXPAPAG@Z",
+   "tu": "match/core/small_misc10_methods.cpp",
+   "classes": [
+    {
+     "cls": "ApplicationClass",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x429450",
+   "name": "FUN_00429450",
+   "sym": "?FUN_00429450@@YGJPAXPAPAG@Z",
+   "tu": "match/core/small_misc10_methods.cpp",
+   "classes": [
+    {
+     "cls": "ApplicationClass",
+     "base_offset": 0,
+     "slot": 4
+    }
+   ]
+  },
+  {
+   "addr": "0x429500",
+   "name": "FUN_00429500",
+   "sym": "?FUN_00429500@@YGJPAXPAH@Z",
+   "tu": "match/core/small_misc42_methods.cpp",
+   "classes": [
+    {
+     "cls": "ApplicationClass",
+     "base_offset": 0,
+     "slot": 7
+    }
+   ]
+  }
+ ],
+ "AnimFile": [
+  {
+   "addr": "0x426750",
+   "name": "Obj_00426750::FUN_00426750",
+   "sym": "?FUN_00426750@Obj_00426750@@QAE_NPAUDelegate_00426750@@@Z",
+   "tu": "match/core/small_misc38_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimFile",
+     "base_offset": 0,
+     "slot": 1
+    }
+   ]
+  },
+  {
+   "addr": "0x426790",
+   "name": "Obj_00426750::FUN_00426790",
+   "sym": "?FUN_00426790@Obj_00426750@@QAEXXZ",
+   "tu": "match/core/small_misc38_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimFile",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x4272A0",
+   "name": "Obj_004272A0::Destroy",
+   "sym": "?Destroy@Obj_004272A0@@QAEPAU1@H@Z",
+   "tu": "match/renderer/scalar_deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "AnimFile",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<SubzoneConnectionStruct>": [
+  {
+   "addr": "0x40B270",
+   "name": "FUN_0040B270",
+   "sym": "?FUN_0040B270@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<SubzoneConnectionStruct>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40B300",
+   "name": "FUN_0040B300",
+   "sym": "?FUN_0040B300@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<SubzoneConnectionStruct>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<BombClass*>": [
+  {
+   "addr": "0x40B7F0",
+   "name": "FUN_0040B7F0",
+   "sym": "?FUN_0040B7F0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BombClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40BBC0",
+   "name": "FUN_0040BBC0",
+   "sym": "?FUN_0040BBC0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BombClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<BombClass*>": [
+  {
+   "addr": "0x40B640",
+   "name": "FUN_0040B640",
+   "sym": "?FUN_0040B640@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BombClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40BC10",
+   "name": "FUN_0040BC10",
+   "sym": "?FUN_0040BC10@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BombClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<TechnoClass*>": [
+  {
+   "addr": "0x40BA50",
+   "name": "FUN_0040BA50",
+   "sym": "?FUN_0040BA50@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40BC60",
+   "name": "FUN_0040BC60",
+   "sym": "?FUN_0040BC60@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<TechnoClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<CommandClass*>": [
+  {
+   "addr": "0x40BFA0",
+   "name": "FUN_0040BFA0",
+   "sym": "?FUN_0040BFA0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<CommandClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40C110",
+   "name": "FUN_0040C110",
+   "sym": "?FUN_0040C110@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<CommandClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<CommandClass*>": [
+  {
+   "addr": "0x40BE50",
+   "name": "FUN_0040BE50",
+   "sym": "?FUN_0040BE50@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<CommandClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40C160",
+   "name": "FUN_0040C160",
+   "sym": "?FUN_0040C160@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<CommandClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<LightConvertClass*>": [
+  {
+   "addr": "0x40C380",
+   "name": "FUN_0040C380",
+   "sym": "?FUN_0040C380@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<LightConvertClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40C4F0",
+   "name": "FUN_0040C4F0",
+   "sym": "?FUN_0040C4F0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<LightConvertClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<LightConvertClass*>": [
+  {
+   "addr": "0x40C230",
+   "name": "FUN_0040C230",
+   "sym": "?FUN_0040C230@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<LightConvertClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40C540",
+   "name": "FUN_0040C540",
+   "sym": "?FUN_0040C540@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<LightConvertClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<IsometricTileClass*>": [
+  {
+   "addr": "0x40C970",
+   "name": "FUN_0040C970",
+   "sym": "?FUN_0040C970@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<IsometricTileClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40CAE0",
+   "name": "FUN_0040CAE0",
+   "sym": "?FUN_0040CAE0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<IsometricTileClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<IsometricTileClass*>": [
+  {
+   "addr": "0x40C820",
+   "name": "FUN_0040C820",
+   "sym": "?FUN_0040C820@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<IsometricTileClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40CB30",
+   "name": "FUN_0040CB30",
+   "sym": "?FUN_0040CB30@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<IsometricTileClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<ObjectClass*>": [
+  {
+   "addr": "0x40CDC0",
+   "name": "FUN_0040CDC0",
+   "sym": "?FUN_0040CDC0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ObjectClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40CF30",
+   "name": "FUN_0040CF30",
+   "sym": "?FUN_0040CF30@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ObjectClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<MixFileClass*>": [
+  {
+   "addr": "0x40D690",
+   "name": "FUN_0040D690",
+   "sym": "?FUN_0040D690@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<MixFileClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40D800",
+   "name": "FUN_0040D800",
+   "sym": "?FUN_0040D800@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<MixFileClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<MixFileClass*>": [
+  {
+   "addr": "0x40D540",
+   "name": "FUN_0040D540",
+   "sym": "?FUN_0040D540@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MixFileClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40D850",
+   "name": "FUN_0040D850",
+   "sym": "?FUN_0040D850@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MixFileClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<ScriptClass*>": [
+  {
+   "addr": "0x40E940",
+   "name": "FUN_0040E940",
+   "sym": "?FUN_0040E940@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ScriptClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40EAB0",
+   "name": "FUN_0040EAB0",
+   "sym": "?FUN_0040EAB0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ScriptClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<ScriptClass*>": [
+  {
+   "addr": "0x40E7F0",
+   "name": "FUN_0040E7F0",
+   "sym": "?FUN_0040E7F0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ScriptClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40EB00",
+   "name": "FUN_0040EB00",
+   "sym": "?FUN_0040EB00@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ScriptClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<VoxelAnimClass*>": [
+  {
+   "addr": "0x40F010",
+   "name": "FUN_0040F010",
+   "sym": "?FUN_0040F010@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<VoxelAnimClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40F180",
+   "name": "FUN_0040F180",
+   "sym": "?FUN_0040F180@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<VoxelAnimClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<VoxelAnimClass*>": [
+  {
+   "addr": "0x40EEC0",
+   "name": "FUN_0040EEC0",
+   "sym": "?FUN_0040EEC0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<VoxelAnimClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40F1D0",
+   "name": "FUN_0040F1D0",
+   "sym": "?FUN_0040F1D0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<VoxelAnimClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<WarheadTypeClass*>": [
+  {
+   "addr": "0x40F730",
+   "name": "FUN_0040F730",
+   "sym": "?FUN_0040F730@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<WarheadTypeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40F8A0",
+   "name": "FUN_0040F8A0",
+   "sym": "?FUN_0040F8A0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<WarheadTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<WarheadTypeClass*>": [
+  {
+   "addr": "0x40F5E0",
+   "name": "FUN_0040F5E0",
+   "sym": "?FUN_0040F5E0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<WarheadTypeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40F8F0",
+   "name": "FUN_0040F8F0",
+   "sym": "?FUN_0040F8F0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<WarheadTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<WeaponTypeClass*>": [
+  {
+   "addr": "0x40FD00",
+   "name": "FUN_0040FD00",
+   "sym": "?FUN_0040FD00@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<WeaponTypeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40FE70",
+   "name": "FUN_0040FE70",
+   "sym": "?FUN_0040FE70@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<WeaponTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<WeaponTypeClass*>": [
+  {
+   "addr": "0x40FBB0",
+   "name": "FUN_0040FBB0",
+   "sym": "?FUN_0040FBB0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<WeaponTypeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x40FEC0",
+   "name": "FUN_0040FEC0",
+   "sym": "?FUN_0040FEC0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<WeaponTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<AirstrikeClass*>": [
+  {
+   "addr": "0x41DF30",
+   "name": "FUN_0041DF30",
+   "sym": "?FUN_0041DF30@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AirstrikeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x41E0A0",
+   "name": "FUN_0041E0A0",
+   "sym": "?FUN_0041E0A0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AirstrikeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<AirstrikeClass*>": [
+  {
+   "addr": "0x41DDE0",
+   "name": "FUN_0041DDE0",
+   "sym": "?FUN_0041DDE0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AirstrikeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  },
+  {
+   "addr": "0x41E0F0",
+   "name": "FUN_0041E0F0",
+   "sym": "?FUN_0041E0F0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AirstrikeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<AlphaLightingRemapClass*>": [
+  {
+   "addr": "0x420630",
+   "name": "FUN_00420630",
+   "sym": "?FUN_00420630@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AlphaLightingRemapClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x4204C0",
+   "name": "FUN_004204C0",
+   "sym": "?FUN_004204C0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AlphaLightingRemapClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<AlphaLightingRemapClass*>": [
+  {
+   "addr": "0x420680",
+   "name": "FUN_00420680",
+   "sym": "?FUN_00420680@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AlphaLightingRemapClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x420370",
+   "name": "FUN_00420370",
+   "sym": "?FUN_00420370@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AlphaLightingRemapClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<AlphaShapeClass*>": [
+  {
+   "addr": "0x421AC0",
+   "name": "FUN_00421AC0",
+   "sym": "?FUN_00421AC0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AlphaShapeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x421950",
+   "name": "FUN_00421950",
+   "sym": "?FUN_00421950@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<AlphaShapeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<AlphaShapeClass*>": [
+  {
+   "addr": "0x421B10",
+   "name": "FUN_00421B10",
+   "sym": "?FUN_00421B10@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AlphaShapeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x421800",
+   "name": "FUN_00421800",
+   "sym": "?FUN_00421800@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AlphaShapeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<unsigned int>": [
+  {
+   "addr": "0x42DB10",
+   "name": "FUN_0042DB10",
+   "sym": "?FUN_0042DB10@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<unsigned int>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42D6F0",
+   "name": "FUN_0042D6F0",
+   "sym": "?FUN_0042D6F0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<unsigned int>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<unsigned short>": [
+  {
+   "addr": "0x42DBB0",
+   "name": "FUN_0042DBB0",
+   "sym": "?FUN_0042DBB0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42D9A0",
+   "name": "FUN_0042D9A0",
+   "sym": "?FUN_0042D9A0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<unsigned short>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<unsigned short>": [
+  {
+   "addr": "0x42DC00",
+   "name": "FUN_0042DC00",
+   "sym": "?FUN_0042DC00@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42D5A0",
+   "name": "FUN_0042D5A0",
+   "sym": "?FUN_0042D5A0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<unsigned short>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<BaseNodeClass>": [
+  {
+   "addr": "0x42F970",
+   "name": "FUN_0042F970",
+   "sym": "?FUN_0042F970@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BaseNodeClass>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42F3A0",
+   "name": "FUN_0042F3A0",
+   "sym": "?FUN_0042F3A0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BaseNodeClass>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<BaseNodeClass>": [
+  {
+   "addr": "0x42FB50",
+   "name": "FUN_0042FB50",
+   "sym": "?FUN_0042FB50@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BaseNodeClass>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42FAB0",
+   "name": "FUN_0042FAB0",
+   "sym": "?FUN_0042FAB0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BaseNodeClass>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<Cell>": [
+  {
+   "addr": "0x42FBA0",
+   "name": "FUN_0042FBA0",
+   "sym": "?FUN_0042FBA0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<Cell>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42F7C0",
+   "name": "FUN_0042F7C0",
+   "sym": "?FUN_0042F7C0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<Cell>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<Cell>": [
+  {
+   "addr": "0x42FBF0",
+   "name": "FUN_0042FBF0",
+   "sym": "?FUN_0042FBF0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<Cell>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42F420",
+   "name": "FUN_0042F420",
+   "sym": "?FUN_0042F420@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<Cell>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<NeuronClass*>": [
+  {
+   "addr": "0x43ACB0",
+   "name": "FUN_0043ACB0",
+   "sym": "?FUN_0043ACB0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<NeuronClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x43AC20",
+   "name": "FUN_0043AC20",
+   "sym": "?FUN_0043AC20@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<NeuronClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<ParticleSystemTypeClass*>": [
+  {
+   "addr": "0x45A9C0",
+   "name": "FUN_0045A9C0",
+   "sym": "?FUN_0045A9C0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ParticleSystemTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x45A270",
+   "name": "FUN_0045A270",
+   "sym": "?FUN_0045A270@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ParticleSystemTypeClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<InfantryClass*>": [
+  {
+   "addr": "0x45AAB0",
+   "name": "FUN_0045AAB0",
+   "sym": "?FUN_0045AAB0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<InfantryClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x459FF0",
+   "name": "FUN_00459FF0",
+   "sym": "?FUN_00459FF0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<InfantryClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<FoggedObjectClass*>": [
+  {
+   "addr": "0x45AC90",
+   "name": "FUN_0045AC90",
+   "sym": "?FUN_0045AC90@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<FoggedObjectClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x45AC00",
+   "name": "FUN_0045AC00",
+   "sym": "?FUN_0045AC00@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<FoggedObjectClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<Reestablish*>": [
+  {
+   "addr": "0x45ACE0",
+   "name": "FUN_0045ACE0",
+   "sym": "?FUN_0045ACE0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<Reestablish*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x45A850",
+   "name": "FUN_0045A850",
+   "sym": "?FUN_0045A850@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<Reestablish*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<Reestablish*>": [
+  {
+   "addr": "0x45AD30",
+   "name": "FUN_0045AD30",
+   "sym": "?FUN_0045AD30@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<Reestablish*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x45A0D0",
+   "name": "FUN_0045A0D0",
+   "sym": "?FUN_0045A0D0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<Reestablish*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<TPoint3D<int>>": [
+  {
+   "addr": "0x466080",
+   "name": "FUN_00466080",
+   "sym": "?FUN_00466080@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<TPoint3D<int>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x465F50",
+   "name": "FUN_00465F50",
+   "sym": "?FUN_00465F50@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<TPoint3D<int>>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<BulletClass*>": [
+  {
+   "addr": "0x46B8C0",
+   "name": "FUN_0046B8C0",
+   "sym": "?FUN_0046B8C0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BulletClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x46B750",
+   "name": "FUN_0046B750",
+   "sym": "?FUN_0046B750@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<BulletClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<BulletClass*>": [
+  {
+   "addr": "0x46B910",
+   "name": "FUN_0046B910",
+   "sym": "?FUN_0046B910@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BulletClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x46B5E0",
+   "name": "FUN_0046B5E0",
+   "sym": "?FUN_0046B5E0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BulletClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<ControlNode*>": [
+  {
+   "addr": "0x473000",
+   "name": "FUN_00473000",
+   "sym": "?FUN_00473000@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ControlNode*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x472C30",
+   "name": "FUN_00472C30",
+   "sym": "?FUN_00472C30@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<ControlNode*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<CaptureManagerClass*>": [
+  {
+   "addr": "0x4730A0",
+   "name": "FUN_004730A0",
+   "sym": "?FUN_004730A0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<CaptureManagerClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x472E90",
+   "name": "FUN_00472E90",
+   "sym": "?FUN_00472E90@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<CaptureManagerClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<CaptureManagerClass*>": [
+  {
+   "addr": "0x4730F0",
+   "name": "FUN_004730F0",
+   "sym": "?FUN_004730F0@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<CaptureManagerClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x472AE0",
+   "name": "FUN_00472AE0",
+   "sym": "?FUN_00472AE0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<CaptureManagerClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "Base64Pipe": [
+  {
+   "addr": "0x52AEE0",
+   "name": "FUN_0052aee0",
+   "sym": "?FUN_52AEE0@Obj_52AEE0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "Base64Pipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x42DF40",
+   "name": "Obj_0042DF40::FUN_0042DF40",
+   "sym": "?FUN_0042DF40@Obj_0042DF40@@QAEHXZ",
+   "tu": "match/network/pending_flush_methods.cpp",
+   "classes": [
+    {
+     "cls": "Base64Pipe",
+     "base_offset": 0,
+     "slot": 1
+    }
+   ]
+  }
+ ],
+ "PowerClass": [
+  {
+   "addr": "0x6404B0",
+   "name": "FUN_006404b0",
+   "sym": "?FUN_6404B0@Obj_6404B0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "PowerClass",
+     "base_offset": 0,
+     "slot": 4
+    }
+   ]
+  },
+  {
+   "addr": "0x63F7B0",
+   "name": "thunk_FUN_00652cf0",
+   "sym": "?FUN_0063F7B0@@YIXPAX@Z",
+   "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+   "classes": [
+    {
+     "cls": "PowerClass",
+     "base_offset": 0,
+     "slot": 5
+    }
+   ]
+  }
+ ],
+ "TechnoTypeClass": [
+  {
+   "addr": "0x7179A0",
+   "name": "FUN_007179a0",
+   "sym": "?FUN_7179A0@Obj_7179A0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TechnoTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  },
+  {
+   "addr": "0x711E80",
+   "name": "FUN_00711E80",
+   "sym": "?FUN_00711E80@@YA_NXZ",
+   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TechnoTypeClass",
+     "base_offset": 0,
+     "slot": 40
+    }
+   ]
+  }
+ ],
+ "GScreenClass": [
+  {
+   "addr": "0x4F42A0",
+   "name": "FUN_004F42A0",
+   "sym": "?FUN_004F42A0@@YGXXZ",
+   "tu": "match/core/misc_leaf_methods.cpp",
+   "classes": [
+    {
+     "cls": "GScreenClass",
+     "base_offset": 0,
+     "slot": 5
+    }
+   ]
+  },
+  {
+   "addr": "0x4F42D0",
+   "name": "MapClass::FUN_004F42D0",
+   "sym": "?FUN_004F42D0@MapClass@@QAEXXZ",
+   "tu": "match/map/map_class_more_methods.cpp",
+   "classes": [
+    {
+     "cls": "GScreenClass",
+     "base_offset": 0,
+     "slot": 7
+    }
+   ]
+  }
+ ],
+ "VectorClass<rc_ptr<WorldDominationTour::Conflict>>": [
+  {
+   "addr": "0x765B60",
+   "name": "FUN_00765B60",
+   "sym": "?FUN_00765B60@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::Conflict>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x00765960",
+   "name": "FUN_0000765960",
+   "sym": "?FUN_0000765960@@YIXPAUVirtVector_00765960@@@Z",
+   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::Conflict>>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<rc_ptr<WorldDominationTour::GameOption>>": [
+  {
+   "addr": "0x766FC0",
+   "name": "FUN_00766FC0",
+   "sym": "?FUN_00766FC0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x00766d30",
+   "name": "FUN_0000766D30",
+   "sym": "?FUN_0000766D30@@YIXPAUVirtVector_00765960@@@Z",
+   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<rc_ptr<WorldDominationTour::Territory>>": [
+  {
+   "addr": "0x76A5C0",
+   "name": "FUN_0076A5C0",
+   "sym": "?FUN_0076A5C0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::Territory>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x00769f50",
+   "name": "FUN_0000769F50",
+   "sym": "?FUN_0000769F50@@YIXPAUVirtVector_00765960@@@Z",
+   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WorldDominationTour::Territory>>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "VectorClass<rc_ptr<WDTTerritory>>": [
+  {
+   "addr": "0x76BBC0",
+   "name": "FUN_0076BBC0",
+   "sym": "?FUN_0076BBC0@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WDTTerritory>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  },
+  {
+   "addr": "0x0076b9e0",
+   "name": "FUN_000076B9E0",
+   "sym": "?FUN_000076B9E0@@YIXPAUVirtVector_00765960@@@Z",
+   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<rc_ptr<WDTTerritory>>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<char*>": [
+  {
+   "addr": "0x49EA70",
+   "name": "VectorResizeFamily::FUN_49EA70",
+   "sym": "?FUN_49EA70@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<char*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  },
+  {
+   "addr": "0x5C0C50",
+   "name": "VectorResizeFamily::FUN_5C0C50",
+   "sym": "?FUN_5C0C50@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<char*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "TeleportLocomotionClass": [
+  {
+   "addr": "0x719EE0",
+   "name": "FUN_00719EE0",
+   "sym": "?FUN_00719EE0@@YGJPAUOwner_00719EE0@@PAPAX@Z",
+   "tu": "match/movement/locomotion_com_helpers.cpp",
+   "classes": [
+    {
+     "cls": "TeleportLocomotionClass",
+     "base_offset": 24,
+     "slot": 4
+    }
+   ]
+  },
+  {
+   "addr": "0x7180A0",
+   "name": "FUN_007180A0",
+   "sym": "?FUN_007180A0@@YGXPAUSource_007180A0@@PAUCoord_007180A0@@@Z",
+   "tu": "match/movement/waypoint_queue_position_methods.cpp",
+   "classes": [
+    {
+     "cls": "TeleportLocomotionClass",
+     "base_offset": 4,
+     "slot": 5
+    }
+   ]
+  }
+ ],
+ "LogicClass": [
+  {
+   "addr": "0x40CC20",
+   "name": "FUN_0040CC20",
+   "sym": "?FUN_0040CC20@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "LogicClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<ParticleSystemTypeClass*>": [
+  {
+   "addr": "0x45AA10",
+   "name": "FUN_0045AA10",
+   "sym": "?FUN_0045AA10@BufferHolderDtor@@QAEPAXI@Z",
+   "tu": "match/core/buffer_holder_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ParticleSystemTypeClass*>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<InfantryClass*>": [
+  {
+   "addr": "0x45A4D0",
+   "name": "FUN_0045A4D0",
+   "sym": "?FUN_0045A4D0@@YIXPAUBufferHolder@@@Z",
+   "tu": "match/core/buffer_release_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<InfantryClass*>",
+     "base_offset": 0,
+     "slot": 3
+    }
+   ]
+  }
+ ],
+ "BlitPlainXlatAlpha<unsigned short>": [
+  {
+   "addr": "0x0049A200",
+   "name": "FUN_0049A200",
+   "sym": "?FUN_0049A200@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitPlainXlatAlpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransXlatAlpha<unsigned short>": [
+  {
+   "addr": "0x0049A240",
+   "name": "FUN_0049A240",
+   "sym": "?FUN_0049A240@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransXlatAlpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransZRemapXlatAlpha<unsigned short>": [
+  {
+   "addr": "0x0049A280",
+   "name": "FUN_0049A280",
+   "sym": "?FUN_0049A280@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransZRemapXlatAlpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent75Alpha<unsigned short>": [
+  {
+   "addr": "0x0049A2C0",
+   "name": "FUN_0049A2C0",
+   "sym": "?FUN_0049A2C0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent75Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent50Alpha<unsigned short>": [
+  {
+   "addr": "0x0049A300",
+   "name": "FUN_0049A300",
+   "sym": "?FUN_0049A300@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent50Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent25Alpha<unsigned short>": [
+  {
+   "addr": "0x0049A340",
+   "name": "FUN_0049A340",
+   "sym": "?FUN_0049A340@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent25Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransXlatAlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049A420",
+   "name": "FUN_0049A420",
+   "sym": "?FUN_0049A420@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransXlatAlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransZRemapXlatAlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049A460",
+   "name": "FUN_0049A460",
+   "sym": "?FUN_0049A460@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransZRemapXlatAlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent75AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049A4A0",
+   "name": "FUN_0049A4A0",
+   "sym": "?FUN_0049A4A0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent75AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent50AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049A4E0",
+   "name": "FUN_0049A4E0",
+   "sym": "?FUN_0049A4E0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent50AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent25AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049A520",
+   "name": "FUN_0049A520",
+   "sym": "?FUN_0049A520@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent25AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent75AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049A560",
+   "name": "FUN_0049A560",
+   "sym": "?FUN_0049A560@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent75AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent50AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049A5A0",
+   "name": "FUN_0049A5A0",
+   "sym": "?FUN_0049A5A0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent50AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent25AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049A5E0",
+   "name": "FUN_0049A5E0",
+   "sym": "?FUN_0049A5E0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent25AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransXlatAlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049A620",
+   "name": "FUN_0049A620",
+   "sym": "?FUN_0049A620@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransXlatAlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049A660",
+   "name": "FUN_0049A660",
+   "sym": "?FUN_0049A660@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent75AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049A6A0",
+   "name": "FUN_0049A6A0",
+   "sym": "?FUN_0049A6A0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent75AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent50AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049A6E0",
+   "name": "FUN_0049A6E0",
+   "sym": "?FUN_0049A6E0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent50AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BlitTransLucent25AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049A720",
+   "name": "FUN_0049A720",
+   "sym": "?FUN_0049A720@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlitTransLucent25AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransXlatAlpha<unsigned short>": [
+  {
+   "addr": "0x0049AA00",
+   "name": "FUN_0049AA00",
+   "sym": "?FUN_0049AA00@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransXlatAlpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransZRemapXlatAlpha<unsigned short>": [
+  {
+   "addr": "0x0049AA40",
+   "name": "FUN_0049AA40",
+   "sym": "?FUN_0049AA40@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransZRemapXlatAlpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent75Alpha<unsigned short>": [
+  {
+   "addr": "0x0049AA80",
+   "name": "FUN_0049AA80",
+   "sym": "?FUN_0049AA80@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent75Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent50Alpha<unsigned short>": [
+  {
+   "addr": "0x0049AAC0",
+   "name": "FUN_0049AAC0",
+   "sym": "?FUN_0049AAC0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent50Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent25Alpha<unsigned short>": [
+  {
+   "addr": "0x0049AB00",
+   "name": "FUN_0049AB00",
+   "sym": "?FUN_0049AB00@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent25Alpha<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransXlatAlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049AB40",
+   "name": "FUN_0049AB40",
+   "sym": "?FUN_0049AB40@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransXlatAlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransZRemapXlatAlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049AB80",
+   "name": "FUN_0049AB80",
+   "sym": "?FUN_0049AB80@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransZRemapXlatAlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent75AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049ABC0",
+   "name": "FUN_0049ABC0",
+   "sym": "?FUN_0049ABC0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent75AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent50AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049AC00",
+   "name": "FUN_0049AC00",
+   "sym": "?FUN_0049AC00@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent50AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent25AlphaZRead<unsigned short>": [
+  {
+   "addr": "0x0049AC40",
+   "name": "FUN_0049AC40",
+   "sym": "?FUN_0049AC40@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent25AlphaZRead<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent75AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049AC80",
+   "name": "FUN_0049AC80",
+   "sym": "?FUN_0049AC80@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent75AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent50AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049ACC0",
+   "name": "FUN_0049ACC0",
+   "sym": "?FUN_0049ACC0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent50AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent25AlphaZReadWarp<unsigned short>": [
+  {
+   "addr": "0x0049AD00",
+   "name": "FUN_0049AD00",
+   "sym": "?FUN_0049AD00@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent25AlphaZReadWarp<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransXlatAlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049AD40",
+   "name": "FUN_0049AD40",
+   "sym": "?FUN_0049AD40@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransXlatAlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransZRemapXlatAlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049AD80",
+   "name": "FUN_0049AD80",
+   "sym": "?FUN_0049AD80@CachedResourceOwnerC@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransZRemapXlatAlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent75AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049ADC0",
+   "name": "FUN_0049ADC0",
+   "sym": "?FUN_0049ADC0@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent75AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent50AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049AE00",
+   "name": "FUN_0049AE00",
+   "sym": "?FUN_0049AE00@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent50AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RLEBlitTransLucent25AlphaZReadWrite<unsigned short>": [
+  {
+   "addr": "0x0049AE40",
+   "name": "FUN_0049AE40",
+   "sym": "?FUN_0049AE40@CachedResourceOwner8@@QAEPAXD@Z",
+   "tu": "match/core/cached_resource_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "RLEBlitTransLucent25AlphaZReadWrite<unsigned short>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "CCINIClass": [
+  {
+   "addr": "0x40E4A0",
+   "name": "FUN_0040E4A0",
+   "sym": "?FUN_0040E4A0@Obj_0040E400@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "CCINIClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BulletClass": [
+  {
+   "addr": "0x46B5C0",
+   "name": "FUN_0046B5C0",
+   "sym": "?FUN_0046B5C0@Obj_0046B500@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "BulletClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "CarryoverClass": [
+  {
+   "addr": "0x473920",
+   "name": "FUN_00473920",
+   "sym": "?FUN_00473920@Obj_00473900@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_methods.cpp",
+   "classes": [
+    {
+     "cls": "CarryoverClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "SHAPipe": [
+  {
+   "addr": "0x477750",
+   "name": "FUN_00477750",
+   "sym": "?FUN_477750@Obj_477750@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SHAPipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "FileStraw": [
+  {
+   "addr": "0x477770",
+   "name": "FUN_00477770",
+   "sym": "?FUN_477770@Obj_477770@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "FileStraw",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "FilePipe": [
+  {
+   "addr": "0x477790",
+   "name": "FUN_00477790",
+   "sym": "?FUN_477790@Obj_477790@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "FilePipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "CellClass": [
+  {
+   "addr": "0x487E80",
+   "name": "FUN_00487e80",
+   "sym": "?FUN_487E80@Obj_487E80@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "CellClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "CommBufferClass": [
+  {
+   "addr": "0x48BB00",
+   "name": "FUN_0048bb00",
+   "sym": "?FUN_48BB00@Obj_48BB00@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "CommBufferClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "ControlClass": [
+  {
+   "addr": "0x48E660",
+   "name": "FUN_0048e660",
+   "sym": "?FUN_48E660@Obj_48E660@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ControlClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "Dial8Class": [
+  {
+   "addr": "0x4A59A0",
+   "name": "FUN_004a59a0",
+   "sym": "?FUN_4A59A0@Obj_4A59A0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "Dial8Class",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DisplayClass::TacticalClass": [
+  {
+   "addr": "0x4AEBB0",
+   "name": "FUN_004aebb0",
+   "sym": "?FUN_4AEBB0@Obj_4AEBB0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "DisplayClass::TacticalClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DisplayClass": [
+  {
+   "addr": "0x4AEBF0",
+   "name": "FUN_004aebf0",
+   "sym": "?FUN_4AEBF0@Obj_4AEBF0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "DisplayClass",
+     "base_offset": 0,
+     "slot": 4
+    }
+   ]
+  }
+ ],
+ "Straw": [
+  {
+   "addr": "0x4AEC10",
+   "name": "FUN_004aec10",
+   "sym": "?FUN_4AEC10@Obj_4AEC10@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "Straw",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "Pipe": [
+  {
+   "addr": "0x4AEC80",
+   "name": "FUN_004aec80",
+   "sym": "?FUN_4AEC80@Obj_4AEC80@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "Pipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "ShapeButtonClass": [
+  {
+   "addr": "0x4B57F0",
+   "name": "FUN_004b57f0",
+   "sym": "?FUN_4B57F0@Obj_4B57F0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ShapeButtonClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "ToggleClass": [
+  {
+   "addr": "0x4B5810",
+   "name": "FUN_004b5810",
+   "sym": "?FUN_4B5810@Obj_4B5810@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ToggleClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "FoggedObjectClass": [
+  {
+   "addr": "0x4D2910",
+   "name": "FUN_004d2910",
+   "sym": "?FUN_4D2910@Obj_4D2910@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "FoggedObjectClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "LinkClass": [
+  {
+   "addr": "0x4E1AD0",
+   "name": "FUN_004e1ad0",
+   "sym": "?FUN_4E1AD0@Obj_4E1AD0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "LinkClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "GaugeClass": [
+  {
+   "addr": "0x4E30D0",
+   "name": "FUN_004e30d0",
+   "sym": "?FUN_4E30D0@Obj_4E30D0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "GaugeClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "TriColorGaugeClass": [
+  {
+   "addr": "0x4E30F0",
+   "name": "FUN_004e30f0",
+   "sym": "?FUN_4E30F0@Obj_4E30F0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TriColorGaugeClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "INIClass": [
+  {
+   "addr": "0x4F2810",
+   "name": "FUN_004f2810",
+   "sym": "?FUN_4F2810@Obj_4F2810@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "INIClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "GraphicMenu": [
+  {
+   "addr": "0x4F2830",
+   "name": "FUN_004f2830",
+   "sym": "?FUN_4F2830@Obj_4F2830@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "GraphicMenu",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "HouseClass": [
+  {
+   "addr": "0x50E380",
+   "name": "FUN_0050e380",
+   "sym": "?FUN_50E380@Obj_50E380@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "HouseClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "LocomotionClass": [
+  {
+   "addr": "0x5172F0",
+   "name": "FUN_005172f0",
+   "sym": "?FUN_5172F0@Obj_5172F0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "LocomotionClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "InfantryClass": [
+  {
+   "addr": "0x523350",
+   "name": "FUN_00523350",
+   "sym": "?FUN_523350@Obj_523350@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "InfantryClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "INIClass::INISection": [
+  {
+   "addr": "0x52AE00",
+   "name": "FUN_0052ae00",
+   "sym": "?FUN_52AE00@Obj_52AE00@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "INIClass::INISection",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "Base64Straw": [
+  {
+   "addr": "0x52AEA0",
+   "name": "FUN_0052aea0",
+   "sym": "?FUN_52AEA0@Obj_52AEA0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "Base64Straw",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "IPXManagerClass": [
+  {
+   "addr": "0x5430E0",
+   "name": "FUN_005430e0",
+   "sym": "?FUN_5430E0@Obj_5430E0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "IPXManagerClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "IsometricTileTypeClass": [
+  {
+   "addr": "0x54A170",
+   "name": "FUN_0054a170",
+   "sym": "?FUN_54A170@Obj_54A170@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "IsometricTileTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "SliderClass": [
+  {
+   "addr": "0x558180",
+   "name": "FUN_00558180",
+   "sym": "?FUN_558180@Obj_558180@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SliderClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MapClass": [
+  {
+   "addr": "0x588BF0",
+   "name": "FUN_00588bf0",
+   "sym": "?FUN_588BF0@Obj_588BF0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MapClass",
+     "base_offset": 0,
+     "slot": 4
+    }
+   ]
+  }
+ ],
+ "MapSeedClass": [
+  {
+   "addr": "0x5AC270",
+   "name": "FUN_005ac270",
+   "sym": "?FUN_5AC270@Obj_5AC270@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MapSeedClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerBattleTeam": [
+  {
+   "addr": "0x5C10D0",
+   "name": "FUN_005c10d0",
+   "sym": "?FUN_5C10D0@Obj_5C10D0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerBattleTeam",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MPCooperative": [
+  {
+   "addr": "0x5C4F10",
+   "name": "FUN_005c4f10",
+   "sym": "?FUN_5C4F10@Obj_5C4F10@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MPCooperative",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerObserverTeam": [
+  {
+   "addr": "0x5C94D0",
+   "name": "FUN_005c94d0",
+   "sym": "?FUN_5C94D0@Obj_5C94D0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerObserverTeam",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MSEngine": [
+  {
+   "addr": "0x5D2700",
+   "name": "FUN_005d2700",
+   "sym": "?FUN_5D2700@Obj_5D2700@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MSEngine",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MSFont": [
+  {
+   "addr": "0x5D3450",
+   "name": "FUN_005d3450",
+   "sym": "?FUN_5D3450@Obj_5D3450@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "MSFont",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "ObjectClass": [
+  {
+   "addr": "0x5F6DC0",
+   "name": "FUN_005f6dc0",
+   "sym": "?FUN_5F6DC0@Obj_5F6DC0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ObjectClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "ObjectTypeClass": [
+  {
+   "addr": "0x5F9AE0",
+   "name": "FUN_005f9ae0",
+   "sym": "?FUN_5F9AE0@Obj_5F9AE0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ObjectTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "ParticleSystemClass": [
+  {
+   "addr": "0x630230",
+   "name": "FUN_00630230",
+   "sym": "?FUN_630230@Obj_630230@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ParticleSystemClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "RadarClass::RTacticalClass": [
+  {
+   "addr": "0x658780",
+   "name": "FUN_00658780",
+   "sym": "?FUN_658780@Obj_658780@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "RadarClass::RTacticalClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RadSiteClass": [
+  {
+   "addr": "0x65BED0",
+   "name": "FUN_0065bed0",
+   "sym": "?FUN_65BED0@Obj_65BED0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "RadSiteClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "SidebarClass::StripClass::SelectClass": [
+  {
+   "addr": "0x6AC780",
+   "name": "FUN_006ac780",
+   "sym": "?FUN_6AC780@Obj_6AC780@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SidebarClass::StripClass::SelectClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "SidebarClass::SBGadgetClass": [
+  {
+   "addr": "0x6AC7A0",
+   "name": "FUN_006ac7a0",
+   "sym": "?FUN_6AC7A0@Obj_6AC7A0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SidebarClass::SBGadgetClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "SlaveManagerClass": [
+  {
+   "addr": "0x6B1390",
+   "name": "FUN_006b1390",
+   "sym": "?FUN_6B1390@Obj_6B1390@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SlaveManagerClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "SpawnManagerClass": [
+  {
+   "addr": "0x6B8140",
+   "name": "FUN_006b8140",
+   "sym": "?FUN_6B8140@Obj_6B8140@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SpawnManagerClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "SuperClass": [
+  {
+   "addr": "0x6CE220",
+   "name": "FUN_006ce220",
+   "sym": "?FUN_6CE220@Obj_6CE220@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "SuperClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TagClass": [
+  {
+   "addr": "0x6E58B0",
+   "name": "FUN_006e58b0",
+   "sym": "?FUN_6E58B0@Obj_6E58B0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TagClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TagTypeClass": [
+  {
+   "addr": "0x6E64C0",
+   "name": "FUN_006e64c0",
+   "sym": "?FUN_6E64C0@Obj_6E64C0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TagTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TeamClass": [
+  {
+   "addr": "0x6F0450",
+   "name": "FUN_006f0450",
+   "sym": "?FUN_6F0450@Obj_6F0450@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TeamClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TechnoClass": [
+  {
+   "addr": "0x7106E0",
+   "name": "FUN_007106e0",
+   "sym": "?FUN_7106E0@Obj_7106E0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TechnoClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TerrainClass": [
+  {
+   "addr": "0x71D350",
+   "name": "FUN_0071d350",
+   "sym": "?FUN_71D350@Obj_71D350@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TerrainClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TextButtonClass": [
+  {
+   "addr": "0x720210",
+   "name": "FUN_00720210",
+   "sym": "?FUN_720210@Obj_720210@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TextButtonClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "TiberiumClass": [
+  {
+   "addr": "0x723710",
+   "name": "FUN_00723710",
+   "sym": "?FUN_723710@Obj_723710@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TiberiumClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "ToolTipManager": [
+  {
+   "addr": "0x724C10",
+   "name": "FUN_00724c10",
+   "sym": "?FUN_724C10@Obj_724C10@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "ToolTipManager",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "TriggerTypeClass": [
+  {
+   "addr": "0x727CD0",
+   "name": "FUN_00727cd0",
+   "sym": "?FUN_727CD0@Obj_727CD0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TriggerTypeClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TunnelLocomotionClass": [
+  {
+   "addr": "0x72A210",
+   "name": "FUN_0072a210",
+   "sym": "?FUN_72A210@Obj_72A210@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TunnelLocomotionClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "TextLabelClass": [
+  {
+   "addr": "0x72A670",
+   "name": "FUN_0072a670",
+   "sym": "?FUN_72A670@Obj_72A670@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "TextLabelClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "UnitClass": [
+  {
+   "addr": "0x746E80",
+   "name": "FUN_00746e80",
+   "sym": "?FUN_746E80@Obj_746E80@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "UnitClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "VoxelAnimClass": [
+  {
+   "addr": "0x74AB50",
+   "name": "FUN_0074ab50",
+   "sym": "?FUN_74AB50@Obj_74AB50@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "VoxelAnimClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "VeinholeMonsterClass": [
+  {
+   "addr": "0x74F340",
+   "name": "FUN_0074f340",
+   "sym": "?FUN_74F340@Obj_74F340@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "VeinholeMonsterClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "WorldDominationTour::GameOption": [
+  {
+   "addr": "0x766A60",
+   "name": "FUN_00766a60",
+   "sym": "?FUN_766A60@Obj_766A60@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "WorldDominationTour::GameOption",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WorldDominationTour::Map": [
+  {
+   "addr": "0x769C00",
+   "name": "FUN_00769c00",
+   "sym": "?FUN_769C00@Obj_769C00@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "WorldDominationTour::Map",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WDTState": [
+  {
+   "addr": "0x76B6F0",
+   "name": "FUN_0076b6f0",
+   "sym": "?FUN_76B6F0@Obj_76B6F0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "WDTState",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WorldDominationTour::Selection": [
+  {
+   "addr": "0x76EFE0",
+   "name": "FUN_0076efe0",
+   "sym": "?FUN_76EFE0@Obj_76EFE0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "WorldDominationTour::Selection",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "IPXInterfaceClass": [
+  {
+   "addr": "0x7B1790",
+   "name": "FUN_007b1790",
+   "sym": "?FUN_7B1790@Obj_7B1790@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "IPXInterfaceClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WWMouseClass": [
+  {
+   "addr": "0x7BA3A0",
+   "name": "FUN_007ba3a0",
+   "sym": "?FUN_7BA3A0@Obj_7BA3A0@@QAEPAXI@Z",
+   "tu": "match/core/deleting_dtor_sweep.cpp",
+   "classes": [
+    {
+     "cls": "WWMouseClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "IPXConnClass": [
+  {
+   "addr": "0x0053f850",
+   "name": "FUN_0053F850",
+   "sym": "?FUN_0053F850@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "IPXConnClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "LightConvertClass": [
+  {
+   "addr": "0x00556520",
+   "name": "FUN_00556520",
+   "sym": "?FUN_00556520@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "LightConvertClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerBattle": [
+  {
+   "addr": "0x005c0fe0",
+   "name": "FUN_005C0FE0",
+   "sym": "?FUN_005C0FE0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerBattle",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "FreeForAll": [
+  {
+   "addr": "0x005c5e40",
+   "name": "FUN_005C5E40",
+   "sym": "?FUN_005C5E40@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "FreeForAll",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerManBattle": [
+  {
+   "addr": "0x005c61a0",
+   "name": "FUN_005C61A0",
+   "sym": "?FUN_005C61A0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerManBattle",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "Megawealth": [
+  {
+   "addr": "0x005c9440",
+   "name": "FUN_005C9440",
+   "sym": "?FUN_005C9440@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "Megawealth",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerSiege": [
+  {
+   "addr": "0x005cabd0",
+   "name": "FUN_005CABD0",
+   "sym": "?FUN_005CABD0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerSiege",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerSiegeDefenderTeam": [
+  {
+   "addr": "0x005caf10",
+   "name": "FUN_005CAF10",
+   "sym": "?FUN_005CAF10@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerSiegeDefenderTeam",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MultiplayerSiegeAttackerTeam": [
+  {
+   "addr": "0x005caf40",
+   "name": "FUN_005CAF40",
+   "sym": "?FUN_005CAF40@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MultiplayerSiegeAttackerTeam",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "UnholyAlliance": [
+  {
+   "addr": "0x005cb540",
+   "name": "FUN_005CB540",
+   "sym": "?FUN_005CB540@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "UnholyAlliance",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<PlayerProfile>": [
+  {
+   "addr": "0x006c8840",
+   "name": "FUN_006C8840",
+   "sym": "?FUN_006C8840@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<PlayerProfile>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::CampaignProperties>": [
+  {
+   "addr": "0x00765710",
+   "name": "FUN_00765710",
+   "sym": "?FUN_00765710@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::CampaignProperties>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::History>": [
+  {
+   "addr": "0x00765740",
+   "name": "FUN_00765740",
+   "sym": "?FUN_00765740@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::History>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::Campaign>": [
+  {
+   "addr": "0x00765790",
+   "name": "FUN_00765790",
+   "sym": "?FUN_00765790@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::Campaign>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::State>": [
+  {
+   "addr": "0x007657c0",
+   "name": "FUN_007657C0",
+   "sym": "?FUN_007657C0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::State>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::ValueGameOption<unsigned char>>": [
+  {
+   "addr": "0x00766960",
+   "name": "FUN_00766960",
+   "sym": "?FUN_00766960@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::ValueGameOption<unsigned char>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::FlagGameOption>": [
+  {
+   "addr": "0x00766990",
+   "name": "FUN_00766990",
+   "sym": "?FUN_00766990@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::FlagGameOption>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::MapSizeGameOption>": [
+  {
+   "addr": "0x007669c0",
+   "name": "FUN_007669C0",
+   "sym": "?FUN_007669C0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::MapSizeGameOption>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WorldDominationTour::MapSizeGameOption": [
+  {
+   "addr": "0x007678c0",
+   "name": "FUN_007678C0",
+   "sym": "?FUN_007678C0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "WorldDominationTour::MapSizeGameOption",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WDTState>": [
+  {
+   "addr": "0x00767c50",
+   "name": "FUN_00767C50",
+   "sym": "?FUN_00767C50@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WDTState>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "MSFrameAnim": [
+  {
+   "addr": "0x00769bd0",
+   "name": "FUN_00769BD0",
+   "sym": "?FUN_00769BD0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MSFrameAnim",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "rc_ptr<WorldDominationTour::Map>": [
+  {
+   "addr": "0x00769d90",
+   "name": "FUN_00769D90",
+   "sym": "?FUN_00769D90@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "rc_ptr<WorldDominationTour::Map>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WDTTerritory": [
+  {
+   "addr": "0x0076b6c0",
+   "name": "FUN_0076B6C0",
+   "sym": "?FUN_0076B6C0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "WDTTerritory",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "WorldDominationTour::Voices::Anim": [
+  {
+   "addr": "0x00771a30",
+   "name": "FUN_00771A30",
+   "sym": "?FUN_00771A30@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "WorldDominationTour::Voices::Anim",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "CCToolTip": [
+  {
+   "addr": "0x007784a0",
+   "name": "FUN_007784A0",
+   "sym": "?FUN_007784A0@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "CCToolTip",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "SimpleWonlineDialogControl": [
+  {
+   "addr": "0x007a2e70",
+   "name": "FUN_007A2E70",
+   "sym": "?FUN_007A2E70@@YIPAUObj_0053F850@@PAU1@HD@Z",
+   "tu": "match/core/derived_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "SimpleWonlineDialogControl",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "LCWPipe": [
+  {
+   "addr": "0x00552390",
+   "name": "DualBuf::scalar deleting dtor",
+   "sym": "?FUN_00552390@@YIPAXPAUDualBuf@@HD@Z",
+   "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "LCWPipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "LCWStraw": [
+  {
+   "addr": "0x005525F0",
+   "name": "DualBuf::scalar deleting dtor",
+   "sym": "?FUN_005525F0@@YIPAXPAUDualBuf@@HD@Z",
+   "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "LCWStraw",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "LZOPipe": [
+  {
+   "addr": "0x0055C6D0",
+   "name": "DualBuf::scalar deleting dtor",
+   "sym": "?FUN_0055C6D0@@YIPAXPAUDualBuf@@HD@Z",
+   "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "LZOPipe",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "LZOStraw": [
+  {
+   "addr": "0x0055C990",
+   "name": "DualBuf::scalar deleting dtor",
+   "sym": "?FUN_0055C990@@YIPAXPAUDualBuf@@HD@Z",
+   "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "LZOStraw",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DSurface": [
+  {
+   "addr": "0x4BAD60",
+   "name": "FUN_004BAD60",
+   "sym": "?FUN_004BAD60@@YIHPAULeafObj_0x10@@@Z",
+   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+   "classes": [
+    {
+     "cls": "DSurface",
+     "base_offset": 0,
+     "slot": 28
+    }
+   ]
+  }
+ ],
+ "FlyLocomotionClass": [
+  {
+   "addr": "0x4D03A0",
+   "name": "FUN_004D03A0",
+   "sym": "?FUN_004D03A0@@YIPAUMultiVtableObject@@PAU1@HD@Z",
+   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "FlyLocomotionClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "HoverLocomotionClass": [
+  {
+   "addr": "0x5172C0",
+   "name": "FUN_005172C0",
+   "sym": "?FUN_005172C0@@YIPAUMultiVtableObject@@PAU1@HD@Z",
+   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "HoverLocomotionClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "MechLocomotionClass": [
+  {
+   "addr": "0x5B1B50",
+   "name": "FUN_005B1B50",
+   "sym": "?FUN_005B1B50@@YIPAUMultiVtableObject@@PAU1@HD@Z",
+   "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "MechLocomotionClass",
+     "base_offset": 0,
+     "slot": 8
+    }
+   ]
+  }
+ ],
+ "AircraftTypeClass": [
+  {
+   "addr": "0x41CB20",
+   "name": "FUN_0041CB20",
+   "sym": "?FUN_0041CB20@Obj_0041CB20@@QAEPADH@Z",
+   "tu": "match/core/small_misc15_methods.cpp",
+   "classes": [
+    {
+     "cls": "AircraftTypeClass",
+     "base_offset": 0,
+     "slot": 35
+    }
+   ]
+  }
+ ],
+ "BlowPipe": [
+  {
+   "addr": "0x438060",
+   "name": "FUN_00438060",
+   "sym": "?FUN_00438060@Obj_00438060@@QAEHXZ",
+   "tu": "match/core/small_misc30_methods.cpp",
+   "classes": [
+    {
+     "cls": "BlowPipe",
+     "base_offset": 0,
+     "slot": 1
+    }
+   ]
+  }
+ ],
+ "CCFileClass": [
+  {
+   "addr": "0x4019a0",
+   "name": "BufferHolder_004019A0::FUN_004019A0",
+   "sym": "?FUN_004019A0@BufferHolder_004019A0@@QAEPAXD@Z",
+   "tu": "match/core/small_misc37_methods.cpp",
+   "classes": [
+    {
+     "cls": "CCFileClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "GenericNode": [
+  {
+   "addr": "0x40e390",
+   "name": "Node_0040E390::FUN_0040E390",
+   "sym": "?FUN_0040E390@Node_0040E390@@QAEPAXD@Z",
+   "tu": "match/core/small_misc42_methods.cpp",
+   "classes": [
+    {
+     "cls": "GenericNode",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BufferIOFileClass": [
+  {
+   "addr": "0x432610",
+   "name": "Obj_00432610::FUN_00432610",
+   "sym": "?FUN_00432610@Obj_00432610@@QAEPAXD@Z",
+   "tu": "match/core/small_misc49_methods.cpp",
+   "classes": [
+    {
+     "cls": "BufferIOFileClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "BaseClass": [
+  {
+   "addr": "0x42f180",
+   "name": "Table_0042F180::FUN_0042F180",
+   "sym": "?FUN_0042F180@Table_0042F180@@QAEXPAUSink_0042F180@@@Z",
+   "tu": "match/core/small_misc55_methods.cpp",
+   "classes": [
+    {
+     "cls": "BaseClass",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "BuildingLightClass": [
+  {
+   "addr": "0x437030",
+   "name": "FUN_00437030",
+   "sym": "?FUN_00437030@Obj_00437030@@QAE_NXZ",
+   "tu": "match/core/small_misc6_methods.cpp",
+   "classes": [
+    {
+     "cls": "BuildingLightClass",
+     "base_offset": 0,
+     "slot": 53
+    }
+   ]
+  }
+ ],
+ "CDFileClass": [
+  {
+   "addr": "0x401950",
+   "name": "FUN_00401950",
+   "sym": "?FUN_00401950@Obj_00401950@@QAEPAXI@Z",
+   "tu": "match/core/small_misc8_methods.cpp",
+   "classes": [
+    {
+     "cls": "CDFileClass",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "RadarClass": [
+  {
+   "addr": "0x658770",
+   "name": "FUN_00658770",
+   "sym": "?FUN_00658770@@YIXPAXH0@Z",
+   "tu": "match/core/stdcall_forward_sweep.cpp",
+   "classes": [
+    {
+     "cls": "RadarClass",
+     "base_offset": 0,
+     "slot": 33
+    }
+   ]
+  }
+ ],
+ "VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>": [
+  {
+   "addr": "0x4E0D80",
+   "name": "FUN_004E0D80",
+   "sym": "?FUN_004E0D80@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>": [
+  {
+   "addr": "0x4E0E20",
+   "name": "FUN_004E0E20",
+   "sym": "?FUN_004E0E20@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>": [
+  {
+   "addr": "0x510400",
+   "name": "FUN_00510400",
+   "sym": "?FUN_00510400@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>": [
+  {
+   "addr": "0x5104A0",
+   "name": "FUN_005104A0",
+   "sym": "?FUN_005104A0@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>": [
+  {
+   "addr": "0x6F2680",
+   "name": "FUN_006F2680",
+   "sym": "?FUN_006F2680@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>": [
+  {
+   "addr": "0x6F2720",
+   "name": "FUN_006F2720",
+   "sym": "?FUN_006F2720@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<WaypointClass>": [
+  {
+   "addr": "0x763FF0",
+   "name": "FUN_00763FF0",
+   "sym": "?FUN_00763FF0@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<WaypointClass>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "VectorClass<WaypointClass>": [
+  {
+   "addr": "0x764050",
+   "name": "FUN_00764050",
+   "sym": "?FUN_00764050@@YIPAUObjVector_004E0D80@@PAU1@HD@Z",
+   "tu": "match/core/vector_object_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "VectorClass<WaypointClass>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<rc_ptr<WorldDominationTour::Conflict>>": [
+  {
+   "addr": "0x765C20",
+   "name": "FUN_00765C20",
+   "sym": "?FUN_00765C20@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::Conflict>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>": [
+  {
+   "addr": "0x767080",
+   "name": "FUN_00767080",
+   "sym": "?FUN_00767080@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>": [
+  {
+   "addr": "0x76A680",
+   "name": "FUN_0076A680",
+   "sym": "?FUN_0076A680@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<rc_ptr<WDTTerritory>>": [
+  {
+   "addr": "0x76BC10",
+   "name": "FUN_0076BC10",
+   "sym": "?FUN_0076BC10@@YIPAUPolyVector_00765B60@@PAU1@HD@Z",
+   "tu": "match/core/vector_polymorphic_sdd_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<rc_ptr<WDTTerritory>>",
+     "base_offset": 0,
+     "slot": 0
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<DynamicVectorClass<char*>*>": [
+  {
+   "addr": "0x49ED30",
+   "name": "VectorResizeFamily::FUN_49ED30",
+   "sym": "?FUN_49ED30@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<DynamicVectorClass<char*>*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<IConnectionPoint*>": [
+  {
+   "addr": "0x4A13C0",
+   "name": "VectorResizeFamily::FUN_4A13C0",
+   "sym": "?FUN_4A13C0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<IConnectionPoint*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<TechnoTypeClass*>": [
+  {
+   "addr": "0x4CAA70",
+   "name": "VectorResizeFamily::FUN_4CAA70",
+   "sym": "?FUN_4CAA70@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TechnoTypeClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<AbstractClass*>": [
+  {
+   "addr": "0x4E04A0",
+   "name": "VectorResizeFamily::FUN_4E04A0",
+   "sym": "?FUN_4E04A0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<AbstractClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<BuildingClass*>": [
+  {
+   "addr": "0x4E95E0",
+   "name": "VectorResizeFamily::FUN_4E95E0",
+   "sym": "?FUN_4E95E0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<BuildingClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<SuperClass*>": [
+  {
+   "addr": "0x4E9840",
+   "name": "VectorResizeFamily::FUN_4E9840",
+   "sym": "?FUN_4E9840@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<SuperClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<TeamClass*>": [
+  {
+   "addr": "0x4EA1C0",
+   "name": "VectorResizeFamily::FUN_4EA1C0",
+   "sym": "?FUN_4EA1C0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<TeamClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<HouseClass*>": [
+  {
+   "addr": "0x4EBD60",
+   "name": "VectorResizeFamily::FUN_4EBD60",
+   "sym": "?FUN_4EBD60@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<HouseClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<UnitTypeClass*>": [
+  {
+   "addr": "0x4EDEA0",
+   "name": "VectorResizeFamily::FUN_4EDEA0",
+   "sym": "?FUN_4EDEA0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<UnitTypeClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<InfantryTypeClass*>": [
+  {
+   "addr": "0x4EE360",
+   "name": "VectorResizeFamily::FUN_4EE360",
+   "sym": "?FUN_4EE360@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<InfantryTypeClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<GraphicMenuItem*>": [
+  {
+   "addr": "0x4F2A60",
+   "name": "VectorResizeFamily::FUN_4F2A60",
+   "sym": "?FUN_4F2A60@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<GraphicMenuItem*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<MapRegionClass*>": [
+  {
+   "addr": "0x5AC820",
+   "name": "VectorResizeFamily::FUN_5AC820",
+   "sym": "?FUN_5AC820@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MapRegionClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<CellClass*>": [
+  {
+   "addr": "0x5AD010",
+   "name": "VectorResizeFamily::FUN_5AD010",
+   "sym": "?FUN_5AD010@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<CellClass*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<NodeNameType*>": [
+  {
+   "addr": "0x5C5510",
+   "name": "VectorResizeFamily::FUN_5C5510",
+   "sym": "?FUN_5C5510@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<NodeNameType*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<MSTextEntry*>": [
+  {
+   "addr": "0x5D0C60",
+   "name": "VectorResizeFamily::FUN_5D0C60",
+   "sym": "?FUN_5D0C60@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MSTextEntry*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<MapSelection*>": [
+  {
+   "addr": "0x5D0EC0",
+   "name": "VectorResizeFamily::FUN_5D0EC0",
+   "sym": "?FUN_5D0EC0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MapSelection*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<MultiplayerGameMode*>": [
+  {
+   "addr": "0x5D8730",
+   "name": "VectorResizeFamily::FUN_5D8730",
+   "sym": "?FUN_5D8730@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<MultiplayerGameMode*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<ColorScheme*>": [
+  {
+   "addr": "0x627F90",
+   "name": "VectorResizeFamily::FUN_627F90",
+   "sym": "?FUN_627F90@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<ColorScheme*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "TypeList<DiskID>": [
+  {
+   "addr": "0x69C890",
+   "name": "VectorResizeFamily::FUN_69C890",
+   "sym": "?FUN_69C890@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "TypeList<DiskID>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<SlaveManagerClass::SlaveControl*>": [
+  {
+   "addr": "0x6B15F0",
+   "name": "VectorResizeFamily::FUN_6B15F0",
+   "sym": "?FUN_6B15F0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<SlaveManagerClass::SlaveControl*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ],
+ "DynamicVectorClass<SpawnManagerClass::SpawnControl*>": [
+  {
+   "addr": "0x6B8400",
+   "name": "VectorResizeFamily::FUN_6B8400",
+   "sym": "?FUN_6B8400@VectorResizeFamily@@QAE_NHPAPAX@Z",
+   "tu": "match/core/vector_resize_family_methods.cpp",
+   "classes": [
+    {
+     "cls": "DynamicVectorClass<SpawnManagerClass::SpawnControl*>",
+     "base_offset": 0,
+     "slot": 2
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,38 @@
+# P5 CI gate — layout/compile regression check under the period VC6 toolchain.
+#
+# What CI can verify on its own: that every matching TU and every P2 layout header
+# (with its GG_STATIC_ASSERT offsetof/sizeof checks) compiles clean under VC6 via
+# Wine — i.e. the class-layout spine and all matched source still build. The full
+# per-function instruction match (scripts/vc6/verify_all.py) additionally needs the
+# user's own retail gamemd.exe + the Ghidra CLI, which are never committed, so it
+# runs only in a developer/self-hosted environment with those present.
+#
+# The MS VC6 toolchain (itsmattkc/MSVC600) is MS-proprietary and is fetched at CI
+# time, never committed (see scripts/vc6/fetch_toolchain.sh + .gitignore).
+name: match-gate
+on:
+  push:
+  pull_request:
+
+jobs:
+  layout-compile-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Wine (WoW64) + 7zip + Python
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends wine wine64 p7zip-full python3
+          wine --version
+
+      - name: Fetch the period MSVC6 toolchain (never committed)
+        run: bash scripts/vc6/fetch_toolchain.sh
+
+      - name: Binary-free layout / compile regression gate
+        run: bash scripts/vc6/compile_all.sh
+
+      # Full per-function match-% gate (developer/self-hosted only — needs the
+      # user's retail gamemd.exe and the Ghidra CLI, which are not in CI):
+      #   python3 scripts/vc6/verify_all.py --md docs/match_dashboard.md

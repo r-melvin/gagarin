@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Offsets derived from the user's retail gamemd.exe v1.001 via the local
+//   Ghidra CLI (member-access disassembly @0x42F380 and @0x4F6E70),
+//   cross-checked against YRpp HouseClass.h (consult-only, no LICENSE; every
+//   offset reconfirmed below against the user's binary).
+//
+// HouseClass economy/base helpers:
+//   BaseClass::FailedToPlaceNode  (operates on a BaseNodeClass* argument)
+//   HouseClass::GetStoragePercentage
+#ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_STORAGE_H
+#define GG_MATCH_ECONOMY_HOUSE_CLASS_STORAGE_H
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+#include "storage_class.h"   // StorageClass (0x10), GetTotalAmount @0x6C9650
+
+// ---------------------------------------------------------------------------
+// BaseNodeClass  — one queued base-build entry.
+// Confirmed from 0x42F380: `MOV ECX,[EAX+0xc]; INC ECX; MOV [EAX+0xc],ECX`
+// increments the dword at +0xC. YRpp names this member `Attempts`
+// (int BuildingTypeIndex@0; CellStruct MapCoords@4; bool Placed@8; int
+//  Attempts@0xC). Only the touched member is modelled (full layout is P2).
+// ---------------------------------------------------------------------------
+struct BaseNodeClass
+{
+    char _pad0[0xC];     // BuildingTypeIndex, MapCoords, Placed (+0x00..+0x0B)
+    int  Attempts;       // +0x0C
+};
+
+GG_STATIC_ASSERT(offsetof(BaseNodeClass, Attempts) == 0xC);
+
+// ---------------------------------------------------------------------------
+// BaseClass — holds a player's AI base. FailedToPlaceNode is a __thiscall
+// member whose body ignores `this` and works solely through its Node argument
+// (RET 0x4 cleans the single stack arg). No members of BaseClass are touched,
+// so it is modelled empty.
+// ---------------------------------------------------------------------------
+struct BaseClass
+{
+    int FailedToPlaceNode(BaseNodeClass* Node);   // GAMEMD 0x42F380 __thiscall
+};
+
+// ---------------------------------------------------------------------------
+// HouseClass (partial) — only the members GetStoragePercentage touches.
+// From 0x4F6E70: `LEA EDI,[ESI+0x2fc]` => &OwnedTiberium (StorageClass, 0x10),
+// `FIDIV dword[ESI+0x310]` => int TotalStorage. Balance (int@0x30C) sits
+// between them per YRpp; modelled for spacing. Base padded to 0x2FC (P2).
+// ---------------------------------------------------------------------------
+struct HouseClass
+{
+    char         _pad0[0x2FC];   // AbstractClass + HouseClass head (+0x00..)
+    StorageClass OwnedTiberium;  // +0x2FC
+    int          Balance;        // +0x30C
+    int          TotalStorage;   // +0x310
+
+    double GetStoragePercentage();   // GAMEMD 0x4F6E70 __thiscall
+};
+
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedTiberium) == 0x2FC);
+GG_STATIC_ASSERT(offsetof(HouseClass, TotalStorage) == 0x310);
+
+#endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_STORAGE_H

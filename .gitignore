@@ -1,0 +1,68 @@
+# gagarin — matching-decompilation repo. Never commit EA bytes, the MS VC6
+# toolchain, the retail binary, any PDB, or build output (AGENTS.md Legal Scope).
+
+# --- Period MS VC6 toolchain (itsmattkc/MSVC600) + wine prefix ---
+# MS-proprietary; fetched at build/CI time via scripts/vc6/fetch_toolchain.sh.
+toolchain/
+
+# --- Build output / match artifacts ---
+build-vc6/
+*.obj
+*.exe
+*.pdb
+*.asm
+*.cod
+
+# --- reccmp per-user config (points at the user's own retail gamemd.exe) ---
+reccmp-user.yml
+reccmp-build.yml
+
+# --- Consult-only external clones (referenced, not vendored) ---
+reference/yrpp/
+reference/phobos-docs/
+# electronicarts/CnC_Red_Alert (GPLv3) — RA1 algorithm-shape reference
+reference/ea_ra1/
+# Vinifera-Developers/TSpp (GPLv3) — TS class map / original Westwood names
+reference/tspp/
+
+# --- Ghidra-derived developer-only RE state (never ships publicly) ---
+# All of state/ is developer-only RE seeds (by_addr bodies, addr/method maps,
+# the gamemd.c/.h monolith, manifests) — kept local, never committed.
+state/
+
+# --- Python / IDE / OS noise ---
+__pycache__/
+*.pyc
+.clangd
+compile_commands.json
+.cache/
+.DS_Store
+
+# --- Per-developer agent tooling state, not part of the project ---
+.claude/
+.serena/
+.remember/
+memory/
+agents/
+logs/
+
+# --- Working notes and RE artefacts: NOT for the public repository ---
+# docs/ holds the match manifest, the methodology notes, the residual census,
+# the annotated target queues, and docs/decomp_spec/** — the last of which was
+# copied from a private reference reimplementation and names it throughout.
+# None of it is needed to build or verify the match, and it is the author's
+# working record rather than a publishable artefact. Kept on disk, untracked.
+#
+# NOTE: this untracks docs/match_manifest.json, which is the project's source of
+# truth for what is matched and is read by scripts/vc6/verify_all.py,
+# scripts/vc6/check_duplicates.py and scripts/orchestration/integrate.py. Those
+# all still work from the on-disk copy, but the manifest no longer has version
+# history, so a silent corruption of it is no longer recoverable via git and a
+# regression is no longer bisectable. Back it up separately.
+docs/
+
+# --- Data derived from the private reference reimplementation ---
+# Address-to-behaviour corpora mined from a private project's history. The facts
+# they point at are confirmed against the binary before use, but the corpora
+# themselves carry that project's names and paths and are not ours to publish.
+scripts/data/reference_*.json
