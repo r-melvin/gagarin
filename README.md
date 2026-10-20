@@ -23,10 +23,10 @@ replacement, and it ships no game content.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,246** | **16.4%** of 19,753 |
-| Code matched | 231 KB | 6.2% of 3,708 KB in `.text` |
+| Functions matched at 100% | **3,260** | **16.5%** of 19,753 |
+| Code matched | 232 KB | 6.3% of 3,708 KB in `.text` |
 | Functions in progress (partial match) | 161 | 0.8% |
-| Translation units under `match/` | 814 | |
+| Translation units under `match/` | 819 | |
 | Functions in the binary (Ghidra analysis, includes CRT/third-party) | 19,753 | |
 
 Matching started with the small functions, so the share of code bytes trails the

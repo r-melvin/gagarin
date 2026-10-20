@@ -30661,5 +30661,131 @@
   "name": "FUN_004B4C20",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588DE0",
+  "sym": "?Index36@BufferAccessors_00588DE0@@QBEIPBX@Z",
+  "len": "0x24",
+  "name": "Index36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588EF0",
+  "sym": "?FUN_00588EF0@BufferAccessors_00588DE0@@QBEIH@Z",
+  "len": "0xd",
+  "name": "FUN_00588EF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588F30",
+  "sym": "?Index4@BufferAccessors_00588DE0@@QBEIPBX@Z",
+  "len": "0x1b",
+  "name": "Index4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588F50",
+  "sym": "?FUN_00588F50@BufferAccessors_00588DE0@@QBEIH@Z",
+  "len": "0xd",
+  "name": "FUN_00588F50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588F90",
+  "sym": "?Index8@BufferAccessors_00588DE0@@QBEIPBX@Z",
+  "len": "0x1b",
+  "name": "Index8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x588FB0",
+  "sym": "?GetPair@BufferAccessors_00588DE0@@QBE?AUBufferPair_00588FB0@@H@Z",
+  "len": "0x1c",
+  "name": "GetPair",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x589000",
+  "sym": "?Index12@BufferAccessors_00588DE0@@QBEIPBX@Z",
+  "len": "0x24",
+  "name": "Index12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/buffer_accessors_00588de0.cpp",
+  "addr": "0x589030",
+  "sym": "?GetTriple@BufferAccessors_00588DE0@@QBE?AUBufferTriple_00589030@@H@Z",
+  "len": "0x25",
+  "name": "GetTriple",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_persist_getter_004b4c30.cpp",
+  "addr": "0x4B4C30",
+  "sym": "?FUN_004B4C30@@YGJPAULocomotionClass@@@Z",
+  "len": "0x11",
+  "name": "DriveLocomotion::IsDirty",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_refcount_methods_004b4cb0.cpp",
+  "addr": "0x004B4CB0",
+  "sym": "?FUN_004B4CB0@@YGJPAULocomotionClass@@@Z",
+  "len": "0xd",
+  "name": "FUN_004B4CB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_refcount_methods_004b4cb0.cpp",
+  "addr": "0x004B4CC0",
+  "sym": "?FUN_004B4CC0@@YGJPAULocomotionClass@@@Z",
+  "len": "0xd",
+  "name": "FUN_004B4CC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_scalar_dtor_00434a40.cpp",
+  "addr": "0x434A40",
+  "sym": "?ScalarDeletingDestructor@BitFontScalarDtorView_00434A40@@QAEPAXI@Z",
+  "len": "0x62",
+  "name": "BitFont::ScalarDeletingDestructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_piggyback_size_004b4cd0.cpp",
+  "addr": "0x4B4CD0",
+  "sym": "?FUN_004B4CD0@@YG_NPAUDrivePiggybackInterfaceView_004B4CD0@@@Z",
+  "len": "0x11",
+  "name": "DriveLocomotion::IsPiggybacking",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_piggyback_size_004b4cd0.cpp",
+  "addr": "0x4B4CF0",
+  "sym": "?Size@DriveLocomotionClassSizeMethodView_004B4CF0@@QAEHXZ",
+  "len": "0x6",
+  "name": "DriveLocomotion::Size",
+  "status": "matched",
+  "pct": 100
  }
 ]
