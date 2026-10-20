@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Provenance: original
+"""Generated functions must participate in ownership and duplicate checks."""
+import contextlib
+import io
+import json
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+import check_duplicates
+
+
+class SyntheticOwnershipTests(unittest.TestCase):
+    def run_gate(self, duplicate):
+        with tempfile.TemporaryDirectory() as work:
+            root = Path(work)
+            source = root / 'match/test/generated.cpp'
+            source.parent.mkdir(parents=True)
+            source.write_text('// SYNTHETIC: GAMEMD 0x401000\n')
+            if duplicate:
+                (source.parent / 'standin.cpp').write_text(
+                    '// FUNCTION: GAMEMD 0x401000\n')
+            manifest = root / 'scripts/data/match_manifest.json'
+            manifest.parent.mkdir(parents=True)
+            manifest.write_text(json.dumps([
+                {'addr': '0x401000', 'tu': 'match/test/generated.cpp'}]))
+            output = io.StringIO()
+            with patch.object(check_duplicates, 'ROOT', str(root)), \
+                    contextlib.redirect_stdout(output), \
+                    self.assertRaises(SystemExit) as status:
+                check_duplicates.main()
+            return status.exception.code, output.getvalue()
+
+    def test_generated_function_can_own_manifest_row(self):
+        code, output = self.run_gate(False)
+        self.assertEqual(code, 0, output)
+
+    def test_generated_function_colliding_with_standin_is_rejected(self):
+        code, output = self.run_gate(True)
+        self.assertEqual(code, 1, output)
+        self.assertIn('DUPLICATE', output)
+
+
+if __name__ == '__main__':
+    unittest.main()

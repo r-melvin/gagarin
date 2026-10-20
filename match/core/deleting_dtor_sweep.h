@@ -60,7 +60,6 @@ void __fastcall FUN_00631C80(void* self);   // GAMEMD 0x631C80
 void __fastcall FUN_006406F0(void* self);   // GAMEMD 0x6406F0
 void __fastcall FUN_00652C00(void* self);   // GAMEMD 0x652C00
 void __fastcall FUN_0065B2F0(void* self);   // GAMEMD 0x65B2F0
-void __fastcall FUN_0069DDC0(void* self);   // GAMEMD 0x69DDC0
 void __fastcall FUN_006AF4A0(void* self);   // GAMEMD 0x6AF4A0
 void __fastcall FUN_006B1D00(void* self);   // GAMEMD 0x6B1D00
 void __fastcall FUN_006B7010(void* self);   // GAMEMD 0x6B7010
@@ -106,7 +105,6 @@ struct Obj_4AEC80 { void* FUN_4AEC80(unsigned int flags); };  // FUNCTION: GAMEM
 // @0x7E81A0 -> type descriptor 0x820280 -> name `.?AVEditClass@@`. See
 // docs/naming_proposals.md #5.
 struct EditClass { void* ScalarDeletingDestructor(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57D0
-struct Obj_4B57F0 { void* FUN_4B57F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57F0
 struct Obj_4B5810 { void* FUN_4B5810(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B5810
 struct Obj_4D2910 { void* FUN_4D2910(unsigned int flags); };  // FUNCTION: GAMEMD 0x4D2910
 // CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from

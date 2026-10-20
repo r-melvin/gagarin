@@ -10,7 +10,7 @@
 // VTABLE: GAMEMD 0x7E8118
 struct ToggleClass : ControlClass
 {
-    virtual ~ToggleClass();
+    // The inherited virtual destructor is implicit; retail calls Gadget destruction.
     virtual int Action(unsigned flags, unsigned* key, int modifier); // slot 31, 0x723EC0
 
     ToggleClass(int id, int x, int y, int width, int height);

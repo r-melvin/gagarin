@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// Flag bisection: /GX adds exception-unwind code absent from the complete
+// 0x69DDC0 destructor. Omitting it reproduces that body; all other methods
+// in this TU are reverified with this same flag set.
 //   Definitions are ordered by their retail addresses. Layouts, call sites,
 //   globals and callee conventions are confirmed by the user's retail
 //   gamemd.exe v1.001; YRpp is a naming reference only.
@@ -14,12 +18,29 @@
 // FUNCTION: GAMEMD 0x6D09C0 ShapeButtonClass::SetToolTip (__fastcall)
 // LIBRARY: GAMEMD 0x7C8B3D GameDelete
 
+// SYNTHETIC: GAMEMD 0x4B57F0
+// ShapeButtonClass::`scalar deleting destructor'
+
 #include "shape_button_class.h"
 #include "shape_button_class_support.h"
 #include <string.h>  // strcmp (intrinsic under /O2)
 
 // Retail caller at 0x69DE82 uses push arg; call; add esp,4.
 void __cdecl GameDelete(void* block);
+
+// FUNCTION: GAMEMD 0x0069DDC0
+// Complete raw span is 0x39 bytes, ending at RET 0x69DDF8. Ghidra's
+// function body omits the cleanup after GameDelete; retain that full tail.
+ShapeButtonClass::~ShapeButtonClass()
+{
+    if (IsShapeLoaded && ShapeData != 0) {
+        GameDelete(ShapeData);
+        ShapeData = 0;
+        IsShapeLoaded = false;
+        Width = 0;
+        Height = 0;
+    }
+}
 
 // FUNCTION: GAMEMD 0x69DE70
 void ShapeButtonClass::ClearShape()

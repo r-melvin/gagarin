@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// Flag bisection: /GX adds exception-unwind code absent from constructor
+// 0x724000. This flag set reproduces its complete 0xA7-byte body; all other
+// methods in this TU are verified under the same flags.
 // Retail gamemd.exe v1.001 instructions and RTTI establish these methods,
 // fields and virtual slots. Names were cross-checked with consult-only YRpp.
 // Process references the retail source-path string D:\ra2mdpost\ToolTip.cpp.
@@ -13,6 +17,19 @@ extern "C" __declspec(dllimport) int __stdcall KillTimer(void* hWnd,
 // Stripped debug logger at 0x4068E0 (cdecl, variadic; retail body is a bare RET).
 extern "C" void __cdecl ToolTipManager_DebugPrint(const char* format, ...);
 
+
+// FUNCTION: GAMEMD 0x724000
+ToolTipManager::ToolTipManager(void* window)
+ : CurrentToolTip(0), hWnd(window), IsActive(false), ToolTipDelay(1000), unknown_230(10000)
+{
+    ToolTips.Clear();
+    gg_free(Table.Items);
+    Table.Items = 0;
+    Table.Count = 0;
+    Table.unknown_08 = 0;
+    Table.IsSorted = 0;
+    Table.Cached = 0;
+}
 
 // FUNCTION: GAMEMD 0x7241A0  (__thiscall)
 void ToolTipManager::SetState(bool bState)
@@ -73,6 +90,19 @@ void ToolTipManager::Remove(unsigned int key)
         gg_free(data);
 }
 
+// FUNCTION: GAMEMD 0x724AA0
+bool ToolTipManager::Update(ToolTipManagerData& from)
+{
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x724AB0
+void ToolTipManager::MarkToRedraw(ToolTipManagerData& from)
+{
+    ClearDimension(CurrentToolTipData);
+    CurrentToolTip = 0;
+}
+
 // FUNCTION: GAMEMD 0x724AD0
 //
 // Resolve the current tooltip's text and position it. The text comes from the
@@ -110,6 +140,38 @@ bool ToolTipManager::Process()
         }
     }
     return this->CurrentToolTip != 0;
+}
+
+// FUNCTION: GAMEMD 0x724B80
+void ToolTipManager::Draw(bool onSidebar)
+{
+    if (onSidebar == true) {
+        Process();
+    }
+    if (CurrentToolTip != 0) {
+        DrawText(CurrentToolTipData);
+    }
+}
+
+// FUNCTION: GAMEMD 0x724BB0
+void ToolTipManager::DrawText(ToolTipManagerData& from)
+{
+    // STRING: GAMEMD 0x8449E8
+    ToolTipManager_DebugPrint("ToolTip: %s\n", from.HelpText);
+}
+
+// FUNCTION: GAMEMD 0x724BD0
+wchar_t* ToolTipManager::GetToolTipText(unsigned int id)
+{
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x724BE0
+void ToolTipManager::FUN_00724BE0()
+{
+    if (CurrentToolTip != 0) {
+        MarkToRedraw(CurrentToolTipData);
+    }
 }
 
 // FUNCTION: GAMEMD 0x724C00  ToolTipManager::IsToolTipShowing (__thiscall)

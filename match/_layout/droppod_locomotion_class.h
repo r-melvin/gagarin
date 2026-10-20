@@ -28,6 +28,50 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
+struct GuidWords
+{
+    unsigned long unknown_00;
+    unsigned long unknown_04;
+    unsigned long unknown_08;
+    unsigned long unknown_0C;
+};
+GG_STATIC_ASSERT(offsetof(GuidWords, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(GuidWords, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(GuidWords, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(GuidWords, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(sizeof(GuidWords) == 0x10);
+
+// GLOBAL: GAMEMD 0x007E9A70 — first dword of the DropPod GetClassID value.
+extern unsigned long DAT_007E9A70;
+// GLOBAL: GAMEMD 0x007E9A74 — second dword of the value.
+extern unsigned long DAT_007E9A74;
+// GLOBAL: GAMEMD 0x007E9A78 — third dword of the value.
+extern unsigned long DAT_007E9A78;
+// GLOBAL: GAMEMD 0x007E9A7C — fourth dword of the value.
+extern unsigned long DAT_007E9A7C;
+
+struct IStream_0055AAC0;
+
+// VTABLE: GAMEMD 0x007E8344 — DropPod IPersistStream view. The raw entries
+// at +0x0C and +0x14 target 0x004B6200 (GetClassID) and 0x004B6240 (Load).
+// COM stdcall calls pass the interface pointer on the stack.
+struct DropPodPersistVtable
+{
+    void* unknown_00;
+    void* unknown_04;
+    void* unknown_08;
+    long (__stdcall* GetClassID)(void*, GuidWords*);
+    void* unknown_10;
+    long (__stdcall* Load)(void*, IStream_0055AAC0*);
+};
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, GetClassID) == 0x0C);
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, Load) == 0x14);
+GG_STATIC_ASSERT(sizeof(DropPodPersistVtable) == 0x18);
+
 struct DropPodLocomotionClass : LocomotionPiggybackBase
 {
     char        unknown_1C;       // +0x1C ctor `MOV BYTE PTR [ESI+0x1c],AL`
@@ -51,6 +95,13 @@ struct DropPodLocomotionClass : LocomotionPiggybackBase
                                   //       0x004B5B00 loads it @0x004B5B17 to
                                   //       Release it. Last member;
                                   //       0x2C+4 = sizeof.
+
+    // FUNCTION: GAMEMD 0x004B6200 — DropPod IPersist::GetClassID slot 3.
+    // This layout view stores explicit vptr members, so the declaration is a
+    // nonvirtual member while the external slot mapping remains asserted above.
+    long __stdcall GetClassID(GuidWords* outGuid);
+    // FUNCTION: GAMEMD 0x004B6240 — DropPod IPersistStream slot 5.
+    long __stdcall Load(IStream_0055AAC0* stream);
 };
 
 GG_STATIC_ASSERT(offsetof(DropPodLocomotionClass, unknown_1C)  == 0x1C);

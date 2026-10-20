@@ -4842,11 +4842,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x4B57F0",
-  "sym": "?FUN_4B57F0@Obj_4B57F0@@QAEPAXI@Z",
+  "sym": "??_GShapeButtonClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_004b57f0",
+  "name": "ShapeButtonClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -31757,6 +31757,96 @@
   "sym": "?Action@ControlClass@@UAEHIPAIH@Z",
   "len": "0x55",
   "name": "ControlClass::Action",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724aa0",
+  "sym": "?Update@ToolTipManager@@UAE_NAAUToolTipManagerData@@@Z",
+  "len": "0x5",
+  "name": "ToolTipManager::Update",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724ab0",
+  "sym": "?MarkToRedraw@ToolTipManager@@UAEXAAUToolTipManagerData@@@Z",
+  "len": "0x14",
+  "name": "ToolTipManager::MarkToRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724b80",
+  "sym": "?Draw@ToolTipManager@@UAEX_N@Z",
+  "len": "0x26",
+  "name": "ToolTipManager::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724bb0",
+  "sym": "?DrawText@ToolTipManager@@UAEXAAUToolTipManagerData@@@Z",
+  "len": "0x18",
+  "name": "ToolTipManager::DrawText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724bd0",
+  "sym": "?GetToolTipText@ToolTipManager@@UAEPAGI@Z",
+  "len": "0x5",
+  "name": "ToolTipManager::GetToolTipText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724be0",
+  "sym": "?FUN_00724BE0@ToolTipManager@@QAEXXZ",
+  "len": "0x11",
+  "name": "ToolTipManager::FUN_00724BE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/shape_button_class.cpp",
+  "addr": "0x69ddc0",
+  "sym": "??1ShapeButtonClass@@UAE@XZ",
+  "len": "0x39",
+  "name": "ShapeButtonClass::~ShapeButtonClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
+  "addr": "0x4b6200",
+  "sym": "?GetClassID@DropPodLocomotionClass@@QAGJPAUGuidWords@@@Z",
+  "len": "0x38",
+  "name": "DropPodLocomotionClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
+  "addr": "0x4b6240",
+  "sym": "?Load@DropPodLocomotionClass@@QAGJPAUIStream_0055AAC0@@@Z",
+  "len": "0x7f",
+  "name": "DropPodLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724000",
+  "sym": "??0ToolTipManager@@QAE@PAX@Z",
+  "len": "0xA7",
+  "name": "ToolTipManager::ToolTipManager",
   "status": "matched",
   "pct": 100
  }

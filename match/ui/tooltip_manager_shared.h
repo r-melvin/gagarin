@@ -78,6 +78,8 @@ extern "C" void __cdecl gg_free(void* block);
 
 struct ToolTipTable
 {
+    // Inlined initialization recovered from constructor 0x724000.
+    ToolTipTable() : Items(0), Count(0), unknown_08(0), IsSorted(0), Cached(0) {}
     ToolTipTableEntry* Items; // +0x00, manager +0x24C
     int Count;                // +0x04, manager +0x250
     int unknown_08;           // +0x08, manager +0x254
@@ -157,27 +159,43 @@ GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_0D) == 0x0D);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Cached) == 0x10);
 GG_STATIC_ASSERT(sizeof(ToolTipTable) == 0x14);
 
-// Embedded VectorClass<ToolTip*> at manager+0x234. Virtual order is pinned
+// Embedded tooltip pointer vector at manager+0x234. Virtual order is pinned
 // by constructor calls and the SetCapacity/Clear/FindItemIndex dispatches.
-struct ToolTipVector
+// Retail RTTI: COL 0x80C840 -> DynamicVectorClass<const ToolTip*> derives
+// VectorClass<const ToolTip*> (COL 0x80C8B8), at offset zero. These descriptive
+// names retain that base split while template consolidation is pending.
+// The mutable ToolTip* declarations below are an ABI/layout view, not the
+// original const-qualified template API; pointer constness remains to be
+// consolidated with the other recovered vector specializations.
+// VTABLE: GAMEMD 0x7F57E8
+struct ToolTipVectorStorage
 {
-    // VTABLE: GAMEMD 0x7F57C8 (embedded vector at manager+0x234)
+    virtual ~ToolTipVectorStorage(); // slot 0: 0x724EF0
+    virtual int operator==(const ToolTipVectorStorage& other) const; // slot 1: 0x724C90
+    virtual bool SetCapacity(int capacity, void* pMem); // slot 2: 0x724CD0
+    virtual void Clear(); // slot 3: 0x724D80
+    virtual int FindItemIndex(ToolTip* const& item) const; // slot 4: 0x724DB0
+    virtual void unknown_slot5(); // slot 5: 0x724DF0
+    virtual void unknown_slot6(); // slot 6: 0x724C80
+    ToolTipVectorStorage() : Items(0), Capacity(0), IsInitialized(1), IsAllocated(0) {}
+    ToolTip** Items;
+    int Capacity;
+    unsigned char IsInitialized;
+    unsigned char IsAllocated;
+    unsigned char unknown_0E[2];
+};
+// VTABLE: GAMEMD 0x7F57C8
+struct ToolTipVector : ToolTipVectorStorage
+{
     virtual ~ToolTipVector(); // slot 0: 0x724F40
-    virtual int operator==(const ToolTipVector& other) const; // slot 1: 0x724C90
+    // Slots 1 and 6 retain the storage-base targets 0x724C90 and 0x724C80.
     virtual bool SetCapacity(int capacity, void* pMem); // slot 2: 0x724E10
     virtual void Clear(); // slot 3: 0x724C30
     virtual int FindItemIndex(ToolTip* const& item) const; // slot 4: 0x724EC0
     virtual void unknown_slot5(); // slot 5: 0x724C60
-    virtual void unknown_slot6(); // slot 6: 0x724C80
-
-    ToolTip** Items;                 // +0x04
-    int Capacity;                    // +0x08
-    unsigned char IsInitialized;     // +0x0C
-    unsigned char IsAllocated;       // +0x0D
-    unsigned char unknown_0E[2];
-    int Count;                       // +0x10
-    int CapacityIncrement;           // +0x14
-
+    ToolTipVector() { CapacityIncrement = 10; Count = 0; }
+    int Count;
+    int CapacityIncrement;
     bool RemoveItem(ToolTip* const& item)
     {
         int index = FindItemIndex(item);
@@ -190,6 +208,12 @@ struct ToolTipVector
         return false;
     }
 };
+GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(ToolTipVectorStorage, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(sizeof(ToolTipVectorStorage) == 0x10);
 GG_STATIC_ASSERT(offsetof(ToolTipVector, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(ToolTipVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(ToolTipVector, IsInitialized) == 0x0C);
@@ -268,6 +292,8 @@ struct ToolTipManager
     void Remove(unsigned int key);
     // FUNCTION: GAMEMD 0x724AD0
     bool Process();
+    // FUNCTION: GAMEMD 0x724BE0
+    void FUN_00724BE0();
     // FUNCTION: GAMEMD 0x724C00
     bool IsToolTipShowing() const;
 };

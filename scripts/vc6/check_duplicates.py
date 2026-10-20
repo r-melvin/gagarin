@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # common and harmless. Lines marked as a declaration annotate a callee defined
 # elsewhere, so they are not claims; neither is an indented mention inside a
 # provenance header.
-ANNOT = re.compile(r'(?m)^// FUNCTION: GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
+ANNOT = re.compile(r'(?m)^// (?:FUNCTION|SYNTHETIC): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
 
 
 def claims(text):
@@ -45,7 +45,9 @@ def main():
         sources += glob.glob(os.path.join(ROOT, 'match', '**', ext), recursive=True)
     for path in sorted(sources):
         rel = os.path.relpath(path, ROOT)
-        for addr in claims(open(path, errors='ignore').read()):
+        with open(path, errors='ignore') as source:
+            text = source.read()
+        for addr in claims(text):
             owner[addr].add(rel)
 
     bad = 0
@@ -56,7 +58,9 @@ def main():
 
     man_path = os.path.join(ROOT, 'scripts', 'data', 'match_manifest.json')
     if os.path.exists(man_path):
-        for e in json.load(open(man_path)):
+        with open(man_path) as manifest:
+            entries = json.load(manifest)
+        for e in entries:
             addr = int(e['addr'], 16)
             if e['tu'] not in owner.get(addr, ()):
                 bad += 1

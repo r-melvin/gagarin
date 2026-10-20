@@ -10,7 +10,7 @@
 // VTABLE: GAMEMD 0x7E528C
 struct ControlClass : GadgetClass
 {
-    virtual ~ControlClass();
+    // The inherited virtual destructor is implicit; retail calls Gadget destruction.
     virtual unsigned int GetID();                         // slot 17, 0x48E610
     virtual int Draw(int forced);                         // slot 27, 0x48E620
     virtual int Action(unsigned flags, unsigned* key, int modifier); // slot 31, 0x48E5A0
