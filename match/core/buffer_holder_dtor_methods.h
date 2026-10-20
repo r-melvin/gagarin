@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   All 53 entry points and their 28 distinct vtable addresses were extracted
+//   The original 53 entry points and their vtable addresses were extracted
 //   individually from the user's retail gamemd.exe v1.001 via the local Ghidra
 //   CLI, one disassembly each. Every one agreed on the layout: buffer at +0x04,
 //   length at +0x08, ownership flag at +0x0D. None is bound by YRpp or the seed
@@ -46,7 +46,6 @@ extern char VTABLE_007E38D0[];   // VTABLE: GAMEMD 0x7E38D0
 extern char VTABLE_007E38F0[];   // VTABLE: GAMEMD 0x7E38F0
 extern char VTABLE_007E3E54[];   // VTABLE: GAMEMD 0x7E3E54
 extern char VTABLE_007E43E8[];   // VTABLE: GAMEMD 0x7E43E8
-extern char VTABLE_007E4424[];   // VTABLE: GAMEMD 0x7E4424
 extern char VTABLE_007E4468[];   // VTABLE: GAMEMD 0x7E4468
 extern char VTABLE_007E4514[];   // VTABLE: GAMEMD 0x7E4514
 extern char VTABLE_007E4638[];   // VTABLE: GAMEMD 0x7E4638
@@ -95,8 +94,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0042FBA0(unsigned int flags);   // FUNCTION: GAMEMD 0x42FBA0
     void* FUN_0042FBF0(unsigned int flags);   // FUNCTION: GAMEMD 0x42FBF0
     void* FUN_0043ACB0(unsigned int flags);   // FUNCTION: GAMEMD 0x43ACB0
-    void* FUN_0045A9C0(unsigned int flags);   // FUNCTION: GAMEMD 0x45A9C0
-    void* FUN_0045AA10(unsigned int flags);   // FUNCTION: GAMEMD 0x45AA10
     // 0x45AA60 removed from this family: RTTI-confirmed as
     // VectorClass<InfantryClass*>::`scalar deleting destructor', modelled
     // separately below via the Vector<T> template family (see the

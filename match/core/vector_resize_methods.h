@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at each address below. Shape identified by clustering the
-//   111-300 byte unmatched pool; six instances, byte-identical apart from the
+//   111-300 byte unmatched pool; five remaining views, byte-identical apart from the
 //   entry point. None is bound by YRpp or the seed map.
 //
 // VectorClass::Resize. Take a new size and an optional caller-supplied buffer;
@@ -110,8 +110,6 @@ struct VectorResize : VectorBase
     bool FUN_0040CE50(int newsize, void** array);
     // FUNCTION: GAMEMD 0x42D780
     bool FUN_0042D780(int newsize, void** array);
-    // FUNCTION: GAMEMD 0x45A300
-    bool FUN_0045A300(int newsize, void** array);
     // FUNCTION: GAMEMD 0x45A680
     bool FUN_0045A680(int newsize, void** array);
     // FUNCTION: GAMEMD 0x472CC0

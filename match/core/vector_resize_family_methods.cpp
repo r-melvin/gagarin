@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Twenty-seven remaining four-byte-element resize bodies retain address-scoped
-// views until their actual template classes are integrated. Recovered int,
-// TechnoType, UnitType, AircraftType and InfantryType entries use native methods.
+// Twenty-four remaining four-byte-element resize bodies retain address-scoped
+// views until their actual template classes are integrated. Recovered entries
+// are bound in their native specialization implementations.
 // Entry-origin spans are 0xB0 bytes. Instructions confirm Items+4, Capacity+8,
 // initialization flag+C, ownership flag+D, live count+10 and Clear slot+C.
 // Original source ownership and TU grouping are not established by this sweep.
@@ -171,19 +171,6 @@ bool VectorResizeFamily::FUN_4F2A60(int newsize, void** array)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x50EA90
-bool VectorResizeFamily::FUN_50EA90(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x5AC820
 bool VectorResizeFamily::FUN_5AC820(int newsize, void** array)
 {
@@ -288,34 +275,8 @@ bool VectorResizeFamily::FUN_627F90(int newsize, void** array)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x67ACD0
-bool VectorResizeFamily::FUN_67ACD0(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x67B050
 bool VectorResizeFamily::FUN_67B050(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x67B3D0
-bool VectorResizeFamily::FUN_67B3D0(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
         if (Length < ActiveCount) {

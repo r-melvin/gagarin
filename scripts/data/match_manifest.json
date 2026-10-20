@@ -3420,20 +3420,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x45A9C0",
-  "sym": "?FUN_0045A9C0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PBVParticleSystemTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0045A9C0",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x45AA10",
-  "sym": "?FUN_0045AA10@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0045AA10",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3897,11 +3897,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x459F90",
-  "sym": "?FUN_00459F90@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_00459F90",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3933,11 +3933,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x45A270",
-  "sym": "?FUN_0045A270@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PBVParticleSystemTypeClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0045A270",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -5931,11 +5931,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_copy_constructors.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x5AD660",
   "sym": "??0?$TypeList@PBVBuildingTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "TypeList<const BuildingTypeClass*> copy constructor",
+  "name": "TypeList<const BuildingTypeClass*>::copy constructor",
   "status": "matched",
   "pct": 100
  },
@@ -5949,11 +5949,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_copy_constructors.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x67C1F0",
   "sym": "??0?$TypeList@PBVVoxelAnimTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "TypeList<const VoxelAnimTypeClass*> copy constructor",
+  "name": "TypeList<const VoxelAnimTypeClass*>::copy constructor",
   "status": "matched",
   "pct": 100
  },
@@ -5967,20 +5967,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_copy_constructors.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x717D20",
   "sym": "??0?$TypeList@PBVParticleSystemTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "TypeList<const ParticleSystemTypeClass*> copy constructor",
+  "name": "TypeList<const ParticleSystemTypeClass*>::copy constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_copy_constructors.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x75E6B0",
   "sym": "??0?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "DynamicVectorClass<const VoxelAnimTypeClass*> copy constructor",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::copy constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6048,11 +6048,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x005AC900",
   "sym": "??0?$DynamicVectorClass@PBVBuildingTypeClass@@@@QAE@HPAPBVBuildingTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass<const BuildingTypeClass*>::DynamicVectorClass",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6084,11 +6084,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067AC70",
   "sym": "??0?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@QAE@HPAPBVVoxelAnimTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::DynamicVectorClass",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6102,11 +6102,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067B370",
   "sym": "??0?$DynamicVectorClass@PBVTerrainTypeClass@@@@QAE@HPAPBVTerrainTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass<const TerrainTypeClass*>::DynamicVectorClass",
+  "name": "DynamicVectorClass<const TerrainTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6138,11 +6138,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x00717C70",
   "sym": "??0?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@QAE@HPAPBVParticleSystemTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::DynamicVectorClass",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6174,20 +6174,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/typelist_default_constructors.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x5AC400",
   "sym": "??0?$TypeList@PBVBuildingTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "TypeList<const BuildingTypeClass*> default constructor",
+  "name": "TypeList<const BuildingTypeClass*>::default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/typelist_default_constructors.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x67A390",
   "sym": "??0?$TypeList@PBVVoxelAnimTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "TypeList<const VoxelAnimTypeClass*> default constructor",
+  "name": "TypeList<const VoxelAnimTypeClass*>::default constructor",
   "status": "matched",
   "pct": 100
  },
@@ -6228,20 +6228,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/typelist_default_constructors.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x67A8B0",
   "sym": "??0?$TypeList@PBVTerrainTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "TypeList<const TerrainTypeClass*> default constructor",
+  "name": "TypeList<const TerrainTypeClass*>::default constructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/typelist_default_constructors.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x717AF0",
   "sym": "??0?$TypeList@PBVParticleSystemTypeClass@@@@QAE@XZ",
   "len": "0x22",
-  "name": "TypeList<const ParticleSystemTypeClass*> default constructor",
+  "name": "TypeList<const ParticleSystemTypeClass*>::default constructor",
   "status": "matched",
   "pct": 100
  },
@@ -14004,7 +14004,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x0050e4a0",
   "sym": "?Clear@?$DynamicVectorClass@PBVBuildingTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14598,7 +14598,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067a410",
   "sym": "?Clear@?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14616,7 +14616,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067a930",
   "sym": "?Clear@?$DynamicVectorClass@PBVTerrainTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14913,11 +14913,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x45AD80",
   "sym": "??0?$VectorClass@PBVParticleSystemTypeClass@@@@QAE@HPAPBVParticleSystemTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass<const ParticleSystemTypeClass*>::VectorClass",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -15057,11 +15057,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x5105A0",
   "sym": "??0?$VectorClass@PBVBuildingTypeClass@@@@QAE@HPAPBVBuildingTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass<const BuildingTypeClass*>::VectorClass",
+  "name": "VectorClass<const BuildingTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -15255,11 +15255,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x67C310",
   "sym": "??0?$VectorClass@PBVVoxelAnimTypeClass@@@@QAE@HPAPBVVoxelAnimTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass<const VoxelAnimTypeClass*>::VectorClass",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -15273,11 +15273,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_capacity_constructors.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x67C430",
   "sym": "??0?$VectorClass@PBVTerrainTypeClass@@@@QAE@HPAPBVTerrainTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass<const TerrainTypeClass*>::VectorClass",
+  "name": "VectorClass<const TerrainTypeClass*>::capacity constructor",
   "status": "matched",
   "pct": 100
  },
@@ -16551,20 +16551,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x0050FFF0",
   "sym": "??_G?$VectorClass@PBVBuildingTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const BuildingTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<const BuildingTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x00510040",
-  "sym": "??_G?$VectorClass@PBVBuildingTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVBuildingTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const BuildingTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17064,11 +17064,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x005AC650",
-  "sym": "??_G?$VectorClass@PBVBuildingTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@PBVBuildingTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const BuildingTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<const BuildingTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17739,11 +17739,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067A990",
-  "sym": "??_G?$VectorClass@PBVVoxelAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@PBVVoxelAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const VoxelAnimTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<const VoxelAnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17757,29 +17757,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067AA30",
-  "sym": "??_G?$VectorClass@PBVTerrainTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@PBVTerrainTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const TerrainTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<const TerrainTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067C010",
   "sym": "??_G?$VectorClass@PBVVoxelAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const VoxelAnimTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067C060",
-  "sym": "??_G?$VectorClass@PBVVoxelAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const VoxelAnimTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17802,20 +17802,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067C150",
   "sym": "??_G?$VectorClass@PBVTerrainTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const TerrainTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<const TerrainTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067C1A0",
-  "sym": "??_G?$VectorClass@PBVTerrainTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVTerrainTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const TerrainTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<const TerrainTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18108,11 +18108,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x00717B70",
-  "sym": "??_G?$VectorClass@PBVParticleSystemTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@PBVParticleSystemTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const ParticleSystemTypeClass*>::`scalar deleting destructor'",
+  "name": "TypeList<const ParticleSystemTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19413,7 +19413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x0050ea00",
   "sym": "?Clear@?$VectorClass@PBVBuildingTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19998,7 +19998,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x0067abe0",
   "sym": "?Clear@?$VectorClass@PBVVoxelAnimTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20016,7 +20016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x0067b2e0",
   "sym": "?Clear@?$VectorClass@PBVTerrainTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20691,11 +20691,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_buildingtype_methods.cpp",
   "addr": "0x50EA90",
-  "sym": "?FUN_50EA90@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVBuildingTypeClass@@@@UAE_NHPAPBVBuildingTypeClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_50EA90",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -20799,11 +20799,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
   "addr": "0x67ACD0",
-  "sym": "?FUN_67ACD0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@UAE_NHPAPBVVoxelAnimTypeClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_67ACD0",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -20817,11 +20817,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_terraintype_methods.cpp",
   "addr": "0x67B3D0",
-  "sym": "?FUN_67B3D0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVTerrainTypeClass@@@@UAE_NHPAPBVTerrainTypeClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_67B3D0",
+  "name": "DynamicVectorClass<const TerrainTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -20880,11 +20880,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_methods.cpp",
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
   "addr": "0x45A300",
-  "sym": "?FUN_0045A300@VectorResize@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@UAE_NHPAPBVParticleSystemTypeClass@@@Z",
   "len": "0xb0",
-  "name": "FUN_0045A300",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -32425,5 +32425,257 @@
   "tu": "match/core/vector_infantrytype_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVInfantryTypeClass@@@@UBEHABQBVInfantryTypeClass@@@Z",
   "name": "DynamicVectorClass<const InfantryTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x50E4D0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVBuildingTypeClass@@@@UBEHPAPBVBuildingTypeClass@@@Z",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x50E4F0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PBVBuildingTypeClass@@@@UBEPBVBuildingTypeClass@@H@Z",
+  "name": "VectorClass<const BuildingTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x50E910",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "??8?$VectorClass@PBVBuildingTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<const BuildingTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x50E950",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PBVBuildingTypeClass@@@@UAE_NHPAPBVBuildingTypeClass@@@Z",
+  "name": "VectorClass<const BuildingTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x50EA30",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PBVBuildingTypeClass@@@@UBEHABQBVBuildingTypeClass@@@Z",
+  "name": "VectorClass<const BuildingTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x50EA70",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PBVBuildingTypeClass@@@@UBEHPAPBVBuildingTypeClass@@@Z",
+  "name": "VectorClass<const BuildingTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x50EB40",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVBuildingTypeClass@@@@UBEHABQBVBuildingTypeClass@@@Z",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x67A960",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVTerrainTypeClass@@@@UBEHPAPBVTerrainTypeClass@@@Z",
+  "name": "DynamicVectorClass<const TerrainTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x67A980",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PBVTerrainTypeClass@@@@UBEPBVTerrainTypeClass@@H@Z",
+  "name": "VectorClass<const TerrainTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x67B1F0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "??8?$VectorClass@PBVTerrainTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<const TerrainTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x67B230",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PBVTerrainTypeClass@@@@UAE_NHPAPBVTerrainTypeClass@@@Z",
+  "name": "VectorClass<const TerrainTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x67B310",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PBVTerrainTypeClass@@@@UBEHABQBVTerrainTypeClass@@@Z",
+  "name": "VectorClass<const TerrainTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x67B350",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PBVTerrainTypeClass@@@@UBEHPAPBVTerrainTypeClass@@@Z",
+  "name": "VectorClass<const TerrainTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x67B4D0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVTerrainTypeClass@@@@UBEHABQBVTerrainTypeClass@@@Z",
+  "name": "DynamicVectorClass<const TerrainTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x67A440",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@UBEHPAPBVVoxelAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x67A460",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PBVVoxelAnimTypeClass@@@@UBEPBVVoxelAnimTypeClass@@H@Z",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x67AAF0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "??8?$VectorClass@PBVVoxelAnimTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x67AB30",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PBVVoxelAnimTypeClass@@@@UAE_NHPAPBVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x67AC10",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PBVVoxelAnimTypeClass@@@@UBEHABQBVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x67AC50",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PBVVoxelAnimTypeClass@@@@UBEHPAPBVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<const VoxelAnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x67ADD0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVVoxelAnimTypeClass@@@@UBEHABQBVVoxelAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<const VoxelAnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x459FC0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@UBEHPAPBVParticleSystemTypeClass@@@Z",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x459FE0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PBVParticleSystemTypeClass@@@@UBEPBVParticleSystemTypeClass@@H@Z",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x45A180",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "??8?$VectorClass@PBVParticleSystemTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x45A1C0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PBVParticleSystemTypeClass@@@@UAE_NHPAPBVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x45A2A0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PBVParticleSystemTypeClass@@@@UBEHABQBVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45A2E0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PBVParticleSystemTypeClass@@@@UBEHPAPBVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<const ParticleSystemTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x45A3B0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVParticleSystemTypeClass@@@@UBEHABQBVParticleSystemTypeClass@@@Z",
+  "name": "DynamicVectorClass<const ParticleSystemTypeClass*>::FindItemIndex"
  }
 ]

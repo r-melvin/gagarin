@@ -843,50 +843,6 @@ void* BufferHolderDtor::FUN_0043ACB0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x45A9C0
-void* BufferHolderDtor::FUN_0045A9C0(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E4424;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x45AA10
-void* BufferHolderDtor::FUN_0045AA10(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E4424;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x45AA60   VectorClass<InfantryClass*>::`scalar deleting destructor'
 //
 // RTTI-confirmed (re-verified independently against the binary before

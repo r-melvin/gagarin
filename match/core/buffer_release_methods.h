@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every offset below was extracted individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI, one disassembly per entry
-//   point, and all 53 agreed: buffer at +0x04, length at +0x08, ownership flag
+//   point in the original 53-entry family: buffer at +0x04, length at +0x08, ownership flag
 //   at +0x0D, and on 25 of them an extra word at +0x10 cleared up front. None
 //   of these addresses is bound by YRpp or the seed map.
 //
@@ -89,11 +89,9 @@ void __fastcall FUN_0042F420(BufferHolder* obj);   // FUNCTION: GAMEMD 0x42F420
 void __fastcall FUN_0042F7C0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x42F7C0
 void __fastcall FUN_0042FAB0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x42FAB0
 void __fastcall FUN_0043AC20(BufferHolder* obj);   // FUNCTION: GAMEMD 0x43AC20
-void __fastcall FUN_00459F90(BufferHolder* obj);   // FUNCTION: GAMEMD 0x459F90
 void __fastcall FUN_00459FF0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x459FF0
 void __fastcall FUN_0045A070(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A070
 void __fastcall FUN_0045A0D0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A0D0
-void __fastcall FUN_0045A270(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A270
 void __fastcall FUN_0045A4D0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A4D0
 void __fastcall FUN_0045A850(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A850
 void __fastcall FUN_0045AC00(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45AC00

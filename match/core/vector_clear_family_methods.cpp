@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 154
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 151
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 155 remaining addresses are bound to VectorClass<T> tables;
+//   The 152 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -516,11 +516,6 @@ template class VectorClass<AbstractTypeClass*>;
 //   `.?AV?$VectorClass@PAVGraphicMenuItem@@@@`.
 template class VectorClass<GraphicMenuItem*>;
 
-// FUNCTION: GAMEMD 0x0050EA00
-// VectorClass<const BuildingTypeClass*> -- vtable 0x007EAA08 slot 3; locator 0x00802CD0 -> type descriptor 0x00824CD8
-//   `.?AV?$VectorClass@PBVBuildingTypeClass@@@@`.
-template class VectorClass<const BuildingTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0050ED10
 // VectorClass<HouseClass::StartingTechnoStruct*> -- vtable 0x007EA964 slot 3; locator 0x00802BF0 -> type descriptor 0x008245F0
 //   `.?AV?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@`.
@@ -821,20 +816,10 @@ template class VectorClass<RadarEventClass*>;
 //   `.?AV?$VectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@`.
 template class VectorClass<OwnerTalkClass::ConnectionListStruct*>;
 
-// FUNCTION: GAMEMD 0x0067ABE0
-// VectorClass<const VoxelAnimTypeClass*> -- vtable 0x007F0D5C slot 3; locator 0x00808BE0 -> type descriptor 0x0083A010
-//   `.?AV?$VectorClass@PBVVoxelAnimTypeClass@@@@`.
-template class VectorClass<const VoxelAnimTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0067AF60
 // VectorClass<const SmudgeTypeClass*> -- vtable 0x007F0D7C slot 3; locator 0x00808BB0 -> type descriptor 0x00839F70
 //   `.?AV?$VectorClass@PBVSmudgeTypeClass@@@@`.
 template class VectorClass<const SmudgeTypeClass*>;
-
-// FUNCTION: GAMEMD 0x0067B2E0
-// VectorClass<const TerrainTypeClass*> -- vtable 0x007F0D9C slot 3; locator 0x00808C10 -> type descriptor 0x00839EC8
-//   `.?AV?$VectorClass@PBVTerrainTypeClass@@@@`.
-template class VectorClass<const TerrainTypeClass*>;
 
 // FUNCTION: GAMEMD 0x0069C800
 // VectorClass<DiskID> -- vtable 0x007F1274 slot 3; locator 0x00809270 -> type descriptor 0x0083F530

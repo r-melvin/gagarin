@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 315 remaining 73-byte deleting-destructor bodies are bound here through
-// 159 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 305 remaining 73-byte deleting-destructor bodies are bound here through
+// 155 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -154,8 +154,6 @@ extern char VT_007EA544;
 extern char VT_007EA624;
 // VTABLE: GAMEMD 0x007EA9E4 -- VectorClass<const TeamTypeClass*>
 extern char VT_007EA9E4;
-// VTABLE: GAMEMD 0x007EAA08 -- VectorClass<const BuildingTypeClass*>
-extern char VT_007EAA08;
 // VTABLE: GAMEMD 0x007EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>
 extern char VT_007EA964;
 // VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>
@@ -276,12 +274,8 @@ extern char VT_007F07C4;
 extern char VT_007F0ACC;
 // VTABLE: GAMEMD 0x007F0C4C -- VectorClass<OwnerTalkClass::ConnectionListStruct*>
 extern char VT_007F0C4C;
-// VTABLE: GAMEMD 0x007F0D5C -- VectorClass<const VoxelAnimTypeClass*>
-extern char VT_007F0D5C;
 // VTABLE: GAMEMD 0x007F0D7C -- VectorClass<const SmudgeTypeClass*>
 extern char VT_007F0D7C;
-// VTABLE: GAMEMD 0x007F0D9C -- VectorClass<const TerrainTypeClass*>
-extern char VT_007F0D9C;
 // VTABLE: GAMEMD 0x007F1274 -- VectorClass<DiskID>
 extern char VT_007F1274;
 // VTABLE: GAMEMD 0x007F1214 -- VectorClass<MultiMission*>
@@ -314,8 +308,6 @@ extern char VT_007F42FC;
 extern char VT_007F43F0;
 // VTABLE: GAMEMD 0x007F4578 -- VectorClass<TagTypeClass*>
 extern char VT_007F4578;
-// VTABLE: GAMEMD 0x007E4424 -- VectorClass<const ParticleSystemTypeClass*>
-extern char VT_007E4424;
 // VTABLE: GAMEMD 0x007F5134 -- VectorClass<TemporalClass*>
 extern char VT_007F5134;
 // VTABLE: GAMEMD 0x007F552C -- VectorClass<TEventClass*>

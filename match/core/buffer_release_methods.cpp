@@ -574,22 +574,6 @@ void __fastcall FUN_0043AC20(BufferHolder* obj)
     obj->Length = 0;
 }
 
-// FUNCTION: GAMEMD 0x459F90
-void __fastcall FUN_00459F90(BufferHolder* obj)
-{
-    void* buffer = obj->Buffer;
-
-    obj->unknown_10 = 0;
-
-    if (buffer != 0 && obj->IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        obj->Buffer = 0;
-    }
-
-    obj->IsAllocated = 0;
-    obj->Length = 0;
-}
-
 // FUNCTION: GAMEMD 0x459FF0
 void __fastcall FUN_00459FF0(BufferHolder* obj)
 {
@@ -628,20 +612,6 @@ void __fastcall FUN_0045A0D0(BufferHolder* obj)
     void* buffer = obj->Buffer;
 
     obj->unknown_10 = 0;
-
-    if (buffer != 0 && obj->IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        obj->Buffer = 0;
-    }
-
-    obj->IsAllocated = 0;
-    obj->Length = 0;
-}
-
-// FUNCTION: GAMEMD 0x45A270
-void __fastcall FUN_0045A270(BufferHolder* obj)
-{
-    void* buffer = obj->Buffer;
 
     if (buffer != 0 && obj->IsAllocated != 0) {
         FUN_007C8B3D(buffer);
