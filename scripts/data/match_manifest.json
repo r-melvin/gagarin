@@ -3501,20 +3501,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_bulletclass_methods.cpp",
   "addr": "0x46B8C0",
-  "sym": "?FUN_0046B8C0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVBulletClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0046B8C0",
+  "name": "VectorClass<BulletClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_bulletclass_methods.cpp",
   "addr": "0x46B910",
-  "sym": "?FUN_0046B910@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVBulletClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0046B910",
+  "name": "DynamicVectorClass<BulletClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3978,20 +3978,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_bulletclass_methods.cpp",
   "addr": "0x46B5E0",
-  "sym": "?FUN_0046B5E0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVBulletClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0046B5E0",
+  "name": "DynamicVectorClass<BulletClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_bulletclass_methods.cpp",
   "addr": "0x46B750",
-  "sym": "?FUN_0046B750@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVBulletClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0046B750",
+  "name": "VectorClass<BulletClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -13806,7 +13806,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_campaignclass_methods.cpp",
   "addr": "0x004e8a20",
   "sym": "?Clear@?$DynamicVectorClass@PAVCampaignClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16137,20 +16137,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_campaignclass_methods.cpp",
   "addr": "0x4F01B0",
   "sym": "??_G?$VectorClass@PAVCampaignClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<CampaignClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<CampaignClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_campaignclass_methods.cpp",
   "addr": "0x4F0200",
-  "sym": "??_G?$VectorClass@PAVCampaignClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVCampaignClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<CampaignClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<CampaignClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19215,7 +19215,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_campaignclass_methods.cpp",
   "addr": "0x004ec3f0",
   "sym": "?Clear@?$VectorClass@PAVCampaignClass@@@@UAEXXZ",
   "len": "0x27",
@@ -29549,9 +29549,9 @@
  {
   "tu": "match/ui/sidebar_class_tab_methods.cpp",
   "addr": "0x6ABC60",
-  "sym": "?GetObjectTabIdx@SidebarClass@@SIHHHH@Z",
+  "sym": "?FUN_006ABC60@SidebarClass@@SIHHHH@Z",
   "len": "0x67",
-  "name": "SidebarClass::GetObjectTabIdx",
+  "name": "SidebarClass::FUN_006ABC60",
   "status": "matched",
   "pct": 100
  },
@@ -33694,5 +33694,149 @@
   "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "sym": "?Slot5@?$VectorClass@PAVFoggedObjectClass@@@@UBEHPAPAVFoggedObjectClass@@@Z",
   "name": "VectorClass<FoggedObjectClass*>::Slot5"
+ },
+ {
+  "addr": "0x46B610",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVBulletClass@@@@UBEHPAPAVBulletClass@@@Z",
+  "name": "DynamicVectorClass<BulletClass*>::Slot5"
+ },
+ {
+  "addr": "0x46B630",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVBulletClass@@@@UBEPAVBulletClass@@H@Z",
+  "name": "VectorClass<BulletClass*>::Slot6"
+ },
+ {
+  "addr": "0x46B660",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVBulletClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<BulletClass*>::operator=="
+ },
+ {
+  "addr": "0x46B6A0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVBulletClass@@@@UAE_NHPAPAVBulletClass@@@Z",
+  "name": "VectorClass<BulletClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x46B780",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVBulletClass@@@@UBEHABQAVBulletClass@@@Z",
+  "name": "VectorClass<BulletClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x46B7C0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVBulletClass@@@@UBEHPAPAVBulletClass@@@Z",
+  "name": "VectorClass<BulletClass*>::Slot5"
+ },
+ {
+  "addr": "0x46B7E0",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVBulletClass@@@@UAE_NHPAPAVBulletClass@@@Z",
+  "name": "DynamicVectorClass<BulletClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x46B890",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bulletclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBulletClass@@@@UBEHABQAVBulletClass@@@Z",
+  "name": "DynamicVectorClass<BulletClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8A50",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVCampaignClass@@@@UBEHPAPAVCampaignClass@@@Z",
+  "name": "DynamicVectorClass<CampaignClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8A70",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVCampaignClass@@@@UBEPAVCampaignClass@@H@Z",
+  "name": "VectorClass<CampaignClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EC300",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVCampaignClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<CampaignClass*>::operator=="
+ },
+ {
+  "addr": "0x4EC340",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVCampaignClass@@@@UAE_NHPAPAVCampaignClass@@@Z",
+  "name": "VectorClass<CampaignClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EC420",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVCampaignClass@@@@UBEHABQAVCampaignClass@@@Z",
+  "name": "VectorClass<CampaignClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EC460",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVCampaignClass@@@@UBEHPAPAVCampaignClass@@@Z",
+  "name": "VectorClass<CampaignClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EC480",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVCampaignClass@@@@UAE_NHPAPAVCampaignClass@@@Z",
+  "name": "DynamicVectorClass<CampaignClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EC530",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_campaignclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVCampaignClass@@@@UBEHABQAVCampaignClass@@@Z",
+  "name": "DynamicVectorClass<CampaignClass*>::FindItemIndex"
  }
 ]

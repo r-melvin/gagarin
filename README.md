@@ -11,9 +11,9 @@ compilation do not prove whole-image identity.
 The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
-The latest full gates pass with 3,579 functions matched at 100%, 165 partial
-rows, and 876 tracked C++ files. The complete executable build and byte-for-byte
-comparison remain unfinished.
+Latest full gates pass: 3,595 functions matched at 100%,
+165 partial rows, and 878 tracked C++ files.
+The tracked object build passed (878/878); engine linking and whole-image comparison remain unfinished.
 
 ![gagarin matching progress](.github/assets/progress.svg)
 
@@ -28,11 +28,14 @@ the game binary, assets, PDBs, build outputs or toolchain.
 scripts/vc6/fetch_toolchain.sh
 scripts/vc6/compile_all.sh
 python3 scripts/vc6/verify_all.py
+python3 scripts/vc6/build_project.py --jobs 8
 ```
 
 `compile_all.sh` is the binary-free compile gate. `verify_all.py` checks the
 manifest's fully matched functions against the pinned retail binary and
-compile-checks documented partial rows. See [CONTRIBUTING.md](CONTRIBUTING.md)
+compile-checks documented partial rows. `build_project.py` compiles tracked
+C++ files into path-preserving VC6 objects; it does not link the engine. See
+[CONTRIBUTING.md](CONTRIBUTING.md)
 for setup, the per-function matching workflow and file conventions; [AGENTS.md](AGENTS.md)
 defines the evidence and engineering rules; [LEGAL.md](LEGAL.md) defines the
 legal scope and provenance restrictions.

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 138
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 137
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -375,11 +375,6 @@ template class VectorClass<AnimClass*>;
 // VectorClass<FactoryClass*> -- vtable 0x007E9FC4 slot 3; locator 0x00801640 -> type descriptor 0x008234B0
 //   `.?AV?$VectorClass@PAVFactoryClass@@@@`.
 template class VectorClass<FactoryClass*>;
-
-// FUNCTION: GAMEMD 0x004EC3F0
-// VectorClass<CampaignClass*> -- vtable 0x007EA004 slot 3; locator 0x008016D8 -> type descriptor 0x00823518
-//   `.?AV?$VectorClass@PAVCampaignClass@@@@`.
-template class VectorClass<CampaignClass*>;
 
 // FUNCTION: GAMEMD 0x004EC650
 // VectorClass<SideClass*> -- vtable 0x007EA044 slot 3; locator 0x00801770 -> type descriptor 0x00823580

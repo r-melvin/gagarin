@@ -1,8 +1,8 @@
 # Project status
 
-The latest whole-repository gates pass with **3,579 fully matched functions**,
-**165 partial rows**, and **876 tracked C++ files**; the manifest contains 873
-translation units. The compile gate passed; 63 verifier tests also passed, and
+The latest whole-repository gates pass with **3,595 fully matched functions**,
+**165 partial rows**, and **878 tracked C++ files**; the manifest contains 875
+translation units. The compile gate passed; 65 verifier tests also passed, and
 the duplicate-address check found no conflicts. The ultimate goal remains a
 complete byte-for-byte reproduction of the pinned executable; that goal is not
 achieved.
@@ -10,7 +10,44 @@ achieved.
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
 
-## Latest integrated batch: InfantryClass and FoggedObjectClass vectors
+## Latest integrated batch: BulletClass and CampaignClass vectors
+
+Two native mutable-pointer vector clusters are integrated: 12 address rows
+each for `BulletClass*` and `CampaignClass*`, for 24 rows total. The batch adds
+16 new exact-match claims and migrates eight prior address claims. Each class
+has two RTTI-backed seven-slot tables. The eight-shard regression and compile
+gates passed; all four affected tables passed conditional seven-slot checks
+against persistent project objects using `--weak-defaults`, without manual
+symbol maps. The tracked-project object build compiled all 878 translation
+units, and `--check` confirmed the saved input and object hashes. These checks
+do not establish engine link closure or whole-image identity.
+
+A VC6 diagnostic link with `/dll /noentry /nodefaultlib` reported no duplicate
+definitions (`LNK2005`), down from two in the previous diagnostic. It still
+reported 6,615 unresolved-reference lines (`LNK2001`) and 4,283 unique
+unresolved symbols (`LNK1120`). This diagnostic excludes default libraries and
+does not constitute an engine link.
+
+The two prior duplicate-definition conflicts were addressed by sharing the
+[RadSiteClass declarations](match/combat/rad_site_class_methods.h) and keeping
+one `RulesInstance` definition in the shared
+[implementation](match/combat/rad_site_class_methods.cpp). The [SidebarClass
+declarations](match/ui/sidebar_class_methods.h) are also shared; the distinct
+classifier at `0x6ABC60` remains separate from `GetObjectTabIdx` at `0x6ABCD0`.
+The latest diagnostic reports zero `LNK2005` conflicts after these changes.
+
+Current vector-family totals are 275 generic deleting-destructor bindings
+across 141 instantiation views, 138 base `Clear` rows, 136 native dynamic
+`Clear` rows plus one separate DiskID stand-in (137 dynamic rows total), and 18
+address-specific resize views.
+
+The tracked-source object build is available through
+[`build_project.py`](scripts/vc6/build_project.py). It compiles tracked C++
+translation units to path-preserving VC6 objects and records input and object
+hashes. Its `--check` mode verifies those hashes and rejects stale indexes; it
+does not link. The new object-build target is not an integrated engine build.
+
+## Previous fully verified batch: InfantryClass and FoggedObjectClass vectors
 
 The mutable-pointer `InfantryClass*` and `FoggedObjectClass*` clusters add 24
 address rows across [InfantryClass](match/core/vector_infantryclass_methods.cpp)
@@ -39,11 +76,6 @@ conditional seven-slot checks against the integrated objects using
 `--weak-defaults`, without manual symbol maps. Full regression and compilation
 gates passed; final-link resolution remains unverified.
 
-The current vector-family totals are 277 generic deleting-destructor bindings
-across 142 instantiation views, 139 base `Clear` rows, 137 native dynamic
-`Clear` rows plus one separate DiskID stand-in, and 18 address-specific resize
-views.
-
 ## Tracked source inventory
 
 [`scripts/vc6/source_inventory.py`](scripts/vc6/source_inventory.py) reports
@@ -55,10 +87,11 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 ```
 
 It enumerates source paths with `git ls-files`; the output describes tracked
-paths, while content is read from the current worktree. The current inventory
-has 876 tracked C++ files and 3,744 manifest rows, with no manifest TU missing
-from tracked sources. Three tracked files have no manifest rows and two source
-basenames collide across directories; the report lists both cases explicitly.
+paths, while content is read from the current worktree. At the latest fully
+verified snapshot, the inventory has 878 tracked C++ files and 3,760 manifest
+rows, with no manifest TU missing from tracked sources. Three tracked files
+had no manifest rows and two source basename collisions; the report lists
+those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
 default at compile time.
 
@@ -159,7 +192,7 @@ structure has been recovered.
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
 | Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
-| Integrated project build | Not yet established. The current [compile gate](scripts/vc6/compile_all.sh) compiles translation units separately; the tracked tree has no top-level source-project build target or whole-engine link gate. | Provide a project-wide build that compiles and links the reconstructed engine through shared declarations and implementations. |
+| Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py); the engine has not been linked. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
 | Complete executable reproduction | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | Reproduce and compare the entire pinned PE file byte for byte, including code, data, headers, imports, relocations and resources; account for library dependencies and deterministic build metadata. |
 | Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
 
@@ -371,10 +404,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,579** | **18.1%** of 19,753 |
-| Sum of matched function lengths | 249 KiB | 6.7% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,595** | **18.2%** of 19,753 |
+| Sum of matched function lengths | 250 KiB | 6.7% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 876 | |
+| Tracked C++ files under `match/` | 878 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -394,7 +427,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 184 matched entries. Its candidate count is therefore
+listed entries, including 186 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

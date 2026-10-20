@@ -13,6 +13,10 @@
 
 struct SidebarClass
 {
+    // GAMEMD 0x6ABC60. Distinct classifier; the original name is unconfirmed.
+    // Shares the fastcall ABI, but not the body, of GetObjectTabIdx below.
+    static int __fastcall FUN_006ABC60(int abs, int idxType, int unused);
+
     // GAMEMD 0x6ABCD0  SidebarClass::GetObjectTabIdx (static __fastcall)
     //   abs      -> ECX   (AbstractType id)
     //   buildCat -> EDX   (BuildCat)

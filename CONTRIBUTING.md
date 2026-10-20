@@ -5,11 +5,11 @@ are in [AGENTS.md](AGENTS.md) and [LEGAL.md](LEGAL.md); this guide covers the pr
 
 The ultimate deliverable is a human-readable, structured C++ project whose
 complete build reproduces the pinned v1.001 `gamemd.exe` byte for byte. The
-per-function workflow below is an intermediate gate. Current scripts compile
-translation units and verify annotated functions; they do not yet provide an
-integrated engine link or a whole-image comparison. Completion requires those
-gates as well as the source reconstruction. CRT/third-party source recovery
-remains out of scope, but the complete build must account for those dependencies.
+per-function workflow below is an intermediate gate. A tracked-source object
+build is available, but it does not link the engine or compare the whole image.
+Completion requires those gates as well as the source reconstruction.
+CRT/third-party source recovery remains out of scope, but the complete build
+must account for those dependencies.
 
 ## What you need
 
@@ -28,6 +28,21 @@ scripts/vc6/compile_all.sh
 scripts/vc6/match.sh match/economy/storage_class.cpp \
     "?GetTotalValue@StorageClass@@QBEHXZ" 0x6C9600 0x4f
 ```
+
+To compile every tracked C++ translation unit into a persistent,
+path-preserving object tree, run:
+
+```bash
+python3 scripts/vc6/build_project.py --jobs 8
+python3 scripts/vc6/build_project.py --check
+```
+
+The first command writes objects and an input/object hash index under the
+ignored `build-vc6/project/` directory. `--check` verifies that the tracked
+C++ sources and headers, manifest, compiler wrapper, and indexed objects still
+match that record; it rejects stale inputs or objects. It does not compile or
+link. These commands create a path-preserving object build, not an integrated
+engine link or a whole-image comparison.
 
 ## Picking a target
 

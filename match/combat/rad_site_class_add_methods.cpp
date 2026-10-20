@@ -8,8 +8,6 @@
 
 #include "rad_site_class_add_methods.h"
 
-RulesClass* RulesInstance;  // GLOBAL: GAMEMD 0x008871E0
-
 // FUNCTION: GAMEMD 0x65B530  (__thiscall)
 // Add this RadLevel to the current radiation. The currently-applied level is
 // recomputed in double precision (RadLevel * RadTimeLeft / RadDuration) and

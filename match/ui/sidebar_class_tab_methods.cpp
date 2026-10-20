@@ -4,12 +4,12 @@
 
 #include "sidebar_class_tab_methods.h"
 
-// FUNCTION: GAMEMD 0x6ABC60  SidebarClass::GetObjectTabIdx (__fastcall, static)
+// FUNCTION: GAMEMD 0x6ABC60  SidebarClass::FUN_006ABC60 (__fastcall, static)
 // Which sidebar tab a buildable belongs in. Written as an if-chain, not a
 // switch: VC6 turns a switch over these values into a jump table (2% match),
 // while retail is a straight compare chain in source order with the fallthrough
 // -1 emitted before the return blocks.
-int __fastcall SidebarClass::GetObjectTabIdx(int abs, int idxType, int unused)
+int __fastcall SidebarClass::FUN_006ABC60(int abs, int idxType, int unused)
 {
     if (abs == ABS_INFANTRYTYPE || abs == ABS_UNITTYPE)
         return 2;

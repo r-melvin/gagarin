@@ -4,6 +4,8 @@
 //   Ghidra CLI (member-access disassembly at 0x65B4C0-0x65B527), cross-checked
 //   against YRpp RadSiteClass.h / RulesClass.h (consult-only; reconfirmed
 //   numerically here).
+//   Add at 0x65B530 independently confirms the shared fields/global;
+//   its 0x4A-byte entry-origin body was rechecked through REA/Ghidra.
 //
 // RadSiteClass - a radiation site: a center cell, a spread (in cells and in
 // leptons), a rad level, and a countdown duration / time-left pair used to
@@ -39,6 +41,9 @@ struct RadSiteClass
     void SetSpread(int nCells);           // GAMEMD 0x65B4D0 __thiscall
     void SetRadLevel(int nRadLevel);      // GAMEMD 0x65B4F0 __thiscall
     int  GetRadLevel();                   // GAMEMD 0x65B510 __thiscall
+    void Add(int nRadLevel);              // GAMEMD 0x65B530 __thiscall
+    void Activate();                      // GAMEMD 0x65B580 __thiscall
+    void Deactivate();                    // GAMEMD 0x65BB50 __thiscall
 
     // AbstractClass base + the LightSource pointer occupy [0x00..0x3F]; their
     // full decomposition is P2. Only the members our methods touch are modelled.

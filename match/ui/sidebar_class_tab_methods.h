@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes read off the user's retail gamemd.exe v1.001 via the local Ghidra CLI
-//   at 0x6ABC60. Signature taken from YRpp SidebarClass.h
-//   (`static int __fastcall GetObjectTabIdx(AbstractType, int, int)`,
-//   consult-only, no LICENSE) and confirmed by the bytes: the discriminant
-//   arrives in ECX and retail cleans four bytes (`RET 4`), which is the
-//   three-argument __fastcall shape — ECX, EDX, one stack slot. Neither of the
-//   trailing two arguments is read.
+//   at 0x6ABC60. Retail confirms a three-argument fastcall ABI: the first
+//   argument arrives in ECX and RET 4 cleans the stack argument. A separate
+//   classifier at 0x6ABCD0 has the same ABI but different control flow, so
+//   0x6ABC60 retains an address name until its original name is confirmed.
+//   Neither of the trailing two arguments is read.
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_TAB_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_TAB_METHODS_H
 
@@ -29,10 +28,6 @@
 // Westwood one.
 int __fastcall GetCurrentSidebarContext();
 
-struct SidebarClass
-{
-    // GAMEMD 0x6ABC60
-    static int __fastcall GetObjectTabIdx(int abs, int idxType, int unused);
-};
+#include "sidebar_class_methods.h"
 
 #endif  // GG_MATCH_UI_SIDEBAR_CLASS_TAB_METHODS_H
