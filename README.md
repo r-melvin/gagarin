@@ -210,8 +210,12 @@ or signature lands only once an instruction in the binary confirms it.
   **[Chronoshift](https://github.com/TheAssemblyArmada/Chronoshift)** (all GPLv3)
   — the same RA1/TD lineage in more readable form; secondary shape references
   under the same reference-only rule as EA `CnC_Red_Alert`.
-- **[Ghidra](https://ghidra-sre.org/)** — drives all per-function disassembly,
-  decompilation, and x-ref ground truth against the user's own binary.
+- **[REA](https://github.com/morluto/rea)** — the reverse-engineer-anything
+  skill and tools used for focused decompilation, control-flow and value-flow
+  analysis, and structured evidence records. We use its Ghidra provider;
+  conclusions are checked against retail instructions and VC6 byte matching.
+- **[Ghidra](https://ghidra-sre.org/)** — provides disassembly, decompilation,
+  and cross-reference analysis of the user's own binary.
 - **[ModEnc](https://www.modenc.renegadeprojects.com/)** /
   **DeeZire** — `rules.ini`/`art.ini`/`ai.ini` and MIX/SHP/VXL/HVA field names
   and field-read order (which constrains `*TypeClass` member layout).
