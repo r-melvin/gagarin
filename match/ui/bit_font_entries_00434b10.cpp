@@ -38,6 +38,7 @@ int __stdcall FUN_00434B40(BitFont_00434B40* font,
 }
 
 // FUNCTION: GAMEMD 0x434BF0
+// Complete retail span: 0xE0 bytes, including RET immediate at 0x434CCD.
 // PARTIAL: 63/87 instructions (72.4%; 52 exact, 11 relocation-normalised,
 // 24 differing). The remaining differences are register/local scheduling;
 // retail and candidate instruction multisets are identical.

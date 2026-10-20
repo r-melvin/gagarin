@@ -14,55 +14,153 @@
 #                  --addr 0x6C9600 --len 0x4f
 #
 # Exit 0 iff every instruction matches (modulo relocations).
-import argparse, collections, json, os, re, subprocess, sys
+import argparse, collections, json, os, re, subprocess, sys, tempfile
 
 GHIDRA = os.environ.get("GHIDRA", os.path.expanduser("~/.cargo/bin/ghidra"))
 
 
-def ghidra_func_size(addr):
-    """Byte length of the function starting at `addr`, from Ghidra.
+def ghidra_bytes(addr, length):
+    """Read exactly one contiguous retail span from Ghidra memory.
 
-    Guessing this from the instruction shape has produced three separate false
-    readings in this tree: a length that stops short of the last instruction
-    reports a partial match for an exact one, and a length that overruns counts
-    the *next* function's opening instruction as a mismatch. Ghidra already
-    knows the answer, so ask it."""
-    out = subprocess.run([GHIDRA, "function", "get", hex(addr), "--json"],
-                         capture_output=True, text=True).stdout
+    Do not use `ghidra disasm` here: it may return a function's flowed blocks
+    without the contiguous bytes between them, notably after calls. Linear
+    decoding of the complete byte span below preserves the real address gaps.
+    """
+    result = subprocess.run([GHIDRA, "memory", "read", hex(addr), str(length)],
+                            capture_output=True, text=True)
+    if result.returncode:
+        raise SystemExit(f"diff_retail: Ghidra memory read failed at {addr:#x}: "
+                         f"{result.stderr.strip() or result.stdout.strip()}")
     try:
-        recs = json.loads(out)
+        records = json.loads(result.stdout)
+    except ValueError as e:
+        raise SystemExit(f"diff_retail: invalid Ghidra memory-read response at "
+                         f"{addr:#x}: {e}")
+    if not isinstance(records, list) or not records:
+        raise SystemExit(f"diff_retail: Ghidra returned no bytes at {addr:#x}")
+
+    data = bytearray()
+    expected = addr
+    for record in records:
+        try:
+            start = int(record["address"], 16)
+            size = int(record["size"])
+            chunk = bytes.fromhex(record["hex"])
+        except (KeyError, TypeError, ValueError) as e:
+            raise SystemExit(f"diff_retail: malformed Ghidra memory span at "
+                             f"{addr:#x}: {e}")
+        if start != expected:
+            raise SystemExit(f"diff_retail: Ghidra memory read is not contiguous "
+                             f"at {expected:#x} (next span starts {start:#x})")
+        if len(chunk) != size:
+            raise SystemExit(f"diff_retail: Ghidra span at {start:#x} reports "
+                             f"{size} bytes but returned {len(chunk)}")
+        data.extend(chunk)
+        expected += size
+    if len(data) != length:
+        raise SystemExit(f"diff_retail: requested {length} bytes at {addr:#x}, "
+                         f"Ghidra returned {len(data)}")
+    return bytes(data)
+
+
+def raw_x86_insns(data, base_addr):
+    """Decode every byte of a contiguous retail span as 32-bit x86.
+
+    objdump receives an isolated raw binary at the retail's true address. Its
+    listing is linear, so a CALL does not make later contiguous instructions
+    disappear as they can from Ghidra's function-flow disassembly.
+    """
+    if not data:
+        raise SystemExit("diff_retail: refusing to decode an empty retail span")
+    path = None
+    try:
+        with tempfile.NamedTemporaryFile(prefix="gagarin-retail-", suffix=".bin",
+                                         dir="/tmp", delete=False) as f:
+            f.write(data)
+            path = f.name
+        result = subprocess.run(
+            ["objdump", "-D", "-b", "binary", "-m", "i386", "-M", "intel",
+             f"--adjust-vma={base_addr:#x}", path],
+            capture_output=True, text=True)
+        if result.returncode:
+            raise SystemExit("diff_retail: objdump could not decode retail span: "
+                             f"{result.stderr.strip() or result.stdout.strip()}")
+
+        insns = []
+        for line in result.stdout.splitlines():
+            # A long x86 instruction can be wrapped onto a bytes-only line.
+            continuation = re.match(
+                r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2}\s*)+)$", line)
+            if continuation:
+                if not insns:
+                    raise SystemExit("diff_retail: objdump returned instruction "
+                                     "continuation without an instruction")
+                address = int(continuation.group(1), 16)
+                off, bts, mnem, ops = insns[-1]
+                if address != base_addr + off + len(bts) // 2:
+                    raise SystemExit("diff_retail: non-contiguous objdump byte "
+                                     f"continuation at {address:#x}")
+                insns[-1] = (off, bts + re.sub(r"\s+", "", continuation.group(2)).lower(),
+                             mnem, ops)
+                continue
+
+            match = re.match(
+                r"^\s*([0-9a-fA-F]+):\s+((?:[0-9a-fA-F]{2}\s+)+)"
+                r"(\S+)(?:\s+(.*))?$", line)
+            if not match:
+                continue
+            address = int(match.group(1), 16)
+            byte_string = re.sub(r"\s+", "", match.group(2)).lower()
+            mnemonic = match.group(3).lower()
+            operands = (match.group(4) or "").strip().lower()
+            if mnemonic == ".byte":
+                raise SystemExit(f"diff_retail: objdump could not decode byte at "
+                                 f"{address:#x}; check the explicit span")
+            # Match objdump_insns: objdump renders string prefixes as a
+            # separate mnemonic token ("rep movs ..."), while Ghidra's
+            # mnemonic aliases normalize forms such as "movsd.rep".
+            if mnemonic in ("rep", "repz", "repnz", "repe", "repne", "lock") and operands:
+                parts = operands.split(None, 1)
+                mnemonic += " " + parts[0]
+                operands = parts[1] if len(parts) > 1 else ""
+            insns.append((address - base_addr, byte_string, mnemonic, operands))
+
+        if not insns:
+            raise SystemExit(f"diff_retail: objdump decoded no instructions at "
+                             f"{base_addr:#x}")
+        expected = base_addr
+        for off, byte_string, _, _ in insns:
+            address = base_addr + off
+            if address != expected:
+                raise SystemExit(f"diff_retail: objdump skipped bytes at "
+                                 f"{expected:#x} before {address:#x}")
+            expected += len(byte_string) // 2
+        if expected != base_addr + len(data):
+            raise SystemExit(f"diff_retail: decoded span ends at {expected:#x}, "
+                             f"not {base_addr + len(data):#x}; check --len")
+        decoded = bytes.fromhex("".join(byte_string for _, byte_string, _, _ in insns))
+        if decoded != data:
+            raise SystemExit("diff_retail: decoded instruction bytes do not "
+                             "reconstruct the requested retail span")
+        return insns
+    finally:
+        if path and os.path.exists(path):
+            os.unlink(path)
+
+
+def explicit_length(text):
+    """Return a validated positive length; Ghidra's size estimate is unsafe."""
+    if text == "auto":
+        raise SystemExit("diff_retail: warning: --len auto is refused because "
+                         "Ghidra's function size can omit contiguous blocks; "
+                         "pass the full validated retail span with --len")
+    try:
+        length = int(text, 16)
     except ValueError:
-        raise SystemExit(f"diff_retail: no Ghidra function record at {addr:#x}; "
-                         f"pass --len explicitly")
-    for r in recs:
-        if int(r["entry_point"], 16) == addr and r.get("size"):
-            return int(r["size"])
-    raise SystemExit(f"diff_retail: {addr:#x} is not a function entry point in "
-                     f"Ghidra; pass --len explicitly")
-
-
-def ghidra_insns(addr, length):
-    # Pull enough instructions to cover `length` bytes, then trim to it.
-    #
-    # This count used to be a flat 256, which silently truncated the RETAIL
-    # side of the comparison for any function longer than that. A body of 371
-    # instructions was scored against the first 256 of retail, so its
-    # percentage was computed against a truncated target and was meaningless.
-    # Two bytes is the shortest x86 instruction we care about here, so
-    # length//2 is a safe upper bound on the instruction count, with a floor
-    # for very short functions.
-    out = subprocess.run([GHIDRA, "disasm", hex(addr), "-n", str(max(256, length // 2 + 16))],
-                         capture_output=True, text=True).stdout
-    data = json.loads(out)
-    insns, consumed = [], 0
-    for d in data:
-        nbytes = len(d["bytes"]) // 2
-        if consumed >= length:
-            break
-        insns.append((consumed, d["bytes"].lower(), d["mnemonic"].lower(),
-                      ",".join(d["operands"])))
-        consumed += nbytes
-    return insns
+        raise SystemExit(f"diff_retail: invalid --len {text!r}; use a hex span")
+    if length <= 0:
+        raise SystemExit("diff_retail: --len must be a positive byte span")
+    return length
 
 
 def objdump_insns(obj, sym):
@@ -216,13 +314,13 @@ def main():
     ap.add_argument("--sym", required=True)
     ap.add_argument("--addr", required=True)
     ap.add_argument("--len", default="auto",
-                    help="function byte length, or 'auto' (default) to read it "
-                         "from Ghidra's function record")
+                    help="full validated retail byte span (hex); the legacy "
+                         "'auto' default is refused because Ghidra size may omit blocks")
     a = ap.parse_args()
     addr = int(a.addr, 16)
-    length = ghidra_func_size(addr) if a.len == "auto" else int(a.len, 16)
+    length = explicit_length(a.len)
 
-    retail = ghidra_insns(addr, length)
+    retail = raw_x86_insns(ghidra_bytes(addr, length), addr)
     comp, relocs = objdump_insns(a.obj, a.sym)
     # Trim trailing alignment padding from the compiled side. VC6 pads with
     # both the one-byte `nop` and the multi-byte `lea reg,[reg+0x0]` form.
@@ -233,9 +331,9 @@ def main():
 
     # A /Gy switch emits its jump and index tables immediately after the code,
     # inside the same COMDAT, and objdump happily disassembles that data as
-    # instructions. Ghidra's function record stops at the last `ret`, so the
-    # retail side never contains them and every table byte would otherwise be
-    # scored as a mismatch. Drop the compiled tail past the function length --
+    # instructions. The caller supplies the validated function span, so the
+    # retail side includes exactly those bytes. Drop the compiled tail past
+    # that span --
     # but only when the last instruction still inside the length is a terminator
     # (`ret` or an unconditional `jmp`), so a function that genuinely runs longer
     # than retail's still fails on the extra instructions rather than being

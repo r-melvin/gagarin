@@ -46,6 +46,7 @@
 // the mode gate is on and the candidate's owner allows it, and one entry is
 // drawn at random out of whichever vector filled.
 // FUNCTION: GAMEMD 0x4CFE80
+// Complete retail span: 0x2F2 bytes, including RET immediate at 0x4D016F.
 void __stdcall FlyLocoPick::PickTarget()
 {
     if (this->LinkedTo->At_2B4 != 0) {

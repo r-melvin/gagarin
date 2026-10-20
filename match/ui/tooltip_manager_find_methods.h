@@ -37,7 +37,7 @@ extern ToolTipData_007248C0* DAT_00B78820;
 extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int size,
                                  int (__cdecl* compare)(const void*, const void*));
 // FUNCTION: GAMEMD 0x725040 (decl; reloc) — the key comparison.
-int __cdecl FUN_00725040(const void* a, const void* b);
+extern "C" int __cdecl CompareToolTipTableEntries(const void* a, const void* b);
 
 struct ToolTip_007248C0
 {
@@ -79,7 +79,7 @@ inline ToolTipEntry_007248C0* ToolTip_007248C0::Lookup(unsigned int key)
     }
 
     if (!IsSorted) {
-        gg_qsort(Items, Count, 8, FUN_00725040);
+        gg_qsort(Items, Count, 8, CompareToolTipTableEntries);
         Cached = 0;
         IsSorted = 1;
     }
@@ -118,7 +118,7 @@ inline bool ToolTip_007248C0::Contains(unsigned int key)
     }
 
     if (!IsSorted) {
-        gg_qsort(Items, Count, 8, FUN_00725040);
+        gg_qsort(Items, Count, 8, CompareToolTipTableEntries);
         Cached = 0;
         IsSorted = 1;
     }

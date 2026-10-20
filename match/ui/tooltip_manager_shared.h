@@ -144,7 +144,7 @@ struct ToolTipTable
     {
         if (Count != 0) {
             if (!IsSorted) {
-                FUN_007C8B48(Items, Count, 8, FUN_00725040);
+                FUN_007C8B48(Items, Count, 8, CompareToolTipTableEntries);
                 Cached = 0;
                 IsSorted = 1;
             }

@@ -197,9 +197,24 @@ ToolTipTableEntry* ToolTipTable::Search(unsigned int* key)
     if (Count == 0)
         return 0;
     if (!IsSorted) {
-        FUN_007C8B48(Items, Count, sizeof(ToolTipTableEntry), FUN_00725040);
+        FUN_007C8B48(Items, Count, sizeof(ToolTipTableEntry), CompareToolTipTableEntries);
         Cached = 0;
         IsSorted = 1;
     }
     return SearchSorted(key);
+}
+
+// FUNCTION: GAMEMD 0x725040
+// qsort callback shared by ToolTipManager's table operations. SETGE in the
+// retail entry compares signed DWORD keys, even though lookup uses unsigned
+// keys. The original callback name and declaring scope are unconfirmed.
+extern "C" int __cdecl CompareToolTipTableEntries(const void* a, const void* b)
+{
+    int left = (int)((const ToolTipTableEntry*)a)->Key;
+    int right = (int)((const ToolTipTableEntry*)b)->Key;
+    if (left == right)
+        return 0;
+    if (left < right)
+        return -1;
+    return 1;
 }

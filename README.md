@@ -57,14 +57,15 @@ Verified consolidation steps:
   shared inheritance replaces Toggle's separate constructor prefix view and
   opaque virtual table. Five Control methods and three Toggle methods match;
   the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
-- [ToolTipManager](match/ui/tooltip_manager_shared.h): sixteen verified functions
+- [ToolTipManager](match/ui/tooltip_manager_shared.h): seventeen verified family functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
   used by ShapeButton's tooltip calls. Its constructor also models the embedded
   vector's confirmed base class. The partial Find view remains separate;
   the manager's exact total size is not established. Its table cache lookup is
   now a native method, and tooltip bounds use a shared asserted rectangle layout.
   The table search also uses the canonical class directly, replacing its layout
-  cast to an address-scoped helper.
+  cast to an address-scoped helper. Its shared qsort callback also matches,
+  including retail's signed key comparison.
 - [Surface](match/renderer/surface_class.h): BitFont and ZBuffer now share the
   confirmed Surface interface and geometry declarations. Six native methods
   live in its [implementation](match/renderer/surface_class.cpp), replacing
@@ -109,7 +110,7 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,381** | **17.1%** of 19,753 |
+| Functions matched at 100% | **3,382** | **17.1%** of 19,753 |
 | Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
 | Tracked C++ translation units under `match/` | 849 | |

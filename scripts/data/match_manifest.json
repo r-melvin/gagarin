@@ -1425,7 +1425,7 @@
   "tu": "match/audio/vox_class_methods.cpp",
   "addr": "0x752700",
   "sym": "?Play@VoxClass@@SIXPBDHH@Z",
-  "len": "0x5d",
+  "len": "0x5f",
   "name": "Play",
   "status": "partial",
   "pct": 61.0
@@ -24213,7 +24213,7 @@
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD570",
   "sym": "?Construct@MSPrintAnim@@QAEPAV1@PBGHHPAVMSFont@@PBUMSRect@@HH_N3@Z",
-  "len": "0x113",
+  "len": "0x115",
   "name": "MSPrintAnim::Construct",
   "status": "partial",
   "pct": 45.8
@@ -24846,7 +24846,7 @@
   "len": "0x840",
   "name": "?FlightPathStep@@YIHPAUCoordStruct@@PAUV",
   "status": "partial",
-  "pct": 9.2
+  "pct": 9.1
  },
  {
   "tu": "match/movement/flight_tuning_globals.cpp",
@@ -25176,7 +25176,7 @@
   "tu": "match/movement/fly_locomotion_pick_target_methods.cpp",
   "addr": "0x4CFE80",
   "sym": "?PickTarget@FlyLocoPick@@QAGXXZ",
-  "len": "0x2F0",
+  "len": "0x2f2",
   "name": "FlyLocomotionClass::PickTarget",
   "status": "partial",
   "pct": 98.3
@@ -27564,7 +27564,7 @@
   "len": "0xf7",
   "name": "CCINIClass::WriteArmorList",
   "status": "partial",
-  "pct": 8.1
+  "pct": 4.4
  },
  {
   "tu": "match/platform/ccini_class_type_list_methods.cpp",
@@ -27591,7 +27591,7 @@
   "len": "0x21c",
   "name": "CCINIClass::ReadTypeIdList",
   "status": "partial",
-  "pct": 24.4
+  "pct": 19.1
  },
  {
   "tu": "match/platform/ccini_class_type_list_methods.cpp",
@@ -30486,7 +30486,7 @@
   "tu": "match/ui/bit_font_entries_00434b10.cpp",
   "addr": "0x434BF0",
   "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAUSurface@@HHHH@Z",
-  "len": "0xde",
+  "len": "0xe0",
   "name": "FUN_00434BF0",
   "status": "partial",
   "pct": 72.4
@@ -31912,5 +31912,14 @@
   "name": "XSurface::unknown_84",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x725040",
+  "sym": "_CompareToolTipTableEntries",
+  "len": "0x22",
+  "name": "CompareToolTipTableEntries",
+  "status": "matched",
+  "pct": 100
  }
 ]

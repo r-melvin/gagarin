@@ -9,6 +9,8 @@
 //   separate functions; those are scored with scripts/vc6/raw_match.py, which
 //   does not need the analysis to know the address.
 //
+// Percentages in the attempt notes below are historical; current partial
+// scores are recorded in scripts/data/match_manifest.json.
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x5CD320  MSVQAnim::IsFinished
 //   FUNCTION: GAMEMD 0x5CD330  MSBitPrintAnim::Construct
@@ -18,7 +20,7 @@
 //   FUNCTION: GAMEMD 0x5CD400  MSBitPrintAnim::IsFinished
 //   FUNCTION: GAMEMD 0x5CD410  MSBitPrintAnim::Update
 //   FUNCTION: GAMEMD 0x5CD4D0  MSBitPrintAnim::Draw
-//   FUNCTION: GAMEMD 0x5CD570  MSPrintAnim::Construct      (PARTIAL, 90.6%)
+//   FUNCTION: GAMEMD 0x5CD570  MSPrintAnim::Construct      (PARTIAL; see manifest)
 //   FUNCTION: GAMEMD 0x5CD690  MSPrintAnim::Layout
 //   FUNCTION: GAMEMD 0x5CDB90  MSCountPages                (PARTIAL, 94.7%)
 //   FUNCTION: GAMEMD 0x5CDC50  MSPrintAnim::Update         (PARTIAL, 99.1%)
@@ -74,7 +76,8 @@
 //     +0x5C that no class in this file has) and runs to 0x5CE2A4.
 //   0x5CD850 is 0x335 exactly, one body.
 //
-// PARTIAL — 0x5CD570 MSPrintAnim::Construct, 90.6% (87/96 instructions,
+// HISTORICAL ATTEMPTS — 0x5CD570 MSPrintAnim::Construct, old oracle
+// reported 90.6% (87/96 instructions,
 // multiset identical). Two residuals. cl keeps the address of the clock member
 // in a callee-saved register across the whole body and writes the re-stamped
 // clock through it, where retail addresses the member directly; and retail
@@ -294,6 +297,7 @@ void MSBitPrintAnim::Draw(int context, MSRect* area)
 }
 
 // FUNCTION: GAMEMD 0x5CD570
+// Complete retail span: 0x115 bytes, including RET immediate at 0x5CD682.
 // Build a printed page. The base takes the caller's two leading numbers and
 // the text is built from the caller's pointer, exactly as the bit-printed
 // line's constructor does; then the page's own members are seated, the timer

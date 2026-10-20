@@ -31,7 +31,7 @@ extern "C" int __cdecl FUN_0048BC20(const void* a, const void* b);   // GAMEMD 0
 extern "C" int __cdecl FUN_0052B6A0(const void* a, const void* b);   // GAMEMD 0x52B6A0  comparator
 extern "C" int __cdecl FUN_0052B720(const void* a, const void* b);   // GAMEMD 0x52B720  comparator
 extern "C" int __cdecl FUN_00710860(const void* a, const void* b);   // GAMEMD 0x710860  comparator
-extern "C" int __cdecl FUN_00725040(const void* a, const void* b);   // GAMEMD 0x725040  comparator
+extern "C" int __cdecl CompareToolTipTableEntries(const void* a, const void* b);   // GAMEMD 0x725040  comparator
 
 // An 8-byte (key, value) entry, in both signed and unsigned key flavours.
 #define GG_SORT_SEARCH_TYPES(TAG, KEY)                                     \

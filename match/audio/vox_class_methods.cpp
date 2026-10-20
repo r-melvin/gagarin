@@ -51,6 +51,7 @@ void __cdecl VoxReleaseNode(VoxNode* node);
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x752700  VoxClass::Play  (__fastcall)
+// Complete retail span: 0x5F bytes, including RET immediate at 0x75275C.
 //
 // Resolve an EVA event name to its table index and play it; if the name is not
 // found, play index -1. A null name is a no-op. The name is compared against
