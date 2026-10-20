@@ -54,18 +54,9 @@ agents/
 logs/
 
 # --- Working notes and RE artefacts: NOT for the public repository ---
-# docs/ holds the match manifest, the methodology notes, the residual census,
-# the annotated target queues, and docs/decomp_spec/** — the last of which was
-# copied from a private reference reimplementation and names it throughout.
-# None of it is needed to build or verify the match, and it is the author's
-# working record rather than a publishable artefact. Kept on disk, untracked.
-#
-# NOTE: this untracks docs/match_manifest.json, which is the project's source of
-# truth for what is matched and is read by scripts/vc6/verify_all.py,
-# scripts/vc6/check_duplicates.py and scripts/orchestration/integrate.py. Those
-# all still work from the on-disk copy, but the manifest no longer has version
-# history, so a silent corruption of it is no longer recoverable via git and a
-# regression is no longer bisectable. Back it up separately.
+# docs/ is a private working-notes location, outside the public build and
+# verification inputs. Do not use or publish its contents. The authoritative
+# match manifest is tracked at scripts/data/match_manifest.json.
 /docs
 
 # --- Data derived from the private reference reimplementation ---

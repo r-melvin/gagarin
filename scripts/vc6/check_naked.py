@@ -58,7 +58,7 @@ def main():
         print(
             f"\nFAIL: naked bodies rose from {limit} to {total}.\n"
             "A naked body is a transcription, not a match. Work the phrasing\n"
-            "levers in docs/matching_methodology_and_toolchain.md first. If a\n"
+            "steps in CONTRIBUTING.md first. If a\n"
             "body genuinely cannot be reached from C++, say so in a comment\n"
             "above it with the variants tried and the residual, then raise\n"
             "max_naked_bodies in scripts/data/naked_body_baseline.json in the same\n"

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 133
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 131
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 141 remaining addresses are bound to VectorClass<T> tables;
+//   The 132 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -396,11 +396,6 @@ template class VectorClass<SmudgeTypeClass*>;
 //   `.?AV?$VectorClass@PAVTerrainTypeClass@@@@`.
 template class VectorClass<TerrainTypeClass*>;
 
-// FUNCTION: GAMEMD 0x004ED950
-// VectorClass<BuildingTypeClass*> -- vtable 0x007EA244 slot 3; locator 0x00801C30 -> type descriptor 0x008238F0
-//   `.?AV?$VectorClass@PAVBuildingTypeClass@@@@`.
-template class VectorClass<BuildingTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004EDBB0
 // VectorClass<AircraftTypeClass*> -- vtable 0x007EA284 slot 3; locator 0x00801CC8 -> type descriptor 0x00823968
 //   `.?AV?$VectorClass@PAVAircraftTypeClass@@@@`.
@@ -410,11 +405,6 @@ template class VectorClass<AircraftTypeClass*>;
 // VectorClass<UnitTypeClass*> -- vtable 0x007EA2C4 slot 3; locator 0x00801D60 -> type descriptor 0x008239E0
 //   `.?AV?$VectorClass@PAVUnitTypeClass@@@@`.
 template class VectorClass<UnitTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EE070
-// VectorClass<AnimTypeClass*> -- vtable 0x007EA304 slot 3; locator 0x00801DF8 -> type descriptor 0x00823A48
-//   `.?AV?$VectorClass@PAVAnimTypeClass@@@@`.
-template class VectorClass<AnimTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EE2D0
 // VectorClass<InfantryTypeClass*> -- vtable 0x007EA344 slot 3; locator 0x00801E90 -> type descriptor 0x00823AB0

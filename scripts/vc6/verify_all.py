@@ -48,7 +48,7 @@ def verify(obj, sym, addr, length):
         r = subprocess.run(["python3", f"{ROOT}/scripts/vc6/{tool}", "--obj", obj,
                             "--sym", sym, "--addr", addr, "--len", length],
                            capture_output=True, text=True)
-        if "100.0%" in r.stdout:
+        if r.returncode == 0 and "100.0%" in r.stdout:
             return True, "100.0%"
         last = r.stdout
     return False, pct_of(last) or "?"
@@ -79,9 +79,10 @@ def main():
             os.remove(obj)
         # Compiler output is unused. A Wine descendant can inherit a capture
         # pipe and prevent communicate() from reaching EOF after CL exits.
-        subprocess.run(f"cd {d} && bash {ROOT}/scripts/vc6/vc6cl.sh /Fo{obj} {f}",
-                       shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        if not os.path.exists(obj):
+        compiled = subprocess.run(
+            ["bash", f"{ROOT}/scripts/vc6/vc6cl.sh", f"/Fo{obj}", f],
+            cwd=d, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        if compiled.returncode != 0 or not os.path.exists(obj):
             print(f"COMPILE FAIL  {tu}"); fail = True
             md.append(f"| `{tu}` | — | — | **COMPILE FAIL** |"); continue
         m = p = 0; bad = []

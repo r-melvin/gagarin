@@ -25,7 +25,7 @@ def row(pct):
 
 
 class GateDecisionTests(unittest.TestCase):
-    def run_gate(self, entries, match=True, compiles=True):
+    def run_gate(self, entries, match=True, compiles=True, compiler_status=0):
         with tempfile.TemporaryDirectory() as work:
             manifest = Path(work) / 'manifest.json'
             manifest.write_text(json.dumps(entries))
@@ -36,6 +36,7 @@ class GateDecisionTests(unittest.TestCase):
                     patch.object(verify_all, 'verify', return_value=(match, '0.0%')) as oracle, \
                     contextlib.redirect_stdout(io.StringIO()), \
                     self.assertRaises(SystemExit) as exit_status:
+                compiler.return_value.returncode = compiler_status
                 verify_all.main()
             return exit_status.exception.code, compiler.call_count, oracle.call_count
 
@@ -50,6 +51,14 @@ class GateDecisionTests(unittest.TestCase):
 
     def test_partial_compile_failure_still_fails_gate(self):
         self.assertEqual(self.run_gate([row(50)], compiles=False), (1, 1, 0))
+
+    def test_failed_compiler_with_object_still_fails_gate(self):
+        self.assertEqual(self.run_gate([row(100)], compiler_status=1), (1, 1, 0))
+
+    def test_failed_oracles_cannot_report_success(self):
+        result = subprocess.CompletedProcess([], 1, stdout='match: 100.0%')
+        with patch.object(verify_all.subprocess, 'run', return_value=result):
+            self.assertFalse(verify_all.verify('fixture.obj', 'fixture', '0x401000', '0x10')[0])
 
     def test_exited_compiler_does_not_wait_for_inherited_output(self):
         """A Wine descendant can retain stdout after the compiler exits."""

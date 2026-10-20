@@ -7,6 +7,9 @@
 //   ctor FUN_0x00405BE0(this+0x3C) / CustomSoundController(this+0x50) prove
 //   sizeof(AudioController)==0x14, Location.{X,Y,Z} @0x9C/0xA0/0xA4,
 //   LineTrailer @0xA8 (last member) -> sizeof(ObjectClass)==0xAC.
+//   The retail RTTI TypeDescriptor at 0x00817AF8 is named ".?AVObjectClass@@",
+//   confirming the class-key; offsets and fields remain grounded in the
+//   constructor stores below.
 //
 // ObjectClass — base of every drawable/placeable game-object INSTANCE (units,
 // buildings, infantry, aircraft, anims, bullets, terrain, ...). Derives
@@ -53,8 +56,9 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 #endif  // GG_MATCH_LAYOUT_AUDIOCONTROLLER_DEFINED
 
 // ObjectClass  (0x24..0xAB, sizeof = 0xAC)
-struct ObjectClass : AbstractClass
+class ObjectClass : public AbstractClass
 {
+public:
     // FUNCTION: GAMEMD 0x5F5C60
     double GetHealthPercentage() const;
     // FUNCTION: GAMEMD 0x5F5D20 (original name unconfirmed)

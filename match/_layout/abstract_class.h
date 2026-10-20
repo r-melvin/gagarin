@@ -3,6 +3,9 @@
 //   Oracle: ctors FUN_0x00410170 / FUN_0x00410800 (docs/decomp_spec/
 //   type_hierarchy_layout.md), cross-checked vs YRpp AbstractClass.h. P2
 //   layout-spine root.
+//   The retail RTTI TypeDescriptor at 0x008177C8 is named ".?AVAbstractClass@@",
+//   confirming the class-key; offsets and fields remain grounded in the
+//   constructor stores below.
 //
 // AbstractClass — the root of every RA2 game object (instances) and, via
 // AbstractTypeClass, every INI "blueprint" type. Begins with FOUR COM vtable
@@ -21,8 +24,9 @@
 #include "../_rt/gg_static_assert.h"
 
 // AbstractClass base  (0x00..0x23, sizeof = 0x24)
-struct AbstractClass
+class AbstractClass
 {
+public:
     void* _vtable_IPersistStream;   // +0x00
     void* _vtable_IRTTITypeInfo;    // +0x04
     void* _vtable_INoticeSink;      // +0x08

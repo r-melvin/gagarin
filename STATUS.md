@@ -1,17 +1,48 @@
 # Project status
 
-The latest whole-repository gates pass with **3,630 fully matched functions**,
-**165 partial rows**, and **884 tracked C++ files**; the manifest contains 880
-translation units. Compilation, the 884/884 tracked-source object build and its
-hash check passed; 66 verifier tests also passed, and the duplicate-address
-check found no conflicts. The ultimate goal remains a
-complete byte-for-byte reproduction of the pinned executable; that goal is not
-achieved.
+The latest verification covers **3,646 fully matched functions**, **165 partial
+rows**, **886 tracked C++ files**, and 882 manifest translation units. The
+final whole-repository check passed across all 882 manifest translation units
+with no matched function regressing. The 886/886 tracked-source object build
+and hash check passed,
+and all 68 verifier tests passed. The final compile/layout gate passed.
+The complete byte-for-byte executable target has not been achieved.
 
-The detailed consolidation record and evidence caveats below describe the
-current verified project state. Whole-image identity is not established.
+## Latest integration: native type vectors and shared class declarations
 
-## Latest verified integration: ObjectClass health and TerrainClass / ParticleSystemClass vectors
+The native [AnimTypeClass](match/core/vector_animtypeclass_methods.cpp) and
+[BuildingTypeClass](match/core/vector_buildingtypeclass_methods.cpp) vector pairs
+contain 24 exact function rows: 16 new matches and eight migrated claims.
+Each pair has two RTTI-backed seven-slot tables; all four pass scoped checks
+against the project objects with conditional `--weak-defaults` resolution.
+Paired compiler probes pin no-GX flags: GX emits a short derived deleting
+wrapper instead of the complete retail body. No constructors, TypeList tables,
+original TU grouping or final linker placement are claimed by this batch.
+
+Retail RTTI TypeDescriptors at `0x8177C8` and `0x817AF8` establish the class
+keys for `AbstractClass` and `ObjectClass`. Their shared headers now use
+`class` with public access and unchanged field layouts. Nine affected manifest
+symbols were updated from source COFF struct-pointer mangling to class-pointer
+mangling; all nine full bodies still match. These are compiler symbol names,
+not names recovered from the stripped retail executable. Isolated local
+struct declarations remain a follow-up; this is not a complete hierarchy or
+linkage reconstruction.
+
+The verifier now rejects nonzero compiler exits even when an object exists,
+and rejects failed oracle commands that print a success percentage. The two
+new tests cover those cases. The local `/dll /noentry /nodefaultlib` diagnostic
+link has no duplicate definitions and reports 4,217 unique unresolved symbols
+(6,472 reference lines). It still fails to link; default CRT/import libraries
+are deliberately excluded, so these counts do not measure engine-only gaps.
+
+Matched function lengths total 259,939 bytes (254 KiB): 18.5% of listed
+functions and 6.8% of listed function lengths. The padding heuristic misses
+192 matched entries. The residual vector families contain 263 generic deleting
+bindings across 135 instantiation views, 132 base Clear rows, and 130 native
+dynamic Clear rows plus one DiskID stand-in. The resize family has 18 rows.
+These are intermediate verification results, not whole-image identity.
+
+## Previous verified integration: ObjectClass health and TerrainClass / ParticleSystemClass vectors
 
 Native vector clusters for [TerrainClass](match/core/vector_terrainclass_methods.cpp)
 and [ParticleSystemClass](match/core/vector_particlesystemclass_methods.cpp)
@@ -24,7 +55,7 @@ The shared [ObjectClass health implementation](match/core/object_class_health_me
 contains three full-span matches: `GetHealthPercentage` at `0x5F5C60` (32
 bytes), `FUN_005F5D20` (112 bytes), and `GetHealthStatus` at `0x5F5DD0`
 (169 bytes). The predicate name at `0x5F5D20` remains unconfirmed by the
-binary. The two sparse Building views now inherit the confirmed `ObjectClass`
+binary. The three sparse Building views now inherit the confirmed `ObjectClass`
 prefix and call its native health method; the intermediate direct-base
 hierarchy is not reconstructed.
 
@@ -181,7 +212,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 884 tracked C++ files and 3,795 manifest
+verified snapshot, the inventory has 886 tracked C++ files and 3,811 manifest
 rows, with no manifest TU missing from tracked sources. Four tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
@@ -497,10 +528,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,630** | **18.4%** of 19,753 |
-| Sum of matched function lengths | 253 KiB | 6.8% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,646** | **18.5%** of 19,753 |
+| Sum of matched function lengths | 254 KiB | 6.8% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 884 | |
+| Tracked C++ files under `match/` | 886 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

@@ -13887,7 +13887,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
   "addr": "0x004e8d80",
   "sym": "?Clear@?$DynamicVectorClass@PAVBuildingTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13914,7 +13914,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
   "addr": "0x004e8ea0",
   "sym": "?Clear@?$DynamicVectorClass@PAVAnimTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16299,20 +16299,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
   "addr": "0x004F0750",
   "sym": "??_G?$VectorClass@PAVBuildingTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BuildingTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<BuildingTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
   "addr": "0x004F07A0",
-  "sym": "??_G?$VectorClass@PAVBuildingTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVBuildingTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BuildingTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<BuildingTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16353,20 +16353,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
   "addr": "0x004F0930",
   "sym": "??_G?$VectorClass@PAVAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AnimTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<AnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
   "addr": "0x004F0980",
-  "sym": "??_G?$VectorClass@PAVAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AnimTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19296,7 +19296,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
   "addr": "0x004ed950",
   "sym": "?Clear@?$VectorClass@PAVBuildingTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19323,7 +19323,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
   "addr": "0x004ee070",
   "sym": "?Clear@?$VectorClass@PAVAnimTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -23420,7 +23420,7 @@
  {
   "tu": "match/map/cell_class_query_methods.cpp",
   "addr": "0x47C4D0",
-  "sym": "?FindObjectOfType@CellClass@@QBEPAUObjectClass@@H_N@Z",
+  "sym": "?FindObjectOfType@CellClass@@QBEPAVObjectClass@@H_N@Z",
   "len": "0x49",
   "name": "FindObjectOfType",
   "status": "matched",
@@ -23447,7 +23447,7 @@
  {
   "tu": "match/map/cell_class_query_methods.cpp",
   "addr": "0x47C5A0",
-  "sym": "?GetSomeObject@CellClass@@QAEPAUObjectClass@@HH@Z",
+  "sym": "?GetSomeObject@CellClass@@QAEPAVObjectClass@@HH@Z",
   "len": "0x79",
   "name": "CellClass::GetSomeObject",
   "status": "matched",
@@ -23492,7 +23492,7 @@
  {
   "tu": "match/map/cell_class_remove_content_methods.cpp",
   "addr": "0x47EA90",
-  "sym": "?RemoveContent@CellClass@@QAEXPAUObjectClass@@_N@Z",
+  "sym": "?RemoveContent@CellClass@@QAEXPAVObjectClass@@_N@Z",
   "len": "0x107",
   "name": "CellClass::RemoveContent",
   "status": "matched",
@@ -23870,7 +23870,7 @@
  {
   "tu": "match/map/map_class_more_methods.cpp",
   "addr": "0x55BAA0",
-  "sym": "?AddObject@MapClass@@QAE_NPAUObjectClass@@_N@Z",
+  "sym": "?AddObject@MapClass@@QAE_NPAVObjectClass@@_N@Z",
   "len": "0x36",
   "name": "AddObject",
   "status": "matched",
@@ -23906,7 +23906,7 @@
  {
   "tu": "match/map/map_class_object_methods.cpp",
   "addr": "0x55BAE0",
-  "sym": "?RemoveObject@LogicClass@@QAEXPAUObjectClass@@@Z",
+  "sym": "?RemoveObject@LogicClass@@QAEXPAVObjectClass@@@Z",
   "len": "0x52",
   "name": "LogicClass::RemoveObject",
   "status": "matched",
@@ -25274,7 +25274,7 @@
  {
   "tu": "match/movement/foot_class_more_methods.cpp",
   "addr": "0x4D9920",
-  "sym": "?GreatestThreat@FootMore@@QAEPAUAbstractClass@@IPAUCoordStruct@@_N@Z",
+  "sym": "?GreatestThreat@FootMore@@QAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
   "len": "0x3f",
   "name": "GreatestThreat",
   "status": "matched",
@@ -25310,7 +25310,7 @@
  {
   "tu": "match/movement/foot_class_nav_list_methods.cpp",
   "addr": "0x4DA0E0",
-  "sym": "?QueueNavigationList@FootNav@@QAEXPAUAbstractClass@@@Z",
+  "sym": "?QueueNavigationList@FootNav@@QAEXPAVAbstractClass@@@Z",
   "len": "0xd2",
   "name": "FootClass::QueueNavigationList",
   "status": "matched",
@@ -28838,7 +28838,7 @@
  {
   "tu": "match/ui/display_class_remove_methods.cpp",
   "addr": "0x4A9770",
-  "sym": "?Remove@DisplayClass@@QAEXPAUObjectClass@@@Z",
+  "sym": "?Remove@DisplayClass@@QAEXPAVObjectClass@@@Z",
   "len": "0xcb",
   "name": "DisplayClass::Remove",
   "status": "matched",
@@ -28847,7 +28847,7 @@
  {
   "tu": "match/ui/display_class_submit_methods.cpp",
   "addr": "0x4A9720",
-  "sym": "?Submit@DisplayClass@@QAEXPAUObjectClass@@@Z",
+  "sym": "?Submit@DisplayClass@@QAEXPAVObjectClass@@@Z",
   "len": "0x4D",
   "name": "DisplayClass::Submit",
   "status": "matched",
@@ -34153,5 +34153,149 @@
   "name": "ObjectClass::FUN_005F5D20",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "addr": "0x4E8ED0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAnimTypeClass@@@@UBEHPAPAVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<AnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8EF0",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVAnimTypeClass@@@@UBEPAVAnimTypeClass@@H@Z",
+  "name": "VectorClass<AnimTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EDF80",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVAnimTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<AnimTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EDFC0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVAnimTypeClass@@@@UAE_NHPAPAVAnimTypeClass@@@Z",
+  "name": "VectorClass<AnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE0A0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAnimTypeClass@@@@UBEHABQAVAnimTypeClass@@@Z",
+  "name": "VectorClass<AnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EE0E0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVAnimTypeClass@@@@UBEHPAPAVAnimTypeClass@@@Z",
+  "name": "VectorClass<AnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EE100",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAnimTypeClass@@@@UAE_NHPAPAVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<AnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE1B0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_animtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAnimTypeClass@@@@UBEHABQAVAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<AnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8DB0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVBuildingTypeClass@@@@UBEHPAPAVBuildingTypeClass@@@Z",
+  "name": "DynamicVectorClass<BuildingTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8DD0",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVBuildingTypeClass@@@@UBEPAVBuildingTypeClass@@H@Z",
+  "name": "VectorClass<BuildingTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4ED860",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVBuildingTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<BuildingTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4ED8A0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVBuildingTypeClass@@@@UAE_NHPAPAVBuildingTypeClass@@@Z",
+  "name": "VectorClass<BuildingTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ED980",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVBuildingTypeClass@@@@UBEHABQAVBuildingTypeClass@@@Z",
+  "name": "VectorClass<BuildingTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4ED9C0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVBuildingTypeClass@@@@UBEHPAPAVBuildingTypeClass@@@Z",
+  "name": "VectorClass<BuildingTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4ED9E0",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVBuildingTypeClass@@@@UAE_NHPAPAVBuildingTypeClass@@@Z",
+  "name": "DynamicVectorClass<BuildingTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EDA90",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildingtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBuildingTypeClass@@@@UBEHABQAVBuildingTypeClass@@@Z",
+  "name": "DynamicVectorClass<BuildingTypeClass*>::FindItemIndex"
  }
 ]
