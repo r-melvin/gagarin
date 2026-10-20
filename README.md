@@ -1,9 +1,14 @@
 # gagarin
 
-**gagarin** is a matching decompilation project for the *Command & Conquer:
-Red Alert 2 — Yuri's Revenge* engine, retail `gamemd.exe` **v1.001**. The goal
-is readable C++ that compiles with the MSVC 6-era toolchain and matches the
-retail instructions, function by function. Reconstruction is in progress.
+**gagarin** reconstructs the *Command & Conquer: Red Alert 2 — Yuri's Revenge*
+engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ project.
+The ultimate goal is a compilable source tree whose classes, inheritance,
+interfaces, source organization and coding style are as close to Westwood's
+original project as the evidence allows. Reconstruction is in progress.
+
+Per-function instruction matching under the MSVC 6-era toolchain is the fidelity
+check on that reconstruction. Individually matching functions are intermediate
+results; the deliverable is a shared, integrated C++ project.
 
 ## Why
 
@@ -13,7 +18,31 @@ image is identified by its SHA-256 in [reccmp-project.yml](reccmp-project.yml).
 The project works from that binary; it does not claim to have recovered
 Westwood's original source files.
 
-## Progress
+## Source-project reconstruction progress
+
+Matching coverage and project reconstruction are tracked separately. A higher
+match count does not by itself establish a coherent class hierarchy or a
+project-wide build.
+
+| Milestone | Current state and evidence | Completion gate |
+| --- | --- | --- |
+| Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
+| Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h) and [StorageClass](match/economy/storage_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
+| Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
+| Integrated project build | Not yet established. The current [compile gate](scripts/vc6/compile_all.sh) compiles translation units separately; the tracked tree has no top-level source-project build target or whole-engine link gate. | Provide a project-wide build that compiles and links the reconstructed engine through shared declarations and implementations. |
+| Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
+
+Address-scoped matching files and narrow layout views are working forms, not the
+intended final organization. Consolidation should replace duplicate views and
+function stand-ins with shared types and real methods as the binary evidence
+supports them. Each consolidation batch must retain address/provenance records,
+pass compilation, and reprove the moved functions against retail. Fewer source
+files after consolidation can represent progress without adding new matches.
+
+Update this table as class-consolidation and build milestones are verified;
+do not infer their completion from the matching percentages.
+
+## Function-matching progress
 
 ![gagarin matching progress](.github/assets/progress.svg)
 
@@ -32,7 +61,7 @@ reported body sizes, 3,797,269 bytes. These are analysis counts, not a complete
 census of engine functions or unique byte coverage. The raw `.text` section is
 4,060,045 bytes, as recorded by the [padding scan](scripts/data/padding_scan.json).
 CRT/third-party entries have not been subtracted from the denominators, so the
-percentages do not measure completion of the engine-only goal.
+percentages do not measure completion of the reconstructed source project.
 
 Regenerate the graphic with `scripts/orchestration/progress_svg.py` after
 updating the manifest. Source is grouped by subsystem under `match/`;
@@ -58,8 +87,8 @@ python3 scripts/orchestration/padding_scan.py /path/to/gamemd.exe \
 
 The function export is produced by `ghidra function list --limit 100000 --json`.
 Statically linked CRT and third-party code is outside the matching scope under
-[AGENTS.md](AGENTS.md). The goal is to match the engine function by function;
-a byte-identical executable is not a completion criterion.
+[AGENTS.md](AGENTS.md). Function matching checks the reconstructed project's
+fidelity; a byte-identical executable is not a completion criterion.
 
 ## What "matched" means
 
@@ -155,6 +184,12 @@ order functions by ascending address within the TU, and give each file a
 provenance header (for example, `own-binary-via-Ghidra | EA-GPL-RA1-reference |
 YRpp-cross-check | original`). See `CONTRIBUTING.md` for the full workflow
 and `AGENTS.md` for the rules.
+
+When a cluster's ownership and layout are established, consolidate its methods
+into shared class headers and implementations. Reverify its functions after
+moves or type/signature changes, and update the manifest with the actual symbols
+and source paths. Keep temporary matching conveniences out of the final class
+interfaces unless the binary requires them.
 
 Every external source is a hypothesis, never an authority: an offset, address
 or signature lands only once an instruction in the binary confirms it.
