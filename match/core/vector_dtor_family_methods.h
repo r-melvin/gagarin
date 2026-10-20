@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 298 remaining 73-byte deleting-destructor bodies are bound here through
-// 152 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 287 remaining 73-byte deleting-destructor bodies are bound here through
+// 147 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -162,8 +162,6 @@ extern char VT_007EA7D4;
 extern char VT_007EAA5C;
 // VTABLE: GAMEMD 0x007EB80C -- VectorClass<CCINIClass*>
 extern char VT_007EB80C;
-// VTABLE: GAMEMD 0x007EBFEC -- VectorClass<const AnimClass*>
-extern char VT_007EBFEC;
 // VTABLE: GAMEMD 0x007EC07C -- VectorClass<IonBlastClass*>
 extern char VT_007EC07C;
 // VTABLE: GAMEMD 0x007ECD0C -- VectorClass<unsigned short*>
@@ -180,8 +178,6 @@ extern char VT_007ECF9C;
 extern char VT_007ECFDC;
 // VTABLE: GAMEMD 0x007ED0EC -- VectorClass<LineTrail*>
 extern char VT_007ED0EC;
-// VTABLE: GAMEMD 0x007ED1FC -- VectorClass<const unsigned short*>
-extern char VT_007ED1FC;
 // VTABLE: GAMEMD 0x007ED32C -- VectorClass<FileEntryClass*>
 extern char VT_007ED32C;
 // VTABLE: GAMEMD 0x007ED480 -- VectorClass<CellClass*>
@@ -204,8 +200,6 @@ extern char VT_007ED92C;
 extern char VT_007ED970;
 // VTABLE: GAMEMD 0x007EDA4C -- VectorClass<double>
 extern char VT_007EDA4C;
-// VTABLE: GAMEMD 0x007EE0D4 -- VectorClass<const char*>
-extern char VT_007EE0D4;
 // VTABLE: GAMEMD 0x007EE390 -- VectorClass<NodeNameType*>
 extern char VT_007EE390;
 // VTABLE: GAMEMD 0x007EE3B0 -- VectorClass<CoopCampaignClass*>
@@ -234,8 +228,6 @@ extern char VT_007EECEC;
 extern char VT_007EEE54;
 // VTABLE: GAMEMD 0x007EED40 -- VectorClass<MultiplayerGameMode*>
 extern char VT_007EED40;
-// VTABLE: GAMEMD 0x007EEF50 -- VectorClass<const MultiMission*>
-extern char VT_007EEF50;
 // VTABLE: GAMEMD 0x007EF28C -- VectorClass<ObjectTypeClass*>
 extern char VT_007EF28C;
 // VTABLE: GAMEMD 0x007EF6DC -- VectorClass<SpotLightClass*>
@@ -268,8 +260,6 @@ extern char VT_007F07C4;
 extern char VT_007F0ACC;
 // VTABLE: GAMEMD 0x007F0C4C -- VectorClass<OwnerTalkClass::ConnectionListStruct*>
 extern char VT_007F0C4C;
-// VTABLE: GAMEMD 0x007F0D7C -- VectorClass<const SmudgeTypeClass*>
-extern char VT_007F0D7C;
 // VTABLE: GAMEMD 0x007F1274 -- VectorClass<DiskID>
 extern char VT_007F1274;
 // VTABLE: GAMEMD 0x007F1214 -- VectorClass<MultiMission*>

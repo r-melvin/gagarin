@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 147
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 142
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -536,11 +536,6 @@ template class DynamicVectorClass<bool>;
 //   `.?AV?$DynamicVectorClass@PAVCCINIClass@@@@`.
 template class DynamicVectorClass<CCINIClass*>;
 
-// FUNCTION: GAMEMD 0x0053C4C0
-// DynamicVectorClass<const AnimClass*> -- vtable 0x007EBFCC slot 3; locator 0x008047B8 -> type descriptor 0x00828000
-//   `.?AV?$DynamicVectorClass@PBVAnimClass@@@@`.
-template class DynamicVectorClass<const AnimClass*>;
-
 // FUNCTION: GAMEMD 0x0053DA40
 // DynamicVectorClass<IonBlastClass*> -- vtable 0x007EC05C slot 3; locator 0x00804850 -> type descriptor 0x00828100
 //   `.?AV?$DynamicVectorClass@PAVIonBlastClass@@@@`.
@@ -580,11 +575,6 @@ template class DynamicVectorClass<LightSourceClass::PendingCellClass*>;
 // DynamicVectorClass<LineTrail*> -- vtable 0x007ED0CC slot 3; locator 0x008051A8 -> type descriptor 0x00829D78
 //   `.?AV?$DynamicVectorClass@PAVLineTrail@@@@`.
 template class DynamicVectorClass<LineTrail*>;
-
-// FUNCTION: GAMEMD 0x005581E0
-// DynamicVectorClass<const unsigned short*> -- vtable 0x007ED1DC slot 3; locator 0x00805280 -> type descriptor 0x00829DD0
-//   `.?AV?$DynamicVectorClass@PBG@@`.
-template class DynamicVectorClass<const unsigned short*>;
 
 // FUNCTION: GAMEMD 0x0055A150
 // DynamicVectorClass<FileEntryClass*> -- vtable 0x007ED30C slot 3; locator 0x00805370 -> type descriptor 0x00829E48
@@ -640,11 +630,6 @@ template class DynamicVectorClass<CellClass*>;
 // DynamicVectorClass<double> -- vtable 0x007EDA6C slot 3; locator 0x00805BA8 -> type descriptor 0x0082C068
 //   `.?AV?$DynamicVectorClass@N@@`.
 template class DynamicVectorClass<double>;
-
-// FUNCTION: GAMEMD 0x005C0A70
-// DynamicVectorClass<const char*> -- vtable 0x007EE0B4 slot 3; locator 0x00805F08 -> type descriptor 0x0082D9F8
-//   `.?AV?$DynamicVectorClass@PBD@@`.
-template class DynamicVectorClass<const char*>;
 
 // FUNCTION: GAMEMD 0x005C5070
 // DynamicVectorClass<NodeNameType*> -- vtable 0x007EE370 slot 3; locator 0x00806210 -> type descriptor 0x0082DBE0
@@ -715,11 +700,6 @@ template class DynamicVectorClass<MultiplayerTeam*>;
 // DynamicVectorClass<MultiplayerGameMode*> -- vtable 0x007EED20 slot 3; locator 0x00806F28 -> type descriptor 0x008307F0
 //   `.?AV?$DynamicVectorClass@PAVMultiplayerGameMode@@@@`.
 template class DynamicVectorClass<MultiplayerGameMode*>;
-
-// FUNCTION: GAMEMD 0x005EEBB0
-// DynamicVectorClass<const MultiMission*> -- vtable 0x007EEF70 slot 3; locator 0x008072C8 -> type descriptor 0x008319C8
-//   `.?AV?$DynamicVectorClass@PBVMultiMission@@@@`.
-template class DynamicVectorClass<const MultiMission*>;
 
 // FUNCTION: GAMEMD 0x005F9B00
 // DynamicVectorClass<ObjectTypeClass*> -- vtable 0x007EF26C slot 3; locator 0x008074B0 -> type descriptor 0x00832A48
@@ -800,13 +780,6 @@ template class DynamicVectorClass<RadarEventClass*>;
 // DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*> -- vtable 0x007F0C2C slot 3; locator 0x008089D0 -> type descriptor 0x00839A40
 //   `.?AV?$DynamicVectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@`.
 template class DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>;
-
-// FUNCTION: GAMEMD 0x0067A680
-// DynamicVectorClass<const SmudgeTypeClass*> -- vtable 0x007F0DEC slot 3; locator 0x00808C80 -> type descriptor 0x00839FA8
-//   `.?AV?$DynamicVectorClass@PBVSmudgeTypeClass@@@@`.
-//   The same body also sits at that slot in TypeList<SmudgeTypeClass*> (0x007F0D1C); DynamicVectorClass<const SmudgeTypeClass*> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<const SmudgeTypeClass*>;
 
 // FUNCTION: GAMEMD 0x0069C4A0
 // TypeList<DiskID> -- vtable 0x007F12D4 slot 3; locator 0x00809320 -> type descriptor 0x0083F5B0

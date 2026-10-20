@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Twenty-three remaining four-byte-element resize bodies retain address-scoped
+// 21 remaining four-byte-element resize bodies retain address-scoped
 // views until their actual template classes are integrated. Recovered entries
 // are bound in their native specialization implementations.
 // Entry-origin spans are 0xB0 bytes. Instructions confirm Items+4, Capacity+8,
@@ -184,19 +184,6 @@ bool VectorResizeFamily::FUN_5AD010(int newsize, void** array)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x5C0C50
-bool VectorResizeFamily::FUN_5C0C50(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x5C5510
 bool VectorResizeFamily::FUN_5C5510(int newsize, void** array)
 {
@@ -251,19 +238,6 @@ bool VectorResizeFamily::FUN_5D8730(int newsize, void** array)
 
 // FUNCTION: GAMEMD 0x627F90
 bool VectorResizeFamily::FUN_627F90(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x67B050
-bool VectorResizeFamily::FUN_67B050(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
         if (Length < ActiveCount) {

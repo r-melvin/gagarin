@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 162 base-template instantiations reproduce 298 remaining retail destructor
+// 147 base-template instantiations reproduce 287 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -620,12 +620,6 @@ template class VectorClass<bool>;
 //   `.?AV?$VectorClass@PAVCCINIClass@@@@`.
 template class VectorClass<CCINIClass*>;
 
-// FUNCTION: GAMEMD 0x0053C780
-// FUNCTION: GAMEMD 0x0053C7D0
-// VectorClass<const AnimClass*> -- reseats retail vtable 0x007EBFEC; locator 0x008047E8 -> type descriptor 0x00827FD0
-//   `.?AV?$VectorClass@PBVAnimClass@@@@`.
-template class VectorClass<const AnimClass*>;
-
 // FUNCTION: GAMEMD 0x0053DD00
 // FUNCTION: GAMEMD 0x0053DD50
 // VectorClass<IonBlastClass*> -- reseats retail vtable 0x007EC07C; locator 0x00804880 -> type descriptor 0x008280D0
@@ -673,12 +667,6 @@ template class VectorClass<LightSourceClass::PendingCellClass*>;
 // VectorClass<LineTrail*> -- reseats retail vtable 0x007ED0EC; locator 0x008051D8 -> type descriptor 0x00829D48
 //   `.?AV?$VectorClass@PAVLineTrail@@@@`.
 template class VectorClass<LineTrail*>;
-
-// FUNCTION: GAMEMD 0x00558130
-// FUNCTION: GAMEMD 0x005584A0
-// VectorClass<const unsigned short*> -- reseats retail vtable 0x007ED1FC; locator 0x008052B0 -> type descriptor 0x00829DB0
-//   `.?AV?$VectorClass@PBG@@`.
-template class VectorClass<const unsigned short*>;
 
 // FUNCTION: GAMEMD 0x0055A410
 // FUNCTION: GAMEMD 0x0055A460
@@ -742,12 +730,6 @@ template class VectorClass<TRect<int> >;
 // VectorClass<double> -- reseats retail vtable 0x007EDA4C; locator 0x00805B40 -> type descriptor 0x0082C048
 //   `.?AV?$VectorClass@N@@`.
 template class VectorClass<double>;
-
-// FUNCTION: GAMEMD 0x005C0D30
-// FUNCTION: GAMEMD 0x005C0D80
-// VectorClass<const char*> -- reseats retail vtable 0x007EE0D4; locator 0x00805F38 -> type descriptor 0x0082D9D8
-//   `.?AV?$VectorClass@PBD@@`.
-template class VectorClass<const char*>;
 
 // FUNCTION: GAMEMD 0x005C58A0
 // FUNCTION: GAMEMD 0x005C58F0
@@ -832,12 +814,6 @@ template class VectorClass<MultiplayerTeam*>;
 // VectorClass<MultiplayerGameMode*> -- reseats retail vtable 0x007EED40; locator 0x00806F58 -> type descriptor 0x008307B8
 //   `.?AV?$VectorClass@PAVMultiplayerGameMode@@@@`.
 template class VectorClass<MultiplayerGameMode*>;
-
-// FUNCTION: GAMEMD 0x005EEEC0
-// FUNCTION: GAMEMD 0x005EEF10
-// VectorClass<const MultiMission*> -- reseats retail vtable 0x007EEF50; locator 0x00807310 -> type descriptor 0x00831A00
-//   `.?AV?$VectorClass@PBVMultiMission@@@@`.
-template class VectorClass<const MultiMission*>;
 
 // FUNCTION: GAMEMD 0x005F9DE0
 // FUNCTION: GAMEMD 0x005F9E30
@@ -932,13 +908,6 @@ template class VectorClass<RadarEventClass*>;
 // VectorClass<OwnerTalkClass::ConnectionListStruct*> -- reseats retail vtable 0x007F0C4C; locator 0x00808A00 -> type descriptor 0x008399F8
 //   `.?AV?$VectorClass@PAUConnectionListStruct@OwnerTalkClass@@@@`.
 template class VectorClass<OwnerTalkClass::ConnectionListStruct*>;
-
-// FUNCTION: GAMEMD 0x0067A9E0
-// FUNCTION: GAMEMD 0x0067C0B0
-// FUNCTION: GAMEMD 0x0067C100
-// VectorClass<const SmudgeTypeClass*> -- reseats retail vtable 0x007F0D7C; locator 0x00808BB0 -> type descriptor 0x00839F70
-//   `.?AV?$VectorClass@PBVSmudgeTypeClass@@@@`.
-template class VectorClass<const SmudgeTypeClass*>;
 
 // FUNCTION: GAMEMD 0x0069C6C0
 // FUNCTION: GAMEMD 0x0069D460

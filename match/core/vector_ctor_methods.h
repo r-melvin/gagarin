@@ -12,7 +12,7 @@
 //
 // The remaining bindings retain an object-returning layout view. The recovered
 // ParticleSystemType pointer constructor at 0x45AD80 now uses the native
-// VectorClass template in vector_capacity_constructors.cpp.
+// VectorClass template in vector_particlesystemtype_methods.cpp.
 #ifndef GG_MATCH_CORE_VECTOR_CTOR_METHODS_H
 #define GG_MATCH_CORE_VECTOR_CTOR_METHODS_H
 
