@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Twelve remaining copy-constructor-shaped bodies are represented by
+// Eleven remaining copy-constructor-shaped bodies are represented by
 // address-scoped four-byte-element layout views. Their raw code agrees apart
 // from the two vtable constants, the base Clear-slot address and allocator
 // call displacement. This does not establish their original template element
 // types, declaring classes or translation-unit boundaries. The RTTI-confirmed
-// DynamicVectorClass<int> entry 0x4779E0 now lives in vector_int_methods.cpp.
+// DynamicVectorClass<int> entry 0x4779E0 and TypeList<int> entry 0x4777B0
+// now live on their native templates in specialization translation units.
 // Ordered by ascending retail address.
 //
 // Phrasing note: the allocation-failure path falls through to the plain
@@ -17,9 +18,6 @@
 // instruction (a 97.6% plateau on both families).
 
 #include "dynamic_vector_copy_ctor_family_methods.h"
-
-// FUNCTION: GAMEMD 0x004777B0
-GG_DYNVEC_COPY_CTOR_BODY(007E4DB8, 007E4DD8)
 
 // FUNCTION: GAMEMD 0x0050E830
 GG_DYNVEC_COPY_CTOR_BODY(007EA9E4, 007EAAE8)

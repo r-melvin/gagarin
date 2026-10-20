@@ -15,13 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // RectangleStruct — { int X, Y, Width, Height }. YRpp BasicStructures.h.
-struct RectangleStruct
-{
-    int X;
-    int Y;
-    int Width;
-    int Height;
-};
+#include "../_layout/geometry2d.h"
 
 // CellStruct — 2D short cell coordinate (sizeof == 4). The empty user-declared
 // constructor is load-bearing: it makes the by-value GetCell() temporary use the

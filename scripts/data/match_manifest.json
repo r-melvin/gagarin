@@ -5868,11 +5868,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_copy_ctor_family_methods.cpp",
+  "tu": "match/core/typelist_int_methods.cpp",
   "addr": "0x4777B0",
-  "sym": "??0DynVec_007E4DD8@@QAE@ABV0@@Z",
+  "sym": "??0?$TypeList@H@@QAE@ABV0@@Z",
   "len": "0x88",
-  "name": "DynVec_007E4DD8::DynVec_007E4DD8",
+  "name": "TypeList<int> copy constructor",
   "status": "matched",
   "pct": 100
  },
@@ -10469,7 +10469,7 @@
  {
   "tu": "match/renderer/surface_class.cpp",
   "addr": "0x411510",
-  "sym": "?GetRect@Surface@@UBE?AULTRBStruct@@XZ",
+  "sym": "?GetRect@Surface@@UBE?AURectangleStruct@@XZ",
   "len": "0x24",
   "name": "Surface::GetRect",
   "status": "matched",
@@ -15363,11 +15363,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/typelist_int_methods.cpp",
   "addr": "0x00477990",
-  "sym": "??_G?$VectorClass@H@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@H@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<int>::`scalar deleting destructor'",
+  "name": "TypeList<int> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -32006,7 +32006,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7BAF10",
-  "sym": "?unknown_8C@XSurface@@UAEIABUPoint2D@@ABUXYWHStruct@@@Z",
+  "sym": "?unknown_8C@XSurface@@UAEIABUPoint2D@@ABURectangleStruct@@@Z",
   "len": "0x77",
   "name": "XSurface::unknown_8C",
   "status": "matched",
@@ -32015,7 +32015,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7BAF90",
-  "sym": "?unknown_88@XSurface@@UAE_NABUPoint2D@@IABUXYWHStruct@@@Z",
+  "sym": "?unknown_88@XSurface@@UAE_NABUPoint2D@@IABURectangleStruct@@@Z",
   "len": "0x82",
   "name": "XSurface::unknown_88",
   "status": "matched",
@@ -32081,6 +32081,15 @@
   "sym": "?FindItemIndex@?$DynamicVectorClass@H@@UBEHABH@Z",
   "len": "0x26",
   "name": "DynamicVectorClass<int>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7BB020",
+  "sym": "?unknown_14@XSurface@@UAE_NPAURectangleStruct@@H@Z",
+  "len": "0x29",
+  "name": "XSurface::unknown_14",
   "status": "matched",
   "pct": 100
  }

@@ -65,3 +65,11 @@ bool XSurface::unknown_88(const Point2D& point, unsigned int color, const XYWHSt
     }
     return false;
 }
+
+// FUNCTION: GAMEMD 0x7BB020
+// Full 0x29-byte body through RET 8 at 0x7BB046. GetRect supplies XYWH bounds;
+// the qualified call preserves retail's direct call to 0x7BB050.
+bool XSurface::unknown_14(RectangleStruct* rectangle, int color)
+{
+    return this->XSurface::unknown_10(rectangle, this->GetRect(), color);
+}

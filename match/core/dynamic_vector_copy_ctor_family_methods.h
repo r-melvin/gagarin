@@ -19,7 +19,7 @@
 //   expanded inline, so one body covers the whole family: zero the base
 //   members, seat the base vtable, and — unless copying from itself — Clear(),
 //   take the source capacity, allocate that many elements, copy them, then
-//   copy Count and CapacityIncrement and seat the derived vtable. Twelve remaining
+//   copy Count and CapacityIncrement and seat the derived vtable. Eleven remaining
 //   layout views differ only in the two vtable addresses.
 #ifndef GG_MATCH_CORE_DYNAMIC_VECTOR_COPY_CTOR_FAMILY_METHODS_H
 #define GG_MATCH_CORE_DYNAMIC_VECTOR_COPY_CTOR_FAMILY_METHODS_H
@@ -85,14 +85,6 @@ public:                                                                   \
     int Count;                                                            \
     int CapacityIncrement;                                                \
 }
-
-// VTABLE: GAMEMD 0x007E4DB8
-GG_VECBASE_DECL(007E4DB8);
-GG_STATIC_ASSERT(offsetof(VecBase_007E4DB8, Items) == 0x4 &&
-                 offsetof(VecBase_007E4DB8, Capacity) == 0x8 &&
-                 offsetof(VecBase_007E4DB8, IsInitialized) == 0xC &&
-                 offsetof(VecBase_007E4DB8, IsAllocated) == 0xD &&
-                 sizeof(VecBase_007E4DB8) == 0x10);
 
 // VTABLE: GAMEMD 0x007EA9E4
 GG_VECBASE_DECL(007EA9E4);
@@ -173,12 +165,6 @@ GG_STATIC_ASSERT(offsetof(VecBase_007E4424, Items) == 0x4 &&
                  offsetof(VecBase_007E4424, IsInitialized) == 0xC &&
                  offsetof(VecBase_007E4424, IsAllocated) == 0xD &&
                  sizeof(VecBase_007E4424) == 0x10);
-
-// VTABLE: GAMEMD 0x007E4DD8
-GG_DYNVEC_DECL(007E4DB8, 007E4DD8);
-GG_STATIC_ASSERT(offsetof(DynVec_007E4DD8, Count) == 0x10 &&
-                 offsetof(DynVec_007E4DD8, CapacityIncrement) == 0x14 &&
-                 sizeof(DynVec_007E4DD8) == 0x18);
 
 // VTABLE: GAMEMD 0x007EAAE8
 GG_DYNVEC_DECL(007EA9E4, 007EAAE8);
@@ -261,7 +247,6 @@ DynVec_##TAG::DynVec_##TAG(const DynVec_##TAG& other)                     \
 // Address -> class map for the thirteen instantiations. A constructor cannot
 // be redeclared at namespace scope, so the reccmp `// FUNCTION:` annotations
 // live on the bodies in the .cpp; this is the index.
-//   0x004777B0  ->  DynVec_007E4DD8
 //   0x0050E830  ->  DynVec_007EAAE8
 //   0x00513740  ->  DynVec_007EABE8
 //   0x005137D0  ->  DynVec_007EABC8

@@ -19,13 +19,7 @@
 
 // RectangleStruct — {X, Y, Width, Height}, 16 bytes. ABuffer::Bounds is one of
 // these at +0x00; Fill/FillRect build/pass one by value (RET 0x14 == 4+16).
-struct RectangleStruct
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 
 // ---------------------------------------------------------------------------

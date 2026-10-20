@@ -25,8 +25,8 @@ public:
     virtual void unknown_04() = 0;
     virtual void unknown_08() = 0;
     virtual void unknown_0C() = 0;
-    virtual void unknown_10() = 0;
-    virtual void unknown_14() = 0;
+    virtual bool unknown_10(RectangleStruct*, const RectangleStruct&, int) = 0;
+    virtual bool unknown_14(RectangleStruct*, int) = 0;
     virtual void unknown_18() = 0;
     virtual void unknown_1C() = 0;
     virtual void unknown_20() = 0;
@@ -54,7 +54,7 @@ public:
     virtual int GetBytesPerPixel() = 0;
     virtual unsigned int GetPitch() = 0;
     // FUNCTION: GAMEMD 0x411510; returns hidden-result 4-int rectangle.
-    virtual LTRBStruct GetRect() const;
+    virtual RectangleStruct GetRect() const;
     // FUNCTION: GAMEMD 0x411540
     virtual int GetWidth() const;
     // FUNCTION: GAMEMD 0x411550

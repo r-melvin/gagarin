@@ -18,14 +18,14 @@ bool Surface::unknown_68(unsigned int, unsigned int)
 
 // FUNCTION: GAMEMD 0x411510
 // Surface rectangle result uses the retail hidden-result pointer ABI.
-LTRBStruct Surface::GetRect() const
+RectangleStruct Surface::GetRect() const
 {
-    LTRBStruct result;
+    RectangleStruct result;
 
-    result.Left = 0;
-    result.Top = 0;
-    result.Right = Width;
-    result.Bottom = Height;
+    result.X = 0;
+    result.Y = 0;
+    result.Width = Width;
+    result.Height = Height;
 
     return result;
 }

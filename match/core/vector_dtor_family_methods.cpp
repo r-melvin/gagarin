@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 164 base-template instantiations reproduce 331 remaining retail destructor
+// 164 base-template instantiations reproduce 330 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -200,24 +200,6 @@ struct tagCONNECTDATA;
 // address.
 // ---------------------------------------------------------------------------
 
-// FUNCTION: GAMEMD 0x00477990
-// FUNCTION: GAMEMD 0x0049FCE0
-// VectorClass<int> -- reseats retail vtable 0x007E4DB8; locator 0x007FCDB0 -> type descriptor 0x0081C038
-//   `.?AV?$VectorClass@H@@`.
-template class VectorClass<int>;
-
-// Layout asserted on the first instantiation; every instantiation in this
-// family has the same layout, because the only member whose type varies is
-// a pointer. The assert has to follow an explicit instantiation: VC6 fails
-// to re-parse the template body when offsetof is what first instantiates
-// it, and it will not take a template-id as offsetof's first argument
-// either, hence the typedef.
-typedef VectorClass<int> GgVectorRep;
-GG_STATIC_ASSERT(offsetof(GgVectorRep, Items)       == 0x4);
-GG_STATIC_ASSERT(offsetof(GgVectorRep, Capacity)    == 0x8);
-GG_STATIC_ASSERT(offsetof(GgVectorRep, IsAllocated) == 0xD);
-GG_STATIC_ASSERT(sizeof(GgVectorRep)                == 0x10);
-
 // FUNCTION: GAMEMD 0x00477A70
 // FUNCTION: GAMEMD 0x00478680
 // FUNCTION: GAMEMD 0x004BA160
@@ -261,6 +243,23 @@ template class VectorClass<char*>;
 // VectorClass<DynamicVectorClass<char*>*> -- reseats retail vtable 0x007E5C04; locator 0x007FF5F8 -> type descriptor 0x0081F288
 //   `.?AV?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@`.
 template class VectorClass<DynamicVectorClass<char*>*>;
+
+// FUNCTION: GAMEMD 0x0049FCE0
+// VectorClass<int> -- reseats retail vtable 0x007E4DB8; locator 0x007FCDB0 -> type descriptor 0x0081C038
+//   `.?AV?$VectorClass@H@@`.
+template class VectorClass<int>;
+
+// Layout asserted on the int instantiation; every instantiation in this
+// family has the same layout, because the only member whose type varies is
+// a pointer. The assert has to follow an explicit instantiation: VC6 fails
+// to re-parse the template body when offsetof is what first instantiates
+// it, and it will not take a template-id as offsetof's first argument
+// either, hence the typedef.
+typedef VectorClass<int> GgVectorRep;
+GG_STATIC_ASSERT(offsetof(GgVectorRep, Items)       == 0x4);
+GG_STATIC_ASSERT(offsetof(GgVectorRep, Capacity)    == 0x8);
+GG_STATIC_ASSERT(offsetof(GgVectorRep, IsAllocated) == 0xD);
+GG_STATIC_ASSERT(sizeof(GgVectorRep)                == 0x10);
 
 // FUNCTION: GAMEMD 0x004A0E10
 // FUNCTION: GAMEMD 0x004A14A0

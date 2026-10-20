@@ -74,13 +74,15 @@ Verified consolidation steps:
   compiler-generated scalar deleting destructor in its
   [implementation](match/renderer/surface_class.cpp). The empty inline destructor
   models the body embedded in that deleting destructor; no separate ordinary
-  destructor entry is bound. The interface pins 34 virtual slots and asserts
-  Width/Height offsets; unknown signatures remain placeholders, and complete
+  destructor entry is bound. Its rectangle result now uses the shared XYWH
+  layout, as confirmed by downstream clipping operations. The interface pins
+  34 virtual slots and asserts Width/Height offsets; unknown signatures remain placeholders, and complete
   Surface and derived sizes remain unconfirmed.
-- [XSurface](match/renderer/xsurface_class.h): six methods share one native
+- [XSurface](match/renderer/xsurface_class.h): seven methods share one native
   [implementation](match/renderer/xsurface_class.cpp) and the confirmed Surface
-  base, replacing the Unlock stand-in and adding five exact methods. Bounded
-  pixel reads and writes now use asserted point and XYWH rectangle layouts.
+  base, replacing the Unlock stand-in and adding six exact methods. Bounded
+  pixel reads and writes use asserted point and XYWH rectangle layouts; the
+  fill wrapper obtains its bounds through the shared Surface interface.
   The lock-counter offset is asserted, and the two added virtual slots through
   `+0x8C` have native bodies. Other inherited slot overrides, the deleting
   destructor binding and complete object size remain unfinished.
@@ -101,15 +103,27 @@ Verified consolidation steps:
   binds thirteen entries, including both seven-slot tables' distinct methods and
   the copy constructor, replacing its resize and copy-constructor stand-ins.
   Copying allocates and copies Capacity elements; other copy specializations
-  remain unverified. The 331 remaining generic deleting-destructor bodies use 164 base-template instantiation views: their written
+  remain unverified. The 330 remaining generic deleting-destructor bodies use
+  164 base-template instantiation views: their written
   vptr and RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
-  account for the slot-zero targets in their retail base and derived tables. The DiskID entry at `0x69C4A0` retains the
+  account for the slot-zero targets in their retail base and derived tables.
+  The DiskID entry at `0x69C4A0` retains the
   `CountedVector<DiskID>::Destroy` matching stand-in because its retail declaring
   class is unresolved; other legacy users are marked `VectorClassLayout` or
   `DynamicVectorClassLayout`. Other virtual methods and original source-file
   ownership remain incomplete.
+- [TypeList<int>](match/core/type_list.h): its copy constructor and generated
+  deleting destructor now use the shared `TypeList → DynamicVectorClass → VectorClass`
+  hierarchy in [one implementation](match/core/typelist_int_methods.cpp), replacing
+  two layout-view bindings. Raw RTTI and vtable slots establish the inherited
+  prefix; neither complete size nor absence of additional members is claimed.
+  Its seven compiled table slots pass the conditional weak-default check;
+  final-link resolution remains unverified.
+- Shared [2D geometry](match/_layout/geometry2d.h): renderer, radar, building
+  layout and cell-redraw declarations use one XYWH `RectangleStruct` definition.
+  BitFont's left/top/right/bottom bounds remain a distinct asserted type.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
@@ -147,10 +161,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,400** | **17.2%** of 19,753 |
+| Functions matched at 100% | **3,401** | **17.2%** of 19,753 |
 | Sum of matched function lengths | 238 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 853 | |
+| Tracked C++ translation units under `match/` | 854 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

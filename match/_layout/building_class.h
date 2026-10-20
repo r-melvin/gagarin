@@ -49,18 +49,8 @@
 #include "vector_class.h"     // DynamicVectorClass
 #include "components.h"       // ColorStruct
 
-// RectangleStruct — screen/lepton rectangle (sizeof = 0x10). Self-guarded.
-#ifndef GG_MATCH_LAYOUT_RECTANGLESTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_RECTANGLESTRUCT_DEFINED
-struct RectangleStruct
-{
-    int X;        // +0x00
-    int Y;        // +0x04
-    int Width;    // +0x08
-    int Height;   // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
-#endif
+// Shared XYWH rectangle; offsets are asserted in geometry2d.h.
+#include "geometry2d.h"
 
 // RateTimer — a CDTimerClass plus its reload rate (sizeof = 0x10). Proven here
 // by BuildingClass::GateTimer: ctor stores StartTime 0x604, TimeLeft 0x60C,

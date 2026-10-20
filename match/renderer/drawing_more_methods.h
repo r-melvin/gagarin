@@ -19,13 +19,7 @@
 
 // RectangleStruct — {X, Y, Width, Height}, 16 bytes. Fill builds one full-extent
 // rect by value and forwards it to the surface's FillRect virtual.
-struct RectangleStruct
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 
 // ---------------------------------------------------------------------------

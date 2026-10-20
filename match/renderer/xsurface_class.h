@@ -18,6 +18,14 @@ public:
     // is outside this candidate cluster and is not annotated as an ordinary dtor.
     virtual ~XSurface();
 
+    // FUNCTION: GAMEMD 0x7BB050 (decl; reloc); slot +0x10, RET 12.
+    // Rectangle/bounds/color storage is confirmed; reference constness and
+    // original method names remain source hypotheses.
+    virtual bool unknown_10(RectangleStruct* rectangle,
+                            const RectangleStruct& bounds, int color);
+    // FUNCTION: GAMEMD 0x7BB020; slot +0x14, RET 8.
+    virtual bool unknown_14(RectangleStruct* rectangle, int color);
+
     // FUNCTION: GAMEMD 0x411560; slot +0x5C, RET 8; origin is two DWORDs.
     virtual void* Lock(Point2D origin);
     // FUNCTION: GAMEMD 0x411570; slot +0x60.

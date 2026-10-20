@@ -26,13 +26,7 @@
 struct CellStruct { short X; short Y; };
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct RectangleStruct
-{
-    int X;       // +0x00
-    int Y;       // +0x04
-    int Width;   // +0x08
-    int Height;  // +0x0C
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(offsetof(RectangleStruct, Width)  == 0x8);
 GG_STATIC_ASSERT(offsetof(RectangleStruct, Height) == 0xC);
 GG_STATIC_ASSERT(sizeof(RectangleStruct)           == 0x10);
