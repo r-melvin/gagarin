@@ -31354,5 +31354,41 @@
   "name": "FUN_00586720",
   "status": "partial",
   "pct": 78.3
+ },
+ {
+  "tu": "match/core/bomb_class_com_methods_004386f0.cpp",
+  "addr": "0x4386f0",
+  "sym": "??0BombClassCtorView_004386F0@@QAE@H@Z",
+  "len": "0x2e",
+  "name": "BombClassCtorView_004386F0::BombClassCtorView_004386F0(int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/bomb_class_com_methods_004386f0.cpp",
+  "addr": "0x438b00",
+  "sym": "_FUN_00438B00@8",
+  "len": "0x38",
+  "name": "FUN_00438B00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/bomb_class_com_methods_004386f0.cpp",
+  "addr": "0x438bd0",
+  "sym": "_FUN_00438BD0@12",
+  "len": "0x17",
+  "name": "FUN_00438BD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/bomb_serialize_00438a90.cpp",
+  "addr": "0x438A90",
+  "sym": "?FUN_00438A90@BombSerializeView_00438A90@@QAEXPAUSink_004A1C00@@@Z",
+  "len": "0x69",
+  "name": "BombSerializeView_00438A90::FUN_00438A90",
+  "status": "matched",
+  "pct": 100
  }
 ]
