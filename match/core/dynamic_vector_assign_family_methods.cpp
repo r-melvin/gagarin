@@ -10,7 +10,7 @@
 //
 // Phrasing note, inherited from the sibling families in
 // vector_class_assign_family_methods.cpp and
-// dynamic_vector_copy_ctor_family_methods.cpp: the allocation-failure path
+// vector_copy_constructors.cpp: the allocation-failure path
 // falls through to the plain `return *this;`, NOT to the Items=0/IsAllocated=
 // false tail, so the reset has to be the `else` arm of `if (Capacity != 0)`.
 // The three derived-member copies go outside the self-assignment guard, which

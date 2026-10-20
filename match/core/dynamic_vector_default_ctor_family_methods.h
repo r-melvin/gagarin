@@ -7,8 +7,8 @@
 //   `MOV [EAX+0xD],CL` IsAllocated, `MOV dword ptr [EAX+0x14],0xA`
 //   CapacityIncrement and `MOV [EAX+0x10],ECX` Count; the single
 //   `MOV dword ptr [EAX],imm32` gives the leaf vtable. The same base/derived
-//   layout is already pinned by the copy-constructor family in
-//   dynamic_vector_copy_ctor_family_methods.h, which shares these vtables.
+//   prefix offsets are also pinned by the native copy-constructor
+//   specializations in vector_copy_constructors.cpp.
 //
 // Shape: the default constructor of a leaf class derived from a growable
 //   vector of pointers (a DynamicVectorClass-shaped middle class over a

@@ -102,7 +102,10 @@ Verified consolidation steps:
   template members and sizes under VC6. The [int specialization](match/core/vector_int_methods.cpp)
   binds thirteen entries, including both seven-slot tables' distinct methods and
   the copy constructor, replacing its resize and copy-constructor stand-ins.
-  Copying allocates and copies Capacity elements; other copy specializations
+  All thirteen entries from the former address-scoped copy-constructor family
+  now use native templates: the int pair and [eleven pointer specializations](match/core/vector_copy_constructors.cpp).
+  Raw RTTI preserves their pointee const qualifiers; copying allocates and copies
+  Capacity elements. Additional emitted methods and other copy specializations
   remain unverified. The 330 remaining generic deleting-destructor bodies use
   164 base-template instantiation views: their written
   vptr and RTTI identify the base-destruction path and element type, but do not

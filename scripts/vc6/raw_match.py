@@ -5,8 +5,8 @@
 #
 # Compares a compiled function's raw bytes (sliced straight from the i386-COFF
 # .obj by symbol) against the retail gamemd.exe bytes (Ghidra memory read), and
-# treats any difference confined to a <=4-byte aligned run as a relocation slot
-# (an absolute address / rel32 the linker fixes up) — exactly as reccmp does.
+# normalises only supported four-byte COFF relocation fields (absolute addresses
+# and relative calls/jumps that the linker fixes up).
 #
 # This is more robust than scripts/vc6/diff_retail.py for functions whose
 # disassembly objdump prints out of address order (e.g. /Gy switch-case `$L`
@@ -44,15 +44,27 @@ def obj_func_bytes(obj, sym, n):
     Returns (bytes, reloc_offsets) where reloc_offsets are relative to the start
     of the function. With /Gy each function is its own COMDAT section, so the
     section's relocation table belongs to this function alone."""
+    if n <= 0:
+        raise ValueError("requested function span must be positive")
     with open(obj, "rb") as stream:
         d = stream.read()
     nsec, = struct.unpack_from("<H", d, 2)
     sptr, nsym = struct.unpack_from("<II", d, 8)
     strtab = sptr + nsym * 18
-    sec_raw, sec_rel = {}, {}
+    if strtab > len(d):
+        raise ValueError("truncated COFF symbol table")
+    primary_indices = set()
+    index = 0
+    while index < nsym:
+        primary_indices.add(index)
+        index += 1 + d[sptr + index * 18 + 17]
+        if index > nsym:
+            raise ValueError("COFF auxiliary records exceed symbol table")
+    sec_raw, sec_size, sec_rel = {}, {}, {}
     for i in range(nsec):
         o = 20 + i * 40
         sec_raw[i + 1] = struct.unpack_from("<I", d, o + 20)[0]
+        sec_size[i + 1] = struct.unpack_from("<I", d, o + 16)[0]
         # PointerToRelocations at +24, NumberOfRelocations at +32.
         sec_rel[i + 1] = (struct.unpack_from("<I", d, o + 24)[0],
                           struct.unpack_from("<H", d, o + 32)[0])
@@ -76,13 +88,31 @@ def obj_func_bytes(obj, sym, n):
             # searching; undefined/absolute/debug symbols have no section bytes.
             if sec <= 0:
                 continue
+            if sec not in sec_raw:
+                raise ValueError(f"symbol {sym} refers to missing COFF section {sec}")
             base = sec_raw[sec]
+            if val + n > sec_size[sec]:
+                raise ValueError(f"symbol {sym}: requested span {n:#x} at "
+                                 f"section offset {val:#x} exceeds COFF section "
+                                 f"size {sec_size[sec]:#x}")
+            if base + sec_size[sec] > len(d):
+                raise ValueError(f"truncated raw data for COFF section {sec}")
             rptr, rcount = sec_rel[sec]
+            if rptr + rcount * 10 > len(d):
+                raise ValueError(f"truncated relocation table for COFF section {sec}")
             relocs = set()
             for k in range(rcount):
                 ro = rptr + k * 10          # VirtualAddress, SymbolTableIndex, Type
                 rva = struct.unpack_from("<I", d, ro)[0]
                 if val <= rva < val + n:
+                    kind = struct.unpack_from("<H", d, ro + 8)[0]
+                    if kind not in (0x0006, 0x0014):  # I386 DIR32 / REL32
+                        raise ValueError(f"unsupported COFF relocation type {kind:#x}")
+                    target_index = struct.unpack_from("<I", d, ro + 4)[0]
+                    if target_index not in primary_indices:
+                        raise ValueError("COFF relocation target is not a primary symbol")
+                    if rva + 4 > val + n:
+                        raise ValueError("COFF relocation crosses requested function span")
                     relocs.add(rva - val)
             return d[base + val:base + val + n], relocs
     return None, set()
@@ -110,10 +140,15 @@ def main():
     ap.add_argument("--len", required=True)
     a = ap.parse_args()
     n = int(a.len, 16)
-    rb = retail_bytes(int(a.addr, 16), n)
-    ob, relocs = obj_func_bytes(a.obj, a.sym, n)
+    try:
+        ob, relocs = obj_func_bytes(a.obj, a.sym, n)
+    except (OSError, ValueError, struct.error) as exc:
+        print(f"raw_match: {exc}"); sys.exit(2)
     if ob is None:
         print(f"raw_match: symbol {a.sym} not found in {a.obj}"); sys.exit(2)
+    rb = retail_bytes(int(a.addr, 16), n)
+    if len(rb) != n:
+        print(f"raw_match: requested {n} retail bytes, received {len(rb)}"); sys.exit(2)
     diffs = [i for i in range(n) if rb[i] != ob[i]]
     rr = runs(diffs)
 
