@@ -1,13 +1,46 @@
 # Project status
 
-The latest whole-repository regression passed with **3,677 fully matched
-functions**, **165 partial rows**, and 887 manifest translation units, with no
-matched function regressing. All **892 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,694 fully matched
+functions**, **165 partial rows**, and 890 manifest translation units, with no
+matched function regressing. All **896 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: shared object accessors and a pinned-image oracle
+## Latest integration: native type vectors and shared TagClass storage
+
+The [SmudgeTypeClass](match/core/vector_smudgetypeclass_methods.cpp) and
+[OverlayTypeClass](match/core/vector_overlaytypeclass_methods.cpp) vector pairs
+contain 24 exact rows: 16 new matches and eight migrated claims. Their four
+RTTI-backed seven-slot tables pass conditional `--weak-defaults` checks against
+project objects. GX/no-GX probes pin no-GX for the full derived deleting bodies.
+Focused REA analysis confirms the complete entry spans.
+
+[ObjectClass::FUN_005F5F30](match/core/object_class_cell_methods.cpp) adds a
+seven-byte exact getter for `Location.Z`; its original method name is unknown.
+Seven existing TagClass methods now use the shared layout declaration. The
+const TagType query callees and Trigger notification names now resolve to
+existing matched implementations. Eleven affected function bodies remain exact.
+Four methods retain conflicting legacy class definitions. These require
+consolidation into one definition before an integrated C++ build can satisfy
+the one-definition rule; complete TagClass hierarchy consolidation is pending.
+
+[TagClass::Array](match/ai/tag_class_array.cpp) now has one 24-byte BSS
+definition, consistent with the pinned image's loader-zero section tail.
+This establishes initial storage, not later runtime initialization. The
+`/dll /noentry /nodefaultlib` diagnostic link reports 4,156 unique unresolved
+symbols (6,368 reference lines) and no duplicate definitions. The former
+registry alias and the shared registry symbol are absent from unresolved
+references. Default libraries remain excluded; this is not an engine-only gap
+count. Engine link closure and whole-image comparison remain unfinished.
+
+Matched function lengths total 263,025 bytes (257 KiB): 18.7% of listed
+functions and 6.9% of listed function lengths. The padding heuristic misses
+198 matched entries. Residual vector families contain 251 generic deleting
+bindings across 129 instantiation views, 126 base Clear rows, 124 native
+dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
+
+## Previous verified integration: shared object accessors and a pinned-image oracle
 
 The [InfantryTypeClass](match/core/vector_infantrytypeclass_methods.cpp) and
 [TerrainTypeClass](match/core/vector_terraintypeclass_methods.cpp) vector pairs
@@ -304,8 +337,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 892 tracked C++ files and 3,842 manifest
-rows, with no manifest TU missing from tracked sources. Five tracked files
+verified snapshot, the inventory has 896 tracked C++ files and 3,859 manifest
+rows, with no manifest TU missing from tracked sources. Six tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -620,10 +653,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,677** | **18.6%** of 19,753 |
-| Sum of matched function lengths | 256 KiB | 6.9% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,694** | **18.7%** of 19,753 |
+| Sum of matched function lengths | 257 KiB | 6.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 892 | |
+| Tracked C++ files under `match/` | 896 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -643,7 +676,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 196 matched entries. Its candidate count is therefore
+listed entries, including 198 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

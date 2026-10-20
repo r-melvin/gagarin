@@ -11,10 +11,7 @@
 
 #include "tag_class_more_methods.h"
 
-// GLOBAL: GAMEMD 0xB0E720 — the engine's global list of live TagClass instances
-// (YRpp: TagClass::Array). vptr @0xB0E720, Items @0xB0E724, Count @0xB0E730 —
-// reconfirmed from the absolute loads in DeleteAll.
-extern DynamicVectorClassLayout TagClass_Array;
+// Registry accesses use the shared TagClass::Array storage at 0xB0E720.
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E5380  (__thiscall)
@@ -41,9 +38,9 @@ bool TagClass::ContainsTrigger(TriggerClass* pTrigger) const
 // ---------------------------------------------------------------------------
 void __stdcall TagClass::DeleteAll()
 {
-    while (TagClass_Array.Count > 0)
+    while (TagClass::Array.Count > 0)
     {
-        TagClass* pTag = ((TagClass**)TagClass_Array.Items)[0];
+        TagClass* pTag = ((TagClass**)TagClass::Array.Items)[0];
         delete pTag;
     }
 }

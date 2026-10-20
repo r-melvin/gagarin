@@ -13,10 +13,7 @@
 
 #include "tag_class_destroy_methods.h"
 
-// GLOBAL: GAMEMD 0xB0E720 — the engine's global list of live TagClass instances
-// (YRpp: TagClass::Array). vptr @0xB0E720, Items @0xB0E724, Count @0xB0E730 —
-// reconfirmed from the absolute loads in GetInstance.
-extern DynamicVectorClassLayout TagClass_Array;
+// Registry accesses use the shared TagClass::Array storage at 0xB0E720.
 
 // GLOBAL: GAMEMD 0xB0F698 — the global DynamicVectorClass<TagClass*> that Destroy
 // appends each destroyed tag to (a deferred pointer/cleanup list). vptr
@@ -57,9 +54,9 @@ void TagClass::Destroy()
 // ---------------------------------------------------------------------------
 TagClass* __fastcall TagClass::GetInstance(TagTypeClass* pType)
 {
-    for (int i = 0; i < TagClass_Array.Count; ++i)
+    for (int i = 0; i < TagClass::Array.Count; ++i)
     {
-        TagClass* pTag = ((TagClass**)TagClass_Array.Items)[i];
+        TagClass* pTag = ((TagClass**)TagClass::Array.Items)[i];
         if (pTag->Type == pType)
             return pTag;
     }

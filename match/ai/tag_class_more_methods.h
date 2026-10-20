@@ -44,6 +44,9 @@ struct TagTypeClass;
 
 struct TagClass
 {
+    // GLOBAL: GAMEMD 0xB0E720 -- same registry as the shared TagClass layout.
+    static DynamicVectorClassLayout Array;
+
     // Primary IPersistStream vtable: 8 COM slots (0..7) precede the destructor,
     // putting the scalar deleting destructor at slot 8 = +0x20. Declared (no
     // bodies) — the only use is the virtual dispatch in DeleteAll; no vtable is

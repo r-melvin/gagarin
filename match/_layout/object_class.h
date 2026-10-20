@@ -75,6 +75,8 @@ public:
     int GetHealthStatus() const;
     // FUNCTION: GAMEMD 0x5F5F00
     int GetCellLevel() const;
+    // FUNCTION: GAMEMD 0x5F5F30 (original name unconfirmed)
+    int FUN_005F5F30() const;
     // FUNCTION: GAMEMD 0x5F6220 (original name unconfirmed)
     bool FUN_005F6220(ObjectClass* other);
     // FUNCTION: GAMEMD 0x5F6B60

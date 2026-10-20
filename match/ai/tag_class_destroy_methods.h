@@ -34,6 +34,9 @@ struct TagTypeClass;
 // ---------------------------------------------------------------------------
 struct TagClass
 {
+    // GLOBAL: GAMEMD 0xB0E720 -- same registry as the shared TagClass layout.
+    static DynamicVectorClassLayout Array;
+
     char          _base[0x24];          // +0x00  AbstractClass + 4 COM vptrs
     TagTypeClass* Type;                 // +0x24
     char          _mid[0x34 - 0x28];    // +0x28  FirstTrigger / InstanceCount /

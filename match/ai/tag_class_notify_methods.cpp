@@ -9,16 +9,22 @@
 //   FUNCTION: GAMEMD 0x6E5820  TagClass::NotifyLocalChanged   (__fastcall)
 //   FUNCTION: GAMEMD 0x6E5850  TagClass::IsOnlyInstanceOfType (__thiscall)
 
-#include "tag_class_notify_methods.h"
+#include "../_layout/tag_class.h"
+#include "trigger_class_methods.h"
+GG_STATIC_ASSERT(offsetof(TagClass, Type) == 0x24);
+GG_STATIC_ASSERT(offsetof(TagClass, FirstTrigger) == 0x28);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClassLayout, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClassLayout, Count) == 0x10);
 
 // FUNCTION: GAMEMD 0x6E57F0  (static __fastcall, idxGlobal in ECX)
-// Broadcast a global-variable change to every live tag. The per-tag
-// GlobalChanged forwarder is inlined to a direct FirstTrigger->GlobalChanged
-// call; Array.Count is reloaded each iteration across the call.
+// Pass each tag's FirstTrigger pointer unchanged to 0x7263A0. The registry
+// count is reloaded after the call. Original forwarding-method ownership is
+// not established by this callsite.
 void __fastcall TagClass::NotifyGlobalChanged(int idxGlobal)
 {
     for (int i = 0; i < Array.Count; ++i) {
-        ((TagClass**)Array.Items)[i]->FirstTrigger->GlobalChanged(idxGlobal);
+        static_cast<TriggerClass*>(((TagClass**)Array.Items)[i]->FirstTrigger)
+            ->NotifyGlobalChanged(idxGlobal);
     }
 }
 
@@ -26,7 +32,8 @@ void __fastcall TagClass::NotifyGlobalChanged(int idxGlobal)
 void __fastcall TagClass::NotifyLocalChanged(int idxLocal)
 {
     for (int i = 0; i < Array.Count; ++i) {
-        ((TagClass**)Array.Items)[i]->FirstTrigger->LocalChanged(idxLocal);
+        static_cast<TriggerClass*>(((TagClass**)Array.Items)[i]->FirstTrigger)
+            ->NotifyLocalChanged(idxLocal);
     }
 }
 

@@ -18,6 +18,12 @@ raw_x86_insns = diff_module.raw_x86_insns
 
 
 class RetailSpanTests(unittest.TestCase):
+    def setUp(self):
+        # These tests exercise the mocked bridge, independently of a local PE.
+        reader = patch.object(diff_module, "configured_span", return_value=None)
+        reader.start()
+        self.addCleanup(reader.stop)
+
     def test_linear_decode_keeps_bytes_after_call(self):
         # call next; mov eax,1; ret. The decoder must continue at the next
         # contiguous byte instead of following only the current CFG edge set.

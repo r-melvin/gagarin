@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 127
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 125
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 128 remaining addresses are bound to VectorClass<T> tables;
+//   The 126 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -380,16 +380,6 @@ template class VectorClass<TeamTypeClass*>;
 // VectorClass<ScriptTypeClass*> -- vtable 0x007EA144 slot 3; locator 0x008019D0 -> type descriptor 0x00823720
 //   `.?AV?$VectorClass@PAVScriptTypeClass@@@@`.
 template class VectorClass<ScriptTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004ED230
-// VectorClass<OverlayTypeClass*> -- vtable 0x007EA184 slot 3; locator 0x00801A68 -> type descriptor 0x00823790
-//   `.?AV?$VectorClass@PAVOverlayTypeClass@@@@`.
-template class VectorClass<OverlayTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004ED490
-// VectorClass<SmudgeTypeClass*> -- vtable 0x007EA1C4 slot 3; locator 0x00801B00 -> type descriptor 0x00823808
-//   `.?AV?$VectorClass@PAVSmudgeTypeClass@@@@`.
-template class VectorClass<SmudgeTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EE530
 // VectorClass<BulletTypeClass*> -- vtable 0x007EA384 slot 3; locator 0x00801F28 -> type descriptor 0x00823B28

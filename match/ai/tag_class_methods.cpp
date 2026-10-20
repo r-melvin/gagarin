@@ -8,7 +8,27 @@
 //   FUNCTION: GAMEMD 0x6E5320  TagClass::HasCrossesHorizontalLineEvent (__thiscall)
 //   FUNCTION: GAMEMD 0x6E5340  TagClass::HasZoneEntryByEvent           (__thiscall)
 
-#include "tag_class_methods.h"
+#include "../_layout/tag_class.h"
+#include "tag_type_class_flag_methods.h"
+
+// Sparse trigger-chain views for the bytes ShouldReplace reads. These do
+// not assert the full TriggerClass/TriggerTypeClass layout or original names.
+struct TagTriggerTypeFlagsView
+{
+    char unknown_00[0xA0];
+    bool unknown_A0;
+};
+struct TagTriggerChainView
+{
+    char unknown_00[0x24];
+    TagTriggerTypeFlagsView* Type;
+    TagTriggerChainView* NextTrigger;
+};
+GG_STATIC_ASSERT(offsetof(TagTriggerTypeFlagsView, unknown_A0) == 0xA0);
+GG_STATIC_ASSERT(offsetof(TagTriggerChainView, Type) == 0x24);
+GG_STATIC_ASSERT(offsetof(TagTriggerChainView, NextTrigger) == 0x28);
+GG_STATIC_ASSERT(offsetof(TagClass, Type) == 0x24);
+GG_STATIC_ASSERT(offsetof(TagClass, FirstTrigger) == 0x28);
 
 // FUNCTION: GAMEMD 0x6E5300  (__thiscall)
 // True iff the tag has a type whose event list contains a Crosses-Vertical-Line
@@ -19,28 +39,30 @@
 // shortens the function and shifts the JZ displacements off retail).
 bool TagClass::HasCrossesVerticalLineEvent() const
 {
-    return Type && Type->HasCrossesVerticalLineEvent();
+    TagTypeClass* type = static_cast<TagTypeClass*>(Type);
+    return type && type->HasCrossesVerticalLineEvent();
 }
 
 // FUNCTION: GAMEMD 0x6E5320  (__thiscall)
 bool TagClass::HasCrossesHorizontalLineEvent() const
 {
-    return Type && Type->HasCrossesHorizontalLineEvent();
+    TagTypeClass* type = static_cast<TagTypeClass*>(Type);
+    return type && type->HasCrossesHorizontalLineEvent();
 }
 
 // FUNCTION: GAMEMD 0x6E5340  (__thiscall)
 bool TagClass::HasZoneEntryByEvent() const
 {
-    return Type && Type->HasZoneEntryByEvent();
+    TagTypeClass* type = static_cast<TagTypeClass*>(Type);
+    return type && type->HasZoneEntryByEvent();
 }
 
 // FUNCTION: GAMEMD 0x6E57C0  TagClass::ShouldReplace (__thiscall)
-// True when any attached trigger's type carries the "survives an owner change"
-// flag — the tag then transfers with the object (e.g. a vehicle thief taking
-// over a tank) instead of being dropped.
+// Returns whether any linked trigger type has a nonzero byte at +0xA0.
+// The original flag meaning is unconfirmed.
 bool TagClass::ShouldReplace() const
 {
-    for (TriggerClass* trigger = FirstTrigger; trigger != 0; trigger = trigger->NextTrigger) {
+    for (TagTriggerChainView* trigger = static_cast<TagTriggerChainView*>(FirstTrigger); trigger != 0; trigger = trigger->NextTrigger) {
         if (trigger->Type->unknown_A0)
             return true;
     }
