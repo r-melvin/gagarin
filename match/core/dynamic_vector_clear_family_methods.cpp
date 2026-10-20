@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477840 and its 159
+//   Bytes matched against retail gamemd.exe v1.001 at 0x4778A0 and its 158
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -16,7 +16,7 @@
 //   here for per-function verification. The retail binary does not establish
 //   their original translation-unit grouping or final linker placement.
 //   This sweep file does not establish an integrated engine link order.
-// The ToolTip pointer Clear is bound in tooltip_vector_methods.cpp.
+// Int and ToolTip Clear entries are bound in their native specialization TUs.
 #include "vector_class.h"
 #include "vector_counted_dtor_family_methods.h"
 
@@ -206,13 +206,6 @@ struct tagCONNECTDATA;
 // ---------------------------------------------------------------------------
 // The instantiations, in ascending retail-address order.
 // ---------------------------------------------------------------------------
-
-// FUNCTION: GAMEMD 0x00477840
-// DynamicVectorClass<int> -- vtable 0x007E4E78 slot 3; locator 0x007FCFC8 -> type descriptor 0x0081C058
-//   `.?AV?$DynamicVectorClass@H@@`.
-//   The same body also sits at that slot in TypeList<int> (0x007E4DD8); DynamicVectorClass<int> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<int>;
 
 // Legacy CountedVector<DiskID> remains an isolated stand-in; canonical layout assertions are in vector_class_layout_asserts.cpp.
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 333 remaining 73-byte deleting-destructor bodies are bound here through
+// 331 remaining 73-byte deleting-destructor bodies are bound here through
 // 164 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
@@ -10,8 +10,8 @@
 // wrapper. An inherited/derived wrapper can inline that same base destructor.
 // These are exact code-body bindings, not proof of original wrapper ownership,
 // original TU boundaries, or duplicate-COMDAT linker behavior. Audit each
-// owning slot-zero vtable when integrating its class. The ToolTip pair has
-// been moved to tooltip_vector_methods.cpp with both actual vtable targets.
+// owning slot-zero vtable when integrating its class. The int and ToolTip
+// base/dynamic pairs now use their actual targets in specialization TUs.
 #ifndef GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
 #define GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
 

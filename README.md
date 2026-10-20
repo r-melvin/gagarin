@@ -77,25 +77,35 @@ Verified consolidation steps:
   destructor entry is bound. The interface pins 34 virtual slots and asserts
   Width/Height offsets; unknown signatures remain placeholders, and complete
   Surface and derived sizes remain unconfirmed.
-- [XSurface](match/renderer/xsurface_class.h): four methods share one native
+- [XSurface](match/renderer/xsurface_class.h): six methods share one native
   [implementation](match/renderer/xsurface_class.cpp) and the confirmed Surface
-  base, replacing the Unlock stand-in and adding three exact methods. Its
-  lock-counter offset is asserted, and its virtual table includes the two
-  added slots through `+0x8C`. The complete object size remains unconfirmed.
+  base, replacing the Unlock stand-in and adding five exact methods. Bounded
+  pixel reads and writes now use asserted point and XYWH rectangle layouts.
+  The lock-counter offset is asserted, and the two added virtual slots through
+  `+0x8C` have native bodies. Other inherited slot overrides, the deleting
+  destructor binding and complete object size remain unfinished.
+- [BSurface](match/renderer/bsurface_class.h): native bytes-per-pixel and pitch
+  methods share the confirmed `BSurface → XSurface → Surface` chain and asserted
+  member offsets. Its owned-buffer view now has a shared header. Lock, lifetime
+  code and ABuffer's separate `BSurfaceLayout` call interface remain to consolidate;
+  complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 161 base and 159
+  `CountedVector::Destroy` stand-ins. The family files bind 160 base and 158
   dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
   and two compiler-generated scalar deleting destructors. ToolTipManager uses
   these templates with its RTTI-confirmed const element type.
   [Layout assertions](match/core/vector_class_layout_asserts.cpp) check actual
-  template members and sizes under VC6. The 333 remaining generic deleting
-  destructor bodies use 164 base-template instantiation views: their written
+  template members and sizes under VC6. The [int specialization](match/core/vector_int_methods.cpp)
+  binds thirteen entries, including both seven-slot tables' distinct methods and
+  the copy constructor, replacing its resize and copy-constructor stand-ins.
+  Copying allocates and copies Capacity elements; other copy specializations
+  remain unverified. The 331 remaining generic deleting-destructor bodies use 164 base-template instantiation views: their written
   vptr and RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
-  or duplicate-COMDAT linker behavior. The ToolTip pair uses the actual base
-  and dynamic wrapper targets. The DiskID entry at `0x69C4A0` retains the
+  or duplicate-COMDAT linker behavior. The int and ToolTip specializations
+  account for the slot-zero targets in their retail base and derived tables. The DiskID entry at `0x69C4A0` retains the
   `CountedVector<DiskID>::Destroy` matching stand-in because its retail declaring
   class is unresolved; other legacy users are marked `VectorClassLayout` or
   `DynamicVectorClassLayout`. Other virtual methods and original source-file
@@ -137,10 +147,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,391** | **17.2%** of 19,753 |
+| Functions matched at 100% | **3,400** | **17.2%** of 19,753 |
 | Sum of matched function lengths | 238 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 851 | |
+| Tracked C++ translation units under `match/` | 853 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -160,7 +170,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 159 matched entries. Its candidate count is therefore
+listed entries, including 160 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

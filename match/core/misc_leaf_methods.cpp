@@ -25,12 +25,6 @@ int Obj_00409300b::FUN_00409310()
     return unknown_08;
 }
 
-// FUNCTION: GAMEMD 0x411640
-int BSurface_00411600::FUN_00411640()
-{
-    return OBJ_SLOT_7C(this) * unknown_10;
-}
-
 // FUNCTION: GAMEMD 0x422BC0
 int AnimClass_00422B00::FUN_00422BC0()
 {

@@ -25,6 +25,8 @@ extern "C" void __cdecl gg_free(void*);
 template<class T> class VectorClass {
 public:
     VectorClass() : Items(0), Capacity(0), IsInitialized(true), IsAllocated(false) {}
+    VectorClass(const VectorClass<T>& other);
+    VectorClass<T>& operator=(const VectorClass<T>& other);
     virtual ~VectorClass();
     virtual bool operator==(const VectorClass<T>&) const;
     virtual bool SetCapacity(int capacity, T* pMem);
@@ -58,6 +60,7 @@ template<class T> void VectorClass<T>::Clear() {
 template<class T> class DynamicVectorClass : public VectorClass<T> {
 public:
     DynamicVectorClass() { CapacityIncrement = 10; Count = 0; }
+    DynamicVectorClass(const DynamicVectorClass<T>& other);
     virtual bool SetCapacity(int capacity, T* pMem);
     virtual void Clear();
     virtual int FindItemIndex(const T& item) const;

@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against the user's retail gamemd.exe v1.001. These thirteen
-//   functions are one copy constructor for a growable vector of pointers,
-//   instantiated thirteen times. Every byte outside the two vtable constants,
-//   the CALL dword ptr [vtable+0xC] displacement (always base vtable + 0xC)
-//   and the `operator new` call displacement (always 0x7C8E17) is identical
-//   across all thirteen, so the body is written once as a macro and expanded
-//   per instantiation. Ordered ascending by retail address.
+// Twelve remaining copy-constructor-shaped bodies are represented by
+// address-scoped four-byte-element layout views. Their raw code agrees apart
+// from the two vtable constants, the base Clear-slot address and allocator
+// call displacement. This does not establish their original template element
+// types, declaring classes or translation-unit boundaries. The RTTI-confirmed
+// DynamicVectorClass<int> entry 0x4779E0 now lives in vector_int_methods.cpp.
+// Ordered by ascending retail address.
 //
 // Phrasing note: the allocation-failure path falls through to the plain
 // `return *this;`, NOT to the Items=0/IsAllocated=false tail — only a zero
@@ -20,9 +20,6 @@
 
 // FUNCTION: GAMEMD 0x004777B0
 GG_DYNVEC_COPY_CTOR_BODY(007E4DB8, 007E4DD8)
-
-// FUNCTION: GAMEMD 0x004779E0
-GG_DYNVEC_COPY_CTOR_BODY(007E4DB8, 007E4E78)
 
 // FUNCTION: GAMEMD 0x0050E830
 GG_DYNVEC_COPY_CTOR_BODY(007EA9E4, 007EAAE8)

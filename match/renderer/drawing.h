@@ -38,7 +38,8 @@ GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 //   slot 23 (0x5C): GetOffset(int, int)     — GetBuffer       CALL [EAX+0x5C]
 //   slot 24 (0x60): Lock()                  — GetBuffer       CALL [EAX+0x60]
 // ---------------------------------------------------------------------------
-class BSurface
+// This address-scoped call interface remains separate from native BSurface.
+class BSurfaceLayout
 {
 public:
     virtual void Destroy(int freeMem) = 0;                       // 0x00
@@ -87,7 +88,7 @@ struct ABuffer
 
     RectangleStruct Bounds;          // +0x00
     int             BufferPosition;  // +0x10
-    BSurface*       Surface;         // +0x14
+    BSurfaceLayout* Surface;         // +0x14
     void*           BufferHead;      // +0x18
     void*           BufferTail;      // +0x1C
     int             BufferSize;      // +0x20

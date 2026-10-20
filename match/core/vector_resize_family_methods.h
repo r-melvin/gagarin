@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x477E10 and its 31 duplicates. Shape found by clustering
+//   Ghidra CLI at 0x477E10 and its 31 siblings; 0x477E10 now lives on
+//   native DynamicVectorClass<int> in vector_int_methods.cpp. Shape found by clustering
 //   the unmatched pool on size (176 bytes) and on the first/last eight bytes;
 //   every member's 176 retail bytes are identical apart from the two relative
 //   call displacements (operator new at 0x7C8E17, free at 0x7C8B3D), so there
@@ -32,8 +33,6 @@ GG_STATIC_ASSERT(sizeof(VectorBase) == 0x14);
 
 struct VectorResizeFamily : VectorBase
 {
-    // FUNCTION: GAMEMD 0x477E10
-    bool FUN_477E10(int newsize, void** array);
     // FUNCTION: GAMEMD 0x478140
     bool FUN_478140(int newsize, void** array);
     // FUNCTION: GAMEMD 0x49EA70

@@ -115,17 +115,6 @@ struct Obj_00409300
 GG_STATIC_ASSERT(offsetof(Obj_00409300, unknown_34) == 0x34);
 GG_STATIC_ASSERT(offsetof(Obj_00409300, unknown_38) == 0x38);
 
-// Remaining BSurface view at 0x411630 reads +0x10 through slot +0x70.
-// Surface getters and XSurface::Unlock now live on their shared classes.
-struct Obj_00411500
-{
-    char _pad000[0x10];
-    int  unknown_10;   // +0x0010
-    // FUNCTION: GAMEMD 0x411630
-    int FUN_00411630() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_00411500, unknown_10) == 0x10);
-
 struct Obj_00424C00
 {
     char _pad000[0x17C - 0x0];

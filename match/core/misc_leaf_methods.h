@@ -51,29 +51,6 @@ struct Obj_00409300b
 };
 GG_STATIC_ASSERT(offsetof(Obj_00409300b, unknown_08) == 0x8);
 
-// Zero-argument virtual at vtable +0x7C, __thiscall (ECX = this, nothing on the
-// stack), reached as `MOV EAX,[ESI]; CALL [EAX+0x7C]`. The established
-// function-pointer idiom expresses this exactly.
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_` placeholder). BSurface's own vtable is 0x7E2070.
-//   0x411640 -> BSurface slot 29 (byte-off 0x74).
-// No other table in the image holds it, so the slot is declared on
-// BSurface rather than inherited. The METHOD name is still unknown; only the
-// class is proven, so the `FUN_<addr>` member name stays a placeholder.
-struct BSurface_00411600;
-typedef int (__fastcall* Slot7CFunc)(BSurface_00411600*);
-#define OBJ_SLOT_7C(o) ((*(Slot7CFunc*)(*(char**)(o) + 0x7c))(o))
-
-struct BSurface_00411600
-{
-    char _pad00[0x10];
-    int  unknown_10;   // +0x0010
-
-    // FUNCTION: GAMEMD 0x411640
-    int FUN_00411640();
-};
-GG_STATIC_ASSERT(offsetof(BSurface_00411600, unknown_10) == 0x10);
-
 // Declared only; __thiscall, returns an int.
 // CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
 // the raw `Obj_` placeholder). AnimClass's own vtable is 0x7E3354.

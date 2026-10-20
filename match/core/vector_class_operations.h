@@ -14,6 +14,41 @@
 #define GG_MATCH_CORE_VECTOR_CLASS_OPERATIONS_H
 #include "vector_class.h"
 
+// The base copy/assignment path is expanded into DynamicVectorClass<int>'s
+// copy constructor at 0x4779E0. It copies Capacity elements, not Count, and
+// retains Capacity on allocation failure. Other copy specializations and a
+// separate base assignment/copy entry have not been matched.
+template<class T> inline VectorClass<T>::VectorClass(const VectorClass<T>& other)
+    : Items(0), Capacity(0), IsInitialized(true), IsAllocated(false)
+{
+    *this = other;
+}
+
+template<class T> inline VectorClass<T>& VectorClass<T>::operator=(const VectorClass<T>& other)
+{
+    if (this != &other) {
+        this->Clear();
+        this->Capacity = other.Capacity;
+        if (this->Capacity != 0) {
+            this->Items = new T[this->Capacity];
+            if (this->Items != 0) {
+                this->IsAllocated = true;
+                for (int i = 0; i < this->Capacity; ++i)
+                    this->Items[i] = other.Items[i];
+            }
+        } else {
+            this->Items = 0;
+            this->IsAllocated = false;
+        }
+    }
+    return *this;
+}
+
+template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& other)
+    : VectorClass<T>(other), Count(other.Count), CapacityIncrement(other.CapacityIncrement)
+{
+}
+
 template<class T>
 bool DynamicVectorClass<T>::RemoveItem(const T& item)
 {

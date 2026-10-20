@@ -12,22 +12,22 @@
 //   [ESI+4] when [ESI+0xD] is set, which is what fixes that slot as Clear().
 //   The remaining six slots keep placeholder names.
 //
-// Shape: the copy constructor of a growable vector-of-pointers class
+// Shape: the copy constructor of a growable four-byte-element array view
 //   (DynamicVectorClass-shaped: a VectorClass-shaped base holding
 //   Items/Capacity/IsInitialized/IsAllocated plus Count/CapacityIncrement).
 //   The base copy constructor and the base assignment operator are both
 //   expanded inline, so one body covers the whole family: zero the base
 //   members, seat the base vtable, and — unless copying from itself — Clear(),
-//   take the source capacity, allocate that many pointers, copy them, then
-//   copy Count and CapacityIncrement and seat the derived vtable. Thirteen
-//   instantiations differ only in the two vtable addresses.
+//   take the source capacity, allocate that many elements, copy them, then
+//   copy Count and CapacityIncrement and seat the derived vtable. Twelve remaining
+//   layout views differ only in the two vtable addresses.
 #ifndef GG_MATCH_CORE_DYNAMIC_VECTOR_COPY_CTOR_FAMILY_METHODS_H
 #define GG_MATCH_CORE_DYNAMIC_VECTOR_COPY_CTOR_FAMILY_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// The base half of the family: a vector-of-pointers with a seven-slot vtable,
+// The base half of the family: a four-byte-element array view with a seven-slot vtable,
 // an inline copy constructor that delegates to the inline assignment operator,
 // and the four base members at +4/+8/+0xC/+0xD.
 #define GG_VECBASE_DECL(TAG)                                              \
@@ -180,12 +180,6 @@ GG_STATIC_ASSERT(offsetof(DynVec_007E4DD8, Count) == 0x10 &&
                  offsetof(DynVec_007E4DD8, CapacityIncrement) == 0x14 &&
                  sizeof(DynVec_007E4DD8) == 0x18);
 
-// VTABLE: GAMEMD 0x007E4E78
-GG_DYNVEC_DECL(007E4DB8, 007E4E78);
-GG_STATIC_ASSERT(offsetof(DynVec_007E4E78, Count) == 0x10 &&
-                 offsetof(DynVec_007E4E78, CapacityIncrement) == 0x14 &&
-                 sizeof(DynVec_007E4E78) == 0x18);
-
 // VTABLE: GAMEMD 0x007EAAE8
 GG_DYNVEC_DECL(007EA9E4, 007EAAE8);
 GG_STATIC_ASSERT(offsetof(DynVec_007EAAE8, Count) == 0x10 &&
@@ -268,7 +262,6 @@ DynVec_##TAG::DynVec_##TAG(const DynVec_##TAG& other)                     \
 // be redeclared at namespace scope, so the reccmp `// FUNCTION:` annotations
 // live on the bodies in the .cpp; this is the index.
 //   0x004777B0  ->  DynVec_007E4DD8
-//   0x004779E0  ->  DynVec_007E4E78
 //   0x0050E830  ->  DynVec_007EAAE8
 //   0x00513740  ->  DynVec_007EABE8
 //   0x005137D0  ->  DynVec_007EABC8

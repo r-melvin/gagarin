@@ -19,20 +19,7 @@ void __stdcall FUN_007DC720(unsigned int hr);
 typedef long (__stdcall* Slot2)(IFace*, int, int);
 #define IFACE_CALL2(p, slot, x, y) ((*(Slot2*)(*(char**)(p) + (slot)))(p, x, y))
 
-// An owned buffer with its own release. Unlike the 53-instance template in
-// buffer_release_methods.h there is no null check on the pointer - the flag
-// alone decides whether to free - but it shares that template's contract of
-// clearing the holder unconditionally.
-struct Owned_0043AE50
-{
-    void*         Buffer;        // +0x0000
-    int           Length;        // +0x0004
-    unsigned char IsAllocated;   // +0x0008
-
-    // FUNCTION: GAMEMD 0x43AE50
-    void FUN_0043AE50();
-};
-GG_STATIC_ASSERT(offsetof(Owned_0043AE50, IsAllocated) == 0x8);
+#include "owned_buffer_0043ae50.h"
 
 // VTABLE: GAMEMD 0x7E2198
 extern char VT_007E2198[];

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477D20 and its 160
+//   Bytes matched against retail gamemd.exe v1.001 at 0x4780B0 and its 159
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 161 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
+//   The 160 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -18,7 +18,7 @@
 //   here for per-function verification. The retail binary does not establish
 //   their original translation-unit grouping or final linker placement.
 //   This sweep file does not establish an integrated engine link order.
-// The ToolTip pointer Clear is bound in tooltip_vector_methods.cpp.
+// Int and ToolTip Clear entries are bound in their native specialization TUs.
 #include "vector_class.h"
 
 // ---------------------------------------------------------------------------
@@ -209,22 +209,7 @@ struct tagCONNECTDATA;
 // The instantiations, in ascending retail-address order.
 // ---------------------------------------------------------------------------
 
-// FUNCTION: GAMEMD 0x00477D20
-// VectorClass<int> -- vtable 0x007E4DB8 slot 3; locator 0x007FCDB0 -> type descriptor 0x0081C038
-//   `.?AV?$VectorClass@H@@`.
-template class VectorClass<int>;
-
-// Layout asserted on the first instantiation; every instantiation in this
-// family has the same layout, because the only member whose type varies is a
-// pointer. The assert has to follow an explicit instantiation: VC6 fails to
-// re-parse the template body when offsetof is what first instantiates it, and
-// it will not take a template-id as offsetof's first argument either, hence
-// the typedef.
-typedef VectorClass<int> GgPlainVectorRep;
-GG_STATIC_ASSERT(offsetof(GgPlainVectorRep, Items)       == 0x4);
-GG_STATIC_ASSERT(offsetof(GgPlainVectorRep, Capacity)    == 0x8);
-GG_STATIC_ASSERT(offsetof(GgPlainVectorRep, IsAllocated) == 0xD);
-GG_STATIC_ASSERT(sizeof(GgPlainVectorRep)                == 0x10);
+// Actual-template layout assertions are in vector_class_layout_asserts.cpp.
 
 // FUNCTION: GAMEMD 0x004780B0
 // VectorClass<TechnoTypeClass*> -- vtable 0x007E4DF8 slot 3; locator 0x007FCE60 -> type descriptor 0x0081C0A0

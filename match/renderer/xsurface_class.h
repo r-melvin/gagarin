@@ -26,9 +26,12 @@ public:
     virtual bool IsLocked();
     // FUNCTION: GAMEMD 0x411590; slot +0x84.
     virtual bool unknown_84();
-    // XSurface and BSurface share this added slot; target/signature unclaimed.
-    virtual void unknown_88();
-    virtual void unknown_8C();
+    // FUNCTION: GAMEMD 0x7BAF90; slot +0x88, RET 12; writes a bounded pixel.
+    // Original method names and source-level const qualifiers remain unknown.
+    virtual bool unknown_88(const Point2D& point, unsigned int color,
+                            const XYWHStruct& bounds);
+    // FUNCTION: GAMEMD 0x7BAF10; slot +0x8C, RET 8; reads a bounded pixel.
+    virtual unsigned int unknown_8C(const Point2D& point, const XYWHStruct& bounds);
 
     unsigned int unknown_0C; // +0x0C, read/written by 411560/570/580
 };
