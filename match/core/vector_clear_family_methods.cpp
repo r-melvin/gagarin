@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 135
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 133
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -331,11 +331,6 @@ template class VectorClass<TriggerTypeClass*>;
 //   `.?AV?$VectorClass@PAVTubeClass@@@@`.
 template class VectorClass<TubeClass*>;
 
-// FUNCTION: GAMEMD 0x004EAC30
-// VectorClass<ParticleSystemClass*> -- vtable 0x007E9C84 slot 3; locator 0x00800E88 -> type descriptor 0x00822F58
-//   `.?AV?$VectorClass@PAVParticleSystemClass@@@@`.
-template class VectorClass<ParticleSystemClass*>;
-
 // FUNCTION: GAMEMD 0x004EAE90
 // VectorClass<WaveClass*> -- vtable 0x007E9D04 slot 3; locator 0x00800FB8 -> type descriptor 0x00823038
 //   `.?AV?$VectorClass@PAVWaveClass@@@@`.
@@ -350,11 +345,6 @@ template class VectorClass<OverlayClass*>;
 // VectorClass<SmudgeClass*> -- vtable 0x007E9DC4 slot 3; locator 0x00801180 -> type descriptor 0x00823170
 //   `.?AV?$VectorClass@PAVSmudgeClass@@@@`.
 template class VectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004EB5B0
-// VectorClass<TerrainClass*> -- vtable 0x007E9E04 slot 3; locator 0x00801218 -> type descriptor 0x008231D8
-//   `.?AV?$VectorClass@PAVTerrainClass@@@@`.
-template class VectorClass<TerrainClass*>;
 
 // FUNCTION: GAMEMD 0x004EBF30
 // VectorClass<AnimClass*> -- vtable 0x007E9F44 slot 3; locator 0x00801510 -> type descriptor 0x008233E0

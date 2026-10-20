@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 134
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 132
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -326,11 +326,6 @@ template class DynamicVectorClass<TriggerTypeClass*>;
 //   `.?AV?$DynamicVectorClass@PAVTubeClass@@@@`.
 template class DynamicVectorClass<TubeClass*>;
 
-// FUNCTION: GAMEMD 0x004E8660
-// DynamicVectorClass<ParticleSystemClass*> -- vtable 0x007E9C64 slot 3; locator 0x00800E58 -> type descriptor 0x00822F90
-//   `.?AV?$DynamicVectorClass@PAVParticleSystemClass@@@@`.
-template class DynamicVectorClass<ParticleSystemClass*>;
-
 // FUNCTION: GAMEMD 0x004E86C0
 // DynamicVectorClass<WaveClass*> -- vtable 0x007E9CE4 slot 3; locator 0x00800F88 -> type descriptor 0x00823068
 //   `.?AV?$DynamicVectorClass@PAVWaveClass@@@@`.
@@ -345,11 +340,6 @@ template class DynamicVectorClass<OverlayClass*>;
 // DynamicVectorClass<SmudgeClass*> -- vtable 0x007E9DA4 slot 3; locator 0x00801150 -> type descriptor 0x008231A0
 //   `.?AV?$DynamicVectorClass@PAVSmudgeClass@@@@`.
 template class DynamicVectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004E87E0
-// DynamicVectorClass<TerrainClass*> -- vtable 0x007E9DE4 slot 3; locator 0x008011E8 -> type descriptor 0x00823208
-//   `.?AV?$DynamicVectorClass@PAVTerrainClass@@@@`.
-template class DynamicVectorClass<TerrainClass*>;
 
 // FUNCTION: GAMEMD 0x004E8960
 // DynamicVectorClass<AnimClass*> -- vtable 0x007E9F24 slot 3; locator 0x008014E0 -> type descriptor 0x00823410

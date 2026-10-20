@@ -55,6 +55,13 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 // ObjectClass  (0x24..0xAB, sizeof = 0xAC)
 struct ObjectClass : AbstractClass
 {
+    // FUNCTION: GAMEMD 0x5F5C60
+    double GetHealthPercentage() const;
+    // FUNCTION: GAMEMD 0x5F5D20 (original name unconfirmed)
+    int FUN_005F5D20() const;
+    // FUNCTION: GAMEMD 0x5F5DD0
+    int GetHealthStatus() const;
+
     int             unknown_24;                  // +0x24
     int             unknown_28;                  // +0x28
     int             FallRate;                    // +0x2C

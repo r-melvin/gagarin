@@ -16,22 +16,10 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/object_class.h"
+#include "../core/rules_class.h"
 
-struct Coord_00459470 { int X; int Y; int Z; };
-GG_STATIC_ASSERT(sizeof(Coord_00459470) == 0xC);
-
-struct Rules_00459470
-{
-    char   _pad0000[0x244];              // +0x0000
-    int    BunkerSound;                  // +0x0244  -1 = no sound
-    char   _pad0248[0x1700 - 0x248];     // +0x0248
-    double ConditionYellow;              // +0x1700
-};
-GG_STATIC_ASSERT(offsetof(Rules_00459470, BunkerSound)     == 0x244);
-GG_STATIC_ASSERT(offsetof(Rules_00459470, ConditionYellow) == 0x1700);
-
-// GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
-extern Rules_00459470* RulesInstance_00459470;
+typedef CoordStruct Coord_00459470;
 
 struct AudioHandle_00459470;
 struct AudioController_00459470;
@@ -60,12 +48,11 @@ GG_STATIC_ASSERT(offsetof(BuildingType_00459470, Anims) == 0xF4C);
 
 struct Vtbl_00459470;
 
-struct Building_00459470
+// Sparse BuildingClass view using the confirmed ObjectClass prefix; this does
+// not assert the intervening direct-base hierarchy.
+struct Building_00459470 : ObjectClass
 {
-    Vtbl_00459470*          Vptr;                        // +0x0000
-    char                    _pad0004[0x9C - 0x04];       // +0x0004
-    Coord_00459470          Location;                    // +0x009C
-    char                    _pad00A8[0x2E4 - 0xA8];      // +0x00A8
+    char                    unknown_AC[0x2E4 - 0xAC];   // +0x00AC
     Building_00459470*      BunkerLinkedItem;            // +0x02E4
     char                    _pad02E8[0x520 - 0x2E8];     // +0x02E8
     BuildingType_00459470*  Type;                        // +0x0520
@@ -76,13 +63,12 @@ struct Building_00459470
     void PlayAnim(const char* name, int index, int damaged, int a4, int a5);
     // FUNCTION: GAMEMD 0x451E40 (decl; reloc) -- BuildingClass::DestroyNthAnim.
     void DestroyNthAnim(int slot);
-    // FUNCTION: GAMEMD 0x5F5C60 (decl; reloc) -- ObjectClass::GetHealthPercentage.
-    double GetHealthPercentage() const;
-
     // FUNCTION: GAMEMD 0x459470 -- BuildingClass::ClearBunker.
     void ClearBunker();
 };
-GG_STATIC_ASSERT(offsetof(Building_00459470, Location)         == 0x9C);
+GG_STATIC_ASSERT(offsetof(Building_00459470, _vtable_IPersistStream) == 0);
+GG_STATIC_ASSERT(offsetof(Building_00459470, Health)                 == 0x6C);
+GG_STATIC_ASSERT(offsetof(Building_00459470, Location)               == 0x9C);
 GG_STATIC_ASSERT(offsetof(Building_00459470, BunkerLinkedItem) == 0x2E4);
 GG_STATIC_ASSERT(offsetof(Building_00459470, Type)             == 0x520);
 GG_STATIC_ASSERT(offsetof(Building_00459470, unknown_718)      == 0x718);

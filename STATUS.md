@@ -1,8 +1,8 @@
 # Project status
 
-The latest whole-repository gates pass with **3,612 fully matched functions**,
-**165 partial rows**, and **882 tracked C++ files**; the manifest contains 878
-translation units. Compilation, the 882/882 tracked-source object build and its
+The latest whole-repository gates pass with **3,630 fully matched functions**,
+**165 partial rows**, and **884 tracked C++ files**; the manifest contains 880
+translation units. Compilation, the 884/884 tracked-source object build and its
 hash check passed; 66 verifier tests also passed, and the duplicate-address
 check found no conflicts. The ultimate goal remains a
 complete byte-for-byte reproduction of the pinned executable; that goal is not
@@ -11,7 +11,53 @@ achieved.
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
 
-## Latest verified integration: AircraftClass, UnitClass, CellClass and CurrentFrame
+## Latest verified integration: ObjectClass health and TerrainClass / ParticleSystemClass vectors
+
+Native vector clusters for [TerrainClass](match/core/vector_terrainclass_methods.cpp)
+and [ParticleSystemClass](match/core/vector_particlesystemclass_methods.cpp)
+add 24 address rows: 16 new exact matches and eight migrated claims. Both
+classes have two RTTI-backed seven-slot tables. All four tables passed
+conditional seven-slot checks against project objects using `--weak-defaults`,
+without manual symbol maps.
+
+The shared [ObjectClass health implementation](match/core/object_class_health_methods.cpp)
+contains three full-span matches: `GetHealthPercentage` at `0x5F5C60` (32
+bytes), `FUN_005F5D20` (112 bytes), and `GetHealthStatus` at `0x5F5DD0`
+(169 bytes). The predicate name at `0x5F5D20` remains unconfirmed by the
+binary. The two sparse Building views now inherit the confirmed `ObjectClass`
+prefix and call its native health method; the intermediate direct-base
+hierarchy is not reconstructed.
+
+The shared [RulesClass view](match/core/rules_class.h) asserts the observed
+fields at `+0x244`, `+0x54C`, `+0x1700`, `+0x1708`, and `+0x1804`. Its consumers
+use the canonical `RulesInstance` pointer. This is a sparse layout; it makes
+no full-size or complete-class claim. The integrated objects now reference the
+canonical `ObjectClass::GetHealthPercentage` and `RulesInstance` symbols; the
+three former health aliases and three Rules pointer aliases are absent from
+the current diagnostic.
+
+The eight-shard regression, compile gate, tracked-source object build and hash
+check passed: 3,630 functions matched, 165 rows remain partial, all 884 tracked
+C++ files produced objects, and the manifest contains 880 translation units.
+All 66 verifier tests passed. The `/dll /noentry /nodefaultlib` diagnostic
+reports zero `LNK2005` duplicate definitions, 6,502 `LNK2001` unresolved
+reference lines and 4,233 unique unresolved symbols (`LNK1120`), down from
+4,255. Default libraries are excluded, so this diagnostic does not establish
+engine link closure. The tracked object build also passes `--check` against
+the saved hashes.
+
+Matched function bodies total 258,803 bytes (253 KiB, 18.4% of listed
+functions and 6.8% of listed function-body bytes). The padding heuristic misses
+190 currently matched entries. Current vector-family totals are 267 generic
+deleting-destructor bindings across 137 instantiation views, 134 base `Clear`
+rows, 132 native dynamic `Clear` rows plus one separate DiskID stand-in (133
+dynamic rows total), and 18 address-specific resize views.
+
+`GetFloorHeight` at `0x47B3A0` remains an unclaimed call target; the current
+14% probe has a 148-byte real-instruction run and has not been promoted to a
+function claim. No field-value fact is certified from that probe.
+
+## Previous verified integration: AircraftClass, UnitClass, CellClass and CurrentFrame
 
 Two native vector clusters add 24 address rows across
 [AircraftClass](match/core/vector_aircraftclass_methods.cpp) and
@@ -37,14 +83,14 @@ writes or prove the counter's original namespace. The `DrawLinks` function at
 the counter at `0x4721A3`.
 
 The eight-shard regression, compile gate, tracked-source object build and hash
-check passed. The build produced objects for all 882 tracked C++ files; the
-manifest contains 878 translation units. The verifier suite has 66 passing
-tests, including the BSS-object parsing fixture.
+check passed at that snapshot. The build produced objects for all 882 tracked
+C++ files; the manifest contained 878 translation units. The verifier suite
+had 66 passing tests, including the BSS-object parsing fixture.
 
-The `/dll /noentry /nodefaultlib` diagnostic now reports zero `LNK2005`
-duplicate definitions, 6,538 `LNK2001` unresolved-reference lines and 4,255
-unique unresolved symbols (`LNK1120`), down from 4,283. This diagnostic excludes
-default libraries and does not establish engine link closure. The shared
+The `/dll /noentry /nodefaultlib` diagnostic at that snapshot reported zero
+`LNK2005` duplicate definitions, 6,538 `LNK2001` unresolved-reference lines
+and 4,255 unique unresolved symbols (`LNK1120`), down from 4,283. This
+diagnostic excludes default libraries and does not establish engine link closure. The shared
 [RulesClass layout and declaration](match/core/rules_class.h) use the observed
 member offsets at `0x54C` and `0x1804`, and one
 [`RulesInstance` definition](match/combat/rad_site_class_methods.cpp) serves
@@ -52,7 +98,7 @@ both consumers. The `CurrentFrame` audit found one 4-byte BSS definition and
 resolved its former aliases in the link diagnostic. `GetFloorHeight` at
 `0x47B3A0` remains an unmatched native call target.
 
-Current vector-family totals are 271 generic deleting-destructor bindings
+At that snapshot, vector-family totals were 271 generic deleting-destructor bindings
 across 139 instantiation views, 136 base `Clear` rows, 134 native dynamic
 `Clear` rows plus one separate DiskID stand-in (135 dynamic rows total), and 18
 address-specific resize views.
@@ -135,7 +181,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 882 tracked C++ files and 3,777 manifest
+verified snapshot, the inventory has 884 tracked C++ files and 3,795 manifest
 rows, with no manifest TU missing from tracked sources. Four tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
@@ -451,10 +497,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,612** | **18.3%** of 19,753 |
-| Sum of matched function lengths | 251 KiB | 6.8% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,630** | **18.4%** of 19,753 |
+| Sum of matched function lengths | 253 KiB | 6.8% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 882 | |
+| Tracked C++ files under `match/` | 884 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -474,7 +520,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 188 matched entries. Its candidate count is therefore
+listed entries, including 190 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

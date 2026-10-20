@@ -30,6 +30,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/object_class.h"
+#include "../core/rules_class.h"
 
 #define ANIM_COUNT_00458330 21
 
@@ -60,32 +62,20 @@ struct BuildingType_00458330
 };
 GG_STATIC_ASSERT(offsetof(BuildingType_00458330, BuildingAnim) == 0xF4C);
 
-// RulesClass — only the damaged-health threshold.
-struct Rules_00458330
-{
-    char   _pad0000[0x1700];   // +0x0000
-    double ConditionYellow;    // +0x1700
-};
-GG_STATIC_ASSERT(offsetof(Rules_00458330, ConditionYellow) == 0x1700);
-
-// GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance (a pointer).
-extern Rules_00458330* RulesInstance_00458330;
-
 struct Anim_00458330;
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct Vtbl_00458330;
 
-struct BuildingClass_00458330
+// Sparse BuildingClass view using the confirmed ObjectClass prefix; this does
+// not assert the intervening direct-base hierarchy.
+struct BuildingClass_00458330 : ObjectClass
 {
-    Vtbl_00458330*          Vtbl;                              // +0x0000
-    char                    _pad0004[0x51C];                   // +0x0004
+    char                    unknown_AC[0x520 - 0xAC];          // +0x00AC
     BuildingType_00458330*  Type;                              // +0x0520
     char                    _pad0524[0x55C - 0x524];           // +0x0524
     Anim_00458330*          Anims[ANIM_COUNT_00458330];        // +0x055C
 
-    // FUNCTION: GAMEMD 0x5F5C60 (decl; reloc) — ObjectClass::GetHealthPercentage.
-    double GetHealthPercentage() const;
     // FUNCTION: GAMEMD 0x451890 (decl; reloc) — BuildingClass::PlayAnim.
     void PlayAnim(const char* animName, int slot, int damaged, bool garrisoned,
                   int effectDelay);
@@ -96,7 +86,9 @@ struct BuildingClass_00458330
     // FUNCTION: GAMEMD 0x458330
     void UpdateOccupantAnims();
 };
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458330, Type)  == 0x520 &&
+GG_STATIC_ASSERT(offsetof(BuildingClass_00458330, _vtable_IPersistStream) == 0 &&
+                 offsetof(BuildingClass_00458330, Health) == 0x6C &&
+                 offsetof(BuildingClass_00458330, Type)  == 0x520 &&
                  offsetof(BuildingClass_00458330, Anims) == 0x55C);
 
 typedef int (BuildingClass_00458330::*Fn408_00458330)();

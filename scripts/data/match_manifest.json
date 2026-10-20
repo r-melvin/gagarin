@@ -9225,9 +9225,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/object_class_health_status_methods.cpp",
+  "tu": "match/core/object_class_health_methods.cpp",
   "addr": "0x5F5DD0",
-  "sym": "?GetHealthStatus@ObjectHealthStatus@@QBEHXZ",
+  "sym": "?GetHealthStatus@ObjectClass@@QBEHXZ",
   "len": "0xa9",
   "name": "ObjectClass::GetHealthStatus",
   "status": "matched",
@@ -13716,7 +13716,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
   "addr": "0x004e8660",
   "sym": "?Clear@?$DynamicVectorClass@PAVParticleSystemClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13752,7 +13752,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terrainclass_methods.cpp",
   "addr": "0x004e87e0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTerrainClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15957,20 +15957,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
   "addr": "0x004EFB70",
   "sym": "??_G?$VectorClass@PAVParticleSystemClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ParticleSystemClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<ParticleSystemClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
   "addr": "0x004EFBC0",
-  "sym": "??_G?$VectorClass@PAVParticleSystemClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVParticleSystemClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ParticleSystemClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ParticleSystemClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16029,20 +16029,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terrainclass_methods.cpp",
   "addr": "0x004EFDF0",
   "sym": "??_G?$VectorClass@PAVTerrainClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TerrainClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<TerrainClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terrainclass_methods.cpp",
   "addr": "0x004EFE40",
-  "sym": "??_G?$VectorClass@PAVTerrainClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVTerrainClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TerrainClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TerrainClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19125,7 +19125,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
   "addr": "0x004eac30",
   "sym": "?Clear@?$VectorClass@PAVParticleSystemClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19161,7 +19161,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terrainclass_methods.cpp",
   "addr": "0x004eb5b0",
   "sym": "?Clear@?$VectorClass@PAVTerrainClass@@@@UAEXXZ",
   "len": "0x27",
@@ -33989,6 +33989,168 @@
   "sym": "?GetCoords@CellClass@@QBE?AUCoordStruct@@XZ",
   "len": "0x49",
   "name": "CellClass::GetCoords (explicit-vptr layout)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_class_health_methods.cpp",
+  "addr": "0x5F5C60",
+  "sym": "?GetHealthPercentage@ObjectClass@@QBENXZ",
+  "len": "0x20",
+  "name": "ObjectClass::GetHealthPercentage",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x4E8810",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVTerrainClass@@@@UBEHPAPAVTerrainClass@@@Z",
+  "name": "DynamicVectorClass<TerrainClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8830",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVTerrainClass@@@@UBEPAVTerrainClass@@H@Z",
+  "name": "VectorClass<TerrainClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EB4C0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVTerrainClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<TerrainClass*>::operator=="
+ },
+ {
+  "addr": "0x4EB500",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVTerrainClass@@@@UAE_NHPAPAVTerrainClass@@@Z",
+  "name": "VectorClass<TerrainClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EB5E0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVTerrainClass@@@@UBEHABQAVTerrainClass@@@Z",
+  "name": "VectorClass<TerrainClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EB620",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVTerrainClass@@@@UBEHPAPAVTerrainClass@@@Z",
+  "name": "VectorClass<TerrainClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EB640",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVTerrainClass@@@@UAE_NHPAPAVTerrainClass@@@Z",
+  "name": "DynamicVectorClass<TerrainClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EB6F0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terrainclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTerrainClass@@@@UBEHABQAVTerrainClass@@@Z",
+  "name": "DynamicVectorClass<TerrainClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8690",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVParticleSystemClass@@@@UBEHPAPAVParticleSystemClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E86B0",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVParticleSystemClass@@@@UBEPAVParticleSystemClass@@H@Z",
+  "name": "VectorClass<ParticleSystemClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EAB40",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVParticleSystemClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<ParticleSystemClass*>::operator=="
+ },
+ {
+  "addr": "0x4EAB80",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVParticleSystemClass@@@@UAE_NHPAPAVParticleSystemClass@@@Z",
+  "name": "VectorClass<ParticleSystemClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EAC60",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVParticleSystemClass@@@@UBEHABQAVParticleSystemClass@@@Z",
+  "name": "VectorClass<ParticleSystemClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EACA0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVParticleSystemClass@@@@UBEHPAPAVParticleSystemClass@@@Z",
+  "name": "VectorClass<ParticleSystemClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EACC0",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVParticleSystemClass@@@@UAE_NHPAPAVParticleSystemClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EAD70",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVParticleSystemClass@@@@UBEHABQAVParticleSystemClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemClass*>::FindItemIndex"
+ },
+ {
+  "tu": "match/core/object_class_health_methods.cpp",
+  "addr": "0x5F5D20",
+  "sym": "?FUN_005F5D20@ObjectClass@@QBEHXZ",
+  "len": "0x70",
+  "name": "ObjectClass::FUN_005F5D20",
   "status": "matched",
   "pct": 100
  }

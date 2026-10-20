@@ -18,16 +18,16 @@ void Building_00459470::ClearBunker()
 
     if (BunkerLinkedItem != 0)
     {
-        if (RulesInstance_00459470->BunkerSound != -1)
+        if (RulesInstance->BunkerSound != -1)
         {
             Coord_00459470 coords = Location;
-            VocClass_PlayAt_00459470(RulesInstance_00459470->BunkerSound, &coords, 0);
+            VocClass_PlayAt_00459470(RulesInstance->BunkerSound, &coords, 0);
         }
 
         const char* name;
         int damaged;
 
-        if (GetHealthPercentage() <= RulesInstance_00459470->ConditionYellow)
+        if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
         {
             damaged = 1;
             name = Type->Anims[12].NameDamaged;
@@ -41,7 +41,7 @@ void Building_00459470::ClearBunker()
         if (name != 0 && *name != 0)
             PlayAnim(name, 12, damaged, 0, 0);
 
-        if (GetHealthPercentage() <= RulesInstance_00459470->ConditionYellow)
+        if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
         {
             damaged = 1;
             name = Type->Anims[13].NameDamaged;
@@ -55,10 +55,12 @@ void Building_00459470::ClearBunker()
         if (name != 0 && *name != 0)
             PlayAnim(name, 13, damaged, 0, 0);
 
-        (this->*Vptr->At_274)(3);
+        (this->*static_cast<Vtbl_00459470*>(
+            _vtable_IPersistStream)->At_274)(3);
         BunkerLinkedItem->BunkerLinkedItem = 0;
         BunkerLinkedItem = 0;
         unknown_718 = 0;
-        (this->*Vptr->At_1E8)(5, 0);
+        (this->*static_cast<Vtbl_00459470*>(
+            _vtable_IPersistStream)->At_1E8)(5, 0);
     }
 }

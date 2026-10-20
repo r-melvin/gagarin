@@ -26,6 +26,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/object_class.h"
 
 // BuildingTypeClass -- only the members this method reads.
 struct BuildingType_0044E7B0
@@ -46,10 +47,12 @@ GG_STATIC_ASSERT(offsetof(BuildingType_0044E7B0, At_16AF)         == 0x16AF);
 // Declaration order matters -- see match/_rt/gg_vslot.h.
 struct Vtbl_0044E7B0;
 
-struct Building_0044E7B0
+// Sparse building view sharing the confirmed ObjectClass prefix. Retail
+// 0x44E85F passes the unchanged receiver to GetHealthPercentage at 0x5F5C60;
+// intermediate class declarations remain to be consolidated separately.
+struct Building_0044E7B0 : ObjectClass
 {
-    Vtbl_0044E7B0*          Vptr;                        // +0x0000
-    char                    _pad0004[0x114 - 0x004];     // +0x0004
+    char                    unknown_AC[0x114 - 0xAC];   // +0x00AC
     int                     NumPassengers;               // +0x0114  Passengers.NumPassengers
     char                    _pad0118[0x520 - 0x118];     // +0x0118
     BuildingType_0044E7B0*  Type;                        // +0x0520
@@ -62,12 +65,11 @@ struct Building_0044E7B0
     char                    _pad0669[0x702 - 0x669];     // +0x0669
     char                    UpgradeLevel;                // +0x0702
 
-    // FUNCTION: GAMEMD 0x5F5C60 (decl; reloc) -- ObjectClass::GetHealthPercentage.
-    double GetHealthPercentage() const;
-
     // FUNCTION: GAMEMD 0x44E7B0
     int GetPowerOutput() const;
 };
+GG_STATIC_ASSERT(offsetof(Building_0044E7B0, _vtable_IPersistStream) == 0);
+GG_STATIC_ASSERT(offsetof(Building_0044E7B0, Health) == 0x6C);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, NumPassengers)      == 0x114);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, Type)               == 0x520);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, Upgrades)           == 0x5EC);
