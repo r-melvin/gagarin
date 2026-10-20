@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// Use the ToolTip cluster flags for the instantiations forced by this ledger;
+// /GX otherwise emits a different derived deleting-destructor COMDAT.
 // Compile the actual shared-template member/size assertions. VC6 requires
 // explicit instantiation before offsetof; the header itself forces none.
 // Offsets follow entry-origin instructions at 0x477D20, 0x477840,

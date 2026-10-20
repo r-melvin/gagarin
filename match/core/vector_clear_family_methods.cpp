@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477D20 and its 161
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477D20 and its 160
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,15 +10,15 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   All 162 addresses are one-to-one with 162 distinct VectorClass<T> tables;
+//   The 161 remaining addresses are one-to-one with 161 distinct VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
-//   KNOWN LIMITATION -- staging ground, not a destination: MSVC6 emits each
-//   template instantiation as a COMDAT into the translation unit that
-//   instantiated it, so these 162 instantiations belong to many different
-//   original Westwood translation units. One sweep file is right for matching
-//   bytes now and wrong for retail's eventual link order.
+//   KNOWN LIMITATION -- these compiled template instantiations are grouped
+//   here for per-function verification. The retail binary does not establish
+//   their original translation-unit grouping or final linker placement.
+//   This sweep file does not establish an integrated engine link order.
+// The ToolTip pointer Clear is bound in tooltip_vector_methods.cpp.
 #include "vector_class.h"
 
 // ---------------------------------------------------------------------------
@@ -970,11 +970,6 @@ template class VectorClass<TEventClass*>;
 // VectorClass<TiberiumClass*> -- vtable 0x007F56DC slot 3; locator 0x0080C720 -> type descriptor 0x00844860
 //   `.?AV?$VectorClass@PAVTiberiumClass@@@@`.
 template class VectorClass<TiberiumClass*>;
-
-// FUNCTION: GAMEMD 0x00724D80
-// VectorClass<const ToolTip*> -- vtable 0x007F57E8 slot 3; locator 0x0080C8B8 -> type descriptor 0x00844938
-//   `.?AV?$VectorClass@PBVToolTip@@@@`.
-template class VectorClass<const ToolTip*>;
 
 // FUNCTION: GAMEMD 0x0074C0E0
 // VectorClass<unsigned char> -- vtable 0x007F65F4 slot 3; locator 0x0080CEF8 -> type descriptor 0x00845F28

@@ -156,12 +156,6 @@ GG_SEAT1_DECL(007EBEDC);
 GG_STATIC_ASSERT(offsetof(Seat1_007EBEDC, unknown_04) == 0x4 &&
                  sizeof(Seat1_007EBEDC) == 0x8);
 
-// VTABLE: GAMEMD 0x007E2198
-GG_SEAT2_DECL(007E2198);
-GG_STATIC_ASSERT(offsetof(Seat2_007E2198, unknown_04) == 0x4 &&
-                 offsetof(Seat2_007E2198, unknown_08) == 0x8 &&
-                 sizeof(Seat2_007E2198) == 0xC);
-
 // VTABLE: GAMEMD 0x007F72C4
 GG_SEAT2_DECL(007F72C4);
 GG_STATIC_ASSERT(offsetof(Seat2_007F72C4, unknown_04) == 0x4 &&
@@ -193,7 +187,6 @@ GG_STATIC_ASSERT(offsetof(SeatNull_007B66C0, unknown_00) == 0x0 &&
 // Address -> class map. A constructor cannot be redeclared at namespace scope,
 // so the reccmp `// FUNCTION:` annotations live on the bodies in the .cpp; this
 // is the index.
-//   0x004AEC60  ->  Seat2_007E2198
 //   0x00535C00  ->  Seat1_007EB84C
 //   0x00535FC0  ->  Seat1_007EBE64
 //   0x005360B0  ->  Seat1_007EBE8C

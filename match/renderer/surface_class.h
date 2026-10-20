@@ -12,13 +12,15 @@
 
 #include "../_layout/geometry2d.h"
 
-// VTABLE: GAMEMD 0x7E2198 Surface (COL at 0x7E2194).
+// VTABLE: GAMEMD 0x7E2198 Surface (vtable[-1] at 0x7E2194 -> COL 0x7FB2F8).
 class Surface
 {
 public:
-    // Slot zero targets scalar-deleting dtor 0x4115D0. This is not an
-    // annotation for the ordinary destructor body, whose entry is unresolved.
-    virtual ~Surface();
+    // The empty inline destructor reproduces the body embedded in the
+    // scalar-deleting destructor at 0x4115D0. No separate ordinary entry is bound.
+    virtual ~Surface() {}
+    // FUNCTION: GAMEMD 0x4AEC60 (decl; reloc)
+    Surface(int width, int height);
 
     virtual void unknown_04() = 0;
     virtual void unknown_08() = 0;

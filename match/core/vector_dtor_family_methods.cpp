@@ -1,25 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477990 and its 334
-//   siblings.
-//
-//   One class template, 165 explicit instantiations, 335 retail addresses.
-//   Each `template class VectorClass<T>;` below makes the compiler generate
-//   the scalar deleting destructor `??_G?$VectorClass@<T>@@UAEPAXI@Z`, whose
-//   bytes are the retail function at each annotated address: reseat the
-//   vtable, release the element block if this vector owns one, clear the
-//   bookkeeping, and free the object itself when the caller set the deleting
-//   bit. The vtable address is not written in the source at all -- it is the
-//   instantiation's own vtable, a relocation the linker fills in -- which is
-//   why one template body reaches every one of these addresses.
-//
-//   The element type of each is the retail one, read out of the complete
-//   object locator four bytes below the vtable the body stores; see the
-//   header for the method and for why 165 instantiations cover 335 addresses.
-//   Where a group carries more than one `// FUNCTION:` line, retail holds
-//   that many relocation-identical COMDAT copies of the same instantiation.
-//
-//   Groups are in ascending retail-address order of their first address.
+// 164 base-template instantiations reproduce 333 remaining retail destructor
+// bodies. Each group's written vptr and RTTI identify its base-destruction
+// element type, not necessarily the wrapper's original declaring class.
+// Multiple FUNCTION markers bind relocation-identical bodies to this model;
+// their original ownership/link placement remains to be recovered. Groups are
+// ordered by their first retail address. See the header for the evidence limits.
 #include "vector_dtor_family_methods.h"
 
 // ---------------------------------------------------------------------------
@@ -28,10 +14,9 @@
 // scoped name gets its enclosing scope. None of them is defined -- the
 // destructor only ever handles `T*`, so an incomplete type is all the
 // template needs, and all these declarations do is reproduce the mangled
-// name retail emitted. A scope written `namespace` below could equally have
+// template argument spelling recorded by RTTI. A scope written `namespace` below could equally have
 // been a class: MSVC mangles the two identically, so the binary cannot
-// decide it (docs/rtti_sweep.md §4 records WorldDominationTour as a
-// namespace).
+// decide that distinction.
 // ---------------------------------------------------------------------------
 class AITriggerTypeClass;
 class AbstractClass;
@@ -1151,12 +1136,6 @@ template class VectorClass<TEventClass*>;
 // VectorClass<TiberiumClass*> -- reseats retail vtable 0x007F56DC; locator 0x0080C720 -> type descriptor 0x00844860
 //   `.?AV?$VectorClass@PAVTiberiumClass@@@@`.
 template class VectorClass<TiberiumClass*>;
-
-// FUNCTION: GAMEMD 0x00724EF0
-// FUNCTION: GAMEMD 0x00724F40
-// VectorClass<const ToolTip*> -- reseats retail vtable 0x007F57E8; locator 0x0080C8B8 -> type descriptor 0x00844938
-//   `.?AV?$VectorClass@PBVToolTip@@@@`.
-template class VectorClass<const ToolTip*>;
 
 // FUNCTION: GAMEMD 0x0074BFA0
 // VectorClass<unsigned char> -- reseats retail vtable 0x007F65F4; locator 0x0080CEF8 -> type descriptor 0x00845F28

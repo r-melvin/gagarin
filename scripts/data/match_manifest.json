@@ -14805,7 +14805,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x00724c30",
   "sym": "?Clear@?$DynamicVectorClass@PBVToolTip@@@@UAEXXZ",
   "len": "0x2a",
@@ -18180,20 +18180,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x00724EF0",
   "sym": "??_G?$VectorClass@PBVToolTip@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const ToolTip*>::`scalar deleting destructor'",
+  "name": "VectorClass<const ToolTip*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x00724F40",
-  "sym": "??_G?$VectorClass@PBVToolTip@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PBVToolTip@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<const ToolTip*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<const ToolTip*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -20196,7 +20196,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x00724d80",
   "sym": "?Clear@?$VectorClass@PBVToolTip@@@@UAEXXZ",
   "len": "0x27",
@@ -21816,11 +21816,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/renderer/surface_class.cpp",
   "addr": "0x4AEC60",
-  "sym": "??0Seat2_007E2198@@QAE@HH@Z",
+  "sym": "??0Surface@@QAE@HH@Z",
   "len": "0x19",
-  "name": "Seat2_007E2198::ctor",
+  "name": "Surface::Surface",
   "status": "matched",
   "pct": 100
  },
@@ -31919,6 +31919,87 @@
   "sym": "_CompareToolTipTableEntries",
   "len": "0x22",
   "name": "CompareToolTipTableEntries",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/surface_class.cpp",
+  "addr": "0x4115D0",
+  "sym": "??_GSurface@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "Surface scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724C60",
+  "sym": "?Slot5@?$DynamicVectorClass@PBVToolTip@@@@UBEHPAPBVToolTip@@@Z",
+  "len": "0x1B",
+  "name": "DynamicVectorClass<const ToolTip*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724C80",
+  "sym": "?Slot6@?$VectorClass@PBVToolTip@@@@UBEPBVToolTip@@H@Z",
+  "len": "0x0D",
+  "name": "VectorClass<const ToolTip*>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724C90",
+  "sym": "??8?$VectorClass@PBVToolTip@@@@UBE_NABV0@@Z",
+  "len": "0x3B",
+  "name": "VectorClass<const ToolTip*>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724CD0",
+  "sym": "?SetCapacity@?$VectorClass@PBVToolTip@@@@UAE_NHPAPBVToolTip@@@Z",
+  "len": "0xAE",
+  "name": "VectorClass<const ToolTip*>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724DB0",
+  "sym": "?FindItemIndex@?$VectorClass@PBVToolTip@@@@UBEHABQBVToolTip@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<const ToolTip*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724DF0",
+  "sym": "?Slot5@?$VectorClass@PBVToolTip@@@@UBEHPAPBVToolTip@@@Z",
+  "len": "0x1B",
+  "name": "VectorClass<const ToolTip*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724E10",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PBVToolTip@@@@UAE_NHPAPBVToolTip@@@Z",
+  "len": "0xA7",
+  "name": "DynamicVectorClass<const ToolTip*>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "addr": "0x724EC0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PBVToolTip@@@@UBEHABQBVToolTip@@@Z",
+  "len": "0x23",
+  "name": "DynamicVectorClass<const ToolTip*>::FindItemIndex",
   "status": "matched",
   "pct": 100
  }

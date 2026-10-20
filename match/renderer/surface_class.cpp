@@ -47,3 +47,12 @@ bool Surface::unknown_84()
 {
     return false;
 }
+
+// SYNTHETIC: GAMEMD 0x4115D0
+// Surface::`scalar deleting destructor', generated from the inline destructor.
+// Full raw span is 0x20, including the post-delete stack cleanup and RET 4.
+
+// FUNCTION: GAMEMD 0x4AEC60
+Surface::Surface(int width, int height) : Width(width), Height(height)
+{
+}

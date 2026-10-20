@@ -5,9 +5,10 @@ engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ projec
 The ultimate goal is a buildable, structured C++ project that reproduces the
 complete v1.001 `gamemd.exe` byte for byte. Its classes, inheritance,
 interfaces, source organization and coding style should be as close to
-Westwood's original project as the evidence allows. Preserving that project is the
-deliverable: readable C++, shared engine types and implementations, and an
-integrated build. This goal has not been achieved; reconstruction is in progress.
+Westwood's original project as the evidence allows. Preserving the engine through
+this reconstruction is the deliverable: readable C++, shared engine types and
+implementations, and an integrated build. This goal has not been achieved;
+reconstruction is in progress.
 
 Per-function instruction matching under the MSVC 6-era toolchain is an
 intermediate fidelity check. The final target requires an integrated project
@@ -68,26 +69,35 @@ Verified consolidation steps:
   The table search also uses the canonical class directly, replacing its layout
   cast to an address-scoped helper. Its shared qsort callback also matches,
   including retail's signed key comparison.
-- [Surface](match/renderer/surface_class.h): BitFont and ZBuffer now share the
-  confirmed Surface interface and geometry declarations. Six native methods
-  live in its [implementation](match/renderer/surface_class.cpp), replacing
-  three stand-ins and adding three exact default methods. The interface pins
-  all 34 virtual slots; unknown signatures remain placeholders, and the complete
-  object size and complete derived layouts are not established.
+- [Surface](match/renderer/surface_class.h): eight matched entries share the
+  confirmed Surface prefix: its constructor, six ordinary methods, and the
+  compiler-generated scalar deleting destructor in its
+  [implementation](match/renderer/surface_class.cpp). The empty inline destructor
+  models the body embedded in that deleting destructor; no separate ordinary
+  destructor entry is bound. The interface pins 34 virtual slots and asserts
+  Width/Height offsets; unknown signatures remain placeholders, and complete
+  Surface and derived sizes remain unconfirmed.
 - [XSurface](match/renderer/xsurface_class.h): four methods share one native
   [implementation](match/renderer/xsurface_class.cpp) and the confirmed Surface
   base, replacing the Unlock stand-in and adding three exact methods. Its
   lock-counter offset is asserted, and its virtual table includes the two
   added slots through `+0x8C`. The complete object size remains unconfirmed.
-- [VectorClass and DynamicVectorClass](match/core/vector_class.h): 162 base
-  and 160 dynamic `Clear` entries now instantiate the real seven-slot templates,
-  replacing the `PlainVector`/`CountedVector::Destroy` stand-ins. The 335 existing
-  deleting-destructor matches retain their bytes with the same shared base
-  definition. ToolTipManager uses these templates with its RTTI-confirmed const
-  element type. [Layout assertions](match/core/vector_class_layout_asserts.cpp)
-  check actual template members and sizes under VC6. The DiskID entry at
-  `0x69C4A0` retains the `CountedVector<DiskID>::Destroy` matching stand-in
-  because its retail declaring class is unresolved; other legacy users are marked `VectorClassLayout` or
+- [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
+  seven-slot templates replace the base `PlainVector` and dynamic
+  `CountedVector::Destroy` stand-ins. The family files bind 161 base and 159
+  dynamic `Clear` entries; the [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
+  binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
+  and two compiler-generated scalar deleting destructors. ToolTipManager uses
+  these templates with its RTTI-confirmed const element type.
+  [Layout assertions](match/core/vector_class_layout_asserts.cpp) check actual
+  template members and sizes under VC6. The 333 remaining generic deleting
+  destructor bodies use 164 base-template instantiation views: their written
+  vptr and RTTI identify the base-destruction path and element type, but do not
+  establish each wrapper's original declaring class, source-file boundaries,
+  or duplicate-COMDAT linker behavior. The ToolTip pair uses the actual base
+  and dynamic wrapper targets. The DiskID entry at `0x69C4A0` retains the
+  `CountedVector<DiskID>::Destroy` matching stand-in because its retail declaring
+  class is unresolved; other legacy users are marked `VectorClassLayout` or
   `DynamicVectorClassLayout`. Other virtual methods and original source-file
   ownership remain incomplete.
 - [Periodic state updates](match/core/periodic_state_updates_00439480.cpp): nine
@@ -106,7 +116,8 @@ The remaining work toward the source-project goal is tracked by these gates:
 - [ ] Establish evidence-backed class and subsystem ownership for recovered
   functions; record which original source boundaries remain unknown.
 - [ ] Add an integrated build and link target for the reconstructed C++ project,
-  resolving dependencies through shared source rather than matching stand-ins.
+  resolving reconstructed engine dependencies through shared declarations and
+  implementations, while accounting for library dependencies separately.
 - [ ] Recover the remaining in-scope engine functions and verify their matches
   with the period toolchain.
 - [ ] Account for CRT/third-party dependencies and the complete PE layout,
@@ -126,10 +137,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,382** | **17.1%** of 19,753 |
-| Sum of matched function lengths | 237 KiB | 6.4% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,391** | **17.2%** of 19,753 |
+| Sum of matched function lengths | 238 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 850 | |
+| Tracked C++ translation units under `match/` | 851 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -149,7 +160,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 158 matched entries. Its candidate count is therefore
+listed entries, including 159 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

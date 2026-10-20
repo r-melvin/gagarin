@@ -1,5 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// ToolTip pointer methods at 0x724C60/80/90, 0x724CD0, 0x724DB0/F0,
+// 0x724E10/C0 establish the operations below; raw RTTI binds this element
+// specialization to VectorClass<const ToolTip*> and DynamicVectorClass.
+// Pointer-array new[] lowers to operator new(size_t) at retail 0x7C8E17.
+// These operations are verified for the ToolTip pointer specialization;
+// other element types require their own binary confirmation.
 // Pointer-element removal is inlined in ToolTipManager::Remove at 0x724730:
 // find index via slot 4, decrement Count, then shift the remaining entries.
 // This definition is separate so storage/Clear-only instantiations can use
@@ -20,4 +26,93 @@ bool DynamicVectorClass<T>::RemoveItem(const T& item)
     }
     return false;
 }
+template<class T> bool VectorClass<T>::operator==(const VectorClass<T>& other) const
+{
+    if (this->Capacity == other.Capacity) {
+        for (int i = 0; i < this->Capacity; ++i) {
+            if (this->Items[i] != other.Items[i]) return false;
+        }
+        return true;
+    }
+    return false;
+}
+
+template<class T> int VectorClass<T>::FindItemIndex(const T& item) const
+{
+    if (!this->IsInitialized) return 0;
+    for (int i = 0; i < this->Capacity; ++i) {
+        if (this->Items[i] == item) return i;
+    }
+    return -1;
+}
+
+template<class T> int VectorClass<T>::Slot5(T* elementAddress) const
+{
+    if (!this->IsInitialized) return 0;
+    return (int)(((unsigned long)elementAddress - (unsigned long)this->Items) / sizeof(T));
+}
+
+template<class T> T VectorClass<T>::Slot6(int index) const
+{
+    return this->Items[index];
+}
+
+template<class T> int DynamicVectorClass<T>::FindItemIndex(const T& item) const
+{
+    for (int i = 0; i < this->Count; ++i) {
+        if (this->Items[i] == item) return i;
+    }
+    return -1;
+}
+
+template<class T> int DynamicVectorClass<T>::Slot5(T* elementAddress) const
+{
+    if (!this->IsInitialized) return 0;
+    return (int)(((unsigned long)elementAddress - (unsigned long)this->Items) / sizeof(T));
+}
+
+
+template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
+    if (capacity != 0) {
+        T* newItems;
+        this->IsInitialized = false;
+        if (pMem == 0)
+            newItems = new T[capacity];
+        else
+            newItems = pMem;
+        this->IsInitialized = true;
+        if (newItems == 0)
+            return false;
+
+        if (this->Items != 0) {
+            int copyCount = this->Capacity;
+            if (capacity < copyCount)
+                copyCount = capacity;
+            for (int i = 0; i < copyCount; ++i)
+                newItems[i] = this->Items[i];
+            if (this->IsAllocated) {
+                gg_free(this->Items);
+                this->Items = 0;
+            }
+        }
+
+        this->Items = newItems;
+        this->Capacity = capacity;
+        this->IsAllocated = (this->Items != 0 && pMem == 0);
+    } else {
+        this->Clear();
+    }
+    return true;
+}
+
+template<class T> bool DynamicVectorClass<T>::SetCapacity(int capacity, T* pMem) {
+    if (VectorClass<T>::SetCapacity(capacity, pMem)) {
+        if (this->Capacity < this->Count)
+            this->Count = this->Capacity;
+        return true;
+    }
+    return false;
+}
+
+
 #endif

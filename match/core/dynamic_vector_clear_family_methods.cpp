@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477840 and its 160
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477840 and its 159
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -12,11 +12,11 @@
 //   The DiskID entry remains separate because its owner is not proven to be
 //   DynamicVectorClass<T>.
 //
-//   KNOWN LIMITATION -- staging ground, not a destination: MSVC6 emits each
-//   template instantiation as a COMDAT into the translation unit that
-//   instantiated it, so these 160 instantiations belong to many different
-//   original Westwood translation units. One sweep file is right for matching
-//   bytes now and wrong for retail's eventual link order.
+//   KNOWN LIMITATION -- these compiled template instantiations are grouped
+//   here for per-function verification. The retail binary does not establish
+//   their original translation-unit grouping or final linker placement.
+//   This sweep file does not establish an integrated engine link order.
+// The ToolTip pointer Clear is bound in tooltip_vector_methods.cpp.
 #include "vector_class.h"
 #include "vector_counted_dtor_family_methods.h"
 
@@ -1000,11 +1000,6 @@ template class DynamicVectorClass<ThemeControl*>;
 // DynamicVectorClass<TiberiumClass*> -- vtable 0x007F56BC slot 3; locator 0x0080C6F0 -> type descriptor 0x00844890
 //   `.?AV?$DynamicVectorClass@PAVTiberiumClass@@@@`.
 template class DynamicVectorClass<TiberiumClass*>;
-
-// FUNCTION: GAMEMD 0x00724C30
-// DynamicVectorClass<const ToolTip*> -- vtable 0x007F57C8 slot 3; locator 0x0080C840 -> type descriptor 0x00844968
-//   `.?AV?$DynamicVectorClass@PBVToolTip@@@@`.
-template class DynamicVectorClass<const ToolTip*>;
 
 // FUNCTION: GAMEMD 0x0074F360
 // DynamicVectorClass<VeinholeMonsterClass*> -- vtable 0x007F663C slot 3; locator 0x0080CF60 -> type descriptor 0x008460A8

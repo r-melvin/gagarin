@@ -60,6 +60,16 @@ don't work on the same function.
    compiled body to equal a fresh compile of the actual C++ source. Keep raw
    targets, adapters and search output under `/tmp`.
 
+For class integrations, `scripts/vc6/verify_vtable.py` compares requested COFF
+vtable slots with the pinned retail PE. Supply `--obj`, `--sym`, `--addr`,
+`--slots` and `--binary`; targets must resolve through 100%-matched manifest
+rows or an explicit `--symbol-map` JSON object for library symbols.
+`--weak-defaults` conditionally follows unresolved `SEARCH_LIBRARY` weak
+externals through their recorded COFF default when no same-name strong
+definition or mapping is known. A final link can select a strong library
+definition instead. This scoped check does not establish final-link resolution,
+unrequested slots, or whole-image identity.
+
 ## File conventions
 
 Each file starts with a provenance header:

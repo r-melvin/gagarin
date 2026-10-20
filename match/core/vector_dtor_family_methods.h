@@ -1,48 +1,17 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x477990 and its neighbours: a family of identical 73-byte
-//   scalar-deleting destructors, laid out every 0x50 bytes and differing only
-//   in the vtable address they store. Members touched: the vtable pointer at
-//   +0, the items pointer at +4, the capacity at +8 and the allocated flag at
-//   +0xD; the block is released and, when the deleting bit of the flags is
-//   set, so is the object.
+// 333 remaining 73-byte deleting-destructor bodies are bound here through
+// 164 VectorClass<T> base-destruction views. The vptr written at body+6,
+// its retail COL and its type descriptor establish that base and element T.
+// Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
+// deleting flag controls the final free of the object.
 //
-//   THE CLASS AND ITS ELEMENT TYPES ARE RTTI-CONFIRMED, NOT ASSUMED. Each
-//   body stores one retail vtable; four bytes below that vtable sits the
-//   class's complete object locator, whose +0xC is the type descriptor, whose
-//   name begins at +8. The vtable was re-read out of the binary for every one
-//   of the 335 bodies -- the `C7 06 <imm32>` vptr store at body offset +6 --
-//   rather than taken from this file's own earlier comments, and all 335
-//   agreed with them. Every one of the 165 distinct vtables so named carries
-//   a locator, so **335/335 addresses are bound and no address-suffixed
-//   stand-in is left in this family**.
-//
-//   All 165 type descriptors spell `.?AV?$VectorClass@<element>@@`: the
-//   template is retail's `VectorClass<T>` and the element type is exactly
-//   what the descriptor says. `PAVInfantryClass@@` is `InfantryClass*`,
-//   `PBVAnimClass@@` is `const AnimClass*` (the sweep's own demangler drops
-//   that const; the mangling does not), `W4DiskID@@` is the enum `DiskID`,
-//   `UDrawRecord@FoggedObjectClass@@` is the nested
-//   `FoggedObjectClass::DrawRecord`. The element declarations in the
-//   translation unit beside this header exist only to reproduce those
-//   manglings; each was checked by compiling it and reading the emitted
-//   symbol back with objdump.
-//
-//   WHY 165 INSTANTIATIONS COVER 335 ADDRESSES. These 335 bodies are not 335
-//   functions in retail's source. They are one class template's
-//   compiler-generated scalar deleting destructor,
-//   `??_G?$VectorClass@<element>@@UAEPAXI@Z`, emitted as a COMDAT into every
-//   translation unit that instantiated it. 145 element types are emitted
-//   twice, eleven three times, one four times and eight once: MSVC6 emits the
-//   instantiation per TU and the retail link did not fold the copies. The
-//   copies are relocation-identical -- compared byte for byte across all 165
-//   groups with the two `CALL` displacements zeroed, and 0 groups differ --
-//   so one source-level instantiation is the right model for every retail
-//   address in its group, and each group below lists all of its addresses.
-//   The previous model gave each address its own invented `Elem_<addr>` tag
-//   purely to force 335 distinct COMDATs out of one template; that device is
-//   gone, and with it the last placeholder in this family.
+// The written base vptr does NOT prove which class declared the deleting
+// wrapper. An inherited/derived wrapper can inline that same base destructor.
+// These are exact code-body bindings, not proof of original wrapper ownership,
+// original TU boundaries, or duplicate-COMDAT linker behavior. Audit each
+// owning slot-zero vtable when integrating its class. The ToolTip pair has
+// been moved to tooltip_vector_methods.cpp with both actual vtable targets.
 #ifndef GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
 #define GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H
 
@@ -363,8 +332,6 @@ extern char VT_007F5134;
 extern char VT_007F552C;
 // VTABLE: GAMEMD 0x007F56DC -- VectorClass<TiberiumClass*>
 extern char VT_007F56DC;
-// VTABLE: GAMEMD 0x007F57E8 -- VectorClass<const ToolTip*>
-extern char VT_007F57E8;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
 extern char VT_007F65F4;
 // VTABLE: GAMEMD 0x007F665C -- VectorClass<VeinholeMonsterClass*>

@@ -3,15 +3,12 @@
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
 // Constructors that seat their object's first word and return `this`.
-// Twenty-two instantiations across five sub-shapes; within a sub-shape every
+// Twenty-one remaining instantiations across five sub-shapes; within a sub-shape every
 // byte outside the vtable constant is identical, so each body is written once
 // as a macro and expanded per instantiation. Ordered ascending by retail
 // address.
 
 #include "vtable_seating_ctor_family_methods.h"
-
-// FUNCTION: GAMEMD 0x004AEC60
-GG_SEAT2_BODY(007E2198)
 
 // FUNCTION: GAMEMD 0x00535C00
 GG_SEAT1_BODY(007EB84C)
