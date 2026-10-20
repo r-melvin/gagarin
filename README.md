@@ -15,6 +15,8 @@ The latest full gates pass with 3,527 functions matched at 100%, 165 partial
 rows, and 869 tracked C++ translation units. The integrated engine build and
 byte-for-byte executable comparison remain unfinished.
 
+![gagarin matching progress](.github/assets/progress.svg)
+
 ## Get started
 
 You need a legally owned copy of `gamemd.exe` v1.001 for retail verification,
