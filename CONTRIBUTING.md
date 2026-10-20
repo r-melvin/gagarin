@@ -1,7 +1,7 @@
 # Contributing to gagarin
 
 Thanks for helping preserve the Red Alert 2 / Yuri's Revenge engine. The rules
-are in `AGENTS.md`; this guide covers the practical side.
+are in [AGENTS.md](AGENTS.md) and [LEGAL.md](LEGAL.md); this guide covers the practical side.
 
 The ultimate deliverable is a human-readable, structured C++ project whose
 complete build reproduces the pinned v1.001 `gamemd.exe` byte for byte. The
@@ -114,4 +114,4 @@ must still match the binary's behaviour.
 ## Licence
 
 By contributing you agree that your work is released under GPLv3 with EA's
-Section 7 additional terms, as described in `README.md`.
+Section 7 additional terms, as described in [LEGAL.md](LEGAL.md).

@@ -34,7 +34,8 @@ python3 scripts/vc6/verify_all.py
 manifest's fully matched functions against the pinned retail binary and
 compile-checks documented partial rows. See [CONTRIBUTING.md](CONTRIBUTING.md)
 for setup, the per-function matching workflow and file conventions; [AGENTS.md](AGENTS.md)
-defines the evidence, engineering and legal rules.
+defines the evidence and engineering rules; [LEGAL.md](LEGAL.md) defines the
+legal scope and provenance restrictions.
 
 ## Evidence and legal scope
 
@@ -44,10 +45,8 @@ must be confirmed against binary evidence. Source recovery for statically linked
 CRT and third-party code is out of scope; their bytes still belong to the
 complete executable reproduction target.
 
-Source is GPLv3 under [LICENSE](LICENSE), with the EA Section 7 terms adopted
-by project policy in [AGENTS.md](AGENTS.md). This is an independent preservation
-project with no EA or Westwood affiliation. The retail binary and EA bytes are
-never committed.
+See [LEGAL.md](LEGAL.md) for licensing, permitted source material and commit
+restrictions, and [LICENSE](LICENSE) for the licence text.
 
 ## Credits
 
@@ -62,4 +61,4 @@ never committed.
   engineering and evidence gathering. Retail instructions and the VC6 oracle
   remain the factual checks.
 - YRpp, TSpp and EA's released Red Alert source are consult-only naming and
-  structure references, as restricted by [AGENTS.md](AGENTS.md).
+  structure references, as restricted by [LEGAL.md](LEGAL.md).
