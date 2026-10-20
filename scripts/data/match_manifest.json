@@ -30391,5 +30391,77 @@
   "name": "FUN_004356C0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x4356E0",
+  "sym": "_FUN_004356E0",
+  "len": "0x31",
+  "name": "FUN_004356E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x435720",
+  "sym": "_FUN_00435720",
+  "len": "0x21",
+  "name": "FUN_00435720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x435750",
+  "sym": "_FUN_00435750",
+  "len": "0x2c",
+  "name": "FUN_00435750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x435780",
+  "sym": "_FUN_00435780",
+  "len": "0x27",
+  "name": "FUN_00435780",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x4357B0",
+  "sym": "_FUN_004357B0",
+  "len": "0xf",
+  "name": "FUN_004357B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x4357C0",
+  "sym": "_FUN_004357C0",
+  "len": "0x12",
+  "name": "FUN_004357C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x4357E0",
+  "sym": "_FUN_004357E0",
+  "len": "0x1a",
+  "name": "FUN_004357E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_004356e0.cpp",
+  "addr": "0x435800",
+  "sym": "_FUN_00435800",
+  "len": "0x17",
+  "name": "FUN_00435800",
+  "status": "matched",
+  "pct": 100
  }
 ]
