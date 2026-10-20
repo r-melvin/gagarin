@@ -1,0 +1,19 @@
+#!/bin/sh
+# pre-commit: keep .github/assets/progress.svg in step with the manifest.
+# When the manifest, the totals or the generator is staged, regenerate the
+# graphic from the *staged* copies (other sessions may leave unstaged edits in
+# the shared tree) and stage the result. Install with:
+#   ln -s ../../scripts/hooks/pre-commit .git/hooks/pre-commit
+watched='^(scripts/data/match_manifest\.json|scripts/data/progress_totals\.json|scripts/orchestration/progress_svg\.py)$'
+git diff --cached --name-only | grep -qE "$watched" || exit 0
+tmp=$(mktemp -d) || exit 1
+trap 'rm -rf "$tmp"' EXIT
+git show :scripts/data/match_manifest.json > "$tmp/manifest.json" &&
+git show :scripts/data/progress_totals.json > "$tmp/totals.json" &&
+git show :scripts/orchestration/progress_svg.py > "$tmp/progress_svg.py" &&
+python3 -I "$tmp/progress_svg.py" .github/assets/progress.svg \
+    --manifest "$tmp/manifest.json" --totals "$tmp/totals.json" >/dev/null || {
+    echo "pre-commit: could not regenerate .github/assets/progress.svg" >&2
+    exit 1
+}
+git add .github/assets/progress.svg

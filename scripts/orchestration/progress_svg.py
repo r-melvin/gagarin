@@ -7,20 +7,22 @@
 #   matched / partial  -> scripts/data/match_manifest.json
 #   totals             -> scripts/data/progress_totals.json
 #
-# Usage: progress_svg.py [out.svg]   (default .github/assets/progress.svg)
+# Usage: progress_svg.py [out.svg] [--manifest M] [--totals T]
+#   (default out: .github/assets/progress.svg; the pre-commit hook passes the
+#   staged manifest and totals so unstaged edits never reach the graphic)
 
+import argparse
 import json
 import os
-import sys
 from collections import Counter
 
 ROOT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
 W = 720
 
 
-def stats():
-    m = json.load(open(os.path.join(ROOT, 'scripts/data/match_manifest.json')))
-    t = json.load(open(os.path.join(ROOT, 'scripts/data/progress_totals.json')))
+def stats(manifest, totals):
+    m = json.load(open(manifest))
+    t = json.load(open(totals))
     matched = [r for r in m if r['status'] == 'matched']
     return {
         'matched': len(matched),
@@ -83,9 +85,14 @@ def render(s):
 
 
 def main():
-    out = sys.argv[1] if len(sys.argv) > 1 else os.path.join(ROOT, '.github/assets/progress.svg')
+    ap = argparse.ArgumentParser()
+    ap.add_argument('out', nargs='?', default=os.path.join(ROOT, '.github/assets/progress.svg'))
+    ap.add_argument('--manifest', default=os.path.join(ROOT, 'scripts/data/match_manifest.json'))
+    ap.add_argument('--totals', default=os.path.join(ROOT, 'scripts/data/progress_totals.json'))
+    a = ap.parse_args()
+    out = a.out
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    s = stats()
+    s = stats(a.manifest, a.totals)
     open(out, 'w').write(render(s))
     print('%d/%d functions (%.1f%%), %d/%d bytes (%.1f%%) -> %s' % (
         s['matched'], s['total'], 100.0 * s['matched'] / s['total'],

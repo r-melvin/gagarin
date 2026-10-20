@@ -20,6 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The pre-commit hook regenerates the README graphic; this catches a
+      # commit made without it.
+      - name: Progress graphic matches the manifest
+        run: |
+          python3 scripts/orchestration/progress_svg.py
+          git diff --exit-code .github/assets/progress.svg
+
       - name: Install Wine (WoW64) + 7zip + Python
         run: |
           sudo dpkg --add-architecture i386
