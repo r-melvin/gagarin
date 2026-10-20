@@ -105,6 +105,11 @@ Verified consolidation steps:
   specialization has three entries, including its default constructor. All
   thirteen entries from the former address-scoped copy-constructor family now
   use native templates: the int pair and [eleven pointer specializations](match/core/vector_copy_constructors.cpp).
+  Four capacity constructors for the const AnimType and BuildingType pointer
+  specializations also use [native templates](match/core/vector_capacity_constructors.cpp),
+  replacing four address-specific POD views. Their complete constructor spans
+  match; extra emitted methods are not newly claimed by this constructor file,
+  and final-link selection remains unverified.
   Raw RTTI preserves their pointee const qualifiers; copying allocates and copies
   Capacity elements. Additional emitted methods and other copy specializations
   remain unverified. The native integration covers fifteen entries
@@ -179,7 +184,7 @@ the engine scope and structural audit provide a defensible denominator.
 | Functions matched at 100% | **3,408** | **17.3%** of 19,753 |
 | Sum of matched function lengths | 239 KiB | 6.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ translation units under `match/` | 855 | |
+| Tracked C++ translation units under `match/` | 856 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

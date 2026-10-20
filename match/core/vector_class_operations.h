@@ -16,7 +16,9 @@
 
 // Capacity constructors at 0x477BE0/0x477DB0 and 0x478790/0x68C200 establish
 // int and TechnoType pointer specializations. Unlike SetCapacity, the allocation
-// path sets ownership without a null-result test. Other constructors are unclaimed.
+// path sets ownership without a null-result test. Further pointer specializations
+// are verified individually in vector_capacity_constructors.cpp; other emitted
+// constructors are unclaimed.
 template<class T> VectorClass<T>::VectorClass(int capacity, T* pMem)
     : Items(0), Capacity(capacity), IsInitialized(true), IsAllocated(false)
 {

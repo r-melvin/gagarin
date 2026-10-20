@@ -6039,20 +6039,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x00525250",
-  "sym": "?Ctor@DynamicVectorClass_00525250@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVAnimTypeClass@@@@QAE@HPAPBVAnimTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_00525250::Ctor",
+  "name": "DynamicVectorClass<const AnimTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x005AC900",
-  "sym": "?Ctor@DynamicVectorClass_005AC900@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "sym": "??0?$DynamicVectorClass@PBVBuildingTypeClass@@@@QAE@HPAPBVBuildingTypeClass@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_005AC900::Ctor",
+  "name": "DynamicVectorClass<const BuildingTypeClass*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -15057,11 +15057,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x5105A0",
-  "sym": "?Ctor@VectorClass_005105A0@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVBuildingTypeClass@@@@QAE@HPAPBVBuildingTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_005105A0::Ctor",
+  "name": "VectorClass<const BuildingTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -15120,11 +15120,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_capacity_constructors.cpp",
   "addr": "0x525680",
-  "sym": "?Ctor@VectorClass_00525680@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PBVAnimTypeClass@@@@QAE@HPAPBVAnimTypeClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_00525680::Ctor",
+  "name": "VectorClass<const AnimTypeClass*>::VectorClass",
   "status": "matched",
   "pct": 100
  },

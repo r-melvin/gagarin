@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
 //   Bytes matched against retail gamemd.exe v1.001.
 //
-// DynamicVectorClass<T>(size, array) over 4-byte element types, 17 remaining retail
+// DynamicVectorClass<T>(size, array) over 4-byte element types, 15 remaining retail
 // instantiations. Each body runs the inlined VectorClass base constructor —
 // zero the element pointer, record the capacity, mark the vector valid and
 // not-owning, install the base vtable, then for a non-zero size either adopt
@@ -32,16 +32,6 @@ GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_00513190, 0x7EAC48, 0x7EACA8)
 // VTABLE: GAMEMD 0x7EAC68
 // VTABLE: GAMEMD 0x7EACC8
 GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_00513560, 0x7EAC68, 0x7EACC8)
-
-// FUNCTION: GAMEMD 0x00525250
-// VTABLE: GAMEMD 0x7EB6F4
-// VTABLE: GAMEMD 0x7EB714
-GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_00525250, 0x7EB6F4, 0x7EB714)
-
-// FUNCTION: GAMEMD 0x005AC900
-// VTABLE: GAMEMD 0x7EAA08
-// VTABLE: GAMEMD 0x7EAA28
-GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_005AC900, 0x7EAA08, 0x7EAA28)
 
 // FUNCTION: GAMEMD 0x005D86D0
 // VTABLE: GAMEMD 0x7EED40
