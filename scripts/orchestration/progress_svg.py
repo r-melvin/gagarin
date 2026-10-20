@@ -55,10 +55,10 @@ def render(s):
     out.append(f'<text x="24" y="{y}" class="title">gagarin — matching progress</text>')
     y += 36
     out.append(bar(y, 'Functions matched', s['matched'], s['partial'], s['total'],
-                   f"{s['matched']:,} matched · {s['partial']:,} partial · {s['total']:,} in the binary"))
+                   f"{s['matched']:,} matched · {s['partial']:,} partial · {s['total']:,} in the Ghidra list"))
     y += 82
-    out.append(bar(y, 'Code bytes matched', s['bytes'], 0, s['total_bytes'],
-                   f"{s['bytes'] / 1024:,.0f} KB of {s['total_bytes'] / 1024:,.0f} KB in .text"))
+    out.append(bar(y, 'Sum of matched function lengths', s['bytes'], 0, s['total_bytes'],
+                   f"{s['bytes'] / 1024:,.0f} KiB of {s['total_bytes'] / 1024:,.0f} KiB of listed function lengths"))
     y += 82
     out.append(f'<text x="24" y="{y}" class="label">Matched functions by subsystem</text>')
     y += 14
