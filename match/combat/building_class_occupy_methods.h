@@ -12,12 +12,16 @@
 //   `[EDX+0x408]` GetOccupantCount; callees 0x5785F0 (map usable-area on a
 //   coord, map object 0x87F7E8), 0x5F5CD0 ObjectClass::IsRedHP, 0x7105E0
 //   TechnoClass::IsMindControlled, 0x4F9A90 HouseClass::IsAlliedWith(object).
+//   At 0x457D8F, retail passes the same receiver in ECX directly to 0x5F5CD0;
+//   the canonical ObjectClass declaration is used through this offset-zero
+//   ABI view, without claiming a complete class hierarchy here.
 //   Names cross-checked against YRpp BuildingClass.h / BuildingTypeClass.h /
 //   InfantryTypeClass.h (consult-only; NO LICENSE).
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPY_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPY_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/object_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -87,14 +91,15 @@ struct Obj_00457CE0
     char                    _pad524[0x19C];    // +0x0524
     InfantryType_00457CE0*  InfantryType;      // +0x06C0
 
-    // FUNCTION: GAMEMD 0x5F5CD0 (decl; reloc) — ObjectClass::IsRedHP.
-    bool IsRedHP();
     // FUNCTION: GAMEMD 0x7105E0 (decl; reloc) — TechnoClass::IsMindControlled.
     bool IsMindControlled();
 
     // FUNCTION: GAMEMD 0x457CE0 — BuildingClass::CanBeOccupiedBy.
     bool CanBeOccupiedBy(Obj_00457CE0* infantry);
 };
+// The binary puts the primary object vptr at +0; the ObjectClass view is
+// used only for its confirmed prefix method call below.
+GG_STATIC_ASSERT(offsetof(Obj_00457CE0, Vptr) == 0);
 GG_STATIC_ASSERT(offsetof(Obj_00457CE0, CurrentMission) == 0xAC);
 GG_STATIC_ASSERT(offsetof(Obj_00457CE0, Owner)          == 0x21C);
 GG_STATIC_ASSERT(offsetof(Obj_00457CE0, BuildingType)   == 0x520);

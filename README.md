@@ -11,9 +11,9 @@ compilation do not prove whole-image identity.
 The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
-Latest verified gates: 3,662 functions matched at 100%,
-165 partial rows, and 889 tracked C++ files (885 manifest translation units).
-The tracked-source object build passed (889/889); engine link closure and whole-image comparison remain unfinished.
+Latest verified gates: 3,677 functions matched at 100%,
+165 partial rows, and 892 tracked C++ files (887 manifest translation units).
+The tracked-source object build passed (892/892); engine link closure and whole-image comparison remain unfinished.
 
 ![gagarin matching progress](.github/assets/progress.svg)
 
@@ -27,7 +27,7 @@ the game binary, assets, PDBs, build outputs or toolchain.
 ```bash
 scripts/vc6/fetch_toolchain.sh
 scripts/vc6/compile_all.sh
-python3 scripts/vc6/verify_all.py
+GAMEMD_BINARY="/path/to/gamemd.exe" python3 scripts/vc6/verify_all.py
 python3 scripts/vc6/build_project.py --jobs 8
 ```
 

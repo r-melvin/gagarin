@@ -1,13 +1,64 @@
 # Project status
 
-The latest whole-repository regression passed with **3,662 fully matched
-functions**, **165 partial rows**, and 885 manifest translation units, with no
-matched function regressing. All **889 tracked C++ files** produced project
-objects and the object hash check passed. All 68 verifier tests passed; the
-final compile/layout gate passed. The complete byte-for-byte executable
+The latest whole-repository regression passed with **3,677 fully matched
+functions**, **165 partial rows**, and 887 manifest translation units, with no
+matched function regressing. All **892 tracked C++ files** produced project
+objects and their hash check passed. The compile/layout gate, 75 verifier tests
+and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: ObjectClass sorting and native type vectors
+## Latest integration: shared object accessors and a pinned-image oracle
+
+The [InfantryTypeClass](match/core/vector_infantrytypeclass_methods.cpp) and
+[TerrainTypeClass](match/core/vector_terraintypeclass_methods.cpp) vector pairs
+contain 24 exact rows: 15 new matches and nine migrated claims. Each pair has
+two RTTI-backed seven-slot tables. All four pass scoped checks against project
+objects with conditional `--weak-defaults` resolution. GX/no-GX probes pin the
+no-GX mode for their full derived deleting bodies. Focused REA analysis also
+confirmed all 24 contiguous entry spans after the shared bridge became free.
+
+The existing [object accessors](match/core/object_class_methods.cpp) now live
+on the shared `ObjectClass`: `AttachTrigger` (49 bytes),
+`SetHealthPercentage` (72 bytes), and `IsRedHP` (74 bytes). They use the common
+object/type layouts and `RulesInstance`. The unsupported separate function
+claim at `0x5F5B4C` was removed: it contains four NOPs before the evidenced
+`0x5F5B50` entry, with no function record or xrefs in the current Ghidra analysis.
+There was no manifest row at that address, so this does not remove a match.
+The wrapper header and fake accessor host are retired. Method names remain
+consult-only hypotheses where the binary does not establish their spelling.
+
+The [level methods](match/core/object_class_level_methods.cpp) now reuse the
+shared `CellClass` layout and assert each consumed field and slot offset.
+All three remain exact. [FlightLevel](match/core/flight_level.cpp) has one
+four-byte BSS definition, matching the pinned PE's loader-zero tail; this does
+not claim knowledge of later runtime initialization. The Team attach call and
+two Building health checks now use native ObjectClass declarations. The
+Building garrison-owner row remains partial; its instruction bytes and
+relocation offsets are unchanged from the preceding compiled snapshot.
+
+Setting `GAMEMD_BINARY` selects direct PE reads in both byte and instruction
+oracles. The reader verifies the SHA-256 and requires the whole span to be
+backed by exactly one PE section; invalid configured images fail without a
+bridge fallback. Seven synthetic tests cover identity and boundary failures.
+With no image selected, the existing Ghidra reader remains available. This
+lets byte verification proceed independently of queued decompilation analysis;
+the finalized eight-shard full regression took 31.66 seconds in this run.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for use.
+
+The `/dll /noentry /nodefaultlib` diagnostic link still fails with 4,179 unique
+unresolved symbols (6,406 reference lines), and no duplicate definitions.
+The consolidated Rules, FlightLevel, Team attach and Building health symbols
+no longer appear among its unresolved references. Default libraries are
+excluded, so the total is not an engine-only function-gap count. Link closure
+and whole-image comparison remain unfinished.
+
+Matched function lengths total 261,897 bytes (256 KiB): 18.6% of listed
+functions and 6.9% of listed function lengths. The padding heuristic misses
+196 matched entries. Residual vector families contain 255 generic deleting
+bindings across 131 instantiation views, 128 base Clear rows, 126 native
+dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
+
+## Previous verified integration: ObjectClass sorting and native type vectors
 
 The [AircraftTypeClass](match/core/vector_aircrafttypeclass_methods.cpp) and
 [UnitTypeClass](match/core/vector_unittypeclass_methods.cpp) vector pairs contain
@@ -253,8 +304,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 889 tracked C++ files and 3,827 manifest
-rows, with no manifest TU missing from tracked sources. Four tracked files
+verified snapshot, the inventory has 892 tracked C++ files and 3,842 manifest
+rows, with no manifest TU missing from tracked sources. Five tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -569,10 +620,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,662** | **18.5%** of 19,753 |
-| Sum of matched function lengths | 255 KiB | 6.9% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,677** | **18.6%** of 19,753 |
+| Sum of matched function lengths | 256 KiB | 6.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 889 | |
+| Tracked C++ files under `match/` | 892 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -592,7 +643,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 194 matched entries. Its candidate count is therefore
+listed entries, including 196 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

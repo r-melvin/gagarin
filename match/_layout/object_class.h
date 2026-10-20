@@ -22,6 +22,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 
+class TagClass;
+
 // --- shared instance-side leaf components -----------------------------------
 // Self-guarded so a downstream layer in the same chain can reuse them.
 
@@ -59,14 +61,26 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 class ObjectClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5F5B50
+    bool AttachTrigger(TagClass* tag);
     // FUNCTION: GAMEMD 0x5F5C60
     double GetHealthPercentage() const;
+    // FUNCTION: GAMEMD 0x5F5C80
+    void SetHealthPercentage(double percentage);
+    // FUNCTION: GAMEMD 0x5F5CD0
+    bool IsRedHP() const;
     // FUNCTION: GAMEMD 0x5F5D20 (original name unconfirmed)
     int FUN_005F5D20() const;
     // FUNCTION: GAMEMD 0x5F5DD0
     int GetHealthStatus() const;
+    // FUNCTION: GAMEMD 0x5F5F00
+    int GetCellLevel() const;
     // FUNCTION: GAMEMD 0x5F6220 (original name unconfirmed)
     bool FUN_005F6220(ObjectClass* other);
+    // FUNCTION: GAMEMD 0x5F6B60
+    bool IsOnFloor() const;
+    // FUNCTION: GAMEMD 0x5F6B90
+    bool IsInAir() const;
     // FUNCTION: GAMEMD 0x5F6BD0
     int GetYSort() const;
     // FUNCTION: GAMEMD 0x5F6CD0
@@ -109,11 +123,6 @@ public:
     CoordStruct     Location;                    // +0x9C  (0xC)
     void*           LineTrailer;                 // +0xA8  LineTrail*
 
-    // Non-virtual leaves matched in match/core/object_class_level_methods.cpp.
-    // Declarations only — they add no members and do not affect the layout.
-    int  GetCellLevel() const;                   // GAMEMD 0x5F5F00
-    bool IsOnFloor() const;                      // GAMEMD 0x5F6B60
-    bool IsInAir() const;                        // GAMEMD 0x5F6B90
 };
 
 GG_STATIC_ASSERT(offsetof(ObjectClass, unknown_24)             == 0x24);

@@ -3,7 +3,8 @@
 #
 # Compares a function compiled by the period VC6 toolchain (an i386 COFF .obj,
 # disassembled with objdump) against the retail gamemd.exe bytes (via the local
-# Ghidra CLI). Differences confined to a relocation slot (an absolute memory
+# Ghidra CLI, or directly from the pinned PE when GAMEMD_BINARY is set).
+# Differences confined to a relocation slot (an absolute memory
 # displacement or a call/jmp rel32 that the linker would fix up) are normalised,
 # exactly as reccmp does — the match unit is the instruction stream, not the raw
 # relocated bytes.
@@ -15,17 +16,24 @@
 #
 # Exit 0 iff every instruction matches (modulo relocations).
 import argparse, collections, json, os, re, subprocess, sys, tempfile
+from retail_image import configured_span
 
 GHIDRA = os.environ.get("GHIDRA", os.path.expanduser("~/.cargo/bin/ghidra"))
 
 
 def ghidra_bytes(addr, length):
-    """Read exactly one contiguous retail span from Ghidra memory.
+    """Read a contiguous pinned-PE span when configured, else Ghidra memory.
 
     Do not use `ghidra disasm` here: it may return a function's flowed blocks
     without the contiguous bytes between them, notably after calls. Linear
     decoding of the complete byte span below preserves the real address gaps.
     """
+    try:
+        direct = configured_span(addr, length)
+    except (OSError, ValueError) as exc:
+        raise SystemExit(f"diff_retail: {exc}") from exc
+    if direct is not None:
+        return direct
     result = subprocess.run([GHIDRA, "memory", "read", hex(addr), str(length)],
                             capture_output=True, text=True)
     if result.returncode:

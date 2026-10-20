@@ -102,10 +102,6 @@ extern char VT_007EA144;
 extern char VT_007EA184;
 // VTABLE: GAMEMD 0x007EA1C4 -- VectorClass<SmudgeTypeClass*>
 extern char VT_007EA1C4;
-// VTABLE: GAMEMD 0x007EA204 -- VectorClass<TerrainTypeClass*>
-extern char VT_007EA204;
-// VTABLE: GAMEMD 0x007EA344 -- VectorClass<InfantryTypeClass*>
-extern char VT_007EA344;
 // VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>
 extern char VT_007EA384;
 // VTABLE: GAMEMD 0x007EA3C4 -- VectorClass<VoxelAnimTypeClass*>

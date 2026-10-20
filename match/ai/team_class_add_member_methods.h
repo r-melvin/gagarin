@@ -61,10 +61,8 @@ struct Foot_006EA500
     Foot_006EA500* NextTeamMember;    // +0x05D8
     char _pad5DC[0x689 - 0x5DC];      // +0x05DC
     unsigned char At_689;             // +0x0689
-
-    // FUNCTION: GAMEMD 0x5F5B50 (decl; reloc) — ObjectClass::AttachTrigger.
-    void AttachTrigger(void* trigger);
 };
+GG_STATIC_ASSERT(offsetof(Foot_006EA500, Vtbl) == 0x00);
 GG_STATIC_ASSERT(offsetof(Foot_006EA500, Group) == 0x214);
 GG_STATIC_ASSERT(offsetof(Foot_006EA500, At_422) == 0x422);
 GG_STATIC_ASSERT(offsetof(Foot_006EA500, Team) == 0x5D4);

@@ -11,7 +11,7 @@
 //   docs/decomp_spec/vtable_map_techno.md). Names for the method, the
 //   members and the health-ratio callee 0x5F5C60 (ObjectClass::
 //   GetHealthPercentage, between AttachTrigger 0x5F5B50 and
-//   SetHealthPercentage 0x5F5C80 in match/core/object_class_methods.h) are
+//   SetHealthPercentage 0x5F5C80 in match/_layout/object_class.h) are
 //   YRpp's (consult-only); every offset is reconfirmed here. The two type
 //   flag bytes keep placeholder names: YRpp's adjacent UnitAbsorb /
 //   InfantryAbsorb pair is the likely identity but their offsets were not

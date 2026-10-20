@@ -42,7 +42,7 @@ bool Obj_00457CE0::CanBeOccupiedBy(Obj_00457CE0* infantry)
         if ((this->*Vptr->GetOccupantCount)() == BuildingType->MaxNumberOccupants) {
             return false;
         }
-        if (IsRedHP()) {
+        if (reinterpret_cast<ObjectClass*>(this)->IsRedHP()) {
             return false;
         }
         if (infantry->IsMindControlled()) {

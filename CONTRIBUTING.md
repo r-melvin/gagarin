@@ -29,6 +29,20 @@ scripts/vc6/match.sh match/economy/storage_class.cpp \
     "?GetTotalValue@StorageClass@@QBEHXZ" 0x6C9600 0x4f
 ```
 
+For byte and instruction comparisons, you can select the local retail image
+without using the Ghidra bridge:
+
+```bash
+export GAMEMD_BINARY="/path/to/gamemd.exe"
+python3 scripts/vc6/verify_all.py
+```
+
+`raw_match.py` and `diff_retail.py` inherit this setting. They verify the image's
+SHA-256 against the project pin and require the full span to be backed by one
+PE section. A configured bad path or hash fails; it never falls back to Ghidra.
+With the variable unset, the existing Ghidra memory reader remains available.
+REA/Ghidra is still used for analysis and entry-point evidence.
+
 To compile every tracked C++ translation unit into a persistent,
 path-preserving object tree, run:
 

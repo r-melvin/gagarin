@@ -27,10 +27,14 @@
 //   RadarEventClass.h and BuildingClass.h (Occupants) — consult-only, NO
 //   LICENSE; every offset above is re-derived from the user's binary. The two
 //   members whose meaning the bytes do not fix are left as `unknown_XX`.
+//   At 0x458218, retail passes the receiver in ECX directly to 0x5F5CD0.
+//   The canonical ObjectClass declaration is used through this offset-zero
+//   ABI view, without claiming a complete class hierarchy here.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_GARRISON_OWNER_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_GARRISON_OWNER_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/object_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
@@ -116,8 +120,6 @@ struct BuildingClass_00458200
     char                    _pad524[0x164];   // +0x0524
     Infantry_00458200**     OccupantItems;    // +0x0688
 
-    // FUNCTION: GAMEMD 0x5F5CD0 (decl; reloc) — ObjectClass::IsRedHP.
-    bool IsRedHP();
     // FUNCTION: GAMEMD 0x457DE0 (decl; reloc) — unnamed __thiscall neighbour.
     void FUN_00457DE0(int a, int b);
 
@@ -127,6 +129,9 @@ struct BuildingClass_00458200
     // FUNCTION: GAMEMD 0x458200
     void UpdateGarrisonOwner();
 };
+// The binary confirms the primary object vptr at +0. ObjectClass is used as
+// a method-call prefix view, not as a claim about the complete class chain.
+GG_STATIC_ASSERT(offsetof(BuildingClass_00458200, Vtbl) == 0);
 GG_STATIC_ASSERT(offsetof(BuildingClass_00458200, Owner)         == 0x21C &&
                  offsetof(BuildingClass_00458200, Type)          == 0x520 &&
                  offsetof(BuildingClass_00458200, OccupantItems) == 0x688);

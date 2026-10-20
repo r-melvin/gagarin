@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6EA500.
 
 #include "team_class_add_member_methods.h"
+#include "../_layout/object_class.h"
 
 // FUNCTION: GAMEMD 0x6EA500
 //
@@ -42,7 +43,9 @@ bool Team_006EA500::AddMember(Foot_006EA500* member, bool flag)
     if (this->Trigger != 0) {
         if (this->Type->At_B3 == 0
             || (member->*member->Vtbl->GetTechnoType)()->At_5E0 > 0) {
-            member->AttachTrigger(this->Trigger);
+            // Retail passes member in ECX unchanged to ObjectClass::AttachTrigger.
+            reinterpret_cast<ObjectClass*>(member)->AttachTrigger(
+                static_cast<TagClass*>(this->Trigger));
         }
     }
 

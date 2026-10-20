@@ -35,7 +35,7 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
         return;
     }
 
-    if (IsRedHP()) {
+    if (reinterpret_cast<ObjectClass*>(this)->IsRedHP()) {
         FUN_00457DE0(0, 0);
     }
 

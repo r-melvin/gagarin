@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 128
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 126
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -385,16 +385,6 @@ template class DynamicVectorClass<OverlayTypeClass*>;
 // DynamicVectorClass<SmudgeTypeClass*> -- vtable 0x007EA1A4 slot 3; locator 0x00801AD0 -> type descriptor 0x00823840
 //   `.?AV?$DynamicVectorClass@PAVSmudgeTypeClass@@@@`.
 template class DynamicVectorClass<SmudgeTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8D20
-// DynamicVectorClass<TerrainTypeClass*> -- vtable 0x007EA1E4 slot 3; locator 0x00801B68 -> type descriptor 0x008238B0
-//   `.?AV?$DynamicVectorClass@PAVTerrainTypeClass@@@@`.
-template class DynamicVectorClass<TerrainTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8F00
-// DynamicVectorClass<InfantryTypeClass*> -- vtable 0x007EA324 slot 3; locator 0x00801E60 -> type descriptor 0x00823AE8
-//   `.?AV?$DynamicVectorClass@PAVInfantryTypeClass@@@@`.
-template class DynamicVectorClass<InfantryTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E8F60
 // DynamicVectorClass<BulletTypeClass*> -- vtable 0x007EA364 slot 3; locator 0x00801EF8 -> type descriptor 0x00823B60

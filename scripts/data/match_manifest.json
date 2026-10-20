@@ -9263,27 +9263,27 @@
  {
   "tu": "match/core/object_class_methods.cpp",
   "addr": "0x5F5B50",
-  "sym": "?AttachTrigger@ObjectAccessors@@QAE_NPAUObjTag@@@Z",
+  "sym": "?AttachTrigger@ObjectClass@@QAE_NPAVTagClass@@@Z",
   "len": "0x31",
-  "name": "AttachTrigger",
+  "name": "ObjectClass::AttachTrigger",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/object_class_methods.cpp",
   "addr": "0x5F5C80",
-  "sym": "?SetHealthPercentage@ObjectAccessors@@QAEXN@Z",
+  "sym": "?SetHealthPercentage@ObjectClass@@QAEXN@Z",
   "len": "0x48",
-  "name": "SetHealthPercentage",
+  "name": "ObjectClass::SetHealthPercentage",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/object_class_methods.cpp",
   "addr": "0x5F5CD0",
-  "sym": "?IsRedHP@ObjectAccessors@@QBE_NXZ",
+  "sym": "?IsRedHP@ObjectClass@@QBE_NXZ",
   "len": "0x4A",
-  "name": "IsRedHP",
+  "name": "ObjectClass::IsRedHP",
   "status": "matched",
   "pct": 100
  },
@@ -13878,7 +13878,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
   "addr": "0x004e8d20",
   "sym": "?Clear@?$DynamicVectorClass@PAVTerrainTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13923,7 +13923,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
   "addr": "0x004e8f00",
   "sym": "?Clear@?$DynamicVectorClass@PAVInfantryTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16281,20 +16281,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
   "addr": "0x004F06B0",
   "sym": "??_G?$VectorClass@PAVTerrainTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TerrainTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<TerrainTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
   "addr": "0x004F0700",
-  "sym": "??_G?$VectorClass@PAVTerrainTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVTerrainTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TerrainTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TerrainTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16371,20 +16371,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
   "addr": "0x004F09D0",
   "sym": "??_G?$VectorClass@PAVInfantryTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<InfantryTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<InfantryTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
   "addr": "0x004F0A20",
-  "sym": "??_G?$VectorClass@PAVInfantryTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVInfantryTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<InfantryTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<InfantryTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19287,7 +19287,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
   "addr": "0x004ed6f0",
   "sym": "?Clear@?$VectorClass@PAVTerrainTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19332,7 +19332,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
   "addr": "0x004ee2d0",
   "sym": "?Clear@?$VectorClass@PAVInfantryTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20673,11 +20673,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
   "addr": "0x4EE360",
-  "sym": "?FUN_4EE360@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVInfantryTypeClass@@@@UAE_NHPAPAVInfantryTypeClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_4EE360",
+  "name": "DynamicVectorClass<InfantryTypeClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -34441,5 +34441,140 @@
   "name": "ObjectClass::FUN_005F6220",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "addr": "0x4E8F30",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVInfantryTypeClass@@@@UBEHPAPAVInfantryTypeClass@@@Z",
+  "name": "DynamicVectorClass<InfantryTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8F50",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVInfantryTypeClass@@@@UBEPAVInfantryTypeClass@@H@Z",
+  "name": "VectorClass<InfantryTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EE1E0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVInfantryTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<InfantryTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EE220",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVInfantryTypeClass@@@@UAE_NHPAPAVInfantryTypeClass@@@Z",
+  "name": "VectorClass<InfantryTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE300",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVInfantryTypeClass@@@@UBEHABQAVInfantryTypeClass@@@Z",
+  "name": "VectorClass<InfantryTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EE340",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVInfantryTypeClass@@@@UBEHPAPAVInfantryTypeClass@@@Z",
+  "name": "VectorClass<InfantryTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EE410",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVInfantryTypeClass@@@@UBEHABQAVInfantryTypeClass@@@Z",
+  "name": "DynamicVectorClass<InfantryTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8D50",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVTerrainTypeClass@@@@UBEHPAPAVTerrainTypeClass@@@Z",
+  "name": "DynamicVectorClass<TerrainTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8D70",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVTerrainTypeClass@@@@UBEPAVTerrainTypeClass@@H@Z",
+  "name": "VectorClass<TerrainTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4ED600",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVTerrainTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<TerrainTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4ED640",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVTerrainTypeClass@@@@UAE_NHPAPAVTerrainTypeClass@@@Z",
+  "name": "VectorClass<TerrainTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ED720",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVTerrainTypeClass@@@@UBEHABQAVTerrainTypeClass@@@Z",
+  "name": "VectorClass<TerrainTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4ED760",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVTerrainTypeClass@@@@UBEHPAPAVTerrainTypeClass@@@Z",
+  "name": "VectorClass<TerrainTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4ED780",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVTerrainTypeClass@@@@UAE_NHPAPAVTerrainTypeClass@@@Z",
+  "name": "DynamicVectorClass<TerrainTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ED830",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_terraintypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTerrainTypeClass@@@@UBEHABQAVTerrainTypeClass@@@Z",
+  "name": "DynamicVectorClass<TerrainTypeClass*>::FindItemIndex"
  }
 ]

@@ -4,7 +4,8 @@
 # raw_match.py — gold-standard byte-level match check for one function.
 #
 # Compares a compiled function's raw bytes (sliced straight from the i386-COFF
-# .obj by symbol) against the retail gamemd.exe bytes (Ghidra memory read), and
+# .obj by symbol) against retail gamemd.exe bytes (GAMEMD_BINARY selects a
+# SHA-pinned PE read; otherwise Ghidra supplies memory bytes), and
 # normalises only supported four-byte COFF relocation fields (absolute addresses
 # and relative calls/jumps that the linker fixes up).
 #
@@ -28,11 +29,15 @@
 #
 # Exit 0 iff every byte difference lies in a relocation slot.
 import argparse, json, os, struct, subprocess, sys
+from retail_image import configured_span
 
 GHIDRA = os.path.expanduser("~/.cargo/bin/ghidra")
 
 
 def retail_bytes(addr, n):
+    direct = configured_span(addr, n)
+    if direct is not None:
+        return direct
     r = subprocess.run([GHIDRA, "memory", "read", hex(addr), str(n)],
                        capture_output=True, text=True).stdout
     return bytes.fromhex(json.loads(r)[0]["hex"])
@@ -146,7 +151,10 @@ def main():
         print(f"raw_match: {exc}"); sys.exit(2)
     if ob is None:
         print(f"raw_match: symbol {a.sym} not found in {a.obj}"); sys.exit(2)
-    rb = retail_bytes(int(a.addr, 16), n)
+    try:
+        rb = retail_bytes(int(a.addr, 16), n)
+    except (OSError, ValueError, struct.error) as exc:
+        print(f"raw_match: {exc}"); sys.exit(2)
     if len(rb) != n:
         print(f"raw_match: requested {n} retail bytes, received {len(rb)}"); sys.exit(2)
     diffs = [i for i in range(n) if rb[i] != ob[i]]

@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "69e58fc3097b701c4819e61d0bcde0dccb1b057e562361bcfb410228721ff38d",
+  "manifest_sha256": "f86da1a91ed3d3814cf34103c461a2c32e40a35189f7d28701bc801c9af30bf4",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3662,
-  "matched_entries_missed": 194,
+  "matched_entries": 3677,
+  "matched_entries_missed": 196,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5324,6 +5324,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4ED830",
+   "tu": "match/core/vector_terraintypeclass_methods.cpp",
+   "name": "DynamicVectorClass<TerrainTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4EDA90",
    "tu": "match/core/vector_buildingtypeclass_methods.cpp",
    "name": "DynamicVectorClass<BuildingTypeClass*>::FindItemIndex",
@@ -5345,6 +5351,12 @@
    "addr": "0x4EE1B0",
    "tu": "match/core/vector_animtypeclass_methods.cpp",
    "name": "DynamicVectorClass<AnimTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4EE410",
+   "tu": "match/core/vector_infantrytypeclass_methods.cpp",
+   "name": "DynamicVectorClass<InfantryTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5668,7 +5680,7 @@
   {
    "addr": "0x5F5C80",
    "tu": "match/core/object_class_methods.cpp",
-   "name": "SetHealthPercentage",
+   "name": "ObjectClass::SetHealthPercentage",
    "reason": "no-preceding-CC-or-90"
   },
   {

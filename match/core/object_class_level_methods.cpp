@@ -15,7 +15,8 @@
 // (`NEG CL; SBB ECX,ECX; AND ECX,4`), which is what `OnBridge ? 4 : 0` emits.
 int ObjectClass::GetCellLevel() const
 {
-    CellClass* cell = OBJ_GET_CELL(this);
+    CellClass* cell = static_cast<const ObjectLevelVtablePrefix*>(
+        _vtable_IPersistStream)->GetCell(this);
     return cell->Level + (OnBridge ? 4 : 0);
 }
 
@@ -24,7 +25,8 @@ int ObjectClass::GetCellLevel() const
 bool ObjectClass::IsOnFloor() const
 {
     if (IsOnMap) {
-        if (OBJ_GET_HEIGHT(this) < FlightLevel * 2)
+        if (static_cast<const ObjectLevelVtablePrefix*>(
+                _vtable_IPersistStream)->GetHeight(this) < FlightLevel * 2)
             return true;
     }
     return false;
@@ -36,7 +38,8 @@ bool ObjectClass::IsOnFloor() const
 bool ObjectClass::IsInAir() const
 {
     if (IsOnMap) {
-        if (OBJ_GET_HEIGHT(this) >= FlightLevel * 2)
+        if (static_cast<const ObjectLevelVtablePrefix*>(
+                _vtable_IPersistStream)->GetHeight(this) >= FlightLevel * 2)
             return true;
     }
     return false;
