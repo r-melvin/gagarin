@@ -30571,5 +30571,95 @@
   "name": "BitFont::Intersect",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588C10",
+  "sym": "?CopyState@StateRecord_00588C10@@QAEAAU1@ABU1@@Z",
+  "len": "0x27",
+  "name": "CopyState",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588C40",
+  "sym": "?Add@Coordinate_00588C40@@QAEAAU1@ABU1@@Z",
+  "len": "0x17",
+  "name": "Coordinate::Add",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588C60",
+  "sym": "?Subtract@Coordinate_00588C40@@QBE?AU1@ABU1@@Z",
+  "len": "0x29",
+  "name": "Coordinate::Subtract",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588CC0",
+  "sym": "?Index8@BufferIndex_00588CC0@@QBEIPBX@Z",
+  "len": "0x1b",
+  "name": "BufferIndex::Index8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588D10",
+  "sym": "?Index16@BufferIndex_00588CC0@@QBEIPBX@Z",
+  "len": "0x1b",
+  "name": "BufferIndex::Index16",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
+  "addr": "0x588D30",
+  "sym": "?Get@RecordBuffer_00588D30@@QBE?AUValueRecord_00588D30@@H@Z",
+  "len": "0x29",
+  "name": "RecordBuffer::Get",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_decode_00434700.cpp",
+  "addr": "0x434700",
+  "sym": "?FUN_00434700@BitFont@@QAEXXZ",
+  "len": "0x84",
+  "name": "BitFont::FUN_00434700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
+  "addr": "0x004B4C00",
+  "sym": "?FUN_004B4C00@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "len": "0xa",
+  "name": "FUN_004B4C00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
+  "addr": "0x004B4C10",
+  "sym": "?FUN_004B4C10@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "len": "0xa",
+  "name": "FUN_004B4C10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
+  "addr": "0x004B4C20",
+  "sym": "?FUN_004B4C20@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "len": "0xa",
+  "name": "FUN_004B4C20",
+  "status": "matched",
+  "pct": 100
  }
 ]
