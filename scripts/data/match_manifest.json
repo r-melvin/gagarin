@@ -30310,5 +30310,86 @@
   "name": "FUN_004CBB80",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_singleton_methods.cpp",
+  "addr": "0x4354d0",
+  "sym": "?CreateBitFontSingleton@@YAXXZ",
+  "len": "0x2b",
+  "name": "CreateBitFontSingleton",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_singleton_methods.cpp",
+  "addr": "0x435500",
+  "sym": "?DestroyBitFontSingleton@@YAXXZ",
+  "len": "0x28",
+  "name": "DestroyBitFontSingleton",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_singleton_methods.cpp",
+  "addr": "0x435530",
+  "sym": "?DestroyBitFontIfSingleton@@YGXPAVBitFontSingletonView@@@Z",
+  "len": "0x28",
+  "name": "DestroyBitFontIfSingleton",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x435610",
+  "sym": "_FUN_00435610",
+  "len": "0x28",
+  "name": "FUN_00435610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x435640",
+  "sym": "_FUN_00435640",
+  "len": "0x13",
+  "name": "FUN_00435640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x435660",
+  "sym": "_FUN_00435660",
+  "len": "0x13",
+  "name": "FUN_00435660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x435680",
+  "sym": "_FUN_00435680",
+  "len": "0x13",
+  "name": "FUN_00435680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x4356A0",
+  "sym": "_FUN_004356A0",
+  "len": "0x13",
+  "name": "FUN_004356A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/angle_math_00435610.cpp",
+  "addr": "0x4356C0",
+  "sym": "_FUN_004356C0",
+  "len": "0x13",
+  "name": "FUN_004356C0",
+  "status": "matched",
+  "pct": 100
  }
 ]
