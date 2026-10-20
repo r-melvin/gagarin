@@ -5,7 +5,6 @@
 // Buffer-holder deleting destructors, ordered ascending by retail address.
 
 #include "buffer_holder_dtor_methods.h"
-#include "vector_dtor_family_methods.h"
 
 // FUNCTION: GAMEMD 0x40B300
 void* BufferHolderDtor::FUN_0040B300(unsigned int flags)
@@ -827,91 +826,6 @@ void* BufferHolderDtor::FUN_0043ACB0(unsigned int flags)
     void* buffer = Buffer;
 
     *(char**)this = VTABLE_007E3E54;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x45AA60   VectorClass<InfantryClass*>::`scalar deleting destructor'
-//
-// RTTI-confirmed (re-verified independently against the binary before
-// applying docs/naming_proposals.md's Tier 1 #3, which itself corrects
-// docs/decomp_spec/vtable_map_techno.md's HIGH-confidence
-// `FootClass::findCloserDockBuilding` mislabel of this same address): vtable
-// 0x7E43E8 -> complete object locator @0x7E43E4 -> type descriptor 0x818CF8
-// -> name `.?AV?$VectorClass@PAVInfantryClass@@@@`.
-//
-// Modelled through the project's existing VectorClass<T> scalar-deleting-
-// destructor template (vector_dtor_family_methods.h) rather than under this
-// file's generic BufferHolderDtor shape: the disassembly here is the
-// template's exact 73-byte shape (reseat vtable; free Items when
-// Items!=0 && IsAllocated; clear Items/IsAllocated/Capacity unconditionally;
-// free `this` when flags&1) with T = InfantryClass*, matching the mangled
-// element convention `PAVInfantryClass@@` the RTTI itself reports.
-class InfantryClass;   // opaque; VectorClass<InfantryClass*>'s element type (a class, matching the RTTI `V` tag, not `U`)
-template class VectorClass<InfantryClass*>;
-
-// FUNCTION: GAMEMD 0x45AAB0
-void* BufferHolderDtor::FUN_0045AAB0(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E43E8;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x45AB00
-void* BufferHolderDtor::FUN_0045AB00(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E4514;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x45AC90
-void* BufferHolderDtor::FUN_0045AC90(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E4514;
 
     if (buffer != 0 && IsAllocated != 0) {
         FUN_007C8B3D(buffer);

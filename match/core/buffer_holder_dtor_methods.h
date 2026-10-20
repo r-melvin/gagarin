@@ -94,15 +94,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0042FBA0(unsigned int flags);   // FUNCTION: GAMEMD 0x42FBA0
     void* FUN_0042FBF0(unsigned int flags);   // FUNCTION: GAMEMD 0x42FBF0
     void* FUN_0043ACB0(unsigned int flags);   // FUNCTION: GAMEMD 0x43ACB0
-    // 0x45AA60 removed from this family: RTTI-confirmed as
-    // VectorClass<InfantryClass*>::`scalar deleting destructor', modelled
-    // separately below via the Vector<T> template family (see the
-    // out-of-line explicit instantiation in the .cpp) rather than under this
-    // shared BufferHolderDtor shape. See docs/naming_proposals.md #3 and the
-    // docs/decomp_spec/vtable_map_techno.md provenance-warning correction.
-    void* FUN_0045AAB0(unsigned int flags);   // FUNCTION: GAMEMD 0x45AAB0
-    void* FUN_0045AB00(unsigned int flags);   // FUNCTION: GAMEMD 0x45AB00
-    void* FUN_0045AC90(unsigned int flags);   // FUNCTION: GAMEMD 0x45AC90
     void* FUN_0045ACE0(unsigned int flags);   // FUNCTION: GAMEMD 0x45ACE0
     void* FUN_0045AD30(unsigned int flags);   // FUNCTION: GAMEMD 0x45AD30
     void* FUN_00466080(unsigned int flags);   // FUNCTION: GAMEMD 0x466080

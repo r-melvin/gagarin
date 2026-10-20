@@ -1,8 +1,8 @@
 # Project status
 
-The latest whole-repository gates pass with **3,564 fully matched functions**,
-**165 partial rows**, and **874 tracked C++ files**; the manifest contains 871
-translation units. The compile gate passed; 58 verifier tests also passed, and
+The latest whole-repository gates pass with **3,579 fully matched functions**,
+**165 partial rows**, and **876 tracked C++ files**; the manifest contains 873
+translation units. The compile gate passed; 63 verifier tests also passed, and
 the duplicate-address check found no conflicts. The ultimate goal remains a
 complete byte-for-byte reproduction of the pinned executable; that goal is not
 achieved.
@@ -10,7 +10,22 @@ achieved.
 The detailed consolidation record and evidence caveats below describe the
 current verified project state. Whole-image identity is not established.
 
-## Latest integrated batch: HouseClass and TagClass vectors
+## Latest integrated batch: InfantryClass and FoggedObjectClass vectors
+
+The mutable-pointer `InfantryClass*` and `FoggedObjectClass*` clusters add 24
+address rows across [InfantryClass](match/core/vector_infantryclass_methods.cpp)
+and [FoggedObjectClass](match/core/vector_foggedobjectclass_methods.cpp): 15 new
+exact matches and nine migrated claims. Each class has two RTTI-backed
+seven-slot tables; no TypeList specialization, constructor, or complete
+object-size claim is made. The sources assert the accessed vector member
+offsets and 4-byte pointer size. They compile with `/O2 /DNDEBUG /Gy` and `/GX`
+disabled; the full-span dynamic deleting-destructor bodies match under those
+flags. Four affected tables pass conditional seven-slot checks against the
+integrated objects using `--weak-defaults`, without manual symbol maps. Full
+regression and compilation gates passed; final-link resolution remains
+unverified.
+
+## Previous fully verified batch: HouseClass and TagClass vectors
 
 The mutable-pointer `HouseClass*` and `TagClass*` clusters add 24 address rows
 across [HouseClass](match/core/vector_houseclass_methods.cpp) and
@@ -28,6 +43,24 @@ The current vector-family totals are 277 generic deleting-destructor bindings
 across 142 instantiation views, 139 base `Clear` rows, 137 native dynamic
 `Clear` rows plus one separate DiskID stand-in, and 18 address-specific resize
 views.
+
+## Tracked source inventory
+
+[`scripts/vc6/source_inventory.py`](scripts/vc6/source_inventory.py) reports
+tracked `.cpp` paths by subsystem, their manifest rows and the VC6 flags selected
+from each source marker or the wrapper default. Run it from the repository root:
+
+```bash
+python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
+```
+
+It enumerates source paths with `git ls-files`; the output describes tracked
+paths, while content is read from the current worktree. The current inventory
+has 876 tracked C++ files and 3,744 manifest rows, with no manifest TU missing
+from tracked sources. Three tracked files have no manifest rows and two source
+basenames collide across directories; the report lists both cases explicitly.
+An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
+default at compile time.
 
 ## Previous fully verified batch: AbstractClass, FootClass and BuildingClass
 
@@ -338,10 +371,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,564** | **18.0%** of 19,753 |
-| Sum of matched function lengths | 248 KiB | 6.7% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,579** | **18.1%** of 19,753 |
+| Sum of matched function lengths | 249 KiB | 6.7% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 874 | |
+| Tracked C++ files under `match/` | 876 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -361,7 +394,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 182 matched entries. Its candidate count is therefore
+listed entries, including 184 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

@@ -3438,38 +3438,38 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_infantryclass_methods.cpp",
   "addr": "0x45AA60",
   "sym": "??_G?$VectorClass@PAVInfantryClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<InfantryClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<InfantryClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_infantryclass_methods.cpp",
   "addr": "0x45AAB0",
-  "sym": "?FUN_0045AAB0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVInfantryClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0045AAB0",
+  "name": "DynamicVectorClass<InfantryClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "addr": "0x45AB00",
-  "sym": "?FUN_0045AB00@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVFoggedObjectClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0045AB00",
+  "name": "DynamicVectorClass<FoggedObjectClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "addr": "0x45AC90",
-  "sym": "?FUN_0045AC90@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVFoggedObjectClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0045AC90",
+  "name": "VectorClass<FoggedObjectClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3906,20 +3906,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_infantryclass_methods.cpp",
   "addr": "0x459FF0",
-  "sym": "?FUN_00459FF0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVInfantryClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_00459FF0",
+  "name": "DynamicVectorClass<InfantryClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "addr": "0x45A070",
-  "sym": "?FUN_0045A070@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVFoggedObjectClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0045A070",
+  "name": "DynamicVectorClass<FoggedObjectClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3942,11 +3942,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_infantryclass_methods.cpp",
   "addr": "0x45A4D0",
-  "sym": "?FUN_0045A4D0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVInfantryClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0045A4D0",
+  "name": "VectorClass<InfantryClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3960,11 +3960,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "addr": "0x45AC00",
-  "sym": "?FUN_0045AC00@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVFoggedObjectClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0045AC00",
+  "name": "VectorClass<FoggedObjectClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -20889,11 +20889,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_methods.cpp",
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
   "addr": "0x45A680",
-  "sym": "?FUN_0045A680@VectorResize@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVFoggedObjectClass@@@@UAE_NHPAPAVFoggedObjectClass@@@Z",
   "len": "0xb0",
-  "name": "FUN_0045A680",
+  "name": "DynamicVectorClass<FoggedObjectClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -33559,5 +33559,140 @@
   "tu": "match/core/vector_tagclass_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTagClass@@@@UBEHABQAVTagClass@@@Z",
   "name": "DynamicVectorClass<TagClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45A020",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVInfantryClass@@@@UBEHPAPAVInfantryClass@@@Z",
+  "name": "DynamicVectorClass<InfantryClass*>::Slot5"
+ },
+ {
+  "addr": "0x45A040",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVInfantryClass@@@@UBEPAVInfantryClass@@H@Z",
+  "name": "VectorClass<InfantryClass*>::Slot6"
+ },
+ {
+  "addr": "0x45A3E0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVInfantryClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<InfantryClass*>::operator=="
+ },
+ {
+  "addr": "0x45A420",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVInfantryClass@@@@UAE_NHPAPAVInfantryClass@@@Z",
+  "name": "VectorClass<InfantryClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x45A500",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVInfantryClass@@@@UBEHABQAVInfantryClass@@@Z",
+  "name": "VectorClass<InfantryClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45A540",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVInfantryClass@@@@UBEHPAPAVInfantryClass@@@Z",
+  "name": "VectorClass<InfantryClass*>::Slot5"
+ },
+ {
+  "addr": "0x45A560",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVInfantryClass@@@@UAE_NHPAPAVInfantryClass@@@Z",
+  "name": "DynamicVectorClass<InfantryClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x45A610",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_infantryclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVInfantryClass@@@@UBEHABQAVInfantryClass@@@Z",
+  "name": "DynamicVectorClass<InfantryClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45A0A0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVFoggedObjectClass@@@@UBEHPAPAVFoggedObjectClass@@@Z",
+  "name": "DynamicVectorClass<FoggedObjectClass*>::Slot5"
+ },
+ {
+  "addr": "0x45A0C0",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVFoggedObjectClass@@@@UBEPAVFoggedObjectClass@@H@Z",
+  "name": "VectorClass<FoggedObjectClass*>::Slot6"
+ },
+ {
+  "addr": "0x45A640",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVFoggedObjectClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<FoggedObjectClass*>::operator=="
+ },
+ {
+  "addr": "0x45A730",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVFoggedObjectClass@@@@UBEHABQAVFoggedObjectClass@@@Z",
+  "name": "DynamicVectorClass<FoggedObjectClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45AB50",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVFoggedObjectClass@@@@UAE_NHPAPAVFoggedObjectClass@@@Z",
+  "name": "VectorClass<FoggedObjectClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x45AC30",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVFoggedObjectClass@@@@UBEHABQAVFoggedObjectClass@@@Z",
+  "name": "VectorClass<FoggedObjectClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x45AC70",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_foggedobjectclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVFoggedObjectClass@@@@UBEHPAPAVFoggedObjectClass@@@Z",
+  "name": "VectorClass<FoggedObjectClass*>::Slot5"
  }
 ]
