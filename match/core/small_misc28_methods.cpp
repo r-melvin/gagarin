@@ -25,23 +25,3 @@ void Obj_00407F40::FUN_00407F40()
 
     LeaveCriticalSection(&DAT_0087E7F8);
 }
-
-// FUNCTION: GAMEMD 0x43AE10
-Owned_0043AE10* Owned_0043AE10::FUN_0043AE10(const Owned_0043AE10* other)
-{
-    if (other != this) {
-        // Only the free is guarded; the flag clear runs either way. The JZ
-        // lands on the clear rather than past it - the same contract as the
-        // release at 0x43AE50 and the 53-instance template.
-        if (IsAllocated) {
-            FUN_007C8B3D(Buffer);
-        }
-
-        IsAllocated = 0;
-
-        Buffer = other->Buffer;
-        Length = other->Length;
-    }
-
-    return this;
-}

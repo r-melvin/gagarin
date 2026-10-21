@@ -9,8 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-extern "C" void __cdecl FUN_007C8B3D(void* block);
-
 // KERNEL32, dllimport so the calls go indirect through the IAT.
 struct CRITICAL_SECTION_ { char opaque[24]; };
 extern "C" __declspec(dllimport) void __stdcall EnterCriticalSection(CRITICAL_SECTION_*);
@@ -32,19 +30,5 @@ struct Obj_00407F40
     void FUN_00407F40();
 };
 GG_STATIC_ASSERT(offsetof(Obj_00407F40, unknown_88) == 0x88);
-
-// Assignment for the owned-buffer type. Note what it does *not* copy: the
-// ownership flag is cleared and never taken from the source, so the target
-// borrows the source's buffer rather than owning a copy of it.
-struct Owned_0043AE10
-{
-    void*         Buffer;        // +0x0000
-    int           Length;        // +0x0004
-    unsigned char IsAllocated;   // +0x0008
-
-    // FUNCTION: GAMEMD 0x43AE10
-    Owned_0043AE10* FUN_0043AE10(const Owned_0043AE10* other);
-};
-GG_STATIC_ASSERT(offsetof(Owned_0043AE10, IsAllocated) == 0x8);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC28_METHODS_H

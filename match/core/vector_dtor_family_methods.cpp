@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 82 base-template instantiations reproduce 157 remaining retail destructor
+// 80 base-template instantiations reproduce 153 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -621,12 +621,6 @@ template class VectorClass<DiskID>;
 //   `.?AV?$VectorClass@PAVMultiMission@@@@`.
 template class VectorClass<MultiMission*>;
 
-// FUNCTION: GAMEMD 0x0069D630
-// FUNCTION: GAMEMD 0x0069D680
-// VectorClass<GlobalPacketType*> -- reseats retail vtable 0x007F1234; locator 0x00809228 -> type descriptor 0x0083EE38
-//   `.?AV?$VectorClass@PAUGlobalPacketType@@@@`.
-template class VectorClass<GlobalPacketType*>;
-
 // FUNCTION: GAMEMD 0x0069D6D0
 // FUNCTION: GAMEMD 0x0069D720
 // VectorClass<PhoneEntryClass*> -- reseats retail vtable 0x007F1254; locator 0x008091C8 -> type descriptor 0x0083ED60
@@ -685,12 +679,6 @@ template class VectorClass<DirtyAreaStruct>;
 // VectorClass<unsigned char> -- reseats retail vtable 0x007F65F4; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
-
-// FUNCTION: GAMEMD 0x0076A6D0
-// FUNCTION: GAMEMD 0x0076A720
-// VectorClass<WorldDominationTour::Map::AnimationPalette*> -- reseats retail vtable 0x007F71A4; locator 0x0080DF28 -> type descriptor 0x008488E0
-//   `.?AV?$VectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
-template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 
 // FUNCTION: GAMEMD 0x0076A770
 // VectorClass<WorldDominationTour::Centroid> -- reseats retail vtable 0x007F71E0; locator 0x0080E008 -> type descriptor 0x00848B88

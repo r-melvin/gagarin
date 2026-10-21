@@ -33,6 +33,22 @@ MemoryBuffer::MemoryBuffer(int size) throw()
     }
 }
 
+// FUNCTION: GAMEMD 0x43AE10
+// Entry instructions confirm self-assignment guard, conditional free and
+// borrowed pointer/size stores. Reference spelling is the C++ model of this ABI.
+MemoryBuffer& MemoryBuffer::operator=(const MemoryBuffer& other)
+{
+    if (&other != this) {
+        if (Allocated) {
+            FUN_007C8B3D(Buffer);
+        }
+        Allocated = 0;
+        Buffer = other.Buffer;
+        Size = other.Size;
+    }
+    return *this;
+}
+
 // FUNCTION: GAMEMD 0x43AE50
 void MemoryBuffer::Clear() throw()
 {

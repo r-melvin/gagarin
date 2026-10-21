@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 77
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 75
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -554,11 +554,6 @@ GG_STATIC_ASSERT(sizeof(GgCountedDiskIDRep) == 0x14);
 //   `.?AV?$DynamicVectorClass@PAVMultiMission@@@@`.
 template class DynamicVectorClass<MultiMission*>;
 
-// FUNCTION: GAMEMD 0x0069C600
-// DynamicVectorClass<GlobalPacketType*> -- vtable 0x007F11D4 slot 3; locator 0x00809198 -> type descriptor 0x0083EE70
-//   `.?AV?$DynamicVectorClass@PAUGlobalPacketType@@@@`.
-template class DynamicVectorClass<GlobalPacketType*>;
-
 // FUNCTION: GAMEMD 0x0069C660
 // DynamicVectorClass<PhoneEntryClass*> -- vtable 0x007F11B4 slot 3; locator 0x008090C8 -> type descriptor 0x0083ED98
 //   `.?AV?$DynamicVectorClass@PAVPhoneEntryClass@@@@`.
@@ -608,8 +603,3 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 // DynamicVectorClass<ThemeControl*> -- vtable 0x007F568C slot 3; locator 0x0080C688 -> type descriptor 0x00844780
 //   `.?AV?$DynamicVectorClass@PAUThemeControl@@@@`.
 template class DynamicVectorClass<ThemeControl*>;
-
-// FUNCTION: GAMEMD 0x00769CD0
-// DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*> -- vtable 0x007F7144 slot 3; locator 0x0080DEC8 -> type descriptor 0x00848930
-//   `.?AV?$DynamicVectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
-template class DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>;

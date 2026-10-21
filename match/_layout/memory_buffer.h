@@ -19,6 +19,8 @@ public:
     MemoryBuffer(void* pBuffer, int size) throw();
     // FUNCTION: GAMEMD 0x43ADC0
     MemoryBuffer(int size) throw();
+    // FUNCTION: GAMEMD 0x43AE10 -- releases owned storage, then borrows the source.
+    MemoryBuffer& operator=(const MemoryBuffer& other);
     // FUNCTION: GAMEMD 0x43AE50 -- explicit cleanup; destructor identity unproven.
     void Clear() throw();
 

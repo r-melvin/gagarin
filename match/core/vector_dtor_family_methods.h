@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 157 remaining 73-byte deleting-destructor bodies are bound here through
-// 82 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 153 remaining 73-byte deleting-destructor bodies are bound here through
+// 80 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -164,8 +164,6 @@ extern char VT_007F0C4C;
 extern char VT_007F1274;
 // VTABLE: GAMEMD 0x007F1214 -- VectorClass<MultiMission*>
 extern char VT_007F1214;
-// VTABLE: GAMEMD 0x007F1234 -- VectorClass<GlobalPacketType*>
-extern char VT_007F1234;
 // VTABLE: GAMEMD 0x007F1254 -- VectorClass<PhoneEntryClass*>
 extern char VT_007F1254;
 // VTABLE: GAMEMD 0x007F324C -- VectorClass<SlaveManagerClass::SlaveControl*>
@@ -186,8 +184,6 @@ extern char VT_007F4154;
 extern char VT_007F42BC;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
 extern char VT_007F65F4;
-// VTABLE: GAMEMD 0x007F71A4 -- VectorClass<WorldDominationTour::Map::AnimationPalette*>
-extern char VT_007F71A4;
 // VTABLE: GAMEMD 0x007F71E0 -- VectorClass<WorldDominationTour::Centroid>
 extern char VT_007F71E0;
 

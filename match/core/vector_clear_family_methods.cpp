@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 78
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 76
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 79 remaining addresses are bound to VectorClass<T> tables;
+//   The 77 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -541,11 +541,6 @@ template class VectorClass<DiskID>;
 //   `.?AV?$VectorClass@PAVMultiMission@@@@`.
 template class VectorClass<MultiMission*>;
 
-// FUNCTION: GAMEMD 0x0069D090
-// VectorClass<GlobalPacketType*> -- vtable 0x007F1234 slot 3; locator 0x00809228 -> type descriptor 0x0083EE38
-//   `.?AV?$VectorClass@PAUGlobalPacketType@@@@`.
-template class VectorClass<GlobalPacketType*>;
-
 // FUNCTION: GAMEMD 0x0069D2F0
 // VectorClass<PhoneEntryClass*> -- vtable 0x007F1254 slot 3; locator 0x008091C8 -> type descriptor 0x0083ED60
 //   `.?AV?$VectorClass@PAVPhoneEntryClass@@@@`.
@@ -595,11 +590,6 @@ template class VectorClass<DirtyAreaStruct>;
 // VectorClass<unsigned char> -- vtable 0x007F65F4 slot 3; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
-
-// FUNCTION: GAMEMD 0x0076A220
-// VectorClass<WorldDominationTour::Map::AnimationPalette*> -- vtable 0x007F71A4 slot 3; locator 0x0080DF28 -> type descriptor 0x008488E0
-//   `.?AV?$VectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
-template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 
 // FUNCTION: GAMEMD 0x0076A4F0
 // VectorClass<WorldDominationTour::Centroid> -- vtable 0x007F71E0 slot 3; locator 0x0080E008 -> type descriptor 0x00848B88
