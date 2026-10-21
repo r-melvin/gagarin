@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 82
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 81
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -240,11 +240,6 @@ template class DynamicVectorClass<IConnectionPoint*>;
 // DynamicVectorClass<_DDSURFACEDESC*> -- vtable 0x007E5E0C slot 3; locator 0x007FFA50 -> type descriptor 0x0081FED0
 //   `.?AV?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@`.
 template class DynamicVectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004B9C40
-// DynamicVectorClass<CrossDissolveEffect*> -- vtable 0x007E854C slot 3; locator 0x00800178 -> type descriptor 0x008203E0
-//   `.?AV?$DynamicVectorClass@PAUCrossDissolveEffect@@@@`.
-template class DynamicVectorClass<CrossDissolveEffect*>;
 
 // FUNCTION: GAMEMD 0x004C2C40
 // DynamicVectorClass<EBolt*> -- vtable 0x007E868C slot 3; locator 0x008002C8 -> type descriptor 0x00820738

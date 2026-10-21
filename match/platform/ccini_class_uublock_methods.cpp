@@ -52,7 +52,7 @@ bool CCINI_00526E80::WriteUUBlock(const char* section, const void* block, int le
     }
 
     b64.Destroy();
-    straw.Buffer.Destroy();
+    reinterpret_cast<MemoryBuffer*>(&straw.Buffer)->Clear();
     straw.Destroy();
     return true;
 }

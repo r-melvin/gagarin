@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 #include "../_rt/gg_vslot.h"
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) — MixFileClass::Retrieve, __fastcall
@@ -25,8 +26,6 @@ void* __fastcall FUN_005B40B0(const char* name, unsigned char force);
 // __cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 

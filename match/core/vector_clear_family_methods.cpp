@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 83
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 82
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 84 remaining addresses are bound to VectorClass<T> tables;
+//   The 83 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -240,11 +240,6 @@ template class VectorClass<IConnectionPoint*>;
 // VectorClass<_DDSURFACEDESC*> -- vtable 0x007E5DEC slot 3; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004B9FF0
-// VectorClass<CrossDissolveEffect*> -- vtable 0x007E8520 slot 3; locator 0x00800110 -> type descriptor 0x008203A8
-//   `.?AV?$VectorClass@PAUCrossDissolveEffect@@@@`.
-template class VectorClass<CrossDissolveEffect*>;
 
 // FUNCTION: GAMEMD 0x004C2D90
 // VectorClass<EBolt*> -- vtable 0x007E86AC slot 3; locator 0x008002F8 -> type descriptor 0x00820710

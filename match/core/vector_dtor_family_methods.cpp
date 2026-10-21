@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 87 base-template instantiations reproduce 167 remaining retail destructor
+// 86 base-template instantiations reproduce 165 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -259,12 +259,6 @@ template class VectorClass<IConnectionPoint*>;
 // VectorClass<_DDSURFACEDESC*> -- reseats retail vtable 0x007E5DEC; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004BA250
-// FUNCTION: GAMEMD 0x004BA2A0
-// VectorClass<CrossDissolveEffect*> -- reseats retail vtable 0x007E8520; locator 0x00800110 -> type descriptor 0x008203A8
-//   `.?AV?$VectorClass@PAUCrossDissolveEffect@@@@`.
-template class VectorClass<CrossDissolveEffect*>;
 
 // FUNCTION: GAMEMD 0x004C2F00
 // FUNCTION: GAMEMD 0x004C2F50

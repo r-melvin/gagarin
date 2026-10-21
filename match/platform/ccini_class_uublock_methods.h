@@ -10,13 +10,14 @@
 //   its Get(buffer, 0x46) into the 71-byte line at `[ESP+0x48]`; the key is
 //   sprintf'd (0x7C8EF4, "%d" at 0x817F6C) into `[ESP+0x90]`; 0x5257C0 is
 //   Clear(section, 0) and 0x528660 WriteString(section, key, value).
-//   Teardown: 0x6C9850 (straw dtor) on both straws, 0x43AE50 (buffer dtor)
+//   Teardown: 0x6C9850 (straw dtor) on both straws, 0x43AE50 (buffer cleanup)
 //   between them. Method name from YRpp CCINIClass.h (consult-only).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_UUBLOCK_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_UUBLOCK_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 #include "../_rt/gg_vslot.h"
 
 // CRT sprintf, __cdecl variadic; the caller pops the arguments.
@@ -43,7 +44,7 @@ struct Straw_00526E80
 };
 GG_STATIC_ASSERT(sizeof(Straw_00526E80) == 0x0C);
 
-// The adopt-or-allocate buffer (ctor 0x43AD00, dtor 0x43AE50).
+// The adopt-or-allocate buffer (ctor 0x43AD00, cleanup 0x43AE50).
 struct Buffer_00526E80
 {
     const void*   Data;          // +0x0000
@@ -53,8 +54,6 @@ struct Buffer_00526E80
 
     // FUNCTION: GAMEMD 0x43AD00 (decl; reloc) — ctor(buffer, size).
     Buffer_00526E80* Construct(const void* buffer, int size);
-    // FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — destructor.
-    void Destroy();
 };
 GG_STATIC_ASSERT(offsetof(Buffer_00526E80, IsAllocated) == 0x8);
 GG_STATIC_ASSERT(sizeof(Buffer_00526E80) == 0x0C);
