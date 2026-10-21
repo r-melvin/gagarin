@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// Eight members of one class: four destructors and the four scalar-deleting
+// Eight address-scoped entries: four destructors and the four scalar-deleting
 // destructors that wrap them. Each releases the two heap buffers the object
 // owns, nulls both slots, and chains to the base destructor; the deleting
 // form then frees the object itself when the caller asked for it. Ordered
@@ -11,25 +11,25 @@
 #include "dual_buffer_dtor_family_methods.h"
 
 // FUNCTION: GAMEMD 0x00552060
-GG_DUALBUF_DTOR_BODY(00552060, 007ECF2C)
+GG_DUALBUF_DTOR_BODY(00552060, 007ECF2C, ((Pipe*)this)->Pipe::~Pipe())
 
 // FUNCTION: GAMEMD 0x00552390
-GG_DUALBUF_SDD_BODY(00552390, 007ECF2C)
+GG_DUALBUF_SDD_BODY(00552390, 007ECF2C, ((Pipe*)self)->Pipe::~Pipe())
 
 // FUNCTION: GAMEMD 0x00552450
-GG_DUALBUF_DTOR_BODY(00552450, 007ECF44)
+GG_DUALBUF_DTOR_BODY(00552450, 007ECF44, this->StrawBaseDtor())
 
 // FUNCTION: GAMEMD 0x005525F0
-GG_DUALBUF_SDD_BODY(005525F0, 007ECF44)
+GG_DUALBUF_SDD_BODY(005525F0, 007ECF44, self->StrawBaseDtor())
 
 // FUNCTION: GAMEMD 0x0055C310
-GG_DUALBUF_DTOR_BODY(0055C310, 007ED37C)
+GG_DUALBUF_DTOR_BODY(0055C310, 007ED37C, ((Pipe*)this)->Pipe::~Pipe())
 
 // FUNCTION: GAMEMD 0x0055C6D0
-GG_DUALBUF_SDD_BODY(0055C6D0, 007ED37C)
+GG_DUALBUF_SDD_BODY(0055C6D0, 007ED37C, ((Pipe*)self)->Pipe::~Pipe())
 
 // FUNCTION: GAMEMD 0x0055C780
-GG_DUALBUF_DTOR_BODY(0055C780, 007ED394)
+GG_DUALBUF_DTOR_BODY(0055C780, 007ED394, this->StrawBaseDtor())
 
 // FUNCTION: GAMEMD 0x0055C990
-GG_DUALBUF_SDD_BODY(0055C990, 007ED394)
+GG_DUALBUF_SDD_BODY(0055C990, 007ED394, self->StrawBaseDtor())

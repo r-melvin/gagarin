@@ -4824,11 +4824,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/pipe_class_methods.cpp",
   "addr": "0x4AEC80",
-  "sym": "?FUN_4AEC80@Obj_4AEC80@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "FUN_004aec80",
+  "sym": "??_GPipe@@UAEPAXI@Z",
+  "len": "0x1E",
+  "name": "Pipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -14373,7 +14373,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_msanimentry_methods.cpp",
   "addr": "0x005d0730",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSAnimEntry@@@@UAEXXZ",
   "len": "0x2a",
@@ -17298,20 +17298,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_msanimentry_methods.cpp",
   "addr": "0x005D1940",
   "sym": "??_G?$VectorClass@PAVMSAnimEntry@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MSAnimEntry*>::`scalar deleting destructor'",
+  "name": "VectorClass<MSAnimEntry*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_msanimentry_methods.cpp",
   "addr": "0x005D1990",
-  "sym": "??_G?$VectorClass@PAVMSAnimEntry@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMSAnimEntry@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MSAnimEntry*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<MSAnimEntry*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19773,7 +19773,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_msanimentry_methods.cpp",
   "addr": "0x005d12f0",
   "sym": "?Clear@?$VectorClass@PAVMSAnimEntry@@@@UAEXXZ",
   "len": "0x27",
@@ -40640,6 +40640,141 @@
   "len": "0x42",
   "sym": "?FUN_0047ADC0@@YAXXZ",
   "name": "FUN_0047ADC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x005d1200",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "??8?$VectorClass@PAVMSAnimEntry@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<MSAnimEntry*>::operator=="
+ },
+ {
+  "addr": "0x005d1240",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVMSAnimEntry@@@@UAE_NHPAPAVMSAnimEntry@@@Z",
+  "name": "VectorClass<MSAnimEntry*>::SetCapacity"
+ },
+ {
+  "addr": "0x005d1320",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVMSAnimEntry@@@@UBEHABQAVMSAnimEntry@@@Z",
+  "name": "VectorClass<MSAnimEntry*>::FindItemIndex"
+ },
+ {
+  "addr": "0x005d1360",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVMSAnimEntry@@@@UBEHPAPAVMSAnimEntry@@@Z",
+  "name": "VectorClass<MSAnimEntry*>::Slot5"
+ },
+ {
+  "addr": "0x005d0780",
+  "len": "0x0d",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVMSAnimEntry@@@@UBEPAVMSAnimEntry@@H@Z",
+  "name": "VectorClass<MSAnimEntry*>::Slot6"
+ },
+ {
+  "addr": "0x005d1380",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSAnimEntry@@@@UAE_NHPAPAVMSAnimEntry@@@Z",
+  "name": "DynamicVectorClass<MSAnimEntry*>::SetCapacity"
+ },
+ {
+  "addr": "0x005d1430",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSAnimEntry@@@@UBEHABQAVMSAnimEntry@@@Z",
+  "name": "DynamicVectorClass<MSAnimEntry*>::FindItemIndex"
+ },
+ {
+  "addr": "0x005d0760",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVMSAnimEntry@@@@UBEHPAPAVMSAnimEntry@@@Z",
+  "name": "DynamicVectorClass<MSAnimEntry*>::Slot5"
+ },
+ {
+  "tu": "match/core/pipe_class_methods.cpp",
+  "addr": "0x631C80",
+  "sym": "??1Pipe@@UAE@XZ",
+  "len": "0x32",
+  "name": "Pipe::~Pipe()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pipe_class_methods.cpp",
+  "addr": "0x631D30",
+  "sym": "?FUN_00631D30@Pipe@@UAEHXZ",
+  "len": "0x0F",
+  "name": "Pipe::FUN_00631D30()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pipe_class_methods.cpp",
+  "addr": "0x477740",
+  "sym": "?FUN_00477740@Pipe@@UAEHXZ",
+  "len": "0x05",
+  "name": "Pipe::FUN_00477740()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pipe_class_methods.cpp",
+  "addr": "0x631CC0",
+  "sym": "?SetChainTo@Pipe@@UAEXPAV1@@Z",
+  "len": "0x4B",
+  "name": "Pipe::SetChainTo(Pipe*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pipe_class_methods.cpp",
+  "addr": "0x631D10",
+  "sym": "?FUN_00631D10@Pipe@@UAEHHH@Z",
+  "len": "0x20",
+  "name": "Pipe::FUN_00631D10(int,int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/sha_pipe_methods.cpp",
+  "addr": "0x69e9b0",
+  "len": "0x26",
+  "sym": "?FUN_00631D10@SHAPipe@@UAEHHH@Z",
+  "name": "SHAPipe::FUN_00631D10 (slot 4 override)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/sha_pipe_methods.cpp",
+  "addr": "0x69e9e0",
+  "len": "0x10",
+  "sym": "?Result@SHAPipe@@QAEXPAX@Z",
+  "name": "SHAPipe::Result",
   "status": "matched",
   "pct": 100
  }

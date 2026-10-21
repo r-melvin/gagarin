@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "00ffb605e193748b36506562a1d8aa55ae59acdb224c5026558ecfdd95dfac95",
+  "manifest_sha256": "310fd41a7f7f4760aee4cc4126d8b3d5e72e95bd89b35e4642ad2b6f5910f140",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4349,
-  "matched_entries_missed": 272,
+  "matched_entries": 4364,
+  "matched_entries_missed": 274,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5954,6 +5954,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5D1430",
+   "tu": "match/core/vector_msanimentry_methods.cpp",
+   "name": "DynamicVectorClass<MSAnimEntry*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5D5380",
    "tu": "match/core/vector_hwnd_methods.cpp",
    "name": "DynamicVectorClass<HWND__*>::FindItemIndex",
@@ -6035,6 +6041,12 @@
    "addr": "0x628760",
    "tu": "match/core/vector_dtor_family_methods.cpp",
    "name": "VectorClass<HSVClass>::`scalar deleting destructor'",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x631D30",
+   "tu": "match/core/pipe_class_methods.cpp",
+   "name": "Pipe::FUN_00631D30()",
    "reason": "no-preceding-CC-or-90"
   },
   {

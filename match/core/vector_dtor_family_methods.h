@@ -92,8 +92,6 @@ extern char VT_007EDA4C;
 extern char VT_007EEB74;
 // VTABLE: GAMEMD 0x007EEAB4 -- VectorClass<MapStage*>
 extern char VT_007EEAB4;
-// VTABLE: GAMEMD 0x007EEAD4 -- VectorClass<MSAnimEntry*>
-extern char VT_007EEAD4;
 // VTABLE: GAMEMD 0x007EEAF4 -- VectorClass<MSSfxEntry*>
 extern char VT_007EEAF4;
 // VTABLE: GAMEMD 0x007EEC24 -- VectorClass<MSAnim*>

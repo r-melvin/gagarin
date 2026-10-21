@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x476D80.
 
 #include "ccini_class_crc_methods.h"
+#include "../_layout/sha_pipe.h"
 
 // FUNCTION: GAMEMD 0x476D80
 //
@@ -14,11 +15,11 @@ int CCINI_00476D80::GetCRC()
 {
     if (DigestValid == 0) {
         SHA_00476D80 sha;
+        sha.ChainTo      = 0;
+        sha.ChainFrom    = 0;
+        sha.IsCached     = 0;
         sha.Length       = 0;
         sha.PartialCount = 0;
-        sha.IsCached     = 0;
-        sha.unknown_38   = 0;
-        sha.unknown_3C   = 0;
         sha.Acc[0] = 0x67452301;
         sha.Acc[1] = 0xEFCDAB89;
         sha.Acc[2] = 0x98BADCFE;
@@ -27,9 +28,9 @@ int CCINI_00476D80::GetCRC()
         sha.Vtable = &VT_007E4D78;
 
         FUN_00526470(&sha);
-        sha.Result(Digest);
+        ((SHAPipe*)&sha)->Result(Digest);
         DigestValid = 1;
-        sha.Destroy();
+        ((Pipe*)&sha)->Pipe::~Pipe();
     }
 
     CRC_00476D80 crc;

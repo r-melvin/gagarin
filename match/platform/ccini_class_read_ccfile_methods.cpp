@@ -5,6 +5,7 @@
 
 #include <string.h>
 #include "ccini_class_read_ccfile_methods.h"
+#include "../_layout/sha_pipe.h"
 
 // FUNCTION: GAMEMD 0x4741F0
 //
@@ -51,10 +52,10 @@ int CCINI_004741F0::ReadCCFile(File_004741F0* file, bool withDigest, bool flag)
             sha.Acc[4] = 0xC3D2E1F0;
             sha.Vtable = &VT_007E4D78;
 
-            Save(&sha);
-            sha.Result(Digest);
+            Save((Pipe_004741F0*)&sha);
+            ((SHAPipe*)&sha)->Result(Digest);
             DigestValid = 1;
-            sha.Destroy();
+            ((Pipe*)&sha)->Pipe::~Pipe();
 
             if (memcmp(stored, Digest, 0x14) != 0) {
                 rc = 2;
@@ -98,10 +99,10 @@ int CCINI_004741F0::FUN_00474320(Pipe_004741F0* straw, bool withDigest, bool fla
             sha.Acc[4] = 0xC3D2E1F0;
             sha.Vtable = &VT_007E4D78;
 
-            Save(&sha);
-            sha.Result(Digest);
+            Save((Pipe_004741F0*)&sha);
+            ((SHAPipe*)&sha)->Result(Digest);
             DigestValid = 1;
-            sha.Destroy();
+            ((Pipe*)&sha)->Pipe::~Pipe();
 
             if (memcmp(stored, Digest, 0x14) != 0) {
                 return 2;

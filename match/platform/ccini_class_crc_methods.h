@@ -14,37 +14,14 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/sha_pipe_layout.h"
 
 // VTABLE: GAMEMD 0x7E4D78 — the hash engine's vtable (installed inline).
 extern char VT_007E4D78;
 
 // The SHA-1 engine as built on the stack. Constructed inline by the caller,
 // torn down by the out-of-line destructor.
-struct SHA_00476D80
-{
-    char*         Vtable;         // +0x0000
-    int           Length;         // +0x0004
-    int           PartialCount;   // +0x0008
-    char          IsCached;       // +0x000C
-    char          _pad00D[3];     // +0x000D
-    char          FinalResult[0x14]; // +0x0010
-    unsigned int  Acc[5];         // +0x0024
-    int           unknown_38;     // +0x0038
-    int           unknown_3C;     // +0x003C
-    char          Partial[0x40];  // +0x0040
-
-    // FUNCTION: GAMEMD 0x69E9E0 (decl; reloc) — copy the digest out.
-    void Result(void* out);
-    // FUNCTION: GAMEMD 0x631C80 (decl; reloc) — destructor.
-    void Destroy();
-};
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, Length) == 0x04);
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, PartialCount) == 0x08);
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, IsCached) == 0x0C);
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, Acc) == 0x24);
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, unknown_38) == 0x38);
-GG_STATIC_ASSERT(offsetof(SHA_00476D80, unknown_3C) == 0x3C);
-GG_STATIC_ASSERT(sizeof(SHA_00476D80) == 0x80);
+typedef SHAPipeLayout SHA_00476D80;
 
 // The CRC engine: running CRC, staging word, staging index.
 struct CRC_00476D80

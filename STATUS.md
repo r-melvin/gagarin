@@ -1,15 +1,60 @@
 # Project status
 
-The latest whole-repository regression passed with **4,349 fully matched
-functions**, **167 partial rows**, and 985 manifest translation units, with no
-matched function regressing. All **995 tracked C++ files** produced current
+The latest whole-repository regression passed with **4,364 fully matched
+functions**, **167 partial rows**, and 988 manifest translation units, with no
+matched function regressing. All **998 tracked C++ files** produced current
 project objects and passed the hash check. The compile/layout gate, 75 verifier
-tests and duplicate-address check passed (4,549 addresses, zero problems).
+tests and duplicate-address check passed (4,564 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: TeamClass vectors, CD search paths and INI stream read
+## Latest integration: MSAnimEntry vectors and Pipe/SHA stream methods
+
+The native [MSAnimEntry pointer-vector implementation](match/core/vector_msanimentry_methods.cpp)
+contains twelve entries: eight new exact matches and four migrated address
+claims. Its two RTTI-backed seven-slot tables pass conditional checks against
+the integrated project objects.
+
+The shared [Pipe layout](match/_layout/pipe.h) and methods bind five entries,
+including the ordinary destructor at `0x631C80`; the existing scalar-deleting
+entry at `0x4AEC80` moved to the native class. The five-slot check is
+conditional on VC6's unresolved deleting-destructor default. The `SHAPipe`
+view adds exact method bodies at `0x69E9B0` and `0x69E9E0`, and three CCINI
+stack-storage views now share the asserted [SHA pipe layout](match/_layout/sha_pipe_layout.h).
+No native `SHAPipe` constructor, destructor, deleting wrapper, or vtable was
+emitted in the four integration objects. The candidate for the retail
+slot-zero wrapper at `0x477750` was not promoted: three natural C++ forms used
+the wrong destructor call target, so the validated address-scoped stand-in
+remains. No `SHAPipe` table-closure claim is made.
+
+The eight dual-buffer destructor entries now preserve the retail call target
+for each base cleanup: four Pipe entries call `0x631C80`, and four Straw entries
+call `0x6C9850`. This binding was checked against the eight pinned retail call
+instructions and their RTTI-identified LCW/LZO Pipe and Straw tables. The
+25 targeted call-relocation checks for this batch are scoped evidence, not a
+project-wide audit.
+
+The batch adds fifteen new exact matches and migrates five existing claims.
+The full regression passed with **4,364 matched functions**, 167 partial rows
+and no regressions. All **998/998 tracked C++ files** produced current project
+objects and passed the hash check. The compile/layout gate, 75 verifier tests
+and duplicate-address check passed (4,564 addresses, zero problems). Eleven
+saved partial-body byte/relocation checks retain their baseline bytes and
+relocations. The `/dll /noentry /nodefaultlib` diagnostic link reports
+**3,683 unique unresolved symbols**, 5,524 reference lines and no duplicate
+definitions. Default libraries are excluded, so this diagnostic does not
+establish engine link closure.
+
+Matched lengths total **307,529 bytes (300 KiB)**: 22.1% of listed functions
+and 8.1% of listed function lengths. The current padding scan reports 274
+matched entries missed by its heuristic. Generic families contain 119 deleting
+bindings across 63 views, 60 base `Clear` rows, 58 native dynamic `Clear` rows
+plus one DiskID stand-in, and eight resize-family rows plus two other resize
+helpers. The deleting-destructor sweep contains 73 rows. Complete executable
+reproduction remains unfinished.
+
+## Previous verified integration: TeamClass vectors, CD search paths and INI stream read
 
 The native [TeamClass pointer-vector implementation](match/core/vector_teamclass_methods.cpp)
 contains twelve entries across `VectorClass<TeamClass*>` and
@@ -1749,8 +1794,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 995 tracked C++ files and 4,516 manifest
-rows across 985 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 998 tracked C++ files and 4,531 manifest
+rows across 988 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1912,7 +1957,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 61 base and 59
+  `CountedVector::Destroy` stand-ins. The family files bind 60 base and 58
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -2066,10 +2111,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,349** | **22.0%** of 19,753 |
+| Functions matched at 100% | **4,364** | **22.1%** of 19,753 |
 | Sum of matched function lengths | 300 KiB | 8.1% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 995 | |
+| Tracked C++ files under `match/` | 998 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2089,7 +2134,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 272 matched entries. Its candidate count is therefore
+listed entries, including 274 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

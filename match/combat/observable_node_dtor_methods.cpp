@@ -31,7 +31,7 @@ BlowPipe* BlowPipe::ScalarDeletingDtor(char flags)
 Obj_00632FF0* Obj_00632FF0::ScalarDeletingDtor(char flags)
 {
     Node.DestructInPlace();
-    ((NodeBaseA*)this)->Destruct();
+    ((Pipe*)this)->Pipe::~Pipe();
     if (flags & 1) {
         gg_free(this);
     }

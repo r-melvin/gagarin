@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/sha_pipe_layout.h"
 
 // VTABLE: GAMEMD 0x7E4DA0 — the file pipe's vtable (installed inline).
 extern char VT_007E4DA0;
@@ -53,26 +54,7 @@ GG_STATIC_ASSERT(sizeof(FilePipe_00474430) == 0x14);
 // The SHA-1 pipe as built on the stack (same shape as in
 // match/platform/ccini_class_crc_methods.h; re-declared so this TU stands
 // alone).
-struct SHAPipe_00474430 : Pipe_00474430
-{
-    char          IsCached;        // +0x000C
-    char          _pad00D[3];      // +0x000D
-    char          FinalResult[0x14]; // +0x0010
-    unsigned int  Acc[5];          // +0x0024
-    int           Length;          // +0x0038
-    int           PartialCount;    // +0x003C
-    char          Partial[0x40];   // +0x0040
-
-    // FUNCTION: GAMEMD 0x69E9E0 (decl; reloc) — copy the digest out.
-    void Result(void* out);
-    // FUNCTION: GAMEMD 0x631C80 (decl; reloc) — destructor.
-    void Destroy();
-};
-GG_STATIC_ASSERT(offsetof(SHAPipe_00474430, IsCached) == 0x0C);
-GG_STATIC_ASSERT(offsetof(SHAPipe_00474430, Acc) == 0x24);
-GG_STATIC_ASSERT(offsetof(SHAPipe_00474430, Length) == 0x38);
-GG_STATIC_ASSERT(offsetof(SHAPipe_00474430, PartialCount) == 0x3C);
-GG_STATIC_ASSERT(sizeof(SHAPipe_00474430) == 0x80);
+typedef SHAPipeLayout SHAPipe_00474430;
 
 struct CCINI_00474430
 {

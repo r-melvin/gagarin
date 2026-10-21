@@ -13,13 +13,15 @@
 //   scalar-deleting destructor which is that destructor inlined plus the
 //   `flags & 1` free and the `this` return. Within each shape the four members
 //   differ only in the vtable constant and the call relocations. The class
-//   carries no name in the binary or in the YRpp map, so the instances keep
-//   address-tagged placeholder names.
+//   is retained as an address-scoped layout view. Retail RTTI identifies
+//   the groups as LCWPipe/LCWStraw and LZOPipe/LZOStraw. Their Pipe and
+//   Straw cleanup calls retain their distinct observed target addresses.
 #ifndef GG_MATCH_CORE_DUAL_BUFFER_DTOR_FAMILY_METHODS_H
 #define GG_MATCH_CORE_DUAL_BUFFER_DTOR_FAMILY_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/pipe.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -40,11 +42,8 @@ struct DualBuf
     void* BufA;          // +0x0014
     void* BufB;          // +0x0018
 
-    // FUNCTION: GAMEMD 0x631C80 (decl; reloc) — the base class destructor as
-    // called from 0x552060 and 0x55C310; 0x552450 and 0x55C780 call 0x6C9850
-    // instead, which the differ normalises away with the other call
-    // relocations.
-    void BaseDtor();
+    // FUNCTION: GAMEMD 0x6C9850 -- direct Straw base cleanup call view.
+    void StrawBaseDtor();
 
     void Dtor_00552060();
     void Dtor_00552450();
@@ -58,7 +57,7 @@ GG_STATIC_ASSERT(offsetof(DualBuf, Vptr) == 0x0 &&
 
 // The 53-byte destructor: seat this class's vtable, release both buffers and
 // null them, then chain to the base destructor.
-#define GG_DUALBUF_DTOR_BODY(TAG, VT)                                     \
+#define GG_DUALBUF_DTOR_BODY(TAG, VT, BASE_CLEANUP)                                     \
 void DualBuf::Dtor_##TAG()                                                \
 {                                                                         \
     this->Vptr = &VT_##VT;                                                \
@@ -66,12 +65,12 @@ void DualBuf::Dtor_##TAG()                                                \
     this->BufA = 0;                                                       \
     gg_free(this->BufB);                                                  \
     this->BufB = 0;                                                       \
-    this->BaseDtor();                                                     \
+    BASE_CLEANUP;                                                     \
 }
 
 // The 73-byte scalar-deleting destructor: the same body inlined, then the
 // caller-requested free and the `this` return.
-#define GG_DUALBUF_SDD_BODY(TAG, VT)                                      \
+#define GG_DUALBUF_SDD_BODY(TAG, VT, BASE_CLEANUP)                                      \
 void* __fastcall FUN_##TAG(DualBuf* self, int, char flags)                \
 {                                                                         \
     self->Vptr = &VT_##VT;                                                \
@@ -79,7 +78,7 @@ void* __fastcall FUN_##TAG(DualBuf* self, int, char flags)                \
     self->BufA = 0;                                                       \
     gg_free(self->BufB);                                                  \
     self->BufB = 0;                                                       \
-    self->BaseDtor();                                                     \
+    BASE_CLEANUP;                                                     \
     if (flags & 1) {                                                      \
         gg_free(self);                                                    \
     }                                                                     \

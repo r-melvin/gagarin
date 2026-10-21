@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/sha_pipe_layout.h"
 
 // VTABLE: GAMEMD 0x7E4D90 -- external address binding for FileStraw call view.
 extern char VT_007E4D90;
@@ -51,30 +52,7 @@ GG_STATIC_ASSERT(offsetof(FileStraw_004741F0, File) == 0x0C);
 GG_STATIC_ASSERT(offsetof(FileStraw_004741F0, HasOpened) == 0x10);
 GG_STATIC_ASSERT(sizeof(FileStraw_004741F0) == 0x14);
 
-struct SHAPipe_004741F0 : Pipe_004741F0
-{
-    char          IsCached;          // +0x000C
-    char          _pad00D[3];        // +0x000D
-    char          FinalResult[0x14]; // +0x0010
-    unsigned int  Acc[5];            // +0x0024
-    int           Length;            // +0x0038
-    int           PartialCount;      // +0x003C
-    char          Partial[0x40];     // +0x0040
-
-    // FUNCTION: GAMEMD 0x69E9E0 (decl; reloc) — copy the digest out.
-    void Result(void* out);
-    // FUNCTION: GAMEMD 0x631C80 (decl; reloc) — destructor.
-    void Destroy();
-};
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Vtable) == 0);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, ChainTo) == 4);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, ChainFrom) == 8);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, IsCached) == 0x0C);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Acc) == 0x24);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Length) == 0x38);
-GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, PartialCount) == 0x3C);
-GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
-GG_STATIC_ASSERT(sizeof(SHAPipe_004741F0) == 0x80);
+typedef SHAPipeLayout SHAPipe_004741F0;
 
 struct CCINI_004741F0
 {

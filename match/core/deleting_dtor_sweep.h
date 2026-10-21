@@ -55,7 +55,6 @@ void __fastcall FUN_005D8C80(void* self);   // GAMEMD 0x5D8C80
 void __fastcall FUN_005F3B80(void* self);   // GAMEMD 0x5F3B80
 void __fastcall FUN_005F7400(void* self);   // GAMEMD 0x5F7400
 void __fastcall FUN_0062E070(void* self);   // GAMEMD 0x62E070
-void __fastcall FUN_00631C80(void* self);   // GAMEMD 0x631C80
 void __fastcall FUN_006406F0(void* self);   // GAMEMD 0x6406F0
 void __fastcall FUN_00652C00(void* self);   // GAMEMD 0x652C00
 void __fastcall FUN_0065B2F0(void* self);   // GAMEMD 0x65B2F0
@@ -96,7 +95,6 @@ struct Obj_4A59A0 { void* FUN_4A59A0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_4AEBB0 { void* FUN_4AEBB0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEBB0
 struct Obj_4AEBF0 { void* FUN_4AEBF0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEBF0
 struct Obj_4AEC10 { void* FUN_4AEC10(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEC10
-struct Obj_4AEC80 { void* FUN_4AEC80(unsigned int flags); };  // FUNCTION: GAMEMD 0x4AEC80
 // RTTI-confirmed (Tier 1, re-verified independently against the binary):
 // vtable 0x7E81A4 (this function's own address at slot 0, the usual
 // self-referential deleting-destructor slot) -> complete object locator

@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x474430.
 
 #include "ccini_class_write_ccfile_methods.h"
+#include "../_layout/sha_pipe.h"
 
 // FUNCTION: GAMEMD 0x474430
 //
@@ -40,10 +41,10 @@ int CCINI_00474430::WriteCCFile(File_00474430* file, bool withDigest)
         sha.Acc[4] = 0xC3D2E1F0;
         sha.Vtable = &VT_007E4D78;
 
-        Save(&sha);
-        sha.Result(Digest);
+        Save((Pipe_00474430*)&sha);
+        ((SHAPipe*)&sha)->Result(Digest);
         DigestValid = 1;
-        sha.Destroy();
+        ((Pipe*)&sha)->Pipe::~Pipe();
 
         PutUUBlock(STR_0081BFE0, Digest, 0x14);
         result = Save(&pipe);

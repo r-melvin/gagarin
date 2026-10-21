@@ -44,6 +44,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/pipe.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -62,11 +63,9 @@ struct NodePayload
     ~NodePayload();
 };
 
-// The two shared base destructors, each a no-argument __thiscall reached
-// through a plain register call. Modelled as a tag type per target so the
-// receiver lands in ECX exactly as retail has it.
-// FUNCTION: GAMEMD 0x631C80 (decl; reloc)
-struct NodeBaseA { void Destruct(); };
+// Pipe cleanup uses the shared RTTI-backed base destructor. The other
+// no-argument __thiscall remains an address-scoped Straw cleanup view;
+// original ownership beyond the observed call is not established here.
 // FUNCTION: GAMEMD 0x6C9850 (decl; reloc)
 struct NodeBaseB { void Destruct(); };
 
@@ -88,7 +87,7 @@ struct BlowPipe
         Vptr = &VT_007EFDC8;
         delete Payload;
         Payload = 0;
-        ((NodeBaseA*)this)->Destruct();
+        ((Pipe*)this)->Pipe::~Pipe();
     }
 
     // FUNCTION: GAMEMD 0x632F90

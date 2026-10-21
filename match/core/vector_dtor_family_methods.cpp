@@ -408,11 +408,7 @@ template class VectorClass<Point2D>;
 //   `.?AV?$VectorClass@PAVMapStage@@@@`.
 template class VectorClass<MapStage*>;
 
-// FUNCTION: GAMEMD 0x005D1940
-// FUNCTION: GAMEMD 0x005D1990
-// VectorClass<MSAnimEntry*> -- reseats retail vtable 0x007EEAD4; locator 0x008069C0 -> type descriptor 0x00830198
-//   `.?AV?$VectorClass@PAVMSAnimEntry@@@@`.
-template class VectorClass<MSAnimEntry*>;
+// MSAnimEntry vector specialization moved to vector_msanimentry_methods.cpp.
 
 // FUNCTION: GAMEMD 0x005D19E0
 // FUNCTION: GAMEMD 0x005D1A30
