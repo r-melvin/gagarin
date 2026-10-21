@@ -1,5 +1,42 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,517 fully matched
+functions**, **167 partial rows**, **4,684 manifest rows**, **1,010 manifest
+translation units**, and **1,020 tracked C++ files**. The 90-test suite,
+compile/layout checks, and whole-repository regression passed with zero
+matched regressions. All 1,020 C++ files produced current project objects and
+passed the input-hash check. The duplicate audit found **4,717 addresses and
+zero issues**. Eleven saved partial bodies and relocation offsets are unchanged.
+
+Eight ordinary `BlitPlain<unsigned char/unsigned short>` methods now match
+full retail spans, including all four relocation fields to CRT `memmove`.
+They use native C++ and emit no construction probes, sink globals, deleting
+destructors or vtables; their table markers record retail identity only.
+Both tested compiler flag sets produce exact bodies. Base/leaf lifetime and
+production vtable emission remain unfinished.
+
+Two independently checked manifest boundaries were corrected: SetPitch now
+includes the complete `ret 4` instruction (0x156 bytes, still 100%); FlightPathStep
+excludes eleven unreachable padding bytes (0x835 bytes, still partial, measured
+9.2%). Neither source body changed. SetPitch's 16 relocation fields also agree
+with their recorded retail targets.
+
+Matched lengths total **318,385 bytes**: 22.9% of listed functions and 8.4%
+of listed function lengths. The padding heuristic misses 292 matched entries.
+The diagnostic link reports **3,537 unique unresolved symbols**, **5,266
+reference lines**, and zero duplicate definitions, compared with 3,537 unique
+symbols and 5,265 references at commit `ac3fa7e`. This diagnostic does not
+establish engine link closure. Whole-executable reproduction remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: FilePipe
+
 As of **2026-10-21**, the latest verified snapshot has **4,509 fully matched
 functions**, **167 partial rows**, **4,676 manifest rows**, **1,009 manifest
 translation units**, and **1,019 tracked C++ files**. The 90-test suite,
@@ -23,13 +60,6 @@ unresolved symbols**, **5,265 reference lines**, and zero duplicate definitions,
 compared with 3,538 unique symbols and 5,265 references at commit `17b1d3e`.
 This diagnostic does not establish engine link closure. Whole-executable
 reproduction remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: fifteen vector pairs and FileStraw
 

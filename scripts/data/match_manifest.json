@@ -24843,10 +24843,10 @@
   "tu": "match/movement/flight_path_step_methods.cpp",
   "addr": "0x005B20F0",
   "sym": "?FlightPathStep@@YIHPAUCoordStruct@@PAUVelocityClass@@PBU1@PBUDir16@@DDDD@Z",
-  "len": "0x840",
+  "len": "0x835",
   "name": "?FlightPathStep@@YIHPAUCoordStruct@@PAUV",
   "status": "partial",
-  "pct": 9.1
+  "pct": 9.2
  },
  {
   "tu": "match/movement/flight_tuning_globals.cpp",
@@ -25878,7 +25878,7 @@
   "tu": "match/movement/velocity_class_set_pitch_methods.cpp",
   "addr": "0x005B2A30",
   "sym": "?SetPitch@VelocityClass@@QAEXABUDir16@@@Z",
-  "len": "0x154",
+  "len": "0x156",
   "name": "?SetPitch@VelocityClass@@QAEXABUDir16@@@",
   "status": "matched",
   "pct": 100
@@ -42080,6 +42080,78 @@
   "sym": "?FUN_00631D10@FilePipe@@UAEHHH@Z",
   "len": "0x4B",
   "name": "FilePipe::FUN_00631D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC750",
+  "sym": "?BlitCopy@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x21",
+  "name": "BlitPlain<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC780",
+  "sym": "?BlitMove@?$BlitPlain@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x1A",
+  "name": "BlitPlain<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC7A0",
+  "sym": "?BlitCopyTint@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x21",
+  "name": "BlitPlain<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC7D0",
+  "sym": "?BlitMoveTint@?$BlitPlain@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x1A",
+  "name": "BlitPlain<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC7F0",
+  "sym": "?BlitCopy@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x24",
+  "name": "BlitPlain<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC820",
+  "sym": "?BlitMove@?$BlitPlain@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x1D",
+  "name": "BlitPlain<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC840",
+  "sym": "?BlitCopyTint@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x24",
+  "name": "BlitPlain<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/blit_plain_methods.cpp",
+  "addr": "0x7BC870",
+  "sym": "?BlitMoveTint@?$BlitPlain@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x1D",
+  "name": "BlitPlain<unsigned short>::BlitMoveTint",
   "status": "matched",
   "pct": 100
  }
