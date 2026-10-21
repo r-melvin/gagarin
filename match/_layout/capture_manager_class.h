@@ -6,15 +6,18 @@
 //   nMaxControlNodes -> 0x3C, arg3 bInfiniteControl -> 0x40.
 //   sizeof: `PUSH 0x50` before the ctor call at its allocation site.
 //   RTTI: 0x007E4B40 / 0x007E4B24 (+ the +8/+0xC tables) resolve to
-//   ".?AVCaptureManagerClass@@" (stored @0x00471807..0x0047181B).
+//   ".?AVCaptureManagerClass@@" at descriptor 0x81B6C8 (name +8),
+//   establishing the class key. The ctor writes the four table pointers;
+//   the explicit-vptr AbstractClass view does not recover the full COM hierarchy.
 //
 //   The ctor also re-proves the DynamicVectorClass layout asserted in
 //   vector_class.h: for ControlNodes at 0x24 it stores the vptr at 0x24
-//   (0x007E4BA4), Items 0x28, Capacity 0x2C, IsAllocated (byte) 0x30, Count
-//   0x34 and CapacityIncrement 0x38 = 0xA.
+//   (0x007E4BA4), Items 0x28, Capacity 0x2C, flag bytes 0x30=1/0x31=0,
+//   Count 0x34 and CapacityIncrement 0x38 = 0xA.
 //
-//   Cross-read against YRpp CaptureManagerClass.h: 7 named members claimed,
-//   7 confirmed. No disagreement found.
+//   YRpp supplied naming hypotheses only; the offsets below are binary facts.
+//   The original declarations and semantic member names are not recovered
+//   merely by confirming their storage offsets.
 //
 // CaptureManagerClass — mind-control link bookkeeping. Derives AbstractClass.
 #ifndef GG_MATCH_LAYOUT_CAPTURE_MANAGER_CLASS_H
@@ -25,8 +28,25 @@
 #include "abstract_class.h"
 #include "vector_class.h"
 
-struct CaptureManagerClass : AbstractClass
+struct Sink_004A1C00;
+struct Gg_IStream;
+struct Guid_472960;
+
+class CaptureManagerClass : public AbstractClass
 {
+public:
+    // FUNCTION: GAMEMD 0x4722E0
+    bool FUN_004722E0() const;
+    // FUNCTION: GAMEMD 0x4726C0
+    bool FUN_004726C0(bool* state);
+    // FUNCTION: GAMEMD 0x4726F0
+    void FUN_004726F0(Sink_004A1C00* sink);
+    // FUNCTION: GAMEMD 0x4728E0
+    long __stdcall Save(Gg_IStream* stream, int clearDirty);
+    // FUNCTION: GAMEMD 0x472960
+    long __stdcall GetClassID(Guid_472960* outGuid);
+
+
     DynamicVectorClassLayout ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
                                                //   @0x004717E6/0x004717E9/0x004717E2/0x004717FD/0x004717F6
     int           MaxControlNodes;             // +0x3C ctor = arg2 @0x00471822

@@ -17,14 +17,8 @@
 class TechnoClass;
 class HouseClass;
 
-// ControlNode — one controlled unit. Unit pointer at +0 (CMP [EDI],ESI), the
-// captured house at +4 (MOV EAX,[EAX+4]).
-struct ControlNode
-{
-    TechnoClass* Unit;          // +0x00
-    HouseClass*  OriginalOwner; // +0x04
-    // CDTimerClass LinkDrawTimer (+0x08) — not touched here.
-};
+// Shared node layout; this method compares +0 and returns +4.
+#include "../_layout/control_node.h"
 
 struct CaptureManagerClass
 {
@@ -42,8 +36,6 @@ struct CaptureManagerClass
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(CaptureManagerClass, ControlNodes_Items) == 0x28);
 GG_STATIC_ASSERT(offsetof(CaptureManagerClass, ControlNodes_Count) == 0x34);
-GG_STATIC_ASSERT(offsetof(ControlNode, Unit) == 0x00);
-GG_STATIC_ASSERT(offsetof(ControlNode, OriginalOwner) == 0x04);
 #endif
 
 #endif  // GG_MATCH_COMBAT_CAPTURE_MANAGER_CLASS_MORE_METHODS_H

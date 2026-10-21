@@ -15,13 +15,8 @@
 class TechnoClass;
 class HouseClass;
 
-// ControlNode — one controlled unit. Unit pointer at +0 (FreeAll loads [node+0]).
-struct ControlNode
-{
-    TechnoClass* Unit;          // +0x00
-    HouseClass*  OriginalOwner; // +0x04
-    // CDTimerClass LinkDrawTimer (+0x08) — not touched by the matched methods.
-};
+// Shared node layout, confirmed by allocation and its individual consumers.
+#include "../_layout/control_node.h"
 
 // CaptureManagerClass. The AbstractClass base (COM IPersistStream + members)
 // occupies [0x00..0x23]; its full decomposition is P2. Every field below is

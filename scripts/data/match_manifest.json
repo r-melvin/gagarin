@@ -39283,5 +39283,50 @@
   "tu": "match/core/vector_controlnode_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUControlNode@@@@UBEHABQAUControlNode@@@Z",
   "name": "DynamicVectorClass<ControlNode*>::FindItemIndex"
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4722E0",
+  "sym": "?FUN_004722E0@CaptureManagerClass@@QBE_NXZ",
+  "len": "0x0C",
+  "name": "CaptureManagerClass::FUN_004722E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4726C0",
+  "sym": "?FUN_004726C0@CaptureManagerClass@@QAE_NPA_N@Z",
+  "len": "0x29",
+  "name": "CaptureManagerClass::FUN_004726C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4726F0",
+  "sym": "?FUN_004726F0@CaptureManagerClass@@QAEXPAUSink_004A1C00@@@Z",
+  "len": "0x2C",
+  "name": "CaptureManagerClass::FUN_004726F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4728E0",
+  "sym": "?Save@CaptureManagerClass@@QAGJPAUGg_IStream@@H@Z",
+  "len": "0x7F",
+  "name": "CaptureManagerClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x472960",
+  "sym": "?GetClassID@CaptureManagerClass@@QAGJPAUGuid_472960@@@Z",
+  "len": "0x38",
+  "name": "CaptureManagerClass::GetClassID",
+  "status": "matched",
+  "pct": 100
  }
 ]

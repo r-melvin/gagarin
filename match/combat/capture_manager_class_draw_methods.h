@@ -8,16 +8,17 @@
 //   @0x11C, CaptureManagerClass::ControlNodes_Items @0x28 / _Count @0x34, and
 //   the frame-counter global 0x00A8ED84.
 //
-// Kept in its own TU: the sibling capture_manager_class.cpp models neither
-// Owner @0x48 nor the ControlNode timer fields this needs.
+// This TU retains its local CaptureManager receiver and Techno field views;
+// the ControlNode record is shared with the other consumers.
 #ifndef GG_MATCH_COMBAT_CAPTURE_MANAGER_CLASS_DRAW_METHODS_H
 #define GG_MATCH_COMBAT_CAPTURE_MANAGER_CLASS_DRAW_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoClass
+class TechnoClass
 {
+public:
     char         _pad00[0x83];      // +0x0000
     bool         IsSelected;        // +0x0083  ObjectClass
     char         _pad84[0x11C - 0x84];
@@ -26,19 +27,8 @@ struct TechnoClass
 GG_STATIC_ASSERT(offsetof(TechnoClass, IsSelected)  == 0x83);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Transporter) == 0x11C);
 
-// The per-link record. +0x08 is a start frame with -1 meaning "not timed" and
-// +0x10 the link's lifetime; both keep placeholder-ish names because the bytes
-// fix their offsets and arithmetic, not their INI-level meaning.
-struct ControlNode
-{
-    TechnoClass* Unit;          // +0x0000
-    char         _pad04[4];     // +0x0004  OriginalOwner
-    int          StartFrame;    // +0x0008
-    char         _pad0C[4];     // +0x000C
-    int          Duration;      // +0x0010
-};
-GG_STATIC_ASSERT(offsetof(ControlNode, StartFrame) == 0x08);
-GG_STATIC_ASSERT(offsetof(ControlNode, Duration)   == 0x10);
+// Shared node frame fields are pinned by the canonical record assertions.
+#include "../_layout/control_node.h"
 
 // GLOBAL: GAMEMD 0x00A8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"

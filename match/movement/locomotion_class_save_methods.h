@@ -11,7 +11,7 @@
 // This TU reuses the primary COM vtable binding from locomotion_class_methods.h
 // (Size() lives at vtable slot 9 == [vptr+0x24], a __thiscall). It additionally
 // needs the IStream vtable shape so that IStream::Write resolves to the exact
-// indexed thiscall the retail code performs: CALL [streamvptr+0x10].
+// indexed COM stdcall the retail code performs: CALL [streamvptr+0x10].
 //   IStream vtable: QueryInterface(0x0) AddRef(0x4) Release(0x8) Read(0xC)
 //                   Write(0x10) ...   => Write is slot 4, byte offset 0x10.
 #ifndef GG_MATCH_MOVEMENT_LOCOMOTION_CLASS_SAVE_METHODS_H
@@ -22,14 +22,6 @@
 // Minimal IStream COM binding: only the slots up to and including Write must be
 // laid out, so Write lands at vtable byte offset 0x10 exactly as the disasm
 // shows ([EAX+0x10] / [EBX+0x10]).
-struct Gg_IStream
-{
-    // vptr implicit at +0x00.
-    virtual HRESULT __stdcall QueryInterface(Gg_REFIID* iid, void** ppv) = 0;       // 0x00
-    virtual ULONG   __stdcall AddRef() = 0;                                         // 0x04
-    virtual ULONG   __stdcall Release() = 0;                                        // 0x08
-    virtual HRESULT __stdcall Read(void* pv, ULONG cb, ULONG* pcbRead) = 0;         // 0x0C
-    virtual HRESULT __stdcall Write(const void* pv, ULONG cb, ULONG* pcbWrite) = 0; // 0x10
-};
+#include "../_rt/gg_istream.h"
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_CLASS_SAVE_METHODS_H

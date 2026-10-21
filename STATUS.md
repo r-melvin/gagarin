@@ -1,13 +1,50 @@
 # Project status
 
-The latest whole-repository regression passed with **4,198 fully matched
-functions**, **167 partial rows**, and 965 manifest translation units, with no
-matched function regressing. All **975 tracked C++ files** produced project
+The latest whole-repository regression passed with **4,203 fully matched
+functions**, **167 partial rows**, and 966 manifest translation units, with no
+matched function regressing. All **976 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
-and duplicate-address check passed. The complete byte-for-byte executable
-target has not been achieved.
+and duplicate-address check passed (4,401 addresses, zero problems). The
+complete byte-for-byte executable target has not been achieved.
 
-## Latest integration: ControlNode vectors and math entries
+## Latest integration: CaptureManager methods and shared stream view
+
+The shared [`ControlNode`](match/_layout/control_node.h) layout replaces three
+duplicate record definitions used by existing mind-control methods. The retail
+allocator requests 0x14 bytes; binary accesses establish pointers at +0/+4,
+frame data at +8, duration at +0x10, and an untyped four-byte gap at +0x0C.
+The three existing consumers retain exact matches. Other `CaptureManager`
+receiver views remain separate, and the full COM inheritance is not claimed.
+
+[`capture_manager_state_methods.cpp`](match/combat/capture_manager_state_methods.cpp)
+now contains five matched CaptureManager methods: `FUN_004722E0`,
+`FUN_004726C0`, `FUN_004726F0`, `Save` at `0x4728E0`, and `GetClassID` at
+`0x472960`. Save uses the observed `IStream::Write` slot at +0x10; the shared
+[`Gg_IStream` prefix](match/_rt/gg_istream.h) records that `__stdcall` ABI.
+`GetClassID` copies four observed DWORDs into a 16-byte output view. The FUN
+names remain address-based; interface and field types are ABI models, not
+recovered original source declarations. The broader COM hierarchy remains
+unverified.
+
+The full regression passed with **4,203 matched functions**, 167 partial rows
+and no regressions. All **976/976 tracked C++ files** produced current project
+objects; the compile/layout gate, 75 verifier tests and duplicate-address
+check passed. Focused checks covered 23 matched rows and one existing partial
+across six translation units. All nine saved partial bodies retain identical
+bytes and relocation offsets. The `/dll /noentry /nodefaultlib` diagnostic
+link reports **3,673 unique unresolved symbols**, 5,519 reference lines and
+no duplicate definitions. Default libraries are excluded; this diagnostic
+does not establish engine link closure.
+
+Matched lengths total **298,395 bytes (291 KiB)**: 21.3% of listed functions
+and 7.9% of listed function lengths. The padding heuristic misses 260 matched
+entries. Current generic families contain 135 deleting bindings across 71
+views, 68 base `Clear` rows, 66 native dynamic `Clear` rows plus one DiskID
+stand-in, and 10 resize-family rows plus two other resize helpers. Engine
+link closure and complete executable reproduction remain unfinished.
+
+
+## Previous integration: ControlNode vectors and math entries
 
 The [`ControlNode*`](match/core/vector_controlnode_methods.cpp) vector pair
 adds seven exact matches and migrates five existing claims. Retail RTTI
@@ -1350,8 +1387,9 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 975 tracked C++ files and 4,365 manifest
-rows, with no manifest TU missing from tracked sources. Ten tracked files
+verified snapshot, the inventory has 976 tracked C++ files and 4,370 manifest
+rows across 966 manifest translation units, with no manifest TU missing from
+tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -1666,10 +1704,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,198** | **21.3%** of 19,753 |
+| Functions matched at 100% | **4,203** | **21.3%** of 19,753 |
 | Sum of matched function lengths | 291 KiB | 7.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 975 | |
+| Tracked C++ files under `match/` | 976 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

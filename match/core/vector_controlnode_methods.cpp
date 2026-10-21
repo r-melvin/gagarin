@@ -9,7 +9,7 @@
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 #include "vector_class_operations.h"
 
-struct ControlNode;
+#include "../_layout/control_node.h"
 
 // FUNCTION: GAMEMD 0x472A80
 // DynamicVectorClass<ControlNode*>::Clear
