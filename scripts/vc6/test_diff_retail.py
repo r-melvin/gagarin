@@ -2,8 +2,13 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # Provenance: original; synthetic x86 byte streams only, no retail bytes.
 """Regression tests for contiguous retail-byte instruction decoding."""
+import contextlib
+import io
 import json
+import struct
+import tempfile
 import unittest
+from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
@@ -15,6 +20,7 @@ except ModuleNotFoundError:
 explicit_length = diff_module.explicit_length
 ghidra_bytes = diff_module.ghidra_bytes
 raw_x86_insns = diff_module.raw_x86_insns
+from test_float_literal_reloc import coff_object
 
 
 class RetailSpanTests(unittest.TestCase):
@@ -95,6 +101,62 @@ class CompiledInputTests(unittest.TestCase):
                 returncode=0, stdout=output, stderr="")):
             with self.assertRaisesRegex(SystemExit, "no instructions.*wanted"):
                 diff_module.objdump_insns("other.obj", "wanted")
+
+
+class LiteralPoolGuardTests(unittest.TestCase):
+    def run_diff(self, blob, retail_insn, compiled_insn, retail_raw, span="0x4"):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "literal.obj"
+            obj.write_bytes(blob)
+            output = io.StringIO()
+            argv = ["diff_retail.py", "--obj", str(obj), "--sym", "func",
+                    "--addr", "0x401000", "--len", span]
+            with patch("sys.argv", argv), \
+                    patch.object(diff_module, "ghidra_bytes", return_value=retail_raw), \
+                    patch.object(diff_module, "raw_x86_insns", return_value=[retail_insn]), \
+                    patch.object(diff_module, "objdump_insns",
+                                 return_value=([compiled_insn], {0})), \
+                    patch.object(diff_module.raw_match, "retail_bytes",
+                                 side_effect=lambda addr, n: struct.pack("<f", 2.5)), \
+                    contextlib.redirect_stdout(output):
+                try:
+                    diff_module.main()
+                except SystemExit as exc:
+                    return exc.code, output.getvalue()
+            self.fail("diff_retail.main did not exit")
+
+    def test_direct_diff_rejects_wrong_float_hidden_by_normalized_relocation(self):
+        retail_raw = struct.pack("<I", 0x402000)
+        retail_insn = (0, retail_raw.hex(), "mov", "eax, [0x402000]")
+        compiled_insn = (0, "00000000", "mov", "eax, [0x402000]")
+        result, output = self.run_diff(
+            coff_object(struct.pack("<f", 1.25)), retail_insn,
+            compiled_insn, retail_raw)
+        self.assertEqual(result, diff_module.raw_match.HARD_LITERAL_FAILURE)
+        self.assertIn("HARD FLOAT-LITERAL FAILURE", output)
+        self.assertNotIn("match: 100.0%", output)
+
+    def test_partial_instruction_mismatch_keeps_existing_diagnostic(self):
+        retail_raw = struct.pack("<I", 0x402000)
+        retail_insn = (0, retail_raw.hex(), "mov", "eax, [0x402000]")
+        compiled_insn = (0, "00000000", "xor", "eax, eax")
+        result, output = self.run_diff(
+            coff_object(struct.pack("<f", 1.25)), retail_insn,
+            compiled_insn, retail_raw)
+        self.assertEqual(result, 1)
+        self.assertNotIn("HARD FLOAT-LITERAL FAILURE", output)
+        self.assertIn("match: 0.0%", output)
+
+    def test_short_coff_span_is_ineligible_for_literal_hard_failure(self):
+        retail_raw = struct.pack("<I", 0x402000) + b"\0\0\0\0"
+        retail_insn = (0, retail_raw.hex(), "mov", "eax, [0x402000]")
+        compiled_insn = (0, "0000000000000000", "mov", "eax, [0x402000]")
+        result, output = self.run_diff(
+            coff_object(struct.pack("<f", 1.25)), retail_insn,
+            compiled_insn, retail_raw, span="0x8")
+        self.assertEqual(result, 0)
+        self.assertIn("match: 100.0%", output)
+        self.assertNotIn("HARD FLOAT-LITERAL FAILURE", output)
 
 
 if __name__ == "__main__":
