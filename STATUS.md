@@ -1,30 +1,30 @@
 # Project status
 
-As of **2026-10-21**, the latest verified snapshot reports **4,781 matched
-function rows**, **181 partial rows**, **4,962 manifest rows**, **1,027 manifest
-translation units**, and **1,037 tracked C++ files**. Whole-repository regression,
+As of **2026-10-21**, the latest verified snapshot reports **4,842 matched
+function rows**, **190 partial rows**, **5,032 manifest rows**, **1,041 manifest
+translation units**, and **1,051 tracked C++ files**. Whole-repository regression,
 compile/layout checks, the project build and 107 tooling tests pass with zero
 matched regressions. All project objects are current. The annotation audit
-reports 4,995 body addresses and zero issues. Twenty-seven saved partial
+reports 5,065 body addresses and zero issues. Twenty-seven saved partial
 baselines are unchanged.
 
-Four previously reported matches had an incorrect floating literal: the plain
-and Fly locomotion draw/shadow matrices used `-pi/4`, while retail reads
-`-pi/16` at `0x7E4408`. They now use one explicit shared global binding,
-correcting the factor-of-four facing-angle error. All four full spans remain
-byte-exact after relocation normalization, and all 32 relocation fields resolve
-to retail targets. The match count is unchanged; the earlier normalized score
-had hidden the literal-value error.
+The latest batch adds 70 ordinary RLE methods: 61 exact spans and nine readable
+partials. All 52 relocation fields in the exact spans resolve to retail targets.
+Direct retail checks cover 105 slots across 35 RTTI-backed leaf tables. These
+are address bindings, not proof of production table emission, destructor
+ownership or complete class closure. Harness rows remain excluded. Three
+partials have shorter compiled sections than their retail spans; their stored
+instruction-position scores do not measure full-span byte equality.
 
-The raw and instruction oracles now check defined MSVC single/double literal
-pools for otherwise raw-byte-exact spans. A hard literal failure cannot be
-accepted through instruction fallback. Synthetic tests cover wrong values,
-adjacent relocation fields and offset references. This is a scoped literal
-check, not a complete audit of other globals or final-link selection.
+The earlier locomotion literal correction and scoped literal-oracle checks
+remain in place. A separate instruction-decoder issue has been reproduced:
+foreign switch labels in same-named COFF sections can distort instruction
+scores despite identical function bytes. Its tooling fix is being reviewed;
+this batch's 61 exact claims also pass the raw-byte oracle.
 
-Matched lengths total **340,053 bytes**: 24.2% of listed functions and 9.0%
+Matched lengths total **349,016 bytes**: 24.5% of listed functions and 9.2%
 of listed function lengths. The padding heuristic misses 301 matched entries.
-The diagnostic link reports **3,544 unique unresolved symbols**, **5,299
+The diagnostic link reports **3,545 unique unresolved symbols**, **5,326
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
 
@@ -2470,10 +2470,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,781** | **24.2%** of 19,753 |
-| Sum of matched function lengths | 340,053 bytes | 9.0% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 181 | 0.9% |
-| Tracked C++ files under `match/` | 1,037 | |
+| Functions matched at 100% | **4,842** | **24.5%** of 19,753 |
+| Sum of matched function lengths | 349,016 bytes | 9.2% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 190 | 1.0% |
+| Tracked C++ files under `match/` | 1,051 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

@@ -44688,5 +44688,653 @@
   "pct": 4.6,
   "metric": "instruction-position",
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x4919B0",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapDest@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x74",
+  "name": "RLEBlitTransRemapDest<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491A30",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapDest@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapDest<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491A70",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapXlat@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x88",
+  "name": "RLEBlitTransRemapXlat<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491B00",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapXlat@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapXlat<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491D90",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapDestZRead@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xCA",
+  "name": "RLEBlitTransRemapDestZRead<unsigned char>::RLEBlit",
+  "status": "partial",
+  "pct": 73.3,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491E60",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapDestZRead@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapDestZRead<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491EA0",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xE9",
+  "name": "RLEBlitTransRemapXlatZRead<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x491F90",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapXlatZRead<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x492250",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapDestZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xDD",
+  "name": "RLEBlitTransRemapDestZReadWrite<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x492330",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapDestZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapDestZReadWrite<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x492370",
+  "sym": "?RLEBlit@?$RLEBlitTransRemapXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x109",
+  "name": "RLEBlitTransRemapXlatZReadWrite<unsigned char>::RLEBlit",
+  "status": "partial",
+  "pct": 82.8,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x492480",
+  "sym": "?RLEBlitTint@?$RLEBlitTransRemapXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransRemapXlatZReadWrite<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x496250",
+  "sym": "?RLEBlit@?$RLEBlitTransDarken@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x79",
+  "name": "RLEBlitTransDarken<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x4962D0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransDarken@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransDarken<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x496820",
+  "sym": "?RLEBlit@?$RLEBlitTransDarkenZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xCB",
+  "name": "RLEBlitTransDarkenZRead<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 45.1,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x4968F0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransDarkenZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransDarkenZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x497390",
+  "sym": "?RLEBlit@?$RLEBlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xDD",
+  "name": "RLEBlitTransDarkenZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_darken_remap.cpp",
+  "addr": "0x497470",
+  "sym": "?RLEBlitTint@?$RLEBlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransDarkenZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_plain.cpp",
+  "addr": "0x4963f0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x9a",
+  "name": "RLEBlitTransLucent50<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_plain.cpp",
+  "addr": "0x496490",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x496a80",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50ZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xff",
+  "name": "RLEBlitTransLucent50ZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x496b80",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50ZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50ZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x496e60",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x104",
+  "name": "RLEBlitTransLucent50ZReadWarp<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x496f70",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50ZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x497610",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x10f",
+  "name": "RLEBlitTransLucent50ZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_zread.cpp",
+  "addr": "0x497720",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50ZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_plain.cpp",
+  "addr": "0x497cf0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50Alpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x12b",
+  "name": "RLEBlitTransLucent50Alpha<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_plain.cpp",
+  "addr": "0x497e20",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50Alpha@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50Alpha<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x4986d0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1ac",
+  "name": "RLEBlitTransLucent50AlphaZRead<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 20.1,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x498880",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50AlphaZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x498cd0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1b1",
+  "name": "RLEBlitTransLucent50AlphaZReadWarp<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 12.7,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x498e90",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50AlphaZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x499860",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent50AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1e5",
+  "name": "RLEBlitTransLucent50AlphaZReadWrite<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 20.6,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
+ },
+ {
+  "tu": "match/render/blitters/r_lucent50_alphaz.cpp",
+  "addr": "0x499a50",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent50AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent50AlphaZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_plain.cpp",
+  "addr": "0x4918e0",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlat@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x89",
+  "name": "RLEBlitTransZRemapXlat<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_plain.cpp",
+  "addr": "0x491970",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlat@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlat<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_plain.cpp",
+  "addr": "0x496170",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlat@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x91",
+  "name": "RLEBlitTransZRemapXlat<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_plain.cpp",
+  "addr": "0x496210",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlat@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlat<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zread.cpp",
+  "addr": "0x491c50",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xf6",
+  "name": "RLEBlitTransZRemapXlatZRead<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zread.cpp",
+  "addr": "0x491d50",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatZRead<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zread.cpp",
+  "addr": "0x4966d0",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x101",
+  "name": "RLEBlitTransZRemapXlatZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zread.cpp",
+  "addr": "0x4967e0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zrw.cpp",
+  "addr": "0x492100",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x108",
+  "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zrw.cpp",
+  "addr": "0x492210",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zrw.cpp",
+  "addr": "0x497230",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x111",
+  "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_zremap_zrw.cpp",
+  "addr": "0x497350",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_xlat_uchar.cpp",
+  "addr": "0x491820",
+  "sym": "?RLEBlit@?$RLEBlitTransXlat@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x7e",
+  "name": "RLEBlitTransXlat<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_xlat_uchar.cpp",
+  "addr": "0x4918a0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlat@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlat<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zread_uchar.cpp",
+  "addr": "0x491b40",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xcf",
+  "name": "RLEBlitTransXlatZRead<unsigned char>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zread_uchar.cpp",
+  "addr": "0x491c10",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatZRead@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlatZRead<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zrw_uchar.cpp",
+  "addr": "0x491fd0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xe1",
+  "name": "RLEBlitTransXlatZReadWrite<unsigned char>::RLEBlit",
+  "status": "partial",
+  "pct": 67.4,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zrw_uchar.cpp",
+  "addr": "0x4920c0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlatZReadWrite<unsigned char>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_xlat_ushort.cpp",
+  "addr": "0x4960a0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlat@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x85",
+  "name": "RLEBlitTransXlat<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_xlat_ushort.cpp",
+  "addr": "0x496130",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlat@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlat<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+  "addr": "0x4965b0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xd5",
+  "name": "RLEBlitTransXlatZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+  "addr": "0x496690",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlatZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+  "addr": "0x497100",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0xe8",
+  "name": "RLEBlitTransXlatZReadWrite<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 64.0,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
+ },
+ {
+  "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+  "addr": "0x4971f0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlatZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x4978c0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatAlpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x109",
+  "name": "RLEBlitTransXlatAlpha<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x4979d0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatAlpha@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransXlatAlpha<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x497a10",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x122",
+  "name": "RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit",
+  "status": "partial",
+  "pct": 83.2,
+  "metric": "instruction-position",
+  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x497b40",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x497fd0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x17d",
+  "name": "RLEBlitTransXlatAlphaZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x498150",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x182",
+  "name": "RLEBlitTransXlatAlphaZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x4982e0",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1aa",
+  "name": "RLEBlitTransZRemapXlatAlphaZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x498490",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatAlphaZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x4990e0",
+  "sym": "?RLEBlit@?$RLEBlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x19f",
+  "name": "RLEBlitTransXlatAlphaZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x499280",
+  "sym": "?RLEBlitTint@?$RLEBlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x1a4",
+  "name": "RLEBlitTransXlatAlphaZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x499430",
+  "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1d4",
+  "name": "RLEBlitTransZRemapXlatAlphaZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_alpha.cpp",
+  "addr": "0x499610",
+  "sym": "?RLEBlitTint@?$RLEBlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransZRemapXlatAlphaZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
