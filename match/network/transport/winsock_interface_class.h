@@ -18,6 +18,7 @@
 #include <winsock.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../core/vector_class.h"
+#include "../../platform/input_manager_class_methods.h"
 
 // Only imports/globals reached by StartListening and the two buffer drains.
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- log sink used on socket errors.
@@ -28,6 +29,28 @@ extern "C" int __cdecl Debug_Printf(const char* format, ...);
 extern HWND DAT_00B73550;
 // FUNCTION: GAMEMD 0x7C89BC (decl; reloc) -- imported WSAAsyncSelect target.
 // FUNCTION: GAMEMD 0x7C897A (decl; reloc) -- imported WSAGetLastError target.
+
+// Additional ordinary-base dependencies used by the isolated selected methods.
+// FUNCTION: GAMEMD 0x64DE80 (decl; reloc) -- one checksum update.
+void __fastcall FUN_0064DE80(unsigned long* crc, unsigned long value);
+
+// The retail SendPacket/Broadcast methods inline this vector AddItem behavior.
+template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)
+{
+    if (v.Count >= v.Capacity)
+    {
+        if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0)
+        {
+            if (!v.SetCapacity(v.Capacity + v.CapacityIncrement, 0))
+                return false;
+        }
+        else
+            return false;
+    }
+    int index = v.Count++;
+    v.Items[index] = item;
+    return true;
+}
 
 // Base slot targets are pinned from the retail table at 0x7F79BC. Remaining
 // slots are retained to keep slot indices.
@@ -132,6 +155,9 @@ public:
     // FUNCTION: GAMEMD 0x7B2050 (decl; reloc) -- base slot 22 target.
     virtual bool VerifyPacketCrc(WinsockBufferType* packet);
 
+    // FUNCTION: GAMEMD 0x7B20E0 (decl; reloc) -- base out-buffer allocator.
+    WinsockBufferType* AllocOutBuffer(bool alternate);
+
     unsigned char unknown_04[4];                   // +0x04
     DynamicVectorClass<WinsockBufferType*> InBuffers;       // +0x08
     DynamicVectorClass<WinsockBufferType*> OutBuffers;      // +0x20
@@ -157,6 +183,10 @@ typedef WinsockInterfaceClass::WinsockBufferType WinsockBufferType;
 typedef DynamicVectorClass<WinsockBufferType*> WinsockBufferVector;
 
 GG_STATIC_ASSERT(sizeof(WinsockBufferType) == 0x2A0);
+GG_STATIC_ASSERT(offsetof(WinsockBufferType, unknown_1A) == 0x1A);
+GG_STATIC_ASSERT(offsetof(WinsockBufferType, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(WinsockBufferType, IsBroadcast) == 0x14);
+GG_STATIC_ASSERT(offsetof(WinsockBufferType, Address) == 0x00);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, BufferLen) == 0x10);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, InUse) == 0x15);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, IsAllocated) == 0x16);
@@ -167,6 +197,9 @@ GG_STATIC_ASSERT(sizeof(WinsockBufferType*) == 4);
 GG_STATIC_ASSERT(sizeof(WinsockBufferVector) == 0x18);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(WinsockBufferVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(WinsockBufferVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, InBuffers) == 0x08);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, OutBuffers) == 0x20);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, AltOutBuffers) == 0x38);

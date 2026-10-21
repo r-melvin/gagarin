@@ -8,8 +8,8 @@
 // InputManagerClass — keyboard/mouse input dispatcher. This translation unit
 // matches two methods: IsKeyPressed (a button-state probe that honours the
 // system mouse-button-swap setting) and DoSomething (a ring-buffer head/tail
-// flush). The class holds a 256-entry word ring buffer; only the head index
-// @0x314 and tail index @0x318 are touched here.
+// flush). Retail index arithmetic wraps at 256; storage before the observed
+// head at +0x314 and tail at +0x318 remains unmodelled here.
 #ifndef GG_MATCH_PLATFORM_INPUT_MANAGER_CLASS_METHODS_H
 #define GG_MATCH_PLATFORM_INPUT_MANAGER_CLASS_METHODS_H
 
@@ -18,18 +18,27 @@
 
 struct InputManagerClass
 {
-    char _pad0[0x314];          // +0x000  (5 ints + byte[256] + word[256], unmodelled)
+    char _pad0[0x314];          // +0x000 unmodelled storage prefix
     int  field_314;             // +0x314  ring-buffer head/read index
     int  field_318;             // +0x318  ring-buffer tail/write index
 
-    // GAMEMD 0x54F5C0 — bool IsKeyPressed(int) const (__thiscall)
+    // FUNCTION: GAMEMD 0x54F000 (decl; reloc) — ABI view; original name unknown.
+    unsigned short FUN_0054F000();
+
+    // FUNCTION: GAMEMD 0x54F5C0 (decl; reloc) — key-state query.
     bool IsKeyPressed(int key) const;
 
-    // GAMEMD 0x54F720 — byte DoSomething() (__thiscall); flushes head==tail
+    // FUNCTION: GAMEMD 0x54F720 (decl; reloc) — head/tail synchronization.
     void DoSomething();
 };
 
 GG_STATIC_ASSERT(offsetof(InputManagerClass, field_314) == 0x314);
 GG_STATIC_ASSERT(offsetof(InputManagerClass, field_318) == 0x318);
+// The modeled prefix through the last confirmed field is 0x31C bytes; this
+// does not assert the full retail object size.
+GG_STATIC_ASSERT(offsetof(InputManagerClass, field_318) + sizeof(((InputManagerClass*)0)->field_318) == 0x31C);
+
+// GLOBAL: GAMEMD 0x87F770 — shared input manager pointer.
+extern InputManagerClass* DAT_0087F770;
 
 #endif  // GG_MATCH_PLATFORM_INPUT_MANAGER_CLASS_METHODS_H

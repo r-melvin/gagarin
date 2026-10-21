@@ -14,5 +14,5 @@ void __fastcall UI_FocusOnWindow(HWND hWnd)
 {
     ShowWindow(hWnd, 1);            // SW_SHOWNORMAL
     SetForegroundWindow(hWnd);
-    WindowFocusSinkPtr->OnWindowFocused();
+    DAT_0087F770->DoSomething();
 }

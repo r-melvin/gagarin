@@ -23,7 +23,7 @@
 // do/while and while forms rotate the loop the wrong way round.
 void __fastcall UI_EndDialog(void* hWnd)
 {
-    DAT_0087F770->FUN_0054F720();
+    DAT_0087F770->DoSomething();
     FUN_00608070(hWnd);
     DestroyWindow((HWND)hWnd);
 

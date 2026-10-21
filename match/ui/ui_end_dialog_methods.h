@@ -15,6 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../platform/input_manager_class_methods.h"
 
 struct DialogEntry_00622720
 {
@@ -34,18 +35,10 @@ extern int DAT_00B72F48;
 // GLOBAL: GAMEMD 0xB73550 — the main window.
 extern void* DAT_00B73550;
 
-struct InputManager_00622720
-{
-    // FUNCTION: GAMEMD 0x54F720 (decl; reloc)
-    void FUN_0054F720();
-};
-// GLOBAL: GAMEMD 0x87F770 — InputManagerClass::Instance.
-extern InputManager_00622720* DAT_0087F770;
-
 // FUNCTION: GAMEMD 0x608070 (decl; reloc) — detach the window's gadget list.
 void __fastcall FUN_00608070(void* hWnd);
 
-// FUNCTION: GAMEMD 0x622720 — UI::EndDialog.
+// FUNCTION: GAMEMD 0x622720 (decl; reloc) — UI::EndDialog.
 void __fastcall UI_EndDialog(void* hWnd);
 
 #endif  // GG_MATCH_UI_UI_END_DIALOG_METHODS_H

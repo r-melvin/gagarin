@@ -9,19 +9,10 @@
 #define GG_MATCH_UI_UI_FOCUS_METHODS_H
 
 typedef struct HWND__* HWND;
-
-// The object behind the pointer at 0x0087F770, whose method at 0x0054F720 the
-// focus path pokes after raising the window. Declared opaque: only the
-// `MOV ECX,[0x87F770]; CALL 0x54F720` shape matters here.
-struct WindowFocusSink
-{
-    void OnWindowFocused();     // GAMEMD 0x54F720 __thiscall (declared; reloc)
-};
-
-// GLOBAL: GAMEMD 0x0087F770
-extern WindowFocusSink* WindowFocusSinkPtr;
+#include "../platform/input_manager_class_methods.h"
 
 // Bring the game window up and hand it the foreground.
-void __fastcall UI_FocusOnWindow(HWND hWnd);   // GAMEMD 0x622800
+// FUNCTION: GAMEMD 0x622800 (decl; reloc)
+void __fastcall UI_FocusOnWindow(HWND hWnd);
 
 #endif  // GG_MATCH_UI_UI_FOCUS_METHODS_H

@@ -46067,5 +46067,195 @@
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1720",
+  "sym": "?AddBroadcastAddress@WinsockInterfaceClass@@UAEXPBDG@Z",
+  "len": "0x3",
+  "name": "WinsockInterfaceClass::AddBroadcastAddress",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1730",
+  "sym": "?ClearBroadcastAddresses@WinsockInterfaceClass@@UAEXXZ",
+  "len": "0x1",
+  "name": "WinsockInterfaceClass::ClearBroadcastAddresses",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1740",
+  "sym": "?GetNumLocalAddresses@WinsockInterfaceClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "WinsockInterfaceClass::GetNumLocalAddresses",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1750",
+  "sym": "?GetLocalAddress@WinsockInterfaceClass@@UAEPAEH@Z",
+  "len": "0x5",
+  "name": "WinsockInterfaceClass::GetLocalAddress",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1760",
+  "sym": "?Slot20@WinsockInterfaceClass@@UAEXH@Z",
+  "len": "0xd",
+  "name": "WinsockInterfaceClass::Slot20",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1B80",
+  "sym": "?CloseSockets@WinsockInterfaceClass@@UAEXXZ",
+  "len": "0x3b",
+  "name": "WinsockInterfaceClass::CloseSockets",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1C50",
+  "sym": "?StopListening@WinsockInterfaceClass@@UAEXXZ",
+  "len": "0x45",
+  "name": "WinsockInterfaceClass::StopListening",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B1FD0",
+  "sym": "?ComputePacketCrc@WinsockInterfaceClass@@UAEXPAUWinsockBufferType@1@@Z",
+  "len": "0x71",
+  "name": "WinsockInterfaceClass::ComputePacketCrc",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2050",
+  "sym": "?VerifyPacketCrc@WinsockInterfaceClass@@UAE_NPAUWinsockBufferType@1@@Z",
+  "len": "0x90",
+  "name": "WinsockInterfaceClass::VerifyPacketCrc",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B22E0",
+  "sym": "?GetPacket@WinsockInterfaceClass@@UAEHPAXPAH0PAIPAG@Z",
+  "len": "0xca",
+  "name": "WinsockInterfaceClass::GetPacket",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B23B0",
+  "sym": "?SendPacket@WinsockInterfaceClass@@UAEXPAXH0H_NEG@Z",
+  "len": "0x121",
+  "name": "WinsockInterfaceClass::SendPacket",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B24E0",
+  "sym": "?Broadcast@WinsockInterfaceClass@@UAEXPAXH_N@Z",
+  "len": "0xfb",
+  "name": "WinsockInterfaceClass::Broadcast",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B25E0",
+  "sym": "?ClearSocketError@WinsockInterfaceClass@@UAEXI@Z",
+  "len": "0x4f",
+  "name": "WinsockInterfaceClass::ClearSocketError",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2630",
+  "sym": "?SetSocketBuffers@WinsockInterfaceClass@@UAE_NI@Z",
+  "len": "0x95",
+  "name": "WinsockInterfaceClass::SetSocketBuffers",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B26D0",
+  "sym": "?GetHostName@WinsockInterfaceClass@@UAE_NPADH@Z",
+  "len": "0x42",
+  "name": "WinsockInterfaceClass::GetHostName",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2740",
+  "sym": "?Slot13@WinsockInterfaceClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "WinsockInterfaceClass::Slot13",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2750",
+  "sym": "?MessageForSocket@WinsockInterfaceClass@@UAEIH@Z",
+  "len": "0x5",
+  "name": "WinsockInterfaceClass::MessageForSocket",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2760",
+  "sym": "?Init@WinsockInterfaceClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "WinsockInterfaceClass::Init",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
+  "addr": "0x7B2770",
+  "sym": "?MessageHandler@WinsockInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
+  "len": "0x8",
+  "name": "WinsockInterfaceClass::MessageHandler",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
  }
 ]

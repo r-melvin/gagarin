@@ -1,5 +1,35 @@
 # Project status
 
+As of **2026-10-21**, the verified snapshot reports **4,916 matched function
+rows**, **207 partial rows**, **5,123 manifest rows**, **1,055 manifest
+translation units**, and **1,065 tracked C++ files**. Whole-repository matching,
+compile/layout checks, the project object build and 112 tooling tests pass.
+There are zero matched regressions and zero annotation issues across 5,156
+body addresses. Thirty-six saved partial baselines remain unchanged.
+
+The latest batch adds 19 exact ordinary Winsock base methods, including packet
+queues, checksums and socket operations. The shared input declaration also
+replaces two UI call views. All 246 affected prior function bodies and relocation
+offsets remain identical. The new methods and four existing input/UI functions
+pass raw and strict checks across 81 relocation fields. Both seven-slot buffer
+vector tables pass under their recorded weak-default assumptions. Winsock
+constructor/destructor recovery and final-link table selection remain deferred.
+
+Matched lengths total **355,356 bytes**: 24.9% of listed functions and 9.4%
+of listed function lengths. The padding heuristic misses 306 matched entries.
+The diagnostic link reports **3,623 unique unresolved symbols**, **5,502
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native connection hierarchy and manager methods
+
 As of **2026-10-21**, the verified snapshot reports **4,897 matched function
 rows**, **207 partial rows**, **5,104 manifest rows**, **1,054 manifest
 translation units**, and **1,064 tracked C++ files**. Whole-repository matching,
@@ -26,13 +56,6 @@ of listed function lengths. The padding heuristic misses 305 matched entries.
 The diagnostic link reports **3,617 unique unresolved symbols**, **5,488
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: renderer and transport declaration preparation
 
@@ -2558,10 +2581,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,897** | **24.8%** of 19,753 |
-| Sum of matched function lengths | 353,889 bytes | 9.3% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,916** | **24.9%** of 19,753 |
+| Sum of matched function lengths | 355,356 bytes | 9.4% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 207 | 1.0% |
-| Tracked C++ files under `match/` | 1,064 | |
+| Tracked C++ files under `match/` | 1,065 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2581,7 +2604,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 305 matched entries. Its candidate count is therefore
+listed entries, including 306 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
