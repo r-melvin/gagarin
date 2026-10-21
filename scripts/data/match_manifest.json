@@ -2026,21 +2026,21 @@
  },
  {
   "tu": "match/combat/particle_system_class.cpp",
-  "addr": "0x62E380",
-  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAUParticleClass@@ABUCoordStruct@@0@Z",
-  "len": "0xAB",
-  "name": "SpawnParticle(const CoordStruct&, const CoordStruct&)",
+  "addr": "0x62e380",
+  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@ABUCoordStruct@@0@Z",
+  "len": "0xab",
+  "name": "ParticleSystemClass::SpawnParticle",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/particle_system_class.cpp",
-  "addr": "0x62E430",
-  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAUParticleClass@@PAVParticleTypeClass@@ABUCoordStruct@@@Z",
+  "addr": "0x62e430",
+  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@PAVParticleTypeClass@@ABUCoordStruct@@@Z",
   "len": "0x87",
-  "name": "SpawnParticle(ParticleTypeClass*, const CoordStruct&)",
+  "name": "ParticleSystemClass::SpawnParticle",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/rad_beam_allocate_methods.cpp",
@@ -13116,13 +13116,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/type_class_findoralloc_methods.cpp",
+  "tu": "match/combat/particles/particle_type_factories.cpp",
   "addr": "0x644890",
-  "sym": "?FindOrAllocate@ParticleSystemTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@ParticleSystemTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
   "name": "ParticleSystemTypeClass::FindOrAllocate",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/type_class_findoralloc_methods.cpp",
@@ -13170,13 +13170,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/type_find_or_allocate_family_methods.cpp",
-  "addr": "0x00645820",
-  "sym": "?FindOrAllocate@TypeClass_00645820@@SIPAU1@PBD@Z",
+  "tu": "match/combat/particles/particle_type_factories.cpp",
+  "addr": "0x645820",
+  "sym": "?FindOrAllocate@ParticleTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
-  "name": "TypeClass_00645820::FindOrAllocate",
+  "name": "ParticleTypeClass::FindOrAllocate",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/type_find_or_allocate_family_methods.cpp",
@@ -46563,5 +46563,212 @@
   "name": "UDPInterfaceClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x6440A0",
+  "sym": "??0ParticleSystemTypeClass@@QAE@PBD@Z",
+  "len": "0x17c",
+  "name": "ParticleSystemTypeClass::ParticleSystemTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x6442D0",
+  "sym": "?ReadINI@ParticleSystemTypeClass@@UAE_NPAVParticleIniView@@@Z",
+  "len": "0x35b",
+  "name": "ParticleSystemTypeClass::ReadINI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644700",
+  "sym": "?ComputeCRC@ParticleSystemTypeClass@@UAEXAAVParticleCrcView@@@Z",
+  "len": "0x9f",
+  "name": "ParticleSystemTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x6447A0",
+  "sym": "?GetClassID@ParticleSystemTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "ParticleSystemTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x6447E0",
+  "sym": "?Load@ParticleSystemTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x45",
+  "name": "ParticleSystemTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644830",
+  "sym": "?Save@ParticleSystemTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x19",
+  "name": "ParticleSystemTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644920",
+  "sym": "?Size@ParticleSystemTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleSystemTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644930",
+  "sym": "?WhatAmI@ParticleSystemTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleSystemTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644940",
+  "sym": "?vf_32@ParticleSystemTypeClass@@UAE_NHH@Z",
+  "len": "0x5",
+  "name": "ParticleSystemTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644950",
+  "sym": "?vf_35@ParticleSystemTypeClass@@UAEHH@Z",
+  "len": "0x5",
+  "name": "ParticleSystemTypeClass::vf_35",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_system_type_class.cpp",
+  "addr": "0x644960",
+  "sym": "??_GParticleSystemTypeClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "ParticleSystemTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x6454E0",
+  "sym": "?ComputeCRC@ParticleTypeClass@@UAEXAAVParticleCrcView@@@Z",
+  "len": "0x136",
+  "name": "ParticleTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645620",
+  "sym": "?GetClassID@ParticleTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "ParticleTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645660",
+  "sym": "?Load@ParticleTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x134",
+  "name": "ParticleTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x6457A0",
+  "sym": "?Save@ParticleTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x71",
+  "name": "ParticleTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x6458B0",
+  "sym": "?PointerExpired@ParticleTypeClass@@UAEXPAX_N@Z",
+  "len": "0x1b",
+  "name": "ParticleTypeClass::PointerExpired",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645910",
+  "sym": "?Size@ParticleTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645920",
+  "sym": "?WhatAmI@ParticleTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645930",
+  "sym": "?vf_32@ParticleTypeClass@@UAE_NHH@Z",
+  "len": "0x5",
+  "name": "ParticleTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645940",
+  "sym": "?vf_35@ParticleTypeClass@@UAEHH@Z",
+  "len": "0x5",
+  "name": "ParticleTypeClass::vf_35",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "addr": "0x645950",
+  "sym": "??_GParticleTypeClass@@UAEPAXI@Z",
+  "len": "0x118",
+  "name": "ParticleTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "sym": "??0ParticleTypeClass@@QAE@PBD@Z",
+  "addr": "0x644BE0",
+  "len": "0x1e4",
+  "name": "ParticleTypeClass::ParticleTypeClass(const char*)",
+  "status": "partial",
+  "pct": 96.6
+ },
+ {
+  "tu": "match/combat/particles/particle_type_class.cpp",
+  "sym": "?ReadINI@ParticleTypeClass@@UAE_NPAVParticleIniView@@@Z",
+  "addr": "0x644F50",
+  "len": "0x4d3",
+  "name": "ParticleTypeClass::ReadINI(ParticleIniView*)",
+  "status": "partial",
+  "pct": 22.4
  }
 ]

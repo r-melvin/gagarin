@@ -7,13 +7,10 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x62E380  ParticleSystemClass::SpawnParticle(coord,coord) (__thiscall)
 //   FUNCTION: GAMEMD 0x62E430  ParticleSystemClass::SpawnParticle(type,coord)  (__thiscall)
-//   FUNCTION: GAMEMD 0x62B5E0  ParticleClass::ParticleClass    (referenced; matched elsewhere)
+//   FUNCTION: GAMEMD 0x62B5E0  ParticleClass::ParticleClass    (declared call target; reconstruction remains capped elsewhere)
 
 #include "particle_system_class.h"
-
-// ParticleTypeClass::Array.Items — global pointer-to-array of ParticleTypeClass*
-// at GAMEMD 0x00A83D9C (mov ecx,[0xA83D9C]; mov edx,[ecx+idx*4]). Reloc-normalised.
-extern ParticleTypeClass** ParticleTypeArrayItems;
+#include "particles/particle_type_class.h"
 
 // A static all-zero CoordStruct at GAMEMD 0x00AC4A58, passed as the second
 // coordinate by the (type, coord) overload (push 0xAC4A58). Reloc-normalised.
@@ -31,7 +28,7 @@ ParticleClass* ParticleSystemClass::SpawnParticle(const CoordStruct& coords1,
     }
 
     particle = new ParticleClass(
-        ParticleTypeArrayItems[this->Type->HoldsWhat],
+        ParticleTypeArray.Items[this->Type->HoldsWhat],
         coords1, coords2, this);
 
     if (particle) {

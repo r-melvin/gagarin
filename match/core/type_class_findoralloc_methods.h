@@ -23,6 +23,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
+#include "../combat/particles/particle_system_type_class.h"
 
 // The constructors are declared `throw()`. Retail's allocate path has no SEH
 // frame at all, and `new T(id)` with a potentially-throwing constructor makes
@@ -50,24 +51,6 @@ GG_STATIC_ASSERT(sizeof(AnimTypeClass) == 0x378);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeClassArray;
-
-// ---------------------------------------------------------------------------
-// ParticleSystemTypeClass — GAMEMD 0x644890, sizeof 0x310, ctor GAMEMD 0x6440A0
-// ---------------------------------------------------------------------------
-struct ParticleSystemTypeClass
-{
-    char _pad00[0x24];              // +0x0000  AbstractClass prefix
-    char ID[0x310 - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
-
-    ParticleSystemTypeClass(const char* id) throw();   // GAMEMD 0x6440A0 (declared; reloc)
-
-    static ParticleSystemTypeClass* __fastcall FindOrAllocate(const char* id);   // GAMEMD 0x644890
-};
-GG_STATIC_ASSERT(offsetof(ParticleSystemTypeClass, ID) == 0x24);
-GG_STATIC_ASSERT(sizeof(ParticleSystemTypeClass) == 0x310);
-
-// GLOBAL: GAMEMD 0xA83D68 — ParticleSystemTypeClass::Array.
-extern DynamicVectorClassLayout ParticleSystemTypeClassArray;
 
 // ---------------------------------------------------------------------------
 // TerrainTypeClass — GAMEMD 0x71E2A0, sizeof 0x2BC, ctor GAMEMD 0x71DA80

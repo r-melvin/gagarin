@@ -1,5 +1,44 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **4,971 matched function
+rows**, **209 partial rows**, **5,180 manifest rows**, **1,064 manifest
+translation units**, and **1,074 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 112 tooling tests
+pass. There are zero annotation issues across 5,213 body addresses.
+
+The latest batch adds 21 matched native methods for `ParticleSystemTypeClass`
+and `ParticleTypeClass`. Two factories move to their native classes, and two
+existing spawn methods retain their matches after declaration cleanup. These
+25 functions pass raw and strict checks across 190 relocation fields. Across
+150 affected prior rows, complete emitted sections retain their sizes,
+non-relocation bytes and relocation positions/types. Three rows change
+relocation names; their effective targets are checked in the 25-function set. Two
+capped type bodies remain partial at 96.6% and 22.4%; their complete emitted
+bytes and relocation positions/types are unchanged from the frozen candidate.
+Thirty-six older saved partial baselines are also unchanged.
+
+The type headers share offset-asserted layouts and reuse existing registry and
+type-array storage. The common object-type base remains a partial virtual view;
+this batch does not complete the runtime particle hierarchy. The two 40-slot
+primary tables agree under recorded weak-default assumptions, and six secondary
+tables are checked directly. Final-link selection remains unproved.
+
+The 4,971 matches represent 25.2% of 19,753 listed functions. Matched body
+lengths total **366,508 bytes**, or 9.7% of 3,797,269 listed function bytes.
+The padding heuristic misses 310 matched entries.
+The diagnostic link reports **3,700 unique unresolved symbols**, **5,681
+reference lines**, and zero duplicate definitions. Engine link closure remains
+unfinished; per-function checks do not establish whole-executable identity.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native Winsock and UDP lifetime
+
 As of **2026-10-21**, the verified snapshot reports **4,950 matched function
 rows**, **207 partial rows**, **5,157 manifest rows**, **1,061 manifest
 translation units**, and **1,071 tracked C++ files**. Whole-repository matching,
@@ -13,8 +52,9 @@ native C++. Each ordinary function has one out-of-line definition; `/Ob2` in
 the two lifetime translation units reproduces the retail inline copies. No asm,
 forced callers or emission shims are used. All six new functions pass raw and
 strict checks across 43 relocation fields without weak defaults. The emitted
-base and UDP tables and three vector tables agree under recorded weak-default
-assumptions; these scoped checks do not prove final-link selection. The existing
+base and three vector tables agree under recorded weak-default assumptions.
+The UDP table check also uses the capped slot-16 address binding described below;
+these scoped checks do not prove final-link selection. The existing
 IPX deleting-wrapper call now uses the canonical base destructor declaration;
 native IPX wrapper recovery remains deferred.
 UDP table slot 16 uses an explicit address binding to the capped MessageHandler
@@ -33,13 +73,6 @@ of listed function lengths. The padding heuristic misses 310 matched entries.
 The diagnostic link reports **3,628 unique unresolved symbols**, **5,546
 reference lines**, and zero duplicate definitions. Engine link closure remains
 unfinished; per-function checks do not establish whole-executable identity.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native IPX manager lifetime and adapter formatting
 
@@ -2715,10 +2748,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,950** | **25.1%** of 19,753 |
-| Sum of matched function lengths | 363,681 bytes | 9.6% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 207 | 1.0% |
-| Tracked C++ files under `match/` | 1,071 | |
+| Functions matched at 100% | **4,971** | **25.2%** of 19,753 |
+| Sum of matched function lengths | 366,508 bytes | 9.7% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 209 | 1.1% |
+| Tracked C++ files under `match/` | 1,074 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

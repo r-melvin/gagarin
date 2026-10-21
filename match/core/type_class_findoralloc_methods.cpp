@@ -41,23 +41,6 @@ AnimTypeClass* __fastcall AnimTypeClass::FindOrAllocate(const char* id)
     return new AnimTypeClass(id);
 }
 
-// FUNCTION: GAMEMD 0x644890  ParticleSystemTypeClass::FindOrAllocate (__fastcall)
-ParticleSystemTypeClass* __fastcall ParticleSystemTypeClass::FindOrAllocate(const char* id)
-{
-    if (_stricmp("<none>", id) == 0)
-        return 0;
-
-    if (_stricmp("none", id) == 0)
-        return 0;
-
-    for (int i = 0; i < ParticleSystemTypeClassArray.Count; i++) {
-        if (_stricmp(((ParticleSystemTypeClass**)ParticleSystemTypeClassArray.Items)[i]->ID, id) == 0)
-            return ((ParticleSystemTypeClass**)ParticleSystemTypeClassArray.Items)[i];
-    }
-
-    return new ParticleSystemTypeClass(id);
-}
-
 // FUNCTION: GAMEMD 0x71E2A0  TerrainTypeClass::FindOrAllocate (__fastcall)
 TerrainTypeClass* __fastcall TerrainTypeClass::FindOrAllocate(const char* id)
 {

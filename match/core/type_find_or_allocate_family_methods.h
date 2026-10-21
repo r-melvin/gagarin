@@ -6,7 +6,7 @@
 //   v1.001 via the local Ghidra CLI (representative 0x512680). The
 //   AbstractTypeClass spine is the repo's own oracle-confirmed layout.
 //
-// A 10-member family of `<T>TypeClass::FindOrAllocate(const char* id)`
+// A family of `<T>TypeClass::FindOrAllocate(const char* id)`
 // lookup-or-create factories: 131 bytes each, __fastcall (the id arrives in
 // ECX), one shared `return 0` tail reached from three places.
 //
@@ -16,7 +16,7 @@
 // things: the global DynamicVectorClass holding the type array, the class's
 // sizeof (the `PUSH imm32` before operator new), the constructor address, and
 // nothing else — the "<none>"/"none" literals, the ID offset 0x24, the
-// _strcmpi target 0x7C8D20 and operator new 0x7C8E17 are shared by all ten.
+// _strcmpi target 0x7C8D20 and operator new 0x7C8E17 are shared by these instantiations.
 #ifndef GG_MATCH_CORE_TYPE_FIND_OR_ALLOCATE_FAMILY_METHODS_H
 #define GG_MATCH_CORE_TYPE_FIND_OR_ALLOCATE_FAMILY_METHODS_H
 
@@ -38,7 +38,7 @@ int __cdecl gg_strcmpi(const char* a, const char* b);
         static NAME* __fastcall FindOrAllocate(const char* id);               \
         /* The type's own `(const char*)` constructor, __thiscall, returning  \
            `this` in EAX. Declared without a body so the call is a reloc; it  \
-           is matched in its own TU. */                                       \
+           is not supplied by this family. */                                       \
         NAME* Construct(const char* id);                                      \
         char unknown_98[(SIZE) - 0x98];   /* remaining Rules fields (P2) */   \
     };                                                                        \
@@ -80,7 +80,6 @@ int __cdecl gg_strcmpi(const char* a, const char* b);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_00512680, 0x1B0);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_00524CB0, 0xED0);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_005FEC70, 0x2BC);
-GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_00645820, 0x318);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_006B5910, 0x2A4);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_006CEEF0, 0x100);
 GG_TYPE_FIND_OR_ALLOCATE_DECL(TypeClass_006E85F0, 0xD4);
