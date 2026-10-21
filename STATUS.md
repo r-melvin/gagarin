@@ -1,5 +1,38 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,735 fully matched
+functions**, **174 partial rows**, **4,909 manifest rows**, **1,019 manifest
+translation units**, and **1,029 tracked C++ files**. Whole-repository regression,
+compile/layout checks, the project build and 94 tooling tests pass with zero
+matched regressions. All project objects are current. The annotation audit
+reports 4,942 body addresses and zero issues. Sixteen saved partial baselines
+are unchanged.
+
+The latest batch adds 56 exact ordinary methods across Z-remap, alpha translation
+and translucent Blitter clusters. All 21 relocation fields in those spans resolve
+to retail targets. Four frozen bodies remain partial: `0x494D90` at 97.6%,
+`0x494B60` at 69.3%, `0x494C40` at 68.4%, and `0x494690` at 60.8%, all by
+instruction-position diagnostics. None is claimed byte-exact or retried.
+Harness destructors and tables are excluded from the import claims. The
+translucent TU naturally emits additional compiler COMDATs; these are not
+claimed as matches. Alpha-pool lifetime code remains deferred. No assembly or
+artificial emission probes were added.
+
+Matched lengths total **333,234 bytes**: 24.0% of listed functions and 8.8%
+of listed function lengths. The padding heuristic misses 300 matched entries.
+The diagnostic link reports **3,538 unique unresolved symbols**, **5,283
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: Lucent methods and Vox playback lookup
+
 As of **2026-10-21**, the latest verified snapshot has **4,679 fully matched
 functions**, **170 partial rows**, **4,849 manifest rows**, **1,016 manifest
 translation units**, and **1,026 tracked C++ files**. Whole-repository regression
@@ -24,13 +57,6 @@ of listed function lengths. The padding heuristic misses 300 matched entries.
 The diagnostic link reports **3,537 unique unresolved symbols**, **5,275
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: Native Blitter wrappers and verification hardening
 
@@ -2357,10 +2383,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,679** | **23.7%** of 19,753 |
-| Sum of matched function lengths | 329,559 bytes | 8.7% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 170 | 0.9% |
-| Tracked C++ files under `match/` | 1,026 | |
+| Functions matched at 100% | **4,735** | **24.0%** of 19,753 |
+| Sum of matched function lengths | 333,234 bytes | 8.8% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 174 | 0.9% |
+| Tracked C++ files under `match/` | 1,029 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

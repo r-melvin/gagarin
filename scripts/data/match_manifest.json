@@ -43649,5 +43649,553 @@
   "pct": 100,
   "tu": "match/render/blitters/b_lucent75_blit.cpp",
   "status": "matched"
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x491590",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x47",
+  "name": "BlitTransZRemapXlat<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x4915E0",
+  "sym": "?BlitMove@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x491610",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x491640",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492590",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x4B",
+  "name": "BlitTransZRemapXlat<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x4925E0",
+  "sym": "?BlitMove@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492610",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492640",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlat<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492C00",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x8C",
+  "name": "BlitTransZRemapXlatZRead<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492C90",
+  "sym": "?BlitMove@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492CC0",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZRead<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x492CF0",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlatZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x493710",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x8D",
+  "name": "BlitTransZRemapXlatZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x4937A0",
+  "sym": "?BlitMove@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x4937D0",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x493800",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x493F30",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xBA",
+  "name": "BlitTransZRemapXlatAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x493FF0",
+  "sym": "?BlitMove@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494020",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494050",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494D90",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xF8",
+  "name": "BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitCopy",
+  "status": "partial",
+  "pct": 97.6,
+  "metric": "instruction-position",
+  "note": "Frozen capped body:83/85 instruction positions,233/248 raw bytes identical; relocation/load ordering differs. Not byte-exact."
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494E90",
+  "sym": "?BlitMove@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494EC0",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x494EF0",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x495A50",
+  "sym": "?BlitCopy@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xDA",
+  "name": "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x495B30",
+  "sym": "?BlitMove@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x495B60",
+  "sym": "?BlitCopyTint@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_zremap.cpp",
+  "addr": "0x495B90",
+  "sym": "?BlitMoveTint@?$BlitTransZRemapXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransZRemapXlatAlphaZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x493df0",
+  "sym": "?BlitCopy@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xa7",
+  "name": "BlitTransXlatAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x493ea0",
+  "sym": "?BlitMove@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x493ed0",
+  "sym": "?BlitCopyTint@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x493f00",
+  "sym": "?BlitMoveTint@?$BlitTransXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494490",
+  "sym": "?BlitCopy@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x62",
+  "name": "BlitTransXlatWriteAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494500",
+  "sym": "?BlitMove@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatWriteAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494530",
+  "sym": "?BlitCopyTint@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatWriteAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494560",
+  "sym": "?BlitMoveTint@?$BlitTransXlatWriteAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatWriteAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494590",
+  "sym": "?BlitCopy@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x6b",
+  "name": "BlitTransXlatMultWriteAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494600",
+  "sym": "?BlitMove@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatMultWriteAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494630",
+  "sym": "?BlitCopyTint@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatMultWriteAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494660",
+  "sym": "?BlitMoveTint@?$BlitTransXlatMultWriteAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatMultWriteAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494b60",
+  "sym": "?BlitCopy@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xda",
+  "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitCopy",
+  "status": "partial",
+  "pct": 69.3,
+  "metric": "instruction-position",
+  "note": "Frozen M2 instruction-position diagnostic; not byte-exact. Body preserved; matching search capped."
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494c40",
+  "sym": "?BlitCopyTint@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0xdf",
+  "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitCopyTint",
+  "status": "partial",
+  "pct": 68.4,
+  "metric": "instruction-position",
+  "note": "Frozen M2 instruction-position diagnostic; not byte-exact. Body preserved; matching search capped."
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494d20",
+  "sym": "?BlitMove@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x494d50",
+  "sym": "?BlitMoveTint@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x32",
+  "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x4958d0",
+  "sym": "?BlitCopy@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0xe1",
+  "name": "BlitTransXlatAlphaZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x4959c0",
+  "sym": "?BlitMove@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlphaZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x4959f0",
+  "sym": "?BlitCopyTint@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlphaZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_xlatalpha.cpp",
+  "addr": "0x495a20",
+  "sym": "?BlitMoveTint@?$BlitTransXlatAlphaZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatAlphaZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494690",
+  "sym": "?BlitCopy@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x1f5",
+  "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitCopy",
+  "status": "partial",
+  "pct": 60.8,
+  "metric": "instruction-position",
+  "note": "Frozen capped body:87/143 instruction positions (60.8%);335/501 raw bytes identical. Relocation positions differ; not byte-exact."
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494890",
+  "sym": "?BlitMove@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x4948c0",
+  "sym": "?BlitCopyTint@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x4948f0",
+  "sym": "?BlitMoveTint@?$BlitTranslucentWriteAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494920",
+  "sym": "?BlitCopy@?$BlitTranslucent50NonzeroAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x83",
+  "name": "BlitTranslucent50NonzeroAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x4949b0",
+  "sym": "?BlitMove@?$BlitTranslucent50NonzeroAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50NonzeroAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x4949e0",
+  "sym": "?BlitCopyTint@?$BlitTranslucent50NonzeroAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50NonzeroAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494a10",
+  "sym": "?BlitMoveTint@?$BlitTranslucent50NonzeroAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50NonzeroAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494a40",
+  "sym": "?BlitCopy@?$BlitTranslucent50ZeroAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x83",
+  "name": "BlitTranslucent50ZeroAlpha<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494ad0",
+  "sym": "?BlitMove@?$BlitTranslucent50ZeroAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50ZeroAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494b00",
+  "sym": "?BlitCopyTint@?$BlitTranslucent50ZeroAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50ZeroAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_translucent.cpp",
+  "addr": "0x494b30",
+  "sym": "?BlitMoveTint@?$BlitTranslucent50ZeroAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTranslucent50ZeroAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
  }
 ]
