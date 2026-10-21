@@ -4,7 +4,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/droppod_locomotion_class.h"
 #include "locomotion_class_load_methods.h"
-#include "locomotion_class_query_interface_methods.h"
+#include "loco_interfaces.h"
 
 // The incoming interface is the complete object's +4 subobject. Reuse the
 // shared complete-object layout instead of defining another object prefix.
@@ -60,7 +60,7 @@ GG_STATIC_ASSERT(offsetof(IUnknownReleaseVtable_004B6240, QueryInterface) == 0x0
 GG_STATIC_ASSERT(offsetof(IUnknownReleaseVtable_004B6240, AddRef) == 0x04);
 GG_STATIC_ASSERT(offsetof(IUnknownReleaseVtable_004B6240, Release) == 0x08);
 GG_STATIC_ASSERT(sizeof(IUnknownReleaseVtable_004B6240) == 0x0C);
-GG_STATIC_ASSERT(sizeof(ILocomotion_0055A9B0) == 4);
+GG_STATIC_ASSERT(sizeof(ILocomotion) == 4);
 
 // VTABLE: GAMEMD 0x007E8344 — slot 5 (+0x14) points to 0x004B6240.
 GG_STATIC_ASSERT(offsetof(DropPodPersistVtable, Load) == 0x14);
@@ -109,9 +109,6 @@ long __stdcall DropPodLocomotionClass::GetClassID(
 }
 
 // LIBRARY: OLE32!OleLoadFromStream, imported at GAMEMD IAT 0x007E15F8.
-extern "C" __declspec(dllimport) long __stdcall OleLoadFromStream(
-    IStream_0055AAC0* stream, const Guid_0055A9B0* iid, void** object);
-
 // FUNCTION: GAMEMD 0x004B6240 — IPersistStream::Load, slot 5.
 long __stdcall DropPodLocomotionClass::Load(IStream_0055AAC0* stream)
 {
@@ -128,10 +125,10 @@ long __stdcall DropPodLocomotionClass::Load(IStream_0055AAC0* stream)
         stream->Read(&hasPiggyback, 1, 0);
         if (hasPiggyback != 0) {
             if (this->Piggybackee != 0) {
-                ((ILocomotion_0055A9B0*)this->Piggybackee)->Release();
+                ((ILocomotion*)this->Piggybackee)->Release();
             }
             this->Piggybackee = 0;
-            result = OleLoadFromStream(stream, &IID_ILocomotion_007ED358,
+            result = OleLoadFromStream((IStream*)stream, *(const IID*)&IID_ILocomotion,
                                        (void**)&this->Piggybackee);
         }
     }

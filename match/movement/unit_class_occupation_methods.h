@@ -17,6 +17,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/foot_class.h"   // FootClass spine + CoordStruct + Point2D + TransitionTimer + CellStruct
+#include "loco_interfaces.h"
 
 // CellClass — only the two occupation bitfields + the cell Flags dword that the
 // (un)mark methods touch are modelled. SubOccupation bit 0x20 = "Units".
@@ -45,18 +46,8 @@ struct MapClass
 // Bridge cell height delta added to the floor height before the on-bridge test.
 #define BridgeCellHeight (*reinterpret_cast<int*>(0x00B1D0AC))
 
-// ILocomotion : IUnknown — only Is_Moving (vtable slot 4 / byte offset 0x10) is
-// invoked. The leading four slots reproduce IUnknown (QI/AddRef/Release) plus
-// Link_To_Object so Is_Moving lands at exactly +0x10.
-struct ILocomotion
-{
-    virtual int  __stdcall gg_QueryInterface() = 0;   // +0x00
-    virtual int  __stdcall gg_AddRef() = 0;            // +0x04
-    virtual int  __stdcall gg_Release() = 0;           // +0x08
-    virtual int  __stdcall gg_LinkToObject() = 0;      // +0x0C
-    virtual bool __stdcall Is_Moving() = 0;            // +0x10
-};
-
+// ILocomotion is the canonical COM interface from loco_interfaces.h; slot 4
+// is IsMoving, which this method dispatches through the FootClass member.
 // _com_ptr_t<ILocomotion>::operator-> shape: NULL-check that raises E_POINTER,
 // then returns the (reloaded) interface pointer. Defined inline so it folds into
 // the call site exactly as retail's #import-generated smart pointer does.

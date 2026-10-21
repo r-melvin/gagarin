@@ -31,7 +31,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
-struct RocketLocomotionClass : LocomotionClass
+struct RocketLocomotionClass : LocomotionLayoutView_0055A6C0
 {
     CoordStruct  Destination;     // +0x18 ctor `LEA EAX,[ESI+0x18]` @0x00661ECE
                                   //       then X @0x00661ED1, Y @0x00661EDA,

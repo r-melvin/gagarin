@@ -30,7 +30,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
-struct HoverLocomotionClass : LocomotionClass
+struct HoverLocomotionClass : LocomotionLayoutView_0055A6C0
 {
     CoordStruct Destination;      // +0x18 ctor `LEA EAX,[ESI+0x18]` @0x00513C2F
                                   //       then X @0x00513C34, Y @0x00513C3D,

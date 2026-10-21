@@ -21,7 +21,9 @@
 //     two locators - base offsets 0 (IPersistStream) and 4 (ILocomotion):
 //       FlyLocomotionClass, HoverLocomotionClass, RocketLocomotionClass,
 //       MechLocomotionClass, TunnelLocomotionClass.
-//       -> derive LocomotionClass; their own data starts at 0x18.
+//       RTTI identifies LocomotionClass at base offset 0; their own data starts
+//       at 0x18. The legacy layout mirrors below use a uniquely named
+//       address-local storage view for that prefix.
 //
 //     three locators - base offsets 0, 4 AND 0x18 (IPiggyback):
 //       DriveLocomotionClass   (0x007FFEB0 / 0x007FFDE8 / 0x007FFDD0)
@@ -33,7 +35,8 @@
 //       -> 0x18 is a THIRD VPTR, and their own data starts at 0x1C. Each of the
 //          six constructors stores it: e.g. `MOV DWORD PTR [ESI+0x18],0x7E7E8C`
 //          @0x004AF5CF in DriveLocomotionClass::DriveLocomotionClass.
-//       These six derive LocomotionPiggybackBase below, NOT LocomotionClass.
+//       RTTI identifies LocomotionPiggybackBase as their storage base at +0x18;
+//       the legacy layout mirrors below use that address-local view.
 //
 //   INTERFACE-RELATIVE READS. Almost every method in the family is an
 //   __stdcall on the ILocomotion interface at base offset 4, so a body reading
@@ -147,7 +150,7 @@ GG_STATIC_ASSERT(sizeof(FacingClass)                  == 0x18);
 // ---------------------------------------------------------------------------
 #ifndef GG_MATCH_LAYOUT_LOCOMOTIONCLASS_DEFINED
 #define GG_MATCH_LAYOUT_LOCOMOTIONCLASS_DEFINED
-struct LocomotionClass
+struct LocomotionLayoutView_0055A6C0
 {
     void* PersistVptr;      // +0x00  IPersistStream; ctor @0x0055A6D5 = 0x7EAEC0
     void* LocomotorVptr;    // +0x04  ILocomotion;    ctor @0x0055A6DB = 0x7EADF4
@@ -164,13 +167,13 @@ struct LocomotionClass
     char  unknown_12[2];    // +0x12  never written, never read - alignment
     int   RefCount;         // +0x14  ctor @0x0055A6D2 (= 0)
 };
-GG_STATIC_ASSERT(offsetof(LocomotionClass, LocomotorVptr) == 0x04);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Owner)         == 0x08);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, LinkedTo)      == 0x0C);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Powered)       == 0x10);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Dirty)         == 0x11);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, RefCount)      == 0x14);
-GG_STATIC_ASSERT(sizeof(LocomotionClass)                  == 0x18);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, LocomotorVptr) == 0x04);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, Owner)         == 0x08);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, LinkedTo)      == 0x0C);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, Powered)       == 0x10);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, Dirty)         == 0x11);
+GG_STATIC_ASSERT(offsetof(LocomotionLayoutView_0055A6C0, RefCount)      == 0x14);
+GG_STATIC_ASSERT(sizeof(LocomotionLayoutView_0055A6C0)                  == 0x18);
 #endif
 
 // ---------------------------------------------------------------------------
@@ -182,7 +185,7 @@ GG_STATIC_ASSERT(sizeof(LocomotionClass)                  == 0x18);
 // ---------------------------------------------------------------------------
 #ifndef GG_MATCH_LAYOUT_LOCOMOTIONPIGGYBACKBASE_DEFINED
 #define GG_MATCH_LAYOUT_LOCOMOTIONPIGGYBACKBASE_DEFINED
-struct LocomotionPiggybackBase : LocomotionClass
+struct LocomotionPiggybackBase : LocomotionLayoutView_0055A6C0
 {
     void* PiggybackVptr;    // +0x18  IPiggyback; stored by each of the six
                             //        constructors - Drive @0x004AF5CF

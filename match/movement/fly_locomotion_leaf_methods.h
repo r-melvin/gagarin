@@ -204,9 +204,6 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass_004CFDD0, RandomNumber) == 0x218);
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
 extern ScenarioClass_004CFDD0* Scenario_00A8B230;
 
-// FUNCTION: GAMEMD 0x55A710 (decl; reloc) — LocomotionClass::Link_To.
-GgHRESULT __stdcall LocomotionClassLinkTo_0055A710(FlyLocoIface* self,
-                                                   Foot_004CCA20* obj);
 // The base whose destructor the derived one tail-jumps to. A layout-
 // compatible stand-in, cast onto `this`, is what emits the bare jump.
 struct LocoBase_0055A6F0

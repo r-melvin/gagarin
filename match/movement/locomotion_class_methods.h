@@ -3,13 +3,15 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
 //   cross-checked against YRpp LocomotionClass.h (consult-only).
 //
-// LocomotionClass is a COM object exposing IPersistStream + ILocomotion. Its
-// IUnknown/IPersistStream members use the __stdcall ABI: the `this` pointer is
+// SaveView_0055AA60 is an address-local partial view of the IPersistStream +
+// ILocomotion prefix used by the saved-function candidate. It is not a claim
+// about a complete object's identity or size. The modeled IUnknown and
+// IPersistStream members use the __stdcall ABI: the `this` pointer is
 // pushed on the stack as the implicit first parameter (NOT in ECX), exactly as
 // the disassembly shows ([ESP+0xc] / [ESP+8]).
 //
-// We model the primary COM vtable shape so the compiler emits the exact
-// vtable-indexed thiscalls the retail code performs:
+// The partial view records the primary COM vtable shape used by the saved
+// method candidate:
 //   * Release's guarded `delete this` -> CALL [vtbl+0x20]  (deleting dtor, slot 8)
 //   * GetSizeMax's Size()             -> CALL [vtbl+0x24]  (slot 9)
 // The first 8 slots are QueryInterface, AddRef, Release, GetClassID, IsDirty,
@@ -44,7 +46,7 @@ struct Gg_ULARGE_INTEGER
     };
 };
 
-struct LocomotionClass
+struct SaveView_0055AA60
 {
     // vptr is implicit at +0x00 (single primary COM vtable).
     char gap_04[0x10];       // +0x04
@@ -52,17 +54,17 @@ struct LocomotionClass
 
     // --- vtable slots 0..9, in COM order ---
     virtual HRESULT __stdcall QueryInterface(Gg_REFIID* iid, void** ppv) = 0;  // 0
-    virtual ULONG   __stdcall AddRef();                                        // 1  *match*
-    virtual ULONG   __stdcall Release();                                       // 2  *match*
+    virtual ULONG   __stdcall AddRef();                                        // 1
+    virtual ULONG   __stdcall Release();                                       // 2
     virtual HRESULT __stdcall GetClassID(void* pClassID) = 0;                  // 3
     virtual HRESULT __stdcall IsDirty() = 0;                                   // 4
     virtual HRESULT __stdcall Load(Gg_IStream* pStm) = 0;                      // 5
     virtual HRESULT __stdcall Save(Gg_IStream* pStm, LONG fClear) = 0;         // 6
-    virtual HRESULT __stdcall GetSizeMax(Gg_ULARGE_INTEGER* pcbSize);          // 7  *match*
-    virtual ~LocomotionClass();                                               // 8
+    virtual HRESULT __stdcall GetSizeMax(Gg_ULARGE_INTEGER* pcbSize);          // 7
+    virtual ~SaveView_0055AA60();                                               // 8
     virtual int Size() = 0;                                                    // 9 (__thiscall)
 };
 
-GG_STATIC_ASSERT(offsetof(LocomotionClass, RefCount) == 0x14);
+GG_STATIC_ASSERT(offsetof(SaveView_0055AA60, RefCount) == 0x14);
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_CLASS_METHODS_H

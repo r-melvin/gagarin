@@ -103,52 +103,12 @@ struct CoordStruct
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 #endif
 
-// ---------------------------------------------------------------------------
-// LocomotionClass - the shared COM spine (sizeof = 0x18).
-//
-// Oracle: the base constructor 0x0055A6C0, whose whole body is eight
-// instructions and writes every member:
-//     0055a6c6  MOV DWORD PTR [EAX+0x8],ECX    (ECX = 0)
-//     0055a6c9  MOV DWORD PTR [EAX+0xC],ECX
-//     0055a6cc  MOV BYTE  PTR [EAX+0x10],DL    (DL = 1)
-//     0055a6cf  MOV BYTE  PTR [EAX+0x11],DL
-//     0055a6d2  MOV DWORD PTR [EAX+0x14],ECX
-//     0055a6d5  MOV DWORD PTR [EAX],0x7EAEC0
-//     0055a6db  MOV DWORD PTR [EAX+0x4],0x7EADF4
-// sizeof is 0x18 because FlyLocomotionClass's own first field sits at 0x18
-// (`MOV BYTE PTR [ESI+0x18],AL` @0x004CC9AD) and the last base field is the
-// dword at 0x14. LocomotionClass has its own two RTTI locators, base offsets
-// 0 (vtable 0x007EAEC0) and 4 (vtable 0x007EADF4).
-// ---------------------------------------------------------------------------
-#ifndef GG_MATCH_LAYOUT_LOCOMOTIONCLASS_DEFINED
-#define GG_MATCH_LAYOUT_LOCOMOTIONCLASS_DEFINED
-struct LocomotionClass
-{
-    void* PersistVptr;      // +0x00  IPersistStream; ctor @0x0055A6D5 = 0x7EAEC0
-    void* LocomotorVptr;    // +0x04  ILocomotion;    ctor @0x0055A6DB = 0x7EADF4
-    void* Owner;            // +0x08  FootClass*; ctor @0x0055A6C6 (= 0)
-    void* LinkedTo;         // +0x0C  FootClass*; ctor @0x0055A6C9 (= 0);
-                            //        read as [reg+0xC] object-relative and
-                            //        [reg+0x8] through the locomotor interface
-                            //        throughout the fly cluster
-    char  Powered;          // +0x10  ctor @0x0055A6CC (= 1)
-    char  Dirty;            // +0x11  ctor @0x0055A6CF (= 1)
-    char  unknown_12[2];    // +0x12  never written, never read - alignment
-    int   RefCount;         // +0x14  ctor @0x0055A6D2 (= 0)
-};
-GG_STATIC_ASSERT(offsetof(LocomotionClass, LocomotorVptr) == 0x04);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Owner)         == 0x08);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, LinkedTo)      == 0x0C);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Powered)       == 0x10);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Dirty)         == 0x11);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, RefCount)      == 0x14);
-GG_STATIC_ASSERT(sizeof(LocomotionClass)                  == 0x18);
-#endif
+#include "locomotion_class.h"
 
 // ---------------------------------------------------------------------------
 // FlyLocomotionClass (sizeof = 0x60).
 // ---------------------------------------------------------------------------
-struct FlyLocomotionClass : LocomotionClass
+struct FlyLocomotionClass : LocomotionLayoutView_0055A6C0
 {
     char        AirportBound;     // +0x18 ctor `MOV BYTE [ESI+0x18],AL` @0x004CC9AD (=0);
                                   //       read as a byte @0x004CD9F5, @0x004CE99A, @0x004CE9B5

@@ -6,6 +6,7 @@
 //   for NOP runs ending on a four-byte boundary, not out of the Ghidra
 //   function list, which under-segments this region badly.
 #include "fly_locomotion_leaf_methods.h"
+#include "loco_base.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E8AC0 — the persist vtable (base offset 0).
@@ -19,7 +20,10 @@
 GgHRESULT __stdcall FlyLocoLinkTo_004CCA20(FlyLocoIface* self,
                                            Foot_004CCA20* obj)
 {
-    GgHRESULT hr = LocomotionClassLinkTo_0055A710(self, obj);
+    LocomotionClass* base = reinterpret_cast<LocomotionClass*>(
+        reinterpret_cast<char*>(self) - sizeof(void*));
+    GgHRESULT hr = base->LocomotionClass::LinkToObject(
+        reinterpret_cast<FootClass*>(obj));
     if (hr == 0) {
         if (obj != 0 && (obj->*obj->Vtbl->At_2C)() == 2 &&
             obj->Type->At_E0D != 0) {

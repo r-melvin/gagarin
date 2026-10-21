@@ -2,12 +2,12 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at each
 //   address below). Slot numbering is the in-tree authoritative ILocomotion
-//   vtable map (docs/decomp_spec/vtable_map_locomotion.md, built from
-//   `ghidra memory read 0x7E7EB0`). Member names cross-checked against YRpp
+//   vtable slots read from the pinned retail image at the concrete tables.
+//   Member names cross-checked against YRpp
 //   LocomotionClass.h (consult-only, no LICENSE; offsets reconfirmed below).
 //
-// This header models LocomotionClass through its **ILocomotion** interface,
-// which is the *second* base (`class LocomotionClass : public IPersistStream,
+// This header models the address-local PowerOffView_0055A910 through its
+// **ILocomotion** interface, which is the *second* base (`class LocomotionClass : public IPersistStream,
 // public ILocomotion`). The `this` an ILocomotion method receives is therefore
 // the ILocomotion subobject — the complete object address **plus 4** — so every
 // offset here is 4 lower than the corresponding YRpp member offset:
@@ -35,7 +35,7 @@
 
 struct FootClass;
 
-struct LocomotionClass
+struct PowerOffView_0055A910
 {
     // --- ILocomotion vtable, slots 0..35 in binary order ---
     // Only the seven implemented below are given real signatures; the rest are
@@ -84,9 +84,9 @@ struct LocomotionClass
     bool       Dirty;        // +0x0D  (complete object +0x11)
 };
 
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Owner)    == 0x04);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, LinkedTo) == 0x08);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Powered)  == 0x0C);
-GG_STATIC_ASSERT(offsetof(LocomotionClass, Dirty)    == 0x0D);
+GG_STATIC_ASSERT(offsetof(PowerOffView_0055A910, Owner)    == 0x04);
+GG_STATIC_ASSERT(offsetof(PowerOffView_0055A910, LinkedTo) == 0x08);
+GG_STATIC_ASSERT(offsetof(PowerOffView_0055A910, Powered)  == 0x0C);
+GG_STATIC_ASSERT(offsetof(PowerOffView_0055A910, Dirty)    == 0x0D);
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_CLASS_ILOCO_METHODS_H

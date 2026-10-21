@@ -8,12 +8,7 @@
 //   InterlockedIncrement/Decrement and leave the returned LONG in EAX.
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/locomotion_class.h"
-
-// FUNCTION: GAMEMD 0x55A950 (decl; reloc)
-extern "C" long __stdcall FUN_0055A950(LocomotionClass* self);
-// FUNCTION: GAMEMD 0x55A970 (decl; reloc)
-extern "C" long __stdcall FUN_0055A970(LocomotionClass* self);
+#include "../movement/loco_base.h"
 
 struct DrivePersistRefcountVtable_004B4CB0
 {
@@ -31,11 +26,11 @@ GG_STATIC_ASSERT(sizeof(DrivePersistRefcountVtable_004B4CB0) == 0xC);
 // FUNCTION: GAMEMD 0x004B4CB0
 long __stdcall FUN_004B4CB0(LocomotionClass* self)
 {
-    return FUN_0055A950(self);
+    return self->LocomotionClass::AddRef();
 }
 
 // FUNCTION: GAMEMD 0x004B4CC0
 long __stdcall FUN_004B4CC0(LocomotionClass* self)
 {
-    return FUN_0055A970(self);
+    return self->LocomotionClass::Release();
 }

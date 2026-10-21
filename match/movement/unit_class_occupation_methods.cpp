@@ -18,7 +18,7 @@
 void UnitClass::APCOpenDoor()
 {
     ILocomotionPtr* loco = reinterpret_cast<ILocomotionPtr*>(&this->Locomotor);
-    if (!(*loco)->Is_Moving() && !this->unknown_bool_6AF)
+    if (!(*loco)->IsMoving() && !this->unknown_bool_6AF)
     {
         reinterpret_cast<DoorTimer*>(&this->UnloadTimer)->Start(
             *reinterpret_cast<double*>(reinterpret_cast<char*>(this->Type) + 0x3C8));

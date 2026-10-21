@@ -4,7 +4,7 @@
 //   cross-checked against YRpp LocomotionClass.h (consult-only).
 //
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x55AA60  LocomotionClass::Save  (__stdcall)
+//   FUNCTION: GAMEMD 0x55AA60  SaveView_0055AA60::Save  (__stdcall)
 
 #include "locomotion_class_save_methods.h"
 
@@ -20,7 +20,7 @@
 // (pStm->EDI, this->ESI). The three prologue setup instructions differ only by
 // that ESI<->EDI choice; every other byte (control flow, the two IStream::Write
 // thiscalls, Size(), the dirty-flag clear, the epilogue) is identical. 92.5%.
-HRESULT __stdcall LocomotionClass::Save(Gg_IStream* pStm, LONG fClearDirty)
+HRESULT __stdcall SaveView_0055AA60::Save(Gg_IStream* pStm, LONG fClearDirty)
 {
     HRESULT hr;
     void* self;

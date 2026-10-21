@@ -1,5 +1,35 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,086 matched function
+rows**, **233 partial rows**, **5,319 manifest rows**, **1,069 manifest
+translation units**, and **1,079 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 112 tooling
+tests pass. There are zero annotation issues across 5,352 body addresses.
+
+The latest batch integrates native `LocomotionClass` base methods and shared
+interface declarations. It adds 22 exact entries and migrates 12 existing exact
+base methods. All 34 pass raw and strict checks across 26 relocation fields.
+Three Drive helpers and three other affected callers also pass raw and strict
+checks across ten additional relocation fields. All 56 affected prior emitted
+sections preserve their sizes, non-relocation bytes and relocation positions/types;
+all seven affected partials retain their scores. No emitted native base vtable
+or completed locomotion hierarchy is claimed.
+
+The 5,086 matches represent 25.7% of 19,753 listed functions. Matched body
+lengths total **376,528 bytes**, or 9.9% of 3,797,269 listed function bytes.
+The padding heuristic misses 314 matched entries. The diagnostic link reports
+**4,140 unique unresolved symbols**, **6,670 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native particle runtime methods
+
 As of **2026-10-22**, the verified snapshot reports **5,064 matched function
 rows**, **233 partial rows**, **5,297 manifest rows**, **1,072 manifest
 translation units**, and **1,082 tracked C++ files**. Whole-repository regression
@@ -26,13 +56,6 @@ lengths total **376,290 bytes**, or 9.9% of 3,797,269 listed function bytes.
 The padding heuristic misses 312 matched entries. The diagnostic link reports
 **4,145 unique unresolved symbols**, **6,677 reference lines**, and zero
 duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native terrain, overlay and smudge methods
 

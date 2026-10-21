@@ -3,7 +3,8 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
 //   cross-checked against YRpp LocomotionClass.h / Interfaces.h (consult-only).
 //
-// LocomotionClass::Save (IPersistStream::Save, __stdcall). It serialises the
+// SaveView_0055AA60::Save (IPersistStream::Save, __stdcall), through an
+// address-local partial view of the COM prefix. It serialises the
 // locomotor to an IStream: first the 4-byte `this` pointer (a swizzle key the
 // Load path remaps), then Size() raw bytes of the object, then — if the caller
 // asked to clear the dirty flag — zeroes the byte at this+0x11.

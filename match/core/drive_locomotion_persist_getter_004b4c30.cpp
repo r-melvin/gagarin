@@ -16,7 +16,7 @@ struct DriveLocomotionPersistVtableView_004B4C30
     void* unknown_04;
     void* unknown_08;
     void* unknown_0C;
-    long (__stdcall *IsDirty)(LocomotionClass*);
+    long (__stdcall *IsDirty)(LocomotionLayoutView_0055A6C0*);
 };
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(offsetof(DriveLocomotionPersistVtableView_004B4C30, IsDirty) == 0x10);
@@ -24,7 +24,7 @@ GG_STATIC_ASSERT(offsetof(DriveLocomotionPersistVtableView_004B4C30, IsDirty) ==
 GG_STATIC_ASSERT(sizeof(DriveLocomotionPersistVtableView_004B4C30) == 0x14);
 
 // FUNCTION: GAMEMD 0x004B4C30
-long __stdcall FUN_004B4C30(LocomotionClass* self)
+long __stdcall FUN_004B4C30(LocomotionLayoutView_0055A6C0* self)
 {
     return self->Dirty == 0;
 }
