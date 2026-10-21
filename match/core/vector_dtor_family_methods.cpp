@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 84 base-template instantiations reproduce 161 remaining retail destructor
+// 82 base-template instantiations reproduce 157 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -368,12 +368,6 @@ template class VectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x0053DD00
-// FUNCTION: GAMEMD 0x0053DD50
-// VectorClass<IonBlastClass*> -- reseats retail vtable 0x007EC07C; locator 0x00804880 -> type descriptor 0x008280D0
-//   `.?AV?$VectorClass@PAVIonBlastClass@@@@`.
-template class VectorClass<IonBlastClass*>;
-
 // FUNCTION: GAMEMD 0x0054A710
 // FUNCTION: GAMEMD 0x0054A760
 // VectorClass<unsigned short*> -- reseats retail vtable 0x007ECD0C; locator 0x00804C58 -> type descriptor 0x008290F0
@@ -391,12 +385,6 @@ template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
 // VectorClass<KamikazeControl*> -- reseats retail vtable 0x007ECE9C; locator 0x00804D88 -> type descriptor 0x00829670
 //   `.?AV?$VectorClass@PAUKamikazeControl@@@@`.
 template class VectorClass<KamikazeControl*>;
-
-// FUNCTION: GAMEMD 0x00551590
-// FUNCTION: GAMEMD 0x005515E0
-// VectorClass<LaserDrawClass*> -- reseats retail vtable 0x007ECEFC; locator 0x00804E20 -> type descriptor 0x008296E0
-//   `.?AV?$VectorClass@PAVLaserDrawClass@@@@`.
-template class VectorClass<LaserDrawClass*>;
 
 // FUNCTION: GAMEMD 0x00555780
 // FUNCTION: GAMEMD 0x005557D0

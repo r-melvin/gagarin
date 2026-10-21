@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 79
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 77
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -326,11 +326,6 @@ template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$DynamicVectorClass@_N@@`.
 template class DynamicVectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x0053DA40
-// DynamicVectorClass<IonBlastClass*> -- vtable 0x007EC05C slot 3; locator 0x00804850 -> type descriptor 0x00828100
-//   `.?AV?$DynamicVectorClass@PAVIonBlastClass@@@@`.
-template class DynamicVectorClass<IonBlastClass*>;
-
 // FUNCTION: GAMEMD 0x0054A190
 // DynamicVectorClass<unsigned short*> -- vtable 0x007ECCEC slot 3; locator 0x00804C28 -> type descriptor 0x00829110
 //   `.?AV?$DynamicVectorClass@PAG@@`.
@@ -345,11 +340,6 @@ template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
 // DynamicVectorClass<KamikazeControl*> -- vtable 0x007ECE7C slot 3; locator 0x00804D58 -> type descriptor 0x008296A8
 //   `.?AV?$DynamicVectorClass@PAUKamikazeControl@@@@`.
 template class DynamicVectorClass<KamikazeControl*>;
-
-// FUNCTION: GAMEMD 0x005512D0
-// DynamicVectorClass<LaserDrawClass*> -- vtable 0x007ECEDC slot 3; locator 0x00804DF0 -> type descriptor 0x00829710
-//   `.?AV?$DynamicVectorClass@PAVLaserDrawClass@@@@`.
-template class DynamicVectorClass<LaserDrawClass*>;
 
 // FUNCTION: GAMEMD 0x00555200
 // DynamicVectorClass<LightSourceClass*> -- vtable 0x007ECF7C slot 3; locator 0x00804F78 -> type descriptor 0x00829B28

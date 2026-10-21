@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 161 remaining 73-byte deleting-destructor bodies are bound here through
-// 84 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 157 remaining 73-byte deleting-destructor bodies are bound here through
+// 82 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -78,16 +78,12 @@ extern char VT_007EA9A4;
 extern char VT_007EA7D4;
 // VTABLE: GAMEMD 0x007EAA5C -- VectorClass<bool>
 extern char VT_007EAA5C;
-// VTABLE: GAMEMD 0x007EC07C -- VectorClass<IonBlastClass*>
-extern char VT_007EC07C;
 // VTABLE: GAMEMD 0x007ECD0C -- VectorClass<unsigned short*>
 extern char VT_007ECD0C;
 // VTABLE: GAMEMD 0x007ECBFC -- VectorClass<IsometricTileTypeClass::TileInsertType*>
 extern char VT_007ECBFC;
 // VTABLE: GAMEMD 0x007ECE9C -- VectorClass<KamikazeControl*>
 extern char VT_007ECE9C;
-// VTABLE: GAMEMD 0x007ECEFC -- VectorClass<LaserDrawClass*>
-extern char VT_007ECEFC;
 // VTABLE: GAMEMD 0x007ECF9C -- VectorClass<LightSourceClass*>
 extern char VT_007ECF9C;
 // VTABLE: GAMEMD 0x007ECFDC -- VectorClass<LightSourceClass::PendingCellClass*>

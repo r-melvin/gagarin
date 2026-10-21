@@ -14121,7 +14121,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
   "addr": "0x0053da40",
   "sym": "?Clear@?$DynamicVectorClass@PAVIonBlastClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14157,7 +14157,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
   "addr": "0x005512d0",
   "sym": "?Clear@?$DynamicVectorClass@PAVLaserDrawClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16812,20 +16812,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
   "addr": "0x0053DD00",
   "sym": "??_G?$VectorClass@PAVIonBlastClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<IonBlastClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<IonBlastClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
   "addr": "0x0053DD50",
-  "sym": "??_G?$VectorClass@PAVIonBlastClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVIonBlastClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<IonBlastClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<IonBlastClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16884,20 +16884,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
   "addr": "0x00551590",
   "sym": "??_G?$VectorClass@PAVLaserDrawClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<LaserDrawClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<LaserDrawClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
   "addr": "0x005515E0",
-  "sym": "??_G?$VectorClass@PAVLaserDrawClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVLaserDrawClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<LaserDrawClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<LaserDrawClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19530,7 +19530,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
   "addr": "0x0053db90",
   "sym": "?Clear@?$VectorClass@PAVIonBlastClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19566,7 +19566,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
   "addr": "0x00551420",
   "sym": "?Clear@?$VectorClass@PAVLaserDrawClass@@@@UAEXXZ",
   "len": "0x27",
@@ -38122,5 +38122,149 @@
   "tu": "match/core/vector_radbeam_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVRadBeam@@@@UBEHABQAVRadBeam@@@Z",
   "name": "DynamicVectorClass<RadBeam*>::FindItemIndex"
+ },
+ {
+  "addr": "0x53DA70",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVIonBlastClass@@@@UBEHPAPAVIonBlastClass@@@Z",
+  "name": "DynamicVectorClass<IonBlastClass*>::Slot5"
+ },
+ {
+  "addr": "0x53DA90",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVIonBlastClass@@@@UBEPAVIonBlastClass@@H@Z",
+  "name": "VectorClass<IonBlastClass*>::Slot6"
+ },
+ {
+  "addr": "0x53DAA0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVIonBlastClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<IonBlastClass*>::operator=="
+ },
+ {
+  "addr": "0x53DAE0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVIonBlastClass@@@@UAE_NHPAPAVIonBlastClass@@@Z",
+  "name": "VectorClass<IonBlastClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x53DBC0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVIonBlastClass@@@@UBEHABQAVIonBlastClass@@@Z",
+  "name": "VectorClass<IonBlastClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x53DC00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVIonBlastClass@@@@UBEHPAPAVIonBlastClass@@@Z",
+  "name": "VectorClass<IonBlastClass*>::Slot5"
+ },
+ {
+  "addr": "0x53DC20",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVIonBlastClass@@@@UAE_NHPAPAVIonBlastClass@@@Z",
+  "name": "DynamicVectorClass<IonBlastClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x53DCD0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ionblastclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVIonBlastClass@@@@UBEHABQAVIonBlastClass@@@Z",
+  "name": "DynamicVectorClass<IonBlastClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x551300",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVLaserDrawClass@@@@UBEHPAPAVLaserDrawClass@@@Z",
+  "name": "DynamicVectorClass<LaserDrawClass*>::Slot5"
+ },
+ {
+  "addr": "0x551320",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVLaserDrawClass@@@@UBEPAVLaserDrawClass@@H@Z",
+  "name": "VectorClass<LaserDrawClass*>::Slot6"
+ },
+ {
+  "addr": "0x551330",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVLaserDrawClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<LaserDrawClass*>::operator=="
+ },
+ {
+  "addr": "0x551370",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVLaserDrawClass@@@@UAE_NHPAPAVLaserDrawClass@@@Z",
+  "name": "VectorClass<LaserDrawClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x551450",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVLaserDrawClass@@@@UBEHABQAVLaserDrawClass@@@Z",
+  "name": "VectorClass<LaserDrawClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x551490",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVLaserDrawClass@@@@UBEHPAPAVLaserDrawClass@@@Z",
+  "name": "VectorClass<LaserDrawClass*>::Slot5"
+ },
+ {
+  "addr": "0x5514B0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVLaserDrawClass@@@@UAE_NHPAPAVLaserDrawClass@@@Z",
+  "name": "DynamicVectorClass<LaserDrawClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x551560",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_laserdrawclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVLaserDrawClass@@@@UBEHABQAVLaserDrawClass@@@Z",
+  "name": "DynamicVectorClass<LaserDrawClass*>::FindItemIndex"
  }
 ]

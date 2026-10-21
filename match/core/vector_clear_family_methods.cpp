@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 80
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 78
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 81 remaining addresses are bound to VectorClass<T> tables;
+//   The 79 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -331,11 +331,6 @@ template class VectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x0053DB90
-// VectorClass<IonBlastClass*> -- vtable 0x007EC07C slot 3; locator 0x00804880 -> type descriptor 0x008280D0
-//   `.?AV?$VectorClass@PAVIonBlastClass@@@@`.
-template class VectorClass<IonBlastClass*>;
-
 // FUNCTION: GAMEMD 0x0054A340
 // VectorClass<unsigned short*> -- vtable 0x007ECD0C slot 3; locator 0x00804C58 -> type descriptor 0x008290F0
 //   `.?AV?$VectorClass@PAG@@`.
@@ -350,11 +345,6 @@ template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
 // VectorClass<KamikazeControl*> -- vtable 0x007ECE9C slot 3; locator 0x00804D88 -> type descriptor 0x00829670
 //   `.?AV?$VectorClass@PAUKamikazeControl@@@@`.
 template class VectorClass<KamikazeControl*>;
-
-// FUNCTION: GAMEMD 0x00551420
-// VectorClass<LaserDrawClass*> -- vtable 0x007ECEFC slot 3; locator 0x00804E20 -> type descriptor 0x008296E0
-//   `.?AV?$VectorClass@PAVLaserDrawClass@@@@`.
-template class VectorClass<LaserDrawClass*>;
 
 // FUNCTION: GAMEMD 0x005553B0
 // VectorClass<LightSourceClass*> -- vtable 0x007ECF9C slot 3; locator 0x00804FA8 -> type descriptor 0x00829AF0

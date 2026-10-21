@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "6d1bf9342919fe96c5648d180e591bd8f8c72f5649bc583a5200717026aed68d",
+  "manifest_sha256": "2803eabc8018e0ac7116b141423e0a522b76b4fcd4e88b4b6077ce4268340fba",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4069,
-  "matched_entries_missed": 246,
+  "matched_entries": 4085,
+  "matched_entries_missed": 248,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5672,9 +5672,21 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x53DCD0",
+   "tu": "match/core/vector_ionblastclass_methods.cpp",
+   "name": "DynamicVectorClass<IonBlastClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x54E4D0",
    "tu": "match/combat/kamikaze_update_methods.cpp",
    "name": "Kamikaze::Update",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x551560",
+   "tu": "match/core/vector_laserdrawclass_methods.cpp",
+   "name": "DynamicVectorClass<LaserDrawClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
