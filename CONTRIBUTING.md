@@ -58,6 +58,18 @@ match that record; it rejects stale inputs or objects. It does not compile or
 link. These commands create a path-preserving object build, not an integrated
 engine link or a whole-image comparison.
 
+For a compact context packet before a matching attempt, use:
+
+```bash
+python3 scripts/vc6/function_context.py --addr 0x55A950 --format markdown
+```
+
+Repeat `--addr` for a cluster. This reads tracked source/metadata and the current
+object index to report recorded status, compiler flags, symbol availability,
+emitted extent and census hints. It flags missing decorated symbols and shows
+same-method alternatives. It does not compare retail bytes or prove an ABI;
+run the matching and relocation checks separately.
+
 ## Picking a target
 
 `scripts/data/match_manifest.json` records every claimed function with its
