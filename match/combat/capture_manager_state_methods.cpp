@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // Complete retail entry spans: 0x4722E0 (0x0C), 0x4726C0 (0x29),
-// 0x4726F0 (0x2C), 0x4728E0 (0x7F), 0x472960 (0x38). The FUN method
+// 0x4726F0 (0x2C), 0x4728E0 (0x7F), 0x472960 (0x38), and two six-byte
+// entries at 0x4729A0/0x4729B0. The FUN method
 // names and source grouping are unknown; Save/GetClassID follow their
 // IPersistStream/IPersist vtable positions and observed operations.
 // These methods use the existing receiver layout. 0x4726F0 calls the
@@ -125,4 +126,18 @@ long __stdcall CaptureManagerClass::GetClassID(Guid_472960* outGuid)
     outGuid->unknown_08 = DAT_007E9888;
     outGuid->unknown_0C = DAT_007E988C;
     return 0;
+}
+
+// Primary table 0x7E4B40: 0x4729A0 at +0x30, 0x4729B0 at +0x2C.
+// Semantic names, original return types and const qualification are unknown.
+// FUNCTION: GAMEMD 0x4729A0
+int CaptureManagerClass::FUN_004729A0()
+{
+    return 0x50;
+}
+
+// FUNCTION: GAMEMD 0x4729B0
+int CaptureManagerClass::FUN_004729B0()
+{
+    return 0x42;
 }

@@ -16,37 +16,30 @@
 // Free every controlled unit, walking the node vector back-to-front.
 void CaptureManagerClass::FreeAll()
 {
-    for (int i = ControlNodes_Count - 1; i >= 0; --i)
-        FreeUnit(ControlNodes_Items[i]->Unit);
+    for (int i = ControlNodes.Count - 1; i >= 0; --i)
+        FreeUnit(((ControlNode**)ControlNodes.Items)[i]->Unit);
 }
 
 // FUNCTION: GAMEMD 0x4722A0  (__thiscall)
 // True when control capacity is exhausted. Infinite control is never "full".
-// MATCHED 100% (10/10) on 2026-09-18. The trailing `Count >= Max` bool is
-// bound to a named `bool` local and returned on its own statement; that is the
-// banked "final compare through a named bool" lever and it emits retail's lean
-// `MOV EAX,[+34]; MOV EDX,[+3C]; CMP EAX,EDX; SETGE AL; RET` with no
-// normalisation. Returning the comparison directly is what produced the spilly
-// `PUSH ESI; ... XOR EDX,EDX; SETGE DL; MOV AL,DL` form under every VC6 backend
-// tested (8168/8447/8943/8966/9044/9782), which is why this was previously
-// recorded as unreachable - it was a phrasing delta, not a backend delta.
-// docs/toolchain_evidence.md section 2a can drop the correction note.
+// Retail tests the infinite-control byte first, then compares Count with Max.
+// The named bool local preserves the observed VC6 comparison sequence.
 bool CaptureManagerClass::CannotControlAnyMore() const
 {
-    if (InfiniteControl)
+    if (InfiniteMindControl)
         return false;
-    bool full = ControlNodes_Count >= MaxControlNodes;
+    bool full = ControlNodes.Count >= MaxControlNodes;
     return full;
 }
 
 // FUNCTION: GAMEMD 0x4722C0  (__thiscall)
 bool CaptureManagerClass::IsControllingSomething() const
 {
-    return ControlNodes_Count > 0;
+    return ControlNodes.Count > 0;
 }
 
 // FUNCTION: GAMEMD 0x4722D0  (__thiscall)
 int CaptureManagerClass::GetControlledCount()
 {
-    return ControlNodes_Count;
+    return ControlNodes.Count;
 }

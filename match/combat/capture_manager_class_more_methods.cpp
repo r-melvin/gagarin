@@ -13,10 +13,10 @@
 // return its captured-from house. Returns null if `unit` is not controlled.
 HouseClass* CaptureManagerClass::GetOriginalOwner(TechnoClass* unit) const
 {
-    for (int i = ControlNodes_Count - 1; i >= 0; --i)
+    for (int i = ControlNodes.Count - 1; i >= 0; --i)
     {
-        if (ControlNodes_Items[i]->Unit == unit)
-            return ControlNodes_Items[i]->OriginalOwner;
+        if (((ControlNode**)ControlNodes.Items)[i]->Unit == unit)
+            return ((ControlNode**)ControlNodes.Items)[i]->OriginalOwner;
     }
     return 0;
 }

@@ -39328,5 +39328,23 @@
   "name": "CaptureManagerClass::GetClassID",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4729A0",
+  "sym": "?FUN_004729A0@CaptureManagerClass@@QAEHXZ",
+  "len": "0x06",
+  "name": "CaptureManagerClass::FUN_004729A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_state_methods.cpp",
+  "addr": "0x4729B0",
+  "sym": "?FUN_004729B0@CaptureManagerClass@@QAEHXZ",
+  "len": "0x06",
+  "name": "CaptureManagerClass::FUN_004729B0",
+  "status": "matched",
+  "pct": 100
  }
 ]

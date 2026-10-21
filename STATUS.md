@@ -1,13 +1,49 @@
 # Project status
 
-The latest whole-repository regression passed with **4,203 fully matched
+The latest whole-repository regression passed with **4,205 fully matched
 functions**, **167 partial rows**, and 966 manifest translation units, with no
 matched function regressing. All **976 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
-and duplicate-address check passed (4,401 addresses, zero problems). The
+and duplicate-address check passed (4,403 addresses, zero problems). The
 complete byte-for-byte executable target has not been achieved.
 
-## Latest integration: CaptureManager methods and shared stream view
+## Latest integration: CaptureManager canonical migration
+
+Five existing methods now use the canonical
+[`CaptureManagerClass`](match/_layout/capture_manager_class.h) declaration:
+four in [`capture_manager_class.cpp`](match/combat/capture_manager_class.cpp)
+and `GetOriginalOwner` in
+[`capture_manager_class_more_methods.cpp`](match/combat/capture_manager_class_more_methods.cpp).
+This removes two competing receiver definitions while preserving their matched
+rows. The address-scoped `FreeUnit` body remains separate; its declaration-only
+canonical reference was already unresolved in the prior link diagnostic. Other
+receiver views remain separate, and the full COM inheritance is not recovered.
+
+Two new exact methods in
+[`capture_manager_state_methods.cpp`](match/combat/capture_manager_state_methods.cpp)
+return `0x50` and `0x42` from six-byte bodies at `0x4729A0` and `0x4729B0`.
+They occupy observed primary-vtable slots +0x30 and +0x2C. Their original
+names and declared return types remain unknown. The state TU now has seven
+matched rows, including its five existing methods.
+
+The full regression passed with **4,205 matched functions**, 167 partial rows
+and no regressions. All **976/976 tracked C++ files** produced current project
+objects; the compile/layout gate, 75 verifier tests and duplicate-address
+check passed (4,403 addresses, zero problems). Focused checks covered 12
+matched rows across three translation units. All nine saved partial bodies
+retain identical bytes and relocation offsets. The `/dll /noentry /nodefaultlib`
+diagnostic link reports **3,673 unique unresolved symbols**, 5,519 reference
+lines and no duplicate definitions. Default libraries are excluded; this
+diagnostic does not establish engine link closure.
+
+Matched lengths total **298,407 bytes (291 KiB)**: 21.3% of listed functions
+and 7.9% of listed function lengths. The padding heuristic misses 260 matched
+entries. Current generic families contain 135 deleting bindings across 71
+views, 68 base `Clear` rows, 66 native dynamic `Clear` rows plus one DiskID
+stand-in, and 10 resize-family rows plus two other resize helpers. Engine
+link closure and complete executable reproduction remain unfinished.
+
+## Previous integration: CaptureManager methods and shared stream view
 
 The shared [`ControlNode`](match/_layout/control_node.h) layout replaces three
 duplicate record definitions used by existing mind-control methods. The retail
@@ -29,12 +65,13 @@ unverified.
 The full regression passed with **4,203 matched functions**, 167 partial rows
 and no regressions. All **976/976 tracked C++ files** produced current project
 objects; the compile/layout gate, 75 verifier tests and duplicate-address
-check passed. Focused checks covered 23 matched rows and one existing partial
-across six translation units. All nine saved partial bodies retain identical
-bytes and relocation offsets. The `/dll /noentry /nodefaultlib` diagnostic
-link reports **3,673 unique unresolved symbols**, 5,519 reference lines and
-no duplicate definitions. Default libraries are excluded; this diagnostic
-does not establish engine link closure.
+check passed (4,401 addresses, zero problems). Focused checks covered 23
+matched rows and one existing partial across six translation units. All nine
+saved partial bodies retain identical bytes and relocation offsets. The
+`/dll /noentry /nodefaultlib` diagnostic link reports **3,673 unique unresolved
+symbols**, 5,519 reference lines and no duplicate definitions. Default
+libraries are excluded; this diagnostic does not establish engine link
+closure.
 
 Matched lengths total **298,395 bytes (291 KiB)**: 21.3% of listed functions
 and 7.9% of listed function lengths. The padding heuristic misses 260 matched
@@ -42,7 +79,6 @@ entries. Current generic families contain 135 deleting bindings across 71
 views, 68 base `Clear` rows, 66 native dynamic `Clear` rows plus one DiskID
 stand-in, and 10 resize-family rows plus two other resize helpers. Engine
 link closure and complete executable reproduction remain unfinished.
-
 
 ## Previous integration: ControlNode vectors and math entries
 
@@ -1387,7 +1423,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 976 tracked C++ files and 4,370 manifest
+verified snapshot, the inventory has 976 tracked C++ files and 4,372 manifest
 rows across 966 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
@@ -1704,7 +1740,7 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,203** | **21.3%** of 19,753 |
+| Functions matched at 100% | **4,205** | **21.3%** of 19,753 |
 | Sum of matched function lengths | 291 KiB | 7.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
 | Tracked C++ files under `match/` | 976 | |
