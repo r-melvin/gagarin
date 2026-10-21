@@ -36,29 +36,6 @@ extern int              DAT_0087DE2C;   // GLOBAL: GAMEMD 0x87DE2C
 int __cdecl FUN_00402940();
 
 // ---------------------------------------------------------------------------
-// 0x40E390 — deleting destructor that unlinks from a doubly-linked list.
-//
-// The vtable store is unconditional and comes before the null test, so the
-// unlink is a guarded helper rather than the body of an `if` around everything.
-// Both neighbours must be present for the unlink to run at all.
-// ---------------------------------------------------------------------------
-extern char VT_007E1B0C;   // VTABLE: GAMEMD 0x7E1B0C
-
-struct Node_0040E390
-{
-    char*         Vtable;   // +0x0000
-    Node_0040E390* Prev;    // +0x0004
-    Node_0040E390* Next;    // +0x0008
-
-    // FUNCTION: GAMEMD 0x40E340 — unlink `node` from wherever it is, then
-    // splice it in ahead of this one.
-    void FUN_0040E340(Node_0040E390* node);
-    // FUNCTION: GAMEMD 0x40E390
-    void* FUN_0040E390(char flags);
-};
-GG_STATIC_ASSERT(offsetof(Node_0040E390, Next) == 0x8);
-
-// ---------------------------------------------------------------------------
 // 0x429500 — a COM accessor: `this` on the stack, an HRESULT back.
 //
 // `RET 8` with nothing in ECX and the out-pointer at [ESP+0xC] makes this a

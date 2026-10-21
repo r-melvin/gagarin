@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 112 base-template instantiations reproduce 217 remaining retail destructor
+// 109 base-template instantiations reproduce 211 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -416,12 +416,6 @@ template class VectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x00538A90
-// FUNCTION: GAMEMD 0x00538AE0
-// VectorClass<CCINIClass*> -- reseats retail vtable 0x007EB80C; locator 0x008037D8 -> type descriptor 0x008261B8
-//   `.?AV?$VectorClass@PAVCCINIClass@@@@`.
-template class VectorClass<CCINIClass*>;
-
 // FUNCTION: GAMEMD 0x0053DD00
 // FUNCTION: GAMEMD 0x0053DD50
 // VectorClass<IonBlastClass*> -- reseats retail vtable 0x007EC07C; locator 0x00804880 -> type descriptor 0x008280D0
@@ -533,12 +527,6 @@ template class VectorClass<double>;
 //   `.?AV?$VectorClass@PAUNodeNameType@@@@`.
 template class VectorClass<NodeNameType*>;
 
-// FUNCTION: GAMEMD 0x005C5940
-// FUNCTION: GAMEMD 0x005C5990
-// VectorClass<CoopCampaignClass*> -- reseats retail vtable 0x007EE3B0; locator 0x00806240 -> type descriptor 0x0082DB38
-//   `.?AV?$VectorClass@PAVCoopCampaignClass@@@@`.
-template class VectorClass<CoopCampaignClass*>;
-
 // FUNCTION: GAMEMD 0x005D16C0
 // FUNCTION: GAMEMD 0x005D1710
 // VectorClass<Point2D> -- reseats retail vtable 0x007EEB74; locator 0x00806B88 -> type descriptor 0x00830380
@@ -616,12 +604,6 @@ template class VectorClass<ObjectTypeClass*>;
 // VectorClass<SpotLightClass*> -- reseats retail vtable 0x007EF6DC; locator 0x00807788 -> type descriptor 0x008335E8
 //   `.?AV?$VectorClass@PAVSpotLightClass@@@@`.
 template class VectorClass<SpotLightClass*>;
-
-// FUNCTION: GAMEMD 0x006285F0
-// FUNCTION: GAMEMD 0x00628640
-// VectorClass<ColorScheme*> -- reseats retail vtable 0x007EF7B0; locator 0x00807920 -> type descriptor 0x00836570
-//   `.?AV?$VectorClass@PAVColorScheme@@@@`.
-template class VectorClass<ColorScheme*>;
 
 // FUNCTION: GAMEMD 0x00628760
 // FUNCTION: GAMEMD 0x006287B0

@@ -19,10 +19,6 @@ extern "C" void __cdecl gg_free(void* block);
 // already modelled in match/core/small_misc46_methods.h).
 extern "C" void __cdecl FUN_007C93E8(void* block);
 
-// VTABLE: GAMEMD 0x7E1B0C — GenericNode.
-extern char VT_007E1B0C;
-// VTABLE: GAMEMD 0x7E1B04 — GenericList.
-extern char VT_007E1B04;
 // VTABLE: GAMEMD 0x7EDF50 — MixFileClass.
 extern char VT_007EDF50;
 // VTABLE: GAMEMD 0x7EDF40 — BlowStraw (the same constant the pipe/straw

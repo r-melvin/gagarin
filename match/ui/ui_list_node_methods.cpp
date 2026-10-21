@@ -110,7 +110,7 @@ MixFileClass* MixFileClass::ScalarDeletingDtor(char flags)
 // retail's.
 GenericList* GenericList::ScalarDeletingDtor(char flags)
 {
-    this->Vtable = &VT_007E1B04;
+    this->Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
 
     while (1) {
         if (!(this->FirstNode.NextNode != 0 && this->FirstNode.NextNode->NextNode != 0

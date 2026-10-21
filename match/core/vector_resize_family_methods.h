@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at the original 32 shape entries. 15 views remain;
+//   Ghidra CLI at the original 32 shape entries. 14 views remain;
 //   recovered entries now use native template implementations.
 //   Shape found by clustering
 //   the unmatched pool on size (176 bytes) and on the first/last eight bytes;
@@ -56,8 +56,6 @@ struct VectorResizeFamily : VectorBase
     bool FUN_5D0EC0(int newsize, void** array);
     // FUNCTION: GAMEMD 0x5D8730
     bool FUN_5D8730(int newsize, void** array);
-    // FUNCTION: GAMEMD 0x627F90
-    bool FUN_627F90(int newsize, void** array);
     // FUNCTION: GAMEMD 0x69C890
     bool FUN_69C890(int newsize, void** array);
     // FUNCTION: GAMEMD 0x6B15F0

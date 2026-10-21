@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "cd0efa81ba525d893984091250ea396f16643ec81261ac226b3452c0f53e8274",
+  "manifest_sha256": "a509970f2b15894658dcda0324a5cfa22a4630682c617a1a9ac358864621ba52",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3847,
-  "matched_entries_missed": 216,
+  "matched_entries": 3870,
+  "matched_entries_missed": 219,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5601,8 +5601,14 @@
   },
   {
    "addr": "0x5384C0",
-   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+   "tu": "match/core/vector_cciniclass_methods.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538750",
+   "tu": "match/core/vector_cciniclass_methods.cpp",
+   "name": "DynamicVectorClass<CCINIClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5738,6 +5744,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5C5820",
+   "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+   "name": "DynamicVectorClass<CoopCampaignClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5CEB80",
    "tu": "match/map/msanim_family_methods.cpp",
    "name": "MSShapeAnim",
@@ -5813,6 +5825,12 @@
    "addr": "0x622800",
    "tu": "match/ui/ui_focus_methods.cpp",
    "name": "UI::FocusOnWindow",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x628040",
+   "tu": "match/core/vector_colorscheme_methods.cpp",
+   "name": "DynamicVectorClass<ColorScheme*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

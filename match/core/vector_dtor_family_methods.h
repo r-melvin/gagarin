@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 217 remaining 73-byte deleting-destructor bodies are bound here through
-// 112 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 211 remaining 73-byte deleting-destructor bodies are bound here through
+// 109 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -94,8 +94,6 @@ extern char VT_007EA9A4;
 extern char VT_007EA7D4;
 // VTABLE: GAMEMD 0x007EAA5C -- VectorClass<bool>
 extern char VT_007EAA5C;
-// VTABLE: GAMEMD 0x007EB80C -- VectorClass<CCINIClass*>
-extern char VT_007EB80C;
 // VTABLE: GAMEMD 0x007EC07C -- VectorClass<IonBlastClass*>
 extern char VT_007EC07C;
 // VTABLE: GAMEMD 0x007ECD0C -- VectorClass<unsigned short*>
@@ -134,8 +132,6 @@ extern char VT_007ED970;
 extern char VT_007EDA4C;
 // VTABLE: GAMEMD 0x007EE390 -- VectorClass<NodeNameType*>
 extern char VT_007EE390;
-// VTABLE: GAMEMD 0x007EE3B0 -- VectorClass<CoopCampaignClass*>
-extern char VT_007EE3B0;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
 extern char VT_007EEB74;
 // VTABLE: GAMEMD 0x007EEBB4 -- VectorClass<MapSelection*>
@@ -162,8 +158,6 @@ extern char VT_007EED40;
 extern char VT_007EF28C;
 // VTABLE: GAMEMD 0x007EF6DC -- VectorClass<SpotLightClass*>
 extern char VT_007EF6DC;
-// VTABLE: GAMEMD 0x007EF7B0 -- VectorClass<ColorScheme*>
-extern char VT_007EF7B0;
 // VTABLE: GAMEMD 0x007EF7F0 -- VectorClass<HSVClass>
 extern char VT_007EF7F0;
 // VTABLE: GAMEMD 0x007EF7D0 -- VectorClass<HashObject<HashString, SchemeNode*>>

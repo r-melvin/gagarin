@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 107
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 104
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -366,11 +366,6 @@ template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$DynamicVectorClass@_N@@`.
 template class DynamicVectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x005384C0
-// DynamicVectorClass<CCINIClass*> -- vtable 0x007EB82C slot 3; locator 0x00803840 -> type descriptor 0x008261E8
-//   `.?AV?$DynamicVectorClass@PAVCCINIClass@@@@`.
-template class DynamicVectorClass<CCINIClass*>;
-
 // FUNCTION: GAMEMD 0x0053DA40
 // DynamicVectorClass<IonBlastClass*> -- vtable 0x007EC05C slot 3; locator 0x00804850 -> type descriptor 0x00828100
 //   `.?AV?$DynamicVectorClass@PAVIonBlastClass@@@@`.
@@ -466,11 +461,6 @@ template class DynamicVectorClass<double>;
 //   `.?AV?$DynamicVectorClass@PAUNodeNameType@@@@`.
 template class DynamicVectorClass<NodeNameType*>;
 
-// FUNCTION: GAMEMD 0x005C50D0
-// DynamicVectorClass<CoopCampaignClass*> -- vtable 0x007EE350 slot 3; locator 0x008061A8 -> type descriptor 0x0082DB70
-//   `.?AV?$DynamicVectorClass@PAVCoopCampaignClass@@@@`.
-template class DynamicVectorClass<CoopCampaignClass*>;
-
 // FUNCTION: GAMEMD 0x005D05A0
 // DynamicVectorClass<Point2D> -- vtable 0x007EEB54 slot 3; locator 0x00806A88 -> type descriptor 0x008303A8
 //   `.?AV?$DynamicVectorClass@VPoint2D@@@@`.
@@ -535,11 +525,6 @@ template class DynamicVectorClass<ObjectTypeClass*>;
 // DynamicVectorClass<SpotLightClass*> -- vtable 0x007EF6BC slot 3; locator 0x00807758 -> type descriptor 0x00833618
 //   `.?AV?$DynamicVectorClass@PAVSpotLightClass@@@@`.
 template class DynamicVectorClass<SpotLightClass*>;
-
-// FUNCTION: GAMEMD 0x00627D20
-// DynamicVectorClass<ColorScheme*> -- vtable 0x007EF790 slot 3; locator 0x00807988 -> type descriptor 0x008365A0
-//   `.?AV?$DynamicVectorClass@PAVColorScheme@@@@`.
-template class DynamicVectorClass<ColorScheme*>;
 
 // FUNCTION: GAMEMD 0x00627D80
 // DynamicVectorClass<HSVClass> -- vtable 0x007EF750 slot 3; locator 0x00807888 -> type descriptor 0x008364A0

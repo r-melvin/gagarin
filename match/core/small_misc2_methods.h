@@ -14,8 +14,6 @@
 extern IFace* DAT_0087E8A0;
 // GLOBAL: GAMEMD 0x87E294 — installed into a fresh record by 0x405BE0.
 extern char DAT_0087E294[];
-// VTABLE: GAMEMD 0x7E1B0C
-extern char VT_007E1B0C[];
 // STRING: GAMEMD 0x817474 — "<none>", the out-of-range answer for 0x473960.
 extern const char STR_00817474b[];
 // GLOBAL: GAMEMD 0x81B7CC — an eleven-entry table with an eight-byte stride.
@@ -48,16 +46,6 @@ struct Obj_004072D0
 
     // FUNCTION: GAMEMD 0x4072D0
     void FUN_004072D0();
-};
-
-struct Obj_0040E300
-{
-    char* _vtable;     // +0x0000
-    int   unknown_04;  // +0x0004
-    int   unknown_08;  // +0x0008
-
-    // FUNCTION: GAMEMD 0x40E320
-    Obj_0040E300* FUN_0040E320();
 };
 
 struct Obj_00405B00

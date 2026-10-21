@@ -46,16 +46,6 @@ void __cdecl FUN_0040A940b()
     }
 }
 
-// FUNCTION: GAMEMD 0x40E320
-Obj_0040E300* Obj_0040E300::FUN_0040E320()
-{
-    unknown_04 = 0;
-    unknown_08 = 0;
-    _vtable = VT_007E1B0C;
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x433040
 void Obj_00433000::FUN_00433040()
 {

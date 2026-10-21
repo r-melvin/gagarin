@@ -20,6 +20,12 @@ public:
     // `CMP EBX,[ECX+4]`, `CMP EBX,[ECX+8]`, in that order.
     // FUNCTION: GAMEMD 0x5B4590
     void ListNodeUnlink();
+    // FUNCTION: GAMEMD 0x40E320 -- explicit initializer entry.
+    GenericNode* InitializeNode();
+    // FUNCTION: GAMEMD 0x40E340 -- inserts the argument after this node.
+    void LinkNode(GenericNode* node);
+    // FUNCTION: GAMEMD 0x40E390 -- primary table slot zero.
+    void* DeletingDestructor(char flags);
     __forceinline bool IsValid() const;
     __forceinline void Unlink();
     __forceinline void Link(GenericNode* node);
@@ -39,6 +45,10 @@ template<class T> class Node : public GenericNode
 public:
     void* DeletingDestructor(unsigned int flags);
 };
+typedef void* (GenericNode::*GenericNodeDeletingSlot)(char);
+// VTABLE: GAMEMD 0x7E1B0C -- explicit one-slot GenericNode table.
+extern GenericNodeDeletingSlot GG_VTABLE_GENERIC_NODE_SLOTS;
+
 class GenericList
 {
 public:
@@ -117,7 +127,7 @@ __forceinline void GenericNode::Link(GenericNode* node)
 
 __forceinline void GenericNode::DestroyNode()
 {
-    Vtable = reinterpret_cast<void*>(0x7E1B0C);
+    Vtable = &GG_VTABLE_GENERIC_NODE_SLOTS;
     Unlink();
 }
 
@@ -125,7 +135,7 @@ __forceinline void GenericNode::InitNode()
 {
     NextNode = 0;
     PrevNode = 0;
-    Vtable = reinterpret_cast<void*>(0x7E1B0C);
+    Vtable = &GG_VTABLE_GENERIC_NODE_SLOTS;
 }
 
 __forceinline void GenericList::DestroyList()

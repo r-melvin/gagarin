@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 108
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 105
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -371,11 +371,6 @@ template class VectorClass<HouseClass::BuildChoiceClass*>;
 //   `.?AV?$VectorClass@_N@@`.
 template class VectorClass<bool>;
 
-// FUNCTION: GAMEMD 0x00538610
-// VectorClass<CCINIClass*> -- vtable 0x007EB80C slot 3; locator 0x008037D8 -> type descriptor 0x008261B8
-//   `.?AV?$VectorClass@PAVCCINIClass@@@@`.
-template class VectorClass<CCINIClass*>;
-
 // FUNCTION: GAMEMD 0x0053DB90
 // VectorClass<IonBlastClass*> -- vtable 0x007EC07C slot 3; locator 0x00804880 -> type descriptor 0x008280D0
 //   `.?AV?$VectorClass@PAVIonBlastClass@@@@`.
@@ -466,11 +461,6 @@ template class VectorClass<double>;
 //   `.?AV?$VectorClass@PAUNodeNameType@@@@`.
 template class VectorClass<NodeNameType*>;
 
-// FUNCTION: GAMEMD 0x005C56E0
-// VectorClass<CoopCampaignClass*> -- vtable 0x007EE3B0 slot 3; locator 0x00806240 -> type descriptor 0x0082DB38
-//   `.?AV?$VectorClass@PAVCoopCampaignClass@@@@`.
-template class VectorClass<CoopCampaignClass*>;
-
 // FUNCTION: GAMEMD 0x005D0920
 // VectorClass<Point2D> -- vtable 0x007EEB74 slot 3; locator 0x00806B88 -> type descriptor 0x00830380
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
@@ -535,11 +525,6 @@ template class VectorClass<ObjectTypeClass*>;
 // VectorClass<SpotLightClass*> -- vtable 0x007EF6DC slot 3; locator 0x00807788 -> type descriptor 0x008335E8
 //   `.?AV?$VectorClass@PAVSpotLightClass@@@@`.
 template class VectorClass<SpotLightClass*>;
-
-// FUNCTION: GAMEMD 0x00627F00
-// VectorClass<ColorScheme*> -- vtable 0x007EF7B0 slot 3; locator 0x00807920 -> type descriptor 0x00836570
-//   `.?AV?$VectorClass@PAVColorScheme@@@@`.
-template class VectorClass<ColorScheme*>;
 
 // FUNCTION: GAMEMD 0x006283E0
 // VectorClass<HSVClass> -- vtable 0x007EF7F0 slot 3; locator 0x008079E8 -> type descriptor 0x00836478
