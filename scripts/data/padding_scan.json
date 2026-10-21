@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "72aa555abaeb6fc3e653e8232175df1dd4d6d636d5f84de70e728be49ffeb42c",
+  "manifest_sha256": "64b53481cd8142daea16dec090b42b78a898a0777cb6427c218e17c9b8cbc8c6",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4384,
-  "matched_entries_missed": 276,
+  "matched_entries": 4506,
+  "matched_entries_missed": 291,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5444,6 +5444,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4EAB10",
+   "tu": "match/core/vector_tubeclass_methods.cpp",
+   "name": "DynamicVectorClass<TubeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4EAD70",
    "tu": "match/core/vector_particlesystemclass_methods.cpp",
    "name": "DynamicVectorClass<ParticleSystemClass*>::FindItemIndex",
@@ -5459,6 +5465,12 @@
    "addr": "0x4EB230",
    "tu": "match/core/vector_overlayclass_methods.cpp",
    "name": "DynamicVectorClass<OverlayClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4EB490",
+   "tu": "match/core/vector_smudgeclass_methods.cpp",
+   "name": "DynamicVectorClass<SmudgeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5504,9 +5516,21 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4EC790",
+   "tu": "match/core/vector_sideclass_methods.cpp",
+   "name": "DynamicVectorClass<SideClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4EC9F0",
    "tu": "match/core/vector_housetypeclass_methods.cpp",
    "name": "DynamicVectorClass<HouseTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4ECC50",
+   "tu": "match/core/vector_taskforceclass_methods.cpp",
+   "name": "DynamicVectorClass<TaskForceClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5579,6 +5603,18 @@
    "addr": "0x4EE8D0",
    "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
    "name": "DynamicVectorClass<VoxelAnimTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4EEB30",
+   "tu": "match/core/vector_isometrictiletypeclass_methods.cpp",
+   "name": "DynamicVectorClass<IsometricTileTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4EED90",
+   "tu": "match/core/vector_particletypeclass_methods.cpp",
+   "name": "DynamicVectorClass<ParticleTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5799,8 +5835,14 @@
   },
   {
    "addr": "0x556EB0",
-   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+   "tu": "match/core/vector_linetrail_methods.cpp",
    "name": "DynamicVectorClass<LineTrail*>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x557140",
+   "tu": "match/core/vector_linetrail_methods.cpp",
+   "name": "DynamicVectorClass<LineTrail*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5966,9 +6008,33 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5D11D0",
+   "tu": "match/core/vector_mapstage_methods.cpp",
+   "name": "DynamicVectorClass<MapStage*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5D1430",
    "tu": "match/core/vector_msanimentry_methods.cpp",
    "name": "DynamicVectorClass<MSAnimEntry*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D1690",
+   "tu": "match/core/vector_mssfxentry_methods.cpp",
+   "name": "DynamicVectorClass<MSSfxEntry*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D2A10",
+   "tu": "match/core/vector_msanim_methods.cpp",
+   "name": "DynamicVectorClass<MSAnim*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D2C70",
+   "tu": "match/core/vector_mssfx_methods.cpp",
+   "name": "DynamicVectorClass<MSSfx*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5985,8 +6051,14 @@
   },
   {
    "addr": "0x5D80B0",
-   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+   "tu": "match/core/vector_multiplayerteam_methods.cpp",
    "name": "DynamicVectorClass<MultiplayerTeam*>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8520",
+   "tu": "match/core/vector_multiplayerteam_methods.cpp",
+   "name": "DynamicVectorClass<MultiplayerTeam*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6026,6 +6098,18 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5F9B80",
+   "tu": "match/core/vector_objecttypeclass_methods.cpp",
+   "name": "VectorClass<ObjectTypeClass*>::operator==",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5F9DB0",
+   "tu": "match/core/vector_objecttypeclass_methods.cpp",
+   "name": "DynamicVectorClass<ObjectTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5FFFC0",
    "tu": "match/core/vector_spotlightclass_methods.cpp",
    "name": "DynamicVectorClass<SpotLightClass*>::Clear",
@@ -6053,6 +6137,12 @@
    "addr": "0x628760",
    "tu": "match/core/vector_dtor_family_methods.cpp",
    "name": "VectorClass<HSVClass>::`scalar deleting destructor'",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x62B300",
+   "tu": "match/core/vector_parasiteclass_methods.cpp",
+   "name": "DynamicVectorClass<ParasiteClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

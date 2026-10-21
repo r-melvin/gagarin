@@ -40,18 +40,6 @@ extern char VT_007E8BC0;
 extern char VT_007EA504;
 // VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
 extern char VT_007EA584;
-// VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
-extern char VT_007E9CC4;
-// VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
-extern char VT_007E9DC4;
-// VTABLE: GAMEMD 0x007EA044 -- VectorClass<SideClass*>
-extern char VT_007EA044;
-// VTABLE: GAMEMD 0x007EA0C4 -- VectorClass<TaskForceClass*>
-extern char VT_007EA0C4;
-// VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>
-extern char VT_007EA404;
-// VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>
-extern char VT_007EA444;
 // VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>
 extern char VT_007EA984;
 // VTABLE: GAMEMD 0x007EA9A4 -- VectorClass<ScoutStruct>
@@ -66,8 +54,6 @@ extern char VT_007ECD0C;
 extern char VT_007ECBFC;
 // VTABLE: GAMEMD 0x007ECFDC -- VectorClass<LightSourceClass::PendingCellClass*>
 extern char VT_007ECFDC;
-// VTABLE: GAMEMD 0x007ED0EC -- VectorClass<LineTrail*>
-extern char VT_007ED0EC;
 // VTABLE: GAMEMD 0x007ED480 -- VectorClass<CellClass*>
 extern char VT_007ED480;
 // VTABLE: GAMEMD 0x007E177C -- VectorClass<SubzoneConnectionStruct>
@@ -86,34 +72,18 @@ extern char VT_007ED970;
 extern char VT_007EDA4C;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
 extern char VT_007EEB74;
-// VTABLE: GAMEMD 0x007EEAB4 -- VectorClass<MapStage*>
-extern char VT_007EEAB4;
-// VTABLE: GAMEMD 0x007EEAF4 -- VectorClass<MSSfxEntry*>
-extern char VT_007EEAF4;
-// VTABLE: GAMEMD 0x007EEC24 -- VectorClass<MSAnim*>
-extern char VT_007EEC24;
-// VTABLE: GAMEMD 0x007EEC44 -- VectorClass<MSSfx*>
-extern char VT_007EEC44;
 // VTABLE: GAMEMD 0x007EECEC -- VectorClass<AcceleratorTracker>
 extern char VT_007EECEC;
-// VTABLE: GAMEMD 0x007EEE54 -- VectorClass<MultiplayerTeam*>
-extern char VT_007EEE54;
 // VTABLE: GAMEMD 0x007EED40 -- VectorClass<MultiplayerGameMode*>
 extern char VT_007EED40;
-// VTABLE: GAMEMD 0x007EF28C -- VectorClass<ObjectTypeClass*>
-extern char VT_007EF28C;
 // VTABLE: GAMEMD 0x007EF7F0 -- VectorClass<HSVClass>
 extern char VT_007EF7F0;
 // VTABLE: GAMEMD 0x007EF7D0 -- VectorClass<HashObject<HashString, SchemeNode*>>
 extern char VT_007EF7D0;
-// VTABLE: GAMEMD 0x007EF844 -- VectorClass<ParasiteClass*>
-extern char VT_007EF844;
 // VTABLE: GAMEMD 0x007EFF04 -- VectorClass<PlanningMemberClass*>
 extern char VT_007EFF04;
 // VTABLE: GAMEMD 0x007EFF24 -- VectorClass<PlanningBranchClass*>
 extern char VT_007EFF24;
-// VTABLE: GAMEMD 0x007EFE64 -- VectorClass<PlanningNodeClass*>
-extern char VT_007EFE64;
 // VTABLE: GAMEMD 0x007EFEA4 -- VectorClass<PlanningTokenClass*>
 extern char VT_007EFEA4;
 // VTABLE: GAMEMD 0x007F044C -- VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>

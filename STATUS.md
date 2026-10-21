@@ -1,15 +1,36 @@
 # Project status
 
-The latest whole-repository regression passed with **4,384 fully matched
-functions**, **167 partial rows**, and 992 manifest translation units, with no
-matched function regressing. All **1,002 tracked C++ files** produced current
-project objects and passed the hash check. The compile/layout gate, 90 verifier
-tests and duplicate-address check passed (4,584 addresses, zero problems).
-Eleven saved partial-body byte/relocation checks retain their baseline bytes
-and relocations. The complete byte-for-byte executable target has not been
-achieved.
+As of **2026-10-21**, the latest verified snapshot has **4,506 fully matched
+functions**, **167 partial rows**, **4,673 manifest rows**, **1,008 manifest
+translation units**, and **1,018 tracked C++ files**. The 90-test suite,
+compile/layout checks, and whole-repository regression passed with zero
+regressions. All 1,018 C++ files produced current project objects and passed
+the input-hash check. The duplicate
+address audit found **4,706 addresses and zero duplicate issues**. Eleven saved
+partial-body byte/relocation checks retain their baseline.
 
-## Latest integration: LCWPipe constructor and exact input method
+Fifteen native pointer-vector pairs contribute 180 entries (120 new matches,
+60 migrations); FileStraw contributes three more (two new matches, one
+migration). Together they add 122 matches and migrate 61 existing claims.
+Across both groups, 183 function spans and 184 relocation fields match, and 31
+tables pass checks covering 213 slots. These table checks use
+recorded weak defaults where needed and remain conditional on those defaults.
+The manifest matches 22.8% of listed functions. Their lengths sum to
+**317,973 bytes**, or 8.4% of listed function lengths. The padding heuristic misses 291 matched entries.
+
+The diagnostic link reports **3,538 unique unresolved symbols**, **5,265
+reference lines**, and zero duplicate definitions, compared with 3,659 unique
+symbols and 5,490 references at commit `094dcf9`. This diagnostic does not
+establish engine link closure. Whole-executable reproduction remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: LCWPipe constructor and exact input method
 
 The constructor at `0x551FF0` and input method at `0x5520A0` now match their
 full retail spans. The constructor uses an inline Pipe base constructor whose
@@ -38,7 +59,7 @@ Matched lengths total 309,312 bytes. The diagnostic link reports 3,659 unique
 unresolved symbols, 5,490 reference lines and no duplicate definitions. Whole
 executable reproduction remains unfinished.
 
-## Previous verified integration: LCWPipe and remaining Straw callers
+## Historical snapshot: LCWPipe and remaining Straw callers
 
 The native [LCWPipe implementation](match/core/lcw_pipe.cpp) replaces two
 generic destructor bindings and adds an exact flush entry at `0x5522D0`.
@@ -2197,10 +2218,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,381** | **22.2%** of 19,753 |
-| Sum of matched function lengths | 301 KiB | 8.1% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,506** | **22.8%** of 19,753 |
+| Sum of matched function lengths | 317,973 bytes | 8.4% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 1,001 | |
+| Tracked C++ files under `match/` | 1,018 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2220,7 +2241,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 276 matched entries. Its candidate count is therefore
+listed entries, including 291 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

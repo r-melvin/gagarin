@@ -237,36 +237,6 @@ template class VectorClass<SuperClass*>;
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
 
-// FUNCTION: GAMEMD 0x004EA9D0
-// VectorClass<TubeClass*> -- vtable 0x007E9CC4 slot 3; locator 0x00800F20 -> type descriptor 0x00822FD0
-//   `.?AV?$VectorClass@PAVTubeClass@@@@`.
-template class VectorClass<TubeClass*>;
-
-// FUNCTION: GAMEMD 0x004EB350
-// VectorClass<SmudgeClass*> -- vtable 0x007E9DC4 slot 3; locator 0x00801180 -> type descriptor 0x00823170
-//   `.?AV?$VectorClass@PAVSmudgeClass@@@@`.
-template class VectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004EC650
-// VectorClass<SideClass*> -- vtable 0x007EA044 slot 3; locator 0x00801770 -> type descriptor 0x00823580
-//   `.?AV?$VectorClass@PAVSideClass@@@@`.
-template class VectorClass<SideClass*>;
-
-// FUNCTION: GAMEMD 0x004ECB10
-// VectorClass<TaskForceClass*> -- vtable 0x007EA0C4 slot 3; locator 0x008018A0 -> type descriptor 0x00823650
-//   `.?AV?$VectorClass@PAVTaskForceClass@@@@`.
-template class VectorClass<TaskForceClass*>;
-
-// FUNCTION: GAMEMD 0x004EE9F0
-// VectorClass<IsometricTileTypeClass*> -- vtable 0x007EA404 slot 3; locator 0x00802058 -> type descriptor 0x00823C10
-//   `.?AV?$VectorClass@PAVIsometricTileTypeClass@@@@`.
-template class VectorClass<IsometricTileTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EEC50
-// VectorClass<ParticleTypeClass*> -- vtable 0x007EA444 slot 3; locator 0x008020F0 -> type descriptor 0x00823C88
-//   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
-template class VectorClass<ParticleTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0050EFD0
 // VectorClass<AngerStruct> -- vtable 0x007EA984 slot 3; locator 0x00802BC0 -> type descriptor 0x00824588
 //   `.?AV?$VectorClass@UAngerStruct@@@@`.
@@ -302,11 +272,6 @@ template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
 // VectorClass<LightSourceClass::PendingCellClass*> -- vtable 0x007ECFDC slot 3; locator 0x00805040 -> type descriptor 0x00829B68
 //   `.?AV?$VectorClass@PAVPendingCellClass@LightSourceClass@@@@`.
 template class VectorClass<LightSourceClass::PendingCellClass*>;
-
-// FUNCTION: GAMEMD 0x00557000
-// VectorClass<LineTrail*> -- vtable 0x007ED0EC slot 3; locator 0x008051D8 -> type descriptor 0x00829D48
-//   `.?AV?$VectorClass@PAVLineTrail@@@@`.
-template class VectorClass<LineTrail*>;
 
 // FUNCTION: GAMEMD 0x005894A0
 // VectorClass<ZoneConnectionClass> -- vtable 0x007ED4E0 slot 3; locator 0x00805610 -> type descriptor 0x0082AA88
@@ -348,48 +313,17 @@ template class VectorClass<double>;
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
 template class VectorClass<Point2D>;
 
-
-// FUNCTION: GAMEMD 0x005D1090
-// VectorClass<MapStage*> -- vtable 0x007EEAB4 slot 3; locator 0x008069F0 -> type descriptor 0x00830200
-//   `.?AV?$VectorClass@PAVMapStage@@@@`.
-template class VectorClass<MapStage*>;
-
 // MSAnimEntry vector specialization moved to vector_msanimentry_methods.cpp.
-
-// FUNCTION: GAMEMD 0x005D1550
-// VectorClass<MSSfxEntry*> -- vtable 0x007EEAF4 slot 3; locator 0x00806A20 -> type descriptor 0x00830268
-//   `.?AV?$VectorClass@PAVMSSfxEntry@@@@`.
-template class VectorClass<MSSfxEntry*>;
-
-// FUNCTION: GAMEMD 0x005D28D0
-// VectorClass<MSAnim*> -- vtable 0x007EEC24 slot 3; locator 0x00806D48 -> type descriptor 0x00830558
-//   `.?AV?$VectorClass@PAVMSAnim@@@@`.
-template class VectorClass<MSAnim*>;
-
-// FUNCTION: GAMEMD 0x005D2B30
-// VectorClass<MSSfx*> -- vtable 0x007EEC44 slot 3; locator 0x00806D18 -> type descriptor 0x00830500
-//   `.?AV?$VectorClass@PAVMSSfx@@@@`.
-template class VectorClass<MSSfx*>;
 
 // FUNCTION: GAMEMD 0x005D5500
 // VectorClass<AcceleratorTracker> -- vtable 0x007EECEC slot 3; locator 0x00806EC0 -> type descriptor 0x00830728
 //   `.?AV?$VectorClass@UAcceleratorTracker@@@@`.
 template class VectorClass<AcceleratorTracker>;
 
-// FUNCTION: GAMEMD 0x005D83E0
-// VectorClass<MultiplayerTeam*> -- vtable 0x007EEE54 slot 3; locator 0x00807020 -> type descriptor 0x00830830
-//   `.?AV?$VectorClass@PAVMultiplayerTeam@@@@`.
-template class VectorClass<MultiplayerTeam*>;
-
 // FUNCTION: GAMEMD 0x005D8640
 // VectorClass<MultiplayerGameMode*> -- vtable 0x007EED40 slot 3; locator 0x00806F58 -> type descriptor 0x008307B8
 //   `.?AV?$VectorClass@PAVMultiplayerGameMode@@@@`.
 template class VectorClass<MultiplayerGameMode*>;
-
-// FUNCTION: GAMEMD 0x005F9C70
-// VectorClass<ObjectTypeClass*> -- vtable 0x007EF28C slot 3; locator 0x008074E0 -> type descriptor 0x00832A10
-//   `.?AV?$VectorClass@PAVObjectTypeClass@@@@`.
-template class VectorClass<ObjectTypeClass*>;
 
 // FUNCTION: GAMEMD 0x006283E0
 // VectorClass<HSVClass> -- vtable 0x007EF7F0 slot 3; locator 0x008079E8 -> type descriptor 0x00836478
@@ -401,11 +335,6 @@ template class VectorClass<HSVClass>;
 //   `.?AV?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@`.
 template class VectorClass<HashObject<HashString, SchemeNode*> >;
 
-// FUNCTION: GAMEMD 0x0062B1C0
-// VectorClass<ParasiteClass*> -- vtable 0x007EF844 slot 3; locator 0x00807A80 -> type descriptor 0x008365D8
-//   `.?AV?$VectorClass@PAVParasiteClass@@@@`.
-template class VectorClass<ParasiteClass*>;
-
 // FUNCTION: GAMEMD 0x0063DE30
 // VectorClass<PlanningMemberClass*> -- vtable 0x007EFF04 slot 3; locator 0x008080A0 -> type descriptor 0x00836A60
 //   `.?AV?$VectorClass@PAVPlanningMemberClass@@@@`.
@@ -415,11 +344,6 @@ template class VectorClass<PlanningMemberClass*>;
 // VectorClass<PlanningBranchClass*> -- vtable 0x007EFF24 slot 3; locator 0x008080D0 -> type descriptor 0x008369E8
 //   `.?AV?$VectorClass@PAVPlanningBranchClass@@@@`.
 template class VectorClass<PlanningBranchClass*>;
-
-// FUNCTION: GAMEMD 0x0063E400
-// VectorClass<PlanningNodeClass*> -- vtable 0x007EFE64 slot 3; locator 0x00807F08 -> type descriptor 0x008368F8
-//   `.?AV?$VectorClass@PAVPlanningNodeClass@@@@`.
-template class VectorClass<PlanningNodeClass*>;
 
 // FUNCTION: GAMEMD 0x0063EA40
 // VectorClass<PlanningTokenClass*> -- vtable 0x007EFEA4 slot 3; locator 0x00807FA0 -> type descriptor 0x00836970

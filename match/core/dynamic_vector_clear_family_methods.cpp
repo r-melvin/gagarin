@@ -231,37 +231,6 @@ template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
 //   `.?AV?$DynamicVectorClass@PAVSuperClass@@@@`.
 template class DynamicVectorClass<SuperClass*>;
 
-
-// FUNCTION: GAMEMD 0x004E8600
-// DynamicVectorClass<TubeClass*> -- vtable 0x007E9CA4 slot 3; locator 0x00800EF0 -> type descriptor 0x00823000
-//   `.?AV?$DynamicVectorClass@PAVTubeClass@@@@`.
-template class DynamicVectorClass<TubeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8780
-// DynamicVectorClass<SmudgeClass*> -- vtable 0x007E9DA4 slot 3; locator 0x00801150 -> type descriptor 0x008231A0
-//   `.?AV?$DynamicVectorClass@PAVSmudgeClass@@@@`.
-template class DynamicVectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8A80
-// DynamicVectorClass<SideClass*> -- vtable 0x007EA024 slot 3; locator 0x00801740 -> type descriptor 0x008235B0
-//   `.?AV?$DynamicVectorClass@PAVSideClass@@@@`.
-template class DynamicVectorClass<SideClass*>;
-
-// FUNCTION: GAMEMD 0x004E8B40
-// DynamicVectorClass<TaskForceClass*> -- vtable 0x007EA0A4 slot 3; locator 0x00801870 -> type descriptor 0x00823680
-//   `.?AV?$DynamicVectorClass@PAVTaskForceClass@@@@`.
-template class DynamicVectorClass<TaskForceClass*>;
-
-// FUNCTION: GAMEMD 0x004E9020
-// DynamicVectorClass<IsometricTileTypeClass*> -- vtable 0x007EA3E4 slot 3; locator 0x00802028 -> type descriptor 0x00823C48
-//   `.?AV?$DynamicVectorClass@PAVIsometricTileTypeClass@@@@`.
-template class DynamicVectorClass<IsometricTileTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004E9080
-// DynamicVectorClass<ParticleTypeClass*> -- vtable 0x007EA424 slot 3; locator 0x008020C0 -> type descriptor 0x00823CC0
-//   `.?AV?$DynamicVectorClass@PAVParticleTypeClass@@@@`.
-template class DynamicVectorClass<ParticleTypeClass*>;
-
 // FUNCTION: GAMEMD 0x0050E560
 // DynamicVectorClass<AngerStruct> -- vtable 0x007EA924 slot 3; locator 0x00802AF8 -> type descriptor 0x008245B8
 //   `.?AV?$DynamicVectorClass@UAngerStruct@@@@`.
@@ -297,11 +266,6 @@ template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
 // DynamicVectorClass<LightSourceClass::PendingCellClass*> -- vtable 0x007ECFBC slot 3; locator 0x00805010 -> type descriptor 0x00829BB0
 //   `.?AV?$DynamicVectorClass@PAVPendingCellClass@LightSourceClass@@@@`.
 template class DynamicVectorClass<LightSourceClass::PendingCellClass*>;
-
-// FUNCTION: GAMEMD 0x00556EB0
-// DynamicVectorClass<LineTrail*> -- vtable 0x007ED0CC slot 3; locator 0x008051A8 -> type descriptor 0x00829D78
-//   `.?AV?$DynamicVectorClass@PAVLineTrail@@@@`.
-template class DynamicVectorClass<LineTrail*>;
 
 // FUNCTION: GAMEMD 0x00588C90
 // DynamicVectorClass<SubzoneConnectionStruct> -- vtable 0x007ED5A0 slot 3; locator 0x008057F8 -> type descriptor 0x0082ADD0
@@ -348,48 +312,17 @@ template class DynamicVectorClass<double>;
 //   `.?AV?$DynamicVectorClass@VPoint2D@@@@`.
 template class DynamicVectorClass<Point2D>;
 
-
-// FUNCTION: GAMEMD 0x005D06D0
-// DynamicVectorClass<MapStage*> -- vtable 0x007EEA94 slot 3; locator 0x00806928 -> type descriptor 0x00830230
-//   `.?AV?$DynamicVectorClass@PAVMapStage@@@@`.
-template class DynamicVectorClass<MapStage*>;
-
 // MSAnimEntry vector specialization moved to vector_msanimentry_methods.cpp.
-
-// FUNCTION: GAMEMD 0x005D0790
-// DynamicVectorClass<MSSfxEntry*> -- vtable 0x007EEA54 slot 3; locator 0x00806990 -> type descriptor 0x00830298
-//   `.?AV?$DynamicVectorClass@PAVMSSfxEntry@@@@`.
-template class DynamicVectorClass<MSSfxEntry*>;
-
-// FUNCTION: GAMEMD 0x005D2720
-// DynamicVectorClass<MSAnim*> -- vtable 0x007EEC04 slot 3; locator 0x00806CB8 -> type descriptor 0x00830580
-//   `.?AV?$DynamicVectorClass@PAVMSAnim@@@@`.
-template class DynamicVectorClass<MSAnim*>;
-
-// FUNCTION: GAMEMD 0x005D2780
-// DynamicVectorClass<MSSfx*> -- vtable 0x007EEBE4 slot 3; locator 0x00806C50 -> type descriptor 0x00830528
-//   `.?AV?$DynamicVectorClass@PAVMSSfx@@@@`.
-template class DynamicVectorClass<MSSfx*>;
 
 // FUNCTION: GAMEMD 0x005D50E0
 // DynamicVectorClass<AcceleratorTracker> -- vtable 0x007EECCC slot 3; locator 0x00806E90 -> type descriptor 0x00830760
 //   `.?AV?$DynamicVectorClass@UAcceleratorTracker@@@@`.
 template class DynamicVectorClass<AcceleratorTracker>;
 
-// FUNCTION: GAMEMD 0x005D80B0
-// DynamicVectorClass<MultiplayerTeam*> -- vtable 0x007EEE34 slot 3; locator 0x00806FF0 -> type descriptor 0x00830868
-//   `.?AV?$DynamicVectorClass@PAVMultiplayerTeam@@@@`.
-template class DynamicVectorClass<MultiplayerTeam*>;
-
 // FUNCTION: GAMEMD 0x005D8110
 // DynamicVectorClass<MultiplayerGameMode*> -- vtable 0x007EED20 slot 3; locator 0x00806F28 -> type descriptor 0x008307F0
 //   `.?AV?$DynamicVectorClass@PAVMultiplayerGameMode@@@@`.
 template class DynamicVectorClass<MultiplayerGameMode*>;
-
-// FUNCTION: GAMEMD 0x005F9B00
-// DynamicVectorClass<ObjectTypeClass*> -- vtable 0x007EF26C slot 3; locator 0x008074B0 -> type descriptor 0x00832A48
-//   `.?AV?$DynamicVectorClass@PAVObjectTypeClass@@@@`.
-template class DynamicVectorClass<ObjectTypeClass*>;
 
 // FUNCTION: GAMEMD 0x00627D80
 // DynamicVectorClass<HSVClass> -- vtable 0x007EF750 slot 3; locator 0x00807888 -> type descriptor 0x008364A0
@@ -401,11 +334,6 @@ template class DynamicVectorClass<HSVClass>;
 //   `.?AV?$DynamicVectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@`.
 template class DynamicVectorClass<HashObject<HashString, SchemeNode*> >;
 
-// FUNCTION: GAMEMD 0x0062B070
-// DynamicVectorClass<ParasiteClass*> -- vtable 0x007EF824 slot 3; locator 0x00807A50 -> type descriptor 0x00836608
-//   `.?AV?$DynamicVectorClass@PAVParasiteClass@@@@`.
-template class DynamicVectorClass<ParasiteClass*>;
-
 // FUNCTION: GAMEMD 0x0063DB60
 // DynamicVectorClass<PlanningMemberClass*> -- vtable 0x007EFEE4 slot 3; locator 0x00808070 -> type descriptor 0x00836A98
 //   `.?AV?$DynamicVectorClass@PAVPlanningMemberClass@@@@`.
@@ -415,11 +343,6 @@ template class DynamicVectorClass<PlanningMemberClass*>;
 // DynamicVectorClass<PlanningBranchClass*> -- vtable 0x007EFEC4 slot 3; locator 0x00808008 -> type descriptor 0x00836A20
 //   `.?AV?$DynamicVectorClass@PAVPlanningBranchClass@@@@`.
 template class DynamicVectorClass<PlanningBranchClass*>;
-
-// FUNCTION: GAMEMD 0x0063DC20
-// DynamicVectorClass<PlanningNodeClass*> -- vtable 0x007EFE44 slot 3; locator 0x00807ED8 -> type descriptor 0x00836930
-//   `.?AV?$DynamicVectorClass@PAVPlanningNodeClass@@@@`.
-template class DynamicVectorClass<PlanningNodeClass*>;
 
 // FUNCTION: GAMEMD 0x0063DCE0
 // DynamicVectorClass<PlanningTokenClass*> -- vtable 0x007EFE84 slot 3; locator 0x00807F70 -> type descriptor 0x008369A8
