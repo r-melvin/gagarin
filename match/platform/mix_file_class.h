@@ -163,7 +163,7 @@ void Log_4a4ac0(const char* fmt, ...);
 // Globals (absolute addresses reloc-normalised by the harness).
 // ---------------------------------------------------------------------------
 extern DynamicVectorClass_Mix MixArray;          // GLOBAL: GAMEMD 0x884D90
-extern int                    g_FileSearchMode;   // GLOBAL: GAMEMD 0x81C1D0
+#include "../_layout/global_0081c1d0.h"
 
 // Generics pointer table (each a MixFileClass*).
 extern MixFileClass* g_RA2MD;     // 0x884DF8

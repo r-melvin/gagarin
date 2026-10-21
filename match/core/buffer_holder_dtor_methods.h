@@ -27,14 +27,12 @@
 
 extern char VTABLE_007E177C[];   // VTABLE: GAMEMD 0x7E177C
 extern char VTABLE_007E184C[];   // VTABLE: GAMEMD 0x7E184C
-extern char VTABLE_007E188C[];   // VTABLE: GAMEMD 0x7E188C
 extern char VTABLE_007E18DC[];   // VTABLE: GAMEMD 0x7E18DC
 extern char VTABLE_007E192C[];   // VTABLE: GAMEMD 0x7E192C
 extern char VTABLE_007E1A64[];   // VTABLE: GAMEMD 0x7E1A64
 extern char VTABLE_007E1B44[];   // VTABLE: GAMEMD 0x7E1B44
 extern char VTABLE_007E1E4C[];   // VTABLE: GAMEMD 0x7E1E4C
 extern char VTABLE_007E1EF4[];   // VTABLE: GAMEMD 0x7E1EF4
-extern char VTABLE_007E3258[];   // VTABLE: GAMEMD 0x7E3258
 extern char VTABLE_007E37EC[];   // VTABLE: GAMEMD 0x7E37EC
 extern char VTABLE_007E3824[];   // VTABLE: GAMEMD 0x7E3824
 extern char VTABLE_007E38D0[];   // VTABLE: GAMEMD 0x7E38D0
@@ -52,8 +50,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0040B300(unsigned int flags);   // FUNCTION: GAMEMD 0x40B300
     void* FUN_0040C110(unsigned int flags);   // FUNCTION: GAMEMD 0x40C110
     void* FUN_0040C160(unsigned int flags);   // FUNCTION: GAMEMD 0x40C160
-    void* FUN_0040C4F0(unsigned int flags);   // FUNCTION: GAMEMD 0x40C4F0
-    void* FUN_0040C540(unsigned int flags);   // FUNCTION: GAMEMD 0x40C540
     void* FUN_0040CAE0(unsigned int flags);   // FUNCTION: GAMEMD 0x40CAE0
     void* FUN_0040CB30(unsigned int flags);   // FUNCTION: GAMEMD 0x40CB30
     void* FUN_0040CC20(unsigned int flags);   // FUNCTION: GAMEMD 0x40CC20
@@ -66,8 +62,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0040F1D0(unsigned int flags);   // FUNCTION: GAMEMD 0x40F1D0
     void* FUN_0040FE70(unsigned int flags);   // FUNCTION: GAMEMD 0x40FE70
     void* FUN_0040FEC0(unsigned int flags);   // FUNCTION: GAMEMD 0x40FEC0
-    void* FUN_00421AC0(unsigned int flags);   // FUNCTION: GAMEMD 0x421AC0
-    void* FUN_00421B10(unsigned int flags);   // FUNCTION: GAMEMD 0x421B10
     void* FUN_0042DB10(unsigned int flags);   // FUNCTION: GAMEMD 0x42DB10
     void* FUN_0042DB60(unsigned int flags);   // FUNCTION: GAMEMD 0x42DB60
     void* FUN_0042DBB0(unsigned int flags);   // FUNCTION: GAMEMD 0x42DBB0

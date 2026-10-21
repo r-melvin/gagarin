@@ -1,13 +1,62 @@
 # Project status
 
-The latest whole-repository regression passed with **4,274 fully matched
-functions**, **167 partial rows**, and 975 manifest translation units, with no
-matched function regressing. All **985 tracked C++ files** produced current
+The latest whole-repository regression passed with **4,305 fully matched
+functions**, **167 partial rows**, and 980 manifest translation units, with no
+matched function regressing. All **990 tracked C++ files** produced current
 project objects and their hash check passed. The compile/layout gate, 75
-verifier tests and duplicate-address check passed (4,472 addresses, zero
+verifier tests and duplicate-address check passed (4,503 addresses, zero
 problems). The complete byte-for-byte executable target has not been achieved.
 
-## Latest integration: HouseType/AlphaLightingRemap vectors and table routines
+## Latest integration: three pointer-vector pairs and CD callback
+
+Three native mutable-pointer vector implementations add 24 exact matches and
+migrate 12 prior claims: [AlphaShapeClass](match/core/vector_alphashapeclass_methods.cpp),
+[LightConvertClass](match/core/vector_lightconvertclass_methods.cpp) and
+[EventClass](match/core/vector_eventclass_methods.cpp). Each covers 12 entries
+across `VectorClass<T*>` and `DynamicVectorClass<T*>`; retail RTTI confirms the
+element types and zero-offset dynamic-to-base chains. Their six integrated
+seven-slot tables pass conditional 7/7 checks. The selected flags are
+`/O2 /DNDEBUG /Gy` with `/GX` disabled: the dynamic deleting-body full span
+requires `/GX` off, while the base deleting body also matches under `/GX`.
+
+The new [CD callback view](match/core/cd_callback_00473ab0.cpp) matches the
+40-byte entry at `0x473AB0`. The callback uses slot zero of the RTTI-backed
+three-slot `CD` table at `0x7E4C30`. Its local eight-byte stack reservation
+does not establish the complete `CD` size; the source models only an
+address-scoped callback view, leaves the remaining four bytes uninterpreted, and
+uses a `void` call signature because slot zero's result is discarded. The
+outer receiver byte at `+4` and its three callee-cleaned stack words are ABI
+views; original owner and method signature are unknown. A [shared declaration
+for `0x81C1D0`](match/_layout/global_0081c1d0.h) retains the existing C++
+`g_FileSearchMode` symbol used by the callback and MixFile.
+
+The [math-global update implementation](match/core/math_global_updates_00473fe0.cpp)
+adds six address-ordered routines. Its `double` return declaration for
+`0x4CAC40` is an ABI view only; the helper's original return type remains
+unconfirmed. The batch adds 31 new matches (24 vector bodies, six math
+routines and the callback) and migrates 12 existing address claims. The old
+`BufferHolderDtor` and `BufferRelease` views now each contain 27 manifest rows.
+
+The full regression passed with **4,305 matched functions**, 167 partial rows
+and no regressions. All **990/990 tracked C++ files** produced current project
+objects and passed the hash check. The compile/layout gate, 75 verifier tests
+and duplicate-address check passed (4,503 addresses, zero problems). Focused
+checks covered 359 matched rows and two existing partials across 11 translation
+units. Nine saved partial-body byte/relocation checks and both complete MixFile
+partial COMDATs retain their baseline bytes and relocations. The
+`/dll /noentry /nodefaultlib` diagnostic link reports **3,714 unique unresolved
+symbols**, 5,595 reference lines and no duplicate definitions. Default
+libraries are excluded, so this diagnostic does not establish engine link
+closure.
+
+Matched lengths total **304,034 bytes (297 KiB)**: 21.8% of listed functions
+and 8.0% of listed function lengths. The current padding scan reports 268
+matched entries missed by its heuristic. Generic families contain 131 deleting
+bindings across 69 views, 66 base `Clear` rows, 64 native dynamic `Clear` rows
+plus one DiskID stand-in, and 10 resize-family rows plus two other resize
+helpers. The complete executable target remains unfinished.
+
+## Previous verified integration: HouseType/AlphaLightingRemap vectors and table routines
 
 The native [HouseTypeClass vector implementation](match/core/vector_housetypeclass_methods.cpp)
 and [AlphaLightingRemapClass vector implementation](match/core/vector_alphalightingremapclass_methods.cpp)
@@ -1573,8 +1622,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 985 tracked C++ files and 4,441 manifest
-rows across 975 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 990 tracked C++ files and 4,472 manifest
+rows across 980 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1736,7 +1785,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 67 base and 65
+  `CountedVector::Destroy` stand-ins. The family files bind 66 base and 64
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -1826,7 +1875,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 133 bindings across 70 base-template instantiation views. Their
+  family has 131 bindings across 69 base-template instantiation views. Their
   written vptr and RTTI identify the base-destruction path and element type,
   but do not establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -1890,10 +1939,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,274** | **21.6%** of 19,753 |
-| Sum of matched function lengths | 295 KiB | 8.0% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,305** | **21.8%** of 19,753 |
+| Sum of matched function lengths | 297 KiB | 8.0% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 985 | |
+| Tracked C++ files under `match/` | 990 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -1913,7 +1962,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 265 matched entries. Its candidate count is therefore
+listed entries, including 268 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

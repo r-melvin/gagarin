@@ -451,11 +451,6 @@ template class VectorClass<PlanningBranchClass*>;
 //   `.?AV?$VectorClass@PAVPlanningNodeClass@@@@`.
 template class VectorClass<PlanningNodeClass*>;
 
-// FUNCTION: GAMEMD 0x0063E740
-// VectorClass<EventClass*> -- vtable 0x007EFE24 slot 3; locator 0x00807E70 -> type descriptor 0x00836890
-//   `.?AV?$VectorClass@PAVEventClass@@@@`.
-template class VectorClass<EventClass*>;
-
 // FUNCTION: GAMEMD 0x0063EA40
 // VectorClass<PlanningTokenClass*> -- vtable 0x007EFEA4 slot 3; locator 0x00807FA0 -> type descriptor 0x00836970
 //   `.?AV?$VectorClass@PAVPlanningTokenClass@@@@`.

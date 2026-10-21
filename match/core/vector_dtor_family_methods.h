@@ -128,8 +128,6 @@ extern char VT_007EFF04;
 extern char VT_007EFF24;
 // VTABLE: GAMEMD 0x007EFE64 -- VectorClass<PlanningNodeClass*>
 extern char VT_007EFE64;
-// VTABLE: GAMEMD 0x007EFE24 -- VectorClass<EventClass*>
-extern char VT_007EFE24;
 // VTABLE: GAMEMD 0x007EFEA4 -- VectorClass<PlanningTokenClass*>
 extern char VT_007EFEA4;
 // VTABLE: GAMEMD 0x007F044C -- VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>
