@@ -1,5 +1,41 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,064 matched function
+rows**, **233 partial rows**, **5,297 manifest rows**, **1,072 manifest
+translation units**, and **1,082 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 112 tooling
+tests pass. There are zero annotation issues across 5,330 body addresses.
+
+The latest batch integrates native `ParticleClass` and `ParticleSystemClass`
+declarations and methods. It adds 24 exact entries and retains six frozen
+partials. The system deleting destructor moves from the generic sweep to
+compiler-generated native output; its ordinary destructor remains declared
+at `0x62E070`. Two existing spawn methods keep their retail bytes with canonical
+coordinate and constructor declarations. Partial object-base views remain.
+
+All 27 exact entries pass raw and strict checks across 118 relocation fields.
+The eight runtime tables cover 261 slots; the two primary deleting entries use
+recorded weak-default assumptions, and final-link selection remains unproved.
+The six partials retain their complete emitted sections. Fifty-six older saved
+partial baselines also remain unchanged. All 70 affected prior sections preserve
+their bytes and relocation positions/types; three renamed target tuples are
+checked separately. Both CLSID constants match retail data.
+
+The 5,064 matches represent 25.6% of 19,753 listed functions. Matched body
+lengths total **376,290 bytes**, or 9.9% of 3,797,269 listed function bytes.
+The padding heuristic misses 312 matched entries. The diagnostic link reports
+**4,145 unique unresolved symbols**, **6,677 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native terrain, overlay and smudge methods
+
 As of **2026-10-22**, the verified snapshot reports **5,040 matched function
 rows**, **227 partial rows**, **5,267 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -16,7 +52,8 @@ recorded weak-default assumptions; 48 secondary slots pass directly. These
 checks do not establish final-link selection. Shared MapObj bases remain
 explicitly partial views.
 
-All 18 new partials retain their complete emitted sections and relocations.
+All 18 retained partials preserve their complete emitted sections and relocations.
+Three requested spans exceed those emitted sections and remain unverified.
 The 86 affected prior rows preserve full section sizes, non-relocation bytes
 and relocation positions/types; renamed targets are checked separately. The
 36 older saved partial baselines and two previous particle type cap sections
@@ -28,13 +65,6 @@ lengths total **374,180 bytes**, or 9.9% of 3,797,269 listed function bytes.
 The padding heuristic misses 310 matched entries. The diagnostic link reports
 **3,974 unique unresolved symbols**, **6,366 reference lines**, and zero
 duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native particle type methods
 
@@ -2779,10 +2809,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **5,040** | **25.5%** of 19,753 |
-| Sum of matched function lengths | 374,180 bytes | 9.9% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 227 | 1.1% |
-| Tracked C++ files under `match/` | 1,080 | |
+| Functions matched at 100% | **5,064** | **25.6%** of 19,753 |
+| Sum of matched function lengths | 376,290 bytes | 9.9% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 233 | 1.2% |
+| Tracked C++ files under `match/` | 1,082 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2802,7 +2832,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 310 matched entries. Its candidate count is therefore
+listed entries, including 312 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

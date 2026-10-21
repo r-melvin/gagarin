@@ -7,19 +7,20 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x62E380  ParticleSystemClass::SpawnParticle(coord,coord) (__thiscall)
 //   FUNCTION: GAMEMD 0x62E430  ParticleSystemClass::SpawnParticle(type,coord)  (__thiscall)
-//   FUNCTION: GAMEMD 0x62B5E0  ParticleClass::ParticleClass    (declared call target; reconstruction remains capped elsewhere)
+//   The call at 0x62B5E0 targets ParticleClass::ParticleClass, whose reconstruction remains capped elsewhere.
 
 #include "particle_system_class.h"
+#include "particles/particle_class.h"
 #include "particles/particle_type_class.h"
 
-// A static all-zero CoordStruct at GAMEMD 0x00AC4A58, passed as the second
+// A static all-zero ParticleCoord at GAMEMD 0x00AC4A58, passed as the second
 // coordinate by the (type, coord) overload (push 0xAC4A58). Reloc-normalised.
-extern CoordStruct DefaultSpawnCoords;
+extern ParticleCoord DAT_00AC4A58;
 
 // FUNCTION: GAMEMD 0x62E380  (__thiscall)
 // Spawn a particle of the system's own configured type between two coordinates.
-ParticleClass* ParticleSystemClass::SpawnParticle(const CoordStruct& coords1,
-                                                  const CoordStruct& coords2)
+ParticleClass* ParticleSystemClass::SpawnParticle(const ParticleCoord& coords1,
+                                                  const ParticleCoord& coords2)
 {
     ParticleClass* particle;
 
@@ -29,7 +30,7 @@ ParticleClass* ParticleSystemClass::SpawnParticle(const CoordStruct& coords1,
 
     particle = new ParticleClass(
         ParticleTypeArray.Items[this->Type->HoldsWhat],
-        coords1, coords2, this);
+        &coords1, &coords2, this);
 
     if (particle) {
         this->Particles.AddItem(particle);
@@ -43,10 +44,10 @@ fail:
 // FUNCTION: GAMEMD 0x62E430  (__thiscall)
 // Spawn a particle of an explicitly supplied type at the given coordinate.
 ParticleClass* ParticleSystemClass::SpawnParticle(ParticleTypeClass* pType,
-                                                  const CoordStruct& coords)
+                                                  const ParticleCoord& coords)
 {
     ParticleClass* particle = new ParticleClass(
-        pType, coords, DefaultSpawnCoords, this);
+        pType, &coords, &DAT_00AC4A58, this);
 
     if (particle) {
         this->Particles.AddItem(particle);

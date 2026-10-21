@@ -2026,21 +2026,21 @@
  },
  {
   "tu": "match/combat/particle_system_class.cpp",
-  "addr": "0x62e380",
-  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@ABUCoordStruct@@0@Z",
-  "len": "0xab",
+  "addr": "0x62E380",
+  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@ABUParticleCoord@@0@Z",
+  "len": "0xAB",
   "name": "ParticleSystemClass::SpawnParticle",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/particle_system_class.cpp",
-  "addr": "0x62e430",
-  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@PAVParticleTypeClass@@ABUCoordStruct@@@Z",
+  "addr": "0x62E430",
+  "sym": "?SpawnParticle@ParticleSystemClass@@QAEPAVParticleClass@@PAVParticleTypeClass@@ABUParticleCoord@@@Z",
   "len": "0x87",
   "name": "ParticleSystemClass::SpawnParticle",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/combat/rad_beam_allocate_methods.cpp",
@@ -5114,11 +5114,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/combat/particles/system_class.cpp",
   "addr": "0x630230",
-  "sym": "?FUN_630230@Obj_630230@@QAEPAXI@Z",
+  "sym": "??_GParticleSystemClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_00630230",
+  "name": "ParticleSystemClass::scalar_deleting_destructor",
   "status": "matched",
   "pct": 100
  },
@@ -47553,5 +47553,275 @@
   "name": "OverlayClass scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62B5E0",
+  "sym": "??0ParticleClass@@QAE@PAVParticleTypeClass@@PBUParticleCoord@@1PAVParticleSystemClass@@@Z",
+  "len": "0x53f",
+  "name": "ParticleClass::ParticleClass",
+  "status": "partial",
+  "pct": 62.3
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62BB20",
+  "sym": "??0ParticleClass@@QAE@XZ",
+  "len": "0x19c",
+  "name": "ParticleClass::ParticleClass",
+  "status": "partial",
+  "pct": 94.3
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62CEC0",
+  "sym": "?vf_69@ParticleClass@@UAEXPAXPAUParticleRect@@@Z",
+  "len": "0x3d5",
+  "name": "ParticleClass::vf_69",
+  "status": "partial",
+  "pct": 19.7
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D6F0",
+  "sym": "?vf_73@ParticleClass@@UAE_NH@Z",
+  "len": "0x12",
+  "name": "ParticleClass::vf_73",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D710",
+  "sym": "?vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z",
+  "len": "0x45",
+  "name": "ParticleClass::vf_66",
+  "status": "partial",
+  "pct": 52.6
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D760",
+  "sym": "_$E2",
+  "len": "0x1",
+  "name": "ParticleClass::slot66_local_static_atexit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D770",
+  "sym": "?InWhichLayer@ParticleClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D7A0",
+  "sym": "?Load@ParticleClass@@UAGJPAUIStream@@@Z",
+  "len": "0x67",
+  "name": "ParticleClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D810",
+  "sym": "?Save@ParticleClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x20",
+  "name": "ParticleClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D830",
+  "sym": "?vf_122@ParticleClass@@UAEHXZ",
+  "len": "0xf6",
+  "name": "ParticleClass::vf_122",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D930",
+  "sym": "?GetClassID@ParticleClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "ParticleClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D970",
+  "sym": "?Size@ParticleClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D980",
+  "sym": "?WhatAmI@ParticleClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleClass::WhatAmI",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D990",
+  "sym": "?GetType@ParticleClass@@UAEPAVParticleTypeObjectView@@XZ",
+  "len": "0x7",
+  "name": "ParticleClass::GetType",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/particle_class.cpp",
+  "addr": "0x62D9A0",
+  "sym": "??_GParticleClass@@UAEPAXI@Z",
+  "len": "0x9e",
+  "name": "ParticleClass::scalar_deleting_destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62DC50",
+  "sym": "??0ParticleSystemClass@@QAE@PAVParticleSystemTypeClass@@ABUParticleCoord@@PAVParticleObjectView@@21H@Z",
+  "len": "0x2c1",
+  "name": "ParticleSystemClass::ParticleSystemClass",
+  "status": "partial",
+  "pct": 28.5
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62DF20",
+  "sym": "??0ParticleSystemClass@@QAE@XZ",
+  "len": "0x14f",
+  "name": "ParticleSystemClass::ParticleSystemClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62E280",
+  "sym": "?vf_69@ParticleSystemClass@@UAEXPAXPAUParticleRect@@@Z",
+  "len": "0xfe",
+  "name": "ParticleSystemClass::vf_69",
+  "status": "partial",
+  "pct": 47.5
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62FD60",
+  "sym": "?Update@ParticleSystemClass@@UAEXXZ",
+  "len": "0xf8",
+  "name": "ParticleSystemClass::Update",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62FE60",
+  "sym": "?IsFinished@ParticleSystemClass@@UAE_NXZ",
+  "len": "0x1d",
+  "name": "ParticleSystemClass::IsFinished",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62FE80",
+  "sym": "?InWhichLayer@ParticleSystemClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleSystemClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62FE90",
+  "sym": "?PointerExpired@ParticleSystemClass@@UAEXPAX_N@Z",
+  "len": "0x8f",
+  "name": "ParticleSystemClass::PointerExpired",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x62FF20",
+  "sym": "?Load@ParticleSystemClass@@UAGJPAUIStream@@@Z",
+  "len": "0x170",
+  "name": "ParticleSystemClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x630090",
+  "sym": "?Save@ParticleSystemClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x69",
+  "name": "ParticleSystemClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x630100",
+  "sym": "?ComputeCRC@ParticleSystemClass@@UAEXAAVParticleCrcView@@@Z",
+  "len": "0x9a",
+  "name": "ParticleSystemClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x6301A0",
+  "sym": "?GetClassID@ParticleSystemClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "ParticleSystemClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x6301E0",
+  "sym": "?MarkFinished@ParticleSystemClass@@UAEXXZ",
+  "len": "0x8",
+  "name": "ParticleSystemClass::MarkFinished",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x630200",
+  "sym": "?Size@ParticleSystemClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleSystemClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x630210",
+  "sym": "?WhatAmI@ParticleSystemClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ParticleSystemClass::WhatAmI",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/particles/system_class.cpp",
+  "addr": "0x630220",
+  "sym": "?GetType@ParticleSystemClass@@UAEPAVParticleTypeObjectView@@XZ",
+  "len": "0x7",
+  "name": "ParticleSystemClass::GetType",
+  "status": "matched",
+  "pct": 100
  }
 ]
