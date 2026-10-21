@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 115 base-template instantiations reproduce 223 remaining retail destructor
+// 112 base-template instantiations reproduce 217 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -213,12 +213,6 @@ template class VectorClass<RGBClass>;
 //   `.?AV?$VectorClass@PAVObjectClass@@@@`.
 template class VectorClass<ObjectClass*>;
 
-// FUNCTION: GAMEMD 0x0049B0E0
-// FUNCTION: GAMEMD 0x0049B130
-// VectorClass<ConvertClass*> -- reseats retail vtable 0x007E5338; locator 0x007FD3A0 -> type descriptor 0x0081DC30
-//   `.?AV?$VectorClass@PAVConvertClass@@@@`.
-template class VectorClass<ConvertClass*>;
-
 // FUNCTION: GAMEMD 0x0049EE10
 // FUNCTION: GAMEMD 0x0049EFA0
 // VectorClass<char*> -- reseats retail vtable 0x007E5C24; locator 0x007FF628 -> type descriptor 0x0081F240
@@ -350,12 +344,6 @@ template class VectorClass<SmudgeClass*>;
 //   `.?AV?$VectorClass@PAVAnimClass@@@@`.
 template class VectorClass<AnimClass*>;
 
-// FUNCTION: GAMEMD 0x004F0110
-// FUNCTION: GAMEMD 0x004F0160
-// VectorClass<FactoryClass*> -- reseats retail vtable 0x007E9FC4; locator 0x00801640 -> type descriptor 0x008234B0
-//   `.?AV?$VectorClass@PAVFactoryClass@@@@`.
-template class VectorClass<FactoryClass*>;
-
 // FUNCTION: GAMEMD 0x004F0250
 // FUNCTION: GAMEMD 0x004F02A0
 // VectorClass<SideClass*> -- reseats retail vtable 0x007EA044; locator 0x00801770 -> type descriptor 0x00823580
@@ -481,12 +469,6 @@ template class VectorClass<LightSourceClass::PendingCellClass*>;
 // VectorClass<LineTrail*> -- reseats retail vtable 0x007ED0EC; locator 0x008051D8 -> type descriptor 0x00829D48
 //   `.?AV?$VectorClass@PAVLineTrail@@@@`.
 template class VectorClass<LineTrail*>;
-
-// FUNCTION: GAMEMD 0x0055A410
-// FUNCTION: GAMEMD 0x0055A460
-// VectorClass<FileEntryClass*> -- reseats retail vtable 0x007ED32C; locator 0x008053E8 -> type descriptor 0x00829E18
-//   `.?AV?$VectorClass@PAVFileEntryClass@@@@`.
-template class VectorClass<FileEntryClass*>;
 
 // FUNCTION: GAMEMD 0x00589060
 // FUNCTION: GAMEMD 0x005AD570

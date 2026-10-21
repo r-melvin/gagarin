@@ -43,16 +43,16 @@ public:
     static bool __fastcall Line_Contains_Section(char* buffer);
     void* unknown_04;
     void* unknown_08;
-    // Retail concrete member is List<INISection*> (table 0x7E1AFC).
-    // Only its zero-offset GenericList prefix and teardown are modelled here.
-    GenericList SectionsPrefix;
+    // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.
+    List<INISection*> Sections;
     IndexClassRaw SectionIndex;
     unsigned int unknown_3C;
 };
 GG_STATIC_ASSERT(offsetof(INIClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(INIClass, unknown_08) == 8);
-GG_STATIC_ASSERT(offsetof(INIClass, SectionsPrefix) == 0xC);
+GG_STATIC_ASSERT(offsetof(INIClass, Sections) == 0xC);
 GG_STATIC_ASSERT(offsetof(INIClass, SectionIndex) == 0x28);
 GG_STATIC_ASSERT(offsetof(INIClass, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(sizeof(List<INIClass::INISection*>) == 0x1C);
 GG_STATIC_ASSERT(sizeof(INIClass) == 0x40);
 #endif

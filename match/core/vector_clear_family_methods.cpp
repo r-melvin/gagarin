@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 111
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 108
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -216,11 +216,6 @@ struct tagCONNECTDATA;
 //   `.?AV?$VectorClass@VRGBClass@@@@`.
 template class VectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x0049AF70
-// VectorClass<ConvertClass*> -- vtable 0x007E5338 slot 3; locator 0x007FD3A0 -> type descriptor 0x0081DC30
-//   `.?AV?$VectorClass@PAVConvertClass@@@@`.
-template class VectorClass<ConvertClass*>;
-
 // FUNCTION: GAMEMD 0x0049EC40
 // VectorClass<DynamicVectorClass<char*>*> -- vtable 0x007E5C04 slot 3; locator 0x007FF5F8 -> type descriptor 0x0081F288
 //   `.?AV?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@`.
@@ -315,11 +310,6 @@ template class VectorClass<SmudgeClass*>;
 // VectorClass<AnimClass*> -- vtable 0x007E9F44 slot 3; locator 0x00801510 -> type descriptor 0x008233E0
 //   `.?AV?$VectorClass@PAVAnimClass@@@@`.
 template class VectorClass<AnimClass*>;
-
-// FUNCTION: GAMEMD 0x004EC190
-// VectorClass<FactoryClass*> -- vtable 0x007E9FC4 slot 3; locator 0x00801640 -> type descriptor 0x008234B0
-//   `.?AV?$VectorClass@PAVFactoryClass@@@@`.
-template class VectorClass<FactoryClass*>;
 
 // FUNCTION: GAMEMD 0x004EC650
 // VectorClass<SideClass*> -- vtable 0x007EA044 slot 3; locator 0x00801770 -> type descriptor 0x00823580
@@ -425,11 +415,6 @@ template class VectorClass<LightSourceClass::PendingCellClass*>;
 // VectorClass<LineTrail*> -- vtable 0x007ED0EC slot 3; locator 0x008051D8 -> type descriptor 0x00829D48
 //   `.?AV?$VectorClass@PAVLineTrail@@@@`.
 template class VectorClass<LineTrail*>;
-
-// FUNCTION: GAMEMD 0x0055A2A0
-// VectorClass<FileEntryClass*> -- vtable 0x007ED32C slot 3; locator 0x008053E8 -> type descriptor 0x00829E18
-//   `.?AV?$VectorClass@PAVFileEntryClass@@@@`.
-template class VectorClass<FileEntryClass*>;
 
 // FUNCTION: GAMEMD 0x005894A0
 // VectorClass<ZoneConnectionClass> -- vtable 0x007ED4E0 slot 3; locator 0x00805610 -> type descriptor 0x0082AA88

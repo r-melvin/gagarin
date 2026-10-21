@@ -11,5 +11,5 @@ INIClass::~INIClass()
 {
     Clear(0, 0);
     SectionIndex.Clear();
-    SectionsPrefix.DestroyList();
+    Sections.DestroyList();
 }

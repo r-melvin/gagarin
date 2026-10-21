@@ -1,13 +1,58 @@
 # Project status
 
-The latest whole-repository regression passed with **3,823 fully matched
-functions**, **166 partial rows**, and 915 manifest translation units, with no
-matched function regressing. All **926 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,847 fully matched
+functions**, **166 partial rows**, and 919 manifest translation units, with no
+matched function regressing. All **930 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: nested INI nodes and two vector pairs
+## Latest integration: shared list templates and three vector pairs
+
+The INI entry and section lists now use a shared `List<T>` model with their
+RTTI-confirmed zero-offset `GenericList` base. The entry-list constructor and
+both deleting entries retain their complete 111/179/179-byte matches.
+The section-list entry replaces an opaque host. `INIClass::Sections` and
+`INISection::EntryList` use the actual template specializations with asserted
+0x1C storage. Their original complete virtual API remains unrecovered; the
+explicit inherited vptr model is documented.
+
+The [GenericList deleting entry](match/core/generic_list_methods.cpp) also
+replaces an opaque host and duplicate node layout. Retail RTTI and slot zero
+identify its complete 179-byte body at `0x40E3E0`. Its table and both INI list
+tables are now explicit one-slot member-function-pointer cells, each verified
+**1/1 without weak defaults** against its project object. Shared inline list
+operations reference the defined GenericList table instead of embedding its
+retail address. This does not claim recovered native virtual declarations or
+complete-image identity. All 18 initially affected existing functions retain
+their matches.
+
+The [FactoryClass](match/core/vector_factoryclass_methods.cpp),
+[FileEntryClass](match/core/vector_fileentryclass_methods.cpp) and
+[ConvertClass](match/core/vector_convertclass_methods.cpp) pointer-vector pairs
+add **24 exact matches** and migrate twelve existing claims. Each pair's two
+seven-slot tables pass conditional `--weak-defaults` checks against its project
+object. Full-span checks and GX/no-GX probes establish the no-GX flags needed
+for each full dynamic deleting body. No new constructor or TypeList binding is
+claimed. FileEntryClass's isolated REA provider failed; current Ghidra entry
+boundaries and pinned-PE full-byte comparisons supply its verification evidence.
+
+All eight regression shards, the compile/layout gate, 75 verifier tests and
+the **930/930 tracked-source object build** passed. Six existing partial emitted
+bodies were also checked unchanged against saved baseline objects. The current
+`/dll /noentry /nodefaultlib` diagnostic link reports **3,981 unique unresolved
+symbols**, 6,098 reference lines and no duplicate definitions. Its default
+libraries are excluded; this is not an engine-only gap census.
+
+Matched lengths total **274,695 bytes (268 KiB)**: 19.5% of listed functions and
+7.2% of listed function lengths. The padding heuristic misses 216 matched
+entries. Remaining generic families have 217 deleting bindings across 112
+views, 109 base Clear rows and 107 native dynamic Clear rows plus one DiskID
+stand-in. A CCINIClass vector pair has passed corrected temporary probes but
+is not integrated or counted here. Engine link closure and complete executable
+reproduction remain unfinished.
+
+## Previous verified integration: nested INI nodes and two vector pairs
 
 The shared [INI node layouts](match/_layout/ini_nodes.h) now use the
 RTTI-confirmed nested `INIClass::INIEntry` and `INIClass::INISection` names
@@ -617,7 +662,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 926 tracked C++ files and 3,989 manifest
+verified snapshot, the inventory has 930 tracked C++ files and 4,013 manifest
 rows, with no manifest TU missing from tracked sources. Eleven tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -779,7 +824,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 112 base and 110
+  `CountedVector::Destroy` stand-ins. The family files bind 109 base and 107
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -869,7 +914,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 223 bindings across 115 base-template instantiation views. Their written vptr and
+  family has 217 bindings across 112 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -933,10 +978,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,823** | **19.4%** of 19,753 |
-| Sum of matched function lengths | 266 KiB | 7.2% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,847** | **19.5%** of 19,753 |
+| Sum of matched function lengths | 268 KiB | 7.2% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 166 | 0.8% |
-| Tracked C++ files under `match/` | 926 | |
+| Tracked C++ files under `match/` | 930 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -956,7 +1001,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 213 matched entries. Its candidate count is therefore
+listed entries, including 216 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

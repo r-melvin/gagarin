@@ -46,20 +46,38 @@ public:
     GenericNode FirstNode;   // +0x04
     GenericNode LastNode;    // +0x10
 
+    // Separate matched teardown body; the primary table target is 0x40E3E0.
+    // FUNCTION: GAMEMD 0x5B46E0
+    GenericList* ScalarDeletingDtor(char flags);
+    // FUNCTION: GAMEMD 0x40E3E0 -- table 0x7E1B04 slot zero.
+    void* DeletingDestructor(unsigned int flags);
     // What the GenericList constructor collapses to: build both sentinels,
     // seat the list, and link the head to the tail. It is shared by the plain
     // list at 0x52ACE0 and the List<INIEntry*> instantiation at 0x52AF50,
     // which carries the identical body with one extra seat store, so it is
     // forced inline: cl emits a call rather than an expansion for an ordinary
     // base constructor, and retail has no such call.
-    // FUNCTION: GAMEMD 0x5B46E0
-    GenericList* ScalarDeletingDtor(char flags);
     __forceinline void InitList();
 
     // First() is the head sentinel's forward link, which is why INISection's
     // destructor reads [ESI+0x18] for a list seated at +0x10.
     GenericNode* First() const { return FirstNode.NextNode; }
     __forceinline void DestroyList();
+};
+typedef void* (GenericList::*GenericListDeletingSlot)(unsigned int);
+// VTABLE: GAMEMD 0x7E1B04 -- explicit one-slot GenericList table.
+extern GenericListDeletingSlot GG_VTABLE_GENERIC_LIST_SLOTS;
+
+// RTTI at 0x8035F0/0x7FAC10 confirms List<INIEntry*> and
+// List<INISection*> each derive from GenericList at offset zero. Embedded
+// list/index boundaries at INISection+0x10/+0x2C and INIClass+0x0C/+0x28
+// establish 0x1C storage for these specializations. Other List<T> APIs and
+// original native virtual declarations remain unrecovered.
+template<class T> class List : public GenericList
+{
+public:
+    List();
+    void* DeletingDestructor(unsigned int flags);
 };
 GG_STATIC_ASSERT(offsetof(GenericNode, Vtable) == 0);
 GG_STATIC_ASSERT(offsetof(GenericNode, NextNode) == 4);
@@ -112,7 +130,7 @@ __forceinline void GenericNode::InitNode()
 
 __forceinline void GenericList::DestroyList()
 {
-    Vtable = reinterpret_cast<void*>(0x7E1B04);
+    Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
 
     while (First()->IsValid()) {
         First()->Unlink();
@@ -126,7 +144,7 @@ __forceinline void GenericList::InitList()
 {
     FirstNode.InitNode();
     LastNode.InitNode();
-    Vtable = reinterpret_cast<void*>(0x7E1B04);
+    Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
     FirstNode.Link(&LastNode);
 }
 #endif

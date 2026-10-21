@@ -62,23 +62,23 @@ GG_STATIC_ASSERT(offsetof(INIClass::INIEntry, Entry)            == 0x0C &&
 struct INIClass::INISection : public Node<INIClass::INISection*>
 {
     char*         Section;      // +0x0C
-    // Concrete List<INIClass::INIEntry*> (table 0x7EB744), represented by
-    // its zero-offset GenericList prefix until full template recovery.
-    GenericList   EntryListPrefix;    // +0x10
+    // RTTI table 0x7EB744; explicit inherited vptr view is retained.
+    List<INIEntry*> EntryList;    // +0x10
     IndexClassRaw EntryIndex;   // +0x2C
     INIComment*   Comments;     // +0x40
 
-    INIEntry* FirstEntry() const { return (INIEntry*)EntryListPrefix.First(); }
+    INIEntry* FirstEntry() const { return (INIEntry*)EntryList.First(); }
 
     // FUNCTION: GAMEMD 0x52AB80
     void DestroySection();
 };
 
 GG_STATIC_ASSERT(offsetof(INIClass::INISection, Section)    == 0x0C &&
-                 offsetof(INIClass::INISection, EntryListPrefix)  == 0x10 &&
+                 offsetof(INIClass::INISection, EntryList)  == 0x10 &&
                  offsetof(INIClass::INISection, EntryIndex) == 0x2C &&
                  offsetof(INIClass::INISection, Comments)   == 0x40 &&
                  sizeof(INIClass::INISection) == 0x44);
 
+GG_STATIC_ASSERT(sizeof(List<INIClass::INIEntry*>) == 0x1C);
 
 #endif

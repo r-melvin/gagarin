@@ -61,7 +61,8 @@ extern "C" void* GG_VTABLE_INIENTRY;
 // VTABLE: GAMEMD 0x7EB73C  INIClass::INISection
 extern "C" void* GG_VTABLE_INISECTION;
 // VTABLE: GAMEMD 0x7EB744  List<INIClass::INIEntry*>
-extern "C" void* GG_VTABLE_LISTOFINIENTRY;
+typedef void* (List<INIClass::INIEntry*>::*INIEntryListDeletingSlot)(unsigned int);
+extern "C" INIEntryListDeletingSlot GG_VTABLE_LISTOFINIENTRY;
 // These two are never seated by any body in this TU - their classes add
 // nothing to GenericNode, so the derived seat store is dead and cl drops it -
 // but the slot-zero bodies below belong to them, so the addresses are recorded.
@@ -135,16 +136,6 @@ typedef INIClass::INISection INISection;
 // destructor carries no seat of its own at all (the derived store is dead,
 // overwritten immediately by the base's).
 // ---------------------------------------------------------------------------
-struct ListOfINIEntry : public GenericList
-{
-    // FUNCTION: GAMEMD 0x52AF50
-    ListOfINIEntry();
-    // FUNCTION: GAMEMD 0x52AFC0  vtable 0x7EB744 slot 0
-    void* DeletingDestructor(unsigned int flags);
-};
-
-GG_STATIC_ASSERT(sizeof(ListOfINIEntry) == 0x1C);
-
 // ---------------------------------------------------------------------------
 // CacheStraw - unrelated to INI, but its deleting destructor is seated inside
 // this address run. The class is opaque apart from the sub-object at +0x0C

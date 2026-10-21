@@ -103,7 +103,7 @@ void INIClass::INISection::DestroySection()
     }
 
     EntryIndex.Clear();
-    EntryListPrefix.DestroyList();
+    EntryList.DestroyList();
     DestroyNode();
 }
 
@@ -217,7 +217,7 @@ INIClass::INIEntry::INIEntry(char* entry, char* value, INIComment* comments,
 // written over it. cl schedules that last store into the epilogue.
 //
 // FUNCTION: GAMEMD 0x52AF50
-ListOfINIEntry::ListOfINIEntry()
+template<> List<INIClass::INIEntry*>::List()
 {
     InitList();
     Vtable = &GG_VTABLE_LISTOFINIENTRY;
@@ -227,7 +227,7 @@ ListOfINIEntry::ListOfINIEntry()
 // destructor is the base drain plus the conditional free.
 //
 // FUNCTION: GAMEMD 0x52AFC0
-void* ListOfINIEntry::DeletingDestructor(unsigned int flags)
+template<> void* List<INIClass::INIEntry*>::DeletingDestructor(unsigned int flags)
 {
     DestroyList();
 
@@ -237,3 +237,11 @@ void* ListOfINIEntry::DeletingDestructor(unsigned int flags)
 
     return this;
 }
+
+// The explicit-vptr model uses a one-slot member-function-pointer cell. VC6's
+// single-inheritance representation is one relocated function address, checked
+// slot-for-slot against retail; no call adapter is involved.
+// VTABLE: GAMEMD 0x7EB744 -- List<INIClass::INIEntry*>.
+INIEntryListDeletingSlot GG_VTABLE_LISTOFINIENTRY =
+    &List<INIClass::INIEntry*>::DeletingDestructor;
+GG_STATIC_ASSERT(sizeof(INIEntryListDeletingSlot) == 4);

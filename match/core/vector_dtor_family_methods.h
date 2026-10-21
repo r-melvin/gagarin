@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 223 remaining 73-byte deleting-destructor bodies are bound here through
-// 115 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 217 remaining 73-byte deleting-destructor bodies are bound here through
+// 112 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -32,8 +32,6 @@ extern char VT_007E4DB8;
 extern char VT_007E4E38;
 // VTABLE: GAMEMD 0x007E192C -- VectorClass<ObjectClass*>
 extern char VT_007E192C;
-// VTABLE: GAMEMD 0x007E5338 -- VectorClass<ConvertClass*>
-extern char VT_007E5338;
 // VTABLE: GAMEMD 0x007E5C24 -- VectorClass<char*>
 extern char VT_007E5C24;
 // VTABLE: GAMEMD 0x007E5C04 -- VectorClass<DynamicVectorClass<char*>*>
@@ -72,8 +70,6 @@ extern char VT_007E9CC4;
 extern char VT_007E9DC4;
 // VTABLE: GAMEMD 0x007E9F44 -- VectorClass<AnimClass*>
 extern char VT_007E9F44;
-// VTABLE: GAMEMD 0x007E9FC4 -- VectorClass<FactoryClass*>
-extern char VT_007E9FC4;
 // VTABLE: GAMEMD 0x007EA044 -- VectorClass<SideClass*>
 extern char VT_007EA044;
 // VTABLE: GAMEMD 0x007EA084 -- VectorClass<HouseTypeClass*>
@@ -116,8 +112,6 @@ extern char VT_007ECF9C;
 extern char VT_007ECFDC;
 // VTABLE: GAMEMD 0x007ED0EC -- VectorClass<LineTrail*>
 extern char VT_007ED0EC;
-// VTABLE: GAMEMD 0x007ED32C -- VectorClass<FileEntryClass*>
-extern char VT_007ED32C;
 // VTABLE: GAMEMD 0x007ED480 -- VectorClass<CellClass*>
 extern char VT_007ED480;
 // VTABLE: GAMEMD 0x007E177C -- VectorClass<SubzoneConnectionStruct>

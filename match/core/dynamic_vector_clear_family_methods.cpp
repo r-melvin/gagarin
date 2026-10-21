@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 110
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 107
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -216,11 +216,6 @@ struct tagCONNECTDATA;
 //   base of those, so the slot is declared here (batch fifty-seven).
 template class DynamicVectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x00491390
-// DynamicVectorClass<ConvertClass*> -- vtable 0x007E5318 slot 3; locator 0x007FD370 -> type descriptor 0x0081DC60
-//   `.?AV?$DynamicVectorClass@PAVConvertClass@@@@`.
-template class DynamicVectorClass<ConvertClass*>;
-
 // FUNCTION: GAMEMD 0x0049E950
 // DynamicVectorClass<char*> -- vtable 0x007E5BC4 slot 3; locator 0x007FF560 -> type descriptor 0x0081F260
 //   `.?AV?$DynamicVectorClass@PAD@@`.
@@ -310,11 +305,6 @@ template class DynamicVectorClass<SmudgeClass*>;
 // DynamicVectorClass<AnimClass*> -- vtable 0x007E9F24 slot 3; locator 0x008014E0 -> type descriptor 0x00823410
 //   `.?AV?$DynamicVectorClass@PAVAnimClass@@@@`.
 template class DynamicVectorClass<AnimClass*>;
-
-// FUNCTION: GAMEMD 0x004E89C0
-// DynamicVectorClass<FactoryClass*> -- vtable 0x007E9FA4 slot 3; locator 0x00801610 -> type descriptor 0x008234E0
-//   `.?AV?$DynamicVectorClass@PAVFactoryClass@@@@`.
-template class DynamicVectorClass<FactoryClass*>;
 
 // FUNCTION: GAMEMD 0x004E8A80
 // DynamicVectorClass<SideClass*> -- vtable 0x007EA024 slot 3; locator 0x00801740 -> type descriptor 0x008235B0
@@ -420,11 +410,6 @@ template class DynamicVectorClass<LightSourceClass::PendingCellClass*>;
 // DynamicVectorClass<LineTrail*> -- vtable 0x007ED0CC slot 3; locator 0x008051A8 -> type descriptor 0x00829D78
 //   `.?AV?$DynamicVectorClass@PAVLineTrail@@@@`.
 template class DynamicVectorClass<LineTrail*>;
-
-// FUNCTION: GAMEMD 0x0055A150
-// DynamicVectorClass<FileEntryClass*> -- vtable 0x007ED30C slot 3; locator 0x00805370 -> type descriptor 0x00829E48
-//   `.?AV?$DynamicVectorClass@PAVFileEntryClass@@@@`.
-template class DynamicVectorClass<FileEntryClass*>;
 
 // FUNCTION: GAMEMD 0x00588C90
 // DynamicVectorClass<SubzoneConnectionStruct> -- vtable 0x007ED5A0 slot 3; locator 0x008057F8 -> type descriptor 0x0082ADD0
