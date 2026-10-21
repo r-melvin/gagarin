@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The 71 remaining address-scoped scalar deleting destructors of the 30-byte family,
+// The 70 remaining address-scoped scalar deleting destructors of the 30-byte family,
 // ordered ascending
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
@@ -15,18 +15,6 @@
 void* Obj_477750::FUN_477750(unsigned int flags)
 {
     ((Pipe*)this)->Pipe::~Pipe();
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x477790
-void* Obj_477790::FUN_477790(unsigned int flags)
-{
-    FUN_007BA420(this);
 
     if (flags & 1) {
         FUN_007C8B3D(this);

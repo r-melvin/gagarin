@@ -1,5 +1,38 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,509 fully matched
+functions**, **167 partial rows**, **4,676 manifest rows**, **1,009 manifest
+translation units**, and **1,019 tracked C++ files**. The 90-test suite,
+compile/layout checks, and whole-repository regression passed with zero
+matched regressions. All 1,019 C++ files produced current project objects and
+passed the input-hash check. The duplicate address audit found **4,709
+addresses and zero issues**. Eleven saved partial-body byte/relocation checks
+retain their baseline.
+
+The native FilePipe batch adds three matches and migrates its existing deleting
+wrapper. All four full function spans match; all four relocation fields resolve
+to the retail targets. Its five-slot table passes a conditional check using the
+recorded compiler weak default. Field offsets are asserted; the complete object
+size and the file pointee's complete type remain unproven. This consolidates
+one class without adding a runtime shim or artificial construction probe.
+
+The manifest matches 22.8% of listed functions. Matched lengths total
+**318,135 bytes**, or 8.4% of listed function lengths. The padding heuristic
+misses 292 matched entries. The diagnostic link reports **3,537 unique
+unresolved symbols**, **5,265 reference lines**, and zero duplicate definitions,
+compared with 3,538 unique symbols and 5,265 references at commit `17b1d3e`.
+This diagnostic does not establish engine link closure. Whole-executable
+reproduction remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: fifteen vector pairs and FileStraw
+
 As of **2026-10-21**, the latest verified snapshot has **4,506 fully matched
 functions**, **167 partial rows**, **4,673 manifest rows**, **1,008 manifest
 translation units**, and **1,018 tracked C++ files**. The 90-test suite,
@@ -22,13 +55,6 @@ The diagnostic link reports **3,538 unique unresolved symbols**, **5,265
 reference lines**, and zero duplicate definitions, compared with 3,659 unique
 symbols and 5,490 references at commit `094dcf9`. This diagnostic does not
 establish engine link closure. Whole-executable reproduction remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: LCWPipe constructor and exact input method
 

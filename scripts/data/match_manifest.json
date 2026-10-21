@@ -4752,11 +4752,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/file_pipe_methods.cpp",
   "addr": "0x477790",
-  "sym": "?FUN_477790@Obj_477790@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "FUN_00477790",
+  "sym": "??_GFilePipe@@UAEPAXI@Z",
+  "len": "0x1E",
+  "name": "FilePipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -42053,6 +42053,33 @@
   "sym": "?Slot5@?$DynamicVectorClass@PAVPlanningNodeClass@@@@UBEHPAPAVPlanningNodeClass@@@Z",
   "len": "0x1b",
   "name": "DynamicVectorClass<PlanningNodeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/file_pipe_methods.cpp",
+  "addr": "0x7BA420",
+  "sym": "??1FilePipe@@UAE@XZ",
+  "len": "0x30",
+  "name": "FilePipe::~FilePipe",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/file_pipe_methods.cpp",
+  "addr": "0x7BA450",
+  "sym": "?FUN_00477740@FilePipe@@UAEHXZ",
+  "len": "0x27",
+  "name": "FilePipe::FUN_00477740",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/file_pipe_methods.cpp",
+  "addr": "0x7BA480",
+  "sym": "?FUN_00631D10@FilePipe@@UAEHHH@Z",
+  "len": "0x4B",
+  "name": "FilePipe::FUN_00631D10",
   "status": "matched",
   "pct": 100
  }
