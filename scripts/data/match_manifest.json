@@ -8216,7 +8216,7 @@
   "len": "0x4",
   "name": "Surface::GetWidth",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/renderer/surface_class.cpp",
@@ -8225,16 +8225,16 @@
   "len": "0x4",
   "name": "Surface::GetHeight",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x411570",
   "sym": "?Unlock@XSurface@@UAE_NXZ",
-  "len": "0xA",
+  "len": "0xa",
   "name": "XSurface::Unlock",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/renderer/bsurface_class.cpp",
@@ -10475,7 +10475,7 @@
   "len": "0x24",
   "name": "Surface::GetRect",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc14_methods.cpp",
@@ -21819,7 +21819,7 @@
  },
  {
   "tu": "match/renderer/surface_class.cpp",
-  "addr": "0x4AEC60",
+  "addr": "0x4aec60",
   "sym": "??0Surface@@QAE@HH@Z",
   "len": "0x19",
   "name": "Surface::Surface",
@@ -31892,19 +31892,19 @@
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x411560",
   "sym": "?Lock@XSurface@@UAEPAXUPoint2D@@@Z",
-  "len": "0xC",
+  "len": "0xc",
   "name": "XSurface::Lock",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x411580",
   "sym": "?IsLocked@XSurface@@UAE_NXZ",
-  "len": "0xB",
+  "len": "0xb",
   "name": "XSurface::IsLocked",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
@@ -31913,7 +31913,7 @@
   "len": "0x3",
   "name": "XSurface::unknown_84",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/ui/tooltip_manager.cpp",
@@ -31926,10 +31926,10 @@
  },
  {
   "tu": "match/renderer/surface_class.cpp",
-  "addr": "0x4115D0",
+  "addr": "0x4115d0",
   "sym": "??_GSurface@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "Surface scalar deleting destructor",
+  "name": "Surface::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -32007,19 +32007,19 @@
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7BAF10",
-  "sym": "?unknown_8C@XSurface@@UAEIABUPoint2D@@ABURectangleStruct@@@Z",
+  "addr": "0x7baf10",
+  "sym": "?GetPixelClipped@XSurface@@UAEIABUPoint2D@@ABURectangleStruct@@@Z",
   "len": "0x77",
-  "name": "XSurface::unknown_8C",
+  "name": "XSurface::GetPixelClipped",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7BAF90",
-  "sym": "?unknown_88@XSurface@@UAE_NABUPoint2D@@IABURectangleStruct@@@Z",
+  "addr": "0x7baf90",
+  "sym": "?PutPixelClipped@XSurface@@UAE_NABUPoint2D@@IABURectangleStruct@@@Z",
   "len": "0x82",
-  "name": "XSurface::unknown_88",
+  "name": "XSurface::PutPixelClipped",
   "status": "matched",
   "pct": 100
  },
@@ -32088,10 +32088,10 @@
  },
  {
   "tu": "match/renderer/xsurface_class.cpp",
-  "addr": "0x7BB020",
-  "sym": "?unknown_14@XSurface@@UAE_NPAURectangleStruct@@H@Z",
+  "addr": "0x7bb020",
+  "sym": "?FillRect@XSurface@@UAE_NPAURectangleStruct@@I@Z",
   "len": "0x29",
-  "name": "XSurface::unknown_14",
+  "name": "XSurface::FillRect",
   "status": "matched",
   "pct": 100
  },
@@ -44485,5 +44485,208 @@
   "name": "RLEBlitTransLucent75AlphaZReadWrite<unsigned short>::RLEBlitTint",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7ba5e0",
+  "sym": "?DrawLine@XSurface@@UAE_NPAUPoint2D@@0I@Z",
+  "len": "0x30",
+  "name": "XSurface::DrawLine",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab30",
+  "sym": "?unknown_4C@XSurface@@UAEHHHHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_4C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab40",
+  "sym": "?unknown_50@XSurface@@UAE_NHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab50",
+  "sym": "?unknown_34@XSurface@@UAE_NHHHHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab60",
+  "sym": "?unknown_38@XSurface@@UAE_NHHHHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_38",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab70",
+  "sym": "?unknown_3C@XSurface@@UAE_NHHHHHHHHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_3C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bab80",
+  "sym": "?unknown_40@XSurface@@UAE_NHHHHHHH@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bad90",
+  "sym": "?DrawRect@XSurface@@UAE_NPAURectangleStruct@@I@Z",
+  "len": "0x2b",
+  "name": "XSurface::DrawRect",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7badc0",
+  "sym": "?DrawRectEx@XSurface@@UAE_NPAURectangleStruct@@0I@Z",
+  "len": "0x9e",
+  "name": "XSurface::DrawRectEx",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bae60",
+  "sym": "?GetPixel@XSurface@@UAEIPBUPoint2D@@@Z",
+  "len": "0x50",
+  "name": "XSurface::GetPixel",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7baeb0",
+  "sym": "?PutPixel@XSurface@@UAE_NPBUPoint2D@@I@Z",
+  "len": "0x59",
+  "name": "XSurface::PutPixel",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bb340",
+  "sym": "?unknown_1C@XSurface@@UAE_NPAURectangleStruct@@0H@Z",
+  "len": "0x5",
+  "name": "XSurface::unknown_1C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_class.cpp",
+  "addr": "0x7bbab0",
+  "sym": "?Fill@XSurface@@UAE_NI@Z",
+  "len": "0x33",
+  "name": "XSurface::Fill",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7bbaf0",
+  "sym": "?CopyFromWhole@XSurface@@UAE_NPAVSurface@@_N1@Z",
+  "len": "0x91",
+  "name": "XSurface::CopyFromWhole",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7bbb90",
+  "sym": "?CopyFromPart@XSurface@@UAE_NPAURectangleStruct@@PAVSurface@@0_N2@Z",
+  "len": "0x153",
+  "name": "XSurface::CopyFromPart",
+  "status": "partial",
+  "pct": 21.5,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/renderer/xsurface_blit.cpp",
+  "addr": "0x7bbcf0",
+  "sym": "?CopyFrom@XSurface@@UAE_NPAURectangleStruct@@0PAVSurface@@00_N2@Z",
+  "len": "0x126",
+  "name": "XSurface::CopyFrom",
+  "status": "partial",
+  "pct": 32.6,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/renderer/xsurface_fill.cpp",
+  "addr": "0x7bb050",
+  "sym": "?FillRectEx@XSurface@@UAE_NPAURectangleStruct@@0I@Z",
+  "len": "0x2ec",
+  "name": "XSurface::FillRectEx",
+  "status": "partial",
+  "pct": 2.8,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/renderer/xsurface_line.cpp",
+  "addr": "0x7ba610",
+  "sym": "?DrawLineEx@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1I@Z",
+  "len": "0x2ad",
+  "name": "XSurface::DrawLineEx",
+  "status": "partial",
+  "pct": 1.8,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 body; current instruction-position diagnostic is 1.8%, versus 1.9% in the submission. Not byte-exact; semantic equivalence unproven; capped."
+ },
+ {
+  "tu": "match/renderer/xsurface_line.cpp",
+  "addr": "0x7bab90",
+  "sym": "?DrawLineCallback@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1P6IX1@Z@Z",
+  "len": "0x1ff",
+  "name": "XSurface::DrawLineCallback",
+  "status": "partial",
+  "pct": 5.7,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/renderer/xsurface_line.cpp",
+  "addr": "0x7ba8c0",
+  "sym": "?DrawDottedLine@XSurface@@UAEIPAUPoint2D@@0IPAEI@Z",
+  "len": "0x26d",
+  "name": "XSurface::DrawDottedLine",
+  "status": "partial",
+  "pct": 1.2,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
+ },
+ {
+  "tu": "match/renderer/xsurface_ellipse.cpp",
+  "addr": "0x7bb350",
+  "sym": "?DrawEllipse@XSurface@@UAE_NHHHHURectangleStruct@@I@Z",
+  "len": "0x5c6",
+  "name": "XSurface::DrawEllipse",
+  "status": "partial",
+  "pct": 4.6,
+  "metric": "instruction-position",
+  "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  }
 ]

@@ -11,8 +11,8 @@ compilation do not prove whole-image identity.
 The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
-Latest verified snapshot (2026-10-21): 4,767 functions matched at 100%, 174
-partial rows, 1,033 tracked C++ files, and 1,023 manifest translation units.
+Latest verified snapshot (2026-10-21): 4,781 functions matched at 100%, 181
+partial rows, 1,037 tracked C++ files, and 1,027 manifest translation units.
 The 94-test suite, compile/layout checks, and whole-repository regression
 passed. Engine link closure and whole-image comparison remain unfinished.
 

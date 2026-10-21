@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
-// Retail Surface vtable 0x7E2198 slots +0x64/+0x68/+0x78/+0x7C/+0x80/+0x84 identify these
-// methods; entry-origin instructions confirm the result ABI and member offsets.
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// ^ no /GX: paired probe on the XSurface scalar deleting destructor (0x4115A0): with /GX VC6 keeps a
+// separate ~XSurface call (0/12), without it the destructor inlines and matches (12/12). The Blit*
+// stack locals of 0x7BBB90 also carry no unwind frame in retail.
+// Provenance: own-binary-via-Ghidra. Surface (RTTI .?AVSurface@@, vtable
+// 0x7E2198) members; every body is the full CFG-closed RET-inclusive span.
 #include "surface_class.h"
 
 // FUNCTION: GAMEMD 0x4114F0
@@ -17,7 +20,6 @@ bool Surface::unknown_68(unsigned int, unsigned int)
 }
 
 // FUNCTION: GAMEMD 0x411510
-// Surface rectangle result uses the retail hidden-result pointer ABI.
 RectangleStruct Surface::GetRect() const
 {
     RectangleStruct result;
@@ -49,8 +51,7 @@ bool Surface::unknown_84()
 }
 
 // SYNTHETIC: GAMEMD 0x4115D0
-// Surface::`scalar deleting destructor', generated from the inline destructor.
-// Full raw span is 0x20, including the post-delete stack cleanup and RET 4.
+// Scalar deleting wrapper emitted by the production Surface constructor TU.
 
 // FUNCTION: GAMEMD 0x4AEC60
 Surface::Surface(int width, int height) : Width(width), Height(height)

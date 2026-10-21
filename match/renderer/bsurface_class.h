@@ -6,7 +6,7 @@
 // here; Lock and lifetime implementations remain separate matching views.
 #ifndef GG_MATCH_RENDERER_BSURFACE_CLASS_H
 #define GG_MATCH_RENDERER_BSURFACE_CLASS_H
-#include "xsurface_class.h"
+#include "surface_class.h"
 #include "../_layout/memory_buffer.h"
 // VTABLE: GAMEMD 0x7E2070 -- BSurface; 36 slots, same prefix as XSurface.
 class BSurface : public XSurface
