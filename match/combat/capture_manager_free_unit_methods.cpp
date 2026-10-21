@@ -17,42 +17,44 @@
 // the back-pointer at +0x2C0 is cleared, the node is freed and the vector is
 // closed up over the hole. A null unit reports false; anything else reports
 // true, hit or not.
-bool CaptureManager_00471FF0::FreeUnit(Techno_00471FF0* unit)
+bool CaptureManagerClass::FreeUnit(TechnoClass* unit)
 {
     if (unit == 0) {
         return false;
     }
 
-    for (int i = this->Count - 1; i >= 0; i--) {
-        ControlNode_00471FF0* node = this->Items[i];
+    Techno_00471FF0* unitView = (Techno_00471FF0*)unit;
+
+    for (int i = ControlNodes.Count - 1; i >= 0; i--) {
+        ControlNode* node = ((ControlNode**)ControlNodes.Items)[i];
         if (node->Unit == unit) {
-            if (unit->MindControlRingAnim != 0) {
-                Anim_00471FF0* anim = unit->MindControlRingAnim;
+            if (unitView->MindControlRingAnim != 0) {
+                Anim_00471FF0* anim = unitView->MindControlRingAnim;
                 (anim->*anim->Vtbl->At_F8)();
-                unit->MindControlRingAnim = 0;
+                unitView->MindControlRingAnim = 0;
             }
 
-            if ((unit->*unit->Vtbl->At_84)()->At_5B0 != -1) {
+            if ((unitView->*unitView->Vtbl->At_84)()->At_5B0 != -1) {
                 VocClass_PlayAt_00471FF0(
-                    (unit->*unit->Vtbl->At_84)()->At_5B0, unit->GetCoords(), 0);
+                    (unitView->*unitView->Vtbl->At_84)()->At_5B0, unitView->GetCoords(), 0);
             } else if (RulesInstance_00471FF0->At_264 != -1) {
                 VocClass_PlayAt_00471FF0(
-                    RulesInstance_00471FF0->At_264, unit->GetCoords(), 0);
+                    RulesInstance_00471FF0->At_264, unitView->GetCoords(), 0);
             }
 
-            (unit->*unit->Vtbl->At_3D4)(node->OriginalOwner, 1);
-            this->FUN_004723B0(unit);
-            unit->MindControlledBy = 0;
+            (unitView->*unitView->Vtbl->At_3D4)(node->OriginalOwner, 1);
+            FUN_004723B0(unit);
+            unitView->MindControlledBy = 0;
 
-            ControlNode_00471FF0* dead = this->Items[i];
+            ControlNode* dead = ((ControlNode**)ControlNodes.Items)[i];
             if (dead != 0) {
                 GameDelete_00471FF0(dead);
             }
 
-            if (i < this->Count) {
-                this->Count = this->Count - 1;
-                for (int j = i; j < this->Count; j++) {
-                    this->Items[j] = this->Items[j + 1];
+            if (i < ControlNodes.Count) {
+                ControlNodes.Count = ControlNodes.Count - 1;
+                for (int j = i; j < ControlNodes.Count; j++) {
+                    ((ControlNode**)ControlNodes.Items)[j] = ((ControlNode**)ControlNodes.Items)[j + 1];
                 }
             }
         }

@@ -45,6 +45,7 @@ struct Techno_00471C90
     // FUNCTION: GAMEMD 0x7105E0 (decl; reloc) — TechnoClass::IsMindControlled.
     bool IsMindControlled() const;
 };
+GG_STATIC_ASSERT(offsetof(Techno_00471C90, Vtbl) == 0x00);
 GG_STATIC_ASSERT(offsetof(Techno_00471C90, CurrentMission)       == 0xAC);
 GG_STATIC_ASSERT(offsetof(Techno_00471C90, MindControlledByHouse) == 0x2CC);
 GG_STATIC_ASSERT(offsetof(Techno_00471C90, BunkerLinkedItem)     == 0x2E4);
@@ -70,25 +71,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00471C90, GetOwningHouse) == 0x3C);
 GG_STATIC_ASSERT(offsetof(Vtbl_00471C90, GetTechnoType)  == 0x84);
 GG_STATIC_ASSERT(offsetof(Vtbl_00471C90, IsIronCurtained)== 0x160);
 
-// CaptureManagerClass — mind-control bookkeeping on a TechnoClass. Layout
-// mirrors match/combat/capture_manager_class.h (ControlNodes vector @0x24,
-// Count @0x34, MaxControlNodes @0x3C, InfiniteControl @0x40) plus Owner @0x48.
-struct CaptureManagerClass
-{
-    char          _pad000[0x34];         // +0x0000 AbstractClass base + vector head
-    int           ControlNodes_Count;    // +0x0034
-    int           ControlNodes_CapInc;   // +0x0038
-    int           MaxControlNodes;       // +0x003C
-    unsigned char InfiniteControl;       // +0x0040
-    char          _pad041[0x48 - 0x41];  // +0x0041
-    Techno_00471C90* Owner;              // +0x0048
-
-    // FUNCTION: GAMEMD 0x471C90
-    bool CanCapture(Techno_00471C90* target) const;
-};
-GG_STATIC_ASSERT(offsetof(CaptureManagerClass, ControlNodes_Count) == 0x34);
-GG_STATIC_ASSERT(offsetof(CaptureManagerClass, MaxControlNodes)    == 0x3C);
-GG_STATIC_ASSERT(offsetof(CaptureManagerClass, InfiniteControl)    == 0x40);
-GG_STATIC_ASSERT(offsetof(CaptureManagerClass, Owner)              == 0x48);
+// Use the canonical CaptureManagerClass layout for this receiver.
+#include "../_layout/capture_manager_class.h"
 
 #endif  // GG_MATCH_COMBAT_CAPTURE_MANAGER_CAN_CAPTURE_METHODS_H

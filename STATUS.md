@@ -1,13 +1,49 @@
 # Project status
 
-The latest whole-repository regression passed with **4,205 fully matched
-functions**, **167 partial rows**, and 966 manifest translation units, with no
-matched function regressing. All **976 tracked C++ files** produced project
+The latest whole-repository regression passed with **4,206 fully matched
+functions**, **167 partial rows**, and 967 manifest translation units, with no
+matched function regressing. All **977 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
-and duplicate-address check passed (4,403 addresses, zero problems). The
+and duplicate-address check passed (4,404 addresses, zero problems). The
 complete byte-for-byte executable target has not been achieved.
 
-## Latest integration: CaptureManager canonical migration
+## Latest integration: CaptureManager receiver and node consolidation
+
+Three existing matched methods—`CanCapture` (`0x471C90`), `FreeUnit`
+(`0x471FF0`) and `NeedsToDrawLinks` (`0x472640`)—now use the shared
+[`CaptureManagerClass`](match/_layout/capture_manager_class.h) receiver instead
+of separate receiver definitions. `FreeUnit` also uses the shared
+[`ControlNode`](match/_layout/control_node.h) layout, removing its duplicate
+record view. The receiver now has one additional exact body,
+[`FUN_004729C0`](match/combat/capture_manager_release_methods.cpp), whose
+0xB6-byte entry exhibits deleting-destructor behavior. Its `FUN_` name is
+retained; this does not claim recovery of the original destructor declaration
+or the full COM hierarchy. The registry dispatch view and its used +0x10 slot
+are asserted from the observed RTTI, constructor and call evidence. The
+declaration-only `FUN_004723B0` binding remains provisional.
+
+The full regression passed with **4,206 matched functions**, 167 partial rows
+and no regressions. All **977/977 tracked C++ files** produced current project
+objects; the compile/layout gate, 75 verifier tests and duplicate-address
+check passed (4,404 addresses, zero problems). Focused checks covered 16
+matched rows and one existing partial across eight translation units. All nine
+saved partial bodies retain identical bytes and relocation offsets. The
+`/dll /noentry /nodefaultlib` diagnostic link reports **3,673 unique unresolved
+symbols**, 5,520 reference lines and no duplicate definitions. Default
+libraries are excluded; this diagnostic does not establish engine link
+closure. The previously unresolved canonical `FreeUnit` symbol is now defined, and
+`FreeAll` now resolves its call to the canonical `CaptureManagerClass::FreeUnit`
+body. The declaration-only `FUN_004723B0` binding remains unresolved; the total
+unresolved-symbol count is unchanged.
+
+Matched lengths total **298,589 bytes (292 KiB)**: 21.3% of listed functions
+and 7.9% of listed function lengths. The padding heuristic misses 260 matched
+entries. Generic families contain 135 deleting bindings across 71 views, 68
+base `Clear` rows, 66 native dynamic `Clear` rows plus one DiskID stand-in, and
+10 resize-family rows plus two other resize helpers. Engine link closure and
+complete executable reproduction remain unfinished.
+
+## Previous verified integration: CaptureManager canonical migration
 
 Five existing methods now use the canonical
 [`CaptureManagerClass`](match/_layout/capture_manager_class.h) declaration:
@@ -1423,8 +1459,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 976 tracked C++ files and 4,372 manifest
-rows across 966 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 977 tracked C++ files and 4,373 manifest
+rows across 967 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1740,10 +1776,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,205** | **21.3%** of 19,753 |
-| Sum of matched function lengths | 291 KiB | 7.9% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,206** | **21.3%** of 19,753 |
+| Sum of matched function lengths | 292 KiB | 7.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 976 | |
+| Tracked C++ files under `match/` | 977 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

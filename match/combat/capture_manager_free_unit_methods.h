@@ -30,7 +30,10 @@ struct Coord_00471FF0
     int Z;   // +0x08
     Coord_00471FF0() {}
 };
+GG_STATIC_ASSERT(offsetof(Coord_00471FF0, X) == 0x00);
+GG_STATIC_ASSERT(offsetof(Coord_00471FF0, Y) == 0x04);
 GG_STATIC_ASSERT(offsetof(Coord_00471FF0, Z) == 0x08);
+GG_STATIC_ASSERT(sizeof(Coord_00471FF0) == 0x0C);
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
 // delete); __cdecl, one pointer argument, caller pops.
@@ -65,6 +68,7 @@ struct AnimVtbl_00471FF0
     char          _pad000[0xF8];   // +0x0000
     FnF8_00471FF0 At_F8;           // +0x00F8
 };
+GG_STATIC_ASSERT(offsetof(Anim_00471FF0, Vtbl) == 0x00);
 GG_STATIC_ASSERT(offsetof(AnimVtbl_00471FF0, At_F8) == 0xF8);
 
 struct Vtbl_00471FF0;
@@ -87,6 +91,7 @@ struct Techno_00471FF0
         return r;
     }
 };
+GG_STATIC_ASSERT(offsetof(Techno_00471FF0, Vtbl) == 0x00);
 GG_STATIC_ASSERT(offsetof(Techno_00471FF0, Location)            == 0x9C);
 GG_STATIC_ASSERT(offsetof(Techno_00471FF0, MindControlledBy)    == 0x2C0);
 GG_STATIC_ASSERT(offsetof(Techno_00471FF0, MindControlRingAnim) == 0x2C8);
@@ -110,36 +115,10 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00471FF0, At_3D4) == 0x3D4);
 void* __fastcall VocClass_PlayAt_00471FF0(
     int index, const Coord_00471FF0& coords, void* controller);
 
-// One controlled unit. Unit at +0x00, the house it belonged to at +0x04, a
-// CDTimerClass for the link drawing at +0x08.
-struct ControlNode_00471FF0
-{
-    Techno_00471FF0* Unit;          // +0x00
-    void*            OriginalOwner; // +0x04
-    char             _pad08[0x0C];  // +0x08
-};
-GG_STATIC_ASSERT(offsetof(ControlNode_00471FF0, OriginalOwner) == 0x04);
+// Shared control-node record: Unit +0, OriginalOwner +4.
+#include "../_layout/control_node.h"
 
-// CaptureManagerClass. The AbstractClass/COM base occupies [0x00..0x24); the
-// ControlNodes DynamicVectorClass<ControlNode*> starts at +0x24.
-struct CaptureManager_00471FF0
-{
-    char                   _base[0x24];     // +0x00
-    void*                  _cn_vtable;      // +0x24
-    ControlNode_00471FF0** Items;           // +0x28
-    int                    Capacity;        // +0x2C
-    int                    IsAllocated;     // +0x30
-    int                    Count;           // +0x34
-    int                    CapacityIncrement; // +0x38
-
-    // FUNCTION: GAMEMD 0x4723B0 (decl; reloc) -- drops the freed unit from the
-    // manager's owner bookkeeping.
-    void FUN_004723B0(Techno_00471FF0* unit);
-
-    // FUNCTION: GAMEMD 0x471FF0
-    bool FreeUnit(Techno_00471FF0* unit);
-};
-GG_STATIC_ASSERT(offsetof(CaptureManager_00471FF0, Items) == 0x28);
-GG_STATIC_ASSERT(offsetof(CaptureManager_00471FF0, Count) == 0x34);
+// Canonical CaptureManagerClass receiver layout.
+#include "../_layout/capture_manager_class.h"
 
 #endif  // GG_MATCH_COMBAT_CAPTURE_MANAGER_FREE_UNIT_METHODS_H

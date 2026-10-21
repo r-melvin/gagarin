@@ -24,7 +24,7 @@ bool CaptureManagerClass::CanCapture(Techno_00471C90* target) const
         return false;
 
     if (!((target->*target->Vtbl->GetOwningHouse)()
-          != (this->Owner->*this->Owner->Vtbl->GetOwningHouse)()))
+          != (((Techno_00471C90*)this->Owner)->*((Techno_00471C90*)this->Owner)->Vtbl->GetOwningHouse)()))
         return false;
 
     if ((target->*target->Vtbl->GetTechnoType)()->ImmuneToPsionics)
@@ -44,8 +44,8 @@ bool CaptureManagerClass::CanCapture(Techno_00471C90* target) const
     if ((target->*target->Vtbl->IsIronCurtained)())
         return false;
 
-    if (!this->InfiniteControl) {
-        if (this->ControlNodes_Count >= this->MaxControlNodes
+    if (!this->InfiniteMindControl) {
+        if (this->ControlNodes.Count >= this->MaxControlNodes
             && this->MaxControlNodes != 1)
             return false;
     }

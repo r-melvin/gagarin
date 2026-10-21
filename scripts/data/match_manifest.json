@@ -1820,7 +1820,7 @@
  {
   "tu": "match/combat/capture_manager_free_unit_methods.cpp",
   "addr": "0x471FF0",
-  "sym": "?FreeUnit@CaptureManager_00471FF0@@QAE_NPAUTechno_00471FF0@@@Z",
+  "sym": "?FreeUnit@CaptureManagerClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x14D",
   "name": "CaptureManagerClass::FreeUnit",
   "status": "matched",
@@ -39344,6 +39344,15 @@
   "sym": "?FUN_004729B0@CaptureManagerClass@@QAEHXZ",
   "len": "0x06",
   "name": "CaptureManagerClass::FUN_004729B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_release_methods.cpp",
+  "addr": "0x4729C0",
+  "sym": "?FUN_004729C0@CaptureManagerClass@@QAEPAV1@I@Z",
+  "len": "0xB6",
+  "name": "CaptureManagerClass::FUN_004729C0",
   "status": "matched",
   "pct": 100
  }

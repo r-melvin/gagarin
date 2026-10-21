@@ -10,16 +10,17 @@
 // gives each `return true` its own epilogue rather than setting a flag.
 bool CaptureManagerClass::NeedsToDrawLinks()
 {
-    if (Owner->IsSelected)
+    if (((ObjectClass*)Owner)->IsSelected)
         return true;
 
-    if (Owner->Transporter != 0 && Owner->Transporter->IsSelected)
+    if (((TechnoClass*)Owner)->Transporter != 0
+        && ((ObjectClass*)((TechnoClass*)Owner)->Transporter)->IsSelected)
         return true;
 
-    for (int i = ControlNodes_Count - 1; i >= 0; i--) {
-        ControlNode* node = ControlNodes_Items[i];
+    for (int i = ControlNodes.Count - 1; i >= 0; i--) {
+        ControlNode* node = ((ControlNode**)ControlNodes.Items)[i];
 
-        if (node->Unit->IsSelected)
+        if (((ObjectClass*)node->Unit)->IsSelected)
             return true;
 
         int remaining = node->Duration;

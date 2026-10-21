@@ -31,13 +31,16 @@
 struct Sink_004A1C00;
 struct Gg_IStream;
 struct Guid_472960;
+struct Techno_00471C90;
 class TechnoClass;
 class HouseClass;
 
 class CaptureManagerClass : public AbstractClass
 {
 public:
-    // FUNCTION: GAMEMD 0x471FF0 (declaration only; separate receiver view)
+    // FUNCTION: GAMEMD 0x471C90
+    bool CanCapture(Techno_00471C90* target) const;
+    // FUNCTION: GAMEMD 0x471FF0
     bool FreeUnit(TechnoClass* unit);
     // FUNCTION: GAMEMD 0x472140
     void FreeAll();
@@ -51,6 +54,10 @@ public:
     bool FUN_004722E0() const;
     // FUNCTION: GAMEMD 0x4722F0
     HouseClass* GetOriginalOwner(TechnoClass* unit) const;
+    // FUNCTION: GAMEMD 0x4723B0 (declaration-only ABI binding; ownership provisional)
+    void FUN_004723B0(TechnoClass* unit);
+    // FUNCTION: GAMEMD 0x472640
+    bool NeedsToDrawLinks();
     // FUNCTION: GAMEMD 0x4726C0
     bool FUN_004726C0(bool* state);
     // FUNCTION: GAMEMD 0x4726F0
@@ -63,6 +70,8 @@ public:
     int FUN_004729A0();
     // FUNCTION: GAMEMD 0x4729B0
     int FUN_004729B0();
+    // FUNCTION: GAMEMD 0x4729C0
+    CaptureManagerClass* FUN_004729C0(unsigned int flags);
 
 
     DynamicVectorClassLayout ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields
