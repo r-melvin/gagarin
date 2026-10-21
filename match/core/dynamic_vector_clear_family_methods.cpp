@@ -183,11 +183,7 @@ class VoxClass;
 class VoxelAnimTypeClass;
 class WaveClass;
 class WaypointPathClass;
-class WinsockInterfaceClass
-{
-public:
-    struct WinsockBufferType;
-};
+#include "../network/transport/winsock_interface_class.h"
 namespace WorldDominationTour
 {
     class Map

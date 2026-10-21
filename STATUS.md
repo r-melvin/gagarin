@@ -8,6 +8,14 @@ matched regressions. All project objects are current. The annotation audit
 reports 5,084 body addresses and zero issues. Thirty-six saved partial
 baselines are unchanged.
 
+The shared Winsock declaration replaces six differing class definitions and
+the separate discard receiver view. Three existing network methods now use
+native virtual members; all 185 rows across the seven affected translation
+units retain identical emitted bodies and relocation offsets. The three
+methods and twelve vector methods also pass strict checks for 25 relocation
+fields. The 23-slot retail table is recorded as address bindings, not a claim
+of emitted-table selection. Function totals are unchanged.
+
 Transport preparation consolidates the lobby and event address declarations
 into one 12-byte `IPXAddressClass`, confirmed by retail array strides and
 embedded copies. The packed lobby node retains its verified size and offsets;

@@ -26554,7 +26554,7 @@
  {
   "tu": "match/network/winsock_discard_methods.cpp",
   "addr": "0x7B1D10",
-  "sym": "?DiscardOutBuffers@WinsockInterfaceClass_007B1D10@@QAEXXZ",
+  "sym": "?DiscardOutBuffers@WinsockInterfaceClass@@UAEXXZ",
   "len": "0xc9",
   "name": "WinsockInterfaceClass::DiscardOutBuffers",
   "status": "matched",
@@ -26563,7 +26563,7 @@
  {
   "tu": "match/network/winsock_interface_discard_methods.cpp",
   "addr": "0x7B1CA0",
-  "sym": "?DiscardInBuffers@WinsockInterfaceClass@@QAEXXZ",
+  "sym": "?DiscardInBuffers@WinsockInterfaceClass@@UAEXXZ",
   "len": "0x69",
   "name": "DiscardInBuffers",
   "status": "matched",
@@ -26572,7 +26572,7 @@
  {
   "tu": "match/network/winsock_listen_methods.cpp",
   "addr": "0x7B1BC0",
-  "sym": "?StartListening@WinsockInterfaceClass@@QAE_NXZ",
+  "sym": "?StartListening@WinsockInterfaceClass@@UAE_NXZ",
   "len": "0x84",
   "name": "WinsockInterfaceClass::StartListening",
   "status": "matched",

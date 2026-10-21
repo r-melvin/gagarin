@@ -8,9 +8,7 @@
 // original TU boundaries, final link and complete object sizes are unknown.
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 #include "vector_class_operations.h"
-
-// Only the nested pointer spelling is recovered; no enclosing or pointee layout is claimed.
-class WinsockInterfaceClass { public: struct WinsockBufferType; };
+#include "../network/transport/winsock_interface_class.h"
 
 // FUNCTION: GAMEMD 0x7B2840
 // DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::Clear

@@ -1,30 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x7B1D10.
-
+// Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
 #include "winsock_discard_methods.h"
 
-// The drain, written once and expanded twice. Each head packet is either
-// handed back to the game heap or merely un-marked, then unlinked with the
-// inlined DynamicVectorClass::RemoveItem(0) -- bounds check, decrement, shift
-// the tail down. The in-use counter and the static-buffer cursor are zeroed
-// at the end rather than trusted to have reached zero.
-//
-// The queue and its two counters arrive by reference: with `this`-relative
-// members VC6 hoists the second queue's entry test above the first queue's
-// two zeroing stores (it can prove the offsets disjoint, 47.3%), whereas
-// through references it must keep the load after the stores -- which is
-// retail's `MOV [..],EBX; MOV [..],EBX; CMP [ESI+0x48],EBX` order.
-static inline void DiscardQueue(WinsockPacket_007B1D10**& items, int& count,
+static inline void DiscardQueue(WinsockInterfaceClass::WinsockBufferType**& items, int& count,
                                 int& inUse, int& pos)
 {
     while (count != 0)
     {
-        WinsockPacket_007B1D10* packet = items[0];
+        WinsockInterfaceClass::WinsockBufferType* packet = items[0];
 
-        if (packet->Allocated != 0)
+        if (packet->IsAllocated != 0)
         {
-            GameDeallocate(packet);
+            operator delete(packet);
         }
         else
         {
@@ -44,10 +32,10 @@ static inline void DiscardQueue(WinsockPacket_007B1D10**& items, int& count,
     pos = 0;
 }
 
-// Drain both outbound queues: OutBuffers first, then AltOutBuffers.
-// FUNCTION: GAMEMD 0x7B1D10  WinsockInterfaceClass::DiscardOutBuffers (__thiscall)
-void WinsockInterfaceClass_007B1D10::DiscardOutBuffers()
+// FUNCTION: GAMEMD 0x7B1D10  WinsockInterfaceClass::DiscardOutBuffers (slot 6)
+void WinsockInterfaceClass::DiscardOutBuffers()
 {
-    DiscardQueue(OutItems, OutCount, StaticOutBuffersInUse, StaticOutBufferPos);
-    DiscardQueue(AltOutItems, AltOutCount, StaticAltOutBuffersInUse, StaticAltOutBufferPos);
+    DiscardQueue(OutBuffers.Items, OutBuffers.Count, StaticOutBuffersInUse, StaticOutBufferPos);
+    DiscardQueue(AltOutBuffers.Items, AltOutBuffers.Count, StaticAltOutBuffersInUse,
+                 StaticAltOutBufferPos);
 }

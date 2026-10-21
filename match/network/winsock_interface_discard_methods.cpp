@@ -1,38 +1,43 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x7B1CA0.
-
+// Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
 #include "winsock_interface_discard_methods.h"
 
-// FUNCTION: GAMEMD 0x7B1CA0  WinsockInterfaceClass::DiscardInBuffers (__thiscall)
+// FUNCTION: GAMEMD 0x7B1CA0  WinsockInterfaceClass::DiscardInBuffers (slot 5)
 // Drain the inbound queue. Each head packet is either handed back to the game
 // heap or merely un-marked, then unlinked with DynamicVectorClass::RemoveItem(0)
-// written out inline — bounds check, decrement, shift the tail down. Both
+// written out inline: bounds check, decrement, shift the tail down. Both
 // counters are zeroed at the end rather than trusted to have reached zero.
 void WinsockInterfaceClass::DiscardInBuffers()
 {
-    while (Count != 0)
+    while (InBuffers.Count != 0)
     {
-        WinsockPacket* packet = Items[0];
+        WinsockBufferType* packet = InBuffers.Items[0];
 
-        if (packet->unknown_16 != 0)
+        if (packet->IsAllocated != 0)
         {
-            GameDeallocate(packet);
+            operator delete(packet);
         }
         else
         {
-            packet->unknown_15 = 0;
-            unknown_3F05C--;
+            packet->InUse = 0;
+            StaticInBuffersInUse--;
         }
 
-        if (Count > 0)
+        if (InBuffers.Count > 0)
         {
-            Count--;
-            for (int i = 0; i < Count; i++)
-                Items[i] = Items[i + 1];
+            InBuffers.Count--;
+            for (int i = 0; i < InBuffers.Count; i++)
+                InBuffers.Items[i] = InBuffers.Items[i + 1];
         }
     }
 
-    unknown_3F05C = 0;
-    unknown_3F050 = 0;
+    StaticInBuffersInUse = 0;
+    StaticInBufferPos = 0;
 }
+
+// The drain, written once and expanded twice. The queue and its two counters
+// arrive by reference: with `this`-relative members VC6 hoists the second
+// queue's entry test above the first queue's two zeroing stores, whereas
+// through references it must keep the load after the stores, which is retail's
+// `MOV [..],EBX; MOV [..],EBX; CMP [ESI+0x48],EBX` order.
