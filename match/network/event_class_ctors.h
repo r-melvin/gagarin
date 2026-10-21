@@ -55,6 +55,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/ipx_address_class.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the frame counter every
 // constructor stamps into Frame on both arms.
@@ -113,16 +114,6 @@ struct Point2D
 {
     int X;   // +0x00
     int Y;   // +0x04
-};
-
-// IPXAddressClass — only the accessor the ADDRESSCHANGE constructor reaches.
-// The retail body writes the four-byte network number through its first
-// argument and six bytes of node address through its second.
-class IPXAddressClass
-{
-public:
-    // FUNCTION: GAMEMD 0x53EDA0 (decl; reloc) — IPXAddressClass::GetAddress.
-    void GetAddress(unsigned char* net, unsigned char* node);
 };
 
 // Event type tags, named from YRpp / RA1 and valued from the immediates the

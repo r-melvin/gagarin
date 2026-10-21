@@ -24,10 +24,12 @@
 //   * Name at +0 : the node pointer is handed straight to wcscmp at 0x5E8BFD
 //     and to wcscpy as the destination at 0x5E88A0, so the first member is the
 //     wide name buffer.
-//   * Address at +0x28 : `LEA ECX,[ESI+0x28]` before the 10-byte 0xFF fill
-//     constructor 0x53ECB0, and `LEA ECX,[EAX+0x28]` before the comparison
-//     0x53EE70 at 0x5E92E1. 0x53ECB0 stores 0xFF to [EAX+0]..[EAX+9], hence
-//     10 bytes, hence RA1's IPXAddressClass (4-byte network + 6-byte node).
+//   * Address at +0x28 : `LEA ECX,[ESI+0x28]` before constructor 0x53ECB0,
+//     and `LEA ECX,[EAX+0x28]` before comparison 0x53EE70 at 0x5E92E1. The
+//     constructor stores 0xFF through +0x9. The shared IPXAddressClass has a
+//     12-byte extent: 0x53FA90 allocates its array at 0xC strides and 0x53F430
+//     embeds/copies one through +0xB. The lobby's last two address bytes are
+//     not independently observed here.
 //   * unknown_6B at +0x6B : `CMP dword [EAX+0x6B],-1` at 0x5E9302 / 0x5E93BC
 //     and `CMP [ECX+0x6B],EBX` (EBX = -1) at 0x5E9260 / 0x5E9269. -1 marks an
 //     observer, so this is the node's chosen house/side index.
@@ -51,6 +53,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/ipx_address_class.h"
 
 extern "C" {
 // FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) — CRT wcscmp.
@@ -61,25 +64,7 @@ int __cdecl _wcsicmp(const wchar_t* a, const wchar_t* b);
 int __cdecl _stricmp(const char* a, const char* b);
 }
 
-// ---------------------------------------------------------------------------
-// The 10-byte network address. 0x53ECB0 fills exactly ten bytes with 0xFF.
-// ---------------------------------------------------------------------------
 #pragma pack(push, 1)
-struct IPXAddressClass
-{
-    unsigned char NetworkNumber[4];   // +0x00
-    unsigned char NodeAddress[6];     // +0x04
-
-    // FUNCTION: GAMEMD 0x53ECB0 (decl; reloc) — the default constructor,
-    // which stores 0xFF to all ten bytes. Declaring it is what makes `new
-    // NodeNameType` emit retail's allocate / null-test / construct-at-+0x28
-    // sequence in 0x5E87A0.
-    IPXAddressClass();
-    // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — equality, __thiscall, byte
-    // result, callee-cleaned (no `ADD ESP,4` follows the call at 0x5E92E1).
-    bool Is_Address(const IPXAddressClass* other) const;
-};
-
 // ---------------------------------------------------------------------------
 // One lobby player slot entry. 133 bytes, byte-packed.
 // ---------------------------------------------------------------------------
@@ -87,14 +72,14 @@ struct NodeNameType
 {
     wchar_t Name[20];                 // +0x00
     IPXAddressClass Address;          // +0x28
-    unsigned char unknown_32[0x39];   // +0x32
+    unsigned char unknown_34[0x37];   // +0x34
     int unknown_6B;                   // +0x6B  (-1 == observer)
     unsigned char unknown_6F[0x16];   // +0x6F
 };
 #pragma pack(pop)
 
-GG_STATIC_ASSERT(sizeof(IPXAddressClass) == 0x0A &&
-                 offsetof(NodeNameType, Address) == 0x28 &&
+GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
+                 offsetof(NodeNameType, unknown_34) == 0x34 &&
                  offsetof(NodeNameType, unknown_6B) == 0x6B &&
                  sizeof(NodeNameType) == 0x85);
 

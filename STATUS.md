@@ -8,7 +8,13 @@ matched regressions. All project objects are current. The annotation audit
 reports 5,084 body addresses and zero issues. Thirty-six saved partial
 baselines are unchanged.
 
-The latest batch adds DSurface's ordinary methods to the canonical renderer
+Transport preparation consolidates the lobby and event address declarations
+into one 12-byte `IPXAddressClass`, confirmed by retail array strides and
+embedded copies. The packed lobby node retains its verified size and offsets;
+all 51 functions in the three consumer files remain exact. No function rows
+were added.
+
+The preceding function batch adds DSurface's ordinary methods to the canonical renderer
 hierarchy: nine new exact functions, one existing exact getter migrated, and
 ten partials. All ten exact spans pass raw checks and all six relocation fields
 resolve to retail targets. Direct pinned-image checks cover all 38 vtable
