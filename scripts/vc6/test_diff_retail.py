@@ -23,6 +23,54 @@ raw_x86_insns = diff_module.raw_x86_insns
 from test_float_literal_reloc import coff_object
 
 
+def duplicate_text_comdat_object(path, *, relocation=False, nonzero_symbol=False,
+                                relocation_target=3, relocation_offset=None):
+    """Write a tiny COFF object with two .text sections and a foreign $L label."""
+    import struct
+
+    victim_function = (bytes.fromhex("e8 00 00 00 00 8b f8 c3") if relocation
+                       else bytes.fromhex("b8 01 00 00 00 8b f8 c3"))
+    prefix = b"\x90\x90" if nonzero_symbol else b""
+    victim = prefix + victim_function
+    other = bytes.fromhex("90 90 90 90 90 90 90 90 90 c3")
+    data_start = 20 + 2 * 40
+    raw1 = data_start
+    raw2 = raw1 + len(victim)
+    reloc_ptr1 = raw2 + len(other) if relocation else 0
+    reloc_ptr2 = reloc_ptr1 + 10 if relocation else 0
+    symbol_ptr = raw2 + len(other) + (20 if relocation else 0)
+    nsyms = 4 if relocation else 3
+    section_data = bytearray()
+    for name, raw_size, raw_ptr in ((b".text", len(victim), raw1),
+                                    (b".text", len(other), raw2)):
+        is_victim = raw_ptr == raw1
+        section_data.extend(struct.pack(
+            "<8sIIIIIIHHI", name.ljust(8, b"\0"), 0, 0, raw_size,
+            raw_ptr,
+            reloc_ptr1 if relocation and is_victim else
+            reloc_ptr2 if relocation else 0,
+            0, 1 if relocation else 0, 0,
+            0x60000020))
+    if relocation_offset is None:
+        relocation_offset = len(prefix) + 1
+    relocs = (struct.pack("<IIH", relocation_offset, relocation_target, 0x0014)
+              + struct.pack("<IIH", 1, 3, 0x0014)) if relocation else b""
+
+    def symbol(name, value, section, storage):
+        return struct.pack("<8sIhHBB", name.ljust(8, b"\0"), value,
+                           section, 0, storage, 0)
+
+    symbol_data = (symbol(b"victim", len(prefix), 1, 2)
+                   + symbol(b"switch", 0, 2, 2)
+                   + symbol(b"$Lsplit", 8 if nonzero_symbol else 6, 2, 6))
+    if relocation:
+        symbol_data += symbol(b"external", 0, 0, 2)
+    header = struct.pack("<HHIIIHH", 0x14C, 2, 0, symbol_ptr, nsyms, 0, 0)
+    string_table = struct.pack("<I", 4)
+    path.write_bytes(header + bytes(section_data) + victim + other + relocs
+                     + symbol_data + string_table)
+
+
 class RetailSpanTests(unittest.TestCase):
     def setUp(self):
         # These tests exercise the mocked bridge, independently of a local PE.
@@ -44,6 +92,15 @@ class RetailSpanTests(unittest.TestCase):
         insns = raw_x86_insns(code, 0x401000)
         self.assertIn("0x401005", insns[0][3])
         self.assertEqual(insns[0][0], 0)
+
+    def test_linear_decode_includes_embedded_zero_runs(self):
+        # Zero bytes inside a contiguous span are code/data bytes too. GNU
+        # objdump otherwise suppresses zero runs unless `-z` is enabled.
+        code = bytes.fromhex("90 00 00 90 c3")
+        insns = raw_x86_insns(code, 0x401000)
+        self.assertEqual([i[0] for i in insns], [0, 1, 3, 4])
+        self.assertEqual(sum(len(i[1]) // 2 for i in insns), len(code))
+        self.assertEqual(bytes.fromhex("".join(i[1] for i in insns)), code)
 
     def test_rep_prefix_and_wrapped_instruction_preserve_exact_bytes(self):
         # rep movsd; mov dword ptr [esp+0x12345678],0x04030201; ret.
@@ -89,18 +146,67 @@ class RetailSpanTests(unittest.TestCase):
 
 
 class CompiledInputTests(unittest.TestCase):
-    def test_failed_objdump_cannot_be_reported_as_zero_percent(self):
-        with patch.object(diff_module.subprocess, "run", return_value=SimpleNamespace(
-                returncode=1, stdout="", stderr="object missing")):
-            with self.assertRaisesRegex(SystemExit, "objdump failed.*object missing"):
-                diff_module.objdump_insns("missing.obj", "wanted")
+    def test_cross_comdat_switch_label_cannot_split_victim_instruction(self):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "duplicate_text.obj"
+            duplicate_text_comdat_object(obj)
+            insns, relocs = diff_module.objdump_insns(str(obj), "victim")
+        self.assertEqual([insn[1] for insn in insns],
+                         ["b801000000", "8bf8", "c3"])
+        self.assertEqual([insn[2] for insn in insns], ["mov", "mov", "ret"])
+        self.assertEqual(relocs, set())
+
+    def test_relocations_are_kept_from_the_selected_comdat_only(self):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "duplicate_text_reloc.obj"
+            # The relocation belongs to the victim section, not the second
+            # same-named .text section containing the foreign local label.
+            duplicate_text_comdat_object(obj, relocation=True)
+            insns, relocs = diff_module.objdump_insns(str(obj), "victim")
+        self.assertEqual([insn[1] for insn in insns], ["e800000000", "8bf8", "c3"])
+        self.assertEqual(relocs, {1})
+
+    def test_nonzero_symbol_start_keeps_local_offsets_and_ignores_foreign_reloc(self):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "offset_comdat_reloc.obj"
+            duplicate_text_comdat_object(obj, relocation=True, nonzero_symbol=True)
+            old_listing = diff_module.subprocess.run(
+                ["objdump", "-d", "-r", "-M", "intel", str(obj)],
+                capture_output=True, text=True, check=True).stdout
+            insns, relocs = diff_module.objdump_insns(str(obj), "victim")
+        # Confirm the generated fixture exercises the real binutils failure:
+        # the foreign section's offset-8 label appears in the victim section
+        # and splits the second byte of its mov edi,eax instruction.
+        victim_listing = old_listing.split("00000002 <victim>:", 1)[1].split(
+            "Disassembly of section .text:", 1)[0]
+        self.assertIn(".byte 0x8b", victim_listing)
+        self.assertIn("clc", victim_listing)
+        self.assertEqual([insn[0] for insn in insns], [0, 5, 7])
+        self.assertEqual([insn[1] for insn in insns], ["e800000000", "8bf8", "c3"])
+        self.assertEqual(relocs, {1})
+
+    def test_invalid_relocation_symbol_index_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "invalid_reloc_target.obj"
+            duplicate_text_comdat_object(
+                obj, relocation=True, relocation_target=999)
+            with self.assertRaisesRegex(SystemExit, "relocation target is not a primary symbol"):
+                diff_module.objdump_insns(str(obj), "victim")
+
+    def test_relocation_field_crossing_symbol_section_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "crossing_reloc.obj"
+            duplicate_text_comdat_object(
+                obj, relocation=True, relocation_offset=6)
+            with self.assertRaisesRegex(SystemExit, "crosses requested function span"):
+                diff_module.objdump_insns(str(obj), "victim")
 
     def test_missing_symbol_cannot_be_reported_as_zero_percent(self):
-        output = "00000000 <other>:\n   0: c3                    ret\n"
-        with patch.object(diff_module.subprocess, "run", return_value=SimpleNamespace(
-                returncode=0, stdout=output, stderr="")):
-            with self.assertRaisesRegex(SystemExit, "no instructions.*wanted"):
-                diff_module.objdump_insns("other.obj", "wanted")
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "other.obj"
+            duplicate_text_comdat_object(obj)
+            with self.assertRaisesRegex(SystemExit, "cannot read COFF symbol wanted"):
+                diff_module.objdump_insns(str(obj), "wanted")
 
 
 class LiteralPoolGuardTests(unittest.TestCase):

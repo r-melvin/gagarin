@@ -15,9 +15,10 @@
 #                  --addr 0x6C9600 --len 0x4f
 #
 # Exit 0 iff every instruction matches (modulo relocations).
-import argparse, collections, json, os, re, subprocess, sys, tempfile
+import argparse, collections, json, os, re, struct, subprocess, sys, tempfile
 from retail_image import configured_span
 import raw_match
+from verify_vtable import VerifyError, defined_symbol, parse_coff
 
 GHIDRA = os.environ.get("GHIDRA", os.path.expanduser("~/.cargo/bin/ghidra"))
 
@@ -72,7 +73,7 @@ def ghidra_bytes(addr, length):
     return bytes(data)
 
 
-def raw_x86_insns(data, base_addr):
+def raw_x86_insns(data, base_addr, *, allow_data=False):
     """Decode every byte of a contiguous retail span as 32-bit x86.
 
     objdump receives an isolated raw binary at the retail's true address. Its
@@ -88,7 +89,7 @@ def raw_x86_insns(data, base_addr):
             f.write(data)
             path = f.name
         result = subprocess.run(
-            ["objdump", "-D", "-b", "binary", "-m", "i386", "-M", "intel",
+            ["objdump", "-D", "-z", "-b", "binary", "-m", "i386", "-M", "intel",
              f"--adjust-vma={base_addr:#x}", path],
             capture_output=True, text=True)
         if result.returncode:
@@ -122,7 +123,7 @@ def raw_x86_insns(data, base_addr):
             byte_string = re.sub(r"\s+", "", match.group(2)).lower()
             mnemonic = match.group(3).lower()
             operands = (match.group(4) or "").strip().lower()
-            if mnemonic == ".byte":
+            if mnemonic == ".byte" and not allow_data:
                 raise SystemExit(f"diff_retail: objdump could not decode byte at "
                                  f"{address:#x}; check the explicit span")
             # Match objdump_insns: objdump renders string prefixes as a
@@ -173,75 +174,44 @@ def explicit_length(text):
 
 
 def objdump_insns(obj, sym):
-    """Instructions and relocation offsets for one symbol.
+    """Decode one COFF symbol's own section bytes and return local relocations.
 
-    `-r` on its own prints relocation blocks keyed by section *name*, and with
-    /Gy every function lands in its own COMDAT that is still called `.text` —
-    so a name-keyed lookup silently merges the relocations of every function in
-    the object and can bless a differing run in one function using another
-    function's relocation. `-dr` interleaves each relocation directly under the
-    instruction it applies to, inside the right section, which removes the
-    ambiguity entirely."""
-    result = subprocess.run(["objdump", "-d", "-r", "-M", "intel", obj],
-                            capture_output=True, text=True)
-    if result.returncode:
-        raise SystemExit(f"diff_retail: objdump failed for {obj}: "
-                         f"{result.stderr.strip()}")
-    lines = result.stdout.splitlines()
-    insns, relocs, inblk = [], set(), False
-    for ln in lines:
-        m = re.match(r"^[0-9a-f]+ <(.+?)>:$", ln)
-        if m:
-            name = m.group(1)
-            if name == sym:
-                inblk = True
-            elif inblk and (name.startswith("$") or name.startswith(".")
-                            or name.startswith(sym + "+")):
-                pass  # intra-function local label (e.g. a /Gy switch-case $L264)
-            else:
-                inblk = False
-            continue
-        if not inblk:
-            continue
-        # A relocation line carries a type mnemonic where an instruction line
-        # would carry hex bytes.
-        rel = re.match(r"^\s*([0-9a-f]+):\s+([A-Za-z][A-Za-z0-9_]*)\s", ln)
-        if rel and not re.match(r"^\s*[0-9a-f]+:\s+(?:[0-9a-f]{2} )", ln):
-            relocs.add(int(rel.group(1), 16))
-            continue
-        # objdump wraps a long instruction's bytes onto continuation lines that
-        # carry only "<off>: <hex bytes>" with no mnemonic — append those to the
-        # previous instruction so its byte length is complete.
-        cont = re.match(r"^\s*[0-9a-f]+:\s+((?:[0-9a-f]{2}\s*)+)$", ln)
-        if cont and insns:
-            off0, bts0, mnem0, ops0 = insns[-1]
-            insns[-1] = (off0, bts0 + cont.group(1).replace(" ", "").lower(),
-                         mnem0, ops0)
-            continue
-        m = re.match(r"^\s*([0-9a-f]+):\s+((?:[0-9a-f]{2} )+)\s*(\S+)\s*(.*)$", ln)
-        if not m:
-            # Do NOT end the block on a blank line: with /Gy, a function's
-            # switch-case bodies are emitted as separate `$Lxxx` blocks after a
-            # blank line. Only a different real-function label (handled above)
-            # ends the block. Trailing alignment/data is bounded by --len + the
-            # trailing-nop trim in main().
-            continue
-        off = int(m.group(1), 16)
-        bts = m.group(2).replace(" ", "").lower()
-        mnem = m.group(3).lower()
-        ops = m.group(4).strip().lower()
-        # objdump prints a string-op prefix as its own token ("rep stos dword
-        # ptr ..."), so the mnemonic captured above would be just "rep" and the
-        # real opcode would be hiding at the front of the operands. Pull it back
-        # into the mnemonic; Ghidra spells the same instruction "stosd.rep",
-        # which _MNEMONIC_ALIASES folds to the objdump form.
-        if mnem in ("rep", "repz", "repnz", "repe", "repne", "lock") and ops:
-            parts = ops.split(None, 1)
-            mnem = mnem + " " + parts[0]
-            ops = parts[1] if len(parts) > 1 else ""
-        insns.append((off, bts, mnem, ops))
-    if not insns:
-        raise SystemExit(f"diff_retail: no instructions for requested symbol {sym} in {obj}")
+    Parsing `objdump -d` is unsafe for VC6 `/Gy` objects: each function has a
+    separate COMDAT section named `.text`, and objdump can print another
+    section's `$L` switch labels at matching offsets in this one. Such a label
+    can split an instruction and corrupt this function's score. Slice the
+    symbol's actual section bytes from COFF and linearly decode them instead;
+    the section identity also keeps its relocation table unambiguous.
+    """
+    try:
+        data, sections, symbols, _ = parse_coff(obj)
+        function = defined_symbol(sections, symbols, sym)
+    except (OSError, ValueError, VerifyError) as exc:
+        raise SystemExit(f"diff_retail: cannot read COFF symbol {sym} in {obj}: {exc}") from exc
+    section = sections[function["section"]]
+    if section["uninitialized"]:
+        raise SystemExit(f"diff_retail: symbol {sym} is in uninitialized COFF data")
+    start = function["value"]
+    end = section["raw_size"]
+    if start < 0 or start >= end:
+        raise SystemExit(f"diff_retail: symbol {sym} has no initialized section bytes")
+    raw_start = section["raw_ptr"] + start
+    raw_end = section["raw_ptr"] + end
+    if raw_end > len(data):
+        raise SystemExit(f"diff_retail: truncated COFF bytes for symbol {sym}")
+    code = data[raw_start:raw_end]
+    try:
+        object_code, relocs = raw_match.obj_func_bytes(obj, sym, len(code))
+    except (OSError, ValueError, struct.error, IndexError) as exc:
+        raise SystemExit(f"diff_retail: invalid COFF relocations for {sym} in {obj}: {exc}") from exc
+    if object_code != code:
+        raise SystemExit(f"diff_retail: COFF symbol slice disagrees for {sym} in {obj}")
+    try:
+        insns = raw_x86_insns(code, 0, allow_data=True)
+    except SystemExit as exc:
+        raise SystemExit(f"diff_retail: cannot decode COFF symbol {sym}: {exc}") from exc
+    # A symbol may start inside a shared section; return offsets relative to
+    # that symbol, matching the instruction stream's zero-based offsets.
     return insns, relocs
 
 

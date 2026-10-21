@@ -3,7 +3,7 @@
 As of **2026-10-21**, the latest verified snapshot reports **4,842 matched
 function rows**, **190 partial rows**, **5,032 manifest rows**, **1,041 manifest
 translation units**, and **1,051 tracked C++ files**. Whole-repository regression,
-compile/layout checks, the project build and 107 tooling tests pass with zero
+compile/layout checks, the project build and 112 tooling tests pass with zero
 matched regressions. All project objects are current. The annotation audit
 reports 5,065 body addresses and zero issues. Twenty-seven saved partial
 baselines are unchanged.
@@ -17,12 +17,17 @@ partials have shorter compiled sections than their retail spans; their stored
 instruction-position scores do not measure full-span byte equality.
 
 The earlier locomotion literal correction and scoped literal-oracle checks
-remain in place. A separate instruction-decoder issue has been reproduced:
-foreign switch labels in same-named COFF sections can distort instruction
-scores despite identical function bytes. Its tooling fix is being reviewed;
-this batch's 61 exact claims also pass the raw-byte oracle.
+remain in place. The instruction decoder now isolates each symbol's COFF
+section, preventing
+foreign switch labels in same-named sections from distorting instruction scores.
+Synthetic regressions and frozen repro objects verify the correction. The two
+legacy locomotion spans at `0x55A710` and `0x55AB40` now include their complete
+`RET 8` instructions: all 19 and 45 bytes respectively match retail, with no
+relocation fields. This corrects span metadata and adds no matched functions. Two AI-trigger
+partials remeasured at 4.3% with the corrected decoder (previously 5.1%);
+their source bodies are unchanged and neither is promoted.
 
-Matched lengths total **349,016 bytes**: 24.5% of listed functions and 9.2%
+Matched lengths total **349,020 bytes**: 24.5% of listed functions and 9.2%
 of listed function lengths. The padding heuristic misses 301 matched entries.
 The diagnostic link reports **3,545 unique unresolved symbols**, **5,326
 reference lines**, and zero duplicate definitions. Engine link closure and
@@ -2471,7 +2476,7 @@ the engine scope and structural audit provide a defensible denominator.
 | Measure | Count | Share |
 | --- | --- | --- |
 | Functions matched at 100% | **4,842** | **24.5%** of 19,753 |
-| Sum of matched function lengths | 349,016 bytes | 9.2% of 3,797,269 listed function bytes |
+| Sum of matched function lengths | 349,020 bytes | 9.2% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 190 | 1.0% |
 | Tracked C++ files under `match/` | 1,051 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |

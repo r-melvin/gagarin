@@ -51,7 +51,7 @@
   "len": "0x144",
   "name": "AITriggerTypeClass::EnemyHouseOwns",
   "status": "partial",
-  "pct": 5.1
+  "pct": 4.3
  },
  {
   "tu": "match/ai/ai_trigger_type_house_owns_methods.cpp",
@@ -60,7 +60,7 @@
   "len": "0x144",
   "name": "AITriggerTypeClass::OwnerHouseOwns",
   "status": "partial",
-  "pct": 5.1
+  "pct": 4.3
  },
  {
   "tu": "match/ai/aircraft_mission_004155f0.cpp",
@@ -25358,7 +25358,7 @@
   "tu": "match/movement/locomotion_class_iloco_methods.cpp",
   "addr": "0x55A710",
   "sym": "?LinkToObject@LocomotionClass@@UAGJPAUFootClass@@@Z",
-  "len": "0x11",
+  "len": "0x13",
   "name": "LinkToObject",
   "status": "matched",
   "pct": 100
@@ -25448,7 +25448,7 @@
   "tu": "match/movement/locomotion_class_methods.cpp",
   "addr": "0x55AB40",
   "sym": "?GetSizeMax@LocomotionClass@@UAGJPAUGg_ULARGE_INTEGER@@@Z",
-  "len": "0x2B",
+  "len": "0x2D",
   "name": "GetSizeMax",
   "status": "matched",
   "pct": 100
