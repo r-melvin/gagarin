@@ -82,5 +82,20 @@ class RetailSpanTests(unittest.TestCase):
             explicit_length("0x0")
 
 
+class CompiledInputTests(unittest.TestCase):
+    def test_failed_objdump_cannot_be_reported_as_zero_percent(self):
+        with patch.object(diff_module.subprocess, "run", return_value=SimpleNamespace(
+                returncode=1, stdout="", stderr="object missing")):
+            with self.assertRaisesRegex(SystemExit, "objdump failed.*object missing"):
+                diff_module.objdump_insns("missing.obj", "wanted")
+
+    def test_missing_symbol_cannot_be_reported_as_zero_percent(self):
+        output = "00000000 <other>:\n   0: c3                    ret\n"
+        with patch.object(diff_module.subprocess, "run", return_value=SimpleNamespace(
+                returncode=0, stdout=output, stderr="")):
+            with self.assertRaisesRegex(SystemExit, "no instructions.*wanted"):
+                diff_module.objdump_insns("other.obj", "wanted")
+
+
 if __name__ == "__main__":
     unittest.main()

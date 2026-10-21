@@ -14,12 +14,12 @@ import check_duplicates
 
 
 class SyntheticOwnershipTests(unittest.TestCase):
-    def run_gate(self, duplicate):
+    def run_gate(self, duplicate, marker="SYNTHETIC"):
         with tempfile.TemporaryDirectory() as work:
             root = Path(work)
             source = root / 'match/test/generated.cpp'
             source.parent.mkdir(parents=True)
-            source.write_text('// SYNTHETIC: GAMEMD 0x401000\n')
+            source.write_text('// %s: GAMEMD 0x401000\n' % marker)
             if duplicate:
                 (source.parent / 'standin.cpp').write_text(
                     '// FUNCTION: GAMEMD 0x401000\n')
@@ -40,6 +40,16 @@ class SyntheticOwnershipTests(unittest.TestCase):
 
     def test_generated_function_colliding_with_standin_is_rejected(self):
         code, output = self.run_gate(True)
+        self.assertEqual(code, 1, output)
+        self.assertIn('DUPLICATE', output)
+
+
+    def test_template_specialization_can_own_manifest_row(self):
+        code, output = self.run_gate(False, marker="TEMPLATE")
+        self.assertEqual(code, 0, output)
+
+    def test_template_specialization_collision_is_rejected(self):
+        code, output = self.run_gate(True, marker="TEMPLATE")
         self.assertEqual(code, 1, output)
         self.assertIn('DUPLICATE', output)
 

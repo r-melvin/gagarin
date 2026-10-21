@@ -2,9 +2,11 @@
 // Provenance: retail gamemd.exe v1.001 SHA-256
 // 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c.
 // Blitter RTTI identifies a five-slot interface at the address point below;
-// slots 1-4 are the four methods declared here. The virtual destructor and
-// pure-method runtime target are ABI declarations only: this TU does not emit
-// or claim a matching Blitter vtable or destructor body.
+// slots 1-4 are the four methods declared here. An empty inline destructor
+// reproduces the base deleting wrapper naturally emitted by b_trans.cpp.
+// This is a compiler-emission reconstruction, not proof of original source
+// spelling or a separate ordinary destructor entry. Pure slots remain runtime
+// bindings, with no recovered runtime body.
 #ifndef GG_MATCH_RENDER_BLITTERS_BLITTER_H
 #define GG_MATCH_RENDER_BLITTERS_BLITTER_H
 
@@ -16,7 +18,8 @@
 class Blitter
 {
 public:
-    virtual ~Blitter();
+    // SYNTHETIC: GAMEMD 0x499CC0 -- compiler-generated deleting wrapper.
+    virtual ~Blitter() {}
 
     virtual void BlitCopy(void* dest, const void* src, int len, int zval,
                           unsigned short* zbuf, unsigned short* abuf,

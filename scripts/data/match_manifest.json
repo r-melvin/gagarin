@@ -42154,5 +42154,632 @@
   "name": "BlitPlain<unsigned short>::BlitMoveTint",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492670",
+  "sym": "?BlitCopy@?$BlitTransDarken@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x33",
+  "name": "BlitTransDarken<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4926B0",
+  "sym": "?BlitMove@?$BlitTransDarken@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarken<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4926E0",
+  "sym": "?BlitCopyTint@?$BlitTransDarken@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarken<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492710",
+  "sym": "?BlitMoveTint@?$BlitTransDarken@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarken<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492B00",
+  "sym": "?BlitCopy@?$BlitTransXlatZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x6A",
+  "name": "BlitTransXlatZRead<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492B70",
+  "sym": "?BlitMove@?$BlitTransXlatZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492BA0",
+  "sym": "?BlitCopyTint@?$BlitTransXlatZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZRead<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492BD0",
+  "sym": "?BlitMoveTint@?$BlitTransXlatZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492D20",
+  "sym": "?BlitCopy@?$BlitTransDarkenZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x5E",
+  "name": "BlitTransDarkenZRead<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492D80",
+  "sym": "?BlitMove@?$BlitTransDarkenZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492DB0",
+  "sym": "?BlitCopyTint@?$BlitTransDarkenZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZRead<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x492DE0",
+  "sym": "?BlitMoveTint@?$BlitTransDarkenZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x493600",
+  "sym": "?BlitCopy@?$BlitTransXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x79",
+  "name": "BlitTransXlatZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x493680",
+  "sym": "?BlitMove@?$BlitTransXlatZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4936B0",
+  "sym": "?BlitCopyTint@?$BlitTransXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4936E0",
+  "sym": "?BlitMoveTint@?$BlitTransXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlatZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x493830",
+  "sym": "?BlitCopy@?$BlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x6D",
+  "name": "BlitTransDarkenZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4938A0",
+  "sym": "?BlitMove@?$BlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x4938D0",
+  "sym": "?BlitCopyTint@?$BlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_darken_xlatz.cpp",
+  "addr": "0x493900",
+  "sym": "?BlitMoveTint@?$BlitTransDarkenZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransDarkenZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x4913F0",
+  "sym": "?BlitCopy@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x39",
+  "name": "BlitPlainXlat<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x491430",
+  "sym": "?BlitMove@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x491460",
+  "sym": "?BlitCopyTint@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x491490",
+  "sym": "?BlitMoveTint@?$BlitPlainXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x4924C0",
+  "sym": "?BlitCopy@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x3D",
+  "name": "BlitPlainXlat<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492500",
+  "sym": "?BlitMove@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492530",
+  "sym": "?BlitCopyTint@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492560",
+  "sym": "?BlitMoveTint@?$BlitPlainXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlat<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492A10",
+  "sym": "?BlitCopy@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x5A",
+  "name": "BlitPlainXlatZRead<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492A70",
+  "sym": "?BlitMove@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZRead<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492AA0",
+  "sym": "?BlitCopyTint@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZRead<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x492AD0",
+  "sym": "?BlitMoveTint@?$BlitPlainXlatZRead@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZRead<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493500",
+  "sym": "?BlitCopy@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x6F",
+  "name": "BlitPlainXlatZReadWrite<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493570",
+  "sym": "?BlitMove@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZReadWrite<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x4935A0",
+  "sym": "?BlitCopyTint@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZReadWrite<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x4935D0",
+  "sym": "?BlitMoveTint@?$BlitPlainXlatZReadWrite@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatZReadWrite<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493CC0",
+  "sym": "?BlitCopy@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x9C",
+  "name": "BlitPlainXlatAlpha<unsigned short>::BlitCopy",
+  "status": "partial",
+  "pct": 91.2,
+  "metric": "instruction-position",
+  "qualification": "Instruction-position metric: 52/57 = 91.2%; separate raw comparison is 140/156 with one relocation and three real difference runs."
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493D60",
+  "sym": "?BlitMove@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatAlpha<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493D90",
+  "sym": "?BlitCopyTint@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatAlpha<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_plainxlat.cpp",
+  "addr": "0x493DC0",
+  "sym": "?BlitMoveTint@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitPlainXlatAlpha<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4912B0",
+  "sym": "?BlitCopy@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x46",
+  "name": "BlitTransXlat<unsigned short>::BlitCopy",
+  "status": "partial",
+  "pct": 0,
+  "metric": "instruction-position",
+  "qualification": "Instruction-position diagnostic: 0/33 against 26 compiled instructions; compiled section is 0x40 versus retail 0x46, so no complete-span raw-byte percentage is claimed."
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491300",
+  "sym": "?BlitMove@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491330",
+  "sym": "?BlitCopyTint@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491360",
+  "sym": "?BlitMoveTint@?$BlitTransXlat@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4914C0",
+  "sym": "?BlitCopy@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x3B",
+  "name": "BlitTransXlat<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491500",
+  "sym": "?BlitMove@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491530",
+  "sym": "?BlitCopyTint@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491560",
+  "sym": "?BlitMoveTint@?$BlitTransXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransXlat<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491670",
+  "sym": "?BlitCopy@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x32",
+  "name": "BlitTransRemapDest<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4916B0",
+  "sym": "?BlitMove@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapDest<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4916E0",
+  "sym": "?BlitCopyTint@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapDest<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491710",
+  "sym": "?BlitMoveTint@?$BlitTransRemapDest@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapDest<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491740",
+  "sym": "?BlitCopy@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x46",
+  "name": "BlitTransRemapXlat<unsigned char>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x491790",
+  "sym": "?BlitMove@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapXlat<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4917C0",
+  "sym": "?BlitCopyTint@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapXlat<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x4917F0",
+  "sym": "?BlitMoveTint@?$BlitTransRemapXlat@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTransRemapXlat<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x499ca0",
+  "sym": "??_G?$BlitTransXlat@G@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "BlitTransXlat<unsigned short> scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x499cc0",
+  "sym": "??_GBlitter@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "Blitter scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x499d00",
+  "sym": "??_G?$BlitTransXlat@E@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "BlitTransXlat<unsigned char> scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x499d40",
+  "sym": "??_G?$BlitTransRemapDest@E@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "BlitTransRemapDest<unsigned char> scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x499d60",
+  "sym": "??_G?$BlitTransRemapXlat@E@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "BlitTransRemapXlat<unsigned char> scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC610",
+  "sym": "?BlitCopy@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x2D",
+  "name": "BlitTrans<unsigned char>::BlitCopy",
+  "status": "partial",
+  "pct": 0,
+  "metric": "instruction-position",
+  "qualification": "Instruction-position diagnostic: 0/27 against 17 compiled instructions; raw bytes differ. Source remains a readable hypothesis."
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC6C0",
+  "sym": "?BlitMove@?$BlitTrans@E@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned char>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC6F0",
+  "sym": "?BlitCopyTint@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned char>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC720",
+  "sym": "?BlitMoveTint@?$BlitTrans@E@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned char>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC890",
+  "sym": "?BlitCopy@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HH@Z",
+  "len": "0x2B",
+  "name": "BlitTrans<unsigned short>::BlitCopy",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC8C0",
+  "sym": "?BlitMove@?$BlitTrans@G@@UAEXPAXPBXHHPAG2H@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned short>::BlitMove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC8F0",
+  "sym": "?BlitCopyTint@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HHG@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned short>::BlitCopyTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/b_trans.cpp",
+  "addr": "0x7BC920",
+  "sym": "?BlitMoveTint@?$BlitTrans@G@@UAEXPAXPBXHHPAG2HG@Z",
+  "len": "0x2d",
+  "name": "BlitTrans<unsigned short>::BlitMoveTint",
+  "status": "matched",
+  "pct": 100
  }
 ]

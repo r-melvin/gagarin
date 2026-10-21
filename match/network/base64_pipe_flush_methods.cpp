@@ -14,9 +14,9 @@
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
 #include "base64_pipe_flush_methods.h"
 
-// FUNCTION: GAMEMD 0x42FD30 -- external call target declaration only.
+// FUNCTION: GAMEMD 0x42FD30 (decl; reloc) -- external call target only.
 int __fastcall FUN_0042FD30(void* state, int pending, void* buffer, int width);
-// FUNCTION: GAMEMD 0x42FE50 -- external call target declaration only.
+// FUNCTION: GAMEMD 0x42FE50 (decl; reloc) -- external call target only.
 int __fastcall FUN_0042FE50(void* state, int pending, void* buffer, int width);
 
 // FUNCTION: GAMEMD 0x42DF40

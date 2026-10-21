@@ -181,9 +181,12 @@ def objdump_insns(obj, sym):
     function's relocation. `-dr` interleaves each relocation directly under the
     instruction it applies to, inside the right section, which removes the
     ambiguity entirely."""
-    out = subprocess.run(["objdump", "-d", "-r", "-M", "intel", obj],
-                         capture_output=True, text=True).stdout
-    lines = out.splitlines()
+    result = subprocess.run(["objdump", "-d", "-r", "-M", "intel", obj],
+                            capture_output=True, text=True)
+    if result.returncode:
+        raise SystemExit(f"diff_retail: objdump failed for {obj}: "
+                         f"{result.stderr.strip()}")
+    lines = result.stdout.splitlines()
     insns, relocs, inblk = [], set(), False
     for ln in lines:
         m = re.match(r"^[0-9a-f]+ <(.+?)>:$", ln)
@@ -236,6 +239,8 @@ def objdump_insns(obj, sym):
             mnem = mnem + " " + parts[0]
             ops = parts[1] if len(parts) > 1 else ""
         insns.append((off, bts, mnem, ops))
+    if not insns:
+        raise SystemExit(f"diff_retail: no instructions for requested symbol {sym} in {obj}")
     return insns, relocs
 
 

@@ -22,7 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 # common and harmless. Lines marked as a declaration annotate a callee defined
 # elsewhere, so they are not claims; neither is an indented mention inside a
 # provenance header.
-ANNOT = re.compile(r'(?m)^// (?:FUNCTION|SYNTHETIC): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
+ANNOT = re.compile(r'(?m)^// (?:FUNCTION|SYNTHETIC|TEMPLATE): GAMEMD (0x[0-9A-Fa-f]+)(.*)$')
 
 
 def claims(text):

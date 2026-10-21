@@ -1,5 +1,48 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,583 fully matched
+functions**, **170 partial rows**, **4,753 manifest rows**, **1,013 manifest
+translation units**, and **1,023 tracked C++ files**. Whole-repository regression
+and compile/layout checks passed with zero matched regressions; 94 tooling tests
+pass. The project object index is current, and the duplicate audit reports zero
+issues. Eleven older saved partial bodies and relocation offsets are unchanged.
+
+Three Blitter clusters add 66 exact entries: 61 ordinary methods and five
+compiler-generated deleting wrappers emitted by the production source without
+probes. All 22 relocation fields across those spans resolve to retail targets.
+The base table and three leaf tables pass conditional checks covering 20 slots;
+these assume recorded compiler weak defaults and do not prove final-link
+selection or complete class closure. The four emitted b-trans leaf wrappers
+match only without `/GX`; paired flags leave its 24 ordinary method sections unchanged.
+
+Three readable bodies remain partial: `0x493CC0` is 91.2% by instruction
+comparison; `0x4912B0` and `0x7BC610` are 0% by that diagnostic. The first of
+those zero-score candidates emits only 0x40 bytes for a 0x46-byte retail span,
+so no complete-span raw-byte percentage is claimed. The manifest records these
+metric qualifications. Alpha-pool lifetime code remains deferred to avoid a
+conflicting global declaration. No assembly or artificial emission probes were
+added.
+
+The ownership gate now recognizes template annotations. The instruction checker
+rejects a failed disassembler or missing function instead of reporting a false
+0%; regression tests cover both fixes.
+
+Matched lengths total **321,727 bytes**: 23.2% of listed functions and 8.5%
+of listed function lengths. The padding heuristic misses 297 matched entries.
+The diagnostic link reports **3,537 unique unresolved symbols**, **5,269
+reference lines**, and zero duplicate definitions, compared with 3,535 unique
+symbols and 5,264 references at commit `188f234`. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: Base64Pipe and early BlitPlain consolidation
+
 As of **2026-10-21**, the latest verified snapshot has **4,517 fully matched
 functions**, **167 partial rows**, **4,684 manifest rows**, **1,010 manifest
 translation units**, and **1,020 tracked C++ files**. The 90-test suite,
@@ -39,13 +82,6 @@ The diagnostic link reports **3,535 unique unresolved symbols**, **5,264
 reference lines**, and zero duplicate definitions, compared with 3,537 unique
 symbols and 5,266 references at commit `0fbf9f5`. This diagnostic does not
 establish engine link closure. Whole-executable reproduction remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: FilePipe
 
@@ -2253,6 +2289,14 @@ Verified consolidation steps:
   recovered routines use one address-ordered implementation and shared global
   declarations. Their original class or file ownership is not established.
 
+- [Blitter](match/render/blitters/blitter.h) now underlies the native
+  [Trans](match/render/blitters/b_trans.h),
+  [Darken/Z](match/render/blitters/b_darken_xlatz.h), and
+  [PlainXlat](match/render/blitters/b_plainxlat.h) families. Shared Z/alpha wrap
+  declarations pin the touched offsets and globals. Five deleting wrappers
+  emit naturally from production source; other lifetime and table claims stay
+  limited to verified subsets. The alpha-pool lifetime code remains deferred.
+
 Update this table and the consolidation record after each verified batch,
 recording the affected classes, supporting source/evidence, and remaining
 gaps. Update function totals separately; do not infer structural completion
@@ -2286,10 +2330,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,506** | **22.8%** of 19,753 |
-| Sum of matched function lengths | 317,973 bytes | 8.4% of 3,708 KiB of listed function lengths |
-| Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 1,018 | |
+| Functions matched at 100% | **4,583** | **23.2%** of 19,753 |
+| Sum of matched function lengths | 321,727 bytes | 8.5% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 170 | 0.9% |
+| Tracked C++ files under `match/` | 1,023 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2309,7 +2353,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 291 matched entries. Its candidate count is therefore
+listed entries, including 297 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
