@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // GenericNode and GenericList RTTI is at 0x8174E8/0x817508; primary
-// tables are 0x7E1B0C/0x7E1B04. Entry-origin constructors/destructors at
-// 0x52ACE0, 0x52AB80 and 0x5B46E0 confirm the fields and unlink order.
+// tables are 0x7E1B0C/0x7E1B04. The native GenericNode constructor at
+// 0x40E320, GenericList constructor at 0x52ACE0, and destructors at 0x52AB80
+// and 0x5B46E0 confirm the fields and unlink order.
 // The explicit vptr fields preserve the observed inline stores; complete
 // original source ownership and native virtual declarations remain unknown.
 #ifndef GG_MATCH_LAYOUT_GENERIC_LIST_H
@@ -16,12 +17,14 @@ public:
     GenericNode* NextNode;   // +0x04
     GenericNode* PrevNode;   // +0x08
 
+    // Native no-argument constructor: its three stores and constructor-like
+    // call sites are confirmed at 0x40E320.
+    // FUNCTION: GAMEMD 0x40E320
+    GenericNode();
     // The guard retail spells out three times per unlink: `CMP ESI,EBX`,
     // `CMP EBX,[ECX+4]`, `CMP EBX,[ECX+8]`, in that order.
     // FUNCTION: GAMEMD 0x5B4590
     void ListNodeUnlink();
-    // FUNCTION: GAMEMD 0x40E320 -- explicit initializer entry.
-    GenericNode* InitializeNode();
     // FUNCTION: GAMEMD 0x40E340 -- inserts the argument after this node.
     void LinkNode(GenericNode* node);
     // FUNCTION: GAMEMD 0x40E390 -- primary table slot zero.
@@ -64,7 +67,8 @@ public:
     GenericList* ScalarDeletingDtor(char flags);
     // FUNCTION: GAMEMD 0x40E3E0 -- table 0x7E1B04 slot zero.
     void* DeletingDestructor(unsigned int flags);
-    // Shared initialization for the native constructor at 0x52ACE0.
+    // Explicit reset helper. The native constructor at 0x52ACE0 instead uses
+    // automatic member construction before seating and linking the sentinels.
     // The owning TU's /Ob2 also inlines that constructor into the derived
     // List<INIEntry*> constructor at 0x52AF50, reproducing its full span.
     __forceinline void InitList();

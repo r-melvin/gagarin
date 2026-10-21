@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 179 remaining 73-byte deleting-destructor bodies are bound here through
-// 93 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 175 remaining 73-byte deleting-destructor bodies are bound here through
+// 91 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -202,15 +202,11 @@ extern char VT_007F3F8C;
 extern char VT_007F4154;
 // VTABLE: GAMEMD 0x007F42BC -- VectorClass<DirtyAreaStruct>
 extern char VT_007F42BC;
-// VTABLE: GAMEMD 0x007F42FC -- VectorClass<ShadowControlClass*>
-extern char VT_007F42FC;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
 extern char VT_007F65F4;
 // VTABLE: GAMEMD 0x007F71A4 -- VectorClass<WorldDominationTour::Map::AnimationPalette*>
 extern char VT_007F71A4;
 // VTABLE: GAMEMD 0x007F71E0 -- VectorClass<WorldDominationTour::Centroid>
 extern char VT_007F71E0;
-// VTABLE: GAMEMD 0x007F7A3C -- VectorClass<WinsockInterfaceClass::WinsockBufferType*>
-extern char VT_007F7A3C;
 
 #endif  // GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H

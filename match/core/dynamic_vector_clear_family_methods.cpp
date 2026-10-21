@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 88
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 86
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -649,11 +649,6 @@ template class DynamicVectorClass<SwizzlePointerClass>;
 //   `.?AV?$DynamicVectorClass@UDirtyAreaStruct@@@@`.
 template class DynamicVectorClass<DirtyAreaStruct>;
 
-// FUNCTION: GAMEMD 0x006DC580
-// DynamicVectorClass<ShadowControlClass*> -- vtable 0x007F42DC slot 3; locator 0x0080B8C8 -> type descriptor 0x008429F8
-//   `.?AV?$DynamicVectorClass@PAVShadowControlClass@@@@`.
-template class DynamicVectorClass<ShadowControlClass*>;
-
 // FUNCTION: GAMEMD 0x007212B0
 // DynamicVectorClass<ThemeControl*> -- vtable 0x007F568C slot 3; locator 0x0080C688 -> type descriptor 0x00844780
 //   `.?AV?$DynamicVectorClass@PAUThemeControl@@@@`.
@@ -663,8 +658,3 @@ template class DynamicVectorClass<ThemeControl*>;
 // DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*> -- vtable 0x007F7144 slot 3; locator 0x0080DEC8 -> type descriptor 0x00848930
 //   `.?AV?$DynamicVectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
 template class DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>;
-
-// FUNCTION: GAMEMD 0x007B2840
-// DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*> -- vtable 0x007F7A1C slot 3; locator 0x0080EAC8 -> type descriptor 0x0084DDF8
-//   `.?AV?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
-template class DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>;

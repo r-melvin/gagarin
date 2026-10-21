@@ -10872,11 +10872,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/generic_list_methods.cpp",
+  "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x40E320",
-  "sym": "?InitializeNode@GenericNode@@QAEPAV1@XZ",
+  "sym": "??0GenericNode@@QAE@XZ",
   "len": "0x11",
-  "name": "GenericNode::InitializeNode",
+  "name": "GenericNode::GenericNode",
   "status": "matched",
   "pct": 100.0
  },
@@ -14742,7 +14742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
   "addr": "0x006dc580",
   "sym": "?Clear@?$DynamicVectorClass@PAVShadowControlClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14877,7 +14877,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
   "addr": "0x007b2840",
   "sym": "?Clear@?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -18054,20 +18054,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
   "addr": "0x006DCCD0",
   "sym": "??_G?$VectorClass@PAVShadowControlClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ShadowControlClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<ShadowControlClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
   "addr": "0x006DCD20",
-  "sym": "??_G?$VectorClass@PAVShadowControlClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVShadowControlClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ShadowControlClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ShadowControlClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18342,20 +18342,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
   "addr": "0x007B2B00",
   "sym": "??_G?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::`scalar deleting destructor'",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
   "addr": "0x007B2B50",
-  "sym": "??_G?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -20142,7 +20142,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
   "addr": "0x006dcac0",
   "sym": "?Clear@?$VectorClass@PAVShadowControlClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20286,7 +20286,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
   "addr": "0x007b2990",
   "sym": "?Clear@?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAEXXZ",
   "len": "0x27",
@@ -37483,5 +37483,149 @@
   "tu": "match/core/vector_unsigned_char_ptr_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAE@@UBEHABQAE@Z",
   "name": "DynamicVectorClass<unsigned char*>::FindItemIndex"
+ },
+ {
+  "addr": "0x6DC5B0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVShadowControlClass@@@@UBEHPAPAVShadowControlClass@@@Z",
+  "name": "DynamicVectorClass<ShadowControlClass*>::Slot5"
+ },
+ {
+  "addr": "0x6DC5D0",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVShadowControlClass@@@@UBEPAVShadowControlClass@@H@Z",
+  "name": "VectorClass<ShadowControlClass*>::Slot6"
+ },
+ {
+  "addr": "0x6DC9D0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVShadowControlClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<ShadowControlClass*>::operator=="
+ },
+ {
+  "addr": "0x6DCA10",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVShadowControlClass@@@@UAE_NHPAPAVShadowControlClass@@@Z",
+  "name": "VectorClass<ShadowControlClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x6DCAF0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVShadowControlClass@@@@UBEHABQAVShadowControlClass@@@Z",
+  "name": "VectorClass<ShadowControlClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x6DCB30",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVShadowControlClass@@@@UBEHPAPAVShadowControlClass@@@Z",
+  "name": "VectorClass<ShadowControlClass*>::Slot5"
+ },
+ {
+  "addr": "0x6DCB50",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVShadowControlClass@@@@UAE_NHPAPAVShadowControlClass@@@Z",
+  "name": "DynamicVectorClass<ShadowControlClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x6DCC00",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_shadowcontrolclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVShadowControlClass@@@@UBEHABQAVShadowControlClass@@@Z",
+  "name": "DynamicVectorClass<ShadowControlClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x7B2870",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEHPAPAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::Slot5"
+ },
+ {
+  "addr": "0x7B2890",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEPAUWinsockBufferType@WinsockInterfaceClass@@H@Z",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::Slot6"
+ },
+ {
+  "addr": "0x7B28A0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "??8?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::operator=="
+ },
+ {
+  "addr": "0x7B28E0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAE_NHPAPAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::SetCapacity"
+ },
+ {
+  "addr": "0x7B29C0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEHABQAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::FindItemIndex"
+ },
+ {
+  "addr": "0x7B2A00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEHPAPAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "VectorClass<WinsockInterfaceClass::WinsockBufferType*>::Slot5"
+ },
+ {
+  "addr": "0x7B2A20",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UAE_NHPAPAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::SetCapacity"
+ },
+ {
+  "addr": "0x7B2AD0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_winsockbuffer_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEHABQAUWinsockBufferType@WinsockInterfaceClass@@@Z",
+  "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::FindItemIndex"
  }
 ]

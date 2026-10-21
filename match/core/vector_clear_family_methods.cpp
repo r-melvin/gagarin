@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 89
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 87
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 112 remaining addresses are bound to VectorClass<T> tables;
+//   The 88 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -636,11 +636,6 @@ template class VectorClass<SwizzlePointerClass>;
 //   `.?AV?$VectorClass@UDirtyAreaStruct@@@@`.
 template class VectorClass<DirtyAreaStruct>;
 
-// FUNCTION: GAMEMD 0x006DCAC0
-// VectorClass<ShadowControlClass*> -- vtable 0x007F42FC slot 3; locator 0x0080B8F8 -> type descriptor 0x008429C0
-//   `.?AV?$VectorClass@PAVShadowControlClass@@@@`.
-template class VectorClass<ShadowControlClass*>;
-
 // FUNCTION: GAMEMD 0x0074C0E0
 // VectorClass<unsigned char> -- vtable 0x007F65F4 slot 3; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
@@ -655,8 +650,3 @@ template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 // VectorClass<WorldDominationTour::Centroid> -- vtable 0x007F71E0 slot 3; locator 0x0080E008 -> type descriptor 0x00848B88
 //   `.?AV?$VectorClass@VCentroid@WorldDominationTour@@@@`.
 template class VectorClass<WorldDominationTour::Centroid>;
-
-// FUNCTION: GAMEMD 0x007B2990
-// VectorClass<WinsockInterfaceClass::WinsockBufferType*> -- vtable 0x007F7A3C slot 3; locator 0x0080EB28 -> type descriptor 0x0084DDA8
-//   `.?AV?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
-template class VectorClass<WinsockInterfaceClass::WinsockBufferType*>;

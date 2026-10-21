@@ -10,15 +10,6 @@
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete.
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
-// FUNCTION: GAMEMD 0x40E320
-// Explicit initializer entry; automatic C++ constructor emission is not yet
-// recovered. It initializes the shared prefix and returns its receiver.
-GenericNode* GenericNode::InitializeNode()
-{
-    InitNode();
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x40E340
 //
 // The same guarded unlink as the destructor below - all three of node, its NextNode

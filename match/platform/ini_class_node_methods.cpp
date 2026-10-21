@@ -10,6 +10,14 @@
 // Ob2 inlines native GenericList construction into List<INIEntry*>.
 #include "ini_class_node_methods.h"
 
+// FUNCTION: GAMEMD 0x40E320
+GenericNode::GenericNode()
+{
+    NextNode = 0;
+    PrevNode = 0;
+    Vtable = &GG_VTABLE_GENERIC_NODE_SLOTS;
+}
+
 // Cut an INI line short at its first comment character and trim what is left.
 // A missing semicolon leaves the line untouched, which is why the trim is
 // inside the second guard rather than after it.
@@ -114,7 +122,9 @@ void INIClass::INISection::DestroySection()
 // FUNCTION: GAMEMD 0x52ACE0
 GenericList::GenericList()
 {
-    InitList();
+    // FirstNode and LastNode have already run their GenericNode constructors.
+    Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
+    FirstNode.Link(&LastNode);
 }
 
 // Slot zero of INIEntry's vtable. Retail carries the whole destructor expanded

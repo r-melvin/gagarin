@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 93 base-template instantiations reproduce 179 remaining retail destructor
+// 91 base-template instantiations reproduce 175 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -735,12 +735,6 @@ template class VectorClass<SwizzlePointerClass>;
 //   `.?AV?$VectorClass@UDirtyAreaStruct@@@@`.
 template class VectorClass<DirtyAreaStruct>;
 
-// FUNCTION: GAMEMD 0x006DCCD0
-// FUNCTION: GAMEMD 0x006DCD20
-// VectorClass<ShadowControlClass*> -- reseats retail vtable 0x007F42FC; locator 0x0080B8F8 -> type descriptor 0x008429C0
-//   `.?AV?$VectorClass@PAVShadowControlClass@@@@`.
-template class VectorClass<ShadowControlClass*>;
-
 // FUNCTION: GAMEMD 0x0074BFA0
 // VectorClass<unsigned char> -- reseats retail vtable 0x007F65F4; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
@@ -756,9 +750,3 @@ template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 // VectorClass<WorldDominationTour::Centroid> -- reseats retail vtable 0x007F71E0; locator 0x0080E008 -> type descriptor 0x00848B88
 //   `.?AV?$VectorClass@VCentroid@WorldDominationTour@@@@`.
 template class VectorClass<WorldDominationTour::Centroid>;
-
-// FUNCTION: GAMEMD 0x007B2B00
-// FUNCTION: GAMEMD 0x007B2B50
-// VectorClass<WinsockInterfaceClass::WinsockBufferType*> -- reseats retail vtable 0x007F7A3C; locator 0x0080EB28 -> type descriptor 0x0084DDA8
-//   `.?AV?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
-template class VectorClass<WinsockInterfaceClass::WinsockBufferType*>;
