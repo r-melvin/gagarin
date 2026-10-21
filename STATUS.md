@@ -1,5 +1,37 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,767 fully matched
+functions**, **174 partial rows**, **4,941 manifest rows**, **1,023 manifest
+translation units**, and **1,033 tracked C++ files**. Whole-repository regression,
+compile/layout checks, the project build and 94 tooling tests pass with zero
+matched regressions. All project objects are current. The annotation audit
+reports 4,974 body addresses and zero issues. Twenty saved partial baselines
+are unchanged.
+
+The latest batch adds 32 exact ordinary RLE Lucent25/75 methods, with all
+44 relocation fields resolving to retail targets. A single declaration-only
+`RLEBlitter` interface models the separate RTTI root and its three virtual slots.
+Direct pinned-image checks confirm the root RTTI/table and 48 slots across the
+16 leaf tables. These are retail address bindings, not production table-emission,
+deleting-destructor or complete class-closure claims. Harness tables and
+wrappers, alpha-pool lifetime code, assembly and artificial probes are excluded
+from this import. Existing partial bodies were preserved.
+
+Matched lengths total **339,404 bytes**: 24.1% of listed functions and 8.9%
+of listed function lengths. The padding heuristic misses 300 matched entries.
+The diagnostic link reports **3,538 unique unresolved symbols**, **5,288
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: Z-remap and alpha Blitter families
+
 As of **2026-10-21**, the latest verified snapshot has **4,735 fully matched
 functions**, **174 partial rows**, **4,909 manifest rows**, **1,019 manifest
 translation units**, and **1,029 tracked C++ files**. Whole-repository regression,
@@ -23,13 +55,6 @@ of listed function lengths. The padding heuristic misses 300 matched entries.
 The diagnostic link reports **3,538 unique unresolved symbols**, **5,283
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: Lucent methods and Vox playback lookup
 
@@ -2383,10 +2408,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,735** | **24.0%** of 19,753 |
-| Sum of matched function lengths | 333,234 bytes | 8.8% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,767** | **24.1%** of 19,753 |
+| Sum of matched function lengths | 339,404 bytes | 8.9% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 174 | 0.9% |
-| Tracked C++ files under `match/` | 1,029 | |
+| Tracked C++ files under `match/` | 1,033 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

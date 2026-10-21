@@ -44197,5 +44197,293 @@
   "name": "BlitTranslucent50ZeroAlpha<unsigned short>::BlitMoveTint",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x4964D0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x9F",
+  "name": "RLEBlitTransLucent25<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x496570",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x496BC0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25ZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x106",
+  "name": "RLEBlitTransLucent25ZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x496CD0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25ZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25ZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x496FB0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x10B",
+  "name": "RLEBlitTransLucent25ZReadWarp<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x4970C0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25ZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x497760",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x116",
+  "name": "RLEBlitTransLucent25ZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x497880",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25ZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x497E60",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25Alpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x12D",
+  "name": "RLEBlitTransLucent25Alpha<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x497F90",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25Alpha@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25Alpha<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x4988C0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1BB",
+  "name": "RLEBlitTransLucent25AlphaZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x498A80",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25AlphaZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x498ED0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1C6",
+  "name": "RLEBlitTransLucent25AlphaZReadWarp<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x4990A0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25AlphaZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x499A90",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent25AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1C9",
+  "name": "RLEBlitTransLucent25AlphaZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent25.cpp",
+  "addr": "0x499C60",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent25AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3A",
+  "name": "RLEBlitTransLucent25AlphaZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75.cpp",
+  "addr": "0x496310",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x9f",
+  "name": "RLEBlitTransLucent75<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75.cpp",
+  "addr": "0x4963b0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x496930",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75ZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x106",
+  "name": "RLEBlitTransLucent75ZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x496a40",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75ZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75ZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x496d10",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x10b",
+  "name": "RLEBlitTransLucent75ZReadWarp<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x496e20",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75ZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75ZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x4974b0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x116",
+  "name": "RLEBlitTransLucent75ZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_zread.cpp",
+  "addr": "0x4975d0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75ZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75ZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x497b80",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75Alpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x12d",
+  "name": "RLEBlitTransLucent75Alpha<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x497cb0",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75Alpha@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75Alpha<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x4984d0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1bb",
+  "name": "RLEBlitTransLucent75AlphaZRead<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x498690",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75AlphaZRead@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75AlphaZRead<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x498ac0",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1c6",
+  "name": "RLEBlitTransLucent75AlphaZReadWarp<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x498c90",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75AlphaZReadWarp@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75AlphaZReadWarp<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x499650",
+  "sym": "?RLEBlit@?$RLEBlitTransLucent75AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
+  "len": "0x1c9",
+  "name": "RLEBlitTransLucent75AlphaZReadWrite<unsigned short>::RLEBlit",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/render/blitters/r_lucent75_alpha.cpp",
+  "addr": "0x499820",
+  "sym": "?RLEBlitTint@?$RLEBlitTransLucent75AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBCG@Z",
+  "len": "0x3a",
+  "name": "RLEBlitTransLucent75AlphaZReadWrite<unsigned short>::RLEBlitTint",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
