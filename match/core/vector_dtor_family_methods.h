@@ -58,8 +58,6 @@ extern char VT_007EA044;
 extern char VT_007EA084;
 // VTABLE: GAMEMD 0x007EA0C4 -- VectorClass<TaskForceClass*>
 extern char VT_007EA0C4;
-// VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>
-extern char VT_007EA384;
 // VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>
 extern char VT_007EA404;
 // VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>

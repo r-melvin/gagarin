@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 68
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 67
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 69 remaining addresses are bound to VectorClass<T> tables;
+//   The 68 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -280,11 +280,6 @@ template class VectorClass<HouseTypeClass*>;
 // VectorClass<TaskForceClass*> -- vtable 0x007EA0C4 slot 3; locator 0x008018A0 -> type descriptor 0x00823650
 //   `.?AV?$VectorClass@PAVTaskForceClass@@@@`.
 template class VectorClass<TaskForceClass*>;
-
-// FUNCTION: GAMEMD 0x004EE530
-// VectorClass<BulletTypeClass*> -- vtable 0x007EA384 slot 3; locator 0x00801F28 -> type descriptor 0x00823B28
-//   `.?AV?$VectorClass@PAVBulletTypeClass@@@@`.
-template class VectorClass<BulletTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EE9F0
 // VectorClass<IsometricTileTypeClass*> -- vtable 0x007EA404 slot 3; locator 0x00802058 -> type descriptor 0x00823C10

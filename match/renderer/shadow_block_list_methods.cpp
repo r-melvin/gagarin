@@ -2,19 +2,19 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5FF250, 0x5FF2D0,
 //   0x5FF390 and 0x5FF800; 0x5FF420 added and iterated in this pass. See the
-//   header for the RTTI derivation of BSurface, the SpotlightClass naming
+//   header for the RTTI derivation of BSurface, the SpotLightClass naming
 //   reconciliation, and the numeric origin of every offset.
 //
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x5FF250  SpotlightClass::SpotlightClass (__thiscall)
-//   FUNCTION: GAMEMD 0x5FF2D0  SpotlightClass::~SpotlightClass (__thiscall)
+//   FUNCTION: GAMEMD 0x5FF250  SpotLightClass::SpotLightClass (__thiscall)
+//   FUNCTION: GAMEMD 0x5FF2D0  SpotLightClass::~SpotLightClass (__thiscall)
 //   FUNCTION: GAMEMD 0x5FF390  FUN_005FF390
 //   FUNCTION: GAMEMD 0x5FF420  FUN_005FF420
 //   FUNCTION: GAMEMD 0x5FF800  FUN_005FF800
 //   VTABLE:   GAMEMD 0x7E2070  BSurface
 //   VTABLE:   GAMEMD 0x7E2104  XSurface
 //   VTABLE:   GAMEMD 0x7E2198  Surface
-//   GLOBAL:   GAMEMD 0xAC1678  SpotlightClass::Array (DynamicVectorClassLayout)
+//   GLOBAL:   GAMEMD 0xAC1678  SpotLightClass::Array (DynamicVectorClassLayout)
 //   GLOBAL:   GAMEMD 0xAC1698  the 74-entry BSurface gradient table
 //   GLOBAL:   GAMEMD 0xAC1834  the gradient-cache one-shot latch
 //   GLOBAL:   GAMEMD 0xAC1838  the companion heap block / fade table
@@ -23,11 +23,11 @@
 
 #include "shadow_block_list_methods.h"
 
-// FUNCTION: GAMEMD 0x5FF250  SpotlightClass::SpotlightClass (__thiscall)
+// FUNCTION: GAMEMD 0x5FF250  SpotLightClass::SpotLightClass (__thiscall)
 // Build one entry from its 12-byte payload and its flag word, start it at age
 // zero, and register it in the global list so the periodic sweep can retire it.
 // Retail ignores the append's success, which is why no boolean survives.
-SpotlightClass::SpotlightClass(Payload_005FF250 payload, int nFlags) throw()
+SpotLightClass::SpotLightClass(Payload_005FF250 payload, int nFlags) throw()
 {
     Payload = payload;
     Age = 0;
@@ -37,10 +37,10 @@ SpotlightClass::SpotlightClass(Payload_005FF250 payload, int nFlags) throw()
     SpotlightArray_AddItem(this);
 }
 
-// FUNCTION: GAMEMD 0x5FF2D0  SpotlightClass::~SpotlightClass (__thiscall)
+// FUNCTION: GAMEMD 0x5FF2D0  SpotLightClass::~SpotLightClass (__thiscall)
 // Unregister the entry. The list slot is found through the vector's own
 // FindItemIndex virtual and the tail is shifted down over it.
-SpotlightClass::~SpotlightClass() throw()
+SpotLightClass::~SpotLightClass() throw()
 {
     SpotlightArray_RemoveItem(this);
 }
@@ -54,13 +54,13 @@ SpotlightClass::~SpotlightClass() throw()
 // where retail holds it in a callee-saved register and copies it into that slot
 // only at the call. 18.8% versus 100% on one edit.
 __forceinline static bool RemoveFrom(DynamicVectorClassLayout& list,
-                                     SpotlightClass* item)
+                                     SpotLightClass* item)
 {
     int index = (list.*((Vtbl_SpotlightArray*)list._vtable)->FindItemIndex)(item);
     if (index != -1 && index < list.Count) {
         list.Count = list.Count - 1;
         for (; index < list.Count; ++index)
-            ((SpotlightClass**)list.Items)[index] = ((SpotlightClass**)list.Items)[index + 1];
+            ((SpotLightClass**)list.Items)[index] = ((SpotLightClass**)list.Items)[index + 1];
         return true;
     }
     return false;
@@ -80,7 +80,7 @@ void FUN_005FF390()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; --i)
     {
-        SpotlightClass* entry = ((SpotlightClass**)SpotlightArray.Items)[i];
+        SpotLightClass* entry = ((SpotLightClass**)SpotlightArray.Items)[i];
 
         // The age must be incremented in place: bound to a named local it
         // loses the `MOV EAX,ECX` that feeds the comparison from the register.

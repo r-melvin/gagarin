@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 67
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 66
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -275,11 +275,6 @@ template class DynamicVectorClass<HouseTypeClass*>;
 // DynamicVectorClass<TaskForceClass*> -- vtable 0x007EA0A4 slot 3; locator 0x00801870 -> type descriptor 0x00823680
 //   `.?AV?$DynamicVectorClass@PAVTaskForceClass@@@@`.
 template class DynamicVectorClass<TaskForceClass*>;
-
-// FUNCTION: GAMEMD 0x004E8F60
-// DynamicVectorClass<BulletTypeClass*> -- vtable 0x007EA364 slot 3; locator 0x00801EF8 -> type descriptor 0x00823B60
-//   `.?AV?$DynamicVectorClass@PAVBulletTypeClass@@@@`.
-template class DynamicVectorClass<BulletTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E9020
 // DynamicVectorClass<IsometricTileTypeClass*> -- vtable 0x007EA3E4 slot 3; locator 0x00802028 -> type descriptor 0x00823C48

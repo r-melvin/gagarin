@@ -16,10 +16,10 @@ void __fastcall IonBlastClass::UpdateAll()
     }
 }
 
-// FUNCTION: GAMEMD 0x5FFFA0  SpotlightClass::DrawAll (__fastcall, static)
-void __fastcall SpotlightClass::DrawAll()
+// FUNCTION: GAMEMD 0x5FFFA0  SpotLightClass::DrawAll (__fastcall, static)
+void __fastcall SpotLightClass::DrawAll()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; i--) {
-        ((SpotlightClass**)SpotlightArray.Items)[i]->Draw();
+        ((SpotLightClass**)SpotlightArray.Items)[i]->Draw();
     }
 }

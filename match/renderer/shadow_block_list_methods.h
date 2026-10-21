@@ -13,17 +13,16 @@
 //   objects and the `(**(void**)p)(1)` call is an ordinary polymorphic
 //   `delete`, not a hand-rolled free.
 //
-//   NAMING RECONCILED: this file and match/renderer/effect_array_update_
-//   methods.h were independently modelling the SAME retail class. The
-//   registry this file called `DAT_00AC1678 : BlockList_005FF250` is
-//   effect_array_update_methods.h's `SpotlightArray : DynamicVectorClassLayout`
-//   (both read Items @0xAC167C, Count @0xAC1688 off the SAME address), and
-//   the element this file called `Entry_005FF250` is that file's forward-
-//   declared `SpotlightClass` (both own the 0x5FF850 `Draw()` / 0x5FFFA0
-//   `DrawAll()` pair). `SpotlightClass` is the YRpp-cross-checked name, so it
-//   wins here; this header is now the one canonical definition and
-//   effect_array_update_methods.h includes it instead of re-declaring either
-//   type.
+//   The registry at 0xAC1678 is initialized at 0x5FF1D0 with vptr
+//   0x7EF6BC: retail RTTI spells DynamicVectorClass<SpotLightClass*>.
+//   Cleanup at 0x5FF210 writes its VectorClass table at 0x7EF6DC.
+//   The constructor at 0x5FF250 appends this object to that registry; the
+//   destructor at 0x5FF2D0 removes it, and DrawAll at 0x5FFFA0 traverses it
+//   and calls 0x5FF850. The source class spelling follows this container
+//   evidence; no standalone SpotLightClass RTTI descriptor was found.
+//   This header and effect_array_update_methods.h share one object view and
+//   one registry declaration. The registry remains an opaque layout view;
+//   this naming correction does not recover its native construction.
 //
 //   Disasm-derived facts:
 //     * The registry at 0xAC1678 is one DynamicVectorClass: Items +0x04
@@ -71,10 +70,10 @@
 void* __cdecl operator new(unsigned int size);      // GAMEMD 0x7C8E17 (LIBRARY)
 void  __cdecl operator delete(void* p);             // GAMEMD 0x7C8B3D (LIBRARY)
 
-class SpotlightClass;
+class SpotLightClass;
 
-// GLOBAL: GAMEMD 0xAC1678 — SpotlightClass::Array, one
-// DynamicVectorClass<SpotlightClass*>. Reused verbatim from
+// GLOBAL: GAMEMD 0xAC1678 — SpotLightClass::Array, one
+// DynamicVectorClass<SpotLightClass*>. Reused verbatim from
 // match/_layout/vector_class.h so this and effect_array_update_methods.h
 // agree on one name and one type for the same retail global.
 extern DynamicVectorClassLayout SpotlightArray;
@@ -87,7 +86,7 @@ extern DynamicVectorClassLayout SpotlightArray;
 // `CALL [ECX+8]` / `CALL [ECX+0x10]`.
 struct Vtbl_SpotlightArray;
 typedef bool (DynamicVectorClassLayout::*FnSetCapacity_SpotlightArray)(int capacity, void* pMem);
-typedef int  (DynamicVectorClassLayout::*FnFindItemIndex_SpotlightArray)(SpotlightClass* const& item) const;
+typedef int  (DynamicVectorClassLayout::*FnFindItemIndex_SpotlightArray)(SpotLightClass* const& item) const;
 struct Vtbl_SpotlightArray
 {
     char                            _pad00[0x08];     // slots 0..1
@@ -99,7 +98,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, SetCapacity)   == 0x08);
 GG_STATIC_ASSERT(offsetof(Vtbl_SpotlightArray, FindItemIndex) == 0x10);
 
 // DynamicVectorClass<T>::AddItem, expanded inline at 0x5FF278.
-inline bool SpotlightArray_AddItem(SpotlightClass* item)
+inline bool SpotlightArray_AddItem(SpotLightClass* item)
 {
     int cap = SpotlightArray.Capacity;
     if (SpotlightArray.Count < cap
@@ -116,7 +115,7 @@ inline bool SpotlightArray_AddItem(SpotlightClass* item)
         // Count store (73.2% versus 100%).
         int index = SpotlightArray.Count;
         ++SpotlightArray.Count;
-        ((SpotlightClass**)SpotlightArray.Items)[index] = item;
+        ((SpotLightClass**)SpotlightArray.Items)[index] = item;
         return true;
     }
     return false;
@@ -124,13 +123,13 @@ inline bool SpotlightArray_AddItem(SpotlightClass* item)
 
 // DynamicVectorClass<T>::RemoveItem, expanded inline at 0x5FF2D1 and again
 // inside the sweep at 0x5FF3BC.
-inline bool SpotlightArray_RemoveItem(SpotlightClass* const& item)
+inline bool SpotlightArray_RemoveItem(SpotLightClass* const& item)
 {
     int index = (SpotlightArray.*((Vtbl_SpotlightArray*)SpotlightArray._vtable)->FindItemIndex)(item);
     if (index != -1 && index < SpotlightArray.Count) {
         SpotlightArray.Count = SpotlightArray.Count - 1;
         for (; index < SpotlightArray.Count; ++index)
-            ((SpotlightClass**)SpotlightArray.Items)[index] = ((SpotlightClass**)SpotlightArray.Items)[index + 1];
+            ((SpotLightClass**)SpotlightArray.Items)[index] = ((SpotLightClass**)SpotlightArray.Items)[index + 1];
         return true;
     }
     return false;
@@ -145,20 +144,19 @@ struct Payload_005FF250
 };
 GG_STATIC_ASSERT(sizeof(Payload_005FF250) == 0x0C);
 
-// The registered 0x18-byte entry. YRpp-cross-checked name (Surface.h /
-// SpotlightClass.h, consult-only): SpotlightClass. See the reconciliation
-// note above the file header for why this superseded the guessed
-// `Entry_005FF250`.
-class SpotlightClass
+// The registered 0x18-byte entry. The source spelling follows the registry's
+// pointer-element RTTI and direct constructor/destructor/draw uses above;
+// it is not a claim of independently recovered standalone class RTTI.
+class SpotLightClass
 {
 public:
     // FUNCTION: GAMEMD 0x5FF250 (__thiscall)
-    SpotlightClass(Payload_005FF250 payload, int nFlags) throw();
+    SpotLightClass(Payload_005FF250 payload, int nFlags) throw();
 
     // FUNCTION: GAMEMD 0x5FF2D0 (__thiscall) — the unregistering destructor.
-    ~SpotlightClass() throw();
+    ~SpotLightClass() throw();
 
-    // FUNCTION: GAMEMD 0x5FF850 __thiscall (declared; matched separately)
+    // FUNCTION: GAMEMD 0x5FF850 __thiscall (declaration only; body unrecovered)
     void Draw();
     // FUNCTION: GAMEMD 0x5FFFA0 (declared; matched separately)
     static void __fastcall DrawAll();
@@ -168,10 +166,10 @@ public:
     int              Flags;        // +0x10
     int              unknown_14;   // +0x14  zeroed by the ctor; blend-mode bits read by Draw()
 };
-GG_STATIC_ASSERT(offsetof(SpotlightClass, Age)        == 0x0C);
-GG_STATIC_ASSERT(offsetof(SpotlightClass, Flags)      == 0x10);
-GG_STATIC_ASSERT(offsetof(SpotlightClass, unknown_14) == 0x14);
-GG_STATIC_ASSERT(sizeof(SpotlightClass)               == 0x18);
+GG_STATIC_ASSERT(offsetof(SpotLightClass, Age)        == 0x0C);
+GG_STATIC_ASSERT(offsetof(SpotLightClass, Flags)      == 0x10);
+GG_STATIC_ASSERT(offsetof(SpotLightClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(sizeof(SpotLightClass)               == 0x18);
 
 // A BSurface, torn down through slot 0 (the scalar-deleting destructor).
 // VTABLE: GAMEMD 0x7E2070 — BSurface.

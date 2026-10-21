@@ -3,7 +3,7 @@
 // Entry-bounded retail evidence: 0x43AF70 reads doubles at 0x89C820 and
 // 0x7E3E78, then stores to 0x89C880; 0x43AF90 reads 0x7E1718 and 0x89C880,
 // then stores to 0x89C868. Both complete entry spans are 19 bytes.
-// Further entry-bounded operations through 0x43B050 are grouped here for
+// Further entry-bounded operations through 0x43B0B0 are grouped here for
 // organization only. The 0x7E inputs are read-only .rdata. Original owners,
 // source-file boundaries and startup registration are not established.
 // Helper declarations model the observed stack-double input and x87 result;
@@ -32,6 +32,9 @@ extern "C" const double DAT_007E1740; // GLOBAL: GAMEMD 0x007E1740
 extern "C" double DAT_0089C840; // GLOBAL: GAMEMD 0x0089C840
 extern "C" double __cdecl FUN_004CADE0(double value); // FUNCTION: GAMEMD 0x004CADE0 (decl; reloc)
 // LIBRARY: GAMEMD 0x7C5F00 -- VC6 __ftol conversion helper.
+
+extern "C" double DAT_0089C858; // GLOBAL: GAMEMD 0x0089C858
+extern "C" int DAT_0089C87C; // GLOBAL: GAMEMD 0x0089C87C
 
 // FUNCTION: GAMEMD 0x43AF70
 extern "C" void FUN_0043AF70()
@@ -74,4 +77,16 @@ extern "C" void FUN_0043B010()
 extern "C" void FUN_0043B050()
 {
     DAT_0089C840 = FUN_004CADE0((double)DAT_0089C888 * DAT_007E1740);
+}
+
+// FUNCTION: GAMEMD 0x43B080
+extern "C" void FUN_0043B080()
+{
+    DAT_0089C858 = FUN_004CADE0((double)(DAT_0089C888 * 2) / DAT_0089C820);
+}
+
+// FUNCTION: GAMEMD 0x43B0B0
+extern "C" void FUN_0043B0B0()
+{
+    DAT_0089C87C = (int)(DAT_0089C888 * 4 + DAT_007E1738);
 }

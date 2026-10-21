@@ -11,9 +11,9 @@ compilation do not prove whole-image identity.
 The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
-Latest verified gates: 4,177 functions matched at 100%, 167 partial rows, and
-973 tracked C++ files (963 manifest translation units). The tracked-source
-object build passed (973/973); engine link closure and whole-image comparison
+Latest verified gates: 4,187 functions matched at 100%, 167 partial rows, and
+974 tracked C++ files (964 manifest translation units). The tracked-source
+object build passed (974/974); engine link closure and whole-image comparison
 remain unfinished.
 
 ![gagarin matching progress](.github/assets/progress.svg)

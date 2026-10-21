@@ -13932,7 +13932,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
   "addr": "0x004e8f60",
   "sym": "?Clear@?$DynamicVectorClass@PAVBulletTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -16389,20 +16389,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
   "addr": "0x004F0A70",
   "sym": "??_G?$VectorClass@PAVBulletTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BulletTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<BulletTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
   "addr": "0x004F0AC0",
-  "sym": "??_G?$VectorClass@PAVBulletTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVBulletTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BulletTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<BulletTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19341,7 +19341,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
   "addr": "0x004ee530",
   "sym": "?Clear@?$VectorClass@PAVBulletTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -28190,9 +28190,9 @@
  {
   "tu": "match/renderer/effect_array_update_methods.cpp",
   "addr": "0x5FFFA0",
-  "sym": "?DrawAll@SpotlightClass@@SIXXZ",
+  "sym": "?DrawAll@SpotLightClass@@SIXXZ",
   "len": "0x20",
-  "name": "SpotlightClass::DrawAll",
+  "name": "SpotLightClass::DrawAll",
   "status": "matched",
   "pct": 100
  },
@@ -28496,18 +28496,18 @@
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF250",
-  "sym": "??0SpotlightClass@@QAE@UPayload_005FF250@@H@Z",
+  "sym": "??0SpotLightClass@@QAE@UPayload_005FF250@@H@Z",
   "len": "0x7f",
-  "name": "SpotlightClass::SpotlightClass",
+  "name": "SpotLightClass::SpotLightClass",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF2D0",
-  "sym": "??1SpotlightClass@@QAE@XZ",
+  "sym": "??1SpotLightClass@@QAE@XZ",
   "len": "0x4c",
-  "name": "SpotlightClass::~SpotlightClass",
+  "name": "SpotLightClass::~SpotLightClass",
   "status": "matched",
   "pct": 100
  },
@@ -39092,6 +39092,96 @@
   "sym": "_FUN_0043B050",
   "len": "0x21",
   "name": "FUN_0043B050",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x4E8F90",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVBulletTypeClass@@@@UBEHPAPAVBulletTypeClass@@@Z",
+  "name": "DynamicVectorClass<BulletTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8FB0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVBulletTypeClass@@@@UBEPAVBulletTypeClass@@H@Z",
+  "name": "VectorClass<BulletTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EE440",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVBulletTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<BulletTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EE480",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVBulletTypeClass@@@@UAE_NHPAPAVBulletTypeClass@@@Z",
+  "name": "VectorClass<BulletTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE560",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVBulletTypeClass@@@@UBEHABQAVBulletTypeClass@@@Z",
+  "name": "VectorClass<BulletTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EE5A0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVBulletTypeClass@@@@UBEHPAPAVBulletTypeClass@@@Z",
+  "name": "VectorClass<BulletTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EE5C0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVBulletTypeClass@@@@UAE_NHPAPAVBulletTypeClass@@@Z",
+  "name": "DynamicVectorClass<BulletTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE670",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_bullettypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBulletTypeClass@@@@UBEHABQAVBulletTypeClass@@@Z",
+  "name": "DynamicVectorClass<BulletTypeClass*>::FindItemIndex"
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b080",
+  "sym": "_FUN_0043B080",
+  "len": "0x2c",
+  "name": "FUN_0043B080",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b0b0",
+  "sym": "_FUN_0043B0B0",
+  "len": "0x27",
+  "name": "FUN_0043B0B0",
   "status": "matched",
   "pct": 100
  }
