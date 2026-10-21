@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 124
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 123
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -400,11 +400,6 @@ template class DynamicVectorClass<ParticleTypeClass*>;
 // DynamicVectorClass<ParticleSystemTypeClass*> -- vtable 0x007EA464 slot 3; locator 0x00802158 -> type descriptor 0x00823D40
 //   `.?AV?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@`.
 template class DynamicVectorClass<ParticleSystemTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004E9140
-// DynamicVectorClass<SuperWeaponTypeClass*> -- vtable 0x007EA4A4 slot 3; locator 0x008021F0 -> type descriptor 0x00823DB8
-//   `.?AV?$DynamicVectorClass@PAVSuperWeaponTypeClass@@@@`.
-template class DynamicVectorClass<SuperWeaponTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E91A0
 // DynamicVectorClass<AbstractTypeClass*> -- vtable 0x007EA524 slot 3; locator 0x00802320 -> type descriptor 0x00823E98

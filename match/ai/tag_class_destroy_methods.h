@@ -5,14 +5,8 @@
 //   against YRpp TagClass.h / ArrayClasses.h (consult-only; every offset and
 //   vtable slot reconfirmed numerically here).
 //
-// TagClass — two lifecycle members:
-//   Destroy     — sets Destroyed @0x34 and appends `this` to the global
-//                 DynamicVectorClass<TagClass*> @0xB0F698 (inlined AddItem,
-//                 result discarded; the grow path issues the virtual SetCapacity
-//                 through vtable slot 2 = [vptr+0x8]).
-//   GetInstance — static __fastcall: scans TagClass::Array @0xB0E720 for a tag
-//                 whose Type @0x24 matches pType, else `new TagClass(pType)`
-//                 (raw operator new(0x38) + null guard + ctor @0x6E4DE0).
+// Destroy grows the deferred tag list through its runtime slot +0x08.
+// TagClass itself is declared only by the shared layout header.
 #ifndef GG_MATCH_AI_TAG_CLASS_DESTROY_METHODS_H
 #define GG_MATCH_AI_TAG_CLASS_DESTROY_METHODS_H
 
@@ -20,44 +14,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-// The tag's type pointer target. Only used as the element identity key (Type
-// @0x24) and the ctor argument; no members of it are touched here.
-struct TagTypeClass;
-
-// ---------------------------------------------------------------------------
-// TagClass — modelled as a plain struct (neither method dispatches virtually on
-// a TagClass, and the ctor is external), padded so the touched members land at
-// their retail offsets and sizeof() drives the exact `push 0x38` allocation:
-//   Type      @0x24  (`cmp [eax+0x24], edi` element key in GetInstance; ctor arg)
-//   Destroyed @0x34  (`mov byte [esi+0x34], 1` first store in Destroy)
-//   sizeof    0x38   (`push 0x38` before operator new in GetInstance)
-// ---------------------------------------------------------------------------
-struct TagClass
-{
-    // GLOBAL: GAMEMD 0xB0E720 -- same registry as the shared TagClass layout.
-    static DynamicVectorClassLayout Array;
-
-    char          _base[0x24];          // +0x00  AbstractClass + 4 COM vptrs
-    TagTypeClass* Type;                 // +0x24
-    char          _mid[0x34 - 0x28];    // +0x28  FirstTrigger / InstanceCount /
-                                        //        DefaultCoords
-    unsigned char Destroyed;            // +0x34
-    char          _tail[0x38 - 0x35];   // +0x35  IsExecuting + 2 pad
-
-    void Destroy();
-    static TagClass* __fastcall GetInstance(TagTypeClass* pType);
-
-    // Constructor stand-in (GAMEMD 0x6E4DE0, __thiscall, returns `this` in EAX).
-    // Declared (no body) so GetInstance emits the construct call with a
-    // normalised relocation.
-    TagClass* Construct(TagTypeClass* pType);
-};
-
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(TagClass, Type)      == 0x24);
-GG_STATIC_ASSERT(offsetof(TagClass, Destroyed) == 0x34);
-GG_STATIC_ASSERT(sizeof(TagClass)              == 0x38);
-#endif
+#include "../_layout/tag_class.h"
 
 // ---------------------------------------------------------------------------
 // TagPtrVector — the engine's DynamicVectorClass<TagClass*> as seen by Destroy's
@@ -84,7 +41,7 @@ struct TagPtrVector
 
 };
 
-// Inlined into Destroy (YRpp DynamicVectorClass::AddItem). Result discarded at
+// Grow-and-append flow observed in Destroy. Result discarded at
 // the call site, so no boolean is materialised.
 //
 // Written as a FREE function taking the vector as its first pointer parameter

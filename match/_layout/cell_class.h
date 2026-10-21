@@ -36,8 +36,13 @@
 #include "foot_class.h"        // CellStruct
 #include "building_class.h"    // RectangleStruct
 
+class TagClass;
+
 struct CellClass : AbstractClass
 {
+    // FUNCTION: GAMEMD 0x485250
+    void ReplaceTag(TagClass* tag);
+
     // FUNCTION: GAMEMD 0x486840
     // Primary retail vtable slot +0x48. This layout currently represents vptrs
     // explicitly; the entry body is bound as a const method until the full
@@ -52,7 +57,7 @@ struct CellClass : AbstractClass
     unsigned int    unknown_30;              // +0x30 ctor @0x0047BC0B
     void*           LightConvert;            // +0x34 LightConvertClass*; ctor @0x0047BC0E
     int             IsoTileTypeIndex;        // +0x38 ctor MOV [ESI+0x38],0xFFFF @0x0047BC11
-    void*           AttachedTag;             // +0x3C TagClass*; ctor @0x0047BC18
+    TagClass*       AttachedTag;             // +0x3C TagClass*; ctor @0x0047BC18
     void*           Rubble;                  // +0x40 BuildingTypeClass*; ctor @0x0047BC1E
     int             OverlayTypeIndex;        // +0x44 ctor @0x0047BC21 (=-1)
     int             SmudgeTypeIndex;         // +0x48 ctor @0x0047BC24 (=-1)

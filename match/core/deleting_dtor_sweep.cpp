@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The 77 scalar deleting destructors of the 30-byte family, ordered ascending
+// The 75 remaining scalar deleting destructors of the 30-byte family, ordered ascending
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 
@@ -600,18 +600,6 @@ void* Obj_6B8140::FUN_6B8140(unsigned int flags)
 void* Obj_6CE220::FUN_6CE220(unsigned int flags)
 {
     FUN_006CB120(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x6E58B0
-void* Obj_6E58B0::FUN_6E58B0(unsigned int flags)
-{
-    FUN_006E4F60(this);
 
     if (flags & 1) {
         FUN_007C8B3D(this);

@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// GX adds new-expression exception cleanup absent from retail GetInstance;
+// the no-GX probe reproduces the complete native constructor-call path.
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6E5230,
 //   0x6E52A0). Every offset, global address and vtable slot reconfirmed
 //   numerically; names cross-checked against YRpp TagClass.h / ArrayClasses.h
@@ -15,11 +18,7 @@
 
 // Registry accesses use the shared TagClass::Array storage at 0xB0E720.
 
-// GLOBAL: GAMEMD 0xB0F698 — the global DynamicVectorClass<TagClass*> that Destroy
-// appends each destroyed tag to (a deferred pointer/cleanup list). vptr
-// @0xB0F698, Items @0xB0F69C, Capacity @0xB0F6A0, IsAllocated @0xB0F6A5,
-// Count @0xB0F6A8, CapacityIncrement @0xB0F6AC — all reconfirmed from Destroy.
-extern TagPtrVector TagClass_DestroyedList;
+// Deferred-list accesses use shared TagClass::DestroyedList storage.
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E5230  (__thiscall)
@@ -42,15 +41,14 @@ extern TagPtrVector TagClass_DestroyedList;
 void TagClass::Destroy()
 {
     this->Destroyed = 1;
-    TagPtrVector_AddItem(&TagClass_DestroyedList, this);
+    TagPtrVector_AddItem(reinterpret_cast<TagPtrVector*>(&TagClass::DestroyedList), this);
 }
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E52A0  (__fastcall, static)
 // Return the existing tag whose Type matches pType, or construct a fresh one.
-// The scan reads Array.Count once into ESI; the allocate path is a hand-rolled
-// `new TagClass(pType)`: raw operator new(0x38) + null guard + ctor @0x6E4DE0
-// (Construct returns `this` in EAX).
+// The scan reads Array.Count once into ESI. The native new-expression emits
+// operator new(0x38), a null guard, and the constructor call at 0x6E4DE0.
 // ---------------------------------------------------------------------------
 TagClass* __fastcall TagClass::GetInstance(TagTypeClass* pType)
 {
@@ -61,8 +59,5 @@ TagClass* __fastcall TagClass::GetInstance(TagTypeClass* pType)
             return pTag;
     }
 
-    TagClass* pTag = (TagClass*)::operator new(sizeof(TagClass));
-    if (pTag)
-        return pTag->Construct(pType);
-    return 0;
+    return new TagClass(pType);
 }

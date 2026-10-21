@@ -15,7 +15,7 @@
 //     TEST byte ptr [ESP+8],1; JZ +9; PUSH ESI; CALL 0x7C8B3D; ADD ESP,4
 //     MOV EAX,ESI; POP ESI; RET 4
 //
-// All 77 members of this family are byte-identical once the destructor call
+// All 75 remaining members of this family are byte-identical once the destructor call
 // displacement is masked; the free target is 0x7C8B3D in every one. They are
 // written longhand, one struct per class, because letting cl generate `??_G`
 // from a real virtual destructor inlines a trivial destructor body into the
@@ -65,7 +65,6 @@ void __fastcall FUN_006B1D00(void* self);   // GAMEMD 0x6B1D00
 void __fastcall FUN_006B7010(void* self);   // GAMEMD 0x6B7010
 void __fastcall FUN_006C9850(void* self);   // GAMEMD 0x6C9850
 void __fastcall FUN_006CB120(void* self);   // GAMEMD 0x6CB120
-void __fastcall FUN_006E4F60(void* self);   // GAMEMD 0x6E4F60
 void __fastcall FUN_006E5CA0(void* self);   // GAMEMD 0x6E5CA0
 void __fastcall FUN_006E8DE0(void* self);   // GAMEMD 0x6E8DE0
 void __fastcall FUN_006F4500(void* self);   // GAMEMD 0x6F4500
@@ -150,7 +149,6 @@ struct Obj_6AC7A0 { void* FUN_6AC7A0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_6B1390 { void* FUN_6B1390(unsigned int flags); };  // FUNCTION: GAMEMD 0x6B1390
 struct Obj_6B8140 { void* FUN_6B8140(unsigned int flags); };  // FUNCTION: GAMEMD 0x6B8140
 struct Obj_6CE220 { void* FUN_6CE220(unsigned int flags); };  // FUNCTION: GAMEMD 0x6CE220
-struct Obj_6E58B0 { void* FUN_6E58B0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6E58B0
 struct Obj_6E64C0 { void* FUN_6E64C0(unsigned int flags); };  // FUNCTION: GAMEMD 0x6E64C0
 struct Obj_6F0450 { void* FUN_6F0450(unsigned int flags); };  // FUNCTION: GAMEMD 0x6F0450
 struct Obj_7106E0 { void* FUN_7106E0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7106E0

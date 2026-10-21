@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctors FUN_0x00410170 / FUN_0x00410800 (docs/decomp_spec/
-//   type_hierarchy_layout.md), cross-checked vs YRpp AbstractClass.h. P2
-//   layout-spine root.
+//   Oracle: retail constructor 0x00410170 and the RTTI descriptor below;
+//   YRpp AbstractClass.h was consulted for naming hypotheses only.
 //   The retail RTTI TypeDescriptor at 0x008177C8 is named ".?AVAbstractClass@@",
 //   confirming the class-key; offsets and fields remain grounded in the
 //   constructor stores below.
@@ -13,9 +12,9 @@
 // INoticeSink / INoticeSource), then the shared bookkeeping fields.
 //
 // The four vptrs are modelled as explicit fields here so the 32-bit layout is
-// exact and VC6-robust. Functions that *store* these vptrs (an inlined ctor)
-// or dispatch through them need the real COM multiple-inheritance base or inline
-// _asm; the vptr-group addresses per concrete class come from its ctor (e.g.
+// exact. Constructors store these fields directly; dispatching methods use
+// explicit slot-call views until the COM inheritance graph is reconstructed.
+// The vptr-group addresses per concrete class come from its ctor (e.g.
 // AbstractTypeClass writes 0x7E4A28/0x7E4A0C/0x7E4A04/0x7E49FC).
 #ifndef GG_MATCH_LAYOUT_ABSTRACT_CLASS_H
 #define GG_MATCH_LAYOUT_ABSTRACT_CLASS_H
@@ -27,6 +26,9 @@
 class AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x410170 (declaration; native base constructor)
+    AbstractClass();
+
     void* _vtable_IPersistStream;   // +0x00
     void* _vtable_IRTTITypeInfo;    // +0x04
     void* _vtable_INoticeSink;      // +0x08

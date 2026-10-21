@@ -70,8 +70,6 @@ void __fastcall FUN_0040E7F0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40E7F0
 void __fastcall FUN_0040E940(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40E940
 void __fastcall FUN_0040EEC0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40EEC0
 void __fastcall FUN_0040F010(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40F010
-void __fastcall FUN_0040F5E0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40F5E0
-void __fastcall FUN_0040F730(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40F730
 void __fastcall FUN_0040FBB0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40FBB0
 void __fastcall FUN_0040FD00(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40FD00
 void __fastcall FUN_0041DDE0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x41DDE0

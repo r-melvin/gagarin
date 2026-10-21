@@ -45,11 +45,14 @@ GG_STATIC_ASSERT(offsetof(TriggerTypeClass, NextTrigger) == 0xA8);
 // ---------------------------------------------------------------------------
 // TagTypeClass — AbstractTypeClass spine (sizeof 0x98) plus the tag's own
 // fields; INI methods also touch Persistence and inherited identity strings.
+// Retail RTTI: primary vtable 0x7F45C4 -> COL 0x80BCF0 -> TypeDescriptor
+// 0x842CB0, whose raw name is ".?AVTagTypeClass@@" (class key).
 // ---------------------------------------------------------------------------
 struct TagINI_006E6080;
 
-struct TagTypeClass : AbstractTypeClass
+class TagTypeClass : public AbstractTypeClass
 {
+public:
     int               unknown_98;           // +0x0098
     int               Persistence;          // +0x009C (store at 0x6E60E1)
     TriggerTypeClass* FirstTrigger;          // +0x00A0  (MOV ESI,[ECX+0xA0])

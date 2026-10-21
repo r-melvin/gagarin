@@ -43,6 +43,9 @@ struct TriggerTypeClass
 // Only Type (@0x24) and AttachedTrigger (@0x28) are named; the rest is opaque.
 struct TriggerClass
 {
+    // FUNCTION: GAMEMD 0x725FA0 (declaration; native constructor)
+    TriggerClass(TriggerTypeClass* type);
+
     char              _pad0[0x24];      // +0x00  (AbstractClass base; modelled in P2)
     TriggerTypeClass* Type;             // +0x24
     TriggerClass*     AttachedTrigger;  // +0x28

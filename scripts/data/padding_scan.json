@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "4226a62cc70ce4e0fbafe0c7ed33474916ca4cdcf6e51caa061317e37697ef5d",
+  "manifest_sha256": "fe6f005f48d8c60ca2f03edc8dade03585c887bba05f3667145cf2eb95401caf",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3694,
-  "matched_entries_missed": 198,
+  "matched_entries": 3711,
+  "matched_entries_missed": 200,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -4952,6 +4952,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x40F870",
+   "tu": "match/core/vector_warheadtypeclass_methods.cpp",
+   "name": "DynamicVectorClass<WarheadTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x410220",
    "tu": "match/core/tiny_leaf_methods.cpp",
    "name": "FUN_00410220",
@@ -5369,6 +5375,12 @@
    "addr": "0x4EE410",
    "tu": "match/core/vector_infantrytypeclass_methods.cpp",
    "name": "DynamicVectorClass<InfantryTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4EF250",
+   "tu": "match/core/vector_superweapontypeclass_methods.cpp",
+   "name": "DynamicVectorClass<SuperWeaponTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

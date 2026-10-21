@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 125
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 124
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 126 remaining addresses are bound to VectorClass<T> tables;
+//   The 125 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -405,11 +405,6 @@ template class VectorClass<ParticleTypeClass*>;
 // VectorClass<ParticleSystemTypeClass*> -- vtable 0x007EA484 slot 3; locator 0x00802188 -> type descriptor 0x00823D00
 //   `.?AV?$VectorClass@PAVParticleSystemTypeClass@@@@`.
 template class VectorClass<ParticleSystemTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EF110
-// VectorClass<SuperWeaponTypeClass*> -- vtable 0x007EA4C4 slot 3; locator 0x00802220 -> type descriptor 0x00823D80
-//   `.?AV?$VectorClass@PAVSuperWeaponTypeClass@@@@`.
-template class VectorClass<SuperWeaponTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EF370
 // VectorClass<AbstractTypeClass*> -- vtable 0x007EA544 slot 3; locator 0x00802350 -> type descriptor 0x00823E60

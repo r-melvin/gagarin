@@ -24,13 +24,7 @@ struct CellStruct
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 #endif  // GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 
-// TagClass (partial) — only the per-instance attach counter is touched.
-struct TagClass
-{
-    char _pad000[0x2C];        // +0x0000
-    int  InstanceCount;        // +0x002C
-};
-GG_STATIC_ASSERT(offsetof(TagClass, InstanceCount) == 0x2C);
+#include "../_layout/tag_class.h"
 
 // DynamicVectorClass<CellStruct> — the "cells carrying a tag" list. Slot +0x08
 // is Resize(newCapacity, array): two stack arguments, `this` in ECX, a byte
@@ -87,18 +81,6 @@ GG_STATIC_ASSERT(sizeof(TaggedCellVector) == 0x18);
 // retail loads its address as the immediate `MOV ECX,0x880944`).
 extern TaggedCellVector DAT_00880944;
 
-// CellClass (partial) — only the members ReplaceTag touches.
-struct CellClass
-{
-    char       _pad000[0x24];   // +0x0000
-    CellStruct MapCoords;       // +0x0024
-    char       _pad028[0x14];   // +0x0028
-    TagClass*  AttachedTag;     // +0x003C
-
-    // FUNCTION: GAMEMD 0x485250
-    void ReplaceTag(TagClass* tag);
-};
-GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
-GG_STATIC_ASSERT(offsetof(CellClass, AttachedTag) == 0x3C);
+#include "../_layout/cell_class.h"
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_TAG_METHODS_H

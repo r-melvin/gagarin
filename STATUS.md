@@ -1,13 +1,67 @@
 # Project status
 
-The latest whole-repository regression passed with **3,694 fully matched
-functions**, **165 partial rows**, and 890 manifest translation units, with no
-matched function regressing. All **896 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,711 fully matched
+functions**, **165 partial rows**, and 895 manifest translation units, with no
+matched function regressing. All **901 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: native type vectors and shared TagClass storage
+## Latest integration: native TagClass construction and one shared definition
+
+The [TagClass constructor](match/ai/tag_class_ctor.cpp) adds a full 380-byte
+match using native base and trigger constructor calls and a plain C++
+`new TriggerClass(...)` expression. The no-GX probe avoids exception cleanup
+absent from retail. Its coordinate source is a named global; two additional
+vector-shaped registry prefixes are defined without claiming their owning
+classes or later runtime initialization.
+
+All tracked TagClass methods and the CellClass tag caller now use the
+[single shared TagClass definition](match/_layout/tag_class.h). The two old
+TagClass class definitions and the offset-only CellClass caller's TagClass
+view are retired. `CellClass::ReplaceTag` also uses the shared full CellClass
+layout and a typed tag pointer. The six affected existing bodies remain exact.
+`GetInstance` now uses native `new TagClass(...)`, pinned to no-GX; the
+`TagClass::Construct` stand-in is gone. `DeleteAll` retains a documented primary-slot
+call view, because the complete COM inheritance graph remains unreconstructed.
+
+The existing 30-byte deleting entry at `0x6E58B0` now belongs to TagClass
+instead of an opaque sweep host. It calls the native destructor declaration
+and conditionally deallocates. The TagClass registry and deferred list, the
+coordinate source, and two constructor registry prefixes have loader-zero
+storage evidence; this does not prove runtime setup. TagTypeClass's raw RTTI
+name confirms `class`, and the source class key and affected manglings now agree.
+All eight affected TagTypeClass bodies remain exact.
+
+The [AbstractClass constructor](match/core/abstract_class_ctor.cpp) is also
+represented by its native C++ constructor, preserving the preceding partial
+body's bytes and relocation offsets exactly. It remains a 71-byte partial row
+at the recorded 81.2%; this migration adds no exact-match claim.
+
+The [WarheadTypeClass](match/core/vector_warheadtypeclass_methods.cpp) and
+[SuperWeaponTypeClass](match/core/vector_superweapontypeclass_methods.cpp) vector
+pairs contain 24 exact rows: 16 new matches and eight migrated claims. The
+Warhead migrations replace four incorrect BufferHolder owner models. Their
+four seven-slot tables pass conditional `--weak-defaults` checks on project
+objects. GX/no-GX probes pin no-GX for full derived deleting bodies, and focused
+REA confirms all 24 complete entry spans.
+
+The `/dll /noentry /nodefaultlib` diagnostic link still fails with 4,146 unique
+unresolved symbols (6,356 reference lines), with no duplicate definitions.
+Native TagClass and AbstractClass constructor symbols now resolve. The native
+TagClass destructor and TriggerClass constructor remain unresolved; normalized
+function comparisons do not establish those implementations. Default libraries
+are excluded, so these counts are not an engine-only function-gap census.
+Engine link closure and whole-image comparison remain unfinished.
+
+Matched function lengths total 264,541 bytes (258 KiB): 18.8% of listed
+functions and 7.0% of listed function lengths. The padding heuristic misses
+200 matched entries. Residual vector families contain 249 generic deleting
+bindings across 128 instantiation views, 125 base Clear rows, 123 native
+dynamic Clear rows plus one DiskID stand-in, and 16 resize rows. The separate
+30-byte deleting-body sweep has 75 remaining rows.
+
+## Previous verified integration: native type vectors and shared TagClass storage
 
 The [SmudgeTypeClass](match/core/vector_smudgetypeclass_methods.cpp) and
 [OverlayTypeClass](match/core/vector_overlaytypeclass_methods.cpp) vector pairs
@@ -337,7 +391,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 896 tracked C++ files and 3,859 manifest
+verified snapshot, the inventory has 901 tracked C++ files and 3,876 manifest
 rows, with no manifest TU missing from tracked sources. Six tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
@@ -653,10 +707,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,694** | **18.7%** of 19,753 |
-| Sum of matched function lengths | 257 KiB | 6.9% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,711** | **18.8%** of 19,753 |
+| Sum of matched function lengths | 258 KiB | 7.0% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 896 | |
+| Tracked C++ files under `match/` | 901 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -676,7 +730,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 198 matched entries. Its candidate count is therefore
+listed entries, including 200 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

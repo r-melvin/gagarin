@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4053E0 and 0x410170.
+//   Bytes matched against retail gamemd.exe v1.001 at each annotated address below.
 
 #include "small_misc43_methods.h"
 
@@ -115,42 +115,4 @@ void __cdecl FUN_00405040()
 
         node = node->Next;
     } while (node != &DAT_0087E180);
-}
-
-// FUNCTION: GAMEMD 0x410170
-//
-// SCHEDULING DELTA (status partial, 81.2% - 13/16). Every store is in retail's
-// order and every encoding matches; the one difference is where the zero is
-// materialised. Retail emits `XOR ECX,ECX` immediately after `MOV EAX,ECX`,
-// ahead of the two dead vtable stores; VC6 emits it lazily at first use, which
-// is after them. The dead stores have to be volatile or they are eliminated,
-// and volatile is what holds the XOR back. Six arrangements were tried -
-// zero-stores first (68.8%, but then the vtable stores land in the wrong
-// place), every store volatile (37.5%), a named zero local, and volatile on
-// each field individually. Nothing moves that one instruction.
-Obj_00410170* Obj_00410170::FUN_00410170()
-{
-    *(char* volatile*)&vt2 = &VT_007E1FBC;
-    *(char* volatile*)&vt3 = &VT_007E1FB4;
-
-    field_18 = 0;
-    field_1C = 0;
-    field_20 = 0;
-
-    // The flag read is volatile so it cannot drift past the -1 store, and the
-    // -1 store is volatile so it cannot be hoisted ahead of the read - retail
-    // has `MOV CL,[EAX+0x14]; AND CL,0xF8; MOV [EAX+0x10],-1` in that order and
-    // both plain forms move it.
-    char flags = *(volatile char*)&Flags & 0xF8;
-
-    *(volatile int*)&field_10 = -1;
-
-    vt0 = &VT_007E1F50;
-    vt1 = &VT_007E1F34;
-    vt2 = &VT_007E1F2C;
-    vt3 = &VT_007E1F24;
-
-    Flags = flags;
-
-    return this;
 }

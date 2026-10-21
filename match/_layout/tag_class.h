@@ -18,16 +18,31 @@
 #include "abstract_class.h"
 #include "foot_class.h"   // CellStruct
 
+class TagTypeClass;
+struct TriggerClass;
+
 // Retail TypeDescriptor 0x8249E8 names ".?AVTagClass@@".
 class TagClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6E4DE0 (declaration; constructor)
+    TagClass(TagTypeClass* type);
+    // FUNCTION: GAMEMD 0x6E4F60 (declaration; destructor)
+    ~TagClass();
+    // FUNCTION: GAMEMD 0x6E5230
+    void Destroy();
+    // FUNCTION: GAMEMD 0x6E52A0
+    static TagClass* __fastcall GetInstance(TagTypeClass* type);
     // FUNCTION: GAMEMD 0x6E5300
     bool HasCrossesVerticalLineEvent() const;
     // FUNCTION: GAMEMD 0x6E5320
     bool HasCrossesHorizontalLineEvent() const;
     // FUNCTION: GAMEMD 0x6E5340
     bool HasZoneEntryByEvent() const;
+    // FUNCTION: GAMEMD 0x6E5380
+    bool ContainsTrigger(TriggerClass* trigger) const;
+    // FUNCTION: GAMEMD 0x6E5570
+    static void __stdcall DeleteAll();
     // FUNCTION: GAMEMD 0x6E57C0
     bool ShouldReplace() const;
     // FUNCTION: GAMEMD 0x6E57F0
@@ -36,6 +51,9 @@ public:
     static void __fastcall NotifyLocalChanged(int idxLocal);
     // FUNCTION: GAMEMD 0x6E5850
     bool IsOnlyInstanceOfType() const;
+
+    // FUNCTION: GAMEMD 0x6E58B0
+    void* FUN_006E58B0(unsigned int flags);
 
     void*         Type;            // +0x24 TagTypeClass*; ctor = arg1 @0x006E4DF0
     void*         FirstTrigger;    // +0x28 TriggerClass*; ctor @0x006E4DF3
@@ -46,6 +64,8 @@ public:
     unsigned char unknown_36[2];   // +0x36 unclassified tail bytes; closes the object at 0x38
     // GLOBAL: GAMEMD 0xB0E720 -- loader-zero registry storage.
     static DynamicVectorClassLayout Array;
+    // GLOBAL: GAMEMD 0xB0F698 -- deferred list appended by Destroy.
+    static DynamicVectorClassLayout DestroyedList;
 };
 
 GG_STATIC_ASSERT(offsetof(TagClass, Type)          == 0x24);
