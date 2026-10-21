@@ -46509,5 +46509,59 @@
   "name": "IPXInterfaceClass::GetAdapterAddressString",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "addr": "0x7B19C0",
+  "sym": "??0WinsockInterfaceClass@@QAE@XZ",
+  "len": "0xE8",
+  "name": "WinsockInterfaceClass::WinsockInterfaceClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "addr": "0x7B1AB0",
+  "sym": "??1WinsockInterfaceClass@@UAE@XZ",
+  "len": "0xA0",
+  "name": "WinsockInterfaceClass::~WinsockInterfaceClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "addr": "0x7B1B50",
+  "sym": "?ShutdownWinsock@WinsockInterfaceClass@@QAEXXZ",
+  "len": "0x27",
+  "name": "WinsockInterfaceClass::ShutdownWinsock",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_lifetime.cpp",
+  "addr": "0x7B2780",
+  "sym": "??_GWinsockInterfaceClass@@UAEPAXI@Z",
+  "len": "0xB5",
+  "name": "WinsockInterfaceClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_destructor.cpp",
+  "addr": "0x7B2E50",
+  "sym": "??1UDPInterfaceClass@@UAE@XZ",
+  "len": "0x131",
+  "name": "UDPInterfaceClass::~UDPInterfaceClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_destructor.cpp",
+  "addr": "0x7B4170",
+  "sym": "??_GUDPInterfaceClass@@UAEPAXI@Z",
+  "len": "0x145",
+  "name": "UDPInterfaceClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
  }
 ]

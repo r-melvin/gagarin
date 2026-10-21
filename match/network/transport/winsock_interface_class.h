@@ -85,6 +85,9 @@ GG_STATIC_ASSERT(sizeof(WinsockInterfaceClassVtableLayout) == 0x5C);
 class WinsockInterfaceClass
 {
 public:
+    // FUNCTION: GAMEMD 0x7B19C0 (decl; reloc)
+    WinsockInterfaceClass();
+
     struct WinsockBufferType
     {
         unsigned char Address[0x10];
@@ -156,6 +159,9 @@ public:
     // FUNCTION: GAMEMD 0x7B2050 (decl; reloc) -- base slot 22 target.
     virtual bool VerifyPacketCrc(WinsockBufferType* packet);
 
+    // FUNCTION: GAMEMD 0x7B1B50 (decl; reloc) -- shared shutdown body.
+    void ShutdownWinsock();
+
     // FUNCTION: GAMEMD 0x7B20E0 (decl; reloc) -- base out-buffer allocator.
     WinsockBufferType* AllocOutBuffer(bool alternate);
     // FUNCTION: GAMEMD 0x7B2240 (decl; reloc) -- IPX receive-buffer allocator.
@@ -163,7 +169,7 @@ public:
     // FUNCTION: GAMEMD 0x7B1DE0 (decl; reloc) -- IPX startup path.
     bool StartupWinsock();
 
-    unsigned char unknown_04[4];                   // +0x04
+    int unknown_04;                               // +0x04, ctor stores 0x240
     DynamicVectorClass<WinsockBufferType*> InBuffers;       // +0x08
     DynamicVectorClass<WinsockBufferType*> OutBuffers;      // +0x20
     DynamicVectorClass<WinsockBufferType*> AltOutBuffers;  // +0x38
@@ -189,6 +195,8 @@ public:
 typedef WinsockInterfaceClass::WinsockBufferType WinsockBufferType;
 typedef DynamicVectorClass<WinsockBufferType*> WinsockBufferVector;
 
+GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, unknown_04) == 0x04);
+GG_STATIC_ASSERT(sizeof(((WinsockInterfaceClass*)0)->unknown_04) == 0x04);
 GG_STATIC_ASSERT(sizeof(WinsockBufferType) == 0x2A0);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, unknown_1A) == 0x1A);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, unknown_18) == 0x18);

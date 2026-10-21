@@ -76,7 +76,6 @@ void __fastcall FUN_00767300(void* self);   // GAMEMD 0x767300
 void __fastcall FUN_007680C0(void* self);   // GAMEMD 0x7680C0
 void __fastcall FUN_0076AFC0(void* self);   // GAMEMD 0x76AFC0
 void __fastcall FUN_0076C6E0(void* self);   // GAMEMD 0x76C6E0
-void __fastcall FUN_007B1AB0(void* self);   // GAMEMD 0x7B1AB0
 void __fastcall FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 void __fastcall FUN_007B6760(void* self);   // GAMEMD 0x7B6760
 void __fastcall FUN_007B88D0(void* self);   // GAMEMD 0x7B88D0

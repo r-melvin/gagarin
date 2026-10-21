@@ -21,6 +21,9 @@ typedef DynamicVectorClass<unsigned char*> UDPAddressVector;
 class UDPInterfaceClass : public WinsockInterfaceClass
 {
 public:
+    // FUNCTION: GAMEMD 0x7B2E50 (decl; reloc) -- ordinary destructor.
+    // SYNTHETIC: GAMEMD 0x7B4170 (decl; reloc) -- scalar deleting entry.
+    virtual ~UDPInterfaceClass();
     virtual void SendPacket(void*, int, void*, int, bool, unsigned char, unsigned short);
     virtual void Broadcast(void*, int, bool);
     virtual bool StartListening();

@@ -55,6 +55,7 @@ GG_STATIC_ASSERT(sizeof(IPXPacket)          == 0x400);
 // scalar deleting body at 0x543100 when the derived destructor is compiled.
 // IPXManagerClass members start at +0x04 in this prefix view.
 // ---------------------------------------------------------------------------
+// VTABLE: GAMEMD 0x7EC1D4 -- 16 observed retail slots.
 class ConnManClass
 {
 public:
@@ -83,6 +84,7 @@ public:
 // observed slots followed by the ConnManClass locator pointer 0x8049B8 at
 // 0x7EC1D0. This bounded TU models touched member offsets only.
 // ---------------------------------------------------------------------------
+// VTABLE: GAMEMD 0x7EC16C -- 25 observed retail slots.
 class IPXManagerClass : public ConnManClass
 {
 public:

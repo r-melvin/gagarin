@@ -2,12 +2,13 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The 70 remaining address-scoped scalar deleting destructors of the 30-byte family,
+// The remaining address-scoped scalar deleting destructors of the 30-byte family,
 // ordered ascending
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 
 #include "deleting_dtor_sweep.h"
+#include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 
@@ -818,7 +819,7 @@ void* Obj_7AED20::FUN_7AED20(unsigned int flags)
 // FUNCTION: GAMEMD 0x7B1790
 void* Obj_7B1790::FUN_7B1790(unsigned int flags)
 {
-    FUN_007B1AB0(this);
+    ((WinsockInterfaceClass*)this)->WinsockInterfaceClass::~WinsockInterfaceClass();
 
     if (flags & 1) {
         FUN_007C8B3D(this);

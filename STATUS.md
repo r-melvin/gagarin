@@ -1,5 +1,48 @@
 # Project status
 
+As of **2026-10-21**, the verified snapshot reports **4,950 matched function
+rows**, **207 partial rows**, **5,157 manifest rows**, **1,061 manifest
+translation units**, and **1,071 tracked C++ files**. Whole-repository matching,
+compile/layout checks, the project object build and 112 tooling tests pass.
+There are zero matched regressions and zero annotation issues across 5,190
+body addresses. Thirty-six saved partial baselines remain unchanged.
+
+The latest batch recovers the Winsock constructor, base and UDP destructors,
+shared shutdown method, and both compiler-generated deleting destructors as
+native C++. Each ordinary function has one out-of-line definition; `/Ob2` in
+the two lifetime translation units reproduces the retail inline copies. No asm,
+forced callers or emission shims are used. All six new functions pass raw and
+strict checks across 43 relocation fields without weak defaults. The emitted
+base and UDP tables and three vector tables agree under recorded weak-default
+assumptions; these scoped checks do not prove final-link selection. The existing
+IPX deleting-wrapper call now uses the canonical base destructor declaration;
+native IPX wrapper recovery remains deferred.
+UDP table slot 16 uses an explicit address binding to the capped MessageHandler
+at `0x7B3AA0`; this batch does not provide its body. The duplicated vector tables
+and deleting wrappers have identical section bytes and relocation expressions
+across the current object providers.
+All 348 affected prior rows preserve their full emitted sections and relocation
+offsets/types, including six partial rows. The existing IPX wrapper also passes
+two strict relocation checks, bringing this batch's total to 45 fields.
+
+The [function extent audit](scripts/data/function_extent_audit.json) records
+52 corrected comparison spans and 144 newly covered local relocation fields.
+
+Matched lengths total **363,681 bytes**: 25.1% of listed functions and 9.6%
+of listed function lengths. The padding heuristic misses 310 matched entries.
+The diagnostic link reports **3,628 unique unresolved symbols**, **5,546
+reference lines**, and zero duplicate definitions. Engine link closure remains
+unfinished; per-function checks do not establish whole-executable identity.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native IPX manager lifetime and adapter formatting
+
 As of **2026-10-21**, the verified snapshot reports **4,944 matched function
 rows**, **207 partial rows**, **5,151 manifest rows**, **1,059 manifest
 translation units**, and **1,069 tracked C++ files**. Whole-repository matching,
@@ -30,13 +73,6 @@ of listed function lengths. The padding heuristic misses 309 matched entries.
 The diagnostic link reports **3,627 unique unresolved symbols**, **5,540
 reference lines**, and zero duplicate definitions. Engine link closure remains
 unfinished; per-function checks do not establish whole-executable identity.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: UDP methods and Winsock buffer pools
 
@@ -2679,10 +2715,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,944** | **25.0%** of 19,753 |
-| Sum of matched function lengths | 362,439 bytes | 9.5% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,950** | **25.1%** of 19,753 |
+| Sum of matched function lengths | 363,681 bytes | 9.6% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 207 | 1.0% |
-| Tracked C++ files under `match/` | 1,069 | |
+| Tracked C++ files under `match/` | 1,071 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2702,7 +2738,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 309 matched entries. Its candidate count is therefore
+listed entries, including 310 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
