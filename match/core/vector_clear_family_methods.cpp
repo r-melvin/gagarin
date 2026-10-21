@@ -241,10 +241,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
 
-// FUNCTION: GAMEMD 0x004E9ED0
-// VectorClass<ParticleClass*> -- vtable 0x007E9D84 slot 3; locator 0x008010E8 -> type descriptor 0x00823108
-//   `.?AV?$VectorClass@PAVParticleClass@@@@`.
-template class VectorClass<ParticleClass*>;
 
 // FUNCTION: GAMEMD 0x004EA130
 // VectorClass<TeamClass*> -- vtable 0x007E9F84 slot 3; locator 0x008015A8 -> type descriptor 0x00823448
@@ -316,10 +312,6 @@ template class VectorClass<unsigned short*>;
 //   `.?AV?$VectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
 
-// FUNCTION: GAMEMD 0x005553B0
-// VectorClass<LightSourceClass*> -- vtable 0x007ECF9C slot 3; locator 0x00804FA8 -> type descriptor 0x00829AF0
-//   `.?AV?$VectorClass@PAVLightSourceClass@@@@`.
-template class VectorClass<LightSourceClass*>;
 
 // FUNCTION: GAMEMD 0x00555610
 // VectorClass<LightSourceClass::PendingCellClass*> -- vtable 0x007ECFDC slot 3; locator 0x00805040 -> type descriptor 0x00829B68
@@ -371,10 +363,6 @@ template class VectorClass<double>;
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
 template class VectorClass<Point2D>;
 
-// FUNCTION: GAMEMD 0x005D0E30
-// VectorClass<MapSelection*> -- vtable 0x007EEBB4 slot 3; locator 0x00806BB8 -> type descriptor 0x008303D8
-//   `.?AV?$VectorClass@PAVMapSelection@@@@`.
-template class VectorClass<MapSelection*>;
 
 // FUNCTION: GAMEMD 0x005D1090
 // VectorClass<MapStage*> -- vtable 0x007EEAB4 slot 3; locator 0x008069F0 -> type descriptor 0x00830200

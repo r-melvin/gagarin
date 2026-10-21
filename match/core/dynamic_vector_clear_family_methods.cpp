@@ -241,10 +241,6 @@ template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
 //   `.?AV?$DynamicVectorClass@PAVSuperClass@@@@`.
 template class DynamicVectorClass<SuperClass*>;
 
-// FUNCTION: GAMEMD 0x004E8470
-// DynamicVectorClass<ParticleClass*> -- vtable 0x007E9D64 slot 3; locator 0x008010B8 -> type descriptor 0x00823138
-//   `.?AV?$DynamicVectorClass@PAVParticleClass@@@@`.
-template class DynamicVectorClass<ParticleClass*>;
 
 // FUNCTION: GAMEMD 0x004E84D0
 // DynamicVectorClass<TeamClass*> -- vtable 0x007E9F64 slot 3; locator 0x00801578 -> type descriptor 0x00823478
@@ -311,10 +307,6 @@ template class DynamicVectorClass<unsigned short*>;
 //   `.?AV?$DynamicVectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
 
-// FUNCTION: GAMEMD 0x00555200
-// DynamicVectorClass<LightSourceClass*> -- vtable 0x007ECF7C slot 3; locator 0x00804F78 -> type descriptor 0x00829B28
-//   `.?AV?$DynamicVectorClass@PAVLightSourceClass@@@@`.
-template class DynamicVectorClass<LightSourceClass*>;
 
 // FUNCTION: GAMEMD 0x00555260
 // DynamicVectorClass<LightSourceClass::PendingCellClass*> -- vtable 0x007ECFBC slot 3; locator 0x00805010 -> type descriptor 0x00829BB0
@@ -371,10 +363,6 @@ template class DynamicVectorClass<double>;
 //   `.?AV?$DynamicVectorClass@VPoint2D@@@@`.
 template class DynamicVectorClass<Point2D>;
 
-// FUNCTION: GAMEMD 0x005D0670
-// DynamicVectorClass<MapSelection*> -- vtable 0x007EEB14 slot 3; locator 0x00806AF0 -> type descriptor 0x00830408
-//   `.?AV?$DynamicVectorClass@PAVMapSelection@@@@`.
-template class DynamicVectorClass<MapSelection*>;
 
 // FUNCTION: GAMEMD 0x005D06D0
 // DynamicVectorClass<MapStage*> -- vtable 0x007EEA94 slot 3; locator 0x00806928 -> type descriptor 0x00830230

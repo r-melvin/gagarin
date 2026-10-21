@@ -42,8 +42,6 @@ extern char VT_007E5C84;
 extern char VT_007E8BC0;
 // VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
 extern char VT_007EA504;
-// VTABLE: GAMEMD 0x007E9D84 -- VectorClass<ParticleClass*>
-extern char VT_007E9D84;
 // VTABLE: GAMEMD 0x007E9F84 -- VectorClass<TeamClass*>
 extern char VT_007E9F84;
 // VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
@@ -72,8 +70,6 @@ extern char VT_007EAA5C;
 extern char VT_007ECD0C;
 // VTABLE: GAMEMD 0x007ECBFC -- VectorClass<IsometricTileTypeClass::TileInsertType*>
 extern char VT_007ECBFC;
-// VTABLE: GAMEMD 0x007ECF9C -- VectorClass<LightSourceClass*>
-extern char VT_007ECF9C;
 // VTABLE: GAMEMD 0x007ECFDC -- VectorClass<LightSourceClass::PendingCellClass*>
 extern char VT_007ECFDC;
 // VTABLE: GAMEMD 0x007ED0EC -- VectorClass<LineTrail*>
@@ -96,8 +92,6 @@ extern char VT_007ED970;
 extern char VT_007EDA4C;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
 extern char VT_007EEB74;
-// VTABLE: GAMEMD 0x007EEBB4 -- VectorClass<MapSelection*>
-extern char VT_007EEBB4;
 // VTABLE: GAMEMD 0x007EEAB4 -- VectorClass<MapStage*>
 extern char VT_007EEAB4;
 // VTABLE: GAMEMD 0x007EEAD4 -- VectorClass<MSAnimEntry*>

@@ -47,3 +47,37 @@ void FUN_00473AB0_View::FUN_00473AB0(int, int, int)
         ((CallbackView_00473AB0*)&callback)->first(g_FileSearchMode);
     }
 }
+
+// GLOBAL: GAMEMD 0x0089E3A0 (byte comparison at 0x4790EE)
+extern "C" unsigned char DAT_0089E3A0;
+GG_STATIC_ASSERT(sizeof(DAT_0089E3A0) == 1);
+
+// Slot-0 method view at 0x4790E0. The retail RTTI associates this vtable
+// with CD, but neither a complete CD layout nor the original method name is
+// recovered. This prefix view models only the vptr and dword touched here.
+struct CD_004790E0
+{
+    virtual bool FUN_004790E0(int value);
+    unsigned int unknown_04;
+
+    // ABI call view for the direct callee 0x4A8270: ECX is this and one
+    // dword is passed on the stack. This declaration does not assign that
+    // address to a CD member in the recovered class model.
+    // FUNCTION: GAMEMD 0x004A8270 (call target declaration; owner unresolved)
+    bool FUN_004A8270(int value);
+};
+GG_STATIC_ASSERT(offsetof(CD_004790E0, unknown_04) == 4);
+typedef bool (CD_004790E0::*CDSlot0Call_004790E0)(int);
+struct CDVtablePrefix_004790E0 { CDSlot0Call_004790E0 slot0; };
+GG_STATIC_ASSERT(sizeof(CDSlot0Call_004790E0) == 4);
+GG_STATIC_ASSERT(offsetof(CDVtablePrefix_004790E0, slot0) == 0);
+GG_STATIC_ASSERT(sizeof(CDVtablePrefix_004790E0) == 4);
+
+// FUNCTION: GAMEMD 0x004790E0 (44 bytes, ending RET 4)
+bool CD_004790E0::FUN_004790E0(int value)
+{
+    if (value == -2) return true;
+    if (DAT_0089E3A0 == 1) return true;
+    unknown_04 = 0xffffffff;
+    return FUN_004A8270(value);
+}
