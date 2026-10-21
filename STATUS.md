@@ -1,15 +1,45 @@
 # Project status
 
-The latest whole-repository regression passed with **4,364 fully matched
-functions**, **167 partial rows**, and 988 manifest translation units, with no
-matched function regressing. All **998 tracked C++ files** produced current
-project objects and passed the hash check. The compile/layout gate, 75 verifier
-tests and duplicate-address check passed (4,564 addresses, zero problems).
+The latest whole-repository regression passed with **4,381 fully matched
+functions**, **167 partial rows**, and 991 manifest translation units, with no
+matched function regressing. All **1,001 tracked C++ files** produced current
+project objects and passed the hash check. The compile/layout gate, 89 verifier
+tests and duplicate-address check passed (4,581 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: MSAnimEntry vectors and Pipe/SHA stream methods
+## Latest integration: nested pointer vectors and Straw
+
+The nested-vector and mutable `char*` clusters and the native Straw
+implementation add 17 exact function matches and migrate 13 existing address
+claims: the vector clusters contribute 14 new matches and 12 migrations, while
+Straw contributes three new matches and one migration. Their RTTI-backed tables
+pass conditional checks for 31 slots across five tables. The nested vector's
+14-entry implementation uses `VectorClass<DynamicVectorClass<char*>*>` and
+`DynamicVectorClass<DynamicVectorClass<char*>*>`; the separate 12-entry `char*`
+implementation does not claim a const-element specialization. The four-entry
+Straw update includes the native deleting-destructor wrapper. These are
+evidence-backed template bindings, not claims about recovered original source
+files or complete pointee layouts.
+
+The project-object relocation audit verified 32 relocation fields across 30
+function spans. This is scoped binding evidence, not a whole-image comparison.
+The tracked-source object build, compile/layout gate, and full regression all
+passed. The `/dll /noentry /nodefaultlib` diagnostic link reports **3,664
+unique unresolved symbols**, 5,490 reference lines and no duplicate
+definitions; excluding default libraries means this does not establish engine
+link closure.
+
+Matched lengths total **308,460 bytes (301 KiB)**: 22.2% of listed functions
+and 8.1% of listed function lengths. The current padding scan reports 276
+matched entries missed by its heuristic. Generic families contain 115 deleting
+bindings across 59 views, 58 base `Clear` rows, 56 native dynamic `Clear` rows
+plus one DiskID stand-in, and six resize-family rows plus two other resize
+helpers. The deleting-destructor sweep contains 72 rows. Complete executable
+reproduction remains unfinished.
+
+## Previous verified integration: MSAnimEntry vectors and Pipe/SHA stream methods
 
 The native [MSAnimEntry pointer-vector implementation](match/core/vector_msanimentry_methods.cpp)
 contains twelve entries: eight new exact matches and four migrated address
@@ -1794,8 +1824,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 998 tracked C++ files and 4,531 manifest
-rows across 988 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 1,001 tracked C++ files and 4,548 manifest
+rows across 991 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1957,7 +1987,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 60 base and 58
+  `CountedVector::Destroy` stand-ins. The family files bind 58 base and 56
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -2111,10 +2141,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,364** | **22.1%** of 19,753 |
-| Sum of matched function lengths | 300 KiB | 8.1% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,381** | **22.2%** of 19,753 |
+| Sum of matched function lengths | 301 KiB | 8.1% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 998 | |
+| Tracked C++ files under `match/` | 1,001 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2134,7 +2164,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 274 matched entries. Its candidate count is therefore
+listed entries, including 276 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

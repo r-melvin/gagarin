@@ -32,10 +32,6 @@ extern char VT_007E4DB8;
 extern char VT_007E4E38;
 // VTABLE: GAMEMD 0x007E192C -- VectorClass<ObjectClass*>
 extern char VT_007E192C;
-// VTABLE: GAMEMD 0x007E5C24 -- VectorClass<char*>
-extern char VT_007E5C24;
-// VTABLE: GAMEMD 0x007E5C04 -- VectorClass<DynamicVectorClass<char*>*>
-extern char VT_007E5C04;
 // VTABLE: GAMEMD 0x007E5C84 -- VectorClass<tagCONNECTDATA>
 extern char VT_007E5C84;
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>

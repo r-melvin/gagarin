@@ -34,10 +34,6 @@ GG_STATIC_ASSERT(sizeof(VectorBase) == 0x14);
 
 struct VectorResizeFamily : VectorBase
 {
-    // FUNCTION: GAMEMD 0x49EA70
-    bool FUN_49EA70(int newsize, void** array);
-    // FUNCTION: GAMEMD 0x49ED30
-    bool FUN_49ED30(int newsize, void** array);
     // FUNCTION: GAMEMD 0x4E9840
     bool FUN_4E9840(int newsize, void** array);
     // FUNCTION: GAMEMD 0x5AD010

@@ -211,17 +211,7 @@ template class VectorClass<RGBClass>;
 //   `.?AV?$VectorClass@PAVObjectClass@@@@`.
 template class VectorClass<ObjectClass*>;
 
-// FUNCTION: GAMEMD 0x0049EE10
-// FUNCTION: GAMEMD 0x0049EFA0
-// VectorClass<char*> -- reseats retail vtable 0x007E5C24; locator 0x007FF628 -> type descriptor 0x0081F240
-//   `.?AV?$VectorClass@PAD@@`.
-template class VectorClass<char*>;
-
-// FUNCTION: GAMEMD 0x0049EFF0
-// FUNCTION: GAMEMD 0x0049F040
-// VectorClass<DynamicVectorClass<char*>*> -- reseats retail vtable 0x007E5C04; locator 0x007FF5F8 -> type descriptor 0x0081F288
-//   `.?AV?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@`.
-template class VectorClass<DynamicVectorClass<char*>*>;
+// Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 
 // FUNCTION: GAMEMD 0x0049FCE0
 // VectorClass<int> -- reseats retail vtable 0x007E4DB8; locator 0x007FCDB0 -> type descriptor 0x0081C038

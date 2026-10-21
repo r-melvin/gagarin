@@ -4815,11 +4815,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/straw_class_methods.cpp",
   "addr": "0x4AEC10",
-  "sym": "?FUN_4AEC10@Obj_4AEC10@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "FUN_004aec10",
+  "sym": "??_GStraw@@UAEPAXI@Z",
+  "len": "0x1E",
+  "name": "Straw scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -6003,11 +6003,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_ctor_pod_family_methods.cpp",
-  "addr": "0x0049ECD0",
-  "sym": "?Ctor@DynamicVectorClass_0049ECD0@@QAEPAU1@IPAUDynPodElem4@@@Z",
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49ECD0",
+  "sym": "??0?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@QAE@HPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x5d",
-  "name": "DynamicVectorClass_0049ECD0::Ctor",
+  "name": "DynamicVectorClass<DynamicVectorClass<char*>*>::DynamicVectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -13491,8 +13491,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
-  "addr": "0x0049e950",
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49E950",
   "sym": "?Clear@?$DynamicVectorClass@PAD@@UAEXXZ",
   "len": "0x2a",
   "name": "DynamicVectorClass<char*>::Clear",
@@ -13500,8 +13500,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
-  "addr": "0x0049e9b0",
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49E9B0",
   "sym": "?Clear@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEXXZ",
   "len": "0x2a",
   "name": "DynamicVectorClass<DynamicVectorClass<char*>*>::Clear",
@@ -14967,11 +14967,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/core/vector_nested_char_methods.cpp",
   "addr": "0x49F090",
-  "sym": "?Ctor@VectorClass_0049F090@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@QAE@HPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_0049F090::Ctor",
+  "name": "VectorClass<DynamicVectorClass<char*>*>::VectorClass",
   "status": "matched",
   "pct": 100
  },
@@ -15471,8 +15471,17 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x0049EE10",
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EE10",
+  "sym": "??_G?$DynamicVectorClass@PAD@@UAEPAXI@Z",
+  "len": "0x49",
+  "name": "DynamicVectorClass<char*> scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EFA0",
   "sym": "??_G?$VectorClass@PAD@@UAEPAXI@Z",
   "len": "0x49",
   "name": "VectorClass<char*>::`scalar deleting destructor'",
@@ -15480,17 +15489,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x0049EFA0",
-  "sym": "??_G?$VectorClass@PAD@@UAEPAXI@Z",
-  "len": "0x49",
-  "name": "VectorClass<char*>::`scalar deleting destructor'",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x0049EFF0",
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EFF0",
   "sym": "??_G?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEPAXI@Z",
   "len": "0x49",
   "name": "VectorClass<DynamicVectorClass<char*>*>::`scalar deleting destructor'",
@@ -15498,11 +15498,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x0049F040",
-  "sym": "??_G?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEPAXI@Z",
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49F040",
+  "sym": "??_G?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<DynamicVectorClass<char*>*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<DynamicVectorClass<char*>*> scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18891,8 +18891,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
-  "addr": "0x0049ec40",
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EC40",
   "sym": "?Clear@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEXXZ",
   "len": "0x27",
   "name": "VectorClass<DynamicVectorClass<char*>*>::Clear",
@@ -18900,8 +18900,8 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
-  "addr": "0x0049ef10",
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EF10",
   "sym": "?Clear@?$VectorClass@PAD@@UAEXXZ",
   "len": "0x27",
   "name": "VectorClass<char*>::Clear",
@@ -20583,20 +20583,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_charptr_methods.cpp",
   "addr": "0x49EA70",
-  "sym": "?FUN_49EA70@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAD@@UAE_NHPAPAD@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_49EA70",
+  "name": "DynamicVectorClass<char*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_nested_char_methods.cpp",
   "addr": "0x49ED30",
-  "sym": "?FUN_49ED30@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAE_NHPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_49ED30",
+  "name": "DynamicVectorClass<DynamicVectorClass<char*>*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -40775,6 +40775,159 @@
   "len": "0x10",
   "sym": "?Result@SHAPipe@@QAEXPAX@Z",
   "name": "SHAPipe::Result",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/straw_class_methods.cpp",
+  "addr": "0x6C9850",
+  "sym": "??1Straw@@UAE@XZ",
+  "len": "0x32",
+  "name": "Straw::~Straw()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/straw_class_methods.cpp",
+  "addr": "0x6C9890",
+  "sym": "?SetChainTo@Straw@@UAEXPAV1@@Z",
+  "len": "0x43",
+  "name": "Straw::SetChainTo(Straw*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/straw_class_methods.cpp",
+  "addr": "0x6C98E0",
+  "sym": "?FUN_006C98E0@Straw@@UAEHHH@Z",
+  "len": "0x1E",
+  "name": "Straw::FUN_006C98E0(int,int)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49E9E0",
+  "sym": "?Slot5@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "len": "0x1b",
+  "name": "?Slot5@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EA00",
+  "sym": "?Slot6@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEPAV?$DynamicVectorClass@PAD@@H@Z",
+  "len": "0x0d",
+  "name": "?Slot6@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEPAV?$DynamicVectorClass@PAD@@H@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EB50",
+  "sym": "??8?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "??8?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBE_NABV0@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EB90",
+  "sym": "?SetCapacity@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAE_NHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "len": "0xae",
+  "name": "?SetCapacity@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAE_NHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EC70",
+  "sym": "?FindItemIndex@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
+  "len": "0x33",
+  "name": "?FindItemIndex@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49ECB0",
+  "sym": "?Slot5@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "len": "0x1b",
+  "name": "?Slot5@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_nested_char_methods.cpp",
+  "addr": "0x49EDE0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
+  "len": "0x26",
+  "name": "?FindItemIndex@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49E980",
+  "sym": "?Slot5@?$DynamicVectorClass@PAD@@UBEHPAPAD@Z",
+  "len": "0x1b",
+  "name": "?Slot5@?$DynamicVectorClass@PAD@@UBEHPAPAD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49E9A0",
+  "sym": "?Slot6@?$VectorClass@PAD@@UBEPADH@Z",
+  "len": "0x0d",
+  "name": "?Slot6@?$VectorClass@PAD@@UBEPADH@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EA30",
+  "sym": "??8?$VectorClass@PAD@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "??8?$VectorClass@PAD@@UBE_NABV0@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EB20",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAD@@UBEHABQAD@Z",
+  "len": "0x26",
+  "name": "?FindItemIndex@?$DynamicVectorClass@PAD@@UBEHABQAD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EE60",
+  "sym": "?SetCapacity@?$VectorClass@PAD@@UAE_NHPAPAD@Z",
+  "len": "0xae",
+  "name": "?SetCapacity@?$VectorClass@PAD@@UAE_NHPAPAD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EF40",
+  "sym": "?FindItemIndex@?$VectorClass@PAD@@UBEHABQAD@Z",
+  "len": "0x33",
+  "name": "?FindItemIndex@?$VectorClass@PAD@@UBEHABQAD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_charptr_methods.cpp",
+  "addr": "0x49EF80",
+  "sym": "?Slot5@?$VectorClass@PAD@@UBEHPAPAD@Z",
+  "len": "0x1b",
+  "name": "?Slot5@?$VectorClass@PAD@@UBEHPAPAD@Z",
   "status": "matched",
   "pct": 100
  }

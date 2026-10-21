@@ -67,7 +67,6 @@ GG_STATIC_ASSERT(sizeof(PodElem8) == 8);
 // One declaration per retail instantiation, ascending by address.
 GG_VECTOR_CTOR_POD_DECL(VectorClass_00488080, PodElem4);
 GG_VECTOR_CTOR_POD_DECL(VectorClass_0048B070, PodElem4);
-GG_VECTOR_CTOR_POD_DECL(VectorClass_0049F090, PodElem4);
 GG_VECTOR_CTOR_POD_DECL(VectorClass_004A4E30, PodElem4);
 GG_VECTOR_CTOR_POD_DECL(VectorClass_004BA2F0, PodElem4);
 GG_VECTOR_CTOR_POD_DECL(VectorClass_004BA340, PodElem4);

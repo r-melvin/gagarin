@@ -67,3 +67,7 @@ scripts/data/reference_*.json
 
 # Temporary decomp-permuter debug source (never a maintained reconstruction).
 /debug_source.c
+
+# Shared local agent coordination and isolated worktrees (never published).
+/.coordination/
+/.worktrees/

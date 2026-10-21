@@ -2,12 +2,14 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The 73 remaining scalar deleting destructors of the 30-byte family, ordered ascending
+// The 72 remaining address-scoped scalar deleting destructors of the 30-byte family,
+// ordered ascending
 // by retail address. Each runs its class's real destructor, then frees the
 // object when bit 0 of the flag argument is set, and returns `this`.
 
 #include "deleting_dtor_sweep.h"
 #include "../_layout/pipe.h"
+#include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x477750
 void* Obj_477750::FUN_477750(unsigned int flags)
@@ -109,18 +111,6 @@ void* Obj_4AEBB0::FUN_4AEBB0(unsigned int flags)
 void* Obj_4AEBF0::FUN_4AEBF0(unsigned int flags)
 {
     FUN_005652C0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x4AEC10
-void* Obj_4AEC10::FUN_4AEC10(unsigned int flags)
-{
-    FUN_006C9850(this);
 
     if (flags & 1) {
         FUN_007C8B3D(this);
@@ -276,7 +266,7 @@ void* Obj_52AE00::FUN_52AE00(unsigned int flags)
 // FUNCTION: GAMEMD 0x52AEA0
 void* Obj_52AEA0::FUN_52AEA0(unsigned int flags)
 {
-    FUN_006C9850(this);
+    ((Straw*)this)->Straw::~Straw();
 
     if (flags & 1) {
         FUN_007C8B3D(this);

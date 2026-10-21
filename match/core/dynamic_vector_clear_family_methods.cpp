@@ -214,15 +214,7 @@ struct tagCONNECTDATA;
 //   base of those, so the slot is declared here (batch fifty-seven).
 template class DynamicVectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x0049E950
-// DynamicVectorClass<char*> -- vtable 0x007E5BC4 slot 3; locator 0x007FF560 -> type descriptor 0x0081F260
-//   `.?AV?$DynamicVectorClass@PAD@@`.
-template class DynamicVectorClass<char*>;
-
-// FUNCTION: GAMEMD 0x0049E9B0
-// DynamicVectorClass<DynamicVectorClass<char*>*> -- vtable 0x007E5BE4 slot 3; locator 0x007FF5C8 -> type descriptor 0x0081F2C8
-//   `.?AV?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@`.
-template class DynamicVectorClass<DynamicVectorClass<char*>*>;
+// Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 
 // FUNCTION: GAMEMD 0x004A0EB0
 // DynamicVectorClass<tagCONNECTDATA> -- vtable 0x007E5CC4 slot 3; locator 0x007FF790 -> type descriptor 0x0081F670

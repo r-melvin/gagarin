@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "../_layout/generic_list.h"
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -32,11 +33,6 @@ struct NodePayload
     int Opaque;
     ~NodePayload();
 };
-
-// FUNCTION: GAMEMD 0x6C9850 (decl; reloc) — a shared base destructor reached
-// as `MOV ECX,<obj>; CALL <addr>` with nothing pushed: __thiscall, no
-// arguments.
-struct NodeBaseB { void Destruct(); };
 
 // ---------------------------------------------------------------------------
 // The sorted binary tree (0x5B3FF0, 0x5B4080).
@@ -82,7 +78,7 @@ struct BlowStraw
         Vptr = &VT_007EDF40;
         delete Payload;
         Payload = 0;
-        ((NodeBaseB*)this)->Destruct();
+        ((Straw*)this)->Straw::~Straw();
     }
 
     // FUNCTION: GAMEMD 0x5B45C0

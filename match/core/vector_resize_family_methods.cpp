@@ -15,32 +15,6 @@
 
 #include "vector_resize_family_methods.h"
 
-// FUNCTION: GAMEMD 0x49EA70
-bool VectorResizeFamily::FUN_49EA70(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x49ED30
-bool VectorResizeFamily::FUN_49ED30(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x4E9840
 bool VectorResizeFamily::FUN_4E9840(int newsize, void** array)
 {

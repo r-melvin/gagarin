@@ -22,6 +22,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/pipe.h"
+#include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -41,9 +42,6 @@ struct DualBuf
     char  _pad004[0x10]; // +0x0004  base subobject, never touched here
     void* BufA;          // +0x0014
     void* BufB;          // +0x0018
-
-    // FUNCTION: GAMEMD 0x6C9850 -- direct Straw base cleanup call view.
-    void StrawBaseDtor();
 
     void Dtor_00552060();
     void Dtor_00552450();

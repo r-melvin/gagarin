@@ -214,15 +214,7 @@ struct tagCONNECTDATA;
 //   `.?AV?$VectorClass@VRGBClass@@@@`.
 template class VectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x0049EC40
-// VectorClass<DynamicVectorClass<char*>*> -- vtable 0x007E5C04 slot 3; locator 0x007FF5F8 -> type descriptor 0x0081F288
-//   `.?AV?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@`.
-template class VectorClass<DynamicVectorClass<char*>*>;
-
-// FUNCTION: GAMEMD 0x0049EF10
-// VectorClass<char*> -- vtable 0x007E5C24 slot 3; locator 0x007FF628 -> type descriptor 0x0081F240
-//   `.?AV?$VectorClass@PAD@@`.
-template class VectorClass<char*>;
+// Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 
 // FUNCTION: GAMEMD 0x004A10A0
 // VectorClass<tagCONNECTDATA> -- vtable 0x007E5C84 slot 3; locator 0x007FF6D8 -> type descriptor 0x0081F5F8

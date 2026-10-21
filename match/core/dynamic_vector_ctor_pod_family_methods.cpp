@@ -13,11 +13,6 @@
 // ascending by retail address.
 #include "dynamic_vector_ctor_pod_family_methods.h"
 
-// FUNCTION: GAMEMD 0x0049ECD0
-// VTABLE: GAMEMD 0x7E5C04
-// VTABLE: GAMEMD 0x7E5BE4
-GG_DYNVECTOR_CTOR_POD_BODY(DynamicVectorClass_0049ECD0, 0x7E5C04, 0x7E5BE4)
-
 // FUNCTION: GAMEMD 0x005D86D0
 // VTABLE: GAMEMD 0x7EED40
 // VTABLE: GAMEMD 0x7EED20

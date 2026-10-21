@@ -45,6 +45,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/pipe.h"
+#include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -62,12 +63,6 @@ struct NodePayload
     int Opaque;
     ~NodePayload();
 };
-
-// Pipe cleanup uses the shared RTTI-backed base destructor. The other
-// no-argument __thiscall remains an address-scoped Straw cleanup view;
-// original ownership beyond the observed call is not established here.
-// FUNCTION: GAMEMD 0x6C9850 (decl; reloc)
-struct NodeBaseB { void Destruct(); };
 
 // The in-place destructor is defined in the class body on purpose. Both
 // enclosing types inline it, and retail's register colouring only falls out
@@ -108,7 +103,7 @@ struct BlowStraw
         Vptr = &VT_007EDF40;
         delete Payload;
         Payload = 0;
-        ((NodeBaseB*)this)->Destruct();
+        ((Straw*)this)->Straw::~Straw();
     }
 };
 GG_STATIC_ASSERT(offsetof(BlowStraw, Payload) == 0x0C);

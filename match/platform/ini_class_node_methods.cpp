@@ -9,6 +9,7 @@
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX /Ob2
 // Ob2 inlines native GenericList construction into List<INIEntry*>.
 #include "ini_class_node_methods.h"
+#include "../_layout/straw.h"
 #include "../_layout/memory_buffer.h"
 
 // FUNCTION: GAMEMD 0x40E320
@@ -184,7 +185,7 @@ template<> void* Node<INIClass::INISection*>::DeletingDestructor(unsigned int fl
 void* CacheStraw::DeletingDestructor(unsigned int flags)
 {
     Buffer.Clear();
-    FUN_006C9850(this);
+    ((Straw*)this)->Straw::~Straw();
 
     if (flags & 1) {
         FUN_007C8B3D(this);

@@ -45,7 +45,7 @@ Obj_00632FF0* Obj_00632FF0::ScalarDeletingDtor(char flags)
 Obj_00633370* Obj_00633370::ScalarDeletingDtor(char flags)
 {
     Node.DestructInPlace();
-    ((NodeBaseB*)this)->Destruct();
+    ((Straw*)this)->Straw::~Straw();
     if (flags & 1) {
         gg_free(this);
     }

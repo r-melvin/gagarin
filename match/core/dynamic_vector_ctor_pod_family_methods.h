@@ -77,7 +77,6 @@ GG_STATIC_ASSERT(sizeof(DynPodElem4) == 4);
     }
 
 // One declaration per retail instantiation, ascending by address.
-GG_DYNVECTOR_CTOR_POD_DECL(DynamicVectorClass_0049ECD0);
 GG_DYNVECTOR_CTOR_POD_DECL(DynamicVectorClass_005D86D0);
 GG_DYNVECTOR_CTOR_POD_DECL(DynamicVectorClass_0063DEC0);
 GG_DYNVECTOR_CTOR_POD_DECL(DynamicVectorClass_0063E1D0);
