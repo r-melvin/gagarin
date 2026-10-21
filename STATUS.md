@@ -1,13 +1,58 @@
 # Project status
 
-The latest whole-repository regression passed with **4,014 fully matched
-functions**, **167 partial rows**, and 941 manifest translation units, with no
-matched function regressing. All **951 tracked C++ files** produced project
+The latest whole-repository regression passed with **4,029 fully matched
+functions**, **167 partial rows**, and 944 manifest translation units, with no
+matched function regressing. All **954 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: native GenericNode constructor and two vector pairs
+## Latest integration: shared MemoryBuffer and Subtitle/MapRegion vectors
+
+The constructor at `0x43AD00` now has a native `MemoryBuffer` binding in
+[memory_buffer_methods.cpp](match/core/memory_buffer_methods.cpp); its complete
+`0x31`-byte body matches retail. The shared layout asserts the pointer at `+0`,
+size at `+4`, ownership byte at `+8`, and total size `0x0C`. The size is also
+bounded by `CCFileClass::Close` using the `Buffer` at `+0x58` and `Position` at
+`+0x64`. The model names and `bool` spelling are source choices; the binary
+establishes the field offsets and ownership-byte behavior. Six affected
+CCFileClass rows still pass their focused check. The former
+`Owned_0043AD00` stand-in is removed. Other local MemoryBuffer views, including
+the CCFile read and I/O views, remain to be consolidated.
+
+Native [SubTitle](match/core/vector_subtitle_methods.cpp) and
+[MapRegionClass](match/core/vector_mapregionclass_methods.cpp) vector
+specializations cover 24 rows: 15 new exact matches and nine migrated claims.
+SubTitle contributes eight new rows and four migrations; MapRegionClass adds
+seven new rows and migrates five, including `SetCapacity` at `0x5AC820` from
+the resize helper. Entry-origin spans and raw comparisons cover all rows.
+The two SubTitle and two MapRegionClass seven-slot tables pass conditional
+`--weak-defaults` checks against project objects. The deleting-destructor rows
+use their separately emitted base and dynamic symbols. Paired flag probes show
+that both SubTitle deleting bodies need no GX; MapRegionClass's dynamic
+deleting body needs no GX, while its base deleting body also matches with GX.
+The no-GX candidates reproduce their `0x49`-byte retail spans; GX emits short
+wrappers for the SubTitle pair and the MapRegionClass dynamic wrapper.
+No pointee layout, constructor, TypeList, original source-TU boundary, or
+final-link resolution is claimed.
+
+The eight-shard regression, compile/layout gate, **75 verifier tests** and
+**954/954 tracked-source object build** passed. Eight saved partial bodies
+retain identical bytes and relocation offsets. The diagnostic
+`/dll /noentry /nodefaultlib` link reports **3,793 unique unresolved symbols**,
+5,751 reference lines and no duplicate definitions. Default libraries are
+excluded, so this is not an engine-only gap census.
+
+Matched lengths total **287,292 bytes (281 KiB)**: 20.4% of listed functions
+and 7.6% of listed function lengths. The padding heuristic misses 241 matched
+entries. Current generic families contain 171 deleting bindings across 89
+views, 86 base `Clear` rows, 84 native dynamic `Clear` rows plus one DiskID
+stand-in, and 12 resize-family rows plus three other resize helpers. The
+deferred ShadowBlock caller candidate is being investigated at `0x3B0`; no
+ShadowBlock source was changed in this batch.
+Engine link closure and complete executable reproduction remain unfinished.
+
+## Previous verified integration: native GenericNode constructor and two vector pairs
 
 The former explicit initializer at `0x40E320` is now the native
 `GenericNode()` constructor in [the INI node translation unit](match/platform/ini_class_node_methods.cpp).
@@ -876,7 +921,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 951 tracked C++ files and 4,181 manifest
+verified snapshot, the inventory has 954 tracked C++ files and 4,196 manifest
 rows, with no manifest TU missing from tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1038,7 +1083,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 88 base and 86
+  `CountedVector::Destroy` stand-ins. The family files bind 86 base and 84
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -1128,7 +1173,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 175 bindings across 91 base-template instantiation views. Their written vptr and
+  family has 171 bindings across 89 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -1138,7 +1183,7 @@ Verified consolidation steps:
   retail declaring class is unresolved; other legacy users are marked
   `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
   original source-file ownership remain incomplete.
-  The resize helpers retain 15 address-specific family views and three other
+  The resize helpers retain 12 address-specific family views and three other
   generic resize helpers. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
 - [TypeList](match/core/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
@@ -1192,10 +1237,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,014** | **20.3%** of 19,753 |
-| Sum of matched function lengths | 280 KiB | 7.5% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,029** | **20.4%** of 19,753 |
+| Sum of matched function lengths | 281 KiB | 7.6% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 951 | |
+| Tracked C++ files under `match/` | 954 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -1215,7 +1260,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 239 matched entries. Its candidate count is therefore
+listed entries, including 241 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

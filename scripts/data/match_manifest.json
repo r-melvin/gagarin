@@ -10737,11 +10737,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc24_methods.cpp",
+  "tu": "match/core/memory_buffer_methods.cpp",
   "addr": "0x43AD00",
-  "sym": "?FUN_0043AD00@Owned_0043AD00@@QAEPAU1@PAXH@Z",
+  "sym": "??0MemoryBuffer@@QAE@PAXH@Z",
   "len": "0x31",
-  "name": "FUN_0043AD00",
+  "name": "MemoryBuffer::MemoryBuffer",
   "status": "matched",
   "pct": 100.0
  },
@@ -14256,7 +14256,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
   "addr": "0x005ac3a0",
   "sym": "?Clear@?$DynamicVectorClass@PAVMapRegionClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14715,7 +14715,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_subtitle_methods.cpp",
   "addr": "0x006ca7c0",
   "sym": "?Clear@?$DynamicVectorClass@PAVSubTitle@@@@UAEXXZ",
   "len": "0x2a",
@@ -17073,20 +17073,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
   "addr": "0x005AD390",
   "sym": "??_G?$VectorClass@PAVMapRegionClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MapRegionClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<MapRegionClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
   "addr": "0x005AD3E0",
-  "sym": "??_G?$VectorClass@PAVMapRegionClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMapRegionClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MapRegionClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<MapRegionClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18000,20 +18000,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_subtitle_methods.cpp",
   "addr": "0x006CA9C0",
-  "sym": "??_G?$VectorClass@PAVSubTitle@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVSubTitle@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SubTitle*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SubTitle*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_subtitle_methods.cpp",
   "addr": "0x006CAB50",
   "sym": "??_G?$VectorClass@PAVSubTitle@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SubTitle*>::`scalar deleting destructor'",
+  "name": "VectorClass<SubTitle*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19665,7 +19665,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
   "addr": "0x005ac790",
   "sym": "?Clear@?$VectorClass@PAVMapRegionClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20115,7 +20115,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_subtitle_methods.cpp",
   "addr": "0x006caac0",
   "sym": "?Clear@?$VectorClass@PAVSubTitle@@@@UAEXXZ",
   "len": "0x27",
@@ -20727,11 +20727,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
   "addr": "0x5AC820",
-  "sym": "?FUN_5AC820@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVMapRegionClass@@@@UAE_NHPAPAVMapRegionClass@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_5AC820",
+  "name": "DynamicVectorClass<MapRegionClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -37627,5 +37627,140 @@
   "tu": "match/core/vector_winsockbuffer_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@UBEHABQAUWinsockBufferType@WinsockInterfaceClass@@@Z",
   "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::FindItemIndex"
+ },
+ {
+  "addr": "0x6CA7F0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVSubTitle@@@@UBEHPAPAVSubTitle@@@Z",
+  "name": "DynamicVectorClass<SubTitle*>::Slot5"
+ },
+ {
+  "addr": "0x6CA810",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVSubTitle@@@@UBEPAVSubTitle@@H@Z",
+  "name": "VectorClass<SubTitle*>::Slot6"
+ },
+ {
+  "addr": "0x6CA820",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "??8?$VectorClass@PAVSubTitle@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<SubTitle*>::operator=="
+ },
+ {
+  "addr": "0x6CA860",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVSubTitle@@@@UAE_NHPAPAVSubTitle@@@Z",
+  "name": "DynamicVectorClass<SubTitle*>::SetCapacity"
+ },
+ {
+  "addr": "0x6CA910",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVSubTitle@@@@UBEHABQAVSubTitle@@@Z",
+  "name": "DynamicVectorClass<SubTitle*>::FindItemIndex"
+ },
+ {
+  "addr": "0x6CAA10",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVSubTitle@@@@UAE_NHPAPAVSubTitle@@@Z",
+  "name": "VectorClass<SubTitle*>::SetCapacity"
+ },
+ {
+  "addr": "0x6CAAF0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVSubTitle@@@@UBEHABQAVSubTitle@@@Z",
+  "name": "VectorClass<SubTitle*>::FindItemIndex"
+ },
+ {
+  "addr": "0x6CAB30",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_subtitle_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVSubTitle@@@@UBEHPAPAVSubTitle@@@Z",
+  "name": "VectorClass<SubTitle*>::Slot5"
+ },
+ {
+  "addr": "0x5AC3D0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
+  "name": "DynamicVectorClass<MapRegionClass*>::Slot5"
+ },
+ {
+  "addr": "0x5AC3F0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVMapRegionClass@@@@UBEPAVMapRegionClass@@H@Z",
+  "name": "VectorClass<MapRegionClass*>::Slot6"
+ },
+ {
+  "addr": "0x5AC6A0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVMapRegionClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<MapRegionClass*>::operator=="
+ },
+ {
+  "addr": "0x5AC6E0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVMapRegionClass@@@@UAE_NHPAPAVMapRegionClass@@@Z",
+  "name": "VectorClass<MapRegionClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x5AC7C0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
+  "name": "VectorClass<MapRegionClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5AC800",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
+  "name": "VectorClass<MapRegionClass*>::Slot5"
+ },
+ {
+  "addr": "0x5AC8D0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
+  "name": "DynamicVectorClass<MapRegionClass*>::FindItemIndex"
  }
 ]

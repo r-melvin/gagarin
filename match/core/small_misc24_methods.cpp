@@ -21,18 +21,3 @@ void __fastcall FUN_00422B80(void* key)
         }
     }
 }
-
-// FUNCTION: GAMEMD 0x43AD00
-Owned_0043AD00* Owned_0043AD00::FUN_0043AD00(void* buffer, int size)
-{
-    Buffer = buffer;
-    Length = size;
-    IsAllocated = 0;
-
-    if (buffer == 0 && size > 0) {
-        Buffer = FUN_007C8E17(size);
-        IsAllocated = 1;
-    }
-
-    return this;
-}

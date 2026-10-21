@@ -24,27 +24,15 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 
 // FileAccessMode is an unsigned-int flag enum in YRpp; modelled as a 4-byte
 // scalar here (the only property the matched code uses is its 32-bit width).
 typedef unsigned int FileAccessMode;
 
 // ---------------------------------------------------------------------------
-// MemoryBuffer (YRAllocator.h) — { void* Buffer; int Size; bool Allocated; }.
-// 0x0C bytes; the (void*,int) ctor lives at retail 0x43AD00 (placement-target
-// of CCFileClass::Close). Declared only; its body is retail (becomes a reloc).
+// Shared owned-buffer layout and native constructor at 0x43AD00.
 // ---------------------------------------------------------------------------
-class MemoryBuffer
-{
-public:
-    MemoryBuffer(void* pBuffer, int size) throw();  // GAMEMD 0x43AD00
-    void* Buffer;        // +0x00
-    int   Size;          // +0x04
-    bool  Allocated;     // +0x08
-private:
-    char  padding_9[3];  // +0x09
-};
-GG_STATIC_ASSERT(sizeof(MemoryBuffer) == 0x0C);
 
 // ---------------------------------------------------------------------------
 // FileClass — abstract base. Virtuals declared in exact retail vtable order so

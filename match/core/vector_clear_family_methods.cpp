@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 87
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 85
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 88 remaining addresses are bound to VectorClass<T> tables;
+//   The 86 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -416,11 +416,6 @@ template class VectorClass<HashObject<unsigned int, unsigned int> >;
 //   `.?AV?$VectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@`.
 template class VectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
-// FUNCTION: GAMEMD 0x005AC790
-// VectorClass<MapRegionClass*> -- vtable 0x007ED878 slot 3; locator 0x008058F0 -> type descriptor 0x0082B998
-//   `.?AV?$VectorClass@PAVMapRegionClass@@@@`.
-template class VectorClass<MapRegionClass*>;
-
 // FUNCTION: GAMEMD 0x005ACB50
 // VectorClass<_WIN32_FIND_DATAA*> -- vtable 0x007ED92C slot 3; locator 0x008059C0 -> type descriptor 0x0082BA98
 //   `.?AV?$VectorClass@PAU_WIN32_FIND_DATAA@@@@`.
@@ -620,11 +615,6 @@ template class VectorClass<SpawnManagerClass*>;
 // VectorClass<unsigned long> -- vtable 0x007F3748 slot 3; locator 0x00809C18 -> type descriptor 0x00840A88
 //   `.?AV?$VectorClass@K@@`.
 template class VectorClass<unsigned long>;
-
-// FUNCTION: GAMEMD 0x006CAAC0
-// VectorClass<SubTitle*> -- vtable 0x007F3F8C slot 3; locator 0x0080B560 -> type descriptor 0x008422A0
-//   `.?AV?$VectorClass@PAVSubTitle@@@@`.
-template class VectorClass<SubTitle*>;
 
 // FUNCTION: GAMEMD 0x006CF690
 // VectorClass<SwizzlePointerClass> -- vtable 0x007F4154 slot 3; locator 0x0080B7C8 -> type descriptor 0x00842758

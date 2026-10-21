@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 175 remaining 73-byte deleting-destructor bodies are bound here through
-// 91 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 171 remaining 73-byte deleting-destructor bodies are bound here through
+// 89 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -114,8 +114,6 @@ extern char VT_007ED560;
 extern char VT_007ED5C0;
 // VTABLE: GAMEMD 0x007ED5E0 -- VectorClass<HashObject<unsigned int, SubzoneConnectionStruct>>
 extern char VT_007ED5E0;
-// VTABLE: GAMEMD 0x007ED878 -- VectorClass<MapRegionClass*>
-extern char VT_007ED878;
 // VTABLE: GAMEMD 0x007ED92C -- VectorClass<_WIN32_FIND_DATAA*>
 extern char VT_007ED92C;
 // VTABLE: GAMEMD 0x007ED970 -- VectorClass<TRect<int>>
@@ -196,8 +194,6 @@ extern char VT_007F36D4;
 extern char VT_007F3604;
 // VTABLE: GAMEMD 0x007F3748 -- VectorClass<unsigned long>
 extern char VT_007F3748;
-// VTABLE: GAMEMD 0x007F3F8C -- VectorClass<SubTitle*>
-extern char VT_007F3F8C;
 // VTABLE: GAMEMD 0x007F4154 -- VectorClass<SwizzlePointerClass>
 extern char VT_007F4154;
 // VTABLE: GAMEMD 0x007F42BC -- VectorClass<DirtyAreaStruct>

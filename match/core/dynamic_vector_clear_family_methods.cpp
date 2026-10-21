@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 86
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 84
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -411,11 +411,6 @@ template class DynamicVectorClass<HashObject<unsigned int, unsigned int> >;
 //   `.?AV?$DynamicVectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@`.
 template class DynamicVectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
-// FUNCTION: GAMEMD 0x005AC3A0
-// DynamicVectorClass<MapRegionClass*> -- vtable 0x007ED858 slot 3; locator 0x008058C0 -> type descriptor 0x0082B9C8
-//   `.?AV?$DynamicVectorClass@PAVMapRegionClass@@@@`.
-template class DynamicVectorClass<MapRegionClass*>;
-
 // FUNCTION: GAMEMD 0x005AC4C0
 // DynamicVectorClass<_WIN32_FIND_DATAA*> -- vtable 0x007ED94C slot 3; locator 0x00805A28 -> type descriptor 0x0082BAD0
 //   `.?AV?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@`.
@@ -633,11 +628,6 @@ template class DynamicVectorClass<SpawnManagerClass*>;
 // DynamicVectorClass<unsigned long> -- vtable 0x007F3728 slot 3; locator 0x00809BE8 -> type descriptor 0x00840AA8
 //   `.?AV?$DynamicVectorClass@K@@`.
 template class DynamicVectorClass<unsigned long>;
-
-// FUNCTION: GAMEMD 0x006CA7C0
-// DynamicVectorClass<SubTitle*> -- vtable 0x007F3F6C slot 3; locator 0x0080B530 -> type descriptor 0x008422D0
-//   `.?AV?$DynamicVectorClass@PAVSubTitle@@@@`.
-template class DynamicVectorClass<SubTitle*>;
 
 // FUNCTION: GAMEMD 0x006CF4F0
 // DynamicVectorClass<SwizzlePointerClass> -- vtable 0x007F4134 slot 3; locator 0x0080B798 -> type descriptor 0x00842790

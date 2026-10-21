@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "1c5b7f2612b862084ba59f2f1ba96791dbf95924b2614c6d1908e2f73f23f2c4",
+  "manifest_sha256": "c968bbfa5b0adba21539f405b11189da3e52541b02557baba158d6ef97812ef2",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4014,
-  "matched_entries_missed": 239,
+  "matched_entries": 4029,
+  "matched_entries_missed": 241,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5714,6 +5714,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5AC8D0",
+   "tu": "match/core/vector_mapregionclass_methods.cpp",
+   "name": "DynamicVectorClass<MapRegionClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5AD820",
    "tu": "match/core/vector_ctor_pod_family_methods.cpp",
    "name": "VectorClass_005AD820::Ctor",
@@ -6035,6 +6041,12 @@
    "addr": "0x6C8C40",
    "tu": "match/platform/system_query_methods.cpp",
    "name": "Timer::GetTime",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6CA910",
+   "tu": "match/core/vector_subtitle_methods.cpp",
+   "name": "DynamicVectorClass<SubTitle*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
