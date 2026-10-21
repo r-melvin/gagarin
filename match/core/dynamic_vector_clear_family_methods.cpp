@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 69
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 67
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -361,11 +361,6 @@ template class DynamicVectorClass<HashObject<unsigned int, unsigned int> >;
 //   `.?AV?$DynamicVectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@`.
 template class DynamicVectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
-// FUNCTION: GAMEMD 0x005AC4C0
-// DynamicVectorClass<_WIN32_FIND_DATAA*> -- vtable 0x007ED94C slot 3; locator 0x00805A28 -> type descriptor 0x0082BAD0
-//   `.?AV?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@`.
-template class DynamicVectorClass<_WIN32_FIND_DATAA*>;
-
 // FUNCTION: GAMEMD 0x005AC520
 // DynamicVectorClass<TRect<int>> -- vtable 0x007ED99C slot 3; locator 0x00805A78 -> type descriptor 0x0082BFB0
 //   `.?AV?$DynamicVectorClass@V?$TRect@H@@@@`.
@@ -435,11 +430,6 @@ template class DynamicVectorClass<MultiplayerGameMode*>;
 // DynamicVectorClass<ObjectTypeClass*> -- vtable 0x007EF26C slot 3; locator 0x008074B0 -> type descriptor 0x00832A48
 //   `.?AV?$DynamicVectorClass@PAVObjectTypeClass@@@@`.
 template class DynamicVectorClass<ObjectTypeClass*>;
-
-// FUNCTION: GAMEMD 0x005FFFC0
-// DynamicVectorClass<SpotLightClass*> -- vtable 0x007EF6BC slot 3; locator 0x00807758 -> type descriptor 0x00833618
-//   `.?AV?$DynamicVectorClass@PAVSpotLightClass@@@@`.
-template class DynamicVectorClass<SpotLightClass*>;
 
 // FUNCTION: GAMEMD 0x00627D80
 // DynamicVectorClass<HSVClass> -- vtable 0x007EF750 slot 3; locator 0x00807888 -> type descriptor 0x008364A0

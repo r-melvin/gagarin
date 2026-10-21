@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 74 base-template instantiations reproduce 141 remaining retail destructor
+// 72 base-template instantiations reproduce 137 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -413,12 +413,6 @@ template class VectorClass<HashObject<unsigned int, unsigned int> >;
 //   `.?AV?$VectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@`.
 template class VectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
-// FUNCTION: GAMEMD 0x005AD430
-// FUNCTION: GAMEMD 0x005AD480
-// VectorClass<_WIN32_FIND_DATAA*> -- reseats retail vtable 0x007ED92C; locator 0x008059C0 -> type descriptor 0x0082BA98
-//   `.?AV?$VectorClass@PAU_WIN32_FIND_DATAA@@@@`.
-template class VectorClass<_WIN32_FIND_DATAA*>;
-
 // FUNCTION: GAMEMD 0x005AD4D0
 // FUNCTION: GAMEMD 0x005AD520
 // VectorClass<TRect<int>> -- reseats retail vtable 0x007ED970; locator 0x00805AC0 -> type descriptor 0x0082BFE0
@@ -496,12 +490,6 @@ template class VectorClass<MultiplayerGameMode*>;
 // VectorClass<ObjectTypeClass*> -- reseats retail vtable 0x007EF28C; locator 0x008074E0 -> type descriptor 0x00832A10
 //   `.?AV?$VectorClass@PAVObjectTypeClass@@@@`.
 template class VectorClass<ObjectTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00600280
-// FUNCTION: GAMEMD 0x006002D0
-// VectorClass<SpotLightClass*> -- reseats retail vtable 0x007EF6DC; locator 0x00807788 -> type descriptor 0x008335E8
-//   `.?AV?$VectorClass@PAVSpotLightClass@@@@`.
-template class VectorClass<SpotLightClass*>;
 
 // FUNCTION: GAMEMD 0x00628760
 // FUNCTION: GAMEMD 0x006287B0

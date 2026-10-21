@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 70
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 68
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 71 remaining addresses are bound to VectorClass<T> tables;
+//   The 69 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -366,11 +366,6 @@ template class VectorClass<HashObject<unsigned int, unsigned int> >;
 //   `.?AV?$VectorClass@U?$HashObject@IUSubzoneConnectionStruct@@@@@@`.
 template class VectorClass<HashObject<unsigned int, SubzoneConnectionStruct> >;
 
-// FUNCTION: GAMEMD 0x005ACB50
-// VectorClass<_WIN32_FIND_DATAA*> -- vtable 0x007ED92C slot 3; locator 0x008059C0 -> type descriptor 0x0082BA98
-//   `.?AV?$VectorClass@PAU_WIN32_FIND_DATAA@@@@`.
-template class VectorClass<_WIN32_FIND_DATAA*>;
-
 // FUNCTION: GAMEMD 0x005ACE20
 // VectorClass<TRect<int>> -- vtable 0x007ED970 slot 3; locator 0x00805AC0 -> type descriptor 0x0082BFE0
 //   `.?AV?$VectorClass@V?$TRect@H@@@@`.
@@ -435,11 +430,6 @@ template class VectorClass<MultiplayerGameMode*>;
 // VectorClass<ObjectTypeClass*> -- vtable 0x007EF28C slot 3; locator 0x008074E0 -> type descriptor 0x00832A10
 //   `.?AV?$VectorClass@PAVObjectTypeClass@@@@`.
 template class VectorClass<ObjectTypeClass*>;
-
-// FUNCTION: GAMEMD 0x00600110
-// VectorClass<SpotLightClass*> -- vtable 0x007EF6DC slot 3; locator 0x00807788 -> type descriptor 0x008335E8
-//   `.?AV?$VectorClass@PAVSpotLightClass@@@@`.
-template class VectorClass<SpotLightClass*>;
 
 // FUNCTION: GAMEMD 0x006283E0
 // VectorClass<HSVClass> -- vtable 0x007EF7F0 slot 3; locator 0x008079E8 -> type descriptor 0x00836478

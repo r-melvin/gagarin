@@ -94,8 +94,6 @@ extern char VT_007ED560;
 extern char VT_007ED5C0;
 // VTABLE: GAMEMD 0x007ED5E0 -- VectorClass<HashObject<unsigned int, SubzoneConnectionStruct>>
 extern char VT_007ED5E0;
-// VTABLE: GAMEMD 0x007ED92C -- VectorClass<_WIN32_FIND_DATAA*>
-extern char VT_007ED92C;
 // VTABLE: GAMEMD 0x007ED970 -- VectorClass<TRect<int>>
 extern char VT_007ED970;
 // VTABLE: GAMEMD 0x007EDA4C -- VectorClass<double>
@@ -122,8 +120,6 @@ extern char VT_007EEE54;
 extern char VT_007EED40;
 // VTABLE: GAMEMD 0x007EF28C -- VectorClass<ObjectTypeClass*>
 extern char VT_007EF28C;
-// VTABLE: GAMEMD 0x007EF6DC -- VectorClass<SpotLightClass*>
-extern char VT_007EF6DC;
 // VTABLE: GAMEMD 0x007EF7F0 -- VectorClass<HSVClass>
 extern char VT_007EF7F0;
 // VTABLE: GAMEMD 0x007EF7D0 -- VectorClass<HashObject<HashString, SchemeNode*>>
