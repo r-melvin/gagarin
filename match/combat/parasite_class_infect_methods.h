@@ -39,11 +39,9 @@ struct Cell_0062A8E0
 // complete before the member-function-pointer types.
 struct InfectVtbl;
 
-// The FootClass target. A local placeholder rather than the committed
-// match/_layout/foot_class.h spine: under VC6 the `class TechnoClass;` forward
-// declaration in radio_class.h makes TechnoClass's base private, so the
-// ObjectClass members (InLimbo/IsAlive/Health) are inaccessible through it.
-// Every offset here is the same one the spine pins.
+// The FootClass target uses the address-scoped FootInfect view below.
+// Its touched offsets are binary-backed; this is not the complete layout.
+// The former mixed class/struct access issue is fixed in the shared spine.
 struct FootInfect
 {
     InfectVtbl*   Vtbl;                       // +0x0000

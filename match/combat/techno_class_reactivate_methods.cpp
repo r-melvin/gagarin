@@ -18,9 +18,9 @@
 // registers with it) — a pure register-naming diff at 76.5%. And the vtable
 // pointer is re-read at every virtual call rather than held in a local;
 // GetTechnoType() is called twice (once to test, once to fetch), as retail does.
-// The base-member casts reach the privately-inherited AbstractClass/ObjectClass
-// spine at offset 0 (single inheritance throughout) without tripping access
-// control.
+// These casts express the binary's zero-offset AbstractClass/ObjectClass views.
+// The shared spine models public inheritance; these casts do not establish
+// any additional hierarchy.
 void TechnoReactivate::Reactivate()
 {
     (this->*(*(ReactVtbl**)this)->At_3D0)();

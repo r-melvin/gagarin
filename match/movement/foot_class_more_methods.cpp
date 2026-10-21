@@ -39,9 +39,9 @@ void FootMore::UpdatePassengerCoords()
 {
     void* p = ((PassengersHost*)&this->Passengers)->GetFirstPassenger();
 
-    // Reach the privately-inherited ObjectClass base at offset 0 (single
-    // inheritance throughout) without tripping member-access control. The
-    // struct copy forms the Location base pointer once, mirroring `add EDI,0x9C`.
+    // Read Location through the zero-offset ObjectClass view. This cast does
+    // not imply private inheritance. The struct copy forms the Location base
+    // pointer once, mirroring `add EDI,0x9C`.
     CoordStruct crd = ((ObjectClass*)(void*)this)->Location;
 
     if (p != NULL)

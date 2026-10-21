@@ -42,10 +42,10 @@ GG_STATIC_ASSERT(offsetof(TechnoType_0070D0D0, EliteAbilities)   == 0x2AE);
 // multiple-inheritance representation and emits a `this` adjustment.
 struct Vtbl_0070D0D0;
 
-// The spine's TechnoClass is data-only; this view adds the matched method on
-// the identical layout (single inheritance at offset 0, no adjustment). The
-// vptr @0 is reached by a raw cast on `this`: the spine's `class TechnoClass;`
-// forward declaration makes VC6 treat its RadioClass base as private.
+// This address-scoped derived view adds a matched method at offset zero,
+// without adjusting this. Its raw vptr access predates the class-key fix;
+// the former access issue is resolved in the shared spine. This view does not
+// establish the complete TechnoClass hierarchy.
 struct Techno_0070D0D0 : TechnoClass
 {
     // FUNCTION: GAMEMD 0x70D0D0 — TechnoClass::HasAbility

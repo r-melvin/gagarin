@@ -8,8 +8,8 @@
 //   called with (cell, 1), `MOV ECX,0x87F7E8` feeding CALL 0x5657A0
 //   (MapClass::GetCellAt) and the word-wise compare against 0x8B3D88/0x8B3D8A
 //   (the "no cell" sentinel). The method name is YRpp's FootClass::MoveToTiberium
-//   (name only); a local placeholder is used because VC6 reads
-//   `struct TechnoClass : RadioClass` as private inheritance (C2247).
+//   (name only). The address-scoped receiver retains binary-backed offsets
+//   and virtual calls; it does not model the complete FootClass hierarchy.
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_TIBERIUM_METHODS_H
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_TIBERIUM_METHODS_H
 

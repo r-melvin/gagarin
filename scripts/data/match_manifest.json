@@ -3087,20 +3087,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_bombclass_methods.cpp",
   "addr": "0x40BBC0",
-  "sym": "?FUN_0040BBC0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVBombClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040BBC0",
+  "name": "VectorClass<BombClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_bombclass_methods.cpp",
   "addr": "0x40BC10",
-  "sym": "?FUN_0040BC10@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVBombClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040BC10",
+  "name": "DynamicVectorClass<BombClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3285,20 +3285,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
   "addr": "0x41E0A0",
-  "sym": "?FUN_0041E0A0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVAirstrikeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0041E0A0",
+  "name": "VectorClass<AirstrikeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
   "addr": "0x41E0F0",
-  "sym": "?FUN_0041E0F0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAirstrikeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0041E0F0",
+  "name": "DynamicVectorClass<AirstrikeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3564,11 +3564,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_bombclass_methods.cpp",
   "addr": "0x40B640",
-  "sym": "?FUN_0040B640@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVBombClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0040B640",
+  "name": "DynamicVectorClass<BombClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3582,11 +3582,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_bombclass_methods.cpp",
   "addr": "0x40B7F0",
-  "sym": "?FUN_0040B7F0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVBombClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0040B7F0",
+  "name": "VectorClass<BombClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3762,20 +3762,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
   "addr": "0x41DDE0",
-  "sym": "?FUN_0041DDE0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVAirstrikeClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0041DDE0",
+  "name": "DynamicVectorClass<AirstrikeClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
   "addr": "0x41DF30",
-  "sym": "?FUN_0041DF30@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVAirstrikeClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0041DF30",
+  "name": "VectorClass<AirstrikeClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -39470,6 +39470,267 @@
   "sym": "_FUN_00473240",
   "len": "0x13",
   "name": "FUN_00473240",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DE10",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAirstrikeClass@@@@UBEHPAPAVAirstrikeClass@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<AirstrikeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DE30",
+  "sym": "?Slot6@?$VectorClass@PAVAirstrikeClass@@@@UBEPAVAirstrikeClass@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<AirstrikeClass*>::Slot6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DE40",
+  "sym": "??8?$VectorClass@PAVAirstrikeClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<AirstrikeClass*>::operator==",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DE80",
+  "sym": "?SetCapacity@?$VectorClass@PAVAirstrikeClass@@@@UAE_NHPAPAVAirstrikeClass@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<AirstrikeClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DF60",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAirstrikeClass@@@@UBEHABQAVAirstrikeClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<AirstrikeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DFA0",
+  "sym": "?Slot5@?$VectorClass@PAVAirstrikeClass@@@@UBEHPAPAVAirstrikeClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<AirstrikeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41DFC0",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAirstrikeClass@@@@UAE_NHPAPAVAirstrikeClass@@@Z",
+  "len": "0xb0",
+  "name": "DynamicVectorClass<AirstrikeClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_airstrikeclass_methods.cpp",
+  "addr": "0x41E070",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAirstrikeClass@@@@UBEHABQAVAirstrikeClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<AirstrikeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B670",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVBombClass@@@@UBEHPAPAVBombClass@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<BombClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B690",
+  "sym": "?Slot6@?$VectorClass@PAVBombClass@@@@UBEPAVBombClass@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<BombClass*>::Slot6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B700",
+  "sym": "??8?$VectorClass@PAVBombClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<BombClass*>::operator==",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B740",
+  "sym": "?SetCapacity@?$VectorClass@PAVBombClass@@@@UAE_NHPAPAVBombClass@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<BombClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B820",
+  "sym": "?FindItemIndex@?$VectorClass@PAVBombClass@@@@UBEHABQAVBombClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<BombClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B860",
+  "sym": "?Slot5@?$VectorClass@PAVBombClass@@@@UBEHPAPAVBombClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<BombClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B880",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVBombClass@@@@UAE_NHPAPAVBombClass@@@Z",
+  "len": "0xb0",
+  "name": "DynamicVectorClass<BombClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_bombclass_methods.cpp",
+  "addr": "0x40B930",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBombClass@@@@UBEHABQAVBombClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<BombClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473260",
+  "sym": "_FUN_00473260",
+  "len": "0x31",
+  "name": "FUN_00473260",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x4732A0",
+  "sym": "_FUN_004732A0",
+  "len": "0x21",
+  "name": "FUN_004732A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x4732D0",
+  "sym": "_FUN_004732D0",
+  "len": "0x2c",
+  "name": "FUN_004732D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473300",
+  "sym": "_FUN_00473300",
+  "len": "0x27",
+  "name": "FUN_00473300",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473330",
+  "sym": "_FUN_00473330",
+  "len": "0x0f",
+  "name": "FUN_00473330",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473340",
+  "sym": "_FUN_00473340",
+  "len": "0x12",
+  "name": "FUN_00473340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473360",
+  "sym": "_FUN_00473360",
+  "len": "0x1a",
+  "name": "FUN_00473360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473380",
+  "sym": "_FUN_00473380",
+  "len": "0x17",
+  "name": "FUN_00473380",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473570",
+  "sym": "_FUN_00473570",
+  "len": "0x13",
+  "name": "FUN_00473570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473590",
+  "sym": "_FUN_00473590",
+  "len": "0x13",
+  "name": "FUN_00473590",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4735B0",
+  "sym": "_FUN_004735B0",
+  "len": "0x13",
+  "name": "FUN_004735B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4735D0",
+  "sym": "_FUN_004735D0",
+  "len": "0x13",
+  "name": "FUN_004735D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4735F0",
+  "sym": "_FUN_004735F0",
+  "len": "0x13",
+  "name": "FUN_004735F0",
   "status": "matched",
   "pct": 100
  }

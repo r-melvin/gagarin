@@ -8,8 +8,8 @@
 //   read at `[ECX+0x157B]`), `[ESI+0x2BC]` (CaptureManager, handed to
 //   0x4722A0 CannotControlAnyMore) and `[ESI+0x21C]` (Owner, handed to
 //   0x50B730 IsControlledByHuman). Member offsets agree with
-//   match/_layout/techno_class.h; a local placeholder is used because VC6
-//   reads `struct TechnoClass : RadioClass` as private inheritance (C2247).
+//   match/_layout/techno_class.h. The address-scoped receiver retains its
+//   binary-backed offsets without modeling the complete TechnoClass layout.
 //   The method name is YRpp's TechnoClass::CanPassiveAcquireTargets (name only).
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_PASSIVE_ACQUIRE_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_PASSIVE_ACQUIRE_METHODS_H

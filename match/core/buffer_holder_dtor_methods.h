@@ -26,7 +26,6 @@
 #include "buffer_release_methods.h"
 
 extern char VTABLE_007E177C[];   // VTABLE: GAMEMD 0x7E177C
-extern char VTABLE_007E17EC[];   // VTABLE: GAMEMD 0x7E17EC
 extern char VTABLE_007E184C[];   // VTABLE: GAMEMD 0x7E184C
 extern char VTABLE_007E188C[];   // VTABLE: GAMEMD 0x7E188C
 extern char VTABLE_007E18DC[];   // VTABLE: GAMEMD 0x7E18DC
@@ -35,7 +34,6 @@ extern char VTABLE_007E1A64[];   // VTABLE: GAMEMD 0x7E1A64
 extern char VTABLE_007E1B44[];   // VTABLE: GAMEMD 0x7E1B44
 extern char VTABLE_007E1E4C[];   // VTABLE: GAMEMD 0x7E1E4C
 extern char VTABLE_007E1EF4[];   // VTABLE: GAMEMD 0x7E1EF4
-extern char VTABLE_007E295C[];   // VTABLE: GAMEMD 0x7E295C
 extern char VTABLE_007E2AF0[];   // VTABLE: GAMEMD 0x7E2AF0
 extern char VTABLE_007E3258[];   // VTABLE: GAMEMD 0x7E3258
 extern char VTABLE_007E37EC[];   // VTABLE: GAMEMD 0x7E37EC
@@ -53,8 +51,6 @@ extern char VTABLE_007E4698[];   // VTABLE: GAMEMD 0x7E4698
 struct BufferHolderDtor : BufferHolder
 {
     void* FUN_0040B300(unsigned int flags);   // FUNCTION: GAMEMD 0x40B300
-    void* FUN_0040BBC0(unsigned int flags);   // FUNCTION: GAMEMD 0x40BBC0
-    void* FUN_0040BC10(unsigned int flags);   // FUNCTION: GAMEMD 0x40BC10
     void* FUN_0040C110(unsigned int flags);   // FUNCTION: GAMEMD 0x40C110
     void* FUN_0040C160(unsigned int flags);   // FUNCTION: GAMEMD 0x40C160
     void* FUN_0040C4F0(unsigned int flags);   // FUNCTION: GAMEMD 0x40C4F0
@@ -71,8 +67,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0040F1D0(unsigned int flags);   // FUNCTION: GAMEMD 0x40F1D0
     void* FUN_0040FE70(unsigned int flags);   // FUNCTION: GAMEMD 0x40FE70
     void* FUN_0040FEC0(unsigned int flags);   // FUNCTION: GAMEMD 0x40FEC0
-    void* FUN_0041E0A0(unsigned int flags);   // FUNCTION: GAMEMD 0x41E0A0
-    void* FUN_0041E0F0(unsigned int flags);   // FUNCTION: GAMEMD 0x41E0F0
     void* FUN_00420630(unsigned int flags);   // FUNCTION: GAMEMD 0x420630
     void* FUN_00420680(unsigned int flags);   // FUNCTION: GAMEMD 0x420680
     void* FUN_00421AC0(unsigned int flags);   // FUNCTION: GAMEMD 0x421AC0

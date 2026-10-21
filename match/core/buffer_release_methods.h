@@ -52,8 +52,6 @@ GG_STATIC_ASSERT(offsetof(BufferHolder, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(BufferHolder, unknown_10) == 0x10);
 
 void __fastcall FUN_0040B270(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40B270
-void __fastcall FUN_0040B640(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40B640
-void __fastcall FUN_0040B7F0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40B7F0
 void __fastcall FUN_0040BE50(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40BE50
 void __fastcall FUN_0040BFA0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40BFA0
 void __fastcall FUN_0040C230(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40C230
@@ -70,8 +68,6 @@ void __fastcall FUN_0040EEC0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40EEC0
 void __fastcall FUN_0040F010(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40F010
 void __fastcall FUN_0040FBB0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40FBB0
 void __fastcall FUN_0040FD00(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40FD00
-void __fastcall FUN_0041DDE0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x41DDE0
-void __fastcall FUN_0041DF30(BufferHolder* obj);   // FUNCTION: GAMEMD 0x41DF30
 void __fastcall FUN_00420370(BufferHolder* obj);   // FUNCTION: GAMEMD 0x420370
 void __fastcall FUN_004204C0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x4204C0
 void __fastcall FUN_00421800(BufferHolder* obj);   // FUNCTION: GAMEMD 0x421800
