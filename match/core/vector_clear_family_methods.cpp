@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 115
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 113
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 116 remaining addresses are bound to VectorClass<T> tables;
+//   The 114 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -316,11 +316,6 @@ template class VectorClass<TriggerTypeClass*>;
 //   `.?AV?$VectorClass@PAVTubeClass@@@@`.
 template class VectorClass<TubeClass*>;
 
-// FUNCTION: GAMEMD 0x004EB0F0
-// VectorClass<OverlayClass*> -- vtable 0x007E9D44 slot 3; locator 0x00801050 -> type descriptor 0x008230A0
-//   `.?AV?$VectorClass@PAVOverlayClass@@@@`.
-template class VectorClass<OverlayClass*>;
-
 // FUNCTION: GAMEMD 0x004EB350
 // VectorClass<SmudgeClass*> -- vtable 0x007E9DC4 slot 3; locator 0x00801180 -> type descriptor 0x00823170
 //   `.?AV?$VectorClass@PAVSmudgeClass@@@@`.
@@ -505,11 +500,6 @@ template class VectorClass<CoopCampaignClass*>;
 // VectorClass<Point2D> -- vtable 0x007EEB74 slot 3; locator 0x00806B88 -> type descriptor 0x00830380
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
 template class VectorClass<Point2D>;
-
-// FUNCTION: GAMEMD 0x005D0BD0
-// VectorClass<MSTextEntry*> -- vtable 0x007EEB94 slot 3; locator 0x00806BE8 -> type descriptor 0x00830440
-//   `.?AV?$VectorClass@PAVMSTextEntry@@@@`.
-template class VectorClass<MSTextEntry*>;
 
 // FUNCTION: GAMEMD 0x005D0E30
 // VectorClass<MapSelection*> -- vtable 0x007EEBB4 slot 3; locator 0x00806BB8 -> type descriptor 0x008303D8

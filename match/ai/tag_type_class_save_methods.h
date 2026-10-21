@@ -34,44 +34,18 @@ extern const char* DAT_007F4550;
 // STRING: GAMEMD 0x889F64 — the shared empty default string.
 extern const char STR_00889F64[];
 
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct Vtbl_006E5FE0;
-
-struct TagType_006E5FE0
+#include "../_layout/tag_type_class.h"
+// Only the observed primary-slot dispatch is modelled; complete COM API is pending.
+struct TagTypeSaveCallViewVtable;
+struct TagTypeSaveCallView { TagTypeSaveCallViewVtable* Vtable; };
+typedef void (TagTypeSaveCallView::*TagTypeSaveCallViewSlot)(CCINI_006E5FE0*);
+struct TagTypeSaveCallViewVtable
 {
-    Vtbl_006E5FE0* Vtbl;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x6E5FE0 — TagTypeClass::SaveToINIList, a static member
-    // of this class rather than a free function: retail passes the INI in ECX
-    // and cleans nothing, which is exactly `static __fastcall`, and spelling it
-    // here names the class the list belongs to.
-    static void __fastcall SaveToINIList(CCINI_006E5FE0* ini);
+    unsigned char unknown_00[0x68];
+    TagTypeSaveCallViewSlot Method;
 };
+GG_STATIC_ASSERT(sizeof(TagTypeSaveCallViewSlot) == 4);
+GG_STATIC_ASSERT(offsetof(TagTypeSaveCallView, Vtable) == 0);
+GG_STATIC_ASSERT(offsetof(TagTypeSaveCallViewVtable, Method) == 0x68);
 
-typedef void (TagType_006E5FE0::*Fn68_006E5FE0)(CCINI_006E5FE0* ini);
-
-struct Vtbl_006E5FE0
-{
-    char _pad000[0x68];      // +0x0000
-    Fn68_006E5FE0 At_68;     // +0x0068  SaveToINI(ini)
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_006E5FE0, At_68) == 0x68);
-
-// DynamicVectorClass<TagTypeClass*> — only the two members read here are
-// named; the rest of the header is padding.
-struct TagTypeVector_006E5FE0
-{
-    void*               Vtable;       // +0x0000
-    TagType_006E5FE0**  Items;        // +0x0004
-    char                _pad008[0x8]; // +0x0008
-    int                 Count;        // +0x0010
-
-    TagType_006E5FE0*& operator[](int i) { return Items[i]; }
-};
-GG_STATIC_ASSERT(offsetof(TagTypeVector_006E5FE0, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(TagTypeVector_006E5FE0, Count) == 0x10);
-
-// GLOBAL: GAMEMD 0xB0E780 — TagTypeClass::Array.
-extern TagTypeVector_006E5FE0 DAT_00B0E780;
-
-#endif  // GG_MATCH_AI_TAG_TYPE_CLASS_SAVE_METHODS_H
+#endif

@@ -14,7 +14,7 @@
 // The key count is hoisted into a register for the first loop, but the
 // section-name pointer is a global and is re-read after every call; the second
 // loop re-reads both the item table and the count each time round.
-void __fastcall TagType_006E5FE0::SaveToINIList(CCINI_006E5FE0* ini)
+void __fastcall TagTypeClass::SaveToINIList(CCINI_006E5FE0* ini)
 {
     char buffer[32];
     int  i;
@@ -27,8 +27,9 @@ void __fastcall TagType_006E5FE0::SaveToINIList(CCINI_006E5FE0* ini)
     }
     ini->Clear(DAT_007F4550, 0);
 
-    for (i = 0; i < DAT_00B0E780.Count; i++) {
-        TagType_006E5FE0* item = DAT_00B0E780[i];
-        (item->*item->Vtbl->At_68)(ini);
+    for (i = 0; i < TagTypeClass::Array.Count; i++) {
+        TagTypeClass* item = reinterpret_cast<TagTypeClass**>(TagTypeClass::Array.Items)[i];
+        TagTypeSaveCallView* view = reinterpret_cast<TagTypeSaveCallView*>(item);
+        (view->*view->Vtable->Method)(ini);
     }
 }

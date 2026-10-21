@@ -587,7 +587,7 @@
  {
   "tu": "match/ai/tag_type_class_load_list_methods.cpp",
   "addr": "0x6E5ED0",
-  "sym": "?LoadFromINIList@TagType_006E5ED0@@SIXPAUCCINI_006E5ED0@@@Z",
+  "sym": "?LoadFromINIList@TagTypeClass@@SIXPAUCCINI_006E5ED0@@@Z",
   "len": "0x103",
   "name": "TagTypeClass::LoadFromINIList",
   "status": "matched",
@@ -605,7 +605,7 @@
  {
   "tu": "match/ai/tag_type_class_save_methods.cpp",
   "addr": "0x6E5FE0",
-  "sym": "?SaveToINIList@TagType_006E5FE0@@SIXPAUCCINI_006E5FE0@@@Z",
+  "sym": "?SaveToINIList@TagTypeClass@@SIXPAUCCINI_006E5FE0@@@Z",
   "len": "0x91",
   "name": "TagTypeClass::SaveToINIList",
   "status": "matched",
@@ -956,7 +956,7 @@
  {
   "tu": "match/ai/trigger_type_class_load_methods.cpp",
   "addr": "0x7275D0",
-  "sym": "?LoadFromINIList@TriggerType_007275D0@@SIXPAUCCINI_007275D0@@@Z",
+  "sym": "?LoadFromINIList@TriggerTypeClass@@SIXPAUCCINI_007275D0@@@Z",
   "len": "0xc5",
   "name": "TriggerTypeClass::LoadFromINIList",
   "status": "matched",
@@ -1019,7 +1019,7 @@
  {
   "tu": "match/ai/trigger_type_class_save_list_methods.cpp",
   "addr": "0x727880",
-  "sym": "?SaveToINIList@TriggerType_00727880@@SIXPAUCCINI_00727880@@@Z",
+  "sym": "?SaveToINIList@TriggerTypeClass@@SIXPAUCCINI_00727880@@@Z",
   "len": "0x153",
   "name": "TriggerTypeClass::SaveToINIList",
   "status": "matched",
@@ -13734,7 +13734,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_overlayclass_methods.cpp",
   "addr": "0x004e8720",
   "sym": "?Clear@?$DynamicVectorClass@PAVOverlayClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14346,7 +14346,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_mstextentry_methods.cpp",
   "addr": "0x005d0610",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSTextEntry@@@@UAEXXZ",
   "len": "0x2a",
@@ -15993,20 +15993,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_overlayclass_methods.cpp",
   "addr": "0x004EFCB0",
   "sym": "??_G?$VectorClass@PAVOverlayClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<OverlayClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<OverlayClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_overlayclass_methods.cpp",
   "addr": "0x004EFD00",
-  "sym": "??_G?$VectorClass@PAVOverlayClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVOverlayClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<OverlayClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<OverlayClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17244,20 +17244,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_mstextentry_methods.cpp",
   "addr": "0x005D1760",
   "sym": "??_G?$VectorClass@PAVMSTextEntry@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MSTextEntry*>::`scalar deleting destructor'",
+  "name": "VectorClass<MSTextEntry*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_mstextentry_methods.cpp",
   "addr": "0x005D17B0",
-  "sym": "??_G?$VectorClass@PAVMSTextEntry@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMSTextEntry@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<MSTextEntry*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<MSTextEntry*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19143,7 +19143,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_overlayclass_methods.cpp",
   "addr": "0x004eb0f0",
   "sym": "?Clear@?$VectorClass@PAVOverlayClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19746,7 +19746,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_mstextentry_methods.cpp",
   "addr": "0x005d0bd0",
   "sym": "?Clear@?$VectorClass@PAVMSTextEntry@@@@UAEXXZ",
   "len": "0x27",
@@ -20763,11 +20763,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_mstextentry_methods.cpp",
   "addr": "0x5D0C60",
-  "sym": "?FUN_5D0C60@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSTextEntry@@@@UAE_NHPAPAVMSTextEntry@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_5D0C60",
+  "name": "DynamicVectorClass<MSTextEntry*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -35539,5 +35539,158 @@
   "tu": "match/core/vector_waveclass_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVWaveClass@@@@UBEHABQAVWaveClass@@@Z",
   "name": "DynamicVectorClass<WaveClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8750",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVOverlayClass@@@@UBEHPAPAVOverlayClass@@@Z",
+  "name": "DynamicVectorClass<OverlayClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8770",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVOverlayClass@@@@UBEPAVOverlayClass@@H@Z",
+  "name": "VectorClass<OverlayClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EB000",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVOverlayClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<OverlayClass*>::operator=="
+ },
+ {
+  "addr": "0x4EB040",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVOverlayClass@@@@UAE_NHPAPAVOverlayClass@@@Z",
+  "name": "VectorClass<OverlayClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EB120",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVOverlayClass@@@@UBEHABQAVOverlayClass@@@Z",
+  "name": "VectorClass<OverlayClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EB160",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVOverlayClass@@@@UBEHPAPAVOverlayClass@@@Z",
+  "name": "VectorClass<OverlayClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EB180",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVOverlayClass@@@@UAE_NHPAPAVOverlayClass@@@Z",
+  "name": "DynamicVectorClass<OverlayClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EB230",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_overlayclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVOverlayClass@@@@UBEHABQAVOverlayClass@@@Z",
+  "name": "DynamicVectorClass<OverlayClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5D0640",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVMSTextEntry@@@@UBEHPAPAVMSTextEntry@@@Z",
+  "name": "DynamicVectorClass<MSTextEntry*>::Slot5"
+ },
+ {
+  "addr": "0x5D0660",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVMSTextEntry@@@@UBEPAVMSTextEntry@@H@Z",
+  "name": "VectorClass<MSTextEntry*>::Slot6"
+ },
+ {
+  "addr": "0x5D0AE0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "??8?$VectorClass@PAVMSTextEntry@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<MSTextEntry*>::operator=="
+ },
+ {
+  "addr": "0x5D0B20",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVMSTextEntry@@@@UAE_NHPAPAVMSTextEntry@@@Z",
+  "name": "VectorClass<MSTextEntry*>::SetCapacity"
+ },
+ {
+  "addr": "0x5D0C00",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVMSTextEntry@@@@UBEHABQAVMSTextEntry@@@Z",
+  "name": "VectorClass<MSTextEntry*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5D0C40",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVMSTextEntry@@@@UBEHPAPAVMSTextEntry@@@Z",
+  "name": "VectorClass<MSTextEntry*>::Slot5"
+ },
+ {
+  "addr": "0x5D0D10",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSTextEntry@@@@UBEHABQAVMSTextEntry@@@Z",
+  "name": "DynamicVectorClass<MSTextEntry*>::FindItemIndex"
+ },
+ {
+  "tu": "match/ai/trigger_type_class_ctor.cpp",
+  "addr": "0x726C80",
+  "sym": "??0TriggerTypeClass@@QAE@PBD@Z",
+  "len": "0x176",
+  "name": "TriggerTypeClass::TriggerTypeClass(const char*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_ctor.cpp",
+  "addr": "0x6E5B60",
+  "sym": "??0TagTypeClass@@QAE@PBD@Z",
+  "len": "0x13A",
+  "name": "TagTypeClass::TagTypeClass(const char*)",
+  "status": "matched",
+  "pct": 100
  }
 ]

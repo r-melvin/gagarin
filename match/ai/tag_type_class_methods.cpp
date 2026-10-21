@@ -13,8 +13,6 @@
 // --- referenced retail callee (declared, no body => reloc-normalised CALL) ---
 extern "C" int __cdecl _strcmpi(const char*, const char*);
 
-// GLOBAL: GAMEMD 0xB0E780 — TagTypeClass::Array.
-extern TagTypeVectorClass TagTypeArray;
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E5E70  (__fastcall — name in ECX)
@@ -27,9 +25,9 @@ TagTypeClass* __fastcall TagTypeClass::FindByNameOrID(const char* name)
 {
     if (name)
     {
-        for (int i = 0; i < TagTypeArray.Count; ++i)
+        for (int i = 0; i < TagTypeClass::Array.Count; ++i)
         {
-            TagTypeClass* item = TagTypeArray.Items[i];
+            TagTypeClass* item = reinterpret_cast<TagTypeClass**>(TagTypeClass::Array.Items)[i];
             if (_strcmpi(item->ID, name) == 0 ||
                 _strcmpi(item->Name, name) == 0)
                 return item;

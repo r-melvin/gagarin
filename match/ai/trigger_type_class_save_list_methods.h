@@ -40,27 +40,17 @@ extern const char* DAT_007F58D0;
 // STRING: GAMEMD 0x889F64 — the empty default.
 extern const char STR_00889F64[];
 
-struct TriggerVtbl_00727880;
-
-struct TriggerType_00727880
+#include "../_layout/trigger_type_class.h"
+// Explicit primary slot call view; complete inherited COM signatures are pending.
+struct TriggerTypeSaveVtable;
+struct TriggerTypeSaveCallView { TriggerTypeSaveVtable* Vtable; };
+typedef void (TriggerTypeSaveCallView::*TriggerTypeSaveSlot)(CCINI_00727880*);
+struct TriggerTypeSaveVtable
 {
-    TriggerVtbl_00727880* Vtbl;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x727880 — TriggerTypeClass::SaveToINIList, a static
-    // member: the INI arrives in ECX, nothing is cleaned — `static __fastcall`.
-    static void __fastcall SaveToINIList(CCINI_00727880* ini);
+    unsigned char unknown_00[0x68];
+    TriggerTypeSaveSlot Method;
 };
-typedef void (TriggerType_00727880::*Fn68_00727880)(CCINI_00727880* ini);
-struct TriggerVtbl_00727880
-{
-    char           _pad000[0x68];   // +0x0000
-    Fn68_00727880  At_68;           // +0x0068  SaveToINI(ini)
-};
-GG_STATIC_ASSERT(offsetof(TriggerVtbl_00727880, At_68) == 0x68);
-
-// GLOBAL: GAMEMD 0x8B417C — TriggerTypeClass::Array.Items.
-extern TriggerType_00727880** DAT_008B417C;
-// GLOBAL: GAMEMD 0x8B4188 — TriggerTypeClass::Array.Count.
-extern int DAT_008B4188;
-
-#endif  // GG_MATCH_AI_TRIGGER_TYPE_CLASS_SAVE_LIST_METHODS_H
+GG_STATIC_ASSERT(sizeof(TriggerTypeSaveSlot) == 4);
+GG_STATIC_ASSERT(offsetof(TriggerTypeSaveCallView, Vtable) == 0);
+GG_STATIC_ASSERT(offsetof(TriggerTypeSaveVtable, Method) == 0x68);
+#endif

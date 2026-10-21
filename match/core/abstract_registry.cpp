@@ -5,6 +5,8 @@
 // source ownership remain unknown.
 #include "abstract_registry.h"
 GG_STATIC_ASSERT(sizeof(DynamicVectorClassLayout) == 0x18);
+// GLOBAL: GAMEMD 0xB0F658
+DynamicVectorClassLayout DAT_00B0F658;
 // GLOBAL: GAMEMD 0xB0F670
 DynamicVectorClassLayout DAT_00B0F670;
 // GLOBAL: GAMEMD 0xB0F698

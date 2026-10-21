@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 119 base-template instantiations reproduce 231 remaining retail destructor
+// 117 base-template instantiations reproduce 227 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -350,12 +350,6 @@ template class VectorClass<TriggerTypeClass*>;
 //   `.?AV?$VectorClass@PAVTubeClass@@@@`.
 template class VectorClass<TubeClass*>;
 
-// FUNCTION: GAMEMD 0x004EFCB0
-// FUNCTION: GAMEMD 0x004EFD00
-// VectorClass<OverlayClass*> -- reseats retail vtable 0x007E9D44; locator 0x00801050 -> type descriptor 0x008230A0
-//   `.?AV?$VectorClass@PAVOverlayClass@@@@`.
-template class VectorClass<OverlayClass*>;
-
 // FUNCTION: GAMEMD 0x004EFD50
 // FUNCTION: GAMEMD 0x004EFDA0
 // VectorClass<SmudgeClass*> -- reseats retail vtable 0x007E9DC4; locator 0x00801180 -> type descriptor 0x00823170
@@ -580,12 +574,6 @@ template class VectorClass<CoopCampaignClass*>;
 // VectorClass<Point2D> -- reseats retail vtable 0x007EEB74; locator 0x00806B88 -> type descriptor 0x00830380
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
 template class VectorClass<Point2D>;
-
-// FUNCTION: GAMEMD 0x005D1760
-// FUNCTION: GAMEMD 0x005D17B0
-// VectorClass<MSTextEntry*> -- reseats retail vtable 0x007EEB94; locator 0x00806BE8 -> type descriptor 0x00830440
-//   `.?AV?$VectorClass@PAVMSTextEntry@@@@`.
-template class VectorClass<MSTextEntry*>;
 
 // FUNCTION: GAMEMD 0x005D1800
 // FUNCTION: GAMEMD 0x005D1850

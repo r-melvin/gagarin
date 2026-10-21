@@ -10,6 +10,8 @@
 #include "abstract_type_class.h"
 #include "vector_class.h"
 struct HouseTypeClass;
+struct CCINI_007275D0;
+struct CCINI_00727880;
 
 // Read view of event/action list links and discriminants. Value is used only
 // by event predicates; no complete concrete event/action layout is claimed.
@@ -46,6 +48,10 @@ public:
     static TriggerTypeClass* __fastcall FindByNameOrID(const char* name);
     // FUNCTION: GAMEMD 0x7271E0
     unsigned int GetFlags();
+    // FUNCTION: GAMEMD 0x7275D0
+    static void __fastcall LoadFromINIList(CCINI_007275D0* ini);
+    // FUNCTION: GAMEMD 0x727880
+    static void __fastcall SaveToINIList(CCINI_00727880* ini);
     int ArrayIndex;
     unsigned char Difficulty[3];
     unsigned char Enabled;

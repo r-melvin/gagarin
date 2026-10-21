@@ -2,6 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x7275D0.
 
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// GX adds exception cleanup around native construction, absent from retail.
 #include "trigger_type_class_load_methods.h"
 
 // FUNCTION: GAMEMD 0x7275D0
@@ -14,34 +16,32 @@
 //
 // The key count is hoisted into a frame slot for the loop, but the section-name
 // pointer is a global and is re-read after every call.
-void __fastcall TriggerType_007275D0::LoadFromINIList(CCINI_007275D0* ini)
+void __fastcall TriggerTypeClass::LoadFromINIList(CCINI_007275D0* ini)
 {
     int count = ini->GetKeyCount(DAT_007F58C8);
     for (int n = 0; n < count; n++) {
         const char* key = ini->GetKeyName(DAT_007F58C8, n);
-        TriggerType_007275D0* item;
+        TriggerTypeClass* item;
 
         if (FUN_007C8D20(STR_00817474, key) != 0
             && FUN_007C8D20(STR_00817694, key) != 0) {
 
             int i = 0;
-            while (i < DAT_008B4178.Count) {
-                if (FUN_007C8D20(DAT_008B4178.Items[i]->ID, key) == 0) {
-                    item = DAT_008B4178.Items[i];
+            while (i < TriggerTypeClass::Array.Count) {
+                if (FUN_007C8D20(reinterpret_cast<TriggerTypeClass**>(TriggerTypeClass::Array.Items)[i]->ID, key) == 0) {
+                    item = reinterpret_cast<TriggerTypeClass**>(TriggerTypeClass::Array.Items)[i];
                     goto have_item;
                 }
                 ++i;
             }
 
-            item = (TriggerType_007275D0*)FUN_007C8E17(0xB4);
-            if (item != 0) {
-                item = item->Construct(key);
-                goto have_item;
-            }
+            item = new TriggerTypeClass(key);
+            goto have_item;
         }
 
         item = 0;
 have_item:
-        (item->*item->Vtbl->At_64)(ini);
+        TriggerTypeLoadCallView* view = reinterpret_cast<TriggerTypeLoadCallView*>(item);
+        (view->*view->Vtable->LoadFromINI)(ini);
     }
 }

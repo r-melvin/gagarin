@@ -45,6 +45,10 @@ public:
     unsigned char _pad_21[3];       // +0x21
 };
 
+GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_IPersistStream) == 0x00);
+GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_IRTTITypeInfo) == 0x04);
+GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_INoticeSink) == 0x08);
+GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_INoticeSource) == 0x0C);
 GG_STATIC_ASSERT(offsetof(AbstractClass, UniqueID)      == 0x10);
 GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);
 GG_STATIC_ASSERT(offsetof(AbstractClass, unknown_18)    == 0x18);

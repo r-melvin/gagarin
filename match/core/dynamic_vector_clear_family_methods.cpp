@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 114
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 112
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -311,11 +311,6 @@ template class DynamicVectorClass<TriggerTypeClass*>;
 //   `.?AV?$DynamicVectorClass@PAVTubeClass@@@@`.
 template class DynamicVectorClass<TubeClass*>;
 
-// FUNCTION: GAMEMD 0x004E8720
-// DynamicVectorClass<OverlayClass*> -- vtable 0x007E9D24 slot 3; locator 0x00801020 -> type descriptor 0x008230D0
-//   `.?AV?$DynamicVectorClass@PAVOverlayClass@@@@`.
-template class DynamicVectorClass<OverlayClass*>;
-
 // FUNCTION: GAMEMD 0x004E8780
 // DynamicVectorClass<SmudgeClass*> -- vtable 0x007E9DA4 slot 3; locator 0x00801150 -> type descriptor 0x008231A0
 //   `.?AV?$DynamicVectorClass@PAVSmudgeClass@@@@`.
@@ -505,11 +500,6 @@ template class DynamicVectorClass<CoopCampaignClass*>;
 // DynamicVectorClass<Point2D> -- vtable 0x007EEB54 slot 3; locator 0x00806A88 -> type descriptor 0x008303A8
 //   `.?AV?$DynamicVectorClass@VPoint2D@@@@`.
 template class DynamicVectorClass<Point2D>;
-
-// FUNCTION: GAMEMD 0x005D0610
-// DynamicVectorClass<MSTextEntry*> -- vtable 0x007EEB34 slot 3; locator 0x00806B58 -> type descriptor 0x00830470
-//   `.?AV?$DynamicVectorClass@PAVMSTextEntry@@@@`.
-template class DynamicVectorClass<MSTextEntry*>;
 
 // FUNCTION: GAMEMD 0x005D0670
 // DynamicVectorClass<MapSelection*> -- vtable 0x007EEB14 slot 3; locator 0x00806AF0 -> type descriptor 0x00830408

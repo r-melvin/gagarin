@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "3c1ad5396ddff6ad4b0fb28a30cc1cc4fb9643b310671aca7dbe5a8cccfd11e9",
+  "manifest_sha256": "d8adbae3831248f9c643fbdad33cd1d04c5cf720b2acb7ce42a1c8d4f13acea1",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3783,
-  "matched_entries_missed": 209,
+  "matched_entries": 3800,
+  "matched_entries_missed": 211,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5324,6 +5324,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4EB230",
+   "tu": "match/core/vector_overlayclass_methods.cpp",
+   "name": "DynamicVectorClass<OverlayClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4EB6F0",
    "tu": "match/core/vector_terrainclass_methods.cpp",
    "name": "DynamicVectorClass<TerrainClass*>::FindItemIndex",
@@ -5711,6 +5717,12 @@
    "addr": "0x5D0920",
    "tu": "match/core/vector_clear_family_methods.cpp",
    "name": "VectorClass<Point2D>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D0D10",
+   "tu": "match/core/vector_mstextentry_methods.cpp",
+   "name": "DynamicVectorClass<MSTextEntry*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

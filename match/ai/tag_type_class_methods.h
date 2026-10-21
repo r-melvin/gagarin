@@ -14,22 +14,4 @@
 // three headers can be included together without redefining the class.
 #include "tag_type_class_flag_methods.h"
 
-// DynamicVectorClass<TagTypeClass*> — the global TagTypeClass::Array.
-// Base @0xB0E780 (vtable). Confirmed from the disasm:
-//   +0x04 Items (DAT_00B0E784), +0x10 Count (DAT_00B0E790).
-struct TagTypeVectorClass
-{
-    void*          vtable;             // +0x00
-    TagTypeClass** Items;             // +0x04
-    int            Capacity;          // +0x08
-    char           IsInitialized;     // +0x0C
-    char           IsAllocated;       // +0x0D
-    char           _pad_0E[2];        // +0x0E
-    int            Count;             // +0x10
-    int            CapacityIncrement; // +0x14
-};
-
-GG_STATIC_ASSERT(offsetof(TagTypeVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(TagTypeVectorClass, Count) == 0x10);
-
 #endif  // GG_MATCH_AI_TAG_TYPE_CLASS_METHODS_H

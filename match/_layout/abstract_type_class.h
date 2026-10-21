@@ -22,6 +22,8 @@
 class AbstractTypeClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x410800 (constructor declaration)
+    AbstractTypeClass(const char* id);
     char           ID[0x18];          // +0x24  strncpy(pID, 0x18)
     unsigned char  zero_3C;           // +0x3C  ID NUL-terminator slot
     char           UINameLabel[0x20]; // +0x3D

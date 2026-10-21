@@ -9,7 +9,8 @@
 //   FUNCTION: GAMEMD 0x6E5340  TagClass::HasZoneEntryByEvent           (__thiscall)
 
 #include "../_layout/tag_class.h"
-#include "tag_type_class_flag_methods.h"
+#include "../_layout/tag_type_class.h"
+#include "../_layout/trigger_type_class.h"
 
 #include "../_layout/trigger_class.h"
 

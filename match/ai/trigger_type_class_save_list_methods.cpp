@@ -15,7 +15,7 @@
 // Each key name is bound to a local before the read: retail calls
 // GetKeyName and only then pushes the read's own arguments, where the
 // nested call form pushes the constants first.
-void __fastcall TriggerType_00727880::SaveToINIList(CCINI_00727880* ini)
+void __fastcall TriggerTypeClass::SaveToINIList(CCINI_00727880* ini)
 {
     char buffer[0x20];
     int  i;
@@ -44,8 +44,9 @@ void __fastcall TriggerType_00727880::SaveToINIList(CCINI_00727880* ini)
     }
     ini->Clear(DAT_007F58CC, 0);
 
-    for (i = 0; i < DAT_008B4188; i++) {
-        TriggerType_00727880* item = DAT_008B417C[i];
-        (item->*item->Vtbl->At_68)(ini);
+    for (i = 0; i < TriggerTypeClass::Array.Count; i++) {
+        TriggerTypeClass* item = reinterpret_cast<TriggerTypeClass**>(TriggerTypeClass::Array.Items)[i];
+        TriggerTypeSaveCallView* view = reinterpret_cast<TriggerTypeSaveCallView*>(item);
+        (view->*view->Vtable->Method)(ini);
     }
 }

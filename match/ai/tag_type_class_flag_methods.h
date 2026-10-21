@@ -35,29 +35,6 @@ GG_STATIC_ASSERT(offsetof(TriggerTypeClass, NextTrigger) == 0xA8);
 // ---------------------------------------------------------------------------
 struct TagINI_006E6080;
 
-class TagTypeClass : public AbstractTypeClass
-{
-public:
-    int               unknown_98;           // +0x0098
-    int               Persistence;          // +0x009C (store at 0x6E60E1)
-    TriggerTypeClass* FirstTrigger;          // +0x00A0  (MOV ESI,[ECX+0xA0])
-
-    // Declared ascending by retail address.
-    // FUNCTION: GAMEMD 0x6E5E70
-    static TagTypeClass* __fastcall FindByNameOrID(const char* name);
-    // FUNCTION: GAMEMD 0x6E6080
-    bool ReadFromINI(TagINI_006E6080* ini);
-    // FUNCTION: GAMEMD 0x6E6160
-    bool WriteToINI(TagINI_006E6080* ini);
-    int  GetFlags() const;                        // GAMEMD 0x6E61F0
-    bool HasAllowWinAction() const;               // GAMEMD 0x6E6220
-    bool HasCrossesHorizontalLineEvent() const;   // GAMEMD 0x6E6250
-    bool HasCrossesVerticalLineEvent() const;     // GAMEMD 0x6E6280
-    bool HasZoneEntryByEvent() const;             // GAMEMD 0x6E62B0
-};
-GG_STATIC_ASSERT(offsetof(TagTypeClass, unknown_98) == 0x98);
-GG_STATIC_ASSERT(offsetof(TagTypeClass, Persistence) == 0x9C);
-GG_STATIC_ASSERT(offsetof(TagTypeClass, FirstTrigger) == 0xA0);
-GG_STATIC_ASSERT(sizeof(TagTypeClass) == 0xA4);
+#include "../_layout/tag_type_class.h"
 
 #endif  // GG_MATCH_AI_TAG_TYPE_CLASS_FLAG_METHODS_H

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 231 remaining 73-byte deleting-destructor bodies are bound here through
-// 119 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 227 remaining 73-byte deleting-destructor bodies are bound here through
+// 117 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -72,8 +72,6 @@ extern char VT_007EA584;
 extern char VT_007E9BC4;
 // VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
 extern char VT_007E9CC4;
-// VTABLE: GAMEMD 0x007E9D44 -- VectorClass<OverlayClass*>
-extern char VT_007E9D44;
 // VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
 extern char VT_007E9DC4;
 // VTABLE: GAMEMD 0x007E9F44 -- VectorClass<AnimClass*>
@@ -150,8 +148,6 @@ extern char VT_007EE390;
 extern char VT_007EE3B0;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
 extern char VT_007EEB74;
-// VTABLE: GAMEMD 0x007EEB94 -- VectorClass<MSTextEntry*>
-extern char VT_007EEB94;
 // VTABLE: GAMEMD 0x007EEBB4 -- VectorClass<MapSelection*>
 extern char VT_007EEBB4;
 // VTABLE: GAMEMD 0x007EEAB4 -- VectorClass<MapStage*>
