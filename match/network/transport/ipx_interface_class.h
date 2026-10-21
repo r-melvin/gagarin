@@ -68,6 +68,11 @@ public:
     virtual int MessageHandler(HWND window, unsigned int message,
                                unsigned int wParam, long lParam);
 
+    // FUNCTION: GAMEMD 0x7B0DD0 (decl; reloc) -- excluded capped query body.
+    int FUN_007B0DD0(int protocol, SOCKADDR_IPX* address);
+    // FUNCTION: GAMEMD 0x7B0F50 (decl; reloc)
+    int GetAdapterAddressString(int adapter, char* buffer, int bufferLen);
+
     unsigned char LocalNetwork[4];       // +0x3F2FC, copied from IPX address
     unsigned char BroadcastNode[6];      // +0x3F300, all-FF broadcast node
     unsigned char LocalNode[6];          // +0x3F306, local node from address query

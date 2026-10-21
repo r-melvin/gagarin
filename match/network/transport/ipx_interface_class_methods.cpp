@@ -1,11 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI; frozen method transcription used only as a hypothesis.
-// The four entry spans are revalidated from pinned retail bytes and focused REA
+// The original four entry spans are revalidated from pinned retail bytes and focused REA
 // at 0x7B10C0/0x7B13D0/0x7B1770/0x7B1780. Member offsets and the derived
 // table identity are checked against retail; this file does not claim constructor
 // ownership or a complete emitted/final-linked IPX vtable.
+// GetAdapterAddressString at 0x7B0F50 is independently checked against the
+// entry-origin retail span and strict relocation targets.
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
 #include <string.h>
+#include <stdio.h>
 #include "../../_layout/ipx_address_class.h"
 #include "winsock_interface_class.h"
 #include "ipx_interface_class.h"
@@ -42,6 +45,41 @@ extern unsigned char DAT_00B7801C;
 // STRING: GAMEMD 0x84DA44 "IPX socket option IPX_FILTERTYPE set OK\n"
 // STRING: GAMEMD 0x84DA28 "IPX Socket init complete\n"
 // STRING: GAMEMD 0x84DD70 "Throwing away malformed packet\n"
+
+// STRING: GAMEMD 0x84D9FC -- address without network portion.
+// STRING: GAMEMD 0x84D9C8 -- full network and node address.
+// LIBRARY: GAMEMD 0x7C8EF4 -- sprintf.
+
+// FUNCTION: GAMEMD 0x7B0F50 IPXInterfaceClass::GetAdapterAddressString
+int IPXInterfaceClass::GetAdapterAddressString(int adapter, char* buffer, int bufferLen)
+{
+    SOCKADDR_IPX address;
+    char text[0x100];
+
+    if (!WinsockInitialised)
+        return 0;
+
+    int result = FUN_007B0DD0(adapter, &address);
+    if (result)
+    {
+        if (result == 2)
+            sprintf(text, "?? ?? ?? ?? : %02x %02x %02x %02x %02x %02x",
+                    (unsigned char)address.sa_nodenum[0], (unsigned char)address.sa_nodenum[1],
+                    (unsigned char)address.sa_nodenum[2], (unsigned char)address.sa_nodenum[3],
+                    (unsigned char)address.sa_nodenum[4], (unsigned char)address.sa_nodenum[5]);
+        else
+            sprintf(text, "%02x %02x %02x %02x : %02x %02x %02x %02x %02x %02x",
+                    (unsigned char)address.sa_netnum[0], (unsigned char)address.sa_netnum[1],
+                    (unsigned char)address.sa_netnum[2], (unsigned char)address.sa_netnum[3],
+                    (unsigned char)address.sa_nodenum[0], (unsigned char)address.sa_nodenum[1],
+                    (unsigned char)address.sa_nodenum[2], (unsigned char)address.sa_nodenum[3],
+                    (unsigned char)address.sa_nodenum[4], (unsigned char)address.sa_nodenum[5]);
+        if ((int)strlen(text) >= bufferLen)
+            return 0;
+        strcpy(buffer, text);
+    }
+    return result;
+}
 
 // FUNCTION: GAMEMD 0x7B10C0  IPXInterfaceClass::Init (slot 15)
 bool IPXInterfaceClass::Init(int socketNumber)

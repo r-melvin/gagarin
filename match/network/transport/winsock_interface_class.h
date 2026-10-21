@@ -162,8 +162,6 @@ public:
     WinsockBufferType* AllocInBuffer();
     // FUNCTION: GAMEMD 0x7B1DE0 (decl; reloc) -- IPX startup path.
     bool StartupWinsock();
-    // FUNCTION: GAMEMD 0x7B0DD0 (decl; reloc) -- query ABI view; body excluded.
-    int FUN_007B0DD0(int protocol, SOCKADDR_IPX* address);
 
     unsigned char unknown_04[4];                   // +0x04
     DynamicVectorClass<WinsockBufferType*> InBuffers;       // +0x08

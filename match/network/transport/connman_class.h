@@ -51,12 +51,14 @@ GG_STATIC_ASSERT(sizeof(IPXPacket)          == 0x400);
 // ConnManClass: abstract connection manager (RTTI .?AVConnManClass@@, locator
 // 0x8049B8, one base chain entry). Retail table 0x7EC1D4 has scalar deleting
 // destructor target 0x543100 at slot 0 and _purecall (0x4C9150) at slots 1..15,
-// followed by zero words. This candidate records the table but does not provide
-// the 0x543100 body. IPXManagerClass members start at +0x04 in this prefix view.
+// followed by zero words. Its empty native destructor naturally emits the
+// scalar deleting body at 0x543100 when the derived destructor is compiled.
+// IPXManagerClass members start at +0x04 in this prefix view.
 // ---------------------------------------------------------------------------
 class ConnManClass
 {
 public:
+    // SYNTHETIC: GAMEMD 0x543100 -- compiler-generated scalar deleting entry.
     virtual ~ConnManClass() {}                                             // slot 0
     virtual int  Service() = 0;                                            // slot 1
     virtual int  SendPacket(void* buf, int buflen, int ack_required, int id) = 0;         // slot 2
@@ -84,6 +86,8 @@ public:
 class IPXManagerClass : public ConnManClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5409F0 (decl; reloc) -- ordinary destructor.
+    // SYNTHETIC: GAMEMD 0x5430E0 (decl; reloc) -- scalar deleting entry.
     virtual ~IPXManagerClass();                                            // slot 0
     virtual int  Service();                                                // slot 1
     virtual int  SendPacket(void* buf, int buflen, int ack_required, int id);             // slot 2

@@ -4979,11 +4979,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/network/transport/ipx_manager_class_destructor.cpp",
   "addr": "0x5430E0",
-  "sym": "?FUN_5430E0@Obj_5430E0@@QAEPAXI@Z",
+  "sym": "??_GIPXManagerClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_005430e0",
+  "name": "IPXManagerClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -46480,6 +46480,33 @@
   "sym": "?GetPrimaryPort@UDPInterfaceClass@@UAEGXZ",
   "len": "0x8",
   "name": "UDPInterfaceClass::GetPrimaryPort",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_manager_class_destructor.cpp",
+  "addr": "0x5409F0",
+  "sym": "??1IPXManagerClass@@UAE@XZ",
+  "len": "0x8D",
+  "name": "IPXManagerClass::~IPXManagerClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_manager_class_destructor.cpp",
+  "addr": "0x543100",
+  "sym": "??_GConnManClass@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "ConnManClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B0F50",
+  "sym": "?GetAdapterAddressString@IPXInterfaceClass@@QAEHHPADH@Z",
+  "len": "0x16C",
+  "name": "IPXInterfaceClass::GetAdapterAddressString",
   "status": "matched",
   "pct": 100
  }
