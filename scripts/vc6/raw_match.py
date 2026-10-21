@@ -30,8 +30,161 @@
 # Exit 0 iff every byte difference lies in a relocation slot.
 import argparse, json, os, struct, subprocess, sys
 from retail_image import configured_span
+from verify_relocations import parse_coff, VerifyError
 
 GHIDRA = os.path.expanduser("~/.cargo/bin/ghidra")
+HARD_LITERAL_FAILURE = 3
+
+
+class FloatLiteralCheckError(Exception):
+    """A defined MSVC float constant cannot be proven equal to retail."""
+
+
+def raw_span_matches_modulo_relocations(retail_function, object_function, relocs):
+    """Match raw bytes using the same per-byte relocation mask as raw_match.
+
+    `diff_retail.py` uses instruction text for its normal diagnostic, so it
+    calls this before applying the literal-pool check to a prospective 100%
+    result. Short or otherwise non-exact spans are left to their existing
+    partial-match path.
+    """
+    if len(retail_function) != len(object_function):
+        return False
+    diffs = [i for i, (retail_byte, object_byte) in enumerate(
+        zip(retail_function, object_function)) if retail_byte != object_byte]
+    if not diffs:
+        return True
+    covered = set()
+    for offset in relocs:
+        covered.update(range(offset, offset + 4))
+    return all(offset in covered for offset in diffs)
+
+
+def verify_float_literals_for_raw_exact_span(obj, sym, function_addr,
+                                             retail_function):
+    """Verify local literals only when the complete raw span is relocation-exact.
+
+    Returns False for objects without named float constants or for spans with
+    any non-relocation byte differences. Returns True after checking an
+    eligible span; raises FloatLiteralCheckError for unverifiable/mismatched
+    named local literals.
+    """
+    try:
+        with open(obj, "rb") as stream:
+            object_bytes = stream.read()
+    except OSError as exc:
+        raise FloatLiteralCheckError(f"cannot read COFF object for literal audit: {exc}") from exc
+    if b"__real@4@" not in object_bytes and b"__real@8@" not in object_bytes:
+        return False
+    try:
+        object_function, relocs = obj_func_bytes(obj, sym, len(retail_function))
+    except ValueError as exc:
+        if "requested span" in str(exc) and "exceeds COFF section size" in str(exc):
+            return False
+        raise FloatLiteralCheckError(f"cannot read raw span for literal audit: {exc}") from exc
+    except (OSError, struct.error) as exc:
+        raise FloatLiteralCheckError(f"cannot read raw span for literal audit: {exc}") from exc
+    if object_function is None or not raw_span_matches_modulo_relocations(
+            retail_function, object_function, relocs):
+        return False
+    verify_float_literal_relocations(obj, sym, function_addr, retail_function)
+    return True
+
+
+def verify_float_literal_relocations(obj, sym, function_addr, retail_function):
+    """Compare referenced defined __real@4@/__real@8@ values with retail.
+
+    This deliberately checks only named, defined MSVC float-constant symbols.
+    The retail target address comes from the actual relocated operand in the
+    pinned PE when GAMEMD_BINARY is set (otherwise from the established Ghidra
+    memory-read fallback). Other relocation classes and unresolved constants
+    remain outside this narrow check.
+    """
+    # Most objects have no floating constants. Avoid a second COFF parse in
+    # that common case; the defined MSVC constant names live in the COFF string
+    # table and are longer than the eight-byte inline-name field.
+    try:
+        with open(obj, "rb") as stream:
+            object_bytes = stream.read()
+    except OSError as exc:
+        raise FloatLiteralCheckError(f"cannot read COFF object for literal audit: {exc}") from exc
+    if b"__real@4@" not in object_bytes and b"__real@8@" not in object_bytes:
+        return
+    try:
+        coff, sections, symbols, _ = parse_coff(obj)
+    except (OSError, VerifyError, ValueError, struct.error) as exc:
+        raise FloatLiteralCheckError(f"cannot parse COFF literal targets: {exc}") from exc
+
+    # Locate the requested function's definition, matching obj_func_bytes' rule
+    # that skips undefined declarations with the same decorated name.
+    function = None
+    for item in symbols.values():
+        if item["name"] == sym and item["section"] in sections:
+            if function is not None and (function["section"], function["value"]) != (item["section"], item["value"]):
+                raise FloatLiteralCheckError(f"ambiguous COFF definitions for {sym}")
+            function = item
+    if function is None:
+        raise FloatLiteralCheckError(f"defined COFF function not found for literal audit: {sym}")
+
+    code = sections[function["section"]]
+    if code["uninitialized"]:
+        raise FloatLiteralCheckError(f"function {sym} is in uninitialized COFF storage")
+    start = function["value"]
+    end = start + len(retail_function)
+    for rva, symbol_index, kind in code["relocs"]:
+        if rva < start or rva >= end:
+            continue
+        target = symbols.get(symbol_index)
+        if target is None:
+            continue
+        name = target["name"]
+        if not (name.startswith("__real@4@") or name.startswith("__real@8@")):
+            continue
+        width = 4 if name.startswith("__real@4@") else 8
+        # Only a real definition in initialized COFF data is a local literal
+        # whose value this object can establish. Undefined/weak references are
+        # not claimed as verified by this check.
+        if target["section"] not in sections:
+            continue
+        const_section = sections[target["section"]]
+        if const_section["uninitialized"]:
+            raise FloatLiteralCheckError(f"{name} is defined in uninitialized COFF storage")
+        if kind not in (0x0006, 0x0014):
+            raise FloatLiteralCheckError(f"unsupported relocation type {kind:#x} for {name}")
+        if rva + 4 > end:
+            raise FloatLiteralCheckError(f"relocation for {name} crosses the requested function span")
+        rel_off = rva - start
+        obj_field = const_section["raw_ptr"] + target["value"]
+        if kind == 0x0006:  # IMAGE_REL_I386_DIR32, S + A
+            addend = struct.unpack_from("<I", coff, code["raw_ptr"] + rva)[0]
+            retail_target = struct.unpack_from("<I", retail_function, rel_off)[0]
+        else:  # IMAGE_REL_I386_REL32, S + A - P - 4
+            addend = struct.unpack_from("<i", coff, code["raw_ptr"] + rva)[0]
+            displacement = struct.unpack_from("<i", retail_function, rel_off)[0]
+            retail_target = (function_addr + rel_off + 4 + displacement) & 0xFFFFFFFF
+        literal_offset = target["value"]
+        if literal_offset < 0 or literal_offset + width > const_section["raw_size"]:
+            raise FloatLiteralCheckError(
+                f"{name} literal at symbol offset {literal_offset:#x} exceeds its COFF section")
+        # The relocation may intentionally point inside an 8-byte pool entry,
+        # for example at its upper DWORD. Compare the complete named constant
+        # from its symbol base, adjusting the retail operand by the relocation
+        # addend to recover that base address.
+        retail_literal = (retail_target - addend) & 0xFFFFFFFF
+        expected = coff[obj_field:obj_field + width]
+        try:
+            observed = retail_bytes(retail_literal, width)
+        except (OSError, ValueError, KeyError, IndexError, TypeError, struct.error) as exc:
+            raise FloatLiteralCheckError(
+                f"cannot read retail literal {retail_literal:#x} for {name}: {exc}") from exc
+        if len(observed) != width:
+            raise FloatLiteralCheckError(
+                f"short retail literal read at {retail_literal:#x} for {name}: "
+                f"wanted {width} bytes, received {len(observed)}")
+        if expected != observed:
+            raise FloatLiteralCheckError(
+                f"{name} resolves to retail {retail_literal:#x}, but COFF literal "
+                f"{expected.hex()} != retail bytes {observed.hex()}")
 
 
 def retail_bytes(addr, n):
@@ -179,6 +332,17 @@ def main():
         print(f"  {s:#06x}..{e:#06x} {tag}  retail={rb[s:e+1].hex()} obj={ob[s:e+1].hex()}")
     print(f"{n - len(diffs)}/{n} bytes identical; "
           f"{len(reloc)} reloc slot(s), {len(real)} real diff(s)")
+    # A changed local float can hide entirely inside a normalized DIR32/REL32
+    # field. Do this only for otherwise byte-exact functions so partial-match
+    # diagnostics keep their historical behavior. Exit 3 is intentionally
+    # distinct: verify_all.py and verify_tus.py must not accept diff_retail's
+    # instruction-position fallback after this failure.
+    if not real:
+        try:
+            verify_float_literal_relocations(a.obj, a.sym, int(a.addr, 16), rb)
+        except FloatLiteralCheckError as exc:
+            print(f"raw_match: HARD FLOAT-LITERAL FAILURE: {exc}")
+            sys.exit(HARD_LITERAL_FAILURE)
     print("match: 100.0%" if not real else "match: <100% (real diffs)")
     sys.exit(0 if not real else 1)
 

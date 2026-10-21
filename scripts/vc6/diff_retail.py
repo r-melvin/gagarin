@@ -17,6 +17,7 @@
 # Exit 0 iff every instruction matches (modulo relocations).
 import argparse, collections, json, os, re, subprocess, sys, tempfile
 from retail_image import configured_span
+import raw_match
 
 GHIDRA = os.environ.get("GHIDRA", os.path.expanduser("~/.cargo/bin/ghidra"))
 
@@ -333,7 +334,8 @@ def main():
     addr = int(a.addr, 16)
     length = explicit_length(a.len)
 
-    retail = raw_x86_insns(ghidra_bytes(addr, length), addr)
+    retail_raw = ghidra_bytes(addr, length)
+    retail = raw_x86_insns(retail_raw, addr)
     comp, relocs = objdump_insns(a.obj, a.sym)
     # Trim trailing alignment padding from the compiled side. VC6 pads with
     # both the one-byte `nop` and the multi-byte `lea reg,[reg+0x0]` form.
@@ -400,6 +402,19 @@ def main():
             print(f"multiset: retail-only {only_r or '{}'}  "
                   f"compiled-only {only_c or '{}'}  "
                   f"({len(retail)} vs {len(comp)} instructions)")
+
+    # Disassembly matching can normalize a relocation without checking the
+    # value of a local MSVC float pool entry. Before a prospective exact result,
+    # require the raw span itself to be exact modulo COFF relocation fields and
+    # run the shared literal check. Partial or non-exact raw spans retain their
+    # established diagnostic path.
+    if mismatch == 0 and len(retail) == len(comp):
+        try:
+            raw_match.verify_float_literals_for_raw_exact_span(
+                a.obj, a.sym, addr, retail_raw)
+        except raw_match.FloatLiteralCheckError as exc:
+            print(f"diff_retail: HARD FLOAT-LITERAL FAILURE: {exc}")
+            sys.exit(raw_match.HARD_LITERAL_FAILURE)
 
     pct = 100.0 * total / n if n else 0.0
     print(f"match: {pct:.1f}%")

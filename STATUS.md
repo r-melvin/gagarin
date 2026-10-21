@@ -1,5 +1,42 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot reports **4,781 matched
+function rows**, **181 partial rows**, **4,962 manifest rows**, **1,027 manifest
+translation units**, and **1,037 tracked C++ files**. Whole-repository regression,
+compile/layout checks, the project build and 107 tooling tests pass with zero
+matched regressions. All project objects are current. The annotation audit
+reports 4,995 body addresses and zero issues. Twenty-seven saved partial
+baselines are unchanged.
+
+Four previously reported matches had an incorrect floating literal: the plain
+and Fly locomotion draw/shadow matrices used `-pi/4`, while retail reads
+`-pi/16` at `0x7E4408`. They now use one explicit shared global binding,
+correcting the factor-of-four facing-angle error. All four full spans remain
+byte-exact after relocation normalization, and all 32 relocation fields resolve
+to retail targets. The match count is unchanged; the earlier normalized score
+had hidden the literal-value error.
+
+The raw and instruction oracles now check defined MSVC single/double literal
+pools for otherwise raw-byte-exact spans. A hard literal failure cannot be
+accepted through instruction fallback. Synthetic tests cover wrong values,
+adjacent relocation fields and offset references. This is a scoped literal
+check, not a complete audit of other globals or final-link selection.
+
+Matched lengths total **340,053 bytes**: 24.2% of listed functions and 9.0%
+of listed function lengths. The padding heuristic misses 301 matched entries.
+The diagnostic link reports **3,544 unique unresolved symbols**, **5,299
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the literal correction above is one such example.
+
+## Historical snapshot: Surface hierarchy consolidation
+
 As of **2026-10-21**, the latest verified snapshot has **4,781 fully matched
 functions**, **181 partial rows**, **4,962 manifest rows**, **1,027 manifest
 translation units**, and **1,037 tracked C++ files**. Whole-repository regression,
@@ -29,13 +66,6 @@ of listed function lengths. The padding heuristic misses 301 matched entries.
 The diagnostic link reports **3,543 unique unresolved symbols**, **5,296
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: RLE Lucent methods and shared interface
 

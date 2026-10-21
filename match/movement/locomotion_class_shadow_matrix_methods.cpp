@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x55A7D0.
-//   GLOBAL: GAMEMD 0x7E4408  double -pi/4  (the per-facing rotation step)
+//   Reads global 0x7E4408: double -pi/16 (the per-facing rotation step).
 
 #include "locomotion_class_shadow_matrix_methods.h"
+#include "locomotion_rotation_step.h"
 
 // FUNCTION: GAMEMD 0x55A7D0  (__stdcall COM virtual; `this` on the stack)
 //
@@ -29,7 +30,7 @@ Matrix3D_0055A7D0 __stdcall Loco_0055A7D0::Shadow_Matrix(unsigned int* key)
     Matrix3D_0055A7D0 m = FUN_007559B0(slope);
 
     m.RotateZ((float)(((int)((((this->LinkedTo->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
-                      * -0.78539816339744830962));
+                      * gg_locomotion_facing_step));
 
     if (key != 0 && *key != 0xFFFFFFFF) {
         *key = ((*key << 6) + slope) << 5;

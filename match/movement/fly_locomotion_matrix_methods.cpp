@@ -4,10 +4,11 @@
 //   against the user's retail gamemd.exe v1.001; bodies ordered ascending by
 //   retail address.
 #include "fly_locomotion_matrix_methods.h"
+#include "locomotion_rotation_step.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // GLOBAL: GAMEMD 0x87F7E8 — the map.
-// GLOBAL: GAMEMD 0x7E4408 — double -pi/4, the per-facing rotation step.
+// Reads global 0x7E4408: double -pi/16, the per-facing rotation step.
 // GLOBAL: GAMEMD 0x7E2800 — double 0.0, the two rate comparisons.
 
 // ILocomotion slot +0x24 — the draw matrix for a flyer: identity rotated
@@ -26,7 +27,7 @@ Matrix3D_004CF610 __stdcall FlyLocoMatrix::Draw_Matrix(int* key)
     }
 
     m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
-                      * -0.78539816339744830962));
+                      * gg_locomotion_facing_step));
 
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_1C8)() > 0) {
         if (this->LinkedTo->IsTilting != 0) {
@@ -88,7 +89,7 @@ Matrix3D_004CF610 __stdcall FlyLocoMatrix::Shadow_Matrix(unsigned int* key)
     Matrix3D_004CF610 m = FUN_007559B0_M(slope);
 
     m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
-                      * -0.78539816339744830962));
+                      * gg_locomotion_facing_step));
 
     if (key != 0 && *key != 0xFFFFFFFF) {
         *key = ((*key << 6) + slope) << 5;

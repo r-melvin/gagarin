@@ -48,6 +48,8 @@ def verify(obj, sym, addr, length):
         r = subprocess.run(["python3", f"{ROOT}/scripts/vc6/{tool}", "--obj", obj,
                             "--sym", sym, "--addr", addr, "--len", length],
                            capture_output=True, text=True)
+        if tool == "raw_match.py" and r.returncode == 3:
+            return False, "hard float-literal relocation failure"
         if r.returncode == 0 and "100.0%" in r.stdout:
             return True, "100.0%"
         last = r.stdout

@@ -62,6 +62,8 @@ def verify(obj, entry):
              "--obj", obj, "--sym", entry["sym"], "--addr", entry["addr"],
              "--len", entry["len"]],
             capture_output=True, text=True)
+        if tool == "raw_match.py" and result.returncode == 3:
+            return False, "hard float-literal relocation failure"
         if "100.0%" in result.stdout:
             return True, "100.0%"
         percentages = [line.split()[-1] for line in result.stdout.splitlines()
