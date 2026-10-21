@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 11 remaining four-byte-element resize bodies retain address-scoped
+// 10 remaining four-byte-element resize bodies retain address-scoped
 // views until their actual template classes are integrated. Recovered entries
 // are bound in their native specialization implementations.
 // Entry-origin spans are 0xB0 bytes. Instructions confirm Items+4, Capacity+8,
@@ -30,19 +30,6 @@ bool VectorResizeFamily::FUN_49EA70(int newsize, void** array)
 
 // FUNCTION: GAMEMD 0x49ED30
 bool VectorResizeFamily::FUN_49ED30(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x4A13C0
-bool VectorResizeFamily::FUN_4A13C0(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
         if (Length < ActiveCount) {

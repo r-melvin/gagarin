@@ -137,3 +137,37 @@ FUN_0043AEF0Prefix* FUN_0043AEF0Prefix::FUN_0043AEF0(int size)
     Allocated = 1;
     return this;
 }
+
+// Shared ABI view only; this does not identify either original owner.
+struct FUN_0043AFPrefix
+{
+    void* Buffer;          // +0x00
+    int Size;              // +0x04
+    bool Allocated;        // +0x08
+    char unknown_09[3];    // +0x09
+    FUN_0043AFPrefix* FUN_0043AF10();
+    void FUN_0043AF20();
+};
+GG_STATIC_ASSERT(offsetof(FUN_0043AFPrefix, Buffer) == 0x00);
+GG_STATIC_ASSERT(offsetof(FUN_0043AFPrefix, Size) == 0x04);
+GG_STATIC_ASSERT(offsetof(FUN_0043AFPrefix, Allocated) == 0x08);
+GG_STATIC_ASSERT(sizeof(FUN_0043AFPrefix) == 0x0C);
+
+extern "C" void __cdecl FUN_007C8B3D(void* block); // LIBRARY: GAMEMD 0x7C8B3D
+
+// FUNCTION: GAMEMD 0x43AF10
+FUN_0043AFPrefix* FUN_0043AFPrefix::FUN_0043AF10()
+{
+    Buffer = 0;
+    Size = 0;
+    Allocated = 0;
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x43AF20
+void FUN_0043AFPrefix::FUN_0043AF20()
+{
+    if (Allocated) {
+        FUN_007C8B3D(Buffer);
+    }
+}

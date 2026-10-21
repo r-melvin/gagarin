@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 72
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 69
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -231,16 +231,6 @@ template class DynamicVectorClass<DynamicVectorClass<char*>*>;
 //   `.?AV?$DynamicVectorClass@UtagCONNECTDATA@@@@`.
 template class DynamicVectorClass<tagCONNECTDATA>;
 
-// FUNCTION: GAMEMD 0x004A0F20
-// DynamicVectorClass<IConnectionPoint*> -- vtable 0x007E5D48 slot 3; locator 0x007FF8F8 -> type descriptor 0x0081F778
-//   `.?AV?$DynamicVectorClass@PAUIConnectionPoint@@@@`.
-template class DynamicVectorClass<IConnectionPoint*>;
-
-// FUNCTION: GAMEMD 0x004A4AD0
-// DynamicVectorClass<_DDSURFACEDESC*> -- vtable 0x007E5E0C slot 3; locator 0x007FFA50 -> type descriptor 0x0081FED0
-//   `.?AV?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@`.
-template class DynamicVectorClass<_DDSURFACEDESC*>;
-
 // FUNCTION: GAMEMD 0x004D2930
 // DynamicVectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BA0 slot 3; locator 0x008007D0 -> type descriptor 0x00822498
 //   `.?AV?$DynamicVectorClass@UDrawRecord@FoggedObjectClass@@@@`.
@@ -330,11 +320,6 @@ template class DynamicVectorClass<unsigned short*>;
 // DynamicVectorClass<IsometricTileTypeClass::TileInsertType*> -- vtable 0x007ECBDC slot 3; locator 0x00804AD8 -> type descriptor 0x00829078
 //   `.?AV?$DynamicVectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
-
-// FUNCTION: GAMEMD 0x0054E890
-// DynamicVectorClass<KamikazeControl*> -- vtable 0x007ECE7C slot 3; locator 0x00804D58 -> type descriptor 0x008296A8
-//   `.?AV?$DynamicVectorClass@PAUKamikazeControl@@@@`.
-template class DynamicVectorClass<KamikazeControl*>;
 
 // FUNCTION: GAMEMD 0x00555200
 // DynamicVectorClass<LightSourceClass*> -- vtable 0x007ECF7C slot 3; locator 0x00804F78 -> type descriptor 0x00829B28

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 147 remaining 73-byte deleting-destructor bodies are bound here through
-// 77 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 141 remaining 73-byte deleting-destructor bodies are bound here through
+// 74 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -38,10 +38,6 @@ extern char VT_007E5C24;
 extern char VT_007E5C04;
 // VTABLE: GAMEMD 0x007E5C84 -- VectorClass<tagCONNECTDATA>
 extern char VT_007E5C84;
-// VTABLE: GAMEMD 0x007E5D08 -- VectorClass<IConnectionPoint*>
-extern char VT_007E5D08;
-// VTABLE: GAMEMD 0x007E5DEC -- VectorClass<_DDSURFACEDESC*>
-extern char VT_007E5DEC;
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>
 extern char VT_007E8BC0;
 // VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
@@ -80,8 +76,6 @@ extern char VT_007EAA5C;
 extern char VT_007ECD0C;
 // VTABLE: GAMEMD 0x007ECBFC -- VectorClass<IsometricTileTypeClass::TileInsertType*>
 extern char VT_007ECBFC;
-// VTABLE: GAMEMD 0x007ECE9C -- VectorClass<KamikazeControl*>
-extern char VT_007ECE9C;
 // VTABLE: GAMEMD 0x007ECF9C -- VectorClass<LightSourceClass*>
 extern char VT_007ECF9C;
 // VTABLE: GAMEMD 0x007ECFDC -- VectorClass<LightSourceClass::PendingCellClass*>

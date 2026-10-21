@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 73
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 70
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 74 remaining addresses are bound to VectorClass<T> tables;
+//   The 71 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -231,16 +231,6 @@ template class VectorClass<char*>;
 //   `.?AV?$VectorClass@UtagCONNECTDATA@@@@`.
 template class VectorClass<tagCONNECTDATA>;
 
-// FUNCTION: GAMEMD 0x004A1330
-// VectorClass<IConnectionPoint*> -- vtable 0x007E5D08 slot 3; locator 0x007FF840 -> type descriptor 0x0081F6F0
-//   `.?AV?$VectorClass@PAUIConnectionPoint@@@@`.
-template class VectorClass<IConnectionPoint*>;
-
-// FUNCTION: GAMEMD 0x004A4C20
-// VectorClass<_DDSURFACEDESC*> -- vtable 0x007E5DEC slot 3; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
-//   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
-template class VectorClass<_DDSURFACEDESC*>;
-
 // FUNCTION: GAMEMD 0x004D2B20
 // VectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BC0 slot 3; locator 0x00800800 -> type descriptor 0x00822458
 //   `.?AV?$VectorClass@UDrawRecord@FoggedObjectClass@@@@`.
@@ -335,11 +325,6 @@ template class VectorClass<unsigned short*>;
 // VectorClass<IsometricTileTypeClass::TileInsertType*> -- vtable 0x007ECBFC slot 3; locator 0x00804B08 -> type descriptor 0x00829030
 //   `.?AV?$VectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
-
-// FUNCTION: GAMEMD 0x0054E9E0
-// VectorClass<KamikazeControl*> -- vtable 0x007ECE9C slot 3; locator 0x00804D88 -> type descriptor 0x00829670
-//   `.?AV?$VectorClass@PAUKamikazeControl@@@@`.
-template class VectorClass<KamikazeControl*>;
 
 // FUNCTION: GAMEMD 0x005553B0
 // VectorClass<LightSourceClass*> -- vtable 0x007ECF9C slot 3; locator 0x00804FA8 -> type descriptor 0x00829AF0

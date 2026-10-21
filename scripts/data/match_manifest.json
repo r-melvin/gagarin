@@ -13518,7 +13518,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
   "addr": "0x004a0f20",
   "sym": "?Clear@?$DynamicVectorClass@PAUIConnectionPoint@@@@UAEXXZ",
   "len": "0x2a",
@@ -13527,7 +13527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
   "addr": "0x004a4ad0",
   "sym": "?Clear@?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@UAEXXZ",
   "len": "0x2a",
@@ -14148,7 +14148,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
   "addr": "0x0054e890",
   "sym": "?Clear@?$DynamicVectorClass@PAUKamikazeControl@@@@UAEXXZ",
   "len": "0x2a",
@@ -15525,11 +15525,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
   "addr": "0x004A0E60",
-  "sym": "??_G?$VectorClass@PAUIConnectionPoint@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUIConnectionPoint@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<IConnectionPoint*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<IConnectionPoint*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15543,29 +15543,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
   "addr": "0x004A14F0",
   "sym": "??_G?$VectorClass@PAUIConnectionPoint@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<IConnectionPoint*>::`scalar deleting destructor'",
+  "name": "VectorClass<IConnectionPoint*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
   "addr": "0x004A4D90",
   "sym": "??_G?$VectorClass@PAU_DDSURFACEDESC@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<_DDSURFACEDESC*>::`scalar deleting destructor'",
+  "name": "VectorClass<_DDSURFACEDESC*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
   "addr": "0x004A4DE0",
-  "sym": "??_G?$VectorClass@PAU_DDSURFACEDESC@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<_DDSURFACEDESC*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<_DDSURFACEDESC*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16866,20 +16866,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
   "addr": "0x0054EB50",
   "sym": "??_G?$VectorClass@PAUKamikazeControl@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<KamikazeControl*>::`scalar deleting destructor'",
+  "name": "VectorClass<KamikazeControl*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
   "addr": "0x0054EBA0",
-  "sym": "??_G?$VectorClass@PAUKamikazeControl@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUKamikazeControl@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<KamikazeControl*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<KamikazeControl*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18918,7 +18918,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
   "addr": "0x004a1330",
   "sym": "?Clear@?$VectorClass@PAUIConnectionPoint@@@@UAEXXZ",
   "len": "0x27",
@@ -18927,7 +18927,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
   "addr": "0x004a4c20",
   "sym": "?Clear@?$VectorClass@PAU_DDSURFACEDESC@@@@UAEXXZ",
   "len": "0x27",
@@ -19557,7 +19557,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
   "addr": "0x0054e9e0",
   "sym": "?Clear@?$VectorClass@PAUKamikazeControl@@@@UAEXXZ",
   "len": "0x27",
@@ -20601,11 +20601,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
   "addr": "0x4A13C0",
-  "sym": "?FUN_4A13C0@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUIConnectionPoint@@@@UAE_NHPAPAUIConnectionPoint@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_4A13C0",
+  "name": "DynamicVectorClass<IConnectionPoint*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -38662,5 +38662,248 @@
   "tu": "match/core/vector_hwnd_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUHWND__@@@@UBEHABQAUHWND__@@@Z",
   "name": "DynamicVectorClass<HWND__*>::FindItemIndex"
+ },
+ {
+  "addr": "0x54E8C0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUKamikazeControl@@@@UBEHPAPAUKamikazeControl@@@Z",
+  "name": "DynamicVectorClass<KamikazeControl*>::Slot5"
+ },
+ {
+  "addr": "0x54E8E0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUKamikazeControl@@@@UBEPAUKamikazeControl@@H@Z",
+  "name": "VectorClass<KamikazeControl*>::Slot6"
+ },
+ {
+  "addr": "0x54E8F0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "??8?$VectorClass@PAUKamikazeControl@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<KamikazeControl*>::operator=="
+ },
+ {
+  "addr": "0x54E930",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUKamikazeControl@@@@UAE_NHPAPAUKamikazeControl@@@Z",
+  "name": "VectorClass<KamikazeControl*>::SetCapacity"
+ },
+ {
+  "addr": "0x54EA10",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUKamikazeControl@@@@UBEHABQAUKamikazeControl@@@Z",
+  "name": "VectorClass<KamikazeControl*>::FindItemIndex"
+ },
+ {
+  "addr": "0x54EA50",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUKamikazeControl@@@@UBEHPAPAUKamikazeControl@@@Z",
+  "name": "VectorClass<KamikazeControl*>::Slot5"
+ },
+ {
+  "addr": "0x54EA70",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUKamikazeControl@@@@UAE_NHPAPAUKamikazeControl@@@Z",
+  "name": "DynamicVectorClass<KamikazeControl*>::SetCapacity"
+ },
+ {
+  "addr": "0x54EB20",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_kamikazecontrol_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUKamikazeControl@@@@UBEHABQAUKamikazeControl@@@Z",
+  "name": "DynamicVectorClass<KamikazeControl*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4A0F50",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUIConnectionPoint@@@@UBEHPAPAUIConnectionPoint@@@Z",
+  "name": "DynamicVectorClass<IConnectionPoint*>::Slot5"
+ },
+ {
+  "addr": "0x4A0F70",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUIConnectionPoint@@@@UBEPAUIConnectionPoint@@H@Z",
+  "name": "VectorClass<IConnectionPoint*>::Slot6"
+ },
+ {
+  "addr": "0x4A1240",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "??8?$VectorClass@PAUIConnectionPoint@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<IConnectionPoint*>::operator=="
+ },
+ {
+  "addr": "0x4A1280",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUIConnectionPoint@@@@UAE_NHPAPAUIConnectionPoint@@@Z",
+  "name": "VectorClass<IConnectionPoint*>::SetCapacity"
+ },
+ {
+  "addr": "0x4A1360",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUIConnectionPoint@@@@UBEHABQAUIConnectionPoint@@@Z",
+  "name": "VectorClass<IConnectionPoint*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4A13A0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUIConnectionPoint@@@@UBEHPAPAUIConnectionPoint@@@Z",
+  "name": "VectorClass<IConnectionPoint*>::Slot5"
+ },
+ {
+  "addr": "0x4A1470",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_iconnectionpoint_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUIConnectionPoint@@@@UBEHABQAUIConnectionPoint@@@Z",
+  "name": "DynamicVectorClass<IConnectionPoint*>::FindItemIndex"
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43AF10",
+  "sym": "?FUN_0043AF10@FUN_0043AFPrefix@@QAEPAU1@XZ",
+  "len": "0xd",
+  "name": "FUN_0043AF10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43AF20",
+  "sym": "?FUN_0043AF20@FUN_0043AFPrefix@@QAEXXZ",
+  "len": "0x11",
+  "name": "FUN_0043AF20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_ratio_initializers_0043af70.cpp",
+  "addr": "0x43AF70",
+  "sym": "_FUN_0043AF70",
+  "len": "0x13",
+  "name": "FUN_0043AF70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_ratio_initializers_0043af70.cpp",
+  "addr": "0x43AF90",
+  "sym": "_FUN_0043AF90",
+  "len": "0x13",
+  "name": "FUN_0043AF90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x4A4B00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@UBEHPAPAU_DDSURFACEDESC@@@Z",
+  "name": "DynamicVectorClass<_DDSURFACEDESC*>::Slot5"
+ },
+ {
+  "addr": "0x4A4B20",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAU_DDSURFACEDESC@@@@UBEPAU_DDSURFACEDESC@@H@Z",
+  "name": "VectorClass<_DDSURFACEDESC*>::Slot6"
+ },
+ {
+  "addr": "0x4A4B30",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "??8?$VectorClass@PAU_DDSURFACEDESC@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<_DDSURFACEDESC*>::operator=="
+ },
+ {
+  "addr": "0x4A4B70",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAU_DDSURFACEDESC@@@@UAE_NHPAPAU_DDSURFACEDESC@@@Z",
+  "name": "VectorClass<_DDSURFACEDESC*>::SetCapacity"
+ },
+ {
+  "addr": "0x4A4C50",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAU_DDSURFACEDESC@@@@UBEHABQAU_DDSURFACEDESC@@@Z",
+  "name": "VectorClass<_DDSURFACEDESC*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4A4C90",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAU_DDSURFACEDESC@@@@UBEHPAPAU_DDSURFACEDESC@@@Z",
+  "name": "VectorClass<_DDSURFACEDESC*>::Slot5"
+ },
+ {
+  "addr": "0x4A4CB0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@UAE_NHPAPAU_DDSURFACEDESC@@@Z",
+  "name": "DynamicVectorClass<_DDSURFACEDESC*>::SetCapacity"
+ },
+ {
+  "addr": "0x4A4D60",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ddsurfacedesc_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@UBEHABQAU_DDSURFACEDESC@@@Z",
+  "name": "DynamicVectorClass<_DDSURFACEDESC*>::FindItemIndex"
  }
 ]

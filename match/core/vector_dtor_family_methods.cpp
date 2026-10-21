@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 77 base-template instantiations reproduce 147 remaining retail destructor
+// 74 base-template instantiations reproduce 141 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -248,18 +248,6 @@ GG_STATIC_ASSERT(sizeof(GgVectorRep)                == 0x10);
 //   `.?AV?$VectorClass@UtagCONNECTDATA@@@@`.
 template class VectorClass<tagCONNECTDATA>;
 
-// FUNCTION: GAMEMD 0x004A0E60
-// FUNCTION: GAMEMD 0x004A14F0
-// VectorClass<IConnectionPoint*> -- reseats retail vtable 0x007E5D08; locator 0x007FF840 -> type descriptor 0x0081F6F0
-//   `.?AV?$VectorClass@PAUIConnectionPoint@@@@`.
-template class VectorClass<IConnectionPoint*>;
-
-// FUNCTION: GAMEMD 0x004A4D90
-// FUNCTION: GAMEMD 0x004A4DE0
-// VectorClass<_DDSURFACEDESC*> -- reseats retail vtable 0x007E5DEC; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
-//   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
-template class VectorClass<_DDSURFACEDESC*>;
-
 // FUNCTION: GAMEMD 0x004D2D10
 // FUNCTION: GAMEMD 0x004D2D60
 // VectorClass<FoggedObjectClass::DrawRecord> -- reseats retail vtable 0x007E8BC0; locator 0x00800800 -> type descriptor 0x00822458
@@ -373,12 +361,6 @@ template class VectorClass<unsigned short*>;
 // VectorClass<IsometricTileTypeClass::TileInsertType*> -- reseats retail vtable 0x007ECBFC; locator 0x00804B08 -> type descriptor 0x00829030
 //   `.?AV?$VectorClass@PAUTileInsertType@IsometricTileTypeClass@@@@`.
 template class VectorClass<IsometricTileTypeClass::TileInsertType*>;
-
-// FUNCTION: GAMEMD 0x0054EB50
-// FUNCTION: GAMEMD 0x0054EBA0
-// VectorClass<KamikazeControl*> -- reseats retail vtable 0x007ECE9C; locator 0x00804D88 -> type descriptor 0x00829670
-//   `.?AV?$VectorClass@PAUKamikazeControl@@@@`.
-template class VectorClass<KamikazeControl*>;
 
 // FUNCTION: GAMEMD 0x00555780
 // FUNCTION: GAMEMD 0x005557D0
