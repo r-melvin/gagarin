@@ -14580,7 +14580,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x00660c80",
   "sym": "?Clear@?$DynamicVectorClass@PAVRadarEventClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -17703,20 +17703,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x00660F80",
   "sym": "??_G?$VectorClass@PAVRadarEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<RadarEventClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<RadarEventClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x00660FD0",
-  "sym": "??_G?$VectorClass@PAVRadarEventClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVRadarEventClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<RadarEventClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<RadarEventClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18387,74 +18387,74 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660CB0",
-  "sym": "?ID_00660CB0@VectorIntPair@@QBEHPBH@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVRadarEventClass@@@@UBEHPAPAVRadarEventClass@@@Z",
   "len": "0x1b",
-  "name": "ID_00660CB0",
+  "name": "DynamicVectorClass<RadarEventClass*>::Slot5",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660CD0",
-  "sym": "?Item_00660CD0@VectorIntPair@@QBEHH@Z",
+  "sym": "?Slot6@?$VectorClass@PAVRadarEventClass@@@@UBEPAVRadarEventClass@@H@Z",
   "len": "0xd",
-  "name": "Item_00660CD0",
+  "name": "VectorClass<RadarEventClass*>::Slot6",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660CE0",
-  "sym": "?Equals_00660CE0@VectorIntPair@@QBE_NABU1@@Z",
+  "sym": "??8?$VectorClass@PAVRadarEventClass@@@@UBE_NABV0@@Z",
   "len": "0x3e",
-  "name": "Equals_00660CE0",
+  "name": "VectorClass<RadarEventClass*>::operator==",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660D20",
-  "sym": "?Resize_00660D20@VectorIntPair@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$VectorClass@PAVRadarEventClass@@@@UAE_NHPAPAVRadarEventClass@@@Z",
   "len": "0xae",
-  "name": "Resize_00660D20",
+  "name": "VectorClass<RadarEventClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660E00",
-  "sym": "?ID_00660E00@VectorIntPair@@QBEHABH@Z",
+  "sym": "?FindItemIndex@?$VectorClass@PAVRadarEventClass@@@@UBEHABQAVRadarEventClass@@@Z",
   "len": "0x33",
-  "name": "ID_00660E00",
+  "name": "VectorClass<RadarEventClass*>::FindItemIndex",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660E40",
-  "sym": "?ID_00660E40@VectorIntPair@@QBEHPBH@Z",
+  "sym": "?Slot5@?$VectorClass@PAVRadarEventClass@@@@UBEHPAPAVRadarEventClass@@@Z",
   "len": "0x1b",
-  "name": "ID_00660E40",
+  "name": "VectorClass<RadarEventClass*>::Slot5",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660E60",
-  "sym": "?Resize_00660E60@VectorIntPair@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVRadarEventClass@@@@UAE_NHPAPAVRadarEventClass@@@Z",
   "len": "0xb0",
-  "name": "Resize_00660E60",
+  "name": "DynamicVectorClass<RadarEventClass*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_int_pair_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x660F50",
-  "sym": "?ID_00660F50@VectorIntPair@@QBEHABH@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVRadarEventClass@@@@UBEHABQAVRadarEventClass@@@Z",
   "len": "0x26",
-  "name": "ID_00660F50",
+  "name": "DynamicVectorClass<RadarEventClass*>::FindItemIndex",
   "status": "matched",
   "pct": 100
  },
@@ -19980,7 +19980,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_radar_event_methods.cpp",
   "addr": "0x00660dd0",
   "sym": "?Clear@?$VectorClass@PAVRadarEventClass@@@@UAEXXZ",
   "len": "0x27",
@@ -40460,6 +40460,87 @@
   "sym": "?FUN_004790E0@CD_004790E0@@UAE_NH@Z",
   "len": "0x2C",
   "name": "CD_004790E0::FUN_004790E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x4740b0",
+  "sym": "_FUN_004740B0",
+  "len": "0x31",
+  "name": "FUN_004740B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x4740f0",
+  "sym": "_FUN_004740F0",
+  "len": "0x21",
+  "name": "FUN_004740F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x474120",
+  "sym": "_FUN_00474120",
+  "len": "0x2c",
+  "name": "FUN_00474120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x474150",
+  "sym": "_FUN_00474150",
+  "len": "0x27",
+  "name": "FUN_00474150",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x474180",
+  "sym": "_FUN_00474180",
+  "len": "0xf",
+  "name": "FUN_00474180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x474190",
+  "sym": "_FUN_00474190",
+  "len": "0x12",
+  "name": "FUN_00474190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x4741b0",
+  "sym": "_FUN_004741B0",
+  "len": "0x1a",
+  "name": "FUN_004741B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473fe0.cpp",
+  "addr": "0x4741d0",
+  "sym": "_FUN_004741D0",
+  "len": "0x17",
+  "name": "FUN_004741D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cd_global_state_update_methods.cpp",
+  "addr": "0x47ADA0",
+  "sym": "?FUN_0047ADA0@@YIXI@Z",
+  "len": "0x11",
+  "name": "FUN_0047ADA0",
   "status": "matched",
   "pct": 100
  }

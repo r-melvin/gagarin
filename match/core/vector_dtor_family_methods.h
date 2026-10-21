@@ -128,8 +128,6 @@ extern char VT_007EFEA4;
 extern char VT_007F044C;
 // VTABLE: GAMEMD 0x007F07C4 -- VectorClass<RadSiteClass*>
 extern char VT_007F07C4;
-// VTABLE: GAMEMD 0x007F0ACC -- VectorClass<RadarEventClass*>
-extern char VT_007F0ACC;
 // VTABLE: GAMEMD 0x007F0C4C -- VectorClass<OwnerTalkClass::ConnectionListStruct*>
 extern char VT_007F0C4C;
 // VTABLE: GAMEMD 0x007F1274 -- VectorClass<DiskID>

@@ -19,6 +19,7 @@
 //            node in ESI, cl 8804 the other way round, 15 instructions.)
 
 #include "mix_file_class.h"
+#include "../_layout/memory_buffer.h"
 #include <stdio.h>   // sprintf
 #include <string.h>  // strcpy, _strlwr, strstr
 
@@ -204,7 +205,7 @@ void* __fastcall MixFileClass_Retrieve(char* name, bool force)
     {
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
-        FUN_0043AE50(file.Sub58);
+        ((MemoryBuffer*)file.Sub58)->Clear();
         file.Vtbl    = &VT_007E1668;
         FUN_00431B80(&file);
         return 0;
@@ -238,7 +239,7 @@ void* __fastcall MixFileClass_Retrieve(char* name, bool force)
 
     file.Vtbl    = &VT_007E16B0;
     file.Reset64 = 0;
-    FUN_0043AE50(file.Sub58);
+    ((MemoryBuffer*)file.Sub58)->Clear();
     file.Vtbl    = &VT_007E1668;
     FUN_00431B80(&file);
     return value;

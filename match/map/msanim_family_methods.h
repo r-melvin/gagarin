@@ -366,8 +366,6 @@ GG_STATIC_ASSERT(sizeof(MSStringClass) == 4);
 extern char VT_007E16B0;
 // VTABLE: GAMEMD 0x7E1668 — CDFileClass, the base the destructor drops to.
 extern char VT_007E1668;
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 

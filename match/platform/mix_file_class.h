@@ -127,8 +127,6 @@ GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
 // ---------------------------------------------------------------------------
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the +0x58 sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 

@@ -138,6 +138,7 @@
 // the two rectangle loads; the residual is a scheduling one.
 
 #include "msanim_family_methods.h"
+#include "../_layout/memory_buffer.h"
 
 MSAnimCounters MSAnimCounts;
 MSPrintSurface* MSSurfaceGlobal;
@@ -789,7 +790,7 @@ MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
 
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
-        FUN_0043AE50(file.Sub58);
+        ((MemoryBuffer*)file.Sub58)->Clear();
         file.Vtbl    = &VT_007E1668;
         FUN_00431B80(&file);
 
@@ -847,7 +848,7 @@ MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
 
         file.Vtbl    = &VT_007E16B0;
         file.Reset64 = 0;
-        FUN_0043AE50(file.Sub58);
+        ((MemoryBuffer*)file.Sub58)->Clear();
         file.Vtbl    = &VT_007E1668;
         FUN_00431B80(&file);
 

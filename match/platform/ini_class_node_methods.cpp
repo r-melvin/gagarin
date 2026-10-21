@@ -9,6 +9,7 @@
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX /Ob2
 // Ob2 inlines native GenericList construction into List<INIEntry*>.
 #include "ini_class_node_methods.h"
+#include "../_layout/memory_buffer.h"
 
 // FUNCTION: GAMEMD 0x40E320
 GenericNode::GenericNode()
@@ -175,13 +176,14 @@ template<> void* Node<INIClass::INISection*>::DeletingDestructor(unsigned int fl
     return this;
 }
 
-// Slot zero of CacheStraw's vtable: destroy the buffer member at +0x0C, run
-// the Straw base destructor, then free on request.
+// Slot zero of CacheStraw's vtable: clear the observed sub-object at +0x0C,
+// call the Straw base routine, then free on request. This sequence does not
+// establish original C++ member ownership or destructor structure.
 //
 // FUNCTION: GAMEMD 0x52AE70
 void* CacheStraw::DeletingDestructor(unsigned int flags)
 {
-    FUN_0043AE50((char*)this + 0x0C);
+    Buffer.Clear();
     FUN_006C9850(this);
 
     if (flags & 1) {

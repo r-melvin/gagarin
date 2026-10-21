@@ -46,6 +46,7 @@
 #include "../_layout/generic_list.h"
 #include "../_layout/index_class_layout.h"
 #include "../_layout/ini_class.h"
+#include "../_layout/memory_buffer.h"
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
@@ -85,9 +86,6 @@ extern "C" char* __cdecl FUN_007CAF30(const char* string, int ch);
 // FUNCTION: GAMEMD 0x727CF0  strtrim - trims leading and trailing whitespace
 // in place. Takes its buffer in ECX and pops nothing, so it is __fastcall.
 void __fastcall FUN_00727CF0(char* buffer);
-// FUNCTION: GAMEMD 0x43AE50  the buffer-holder destructor CacheStraw runs on
-// its member at +0x0C.
-void __fastcall FUN_0043AE50(void* self);
 // FUNCTION: GAMEMD 0x6C9850  Straw::~Straw - CacheStraw's base destructor.
 void __fastcall FUN_006C9850(void* self);
 
@@ -122,15 +120,19 @@ typedef INIClass::INISection INISection;
 // overwritten immediately by the base's).
 // ---------------------------------------------------------------------------
 // ---------------------------------------------------------------------------
-// CacheStraw - unrelated to INI, but its deleting destructor is seated inside
-// this address run. The class is opaque apart from the sub-object at +0x0C
-// whose destructor runs first.
+// CacheStraw - unrelated to INI, but its deleting entry is seated inside this
+// address run. The binary clears a 0x0C sub-object at +0x0C before calling the
+// Straw base routine; original member ownership is not established here.
 // ---------------------------------------------------------------------------
 struct CacheStraw
 {
+    char unknown_00[0x0C];
+    MemoryBuffer Buffer; // +0x0C, passed to MemoryBuffer::Clear by the deleting entry
+
     // FUNCTION: GAMEMD 0x52AE70  vtable 0x7EB754 slot 0
     void* DeletingDestructor(unsigned int flags);
 };
+GG_STATIC_ASSERT(offsetof(CacheStraw, Buffer) == 0x0C);
 
 // ---------------------------------------------------------------------------
 // CRCEngine - the hash INIClass indexes section and entry names with. Three

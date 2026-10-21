@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x641DB0.
 
 #include "preview_class_pcx_methods.h"
+#include "../_layout/memory_buffer.h"
 
 // FUNCTION: GAMEMD 0x641DB0
 //
@@ -51,7 +52,7 @@ bool PreviewClass::ReadPCXPreview(const char* lpFile)
 
                     file.Vtbl    = &VT_007E16B0;
                     file.Reset64 = 0;
-                    FUN_0043AE50(file.Sub58);
+                    ((MemoryBuffer*)file.Sub58)->Clear();
                     file.Vtbl    = &VT_007E1668;
                     FUN_00431B80(&file);
                     return true;
@@ -62,7 +63,7 @@ bool PreviewClass::ReadPCXPreview(const char* lpFile)
 
     file.Vtbl    = &VT_007E16B0;
     file.Reset64 = 0;
-    FUN_0043AE50(file.Sub58);
+    ((MemoryBuffer*)file.Sub58)->Clear();
     file.Vtbl    = &VT_007E1668;
     FUN_00431B80(&file);
     return false;

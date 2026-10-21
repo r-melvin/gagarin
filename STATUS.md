@@ -1,15 +1,54 @@
 # Project status
 
-The latest whole-repository regression passed with **4,329 fully matched
-functions**, **167 partial rows**, and 983 manifest translation units, with no
-matched function regressing. All **993 tracked C++ files** produced current
+The latest whole-repository regression passed with **4,338 fully matched
+functions**, **167 partial rows**, and 984 manifest translation units, with no
+matched function regressing. All **994 tracked C++ files** produced current
 project objects and passed the hash check. The compile/layout gate, 75 verifier
-tests and duplicate-address check passed (4,527 addresses, zero problems).
+tests and duplicate-address check passed (4,538 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: MapSelection, ParticleClass and LightSourceClass vectors; CD slot 0
+## Latest integration: RadarEvent vectors, memory-buffer cleanup calls and math entries
+
+The native [RadarEvent pointer-vector implementation](match/core/vector_radar_event_methods.cpp)
+now owns 12 existing address claims; it adds no new match rows. The obsolete
+`VectorIntPair` implementation and header were removed. Both RTTI-backed
+tables pass conditional seven-slot checks against their project objects.
+
+Eight math routines at `0x4740B0` through `0x4741D0` were added to the
+[address-ordered math implementation](match/core/math_global_updates_00473fe0.cpp),
+and the [scalar state update at `0x47ADA0`](match/core/cd_global_state_update_methods.cpp)
+adds one more exact match. Helper arguments and x87 results use compiler ABI
+views; their
+original return types, owning class and startup role remain unestablished.
+
+Nine calls across six consumers now use the shared
+[`MemoryBuffer::Clear`](match/core/memory_buffer_methods.cpp): INI CacheStraw,
+MixFile, Convert, PCX preview, MS animation and smudge loading.
+The old free-function symbol's unresolved object references fell from eight to
+two, both in the separately scoped CcFile time-method views. CacheStraw records
+the observed buffer prefix at `+0x0C` with an offset assertion; this does not
+claim a complete object size or original member ownership.
+
+The full regression passed with **4,338 matched functions**, 167 partial rows
+and no regressions. All **994/994 tracked C++ files** produced current project
+objects and passed the hash check. The compile/layout gate, 75 verifier tests
+and duplicate-address check passed (4,538 addresses, zero problems). Eleven
+saved partial-body byte/relocation checks retain their baseline bytes and
+relocations. The `/dll /noentry /nodefaultlib` diagnostic link reports
+**3,702 unique unresolved symbols**, 5,552 reference lines and no duplicate
+definitions. Default libraries are excluded, so this diagnostic does not
+establish engine link closure.
+
+Matched lengths total **305,870 bytes (299 KiB)**: 22.0% of listed functions
+and 8.1% of listed function lengths. The current padding scan reports 271
+matched entries missed by its heuristic. Generic families contain 123 deleting
+bindings across 65 views, 62 base `Clear` rows, 60 native dynamic `Clear` rows
+plus one DiskID stand-in, and nine resize-family rows plus two other resize
+helpers. Complete executable reproduction remains unfinished.
+
+## Previous verified integration: MapSelection, ParticleClass and LightSourceClass vectors; CD slot 0
 
 The native mutable-pointer vector implementations for
 [MapSelection](match/core/vector_mapselection_methods.cpp),
@@ -1663,8 +1702,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 993 tracked C++ files and 4,496 manifest
-rows across 983 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 994 tracked C++ files and 4,505 manifest
+rows across 984 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1826,7 +1865,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 63 base and 61
+  `CountedVector::Destroy` stand-ins. The family files bind 62 base and 60
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -1916,7 +1955,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 125 bindings across 66 base-template instantiation views. Their
+  family has 123 bindings across 65 base-template instantiation views. Their
   written vptr and RTTI identify the base-destruction path and element type,
   but do not establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -1980,10 +2019,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,329** | **21.9%** of 19,753 |
-| Sum of matched function lengths | 298 KiB | 8.0% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,338** | **22.0%** of 19,753 |
+| Sum of matched function lengths | 299 KiB | 8.1% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 993 | |
+| Tracked C++ files under `match/` | 994 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

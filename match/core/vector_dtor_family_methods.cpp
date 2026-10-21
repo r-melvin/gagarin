@@ -123,7 +123,6 @@ class Point2D;
 class RGBClass;
 class RadBeam;
 class RadSiteClass;
-class RadarEventClass;
 struct RadarTrackingStruct;
 class SchemeNode;
 struct ScoutStruct;
@@ -515,12 +514,6 @@ template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
 // VectorClass<RadSiteClass*> -- reseats retail vtable 0x007F07C4; locator 0x00808628 -> type descriptor 0x00839598
 //   `.?AV?$VectorClass@PAVRadSiteClass@@@@`.
 template class VectorClass<RadSiteClass*>;
-
-// FUNCTION: GAMEMD 0x00660F80
-// FUNCTION: GAMEMD 0x00660FD0
-// VectorClass<RadarEventClass*> -- reseats retail vtable 0x007F0ACC; locator 0x008088A0 -> type descriptor 0x00839920
-//   `.?AV?$VectorClass@PAVRadarEventClass@@@@`.
-template class VectorClass<RadarEventClass*>;
 
 // FUNCTION: GAMEMD 0x00664A70
 // FUNCTION: GAMEMD 0x00664AC0

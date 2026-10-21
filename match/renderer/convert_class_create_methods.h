@@ -28,8 +28,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.

@@ -28,8 +28,6 @@
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir,
                                   const char* fname, const char* ext);
 
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 
