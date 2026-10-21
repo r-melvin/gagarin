@@ -42,8 +42,6 @@ extern char VT_007E5C84;
 extern char VT_007E8BC0;
 // VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
 extern char VT_007EA504;
-// VTABLE: GAMEMD 0x007E9F84 -- VectorClass<TeamClass*>
-extern char VT_007E9F84;
 // VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
 extern char VT_007EA584;
 // VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>

@@ -20,6 +20,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/cd_search_path.h"
 
 typedef unsigned int FileAccessMode;
 
@@ -96,19 +97,6 @@ public:
     unsigned int unknown_4C;   // +0x4C
     unsigned int unknown_50;   // +0x50
 };
-
-// One entry of the CD search-path list: the next node, then the directory
-// prefix that is prepended to a bare file name.
-struct SearchPath_0047AE10
-{
-    SearchPath_0047AE10* Next;   // +0x00
-    const char*          Path;   // +0x04
-};
-GG_STATIC_ASSERT(offsetof(SearchPath_0047AE10, Next) == 0x0);
-GG_STATIC_ASSERT(offsetof(SearchPath_0047AE10, Path) == 0x4);
-
-// GLOBAL: GAMEMD 0x89E410 — head of the CD search-path list.
-extern SearchPath_0047AE10* DAT_0089E410;
 
 class CDFileClass : public BufferIOFileClass
 {

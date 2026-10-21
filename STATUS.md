@@ -1,15 +1,62 @@
 # Project status
 
-The latest whole-repository regression passed with **4,338 fully matched
-functions**, **167 partial rows**, and 984 manifest translation units, with no
-matched function regressing. All **994 tracked C++ files** produced current
+The latest whole-repository regression passed with **4,349 fully matched
+functions**, **167 partial rows**, and 985 manifest translation units, with no
+matched function regressing. All **995 tracked C++ files** produced current
 project objects and passed the hash check. The compile/layout gate, 75 verifier
-tests and duplicate-address check passed (4,538 addresses, zero problems).
+tests and duplicate-address check passed (4,549 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: RadarEvent vectors, memory-buffer cleanup calls and math entries
+## Latest integration: TeamClass vectors, CD search paths and INI stream read
+
+The native [TeamClass pointer-vector implementation](match/core/vector_teamclass_methods.cpp)
+contains twelve entries across `VectorClass<TeamClass*>` and
+`DynamicVectorClass<TeamClass*>`: seven new matches and five migrated address
+claims, including the Dynamic `SetCapacity` row previously represented by a
+resize-family view. The two RTTI-backed seven-slot tables pass conditional
+checks against the integrated project objects. `/O2 /DNDEBUG /Gy` with `/GX`
+disabled is required for the full Dynamic deleting-destructor body; the Vector
+deleting body also matches with `/GX` enabled. These scoped table checks rely on
+conditional weak defaults for deleting-destructor slots, not final-link evidence.
+
+The [CD search-path methods](match/core/cd_global_state_update_methods.cpp)
+add exact entries at `0x47AAC0`, `0x47AD50` and `0x47ADC0`. The 67-byte
+`0x47AAC0` wrapper clears the list and tail-jumps to the separate helper at
+`0x47AB10`; that helper remains unmatched. The 69-byte `0x47AD50` entry
+allocates an eight-byte node and writes the observed `Next` and `Path` fields
+at offsets `+0` and `+4`. Those calls now use the shared
+[`SearchPath_0047AE10` layout](match/_layout/cd_search_path.h), whose size is
+supported by the allocator request. No original owner or source boundary is
+claimed.
+
+The new 266-byte `0x474320` entry in
+[CCINI stream reads](match/platform/ccini_class_read_ccfile_methods.cpp)
+uses a supplied `Pipe` view and the receiver's digest fields; it does not
+construct or clean up a local file stream. The source keeps its placeholder
+symbol and argument types as ABI views; the original overload name is unknown.
+This batch adds eleven new exact matches and migrates five existing address
+claims.
+
+The full regression passed with **4,349 matched functions**, 167 partial rows
+and no regressions. All **995/995 tracked C++ files** produced current project
+objects and passed the hash check. The compile/layout gate, 75 verifier tests
+and duplicate-address check passed (4,549 addresses, zero problems). Eleven
+saved partial-body byte/relocation checks retain their baseline bytes and
+relocations. The `/dll /noentry /nodefaultlib` diagnostic link reports
+**3,697 unique unresolved symbols**, 5,544 reference lines and no duplicate
+definitions. Default libraries are excluded, so this diagnostic does not
+establish engine link closure.
+
+Matched lengths total **306,730 bytes (300 KiB)**: 22.0% of listed functions
+and 8.1% of listed function lengths. The current padding scan reports 272
+matched entries missed by its heuristic. Generic families contain 121 deleting
+bindings across 64 views, 61 base `Clear` rows, 59 native dynamic `Clear` rows
+plus one DiskID stand-in, and eight resize-family rows plus two other resize
+helpers. Complete executable reproduction remains unfinished.
+
+## Previous verified integration: RadarEvent vectors, memory-buffer cleanup calls and math entries
 
 The native [RadarEvent pointer-vector implementation](match/core/vector_radar_event_methods.cpp)
 now owns 12 existing address claims; it adds no new match rows. The obsolete
@@ -1702,8 +1749,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 994 tracked C++ files and 4,505 manifest
-rows across 984 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 995 tracked C++ files and 4,516 manifest
+rows across 985 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1865,7 +1912,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 62 base and 60
+  `CountedVector::Destroy` stand-ins. The family files bind 61 base and 59
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -1955,7 +2002,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 123 bindings across 65 base-template instantiation views. Their
+  family has 121 bindings across 64 base-template instantiation views. Their
   written vptr and RTTI identify the base-destruction path and element type,
   but do not establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -1965,7 +2012,7 @@ Verified consolidation steps:
   retail declaring class is unresolved; other legacy users are marked
   `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
   original source-file ownership remain incomplete.
-  The resize helpers retain nine address-specific family views and two other
+  The resize helpers retain eight address-specific family views and two other
   generic resize helpers. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
 - [TypeList](match/core/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
@@ -2019,10 +2066,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,338** | **22.0%** of 19,753 |
-| Sum of matched function lengths | 299 KiB | 8.1% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,349** | **22.0%** of 19,753 |
+| Sum of matched function lengths | 300 KiB | 8.1% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 994 | |
+| Tracked C++ files under `match/` | 995 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2042,7 +2089,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 271 matched entries. Its candidate count is therefore
+listed entries, including 272 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

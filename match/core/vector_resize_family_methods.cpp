@@ -54,19 +54,6 @@ bool VectorResizeFamily::FUN_4E9840(int newsize, void** array)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x4EA1C0
-bool VectorResizeFamily::FUN_4EA1C0(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x5AD010
 bool VectorResizeFamily::FUN_5AD010(int newsize, void** array)
 {

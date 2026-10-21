@@ -153,7 +153,6 @@ template<class T0> class TRect;
 class TagClass;
 class TagTypeClass;
 class TaskForceClass;
-class TeamClass;
 class TeamTypeClass;
 class TechnoClass;
 class TechnoTypeClass;
@@ -259,12 +258,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
 
-
-// FUNCTION: GAMEMD 0x004EF8A0
-// FUNCTION: GAMEMD 0x004EF8F0
-// VectorClass<TeamClass*> -- reseats retail vtable 0x007E9F84; locator 0x008015A8 -> type descriptor 0x00823448
-//   `.?AV?$VectorClass@PAVTeamClass@@@@`.
-template class VectorClass<TeamClass*>;
 
 // FUNCTION: GAMEMD 0x004EF940
 // FUNCTION: GAMEMD 0x007213E0

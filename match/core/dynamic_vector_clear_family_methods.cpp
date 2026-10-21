@@ -162,7 +162,6 @@ template<class T0> class TRect;
 class TagClass;
 class TagTypeClass;
 class TaskForceClass;
-class TeamClass;
 class TeamTypeClass;
 class TechnoClass;
 class TechnoTypeClass;
@@ -240,11 +239,6 @@ template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
 //   `.?AV?$DynamicVectorClass@PAVSuperClass@@@@`.
 template class DynamicVectorClass<SuperClass*>;
 
-
-// FUNCTION: GAMEMD 0x004E84D0
-// DynamicVectorClass<TeamClass*> -- vtable 0x007E9F64 slot 3; locator 0x00801578 -> type descriptor 0x00823478
-//   `.?AV?$DynamicVectorClass@PAVTeamClass@@@@`.
-template class DynamicVectorClass<TeamClass*>;
 
 // FUNCTION: GAMEMD 0x004E8600
 // DynamicVectorClass<TubeClass*> -- vtable 0x007E9CA4 slot 3; locator 0x00800EF0 -> type descriptor 0x00823000

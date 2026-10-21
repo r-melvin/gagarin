@@ -17,8 +17,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+// VTABLE: GAMEMD 0x7E4D90 -- external address binding for FileStraw call view.
 extern char VT_007E4D90;
+// VTABLE: GAMEMD 0x7E4D78 -- external address binding for SHAPipe call view.
 extern char VT_007E4D78;
+// STRING: GAMEMD 0x81BFE0 -- "Digest".
 extern const char STR_0081BFE0[];
 
 struct Pipe_004741F0
@@ -27,6 +30,9 @@ struct Pipe_004741F0
     int   ChainTo;           // +0x0004
     int   ChainFrom;         // +0x0008
 };
+GG_STATIC_ASSERT(offsetof(Pipe_004741F0, Vtable) == 0);
+GG_STATIC_ASSERT(offsetof(Pipe_004741F0, ChainTo) == 4);
+GG_STATIC_ASSERT(offsetof(Pipe_004741F0, ChainFrom) == 8);
 GG_STATIC_ASSERT(sizeof(Pipe_004741F0) == 0x0C);
 
 struct File_004741F0;
@@ -60,7 +66,14 @@ struct SHAPipe_004741F0 : Pipe_004741F0
     // FUNCTION: GAMEMD 0x631C80 (decl; reloc) — destructor.
     void Destroy();
 };
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Vtable) == 0);
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, ChainTo) == 4);
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, ChainFrom) == 8);
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, IsCached) == 0x0C);
 GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Acc) == 0x24);
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, Length) == 0x38);
+GG_STATIC_ASSERT(offsetof(SHAPipe_004741F0, PartialCount) == 0x3C);
+GG_STATIC_ASSERT(sizeof(unsigned int) == 4);
 GG_STATIC_ASSERT(sizeof(SHAPipe_004741F0) == 0x80);
 
 struct CCINI_004741F0
@@ -82,8 +95,11 @@ struct CCINI_004741F0
 
     // FUNCTION: GAMEMD 0x4741F0 — CCINIClass::ReadCCFile.
     int ReadCCFile(File_004741F0* file, bool withDigest, bool flag);
+    // FUNCTION: GAMEMD 0x474320 -- caller-supplied stream ABI view; original name unknown.
+    int FUN_00474320(Pipe_004741F0* straw, bool withDigest, bool flag);
 };
 GG_STATIC_ASSERT(offsetof(CCINI_004741F0, DigestValid) == 0x40);
 GG_STATIC_ASSERT(offsetof(CCINI_004741F0, Digest) == 0x41);
+GG_STATIC_ASSERT(sizeof(((CCINI_004741F0*)0)->Digest) == 0x14);
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_READ_CCFILE_METHODS_H
