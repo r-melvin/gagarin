@@ -1,5 +1,44 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot reports **4,851 matched
+function rows**, **200 partial rows**, **5,051 manifest rows**, **1,051 manifest
+translation units**, and **1,061 tracked C++ files**. Whole-repository regression,
+compile/layout checks, the project build and 112 tooling tests pass with zero
+matched regressions. All project objects are current. The annotation audit
+reports 5,084 body addresses and zero issues. Thirty-six saved partial
+baselines are unchanged.
+
+The latest batch adds DSurface's ordinary methods to the canonical renderer
+hierarchy: nine new exact functions, one existing exact getter migrated, and
+ten partials. All ten exact spans pass raw checks and all six relocation fields
+resolve to retail targets. Direct pinned-image checks cover all 38 vtable
+slots; this establishes address bindings, not emitted-table selection or class
+closure. Constructors and the deleting destructor remain deferred.
+
+The import corrects four truncated partial extents, an oversized padding gap
+that misplaced a row-stride field, and buffer-helper call bindings. The stride
+at `+0x28` is confirmed by entry-origin disassembly and REA/Ghidra memory bytes.
+Six partial objects are shorter than their retail spans; their instruction
+scores are diagnostics, with no full-span raw-byte or semantic-equivalence
+claim. The existing pixel-shift view is shared with the blitters rather than
+adding another storage alias. No assembly or runtime shim was added.
+
+Matched lengths total **349,752 bytes**: 24.6% of listed functions and 9.2%
+of listed function lengths. The padding heuristic misses 301 matched entries.
+The diagnostic link reports **3,558 unique unresolved symbols**, **5,381
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished. Earlier literal and decoder
+oracle corrections remain in place.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the literal correction above is one such example.
+
+## Historical snapshot: native BSurface Lock and shared DirectDraw calls
+
 As of **2026-10-21**, the latest verified snapshot reports **4,842 matched
 function rows**, **190 partial rows**, **5,032 manifest rows**, **1,041 manifest
 translation units**, and **1,051 tracked C++ files**. Whole-repository regression,
@@ -40,13 +79,6 @@ of listed function lengths. The padding heuristic misses 301 matched entries.
 The diagnostic link reports **3,545 unique unresolved symbols**, **5,326
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the literal correction above is one such example.
 
 ## Historical snapshot: Surface hierarchy consolidation
 
@@ -2483,10 +2515,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,842** | **24.5%** of 19,753 |
-| Sum of matched function lengths | 349,020 bytes | 9.2% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 190 | 1.0% |
-| Tracked C++ files under `match/` | 1,051 | |
+| Functions matched at 100% | **4,851** | **24.6%** of 19,753 |
+| Sum of matched function lengths | 349,752 bytes | 9.2% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 200 | 1.0% |
+| Tracked C++ files under `match/` | 1,061 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

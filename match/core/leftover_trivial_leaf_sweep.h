@@ -55,7 +55,6 @@ GG_STATIC_ASSERT(offsetof(LeafObj_0x04, unknown_04) == 0x4);
 int __fastcall FUN_0049FB60(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x49FB60
 bool __cdecl   FUN_004A3BF0();                     // FUNCTION: GAMEMD 0x4A3BF0
 void __stdcall FUN_004AAD20(int unused);           // FUNCTION: GAMEMD 0x4AAD20
-int __fastcall FUN_004BAD60(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x4BAD60
 bool __stdcall FUN_00484F10(int unused);           // FUNCTION: GAMEMD 0x484F10
 void __stdcall FUN_004FF540(int unused);           // FUNCTION: GAMEMD 0x4FF540
 bool __cdecl   FUN_005B43E0();                     // FUNCTION: GAMEMD 0x5B43E0

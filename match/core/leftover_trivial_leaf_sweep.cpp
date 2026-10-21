@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The trivial leaves the big shape sweeps left behind: five loads of a
-// container's +0x10 count, five loads of its +0x04 storage pointer, five
+// The trivial leaves the big shape sweeps left behind: four loads of a
+// container's +0x10 field, five loads of its +0x04 storage pointer, five
 // constant-true returns with no arguments, three with one argument, three
 // one-argument no-ops, and three stores of the ECX argument into a fixed
 // global. Ordered ascending by retail address.
@@ -31,12 +31,6 @@ bool __cdecl FUN_004A3BF0()
 // FUNCTION: GAMEMD 0x4AAD20
 void __stdcall FUN_004AAD20(int)
 {
-}
-
-// FUNCTION: GAMEMD 0x4BAD60
-int __fastcall FUN_004BAD60(LeafObj_0x10* self)
-{
-    return self->unknown_10;
 }
 
 // FUNCTION: GAMEMD 0x4FF540

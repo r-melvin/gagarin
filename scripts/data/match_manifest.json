@@ -8670,15 +8670,6 @@
  },
  {
   "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
-  "addr": "0x4BAD60",
-  "sym": "?FUN_004BAD60@@YIHPAULeafObj_0x10@@@Z",
-  "len": "0x4",
-  "name": "FUN_004BAD60",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
   "addr": "0x4FF540",
   "sym": "?FUN_004FF540@@YGXH@Z",
   "len": "0x3",
@@ -45336,5 +45327,205 @@
   "name": "RLEBlitTransZRemapXlatAlphaZReadWrite<unsigned short>::RLEBlitTint",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAD60",
+  "sym": "?GetBytesPerPixel@DSurface@@UAEHXZ",
+  "len": "0x4",
+  "name": "DSurface::GetBytesPerPixel",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAD70",
+  "sym": "?GetPitch@DSurface@@UAEIXZ",
+  "len": "0x7",
+  "name": "DSurface::GetPitch",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAD80",
+  "sym": "?Lock@DSurface@@UAEPAXUPoint2D@@@Z",
+  "len": "0x13b",
+  "name": "DSurface::Lock",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAEC0",
+  "sym": "?unknown_64@DSurface@@UAE_NII@Z",
+  "len": "0x5f",
+  "name": "DSurface::unknown_64",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAF20",
+  "sym": "?unknown_94@DSurface@@UAE_NXZ",
+  "len": "0x11",
+  "name": "DSurface::unknown_94",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4BAF40",
+  "sym": "?Unlock@DSurface@@UAE_NXZ",
+  "len": "0x9a",
+  "name": "DSurface::Unlock",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4C1A90",
+  "sym": "?CopyFromWhole@DSurface@@UAE_NPAVSurface@@_N1@Z",
+  "len": "0x17",
+  "name": "DSurface::CopyFromWhole",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_methods.cpp",
+  "addr": "0x4C1AB0",
+  "sym": "?unknown_84@DSurface@@UAE_NXZ",
+  "len": "0x3",
+  "name": "DSurface::unknown_84",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_blit.cpp",
+  "addr": "0x4BB080",
+  "sym": "?CopyFromPart@DSurface@@UAE_NPAURectangleStruct@@PAVSurface@@0_N2@Z",
+  "len": "0x4b",
+  "name": "DSurface::CopyFromPart",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_blit.cpp",
+  "addr": "0x4BB5F0",
+  "sym": "?FillRect@DSurface@@UAE_NPAURectangleStruct@@I@Z",
+  "len": "0x2b",
+  "name": "DSurface::FillRect",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_blit.cpp",
+  "addr": "0x4BB620",
+  "sym": "?FillRectEx@DSurface@@UAE_NPAURectangleStruct@@0I@Z",
+  "len": "0x20e",
+  "name": "DSurface::FillRectEx",
+  "status": "partial",
+  "pct": 85.1,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
+ },
+ {
+  "tu": "match/renderer/dsurface_blit.cpp",
+  "addr": "0x4BB830",
+  "sym": "?unknown_1C@DSurface@@UAE_NPAURectangleStruct@@0H@Z",
+  "len": "0x2c7",
+  "name": "DSurface::unknown_1C",
+  "status": "partial",
+  "pct": 0.9,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
+ },
+ {
+  "tu": "match/renderer/dsurface_copy.cpp",
+  "addr": "0x4BB0D0",
+  "sym": "?CopyFrom@DSurface@@UAE_NPAURectangleStruct@@0PAVSurface@@00_N2@Z",
+  "len": "0x517",
+  "name": "DSurface::CopyFrom",
+  "status": "partial",
+  "pct": 27.0,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw34.cpp",
+  "addr": "0x4BFD30",
+  "sym": "?unknown_34@DSurface@@UAE_NHHHHHHH@Z",
+  "len": "0xA17",
+  "name": "DSurface::unknown_34",
+  "status": "partial",
+  "pct": 2.8,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw38.cpp",
+  "addr": "0x4BBCA0",
+  "sym": "?unknown_38@DSurface@@UAE_NHHHHHHH@Z",
+  "len": "0xAAF",
+  "name": "DSurface::unknown_38",
+  "status": "partial",
+  "pct": 8.9,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw3c.cpp",
+  "addr": "0x4BC750",
+  "sym": "?unknown_3C@DSurface@@UAE_NHHHHHHHHHHH@Z",
+  "len": "0x17B0",
+  "name": "DSurface::unknown_3C",
+  "status": "partial",
+  "pct": 0.6,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw40.cpp",
+  "addr": "0x4BDF00",
+  "sym": "?unknown_40@DSurface@@UAE_NHHHHHHH@Z",
+  "len": "0xAC2",
+  "name": "DSurface::unknown_40",
+  "status": "partial",
+  "pct": 6.5,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw4c.cpp",
+  "addr": "0x4C0750",
+  "sym": "?unknown_4C@DSurface@@UAEHHHHHHH@Z",
+  "len": "0x6de",
+  "name": "DSurface::unknown_4C",
+  "status": "partial",
+  "pct": 1.2,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw50.cpp",
+  "addr": "0x4C0E30",
+  "sym": "?unknown_50@DSurface@@UAE_NHHHH@Z",
+  "len": "0x601",
+  "name": "DSurface::unknown_50",
+  "status": "partial",
+  "pct": 1.6,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
+ },
+ {
+  "tu": "match/renderer/dsurface_draw90.cpp",
+  "addr": "0x4BF750",
+  "sym": "?DrawLineGradient@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PBE2PAM3@Z",
+  "len": "0x5db",
+  "name": "DSurface::DrawLineGradient",
+  "status": "partial",
+  "pct": 8.7,
+  "metric": "instruction-position",
+  "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
  }
 ]
