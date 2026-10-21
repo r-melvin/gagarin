@@ -24,6 +24,9 @@ Usage: obj_to_blob.py <in.obj> <mangled-symbol> <out.o>
 """
 import importlib.util, os, subprocess, sys
 
+# diff_retail imports adjacent verification helpers when loaded by file path.
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "vc6")))
+
 _spec = importlib.util.spec_from_file_location(
     "diff_retail",
     os.path.join(os.path.dirname(os.path.abspath(__file__)),

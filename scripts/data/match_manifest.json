@@ -40937,8 +40937,8 @@
   "sym": "?FUN_00631D10@LCWPipe@@UAEHHH@Z",
   "len": "0x227",
   "name": "LCWPipe::FUN_00631D10",
-  "status": "partial",
-  "pct": 99
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/lcw_pipe.cpp",
@@ -40946,6 +40946,15 @@
   "sym": "?FUN_00631D30@LCWPipe@@UAEHXZ",
   "len": "0xbf",
   "name": "LCWPipe::FUN_00631D30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/lcw_pipe.cpp",
+  "addr": "0x551FF0",
+  "sym": "??0LCWPipe@@QAE@W4CompControl@0@H@Z",
+  "len": "0x6E",
+  "name": "LCWPipe::LCWPipe",
   "status": "matched",
   "pct": 100
  }

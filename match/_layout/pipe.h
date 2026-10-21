@@ -19,6 +19,9 @@ public:
 
     // The compiler emits the retail scalar-deleting entry at 0x4AEC80 and
     // ordinary destructor body at 0x631C80 from this virtual destructor.
+    // Inlined into derived constructors (LCWPipe 0x551FF0 zeroes +4/+8
+    // with no base call).
+    Pipe() : ChainTo(0), ChainFrom(0) {}
     virtual ~Pipe();
 
     // Vtable slot +0x04; follows ChainTo through the same slot.

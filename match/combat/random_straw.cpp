@@ -183,7 +183,7 @@ void RandomStraw::Scramble_Seed()
 int RandomStraw::Get(void* source, int slen)
 {
     if (source == 0 || slen < 1) {
-        return StrawGet(source, slen);
+        return ((Straw*)this)->Straw::FUN_006C98E0((int)source, slen);
     }
 
     int total = 0;

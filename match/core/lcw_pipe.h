@@ -10,7 +10,8 @@
 // buffers freed by the destructor), `[ESI+0x1C]` (block size), and the block
 // header at `LEA [ESI+0x24]` read as words +0x24 (compressed count, reset
 // to 0xFFFF) and +0x26 (uncompressed count). +0x20 is written by the
-// constructor 0x551FF0 at instruction 0x552030 (not recovered here) and unread by these methods.
+// recovered constructor 0x551FF0 at instruction 0x552030 and unread by the
+// other recovered methods.
 #ifndef GG_MATCH_CORE_LCW_PIPE_H
 #define GG_MATCH_CORE_LCW_PIPE_H
 
@@ -47,12 +48,14 @@ public:
     int            unknown_20;    // +0x20
     LCWBlockHeader BlockHeader;   // +0x24
 
+    // FUNCTION: GAMEMD 0x551FF0
+    LCWPipe(CompControl control, int blocksize);
     // FUNCTION: GAMEMD 0x552060
     virtual ~LCWPipe();
     // Slot +0x04 override (Flush); name kept to override Pipe's slot.
     // FUNCTION: GAMEMD 0x5522D0
     virtual int FUN_00631D30();
-    // Slot +0x10 override (Put(source, length)).
+    // Slot +0x10 override: source pointer and byte count.
     // FUNCTION: GAMEMD 0x5520A0
     virtual int FUN_00631D10(int first, int second);
 };

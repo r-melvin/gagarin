@@ -1,10 +1,30 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // VC6FLAGS: /nologo /c /O2 /Ob2 /DNDEBUG /Gy
-// Entry-origin 0x552060, 0x5520A0, 0x5522D0 and 0x552390 (scalar deleting
+// Entry-origin 0x551FF0, 0x552060, 0x5520A0, 0x5522D0 and 0x552390 (scalar deleting
 // destructor, compiler-emitted), checked against the pinned retail image.
 #include "lcw_pipe.h"
 #include <string.h>
+
+// FUNCTION: GAMEMD 0x551FF0
+// The inline Pipe constructor zeroes the chain links; buffers are sized
+// BlockSize plus a margin of at least 128 bytes.
+LCWPipe::LCWPipe(CompControl control, int blocksize) :
+    Control(control),
+    Counter(0),
+    Buffer(0),
+    Buffer2(0),
+    BlockSize(blocksize)
+{
+    int margin = BlockSize / 128 + 1;
+    if (margin < 128) {
+        margin = 128;
+    }
+    unknown_20 = margin;
+    Buffer = new char[BlockSize + unknown_20];
+    Buffer2 = new char[BlockSize + unknown_20];
+    BlockHeader.CompCount = 0xFFFF;
+}
 
 // FUNCTION: GAMEMD 0x552060
 LCWPipe::~LCWPipe()
@@ -48,6 +68,11 @@ int LCWPipe::FUN_00631D10(int first, int slen)
                 Counter += len;
                 slen -= len;
                 first += len;
+                // Matching workaround found by the permuter: VC6 folds this
+                // pair away but changes register allocation to match retail.
+                // This is compiler steering, not recovered original source.
+                Counter++;
+                Counter--;
                 if (Counter == BlockHeader.CompCount) {
                     FUN_00551C60(Buffer, Buffer2, 0);
                     total += Pipe::FUN_00631D10((int)Buffer2, BlockHeader.UncompCount);

@@ -170,10 +170,7 @@ struct RandomStraw
     int          Current;     // +0x0010
     RandomClass  Random[32];  // +0x0014
 
-    // Address-scoped forwarding view of Straw slot 2. Cleanup calls use the
-    // canonical Straw destructor through the confirmed 12-byte prefix.
-    // FUNCTION: GAMEMD 0x6C98E0  Straw::Get
-    int  StrawGet(void* source, int slen);
+    // Cleanup and fallback calls use the canonical Straw prefix view.
 
     // The three shapes retail keeps BOTH out of line and expanded at every use
     // site. Each is written once as a forced-inline member and the out-of-line

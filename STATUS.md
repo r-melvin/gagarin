@@ -1,15 +1,44 @@
 # Project status
 
-The latest whole-repository regression passed with **4,382 fully matched
-functions**, **168 partial rows**, and 992 manifest translation units, with no
+The latest whole-repository regression passed with **4,384 fully matched
+functions**, **167 partial rows**, and 992 manifest translation units, with no
 matched function regressing. All **1,002 tracked C++ files** produced current
-project objects and passed the hash check. The compile/layout gate, 89 verifier
-tests and duplicate-address check passed (4,583 addresses, zero problems).
+project objects and passed the hash check. The compile/layout gate, 90 verifier
+tests and duplicate-address check passed (4,584 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: LCWPipe and remaining Straw callers
+## Latest integration: LCWPipe constructor and exact input method
+
+The constructor at `0x551FF0` and input method at `0x5520A0` now match their
+full retail spans. The constructor uses an inline Pipe base constructor whose
+link-zeroing stores agree with the derived retail constructor. The permuter
+closed the input method's register-allocation difference with a redundant
+increment/decrement pair that VC6 removes. The source labels this explicitly
+as compiler steering, not recovered original source; no extra instructions
+remain in the compiled body. All five LCWPipe entries are now exact.
+
+All 34 relocation fields across the five integrated spans agree with retail.
+The LCWPipe and Pipe tables each pass five-slot conditional checks using the
+recorded weak defaults. The RandomStraw fallback now calls the canonical Straw
+slot directly; its two relocation targets are verified. The wider scoped
+Pipe/SHA/Straw caller audit covers 44 call relocations.
+
+The full regression and compile/layout gate passed, all 1,002 tracked C++ files
+compiled, and 90 tooling tests passed. A comment-only evidence correction was
+followed by a fresh object build; all five LCWPipe bodies and relocation offsets
+remained identical to the checked objects. Eleven older saved partial bodies
+remain unchanged; the prior LCWPipe partial was deliberately promoted after
+its complete span matched. The permuter adapter now imports its adjacent
+verification helpers without a manually configured `PYTHONPATH`; an isolated
+Python subprocess test covers that failure.
+
+Matched lengths total 309,312 bytes. The diagnostic link reports 3,659 unique
+unresolved symbols, 5,490 reference lines and no duplicate definitions. Whole
+executable reproduction remains unfinished.
+
+## Previous verified integration: LCWPipe and remaining Straw callers
 
 The native [LCWPipe implementation](match/core/lcw_pipe.cpp) replaces two
 generic destructor bindings and adds an exact flush entry at `0x5522D0`.
