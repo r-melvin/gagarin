@@ -15,7 +15,7 @@ void* BufferHolder_004019A0::FUN_004019A0(char flags)
     Vtable = &VT_007E16B0;
     Reset  = 0;
 
-    FUN_0043AE50(Buffer);
+    Buffer.Clear();
 
     Vtable = &VT_007E1668;
 

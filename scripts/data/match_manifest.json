@@ -10566,11 +10566,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc18_methods.cpp",
+  "tu": "match/core/memory_buffer_methods.cpp",
   "addr": "0x43ADC0",
-  "sym": "?FUN_0043ADC0@Owned_0043ADC0@@QAEPAU1@H@Z",
+  "sym": "??0MemoryBuffer@@QAE@H@Z",
   "len": "0x2d",
-  "name": "FUN_0043ADC0",
+  "name": "MemoryBuffer::MemoryBuffer(int)",
   "status": "matched",
   "pct": 100.0
  },
@@ -13563,7 +13563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ebolt_methods.cpp",
   "addr": "0x004c2c40",
   "sym": "?Clear@?$DynamicVectorClass@PAVEBolt@@@@UAEXXZ",
   "len": "0x2a",
@@ -14562,7 +14562,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_radbeam_methods.cpp",
   "addr": "0x0065a1e0",
   "sym": "?Clear@?$DynamicVectorClass@PAVRadBeam@@@@UAEXXZ",
   "len": "0x2a",
@@ -15642,20 +15642,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ebolt_methods.cpp",
   "addr": "0x004C2F00",
   "sym": "??_G?$VectorClass@PAVEBolt@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<EBolt*>::`scalar deleting destructor'",
+  "name": "VectorClass<EBolt*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_ebolt_methods.cpp",
   "addr": "0x004C2F50",
-  "sym": "??_G?$VectorClass@PAVEBolt@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVEBolt@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<EBolt*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<EBolt*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17667,20 +17667,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_radbeam_methods.cpp",
   "addr": "0x0065A4A0",
   "sym": "??_G?$VectorClass@PAVRadBeam@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<RadBeam*>::`scalar deleting destructor'",
+  "name": "VectorClass<RadBeam*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_radbeam_methods.cpp",
   "addr": "0x0065A4F0",
-  "sym": "??_G?$VectorClass@PAVRadBeam@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVRadBeam@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<RadBeam*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<RadBeam*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18963,7 +18963,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_ebolt_methods.cpp",
   "addr": "0x004c2d90",
   "sym": "?Clear@?$VectorClass@PAVEBolt@@@@UAEXXZ",
   "len": "0x27",
@@ -19962,7 +19962,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_radbeam_methods.cpp",
   "addr": "0x0065a330",
   "sym": "?Clear@?$VectorClass@PAVRadBeam@@@@UAEXXZ",
   "len": "0x27",
@@ -37978,5 +37978,149 @@
   "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UBEHABQAUCrossDissolveEffect@@@Z",
   "name": "DynamicVectorClass<CrossDissolveEffect*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4C2C70",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVEBolt@@@@UBEHPAPAVEBolt@@@Z",
+  "name": "DynamicVectorClass<EBolt*>::Slot5"
+ },
+ {
+  "addr": "0x4C2C90",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVEBolt@@@@UBEPAVEBolt@@H@Z",
+  "name": "VectorClass<EBolt*>::Slot6"
+ },
+ {
+  "addr": "0x4C2CA0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "??8?$VectorClass@PAVEBolt@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<EBolt*>::operator=="
+ },
+ {
+  "addr": "0x4C2CE0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVEBolt@@@@UAE_NHPAPAVEBolt@@@Z",
+  "name": "VectorClass<EBolt*>::SetCapacity"
+ },
+ {
+  "addr": "0x4C2DC0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVEBolt@@@@UBEHABQAVEBolt@@@Z",
+  "name": "VectorClass<EBolt*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4C2E00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVEBolt@@@@UBEHPAPAVEBolt@@@Z",
+  "name": "VectorClass<EBolt*>::Slot5"
+ },
+ {
+  "addr": "0x4C2E20",
+  "len": "0xa7",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVEBolt@@@@UAE_NHPAPAVEBolt@@@Z",
+  "name": "DynamicVectorClass<EBolt*>::SetCapacity"
+ },
+ {
+  "addr": "0x4C2ED0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_ebolt_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVEBolt@@@@UBEHABQAVEBolt@@@Z",
+  "name": "DynamicVectorClass<EBolt*>::FindItemIndex"
+ },
+ {
+  "addr": "0x65A210",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVRadBeam@@@@UBEHPAPAVRadBeam@@@Z",
+  "name": "DynamicVectorClass<RadBeam*>::Slot5"
+ },
+ {
+  "addr": "0x65A230",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVRadBeam@@@@UBEPAVRadBeam@@H@Z",
+  "name": "VectorClass<RadBeam*>::Slot6"
+ },
+ {
+  "addr": "0x65A240",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "??8?$VectorClass@PAVRadBeam@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<RadBeam*>::operator=="
+ },
+ {
+  "addr": "0x65A280",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVRadBeam@@@@UAE_NHPAPAVRadBeam@@@Z",
+  "name": "VectorClass<RadBeam*>::SetCapacity"
+ },
+ {
+  "addr": "0x65A360",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVRadBeam@@@@UBEHABQAVRadBeam@@@Z",
+  "name": "VectorClass<RadBeam*>::FindItemIndex"
+ },
+ {
+  "addr": "0x65A3A0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVRadBeam@@@@UBEHPAPAVRadBeam@@@Z",
+  "name": "VectorClass<RadBeam*>::Slot5"
+ },
+ {
+  "addr": "0x65A3C0",
+  "len": "0xa7",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVRadBeam@@@@UAE_NHPAPAVRadBeam@@@Z",
+  "name": "DynamicVectorClass<RadBeam*>::SetCapacity"
+ },
+ {
+  "addr": "0x65A470",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_radbeam_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVRadBeam@@@@UBEHABQAVRadBeam@@@Z",
+  "name": "DynamicVectorClass<RadBeam*>::FindItemIndex"
  }
 ]

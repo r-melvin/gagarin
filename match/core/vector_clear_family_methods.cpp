@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 82
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 80
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 83 remaining addresses are bound to VectorClass<T> tables;
+//   The 81 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -240,11 +240,6 @@ template class VectorClass<IConnectionPoint*>;
 // VectorClass<_DDSURFACEDESC*> -- vtable 0x007E5DEC slot 3; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004C2D90
-// VectorClass<EBolt*> -- vtable 0x007E86AC slot 3; locator 0x008002F8 -> type descriptor 0x00820710
-//   `.?AV?$VectorClass@PAVEBolt@@@@`.
-template class VectorClass<EBolt*>;
 
 // FUNCTION: GAMEMD 0x004D2B20
 // VectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BC0 slot 3; locator 0x00800800 -> type descriptor 0x00822458
@@ -530,11 +525,6 @@ template class VectorClass<PlanningTokenClass*>;
 // VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>> -- vtable 0x007F044C slot 3; locator 0x008083F0 -> type descriptor 0x008393E0
 //   `.?AV?$VectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@`.
 template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
-
-// FUNCTION: GAMEMD 0x0065A330
-// VectorClass<RadBeam*> -- vtable 0x007F04A4 slot 3; locator 0x008084F0 -> type descriptor 0x00839538
-//   `.?AV?$VectorClass@PAVRadBeam@@@@`.
-template class VectorClass<RadBeam*>;
 
 // FUNCTION: GAMEMD 0x0065C040
 // VectorClass<RadSiteClass*> -- vtable 0x007F07C4 slot 3; locator 0x00808628 -> type descriptor 0x00839598

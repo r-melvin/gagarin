@@ -9,8 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-extern "C" void* __cdecl FUN_007C8E17(unsigned int size);   // operator new
-
 // Six vtable pointers over four slots: the two at +0x08 and +0x0C are written
 // twice, first with the base class's tables and then with the derived ones.
 // That is what a multiple-inheritance constructor does, and reproducing it
@@ -33,17 +31,5 @@ struct Obj_004101C0
     Obj_004101C0* FUN_004101C0(int flags);
 };
 
-// The constructor for the owned-buffer type released at 0x43AE50: allocate only
-// for a positive size, and record ownership only when an allocation happened.
-struct Owned_0043ADC0
-{
-    void*         Buffer;        // +0x0000
-    int           Length;        // +0x0004
-    unsigned char IsAllocated;   // +0x0008
-
-    // FUNCTION: GAMEMD 0x43ADC0
-    Owned_0043ADC0* FUN_0043ADC0(int size);
-};
-GG_STATIC_ASSERT(offsetof(Owned_0043ADC0, IsAllocated) == 0x8);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC18_METHODS_H

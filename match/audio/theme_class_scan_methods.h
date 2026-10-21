@@ -21,6 +21,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 
 // GLOBAL: GAMEMD 0xA8EC74 — the first scan gate.
 extern char DAT_00A8EC74;
@@ -40,8 +41,6 @@ extern "C" void __cdecl gg_makepath(char* path, const char* drive,
 extern "C" unsigned __int64 __stdcall gg_aulldiv(unsigned __int64 a,
                                                  unsigned __int64 b);
 
-// FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 
@@ -71,7 +70,7 @@ struct File_007207F0
     {
         this->Vtbl = &VT_007E16B0;
         this->Position = 0;
-        FUN_0043AE50(this->Buffer);
+        reinterpret_cast<MemoryBuffer*>(this->Buffer)->Clear();
         this->Vtbl = &VT_007E1668;
         FUN_00431B80(this);
     }

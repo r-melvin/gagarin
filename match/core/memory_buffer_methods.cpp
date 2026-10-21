@@ -21,6 +21,18 @@ MemoryBuffer::MemoryBuffer(void* pBuffer, int size) throw()
 
 extern "C" void __cdecl FUN_007C8B3D(void* block); // LIBRARY: GAMEMD 0x7C8B3D
 
+// FUNCTION: GAMEMD 0x43ADC0
+MemoryBuffer::MemoryBuffer(int size) throw()
+{
+    Buffer = 0;
+    Size = size;
+    Allocated = 0;
+    if (size > 0) {
+        Buffer = FUN_007C8E17(size);
+        Allocated = 1;
+    }
+}
+
 // FUNCTION: GAMEMD 0x43AE50
 void MemoryBuffer::Clear() throw()
 {

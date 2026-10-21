@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 86 base-template instantiations reproduce 165 remaining retail destructor
+// 84 base-template instantiations reproduce 161 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -259,12 +259,6 @@ template class VectorClass<IConnectionPoint*>;
 // VectorClass<_DDSURFACEDESC*> -- reseats retail vtable 0x007E5DEC; locator 0x007FF9E8 -> type descriptor 0x0081FEA0
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004C2F00
-// FUNCTION: GAMEMD 0x004C2F50
-// VectorClass<EBolt*> -- reseats retail vtable 0x007E86AC; locator 0x008002F8 -> type descriptor 0x00820710
-//   `.?AV?$VectorClass@PAVEBolt@@@@`.
-template class VectorClass<EBolt*>;
 
 // FUNCTION: GAMEMD 0x004D2D10
 // FUNCTION: GAMEMD 0x004D2D60
@@ -608,12 +602,6 @@ template class VectorClass<PlanningTokenClass*>;
 // VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>> -- reseats retail vtable 0x007F044C; locator 0x008083F0 -> type descriptor 0x008393E0
 //   `.?AV?$VectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@`.
 template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
-
-// FUNCTION: GAMEMD 0x0065A4A0
-// FUNCTION: GAMEMD 0x0065A4F0
-// VectorClass<RadBeam*> -- reseats retail vtable 0x007F04A4; locator 0x008084F0 -> type descriptor 0x00839538
-//   `.?AV?$VectorClass@PAVRadBeam@@@@`.
-template class VectorClass<RadBeam*>;
 
 // FUNCTION: GAMEMD 0x0065C1B0
 // FUNCTION: GAMEMD 0x0065C200

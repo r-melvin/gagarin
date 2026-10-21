@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "584f8166915437a0dac3f3f709ab7e02a769dfa3ce3c80ec1ca9a6c58f4a8588",
+  "manifest_sha256": "6d1bf9342919fe96c5648d180e591bd8f8c72f5649bc583a5200717026aed68d",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4053,
-  "matched_entries_missed": 244,
+  "matched_entries": 4069,
+  "matched_entries_missed": 246,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5216,6 +5216,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4C2ED0",
+   "tu": "match/core/vector_ebolt_methods.cpp",
+   "name": "DynamicVectorClass<EBolt*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4C4C30",
    "tu": "match/core/vector_egoclass_methods.cpp",
    "name": "DynamicVectorClass<EgoClass*>::FindItemIndex",
@@ -5933,6 +5939,12 @@
    "addr": "0x63EBD0",
    "tu": "match/core/vector_remove_item_family_methods.cpp",
    "name": "FUN_000063EBD0",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x65A470",
+   "tu": "match/core/vector_radbeam_methods.cpp",
+   "name": "DynamicVectorClass<RadBeam*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {

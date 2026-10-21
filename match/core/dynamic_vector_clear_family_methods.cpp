@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 81
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 79
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -240,11 +240,6 @@ template class DynamicVectorClass<IConnectionPoint*>;
 // DynamicVectorClass<_DDSURFACEDESC*> -- vtable 0x007E5E0C slot 3; locator 0x007FFA50 -> type descriptor 0x0081FED0
 //   `.?AV?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@`.
 template class DynamicVectorClass<_DDSURFACEDESC*>;
-
-// FUNCTION: GAMEMD 0x004C2C40
-// DynamicVectorClass<EBolt*> -- vtable 0x007E868C slot 3; locator 0x008002C8 -> type descriptor 0x00820738
-//   `.?AV?$DynamicVectorClass@PAVEBolt@@@@`.
-template class DynamicVectorClass<EBolt*>;
 
 // FUNCTION: GAMEMD 0x004D2930
 // DynamicVectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BA0 slot 3; locator 0x008007D0 -> type descriptor 0x00822498
@@ -530,11 +525,6 @@ template class DynamicVectorClass<PlanningTokenClass*>;
 // DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*>> -- vtable 0x007F042C slot 3; locator 0x00808458 -> type descriptor 0x00839438
 //   `.?AV?$DynamicVectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@`.
 template class DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
-
-// FUNCTION: GAMEMD 0x0065A1E0
-// DynamicVectorClass<RadBeam*> -- vtable 0x007F0484 slot 3; locator 0x008084C0 -> type descriptor 0x00839568
-//   `.?AV?$DynamicVectorClass@PAVRadBeam@@@@`.
-template class DynamicVectorClass<RadBeam*>;
 
 // FUNCTION: GAMEMD 0x0065BEF0
 // DynamicVectorClass<RadSiteClass*> -- vtable 0x007F07A4 slot 3; locator 0x008085F8 -> type descriptor 0x008395C8

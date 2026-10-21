@@ -24,20 +24,3 @@ Obj_004101C0* Obj_004101C0::FUN_004101C0(int)
 
     return this;
 }
-
-// FUNCTION: GAMEMD 0x43ADC0
-// The length is recorded whatever the size; only the buffer and the ownership
-// flag depend on the allocation happening.
-Owned_0043ADC0* Owned_0043ADC0::FUN_0043ADC0(int size)
-{
-    Buffer = 0;
-    Length = size;
-    IsAllocated = 0;
-
-    if (size > 0) {
-        Buffer = FUN_007C8E17(size);
-        IsAllocated = 1;
-    }
-
-    return this;
-}

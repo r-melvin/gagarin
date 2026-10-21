@@ -9,6 +9,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
@@ -17,8 +18,6 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 // ---------------------------------------------------------------------------
 struct BufferHolder_004019A0;
 
-// FUNCTION: GAMEMD 0x43AE50 — the buffer release used across this tree.
-void __fastcall FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 — the base destructor.
 void __fastcall FUN_00431B80(void* self);
 
@@ -29,12 +28,13 @@ struct BufferHolder_004019A0
 {
     char* Vtable;      // +0x0000
     char  _pad004[0x58 - 0x04];
-    char  Buffer[0x64 - 0x58];   // +0x0058  the released sub-object
+    MemoryBuffer Buffer;   // +0x0058
     int   Reset;       // +0x0064
 
     // FUNCTION: GAMEMD 0x4019A0
     void* FUN_004019A0(char flags);
 };
+GG_STATIC_ASSERT(offsetof(BufferHolder_004019A0, Buffer) == 0x58);
 GG_STATIC_ASSERT(offsetof(BufferHolder_004019A0, Reset) == 0x64);
 
 // ---------------------------------------------------------------------------
