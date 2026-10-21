@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 89 base-template instantiations reproduce 171 remaining retail destructor
+// 87 base-template instantiations reproduce 167 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -260,12 +260,6 @@ template class VectorClass<IConnectionPoint*>;
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
 
-// FUNCTION: GAMEMD 0x004BA1B0
-// FUNCTION: GAMEMD 0x004BA200
-// VectorClass<ButtonFadeEffect*> -- reseats retail vtable 0x007E8500; locator 0x008001A8 -> type descriptor 0x00820420
-//   `.?AV?$VectorClass@PAUButtonFadeEffect@@@@`.
-template class VectorClass<ButtonFadeEffect*>;
-
 // FUNCTION: GAMEMD 0x004BA250
 // FUNCTION: GAMEMD 0x004BA2A0
 // VectorClass<CrossDissolveEffect*> -- reseats retail vtable 0x007E8520; locator 0x00800110 -> type descriptor 0x008203A8
@@ -319,12 +313,6 @@ template class VectorClass<TubeClass*>;
 // VectorClass<SmudgeClass*> -- reseats retail vtable 0x007E9DC4; locator 0x00801180 -> type descriptor 0x00823170
 //   `.?AV?$VectorClass@PAVSmudgeClass@@@@`.
 template class VectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004F0070
-// FUNCTION: GAMEMD 0x004F00C0
-// VectorClass<AnimClass*> -- reseats retail vtable 0x007E9F44; locator 0x00801510 -> type descriptor 0x008233E0
-//   `.?AV?$VectorClass@PAVAnimClass@@@@`.
-template class VectorClass<AnimClass*>;
 
 // FUNCTION: GAMEMD 0x004F0250
 // FUNCTION: GAMEMD 0x004F02A0

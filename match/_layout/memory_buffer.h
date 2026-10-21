@@ -17,6 +17,8 @@ class MemoryBuffer
 public:
     // FUNCTION: GAMEMD 0x43AD00
     MemoryBuffer(void* pBuffer, int size) throw();
+    // FUNCTION: GAMEMD 0x43AE50 -- explicit cleanup; destructor identity unproven.
+    void Clear() throw();
 
     void* Buffer;        // +0x00
     int   Size;          // +0x04

@@ -21,6 +21,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/memory_buffer.h"
 
 typedef unsigned int FileAccessMode;
 
@@ -29,17 +30,7 @@ typedef unsigned int FileAccessMode;
 // `#pragma function(memcpy)`.
 extern "C" void* __cdecl memcpy(void* destination, const void* source, unsigned int count);
 
-// MemoryBuffer (YRAllocator.h) — { void* Buffer; int Size; bool Allocated; }.
-class MemoryBuffer
-{
-public:
-    void* Buffer;        // +0x00
-    int   Size;          // +0x04
-    bool  Allocated;     // +0x08
-private:
-    char  padding_9[3];  // +0x09
-};
-GG_STATIC_ASSERT(sizeof(MemoryBuffer) == 0x0C);
+
 
 // FileClass — abstract base, virtuals in exact retail vtable order. Open is
 // typed int here: retail tests its result with a full-width TEST EAX,EAX.

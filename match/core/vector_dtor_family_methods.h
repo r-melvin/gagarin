@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 171 remaining 73-byte deleting-destructor bodies are bound here through
-// 89 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 167 remaining 73-byte deleting-destructor bodies are bound here through
+// 87 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -42,8 +42,6 @@ extern char VT_007E5C84;
 extern char VT_007E5D08;
 // VTABLE: GAMEMD 0x007E5DEC -- VectorClass<_DDSURFACEDESC*>
 extern char VT_007E5DEC;
-// VTABLE: GAMEMD 0x007E8500 -- VectorClass<ButtonFadeEffect*>
-extern char VT_007E8500;
 // VTABLE: GAMEMD 0x007E8520 -- VectorClass<CrossDissolveEffect*>
 extern char VT_007E8520;
 // VTABLE: GAMEMD 0x007E86AC -- VectorClass<EBolt*>
@@ -62,8 +60,6 @@ extern char VT_007EA584;
 extern char VT_007E9CC4;
 // VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
 extern char VT_007E9DC4;
-// VTABLE: GAMEMD 0x007E9F44 -- VectorClass<AnimClass*>
-extern char VT_007E9F44;
 // VTABLE: GAMEMD 0x007EA044 -- VectorClass<SideClass*>
 extern char VT_007EA044;
 // VTABLE: GAMEMD 0x007EA084 -- VectorClass<HouseTypeClass*>

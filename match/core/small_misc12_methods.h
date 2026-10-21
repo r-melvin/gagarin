@@ -19,7 +19,7 @@ void __stdcall FUN_007DC720(unsigned int hr);
 typedef long (__stdcall* Slot2)(IFace*, int, int);
 #define IFACE_CALL2(p, slot, x, y) ((*(Slot2*)(*(char**)(p) + (slot)))(p, x, y))
 
-#include "owned_buffer_0043ae50.h"
+#include "../_layout/memory_buffer.h"
 
 // VTABLE: GAMEMD 0x7E2198
 extern char VT_007E2198[];
@@ -34,7 +34,7 @@ extern char VT_007E2198[];
 struct BSurface_00411650
 {
     char             _pad00[0x14];
-    Owned_0043AE50   Inner;   // +0x0014
+    MemoryBuffer    Inner;   // +0x0014
 
     // FUNCTION: GAMEMD 0x411650
     void* FUN_00411650(unsigned int flags);

@@ -1,13 +1,53 @@
 # Project status
 
-The latest whole-repository regression passed with **4,029 fully matched
-functions**, **167 partial rows**, and 944 manifest translation units, with no
-matched function regressing. All **954 tracked C++ files** produced project
+The latest whole-repository regression passed with **4,045 fully matched
+functions**, **167 partial rows**, and 946 manifest translation units, with no
+matched function regressing. All **956 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: shared MemoryBuffer and Subtitle/MapRegion vectors
+## Latest integration: MemoryBuffer cleanup and AnimClass/ButtonFadeEffect vectors
+
+The existing `MemoryBuffer::Clear` row at `0x43AE50` is now bound to the shared
+type in [memory_buffer_methods.cpp](match/core/memory_buffer_methods.cpp). Its
+full 0x28-byte body matches retail; instructions establish conditional freeing
+through the ownership byte and unconditional clearing of the pointer, size and
+ownership byte. The BSurface member at `+0x14` now uses `MemoryBuffer`, and its
+`0x411650` call is expressed as `Inner.Clear()`; the two BSurface pixel methods
+remain exact. The former `Owned_0043AE50` header is removed. The CCFile I/O and
+read headers also use the shared layout, preserving four existing exact rows.
+Other direct `FUN_0043AE50` adapters and caller views remain; this is not a
+repository-wide caller migration or a destructor claim.
+
+The mutable [AnimClass pointer-vector](match/core/vector_animclass_ptr_methods.cpp)
+and [ButtonFadeEffect pointer-vector](match/core/vector_buttonfadeeffect_methods.cpp)
+clusters add 16 exact matches and migrate eight existing claims: each adds
+eight new bodies and moves four existing rows. The mutable AnimClass cluster
+is separate from the existing `const AnimClass*` implementation, which remains
+unchanged. Retail RTTI supports the element spellings and zero-offset dynamic
+base chains; no pointee layouts, constructors, TypeList entries, or original
+translation-unit boundaries are claimed. All four seven-slot tables pass
+conditional `--weak-defaults` checks. Paired flag probes show that each
+cluster's dynamic deleting body needs no GX; the AnimClass base deleting body
+also matches with GX. No-GX objects reproduce the checked 0x49-byte deleting
+bodies.
+
+The eight-shard regression, compile/layout gate, **75 verifier tests** and
+**956/956 tracked-source object build** passed. Eight saved partial bodies
+retain identical bytes and relocation offsets. The diagnostic
+`/dll /noentry /nodefaultlib` link reports **3,777 unique unresolved symbols**,
+5,722 reference lines and no duplicate definitions. Default libraries are
+excluded, so this is not an engine-only gap census.
+
+Matched lengths total **288,428 bytes (282 KiB)**: 20.5% of listed functions
+and 7.6% of listed function lengths. The padding heuristic misses 243 matched
+entries. Current generic families contain 167 deleting bindings across 87
+views, 84 base `Clear` rows, 82 native dynamic `Clear` rows plus one DiskID
+stand-in, and 12 resize-family rows plus three other resize helpers. Engine
+link closure and complete executable reproduction remain unfinished.
+
+## Previous verified integration: shared MemoryBuffer and Subtitle/MapRegion vectors
 
 The constructor at `0x43AD00` now has a native `MemoryBuffer` binding in
 [memory_buffer_methods.cpp](match/core/memory_buffer_methods.cpp); its complete
@@ -921,7 +961,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 954 tracked C++ files and 4,196 manifest
+verified snapshot, the inventory has 956 tracked C++ files and 4,212 manifest
 rows, with no manifest TU missing from tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1083,7 +1123,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 86 base and 84
+  `CountedVector::Destroy` stand-ins. The family files bind 84 base and 82
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -1173,7 +1213,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 171 bindings across 89 base-template instantiation views. Their written vptr and
+  family has 167 bindings across 87 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -1237,10 +1277,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,029** | **20.4%** of 19,753 |
-| Sum of matched function lengths | 281 KiB | 7.6% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **4,045** | **20.5%** of 19,753 |
+| Sum of matched function lengths | 282 KiB | 7.6% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 954 | |
+| Tracked C++ files under `match/` | 956 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -1260,7 +1300,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 241 matched entries. Its candidate count is therefore
+listed entries, including 243 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

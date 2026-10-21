@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 85
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 83
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 86 remaining addresses are bound to VectorClass<T> tables;
+//   The 84 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -241,11 +241,6 @@ template class VectorClass<IConnectionPoint*>;
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
 
-// FUNCTION: GAMEMD 0x004B9D90
-// VectorClass<ButtonFadeEffect*> -- vtable 0x007E8500 slot 3; locator 0x008001A8 -> type descriptor 0x00820420
-//   `.?AV?$VectorClass@PAUButtonFadeEffect@@@@`.
-template class VectorClass<ButtonFadeEffect*>;
-
 // FUNCTION: GAMEMD 0x004B9FF0
 // VectorClass<CrossDissolveEffect*> -- vtable 0x007E8520 slot 3; locator 0x00800110 -> type descriptor 0x008203A8
 //   `.?AV?$VectorClass@PAUCrossDissolveEffect@@@@`.
@@ -290,11 +285,6 @@ template class VectorClass<TubeClass*>;
 // VectorClass<SmudgeClass*> -- vtable 0x007E9DC4 slot 3; locator 0x00801180 -> type descriptor 0x00823170
 //   `.?AV?$VectorClass@PAVSmudgeClass@@@@`.
 template class VectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004EBF30
-// VectorClass<AnimClass*> -- vtable 0x007E9F44 slot 3; locator 0x00801510 -> type descriptor 0x008233E0
-//   `.?AV?$VectorClass@PAVAnimClass@@@@`.
-template class VectorClass<AnimClass*>;
 
 // FUNCTION: GAMEMD 0x004EC650
 // VectorClass<SideClass*> -- vtable 0x007EA044 slot 3; locator 0x00801770 -> type descriptor 0x00823580

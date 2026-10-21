@@ -22,7 +22,7 @@ void __fastcall Obj_00408500d::FUN_00408500(Node_00408500* node)
 // Release the inner buffer, install the vtable, then free conditionally.
 void* BSurface_00411650::FUN_00411650(unsigned int flags)
 {
-    Inner.FUN_0043AE50();
+    Inner.Clear();
 
     *(char**)this = VT_007E2198;
 
@@ -43,22 +43,6 @@ void Obj_00437FD0::FUN_00437FD0(int a, int b)
     }
 
     IFACE_CALL2(Ptr, 0xC, b, a);
-}
-
-// FUNCTION: GAMEMD 0x43AE50
-// Only the free is guarded; the three clears run either way. The jump target
-// is what says so - retail's `JZ` lands on the first store, not past it - and
-// reading it as a fully-guarded block costs exactly one instruction while
-// leaving the semantics wrong for a borrowed buffer.
-void Owned_0043AE50::FUN_0043AE50()
-{
-    if (IsAllocated) {
-        FUN_007C8B3D(Buffer);
-    }
-
-    Buffer = 0;
-    Length = 0;
-    IsAllocated = 0;
 }
 
 // FUNCTION: GAMEMD 0x45A130

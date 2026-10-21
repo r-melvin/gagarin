@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 84
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 82
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -241,11 +241,6 @@ template class DynamicVectorClass<IConnectionPoint*>;
 //   `.?AV?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@`.
 template class DynamicVectorClass<_DDSURFACEDESC*>;
 
-// FUNCTION: GAMEMD 0x004B9BE0
-// DynamicVectorClass<ButtonFadeEffect*> -- vtable 0x007E856C slot 3; locator 0x00800210 -> type descriptor 0x00820458
-//   `.?AV?$DynamicVectorClass@PAUButtonFadeEffect@@@@`.
-template class DynamicVectorClass<ButtonFadeEffect*>;
-
 // FUNCTION: GAMEMD 0x004B9C40
 // DynamicVectorClass<CrossDissolveEffect*> -- vtable 0x007E854C slot 3; locator 0x00800178 -> type descriptor 0x008203E0
 //   `.?AV?$DynamicVectorClass@PAUCrossDissolveEffect@@@@`.
@@ -285,11 +280,6 @@ template class DynamicVectorClass<TubeClass*>;
 // DynamicVectorClass<SmudgeClass*> -- vtable 0x007E9DA4 slot 3; locator 0x00801150 -> type descriptor 0x008231A0
 //   `.?AV?$DynamicVectorClass@PAVSmudgeClass@@@@`.
 template class DynamicVectorClass<SmudgeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8960
-// DynamicVectorClass<AnimClass*> -- vtable 0x007E9F24 slot 3; locator 0x008014E0 -> type descriptor 0x00823410
-//   `.?AV?$DynamicVectorClass@PAVAnimClass@@@@`.
-template class DynamicVectorClass<AnimClass*>;
 
 // FUNCTION: GAMEMD 0x004E8A80
 // DynamicVectorClass<SideClass*> -- vtable 0x007EA024 slot 3; locator 0x00801740 -> type descriptor 0x008235B0

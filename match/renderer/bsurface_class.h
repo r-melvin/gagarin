@@ -7,7 +7,7 @@
 #ifndef GG_MATCH_RENDERER_BSURFACE_CLASS_H
 #define GG_MATCH_RENDERER_BSURFACE_CLASS_H
 #include "xsurface_class.h"
-#include "../core/owned_buffer_0043ae50.h"
+#include "../_layout/memory_buffer.h"
 // VTABLE: GAMEMD 0x7E2070 -- BSurface; 36 slots, same prefix as XSurface.
 class BSurface : public XSurface
 {
@@ -19,12 +19,12 @@ public:
     // FUNCTION: GAMEMD 0x411640 (decl; reloc)
     virtual unsigned int GetPitch();
     unsigned int BytesPerPixel; // +0x10
-    Owned_0043AE50 Pixels;     // +0x14
+    MemoryBuffer Pixels;     // +0x14
 };
 GG_STATIC_ASSERT(offsetof(BSurface, BytesPerPixel) == 0x10);
 GG_STATIC_ASSERT(offsetof(BSurface, Pixels) == 0x14);
-GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(Owned_0043AE50, Buffer) == 0x14);
-GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(Owned_0043AE50, Length) == 0x18);
-GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(Owned_0043AE50, IsAllocated) == 0x1C);
+GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(MemoryBuffer, Buffer) == 0x14);
+GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(MemoryBuffer, Size) == 0x18);
+GG_STATIC_ASSERT(offsetof(BSurface, Pixels) + offsetof(MemoryBuffer, Allocated) == 0x1C);
 // Complete size and inherited slot signatures are not established.
 #endif
