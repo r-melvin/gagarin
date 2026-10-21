@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 129 base-template instantiations reproduce 243 remaining retail destructor
+// 119 base-template instantiations reproduce 231 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -296,12 +296,6 @@ template class VectorClass<CrossDissolveEffect*>;
 //   `.?AV?$VectorClass@PAVEBolt@@@@`.
 template class VectorClass<EBolt*>;
 
-// FUNCTION: GAMEMD 0x004C4C60
-// FUNCTION: GAMEMD 0x004C4CB0
-// VectorClass<EgoClass*> -- reseats retail vtable 0x007E86FC; locator 0x00800390 -> type descriptor 0x00820778
-//   `.?AV?$VectorClass@PAVEgoClass@@@@`.
-template class VectorClass<EgoClass*>;
-
 // FUNCTION: GAMEMD 0x004C5E20
 // FUNCTION: GAMEMD 0x004C5E70
 // VectorClass<EMPulseClass*> -- reseats retail vtable 0x007E875C; locator 0x00800428 -> type descriptor 0x00820868
@@ -319,12 +313,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 // VectorClass<SuperClass*> -- reseats retail vtable 0x007EA504; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
-
-// FUNCTION: GAMEMD 0x004EF6C0
-// FUNCTION: GAMEMD 0x004EF710
-// VectorClass<AITriggerTypeClass*> -- reseats retail vtable 0x007E9B84; locator 0x00800C28 -> type descriptor 0x00822D88
-//   `.?AV?$VectorClass@PAVAITriggerTypeClass@@@@`.
-template class VectorClass<AITriggerTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EF760
 // FUNCTION: GAMEMD 0x004EF7B0
@@ -361,12 +349,6 @@ template class VectorClass<TriggerTypeClass*>;
 // VectorClass<TubeClass*> -- reseats retail vtable 0x007E9CC4; locator 0x00800F20 -> type descriptor 0x00822FD0
 //   `.?AV?$VectorClass@PAVTubeClass@@@@`.
 template class VectorClass<TubeClass*>;
-
-// FUNCTION: GAMEMD 0x004EFC10
-// FUNCTION: GAMEMD 0x004EFC60
-// VectorClass<WaveClass*> -- reseats retail vtable 0x007E9D04; locator 0x00800FB8 -> type descriptor 0x00823038
-//   `.?AV?$VectorClass@PAVWaveClass@@@@`.
-template class VectorClass<WaveClass*>;
 
 // FUNCTION: GAMEMD 0x004EFCB0
 // FUNCTION: GAMEMD 0x004EFD00
@@ -410,12 +392,6 @@ template class VectorClass<HouseTypeClass*>;
 //   `.?AV?$VectorClass@PAVTaskForceClass@@@@`.
 template class VectorClass<TaskForceClass*>;
 
-// FUNCTION: GAMEMD 0x004F0430
-// FUNCTION: GAMEMD 0x004F0480
-// VectorClass<TeamTypeClass*> -- reseats retail vtable 0x007EA104; locator 0x00801938 -> type descriptor 0x008236B8
-//   `.?AV?$VectorClass@PAVTeamTypeClass@@@@`.
-template class VectorClass<TeamTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004F0A70
 // FUNCTION: GAMEMD 0x004F0AC0
 // VectorClass<BulletTypeClass*> -- reseats retail vtable 0x007EA384; locator 0x00801F28 -> type descriptor 0x00823B28
@@ -433,18 +409,6 @@ template class VectorClass<IsometricTileTypeClass*>;
 // VectorClass<ParticleTypeClass*> -- reseats retail vtable 0x007EA444; locator 0x008020F0 -> type descriptor 0x00823C88
 //   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
 template class VectorClass<ParticleTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004F0CF0
-// FUNCTION: GAMEMD 0x004F0D40
-// VectorClass<ParticleSystemTypeClass*> -- reseats retail vtable 0x007EA484; locator 0x00802188 -> type descriptor 0x00823D00
-//   `.?AV?$VectorClass@PAVParticleSystemTypeClass@@@@`.
-template class VectorClass<ParticleSystemTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004F0E30
-// FUNCTION: GAMEMD 0x004F0E80
-// VectorClass<AbstractTypeClass*> -- reseats retail vtable 0x007EA544; locator 0x00802350 -> type descriptor 0x00823E60
-//   `.?AV?$VectorClass@PAVAbstractTypeClass@@@@`.
-template class VectorClass<AbstractTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004F2B60
 // FUNCTION: GAMEMD 0x004F2BB0

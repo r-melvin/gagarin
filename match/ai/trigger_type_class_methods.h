@@ -16,41 +16,11 @@
 #define GG_MATCH_AI_TRIGGER_TYPE_CLASS_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/abstract_type_class.h"
-
-// A trigger event/action list node. Only the link (Next@0x28) and the
-// discriminant Kind (@0x2c) are touched by these predicates.
-struct TTriggerListNode
-{
-    char Next_NextEvent_pad[0x28];   // +0x00  AbstractClass base + ArrayIndex
-    TTriggerListNode* Next;          // +0x28  NextEvent / NextAction
-    int               Kind;          // +0x2c  EventKind / ActionKind
-};
 
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Next) == 0x28);
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Kind) == 0x2c);
-
-class TriggerTypeClass : public AbstractTypeClass
-{
-public:
-    bool HasCrossesVerticalLineEvent() const;    // GAMEMD 0x726F50
-    bool HasCrossesHorizontalLineEvent() const;  // GAMEMD 0x726F80
-    bool HasZoneEntryByEvent() const;            // GAMEMD 0x726FB0
-    bool HasAllowWinAction() const;              // GAMEMD 0x726FE0
-
-    // AbstractTypeClass occupies [0x00..0x97]. Trigger-specific members follow.
-    int               ArrayIndex;        // +0x98
-    bool              Difficulty[3];     // +0x9c
-    bool              Enabled;           // +0x9f
-    bool              MustTransfer;      // +0xa0
-    unsigned char     align_A1[3];       // +0xa1
-    void*             House;             // +0xa4
-    TriggerTypeClass* NextTrigger;       // +0xa8
-    TTriggerListNode* FirstEvent;        // +0xac
-    TTriggerListNode* FirstAction;       // +0xb0
-};
-
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, FirstEvent)  == 0xac);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, FirstAction) == 0xb0);
 

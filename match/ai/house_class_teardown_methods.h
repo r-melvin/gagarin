@@ -13,6 +13,7 @@
 #define GG_MATCH_AI_HOUSE_CLASS_TEARDOWN_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
@@ -41,12 +42,6 @@ struct TechnoClass
 };
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
 
-class TriggerTypeClass
-{
-public:
-    char        _pad000[0xA4];   // +0x0000
-    HouseTypeClass* House;       // +0x00A4
-};
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House) == 0xA4);
 
 struct HouseTriggerDeleteCallView

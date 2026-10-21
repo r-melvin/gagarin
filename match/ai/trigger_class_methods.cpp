@@ -16,7 +16,7 @@ void TriggerClass::NotifyGlobalChanged(int idxGlobal)
 {
     for (TriggerClass* trigger = this; trigger; trigger = trigger->NextTrigger)
     {
-        if (trigger->Type->HasGlobalChangedEvent(idxGlobal))
+        if (trigger->Type->HasGlobalSetOrClearedEvent(idxGlobal))
             trigger->ResetTimers();
     }
 }
@@ -27,7 +27,7 @@ void TriggerClass::NotifyLocalChanged(int idxLocal)
 {
     for (TriggerClass* trigger = this; trigger; trigger = trigger->NextTrigger)
     {
-        if (trigger->Type->HasLocalChangedEvent(idxLocal))
+        if (trigger->Type->HasLocalSetOrClearedEvent(idxLocal))
             trigger->ResetTimers();
     }
 }

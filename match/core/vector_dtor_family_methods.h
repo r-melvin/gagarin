@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 243 remaining 73-byte deleting-destructor bodies are bound here through
-// 125 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 231 remaining 73-byte deleting-destructor bodies are bound here through
+// 119 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -54,16 +54,12 @@ extern char VT_007E8500;
 extern char VT_007E8520;
 // VTABLE: GAMEMD 0x007E86AC -- VectorClass<EBolt*>
 extern char VT_007E86AC;
-// VTABLE: GAMEMD 0x007E86FC -- VectorClass<EgoClass*>
-extern char VT_007E86FC;
 // VTABLE: GAMEMD 0x007E875C -- VectorClass<EMPulseClass*>
 extern char VT_007E875C;
 // VTABLE: GAMEMD 0x007E8BC0 -- VectorClass<FoggedObjectClass::DrawRecord>
 extern char VT_007E8BC0;
 // VTABLE: GAMEMD 0x007EA504 -- VectorClass<SuperClass*>
 extern char VT_007EA504;
-// VTABLE: GAMEMD 0x007E9B84 -- VectorClass<AITriggerTypeClass*>
-extern char VT_007E9B84;
 // VTABLE: GAMEMD 0x007E9C44 -- VectorClass<BuildingLightClass*>
 extern char VT_007E9C44;
 // VTABLE: GAMEMD 0x007E9D84 -- VectorClass<ParticleClass*>
@@ -76,8 +72,6 @@ extern char VT_007EA584;
 extern char VT_007E9BC4;
 // VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
 extern char VT_007E9CC4;
-// VTABLE: GAMEMD 0x007E9D04 -- VectorClass<WaveClass*>
-extern char VT_007E9D04;
 // VTABLE: GAMEMD 0x007E9D44 -- VectorClass<OverlayClass*>
 extern char VT_007E9D44;
 // VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
@@ -92,18 +86,12 @@ extern char VT_007EA044;
 extern char VT_007EA084;
 // VTABLE: GAMEMD 0x007EA0C4 -- VectorClass<TaskForceClass*>
 extern char VT_007EA0C4;
-// VTABLE: GAMEMD 0x007EA104 -- VectorClass<TeamTypeClass*>
-extern char VT_007EA104;
 // VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>
 extern char VT_007EA384;
 // VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>
 extern char VT_007EA404;
 // VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>
 extern char VT_007EA444;
-// VTABLE: GAMEMD 0x007EA484 -- VectorClass<ParticleSystemTypeClass*>
-extern char VT_007EA484;
-// VTABLE: GAMEMD 0x007EA544 -- VectorClass<AbstractTypeClass*>
-extern char VT_007EA544;
 // VTABLE: GAMEMD 0x007EA624 -- VectorClass<GraphicMenuItem*>
 extern char VT_007EA624;
 // VTABLE: GAMEMD 0x007EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>

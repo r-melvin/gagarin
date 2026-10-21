@@ -16,7 +16,7 @@
 bool TriggerTypeClass::HasGlobalSetOrClearedEvent(int value) const
 {
     bool result = false;
-    TTriggerEventNode* node = FirstEvent;
+    TTriggerListNode* node = FirstEvent;
     while (node) {
         if ((node->Kind == 0x1b || node->Kind == 0x1c) && node->Value == value) {
             result = true;
@@ -33,7 +33,7 @@ bool TriggerTypeClass::HasGlobalSetOrClearedEvent(int value) const
 bool TriggerTypeClass::HasLocalSetOrClearedEvent(int value) const
 {
     bool result = false;
-    TTriggerEventNode* node = FirstEvent;
+    TTriggerListNode* node = FirstEvent;
     while (node) {
         if ((node->Kind == 0x24 || node->Kind == 0x25) && node->Value == value) {
             result = true;

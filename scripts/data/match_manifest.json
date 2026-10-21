@@ -13572,7 +13572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_egoclass_methods.cpp",
   "addr": "0x004c49a0",
   "sym": "?Clear@?$DynamicVectorClass@PAVEgoClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13653,7 +13653,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
   "addr": "0x004e83b0",
   "sym": "?Clear@?$DynamicVectorClass@PAVAITriggerTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13725,7 +13725,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_waveclass_methods.cpp",
   "addr": "0x004e86c0",
   "sym": "?Clear@?$DynamicVectorClass@PAVWaveClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13842,7 +13842,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
   "addr": "0x004e8ba0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTeamTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13968,7 +13968,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
   "addr": "0x004e90e0",
   "sym": "?Clear@?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13986,7 +13986,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
   "addr": "0x004e91a0",
   "sym": "?Clear@?$DynamicVectorClass@PAVAbstractTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15660,20 +15660,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_egoclass_methods.cpp",
   "addr": "0x004C4C60",
   "sym": "??_G?$VectorClass@PAVEgoClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<EgoClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<EgoClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_egoclass_methods.cpp",
   "addr": "0x004C4CB0",
-  "sym": "??_G?$VectorClass@PAVEgoClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVEgoClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<EgoClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<EgoClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15822,20 +15822,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
   "addr": "0x004EF6C0",
   "sym": "??_G?$VectorClass@PAVAITriggerTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AITriggerTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<AITriggerTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
   "addr": "0x004EF710",
-  "sym": "??_G?$VectorClass@PAVAITriggerTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAITriggerTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AITriggerTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AITriggerTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15975,20 +15975,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_waveclass_methods.cpp",
   "addr": "0x004EFC10",
   "sym": "??_G?$VectorClass@PAVWaveClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<WaveClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<WaveClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_waveclass_methods.cpp",
   "addr": "0x004EFC60",
-  "sym": "??_G?$VectorClass@PAVWaveClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVWaveClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<WaveClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<WaveClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16209,20 +16209,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
   "addr": "0x4F0430",
   "sym": "??_G?$VectorClass@PAVTeamTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TeamTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<TeamTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
   "addr": "0x4F0480",
-  "sym": "??_G?$VectorClass@PAVTeamTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVTeamTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TeamTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TeamTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16461,20 +16461,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
   "addr": "0x004F0CF0",
   "sym": "??_G?$VectorClass@PAVParticleSystemTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ParticleSystemTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<ParticleSystemTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
   "addr": "0x004F0D40",
-  "sym": "??_G?$VectorClass@PAVParticleSystemTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ParticleSystemTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ParticleSystemTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16497,20 +16497,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
   "addr": "0x004F0E30",
   "sym": "??_G?$VectorClass@PAVAbstractTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AbstractTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<AbstractTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
   "addr": "0x004F0E80",
-  "sym": "??_G?$VectorClass@PAVAbstractTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAbstractTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<AbstractTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<AbstractTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18972,7 +18972,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_egoclass_methods.cpp",
   "addr": "0x004c4af0",
   "sym": "?Clear@?$VectorClass@PAVEgoClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19053,7 +19053,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
   "addr": "0x004e9a10",
   "sym": "?Clear@?$VectorClass@PAVAITriggerTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19134,7 +19134,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_waveclass_methods.cpp",
   "addr": "0x004eae90",
   "sym": "?Clear@?$VectorClass@PAVWaveClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19251,7 +19251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
   "addr": "0x004ecd70",
   "sym": "?Clear@?$VectorClass@PAVTeamTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19377,7 +19377,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
   "addr": "0x004eeeb0",
   "sym": "?Clear@?$VectorClass@PAVParticleSystemTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19395,7 +19395,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
   "addr": "0x004ef370",
   "sym": "?Clear@?$VectorClass@PAVAbstractTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -35107,5 +35107,437 @@
   "name": "TriggerClass::TriggerClass(TriggerTypeClass*)",
   "status": "partial",
   "pct": 79.1
+ },
+ {
+  "addr": "0x4E91D0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAbstractTypeClass@@@@UBEHPAPAVAbstractTypeClass@@@Z",
+  "name": "DynamicVectorClass<AbstractTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E91F0",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVAbstractTypeClass@@@@UBEPAVAbstractTypeClass@@H@Z",
+  "name": "VectorClass<AbstractTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EF280",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVAbstractTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<AbstractTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EF2C0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVAbstractTypeClass@@@@UAE_NHPAPAVAbstractTypeClass@@@Z",
+  "name": "VectorClass<AbstractTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EF3A0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAbstractTypeClass@@@@UBEHABQAVAbstractTypeClass@@@Z",
+  "name": "VectorClass<AbstractTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EF3E0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVAbstractTypeClass@@@@UBEHPAPAVAbstractTypeClass@@@Z",
+  "name": "VectorClass<AbstractTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EF400",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAbstractTypeClass@@@@UAE_NHPAPAVAbstractTypeClass@@@Z",
+  "name": "DynamicVectorClass<AbstractTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EF4B0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_abstracttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAbstractTypeClass@@@@UBEHABQAVAbstractTypeClass@@@Z",
+  "name": "DynamicVectorClass<AbstractTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E83E0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAITriggerTypeClass@@@@UBEHPAPAVAITriggerTypeClass@@@Z",
+  "name": "DynamicVectorClass<AITriggerTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8400",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVAITriggerTypeClass@@@@UBEPAVAITriggerTypeClass@@H@Z",
+  "name": "VectorClass<AITriggerTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4E9920",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVAITriggerTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<AITriggerTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4E9960",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVAITriggerTypeClass@@@@UAE_NHPAPAVAITriggerTypeClass@@@Z",
+  "name": "VectorClass<AITriggerTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4E9A40",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAITriggerTypeClass@@@@UBEHABQAVAITriggerTypeClass@@@Z",
+  "name": "VectorClass<AITriggerTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E9A80",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVAITriggerTypeClass@@@@UBEHPAPAVAITriggerTypeClass@@@Z",
+  "name": "VectorClass<AITriggerTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E9AA0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAITriggerTypeClass@@@@UAE_NHPAPAVAITriggerTypeClass@@@Z",
+  "name": "DynamicVectorClass<AITriggerTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4E9B50",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_aitriggertypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAITriggerTypeClass@@@@UBEHABQAVAITriggerTypeClass@@@Z",
+  "name": "DynamicVectorClass<AITriggerTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8BD0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVTeamTypeClass@@@@UBEHPAPAVTeamTypeClass@@@Z",
+  "name": "DynamicVectorClass<TeamTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8BF0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVTeamTypeClass@@@@UBEPAVTeamTypeClass@@H@Z",
+  "name": "VectorClass<TeamTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4ECC80",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVTeamTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<TeamTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4ECCC0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVTeamTypeClass@@@@UAE_NHPAPAVTeamTypeClass@@@Z",
+  "name": "VectorClass<TeamTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ECDA0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVTeamTypeClass@@@@UBEHABQAVTeamTypeClass@@@Z",
+  "name": "VectorClass<TeamTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4ECDE0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVTeamTypeClass@@@@UBEHPAPAVTeamTypeClass@@@Z",
+  "name": "VectorClass<TeamTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4ECE00",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVTeamTypeClass@@@@UAE_NHPAPAVTeamTypeClass@@@Z",
+  "name": "DynamicVectorClass<TeamTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ECEB0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_teamtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTeamTypeClass@@@@UBEHABQAVTeamTypeClass@@@Z",
+  "name": "DynamicVectorClass<TeamTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E9110",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@UBEHPAPAVParticleSystemTypeClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E9130",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVParticleSystemTypeClass@@@@UBEPAVParticleSystemTypeClass@@H@Z",
+  "name": "VectorClass<ParticleSystemTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EEDC0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVParticleSystemTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<ParticleSystemTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EEE00",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVParticleSystemTypeClass@@@@UAE_NHPAPAVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<ParticleSystemTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EEEE0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVParticleSystemTypeClass@@@@UBEHABQAVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<ParticleSystemTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EEF20",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVParticleSystemTypeClass@@@@UBEHPAPAVParticleSystemTypeClass@@@Z",
+  "name": "VectorClass<ParticleSystemTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EEF40",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@UAE_NHPAPAVParticleSystemTypeClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EEFF0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_particlesystemtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVParticleSystemTypeClass@@@@UBEHABQAVParticleSystemTypeClass@@@Z",
+  "name": "DynamicVectorClass<ParticleSystemTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4C49D0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVEgoClass@@@@UBEHPAPAVEgoClass@@@Z",
+  "name": "DynamicVectorClass<EgoClass*>::Slot5"
+ },
+ {
+  "addr": "0x4C49F0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVEgoClass@@@@UBEPAVEgoClass@@H@Z",
+  "name": "VectorClass<EgoClass*>::Slot6"
+ },
+ {
+  "addr": "0x4C4A00",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVEgoClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<EgoClass*>::operator=="
+ },
+ {
+  "addr": "0x4C4A40",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVEgoClass@@@@UAE_NHPAPAVEgoClass@@@Z",
+  "name": "VectorClass<EgoClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4C4B20",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVEgoClass@@@@UBEHABQAVEgoClass@@@Z",
+  "name": "VectorClass<EgoClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4C4B60",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVEgoClass@@@@UBEHPAPAVEgoClass@@@Z",
+  "name": "VectorClass<EgoClass*>::Slot5"
+ },
+ {
+  "addr": "0x4C4B80",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVEgoClass@@@@UAE_NHPAPAVEgoClass@@@Z",
+  "name": "DynamicVectorClass<EgoClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4C4C30",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_egoclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVEgoClass@@@@UBEHABQAVEgoClass@@@Z",
+  "name": "DynamicVectorClass<EgoClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E86F0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVWaveClass@@@@UBEHPAPAVWaveClass@@@Z",
+  "name": "DynamicVectorClass<WaveClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8710",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVWaveClass@@@@UBEPAVWaveClass@@H@Z",
+  "name": "VectorClass<WaveClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EADA0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVWaveClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<WaveClass*>::operator=="
+ },
+ {
+  "addr": "0x4EADE0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVWaveClass@@@@UAE_NHPAPAVWaveClass@@@Z",
+  "name": "VectorClass<WaveClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EAEC0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVWaveClass@@@@UBEHABQAVWaveClass@@@Z",
+  "name": "VectorClass<WaveClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EAF00",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVWaveClass@@@@UBEHPAPAVWaveClass@@@Z",
+  "name": "VectorClass<WaveClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EAF20",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVWaveClass@@@@UAE_NHPAPAVWaveClass@@@Z",
+  "name": "DynamicVectorClass<WaveClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EAFD0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_waveclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVWaveClass@@@@UBEHABQAVWaveClass@@@Z",
+  "name": "DynamicVectorClass<WaveClass*>::FindItemIndex"
  }
 ]

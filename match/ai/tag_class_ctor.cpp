@@ -14,28 +14,12 @@
 #include "../_layout/tag_class.h"
 #include "tag_class_destroy_methods.h"
 #include "../core/abstract_registry.h"
-#include "trigger_class_more_methods.h"
+#include "../_layout/trigger_class.h"
+#include "tag_type_class_flag_methods.h"
 
 // GLOBAL: GAMEMD 0xB0E700 — the CellStruct copied to TagClass::DefaultCoords.
 // The raw instruction loads one DWORD from this address.
 extern CellStruct DAT_00B0E700;
-
-// Prefix views for linked trigger-type data. The only recovered members are the
-// pointer reads at +0xA0 and +0xA8; no complete TriggerTypeClass layout is claimed.
-struct TagTypeTriggerHeadView
-{
-    unsigned char unknown_00[0xA0];
-    void* FirstTrigger;
-};
-
-struct TriggerTypeNextView
-{
-    unsigned char unknown_00[0xA8];
-    void* NextTrigger;
-};
-
-GG_STATIC_ASSERT(offsetof(TagTypeTriggerHeadView, FirstTrigger) == 0xA0);
-GG_STATIC_ASSERT(offsetof(TriggerTypeNextView, NextTrigger) == 0xA8);
 
 // FUNCTION: GAMEMD 0x6E4DE0
 TagClass::TagClass(TagTypeClass* type)
@@ -58,14 +42,13 @@ TagClass::TagClass(TagTypeClass* type)
 
     if (type)
     {
-        void* triggerType = reinterpret_cast<TagTypeTriggerHeadView*>(type)->FirstTrigger;
+        TriggerTypeClass* triggerType = type->FirstTrigger;
         while (triggerType)
         {
-            TriggerClass* trigger = new TriggerClass(
-                reinterpret_cast<TriggerTypeClass*>(triggerType));
+            TriggerClass* trigger = new TriggerClass(triggerType);
             trigger->AttachedTrigger = static_cast<TriggerClass*>(this->FirstTrigger);
             this->FirstTrigger = trigger;
-            triggerType = reinterpret_cast<TriggerTypeNextView*>(triggerType)->NextTrigger;
+            triggerType = triggerType->NextTrigger;
         }
     }
 }

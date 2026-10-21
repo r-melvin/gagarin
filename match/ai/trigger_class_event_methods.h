@@ -10,29 +10,20 @@
 //   mov eax,[esi+0x28]  -> AttachedTrigger
 //   mov ecx,[esi+0x24]  -> Type
 // The TriggerTypeClass-side checks are separate retail functions (0x726f80,
-// 0x726f50, 0x726fb0, 0x726fe0); declared here without bodies so cl emits the
-// (relocation-normalised) call.
+// 0x726f50, 0x726fb0, 0x726fe0), declared in the shared layout.
 #ifndef GG_MATCH_AI_TRIGGER_CLASS_EVENT_METHODS_H
 #define GG_MATCH_AI_TRIGGER_CLASS_EVENT_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
-// TriggerTypeClass — only the four event-presence predicates are modelled here;
-// each is a separate retail __thiscall returning bool in AL.
-class TriggerTypeClass
-{
-public:
-    bool HasCrossesHorizontalLineEvent() const;  // GAMEMD 0x726F80
-    bool HasCrossesVerticalLineEvent() const;    // GAMEMD 0x726F50
-    bool HasZoneEntryByEvent() const;            // GAMEMD 0x726FB0
-    bool HasAllowWinAction() const;              // GAMEMD 0x726FE0
-};
+// TriggerTypeClass provides these separate retail __thiscall predicates,
+// each returning bool in AL.
 
 // These methods use Type (+0x24) and the linked trigger (+0x28) from the
 // shared TriggerClass declaration.
-
 
 GG_STATIC_ASSERT(offsetof(TriggerClass, Type) == 0x24);
 GG_STATIC_ASSERT(offsetof(TriggerClass, AttachedTrigger) == 0x28);

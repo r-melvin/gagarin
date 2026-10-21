@@ -20,27 +20,11 @@
 #define GG_MATCH_AI_TAG_TYPE_CLASS_FLAG_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/abstract_type_class.h"
 
-// ---------------------------------------------------------------------------
-// TriggerTypeClass — only the next-link and the five delegated predicates are
-// modelled here; the full layout is P2. All five are non-virtual __thiscall
-// calls in retail (direct CALL to the fixed address), so they are declared
-// without bodies and the compiler emits reloc-normalised direct calls.
-// ---------------------------------------------------------------------------
-class TriggerTypeClass : public AbstractTypeClass
-{
-public:
-    char              unknown_98[0xA8 - 0x98]; // +0x0098
-    TriggerTypeClass* NextTrigger;        // +0x00A8  (MOV ESI,[ESI+0xA8])
-
-    int  GetFlags() const;                        // GAMEMD 0x7271E0
-    bool HasAllowWinAction() const;               // GAMEMD 0x726FE0
-    bool HasCrossesHorizontalLineEvent() const;   // GAMEMD 0x726F80
-    bool HasCrossesVerticalLineEvent() const;     // GAMEMD 0x726F50
-    bool HasZoneEntryByEvent() const;             // GAMEMD 0x726FB0
-};
+// Shared TriggerTypeClass layout: this TU follows its next-link and calls the
+// five non-virtual predicate methods at their retail addresses.
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, NextTrigger) == 0xA8);
 
 // ---------------------------------------------------------------------------

@@ -11,22 +11,8 @@
 #include "../_layout/tag_class.h"
 #include "tag_type_class_flag_methods.h"
 
-// Sparse trigger-chain views for the bytes ShouldReplace reads. These do
-// not assert the full TriggerClass/TriggerTypeClass layout or original names.
-struct TagTriggerTypeFlagsView
-{
-    char unknown_00[0xA0];
-    bool unknown_A0;
-};
-struct TagTriggerChainView
-{
-    char unknown_00[0x24];
-    TagTriggerTypeFlagsView* Type;
-    TagTriggerChainView* NextTrigger;
-};
-GG_STATIC_ASSERT(offsetof(TagTriggerTypeFlagsView, unknown_A0) == 0xA0);
-GG_STATIC_ASSERT(offsetof(TagTriggerChainView, Type) == 0x24);
-GG_STATIC_ASSERT(offsetof(TagTriggerChainView, NextTrigger) == 0x28);
+#include "../_layout/trigger_class.h"
+
 GG_STATIC_ASSERT(offsetof(TagClass, Type) == 0x24);
 GG_STATIC_ASSERT(offsetof(TagClass, FirstTrigger) == 0x28);
 
@@ -62,7 +48,7 @@ bool TagClass::HasZoneEntryByEvent() const
 // The original flag meaning is unconfirmed.
 bool TagClass::ShouldReplace() const
 {
-    for (TagTriggerChainView* trigger = static_cast<TagTriggerChainView*>(FirstTrigger); trigger != 0; trigger = trigger->NextTrigger) {
+    for (TriggerClass* trigger = static_cast<TriggerClass*>(FirstTrigger); trigger != 0; trigger = trigger->NextTrigger) {
         if (trigger->Type->unknown_A0)
             return true;
     }

@@ -6,7 +6,7 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x727120  TriggerTypeClass::FindByNameOrID  (__fastcall)
 //   FUNCTION: GAMEMD 0x7271E0  TriggerTypeClass::GetFlags        (__thiscall)
-//   GLOBAL:   GAMEMD 0x8B4178  TriggerTypeClass::Array  (DynamicVectorClass<TriggerTypeClass*>)
+//   GLOBAL:   GAMEMD 0x8B4178  TriggerTypeClass::Array  (accessed 0x18-byte vector prefix)
 //   LIBRARY:  GAMEMD 0x7C8D20  _strcmpi  (CRT; excluded from match target)
 
 #include "trigger_type_class_flags_methods.h"
@@ -19,8 +19,6 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 int __fastcall EventKindToFlags(int kind);   // 0x71F680
 int __fastcall ActionKindToFlags(int kind);  // 0x6E3EE0
 
-// GLOBAL: GAMEMD 0x8B4178 — TriggerTypeClass::Array.
-extern TriggerTypeVectorClass TriggerTypeArray;
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x727120  (__fastcall — name in ECX)
@@ -33,11 +31,11 @@ TriggerTypeClass* __fastcall TriggerTypeClass::FindByNameOrID(const char* name)
 {
     if (name)
     {
-        for (int i = 0; i < TriggerTypeArray.Count; ++i)
+        for (int i = 0; i < TriggerTypeClass::Array.Count; ++i)
         {
-            if (_strcmpi(TriggerTypeArray.Items[i]->ID, name) == 0 ||
-                _strcmpi(TriggerTypeArray.Items[i]->Name, name) == 0)
-                return TriggerTypeArray.Items[i];
+            if (_strcmpi(((TriggerTypeClass**)TriggerTypeClass::Array.Items)[i]->ID, name) == 0 ||
+                _strcmpi(((TriggerTypeClass**)TriggerTypeClass::Array.Items)[i]->Name, name) == 0)
+                return ((TriggerTypeClass**)TriggerTypeClass::Array.Items)[i];
         }
     }
     return 0;

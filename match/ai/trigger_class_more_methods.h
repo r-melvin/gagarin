@@ -26,19 +26,15 @@
 #define GG_MATCH_AI_TRIGGER_CLASS_MORE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- allocation target used by native GetInstance.
 void* __cdecl operator new(size_t size);
 
-// TriggerTypeClass — only the global-set/cleared predicate is modelled here; it
-// is a separate retail __thiscall taking the global index and returning bool.
-class TriggerTypeClass
-{
-public:
-    bool HasGlobalSetOrClearedEvent(int idxGlobal) const;  // GAMEMD 0x727010
-};
+// The global-set/cleared predicate is declared in the shared TriggerTypeClass
+// layout; it is a retail __thiscall taking the global index and returning bool.
 
 // GetInstance uses the shared 0x48-byte TriggerClass declaration.
 

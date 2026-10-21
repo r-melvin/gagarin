@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 121
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 115
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 122 remaining addresses are bound to VectorClass<T> tables;
+//   The 116 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -271,11 +271,6 @@ template class VectorClass<CrossDissolveEffect*>;
 //   `.?AV?$VectorClass@PAVEBolt@@@@`.
 template class VectorClass<EBolt*>;
 
-// FUNCTION: GAMEMD 0x004C4AF0
-// VectorClass<EgoClass*> -- vtable 0x007E86FC slot 3; locator 0x00800390 -> type descriptor 0x00820778
-//   `.?AV?$VectorClass@PAVEgoClass@@@@`.
-template class VectorClass<EgoClass*>;
-
 // FUNCTION: GAMEMD 0x004C5CB0
 // VectorClass<EMPulseClass*> -- vtable 0x007E875C slot 3; locator 0x00800428 -> type descriptor 0x00820868
 //   `.?AV?$VectorClass@PAVEMPulseClass@@@@`.
@@ -290,11 +285,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 // VectorClass<SuperClass*> -- vtable 0x007EA504 slot 3; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
-
-// FUNCTION: GAMEMD 0x004E9A10
-// VectorClass<AITriggerTypeClass*> -- vtable 0x007E9B84 slot 3; locator 0x00800C28 -> type descriptor 0x00822D88
-//   `.?AV?$VectorClass@PAVAITriggerTypeClass@@@@`.
-template class VectorClass<AITriggerTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E9C70
 // VectorClass<BuildingLightClass*> -- vtable 0x007E9C44 slot 3; locator 0x00800DF0 -> type descriptor 0x00822EE0
@@ -325,11 +315,6 @@ template class VectorClass<TriggerTypeClass*>;
 // VectorClass<TubeClass*> -- vtable 0x007E9CC4 slot 3; locator 0x00800F20 -> type descriptor 0x00822FD0
 //   `.?AV?$VectorClass@PAVTubeClass@@@@`.
 template class VectorClass<TubeClass*>;
-
-// FUNCTION: GAMEMD 0x004EAE90
-// VectorClass<WaveClass*> -- vtable 0x007E9D04 slot 3; locator 0x00800FB8 -> type descriptor 0x00823038
-//   `.?AV?$VectorClass@PAVWaveClass@@@@`.
-template class VectorClass<WaveClass*>;
 
 // FUNCTION: GAMEMD 0x004EB0F0
 // VectorClass<OverlayClass*> -- vtable 0x007E9D44 slot 3; locator 0x00801050 -> type descriptor 0x008230A0
@@ -366,11 +351,6 @@ template class VectorClass<HouseTypeClass*>;
 //   `.?AV?$VectorClass@PAVTaskForceClass@@@@`.
 template class VectorClass<TaskForceClass*>;
 
-// FUNCTION: GAMEMD 0x004ECD70
-// VectorClass<TeamTypeClass*> -- vtable 0x007EA104 slot 3; locator 0x00801938 -> type descriptor 0x008236B8
-//   `.?AV?$VectorClass@PAVTeamTypeClass@@@@`.
-template class VectorClass<TeamTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004EE530
 // VectorClass<BulletTypeClass*> -- vtable 0x007EA384 slot 3; locator 0x00801F28 -> type descriptor 0x00823B28
 //   `.?AV?$VectorClass@PAVBulletTypeClass@@@@`.
@@ -385,16 +365,6 @@ template class VectorClass<IsometricTileTypeClass*>;
 // VectorClass<ParticleTypeClass*> -- vtable 0x007EA444 slot 3; locator 0x008020F0 -> type descriptor 0x00823C88
 //   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
 template class VectorClass<ParticleTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EEEB0
-// VectorClass<ParticleSystemTypeClass*> -- vtable 0x007EA484 slot 3; locator 0x00802188 -> type descriptor 0x00823D00
-//   `.?AV?$VectorClass@PAVParticleSystemTypeClass@@@@`.
-template class VectorClass<ParticleSystemTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EF370
-// VectorClass<AbstractTypeClass*> -- vtable 0x007EA544 slot 3; locator 0x00802350 -> type descriptor 0x00823E60
-//   `.?AV?$VectorClass@PAVAbstractTypeClass@@@@`.
-template class VectorClass<AbstractTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004F29D0
 // VectorClass<GraphicMenuItem*> -- vtable 0x007EA624 slot 3; locator 0x00802638 -> type descriptor 0x00824100

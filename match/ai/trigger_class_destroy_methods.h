@@ -15,6 +15,8 @@
 #define GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/house_type_class.h"
+#include "../_layout/trigger_type_class.h"
 #include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
@@ -40,11 +42,6 @@ public:
 };
 
 // HouseTypeClass — only ArrayIndex @0xB4 is touched (the FindByCountryIndex arg).
-struct HouseTypeClass
-{
-    char _pad0[0xB4];   // +0x000  AbstractTypeClass base + earlier members (P2)
-    int  ArrayIndex;    // +0x0B4
-};
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB4);
 
 class TriggerClass;  // fwd (Execute's pTrigger arg)
@@ -62,14 +59,6 @@ struct TActionClass
 GG_STATIC_ASSERT(offsetof(TActionClass, NextAction) == 0x28);
 
 // TriggerTypeClass — House @0xA4, FirstAction @0xB0.
-class TriggerTypeClass
-{
-public:
-    char            _pad0[0xA4];    // +0x000  AbstractTypeClass base + members (P2)
-    HouseTypeClass* House;          // +0x0A4
-    char            _gap_a8[0x08];  // +0x0A8  NextTrigger + FirstEvent
-    TActionClass*   FirstAction;    // +0x0B0
-};
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House)       == 0xA4);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, FirstAction) == 0xB0);
 

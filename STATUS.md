@@ -1,13 +1,45 @@
 # Project status
 
-The latest whole-repository regression passed with **3,735 fully matched
-functions**, **166 partial rows**, and 900 manifest translation units, with no
-matched function regressing. All **908 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,783 fully matched
+functions**, **166 partial rows**, and 906 manifest translation units, with no
+matched function regressing. All **915 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: shared TriggerClass and object registries
+## Latest integration: shared TriggerTypeClass and six vector pairs
+
+The [shared TriggerTypeClass declaration](match/_layout/trigger_type_class.h)
+replaces nine competing definitions. Fresh entry-origin REA analysis and raw
+retail RTTI confirm its zero-offset AbstractTypeClass base, constructor field
+writes, and the loader's 0xB4 allocation. Field names remain descriptive;
+constructor writes alone do not establish their semantics. Its registry at
+`0x8B4178` now has one loader-zero prefix definition, without claiming original
+ownership or later initialization. TagClass construction and chain traversal
+use the shared types instead of private prefix views and retain their matches.
+
+The AbstractTypeClass, AITriggerTypeClass, TeamTypeClass,
+ParticleSystemTypeClass, EgoClass and WaveClass pointer vector pairs add
+**48 new exact matches** and migrate 24 existing claims into native template
+specializations. Their twelve
+seven-slot vtable checks pass conditionally with `--weak-defaults`; these are
+scoped checks, not final-link evidence. Full retail spans, RTTI and GX/no-GX
+probes support each pair. No assembly or shim was needed.
+
+The current `/dll /noentry /nodefaultlib` diagnostic link reports 4,060 unique
+unresolved symbols (6,212 reference lines), with no duplicate definitions.
+Default libraries are excluded, so these are not engine-only gap counts.
+The loader's address-specific adapter remains in place; its native constructor
+and complete engine link closure still require work.
+
+Matched function lengths total 269,653 bytes (263 KiB): 19.2% of listed
+functions and 7.1% of listed function lengths. The padding heuristic misses
+209 matched entries. Residual vector families contain 231 generic deleting
+bindings across 119 instantiation views, 116 base Clear rows, 114 native
+dynamic Clear rows plus one DiskID stand-in, and 16 address-scoped resize-family rows. Four other resize helpers remain
+in `vector_resize_methods.cpp`.
+
+## Previous verified integration: shared TriggerClass and object registries
 
 The [shared TriggerClass declaration](match/_layout/trigger_class.h) replaces
 its competing method-specific definitions. Ten existing exact methods retain
@@ -15,7 +47,7 @@ their matches; the partial `ResetTimers` body and relocation offsets are
 unchanged from the previous project objects. TagClass and House callers now
 use this declaration or an explicitly named deleting-call view. Its RTTI
 class key, 0x48-byte allocation size, accessed fields and link aliases are pinned.
-Complete COM inheritance and TriggerTypeClass layout consolidation are pending.
+Complete COM inheritance remains pending; TriggerTypeClass was consolidated in the latest batch.
 
 The [native TriggerClass constructor](match/ai/trigger_class_ctor.cpp) is a
 new **partial source recovery**, not a new match. The fixed 403-byte retail-span
@@ -455,8 +487,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 908 tracked C++ files and 3,901 manifest
-rows, with no manifest TU missing from tracked sources. Eight tracked files
+verified snapshot, the inventory has 915 tracked C++ files and 3,949 manifest
+rows, with no manifest TU missing from tracked sources. Nine tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -617,7 +649,7 @@ Verified consolidation steps:
   complete size and all inherited signatures are unconfirmed.
 - [VectorClass and DynamicVectorClass](match/core/vector_class.h): shared
   seven-slot templates replace the base `PlainVector` and dynamic
-  `CountedVector::Destroy` stand-ins. The family files bind 144 base and 142
+  `CountedVector::Destroy` stand-ins. The family files bind 116 base and 114
   native dynamic `Clear` entries; one separate DiskID row remains a stand-in.
   The [ToolTip-pointer specialization](match/ui/tooltip_vector_methods.cpp)
   binds twelve matched entries: eight other virtual methods, two `Clear` bodies,
@@ -707,7 +739,7 @@ Verified consolidation steps:
   including the former capacity, copy and default-constructor bindings. All
   three seven-slot tables pass conditional checks; complete object size and
   final-link resolution remain unestablished. The generic deleting-destructor
-  family has 287 bindings across 147 base-template instantiation views. Their written vptr and
+  family has 231 bindings across 119 base-template instantiation views. Their written vptr and
   RTTI identify the base-destruction path and element type, but do not
   establish each wrapper's original declaring class, source-file boundaries,
   or duplicate-COMDAT linker behavior. The int and ToolTip specializations
@@ -717,8 +749,8 @@ Verified consolidation steps:
   retail declaring class is unresolved; other legacy users are marked
   `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
   original source-file ownership remain incomplete.
-  The resize helpers retain 21 address-specific views and five generic resize
-  views. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
+  The resize helpers retain 16 address-specific family views and four other
+  generic resize helpers. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
 - [TypeList](match/core/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
   destructor in [one implementation](match/core/typelist_int_methods.cpp).
@@ -771,10 +803,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,735** | **18.9%** of 19,753 |
-| Sum of matched function lengths | 260 KiB | 7.0% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,783** | **19.2%** of 19,753 |
+| Sum of matched function lengths | 263 KiB | 7.1% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 166 | 0.8% |
-| Tracked C++ files under `match/` | 908 | |
+| Tracked C++ files under `match/` | 915 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -794,7 +826,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 203 matched entries. Its candidate count is therefore
+listed entries, including 209 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

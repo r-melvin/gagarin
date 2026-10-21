@@ -11,23 +11,14 @@
 #define GG_MATCH_AI_TRIGGER_CLASS_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_type_class.h"
 #include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // TriggerTypeClass — the trigger's static type. Both Notify* methods query it
 // (ecx = [TriggerClass+0x24]) with the changed index and return a bool in AL.
-// The query bodies (@0x727010 / @0x727050) are matched elsewhere; declared here
-// so cl emits the calls (relocations, normalised by the differ).
-class TriggerTypeClass
-{
-public:
-    // GAMEMD 0x727010 __thiscall — has a Global Set/Cleared event for idxGlobal.
-    bool HasGlobalChangedEvent(int idxGlobal);
-    // GAMEMD 0x727050 __thiscall — has a Local Set/Cleared event for idxLocal.
-    bool HasLocalChangedEvent(int idxLocal);
-};
-
-
+// The query bodies (@0x727010 / @0x727050) are matched elsewhere and declared
+// in the shared TriggerTypeClass layout so cl emits direct calls.
 
 GG_STATIC_ASSERT(offsetof(TriggerClass, Type)        == 0x24);
 GG_STATIC_ASSERT(offsetof(TriggerClass, NextTrigger) == 0x28);
