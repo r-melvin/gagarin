@@ -5,8 +5,20 @@ functions**, **167 partial rows**, **4,684 manifest rows**, **1,010 manifest
 translation units**, and **1,020 tracked C++ files**. The 90-test suite,
 compile/layout checks, and whole-repository regression passed with zero
 matched regressions. All 1,020 C++ files produced current project objects and
-passed the input-hash check. The duplicate audit found **4,717 addresses and
-zero issues**. Eleven saved partial bodies and relocation offsets are unchanged.
+passed the input-hash check. The annotation audit reports zero duplicate
+issues; its count includes declaration-only markers. Eleven saved partial
+bodies and relocation offsets are unchanged.
+
+The latest consolidation migrates the already-matched Base64Pipe flush entry
+from an address-scoped receiver to its RTTI-backed class. All four relocation
+fields resolve to the codec entries and canonical Pipe methods. The complete
+Base64Pipe size, lifetime and vtable emission remain unproven. This adds no new
+match and introduces no runtime shim. A comment-only evidence correction was
+followed by a fresh object build and focused byte/relocation checks.
+
+Two confirmed false positives from the padding heuristic are recorded in
+[padding classifications](scripts/data/padding_classifications.json): an
+instruction interior at `0x417A70` and a switch table at `0x41A140`.
 
 Eight ordinary `BlitPlain<unsigned char/unsigned short>` methods now match
 full retail spans, including all four relocation fields to CRT `memmove`.
@@ -23,9 +35,9 @@ with their recorded retail targets.
 
 Matched lengths total **318,385 bytes**: 22.9% of listed functions and 8.4%
 of listed function lengths. The padding heuristic misses 292 matched entries.
-The diagnostic link reports **3,537 unique unresolved symbols**, **5,266
+The diagnostic link reports **3,535 unique unresolved symbols**, **5,264
 reference lines**, and zero duplicate definitions, compared with 3,537 unique
-symbols and 5,265 references at commit `ac3fa7e`. This diagnostic does not
+symbols and 5,266 references at commit `0fbf9f5`. This diagnostic does not
 establish engine link closure. Whole-executable reproduction remains unfinished.
 
 ## Historical integration archive

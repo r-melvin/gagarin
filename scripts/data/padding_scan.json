@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "0fb61732ee7bd6fa5cd6b765fb05bc7c53d13e9cf86e300cfc94ffa59c04d91f",
+  "manifest_sha256": "935ad21a6ee23966031908e71a102ac9e2f718e286295ca5cc815da3507c01e3",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",

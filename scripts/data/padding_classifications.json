@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+ "scope": "Manually confirmed classifications of padding-scan leads; omitted addresses remain unclassified. No function-count inference.",
+ "classifications": [
+  {
+   "address": "0x417A70",
+   "kind": "instruction_interior",
+   "function_entry": false,
+   "instruction_address": "0x417A6E",
+   "instruction_length": 6,
+   "offset_in_instruction": 2,
+   "operand": "disp32",
+   "displacement": 968,
+   "provenance": "Pinned PE reads and current local Ghidra instruction at 0x417A6E identify an indirect call through [EAX+0x3C8]. Ghidra reports no function at 0x417A70. The candidate is the first displacement byte; no source body is claimed.",
+   "limitations": "REA function-analysis provider failed before bridge startup; existing Ghidra CLI and direct disassembly supplied the boundary evidence. No runtime target resolved."
+  },
+  {
+   "address": "0x41A140",
+   "kind": "switch_table",
+   "function_entry": false,
+   "entry_count": 8,
+   "entry_width": 4,
+   "referencing_function": "0x419C80",
+   "dispatch_instruction": "0x419DBC",
+   "bound_evidence": {
+    "load_register": "0x419DAF",
+    "register": "EDI",
+    "value": 7,
+    "comparison": "0x419DB4",
+    "default_branch": "0x419DB6",
+    "default_target": "0x41A133"
+   },
+   "targets": [
+    "0x419DC3",
+    "0x419DCD",
+    "0x419DCD",
+    "0x419DCD",
+    "0x419DCD",
+    "0x419DCD",
+    "0x419DE0",
+    "0x419F09"
+   ],
+   "provenance": "Pinned PE reads; entry-origin disassembly; Ghidra data cross-reference from dispatch to table."
+  }
+ ]
+}
