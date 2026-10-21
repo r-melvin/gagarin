@@ -10955,11 +10955,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc36_methods.cpp",
+  "tu": "match/renderer/bsurface_class.cpp",
   "addr": "0x4115f0",
-  "sym": "?FUN_004115F0@BSurface_004115F0@@QAEHHH@Z",
+  "sym": "?Lock@BSurface@@UAEPAXUPoint2D@@@Z",
   "len": "0x31",
-  "name": "BSurface_004115F0::FUN_004115F0",
+  "name": "BSurface::Lock",
   "status": "matched",
   "pct": 100
  },

@@ -16,7 +16,7 @@ void YRDDraw_Restore()
 {
     if (DAT_008A0094 != 0) {
         char text[80];
-        long hr = DD_CALL0_004A44F0(DAT_008A0094, 0x4C);
+        long hr = DAT_008A0094->lpVtbl->RestoreDisplayMode(DAT_008A0094);
         int (WINAPI* box)(HWND, LPCSTR, LPCSTR, UINT) = MessageBoxA;
         if (hr != 0) {
             if (DAT_008A00B0 != 0) {
@@ -33,7 +33,7 @@ void YRDDraw_Restore()
         DAT_008A00A8 = 0;
         DAT_008A00AC = 0;
 
-        hr = DD_CALL0_004A44F0(DAT_008A0094, 0x08);
+        hr = DAT_008A0094->lpVtbl->Release(DAT_008A0094);
         if (hr != 0) {
             if (DAT_008A00B0 != 0) {
                 DAT_008A00B0(hr);

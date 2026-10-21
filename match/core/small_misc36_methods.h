@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Offsets, vtable slots and globals read numerically off the user's retail
-//   gamemd.exe v1.001 via the local Ghidra CLI at the three addresses below.
+//   gamemd.exe v1.001 via the local Ghidra CLI at the addresses below.
 //   None is bound by YRpp or the seed map, so placeholder names are kept.
 //
-// Three unrelated small __thiscall methods, grouped only by size. Each carries
+// Two unrelated small __thiscall methods, grouped only by size. Each carries
 // its own vtable-shaped class: the dummy `vt_XXX` slots exist to place the one
 // or two slots actually called at the right displacement, and carry no claim
 // about what those slots are.
@@ -13,65 +13,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// ---------------------------------------------------------------------------
-// 0x4115F0 - a weighted two-term sum with a side effect.
-//
-// Bumps the counter at +0x0C, then returns the base at +0x14 plus each of two
-// virtual results scaled by one of the two stack arguments. `RET 0x8` with the
-// object in ECX pins it as __thiscall with two 4-byte arguments; [ESP+0x10] and
-// [ESP+0x14] are those arguments seen past the three saved registers and the
-// return address.
-// ---------------------------------------------------------------------------
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_` placeholder). BSurface's own vtable is 0x7E2070.
-//   0x4115F0 -> BSurface slot 23 (byte-off 0x5C).
-// No other table in the image holds it, so the slot is declared on
-// BSurface rather than inherited. The METHOD name is still unknown; only the
-// class is proven, so the `FUN_<addr>` member name stays a placeholder.
-struct BSurface_004115F0
-{
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020();
-    virtual void vt_024();
-    virtual void vt_028();
-    virtual void vt_02C();
-    virtual void vt_030();
-    virtual void vt_034();
-    virtual void vt_038();
-    virtual void vt_03C();
-    virtual void vt_040();
-    virtual void vt_044();
-    virtual void vt_048();
-    virtual void vt_04C();
-    virtual void vt_050();
-    virtual void vt_054();
-    virtual void vt_058();
-    virtual void vt_05C();
-    virtual void vt_060();
-    virtual void vt_064();
-    virtual void vt_068();
-    virtual void vt_06C();
-    virtual int vt_070();   // +0x0070
-    virtual int vt_074();   // +0x0074
-
-    char _pad04[0x0C - 0x04];
-    int  Counter;      // +0x000C
-    char _pad10[0x4];
-    int  Base;         // +0x0014
-
-    // FUNCTION: GAMEMD 0x4115F0
-    int FUN_004115F0(int scaleA, int scaleB);
-};
-GG_STATIC_ASSERT(offsetof(BSurface_004115F0, Counter) == 0x0C);
-GG_STATIC_ASSERT(offsetof(BSurface_004115F0, Base) == 0x14);
 
 // ---------------------------------------------------------------------------
 // 0x4587D0 - a two-hop predicate.

@@ -5,7 +5,7 @@ function rows**, **190 partial rows**, **5,032 manifest rows**, **1,041 manifest
 translation units**, and **1,051 tracked C++ files**. Whole-repository regression,
 compile/layout checks, the project build and 112 tooling tests pass with zero
 matched regressions. All project objects are current. The annotation audit
-reports 5,065 body addresses and zero issues. Twenty-seven saved partial
+reports 5,065 body addresses and zero issues. Thirty-six saved partial
 baselines are unchanged.
 
 The latest batch adds 70 ordinary RLE methods: 61 exact spans and nine readable
@@ -15,6 +15,14 @@ are address bindings, not proof of production table emission, destructor
 ownership or complete class closure. Harness rows remain excluded. Three
 partials have shorter compiled sections than their retail spans; their stored
 instruction-position scores do not measure full-span byte equality.
+
+BSurface's Lock now belongs to the canonical renderer class, replacing its
+generic small-method view. Its two existing getters remain exact. An explicit,
+narrow DirectDraw COM declaration centralizes the pointer at `0x8A0094` and
+replaces generic slot calls in YRDDraw::Restore. All four affected spans pass
+raw checks; all 18 relocation fields resolve to retail targets. BSurface's
+allocation-backed `0x20` size is asserted. Its deleting destructor retains the
+existing exact generic body after bounded native attempts; no shim was added.
 
 The earlier locomotion literal correction and scoped literal-oracle checks
 remain in place. The instruction decoder now isolates each symbol's COFF

@@ -13,13 +13,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct IDDraw_004A44F0;
-typedef long (__stdcall* DDSlot_004A44F0)(IDDraw_004A44F0*);
-#define DD_CALL0_004A44F0(p, slot) \
-    ((*(DDSlot_004A44F0*)(*(char**)(p) + (slot)))(p))
+#include "direct_draw_interface_view.h"
 
-// GLOBAL: GAMEMD 0x8A0094 — the DirectDraw object.
-extern IDDraw_004A44F0* DAT_008A0094;
 // GLOBAL: GAMEMD 0x8A00A4 / 0x8A00A8 / 0x8A00AC — display mode width, height, depth.
 extern int DAT_008A00A4;
 extern int DAT_008A00A8;
