@@ -271,11 +271,6 @@ template class VectorClass<SmudgeClass*>;
 //   `.?AV?$VectorClass@PAVSideClass@@@@`.
 template class VectorClass<SideClass*>;
 
-// FUNCTION: GAMEMD 0x004EC8B0
-// VectorClass<HouseTypeClass*> -- vtable 0x007EA084 slot 3; locator 0x00801808 -> type descriptor 0x008235E8
-//   `.?AV?$VectorClass@PAVHouseTypeClass@@@@`.
-template class VectorClass<HouseTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004ECB10
 // VectorClass<TaskForceClass*> -- vtable 0x007EA0C4 slot 3; locator 0x008018A0 -> type descriptor 0x00823650
 //   `.?AV?$VectorClass@PAVTaskForceClass@@@@`.

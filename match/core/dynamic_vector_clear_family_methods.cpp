@@ -266,11 +266,6 @@ template class DynamicVectorClass<SmudgeClass*>;
 //   `.?AV?$DynamicVectorClass@PAVSideClass@@@@`.
 template class DynamicVectorClass<SideClass*>;
 
-// FUNCTION: GAMEMD 0x004E8AE0
-// DynamicVectorClass<HouseTypeClass*> -- vtable 0x007EA064 slot 3; locator 0x008017D8 -> type descriptor 0x00823618
-//   `.?AV?$DynamicVectorClass@PAVHouseTypeClass@@@@`.
-template class DynamicVectorClass<HouseTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004E8B40
 // DynamicVectorClass<TaskForceClass*> -- vtable 0x007EA0A4 slot 3; locator 0x00801870 -> type descriptor 0x00823680
 //   `.?AV?$DynamicVectorClass@PAVTaskForceClass@@@@`.

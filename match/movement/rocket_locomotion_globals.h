@@ -41,11 +41,10 @@
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
-// The engine's table-driven floating-point helpers. All three take their
-// argument as an ordinary stack double and hand the result back in ST(0), so
-// they are `float __cdecl (double)`; the callers allocate and release the eight
-// argument bytes themselves, which is what the `SUB ESP,8` / `ADD ESP,8` pairs
-// around each call site are.
+// Compiler-facing views of the table-driven floating-point helpers. The
+// stack double argument and ST(0) result do not establish the original return
+// type. Float below preserves this TU's binding; it is not a recovered source
+// declaration. Callers reserve and release the eight argument bytes.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x4CAC40  square root by exponent halving plus a mantissa
 //   table at 0x8650BC, with the zero and negative cases folded out first.

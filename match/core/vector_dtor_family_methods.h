@@ -54,8 +54,6 @@ extern char VT_007E9CC4;
 extern char VT_007E9DC4;
 // VTABLE: GAMEMD 0x007EA044 -- VectorClass<SideClass*>
 extern char VT_007EA044;
-// VTABLE: GAMEMD 0x007EA084 -- VectorClass<HouseTypeClass*>
-extern char VT_007EA084;
 // VTABLE: GAMEMD 0x007EA0C4 -- VectorClass<TaskForceClass*>
 extern char VT_007EA0C4;
 // VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>

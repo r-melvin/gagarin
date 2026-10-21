@@ -3303,22 +3303,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
   "addr": "0x420630",
-  "sym": "?FUN_00420630@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVAlphaLightingRemapClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_00420630",
+  "name": "VectorClass<AlphaLightingRemapClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
   "addr": "0x420680",
-  "sym": "?FUN_00420680@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_00420680",
+  "name": "DynamicVectorClass<AlphaLightingRemapClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/buffer_holder_dtor_methods.cpp",
@@ -3780,22 +3780,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
   "addr": "0x420370",
-  "sym": "?FUN_00420370@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_00420370",
+  "name": "DynamicVectorClass<AlphaLightingRemapClass*>::Clear",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
   "addr": "0x4204C0",
-  "sym": "?FUN_004204C0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVAlphaLightingRemapClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_004204C0",
+  "name": "VectorClass<AlphaLightingRemapClass*>::Clear",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/buffer_release_methods.cpp",
@@ -13824,13 +13824,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
-  "addr": "0x004e8ae0",
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4E8AE0",
   "sym": "?Clear@?$DynamicVectorClass@PAVHouseTypeClass@@@@UAEXXZ",
   "len": "0x2a",
   "name": "DynamicVectorClass<HouseTypeClass*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
@@ -16173,22 +16173,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
   "addr": "0x4F02F0",
   "sym": "??_G?$VectorClass@PAVHouseTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HouseTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<HouseTypeClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
   "addr": "0x4F0340",
-  "sym": "??_G?$VectorClass@PAVHouseTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVHouseTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HouseTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<HouseTypeClass*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_dtor_family_methods.cpp",
@@ -19233,13 +19233,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
-  "addr": "0x004ec8b0",
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC8B0",
   "sym": "?Clear@?$VectorClass@PAVHouseTypeClass@@@@UAEXXZ",
   "len": "0x27",
   "name": "VectorClass<HouseTypeClass*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_clear_family_methods.cpp",
@@ -39731,6 +39731,240 @@
   "sym": "_FUN_004735F0",
   "len": "0x13",
   "name": "FUN_004735F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4E8B10",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVHouseTypeClass@@@@UBEHPAPAVHouseTypeClass@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<HouseTypeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4E8B30",
+  "sym": "?Slot6@?$VectorClass@PAVHouseTypeClass@@@@UBEPAVHouseTypeClass@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<HouseTypeClass*>::Slot6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC7C0",
+  "sym": "??8?$VectorClass@PAVHouseTypeClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<HouseTypeClass*>::operator==",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC800",
+  "sym": "?SetCapacity@?$VectorClass@PAVHouseTypeClass@@@@UAE_NHPAPAVHouseTypeClass@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<HouseTypeClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC8E0",
+  "sym": "?FindItemIndex@?$VectorClass@PAVHouseTypeClass@@@@UBEHABQAVHouseTypeClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<HouseTypeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC920",
+  "sym": "?Slot5@?$VectorClass@PAVHouseTypeClass@@@@UBEHPAPAVHouseTypeClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<HouseTypeClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC940",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVHouseTypeClass@@@@UAE_NHPAPAVHouseTypeClass@@@Z",
+  "len": "0xb0",
+  "name": "DynamicVectorClass<HouseTypeClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_housetypeclass_methods.cpp",
+  "addr": "0x4EC9F0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVHouseTypeClass@@@@UBEHABQAVHouseTypeClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<HouseTypeClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x4203A0",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UBEHPAPAVAlphaLightingRemapClass@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<AlphaLightingRemapClass*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x4203C0",
+  "sym": "?Slot6@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEPAVAlphaLightingRemapClass@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<AlphaLightingRemapClass*>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x4203D0",
+  "sym": "??8?$VectorClass@PAVAlphaLightingRemapClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<AlphaLightingRemapClass*>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x420410",
+  "sym": "?SetCapacity@?$VectorClass@PAVAlphaLightingRemapClass@@@@UAE_NHPAPAVAlphaLightingRemapClass@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<AlphaLightingRemapClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x4204F0",
+  "sym": "?FindItemIndex@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEHABQAVAlphaLightingRemapClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<AlphaLightingRemapClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x420530",
+  "sym": "?Slot5@?$VectorClass@PAVAlphaLightingRemapClass@@@@UBEHPAPAVAlphaLightingRemapClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<AlphaLightingRemapClass*>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x420550",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UAE_NHPAPAVAlphaLightingRemapClass@@@Z",
+  "len": "0xb0",
+  "name": "DynamicVectorClass<AlphaLightingRemapClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_alphalightingremapclass_methods.cpp",
+  "addr": "0x420600",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVAlphaLightingRemapClass@@@@UBEHABQAVAlphaLightingRemapClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<AlphaLightingRemapClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473610",
+  "sym": "_FUN_00473610",
+  "len": "0x31",
+  "name": "FUN_00473610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473650",
+  "sym": "_FUN_00473650",
+  "len": "0x21",
+  "name": "FUN_00473650",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473680",
+  "sym": "_FUN_00473680",
+  "len": "0x2c",
+  "name": "FUN_00473680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4736B0",
+  "sym": "_FUN_004736B0",
+  "len": "0x27",
+  "name": "FUN_004736B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4736E0",
+  "sym": "_FUN_004736E0",
+  "len": "0x0f",
+  "name": "FUN_004736E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x4736F0",
+  "sym": "_FUN_004736F0",
+  "len": "0x12",
+  "name": "FUN_004736F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473710",
+  "sym": "_FUN_00473710",
+  "len": "0x1a",
+  "name": "FUN_00473710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_00473570.cpp",
+  "addr": "0x473730",
+  "sym": "_FUN_00473730",
+  "len": "0x17",
+  "name": "FUN_00473730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_table_lookup_00473940.cpp",
+  "addr": "0x473940",
+  "sym": "@FUN_00473940@4",
+  "len": "0x13",
+  "name": "FUN_00473940",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/static_table_lookup_00473940.cpp",
+  "addr": "0x4739D0",
+  "sym": "_FUN_004739D0",
+  "len": "0x17",
+  "name": "FUN_004739D0",
   "status": "matched",
   "pct": 100
  }
