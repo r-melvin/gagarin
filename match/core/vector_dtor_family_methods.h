@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 191 remaining 73-byte deleting-destructor bodies are bound here through
-// 99 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 179 remaining 73-byte deleting-destructor bodies are bound here through
+// 93 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -206,23 +206,11 @@ extern char VT_007F42BC;
 extern char VT_007F42FC;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
 extern char VT_007F65F4;
-// VTABLE: GAMEMD 0x007F68CC -- VectorClass<VocClass*>
-extern char VT_007F68CC;
-// VTABLE: GAMEMD 0x007F6924 -- VectorClass<VoxClass*>
-extern char VT_007F6924;
-// VTABLE: GAMEMD 0x007F69A4 -- VectorClass<MovieHandle*>
-extern char VT_007F69A4;
-// VTABLE: GAMEMD 0x007F6E24 -- VectorClass<WaypointPathClass*>
-extern char VT_007F6E24;
 // VTABLE: GAMEMD 0x007F71A4 -- VectorClass<WorldDominationTour::Map::AnimationPalette*>
 extern char VT_007F71A4;
 // VTABLE: GAMEMD 0x007F71E0 -- VectorClass<WorldDominationTour::Centroid>
 extern char VT_007F71E0;
-// VTABLE: GAMEMD 0x007F78A4 -- VectorClass<tConnInfoStruct*>
-extern char VT_007F78A4;
 // VTABLE: GAMEMD 0x007F7A3C -- VectorClass<WinsockInterfaceClass::WinsockBufferType*>
 extern char VT_007F7A3C;
-// VTABLE: GAMEMD 0x007F7B0C -- VectorClass<unsigned char*>
-extern char VT_007F7B0C;
 
 #endif  // GG_MATCH_CORE_VECTOR_DTOR_FAMILY_METHODS_H

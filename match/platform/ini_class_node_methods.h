@@ -102,21 +102,6 @@ struct GG_Deletable
 };
 
 // ---------------------------------------------------------------------------
-// The bare GenericList instantiation. Its constructor is the one class in the
-// cluster whose body is shared, so the constructor sits on a derived stand-in
-// rather than on GenericList itself: a user-declared base constructor would
-// force cl to emit a call to it from List<INIEntry*>'s constructor.
-struct GenericListObject : public GenericList
-{
-    // FUNCTION: GAMEMD 0x52ACE0
-    GenericListObject();
-};
-
-GG_STATIC_ASSERT(offsetof(GenericList, FirstNode) == 0x04 &&
-                 offsetof(GenericList, LastNode)  == 0x10 &&
-                 sizeof(GenericList) == 0x1C);
-
-// ---------------------------------------------------------------------------
 // INIComment - one retained comment line. The destructors walk the chain
 // reading the text at +0x00 and the successor at +0x04.
 // ---------------------------------------------------------------------------

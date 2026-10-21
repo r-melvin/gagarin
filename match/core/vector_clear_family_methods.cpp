@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 95
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 89
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -646,26 +646,6 @@ template class VectorClass<ShadowControlClass*>;
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
 
-// FUNCTION: GAMEMD 0x00751A20
-// VectorClass<VocClass*> -- vtable 0x007F68CC slot 3; locator 0x0080D0E0 -> type descriptor 0x008464C8
-//   `.?AV?$VectorClass@PAVVocClass@@@@`.
-template class VectorClass<VocClass*>;
-
-// FUNCTION: GAMEMD 0x007537A0
-// VectorClass<VoxClass*> -- vtable 0x007F6924 slot 3; locator 0x0080D178 -> type descriptor 0x00846618
-//   `.?AV?$VectorClass@PAVVoxClass@@@@`.
-template class VectorClass<VoxClass*>;
-
-// FUNCTION: GAMEMD 0x0075A580
-// VectorClass<MovieHandle*> -- vtable 0x007F69A4 slot 3; locator 0x0080D210 -> type descriptor 0x00847AF8
-//   `.?AV?$VectorClass@PAVMovieHandle@@@@`.
-template class VectorClass<MovieHandle*>;
-
-// FUNCTION: GAMEMD 0x00764550
-// VectorClass<WaypointPathClass*> -- vtable 0x007F6E24 slot 3; locator 0x0080D4B0 -> type descriptor 0x00847EC8
-//   `.?AV?$VectorClass@PAVWaypointPathClass@@@@`.
-template class VectorClass<WaypointPathClass*>;
-
 // FUNCTION: GAMEMD 0x0076A220
 // VectorClass<WorldDominationTour::Map::AnimationPalette*> -- vtable 0x007F71A4 slot 3; locator 0x0080DF28 -> type descriptor 0x008488E0
 //   `.?AV?$VectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
@@ -676,17 +656,7 @@ template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 //   `.?AV?$VectorClass@VCentroid@WorldDominationTour@@@@`.
 template class VectorClass<WorldDominationTour::Centroid>;
 
-// FUNCTION: GAMEMD 0x007AD180
-// VectorClass<tConnInfoStruct*> -- vtable 0x007F78A4 slot 3; locator 0x0080E8B0 -> type descriptor 0x0084C6C0
-//   `.?AV?$VectorClass@PAUtConnInfoStruct@@@@`.
-template class VectorClass<tConnInfoStruct*>;
-
 // FUNCTION: GAMEMD 0x007B2990
 // VectorClass<WinsockInterfaceClass::WinsockBufferType*> -- vtable 0x007F7A3C slot 3; locator 0x0080EB28 -> type descriptor 0x0084DDA8
 //   `.?AV?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
 template class VectorClass<WinsockInterfaceClass::WinsockBufferType*>;
-
-// FUNCTION: GAMEMD 0x007B4410
-// VectorClass<unsigned char*> -- vtable 0x007F7B0C slot 3; locator 0x0080EC10 -> type descriptor 0x0084E178
-//   `.?AV?$VectorClass@PAE@@`.
-template class VectorClass<unsigned char*>;

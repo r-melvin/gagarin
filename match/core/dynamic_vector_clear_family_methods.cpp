@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 94
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 88
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -659,42 +659,12 @@ template class DynamicVectorClass<ShadowControlClass*>;
 //   `.?AV?$DynamicVectorClass@PAUThemeControl@@@@`.
 template class DynamicVectorClass<ThemeControl*>;
 
-// FUNCTION: GAMEMD 0x007518D0
-// DynamicVectorClass<VocClass*> -- vtable 0x007F68AC slot 3; locator 0x0080D0B0 -> type descriptor 0x008464F8
-//   `.?AV?$DynamicVectorClass@PAVVocClass@@@@`.
-template class DynamicVectorClass<VocClass*>;
-
-// FUNCTION: GAMEMD 0x00753650
-// DynamicVectorClass<VoxClass*> -- vtable 0x007F6904 slot 3; locator 0x0080D148 -> type descriptor 0x00846648
-//   `.?AV?$DynamicVectorClass@PAVVoxClass@@@@`.
-template class DynamicVectorClass<VoxClass*>;
-
-// FUNCTION: GAMEMD 0x0075A430
-// DynamicVectorClass<MovieHandle*> -- vtable 0x007F6984 slot 3; locator 0x0080D1E0 -> type descriptor 0x00847B28
-//   `.?AV?$DynamicVectorClass@PAVMovieHandle@@@@`.
-template class DynamicVectorClass<MovieHandle*>;
-
-// FUNCTION: GAMEMD 0x00763F90
-// DynamicVectorClass<WaypointPathClass*> -- vtable 0x007F6E04 slot 3; locator 0x0080D480 -> type descriptor 0x00847F00
-//   `.?AV?$DynamicVectorClass@PAVWaypointPathClass@@@@`.
-template class DynamicVectorClass<WaypointPathClass*>;
-
 // FUNCTION: GAMEMD 0x00769CD0
 // DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*> -- vtable 0x007F7144 slot 3; locator 0x0080DEC8 -> type descriptor 0x00848930
 //   `.?AV?$DynamicVectorClass@PAUAnimationPalette@Map@WorldDominationTour@@@@`.
 template class DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>;
 
-// FUNCTION: GAMEMD 0x007AC970
-// DynamicVectorClass<tConnInfoStruct*> -- vtable 0x007F78C4 slot 3; locator 0x0080E918 -> type descriptor 0x0084C6F8
-//   `.?AV?$DynamicVectorClass@PAUtConnInfoStruct@@@@`.
-template class DynamicVectorClass<tConnInfoStruct*>;
-
 // FUNCTION: GAMEMD 0x007B2840
 // DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*> -- vtable 0x007F7A1C slot 3; locator 0x0080EAC8 -> type descriptor 0x0084DDF8
 //   `.?AV?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
 template class DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>;
-
-// FUNCTION: GAMEMD 0x007B42C0
-// DynamicVectorClass<unsigned char*> -- vtable 0x007F7AEC slot 3; locator 0x0080EB90 -> type descriptor 0x0084E198
-//   `.?AV?$DynamicVectorClass@PAE@@`.
-template class DynamicVectorClass<unsigned char*>;

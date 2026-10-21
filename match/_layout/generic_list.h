@@ -56,17 +56,17 @@ public:
     GenericNode FirstNode;   // +0x04
     GenericNode LastNode;    // +0x10
 
+    // FUNCTION: GAMEMD 0x52ACE0
+    GenericList();
+
     // Separate matched teardown body; the primary table target is 0x40E3E0.
     // FUNCTION: GAMEMD 0x5B46E0
     GenericList* ScalarDeletingDtor(char flags);
     // FUNCTION: GAMEMD 0x40E3E0 -- table 0x7E1B04 slot zero.
     void* DeletingDestructor(unsigned int flags);
-    // What the GenericList constructor collapses to: build both sentinels,
-    // seat the list, and link the head to the tail. It is shared by the plain
-    // list at 0x52ACE0 and the List<INIEntry*> instantiation at 0x52AF50,
-    // which carries the identical body with one extra seat store, so it is
-    // forced inline: cl emits a call rather than an expansion for an ordinary
-    // base constructor, and retail has no such call.
+    // Shared initialization for the native constructor at 0x52ACE0.
+    // The owning TU's /Ob2 also inlines that constructor into the derived
+    // List<INIEntry*> constructor at 0x52AF50, reproducing its full span.
     __forceinline void InitList();
 
     // First() is the head sentinel's forward link, which is why INISection's

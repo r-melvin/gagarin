@@ -6,6 +6,8 @@
 //
 // The INI node cluster, bodies ascending by retail address.
 
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX /Ob2
+// Ob2 inlines native GenericList construction into List<INIEntry*>.
 #include "ini_class_node_methods.h"
 
 // Cut an INI line short at its first comment character and trim what is left.
@@ -110,7 +112,7 @@ void INIClass::INISection::DestroySection()
 // GenericList::GenericList.
 //
 // FUNCTION: GAMEMD 0x52ACE0
-GenericListObject::GenericListObject()
+GenericList::GenericList()
 {
     InitList();
 }
@@ -219,7 +221,6 @@ INIClass::INIEntry::INIEntry(char* entry, char* value, INIComment* comments,
 // FUNCTION: GAMEMD 0x52AF50
 template<> List<INIClass::INIEntry*>::List()
 {
-    InitList();
     Vtable = &GG_VTABLE_LISTOFINIENTRY;
 }
 

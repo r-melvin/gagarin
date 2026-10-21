@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 99 base-template instantiations reproduce 191 remaining retail destructor
+// 93 base-template instantiations reproduce 179 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -746,30 +746,6 @@ template class VectorClass<ShadowControlClass*>;
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
 
-// FUNCTION: GAMEMD 0x00751B90
-// FUNCTION: GAMEMD 0x00751BE0
-// VectorClass<VocClass*> -- reseats retail vtable 0x007F68CC; locator 0x0080D0E0 -> type descriptor 0x008464C8
-//   `.?AV?$VectorClass@PAVVocClass@@@@`.
-template class VectorClass<VocClass*>;
-
-// FUNCTION: GAMEMD 0x00753910
-// FUNCTION: GAMEMD 0x00753960
-// VectorClass<VoxClass*> -- reseats retail vtable 0x007F6924; locator 0x0080D178 -> type descriptor 0x00846618
-//   `.?AV?$VectorClass@PAVVoxClass@@@@`.
-template class VectorClass<VoxClass*>;
-
-// FUNCTION: GAMEMD 0x0075A6F0
-// FUNCTION: GAMEMD 0x0075A740
-// VectorClass<MovieHandle*> -- reseats retail vtable 0x007F69A4; locator 0x0080D210 -> type descriptor 0x00847AF8
-//   `.?AV?$VectorClass@PAVMovieHandle@@@@`.
-template class VectorClass<MovieHandle*>;
-
-// FUNCTION: GAMEMD 0x007646C0
-// FUNCTION: GAMEMD 0x00764710
-// VectorClass<WaypointPathClass*> -- reseats retail vtable 0x007F6E24; locator 0x0080D4B0 -> type descriptor 0x00847EC8
-//   `.?AV?$VectorClass@PAVWaypointPathClass@@@@`.
-template class VectorClass<WaypointPathClass*>;
-
 // FUNCTION: GAMEMD 0x0076A6D0
 // FUNCTION: GAMEMD 0x0076A720
 // VectorClass<WorldDominationTour::Map::AnimationPalette*> -- reseats retail vtable 0x007F71A4; locator 0x0080DF28 -> type descriptor 0x008488E0
@@ -781,20 +757,8 @@ template class VectorClass<WorldDominationTour::Map::AnimationPalette*>;
 //   `.?AV?$VectorClass@VCentroid@WorldDominationTour@@@@`.
 template class VectorClass<WorldDominationTour::Centroid>;
 
-// FUNCTION: GAMEMD 0x007AD370
-// FUNCTION: GAMEMD 0x007AD3C0
-// VectorClass<tConnInfoStruct*> -- reseats retail vtable 0x007F78A4; locator 0x0080E8B0 -> type descriptor 0x0084C6C0
-//   `.?AV?$VectorClass@PAUtConnInfoStruct@@@@`.
-template class VectorClass<tConnInfoStruct*>;
-
 // FUNCTION: GAMEMD 0x007B2B00
 // FUNCTION: GAMEMD 0x007B2B50
 // VectorClass<WinsockInterfaceClass::WinsockBufferType*> -- reseats retail vtable 0x007F7A3C; locator 0x0080EB28 -> type descriptor 0x0084DDA8
 //   `.?AV?$VectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@`.
 template class VectorClass<WinsockInterfaceClass::WinsockBufferType*>;
-
-// FUNCTION: GAMEMD 0x007B4580
-// FUNCTION: GAMEMD 0x007B45D0
-// VectorClass<unsigned char*> -- reseats retail vtable 0x007F7B0C; locator 0x0080EC10 -> type descriptor 0x0084E178
-//   `.?AV?$VectorClass@PAE@@`.
-template class VectorClass<unsigned char*>;
