@@ -114,6 +114,7 @@ Tags:
 | `own-binary-via-Ghidra` | facts read from the retail binary (required for every committed fact) |
 | `YRpp-cross-check` | name or signature suggested by YRpp, reconfirmed in the binary |
 | `EA-GPL-RA1-reference` | naming or shape informed by EA's GPL RA1 source (carries EA's Section 7 terms) |
+| `Phobos-GPL3:<path>@<commit>` | Phobos's own material, with upstream path and full commit; import requires the provenance and applicable-terms review in [LEGAL.md](LEGAL.md), and retail facts still need binary confirmation |
 | `private-ref-cross-check` | location suggested by the author's unpublished notes, reconfirmed in the binary |
 | `original` | written from scratch (helpers, shims) |
 
