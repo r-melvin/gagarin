@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
+//   Cross-check tags above are historical attribution, not binary authority.
+//   A new independent retail audit confirms the numeric accesses below;
+//   semantic helper names remain provisional.
 //   Every offset, global, vtable slot and convention below was read numerically
 //   off the user's retail gamemd.exe v1.001 through the local Ghidra CLI at
 //   0x5FF250 / 0x5FF2D0 / 0x5FF390 / 0x5FF420 / 0x5FF800.
@@ -38,8 +41,8 @@
 //       operator new at the call site 0x48A6BD.
 //     * 0x5FF390 reads the age at +0x0C, adds 8, stores it back, and retires
 //       the entry once it reaches 0x50. The null test lands *after* the age
-//       test, which is `delete`'s own guard, so the unregister-and-free pair is
-//       a destructor cl flattened into the sweep.
+//       test; list removal and deallocation follow. The instructions do not
+//       establish the original delete expression or why its guard was ordered.
 //     * The BSurface table runs from 0xAC1698 to 0xAC17C0 exclusive — 0x128
 //       bytes, 74 pointers (the loop bound is an absolute `CMP ...,0xAC17C0`).
 //       0xAC1798 (index 64) is the same table, not a second global: the raw
@@ -47,18 +50,13 @@
 //       0x5FF420's real 0x3D7-byte body (its own `RET`, not the listed ~0x3E0
 //       upper bound) also confirmed the builder's two loops both walk this one
 //       array, the second starting at &DAT_00AC1698[64].
-//     * 0x5FF420 (0x3D7 bytes) is the table's one-shot lazy builder: for each
-//       of the 74 slots it (a) ensures a cached low-res BSurface exists, (b)
-//       builds a throwaway high-res BSurface on the stack via the textbook
-//       MSVC /GX three-phase constructor (vtable seated to Surface, then to
-//       XSurface before the Buffer sub-object's own constructor can throw,
-//       then finally to BSurface once construction can no longer fail — the
-//       exact three pokes RTTI already dated to this address), rasterises a
-//       gradient into it, downsamples it row-by-row into the cached entry via
-//       Surface::CopyFromPart (slot 2), and destroys the throwaway. It then
-//       one-shot-latches DAT_00AC1834 and, gated by the separate per-call
-//       config probe at 0x4E6150, builds the 65536-entry packed-pixel fade
-//       table at DAT_00AC1838 from the live pixel-format shift/mask globals.
+//     * 0x5FF420 has a 0x3D7-byte body. Its surface construction sequences
+//       write Surface, XSurface and BSurface vptrs in that order; these writes
+//       alone do not establish the original exception-safety rationale.
+//       The cached-entry calls use BSurface's vptr through slots +8 and +0x18.
+//       The function updates DAT_00AC1834 and, after calling 0x4E6150 and
+//       testing its output, allocates 0x40000 bytes and fills 0x10000 entries
+//       using six shift operands at 0x8A0DD0..0x8A0DE4.
 #ifndef GG_MATCH_RENDERER_SHADOW_BLOCK_LIST_METHODS_H
 #define GG_MATCH_RENDERER_SHADOW_BLOCK_LIST_METHODS_H
 
@@ -186,13 +184,9 @@ extern BSurface_005FF800* DAT_00AC1698[74];
 extern void* DAT_00AC1838;
 
 // ---------------------------------------------------------------------------
-// 0x5FF420's raw building blocks. The cached table entries and the builder's
-// own stack temporary are the *same* 0x20-byte BSurface layout; modelled as a
-// plain POD rather than a polymorphic class because nothing here ever
-// dispatches on it dynamically -- the four slots retail calls through it
-// (Fill +0x18, CopyFromPart +0x08, Unlock +0x60, GetPitch +0x74) are reached
-// with the project's explicit vtable-slot member-pointer idiom below, exactly
-// like the already-matched match/combat/ion_blast_draw_methods.h.
+// 0x5FF420's explicit surface layout view. It does dispatch dynamically,
+// through the member-pointer slot declarations below. Those local method names
+// model observed calls; they do not recover original method declarations.
 struct RawSurface_005FF420
 {
     void* VTable;         // +0x00
@@ -200,7 +194,7 @@ struct RawSurface_005FF420
     int   Height;         // +0x08
     int   LockLevel;      // +0x0C
     int   BytesPerPixel;  // +0x10
-    int   Buffer[3];       // +0x14  MemoryBuffer sub-object (opaque; ctor 0x43AD00, dtor 0x43AE50)
+    int   Buffer[3];       // +0x14  MemoryBuffer storage (opaque; ctor 0x43AD00, Clear 0x43AE50)
 };
 GG_STATIC_ASSERT(offsetof(RawSurface_005FF420, Width)         == 0x04);
 GG_STATIC_ASSERT(offsetof(RawSurface_005FF420, Height)        == 0x08);
@@ -209,15 +203,13 @@ GG_STATIC_ASSERT(offsetof(RawSurface_005FF420, BytesPerPixel) == 0x10);
 GG_STATIC_ASSERT(offsetof(RawSurface_005FF420, Buffer)        == 0x14);
 GG_STATIC_ASSERT(sizeof(RawSurface_005FF420)                  == 0x20);
 
-// A generic 4-int band descriptor: the builder repurposes Surface's
-// RectangleStruct-shaped CopyFromPart arguments as {X, Y, Width, Height}
-// intensity-ramp bands rather than screen rectangles.
+// Four-int argument view used by the slot-call model. The local field
+// names do not establish an original rectangle or band type.
 struct Quad_005FF420 { int A, B, C, D; };
 
-// Vtbl_Surface: only the four slots 0x5FF420/0x5FF850 reach. Fn08/Fn18 are
-// called through a cached table entry's own vtable (Surface's, seated by the
-// builder itself); Fn60/Fn74 are called on externally-owned Surface objects
-// (the temp ramp, DSurface::Temp) that this TU never constructs.
+// Explicit call slots used by the surface views. Cached entries dispatch
+// through the BSurface vptr seated by the builder, not Surface's base table.
+// Method names below are provisional; the byte offsets are instruction-backed.
 struct Vtbl_Surface;
 typedef bool (RawSurface_005FF420::*FnCopyFromPart_005FF420)(Quad_005FF420*, RawSurface_005FF420*, Quad_005FF420*, int, int);
 typedef bool (RawSurface_005FF420::*FnFill_005FF420)(unsigned);
@@ -247,7 +239,7 @@ struct SurfaceFieldInit_004AEC60
     void Init(int width, int height);   // GAMEMD 0x4AEC60 __thiscall (declared; reloc)
 };
 
-// Stand-in for the embedded MemoryBuffer sub-object's constructor/destructor.
+// Legacy ABI views for MemoryBuffer construction and its Clear entry.
 // Declared only -- matched separately, not reimplemented in this TU.
 struct MemoryBufferRaw_0043AD00
 {
@@ -255,14 +247,14 @@ struct MemoryBufferRaw_0043AD00
     void Destruct();                              // GAMEMD 0x43AE50 __fastcall (declared; reloc)
 };
 
-// Stand-in for the finalizer 0x5FF420 calls once its stack-temporary surface
-// finishes construction. Declared only -- matched separately.
+// ABI view for the observed call at 0x7BBAB0. The Finalize spelling is
+// provisional; the original method name is not established here.
 struct SurfaceFinalize_007BBAB0
 {
     void Finalize(int flag);   // GAMEMD 0x7BBAB0 __thiscall (declared; reloc)
 };
 
-// Stand-in for the gradient rasteriser at 0x7BB920 -- __thiscall is only
+// ABI view for the observed call at 0x7BB920 -- __thiscall is only
 // legal on VC6 as a member function, so the receiver becomes a stand-in
 // method (see match/_rt/gg_vslot.h's note on this). Declared only, not
 // reimplemented in this TU.
@@ -272,24 +264,25 @@ struct SurfaceSpread_007BB920
 };
 
 // FUNCTION: GAMEMD 0x4BBC90 (decl; reloc). GAMEMD 0x4E6150 (decl; reloc) --
-// the config probe gating the fade-table (re)build. Neither is reimplemented
+// observed calls preceding the table build. Neither is reimplemented
 // in this TU.
 extern "C" int  __stdcall FUN_004BBC90();
 extern "C" void __fastcall FUN_004E6150(int* param1, char* outFlag, char* param3, unsigned param4);
 
 // GLOBAL: GAMEMD 0xAC1834 -- one-shot "gradient cache built" latch.
 extern unsigned char DAT_00AC1834;
-// GLOBAL: GAMEMD 0x833588 -- the config probe's own cached result.
+// GLOBAL: GAMEMD 0x833588 -- receives the return value from 0x4BBC90.
 extern int DAT_00833588;
-// GLOBAL: GAMEMD 0x8871E0 -- a scenario-ish singleton read for the "near"
-// band's radius bias (offset +0x7A8 off it).
+// GLOBAL: GAMEMD 0x8871E0 -- pointer with an observed dword read at +0x7A8.
 extern char* DAT_008871E0;
-// GLOBAL: GAMEMD 0x7EF6F8 -- the fixed-point-to-float scale the near band's
-// radius bias is multiplied by before truncation.
+// GLOBAL: GAMEMD 0x7EF6F8
+// Known partial-model error: retail FMUL at 0x5FF68C reads a qword. The
+// legacy float below is deferred with 0x5FF420 pending retry direction; it
+// does not establish the retail operand type or width.
 extern float DAT_007EF6F8;
 
-// GLOBAL: GAMEMD 0x8A0DD0/D4/D8/DC/E0/E4 -- the live pixel-format shift/mask
-// sextet the fade table is built from. Reused verbatim from
+// GLOBAL: GAMEMD 0x8A0DD0/D4/D8/DC/E0/E4 -- six observed shift operands.
+// Shared declarations from
 // match/renderer/drawing.cpp (RedShiftLeft/Right, BlueShiftLeft/Right) plus
 // the two green-channel globals this file adds.
 extern int RedShiftLeft;     // GAMEMD 0x8A0DD0

@@ -39184,5 +39184,23 @@
   "name": "FUN_0043B0B0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b0e0",
+  "sym": "_FUN_0043B0E0",
+  "len": "0xf",
+  "name": "FUN_0043B0E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b0f0",
+  "sym": "_FUN_0043B0F0",
+  "len": "0x12",
+  "name": "FUN_0043B0F0",
+  "status": "matched",
+  "pct": 100
  }
 ]

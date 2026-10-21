@@ -22,17 +22,6 @@ int BSurface_004115F0::FUN_004115F0(int scaleA, int scaleB)
     return base + vt_070() * scaleA + vt_074() * scaleB;
 }
 
-// FUNCTION: GAMEMD 0x4587D0
-bool Obj_004587D0::FUN_004587D0(Arg_004587D0* other)
-{
-    int derived = other->vt_08C(Owner);
-
-    void* context = DAT_0089C818;
-    bool accepted = vt_100(derived, context) != 0;
-
-    return accepted;
-}
-
 // FUNCTION: GAMEMD 0x43E900
 int BuildingClass_0043E900::FUN_0043E900()
 {
@@ -45,4 +34,16 @@ int BuildingClass_0043E900::FUN_0043E900()
     }
 
     return value;
+}
+
+// FUNCTION: GAMEMD 0x4587D0
+bool Obj_004587D0::FUN_004587D0(Arg_004587D0* other)
+{
+    int derived = other->vt_08C(Owner);
+
+    // The pointer cast models this call slot's existing ABI view only.
+    void* context = (void*)DAT_0089C818.raw_dword;
+    bool accepted = vt_100(derived, context) != 0;
+
+    return accepted;
 }

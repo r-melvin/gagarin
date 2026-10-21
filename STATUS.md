@@ -1,13 +1,53 @@
 # Project status
 
-The latest whole-repository regression passed with **4,187 fully matched
+The latest whole-repository regression passed with **4,189 fully matched
 functions**, **167 partial rows**, and 964 manifest translation units, with no
 matched function regressing. All **974 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: BulletTypeClass vectors, SpotLightClass spelling and grouped math updates
+## Latest integration: shared 0x89C818 storage view and math updates
+
+The [shared storage view](match/_layout/global_0089c818.h) records the observed
+two 16-bit writes at `0x89C818` and `0x89C81A`, plus a 32-bit read at
+`0x89C818`. Its overlapping word/dword fields do not claim the original type,
+signedness, semantic owner or pointer interpretation. The existing
+`0x4587D0` call site uses an explicit dword-to-`void*` cast only to model its
+observed argument slot.
+
+Two new exact entries at `0x43B0E0` and `0x43B0F0` bring
+[the grouped math TU](match/core/math_global_updates_0043af70.cpp) to eleven
+matched rows. `0x43B0E0` clears the two observed words; `0x43B0F0` clears three
+32-bit globals. The source grouping does not establish original ownership or
+startup role.
+
+Renderer comments were narrowed to observed instructions. Historical cross-
+check provenance tags remain explicitly historical, not binary authority.
+`0x5FF420` is still a 3.9% partial; its source body was unchanged in this batch,
+and no retry strategy was attempted. Its header records that retail reads an
+8-byte operand at `0x7EF6F8` while the existing partial model still declares
+`float`; that known width mismatch remains unresolved.
+
+The full regression passed with **4,189 matched functions**, 167 partial rows,
+and no regressions. All **974/974 tracked C++ files** produced current project
+objects; the compile/layout gate, 75 verifier tests and duplicate-address
+check passed. Focused checks covered 14 rows across two translation units.
+Eight saved partial bodies retain identical bytes and relocation offsets. The
+`/dll /noentry /nodefaultlib` diagnostic link reports **3,663 unique unresolved
+symbols**, 5,504 reference lines and no duplicate definitions. The added
+`0x43B0F0` references account for three expected unresolved globals; this batch
+does not claim a reduction in link gaps. Default libraries are excluded, so
+this is not an engine-only gap census.
+
+Matched lengths total **297,672 bytes (291 KiB)**: 21.2% of listed functions
+and 7.8% of listed function lengths. The padding heuristic misses 259 matched
+entries. Current generic families contain 135 deleting bindings across 71
+views, 68 base `Clear` rows, 66 native dynamic `Clear` rows plus one DiskID
+stand-in, and 10 resize-family rows plus three other resize helpers. Engine
+link closure and complete executable reproduction remain unfinished.
+
+## Previous integration: BulletTypeClass vectors, SpotLightClass spelling and grouped math updates
 
 The [`BulletTypeClass*`](match/core/vector_bullettypeclass_methods.cpp) vector
 pair adds **eight exact matches** and migrates four existing claims. Retail
@@ -1271,7 +1311,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 974 tracked C++ files and 4,354 manifest
+verified snapshot, the inventory has 974 tracked C++ files and 4,356 manifest
 rows, with no manifest TU missing from tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1587,7 +1627,7 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,187** | **21.2%** of 19,753 |
+| Functions matched at 100% | **4,189** | **21.2%** of 19,753 |
 | Sum of matched function lengths | 291 KiB | 7.8% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
 | Tracked C++ files under `match/` | 974 | |

@@ -3,12 +3,13 @@
 // Entry-bounded retail evidence: 0x43AF70 reads doubles at 0x89C820 and
 // 0x7E3E78, then stores to 0x89C880; 0x43AF90 reads 0x7E1718 and 0x89C880,
 // then stores to 0x89C868. Both complete entry spans are 19 bytes.
-// Further entry-bounded operations through 0x43B0B0 are grouped here for
+// Further entry-bounded operations through 0x43B0F0 are grouped here for
 // organization only. The 0x7E inputs are read-only .rdata. Original owners,
 // source-file boundaries and startup registration are not established.
 // Helper declarations model the observed stack-double input and x87 result;
 // float versus double in the original return declaration is not established.
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/global_0089c818.h"
 GG_STATIC_ASSERT(sizeof(double) == 8);
 GG_STATIC_ASSERT(sizeof(int) == 4);
 
@@ -35,6 +36,10 @@ extern "C" double __cdecl FUN_004CADE0(double value); // FUNCTION: GAMEMD 0x004C
 
 extern "C" double DAT_0089C858; // GLOBAL: GAMEMD 0x0089C858
 extern "C" int DAT_0089C87C; // GLOBAL: GAMEMD 0x0089C87C
+
+extern "C" int DAT_0089C848; // GLOBAL: GAMEMD 0x0089C848
+extern "C" int DAT_0089C84C; // GLOBAL: GAMEMD 0x0089C84C
+extern "C" int DAT_0089C850; // GLOBAL: GAMEMD 0x0089C850
 
 // FUNCTION: GAMEMD 0x43AF70
 extern "C" void FUN_0043AF70()
@@ -89,4 +94,19 @@ extern "C" void FUN_0043B080()
 extern "C" void FUN_0043B0B0()
 {
     DAT_0089C87C = (int)(DAT_0089C888 * 4 + DAT_007E1738);
+}
+
+// FUNCTION: GAMEMD 0x43B0E0
+extern "C" void FUN_0043B0E0()
+{
+    DAT_0089C818.words.word_00 = 0;
+    DAT_0089C818.words.word_02 = 0;
+}
+
+// FUNCTION: GAMEMD 0x43B0F0
+extern "C" void FUN_0043B0F0()
+{
+    DAT_0089C848 = 0;
+    DAT_0089C84C = 0;
+    DAT_0089C850 = 0;
 }

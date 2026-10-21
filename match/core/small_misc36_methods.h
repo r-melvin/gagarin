@@ -121,8 +121,8 @@ struct Arg_004587D0
     virtual int vt_08C(void* owner);   // +0x008C
 };
 
-// GLOBAL: GAMEMD 0x89C818 - loaded straight into the second argument slot.
-extern void* volatile DAT_0089C818;
+// Shared storage view; the dword load alone does not establish a pointer.
+#include "../_layout/global_0089c818.h"
 
 struct Obj_004587D0
 {

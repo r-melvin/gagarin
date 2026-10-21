@@ -74,8 +74,8 @@ __forceinline static bool RemoveFrom(DynamicVectorClassLayout& list,
 // The unregister-and-free pair is spelled out here rather than written as
 // `delete entry`: retail has the destructor body expanded into this function,
 // and with a real `delete` cl emits an out-of-line call to it instead (0%).
-// The null test sits after the age comparison because that is `delete`'s own
-// guard order, which the explicit conjunction reproduces.
+// Retail tests for null after the age comparison; this source preserves
+// that observed order without inferring its original source expression.
 void FUN_005FF390()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; --i)
@@ -118,8 +118,8 @@ __forceinline static void EnsureGradientSurface(BSurface_005FF800** slot)
 }
 
 // Shared by both loops: seat a throwaway high-res BSurface on the stack via
-// the textbook /GX three-phase constructor (RTTI already dated the three
-// vtable pokes to this address -- see the header).
+// observed Surface/XSurface/BSurface vptr writes. Their sequence alone
+// does not establish the original exception-safety rationale.
 __forceinline static void ConstructRamp(RawSurface_005FF420* ramp)
 {
     ((SurfaceFieldInit_004AEC60*)ramp)->Init(0x100, 0x100);
@@ -132,7 +132,7 @@ __forceinline static void ConstructRamp(RawSurface_005FF420* ramp)
 }
 
 // Downsample the 0x100-tall ramp into the cached 0x80-tall entry, one row at a
-// time, via Surface::CopyFromPart (slot 2): source row is always double the
+// time, via the cached BSurface table's slot 2: source row is always double the
 // destination row.
 __forceinline static void DownsampleInto(BSurface_005FF800* cached, RawSurface_005FF420* ramp)
 {
