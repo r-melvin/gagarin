@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at each address below. Shape identified by clustering the
-//   111-300 byte unmatched pool; five remaining views, byte-identical apart from the
+//   111-300 byte unmatched pool; two remaining outer views, byte-identical apart from the
 //   entry point. None is bound by YRpp or the seed map.
 //
 // VectorClass::Resize. Take a new size and an optional caller-supplied buffer;
@@ -39,7 +39,7 @@ struct VectorBase
     int           ActiveCount;   // +0x0010
 
     // VectorClass::Resize, the inlined inner half of the retail function.
-    // Kept inline in the header so all 38 instantiations share one body: the
+    // Kept inline in the header so the remaining address-scoped views share one body: the
     // 176 retail bytes are identical apart from the two call displacements.
     bool ResizeBase(int newsize, void** array);
 };
@@ -108,8 +108,6 @@ struct VectorResize : VectorBase
     bool FUN_0040CE50(int newsize, void** array);
     // FUNCTION: GAMEMD 0x42D780
     bool FUN_0042D780(int newsize, void** array);
-    // FUNCTION: GAMEMD 0x472CC0
-    bool FUN_00472CC0(int newsize, void** array);
 };
 
 #endif  // GG_MATCH_CORE_VECTOR_RESIZE_METHODS_H

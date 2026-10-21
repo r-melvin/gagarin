@@ -1812,7 +1812,7 @@
   "tu": "match/combat/capture_manager_class_more_methods.cpp",
   "addr": "0x4722F0",
   "sym": "?GetOriginalOwner@CaptureManagerClass@@QBEPAVHouseClass@@PAVTechnoClass@@@Z",
-  "len": "0x30",
+  "len": "0x32",
   "name": "GetOriginalOwner",
   "status": "matched",
   "pct": 100
@@ -3519,20 +3519,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_controlnode_methods.cpp",
   "addr": "0x473000",
-  "sym": "?FUN_00473000@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAUControlNode@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_00473000",
+  "name": "VectorClass<ControlNode*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_controlnode_methods.cpp",
   "addr": "0x473050",
-  "sym": "?FUN_00473050@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUControlNode@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_00473050",
+  "name": "DynamicVectorClass<ControlNode*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3996,11 +3996,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_controlnode_methods.cpp",
   "addr": "0x472A80",
-  "sym": "?FUN_00472A80@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAUControlNode@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_00472A80",
+  "name": "DynamicVectorClass<ControlNode*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -4014,11 +4014,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_controlnode_methods.cpp",
   "addr": "0x472C30",
-  "sym": "?FUN_00472C30@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAUControlNode@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_00472C30",
+  "name": "VectorClass<ControlNode*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -20898,11 +20898,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_methods.cpp",
+  "tu": "match/core/vector_controlnode_methods.cpp",
   "addr": "0x472CC0",
-  "sym": "?FUN_00472CC0@VectorResize@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUControlNode@@@@UAE_NHPAPAUControlNode@@@Z",
   "len": "0xb0",
-  "name": "FUN_00472CC0",
+  "name": "DynamicVectorClass<ControlNode*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -39202,5 +39202,86 @@
   "name": "FUN_0043B0F0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b110",
+  "sym": "_FUN_0043B110",
+  "len": "0x1a",
+  "name": "FUN_0043B110",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_0043af70.cpp",
+  "addr": "0x43b130",
+  "sym": "_FUN_0043B130",
+  "len": "0x17",
+  "name": "FUN_0043B130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x472AB0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUControlNode@@@@UBEHPAPAUControlNode@@@Z",
+  "name": "DynamicVectorClass<ControlNode*>::Slot5"
+ },
+ {
+  "addr": "0x472AD0",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUControlNode@@@@UBEPAUControlNode@@H@Z",
+  "name": "VectorClass<ControlNode*>::Slot6"
+ },
+ {
+  "addr": "0x472B40",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "??8?$VectorClass@PAUControlNode@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<ControlNode*>::operator=="
+ },
+ {
+  "addr": "0x472B80",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUControlNode@@@@UAE_NHPAPAUControlNode@@@Z",
+  "name": "VectorClass<ControlNode*>::SetCapacity"
+ },
+ {
+  "addr": "0x472C60",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUControlNode@@@@UBEHABQAUControlNode@@@Z",
+  "name": "VectorClass<ControlNode*>::FindItemIndex"
+ },
+ {
+  "addr": "0x472CA0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUControlNode@@@@UBEHPAPAUControlNode@@@Z",
+  "name": "VectorClass<ControlNode*>::Slot5"
+ },
+ {
+  "addr": "0x472D70",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_controlnode_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUControlNode@@@@UBEHABQAUControlNode@@@Z",
+  "name": "DynamicVectorClass<ControlNode*>::FindItemIndex"
  }
 ]

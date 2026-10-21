@@ -49,7 +49,6 @@ extern char VTABLE_007E4514[];   // VTABLE: GAMEMD 0x7E4514
 extern char VTABLE_007E4638[];   // VTABLE: GAMEMD 0x7E4638
 extern char VTABLE_007E4698[];   // VTABLE: GAMEMD 0x7E4698
 extern char VTABLE_007E4AF4[];   // VTABLE: GAMEMD 0x7E4AF4
-extern char VTABLE_007E4BC4[];   // VTABLE: GAMEMD 0x7E4BC4
 
 // The deleting destructors hang off the same layout as BufferHolder.
 struct BufferHolderDtor : BufferHolder
@@ -91,8 +90,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0045ACE0(unsigned int flags);   // FUNCTION: GAMEMD 0x45ACE0
     void* FUN_0045AD30(unsigned int flags);   // FUNCTION: GAMEMD 0x45AD30
     void* FUN_00466080(unsigned int flags);   // FUNCTION: GAMEMD 0x466080
-    void* FUN_00473000(unsigned int flags);   // FUNCTION: GAMEMD 0x473000
-    void* FUN_00473050(unsigned int flags);   // FUNCTION: GAMEMD 0x473050
     void* FUN_004730A0(unsigned int flags);   // FUNCTION: GAMEMD 0x4730A0
     void* FUN_004730F0(unsigned int flags);   // FUNCTION: GAMEMD 0x4730F0
 };

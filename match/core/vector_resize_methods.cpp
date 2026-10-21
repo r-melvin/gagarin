@@ -2,10 +2,10 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// Dynamic-vector resize, three remaining instances, ordered ascending by retail address and
+// Dynamic-vector resize, two remaining instances, ordered ascending by retail address and
 // written out longhand per the family rule.
 //
-// The three remaining bodies are matched, like the address-scoped instances in
+// The two remaining bodies are matched, like the address-scoped instances in
 // match/core/vector_resize_family_methods.cpp. The two levers that took the
 // shape from 68.5% to 100% are written up there in full: the retail body is
 // DynamicVectorClass::Resize with VectorClass::Resize inlined into it, so
@@ -33,19 +33,6 @@ bool VectorResize::FUN_0040CE50(int newsize, void** array)
 
 // FUNCTION: GAMEMD 0x42D780
 bool VectorResize::FUN_0042D780(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
-        }
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x472CC0
-bool VectorResize::FUN_00472CC0(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
         if (Length < ActiveCount) {
