@@ -47,6 +47,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/straw.h"
 
 // ---------------------------------------------------------------------------
 // Vtable stand-ins. Only the relocation is emitted, so one extern symbol per
@@ -169,11 +170,8 @@ struct RandomStraw
     int          Current;     // +0x0010
     RandomClass  Random[32];  // +0x0014
 
-    // Straw's own two out-of-line members, declared only. 0x6C9850 is
-    // ~Straw (it unchains the straw and seats the base vtable); 0x6C98E0 is
-    // Straw::Get, which RandomStraw::Get forwards its degenerate cases to.
-    // FUNCTION: GAMEMD 0x6C9850  Straw::~Straw
-    void StrawDestruct();
+    // Address-scoped forwarding view of Straw slot 2. Cleanup calls use the
+    // canonical Straw destructor through the confirmed 12-byte prefix.
     // FUNCTION: GAMEMD 0x6C98E0  Straw::Get
     int  StrawGet(void* source, int slen);
 

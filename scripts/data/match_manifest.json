@@ -5742,20 +5742,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
-  "addr": "0x00552060",
-  "sym": "?Dtor_00552060@DualBuf@@QAEXXZ",
+  "tu": "match/core/lcw_pipe.cpp",
+  "addr": "0x552060",
+  "sym": "??1LCWPipe@@UAE@XZ",
   "len": "0x35",
-  "name": "DualBuf::dtor",
+  "name": "LCWPipe::~LCWPipe",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/dual_buffer_dtor_family_methods.cpp",
-  "addr": "0x00552390",
-  "sym": "?FUN_00552390@@YIPAXPAUDualBuf@@HD@Z",
+  "tu": "match/core/lcw_pipe.cpp",
+  "addr": "0x552390",
+  "sym": "??_GLCWPipe@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "DualBuf::scalar deleting dtor",
+  "name": "LCWPipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -40928,6 +40928,24 @@
   "sym": "?Slot5@?$VectorClass@PAD@@UBEHPAPAD@Z",
   "len": "0x1b",
   "name": "?Slot5@?$VectorClass@PAD@@UBEHPAPAD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/lcw_pipe.cpp",
+  "addr": "0x5520a0",
+  "sym": "?FUN_00631D10@LCWPipe@@UAEHHH@Z",
+  "len": "0x227",
+  "name": "LCWPipe::FUN_00631D10",
+  "status": "partial",
+  "pct": 99
+ },
+ {
+  "tu": "match/core/lcw_pipe.cpp",
+  "addr": "0x5522d0",
+  "sym": "?FUN_00631D30@LCWPipe@@UAEHXZ",
+  "len": "0xbf",
+  "name": "LCWPipe::FUN_00631D30",
   "status": "matched",
   "pct": 100
  }

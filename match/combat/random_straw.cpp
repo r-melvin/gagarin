@@ -108,7 +108,7 @@ void RandomStraw::Destruct()
 {
     Vtable = &GG_VTABLE_RANDOMSTRAW;
     ResetInline();
-    StrawDestruct();
+    ((Straw*)this)->Straw::~Straw();
 }
 
 // The out-of-line copy of the pool clear.
@@ -205,7 +205,7 @@ void* RandomStraw::ScalarDeletingDestructor(unsigned char flags)
 {
     Vtable = &GG_VTABLE_RANDOMSTRAW;
     ResetInline();
-    StrawDestruct();
+    ((Straw*)this)->Straw::~Straw();
     if (flags & 0x01) {
         FUN_007C8B3D(this);
     }

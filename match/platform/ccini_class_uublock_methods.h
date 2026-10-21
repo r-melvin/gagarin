@@ -18,6 +18,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/memory_buffer.h"
+#include "../_layout/straw.h"
 #include "../_rt/gg_vslot.h"
 
 // CRT sprintf, __cdecl variadic; the caller pops the arguments.
@@ -39,8 +40,6 @@ struct Straw_00526E80
     int   ChainTo;           // +0x0004
     int   ChainFrom;         // +0x0008
 
-    // FUNCTION: GAMEMD 0x6C9850 (decl; reloc) — destructor.
-    void Destroy();
 };
 GG_STATIC_ASSERT(sizeof(Straw_00526E80) == 0x0C);
 
@@ -84,8 +83,6 @@ struct Base64Straw_00526E80
 
     // FUNCTION: GAMEMD 0x42DF90 (decl; reloc) — Get(buffer, length).
     int  Get(void* buffer, int length);
-    // FUNCTION: GAMEMD 0x6C9850 (decl; reloc) — straw destructor.
-    void Destroy();
 };
 GG_STATIC_ASSERT(offsetof(Base64Straw_00526E80, Control) == 0x0C);
 GG_STATIC_ASSERT(offsetof(Base64Straw_00526E80, Counter) == 0x10);

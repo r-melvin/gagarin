@@ -1,15 +1,42 @@
 # Project status
 
-The latest whole-repository regression passed with **4,381 fully matched
-functions**, **167 partial rows**, and 991 manifest translation units, with no
-matched function regressing. All **1,001 tracked C++ files** produced current
+The latest whole-repository regression passed with **4,382 fully matched
+functions**, **168 partial rows**, and 992 manifest translation units, with no
+matched function regressing. All **1,002 tracked C++ files** produced current
 project objects and passed the hash check. The compile/layout gate, 89 verifier
-tests and duplicate-address check passed (4,581 addresses, zero problems).
+tests and duplicate-address check passed (4,583 addresses, zero problems).
 Eleven saved partial-body byte/relocation checks retain their baseline bytes
 and relocations. The complete byte-for-byte executable target has not been
 achieved.
 
-## Latest integration: nested pointer vectors and Straw
+## Latest integration: LCWPipe and remaining Straw callers
+
+The native [LCWPipe implementation](match/core/lcw_pipe.cpp) replaces two
+generic destructor bindings and adds an exact flush entry at `0x5522D0`.
+Its input method at `0x5520A0` remains a 99% partial with two register-allocation
+byte differences. All 31 relocation fields across the four integrated spans
+resolve to the retail targets. Its five-slot table passes a conditional check:
+slot zero uses the recorded VC6 weak default, and the partial input method is
+bound explicitly for this table check. This does not establish a fully matched
+class or final-link resolution.
+
+The layout evidence identifies constructor entry `0x551FF0`, including its
+`+0x20` store at `0x552030`. The declared `0x28` size records the observed field
+extent; complete object size remains unproven. The block-header field offsets
+are asserted. The remaining RandomStraw and CCINI cleanup aliases now call the
+native Straw destructor; their 12 focused function checks remain exact.
+
+The full regression, compile/layout gate, 1,002-object build and 89 tooling
+tests passed. Eleven previously saved partial bodies retain identical bytes
+and relocation offsets; the new LCWPipe partial has its own saved baseline.
+There are 37 targeted Pipe/SHA/Straw caller-relocation checks, including the
+six remaining generic dual-buffer cleanup entries. The diagnostic link reports
+3,660 unique unresolved symbols, 5,490 reference lines and zero duplicate
+definitions. Matched function lengths total 308,651 bytes; coverage is 22.2% of
+listed functions and 8.1% of listed lengths. The padding heuristic misses 276
+matched entries. Whole-image reproduction remains unfinished.
+
+## Previous verified integration: nested pointer vectors and Straw
 
 The nested-vector and mutable `char*` clusters and the native Straw
 implementation add 17 exact function matches and migrate 13 existing address
