@@ -20,7 +20,7 @@
 // Opaque type targets — modelled as real 4-byte pointers (decomp shows
 // undefined4 truncation at these member-write sites).
 struct WarheadTypeClass;
-struct OverlayTypeClass;
+class OverlayTypeClass;
 
 // RandomStruct — Westwood ranged-random pair (min/max ints), size = 8. Modelled
 // as an exact-size byte block so downstream offsets stay byte-exact.

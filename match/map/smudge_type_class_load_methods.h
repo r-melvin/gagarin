@@ -23,6 +23,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "terrain_objects/smudge_type_class.h"
 
 // FUNCTION: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath, __cdecl.
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir,
@@ -71,27 +72,9 @@ GG_STATIC_ASSERT(sizeof(Theater_006B5490) == 0x70);
 // GLOBAL: GAMEMD 0x7E1B78 — the theater table (Extension of entry 0 is 0x7E1BC6).
 extern Theater_006B5490 DAT_007E1B78[];
 
-// SmudgeTypeClass — ID @0x24, Image @0xA4, Theater @0x22C (all from the
-// AbstractTypeClass / ObjectTypeClass bases).
-struct SmudgeTypeClass
-{
-    char   _pad000[0x24];          // +0x0000
-    char   ID[0x18];               // +0x0024
-    char   _pad03C[0xA4 - 0x3C];
-    void*  Image;                  // +0x00A4
-    char   _pad0A8[0x22C - 0xA8];
-    char   Theater;                // +0x022C
-
-    // FUNCTION: GAMEMD 0x6B5490 — the theater index arrives in ECX.
-    static void __fastcall LoadFromIniList(int idxTheater);
-};
-GG_STATIC_ASSERT(offsetof(SmudgeTypeClass, ID) == 0x24);
-GG_STATIC_ASSERT(offsetof(SmudgeTypeClass, Image) == 0xA4);
-GG_STATIC_ASSERT(offsetof(SmudgeTypeClass, Theater) == 0x22C);
-
-// GLOBAL: GAMEMD 0xA8EC1C — SmudgeTypeClass::Array.Items.
-extern SmudgeTypeClass** DAT_00A8EC1C;
-// GLOBAL: GAMEMD 0xA8EC28 — SmudgeTypeClass::Array.Count.
-extern int DAT_00A8EC28;
+// Existing independent field aliases at the same retail vector are retained by other legacy views;
+// this loader now uses the canonical packet object view for its own array access.
+#define DAT_00A8EC1C ((SmudgeTypeClass**)SmudgeTypeArray.Items)
+#define DAT_00A8EC28 (SmudgeTypeArray.Count)
 
 #endif  // GG_MATCH_MAP_SMUDGE_TYPE_CLASS_LOAD_METHODS_H

@@ -59,7 +59,7 @@ GG_STATIC_ASSERT(sizeof(BuildingAnimStruct) == 0x44);
 // (SHPStruct, BuildingTypeClass, UnitTypeClass, InfantryTypeClass are already
 //  forward-declared by techno_type_class.h; re-declared here is harmless.)
 struct CellStruct;
-struct OverlayTypeClass;
+class OverlayTypeClass;
 struct IsometricTileTypeClass;
 
 // ---------------------------------------------------------------------------

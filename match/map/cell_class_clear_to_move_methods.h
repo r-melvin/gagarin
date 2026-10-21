@@ -23,6 +23,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "terrain_objects/overlay_type_class.h"
 
 struct Cell_004834A0 { short X; short Y; };
 GG_STATIC_ASSERT(sizeof(Cell_004834A0) == 4);
@@ -36,18 +37,8 @@ struct Map_004834A0
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_004834A0 DAT_0087F7E8;
 
-struct OverlayType_004834A0
-{
-    char _pad000[0x22D];      // +0x0000
-    char At_22D;              // +0x022D
-    char _pad22E[0x2A8 - 0x22E]; // +0x022E
-    char Wall;                // +0x02A8
-};
-GG_STATIC_ASSERT(offsetof(OverlayType_004834A0, At_22D) == 0x22D);
-GG_STATIC_ASSERT(offsetof(OverlayType_004834A0, Wall)   == 0x2A8);
-
 // GLOBAL: GAMEMD 0xA83D84 — OverlayTypeClass::Array.Items.
-extern OverlayType_004834A0** DAT_00A83D84;
+// Declared by the canonical overlay-type header.
 
 // One row of the terrain table: the per-speed-type movement cost plus the
 // buildable flag.

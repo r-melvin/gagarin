@@ -5240,13 +5240,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
   "addr": "0x71D350",
-  "sym": "?FUN_71D350@Obj_71D350@@QAEPAXI@Z",
+  "sym": "??_GTerrainClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_0071d350",
+  "name": "TerrainClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -13127,7 +13127,7 @@
  {
   "tu": "match/core/type_class_findoralloc_methods.cpp",
   "addr": "0x71E2A0",
-  "sym": "?FindOrAllocate@TerrainTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@TerrainTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
   "name": "TerrainTypeClass::FindOrAllocate",
   "status": "matched",
@@ -23432,7 +23432,7 @@
  {
   "tu": "match/map/cell_class_query_methods.cpp",
   "addr": "0x47C550",
-  "sym": "?GetTerrain@CellClass@@QBEPAUTerrainClass@@_N@Z",
+  "sym": "?GetTerrain@CellClass@@QBEPAVTerrainClass@@_N@Z",
   "len": "0x43",
   "name": "GetTerrain",
   "status": "matched",
@@ -24519,22 +24519,22 @@
   "pct": 100
  },
  {
-  "tu": "match/map/overlay_type_class_methods.cpp",
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
   "addr": "0x5FE530",
-  "sym": "?SpawnAtMapCoords@OverlayTypeClass@@QAE_NPAUCellStruct_005FE530@@PAVHouseClass@@@Z",
+  "sym": "?vf_32@OverlayTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
   "len": "0x33",
-  "name": "OverlayTypeClass::SpawnAtMapCoords",
+  "name": "OverlayTypeClass::vf_32",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/overlay_type_class_methods.cpp",
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
   "addr": "0x5FE570",
-  "sym": "?CreateObject@OverlayTypeClass@@QAEPAVObjectClass@@PAVHouseClass@@@Z",
+  "sym": "?vf_35@OverlayTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
   "len": "0x2d",
-  "name": "OverlayTypeClass::CreateObject",
+  "name": "OverlayTypeClass::vf_35",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/overlay_type_class_methods.cpp",
@@ -46770,5 +46770,788 @@
   "name": "ParticleTypeClass::ReadINI(ParticleIniView*)",
   "status": "partial",
   "pct": 22.4
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71B920",
+  "sym": "?vf_91@TerrainClass@@UAEHPAHHPAUMapObjWarheadView@@PAX_N32@Z",
+  "len": "0x267",
+  "name": "TerrainClass::vf_91",
+  "status": "partial",
+  "pct": 2.6
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71BB90",
+  "sym": "??0TerrainClass@@QAE@PAVTerrainTypeClass@@PBUMapObjCell@@@Z",
+  "len": "0x251",
+  "name": "TerrainClass::TerrainClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71BDF0",
+  "sym": "??0TerrainClass@@QAE@XZ",
+  "len": "0x1c0",
+  "name": "TerrainClass::TerrainClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71BFB0",
+  "sym": "?Mark@TerrainClass@@UAE_NH@Z",
+  "len": "0xbc",
+  "name": "TerrainClass::Mark",
+  "status": "partial",
+  "pct": 80.6
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C070",
+  "sym": "?vf_61@TerrainClass@@UAEXPAUMapObjCoord@@@Z",
+  "len": "0x93",
+  "name": "TerrainClass::vf_61",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C110",
+  "sym": "?vf_60@TerrainClass@@UAEXPAUMapObjCoord@@@Z",
+  "len": "0x93",
+  "name": "TerrainClass::vf_60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C1B0",
+  "sym": "?vf_69@TerrainClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x1ad",
+  "name": "TerrainClass::vf_69",
+  "status": "partial",
+  "pct": 48.6
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C360",
+  "sym": "?vf_70@TerrainClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x16d",
+  "name": "TerrainClass::vf_70",
+  "status": "partial",
+  "pct": 38.6
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C4D0",
+  "sym": "?vf_107@TerrainClass@@UAEHPAUMapObjOccupierView@@HHHH@Z",
+  "len": "0xd9",
+  "name": "TerrainClass::vf_107",
+  "status": "partial",
+  "pct": 94.5
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C5B0",
+  "sym": "?vf_94@TerrainClass@@UAE_NXZ",
+  "len": "0xf4",
+  "name": "TerrainClass::vf_94",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C6B0",
+  "sym": "?vf_95@TerrainClass@@UAEXXZ",
+  "len": "0x80",
+  "name": "TerrainClass::vf_95",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C730",
+  "sym": "?Update@TerrainClass@@UAEXXZ",
+  "len": "0x1ac",
+  "name": "TerrainClass::Update",
+  "status": "partial",
+  "pct": 31.5
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71C930",
+  "sym": "?vf_53@TerrainClass@@UAE_NXZ",
+  "len": "0x13d",
+  "name": "TerrainClass::vf_53",
+  "status": "partial",
+  "pct": 92.5
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71CC50",
+  "sym": "?vf_65@TerrainClass@@UAE_NPAUMapObjRect@@_NH@Z",
+  "len": "0x149",
+  "name": "TerrainClass::vf_65",
+  "status": "partial",
+  "pct": 84.5
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71CDA0",
+  "sym": "?Load@TerrainClass@@UAGJPAUIStream@@@Z",
+  "len": "0x18e",
+  "name": "TerrainClass::Load",
+  "status": "partial",
+  "pct": 19.1
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71CF30",
+  "sym": "?Save@TerrainClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x17",
+  "name": "TerrainClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71CF50",
+  "sym": "?ComputeCRC@TerrainClass@@UAEXAAVMapObjCrcView@@@Z",
+  "len": "0x75",
+  "name": "TerrainClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71CFD0",
+  "sym": "?PointerExpired@TerrainClass@@UAEXPAX_N@Z",
+  "len": "0x2a",
+  "name": "TerrainClass::PointerExpired",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D000",
+  "sym": "?Unlimbo@TerrainClass@@UAE_NPBUMapObjCoord@@H@Z",
+  "len": "0x147",
+  "name": "TerrainClass::Unlimbo",
+  "status": "partial",
+  "pct": 91.1
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D150",
+  "sym": "?GetType@TerrainClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "len": "0x7",
+  "name": "TerrainClass::GetType",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D160",
+  "sym": "?vf_75@TerrainClass@@UAE?AUMapObjRect@@XZ",
+  "len": "0x18e",
+  "name": "TerrainClass::vf_75",
+  "status": "partial",
+  "pct": 12.8
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D2F0",
+  "sym": "?Size@TerrainClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TerrainClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D300",
+  "sym": "?WhatAmI@TerrainClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TerrainClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_class.cpp",
+  "addr": "0x71D310",
+  "sym": "?GetClassID@TerrainClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "TerrainClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71DA80",
+  "sym": "??0TerrainTypeClass@@QAE@PBD@Z",
+  "len": "0x147",
+  "name": "TerrainTypeClass::TerrainTypeClass",
+  "status": "partial",
+  "pct": 85.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71DDD0",
+  "sym": "?vf_32@TerrainTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
+  "len": "0x31",
+  "name": "TerrainTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71DE10",
+  "sym": "?vf_35@TerrainTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
+  "len": "0x2b",
+  "name": "TerrainTypeClass::vf_35",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71DE40",
+  "sym": "?vf_36@TerrainTypeClass@@UAEPAUMapObjCell@@H@Z",
+  "len": "0x4f",
+  "name": "TerrainTypeClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71DEA0",
+  "sym": "?ReadINI@TerrainTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "len": "0x221",
+  "name": "TerrainTypeClass::ReadINI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E0D0",
+  "sym": "?vf_27@TerrainTypeClass@@UAEPAUMapObjCoord@@PAU2@PBU2@@Z",
+  "len": "0x61",
+  "name": "TerrainTypeClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E140",
+  "sym": "?ComputeCRC@TerrainTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "len": "0x83",
+  "name": "TerrainTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E1D0",
+  "sym": "?Load@TerrainTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x69",
+  "name": "TerrainTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E240",
+  "sym": "?Save@TerrainTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x1d",
+  "name": "TerrainTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E260",
+  "sym": "?GetClassID@TerrainTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "TerrainTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E330",
+  "sym": "?WhatAmI@TerrainTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TerrainTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E340",
+  "sym": "?Size@TerrainTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TerrainTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E350",
+  "sym": "?vf_16@TerrainTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "TerrainTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/terrain_type_class.cpp",
+  "addr": "0x71E360",
+  "sym": "??_GTerrainTypeClass@@UAEPAXI@Z",
+  "len": "0xac",
+  "name": "TerrainTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4A50",
+  "sym": "??0SmudgeClass@@QAE@PAVSmudgeTypeClass@@ABUMapObjCoord@@H@Z",
+  "len": "0xea",
+  "name": "SmudgeClass::SmudgeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4BE0",
+  "sym": "?Mark@SmudgeClass@@UAE_NH@Z",
+  "len": "0x88",
+  "name": "SmudgeClass::Mark",
+  "status": "partial",
+  "pct": 82.4
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4EA0",
+  "sym": "?Load@SmudgeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x5a",
+  "name": "SmudgeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F00",
+  "sym": "?Save@SmudgeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x17",
+  "name": "SmudgeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F20",
+  "sym": "?GetType@SmudgeClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "len": "0x7",
+  "name": "SmudgeClass::GetType",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F30",
+  "sym": "?Size@SmudgeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "SmudgeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F40",
+  "sym": "?WhatAmI@SmudgeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "SmudgeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F50",
+  "sym": "?GetClassID@SmudgeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "SmudgeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4F90",
+  "sym": "?vf_69@SmudgeClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x3",
+  "name": "SmudgeClass::vf_69",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_class.cpp",
+  "addr": "0x6B4FA0",
+  "sym": "??_GSmudgeClass@@UAEPAXI@Z",
+  "len": "0xa7",
+  "name": "SmudgeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B5260",
+  "sym": "??0SmudgeTypeClass@@QAE@PBD@Z",
+  "len": "0x10e",
+  "name": "SmudgeTypeClass::SmudgeTypeClass",
+  "status": "partial",
+  "pct": 97.3
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B5550",
+  "sym": "?vf_32@SmudgeTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
+  "len": "0x69",
+  "name": "SmudgeTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B55C0",
+  "sym": "?vf_35@SmudgeTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
+  "len": "0x2d",
+  "name": "SmudgeTypeClass::vf_35",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B55F0",
+  "sym": "?vf_40@SmudgeTypeClass@@UAEXPBUMapObjPoint@@PAUMapObjRect@@HHPBUMapObjCell@@@Z",
+  "len": "0xd2",
+  "name": "SmudgeTypeClass::vf_40",
+  "status": "partial",
+  "pct": 60.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B56D0",
+  "sym": "?ReadINI@SmudgeTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "len": "0x117",
+  "name": "SmudgeTypeClass::ReadINI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B57F0",
+  "sym": "?ComputeCRC@SmudgeTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "len": "0x59",
+  "name": "SmudgeTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B5850",
+  "sym": "?Load@SmudgeTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x53",
+  "name": "SmudgeTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B58B0",
+  "sym": "?Save@SmudgeTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x1d",
+  "name": "SmudgeTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B58D0",
+  "sym": "?GetClassID@SmudgeTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "SmudgeTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B6130",
+  "sym": "?WhatAmI@SmudgeTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "SmudgeTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B6140",
+  "sym": "?Size@SmudgeTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "SmudgeTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B6150",
+  "sym": "?vf_16@SmudgeTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "SmudgeTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/smudge_type_class.cpp",
+  "addr": "0x6B6160",
+  "sym": "??_GSmudgeTypeClass@@UAEPAXI@Z",
+  "len": "0xac",
+  "name": "SmudgeTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FE250",
+  "sym": "??0OverlayTypeClass@@QAE@PBD@Z",
+  "len": "0x164",
+  "name": "OverlayTypeClass::OverlayTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FE4C0",
+  "sym": "?vf_36@OverlayTypeClass@@UAEPAUMapObjCell@@H@Z",
+  "len": "0x5b",
+  "name": "OverlayTypeClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FE5A0",
+  "sym": "?vf_40@OverlayTypeClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@H@Z",
+  "len": "0x73",
+  "name": "OverlayTypeClass::vf_40",
+  "status": "partial",
+  "pct": 9.5
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FE770",
+  "sym": "?ReadINI@OverlayTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "len": "0x2bb",
+  "name": "OverlayTypeClass::ReadINI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEA30",
+  "sym": "?vf_27@OverlayTypeClass@@UAEPAUMapObjCoord@@PAU2@PBU2@@Z",
+  "len": "0x1f",
+  "name": "OverlayTypeClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEA50",
+  "sym": "?ComputeCRC@OverlayTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "len": "0x91",
+  "name": "OverlayTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEAF0",
+  "sym": "?Load@OverlayTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x113",
+  "name": "OverlayTypeClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEC10",
+  "sym": "?Save@OverlayTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x1d",
+  "name": "OverlayTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEC30",
+  "sym": "?GetClassID@OverlayTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "OverlayTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEDE0",
+  "sym": "?vf_39@OverlayTypeClass@@UAEPAXXZ",
+  "len": "0x115",
+  "name": "OverlayTypeClass::vf_39",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEF00",
+  "sym": "?WhatAmI@OverlayTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "OverlayTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEF10",
+  "sym": "?Size@OverlayTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "OverlayTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEF20",
+  "sym": "?vf_16@OverlayTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "OverlayTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_type_class.cpp",
+  "addr": "0x5FEF30",
+  "sym": "??_GOverlayTypeClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "OverlayTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FC380",
+  "sym": "??0OverlayClass@@QAE@PAVOverlayTypeClass@@ABUMapObjCell@@H@Z",
+  "len": "0x149",
+  "name": "OverlayClass::OverlayClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FC570",
+  "sym": "?Mark@OverlayClass@@UAE_NH@Z",
+  "len": "0xcb8",
+  "name": "OverlayClass::Mark",
+  "status": "partial",
+  "pct": 7.4
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FD270",
+  "sym": "?Unlimbo@OverlayClass@@UAE_NPBUMapObjCoord@@H@Z",
+  "len": "0x6c",
+  "name": "OverlayClass::Unlimbo",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FD8F0",
+  "sym": "?Load@OverlayClass@@UAGJPAUIStream@@@Z",
+  "len": "0x5a",
+  "name": "OverlayClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FD950",
+  "sym": "?Save@OverlayClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x17",
+  "name": "OverlayClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FD970",
+  "sym": "?vf_70@OverlayClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x349",
+  "name": "OverlayClass::vf_70",
+  "status": "partial",
+  "pct": 11.1
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDDE0",
+  "sym": "?GetType@OverlayClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "len": "0x7",
+  "name": "OverlayClass::GetType",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDF00",
+  "sym": "?Size@OverlayClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "OverlayClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDF10",
+  "sym": "?GetClassID@OverlayClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "OverlayClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDF50",
+  "sym": "?WhatAmI@OverlayClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "OverlayClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDF60",
+  "sym": "?vf_69@OverlayClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x3",
+  "name": "OverlayClass::vf_69",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/terrain_objects/overlay_class.cpp",
+  "addr": "0x5FDF70",
+  "sym": "??_GOverlayClass@@UAEPAXI@Z",
+  "len": "0xa7",
+  "name": "OverlayClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

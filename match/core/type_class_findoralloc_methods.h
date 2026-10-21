@@ -52,23 +52,7 @@ GG_STATIC_ASSERT(sizeof(AnimTypeClass) == 0x378);
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeClassArray;
 
-// ---------------------------------------------------------------------------
-// TerrainTypeClass — GAMEMD 0x71E2A0, sizeof 0x2BC, ctor GAMEMD 0x71DA80
-// ---------------------------------------------------------------------------
-struct TerrainTypeClass
-{
-    char _pad00[0x24];              // +0x0000  AbstractClass prefix
-    char ID[0x2BC - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
-
-    TerrainTypeClass(const char* id) throw();   // GAMEMD 0x71DA80 (declared; reloc)
-
-    static TerrainTypeClass* __fastcall FindOrAllocate(const char* id);   // GAMEMD 0x71E2A0
-};
-GG_STATIC_ASSERT(offsetof(TerrainTypeClass, ID) == 0x24);
-GG_STATIC_ASSERT(sizeof(TerrainTypeClass) == 0x2BC);
-
-// GLOBAL: GAMEMD 0xA8E318 — TerrainTypeClass::Array.
-extern DynamicVectorClassLayout TerrainTypeClassArray;
+#include "../map/terrain_objects/terrain_type_class.h"
 
 // ---------------------------------------------------------------------------
 // WarheadTypeClass — GAMEMD 0x75E3B0, sizeof 0x1D0, ctor GAMEMD 0x75CEC0

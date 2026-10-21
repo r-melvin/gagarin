@@ -23,7 +23,7 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject) == 0x30);
 // Opaque returns: codegen returns the matched occupier pointer in EAX; the
 // concrete leaf type only documents intent and never alters the bytes.
 struct BuildingClass;
-struct TerrainClass;
+class TerrainClass;
 struct TunnelClass;
 
 // Reveal() — virtual at primary-vtable slot +0xFC, dispatched exactly like

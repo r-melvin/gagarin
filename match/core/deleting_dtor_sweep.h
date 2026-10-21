@@ -140,7 +140,6 @@ struct Obj_6E64C0 { void* FUN_6E64C0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_6F0450 { void* FUN_6F0450(unsigned int flags); };  // FUNCTION: GAMEMD 0x6F0450
 struct Obj_7106E0 { void* FUN_7106E0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7106E0
 struct Obj_7179A0 { void* FUN_7179A0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7179A0
-struct Obj_71D350 { void* FUN_71D350(unsigned int flags); };  // FUNCTION: GAMEMD 0x71D350
 struct Obj_720210 { void* FUN_720210(unsigned int flags); };  // FUNCTION: GAMEMD 0x720210
 struct Obj_723710 { void* FUN_723710(unsigned int flags); };  // FUNCTION: GAMEMD 0x723710
 struct Obj_724C10 { void* FUN_724C10(unsigned int flags); };  // FUNCTION: GAMEMD 0x724C10

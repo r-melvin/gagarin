@@ -54,34 +54,6 @@ int __fastcall OverlayTypeClass::FindIndex(const char* pID)
     return -1;
 }
 
-// FUNCTION: GAMEMD 0x5FE530  OverlayTypeClass::SpawnAtMapCoords (__thiscall)
-// Place one overlay of this type at `pMapCoords`, answering whether the object
-// was created. The owning house is accepted and ignored — overlays have no
-// owner — which is why retail never touches the second argument.
-//
-// The retail shape is a plain new-expression: cl tail-merges the allocation's
-// own null guard onto the `return false` block, which is why both `TEST EAX,
-// EAX; JZ` pairs target one label.
-bool OverlayTypeClass::SpawnAtMapCoords(CellStruct_005FE530* pMapCoords,
-                                        HouseClass* pOwner)
-{
-    if (new OverlayClass(this, *pMapCoords, -1))
-    {
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x5FE570  OverlayTypeClass::CreateObject (__thiscall)
-// Build one unplaced overlay of this type. The cell is the zero global at
-// 0xAC1608 and the requesting house is ignored, matching the factory's role as
-// "give me one of these, not on the map yet".
-ObjectClass* OverlayTypeClass::CreateObject(HouseClass* pOwner)
-{
-    return (ObjectClass*)new OverlayClass(this, DAT_00AC1608, -1);
-}
-
 // FUNCTION: GAMEMD 0x5FE620  OverlayTypeClass::LoadArt (__fastcall)
 //
 // Bring every overlay type's artwork into line with the theater being entered.
@@ -98,7 +70,7 @@ void __fastcall OverlayTypeClass::LoadArt(int idxTheater)
     {
         OverlayTypeClass* type = DAT_00A83D84[i];
 
-        if (type->ImageLoaded == 0)
+        if (type->unknown_2AF == 0)
         {
             if (type->Theater != 0)
             {

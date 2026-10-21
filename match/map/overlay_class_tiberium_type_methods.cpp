@@ -15,7 +15,7 @@
 int __fastcall OverlayClass::GetTiberiumType(int idxOverlay)
 {
     OverlayType_005FDD20* type;
-    if (idxOverlay == -1 || (type = DAT_00A83D84[idxOverlay])->Tiberium == 0) {
+    if (idxOverlay == -1 || (type = (OverlayType_005FDD20*)DAT_00A83D84[idxOverlay])->Tiberium == 0) {
         return -1;
     }
 

@@ -17,6 +17,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "terrain_objects/overlay_class.h"
 
 // AbstractTypeClass::Name — a fixed 0x31-byte string that retail hands to
 // the logger by value (the copy is the argument block itself).
@@ -48,7 +49,7 @@ GG_STATIC_ASSERT(offsetof(OverlayType_005FDD20, ArrayIndex) == 0x294);
 GG_STATIC_ASSERT(offsetof(OverlayType_005FDD20, Tiberium) == 0x2A9);
 
 // GLOBAL: GAMEMD 0xA83D84 — OverlayTypeClass::Array.Items.
-extern OverlayType_005FDD20** DAT_00A83D84;
+// DAT_00A83D84 is declared as OverlayTypeClass** by the canonical header.
 
 // TiberiumClass — ArrayIndex @0x98, Image @0xE0, NumImages @0xE8,
 // NumSlopes @0xEC.
@@ -72,10 +73,6 @@ extern Tiberium_005FDD20** DAT_00B0F4EC;
 // GLOBAL: GAMEMD 0xB0F4F8 — TiberiumClass::Array.Count.
 extern int DAT_00B0F4F8;
 
-struct OverlayClass
-{
-    // FUNCTION: GAMEMD 0x5FDD20 — the overlay index arrives in ECX.
-    static int __fastcall GetTiberiumType(int idxOverlay);
-};
+
 
 #endif  // GG_MATCH_MAP_OVERLAY_CLASS_TIBERIUM_TYPE_METHODS_H

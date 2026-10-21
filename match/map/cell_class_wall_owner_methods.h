@@ -14,19 +14,13 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "terrain_objects/overlay_type_class.h"
 #include "../_rt/gg_vslot.h"
 
 struct CellClass;
 
-struct OverlayType_0047D210
-{
-    char _pad000[0x2A8];      // +0x0000
-    char Wall;                // +0x02A8
-};
-GG_STATIC_ASSERT(offsetof(OverlayType_0047D210, Wall) == 0x2A8);
-
 // GLOBAL: GAMEMD 0xA83D84 — OverlayTypeClass::Array.Items.
-extern OverlayType_0047D210** DAT_00A83D84;
+// Declared by the canonical overlay-type header.
 
 struct HouseType_0047D210
 {

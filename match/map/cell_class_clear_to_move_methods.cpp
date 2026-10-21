@@ -64,12 +64,12 @@ bool Cell_Class_004834A0::IsClearToMove(int speedType, bool ignoreInfantry,
     int landType = this->LandType;
 
     if (this->OverlayTypeIndex != -1) {
-        OverlayType_004834A0* pOverlay = DAT_00A83D84[this->OverlayTypeIndex];
+        OverlayTypeClass* pOverlay = DAT_00A83D84[this->OverlayTypeIndex];
         if (pOverlay != 0) {
             if (pOverlay->Wall != 0) {
                 if (movementZone == 2 || movementZone == 3 || movementZone == 8
                     || ((movementZone == 1 || movementZone == 4)
-                        && pOverlay->At_22D != 0)
+                        && pOverlay->unknown_22D[0] != 0)
                     || movementZone == 0xC) {
                     landType = 0;
                 } else {

@@ -1,5 +1,43 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,040 matched function
+rows**, **227 partial rows**, **5,267 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 112 tooling
+tests pass. There are zero annotation issues across 5,300 body addresses.
+
+The latest batch integrates native terrain, overlay and smudge classes. It adds
+69 exact functions and retains 18 frozen partials. Three existing functions move
+to their native owners; two additional symbols change with canonical class
+keys, including the existing terrain factory and cell terrain getter. All 72
+exact module functions pass raw and strict checks across 479 relocation fields.
+The 24 tables pass scoped checks across 536 slots: 488 primary slots use
+recorded weak-default assumptions; 48 secondary slots pass directly. These
+checks do not establish final-link selection. Shared MapObj bases remain
+explicitly partial views.
+
+All 18 new partials retain their complete emitted sections and relocations.
+The 86 affected prior rows preserve full section sizes, non-relocation bytes
+and relocation positions/types; renamed targets are checked separately. The
+36 older saved partial baselines and two previous particle type cap sections
+are unchanged. All 35 string occurrences (33 distinct symbols) and six CLSID
+constants match retail data in the rebuilt objects.
+
+The 5,040 matches represent 25.5% of 19,753 listed functions. Matched body
+lengths total **374,180 bytes**, or 9.9% of 3,797,269 listed function bytes.
+The padding heuristic misses 310 matched entries. The diagnostic link reports
+**3,974 unique unresolved symbols**, **6,366 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native particle type methods
+
 As of **2026-10-22**, the verified snapshot reports **4,971 matched function
 rows**, **209 partial rows**, **5,180 manifest rows**, **1,064 manifest
 translation units**, and **1,074 tracked C++ files**. Whole-repository regression
@@ -29,13 +67,6 @@ The padding heuristic misses 310 matched entries.
 The diagnostic link reports **3,700 unique unresolved symbols**, **5,681
 reference lines**, and zero duplicate definitions. Engine link closure remains
 unfinished; per-function checks do not establish whole-executable identity.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native Winsock and UDP lifetime
 
@@ -2748,10 +2779,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,971** | **25.2%** of 19,753 |
-| Sum of matched function lengths | 366,508 bytes | 9.7% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 209 | 1.1% |
-| Tracked C++ files under `match/` | 1,074 | |
+| Functions matched at 100% | **5,040** | **25.5%** of 19,753 |
+| Sum of matched function lengths | 374,180 bytes | 9.9% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 227 | 1.1% |
+| Tracked C++ files under `match/` | 1,080 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
