@@ -13,18 +13,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// The object at 0xA8E9C0 (YRpp: IPXManagerClass::Instance). Only the two
-// __thiscall entry points are needed; the layout is opaque here.
-struct Ipx_005DA6C0
-{
-    // FUNCTION: GAMEMD 0x540A80 (decl; reloc) — start-up, non-zero on success.
-    int  FUN_00540A80();
-    // FUNCTION: GAMEMD 0x542FC0 (decl; reloc) — forward a dword by pointer.
-    void FUN_00542FC0(int* value);
-};
-
-// GLOBAL: GAMEMD 0xA8E9C0
-extern Ipx_005DA6C0 DAT_00A8E9C0;
+// Shared manager declaration preserves the direct startup call bindings.
+#include "../network/transport/connman_class.h"
 
 // The 6-byte record 0x53EDA0 copies out through its second pointer
 // (`MOV [EDX],ESI; MOV word ptr [EDX+4],AX`).

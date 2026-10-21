@@ -66,14 +66,11 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// The nine base classes. Each is RTTI-named: the derived class is the class
+// The eight base classes. Each is RTTI-named: the derived class is the class
 // of the vtable its body seats, and the base is that class's own base_chain[1]
 // in the whole-image RTTI sweep -- an independent check as well as a name,
 // since the classes sharing a base destructor address all agree on it. The
 // destructor is declared, never defined: the call is a relocation.
-
-// FUNCTION: GAMEMD 0x0048BEE0 (decl; reloc) -- ConnectionClass::~ConnectionClass.
-struct Base_ConnectionClass { virtual ~Base_ConnectionClass(); };
 
 // FUNCTION: GAMEMD 0x00490400 (decl; reloc) -- ConvertClass::~ConvertClass.
 struct Base_ConvertClass { virtual ~Base_ConvertClass(); };

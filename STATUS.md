@@ -1,5 +1,41 @@
 # Project status
 
+As of **2026-10-21**, the verified snapshot reports **4,897 matched function
+rows**, **207 partial rows**, **5,104 manifest rows**, **1,054 manifest
+translation units**, and **1,064 tracked C++ files**. Whole-repository matching,
+compile/layout checks, the project object build and 112 tooling tests pass.
+There are zero matched regressions and zero annotation issues across 5,137
+body addresses. Thirty-six saved partial baselines remain unchanged.
+
+The connection and manager batch adds 46 exact functions, migrates three exact
+stand-ins onto native classes, and retains seven partials. It shares the IPX
+address and Winsock declarations, replaces the duplicate manager view, and
+preserves the existing startup caller. The destructor definitions are shared
+consistently across translation units. All 81 affected prior rows keep identical
+emitted bodies and relocation offsets. The 49 imported exact functions and
+startup caller pass raw checks and strict checks for 107 relocation fields.
+
+All seven partial retail extents are confirmed. Two partial objects are shorter
+than retail; one has a relocation crossing the requested span. Their positional
+scores remain diagnostics. The three connection table layouts agree across
+39 slots under the recorded MSVC weak-default assumptions; this does not prove
+final-link selection. Manager lifetime expansions remain deferred.
+
+Matched lengths total **353,889 bytes**: 24.8% of listed functions and 9.3%
+of listed function lengths. The padding heuristic misses 305 matched entries.
+The diagnostic link reports **3,617 unique unresolved symbols**, **5,488
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: renderer and transport declaration preparation
+
 As of **2026-10-21**, the latest verified snapshot reports **4,851 matched
 function rows**, **200 partial rows**, **5,051 manifest rows**, **1,051 manifest
 translation units**, and **1,061 tracked C++ files**. Whole-repository regression,
@@ -43,13 +79,6 @@ The diagnostic link reports **3,558 unique unresolved symbols**, **5,381
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished. Earlier literal and decoder
 oracle corrections remain in place.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the literal correction above is one such example.
 
 ## Historical snapshot: native BSurface Lock and shared DirectDraw calls
 
@@ -2529,10 +2558,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,851** | **24.6%** of 19,753 |
-| Sum of matched function lengths | 349,752 bytes | 9.2% of 3,797,269 listed function bytes |
-| Functions in progress (partial match) | 200 | 1.0% |
-| Tracked C++ files under `match/` | 1,061 | |
+| Functions matched at 100% | **4,897** | **24.8%** of 19,753 |
+| Sum of matched function lengths | 353,889 bytes | 9.3% of 3,797,269 listed function bytes |
+| Functions in progress (partial match) | 207 | 1.0% |
+| Tracked C++ files under `match/` | 1,064 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2552,7 +2581,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 301 matched entries. Its candidate count is therefore
+listed entries, including 305 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

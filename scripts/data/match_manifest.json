@@ -5438,13 +5438,14 @@
   "pct": 100
  },
  {
-  "tu": "match/core/derived_sdd_family_methods.cpp",
-  "addr": "0x0053f850",
-  "sym": "??_G?$DerivedSdd@UBase_ConnectionClass@@UTag_IPXConnClass@@@@UAEPAXI@Z",
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F850",
+  "sym": "??_GIPXConnClass@@UAEPAXI@Z",
   "len": "0x24",
-  "name": "DerivedSdd<Tag_IPXConnClass>::scalar deleting destructor",
+  "name": "IPXConnClass::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
  },
  {
   "tu": "match/core/derived_sdd_family_methods.cpp",
@@ -26282,22 +26283,24 @@
   "pct": 100
  },
  {
-  "tu": "match/network/ipx_manager_class.cpp",
+  "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x540C60",
-  "sym": "?SetTiming@IPXManagerClass@@QAEXHHH_N@Z",
+  "sym": "?SetTiming@IPXManagerClass@@UAEXHHH_N@Z",
   "len": "0xA7",
-  "name": "SetTiming",
+  "name": "IPXManagerClass::SetTiming",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/ipx_manager_class.cpp",
+  "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542450",
-  "sym": "?ResponseTime@IPXManagerClass@@QAEHXZ",
+  "sym": "?ResponseTime@IPXManagerClass@@UAEHXZ",
   "len": "0x49",
-  "name": "ResponseTime",
+  "name": "IPXManagerClass::ResponseTime",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
  },
  {
   "tu": "match/network/mp_game_mode_class_dropdown_methods.cpp",
@@ -45527,5 +45530,542 @@
   "pct": 8.7,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48BE60",
+  "sym": "??0ConnectionClass@@QAE@HHHGHHHH@Z",
+  "len": "0x76",
+  "name": "ConnectionClass::ConnectionClass",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48BEE0",
+  "sym": "??1ConnectionClass@@UAE@XZ",
+  "len": "0x24",
+  "name": "ConnectionClass::~ConnectionClass",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48BF10",
+  "sym": "?Init@ConnectionClass@@UAEXXZ",
+  "len": "0x2E",
+  "name": "ConnectionClass::Init",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48BF40",
+  "sym": "?Send_Packet@ConnectionClass@@UAEHPAXHHE@Z",
+  "len": "0xF2",
+  "name": "ConnectionClass::Send_Packet",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C040",
+  "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUCommHeaderType@@H@Z",
+  "len": "0x2D5",
+  "name": "ConnectionClass::Receive_Packet",
+  "status": "partial",
+  "pct": 98.6,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim."
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C320",
+  "sym": "?Get_Packet@ConnectionClass@@UAEHPAXPAH@Z",
+  "len": "0x90",
+  "name": "ConnectionClass::Get_Packet",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C3B0",
+  "sym": "?Service@ConnectionClass@@UAEHXZ",
+  "len": "0x22",
+  "name": "ConnectionClass::Service",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C3E0",
+  "sym": "?Service_Send_Queue@ConnectionClass@@UAEHXZ",
+  "len": "0x1A4",
+  "name": "ConnectionClass::Service_Send_Queue",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C590",
+  "sym": "?Remove_Failed_Packets@ConnectionClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "ConnectionClass::Remove_Failed_Packets",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C5A0",
+  "sym": "?Service_Receive_Queue@ConnectionClass@@UAEHXZ",
+  "len": "0x51",
+  "name": "ConnectionClass::Service_Receive_Queue",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_connection.cpp",
+  "addr": "0x48C650",
+  "sym": "??_GConnectionClass@@UAEPAXI@Z",
+  "len": "0x38",
+  "name": "ConnectionClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F430",
+  "sym": "??0IPXConnClass@@QAE@HHHGPAVIPXAddressClass@@HPAGH@Z",
+  "len": "0xA3",
+  "name": "0IPXConnClass",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F4E0",
+  "sym": "?Init@IPXConnClass@@UAEXXZ",
+  "len": "0x5",
+  "name": "IPXConnClass::Init",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F5D0",
+  "sym": "?Send_To@IPXConnClass@@UAEHPAXH0H_NG@Z",
+  "len": "0x1F",
+  "name": "IPXConnClass::Send_To",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F650",
+  "sym": "?Send_To_Address@IPXConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
+  "len": "0x1D4",
+  "name": "IPXConnClass::Send_To_Address",
+  "status": "partial",
+  "pct": 52.0,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: emitted section 0x1D0 is shorter than retail 0x1D4."
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x53FA90",
+  "sym": "??0IPXGlobalConnClass@@QAE@HHHGG@Z",
+  "len": "0xDB",
+  "name": "0IPXGlobalConnClass",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x53FBD0",
+  "sym": "?Send_Packet_To@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@HHH@Z",
+  "len": "0xD2",
+  "name": "IPXGlobalConnClass::Send_Packet_To",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x53FCB0",
+  "sym": "?Receive_Packet_From@IPXGlobalConnClass@@UAEHPAUCommHeaderType@@HPAVIPXAddressClass@@G@Z",
+  "len": "0x257",
+  "name": "IPXGlobalConnClass::Receive_Packet_From",
+  "status": "partial",
+  "pct": 5.4,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim."
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x53FF10",
+  "sym": "?Get_Packet_From@IPXGlobalConnClass@@UAEHPAXPAHPAVIPXAddressClass@@PAG@Z",
+  "len": "0x82",
+  "name": "IPXGlobalConnClass::Get_Packet_From",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x53FFA0",
+  "sym": "?Get_Packet_At@IPXGlobalConnClass@@UAEHHPAXPAHPAVIPXAddressClass@@PAGPAK@Z",
+  "len": "0x89",
+  "name": "IPXGlobalConnClass::Get_Packet_At",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540030",
+  "sym": "?Mark_Received@IPXGlobalConnClass@@UAEXH@Z",
+  "len": "0x18",
+  "name": "IPXGlobalConnClass::Mark_Received",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540050",
+  "sym": "?Send_To@IPXGlobalConnClass@@UAEHPAXH0H_NG@Z",
+  "len": "0x7F",
+  "name": "IPXGlobalConnClass::Send_To",
+  "status": "partial",
+  "pct": 36.2,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim."
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x5400D0",
+  "sym": "?Service_Receive_Queue@IPXGlobalConnClass@@UAEHXZ",
+  "len": "0x3E",
+  "name": "IPXGlobalConnClass::Service_Receive_Queue",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540110",
+  "sym": "?Strip_Old_Packets@IPXGlobalConnClass@@UAEXI@Z",
+  "len": "0x194",
+  "name": "IPXGlobalConnClass::Strip_Old_Packets",
+  "status": "partial",
+  "pct": 98.5,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim."
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x5402D0",
+  "sym": "?Remove_Failed_Packets@IPXGlobalConnClass@@UAEHXZ",
+  "len": "0x70",
+  "name": "IPXGlobalConnClass::Remove_Failed_Packets",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540340",
+  "sym": "?Remove_Packets_From@IPXGlobalConnClass@@UAEHPAVIPXAddressClass@@G@Z",
+  "len": "0xAC",
+  "name": "IPXGlobalConnClass::Remove_Packets_From",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x5403F0",
+  "sym": "?Send_To_Address@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
+  "len": "0x213",
+  "name": "IPXGlobalConnClass::Send_To_Address",
+  "status": "partial",
+  "pct": 0.0,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: emitted section 0x1F0 is shorter than retail 0x213."
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540610",
+  "sym": "?Send_Packet@IPXGlobalConnClass@@UAEHPAXHHE@Z",
+  "len": "0x1C",
+  "name": "IPXGlobalConnClass::Send_Packet",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540630",
+  "sym": "?Receive_Packet@IPXGlobalConnClass@@UAEHPAUCommHeaderType@@H@Z",
+  "len": "0x12",
+  "name": "IPXGlobalConnClass::Receive_Packet",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540650",
+  "sym": "?Get_Packet@IPXGlobalConnClass@@UAEHPAXPAH@Z",
+  "len": "0x12",
+  "name": "IPXGlobalConnClass::Get_Packet",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x540670",
+  "sym": "??_GIPXGlobalConnClass@@UAEPAXI@Z",
+  "len": "0x66",
+  "name": "IPXGlobalConnClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540D10",
+  "sym": "?SetGlobalTiming@IPXManagerClass@@UAEXHHH@Z",
+  "len": "0x25",
+  "name": "IPXManagerClass::SetGlobalTiming",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540D40",
+  "sym": "?SaveGlobalTiming@IPXManagerClass@@UAEXXZ",
+  "len": "0x1A",
+  "name": "IPXManagerClass::SaveGlobalTiming",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540D60",
+  "sym": "?RestoreGlobalTiming@IPXManagerClass@@UAEXXZ",
+  "len": "0x20",
+  "name": "IPXManagerClass::RestoreGlobalTiming",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540D80",
+  "sym": "?SetRouterTiming@IPXManagerClass@@UAEXHHH@Z",
+  "len": "0x3F",
+  "name": "IPXManagerClass::SetRouterTiming",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540F90",
+  "sym": "?NumConnections@IPXManagerClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "IPXManagerClass::NumConnections",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x540FA0",
+  "sym": "?ConnectionId@IPXManagerClass@@UAEHH@Z",
+  "len": "0x1D",
+  "name": "IPXManagerClass::ConnectionId",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x541040",
+  "sym": "?ConnectionIndex@IPXManagerClass@@UAEHH@Z",
+  "len": "0x29",
+  "name": "IPXManagerClass::ConnectionIndex",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x541070",
+  "sym": "?ConnectionIndexOf@IPXManagerClass@@UAEHPAVConnectionClass@@@Z",
+  "len": "0x4E",
+  "name": "IPXManagerClass::ConnectionIndexOf",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5414C0",
+  "sym": "?SendPacket@IPXManagerClass@@UAEHPAXHHH@Z",
+  "len": "0x125",
+  "name": "IPXManagerClass::SendPacket",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5415F0",
+  "sym": "?ReceivePacket@IPXManagerClass@@UAEHPAXPAH1@Z",
+  "len": "0x8E",
+  "name": "IPXManagerClass::ReceivePacket",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x541820",
+  "sym": "?Service@IPXManagerClass@@UAEHXZ",
+  "len": "0xA5F",
+  "name": "IPXManagerClass::Service",
+  "status": "partial",
+  "pct": 6.0,
+  "pct_metric": "instruction-position",
+  "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: a relocation at compiled offset 0xA5E crosses retail span 0xA5F."
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5422D0",
+  "sym": "?GlobalNumSend@IPXManagerClass@@UAEHXZ",
+  "len": "0x1B",
+  "name": "IPXManagerClass::GlobalNumSend",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5422F0",
+  "sym": "?GlobalNumReceive@IPXManagerClass@@UAEHXZ",
+  "len": "0x1B",
+  "name": "IPXManagerClass::GlobalNumReceive",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542310",
+  "sym": "?RouterNumSend@IPXManagerClass@@UAEHXZ",
+  "len": "0x1F",
+  "name": "IPXManagerClass::RouterNumSend",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542330",
+  "sym": "?RouterNumReceive@IPXManagerClass@@UAEHXZ",
+  "len": "0x1F",
+  "name": "IPXManagerClass::RouterNumReceive",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542350",
+  "sym": "?NumSend@IPXManagerClass@@UAEHH@Z",
+  "len": "0x65",
+  "name": "IPXManagerClass::NumSend",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5423C0",
+  "sym": "?NumReceive@IPXManagerClass@@UAEHH@Z",
+  "len": "0x65",
+  "name": "IPXManagerClass::NumReceive",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x5424A0",
+  "sym": "?ResponseTimeOf@IPXManagerClass@@UAEHH@Z",
+  "len": "0x13",
+  "name": "IPXManagerClass::ResponseTimeOf",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542520",
+  "sym": "?UpdateStats@IPXManagerClass@@UAEXXZ",
+  "len": "0xF7",
+  "name": "IPXManagerClass::UpdateStats",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542EC0",
+  "sym": "?ResetResponseTime@IPXManagerClass@@UAEX_N@Z",
+  "len": "0x66",
+  "name": "IPXManagerClass::ResetResponseTime",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x542FE0",
+  "sym": "?ConfigureDebug@IPXManagerClass@@UAEXHHHHHH@Z",
+  "len": "0x5C",
+  "name": "IPXManagerClass::ConfigureDebug",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/connman_class.cpp",
+  "addr": "0x543040",
+  "sym": "?Slot24@IPXManagerClass@@UAEXHH@Z",
+  "len": "0x3",
+  "name": "IPXManagerClass::Slot24",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes"
  }
 ]

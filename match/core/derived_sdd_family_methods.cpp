@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x53F850 and its 26
+//   Bytes matched against retail gamemd.exe v1.001 at 0x556520 and its 25
 //   siblings.
 //
-//   One class template, 27 explicit instantiations. Each `template struct
+//   One class template, 26 explicit instantiations. Each `template struct
 //   DerivedSdd<Base_<base>, Tag_<class>>;` below makes the compiler
 //   generate the scalar deleting destructor
 //   `??_G?$DerivedSdd@UBase_<base>@@UTag_<class>@@@@UAEPAXI@Z`, whose 0x24
@@ -15,21 +15,21 @@
 //   vptr first, which is a synthesised destructor's order, so it is the
 //   instantiation's own vtable and the linker fills the relocation in. The
 //   base destructor is the first template parameter; the tag is the second,
-//   and does nothing but keep the 27 instantiations distinct where only nine
+//   and does nothing but keep the 26 instantiations distinct where only eight
 //   bases exist.
 //
 //   BOTH PARAMETERS NOW CARRY RETAIL NAMES. The vtable each body seats was
-//   re-read out of the binary as the `imm32` of the store, and all 27 carry a
+//   re-read out of the binary as the `imm32` of the store, and all 26 carry a
 //   complete object locator, so the derived class is RTTI-named and the tag
 //   is named after it. The base is then that class's own base_chain[1] --
 //   which is an independent check as well as a name, because six derived
 //   classes share base destructor 0x5D5D20 and all six agree on
 //   `MultiplayerGameMode`, eleven share 0x65D460 and all eleven agree on
-//   `rc_ptr_base`, and so on for all nine bases with no disagreement.
+//   `rc_ptr_base`, and so on for all eight bases with no disagreement.
 //
 //   KNOWN LIMITATION -- staging ground, not a destination: MSVC6 emits each
 //   template instantiation as a COMDAT into the translation unit that
-//   instantiated it, so these 27 instantiations belong to many different
+//   instantiated it, so these 26 instantiations belong to many different
 //   original Westwood translation units. One sweep file is right for matching
 //   bytes now and wrong for retail's eventual link order.
 //
@@ -39,26 +39,15 @@
 
 #include "derived_sdd_family_methods.h"
 
-// FUNCTION: GAMEMD 0x0053F850
-// IPXConnClass -- seats its own vtable, retail 0x007EC0CC; locator 0x008048D0 -> type
-//   descriptor 0x00828190 `.?AVIPXConnClass@@`. Base ConnectionClass, whose destructor is 0x0048BEE0.
-struct Tag_IPXConnClass;
-template struct DerivedSdd<Base_ConnectionClass, Tag_IPXConnClass>;
-
-// Layout asserted on the first instantiation; every instantiation in this
-// family has the same layout, because neither parameter contributes a member.
-// The assert has to follow an explicit instantiation: VC6 fails to re-parse
-// the template body when offsetof is what first instantiates it, and it will
-// not take a template-id as offsetof's first argument either, hence the
-// typedef.
-typedef DerivedSdd<Base_ConnectionClass, Tag_IPXConnClass> GgDerivedSddRep;
-GG_STATIC_ASSERT(sizeof(GgDerivedSddRep) == 0x4);
-
 // FUNCTION: GAMEMD 0x00556520
 // LightConvertClass -- seats its own vtable, retail 0x007ED0A4; locator 0x00805140 -> type
 //   descriptor 0x00829D28 `.?AVLightConvertClass@@`. Base ConvertClass, whose destructor is 0x00490400.
 struct Tag_LightConvertClass;
 template struct DerivedSdd<Base_ConvertClass, Tag_LightConvertClass>;
+
+// Remaining stand-ins have no data beyond the polymorphic prefix.
+typedef DerivedSdd<Base_ConvertClass, Tag_LightConvertClass> GgDerivedSddRep;
+GG_STATIC_ASSERT(sizeof(GgDerivedSddRep) == 0x4);
 
 // FUNCTION: GAMEMD 0x005C0FE0
 // MultiplayerBattle -- seats its own vtable, retail 0x007EE184; locator 0x00806088 -> type

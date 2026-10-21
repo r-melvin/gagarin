@@ -16,6 +16,21 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+// ABI-sized transport views used by the M1 connection callers: the binary
+// passes one four-byte network value and one six-byte node value.
+struct NetworkNumberType
+{
+    unsigned long Number;
+};
+struct NodeAddressType
+{
+    unsigned char Node[6];
+};
+GG_STATIC_ASSERT(offsetof(NetworkNumberType, Number) == 0);
+GG_STATIC_ASSERT(offsetof(NodeAddressType, Node) == 0);
+GG_STATIC_ASSERT(sizeof(NetworkNumberType) == 0x4);
+GG_STATIC_ASSERT(sizeof(NodeAddressType) == 0x6);
+
 class IPXAddressClass
 {
 public:
@@ -25,15 +40,42 @@ public:
     // FUNCTION: GAMEMD 0x53EDA0 (decl; reloc) — two output pointers; RET 8.
     void GetAddress(unsigned char* network, unsigned char* node);
 
-    // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — one pointer argument; RET 4.
+    // FUNCTION: GAMEMD 0x53EDA0 (decl; reloc) — transport reference call view.
+    void Get_Address(NetworkNumberType& network, NodeAddressType& node);
+    // FUNCTION: GAMEMD 0x53ED20 (decl; reloc) — transport reference call view.
+    void Set_Address(NetworkNumberType& network, NodeAddressType& node,
+                     unsigned short port);
+    // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — existing pointer-compare API.
     bool Is_Address(const IPXAddressClass* other) const;
+    // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — transport reference call view.
+    bool Equals_EE70(IPXAddressClass& other);
+    // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — transport pointer call view.
+    bool FUN_0053EE70(const IPXAddressClass* other);
+    // FUNCTION: GAMEMD 0x53EF30 (decl; reloc) — transport reference call view.
+    bool Equals_EF30(IPXAddressClass& other);
+    // FUNCTION: GAMEMD 0x53EF30 (decl; reloc) — transport pointer call view.
+    bool FUN_0053EF30(const IPXAddressClass* other);
+    // FUNCTION: GAMEMD 0x53EF60 (decl; reloc).
+    bool FUN_0053EF60(const IPXAddressClass* other);
+    // FUNCTION: GAMEMD 0x53EE00 (decl; reloc).
+    int IsBroadcast();
+    // FUNCTION: GAMEMD 0x53F0E0 (decl; reloc).
+    char* FUN_0053F0E0(int a1);
+    // FUNCTION: GAMEMD 0x53F200 (decl; reloc).
+    void Set_Port(unsigned short port);
+    // FUNCTION: GAMEMD 0x53F200 (decl; reloc) — raw transport call view.
+    void FUN_0053F200(unsigned short port);
 
-    unsigned char NetworkNumber[4]; // +0x00 (network / port storage)
-    unsigned char NodeAddress[6];   // +0x04
-    unsigned char unknown_0A[2];    // +0x0A (within the proven 12-byte extent)
+    union {
+        unsigned char NetworkNumber[4]; // +0x00 (network / port storage)
+        unsigned short Port;            // +0x00 transport view
+    };
+    unsigned char NodeAddress[6];       // +0x04
+    unsigned char unknown_0A[2];         // +0x0A (within the proven 12-byte extent)
 };
 
 GG_STATIC_ASSERT(offsetof(IPXAddressClass, NetworkNumber) == 0x00);
+GG_STATIC_ASSERT(offsetof(IPXAddressClass, Port) == 0x00);
 GG_STATIC_ASSERT(offsetof(IPXAddressClass, NodeAddress) == 0x04);
 GG_STATIC_ASSERT(offsetof(IPXAddressClass, unknown_0A) == 0x0A);
 GG_STATIC_ASSERT(sizeof(IPXAddressClass) == 0x0C);

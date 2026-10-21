@@ -15,13 +15,13 @@ bool __cdecl FUN_005DA6C0()
     int            first;
     Rec6_005DA6C0  rest;
 
-    if (DAT_00A8E9C0.FUN_00540A80() == 0) {
+    if (Manager_00A8E9C0.FUN_00540A80() == 0) {
         return false;
     }
 
     if (DAT_00A8B238 != 4 && DAT_00A8D5FC != 0) {
         DAT_00A8D600.FUN_0053EDA0(&first, &rest);
-        DAT_00A8E9C0.FUN_00542FC0(&first);
+        Manager_00A8E9C0.FUN_00542FC0(&first);
     }
 
     return true;
