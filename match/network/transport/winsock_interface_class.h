@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include <windows.h>
 #include <winsock.h>
+#include <wsipx.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../core/vector_class.h"
 #include "../../platform/input_manager_class_methods.h"
@@ -157,6 +158,12 @@ public:
 
     // FUNCTION: GAMEMD 0x7B20E0 (decl; reloc) -- base out-buffer allocator.
     WinsockBufferType* AllocOutBuffer(bool alternate);
+    // FUNCTION: GAMEMD 0x7B2240 (decl; reloc) -- IPX receive-buffer allocator.
+    WinsockBufferType* AllocInBuffer();
+    // FUNCTION: GAMEMD 0x7B1DE0 (decl; reloc) -- IPX startup path.
+    bool StartupWinsock();
+    // FUNCTION: GAMEMD 0x7B0DD0 (decl; reloc) -- query ABI view; body excluded.
+    int FUN_007B0DD0(int protocol, SOCKADDR_IPX* address);
 
     unsigned char unknown_04[4];                   // +0x04
     DynamicVectorClass<WinsockBufferType*> InBuffers;       // +0x08

@@ -1,5 +1,44 @@
 # Project status
 
+As of **2026-10-21**, the verified snapshot reports **4,920 matched function
+rows**, **207 partial rows**, **5,127 manifest rows**, **1,056 manifest
+translation units**, and **1,066 tracked C++ files**. Whole-repository matching,
+compile/layout checks, the project object build and 112 tooling tests pass.
+There are zero matched regressions and zero annotation issues across 5,160
+body addresses. Thirty-six saved partial baselines remain unchanged.
+
+The latest batch adds four exact ordinary IPX interface methods with a shared
+native derived declaration. It also replaces two incompatible randomizer receiver
+views with the existing canonical class and one global declaration. The declaration migration preserves 254
+prior function spans and relocation offsets, including the full emitted sections
+of affected partials. The four new methods and three
+existing randomizer callers pass raw and strict checks across 97 relocation
+fields. All 23 retail IPX table slots are recorded and the derived offsets are
+asserted; emitted-table selection, constructors and destructors remain deferred.
+The 0x3F310 class extent is modeled from observed allocations and field accesses.
+
+The [function extent audit](scripts/data/function_extent_audit.json) corrects 44
+previously shortened comparison spans: 18 incomplete return operands, five
+reachable code tails, and 21 switch/index-table tails. Two exposed a reconstruction
+error for `WhatAmI == 15`; the corrected C++ returns the original pointer. All
+44 complete spans now match, and 138 newly covered local relocation fields are
+verified. The two dispatch functions also pass full-span strict checks.
+
+Matched lengths total **358,588 bytes**: 24.9% of listed functions and 9.4%
+of listed function lengths. The padding heuristic misses 306 matched entries.
+The diagnostic link reports **3,627 unique unresolved symbols**, **5,517
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: ordinary Winsock methods and input declarations
+
 As of **2026-10-21**, the verified snapshot reports **4,916 matched function
 rows**, **207 partial rows**, **5,123 manifest rows**, **1,055 manifest
 translation units**, and **1,065 tracked C++ files**. Whole-repository matching,
@@ -20,13 +59,6 @@ of listed function lengths. The padding heuristic misses 306 matched entries.
 The diagnostic link reports **3,623 unique unresolved symbols**, **5,502
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native connection hierarchy and manager methods
 
@@ -2581,10 +2613,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,916** | **24.9%** of 19,753 |
-| Sum of matched function lengths | 355,356 bytes | 9.4% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,920** | **24.9%** of 19,753 |
+| Sum of matched function lengths | 358,588 bytes | 9.4% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 207 | 1.0% |
-| Tracked C++ files under `match/` | 1,065 | |
+| Tracked C++ files under `match/` | 1,066 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

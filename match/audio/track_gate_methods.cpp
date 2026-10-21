@@ -8,13 +8,13 @@
 //
 // Decide whether a track's handle stays attached. Below the 0x21 threshold the
 // handle is handed straight back and nothing is recorded; above it the handle is
-// detached first and then re-tested against the mixer's own figure for the same
+// detached first and then re-tested against a random figure for the same
 // pair of descriptor values. Only if that second figure also clears 0x21 does
 // the track keep the handle and remember the figure.
 //
 // The middle guard reads as three alternatives but is one idea: a positional
 // descriptor with no handle and nothing at +0x268 is the only case that skips
-// the mixer entirely.
+// the random draw entirely.
 //
 // The descriptor is re-read after the detach call — retail loads `[ESI+0x24]`
 // again at 0x405AF5 — because the call could have replaced it. It is then held
@@ -39,7 +39,7 @@ int __fastcall FUN_00405AC0(Owner_00405AC0* self)
         // they go on the stack reproduces retail's assignment.
         unsigned int span = desc->At_5C;
         int base = desc->At_58;
-        unsigned int level = DAT_00886B88.FUN_0065C7E0(base, span);
+        unsigned int level = DAT_00886B88.RandomRanged(base, (int)span);
         if (level < 0x21) {
             FUN_00402790(self, handle);
             return 0;

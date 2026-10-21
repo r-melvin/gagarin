@@ -66,4 +66,8 @@ GG_STATIC_ASSERT(offsetof(Randomizer, Next1)      == 0x04);
 GG_STATIC_ASSERT(offsetof(Randomizer, Next2)      == 0x08);
 GG_STATIC_ASSERT(offsetof(Randomizer, Table)      == 0x0C);
 
+// GLOBAL: GAMEMD 0x886B88 -- receiver at the direct RandomRanged call sites
+// 0x405AC0, 0x4C2A60 and 0x720A80; complete storage extent is not established.
+extern Randomizer DAT_00886B88;
+
 #endif  // GG_MATCH_CORE_RANDOMIZER_H

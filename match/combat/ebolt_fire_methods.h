@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/randomizer.h"
 
 struct CoordStruct_004C2A60
 {
@@ -26,17 +27,6 @@ struct CoordStruct_004C2A60
     int Z;   // +0x8
 };
 GG_STATIC_ASSERT(sizeof(CoordStruct_004C2A60) == 0xC);
-
-// Randomizer — opaque here; only RandomRanged on the global at 0x886B88.
-struct Randomizer_004C2A60
-{
-    char opaque[4];
-
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
-    int RandomRanged(int min, int max);
-};
-// GLOBAL: GAMEMD 0x886B88 — the scenario Randomizer.
-extern Randomizer_004C2A60 DAT_00886B88;
 
 // RulesClass — only the type pointer at +0x1020 is read.
 struct Rules_004C2A60

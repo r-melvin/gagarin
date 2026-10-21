@@ -18,9 +18,6 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/randomizer.h"   // Randomizer::RandomRanged @0x65C7E0
 
-// GLOBAL: GAMEMD 0x886B88 -- Randomizer::Global.
-extern Randomizer DAT_00886B88;
-
 // One registered score. Only Repeat (+0x289) is touched here; the rest is
 // modelled for size faithfulness.
 struct ThemeControl

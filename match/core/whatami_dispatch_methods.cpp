@@ -27,8 +27,9 @@ WhatAmIHolder* __fastcall FUN_0040DD20(WhatAmIHolder* self)
     case 12:
     case 13:
     case 14:
-    case 15:
         return 0;
+    case 15:
+        return self;
     }
 
     return 0;
@@ -57,8 +58,9 @@ WhatAmIHolder* __fastcall FUN_0040DD70(WhatAmIHolder* self)
     case 12:
     case 13:
     case 14:
-    case 15:
         return 0;
+    case 15:
+        return self;
     }
 
     return 0;

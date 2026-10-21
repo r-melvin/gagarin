@@ -381,7 +381,7 @@
   "tu": "match/ai/side_slot_dispatch_methods.cpp",
   "addr": "0x451750",
   "sym": "?FUN_00451750@Obj_00451750@@QAEXH_N0H@Z",
-  "len": "0x78",
+  "len": "0x7a",
   "name": "Obj_00451750::FUN_00451750",
   "status": "matched",
   "pct": 100
@@ -399,7 +399,7 @@
   "tu": "match/ai/taction_class_methods.cpp",
   "addr": "0x6E3EE0",
   "sym": "?GetFlags@TActionClass@@SIHH@Z",
-  "len": "0x1F",
+  "len": "0x8a",
   "name": "GetFlags",
   "status": "matched",
   "pct": 100
@@ -417,7 +417,7 @@
   "tu": "match/ai/taction_class_mode_methods.cpp",
   "addr": "0x6E3B60",
   "sym": "?GetMode@TActionClass_006E3B60@@SIHH@Z",
-  "len": "0xec",
+  "len": "0x208",
   "name": "TActionClass::GetMode",
   "status": "matched",
   "pct": 100
@@ -777,7 +777,7 @@
   "tu": "match/ai/tevent_class_attach_type_methods.cpp",
   "addr": "0x71F680",
   "sym": "?GetAttachType@TEventClass_0071F680@@SIIH@Z",
-  "len": "0x78",
+  "len": "0x176",
   "name": "TEventClass::GetAttachType",
   "status": "matched",
   "pct": 100
@@ -795,7 +795,7 @@
   "tu": "match/ai/tevent_class_methods.cpp",
   "addr": "0x71F950",
   "sym": "?GetStateA@TEventClass@@QBE_NXZ",
-  "len": "0x20",
+  "len": "0x63",
   "name": "GetStateA",
   "status": "matched",
   "pct": 100
@@ -804,7 +804,7 @@
   "tu": "match/ai/tevent_class_methods.cpp",
   "addr": "0x71F9C0",
   "sym": "?GetStateB@TEventClass@@QBE_NXZ",
-  "len": "0x20",
+  "len": "0x63",
   "name": "GetStateB",
   "status": "matched",
   "pct": 100
@@ -813,7 +813,7 @@
   "tu": "match/ai/tevent_class_prepare_save_methods.cpp",
   "addr": "0x71F390",
   "sym": "?PrepareSaveToINI@TEvent_0071F390@@QAEXPAD@Z",
-  "len": "0xE0",
+  "len": "0x14d",
   "name": "TEventClass::PrepareSaveToINI",
   "status": "matched",
   "pct": 100
@@ -831,7 +831,7 @@
   "tu": "match/ai/threshold_compare_methods.cpp",
   "addr": "0x41F230",
   "sym": "?FUN_0041F230@Obj_0041F230@@QAE_NHPAUNode_0041F230@@@Z",
-  "len": "0x94",
+  "len": "0xac",
   "name": "Obj_0041F230::FUN_0041F230",
   "status": "matched",
   "pct": 100
@@ -1299,7 +1299,7 @@
   "tu": "match/audio/theme_class_find_methods.cpp",
   "addr": "0x721210",
   "sym": "?FindIndex@ThemeClass@@QBEHPBD@Z",
-  "len": "0x51",
+  "len": "0x53",
   "name": "FindIndex",
   "status": "matched",
   "pct": 100
@@ -2588,7 +2588,7 @@
   "tu": "match/combat/techno_class_invuln_tint_methods.cpp",
   "addr": "0x70E380",
   "sym": "?GetInvulnerabilityTintIntensity@TechnoClass@@QAEHH@Z",
-  "len": "0x10B",
+  "len": "0x130",
   "name": "TechnoClass::GetInvulnerabilityTintIntensity",
   "status": "matched",
   "pct": 100
@@ -8853,7 +8853,7 @@
   "tu": "match/core/link_class_addhead_addtail.cpp",
   "addr": "0x556700",
   "sym": "?AddTail@LinkClass@@UAEPAU1@AAU1@@Z",
-  "len": "0x27",
+  "len": "0x29",
   "name": "AddTail",
   "status": "matched",
   "pct": 100
@@ -8988,7 +8988,7 @@
   "tu": "match/core/logic_class_pointer_methods.cpp",
   "addr": "0x55B880",
   "sym": "?PointerGotInvalid@LogicClass@@QAEXPAUAbstractClass@@_N@Z",
-  "len": "0x5F",
+  "len": "0x61",
   "name": "LogicClass::PointerGotInvalid",
   "status": "matched",
   "pct": 100
@@ -9645,7 +9645,7 @@
   "tu": "match/core/radio_class_methods.cpp",
   "addr": "0x65ADF0",
   "sym": "?HasFreeLinkFor@RadioClass@@QBE_NPAV1@@Z",
-  "len": "0x36",
+  "len": "0x38",
   "name": "RadioClass::HasFreeLinkFor",
   "status": "matched",
   "pct": 100
@@ -9726,7 +9726,7 @@
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C340",
   "sym": "?Open@RAMFileClass@@UAEHPBDH@Z",
-  "len": "0xb",
+  "len": "0xd",
   "name": "Open",
   "status": "matched",
   "pct": 100
@@ -12804,7 +12804,7 @@
   "tu": "match/core/techno_class_threat_methods.cpp",
   "addr": "0x70F6E0",
   "sym": "?UpdateThreatInCell@TechnoClass@@QAEXPAVCellClass@@@Z",
-  "len": "0x4F",
+  "len": "0x51",
   "name": "UpdateThreatInCell",
   "status": "matched",
   "pct": 100
@@ -22011,7 +22011,7 @@
   "tu": "match/core/whatami_dispatch_methods.cpp",
   "addr": "0x40dd20",
   "sym": "?FUN_0040DD20@@YIPAUWhatAmIHolder@@PAU1@@Z",
-  "len": "0x29",
+  "len": "0x43",
   "name": "FUN_0040DD20",
   "status": "matched",
   "pct": 100
@@ -22020,7 +22020,7 @@
   "tu": "match/core/whatami_dispatch_methods.cpp",
   "addr": "0x40dd70",
   "sym": "?FUN_0040DD70@@YIPAUWhatAmIHolder@@PAU1@@Z",
-  "len": "0x29",
+  "len": "0x43",
   "name": "FUN_0040DD70",
   "status": "matched",
   "pct": 100
@@ -22371,7 +22371,7 @@
   "tu": "match/economy/factory_class_queue_methods.cpp",
   "addr": "0x4CA670",
   "sym": "?CountTotal@FactoryClass@@QBEHPBUTechnoTypeClass@@@Z",
-  "len": "0x3E",
+  "len": "0x40",
   "name": "CountTotal",
   "status": "matched",
   "pct": 100
@@ -22497,7 +22497,7 @@
   "tu": "match/economy/house_class_armor_methods.cpp",
   "addr": "0x50BD30",
   "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAVTechnoClass@@@Z",
-  "len": "0x80",
+  "len": "0xba",
   "name": "HouseClass::GetArmorMultiplier",
   "status": "matched",
   "pct": 100
@@ -22569,7 +22569,7 @@
   "tu": "match/economy/house_class_factory_queues_methods.cpp",
   "addr": "0x509140",
   "sym": "?UpdateFactoriesQueues@House_00509140@@QAEXH_NH@Z",
-  "len": "0x169",
+  "len": "0x1a6",
   "name": "HouseClass::Update_FactoriesQueues",
   "status": "matched",
   "pct": 100
@@ -22722,7 +22722,7 @@
   "tu": "match/economy/house_class_register_built_methods.cpp",
   "addr": "0x4FB6B0",
   "sym": "?RegisterJustBuilt@House_004FB6B0@@QAEXPAUTechno_004FB6B0@@@Z",
-  "len": "0x165",
+  "len": "0x18b",
   "name": "HouseClass::RegisterJustBuilt",
   "status": "matched",
   "pct": 100
@@ -22731,7 +22731,7 @@
   "tu": "match/economy/house_class_remove_tracking_methods.cpp",
   "addr": "0x4FF550",
   "sym": "?RemoveTracking@House_004FF550@@QAEXPAUTechno_004FF550@@@Z",
-  "len": "0x183",
+  "len": "0x1a7",
   "name": "HouseClass::RemoveTracking",
   "status": "matched",
   "pct": 100
@@ -22749,7 +22749,7 @@
   "tu": "match/economy/house_class_storage.cpp",
   "addr": "0x42F380",
   "sym": "?FailedToPlaceNode@BaseClass@@QAEHPAUBaseNodeClass@@@Z",
-  "len": "0x15",
+  "len": "0x17",
   "name": "BaseClass::FailedToPlaceNode",
   "status": "matched",
   "pct": 100
@@ -22776,7 +22776,7 @@
   "tu": "match/economy/house_class_tib_methods.cpp",
   "addr": "0x500510",
   "sym": "?GetPrimaryFactory@HouseClass@@QBEPAVFactoryClass@@W4AbstractType@@_NW4BuildCat@@@Z",
-  "len": "0x63",
+  "len": "0xa0",
   "name": "GetPrimaryFactory",
   "status": "matched",
   "pct": 100
@@ -23307,7 +23307,7 @@
   "tu": "match/map/cell_class_jumpjet_methods.cpp",
   "addr": "0x487D70",
   "sym": "?TryAssignJumpjet@CellClass@@QAE_NPAVObjectClass@@@Z",
-  "len": "0x72",
+  "len": "0x74",
   "name": "CellClass::TryAssignJumpjet",
   "status": "matched",
   "pct": 100
@@ -23388,7 +23388,7 @@
   "tu": "match/map/cell_class_occupier_methods.cpp",
   "addr": "0x47EBF0",
   "sym": "?GetAircraft@CellClass@@QBEPAUAircraftClass@@_N@Z",
-  "len": "0x41",
+  "len": "0x43",
   "name": "CellClass::GetAircraft",
   "status": "matched",
   "pct": 100
@@ -23397,7 +23397,7 @@
   "tu": "match/map/cell_class_occupier_methods.cpp",
   "addr": "0x47EC40",
   "sym": "?GetInfantry@CellClass@@QBEPAUInfantryClass@@_N@Z",
-  "len": "0x41",
+  "len": "0x43",
   "name": "CellClass::GetInfantry",
   "status": "matched",
   "pct": 100
@@ -24531,7 +24531,7 @@
   "tu": "match/map/overlay_type_class_methods.cpp",
   "addr": "0x5FE570",
   "sym": "?CreateObject@OverlayTypeClass@@QAEPAVObjectClass@@PAVHouseClass@@@Z",
-  "len": "0x2b",
+  "len": "0x2d",
   "name": "OverlayTypeClass::CreateObject",
   "status": "matched",
   "pct": 100
@@ -25098,7 +25098,7 @@
   "tu": "match/movement/fly_locomotion_leaf_methods.cpp",
   "addr": "0x4CF940",
   "sym": "?GetShadowOffset@FlyLocoIface@@QAG?AUPair_004CF940@@XZ",
-  "len": "0xe",
+  "len": "0x10",
   "name": "FlyLocomotionClass::ShadowOffset",
   "status": "matched",
   "pct": 100
@@ -25638,7 +25638,7 @@
   "tu": "match/movement/matrix3d_rotate_methods.cpp",
   "addr": "0x5AF120",
   "sym": "?RotateY@Matrix3D@@QAEXMM@Z",
-  "len": "0x76",
+  "len": "0x79",
   "name": "RotateY",
   "status": "matched",
   "pct": 100
@@ -26432,7 +26432,7 @@
   "tu": "match/network/packet_class.cpp",
   "addr": "0x4CB8B0",
   "sym": "?HostToNet@FieldClass@@QAEXXZ",
-  "len": "0x5A",
+  "len": "0x6c",
   "name": "HostToNet",
   "status": "matched",
   "pct": 100
@@ -26441,7 +26441,7 @@
   "tu": "match/network/packet_class.cpp",
   "addr": "0x4CB920",
   "sym": "?NetToHost@FieldClass@@QAEXXZ",
-  "len": "0x59",
+  "len": "0x6c",
   "name": "NetToHost",
   "status": "matched",
   "pct": 100
@@ -26513,7 +26513,7 @@
   "tu": "match/network/version_class_methods.cpp",
   "addr": "0x74FD20",
   "sym": "?Version_Protocol@VersionClass@@QAE?AW4CommProtocolEnum@@I@Z",
-  "len": "0x2D",
+  "len": "0x2f",
   "name": "Version_Protocol",
   "status": "matched",
   "pct": 100
@@ -27233,7 +27233,7 @@
   "tu": "match/platform/ccini_class_methods.cpp",
   "addr": "0x529560",
   "sym": "?WriteBool@INIClass@@QAE_NPBD0_N@Z",
-  "len": "0x34",
+  "len": "0x36",
   "name": "WriteBool",
   "status": "matched",
   "pct": 100
@@ -27242,7 +27242,7 @@
   "tu": "match/platform/ccini_class_methods.cpp",
   "addr": "0x5297E0",
   "sym": "?Write2Integers@INIClass@@QAE_NPBD0PAH@Z",
-  "len": "0x3E",
+  "len": "0x40",
   "name": "Write2Integers",
   "status": "matched",
   "pct": 100
@@ -28583,7 +28583,7 @@
   "tu": "match/renderer/techno_class_airstrike_tint_methods.cpp",
   "addr": "0x70E4B0",
   "sym": "?GetAirstrikeTintIntensity@TechnoClass@@QAEHH@Z",
-  "len": "0xC4",
+  "len": "0xe8",
   "name": "TechnoClass::GetAirstrikeTintIntensity",
   "status": "matched",
   "pct": 100
@@ -30175,7 +30175,7 @@
  {
   "tu": "match/ai/aircraft_helpers_0041bb30.cpp",
   "addr": "0x41BB30",
-  "len": "0x57",
+  "len": "0xa0",
   "sym": "?FUN_0041BB30@AircraftClass_0041BB30@@QAEXHHH@Z",
   "name": "AircraftClass_0041BB30::FUN_0041BB30",
   "status": "matched",
@@ -30491,7 +30491,7 @@
   "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
   "addr": "0x57CBE0",
   "sym": "?FUN_0057CBE0@@YIEPAUNeighborCoord_0057CBE0@@@Z",
-  "len": "0xd4",
+  "len": "0x10a",
   "name": "FUN_0057CBE0",
   "status": "matched",
   "pct": 100
@@ -30500,7 +30500,7 @@
   "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
   "addr": "0x57CAB0",
   "sym": "?FUN_0057CAB0@@YIHPAUNeighborCoord_0057CBE0@@@Z",
-  "len": "0xda",
+  "len": "0x122",
   "name": "FUN_0057CAB0",
   "status": "matched",
   "pct": 100
@@ -31193,7 +31193,7 @@
   "tu": "match/map/map_record_sweep_00582d30.cpp",
   "addr": "0x582D30",
   "sym": "?FUN_00582D30@MapRecordSweepPrefix_00582D30@@QAEXH@Z",
-  "len": "0x3c",
+  "len": "0x3e",
   "name": "FUN_00582D30",
   "status": "matched",
   "pct": 100
@@ -31949,7 +31949,7 @@
   "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x724C90",
   "sym": "??8?$VectorClass@PBVToolTip@@@@UBE_NABV0@@Z",
-  "len": "0x3B",
+  "len": "0x3e",
   "name": "VectorClass<const ToolTip*>::operator==",
   "status": "matched",
   "pct": 100
@@ -31985,7 +31985,7 @@
   "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x724E10",
   "sym": "?SetCapacity@?$DynamicVectorClass@PBVToolTip@@@@UAE_NHPAPBVToolTip@@@Z",
-  "len": "0xA7",
+  "len": "0xb0",
   "name": "DynamicVectorClass<const ToolTip*>::SetCapacity",
   "status": "matched",
   "pct": 100
@@ -31994,7 +31994,7 @@
   "tu": "match/ui/tooltip_vector_methods.cpp",
   "addr": "0x724EC0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVToolTip@@@@UBEHABQBVToolTip@@@Z",
-  "len": "0x23",
+  "len": "0x26",
   "name": "DynamicVectorClass<const ToolTip*>::FindItemIndex",
   "status": "matched",
   "pct": 100
@@ -33027,7 +33027,7 @@
  },
  {
   "addr": "0x67A6B0",
-  "len": "0xc",
+  "len": "0x1b",
   "status": "matched",
   "pct": 100,
   "tu": "match/core/vector_smudgetype_methods.cpp",
@@ -46257,5 +46257,41 @@
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B10C0",
+  "sym": "?Init@IPXInterfaceClass@@UAE_NH@Z",
+  "len": "0x306",
+  "name": "IPXInterfaceClass::Init",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B13D0",
+  "sym": "?MessageHandler@IPXInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
+  "len": "0x350",
+  "name": "IPXInterfaceClass::MessageHandler",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B1770",
+  "sym": "?Slot13@IPXInterfaceClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "IPXInterfaceClass::Slot13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/ipx_interface_class_methods.cpp",
+  "addr": "0x7B1780",
+  "sym": "?MessageForSocket@IPXInterfaceClass@@UAEIH@Z",
+  "len": "0x8",
+  "name": "IPXInterfaceClass::MessageForSocket",
+  "status": "matched",
+  "pct": 100
  }
 ]

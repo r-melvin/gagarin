@@ -2,13 +2,14 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x405AC0. The 0x21 threshold appears twice, once
-//   against the descriptor's own value and once against the value the mixer
+//   against the descriptor's own value and once against the random value
 //   returns, and both comparisons are unsigned (`JNC`).
 #ifndef GG_MATCH_AUDIO_TRACK_GATE_METHODS_H
 #define GG_MATCH_AUDIO_TRACK_GATE_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/randomizer.h"
 
 struct Desc_00405AC0
 {
@@ -44,18 +45,6 @@ struct Owner_00405AC0
     Track_00405AC0* Track;     // +0x00C0
 };
 GG_STATIC_ASSERT(offsetof(Owner_00405AC0, Track) == 0xC0);
-
-// A member, not a free function: retail pushes both values and passes the mixer
-// in ECX, which is the __thiscall shape.
-struct Mixer_00405AC0
-{
-    char opaque[4];
-
-    // FUNCTION: GAMEMD 0x65C7E0
-    unsigned int FUN_0065C7E0(int a, unsigned int b);
-};
-// GLOBAL: GAMEMD 0x886B88 — the mixer the second threshold is taken from.
-extern Mixer_00405AC0 DAT_00886B88;
 
 // FUNCTION: GAMEMD 0x4047B0
 void* __fastcall FUN_004047B0(Track_00405AC0* track);
