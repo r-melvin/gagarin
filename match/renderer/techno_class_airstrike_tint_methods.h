@@ -41,8 +41,10 @@ struct CDTimerClass
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     char         _pad000[0x1B4];         // +0x0000
     CDTimerClass AirstrikeTintTimer;     // +0x01B4
     unsigned int AirstrikeTintStage;     // +0x01C0

@@ -36,8 +36,10 @@ struct HouseClass;
 // Modelled with a single vptr (4 bytes) + explicit padding; the COM tail and
 // every other member are P2.
 // ---------------------------------------------------------------------------
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     virtual void _tv0();
     virtual void _tv1();
     virtual void _tv2();

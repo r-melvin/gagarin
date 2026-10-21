@@ -22,15 +22,17 @@
 #define ABS_KIND_10     0x10
 #define ABS_KIND_28     0x28
 
-struct TechnoClass;
+class TechnoClass;
 
 // WhatAmI() at primary-vtable slot +0x2C — zero-argument, so the tree's
 // __fastcall-fn-pointer idiom is the right tool.
 typedef int (__fastcall* WhatAmIFunc)(TechnoClass*);
 #define TECHNO_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     char _pad000[0xE08];   // +0x0000
     int  unknown_E08;      // +0x0E08  selects between the two case-7 answers
 };

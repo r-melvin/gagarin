@@ -23,8 +23,10 @@ GG_STATIC_ASSERT(offsetof(CellClass, Jumpjet) == 0xE0);
 // retail call is `CALL [EAX+0x1BC]` (vtable byte-offset 0x1BC = slot 111), with
 // ECX = entry.  111 placeholder virtuals push GetCell to that slot; only its
 // vtable position matters (never defined / instantiated here).
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     virtual void vslot_0();
     virtual void vslot_1();
     virtual void vslot_2();

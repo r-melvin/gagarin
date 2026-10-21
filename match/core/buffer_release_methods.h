@@ -88,7 +88,5 @@ void __fastcall FUN_0043AC20(BufferHolder* obj);   // FUNCTION: GAMEMD 0x43AC20
 void __fastcall FUN_0045A0D0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A0D0
 void __fastcall FUN_0045A850(BufferHolder* obj);   // FUNCTION: GAMEMD 0x45A850
 void __fastcall FUN_00465F50(BufferHolder* obj);   // FUNCTION: GAMEMD 0x465F50
-void __fastcall FUN_00472AE0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x472AE0
-void __fastcall FUN_00472E90(BufferHolder* obj);   // FUNCTION: GAMEMD 0x472E90
 
 #endif  // GG_MATCH_CORE_BUFFER_RELEASE_METHODS_H

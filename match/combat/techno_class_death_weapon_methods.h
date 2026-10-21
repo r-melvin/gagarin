@@ -85,8 +85,10 @@ extern Rules_0070D690* RulesInstance_0070D690;
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct TechnoVtbl_0070D690;
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     TechnoVtbl_0070D690* Vtbl;   // +0x0000
 
     // FUNCTION: GAMEMD 0x70D690  TechnoClass::FireDeathWeapon (__thiscall)

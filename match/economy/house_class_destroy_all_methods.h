@@ -32,7 +32,7 @@
 
 struct HouseClass;
 struct WarheadTypeClass;
-struct ObjectClass;
+class ObjectClass;
 struct TemporalClass;
 struct TechnoTypeClass;
 struct CaptureManagerClass;
@@ -45,8 +45,10 @@ enum { ABSTRACT_TYPE_BUILDING = 6 };
 // TechnoClass as seen from this call site: the vtable slots that are dispatched
 // and the three members that are read.
 // ---------------------------------------------------------------------------
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     virtual void vt_000();
     virtual void vt_004();
     virtual void vt_008();

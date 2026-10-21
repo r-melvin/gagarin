@@ -10,7 +10,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct ObjectClass;
+class ObjectClass;
 
 struct AirstrikeClass
 {

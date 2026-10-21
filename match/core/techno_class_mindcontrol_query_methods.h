@@ -12,7 +12,7 @@
 // AbstractType discriminant returned by WhatAmI() (YRpp GeneralDefinitions.h).
 #define ABS_BUILDING 6
 
-struct TechnoClass;
+class TechnoClass;
 
 // TechnoTypeClass — two flags are consulted, both keeping placeholder names:
 // the bytes fix their offsets but not their meaning.
@@ -49,8 +49,10 @@ typedef TechnoTypeClass* (__fastcall* GetTypeFunc)(TechnoClass*);
 #define TECHNO_GET_TYPE(o)    ((*(GetTypeFunc*)(*(char**)(o) + 0x84))(o))
 #define TECHNO_SLOT_160(o)    ((*(BoolQueryFunc*)(*(char**)(o) + 0x160))(o))
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     bool CanBePermaMindControlled();   // GAMEMD 0x53C450
 };
 

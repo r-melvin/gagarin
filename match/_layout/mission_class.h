@@ -35,8 +35,10 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
 #endif  // GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
 
 // MissionClass  (0xAC..0xD3, sizeof = 0xD4)
-struct MissionClass : ObjectClass
+// Retail RTTI 0x817B18 establishes the class key; public access preserves this ABI view.
+class MissionClass : public ObjectClass
 {
+public:
     int           CurrentMission;            // +0xAC  (Mission enum, ctor = -1)
     int           SuspendedMission;          // +0xB0  (Mission enum, ctor = -1)
     int           QueuedMission;             // +0xB4  (Mission enum, ctor = -1)

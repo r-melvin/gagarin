@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoClass;
+class TechnoClass;
 struct FootClass;
 
 struct TeamClass
@@ -121,8 +121,10 @@ GG_STATIC_ASSERT(offsetof(FootClass, NextObject)            == 0x30);
 GG_STATIC_ASSERT(offsetof(FootClass, InOpenToppedTransport) == 0x82);
 GG_STATIC_ASSERT(offsetof(FootClass, Team) == 0x5D4);
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     char            _pad000[0x114];   // +0x0000
     PassengersClass Passengers;       // +0x0114 (NumPassengers lands at +0x118)
 

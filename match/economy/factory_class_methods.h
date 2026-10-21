@@ -16,7 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 
 struct TechnoTypeClass;
-struct TechnoClass;
+class TechnoClass;
 struct HouseClass;
 
 // StageClass (YRpp StageClass.h): Value@0x00, HasChanged@0x04, CDTimerClass

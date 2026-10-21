@@ -26,8 +26,10 @@
 // 0x6F47A0, called __thiscall on the produced Object). Declared without a body
 // so cl emits a (reloc-normalised) CALL.
 // ---------------------------------------------------------------------------
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     int TimeToBuild() const;  // GAMEMD 0x6F47A0 __thiscall
 };
 

@@ -181,8 +181,10 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 #endif
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
-struct TechnoClass : RadioClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass : public RadioClass
 {
+public:
     FlashData          Flashing;                 // +0xF0  (8)
     StageClass         Animation;                // +0xF8  (0x1C)
     PassengersClass    Passengers;               // +0x114 (8)

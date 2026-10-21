@@ -1478,7 +1478,7 @@
  {
   "tu": "match/combat/airstrike_class_methods.cpp",
   "addr": "0x41D830",
-  "sym": "?StartMission@AirstrikeClass@@QAEXPAUObjectClass@@@Z",
+  "sym": "?StartMission@AirstrikeClass@@QAEXPAVObjectClass@@@Z",
   "len": "0x22",
   "name": "StartMission",
   "status": "matched",
@@ -2279,7 +2279,7 @@
  {
   "tu": "match/combat/slave_manager_class_more_methods.cpp",
   "addr": "0x6AF580",
-  "sym": "?SetOwner@SlaveManagerClass@@QAEXPAUTechnoClass@@@Z",
+  "sym": "?SetOwner@SlaveManagerClass@@QAEXPAVTechnoClass@@@Z",
   "len": "0x65",
   "name": "SetOwner",
   "status": "matched",
@@ -3537,20 +3537,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_capturemanager_methods.cpp",
   "addr": "0x4730A0",
-  "sym": "?FUN_004730A0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVCaptureManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_004730A0",
+  "name": "VectorClass<CaptureManagerClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_capturemanager_methods.cpp",
   "addr": "0x4730F0",
-  "sym": "?FUN_004730F0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVCaptureManagerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_004730F0",
+  "name": "DynamicVectorClass<CaptureManagerClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -4005,11 +4005,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_capturemanager_methods.cpp",
   "addr": "0x472AE0",
-  "sym": "?FUN_00472AE0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVCaptureManagerClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_00472AE0",
+  "name": "DynamicVectorClass<CaptureManagerClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -4023,11 +4023,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_capturemanager_methods.cpp",
   "addr": "0x472E90",
-  "sym": "?FUN_00472E90@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVCaptureManagerClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_00472E90",
+  "name": "VectorClass<CaptureManagerClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -9650,7 +9650,7 @@
  {
   "tu": "match/core/radio_class_methods.cpp",
   "addr": "0x65ADF0",
-  "sym": "?HasFreeLinkFor@RadioClass@@QBE_NPAU1@@Z",
+  "sym": "?HasFreeLinkFor@RadioClass@@QBE_NPAV1@@Z",
   "len": "0x36",
   "name": "RadioClass::HasFreeLinkFor",
   "status": "matched",
@@ -12611,7 +12611,7 @@
  {
   "tu": "match/core/techno_class_kill_passengers_methods.cpp",
   "addr": "0x707CB0",
-  "sym": "?KillPassengers@TechnoClass@@QAEXPAU1@@Z",
+  "sym": "?KillPassengers@TechnoClass@@QAEXPAV1@@Z",
   "len": "0x70",
   "name": "TechnoClass::KillPassengers",
   "status": "matched",
@@ -12674,7 +12674,7 @@
  {
   "tu": "match/core/techno_class_opentopped_methods.cpp",
   "addr": "0x710470",
-  "sym": "?EnteredOpenTopped@TechnoClass@@QAEXPAU1@@Z",
+  "sym": "?EnteredOpenTopped@TechnoClass@@QAEXPAV1@@Z",
   "len": "0x2B",
   "name": "EnteredOpenTopped",
   "status": "matched",
@@ -22502,7 +22502,7 @@
  {
   "tu": "match/economy/house_class_armor_methods.cpp",
   "addr": "0x50BD30",
-  "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAUTechnoClass@@@Z",
+  "sym": "?GetArmorMultiplier@HouseClass@@QAEMPAVTechnoClass@@@Z",
   "len": "0x80",
   "name": "HouseClass::GetArmorMultiplier",
   "status": "matched",
@@ -23312,7 +23312,7 @@
  {
   "tu": "match/map/cell_class_jumpjet_methods.cpp",
   "addr": "0x487D70",
-  "sym": "?TryAssignJumpjet@CellClass@@QAE_NPAUObjectClass@@@Z",
+  "sym": "?TryAssignJumpjet@CellClass@@QAE_NPAVObjectClass@@@Z",
   "len": "0x72",
   "name": "CellClass::TryAssignJumpjet",
   "status": "matched",
@@ -25238,7 +25238,7 @@
  {
   "tu": "match/movement/foot_class_jumpjet.cpp",
   "addr": "0x4135A0",
-  "sym": "?IsJumpjet@AircraftTrackerClass@@QAE_NPAUTechnoClass@@@Z",
+  "sym": "?IsJumpjet@AircraftTrackerClass@@QAE_NPAVTechnoClass@@@Z",
   "len": "0x29",
   "name": "AircraftTrackerClass::IsJumpjet (task name: Jumpjet_LocationClear)",
   "status": "matched",
@@ -39353,6 +39353,123 @@
   "sym": "?FUN_004729C0@CaptureManagerClass@@QAEPAV1@I@Z",
   "len": "0xB6",
   "name": "CaptureManagerClass::FUN_004729C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472B10",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVCaptureManagerClass@@@@UBEHPAPAVCaptureManagerClass@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<CaptureManagerClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472B30",
+  "sym": "?Slot6@?$VectorClass@PAVCaptureManagerClass@@@@UBEPAVCaptureManagerClass@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<CaptureManagerClass*>::Slot6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472DA0",
+  "sym": "??8?$VectorClass@PAVCaptureManagerClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<CaptureManagerClass*>::operator==",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472DE0",
+  "sym": "?SetCapacity@?$VectorClass@PAVCaptureManagerClass@@@@UAE_NHPAPAVCaptureManagerClass@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<CaptureManagerClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472EC0",
+  "sym": "?FindItemIndex@?$VectorClass@PAVCaptureManagerClass@@@@UBEHABQAVCaptureManagerClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<CaptureManagerClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472F00",
+  "sym": "?Slot5@?$VectorClass@PAVCaptureManagerClass@@@@UBEHPAPAVCaptureManagerClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<CaptureManagerClass*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472F20",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVCaptureManagerClass@@@@UAE_NHPAPAVCaptureManagerClass@@@Z",
+  "len": "0xb0",
+  "name": "DynamicVectorClass<CaptureManagerClass*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/vector_capturemanager_methods.cpp",
+  "addr": "0x472FD0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVCaptureManagerClass@@@@UBEHABQAVCaptureManagerClass@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<CaptureManagerClass*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x4731C0",
+  "sym": "_FUN_004731C0",
+  "len": "0x13",
+  "name": "FUN_004731C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x4731E0",
+  "sym": "_FUN_004731E0",
+  "len": "0x13",
+  "name": "FUN_004731E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473200",
+  "sym": "_FUN_00473200",
+  "len": "0x13",
+  "name": "FUN_00473200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473220",
+  "sym": "_FUN_00473220",
+  "len": "0x13",
+  "name": "FUN_00473220",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/math_global_updates_004731c0.cpp",
+  "addr": "0x473240",
+  "sym": "_FUN_00473240",
+  "len": "0x13",
+  "name": "FUN_00473240",
   "status": "matched",
   "pct": 100
  }

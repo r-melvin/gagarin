@@ -19,7 +19,7 @@
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame, the engine frame counter.
 #include "../core/frame_counter.h"
 
-struct TechnoClass;
+class TechnoClass;
 
 // FrameTimer — empty clock policy whose value is CurrentFrame; occupies a
 // 1-byte (4 after alignment) slot inside CDTimerClass.

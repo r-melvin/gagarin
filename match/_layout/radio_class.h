@@ -22,8 +22,10 @@
 class TechnoClass;  // RadioLinks element type (used by-pointer only)
 
 // RadioClass  (0xD4..0xEF, sizeof = 0xF0)
-struct RadioClass : MissionClass
+// Retail RTTI 0x817B38 establishes the class key; public access preserves this ABI view.
+class RadioClass : public MissionClass
 {
+public:
     // Radio-link queries/mutators (defined in core/radio_class_methods.cpp).
     // Non-virtual; declaring them here does not change the layout.
     bool ContainsLink(const TechnoClass* pLink) const;  // GAMEMD 0x65AD50

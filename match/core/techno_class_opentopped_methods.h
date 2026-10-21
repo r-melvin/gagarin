@@ -12,7 +12,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoClass;
+class TechnoClass;
 
 // LogicClass — the global per-frame update list. AddObject is virtual in the
 // class hierarchy, but retail reaches it with a *direct* CALL because the
@@ -32,8 +32,10 @@ extern LogicClass LogicInstance;
 typedef void (__fastcall* Slot3D0Func)(TechnoClass*);
 #define TECHNO_SLOT_3D0(obj) ((*(Slot3D0Func*)(*(char**)(obj) + 0x3d0))(obj))
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     char _pad00[0x82];                 // +0x0000
     bool InOpenToppedTransport;        // +0x0082
 

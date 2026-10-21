@@ -1,13 +1,51 @@
 # Project status
 
-The latest whole-repository regression passed with **4,206 fully matched
-functions**, **167 partial rows**, and 967 manifest translation units, with no
-matched function regressing. All **977 tracked C++ files** produced project
+The latest whole-repository regression passed with **4,219 fully matched
+functions**, **167 partial rows**, and 969 manifest translation units, with no
+matched function regressing. All **979 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
-and duplicate-address check passed (4,404 addresses, zero problems). The
+and duplicate-address check passed (4,417 addresses, zero problems). The
 complete byte-for-byte executable target has not been achieved.
 
-## Latest integration: CaptureManager receiver and node consolidation
+## Latest integration: class-key alignment, CaptureManager vectors and math globals
+
+The MissionClass, RadioClass and TechnoClass spine and tracked sparse
+ObjectClass/TechnoClass views now use `class` declarations with explicit public
+sections. This matches the RTTI-backed class keys and keeps the existing public
+ABI views; it does not unify the local layouts or establish Westwood's original
+access declarations or complete hierarchies. Eight changed decorated-symbol
+bindings were rechecked against retail bytes.
+
+The native [CaptureManager vector implementation](match/core/vector_capturemanager_methods.cpp)
+adds eight matched entries and migrates four prior address claims into the
+VectorClass and DynamicVectorClass specializations. Both integrated seven-slot
+tables pass conditional 7/7 checks. The [math-global update implementation](match/core/math_global_updates_004731c0.cpp)
+adds five exact, address-ordered routines with C linkage and `void` result
+ABI bindings. Referenced storage types follow the observed access widths;
+original function names, ownership and startup role are unknown. The old BufferHolderDtor and
+BufferRelease views now each contain 37 manifest rows.
+
+The full regression passed with **4,219 matched functions**, 167 partial rows
+and no regressions. All **979/979 tracked C++ files** produced current project
+objects; compilation, 75 verifier tests and the duplicate-address check passed
+(4,417 addresses, zero problems). Focused checks covered 108 matched rows
+across 13 translation units. All nine saved partial bodies retain identical
+bytes and relocation offsets. The `/dll /noentry /nodefaultlib` diagnostic link
+reports **3,680 unique unresolved symbols**, 5,535 reference lines and no
+duplicate definitions. Seven unresolved decorated names changed from struct
+pointer to class pointer forms, the old `VTABLE_007E4AF4` reference disappeared,
+and eight global dependencies appeared from the five math routines; the net
+unresolved-symbol count did not decrease. Default libraries are excluded, so
+this diagnostic does not establish engine link closure.
+
+Matched lengths total **299,252 bytes (292 KiB)**: 21.4% of listed functions
+and 7.9% of listed function lengths. The current padding scan reports 261
+matched entries missed by its heuristic. Generic families contain 135 deleting
+bindings across 71 views, 68 base `Clear` rows, 66 native dynamic `Clear` rows
+plus one DiskID stand-in, and 10 resize-family rows plus two other resize
+helpers. The complete executable target remains unfinished.
+
+## Previous verified integration: CaptureManager receiver and node consolidation
 
 Three existing matched methods—`CanCapture` (`0x471C90`), `FreeUnit`
 (`0x471FF0`) and `NeedsToDrawLinks` (`0x472640`)—now use the shared
@@ -1459,8 +1497,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 977 tracked C++ files and 4,373 manifest
-rows across 967 manifest translation units, with no manifest TU missing from
+verified snapshot, the inventory has 979 tracked C++ files and 4,386 manifest
+rows across 969 manifest translation units, with no manifest TU missing from
 tracked sources. Ten tracked files
 have no manifest rows; the inventory also records two source basename
 collisions. The report lists those cases explicitly.
@@ -1776,10 +1814,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,206** | **21.3%** of 19,753 |
+| Functions matched at 100% | **4,219** | **21.4%** of 19,753 |
 | Sum of matched function lengths | 292 KiB | 7.9% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 167 | 0.8% |
-| Tracked C++ files under `match/` | 977 | |
+| Tracked C++ files under `match/` | 979 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -1799,7 +1837,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 260 matched entries. Its candidate count is therefore
+listed entries, including 261 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

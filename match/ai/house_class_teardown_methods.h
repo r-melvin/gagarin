@@ -25,8 +25,10 @@ struct HouseTypeClass;   // opaque — compared by pointer identity only
 // retail `MOV EDX,[ECX]; PUSH 1; CALL [EDX+0x20]` scalar-deleting dispatch.
 // None is ever instantiated, so no vtable is emitted for them.
 
-struct TechnoClass
+// Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
+class TechnoClass
 {
+public:
     virtual void vf00() = 0;   // vtable+0x00
     virtual void vf04() = 0;   // vtable+0x04
     virtual void vf08() = 0;   // vtable+0x08

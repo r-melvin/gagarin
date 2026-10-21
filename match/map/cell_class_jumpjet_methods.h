@@ -26,8 +26,10 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 // [EAX+0x14],4`); the two different widths are what keep VC6 from folding the
 // cast's re-test into the guard.
 #define ABSFLAGS_ISFOOT 4
-struct ObjectClass
+// Retail RTTI 0x817AF8 establishes the class key; public access preserves this ABI view.
+class ObjectClass
 {
+public:
     char _pad00[0x14];                 // +0x0000
     union {
         int           AbstractFlags;   // +0x0014
