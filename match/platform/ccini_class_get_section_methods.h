@@ -14,6 +14,8 @@
 #define GG_MATCH_PLATFORM_CCINI_CLASS_GET_SECTION_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/ini_nodes.h"
+#include "../_layout/ini_index_defaults.h"
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -29,7 +31,7 @@ struct Crc_00526810
 };
 GG_STATIC_ASSERT(sizeof(Crc_00526810) == 0xC);
 
-struct Section_00526810;
+typedef INIClass::INISection Section_00526810;
 
 // One entry of the sorted section table.
 struct Entry_00526810
@@ -40,7 +42,6 @@ struct Entry_00526810
 GG_STATIC_ASSERT(sizeof(Entry_00526810) == 8);
 
 // GLOBAL: GAMEMD 0xB7882C — the section handed back when the name is absent.
-extern Section_00526810* DAT_00B7882C;
 
 // FUNCTION: GAMEMD 0x7C8B48 (decl; reloc) — CRT qsort.
 extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int size,
@@ -51,7 +52,9 @@ int __cdecl FUN_0052B720(const void* a, const void* b);
 // the array in ECX, the count in EDX and the probe key pushed.
 Entry_00526810* __fastcall FUN_0052B750(Entry_00526810* items, int count, int* key);
 
-struct CCINI_00526810
+// Explicit read/write view of only the observed index offsets in INIClass.
+// It is not a competing concrete class declaration.
+struct INISectionLookupView
 {
     char             _pad000[0x28];   // +0x0000
     Entry_00526810*  Items;           // +0x0028
@@ -61,12 +64,10 @@ struct CCINI_00526810
     char             _pad035[3];      // +0x0035
     Entry_00526810*  Cached;          // +0x0038
 
-    // FUNCTION: GAMEMD 0x526810 — CCINIClass::GetSection.
-    Section_00526810* GetSection(const char* name);
 };
-GG_STATIC_ASSERT(offsetof(CCINI_00526810, Items)    == 0x28);
-GG_STATIC_ASSERT(offsetof(CCINI_00526810, Count)    == 0x2C);
-GG_STATIC_ASSERT(offsetof(CCINI_00526810, IsSorted) == 0x34);
-GG_STATIC_ASSERT(offsetof(CCINI_00526810, Cached)   == 0x38);
+GG_STATIC_ASSERT(offsetof(INISectionLookupView, Items)    == 0x28);
+GG_STATIC_ASSERT(offsetof(INISectionLookupView, Count)    == 0x2C);
+GG_STATIC_ASSERT(offsetof(INISectionLookupView, IsSorted) == 0x34);
+GG_STATIC_ASSERT(offsetof(INISectionLookupView, Cached)   == 0x38);
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_GET_SECTION_METHODS_H

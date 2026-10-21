@@ -13473,7 +13473,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_damagegroup_methods.cpp",
   "addr": "0x0048ad10",
   "sym": "?Clear@?$DynamicVectorClass@PAUDamageGroup@@@@UAEXXZ",
   "len": "0x2a",
@@ -13662,7 +13662,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
   "addr": "0x004e8410",
   "sym": "?Clear@?$DynamicVectorClass@PAVBuildingLightClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15435,20 +15435,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_damagegroup_methods.cpp",
   "addr": "0x0048AFD0",
   "sym": "??_G?$VectorClass@PAUDamageGroup@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<DamageGroup*>::`scalar deleting destructor'",
+  "name": "VectorClass<DamageGroup*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_damagegroup_methods.cpp",
   "addr": "0x0048B020",
-  "sym": "??_G?$VectorClass@PAUDamageGroup@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUDamageGroup@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<DamageGroup*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<DamageGroup*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -15840,20 +15840,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
   "addr": "0x004EF760",
   "sym": "??_G?$VectorClass@PAVBuildingLightClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BuildingLightClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<BuildingLightClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
   "addr": "0x004EF7B0",
-  "sym": "??_G?$VectorClass@PAVBuildingLightClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVBuildingLightClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<BuildingLightClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<BuildingLightClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -18873,7 +18873,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_damagegroup_methods.cpp",
   "addr": "0x0048ae60",
   "sym": "?Clear@?$VectorClass@PAUDamageGroup@@@@UAEXXZ",
   "len": "0x27",
@@ -19062,7 +19062,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
   "addr": "0x004e9c70",
   "sym": "?Clear@?$VectorClass@PAVBuildingLightClass@@@@UAEXXZ",
   "len": "0x27",
@@ -27164,9 +27164,9 @@
  {
   "tu": "match/platform/ccini_class_get_section_methods.cpp",
   "addr": "0x526810",
-  "sym": "?GetSection@CCINI_00526810@@QAEPAUSection_00526810@@PBD@Z",
+  "sym": "?GetSection@INIClass@@QAEPAUINISection@1@PBD@Z",
   "len": "0x131",
-  "name": "CCINIClass::GetSection",
+  "name": "INIClass::GetSection",
   "status": "partial",
   "pct": 3.3
  },
@@ -27209,18 +27209,18 @@
  {
   "tu": "match/platform/ccini_class_key_count_methods.cpp",
   "addr": "0x526960",
-  "sym": "?GetKeyCount@CCINIClass@@QAEHPBD@Z",
+  "sym": "?GetKeyCount@INIClass@@QAEHPBD@Z",
   "len": "0xC1",
-  "name": "CCINIClass::GetKeyCount",
+  "name": "INIClass::GetKeyCount",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/ccini_class_key_name_methods.cpp",
   "addr": "0x526CC0",
-  "sym": "?GetKeyName@CCINIClass_00526CC0@@QAEPBDPBDH@Z",
+  "sym": "?GetKeyName@INIClass@@QAEPBDPBDH@Z",
   "len": "0xcd",
-  "name": "CCINIClass::GetKeyName",
+  "name": "INIClass::GetKeyName",
   "status": "matched",
   "pct": 100
  },
@@ -27767,18 +27767,18 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AAF0",
-  "sym": "?DestroyEntry@INIEntry@@QAEXXZ",
+  "sym": "?DestroyEntry@INIEntry@INIClass@@QAEXXZ",
   "len": "0x8f",
-  "name": "INIEntry::~INIEntry",
+  "name": "INIClass::INIEntry::~INIEntry",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AB80",
-  "sym": "?DestroySection@INISection@@QAEXXZ",
+  "sym": "?DestroySection@INISection@INIClass@@QAEXXZ",
   "len": "0x15e",
-  "name": "INISection::~INISection",
+  "name": "INIClass::INISection::~INISection",
   "status": "matched",
   "pct": 100
  },
@@ -27794,16 +27794,16 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AD50",
-  "sym": "?DeletingDestructor@INIEntry@@QAEPAXI@Z",
+  "sym": "?DeletingDestructor@INIEntry@INIClass@@QAEPAXI@Z",
   "len": "0xa3",
-  "name": "INIEntry::scalar deleting destructor",
+  "name": "INIClass::INIEntry::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AE20",
-  "sym": "?DeletingDestructor@NodeOfINISection@@QAEPAXI@Z",
+  "sym": "?DeletingDestructor@?$Node@PAUINISection@INIClass@@@@QAEPAXI@Z",
   "len": "0x45",
   "name": "Node<INISection*>::scalar deleting destructor",
   "status": "matched",
@@ -27830,9 +27830,9 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AF00",
-  "sym": "??0INIEntry@@QAE@PAD0PAUINIComment@@0HHH@Z",
+  "sym": "??0INIEntry@INIClass@@QAE@PAD0PAUINIComment@@0HHH@Z",
   "len": "0x44",
-  "name": "INIEntry::INIEntry",
+  "name": "INIClass::INIEntry::INIEntry",
   "status": "matched",
   "pct": 100
  },
@@ -35755,5 +35755,149 @@
   "tu": "match/core/vector_technoclass_methods.cpp",
   "sym": "?Slot5@?$VectorClass@PAVTechnoClass@@@@UBEHPAPAVTechnoClass@@@Z",
   "name": "VectorClass<TechnoClass*>::Slot5"
+ },
+ {
+  "addr": "0x48AD40",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUDamageGroup@@@@UBEHPAPAUDamageGroup@@@Z",
+  "name": "DynamicVectorClass<DamageGroup*>::Slot5"
+ },
+ {
+  "addr": "0x48AD60",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUDamageGroup@@@@UBEPAUDamageGroup@@H@Z",
+  "name": "VectorClass<DamageGroup*>::Slot6"
+ },
+ {
+  "addr": "0x48AD70",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "??8?$VectorClass@PAUDamageGroup@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<DamageGroup*>::operator=="
+ },
+ {
+  "addr": "0x48ADB0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUDamageGroup@@@@UAE_NHPAPAUDamageGroup@@@Z",
+  "name": "VectorClass<DamageGroup*>::SetCapacity"
+ },
+ {
+  "addr": "0x48AE90",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUDamageGroup@@@@UBEHABQAUDamageGroup@@@Z",
+  "name": "VectorClass<DamageGroup*>::FindItemIndex"
+ },
+ {
+  "addr": "0x48AED0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUDamageGroup@@@@UBEHPAPAUDamageGroup@@@Z",
+  "name": "VectorClass<DamageGroup*>::Slot5"
+ },
+ {
+  "addr": "0x48AEF0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUDamageGroup@@@@UAE_NHPAPAUDamageGroup@@@Z",
+  "name": "DynamicVectorClass<DamageGroup*>::SetCapacity"
+ },
+ {
+  "addr": "0x48AFA0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_damagegroup_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUDamageGroup@@@@UBEHABQAUDamageGroup@@@Z",
+  "name": "DynamicVectorClass<DamageGroup*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8440",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVBuildingLightClass@@@@UBEHPAPAVBuildingLightClass@@@Z",
+  "name": "DynamicVectorClass<BuildingLightClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8460",
+  "len": "0xD",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVBuildingLightClass@@@@UBEPAVBuildingLightClass@@H@Z",
+  "name": "VectorClass<BuildingLightClass*>::Slot6"
+ },
+ {
+  "addr": "0x4E9B80",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVBuildingLightClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<BuildingLightClass*>::operator=="
+ },
+ {
+  "addr": "0x4E9BC0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVBuildingLightClass@@@@UAE_NHPAPAVBuildingLightClass@@@Z",
+  "name": "VectorClass<BuildingLightClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4E9CA0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVBuildingLightClass@@@@UBEHABQAVBuildingLightClass@@@Z",
+  "name": "VectorClass<BuildingLightClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E9CE0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVBuildingLightClass@@@@UBEHPAPAVBuildingLightClass@@@Z",
+  "name": "VectorClass<BuildingLightClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E9D00",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVBuildingLightClass@@@@UAE_NHPAPAVBuildingLightClass@@@Z",
+  "name": "DynamicVectorClass<BuildingLightClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4E9DB0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_buildinglightclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVBuildingLightClass@@@@UBEHABQAVBuildingLightClass@@@Z",
+  "name": "DynamicVectorClass<BuildingLightClass*>::FindItemIndex"
  }
 ]

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 112
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 110
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -216,11 +216,6 @@ struct tagCONNECTDATA;
 //   base of those, so the slot is declared here (batch fifty-seven).
 template class DynamicVectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x0048AD10
-// DynamicVectorClass<DamageGroup*> -- vtable 0x007E5170 slot 3; locator 0x007FD240 -> type descriptor 0x0081D198
-//   `.?AV?$DynamicVectorClass@PAUDamageGroup@@@@`.
-template class DynamicVectorClass<DamageGroup*>;
-
 // FUNCTION: GAMEMD 0x00491390
 // DynamicVectorClass<ConvertClass*> -- vtable 0x007E5318 slot 3; locator 0x007FD370 -> type descriptor 0x0081DC60
 //   `.?AV?$DynamicVectorClass@PAVConvertClass@@@@`.
@@ -285,11 +280,6 @@ template class DynamicVectorClass<FoggedObjectClass::DrawRecord>;
 // DynamicVectorClass<SuperClass*> -- vtable 0x007EA4E4 slot 3; locator 0x00802288 -> type descriptor 0x00823E28
 //   `.?AV?$DynamicVectorClass@PAVSuperClass@@@@`.
 template class DynamicVectorClass<SuperClass*>;
-
-// FUNCTION: GAMEMD 0x004E8410
-// DynamicVectorClass<BuildingLightClass*> -- vtable 0x007E9C24 slot 3; locator 0x00800DC0 -> type descriptor 0x00822F18
-//   `.?AV?$DynamicVectorClass@PAVBuildingLightClass@@@@`.
-template class DynamicVectorClass<BuildingLightClass*>;
 
 // FUNCTION: GAMEMD 0x004E8470
 // DynamicVectorClass<ParticleClass*> -- vtable 0x007E9D64 slot 3; locator 0x008010B8 -> type descriptor 0x00823138

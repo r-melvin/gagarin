@@ -51,7 +51,7 @@ bool __fastcall INIClass::Line_Contains_Section(char* buffer)
 // the game heap, so the two walk to different deallocators.
 //
 // FUNCTION: GAMEMD 0x52AAF0
-void INIEntry::DestroyEntry()
+void INIClass::INIEntry::DestroyEntry()
 {
     Vtable = &GG_VTABLE_INIENTRY;
 
@@ -79,7 +79,7 @@ void INIEntry::DestroyEntry()
 // list and its two sentinels, and finally the node itself.
 //
 // FUNCTION: GAMEMD 0x52AB80
-void INISection::DestroySection()
+void INIClass::INISection::DestroySection()
 {
     Vtable = &GG_VTABLE_INISECTION;
 
@@ -103,7 +103,7 @@ void INISection::DestroySection()
     }
 
     EntryIndex.Clear();
-    EntryList.DestroyList();
+    EntryListPrefix.DestroyList();
     DestroyNode();
 }
 
@@ -120,7 +120,7 @@ GenericListObject::GenericListObject()
 // out again.
 //
 // FUNCTION: GAMEMD 0x52AD50
-void* INIEntry::DeletingDestructor(unsigned int flags)
+void* INIClass::INIEntry::DeletingDestructor(unsigned int flags)
 {
     Vtable = &GG_VTABLE_INIENTRY;
 
@@ -152,7 +152,7 @@ void* INIEntry::DeletingDestructor(unsigned int flags)
 // GenericNode, so the whole destructor is the base unlink.
 //
 // FUNCTION: GAMEMD 0x52AE20
-void* NodeOfINISection::DeletingDestructor(unsigned int flags)
+template<> void* Node<INIClass::INISection*>::DeletingDestructor(unsigned int flags)
 {
     DestroyNode();
 
@@ -195,7 +195,7 @@ CRCEngine::CRCEngine(long initial)
 // out-of-order stores at the tail of retail's body record.
 //
 // FUNCTION: GAMEMD 0x52AF00
-INIEntry::INIEntry(char* entry, char* value, INIComment* comments,
+INIClass::INIEntry::INIEntry(char* entry, char* value, INIComment* comments,
                    char* commentstring, int commentcursor, int preindentcursor,
                    int postindentcursor)
 {

@@ -30,6 +30,15 @@ public:
     // links before the seat, so they are written in that order here.
     __forceinline void InitNode();
 };
+// RTTI at 0x803658/0x8036F8 confirms the intermediate Node<T> bases of
+// INIEntry/INISection, with zero-offset GenericNode bases. Constructors put
+// derived data at +0x0C. This models that prefix; the original virtual API
+// remains unrecovered and the inherited explicit vptr is retained.
+template<class T> class Node : public GenericNode
+{
+public:
+    void* DeletingDestructor(unsigned int flags);
+};
 class GenericList
 {
 public:

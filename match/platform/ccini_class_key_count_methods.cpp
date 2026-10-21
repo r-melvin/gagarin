@@ -11,16 +11,17 @@
 // is probed (IsPresent, then operator[] -- both inlined, so the probe runs
 // twice), and the found section's key count is returned; a null name, an
 // unknown section or an empty slot all answer zero.
-int CCINIClass::GetKeyCount(const char* section)
+int INIClass::GetKeyCount(const char* section)
 {
     if (section != 0) {
         CRC_00526960 engine;
         int crc = engine(section, strlen(section));
 
-        if (this->SectionIndex.IsPresent(crc)) {
-            INISection_00526960* sec = this->SectionIndex[crc];
+        Index_00526960* index = reinterpret_cast<Index_00526960*>(&SectionIndex);
+        if (index->IsPresent(crc)) {
+            INIClass::INISection* sec = (*index)[crc];
             if (sec != 0)
-                return sec->KeyCount;
+                return sec->EntryIndex.IndexCount;
         }
     }
 

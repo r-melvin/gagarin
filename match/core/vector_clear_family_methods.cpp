@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 113
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 111
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 114 remaining addresses are bound to VectorClass<T> tables;
+//   The 112 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -216,11 +216,6 @@ struct tagCONNECTDATA;
 //   `.?AV?$VectorClass@VRGBClass@@@@`.
 template class VectorClass<RGBClass>;
 
-// FUNCTION: GAMEMD 0x0048AE60
-// VectorClass<DamageGroup*> -- vtable 0x007E5144 slot 3; locator 0x007FD1D8 -> type descriptor 0x0081D168
-//   `.?AV?$VectorClass@PAUDamageGroup@@@@`.
-template class VectorClass<DamageGroup*>;
-
 // FUNCTION: GAMEMD 0x0049AF70
 // VectorClass<ConvertClass*> -- vtable 0x007E5338 slot 3; locator 0x007FD3A0 -> type descriptor 0x0081DC30
 //   `.?AV?$VectorClass@PAVConvertClass@@@@`.
@@ -285,11 +280,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 // VectorClass<SuperClass*> -- vtable 0x007EA504 slot 3; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
-
-// FUNCTION: GAMEMD 0x004E9C70
-// VectorClass<BuildingLightClass*> -- vtable 0x007E9C44 slot 3; locator 0x00800DF0 -> type descriptor 0x00822EE0
-//   `.?AV?$VectorClass@PAVBuildingLightClass@@@@`.
-template class VectorClass<BuildingLightClass*>;
 
 // FUNCTION: GAMEMD 0x004E9ED0
 // VectorClass<ParticleClass*> -- vtable 0x007E9D84 slot 3; locator 0x008010E8 -> type descriptor 0x00823108

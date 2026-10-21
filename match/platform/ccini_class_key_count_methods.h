@@ -13,6 +13,8 @@
 #define GG_MATCH_PLATFORM_CCINI_CLASS_KEY_COUNT_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/ini_nodes.h"
+#include "../_layout/ini_index_defaults.h"
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -38,28 +40,19 @@ GG_STATIC_ASSERT(offsetof(CRC_00526960, Staging) == 0x04);
 GG_STATIC_ASSERT(offsetof(CRC_00526960, Index) == 0x08);
 GG_STATIC_ASSERT(sizeof(CRC_00526960) == 0x0C);
 
-// One INI section: only its key count at +0x30 is read here.
-struct INISection_00526960
-{
-    char _pad000[0x30];       // +0x0000
-    int  KeyCount;            // +0x0030
-};
-GG_STATIC_ASSERT(offsetof(INISection_00526960, KeyCount) == 0x30);
-
 // A node of the section index: the CRC of the section name and the section.
 struct IndexNode_00526960
 {
     int                  ID;      // +0x0000
-    INISection_00526960* Data;    // +0x0004
+    INIClass::INISection* Data;    // +0x0004
 };
 GG_STATIC_ASSERT(offsetof(IndexNode_00526960, Data) == 0x04);
 GG_STATIC_ASSERT(sizeof(IndexNode_00526960) == 0x08);
 
 // GLOBAL: GAMEMD 0xB7882C -- the index's static "nothing" value, handed back
 // by reference when the key is absent.
-extern INISection_00526960* DAT_00B7882C;
 
-// The CRC-keyed section index (IndexClass<int, INISection*>). IsPresent and
+// Typed call/read view of the CRC-keyed section index. IsPresent and
 // operator[] are the inline bodies retail expands twice in GetKeyCount.
 struct Index_00526960
 {
@@ -86,7 +79,7 @@ struct Index_00526960
         return 1;
     }
 
-    INISection_00526960* const& operator[](int id)
+    INIClass::INISection* const& operator[](int id)
     {
         if (this->IsPresent(id))
             return this->Archive->Data;
@@ -95,15 +88,6 @@ struct Index_00526960
 };
 GG_STATIC_ASSERT(offsetof(Index_00526960, IndexCount) == 0x04);
 GG_STATIC_ASSERT(offsetof(Index_00526960, Archive) == 0x10);
-
-struct CCINIClass
-{
-    char           _pad000[0x28];   // +0x0000
-    Index_00526960 SectionIndex;    // +0x0028
-
-    // FUNCTION: GAMEMD 0x526960
-    int GetKeyCount(const char* section);
-};
-GG_STATIC_ASSERT(offsetof(CCINIClass, SectionIndex) == 0x28);
+GG_STATIC_ASSERT(sizeof(Index_00526960) == 0x14);
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_KEY_COUNT_METHODS_H

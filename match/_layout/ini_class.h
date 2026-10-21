@@ -12,16 +12,23 @@
 class INIClass
 {
 public:
+    // Retail TypeDescriptors name these nested structs.
+    struct INIEntry;
+    struct INISection;
     // FUNCTION: GAMEMD 0x5256F0
     virtual ~INIClass();
     // FUNCTION: GAMEMD 0x5257C0
     bool Clear(const char* section, const char* key);
     // FUNCTION: GAMEMD 0x526810
-    void* GetSection(const char* section);
+    INISection* GetSection(const char* section);
+    // FUNCTION: GAMEMD 0x526960
+    int GetKeyCount(const char* section);
     // FUNCTION: GAMEMD 0x526B00
     void Reset();
     // FUNCTION: GAMEMD 0x526B10
-    void* GetEntry(const char* section, const char* key);
+    INIEntry* GetEntry(const char* section, const char* key);
+    // FUNCTION: GAMEMD 0x526CC0
+    const char* GetKeyName(const char* section, int index);
     // FUNCTION: GAMEMD 0x5275C0
     bool WriteInteger(const char* section, const char* key, int value, int format);
     // FUNCTION: GAMEMD 0x528660

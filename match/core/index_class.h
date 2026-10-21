@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check |
-//             private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check
 //   Layout and every member offset were read numerically off the user's retail
 //   gamemd.exe v1.001 through the local Ghidra CLI. EA's GPLv3 Red Alert 1
 //   release (CODE/SEARCH.H) and the consult-only YRpp header IndexClass.h were
 //   read for names and algorithm shape only; nothing is transcribed from either
-//   and every offset below is re-derived from the binary. The private-reference seed
-//   rows in core/sorted_map.cpp named the cluster and nothing else.
+//   and every offset below is re-derived from the binary.
 //
 // IndexClass is Westwood's small sorted-index container: a flat array of
 // {ID, Data} pairs kept lazily sorted, searched by a hand-rolled binary search,
@@ -54,13 +52,8 @@ extern "C" void  __cdecl FUN_007C8B48(void* base, unsigned int num,
                                       unsigned int width,
                                       int (__cdecl* compare)(const void*, const void*));
 
-// The value FetchIndex hands back when the ID is absent: retail loads a fixed
-// data address (`MOV EAX,0x7B88830` in one instantiation, `0x7B8882C` in the
-// other) and returns it. Declared as one external symbol for both, since the
-// two differ only in the relocation.
-// GLOBAL: GAMEMD 0x7B88830
-// GLOBAL: GAMEMD 0x7B8882C
-extern "C" void* GG_INDEX_DEFAULT_VALUE;
+// Entry and section lookups use distinct binary-confirmed default cells.
+#include "../_layout/ini_index_defaults.h"
 
 // The primary instantiation. Data is modelled as a pointer; only its width
 // (four bytes, giving the 8-byte node stride) reaches the code.

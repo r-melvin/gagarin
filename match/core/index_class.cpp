@@ -207,7 +207,7 @@ void* const& IndexClass::FetchIndex(const int& id) const
     if (IsPresentImpl(id)) {
         return Archive->Data;
     }
-    return GG_INDEX_DEFAULT_VALUE;
+    return reinterpret_cast<void* const&>(DAT_00B78830);
 }
 
 // PARTIAL 4.4% (best of three spellings). The multiset is identical at 90
@@ -303,7 +303,7 @@ void* const& IndexClassB::FetchIndex(const int& id) const
     if (IsPresentImpl(id)) {
         return Archive->Data;
     }
-    return GG_INDEX_DEFAULT_VALUE;
+    return reinterpret_cast<void* const&>(DAT_00B7882C);
 }
 
 // The qsort comparator: order by ID. Equal IDs short-circuit to zero, and the

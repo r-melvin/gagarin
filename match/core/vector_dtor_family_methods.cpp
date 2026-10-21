@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 117 base-template instantiations reproduce 227 remaining retail destructor
+// 115 base-template instantiations reproduce 223 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -213,12 +213,6 @@ template class VectorClass<RGBClass>;
 //   `.?AV?$VectorClass@PAVObjectClass@@@@`.
 template class VectorClass<ObjectClass*>;
 
-// FUNCTION: GAMEMD 0x0048AFD0
-// FUNCTION: GAMEMD 0x0048B020
-// VectorClass<DamageGroup*> -- reseats retail vtable 0x007E5144; locator 0x007FD1D8 -> type descriptor 0x0081D168
-//   `.?AV?$VectorClass@PAUDamageGroup@@@@`.
-template class VectorClass<DamageGroup*>;
-
 // FUNCTION: GAMEMD 0x0049B0E0
 // FUNCTION: GAMEMD 0x0049B130
 // VectorClass<ConvertClass*> -- reseats retail vtable 0x007E5338; locator 0x007FD3A0 -> type descriptor 0x0081DC30
@@ -313,12 +307,6 @@ template class VectorClass<FoggedObjectClass::DrawRecord>;
 // VectorClass<SuperClass*> -- reseats retail vtable 0x007EA504; locator 0x008022B8 -> type descriptor 0x00823DF8
 //   `.?AV?$VectorClass@PAVSuperClass@@@@`.
 template class VectorClass<SuperClass*>;
-
-// FUNCTION: GAMEMD 0x004EF760
-// FUNCTION: GAMEMD 0x004EF7B0
-// VectorClass<BuildingLightClass*> -- reseats retail vtable 0x007E9C44; locator 0x00800DF0 -> type descriptor 0x00822EE0
-//   `.?AV?$VectorClass@PAVBuildingLightClass@@@@`.
-template class VectorClass<BuildingLightClass*>;
 
 // FUNCTION: GAMEMD 0x004EF800
 // FUNCTION: GAMEMD 0x004EF850

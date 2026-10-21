@@ -27,25 +27,26 @@
 // (node != 0)` 70.9%. Retail advances before it decrements (`MOV EAX,ECX;
 // DEC EDX`); the other order also reaches 100%, so only the loop's shape is
 // load-bearing.
-const char* CCINIClass_00526CC0::GetKeyName(const char* section, int index)
+const char* INIClass::GetKeyName(const char* section, int index)
 {
     if (section != 0) {
         CRC_00526CC0 engine;
         int crc = engine(section, strlen(section));
 
-        if (this->SectionIndex.IsPresent(crc)) {
-            INISection_00526CC0* sec = this->SectionIndex[crc];
-            if (sec != 0 && index < sec->KeyCount) {
-                INIEntry_00526CC0* node = sec->First;
+        Index_00526CC0* indexView = reinterpret_cast<Index_00526CC0*>(&SectionIndex);
+        if (indexView->IsPresent(crc)) {
+            INIClass::INISection* sec = (*indexView)[crc];
+            if (sec != 0 && index < sec->EntryIndex.IndexCount) {
+                INIClass::INIEntry* node = sec->FirstEntry();
                 if (node != 0) {
                     while (1) {
-                        if (!(node->Next != 0 && node->Prev != 0)) {
+                        if (!(node->NextNode != 0 && node->PrevNode != 0)) {
                             break;
                         }
                         if (index == 0) {
-                            return node->Key;
+                            return node->Entry;
                         }
-                        node = node->Next;
+                        node = static_cast<INIClass::INIEntry*>(node->NextNode);
                         index--;
                         if (node == 0) {
                             break;

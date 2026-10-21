@@ -17,6 +17,7 @@
 #define GG_MATCH_PLATFORM_CCINI_CLASS_KEY_NAME_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/ini_nodes.h"
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -42,38 +43,15 @@ GG_STATIC_ASSERT(offsetof(CRC_00526CC0, Staging) == 0x04);
 GG_STATIC_ASSERT(offsetof(CRC_00526CC0, Index) == 0x08);
 GG_STATIC_ASSERT(sizeof(CRC_00526CC0) == 0x0C);
 
-// One key entry of a section: a doubly linked node with the key name at +0xC.
-struct INIEntry_00526CC0
-{
-    void*              Vtbl;    // +0x0000
-    INIEntry_00526CC0* Next;    // +0x0004
-    INIEntry_00526CC0* Prev;    // +0x0008
-    const char*        Key;     // +0x000C
-};
-GG_STATIC_ASSERT(offsetof(INIEntry_00526CC0, Next) == 0x04);
-GG_STATIC_ASSERT(offsetof(INIEntry_00526CC0, Prev) == 0x08);
-GG_STATIC_ASSERT(offsetof(INIEntry_00526CC0, Key) == 0x0C);
-
-// One INI section: the entry list head at +0x18 and the key count at +0x30.
-struct INISection_00526CC0
-{
-    char               _pad000[0x18];   // +0x0000
-    INIEntry_00526CC0* First;           // +0x0018
-    char               _pad01C[0x30 - 0x1C];  // +0x001C
-    int                KeyCount;        // +0x0030
-};
-GG_STATIC_ASSERT(offsetof(INISection_00526CC0, First) == 0x18);
-GG_STATIC_ASSERT(offsetof(INISection_00526CC0, KeyCount) == 0x30);
-
 // A node of the section index: the CRC of the section name and the section.
 struct IndexNode_00526CC0
 {
     int                  ID;      // +0x0000
-    INISection_00526CC0* Data;    // +0x0004
+    INIClass::INISection* Data;    // +0x0004
 };
 GG_STATIC_ASSERT(sizeof(IndexNode_00526CC0) == 0x08);
 
-// The CRC-keyed section index (IndexClass<int, INISection*>).
+// Typed call/read view of the CRC-keyed section index.
 struct Index_00526CC0
 {
     IndexNode_00526CC0* IndexTable;   // +0x0000
@@ -88,7 +66,7 @@ struct Index_00526CC0
     // FUNCTION: GAMEMD 0x52B620 (decl; reloc) -- binary-search the table.
     IndexNode_00526CC0* SearchForNode(const int& id);
     // FUNCTION: GAMEMD 0x52B430 (decl; reloc) -- fetch the section by id.
-    INISection_00526CC0* const& FetchIndex(const int& id);
+    INIClass::INISection* const& FetchIndex(const int& id);
 
     // Both inline wrappers take the id BY VALUE: retail copies the CRC out of
     // its register into the section parameter's home slot before each of the
@@ -106,22 +84,13 @@ struct Index_00526CC0
         return 1;
     }
 
-    INISection_00526CC0* const& operator[](int id)
+    INIClass::INISection* const& operator[](int id)
     {
         return this->FetchIndex(id);
     }
 };
 GG_STATIC_ASSERT(offsetof(Index_00526CC0, IndexCount) == 0x04);
 GG_STATIC_ASSERT(offsetof(Index_00526CC0, Archive) == 0x10);
-
-struct CCINIClass_00526CC0
-{
-    char           _pad000[0x28];   // +0x0000
-    Index_00526CC0 SectionIndex;    // +0x0028
-
-    // FUNCTION: GAMEMD 0x526CC0 -- CCINIClass::GetKeyName.
-    const char* GetKeyName(const char* section, int index);
-};
-GG_STATIC_ASSERT(offsetof(CCINIClass_00526CC0, SectionIndex) == 0x28);
+GG_STATIC_ASSERT(sizeof(Index_00526CC0) == 0x14);
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_KEY_NAME_METHODS_H

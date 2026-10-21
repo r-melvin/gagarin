@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x526810.
+//   Reconstructed against retail gamemd.exe v1.001 at 0x526810; partial below.
 
 #include "ccini_class_get_section_methods.h"
 
@@ -23,8 +23,9 @@
 // push into the second lookup where cl emits it in the prologue — the
 // banked deferred-callee-saved-push class — and everything after the
 // prologue is shifted by it.
-Section_00526810* CCINI_00526810::GetSection(const char* name)
+INIClass::INISection* INIClass::GetSection(const char* name)
 {
+    INISectionLookupView* view = reinterpret_cast<INISectionLookupView*>(this);
     if (name == 0) {
         goto missing;
     }
@@ -36,35 +37,35 @@ Section_00526810* CCINI_00526810::GetSection(const char* name)
         crc.C = 0;
         int key = crc.Hash(name, strlen(name));
 
-        if (Count == 0) {
+        if (view->Count == 0) {
             goto missing;
         }
 
-        if (Cached == 0 || Cached->Key != key) {
-            if (!IsSorted) {
-                gg_qsort(Items, Count, 8, FUN_0052B720);
-                Cached = 0;
-                IsSorted = 1;
+        if (view->Cached == 0 || view->Cached->Key != key) {
+            if (!view->IsSorted) {
+                gg_qsort(view->Items, view->Count, 8, FUN_0052B720);
+                view->Cached = 0;
+                view->IsSorted = 1;
             }
             crc.A = key;
-            Entry_00526810* found = FUN_0052B750(Items, Count, &crc.A);
+            Entry_00526810* found = FUN_0052B750(view->Items, view->Count, &crc.A);
             if (found == 0) {
                 goto missing;
             }
-            Cached = found;
+            view->Cached = found;
         }
 
-        if (Count != 0) {
-            if (Cached != 0 && Cached->Key == key) {
+        if (view->Count != 0) {
+            if (view->Cached != 0 && view->Cached->Key == key) {
                 goto found;
             }
-            if (!IsSorted) {
-                gg_qsort(Items, Count, 8, FUN_0052B720);
-                Cached = 0;
-                IsSorted = 1;
+            if (!view->IsSorted) {
+                gg_qsort(view->Items, view->Count, 8, FUN_0052B720);
+                view->Cached = 0;
+                view->IsSorted = 1;
             }
-            int n = Count;
-            Entry_00526810* base = Items;
+            int n = view->Count;
+            Entry_00526810* base = view->Items;
             while (n > 0) {
                 int half = n / 2;
                 Entry_00526810* mid = base + half;
@@ -73,7 +74,7 @@ Section_00526810* CCINI_00526810::GetSection(const char* name)
                 } else {
                     if (mid->Key == key) {
                         if (mid != 0) {
-                            Cached = mid;
+                            view->Cached = mid;
                             goto found;
                         }
                         break;
@@ -86,7 +87,7 @@ Section_00526810* CCINI_00526810::GetSection(const char* name)
         return DAT_00B7882C;
 
     found:
-        return Cached->Section;
+        return view->Cached->Section;
     }
 
 missing:
