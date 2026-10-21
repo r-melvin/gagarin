@@ -8,24 +8,29 @@
 //
 // TriggerClass::FireActions walks the trigger's type action list and Execute()s
 // each, OR-ing the results. TriggerClass::Destroy marks the trigger Destroyed
-// and appends it to the global "triggers pending destruction" vector at
-// 0x00B0F698 (DynamicVectorClass<TriggerClass*>; AddItem inlined by the original,
+// and appends it to shared pending-delete storage at
+// 0x00B0F698 (vector-shaped; AddItem inlined by the original,
 // reaching the virtual SetCapacity through [vtable+0x08]).
 #ifndef GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H
 #define GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
 class ObjectClass;   // only ever a pointer here
 
 // CellStruct (two shorts). FireActions takes it by value; TActionClass::Execute
 // takes it by const-ref (so the by-value copy's address is forwarded).
+#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
+#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 struct CellStruct
 {
     short X;
     short Y;
 };
+#endif
+
 
 // HouseClass::FindByCountryIndex — static __fastcall (arg in ECX) @0x502D30.
 class HouseClass
@@ -42,7 +47,7 @@ struct HouseTypeClass
 };
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB4);
 
-struct TriggerClass;  // fwd (Execute's pTrigger arg)
+class TriggerClass;  // fwd (Execute's pTrigger arg)
 
 // TActionClass — singly-linked action node. NextAction @0x28; Execute @0x6DD8B0.
 struct TActionClass
@@ -57,8 +62,9 @@ struct TActionClass
 GG_STATIC_ASSERT(offsetof(TActionClass, NextAction) == 0x28);
 
 // TriggerTypeClass — House @0xA4, FirstAction @0xB0.
-struct TriggerTypeClass
+class TriggerTypeClass
 {
+public:
     char            _pad0[0xA4];    // +0x000  AbstractTypeClass base + members (P2)
     HouseTypeClass* House;          // +0x0A4
     char            _gap_a8[0x08];  // +0x0A8  NextTrigger + FirstEvent
@@ -67,7 +73,7 @@ struct TriggerTypeClass
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House)       == 0xA4);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, FirstAction) == 0xB0);
 
-// Global DynamicVectorClass<TriggerClass*> at 0x00B0F698. The virtuals are
+// Call view for shared storage at 0x00B0F698. The virtuals are
 // declared only to pin the vtable slot order so the inlined AddItem reaches
 // SetCapacity through [vtable+0x08] (slot 2), exactly as retail.
 struct TriggerPtrVector
@@ -107,27 +113,14 @@ struct TriggerPtrVector
     }
 };
 
-// TriggerClass — Type @0x24, Destroyed @0x30, Enabled @0x44 are the only members
-// these two methods touch; the base is padded (full layout is P2).
-struct TriggerClass
-{
-    char              _pad0[0x24];     // +0x000  AbstractClass base (P2)
-    TriggerTypeClass* Type;            // +0x024
-    char              _gap_28[0x08];   // +0x028  NextTrigger + House
-    bool              Destroyed;       // +0x030
-    char              _gap_31[0x13];   // +0x031  align + Timer + OccuredEvents
-    bool              Enabled;         // +0x044
+// These methods use Type (+0x24), Destroyed (+0x30), and Enabled (+0x44)
+// from the shared TriggerClass declaration.
 
-    // GAMEMD 0x7265C0 __thiscall — true if any action executed.
-    bool FireActions(ObjectClass* pObj, CellStruct location);
-    // GAMEMD 0x726720 __thiscall — mark destroyed + enqueue for destruction.
-    void Destroy();
-};
 GG_STATIC_ASSERT(offsetof(TriggerClass, Type)      == 0x24);
 GG_STATIC_ASSERT(offsetof(TriggerClass, Destroyed) == 0x30);
 GG_STATIC_ASSERT(offsetof(TriggerClass, Enabled)   == 0x44);
 
 // The retail global cleanup vector (relocation-normalised by the differ).
-extern TriggerPtrVector TriggersToDestroy;  // 0x00B0F698
+#include "../core/abstract_registry.h"
 
 #endif  // GG_MATCH_AI_TRIGGER_CLASS_DESTROY_METHODS_H

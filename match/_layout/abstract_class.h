@@ -15,7 +15,7 @@
 // exact. Constructors store these fields directly; dispatching methods use
 // explicit slot-call views until the COM inheritance graph is reconstructed.
 // The vptr-group addresses per concrete class come from its ctor (e.g.
-// AbstractTypeClass writes 0x7E4A28/0x7E4A0C/0x7E4A04/0x7E49FC).
+// AbstractTypeClass writes 0x7E2000/0x7E1FE4/0x7E1FDC/0x7E1FD4).
 #ifndef GG_MATCH_LAYOUT_ABSTRACT_CLASS_H
 #define GG_MATCH_LAYOUT_ABSTRACT_CLASS_H
 
@@ -28,6 +28,10 @@ class AbstractClass
 public:
     // FUNCTION: GAMEMD 0x410170 (declaration; native base constructor)
     AbstractClass();
+    // FUNCTION: GAMEMD 0x4101F0 (native base destructor)
+    ~AbstractClass();
+    // FUNCTION: GAMEMD 0x7258D0 (declaration; ECX receiver, DL flag)
+    void __fastcall AnnounceExpiredPointer(unsigned char removed);
 
     void* _vtable_IPersistStream;   // +0x00
     void* _vtable_IRTTITypeInfo;    // +0x04

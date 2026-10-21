@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// GX adds allocation exception cleanup absent from native GetInstance.
 //   Bodies reconstructed from the user's retail gamemd.exe v1.001 disassembly
 //   (Ghidra CLI at 0x726350 + 0x726630), cross-checked against YRpp
 //   TriggerClass.h (consult-only). Every offset reconfirmed numerically in the
@@ -11,8 +13,6 @@
 
 #include "trigger_class_more_methods.h"
 
-// GLOBAL: GAMEMD 0xA8EAE8 — TriggerClass::Array.
-TriggerVectorClass TriggerArray;
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x726350  TriggerClass::HasGlobalSetOrClearedEvent (__thiscall)
@@ -48,15 +48,13 @@ TriggerClass* __fastcall TriggerClass::GetInstance(TriggerTypeClass* pType)
 {
     if (pType)
     {
-        for (int i = 0; i < TriggerArray.Count; ++i)
+        for (int i = 0; i < TriggerClass::Array.Count; ++i)
         {
-            if (pType == TriggerArray.Items[i]->Type)
-                return TriggerArray.Items[i];
+            if (pType == ((TriggerClass**)TriggerClass::Array.Items)[i]->Type)
+                return ((TriggerClass**)TriggerClass::Array.Items)[i];
         }
 
-        void* mem = operator new(0x48);
-        if (mem)
-            return ((TriggerClass*)mem)->Construct(pType);
+        return new TriggerClass(pType);
     }
     return 0;
 }

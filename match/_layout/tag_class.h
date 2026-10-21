@@ -19,7 +19,7 @@
 #include "foot_class.h"   // CellStruct
 
 class TagTypeClass;
-struct TriggerClass;
+class TriggerClass;
 
 // Retail TypeDescriptor 0x8249E8 names ".?AVTagClass@@".
 class TagClass : public AbstractClass
@@ -64,8 +64,6 @@ public:
     unsigned char unknown_36[2];   // +0x36 unclassified tail bytes; closes the object at 0x38
     // GLOBAL: GAMEMD 0xB0E720 -- loader-zero registry storage.
     static DynamicVectorClassLayout Array;
-    // GLOBAL: GAMEMD 0xB0F698 -- deferred list appended by Destroy.
-    static DynamicVectorClassLayout DestroyedList;
 };
 
 GG_STATIC_ASSERT(offsetof(TagClass, Type)          == 0x24);

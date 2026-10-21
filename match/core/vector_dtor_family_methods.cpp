@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 129 base-template instantiations reproduce 249 remaining retail destructor
+// 129 base-template instantiations reproduce 243 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -350,12 +350,6 @@ template class VectorClass<TeamClass*>;
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
 
-// FUNCTION: GAMEMD 0x004EF990
-// FUNCTION: GAMEMD 0x004EF9E0
-// VectorClass<TriggerClass*> -- reseats retail vtable 0x007E9C04; locator 0x00800D58 -> type descriptor 0x00822E78
-//   `.?AV?$VectorClass@PAVTriggerClass@@@@`.
-template class VectorClass<TriggerClass*>;
-
 // FUNCTION: GAMEMD 0x004EFA30
 // FUNCTION: GAMEMD 0x004EFA80
 // VectorClass<TriggerTypeClass*> -- reseats retail vtable 0x007E9BC4; locator 0x00800CC0 -> type descriptor 0x00822E00
@@ -422,23 +416,11 @@ template class VectorClass<TaskForceClass*>;
 //   `.?AV?$VectorClass@PAVTeamTypeClass@@@@`.
 template class VectorClass<TeamTypeClass*>;
 
-// FUNCTION: GAMEMD 0x004F04D0
-// FUNCTION: GAMEMD 0x004F0520
-// VectorClass<ScriptTypeClass*> -- reseats retail vtable 0x007EA144; locator 0x008019D0 -> type descriptor 0x00823720
-//   `.?AV?$VectorClass@PAVScriptTypeClass@@@@`.
-template class VectorClass<ScriptTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004F0A70
 // FUNCTION: GAMEMD 0x004F0AC0
 // VectorClass<BulletTypeClass*> -- reseats retail vtable 0x007EA384; locator 0x00801F28 -> type descriptor 0x00823B28
 //   `.?AV?$VectorClass@PAVBulletTypeClass@@@@`.
 template class VectorClass<BulletTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004F0B10
-// FUNCTION: GAMEMD 0x004F0B60
-// VectorClass<VoxelAnimTypeClass*> -- reseats retail vtable 0x007EA3C4; locator 0x00801FC0 -> type descriptor 0x00823B98
-//   `.?AV?$VectorClass@PAVVoxelAnimTypeClass@@@@`.
-template class VectorClass<VoxelAnimTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004F0BB0
 // FUNCTION: GAMEMD 0x004F0C00

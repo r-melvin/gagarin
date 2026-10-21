@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 123
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 120
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -311,11 +311,6 @@ template class DynamicVectorClass<ParticleClass*>;
 //   `.?AV?$DynamicVectorClass@PAVTeamClass@@@@`.
 template class DynamicVectorClass<TeamClass*>;
 
-// FUNCTION: GAMEMD 0x004E8540
-// DynamicVectorClass<TriggerClass*> -- vtable 0x007E9BE4 slot 3; locator 0x00800D28 -> type descriptor 0x00822EA8
-//   `.?AV?$DynamicVectorClass@PAVTriggerClass@@@@`.
-template class DynamicVectorClass<TriggerClass*>;
-
 // FUNCTION: GAMEMD 0x004E85A0
 // DynamicVectorClass<TriggerTypeClass*> -- vtable 0x007E9BA4 slot 3; locator 0x00800C90 -> type descriptor 0x00822E38
 //   `.?AV?$DynamicVectorClass@PAVTriggerTypeClass@@@@`.
@@ -371,20 +366,10 @@ template class DynamicVectorClass<TaskForceClass*>;
 //   `.?AV?$DynamicVectorClass@PAVTeamTypeClass@@@@`.
 template class DynamicVectorClass<TeamTypeClass*>;
 
-// FUNCTION: GAMEMD 0x004E8C00
-// DynamicVectorClass<ScriptTypeClass*> -- vtable 0x007EA124 slot 3; locator 0x008019A0 -> type descriptor 0x00823758
-//   `.?AV?$DynamicVectorClass@PAVScriptTypeClass@@@@`.
-template class DynamicVectorClass<ScriptTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004E8F60
 // DynamicVectorClass<BulletTypeClass*> -- vtable 0x007EA364 slot 3; locator 0x00801EF8 -> type descriptor 0x00823B60
 //   `.?AV?$DynamicVectorClass@PAVBulletTypeClass@@@@`.
 template class DynamicVectorClass<BulletTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004E8FC0
-// DynamicVectorClass<VoxelAnimTypeClass*> -- vtable 0x007EA3A4 slot 3; locator 0x00801F90 -> type descriptor 0x00823BD0
-//   `.?AV?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@`.
-template class DynamicVectorClass<VoxelAnimTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E9020
 // DynamicVectorClass<IsometricTileTypeClass*> -- vtable 0x007EA3E4 slot 3; locator 0x00802028 -> type descriptor 0x00823C48

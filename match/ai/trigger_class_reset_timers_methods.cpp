@@ -33,7 +33,7 @@ void TriggerClass::ResetTimers()
 {
     int index = 0;
 
-    for (TEvent_00726400* event = this->Type->FirstEvent; event != 0; event = event->NextEvent) {
+    for (TEvent_00726400* event = reinterpret_cast<TriggerType_00726400*>(this->Type)->FirstEvent; event != 0; event = event->NextEvent) {
         if (event->EventKind == 13) {
             this->Timer = CDTimer_00726400(event->Value * 15);
             this->OccuredEvents &= ~(1 << index);

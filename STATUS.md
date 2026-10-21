@@ -1,13 +1,77 @@
 # Project status
 
-The latest whole-repository regression passed with **3,711 fully matched
-functions**, **165 partial rows**, and 895 manifest translation units, with no
-matched function regressing. All **901 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,735 fully matched
+functions**, **166 partial rows**, and 900 manifest translation units, with no
+matched function regressing. All **908 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: native TagClass construction and one shared definition
+## Latest integration: shared TriggerClass and object registries
+
+The [shared TriggerClass declaration](match/_layout/trigger_class.h) replaces
+its competing method-specific definitions. Ten existing exact methods retain
+their matches; the partial `ResetTimers` body and relocation offsets are
+unchanged from the previous project objects. TagClass and House callers now
+use this declaration or an explicitly named deleting-call view. Its RTTI
+class key, 0x48-byte allocation size, accessed fields and link aliases are pinned.
+Complete COM inheritance and TriggerTypeClass layout consolidation are pending.
+
+The [native TriggerClass constructor](match/ai/trigger_class_ctor.cpp) is a
+new **partial source recovery**, not a new match. The fixed 403-byte retail-span
+oracle reports 79.1% (102/129 instructions; 27 differences), concentrated in
+final branch ordering. Independent review confirmed the observed base call,
+field and vptr writes, three vector appends, timer reset and mode/flag behavior.
+The native GetInstance expression is exact with no-GX flags. Three matching
+strategies were exhausted; the remaining delta stays documented rather than
+being counted as exact.
+
+The [native AbstractClass destructor](match/core/abstract_class_dtor.cpp)
+preserves the existing full 28-byte match, replacing its opaque host. This
+resolves the native base destructor call. The TagClass destructor still has
+no committed implementation: its capped local candidate reached 57.5%
+(127/221 instructions; 94 differences) and remains outside the manifest.
+
+[Shared registry storage](match/core/abstract_registry.cpp) now binds the
+vector-shaped prefixes at `0xB0F670`, `0xB0F698`, and `0xB0F708`. In particular,
+`0xB0F698` is used by TagClass, TriggerClass, DiskLaser and ObjectClass; the
+previous TagClass-specific member name was too narrow. Their storage aliases
+now agree, and all eight initially affected exact rows remain exact. The
+original owning class and runtime initialization remain unconfirmed. The
+TriggerClass registry at `0xA8EAE8` also has one definition shared by its methods
+and the House teardown caller.
+
+Fresh AbstractTypeClass constructor/RTTI evidence replaces its private-path
+citation and confirms its `class` key and zero-offset AbstractClass base. It
+also corrects a stale vptr-address example. That constructor establishes member
+starts and observed writes; it does not alone prove every array bound or the
+closing size. TriggerTypeClass declarations now consistently use the RTTI
+`class` key while retaining their existing prefix views.
+
+The [VoxelAnimTypeClass](match/core/vector_voxelanimtypeclass_methods.cpp),
+[ScriptTypeClass](match/core/vector_scripttypeclass_methods.cpp), and
+[TriggerClass](match/core/vector_triggerclass_methods.cpp) vector pairs contain
+36 exact rows: 24 new matches and 12 migrated claims. Their six seven-slot tables
+pass conditional `--weak-defaults` checks on project objects. Full REA entry
+spans and GX/no-GX probes support each native pair; no-GX reproduces the full
+derived deleting bodies.
+
+The `/dll /noentry /nodefaultlib` diagnostic link still fails with 4,112 unique
+unresolved symbols (6,306 reference lines), and no duplicate definitions.
+The native TriggerClass constructor and AbstractClass destructor now resolve;
+source resolution does not imply exact matching of the partial constructor.
+Old queue/TriggerArray aliases are absent from unresolved references. The
+TagClass destructor remains unresolved. Default libraries are excluded, so
+these counts are not an engine-only gap census. Engine link closure and the
+whole-image comparison remain unfinished.
+
+Matched function lengths total 266,245 bytes (260 KiB): 18.9% of listed
+functions and 7.0% of listed function lengths. The padding heuristic misses
+203 matched entries. Residual vector families contain 243 generic deleting
+bindings across 125 instantiation views, 122 base Clear rows, 120 native
+dynamic Clear rows plus one DiskID stand-in, and 16 resize rows.
+
+## Previous verified integration: native TagClass construction and one shared definition
 
 The [TagClass constructor](match/ai/tag_class_ctor.cpp) adds a full 380-byte
 match using native base and trigger constructor calls and a plain C++
@@ -48,8 +112,8 @@ REA confirms all 24 complete entry spans.
 
 The `/dll /noentry /nodefaultlib` diagnostic link still fails with 4,146 unique
 unresolved symbols (6,356 reference lines), with no duplicate definitions.
-Native TagClass and AbstractClass constructor symbols now resolve. The native
-TagClass destructor and TriggerClass constructor remain unresolved; normalized
+At that snapshot, native TagClass and AbstractClass constructor symbols resolved.
+The native TagClass destructor and TriggerClass constructor remained unresolved; normalized
 function comparisons do not establish those implementations. Default libraries
 are excluded, so these counts are not an engine-only function-gap census.
 Engine link closure and whole-image comparison remain unfinished.
@@ -75,9 +139,9 @@ seven-byte exact getter for `Location.Z`; its original method name is unknown.
 Seven existing TagClass methods now use the shared layout declaration. The
 const TagType query callees and Trigger notification names now resolve to
 existing matched implementations. Eleven affected function bodies remain exact.
-Four methods retain conflicting legacy class definitions. These require
-consolidation into one definition before an integrated C++ build can satisfy
-the one-definition rule; complete TagClass hierarchy consolidation is pending.
+At that snapshot, four methods retained conflicting legacy class definitions.
+Those definitions required consolidation before an integrated C++ build could
+satisfy the one-definition rule; complete TagClass hierarchy recovery was pending.
 
 [TagClass::Array](match/ai/tag_class_array.cpp) now has one 24-byte BSS
 definition, consistent with the pinned image's loader-zero section tail.
@@ -391,8 +455,8 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 901 tracked C++ files and 3,876 manifest
-rows, with no manifest TU missing from tracked sources. Six tracked files
+verified snapshot, the inventory has 908 tracked C++ files and 3,901 manifest
+rows, with no manifest TU missing from tracked sources. Eight tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
 An ambient `VC6_FLAGS` setting overrides the per-file marker and wrapper
@@ -707,10 +771,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,711** | **18.8%** of 19,753 |
-| Sum of matched function lengths | 258 KiB | 7.0% of 3,708 KiB of listed function lengths |
-| Functions in progress (partial match) | 165 | 0.8% |
-| Tracked C++ files under `match/` | 901 | |
+| Functions matched at 100% | **3,735** | **18.9%** of 19,753 |
+| Sum of matched function lengths | 260 KiB | 7.0% of 3,708 KiB of listed function lengths |
+| Functions in progress (partial match) | 166 | 0.8% |
+| Tracked C++ files under `match/` | 908 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -730,7 +794,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 200 matched entries. Its candidate count is therefore
+listed entries, including 203 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

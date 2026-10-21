@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor FUN_0x00410800 (docs/decomp_spec/type_hierarchy_layout.md),
-//   cross-checked vs YRpp AbstractTypeClass.h + the matched *TypeClass agents
-//   (BulletType/Campaign/ObjectType confirmed ID@0x24). P2 layout-spine.
+// Provenance: own-binary-via-Ghidra | YRpp naming consult only
+//   Retail ctor 0x00410800 has a contiguous 340-byte body through 0x00410953;
+//   it calls 0x00410170, writes four vptrs at +0/+4/+8/+0xC, copies the ID
+//   beginning at +0x24 through its terminator at +0x3C, zeroes +0x3D, sets
+//   UIName at +0x60, and copies Name beginning at +0x64. Raw RTTI has
+//   TypeDescriptor 0x00817808 = ".?AVAbstractTypeClass@@"; COL 0x007FB210
+//   and CHD 0x007FB200 identify AbstractClass as a direct base at offset 0
+//   and its inherited COM subobjects at offsets 0, 4, 8 and 12.
 //
 // AbstractTypeClass — base of every INI-defined "blueprint" type (UnitType,
 // InfantryType, BuildingType, BulletType, Campaign, Script, …). Derives the
@@ -15,8 +19,9 @@
 #include "abstract_class.h"
 
 // AbstractTypeClass  (0x24..0x97, sizeof = 0x98)
-struct AbstractTypeClass : AbstractClass
+class AbstractTypeClass : public AbstractClass
 {
+public:
     char           ID[0x18];          // +0x24  strncpy(pID, 0x18)
     unsigned char  zero_3C;           // +0x3C  ID NUL-terminator slot
     char           UINameLabel[0x20]; // +0x3D

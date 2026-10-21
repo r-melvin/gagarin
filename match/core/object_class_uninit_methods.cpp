@@ -23,5 +23,5 @@ void ObjectUnInit::UnInit()
     (this->*(*(UnInitVtbl**)this)->Limbo)();
     this->IsAlive = 0;
 
-    PendingDeleteObjects.AddItem(this);
+    reinterpret_cast<UnInitVector*>(&DAT_00B0F698)->AddItem(this);
 }

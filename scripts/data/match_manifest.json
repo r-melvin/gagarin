@@ -479,7 +479,7 @@
  {
   "tu": "match/ai/tag_class_more_methods.cpp",
   "addr": "0x6E5380",
-  "sym": "?ContainsTrigger@TagClass@@QBE_NPAUTriggerClass@@@Z",
+  "sym": "?ContainsTrigger@TagClass@@QBE_NPAVTriggerClass@@@Z",
   "len": "0x20",
   "name": "TagClass::ContainsTrigger",
   "status": "matched",
@@ -920,7 +920,7 @@
  {
   "tu": "match/ai/trigger_class_more_methods.cpp",
   "addr": "0x726630",
-  "sym": "?GetInstance@TriggerClass@@SIPAU1@PAUTriggerTypeClass@@@Z",
+  "sym": "?GetInstance@TriggerClass@@SIPAV1@PAVTriggerTypeClass@@@Z",
   "len": "0x53",
   "name": "GetInstance",
   "status": "matched",
@@ -938,7 +938,7 @@
  {
   "tu": "match/ai/trigger_type_class_flags_methods.cpp",
   "addr": "0x727120",
-  "sym": "?FindByNameOrID@TriggerTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindByNameOrID@TriggerTypeClass@@SIPAV1@PBD@Z",
   "len": "0x61",
   "name": "FindByNameOrID",
   "status": "matched",
@@ -11574,11 +11574,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc4_methods.cpp",
+  "tu": "match/core/abstract_class_dtor.cpp",
   "addr": "0x4101F0",
-  "sym": "?FUN_004101F0@Obj_004101F0@@QAEXXZ",
+  "sym": "??1AbstractClass@@QAE@XZ",
   "len": "0x1c",
-  "name": "FUN_004101F0",
+  "name": "AbstractClass::~AbstractClass",
   "status": "matched",
   "pct": 100.0
  },
@@ -13689,7 +13689,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_triggerclass_methods.cpp",
   "addr": "0x004e8540",
   "sym": "?Clear@?$DynamicVectorClass@PAVTriggerClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13851,7 +13851,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
   "addr": "0x004e8c00",
   "sym": "?Clear@?$DynamicVectorClass@PAVScriptTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -13941,7 +13941,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
   "addr": "0x004e8fc0",
   "sym": "?Clear@?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15903,20 +15903,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_triggerclass_methods.cpp",
   "addr": "0x004EF990",
   "sym": "??_G?$VectorClass@PAVTriggerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TriggerClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<TriggerClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_triggerclass_methods.cpp",
   "addr": "0x004EF9E0",
-  "sym": "??_G?$VectorClass@PAVTriggerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVTriggerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<TriggerClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<TriggerClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16227,20 +16227,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
   "addr": "0x4F04D0",
   "sym": "??_G?$VectorClass@PAVScriptTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ScriptTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<ScriptTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
   "addr": "0x4F0520",
-  "sym": "??_G?$VectorClass@PAVScriptTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVScriptTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<ScriptTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<ScriptTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -16407,20 +16407,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
   "addr": "0x004F0B10",
   "sym": "??_G?$VectorClass@PAVVoxelAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<VoxelAnimTypeClass*>::`scalar deleting destructor'",
+  "name": "VectorClass<VoxelAnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
   "addr": "0x004F0B60",
-  "sym": "??_G?$VectorClass@PAVVoxelAnimTypeClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<VoxelAnimTypeClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19098,7 +19098,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_triggerclass_methods.cpp",
   "addr": "0x004ea510",
   "sym": "?Clear@?$VectorClass@PAVTriggerClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19260,7 +19260,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
   "addr": "0x004ecfd0",
   "sym": "?Clear@?$VectorClass@PAVScriptTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19350,7 +19350,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
   "addr": "0x004ee790",
   "sym": "?Clear@?$VectorClass@PAVVoxelAnimTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -34882,5 +34882,230 @@
   "name": "TagClass::TagClass(TagTypeClass*)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "addr": "0x4E8FF0",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@UBEHPAPAVVoxelAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E9010",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVVoxelAnimTypeClass@@@@UBEPAVVoxelAnimTypeClass@@H@Z",
+  "name": "VectorClass<VoxelAnimTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EE6A0",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVVoxelAnimTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<VoxelAnimTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4EE6E0",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVVoxelAnimTypeClass@@@@UAE_NHPAPAVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<VoxelAnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE7C0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVVoxelAnimTypeClass@@@@UBEHABQAVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<VoxelAnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EE800",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVVoxelAnimTypeClass@@@@UBEHPAPAVVoxelAnimTypeClass@@@Z",
+  "name": "VectorClass<VoxelAnimTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EE820",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@UAE_NHPAPAVVoxelAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EE8D0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_voxelanimtypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVVoxelAnimTypeClass@@@@UBEHABQAVVoxelAnimTypeClass@@@Z",
+  "name": "DynamicVectorClass<VoxelAnimTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8C30",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVScriptTypeClass@@@@UBEHPAPAVScriptTypeClass@@@Z",
+  "name": "DynamicVectorClass<ScriptTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8C50",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVScriptTypeClass@@@@UBEPAVScriptTypeClass@@H@Z",
+  "name": "VectorClass<ScriptTypeClass*>::Slot6"
+ },
+ {
+  "addr": "0x4ECEE0",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVScriptTypeClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<ScriptTypeClass*>::operator=="
+ },
+ {
+  "addr": "0x4ECF20",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVScriptTypeClass@@@@UAE_NHPAPAVScriptTypeClass@@@Z",
+  "name": "VectorClass<ScriptTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ED000",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVScriptTypeClass@@@@UBEHABQAVScriptTypeClass@@@Z",
+  "name": "VectorClass<ScriptTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4ED040",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVScriptTypeClass@@@@UBEHPAPAVScriptTypeClass@@@Z",
+  "name": "VectorClass<ScriptTypeClass*>::Slot5"
+ },
+ {
+  "addr": "0x4ED060",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVScriptTypeClass@@@@UAE_NHPAPAVScriptTypeClass@@@Z",
+  "name": "DynamicVectorClass<ScriptTypeClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4ED110",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_scripttypeclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVScriptTypeClass@@@@UBEHABQAVScriptTypeClass@@@Z",
+  "name": "DynamicVectorClass<ScriptTypeClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4E8570",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAVTriggerClass@@@@UBEHPAPAVTriggerClass@@@Z",
+  "name": "DynamicVectorClass<TriggerClass*>::Slot5"
+ },
+ {
+  "addr": "0x4E8590",
+  "len": "0x0D",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAVTriggerClass@@@@UBEPAVTriggerClass@@H@Z",
+  "name": "VectorClass<TriggerClass*>::Slot6"
+ },
+ {
+  "addr": "0x4EA420",
+  "len": "0x3E",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "??8?$VectorClass@PAVTriggerClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<TriggerClass*>::operator=="
+ },
+ {
+  "addr": "0x4EA460",
+  "len": "0xAE",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAVTriggerClass@@@@UAE_NHPAPAVTriggerClass@@@Z",
+  "name": "VectorClass<TriggerClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EA540",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAVTriggerClass@@@@UBEHABQAVTriggerClass@@@Z",
+  "name": "VectorClass<TriggerClass*>::FindItemIndex"
+ },
+ {
+  "addr": "0x4EA580",
+  "len": "0x1B",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAVTriggerClass@@@@UBEHPAPAVTriggerClass@@@Z",
+  "name": "VectorClass<TriggerClass*>::Slot5"
+ },
+ {
+  "addr": "0x4EA5A0",
+  "len": "0xB0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAVTriggerClass@@@@UAE_NHPAPAVTriggerClass@@@Z",
+  "name": "DynamicVectorClass<TriggerClass*>::SetCapacity"
+ },
+ {
+  "addr": "0x4EA650",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_triggerclass_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTriggerClass@@@@UBEHABQAVTriggerClass@@@Z",
+  "name": "DynamicVectorClass<TriggerClass*>::FindItemIndex"
+ },
+ {
+  "tu": "match/ai/trigger_class_ctor.cpp",
+  "addr": "0x725FA0",
+  "sym": "??0TriggerClass@@QAE@PAVTriggerTypeClass@@@Z",
+  "len": "0x193",
+  "name": "TriggerClass::TriggerClass(TriggerTypeClass*)",
+  "status": "partial",
+  "pct": 79.1
  }
 ]

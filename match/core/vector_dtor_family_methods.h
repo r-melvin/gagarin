@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 249 remaining 73-byte deleting-destructor bodies are bound here through
-// 128 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 243 remaining 73-byte deleting-destructor bodies are bound here through
+// 125 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -72,8 +72,6 @@ extern char VT_007E9D84;
 extern char VT_007E9F84;
 // VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
 extern char VT_007EA584;
-// VTABLE: GAMEMD 0x007E9C04 -- VectorClass<TriggerClass*>
-extern char VT_007E9C04;
 // VTABLE: GAMEMD 0x007E9BC4 -- VectorClass<TriggerTypeClass*>
 extern char VT_007E9BC4;
 // VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
@@ -96,12 +94,8 @@ extern char VT_007EA084;
 extern char VT_007EA0C4;
 // VTABLE: GAMEMD 0x007EA104 -- VectorClass<TeamTypeClass*>
 extern char VT_007EA104;
-// VTABLE: GAMEMD 0x007EA144 -- VectorClass<ScriptTypeClass*>
-extern char VT_007EA144;
 // VTABLE: GAMEMD 0x007EA384 -- VectorClass<BulletTypeClass*>
 extern char VT_007EA384;
-// VTABLE: GAMEMD 0x007EA3C4 -- VectorClass<VoxelAnimTypeClass*>
-extern char VT_007EA3C4;
 // VTABLE: GAMEMD 0x007EA404 -- VectorClass<IsometricTileTypeClass*>
 extern char VT_007EA404;
 // VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>

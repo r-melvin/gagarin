@@ -40,5 +40,5 @@ bool TriggerClass::FireActions(ObjectClass* pObj, CellStruct location)
 void TriggerClass::Destroy()
 {
     this->Destroyed = true;
-    TriggersToDestroy.AddItem(this);
+    reinterpret_cast<TriggerPtrVector*>(&DAT_00B0F698)->AddItem(this);
 }

@@ -29,8 +29,9 @@
 // calls in retail (direct CALL to the fixed address), so they are declared
 // without bodies and the compiler emits reloc-normalised direct calls.
 // ---------------------------------------------------------------------------
-struct TriggerTypeClass : AbstractTypeClass
+class TriggerTypeClass : public AbstractTypeClass
 {
+public:
     char              unknown_98[0xA8 - 0x98]; // +0x0098
     TriggerTypeClass* NextTrigger;        // +0x00A8  (MOV ESI,[ESI+0xA8])
 

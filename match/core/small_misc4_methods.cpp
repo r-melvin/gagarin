@@ -44,15 +44,6 @@ void __fastcall Obj_004085E0::FUN_004085E0(int a, int b)
     unknown_14 = 0;
 }
 
-// FUNCTION: GAMEMD 0x4101F0
-void Obj_004101F0::FUN_004101F0()
-{
-    vt0 = VT_007E1F50;
-    vt1 = VT_007E1F34;
-    vt2 = VT_007E1F2C;
-    vt3 = VT_007E1F24;
-}
-
 // FUNCTION: GAMEMD 0x458DB0
 bool BuildingClass_00458DB0::FUN_00458DB0()
 {

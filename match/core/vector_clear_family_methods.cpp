@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 124
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 121
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 125 remaining addresses are bound to VectorClass<T> tables;
+//   The 122 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -316,11 +316,6 @@ template class VectorClass<TeamClass*>;
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
 
-// FUNCTION: GAMEMD 0x004EA510
-// VectorClass<TriggerClass*> -- vtable 0x007E9C04 slot 3; locator 0x00800D58 -> type descriptor 0x00822E78
-//   `.?AV?$VectorClass@PAVTriggerClass@@@@`.
-template class VectorClass<TriggerClass*>;
-
 // FUNCTION: GAMEMD 0x004EA770
 // VectorClass<TriggerTypeClass*> -- vtable 0x007E9BC4 slot 3; locator 0x00800CC0 -> type descriptor 0x00822E00
 //   `.?AV?$VectorClass@PAVTriggerTypeClass@@@@`.
@@ -376,20 +371,10 @@ template class VectorClass<TaskForceClass*>;
 //   `.?AV?$VectorClass@PAVTeamTypeClass@@@@`.
 template class VectorClass<TeamTypeClass*>;
 
-// FUNCTION: GAMEMD 0x004ECFD0
-// VectorClass<ScriptTypeClass*> -- vtable 0x007EA144 slot 3; locator 0x008019D0 -> type descriptor 0x00823720
-//   `.?AV?$VectorClass@PAVScriptTypeClass@@@@`.
-template class VectorClass<ScriptTypeClass*>;
-
 // FUNCTION: GAMEMD 0x004EE530
 // VectorClass<BulletTypeClass*> -- vtable 0x007EA384 slot 3; locator 0x00801F28 -> type descriptor 0x00823B28
 //   `.?AV?$VectorClass@PAVBulletTypeClass@@@@`.
 template class VectorClass<BulletTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004EE790
-// VectorClass<VoxelAnimTypeClass*> -- vtable 0x007EA3C4 slot 3; locator 0x00801FC0 -> type descriptor 0x00823B98
-//   `.?AV?$VectorClass@PAVVoxelAnimTypeClass@@@@`.
-template class VectorClass<VoxelAnimTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EE9F0
 // VectorClass<IsometricTileTypeClass*> -- vtable 0x007EA404 slot 3; locator 0x00802058 -> type descriptor 0x00823C10

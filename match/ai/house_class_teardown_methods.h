@@ -41,14 +41,15 @@ struct TechnoClass
 };
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
 
-struct TriggerTypeClass
+class TriggerTypeClass
 {
+public:
     char        _pad000[0xA4];   // +0x0000
     HouseTypeClass* House;       // +0x00A4
 };
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, House) == 0xA4);
 
-struct TriggerClass
+struct HouseTriggerDeleteCallView
 {
     virtual void vf00() = 0;   // vtable+0x00
     virtual void vf04() = 0;   // vtable+0x04
@@ -58,12 +59,12 @@ struct TriggerClass
     virtual void vf14() = 0;   // vtable+0x14
     virtual void vf18() = 0;   // vtable+0x18
     virtual void vf1C() = 0;   // vtable+0x1C
-    virtual ~TriggerClass();   // vtable+0x20 (scalar deleting dtor)
+    virtual ~HouseTriggerDeleteCallView();   // vtable+0x20 (scalar deleting dtor)
 
     char              _pad004[0x24 - 0x4];   // +0x0004
     TriggerTypeClass* Type;                  // +0x0024
 };
-GG_STATIC_ASSERT(offsetof(TriggerClass, Type) == 0x24);
+GG_STATIC_ASSERT(offsetof(HouseTriggerDeleteCallView, Type) == 0x24);
 
 struct HouseClass
 {
@@ -88,6 +89,6 @@ GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
 // GLOBAL: GAMEMD 0xA8EC78 — TechnoClass::Array.
 extern DynamicVectorClassLayout TechnoArray;
 // GLOBAL: GAMEMD 0xA8EAE8 — TriggerClass::Array.
-extern DynamicVectorClassLayout TriggerArray;
+#include "../_layout/trigger_class.h"
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_TEARDOWN_METHODS_H

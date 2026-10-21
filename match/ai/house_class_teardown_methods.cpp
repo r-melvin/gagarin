@@ -41,16 +41,16 @@ void HouseClass::SDDTORAllAndTriggers()
     }
 
     i = 0;
-    if (i < TriggerArray.Count) {
-        TriggerClass** triggers = (TriggerClass**)TriggerArray.Items;
+    if (i < TriggerClass::Array.Count) {
+        HouseTriggerDeleteCallView** triggers = (HouseTriggerDeleteCallView**)TriggerClass::Array.Items;
         do {
-            if (((TriggerClass**)TriggerArray.Items)[i]->Type->House == this->Type) {
+            if (((HouseTriggerDeleteCallView**)TriggerClass::Array.Items)[i]->Type->House == this->Type) {
                 delete triggers[i];
-                triggers = (TriggerClass**)TriggerArray.Items;
+                triggers = (HouseTriggerDeleteCallView**)TriggerClass::Array.Items;
                 i--;
             }
             i++;
-        } while (i < TriggerArray.Count);
+        } while (i < TriggerClass::Array.Count);
     }
 
     delete this;

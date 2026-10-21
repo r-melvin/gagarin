@@ -12,13 +12,14 @@
 //   FUNCTION: GAMEMD 0x6E5230  TagClass::Destroy     (__thiscall)
 //   FUNCTION: GAMEMD 0x6E52A0  TagClass::GetInstance (__fastcall, static)
 //   GLOBAL:   GAMEMD 0xB0E720  TagClass::Array       (DynamicVectorClass<TagClass*>)
-//   GLOBAL:   GAMEMD 0xB0F698  destroyed-tag list    (DynamicVectorClass<TagClass*>)
+//   GLOBAL:   GAMEMD 0xB0F698  shared pending-delete list (vector-shaped)
 
 #include "tag_class_destroy_methods.h"
+#include "../core/abstract_registry.h"
 
 // Registry accesses use the shared TagClass::Array storage at 0xB0E720.
 
-// Deferred-list accesses use shared TagClass::DestroyedList storage.
+// The deferred list is shared with other object classes; its owner is unknown.
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E5230  (__thiscall)
@@ -41,7 +42,7 @@
 void TagClass::Destroy()
 {
     this->Destroyed = 1;
-    TagPtrVector_AddItem(reinterpret_cast<TagPtrVector*>(&TagClass::DestroyedList), this);
+    TagPtrVector_AddItem(reinterpret_cast<TagPtrVector*>(&DAT_00B0F698), this);
 }
 
 // ---------------------------------------------------------------------------

@@ -43,11 +43,6 @@ struct ObjectUnInit : ObjectClass
     // __thiscall, one stack argument (the killer; retail pushes 0).
     void KillPassengers(ObjectClass* killer);
 
-    // FUNCTION: GAMEMD 0x7258D0 (decl; reloc) — AbstractClass::
-    // AnnounceExpiredPointer. Retail passes the flag in DL (`MOV DL,1`) with
-    // ECX = this, i.e. __fastcall with a byte argument.
-    void __fastcall AnnounceExpiredPointer(unsigned char removed);
-
     // FUNCTION: GAMEMD 0x5F65F0  ObjectClass::UnInit  (__thiscall)
     void UnInit();
 };
@@ -61,7 +56,7 @@ struct UnInitVtbl
 };
 GG_STATIC_ASSERT(offsetof(UnInitVtbl, Limbo) == 0xD4);
 
-// DynamicVectorClass<ObjectClass*> — the pending-delete list at 0xB0F698. The
+// Call view for shared pending-delete storage at 0xB0F698. The
 // retail vtable order is confirmed by the inlined AddItem's growth call going
 // through [vtbl+0x08] (SetCapacity). IsAllocated is the byte at +0x0D
 // (`MOV CL,[0xB0F6A5]`), so +0x0C/+0x0D are two separate bools.
@@ -109,7 +104,7 @@ GG_STATIC_ASSERT(offsetof(UnInitVector, Count)             == 0x10);
 GG_STATIC_ASSERT(offsetof(UnInitVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(UnInitVector)                      == 0x18);
 
-// GLOBAL: GAMEMD 0xB0F698 — the pending-delete DynamicVectorClass<ObjectClass*>.
-extern UnInitVector PendingDeleteObjects;
+// Shared storage declaration; the call view does not establish its owner.
+#include "abstract_registry.h"
 
 #endif  // GG_MATCH_CORE_OBJECT_CLASS_UNINIT_METHODS_H

@@ -24,7 +24,7 @@
 
 struct DiskLaser_004A7900;
 
-// DynamicVectorClass<AbstractClass*> -- the pending-delete list at 0xB0F698.
+// Call view for shared pending-delete storage at 0xB0F698; owner unconfirmed.
 // The grow path issues the virtual SetCapacity through [vptr+0x08]; the
 // leading virtuals reproduce that slot. IsAllocated is the byte at +0x0D.
 class PendingVector_004A7900
@@ -70,7 +70,7 @@ GG_STATIC_ASSERT(offsetof(PendingVector_004A7900, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(PendingVector_004A7900)                      == 0x18);
 
 // GLOBAL: GAMEMD 0xB0F698 -- the pending-delete DynamicVectorClass.
-extern PendingVector_004A7900 DAT_00B0F698;
+#include "../core/abstract_registry.h"
 
 struct DiskLaser_004A7900
 {

@@ -28,8 +28,9 @@ struct TTriggerListNode
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Next) == 0x28);
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Kind) == 0x2c);
 
-struct TriggerTypeClass : AbstractTypeClass
+class TriggerTypeClass : public AbstractTypeClass
 {
+public:
     // Static lookup: case-insensitive find by ID (+0x24) or Name (+0x64).
     static TriggerTypeClass* __fastcall FindByNameOrID(const char* name); // 0x727120
 

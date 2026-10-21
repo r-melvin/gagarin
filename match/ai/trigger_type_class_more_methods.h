@@ -38,8 +38,9 @@ GG_STATIC_ASSERT(offsetof(TTriggerEventNode, Next)  == 0x28);
 GG_STATIC_ASSERT(offsetof(TTriggerEventNode, Kind)  == 0x2c);
 GG_STATIC_ASSERT(offsetof(TTriggerEventNode, Value) == 0x34);
 
-struct TriggerTypeClass : AbstractTypeClass
+class TriggerTypeClass : public AbstractTypeClass
 {
+public:
     bool HasGlobalSetOrClearedEvent(int value) const;  // GAMEMD 0x727010
     bool HasLocalSetOrClearedEvent(int value) const;   // GAMEMD 0x727050
 

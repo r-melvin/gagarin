@@ -13,18 +13,12 @@
 
 #include "../_layout/tag_class.h"
 #include "tag_class_destroy_methods.h"
+#include "../core/abstract_registry.h"
 #include "trigger_class_more_methods.h"
 
 // GLOBAL: GAMEMD 0xB0E700 — the CellStruct copied to TagClass::DefaultCoords.
 // The raw instruction loads one DWORD from this address.
 extern CellStruct DAT_00B0E700;
-
-// The two registries are vector-shaped in retail; their owning class identities
-// are not established here. Member offsets are asserted by DynamicVectorClassLayout.
-// GLOBAL: GAMEMD 0xB0F670
-extern DynamicVectorClassLayout DAT_00B0F670;
-// GLOBAL: GAMEMD 0xB0F708
-extern DynamicVectorClassLayout DAT_00B0F708;
 
 // Prefix views for linked trigger-type data. The only recovered members are the
 // pointer reads at +0xA0 and +0xA8; no complete TriggerTypeClass layout is claimed.

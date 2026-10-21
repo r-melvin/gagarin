@@ -14,12 +14,12 @@ void DiskLaser_004A7900::PointerGotInvalid(void* pInvalid)
     if (pInvalid == this->Owner)
     {
         this->unknown_30 = -1;
-        DAT_00B0F698.AddItem(this);
+        reinterpret_cast<PendingVector_004A7900*>(&DAT_00B0F698)->AddItem(this);
     }
 
     if (pInvalid == this->Target)
     {
         this->unknown_30 = -1;
-        DAT_00B0F698.AddItem(this);
+        reinterpret_cast<PendingVector_004A7900*>(&DAT_00B0F698)->AddItem(this);
     }
 }

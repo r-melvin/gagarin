@@ -10,6 +10,8 @@
 // returning true if any node has the matching Kind (node Kind @0x2C, Next
 // @0x28). The list nodes (TEventClass / TActionClass) both derive AbstractClass
 // (0x24) and place Next@0x28, Kind@0x2c.
+// Retail RTTI confirms the class key: TypeDescriptor 0x842D08 is named
+// ".?AVTriggerTypeClass@@"; the hierarchy records AbstractTypeClass at offset 0.
 #ifndef GG_MATCH_AI_TRIGGER_TYPE_CLASS_METHODS_H
 #define GG_MATCH_AI_TRIGGER_TYPE_CLASS_METHODS_H
 
@@ -29,8 +31,9 @@ struct TTriggerListNode
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Next) == 0x28);
 GG_STATIC_ASSERT(offsetof(TTriggerListNode, Kind) == 0x2c);
 
-struct TriggerTypeClass : AbstractTypeClass
+class TriggerTypeClass : public AbstractTypeClass
 {
+public:
     bool HasCrossesVerticalLineEvent() const;    // GAMEMD 0x726F50
     bool HasCrossesHorizontalLineEvent() const;  // GAMEMD 0x726F80
     bool HasZoneEntryByEvent() const;            // GAMEMD 0x726FB0

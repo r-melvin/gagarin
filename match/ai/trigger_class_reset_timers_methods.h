@@ -17,6 +17,7 @@
 #define GG_MATCH_AI_TRIGGER_CLASS_RESET_TIMERS_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
@@ -25,18 +26,7 @@
 // A frame-clocked countdown (YRpp CDTimerClass). The clock slot at +0x04 is
 // never written by the constructor, which is exactly what retail shows: the
 // temporary's middle dword is copied out of an uninitialised stack slot.
-struct CDTimer_00726400
-{
-    int StartTime;    // +0x00
-    int unknown_04;   // +0x04
-    int TimeLeft;     // +0x08
 
-    explicit CDTimer_00726400(int duration)
-    {
-        StartTime = CurrentFrame;
-        TimeLeft = duration;
-    }
-};
 GG_STATIC_ASSERT(offsetof(CDTimer_00726400, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimer_00726400) == 0x0C);
 
@@ -79,17 +69,7 @@ struct TriggerType_00726400
 };
 GG_STATIC_ASSERT(offsetof(TriggerType_00726400, FirstEvent) == 0xAC);
 
-struct TriggerClass
-{
-    char                   _pad000[0x24];    // +0x0000
-    TriggerType_00726400*  Type;             // +0x0024
-    char                   _pad028[0x34 - 0x28];
-    CDTimer_00726400       Timer;            // +0x0034
-    unsigned int           OccuredEvents;    // +0x0040  one bit per event
 
-    // FUNCTION: GAMEMD 0x726400
-    void ResetTimers();
-};
 GG_STATIC_ASSERT(offsetof(TriggerClass, Type) == 0x24);
 GG_STATIC_ASSERT(offsetof(TriggerClass, Timer) == 0x34);
 GG_STATIC_ASSERT(offsetof(TriggerClass, OccuredEvents) == 0x40);

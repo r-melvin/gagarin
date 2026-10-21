@@ -26,63 +26,25 @@
 #define GG_MATCH_AI_TRIGGER_CLASS_MORE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/trigger_class.h"
 #include "../_rt/gg_static_assert.h"
 
-// Global operator new (GAMEMD 0x7C8E17) — declared so the explicit allocation
-// in GetInstance emits the (relocation-normalised) cdecl call.
+// LIBRARY: GAMEMD 0x7C8E17 -- allocation target used by native GetInstance.
 void* __cdecl operator new(size_t size);
 
 // TriggerTypeClass — only the global-set/cleared predicate is modelled here; it
 // is a separate retail __thiscall taking the global index and returning bool.
-struct TriggerTypeClass
+class TriggerTypeClass
 {
+public:
     bool HasGlobalSetOrClearedEvent(int idxGlobal) const;  // GAMEMD 0x727010
 };
 
-// TriggerClass — sizeof 0x48 so `new TriggerClass(...)` emits operator new(0x48).
-// Only Type (@0x24) and AttachedTrigger (@0x28) are named; the rest is opaque.
-struct TriggerClass
-{
-    // FUNCTION: GAMEMD 0x725FA0 (declaration; native constructor)
-    TriggerClass(TriggerTypeClass* type);
+// GetInstance uses the shared 0x48-byte TriggerClass declaration.
 
-    char              _pad0[0x24];      // +0x00  (AbstractClass base; modelled in P2)
-    TriggerTypeClass* Type;             // +0x24
-    TriggerClass*     AttachedTrigger;  // +0x28
-    char              _pad2c[0x48 - 0x2C]; // +0x2C  (unknown remainder; size to 0x48)
-
-    // Out-of-line ctor (GAMEMD 0x725FA0) — modelled as a plain __thiscall
-    // stand-in (no body) so it is called directly, without the new-expression
-    // exception-unwind funclet that an actual C++ constructor would emit.
-    TriggerClass* Construct(TriggerTypeClass* pType);  // GAMEMD 0x725FA0
-
-    bool HasGlobalSetOrClearedEvent(int idxGlobal) const;       // GAMEMD 0x726350
-    static TriggerClass* __fastcall GetInstance(TriggerTypeClass* pType); // GAMEMD 0x726630
-};
 
 GG_STATIC_ASSERT(offsetof(TriggerClass, Type)            == 0x24);
 GG_STATIC_ASSERT(offsetof(TriggerClass, AttachedTrigger) == 0x28);
 GG_STATIC_ASSERT(sizeof(TriggerClass)                    == 0x48);
-
-// DynamicVectorClass<TriggerClass*> — the global `TriggerClass::Array`.
-// Base @0xA8EAE8 (vtable). Confirmed offsets from the disasm:
-//   +0x04 Items (DAT_00A8EAEC),  +0x10 Count (DAT_00A8EAF8).
-struct TriggerVectorClass
-{
-    void*          vtable;             // +0x00
-    TriggerClass** Items;             // +0x04
-    int            Capacity;          // +0x08
-    char           IsInitialized;     // +0x0C
-    char           IsAllocated;       // +0x0D
-    char           _pad_0E[2];        // +0x0E
-    int            Count;             // +0x10
-    int            CapacityIncrement; // +0x14
-};
-
-GG_STATIC_ASSERT(offsetof(TriggerVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(TriggerVectorClass, Count) == 0x10);
-
-// GLOBAL: GAMEMD 0xA8EAE8 — TriggerClass::Array.
-extern TriggerVectorClass TriggerArray;
 
 #endif  // GG_MATCH_AI_TRIGGER_CLASS_MORE_METHODS_H

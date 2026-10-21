@@ -21,24 +21,6 @@ void __cdecl FUN_0040A950();   // GAMEMD 0x40A950 — teardown on the last relea
 // FUNCTION: GAMEMD 0x407040 — release; tear down on the transition to zero.
 void __cdecl FUN_00407040();
 
-// Four vtable pointers written back to back: a multiple-inheritance object
-// reinstalling every sub-object's vptr.
-extern char VT_007E1F50[];   // VTABLE: GAMEMD 0x7E1F50
-extern char VT_007E1F34[];   // VTABLE: GAMEMD 0x7E1F34
-extern char VT_007E1F2C[];   // VTABLE: GAMEMD 0x7E1F2C
-extern char VT_007E1F24[];   // VTABLE: GAMEMD 0x7E1F24
-
-struct Obj_004101F0
-{
-    char* vt0;   // +0x0000
-    char* vt1;   // +0x0004
-    char* vt2;   // +0x0008
-    char* vt3;   // +0x000C
-
-    // FUNCTION: GAMEMD 0x4101F0
-    void FUN_004101F0();
-};
-
 struct Inner_00408000 { char _pad[0x14]; int at14; int at18; };
 struct Obj_00408000c
 {
