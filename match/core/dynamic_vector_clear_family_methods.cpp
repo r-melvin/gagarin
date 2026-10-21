@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 100
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 94
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -275,11 +275,6 @@ template class DynamicVectorClass<ParticleClass*>;
 // DynamicVectorClass<TeamClass*> -- vtable 0x007E9F64 slot 3; locator 0x00801578 -> type descriptor 0x00823478
 //   `.?AV?$DynamicVectorClass@PAVTeamClass@@@@`.
 template class DynamicVectorClass<TeamClass*>;
-
-// FUNCTION: GAMEMD 0x004E85A0
-// DynamicVectorClass<TriggerTypeClass*> -- vtable 0x007E9BA4 slot 3; locator 0x00800C90 -> type descriptor 0x00822E38
-//   `.?AV?$DynamicVectorClass@PAVTriggerTypeClass@@@@`.
-template class DynamicVectorClass<TriggerTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004E8600
 // DynamicVectorClass<TubeClass*> -- vtable 0x007E9CA4 slot 3; locator 0x00800EF0 -> type descriptor 0x00823000
@@ -659,35 +654,10 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 //   `.?AV?$DynamicVectorClass@PAVShadowControlClass@@@@`.
 template class DynamicVectorClass<ShadowControlClass*>;
 
-// FUNCTION: GAMEMD 0x006E47F0
-// DynamicVectorClass<TActionClass*> -- vtable 0x007F43D0 slot 3; locator 0x0080BA10 -> type descriptor 0x00842B40
-//   `.?AV?$DynamicVectorClass@PAVTActionClass@@@@`.
-template class DynamicVectorClass<TActionClass*>;
-
-// FUNCTION: GAMEMD 0x0071B240
-// DynamicVectorClass<TemporalClass*> -- vtable 0x007F5114 slot 3; locator 0x0080C248 -> type descriptor 0x00844590
-//   `.?AV?$DynamicVectorClass@PAVTemporalClass@@@@`.
-template class DynamicVectorClass<TemporalClass*>;
-
-// FUNCTION: GAMEMD 0x0071FBA0
-// DynamicVectorClass<TEventClass*> -- vtable 0x007F550C slot 3; locator 0x0080C500 -> type descriptor 0x008446C0
-//   `.?AV?$DynamicVectorClass@PAVTEventClass@@@@`.
-template class DynamicVectorClass<TEventClass*>;
-
 // FUNCTION: GAMEMD 0x007212B0
 // DynamicVectorClass<ThemeControl*> -- vtable 0x007F568C slot 3; locator 0x0080C688 -> type descriptor 0x00844780
 //   `.?AV?$DynamicVectorClass@PAUThemeControl@@@@`.
 template class DynamicVectorClass<ThemeControl*>;
-
-// FUNCTION: GAMEMD 0x00723730
-// DynamicVectorClass<TiberiumClass*> -- vtable 0x007F56BC slot 3; locator 0x0080C6F0 -> type descriptor 0x00844890
-//   `.?AV?$DynamicVectorClass@PAVTiberiumClass@@@@`.
-template class DynamicVectorClass<TiberiumClass*>;
-
-// FUNCTION: GAMEMD 0x0074F360
-// DynamicVectorClass<VeinholeMonsterClass*> -- vtable 0x007F663C slot 3; locator 0x0080CF60 -> type descriptor 0x008460A8
-//   `.?AV?$DynamicVectorClass@PAVVeinholeMonsterClass@@@@`.
-template class DynamicVectorClass<VeinholeMonsterClass*>;
 
 // FUNCTION: GAMEMD 0x007518D0
 // DynamicVectorClass<VocClass*> -- vtable 0x007F68AC slot 3; locator 0x0080D0B0 -> type descriptor 0x008464F8

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 101
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 95
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -280,11 +280,6 @@ template class VectorClass<TeamClass*>;
 // VectorClass<ThemeControl*> -- vtable 0x007EA584 slot 3; locator 0x00802448 -> type descriptor 0x00823F40
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
-
-// FUNCTION: GAMEMD 0x004EA770
-// VectorClass<TriggerTypeClass*> -- vtable 0x007E9BC4 slot 3; locator 0x00800CC0 -> type descriptor 0x00822E00
-//   `.?AV?$VectorClass@PAVTriggerTypeClass@@@@`.
-template class VectorClass<TriggerTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EA9D0
 // VectorClass<TubeClass*> -- vtable 0x007E9CC4 slot 3; locator 0x00800F20 -> type descriptor 0x00822FD0
@@ -646,35 +641,10 @@ template class VectorClass<DirtyAreaStruct>;
 //   `.?AV?$VectorClass@PAVShadowControlClass@@@@`.
 template class VectorClass<ShadowControlClass*>;
 
-// FUNCTION: GAMEMD 0x006E4940
-// VectorClass<TActionClass*> -- vtable 0x007F43F0 slot 3; locator 0x0080BA40 -> type descriptor 0x00842B10
-//   `.?AV?$VectorClass@PAVTActionClass@@@@`.
-template class VectorClass<TActionClass*>;
-
-// FUNCTION: GAMEMD 0x0071B390
-// VectorClass<TemporalClass*> -- vtable 0x007F5134 slot 3; locator 0x0080C278 -> type descriptor 0x00844560
-//   `.?AV?$VectorClass@PAVTemporalClass@@@@`.
-template class VectorClass<TemporalClass*>;
-
-// FUNCTION: GAMEMD 0x0071FCF0
-// VectorClass<TEventClass*> -- vtable 0x007F552C slot 3; locator 0x0080C530 -> type descriptor 0x00844690
-//   `.?AV?$VectorClass@PAVTEventClass@@@@`.
-template class VectorClass<TEventClass*>;
-
-// FUNCTION: GAMEMD 0x00723880
-// VectorClass<TiberiumClass*> -- vtable 0x007F56DC slot 3; locator 0x0080C720 -> type descriptor 0x00844860
-//   `.?AV?$VectorClass@PAVTiberiumClass@@@@`.
-template class VectorClass<TiberiumClass*>;
-
 // FUNCTION: GAMEMD 0x0074C0E0
 // VectorClass<unsigned char> -- vtable 0x007F65F4 slot 3; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
-
-// FUNCTION: GAMEMD 0x0074F4B0
-// VectorClass<VeinholeMonsterClass*> -- vtable 0x007F665C slot 3; locator 0x0080CF90 -> type descriptor 0x00846070
-//   `.?AV?$VectorClass@PAVVeinholeMonsterClass@@@@`.
-template class VectorClass<VeinholeMonsterClass*>;
 
 // FUNCTION: GAMEMD 0x00751A20
 // VectorClass<VocClass*> -- vtable 0x007F68CC slot 3; locator 0x0080D0E0 -> type descriptor 0x008464C8

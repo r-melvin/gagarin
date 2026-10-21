@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 105 base-template instantiations reproduce 203 remaining retail destructor
+// 99 base-template instantiations reproduce 191 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -307,12 +307,6 @@ template class VectorClass<TeamClass*>;
 // VectorClass<ThemeControl*> -- reseats retail vtable 0x007EA584; locator 0x00802448 -> type descriptor 0x00823F40
 //   `.?AV?$VectorClass@PAUThemeControl@@@@`.
 template class VectorClass<ThemeControl*>;
-
-// FUNCTION: GAMEMD 0x004EFA30
-// FUNCTION: GAMEMD 0x004EFA80
-// VectorClass<TriggerTypeClass*> -- reseats retail vtable 0x007E9BC4; locator 0x00800CC0 -> type descriptor 0x00822E00
-//   `.?AV?$VectorClass@PAVTriggerTypeClass@@@@`.
-template class VectorClass<TriggerTypeClass*>;
 
 // FUNCTION: GAMEMD 0x004EFAD0
 // FUNCTION: GAMEMD 0x004EFB20
@@ -747,40 +741,10 @@ template class VectorClass<DirtyAreaStruct>;
 //   `.?AV?$VectorClass@PAVShadowControlClass@@@@`.
 template class VectorClass<ShadowControlClass*>;
 
-// FUNCTION: GAMEMD 0x006E4AB0
-// FUNCTION: GAMEMD 0x006E4B00
-// VectorClass<TActionClass*> -- reseats retail vtable 0x007F43F0; locator 0x0080BA40 -> type descriptor 0x00842B10
-//   `.?AV?$VectorClass@PAVTActionClass@@@@`.
-template class VectorClass<TActionClass*>;
-
-// FUNCTION: GAMEMD 0x0071B500
-// FUNCTION: GAMEMD 0x0071B550
-// VectorClass<TemporalClass*> -- reseats retail vtable 0x007F5134; locator 0x0080C278 -> type descriptor 0x00844560
-//   `.?AV?$VectorClass@PAVTemporalClass@@@@`.
-template class VectorClass<TemporalClass*>;
-
-// FUNCTION: GAMEMD 0x0071FE60
-// FUNCTION: GAMEMD 0x0071FEB0
-// VectorClass<TEventClass*> -- reseats retail vtable 0x007F552C; locator 0x0080C530 -> type descriptor 0x00844690
-//   `.?AV?$VectorClass@PAVTEventClass@@@@`.
-template class VectorClass<TEventClass*>;
-
-// FUNCTION: GAMEMD 0x007239F0
-// FUNCTION: GAMEMD 0x00723A40
-// VectorClass<TiberiumClass*> -- reseats retail vtable 0x007F56DC; locator 0x0080C720 -> type descriptor 0x00844860
-//   `.?AV?$VectorClass@PAVTiberiumClass@@@@`.
-template class VectorClass<TiberiumClass*>;
-
 // FUNCTION: GAMEMD 0x0074BFA0
 // VectorClass<unsigned char> -- reseats retail vtable 0x007F65F4; locator 0x0080CEF8 -> type descriptor 0x00845F28
 //   `.?AV?$VectorClass@E@@`.
 template class VectorClass<unsigned char>;
-
-// FUNCTION: GAMEMD 0x0074F650
-// FUNCTION: GAMEMD 0x0074F6A0
-// VectorClass<VeinholeMonsterClass*> -- reseats retail vtable 0x007F665C; locator 0x0080CF90 -> type descriptor 0x00846070
-//   `.?AV?$VectorClass@PAVVeinholeMonsterClass@@@@`.
-template class VectorClass<VeinholeMonsterClass*>;
 
 // FUNCTION: GAMEMD 0x00751B90
 // FUNCTION: GAMEMD 0x00751BE0

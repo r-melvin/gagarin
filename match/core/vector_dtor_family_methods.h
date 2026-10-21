@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 203 remaining 73-byte deleting-destructor bodies are bound here through
-// 105 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 191 remaining 73-byte deleting-destructor bodies are bound here through
+// 99 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -58,8 +58,6 @@ extern char VT_007E9D84;
 extern char VT_007E9F84;
 // VTABLE: GAMEMD 0x007EA584 -- VectorClass<ThemeControl*>
 extern char VT_007EA584;
-// VTABLE: GAMEMD 0x007E9BC4 -- VectorClass<TriggerTypeClass*>
-extern char VT_007E9BC4;
 // VTABLE: GAMEMD 0x007E9CC4 -- VectorClass<TubeClass*>
 extern char VT_007E9CC4;
 // VTABLE: GAMEMD 0x007E9DC4 -- VectorClass<SmudgeClass*>
@@ -206,18 +204,8 @@ extern char VT_007F4154;
 extern char VT_007F42BC;
 // VTABLE: GAMEMD 0x007F42FC -- VectorClass<ShadowControlClass*>
 extern char VT_007F42FC;
-// VTABLE: GAMEMD 0x007F43F0 -- VectorClass<TActionClass*>
-extern char VT_007F43F0;
-// VTABLE: GAMEMD 0x007F5134 -- VectorClass<TemporalClass*>
-extern char VT_007F5134;
-// VTABLE: GAMEMD 0x007F552C -- VectorClass<TEventClass*>
-extern char VT_007F552C;
-// VTABLE: GAMEMD 0x007F56DC -- VectorClass<TiberiumClass*>
-extern char VT_007F56DC;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>
 extern char VT_007F65F4;
-// VTABLE: GAMEMD 0x007F665C -- VectorClass<VeinholeMonsterClass*>
-extern char VT_007F665C;
 // VTABLE: GAMEMD 0x007F68CC -- VectorClass<VocClass*>
 extern char VT_007F68CC;
 // VTABLE: GAMEMD 0x007F6924 -- VectorClass<VoxClass*>
