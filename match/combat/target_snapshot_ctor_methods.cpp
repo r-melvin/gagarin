@@ -9,11 +9,10 @@
 // Take a snapshot of a target. A null source leaves the snapshot in its cleared
 // state — hence the early return before any of the source is read.
 //
-// PARTIAL (77.4%, 41/53) — identical multiset. Everything from the seventh
-// instruction on is byte-exact; the opening block is scheduled differently.
-// Retail interleaves `MOV ESI,ECX` between its two pushes and slots the null
-// comparison in among the clearing stores; VC6 does both pushes first and hoists
-// the comparison ahead of every store.
+// PARTIAL: 83.0% by instruction comparison (44/53). Retail copies both
+// 16-bit units at +0x14/+0x16 with one 32-bit load/store; this body preserves
+// that width. Remaining instruction differences include prologue scheduling;
+// complete byte identity is not established.
 //
 // Getting here needed the switch body duplicated. Written with 1, 6 and 0xF
 // sharing one case body, VC6 emits a single call through slot +0x84 while retail
@@ -33,8 +32,8 @@ Snapshot_00473750* Snapshot_00473750::Ctor(Owner_00473750* owner)
     this->At_04 = zero;
     this->At_08 = zero;
     this->Kind = zero;
-    this->At_14 = (short)zero;
-    this->At_16 = (short)zero;
+    this->At_14.A = (short)zero;
+    this->At_14.B = (short)zero;
     this->At_18 = zero;
     this->At_1C = -1;
     this->Vptr = VTBL_007E4C04;
@@ -65,8 +64,8 @@ after_kind:
     this->At_18 = owner->At_6C;
 
     void* scratch;
-    int* result = (owner->*owner->Vtbl->At_1B8)(&scratch);
-    this->At_14 = (short)*result;
+    Pair16_00473750* result = (owner->*owner->Vtbl->At_1B8)(&scratch);
+    this->At_14 = *result;
 
     return this;
 }

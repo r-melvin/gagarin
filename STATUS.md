@@ -1,5 +1,39 @@
 # Project status
 
+As of **2026-10-21**, the latest verified snapshot has **4,679 fully matched
+functions**, **170 partial rows**, **4,849 manifest rows**, **1,016 manifest
+translation units**, and **1,026 tracked C++ files**. Whole-repository regression
+and compile/layout checks passed with zero matched regressions; 94 tooling tests
+pass. All project objects are current. The annotation audit reports 4,882 body
+addresses and zero issues. Fourteen saved partial baselines are unchanged.
+
+The latest batch adds 95 exact ordinary methods across three Lucent Blitter
+clusters and promotes `VoxClass::Play` to an exact match. Strict checks verify
+55 relocation fields in those Lucent methods and 15 across Play and its unchanged
+matched sibling. The Lucent import excludes harness destructors, vtable emission
+and alpha-pool lifetime code; complete class closure remains unproven.
+
+The readable Snapshot constructor at `0x473750` now copies the two-unit range as a 32-bit
+value, as retail does. It remains partial at 83.0% (44/53 instruction positions), not a
+byte-exact match. Lucent50 `0x492830` remains partial at 0% by that diagnostic;
+its emitted body is shorter than the retail span. No assembly or artificial
+emission probes were added. Capped matching searches remain stopped.
+
+Matched lengths total **329,559 bytes**: 23.7% of listed functions and 8.7%
+of listed function lengths. The padding heuristic misses 300 matched entries.
+The diagnostic link reports **3,537 unique unresolved symbols**, **5,275
+reference lines**, and zero duplicate definitions. Engine link closure and
+whole-executable reproduction remain unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats.
+
+## Historical snapshot: Native Blitter wrappers and verification hardening
+
 As of **2026-10-21**, the latest verified snapshot has **4,583 fully matched
 functions**, **170 partial rows**, **4,753 manifest rows**, **1,013 manifest
 translation units**, and **1,023 tracked C++ files**. Whole-repository regression
@@ -33,13 +67,6 @@ The diagnostic link reports **3,537 unique unresolved symbols**, **5,269
 reference lines**, and zero duplicate definitions, compared with 3,535 unique
 symbols and 5,264 references at commit `188f234`. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats.
 
 ## Historical snapshot: Base64Pipe and early BlitPlain consolidation
 
@@ -2330,10 +2357,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,583** | **23.2%** of 19,753 |
-| Sum of matched function lengths | 321,727 bytes | 8.5% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,679** | **23.7%** of 19,753 |
+| Sum of matched function lengths | 329,559 bytes | 8.7% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 170 | 0.9% |
-| Tracked C++ files under `match/` | 1,023 | |
+| Tracked C++ files under `match/` | 1,026 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2353,7 +2380,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 297 matched entries. Its candidate count is therefore
+listed entries, including 300 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.

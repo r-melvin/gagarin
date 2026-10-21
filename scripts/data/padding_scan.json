@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "4c66c8bdbb152ac8939b5d7a4048c12d863299bdd424a647e7d1e23546720282",
+  "manifest_sha256": "e408b8a5d90316ba4a81d9fc8706f5729825a2e1441add897e0537743a06de0c",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4583,
-  "matched_entries_missed": 297,
+  "matched_entries": 4679,
+  "matched_entries_missed": 300,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5189,6 +5189,24 @@
    "addr": "0x48DF80",
    "tu": "match/map/map_class_methods.cpp",
    "name": "GetLandTypeFromName",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4951C0",
+   "tu": "match/render/blitters/b_lucent50.cpp",
+   "name": "BlitTransLucent50AlphaZRead<unsigned short>::BlitMove",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x495500",
+   "tu": "match/render/blitters/b_lucent75_blit.cpp",
+   "name": "BlitTransLucent75AlphaZReadWarp<unsigned short>::BlitMove",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x495840",
+   "tu": "match/render/blitters/b_lucent25_blit.cpp",
+   "name": "BlitTransLucent25AlphaZReadWarp<unsigned short>::BlitMove",
    "reason": "no-preceding-CC-or-90"
   },
   {

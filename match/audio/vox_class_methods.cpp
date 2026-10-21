@@ -9,7 +9,7 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x752700   VoxClass::Play          (__fastcall)
 //   FUNCTION: GAMEMD 0x752A40   VoxClass::SilenceIndex  (__fastcall)
-//   GLOBAL:   GAMEMD 0xB1D4A0   VoxClass::Array         (DynamicVectorClass<VoxClass*>)
+//   GLOBAL:   GAMEMD 0xB1D4A0   VoxArray prefix view    (Items/Count only)
 //   GLOBAL:   GAMEMD 0xB1D4A4   Array.Items
 //   GLOBAL:   GAMEMD 0xB1D4B0   Array.Count
 //   GLOBAL:   GAMEMD 0xB1D4B8   current EVA VoxNode*    (cleared on teardown)
@@ -23,21 +23,20 @@
 
 // ---------------------------------------------------------------------------
 // GLOBAL: GAMEMD 0xB1D4A0 — the global EVA voice table. Modelled to the two
-// members the methods touch: Items @+0x04 (==0xB1D4A4) and Count @+0x10
-// (==0xB1D4B0); both confirmed from the disassembly's absolute operands.
+// touched members: Items @+0x04 (==0xB1D4A4) and Count @+0x10
+// (==0xB1D4B0), confirmed from the absolute operands. The untouched regions
+// are gaps; the complete container layout and intervening field names are not
+// claimed here.
 // ---------------------------------------------------------------------------
 struct VoxArrayType
 {
-    void* _vtable;   // +0x00
-    void* Items;     // +0x04  (VoxClass** base) == 0xB1D4A4
-    int   Capacity;  // +0x08
-    int   IsAlloc;   // +0x0C
-    int   Count;     // +0x10  == 0xB1D4B0
+    char  unknown_00[0x04];
+    void* Items;      // +0x04  (VoxClass** base) == 0xB1D4A4
+    char  unknown_08[0x08];
+    int   Count;      // +0x10  == 0xB1D4B0
 };
-#if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(VoxArrayType, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(VoxArrayType, Count) == 0x10);
-#endif
 
 extern VoxArrayType VoxArray;       // 0xB1D4A0
 extern VoxNode*     VoxCurrentNode; // 0xB1D4B8
@@ -57,21 +56,20 @@ void __cdecl VoxReleaseNode(VoxNode* node);
 // found, play index -1. A null name is a no-op. The name is compared against
 // each entry via _strcmpi (entry address == name pointer, Name @+0x00).
 // ---------------------------------------------------------------------------
-void __fastcall VoxClass::Play(const char* pName, int nUnk, int nUnk2)
+static __inline int VoxFindIndex(const char* pName)
 {
-    if (pName == 0)
-        return;
-
     for (int i = 0; i < VoxArray.Count; ++i)
     {
-        VoxClass* entry = ((VoxClass**)VoxArray.Items)[i];
-        if (Vox_strcmpi(pName, entry->Name) == 0)
-        {
-            PlayIndex(i, nUnk, nUnk2);
-            return;
-        }
+        if (Vox_strcmpi(pName, ((VoxClass**)VoxArray.Items)[i]->Name) == 0)
+            return i;
     }
-    PlayIndex(-1, nUnk, nUnk2);
+    return -1;
+}
+
+void __fastcall VoxClass::Play(const char* pName, int nUnk, int nUnk2)
+{
+    if (pName != 0)
+        PlayIndex(VoxFindIndex(pName), nUnk, nUnk2);
 }
 
 // ---------------------------------------------------------------------------
