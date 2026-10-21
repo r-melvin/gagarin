@@ -7,7 +7,7 @@
 #ifndef GG_MATCH_LAYOUT_TAG_TYPE_CLASS_H
 #define GG_MATCH_LAYOUT_TAG_TYPE_CLASS_H
 #include "abstract_type_class.h"
-#include "vector_class.h"
+#include "../core/vector_class.h"
 class TriggerTypeClass;
 struct TagINI_006E6080;
 struct CCINI_006E5ED0;
@@ -20,7 +20,7 @@ public:
     // FUNCTION: GAMEMD 0x6E6310
     static TagTypeClass* __fastcall FindOrAllocate(const char* id);
     // GLOBAL: GAMEMD 0xB0E780
-    static DynamicVectorClassLayout Array;
+    static DynamicVectorClass<TagTypeClass*> Array;
     int               unknown_98;           // +0x0098
     int               Persistence;          // +0x009C (store at 0x6E60E1)
     TriggerTypeClass* FirstTrigger;          // +0x00A0  (MOV ESI,[ECX+0xA0])

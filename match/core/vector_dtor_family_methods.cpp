@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 109 base-template instantiations reproduce 211 remaining retail destructor
+// 105 base-template instantiations reproduce 203 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -260,12 +260,6 @@ template class VectorClass<IConnectionPoint*>;
 //   `.?AV?$VectorClass@PAU_DDSURFACEDESC@@@@`.
 template class VectorClass<_DDSURFACEDESC*>;
 
-// FUNCTION: GAMEMD 0x004A8030
-// FUNCTION: GAMEMD 0x004A8080
-// VectorClass<DiskLaserClass*> -- reseats retail vtable 0x007E5EFC; locator 0x007FFB40 -> type descriptor 0x0081FF28
-//   `.?AV?$VectorClass@PAVDiskLaserClass@@@@`.
-template class VectorClass<DiskLaserClass*>;
-
 // FUNCTION: GAMEMD 0x004BA1B0
 // FUNCTION: GAMEMD 0x004BA200
 // VectorClass<ButtonFadeEffect*> -- reseats retail vtable 0x007E8500; locator 0x008001A8 -> type descriptor 0x00820420
@@ -283,12 +277,6 @@ template class VectorClass<CrossDissolveEffect*>;
 // VectorClass<EBolt*> -- reseats retail vtable 0x007E86AC; locator 0x008002F8 -> type descriptor 0x00820710
 //   `.?AV?$VectorClass@PAVEBolt@@@@`.
 template class VectorClass<EBolt*>;
-
-// FUNCTION: GAMEMD 0x004C5E20
-// FUNCTION: GAMEMD 0x004C5E70
-// VectorClass<EMPulseClass*> -- reseats retail vtable 0x007E875C; locator 0x00800428 -> type descriptor 0x00820868
-//   `.?AV?$VectorClass@PAVEMPulseClass@@@@`.
-template class VectorClass<EMPulseClass*>;
 
 // FUNCTION: GAMEMD 0x004D2D10
 // FUNCTION: GAMEMD 0x004D2D60
@@ -379,12 +367,6 @@ template class VectorClass<IsometricTileTypeClass*>;
 // VectorClass<ParticleTypeClass*> -- reseats retail vtable 0x007EA444; locator 0x008020F0 -> type descriptor 0x00823C88
 //   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
 template class VectorClass<ParticleTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004F2B60
-// FUNCTION: GAMEMD 0x004F2BB0
-// VectorClass<GraphicMenuItem*> -- reseats retail vtable 0x007EA624; locator 0x00802638 -> type descriptor 0x00824100
-//   `.?AV?$VectorClass@PAVGraphicMenuItem@@@@`.
-template class VectorClass<GraphicMenuItem*>;
 
 // FUNCTION: GAMEMD 0x00510090
 // FUNCTION: GAMEMD 0x005100E0
@@ -770,12 +752,6 @@ template class VectorClass<ShadowControlClass*>;
 // VectorClass<TActionClass*> -- reseats retail vtable 0x007F43F0; locator 0x0080BA40 -> type descriptor 0x00842B10
 //   `.?AV?$VectorClass@PAVTActionClass@@@@`.
 template class VectorClass<TActionClass*>;
-
-// FUNCTION: GAMEMD 0x006E67A0
-// FUNCTION: GAMEMD 0x006E67F0
-// VectorClass<TagTypeClass*> -- reseats retail vtable 0x007F4578; locator 0x0080BC38 -> type descriptor 0x00842C48
-//   `.?AV?$VectorClass@PAVTagTypeClass@@@@`.
-template class VectorClass<TagTypeClass*>;
 
 // FUNCTION: GAMEMD 0x0071B500
 // FUNCTION: GAMEMD 0x0071B550

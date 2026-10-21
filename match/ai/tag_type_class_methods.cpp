@@ -27,7 +27,7 @@ TagTypeClass* __fastcall TagTypeClass::FindByNameOrID(const char* name)
     {
         for (int i = 0; i < TagTypeClass::Array.Count; ++i)
         {
-            TagTypeClass* item = reinterpret_cast<TagTypeClass**>(TagTypeClass::Array.Items)[i];
+            TagTypeClass* item = TagTypeClass::Array.Items[i];
             if (_strcmpi(item->ID, name) == 0 ||
                 _strcmpi(item->Name, name) == 0)
                 return item;

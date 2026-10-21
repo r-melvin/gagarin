@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 104
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 100
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -241,11 +241,6 @@ template class DynamicVectorClass<IConnectionPoint*>;
 //   `.?AV?$DynamicVectorClass@PAU_DDSURFACEDESC@@@@`.
 template class DynamicVectorClass<_DDSURFACEDESC*>;
 
-// FUNCTION: GAMEMD 0x004A7D20
-// DynamicVectorClass<DiskLaserClass*> -- vtable 0x007E5EDC slot 3; locator 0x007FFB10 -> type descriptor 0x0081FF58
-//   `.?AV?$DynamicVectorClass@PAVDiskLaserClass@@@@`.
-template class DynamicVectorClass<DiskLaserClass*>;
-
 // FUNCTION: GAMEMD 0x004B9BE0
 // DynamicVectorClass<ButtonFadeEffect*> -- vtable 0x007E856C slot 3; locator 0x00800210 -> type descriptor 0x00820458
 //   `.?AV?$DynamicVectorClass@PAUButtonFadeEffect@@@@`.
@@ -260,11 +255,6 @@ template class DynamicVectorClass<CrossDissolveEffect*>;
 // DynamicVectorClass<EBolt*> -- vtable 0x007E868C slot 3; locator 0x008002C8 -> type descriptor 0x00820738
 //   `.?AV?$DynamicVectorClass@PAVEBolt@@@@`.
 template class DynamicVectorClass<EBolt*>;
-
-// FUNCTION: GAMEMD 0x004C5B60
-// DynamicVectorClass<EMPulseClass*> -- vtable 0x007E873C slot 3; locator 0x008003F8 -> type descriptor 0x00820898
-//   `.?AV?$DynamicVectorClass@PAVEMPulseClass@@@@`.
-template class DynamicVectorClass<EMPulseClass*>;
 
 // FUNCTION: GAMEMD 0x004D2930
 // DynamicVectorClass<FoggedObjectClass::DrawRecord> -- vtable 0x007E8BA0 slot 3; locator 0x008007D0 -> type descriptor 0x00822498
@@ -335,11 +325,6 @@ template class DynamicVectorClass<IsometricTileTypeClass*>;
 // DynamicVectorClass<ParticleTypeClass*> -- vtable 0x007EA424 slot 3; locator 0x008020C0 -> type descriptor 0x00823CC0
 //   `.?AV?$DynamicVectorClass@PAVParticleTypeClass@@@@`.
 template class DynamicVectorClass<ParticleTypeClass*>;
-
-// FUNCTION: GAMEMD 0x004F2850
-// DynamicVectorClass<GraphicMenuItem*> -- vtable 0x007EA604 slot 3; locator 0x00802578 -> type descriptor 0x00824138
-//   `.?AV?$DynamicVectorClass@PAVGraphicMenuItem@@@@`.
-template class DynamicVectorClass<GraphicMenuItem*>;
 
 // FUNCTION: GAMEMD 0x0050E500
 // DynamicVectorClass<HouseClass::StartingTechnoStruct*> -- vtable 0x007EA944 slot 3; locator 0x00802B60 -> type descriptor 0x00824638
@@ -678,11 +663,6 @@ template class DynamicVectorClass<ShadowControlClass*>;
 // DynamicVectorClass<TActionClass*> -- vtable 0x007F43D0 slot 3; locator 0x0080BA10 -> type descriptor 0x00842B40
 //   `.?AV?$DynamicVectorClass@PAVTActionClass@@@@`.
 template class DynamicVectorClass<TActionClass*>;
-
-// FUNCTION: GAMEMD 0x006E64E0
-// DynamicVectorClass<TagTypeClass*> -- vtable 0x007F4558 slot 3; locator 0x0080BC08 -> type descriptor 0x00842C78
-//   `.?AV?$DynamicVectorClass@PAVTagTypeClass@@@@`.
-template class DynamicVectorClass<TagTypeClass*>;
 
 // FUNCTION: GAMEMD 0x0071B240
 // DynamicVectorClass<TemporalClass*> -- vtable 0x007F5114 slot 3; locator 0x0080C248 -> type descriptor 0x00844590

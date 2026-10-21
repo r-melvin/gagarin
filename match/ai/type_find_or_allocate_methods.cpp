@@ -21,8 +21,8 @@ TagTypeClass* __fastcall TagTypeClass::FindOrAllocate(const char* id)
     {
         for (int i = 0; i < TagTypeClass::Array.Count; ++i)
         {
-            if (_strcmpi(reinterpret_cast<TagTypeClass**>(TagTypeClass::Array.Items)[i]->ID, id) == 0)
-                return reinterpret_cast<TagTypeClass**>(TagTypeClass::Array.Items)[i];
+            if (_strcmpi(TagTypeClass::Array.Items[i]->ID, id) == 0)
+                return TagTypeClass::Array.Items[i];
         }
         return new TagTypeClass(id);
     }

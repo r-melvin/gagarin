@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "a509970f2b15894658dcda0324a5cfa22a4630682c617a1a9ac358864621ba52",
+  "manifest_sha256": "c4a142abb967b29a1f040fac3d02c6f8845eeea9f16e253a9d984c7d41c5b7a2",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3870,
-  "matched_entries_missed": 219,
+  "matched_entries": 3902,
+  "matched_entries_missed": 224,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5180,9 +5180,15 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4A7FB0",
+   "tu": "match/core/vector_disklaserclass_methods.cpp",
+   "name": "DynamicVectorClass<DiskLaserClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4A8030",
-   "tu": "match/core/vector_dtor_family_methods.cpp",
-   "name": "VectorClass<DiskLaserClass*>::`scalar deleting destructor'",
+   "tu": "match/core/vector_disklaserclass_methods.cpp",
+   "name": "VectorClass<DiskLaserClass*>::scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5201,6 +5207,12 @@
    "addr": "0x4C4C30",
    "tu": "match/core/vector_egoclass_methods.cpp",
    "name": "DynamicVectorClass<EgoClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4C5DF0",
+   "tu": "match/core/vector_empulseclass_methods.cpp",
+   "name": "DynamicVectorClass<EMPulseClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5471,6 +5483,18 @@
    "addr": "0x4F2810",
    "tu": "match/platform/ini_class_dtor.cpp",
    "name": "INIClass::scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4F28E0",
+   "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+   "name": "VectorClass<GraphicMenuItem*>::operator==",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4F2B10",
+   "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+   "name": "DynamicVectorClass<GraphicMenuItem*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6029,6 +6053,12 @@
    "addr": "0x6E3EE0",
    "tu": "match/ai/taction_class_methods.cpp",
    "name": "GetFlags",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6E6770",
+   "tu": "match/core/vector_tagtypeclass_methods.cpp",
+   "name": "DynamicVectorClass<TagTypeClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
