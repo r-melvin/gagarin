@@ -17,6 +17,8 @@ class TagTypeClass : public AbstractTypeClass
 public:
     // FUNCTION: GAMEMD 0x6E5B60 (constructor declaration)
     TagTypeClass(const char* id);
+    // FUNCTION: GAMEMD 0x6E6310
+    static TagTypeClass* __fastcall FindOrAllocate(const char* id);
     // GLOBAL: GAMEMD 0xB0E780
     static DynamicVectorClassLayout Array;
     int               unknown_98;           // +0x0098

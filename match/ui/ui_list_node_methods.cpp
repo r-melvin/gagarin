@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5B3F50-0x5B4793.
 //   Ordered ascending by retail address.
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX
@@ -65,11 +65,11 @@ void SortedTreeNode::SortedTreeFree()
 // because the first store can alias them.
 void GenericNode::ListNodeUnlink()
 {
-    if (this != 0 && this->Prev != 0 && this->Next != 0) {
-        this->Next->Prev = this->Prev;
-        this->Prev->Next = this->Next;
-        this->Next = 0;
-        this->Prev = 0;
+    if (this != 0 && this->NextNode != 0 && this->PrevNode != 0) {
+        this->PrevNode->NextNode = this->NextNode;
+        this->NextNode->PrevNode = this->PrevNode;
+        this->PrevNode = 0;
+        this->NextNode = 0;
     }
 }
 
@@ -110,18 +110,18 @@ MixFileClass* MixFileClass::ScalarDeletingDtor(char flags)
 // retail's.
 GenericList* GenericList::ScalarDeletingDtor(char flags)
 {
-    this->Vptr = &VT_007E1B04;
+    this->Vtable = &VT_007E1B04;
 
     while (1) {
-        if (!(this->A.Prev != 0 && this->A.Prev->Prev != 0
-              && this->A.Prev->Next != 0)) {
+        if (!(this->FirstNode.NextNode != 0 && this->FirstNode.NextNode->NextNode != 0
+              && this->FirstNode.NextNode->PrevNode != 0)) {
             break;
         }
-        this->A.Prev->Unlink();
+        this->FirstNode.NextNode->Unlink();
     }
 
-    this->B.Dtor();
-    this->A.Dtor();
+    this->LastNode.DestroyNode();
+    this->FirstNode.DestroyNode();
 
     if (flags & 1) {
         gg_free(this);

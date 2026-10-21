@@ -47,25 +47,3 @@ void Obj_004085B0::FUN_004085B0()
         unknown_14 = value >> 2;
     }
 }
-
-// FUNCTION: GAMEMD 0x40BB90
-// Index of the first slot holding the pointed-to value, or -1. The key is
-// dereferenced once up front rather than on every comparison.
-int Obj_0040BB90::FUN_0040BB90(void* const* key)
-{
-    int count = Count;
-    int i = 0;
-
-    if (count > 0) {
-        void** items = Items;
-        void*  value = *key;
-
-        for (; i < count; i++, items++) {
-            if (*items == value) {
-                return i;
-            }
-        }
-    }
-
-    return -1;
-}

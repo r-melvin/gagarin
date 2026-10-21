@@ -104,8 +104,6 @@ inline bool VectorBase::ResizeBase(int newsize, void** array)
 
 struct VectorResize : VectorBase
 {
-    // FUNCTION: GAMEMD 0x40BAE0
-    bool FUN_0040BAE0(int newsize, void** array);
     // FUNCTION: GAMEMD 0x40CE50
     bool FUN_0040CE50(int newsize, void** array);
     // FUNCTION: GAMEMD 0x42D780

@@ -1,46 +1,16 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
-//
-//   Seven small intrusive-container helpers at 0x5B3F50-0x5B4793: a sorted
-//   binary-tree insert, a recursive tree teardown, a doubly-linked-list unlink,
-//   and four destructors over the node and host shapes those use.
-//
-//   Every offset, vtable constant and calling convention below was read
-//   numerically off the user's retail gamemd.exe v1.001 through the local
-//   Ghidra CLI. The private-reference seed (consult-only, no LICENSE) grouped this
-//   address run as `ui/ui_linked_list_utils.cpp` and named the members'
-//   roles; it supplied intent only and contributed no bytes, layout or
-//   conventions. Its signatures spell the receivers as ordinary pointer
-//   parameters; the receiver registers here come from the usual disassembly
-//   tells (`MOV ESI,ECX` with no stack cleanup, and a second argument arriving
-//   in EDX at 0x5B3FF0, which is __fastcall rather than __thiscall).
-//
-//   The list node is the same 0xC-byte shape already matched in
-//   match/core/list_host_dtor_methods.h (vtable 0x7E1B0C, host vtable
-//   0x7E1B04); it is modelled independently here so this TU stands alone, and
-//   the two agree offset for offset.
-//
-//   CLASS IDENTITIES CORRECTED (whole-image RTTI sweep, docs/rtti_sweep.md).
-//   Four types here carried invented behaviour names. RTTI read off this
-//   binary names all four:
-//     0x7E1B0C -> GenericNode   (was `ListNode`)
-//     0x7E1B04 -> GenericList   (was `ListHost`; the same spelling
-//                                match/platform/ini_class_node_methods.h
-//                                already uses for these two vtables)
-//     0x7EDF50 -> MixFileClass  (was `TrackedNode`; locator 0x00805DE0,
-//                                TD 0x0082C320 = `.?AVMixFileClass@@`,
-//                                re-read here with `ghidra memory read`)
-//     0x7EDF40 -> BlowStraw     (was `EmbeddedSubObject`; locator
-//                                0x00805E30, TD 0x0082C340)
-//   The MixFileClass identity is independently corroborated inside this tree:
-//   match/platform/mix_file_class.h already pins sizeof(MixFileClass) == 0x28
-//   with its constructor at 0x5B3C20 and a Node<> destructor in slot 0, and
-//   the 0x28-byte shape destroyed at 0x5B3F50/0x5B4630 below is that object's
-//   full layout. `BlowStraw` is the pipe/straw stream family, not a node.
+// Provenance: own-binary-via-Ghidra
+// Entry-origin retail bodies at 0x5B3F50..0x5B4793 confirm the layouts,
+// call conventions and operations below. RTTI names GenericNode at 0x7E1B0C,
+// GenericList at 0x7E1B04, MixFileClass at 0x7EDF50 (TD0x82C320), and
+// BlowStraw at 0x7EDF40 (TD0x82C340). SortedTreeNode is a descriptive name.
+// Intrusive-node fields now use the shared layout; the original source-file
+// grouping is not established by these functions.
 #ifndef GG_MATCH_UI_UI_LIST_NODE_METHODS_H
 #define GG_MATCH_UI_UI_LIST_NODE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/generic_list.h"
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
@@ -99,46 +69,8 @@ GG_STATIC_ASSERT(offsetof(SortedTreeNode, Key) == 0x08);
 GG_STATIC_ASSERT(sizeof(SortedTreeNode) == 0x0C);
 
 // ---------------------------------------------------------------------------
-// The intrusive doubly-linked list node.
-//
-// Offsets confirmed numerically at 0x5B4594/0x5B459B (`MOV EDX,[ECX + 0x4]`,
-// `MOV EAX,[ECX + 0x8]`) and by the cross-writes at 0x5B45A2/0x5B45AB
-// (`MOV [EAX + 0x4],EDX` then `MOV [EAX + 0x8],EDX`), which pin +0x04 and
-// +0x08 as the two link directions. The vtable pointer at +0x00 is written
-// with 0x7E1B0C at 0x5B3FC0.
-struct GenericNode
-{
-    char*     Vptr;  // +0x00
-    GenericNode* Prev;  // +0x04
-    GenericNode* Next;  // +0x08
+// GenericNode and its primitives use the shared binary-confirmed layout.
 
-    // Splice this node out of its list. All three null tests are retail's and
-    // are re-emitted even where the caller has just made them.
-    void Unlink()
-    {
-        if (this != 0 && this->Prev != 0 && this->Next != 0) {
-            this->Next->Prev = this->Prev;
-            this->Prev->Next = this->Next;
-            this->Next = 0;
-            this->Prev = 0;
-        }
-    }
-
-    void Dtor()
-    {
-        this->Vptr = &VT_007E1B0C;
-        this->Unlink();
-    }
-
-    // FUNCTION: GAMEMD 0x5B4590 — the out-of-line copy of the same unlink,
-    // a member rather than a free function taking the node.
-    void ListNodeUnlink();
-};
-GG_STATIC_ASSERT(offsetof(GenericNode, Prev) == 0x04);
-GG_STATIC_ASSERT(offsetof(GenericNode, Next) == 0x08);
-GG_STATIC_ASSERT(sizeof(GenericNode) == 0x0C);
-
-// ---------------------------------------------------------------------------
 // The BlowStraw sub-object destroyed at 0x5B45C0: vtable 0x7EDF40, an owned
 // payload at +0x0C (`MOV EDI,[ESI + 0xC]`, deleted and then cleared) and the
 // shared base destructor at 0x6C9850.
@@ -200,7 +132,7 @@ struct MixFileClass
             this->Scratch = 0;
         }
         ((GenericNode*)this)->Unlink();
-        ((GenericNode*)this)->Dtor();
+        ((GenericNode*)this)->DestroyNode();
     }
 
     // FUNCTION: GAMEMD 0x5B3F50
@@ -217,22 +149,6 @@ GG_STATIC_ASSERT(offsetof(MixFileClass, Record) == 0x24);
 GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
 
 // ---------------------------------------------------------------------------
-// The GenericList destroyed at 0x5B46E0. Its own vtable is 0x7E1B04 and it
-// carries two list nodes, at +0x04 and +0x10 (`LEA EAX,[EDI + 0x10]` at
-// 0x5B4722 and `LEA EAX,[EDI + 0x4]` at 0x5B474F). The drain loop walks
-// `[EDI+8]`, which is the first node's +0x04 link.
-struct GenericList
-{
-    char*    Vptr;  // +0x00
-    GenericNode A;     // +0x04
-    GenericNode B;     // +0x10
-
-    // FUNCTION: GAMEMD 0x5B46E0
-    GenericList* ScalarDeletingDtor(char flags);
-};
-GG_STATIC_ASSERT(offsetof(GenericList, A) == 0x04);
-GG_STATIC_ASSERT(offsetof(GenericList, B) == 0x10);
-GG_STATIC_ASSERT(offsetof(GenericList, A) + offsetof(GenericNode, Prev) == 0x08);
-GG_STATIC_ASSERT(sizeof(GenericList) == 0x1C);
+// GenericList at 0x5B46E0 uses the shared declaration.
 
 #endif  // GG_MATCH_UI_UI_LIST_NODE_METHODS_H

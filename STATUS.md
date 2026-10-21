@@ -1,13 +1,62 @@
 # Project status
 
-The latest whole-repository regression passed with **3,800 fully matched
-functions**, **166 partial rows**, and 910 manifest translation units, with no
-matched function regressing. All **920 tracked C++ files** produced project
+The latest whole-repository regression passed with **3,807 fully matched
+functions**, **166 partial rows**, and 913 manifest translation units, with no
+matched function regressing. All **923 tracked C++ files** produced project
 objects and their hash check passed. The compile/layout gate, 75 verifier tests
 and duplicate-address check passed. The complete byte-for-byte executable
 target has not been achieved.
 
-## Latest integration: native type construction and shared list methods
+## Latest integration: shared INI layout and native type factories
+
+The shared [INIClass layout](match/_layout/ini_class.h) replaces three
+competing declarations. Retail RTTI and entry-origin teardown instructions
+confirm its fields; inline initialization and a neighboring live stack object
+bound its size to 0x40. Its **200-byte native virtual destructor** is a new
+exact match. The compiler-generated 30-byte deleting entry preserves its
+existing match and replaces an opaque sweep host. Its one-slot table passes
+conditionally with `--weak-defaults`. The retained CCINI deleting wrapper now
+calls the native base destructor, without claiming complete CCINI recovery.
+
+[GenericNode and GenericList](match/_layout/generic_list.h) now have shared
+layouts and inline operations across the INI and UI clusters, with RTTI class
+keys and asserted fields. The index prefix also has a shared definition. All
+24 initially affected existing functions retain their matches. INIClass's
+concrete `List<INISection*>` member is identified by RTTI but remains represented
+by its explicitly named GenericList prefix. Full native list construction,
+CCINIClass consolidation and the remaining nested-node views are still pending.
+
+The [TagTypeClass and TriggerTypeClass factories](match/ai/type_find_or_allocate_methods.cpp)
+now use their native classes, registries and `new` expressions. Both full
+131-byte bodies retain their matches with no-GX flags. Tag INI loading calls
+the canonical TriggerTypeClass factory, removing its free-function alias.
+
+The [TechnoClass pointer vector pair](match/core/vector_technoclass_methods.cpp)
+adds **six exact matches** and migrates six existing buffer-release, deleting,
+resize and lookup claims. Both seven-slot tables pass conditional checks. Full
+REA spans and GX/no-GX probes support the pair; constructor and copy methods
+are not newly claimed. Together with the INI destructor, this batch adds
+**seven exact matches**.
+
+The current `/dll /noentry /nodefaultlib` diagnostic link reports 4,027 unique
+unresolved symbols (6,173 reference lines), with no duplicate definitions.
+The native INIClass destructor and both type factories resolve; their retired
+aliases no longer appear. Default libraries are excluded, so these counts
+are not an engine-only gap census. Integrated linking and complete-image
+comparison remain unfinished.
+
+The AbstractTypeClass constructor remains unimplemented. Its bounded temporary
+recovery attempts did not pass the full-span oracle; no candidate row was added.
+
+Matched lengths total 271,855 bytes (265 KiB): 19.3% of listed functions and
+7.2% of listed function lengths. The padding heuristic misses 211 matched
+entries. The generic vector families retain 227 deleting bindings across 117
+views, 114 base Clear rows, 112 native dynamic Clear rows plus one DiskID
+stand-in, and 15 resize-family rows plus three other resize helpers. The buffer
+release and deleting families each retain 41 rows; ten type factories remain
+in their generic family.
+
+## Previous verified integration: native type construction and shared list methods
 
 The native [TriggerTypeClass constructor](match/ai/trigger_type_class_ctor.cpp)
 and [TagTypeClass constructor](match/ai/tag_type_class_ctor.cpp) match their
@@ -32,7 +81,7 @@ seven-slot vtable checks pass conditionally with `--weak-defaults`; final-link
 selection remains unproved. Together with the two constructors, this batch
 adds **17 exact matches**.
 
-The current `/dll /noentry /nodefaultlib` diagnostic link reports 4,035 unique
+That batch's `/dll /noentry /nodefaultlib` diagnostic link reported 4,035 unique
 unresolved symbols (6,176 reference lines), with no duplicate definitions.
 Native TagTypeClass and TriggerTypeClass constructor calls now resolve; the
 native AbstractTypeClass base constructor remains unresolved. Default libraries
@@ -525,7 +574,7 @@ python3 scripts/vc6/source_inventory.py --out /tmp/source-inventory.json
 
 It enumerates source paths with `git ls-files`; the output describes tracked
 paths, while content is read from the current worktree. At the latest fully
-verified snapshot, the inventory has 920 tracked C++ files and 3,966 manifest
+verified snapshot, the inventory has 923 tracked C++ files and 3,973 manifest
 rows, with no manifest TU missing from tracked sources. Ten tracked files
 had no manifest rows and two source basename collisions; the report lists
 those cases explicitly.
@@ -787,7 +836,7 @@ Verified consolidation steps:
   retail declaring class is unresolved; other legacy users are marked
   `VectorClassLayout` or `DynamicVectorClassLayout`. Other virtual methods and
   original source-file ownership remain incomplete.
-  The resize helpers retain 15 address-specific family views and four other
+  The resize helpers retain 15 address-specific family views and three other
   generic resize helpers. SmudgeType's `0x67B050` SetCapacity body now has a native binding.
 - [TypeList](match/core/type_list.h): the int specialization has three native
   entries: its copy constructor, default constructor and generated deleting
@@ -841,10 +890,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **3,800** | **19.2%** of 19,753 |
-| Sum of matched function lengths | 265 KiB | 7.1% of 3,708 KiB of listed function lengths |
+| Functions matched at 100% | **3,807** | **19.3%** of 19,753 |
+| Sum of matched function lengths | 265 KiB | 7.2% of 3,708 KiB of listed function lengths |
 | Functions in progress (partial match) | 166 | 0.8% |
-| Tracked C++ files under `match/` | 920 | |
+| Tracked C++ files under `match/` | 923 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).

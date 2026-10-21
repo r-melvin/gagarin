@@ -8,82 +8,6 @@
 
 #include "ini_class_node_methods.h"
 
-// The three primitives every node operation collapses to. They are forced
-// inline because retail has no out-of-line copy of any of them: each appears
-// expanded at every use site.
-
-// `this != 0 && NextNode != 0 && PrevNode != 0`, tested in that order.
-__forceinline bool GenericNode::IsValid() const
-{
-    return this != 0 && NextNode != 0 && PrevNode != 0;
-}
-
-// Splice this node out of its list. The forward fix-up runs first, and the two
-// links are cleared back to front.
-__forceinline void GenericNode::Unlink()
-{
-    if (IsValid()) {
-        PrevNode->NextNode = NextNode;
-        NextNode->PrevNode = PrevNode;
-        PrevNode = 0;
-        NextNode = 0;
-    }
-}
-
-// Splice `node` in directly after this one. The forward link is read into its
-// own local before either store, which is the order retail loads it in.
-__forceinline void GenericNode::Link(GenericNode* node)
-{
-    node->Unlink();
-    node->NextNode = NextNode;
-    node->PrevNode = this;
-    if (NextNode != 0) {
-        NextNode->PrevNode = node;
-    }
-    NextNode = node;
-}
-
-// What ~GenericNode collapses to: seat the base vtable, then unlink.
-__forceinline void GenericNode::DestroyNode()
-{
-    Vtable = &GG_VTABLE_GENERICNODE;
-    Unlink();
-}
-
-// What the GenericNode constructor collapses to.
-__forceinline void GenericNode::InitNode()
-{
-    NextNode = 0;
-    PrevNode = 0;
-    Vtable = &GG_VTABLE_GENERICNODE;
-}
-
-// What ~GenericList collapses to: drain whatever is still threaded between the
-// sentinels, then destroy the two sentinels in reverse declaration order.
-__forceinline void GenericList::DestroyList()
-{
-    Vtable = &GG_VTABLE_GENERICLIST;
-
-    while (First()->IsValid()) {
-        First()->Unlink();
-    }
-
-    LastNode.DestroyNode();
-    FirstNode.DestroyNode();
-}
-
-// IndexClass::Clear - drop the table and reset the four scalars. The sorted
-// flag is a single byte.
-__forceinline void IndexClassRaw::Clear()
-{
-    FUN_007C8B3D(IndexTable);
-    IndexTable = 0;
-    IndexCount = 0;
-    IndexSize = 0;
-    IsSorted = 0;
-    Archive = 0;
-}
-
 // Cut an INI line short at its first comment character and trim what is left.
 // A missing semicolon leaves the line untouched, which is why the trim is
 // inside the second guard rather than after it.
@@ -181,16 +105,6 @@ void INISection::DestroySection()
     EntryIndex.Clear();
     EntryList.DestroyList();
     DestroyNode();
-}
-
-// An empty list is the head sentinel linked to the tail sentinel; both are
-// constructed first, the list seat is written next, and the link follows.
-__forceinline void GenericList::InitList()
-{
-    FirstNode.InitNode();
-    LastNode.InitNode();
-    Vtable = &GG_VTABLE_GENERICLIST;
-    FirstNode.Link(&LastNode);
 }
 
 // GenericList::GenericList.

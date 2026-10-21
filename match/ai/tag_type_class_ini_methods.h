@@ -40,8 +40,7 @@ extern "C" char* __cdecl strtok(char*, const char*);
 // IAT at 0x7E14B0: wsprintfA, a cdecl variadic WinAPI import.
 extern "C" __declspec(dllimport) int __cdecl wsprintfA(char*, const char*, ...);
 
-// FUNCTION: GAMEMD 0x727AA0 — find or allocate a trigger type by ID in ECX.
-TriggerTypeClass* __fastcall FUN_00727AA0(const char* id);
+// The shared TriggerTypeClass declares the native factory at 0x727AA0.
 
 // Retail copies twelve dwords and a final byte to Name at +0x64.
 struct TagName_006E6080 { char Text[0x31]; };

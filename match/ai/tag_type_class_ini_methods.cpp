@@ -27,7 +27,7 @@ bool TagTypeClass::ReadFromINI(TagINI_006E6080* ini)
         if (&name != (TagName_006E6080*)Name) {
             *(TagName_006E6080*)Name = name;
         }
-        FirstTrigger = FUN_00727AA0(strtok(0, STR_00817F70));
+        FirstTrigger = TriggerTypeClass::FindOrAllocate(strtok(0, STR_00817F70));
         return true;
     }
     return false;

@@ -32,17 +32,6 @@ GG_STATIC_ASSERT(offsetof(Obj_004026C0, Dispatch) == 0xD4);
 
 #define DISP(o, off) ((*(DispSlot*)((o)->Dispatch + (off)))(o))
 
-struct Obj_0040BB90
-{
-    char   _pad00[0x4];
-    void** Items;   // +0x0004
-    char   _pad08[0x10 - 0x08];
-    int    Count;   // +0x0010
-
-    // FUNCTION: GAMEMD 0x40BB90
-    int FUN_0040BB90(void* const* key);
-};
-GG_STATIC_ASSERT(offsetof(Obj_0040BB90, Count) == 0x10);
 
 struct Obj_004085B0
 {

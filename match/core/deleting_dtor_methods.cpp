@@ -7,6 +7,7 @@
 // longhand rather than macro-generated, per the family rule.
 
 #include "deleting_dtor_methods.h"
+#include "../_layout/ini_class.h"
 
 // FUNCTION: GAMEMD 0x408E00
 void Obj_00408E00::FUN_00408E00()
@@ -21,7 +22,7 @@ void Obj_00408E00::FUN_00408E00()
 // FUNCTION: GAMEMD 0x40E4A0
 void* Obj_0040E400::FUN_0040E4A0(unsigned int flags)
 {
-    FUN_005256F0(this);
+    static_cast<INIClass*>(static_cast<void*>(this))->INIClass::~INIClass();
 
     if (flags & 1) {
         FUN_007C8B3D(this);

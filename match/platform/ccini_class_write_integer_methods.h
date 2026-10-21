@@ -16,13 +16,7 @@
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
-class INIClass
-{
-public:
-    bool WriteString(const char* pSection, const char* pKey, const char* pString);
+#include "../_layout/ini_class.h"
 
-    // GAMEMD 0x5275C0 __thiscall, RET 0x10 — four dword arguments.
-    bool WriteInteger(const char* pSection, const char* pKey, int value, int format);
-};
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_WRITE_INTEGER_METHODS_H

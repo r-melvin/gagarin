@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "d8adbae3831248f9c643fbdad33cd1d04c5cf720b2acb7ce42a1c8d4f13acea1",
+  "manifest_sha256": "1080eec16c5b1f7cc7d0a98cbc99957b524ada62222735a34a8c13fa3aa5020f",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,7 +29,7 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 3800,
+  "matched_entries": 3807,
   "matched_entries_missed": 211,
   "padding_run_lengths": {
    "1": 1725,
@@ -4947,8 +4947,8 @@
   },
   {
    "addr": "0x40BB90",
-   "tu": "match/core/small_misc11_methods.cpp",
-   "name": "FUN_0040BB90",
+   "tu": "match/core/vector_technoclass_methods.cpp",
+   "name": "DynamicVectorClass<TechnoClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5445,8 +5445,8 @@
   },
   {
    "addr": "0x4F2810",
-   "tu": "match/core/deleting_dtor_sweep.cpp",
-   "name": "FUN_004f2810",
+   "tu": "match/platform/ini_class_dtor.cpp",
+   "name": "INIClass::scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {

@@ -52,6 +52,8 @@ public:
     static void __fastcall LoadFromINIList(CCINI_007275D0* ini);
     // FUNCTION: GAMEMD 0x727880
     static void __fastcall SaveToINIList(CCINI_00727880* ini);
+    // FUNCTION: GAMEMD 0x727AA0
+    static TriggerTypeClass* __fastcall FindOrAllocate(const char* id);
     int ArrayIndex;
     unsigned char Difficulty[3];
     unsigned char Enabled;

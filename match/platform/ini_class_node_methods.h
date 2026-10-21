@@ -31,8 +31,8 @@
 // INI vtables is one slot wide - the only virtual any of these classes has is
 // its destructor, whose seat holds the scalar deleting thunk.
 //
-// MODELLING NOTE. Every class here is written as a plain struct carrying its
-// vtable pointer as an ordinary `void* Vtable` member at +0x00, and each
+// MODELLING NOTE. The shared intrusive-node layouts expose an explicit
+// `void* Vtable` member at +0x00; each
 // vtable seat is stored through an extern stand-in symbol. Slot zero is
 // treated as an ordinary virtual holding the deleting-destructor thunk rather
 // than as a C++ virtual destructor: that keeps the seat stores under our
@@ -43,6 +43,9 @@
 #define GG_MATCH_PLATFORM_INI_CLASS_NODE_METHODS_H
 
 #include <stddef.h>
+#include "../_layout/generic_list.h"
+#include "../_layout/index_class_layout.h"
+#include "../_layout/ini_class.h"
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
@@ -98,61 +101,6 @@ struct GG_Deletable
 };
 
 // ---------------------------------------------------------------------------
-// GenericNode - the doubly-linked list node every INI record is threaded on.
-// Offsets confirmed from the unlink sequence shared by 0x52AAF0, 0x52AB80,
-// 0x52AD50 and 0x52AE20: `MOV ECX,[ESI+4]` then `MOV EAX,[ESI+8]` then
-// `MOV [EAX+4],ECX` proves NextNode is at +0x04 and PrevNode at +0x08, because
-// the first store is PrevNode->NextNode = NextNode.
-// ---------------------------------------------------------------------------
-struct GenericNode
-{
-    void*        Vtable;     // +0x00
-    GenericNode* NextNode;   // +0x04
-    GenericNode* PrevNode;   // +0x08
-
-    // The guard retail spells out three times per unlink: `CMP ESI,EBX`,
-    // `CMP EBX,[ECX+4]`, `CMP EBX,[ECX+8]`, in that order.
-    __forceinline bool IsValid() const;
-    __forceinline void Unlink();
-    __forceinline void Link(GenericNode* node);
-    // What the GenericNode destructor collapses to once inlined: seat the base
-    // vtable, then unlink.
-    __forceinline void DestroyNode();
-    // What the GenericNode constructor collapses to. Retail writes the two
-    // links before the seat, so they are written in that order here.
-    __forceinline void InitNode();
-};
-
-GG_STATIC_ASSERT(offsetof(GenericNode, Vtable)   == 0x00 &&
-                 offsetof(GenericNode, NextNode) == 0x04 &&
-                 offsetof(GenericNode, PrevNode) == 0x08 &&
-                 sizeof(GenericNode) == 0x0C);
-
-// ---------------------------------------------------------------------------
-// GenericList - a head sentinel and a tail sentinel linked to each other.
-// The layout falls straight out of 0x52ACE0: `LEA ESI,[EAX+4]` is FirstNode
-// and `LEA EDX,[EAX+0x10]` is LastNode, so the list itself is 0x1C bytes.
-// ---------------------------------------------------------------------------
-struct GenericList
-{
-    void*       Vtable;      // +0x00
-    GenericNode FirstNode;   // +0x04
-    GenericNode LastNode;    // +0x10
-
-    // What the GenericList constructor collapses to: build both sentinels,
-    // seat the list, and link the head to the tail. It is shared by the plain
-    // list at 0x52ACE0 and the List<INIEntry*> instantiation at 0x52AF50,
-    // which carries the identical body with one extra seat store, so it is
-    // forced inline: cl emits a call rather than an expansion for an ordinary
-    // base constructor, and retail has no such call.
-    __forceinline void InitList();
-
-    // First() is the head sentinel's forward link, which is why INISection's
-    // destructor reads [ESI+0x18] for a list seated at +0x10.
-    GenericNode* First() const { return FirstNode.NextNode; }
-    __forceinline void DestroyList();
-};
-
 // The bare GenericList instantiation. Its constructor is the one class in the
 // cluster whose body is shared, so the constructor sits on a derived stand-in
 // rather than on GenericList itself: a user-declared base constructor would
@@ -166,29 +114,6 @@ struct GenericListObject : public GenericList
 GG_STATIC_ASSERT(offsetof(GenericList, FirstNode) == 0x04 &&
                  offsetof(GenericList, LastNode)  == 0x10 &&
                  sizeof(GenericList) == 0x1C);
-
-// ---------------------------------------------------------------------------
-// IndexClass, as seen from here. The layout is the one already confirmed in
-// match/core/index_class.h, and INISection's destructor re-proves it: the
-// table is freed from +0x2C and then +0x30, +0x34, +0x3C are zeroed as dwords
-// while +0x38 is zeroed as a byte (`MOV [ESI+0x38],BL`).
-// ---------------------------------------------------------------------------
-struct IndexClassRaw
-{
-    void* IndexTable;   // +0x00
-    int   IndexCount;   // +0x04
-    int   IndexSize;    // +0x08
-    char  IsSorted;     // +0x0C
-    void* Archive;      // +0x10
-
-    __forceinline void Clear();
-};
-
-GG_STATIC_ASSERT(offsetof(IndexClassRaw, IndexCount) == 0x04 &&
-                 offsetof(IndexClassRaw, IndexSize)  == 0x08 &&
-                 offsetof(IndexClassRaw, IsSorted)   == 0x0C &&
-                 offsetof(IndexClassRaw, Archive)    == 0x10 &&
-                 sizeof(IndexClassRaw) == 0x14);
 
 // ---------------------------------------------------------------------------
 // INIComment - one retained comment line. The destructors walk the chain
@@ -321,15 +246,9 @@ GG_STATIC_ASSERT(offsetof(CRCEngine, Index)         == 0x04 &&
                  sizeof(CRCEngine) == 0x0C);
 
 // ---------------------------------------------------------------------------
-// The two static line classifiers. Both take their buffer in ECX and pop
-// nothing, which for a one-pointer function is __fastcall.
+// The shared INIClass declares the two static line classifiers. Both take
+// their buffer in ECX and pop nothing (__fastcall).
 // ---------------------------------------------------------------------------
-struct INIClass
-{
-    // FUNCTION: GAMEMD 0x52AA90
-    static void __fastcall Strip_Comments(char* buffer);
-    // FUNCTION: GAMEMD 0x52AAC0
-    static bool __fastcall Line_Contains_Section(char* buffer);
-};
+
 
 #endif  // GG_MATCH_PLATFORM_INI_CLASS_NODE_METHODS_H
