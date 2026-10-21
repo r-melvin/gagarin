@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 153 remaining 73-byte deleting-destructor bodies are bound here through
-// 80 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 147 remaining 73-byte deleting-destructor bodies are bound here through
+// 77 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -68,8 +68,6 @@ extern char VT_007EA384;
 extern char VT_007EA404;
 // VTABLE: GAMEMD 0x007EA444 -- VectorClass<ParticleTypeClass*>
 extern char VT_007EA444;
-// VTABLE: GAMEMD 0x007EA964 -- VectorClass<HouseClass::StartingTechnoStruct*>
-extern char VT_007EA964;
 // VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>
 extern char VT_007EA984;
 // VTABLE: GAMEMD 0x007EA9A4 -- VectorClass<ScoutStruct>
@@ -108,8 +106,6 @@ extern char VT_007ED92C;
 extern char VT_007ED970;
 // VTABLE: GAMEMD 0x007EDA4C -- VectorClass<double>
 extern char VT_007EDA4C;
-// VTABLE: GAMEMD 0x007EE390 -- VectorClass<NodeNameType*>
-extern char VT_007EE390;
 // VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>
 extern char VT_007EEB74;
 // VTABLE: GAMEMD 0x007EEBB4 -- VectorClass<MapSelection*>
@@ -124,8 +120,6 @@ extern char VT_007EEAF4;
 extern char VT_007EEC24;
 // VTABLE: GAMEMD 0x007EEC44 -- VectorClass<MSSfx*>
 extern char VT_007EEC44;
-// VTABLE: GAMEMD 0x007EECAC -- VectorClass<HWND__*>
-extern char VT_007EECAC;
 // VTABLE: GAMEMD 0x007EECEC -- VectorClass<AcceleratorTracker>
 extern char VT_007EECEC;
 // VTABLE: GAMEMD 0x007EEE54 -- VectorClass<MultiplayerTeam*>

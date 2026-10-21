@@ -14013,7 +14013,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
   "addr": "0x0050e500",
   "sym": "?Clear@?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14319,7 +14319,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_nodenametype_methods.cpp",
   "addr": "0x005c5070",
   "sym": "?Clear@?$DynamicVectorClass@PAUNodeNameType@@@@UAEXXZ",
   "len": "0x2a",
@@ -14409,7 +14409,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_hwnd_methods.cpp",
   "addr": "0x005d5080",
   "sym": "?Clear@?$DynamicVectorClass@PAUHWND__@@@@UAEXXZ",
   "len": "0x2a",
@@ -16569,20 +16569,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
   "addr": "0x00510090",
   "sym": "??_G?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::`scalar deleting destructor'",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
   "addr": "0x005100E0",
-  "sym": "??_G?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17190,20 +17190,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_nodenametype_methods.cpp",
   "addr": "0x005C58A0",
   "sym": "??_G?$VectorClass@PAUNodeNameType@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<NodeNameType*>::`scalar deleting destructor'",
+  "name": "VectorClass<NodeNameType*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_nodenametype_methods.cpp",
   "addr": "0x005C58F0",
-  "sym": "??_G?$VectorClass@PAUNodeNameType@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUNodeNameType@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<NodeNameType*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<NodeNameType*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -17370,20 +17370,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_hwnd_methods.cpp",
   "addr": "0x005D56E0",
   "sym": "??_G?$VectorClass@PAUHWND__@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HWND__*>::`scalar deleting destructor'",
+  "name": "VectorClass<HWND__*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_hwnd_methods.cpp",
   "addr": "0x005D5730",
-  "sym": "??_G?$VectorClass@PAUHWND__@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAUHWND__@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<HWND__*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<HWND__*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -19422,7 +19422,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
   "addr": "0x0050ed10",
   "sym": "?Clear@?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19719,7 +19719,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_nodenametype_methods.cpp",
   "addr": "0x005c5480",
   "sym": "?Clear@?$VectorClass@PAUNodeNameType@@@@UAEXXZ",
   "len": "0x27",
@@ -19809,7 +19809,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_hwnd_methods.cpp",
   "addr": "0x005d5240",
   "sym": "?Clear@?$VectorClass@PAUHWND__@@@@UAEXXZ",
   "len": "0x27",
@@ -20754,11 +20754,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/vector_nodenametype_methods.cpp",
   "addr": "0x5C5510",
-  "sym": "?FUN_5C5510@VectorResizeFamily@@QAE_NHPAPAX@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUNodeNameType@@@@UAE_NHPAPAUNodeNameType@@@Z",
   "len": "0xb0",
-  "name": "VectorResizeFamily::FUN_5C5510",
+  "name": "DynamicVectorClass<NodeNameType*>::SetCapacity",
   "status": "matched",
   "pct": 100
  },
@@ -38412,12 +38412,255 @@
   "name": "DynamicVectorClass<GlobalPacketType*>::FindItemIndex"
  },
  {
-  "tu": "match/core/buffer_initializer_0043ad40.cpp",
+  "tu": "match/core/buffer_prefix_methods.cpp",
   "addr": "0x43AD40",
   "sym": "?FUN_0043AD40@FUN_0043AD40Prefix@@QAEPAU1@PAXH@Z",
   "len": "0x31",
   "name": "FUN_0043AD40",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "addr": "0x50E530",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBEHPAPAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::Slot5"
+ },
+ {
+  "addr": "0x50E550",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBEPAUStartingTechnoStruct@HouseClass@@H@Z",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::Slot6"
+ },
+ {
+  "addr": "0x50EC20",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "??8?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::operator=="
+ },
+ {
+  "addr": "0x50EC60",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAE_NHPAPAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::SetCapacity"
+ },
+ {
+  "addr": "0x50ED40",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBEHABQAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::FindItemIndex"
+ },
+ {
+  "addr": "0x50ED80",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBEHPAPAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "VectorClass<HouseClass::StartingTechnoStruct*>::Slot5"
+ },
+ {
+  "addr": "0x50EDA0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@UAE_NHPAPAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::SetCapacity"
+ },
+ {
+  "addr": "0x50EE50",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_startingtechnostruct_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@UBEHABQAUStartingTechnoStruct@HouseClass@@@Z",
+  "name": "DynamicVectorClass<HouseClass::StartingTechnoStruct*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5C50A0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUNodeNameType@@@@UBEHPAPAUNodeNameType@@@Z",
+  "name": "DynamicVectorClass<NodeNameType*>::Slot5"
+ },
+ {
+  "addr": "0x5C50C0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUNodeNameType@@@@UBEPAUNodeNameType@@H@Z",
+  "name": "VectorClass<NodeNameType*>::Slot6"
+ },
+ {
+  "addr": "0x5C5390",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "??8?$VectorClass@PAUNodeNameType@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<NodeNameType*>::operator=="
+ },
+ {
+  "addr": "0x5C53D0",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUNodeNameType@@@@UAE_NHPAPAUNodeNameType@@@Z",
+  "name": "VectorClass<NodeNameType*>::SetCapacity"
+ },
+ {
+  "addr": "0x5C54B0",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUNodeNameType@@@@UBEHABQAUNodeNameType@@@Z",
+  "name": "VectorClass<NodeNameType*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5C54F0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUNodeNameType@@@@UBEHPAPAUNodeNameType@@@Z",
+  "name": "VectorClass<NodeNameType*>::Slot5"
+ },
+ {
+  "addr": "0x5C55C0",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUNodeNameType@@@@UBEHABQAUNodeNameType@@@Z",
+  "name": "DynamicVectorClass<NodeNameType*>::FindItemIndex"
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43AD80",
+  "sym": "?FUN_0043AD80@FUN_0043AD80Prefix@@QAEPAU1@PAXH@Z",
+  "len": "0x31",
+  "name": "FUN_0043AD80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43ADF0",
+  "sym": "?FUN_0043ADF0@FUN_0043ADF0Prefix@@QAEPAU1@PBU1@@Z",
+  "len": "0x17",
+  "name": "FUN_0043ADF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43AEB0",
+  "sym": "?FUN_0043AEB0@FUN_0043AEB0Prefix@@QAEPAU1@PAXH@Z",
+  "len": "0x33",
+  "name": "FUN_0043AEB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/buffer_prefix_methods.cpp",
+  "addr": "0x43AEF0",
+  "sym": "?FUN_0043AEF0@FUN_0043AEF0Prefix@@QAEPAU1@H@Z",
+  "len": "0x1f",
+  "name": "FUN_0043AEF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "addr": "0x5D50B0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?Slot5@?$DynamicVectorClass@PAUHWND__@@@@UBEHPAPAUHWND__@@@Z",
+  "name": "DynamicVectorClass<HWND__*>::Slot5"
+ },
+ {
+  "addr": "0x5D50D0",
+  "len": "0xd",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?Slot6@?$VectorClass@PAUHWND__@@@@UBEPAUHWND__@@H@Z",
+  "name": "VectorClass<HWND__*>::Slot6"
+ },
+ {
+  "addr": "0x5D5150",
+  "len": "0x3e",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "??8?$VectorClass@PAUHWND__@@@@UBE_NABV0@@Z",
+  "name": "VectorClass<HWND__*>::operator=="
+ },
+ {
+  "addr": "0x5D5190",
+  "len": "0xae",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?SetCapacity@?$VectorClass@PAUHWND__@@@@UAE_NHPAPAUHWND__@@@Z",
+  "name": "VectorClass<HWND__*>::SetCapacity"
+ },
+ {
+  "addr": "0x5D5270",
+  "len": "0x33",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?FindItemIndex@?$VectorClass@PAUHWND__@@@@UBEHABQAUHWND__@@@Z",
+  "name": "VectorClass<HWND__*>::FindItemIndex"
+ },
+ {
+  "addr": "0x5D52B0",
+  "len": "0x1b",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?Slot5@?$VectorClass@PAUHWND__@@@@UBEHPAPAUHWND__@@@Z",
+  "name": "VectorClass<HWND__*>::Slot5"
+ },
+ {
+  "addr": "0x5D52D0",
+  "len": "0xb0",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?SetCapacity@?$DynamicVectorClass@PAUHWND__@@@@UAE_NHPAPAUHWND__@@@Z",
+  "name": "DynamicVectorClass<HWND__*>::SetCapacity"
+ },
+ {
+  "addr": "0x5D5380",
+  "len": "0x26",
+  "status": "matched",
+  "pct": 100,
+  "tu": "match/core/vector_hwnd_methods.cpp",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@PAUHWND__@@@@UBEHABQAUHWND__@@@Z",
+  "name": "DynamicVectorClass<HWND__*>::FindItemIndex"
  }
 ]

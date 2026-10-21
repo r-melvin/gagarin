@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 76
+//   Bytes matched against retail gamemd.exe v1.001 at 0x478440 and its 73
 //   siblings.
 //
 //   The retail class identity and slot binding are confirmed from the binary:
@@ -10,7 +10,7 @@
 //   and reset vector bookkeeping without reseating a vptr. The source template
 //   is VectorClass<T>::Clear, and the element argument is recovered from RTTI.
 //
-//   The 77 remaining addresses are bound to VectorClass<T> tables;
+//   The 74 remaining addresses are bound to VectorClass<T> tables;
 //   each table's complete object locator and body address were read from the
 //   retail binary. No destructor identity is inferred from the byte pattern.
 //
@@ -306,11 +306,6 @@ template class VectorClass<IsometricTileTypeClass*>;
 //   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
 template class VectorClass<ParticleTypeClass*>;
 
-// FUNCTION: GAMEMD 0x0050ED10
-// VectorClass<HouseClass::StartingTechnoStruct*> -- vtable 0x007EA964 slot 3; locator 0x00802BF0 -> type descriptor 0x008245F0
-//   `.?AV?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@`.
-template class VectorClass<HouseClass::StartingTechnoStruct*>;
-
 // FUNCTION: GAMEMD 0x0050EFD0
 // VectorClass<AngerStruct> -- vtable 0x007EA984 slot 3; locator 0x00802BC0 -> type descriptor 0x00824588
 //   `.?AV?$VectorClass@UAngerStruct@@@@`.
@@ -401,11 +396,6 @@ template class VectorClass<TRect<int> >;
 //   `.?AV?$VectorClass@N@@`.
 template class VectorClass<double>;
 
-// FUNCTION: GAMEMD 0x005C5480
-// VectorClass<NodeNameType*> -- vtable 0x007EE390 slot 3; locator 0x00806270 -> type descriptor 0x0082DBB0
-//   `.?AV?$VectorClass@PAUNodeNameType@@@@`.
-template class VectorClass<NodeNameType*>;
-
 // FUNCTION: GAMEMD 0x005D0920
 // VectorClass<Point2D> -- vtable 0x007EEB74 slot 3; locator 0x00806B88 -> type descriptor 0x00830380
 //   `.?AV?$VectorClass@VPoint2D@@@@`.
@@ -440,11 +430,6 @@ template class VectorClass<MSAnim*>;
 // VectorClass<MSSfx*> -- vtable 0x007EEC44 slot 3; locator 0x00806D18 -> type descriptor 0x00830500
 //   `.?AV?$VectorClass@PAVMSSfx@@@@`.
 template class VectorClass<MSSfx*>;
-
-// FUNCTION: GAMEMD 0x005D5240
-// VectorClass<HWND__*> -- vtable 0x007EECAC slot 3; locator 0x00806E28 -> type descriptor 0x008306D0
-//   `.?AV?$VectorClass@PAUHWND__@@@@`.
-template class VectorClass<HWND__*>;
 
 // FUNCTION: GAMEMD 0x005D5500
 // VectorClass<AcceleratorTracker> -- vtable 0x007EECEC slot 3; locator 0x00806EC0 -> type descriptor 0x00830728

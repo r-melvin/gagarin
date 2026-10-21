@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 75
+//   Bytes matched against retail gamemd.exe v1.001 at 0x477900 and its 72
 //   siblings.
 //
 //   Retail calls these bodies through slot 3 of the listed
@@ -301,11 +301,6 @@ template class DynamicVectorClass<IsometricTileTypeClass*>;
 //   `.?AV?$DynamicVectorClass@PAVParticleTypeClass@@@@`.
 template class DynamicVectorClass<ParticleTypeClass*>;
 
-// FUNCTION: GAMEMD 0x0050E500
-// DynamicVectorClass<HouseClass::StartingTechnoStruct*> -- vtable 0x007EA944 slot 3; locator 0x00802B60 -> type descriptor 0x00824638
-//   `.?AV?$DynamicVectorClass@PAUStartingTechnoStruct@HouseClass@@@@`.
-template class DynamicVectorClass<HouseClass::StartingTechnoStruct*>;
-
 // FUNCTION: GAMEMD 0x0050E560
 // DynamicVectorClass<AngerStruct> -- vtable 0x007EA924 slot 3; locator 0x00802AF8 -> type descriptor 0x008245B8
 //   `.?AV?$DynamicVectorClass@UAngerStruct@@@@`.
@@ -401,11 +396,6 @@ template class DynamicVectorClass<CellClass*>;
 //   `.?AV?$DynamicVectorClass@N@@`.
 template class DynamicVectorClass<double>;
 
-// FUNCTION: GAMEMD 0x005C5070
-// DynamicVectorClass<NodeNameType*> -- vtable 0x007EE370 slot 3; locator 0x00806210 -> type descriptor 0x0082DBE0
-//   `.?AV?$DynamicVectorClass@PAUNodeNameType@@@@`.
-template class DynamicVectorClass<NodeNameType*>;
-
 // FUNCTION: GAMEMD 0x005D05A0
 // DynamicVectorClass<Point2D> -- vtable 0x007EEB54 slot 3; locator 0x00806A88 -> type descriptor 0x008303A8
 //   `.?AV?$DynamicVectorClass@VPoint2D@@@@`.
@@ -440,11 +430,6 @@ template class DynamicVectorClass<MSAnim*>;
 // DynamicVectorClass<MSSfx*> -- vtable 0x007EEBE4 slot 3; locator 0x00806C50 -> type descriptor 0x00830528
 //   `.?AV?$DynamicVectorClass@PAVMSSfx@@@@`.
 template class DynamicVectorClass<MSSfx*>;
-
-// FUNCTION: GAMEMD 0x005D5080
-// DynamicVectorClass<HWND__*> -- vtable 0x007EEC8C slot 3; locator 0x00806DF8 -> type descriptor 0x008306F8
-//   `.?AV?$DynamicVectorClass@PAUHWND__@@@@`.
-template class DynamicVectorClass<HWND__*>;
 
 // FUNCTION: GAMEMD 0x005D50E0
 // DynamicVectorClass<AcceleratorTracker> -- vtable 0x007EECCC slot 3; locator 0x00806E90 -> type descriptor 0x00830760

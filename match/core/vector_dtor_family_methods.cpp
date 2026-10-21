@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 80 base-template instantiations reproduce 153 remaining retail destructor
+// 77 base-template instantiations reproduce 147 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -338,12 +338,6 @@ template class VectorClass<IsometricTileTypeClass*>;
 //   `.?AV?$VectorClass@PAVParticleTypeClass@@@@`.
 template class VectorClass<ParticleTypeClass*>;
 
-// FUNCTION: GAMEMD 0x00510090
-// FUNCTION: GAMEMD 0x005100E0
-// VectorClass<HouseClass::StartingTechnoStruct*> -- reseats retail vtable 0x007EA964; locator 0x00802BF0 -> type descriptor 0x008245F0
-//   `.?AV?$VectorClass@PAUStartingTechnoStruct@HouseClass@@@@`.
-template class VectorClass<HouseClass::StartingTechnoStruct*>;
-
 // FUNCTION: GAMEMD 0x00510130
 // FUNCTION: GAMEMD 0x00510180
 // VectorClass<AngerStruct> -- reseats retail vtable 0x007EA984; locator 0x00802BC0 -> type descriptor 0x00824588
@@ -455,12 +449,6 @@ template class VectorClass<TRect<int> >;
 //   `.?AV?$VectorClass@N@@`.
 template class VectorClass<double>;
 
-// FUNCTION: GAMEMD 0x005C58A0
-// FUNCTION: GAMEMD 0x005C58F0
-// VectorClass<NodeNameType*> -- reseats retail vtable 0x007EE390; locator 0x00806270 -> type descriptor 0x0082DBB0
-//   `.?AV?$VectorClass@PAUNodeNameType@@@@`.
-template class VectorClass<NodeNameType*>;
-
 // FUNCTION: GAMEMD 0x005D16C0
 // FUNCTION: GAMEMD 0x005D1710
 // VectorClass<Point2D> -- reseats retail vtable 0x007EEB74; locator 0x00806B88 -> type descriptor 0x00830380
@@ -502,12 +490,6 @@ template class VectorClass<MSAnim*>;
 // VectorClass<MSSfx*> -- reseats retail vtable 0x007EEC44; locator 0x00806D18 -> type descriptor 0x00830500
 //   `.?AV?$VectorClass@PAVMSSfx@@@@`.
 template class VectorClass<MSSfx*>;
-
-// FUNCTION: GAMEMD 0x005D56E0
-// FUNCTION: GAMEMD 0x005D5730
-// VectorClass<HWND__*> -- reseats retail vtable 0x007EECAC; locator 0x00806E28 -> type descriptor 0x008306D0
-//   `.?AV?$VectorClass@PAUHWND__@@@@`.
-template class VectorClass<HWND__*>;
 
 // FUNCTION: GAMEMD 0x005D5780
 // FUNCTION: GAMEMD 0x005D57D0
