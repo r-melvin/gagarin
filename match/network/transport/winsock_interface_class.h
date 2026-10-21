@@ -169,7 +169,9 @@ public:
     DynamicVectorClass<WinsockBufferType*> InBuffers;       // +0x08
     DynamicVectorClass<WinsockBufferType*> OutBuffers;      // +0x20
     DynamicVectorClass<WinsockBufferType*> AltOutBuffers;  // +0x38
-    unsigned char unknown_50[0x3F050 - 0x50];      // +0x50 .. +0x3F04F
+    WinsockBufferType StaticInBuffers[128];        // +0x50 .. +0x1504F
+    WinsockBufferType StaticOutBuffers[128];       // +0x15050 .. +0x2A04F
+    WinsockBufferType StaticAltOutBuffers[128];    // +0x2A050 .. +0x3F04F
     int StaticInBufferPos;                         // +0x3F050
     int StaticOutBufferPos;                        // +0x3F054
     int StaticAltOutBufferPos;                     // +0x3F058
@@ -210,6 +212,12 @@ GG_STATIC_ASSERT(offsetof(WinsockBufferVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, InBuffers) == 0x08);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, OutBuffers) == 0x20);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, AltOutBuffers) == 0x38);
+GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticInBuffers) == 0x50);
+GG_STATIC_ASSERT(sizeof(((WinsockInterfaceClass*)0)->StaticInBuffers) == 0x15000);
+GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticOutBuffers) == 0x15050);
+GG_STATIC_ASSERT(sizeof(((WinsockInterfaceClass*)0)->StaticOutBuffers) == 0x15000);
+GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticAltOutBuffers) == 0x2A050);
+GG_STATIC_ASSERT(sizeof(((WinsockInterfaceClass*)0)->StaticAltOutBuffers) == 0x15000);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticInBufferPos) == 0x3F050);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticOutBufferPos) == 0x3F054);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticAltOutBufferPos) == 0x3F058);

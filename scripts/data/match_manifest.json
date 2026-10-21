@@ -9861,7 +9861,7 @@
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C610",
   "sym": "?DeletingDtor@FileClass@@UAEPAXI@Z",
-  "len": "0x1e",
+  "len": "0x20",
   "name": "DeletingDtor",
   "status": "matched",
   "pct": 100
@@ -12534,7 +12534,7 @@
   "tu": "match/core/techno_class.cpp",
   "addr": "0x4734B0",
   "sym": "?RemovePassenger@PassengersClass@@QAEXPAVFootClass@@@Z",
-  "len": "0x48",
+  "len": "0x4a",
   "name": "PassengersClass::RemovePassenger",
   "status": "matched",
   "pct": 100
@@ -12543,7 +12543,7 @@
   "tu": "match/core/techno_class.cpp",
   "addr": "0x473500",
   "sym": "?IndexOf@PassengersClass@@QBEHPAVFootClass@@@Z",
-  "len": "0x30",
+  "len": "0x32",
   "name": "PassengersClass::IndexOf",
   "status": "matched",
   "pct": 100
@@ -22713,7 +22713,7 @@
   "tu": "match/economy/house_class_prerequisites_methods.cpp",
   "addr": "0x505360",
   "sym": "?AllPrerequisitesAvailable@House_00505360@@QAE_NPAUTechnoType_00505360@@PAUBuildingVector_00505360@@H@Z",
-  "len": "0x129",
+  "len": "0x144",
   "name": "HouseClass::AllPrerequisitesAvailable",
   "status": "matched",
   "pct": 100
@@ -27251,7 +27251,7 @@
   "tu": "match/platform/ccini_class_methods.cpp",
   "addr": "0x679F40",
   "sym": "?Exists@CCINIClass@@QAE_NPBD0@Z",
-  "len": "0x2D",
+  "len": "0x2f",
   "name": "Exists",
   "status": "matched",
   "pct": 100
@@ -34575,7 +34575,7 @@
  },
  {
   "addr": "0x4E8CF0",
-  "len": "0x0C",
+  "len": "0x1b",
   "status": "matched",
   "pct": 100,
   "tu": "match/core/vector_smudgetypeclass_methods.cpp",
@@ -38031,7 +38031,7 @@
  },
  {
   "addr": "0x4C2E20",
-  "len": "0xa7",
+  "len": "0xb0",
   "status": "matched",
   "pct": 100,
   "tu": "match/core/vector_ebolt_methods.cpp",
@@ -38103,7 +38103,7 @@
  },
  {
   "addr": "0x65A3C0",
-  "len": "0xa7",
+  "len": "0xb0",
   "status": "matched",
   "pct": 100,
   "tu": "match/core/vector_radbeam_methods.cpp",
@@ -46291,6 +46291,195 @@
   "sym": "?MessageForSocket@IPXInterfaceClass@@UAEIH@Z",
   "len": "0x8",
   "name": "IPXInterfaceClass::MessageForSocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_buffer_allocators.cpp",
+  "addr": "0x7B20E0",
+  "sym": "?AllocOutBuffer@WinsockInterfaceClass@@QAEPAUWinsockBufferType@1@_N@Z",
+  "len": "0x152",
+  "name": "WinsockInterfaceClass::AllocOutBuffer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/winsock_interface_buffer_allocators.cpp",
+  "addr": "0x7B2240",
+  "sym": "?AllocInBuffer@WinsockInterfaceClass@@QAEPAUWinsockBufferType@1@XZ",
+  "len": "0x9c",
+  "name": "WinsockInterfaceClass::AllocInBuffer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B2F90",
+  "sym": "?ClearBroadcastAddresses@UDPInterfaceClass@@UAEXXZ",
+  "len": "0x5b",
+  "name": "UDPInterfaceClass::ClearBroadcastAddresses",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B2FF0",
+  "sym": "?AddBroadcastAddress@UDPInterfaceClass@@UAEXPBDG@Z",
+  "len": "0xb1",
+  "name": "UDPInterfaceClass::AddBroadcastAddress",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B30B0",
+  "sym": "?OpenPrimarySocket@UDPInterfaceClass@@UAE_NG@Z",
+  "len": "0x127",
+  "name": "UDPInterfaceClass::OpenPrimarySocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B31E0",
+  "sym": "?OpenSpareSocket@UDPInterfaceClass@@UAE_NG@Z",
+  "len": "0x128",
+  "name": "UDPInterfaceClass::OpenSpareSocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3310",
+  "sym": "?CloseSpareSocket@UDPInterfaceClass@@UAEXG@Z",
+  "len": "0xbc",
+  "name": "UDPInterfaceClass::CloseSpareSocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B33D0",
+  "sym": "?SelectSpareSocket@UDPInterfaceClass@@UAEXG@Z",
+  "len": "0x5c",
+  "name": "UDPInterfaceClass::SelectSpareSocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3430",
+  "sym": "?StartupWinsockInit@UDPInterfaceClass@@UAE_NXZ",
+  "len": "0x1e",
+  "name": "UDPInterfaceClass::StartupWinsockInit",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3450",
+  "sym": "?Init@UDPInterfaceClass@@UAE_NH@Z",
+  "len": "0x270",
+  "name": "UDPInterfaceClass::Init",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B36C0",
+  "sym": "?SendPacket@UDPInterfaceClass@@UAEXPAXH0H_NEG@Z",
+  "len": "0x5d",
+  "name": "UDPInterfaceClass::SendPacket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3720",
+  "sym": "?Broadcast@UDPInterfaceClass@@UAEXPAXH_N@Z",
+  "len": "0x165",
+  "name": "UDPInterfaceClass::Broadcast",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3890",
+  "sym": "?StartListening@UDPInterfaceClass@@UAE_NXZ",
+  "len": "0x6c",
+  "name": "UDPInterfaceClass::StartListening",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3900",
+  "sym": "?StopListening@UDPInterfaceClass@@UAEXXZ",
+  "len": "0x11",
+  "name": "UDPInterfaceClass::StopListening",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3920",
+  "sym": "?MarkAddressUnreachable@UDPInterfaceClass@@UAEXPAEG@Z",
+  "len": "0xa6",
+  "name": "UDPInterfaceClass::MarkAddressUnreachable",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B3A20",
+  "sym": "?CloseAllSpareSockets@UDPInterfaceClass@@UAEXXZ",
+  "len": "0x7f",
+  "name": "UDPInterfaceClass::CloseAllSpareSockets",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B40F0",
+  "sym": "?Slot13@UDPInterfaceClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "UDPInterfaceClass::Slot13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B4100",
+  "sym": "?MessageForSocket@UDPInterfaceClass@@UAEIH@Z",
+  "len": "0x36",
+  "name": "UDPInterfaceClass::MessageForSocket",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B4140",
+  "sym": "?GetNumLocalAddresses@UDPInterfaceClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "UDPInterfaceClass::GetNumLocalAddresses",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B4150",
+  "sym": "?GetLocalAddress@UDPInterfaceClass@@UAEPAEH@Z",
+  "len": "0x10",
+  "name": "UDPInterfaceClass::GetLocalAddress",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/udp_interface_class_methods.cpp",
+  "addr": "0x7B4160",
+  "sym": "?GetPrimaryPort@UDPInterfaceClass@@UAEGXZ",
+  "len": "0x8",
+  "name": "UDPInterfaceClass::GetPrimaryPort",
   "status": "matched",
   "pct": 100
  }

@@ -3,10 +3,11 @@
 **gagarin** is reconstructing the *Command & Conquer: Red Alert 2 — Yuri's
 Revenge* engine from retail `gamemd.exe` v1.001. The aim is a buildable,
 structured, human-readable C++ project whose classes and organization follow
-Westwood's as closely as binary evidence allows. The ultimate goal is an
-integrated build that reproduces the complete pinned executable byte for byte.
-That goal has not been achieved; function-level matching and successful
-compilation do not prove whole-image identity.
+Westwood's as closely as binary evidence allows. Each annotated engine function
+aims to reproduce the retail instructions with the period compiler, including
+verified layouts and address bindings. Statically linked library code is outside
+source-recovery scope. Function matching and successful compilation do not prove
+whole-image identity.
 
 The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is

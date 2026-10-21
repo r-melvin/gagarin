@@ -13,8 +13,6 @@ extern "C" __declspec(dllimport) int __stdcall GetSystemMetrics(int nIndex);
 // calls (reloc-normalised by the differ).
 //   0x53EC90 — low-level key-state probe; key passed in ECX (__fastcall).
 short __fastcall InputManager_KeyState(unsigned int key);   // 0x53EC90
-//   0x5D4D50 — message-pump pulse; no arguments.
-void InputManager_Pump();                                   // 0x5D4D50
 
 // FUNCTION: GAMEMD 0x54F5C0  InputManagerClass::IsKeyPressed (__thiscall)
 bool InputManagerClass::IsKeyPressed(int key) const
@@ -32,9 +30,9 @@ bool InputManagerClass::IsKeyPressed(int key) const
 void InputManagerClass::DoSomething()
 {
     if ((this->field_318 + 1) % 256 != this->field_314)
-        InputManager_Pump();
+        FUN_005D4D50();
     this->field_314 = this->field_318;
     if ((this->field_318 + 1) % 256 != this->field_318)
-        InputManager_Pump();
+        FUN_005D4D50();
     this->field_314 = this->field_318;
 }

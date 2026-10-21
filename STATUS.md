@@ -1,5 +1,46 @@
 # Project status
 
+As of **2026-10-21**, the verified snapshot reports **4,941 matched function
+rows**, **207 partial rows**, **5,148 manifest rows**, **1,058 manifest
+translation units**, and **1,068 tracked C++ files**. Whole-repository matching,
+compile/layout checks, the project object build and 112 tooling tests pass.
+There are zero matched regressions and zero annotation issues across 5,181
+body addresses. Thirty-six saved partial baselines remain unchanged.
+
+The latest batch adds 19 ordinary UDP interface methods and two Winsock buffer
+allocators as native C++. The allocator evidence replaces an opaque base-class
+region with three 128-entry buffer pools. A shared declaration also unifies
+three callers of the helper at `0x5D4D50`, whose original name remains unknown.
+The 21 new functions and three existing callers pass raw and strict checks
+across 106 relocation fields without weak defaults. All 20 UDP string literals
+agree with the binary. The 31-slot retail UDP table is recorded; emitted-table
+selection and lifetime methods remain deferred.
+All 258 affected prior rows preserve their bytes and relocation offsets,
+using the full emitted sections for three partial rows whose requested retail
+spans cannot be extracted from their shorter or crossing-relocation objects.
+
+The [function extent audit](scripts/data/function_extent_audit.json) now records
+52 corrected comparison spans: 22 incomplete return operands, eight reachable
+code tails, and 22 switch-table or alignment tails. All expanded spans match. Earlier
+corrections exposed two source errors in `WhatAmI == 15` dispatch, now fixed.
+The audit verifies 144 newly covered local relocation fields. These span checks
+are not a proof that every function boundary in the project is complete.
+
+Matched lengths total **361,902 bytes**: 25.0% of listed functions and 9.5%
+of listed function lengths. The padding heuristic misses 309 matched entries.
+The diagnostic link reports **3,627 unique unresolved symbols**, **5,537
+reference lines**, and zero duplicate definitions. Engine link closure remains
+unfinished; per-function checks do not establish whole-executable identity.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: IPX methods and initial extent audit
+
 As of **2026-10-21**, the verified snapshot reports **4,920 matched function
 rows**, **207 partial rows**, **5,127 manifest rows**, **1,056 manifest
 translation units**, and **1,066 tracked C++ files**. Whole-repository matching,
@@ -29,13 +70,6 @@ of listed function lengths. The padding heuristic misses 306 matched entries.
 The diagnostic link reports **3,627 unique unresolved symbols**, **5,517
 reference lines**, and zero duplicate definitions. Engine link closure and
 whole-executable reproduction remain unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: ordinary Winsock methods and input declarations
 
@@ -2318,17 +2352,16 @@ plus one separate DiskID stand-in, and 19 address-specific resize views.
 
 **gagarin** reconstructs the *Command & Conquer: Red Alert 2 — Yuri's Revenge*
 engine, retail `gamemd.exe` **v1.001**, as a coherent, human-readable C++ project.
-The ultimate goal is a buildable, structured C++ project that reproduces the
-complete v1.001 `gamemd.exe` byte for byte. Its classes, inheritance,
-interfaces, source organization and coding style should be as close to
-Westwood's original project as the evidence allows. Preserving the engine through
-this reconstruction is the deliverable: readable C++, shared engine types and
-implementations, and an integrated build. This goal has not been achieved;
-reconstruction is in progress.
+The goal is a buildable, structured C++ project whose classes, inheritance,
+interfaces and source organization follow Westwood's as closely as binary
+evidence allows. Each annotated engine function must reproduce the retail
+instructions with the period compiler, with confirmed layouts and bindings.
+Statically linked CRT and third-party source recovery is outside scope.
+Reconstruction and integrated engine linking remain in progress.
 
-Per-function instruction matching under the MSVC 6-era toolchain is an
-intermediate fidelity check. The final target requires an integrated project
-build and a comparison of the complete executable, without byte masking.
+The function is the unit of matching. Successful compilation and individual
+matches do not establish whole-executable identity, and the project does not
+promise a byte-identical executable.
 
 ## Why
 
@@ -2394,7 +2427,7 @@ structure has been recovered.
 | Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
 | Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py); the engine has not been linked. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
-| Complete executable reproduction | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | Reproduce and compare the entire pinned PE file byte for byte, including code, data, headers, imports, relocations and resources; account for library dependencies and deterministic build metadata. |
+| Whole-image identity | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | No byte-identical executable is promised; retain per-function verification as the matching standard. |
 | Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
 
 Address-scoped matching files and narrow layout views are working forms, not the
@@ -2613,10 +2646,10 @@ the engine scope and structural audit provide a defensible denominator.
 
 | Measure | Count | Share |
 | --- | --- | --- |
-| Functions matched at 100% | **4,920** | **24.9%** of 19,753 |
-| Sum of matched function lengths | 358,588 bytes | 9.4% of 3,797,269 listed function bytes |
+| Functions matched at 100% | **4,941** | **25.0%** of 19,753 |
+| Sum of matched function lengths | 361,902 bytes | 9.5% of 3,797,269 listed function bytes |
 | Functions in progress (partial match) | 207 | 1.0% |
-| Tracked C++ files under `match/` | 1,066 | |
+| Tracked C++ files under `match/` | 1,068 | |
 | Entries in the Ghidra `.text` function list (includes CRT/third-party) | 19,753 | |
 
 Counts and matched lengths come from the [manifest](scripts/data/match_manifest.json).
@@ -2636,7 +2669,7 @@ A raw `.text` [padding scan](scripts/orchestration/padding_scan.py) finds
 19,077 byte-pattern candidates: aligned positions following `CC`/`90` runs.
 Of these, 801 are absent from the saved Ghidra function list: 742 fall inside
 listed bounding spans and 59 outside them. The heuristic also misses 1,477
-listed entries, including 306 matched entries. Its candidate count is therefore
+listed entries, including 309 matched entries. Its candidate count is therefore
 **not an upper bound on the function count**. The current
 [review list](scripts/data/padding_scan.json) records 789 unclaimed candidates,
 including 47 outside listed bounding spans.
@@ -2652,9 +2685,9 @@ python3 scripts/orchestration/padding_scan.py /path/to/gamemd.exe \
 
 The function export is produced by `ghidra function list --limit 100000 --json`.
 Source recovery of statically linked CRT and third-party code is outside the
-matching scope under [AGENTS.md](AGENTS.md). Their bytes still belong to the
-complete executable reproduction target, so the build must account for those
-dependencies. Per-function matching does not prove whole-image identity.
+matching scope under [AGENTS.md](AGENTS.md). An integrated engine link still
+needs those library dependencies. Per-function matching does not prove
+whole-image identity.
 
 ## What "matched" means
 

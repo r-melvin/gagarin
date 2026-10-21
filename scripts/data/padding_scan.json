@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "007980f415daf138b41631ece336a16ac50d5009e8270517f99ba8a30e77540e",
+  "manifest_sha256": "4a6498fda5d4c6b8db77813f440ad58afda1606428bff12dfe1e49a823d976f1",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 4920,
-  "matched_entries_missed": 306,
+  "matched_entries": 4941,
+  "matched_entries_missed": 309,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -6668,9 +6668,27 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x7B20E0",
+   "tu": "match/network/transport/winsock_interface_buffer_allocators.cpp",
+   "name": "WinsockInterfaceClass::AllocOutBuffer",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x7B2AD0",
    "tu": "match/core/vector_winsockbuffer_methods.cpp",
    "name": "DynamicVectorClass<WinsockInterfaceClass::WinsockBufferType*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7B36C0",
+   "tu": "match/network/transport/udp_interface_class_methods.cpp",
+   "name": "UDPInterfaceClass::SendPacket",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7B4160",
+   "tu": "match/network/transport/udp_interface_class_methods.cpp",
+   "name": "UDPInterfaceClass::GetPrimaryPort",
    "reason": "no-preceding-CC-or-90"
   },
   {

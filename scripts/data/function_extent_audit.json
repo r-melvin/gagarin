@@ -9,15 +9,15 @@
     "scripts/vc6/verify_relocations.py"
   ],
   "summary": {
-    "corrected_spans": 44,
-    "ret_imm16_truncations": 18,
-    "reachable_code_tails": 5,
-    "switch_table_or_alignment_tails": 21,
+    "corrected_spans": 52,
+    "ret_imm16_truncations": 22,
+    "reachable_code_tails": 8,
+    "switch_table_or_alignment_tails": 22,
     "source_corrections": 2,
     "all_expanded_spans_normalized_raw_exact": true,
-    "newly_covered_same_section_relocation_fields_verified": 138
+    "newly_covered_same_section_relocation_fields_verified": 144
   },
-  "scope": "Complete annotated spans including ret operands and compiler-emitted jump/index tables; not a proof of all layouts, vtables, referenced data contents or complete image identity. Object hashes identify this local build and can depend on build paths.",
+  "scope": "Known corrected spans were checked against the pinned PE and current indexed VC6 objects. The 4,920-row scan used object-side CFG and relocation signals to select leads, then reviewed those leads in entry-origin retail disassembly; it is not a complete CFG proof and does not prove all layouts, vtables, referenced data contents or complete image identity. Compiler-emitted jump/index tables are included where the selected function COMDAT contains them and the raw comparison covers them.",
   "functions": [
     {
       "address": "0x0040DD20",
@@ -108,6 +108,36 @@
       "newly_covered_relocation_targets_verified": true
     },
     {
+      "address": "0x4734B0",
+      "source": "match/core/techno_class.cpp",
+      "symbol": "?RemovePassenger@PassengersClass@@QAEXPAVFootClass@@@Z",
+      "old_size": 72,
+      "corrected_size": 74,
+      "reason": "ret_imm16_truncation",
+      "normalized_raw_match": true,
+      "source_sha256": "d3fb7ce8b1b6c177d96d2464f801fc04f195221247c7d0e534c4aaef3c1468cf",
+      "object_sha256": "cf804543810ec068d79b04d56f1426d40aac1f9fc47f7f23a6e2e510dacce3b1",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Reachable RET 4 starts at 0x4734f7 (C2 04 00); old span ended after the opcode. The complete instruction ends at 0x4734fa."
+    },
+    {
+      "address": "0x473500",
+      "source": "match/core/techno_class.cpp",
+      "symbol": "?IndexOf@PassengersClass@@QBEHPAVFootClass@@@Z",
+      "old_size": 48,
+      "corrected_size": 50,
+      "reason": "ret_imm16_truncation",
+      "normalized_raw_match": true,
+      "source_sha256": "d3fb7ce8b1b6c177d96d2464f801fc04f195221247c7d0e534c4aaef3c1468cf",
+      "object_sha256": "cf804543810ec068d79b04d56f1426d40aac1f9fc47f7f23a6e2e510dacce3b1",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Reachable RET 4 starts at 0x47352f (C2 04 00); old span ended after the opcode. The complete instruction ends at 0x473532."
+    },
+    {
       "address": "0x0047EBF0",
       "source": "match/map/cell_class_occupier_methods.cpp",
       "symbol": "?GetAircraft@CellClass@@QBEPAUAircraftClass@@_N@Z",
@@ -148,6 +178,21 @@
       "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
       "newly_covered_relocation_fields": 0,
       "newly_covered_relocation_targets_verified": true
+    },
+    {
+      "address": "0x4C2E20",
+      "source": "match/core/vector_ebolt_methods.cpp",
+      "symbol": "?SetCapacity@?$DynamicVectorClass@PAVEBolt@@@@UAE_NHPAPAVEBolt@@@Z",
+      "old_size": 167,
+      "corrected_size": 176,
+      "reason": "reached_code_tail",
+      "normalized_raw_match": true,
+      "source_sha256": "48b2e4d72e31b90465b6ca09b6314f3cb3424d59bfdef9c1bdebe9af94a7564e",
+      "object_sha256": "7ca3283ee099d8bf86dbed8bcb5fa4ad5f746bfdfe849effd2ccaedd07a85f3e",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Retail JE at 0x4c2e56 targets 0x4c2ec7, the old span end. The target is the same function epilogue; its RET 8 ends at 0x4c2ed0."
     },
     {
       "address": "0x004CA670",
@@ -206,6 +251,21 @@
       "newly_covered_relocation_targets_verified": true
     },
     {
+      "address": "0x4E8CF0",
+      "source": "match/core/vector_smudgetypeclass_methods.cpp",
+      "symbol": "?Slot5@?$DynamicVectorClass@PAVSmudgeTypeClass@@@@UBEHPAPAVSmudgeTypeClass@@@Z",
+      "old_size": 12,
+      "corrected_size": 27,
+      "reason": "reached_code_tail",
+      "normalized_raw_match": true,
+      "source_sha256": "92408539de0d39426ad955709c67530e2ccfd229b1e569df5a16f807452246ea",
+      "object_sha256": "8c7cc6490d7d1d9f6076f5e0cdf2397250ee7e8f0af5faa8c7aebaf102dec8e3",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Retail conditional branch at 0x4e8cf5 targets 0x4e8cfc, the old span end. That path continues through MOV/SUB/SHR and RET 4; full reachable code ends at 0x4e8d0b."
+    },
+    {
       "address": "0x004FB6B0",
       "source": "match/economy/house_class_register_built_methods.cpp",
       "symbol": "?RegisterJustBuilt@House_004FB6B0@@QAEXPAUTechno_004FB6B0@@@Z",
@@ -246,6 +306,73 @@
       "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
       "newly_covered_relocation_fields": 5,
       "newly_covered_relocation_targets_verified": true
+    },
+    {
+      "address": "0x505360",
+      "source": "match/economy/house_class_prerequisites_methods.cpp",
+      "symbol": "?AllPrerequisitesAvailable@House_00505360@@QAE_NPAUTechnoType_00505360@@PAUBuildingVector_00505360@@H@Z",
+      "old_size": 297,
+      "corrected_size": 324,
+      "reason": "switch_table_tail",
+      "normalized_raw_match": true,
+      "source_sha256": "e915c28e1f8fca46d29ae7e7f7a215fad629e0cecf94282af2737c82b01a4907",
+      "object_sha256": "ae32a4202b368fa6fc433acdd79488310c304c9bb2fcbbc04b6e3c6eaaf2ac87",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
+      "newly_covered_relocation_fields": 6,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "The in-span indirect switch at 0x5053d2 reads six DWORDs at 0x50548c..0x5054a3. The initialized COFF .text COMDAT contains the table at section offset 0x12c and six DIR32 relocations to local labels; extending length to 0x144 includes three alignment bytes and the table and raw-matches at 100%. This is compiler-emitted data in the same function section, not a separate global.",
+      "full_span_strict_relocation_fields": 14,
+      "same_section_relocations": [
+        {
+          "offset": 117,
+          "kind": "DIR32",
+          "symbol_offset": 300,
+          "target": "0x50548c",
+          "new_field": false
+        },
+        {
+          "offset": 300,
+          "kind": "DIR32",
+          "symbol_offset": 189,
+          "target": "0x50541d",
+          "new_field": true
+        },
+        {
+          "offset": 304,
+          "kind": "DIR32",
+          "symbol_offset": 175,
+          "target": "0x50540f",
+          "new_field": true
+        },
+        {
+          "offset": 308,
+          "kind": "DIR32",
+          "symbol_offset": 162,
+          "target": "0x505402",
+          "new_field": true
+        },
+        {
+          "offset": 312,
+          "kind": "DIR32",
+          "symbol_offset": 148,
+          "target": "0x5053f4",
+          "new_field": true
+        },
+        {
+          "offset": 316,
+          "kind": "DIR32",
+          "symbol_offset": 134,
+          "target": "0x5053e6",
+          "new_field": true
+        },
+        {
+          "offset": 320,
+          "kind": "DIR32",
+          "symbol_offset": 121,
+          "target": "0x5053d9",
+          "new_field": true
+        }
+      ]
     },
     {
       "address": "0x00509140",
@@ -402,6 +529,21 @@
       "newly_covered_relocation_targets_verified": true
     },
     {
+      "address": "0x65A3C0",
+      "source": "match/core/vector_radbeam_methods.cpp",
+      "symbol": "?SetCapacity@?$DynamicVectorClass@PAVRadBeam@@@@UAE_NHPAPAVRadBeam@@@Z",
+      "old_size": 167,
+      "corrected_size": 176,
+      "reason": "reached_code_tail",
+      "normalized_raw_match": true,
+      "source_sha256": "83847ef38be0f9b4590b6e0305a674634d605333f6af0491ab8b74c891cd58f4",
+      "object_sha256": "d95892db6a7e4521c105e2a727524fe8c1fb4609268b492c632408b20f8c8282",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Retail JE at 0x65a3f6 targets 0x65a467, the old span end. The target is the same function epilogue; its RET 8 ends at 0x65a470."
+    },
+    {
       "address": "0x0065ADF0",
       "source": "match/core/radio_class_methods.cpp",
       "symbol": "?HasFreeLinkFor@RadioClass@@QBE_NPAV1@@Z",
@@ -428,6 +570,36 @@
       "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
       "newly_covered_relocation_fields": 0,
       "newly_covered_relocation_targets_verified": true
+    },
+    {
+      "address": "0x65C610",
+      "source": "match/core/ram_file_class.cpp",
+      "symbol": "?DeletingDtor@FileClass@@UAEPAXI@Z",
+      "old_size": 30,
+      "corrected_size": 32,
+      "reason": "ret_imm16_truncation",
+      "normalized_raw_match": true,
+      "source_sha256": "043cf0678cf184227c46b29f858635d0afa38ce74e356121fc4fd1f2c308e1d3",
+      "object_sha256": "8169196068b8abed00d7d599b672b31e1e3a6f0617d2dfc7ba297d87a7d8ec56",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Retail RET 4 starts at 0x65C62d (C2 04 00); old span ended after the opcode and omitted its 16-bit stack-pop immediate."
+    },
+    {
+      "address": "0x679F40",
+      "source": "match/platform/ccini_class_methods.cpp",
+      "symbol": "?Exists@CCINIClass@@QAE_NPBD0@Z",
+      "old_size": 45,
+      "corrected_size": 47,
+      "reason": "ret_imm16_truncation",
+      "normalized_raw_match": true,
+      "source_sha256": "b166cdc62d00bf312e5177e35fb733f100f887b905884ecfef76c687145bc6ed",
+      "object_sha256": "108d2b3c1bdd437d52a20c257ba77fc928c38a955ddfa9466d77a26cb4efc68e",
+      "compiler_flags": "/nologo /c /O2 /DNDEBUG /Gy /GX",
+      "newly_covered_relocation_fields": 0,
+      "newly_covered_relocation_targets_verified": true,
+      "boundary_evidence": "Reachable RET 8 starts at 0x679f6c (C2 08 00); old span ended after the opcode. The complete instruction ends at 0x679f6f."
     },
     {
       "address": "0x0067A6B0",
@@ -639,5 +811,18 @@
       "newly_covered_relocation_fields": 0,
       "newly_covered_relocation_targets_verified": true
     }
-  ]
+  ],
+  "verification_snapshot": {
+    "span_scan_base_revision": "e51eaeb0103ce04a689cdc126ca203a9be366f52",
+    "matched_rows_examined": 4920,
+    "object_cfg_leads": 54,
+    "retail_confirmed_executable_span_errors": 7,
+    "retail_confirmed_table_dependencies_outside_old_span": 1,
+    "other_leads_not_confirmed": 46,
+    "expanded_rows_revalidated_against_current_manifest_and_objects": 8,
+    "current_manifest_sha256": "4a6498fda5d4c6b8db77813f440ad58afda1606428bff12dfe1e49a823d976f1",
+    "current_objects_index_sha256": "38033e9baa705cde4b79a5ea532c54f2974820f5fea831cc3a8a13297eb12642",
+    "current_objects_index_input_snapshot_unchanged": true,
+    "notes": "Current object hashes for new rows are from this verification snapshot; historical rows retain their original build-object hashes. New source hashes were cross-checked against current tracked source bytes. Object hashes may vary with local build paths."
+  }
 }

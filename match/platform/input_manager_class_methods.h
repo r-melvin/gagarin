@@ -41,4 +41,9 @@ GG_STATIC_ASSERT(offsetof(InputManagerClass, field_318) + sizeof(((InputManagerC
 // GLOBAL: GAMEMD 0x87F770 — shared input manager pointer.
 extern InputManagerClass* DAT_0087F770;
 
+// FUNCTION: GAMEMD 0x5D4D50 (decl; reloc) -- shared free call view.
+// These callers supply no arguments and discard the result; the original
+// source name and return type are not established by those calls.
+void __cdecl FUN_005D4D50();
+
 #endif  // GG_MATCH_PLATFORM_INPUT_MANAGER_CLASS_METHODS_H
