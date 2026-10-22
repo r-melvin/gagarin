@@ -152,9 +152,9 @@ void ObjectClass::vf_23()
                     AnimClass* anim = (AnimClass*)this;
                     if (((AnimTypeClass*)anim->Type)->IsFlamingGuy) {
                         anim->FlamingGuyExpire = 1;
-                        anim->Animation.Rate = 1;
-                        anim->Animation.Timer = TimerStarted(1);
-                        anim->Animation.Value = ((AnimTypeClass*)anim->Type)->RunningFrames * 8 + 1;
+                        anim->Rate = 1;
+                        anim->Timer = TimerStarted(1);
+                        anim->Value = ((AnimTypeClass*)anim->Type)->RunningFrames * 8 + 1;
                         CoordStruct coord = anim->Location;
                         if (DAT_0087F7E8.FUN_00565730(&coord)->unknown_EC == 2) {
                             new AnimClass(DAT_008871E0->unknown_BC4[0], CoordRaised(anim->Location, 3), 0, 1, 0x600, 0, false);

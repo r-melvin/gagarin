@@ -1877,9 +1877,9 @@
  {
   "tu": "match/combat/flash_data_methods.cpp",
   "addr": "0x4CC770",
-  "sym": "?Update@FlashData@@QAE_NXZ",
+  "sym": "?Update@FlasherClass@@QAE_NXZ",
   "len": "0x1B",
-  "name": "FlashData::Update",
+  "name": "FlasherClass::Update",
   "status": "matched",
   "pct": 100
  },

@@ -980,7 +980,7 @@ void FUN_0070D180(char value)
 // FUNCTION: GAMEMD 0x70D190
 int TechnoClass::vf_281(int a1)
 {
-    if ((this->Flashing.DurationRemaining & 2) == 2) {
+    if ((this->DurationRemaining & 2) == 2) {
         return (a1 > 1500) ? 500 : 2000;
     }
     return a1;

@@ -22,6 +22,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "flasher_class.h"
 #include "radio_class.h"      // RadioClass spine + CDTimerClass + CoordStruct + AudioController
 #include "vector_class.h"     // VectorClass / DynamicVectorClass
 
@@ -29,18 +30,6 @@
 // Self-guarded so a downstream layer (FootClass and the leaf classes) can reuse
 // them. CDTimerClass / CoordStruct / AudioController come from the included
 // chain (mission_class.h / object_class.h).
-
-// FlashData — health-flash blink state (sizeof = 8).
-#ifndef GG_MATCH_LAYOUT_FLASHDATA_DEFINED
-#define GG_MATCH_LAYOUT_FLASHDATA_DEFINED
-struct FlashData
-{
-    int           DurationRemaining;   // +0x00
-    unsigned char FlashingNow;         // +0x04  (bool)
-    unsigned char _pad_05[3];          // +0x05
-};
-GG_STATIC_ASSERT(sizeof(FlashData) == 8);
-#endif
 
 // StageClass — staged frame timer (sizeof = 0x1C). Value/HasChanged/Timer/
 // Rate/Step; embeds a CDTimerClass.
@@ -217,7 +206,7 @@ class HouseClass;
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
-class TechnoClass : public RadioClass
+class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
 public:
     // FUNCTION: GAMEMD 0x6F9E50 (decl; reloc)
@@ -425,8 +414,8 @@ public:
     virtual void vf_307();                                         // 307 0x70F100
     virtual bool vf_308();                                         // 308 0x70F110
 
-    FlashData          Flashing;                 // +0xF0  (8)
-    StageClass         Animation;                // +0xF8  (0x1C)
+    // +0xF0 FlasherClass base (8), +0xF8 StageClass base (0x1C): retail CHD
+    // 0x80C058 lists both as non-polymorphic bases at mdisp 0xF0 / 0xF8.
     PassengersClass    Passengers;               // +0x114 (8)
     void*              Transporter;              // +0x11C TechnoClass*
     int                LastFireBulletFrame;      // +0x120 (ctor = -100)
@@ -625,8 +614,8 @@ public:
     bool FUN_0070D0D0(int ability);
 };
 
-GG_STATIC_ASSERT(offsetof(TechnoClass, Flashing)                 == 0xF0);
-GG_STATIC_ASSERT(offsetof(TechnoClass, Animation)                == 0xF8);
+GG_STATIC_ASSERT(offsetof(TechnoClass, DurationRemaining)        == 0xF0);
+GG_STATIC_ASSERT(offsetof(TechnoClass, HasChanged)               == 0xFC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Passengers)               == 0x114);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Transporter)              == 0x11C);
 GG_STATIC_ASSERT(offsetof(TechnoClass, InitialOwner)             == 0x14C);

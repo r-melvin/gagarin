@@ -199,10 +199,10 @@ void BuildingClass::vf_23()
             int duration = row->Rate;
             if (BState == 0 || BState == 1)
                 duration = DAT_00A8EB60.FUN_005FB2E0(row->Rate);
-            Animation.Timer.StartTime = CurrentFrame;
-            Animation.Timer.TimeLeft = duration;
-            Animation.Rate = duration;
-            Animation.Value = row->Frame;
+            StageClass::Timer.StartTime = CurrentFrame;
+            StageClass::Timer.TimeLeft = duration;
+            StageClass::Rate = duration;
+            StageClass::Value = row->Frame;
         }
         QueueBState = -1;
     }

@@ -15,7 +15,7 @@
 //   ".?AVAnimClass@@", COL base-offset 0 / 4 / 8 / 12.
 //
 //   Three structural facts the ctor settles outright:
-//     * Animation is a StageClass at 0xAC — Value 0xAC, HasChanged 0xB0,
+//     * the StageClass base sits at 0xAC — Value 0xAC, HasChanged 0xB0,
 //       Timer.StartTime 0xB4, Timer.TimeLeft 0xBC, Rate 0xC0, Step 0xC4(=1).
 //       Exactly the StageClass shape already proven in techno_class.h.
 //     * Accum really does default to 1.0: the ctor stores 0 to 0x188 and
@@ -54,7 +54,7 @@ public:
 GG_STATIC_ASSERT(sizeof(BounceClass) == 0x50);
 #endif
 
-class AnimClass : public ObjectClass
+class AnimClass : public ObjectClass, public StageClass
 {
 public:
     // FUNCTION: GAMEMD 0x421EA0 (declaration; constructor, RET 0x1C)
@@ -71,7 +71,8 @@ public:
     virtual void vf_122();                                         // 122 0x423930
     virtual void vf_123();                                         // 123 0x425510
 
-    StageClass      Animation;             // +0xAC (0x1C) ctor @0x00421EB8..0x00421EDB
+    // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
+    //   ctor stores @0x00421EB8..0x00421EDB.
     void*           Type;                  // +0xC8 AnimTypeClass*; ctor MOV [ESI+0xC8],ECX(=arg1) @0x00421EE5
     void*           OwnerObject;           // +0xCC ObjectClass*; ctor @0x00421EEE
     unsigned int    unknown_D0;            // +0xD0 ctor @0x00421EF4
@@ -120,7 +121,7 @@ public:
                                                //   CALL 0x00405BE0 @0x0042204D; closes the object at 0x1C8
 };
 
-GG_STATIC_ASSERT(offsetof(AnimClass, Animation)                 == 0xAC);
+GG_STATIC_ASSERT(offsetof(AnimClass, Value)                     == 0xAC);
 GG_STATIC_ASSERT(offsetof(AnimClass, Type)                      == 0xC8);
 GG_STATIC_ASSERT(offsetof(AnimClass, OwnerObject)               == 0xCC);
 GG_STATIC_ASSERT(offsetof(AnimClass, unknown_D0)                == 0xD0);
