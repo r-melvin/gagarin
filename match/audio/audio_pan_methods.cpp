@@ -6,8 +6,8 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x406270  AdjustAudioEventPanning  (__fastcall)
-//   LIBRARY:  GAMEMD 0x407150  AudioEvent_SetPanType0   (tail-call target, reloc)
-//   LIBRARY:  GAMEMD 0x407170  AudioEvent_SetPanType3   (tail-call target, reloc)
+//   LIBRARY:  GAMEMD 0x407150  FUN_00407150   (tail-call target, reloc)
+//   LIBRARY:  GAMEMD 0x407170  FUN_00407170   (tail-call target, reloc)
 
 #include "audio_pan_methods.h"
 
@@ -36,7 +36,7 @@ void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan)
             pan = 0x4000;
         else if ((int)pan < 0)
             pan = 0;
-        AudioEvent_SetPanType3(&ev->Channel, pan);
+        FUN_00407170(&ev->Channel, pan);
     }
     else
     {
@@ -44,6 +44,6 @@ void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan)
             pan = 0x4000;
         else if ((int)pan < 0)
             pan = 0;
-        AudioEvent_SetPanType0(&ev->Channel, pan);
+        FUN_00407150(&ev->Channel, pan);
     }
 }

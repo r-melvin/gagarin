@@ -17,8 +17,8 @@ void AudioIDXData::FUN_00401580()
     delete this->Samples;
     delete this->Headers;
 
-    if (this->RawData) {
-        FUN_007C8B3D(this->RawData);
+    if (this->unknown_00) {
+        FUN_007C8B3D(this->unknown_00);
     }
 
     FUN_007C8B3D(this);

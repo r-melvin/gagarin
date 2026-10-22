@@ -52,8 +52,8 @@ int __fastcall Name_Is_Local_Handle(const wchar_t* name)
 // everywhere else in this file.
 void __fastcall Build_Slot_Nodes()
 {
-    if (OpenText == 0) {
-        OpenText = Fetch_String_00734E60(OpenLabel, 0, NetshareFileName, 4078);
+    if (DAT_00AC117C == 0) {
+        DAT_00AC117C = Fetch_String_00734E60(OpenLabel, 0, NetshareFileName, 4078);
         ClosedText = Fetch_String_00734E60(ClosedLabel, 0, NetshareFileName, 4079);
         EasyAIText = Fetch_String_00734E60(EasyAILabel, 0, NetshareFileName, 4080);
         MediumAIText = Fetch_String_00734E60(MediumAILabel, 0, NetshareFileName, 4081);
@@ -64,7 +64,7 @@ void __fastcall Build_Slot_Nodes()
 
     if (OpenNode == 0) {
         OpenNode = new NodeNameType;
-        wcscpy(OpenNode->Name, OpenText);
+        wcscpy(OpenNode->Name, DAT_00AC117C);
     }
     if (ClosedNode == 0) {
         ClosedNode = new NodeNameType;
@@ -190,7 +190,7 @@ void __fastcall Reset_Lobby()
     }
 
     SelectedSlotIndex = -1;
-    LobbyList.Clear();
+    DAT_00A8B250.Clear();
     CounterA = 0;
     CounterB = 0;
 }

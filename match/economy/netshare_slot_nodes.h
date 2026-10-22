@@ -110,7 +110,7 @@ extern NodeNameType* Slots[8];
 // GLOBAL: GAMEMD 0xAC117C..0xAC1194 — the seven slot-state captions, fetched
 // from the string table as "GUI:Open", "GUI:Closed", "GUI:AIEasy",
 // "GUI:AINormal", "GUI:AIHard", "GUI:Waiting", "GUI:OpenObserver".
-extern wchar_t* OpenText;         // GLOBAL: GAMEMD 0xAC117C
+extern wchar_t* DAT_00AC117C;         // GLOBAL: GAMEMD 0xAC117C
 extern wchar_t* ClosedText;       // GLOBAL: GAMEMD 0xAC1180
 extern wchar_t* EasyAIText;       // GLOBAL: GAMEMD 0xAC1184
 extern wchar_t* MediumAIText;     // GLOBAL: GAMEMD 0xAC1188
@@ -159,7 +159,7 @@ struct LobbyList_005E8B60
     // FUNCTION: GAMEMD 0x69B540 (decl; reloc) — __thiscall, no arguments.
     void Clear();
 };
-extern LobbyList_005E8B60 LobbyList;
+extern LobbyList_005E8B60 DAT_00A8B250;
 
 extern "C" {
 // GLOBAL: GAMEMD 0x8317D8 — "D:\\ra2mdpost\\netshare.cpp", the retail source

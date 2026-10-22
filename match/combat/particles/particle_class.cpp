@@ -102,7 +102,7 @@ void ParticleClass::vf_69(void* where, ParticleRect* clip)
     }
     if (!ParticleSkipShroudTest && ParticleShroudEnabled != 0 && (ParticleScenario->Flags & 0x1000)) {
         ParticleCoord position = Location;
-        if (ParticleMap.IsHidden(&position))
+        if (ParticleMap.FUN_005865E0(&position))
             return;
     }
 

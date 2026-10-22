@@ -553,7 +553,7 @@ public:
     HBCell* unknown_ED4;   // +0x0ED4
     int unknown_ED8;   // +0x0ED8
     char _pad_0EDC[0x70];   // +0x0EDC
-    BA2AnimName AnimNames[0x15];   // +0x0F4C
+    BA2AnimName unknown_F4C[0x15];   // +0x0F4C
     char _pad_14E0[0x91];   // +0x14E0
     unsigned char unknown_1571;   // +0x1571
     char _pad_1572[0x9];   // +0x1572
@@ -635,7 +635,7 @@ GG_STATIC_ASSERT(offsetof(BA2Type, unknown_EB8) == 0xEB8);
 GG_STATIC_ASSERT(offsetof(BA2Type, ExitOffset) == 0xEC8);
 GG_STATIC_ASSERT(offsetof(BA2Type, unknown_ED4) == 0xED4);
 GG_STATIC_ASSERT(offsetof(BA2Type, unknown_ED8) == 0xED8);
-GG_STATIC_ASSERT(offsetof(BA2Type, AnimNames) == 0xF4C);
+GG_STATIC_ASSERT(offsetof(BA2Type, unknown_F4C) == 0xF4C);
 GG_STATIC_ASSERT(offsetof(BA2Type, unknown_1571) == 0x1571);
 GG_STATIC_ASSERT(offsetof(BA2Type, unknown_157B) == 0x157B);
 GG_STATIC_ASSERT(offsetof(BA2Type, unknown_16A9) == 0x16A9);

@@ -34,7 +34,7 @@ struct StageClass
 // DynamicVectorClass<TechnoTypeClass*> head: vtable@0, Items@4, Capacity@8,
 // IsAllocated@0xC, Count@0x10, CapacityIncrement@0x14 => sizeof 0x18.
 // IsQueued reads Items (this+0x44) and Count (this+0x50).
-struct DynVec_TechnoTypePtr
+struct Obj_004CA6B0
 {
     void*             vtable;             // +0x00
     TechnoTypeClass** Items;              // +0x04
@@ -48,7 +48,7 @@ struct FactoryClass
 {
     char         _abstract_base[0x24];  // +0x00  AbstractClass (vtable + members)
     StageClass   Production;            // +0x24  progress timer; .Value == 0x36 when done
-    DynVec_TechnoTypePtr QueuedObjects; // +0x40
+    Obj_004CA6B0 QueuedObjects; // +0x40
     TechnoClass* Object;               // +0x58  item currently in production
     bool         OnHold;               // +0x5C
     bool         IsDifferent;          // +0x5D  set when progress changed this frame

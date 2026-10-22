@@ -299,8 +299,8 @@ void BuildingTypeClass::ComputeCRC(TypesCrcView& crc)
     crc.AddInt(LightRedTint);
     crc.AddInt(LightGreenTint);
     crc.AddInt(LightBlueTint);
-    crc.AddString(BuildupFile);
-    crc.AddString(PowersUpBuilding);
+    crc.FUN_004A1DB0(BuildupFile);
+    crc.FUN_004A1DB0(PowersUpBuilding);
     crc.AddInt(Adjacent);
     crc.AddInt(Factory);
     crc.AddInt(PowerBonus);
@@ -366,7 +366,7 @@ void BuildingTypeClass::ComputeCRC(TypesCrcView& crc)
     crc.AddBool(TerrainPalette);
     crc.AddBool(TurretAnimIsVoxel);
     crc.AddBool(BarrelAnimIsVoxel);
-    crc.AddString(VoxelBarrelFile);
+    crc.FUN_004A1DB0(VoxelBarrelFile);
     crc.AddDouble(unknown_1728);
     crc.AddBytes(&VoxelBarrelOffsetToPitchPivotPoint, sizeof(HBCoord));
     crc.AddBytes(&VoxelBarrelOffsetToRotatePivotPoint, sizeof(HBCoord));

@@ -16,13 +16,13 @@
 extern const IID IID_IHouse;
 extern const IID IID_IPublicHouse;
 // GLOBAL: GAMEMD 0x820270 - the program's own copy of IID_IPersistStream (data of the original unit), used by Save.
-extern const IID IID_HousePersistStreamCopy;
+extern const IID DAT_00820270;
 // GLOBAL: GAMEMD 0x7E9AF0 - the id of the AI general interface the house loads from its stream.
-extern const IID IID_HouseAIGeneral;
+extern const IID DAT_007E9AF0;
 // GLOBAL: GAMEMD 0x7E9560 - CLSID_House.
 extern const CLSID CLSID_House;
 // GLOBAL: GAMEMD 0x7E36C0 - the interface id requested from the global object below.
-extern const IID IID_HouseMainInterface;
+extern const IID DAT_007E36C0;
 // GLOBAL: GAMEMD 0x89A29C - the object the main interface is queried from.
 extern unsigned char HouseMainObject;
 // FUNCTION: GAMEMD 0x429360 (decl; reloc) - queries an interface of a global object.
@@ -48,7 +48,7 @@ extern int HouseBuildingTypeCount;
 // GLOBAL: GAMEMD 0x889F64 - the default interface name text copied into UINameString.
 extern char HouseDefaultName[];
 // GLOBAL: GAMEMD 0x7E9550 - the id handed to the connection-point source object.
-extern const IID IID_HouseConnectionSource;
+extern const IID DAT_007E9550;
 
 // CAPPED at 98.3% (multiset identical; 17 instructions differ in order or register only: the -1 constant
 // load near +0x214, the five byte stores near +0x3BB, a push near +0x69F, one add operand order near
@@ -316,7 +316,7 @@ HouseClusterView::HouseClusterView(HouseTypeView* type)
 
     IUnknown* unknown = 0;
     HouseClusterView::QueryInterface(IID_IUnknown, (void**)&unknown);
-    HouseConnPtSource* source = new HouseConnPtSource(&IID_HouseConnectionSource, unknown);
+    HouseConnPtSource* source = new HouseConnPtSource(&DAT_007E9550, unknown);
     unknown_1607C = (unsigned int)source;
     IConnectionPoint* point;
     source->QueryInterface(IID_IConnectionPoint, (void**)&point);
@@ -361,7 +361,7 @@ bool __stdcall HouseClusterView::HasEnoughPower()
 IUnknown* __stdcall HouseClusterView::GetMainInterface()
 {
     IUnknown* result;
-    HouseQueryObjectInterface(&HouseMainObject, &IID_HouseMainInterface, (void**)&result);
+    HouseQueryObjectInterface(&HouseMainObject, &DAT_007E36C0, (void**)&result);
     return result;
 }
 
@@ -961,7 +961,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     hr = pStm->Read(&hasAIGeneral, 4, 0);
     if (hr < 0 || !hasAIGeneral)
         return hr;
-    return OleLoadFromStream(pStm, IID_HouseAIGeneral, (void**)&AIGeneral);
+    return OleLoadFromStream(pStm, DAT_007E9AF0, (void**)&AIGeneral);
 }
 
 // FUNCTION: GAMEMD 0x504080
@@ -1145,7 +1145,7 @@ HRESULT __stdcall HouseClusterView::Save(IStream* pStm, BOOL fClearDirty)
     IPersistStream* persist = 0;
     if (general) {
         IPersistStream* queried;
-        HRESULT queryResult = general->QueryInterface(IID_HousePersistStreamCopy, (void**)&queried);
+        HRESULT queryResult = general->QueryInterface(DAT_00820270, (void**)&queried);
         persist = FAILED(queryResult) ? 0 : queried;
         if (!SUCCEEDED(queryResult) && queryResult != E_NOINTERFACE)
             HouseComIssueError(queryResult);

@@ -121,7 +121,7 @@ struct Building_0043E7B0
 {
     Vtbl_0043E7B0*        Vptr;                 // +0x0000
     char                  _pad004[0x7F];        // +0x0004
-    char                  IsDiscovered;         // +0x0083
+    char                  unknown_83;         // +0x0083
     char                  _pad084[0x210 - 0x84];// +0x0084
     unsigned int          SpiedBy;              // +0x0210
     char                  _pad214[8];           // +0x0214
@@ -133,7 +133,7 @@ struct Building_0043E7B0
     // FUNCTION: GAMEMD 0x43E7B0 — BuildingClass::DrawInfoTipAndSpiedSelection.
     void DrawInfoTipAndSpiedSelection(Point_0043E7B0* pos, unsigned int flags);
 };
-GG_STATIC_ASSERT(offsetof(Building_0043E7B0, IsDiscovered) == 0x83);
+GG_STATIC_ASSERT(offsetof(Building_0043E7B0, unknown_83) == 0x83);
 GG_STATIC_ASSERT(offsetof(Building_0043E7B0, SpiedBy)      == 0x210);
 GG_STATIC_ASSERT(offsetof(Building_0043E7B0, Owner)        == 0x21C);
 GG_STATIC_ASSERT(offsetof(Building_0043E7B0, Type)         == 0x520);

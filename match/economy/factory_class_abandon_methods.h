@@ -167,7 +167,7 @@ struct Factory_004C9FF0
     Stage_004C9FF0    Production;        // +0x0024
     char              _pad040[0x18];     // +0x0040  DynamicVectorClass QueuedObjects
     Techno_004C9FF0*  Object;            // +0x0058
-    bool              IsOnHold;          // +0x005C
+    bool              unknown_5C;          // +0x005C
     bool              IsDifferent;       // +0x005D
     char              _pad05E[2];        // +0x005E
     int               Balance;           // +0x0060

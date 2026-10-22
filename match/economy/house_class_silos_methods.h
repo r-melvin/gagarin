@@ -53,7 +53,7 @@ struct House_004F9970
     char                  _pad000[0x6C];            // +0x0000
     Building_004F9970**   BuildingItems;            // +0x006C
     char                  _pad070[0x8];             // +0x0070
-    int                   BuildingCount;            // +0x0078
+    int                   unknown_78;            // +0x0078
     char                  _pad07C[0x2FC - 0x7C];    // +0x007C
     StorageClass          OwnedTiberium;            // +0x02FC
     int                   Balance;                  // +0x030C
@@ -63,7 +63,7 @@ struct House_004F9970
     void UpdateAllSilos(int prevStorage, int prevTotalStorage);
 };
 GG_STATIC_ASSERT(offsetof(House_004F9970, BuildingItems) == 0x6C);
-GG_STATIC_ASSERT(offsetof(House_004F9970, BuildingCount) == 0x78);
+GG_STATIC_ASSERT(offsetof(House_004F9970, unknown_78) == 0x78);
 GG_STATIC_ASSERT(offsetof(House_004F9970, OwnedTiberium) == 0x2FC);
 GG_STATIC_ASSERT(offsetof(House_004F9970, TotalStorage)  == 0x310);
 

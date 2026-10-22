@@ -24,7 +24,7 @@ static inline int TypeIndex_004FD060(BuildingType_004FD060* type)
 Building_004FD060* House_004FD060::FindBuildingOfType(int index, int sector)
 {
     if (this->At_5500.GetCount(index) > 0) {
-        int count = this->BuildingCount;
+        int count = this->unknown_78;
         for (int i = 0; i < count; ++i) {
             Building_004FD060* building = this->BuildingItems[i];
             if (building != 0 && building->InLimbo == 0) {

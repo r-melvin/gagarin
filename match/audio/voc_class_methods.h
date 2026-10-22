@@ -25,7 +25,7 @@
 // The audio-event object referenced by a VocClass's +0x00 slot. Its name getter
 // (retail 0x00405170, __thiscall, returns char*) is matched elsewhere; declared
 // here only so cl emits a (reloc-normalised) call.
-struct AudioEventClass
+struct Obj_00405170
 {
     const char* GetName();   // GAMEMD 0x00405170 (__thiscall) — referenced only
 };
@@ -34,7 +34,7 @@ struct AudioEventClass
 // FindIndex.
 struct VocItem
 {
-    AudioEventClass* Event;  // +0x00
+    Obj_00405170* Event;  // +0x00
 };
 
 GG_STATIC_ASSERT(offsetof(VocItem, Event) == 0x00);

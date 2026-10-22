@@ -79,7 +79,7 @@ static inline void Tag_RemoveFrom(DynamicVectorClassLayout* list, TagClass* tag)
 }
 
 // A count-down timer started now (the middle dword is left as it is).
-static inline CDTimerClass Tag_StartTimer(int duration)
+static inline CDTimerClass Inline_006E4F60(int duration)
 {
     CDTimerClass timer;
     timer.StartTime = CurrentFrame;
@@ -128,7 +128,7 @@ TagClass::~TagClass()
                 if (house->AllowWinBlocks) {
                     house->AllowWinBlocks--;
                 }
-                house->BorrowedTime = Tag_StartTimer(60);
+                house->BorrowedTime = Inline_006E4F60(60);
             }
         }
     }

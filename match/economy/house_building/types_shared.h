@@ -44,7 +44,7 @@ public:
     // FUNCTION: GAMEMD 0x4A1D90 (read-only here)
     void AddDouble(double value);
     // FUNCTION: GAMEMD 0x4A1DB0 (read-only here) - a NUL-terminated string.
-    void AddString(const char* text);
+    void FUN_004A1DB0(const char* text);
     // FUNCTION: GAMEMD 0x4A1DE0 (read-only here) - a byte run (pointer, length).
     void AddBytes(const void* data, int length);
 };

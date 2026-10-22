@@ -150,7 +150,7 @@ public:
     // FUNCTION: GAMEMD 0x578080 (read-only here) - the ground height at a lepton coordinate.
     int GetHeight(const ParticleCoord* coord);
     // FUNCTION: GAMEMD 0x5865E0 (read-only here) - true when the position is hidden by the shroud.
-    bool IsHidden(const ParticleCoord* coord);
+    bool FUN_005865E0(const ParticleCoord* coord);
     // FUNCTION: GAMEMD 0x565730 (read-only here) - the cell at a lepton coordinate.
     ParticleCellView* GetCellAt(const ParticleCoord& coord);
 };

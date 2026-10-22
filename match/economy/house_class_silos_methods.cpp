@@ -24,7 +24,7 @@ void House_004F9970::UpdateAllSilos(int prevStorage, int prevTotalStorage)
     }
 
     if (before != after) {
-        int count = this->BuildingCount;
+        int count = this->unknown_78;
         for (int i = 0; i < count; i++) {
             Building_004F9970* b = this->BuildingItems[i];
             if (b != 0 && !b->InLimbo && b->Type->At_16A8) {

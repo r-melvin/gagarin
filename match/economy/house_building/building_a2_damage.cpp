@@ -17,7 +17,7 @@ inline void BA2Building::RefreshAnimStates()
         unknown_6E6 = low;
         for (int i = 0; i < 0x15; i++) {
             if (Anims[i]) {
-                char* name = low ? Type->AnimNames[i].Low : Type->AnimNames[i].Normal;
+                char* name = low ? Type->unknown_F4C[i].Low : Type->unknown_F4C[i].Normal;
                 if (name && *name) {
                     FUN_00451890(name, i, low, 0, 0);
                 }

@@ -37,7 +37,7 @@ void Building_0043E7B0::DrawInfoTipAndSpiedSelection(Point_0043E7B0* pos,
         (this->*Vptr->At_1B8)(&unused);
     }
 
-    if (IsDiscovered) {
+    if (unknown_83) {
         if (Owner->IsAlliedWith(DAT_00A83D4C)
             || ((1 << DAT_00A83D4C->Type->ArrayIndex) & SpiedBy)) {
             (this->*Vptr->At_458)(Point_0043E7B0(pos->X - 10, pos->Y + 10),
@@ -45,7 +45,7 @@ void Building_0043E7B0::DrawInfoTipAndSpiedSelection(Point_0043E7B0* pos,
         }
     }
 
-    if (((1 << DAT_00A83D4C->Type->ArrayIndex) & SpiedBy) && IsDiscovered) {
+    if (((1 << DAT_00A83D4C->Type->ArrayIndex) & SpiedBy) && unknown_83) {
         Object_0043E7B0* factory;
         if (Owner->FUN_0050B730()) {
             factory = Owner->FUN_00500510(Type->At_EB8, Type->Naval, 0);

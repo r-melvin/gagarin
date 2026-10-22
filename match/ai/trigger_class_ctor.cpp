@@ -29,9 +29,9 @@ GG_STATIC_ASSERT(offsetof(TriggerCtorTypeFlagsView, Flags) == 0x9C);
 struct TriggerCtorScenarioModeView
 {
     unsigned char unknown_000[0x60C];
-    int CurrentMode;
+    int unknown_60C;
 };
-GG_STATIC_ASSERT(offsetof(TriggerCtorScenarioModeView, CurrentMode) == 0x60C);
+GG_STATIC_ASSERT(offsetof(TriggerCtorScenarioModeView, unknown_60C) == 0x60C);
 
 struct TriggerCtorPtrVector
 {
@@ -95,7 +95,7 @@ TriggerClass::TriggerClass(TriggerTypeClass* type)
         int mode = 0;
         if (typeFlags->Flags[3] == 0
             || ((mode = reinterpret_cast<TriggerCtorScenarioModeView*>(
-                    DAT_00A8B230)->CurrentMode) == 0
+                    DAT_00A8B230)->unknown_60C) == 0
                 && typeFlags->Flags[0] == 0)
             || (mode == 1 && typeFlags->Flags[1] == 0)
             || (mode == 2 && typeFlags->Flags[2] == 0)) {

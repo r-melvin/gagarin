@@ -49,10 +49,10 @@ extern "C" const CLSID CLSID_ParticleSystemType =
 extern const char* const DAT_00836EE0[5];
 
 // FUNCTION: GAMEMD 0x645430 (decl; reloc) - looks a ParticleType name up (ECX = name).
-int __fastcall PSys_FindParticleType(const char* name);
+int __fastcall FUN_00645430(const char* name);
 
 // Index of the BehavesLike name in the table, -1 when absent.
-static inline int PSys_FindBehavior(const char* name)
+static inline int Inline_006442D0(const char* name)
 {
     for (int i = 0; i < 5; ++i) {
         if (_stricmp(name, DAT_00836EE0[i]) == 0) {
@@ -85,7 +85,7 @@ bool ParticleSystemTypeClass::ReadINI(ParticleIniView* ini)
     if (ParticleTypeObjectView::ReadINI(ini)) {
         char buffer[0x40];
         ini->ReadString(ID, "HoldsWhat", "", buffer, sizeof(buffer));
-        HoldsWhat = PSys_FindParticleType(buffer);
+        HoldsWhat = FUN_00645430(buffer);
         Spawns = ini->ReadBool(ID, "Spawns", Spawns);
         SpawnFrames = ini->ReadInt(ID, "SpawnFrames", SpawnFrames);
         ParticleCap = ini->ReadInt(ID, "ParticleCap", ParticleCap);
@@ -96,7 +96,7 @@ bool ParticleSystemTypeClass::ReadINI(ParticleIniView* ini)
             (float)ini->ReadDouble(ID, "SpawnTranslucencyCutoff", SpawnTranslucencyCutoff);
         Lifetime = ini->ReadInt(ID, "Lifetime", Lifetime);
         ini->ReadString(ID, "BehavesLike", "", buffer, sizeof(buffer));
-        BehavesLike = PSys_FindBehavior(buffer);
+        BehavesLike = Inline_006442D0(buffer);
         SpawnDirection = ini->ReadPoint3D(ID, "SpawnDirection", SpawnDirection);
         ParticlesPerCoord = ini->ReadDouble(ID, "ParticlesPerCoord", ParticlesPerCoord);
         SpiralDeltaPerCoord = ini->ReadDouble(ID, "SpiralDeltaPerCoord", SpiralDeltaPerCoord);

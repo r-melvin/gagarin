@@ -221,7 +221,7 @@ int BA2Building::vf_101(BA2Other* from, int message, BA2Obj*& param)
                 FUN_00451E40(0x12);
                 double ratio = FUN_005F5C60();
                 bool low = ratio <= RulesInstance_8871E0->unknown_1700;
-                char* name = low ? Type->AnimNames[8].Low : Type->AnimNames[8].Normal;
+                char* name = low ? Type->unknown_F4C[8].Low : Type->unknown_F4C[8].Normal;
                 if (name && *name) {
                     FUN_00451890(name, 8, low, 0, 0);
                 }

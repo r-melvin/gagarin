@@ -23,8 +23,8 @@
 // ---------------------------------------------------------------------------
 void TeamTypeClass::FlashAllInstances(int duration)
 {
-    for (int i = 0; i < TeamArray.Count; i++) {
-        TeamClass* team = ((TeamClass**)TeamArray.Items)[i];
+    for (int i = 0; i < DAT_008B40E8.Count; i++) {
+        TeamClass* team = ((TeamClass**)DAT_008B40E8.Items)[i];
         if (team->Type == this) {
             team->Flash(duration);
         }
@@ -40,9 +40,9 @@ void TeamTypeClass::FlashAllInstances(int duration)
 // ---------------------------------------------------------------------------
 TeamClass* TeamTypeClass::FindFirstInstance() const
 {
-    int count = TeamArray.Count;
+    int count = DAT_008B40E8.Count;
     for (int i = 0; i < count; i++) {
-        TeamClass* team = ((TeamClass**)TeamArray.Items)[i];
+        TeamClass* team = ((TeamClass**)DAT_008B40E8.Items)[i];
         if (team->Type == this) {
             return team;
         }

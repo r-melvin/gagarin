@@ -67,7 +67,7 @@ struct House_004FD060
     char                  _pad000[0x6C];             // +0x0000
     Building_004FD060**   BuildingItems;             // +0x006C
     char                  _pad070[0x8];              // +0x0070
-    int                   BuildingCount;             // +0x0078
+    int                   unknown_78;             // +0x0078
     char                  _pad07C[0x5500 - 0x7C];    // +0x007C
     Counter_004FD060      At_5500;                   // +0x5500
 
@@ -78,7 +78,7 @@ struct House_004FD060
     Building_004FD060* FindBuildingOfType(int index, int sector);
 };
 GG_STATIC_ASSERT(offsetof(House_004FD060, BuildingItems) == 0x6C);
-GG_STATIC_ASSERT(offsetof(House_004FD060, BuildingCount) == 0x78);
+GG_STATIC_ASSERT(offsetof(House_004FD060, unknown_78) == 0x78);
 GG_STATIC_ASSERT(offsetof(House_004FD060, At_5500)       == 0x5500);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_FIND_BUILDING_METHODS_H

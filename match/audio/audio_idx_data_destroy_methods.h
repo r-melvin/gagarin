@@ -30,7 +30,7 @@ struct AudioSampleHeader { virtual ~AudioSampleHeader(); };
 
 struct AudioIDXData
 {
-    void*              RawData;       // +0x0000
+    void*              unknown_00;       // +0x0000
     char               _pad04[0x10C - 0x04];
     AudioSampleTable*  Samples;       // +0x010C
     AudioSampleHeader* Headers;       // +0x0110
@@ -40,7 +40,7 @@ struct AudioIDXData
     // FUNCTION: GAMEMD 0x401580
     void FUN_00401580();
 };
-GG_STATIC_ASSERT(offsetof(AudioIDXData, RawData) == 0x00);
+GG_STATIC_ASSERT(offsetof(AudioIDXData, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(AudioIDXData, Samples) == 0x10C);
 GG_STATIC_ASSERT(offsetof(AudioIDXData, Headers) == 0x110);
 
