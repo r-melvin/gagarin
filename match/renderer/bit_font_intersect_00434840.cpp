@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Function body, call ABI, branches and all four LTRB field offsets follow
 //   the pinned retail instructions at 0x434840..0x4348E1; the entry-bounded
 //   REA evidence is /tmp/gagarin_bitfont_intersect_00434840.json.

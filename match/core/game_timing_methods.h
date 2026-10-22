@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes, globals and the call shape read off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x6C87F0 and 0x6C8820. Names
 //   cross-checked against YRpp (`Unsorted::RegisterGameStartTime` /

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // GenericNode and GenericList RTTI is at 0x8174E8/0x817508; primary
 // tables are 0x7E1B0C/0x7E1B04. The native GenericNode constructor at
 // 0x40E320, GenericList constructor at 0x52ACE0, and destructors at 0x52AB80

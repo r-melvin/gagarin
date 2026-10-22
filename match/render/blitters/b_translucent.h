@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Translucent family leaves of Blitter for 16-bit surfaces:
 // BlitTranslucent50NonzeroAlpha<us>, BlitTranslucent50ZeroAlpha<us>,
 // BlitTranslucentWriteAlpha<us>. Source byte 0 is transparent in all three.

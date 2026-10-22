@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x763A50: the waypoint vector's count is `[EDI+0x38]`
 //   and its items `[EDI+0x2C]` (a DynamicVectorClass at +0x28), walked with a

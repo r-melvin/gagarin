@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra; member and slot offsets cite the retail
+// Provenance: own-binary-via-Ghidra; member and slot offsets cite the retail | YRpp-cross-check | behaviour-confirmed-name
 // Mech entry instructions and the frozen M2 evidence packet. YRpp was consulted
 // for candidate member names only; no YRpp layout or declarations were copied.
 // Helper type names are address-local ABI views, not claims about original

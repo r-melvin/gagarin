@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Small shared views for the BuildingTypeClass / HouseTypeClass module (cluster "types"), each
 //   declared once. Everything was read from the retail gamemd.exe v1.001:
 //     the IRTTITypeInfo / INoticeSink / INoticeSource secondary tables (the bodies 0x410210 /

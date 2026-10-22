@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Public-key and cipher pipe/straw views shared by pk_block_crypt_methods.cpp
 // and pk_pipe_straw_io_methods.cpp.
 // RTTI type names from the pinned image: 0x7EFDAC .?AVPKPipe@@,

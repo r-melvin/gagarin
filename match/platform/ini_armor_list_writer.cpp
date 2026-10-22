@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Derived from the retail gamemd.exe v1.001 disassembly at 0x475C70.
 //   No /GX: retail opens with a bare SUB ESP and has no unwind frame for the
 //   by-value list parameter.

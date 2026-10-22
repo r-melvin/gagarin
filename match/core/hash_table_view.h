@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Hash table view shared by hash_table_remove_methods.cpp and
 // hash_table_clear_methods.cpp. Table layout as in
 // core/hash_table_rehash_sweep.h: buckets +0x00, entry count +0x04, bucket

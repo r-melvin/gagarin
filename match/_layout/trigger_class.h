@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail constructor 0x725FA0..0x726132 writes this prefix. The allocation
 // paths at 0x6E4DE0 and 0x726630 request 0x48 bytes. Raw TypeDescriptor
 // 0x842CE8 names ".?AVTriggerClass@@"; primary vtable 0x7F5858 uses COL 0x80C968.

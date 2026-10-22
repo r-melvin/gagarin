@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //
 // Removable-drive lock / eject helpers. The NT paths open "\\.\X:" and drive
 // the FSCTL / IOCTL_STORAGE device controls; the 9x paths go through the

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Oracle: retail constructor 0x00410170, the RTTI descriptors and the four
 //   AbstractClass vtables below. YRpp was consulted for naming
 //   hypotheses only.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI .?AVParticleClass@@
 //   (particle_common_views.h), the two constructors 0x62B5E0 / 0x62BB20 (every member store below), the
 //   scalar deleting destructor 0x62D9A0, and the allocation sites 0x62E397, 0x62E434, 0x62E4D8,

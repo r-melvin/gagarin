@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-xcheck
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x4E0ED0 and its 15 duplicates: remove one element of the
 //   counted vector template by index. The count lives at +0x10 and the items

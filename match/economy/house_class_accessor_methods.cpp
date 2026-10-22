@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | TSpp-name-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4F9950 / 0x4F9B50 /
 //   0x50B730 / 0x50BD10 / 0x50D9E0 / 0x50D9F0 / 0x50E1B0 via the local Ghidra
 //   disassembly. Member offsets confirmed numerically (see the header).

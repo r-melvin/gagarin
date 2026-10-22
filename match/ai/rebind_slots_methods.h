@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x472330: the global list at 0xA8022C with its count at
 //   0xA80238, the item's type at +0x34 whose +0xBC is compared, and this

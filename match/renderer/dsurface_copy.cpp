@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
-// Provenance: own-binary-via-Ghidra. DSurface::CopyFrom (slot +0x0C, RTTI .?AVDSurface@@, vtable
+// Provenance: own-binary-via-Ghidra. DSurface::CopyFrom (slot +0x0C, RTTI .?AVDSurface@@, vtable | YRpp-cross-check
 // 0x7E85D4): the DirectDraw hardware blit with both clip rectangles. Retail inlines two copies of the
 // rectangle intersection (the out-of-line body is 0x421B60) and one blit-rectangle clip call (0x7BBE20).
 #include "dsurface_class.h"

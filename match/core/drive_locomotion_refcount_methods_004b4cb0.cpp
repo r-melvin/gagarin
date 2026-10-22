@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail entries 0x004B4CB0/CC0 are 13-byte __stdcall wrappers: each loads
 //   its explicit object pointer, pushes it, calls 0x0055A950/970, and returns
 //   with RET 4. Their DriveLocomotion persist-vtable slots are +4/+8 at

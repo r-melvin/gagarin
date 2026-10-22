@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Shared views for the UI input/controls module (the lists and controls clusters): rectangles, points,
 //   the surface, the mouse and keyboard singletons, colour schemes, the palette-to-pixel lookup, the font
 //   and the shape header, plus the text/box/shape draw helpers they are passed to. Every slot and offset is

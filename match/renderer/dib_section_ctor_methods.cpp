@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Constructor of an 8-bit top-down DIB section wrapper: builds a 256-colour
 // BITMAPINFO from a palette, creates the section on the window's DC, derives

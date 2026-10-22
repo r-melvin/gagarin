@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Menus cluster views (UI input/controls module): the GraphicMenuItem family. Every fact below is read
 //   from the retail gamemd.exe v1.001: RTTI .?AVGraphicMenuItem@@ (vtable 0x7EA690), ...AnimItem@@
 //   (0x7EA658), ...ImageItem@@ (0x7EA674), ...ShortcutItem@@ (0x7EA6AC), each deriving GraphicMenuItem at

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Eleventh translation unit of the FlyLocomotionClass cluster: the
 //   ILocomotion slot at +0x94 of the locomotor vtable 0x7E89F4, the last slot
 //   of that table (0x7E8A98 already belongs to the next class). Membership is

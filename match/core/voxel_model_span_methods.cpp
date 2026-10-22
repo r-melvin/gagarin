@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //
 // Voxel model section rasteriser set-up: per-section header lookups and the
 // fixed-point stepping parameters handed to the span-drawer dispatch table.

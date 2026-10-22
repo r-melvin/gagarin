@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x49F9D0 and its siblings: the plain (non-deleting)
 //   destructor of the vector template for instantiations that reseat a base

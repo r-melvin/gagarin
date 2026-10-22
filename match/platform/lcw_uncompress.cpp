@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // 0x552640: __cdecl (source, destination) block decoder; returns the number
 // of bytes written (`MOV EAX,ESI; SUB EAX,EBP` at 0x552816). Command bytes,
 // read off the branches:

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI .?AVTerrainClass@@
 //   (terrain_common_views.h), the two constructors 0x71BB90 / 0x71BDF0 (every member store below), the loader
 //   0x71CDA0 (which inlines the no-init constructor), the CRC body 0x71CF50, and the allocation sites

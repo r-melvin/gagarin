@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Constructor of the eight-way direction dial control (vtable 0x7E5E3C), a
 // ControlClass built with flags 7 and sticky. It caches the face centre and

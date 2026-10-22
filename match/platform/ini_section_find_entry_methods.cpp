@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read off retail gamemd.exe v1.001 at 0x52A4D0: __thiscall on an INI
 //   section (`RET 4`); the twelve-byte hash state zeroed a dword at a time
 //   and passed to 0x4A1DE0 with the name and its inlined strlen; the entry

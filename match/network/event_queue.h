@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The event ring buffers. The run-time initialisers 0x4E7EA0 (128 events at
 //   0xA802C8), 0x4E7ED0 (0x4000 at 0x8B41F8) and 0x4E7F00 (0x100 at
 //   0xA83ED0) clear each event's type byte (stride 0x6F) and then the three

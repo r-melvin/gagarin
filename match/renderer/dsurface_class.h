@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable
+// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable | YRpp-cross-check | behaviour-confirmed-name
 // 0x7E85D4) layout, DirectDraw COM calls and global addresses read from retail
 // gamemd.exe v1.001. Method entry spans and data references are recorded in
 // the project evidence; data addresses are not function entry points.

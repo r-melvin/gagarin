@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Derived from the retail gamemd.exe v1.001 disassembly at 0x41C250.
 //   Imports: CoCreateInstance (IAT 0x7E15FC), OleRun (IAT 0x7E1600).
 

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: pinned retail gamemd.exe v1.001 entry-origin member accesses and
+// Provenance: pinned retail gamemd.exe v1.001 entry-origin member accesses and | YRpp-cross-check
 //             slot calls in the DropPod cluster only.
 // These are address-local access/slot views used by DropPod bodies. They do
 // not claim complete FootClass, HouseClass, ObjectClass or AnimClass ownership

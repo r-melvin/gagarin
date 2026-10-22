@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Five small leaf bodies in the 0x004C6000-0x004D3000 range, each one
 //   abandoned by an earlier pass after one or two spellings. Every member
 //   offset below is read numerically off the member-access instructions in the

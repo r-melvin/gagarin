@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // Cluster r-xlat: RLE leaves RLEBlitTransXlat, RLEBlitTransXlatZRead and
 // RLEBlitTransXlatZReadWrite, each for unsigned char and unsigned short.
 #ifndef GG_MATCH_RENDER_BLITTERS_R_XLAT_H

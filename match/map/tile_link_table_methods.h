@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset, element width, allocation size and sentinel below was read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
 //   CLI over the 0x5A9920-0x5A9C18 run.

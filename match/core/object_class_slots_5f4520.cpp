@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // ObjectClass bodies for primary-table (0x7EF060) slots 83, 74 and 75
 // (0x5F4520, 0x5F4730, 0x5F4870); names are placeholders (object_class.h).
 #include "../_layout/object_class.h"

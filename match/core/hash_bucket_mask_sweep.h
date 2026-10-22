@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every entry point and every offset below was read off the user's own retail
 //   gamemd.exe v1.001 with the local Ghidra CLI. The two offsets come straight
 //   off the instructions: the stored hash function at `[ESI+0x18]`

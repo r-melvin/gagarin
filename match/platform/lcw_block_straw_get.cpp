@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Derived from the retail gamemd.exe v1.001 disassembly at 0x552490.
 //   The base slot implementation called non-virtually is 0x6C98E0.
 

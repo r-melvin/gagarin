@@ -3,7 +3,7 @@
 // ^ no /GX: paired probe on the XSurface scalar deleting destructor (0x4115A0): with /GX VC6 keeps a
 // separate ~XSurface call (0/12), without it the destructor inlines and matches (12/12). The Blit*
 // stack locals of 0x7BBB90 also carry no unwind frame in retail.
-// Provenance: own-binary-via-Ghidra. XSurface Copy_From family (slots +0x04,
+// Provenance: own-binary-via-Ghidra. XSurface Copy_From family (slots +0x04, | YRpp-cross-check
 // +0x08, +0x0C). The BlitPlain/BlitTrans objects are stack locals in retail:
 // only their vptr is stored (0x7F7BDC/0x7F7BC4 plain, 0x7F7C0C/0x7F7BF4 trans).
 #include "surface_class.h"

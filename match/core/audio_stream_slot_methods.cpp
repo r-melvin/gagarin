@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //
 // Two callbacks over the streamed-sample slot table at 0x887778 (0xBC-byte
 // slots, indexed by the sample's +0x34 field): the position query installed

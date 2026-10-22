@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4F42F0 and 0x4F4480.
 
 #include "gscreen_class_render_methods.h"

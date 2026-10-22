@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //
 // SidebarClass::StripClass::SelectClass and SidebarClass::SBGadgetClass slots
 // (layout and evidence: sidebar_select_class.h).

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001, confirmed from entry-origin instructions and pinned PE data.
+// Provenance: retail gamemd.exe v1.001, confirmed from entry-origin instructions and pinned PE data. | YRpp-cross-check | behaviour-confirmed-name
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // No /GX: none of the matched bodies unwinds (confirmed with a paired /GX probe).
 //

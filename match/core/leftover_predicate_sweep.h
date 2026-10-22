@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every member displacement, bit constant and relayed address below read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
 //   CLI at the address in each annotation. None of these classes is bound by

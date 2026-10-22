@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | TSpp-name-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Every offset below was read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, from the member-access instructions in the
 //   seven functions this header serves (addresses in the comments). Member and

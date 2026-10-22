@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Three unsigned bytes at +0x00/+0x01/+0x02, read and written byte-wise by
 // 0x517360 and 0x5173F0. The class and component names are descriptive (the
 // target list labels this area HSV); no size is asserted.

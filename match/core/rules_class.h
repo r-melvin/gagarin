@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Sparse RulesClass view for members independently read from the pointer at
 // 0x8871E0. Raw retail instructions show: 0x459494 / 0x4594C2 read +0x244;
 // 0x5F5E5D reads +0x1700 and 0x5F5DF5 / 0x5F5E30 read +0x1708;

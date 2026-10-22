@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Constructor and destructor of the path-search singleton at 0x87E8B8
 // (constructed by the static initialiser thunk 0x40AFA0, destroyed through

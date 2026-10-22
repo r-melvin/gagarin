@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Lists cluster declarations (UI input/controls module) that only this cluster uses: the CRT routines
 //   it calls, the modifier key codes read by GadgetClass::Input and the edit cursor string. The gadget
 //   classes themselves (Gadget, Control, List, CheckList, ColorList, Edit, DropList and the embedded

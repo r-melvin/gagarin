@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   The comma-separated-list and percentage corner of the CCINIClass
 //   enumerated reader run, read numerically off the user's retail
 //   gamemd.exe v1.001 with the local Ghidra CLI. Same contiguous

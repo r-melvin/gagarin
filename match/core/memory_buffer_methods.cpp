@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail 0x43AD00 field stores and allocation branch were confirmed from
 //   entry-origin instructions; 0x7C8E17 is the called library allocator.
 

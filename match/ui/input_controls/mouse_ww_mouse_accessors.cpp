@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Entry-point disassembly of retail gamemd.exe v1.001 at 0x7B89F0, 0x7B9D70, 0x7B9D90 and 0x7BA320..0x7BA38E,
 //   all reached through the WWMouseClass vtable 0x7F7B2C (layout and slot evidence: mouse_ww_mouse_class.h).
 

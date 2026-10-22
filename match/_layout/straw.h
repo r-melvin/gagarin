@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // RTTI TD 0x81BFB0 names .?AVStraw@@; its one-entry CHD has no additional
 // base. The primary vtable at 0x7E61F0 has three slots: 0x4AEC10, 0x6C9890,
 // and 0x6C98E0. The word at 0x7E61FC is the next table's COL pointer, proving

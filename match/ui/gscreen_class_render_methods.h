@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x4F4480: the surface pointers `[0x88731C]` (Composite)
 //   saved over `[0x887314]` (Temp, restored from EBP at the end) and

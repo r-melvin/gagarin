@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001, confirmed from entry-origin instructions, RTTI, and pinned PE data.
+// Provenance: retail gamemd.exe v1.001, confirmed from entry-origin instructions, RTTI, and pinned PE data. | YRpp-cross-check | behaviour-confirmed-name
 //   Layout, tables and constructor read from the retail gamemd.exe v1.001:
 //   RTTI .?AVHoverLocomotionClass@@ (TD 0x8254B8; COL 0x803288 for the primary
 //   table 0x7EADC8 and COL 0x803228 for the ILocomotion table 0x7EACFC),

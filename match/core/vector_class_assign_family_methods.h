@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout and the called vtable slot re-derived numerically from the user's
 //   retail gamemd.exe v1.001 with the local Ghidra CLI at 0x478720: [ESI+4]
 //   Items, [ESI+8] Capacity, [ESI+0xD] IsAllocated, and `MOV EAX,[ESI];

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6A7590.
 
 #include "sidebar_class_set_tab_methods.h"

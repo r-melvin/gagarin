@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-pinned-PE and RTTI.
+// Provenance: own-binary-via-pinned-PE and RTTI. | behaviour-confirmed-name
 // The retail RTTI record .?AVFileStraw@@ (TD 0x81BFC8) names Straw as its
 // sole base at offset zero. Entry-origin bodies at 0x7BA530 and 0x7BA590
 // access the File pointer at +0x0C and state byte at +0x10. These are the

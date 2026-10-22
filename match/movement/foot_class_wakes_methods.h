@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 through
 //   the local Ghidra CLI at 0x629E90:
 //     FootClass  the facing sub-object at +0x388 (`ADD ECX,0x388` before

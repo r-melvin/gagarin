@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Entry-origin retail span 0x6E5B60..0x6E5C99: 314 bytes, RET 4.
 // Instructions confirm base construction, field/vptr writes, identity copy,
 // array index and two vector appends. Original private names remain unknown.

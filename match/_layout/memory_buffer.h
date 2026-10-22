@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail 0x43AD00 writes the buffer pointer at +0, size at +4, and the
 //   allocation flag at +8; each touched offset and the 0x0C-byte size are
 //   pinned by static assertions below. CCFileClass::Close at 0x473CE0

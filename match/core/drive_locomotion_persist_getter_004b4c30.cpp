@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Entry-origin instructions at 0x004B4C30 load the explicit stack argument,
 //   test the byte at interface offset 0x11, return its zero-test as HRESULT (S_OK/S_FALSE),
 //   and clean the one dword with RET 4. DriveLocomotionClass constructor

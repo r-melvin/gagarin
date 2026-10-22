@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4741F0: the stack FileStraw (vtable 0x7E4D90 at
 //   +0, ChainTo +4, ChainFrom +8, File +0xC, HasOpened +0x10, destructor

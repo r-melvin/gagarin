@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   The display chain as one class hierarchy, read from the user's retail gamemd.exe v1.001 via the local Ghidra CLI.
 //   RTTI (class hierarchy descriptors) gives the chain
 //     GScreenClass > MapClass > DisplayClass > RadarClass > PowerClass > SidebarClass > TabClass > ScrollClass

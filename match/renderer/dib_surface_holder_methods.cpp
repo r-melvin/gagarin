@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Owner of a GDI DIB section and the software surface wrapped around its bits.
 // The constructor that ends at 0x4A69EB allocates the BITMAPINFO-shaped header

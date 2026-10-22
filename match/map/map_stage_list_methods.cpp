@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 across
 //   0x5CEE60..0x5CF8D6. See the header for how the container's identity and
 //   layout were read out of the image's runtime type information.

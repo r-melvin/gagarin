@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // RTTI type names from the pinned image: 0x7EB754 .?AVCacheStraw@@,
 // 0x7E6200 .?AVBufferPipe@@, 0x7E61E0 .?AVBufferStraw@@. The pipe and
 // straw bodies at 0x4A2030/0x4A20B0 have no table reference in the image, so

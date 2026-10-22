@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // PlainXlat family leaves of Blitter: BlitPlainXlat<uc|us>, BlitPlainXlatAlpha<us>,
 // BlitPlainXlatZRead<us>, BlitPlainXlatZReadWrite<us>. Every source byte is
 // looked up in a T table at +4 (no transparency test). Cluster b-plainxlat.

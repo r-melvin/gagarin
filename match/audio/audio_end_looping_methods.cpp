@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x406060.
 
 #include "audio_end_looping_methods.h"

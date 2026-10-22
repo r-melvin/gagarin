@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: frozen M3 candidate; instructions revalidated against pinned retail gamemd.exe.
+// Provenance: frozen M3 candidate; instructions revalidated against pinned retail gamemd.exe. | behaviour-confirmed-name
 // Cluster r-lucent50: eight RLEBlitter method specializations for
 // unsigned-short pixels. The alpha-buffer handle is retained as an observed
 // pointer-sized field; its allocation and destruction are outside this TU.

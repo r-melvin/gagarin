@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Found by sweeping 0x70F600..0x710700 as raw bytes; the Ghidra analysis
 //   does not list this entry. Read numerically at 0x70FD70: the drain link is
 //   the pair at +0x1CC on this object and +0x1D0 on the target, matching the

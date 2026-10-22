@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Trans family leaves of Blitter: BlitTrans<T>, BlitTransXlat<T>,
 // BlitTransRemapDest<uc>, BlitTransRemapXlat<uc>. Zero source byte (or word,
 // for BlitTrans<us>) is transparent. Cluster b-trans.

@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, IAT slots, string addresses and the vtable at 0x7F7488 read off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI. The class name
 //   and the Read_Serial_Chars / Enter_Failsafe_Mode names come from the

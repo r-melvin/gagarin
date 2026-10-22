@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // MissionClass bodies in retail address order (0x5B2E10..0x5B3A52): the
 // mission-state slots of the primary table 0x7EDCC0 (RTTI
 // ".?AVMissionClass@@") and ObjectClass slot 69, which is emitted here. Slot

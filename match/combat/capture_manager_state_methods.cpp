@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Complete retail entry spans: 0x4722E0 (0x0C), 0x4726C0 (0x29),
 // 0x4726F0 (0x2C), 0x4728E0 (0x7F), 0x472960 (0x38), and two six-byte
 // entries at 0x4729A0/0x4729B0. The FUN method

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //
 // MechLocomotionClass (locomotion module leaf). Layout and evidence are in

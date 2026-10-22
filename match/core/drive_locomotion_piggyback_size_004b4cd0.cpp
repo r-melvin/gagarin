@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   0x004B4CD0 is an IPiggyback interface __stdcall entry. Its sole load is
 //   [argument+0x50] @0x004B4CD6 and it returns that dword's nonzero test with
 //   RET 4 @0x004B4CDE. DriveLocomotionClass stores its IPiggyback vptr at +0x18

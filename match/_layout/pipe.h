@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Pipe COL pointer at 0x7E6214 -> 0x7FFDB8 / TD 0x81BF80 names .?AVPipe@@. The vtable
 // words at 0x7E6218 are 0x4AEC80, 0x631D30, 0x477740, 0x631CC0, and
 // 0x631D10. The destructor 0x631C80 reads and clears the two links at +4/+8;

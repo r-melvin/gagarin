@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x452410. Two callee bindings come from YRpp
 //   and are reconfirmed against the disassembly:

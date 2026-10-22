@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Small INI writers that format a composite value into a stack buffer and
 // forward it to the string writer at 0x528660 (this in ECX, three pushed

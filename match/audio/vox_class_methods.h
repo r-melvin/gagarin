@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-disassembly | RTTI not required by these methods
+// Provenance: own-binary-via-disassembly | RTTI not required by these methods | YRpp-cross-check
 //
 // Minimal ABI views for the Vox fields accessed by Play and SilenceIndex.
 // These are touched-prefix models, not recovered complete class/array layouts.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: the user's retail gamemd.exe v1.001 through the local Ghidra
 //   CLI at 0x5B2B90, 0x5B2BC0, 0x5B2BE0, 0x5B2C00, 0x5B2C20, 0x5B2C40,
 //   0x5B2C60, 0x5B2CA0, 0x5B2CD0, 0x5B2D00, 0x5B2D30, 0x5B2D40, 0x5B2D60 and

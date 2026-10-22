@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The growable array behind 0x7ACA00/0x7AD790/0x7ADB00/0x7AE5D0 (Insert),
 //   0x7AF000 (Grow, out of line for the 4-byte handle element) and the handle
 //   tables of 0x797C20/0x798140: {count, capacity, data}, no vtable, grown by

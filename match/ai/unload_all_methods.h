@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x4575B0. The count at +0x702 is a signed byte — retail
 //   sign-extends it with MOVSX before indexing — and it indexes the pointer array

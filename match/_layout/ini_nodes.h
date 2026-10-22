@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // TypeDescriptors 0x825AF0/0x825B40 name .?AUINIEntry@INIClass@@ and
 // .?AUINISection@INIClass@@. The retail constructor 0x52AF00 and teardown
 // bodies 0x52AAF0/0x52AB80 pin the accessed members and their widths below.

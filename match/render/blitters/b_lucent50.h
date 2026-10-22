@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Lucent50 (50% translucent) method subset of Blitter, <unsigned short> only.
 // The source byte is looked up in a 16-bit table (+4) and averaged with the
 // destination pixel: ((a >> 1) & mask) + ((b >> 1) & mask). Alpha methods use

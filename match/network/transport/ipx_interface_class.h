@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | RTTI
+// Provenance: own-binary-via-Ghidra | RTTI | behaviour-confirmed-name
 // IPXInterfaceClass RTTI type descriptor at 0x84D8F8 and class locator at
 // 0x80EA60 identify a zero-offset WinsockInterfaceClass base. The retail
 // address point 0x7F794C has 23 entries; four derived overrides are observed at

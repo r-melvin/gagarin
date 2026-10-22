@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, IAT slots, globals and strings read off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI (0x775BC0..0x776CCB).
 //

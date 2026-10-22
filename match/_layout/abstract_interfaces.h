@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The three game interfaces AbstractClass derives besides IPersistStream.
 //   Names and class-keys come from the retail RTTI TypeDescriptors
 //   (".?AUIRTTITypeInfo@@" struct, ".?AVINoticeSink@@" / ".?AVINoticeSource@@"

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The member convention, allocation, buffer writes, loop bounds and data
 //   offsets follow retail 0x434700. Extended data fields at +0x14/+0x18/+0x1C
 //   are confirmed by this body and the 0x433990 resolver; the resolver stores

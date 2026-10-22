@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Entry-origin retail span 0x726C80..0x726DF5: 374 bytes, RET 4.
 // RTTI confirms AbstractTypeClass as zero-offset base and four vptr stores.
 // Stores and vector dispatches establish the asserted offsets below.

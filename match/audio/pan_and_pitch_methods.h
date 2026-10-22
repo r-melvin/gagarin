@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x40A6D0. The two scalings are (x >> 16) * 100 >> 14 and
 //   (x >> 16) * 200 >> 14 — retail builds both multiplies out of LEA chains — and

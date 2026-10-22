@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Layout, vtable slots and globals read from the user's retail gamemd.exe v1.001: RTTI
 //   .?AVWWMouseClass@@ (type descriptor 0x84E638, vtable 0x7F7B2C, COL 0x80EC60, bases WWMouseClass ->
 //   Mouse), .?AVMouse@@ (vtable 0x7F7B78, one slot), the constructor 0x7B8730 (every member store below;

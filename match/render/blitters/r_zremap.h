@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // Cluster r-zremap: RLE leaves RLEBlitTransZRemapXlat, ...ZRead and
 // ...ZReadWrite, each for unsigned char and unsigned short.
 #ifndef GG_MATCH_RENDER_BLITTERS_R_ZREMAP_H

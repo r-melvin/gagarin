@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Accessed IndexClass prefix: retail INISection destructor and INIClass
 // destructor 0x5256F0 free +0 and reset +4/+8/+C/+10 with the widths below.
 #ifndef GG_MATCH_LAYOUT_INDEX_CLASS_LAYOUT_H

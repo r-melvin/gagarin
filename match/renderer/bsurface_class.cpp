@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // BSurface vtable 0x7E2070 slots +0x70/+0x74 select these entry-origin bodies.
 #include "bsurface_class.h"
 

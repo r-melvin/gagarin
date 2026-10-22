@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 at 0x602B90 and
 //   0x603240. Both take a key in ECX and a window handle in EDX with no stack
 //   cleanup, so both are __fastcall. Both open with the same inlined hash-table

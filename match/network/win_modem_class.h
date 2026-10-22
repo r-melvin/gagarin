@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 //   RTTI: vtable 0x7F7488 -> .?AVWinModemClass@@, ten slots
 //   [0x775610, 0x774410, 0x7748A0, 0x7748B0, 0x774900, 0x774CD0, 0x774F50,
 //    0x775110, 0x7754A0, 0x7754B0]. sizeof 0x2088 from `PUSH 0x2088; CALL

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // 0x6B9450: the constructor of the static object at 0xAC4848 (built by
 // 0x600530, which registers the 0x6B9530 teardown with atexit 0x7C978A).
 // Stores read off the body: doubles 0.2 at +0x20 and 0.8 at +0x28, 128 at

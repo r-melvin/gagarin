@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001, confirmed from Hover entry instructions,
+// Provenance: retail gamemd.exe v1.001, confirmed from Hover entry instructions, | YRpp-cross-check
 // call sites and pinned PE data. This file contains only Hover-prefixed
 // address-local views and does not claim complete linked-object layouts.
 #ifndef GG_MATCH_MOVEMENT_HOVER_LOCOMOTION_SUPPORT_H

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // ObjectClass bodies for primary-table (0x7EF060) slots in the block
 // 0x5F4360..0x5F6DBA, in retail address order. Slot numbers come from the
 // RTTI-located table; names are placeholders (object_class.h). Argument counts

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Complete retail body 0x4729C0..0x472A75 (0xB6), REA evidence
 // ev_1a5aba8e115edbbdf23b9901dd549edebbe82f9b5166cd0bd9651c8e7b3e0918.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The +0xF8 header displacement, the +0x0C tag and both per-node call targets
 //   are read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x4036F0 and 0x403730.

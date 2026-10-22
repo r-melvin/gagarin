@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
-// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x34 at 0x4BFD30:
+// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x34 at 0x4BFD30: | YRpp-cross-check
 // a Bresenham line on a 16-bit surface that is depth-tested against the Z buffer (global 0x887644) and
 // tinted by the buffer at global 0x87E8A4; both observed buffers use circular wrapping. This is a readable
 // partial candidate; the function's full control-flow extent is longer than the earlier saved span.

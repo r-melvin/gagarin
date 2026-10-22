@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: frozen M3 candidate; instruction/layout facts revalidated against pinned retail gamemd.exe.
+// Provenance: frozen M3 candidate; instruction/layout facts revalidated against pinned retail gamemd.exe. | behaviour-confirmed-name
 // Production-only method declarations for the six unsigned-short RLE alpha leaves.
 // This package excludes constructors, destructors, deleting wrappers, vtable emission,
 // alpha-pool storage, and pool lifetime claims. Derived slot/table address points are

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra; YRpp consulted for the timer name only.
+// Provenance: own-binary-via-Ghidra; YRpp consulted for the timer name only. | YRpp-cross-check
 // Rocket-specific value views: fields, copy extents and frame global are pinned
 // by the Rocket constructor/Process entry instructions.
 #ifndef GG_MATCH_MOVEMENT_ROCKET_LOCOMOTION_TIMER_H

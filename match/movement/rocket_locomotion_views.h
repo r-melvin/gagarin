@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra; YRpp consulted for names only.
+// Provenance: own-binary-via-Ghidra; YRpp consulted for names only. | YRpp-cross-check
 // Address-local, non-owning Rocket views. Listed fields and slots are limited
 // to the Rocket call sites; these are not complete declarations of other objects.
 #ifndef GG_MATCH_MOVEMENT_ROCKET_LOCOMOTION_VIEWS_H

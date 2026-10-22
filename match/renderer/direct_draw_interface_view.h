@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra. DirectDraw COM prefix and slots observed
+// Provenance: own-binary-via-Ghidra. DirectDraw COM prefix and slots observed | YRpp-cross-check
 // at GAMEMD 0x8A0094; declarations stop after the last required slot.
 #ifndef GG_MATCH_RENDERER_DIRECT_DRAW_INTERFACE_VIEW_H
 #define GG_MATCH_RENDERER_DIRECT_DRAW_INTERFACE_VIEW_H

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 #include <string.h>
 #include "conn_types.h"

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI at 0x4E0950 and 0x4E0AB0 and their six siblings. Members come
 //   straight off the instructions: the items pointer at +4 (`MOV EAX,[ESI+4]`,

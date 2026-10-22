@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // This compatibility header supplies the helper declarations needed by the two legacy methods that
 // remain in overlay_type_class_methods.cpp. OverlayTypeClass and OverlayClass themselves are declared
 // once in the terrain-object integration overlay.

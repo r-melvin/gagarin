@@ -3,7 +3,7 @@
 // ^ no /GX: paired probe on the XSurface scalar deleting destructor (0x4115A0): with /GX VC6 keeps a
 // separate ~XSurface call (0/12), without it the destructor inlines and matches (12/12). The Blit*
 // stack locals of 0x7BBB90 also carry no unwind frame in retail.
-// Provenance: own-binary-via-Ghidra. XSurface line drawing: DrawLineEx
+// Provenance: own-binary-via-Ghidra. XSurface line drawing: DrawLineEx | YRpp-cross-check
 // (slot +0x2C), DrawDottedLine (+0x48) and DrawLineCallback (+0x44).
 #include <stdlib.h>
 #include <string.h>

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Canonical ToolTipManager family layout recovered from retail gamemd.exe
 //   v1.001. RTTI at 0x844998 identifies ToolTipManager; its COL is 0x80C888
 //   and its primary vtable address point is 0x7F57AC. Constructor/member

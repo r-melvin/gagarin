@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The seven-slot VectorClass / DynamicVectorClass shape every pointer array of the terrain-objects
 //   module uses (OverlayClass::Array 0xA8EC50, OverlayTypeClass::Array 0xA83D80, SmudgeClass::Array
 //   0xA8B1E0, SmudgeTypeClass::Array 0xA8EC18, TerrainTypeClass::Array 0xA8E318, TerrainClass::Array

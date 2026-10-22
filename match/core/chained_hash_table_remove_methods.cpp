@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes read off the user's retail gamemd.exe v1.001 via the local Ghidra
 //   CLI at 0x7ADCD0: __thiscall, `RET 8` (key reference, value out-pointer).
 //   A chained hash table keyed by a 4-byte handle (equality 0x7B4780, release

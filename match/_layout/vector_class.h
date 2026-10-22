@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   This header is a layout-only view of vector-shaped objects. Retail RTTI
 //   identifies the canonical VectorClass<T> and DynamicVectorClass<T> types;
 //   those template definitions live separately under match/core. This view

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // XYWH bounds fields are read at 0x7BAF10/0x7BAF90 (XSurface pixel access).
 // Point fields/stack width: retail BitFont::Lock 0x4348F0 and ToolTipManager
 // accesses at 0x724AD0. Rectangle result layout: Surface::GetRect 0x411510.

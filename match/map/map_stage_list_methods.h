@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Every address, offset and vtable slot below was read numerically off the
 //   user's retail gamemd.exe v1.001 with the local Ghidra CLI over
 //   0x5CEDD0..0x5CF8D6 and the vtable block at 0x7EEAB4..0x7EEB54. 0x5CF830 is a one-line

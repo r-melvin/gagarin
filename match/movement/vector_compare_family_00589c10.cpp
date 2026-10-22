@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary; complete entry-origin retail disassembly.
+// Provenance: own-binary; complete entry-origin retail disassembly. | YRpp-cross-check
 #include "vector_compare_family_00589c10.h"
 // FUNCTION: GAMEMD 0x589C10
 int SearchVector36_00589C10::Find(const SearchRecord36_00589C10& value) const

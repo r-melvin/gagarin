@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c.
+// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c. | YRpp-cross-check
 // RTTI and entry-origin retail instructions establish eight Blitter-derived
 // address-point identities and the member accesses below. This header is a
 // method/layout view for explicit <unsigned short> specializations only; this

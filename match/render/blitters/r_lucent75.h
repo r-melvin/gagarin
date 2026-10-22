@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: frozen M3 r-lucent75 packet (SHA-verified) and retail instruction
+// Provenance: frozen M3 r-lucent75 packet (SHA-verified) and retail instruction | behaviour-confirmed-name
 // accesses. This is a method-facing leaf view; it does not claim lifetime code,
 // complete owner hierarchy, or emitted derived vtables.
 #ifndef GG_MATCH_RENDER_BLITTERS_R_LUCENT75_H

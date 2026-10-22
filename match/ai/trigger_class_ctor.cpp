@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-REA-and-pinned-PE
+// Provenance: own-binary-via-REA-and-pinned-PE | YRpp-cross-check
 // Retail entry-origin evidence: 0x725FA0..0x726132 inclusive (0x193 bytes).
 // It calls AbstractClass::AbstractClass at 0x410170 and TriggerClass::ResetTimers
 // at 0x726400; writes the TriggerClass vptr prefix and fields at +0x24..+0x44;

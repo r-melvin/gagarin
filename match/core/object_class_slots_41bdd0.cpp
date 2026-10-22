@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // ObjectClass bodies for primary-table (0x7EF060) slots 41, 43, 45, 51, 52,
 // 76, 98 and 110, emitted together at 0x41BDD0..0x41BEDC. Slot numbers come from
 // the RTTI-located table; names are placeholders (object_class.h).

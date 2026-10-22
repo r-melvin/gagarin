@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail 0x471D40 requests 0x14 bytes at 0x471DCC and initializes the unit
 // pointer at +0, saved house at +4, current frame at +8 and zero at +0x10.
 // 0x472140/0x4722F0 read +0/+4; 0x472640 uses +8/+0x10 for frame arithmetic.

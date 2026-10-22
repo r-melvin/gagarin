@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail uses a dword frame counter at 0xA8ED84. Direct operands in matched
 // timer/network functions independently confirm this shared storage; e.g.
 // the function at 0x6CB4D0 and Event constructors at 0x4C6650.

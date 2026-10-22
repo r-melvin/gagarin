@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI. 0x70FEB0 reads `[ECX+0x1CC]` and is the exact twin of
 //   the already-matched 0x70FEC0 in match/economy/building_class_drain.cpp,

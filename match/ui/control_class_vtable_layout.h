@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail ControlClass 0x7E528C and ToggleClass 0x7E8118 have 34 slots.
 // This layout pins offsets, not unconfirmed parameter types. Slots whose
 // signatures remain opaque are not called by the recovered constructor/state methods.

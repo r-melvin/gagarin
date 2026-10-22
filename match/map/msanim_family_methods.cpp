@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Bytes compared against the user's retail gamemd.exe v1.001 across
 //   0x5CD320..0x5CEDC6. The class identities come from the image's own runtime
 //   type information (see the header). Six of the entry points

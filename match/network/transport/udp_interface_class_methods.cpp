@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | RTTI | existing repository ABI views
+// Provenance: own-binary-via-Ghidra | RTTI | existing repository ABI views | YRpp-cross-check
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //   RTTI type descriptor 0x84E1C0 names UDPInterfaceClass; its COL at 0x80EBE0
 //   identifies WinsockInterfaceClass as the zero-offset base. The retail table

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c.
+// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c. | behaviour-confirmed-name
 // Field offsets below are confirmed by the leaf accesses. The owner at
 // 0x48EBF0 allocates the non-alpha leaves as 0xC bytes and alpha leaves as
 // 0x10 bytes, then stores their vptrs at +0; those stores identify the size

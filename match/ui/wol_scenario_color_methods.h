@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check | behaviour-confirmed-name
 //
 //   Two colour-combo methods of the WOL scenario-setup dialog, at 0x5B59B0 and
 //   0x5B9450. Both read the current selection out of the player-colour combo

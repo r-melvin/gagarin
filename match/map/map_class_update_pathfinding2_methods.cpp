@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x586990.
 
 #include "map_class_update_pathfinding2_methods.h"

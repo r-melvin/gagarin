@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Entry-origin retail gamemd.exe v1.001 instructions at 0x004B4C00,
 //   0x004B4C10, and 0x004B4C20 show each __stdcall interface method loading
 //   its first stack argument and then a dword at interface offsets 0x54, 0x58,

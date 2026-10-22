@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-pinned-PE and RTTI. TD 0x81BFE8 and COL
+// Provenance: own-binary-via-pinned-PE and RTTI. TD 0x81BFE8 and COL | behaviour-confirmed-name
 // 0x7FCD80 identify FilePipe with Pipe at offset zero. Entry-origin bodies
 // 0x7BA420/0x7BA450/0x7BA480 establish the fields and slot-call ABI below.
 #ifndef GG_MATCH_LAYOUT_FILE_PIPE_H

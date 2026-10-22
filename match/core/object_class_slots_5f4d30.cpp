@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // ObjectClass bodies for primary-table (0x7EF060) slots 53, 54 and 58
 // (0x5F4D30, 0x5F4EC0, 0x5F5940); names are placeholders (object_class.h).
 #include "../_layout/object_class.h"

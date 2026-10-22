@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check | behaviour-confirmed-name
 //   Trivial 3-20 byte leaf functions from multiple classes. Each is a simple
 //   accessor (getter/setter/constructor) matching one of the proven recipes
 //   identified from retail bytes. Offsets numerically confirmed against the

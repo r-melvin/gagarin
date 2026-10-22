@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: candidate native declaration, based on pinned retail layout/RTTI evidence.
+// Provenance: candidate native declaration, based on pinned retail layout/RTTI evidence. | YRpp-cross-check
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001:
 //   RTTI.?AVLocomotionClass@@ (TD 0x820228, COL 0x8032E8 for the primary
 //   table and the COL word before 0x7EADF4 for the ILocomotion table), the

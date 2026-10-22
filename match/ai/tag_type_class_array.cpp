@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // Retail 0x6E5AE0 initializes 0xB0E780 with DynamicVectorClass<TagTypeClass*>
 // table 0x7F4558, empty storage, flags 1/0, count 0 and growth 10, then
 // registers 0x6E5B20 through atexit at 0x7C978A. Full initializer span 61 bytes.

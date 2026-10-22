@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Copy constructor (__thiscall, `ret 4`, returns this) of a record of two
 // words (+0x00, +0x04) and a growable list of 0x18-byte entries at +0x08
 // (count +0x08, capacity +0x0C, data +0x10: the list shape of

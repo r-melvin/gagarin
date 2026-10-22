@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // Retail 0x4741F0/0x474320/0x474430/0x476D80 construct this 0x80-byte
 // stack view. RTTI identifies its bound vtable 0x7E4D78 as SHAPipe -> Pipe.
 // Pipe destructor 0x631C80 confirms links at +4/+8; Result 0x69E9E0

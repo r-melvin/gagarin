@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Entry, span, ABI and field facts read from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (disasm from each entry) at 0x478BA0,
 //   0x478DB0, 0x478E10, 0x478E30 and 0x479050. RTTI at 0x849EE0 names CCToolTip

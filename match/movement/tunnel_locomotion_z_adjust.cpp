@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // RTTI: vtable0x7F5A24 slot+0x38 points to0x729E50; its COL0x80CAE8
 // names TunnelLocomotionClass via descriptor0x844AA0 and has object offset4.
 // This models the incoming ILoco interface at complete-object+4. Asserted

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail globals and out-of-partition functions the particle module reads, bound by address.
 //   Module header: nothing here is defined by the module.
 #ifndef GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H

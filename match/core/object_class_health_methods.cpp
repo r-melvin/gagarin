@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // REA/Ghidra confirms the full 0x20-byte entry at 0x5F5C60: signed Health+6C
 // is converted before the primary virtual call at +88; the returned type's
 // signed Strength+A0 is the divisor. The result remains in ST(0); RET has

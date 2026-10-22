@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Raw RTTI/vtable 0x7E2070 proves BSurface : XSurface : Surface at offset0.
 // Entries 0x4115F0/0x411630/0x411640/0x411650 and helper 0x43AE50 establish
 // the fields below. Lock and the two getters are native methods; lifetime

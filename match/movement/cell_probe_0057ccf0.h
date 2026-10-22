@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary; retail gamemd.exe v1.001, full entry 0x57CCF0.
+// Provenance: own-binary; retail gamemd.exe v1.001, full entry 0x57CCF0. | YRpp-cross-check
 #ifndef GG_CELL_PROBE_0057CCF0_H
 #define GG_CELL_PROBE_0057CCF0_H
 #include "cell_neighbor_flags_0057cbe0.h"

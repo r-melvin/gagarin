@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary; retail gamemd.exe v1.001 entries 0x589290..0x589362.
+// Provenance: own-binary; retail gamemd.exe v1.001 entries 0x589290..0x589362. | YRpp-cross-check
 #ifndef GG_VECTOR_SEARCH_00589290_H
 #define GG_VECTOR_SEARCH_00589290_H
 #include <stddef.h>

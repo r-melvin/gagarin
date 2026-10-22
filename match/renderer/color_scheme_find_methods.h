@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes, globals and offsets read off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x68C9C0. Array globals 0x00B054D4 (Items) and
 //   0x00B054E0 (Count) are +0x04 and +0x10 of one vector, so the object sits at

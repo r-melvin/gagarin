@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   The class was identified from its own runtime type information: the
 //   vtable at 0x7EEFDC carries 0x5F1950 in slot 4, its complete object locator
 //   sits one dword below at 0x7EEFD8 -> 0x8073B0, whose type descriptor at

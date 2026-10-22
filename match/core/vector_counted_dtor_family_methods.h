@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Remaining layout view for slot 3 at 0x69C4A0, reached through the
 // TypeList<DiskID> vtable 0x7F12D4. Its Clear behavior/element type are
 // confirmed; whether the declaring class is DynamicVectorClass or TypeList

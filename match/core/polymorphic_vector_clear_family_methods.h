@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI at 0x765680 and its neighbours. The member displacements come
 //   straight off the instructions — [ESI+4] Items, [ESI+8] Capacity,

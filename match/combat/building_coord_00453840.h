@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail instructions at 0x453840 establish the BuildingClass receiver,
 //   offsets +0x520 / +0x69C, type-data offsets below, and vtable slots +0xAC
 //   / +0x408. RTTI bytes identify the table as BuildingClass: COL 0x7FC360

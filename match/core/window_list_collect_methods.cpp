@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Window-enumeration callback (__stdcall, `ret 8`): its address is pushed
 // at 0x61210B and 0x61275F together with a zeroed 12-byte local list and
 // passed to the imported enumerator at [0x7E14E4]. It appends the handle to

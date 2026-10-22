@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary; complete entry-origin disassembly 0x589290..0x589362.
+// Provenance: own-binary; complete entry-origin disassembly 0x589290..0x589362. | YRpp-cross-check
 #include "vector_search_00589290.h"
 // FUNCTION: GAMEMD 0x589290
 bool SearchVector8_00589290::Remove(int index)

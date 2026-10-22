@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Enumerates the DirectDraw display modes into a DynamicVectorClass of
 // surface descriptions (vtables 0x7E5E0C / 0x7E5DEC, enumeration callback

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Eleven CCINIClass writers that the Ghidra function list does not know
 //   about. Every one of them sits in an address gap between two listed
 //   functions, behind a pad of 0x90 bytes, and was found by sweeping the

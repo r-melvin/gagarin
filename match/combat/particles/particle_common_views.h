@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
 //   Partial views of the retail base classes shared by the whole particle module, each declared once:
 //   ObjectClass (ParticleObjectView, the base of ParticleClass and ParticleSystemClass),
 //   ObjectTypeClass (ParticleTypeObjectView, the base of ParticleTypeClass and

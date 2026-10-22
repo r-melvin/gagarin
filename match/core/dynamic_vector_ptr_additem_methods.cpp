@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-xcheck
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001. See the header for the
 //   shape, the confirmed layout, the YRpp cross-check on the name, and the
 //   family's (absent) per-instance variation: all 23 members are

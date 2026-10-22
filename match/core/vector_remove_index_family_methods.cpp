@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-xcheck
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001. These 16 functions have
 //   byte-identical retail bodies: the element type is four bytes wide and the
 //   body names no vtable, so every instantiation compiled to the same 49

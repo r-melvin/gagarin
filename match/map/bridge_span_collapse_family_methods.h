@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset below was read numerically off the user's retail gamemd.exe
 //   v1.001 with the local Ghidra CLI at 0x56EF50 / 0x56F8B0 and their six
 //   siblings. On the cell: `[ESI+0x24]` the map coords handed to the map's

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail vtable 0x7F45C4 slots +0x64/+0x68 point to 0x6E6080/0x6E6160.
 //   Its locator 0x80BCF0 identifies .?AVTagTypeClass@@ at 0x842CB0.
 //   The reader is unlisted; raw bytes at its entry end with RET 4 at 0x6E615A.

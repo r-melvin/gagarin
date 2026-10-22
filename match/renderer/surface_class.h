@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra. Surface/XSurface RTTI, vtables, slot
+// Provenance: own-binary-via-Ghidra. Surface/XSurface RTTI, vtables, slot | YRpp-cross-check
 // bodies and member offsets are read from retail gamemd.exe v1.001; every
 // address cited below was disassembled from its entry point. Slot names
 // describe the behaviour of the slot bodies; the others keep unknown_XX names.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Partial, house-cluster-scoped view of the TechnoClass objects that HouseClass walks.
 //   Only the members and virtual slots the house entries touch are named; every other slot is a
 //   positional placeholder. Retail evidence (gamemd.exe v1.001, HouseClass entries 0x4F6A20 / 0x4F6A80 /

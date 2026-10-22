@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   TClassFactory<T>: the engine's persistence class factory, one template
 //   instantiated per persistable class. RTTI in the retail binary names 77
 //   instantiations (`.?AV?$TClassFactory@V<T>@@@@`, bases IClassFactory,

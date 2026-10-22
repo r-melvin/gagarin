@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail globals, out-of-partition functions and small views only the TerrainClass /
 //   TerrainTypeClass half of the terrain-objects module reads, bound by address. Module header: nothing
 //   here is defined by the module. Each entry was read from the retail gamemd.exe v1.001 (the bodies of

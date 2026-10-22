@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read off retail gamemd.exe v1.001 at 0x5A7250: __fastcall with a
 //   rectangle pointer in ECX ({X, Y, Width, Height} dwords at +0/+4/+8/+0xC),
 //   a bool in DL and a second bool on the stack (`RET 4`). The four corners

@@ -3,7 +3,7 @@
 // ^ no /GX: paired probe on the XSurface scalar deleting destructor (0x4115A0): with /GX VC6 keeps a
 // separate ~XSurface call (0/12), without it the destructor inlines and matches (12/12). The Blit*
 // stack locals of 0x7BBB90 also carry no unwind frame in retail.
-// Provenance: own-binary-via-Ghidra. XSurface::DrawEllipse (slot +0x20), a
+// Provenance: own-binary-via-Ghidra. XSurface::DrawEllipse (slot +0x20), a | YRpp-cross-check
 // midpoint ellipse outline for 16-bit surfaces. It writes through raw
 // unsigned short pointers (the surface must already be 16 bits per pixel) except
 // for the four axis extremes, which go through PutPixel (slot +0x24).

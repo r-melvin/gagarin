@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Entry-origin retail bodies at 0x5B3F50..0x5B4793 confirm the layouts,
 // call conventions and operations below. RTTI names GenericNode at 0x7E1B0C,
 // GenericList at 0x7E1B04 and MixFileClass at 0x7EDF50 (TD0x82C320).

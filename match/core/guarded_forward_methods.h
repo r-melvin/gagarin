@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Slots and offsets extracted individually from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, one disassembly per entry point. None of
 //   these addresses is bound by YRpp.

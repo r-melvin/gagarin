@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Shapes read off retail gamemd.exe v1.001 at 0x646480..0x646A75: every
 //   function is __fastcall with the hidden result pointer in ECX and the first
 //   reference argument in EDX. Quaternion is four floats {X, Y, Z, W}

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // RTTI TD0x8174B0/COL0x802510 names .?AVINIClass@@, table0x7EA5F4.
 // Destructor0x5256F0 confirms list+C/index+28. Entry0x5CEEF0 initializes
 // the local through +3C; the adjacent live CCFile begins exactly +40 after it.

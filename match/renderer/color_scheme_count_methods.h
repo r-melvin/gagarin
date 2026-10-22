@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x626C60: the owner global `[0xAC48F0]` is a 0x10-byte
 //   object (`PUSH 0x10; CALL 0x7C8E17`) holding `-1` at +0, two 0x18-byte

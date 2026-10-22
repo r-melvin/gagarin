@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets, IAT slots, globals and call targets read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at 0x406570,
 //   0x407FB0 and 0x409360.

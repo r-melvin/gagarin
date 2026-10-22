@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary (candidate declaration; see scope below).
+// Provenance: own-binary (candidate declaration; see scope below). | YRpp-cross-check | behaviour-confirmed-name
 // The pinned retail PE directly proves 50 ILocomotion slots for the concrete
 // Fly table at 0x7E89F4 and DropPod table at 0x7E8278; see
 // /tmp/gagarin-locomotion-foundation-review/concrete-interface-audit.md.

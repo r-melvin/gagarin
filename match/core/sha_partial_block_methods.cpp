@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // Partial-block buffering step of the SHA-1 engine whose field offsets are
 // pinned in combat/random_straw.h (Acc +0x18, Length +0x2C,
 // PartialCount +0x30, Partial[64] +0x34). This TU-local view adds the

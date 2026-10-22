@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c; method field accesses and allocation-size limits were confirmed in the frozen M2 binary evidence.
+// Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c; method field accesses and allocation-size limits were confirmed in the frozen M2 binary evidence. | YRpp-cross-check
 // This is a production method view. It does not claim derived constructor,
 // destructor, vtable emission, or alpha-pool ownership recovery.
 #ifndef GG_MATCH_RENDER_BLITTERS_B_ZREMAP_H

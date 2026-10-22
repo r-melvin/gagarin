@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Base COL at 0x80EAF8 points to TypeDescriptor 0x84D8D0, whose name is
 //   .?AVWinsockInterfaceClass@@. Base vtable address point 0x7F79BC has 23
 //   slots, read directly from pinned retail PE.

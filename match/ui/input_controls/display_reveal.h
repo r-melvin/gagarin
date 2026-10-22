@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets, slots and conventions read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI from the entry disassembly of 0x4A9890, 0x4A9CA0, 0x4A9DD0 and 0x4AA050, and from the RTTI
 //   vtable .?AVDisplayClass@@ at 0x7E6114 (50 slots; slots 36..39 are these four entries).

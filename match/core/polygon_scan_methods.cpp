@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Polygon scan conversion into per-row {left, right} spans. Both entries
 // are __fastcall free functions: 0x63F080 takes the polygon {count +0x00,
 // points +0x04 (8-byte x/y pairs)} in ECX and the span buffer {height

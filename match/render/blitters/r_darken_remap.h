@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // Cluster r-darken-remap: RLE leaves RLEBlitTransDarken<unsigned short>,
 // RLEBlitTransRemapDest<unsigned char> and RLEBlitTransRemapXlat<unsigned char>,
 // each in plain / ZRead / ZReadWrite form. Retail RTTI names carry the pixel

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: frozen M2 retail-binary method evidence. This is a touched-field
+// Provenance: frozen M2 retail-binary method evidence. This is a touched-field | YRpp-cross-check
 // and virtual-method view for unsigned-short TransXlat alpha leaves, not a
 // recovered complete lifetime implementation.
 #ifndef GG_MATCH_RENDER_BLITTERS_B_XLATALPHA_H

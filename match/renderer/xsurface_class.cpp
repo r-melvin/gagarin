@@ -3,7 +3,7 @@
 // ^ no /GX: paired probe on the XSurface scalar deleting destructor (0x4115A0): with /GX VC6 keeps a
 // separate ~XSurface call (0/12), without it the destructor inlines and matches (12/12). The Blit*
 // stack locals of 0x7BBB90 also carry no unwind frame in retail.
-// Provenance: own-binary-via-Ghidra. XSurface (RTTI .?AVXSurface@@, vtable
+// Provenance: own-binary-via-Ghidra. XSurface (RTTI .?AVXSurface@@, vtable | YRpp-cross-check
 // 0x7E2104) members that are not drawing algorithms; spans are CFG-closed.
 #include "surface_class.h"
 

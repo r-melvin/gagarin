@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset, call target and vtable address below was read numerically off
 //   the user's own retail gamemd.exe v1.001 through the local Ghidra CLI. The
 //   class names RandomStraw and Straw come from RTTI; every other name is a

@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Public-key pair generation (0x632050): __fastcall, random source in ECX,
 // bit precision in EDX, the two keys on the stack (`ret 8`); 0x96CC-byte
 // frame (__chkstk). Two primes are drawn by the same inlined search: a

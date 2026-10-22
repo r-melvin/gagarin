@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Layout + vtable-slot offsets read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x65CDD0:
 //     unknown_0C   [ESI+0x0C] (ADD ECX,EBP @0x65CE98; SUB EAX,[ESI+0xC] @0x65CEDE)

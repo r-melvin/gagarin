@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI at 0x67B500 and its four siblings. The frame is a 0x80-byte
 //   stack buffer (`SUB ESP,0x80`, `LEA EAX,[ESP]`) handed to the INI string

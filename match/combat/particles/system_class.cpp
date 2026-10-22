@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // No /GX: no retail body of this class has an exception frame.
 //

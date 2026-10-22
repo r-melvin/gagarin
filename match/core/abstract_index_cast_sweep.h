@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Every offset, global address and RTTI type-descriptor address below was
 //   read numerically off the user's own retail gamemd.exe v1.001 with the local
 //   Ghidra CLI (disasm at 0x6E6BB0 and its seventeen siblings, memory read at

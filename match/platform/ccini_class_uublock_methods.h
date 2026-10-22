@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x526E80: the buffer straw at `[ESP+0x10]` is built
 //   inline (`[+0x04]=0`, `[+0x08]=0`, `[+0x00]=0x7E61F0`, then the 0x43AD00

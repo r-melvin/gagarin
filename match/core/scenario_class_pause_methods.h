@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets, globals and call shapes read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x683EB0: the __cdecl
 //   0x406F00 with no arguments; `MOV ECX,[0x87E758]; CALL 0x4072B0` (a

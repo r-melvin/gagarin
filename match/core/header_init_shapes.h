@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // The run-time initialiser shapes that open many retail translation units: a
 // header-level group of globals each TU gets its own copy of. Each copy is
 // initialised by three compiler-generated functions in __xc order:

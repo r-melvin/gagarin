@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Scalar deleting destructors of the World Domination Tour data classes and
 // of rc_ptr_base, their shared smart-pointer root. Each one runs the class's

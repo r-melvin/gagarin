@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x74DE90.
 
 #include "veinhole_init_growth_methods.h"

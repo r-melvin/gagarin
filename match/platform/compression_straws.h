@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // RTTI type names from the pinned image: vtable 0x7ECF44 -> .?AVLCWStraw@@,
 // 0x7ED37C -> .?AVLZOPipe@@, 0x7ED394 -> .?AVLZOStraw@@. Slot words read
 // from the image are listed beside each VTABLE marker.

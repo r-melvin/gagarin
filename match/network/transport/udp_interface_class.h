@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 RTTI and entry-origin member accesses;
+// Provenance: retail gamemd.exe v1.001 RTTI and entry-origin member accesses; | YRpp-cross-check | behaviour-confirmed-name
 // shared Winsock/connection declarations are existing repository ABI views.
 #ifndef GG_MATCH_NETWORK_TRANSPORT_UDP_INTERFACE_CLASS_H
 #define GG_MATCH_NETWORK_TRANSPORT_UDP_INTERFACE_CLASS_H

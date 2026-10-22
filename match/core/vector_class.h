@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail RTTI and seven-slot vtables at 0x7E4DB8/0x7E4E78 and
 // 0x7F57E8/0x7F57C8 establish VectorClass<T> and its dynamic base split.
 // Clear bodies 0x477D20/0x477840 and 0x724D80/0x724C30 confirm touched

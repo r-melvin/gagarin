@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's own retail gamemd.exe v1.001 with
 //   the local Ghidra CLI at 0x4D2E40 and its five siblings. The element size is
 //   8 (`LEA EAX,[EBX*8]` for the allocation and two dword copies per iteration);

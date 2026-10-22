@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes, globals and argument slots read off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x674550: the section-name pointer is
 //   the .data slot 0x7F0CE4 (`MOV EAX,[0x7F0CE4]`); the callees are

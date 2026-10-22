@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // AbstractClass's own bodies for the primary table 0x7E1F50 (slots 4, 9-23)
 // and the INoticeSink / INoticeSource tables 0x7E1F2C / 0x7E1F24, in retail
 // address order (0x410440..0x410590). Slot numbers come from the RTTI-located

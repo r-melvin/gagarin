@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4C9EA0: `[ESI+0x58]` (Object), `[ESI+0x68]`
 //   (SpecialItem, compared with -1), `[ESI+0x70]` / `[ESI+0x71]` (IsSuspended /

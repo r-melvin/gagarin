@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // RTTI TD 0x81BF98 / COL 0x7FCCC8 identifies SHAPipe -> Pipe at offset zero.
 // Retail table 0x7E4D78 has five slots: 477750,631D30,477740,631CC0,69E9B0.
 // Only the two method bodies below are bound here. Native deleting-wrapper

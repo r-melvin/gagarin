@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
-// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x4C, a
+// Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x4C, a | YRpp-cross-check
 // patterned line draw on 16-bit surfaces that is gated by a second ring-buffer layer (global 0x87E8A4). The span
 // is CFG-closed from the entry disassembly.
 // This readable candidate remains partial; the source technique behind the unmatched retail instructions

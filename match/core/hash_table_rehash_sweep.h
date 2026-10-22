@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every entry point, offset and chain-link displacement below was read off
 //   the user's own retail gamemd.exe v1.001 with the local Ghidra CLI. The
 //   table offsets come straight off the member accesses: the bucket array at

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x437F50. Imports from the IAT thunks at 0x7E15FC
 //   (CoCreateInstance) and 0x7E1600 (OleRun). 0x817BC0 is IID_IUnknown — the same

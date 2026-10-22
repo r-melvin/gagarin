@@ -1,5 +1,5 @@
 //   No /GX: the stack list has a destructor and retail carries no unwind frame.
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read off retail gamemd.exe v1.001 at 0x595CE0 (no arguments, plain RET):
 //   a dynamic vector of 0x140-byte find-data records on the stack (base
 //   constructor 0x5AD9F0, vtables 0x7ED94C dynamic / 0x7ED92C base, growth

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x673E80.
 
 #include "rules_class_read_powerups_methods.h"

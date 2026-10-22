@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x4585C0.
 
 #include "building_class_kill_occupants_methods.h"

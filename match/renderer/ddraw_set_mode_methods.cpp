@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // Creates the DirectDraw object on first use, sets the cooperative level and
 // display mode, records the mode in 0x8A00A4/A8/AC and, for 8-bit modes,

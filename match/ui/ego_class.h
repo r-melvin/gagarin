@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The class name comes from the RTTI of the vectors this unit instantiates
 //   (".?AV?$DynamicVectorClass@PAVEgoClass@@@@" at 0x4207B0). The layout is
 //   read off the constructor 0x4C3C90 (text copy at +0x00, the three dword

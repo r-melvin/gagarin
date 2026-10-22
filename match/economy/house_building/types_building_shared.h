@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail globals, views and out-of-partition functions the BuildingTypeClass bodies read, bound by
 //   address. Nothing here is defined by the module. Everything was read from the retail gamemd.exe v1.001.
 #ifndef GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_BUILDING_SHARED_H

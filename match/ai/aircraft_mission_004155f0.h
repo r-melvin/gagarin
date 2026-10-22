@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail entry 0x4155F0, extent 0x1CD. AircraftClass vtable 0x7E22A4
 //   slot +0x26C points here (0x7E2510); RTTI locator 0x7FB4C0 names
 //   AircraftClass via type descriptor 0x817B90. All accessed prefixes below

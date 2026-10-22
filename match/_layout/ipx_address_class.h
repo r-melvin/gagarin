@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail gamemd.exe v1.001 instructions prove the 12-byte object extent:
 //   IPXGlobalConnClass construction at 0x53FAFD..0x53FB25 allocates and walks
 //   address elements at a 0xC stride; IPXConnClass construction at 0x53F45D

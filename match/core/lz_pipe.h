@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // RTTI: vtable 0x7ED37C names .?AVLZOPipe@@ (COL before the table). Table
 // words [0x55C6D0, 0x55C5E0, 0x477740, 0x631CC0, 0x55C350]: slot +0x10 is
 // the Put override at 0x55C350. Member offsets from 0x55C350: `[ESI+0xC]`

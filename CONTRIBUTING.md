@@ -130,6 +130,7 @@ Tags:
 | --- | --- |
 | `own-binary-via-Ghidra` | facts read from the retail binary (required for every committed fact) |
 | `YRpp-cross-check` | name or signature suggested by YRpp, reconfirmed in the binary |
+| `behaviour-confirmed-name` | name matches a Westwood-lineage name whose role is confirmed by the binary's behaviour, vtable slot or callers; never transcribed |
 | `EA-GPL-RA1-reference` | retired: no file carries it. Names and comments that relied on EA's GPL RA1 source were replaced with binary-attested names or placeholders. Not for new code |
 | `Phobos-GPL3:<path>@<commit>` | Phobos's own material, with upstream path and full commit; import requires the provenance and applicable-terms review in [LEGAL.md](LEGAL.md), and retail facts still need binary confirmation |
 | `private-ref-cross-check` | location suggested by the author's unpublished notes, reconfirmed in the binary |

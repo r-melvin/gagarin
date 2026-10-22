@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   The gadget class family of the UI input/controls module as one hierarchy:
 //
 //     LinkClass > GadgetClass > ControlClass > ToggleClass > ShapeButtonClass, TextButtonClass

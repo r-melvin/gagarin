@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // REA/Ghidra entry-origin analysis confirms 0x486840..0x486889, including
 // RET 4 at 0x486886. Retail primary table 0x7E4EEC has this entry at +0x48.
 // Signed word reads at this+24/+26 establish the cell coordinate fields;

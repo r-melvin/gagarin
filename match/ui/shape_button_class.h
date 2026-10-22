@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   ShapeButtonClass member offsets and object size are confirmed by retail
 //   gamemd.exe v1.001 instructions at 0x69DE70, 0x69DEA0, 0x69DFC0,
 //   0x69DFF0, 0x69E010, and 0x6D09C0. GetButton at 0x6CFD40 indexes

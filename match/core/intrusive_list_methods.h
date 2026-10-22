@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Link offsets read numerically off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x4073B0 / 0x4073C0 / 0x4073E0 / 0x407520. None of
 //   these addresses is bound by YRpp.

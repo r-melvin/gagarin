@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 SHA-256
+// Provenance: retail gamemd.exe v1.001 SHA-256 | YRpp-cross-check
 // 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c. RTTI,
 // constructor stores and allocation sizes confirmed from the pinned PE.
 // Cluster b-darken-xlatz: these five layouts are used only as unsigned-short

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The seven-slot VectorClass / DynamicVectorClass shape every pointer array and list of the particle
 //   module uses (ParticleClass::Array 0xA83DC8 vptrs 0x7E9D84 / 0x7E9D64, the system arrays, the colour
 //   list of ParticleTypeClass at +0x2B8 with vptrs 0x7E4E38 / 0x7E4E58). Layout and slot order match

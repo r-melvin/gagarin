@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Five more CCINIClass accessors the Ghidra function list does not know
 //   about, found by sweeping the 0x47465A..0x474810 address gap as raw
 //   bytes behind its 0x90 pads.

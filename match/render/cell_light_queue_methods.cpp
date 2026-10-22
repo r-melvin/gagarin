@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read off retail gamemd.exe v1.001 at 0x554D50: __fastcall (time budget in
 //   ECX, a force flag in DL), plain RET. The queue is a dynamic vector object
 //   at 0xABCA40 (items 0xABCA44, capacity 0xABCA48, allocated byte 0xABCA4D,

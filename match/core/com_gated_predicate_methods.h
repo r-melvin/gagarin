@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets, the vtable slot, the two RulesClass fields and the global read are
 //   taken numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x41B920 and 0x41B980. Neither address is bound by YRpp,

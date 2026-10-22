@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Menus cluster view of WebBrowser (UI input/controls module). Read from the retail gamemd.exe v1.001:
 //   RTTI .?AVWebBrowser@@ (vtable 0x7F743C; bases IWOLBrowserEvent then IUnknown, both at offset 0, so the
 //   one vtable is the COM table: slots 0..2 are IUnknown, slots 3..16 the event sink, slot 17 the

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 //   Bytes diffed against retail gamemd.exe v1.001 at each address below.
 //
 // The eighteen members of the 204-byte index-lookup-and-cast family, ordered

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Target bytes: the user's retail gamemd.exe v1.001 through the local Ghidra
 //   CLI at 0x5B2A30. The body seats no vtable and carries no runtime type
 //   information, so the class was typed from its own instruction stream and

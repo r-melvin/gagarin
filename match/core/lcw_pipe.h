@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // RTTI: vtable 0x7ECF2C is preceded by COL 0x804E70, whose type descriptor
 // 0x829778 names .?AVLCWPipe@@. The table words are 0x552390, 0x5522D0,
 // 0x477740, 0x631CC0, 0x5520A0: slots 2/3 are inherited from Pipe, slots 1

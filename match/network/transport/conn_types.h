@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layouts, slots and globals read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI: ConnectionClass RTTI
 //   .?AVConnectionClass@@ (type descriptor 0x81D2A0, vtable 0x7E51B4),

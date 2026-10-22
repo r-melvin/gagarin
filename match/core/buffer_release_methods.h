@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset below was extracted individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI, one disassembly per entry
 //   point in the original 53-entry family: buffer at +0x04, length at +0x08, ownership flag

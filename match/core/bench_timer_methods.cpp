@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // A small timing accumulator. Its neighbour at 0x4319D0 stores a start stamp
 // at +0x00/+0x04 and adds an elapsed span into +0x08 while bumping +0x0C and
 // +0x10; the two leaves below read and clear exactly those three dwords.

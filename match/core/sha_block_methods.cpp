@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name
 // SHA-1 block transform. __thiscall (`ret 8`; callers 0x69D939/0x69D99C/
 // 0x69DA61/0x69DAC3 load ECX with the state object and push the 64-byte
 // block and the accumulator at state+0x18), but `this` is never read.

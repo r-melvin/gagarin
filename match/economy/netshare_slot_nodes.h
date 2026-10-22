@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check | YRpp-cross-check
 //   Every offset, global address and calling convention below was read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
 //   CLI over the run 0x5E8740..0x5E957E. Every width is derived from the

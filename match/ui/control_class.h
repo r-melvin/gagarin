@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail vtable 0x7E528C, constructor 0x48E520 and accesses at
 // 0x48E600..0x48E640 establish the GadgetClass base and appended members.
 #ifndef GG_MATCH_UI_CONTROL_CLASS_H

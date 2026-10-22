@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // The planning-mode classes whose bodies sit in PlanMgr.cpp (the __FILE__
 // string "D:\\ra2mdpost\\PlanMgr.cpp" at 0x836BD4).

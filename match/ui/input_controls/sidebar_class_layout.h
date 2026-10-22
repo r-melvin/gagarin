@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Sidebar-cluster layout views, address-scoped: every member below is
 //   touched by an instruction of one of the entries in this module and is
 //   pinned by an offsetof assert; everything else is modeled as padding.

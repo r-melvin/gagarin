@@ -1,4 +1,4 @@
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // A blinking text cursor drawn by a __thiscall member (`ret 8`, x and y on
 // the stack) of a class whose only touched members are a surface pointer at
 // +0x08 and a colour at +0x18. A function-local static countdown timer

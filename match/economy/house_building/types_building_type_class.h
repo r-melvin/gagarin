@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI
 //   .?AVBuildingTypeClass@@ (TD 0x8193A8): COLs 0x7FC618 / 0x7FC5A0 / 0x7FC588 / 0x7FC570 for the
 //   tables 0x7E4570 (49 slots) / 0x7E4554 (6) / 0x7E454C (1) / 0x7E4544 (1); chain BuildingTypeClass ->

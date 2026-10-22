@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Second translation unit of the FlyLocomotionClass cluster. The class was
 //   identified from its own runtime type information - see
 //   fly_locomotion_com_methods.h for that derivation; this header only adds

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets, slots and constants read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x458810:
 //     * `[ESI+0x520]` — the building's type pointer (as at 0x457A10/0x458A00);

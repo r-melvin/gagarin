@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary; address-local linked-object prefix view
+// Provenance: own-binary; address-local linked-object prefix view | YRpp-cross-check
 //   Every member offset below is read from a foundation entry's disassembly:
 //     +0x09C Location        0x55A7D0 `ADD EAX,0x9C`, 0x55ACA0 `ADD ECX,0x9C`
 //     +0x388 PrimaryFacing   0x55A730 / 0x55A7D0 `ADD ECX,0x388`

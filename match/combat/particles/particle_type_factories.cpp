@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Cluster methods use the existing 0x644890 and 0x645820 function bodies as
 // source hypotheses; row identity and relocations require the current raw oracle.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy

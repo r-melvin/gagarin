@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x401FC0: the self-comparison at +0x4, the two embedded
 //   sub-objects at +0x1C and +0x24, and the context pointer at +0x3C whose +0x4

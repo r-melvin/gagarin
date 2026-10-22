@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
 // CommandClass and its keyboard-command subclasses: every slot body between
 // 0x535BD0 and 0x5384BD, in retail address order. The classes are declared in

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Menus cluster view of LoadOptionsClass (UI input/controls module). Read from the retail gamemd.exe
 //   v1.001: RTTI .?AVLoadOptionsClass@@ (vtable 0x7ED2E4, no base), the constructor 0x558740 (the
 //   +0x04/+0x08/+0x0C/+0x10/+0x14 stores and the DynamicVectorClass<FileEntryClass*> at +0x20, vtable

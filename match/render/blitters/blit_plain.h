@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: retail gamemd.exe v1.001 SHA-256
+// Provenance: retail gamemd.exe v1.001 SHA-256 | YRpp-cross-check
 // 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c.
 // RTTI TypeDescriptors 0x84E718 (unsigned char) and 0x84E6F8 (unsigned short),
 // with COLs 0x80EDE8 and 0x80ED98, identify direct Blitter subclasses at

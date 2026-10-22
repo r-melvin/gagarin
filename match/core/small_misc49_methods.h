@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets, globals and string addresses read numerically off the user's
 //   retail gamemd.exe v1.001 via the local Ghidra CLI at 0x422B20 and
 //   0x428DE0. The two string literals are read out of the image: 0x817474 is

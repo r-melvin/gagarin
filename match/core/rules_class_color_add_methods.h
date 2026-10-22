@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x66D480: `ADD EBP,0x1874` + `ADD EBP,3` per key
 //   (RulesClass::ColorAdd, an array of 3-byte ColorStruct at 0x1874) and the

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x487D70. The jumpjet
 //   occupant slot is CellClass +0xE0; 0x4E00B0 is FootClass::Jumpjet_OccupyCell

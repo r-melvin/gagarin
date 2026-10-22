@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   The class was identified from its own runtime type information: the
 //   primary vtable of this cluster starts at 0x7E89F4, its complete object
 //   locator sits one dword below at 0x7E89F0 -> 0x800658, whose type

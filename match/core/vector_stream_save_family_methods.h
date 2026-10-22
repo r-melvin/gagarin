@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x67A3C0 and its nine duplicates. Offsets come straight off
 //   the instructions: the vector's Count at `[EBX+0x10]` (`MOV EAX,[EBX+0x10]`

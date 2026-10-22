@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra; names are descriptive, entry bindings are retail addresses.
+// Provenance: own-binary-via-Ghidra; names are descriptive, entry bindings are retail addresses. | YRpp-cross-check
 #ifndef GG_MATCH_MOVEMENT_ROCKET_LOCOMOTION_MATH_H
 #define GG_MATCH_MOVEMENT_ROCKET_LOCOMOTION_MATH_H
 #include "loco_interfaces.h"
