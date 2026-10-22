@@ -18,10 +18,54 @@ from unittest.mock import patch
 import verify_all
 
 
+def tu_row(tu, addr='0x401000'):
+    return dict(tu=tu, addr=addr, sym='fixture', len='0x10', name='fixture',
+                pct=50, status='partial')
+
+
 def row(pct):
     return dict(tu='match/test/gate_fixture.cpp', addr='0x401000',
                 sym='fixture', len='0x10', name='fixture', pct=pct,
                 status='matched' if pct == 100 else 'partial')
+
+
+class ObjectDirectoryTests(unittest.TestCase):
+    def objects_of_one_run(self, entries):
+        seen = []
+
+        def fake_compile(cmd, **kwargs):
+            out = [a for a in cmd if a.startswith('/Fo')][0][3:]
+            seen.append(out)
+            Path(out).write_bytes(b'obj')
+            return subprocess.CompletedProcess(cmd, 0)
+
+        with tempfile.TemporaryDirectory() as work:
+            manifest = Path(work) / 'manifest.json'
+            manifest.write_text(json.dumps(entries))
+            with patch('sys.argv', ['verify_all.py', '--manifest', str(manifest)]), \
+                    patch.object(verify_all.subprocess, 'run', side_effect=fake_compile), \
+                    contextlib.redirect_stdout(io.StringIO()), \
+                    self.assertRaises(SystemExit) as exit_status:
+                verify_all.main()
+        self.assertEqual(exit_status.exception.code, 0)
+        return seen
+
+    def test_objects_are_not_shared_tmp_va_files(self):
+        seen = self.objects_of_one_run([tu_row('match/a/x.cpp')])
+        self.assertEqual(len(seen), 1)
+        self.assertNotEqual(os.path.dirname(seen[0]), tempfile.gettempdir())
+        self.assertNotEqual(seen[0], '/tmp/va_x.obj')
+
+    def test_same_basename_in_two_directories_gets_two_objects(self):
+        seen = self.objects_of_one_run([tu_row('match/a/x.cpp', '0x401000'),
+                                        tu_row('match/b/x.cpp', '0x402000')])
+        self.assertEqual(len(seen), 2)
+        self.assertEqual(len(set(seen)), 2)
+
+    def test_two_runs_use_different_directories(self):
+        first = self.objects_of_one_run([tu_row('match/a/x.cpp')])
+        second = self.objects_of_one_run([tu_row('match/a/x.cpp')])
+        self.assertNotEqual(os.path.dirname(first[0]), os.path.dirname(second[0]))
 
 
 class GateDecisionTests(unittest.TestCase):
