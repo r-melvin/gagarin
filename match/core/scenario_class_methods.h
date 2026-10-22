@@ -16,6 +16,8 @@
 #include "../_layout/cell.h"
 #include "../_layout/object_class.h"
 #include "frame_counter.h"
+#include "randomizer.h"
+#include "type_list.h"
 #include "../_layout/elapsed_timer.h"
 #include "../_rt/gg_istream.h"
 
@@ -139,8 +141,25 @@ GG_STATIC_ASSERT(offsetof(ScenarioRecord, unknown_28) == 40);
 
 class INIClass;
 
+// The first byte is cleared between frame-timer member constructions at
+// 0x683313. The next member starts at +0x1218, bounding this storage to32 bytes.
+struct ScenarioText32
+{
+    char unknown_00[32];
+    ScenarioText32() { unknown_00[0] = 0; }
+    explicit ScenarioText32(const AbstractNoInit&) {}
+};
+GG_STATIC_ASSERT(offsetof(ScenarioText32, unknown_00) == 0);
+GG_STATIC_ASSERT(sizeof(ScenarioText32) == 32);
+
+class TechnoTypeClass;
+
 struct ScenarioClass
 {
+    ScenarioClass();
+    explicit ScenarioClass(const AbstractNoInit& noInit);
+    void FUN_00683610(); // GAMEMD 0x683610
+    void FUN_006B8AE0(); // GAMEMD 0x6B8AE0
     void FUN_00689310(Gg_IStream* stream);
     bool FUN_0053A100(); // GAMEMD 0x53A100
     // ---- matched methods (ascending by retail address) ----
@@ -175,7 +194,8 @@ struct ScenarioClass
     void FUN_0068BF50(int index, CellStruct value);
 
     // ---- members touched by the matched methods ----
-    char unknown_0000[0x60C];
+    char unknown_0000[0x218];
+    Randomizer unknown_0218;
     int Difficulty;
     char unknown_0610[4];
     ScenarioElapsedTimer unknown_0614;
@@ -186,36 +206,41 @@ struct ScenarioClass
     CellStruct Waypoints[702];        // 0x632  valid range [0..701]
     char unknown_112A[0x11E8 - 0x112A];
     ScenarioTimer Timer_11E8;
-    char unknown_11F4[0x1254 - 0x11F4];
+    const wchar_t* unknown_11F4;
+    ScenarioText32 unknown_11F8;
+    ScenarioTimer unknown_1218, unknown_1224, unknown_1230, unknown_123C, unknown_1248;
     int unknown_1254;
     int unknown_1258;
     char unknown_125C[260];
-    char unknown_1360[0x1C88 - 0x1360];
+    wchar_t unknown_1360[(0x13BA - 0x1360) / 2];
+    char unknown_13BA[0x13DA - 0x13BA];
+    wchar_t unknown_13DA[(0x1450 - 0x13DA) / 2];
+    wchar_t unknown_1450[(0x1C50 - 0x1450) / 2];
+    char unknown_1C50[0x38];
     ScenarioRecord unknown_1C88[50];
     ScenarioRecord unknown_248A[100];
     char unknown_348E[0x34A5 - 0x348E];
     bool unknown_34A5, unknown_34A6, unknown_34A7, unknown_34A8;
     char unknown_34A9;
     bool unknown_34AA;
-    char unknown_34AB[0x34CC - 0x34AB];
+    char unknown_34AB[0x34BD - 0x34AB];
+    bool unknown_34BD;
+    char unknown_34BE[2];
+    ScenarioTimer unknown_34C0;
     int unknown_34CC;
-    char unknown_34D0[8];
-    int* unknown_34D8;
-    char unknown_34DC[8];
-    int unknown_34E4;
-    char unknown_34E8[12];
-    int* unknown_34F4;
-    char unknown_34F8[8];
-    int unknown_3500;
-    char unknown_3504[12];
-    int* unknown_3510;
-    char unknown_3514[8];
-    int unknown_351C;
-    char unknown_3520[8];
+    char unknown_34D0[4];
+    TypeList<TechnoTypeClass*> unknown_34D4;
+    char unknown_34EC[4];
+    TypeList<int> unknown_34F0;
+    char unknown_3508[4];
+    TypeList<int> unknown_350C;
+    char unknown_3524[4];
     int unknown_3528;
     char unknown_352C[4];
     int unknown_3530, unknown_3534, unknown_3538, unknown_353C;
-    char unknown_3540[0x35A2 - 0x3540];
+    char unknown_3540[0x3598 - 0x3540];
+    bool unknown_3598;
+    char unknown_3599[0x35A2 - 0x3599];
     unsigned char unknown_35A2;
 };
 
@@ -245,12 +270,28 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_248A) == 0x248A);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AA) == 0x34AA);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A2) == 0x35A2);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D8) == 0x34D8);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34E4) == 0x34E4);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34F4) == 0x34F4);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3500) == 0x3500);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3510) == 0x3510);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_351C) == 0x351C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0000) == 0x0000);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x0218);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_11F4) == 0x11F4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_11F8) == 0x11F8);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1218) == 0x1218);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1224) == 0x1224);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1230) == 0x1230);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_123C) == 0x123C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1248) == 0x1248);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1360) == 0x1360);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_13BA) == 0x13BA);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_13DA) == 0x13DA);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1450) == 0x1450);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C50) == 0x1C50);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_348E) == 0x348E);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34BD) == 0x34BD);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34C0) == 0x34C0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D4) == 0x34D4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34F0) == 0x34F0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_350C) == 0x350C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3598) == 0x3598);
+GG_STATIC_ASSERT(sizeof(Randomizer) == 0x3F4);
 #endif
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_METHODS_H

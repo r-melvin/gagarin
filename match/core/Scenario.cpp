@@ -213,6 +213,16 @@ extern const char STR_0083DB6C[];
 // "Scenario ini load failed!\n"
 extern const char STR_0083DB50[];
 
+// LIBRARY: GAMEMD 0x7CA489
+// _wcscpy
+extern "C" wchar_t* __cdecl wcscpy(wchar_t*, const wchar_t*);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc)
+// ?FUN_00734E60@@YIPB_WPBDH0H@Z
+const wchar_t* __fastcall FUN_00734E60(const char* id, int zero, const char* file, int line);
+// STRING: GAMEMD 0x0083D838
+// "D:\\ra2mdpost\\Scenario.CPP"
+extern const char STR_0083D838[];
+
 // A two-short cell value copied as one dword.
 struct Cell_0050DEF0
 {
@@ -589,6 +599,49 @@ void __cdecl FUN_006832B0()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6832C0
+ScenarioClass::ScenarioClass()
+    : unknown_0218(0), Timer_11E8(0), unknown_1218(0), unknown_1224(0),
+      unknown_1230(0), unknown_123C(0), unknown_1248(0), unknown_34C0(0)
+{
+    FUN_00683610();
+    unknown_3598 = false;
+    unknown_34BD = false;
+    FUN_006B8AE0();
+    unknown_1254 = 1;
+    unknown_34CC = -1;
+    unknown_0000[4] = 0;
+    unknown_0000[0x108] = 0;
+    for (int i = 0; i < 702; ++i) Waypoints[i] = WaypointUndefined;
+    wcscpy(unknown_1360, EmptyName_00887734);
+    wcscpy(unknown_13DA, EmptyName_00887734);
+    strcpy(unknown_125C, STR_00889F64);
+    strcpy(unknown_1C50, STR_00889F64);
+    strcpy(unknown_13BA, STR_00889F64);
+    wcscpy(unknown_1450, EmptyName_00887734);
+    for (i = 0; i < 50; ++i) {
+        unknown_1C88[i].unknown_00[0] = 0;
+        FUN_00689670(i, 0);
+    }
+    for (i = 0; i < 100; ++i) {
+        unknown_248A[i].unknown_00[0] = 0;
+        FUN_00689910(i, 0);
+    }
+    memset(unknown_348E, 0, 16);
+}
+
+// FUNCTION: GAMEMD 0x683560
+ScenarioClass::ScenarioClass(const AbstractNoInit& noInit)
+    : unknown_0218(0), unknown_0614(noInit), unknown_11F8(noInit)
+{
+    // The incoming one-word argument is unused in retail; the existing tag
+    // expresses the observed selective preservation, not a recovered type name.
+    if (unknown_11F8.unknown_00[0])
+        unknown_11F4 = FUN_00734E60(unknown_11F8.unknown_00, 0, STR_0083D838, 0x158);
+    else
+        unknown_11F4 = EmptyName_00887734;
+}
+
 // FUNCTION: GAMEMD 0x684060
 void __fastcall FUN_00684060(int duration)
 {
@@ -795,15 +848,15 @@ void ScenarioClass::FUN_00689310(Gg_IStream* const stream)
     bool paused = unknown_0614.unknown_00 == -1;
     if (!paused) unknown_0614.Pause();
     stream->Write(this, 0x3740, 0);
-    count = unknown_34E4;
+    count = unknown_34D4.Count;
     stream->Write(&count, 4, 0);
-    for (int i = 0; i < count; ++i) stream->Write(&unknown_34D8[i], 4, 0);
-    count = unknown_3500;
+    for (int i = 0; i < count; ++i) stream->Write(&unknown_34D4.Items[i], 4, 0);
+    count = unknown_34F0.Count;
     stream->Write(&count, 4, 0);
-    for (i = 0; i < count; ++i) stream->Write(&unknown_34F4[i], 4, 0);
-    count = unknown_351C;
+    for (i = 0; i < count; ++i) stream->Write(&unknown_34F0.Items[i], 4, 0);
+    count = unknown_350C.Count;
     stream->Write(&count, 4, 0);
-    for (i = 0; i < count; ++i) stream->Write(&unknown_3510[i], 4, 0);
+    for (i = 0; i < count; ++i) stream->Write(&unknown_350C.Items[i], 4, 0);
     if (!paused) unknown_0614.Resume();
 }
 

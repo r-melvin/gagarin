@@ -92571,5 +92571,23 @@
   "name": "??0ColorScheme@@QAE@PBDPAUHSVClass@@PAUPaletteClass@@2H_N@Z",
   "status": "partial",
   "pct": 95.6
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x6832C0",
+  "sym": "??0ScenarioClass@@QAE@XZ",
+  "len": "0x292",
+  "name": "ScenarioClass::ScenarioClass",
+  "status": "partial",
+  "pct": 20.6
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x683560",
+  "sym": "??0ScenarioClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0xab",
+  "name": "ScenarioClass::ScenarioClass",
+  "status": "partial",
+  "pct": 0
  }
 ]

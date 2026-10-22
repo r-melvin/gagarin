@@ -9,6 +9,9 @@
 #define GG_MATCH_LAYOUT_ELAPSED_TIMER_H
 #include "../core/game_timing_methods.h"
 
+// Existing opaque no-initialization tag; its retail identity is not asserted.
+struct AbstractNoInit;
+
 struct ScenarioElapsedTimer
 {
     int unknown_00;
@@ -19,6 +22,8 @@ struct ScenarioElapsedTimer
         unknown_00 = unknown_04.GetTime();
         unknown_08 = 0;
     }
+    // 0x683560 preserves the timer at +0x614 while constructing +0x620.
+    explicit ScenarioElapsedTimer(const AbstractNoInit&) {}
     int GetTimeLeft()
     {
         int left = unknown_08;
