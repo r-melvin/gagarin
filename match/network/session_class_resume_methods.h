@@ -77,12 +77,18 @@ extern Obj_0087E758* DAT_0087E758;
 struct SessionClass
 {
     int  GameMode;              // +0x0000
-    char _pad0004[0x30D8 - 4];  // +0x0004
+    char unknown_04[0x307A - 4];
+    unsigned short unknown_307A[8]; // 0x69BBF0: LEA [ECX+EDX*2+0x307A], limit7
+    char unknown_308A[0x30D8 - 0x308A];
     char InGameFrameActive;     // +0x30D8
 
     // FUNCTION: GAMEMD 0x69BAB0
     void Resume();
+    void FUN_0069BBF0(int index);
+    unsigned short FUN_0069BC20(int id);
 };
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_307A) == 0x307A);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_307A) == 0x10);
 GG_STATIC_ASSERT(offsetof(SessionClass, InGameFrameActive) == 0x30D8);
 
 #endif  // GG_MATCH_NETWORK_SESSION_CLASS_RESUME_METHODS_H

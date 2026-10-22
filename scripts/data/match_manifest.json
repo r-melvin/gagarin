@@ -92761,5 +92761,32 @@
   "name": "DisplayClass::DisplayClass(Obj_005BDF70 const&)",
   "status": "partial",
   "pct": 69.2
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x696F30",
+  "sym": "?FUN_00696F30@Obj_00696F10@@QBEHXZ",
+  "len": "0x16",
+  "name": "Obj_00696F10::FUN_00696F30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69BBF0",
+  "sym": "?FUN_0069BBF0@SessionClass@@QAEXH@Z",
+  "len": "0x27",
+  "name": "SessionClass::FUN_0069BBF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69BC20",
+  "sym": "?FUN_0069BC20@SessionClass@@QAEGH@Z",
+  "len": "0x3f",
+  "name": "SessionClass::FUN_0069BC20",
+  "status": "partial",
+  "pct": 65.4
  }
 ]

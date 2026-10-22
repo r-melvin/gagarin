@@ -435,11 +435,14 @@ struct Obj_00696F10
 
     int FUN_00696F10() const;
     int FUN_00696F20() const;
+    int FUN_00696F30() const;
     int FUN_00696F50() const;
     int FUN_00696F70() const;
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_53) == 0x53);
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_57) == 0x57);
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
 
 struct Obj_0069B540
@@ -715,6 +718,14 @@ int Obj_00696F10::FUN_00696F20() const
     return unknown_53;
 }
 
+// FUNCTION: GAMEMD 0x696F30
+int Obj_00696F10::FUN_00696F30() const
+{
+    if (unknown_57 == -2 && unknown_53 == -1)
+        return -2;
+    return unknown_53;
+}
+
 // FUNCTION: GAMEMD 0x00696F50
 int Obj_00696F10::FUN_00696F50() const
 {
@@ -839,6 +850,25 @@ char FUN_0069BBE0(Obj_0069BBE0* self)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69BBF0
+void SessionClass::FUN_0069BBF0(int index)
+{
+    for (int i = index; i < 7; ++i)
+        unknown_307A[i] = unknown_307A[i + 1];
+}
+
+#include "../network/transport/conn_types.h"
+
+// FUNCTION: GAMEMD 0x69BC20
+unsigned short SessionClass::FUN_0069BC20(int id)
+{
+    for (int index = 0; index < PlayerCount_00A8DA84; ++index) {
+        if (Players_00A8DA78[index]->Id == id)
+            return unknown_307A[index];
+    }
+    return 0;
+}
+
 // TEMPLATE: GAMEMD 0x69C4F0
 // VectorClass<DiskID>::Slot6 (slot 6)
 // TEMPLATE: GAMEMD 0x69C710
