@@ -35,7 +35,7 @@ struct Pair_006D9F80
 GG_STATIC_ASSERT(offsetof(Pair_006D9F80, unknown_00) == 0);
 GG_STATIC_ASSERT(offsetof(Pair_006D9F80, unknown_04) == 4);
 GG_STATIC_ASSERT(sizeof(Pair_006D9F80) == 8);
-struct Cell;
+class Cell;
 class ObjectClass;
 template<class T> struct TRect;
 // VTABLE: GAMEMD 0x007F4348

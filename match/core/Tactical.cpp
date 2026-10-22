@@ -390,7 +390,11 @@ public:
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-struct Cell { short X; short Y; Cell() {} bool operator==(const Cell& o) const { return X==o.X && Y==o.Y; } bool operator!=(const Cell& o) const { return !(*this==o); } };
+#include "../_layout/cell.h"
+// The canonical Cell class uses the same two-short comparison shown by
+// the vector element operations; definitions stay inline in this consumer.
+inline bool Cell::operator==(const Cell& o) const { return X == o.X && Y == o.Y; }
+inline bool Cell::operator!=(const Cell& o) const { return !(*this == o); }
 
 template class DynamicVectorClass<Cell>;
 

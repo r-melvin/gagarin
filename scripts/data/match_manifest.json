@@ -92071,7 +92071,7 @@
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6D8AE0",
-  "sym": "?FUN_006D8AE0@Tactical@@QBE_NPBUCell@@@Z",
+  "sym": "?FUN_006D8AE0@Tactical@@QBE_NPBVCell@@@Z",
   "len": "0x46",
   "name": "FUN_006D8AE0",
   "status": "matched",
