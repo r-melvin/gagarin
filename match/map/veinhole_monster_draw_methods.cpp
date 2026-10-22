@@ -12,28 +12,12 @@
 // level, and the result is registered with the tactical selectable list
 // before the blitter runs with the local player's remap table.
 //
-// PARTIAL (15.2%, 14/92; multiset is retail minus three `xor`). Every
-// instruction of the body is present; the only mnemonic-level delta is that
-// retail materialises its zeros into registers and pushes those -- `XOR
-// EDX,EDX` for the coordinate's Z and `XOR ECX,ECX` / `XOR EAX,EAX` for the
-// five trailing blitter arguments, pushed as ECX/EAX/ECX/ECX/ECX -- where cl
-// 8804 pushes the immediate `0` under every flag set. That is the recorded
-// 8447-vs-8804 "repeated push constants materialised into registers" class
-// already observed at
-// 0x4FBF60, 0x703590 and 0x41A2C0. The three missing XORs shift the whole
-// stream, which is why the reported percentage is far below the real delta;
-// the secondary difference is that retail holds the cell-centre X in EAX and Y
-// in ECX where VC6 names them the other way round. Variants tried: a shared
-// `int zero = 0;` feeding the Z store and all five trailing arguments (cl
-// constant-folds it; byte-identical, 15.2%); the Y assignment written before
-// the X assignment (byte-identical, 15.2%, kept the natural order).
-// Lift pass 2 (2026-09-18): re-read against retail and classified, not
-// re-chased. Retail's `XOR EDX,EDX` for coord.Z is the SAME 8447 heuristic as
-// the five pushed zeros - `XOR reg,reg; MOV [mem],reg` is 5 bytes against
-// cl 8804's 7-byte `MOV dword ptr [mem],0` - so all three missing XORs are one
-// banked 8447-vs-8804 constant-materialisation class, not three deltas. The
-// residual X/Y register swap is downstream of the resulting shift. Best
-// measured form kept at 15.2%.
+// PARTIAL (20.7%). The blitter's last two arguments are one point passed by
+// value; with that, cl zeroes two registers and pushes the trailing zeros
+// from them as retail does. Remaining: retail also zeroes EDX for the
+// coordinate's Z, and holds the cell-centre X in EAX and Y in ECX where cl
+// names them the other way round. Variants tried earlier: a shared
+// `int zero = 0;` (constant-folded), the Y assignment before the X one.
 //
 // TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply here.
 // Retail's callee-saved pushes sit exactly where ours do (a single prologue
@@ -67,8 +51,9 @@ void Monster_0074D490::DrawIt()
 
     void* remap = DAT_00B054D4[DAT_00A83D4C->unknown_16054]->unknown_30C;
 
+    Point_0074D490 offset = {0, 0};
     FUN_004AED70(DAT_00887314, remap, shape, palette, &point, &DAT_00886FA0,
                  0x2E00, 0, -0x11 - lift, 0,
                  DAT_0087F7E8.GetCellAtCoord(coord)->unknown_10C,
-                 0, 0, 0, 0, 0);
+                 0, 0, 0, offset);
 }

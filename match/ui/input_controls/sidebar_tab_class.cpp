@@ -326,7 +326,7 @@ void TabClass::vf_10(int* key, Point2D* mouse)
             FUN_00732950();
         }
     } else if (code == 0x80F0) {
-        SidebarPlayGlobal(Rules_008871E0->Sound198, 0x2000, 1.0f, 0);
+        VocClass::PlayGlobal(Rules_008871E0->Sound198, 1.0f, 0x2000, 0);
         if (At_5544) {
             FUN_006D04D0();
             vf_13(&CommandButtonA_00B0CCB0);
@@ -345,7 +345,7 @@ void TabClass::vf_10(int* key, Point2D* mouse)
         }
     } else if (code == 0x80F1) {
         if (InputLocked_00A8B538 == 0) {
-            SidebarPlayGlobal(Rules_008871E0->Sound194, 0x2000, 1.0f, 0);
+            VocClass::PlayGlobal(Rules_008871E0->Sound194, 1.0f, 0x2000, 0);
             if (!At_5544) {
                 vf_13(&CommandButtonB_00B0CC40);
                 ToolTipManager_Instance->Remove(0xF1);
@@ -404,7 +404,7 @@ extern SidebarSurfaceView* BarHistory_00B0CC00[4];
 void __fastcall SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
                                  SidebarShapeFile* shape, int frame, Point2D* position,
                                  SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
-                                 int zAdjust, int a10, int a11, int a12, int a13, int a14);
+                                 int zAdjust, int a10, int a11, int a12, Point2D offset);
 
 // The last mouse position seen by the bar draw (a function-local static in retail).
 struct SidebarLastMouse
@@ -418,14 +418,13 @@ struct SidebarLastMouse
 // Slot 16: tab-bar draw: decides from the mouse position and a short surface history
 // whether the bar needs redrawing and draws its pieces and buttons.
 //
-// CAPPED at 2.3% (8/354; LCS 165/354 = 46.6%). Multiset delta: retail has `mov` 15, `test`
-// 10, `xor` 12, `jmp` 3, `je` 2, `jae` 1; ours `jne` 2, `cmp` 10, `jge` 1. Retail keeps the
-// redraw flag in BL with EBP as the zero register and spills `this` to the stack, so ESI and
-// EDI hold the mouse coordinates; ours holds `this` in EBP and the zero in EBX and keeps the
-// flag in memory. Attempts: (1) bool flag (as kept); (2) int flag, no gain (2.0%); (3) the
-// four shape draws through an inline helper and `bounds` declared before `clip`: byte-identical
-// output. The function-local static (guard bit at 0xB0CB58, empty destructor stub at
-// 0x6D0E50) is reproduced by a static with a user destructor.
+// PARTIAL 17.8%. The shape drawer's last two arguments are one point passed by value.
+// Retail keeps the redraw flag in BL with EBP as the zero register and spills `this` to
+// the stack, so ESI and EDI hold the mouse coordinates; ours holds `this` in EBP and keeps
+// the flag in memory. Attempts: (1) bool flag (as kept); (2) int flag (2.0%); (3) the
+// four shape draws through an inline helper: byte-identical. The function-local static
+// (guard bit at 0xB0CB58, empty destructor stub at 0x6D0E50) is reproduced by a static
+// with a user destructor.
 // FUNCTION: GAMEMD 0x6D0A20
 void TabClass::vf_16(bool forced)
 {
@@ -473,9 +472,10 @@ void TabClass::vf_16(bool forced)
         origin.X = 0;
         origin.Y = 0;
         SidebarAreaRect scratch;
+        Point2D offset = {0, 0};
         SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, BarShapeBackdrop_00B0FB08, 0,
                          &origin, (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_78)(&scratch),
-                         0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                         0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
         SidebarTouched_00B0B518 = 1;
         unknown_551C.FUN_004A2370(true);
         if (redraw) {
@@ -487,21 +487,23 @@ void TabClass::vf_16(bool forced)
             position.Y = BarArea_00B0FC58->Y;
             SidebarAreaRect bounds = clip;
             bounds.Width = BarArea_00B0FC58->Width;
+            Point2D offset = {0, 0};
             SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeTop_00B0FA3C, 0,
-                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
             if (At_5544) {
                 position = *ButtonPointA_00B0FC60;
             } else {
                 position = *ButtonPointB_00B0FC64;
             }
             SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeThumb_00B0FA90, 0,
-                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
             if (At_5544) {
                 position.X = SlotArea_00B0FC68->X;
                 position.Y = BarArea_00B0FC58->Y;
                 for (int slot = 0; slot < SlotCount_00B0F9E4; ++slot) {
+                    Point2D offset = {0, 0};
                     SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeSlot_00B0FAA8, 0,
-                                     &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                                     &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
                     position.X = position.X + SlotArea_00B0FC68->Width;
                 }
                 for (int index = 0; index < 25; ++index) {
@@ -514,7 +516,7 @@ void TabClass::vf_16(bool forced)
             }
             position.X = *EndX_00B0FC6C;
             SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeEnd_00B0FABC, 0,
-                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                             &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
             if (At_5544) {
                 CommandButtonA_00B0CCB0.Draw(1);
             } else {

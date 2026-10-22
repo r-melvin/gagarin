@@ -8,11 +8,10 @@
 // +0x60C. The addresses and offsets below are taken from those instructions.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // /GX adds exception-cleanup code around ResetTimers/vector append calls that
-// is absent from retail. This source remains partial: the fixed-span oracle
-// scores 80.3% (102/127 instructions) with the mode tests as one `||` chain;
-// the residual is that cl duplicates the return block after the first mode
-// test (it threads mode==0 past the other two compares) where retail keeps
-// the compare chain and one shared return. No exact match is claimed.
+// is absent from retail. The scenario mode is read through the global at
+// each test rather than through a local: with a local, cl threads the failed
+// mode==0 test straight to the return (one extra return block); retail keeps
+// the compare chain and one shared return.
 
 #include <stddef.h>
 #include "../_layout/trigger_class.h"
@@ -72,8 +71,7 @@ inline bool TriggerCtorVectorAddItem(TriggerCtorPtrVector* vector,
 }
 
 // GLOBAL: GAMEMD 0x00A8B230 — ScenarioClass::Instance (pointer).
-struct Scenario_00726400;
-extern Scenario_00726400* DAT_00A8B230;
+extern TriggerCtorScenarioModeView* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x725FA0
 TriggerClass::TriggerClass(TriggerTypeClass* type)
@@ -92,13 +90,10 @@ TriggerClass::TriggerClass(TriggerTypeClass* type)
         this->ResetTimers();
         TriggerCtorTypeFlagsView* typeFlags =
             reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type);
-        int mode = 0;
         if (typeFlags->Flags[3] == 0
-            || ((mode = reinterpret_cast<TriggerCtorScenarioModeView*>(
-                    DAT_00A8B230)->unknown_60C) == 0
-                && typeFlags->Flags[0] == 0)
-            || (mode == 1 && typeFlags->Flags[1] == 0)
-            || (mode == 2 && typeFlags->Flags[2] == 0)) {
+            || (DAT_00A8B230->unknown_60C == 0 && typeFlags->Flags[0] == 0)
+            || (DAT_00A8B230->unknown_60C == 1 && typeFlags->Flags[1] == 0)
+            || (DAT_00A8B230->unknown_60C == 2 && typeFlags->Flags[2] == 0)) {
             this->Enabled = false;
         }
     }

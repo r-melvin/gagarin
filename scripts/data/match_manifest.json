@@ -1418,7 +1418,7 @@
  {
   "tu": "match/audio/voc_class_play_global_methods.cpp",
   "addr": "0x750920",
-  "sym": "?PlayGlobal@VocClass@@SIPAUAudioHandle_00750920@@HIMPAUAudioController_00750920@@@Z",
+  "sym": "?PlayGlobal@VocClass@@SIPAUAudioHandle_00750920@@HMIPAUAudioController_00750920@@@Z",
   "len": "0xBA",
   "name": "VocClass::PlayGlobal",
   "status": "matched",
@@ -1638,7 +1638,7 @@
   "len": "0x145",
   "name": "BuildingClass::DrawInfoTipAndSpiedSelection",
   "status": "partial",
-  "pct": 29.5
+  "pct": 30.5
  },
  {
   "tu": "match/combat/building_class_kill_occupants_methods.cpp",
@@ -11153,8 +11153,8 @@
   "sym": "?FUN_00407170c@@YIXPAUObj_00407170@@H@Z",
   "len": "0x2b",
   "name": "FUN_00407170",
-  "status": "partial",
-  "pct": 89.5,
+  "status": "matched",
+  "pct": 100,
   "note": "Inert `if (1) {}` removed as a dead statement; the residual is the EAX/ECX assignment of the two comparand loads (17/19)."
  },
  {
@@ -22926,8 +22926,8 @@
   "sym": "?Cheer@HouseClass@@QAEXXZ",
   "len": "0x54",
   "name": "Cheer",
-  "status": "partial",
-  "pct": 93.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/house_class_power_methods.cpp",
@@ -24909,7 +24909,7 @@
   "len": "0x139",
   "name": "VeinholeMonsterClass::DrawIt",
   "status": "partial",
-  "pct": 15.2
+  "pct": 20.7
  },
  {
   "tu": "match/map/veinhole_monster_eligible_methods.cpp",
@@ -35290,8 +35290,8 @@
   "sym": "??0TriggerClass@@QAE@PAVTriggerTypeClass@@@Z",
   "len": "0x193",
   "name": "TriggerClass::TriggerClass(TriggerTypeClass*)",
-  "status": "partial",
-  "pct": 80.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "addr": "0x4E91D0",
@@ -44675,7 +44675,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab30",
-  "sym": "?unknown_4C@XSurface@@UAEHHHHHHH@Z",
+  "sym": "?unknown_4C@XSurface@@UAEHPAUPoint2D@@0GPAEH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_4C",
   "status": "matched",
@@ -44711,7 +44711,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab70",
-  "sym": "?unknown_3C@XSurface@@UAE_NHHHHHHHHHHH@Z",
+  "sym": "?unknown_3C@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEHH_N333M@Z",
   "len": "0x5",
   "name": "XSurface::unknown_3C",
   "status": "matched",
@@ -45658,7 +45658,7 @@
  {
   "tu": "match/renderer/dsurface_draw3c.cpp",
   "addr": "0x4BC750",
-  "sym": "?unknown_3C@DSurface@@UAE_NHHHHHHHHHHH@Z",
+  "sym": "?unknown_3C@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEHH_N333M@Z",
   "len": "0x17B0",
   "name": "DSurface::unknown_3C",
   "status": "partial",
@@ -45680,11 +45680,11 @@
  {
   "tu": "match/renderer/dsurface_draw4c.cpp",
   "addr": "0x4C0750",
-  "sym": "?unknown_4C@DSurface@@UAEHHHHHHH@Z",
+  "sym": "?unknown_4C@DSurface@@UAEHPAUPoint2D@@0GPAEH_N@Z",
   "len": "0x6de",
   "name": "DSurface::unknown_4C",
   "status": "partial",
-  "pct": 1.2,
+  "pct": 0.9,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },
@@ -47011,7 +47011,7 @@
   "len": "0x1ad",
   "name": "TerrainClass::vf_69",
   "status": "partial",
-  "pct": 48.6
+  "pct": 89.2
  },
  {
   "tu": "match/map/terrain_objects/terrain_class.cpp",
@@ -47020,7 +47020,7 @@
   "len": "0x16d",
   "name": "TerrainClass::vf_70",
   "status": "partial",
-  "pct": 38.6
+  "pct": 74.8
  },
  {
   "tu": "match/map/terrain_objects/terrain_class.cpp",
@@ -47416,7 +47416,7 @@
   "len": "0xd2",
   "name": "SmudgeTypeClass::vf_40",
   "status": "partial",
-  "pct": 60.0
+  "pct": 76.2
  },
  {
   "tu": "match/map/terrain_objects/smudge_type_class.cpp",
@@ -47524,7 +47524,7 @@
   "len": "0x73",
   "name": "OverlayTypeClass::vf_40",
   "status": "partial",
-  "pct": 9.5
+  "pct": 26.2
  },
  {
   "tu": "match/map/terrain_objects/overlay_type_class.cpp",
@@ -47677,7 +47677,7 @@
   "len": "0x349",
   "name": "OverlayClass::vf_70",
   "status": "partial",
-  "pct": 11.1
+  "pct": 15.6
  },
  {
   "tu": "match/map/terrain_objects/overlay_class.cpp",
@@ -47758,7 +47758,7 @@
   "len": "0x3d5",
   "name": "ParticleClass::vf_69",
   "status": "partial",
-  "pct": 19.7
+  "pct": 28.7
  },
  {
   "tu": "match/combat/particles/particle_class.cpp",
@@ -49086,7 +49086,7 @@
   "len": "0xf7",
   "name": "BuildingClass::vf_104",
   "status": "partial",
-  "pct": 39.7
+  "pct": 42.5
  },
  {
   "tu": "match/economy/house_building/building_a_methods_3.cpp",
@@ -49485,8 +49485,8 @@
   "sym": "?vf_26@BuildingBView@@UAEH_NPAVBuildingBTargetView@@@Z",
   "len": "0x130",
   "name": "BuildingClass::vf_26",
-  "status": "partial",
-  "pct": 70.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/house_building/building_b_part3.cpp",
@@ -49603,7 +49603,7 @@
   "len": "0x1b8",
   "name": "BuildingClass::vf_201",
   "status": "partial",
-  "pct": 56.7
+  "pct": 67.4
  },
  {
   "tu": "match/economy/house_building/building_b_part4.cpp",
@@ -57973,7 +57973,7 @@
   "len": "0x2DC",
   "name": "GadgetClass::Input",
   "status": "partial",
-  "pct": 80.0
+  "pct": 89.2
  },
  {
   "tu": "match/ui/input_controls/lists_gadget.cpp",
@@ -58639,7 +58639,7 @@
   "len": "0x106",
   "name": "ShapeButtonClass::Draw",
   "status": "partial",
-  "pct": 16.7
+  "pct": 14.7
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
@@ -58693,7 +58693,7 @@
   "len": "0x4A1",
   "name": "SidebarClass::vf_16",
   "status": "partial",
-  "pct": 5.6
+  "pct": 9.9
  },
  {
   "tu": "match/ui/input_controls/sidebar_class_input.cpp",
@@ -58702,7 +58702,7 @@
   "len": "0x594",
   "name": "SidebarClass::vf_10",
   "status": "partial",
-  "pct": 35.9
+  "pct": 46.6
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
@@ -58720,7 +58720,7 @@
   "len": "0xC87",
   "name": "SidebarSelectClass::Action",
   "status": "partial",
-  "pct": 2.5
+  "pct": 2.4
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",
@@ -58954,7 +58954,7 @@
   "len": "0x336",
   "name": "TabClass::vf_10",
   "status": "partial",
-  "pct": 95.2
+  "pct": 96.9
  },
  {
   "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
@@ -58963,7 +58963,7 @@
   "len": "0x427",
   "name": "TabClass::vf_16",
   "status": "partial",
-  "pct": 2.3
+  "pct": 17.8
  },
  {
   "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
@@ -60348,8 +60348,8 @@
   "sym": "?FUN_007768F0@@YGHPAUHWND__@@J@Z",
   "len": "0x171",
   "name": "FUN_007768F0",
-  "status": "partial",
-  "pct": 93.8
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/dialog_window_helpers.cpp",
@@ -70452,8 +70452,8 @@
   "sym": "?FUN_005C21D0@MPCooperative@@QAEXPAUHWND__@@_N@Z",
   "len": "0x1d5",
   "name": "MPCooperative::FUN_005C21D0",
-  "status": "partial",
-  "pct": 3.4
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/MPCoop.cpp",
@@ -74464,8 +74464,8 @@
   "sym": "?FUN_0077D840@@YIXXZ",
   "len": "0x79",
   "name": "FUN_0077D840",
-  "status": "partial",
-  "pct": 81.2,
+  "status": "matched",
+  "pct": 100,
   "note": "90.6% aligned; argument pushes vs callback select order"
  },
  {

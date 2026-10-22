@@ -35,10 +35,12 @@ int GadgetClass::Clicked(unsigned* key, unsigned flags, int x, int y, int modifi
 }
 
 // FUNCTION: GAMEMD 0x4E1640
-// CAPPED at 80.0% after four attempts (natural form; assignment inside the Clicked call with a do-while loop; a
-// 16-bit Down() argument; combined forms). Remaining delta: the vtable pointer is loaded into edx where this build
-// uses eax at five call sites, the key operand of the second Down() of each modifier pair is loaded after the
-// keyboard pointer instead of before it, and the tail of the gadget loop is laid out with an extra jump.
+// PARTIAL 89.2%. The list walk is a for loop whose exhaustion has its own
+// `return key` and whose hit jumps to the shared redraw (retail has four return
+// blocks; the do-while form with a post-loop test merged two of them, 80.0%).
+// Remaining delta: the key operand of the second Down() of each modifier pair
+// is loaded into ECX/EDX after the keyboard pointer instead of into EAX before
+// it, and the vtable pointer register of five calls (register choice only).
 // GadgetClass::Input slot (+0x28): polls the keyboard/mouse once, tracks the hovered gadget, builds the event
 // flag word and offers the event to the sticky gadget, the focused gadget, or each gadget of the list in turn.
 unsigned GadgetClass::Input()
@@ -134,21 +136,15 @@ unsigned GadgetClass::Input()
         }
         return key;
     } else {
-        gadget = this;
-        if (!gadget) {
-            return key;
-        }
-        do {
+        for (gadget = this; gadget; gadget = (GadgetClass*)gadget->GetNext()) {
             gadget->Draw(newList);
             if (!gadget->IsDisabled && gadget->Clicked(&key, flags, mx, my, modifier)) {
-                break;
+                goto redraw;
             }
-            gadget = (GadgetClass*)gadget->GetNext();
-        } while (gadget);
-        if (!gadget) {
-            return key;
         }
+        return key;
     }
+redraw:
     gadget->Draw(0);
     return key;
 }

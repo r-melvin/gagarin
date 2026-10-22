@@ -55,7 +55,7 @@ int ShapeButtonClass::Draw(int forced)
         {
             Point2D position(X + OffsetX, Y + OffsetY);
             FUN_004AED70(surface, Convert, ShapeData, frame, &position, &clip,
-                              unknown_55 ? 0x800 : 0, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                              unknown_55 ? 0x800 : 0, 0, 0, 0, 0x3E8, 0, 0, 0, Point2D(0, 0));
         }
         unknown_54 = 1;
         return 1;

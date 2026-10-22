@@ -245,11 +245,10 @@ void Obj_005C1CB0::FUN_005C1CB0()
 // description text comes from "NAME:COOPDESC<a+1><b+1>" when the campaign at
 // +0x40 reports both of its values.
 //
-// PARTIAL (3.4%). Same blocks, calls and constants; register allocation
-// differs from the first instruction: retail keeps the `ok` flag in BL and
-// re-reads `show` from its stack slot, cl keeps `show` in BL and spills `ok`.
-// Tried: `ok` declared in the inner block (2.8%), at the top (3.4%), and the
-// the flag as an int (2.8%).
+// Each show/hide and enable is an if/else of two whole calls; cl merges their
+// common argument pushes into retail's `je; push 5; jmp; push 0` shape. A
+// `show ? SW_SHOW : SW_HIDE` argument is computed with neg/sbb instead and
+// keeps `show` live in a register (3.4%).
 void MPCooperative::FUN_005C21D0(HWND dialog, bool show)
 {
     bool ok = true;
@@ -286,21 +285,41 @@ void MPCooperative::FUN_005C21D0(HWND dialog, bool show)
         PostMessageA(control, 0x4AC, 0, 0);
         PostMessageA(control, 0x406, 1, 0x20000);
         PostMessageA(control, 0x405, 1, DAT_00A8EB68);
-        ShowWindow(control, show ? SW_SHOW : SW_HIDE);
-        EnableWindow(control, FUN_005E8760() ? TRUE : FALSE);
+        if (show) {
+            ShowWindow(control, SW_SHOW);
+        } else {
+            ShowWindow(control, SW_HIDE);
+        }
+        if (FUN_005E8760()) {
+            EnableWindow(control, TRUE);
+        } else {
+            EnableWindow(control, FALSE);
+        }
         InvalidateRect(control, 0, TRUE);
     }
     control = GetDlgItem(dialog, 0x78E);
     if (control != 0) {
-        ShowWindow(control, show ? SW_SHOW : SW_HIDE);
+        if (show) {
+            ShowWindow(control, SW_SHOW);
+        } else {
+            ShowWindow(control, SW_HIDE);
+        }
     }
     control = GetDlgItem(dialog, 0x78D);
     if (control != 0) {
-        ShowWindow(control, show ? SW_SHOW : SW_HIDE);
+        if (show) {
+            ShowWindow(control, SW_SHOW);
+        } else {
+            ShowWindow(control, SW_HIDE);
+        }
     }
     control = GetDlgItem(dialog, 0x78C);
     if (control != 0) {
-        ShowWindow(control, show ? SW_SHOW : SW_HIDE);
+        if (show) {
+            ShowWindow(control, SW_SHOW);
+        } else {
+            ShowWindow(control, SW_HIDE);
+        }
     }
 }
 

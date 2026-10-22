@@ -40,7 +40,7 @@ bool XSurface::DrawLine(Point2D* from, Point2D* to, unsigned int color)
 }
 
 // FUNCTION: GAMEMD 0x7BAB30
-int XSurface::unknown_4C(int, int, int, int, int, int)
+int XSurface::unknown_4C(Point2D*, Point2D*, unsigned short, unsigned char*, int, bool)
 {
     return 0;
 }
@@ -64,7 +64,7 @@ bool XSurface::unknown_38(RectangleStruct*, Point2D*, Point2D*, int, int, int, b
 }
 
 // FUNCTION: GAMEMD 0x7BAB70
-bool XSurface::unknown_3C(int, int, int, int, int, int, int, int, int, int, int)
+bool XSurface::unknown_3C(RectangleStruct*, Point2D*, Point2D*, unsigned char*, int, int, bool, bool, bool, bool, float)
 {
     return false;
 }

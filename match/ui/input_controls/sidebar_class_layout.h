@@ -19,6 +19,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 #include "../tooltip_manager_shared.h"
+#include "../../audio/voc_class_play_global_methods.h"
 
 // ---------------------------------------------------------------------------
 // Shared call views
@@ -446,8 +447,6 @@ GG_STATIC_ASSERT(offsetof(SidebarRules, Sound198) == 0x198);
 GG_STATIC_ASSERT(offsetof(SidebarRules, Sound700) == 0x700);
 GG_STATIC_ASSERT(offsetof(SidebarRules, At_758) == 0x758);
 extern SidebarRules* Rules_008871E0;
-// FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal(index, flags, volume, controller).
-void* __fastcall SidebarPlayGlobal(int voc, unsigned int flags, float volume, void* controller);
 
 // Sidebar layout metrics (ints at 0xB0B4DC..0xB0B510), read by the setup and
 // reposition entries.

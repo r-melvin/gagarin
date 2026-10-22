@@ -56,11 +56,10 @@ void* OverlayTypeClass::vf_35(MapObjHouseView* owner)
 }
 
 // FUNCTION: GAMEMD 0x5FE5A0
-// CAPPED at 9.5% (38 of 42 instructions; retail-only: 2 `xor`, `push edi`, `pop edi`). Retail pushes the
-// eight zero arguments through EDX/EAX (`XOR EDX,EDX; XOR EAX,EAX`) and enregisters `where` in EDI, cl
-// 8804 pushes immediate 0s (recorded 8447-vs-8804 constant-materialisation class). Variants tried: one
-// expression per coordinate (7.1%), locals for the two screen offsets (7.1%), a struct copy of the
-// offset (2.4%), the inline drawer wrapper with split adds (9.5%, kept).
+// PARTIAL 26.2%. The zero arguments now come from two zeroed registers as in retail (the drawer's
+// trailing offset is a point by value). Remaining: retail keeps `where` in EDI and calls vf_39 inside
+// the argument pushes; through the inline drawer wrapper cl hoists the call, and through the plain
+// declaration (16.7%) it does not keep `where` in a register.
 void OverlayTypeClass::vf_40(MapObjPoint* where, MapObjRect* clip, int frame)
 {
     MapObjPoint point;
@@ -69,7 +68,7 @@ void OverlayTypeClass::vf_40(MapObjPoint* where, MapObjRect* clip, int frame)
     point.X += 0x1E;
     point.Y += 0xF;
     OverlayDrawShapeInline(MapObjSurface, OverlayDrawContext, vf_39(), frame, &point, clip, 0x600, 0, 0,
-                           0, 1000, 0, 0, 0, 0, 0);
+                           0, 1000, 0, 0, 0, MapObjPoint(0, 0));
 }
 
 // FUNCTION: GAMEMD 0x5FE770

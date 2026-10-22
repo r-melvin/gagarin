@@ -8,9 +8,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// Returns a 64-bit value in EDX:EAX, which is why its result lands in the
-// adjacent pair at +0x18/+0x1C.
-__int64 __fastcall FUN_004093B0(int key);   // GAMEMD 0x4093B0
+// No arguments (the entry reads only the hook at 0x87E848); returns a 64-bit
+// value in EDX:EAX.
+__int64 __fastcall FUN_004093B0();   // GAMEMD 0x4093B0
 
 struct Obj_00407170
 {
@@ -18,8 +18,7 @@ struct Obj_00407170
     int  unknown_04;   // +0x0004
     int  unknown_08;   // +0x0008
     char _pad0C[0x18 - 0x0C];
-    int  unknown_18;   // +0x0018
-    int  unknown_1C;   // +0x001C
+    __int64 unknown_18; // +0x0018: 64-bit stamp
 };
 GG_STATIC_ASSERT(offsetof(Obj_00407170, unknown_18) == 0x18);
 

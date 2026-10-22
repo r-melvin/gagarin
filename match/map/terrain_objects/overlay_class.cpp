@@ -384,13 +384,11 @@ HRESULT __stdcall OverlayClass::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // FUNCTION: GAMEMD 0x5FD970
-// CAPPED at 11.1% (250 of 262 instructions; retail-only: 6 `xor`, 3 `mov`, 2 `lea`, 1 `push`, 1 `je`).
-// Retail materialises its zero arguments into EDX/ECX (`XOR EDX,EDX; XOR ECX,ECX`, then `PUSH EDX/ECX`)
-// before each of the three shape-drawer calls where cl 8804 pushes the immediate 0 (recorded
-// 8447-vs-8804 class), and keeps the type array's Count in a register across both index searches while
-// reloading Items. Variants tried: a draw call per branch through the plain declaration (9.5%), a
-// reference to Location plus an inline drawer wrapper (11.1%), a separate local for the tiberium shape
-// (11.1%).
+// PARTIAL 15.6%. The shape drawer's trailing offset is a point passed by value (retail's register
+// zeros come from that). Remaining: retail keeps the type array's Count in a register across both
+// index searches while reloading Items, and the block layout differs. Earlier variants: a draw call
+// per branch through the plain declaration, a reference to Location, a separate local for the
+// tiberium shape.
 // Draws the overlay. The shape comes from the type; the vertical offset and the colour converter depend
 // on the kind of overlay (tiberium, veins, everything else). Each kind ends in its own call to the
 // shape drawer; the shared tail (surface load, call, epilogue) is what the compiler merged.
@@ -424,15 +422,14 @@ void OverlayClass::vf_70(MapObjPoint* where, MapObjRect* clip)
         if (tiberiumShape == 0 && Type->CellAnim)
             tiberiumShape = Type->CellAnim->vf_39();
         OverlayDrawShapeInline(MapObjSurface, palette->Convert, tiberiumShape, 0, &point, clip, 0xE00, 0,
-                               -2 - height, 0, 1000, 0, 0, 0, 0, 0);
+                               -2 - height, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     } else if (Type->IsVeins) {
         if (Type->ArrayIndex == 0xA7)
             point.Y -= 0x26;
         MapObjCoord veinCoord = location;
         OverlayPaletteView* palette = OverlayPalettes[OverlaySession->VeinsPalette];
         OverlayDrawShapeInline(MapObjSurface, palette->Convert, shape, 0, &point, clip, 0xE00, 0,
-                               -2 - height, 0, MapObjMap.GetCellAtCoord(veinCoord)->Light, 0, 0, 0, 0,
-                               0);
+                               -2 - height, 0, MapObjMap.GetCellAtCoord(veinCoord)->Light, 0, 0, 0, MapObjPoint(0, 0));
     } else {
         MapObjCoord coord = location;
         MapObjCell cell = MapObjCoordToCell(coord);
@@ -450,7 +447,7 @@ void OverlayClass::vf_70(MapObjPoint* where, MapObjRect* clip)
             }
         }
         OverlayDrawShapeInline(MapObjSurface, mapCell->Convert, shape, 0, &point, clip, 0xE00, 0,
-                               -2 - height, 0, mapCell->Light, 0, 0, 0, 0, 0);
+                               -2 - height, 0, mapCell->Light, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 

@@ -57,17 +57,10 @@ static inline int WrapPhase(int phase)
 // Arguments (evidence: 0x4C0750 prologue loads [ESP+0x24], [ESP+0x38]; 0x4C087A reads the colour word at
 // [ESP+0x3C]; 0x4C086E the pattern at [ESP+0x40]; the phase at [ESP+0x44]; the invert flag at [ESP+0x48]):
 // (Point2D* from, Point2D* to, unsigned short color, unsigned char* pattern, int phase, bool invert).
-// The base declaration keeps six ints, so the typed values are recovered by casts. Returns the phase after
+// Returns the phase after
 // the last pixel, or 0 when the surface is not 16-bit.
-int DSurface::unknown_4C(int fromArg, int toArg, int colorArg, int patternArg, int phaseArg, int invertArg)
+int DSurface::unknown_4C(Point2D* from, Point2D* to, unsigned short color, unsigned char* pattern, int phase, bool invert)
 {
-    Point2D* from = (Point2D*)fromArg;
-    Point2D* to = (Point2D*)toArg;
-    unsigned short color = (unsigned short)colorArg;
-    unsigned char* pattern = (unsigned char*)patternArg;
-    int phase = phaseArg;
-    bool invert = (char)invertArg != 0;
-
     int x1 = from->X;
     int y1 = from->Y;
     int x2 = to->X;

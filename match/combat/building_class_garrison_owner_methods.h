@@ -35,6 +35,7 @@
 #include "../_layout/object_class.h"
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../audio/voc_class_play_global_methods.h"
 
 // 2D short cell coordinate, passed to the radar event by value.
 struct CellStruct_00458200
@@ -155,13 +156,6 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00458200, GetMapCoords)     == 0x1B8 &&
 
 // FUNCTION: GAMEMD 0x6A46D0 (decl; reloc) — the side lookup by name.
 int __fastcall FindSideIndex_00458200(const char* name);
-
-struct VocClass_00458200
-{
-    // FUNCTION: GAMEMD 0x750920 (decl; reloc) — VocClass::PlayGlobal.
-    static void __fastcall PlayGlobal(int index, float volume, int panning,
-                                      void* controller = 0);
-};
 
 struct VoxClass_00458200
 {

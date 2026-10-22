@@ -47,10 +47,9 @@ void* SmudgeTypeClass::vf_35(MapObjHouseView* house)
 }
 
 // FUNCTION: GAMEMD 0x6B55F0
-// CAPPED at 60.0%: the cell-index to screen-offset arithmetic and the argument order match retail;
-// retail pushes the six zero arguments that precede the MapObjHeightScale call from two zeroed
-// registers (XOR EDX,EDX / XOR ECX,ECX), this emits PUSH 0 for each. Zero locals, a void* argument
-// and an inlined wrapper with the zeros as parameters did not change it.
+// PARTIAL 76.2%, multiset identical. The zero arguments come from two zeroed registers because the
+// drawer's trailing offset is a point by value; retail zeroes EDX/ECX where cl picks ECX/EAX, and
+// the light and height pushes are scheduled differently.
 void SmudgeTypeClass::vf_40(const MapObjPoint* where, MapObjRect* clip, int index, int height,
                             const MapObjCell* cell)
 {
@@ -65,7 +64,7 @@ void SmudgeTypeClass::vf_40(const MapObjPoint* where, MapObjRect* clip, int inde
         }
         MapObjCellView* mapCell = MapObjMap.GetCellAt(*cell);
         MapObjDrawShape(MapObjSurface, mapCell->Convert, shape, 0, &point, clip, 0xE00, 0,
-                        -1 - MapObjHeightScale(height), 0, mapCell->Light, 0, 0, 0, 0, 0);
+                        -1 - MapObjHeightScale(height), 0, mapCell->Light, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 

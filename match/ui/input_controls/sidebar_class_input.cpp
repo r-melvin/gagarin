@@ -21,19 +21,14 @@ inline int SidebarRowCount()
 // observer panel state, handles the hotkeys for sell/repair/tab/scroll and ticks the
 // buttons.
 //
-// CAPPED at 35.9% (143/398; LCS 228/394 = 57.9%). Multiset delta: retail has `sub` 1, `dec` 1,
-// `jmp` 1, `jge` 2; ours `mov` 2, `test` 2, `cmp` 1, `setne`/`sete` 1+1, `setl` 2. Attempts:
-//  1. first pass (as kept).
-//  2. the observer toggle as if/else storing 1 or 0: cl folds it back into `sete`
-//     (11.0% positional, LCS 54.1%).
-//  3. the toggle as a `switch (control)` with `case 1`: LCS 59.4% but 11.0% positional (the
-//     code length shifts everything after it); kept out because the score is lower.
-//  4. the key dispatch as a `switch (code)`: cl builds a jump table (462 instructions,
-//     26.3%), retail uses a compare chain whose last arms (scroll down/up) are laid after the
-//     function epilogue; not reproduced.
-//  5. `SidebarPlayGlobal` declared as a void-returning fastcall with a signed second
-//     argument: no change. Retail places `MOV EDX,0x2000` between the two pushes; ours
-//     emits both pushes first.
+// PARTIAL 46.6% (multiset: retail-only `sub`, `jmp`, `jge`; ours `mov` 3, `jl`). The
+// observer toggle is a `switch (control)` with `case 1` (retail's `dec eax; jz`), the old
+// state is kept as the field's own byte type (no `setne`), and the scroll-down test is
+// one condition so cl branches on each compare instead of materialising a flag (`setl`).
+// The PlayGlobal pan is declared after the volume. Remaining: retail shares one
+// PlayGlobal(Sound190) tail between the tab and scroll-down paths and lays the scroll arms
+// after the epilogue. Earlier attempts: the toggle as if/else of 1/0 (folded to `sete`),
+// the key dispatch as a `switch (code)` (jump table, 26.3%).
 // FUNCTION: GAMEMD 0x6A7780
 void SidebarClass::vf_10(int* key, Point2D* mouse)
 {
@@ -61,11 +56,18 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             }
         }
         int control = CurrentPlayer_00A83D4C->At_2F0 > 0;
-        bool old = At_5514;
+        unsigned char old = At_5514;
         if (control == -1) {
             control = (old == 0);
         }
-        At_5514 = (control == 1);
+        switch (control) {
+        case 1:
+            At_5514 = true;
+            break;
+        default:
+            At_5514 = false;
+            break;
+        }
         if (old != At_5514) {
             FlagToRedraw(0);
             At_53A6 = 1;
@@ -75,10 +77,10 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
         }
         int code = *key;
         if (code == 0x8066) {
-            SidebarPlayGlobal(Rules_008871E0->Sound188, 0x2000, 1.0f, 0);
+            VocClass::PlayGlobal(Rules_008871E0->Sound188, 1.0f, 0x2000, 0);
             SetSellMode_004AC660(-1);
         } else if (code == 0x8065) {
-            SidebarPlayGlobal(Rules_008871E0->Sound188, 0x2000, 1.0f, 0);
+            VocClass::PlayGlobal(Rules_008871E0->Sound188, 1.0f, 0x2000, 0);
             SetRepairMode_004AC8C0(-1);
         } else if (code >= 0x80CB && code < 0x80CF) {
             int tab = code - 0x80CB;
@@ -103,7 +105,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
                 FUN_006A6610();
                 At_53A7 = 1;
             }
-            SidebarPlayGlobal(Rules_008871E0->Sound190, 0x2000, 1.0f, 0);
+            VocClass::PlayGlobal(Rules_008871E0->Sound190, 1.0f, 0x2000, 0);
         } else if ((code & ~0x4000) == (ScrollDownButton_00B0B328.ID | 0x8000)) {
             ScrollDownButton_00B0B328.At_2C = 0;
             StripClass* strip = &Strips[unknown_539C];
@@ -112,17 +114,14 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
                 step = 1;
             }
             int rows = SidebarRowCount();
-            bool scrolls;
-            if (CurrentPlayer_00A83D4C == Observer_00AC1198) {
-                scrolls = strip->TopRowIndex + rows / 2 < ObserverRowLimit_00884CF8;
-            } else {
-                scrolls = (strip->TopRowIndex + rows) * 2 < strip->CameoCount;
-            }
-            if (scrolls) {
+            if ((CurrentPlayer_00A83D4C == Observer_00AC1198
+                    && strip->TopRowIndex + rows / 2 < ObserverRowLimit_00884CF8)
+                || (CurrentPlayer_00A83D4C != Observer_00AC1198
+                    && (strip->TopRowIndex + rows) * 2 < strip->CameoCount)) {
                 strip->At_48 = strip->At_48 + step;
-                SidebarPlayGlobal(Rules_008871E0->Sound190, 0x2000, 1.0f, 0);
+                VocClass::PlayGlobal(Rules_008871E0->Sound190, 1.0f, 0x2000, 0);
             } else {
-                SidebarPlayGlobal(Rules_008871E0->Sound700, 0x2000, 1.0f, 0);
+                VocClass::PlayGlobal(Rules_008871E0->Sound700, 1.0f, 0x2000, 0);
             }
         } else if (code == (ScrollUpButton_00B0B408.ID | 0x8000)) {
             ScrollUpButton_00B0B408.At_2C = 0;
@@ -133,9 +132,9 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             }
             if (strip->TopRowIndex != 0) {
                 strip->At_48 = strip->At_48 - rows;
-                SidebarPlayGlobal(Rules_008871E0->Sound190, 0x2000, 1.0f, 0);
+                VocClass::PlayGlobal(Rules_008871E0->Sound190, 1.0f, 0x2000, 0);
             } else {
-                SidebarPlayGlobal(Rules_008871E0->Sound700, 0x2000, 1.0f, 0);
+                VocClass::PlayGlobal(Rules_008871E0->Sound700, 1.0f, 0x2000, 0);
             }
         }
         bool redraw = false;

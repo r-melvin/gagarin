@@ -122,8 +122,9 @@ void ParticleClass::vf_69(void* where, ParticleRect* clip)
             else if (unknown_12F >= 0x4B)
                 flags = 0x2806;
         }
+        ParticleScreenPoint offset = {0, 0};
         ParticleDrawShape(ParticleSurface, ParticleDrawContext, object, frame, where, clip, flags | 0xE00, 0,
-                          zAdjust, 2, 1000, 0, 0, 0, 0, 0);
+                          zAdjust, 2, 1000, 0, 0, 0, offset);
         return;
     }
 

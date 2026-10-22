@@ -141,12 +141,11 @@ void TerrainClass::vf_60(MapObjCoord* where)
 }
 
 // FUNCTION: GAMEMD 0x71C1B0
-// CAPPED at 48.6% (143 of 148 instructions; retail-only: 1 `sub`, 1 `test`, 4 `xor`, 1 `jmp`; cl-only: 1 `add`,
-// 1 `cmp`). Retail zeroes ECX/EAX once and pushes the zero arguments of the two shape-drawer calls from them
-// (the recorded constant-materialisation class: cl pushes the immediate 0), keeps the hidden-return cell
-// buffer and the cell in one stack slot (frame 0x14 against cl's 0x18) and subtracts 0x10 from the point
-// with `SUB` where cl folds an `ADD -16`. Variants tried: `point.Y -= 0x10`, a shifted copy, a
-// point - MapObjPoint(0, 0x10) (kept); by-value hidden-return slots for the cell (kept, +4%).
+// PARTIAL 89.2% (multiset: retail-only `sub`, `jmp`; cl-only `mov`, `add`). The shape drawer's
+// trailing offset is a point passed by value, which is what makes retail zero ECX/EAX and push the
+// zero arguments from them. Remaining: retail subtracts 0x10 from the point with `SUB` where cl folds
+// an `ADD -16` (tried `point -= `, a by-value operator- and a copy-then-subtract operator: all worse),
+// and retail selects the draw flags with a branch where cl if-converts (ternary and if/else alike).
 void TerrainClass::vf_69(MapObjPoint* where, MapObjRect* clip)
 {
     MapObjCell cell = *vf_110(MapObjCell().Address());
@@ -176,29 +175,26 @@ void TerrainClass::vf_69(MapObjPoint* where, MapObjRect* clip)
         }
         int flags = (Type->IsAnimated || TimeToDie) ? 0x2E00 : 0x4E00;
         MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, flags, 0, z - 12, 2, tint, 0, 0,
-                         0, 0, 0);
+                         0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             clip, flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, 0, 0);
+                             clip, flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 
 // FUNCTION: GAMEMD 0x71C360
-// CAPPED at 38.6% (123 of 127 instructions; retail-only: 1 `sub`, 2 `mov`, 3 `xor`; cl-only: 1 `add`, 1 `jmp`).
-// Same zero-argument materialisation and Y adjustment as vf_69; additionally retail keeps `frame` in the
-// stack slot of the dead hidden-return buffer and the image in EBP, cl the reverse. Variants tried:
-// `int frame = 0` then conditional (18.9%), if/else assignment (kept), frame after the height.
+// PARTIAL 74.8% (multiset: retail-only `sub`, cl-only `add`). By-value offset as in vf_69, and
+// `frame` defaults to 0 before the TimeToDie test (retail has no else arm). Remaining: the same
+// Y adjustment as vf_69, and the scheduling of the second call's frame sum.
 void TerrainClass::vf_70(MapObjPoint* where, MapObjRect* clip)
 {
     MapObjCell cell = *vf_110(MapObjCell().Address());
     MapObjCellView* cellView = MapObjMap.GetCellAt(cell);
     MapObjShapeView* image = (MapObjShapeView*)GetImage();
     if (image != 0) {
-        int frame;
+        int frame = 0;
         if (TimeToDie)
             frame = Value + TimeToDie;
-        else
-            frame = 0;
         MapObjPoint point = *where;
         int z = -MapObjHeightScale(vf_116());
         if (cellView->Convert == 0)
@@ -213,11 +209,10 @@ void TerrainClass::vf_70(MapObjPoint* where, MapObjRect* clip)
             context = cellView->Convert;
             tint = cellView->Light;
         }
-        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, 0xE00, 0, z - 4, 2, tint, 0, 0, 0,
-                         0, 0);
+        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, 0xE00, 0, z - 4, 2, tint, 0, 0, 0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             clip, 0x601, 0, z - 2, 0, 1000, 0, 0, 0, 0, 0);
+                             clip, 0x601, 0, z - 2, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 

@@ -254,10 +254,11 @@ Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, Rect* clip, 
 // in ECX and the text is in EDX; seven words follow on the stack (RET 0x1C).
 void __fastcall FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, Rect* clip,
                              Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
-// 0x4AED70: shape blitter. Surface in ECX, the palette lookup in EDX, fourteen stack words.
+// 0x4AED70: shape blitter. Surface in ECX, the palette lookup in EDX, fourteen stack words; the last
+// two are one offset point passed by value (callers zero two registers for it).
 void __fastcall FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape, int frame,
                              Point2D* position, Rect* clip, int flags, int a8, int a9, int a10, int a11,
-                             int a12, int a13, int a14, int a15, int a16);
+                             int a12, int a13, int a14, Point2D offset);
 // 0x623880: draws a label's text. Surface in ECX, rectangle in EDX, nine stack words (RET 0x24).
 void __fastcall FUN_00623880(Surface* surface, Rect* area, const wchar_t* text, int length, Font* font,
                              unsigned colour, int* extra, int focused, int a8, int a9, int shown);

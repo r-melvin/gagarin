@@ -50,8 +50,8 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
 
     if ((this->*Vtbl->GetOccupantCount)() == 0 && Owner != civilian) {
         if (Owner->IsControlledByCurrentPlayer()) {
-            VocClass_00458200::PlayGlobal(RulesInstance_00458200->unknown_1C0,
-                                          1.0f, 0x2000, 0);
+            VocClass::PlayGlobal(RulesInstance_00458200->unknown_1C0,
+                                 1.0f, 0x2000, 0);
             CellStruct_00458200 here;
             if (RadarEventClass_00458200::Create(
                     0xF, *(this->*Vtbl->GetMapCoords)(&here))) {

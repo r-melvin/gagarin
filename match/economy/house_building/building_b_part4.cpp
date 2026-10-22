@@ -108,50 +108,49 @@ int BuildingBView::vf_281(int a)
 }
 
 // FUNCTION: GAMEMD 0x457020
-// CAPPED at 56.7% (multiset: retail has one extra `mov`, two `pop` and an `add`/`ret` pair, i.e. extra epilogue copies).
-// Retail keeps `this` in edi, the two pixel offsets in ebx/ebp and &Location in esi; cl keeps this in esi and the
-// offsets in edi/ebx. Variants tried: the goto/early-exit form kept here, a &Location pointer local, a pre-set
-// `blocked` flag, separate cell-count locals.
+// PARTIAL 67.4%, multiset identical. `return false` is the last statement, so
+// every refusal shares the final block and the two `return true` blocks stay
+// separate (retail has four return blocks). Remaining delta is register choice:
+// retail keeps `this` in edi, the two pixel offsets in ebx/ebp and &Location in
+// esi; cl keeps this in esi and the offsets in edi/ebx. Also tried: the corner
+// from the `here` copy (31.2%) and a &Location pointer local (no change).
 bool BuildingBView::vf_201(int* flag)
 {
     if (Type->unknown_C9A)
-        goto refuse;
+        return false;
     if (InLimbo)
-        goto refuse;
+        return false;
     if (Owner->Func_50B6F0())
         return unknown_41B ? true : false;
     {
         HBCoord tmp;
         HBCell cell = BuildingBCellOf(*vf_18(&tmp));
         if (!BuildingBMap.Func_578460(&cell, 1))
-            goto refuse;
+            return false;
     }
-    {
-        int widthPixels = (Type->Func_45ECA0(0) << 8) - 0x100;
-        int heightPixels = (Type->Func_45EC90() << 8) - 0x100;
-        bool blocked;
-        HBCoord here = Location;
-        if (BuildingBMap.Func_586360(&here)) {
-            HBCoord corner;
-            corner.X = Location.X + heightPixels;
-            corner.Y = Location.Y + widthPixels;
-            corner.Z = Location.Z;
-            if (BuildingBMap.Func_586360(&corner) && BuildingBGlobal_00B73550)
-                blocked = true;
-            else
-                blocked = false;
-        } else {
+    int widthPixels = (Type->Func_45ECA0(0) << 8) - 0x100;
+    int heightPixels = (Type->Func_45EC90() << 8) - 0x100;
+    bool blocked;
+    HBCoord here = Location;
+    if (BuildingBMap.Func_586360(&here)) {
+        HBCoord corner;
+        corner.X = Location.X + heightPixels;
+        corner.Y = Location.Y + widthPixels;
+        corner.Z = Location.Z;
+        if (BuildingBMap.Func_586360(&corner) && BuildingBGlobal_00B73550)
+            blocked = true;
+        else
             blocked = false;
-        }
-        if (unknown_220 != 2 && Translucency != 0xF && !IsFogged && !blocked)
-            return true;
-        if (!vf_202())
-            goto refuse;
+    } else {
+        blocked = false;
+    }
+    if (unknown_220 != 2 && Translucency != 0xF && !IsFogged && !blocked)
+        return true;
+    if (vf_202()) {
         if (!BuildingBPlayer->Func_4F9A50(Owner) && !IsFogged && !blocked)
             *flag = 1;
         return true;
     }
-refuse:
     return false;
 }
 

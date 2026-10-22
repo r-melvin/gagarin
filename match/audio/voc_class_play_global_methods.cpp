@@ -14,7 +14,7 @@
 // 0..1 float scaled to the 0..0x4000 fixed range. The controller, if any, is
 // re-bound to whatever handle results, and that handle is returned.
 AudioHandle_00750920* __fastcall VocClass::PlayGlobal(
-    int index, unsigned int pan, float volume,
+    int index, float volume, unsigned int pan,
     AudioController_00750920* controller)
 {
     if (DAT_008464AC == 0)

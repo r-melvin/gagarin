@@ -97,7 +97,7 @@ extern House_0074D490** DAT_00B054D4;
 void __fastcall FUN_004AED70(void* surface, void* remap, void* shape, void* palette,
                              Point_0074D490* point, void* clip, int a7, int a8,
                              int a9, int a10, int a11, int a12, int a13, int a14,
-                             int a15, int a16);
+                             Point_0074D490 offset);
 
 struct Monster_0074D490
 {

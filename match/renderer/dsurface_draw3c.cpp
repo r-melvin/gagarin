@@ -57,21 +57,9 @@ static unsigned int Expand(unsigned short pixel, int channel)
 }
 
 // FUNCTION: GAMEMD 0x4BC750
-// The base declaration keeps eleven ints (retail RET 0x2c), so the typed values are recovered by casts:
-// (RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* rgb, int zFrom, int zTo, bool writeZ,
-//  bool blendA, bool blendB, bool blendC, float scale).
-bool DSurface::unknown_3C(int clipArg, int fromArg, int toArg, int rgbArg, int zFrom, int zTo, int writeZArg,
-                          int blendAArg, int blendBArg, int blendCArg, int scaleArg)
+// RET 0x2C: eleven stack arguments.
+bool DSurface::unknown_3C(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* rgb, int zFrom, int zTo, bool writeZ, bool blendA, bool blendB, bool blendC, float scale)
 {
-    RectangleStruct*& clip = (RectangleStruct*&)clipArg;
-    Point2D*& from = (Point2D*&)fromArg;
-    Point2D*& to = (Point2D*&)toArg;
-    unsigned char*& rgb = (unsigned char*&)rgbArg;
-    bool& writeZ = (bool&)writeZArg;
-    bool& blendA = (bool&)blendAArg;
-    bool& blendB = (bool&)blendBArg;
-    bool& blendC = (bool&)blendCArg;
-    float& scale = (float&)scaleArg;
     if (!DAT_008A0DF1) {
         DAT_008A0DF1 = true;
         for (int i = 0; i <= 256; i++)

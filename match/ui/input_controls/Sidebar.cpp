@@ -88,7 +88,7 @@ inline int SidebarRowCount()
 void __fastcall SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
                                  SidebarShapeFile* shape, int frame, Point2D* position,
                                  SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
-                                 int zAdjust, int a10, int a11, int a12, int a13, int a14);
+                                 int zAdjust, int a10, int a11, int a12, Point2D offset);
 
 // One 0x400-flag shape draw at (0, y) on the sidebar surface; expanded inline by 0x6A6C30.
 inline void DrawSidebarShape(int shape, int frame, int y, SidebarAreaRect* bounds)
@@ -96,8 +96,9 @@ inline void DrawSidebarShape(int shape, int frame, int y, SidebarAreaRect* bound
     Point2D position;
     position.X = 0;
     position.Y = y;
+    Point2D offset = {0, 0};
     SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, SideShapes_00B0B468[shape], frame,
-                     &position, bounds, 0x400, 0, 0, 0, 0x3E8, 0, 0, 0, 0, 0);
+                     &position, bounds, 0x400, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
 }
 
 #include "sidebar_class_layout.h"
@@ -233,8 +234,6 @@ SelectTechnoType* __fastcall SelectGetByTypeAndIndex(int type, int index);
 // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- VoxClass::Play(name, a, b).
 void __fastcall SelectVoxPlay(const char* name, int a, int b);
 
-// FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal(index, flags, volume, controller).
-void* __fastcall SelectPlayGlobal(int voc, unsigned int flags, float volume, void* controller);
 
 // FUNCTION: GAMEMD 0x40DD70 (decl; reloc) -- WhatAmIHolder check on the placement object.
 void* __fastcall SelectCheckPlacement(void* object);
@@ -693,16 +692,11 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
 // Slot 16: draws the sidebar: backdrop shapes, the buttons, the open/close animation
 // frames and the current strip, then folds the buttons' redraw flags into one.
 //
-// CAPPED at 5.6% (20/355; LCS 256/355 = 72.1%, up from 223 = 62.8%). Retail loads the
-// backdrop rectangle after the callee-saved pushes, ours before; retail pushes the
-// thirteenth shape-draw argument through a fresh `xor eax,eax` while the others use the
-// zero register EBX (a zero-valued local for that argument is folded by cl, no change).
-// The shape draws are expanded from an inline helper (attempt 2), which moved LCS from 62.8%
-// to 72.1% but lowered the positional score from 9.3% to 5.6%. Attempts: (1) open-coded
-// draws, 9.3%; (2) inline helper `DrawSidebarShape`, 5.6% (kept); (3) a zero local for the
-// thirteenth argument, no change. Remaining multiset delta: retail has 2 `xor`, a top-tested
-// row loop with the row count recomputed per iteration (ours matches), and the prologue
-// ordering above.
+// PARTIAL 9.9%. The shape drawer's last two arguments are one point passed by value
+// (the source of retail's register zeros). Remaining: retail loads the backdrop
+// rectangle after the callee-saved pushes, ours before, and the register choice of the
+// zero registers. The shape draws are expanded from an inline helper. Earlier
+// attempts: open-coded draws, the inline helper (kept), a zero local.
 // FUNCTION: GAMEMD 0x6A6C30
 void SidebarClass::vf_16(bool forced)
 {
@@ -1001,7 +995,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                         }
                         if (factory->Object == 0 || factory->At_70 != 0) {
-                            SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                            VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_Canceled", -1, -1);
                             SelectEvent event;
                             if (shift) {
@@ -1010,7 +1004,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                 event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0x10, type, item, technoType->At_CCE)->Queue();
                             }
                         } else {
-                            SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                            VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_OnHold", -1, -1);
                             SelectEvent event;
                             event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0xF, type, item, technoType->At_CCE)->Queue();
@@ -1021,14 +1015,14 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             Owner->Entries[index].State = 2;
                             Owner->At_3C = 1;
                             Map_0087F7E8.FlagToRedraw(0);
-                            SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                            VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                             SelectVoxPlay("EVA_OnHold", -1, -1);
                             SelectEvent event;
                             event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0xF, type, item, technoType->At_CCE)->Queue();
                         }
                         SelectFactory* primary = SelectPlayer_00A83D4C->GetPrimaryFactory(type, technoType->At_CCE, category);
                         if (primary != 0 && primary->IsQueued(technoType)) {
-                            SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                            VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                             SelectEvent event;
                             if (shift) {
                                 event.Construct(SelectPlayer_00A83D4C->ArrayIndex, 0x2E, type, item, technoType->At_CCE)->Queue();
@@ -1047,7 +1041,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                     PendingSuper_008809A0 = 1;
                                 }
                             } else {
-                                SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                                VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                                 SelectTechno* target = (object->*object->Vtbl->At_190)(0, 0);
                                 if (target == 0) {
                                     SelectEvent event;
@@ -1061,7 +1055,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                                 }
                             }
                         } else {
-                            SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                            VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                             SelectVoxPlay(type == 0x10 ? "EVA_Training" : "EVA_Building", -1, -1);
                             SelectTechnoType* current = SelectGetByTypeAndIndex(Owner->Entries[index].Type, Owner->Entries[index].Item);
                             bool currentFlag = current != 0 && current->At_CCE != 0;
@@ -1103,7 +1097,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                         } else {
                             bool ready = SelectPlayer_00A83D4C->FUN_00500700(type, technoType->At_CCE, category);
                             if (!canBuild) {
-                                SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                                VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                                 if (primary == 0 && !ready) {
                                     SelectPlayer_00A83D4C->FUN_005005B0(type, technoType->At_CCE, category);
                                     queued = true;
@@ -1159,7 +1153,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                     PendingSuper_008809A0 = -1;
                 }
                 if ((flags & 1) && (unsigned int)item < SelectPlayer_00A83D4C->SuperCount) {
-                    SelectPlayGlobal(SelectRules_008871E0->Sound18C, 0x2000, 1.0f, 0);
+                    VocClass::PlayGlobal(SelectRules_008871E0->Sound18C, 1.0f, 0x2000, 0);
                     SelectSuper* super = SelectPlayer_00A83D4C->Supers[item];
                     if (super->CanFire()) {
                         if (super->Type->At_BC == 0) {

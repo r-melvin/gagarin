@@ -689,10 +689,12 @@ extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir
 // image; the flag selects the load mode. __fastcall: the path in ECX, the flag in DL.
 void* __fastcall MapObjLoadShape(const char* path, bool flag);
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) - draws a shape; __fastcall (surface, context), 14 stack
-// dwords.
+// dwords. The last two are one screen offset passed by value: every caller builds it from two
+// zeros held in registers (`xor ecx,ecx; xor eax,eax; push ecx; push eax`) and reuses one of them
+// for the other zero arguments, which is what cl does for a by-value point built from (0, 0).
 void __fastcall MapObjDrawShape(MapObjSurfaceView* surface, void* context, void* shape, int frame,
                                 MapObjPoint* where, MapObjRect* clip, int flags, int a6, int zAdjust,
-                                int a8, int a9, int a10, int a11, int a12, int a13, int a14);
+                                int a8, int a9, int a10, int a11, int a12, MapObjPoint offset);
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) - a height scaled by a float constant, __fastcall (ECX).
 int __fastcall MapObjHeightScale(int value);
 

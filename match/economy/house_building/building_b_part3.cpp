@@ -7,36 +7,29 @@
 #include "building_b_views.h"
 
 // FUNCTION: GAMEMD 0x4544A0
-// CAPPED at 70.1% (75 of 107 instructions; multiset differs by one `je`, two `pop`, one `mov`, one `ret`).
-// Retail keeps the `return 3` block directly behind the cell test and shares one `return 5` block that every
-// refusal jumps to; cl duplicates the `return 5` epilogue after the cell test and keeps the shared `return 3`
-// at the end. Variants tried: nested returns, a &&/|| chain with one trailing return, an if/else with a
-// single trailing return, and the goto form kept here.
+// Both arms compute one flag and share a single `return 3` / `return 5` pair,
+// which is retail's layout (one block each). Returning from inside the arms
+// makes cl duplicate the `return 5` epilogue (70.1%).
 int BuildingBView::vf_26(bool a, BuildingBTargetView* target)
 {
     char level = Translucency;
     if (level != 0) {
         if (level > 10) {
+            bool keep;
             if (a) {
-                if (target == 0)
-                    goto five;
-                {
+                keep = false;
+                if (target != 0) {
                     HBCoord loc = Location;
                     HBCell cell = BuildingBCellOf(loc);
-                    if (!BuildingBMap.Func_5657A0(&cell)->Func_4870D0(target->unknown_30))
-                        goto five;
+                    keep = BuildingBMap.Func_5657A0(&cell)->Func_4870D0(target->unknown_30);
                 }
-three:
-                return 3;
+            } else {
+                keep = unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0
+                    || (BuildingBGlobal_00A8B238 != 0 && Owner != 0 && BuildingBPlayer != 0
+                        && BuildingBPlayer->Func_4F9A50(Owner) && Owner->Func_4F9A50(BuildingBPlayer));
             }
-            if (unknown_41A || vf_202() || BuildingBGlobal_00B73550 == 0)
-                goto three;
-            if (BuildingBGlobal_00A8B238 == 0 || Owner == 0 || BuildingBPlayer == 0
-                || !BuildingBPlayer->Func_4F9A50(Owner))
-                goto five;
-            if (Owner->Func_4F9A50(BuildingBPlayer))
-                goto three;
-five:
+            if (keep)
+                return 3;
             return 5;
         }
         return (level > 5) + 1;

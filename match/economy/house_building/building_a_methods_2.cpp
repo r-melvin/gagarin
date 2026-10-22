@@ -225,7 +225,7 @@ void BuildingAView::vf_104(int mode)
         vf_123();
     }
     if (Owner->FUN_0050B6F0()) {
-        FUN_00750920(RulesInstance->unknown_70C, 0x2000, 1.0f, 0);
+        VocClass::PlayGlobal(RulesInstance->unknown_70C, 1.0f, 0x2000, 0);
     }
 }
 

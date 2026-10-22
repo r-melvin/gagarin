@@ -9,9 +9,8 @@
 #define GG_MATCH_UI_INPUT_CONTROLS_CONTROLS_VIEWS_H
 
 #include "ui_gadget.h"
+#include "../../audio/voc_class_play_global_methods.h"
 
-// 0x750920 (VocClass::PlayGlobal): plays a sound by index; bound by address here.
-void* __fastcall ControlsPlaySound(int index, unsigned pan, float volume, void* controller);
 // The rules object behind [0x8871E0]; +0x6C4 holds a sound index.
 struct ControlsRules
 {

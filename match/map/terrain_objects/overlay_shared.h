@@ -127,11 +127,11 @@ MapObjTypeClassView* __fastcall OverlayFindAnimType(const char* name);
 // the call sequence after the surrounding code instead of being hoisted above it.
 inline void OverlayDrawShapeInline(MapObjSurfaceView* surface, void* context, void* shape, int frame,
                                    MapObjPoint* where, MapObjRect* clip, int flags, int a6,
-                                   int zAdjust, int a8, int a9, int a10, int a11, int a12, int a13,
-                                   int a14)
+                                   int zAdjust, int a8, int a9, int a10, int a11, int a12,
+                                   MapObjPoint offset)
 {
     MapObjDrawShape(surface, context, shape, frame, where, clip, flags, a6, zAdjust, a8, a9, a10, a11,
-                     a12, a13, a14);
+                     a12, offset);
 }
 
 // A colour palette object; only the converter at +0x30C is read.

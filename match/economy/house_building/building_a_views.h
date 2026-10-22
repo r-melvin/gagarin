@@ -15,6 +15,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
+#include "../../audio/voc_class_play_global_methods.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
@@ -154,8 +155,6 @@ void __fastcall FUN_00752700(const char* name, int a, int b);
 void __fastcall FUN_007509E0(int sound, HBCoord* where, void* unused);
 // FUNCTION: GAMEMD 0x750D40 (read-only here) - stops/plays the sound of an audio controller at a position.
 void __fastcall FUN_00750D40(HBCoord* where, struct BAAudioView* audio);
-// FUNCTION: GAMEMD 0x750920 (read-only here) - plays a sound with a volume.
-void __fastcall FUN_00750920(int sound, int flags, float volume, void* unused);
 
 // FUNCTION: GAMEMD 0x6D20E0 (read-only here) - one register argument: __fastcall.
 int __fastcall FUN_006D20E0(int key);

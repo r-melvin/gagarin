@@ -13,6 +13,7 @@
 //   GLOBAL:   GAMEMD 0x8871E0   RulesClass::Instance pointer
 
 #include "house_class_overpower_methods.h"
+#include "../audio/voc_class_play_global_methods.h"
 
 // ---------------------------------------------------------------------------
 // Offset-pinned model of the global TechnoClass::Array (DynamicVectorClass head
@@ -48,11 +49,6 @@ GG_STATIC_ASSERT(offsetof(RulesClass, field_1C8) == 0x1C8);
 #endif
 extern RulesClass* Rules;  // GLOBAL: GAMEMD 0x8871E0
 
-// Retail helper @0x750920, called __fastcall(int, uint, undefined4, int*).
-// Declared (no body) so cl emits a normalised-reloc call.
-int* __fastcall Func_750920(int param1, unsigned int param2,
-                            float param3, int* param4);
-
 // FUNCTION: GAMEMD 0x4F9AF0  HouseClass::CanOverpower  (__thiscall)
 bool HouseClass::CanOverpower(TechnoClass* pTarget) const
 {
@@ -72,25 +68,9 @@ bool HouseClass::CanOverpower(TechnoClass* pTarget) const
 
 // FUNCTION: GAMEMD 0x50C8C0  HouseClass::Cheer  (__thiscall)
 //
-// BUILD-SCHEDULING DELTA (status bool-delta): everything matches 100% except the
-// __fastcall argument set-up for the final Func_750920 call -- retail (cl build
-// 8447) schedules `mov edx,0x2000` BETWEEN the two stack pushes, whereas our cl
-// our compiler emits both pushes first, then the edx/ecx loads. Identical
-// instructions, identical total length, same root cause as the documented
-// unexplained-codegen setcc-tail scheduling delta. Confirmed phrasing-invariant: three
-// independent phrasings (int/float param3, temp-hoisted ecx arg) all produce the
-// our compiler ordering, so there is no source form that reproduces the 8447 schedule.
-// Eight further spellings were measured this pass against a labelled control,
-// as members of a cloned class (never as free functions, per the nineteenth
-// batch), and seven are BYTE-IDENTICAL to it at 93.3%: the kind argument named
-// ahead of the call, both register arguments named in retail's load order, the
-// float argument named, the trailing null named, the call routed through a
-// forced-inline forwarder, and the kind written as `1u << 13` so it is not a
-// foldable literal. Only a `volatile` kind moves it, to 3.0%. Same residual and
-// same verdict as 0x452D40, 0x458200, 0x683EB0, 0x41C2E0 and 0x40A850: the
-// register-argument load is scheduled against the stack pushes by the backend,
-// not by the source.
-//
+// Retail loads EDX (the 0x2000 pan) between the controller and volume pushes,
+// which is cl's right-to-left order for PlayGlobal(index, volume, pan,
+// controller): the pan is declared after the volume.
 void HouseClass::Cheer()
 {
     int count = TechnoArray.Count;
@@ -100,5 +80,5 @@ void HouseClass::Cheer()
             pTechno->OnHouseCheer(0);
         }
     }
-    Func_750920(Rules->field_1C8, 0x2000, 1.0f, 0);
+    VocClass::PlayGlobal(Rules->field_1C8, 1.0f, 0x2000, 0);
 }

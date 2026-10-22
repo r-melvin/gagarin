@@ -319,7 +319,10 @@ bool __fastcall FUN_00776320(LPARAM point)
 // FUNCTION: GAMEMD 0x7768F0
 //
 // EnumChildWindows callback: restore tree-view expansion ("TV<n>") and
-// list-view column widths ("LV<n>") from the INI handed in `lParam`.
+// list-view column widths ("LV<n>") from the INI handed in `lParam`. The
+// expand/collapse is two whole SendMessageA calls: cl merges their common
+// argument pushes, which is retail's `push esi; je; push 2; jmp; push 1`.
+// Choosing the action into a value first gives neg/sbb/inc instead.
 BOOL CALLBACK FUN_007768F0(HWND window, LPARAM lParam)
 {
     INIClass* ini = (INIClass*)lParam;
@@ -334,13 +337,11 @@ BOOL CALLBACK FUN_007768F0(HWND window, LPARAM lParam)
              item = (HTREEITEM)SendMessageA(window, TVM_GETNEXTITEM, TVGN_NEXT, (LPARAM)item)) {
             index++;
             wsprintfA(text, STR_00849E4C, index);
-            UINT action;
             if (ini->ReadBool(section, text, false)) {
-                action = TVE_EXPAND;
+                SendMessageA(window, TVM_EXPAND, TVE_EXPAND, (LPARAM)item);
             } else {
-                action = TVE_COLLAPSE;
+                SendMessageA(window, TVM_EXPAND, TVE_COLLAPSE, (LPARAM)item);
             }
-            SendMessageA(window, TVM_EXPAND, action, (LPARAM)item);
         }
     }
 

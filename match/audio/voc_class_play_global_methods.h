@@ -63,8 +63,12 @@ struct VocClass
     static DynamicVectorClassLayout Array;
 
     // FUNCTION: GAMEMD 0x750920
+    // The pan is declared after the volume: callers issue the EDX load
+    // between the volume push and the controller push (0x50C8C0, 0x458200),
+    // which is cl's right-to-left order for this declaration. The volume
+    // still travels on the stack, so the body compiles the same either way.
     static AudioHandle_00750920* __fastcall PlayGlobal(
-        int index, unsigned int pan, float volume,
+        int index, float volume, unsigned int pan,
         AudioController_00750920* controller);
 };
 

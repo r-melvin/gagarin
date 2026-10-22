@@ -113,7 +113,7 @@ extern Rect_0043E7B0* DAT_0087F6C4;
 void __fastcall FUN_004AED70(Surface_0043E7B0* surface, Rect_0043E7B0* rect,
                              const wchar_t* text, int a3, Point_0043E7B0* pos,
                              unsigned int flags, int a6, int a7, int a8, int a9,
-                             int a10, int a11, int a12, int a13, int a14, int a15);
+                             int a10, int a11, int a12, int a13, Point_0043E7B0 offset);
 
 struct Vtbl_0043E7B0;
 

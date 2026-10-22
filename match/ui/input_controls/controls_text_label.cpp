@@ -52,7 +52,7 @@ int TextLabelClass::Draw(int forced)
                     if (shown != CharsShown)
                         unknown_48 = now;
                     if (CharsShown <= length)
-                        ControlsPlaySound(ControlsRulesInstance->TextSound, 0x2000, 1.0f, 0);
+                        VocClass::PlayGlobal(ControlsRulesInstance->TextSound, 1.0f, 0x2000, 0);
                 }
                 FUN_00623880(DAT_00887314, &area, Text, length, font, colour,
                                       &unknown_3C, IsFocused(), 0, 1, CharsShown);

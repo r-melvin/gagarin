@@ -444,8 +444,8 @@ extern Obj_00A8B230* DAT_00A8B230;
 extern GScreen_004F4480 GScreen_0087F7E8;
 
 // FUNCTION: GAMEMD 0x77D840
-//   Not exact (91% aligned): retail pushes the three stack arguments before
-//   choosing the idle callback.
+//   The idle callback is chosen by two whole calls: cl merges their common
+//   pushes and selects EDX last, as retail does.
 void __fastcall FUN_0077D840()
 {
     void* window = UI_BeginDialog(0xCF, FUN_0078D120, 0);
@@ -453,7 +453,10 @@ void __fastcall FUN_0077D840()
     DAT_0087F770->DoSomething();
     ShowWindow(window, 1);
     void* parent = FUN_005E26C0();
-    FUN_007759E0(window, parent != NULL ? FUN_0077D820 : UI::Updated, 0, true, true);
+    if (parent != NULL)
+        FUN_007759E0(window, FUN_0077D820, 0, true, true);
+    else
+        FUN_007759E0(window, UI::Updated, 0, true, true);
     DAT_0087F770->DoSomething();
     DAT_00A8ED9C = DAT_00A8B230->unknown_35A2;
     GScreen_0087F7E8.FlagToRedraw(2);
