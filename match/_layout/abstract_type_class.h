@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp naming consult only | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Retail ctor 0x00410800 has a contiguous 340-byte body through 0x00410953;
 //   it calls 0x00410170, writes four vptrs at +0/+4/+8/+0xC, copies the ID
 //   beginning at +0x24 through its terminator at +0x3C, zeroes +0x3D, sets

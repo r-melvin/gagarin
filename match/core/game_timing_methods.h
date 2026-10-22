@@ -3,7 +3,7 @@
 //   Bytes, globals and the call shape read off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x6C87F0 and 0x6C8820. Names
 //   cross-checked against YRpp (`Unsorted::RegisterGameStartTime` /
-//   `RegisterGameEndTime`, consult-only, no LICENSE).
+//   `RegisterGameEndTime`).
 //
 // The game clock is an 8-byte timer object at 0x00B0BD28: the start tick at
 // +0 and an empty clock member at +4. Retail reaches the clock's GetTime with

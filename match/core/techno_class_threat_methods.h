@@ -3,8 +3,7 @@
 //   Offsets + control flow derived from the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI (member-access disassembly at 0x70F6E0-0x70F72E,
 //   len 0x4F). Names cross-checked against YRpp
-//   (UpdateThreatInCell @0x70F6E0; ThreatPosed @0x508; consult-only, no LICENSE;
-//   every offset/vtable slot reconfirmed numerically from the disasm below).
+//   (UpdateThreatInCell @0x70F6E0; ThreatPosed @0x508; every offset/vtable slot reconfirmed numerically from the disasm below).
 //   ThreatPosed @0x508 agrees with the committed spine
 //   match/_layout/techno_class.h.
 //

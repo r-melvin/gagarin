@@ -7,8 +7,7 @@
 //   or down (`LEA EDX,[EBP+ECX*2-2]`) with the `TEST DX,DX` / `CMP DX,0x20;
 //   JBE` break, the inlined `REP MOVSD`/`REP MOVSB` copy into the first
 //   argument plus the terminating word store, and the out-of-line tail move
-//   through 0x7CA090. Method name and argument roles are YRpp's
-//   (consult-only, no LICENSE).
+//   through 0x7CA090. Method name and argument roles are YRpp's.
 #ifndef GG_MATCH_UI_MESSAGE_LIST_CLASS_TRIM_METHODS_H
 #define GG_MATCH_UI_MESSAGE_LIST_CLASS_TRIM_METHODS_H
 

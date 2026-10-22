@@ -9,7 +9,7 @@
 //   `MOV ECX,[0xB0F6AC]` CapacityIncrement, `MOV ECX,[0xB0F69C]` Items,
 //   `CALL [EDX+8]` SetCapacity). Names for the method and the three callees —
 //   BombClass::Disarm 0x4389B0, TechnoClass::KillPassengers 0x707CB0,
-//   AbstractClass::AnnounceExpiredPointer 0x7258D0 — from YRpp (consult-only).
+//   AbstractClass::AnnounceExpiredPointer 0x7258D0 — from YRpp.
 //
 // ObjectClass slot 62 (UnInit) — retire an object: disarm any attached bomb, kill the
 // passengers if this is a TechnoClass, announce the expiring pointer, limbo,

@@ -3,7 +3,7 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). The switch
 //   jump-table @0x48DD10 and discriminator byte-table @0x48DD24 were decoded to
 //   recover the (AbstractType -> array) mapping; cross-checked against YRpp
-//   (consult-only, reconfirmed here).
+//   (reconfirmed here).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x48DCD0  TechnoTypeClass::GetByTypeAndIndex (__fastcall)

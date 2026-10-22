@@ -4,7 +4,7 @@
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x52A940: `this` arrives in
 //   ECX and is parked in EDI, the three stack arguments are `[ESP+0x2C]`,
 //   `[ESP+0x30]` and `[ESP+0x34]`, and the frame is one 32-byte buffer. The
-//   method name is the YRpp one (consult-only); no member offset is touched.
+//   method name is the YRpp one; no member offset is touched.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_TIME_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_TIME_METHODS_H
 

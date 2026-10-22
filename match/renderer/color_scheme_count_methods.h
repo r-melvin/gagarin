@@ -13,7 +13,7 @@
 //   bucket's `[+0x14]` is set to 10 in a loop over `[ESI+8]`. The answer is
 //   `[[[0xAC48F0]+4]+0x10]`. The bucket layout is the one confirmed in
 //   match/renderer/color_scheme_iterator_methods.h (re-declared here so the TU
-//   stands alone). Method name from YRpp (consult-only, no LICENSE).
+//   stands alone). Method name from YRpp.
 #ifndef GG_MATCH_RENDERER_COLOR_SCHEME_COUNT_METHODS_H
 #define GG_MATCH_RENDERER_COLOR_SCHEME_COUNT_METHODS_H
 

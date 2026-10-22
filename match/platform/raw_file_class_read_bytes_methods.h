@@ -11,7 +11,7 @@
 //     (CALL [EBX+0x40] @0x65CD8F).
 //   Imports: IAT 0x7E111C KERNEL32 ReadFile, IAT 0x7E1200 GetLastError.
 //   Global byte 0xB04BEC (TEST AL,AL @0x65CD76; cleared @0x65CDB1); YRpp
-//   names it IsReadingAudioFile (consult-only).
+//   names it IsReadingAudioFile.
 //   The member run mirrors the already-confirmed layout in
 //   match/platform/ccfile_class.h (not edited; re-declared here so the TU
 //   stands alone); YRpp consulted for names only.

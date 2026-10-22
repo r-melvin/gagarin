@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | names consult-only | YRpp-cross-check | behaviour-confirmed-name
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 // Retail vtable 0x7F45C4 -> locator 0x80BCF0 -> descriptor 0x842CB0
 // names .?AVTagTypeClass@@. Constructor writes at 0x6E5B78/82/88,
 // allocation at 0x6E6366 and INI/predicate members pin this accessed layout.

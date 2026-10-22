@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x5301A0 / 0x5B40B0),
-//   cross-checked against YRpp (consult-only,
-//   no LICENSE; every offset/slot reconfirmed against the user's binary here).
+//   cross-checked against YRpp (every offset/slot reconfirmed against the user's binary here).
 //
 // MixFileClass — the engine's mounted .MIX archive. This TU covers the two
 // static bootstrap/lookup entry points:

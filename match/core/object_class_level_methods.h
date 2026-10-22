@@ -4,8 +4,7 @@
 //   local Ghidra CLI at 0x5F5F00 / 0x5F6B60 / 0x5F6B90. ObjectClass member
 //   offsets come from the committed P2 spine (match/_layout/object_class.h):
 //   IsOnMap @0x74 (`MOV AL,[ECX+0x74]`) and OnBridge @0x8C
-//   (`MOV CL,[ESI+0x8C]`). Method names cross-checked against YRpp
-//   (consult-only, no LICENSE).
+//   (`MOV CL,[ESI+0x8C]`). Method names cross-checked against YRpp.
 //
 // ObjectClass height/level accessors — the three leaves that decide whether an
 // object counts as on the ground, in the air, or how high its cell sits.

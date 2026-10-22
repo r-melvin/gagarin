@@ -8,7 +8,7 @@
 //   interface is released through slot +0x08 with the receiver pushed
 //   (`MOV ECX,[EAX]; PUSH EAX; CALL [ECX+0x8]`). The record's reader at
 //   0x681840 is __thiscall with the storage pushed and its result tested as a
-//   signed dword (`JGE`). Names from YRpp (consult-only).
+//   signed dword (`JGE`). Names from YRpp.
 #ifndef GG_MATCH_UI_LOAD_OPTIONS_READ_METHODS_H
 #define GG_MATCH_UI_LOAD_OPTIONS_READ_METHODS_H
 

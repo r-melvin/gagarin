@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Small views used only by ParticleClass / ParticleTypeClass, read from the retail gamemd.exe v1.001
 //   (constructors 0x62B5E0 / 0x62BB20, draw slot 0x62CEC0). Everything the whole particle module
 //   shares (coordinates, colours, the ObjectClass / ObjectTypeClass base views, the secondary

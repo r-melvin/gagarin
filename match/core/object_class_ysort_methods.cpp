@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail 0x5F6BD0 calls the primary coordinate slot +0xAC twice, then sums
 // Y from the first result and X from the second. The method name is a
-// consult-only naming hypothesis. This uses the shared explicit-vptr layout;
+// naming hypothesis. This uses the shared explicit-vptr layout;
 // the slot-call view does not establish the original virtual declaring class.
 #include "../_layout/object_class.h"
 

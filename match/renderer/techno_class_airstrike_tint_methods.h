@@ -5,7 +5,7 @@
 //   compared with -1), `[ECX+0x1BC]` (AirstrikeTintTimer.TimeLeft), the
 //   dword global `[0xA8ED84]` (CurrentFrame, subtracted from StartTime) and
 //   `[ECX+0x1C0]` (AirstrikeTintStage, the jump-table selector 1..9). Names
-//   cross-checked against YRpp (consult-only, no LICENSE); the
+//   cross-checked against YRpp; the
 //   timer and stage agree with match/_layout/techno_class.h.
 #ifndef GG_MATCH_RENDERER_TECHNO_CLASS_AIRSTRIKE_TINT_METHODS_H
 #define GG_MATCH_RENDERER_TECHNO_CLASS_AIRSTRIKE_TINT_METHODS_H

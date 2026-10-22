@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x653F50 / 0x654490),
-//   cross-checked against YRpp (consult-only; reconfirmed here).
+//   cross-checked against YRpp (reconfirmed here).
 //
 // RadarClass — the in-game radar/minimap. RadarClass derives (deeply) from
 // MapClass; the vtable sits at offset 0 and the few members the matched methods

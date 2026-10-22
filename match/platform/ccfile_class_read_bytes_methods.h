@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x473B10 (member-access + virtual-call
-//   disassembly), cross-checked against YRpp (consult-only, no
-//   LICENSE; every offset reconfirmed numerically against the disasm):
+//   disassembly), cross-checked against YRpp (every offset reconfirmed numerically against the disasm):
 //     CCFileClass::Buffer.Buffer  [ESI+0x58]  (TEST EDX,EDX @0x473B32; ADD ECX,EDX)
 //     CCFileClass::Buffer.Size    [ESI+0x5C]  (MOV EAX,[ESI+0x5C] @0x473B39)
 //     CCFileClass::Position       [ESI+0x64]  (MOV ECX,[ESI+0x64] @0x473B36, +=)

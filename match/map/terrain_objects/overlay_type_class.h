@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI
 //   .?AVOverlayTypeClass@@ (terrain_common_views.h), the constructor 0x5FE250 (every member store below), the
 //   INI reader 0x5FE770 (every key string and member offset), the CRC slot 0x5FEA50, and the

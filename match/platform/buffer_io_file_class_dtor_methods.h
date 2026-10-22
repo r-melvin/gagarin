@@ -3,7 +3,7 @@
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x431B80: [ESI+0x24], [ESI+0x25], [ESI+0x27],
 //   [ESI+0x28], [ESI+0x29], [ESI+0x30], [ESI+0x34]. Class name from YRpp
-//   (consult-only); the sibling methods Close/SetFileName/Open
+//  ; the sibling methods Close/SetFileName/Open
 //   are already committed in match/platform/ccfile_class_ops_methods.cpp.
 //
 // BufferIOFileClass::~BufferIOFileClass @0x431B80 — release the IO buffer and

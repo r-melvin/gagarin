@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x5D4AD0), cross-checked against
-//   YRpp (consult-only; reconfirmed here).
+//   YRpp (reconfirmed here).
 //
 // MessageListClass::SetWidth — propagate a new pixel width (minus an 8px
 // margin) onto the list object, every message gadget in the GetNext-walked

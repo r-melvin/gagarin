@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x7BCAE0. Class identity cross-checked against YRpp,
-//   which binds 0x7BCAE0 to ZBuffer::ReleaseSurface (consult-only,
-//   no LICENSE).
+//   which binds 0x7BCAE0 to ZBuffer::ReleaseSurface.
 //
 // ZBuffer — the engine's depth buffer. Only the owned drawing surface at +0x14
 // is modelled here.

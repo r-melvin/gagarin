@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI .?AVSmudgeClass@@
 //   (terrain_common_views.h), the constructor 0x6B4A50 (every member store below), the scalar deleting
 //   destructor 0x6B4FA0, and the allocation sites 0x6B4D51, 0x6B5556 and 0x6B55C3

@@ -7,7 +7,7 @@
 //   manager pointer at 0x87F770 (0x54F720 __thiscall, no args), 0x608070
 //   (ECX = HWND), CRT memcpy at 0x7CA090 out of line, and the imports
 //   DestroyWindow (0x7E13F4), SetForegroundWindow (0x7E14D0), SetFocus
-//   (0x7E13CC). YRpp (consult-only, no LICENSE) names EndDialog and
+//   (0x7E13CC). YRpp names EndDialog and
 //   InputManagerClass::Instance; BeginDialog at 0x622650 pushes the same
 //   stack.
 #ifndef GG_MATCH_UI_UI_END_DIALOG_METHODS_H

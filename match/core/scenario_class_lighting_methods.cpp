@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x555AC0 (name from
-//   the YRpp method map, consult-only).
+//   the YRpp method map).
 
 #include "scenario_class_lighting_methods.h"
 

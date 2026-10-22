@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and global addresses read off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x53D310 and 0x5FFFA0. Names cross-checked against
-//   IonBlast naming was cross-checked with YRpp (consult-only, no LICENSE).
+//   IonBlast naming was cross-checked with YRpp.
 //   SpotLight spelling follows the retail registry RTTI and direct uses
 //   documented in shadow_block_list_methods.h.
 //

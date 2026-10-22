@@ -10,8 +10,7 @@
 //     0x005276D0  INIClass::ReadInteger(section, key, int def)
 //     0x005283D0  INIClass::ReadDouble(section, key, double def)
 //   Members: `[ESI+0x1838]` int, `FSTP qword [ESI+0x1840]`, `FSTP qword
-//   [ESI+0x1848]`. Names cross-checked against YRpp
-//   (consult-only, no LICENSE).
+//   [ESI+0x1848]`. Names cross-checked against YRpp.
 #ifndef GG_MATCH_CORE_RULES_CLASS_ELEVATION_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_ELEVATION_METHODS_H
 

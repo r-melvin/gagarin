@@ -6,7 +6,7 @@
 //   the first stacked argument, the height scale is `FMUL [0xB0CD48]` and the
 //   rounding bias `FADD [0x7E1738]` (0.5), with the truncation through the
 //   CRT `__ftol` at 0x7C5F00. `this` is never read (RET 8, two stacked
-//   arguments). The method name is the YRpp one (consult-only; name only).
+//   arguments). The method name is the YRpp one (name only).
 #ifndef GG_MATCH_RENDERER_TACTICAL_CLASS_COORDS_TO_SCREEN_METHODS_H
 #define GG_MATCH_RENDERER_TACTICAL_CLASS_COORDS_TO_SCREEN_METHODS_H
 

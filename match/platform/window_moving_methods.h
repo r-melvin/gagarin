@@ -5,7 +5,7 @@
 //   `[ESI+0x8]`, `[ESI+0xC]`, the IAT slot 0x7E13EC (GetSystemMetrics,
 //   called with 0x10 = SM_CXSCREEN and 0x11 = SM_CYSCREEN) and the
 //   `RET 4` __stdcall epilogue. The name comes from the YRpp method map
-//   (Unsorted::OnWindowMoving, static; consult-only).
+//   (Unsorted::OnWindowMoving, static).
 #ifndef GG_MATCH_PLATFORM_WINDOW_MOVING_METHODS_H
 #define GG_MATCH_PLATFORM_WINDOW_MOVING_METHODS_H
 

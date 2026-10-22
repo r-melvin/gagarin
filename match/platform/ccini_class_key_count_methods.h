@@ -8,7 +8,7 @@
 //   key count is `[ESI+0x30]`. The CRC engine is three zeroed dwords on the
 //   stack fed through 0x4A1DE0 (same shape as ccini_class_crc_methods.h),
 //   and the node search is 0x52B620 taking a pointer to the key. Method name
-//   from YRpp (consult-only; name only, no text copied).
+//   from YRpp (name only, no text copied).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_KEY_COUNT_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_KEY_COUNT_METHODS_H
 

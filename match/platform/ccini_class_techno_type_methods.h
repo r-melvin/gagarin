@@ -7,7 +7,7 @@
 //   taking the buffer in ECX and answering -1 for a miss; the hit is indexed
 //   into the matching pointer array `[0xA8E34C]`, `[0xA83CE4]`, `[0xA8B21C]`,
 //   `[0xA83C6C]` (`MOV EAX,[ECX+EAX*4]`). Method name from YRpp
-//   (consult-only; name only, no text copied).
+//   (name only, no text copied).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_TECHNO_TYPE_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_TECHNO_TYPE_METHODS_H
 

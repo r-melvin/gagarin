@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Offsets
 //   derived numerically from the disassembly (RadioLinks.Items @ [this+0xE4],
-//   RadioLinks.Capacity @ [this+0xE8]); names cross-checked vs YRpp
-//   (consult-only).
+//   RadioLinks.Capacity @ [this+0xE8]); names cross-checked vs YRpp.
 //
 // reccmp annotations (by retail address):
 //   FUNCTION: GAMEMD 0x65AD50  RadioClass::ContainsLink   (__thiscall)

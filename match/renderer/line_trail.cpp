@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x556B50,
 //   0x556DF0). Every offset/global reconfirmed numerically below; names
-//   cross-checked against YRpp (consult-only).
+//   cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x556B50   LineTrail::SetDecrement  (__thiscall)

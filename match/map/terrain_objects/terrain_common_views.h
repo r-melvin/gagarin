@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only) | behaviour-confirmed-name
 //   Partial views of the retail base classes shared by the whole terrain-objects module, each declared
 //   once: ObjectClass (MapObjClassView, the base of OverlayClass, SmudgeClass and TerrainClass),
 //   ObjectTypeClass (MapObjTypeClassView, the base of OverlayTypeClass, SmudgeTypeClass and

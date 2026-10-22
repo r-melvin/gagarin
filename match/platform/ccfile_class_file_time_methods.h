@@ -10,7 +10,7 @@
 //   pushed; the time slot `CALL [EDX+0x38]`; and the inline teardown that
 //   stores 0x7E16B0, zeroes +0x64, releases +0x58 through 0x43AE50, stores
 //   0x7E1668 and calls 0x431B80. Names from YRpp
-//   (consult-only, NO LICENSE); every offset re-derived here
+//  ; every offset re-derived here
 //   and consistent with match/platform/file_system_load_whole_methods.h and
 //   match/core/small_misc38_methods.h (the 0x4739F0 constructor shape).
 #ifndef GG_MATCH_PLATFORM_CCFILE_CLASS_FILE_TIME_METHODS_H

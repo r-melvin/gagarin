@@ -10,7 +10,7 @@
 //   below was read numerically off the user's retail gamemd.exe v1.001 through
 //   the local Ghidra CLI (`ghidra disasm`). The names used here are taken from
 //   the global each body stores to, cross-checked against YRpp's
-//   GameModeOptionsClass (consult-only).
+//   GameModeOptionsClass.
 //
 //   Convention: each body opens `PUSH ESI; MOV ESI,ECX` and returns with a bare
 //   `RET` after popping, so the receiver arrives in ECX and there is no stack

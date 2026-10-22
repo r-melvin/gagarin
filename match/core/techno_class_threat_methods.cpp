@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm
-//   0x70F6E0-0x70F72E, len 0x4F). Names cross-checked against YRpp
-//   (consult-only).
+//   0x70F6E0-0x70F72E, len 0x4F). Names cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x70F6E0  TechnoClass::UpdateThreatInCell (__thiscall)

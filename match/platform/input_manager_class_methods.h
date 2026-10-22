@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x54F5C0 and 0x54F720),
-//   cross-checked against YRpp (consult-only; reconfirmed
+//   cross-checked against YRpp (reconfirmed
 //   numerically here).
 //
 // InputManagerClass — keyboard/mouse input dispatcher. This translation unit

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x473E50 (name from the
-//   YRpp method map, consult-only).
+//   YRpp method map).
 
 #include "ccfile_class_file_time_methods.h"
 

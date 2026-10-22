@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x70E4B0 (name from
-//   the YRpp method map, consult-only).
+//   the YRpp method map).
 
 #include "techno_class_airstrike_tint_methods.h"
 

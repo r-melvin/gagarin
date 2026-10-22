@@ -9,7 +9,7 @@
 //   `CALL 0x65CB50` (RawFileClass::Open with 1) and the IAT calls
 //   `[0x7E11BC]` CreateFileA, `[0x7E11E0]` CloseHandle, `[0x7E1200]`
 //   GetLastError. YRpp consulted for the method name only
-//   (consult-only, no LICENSE); the map binds 0x65CBF0 to CCFileClass::Exists,
+//  ; the map binds 0x65CBF0 to CCFileClass::Exists,
 //   the bytes are RawFileClass's (see raw_file_class_open_methods.h for the
 //   same reasoning about 0x65CB50). The class is redeclared locally in the
 //   proven slot order of match/platform/ccfile_class.h.

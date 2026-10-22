@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Small value types and inline helpers shared by every class of the terrain-objects module
 //   (OverlayClass, OverlayTypeClass, SmudgeClass, SmudgeTypeClass, TerrainClass, TerrainTypeClass).
 //   Each is declared once, here, with the union of the members and constructors the module's bodies

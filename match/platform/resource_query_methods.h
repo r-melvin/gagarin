@@ -4,8 +4,7 @@
 //   local Ghidra CLI at 0x4A3B40. The three indirect calls were resolved from
 //   the binary's own import labels, not guessed: 0x007E122C is FindResourceA,
 //   0x007E1230 is LoadResource and 0x007E1228 is LockResource. Signature
-//   cross-checked against YRpp (`Unsorted::GetResource`, consult-only, no
-//   LICENSE).
+//   cross-checked against YRpp (`Unsorted::GetResource`).
 #ifndef GG_MATCH_PLATFORM_RESOURCE_QUERY_METHODS_H
 #define GG_MATCH_PLATFORM_RESOURCE_QUERY_METHODS_H
 

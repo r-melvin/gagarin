@@ -9,7 +9,7 @@
 //   address of the stacked object (`LEA EAX,[ESP+0xC]; PUSH EAX`), i.e.
 //   DynamicVectorClass::ID(const T*); and the fallback sweep from 0x8A0370
 //   (layer 0's Count) in 0x18 steps up to 0x8A03E8 = five layers. The method
-//   name is YRpp's DisplayClass::Remove (consult-only).
+//   name is YRpp's DisplayClass::Remove.
 #ifndef GG_MATCH_UI_DISPLAY_CLASS_REMOVE_METHODS_H
 #define GG_MATCH_UI_DISPLAY_CLASS_REMOVE_METHODS_H
 

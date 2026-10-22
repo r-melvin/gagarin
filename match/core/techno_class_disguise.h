@@ -3,7 +3,7 @@
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x70E280-0x70E2A4), cross-checked
 //   against YRpp (DisguiseAs @0x70E280; Disguised @0x1D8,
-//   DisguiseCreationFrame @0x1DC; consult-only, reconfirmed numerically here).
+//   DisguiseCreationFrame @0x1DC; reconfirmed numerically here).
 //   These two offsets agree with the committed spine match/_layout/techno_class.h
 //   (Disguised @0x1D8, DisguiseCreationFrame @0x1DC).
 //

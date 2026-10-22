@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access + virtual-call disassembly),
-//   cross-checked against YRpp (consult-only, no LICENSE; every
+//   cross-checked against YRpp (every
 //   offset reconfirmed numerically against the disassembly below).
 //
 // Translation unit: RawFileClass::Close (GAMEMD 0x65CCA0).

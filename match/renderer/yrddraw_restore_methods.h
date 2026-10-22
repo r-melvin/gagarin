@@ -6,7 +6,7 @@
 //   (Release), the error callback at 0x8A00B0 (ECX = HRESULT), the three
 //   dwords cleared at 0x8A00A4/A8/AC, the main window at 0xB73550, the CRT
 //   sprintf at 0x7C8EF4 and the MessageBoxA import 0x7E1460 loaded once and
-//   called through ESI. YRpp (consult-only, no LICENSE) names Restore.
+//   called through ESI. YRpp names Restore.
 #ifndef GG_MATCH_RENDERER_YRDDRAW_RESTORE_METHODS_H
 #define GG_MATCH_RENDERER_YRDDRAW_RESTORE_METHODS_H
 

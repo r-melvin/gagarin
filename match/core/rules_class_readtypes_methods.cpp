@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x672280 / 0x672360 /
 //   0x6723D0 (Ghidra disasm). Names cross-checked against YRpp
-//   (consult-only, no LICENSE); each address/convention reconfirmed below.
+//  ; each address/convention reconfirmed below.
 //
 // Translation unit: the three RulesClass *Types INI list-parsers.
 //

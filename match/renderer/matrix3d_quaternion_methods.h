@@ -9,7 +9,7 @@
 //   copied out with `MOV ECX,0xC; REP MOVSD`; the 1.0f literal at 0x7E2AC8;
 //   and the `FADD ST0,ST0` doublings. The matrix is the 3x4 row-major float
 //   layout already proven in match/renderer/matrix3d_rotate_methods.h (not
-//   edited). YRpp names only (consult-only, no LICENSE): Matrix3D::
+//   edited). YRpp names only: Matrix3D::
 //   FromQuaternion, Quaternion {X, Y, Z, W}.
 #ifndef GG_MATCH_RENDERER_MATRIX3D_QUATERNION_METHODS_H
 #define GG_MATCH_RENDERER_MATRIX3D_QUATERNION_METHODS_H

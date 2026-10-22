@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @0x46CC90 / @0x46CE10 (Ghidra
 //   disasm). INI method addresses cross-checked against YRpp
-//   (consult-only, no LICENSE; reconfirmed below). Each offset confirmed
+//   (reconfirmed below). Each offset confirmed
 //   numerically from the member-access disassembly.
 //
 // reccmp annotations (ascending by retail address within this TU):

@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access + virtual-call disassembly),
-//   cross-checked against YRpp (consult-only, no
-//   LICENSE; every offset reconfirmed numerically against the binary below).
+//   cross-checked against YRpp (every offset reconfirmed numerically against the binary below).
 //
 // The FileClass hierarchy (the MIX/CD/raw file stack):
 //   FileClass (abstract COM-ish base) -> RawFileClass -> BufferIOFileClass

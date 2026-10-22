@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm) at the
 //   addresses annotated below. Layout/vtable cross-checked against YRpp
-//   (consult-only; reconfirmed from the disasm).
+//   (reconfirmed from the disasm).
 //
 // Translation unit: two FileClass-hierarchy file operations. Functions are
 // ordered ascending by retail address.

@@ -9,7 +9,7 @@
 //   hierarchy and slot order are the committed model in
 //   match/platform/ccfile_class.h (not editable here, so the class is
 //   redeclared locally with the Open override it lacks); YRpp
-//   consulted for names only (consult-only, no LICENSE). YRpp binds 0x65CB50
+//   consulted for names only. YRpp binds 0x65CB50
 //   to CCFileClass::Open; the bytes touch RawFileClass members and call
 //   CreateFileA directly, and the committed model places CDFileClass::Open
 //   at 0x47AAB0 and CCFileClass::Open at 0x473D10, so this is

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x556B50 / 0x556DF0), cross-checked
-//   against YRpp (consult-only; reconfirmed
+//   against YRpp (reconfirmed
 //   numerically here).
 //
 // LineTrail — a fading line-segment trail (e.g. tracer / phase trail). Owns a

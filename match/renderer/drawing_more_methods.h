@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x7BCF50 / 0x7BD130),
-//   cross-checked against YRpp (consult-only, no LICENSE;
-//   every offset/slot reconfirmed from the disasm).
+//   cross-checked against YRpp (every offset/slot reconfirmed from the disasm).
 //
 //   These two methods are a second, non-folded copy in the retail image of the
 //   alpha-buffer wrapper already modelled in drawing.cpp (ABuffer::Fill @0x4112D0

@@ -17,7 +17,7 @@
 //   singleton `[0x887640]` with `CALL [EDX+0xC]` and the tail `JMP
 //   [EAX+0x10]`. The timer layout (start@+0, clock@+4, base@+8) is the one
 //   already proven in match/core/scenario_class_resume_methods.h (not edited).
-//   YRpp names only (consult-only, no LICENSE): ScenarioClass::PauseGame
+//   YRpp names only: ScenarioClass::PauseGame
 //   (static), ScenarioClass::Instance @0xA8B230, SessionClass::Instance
 //   @0xA8B238, CCToolTip::Instance @0x887368, ToolTipManager::SetState
 //   @0x7241A0, WWMouseClass::Instance @0x887640, GScreenClass::Render

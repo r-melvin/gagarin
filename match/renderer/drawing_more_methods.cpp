@@ -3,7 +3,7 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Every offset
 //   and vtable slot reconfirmed from the member-access disassembly at 0x7BCF50 /
 //   0x7BD130; names cross-checked against YRpp
-//   (consult-only, no LICENSE). Both targets are byte-for-byte identical to the
+//  . Both targets are byte-for-byte identical to the
 //   already-matched ABuffer::Fill (0x4112D0) / ABuffer::GetBuffer (0x4114B0).
 //
 // reccmp annotations (ascending by retail address within this TU):

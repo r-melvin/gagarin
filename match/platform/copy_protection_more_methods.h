@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm).
-//   Names cross-checked against YRpp (consult-only, no LICENSE;
-//   every address reconfirmed against the user's binary in the .cpp below).
+//   Names cross-checked against YRpp (every address reconfirmed against the user's binary in the .cpp below).
 //
 // CopyProtection — two more interprocess copy-protection entry points. In retail
 // both were reduced to a bare `ret` (each is the single byte `c3`): empty,

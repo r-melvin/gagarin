@@ -13,7 +13,7 @@
 //   match/platform/ccfile_class_file_time_methods.h (Buffer 0x58, Position
 //   0x64, Availability 0x68, sizeof 0x6C) and with the +0x54 flag in
 //   match/platform/ccfile_class_set_name_methods.h. Names cross-checked
-//   against YRpp (consult-only; NO LICENSE).
+//   against YRpp.
 #ifndef GG_MATCH_PLATFORM_CCFILE_CLASS_OPEN_MIX_METHODS_H
 #define GG_MATCH_PLATFORM_CCFILE_CLASS_OPEN_MIX_METHODS_H
 

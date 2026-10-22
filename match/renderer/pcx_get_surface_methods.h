@@ -13,8 +13,7 @@
 //   (`PUSH &key; MOV ECX,node`), its next link `[ESI+0x308]`, its 0x304-byte
 //   payload at +4 (`ADD ESI,4; MOV ECX,0xC1; REP MOVSD` into 0xB0B948) and
 //   the 0x300-byte palette copied out from 0xB0B94C (`MOV ECX,0xC0`). The
-//   method name and the palette type name are from YRpp (consult-only;
-//   name only).
+//   method name and the palette type name are from YRpp (name only).
 #ifndef GG_MATCH_RENDERER_PCX_GET_SURFACE_METHODS_H
 #define GG_MATCH_RENDERER_PCX_GET_SURFACE_METHODS_H
 

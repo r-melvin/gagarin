@@ -8,7 +8,7 @@
 //   EBP), 0x7E14B8 (ClientToScreen, loaded once into ESI) and 0x7E13F0
 //   (SetWindowPos, called through the IAT with SWP_NOSIZE|SWP_NOZORDER = 5).
 //   The name comes from the YRpp method map (Unsorted::CenterWindowIn,
-//   static; consult-only).
+//   static).
 #ifndef GG_MATCH_PLATFORM_CENTER_WINDOW_METHODS_H
 #define GG_MATCH_PLATFORM_CENTER_WINDOW_METHODS_H
 

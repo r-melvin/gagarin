@@ -4,8 +4,7 @@
 //   local Ghidra CLI at 0x5AE8F0: the vector is a 3-float array on the stack
 //   arg (`[EAX]`, `[EAX+4]`, `[EAX+8]`), the matrix is 3 rows x 4 floats at
 //   `[ECX+0x00..0x2C]` with the translation column at `[ECX+0xC]`,
-//   `[ECX+0x1C]`, `[ECX+0x2C]`. Method name from YRpp (consult-only;
-//   name only, no text copied).
+//   `[ECX+0x1C]`, `[ECX+0x2C]`. Method name from YRpp (name only, no text copied).
 #ifndef GG_MATCH_RENDERER_MATRIX3D_TRANSLATE_METHODS_H
 #define GG_MATCH_RENDERER_MATRIX3D_TRANSLATE_METHODS_H
 

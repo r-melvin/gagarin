@@ -10,7 +10,7 @@
 //   [0x7E5168]` (0.5f) pushed twice as a double to `CALL 0x4CACB0` (sin) and
 //   `CALL 0x4CAD00` (cos), and the four result floats copied out with four
 //   dword moves to `[EAX]..[EAX+0xC]`. Names from the YRpp method map
-//   (consult-only, no LICENSE): Matrix3D::FromAxis; the result layout is the
+//  : Matrix3D::FromAxis; the result layout is the
 //   Quaternion {X, Y, Z, W} of match/renderer/matrix3d_quaternion_methods.h.
 #ifndef GG_MATCH_RENDERER_MATRIX3D_AXIS_METHODS_H
 #define GG_MATCH_RENDERER_MATRIX3D_AXIS_METHODS_H

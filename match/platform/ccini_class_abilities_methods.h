@@ -11,7 +11,7 @@
 //   taking the token in ECX and answering -1 for no match; the 18-byte
 //   result (`MOV byte [ESP+EAX+4],1` for a hit) copied out as four dwords and
 //   a word, and the same copy from the default pointer on the empty-key path.
-//   YRpp names only (consult-only, no LICENSE): CCINIClass::ReadAbilities,
+//   YRpp names only: CCINIClass::ReadAbilities,
 //   AbilitiesStruct (18 bools), INIClass::ReadString @0x528A10.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_ABILITIES_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_ABILITIES_METHODS_H

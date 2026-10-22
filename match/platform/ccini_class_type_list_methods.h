@@ -11,7 +11,7 @@
 //   allocation flag is the byte at +0x0D that the inlined destructor tests
 //   before calling the C library free at 0x7C8B3D, and the by-value
 //   parameters occupy 0x1C bytes rather than 0x18, which is the trailing
-//   dword YRpp's TypeList<T> carries as `unknown_18` (consult-only; the
+//   dword YRpp's TypeList<T> carries as `unknown_18` (the
 //   member name only, no text copied). The two vtable constants the
 //   constructors seat are 0x7E4DB8 (the vector base) and 0x7E4DD8 (the
 //   dynamic vector, which TypeList shares because it adds no virtuals).

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6728B0 / 0x672920 /
 //   0x672A00 / 0x672A70 (Ghidra disasm). Names cross-checked against YRpp
-//   (consult-only, no LICENSE); every address reconfirmed here.
+//  ; every address reconfirmed here.
 //
 // Four more RulesClass INI list-parsers, the effect-type half of the family
 // whose *Types half lives in rules_class_readtypes_methods.cpp.

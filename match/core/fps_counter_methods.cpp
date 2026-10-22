@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x55AF60).
 //   Every global address reconfirmed below from the absolute-load operands;
-//   names cross-checked against YRpp (consult-only, no LICENSE).
+//   names cross-checked against YRpp.
 //
 // reccmp annotation:
 //   FUNCTION: GAMEMD 0x55AF60  Detail::GetMinFrameRate  (__cdecl)

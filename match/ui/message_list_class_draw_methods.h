@@ -12,7 +12,7 @@
 //   singleton `[0x887640]` slots +0x0C/+0x10; surface `[0x887314]` slot
 //   +0x78 (rect out-pointer, returned in EAX); the text print at 0x4A61C0 is
 //   __cdecl with eight stack words (hidden Point2D return first). Names are
-//   YRpp's (consult-only, no LICENSE).
+//   YRpp's.
 #ifndef GG_MATCH_UI_MESSAGE_LIST_CLASS_DRAW_METHODS_H
 #define GG_MATCH_UI_MESSAGE_LIST_CLASS_DRAW_METHODS_H
 

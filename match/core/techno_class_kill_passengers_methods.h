@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x707CB0. Three callee bindings come from YRpp
-//   (consult-only, no LICENSE) and are reconfirmed against the disassembly:
+//   and are reconfirmed against the disassembly:
 //   0x473430 = PassengersClass::RemoveFirstPassenger, 0x6EA870 =
 //   TeamClass::LiberateMember, 0x707CB0 = TechnoClass::KillPassengers itself
 //   (the recursive call at 0x707CF5 confirms it). 0x473450 is the out-of-line

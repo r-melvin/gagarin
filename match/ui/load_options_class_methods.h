@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x5587F0 / 0x559EB0), cross-checked
-//   against YRpp (consult-only; reconfirmed here).
+//   against YRpp (reconfirmed here).
 //
 // LoadOptionsClass — the load/save/delete savegame dialog driver. It carries a
 // COM-style vtable pointer at +0x00 (virtual dtor) followed by the dialog Mode,

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, vtable slots and offsets read off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x53C450. Name cross-checked against
-//   YRpp (`TechnoClass::CanBePermaMindControlled`, consult-only, no LICENSE).
+//   YRpp (`TechnoClass::CanBePermaMindControlled`).
 #ifndef GG_MATCH_CORE_TECHNO_CLASS_MINDCONTROL_QUERY_METHODS_H
 #define GG_MATCH_CORE_TECHNO_CLASS_MINDCONTROL_QUERY_METHODS_H
 

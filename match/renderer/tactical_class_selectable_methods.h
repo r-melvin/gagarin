@@ -6,7 +6,7 @@
 //   view origin added to the client point), the 12-byte-stride global array
 //   `[EAX*4+0xB0CEC8]` / `+0xB0CECC` / `+0xB0CED0` (EAX = count*3), and the
 //   view-bound globals at 0x886FA8 / 0x886FAC. Method/member names from the
-//   YRpp method map (consult-only; names only, no text copied).
+//   YRpp method map (names only, no text copied).
 #ifndef GG_MATCH_RENDERER_TACTICAL_CLASS_SELECTABLE_METHODS_H
 #define GG_MATCH_RENDERER_TACTICAL_CLASS_SELECTABLE_METHODS_H
 

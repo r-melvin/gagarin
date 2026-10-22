@@ -6,7 +6,7 @@
 //   `[EAX]`/`[EAX+4]`/`[EAX+8]` at 0x6D20A1-0x6D20B5, and the helper's own
 //   body at 0x5AFB80 (ECX = result, EDX = matrix, one stack arg = vector,
 //   3 rows x 4 float columns at `[EDX+0x00..0x2C]`). Method names from the
-//   YRpp method map (consult-only; names only, no text copied).
+//   YRpp method map (names only, no text copied).
 #ifndef GG_MATCH_RENDERER_TACTICAL_CLASS_MATRIX_METHODS_H
 #define GG_MATCH_RENDERER_TACTICAL_CLASS_MATRIX_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   LinkClass::Remove, matched byte-for-byte against the user's retail
 //   gamemd.exe v1.001 (Ghidra CLI disassembly at 0x556730), cross-checked
-//   against YRpp (consult-only; reconfirmed here).
+//   against YRpp (reconfirmed here).
 //
 // Reuses the binding LinkClass layout + vtable-slot order from
 // link_class_methods.h. The vtable slots this method calls indirectly:

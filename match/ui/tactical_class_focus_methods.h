@@ -11,7 +11,7 @@
 //   offset is `[ESI+0xB0]` / `[ESI+0xB4]` (subtracted and added back); the
 //   results land in `[ESI+0xD0]` / `[ESI+0xD4]` and the current position
 //   `[ESI+0xD64]` / `[ESI+0xD68]` is copied to `[ESI+0xC8]` / `[ESI+0xCC]`.
-//   Method name from YRpp (consult-only; name only).
+//   Method name from YRpp (name only).
 #ifndef GG_MATCH_UI_TACTICAL_CLASS_FOCUS_METHODS_H
 #define GG_MATCH_UI_TACTICAL_CLASS_FOCUS_METHODS_H
 

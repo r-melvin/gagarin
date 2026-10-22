@@ -3,7 +3,7 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm @0x48DCD0).
 //   The AbstractType enum values and the four type-array globals were derived
 //   from the switch byte-table @0x48DD24 and the jump-table @0x48DD10; the enum
-//   constants were cross-checked against YRpp (consult-only).
+//   constants were cross-checked against YRpp.
 //
 // TechnoTypeClass::GetByTypeAndIndex — given an AbstractType discriminator and an
 // index, returns the Items[index] entry of the matching {Unit/Aircraft/Building/

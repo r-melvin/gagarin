@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly of 0x70ECE0), cross-checked
-//   against YRpp (consult-only; every offset
+//   against YRpp (every offset
 //   reconfirmed numerically from the 0x70ECE0 disassembly below).
 //
 // NOTE ON NAMING: the orchestrator tasked this TU as "TechnoClass-fire", but the

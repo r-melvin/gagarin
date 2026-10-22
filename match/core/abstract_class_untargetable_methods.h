@@ -9,7 +9,7 @@
 //   zero-argument slots +0x1F8 and +0x2C (WhatAmI, 2 = infantry) and the
 //   one-argument slot +0x3C8, and a second array at 0x8B40E8 (Items
 //   0x8B40EC, Count 0x8B40F8) whose entries hold two pointers at +0x3C/+0x40.
-//   YRpp (consult-only, no LICENSE) names BecomeUntargetable; every offset
+//   YRpp names BecomeUntargetable; every offset
 //   reconfirmed here.
 #ifndef GG_MATCH_CORE_ABSTRACT_CLASS_UNTARGETABLE_METHODS_H
 #define GG_MATCH_CORE_ABSTRACT_CLASS_UNTARGETABLE_METHODS_H

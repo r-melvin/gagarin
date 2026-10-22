@@ -6,7 +6,7 @@
 //   Type at +0x520 and the two foundation helpers 0x45ECA0 / 0x45EC90, the
 //   square root at 0x4CAC40 and __ftol at 0x7C5F00. The 2D twin at 0x5F6440
 //   (match/core/abstract_class_distance_methods.*) carries the same facts.
-//   YRpp (consult-only, no LICENSE) names DistanceFrom3D.
+//   YRpp names DistanceFrom3D.
 #ifndef GG_MATCH_CORE_ABSTRACT_CLASS_DISTANCE3D_METHODS_H
 #define GG_MATCH_CORE_ABSTRACT_CLASS_DISTANCE3D_METHODS_H
 

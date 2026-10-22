@@ -10,7 +10,7 @@
 //   and is torn down by 0x631C80. On the INI the digest flag is
 //   `MOV byte ptr [ESI+0x40],1` and the digest `LEA EDI,[ESI+0x41]` with
 //   length 0x14. The section name "Digest" is the literal at 0x81BFE0.
-//   Method name from YRpp (consult-only).
+//   Method name from YRpp.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_WRITE_CCFILE_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_WRITE_CCFILE_METHODS_H
 

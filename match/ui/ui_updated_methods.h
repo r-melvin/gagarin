@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + behaviour derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (disasm at 0x623120), cross-checked against YRpp
-//   (consult-only, no LICENSE; every global/branch reconfirmed from the disasm).
+//   (every global/branch reconfirmed from the disasm).
 //
 // UI::Updated — the per-frame "should we keep pumping the main loop?" gate used
 // by the modeless reconnect/wait dialogs. It is a static (no `this`) bool that

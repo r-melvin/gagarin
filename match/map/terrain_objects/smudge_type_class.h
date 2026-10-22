@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI
 //   .?AVSmudgeTypeClass@@ (TD 0x840008; COL 0x8099A0 base 0 / vtable 0x7F3528, COL 0x809930 base 4 /
 //   0x7F350C, COL 0x809918 base 8 / 0x7F3504, COL 0x809900 base 12 / 0x7F34FC; chain SmudgeTypeClass

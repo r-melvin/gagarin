@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). The
 //   IsBuildCat5 signature is cross-checked against YRpp
-//   (consult-only, no LICENSE); the calling convention and the +0xE08 access
+//  ; the calling convention and the +0xE08 access
 //   below are reconfirmed numerically from the disassembly.
 //
 // ObjectTypeClass — base type-class for every in-world object type. Only the

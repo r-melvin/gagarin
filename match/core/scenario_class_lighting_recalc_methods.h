@@ -12,8 +12,7 @@
 //   local (two dwords and a byte, zeroed) handed in ECX to 0x626690, which
 //   returns a vector whose Items sit at +4 and whose count comes from the
 //   argument-less 0x626C60; and the tail `MOV ECX,0x87F7E8; CALL 0x4AE4C0`
-//   then `PUSH 1; CALL 0x4F42F0`. YRpp names only (consult-only, no
-//   LICENSE): ScenarioClass::RecalcLighting, LightConvertClass::Array
+//   then `PUSH 1; CALL 0x4F42F0`. YRpp names only: ScenarioClass::RecalcLighting, LightConvertClass::Array
 //   @0x87F698, ColorScheme::Array @0xB054D0, ColorScheme::LightConvert
 //   @+0x30C, ColorScheme::GetPaletteSchemesFromIterator @0x626690,
 //   ColorScheme::GetNumberOfSchemes @0x626C60, ScenarioClass::

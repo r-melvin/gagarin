@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp (consult-only, no LICENSE).
+//   cross-checked against YRpp.
 //
 // Each retail body is the identical 3-byte sequence  b0 01 c3
 //   MOV AL, 0x1 ; RET            == return true;

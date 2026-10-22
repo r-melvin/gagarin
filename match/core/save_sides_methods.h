@@ -7,7 +7,7 @@
 //   the IID at 0x7F7C80 (bytes 00000109-0000-0000-C000-000000000046 =
 //   IID_IPersistStream, reconfirmed by `ghidra memory read`) and the IAT
 //   slot 0x7E15F4 (OleSaveToStream). The name comes from the YRpp method
-//   map (Unsorted::Save_Sides, static; consult-only).
+//   map (Unsorted::Save_Sides, static).
 #ifndef GG_MATCH_CORE_SAVE_SIDES_METHODS_H
 #define GG_MATCH_CORE_SAVE_SIDES_METHODS_H
 

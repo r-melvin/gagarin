@@ -10,7 +10,7 @@
 //   (`EAX*65*4`, `SUB EBX,0x104`) whose value pointer sits at +0x100 and the
 //   returned word is `[value+0x100]`. The blank test at 0x4F4CA0 reads the
 //   entry's first byte (`*key == 0`); the compare at 0x4F4CE0 is __thiscall
-//   with one pushed entry. Method name from YRpp (consult-only, no LICENSE).
+//   with one pushed entry. Method name from YRpp.
 #ifndef GG_MATCH_RENDERER_COLOR_SCHEME_ITERATOR_METHODS_H
 #define GG_MATCH_RENDERER_COLOR_SCHEME_ITERATOR_METHODS_H
 

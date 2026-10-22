@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only) | behaviour-confirmed-name
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only) | behaviour-confirmed-name
 //   Layout from the retail gamemd.exe v1.001: RTTI .?AVParticleSystemClass@@ (TD 0x836748),
 //   tables 0x7EFB9C (primary, 122 slots) / 0x7EFB80 (6) / 0x7EFB78 (1) / 0x7EFB70 (1),
 //   constructor 0x62DF20 (allocation `push 0x100; call 0x7C8E17` at 0x6C59BC), member

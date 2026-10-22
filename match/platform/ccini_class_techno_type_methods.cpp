@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x476EB0. Name from
-//   YRpp (consult-only).
+//   YRpp.
 
 #include "ccini_class_techno_type_methods.h"
 

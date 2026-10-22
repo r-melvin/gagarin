@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | names consult-only | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Retail RTTI TypeDescriptor 0x842D08 names ".?AVTriggerTypeClass@@" and
 // records AbstractTypeClass at offset zero. The 0xB4 allocation at 0x7275D0,
 // constructor 0x726C80 and member-using functions pin the layout below.

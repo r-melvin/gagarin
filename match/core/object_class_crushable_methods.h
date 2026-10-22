@@ -10,7 +10,7 @@
 //   [EAX+0x88]` (object type; byte `[EAX+0x22D]` off it), `CALL [EAX+0x2C]`
 //   (WhatAmI, compared with 6) and `CALL [EDX+0x160]` (a bool predicate).
 //   Names cross-checked against YRpp
-//   (consult-only, no LICENSE); the
+//  ; the
 //   +0x21C / +0x2A4 / +0x22D members agree with match/_layout.
 #ifndef GG_MATCH_CORE_OBJECT_CLASS_CRUSHABLE_METHODS_H
 #define GG_MATCH_CORE_OBJECT_CLASS_CRUSHABLE_METHODS_H

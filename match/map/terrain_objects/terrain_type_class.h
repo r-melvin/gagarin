@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001: RTTI
 //   .?AVTerrainTypeClass@@ (TD 0x8445E8; terrain_common_views.h), the constructor 0x71DA80 (every member store
 //   below), the INI reader 0x71DEA0 (every key string and member offset), the loader 0x71E1D0, and the

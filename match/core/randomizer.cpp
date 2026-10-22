@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm @ 0x65C780,
-//   0x65C7E0). Names cross-checked against YRpp (consult-only;
-//   each offset reconfirmed against the user's binary).
+//   0x65C7E0). Names cross-checked against YRpp (each offset reconfirmed against the user's binary).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x65C780  Randomizer::Random       (__thiscall)

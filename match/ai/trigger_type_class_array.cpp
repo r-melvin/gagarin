@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | names consult-only
+// Provenance: own-binary-via-Ghidra
 // Accessed 24-byte registry prefix at 0x8B4178. Storage lies in the pinned
 // PE loader-zero tail; later runtime initialization is not established here.
 #include "../_layout/trigger_type_class.h"

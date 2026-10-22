@@ -16,7 +16,7 @@
 //       layout globals 0x886F9C / 0xB0B4F8 / 0x886F94 (0x6A7651..0x6A7663) —
 //       the same 50-pixel row formula as 0x6A6A00.
 //     The byte flag at 0x884B8F (0x6A76CC).
-//   Names cross-checked against YRpp (consult-only, NO LICENSE).
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_SET_TAB_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_SET_TAB_METHODS_H
 

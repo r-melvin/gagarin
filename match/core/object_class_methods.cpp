@@ -7,7 +7,7 @@
 // RulesInstance pointer at 0x8871E0 / ConditionRed+0x1708, with RET at 0x5F5D19.
 // At 0x5F5B4C are four NOPs; current Ghidra analysis records no function
 // entry or xrefs there. Only the evidenced 0x5F5B50 entry is bound here.
-// Method names remain consult-only hypotheses, confirmed only as far as the
+// Method names remain hypotheses, confirmed only as far as the
 // observed operations permit.
 
 // LIBRARY: GAMEMD 0x7C5F00 -- __ftol, used by SetHealthPercentage.

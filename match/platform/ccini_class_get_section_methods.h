@@ -8,8 +8,7 @@
 //   entries are eight bytes (key then section pointer) sorted with the CRT
 //   `qsort` 0x7C8B48 against the comparison at 0x52B720 and found with the
 //   CRT `bsearch` 0x52B750; the fallback section pointer lives at
-//   0xB7882C. Names cross-checked against YRpp (consult-only;
-//   NO LICENSE).
+//   0xB7882C. Names cross-checked against YRpp.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_GET_SECTION_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_GET_SECTION_METHODS_H
 

@@ -14,7 +14,7 @@
 //   0x83D834, the __fastcall 0x5BF500 with `XOR CL,CL`, and the tail `JMP
 //   0x406F40`. The timer layout (start@+0, clock@+4, base@+8) matches
 //   match/core/small_misc42_methods.h and match/core/game_timing_methods.h
-//   (not edited). YRpp names only (consult-only, no LICENSE):
+//   (not edited). YRpp names only:
 //   ScenarioClass::ResumeGame (static), ScenarioClass::Instance @0xA8B230,
 //   CCToolTip::Instance @0x887368, ToolTipManager::SetState @0x7241A0.
 #ifndef GG_MATCH_CORE_SCENARIO_CLASS_RESUME_METHODS_H

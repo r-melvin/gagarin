@@ -6,7 +6,7 @@
 //   surface pointers loaded through `MOV ECX,[0x88730C]` .. `[0x887308]`,
 //   each released via the slot-0 deleting destructor (`MOV EAX,[ECX]; PUSH 1;
 //   CALL [EAX]`) and then zeroed. Method / class names from YRpp
-//   (consult-only; names only, no text copied).
+//   (names only, no text copied).
 #ifndef GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H
 #define GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H
 

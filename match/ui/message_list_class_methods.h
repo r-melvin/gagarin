@@ -3,7 +3,7 @@
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x5D4400 / 0x5D4AA0 / 0x5D4BF0),
 //   cross-checked against YRpp
-//   (consult-only; reconfirmed here).
+//   (reconfirmed here).
 //
 // MessageListClass — the on-screen chat/message list. Its messages are a
 // singly-linked list of TextLabelClass gadgets (head pointer at +0x00, walked

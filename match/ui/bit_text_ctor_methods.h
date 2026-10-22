@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x434AD0. Name from YRpp (consult-only); the
+//   Ghidra CLI at 0x434AD0. Name from YRpp; the
 //   address is the private constructor it declares.
 //
 // BitText::BitText @0x434AD0 — loads the game font.

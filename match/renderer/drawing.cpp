@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Each offset,
 //   vtable slot and global reconfirmed below from the member-access disassembly;
-//   names cross-checked against YRpp (consult-only, no LICENSE).
+//   names cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x410E50   ABuffer::ReleaseSurface  (__thiscall)

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   Small value types shared by every class of the particle module (ParticleClass,
 //   ParticleTypeClass, ParticleSystemClass, ParticleSystemTypeClass). Each is declared once, here,
 //   with the union of the members the module's bodies use. Layouts were read from the retail

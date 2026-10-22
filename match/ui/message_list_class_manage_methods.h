@@ -12,7 +12,7 @@
 //   The elapsed timer is the 12-byte global at 0x887338 (StartTime
 //   0x887338, the clock object 0x88733C reached by `MOV ECX,0x88733C; CALL
 //   0x6C8C40`, TimeLeft 0x887340). Names cross-checked against YRpp
-//   (consult-only; every offset
+//   (every offset
 //   reconfirmed above).
 #ifndef GG_MATCH_UI_MESSAGE_LIST_CLASS_MANAGE_METHODS_H
 #define GG_MATCH_UI_MESSAGE_LIST_CLASS_MANAGE_METHODS_H

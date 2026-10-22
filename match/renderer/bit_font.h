@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x4346C0 / 0x434990),
-//   cross-checked against YRpp (consult-only, no LICENSE;
-//   every offset/slot reconfirmed from the disasm).
+//   cross-checked against YRpp (every offset/slot reconfirmed from the disasm).
 //
 // BitFont — the engine's bitmap-font renderer. Only the two matched methods and
 // the members/struct they touch are modelled (the full layout is P2).

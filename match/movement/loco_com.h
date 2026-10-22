@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only, consult-only)
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
 //   The _com_ptr_t instantiations the locomotion leaves share. Retail has one
 //   out-of-line copy of each comip.h member the leaves call: _QueryInterface
 //   0x45AEA0 (IPersist from an ILocomotion pointer), _Release 0x4B4D50

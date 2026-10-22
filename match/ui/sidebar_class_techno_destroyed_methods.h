@@ -21,7 +21,7 @@
 //   match/ui/sidebar_class_tab_methods.cpp, including the
 //   `CALL 0x5004E0; CMP EAX,5; SETZ` arm — with the literal 1 shared between
 //   its `CMP ESI,EBX` test and every byte store. Names cross-checked against
-//   YRpp SidebarClass (consult-only, NO LICENSE).
+//   YRpp SidebarClass.
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_TECHNO_DESTROYED_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_TECHNO_DESTROYED_METHODS_H
 

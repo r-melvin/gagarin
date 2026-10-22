@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x70ECE0 (Ghidra disasm).
 //   Names cross-checked against YRpp (RecoilData::Fire,
-//   JMP_THIS(0x70ECE0)) — consult-only, no LICENSE; each offset reconfirmed
+//   JMP_THIS(0x70ECE0)) — each offset reconfirmed
 //   against the user's binary.
 //
 // reccmp annotations (ascending by retail address within this TU):

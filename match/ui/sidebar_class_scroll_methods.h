@@ -7,7 +7,7 @@
 //   scenario flag is `[EDX+0x34B8]` through `[0xA8B230]`, the seven plain
 //   globals are read by absolute address (see the GLOBAL lines below) and the
 //   redraw hook is `CALL [EAX+0x38]` with one pushed 0. Names cross-checked
-//   against YRpp (consult-only).
+//   against YRpp.
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_SCROLL_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_SCROLL_METHODS_H
 

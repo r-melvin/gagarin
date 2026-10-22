@@ -5,7 +5,7 @@
 //   0x00B054E0 (Count) are +0x04 and +0x10 of one vector, so the object sits at
 //   0x00B054D0. Argument count and order cross-checked against YRpp's
 //   `ColorScheme::Find_Or_Make(name, HSVClass&, PaletteClass*, PaletteClass*,
-//   int)` (consult-only) and confirmed from the six pushes at the constructor.
+//   int)` and confirmed from the six pushes at the constructor.
 //
 // The control flow is unusual and deliberate: the scan is wrapped in an outer
 // infinite loop. On a miss the function allocates and constructs a scheme, then

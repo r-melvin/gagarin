@@ -12,7 +12,7 @@
 //   grouping and the "colour" reading came from the user's own behavioural
 //   reimplementation (`ui/wol_scenario_setup_color.cpp`), which is a
 //   64-bit reimplementation and contributed no bytes, layout or conventions.
-//   The global 0xA8B394 is YRpp's `PlayerColor` (consult-only cross-check); its
+//   The global 0xA8B394 is YRpp's `PlayerColor` (cross-check); its
 //   use here is confirmed independently by the two `MOV [0xa8b394],<sel>` stores.
 //
 //   The dialog class is modelled independently in this TU so the file stands

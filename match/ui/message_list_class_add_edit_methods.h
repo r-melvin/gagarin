@@ -22,7 +22,7 @@
 //   CRT wcscpy 0x7CA489, wcslen 0x7CA405, operator new 0x7C8E17 with
 //   `PUSH 0x4C`, the label constructor 0x72A440 and the no-argument
 //   0x778180. Names cross-checked against YRpp MessageListClass /
-//   TextLabelClass (consult-only, NO LICENSE).
+//   TextLabelClass.
 #ifndef GG_MATCH_UI_MESSAGE_LIST_CLASS_ADD_EDIT_METHODS_H
 #define GG_MATCH_UI_MESSAGE_LIST_CLASS_ADD_EDIT_METHODS_H
 

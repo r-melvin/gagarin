@@ -9,7 +9,7 @@
 //   `CALL [EAX+0x24]` (two pushed arguments). The inline teardown stores
 //   0x7E16B0 at +0x00, zeroes +0x64, releases the sub-object at +0x58 through
 //   0x43AE50, stores 0x7E1668 at +0x00 and calls 0x431B80. Names from YRpp
-//   (consult-only); every offset re-derived here.
+//  ; every offset re-derived here.
 #ifndef GG_MATCH_PLATFORM_FILE_SYSTEM_LOAD_WHOLE_METHODS_H
 #define GG_MATCH_PLATFORM_FILE_SYSTEM_LOAD_WHOLE_METHODS_H
 

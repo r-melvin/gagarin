@@ -12,7 +12,7 @@
 //   (__fastcall name), the __fastcall slot writer 0x6CFD20 (index, value)
 //   run over 25 slots with the not-found index at 0x8427CC, and the
 //   __fastcall count setter 0x6CFDB0. Names cross-checked against YRpp
-//   (consult-only; every slot reconfirmed above).
+//   (every slot reconfirmed above).
 #ifndef GG_MATCH_CORE_RULES_CLASS_COMMAND_BAR_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_COMMAND_BAR_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/addresses derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x4AE4C0 / 0x68BD80),
-//   cross-checked against YRpp (consult-only; reconfirmed here).
+//   cross-checked against YRpp (reconfirmed here).
 //
 // ScenarioClass — the global scenario/mission record. Only two methods are
 // matched here, so the class is hand-padded to the single member they touch

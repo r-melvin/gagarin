@@ -11,7 +11,7 @@
 //   `[0xA8ED6B]`, and the results land in `[EDI+0xD64]`/`[EDI+0xD68]` and
 //   `[EDI+0xD74]`/`[EDI+0xD78]` before the __thiscall 0x6D8B30 and the
 //   `MOV byte ptr [EDI+0xD7D],1`. Method name and the mode byte's name are
-//   YRpp's (consult-only; names only).
+//   YRpp's (names only).
 #ifndef GG_MATCH_UI_TACTICAL_CLASS_POSITION_METHODS_H
 #define GG_MATCH_UI_TACTICAL_CLASS_POSITION_METHODS_H
 

@@ -4,7 +4,7 @@
 //   local Ghidra CLI at 0x710470. InOpenToppedTransport @0x82 comes from the
 //   committed ObjectClass spine and is reconfirmed here
 //   (`MOV byte ptr [ESI+0x82],1`). The singleton and callee bindings are YRpp's
-//   (consult-only, no LICENSE), reconfirmed against the disassembly:
+//  , reconfirmed against the disassembly:
 //   0x0087F778 = LogicClass::Instance, 0x0055BAA0 = LogicClass::AddObject.
 #ifndef GG_MATCH_CORE_TECHNO_CLASS_OPENTOPPED_METHODS_H
 #define GG_MATCH_CORE_TECHNO_CLASS_OPENTOPPED_METHODS_H

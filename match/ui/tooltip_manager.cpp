@@ -5,7 +5,7 @@
 // 0x724000. This flag set reproduces its complete 0xA7-byte body; all other
 // methods in this TU are verified under the same flags.
 // Retail gamemd.exe v1.001 instructions and RTTI establish these methods,
-// fields and virtual slots. Names were cross-checked with consult-only YRpp.
+// fields and virtual slots. Names were cross-checked with YRpp.
 // Process references the retail source-path string D:\ra2mdpost\ToolTip.cpp.
 #include "tooltip_manager_shared.h"
 

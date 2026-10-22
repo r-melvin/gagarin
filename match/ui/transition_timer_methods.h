@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against the
-//   consult-only YRpp (reconfirmed here).
+//   YRpp (reconfirmed here).
 //
 // TransitionTimer — a small two-bit state machine driving a timed transition
 // (used by the in-game transition/fade overlay). It owns a RateTimer plus two

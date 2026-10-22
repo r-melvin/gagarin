@@ -10,7 +10,7 @@
 //   (ECX = result, EDX = matrix, one stack arg = vector), the truncation is
 //   the CRT `__ftol` at 0x7C5F00, and the out-of-view result is the 12-byte
 //   global at 0xB0CE08 copied dword-wise. The method name is the YRpp one
-//   (consult-only; name only). +0xDE4 is the IsoTransformMatrix already
+//   (name only). +0xDE4 is the IsoTransformMatrix already
 //   confirmed in match/renderer/tactical_class_matrix_methods.h (not edited;
 //   re-declared here so this TU stands alone).
 #ifndef GG_MATCH_RENDERER_TACTICAL_CLASS_CLIENT_TO_COORDS_METHODS_H

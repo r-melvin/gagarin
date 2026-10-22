@@ -22,7 +22,7 @@
 //     counts are byte loads (MOV CL,byte ptr) and the four left/arithmetic
 //     ones dword loads (MOV ECX,dword ptr).
 //   Names (PreviewClass, CreatePreviewSurface) cross-checked against YRpp
-//   (consult-only, NO LICENSE); every offset reconfirmed above.
+//  ; every offset reconfirmed above.
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 #define GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 

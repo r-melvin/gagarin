@@ -10,8 +10,7 @@
 //   0x5D4E70 (__fastcall, ECX = HWND) and the import
 //   CreateDialogIndirectParamA at IAT 0x7E1450. The id arrives in CX and is
 //   widened with `AND EBP,0xFFFF`; the LPARAM is the address of an 8-byte
-//   local {WORD id, int param} at [ESP+0x14]. YRpp (consult-only, no
-//   LICENSE) names UI::BeginDialog and Unsorted::GetResource; the sibling
+//   local {WORD id, int param} at [ESP+0x14]. YRpp names UI::BeginDialog and Unsorted::GetResource; the sibling
 //   match/ui/ui_end_dialog_methods.h pins the same stack and pops it.
 #ifndef GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H
 #define GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H

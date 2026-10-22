@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6A60A0), cross-checked
-//   against YRpp (consult-only; every offset reconfirmed below
+//   against YRpp (every offset reconfirmed below
 //   from the disassembly operands).
 //
 // SidebarClass::RepaintSidebar(int tab) — flags a sidebar build-tab dirty and

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and global addresses read off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x4A80D0 / 0x6C8C40 / 0x732D00. Names cross-checked
-//   against YRpp (consult-only, no LICENSE).
+//   against YRpp.
 //
 // Three unrelated global query leaves that share only their shape: a constant,
 // a scaled system clock, and a global flag read.

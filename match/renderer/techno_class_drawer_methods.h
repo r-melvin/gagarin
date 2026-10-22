@@ -12,8 +12,7 @@
 //   Owner @0x21C agrees with the committed spine match/_layout/techno_class.h;
 //   Palette @0xDF0 agrees with match/_layout/techno_type_class.h (not includable
 //   next to the TechnoClass spine — both define TurretControl — so a local
-//   placeholder carries it). Names from YRpp
-//   (consult-only).
+//   placeholder carries it). Names from YRpp.
 #ifndef GG_MATCH_RENDERER_TECHNO_CLASS_DRAWER_METHODS_H
 #define GG_MATCH_RENDERER_TECHNO_CLASS_DRAWER_METHODS_H
 

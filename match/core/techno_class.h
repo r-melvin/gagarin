@@ -3,7 +3,7 @@
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access + virtual-call disassembly). Names
 //   cross-checked against YRpp
-//   (consult-only, no LICENSE; every offset reconfirmed numerically below).
+//   (every offset reconfirmed numerically below).
 //
 // This TU matches the passenger-list helpers (PassengersClass, the embedded
 // transport cargo list) plus TechnoClass::IsAbsorbAllowed. Only the members the

@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6D20E0 (Ghidra disasm).
-//   Cross-checked against YRpp (consult-only, no LICENSE;
-//   each address reconfirmed against the user's binary).
+//   Cross-checked against YRpp (each address reconfirmed against the user's binary).
 //
 // Translation unit: TacticalClass::AdjustForZ (the in-game height -> on-screen
 // pixel-offset conversion). Free static __fastcall(int) helper (Height in ECX).

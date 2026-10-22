@@ -3,7 +3,7 @@
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x70E1A0-0x70E1D7 and
 //   0x710550-0x710583), cross-checked against YRpp
-//   (consult-only, no LICENSE; reconfirmed numerically here).
+//   (reconfirmed numerically here).
 //   Touched members agree with the committed spine match/_layout/techno_class.h
 //   (Passengers @0x114, CurrentWeaponNumber @0x138).
 //

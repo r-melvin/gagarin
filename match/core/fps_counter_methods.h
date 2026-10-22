@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Globals + control flow derived from the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI (absolute-load disassembly at 0x55AF60), cross-checked
-//   against YRpp (consult-only, no LICENSE; every global address
+//   against YRpp (every global address
 //   reconfirmed from the disasm).
 //
 // FPSCounter / Detail static helpers. Only Detail::GetMinFrameRate is matched;
