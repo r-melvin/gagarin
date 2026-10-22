@@ -292,6 +292,11 @@ GG_STATIC_ASSERT(sizeof(GScreenClass) == 0x10);
 class MapClass : public GScreenClass
 {
 public:
+    // FUNCTION: GAMEMD 0x565090 (decl; reloc) -- ordinary MapClass constructor, called by DisplayClass 0x4A8730.
+    MapClass();
+    // FUNCTION: GAMEMD 0x565190 (decl; reloc) -- no-init MapClass constructor, called by DisplayClass 0x6AC840.
+    MapClass(const Obj_005BDF70& noInit);
+
     virtual void vf_03();                    // 3   0x5656D0
     // The scalar deleting destructor is 0x588BF0; the destructor body is not modelled.
     virtual ~MapClass();                     // 4   0x588BF0 (??_G)
@@ -363,6 +368,11 @@ GG_STATIC_ASSERT(sizeof(MapClass) == 0x1174);
 class DisplayClass : public MapClass
 {
 public:
+    // FUNCTION: GAMEMD 0x4A8730 (decl; reloc) -- ordinary constructor; member offsets are established here.
+    DisplayClass();
+    // FUNCTION: GAMEMD 0x6AC840 -- tagged load constructor; forwards noInit to MapClass and clears SavedColor.
+    DisplayClass(const Obj_005BDF70& noInit);
+
     virtual void vf_05();                                // 5   0x4A8850
     virtual void vf_07();                                // 7   0x4A88C0
     virtual void vf_08();                                // 8   0x4A8930

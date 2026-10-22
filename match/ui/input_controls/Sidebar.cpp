@@ -1654,6 +1654,15 @@ void* Obj_6AC7A0::FUN_6AC7A0(unsigned int flags)
     return this;
 }
 
+// FUNCTION: GAMEMD 0x6AC840
+DisplayClass::DisplayClass(const Obj_005BDF70& noInit)
+    : MapClass(noInit)
+{
+    SavedColor.R = 0;
+    SavedColor.G = 0;
+    SavedColor.B = 0;
+}
+
 // FUNCTION: GAMEMD 0x6AC870
 SidebarCameo* __fastcall FUN_006AC870(SidebarCameo* cameo)
 {

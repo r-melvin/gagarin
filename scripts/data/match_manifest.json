@@ -92752,5 +92752,14 @@
   "name": "FUN_006AC870",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6AC840",
+  "sym": "??0DisplayClass@@QAE@ABUObj_005BDF70@@@Z",
+  "len": "0x2d",
+  "name": "DisplayClass::DisplayClass(Obj_005BDF70 const&)",
+  "status": "partial",
+  "pct": 69.2
  }
 ]
