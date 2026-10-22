@@ -108,9 +108,9 @@ GG_STATIC_ASSERT(offsetof(Techno_006FBC90, Owner)     == 0x21C);
 GG_STATIC_ASSERT(offsetof(Techno_006FBC90, Cloakable) == 0x3D2);
 GG_STATIC_ASSERT(sizeof(Techno_006FBC90)              == 0x520);
 
-typedef Coord_006FBC90* (Techno_006FBC90::*Fn048_006FBC90)(Coord_006FBC90* out);
-typedef TechnoType_006FBC90* (Techno_006FBC90::*Fn084_006FBC90)();
-typedef bool (Techno_006FBC90::*FnBool_006FBC90)();
+typedef Coord_006FBC90* (IPersistStream::*Fn048_006FBC90)(Coord_006FBC90* out);
+typedef TechnoType_006FBC90* (IPersistStream::*Fn084_006FBC90)();
+typedef bool (IPersistStream::*FnBool_006FBC90)();
 
 struct Vtbl_006FBC90
 {

@@ -36,9 +36,16 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
 
 // MissionClass  (0xAC..0xD3, sizeof = 0xD4)
 // Retail RTTI 0x817B18 establishes the class key; public access preserves this ABI view.
+// VTABLE: GAMEMD 0x7EDCC0 (IPersistStream side)
+// VTABLE: GAMEMD 0x7EDCA4 (IRTTITypeInfo side, +0x04)
+// VTABLE: GAMEMD 0x7EDC9C (INoticeSink side, +0x08)
+// VTABLE: GAMEMD 0x7EDC94 (INoticeSource side, +0x0C)
 class MissionClass : public ObjectClass
 {
 public:
+    // Empty destructor; it only exists inline in the scalar deleting
+    // destructor 0x5B3A60, which then calls ~ObjectClass 0x5F3B80.
+    virtual ~MissionClass();
     int           CurrentMission;            // +0xAC  (Mission enum, ctor = -1)
     int           SuspendedMission;          // +0xB0  (Mission enum, ctor = -1)
     int           QueuedMission;             // +0xB4  (Mission enum, ctor = -1)

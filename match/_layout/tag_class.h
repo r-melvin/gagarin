@@ -25,6 +25,13 @@ class TriggerClass;
 class TagClass : public AbstractClass
 {
 public:
+    // Overrides of the slots AbstractClass leaves pure (primary table
+    // slots 3, 5, 6, 11, 12; declarations only, bodies not modelled here).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x6E56A0
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x6E5730
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x6E57A0
+    virtual int vf_11();                                                  // 11  0x6E58A0
+    virtual int vf_12();                                                  // 12  0x6E5890
     // FUNCTION: GAMEMD 0x6E4DE0 (declaration; constructor)
     TagClass(TagTypeClass* type);
     // FUNCTION: GAMEMD 0x6E4F60 (declaration; destructor)

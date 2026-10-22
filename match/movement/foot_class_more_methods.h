@@ -18,7 +18,7 @@
 #include "../_layout/foot_class.h"   // FootClass + ObjectClass/AbstractClass spine
 
 // Members the two methods touch (self-guards this TU to the 32-bit ABI):
-GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);   // flag test &4
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);   // flag test &4
 GG_STATIC_ASSERT(offsetof(ObjectClass,   NextObject)    == 0x30);   // passenger walk
 GG_STATIC_ASSERT(offsetof(ObjectClass,   Location)      == 0x9C);   // coord source
 GG_STATIC_ASSERT(offsetof(TechnoClass,   Passengers)    == 0x114);  // &Passengers

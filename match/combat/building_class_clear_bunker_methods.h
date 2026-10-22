@@ -66,15 +66,14 @@ struct Building_00459470 : ObjectClass
     // FUNCTION: GAMEMD 0x459470 -- BuildingClass::ClearBunker.
     void ClearBunker();
 };
-GG_STATIC_ASSERT(offsetof(Building_00459470, _vtable_IPersistStream) == 0);
 GG_STATIC_ASSERT(offsetof(Building_00459470, Health)                 == 0x6C);
 GG_STATIC_ASSERT(offsetof(Building_00459470, Location)               == 0x9C);
 GG_STATIC_ASSERT(offsetof(Building_00459470, BunkerLinkedItem) == 0x2E4);
 GG_STATIC_ASSERT(offsetof(Building_00459470, Type)             == 0x520);
 GG_STATIC_ASSERT(offsetof(Building_00459470, unknown_718)      == 0x718);
 
-typedef void (Building_00459470::*Fn1E8_00459470)(int mission, int immediate);
-typedef void (Building_00459470::*Fn274_00459470)(int mode);
+typedef void (IPersistStream::*Fn1E8_00459470)(int mission, int immediate);
+typedef void (IPersistStream::*Fn274_00459470)(int mode);
 
 struct Vtbl_00459470
 {

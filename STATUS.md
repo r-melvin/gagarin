@@ -1,5 +1,42 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,408 matched function
+rows**, **426 partial rows**, **6,834 manifest rows**, **1,273 manifest
+translation units**, and **1,281 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+AbstractClass now derives its four COM interfaces (IPersistStream,
+IRTTITypeInfo, INoticeSink and INoticeSource) as real base classes, so the
+compiler emits the interface table stores, adjustor thunks and scalar deleting
+destructors that retail has. Both AbstractClass constructors reach 100%, and
+seven rows are new exact matches: the AbstractClass and AbstractTypeClass scalar
+deleting destructors, the three IRTTITypeInfo adjustor thunks, and the
+MissionClass and CaptureManagerClass scalar deleting destructors. The
+CaptureManagerClass constructor is a new partial. The flag byte at +0x14 is
+modelled once, as bool bit-fields: retail only ever reads and writes it with
+byte operations. That also brings CellClass::TryAssignJumpjet (0x487D70) to
+100%. Every new or changed exact row passes raw bytes and strict relocation
+checks, and the six AbstractClass and AbstractTypeClass tables verify slot by
+slot.
+
+The 6,408 matches represent 32.4% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **491,826
+bytes**, or 13.0% of 3,797,269 listed function bytes. The padding heuristic
+misses 531 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: claimed-leaf sweep
+
 As of **2026-10-22**, the verified snapshot reports **6,399 matched function
 rows**, **428 partial rows**, **6,827 manifest rows**, **1,273 manifest
 translation units**, and **1,281 tracked C++ files**. Whole-repository regression
@@ -25,14 +62,6 @@ bytes**, or 12.9% of 3,797,269 listed function bytes. The padding heuristic
 misses 531 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: mixed leaf batch
 

@@ -77,20 +77,9 @@ extern Scenario_00726400* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x725FA0
 TriggerClass::TriggerClass(TriggerTypeClass* type)
+    : Type(type), AttachedTrigger(0), unknown_2C(0), Destroyed(0), Timer(0),
+      OccuredEvents(0), Enabled(true)
 {
-    this->Type = type;
-    this->AttachedTrigger = 0;
-    this->unknown_2C = 0;
-    this->Destroyed = 0;
-    this->Timer.StartTime = CurrentFrame;
-    this->Timer.TimeLeft = 0;
-    this->OccuredEvents = 0;
-    this->Enabled = true;
-
-    this->_vtable_IPersistStream = reinterpret_cast<void*>(0x007F5858);
-    this->_vtable_IRTTITypeInfo = reinterpret_cast<void*>(0x007F583C);
-    this->_vtable_INoticeSink = reinterpret_cast<void*>(0x007F5834);
-    this->_vtable_INoticeSource = reinterpret_cast<void*>(0x007F582C);
 
     TriggerCtorVectorAddItem(
         reinterpret_cast<TriggerCtorPtrVector*>(&DAT_00B0F670), this);

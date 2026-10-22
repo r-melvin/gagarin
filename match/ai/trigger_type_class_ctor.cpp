@@ -47,22 +47,11 @@ static inline bool TriggerTypeCtorAdd(TriggerTypeCtorVector* vector,
 
 
 // FUNCTION: GAMEMD 0x726C80
-TriggerTypeClass::TriggerTypeClass(const char* id) : AbstractTypeClass(id)
+TriggerTypeClass::TriggerTypeClass(const char* id)
+    : AbstractTypeClass(id), ArrayIndex(-1), Difficulty_9C(1), Difficulty_9D(1),
+      Difficulty_9E(1), Enabled(1), unknown_A0(0), House(0), NextTrigger(0),
+      FirstEvent(0), FirstAction(0)
 {
-    ArrayIndex = -1;
-    Difficulty[0] = 1;
-    Difficulty[1] = 1;
-    Difficulty[2] = 1;
-    Enabled = 1;
-    unknown_A0 = 0;
-    House = 0;
-    NextTrigger = 0;
-    FirstEvent = 0;
-    FirstAction = 0;
-    _vtable_IPersistStream = reinterpret_cast<void*>(0x007F5904);
-    _vtable_IRTTITypeInfo = reinterpret_cast<void*>(0x007F58E8);
-    _vtable_INoticeSink = reinterpret_cast<void*>(0x007F58E0);
-    _vtable_INoticeSource = reinterpret_cast<void*>(0x007F58D8);
     TriggerTypeCtorAdd(reinterpret_cast<TriggerTypeCtorVector*>(&DAT_00B0F658), this);
     TriggerTypeCtorAdd(reinterpret_cast<TriggerTypeCtorVector*>(&DAT_00B0F670), this);
     ArrayIndex = Array.Count;

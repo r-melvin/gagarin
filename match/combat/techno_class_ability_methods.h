@@ -54,7 +54,7 @@ struct Techno_0070D0D0 : TechnoClass
 GG_STATIC_ASSERT(offsetof(Techno_0070D0D0, Veterancy) == 0x150);
 GG_STATIC_ASSERT(sizeof(Techno_0070D0D0)              == 0x520);
 
-typedef TechnoType_0070D0D0* (Techno_0070D0D0::*Fn084_0070D0D0)();
+typedef TechnoType_0070D0D0* (IPersistStream::*Fn084_0070D0D0)();
 
 struct Vtbl_0070D0D0
 {

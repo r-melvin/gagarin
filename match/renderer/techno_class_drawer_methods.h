@@ -85,9 +85,9 @@ struct Techno_00705D70 : TechnoClass
 GG_STATIC_ASSERT(offsetof(Techno_00705D70, Owner) == 0x21C);
 GG_STATIC_ASSERT(sizeof(Techno_00705D70)          == 0x520);
 
-typedef TechnoType_00705D70* (Techno_00705D70::*Fn084_00705D70)();
-typedef House_00705D70*      (Techno_00705D70::*Fn0D0_00705D70)(int fromLocalPlayer);
-typedef bool                 (Techno_00705D70::*Fn440_00705D70)(House_00705D70* house);
+typedef TechnoType_00705D70* (IPersistStream::*Fn084_00705D70)();
+typedef House_00705D70*      (IPersistStream::*Fn0D0_00705D70)(int fromLocalPlayer);
+typedef bool                 (IPersistStream::*Fn440_00705D70)(House_00705D70* house);
 
 struct Vtbl_00705D70
 {

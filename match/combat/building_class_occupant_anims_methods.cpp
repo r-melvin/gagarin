@@ -19,7 +19,7 @@ __forceinline void BuildingClass_00458330::PlayNthAnim(int slot, int effectDelay
         int damaged = GetHealthPercentage()
                       <= RulesInstance->ConditionYellow;
         bool garrisoned = (this->*static_cast<Vtbl_00458330*>(
-            _vtable_IPersistStream)->GetOccupantCount)() > 0;
+            PrimaryVTable())->GetOccupantCount)() > 0;
 
         const char* animName;
         if ((char)damaged) {

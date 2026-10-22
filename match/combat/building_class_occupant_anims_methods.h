@@ -86,12 +86,11 @@ struct BuildingClass_00458330 : ObjectClass
     // FUNCTION: GAMEMD 0x458330
     void UpdateOccupantAnims();
 };
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458330, _vtable_IPersistStream) == 0 &&
-                 offsetof(BuildingClass_00458330, Health) == 0x6C &&
+GG_STATIC_ASSERT(offsetof(BuildingClass_00458330, Health) == 0x6C &&
                  offsetof(BuildingClass_00458330, Type)  == 0x520 &&
                  offsetof(BuildingClass_00458330, Anims) == 0x55C);
 
-typedef int (BuildingClass_00458330::*Fn408_00458330)();
+typedef int (IPersistStream::*Fn408_00458330)();
 
 struct Vtbl_00458330
 {

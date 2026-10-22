@@ -24,18 +24,9 @@ extern CellStruct DAT_00B0E700;
 
 // FUNCTION: GAMEMD 0x6E4DE0
 TagClass::TagClass(TagTypeClass* type)
+    : Type(type), FirstTrigger(0), InstanceCount(0), DefaultCoords(DAT_00B0E700),
+      Destroyed(0), IsExecuting(0)
 {
-    this->Type = type;
-    this->FirstTrigger = 0;
-    this->InstanceCount = 0;
-    this->DefaultCoords = DAT_00B0E700;
-    this->Destroyed = 0;
-    this->IsExecuting = 0;
-
-    this->_vtable_IPersistStream = reinterpret_cast<void*>(0x007F44E0);
-    this->_vtable_IRTTITypeInfo = reinterpret_cast<void*>(0x007F44C4);
-    this->_vtable_INoticeSink = reinterpret_cast<void*>(0x007F44BC);
-    this->_vtable_INoticeSource = reinterpret_cast<void*>(0x007F44B4);
 
     TagPtrVector_AddItem(reinterpret_cast<TagPtrVector*>(&TagClass::Array), this);
     TagPtrVector_AddItem(reinterpret_cast<TagPtrVector*>(&DAT_00B0F670), this);

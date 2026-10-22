@@ -8,7 +8,7 @@
 
 GG_STATIC_ASSERT(offsetof(ObjectClass, Location) == 0x9C);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x08);
-typedef int (ObjectClass::*ObjectCellGetter)() const;
+typedef int (IPersistStream::*ObjectCellGetter)() const;
 GG_STATIC_ASSERT(sizeof(ObjectCellGetter) == 4);
 
 // FUNCTION: GAMEMD 0x5F5F30

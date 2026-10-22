@@ -36,6 +36,13 @@ GG_STATIC_ASSERT(sizeof(CDTimer_00726400) == 0xC);
 class TriggerClass : public AbstractClass
 {
 public:
+    // Overrides of the slots AbstractClass leaves pure (primary table
+    // slots 3, 5, 6, 11, 12; declarations only, bodies not modelled here).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x726820
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x726860
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x7268D0
+    virtual int vf_11();                                                  // 11  0x726940
+    virtual int vf_12();                                                  // 12  0x726930
     // FUNCTION: GAMEMD 0x725FA0 (constructor declaration)
     TriggerClass(TriggerTypeClass* type);
     // FUNCTION: GAMEMD 0x726250

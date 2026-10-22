@@ -27,7 +27,8 @@ struct Obj_004101C0
     char* vt2;   // +0x0008
     char* vt3;   // +0x000C
 
-    // FUNCTION: GAMEMD 0x4101C0
+    // 0x4101C0 is AbstractClass::AbstractClass(AbstractNoInit), defined in
+    // abstract_class_ctor.cpp; this caller-side view still names it.
     Obj_004101C0* FUN_004101C0(int flags);
 };
 

@@ -107,8 +107,8 @@ struct FootNav : FootClass
 };
 GG_STATIC_ASSERT(sizeof(FootNav) == sizeof(FootClass));
 
-typedef int  (FootNav::*Fn184_004DA0E0)();
-typedef bool (FootNav::*Fn484_004DA0E0)(int initial, int unused);
+typedef int  (IPersistStream::*Fn184_004DA0E0)();
+typedef bool (IPersistStream::*Fn484_004DA0E0)(int initial, int unused);
 
 struct NavVtbl_004DA0E0
 {

@@ -48,15 +48,9 @@ static inline bool TagTypeCtorAdd(TagTypeCtorVector* vector, TagTypeClass* item)
 }
 
 // FUNCTION: GAMEMD 0x6E5B60
-TagTypeClass::TagTypeClass(const char* id) : AbstractTypeClass(id)
+TagTypeClass::TagTypeClass(const char* id)
+    : AbstractTypeClass(id), unknown_98(-1), Persistence(0), FirstTrigger(0)
 {
-    unknown_98 = -1;
-    Persistence = 0;
-    FirstTrigger = 0;
-    _vtable_IPersistStream = reinterpret_cast<void*>(0x007F45C4);
-    _vtable_IRTTITypeInfo = reinterpret_cast<void*>(0x007F45A8);
-    _vtable_INoticeSink = reinterpret_cast<void*>(0x007F45A0);
-    _vtable_INoticeSource = reinterpret_cast<void*>(0x007F4598);
 
     char name[0x31];
     if (ID == 0) {

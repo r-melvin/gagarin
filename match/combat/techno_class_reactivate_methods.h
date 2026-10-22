@@ -21,7 +21,7 @@
 #include "../_layout/foot_class.h"   // FootClass : TechnoClass : ... : AbstractClass
 
 // Re-confirm the spine offsets this TU reads (all from the disasm above).
-GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   Location)      == 0x9C);
 GG_STATIC_ASSERT(offsetof(TechnoClass,   Deactivated)   == 0x1C8);
 GG_STATIC_ASSERT(offsetof(FootClass,     Locomotor)     == 0x674);
@@ -63,8 +63,8 @@ struct TechnoReactivate : TechnoClass
     void Reactivate();
 };
 
-typedef void       (TechnoReactivate::*Fn3D0_React)();
-typedef ReactType* (TechnoReactivate::*Fn084_React)();
+typedef void       (IPersistStream::*Fn3D0_React)();
+typedef ReactType* (IPersistStream::*Fn084_React)();
 
 struct ReactVtbl
 {

@@ -5431,13 +5431,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deregistering_dtor_methods.cpp",
+  "tu": "match/core/abstract_type_class_dtor.cpp",
   "addr": "0x4109C0",
-  "sym": "?Dtor@Obj_004109C0@@QAEXXZ",
+  "sym": "??1AbstractTypeClass@@UAE@XZ",
   "len": "0x72",
-  "name": "Obj_004109C0::Dtor",
+  "name": "AbstractTypeClass::~AbstractTypeClass",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_type_class_dtor.cpp",
+  "addr": "0x410C30",
+  "sym": "??_GAbstractTypeClass@@UAEPAXI@Z",
+  "len": "0x86",
+  "name": "AbstractTypeClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/network/transport/conn_ipx.cpp",
@@ -10769,13 +10778,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc18_methods.cpp",
+  "tu": "match/core/abstract_class_ctor.cpp",
   "addr": "0x4101C0",
-  "sym": "?FUN_004101C0@Obj_004101C0@@QAEPAU1@H@Z",
+  "sym": "??0AbstractClass@@QAE@UAbstractNoInit@@@Z",
   "len": "0x2e",
-  "name": "FUN_004101C0",
-  "status": "partial",
-  "pct": 12.5
+  "name": "AbstractClass::AbstractClass(AbstractNoInit)",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/memory_buffer_methods.cpp",
@@ -11539,8 +11548,8 @@
   "sym": "??0AbstractClass@@QAE@XZ",
   "len": "0x47",
   "name": "AbstractClass::AbstractClass",
-  "status": "partial",
-  "pct": 12.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc44_methods.cpp",
@@ -11788,9 +11797,45 @@
  {
   "tu": "match/core/abstract_class_dtor.cpp",
   "addr": "0x4101F0",
-  "sym": "??1AbstractClass@@QAE@XZ",
+  "sym": "??1AbstractClass@@UAE@XZ",
   "len": "0x1c",
   "name": "AbstractClass::~AbstractClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/abstract_class_dtor.cpp",
+  "addr": "0x4105A0",
+  "sym": "??_GAbstractClass@@UAEPAXI@Z",
+  "len": "0x35",
+  "name": "AbstractClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/abstract_class_dtor.cpp",
+  "addr": "0x4105E0",
+  "sym": "?QueryInterface@AbstractClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "AbstractClass::QueryInterface (IRTTITypeInfo adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/abstract_class_dtor.cpp",
+  "addr": "0x4105F0",
+  "sym": "?AddRef@AbstractClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "AbstractClass::AddRef (IRTTITypeInfo adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/abstract_class_dtor.cpp",
+  "addr": "0x410600",
+  "sym": "?Release@AbstractClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "AbstractClass::Release (IRTTITypeInfo adjustor)",
   "status": "matched",
   "pct": 100.0
  },
@@ -23518,8 +23563,8 @@
   "sym": "?TryAssignJumpjet@CellClass@@QAE_NPAVObjectClass@@@Z",
   "len": "0x74",
   "name": "CellClass::TryAssignJumpjet",
-  "status": "partial",
-  "pct": 97.7
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/map/cell_class_mark_redraw_methods.cpp",
@@ -39492,9 +39537,9 @@
  {
   "tu": "match/combat/capture_manager_release_methods.cpp",
   "addr": "0x4729C0",
-  "sym": "?FUN_004729C0@CaptureManagerClass@@QAEPAV1@I@Z",
+  "sym": "??_GCaptureManagerClass@@UAEPAXI@Z",
   "len": "0xB6",
-  "name": "CaptureManagerClass::FUN_004729C0",
+  "name": "CaptureManagerClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -61594,5 +61639,23 @@
   "name": "WideStringClass::FUN_007B7660",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/combat/capture_manager_release_methods.cpp",
+  "addr": "0x4717D0",
+  "sym": "??0CaptureManagerClass@@QAE@PAXH_N@Z",
+  "len": "0xBD",
+  "name": "CaptureManagerClass::CaptureManagerClass",
+  "status": "partial",
+  "pct": 54.9
+ },
+ {
+  "tu": "match/core/mission_class_dtor.cpp",
+  "addr": "0x5B3A60",
+  "sym": "??_GMissionClass@@UAEPAXI@Z",
+  "len": "0x39",
+  "name": "MissionClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

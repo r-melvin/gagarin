@@ -38,6 +38,8 @@ class HouseClass;
 class CaptureManagerClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x4717D0 (declaration; constructor)
+    CaptureManagerClass(void* owner, int maxControlNodes, bool infiniteMindControl);
     // FUNCTION: GAMEMD 0x471C90
     bool CanCapture(Techno_00471C90* target) const;
     // FUNCTION: GAMEMD 0x471FF0
@@ -70,8 +72,9 @@ public:
     int FUN_004729A0();
     // FUNCTION: GAMEMD 0x4729B0
     int FUN_004729B0();
-    // FUNCTION: GAMEMD 0x4729C0
-    CaptureManagerClass* FUN_004729C0(unsigned int flags);
+    // Slot 8 holds the scalar deleting destructor 0x4729C0, which carries
+    // this destructor inline (it calls the AbstractClass destructor 0x4101F0).
+    virtual ~CaptureManagerClass();
 
 
     DynamicVectorClassLayout ControlNodes;           // +0x24 (0x18) ctor vptr @0x004717EF, fields

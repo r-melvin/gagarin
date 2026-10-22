@@ -42,7 +42,7 @@ struct FootPath : FootClass
                    int dirCount, int mode);
 };
 
-typedef CoordStruct* (FootPath::*Fn04C_Path)(CoordStruct* out, int ctx);
+typedef CoordStruct* (IPersistStream::*Fn04C_Path)(CoordStruct* out, int ctx);
 
 struct PathVtbl
 {

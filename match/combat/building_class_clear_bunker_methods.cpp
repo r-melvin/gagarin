@@ -56,11 +56,11 @@ void Building_00459470::ClearBunker()
             PlayAnim(name, 13, damaged, 0, 0);
 
         (this->*static_cast<Vtbl_00459470*>(
-            _vtable_IPersistStream)->At_274)(3);
+            PrimaryVTable())->At_274)(3);
         BunkerLinkedItem->BunkerLinkedItem = 0;
         BunkerLinkedItem = 0;
         unknown_718 = 0;
         (this->*static_cast<Vtbl_00459470*>(
-            _vtable_IPersistStream)->At_1E8)(5, 0);
+            PrimaryVTable())->At_1E8)(5, 0);
     }
 }

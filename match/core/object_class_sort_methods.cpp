@@ -53,14 +53,13 @@ struct ObjectClassSortCallView
 struct ObjectClassPrimaryVtablePrefix
 {
     void* unknown_00[46];
-    int (ObjectClass::*unknown_B8)();
+    int (IPersistStream::*unknown_B8)();
 };
-typedef int (ObjectClass::*ObjectClassSortKeyMember)();
+typedef int (IPersistStream::*ObjectClassSortKeyMember)();
 GG_STATIC_ASSERT(offsetof(ObjectClassPrimaryVtablePrefix, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(ObjectClassPrimaryVtablePrefix, unknown_B8) == 0xB8);
 GG_STATIC_ASSERT(sizeof(ObjectClassPrimaryVtablePrefix) == 0xBC);
 GG_STATIC_ASSERT(sizeof(ObjectClassSortKeyMember) == 4);
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0x00);
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 
 // FUNCTION: GAMEMD 0x5F6220

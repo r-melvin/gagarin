@@ -22,7 +22,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/object_class.h"   // ObjectClass : AbstractClass
 
-GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   AttachedBomb)  == 0x38);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   IsAlive)       == 0x90);
 
@@ -47,7 +47,7 @@ struct ObjectUnInit : ObjectClass
     void UnInit();
 };
 
-typedef int (ObjectUnInit::*FnD4_UnInit)();
+typedef int (IPersistStream::*FnD4_UnInit)();
 
 struct UnInitVtbl
 {

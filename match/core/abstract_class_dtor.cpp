@@ -1,25 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Retail 0x4101F0 reinstalls the four AbstractClass vptrs and returns.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+//   /Ob2: the scalar deleting destructor 0x4105A0 carries the destructor body
+//   (the four vptr stores) inline, while 0x4101F0 also exists out of line and
+//   is called by derived destructors (0x4109C0). Plain /O2 calls 0x4101F0.
+// Retail 0x4101F0 reinstalls the four AbstractClass vptrs and returns. The
+// interfaces have no destructors, so their tables are not restored.
 #include "../_layout/abstract_class.h"
-// VTABLE: GAMEMD 0x007E1F50
-extern char VT_007E1F50;
-// VTABLE: GAMEMD 0x007E1F34
-extern char VT_007E1F34;
-// VTABLE: GAMEMD 0x007E1F2C
-extern char VT_007E1F2C;
-// VTABLE: GAMEMD 0x007E1F24
-extern char VT_007E1F24;
-GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_IPersistStream) == 0x00);
-GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_IRTTITypeInfo) == 0x04);
-GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_INoticeSink) == 0x08);
-GG_STATIC_ASSERT(offsetof(AbstractClass, _vtable_INoticeSource) == 0x0C);
 
 // FUNCTION: GAMEMD 0x4101F0
 AbstractClass::~AbstractClass()
 {
-    _vtable_IPersistStream = &VT_007E1F50;
-    _vtable_IRTTITypeInfo = &VT_007E1F34;
-    _vtable_INoticeSink = &VT_007E1F2C;
-    _vtable_INoticeSource = &VT_007E1F24;
 }
+
+// SYNTHETIC: GAMEMD 0x4105A0 -- compiler-generated scalar deleting destructor.
+// SYNTHETIC: GAMEMD 0x4105E0 -- compiler-generated IRTTITypeInfo QI adjustor thunk.
+// SYNTHETIC: GAMEMD 0x4105F0 -- compiler-generated IRTTITypeInfo AddRef adjustor thunk.
+// SYNTHETIC: GAMEMD 0x410600 -- compiler-generated IRTTITypeInfo Release adjustor thunk.

@@ -44,8 +44,7 @@ struct CrushTechnoObjectView : ObjectClass
     char unknown_220[0x2A4 - 0x220];
     bool Uncrushable;
 };
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
-GG_STATIC_ASSERT(offsetof(ObjectClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(ObjectClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(CrushTechnoObjectView, Owner) == 0x21C);
 GG_STATIC_ASSERT(offsetof(CrushTechnoObjectView, Uncrushable) == 0x2A4);
 
@@ -54,10 +53,10 @@ GG_STATIC_ASSERT(offsetof(CrushTechnoObjectView, Uncrushable) == 0x2A4);
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct Vtbl_005F6CD0;
 
-typedef int              (ObjectClass::*Fn02C_005F6CD0)();
-typedef CrushTechnoTypeView* (ObjectClass::*Fn084_005F6CD0)();
-typedef ObjectTypeClass* (ObjectClass::*Fn088_005F6CD0)();
-typedef bool             (ObjectClass::*Fn160_005F6CD0)();
+typedef int              (IPersistStream::*Fn02C_005F6CD0)();
+typedef CrushTechnoTypeView* (IPersistStream::*Fn084_005F6CD0)();
+typedef ObjectTypeClass* (IPersistStream::*Fn088_005F6CD0)();
+typedef bool             (IPersistStream::*Fn160_005F6CD0)();
 
 struct Vtbl_005F6CD0
 {
@@ -86,7 +85,7 @@ inline const CrushTechnoObjectView* CrushTechno(const ObjectClass* object)
 // Inlined helper: is the object a techno (AbstractFlags bit 0), null-safe.
 inline bool IsTechno_005F6CD0(ObjectClass* object)
 {
-    return object != 0 && (object->AbstractFlags & 1) != 0;
+    return object != 0 && object->Flags.IsTechno;
 }
 
 #endif  // GG_MATCH_CORE_OBJECT_CLASS_CRUSHABLE_METHODS_H

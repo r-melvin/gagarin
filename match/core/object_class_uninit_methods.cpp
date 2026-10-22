@@ -16,7 +16,7 @@ void ObjectUnInit::UnInit()
     if (this->AttachedBomb != 0)
         ((UnInitBomb*)this->AttachedBomb)->Disarm();
 
-    if (this != 0 && (this->AbstractFlags & 1))
+    if (this != 0 && this->Flags.IsTechno)
         this->KillPassengers(0);
 
     this->AnnounceExpiredPointer(1);

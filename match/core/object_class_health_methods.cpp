@@ -16,7 +16,6 @@ struct ObjectHealthVtablePrefix
     char unknown_00[0x88];
     ObjectHealthGetType GetType;
 };
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0x00);
 GG_STATIC_ASSERT(offsetof(ObjectClass, Health) == 0x6C);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Strength) == 0xA0);
 GG_STATIC_ASSERT(offsetof(ObjectHealthVtablePrefix, GetType) == 0x88);
@@ -27,13 +26,13 @@ double ObjectClass::GetHealthPercentage() const
 {
     double health = Health;
     const ObjectHealthVtablePrefix* vtable =
-        static_cast<const ObjectHealthVtablePrefix*>(_vtable_IPersistStream);
+        static_cast<const ObjectHealthVtablePrefix*>(PrimaryVTable());
     return health / vtable->GetType(this)->Strength;
 }
 
 #define OBJECT_HEALTH_TYPE(object) \
     (static_cast<const ObjectHealthVtablePrefix*>( \
-        (object)->_vtable_IPersistStream)->GetType(object))
+        (object)->PrimaryVTable())->GetType(object))
 
 // FUNCTION: GAMEMD 0x5F5D20
 // Two separate virtual calls and ratio evaluations occur in retail. The

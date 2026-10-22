@@ -30,6 +30,13 @@ GG_STATIC_ASSERT(offsetof(TTriggerListNode, Value) == 0x34);
 class TriggerTypeClass : public AbstractTypeClass
 {
 public:
+    // Overrides of the slots AbstractClass leaves pure (primary table
+    // slots 3, 5, 6, 11, 12; declarations only, bodies not modelled here).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x727BB0
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x727BF0
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x727C80
+    virtual int vf_11();                                                  // 11  0x727CA0
+    virtual int vf_12();                                                  // 12  0x727CB0
     // FUNCTION: GAMEMD 0x726C80 (constructor declaration)
     TriggerTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x726F50
@@ -55,7 +62,11 @@ public:
     // FUNCTION: GAMEMD 0x727AA0
     static TriggerTypeClass* __fastcall FindOrAllocate(const char* id);
     int ArrayIndex;
-    unsigned char Difficulty[3];
+    // +0x9C..+0x9E: three per-difficulty flags, set separately by the
+    // constructor's member initialisers (0x726C80).
+    unsigned char Difficulty_9C;
+    unsigned char Difficulty_9D;
+    unsigned char Difficulty_9E;
     unsigned char Enabled;
     unsigned char unknown_A0;
     unsigned char unknown_A1[3];
@@ -67,7 +78,8 @@ public:
     static DynamicVectorClassLayout Array;
 };
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, ArrayIndex) == 0x98);
-GG_STATIC_ASSERT(offsetof(TriggerTypeClass, Difficulty) == 0x9C);
+GG_STATIC_ASSERT(offsetof(TriggerTypeClass, Difficulty_9C) == 0x9C);
+GG_STATIC_ASSERT(offsetof(TriggerTypeClass, Difficulty_9E) == 0x9E);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, Enabled) == 0x9F);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, unknown_A0) == 0xA0);
 GG_STATIC_ASSERT(offsetof(TriggerTypeClass, unknown_A1) == 0xA1);

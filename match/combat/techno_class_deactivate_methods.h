@@ -17,7 +17,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/foot_class.h"   // FootClass : TechnoClass : ... : AbstractClass
 
-GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   Location)      == 0x9C);
 GG_STATIC_ASSERT(offsetof(TechnoClass,   Deactivated)   == 0x1C8);
 GG_STATIC_ASSERT(offsetof(FootClass,     Locomotor)     == 0x674);
@@ -55,10 +55,10 @@ struct TechnoDeactivate : TechnoClass
 };
 GG_STATIC_ASSERT(offsetof(TechnoDeactivate, IsTether) == 0x418);
 
-typedef void       (TechnoDeactivate::*Fn3D0_Deact)();
-typedef void       (TechnoDeactivate::*Fn150_Deact)();
-typedef DeactType* (TechnoDeactivate::*Fn084_Deact)();
-typedef DeactCell* (TechnoDeactivate::*Fn1BC_Deact)();
+typedef void       (IPersistStream::*Fn3D0_Deact)();
+typedef void       (IPersistStream::*Fn150_Deact)();
+typedef DeactType* (IPersistStream::*Fn084_Deact)();
+typedef DeactCell* (IPersistStream::*Fn1BC_Deact)();
 
 struct DeactVtbl
 {

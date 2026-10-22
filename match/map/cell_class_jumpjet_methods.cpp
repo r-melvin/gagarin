@@ -9,15 +9,13 @@
 // otherwise the claim succeeds only if the slot is free or already held by the
 // same object.
 //
-// PARTIAL, 97.7% (42/43). Retail's inlined checked downcast for the release
-// call reads the flag as a byte (`MOV CL,[EAX+0x14]; AND CL,4`); reading the
-// int flag word here gives `MOV ECX,[EAX+0x14]`, the single differing
-// instruction.
+// Retail's inlined checked downcast reads the flag as a byte
+// (`MOV CL,[EAX+0x14]; AND CL,4`), which the bit-field flag byte reproduces.
 
-// The AbstractFlags bit-2 probe on the int flag word, null-safe.
+// The IsFoot (bit 2) probe on the flag byte, null-safe.
 static __inline bool is_foot(ObjectClass* object)
 {
-    return object != 0 && (object->AbstractFlags & ABSFLAGS_ISFOOT) != 0;
+    return object != 0 && object->Flags.IsFoot;
 }
 
 // The engine's checked downcast, null case first.
@@ -27,7 +25,7 @@ static __inline ObjectClass* foot_cast(ObjectClass* object)
     if (object == 0)
         foot = 0;
     else
-        foot = (object->AbstractFlags & ABSFLAGS_ISFOOT) ? object : 0;
+        foot = object->Flags.IsFoot ? object : 0;
     return foot;
 }
 

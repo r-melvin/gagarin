@@ -55,8 +55,8 @@ struct FootWeed : FootClass
     bool MoveToWeed(int radius);
 };
 
-typedef CoordStruct* (FootWeed::*Fn048_Weed)(CoordStruct* out);
-typedef void         (FootWeed::*Fn480_Weed)(void* dest, bool unk);
+typedef CoordStruct* (IPersistStream::*Fn048_Weed)(CoordStruct* out);
+typedef void         (IPersistStream::*Fn480_Weed)(void* dest, bool unk);
 
 struct WeedVtbl
 {

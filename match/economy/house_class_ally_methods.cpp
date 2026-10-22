@@ -17,16 +17,16 @@
 #include "house_class_ally_methods.h"
 
 // Primary slot +0x3C is read by the object overload at 0x4F9A90.
-// The shared ObjectClass is an explicit-vptr layout, not a full virtual model.
-// The member-pointer owner models the call ABI; original virtual declaration
-// ownership and complete dynamic tables remain unproven here.
-typedef HouseClass* (ObjectClass::*HouseGetOwningHouse)() const;
+// The shared ObjectClass does not yet declare its game virtuals. The member
+// pointer is owned by IPersistStream, the subobject that holds the primary
+// table, which keeps the single-inheritance call ABI; original virtual
+// declaration ownership and complete dynamic tables remain unproven here.
+typedef HouseClass* (IPersistStream::*HouseGetOwningHouse)() const;
 struct HouseObjectVtablePrefix
 {
     char unknown_00[0x3C];
     HouseGetOwningHouse GetOwningHouse;
 };
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
 GG_STATIC_ASSERT(offsetof(HouseObjectVtablePrefix, GetOwningHouse) == 0x3C);
 GG_STATIC_ASSERT(sizeof(HouseGetOwningHouse) == 4);
 
@@ -58,7 +58,7 @@ bool HouseClass::IsAlliedWith(ObjectClass const* pObject) const
 {
     if (pObject) {
         const HouseObjectVtablePrefix* vtable =
-            static_cast<const HouseObjectVtablePrefix*>(pObject->_vtable_IPersistStream);
+            static_cast<const HouseObjectVtablePrefix*>(pObject->PrimaryVTable());
         HouseClass* pHouse = (pObject->*vtable->GetOwningHouse)();
         if (pHouse) {
             if (pHouse == this) return true;

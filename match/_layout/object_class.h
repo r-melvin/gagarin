@@ -61,6 +61,8 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 class ObjectClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5F3B80 (declaration; destructor)
+    virtual ~ObjectClass();
     // FUNCTION: GAMEMD 0x5F5B50
     bool AttachTrigger(TagClass* tag);
     // FUNCTION: GAMEMD 0x5F5C60

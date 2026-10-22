@@ -22,7 +22,6 @@
 // Reuse the shared CellClass layout for the signed terrain-level byte read
 // by 0x5F5F00. The primary slot views model only the observed call ABI.
 GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
 GG_STATIC_ASSERT(offsetof(ObjectClass, OnBridge) == 0x8C);
 GG_STATIC_ASSERT(offsetof(ObjectClass, IsOnMap) == 0x74);
 typedef CellClass* (__fastcall* ObjectLevelGetCell)(const ObjectClass*);

@@ -6,13 +6,12 @@
 // the slot-call view does not establish the original virtual declaring class.
 #include "../_layout/object_class.h"
 
-typedef CoordStruct* (ObjectClass::*ObjectYSortGetCoords)(CoordStruct*) const;
+typedef CoordStruct* (IPersistStream::*ObjectYSortGetCoords)(CoordStruct*) const;
 struct ObjectYSortVtablePrefix
 {
     char unknown_00[0xAC];
     ObjectYSortGetCoords GetTargetCoords;
 };
-GG_STATIC_ASSERT(offsetof(ObjectClass, _vtable_IPersistStream) == 0);
 GG_STATIC_ASSERT(offsetof(ObjectYSortVtablePrefix, GetTargetCoords) == 0xAC);
 GG_STATIC_ASSERT(sizeof(ObjectYSortGetCoords) == 4);
 GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0);
@@ -25,7 +24,7 @@ int ObjectClass::GetYSort() const
     CoordStruct coord1;
     CoordStruct coord2;
     return (this->*static_cast<const ObjectYSortVtablePrefix*>(
-                _vtable_IPersistStream)->GetTargetCoords)(&coord1)->Y
+                PrimaryVTable())->GetTargetCoords)(&coord1)->Y
         + (this->*static_cast<const ObjectYSortVtablePrefix*>(
-                _vtable_IPersistStream)->GetTargetCoords)(&coord2)->X;
+                PrimaryVTable())->GetTargetCoords)(&coord2)->X;
 }

@@ -51,6 +51,6 @@ void FootMore::UpdatePassengerCoords()
             ((PassengerObj*)p)->SetLocation(&crd);
             p = ((ObjectClass*)p)->NextObject;
         }
-        while (p != NULL && (((AbstractClass*)p)->AbstractFlags & 4) != 0);
+        while (p != NULL && ((AbstractClass*)p)->Flags.IsFoot);
     }
 }

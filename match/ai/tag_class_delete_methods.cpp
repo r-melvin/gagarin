@@ -10,7 +10,7 @@
 // FUNCTION: GAMEMD 0x6E58B0
 void* TagClass::FUN_006E58B0(unsigned int flags)
 {
-    this->~TagClass();
+    this->TagClass::~TagClass();
     if (flags & 1)
         ::operator delete(this);
     return this;

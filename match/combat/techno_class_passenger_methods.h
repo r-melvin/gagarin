@@ -21,7 +21,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/object_class.h"   // ObjectClass: AbstractFlags @0x14, NextObject @0x30
 
-GG_STATIC_ASSERT(offsetof(AbstractClass, AbstractFlags) == 0x14);
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   NextObject)    == 0x30);
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
@@ -32,8 +32,8 @@ struct PassengerVtbl;
 // `MOV CL,[EAX+0x14]; SHR CL,2; AND CL,1` — a one-bit field of a byte, not an
 // int mask. Only the low byte of the flag word is modelled; NextObject threads
 // the cargo chain; slot +0xD4 is the limbo virtual. Modelled standalone rather
-// than over ../_layout/object_class.h because the spine types AbstractFlags as
-// a plain int, which cannot produce the bit-field read.
+// than over ../_layout/object_class.h; the spine's AbstractClass::Flags uses the
+// same bit-field layout.
 struct PassengerObj
 {
     void*         _vtable;         // +0x0000 (PassengerVtbl*)

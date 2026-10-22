@@ -17,7 +17,7 @@ int Building_0044E7B0::GetPowerOutput() const
 {
     int output = this->Type->PowerBonus;
 
-    if ((this->*static_cast<Vtbl_0044E7B0*>(_vtable_IPersistStream)->IsBeingWarpedOut)())
+    if ((this->*static_cast<Vtbl_0044E7B0*>(PrimaryVTable())->IsBeingWarpedOut)())
         return 0;
 
     if (this->HasExtraPowerBonus)

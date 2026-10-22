@@ -68,7 +68,6 @@ struct Building_0044E7B0 : ObjectClass
     // FUNCTION: GAMEMD 0x44E7B0
     int GetPowerOutput() const;
 };
-GG_STATIC_ASSERT(offsetof(Building_0044E7B0, _vtable_IPersistStream) == 0);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, Health) == 0x6C);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, NumPassengers)      == 0x114);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, Type)               == 0x520);
@@ -77,7 +76,7 @@ GG_STATIC_ASSERT(offsetof(Building_0044E7B0, HasPower)           == 0x660);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, HasExtraPowerBonus) == 0x668);
 GG_STATIC_ASSERT(offsetof(Building_0044E7B0, UpgradeLevel)       == 0x702);
 
-typedef bool (Building_0044E7B0::*Fn1D4_0044E7B0)() const;
+typedef bool (IPersistStream::*Fn1D4_0044E7B0)() const;
 
 struct Vtbl_0044E7B0
 {

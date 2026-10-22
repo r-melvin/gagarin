@@ -57,7 +57,7 @@ void ObjectClass::SetHealthPercentage(double percentage)
     if (percentage > 0.0) {
         this->Health = (int)(
             (static_cast<const ObjectHealthVtablePrefix*>(
-                 this->_vtable_IPersistStream)->GetType(this)->Strength)
+                 this->PrimaryVTable())->GetType(this)->Strength)
             * percentage);
         if (this->Health == 0)
             this->Health = 1;
@@ -71,7 +71,7 @@ bool ObjectClass::IsRedHP() const
 {
     return (double)this->Health
                  / (double)(static_cast<const ObjectHealthVtablePrefix*>(
-                               this->_vtable_IPersistStream)->GetType(this)->Strength)
+                               this->PrimaryVTable())->GetType(this)->Strength)
                <= RulesInstance->ConditionRed
            && this->Health > 0;
 }

@@ -20,9 +20,9 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, Location)   == 0x9C);
 
 // ObjectClass is complete (from the layout header), so these member-function
 // pointers take the 4-byte single-inheritance form — see match/_rt/gg_vslot.h.
-typedef int  (ObjectClass::*FnWhatAmI_0047EA90)();
-typedef bool (ObjectClass::*FnC0_0047EA90)();
-typedef void (ObjectClass::*FnF4_0047EA90)(CoordStruct* coord);
+typedef int  (IPersistStream::*FnWhatAmI_0047EA90)();
+typedef bool (IPersistStream::*FnC0_0047EA90)();
+typedef void (IPersistStream::*FnF4_0047EA90)(CoordStruct* coord);
 
 // The primary (IPersistStream-side) vtable of ObjectClass, only the three slots
 // RemoveContent dispatches through.

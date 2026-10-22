@@ -16,7 +16,7 @@
 int ObjectClass::GetCellLevel() const
 {
     CellClass* cell = static_cast<const ObjectLevelVtablePrefix*>(
-        _vtable_IPersistStream)->GetCell(this);
+        PrimaryVTable())->GetCell(this);
     return cell->Level + (OnBridge ? 4 : 0);
 }
 
@@ -26,7 +26,7 @@ bool ObjectClass::IsOnFloor() const
 {
     if (IsOnMap) {
         if (static_cast<const ObjectLevelVtablePrefix*>(
-                _vtable_IPersistStream)->GetHeight(this) < FlightLevel * 2)
+                PrimaryVTable())->GetHeight(this) < FlightLevel * 2)
             return true;
     }
     return false;
@@ -39,7 +39,7 @@ bool ObjectClass::IsInAir() const
 {
     if (IsOnMap) {
         if (static_cast<const ObjectLevelVtablePrefix*>(
-                _vtable_IPersistStream)->GetHeight(this) >= FlightLevel * 2)
+                PrimaryVTable())->GetHeight(this) >= FlightLevel * 2)
             return true;
     }
     return false;

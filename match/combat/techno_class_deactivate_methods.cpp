@@ -23,7 +23,7 @@ void TechnoDeactivate::Deactivate()
     (this->*(*(DeactVtbl**)this)->At_3D0)();
     (this->*(*(DeactVtbl**)this)->At_150)();
 
-    if (this != 0 && (((AbstractClass*)(void*)this)->AbstractFlags & 4))
+    if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
     {
         FootClass* foot = (FootClass*)this;
         if (foot->Locomotor == 0)
