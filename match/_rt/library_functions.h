@@ -24,6 +24,15 @@
 //   of the 16-byte `found_bx` block of the debug CRT's strchr.obj, which
 //   splits the assembler strchr at that label.
 //
+//   Imported third-party APIs have direct JMP [IAT] entries at 0x7C89F2-
+//   0x7C8A88. The seven COMCTL32 imports and thirteen Bink imports are
+//   observed in the retail import directory; the forwarding bytes are six
+//   bytes each.
+//
+//   0x7CA5D3 is the CRT wide-string compare: its binary loop compares UTF-16
+//   code units until a difference or NUL and returns -1/0/1. This is wcscmp,
+//   not a case-insensitive comparison.
+//
 //   Linker import thunks at 0x7DCE62-0x7DCFC3: 59 six-byte
 //   `JMP dword ptr [__imp_X]` stubs (53 KERNEL32, 6 OLEAUT32 by ordinal),
 //   each resolved through the retail import address table. They come from
@@ -126,6 +135,27 @@
 // LIBRARY: GAMEMD 0x7c89ec
 // VERSION!GetFileVersionInfoSizeA
 
+// LIBRARY: GAMEMD 0x7c89f2
+// COMCTL32!ImageList_DragEnter
+
+// LIBRARY: GAMEMD 0x7c89f8
+// COMCTL32!ImageList_BeginDrag
+
+// LIBRARY: GAMEMD 0x7c89fe
+// COMCTL32!ImageList_Destroy
+
+// LIBRARY: GAMEMD 0x7c8a04
+// COMCTL32!ImageList_EndDrag
+
+// LIBRARY: GAMEMD 0x7c8a0a
+// COMCTL32!ImageList_DragMove
+
+// LIBRARY: GAMEMD 0x7c8a10
+// COMCTL32!ImageList_DragShowNolock
+
+// LIBRARY: GAMEMD 0x7c8a16
+// COMCTL32!ordinal 17
+
 // LIBRARY: GAMEMD 0x7c8a1c
 // IMM32!ImmAssociateContext
 
@@ -143,6 +173,45 @@
 
 // LIBRARY: GAMEMD 0x7c8a3a
 // IMM32!ImmSetOpenStatus
+
+// LIBRARY: GAMEMD 0x7c8a40
+// binkw32!_BinkClose@4
+
+// LIBRARY: GAMEMD 0x7c8a46
+// binkw32!_BinkDDSurfaceType@4
+
+// LIBRARY: GAMEMD 0x7c8a4c
+// binkw32!_BinkSetVolume@8
+
+// LIBRARY: GAMEMD 0x7c8a52
+// binkw32!_BinkGetError@0
+
+// LIBRARY: GAMEMD 0x7c8a58
+// binkw32!_BinkOpen@8
+
+// LIBRARY: GAMEMD 0x7c8a5e
+// binkw32!_BinkSetSoundSystem@8
+
+// LIBRARY: GAMEMD 0x7c8a64
+// binkw32!_BinkOpenDirectSound@4
+
+// LIBRARY: GAMEMD 0x7c8a6a
+// binkw32!_BinkGoto@12
+
+// LIBRARY: GAMEMD 0x7c8a70
+// binkw32!_BinkPause@8
+
+// LIBRARY: GAMEMD 0x7c8a76
+// binkw32!_BinkNextFrame@4
+
+// LIBRARY: GAMEMD 0x7c8a7c
+// binkw32!_BinkCopyToBuffer@28
+
+// LIBRARY: GAMEMD 0x7c8a82
+// binkw32!_BinkDoFrame@4
+
+// LIBRARY: GAMEMD 0x7c8a88
+// binkw32!_BinkWait@4
 
 // CRT (LIBCMT.LIB), 0x7c8a8e-0x7c9442.
 // LIBRARY: GAMEMD 0x7c8a8e
@@ -207,6 +276,9 @@
 
 // LIBRARY: GAMEMD 0x7c9430
 // _malloc
+
+// LIBRARY: GAMEMD 0x7ca5d3
+// _wcscmp
 
 // CRT strchr fragment.
 // LIBRARY: GAMEMD 0x7caf20
