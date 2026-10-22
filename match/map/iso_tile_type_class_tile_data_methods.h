@@ -69,11 +69,16 @@ public:
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x0A4 - 0x004];
     TileImageHeader* unknown_A4;                 // +0x0A4
-    char             _pad_0A8[0x2F4 - 0x0A8];
+    char             _pad_0A8[0x2E4 - 0x0A8];
+    int              unknown_2E4;              // +0x2E4 sub-tile columns (loop bound in 0x5A7E90 / 0x5A7FA0)
+    int              unknown_2E8;              // +0x2E8 sub-tile rows
+    char             _pad_2EC[0x2F4 - 0x2EC];
     unsigned char    TileDataLoadable;         // +0x2F4
 };
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E4)        == 0x2E4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E8)        == 0x2E8);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, TileDataLoadable) == 0x2F4);
 
 // The class has to be complete before this typedef, or VC6 falls back to the

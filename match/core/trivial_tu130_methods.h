@@ -53,6 +53,8 @@ struct Gbl_00ABE890
 {
     // FUNCTION: GAMEMD 0x65C6D0
     void FUN_0065C6D0(int);
+    // FUNCTION: GAMEMD 0x65C780 (declaration) -- the raw 32-bit draw.
+    unsigned int FUN_0065C780();
 };
 
 struct Obj_00597D40

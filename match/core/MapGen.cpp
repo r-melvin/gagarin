@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit MapGen.cpp. The name is the source-file string at 0x82ba48
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5956ec inside this object's
@@ -101,10 +102,14 @@ extern void* DAT_00B77F60;
 #include "trivial_tu130_methods.h"
 
 #include "vector_class_operations.h"
+#include "MapGen.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-struct Cell { short X; short Y; Cell() {} bool operator==(const Cell& o) const { return X==o.X && Y==o.Y; } bool operator!=(const Cell& o) const { return !(*this==o); } };
+// Cell (canonical _layout/cell.h, through MapGen.h): the element compares the
+// VectorClass<Cell> bodies inline.
+inline bool Cell::operator==(const Cell& o) const { return X==o.X && Y==o.Y; }
+inline bool Cell::operator!=(const Cell& o) const { return !(*this==o); }
 
 template class DynamicVectorClass<Cell>;
 
@@ -118,7 +123,6 @@ struct Point2D { int X; int Y; Point2D() {} bool operator==(const Point2D& o) co
 
 template class DynamicVectorClass<Point2D>;
 
-template<class T> struct TRect { T X; T Y; T Width; T Height; TRect() {} bool operator==(const TRect<T>& o) const { return X==o.X && Y==o.Y && Width==o.Width && Height==o.Height; } bool operator!=(const TRect<T>& o) const { return !(*this==o); } };
 
 template class DynamicVectorClass<TRect<int> >;
 
@@ -217,14 +221,6 @@ struct Cell_005A7250
     bool FUN_00486670();
 };
 
-struct Map_005A7250
-{
-    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc)
-    Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
-};
-
-// GLOBAL: GAMEMD 0x87F7E8
-extern Map_005A7250 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0xABED04
 extern int DAT_00ABED04;
 // GLOBAL: GAMEMD 0xABED08
@@ -276,6 +272,25 @@ extern int DAT_00ABECEC;
 extern int DAT_00ABECF0;
 // GLOBAL: GAMEMD 0xABECF8
 extern double DAT_00ABECF8;
+
+
+// ---- from the former MapGen.cpp ----
+//   File name attested by the assert string "D:\ra2mdpost\MapGen.cpp" at
+//   0x0082BA48 in retail gamemd.exe v1.001 (the localised-string lookups at
+//   0x595710 and 0x597380 pass it with line 0xF5E). Bytes matched against
+//   retail at each address below. Ordered ascending by retail address.
+//
+//   MapRegionClass is attested by RTTI .?AV?$VectorClass@PAVMapRegionClass@@@@
+//   and .?AV?$DynamicVectorClass@PAVMapRegionClass@@@@ (type descriptors
+//   0x0082B9A0 and 0x0082B9D0); its member layout, the CellClass view and the
+//   other record types here are read from the bodies, with placeholder names.
+//
+//   /Ob2: retail expands the MapRegionClass destructor (out-of-line copy at
+//   0x58C070) inline in the delete loops at 0x58C100 and 0x58CE90, which the
+//   default /Ob1 does not do for an out-of-class destructor.
+
+// LIBRARY: GAMEMD 0x7C8B3D -- operator delete(void*), ??3@YAXPAX@Z.
+// LIBRARY: GAMEMD 0x7C5F00 -- __ftol (the double to integer conversion).
 
 // FUNCTION: GAMEMD 0x58B560
 // Static-initialiser shape: stores a floating-point expression of globals.
@@ -360,11 +375,29 @@ int __cdecl FUN_0058B810()
     return DAT_00ABECD0;
 }
 
+// FUNCTION: GAMEMD 0x58BB00
+Pair_8* __fastcall FUN_0058BB00(Pair_8* a1, int a2)
+{
+    if (a2 >= 0 && a2 < DAT_00ABED0C) {
+        *a1 = DAT_00ABE328[a2];
+    } else {
+        Pair_8 z = { 0, 0 };
+        *a1 = z;
+    }
+    return a1;
+}
+
 // FUNCTION: GAMEMD 0x58BCD0
 // Branching.
 int FUN_0058BCD0(int a1)
 {
     return a1 == 1 || a1 == 3 || a1 == 4;
+}
+
+// FUNCTION: GAMEMD 0x58BCF0
+bool __fastcall FUN_0058BCF0(int a1)
+{
+    return !Inline_0058BCF0(a1);
 }
 
 // FUNCTION: GAMEMD 0x58BD20
@@ -386,6 +419,277 @@ int FUN_0058BD40(int a1)
 int FUN_0058BD60(int a1)
 {
     return a1 == 3 || a1 == 4;
+}
+
+// FUNCTION: GAMEMD 0x58BD80
+bool __fastcall FUN_0058BD80(int a1, int a2)
+{
+    switch (a1) {
+    case 0:
+        return a2 == 3;
+    case 1:
+    case 3:
+    case 4:
+        return a2 != 3;
+    case 2:
+        return true;
+    default:
+        return false;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58BF70
+MapRegionClass::MapRegionClass(CellStruct a1)
+    : unknown_00(0), unknown_04(0), unknown_08(DAT_00ABED14), unknown_0C(0),
+      unknown_10(DAT_0087F7E8.FUN_005657A0(&a1)->unknown_11B),
+      unknown_14(DAT_0087F7E8.FUN_005657A0(&a1)->FUN_004865D0()),
+      unknown_16(a1), unknown_1A(0), unknown_1B(1), unknown_1C(0), unknown_20(0), unknown_24(0),
+      unknown_28(0, 0), unknown_40(0), unknown_44(0), unknown_48(0), unknown_4C(0)
+{
+    unknown_28.CapacityIncrement = 100000;
+    DAT_00ABED14++;
+    DAT_00ABDF90.AddItem(this);
+}
+
+// FUNCTION: GAMEMD 0x58C070
+MapRegionClass::~MapRegionClass()
+{
+    if (unknown_00) {
+        delete unknown_00;
+        unknown_00 = 0;
+    }
+    DAT_00ABDF90.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x58C100
+void __fastcall FUN_0058C100()
+{
+    DAT_00ABED14 = 0;
+    for (int i = DAT_00ABDF90.Count - 1; i >= 0; i--) {
+        MapRegionClass* p = DAT_00ABDF90.Items[i];
+        if (p)
+            delete p;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58C2D0
+void MapRegionClass::FUN_0058C2D0()
+{
+    unknown_0C = 0;
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        Rec_50* c = &DAT_00ABED10[i];
+        if (c->unknown_38 == unknown_08 && (c->unknown_00.X || c->unknown_00.Y))
+            unknown_0C++;
+    }
+}
+
+// FUNCTION: GAMEMD 0x58C320
+void MapRegionClass::FUN_0058C320(CellStruct* a1)
+{
+    unsigned int n = DAT_0089C2DC * DAT_0089C2DC;
+    unsigned int idx;
+    do {
+        idx = Inline_0058C320(n - 1);
+    } while (DAT_00ABED10[idx].unknown_38 != unknown_08 ||
+             (DAT_00ABED10[idx].unknown_00.X == 0 && DAT_00ABED10[idx].unknown_00.Y == 0));
+    *a1 = DAT_00ABED10[idx].unknown_00;
+}
+
+// FUNCTION: GAMEMD 0x58C3B0
+void MapRegionClass::FUN_0058C3B0(CellStruct* a1)
+{
+    int tries = 0;
+    for (;;) {
+        unsigned int n = DAT_0089C2DC * DAT_0089C2DC;
+        unsigned int idx;
+        do {
+            idx = Inline_0058C320(n - 1);
+        } while (DAT_00ABED10[idx].unknown_38 != unknown_08 ||
+                 (DAT_00ABED10[idx].unknown_00.X == 0 && DAT_00ABED10[idx].unknown_00.Y == 0));
+        CellStruct c = DAT_00ABED10[idx].unknown_00;
+        tries++;
+        if (tries > 200)
+            break;
+        if (DAT_0087F7E8.FUN_005657A0(&c)->FUN_00486380()) {
+            *a1 = c;
+            return;
+        }
+    }
+    CellStruct z;
+    z.X = 0;
+    z.Y = 0;
+    *a1 = z;
+}
+
+// FUNCTION: GAMEMD 0x58CE90
+void __fastcall FUN_0058CE90()
+{
+    if (DAT_00ABED10 != 0) {
+        int n = DAT_0089C2DC * DAT_0089C2DC;
+        for (int i = 0; i < n; i++) {
+            DAT_00ABED10[i].unknown_38 = -1;
+            DAT_00ABED10[i].unknown_3C = -1;
+        }
+    }
+    for (int j = DAT_00ABDF90.Count - 1; j >= 0; j--) {
+        MapRegionClass* p = DAT_00ABDF90.Items[j];
+        if (p)
+            delete p;
+    }
+    DAT_00ABED14 = 0;
+}
+
+// FUNCTION: GAMEMD 0x58D010
+void __fastcall FUN_0058D010(char a1)
+{
+    int n = DAT_0089C2DC * DAT_0089C2DC;
+    for (int i = 0; i < n; i++) {
+        Rec_50* c = &DAT_00ABED10[i];
+        if (c->unknown_38 == -1 && (c->unknown_00.X || c->unknown_00.Y)) {
+            Rec_0058C800Ret* r = DAT_0087F7E8.FUN_005657A0(&c->unknown_00)->FUN_0058C800();
+            if (r)
+                r->unknown_1A = a1;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x58D5A0
+void MapRegionClass::FUN_0058D5A0(char a1)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        int id;
+        if (DAT_00ABED10 == 0)
+            id = -1;
+        else
+            id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+        if (id == unknown_08)
+            it->unknown_11B += a1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x594010
+bool MapRegionClass::FUN_00594010(Rect_4i* a1, int a2)
+{
+    CellStruct c;
+    c.X = a1->unknown_00;
+    c.Y = a1->unknown_04;
+    if (DAT_0087F7E8.FUN_00578460(&c, 1)) {
+        c.X = a1->unknown_08 + a1->unknown_00 - 1;
+        c.Y = a1->unknown_04;
+        if (DAT_0087F7E8.FUN_00578460(&c, 1)) {
+            c.X = a1->unknown_00;
+            c.Y = a1->unknown_04 + a1->unknown_0C - 1;
+            if (DAT_0087F7E8.FUN_00578460(&c, 1)) {
+                c.X = a1->unknown_08 + a1->unknown_00 - 1;
+                c.Y = a1->unknown_04 + a1->unknown_0C - 1;
+                if (DAT_0087F7E8.FUN_00578460(&c, 1)) {
+                    for (int y = a1->unknown_04; y < a1->unknown_04 + a1->unknown_0C; y++) {
+                        for (int x = a1->unknown_00; x < a1->unknown_08 + a1->unknown_00; x++) {
+                            c.X = (short)x;
+                            c.Y = (short)y;
+                            int owner;
+                            if (DAT_00ABED10 == 0)
+                                owner = -1;
+                            else
+                                owner = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+                            if (owner != unknown_08 && owner != a2)
+                                return false;
+                            if (!DAT_0087F7E8.FUN_005657A0(&c)->FUN_00486380())
+                                return false;
+                        }
+                    }
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x5942F0
+void MapRegionClass::FUN_005942F0(Rect_4i* a1)
+{
+    for (int y = a1->unknown_04; y < a1->unknown_0C + a1->unknown_04; y++) {
+        for (int x = a1->unknown_00; x < a1->unknown_08 + a1->unknown_00; x++) {
+            CellStruct c;
+            c.X = (short)x;
+            c.Y = (short)y;
+            if (Inline_005942F0(c)) {
+                if (DAT_00ABED10 != 0)
+                    DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38 = unknown_08;
+                DAT_0087F7E8.FUN_005657A0(&c)->unknown_11B = (char)unknown_10;
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x5943E0
+MapRegionClass* __fastcall FUN_005943E0(int a1)
+{
+    for (int i = 0; i < DAT_00ABDF90.Count; i++) {
+        if (DAT_00ABDF90.Items[i]->unknown_08 == a1)
+            return DAT_00ABDF90.Items[i];
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x595710
+void MapSeedClass::FUN_00595710()
+{
+    FUN_007CA489(&unknown_78, FUN_00734E60(DAT_0082BA2C, 0, DAT_0082BA48, 0xF5E));
+}
+
+// FUNCTION: GAMEMD 0x597260
+void MapSeedClass::FUN_00597260(int a1)
+{
+    unknown_4C = DAT_00886B88.FUN_0065C7E0(DAT_0082B0A8[a1], DAT_0082B0BC[a1]);
+    unknown_44 = DAT_00886B88.FUN_0065C7E0(DAT_0082B10C[a1], DAT_0082B120[a1]);
+    unknown_60 = DAT_00886B88.FUN_0065C7E0(DAT_00ABED40[a1], DAT_0082B0F8[a1]);
+    unknown_6C = DAT_00886B88.FUN_0065C7E0(DAT_00ABED18[a1], DAT_0082B0D0[a1]);
+    unknown_70 = DAT_00886B88.FUN_0065C7E0(DAT_0082B080[a1], DAT_0082B094[a1]);
+    unknown_54 = unknown_40 * 0x14;
+    unknown_58 = DAT_00886B88.FUN_0065C7E0(0, 100);
+    int lo = DAT_00ABE260[a1];
+    int hi = DAT_00ABE27C[a1];
+    if (lo < 0)
+        lo = 0;
+    else if (lo > 100)
+        lo = 100;
+    if (hi < 0)
+        hi = 0;
+    else if (hi > 100)
+        hi = 100;
+    if (lo > hi)
+        lo = hi;
+    unknown_5C = DAT_00886B88.FUN_0065C7E0(lo, hi);
+    unknown_74 = DAT_00886B88.FUN_0065C7E0(0, 0xFFFF);
+}
+
+// FUNCTION: GAMEMD 0x597380
+void MapSeedClass::FUN_00597380()
+{
+    unknown_38 = DAT_00886B88.FUN_0065C7E0(0, 100) >= 0x32;
+    unknown_3C = DAT_00886B88.FUN_0065C7E0(1, 4);
+    unknown_48 = DAT_00886B88.FUN_0065C7E0(0, 3);
+    unknown_40 = DAT_00886B88.FUN_0065C7E0(0, 3);
+    unknown_64 = DAT_00886B88.FUN_0065C7E0(0, 3);
+    unknown_68 = unknown_64;
+    FUN_00597260(unknown_3C);
+    FUN_007CA489(&unknown_78, FUN_00734E60(DAT_0082BA2C, 0, DAT_0082BA48, 0xF5E));
+    unknown_74 = DAT_00886B88.FUN_0065C7E0(0, 0xFFFF);
+    FUN_005975E0();
+}
+
+// FUNCTION: GAMEMD 0x597730
+bool MapSeedClass::FUN_00597730(const char* a1)
+{
+    if (a1)
+        return Slot2(a1, &unknown_78);
+    return FUN_00558810((const wchar_t*)&unknown_78) ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x597D40
@@ -423,6 +727,235 @@ void Obj_00597FE0::FUN_00597FE0()
     FUN_00734E60(DAT_0082BC70, 0, DAT_0082BA48, 0x15D6);
 }
 
+// FUNCTION: GAMEMD 0x598180
+double __stdcall FUN_00598180(double a1, double a2, double a3, double a4)
+{
+    double v;
+    if (a1 - a2 > a4 || a1 + a2 < a3) {
+        a2 = (a4 - a3) * 0.5;
+        a1 = a2 + a3;
+    }
+    do {
+        v = DAT_00ABDFB8.FUN_005980C0() * a2 + a1;
+    } while (v < a3 || v > a4);
+    return v;
+}
+
+// FUNCTION: GAMEMD 0x599530
+void __fastcall FUN_00599530(Obj_0059C580* a1)
+{
+    a1->unknown_304 = 0;
+    a1->unknown_308 = 0;
+    if (DAT_00ABED10 != 0) {
+        delete[] DAT_00ABED10;
+        DAT_00ABED10 = 0;
+    }
+    for (int i = DAT_00ABDF90.Count - 1; i >= 0; i--) {
+        MapRegionClass* p = DAT_00ABDF90.Items[i];
+        if (p)
+            delete p;
+    }
+    DAT_00ABED14 = 0;
+    DAT_0087F7E8.FUN_00568BB0(1);
+    // STRING: GAMEMD 0x82BDE4 "RMG: Compute Radar Image\n"
+    FUN_004068E0("RMG: Compute Radar Image\n");
+    DAT_0087F7E8.FUN_00654490(&DAT_0087F8E4);
+    DAT_0087F7E8.FUN_00654650();
+}
+
+// FUNCTION: GAMEMD 0x59A670
+void __stdcall FUN_0059A670(int a1)
+{
+    if (DAT_00A8B230->unknown_3598)
+        DAT_00A8B238.FUN_0069AE90(a1 + 0x63);
+    else
+        DAT_00AC4F58.FUN_00643C50(0, (double)a1, 0xFFFFFFFF, 0xFFFFFFFF);
+}
+
+// FUNCTION: GAMEMD 0x59B6D0
+void __fastcall FUN_0059B6D0()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        if (it->FUN_004865B0()) {
+            for (int i = 0; i < 8; i += 2) {
+                CellClass* n = it->FUN_00481810(i);
+                if (n->FUN_00486380())
+                    n->unknown_38 = DAT_00AA0E18;
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x59BAB0
+bool __stdcall FUN_0059BAB0(CellStruct* a1, Rect_4i* a2, char a3, double a4, double a5)
+{
+    if (a2->unknown_00 == DAT_00ABE2F0.unknown_00 && a2->unknown_04 == DAT_00ABE2F0.unknown_04 &&
+        a2->unknown_08 == DAT_00ABE2F0.unknown_08 && a2->unknown_0C == DAT_00ABE2F0.unknown_0C)
+        return true;
+    if (a3) {
+        double dx = (double)(a1->X - a2->unknown_00 * 2 - a1->Y - 1 + DAT_0087F8DC) * 0.5 -
+                    (double)a2->unknown_08 * 0.5;
+        double dy = (double)(a1->X - a2->unknown_04 * 2 - DAT_0087F8DC - 1 + a1->Y) * 0.5 -
+                    (double)a2->unknown_0C * 0.5;
+        if (dx * dx * a4 + dy * dy * a5 < 1.0)
+            return true;
+    } else {
+        if (a1->X >= a2->unknown_00 && a1->X < a2->unknown_08 + a2->unknown_00 &&
+            a1->Y >= a2->unknown_04 && a1->Y < a2->unknown_0C + a2->unknown_04)
+            return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x59C530
+void __fastcall FUN_0059C530()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        if (it->unknown_38 >= DAT_00ABAD28 && it->unknown_38 < DAT_00ABAD28 + 0x2A) {
+            it->unknown_38 = 0;
+            it->unknown_11A = 0;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x59C800
+bool __stdcall FUN_0059C800(int a1)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        int id;
+        if (DAT_00ABED10 == 0)
+            id = -1;
+        else
+            id = DAT_00ABED10[it->unknown_24.Y * DAT_0089C2DC + it->unknown_24.X].unknown_38;
+        if (id == a1 && (it->unknown_38 == 0 || it->unknown_38 == 0xFFFF))
+            it->unknown_38 = DAT_00AA0E18;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x59D440
+int Obj_0059C580::FUN_0059D440()
+{
+    int n = unknown_4C;
+    if (n == 0)
+        return 0;
+    return (int)((double)unknown_184 * unknown_180 * n * 0.008 + 100.0);
+}
+
+// FUNCTION: GAMEMD 0x59E640
+void __stdcall FUN_0059E640(int a1, char a2)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        int id;
+        if (DAT_00ABED10 == 0)
+            id = -1;
+        else
+            id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+        if (id == a1)
+            it->unknown_11B = a2;
+    }
+}
+
+// FUNCTION: GAMEMD 0x59E6C0
+void __stdcall FUN_0059E6C0(int a1, char a2)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        int id;
+        if (DAT_00ABED10 == 0)
+            id = -1;
+        else
+            id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+        if (id == a1)
+            it->unknown_11B += a2;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A1270
+void __fastcall FUN_005A1270()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_3C = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A12D0
+void __stdcall FUN_005A12D0(char a1, int a2)
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        int id;
+        if (DAT_00ABED10 == 0)
+            id = -1;
+        else
+            id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
+        if (id != a2)
+            it->unknown_11B += a1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A1E10
+void Obj_0059C580::FUN_005A1E10()
+{
+    if (unknown_3C == 4 || unknown_3C == 3) {
+        FUN_0058EBC0();
+        FUN_0058EF10();
+        FUN_005A19E0();
+        DAT_0087F7E8.FUN_00578E60(0, -1);
+        FUN_005A17F0();
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A3A60
+void __fastcall FUN_005A3A60()
+{
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        CellStruct c = it->unknown_24;
+        Rec_50* r = &DAT_00ABED10[c.Y * DAT_0089C2DC + c.X];
+        r->unknown_28 = DAT_007ED7F0;
+        r->unknown_20 = DAT_007ED7F8;
+    }
+}
+
+// FUNCTION: GAMEMD 0x5A6BA0
+bool __fastcall FUN_005A6BA0(CellStruct* a1)
+{
+    int y = a1->Y;
+    int x = a1->X;
+    int sy = y - 7;
+    int ex = x + 7;
+    int sx = x - 7;
+    int ey = y + 7;
+    for (; sx < ex; sx++) {
+        for (int i = sy; i < ey; i++) {
+            CellStruct c;
+            c.X = (short)sx;
+            c.Y = (short)i;
+            if (DAT_0087F7E8.FUN_005657A0(&c)->FUN_004863D0())
+                return false;
+        }
+    }
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5A7250
 // True when all four corners lie on the map and every cell of the rectangle
@@ -456,6 +989,24 @@ bool __fastcall FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool a
         }
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x5A7FA0
+void __fastcall FUN_005A7FA0(int a1, CellStruct* a2, char a3)
+{
+    IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
+    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    if (d != 0) {
+        for (int y = 0; y < t->unknown_2E8; y++) {
+            for (int x = 0; x < t->unknown_2E4; x++) {
+                CellStruct c;
+                c.X = a2->X + x;
+                c.Y = a2->Y + y;
+                if (Inline_005942F0(c) && d->SubTiles[t->unknown_2E4 * y + x] != 0)
+                    DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_46 = a3;
+            }
+        }
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -698,3 +1249,7 @@ int __cdecl FUN_005AD9C0(const void* a, const void* b)
         return -1;
     return 1;
 }
+
+// FUNCTION: GAMEMD 0x5ADA40
+// VectorClass<TRect<int>>::VectorClass(int, TRect<int>*), emitted by the explicit instantiation below.
+template class VectorClass<TRect<int> >;

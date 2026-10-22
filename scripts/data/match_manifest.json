@@ -64363,7 +64363,7 @@
   "len": "0x1DB",
   "name": "PlanningNodeClass::FUN_006340B0",
   "status": "partial",
-  "pct": 5.1
+  "pct": 4.5
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -69724,7 +69724,7 @@
   "len": "0xa3",
   "name": "FUN_005BF2B0",
   "status": "partial",
-  "pct": 72.2
+  "pct": 96.3
  },
  {
   "tu": "match/platform/movie_play_methods.cpp",
@@ -69742,7 +69742,7 @@
   "len": "0xbd",
   "name": "FUN_005BF390",
   "status": "partial",
-  "pct": 68.3
+  "pct": 93.3
  },
  {
   "tu": "match/platform/movie_play_methods.cpp",
@@ -73903,7 +73903,7 @@
   "len": "0x94",
   "name": "ScriptClass::ScriptClass",
   "status": "partial",
-  "pct": 67.5
+  "pct": 95.0
  },
  {
   "tu": "match/ai/script_class_body.cpp",
@@ -73939,7 +73939,7 @@
   "len": "0xbf",
   "name": "ScriptTypeClass::ScriptTypeClass",
   "status": "partial",
-  "pct": 34.0
+  "pct": 92.5
  },
  {
   "tu": "match/ai/script_class_body.cpp",
@@ -76723,7 +76723,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC550",
-  "sym": "?Slot5@?$DynamicVectorClass@U?$TRect@H@@@@UBEHPAU?$TRect@H@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@V?$TRect@H@@@@UBEHPAV?$TRect@H@@@Z",
   "len": "0x20",
   "name": "DynamicVectorClass<TRect<int>>::Slot5",
   "status": "matched",
@@ -76732,7 +76732,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC570",
-  "sym": "?Slot6@?$VectorClass@U?$TRect@H@@@@UBE?AU?$TRect@H@@H@Z",
+  "sym": "?Slot6@?$VectorClass@V?$TRect@H@@@@UBE?AV?$TRect@H@@H@Z",
   "len": "0x30",
   "name": "VectorClass<TRect<int>>::Slot6",
   "status": "matched",
@@ -76750,7 +76750,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACCC0",
-  "sym": "??8?$VectorClass@U?$TRect@H@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@V?$TRect@H@@@@UBE_NABV0@@Z",
   "len": "0x70",
   "name": "VectorClass<TRect<int>>::operator==",
   "status": "matched",
@@ -76759,7 +76759,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACD30",
-  "sym": "?SetCapacity@?$VectorClass@U?$TRect@H@@@@UAE_NHPAU?$TRect@H@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@V?$TRect@H@@@@UAE_NHPAV?$TRect@H@@@Z",
   "len": "0xf0",
   "name": "VectorClass<TRect<int>>::SetCapacity",
   "status": "matched",
@@ -76768,7 +76768,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACE50",
-  "sym": "?FindItemIndex@?$VectorClass@U?$TRect@H@@@@UBEHABU?$TRect@H@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@V?$TRect@H@@@@UBEHABV?$TRect@H@@@Z",
   "len": "0x60",
   "name": "VectorClass<TRect<int>>::FindItemIndex",
   "status": "matched",
@@ -76777,7 +76777,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACEB0",
-  "sym": "?Slot5@?$VectorClass@U?$TRect@H@@@@UBEHPAU?$TRect@H@@@Z",
+  "sym": "?Slot5@?$VectorClass@V?$TRect@H@@@@UBEHPAV?$TRect@H@@@Z",
   "len": "0x20",
   "name": "VectorClass<TRect<int>>::Slot5",
   "status": "matched",
@@ -76786,7 +76786,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACED0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@U?$TRect@H@@@@UAE_NHPAU?$TRect@H@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@V?$TRect@H@@@@UAE_NHPAV?$TRect@H@@@Z",
   "len": "0xf0",
   "name": "DynamicVectorClass<TRect<int>>::SetCapacity",
   "status": "matched",
@@ -76795,7 +76795,7 @@
  {
   "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACFC0",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@U?$TRect@H@@@@UBEHABU?$TRect@H@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@V?$TRect@H@@@@UBEHABV?$TRect@H@@@Z",
   "len": "0x50",
   "name": "DynamicVectorClass<TRect<int>>::FindItemIndex",
   "status": "matched",
@@ -88116,5 +88116,329 @@
   "name": "MapClass::FUN_00583820",
   "status": "partial",
   "pct": 12.5
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58BB00",
+  "sym": "?FUN_0058BB00@@YIPAUPair_8@@PAU1@H@Z",
+  "len": "0x2c",
+  "name": "FUN_0058BB00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58BCF0",
+  "sym": "?FUN_0058BCF0@@YI_NH@Z",
+  "len": "0x25",
+  "name": "FUN_0058BCF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58BD80",
+  "sym": "?FUN_0058BD80@@YI_NHH@Z",
+  "len": "0x38",
+  "name": "FUN_0058BD80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58BF70",
+  "sym": "??0MapRegionClass@@QAE@UCellStruct@@@Z",
+  "len": "0xf7",
+  "name": "MapRegionClass::MapRegionClass",
+  "status": "partial",
+  "pct": 97.3
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C070",
+  "sym": "??1MapRegionClass@@QAE@XZ",
+  "len": "0x87",
+  "name": "MapRegionClass::~MapRegionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C100",
+  "sym": "?FUN_0058C100@@YIXXZ",
+  "len": "0xbe",
+  "name": "FUN_0058C100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C2D0",
+  "sym": "?FUN_0058C2D0@MapRegionClass@@QAEXXZ",
+  "len": "0x4c",
+  "name": "MapRegionClass::FUN_0058C2D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C320",
+  "sym": "?FUN_0058C320@MapRegionClass@@QAEXPAUCellStruct@@@Z",
+  "len": "0x8e",
+  "name": "MapRegionClass::FUN_0058C320",
+  "status": "partial",
+  "pct": 95.8
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C3B0",
+  "sym": "?FUN_0058C3B0@MapRegionClass@@QAEXPAUCellStruct@@@Z",
+  "len": "0xe7",
+  "name": "MapRegionClass::FUN_0058C3B0",
+  "status": "partial",
+  "pct": 84.2
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58CE90",
+  "sym": "?FUN_0058CE90@@YIXXZ",
+  "len": "0xf3",
+  "name": "FUN_0058CE90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58D010",
+  "sym": "?FUN_0058D010@@YIXD@Z",
+  "len": "0x52",
+  "name": "FUN_0058D010",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58D5A0",
+  "sym": "?FUN_0058D5A0@MapRegionClass@@QAEXD@Z",
+  "len": "0x71",
+  "name": "MapRegionClass::FUN_0058D5A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x594010",
+  "sym": "?FUN_00594010@MapRegionClass@@QAE_NPAURect_4i@@H@Z",
+  "len": "0x174",
+  "name": "MapRegionClass::FUN_00594010",
+  "status": "partial",
+  "pct": 68.5
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5942F0",
+  "sym": "?FUN_005942F0@MapRegionClass@@QAEXPAURect_4i@@@Z",
+  "len": "0xe8",
+  "name": "MapRegionClass::FUN_005942F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5943E0",
+  "sym": "?FUN_005943E0@@YIPAVMapRegionClass@@H@Z",
+  "len": "0x33",
+  "name": "FUN_005943E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x595710",
+  "sym": "?FUN_00595710@MapSeedClass@@QAEXXZ",
+  "len": "0x28",
+  "name": "MapSeedClass::FUN_00595710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x597260",
+  "sym": "?FUN_00597260@MapSeedClass@@QAEXH@Z",
+  "len": "0x11a",
+  "name": "MapSeedClass::FUN_00597260",
+  "status": "partial",
+  "pct": 75.6
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x597380",
+  "sym": "?FUN_00597380@MapSeedClass@@QAEXXZ",
+  "len": "0xac",
+  "name": "MapSeedClass::FUN_00597380",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x597730",
+  "sym": "?FUN_00597730@MapSeedClass@@QAE_NPBD@Z",
+  "len": "0x28",
+  "name": "MapSeedClass::FUN_00597730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x598180",
+  "sym": "?FUN_00598180@@YGNNNNN@Z",
+  "len": "0x6f",
+  "name": "FUN_00598180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x599530",
+  "sym": "?FUN_00599530@@YIXPAVObj_0059C580@@@Z",
+  "len": "0x114",
+  "name": "FUN_00599530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59A670",
+  "sym": "?FUN_0059A670@@YGXH@Z",
+  "len": "0x45",
+  "name": "FUN_0059A670",
+  "status": "partial",
+  "pct": 52.4
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59B6D0",
+  "sym": "?FUN_0059B6D0@@YIXXZ",
+  "len": "0x63",
+  "name": "FUN_0059B6D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59BAB0",
+  "sym": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
+  "len": "0x10c",
+  "name": "FUN_0059BAB0",
+  "status": "partial",
+  "pct": 74.2
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59C530",
+  "sym": "?FUN_0059C530@@YIXXZ",
+  "len": "0x48",
+  "name": "FUN_0059C530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59C800",
+  "sym": "?FUN_0059C800@@YG_NH@Z",
+  "len": "0x7e",
+  "name": "FUN_0059C800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59D440",
+  "sym": "?FUN_0059D440@Obj_0059C580@@QAEHXZ",
+  "len": "0x31",
+  "name": "Obj_0059C580::FUN_0059D440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59E640",
+  "sym": "?FUN_0059E640@@YGXHD@Z",
+  "len": "0x72",
+  "name": "FUN_0059E640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59E6C0",
+  "sym": "?FUN_0059E6C0@@YGXHD@Z",
+  "len": "0x72",
+  "name": "FUN_0059E6C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A1270",
+  "sym": "?FUN_005A1270@@YIXXZ",
+  "len": "0x54",
+  "name": "FUN_005A1270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A12D0",
+  "sym": "?FUN_005A12D0@@YGXDH@Z",
+  "len": "0x72",
+  "name": "FUN_005A12D0",
+  "status": "partial",
+  "pct": 94.4
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A1E10",
+  "sym": "?FUN_005A1E10@Obj_0059C580@@QAEXXZ",
+  "len": "0x38",
+  "name": "Obj_0059C580::FUN_005A1E10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A3A60",
+  "sym": "?FUN_005A3A60@@YIXXZ",
+  "len": "0x7d",
+  "name": "FUN_005A3A60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A6BA0",
+  "sym": "?FUN_005A6BA0@@YI_NPAUCellStruct@@@Z",
+  "len": "0x6e",
+  "name": "FUN_005A6BA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A7FA0",
+  "sym": "?FUN_005A7FA0@@YIXHPAUCellStruct@@D@Z",
+  "len": "0x104",
+  "name": "FUN_005A7FA0",
+  "status": "partial",
+  "pct": 96.2
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5ADA40",
+  "sym": "??0?$VectorClass@V?$TRect@H@@@@QAE@HPAV?$TRect@H@@@Z",
+  "len": "0x70",
+  "name": "VectorClass<TRect<int>>::VectorClass",
+  "status": "matched",
+  "pct": 100
  }
 ]

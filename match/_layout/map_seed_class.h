@@ -44,6 +44,17 @@ public:
     int unknown_74;  // +0x74 store at 0x5956C4
     unsigned short unknown_78;  // +0x78 store at 0x5956D8
     unsigned char unknown_7A[254];  // +0x7A
+
+    // FUNCTION: GAMEMD 0x595710
+    void FUN_00595710();
+    // FUNCTION: GAMEMD 0x597260
+    void FUN_00597260(int a1);
+    // FUNCTION: GAMEMD 0x597380
+    void FUN_00597380();
+    // FUNCTION: GAMEMD 0x597730
+    bool FUN_00597730(const char* a1);
+    // FUNCTION: GAMEMD 0x5975E0 (declaration)
+    void FUN_005975E0();
 };
 GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_3C) == 0x3C);

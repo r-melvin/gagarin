@@ -104,8 +104,7 @@ inline bool DynamicVectorClass<T>::AddItem(const T& item)
             return false;
         }
     }
-    int index = Count;
-    Count = index + 1;
+    int index = Count++;
     this->Items[index] = item;
     return true;
 }

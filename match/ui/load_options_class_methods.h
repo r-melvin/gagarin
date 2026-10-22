@@ -43,6 +43,8 @@ public:
 
     bool LoadDialog();                  // GAMEMD 0x5587F0 __thiscall
     bool ProcessDialog();               // GAMEMD 0x558DD0 (worker, declared)
+    // FUNCTION: GAMEMD 0x558810 (declaration)
+    char FUN_00558810(const wchar_t* a1);
 
     LoadOptionsMode Mode;              // +0x04
     const char*    Extension;          // +0x08
