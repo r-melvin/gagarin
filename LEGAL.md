@@ -29,6 +29,22 @@ built with Watcom and is two engine generations back. Clean-room
 reimplementations (OpenRA-ra2, ra2yrcpp and others) are black-box behaviour
 references only, never a code or layout source.
 
+Other projects built from the same binary are consult-only, under the same rule
+as YRpp: reconfirm every fact against `gamemd.exe` and never copy their code,
+comments, data or names.
+
+- [OpenTS](https://github.com/OpenTS-Developers/OpenTS) and its frozen
+  [TibSun](https://github.com/OpenTS-Developers/TibSun) archive (GPLv3 with EA's
+  Section 7 terms; a Tiberian Sun reconstruction built on EA's released source
+  and reverse engineering). Structure and names only: they may guide
+  independently written class layouts, inlining and file organisation. No
+  function bodies or header text are copied, so tracked files carry no
+  EA-derived material.
+- [vera20k](https://github.com/YuriPlanet/vera20k) (GPLv3; a Rust port derived
+  from the binary, with some names taken from YRpp).
+- [redalert2-recomp](https://github.com/sp00nznet/redalert2-recomp) (MIT; a
+  static recompilation whose documentation uses YRpp names).
+
 Every source and header file carries a provenance header naming where its facts
 came from (see [CONTRIBUTING.md](CONTRIBUTING.md) for the tags).
 
