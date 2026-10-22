@@ -168,7 +168,17 @@ GG_STATIC_ASSERT(offsetof(Seat2_007F72D8, unknown_04) == 0x4 &&
                  offsetof(Seat2_007F72D8, unknown_08) == 0x8 &&
                  sizeof(Seat2_007F72D8) == 0xC);
 
-GG_SEATNULL_DECL(006406E0);
+class CCINIClass;
+// Existing four-byte prefix, extended only with calls observed at 0x687DF3.
+class SeatNull_006406E0
+{
+public:
+    SeatNull_006406E0();
+    ~SeatNull_006406E0(); // GAMEMD 0x6406F0
+    void FUN_00641140(); // GAMEMD 0x641140
+    void FUN_006418B0(CCINIClass* ini); // GAMEMD 0x6418B0
+    int unknown_00;
+};
 GG_STATIC_ASSERT(offsetof(SeatNull_006406E0, unknown_00) == 0x0 &&
                  sizeof(SeatNull_006406E0) == 0x4);
 

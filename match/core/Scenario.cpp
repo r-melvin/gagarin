@@ -23,6 +23,7 @@
 // translation units already declared as callees but nothing defined.
 
 #include "scenario_class_methods.h"
+#include "vtable_seating_ctor_family_methods.h"
 #include "vector_class_operations.h"
 #include "../_layout/ini_class.h"
 #include "../_layout/cd_callback.h"
@@ -222,6 +223,27 @@ const wchar_t* __fastcall FUN_00734E60(const char* id, int zero, const char* fil
 // STRING: GAMEMD 0x0083D838
 // "D:\\ra2mdpost\\Scenario.CPP"
 extern const char STR_0083D838[];
+
+// GLOBAL: GAMEMD 0x00A8ED6B
+extern bool DAT_00A8ED6B;
+// GLOBAL: GAMEMD 0x00ABE154
+extern SeatNull_006406E0* DAT_00ABE154;
+
+void __fastcall FUN_00501160(CCINIClass* ini); // GAMEMD 0x00501160
+void __fastcall FUN_0071CB90(CCINIClass* ini); // GAMEMD 0x0071CB90
+void __fastcall FUN_007436E0(CCINIClass* ini); // GAMEMD 0x007436E0
+void __fastcall FUN_0051FEF0(CCINIClass* ini); // GAMEMD 0x0051FEF0
+void __fastcall FUN_0041AF80(CCINIClass* ini); // GAMEMD 0x0041AF80
+void __fastcall FUN_0044FE60(CCINIClass* ini); // GAMEMD 0x0044FE60
+void __fastcall FUN_005FD6A0(CCINIClass* ini); // GAMEMD 0x005FD6A0
+void __fastcall FUN_006B4DD0(CCINIClass* ini); // GAMEMD 0x006B4DD0
+void __fastcall FUN_00728280(CCINIClass* ini); // GAMEMD 0x00728280
+void __fastcall FUN_00727880(CCINIClass* ini); // GAMEMD 0x00727880
+void __fastcall FUN_006E5FE0(CCINIClass* ini); // GAMEMD 0x006E5FE0
+void __fastcall FUN_00691B30(CCINIClass* ini, int flag); // GAMEMD 0x00691B30
+void __fastcall FUN_006E8340(CCINIClass* ini, int flag); // GAMEMD 0x006E8340
+void __fastcall FUN_006F1AB0(CCINIClass* ini, int flag); // GAMEMD 0x006F1AB0
+void __fastcall FUN_0041F490(CCINIClass* ini, int flag); // GAMEMD 0x0041F490
 
 // A two-short cell value copied as one dword.
 struct Cell_0050DEF0
@@ -838,6 +860,45 @@ bool __fastcall FUN_00686730(const char* filename)
     }
     strcpy(ScenarioInstance->unknown_125C, filename);
     return FUN_00686B20(&ini, false);
+}
+
+// FUNCTION: GAMEMD 0x687CE0
+void __fastcall FUN_00687CE0(const char* filename, bool flag)
+{
+    CCINIClass ini;
+    if (DAT_00A8ED6B && CCFileClass(filename).Exists(false)) {
+        CCFileClass input(filename);
+        ini.ReadCCFile(&input, true, false);
+    }
+    ScenarioInstance->FUN_0068AD70(&ini, flag);
+    if (flag) {
+        if (DAT_00ABE154 && DAT_00ABE154->unknown_00) {
+            DAT_00ABE154->FUN_006418B0(&ini);
+        } else {
+            SeatNull_006406E0 manager;
+            manager.FUN_00641140();
+            manager.FUN_006418B0(&ini);
+        }
+    } else FUN_00501160(&ini);
+    MapInstance.FUN_004AD7E0(&ini);
+    FUN_0071CB90(&ini);
+    FUN_007436E0(&ini);
+    FUN_0051FEF0(&ini);
+    FUN_0041AF80(&ini);
+    FUN_0044FE60(&ini);
+    FUN_005FD6A0(&ini);
+    FUN_006B4DD0(&ini);
+    FUN_00728280(&ini);
+    if (!flag || DAT_00A8ED6B) {
+        FUN_00691B30(&ini, 0);
+        FUN_006E8340(&ini, 0);
+        FUN_006F1AB0(&ini, 0);
+        FUN_0041F490(&ini, 0);
+    }
+    FUN_00727880(&ini);
+    FUN_006E5FE0(&ini);
+    RawFileClass output(filename);
+    ini.WriteCCFile(&output, true);
 }
 
 // FUNCTION: GAMEMD 0x689310

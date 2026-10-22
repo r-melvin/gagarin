@@ -26,6 +26,8 @@
 
 // The global map/radar singleton at 0x87F7E8. UpdateCellLighting drives its
 // spiral cell iterator (begin @0x578350, next @0x578290).
+class CCINIClass;
+
 struct MapInstanceClass
 {
     // FUNCTION: GAMEMD 0x6D0F00 (decl; reloc)
@@ -40,6 +42,7 @@ struct MapInstanceClass
     void FUN_0057B790(CellStruct* cell);
     // FUNCTION: GAMEMD 0x56BEC0 (decl; reloc)
     bool FUN_0056BEC0(CellStruct cell, int value);
+    void FUN_004AD7E0(CCINIClass* ini); // GAMEMD 0x4AD7E0
     // FUNCTION: GAMEMD 0x5657a0 (decl; reloc)
     // ?FUN_005657A0@MapInstanceClass@@QAEPAVCellClass@@PBUCellStruct@@@Z
     CellClass* FUN_005657A0(const CellStruct* cell);
@@ -140,6 +143,7 @@ GG_STATIC_ASSERT(offsetof(ScenarioRecord, unknown_00) == 0);
 GG_STATIC_ASSERT(offsetof(ScenarioRecord, unknown_28) == 40);
 
 class INIClass;
+class CCINIClass;
 
 // The first byte is cleared between frame-timer member constructions at
 // 0x683313. The next member starts at +0x1218, bounding this storage to32 bytes.
@@ -160,6 +164,7 @@ struct ScenarioClass
     explicit ScenarioClass(const AbstractNoInit& noInit);
     void FUN_00683610(); // GAMEMD 0x683610
     void FUN_006B8AE0(); // GAMEMD 0x6B8AE0
+    void FUN_0068AD70(CCINIClass* ini, bool flag); // GAMEMD 0x68AD70
     void FUN_00689310(Gg_IStream* stream);
     bool FUN_0053A100(); // GAMEMD 0x53A100
     // ---- matched methods (ascending by retail address) ----

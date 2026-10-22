@@ -92589,5 +92589,14 @@
   "name": "ScenarioClass::ScenarioClass",
   "status": "partial",
   "pct": 0
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x687CE0",
+  "sym": "?FUN_00687CE0@@YIXPBD_N@Z",
+  "len": "0x228",
+  "name": "FUN_00687CE0",
+  "status": "matched",
+  "pct": 100
  }
 ]

@@ -71,6 +71,9 @@ private:
 class RawFileClass : public FileClass
 {
 public:
+    RawFileClass(const char* name); // GAMEMD 0x65CA80, table 0x7F0904
+    virtual ~RawFileClass(); // GAMEMD 0x65CA00
+
     virtual const char* GetFileName() const;   // GAMEMD 0x401940 (matched here)
     virtual bool Exists(bool writeShared);      // GAMEMD 0x65CBF0 (decl; base call)
     virtual int  GetFileSize();                 // GAMEMD 0x65D0D0 (decl; base call)
