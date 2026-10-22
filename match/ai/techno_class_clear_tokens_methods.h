@@ -24,6 +24,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/house_class.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
 // delete); __cdecl, one pointer argument, caller pops.
@@ -65,33 +66,19 @@ struct Node_006386E0
 GG_STATIC_ASSERT(offsetof(Node_006386E0, Entries) == 0x04);
 GG_STATIC_ASSERT(offsetof(Node_006386E0, At_010) == 0x10);
 
-// The object reached through owner+0x30 / the global at 0xA83D4C + 0x30.
-struct Scene_006386E0
-{
-    // FUNCTION: GAMEMD 0x639F80 (decl; reloc)
-    void FUN_00639F80();
-};
-
-// The owner's sub-object at +0x21C.
-struct Sector_006386E0
-{
-    char            _pad000[0x30];  // +0x0000
-    Scene_006386E0* At_030;         // +0x0030
-
-    // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
-    bool FUN_0050B6F0();
-};
-GG_STATIC_ASSERT(offsetof(Sector_006386E0, At_030) == 0x30);
+// FUNCTION: GAMEMD 0x639F80 (decl; reloc) -- decrements the pending-request
+// counter of a house index (ECX); the index is the house's ArrayIndex (+0x30).
+void FUN_00639F80(int house);
 
 struct Owner_006386E0
 {
     char              _pad000[0x21C];  // +0x0000
-    Sector_006386E0*  At_21C;          // +0x021C
+    HouseClass*       At_21C;          // +0x021C the owning house
 };
 GG_STATIC_ASSERT(offsetof(Owner_006386E0, At_21C) == 0x21C);
 
-// GLOBAL: GAMEMD 0xA83D4C -- the override sector pointer.
-extern Sector_006386E0* DAT_00A83D4C;
+// GLOBAL: GAMEMD 0xA83D4C -- the player's house.
+extern HouseClass* DAT_00A83D4C;
 
 // The list object at 0xAC4C40 (retail loads its address as an immediate).
 struct List_006386E0

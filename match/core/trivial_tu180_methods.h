@@ -9,6 +9,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+class PlanningNotify;
+class PlanningNodeClass;
+
 struct Obj_00634800;
 struct Obj_00634950;
 struct Obj_00634960;
@@ -36,10 +39,6 @@ struct Obj_0063D520;
 
 // GLOBAL: GAMEMD 0x836BD4
 extern char DAT_00836BD4[];
-// GLOBAL: GAMEMD 0xAC4B80
-extern int DAT_00AC4B80;
-// GLOBAL: GAMEMD 0xAC4C38
-extern int DAT_00AC4C38;
 // GLOBAL: GAMEMD 0xAC4C90
 extern int DAT_00AC4C90;
 // GLOBAL: GAMEMD 0xAC4CF4
@@ -675,7 +674,7 @@ struct Obj_0063D520
 
 
 // FUNCTION: GAMEMD 0x637060
-void FUN_00637060(int a1);
+void FUN_00637060(PlanningNotify* a1);
 // FUNCTION: GAMEMD 0x637DB0
 bool FUN_00637DB0(int a1);
 // FUNCTION: GAMEMD 0x638B50
@@ -685,8 +684,8 @@ int FUN_00638C20(int a1);
 // FUNCTION: GAMEMD 0x63A4A0
 void FUN_0063A4A0(int a1);
 // FUNCTION: GAMEMD 0x63AD30
-void FUN_0063AD30(int a1);
+void FUN_0063AD30(PlanningNodeClass* a1);
 // FUNCTION: GAMEMD 0x63AD40
-int __cdecl FUN_0063AD40();
+PlanningNodeClass* __cdecl FUN_0063AD40();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU180_METHODS_H

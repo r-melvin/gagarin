@@ -102,10 +102,7 @@ extern int DAT_00ABED0C;
 extern int DAT_00ABF168[];
 struct Rec28_0082D028 { int f00; int f04; int unknown_08[5]; };
 extern Rec28_0082D028 DAT_0082D028[];
-extern int DAT_00AC4B80;
 extern int DAT_00AC4C90;
-extern int DAT_00AC4C38;
-extern int DAT_00AC4BF0;
 extern int DAT_007F0248[];
 struct Rec16_007F0998 { int f00; int f04; int f08; int f0C; };
 extern Rec16_007F0998 DAT_007F0998[];
@@ -174,6 +171,8 @@ void __fastcall FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip,
 
 #include "vector_class.h"
 
+#include "../_layout/house_class.h"
+
 // ---------------------------------------------------------------------------
 // The element types, declared exactly as their RTTI manglings require: a `V`
 // tag becomes `class`, a `U` tag `struct`, a `W4` tag an enum, and a nested or
@@ -226,12 +225,6 @@ class HSVClass;
 struct HWND__;
 template<class T0, class T1> struct HashObject;
 class HashString;
-class HouseClass
-{
-public:
-    struct BuildChoiceClass;
-    struct StartingTechnoStruct;
-};
 class HouseTypeClass;
 struct IConnectionPoint;
 class InfantryTypeClass;
@@ -451,6 +444,169 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include <stdlib.h>
 #include "../ui/planning_manager_rbutton_methods.h"
 
+
+// ---- from the former planning_node_methods.cpp ----
+// PlanMgr.cpp continued (0x6347A0 onward; "D:\\ra2mdpost\\PlanMgr.cpp" at 0x836BD4): the PlanningNodeClass and
+// PlanningTokenClass methods and helpers that follow the block in planning_manager.cpp, in retail address order.
+// Built with /Ob1: only inline-declared bodies (class-body members, templates) are expanded; every
+// out-of-class function stays a call, as in retail. Where retail expands 0x6339E0, 0x634510, 0x6357D0 or
+// 0x638C40 this file uses private inline copies (PlanningRectAround, PlanningRectInflate,
+// PlanningMissionTargetOk) because the out-of-line bodies belong to other rows.
+// Loops with an early exit are written `if (n > 0) do { ... } while (...)`, which is the shape retail has.
+
+#include "../ai/planning_manager.h"
+#include "../_layout/house_class.h"
+#include "../_layout/object_type_class.h"
+
+// The tactical view (pointer global 0x887324), as in planning_manager.cpp.
+struct PlanningTacticalView
+{
+    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- RET 8.
+    void FUN_006D2140(const CoordStruct* coord, Point2D* out);
+};
+// GLOBAL: GAMEMD 0x887324
+extern PlanningTacticalView* DAT_00887324;
+// GLOBAL: GAMEMD 0x886FA0 -- the view origin added to every converted point.
+extern Point2D DAT_00886FA0;
+
+// FUNCTION: GAMEMD 0x633BC0 (decl; reloc) -- the coordinate a mission event points at.
+CoordStruct* FUN_00633BC0(CoordStruct* out, const EventClass& event);
+
+inline CoordStruct PlanningCoordOf(const EventClass& event)
+{
+    CoordStruct tmp;
+    return *FUN_00633BC0(&tmp, event);
+}
+
+// FUNCTION: GAMEMD 0x6339E0 (decl; reloc) -- the view point of a world coordinate.
+Point2D* FUN_006339E0(Point2D* out, const CoordStruct& coord);
+
+// FUNCTION: GAMEMD 0x634510 (decl; reloc) -- a size-by-size rectangle centred on a point.
+PlanningRect* FUN_00634510(PlanningRect* out, int size, Point2D center);
+
+// GLOBAL: GAMEMD 0xAC4CF4 / 0xAC4CF5 -- planning-mode flags.
+extern bool DAT_00AC4CF4;
+extern bool DAT_00AC4CF5;
+// GLOBAL: GAMEMD 0xAC4CCC / 0xAC4C38 / 0xAC4BF0 -- the current node pointers (cleared with the node's destructor).
+extern PlanningNodeClass* DAT_00AC4CCC;
+extern PlanningNodeClass* DAT_00AC4C38;
+extern PlanningNodeClass* DAT_00AC4BF0;
+// GLOBAL: GAMEMD 0xAC4C68 / 0xAC4C6C -- anchor X / Y; 0xAC4CB0 -- cleared on every right-button release.
+extern Point2D DAT_00AC4C68;
+
+extern bool DAT_00AC4CB0;
+
+// FUNCTION: GAMEMD 0x652230 (decl; reloc) -- queue one event (ECX = the event).
+void FUN_00652230(EventClass* event);
+
+// GLOBAL: GAMEMD 0xAC4CF6 -- set while the selection pass below runs.
+extern bool DAT_00AC4CF6;
+// GLOBAL: GAMEMD 0xAC4B84 -- 24 per-house pending-request counters.
+extern int DAT_00AC4B84[24];
+// GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.
+extern HouseClass* DAT_00A83D4C;
+
+
+// The rules object (RulesInstance, 0x8871E0).
+#include "rules_class.h"
+
+// FUNCTION: GAMEMD 0x750920 (decl; reloc) -- VocClass::PlayGlobal(index, flags, volume, controller).
+// The volume is declared ahead of the pan so that `MOV EDX,0x2000` falls between the two pushes, as in retail.
+void* FUN_00750920(int voc, float volume, unsigned int pan, void* controller);
+
+// GLOBAL: GAMEMD 0xAC4B80 -- the object notified (slot 0) on entering and leaving planning mode.
+class PlanningNotify
+{
+public:
+    virtual void vf_0(int id, int arg);
+};
+extern PlanningNotify* DAT_00AC4B80;
+
+// FUNCTION: GAMEMD 0x6521C0 (decl; reloc) -- queue an event passed by value (RET 0x70).
+void FUN_006521C0(EventClass event);
+
+// STRING: GAMEMD 0x836BD4 -- "D:\\ra2mdpost\\PlanMgr.cpp"
+extern const char STR_00836BD4[];
+// STRING: GAMEMD 0x836C80 -- "MSG:PlanningModeNoGuardArea"
+extern const char STR_00836C80[];
+// GLOBAL: GAMEMD 0xAC4C08 -- set once the "no guard area" message has been shown.
+extern bool DAT_00AC4C08;
+// GLOBAL: GAMEMD 0xA8ECC8 -- the selection list's count.
+extern int DAT_00A8ECC8;
+
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- fetch a message by key (key, 0, file, line).
+int FUN_00734E60(const char* key, int zero, const char* file, int line);
+
+// FUNCTION: GAMEMD 0x730A90 (decl; reloc) -- show a message.
+void FUN_00730A90(int text, int flags);
+
+// The planner's view object, of which only +0x14 is read here.
+struct PlanningView
+{
+    char unknown_00[0x14];
+    int unknown_14;   // +0x14 (15 is the state 0x63A440 tests)
+};
+
+// STRING: GAMEMD 0x836AD4 -- "Loop Branch [%d]; Member count[%d]; Origin event location[%d, %d, %d]\n"
+extern const char STR_00836AD4[];
+// STRING: GAMEMD 0x836B20 -- " Member [%s]; Cell location[%d, %d]\n"
+extern const char STR_00836B20[];
+// STRING: GAMEMD 0x836B48 -- "Branch [%d]; Member count[%d]; Origin event location[%d, %d, %d]\n"
+extern const char STR_00836B48[];
+
+// A size-by-size rectangle centred on a point (0x634510, expanded where it is not called).
+inline PlanningRect* PlanningRectAround(PlanningRect* out, int size, Point2D center)
+{
+    int half = -(size / 2);
+    Point2D corner = center;
+    corner.X += half;
+    corner.Y += half;
+    PlanningRect rect;
+    rect.X = corner.X;
+    rect.Y = corner.Y;
+    rect.W = size;
+    rect.H = size;
+    *out = rect;
+    return out;
+}
+
+// 0x6357D0 expanded where it is not called.
+inline void PlanningRectInflate(PlanningRect* rect, int amount)
+{
+    int twice = amount + amount;
+    if (twice < 0 && (twice >= rect->W || twice >= rect->H)) {
+        rect->X = 0;
+        rect->Y = 0;
+        rect->W = 0;
+        rect->H = 0;
+        return;
+    }
+    rect->X -= amount;
+    rect->Y -= amount;
+    rect->W += twice;
+    rect->H += twice;
+}
+
+// 0x638C40 expanded where it is not called.
+inline bool PlanningMissionTargetOk(int mission, TargetClass target)
+{
+    if (mission == 1 || mission == 11) {
+        if (target.RTTI == 11) {
+            return true;
+        }
+        if (mission == 11 && target.RTTI == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// 0x638C20 is defined in trivial_tu180_methods.cpp; its body is expanded here.
+inline int PlanningMissionIsMove(int mission)
+{
+    return mission == 7 || mission == 8 || mission == 9;
+}
+
 // FUNCTION: GAMEMD 0x634290
 //
 // Node_006386E0::FUN_00634290 -- linear scan of this node's entry array for
@@ -483,11 +639,67 @@ int Node_006386E0::FUN_00634290(void* owner)
     return index;
 }
 
+// FUNCTION: GAMEMD 0x6347A0
+PlanningBranchClass* PlanningNodeClass::FUN_006347A0(int index)
+{
+    return Branches.Items[index];
+}
+
+// FUNCTION: GAMEMD 0x6347B0
+// The branch `techno` is on, or none.
+PlanningBranchClass* PlanningNodeClass::FUN_006347B0(TechnoClass* techno)
+{
+    int branch = MemberOf(techno)->unknown_08;
+    PlanningBranchClass* result = 0;
+    if (branch != -1) {
+        result = Branches.Items[branch];
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x634800
 // Returns the address of a member.
 int* Obj_00634800::FUN_00634800()
 {
     return &unknown_38;
+}
+
+// FUNCTION: GAMEMD 0x634810
+CoordStruct PlanningNodeClass::FUN_00634810(int branch)
+{
+    return PlanningCoordOf(Branches.Items[branch]->Event);
+}
+
+// FUNCTION: GAMEMD 0x634850
+CoordStruct PlanningNodeClass::FUN_00634850()
+{
+    return PlanningCoordOf(Loop().Event);
+}
+
+// FUNCTION: GAMEMD 0x634880
+Point2D* PlanningNodeClass::FUN_00634880(Point2D* out, int branch)
+{
+    CoordStruct tmp;
+    CoordStruct coord = *FUN_00633BC0(&tmp, Branches.Items[branch]->Event);
+    Point2D point;
+    DAT_00887324->FUN_006D2140(&coord, &point);
+    point.X += DAT_00886FA0.X;
+    point.Y += DAT_00886FA0.Y;
+    *out = point;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x6348F0
+Point2D* PlanningNodeClass::FUN_006348F0(Point2D* out)
+{
+    CoordStruct tmp;
+    CoordStruct coord = *FUN_00633BC0(&tmp, Loop().Event);
+    Point2D point;
+    DAT_00887324->FUN_006D2140(&coord, &point);
+    point.X += DAT_00886FA0.X;
+    point.Y += DAT_00886FA0.Y;
+    *out = point;
+    return out;
 }
 
 // FUNCTION: GAMEMD 0x634950
@@ -502,6 +714,364 @@ void Obj_00634950::FUN_00634950()
 unsigned char Obj_00634960::FUN_00634960() const
 {
     return unknown_1C;
+}
+
+// FUNCTION: GAMEMD 0x634970
+void PlanningNodeClass::FUN_00634970()
+{
+    FUN_00635120();
+    int count = Members.Count;
+    for (int i = 0; i < count; i++) {
+        FUN_00634E10(Members.Items[i]);
+    }
+    FUN_006349B0();
+    unknown_1C = false;
+}
+
+// FUNCTION: GAMEMD 0x6349B0
+void PlanningNodeClass::FUN_006349B0()
+{
+    int count = Members.Count;
+    for (int i = 0; i < count; i++) {
+        PlanningMemberClass* member = Members.Items[i];
+        TechnoClass* techno = member->Owner;
+        PlanningTokenClass* token = techno->FUN_00705D20();
+        if (token->Nodes.FindItemIndex(this) == token->unknown_94) {
+            member->unknown_0C = true;
+            PlanningBranchClass* loop = &Loop();
+            if (++loop->unknown_70 == 1) {
+                PlanningNodeClass* last = techno->FUN_00705D20()->LastNode();
+                int index = last->FUN_00634290(techno);
+                PlanningMemberClass* source = index == -1 ? 0 : last->Members.Items[index];
+                loop->Event = *source->Event;
+            }
+        }
+    }
+    unknown_B0 = -1;
+    if (Loop().unknown_70 != 0) {
+        EventClass origin = Loop().Event;
+        int branches = Branches.Count;
+        int j = 0;
+        if (branches > 0) {
+            do {
+                EventClass event = Branches.Items[j]->Event;
+                CoordStruct a = PlanningCoordOf(origin);
+                CoordStruct b = PlanningCoordOf(event);
+                if (a.X == b.X && a.Y == b.Y && a.Z == b.Z) {
+                    unknown_B0 = j;
+                    break;
+                }
+                j++;
+            } while (j < branches);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x634B20
+// Log every branch with its members, then the loop branch.
+void PlanningNodeClass::FUN_00634B20()
+{
+    int branches = Branches.Count;
+    for (int i = 0; i < branches; i++) {
+        PlanningBranchClass* branch = Branches.Items[i];
+        int members = branch->unknown_70;
+        EventClass event = branch->Event;
+        CoordStruct tmp;
+        CoordStruct at = *FUN_00633BC0(&tmp, event);
+        FUN_004068E0(STR_00836B48, i, members, at.X, at.Y, at.Z);
+        int count = Members.Count;
+        for (int j = 0; j < count; j++) {
+            PlanningMemberClass* member = Members.Items[j];
+            if (member->unknown_08 == i) {
+                TechnoClass* techno = member->Owner;
+                const char* name = techno->vf_34()->ID;
+                CellStruct cell = techno->vf_110();
+                FUN_004068E0(STR_00836B20, name, cell.X, cell.Y);
+            }
+        }
+    }
+    int loops = Loop().unknown_70;
+    if (loops > 0) {
+        EventClass event = Loop().Event;
+        CoordStruct tmp;
+        CoordStruct at = *FUN_00633BC0(&tmp, event);
+        FUN_004068E0(STR_00836AD4, unknown_B0, loops, at.X, at.Y, at.Z);
+        int count = Members.Count;
+        for (int j = 0; j < count; j++) {
+            PlanningMemberClass* member = Members.Items[j];
+            if (member->unknown_0C) {
+                TechnoClass* techno = member->Owner;
+                const char* name = techno->vf_34()->ID;
+                CellStruct cell = techno->vf_110();
+                FUN_004068E0(STR_00836B20, name, cell.X, cell.Y);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x634CC0
+// The branch of this node that starts where the node before it on `techno`'s token leaves off, or -1.
+int PlanningNodeClass::FUN_00634CC0(TechnoClass* techno)
+{
+    PlanningTokenClass* token = techno->FUN_00705D20();
+    int index = token->Nodes.FindItemIndex(this);
+    PlanningNodeClass* before;
+    if (index == -1) {
+        before = 0;
+    } else if (token->Nodes.Count == 1) {
+        before = this;
+    } else {
+        index--;
+        if (index < 0) {
+            index = token->Nodes.Count - 1;
+        }
+        before = token->FUN_00636E60(index);
+    }
+    if (before != techno->FUN_00705D20()->LastNode()) {
+        int member = before->FUN_00634290(techno);
+        EventClass event = *(member == -1 ? 0 : before->Members.Items[member])->Event;
+        int count = Branches.Count;
+        if (count) {
+            CoordStruct tmp;
+            CoordStruct at = *FUN_00633BC0(&tmp, event);
+            int i = 0;
+            if (count > 0) {
+                do {
+                    PlanningBranchClass* branch = Branches.Items[i];
+                    if (branch->unknown_70) {
+                        EventClass other = branch->Event;
+                        CoordStruct tmp2;
+                        CoordStruct to = *FUN_00633BC0(&tmp2, other);
+                        if (at.X == to.X && at.Y == to.Y && at.Z == to.Z) {
+                            return i;
+                        }
+                    }
+                    i++;
+                } while (i < count);
+            }
+        }
+    }
+    return -1;
+}
+
+// The append expanded in this block: the count is bumped before the store (the out-of-line copy at
+// 0x63E540 takes its index first).
+inline bool PlanningListAdd(DynamicVectorClass<PlanningNodeClass*>& list, PlanningNodeClass* item)
+{
+    if (list.Count >= list.Capacity) {
+        if ((list.IsAllocated || list.Capacity == 0) && list.CapacityIncrement > 0) {
+            if (!list.SetCapacity(list.Capacity + list.CapacityIncrement, 0)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    int index = list.Count++;
+    list.Items[index] = item;
+    return true;
+}
+inline bool PlanningListAdd(DynamicVectorClass<EventClass*>& list, EventClass* item)
+{
+    if (list.Count >= list.Capacity) {
+        if ((list.IsAllocated || list.Capacity == 0) && list.CapacityIncrement > 0) {
+            if (!list.SetCapacity(list.Capacity + list.CapacityIncrement, 0)) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+    int index = list.Count++;
+    list.Items[index] = item;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x635060
+// Take `member` off its branch (and its active mark).
+void PlanningNodeClass::FUN_00635060(PlanningMemberClass* member)
+{
+    if (member->unknown_0C) {
+        member->unknown_0C = false;
+        if (--unknown_A8 == 0) {
+            unknown_B0 = -1;
+        }
+    }
+    if (member->unknown_08 != -1) {
+        PlanningBranchClass* branch = Branches.Items[member->unknown_08];
+        branch->unknown_74 = -1;
+        unknown_B4 = -1;
+        if (--branch->unknown_70 == 0 && this != 0 && !unknown_1C) {
+            unknown_1C = true;
+            PlanningListAdd(PlanningLists::DAT_00AC4C98, this);
+        }
+    }
+    member->unknown_08 = -1;
+}
+
+// FUNCTION: GAMEMD 0x635120
+void PlanningNodeClass::FUN_00635120()
+{
+    int branches = Branches.Count;
+    for (int i = 0; i < branches; i++) {
+        delete Branches.Items[i];
+    }
+    Branches.Clear();
+    int members = Members.Count;
+    for (int j = 0; j < members; j++) {
+        PlanningMemberClass* member = Members.Items[j];
+        member->unknown_08 = -1;
+        member->unknown_0C = false;
+    }
+    Loop().unknown_70 = 0;
+    unknown_B0 = -1;
+}
+
+// FUNCTION: GAMEMD 0x6351A0
+bool PlanningNodeClass::FUN_006351A0(TechnoClass* techno)
+{
+    PlanningTokenClass* token = techno->FUN_00705D20();
+    return token->Nodes.FindItemIndex(this) == token->unknown_94;
+}
+
+// FUNCTION: GAMEMD 0x6351E0
+void PlanningNodeClass::FUN_006351E0(PlanningMemberClass* member)
+{
+    member->unknown_0C = false;
+    if (--unknown_A8 == 0) {
+        unknown_B0 = -1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x635210
+void PlanningNodeClass::FUN_00635210()
+{
+    unknown_B0 = -1;
+    if (Loop().unknown_70 != 0) {
+        EventClass origin = Loop().Event;
+        int branches = Branches.Count;
+        int j = 0;
+        if (branches > 0) {
+            do {
+                EventClass event = Branches.Items[j]->Event;
+                CoordStruct a = PlanningCoordOf(origin);
+                CoordStruct b = PlanningCoordOf(event);
+                if (a.X == b.X && a.Y == b.Y && a.Z == b.Z) {
+                    unknown_B0 = j;
+                    break;
+                }
+                j++;
+            } while (j < branches);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6352D0
+void PlanningNodeClass::FUN_006352D0()
+{
+    int count = Members.Count;
+    for (int i = 0; i < count; i++) {
+        TechnoClass* techno = Members.Items[i]->Owner;
+        if (!techno->IsSelected) {
+            techno->vf_83();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x635310
+void PlanningNodeClass::FUN_00635310()
+{
+    int count = Members.Count;
+    for (int i = 0; i < count; i++) {
+        TechnoClass* techno = Members.Items[i]->Owner;
+        if (techno->IsSelected) {
+            techno->vf_84();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6357D0 (defined below)
+void FUN_006357D0(PlanningRect* rect, int amount);
+
+// FUNCTION: GAMEMD 0x6357D0
+// Grow the rectangle by `amount` on every side; shrinking past its size empties it.
+void FUN_006357D0(PlanningRect* rect, int amount)
+{
+    int twice = amount + amount;
+    if (twice < 0 && (twice >= rect->W || twice >= rect->H)) {
+        rect->X = 0;
+        rect->Y = 0;
+        rect->W = 0;
+        rect->H = 0;
+        return;
+    }
+    rect->X -= amount;
+    rect->Y -= amount;
+    rect->W += twice;
+    rect->H += twice;
+}
+
+// FUNCTION: GAMEMD 0x635DB0
+void PlanningNodeClass::FUN_00635DB0(bool arg)
+{
+    unknown_B4 = -1;
+    if (arg) {
+        int count = Branches.Count;
+        for (int i = 0; i < count; i++) {
+            Branches.Items[i]->unknown_74 = -1;
+        }
+        Loop().unknown_74 = -1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x635DF0
+// The marker rectangle of the first member's order, grown by 4 (6339E0/634510 expanded).
+PlanningRect PlanningNodeClass::FUN_00635DF0()
+{
+    CoordStruct tmp;
+    CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
+    Point2D point;
+    DAT_00887324->FUN_006D2140(&coord, &point);
+    point.X += DAT_00886FA0.X;
+    point.Y += DAT_00886FA0.Y;
+    int size = 8;
+    PlanningRect rect;
+    rect.X = point.X - size / 2;
+    rect.Y = point.Y - size / 2;
+    rect.W = size;
+    rect.H = size;
+    rect.X -= 4;
+    rect.Y -= 4;
+    rect.W += 8;
+    rect.H += 8;
+    return rect;
+}
+
+// FUNCTION: GAMEMD 0x635E90
+// The same rectangle grown by 4 twice (6339E0/634510 called).
+PlanningRect PlanningNodeClass::FUN_00635E90()
+{
+    CoordStruct tmp;
+    CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
+    Point2D point;
+    PlanningRect rect;
+    PlanningRect bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
+    bounds.X -= 4;
+    bounds.Y -= 4;
+    bounds.W += 8;
+    bounds.H += 8;
+    bounds.X -= 4;
+    bounds.Y -= 4;
+    bounds.W += 8;
+    bounds.H += 8;
+    return bounds;
+}
+
+// FUNCTION: GAMEMD 0x635F20
+PlanningTokenClass::PlanningTokenClass(TechnoClass* owner)
+    : unknown_1C(false), unknown_8C(-1), unknown_90(-1), unknown_94(-1), unknown_98(false), unknown_99(false)
+{
+    Owner = owner;
 }
 
 // FUNCTION: GAMEMD 0x636110
@@ -557,6 +1127,12 @@ unsigned char Obj_00636DA0::FUN_00636DA0(int a1)
     return a1 >= unknown_8C;
 }
 
+// FUNCTION: GAMEMD 0x636DC0
+int PlanningTokenClass::FUN_00636DC0()
+{
+    return Nodes.Count;
+}
+
 // FUNCTION: GAMEMD 0x636DD0
 // Branching.
 int Obj_00636DD0::FUN_00636DD0()
@@ -577,6 +1153,69 @@ int Obj_00636DE0::FUN_00636DE0()
         return 0;
     }
     return unknown_14 - unknown_8C;
+}
+
+// FUNCTION: GAMEMD 0x636E00
+void PlanningTokenClass::FUN_00636E00(PlanningNodeClass* node)
+{
+    Nodes.AddItem(node);
+    if (unknown_8C == -1) {
+        unknown_8C = Nodes.Count - 1;
+    }
+}
+
+// FUNCTION: GAMEMD 0x636E60
+PlanningNodeClass* PlanningTokenClass::FUN_00636E60(int index)
+{
+    if (Nodes.Count == 0) {
+        return 0;
+    }
+    if (index >= Nodes.Count) {
+        if (unknown_94 > 0 || unknown_94 == 0) {
+            index = (index - unknown_94) % unknown_90 + unknown_94;
+        } else {
+            return 0;
+        }
+    }
+    if (index < 0 || index >= Nodes.Count) {
+        return 0;
+    }
+    return Nodes.Items[index];
+}
+
+// FUNCTION: GAMEMD 0x636EB0
+PlanningNodeClass* PlanningTokenClass::FUN_00636EB0()
+{
+    return LastNode();
+}
+
+// FUNCTION: GAMEMD 0x636EE0
+int PlanningTokenClass::FUN_00636EE0(PlanningNodeClass* node)
+{
+    return Nodes.FindItemIndex(node);
+}
+
+// FUNCTION: GAMEMD 0x636F00
+EventClass PlanningTokenClass::FUN_00636F00(int node)
+{
+    PlanningNodeClass* target = Nodes.Items[node];
+    TechnoClass* owner = Owner;
+    return *target->MemberOf(owner)->Event;
+}
+
+// FUNCTION: GAMEMD 0x636F60
+EventClass PlanningTokenClass::FUN_00636F60()
+{
+    return unknown_1D;
+}
+
+// FUNCTION: GAMEMD 0x636F80
+PlanningNodeClass* PlanningTokenClass::FUN_00636F80()
+{
+    if (unknown_94 == -1) {
+        return 0;
+    }
+    return Nodes.Items[unknown_94];
 }
 
 // FUNCTION: GAMEMD 0x636FA0
@@ -637,17 +1276,207 @@ unsigned char Obj_00637030::FUN_00637030() const
     return unknown_99;
 }
 
+// FUNCTION: GAMEMD 0x637040
+void PlanningTokenClass::FUN_00637040()
+{
+    unknown_94--;
+    unknown_94 = unknown_94 > 0 ? unknown_94 : 0;
+}
+
 // FUNCTION: GAMEMD 0x637060
 // Stores to a global.
-void FUN_00637060(int a1)
+void FUN_00637060(PlanningNotify* a1)
 {
     DAT_00AC4B80 = a1;
+}
+
+// FUNCTION: GAMEMD 0x637070
+void FUN_00637070()
+{
+    DAT_00AC4CF4 = false;
+    DAT_00AC4CF5 = false;
+    DAT_00AC4CCC = 0;
+    DAT_00AC4C38 = 0;
+    DAT_00AC4BF0 = 0;
+    Point2D zero;
+    zero.X = 0;
+    zero.Y = 0;
+    DAT_00AC4C68 = zero;
+    DAT_00AC4CB0 = false;
 }
 
 // FUNCTION: GAMEMD 0x6370A0
 void __fastcall FUN_006370A0(void* self)
 {
     FUN_006370B0(self);
+}
+
+// FUNCTION: GAMEMD 0x637550
+// Queue and free every event in the list, last first.
+void FUN_00637550()
+{
+    for (int i = PlanningLists::DAT_00AC4B48.Count - 1; i >= 0; i--) {
+        EventClass* event = PlanningLists::DAT_00AC4B48.Items[i];
+        FUN_00652230(event);
+        PlanningLists::DAT_00AC4B48.Delete(i);
+        delete event;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6375B0
+// Keep a copy of the event (a mission event is marked 2 as a planning event).
+void FUN_006375B0(EventClass* event)
+{
+    EventClass* copy = new EventClass;
+    *copy = *event;
+    if (copy->Type == EVENT_MEGAMISSION) {
+        copy->Data.MegaMission.IsPlanningEvent = 2;
+    }
+    PlanningListAdd(PlanningLists::DAT_00AC4B48, copy);
+}
+
+// FUNCTION: GAMEMD 0x637640
+// Take the node off the three node lists and forget it as a current node.
+void FUN_00637640(PlanningNodeClass* node)
+{
+    PlanningLists::DAT_00AC4C98.RemoveItem(node);
+    PlanningLists::DAT_00AC4B30.RemoveItem(node);
+    PlanningLists::DAT_00AC4C18.RemoveItem(node);
+    if (DAT_00AC4CCC == node) {
+        DAT_00AC4CCC = 0;
+    }
+    if (DAT_00AC4C38 == node) {
+        DAT_00AC4C38 = 0;
+    }
+    if (DAT_00AC4BF0 == node) {
+        DAT_00AC4BF0 = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x637750
+void FUN_00637750(PlanningTokenClass* token)
+{
+    if (!DAT_00AC4CF5) {
+        PlanningLists::DAT_00AC4C78.RemoveItem(token);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6377B0
+void FUN_006377B0(TechnoClass* techno)
+{
+    int house = techno->Owner->ArrayIndex;
+    if (techno->Owner->IsControlledByCurrentPlayer() && DAT_00A83D4C != 0) {
+        house = DAT_00A83D4C->ArrayIndex;
+    }
+    if (house >= 0 && house < 24) {
+        int pending = DAT_00AC4B84[house] - 1;
+        DAT_00AC4B84[house] = pending < 0 ? 0 : pending;
+    }
+    PlanningLists::DAT_00AC4C40.RemoveItem(techno);
+}
+
+// FUNCTION: GAMEMD 0x637840
+void FUN_00637840(TechnoClass* techno)
+{
+    if (DAT_00AC4CF6) {
+        return;
+    }
+    DAT_00AC4CF6 = true;
+    if (DAT_00AC4CF4) {
+        PlanningTokenClass* token = techno->FUN_00705D20();
+        if (token) {
+            PlanningNodeClass* last = token->LastNode();
+            if (last) {
+                int count = last->Members.Count;
+                for (int i = 0; i < count; i++) {
+                    TechnoClass* member = last->Members.Items[i]->Owner;
+                    if (!member->IsSelected) {
+                        member->vf_83();
+                    }
+                }
+            }
+        }
+    }
+    DAT_00AC4CF6 = false;
+}
+
+// FUNCTION: GAMEMD 0x6378B0
+void PlanningNodeClass::FUN_006378B0()
+{
+    if (this != 0 && !unknown_1C) {
+        unknown_1C = true;
+        PlanningListAdd(PlanningLists::DAT_00AC4C98, this);
+    }
+}
+
+// FUNCTION: GAMEMD 0x637920
+// Rebuild every node on the list, then empty the list.
+void FUN_00637920()
+{
+    int count = PlanningLists::DAT_00AC4C98.Count;
+    for (int i = 0; i < count; i++) {
+        PlanningNodeClass* node = PlanningLists::DAT_00AC4C98.Items[i];
+        node->FUN_00635120();
+        int members = node->Members.Count;
+        for (int j = 0; j < members; j++) {
+            node->FUN_00634E10(node->Members.Items[j]);
+        }
+        node->FUN_006349B0();
+        node->unknown_1C = false;
+    }
+    PlanningLists::DAT_00AC4C98.Clear();
+}
+
+// FUNCTION: GAMEMD 0x6379C0
+void FUN_006379C0()
+{
+    if (!DAT_00AC4CF4) {
+        RulesClass* rules = RulesInstance;
+        DAT_00AC4CF4 = true;
+        FUN_00750920(rules->unknown_1D4, 1.0f, 0x2000, 0);
+        if (DAT_00AC4B80 != 0) {
+            DAT_00AC4B80->vf_0(0x11C7, 0);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x637A10
+void FUN_00637A10()
+{
+    if (DAT_00AC4CF4) {
+        EventClass event(DAT_00A83D4C->ArrayIndex, 0x2B);
+        FUN_006521C0(event);
+        DAT_00AC4CCC = 0;
+        DAT_00AC4C38 = 0;
+        DAT_00AC4BF0 = 0;
+        DAT_00AC4CF4 = false;
+        FUN_00750920(RulesInstance->unknown_1E0, 1.0f, 0x2000, 0);
+        if (DAT_00AC4B80 != 0) {
+            DAT_00AC4B80->vf_0(0x11C8, 0);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x637D00
+void PlanningNodeClass::FUN_00637D00()
+{
+    EventClass origin = *Members.Items[0]->Event;
+    TargetClass* target;
+    if (origin.Data.MegaMission.Target.RTTI) {
+        target = &origin.Data.MegaMission.Target;
+    } else if (origin.Data.MegaMission.Follow.RTTI) {
+        target = &origin.Data.MegaMission.Follow;
+    } else if (origin.Data.MegaMission.Destination.RTTI) {
+        target = &origin.Data.MegaMission.Destination;
+    } else {
+        return;
+    }
+    TargetAbstract* object = target->FUN_006E6E20();
+    if (object) {
+        TargetClass id;
+        EventClass event(DAT_00A83D4C->ArrayIndex, 0x2C, *id.FUN_006E6AB0(object));
+        FUN_006521C0(event);
+    }
 }
 
 // FUNCTION: GAMEMD 0x637DB0
@@ -659,6 +1488,15 @@ bool FUN_00637DB0(int a1)
         return true;
     }
     return false;
+}
+
+// FUNCTION: GAMEMD 0x637DD0
+void FUN_00637DD0(EventClass event)
+{
+    if (event.Type == EVENT_MEGAMISSION) {
+        event.Data.MegaMission.IsPlanningEvent = 1;
+        FUN_006521C0(event);
+    }
 }
 
 // FUNCTION: GAMEMD 0x6385C0
@@ -758,12 +1596,12 @@ void __fastcall Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 
         if (!wasEmpty) {
             slot = list->Owner;
-            Sector_006386E0* sector = ((Owner_006386E0*)slot)->At_21C;
-            Scene_006386E0* scene = sector->At_030;
-            if (sector->FUN_0050B6F0() && DAT_00A83D4C != 0) {
-                scene = DAT_00A83D4C->At_030;
+            HouseClass* house = ((Owner_006386E0*)slot)->At_21C;
+            int index = house->ArrayIndex;
+            if (house->IsControlledByCurrentPlayer() && DAT_00A83D4C != 0) {
+                index = DAT_00A83D4C->ArrayIndex;
             }
-            scene->FUN_00639F80();
+            FUN_00639F80(index);
             DAT_00AC4C40.FUN_0063E900(&slot);
         }
 
@@ -809,6 +1647,38 @@ int FUN_00638C20(int a1)
     return a1 == 7 || a1 == 8 || a1 == 9;
 }
 
+// FUNCTION: GAMEMD 0x638C40
+// Whether a mission/target pair is one the planner takes (mission 1 or 11 against a type-11 target, or
+// mission 11 against none).
+bool FUN_00638C40(int mission, TargetClass target)
+{
+    if (mission == 1 || mission == 11) {
+        if (target.RTTI == 11) {
+            return true;
+        }
+        if (mission == 11 && target.RTTI == 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x638C70
+// Whether this unit's current mission is one the planner takes (5, or the 0x638C40 cases against its target).
+bool FUN_00638C70(TechnoClass* techno)
+{
+    if (techno == 0) {
+        return false;
+    }
+    int mission = techno->vf_97();
+    if (mission == 5) {
+        return true;
+    }
+    TargetClass target;
+    target.FUN_006E6AB0(techno->Target);
+    return PlanningMissionTargetOk(mission, target);
+}
+
 // FUNCTION: GAMEMD 0x00638DC0
 void FUN_00638DC0(Obj_00638DC0* item)
 {
@@ -825,25 +1695,75 @@ void FUN_00638DC0(Obj_00638DC0* item)
     v.Items[index] = item;
 }
 
+// FUNCTION: GAMEMD 0x638E20
+void FUN_00638E20()
+{
+    PlanningLists::DAT_00AC4C18.Clear();
+}
+
+// FUNCTION: GAMEMD 0x639470
+// The node on the list whose first order points at `coord`.
+PlanningNodeClass* FUN_00639470(CoordStruct coord)
+{
+    int count = PlanningLists::DAT_00AC4C18.Count;
+    int i = 0;
+    if (count > 0) {
+        do {
+            PlanningNodeClass* node = PlanningLists::DAT_00AC4C18.Items[i];
+            CoordStruct tmp;
+            CoordStruct at = *FUN_00633BC0(&tmp, *node->Members.Items[0]->Event);
+            if (at.X == coord.X && at.Y == coord.Y && at.Z == coord.Z) {
+                return node;
+            }
+            i++;
+        } while (i < count);
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x639F60
+void FUN_00639F60(int house)
+{
+    if (house >= 0 && house < 24) {
+        DAT_00AC4B84[house]++;
+    }
+}
+
 // FUNCTION: GAMEMD 0x639F80
 //
-// MATCHED (100.0%, 12/12). Scene_006386E0::FUN_00639F80 -- decrement the
-// pending-request counter for this house index, clamped at 0 (not -1: the
-// retail formula is `(v-1)<0 ? 0 : v-1`, i.e. `max(v-1, 0)`). Called as
-// `scene->FUN_00639F80()` from TechnoClass::ClearPlanningTokens
-// (match/ai/techno_class_clear_tokens_methods.cpp, read not edited), where
-// the "scene" pointer is really a small house index carried in the receiver
-// register rather than a dereferenced object -- this function never reads
-// through `this`, only compares and indexes with its bit pattern. Out of
-// [0, 24) it is a no-op. The branchless clamp (`DEC`/`SETS`/`DEC`/`AND`)
+// FUN_00639F80 -- decrement the pending-request counter of a house index
+// (ECX), clamped at 0 (not -1: the retail formula is `(v-1)<0 ? 0 : v-1`,
+// i.e. `max(v-1, 0)`). Out of [0, 24) it is a no-op. The branchless clamp (`DEC`/`SETS`/`DEC`/`AND`)
 // reproduces once the ternary's answer (0, not -1) is right and it lands in
 // a fresh local rather than back into the variable that fed the comparison.
-void Scene_006386E0::FUN_00639F80()
+void FUN_00639F80(int house)
 {
-    if ((int)this >= 0 && (int)this < 24) {
-        int dec = DAT_00AC4B84[(int)this] - 1;
+    if (house >= 0 && house < 24) {
+        int dec = DAT_00AC4B84[house] - 1;
         int clamped = (dec < 0) ? 0 : dec;
-        DAT_00AC4B84[(int)this] = clamped;
+        DAT_00AC4B84[house] = clamped;
+    }
+}
+
+// FUNCTION: GAMEMD 0x639FB0
+int FUN_00639FB0(int house)
+{
+    bool valid = house >= 0 && house < 24;
+    int count = 0;
+    if (valid) {
+        count = DAT_00AC4B84[house];
+    }
+    return count;
+}
+
+// FUNCTION: GAMEMD 0x63A0D0
+void FUN_0063A0D0()
+{
+    if (!DAT_00AC4C08) {
+        DAT_00AC4C08 = true;
+        int text = FUN_00734E60(STR_00836C80, 0, STR_00836BD4, 0xCA1);
+        FUN_00730A90(text, 0x1E0);
+        FUN_00750920(RulesInstance->unknown_700, 1.0f, 0x2000, 0);
     }
 }
 
@@ -855,11 +1775,42 @@ void Obj_0063A210::FUN_0063A210()
     FUN_00730A90(c0, 0x1E0);
 }
 
+// FUNCTION: GAMEMD 0x63A440
+// The order's verdict for `view`: 0 when this kind of order is not placed, else 2 or -1 by its state.
+int FUN_0063A440(PlanningView* view, EventClass* event)
+{
+    int mission = event->Data.MegaMission.Mission;
+    if (PlanningMissionIsMove(mission)) {
+        return 0;
+    }
+    TargetClass target = event->Data.MegaMission.Target;
+    if (PlanningMissionTargetOk(mission, target)) {
+        return 0;
+    }
+    return view->unknown_14 == 15 ? 2 : -1;
+}
+
 // FUNCTION: GAMEMD 0x63A4A0
 // Stores to a global.
 void FUN_0063A4A0(int a1)
 {
     DAT_00AC4C90 = a1;
+}
+
+// FUNCTION: GAMEMD 0x63AAC0
+void __stdcall FUN_0063AAC0(int x, int y)
+{
+    DAT_00AC4CB0 = true;
+    Point2D none;
+    none.X = -1;
+    none.Y = -1;
+    DAT_00AC4C68 = none;
+    if (DAT_00AC4CF4 && DAT_00A8ECC8 <= 0) {
+        Point2D anchor;
+        anchor.X = x;
+        anchor.Y = y;
+        DAT_00AC4C68 = anchor;
+    }
 }
 
 // FUNCTION: GAMEMD 0x63AB00
@@ -875,24 +1826,39 @@ void __stdcall FUN_0063AB00(int x, int y)
     if (DAT_00AC4CF4
         && DAT_00A8ECC8 <= 0
         && DAT_00AC4BF0 != 0
-        && abs(x - DAT_00AC4C68) <= 3
-        && abs(y - DAT_00AC4C6C) <= 3) {
+        && abs(x - DAT_00AC4C68.X) <= 3
+        && abs(y - DAT_00AC4C68.Y) <= 3) {
         DAT_00AC4BF0 = 0;
     }
 }
 
 // FUNCTION: GAMEMD 0x63AD30
 // Stores to a global.
-void FUN_0063AD30(int a1)
+void FUN_0063AD30(PlanningNodeClass* a1)
 {
     DAT_00AC4C38 = a1;
 }
 
 // FUNCTION: GAMEMD 0x63AD40
 // Returns a global (dword).
-int __cdecl FUN_0063AD40()
+PlanningNodeClass* __cdecl FUN_0063AD40()
 {
     return DAT_00AC4C38;
+}
+
+// FUNCTION: GAMEMD 0x63B050
+// The object the order points at: its target, else its follow object, else its destination.
+TargetAbstract* FUN_0063B050(EventClass* event)
+{
+    TargetAbstract* object = 0;
+    if (event->Data.MegaMission.Target.RTTI) {
+        object = event->Data.MegaMission.Target.FUN_006E6E20();
+    } else if (event->Data.MegaMission.Follow.RTTI) {
+        object = event->Data.MegaMission.Follow.FUN_006E6E20();
+    } else if (event->Data.MegaMission.Destination.RTTI) {
+        object = event->Data.MegaMission.Destination.FUN_006E6E20();
+    }
+    return object;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -900,6 +1866,19 @@ int __cdecl FUN_0063AD40()
 void FUN_0063B090()
 {
     DAT_00AC4BF0 = 0;
+}
+
+// FUNCTION: GAMEMD 0x63CA80
+// The coordinate an order points at, taken from `object` when the order names none.
+CoordStruct* FUN_0063CA80(CoordStruct* out, const EventClass& event, TargetAbstract* object)
+{
+    CoordStruct tmp;
+    CoordStruct coord = *FUN_00633BC0(&tmp, event);
+    if (coord.X == -1 && coord.Y == -1 && coord.Z == -1 && object) {
+        coord = object->vf_22();
+    }
+    *out = coord;
+    return out;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

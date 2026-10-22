@@ -760,9 +760,9 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x639F80",
-  "sym": "?FUN_00639F80@Scene_006386E0@@QAEXXZ",
+  "sym": "?FUN_00639F80@@YIXH@Z",
   "len": "0x24",
-  "name": "Scene_006386E0::FUN_00639F80",
+  "name": "FUN_00639F80",
   "status": "matched",
   "pct": 100
  },
@@ -82933,7 +82933,7 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x637060",
-  "sym": "?FUN_00637060@@YIXH@Z",
+  "sym": "?FUN_00637060@@YIXPAVPlanningNotify@@@Z",
   "len": "0x7",
   "name": "FUN_00637060",
   "status": "matched",
@@ -82987,7 +82987,7 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x63AD30",
-  "sym": "?FUN_0063AD30@@YIXH@Z",
+  "sym": "?FUN_0063AD30@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x7",
   "name": "FUN_0063AD30",
   "status": "matched",
@@ -82996,7 +82996,7 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x63AD40",
-  "sym": "?FUN_0063AD40@@YAHXZ",
+  "sym": "?FUN_0063AD40@@YAPAVPlanningNodeClass@@XZ",
   "len": "0x6",
   "name": "FUN_0063AD40",
   "status": "matched",
@@ -90429,5 +90429,500 @@
   "name": "??_GTActionClass@@UAEPAXI@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6347A0",
+  "sym": "?FUN_006347A0@PlanningNodeClass@@QAEPAVPlanningBranchClass@@H@Z",
+  "len": "0xd",
+  "name": "PlanningNodeClass::FUN_006347A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6347B0",
+  "sym": "?FUN_006347B0@PlanningNodeClass@@QAEPAVPlanningBranchClass@@PAVTechnoClass@@@Z",
+  "len": "0x4c",
+  "name": "PlanningNodeClass::FUN_006347B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634810",
+  "sym": "?FUN_00634810@PlanningNodeClass@@QAE?AUCoordStruct@@H@Z",
+  "len": "0x36",
+  "name": "PlanningNodeClass::FUN_00634810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634850",
+  "sym": "?FUN_00634850@PlanningNodeClass@@QAE?AUCoordStruct@@XZ",
+  "len": "0x2f",
+  "name": "PlanningNodeClass::FUN_00634850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634880",
+  "sym": "?FUN_00634880@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@H@Z",
+  "len": "0x65",
+  "name": "PlanningNodeClass::FUN_00634880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6348F0",
+  "sym": "?FUN_006348F0@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "len": "0x5e",
+  "name": "PlanningNodeClass::FUN_006348F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634970",
+  "sym": "?FUN_00634970@PlanningNodeClass@@QAEXXZ",
+  "len": "0x35",
+  "name": "PlanningNodeClass::FUN_00634970",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6349B0",
+  "sym": "?FUN_006349B0@PlanningNodeClass@@QAEXXZ",
+  "len": "0x164",
+  "name": "PlanningNodeClass::FUN_006349B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634B20",
+  "sym": "?FUN_00634B20@PlanningNodeClass@@QAEXXZ",
+  "len": "0x197",
+  "name": "PlanningNodeClass::FUN_00634B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x634CC0",
+  "sym": "?FUN_00634CC0@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
+  "len": "0x146",
+  "name": "PlanningNodeClass::FUN_00634CC0",
+  "status": "partial",
+  "pct": 92.3
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635060",
+  "sym": "?FUN_00635060@PlanningNodeClass@@QAEXPAVPlanningMemberClass@@@Z",
+  "len": "0xb7",
+  "name": "PlanningNodeClass::FUN_00635060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635120",
+  "sym": "?FUN_00635120@PlanningNodeClass@@QAEXXZ",
+  "len": "0x72",
+  "name": "PlanningNodeClass::FUN_00635120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6351A0",
+  "sym": "?FUN_006351A0@PlanningNodeClass@@QAE_NPAVTechnoClass@@@Z",
+  "len": "0x35",
+  "name": "PlanningNodeClass::FUN_006351A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6351E0",
+  "sym": "?FUN_006351E0@PlanningNodeClass@@QAEXPAVPlanningMemberClass@@@Z",
+  "len": "0x24",
+  "name": "PlanningNodeClass::FUN_006351E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635210",
+  "sym": "?FUN_00635210@PlanningNodeClass@@QAEXXZ",
+  "len": "0xb6",
+  "name": "PlanningNodeClass::FUN_00635210",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6352D0",
+  "sym": "?FUN_006352D0@PlanningNodeClass@@QAEXXZ",
+  "len": "0x31",
+  "name": "PlanningNodeClass::FUN_006352D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635310",
+  "sym": "?FUN_00635310@PlanningNodeClass@@QAEXXZ",
+  "len": "0x31",
+  "name": "PlanningNodeClass::FUN_00635310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6357D0",
+  "sym": "?FUN_006357D0@@YIXPAUPlanningRect@@H@Z",
+  "len": "0x51",
+  "name": "FUN_6357D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635DB0",
+  "sym": "?FUN_00635DB0@PlanningNodeClass@@QAEX_N@Z",
+  "len": "0x36",
+  "name": "PlanningNodeClass::FUN_00635DB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635DF0",
+  "sym": "?FUN_00635DF0@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "len": "0x91",
+  "name": "PlanningNodeClass::FUN_00635DF0",
+  "status": "partial",
+  "pct": 45.8
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635E90",
+  "sym": "?FUN_00635E90@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "len": "0x90",
+  "name": "PlanningNodeClass::FUN_00635E90",
+  "status": "partial",
+  "pct": 50.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635F20",
+  "sym": "??0PlanningTokenClass@@QAE@PAVTechnoClass@@@Z",
+  "len": "0x52",
+  "name": "PlanningTokenClass::PlanningTokenClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636DC0",
+  "sym": "?FUN_00636DC0@PlanningTokenClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningTokenClass::FUN_00636DC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636E00",
+  "sym": "?FUN_00636E00@PlanningTokenClass@@QAEXPAVPlanningNodeClass@@@Z",
+  "len": "0x5e",
+  "name": "PlanningTokenClass::FUN_00636E00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636E60",
+  "sym": "?FUN_00636E60@PlanningTokenClass@@QAEPAVPlanningNodeClass@@H@Z",
+  "len": "0x44",
+  "name": "PlanningTokenClass::FUN_00636E60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636EB0",
+  "sym": "?FUN_00636EB0@PlanningTokenClass@@QAEPAVPlanningNodeClass@@XZ",
+  "len": "0x10",
+  "name": "PlanningTokenClass::FUN_00636EB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636EE0",
+  "sym": "?FUN_00636EE0@PlanningTokenClass@@QAEHPAVPlanningNodeClass@@@Z",
+  "len": "0x11",
+  "name": "PlanningTokenClass::FUN_00636EE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636F00",
+  "sym": "?FUN_00636F00@PlanningTokenClass@@QAE?AVEventClass@@H@Z",
+  "len": "0x54",
+  "name": "PlanningTokenClass::FUN_00636F00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636F60",
+  "sym": "?FUN_00636F60@PlanningTokenClass@@QAE?AVEventClass@@XZ",
+  "len": "0x1a",
+  "name": "PlanningTokenClass::FUN_00636F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x636F80",
+  "sym": "?FUN_00636F80@PlanningTokenClass@@QAEPAVPlanningNodeClass@@XZ",
+  "len": "0x15",
+  "name": "PlanningTokenClass::FUN_00636F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637040",
+  "sym": "?FUN_00637040@PlanningTokenClass@@QAEXXZ",
+  "len": "0x1e",
+  "name": "PlanningTokenClass::FUN_00637040",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637070",
+  "sym": "?FUN_00637070@@YIXXZ",
+  "len": "0x2e",
+  "name": "FUN_637070",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637550",
+  "sym": "?FUN_00637550@@YIXXZ",
+  "len": "0x5c",
+  "name": "FUN_637550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6375B0",
+  "sym": "?FUN_006375B0@@YIXPAVEventClass@@@Z",
+  "len": "0x8b",
+  "name": "FUN_6375B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637640",
+  "sym": "?FUN_00637640@@YIXPAVPlanningNodeClass@@@Z",
+  "len": "0x108",
+  "name": "FUN_637640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637750",
+  "sym": "?FUN_00637750@@YIXPAVPlanningTokenClass@@@Z",
+  "len": "0x55",
+  "name": "FUN_637750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6377B0",
+  "sym": "?FUN_006377B0@@YIXPAVTechnoClass@@@Z",
+  "len": "0x8e",
+  "name": "FUN_6377B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637840",
+  "sym": "?FUN_00637840@@YIXPAVTechnoClass@@@Z",
+  "len": "0x68",
+  "name": "FUN_637840",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6378B0",
+  "sym": "?FUN_006378B0@PlanningNodeClass@@QAEXXZ",
+  "len": "0x67",
+  "name": "PlanningNodeClass::FUN_006378B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637920",
+  "sym": "?FUN_00637920@@YIXXZ",
+  "len": "0x94",
+  "name": "FUN_637920",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x6379C0",
+  "sym": "?FUN_006379C0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_6379C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637A10",
+  "sym": "?FUN_00637A10@@YIXXZ",
+  "len": "0x8b",
+  "name": "FUN_637A10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637D00",
+  "sym": "?FUN_00637D00@PlanningNodeClass@@QAEXXZ",
+  "len": "0xa4",
+  "name": "PlanningNodeClass::FUN_00637D00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x637DD0",
+  "sym": "?FUN_00637DD0@@YIXVEventClass@@@Z",
+  "len": "0x2f",
+  "name": "FUN_637DD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x638C40",
+  "sym": "?FUN_00638C40@@YI_NHUTargetClass@@@Z",
+  "len": "0x2a",
+  "name": "FUN_638C40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x638C70",
+  "sym": "?FUN_00638C70@@YI_NPAVTechnoClass@@@Z",
+  "len": "0x62",
+  "name": "FUN_638C70",
+  "status": "partial",
+  "pct": 37.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x638E20",
+  "sym": "?FUN_00638E20@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_638E20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x639470",
+  "sym": "?FUN_00639470@@YIPAVPlanningNodeClass@@UCoordStruct@@@Z",
+  "len": "0x69",
+  "name": "FUN_639470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x639F60",
+  "sym": "?FUN_00639F60@@YIXH@Z",
+  "len": "0x11",
+  "name": "FUN_639F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x639FB0",
+  "sym": "?FUN_00639FB0@@YIHH@Z",
+  "len": "0x1d",
+  "name": "FUN_639FB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63A0D0",
+  "sym": "?FUN_0063A0D0@@YIXXZ",
+  "len": "0x4f",
+  "name": "FUN_63A0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63A440",
+  "sym": "?FUN_0063A440@@YIHPAUPlanningView@@PAVEventClass@@@Z",
+  "len": "0x5b",
+  "name": "FUN_63A440",
+  "status": "partial",
+  "pct": 63.2
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63AAC0",
+  "sym": "?FUN_0063AAC0@@YGXHH@Z",
+  "len": "0x40",
+  "name": "FUN_63AAC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63B050",
+  "sym": "?FUN_0063B050@@YIPAVTargetAbstract@@PAVEventClass@@@Z",
+  "len": "0x30",
+  "name": "FUN_63B050",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63CA80",
+  "sym": "?FUN_0063CA80@@YIPAUCoordStruct@@PAU1@ABVEventClass@@PAVTargetAbstract@@@Z",
+  "len": "0x57",
+  "name": "FUN_63CA80",
+  "status": "partial",
+  "pct": 88.9
  }
 ]

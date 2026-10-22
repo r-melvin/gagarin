@@ -128,8 +128,37 @@ public:
     void FUN_00634E10(PlanningMemberClass* member);
     // FUNCTION: GAMEMD 0x635120 (decl; reloc)
     void FUN_00635120();
-    // FUNCTION: GAMEMD 0x635DB0 (decl; reloc)
-    void FUN_00635DB0(int arg);
+    // FUNCTION: GAMEMD 0x635DB0 (defined in planning_node_methods.cpp; the argument is a byte, read with
+    // MOV AL,[ESP+4] / TEST AL,AL)
+    void FUN_00635DB0(bool arg);
+
+    // Methods defined in planning_node_methods.cpp (same PlanMgr.cpp block, continued).
+    PlanningBranchClass* FUN_006347A0(int index);
+    PlanningBranchClass* FUN_006347B0(TechnoClass* techno);
+    CoordStruct FUN_00634810(int branch);
+    CoordStruct FUN_00634850();
+    Point2D* FUN_00634880(Point2D* out, int branch);
+    Point2D* FUN_006348F0(Point2D* out);
+    void FUN_00634970();
+    void FUN_006349B0();
+    void FUN_00635060(PlanningMemberClass* member);
+    bool FUN_006351A0(TechnoClass* techno);
+    void FUN_006351E0(PlanningMemberClass* member);
+    void FUN_00635210();
+    void FUN_006352D0();
+    void FUN_00635310();
+    PlanningRect FUN_00635DF0();
+    PlanningRect FUN_00635E90();
+    void FUN_006378B0();
+    void FUN_00637D00();
+    int FUN_00634CC0(TechnoClass* techno);
+    void FUN_00634B20();
+
+    // The embedded loop branch at +0x38..+0xAF: a whole PlanningBranchClass (its event at +0x38, its
+    // count at +0xA8 and its -1 link at +0xAC are what the node constructor 0x633CC0 initialises as
+    // unknown_38/unknown_A8/unknown_AC; 0x6349B0 indexes [+0x38 + 0x70] and copies 0x6F event bytes
+    // into it, and 0x634B20 prints it as "Loop Branch"). Typed as bytes above.
+    PlanningBranchClass& Loop() { return *(PlanningBranchClass*)&unknown_38; }
 
     // Inline member search (retail also keeps it out of line at 0x634290);
     // the index of the member `techno` owns, or -1.
@@ -171,12 +200,24 @@ GG_STATIC_ASSERT(offsetof(PlanningNodeClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(PlanningNodeClass, unknown_A8) == 0xA8);
 GG_STATIC_ASSERT(offsetof(PlanningNodeClass, unknown_B4) == 0xB4);
 
-// The token a unit's nodes hang off (only the fields read here).
+// The token a unit's nodes hang off.
 class PlanningTokenClass
 {
 public:
+    // FUNCTION: GAMEMD 0x635F20 (defined in planning_node_methods.cpp)
+    PlanningTokenClass(TechnoClass* owner);
+    int FUN_00636DC0();
+    void FUN_00636E00(PlanningNodeClass* node);
+    PlanningNodeClass* FUN_00636E60(int index);
+    PlanningNodeClass* FUN_00636EB0();
+    int FUN_00636EE0(PlanningNodeClass* node);
+    EventClass FUN_00636F00(int node);
+    EventClass FUN_00636F60();
+    PlanningNodeClass* FUN_00636F80();
+    void FUN_00637040();
+
     // Inline node lookup with wrap-around past the end (no retail body of its
-    // own; inlined into 0x633EA0 and 0x633F20).
+    // own; inlined into 0x633EA0 and 0x633F20; the out-of-line form is 0x636E60).
     PlanningNodeClass* NodeAt(int index)
     {
         if (Nodes.Count == 0) {
@@ -195,16 +236,32 @@ public:
         return Nodes.Items[index];
     }
 
+    // The last node, or none when empty (0x6349B0, 0x634CC0: Count - 1 < 0 gives none).
+    PlanningNodeClass* LastNode()
+    {
+        int index = Nodes.Count - 1;
+        if (index < 0) {
+            return 0;
+        }
+        return Nodes.Items[index];
+    }
+
     TechnoClass* Owner;                              // +0x00
     DynamicVectorClass<PlanningNodeClass*> Nodes;    // +0x04
-    char unknown_1C[0x8C - 0x1C];                    // +0x1C
+    bool unknown_1C;                                 // +0x1C
+    EventClass unknown_1D;                           // +0x1D (0x6F bytes; the constructor stores its Type = 0)
     int unknown_8C;                                  // +0x8C
     int unknown_90;                                  // +0x90
     int unknown_94;                                  // +0x94
+    bool unknown_98;                                 // +0x98
+    bool unknown_99;                                 // +0x99
 };
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, Nodes) == 0x04);
+GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_1D) == 0x1D);
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_8C) == 0x8C);
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_94) == 0x94);
+GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_99) == 0x99);
 
 // The six lists with run-time constructors and guarded destructors (0x6335E0..0x633940). The guard bytes
 // (0xAC4B60..0xAC4B63, shared by the last three with bits 1, 2 and 4) are what VC6 emits for static data members

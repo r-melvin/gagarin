@@ -20,7 +20,11 @@ struct RulesClass
     AnimTypeClass* LandAnim; // +0x04C
     char unknown_050[0x108 - 0x050];
     AnimTypeClass** TouchdownAnims; // +0x108
-    char unknown_10C[0x244 - 0x10C];
+    char unknown_10C[0x1D4 - 0x10C];
+    int unknown_1D4;    // +0x1D4 sound played on entering planning mode
+    char unknown_1D8[0x1E0 - 0x1D8];
+    int unknown_1E0;    // +0x1E0 sound played on leaving it
+    char unknown_1E4[0x244 - 0x1E4];
     int BunkerSound;
     char unknown_248[0x344 - 0x248];
     AnimTypeClass* unknown_344;
@@ -33,7 +37,9 @@ struct RulesClass
     int unknown_5A8;
     int MinFall; // +0x5AC
     double Angle; // +0x5B0
-    char unknown_5B8[0x788 - 0x5B8];
+    char unknown_5B8[0x700 - 0x5B8];
+    int unknown_700;    // +0x700 sound played when planning guard areas are refused
+    char unknown_704[0x788 - 0x704];
     int unknown_788;
     int unknown_78C;
     char unknown_790[0x7A8 - 0x790];
@@ -56,6 +62,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, TouchdownAnims) == 0x108);
 GG_STATIC_ASSERT(offsetof(RulesClass, SpawnAnim) == 0x354);
 GG_STATIC_ASSERT(offsetof(RulesClass, Weapon) == 0x5A4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_5A8) == 0x5A8);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1D4) == 0x1D4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1E0) == 0x1E0);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_700) == 0x700);
 GG_STATIC_ASSERT(offsetof(RulesClass, MinFall) == 0x5AC);
 GG_STATIC_ASSERT(offsetof(RulesClass, Angle) == 0x5B0);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_344) == 0x344);

@@ -120,6 +120,7 @@ public:
     // Nested pointer spelling confirmed by RTTI at tables 0x7EA964/0x7EA944.
     // Its element fields and complete size remain unknown.
     struct StartingTechnoStruct;
+    struct BuildChoiceClass;    // RTTI: .?AUBuildChoiceClass@HouseClass@@ (vector element)
     void*  Vfptr_24;                       // +0x24 interface vptr; ctor 0x7EA834 @0x004F5DE8; RTTI COL base 0x24
     void*  Vfptr_28;                       // +0x28 interface vptr; ctor 0x7EA80C @0x004F5DEF; RTTI COL base 0x28
     void*  Vfptr_2C;                       // +0x2C interface vptr; ctor 0x7EA7F4 @0x004F5DFB; RTTI COL base 0x2C

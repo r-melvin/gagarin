@@ -17,13 +17,8 @@ extern bool DAT_00AC4CF4;
 extern bool DAT_00AC4CB0;
 // GLOBAL: GAMEMD 0xA8ECC8
 extern int  DAT_00A8ECC8;
-// GLOBAL: GAMEMD 0xAC4BF0 — the pending token; released when the click lands
-// on the anchor.
-extern int  DAT_00AC4BF0;
-// GLOBAL: GAMEMD 0xAC4C68 — anchor X.
-extern int  DAT_00AC4C68;
-// GLOBAL: GAMEMD 0xAC4C6C — anchor Y.
-extern int  DAT_00AC4C6C;
+// The pending token 0xAC4BF0 and the anchor point 0xAC4C68 (X, Y) are declared
+// with their types in PlanMgr.cpp.
 
 // FUNCTION: GAMEMD 0x63AB00 — YRpp: Unsorted::PlanningManager_WM_RBUTTONUP_63AB00.
 void __stdcall FUN_0063AB00(int x, int y);

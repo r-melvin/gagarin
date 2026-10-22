@@ -72,7 +72,7 @@ extern const char STR_00820C1C[];
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) — printf-style log sink, __cdecl
 // (the callers clean with `ADD ESP,4` / `ADD ESP,8`).
-extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 #pragma pack(push, 1)
 
@@ -83,6 +83,9 @@ struct TargetClass
 {
     // FUNCTION: GAMEMD 0x6E6E20 (decl; reloc) -- the object this target names, or null.
     TargetAbstract* FUN_006E6E20() const;
+    // FUNCTION: GAMEMD 0x6E6AB0 (decl; reloc) -- fill ID/RTTI from the object a target names (ECX = this,
+    // one stacked argument, returns this).
+    TargetClass* FUN_006E6AB0(void* object);
 
     int           ID;     // +0x00
     unsigned char RTTI;   // +0x04
@@ -217,12 +220,12 @@ public:
         struct MEGAMISSION
         {
             TargetClass   Whom;              // +0x07
-            unsigned char Mission;           // +0x0C
+            char          Mission;           // +0x0C (read sign-extended: MOVSX at 0x63A440)
             char          _gap_;             // +0x0D
             TargetClass   Target;            // +0x0E
             TargetClass   Destination;       // +0x13
             TargetClass   Follow;            // +0x18
-            bool          IsPlanningEvent;   // +0x1D
+            unsigned char IsPlanningEvent;   // +0x1D (a byte: 0x6375B0 stores 2)
         } MegaMission;
 
         struct MEGAMISSION_F

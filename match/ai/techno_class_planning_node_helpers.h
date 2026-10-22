@@ -4,7 +4,7 @@
 //   v1.001 via the local Ghidra CLI at 0x634290 and 0x639F80. Both functions
 //   are declared (but not defined) in
 //   match/ai/techno_class_clear_tokens_methods.h (read, not edited) as
-//   Node_006386E0::FUN_00634290 and Scene_006386E0::FUN_00639F80; this TU
+//   Node_006386E0::FUN_00634290 and FUN_00639F80; this TU
 //   supplies their bodies out of line so that header stays untouched.
 //
 //   0x634290 walks Node_006386E0's own already-confirmed layout: the entry
