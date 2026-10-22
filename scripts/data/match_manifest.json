@@ -66654,7 +66654,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426430",
-  "sym": "?vf_50@ObjectClass@@UAE_NH@Z",
+  "sym": "?vf_50@ObjectClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_50",
   "status": "matched",
@@ -66681,7 +66681,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426460",
-  "sym": "?vf_85@ObjectClass@@UAEXHHH@Z",
+  "sym": "?vf_85@ObjectClass@@UAEXHH_N@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_85",
   "status": "matched",
@@ -68643,7 +68643,7 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F4380",
-  "sym": "?vf_89@ObjectClass@@UAE_NHH@Z",
+  "sym": "?vf_89@ObjectClass@@UAE_NABUCoordStruct@@H@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_89",
   "status": "matched",
@@ -73278,7 +73278,7 @@
  {
   "tu": "match/core/techno_class_slots_41bee0.cpp",
   "addr": "0x41C020",
-  "sym": "?vf_50@TechnoClass@@UAE_NH@Z",
+  "sym": "?vf_50@TechnoClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0x9",
   "name": "TechnoClass::vf_50",
   "status": "matched",

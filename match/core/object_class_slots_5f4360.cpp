@@ -176,7 +176,7 @@ struct House_5F5280
 };
 
 // GLOBAL: GAMEMD 0xA83D4C -- the player's house (a pointer, passed to slot 50).
-extern int DAT_00A83D4C;
+extern HouseClass* DAT_00A83D4C;
 // GLOBAL: GAMEMD 0xA8B238 -- the session game mode (0 is a campaign).
 extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xAC13BC -- the height a bridge adds.
@@ -203,7 +203,7 @@ void ObjectClass::vf_82(int a1)
 }
 
 // FUNCTION: GAMEMD 0x5F4380
-bool ObjectClass::vf_89(int a1, int a2)
+bool ObjectClass::vf_89(const CoordStruct& coord, int a2)
 {
     return false;
 }

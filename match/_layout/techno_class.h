@@ -254,7 +254,7 @@ public:
     virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
-    virtual bool vf_50(int a1);                                    // 50  0x41C020: returns Disguised
+    virtual bool vf_50(HouseClass* house);                         // 50  0x41C020: returns Disguised
     virtual void vf_71();                                          // 71  0x6F4A40
     virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
@@ -349,7 +349,7 @@ public:
     virtual void vf_242(int a1);                                   // 242 0x6FCDB0
     virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
     virtual void CancelAndGoIdle();                                // 244 0x70F850
-    virtual int vf_245(int a1, int a2);                            // 245 0x7014A0
+    virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
     virtual void vf_246(int a1, int a2, int a3);                   // 246 0x70B280
     virtual bool vf_247(int a1);                                   // 247 0x459E50
     virtual bool vf_248();                                         // 248 0x70DD50

@@ -156,7 +156,7 @@ public:
     virtual bool vf_47(int a1);                                // 47  0x5F6A70
     virtual bool vf_48();                                      // 48  0x426410: returns true
     virtual bool vf_49();                                      // 49  0x426420: returns false
-    virtual bool vf_50(int a1);                                // 50  0x426430: returns false
+    virtual bool vf_50(HouseClass* house);                     // 50  0x426430: returns false
     virtual ObjectTypeClass* vf_51(bool a1);                   // 51  0x41BE60: returns 0
     virtual HouseClass* vf_52(bool a1);                        // 52  0x41BE70: returns 0
     virtual bool vf_53();                                      // 53  0x5F4D30
@@ -191,11 +191,11 @@ public:
     virtual void vf_82(int a1);                                // 82  0x5F4370: bare RET 4
     virtual bool vf_83();                                      // 83  0x5F4520
     virtual void vf_84();                                      // 84  0x5F44A0
-    virtual void vf_85(int a1, int a2, int a3);                // 85  0x426460: bare RET 0xC
+    virtual void vf_85(int a1, int a2, bool a3);               // 85  0x426460: bare RET 0xC
     virtual void vf_86();                                      // 86  0x426470: bare RET
     virtual void vf_87(int a1);                                // 87  0x426480: bare RET 4
     virtual bool vf_88();                                      // 88  0x426490: returns false
-    virtual bool vf_89(int a1, int a2);                        // 89  0x5F4380: returns false
+    virtual bool vf_89(const CoordStruct& coord, int a2);      // 89  0x5F4380: returns false
     virtual int vf_90(int a1);                                 // 90  0x5F4390: returns 0
     virtual int vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6, void* house); // 91  0x5F5390
     virtual void vf_92();                                      // 92  0x4264A0: bare RET

@@ -57,7 +57,7 @@ bool ObjectClass::vf_49()
 }
 
 // FUNCTION: GAMEMD 0x426430
-bool ObjectClass::vf_50(int a1)
+bool ObjectClass::vf_50(HouseClass* house)
 {
     return false;
 }
@@ -73,7 +73,7 @@ void ObjectClass::vf_68(int a1, int a2)
 }
 
 // FUNCTION: GAMEMD 0x426460
-void ObjectClass::vf_85(int a1, int a2, int a3)
+void ObjectClass::vf_85(int a1, int a2, bool a3)
 {
 }
 

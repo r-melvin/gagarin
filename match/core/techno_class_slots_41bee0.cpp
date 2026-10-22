@@ -127,7 +127,7 @@ bool TechnoClass::vf_49()
 }
 
 // FUNCTION: GAMEMD 0x41C020
-bool TechnoClass::vf_50(int a1)
+bool TechnoClass::vf_50(HouseClass* house)
 {
     return Disguised;
 }
