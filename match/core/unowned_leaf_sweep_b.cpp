@@ -458,41 +458,6 @@ struct Obj_00696F10
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
 
-// FUNCTION: GAMEMD 0x00696F10
-int Obj_00696F10::FUN_00696F10() const
-{
-    if (unknown_4F == -2) {
-        return -2;
-    }
-    return unknown_4B;
-}
-
-// FUNCTION: GAMEMD 0x00696F20
-int Obj_00696F10::FUN_00696F20() const
-{
-    if (unknown_57 == -2) {
-        return -2;
-    }
-    return unknown_53;
-}
-
-// FUNCTION: GAMEMD 0x00696F50
-int Obj_00696F10::FUN_00696F50() const
-{
-    if (unknown_5F == -2 && unknown_5B == -1) {
-        return -2;
-    }
-    return unknown_5B;
-}
-
-// FUNCTION: GAMEMD 0x00696F70
-int Obj_00696F10::FUN_00696F70() const
-{
-    if (unknown_67 == -2 && unknown_63 == -1) {
-        return -2;
-    }
-    return unknown_63;
-}
 
 struct Obj_0069B540
 {
@@ -505,15 +470,6 @@ struct Obj_0069B540
 GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_6C) == 0x6C);
 
-// FUNCTION: GAMEMD 0x0069B540
-void __fastcall FUN_0069B540(Obj_0069B540* self)
-{
-    self->unknown_24 = 0;
-    for (int i = 0; i < 8; i++) {
-        self->unknown_4C[i] = -1;
-        self->unknown_6C[i] = -1;
-    }
-}
 
 struct Obj_0069BBE0
 {
@@ -522,11 +478,6 @@ struct Obj_0069BBE0
 };
 GG_STATIC_ASSERT(offsetof(Obj_0069BBE0, unknown_30D8) == 0x30D8);
 
-// FUNCTION: GAMEMD 0x0069BBE0
-char __fastcall FUN_0069BBE0(Obj_0069BBE0* self)
-{
-    return self->unknown_30D8;
-}
 
 struct Type_006A46D0
 {

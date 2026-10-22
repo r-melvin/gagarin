@@ -1,0 +1,840 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | behaviour-confirmed-name | YRpp-cross-check
+//   Original translation unit Session.CPP. The name is the source-file string at 0x83eeb8
+//   in retail gamemd.exe v1.001, passed by the assert at 0x6977d5 inside this object's
+//   code range (0x696d20-0x69ddbf). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// SHA-1 block transform. __thiscall (`ret 8`; callers 0x69D939/0x69D99C/
+// 0x69DA61/0x69DAC3 load ECX with the state object and push the 64-byte
+// block and the accumulator at state+0x18), but `this` is never read.
+// 0x160-byte frame: an 80-word schedule at [esp+0x30] and a five-word
+// working copy at [esp+0x1C] taken with `rep movs`.
+//
+// Partial-block buffering step of the SHA-1 engine whose field offsets are
+// pinned in combat/random_straw.h (Acc +0x18, Length +0x2C,
+// PartialCount +0x30, Partial[64] +0x34). This TU-local view adds the
+// out-of-line helpers called from 0x69D960.
+// Pinned here by 0x69D8C0: `LEA EDI,[EDX+EBX+0x34]`, `[EBX+0x30]`,
+// `LEA EAX,[EBX+0x18]`, `[EBX+0x2C]`, block size 0x40.
+//
+//   Every displacement, constant, table bound and callee below was read off
+//   the user's retail gamemd.exe v1.001 with the local Ghidra CLI at the
+//   address in each annotation. None of the owning classes is bound by RTTI or
+//   a binary string here, so all keep placeholder names. The two imports are
+//   named by the PE import table (GetAsyncKeyState 0x7E13E0, SendMessageA
+//   0x7E14A4).
+//
+// Small leaves (64 bytes or less) between 0x500000 and 0x6B0000 that other
+// translation units already declared as callees but nothing defined.
+//
+// Retail RTTI type descriptors name VectorClass<DiskID> and
+// DynamicVectorClass<DiskID>; each address below is the vtable slot body
+// of that specialization (slot owner read from the retail vtables).
+// Pointer/scalar/enum element: no element layout is claimed.
+//
+// Retail RTTI type descriptors name VectorClass<MultiMission*> and
+// DynamicVectorClass<MultiMission*>; each address below is the vtable slot body
+// of that specialization (slot owner read from the retail vtables).
+// Pointer/scalar/enum element: no element layout is claimed.
+//
+// Retail RTTI type descriptors name VectorClass<PhoneEntryClass*> and
+// DynamicVectorClass<PhoneEntryClass*>; each address below is the vtable slot body
+// of that specialization (slot owner read from the retail vtables).
+// Pointer/scalar/enum element: no element layout is claimed.
+//
+// 10 remaining four-byte-element resize bodies retain address-scoped
+// views until their actual template classes are integrated. Recovered entries
+// are bound in their native specialization implementations.
+// Entry-origin spans are 0xB0 bytes. Instructions confirm Items+4, Capacity+8,
+// initialization flag+C, ownership flag+D, live count+10 and Clear slot+C.
+// Original source ownership and TU grouping are not established by this sweep.
+//
+// The source keeps the base resize as an inline call and clamps the count only
+// on success. The capacity-zero branch dispatches Clear; allocation failure
+// returns false. The ownership expression retains the verified short-circuit
+// term so VC6 schedules SETZ and the pointer/capacity stores as retail does.
+// These views remain verified under /O2 /DNDEBUG /Gy /GX.
+//
+// Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
+// The element copy ctor 0x7B4690 (fastcall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
+
+#include "empty_function_family_methods.h"
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct ShaState_0069DB30
+{
+    unsigned long Long[5];   // +0x00
+};
+GG_STATIC_ASSERT(sizeof(ShaState_0069DB30) == 0x14);
+
+// The state forwarded at SHAPipe +0x0C (_layout/sha_pipe_layout.h
+// places Acc at pipe+0x24, PartialCount at +0x3C and Partial at +0x40).
+class SHAState_0069DB30
+{
+public:
+    char IsCached;               // +0x00
+    char unknown_01[3];          // +0x01
+    char FinalResult[0x14];      // +0x04
+    ShaState_0069DB30 Acc;               // +0x18
+    int Length;                  // +0x2C
+    int PartialCount;            // +0x30
+    char Partial[0x40];          // +0x34
+
+    void FUN_0069DB30(const void* source, ShaState_0069DB30& acc) const;
+};
+GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, Acc) == 0x18);
+GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, PartialCount) == 0x30);
+GG_STATIC_ASSERT(offsetof(SHAState_0069DB30, Partial) == 0x34);
+
+inline unsigned long ByteSwap32(unsigned long value)
+{
+    return (((value << 16) | (value & 0xFF00)) << 8) | (unsigned char)(value >> 24) | ((unsigned short)((value >> 8) & 0xFF00));
+}
+
+inline unsigned long Rotl32(unsigned long value, int bits)
+{
+    return (value << bits) | (value >> (32 - bits));
+}
+
+inline unsigned long Function(int index, unsigned long x, unsigned long y, unsigned long z)
+{
+    if (index < 20) return ((y ^ z) & x) ^ z;
+    if (index >= 40 && index < 60) return ((x | y) & z) | (x & y);
+    return x ^ y ^ z;
+}
+
+inline unsigned long Constant(int index)
+{
+    if (index < 20) return 0x5A827999UL;
+    if (index < 40) return 0x6ED9EBA1UL;
+    return (index < 60) ? 0x8F1BBCDCUL : 0xCA62C1D6UL;
+}
+
+#include "../_rt/gg_static_assert.h"
+#include <stddef.h>
+#include <string.h>
+
+struct ShaEngineView_0069D8C0
+{
+    bool          IsCached;        // +0x00
+    unsigned long FinalResult[5];  // +0x04
+    unsigned long Acc[5];          // +0x18
+    long          Length;          // +0x2C
+    int           PartialCount;    // +0x30
+    char          Partial[64];     // +0x34
+
+    void FUN_0069D8C0(const void*& data, long& length);
+    // FUNCTION: GAMEMD 0x69DB30 -- one 64-byte block into the accumulator.
+    void FUN_0069DB30(const void* block, unsigned long* acc) const;
+};
+
+GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Acc) == 0x18);
+GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Length) == 0x2C);
+GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, PartialCount) == 0x30);
+GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Partial) == 0x34);
+
+#include "trivial_tu207_methods.h"
+
+#include <windows.h>
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+
+// A two-short cell value copied as one dword.
+struct Cell_0050DEF0
+{
+    short X;
+    short Y;
+
+    Cell_0050DEF0() {}
+    bool operator==(const Cell_0050DEF0& other) const
+    {
+        return X == other.X && Y == other.Y;
+    }
+};
+GG_STATIC_ASSERT(sizeof(Cell_0050DEF0) == 4);
+
+// GLOBAL: GAMEMD 0x008B40F8
+extern "C" int DAT_008B40F8;
+// GLOBAL: GAMEMD 0x00A8EF98
+extern "C" Cell_0050DEF0 DAT_00A8EF98;
+// GLOBAL: GAMEMD 0x00A9FAB0
+extern "C" int DAT_00A9FAB0;
+// GLOBAL: GAMEMD 0x00AA0444
+extern "C" int DAT_00AA0444;
+// GLOBAL: GAMEMD 0x00AA0168 (256 key-state words)
+extern "C" short DAT_00AA0168[256];
+// GLOBAL: GAMEMD 0x00B45B68
+extern "C" int DAT_00B45B68;
+// GLOBAL: GAMEMD 0x008B4130
+extern "C" int DAT_008B4130;
+
+// ---------------------------------------------------------------------------
+
+struct Team_005095D0
+{
+    char Pad_00[0x24];
+    int unknown_24;
+    char Pad_28[4];
+    void* unknown_2C;
+};
+GG_STATIC_ASSERT(offsetof(Team_005095D0, unknown_2C) == 0x2C);
+
+// GLOBAL: GAMEMD 0x008B40EC
+extern "C" Team_005095D0** DAT_008B40EC;
+
+struct Obj_005095D0
+{
+    int FUN_005095D0(int kind);
+};
+
+
+struct Obj_0050DA10
+{
+    char Pad_00[0x5490];
+    Cell_0050DEF0 unknown_5490;
+    Cell_0050DEF0 unknown_5494;
+    char Pad_5498[0x54F0 - 0x5498];
+    Cell_0050DEF0 unknown_54F0;
+    Cell_0050DEF0 unknown_54F4;
+    Cell_0050DEF0 unknown_54F8;
+    int unknown_54FC;
+    char Pad_5500[0x577C - 0x5500];
+    int unknown_577C;
+
+    void FUN_0050DA10();
+    void FUN_0050DA50();
+    int FUN_0050DA80() const;
+    Cell_0050DEF0 FUN_0050DEF0() const;
+    void FUN_0050DFF0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_5490) == 0x5490);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54F0) == 0x54F0);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54FC) == 0x54FC);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_577C) == 0x577C);
+
+struct Obj_0053ECB0
+{
+    unsigned char unknown_0[10];
+
+    Obj_0053ECB0();
+};
+
+struct Triple_0053EDA0
+{
+    short unknown_0;
+    short unknown_2;
+    short unknown_4;
+};
+GG_STATIC_ASSERT(sizeof(Triple_0053EDA0) == 6);
+
+struct Obj_0053EDA0
+{
+    int unknown_0;
+    Triple_0053EDA0 unknown_4;
+
+    void FUN_0053EDA0(int* first, Triple_0053EDA0* rest) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0053EDA0, unknown_4) == 4);
+
+struct Obj_005402B0
+{
+    void FUN_005402B0(int value);
+};
+
+struct Obj_00542FC0
+{
+    char Pad_00[0x48];
+    Obj_005402B0* unknown_48;
+
+    void FUN_00542FC0(int value);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00542FC0, unknown_48) == 0x48);
+
+struct Entry_005657A0
+{
+    char Pad_00[0x24];
+    Cell_0050DEF0 unknown_24;
+};
+
+// GLOBAL: GAMEMD 0x00ABDC50
+extern "C" Entry_005657A0 DAT_00ABDC50;
+
+struct Obj_005657A0
+{
+    char Pad_00[0x13C];
+    Entry_005657A0** unknown_13C;
+
+    Entry_005657A0* FUN_005657A0(const Cell_0050DEF0& cell) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_005657A0, unknown_13C) == 0x13C);
+
+struct Obj_005B3700
+{
+    int unknown_0;
+    char unknown_4;
+    char unknown_5;
+    char unknown_6;
+    char unknown_7;
+    char unknown_8;
+    char unknown_9;
+    char Pad_0A[6];
+    double unknown_10;
+    double unknown_18;
+
+    Obj_005B3700();
+};
+GG_STATIC_ASSERT(offsetof(Obj_005B3700, unknown_10) == 0x10);
+
+struct Slot_005B3A00
+{
+    char Bytes[0x20];
+};
+
+// GLOBAL: GAMEMD 0x00A8E3A8 (32-byte records)
+extern "C" Slot_005B3A00 DAT_00A8E3A8[];
+
+struct Obj_005B3A00
+{
+    char Pad_00[0xAC];
+    int unknown_AC;
+};
+GG_STATIC_ASSERT(offsetof(Obj_005B3A00, unknown_AC) == 0xAC);
+
+struct Iface_005BF500
+{
+    virtual void vf_0() = 0;
+    virtual void vf_1() = 0;
+    virtual void vf_2() = 0;
+    virtual void vf_3(int value) = 0;
+};
+
+// GLOBAL: GAMEMD 0x00B45B5C
+extern "C" Iface_005BF500** DAT_00B45B5C;
+
+struct Vector_005C6120
+{
+    virtual void vf_0() = 0;
+    virtual void vf_1() = 0;
+    virtual void vf_2() = 0;
+    virtual void vf_3() = 0;
+
+    void** unknown_4;
+    int Pad_08;
+    int Pad_0C;
+    int unknown_10;
+
+    void FUN_005C6120();
+};
+
+struct Obj_005F9710
+{
+    char unknown_0;
+    char unknown_1;
+};
+
+struct Quad_00645C30
+{
+    int unknown_0;
+    int unknown_4;
+    int unknown_8;
+    int unknown_C;
+
+    Quad_00645C30(int a, int b, int c, int d);
+};
+
+struct Record_00656580
+{
+    char Bytes[0x18];
+};
+
+struct Key_00656580
+{
+    char Pad_00[0xEF0];
+    int unknown_EF0;
+};
+GG_STATIC_ASSERT(offsetof(Key_00656580, unknown_EF0) == 0xEF0);
+
+struct Obj_00656580
+{
+    Record_00656580 unknown_0[1];
+
+    Record_00656580* FUN_00656580(const Key_00656580* key);
+};
+
+
+struct Obj_0065AD30
+{
+    char Pad_00[0xE4];
+    int* unknown_E4;
+
+    int FUN_0065AD30(int index) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0065AD30, unknown_E4) == 0xE4);
+
+struct Pair_0065C890
+{
+    int unknown_0;
+    int unknown_4;
+
+    Pair_0065C890(int a, int b);
+};
+
+struct Obj_0068BCB0
+{
+    char Pad_00[0x214];
+    int unknown_214;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0068BCB0, unknown_214) == 0x214);
+
+
+struct Obj_0068C030
+{
+    char Pad_00[0x1180];
+    int unknown_1180[16];
+
+    int FUN_0068C030(int index) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0068C030, unknown_1180) == 0x1180);
+
+
+struct Owner_006915D0
+{
+    char Pad_00[0xA0];
+    unsigned int unknown_A0;
+};
+GG_STATIC_ASSERT(offsetof(Owner_006915D0, unknown_A0) == 0xA0);
+
+struct Cursor_006915D0
+{
+    char Pad_00[0x24];
+    Owner_006915D0* unknown_24;
+    char Pad_28[4];
+    unsigned int unknown_2C;
+};
+GG_STATIC_ASSERT(offsetof(Cursor_006915D0, unknown_2C) == 0x2C);
+
+#pragma pack(push, 1)
+struct Obj_00696F10
+{
+    char Pad_00[0x4B];
+    int unknown_4B;
+    int unknown_4F;
+    int unknown_53;
+    int unknown_57;
+    int unknown_5B;
+    int unknown_5F;
+    int unknown_63;
+    int unknown_67;
+
+    int FUN_00696F10() const;
+    int FUN_00696F20() const;
+    int FUN_00696F50() const;
+    int FUN_00696F70() const;
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
+
+struct Obj_0069B540
+{
+    char Pad_00[0x24];
+    int unknown_24;
+    char Pad_28[0x4C - 0x28];
+    int unknown_4C[8];
+    int unknown_6C[8];
+};
+GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_6C) == 0x6C);
+
+struct Obj_0069BBE0
+{
+    char Pad_00[0x30D8];
+    char unknown_30D8;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0069BBE0, unknown_30D8) == 0x30D8);
+
+struct Type_006A46D0
+{
+    char Pad_00[0x24];
+    char unknown_24[1];
+};
+
+// GLOBAL: GAMEMD 0x008B4124
+extern "C" Type_006A46D0** DAT_008B4124;
+
+#include "vector_class_operations.h"
+
+enum DiskID { DiskID_placeholder };
+
+template class DynamicVectorClass<DiskID>;
+
+GG_STATIC_ASSERT(sizeof(DiskID) == 4);
+GG_STATIC_ASSERT(sizeof(VectorClass<DiskID >) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<DiskID >) == 0x18);
+
+#include "vector_class_operations.h"
+
+class MultiMission;
+
+template class DynamicVectorClass<MultiMission*>;
+
+GG_STATIC_ASSERT(sizeof(MultiMission*) == 4);
+GG_STATIC_ASSERT(sizeof(VectorClass<MultiMission* >) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<MultiMission* >) == 0x18);
+
+#include "vector_class_operations.h"
+
+class PhoneEntryClass;
+
+template class DynamicVectorClass<PhoneEntryClass*>;
+
+GG_STATIC_ASSERT(sizeof(PhoneEntryClass*) == 4);
+GG_STATIC_ASSERT(sizeof(VectorClass<PhoneEntryClass* >) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PhoneEntryClass* >) == 0x18);
+
+#include "vector_resize_family_methods.h"
+
+#include "vector_class_operations.h"
+
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+struct Wstring { char* unknown_00; Wstring(); Wstring(const Wstring& o); ~Wstring(); bool operator==(const Wstring& o) const; bool operator!=(const Wstring& o) const; };
+
+template class DynamicVectorClass<Wstring>;
+
+#include "../network/session_class_resume_methods.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7F1190
+extern const double DAT_007F1190;
+// GLOBAL: GAMEMD 0xB057E8
+extern double DAT_00B057E8;
+// GLOBAL: GAMEMD 0xB07760
+extern double DAT_00B07760;
+// GLOBAL: GAMEMD 0xB07768
+extern int DAT_00B07768;
+// GLOBAL: GAMEMD 0xB0776C
+extern int DAT_00B0776C;
+// GLOBAL: GAMEMD 0xB07770
+extern int DAT_00B07770;
+// GLOBAL: GAMEMD 0xB07778
+extern double DAT_00B07778;
+
+// FUNCTION: GAMEMD 0x696D50
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_00696D50()
+{
+    DAT_00B07778 = DAT_00B057E8 / DAT_007F1190;
+}
+
+// FUNCTION: GAMEMD 0x696D70
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_00696D70()
+{
+    DAT_00B07760 = DAT_007E1718 / DAT_00B07778;
+}
+
+// FUNCTION: GAMEMD 0x696EF0
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_00696EF0()
+{
+    DAT_00B07770 = 0;
+    DAT_00B07768 = 0x80;
+    DAT_00B0776C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x00696F10
+int Obj_00696F10::FUN_00696F10() const
+{
+    if (unknown_4F == -2) {
+        return -2;
+    }
+    return unknown_4B;
+}
+
+// FUNCTION: GAMEMD 0x00696F20
+int Obj_00696F10::FUN_00696F20() const
+{
+    if (unknown_57 == -2) {
+        return -2;
+    }
+    return unknown_53;
+}
+
+// FUNCTION: GAMEMD 0x00696F50
+int Obj_00696F10::FUN_00696F50() const
+{
+    if (unknown_5F == -2 && unknown_5B == -1) {
+        return -2;
+    }
+    return unknown_5B;
+}
+
+// FUNCTION: GAMEMD 0x00696F70
+int Obj_00696F10::FUN_00696F70() const
+{
+    if (unknown_67 == -2 && unknown_63 == -1) {
+        return -2;
+    }
+    return unknown_63;
+}
+
+// FUNCTION: GAMEMD 0x697B60
+// Empty function.
+void __cdecl FUN_00697B60()
+{
+}
+
+// FUNCTION: GAMEMD 0x0069A300
+void __fastcall FUN_0069A300()
+{
+}
+
+// FUNCTION: GAMEMD 0x69ACC0
+// Member getter (dword).
+int Obj_0069ACC0::FUN_0069ACC0() const
+{
+    return unknown_18C->unknown_00;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69ADE0
+// Stores its argument in a member; pops its stack arguments.
+void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
+{
+    unknown_17C = a1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0069B540
+void __fastcall FUN_0069B540(Obj_0069B540* self)
+{
+    self->unknown_24 = 0;
+    for (int i = 0; i < 8; i++) {
+        self->unknown_4C[i] = -1;
+        self->unknown_6C[i] = -1;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69B700
+// Branching.
+int Obj_0069B700::FUN_0069B700()
+{
+    if (unknown_178 != -2)
+    {
+        return unknown_174;
+    }
+    return -2;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69B740
+// Branching.
+int Obj_0069B740::FUN_0069B740()
+{
+    if (unknown_168 != -2)
+    {
+        return unknown_164;
+    }
+    return -2;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69B8B0
+// Empty function that pops its stack arguments.
+void __stdcall FUN_0069B8B0(int a1, int a2)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69BAB0
+//
+// Resume an in-game frame after a pause: mark the frame active, restore the
+// saved game speed (campaign games are forced back to speed 2), re-arm the
+// frame deadline when the provider flag is clear, make sure the mouse is
+// captured, and finally set 0x4000 on the shared flags object — a __fastcall
+// in tail position, which is why retail ends in a JMP.
+void SessionClass::Resume()
+{
+    if (this->InGameFrameActive == 0 && DAT_00A8E9A0 != 0) {
+        this->InGameFrameActive = 1;
+
+        if (DAT_0083ED20 == -1) {
+            DAT_0083ED20 = DAT_00A8EB60;
+        }
+        if (this->GameMode == 0) {
+            DAT_00A8EB60 = 2;
+        }
+        if (DAT_00A8B230->At_35A2 == 0) {
+            FUN_00684240();
+            DAT_00B07784 = CurrentFrame + 3;
+        }
+        if (!(DAT_00887640->*DAT_00887640->Vtbl->At_1C)()) {
+            (DAT_00887640->*DAT_00887640->Vtbl->At_18)();
+        }
+        DAT_0087E758->FUN_00407150(0x4000);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0069BBE0
+char __fastcall FUN_0069BBE0(Obj_0069BBE0* self)
+{
+    return self->unknown_30D8;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TEMPLATE: GAMEMD 0x69C4F0
+// VectorClass<DiskID>::Slot6 (slot 6)
+// TEMPLATE: GAMEMD 0x69C710
+// VectorClass<DiskID>::operator== (slot 1)
+// TEMPLATE: GAMEMD 0x69C750
+// VectorClass<DiskID>::SetCapacity (slot 2)
+// TEMPLATE: GAMEMD 0x69C830
+// VectorClass<DiskID>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x69C870
+// VectorClass<DiskID>::Slot5 (slot 5)
+template class VectorClass<DiskID>;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0069D4B0
+// VectorClass<Wstring>::scalar deleting destructor
+// FUNCTION: GAMEMD 0x0069C970
+// VectorClass<Wstring>::operator==
+// FUNCTION: GAMEMD 0x0069CB00
+// VectorClass<Wstring>::Clear
+// FUNCTION: GAMEMD 0x0069CB50
+// VectorClass<Wstring>::FindItemIndex
+// FUNCTION: GAMEMD 0x0069CBA0
+// VectorClass<Wstring>::Slot5
+// FUNCTION: GAMEMD 0x0069C580
+// VectorClass<Wstring>::Slot6
+// FUNCTION: GAMEMD 0x0069D520
+// DynamicVectorClass<Wstring>::scalar deleting destructor
+// FUNCTION: GAMEMD 0x0069C500
+// DynamicVectorClass<Wstring>::Clear
+// FUNCTION: GAMEMD 0x0069CD00
+// DynamicVectorClass<Wstring>::FindItemIndex
+// FUNCTION: GAMEMD 0x0069C560
+// DynamicVectorClass<Wstring>::Slot5
+template class VectorClass<Wstring>;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TEMPLATE: GAMEMD 0x69C5D0
+// DynamicVectorClass<MultiMission*>::Slot5 (slot 5)
+// TEMPLATE: GAMEMD 0x69C5F0
+// VectorClass<MultiMission*>::Slot6 (slot 6)
+// TEMPLATE: GAMEMD 0x69CD40
+// VectorClass<MultiMission*>::operator== (slot 1)
+// TEMPLATE: GAMEMD 0x69CD80
+// VectorClass<MultiMission*>::SetCapacity (slot 2)
+// TEMPLATE: GAMEMD 0x69CE60
+// VectorClass<MultiMission*>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x69CEA0
+// VectorClass<MultiMission*>::Slot5 (slot 5)
+// TEMPLATE: GAMEMD 0x69CEC0
+// DynamicVectorClass<MultiMission*>::SetCapacity (slot 2)
+// TEMPLATE: GAMEMD 0x69CF70
+// DynamicVectorClass<MultiMission*>::FindItemIndex (slot 4)
+template class VectorClass<MultiMission*>;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// TEMPLATE: GAMEMD 0x69C690
+// DynamicVectorClass<PhoneEntryClass*>::Slot5 (slot 5)
+// TEMPLATE: GAMEMD 0x69C6B0
+// VectorClass<PhoneEntryClass*>::Slot6 (slot 6)
+// TEMPLATE: GAMEMD 0x69D200
+// VectorClass<PhoneEntryClass*>::operator== (slot 1)
+// TEMPLATE: GAMEMD 0x69D240
+// VectorClass<PhoneEntryClass*>::SetCapacity (slot 2)
+// TEMPLATE: GAMEMD 0x69D320
+// VectorClass<PhoneEntryClass*>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x69D360
+// VectorClass<PhoneEntryClass*>::Slot5 (slot 5)
+// TEMPLATE: GAMEMD 0x69D380
+// DynamicVectorClass<PhoneEntryClass*>::SetCapacity (slot 2)
+// TEMPLATE: GAMEMD 0x69D430
+// DynamicVectorClass<PhoneEntryClass*>::FindItemIndex (slot 4)
+template class VectorClass<PhoneEntryClass*>;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69C890
+bool VectorResizeFamily::FUN_69C890(int newsize, void** array)
+{
+    if (ResizeBase(newsize, array)) {
+        if (Length < Count) {
+            Count = Length;
+        }
+        return true;
+    }
+
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69D8C0
+void ShaEngineView_0069D8C0::FUN_0069D8C0(const void*& data, long& length)
+{
+    if (length == 0 || data == 0) return;
+    if (PartialCount == 0 && length >= 64) return;
+
+    int take = 64 - PartialCount;
+    if (length < take) take = length;
+    memcpy(&Partial[PartialCount], data, take);
+    data = ((const char*)data) + take;
+    PartialCount += take;
+    length -= take;
+
+    if (PartialCount == 64) {
+        FUN_0069DB30(&Partial[0], Acc);
+        Length += 64;
+        PartialCount = 0;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69DB30
+void SHAState_0069DB30::FUN_0069DB30(const void* source, ShaState_0069DB30& acc) const
+{
+    unsigned long block[80];
+    const unsigned long* data = (const unsigned long*)source;
+
+    int index;
+    for (index = 0; index < 16; index++) {
+        block[index] = ByteSwap32(*data++);
+    }
+    for (index = 16; index < 80; index++) {
+        block[index] = Rotl32(block[index - 3] ^ block[index - 8] ^ block[index - 16] ^ block[index - 14], 1);
+    }
+
+    ShaState_0069DB30 work = acc;
+
+    for (unsigned int round = 0; round < 80; round++) {
+        unsigned long temp = Rotl32(work.Long[0], 5) + Function(round, work.Long[1], work.Long[2], work.Long[3]) + work.Long[4] + block[round] + Constant(round);
+        work.Long[4] = work.Long[3];
+        work.Long[3] = work.Long[2];
+        work.Long[2] = Rotl32(work.Long[1], 30);
+        work.Long[1] = work.Long[0];
+        work.Long[0] = temp;
+    }
+
+    acc.Long[0] += work.Long[0];
+    acc.Long[1] += work.Long[1];
+    acc.Long[2] += work.Long[2];
+    acc.Long[3] += work.Long[3];
+    acc.Long[4] += work.Long[4];
+}

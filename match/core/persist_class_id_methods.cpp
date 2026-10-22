@@ -631,23 +631,6 @@ HRESULT __stdcall SuperWeaponTypeClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-// FUNCTION: GAMEMD 0x006DBCE0
-HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9950;
-    return S_OK;
-}
-
-// FUNCTION: GAMEMD 0x006E3D70
-HRESULT __stdcall TActionClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9800;
-    return S_OK;
-}
 
 // FUNCTION: GAMEMD 0x006E56A0
 HRESULT __stdcall TagClass::GetClassID(CLSID* pClassID)

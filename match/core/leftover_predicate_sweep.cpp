@@ -30,25 +30,6 @@ bool __stdcall FUN_006E4440(void* p, int, int, int)
     return true;
 }
 
-// FUNCTION: GAMEMD 0x006E44C0
-bool __stdcall FUN_006E44C0(void* p, int, int, int)
-{
-    if (p == 0) {
-        return false;
-    }
-    FUN_0050DA50(p);
-    return true;
-}
-
-// FUNCTION: GAMEMD 0x006E4540
-bool __stdcall FUN_006E4540(void* p, int, int, int)
-{
-    if (p == 0) {
-        return false;
-    }
-    FUN_0050DFF0(p);
-    return true;
-}
 
 // FUNCTION: GAMEMD 0x00750060
 GG_FLOATSEL_BODY(00750060, -0.25f)

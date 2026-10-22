@@ -73,18 +73,5 @@ template<class T> struct TRect { T X; T Y; T Width; T Height; TRect() {} bool op
 template class DynamicVectorClass<TRect<int> >;
 
 struct DirtyAreaStruct { int unknown_00; int unknown_04; int unknown_08; int unknown_0C; unsigned char unknown_10; DirtyAreaStruct() : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C(0), unknown_10(0) {} DirtyAreaStruct(const DirtyAreaStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C), unknown_10(o.unknown_10) {} bool operator==(const DirtyAreaStruct& o) const { return unknown_10==o.unknown_10 && unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08 && unknown_0C==o.unknown_0C; } bool operator!=(const DirtyAreaStruct& o) const { return !(*this==o); } };
-// FUNCTION: GAMEMD 0x006DC5E0
-// VectorClass<DirtyAreaStruct>::operator==
-// FUNCTION: GAMEMD 0x006DC660
-// VectorClass<DirtyAreaStruct>::SetCapacity
-// FUNCTION: GAMEMD 0x006DC7B0
-// VectorClass<DirtyAreaStruct>::FindItemIndex
-// FUNCTION: GAMEMD 0x006DC820
-// VectorClass<DirtyAreaStruct>::Slot5
-// FUNCTION: GAMEMD 0x006DC970
-// DynamicVectorClass<DirtyAreaStruct>::FindItemIndex
-// FUNCTION: GAMEMD 0x006DC510
-// DynamicVectorClass<DirtyAreaStruct>::Slot5
-template class VectorClass<DirtyAreaStruct>;
 template class DynamicVectorClass<DirtyAreaStruct>;
 
