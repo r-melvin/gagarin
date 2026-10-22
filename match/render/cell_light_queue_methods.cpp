@@ -91,14 +91,14 @@ extern unsigned int DAT_00829AE8;
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- operator delete.
 void __cdecl operator delete(void* p);
 // FUNCTION: GAMEMD 0x544FF0 (decl; reloc)
-bool __fastcall FUN_00544FF0(int value, bool flag);
+bool FUN_00544FF0(int value, bool flag);
 
 // FUNCTION: GAMEMD 0x554D50
 // Work through the light queue backwards within a time budget, sampling each
 // queued cell's light values; once every cell is sampled (and, unless forced,
 // enough budget is left) write them all back, free the queue and redraw.
 // Finally, with time to spare, nudge the adjustment interval.
-void __fastcall FUN_00554D50(int budget, bool force)
+void FUN_00554D50(int budget, bool force)
 {
     double start = DAT_00884D88.Seconds();
     DAT_00ABCA74++;

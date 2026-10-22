@@ -143,7 +143,7 @@ void AlphaShapeClass::vf_10(void* target, bool removed)
 // Delete every shape whose object has expired, after building the table.
 // PARTIAL (27.1%, aligned 83.1%): the sweep loop is exact; the residual is
 // the table build of 0x420960.
-void __fastcall AlphaShapeClass::FUN_00420E90()
+void AlphaShapeClass::FUN_00420E90()
 {
     AlphaShape_BuildTable();
     for (int i = Array.Count - 1; i >= 0; i--) {
