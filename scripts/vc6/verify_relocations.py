@@ -7,6 +7,8 @@ Checks every DIR32/REL32 field in one supplied span. Addresses come from exact
 manifest rows or an explicit symbol -> VA JSON map (also for declarations,
 libraries and globals); a mapping is a binding, not a recovered function body.
 Unknown or ambiguous targets fail. Same-span local labels use their offset.
+VC6 _$E<number> callbacks are scoped to the uniquely identified source TU;
+otherwise they require an explicit object-local binding.
 This complements raw_match.py; it proves neither non-relocation bytes nor
 final-link symbol selection. SEARCH_LIBRARY weak defaults remain opt-in and
 are reported as conditional.
@@ -36,8 +38,8 @@ def _address(value):
     return address
 
 
-def bindings(manifest, explicit=None):
-    known = manifest_symbol_addrs(manifest)
+def bindings(manifest, explicit=None, source_tu=None):
+    known = manifest_symbol_addrs(manifest, source_tu)
     for name, addresses in known.items():
         for address in addresses:
             _address(address)
@@ -71,7 +73,11 @@ def verify(obj, symbol, address, length, binary, manifest_path=DEFAULT_MANIFEST,
         raise VerifyError("span must be positive and inside the 32-bit VA range")
     manifest = json.loads(Path(manifest_path).read_text())
     explicit = json.loads(Path(symbol_map_path).read_text()) if symbol_map_path else None
-    known = bindings(manifest, explicit)
+    source_tus = {row["tu"] for row in manifest
+                  if row.get("tu") and row.get("sym") == symbol
+                  and int(row["addr"], 16) == address}
+    source_tu = next(iter(source_tus)) if len(source_tus) == 1 else None
+    known = bindings(manifest, explicit, source_tu)
     totals = json.loads(Path(totals_path).read_text())
     expected_sha = totals.get("_meta", {}).get("sha256")
     if not expected_sha:

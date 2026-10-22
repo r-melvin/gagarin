@@ -225,6 +225,43 @@ class VerifyRelocationsTests(unittest.TestCase):
                 explicit={"global": hex(DATA_VA + 4)},
             )
 
+    def callback_case(self, manifest, explicit=None):
+        return self.run_verify(
+            text=b"\0" * 8,
+            retail_text=struct.pack("<I", DATA_VA) + b"\0" * 4,
+            relocations=[(0, "_$E2", 0x0006)],
+            symbols=self.symbols_for(
+                {"name": "_$E2", "value": 0, "section": 2}),
+            manifest=manifest, explicit=explicit,
+        )
+
+    def test_callback_from_other_tu_cannot_supply_binding(self):
+        with self.assertRaisesRegex(VerifyError, "no unique matched or explicit binding"):
+            self.callback_case([
+                {"sym": "_$E2", "addr": hex(DATA_VA), "tu": "other.cpp",
+                 "status": "matched", "pct": 100},
+            ])
+
+    def test_explicit_callback_map_is_not_conflicted_by_other_tu(self):
+        rows = self.callback_case([
+            {"sym": "_$E2", "addr": hex(DATA_VA + 4), "tu": "other.cpp",
+             "status": "matched", "pct": 100},
+        ], explicit={"_$E2": hex(DATA_VA)})
+        self.assertEqual(rows[0]["target"], DATA_VA)
+
+    def test_callback_binding_uses_own_tu_only(self):
+        manifest = [
+            {"sym": "entry", "addr": hex(TEXT_VA), "tu": "own.cpp",
+             "status": "matched", "pct": 100},
+            {"sym": "_$E2", "addr": hex(DATA_VA), "tu": "own.cpp",
+             "status": "matched", "pct": 100},
+            {"sym": "_$E2", "addr": hex(DATA_VA + 4), "tu": "other.cpp",
+             "status": "matched", "pct": 100},
+        ]
+        self.assertEqual(self.callback_case(manifest)[0]["target"], DATA_VA)
+        with self.assertRaisesRegex(VerifyError, "conflicts with matched manifest rows"):
+            self.callback_case(manifest, explicit={"_$E2": hex(DATA_VA + 4)})
+
     def test_relocation_crossing_span_boundary_is_rejected(self):
         with self.assertRaisesRegex(VerifyError, "crosses the requested span boundary"):
             self.run_verify(

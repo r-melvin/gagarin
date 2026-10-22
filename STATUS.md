@@ -3,7 +3,7 @@
 As of **2026-10-22**, the verified snapshot reports **5,126 matched function
 rows**, **232 partial rows**, **5,358 manifest rows**, **1,069 manifest
 translation units**, and **1,079 tracked C++ files**. Whole-repository regression
-verification, compile/layout checks, the project object build and 139 tooling
+verification, compile/layout checks, the project object build and 142 tooling
 tests pass. There are zero annotation issues across 5,391 body addresses.
 
 The latest batch removes match-only volatile reloads, redundant receiver aliases,
@@ -13,6 +13,11 @@ Three former matches are now partial: `MSBitPrintAnim::Construct` (88.6%),
 partials are also re-scored after cleanup. Forty-four unaffected complete
 sections preserve their bytes and relocation tuples. The scoped cleanup ledger
 is [recorded here](scripts/data/match_steering_cleanup.json).
+
+The relocation checker now scopes VC6 `_$E<number>` callback bindings to the
+function's identified translation unit; absent that context, an explicit local
+binding is required. Three synthetic regressions and the real particle callback
+checks pass. This tooling fix changes no C++ source or match totals.
 
 This is the first cleanup batch; the repository-wide steering audit continues.
 Further removals may lower the matched count. Rocket and DropPod integration

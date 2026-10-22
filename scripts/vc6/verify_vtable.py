@@ -12,6 +12,7 @@ a result is conditional and is not final-link proof.
 import argparse
 import hashlib
 import json
+import re
 import struct
 import sys
 from pathlib import Path
@@ -236,11 +237,16 @@ def pe_dword(pe_data, sections, va):
     raise VerifyError(f"retail VA {va:#x} is not backed by four file bytes")
 
 
-def manifest_symbol_addrs(manifest):
+def manifest_symbol_addrs(manifest, source_tu=None):
     by_symbol = {}
     for row in manifest:
         if row.get("status") != "matched" or row.get("pct") != 100:
             continue
+        # VC6 assigns these callback names independently in each object.
+        # Without a known source TU they require an explicit local binding.
+        if re.fullmatch(r"_\$E[0-9]+", row["sym"]):
+            if source_tu is None or row.get("tu") != source_tu:
+                continue
         by_symbol.setdefault(row["sym"], set()).add(int(row["addr"], 16))
     return by_symbol
 
