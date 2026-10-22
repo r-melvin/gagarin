@@ -88980,5 +88980,518 @@
   "name": "FUN_00626FF0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x77E110",
+  "sym": "?FUN_0077E110@@YIXXZ",
+  "len": "0xb8",
+  "name": "FUN_0077E110",
+  "status": "partial",
+  "pct": 35.7,
+  "note": "Aligned 92.9%: retail materialises the bool argument of the inlined 0x77D7A0 body (setne/test)."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x781380",
+  "sym": "?FUN_00781380@@YAHPBX0@Z",
+  "len": "0x2c",
+  "name": "FUN_00781380",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7813B0",
+  "sym": "?FUN_007813B0@@YAHPBX0@Z",
+  "len": "0x23",
+  "name": "FUN_007813B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7813E0",
+  "sym": "?FUN_007813E0@@YIXPAUObj_00781380@@_N@Z",
+  "len": "0x95",
+  "name": "FUN_007813E0",
+  "status": "partial",
+  "pct": 5.3,
+  "note": "Aligned 47.4%: retail spills the output pointer and steps a second cursor; frame is 4 bytes larger."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x781CC0",
+  "sym": "?FUN_00781CC0@@YAHPBUObj_00781CC0@@0@Z",
+  "len": "0x2d",
+  "name": "FUN_00781CC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x781CF0",
+  "sym": "?FUN_00781CF0@@YAHPBUObj_00781CC0@@0@Z",
+  "len": "0x2d",
+  "name": "FUN_00781CF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x783070",
+  "sym": "?FUN_00783070@@YIXPAX@Z",
+  "len": "0x48",
+  "name": "FUN_00783070",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7830C0",
+  "sym": "?FUN_007830C0@@YAHPBUItem_007830C0@@0@Z",
+  "len": "0xdb",
+  "name": "FUN_007830C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x783520",
+  "sym": "?FUN_00783520@@YAHPBD0@Z",
+  "len": "0x4f",
+  "name": "FUN_00783520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x783570",
+  "sym": "?FUN_00783570@@YAHPBD0@Z",
+  "len": "0x4f",
+  "name": "FUN_00783570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7835C0",
+  "sym": "?FUN_007835C0@@YAHPBUItem_007835C0@@0@Z",
+  "len": "0x11c",
+  "name": "FUN_007835C0",
+  "status": "partial",
+  "pct": 0.9,
+  "note": "Aligned 59.8%: retail shares one epilogue for the name-result return; this build emits separate ones."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7836E0",
+  "sym": "?FUN_007836E0@@YAHPBUItem_007835C0@@0@Z",
+  "len": "0x11c",
+  "name": "FUN_007836E0",
+  "status": "partial",
+  "pct": 0.9,
+  "note": "Aligned 59.8%: as 0x7835C0 with the name comparison reversed."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x786D90",
+  "sym": "?FUN_00786D90@@YI_NXZ",
+  "len": "0x30",
+  "name": "FUN_00786D90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x786E70",
+  "sym": "?FUN_00786E70@@YIHPAVString_007B4620@@@Z",
+  "len": "0x75",
+  "name": "FUN_00786E70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x78ABF0",
+  "sym": "?FUN_0078ABF0@@YIXDPBG@Z",
+  "len": "0x12",
+  "name": "FUN_0078ABF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x78F6B0",
+  "sym": "?FUN_0078F6B0@@YIHH@Z",
+  "len": "0x69",
+  "name": "FUN_0078F6B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x791AA0",
+  "sym": "?FUN_00791AA0@@YIXPAX@Z",
+  "len": "0x66",
+  "name": "FUN_00791AA0",
+  "status": "partial",
+  "pct": 51.5,
+  "note": "Aligned 90.9%: retail pushes the callback arguments before the label lookup."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x792E90",
+  "sym": "?FUN_00792E90@@YIXJ@Z",
+  "len": "0x27",
+  "name": "FUN_00792E90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x792EC0",
+  "sym": "?FUN_00792EC0@@YIXI@Z",
+  "len": "0x4a",
+  "name": "FUN_00792EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7930A0",
+  "sym": "?FUN_007930A0@@YI_NXZ",
+  "len": "0x72",
+  "name": "FUN_007930A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793120",
+  "sym": "?FUN_00793120@@YI_NPAVString_007B4620@@@Z",
+  "len": "0x75",
+  "name": "FUN_00793120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7931A0",
+  "sym": "?FUN_007931A0@@YIPAUEntry_00B77908@@XZ",
+  "len": "0x4b",
+  "name": "FUN_007931A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7931F0",
+  "sym": "?FUN_007931F0@@YIXH@Z",
+  "len": "0x56",
+  "name": "FUN_007931F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793250",
+  "sym": "?FUN_00793250@@YIXXZ",
+  "len": "0x2e",
+  "name": "FUN_00793250",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793460",
+  "sym": "?FUN_00793460@@YIXHH@Z",
+  "len": "0x23",
+  "name": "FUN_00793460",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793710",
+  "sym": "?FUN_00793710@@YIGHHHH@Z",
+  "len": "0x9e",
+  "name": "FUN_00793710",
+  "status": "partial",
+  "pct": 84.1,
+  "note": "Aligned 91.3%: retail keeps two epilogues for the final range clamp."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793A10",
+  "sym": "?FUN_00793A10@@YIXPBDH@Z",
+  "len": "0x58",
+  "name": "FUN_00793A10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x793B30",
+  "sym": "?FUN_00793B30@@YIXHPBD@Z",
+  "len": "0x74",
+  "name": "FUN_00793B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7975E0",
+  "sym": "?FUN_007975E0@@YIXXZ",
+  "len": "0x55",
+  "name": "FUN_007975E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7982D0",
+  "sym": "?FUN_007982D0@@YIKHK@Z",
+  "len": "0x6f",
+  "name": "FUN_007982D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x798340",
+  "sym": "?FUN_00798340@@YIXXZ",
+  "len": "0x20",
+  "name": "FUN_00798340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x799CD0",
+  "sym": "?FUN_00799CD0@@YIXXZ",
+  "len": "0x3e",
+  "name": "FUN_00799CD0",
+  "status": "partial",
+  "pct": 50.0,
+  "note": "Aligned 62.5%: retail zeroes the four scalars from EDX; this build uses EAX."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x799D10",
+  "sym": "?FUN_00799D10@@YIXXZ",
+  "len": "0x1c",
+  "name": "FUN_00799D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x79BE70",
+  "sym": "?FUN_0079BE70@@YIXXZ",
+  "len": "0x59",
+  "name": "FUN_0079BE70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x79BED0",
+  "sym": "?FUN_0079BED0@@YI_NXZ",
+  "len": "0x7a",
+  "name": "FUN_0079BED0",
+  "status": "partial",
+  "pct": 72.9,
+  "note": "Aligned 83%: retail keeps one false exit per path."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x79FC10",
+  "sym": "?FUN_0079FC10@@YIXHHH@Z",
+  "len": "0x27",
+  "name": "FUN_0079FC10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A0DD0",
+  "sym": "?FUN_007A0DD0@@YIXPAUEntry_00B77908@@@Z",
+  "len": "0x76",
+  "name": "FUN_007A0DD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A0E50",
+  "sym": "?FUN_007A0E50@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_007A0E50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A0EA0",
+  "sym": "?FUN_007A0EA0@@YIXPBDH@Z",
+  "len": "0x9e",
+  "name": "FUN_007A0EA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A2730",
+  "sym": "?FUN_007A2730@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_007A2730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A2750",
+  "sym": "?FUN_007A2750@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_007A2750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A2800",
+  "sym": "?FUN_007A2800@@YIXHHH@Z",
+  "len": "0x24",
+  "name": "FUN_007A2800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A2830",
+  "sym": "?FUN_007A2830@@YIXPAVString_007B4620@@@Z",
+  "len": "0x7f",
+  "name": "FUN_007A2830",
+  "status": "partial",
+  "pct": 7.5,
+  "note": "Aligned 92.5%: retail zeroes the first word of the local record before the loop."
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A30D0",
+  "sym": "?FUN_007A30D0@@YGJPAXH@Z",
+  "len": "0x27",
+  "name": "FUN_007A30D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A4070",
+  "sym": "?FUN_007A4070@@YGJPAXHHH@Z",
+  "len": "0x79",
+  "name": "FUN_007A4070",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A40F0",
+  "sym": "?FUN_007A40F0@@YGJPAXHHHH@Z",
+  "len": "0xa8",
+  "name": "FUN_007A40F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A70E0",
+  "sym": "?FUN_007A70E0@@YGJPAXJHH@Z",
+  "len": "0x28",
+  "name": "FUN_007A70E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AB350",
+  "sym": "?FUN_007AB350@@YGJPAXHJ@Z",
+  "len": "0x6c",
+  "name": "FUN_007AB350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AB3C0",
+  "sym": "?FUN_007AB3C0@@YGJPAXHPBDH@Z",
+  "len": "0x76",
+  "name": "FUN_007AB3C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AC9D0",
+  "sym": "?FUN_007AC9D0@Obj_007AC9D0@@QAE_NPAPAURecord_00B778E0@@H@Z",
+  "len": "0x29",
+  "name": "Obj_007AC9D0::FUN_007AC9D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7ACD30",
+  "sym": "?FUN_007ACD30@Obj_007ACD30@@QAEXXZ",
+  "len": "0x26",
+  "name": "Obj_007ACD30::FUN_007ACD30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7ADC60",
+  "sym": "?FUN_007ADC60@Table_007ADC60@@QAE_NABVString_007B4620@@PAPAUEntry_00B77908@@@Z",
+  "len": "0x6b",
+  "name": "Table_007ADC60::FUN_007ADC60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AE180",
+  "sym": "?FUN_007AE180@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
+  "len": "0x6b",
+  "name": "Table_007AE180::FUN_007AE180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AE7C0",
+  "sym": "?FUN_007AE7C0@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
+  "len": "0x6b",
+  "name": "Table_007AE180::FUN_007AE7C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AE8E0",
+  "sym": "?FUN_007AE8E0@Table_007AE8E0@@QAE_NABVString_007B4620@@PAPAUValue_007AE8E0@@@Z",
+  "len": "0x6e",
+  "name": "Table_007AE8E0::FUN_007AE8E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7AEC00",
+  "sym": "?Shrink@?$HashTable@UNode_007AEC00@@@@QAEXXZ",
+  "len": "0xae",
+  "name": "HashTable<Node_007AEC00>::Shrink",
+  "status": "matched",
+  "pct": 100
  }
 ]

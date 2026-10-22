@@ -28,6 +28,10 @@ public:
     String_007B4620& operator=(const char* text);
     // FUNCTION: GAMEMD 0x7B4940 (decl; reloc)
     String_007B4620& operator=(const String_007B4620& other);
+    // FUNCTION: GAMEMD 0x7B4710 (decl; reloc)
+    bool FUN_007B4710(const char* text) const;
+    // FUNCTION: GAMEMD 0x7B54B0 (decl; reloc)
+    int Length() const;
     // FUNCTION: GAMEMD 0x7B5400 (decl; reloc)
     const char* FUN_007B5400();
     // FUNCTION: GAMEMD 0x7B5440 (decl; reloc)
@@ -57,6 +61,8 @@ public:
     WideString_007B66C0(const wchar_t* text);
     // FUNCTION: GAMEMD 0x7B6760 (decl; reloc)
     ~WideString_007B66C0();
+    // FUNCTION: GAMEMD 0x7B7600 (decl; reloc)
+    void FUN_007B7600(const wchar_t* text);
 
     void* unknown_00;   // +0x00
 };
