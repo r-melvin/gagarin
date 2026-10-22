@@ -100,10 +100,6 @@ extern PaletteClass DAT_00885780;
 // GLOBAL: GAMEMD 0x7F0C94 -- pointer to the "Colors" section name.
 extern char* ColorsSection;
 
-struct RulesClass
-{
-    // FUNCTION: GAMEMD 0x66D3A0
-    bool Read_Colors(CCINIClass* pINI);
-};
+#include "../_layout/rules_class.h"
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_COLORS_METHODS_H

@@ -216,15 +216,8 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TechnoPtr, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TechnoPtr, Count) == 0x10);
 extern DynamicVectorClass_TechnoPtr TechnoArray;
 
-// RulesClass singleton pointer @0x8871E0. Only the warhead at +0xFA8 is read
-// here (`MOV EAX,[0x8871E0]; MOV ECX,[EAX+0xfa8]`).
-struct RulesClass
-{
-    char               _pad00[0xFA8];   // +0x0000
-    WarheadTypeClass*  C4Warhead;       // +0x0FA8
-};
-GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
-extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
+// RulesClass singleton pointer @0x8871E0 (canonical header).
+#include "../_layout/rules_class.h"
 
 // ---------------------------------------------------------------------------
 class HouseClass
