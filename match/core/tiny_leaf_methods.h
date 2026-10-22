@@ -43,7 +43,7 @@ struct Obj_00408100
 GG_STATIC_ASSERT(offsetof(Obj_00408100, unknown_24) == 0x24);
 
 // FUNCTION: GAMEMD 0x407510 — hands itself to the deallocator.
-void __fastcall FUN_00407510(void* self);
+void FUN_00407510(void* self);
 
 // A three-word head closed onto itself: an empty circular list.
 struct ListHead3
@@ -59,7 +59,7 @@ struct ListHead3
 // Free-list push. The block is handed over payload-first, so the link word
 // sits eight bytes below it.
 struct FreeHead2 { void* First; };
-void __fastcall FUN_00407530(FreeHead2* head, void* payload);   // FUNCTION: GAMEMD 0x407530
+void FUN_00407530(FreeHead2* head, void* payload);   // FUNCTION: GAMEMD 0x407530
 
 struct Obj_00406500b
 {

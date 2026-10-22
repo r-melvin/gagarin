@@ -11,7 +11,7 @@
 
 // GLOBAL: GAMEMD 0x87E728
 extern void* DAT_0087E728b;
-void __fastcall FUN_004037C0b(void* self, int arg);   // GAMEMD 0x4037C0
+void FUN_004037C0b(void* self, int arg);   // GAMEMD 0x4037C0
 void __cdecl FUN_00405040b();                         // GAMEMD 0x405040
 void __cdecl FUN_00751080b();                         // GAMEMD 0x751080
 void __cdecl FUN_00753510();                          // GAMEMD 0x753510

@@ -51,7 +51,7 @@ extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CriticalSec
 extern CriticalSection_00407FB0 DAT_0087E7F8;   // GLOBAL: GAMEMD 0x87E7F8
 
 // FUNCTION: GAMEMD 0x402600 — the state transition, __fastcall.
-void __fastcall FUN_00402600(void* subject);
+void FUN_00402600(void* subject);
 
 struct Obj_00407FB0
 {
@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00407FB0, Subject) == 0x14);
 GG_STATIC_ASSERT(offsetof(Obj_00407FB0, Entered) == 0x80);
 
 // FUNCTION: GAMEMD 0x402650 — the reverse transition, __fastcall.
-void __fastcall FUN_00402650(void* subject);
+void FUN_00402650(void* subject);
 
 // ---------------------------------------------------------------------------
 // 0x409360 — pick the timing back end.
@@ -93,8 +93,8 @@ extern __int64 DAT_0087E828;   // GLOBAL: GAMEMD 0x87E828 — ticks per millisec
 extern void*   DAT_0087E848;   // GLOBAL: GAMEMD 0x87E848 — the selected reader
 
 // FUNCTION: GAMEMD 0x4093C0 / 0x4093F0 — the two readers.
-void __fastcall FUN_004093C0();
-void __fastcall FUN_004093F0();
+void FUN_004093C0();
+void FUN_004093F0();
 
 // FUNCTION: GAMEMD 0x409360
 void __cdecl FUN_00409360();

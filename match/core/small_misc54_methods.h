@@ -31,7 +31,7 @@ extern void* DAT_00A8B238;
 extern char  DAT_00A8B320;
 
 // FUNCTION: GAMEMD 0x50B730 — the owner test, __fastcall, byte result.
-bool __fastcall FUN_0050B730(void* owner);
+bool FUN_0050B730(void* owner);
 
 struct Obj_00449BC0
 {

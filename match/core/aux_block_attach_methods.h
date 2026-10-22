@@ -14,7 +14,7 @@ struct Host_0040A260;
 // FUNCTION: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x402800 — store a 32-byte block if it differs.
-int __fastcall FUN_00402800(Host_0040A260* host, const int* incoming);
+int FUN_00402800(Host_0040A260* host, const int* incoming);
 
 // The auxiliary block. Its first word is a back-pointer to the host, which is
 // how 0x40A260 reaches the host again for the final call.
@@ -53,6 +53,6 @@ GG_STATIC_ASSERT(offsetof(Host_0040A260, field_1A8) == 0x1A8);
 GG_STATIC_ASSERT(offsetof(Host_0040A260, field_1B4) == 0x1B4);
 
 // FUNCTION: GAMEMD 0x40A260
-int __fastcall FUN_0040A260(Host_0040A260* self);
+int FUN_0040A260(Host_0040A260* self);
 
 #endif  // GG_MATCH_CORE_AUX_BLOCK_ATTACH_METHODS_H

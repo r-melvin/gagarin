@@ -342,7 +342,7 @@ void __cdecl FUN_0058B7C0()
 }
 
 // FUNCTION: GAMEMD 0x0058B7D0
-int __fastcall FUN_0058B7D0()
+int FUN_0058B7D0()
 {
     return DAT_00ABED0C;
 }
@@ -376,7 +376,7 @@ int __cdecl FUN_0058B810()
 }
 
 // FUNCTION: GAMEMD 0x58BB00
-Pair_8* __fastcall FUN_0058BB00(Pair_8* a1, int a2)
+Pair_8* FUN_0058BB00(Pair_8* a1, int a2)
 {
     if (a2 >= 0 && a2 < DAT_00ABED0C) {
         *a1 = DAT_00ABE328[a2];
@@ -395,7 +395,7 @@ int FUN_0058BCD0(int a1)
 }
 
 // FUNCTION: GAMEMD 0x58BCF0
-bool __fastcall FUN_0058BCF0(int a1)
+bool FUN_0058BCF0(int a1)
 {
     return !Inline_0058BCF0(a1);
 }
@@ -422,7 +422,7 @@ int FUN_0058BD60(int a1)
 }
 
 // FUNCTION: GAMEMD 0x58BD80
-bool __fastcall FUN_0058BD80(int a1, int a2)
+bool FUN_0058BD80(int a1, int a2)
 {
     switch (a1) {
     case 0:
@@ -462,7 +462,7 @@ MapRegionClass::~MapRegionClass()
 }
 
 // FUNCTION: GAMEMD 0x58C100
-void __fastcall FUN_0058C100()
+void FUN_0058C100()
 {
     DAT_00ABED14 = 0;
     for (int i = DAT_00ABDF90.Count - 1; i >= 0; i--) {
@@ -523,7 +523,7 @@ void MapRegionClass::FUN_0058C3B0(CellStruct* a1)
 }
 
 // FUNCTION: GAMEMD 0x58CE90
-void __fastcall FUN_0058CE90()
+void FUN_0058CE90()
 {
     if (DAT_00ABED10 != 0) {
         int n = DAT_0089C2DC * DAT_0089C2DC;
@@ -541,7 +541,7 @@ void __fastcall FUN_0058CE90()
 }
 
 // FUNCTION: GAMEMD 0x58D010
-void __fastcall FUN_0058D010(char a1)
+void FUN_0058D010(char a1)
 {
     int n = DAT_0089C2DC * DAT_0089C2DC;
     for (int i = 0; i < n; i++) {
@@ -628,7 +628,7 @@ void MapRegionClass::FUN_005942F0(Rect_4i* a1)
 }
 
 // FUNCTION: GAMEMD 0x5943E0
-MapRegionClass* __fastcall FUN_005943E0(int a1)
+MapRegionClass* FUN_005943E0(int a1)
 {
     for (int i = 0; i < DAT_00ABDF90.Count; i++) {
         if (DAT_00ABDF90.Items[i]->unknown_08 == a1)
@@ -742,7 +742,7 @@ double __stdcall FUN_00598180(double a1, double a2, double a3, double a4)
 }
 
 // FUNCTION: GAMEMD 0x599530
-void __fastcall FUN_00599530(Obj_0059C580* a1)
+void FUN_00599530(Obj_0059C580* a1)
 {
     a1->unknown_304 = 0;
     a1->unknown_308 = 0;
@@ -773,7 +773,7 @@ void __stdcall FUN_0059A670(int a1)
 }
 
 // FUNCTION: GAMEMD 0x59B6D0
-void __fastcall FUN_0059B6D0()
+void FUN_0059B6D0()
 {
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
@@ -810,7 +810,7 @@ bool __stdcall FUN_0059BAB0(CellStruct* a1, Rect_4i* a2, char a3, double a4, dou
 }
 
 // FUNCTION: GAMEMD 0x59C530
-void __fastcall FUN_0059C530()
+void FUN_0059C530()
 {
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
@@ -883,7 +883,7 @@ void __stdcall FUN_0059E6C0(int a1, char a2)
 }
 
 // FUNCTION: GAMEMD 0x5A1270
-void __fastcall FUN_005A1270()
+void FUN_005A1270()
 {
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
@@ -923,7 +923,7 @@ void Obj_0059C580::FUN_005A1E10()
 }
 
 // FUNCTION: GAMEMD 0x5A3A60
-void __fastcall FUN_005A3A60()
+void FUN_005A3A60()
 {
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
@@ -936,7 +936,7 @@ void __fastcall FUN_005A3A60()
 }
 
 // FUNCTION: GAMEMD 0x5A6BA0
-bool __fastcall FUN_005A6BA0(CellStruct* a1)
+bool FUN_005A6BA0(CellStruct* a1)
 {
     int y = a1->Y;
     int x = a1->X;
@@ -961,7 +961,7 @@ bool __fastcall FUN_005A6BA0(CellStruct* a1)
 // True when all four corners lie on the map and every cell of the rectangle
 // passes: cells of the first kind need `allow_first`, of the second kind
 // `allow_second`, anything else one of the three remaining predicates.
-bool __fastcall FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool allow_second)
+bool FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool allow_second)
 {
     int left = rect->X;
     int top = rect->Y;
@@ -992,7 +992,7 @@ bool __fastcall FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool a
 }
 
 // FUNCTION: GAMEMD 0x5A7FA0
-void __fastcall FUN_005A7FA0(int a1, CellStruct* a2, char a3)
+void FUN_005A7FA0(int a1, CellStruct* a2, char a3)
 {
     IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
     TileImageHeader* d = (t->*t->Vfptr->At_9C)();

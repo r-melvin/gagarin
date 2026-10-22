@@ -29,7 +29,7 @@ struct Obj_006C9D00 { void FUN_006C9D30(int value); };
 // FUNCTION: GAMEMD 0x407480 — the held node, unless it points at its own owner.
 // Retail computes this branchlessly (`SUB; NEG; SBB; AND`), which is what a
 // conditional expression compiles to here rather than a branch.
-ListNode* __fastcall FUN_00407480(ListNode* self);
+ListNode* FUN_00407480(ListNode* self);
 
 struct Obj_00402100
 {
@@ -41,7 +41,7 @@ struct Obj_00402100
 };
 GG_STATIC_ASSERT(offsetof(Obj_00402100, Dispatch) == 0xD4);
 
-typedef void (__fastcall* DispatchSlot)(Obj_00402100*);
+typedef void (* DispatchSlot)(Obj_00402100*);
 #define DISPATCH_CALL(o, off) \
     ((*(DispatchSlot*)((char*)(o)->Dispatch + (off)))(o))
 

@@ -40,7 +40,7 @@ struct Pair2i
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
 struct AircraftClass_0041A590;
 struct Probe_005B3A00 { char _pad[0x9]; unsigned char at9; };
-Probe_005B3A00* __fastcall FUN_005B3A00(AircraftClass_0041A590* self);   // GAMEMD 0x5B3A00
+Probe_005B3A00* FUN_005B3A00(AircraftClass_0041A590* self);   // GAMEMD 0x5B3A00
 
 // The virtual at +0x484 takes both arguments on the stack, so the zero-argument
 // function-pointer idiom cannot express it and __fastcall would put the first
@@ -370,6 +370,6 @@ struct Entry8 { void* Value; int Key; };
 extern Entry8 DAT_00819288[6];
 
 // FUNCTION: GAMEMD 0x45DD20 — look the key up; fall back to the first entry.
-void* __fastcall FUN_0045DD20(int key);
+void* FUN_0045DD20(int key);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC9_METHODS_H

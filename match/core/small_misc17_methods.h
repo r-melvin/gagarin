@@ -12,7 +12,7 @@
 extern char VT_007E16B0[];
 
 struct Obj_00473A80;
-void __fastcall FUN_0047AA30(Obj_00473A80* self);   // GAMEMD 0x47AA30
+void FUN_0047AA30(Obj_00473A80* self);   // GAMEMD 0x47AA30
 
 // __thiscall with both arguments pushed.
 struct Sub_0043AD00 { void FUN_0043AD00(int a, int b); };   // GAMEMD 0x43AD00
@@ -33,7 +33,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00473A80, unknown_68) == 0x68);
 
 // A zero-argument virtual at +0x30 returning a pointer.
 struct Provider_004103E0;
-typedef char* (__fastcall* Slot30)(Provider_004103E0*);
+typedef char* (* Slot30)(Provider_004103E0*);
 #define SLOT_30(p) ((*(Slot30*)(*(char**)(p) + 0x30))(p))
 
 // FUNCTION: GAMEMD 0x4103E0 — publish the provider's buffer, skipping its

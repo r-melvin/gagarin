@@ -33,13 +33,13 @@ extern NameValue_004067D0 DAT_00816018[];
 extern NameValue_004067D0 DAT_008160C0[];
 
 // FUNCTION: GAMEMD 0x4067D0
-bool __fastcall FUN_004067D0(const char* name, int* value);
+bool FUN_004067D0(const char* name, int* value);
 
 // FUNCTION: GAMEMD 0x406820 — the same walk over 0x8160C0, but the value is
 // OR-ed into the destination rather than assigned, and the two register
 // arguments arrive the other way round (`MOV EBX,ECX` takes the destination,
 // `MOV EDI,EDX` the name).
-bool __fastcall FUN_00406820(int* flags, const char* name);
+bool FUN_00406820(int* flags, const char* name);
 
 // GLOBAL: GAMEMD 0x816048 — the third table, same layout and terminator.
 extern NameValue_004067D0 DAT_00816048[];
@@ -49,7 +49,7 @@ extern NameValue_004067D0 DAT_00816048[];
 // each displace whatever was already there before the OR. The masks come
 // straight off the byte-narrowed ANDs, `AND AL,0x9F` for 0x60 and
 // `AND AH,0xF3` for 0xC00.
-bool __fastcall FUN_00406870(int* flags, const char* name);
+bool FUN_00406870(int* flags, const char* name);
 
 // ---------------------------------------------------------------------------
 // 0x413CD0 — a type-checked predicate.
@@ -89,7 +89,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00413CD0, Settings) == 0x6C0);
 GG_STATIC_ASSERT(offsetof(Obj_00413CD0, Suppressed) == 0x6D9);
 
 // FUNCTION: GAMEMD 0x413CD0
-bool __fastcall FUN_00413CD0(Obj_00413CD0* self);
+bool FUN_00413CD0(Obj_00413CD0* self);
 
 // ---------------------------------------------------------------------------
 // 0x452170 — stamp a byte into all 21 slots of the array at +0x55C.

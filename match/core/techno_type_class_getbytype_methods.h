@@ -44,7 +44,7 @@ class TechnoTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x48DCD0  (__fastcall)
-    static TechnoTypeClass* __fastcall GetByTypeAndIndex(AbstractType abs, int index);
+    static TechnoTypeClass* GetByTypeAndIndex(AbstractType abs, int index);
 };
 
 #endif // GG_MATCH_CORE_TECHNO_TYPE_CLASS_GETBYTYPE_METHODS_H

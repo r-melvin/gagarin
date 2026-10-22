@@ -16,20 +16,20 @@ struct Obj_00402190;
 // The three slots at +0x15C..+0x164 are filled with the addresses of three
 // concrete functions rather than pointing at a shared vtable, so they are
 // per-instance hooks, not virtuals.
-typedef int (__fastcall* Hook_00402190)(Obj_00402190* self);
+typedef int (* Hook_00402190)(Obj_00402190* self);
 
 // FUNCTION: GAMEMD 0x4022C0
-int __fastcall FUN_004022C0(Obj_00402190* self);
+int FUN_004022C0(Obj_00402190* self);
 // FUNCTION: GAMEMD 0x4023F0
-int __fastcall FUN_004023F0(Obj_00402190* self);
+int FUN_004023F0(Obj_00402190* self);
 // FUNCTION: GAMEMD 0x4025B0
-void __fastcall FUN_004025B0(Obj_00402190* peer);
+void FUN_004025B0(Obj_00402190* peer);
 // FUNCTION: GAMEMD 0x4026F0
-void __fastcall FUN_004026F0(Obj_00402190* peer);
+void FUN_004026F0(Obj_00402190* peer);
 
 // FUNCTION: GAMEMD 0x402330 — one of the three hooks, so a free function by
 // necessity (see the note on Obj_00402190's members below).
-int __fastcall FUN_00402330(Obj_00402190* self);
+int FUN_00402330(Obj_00402190* self);
 
 // GLOBAL: GAMEMD 0x87DE30 — a timer group, not a scalar: 0x402220 passes the
 // value stored from here straight to 0x4010C0 as the scaling source.
@@ -62,7 +62,7 @@ struct Rec_00402330
 GG_STATIC_ASSERT(offsetof(Rec_00402330, At_0C) == 0xC);
 
 // FUNCTION: GAMEMD 0x408520 — resolve a queue entry to its record, or null.
-Rec_00402330* __fastcall FUN_00408520(Item_00402330* item);
+Rec_00402330* FUN_00408520(Item_00402330* item);
 
 struct Obj_00402190
 {

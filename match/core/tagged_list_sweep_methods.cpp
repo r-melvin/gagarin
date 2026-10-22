@@ -19,7 +19,7 @@
 //
 // A key of -1 means "every node": retail's `CMP EBX,-1; JZ` jumps straight onto
 // the action, past the tag comparison.
-int __fastcall Owner_004036F0::FUN_004036F0(int key)
+int Owner_004036F0::FUN_004036F0(int key)
 {
     ListNode* next = (&this->Items)->FUN_004073C0();
     ListNode* node = next;
@@ -40,7 +40,7 @@ int __fastcall Owner_004036F0::FUN_004036F0(int key)
 // FUNCTION: GAMEMD 0x403730
 //
 // The same sweep with the other action and no return value.
-void __fastcall Owner_004036F0::FUN_00403730(int key)
+void Owner_004036F0::FUN_00403730(int key)
 {
     ListNode* next = (&this->Items)->FUN_004073C0();
     ListNode* node = next;
@@ -70,7 +70,7 @@ void __fastcall Owner_004036F0::FUN_00403730(int key)
 // retail's `JZ 0x4037B0` goes. The sibling pair at 0x4036F0 does *not* have
 // this test, so it is a real difference between the two pairs, not a shared
 // idiom - which is why they are written out separately.
-void __fastcall Owner_004036F0::FUN_00403770(int key)
+void Owner_004036F0::FUN_00403770(int key)
 {
     ListNode* node = (&this->Items)->FUN_004073C0();
 
@@ -91,7 +91,7 @@ void __fastcall Owner_004036F0::FUN_00403770(int key)
 // FUNCTION: GAMEMD 0x4037C0
 //
 // The bit-2 counterpart, with its own action. Written out rather than shared.
-void __fastcall Owner_004036F0::FUN_004037C0(int key)
+void Owner_004036F0::FUN_004037C0(int key)
 {
     ListNode* node = (&this->Items)->FUN_004073C0();
 

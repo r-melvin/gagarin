@@ -131,7 +131,7 @@ int Obj_0076F000::FUN_0076F000(int a1, int a2)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F020
-int __fastcall FUN_0076F020(LeafObj_0x04* self)
+int FUN_0076F020(LeafObj_0x04* self)
 {
     return self->unknown_04;
 }
@@ -139,7 +139,7 @@ int __fastcall FUN_0076F020(LeafObj_0x04* self)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F060
 // VTABLE: GAMEMD 0x7F71C4
-void __fastcall FUN_0076F060(SeatDtorObject* self)
+void FUN_0076F060(SeatDtorObject* self)
 {
     self->Vtbl = VTABLE_007F71C4;
     FUN_0065D460(self);
@@ -147,14 +147,14 @@ void __fastcall FUN_0076F060(SeatDtorObject* self)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F070
-int __fastcall FUN_0076F070(LeafObj_0x04* self)
+int FUN_0076F070(LeafObj_0x04* self)
 {
     return self->unknown_04;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x76F080
-int __fastcall FUN_0076F080(LeafObj_0x04* self)
+int FUN_0076F080(LeafObj_0x04* self)
 {
     return self->unknown_04;
 }
@@ -163,7 +163,7 @@ int __fastcall FUN_0076F080(LeafObj_0x04* self)
 // FUNCTION: GAMEMD 0x0076F0B0
 //
 // Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0B0(Cursor_004F28B0* self)
+bool FUN_0076F0B0(Cursor_004F28B0* self)
 {
     return self->Position < self->Owner->Limit;
 }
@@ -172,7 +172,7 @@ bool __fastcall FUN_0076F0B0(Cursor_004F28B0* self)
 // FUNCTION: GAMEMD 0x0076F0E0
 //
 // Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0E0(Cursor_004F28B0* self)
+bool FUN_0076F0E0(Cursor_004F28B0* self)
 {
     return self->Position < self->Owner->Limit;
 }
@@ -181,7 +181,7 @@ bool __fastcall FUN_0076F0E0(Cursor_004F28B0* self)
 // FUNCTION: GAMEMD 0x0076F0F0
 //
 // Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0F0(Cursor_004F28B0* self)
+bool FUN_0076F0F0(Cursor_004F28B0* self)
 {
     return self->Position < self->Owner->Limit;
 }

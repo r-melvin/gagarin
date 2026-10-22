@@ -24,7 +24,7 @@ int Obj_00406600b::FUN_00406650() const
 
 // FUNCTION: GAMEMD 0x407150
 // `SHL EDX,0x10` puts the value in the high half of the word.
-void __fastcall Obj_00407100::FUN_00407150(int value)
+void Obj_00407100::FUN_00407150(int value)
 {
     Flags |= 1;
     unknown_08 = value << 16;
@@ -53,7 +53,7 @@ void Obj_00433000::FUN_00433040()
 }
 
 // FUNCTION: GAMEMD 0x473960
-const char* __fastcall FUN_00473960(unsigned int index)
+const char* FUN_00473960(unsigned int index)
 {
     if (index < 11) {
         return DAT_0081B7CC[index].Name;

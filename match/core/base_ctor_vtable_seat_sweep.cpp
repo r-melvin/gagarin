@@ -8,7 +8,7 @@
 
 // FUNCTION: GAMEMD 0x765C70
 // VTABLE: GAMEMD 0x7F6F34
-CtorSeatObject* __fastcall FUN_00765C70(CtorSeatObject* self)
+CtorSeatObject* FUN_00765C70(CtorSeatObject* self)
 {
     FUN_0065D430(self);
     self->Vtbl = VTABLE_007F6F34;
@@ -18,7 +18,7 @@ CtorSeatObject* __fastcall FUN_00765C70(CtorSeatObject* self)
 
 // FUNCTION: GAMEMD 0x7670D0
 // VTABLE: GAMEMD 0x7F7024
-CtorSeatObject* __fastcall FUN_007670D0(CtorSeatObject* self)
+CtorSeatObject* FUN_007670D0(CtorSeatObject* self)
 {
     FUN_0065D430(self);
     self->Vtbl = VTABLE_007F7024;
@@ -28,7 +28,7 @@ CtorSeatObject* __fastcall FUN_007670D0(CtorSeatObject* self)
 
 // FUNCTION: GAMEMD 0x76A7C0
 // VTABLE: GAMEMD 0x7F71C4
-CtorSeatObject* __fastcall FUN_0076A7C0(CtorSeatObject* self)
+CtorSeatObject* FUN_0076A7C0(CtorSeatObject* self)
 {
     FUN_0065D430(self);
     self->Vtbl = VTABLE_007F71C4;
@@ -38,7 +38,7 @@ CtorSeatObject* __fastcall FUN_0076A7C0(CtorSeatObject* self)
 
 // FUNCTION: GAMEMD 0x76BC60
 // VTABLE: GAMEMD 0x7EBFA4
-CtorSeatObject* __fastcall FUN_0076BC60(CtorSeatObject* self)
+CtorSeatObject* FUN_0076BC60(CtorSeatObject* self)
 {
     FUN_0065D430(self);
     self->Vtbl = VTABLE_007EBFA4;

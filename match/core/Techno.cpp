@@ -746,7 +746,7 @@ void Setter_00487C70::FUN_00705D10(int value)
 }
 
 // FUNCTION: GAMEMD 0x00705D20
-int __fastcall FUN_00705D20(Obj_00705D20* self)
+int FUN_00705D20(Obj_00705D20* self)
 {
     return self->unknown_514;
 }
@@ -770,7 +770,7 @@ bool Obj_00705D50::FUN_00705D50()
 }
 
 // FUNCTION: GAMEMD 0x705D60
-void __fastcall FUN_00705D60(void* self)
+void FUN_00705D60(void* self)
 {
     FUN_006385C0(self);
 }
@@ -972,7 +972,7 @@ void FUN_0070D150()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0070D180
-void __fastcall FUN_0070D180(char value)
+void FUN_0070D180(char value)
 {
     DAT_00843108 = value;
 }
@@ -1366,7 +1366,7 @@ bool TechnoClass::CanAttackOnTheMove()
 // Map a locomotor kind onto its expansion replacement. Only two kinds are
 // remapped, and only while the expansion's rule set is active; everything
 // else is handed back unchanged.
-int __fastcall FUN_0070F0B0(int kind, int, int)
+int FUN_0070F0B0(int kind, int, int)
 {
     bool expansion = FUN_00731BF0();
     if (kind == 1) {

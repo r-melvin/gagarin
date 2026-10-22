@@ -17,7 +17,7 @@ void Obj_00402100::FUN_00402170()
 }
 
 // FUNCTION: GAMEMD 0x407480
-ListNode* __fastcall FUN_00407480(ListNode* self)
+ListNode* FUN_00407480(ListNode* self)
 {
     ListNode* node = self->Next;
 

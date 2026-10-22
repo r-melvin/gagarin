@@ -5,7 +5,7 @@
 #include "small_misc41_methods.h"
 
 // FUNCTION: GAMEMD 0x4067D0
-bool __fastcall FUN_004067D0(const char* name, int* value)
+bool FUN_004067D0(const char* name, int* value)
 {
     NameValue_004067D0* entry = DAT_00816018;
 
@@ -36,7 +36,7 @@ bool __fastcall FUN_004067D0(const char* name, int* value)
 // The sibling of 0x4067D0 over the second table. Written out longhand rather
 // than shared: the argument order is reversed and the result is accumulated
 // into the destination with `|=` instead of stored.
-bool __fastcall FUN_00406820(int* flags, const char* name)
+bool FUN_00406820(int* flags, const char* name)
 {
     NameValue_004067D0* entry = DAT_008160C0;
 
@@ -60,7 +60,7 @@ bool __fastcall FUN_00406820(int* flags, const char* name)
 // The third of the family. Written out longhand: the walk is the same but the
 // tail replaces conflicting flag groups before merging, and the merge re-reads
 // the entry's value rather than reusing the register the tests ran on.
-bool __fastcall FUN_00406870(int* flags, const char* name)
+bool FUN_00406870(int* flags, const char* name)
 {
     NameValue_004067D0* entry = DAT_00816048;
 
@@ -88,7 +88,7 @@ bool __fastcall FUN_00406870(int* flags, const char* name)
 }
 
 // FUNCTION: GAMEMD 0x413CD0
-bool __fastcall FUN_00413CD0(Obj_00413CD0* self)
+bool FUN_00413CD0(Obj_00413CD0* self)
 {
     if (self == 0) {
         return false;

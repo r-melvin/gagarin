@@ -53,7 +53,7 @@ inline BigInt_00632740 MakePrimeFromSieve(Straw* random, int bits)
 }
 
 // FUNCTION: GAMEMD 0x632050
-void __fastcall FUN_00632050(Straw* random, int bits, PKey_00632740* fast, PKey_00632740* slow)
+void FUN_00632050(Straw* random, int bits, PKey_00632740* fast, PKey_00632740* slow)
 {
     unsigned char plain[256];
     unsigned char crypt[256];

@@ -118,7 +118,7 @@ void* Obj_4F2830::FUN_4F2830(unsigned int flags)
 // FUNCTION: GAMEMD 0x004F28B0
 //
 // Is this cursor still inside its owner's limit.
-bool __fastcall FUN_004F28B0(Cursor_004F28B0* self)
+bool FUN_004F28B0(Cursor_004F28B0* self)
 {
     return self->Position < self->Owner->Limit;
 }

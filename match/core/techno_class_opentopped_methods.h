@@ -30,7 +30,7 @@ extern LogicClass LogicInstance;
 
 // The passenger's virtual at primary-vtable slot +0x3D0, dispatched through the
 // tree's usual __fastcall-fn-pointer idiom.
-typedef void (__fastcall* Slot3D0Func)(TechnoClass*);
+typedef void (* Slot3D0Func)(TechnoClass*);
 #define TECHNO_SLOT_3D0(obj) ((*(Slot3D0Func*)(*(char**)(obj) + 0x3d0))(obj))
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.

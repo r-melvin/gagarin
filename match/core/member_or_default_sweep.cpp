@@ -8,7 +8,7 @@
 
 // FUNCTION: GAMEMD 0x7B5400
 // GLOBAL: GAMEMD 0x889F64
-void* __fastcall FUN_007B5400(DefaultingHolder* self)
+void* FUN_007B5400(DefaultingHolder* self)
 {
     if (self->Object != 0) {
         return self->Object;
@@ -19,7 +19,7 @@ void* __fastcall FUN_007B5400(DefaultingHolder* self)
 
 // FUNCTION: GAMEMD 0x7B5440
 // GLOBAL: GAMEMD 0x889F64
-void* __fastcall FUN_007B5440(DefaultingHolder* self)
+void* FUN_007B5440(DefaultingHolder* self)
 {
     if (self->Object != 0) {
         return self->Object;
@@ -30,7 +30,7 @@ void* __fastcall FUN_007B5440(DefaultingHolder* self)
 
 // FUNCTION: GAMEMD 0x7B7100
 // GLOBAL: GAMEMD 0x887734
-void* __fastcall FUN_007B7100(DefaultingHolder* self)
+void* FUN_007B7100(DefaultingHolder* self)
 {
     if (self->Object != 0) {
         return self->Object;
@@ -41,7 +41,7 @@ void* __fastcall FUN_007B7100(DefaultingHolder* self)
 
 // FUNCTION: GAMEMD 0x7B7140
 // GLOBAL: GAMEMD 0x887734
-void* __fastcall FUN_007B7140(DefaultingHolder* self)
+void* FUN_007B7140(DefaultingHolder* self)
 {
     if (self->Object != 0) {
         return self->Object;

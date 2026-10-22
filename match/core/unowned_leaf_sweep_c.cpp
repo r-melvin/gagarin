@@ -41,7 +41,7 @@ Quad_006C95E0::Quad_006C95E0()
 extern "C" int DAT_00B0CB78[];
 
 // FUNCTION: GAMEMD 0x006CFD20
-void __fastcall FUN_006CFD20(int index, int value)
+void FUN_006CFD20(int index, int value)
 {
     DAT_00B0CB78[index] = value;
 }
@@ -68,7 +68,7 @@ extern "C" int DAT_00B0CC2C;
 // FUNCTION: GAMEMD 0x006CFDB0
 // Record `count`, then set 0xB0CC2C to the 0xB0FC6C origin less `count` rows
 // of the 0xB0FC68 size, no lower than the far edge of the 0xB0FC60 rect.
-void __fastcall FUN_006CFDB0(int count)
+void FUN_006CFDB0(int count)
 {
     DAT_00B0CB54 = count;
     int value = DAT_00B0FC6C->unknown_0 - DAT_00B0FC68->unknown_8 * count;
@@ -127,7 +127,7 @@ struct Obj_00711EB0
 GG_STATIC_ASSERT(offsetof(Obj_00711EB0, unknown_610) == 0x610);
 
 // FUNCTION: GAMEMD 0x00711EB0
-int __fastcall FUN_00711EB0(Obj_00711EB0* self)
+int FUN_00711EB0(Obj_00711EB0* self)
 {
     return self->unknown_610;
 }
@@ -140,7 +140,7 @@ struct Obj_00717880
 GG_STATIC_ASSERT(offsetof(Obj_00717880, unknown_808) == 0x808);
 
 // FUNCTION: GAMEMD 0x00717880
-int __fastcall FUN_00717880(Obj_00717880* self)
+int FUN_00717880(Obj_00717880* self)
 {
     return self->unknown_808 > 0;
 }
@@ -153,7 +153,7 @@ struct Obj_00726910
 GG_STATIC_ASSERT(offsetof(Obj_00726910, unknown_2C) == 0x2C);
 
 // FUNCTION: GAMEMD 0x00726910
-int __fastcall FUN_00726910(Obj_00726910* self)
+int FUN_00726910(Obj_00726910* self)
 {
     return self->unknown_2C;
 }
@@ -164,7 +164,7 @@ extern "C" int DAT_00B0FE54;
 extern "C" char DAT_00B0FE58;
 
 // FUNCTION: GAMEMD 0x00731D00
-void __fastcall FUN_00731D00(int value)
+void FUN_00731D00(int value)
 {
     DAT_00B0FE54 = value;
     DAT_00B0FE58 = 0;
@@ -175,7 +175,7 @@ extern "C" const char* const DAT_008463B8[18];
 
 // FUNCTION: GAMEMD 0x0074FEF0
 // Index of `name` in the eighteen-entry table at 0x8463B8, or -1.
-int __fastcall FUN_0074FEF0(const char* name)
+int FUN_0074FEF0(const char* name)
 {
     for (int i = 0; i < 18; i++) {
         if (_stricmp(DAT_008463B8[i], name) == 0) {
@@ -187,7 +187,7 @@ int __fastcall FUN_0074FEF0(const char* name)
 
 // FUNCTION: GAMEMD 0x0074FF90
 // Is the float in [1, 2).
-int __fastcall FUN_0074FF90(const float* value)
+int FUN_0074FF90(const float* value)
 {
     if (*value >= 1.0f && *value < 2.0f) {
         return 1;
@@ -196,7 +196,7 @@ int __fastcall FUN_0074FF90(const float* value)
 }
 
 // FUNCTION: GAMEMD 0x00750010
-int __fastcall FUN_00750010(const float* value)
+int FUN_00750010(const float* value)
 {
     if (!(*value < 2.0f)) {
         return 1;
@@ -269,7 +269,7 @@ extern "C" const char DAT_00817474[];
 // FUNCTION: GAMEMD 0x00751590
 // Name of entry `index` of the vector at 0xB1D378, with fallbacks for an
 // empty entry (0x846574) and an index out of range (0x817474).
-const char* __fastcall FUN_00751590(int index)
+const char* FUN_00751590(int index)
 {
     if (index >= 0 && index < DAT_00B1D388) {
         Named_00751590* named = DAT_00B1D37C[index]->unknown_0;
@@ -334,7 +334,7 @@ extern "C" Record_007559B0 DAT_00B45188[];
 
 // FUNCTION: GAMEMD 0x007559B0
 // Copy record `index` out; the destination arrives in ECX and is returned.
-Record_007559B0* __fastcall FUN_007559B0(Record_007559B0* out, int index)
+Record_007559B0* FUN_007559B0(Record_007559B0* out, int index)
 {
     *out = DAT_00B45188[index];
     return out;
@@ -345,7 +345,7 @@ extern "C" const char* const DAT_007E5210[11];
 
 // FUNCTION: GAMEMD 0x00772A50
 // Index of `name` in the eleven-entry table at 0x7E5210, or 0.
-int __fastcall FUN_00772A50(const char* name)
+int FUN_00772A50(const char* name)
 {
     if (name != NULL) {
         for (int i = 0; i < 11; i++) {
@@ -372,7 +372,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00774950, unknown_5C) == 0x5C);
 
 // FUNCTION: GAMEMD 0x00774950
 // Close the handle at +0x5C, if open, after logging the string at 0x8497A4.
-void __fastcall FUN_00774950(Obj_00774950* self)
+void FUN_00774950(Obj_00774950* self)
 {
     if (self->unknown_5C != INVALID_HANDLE_VALUE) {
         FUN_004068E0(DAT_008497A4);

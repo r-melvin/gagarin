@@ -36,7 +36,7 @@ ListNode* Holder_004031F0::FUN_004031F0()
 }
 
 // FUNCTION: GAMEMD 0x4035B0
-void __fastcall FUN_004035B0(void* owner, ListNode** out)
+void FUN_004035B0(void* owner, ListNode** out)
 {
     *out = ((ListNode*)((char*)owner + 0xF8))->FUN_004073C0();
 }

@@ -29,7 +29,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-typedef int (__fastcall* HashFunction)(const void* key);
+typedef int (* HashFunction)(const void* key);
 
 struct HashTableIndex
 {

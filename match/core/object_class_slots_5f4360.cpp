@@ -146,7 +146,7 @@ struct TechnoVtbl_5F5850
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_5F5850, At_2C0) == 0x2C0);
 
 // FUNCTION: GAMEMD 0x40DD70 (decl; reloc) -- the object if it is a techno, else null.
-Techno_5F5850* __fastcall FUN_0040DD70(ObjectClass* object);
+Techno_5F5850* FUN_0040DD70(ObjectClass* object);
 
 // A building's type pointer and the type's flag at +0xE58 (read-only here).
 struct BuildingType_5F5850

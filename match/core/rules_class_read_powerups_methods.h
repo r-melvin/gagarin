@@ -42,9 +42,9 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x727CF0 (decl; reloc) — in-place leading-whitespace trim.
-char* __fastcall Strtrim_00727CF0(char* str);
+char* Strtrim_00727CF0(char* str);
 // FUNCTION: GAMEMD 0x422B20 (decl; reloc) — name -> array index lookup.
-int   __fastcall FUN_00422B20(char* name);
+int   FUN_00422B20(char* name);
 
 // CRT helpers (excluded from the match target; declared for the reloc).
 // LIBRARY: GAMEMD 0x7C9CC2  strtok

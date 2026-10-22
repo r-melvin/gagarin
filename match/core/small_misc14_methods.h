@@ -9,7 +9,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // A __thiscall callback: the element goes in ECX and nothing on the stack.
-typedef void (__fastcall* ElemFn)(void* elem);
+typedef void (* ElemFn)(void* elem);
 
 // FUNCTION: GAMEMD 0x4068F0 — apply the callback across a strided array,
 // walking forwards. The trip count is taken as `count - 1` and tested for

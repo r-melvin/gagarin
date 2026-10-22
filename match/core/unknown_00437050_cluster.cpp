@@ -33,7 +33,7 @@ extern "C" void __cdecl FUN_00437190()
 }
 
 // FUNCTION: GAMEMD 0x004371B0
-extern "C" int __fastcall FUN_004371B0(
+extern "C" int FUN_004371B0(
     UnknownObject_004371B0* object, int factor, int count)
 {
     return object->vtable->slot_1C(object) * factor * count;

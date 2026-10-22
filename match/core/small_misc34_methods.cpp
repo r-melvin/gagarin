@@ -12,7 +12,7 @@
 // Clear the armed bit, refresh the 64-bit stamp only when the two counters have
 // converged, and store the new rate shifted into the high half. The rate store
 // happens on both paths - the JNZ lands on it, not on the return.
-void __fastcall FUN_00407170c(Obj_00407170* obj, int rate)
+void FUN_00407170c(Obj_00407170* obj, int rate)
 {
     obj->Flags &= ~1;
 

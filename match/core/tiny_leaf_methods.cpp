@@ -10,10 +10,10 @@
 void Obj_00406500b::FUN_004065F0(int value) { unknown_54 = value; }
 
 // FUNCTION: GAMEMD 0x406600
-void __fastcall Obj_00406500b::FUN_00406600(int a, int b) { unknown_58 = a; unknown_5C = b; }
+void Obj_00406500b::FUN_00406600(int a, int b) { unknown_58 = a; unknown_5C = b; }
 
 // FUNCTION: GAMEMD 0x406610
-void __fastcall Obj_00406500b::FUN_00406610(int a, int b) { unknown_60 = a; unknown_64 = b; }
+void Obj_00406500b::FUN_00406610(int a, int b) { unknown_60 = a; unknown_64 = b; }
 
 // FUNCTION: GAMEMD 0x4068E0
 void __cdecl FUN_004068E0() { }
@@ -24,10 +24,10 @@ void __cdecl FUN_004068E0() { }
 void ListHead3::FUN_004072C0() { a = this; b = this; c = this; }
 
 // FUNCTION: GAMEMD 0x407510
-void __fastcall FUN_00407510(void* self) { FUN_007C8B3D(self); }
+void FUN_00407510(void* self) { FUN_007C8B3D(self); }
 
 // FUNCTION: GAMEMD 0x407530
-void __fastcall FUN_00407530(FreeHead2* head, void* payload)
+void FUN_00407530(FreeHead2* head, void* payload)
 {
     void** node = (void**)((char*)payload - 8);
 
@@ -36,10 +36,10 @@ void __fastcall FUN_00407530(FreeHead2* head, void* payload)
 }
 
 // FUNCTION: GAMEMD 0x407B40
-void __fastcall Obj_00407B00::FUN_00407B40(int value) { unknown_14->at94 = value; }
+void Obj_00407B00::FUN_00407B40(int value) { unknown_14->at94 = value; }
 
 // FUNCTION: GAMEMD 0x407B50
-void __fastcall Obj_00407B00::FUN_00407B50(int value) { unknown_14->at9C = value; }
+void Obj_00407B00::FUN_00407B50(int value) { unknown_14->at9C = value; }
 
 // FUNCTION: GAMEMD 0x408140
 __int64 Obj_00408100::FUN_00408140() const

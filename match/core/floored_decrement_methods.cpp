@@ -14,7 +14,7 @@
 // trios in one register, as retail has them. PARTIAL (89.5%): Pending is
 // volatile (the mixer thread reads it; see the header), but Attached has no
 // cross-thread evidence and stays plain, so cl still batches its trio.
-void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
+void FUN_00402860(Owner_00402860* self, Member_00402860* member)
 {
     member->Owner = self;
 
@@ -41,7 +41,7 @@ void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
 // trios through one shared named local. With a compound assignment on each
 // member instead, cl takes a second register for the second trio: 86.4%.
 // PARTIAL (77.3%) for the same reason as 0x402860: only Pending is volatile.
-void __fastcall FUN_004028B0(Member_00402860* self)
+void FUN_004028B0(Member_00402860* self)
 {
     Owner_00402860* owner = self->Owner;
 
@@ -90,7 +90,7 @@ void __fastcall FUN_004028B0(Member_00402860* self)
 // the banked 8447-vs-8804 "sunk constant-return tail" class; the combined
 // condition below stays as the best-measured form at 33.3% (12/36, the only
 // mnemonic delta being the JNE/JE polarity the sinking forces).
-Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self)
+Member_00402860* FUN_004034B0(Pool_00402860* self)
 {
     // Both refusals share one `POP EDI; XOR EAX,EAX; POP ESI; RET` that sits
     // *between* the tests and the body, so they are one early return written as
@@ -142,7 +142,7 @@ Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self)
 // PARTIAL (86.8%): the capacity compare and bumps are ordinary member
 // accesses. The earlier volatile reads that restored the `XOR EDI,EDI`
 // position and the separate trios were removed as match steering.
-int __fastcall FUN_00403530(Pool_00402860* self, int count)
+int FUN_00403530(Pool_00402860* self, int count)
 {
     int made = 0;
 

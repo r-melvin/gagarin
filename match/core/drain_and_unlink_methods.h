@@ -22,15 +22,15 @@ struct Ctx_00401FC0
 GG_STATIC_ASSERT(offsetof(Ctx_00401FC0, ObjList) == 0x8);
 
 // FUNCTION: GAMEMD 0x407450 — splice out of whatever list it is in.
-void __fastcall FUN_00407450(void* link);
+void FUN_00407450(void* link);
 // FUNCTION: GAMEMD 0x407470 — first element, or null.
-Node_00401FC0* __fastcall FUN_00407470(void* head);
+Node_00401FC0* FUN_00407470(void* head);
 // FUNCTION: GAMEMD 0x407530 — return something to a free list.
-void __fastcall FUN_00407530(void* list, void* item);
+void FUN_00407530(void* list, void* item);
 // FUNCTION: GAMEMD 0x408530 — tear down the sub-object at +0x1C.
-void __fastcall FUN_00408530(void* sub);
+void FUN_00408530(void* sub);
 // FUNCTION: GAMEMD 0x408600 — tear down one node.
-void __fastcall FUN_00408600(Node_00401FC0* node);
+void FUN_00408600(Node_00401FC0* node);
 
 struct Obj_00401FC0
 {

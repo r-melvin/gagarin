@@ -44,7 +44,7 @@ struct Obj_00406600
 GG_STATIC_ASSERT(offsetof(Obj_00406600, unknown_68) == 0x68);
 
 // FUNCTION: GAMEMD 0x406620 — value arrives in EDX, so __fastcall, not __thiscall.
-void __fastcall FUN_00406620(Obj_00406600* obj, int value);
+void FUN_00406620(Obj_00406600* obj, int value);
 
 // FUNCTION: GAMEMD 0x407000
 bool __cdecl FUN_00407000();

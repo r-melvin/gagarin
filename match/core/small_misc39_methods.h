@@ -20,7 +20,7 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);   // operator new
 // `LEA EDI,[EDX+8]` for the element size), so this is __fastcall.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x4074D0
-void* __fastcall FUN_004074D0(int count, int elementSize);
+void* FUN_004074D0(int count, int elementSize);
 
 // ---------------------------------------------------------------------------
 // 0x4589C0 — scale the stored total against a divisor.

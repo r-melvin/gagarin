@@ -56,7 +56,7 @@ typedef int (__cdecl *MoviePaletteFn_007BD470)(MovieHandle_007BD470* h, int op, 
 typedef int (__cdecl *MovieFrameFn_007BD470)(int op, int frame);
 typedef int (__cdecl *MovieAudioFn_007BD470)(MovieHandle_007BD470* h, int op, void* buf, int size);
 
-typedef int (__fastcall *MovieStepFn_007BD470)(MovieHandle_007BD470* h);
+typedef int (*MovieStepFn_007BD470)(MovieHandle_007BD470* h);
 typedef int (__cdecl *MovieTimerFn_007BD470)(MovieHandle_007BD470* h);
 typedef void (__cdecl *MovieDrawFn_007BD470)(unsigned short* blockTable, unsigned short* pointers,
                                     unsigned short* dest, int blocksWide, int blocksHigh, int pitch);

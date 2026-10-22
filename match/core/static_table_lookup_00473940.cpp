@@ -32,7 +32,7 @@ extern "C" unsigned int DAT_0089E28C;
 // FUNCTION: GAMEMD 0x00473940
 // ECX carries the index, EAX carries the selected pointer; fastcall is the
 // candidate C++ ABI binding, not a claim about the original source declaration.
-extern "C" void* __fastcall FUN_00473940(unsigned int index)
+extern "C" void* FUN_00473940(unsigned int index)
 {
     if (index < 11) return Table_0081B7C8[index].first;
     return (void*)STR_00817474;

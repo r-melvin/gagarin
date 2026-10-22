@@ -23,17 +23,17 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-extern "C" void* __fastcall FUN_00726910(void* handle);   // GAMEMD 0x726910
-extern "C" bool  __fastcall FUN_00510F60(int id);         // GAMEMD 0x510F60
+extern "C" void* FUN_00726910(void* handle);   // GAMEMD 0x726910
+extern "C" bool  FUN_00510F60(int id);         // GAMEMD 0x510F60
 class HouseClass;
-extern "C" HouseClass* __fastcall FUN_00510ED0(int id);   // GAMEMD 0x510ED0: the house of a multiplayer index
-extern "C" HouseClass* __fastcall FUN_00502D30(int id);   // GAMEMD 0x502D30: the house of a country index
-extern "C" void  __fastcall FUN_0050D440(void* obj);       // GAMEMD 0x50D440  action
-extern "C" void  __fastcall FUN_0050D320(void* obj);       // GAMEMD 0x50D320  action
-extern "C" void  __fastcall FUN_004FC6D0(void* obj);       // GAMEMD 0x4FC6D0  action
-extern "C" void  __fastcall FUN_004FC790(void* obj);       // GAMEMD 0x4FC790  action
-extern "C" void  __fastcall FUN_004FC820(void* obj);       // GAMEMD 0x4FC820  action
-extern "C" void  __fastcall FUN_004FC8D0(void* obj);       // GAMEMD 0x4FC8D0  action
+extern "C" HouseClass* FUN_00510ED0(int id);   // GAMEMD 0x510ED0: the house of a multiplayer index
+extern "C" HouseClass* FUN_00502D30(int id);   // GAMEMD 0x502D30: the house of a country index
+extern "C" void  FUN_0050D440(void* obj);       // GAMEMD 0x50D440  action
+extern "C" void  FUN_0050D320(void* obj);       // GAMEMD 0x50D320  action
+extern "C" void  FUN_004FC6D0(void* obj);       // GAMEMD 0x4FC6D0  action
+extern "C" void  FUN_004FC790(void* obj);       // GAMEMD 0x4FC790  action
+extern "C" void  FUN_004FC820(void* obj);       // GAMEMD 0x4FC820  action
+extern "C" void  FUN_004FC8D0(void* obj);       // GAMEMD 0x4FC8D0  action
 
 // Only the stored ID is touched; everything ahead of it stays opaque padding.
 struct IdCommandOwner

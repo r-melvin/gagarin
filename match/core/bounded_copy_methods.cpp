@@ -8,9 +8,9 @@
 //
 // A zero-length copy is still a success: retail's early exit sets EAX to 1 the
 // same as the copying path, it just skips the move and the two writebacks.
-int __fastcall FUN_00409D90(void* unused, void* destination,
-                            int* destinationLength,
-                            const void* source, int* sourceLength)
+int FUN_00409D90(void* unused, void* destination,
+                 int* destinationLength,
+                 const void* source, int* sourceLength)
 {
     int count = *destinationLength;
 

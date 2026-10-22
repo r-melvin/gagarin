@@ -20,24 +20,24 @@
 #include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x5C6940 (decl; reloc)
-void __fastcall FUN_005c6940(unsigned long* digits, unsigned long value, int precision);
+void FUN_005c6940(unsigned long* digits, unsigned long value, int precision);
 // FUNCTION: GAMEMD 0x5C8500 (decl; reloc)
-int __fastcall FUN_005c8500(unsigned long* result, const unsigned long* base,
-                            const unsigned long* exponent, const unsigned long* modulus,
-                            int precision);
+int FUN_005c8500(unsigned long* result, const unsigned long* base,
+                 const unsigned long* exponent, const unsigned long* modulus,
+                 int precision);
 
 // FUNCTION: GAMEMD 0x5C6960 (decl; reloc) -- significant bit count.
-int __fastcall FUN_005c6960(const unsigned long* digits, int precision);
+int FUN_005c6960(const unsigned long* digits, int precision);
 // FUNCTION: GAMEMD 0x5C69E0 (decl; reloc) -- signed three-way compare.
-int __fastcall FUN_005c69e0(const unsigned long* left, const unsigned long* right, int precision);
+int FUN_005c69e0(const unsigned long* left, const unsigned long* right, int precision);
 // FUNCTION: GAMEMD 0x5C6B60 (decl; reloc) -- subtract a 16-bit value with borrow.
-char __fastcall FUN_005c6b60(unsigned long* result, const unsigned long* source,
-                             unsigned short value, int borrow, int precision);
+char FUN_005c6b60(unsigned long* result, const unsigned long* source,
+                  unsigned short value, int borrow, int precision);
 // FUNCTION: GAMEMD 0x5C6FE0 (decl; reloc) -- multiply.
-int __fastcall FUN_005c6fe0(unsigned long* result, const unsigned long* left,
-                            const unsigned long* right, int precision);
+int FUN_005c6fe0(unsigned long* result, const unsigned long* left,
+                 const unsigned long* right, int precision);
 // FUNCTION: GAMEMD 0x5C9020 (decl; reloc) -- probable-prime test.
-bool __fastcall FUN_005c9020(const unsigned long* digits, int precision);
+bool FUN_005c9020(const unsigned long* digits, int precision);
 
 // GLOBAL: GAMEMD 0xA8F8F8
 extern int DAT_00a8f8f8;

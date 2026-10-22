@@ -75,89 +75,89 @@ extern int DAT_008A00A8;
 // GLOBAL: GAMEMD 0xAC48A8 -- window handle recorded by 0x60C4A0.
 extern GG_HWND DAT_00AC48A8;
 // FUNCTION: GAMEMD 0x602D70 (__fastcall)
-bool __fastcall FUN_00602D70(int nKey, GG_HWND hCtl);
+bool FUN_00602D70(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x602FE0 (__fastcall)
-int __fastcall FUN_00602FE0(int nKey, GG_HWND hCtl);
+int FUN_00602FE0(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x6033F0 (__fastcall)
-int __fastcall FUN_006033F0(int nKey, GG_HWND hCtl);
+int FUN_006033F0(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x603810 (__fastcall)
-int __fastcall FUN_00603810(int nKey, GG_HWND hCtl);
+int FUN_00603810(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x603D30 (__fastcall)
-void __fastcall FUN_00603D30(int nKey, int nValue);
+void FUN_00603D30(int nKey, int nValue);
 // FUNCTION: GAMEMD 0x603DD0 (__fastcall)
-int __fastcall FUN_00603DD0(GG_HWND hWnd, unsigned char nValue);
+int FUN_00603DD0(GG_HWND hWnd, unsigned char nValue);
 // FUNCTION: GAMEMD 0x603E10 (__fastcall)
-int __fastcall FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh);
+int FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh);
 // FUNCTION: GAMEMD 0x603E40 (__fastcall)
-void __fastcall FUN_00603E40(int nKey, int nValue);
+void FUN_00603E40(int nKey, int nValue);
 // FUNCTION: GAMEMD 0x606740 (__fastcall)
-void __fastcall FUN_00606740(int nKey, bool bValue);
+void FUN_00606740(int nKey, bool bValue);
 // FUNCTION: GAMEMD 0x608380 (__fastcall)
-void __fastcall FUN_00608380(int nKey);
+void FUN_00608380(int nKey);
 // FUNCTION: GAMEMD 0x6083E0 (__fastcall)
-void __fastcall FUN_006083E0(int nKey);
+void FUN_006083E0(int nKey);
 // FUNCTION: GAMEMD 0x608440 (__fastcall)
-void __fastcall FUN_00608440(int nKey);
+void FUN_00608440(int nKey);
 // FUNCTION: GAMEMD 0x6084A0 (__fastcall)
-void __fastcall FUN_006084A0(int nKey);
+void FUN_006084A0(int nKey);
 // FUNCTION: GAMEMD 0x608CD0 (decl; reloc) -- body not yet recovered.
-bool __fastcall FUN_00608CD0(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_00608CD0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x6096A0 (__fastcall)
-bool __fastcall FUN_006096A0(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_006096A0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x609730 (decl; reloc) -- body not yet recovered.
-bool __fastcall FUN_00609730(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_00609730(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x609AA0 (__fastcall)
-bool __fastcall FUN_00609AA0(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_00609AA0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x609B30 (__fastcall)
-bool __fastcall FUN_00609B30(int nKey, GG_HWND hCtl);
+bool FUN_00609B30(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x609BC0 (__fastcall)
-bool __fastcall FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x609CF0 (__fastcall)
-bool __fastcall FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd);
+bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x60A100 (__fastcall)
-bool __fastcall FUN_0060A100(int nKey, GG_HWND hCtl);
+bool FUN_0060A100(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x60A180 (__stdcall)
 int __stdcall FUN_0060A180(GG_HWND hWnd, int unused);
 // FUNCTION: GAMEMD 0x60A250 (decl; reloc) -- enumeration callback, body not yet recovered.
 int __stdcall FUN_0060A250(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60A300 (__fastcall)
-bool __fastcall FUN_0060A300(GG_HWND hWnd);
+bool FUN_0060A300(GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x60AA60 (__stdcall)
 int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused);
 // FUNCTION: GAMEMD 0x60B740 (__fastcall)
-void __fastcall FUN_0060B740(GG_HWND hWnd);
+void FUN_0060B740(GG_HWND hWnd);
 // FUNCTION: GAMEMD 0x60B880 (__fastcall)
-bool __fastcall FUN_0060B880(int nKey, GG_HWND hCtl);
+bool FUN_0060B880(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x60C0C0 (decl; reloc) -- enumeration callback, body not yet recovered.
 int __stdcall FUN_0060C0C0(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60C4A0 (__fastcall)
-void __fastcall FUN_0060C4A0(GG_HWND hWnd, long lParam);
+void FUN_0060C4A0(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60C4E0 (__fastcall)
-int __fastcall FUN_0060C4E0(int nKey);
+int FUN_0060C4E0(int nKey);
 // FUNCTION: GAMEMD 0x60C8D0 (__fastcall)
-bool __fastcall FUN_0060C8D0(int nKey);
+bool FUN_0060C8D0(int nKey);
 // FUNCTION: GAMEMD 0x60C9D0 (__fastcall)
-void __fastcall FUN_0060C9D0(int nKey);
+void FUN_0060C9D0(int nKey);
 // FUNCTION: GAMEMD 0x60CA30 (__fastcall)
-void __fastcall FUN_0060CA30(int nKey);
+void FUN_0060CA30(int nKey);
 // FUNCTION: GAMEMD 0x60CA90 (__fastcall)
-bool __fastcall FUN_0060CA90(int nKey);
+bool FUN_0060CA90(int nKey);
 // FUNCTION: GAMEMD 0x60CBA0 (__fastcall)
-void __fastcall FUN_0060CBA0(int nKey);
+void FUN_0060CBA0(int nKey);
 // FUNCTION: GAMEMD 0x60CC00 (__fastcall)
-void __fastcall FUN_0060CC00(int nKey);
+void FUN_0060CC00(int nKey);
 // FUNCTION: GAMEMD 0x60CC60 (__fastcall)
-bool __fastcall FUN_0060CC60(int nKey);
+bool FUN_0060CC60(int nKey);
 // FUNCTION: GAMEMD 0x60CD50 (__fastcall)
-bool __fastcall FUN_0060CD50(int nKey);
+bool FUN_0060CD50(int nKey);
 // FUNCTION: GAMEMD 0x60CE40 (__fastcall)
-int __fastcall FUN_0060CE40(int nKey);
+int FUN_0060CE40(int nKey);
 // FUNCTION: GAMEMD 0x60CEA0 (__fastcall)
-int __fastcall FUN_0060CEA0(int nKey);
+int FUN_0060CEA0(int nKey);
 // FUNCTION: GAMEMD 0x60D2C0 (__fastcall)
-void __fastcall FUN_0060D2C0(int nKey, int nValue);
+void FUN_0060D2C0(int nKey, int nValue);
 // FUNCTION: GAMEMD 0x60D320 (__fastcall)
-int __fastcall FUN_0060D320(int nKey);
+int FUN_0060D320(int nKey);
 struct Obj_006107E0
 {
     int     unknown_00;        // +0x0000
@@ -177,7 +177,7 @@ GG_STATIC_ASSERT(offsetof(Obj_006107E0, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(Obj_006107E0, unknown_114) == 0x114);
 GG_STATIC_ASSERT(offsetof(Obj_006107E0, unknown_11C) == 0x11C);
 // FUNCTION: GAMEMD 0x623310 (__fastcall)
-void __fastcall FUN_00623310(GG_HWND hDlg, long lParam);
+void FUN_00623310(GG_HWND hDlg, long lParam);
 struct TextNode_00623420
 {
     TextNode_00623420* Next;      // +0x00
@@ -208,19 +208,19 @@ struct Obj_00623420
 GG_STATIC_ASSERT(offsetof(Obj_00623420, Text) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00623420, TextList) == 0x34);
 // FUNCTION: GAMEMD 0x623E00 (__fastcall)
-int __fastcall FUN_00623E00(GG_HWND hList);
+int FUN_00623E00(GG_HWND hList);
 // FUNCTION: GAMEMD 0x623E40 (__fastcall)
-int __fastcall FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut);
+int FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut);
 // FUNCTION: GAMEMD 0x623EA0 (__fastcall)
-int __fastcall FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut);
+int FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x623F00 (__fastcall)
-int __fastcall FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
+int FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
 // FUNCTION: GAMEMD 0x623F60 (__fastcall)
-int __fastcall FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
+int FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x623FC0 (__fastcall)
-int __fastcall FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
+int FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
 // FUNCTION: GAMEMD 0x624020 (__fastcall)
-int __fastcall FUN_00624020(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
+int FUN_00624020(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x6240A0 (__stdcall)
 void __stdcall FUN_006240A0(int nKey, int unused);
 struct Entry_006244E0
@@ -270,9 +270,9 @@ struct Obj_00626250
 };
 GG_STATIC_ASSERT(offsetof(Obj_00626250, unknown_100) == 0x100);
 // FUNCTION: GAMEMD 0x626660 (__fastcall)
-int __fastcall FUN_00626660(const char* pszName);
+int FUN_00626660(const char* pszName);
 // FUNCTION: GAMEMD 0x626FF0 (__fastcall)
-void __fastcall FUN_00626FF0();
+void FUN_00626FF0();
 
 // FUNCTION: GAMEMD 0x606800 (decl; reloc) -- the child-window enumeration callback.
 int __stdcall FUN_00606800(GG_HWND hWnd, long lParam);

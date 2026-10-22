@@ -22,7 +22,7 @@ struct Holder_00417F80
 };
 
 // FUNCTION: GAMEMD 0x50B6F0 — the owner test, __fastcall, byte result.
-bool __fastcall FUN_0050B6F0(void* owner);
+bool FUN_0050B6F0(void* owner);
 
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AircraftClass's own vtable is 0x7E22A4.

@@ -68,9 +68,9 @@ void FloatSel_##TAG::Select(bool flag)                                    \
 
 // NULLGATE: the three relayed helpers, each a __fastcall taking the guarded
 // pointer in ECX. Addresses read off the CALL displacements.
-void __fastcall FUN_0050DA10(void* self);   // FUNCTION: GAMEMD 0x50DA10
-void __fastcall FUN_0050DA50(void* self);   // FUNCTION: GAMEMD 0x50DA50
-void __fastcall FUN_0050DFF0(void* self);   // FUNCTION: GAMEMD 0x50DFF0
+void FUN_0050DA10(void* self);   // FUNCTION: GAMEMD 0x50DA10
+void FUN_0050DA50(void* self);   // FUNCTION: GAMEMD 0x50DA50
+void FUN_0050DFF0(void* self);   // FUNCTION: GAMEMD 0x50DFF0
 
 bool __stdcall FUN_006E4440(void* p, int b, int c, int d);   // FUNCTION: GAMEMD 0x6E4440
 bool __stdcall FUN_006E44C0(void* p, int b, int c, int d);   // FUNCTION: GAMEMD 0x6E44C0

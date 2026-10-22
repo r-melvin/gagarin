@@ -33,7 +33,7 @@ int Obj_004023F0::FUN_004023F0()
 // hoists the owner re-read in between, where retail loads +0xB0 only after the
 // flag store lands; the volatile writes that forced that order were removed as
 // match steering.
-void __fastcall FUN_00405580(Obj_00405580* self)
+void FUN_00405580(Obj_00405580* self)
 {
     // Retail tests the flag byte in place (`TEST byte ptr [ESI+0x18],0x20`)
     // rather than loading the word first, which is what the byte-width read
@@ -61,7 +61,7 @@ void __fastcall FUN_00405580(Obj_00405580* self)
 //
 // Both resets act on the same sub-object, so its address is taken once; the
 // second is a tail call, which is what the free-function form gives.
-void __fastcall FUN_00406550(Obj_00406550* self)
+void FUN_00406550(Obj_00406550* self)
 {
     void* sub = self->Sub;
 

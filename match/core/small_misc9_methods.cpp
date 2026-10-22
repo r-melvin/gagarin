@@ -10,7 +10,7 @@
 // The stored ratio is a 16.16 fixed-point reciprocal: the value is shifted up
 // sixteen bits before an *unsigned* divide, so a divisor of zero faults rather
 // than trapping to a signed-overflow path.
-void __fastcall Obj_00407100b::FUN_004071A0(unsigned int v, unsigned int divisor, int extra)
+void Obj_00407100b::FUN_004071A0(unsigned int v, unsigned int divisor, int extra)
 {
     unknown_10 = divisor;
     unknown_0C = (v << 16) / divisor;
@@ -51,7 +51,7 @@ char* Obj_0042EB20::FUN_0042EB20(int key)
 }
 
 // FUNCTION: GAMEMD 0x45DD20
-void* __fastcall FUN_0045DD20(int key)
+void* FUN_0045DD20(int key)
 {
     for (int i = 0; i < 6; i++) {
         if (DAT_00819288[i].Key == key) {

@@ -21,8 +21,8 @@
 extern "C" void* __cdecl memcpy(void* destination, const void* source, unsigned int count);
 
 // FUNCTION: GAMEMD 0x409D90
-int __fastcall FUN_00409D90(void* unused, void* destination,
-                            int* destinationLength,
-                            const void* source, int* sourceLength);
+int FUN_00409D90(void* unused, void* destination,
+                 int* destinationLength,
+                 const void* source, int* sourceLength);
 
 #endif  // GG_MATCH_CORE_BOUNDED_COPY_METHODS_H

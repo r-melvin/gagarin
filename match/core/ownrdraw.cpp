@@ -275,7 +275,7 @@ extern "C" void __cdecl gg_free(void*);
 
 
 // FUNCTION: GAMEMD 0x007B46F0 (decl; reloc) -- string object destructor (this in ECX).
-extern void __fastcall FUN_007B46F0(void* self);
+extern void FUN_007B46F0(void* self);
 
 struct CountedBlock {
     int count;          // +0x00
@@ -693,7 +693,7 @@ bool CacheKey_00600670::operator==(const CacheKey_00600670& other) const
 // (with `bPrevious`) backwards, and report whether the focus actually moved.
 // When the control is the only tab stop in its parent, GetNextDlgTabItem hands
 // back the same window and the focus is left alone.
-bool __fastcall FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious)
+bool FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious)
 {
     // GetParent must be its own statement: nested inside the argument list it
     // costs the whole register assignment (4.8%), because cl then widens the
@@ -740,7 +740,7 @@ bool __fastcall FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious)
 // arms of the guard it belongs to answer the same constant (0xF) and cl
 // folded the test away; the call itself survives because FUN_00601360 is
 // out of line and its side effects are not visible here.
-int __fastcall FUN_00600CA0(int nKey, GG_HWND hCtl)
+int FUN_00600CA0(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
@@ -844,7 +844,7 @@ int __fastcall FUN_00600CA0(int nKey, GG_HWND hCtl)
 // answers a one-byte bool (`MOV AL,1` / `XOR AL,AL`) where its 0x602AE0 sibling
 // answers a full dword, and its accepted set is a strict superset of that one's
 // except for 0x109 and 0x113, which only this test accepts.
-bool __fastcall FUN_00601360(int nID)
+bool FUN_00601360(int nID)
 {
     if (
         nID == 0x10C || nID == 0x94 || nID == 0xB6 || nID == 0xA3 ||
@@ -874,7 +874,7 @@ bool __fastcall FUN_00601360(int nID)
 // group and 3 for the two special controls. Here the trailing probe's
 // result is live, because its arm answers 3 while the fallthrough answers
 // 1, which is what keeps the TEST AL,AL and the 0x695 compare in the body.
-int __fastcall FUN_006015E0(int nKey, GG_HWND hCtl)
+int FUN_006015E0(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
@@ -974,7 +974,7 @@ int __fastcall FUN_006015E0(int nKey, GG_HWND hCtl)
 // the only one whose third clause splits its control IDs three ways. The
 // shared return blocks retail cross-jumps to are the compiler's own doing,
 // not a source-level goto.
-int __fastcall FUN_00601D20(int nKey, GG_HWND hCtl)
+int FUN_00601D20(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
@@ -1091,7 +1091,7 @@ int __fastcall FUN_00601D20(int nKey, GG_HWND hCtl)
 // first clause widens the category set with the out-of-line membership test
 // at 0x602AE0, and its tail adds one more guard, a flag read off the
 // session object at 0xA8B238 + 0x30D8 through the accessor at 0x69BBE0.
-bool __fastcall FUN_00602490(int nKey, GG_HWND hCtl)
+bool FUN_00602490(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
@@ -1176,7 +1176,7 @@ bool __fastcall FUN_00602490(int nKey, GG_HWND hCtl)
 // written in retail's own comparison order because that order is the source
 // order: cl lays a disjunction of equality tests out verbatim, so any
 // re-sorting (or a switch, which would bring a jump table) loses the match.
-int __fastcall FUN_00602AE0(int nID)
+int FUN_00602AE0(int nID)
 {
     if (nID == 0x125 || nID == 0xE7 || nID == 0x116 || nID == 0xC2 ||
         nID == 0xC9 || nID == 0x11D || nID == 0x11C || nID == 0x114 ||
@@ -1191,7 +1191,7 @@ int __fastcall FUN_00602AE0(int nID)
 }
 
 // FUNCTION: GAMEMD 0x602D70  FUN_00602D70
-bool __fastcall FUN_00602D70(int nKey, GG_HWND hCtl)
+bool FUN_00602D70(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1201,7 +1201,7 @@ bool __fastcall FUN_00602D70(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x602FE0  FUN_00602FE0
-int __fastcall FUN_00602FE0(int nKey, GG_HWND hCtl)
+int FUN_00602FE0(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1211,7 +1211,7 @@ int __fastcall FUN_00602FE0(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x6033F0  FUN_006033F0
-int __fastcall FUN_006033F0(int nKey, GG_HWND hCtl)
+int FUN_006033F0(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1241,7 +1241,7 @@ int __fastcall FUN_006033F0(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x603810  FUN_00603810
-int __fastcall FUN_00603810(int nKey, GG_HWND hCtl)
+int FUN_00603810(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1251,7 +1251,7 @@ int __fastcall FUN_00603810(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x603D30  FUN_00603D30 (__fastcall)
-void __fastcall FUN_00603D30(int nKey, int nValue)
+void FUN_00603D30(int nKey, int nValue)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1264,25 +1264,25 @@ void __fastcall FUN_00603D30(int nKey, int nValue)
 
 // FUNCTION: GAMEMD 0x603DB0
 // Calls other functions.
-void __fastcall FUN_00603DB0(GG_HWND hWnd, int a2)
+void FUN_00603DB0(GG_HWND hWnd, int a2)
 {
     SendMessageA(hWnd, 0x4E5, 0, a2 & 0xFF);
 }
 
 // FUNCTION: GAMEMD 0x603DD0  FUN_00603DD0
-int __fastcall FUN_00603DD0(GG_HWND hWnd, unsigned char nValue)
+int FUN_00603DD0(GG_HWND hWnd, unsigned char nValue)
 {
     return SendMessageA(hWnd, 0x4E6, 0, nValue);
 }
 
 // FUNCTION: GAMEMD 0x603E10  FUN_00603E10
-int __fastcall FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh)
+int FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh)
 {
     return SendMessageA(hWnd, 0x4E8, 0, ((unsigned long)nHigh << 16) | nLow);
 }
 
 // FUNCTION: GAMEMD 0x603E40  FUN_00603E40 (__fastcall)
-void __fastcall FUN_00603E40(int nKey, int nValue)
+void FUN_00603E40(int nKey, int nValue)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1290,7 +1290,7 @@ void __fastcall FUN_00603E40(int nKey, int nValue)
 }
 
 // FUNCTION: GAMEMD 0x606740  FUN_00606740 (__fastcall)
-void __fastcall FUN_00606740(int nKey, bool bValue)
+void FUN_00606740(int nKey, bool bValue)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1299,13 +1299,13 @@ void __fastcall FUN_00606740(int nKey, bool bValue)
 
 // FUNCTION: GAMEMD 0x6071D0
 // Calls other functions.
-void __fastcall FUN_006071D0(GG_HWND hWnd)
+void FUN_006071D0(GG_HWND hWnd)
 {
     EnumChildWindows(hWnd, FUN_00606800, 0);
 }
 
 // FUNCTION: GAMEMD 0x608380  FUN_00608380 (__fastcall)
-void __fastcall FUN_00608380(int nKey)
+void FUN_00608380(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1313,7 +1313,7 @@ void __fastcall FUN_00608380(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x6083E0  FUN_006083E0 (__fastcall)
-void __fastcall FUN_006083E0(int nKey)
+void FUN_006083E0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1321,7 +1321,7 @@ void __fastcall FUN_006083E0(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x608440  FUN_00608440 (__fastcall)
-void __fastcall FUN_00608440(int nKey)
+void FUN_00608440(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1329,7 +1329,7 @@ void __fastcall FUN_00608440(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x6084A0  FUN_006084A0 (__fastcall)
-void __fastcall FUN_006084A0(int nKey)
+void FUN_006084A0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1337,7 +1337,7 @@ void __fastcall FUN_006084A0(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x6096A0  FUN_006096A0
-bool __fastcall FUN_006096A0(GG_HWND hParent, GG_HWND hWnd)
+bool FUN_006096A0(GG_HWND hParent, GG_HWND hWnd)
 {
     if ((GetWindowLongA(hWnd, -16) & 0xB) == 0xB)
     {
@@ -1351,7 +1351,7 @@ bool __fastcall FUN_006096A0(GG_HWND hParent, GG_HWND hWnd)
 }
 
 // FUNCTION: GAMEMD 0x609AA0  FUN_00609AA0
-bool __fastcall FUN_00609AA0(GG_HWND hParent, GG_HWND hWnd)
+bool FUN_00609AA0(GG_HWND hParent, GG_HWND hWnd)
 {
     if ((GetWindowLongA(hWnd, -16) & 0xB) == 0xB)
     {
@@ -1365,7 +1365,7 @@ bool __fastcall FUN_00609AA0(GG_HWND hParent, GG_HWND hWnd)
 }
 
 // FUNCTION: GAMEMD 0x609B30  FUN_00609B30
-bool __fastcall FUN_00609B30(int nKey, GG_HWND hCtl)
+bool FUN_00609B30(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1378,7 +1378,7 @@ bool __fastcall FUN_00609B30(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x609BC0  FUN_00609BC0
-bool __fastcall FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd)
+bool FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd)
 {
     if (DAT_00A8B238_Session.FUN_0069BBE0())
         return false;
@@ -1403,7 +1403,7 @@ bool __fastcall FUN_00609BC0(GG_HWND hParent, GG_HWND hWnd)
 }
 
 // FUNCTION: GAMEMD 0x609CF0  FUN_00609CF0
-bool __fastcall FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
+bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
 {
     if (!DAT_00A8B238_Session.FUN_0069BBE0())
         return false;
@@ -1428,7 +1428,7 @@ bool __fastcall FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd)
 }
 
 // FUNCTION: GAMEMD 0x60A100  FUN_0060A100
-bool __fastcall FUN_0060A100(int nKey, GG_HWND hCtl)
+bool FUN_0060A100(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1463,7 +1463,7 @@ int __stdcall FUN_0060A180(GG_HWND hWnd, int unused)
 }
 
 // FUNCTION: GAMEMD 0x60A300  FUN_0060A300 (__fastcall)
-bool __fastcall FUN_0060A300(GG_HWND hWnd)
+bool FUN_0060A300(GG_HWND hWnd)
 {
     DAT_00AC4894 = 0;
     EnumChildWindows(hWnd, FUN_0060A250, 0);
@@ -1481,7 +1481,7 @@ int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused)
 }
 
 // FUNCTION: GAMEMD 0x60B740  FUN_0060B740
-void __fastcall FUN_0060B740(GG_HWND hWnd)
+void FUN_0060B740(GG_HWND hWnd)
 {
     GG_RECT rcSelf;
     GG_RECT rcParent;
@@ -1495,7 +1495,7 @@ void __fastcall FUN_0060B740(GG_HWND hWnd)
 }
 
 // FUNCTION: GAMEMD 0x60B880  FUN_0060B880
-bool __fastcall FUN_0060B880(int nKey, GG_HWND hCtl)
+bool FUN_0060B880(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
@@ -1513,7 +1513,7 @@ bool __fastcall FUN_0060B880(int nKey, GG_HWND hCtl)
 }
 
 // FUNCTION: GAMEMD 0x60C4A0  FUN_0060C4A0
-void __fastcall FUN_0060C4A0(GG_HWND hWnd, long lParam)
+void FUN_0060C4A0(GG_HWND hWnd, long lParam)
 {
     MoveWindow(hWnd, 0, 0, DAT_008A00A4, DAT_008A00A8, 0);
     DAT_00AC48A8 = hWnd;
@@ -1521,21 +1521,21 @@ void __fastcall FUN_0060C4A0(GG_HWND hWnd, long lParam)
 }
 
 // FUNCTION: GAMEMD 0x60C4E0  FUN_0060C4E0 (__fastcall)
-int __fastcall FUN_0060C4E0(int nKey)
+int FUN_0060C4E0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->Field74 : 0;
 }
 
 // FUNCTION: GAMEMD 0x60C8D0  FUN_0060C8D0 (__fastcall)
-bool __fastcall FUN_0060C8D0(int nKey)
+bool FUN_0060C8D0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD6 : false;
 }
 
 // FUNCTION: GAMEMD 0x60C9D0  FUN_0060C9D0 (__fastcall)
-void __fastcall FUN_0060C9D0(int nKey)
+void FUN_0060C9D0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1543,7 +1543,7 @@ void __fastcall FUN_0060C9D0(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x60CA30  FUN_0060CA30 (__fastcall)
-void __fastcall FUN_0060CA30(int nKey)
+void FUN_0060CA30(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1551,14 +1551,14 @@ void __fastcall FUN_0060CA30(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x60CA90  FUN_0060CA90 (__fastcall)
-bool __fastcall FUN_0060CA90(int nKey)
+bool FUN_0060CA90(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD5 : false;
 }
 
 // FUNCTION: GAMEMD 0x60CBA0  FUN_0060CBA0 (__fastcall)
-void __fastcall FUN_0060CBA0(int nKey)
+void FUN_0060CBA0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1566,7 +1566,7 @@ void __fastcall FUN_0060CBA0(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x60CC00  FUN_0060CC00 (__fastcall)
-void __fastcall FUN_0060CC00(int nKey)
+void FUN_0060CC00(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1574,35 +1574,35 @@ void __fastcall FUN_0060CC00(int nKey)
 }
 
 // FUNCTION: GAMEMD 0x60CC60  FUN_0060CC60 (__fastcall)
-bool __fastcall FUN_0060CC60(int nKey)
+bool FUN_0060CC60(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD7 : false;
 }
 
 // FUNCTION: GAMEMD 0x60CD50  FUN_0060CD50 (__fastcall)
-bool __fastcall FUN_0060CD50(int nKey)
+bool FUN_0060CD50(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD8 : false;
 }
 
 // FUNCTION: GAMEMD 0x60CE40  FUN_0060CE40 (__fastcall)
-int __fastcall FUN_0060CE40(int nKey)
+int FUN_0060CE40(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldE0 : 0;
 }
 
 // FUNCTION: GAMEMD 0x60CEA0  FUN_0060CEA0 (__fastcall)
-int __fastcall FUN_0060CEA0(int nKey)
+int FUN_0060CEA0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldE4 : 0;
 }
 
 // FUNCTION: GAMEMD 0x60D2C0  FUN_0060D2C0 (__fastcall)
-void __fastcall FUN_0060D2C0(int nKey, int nValue)
+void FUN_0060D2C0(int nKey, int nValue)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     if (value)
@@ -1610,19 +1610,19 @@ void __fastcall FUN_0060D2C0(int nKey, int nValue)
 }
 
 // FUNCTION: GAMEMD 0x60D320  FUN_0060D320 (__fastcall)
-int __fastcall FUN_0060D320(int nKey)
+int FUN_0060D320(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->Field6C : 0;
 }
 
 // FUNCTION: GAMEMD 0x0060D430
-void __fastcall FUN_0060D430()
+void FUN_0060D430()
 {
 }
 
 // FUNCTION: GAMEMD 0x0060D440
-void __fastcall FUN_0060D440()
+void FUN_0060D440()
 {
 }
 
@@ -1649,7 +1649,7 @@ void FUN_00612910()
 }
 
 // FUNCTION: GAMEMD 0x621D30
-void __fastcall FUN_00621d30(Rect_00621D30* rect, void* dest)
+void FUN_00621d30(Rect_00621D30* rect, void* dest)
 {
     Palette_00621D30 palette;
     void* image = DAT_00ac4848.GetSurface("bits_i.pcx", &palette);
@@ -1681,7 +1681,7 @@ void __fastcall FUN_00621d30(Rect_00621D30* rect, void* dest)
 }
 
 // FUNCTION: GAMEMD 0x622800  UI::FocusOnWindow (__fastcall)
-void __fastcall UI_FocusOnWindow(HWND hWnd)
+void UI_FocusOnWindow(HWND hWnd)
 {
     ShowWindow(hWnd, 1);            // SW_SHOWNORMAL
     SetForegroundWindow(hWnd);
@@ -1710,7 +1710,7 @@ bool UI::Updated()
 }
 
 // FUNCTION: GAMEMD 0x623310  FUN_00623310
-void __fastcall FUN_00623310(GG_HWND hDlg, long lParam)
+void FUN_00623310(GG_HWND hDlg, long lParam)
 {
     GG_HWND hItem = GetDlgItem(hDlg, 0x5B0);
     SendMessageA(hItem, 0x4B2, 0, lParam);
@@ -1794,7 +1794,7 @@ void Obj_00623420::FUN_006235B0(const char* pszText)
 }
 
 // FUNCTION: GAMEMD 0x623E00  FUN_00623E00
-int __fastcall FUN_00623E00(GG_HWND hList)
+int FUN_00623E00(GG_HWND hList)
 {
     int n = SendMessageA(hList, 0x18B, 0, 0);
 
@@ -1805,7 +1805,7 @@ int __fastcall FUN_00623E00(GG_HWND hList)
 }
 
 // FUNCTION: GAMEMD 0x623E40  FUN_00623E40
-int __fastcall FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut)
+int FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut)
 {
     int nLength = SendMessageA(hWnd, 0xE, 0, 0);
 
@@ -1824,7 +1824,7 @@ int __fastcall FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623EA0  FUN_00623EA0
-int __fastcall FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut)
+int FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut)
 {
     int nLength = SendMessageA(hWnd, 0xE, 0, 0);
 
@@ -1843,7 +1843,7 @@ int __fastcall FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623F00  FUN_00623F00
-int __fastcall FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
+int FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x18A, nIndex, 0);
 
@@ -1859,7 +1859,7 @@ int __fastcall FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623F60  FUN_00623F60
-int __fastcall FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
+int FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x18A, nIndex, 0);
 
@@ -1875,7 +1875,7 @@ int __fastcall FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623FC0  FUN_00623FC0
-int __fastcall FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
+int FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x149, nIndex, 0);
 
@@ -1891,7 +1891,7 @@ int __fastcall FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
 }
 
 // FUNCTION: GAMEMD 0x624020  FUN_00624020
-int __fastcall FUN_00624020(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
+int FUN_00624020(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x149, nIndex, 0);
 
@@ -1934,7 +1934,7 @@ void __stdcall FUN_006240A0(int nKey, int unused)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x624130
 // VTABLE: GAMEMD 0x7EF720
-void __fastcall FUN_00624130(ConstStoreObject* self)
+void FUN_00624130(ConstStoreObject* self)
 {
     self->Head = VTABLE_007EF720;
 }
@@ -1949,7 +1949,7 @@ unsigned char Obj_006241C0::FUN_006241C0() const
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6241D0
-int __fastcall FUN_006241D0(LeafObj_0x04* self)
+int FUN_006241D0(LeafObj_0x04* self)
 {
     return self->unknown_04;
 }
@@ -2183,7 +2183,7 @@ void Obj_00626250::FUN_006262F0(DynamicVectorClass<Obj_0068C8D0*>* pUnknown)
 }
 
 // FUNCTION: GAMEMD 0x626660  FUN_00626660
-int __fastcall FUN_00626660(const char* pszName)
+int FUN_00626660(const char* pszName)
 {
     int hash = 0;
 
@@ -2210,7 +2210,7 @@ int ColorScheme_00626C60::GetNumberOfSchemes()
 }
 
 // FUNCTION: GAMEMD 0x626FF0  FUN_00626FF0
-void __fastcall FUN_00626FF0()
+void FUN_00626FF0()
 {
     if (DAT_00AC48F0 != 0)
     {

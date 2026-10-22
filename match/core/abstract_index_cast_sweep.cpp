@@ -58,7 +58,7 @@ struct Map_0087F7E8
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x40DD70 (decl; reloc) -- __fastcall, object in ECX.
-void* __fastcall FUN_0040DD70(void* object);
+void* FUN_0040DD70(void* object);
 
 // FUNCTION: GAMEMD 0x6E6AB0
 AbstractIdOwner::AbstractIdOwner(AbstractClass* object)

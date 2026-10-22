@@ -31,7 +31,7 @@ static inline unsigned Clamp_004061D0(unsigned level)
 // sits inside the branch, and 0x4071C0 is declared __fastcall — as a
 // __thiscall member VC6 emits `CALL; POP ESI; RET` instead of retail's
 // `POP ESI; JMP`.
-int __fastcall FUN_004061D0(Obj_004061D0* self, unsigned level)
+int FUN_004061D0(Obj_004061D0* self, unsigned level)
 {
     if (self->Mode == 3) {
         return FUN_00407170(&self->Sink,

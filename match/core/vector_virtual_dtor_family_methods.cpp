@@ -7,7 +7,7 @@
 //
 // Release the element block through the element type's own vector-deleting
 // destructor, then clear the bookkeeping.
-void __fastcall FUN_0000765960(VirtVector_00765960* self)
+void FUN_0000765960(VirtVector_00765960* self)
 {
     if (self->Items != 0 && self->IsAllocated != 0) {
         delete [] self->Items;
@@ -21,7 +21,7 @@ void __fastcall FUN_0000765960(VirtVector_00765960* self)
 //
 // Release the element block through the element type's own vector-deleting
 // destructor, then clear the bookkeeping.
-void __fastcall FUN_0000766D30(VirtVector_00765960* self)
+void FUN_0000766D30(VirtVector_00765960* self)
 {
     if (self->Items != 0 && self->IsAllocated != 0) {
         delete [] self->Items;
@@ -35,7 +35,7 @@ void __fastcall FUN_0000766D30(VirtVector_00765960* self)
 //
 // Release the element block through the element type's own vector-deleting
 // destructor, then clear the bookkeeping.
-void __fastcall FUN_0000769F50(VirtVector_00765960* self)
+void FUN_0000769F50(VirtVector_00765960* self)
 {
     if (self->Items != 0 && self->IsAllocated != 0) {
         delete [] self->Items;
@@ -49,7 +49,7 @@ void __fastcall FUN_0000769F50(VirtVector_00765960* self)
 //
 // Release the element block through the element type's own vector-deleting
 // destructor, then clear the bookkeeping.
-void __fastcall FUN_000076B9E0(VirtVector_00765960* self)
+void FUN_000076B9E0(VirtVector_00765960* self)
 {
     if (self->Items != 0 && self->IsAllocated != 0) {
         delete [] self->Items;

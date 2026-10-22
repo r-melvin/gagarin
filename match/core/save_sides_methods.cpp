@@ -12,7 +12,7 @@
 // failing HRESULT ends the walk and is returned as-is; the count is re-read
 // from its stack slot every iteration because its address escaped into the
 // Write call.
-long __fastcall Save_Sides(Stream_006805F0* stream, SideVector_006805F0* sides)
+long Save_Sides(Stream_006805F0* stream, SideVector_006805F0* sides)
 {
     int count = sides->Count;
     long hr = STREAM_WRITE(stream, &count, 4);

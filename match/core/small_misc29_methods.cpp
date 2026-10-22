@@ -8,7 +8,7 @@
 // The clamp is two separate tests rather than a min/max pair, and each arm
 // falls into its own copy of the table load - retail duplicates the tail
 // instead of merging the paths.
-int __fastcall FUN_0040A900(int value)
+int FUN_0040A900(int value)
 {
     int percent = value * 100 / 256;
 

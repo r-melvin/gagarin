@@ -23,7 +23,7 @@ extern "C" void  __cdecl FUN_007C8B3D(void* block);
 extern "C" void* __cdecl memset(void* destination, int value, unsigned int count);
 
 // FUNCTION: GAMEMD 0x4072D0 — initialises the descriptor's link block.
-void __fastcall FUN_004072D0(void* descriptor);
+void FUN_004072D0(void* descriptor);
 
 struct Aligned_00408D80
 {
@@ -39,6 +39,6 @@ GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Raw) == 0x10);
 GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Size) == 0x1C);
 
 // FUNCTION: GAMEMD 0x408D80
-Aligned_00408D80* __fastcall FUN_00408D80(int size, int shift);
+Aligned_00408D80* FUN_00408D80(int size, int shift);
 
 #endif  // GG_MATCH_CORE_ALIGNED_ALLOC_METHODS_H

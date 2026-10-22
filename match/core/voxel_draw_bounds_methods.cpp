@@ -44,7 +44,7 @@ extern BoundsFloat3 DAT_00b2d948;
 extern VoxelDrawEntry DAT_00b2d958[];
 
 // FUNCTION: GAMEMD 0x7540f0
-void __fastcall FUN_007540f0(VoxelSectionSource *source, int section, int frame, Matrix3DRows *matrix)
+void FUN_007540f0(VoxelSectionSource *source, int section, int frame, Matrix3DRows *matrix)
 {
 	VoxelSectionBounds *bounds = source->FUN_007564b0(section, frame);
 	VoxelDrawEntry &entry = DAT_00b2d958[DAT_00b2d820];

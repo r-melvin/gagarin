@@ -13,7 +13,7 @@
 // Written out longhand rather than shared, per the family rule. Flags is
 // declared volatile (shared with the mixer thread; see the header), which
 // gives retail's separate load/modify/store around the dispatches.
-void __fastcall Obj_004025B0::FUN_00402440(int value)
+void Obj_004025B0::FUN_00402440(int value)
 {
     this->Recorded = value;
 

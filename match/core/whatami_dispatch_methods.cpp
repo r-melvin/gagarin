@@ -5,7 +5,7 @@
 #include "whatami_dispatch_methods.h"
 
 // FUNCTION: GAMEMD 0x40DD20
-WhatAmIHolder* __fastcall FUN_0040DD20(WhatAmIHolder* self)
+WhatAmIHolder* FUN_0040DD20(WhatAmIHolder* self)
 {
     if (!self) {
         return 0;
@@ -36,7 +36,7 @@ WhatAmIHolder* __fastcall FUN_0040DD20(WhatAmIHolder* self)
 }
 
 // FUNCTION: GAMEMD 0x40DD70
-WhatAmIHolder* __fastcall FUN_0040DD70(WhatAmIHolder* self)
+WhatAmIHolder* FUN_0040DD70(WhatAmIHolder* self)
 {
     if (!self) {
         return 0;

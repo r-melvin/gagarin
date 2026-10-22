@@ -13,7 +13,7 @@
 // through the index. That is VC6's own strength reduction of a plain indexed
 // `for`, per the induction-loop rule: writing the pointer walk by hand costs an
 // LEA and loses the indexed load.
-int __fastcall FUN_0040DCE0(const char* name)
+int FUN_0040DCE0(const char* name)
 {
     for (int i = 0; i < 74; i++) {
         if (FUN_007C8D20(DAT_00816EE0[i].Name, name) == 0) {
@@ -27,7 +27,7 @@ int __fastcall FUN_0040DCE0(const char* name)
 // FUNCTION: GAMEMD 0x45DD50
 //
 // The same scan over the smaller table. Written out rather than shared.
-int __fastcall FUN_0045DD50(const char* name)
+int FUN_0045DD50(const char* name)
 {
     for (int i = 0; i < 6; i++) {
         if (FUN_007C8D20(DAT_00819288[i].Name, name) == 0) {

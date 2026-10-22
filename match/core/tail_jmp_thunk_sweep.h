@@ -18,16 +18,16 @@
 #ifndef GG_MATCH_CORE_TAIL_JMP_THUNK_SWEEP_H
 #define GG_MATCH_CORE_TAIL_JMP_THUNK_SWEEP_H
 
-void __fastcall FUN_005B2EF0(void* self);   // GAMEMD 0x5B2EF0
-void __fastcall FUN_005BBEE0(void* self);   // GAMEMD 0x5BBEE0
-void __fastcall FUN_005F6B90(void* self);   // GAMEMD 0x5F6B90
-void __fastcall FUN_006370B0(void* self);   // GAMEMD 0x6370B0
-void __fastcall FUN_006385C0(void* self);   // GAMEMD 0x6385C0
+void FUN_005B2EF0(void* self);   // GAMEMD 0x5B2EF0
+void FUN_005BBEE0(void* self);   // GAMEMD 0x5BBEE0
+void FUN_005F6B90(void* self);   // GAMEMD 0x5F6B90
+void FUN_006370B0(void* self);   // GAMEMD 0x6370B0
+void FUN_006385C0(void* self);   // GAMEMD 0x6385C0
 // GAMEMD 0x652CF0: its own trace string reads "RadarClass::One_Time()".
-void __fastcall RadarClass_OneTime(void* self);
-void __fastcall FUN_006A5000(void* self);   // GAMEMD 0x6A5000
-void __fastcall FUN_007529E0(void* self);   // GAMEMD 0x7529E0
-void __fastcall FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
+void RadarClass_OneTime(void* self);
+void FUN_006A5000(void* self);   // GAMEMD 0x6A5000
+void FUN_007529E0(void* self);   // GAMEMD 0x7529E0
+void FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 
 // PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep).
 // 0x4DA2B0 is slot 143 (byte-off 0x23C) of FootClass's own vtable 0x7E8C94 --
@@ -38,14 +38,14 @@ void __fastcall FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 // MissionClass and FootClass merely re-enters it through this thunk. Naming
 // this thunk `FootClass::...` would put a MissionClass method on FootClass, so
 // it keeps the raw name; the body is `void __fastcall(void*)` with no class.
-void __fastcall FUN_004DA2B0(void* self);   // FUNCTION: GAMEMD 0x4DA2B0
-void __fastcall FUN_004DE620(void* self);   // FUNCTION: GAMEMD 0x4DE620
-void __fastcall FUN_005BBED0(void* self);   // FUNCTION: GAMEMD 0x5BBED0
-void __fastcall FUN_005D0580(void* self);   // FUNCTION: GAMEMD 0x5D0580
-void __fastcall FUN_006370A0(void* self);   // FUNCTION: GAMEMD 0x6370A0
-void __fastcall FUN_0063F7B0(void* self);   // FUNCTION: GAMEMD 0x63F7B0
-void __fastcall FUN_006D0260(void* self);   // FUNCTION: GAMEMD 0x6D0260
-void __fastcall FUN_00705D60(void* self);   // FUNCTION: GAMEMD 0x705D60
-void __fastcall FUN_007717F0(void* self);   // FUNCTION: GAMEMD 0x7717F0
+void FUN_004DA2B0(void* self);   // FUNCTION: GAMEMD 0x4DA2B0
+void FUN_004DE620(void* self);   // FUNCTION: GAMEMD 0x4DE620
+void FUN_005BBED0(void* self);   // FUNCTION: GAMEMD 0x5BBED0
+void FUN_005D0580(void* self);   // FUNCTION: GAMEMD 0x5D0580
+void FUN_006370A0(void* self);   // FUNCTION: GAMEMD 0x6370A0
+void FUN_0063F7B0(void* self);   // FUNCTION: GAMEMD 0x63F7B0
+void FUN_006D0260(void* self);   // FUNCTION: GAMEMD 0x6D0260
+void FUN_00705D60(void* self);   // FUNCTION: GAMEMD 0x705D60
+void FUN_007717F0(void* self);   // FUNCTION: GAMEMD 0x7717F0
 
 #endif  // GG_MATCH_CORE_TAIL_JMP_THUNK_SWEEP_H

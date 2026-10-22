@@ -12,7 +12,7 @@
 // GLOBAL: GAMEMD 0x87E728
 extern void* DAT_0087E728c;
 bool __cdecl    FUN_0053BAD0();                        // GAMEMD 0x53BAD0
-void __fastcall FUN_00403770b(void* self, int arg);    // GAMEMD 0x403770
+void FUN_00403770b(void* self, int arg);    // GAMEMD 0x403770
 void __cdecl    FUN_00404FD0b();                       // GAMEMD 0x404FD0
 void __cdecl    FUN_00751040b();                       // GAMEMD 0x751040
 void __cdecl    FUN_007535B0();                        // GAMEMD 0x7535B0
@@ -34,7 +34,7 @@ struct Triple3ib
 
 struct Holder_0040A610 { char _pad[0x64]; IFace* at64; };
 struct Obj_0040A610;
-typedef void (__fastcall* NotifyFn)(Obj_0040A610*);
+typedef void (* NotifyFn)(Obj_0040A610*);
 
 struct Obj_0040A610
 {

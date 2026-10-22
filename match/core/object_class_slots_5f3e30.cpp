@@ -55,7 +55,7 @@ extern MapClass DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- plays a sound at a coordinate
 // through an audio controller (__fastcall, sound in ECX, coordinate in EDX).
-void* __fastcall FUN_007509E0(int sound, CoordStruct* coord, AudioController* controller);
+void* FUN_007509E0(int sound, CoordStruct* coord, AudioController* controller);
 // GLOBAL: GAMEMD 0x8871E0
 extern ObjectRulesView* DAT_008871E0;
 

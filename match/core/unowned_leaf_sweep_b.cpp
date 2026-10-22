@@ -91,7 +91,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_577C) == 0x577C);
 
 // FUNCTION: GAMEMD 0x0053EC90
 // Live key state, or the recorded word for the key's low byte.
-short __fastcall FUN_0053EC90(int key)
+short FUN_0053EC90(int key)
 {
     if (DAT_00AA0444 == 0) {
         return GetAsyncKeyState(key);
@@ -254,7 +254,7 @@ struct Obj_005B3A00
 GG_STATIC_ASSERT(offsetof(Obj_005B3A00, unknown_AC) == 0xAC);
 
 // FUNCTION: GAMEMD 0x005B3A00
-Slot_005B3A00* __fastcall FUN_005B3A00(Obj_005B3A00* self)
+Slot_005B3A00* FUN_005B3A00(Obj_005B3A00* self)
 {
     return &DAT_00A8E3A8[self->unknown_AC];
 }
@@ -272,7 +272,7 @@ extern "C" Iface_005BF500** DAT_00B45B5C;
 
 // FUNCTION: GAMEMD 0x005BF500
 // Forward `value` to slot 3 of the first entry of the vector at 0xB45B58.
-void __fastcall FUN_005BF500(int value)
+void FUN_005BF500(int value)
 {
     if (DAT_00B45B68 > 0) {
         DAT_00B45B5C[0]->vf_3(value);
@@ -311,14 +311,14 @@ struct Obj_005F9710
 };
 
 // FUNCTION: GAMEMD 0x005F9710
-void __fastcall FUN_005F9710(Obj_005F9710* self)
+void FUN_005F9710(Obj_005F9710* self)
 {
     self->unknown_1 = 0x47;
 }
 
 // FUNCTION: GAMEMD 0x00623840
 // Delete every string of the combo box `window`, last first.
-int __fastcall FUN_00623840(HWND window)
+int FUN_00623840(HWND window)
 {
     int count = SendMessageA(window, CB_GETCOUNT, 0, 0);
     while (count--) {
@@ -431,7 +431,7 @@ struct Cursor_006915D0
 GG_STATIC_ASSERT(offsetof(Cursor_006915D0, unknown_2C) == 0x2C);
 
 // FUNCTION: GAMEMD 0x006915D0
-bool __fastcall FUN_006915D0(Cursor_006915D0* self)
+bool FUN_006915D0(Cursor_006915D0* self)
 {
     return self->unknown_2C < self->unknown_24->unknown_A0;
 }
@@ -491,7 +491,7 @@ extern "C" Type_006A46D0** DAT_008B4124;
 // FUNCTION: GAMEMD 0x006A46D0
 // Index of the entry of the vector at 0x8B4120 whose name at +0x24 is `name`,
 // or -1.
-int __fastcall FUN_006A46D0(const char* name)
+int FUN_006A46D0(const char* name)
 {
     for (int i = 0; i < DAT_008B4130; i++) {
         if (_stricmp(DAT_008B4124[i]->unknown_24, name) == 0) {

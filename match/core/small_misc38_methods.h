@@ -32,7 +32,7 @@ struct Triple_0041C3F0
 GG_STATIC_ASSERT(offsetof(Triple_0041C3F0, Z) == 0x10);
 
 // FUNCTION: GAMEMD 0x41C3F0
-void __fastcall FUN_0041C3F0(Triple_0041C3F0* self);
+void FUN_0041C3F0(Triple_0041C3F0* self);
 
 // ---------------------------------------------------------------------------
 // 0x426750 — install a delegate and prime it.
@@ -144,7 +144,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0043A670, Items) == 0x08);
 GG_STATIC_ASSERT(offsetof(Obj_0043A670, Count) == 0x14);
 
 // FUNCTION: GAMEMD 0x43A670
-void __fastcall FUN_0043A670(Obj_0043A670* self);
+void FUN_0043A670(Obj_0043A670* self);
 
 // FUNCTION: GAMEMD 0x43A6B0 — the same release, then two stack arguments
 // stored at +0x1C and +0x20. `RET 8` with the object in ECX makes it a
@@ -160,7 +160,7 @@ void __fastcall FUN_0043A670(Obj_0043A670* self);
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0
 
 // FUNCTION: GAMEMD 0x47AA30 — the base constructor.
-void __fastcall FUN_0047AA30(void* self);
+void FUN_0047AA30(void* self);
 // The +0x58 member's constructor takes both arguments on the stack (retail
 // pushes two zeroes), so it is a __thiscall member rather than a __fastcall
 // free function - the free form would put the second argument in EDX.
@@ -174,7 +174,7 @@ struct Member_004739F0
 
 // FUNCTION: GAMEMD 0x7B5440 — maps the argument, __fastcall (retail leaves it
 // in ECX from `MOV ECX,[ESP+8]` and pushes nothing).
-int __fastcall FUN_007B5440(int value);
+int FUN_007B5440(int value);
 
 struct Obj_004739F0
 {

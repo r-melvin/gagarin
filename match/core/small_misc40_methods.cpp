@@ -5,7 +5,7 @@
 #include "small_misc40_methods.h"
 
 // FUNCTION: GAMEMD 0x403820
-void __fastcall FUN_00403820(Obj_00403820* self)
+void FUN_00403820(Obj_00403820* self)
 {
     self->field_00 = 0;
     self->field_04 = 0;
@@ -32,7 +32,7 @@ void __fastcall FUN_00403820(Obj_00403820* self)
 }
 
 // FUNCTION: GAMEMD 0x407100
-void __fastcall FUN_00407100(Timer_00407100* self, int value)
+void FUN_00407100(Timer_00407100* self, int value)
 {
     self->field_00 = 0;
 

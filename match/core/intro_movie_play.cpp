@@ -10,9 +10,9 @@
 extern unsigned char DAT_00A8E960;
 
 // FUNCTION: GAMEMD 0x48DF30 (decl; reloc) - index of a movie by name, -1 when absent.
-int __fastcall FUN_0048DF30(const char* name);
+int FUN_0048DF30(const char* name);
 // FUNCTION: GAMEMD 0x5BF260 (decl; reloc) - plays the movie with the given index.
-void __fastcall FUN_005BF260(int movie, int a2, bool a3, bool a4, bool a5);
+void FUN_005BF260(int movie, int a2, bool a3, bool a4, bool a5);
 
 // FUNCTION: GAMEMD 0x539320
 void FUN_00539320()

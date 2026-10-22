@@ -21,10 +21,10 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 // stack adjustment and pop.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x407450 — the pre-teardown step, __fastcall.
-void __fastcall FUN_00407450(void* self);
+void FUN_00407450(void* self);
 // FUNCTION: GAMEMD 0x407530 — return to the pool, __fastcall (pool in ECX,
 // object in EDX).
-void __fastcall FUN_00407530(void* pool, void* self);
+void FUN_00407530(void* pool, void* self);
 
 extern void* DAT_0087E2A8;   // GLOBAL: GAMEMD 0x87E2A8 — the pool
 extern int   DAT_0087E28C;   // GLOBAL: GAMEMD 0x87E28C — live count
@@ -40,7 +40,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00404DD0, Flags) == 0x18);
 GG_STATIC_ASSERT(offsetof(Obj_00404DD0, Pending) == 0x138);
 
 // FUNCTION: GAMEMD 0x404DD0
-void __fastcall FUN_00404DD0(Obj_00404DD0* self);
+void FUN_00404DD0(Obj_00404DD0* self);
 
 // ---------------------------------------------------------------------------
 // 0x404D80 — release every slot of the array at +0x28 and reset the count.
@@ -51,7 +51,7 @@ void __fastcall FUN_00404DD0(Obj_00404DD0* self);
 // two epilogues therefore differ.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x401F90 — the per-slot release, __fastcall.
-void __fastcall FUN_00401F90(void* item);
+void FUN_00401F90(void* item);
 
 struct Obj_00404D80
 {
@@ -63,7 +63,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00404D80, Slots) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00404D80, Count) == 0xA8);
 
 // FUNCTION: GAMEMD 0x404D80
-void __fastcall FUN_00404D80(Obj_00404D80* self);
+void FUN_00404D80(Obj_00404D80* self);
 
 // ---------------------------------------------------------------------------
 // 0x404E20 — first non-empty list in a rectangular table of list headers.
@@ -90,6 +90,6 @@ GG_STATIC_ASSERT(sizeof(Row_00404E20) == 0x78);
 extern Row_00404E20 DAT_0087DE38[];
 
 // FUNCTION: GAMEMD 0x404E20
-void* __fastcall FUN_00404E20(int rows);
+void* FUN_00404E20(int rows);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC45_METHODS_H

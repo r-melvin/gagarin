@@ -55,11 +55,11 @@ GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Names) == 0x0C);
 GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists) == 0x10);
 
 // FUNCTION: GAMEMD 0x49D9F0 (decl; reloc) -- look a name up; an index or -1.
-int __fastcall FUN_0049D9F0(const char* name);
+int FUN_0049D9F0(const char* name);
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
-                                           const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
 
 // STRING: GAMEMD 0x82DC78 -- "GUI:Random".
 extern const char STR_0082DC78[];
@@ -67,11 +67,11 @@ extern const char STR_0082DC78[];
 extern const char STR_0082DC4C[];
 
 // FUNCTION: GAMEMD 0x5EBC00 (decl; reloc) -- __fastcall (dialog, mode).
-void __fastcall FUN_005EBC00(HWND dialog, int mode);
+void FUN_005EBC00(HWND dialog, int mode);
 
 // FUNCTION: GAMEMD 0x5E8760 (decl; reloc) -- the caller tests AL, so the
 // result is a bool here (the matched body is typed int in netshare_slot_nodes).
-bool __fastcall FUN_005E8760();
+bool FUN_005E8760();
 
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
@@ -81,13 +81,13 @@ extern const char STR_0082DC64[];
 extern LPARAM DAT_00A8EB68;
 
 // FUNCTION: GAMEMD 0x4E37D0 (decl; reloc) -- the control id for slot `index`.
-int __fastcall FUN_004E37D0(int index);
+int FUN_004E37D0(int index);
 
 // FUNCTION: GAMEMD 0x4E3F70 (decl; reloc) -- __fastcall (dialog, id) + one stack word.
-void __fastcall FUN_004E3F70(HWND dialog, int id, int value);
+void FUN_004E3F70(HWND dialog, int id, int value);
 
 // FUNCTION: GAMEMD 0x5E26C0 (decl; reloc) -- a dialog handle, or null.
-HWND __fastcall FUN_005E26C0();
+HWND FUN_005E26C0();
 
 // GLOBAL: GAMEMD 0xA8BB0C -- the session's player limit.
 extern int DAT_00A8BB0C;

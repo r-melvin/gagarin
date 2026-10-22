@@ -17,10 +17,10 @@
 // this function's result; with no handler the answer is zero.
 // ---------------------------------------------------------------------------
 struct Obj_004023F0;
-typedef int (__fastcall* Handler_004023F0)(Obj_004023F0* self);
+typedef int (* Handler_004023F0)(Obj_004023F0* self);
 
 // FUNCTION: GAMEMD 0x401000 — resets the sub-object at +0x10.
-void __fastcall FUN_00401000(void* sub);
+void FUN_00401000(void* sub);
 
 struct Obj_004023F0
 {
@@ -53,8 +53,8 @@ struct Obj_00405580;
 
 // FUNCTION: GAMEMD 0x4026A0 / 0x4026B0 — the detach pair, both __fastcall on
 // the owner. The second is reached by `JMP`, so it is a free function.
-void __fastcall FUN_004026A0(void* owner);
-void __fastcall FUN_004026B0(void* owner);
+void FUN_004026A0(void* owner);
+void FUN_004026B0(void* owner);
 
 struct Owner_00405580
 {
@@ -74,15 +74,15 @@ GG_STATIC_ASSERT(offsetof(Obj_00405580, Flags) == 0x18);
 GG_STATIC_ASSERT(offsetof(Obj_00405580, Owner) == 0xB0);
 
 // FUNCTION: GAMEMD 0x405580
-void __fastcall FUN_00405580(Obj_00405580* self);
+void FUN_00405580(Obj_00405580* self);
 
 // ---------------------------------------------------------------------------
 // 0x406550 — run two resets over the sub-object at +0x18, the second by tail
 // call.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x407150 / 0x4071C0
-void __fastcall FUN_00407150(void* sub);
-void __fastcall FUN_004071C0(void* sub);
+void FUN_00407150(void* sub);
+void FUN_004071C0(void* sub);
 
 struct Obj_00406550
 {
@@ -91,6 +91,6 @@ struct Obj_00406550
 };
 
 // FUNCTION: GAMEMD 0x406550
-void __fastcall FUN_00406550(Obj_00406550* self);
+void FUN_00406550(Obj_00406550* self);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC37_METHODS_H

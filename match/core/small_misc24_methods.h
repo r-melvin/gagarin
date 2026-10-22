@@ -15,6 +15,6 @@ extern Rec_00422B80** DAT_00A8E9AC;
 extern int            DAT_00A8E9B8;
 
 // FUNCTION: GAMEMD 0x422B80 — clear a flag on every record pointing at `key`.
-void __fastcall FUN_00422B80(void* key);
+void FUN_00422B80(void* key);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC24_METHODS_H

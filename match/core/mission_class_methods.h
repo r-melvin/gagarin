@@ -33,9 +33,9 @@ struct MissionControlClass
     double AARate;        // +0x18
 
     // Declared ascending by retail address (reccmp/isle TU discipline).
-    static bool __fastcall IsRecruitableMission(int mission);  // GAMEMD 0x5B36E0
+    static bool IsRecruitableMission(int mission);  // GAMEMD 0x5B36E0
     const char*            GetName();                          // GAMEMD 0x5B3740
-    static int  __fastcall FindIndex(const char* name);        // GAMEMD 0x5B3910
+    static int  FindIndex(const char* name);        // GAMEMD 0x5B3910
 };
 
 GG_STATIC_ASSERT(offsetof(MissionControlClass, ArrayIndex)  == 0x00);

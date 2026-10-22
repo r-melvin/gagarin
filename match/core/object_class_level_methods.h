@@ -23,8 +23,8 @@
 GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
 GG_STATIC_ASSERT(offsetof(ObjectClass, OnBridge) == 0x8C);
 GG_STATIC_ASSERT(offsetof(ObjectClass, IsOnMap) == 0x74);
-typedef CellClass* (__fastcall* ObjectLevelGetCell)(const ObjectClass*);
-typedef int (__fastcall* ObjectLevelGetHeight)(const ObjectClass*);
+typedef CellClass* (* ObjectLevelGetCell)(const ObjectClass*);
+typedef int (* ObjectLevelGetHeight)(const ObjectClass*);
 struct ObjectLevelVtablePrefix
 {
     char unknown_00[0x1BC];

@@ -54,8 +54,8 @@ void __cdecl FUN_00408230();
 // decrement of the owner's +0x104.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x407420 / 0x407450 — the link and unlink steps, __fastcall.
-void __fastcall FUN_00407420(void* link, void* member);
-void __fastcall FUN_00407450(void* self);
+void FUN_00407420(void* link, void* member);
+void FUN_00407450(void* self);
 
 struct Owner_00402860
 {
@@ -81,11 +81,11 @@ GG_STATIC_ASSERT(offsetof(Member_00402860, Owner) == 0xAC);
 
 // FUNCTION: GAMEMD 0x402860 — attach: record the owner, count the attachment,
 // raise the pending count, link, then floor it back down.
-void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member);
+void FUN_00402860(Owner_00402860* self, Member_00402860* member);
 
 // FUNCTION: GAMEMD 0x4028B0 — detach: unlink, drop the attachment count, raise
 // and floor the pending count with a second unlink in between.
-void __fastcall FUN_004028B0(Member_00402860* self);
+void FUN_004028B0(Member_00402860* self);
 
 // The owner also carries its capacity right after the attachment count, which
 // the two spawn entry points below compare against.
@@ -102,14 +102,14 @@ GG_STATIC_ASSERT(offsetof(Pool_00402860, Link) == 0xF8);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Pending) == 0x104);
 
 // FUNCTION: GAMEMD 0x402040 — allocate one member, __fastcall.
-Member_00402860* __fastcall FUN_00402040(Pool_00402860* pool);
+Member_00402860* FUN_00402040(Pool_00402860* pool);
 
 // FUNCTION: GAMEMD 0x4034B0 — spawn one: refuse when full, otherwise allocate,
 // attach and hand it back.
-Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self);
+Member_00402860* FUN_004034B0(Pool_00402860* self);
 
 // FUNCTION: GAMEMD 0x403530 — spawn up to `count`, answering how many were
 // made. Stops early when the pool fills or an allocation fails.
-int __fastcall FUN_00403530(Pool_00402860* self, int count);
+int FUN_00403530(Pool_00402860* self, int count);
 
 #endif  // GG_MATCH_CORE_FLOORED_DECREMENT_METHODS_H

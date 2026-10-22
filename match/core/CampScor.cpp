@@ -149,7 +149,7 @@ void Obj_0046D350::FUN_0046D350()
 // The hour count is computed twice — once to test the cap and again after it —
 // rather than being clamped in place. Retail emits both divisions (0x46D373 and
 // 0x46D390), so the source tests `seconds / 3600` and then recomputes it.
-void __fastcall FUN_0046D360(gg_wchar* buffer, int seconds)
+void FUN_0046D360(gg_wchar* buffer, int seconds)
 {
     if (buffer == 0) {
         return;
@@ -189,7 +189,7 @@ unsigned char Obj_0046D490::FUN_0046D490() const
 // Each of the four rejections gets its own `POP EDI; MOV EAX,-2; POP ESI; RET`
 // in retail - four separate epilogues, so four separate `return -2` statements
 // rather than one `||` chain, which would share a tail.
-int __fastcall FUN_0046F810(int index)
+int FUN_0046F810(int index)
 {
     Entry_0046F810* entry = DAT_00A8DA90[index];
 
@@ -220,7 +220,7 @@ int __fastcall FUN_0046F810(int index)
 //
 // The same lookup against the second parallel table. Written out rather than
 // shared.
-int __fastcall FUN_0046F880(int index)
+int FUN_0046F880(int index)
 {
     Entry_0046F810* entry = DAT_00A8DA90[index];
 
@@ -256,7 +256,7 @@ int __fastcall FUN_0046F880(int index)
 //
 // Both controls are fetched before either is tested, so the second lookup
 // happens even on the path that never uses it.
-void __fastcall FUN_0046FB50(HWND_ dlg)
+void FUN_0046FB50(HWND_ dlg)
 {
     HWND_ first = GetDlgItem(dlg, 0x6D1);
     HWND_ second = GetDlgItem(dlg, 0x5C0);
@@ -311,7 +311,7 @@ void Obj_00470C30::FUN_00470C30()
 // shared: the family rule in the methodology exists because look-alike siblings
 // have been caught diverging, and confirming these two are identical is a check,
 // not an assumption.
-void __fastcall FUN_00470C90(gg_wchar* buffer, int seconds)
+void FUN_00470C90(gg_wchar* buffer, int seconds)
 {
     if (buffer == 0) {
         return;

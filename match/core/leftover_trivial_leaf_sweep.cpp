@@ -17,7 +17,7 @@ bool __stdcall FUN_00484F10(int)
 }
 
 // FUNCTION: GAMEMD 0x49FB60
-int __fastcall FUN_0049FB60(LeafObj_0x10* self)
+int FUN_0049FB60(LeafObj_0x10* self)
 {
     return self->unknown_10;
 }
@@ -30,19 +30,19 @@ bool __cdecl FUN_004A3BF0()
 
 
 // FUNCTION: GAMEMD 0x53F1F0
-void __fastcall FUN_0053F1F0(int value)
+void FUN_0053F1F0(int value)
 {
     DAT_00828140 = value;
 }
 
 // FUNCTION: GAMEMD 0x55AF40
-void __fastcall FUN_0055AF40(int value)
+void FUN_0055AF40(int value)
 {
     DAT_00829FF4 = value;
 }
 
 // FUNCTION: GAMEMD 0x55AF50
-void __fastcall FUN_0055AF50(int value)
+void FUN_0055AF50(int value)
 {
     DAT_00829FF8 = value;
 }
@@ -61,19 +61,19 @@ bool __stdcall FUN_005B43F0(int)
 
 
 // FUNCTION: GAMEMD 0x67A730
-int __fastcall FUN_0067A730(LeafObj_0x10* self)
+int FUN_0067A730(LeafObj_0x10* self)
 {
     return self->unknown_10;
 }
 
 // FUNCTION: GAMEMD 0x67A7C0
-int __fastcall FUN_0067A7C0(LeafObj_0x10* self)
+int FUN_0067A7C0(LeafObj_0x10* self)
 {
     return self->unknown_10;
 }
 
 // FUNCTION: GAMEMD 0x67A8A0
-int __fastcall FUN_0067A8A0(LeafObj_0x10* self)
+int FUN_0067A8A0(LeafObj_0x10* self)
 {
     return self->unknown_10;
 }
@@ -86,7 +86,7 @@ bool __cdecl FUN_00711E80()
 }
 
 // FUNCTION: GAMEMD 0x717A70
-int __fastcall FUN_00717A70(LeafObj_0x04* self)
+int FUN_00717A70(LeafObj_0x04* self)
 {
     return self->unknown_04;
 }

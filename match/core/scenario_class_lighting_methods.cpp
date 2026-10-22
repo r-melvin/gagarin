@@ -11,7 +11,7 @@
 // floored at zero, then rounded down to the channel granularity the current
 // colour depth can show (steps of 128, 64 or 32 for selector 0, 1, 2; other
 // selectors leave the values as they are).
-void __fastcall ScenarioClass::ScenarioLighting(int* red, int* green, int* blue)
+void ScenarioClass::ScenarioLighting(int* red, int* green, int* blue)
 {
     *red = GG_MIN(*red, 1000);
     *green = GG_MIN(*green, 1000);

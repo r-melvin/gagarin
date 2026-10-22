@@ -42,13 +42,13 @@ GG_STATIC_ASSERT(offsetof(FlaggedNode, Tag) == 0xC);
 GG_STATIC_ASSERT(offsetof(FlaggedNode, Flags) == 0xA4);
 
 // FUNCTION: GAMEMD 0x402550 — the action 0x4036F0 runs.
-void __fastcall FUN_00402550(ListNode* node);
+void FUN_00402550(ListNode* node);
 // FUNCTION: GAMEMD 0x4025B0 — the action 0x403730 runs.
-void __fastcall FUN_004025B0(ListNode* node);
+void FUN_004025B0(ListNode* node);
 // FUNCTION: GAMEMD 0x402600 — the action 0x403770 runs.
-void __fastcall FUN_00402600(ListNode* node);
+void FUN_00402600(ListNode* node);
 // FUNCTION: GAMEMD 0x402650 — the action 0x4037C0 runs.
-void __fastcall FUN_00402650(ListNode* node);
+void FUN_00402650(ListNode* node);
 
 struct Owner_004036F0
 {

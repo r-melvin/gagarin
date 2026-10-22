@@ -35,8 +35,8 @@ class CampaignClass
 public:
     // Static helpers (free functions, __fastcall => first arg in ECX).
     // Declared ascending by retail address.
-    static int  __fastcall FindIndex(const char* name);          // GAMEMD 0x46CC90
-    static void __fastcall CreateFromINIList(CCINIClass* pINI);   // GAMEMD 0x46CE10
+    static int  FindIndex(const char* name);          // GAMEMD 0x46CC90
+    static void CreateFromINIList(CCINIClass* pINI);   // GAMEMD 0x46CE10
 
     // FUNCTION: GAMEMD 0x410800 (decl; reloc) — the AbstractTypeClass base
     // constructor, __thiscall with the identifier on the stack.

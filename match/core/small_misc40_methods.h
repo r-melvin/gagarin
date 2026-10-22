@@ -30,7 +30,7 @@ struct Obj_00403820
 GG_STATIC_ASSERT(offsetof(Obj_00403820, field_54) == 0x54);
 
 // FUNCTION: GAMEMD 0x403820
-void __fastcall FUN_00403820(Obj_00403820* self);
+void FUN_00403820(Obj_00403820* self);
 
 // ---------------------------------------------------------------------------
 // 0x407100 — arm a timer.
@@ -45,8 +45,8 @@ void __fastcall FUN_00403820(Obj_00403820* self);
 // an `__int64` as `(int)(x >> 32)` costs a `MOV EAX,EDX` that retail does not
 // have - the struct's second member is already EDX.
 struct Pair64 { int Lo; int Hi; };
-Pair64 __fastcall FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
-void    __fastcall FUN_004071C0(void* self);   // FUNCTION: GAMEMD 0x4071C0
+Pair64 FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
+void    FUN_004071C0(void* self);   // FUNCTION: GAMEMD 0x4071C0
 
 struct Timer_00407100
 {
@@ -62,7 +62,7 @@ struct Timer_00407100
 GG_STATIC_ASSERT(offsetof(Timer_00407100, StartHi) == 0x1C);
 
 // FUNCTION: GAMEMD 0x407100
-void __fastcall FUN_00407100(Timer_00407100* self, int value);
+void FUN_00407100(Timer_00407100* self, int value);
 
 // ---------------------------------------------------------------------------
 // 0x408D30 — the difference between two counters.

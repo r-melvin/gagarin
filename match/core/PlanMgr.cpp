@@ -159,7 +159,7 @@ GG_STATIC_ASSERT(offsetof(ScanBuffer_0063F080, Height) == 0x00);
 GG_STATIC_ASSERT(offsetof(ScanBuffer_0063F080, Top) == 0x04);
 GG_STATIC_ASSERT(offsetof(ScanBuffer_0063F080, Spans) == 0x08);
 
-void __fastcall FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0063F080** cursor);
+void FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0063F080** cursor);
 
 #include "rect_contains_point_methods.h"
 
@@ -1306,7 +1306,7 @@ void FUN_00637070()
 }
 
 // FUNCTION: GAMEMD 0x6370A0
-void __fastcall FUN_006370A0(void* self)
+void FUN_006370A0(void* self)
 {
     FUN_006370B0(self);
 }
@@ -1552,7 +1552,7 @@ bool Techno_006385C0::TryNextPlanningTokenNode()
 // owner is pushed onto the list at 0xAC4C40. Finally the token's sub-object is
 // reset through its slot 0x0C, the three coordinate fields at +0x8C..+0x94 go
 // to -1 and the two flag bytes at +0x98/+0x99 are cleared.
-void __fastcall Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
+void Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 {
     if (this == 0) {
         return;
@@ -1936,7 +1936,7 @@ int FUN_0063D540(Obj_0063D540* a1, int a2)
 // to DAT_008A0DE4, green's, even though blue's OR still combines correctly).
 // Declaring green before blue -- with the final `blue | green | red`
 // expression left unchanged -- reproduces retail's instruction order exactly.
-unsigned int __fastcall PackPixel_0063DAD0(const unsigned char* rgb)
+unsigned int PackPixel_0063DAD0(const unsigned char* rgb)
 {
     unsigned int green = (rgb[1] >> DAT_008A0DE4) << DAT_008A0DE0;
     unsigned int blue  = (rgb[2] >> DAT_008A0DDC) << DAT_008A0DD8;
@@ -2169,7 +2169,7 @@ bool ItemVector_0063DFD0::FUN_000063EBD0(int item)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x63F080
-void __fastcall FUN_0063F080(Polygon_0063F080* polygon, ScanBuffer_0063F080* buffer)
+void FUN_0063F080(Polygon_0063F080* polygon, ScanBuffer_0063F080* buffer)
 {
     PolyPoint_0063F080* points = polygon->Points;
     int count = polygon->Count;
@@ -2269,7 +2269,7 @@ void __fastcall FUN_0063F080(Polygon_0063F080* polygon, ScanBuffer_0063F080* buf
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x63F2E0
-void __fastcall FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0063F080** cursor)
+void FUN_0063F2E0(int x1, int y1, int x2, int y2, int side, int skip, ScanSpan_0063F080** cursor)
 {
     ScanSpan_0063F080* span = *cursor;
     int dx = x2 - x1;

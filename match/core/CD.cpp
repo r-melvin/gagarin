@@ -196,7 +196,7 @@ extern HANDLE DAT_0081C8EC;
 #include "../_layout/cd_search_path.h"
 
 // FUNCTION: GAMEMD 0x0047AB10 (decl; reloc; ECX path/EAX result ABI view; original return type unknown)
-int __fastcall FUN_0047AB10(char* basePath);
+int FUN_0047AB10(char* basePath);
 
 // GLOBAL: GAMEMD 0x0089E41C (writable path buffer; capacity not established)
 extern char DAT_0089E41C[];
@@ -823,7 +823,7 @@ int __cdecl FUN_0047AAC0(void)
 }
 
 // FUNCTION: GAMEMD 0x0047AD50 (69 bytes, entry-origin)
-void __fastcall FUN_0047AD50(char* path)
+void FUN_0047AD50(char* path)
 {
     SearchPath_0047AE10* added =
         (SearchPath_0047AE10*)FUN_007C8E17(8);
@@ -843,7 +843,7 @@ void __fastcall FUN_0047AD50(char* path)
 }
 
 // FUNCTION: GAMEMD 0x0047ADA0 (17 bytes, entry-origin, RET)
-void __fastcall FUN_0047ADA0(unsigned int value)
+void FUN_0047ADA0(unsigned int value)
 {
     unsigned int previous = DAT_0089E414;
     DAT_0089E414 = value;
@@ -873,7 +873,7 @@ void __cdecl FUN_0047ADC0(void)
 }
 
 // FUNCTION: GAMEMD 0x47AF70
-bool __fastcall FUN_0047af70(char* name)
+bool FUN_0047af70(char* name)
 {
     if (name == 0)
     {

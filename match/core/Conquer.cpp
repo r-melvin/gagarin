@@ -70,7 +70,7 @@ extern "C" const char DAT_00817474[];
 // 0x4CAC40: x87 helper taking one double and returning one (callee only).
 double __cdecl FUN_004CAC40(double value);
 // 0x5117D0: name -> index, -1 when absent (callee only).
-int __fastcall FUN_005117D0(const char* name);
+int FUN_005117D0(const char* name);
 
 // ---------------------------------------------------------------------------
 
@@ -272,13 +272,13 @@ extern "C" int __cdecl strcmpi(const char* a, const char* b);
 //   0x00731D00  __fastcall(arg in ECX)   — clears a selection-drag latch pair.
 //   0x00431060  __fastcall(this in ECX)  — clears the per-cell select flags of
 //                                          the global selection grid @ 0x0089C3B0.
-void __fastcall sub_731D00(void* a);
-void __fastcall sub_431060(void* self);
+void sub_731D00(void* a);
+void sub_431060(void* self);
 extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 
 // __thiscall (ECX=this), no explicit args, vtable slot at +0x150 — the per-object
 // "remove from CurrentObjects" virtual driving the drain loop.
-typedef void (__fastcall* UnselectFn)(void* self);
+typedef void (* UnselectFn)(void* self);
 
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:
 // "Clear","Road","Water","Rock","Wall","Tiberium",...). Loop bound is the
@@ -417,7 +417,7 @@ void __cdecl FUN_0048DB70()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0048DB80
 // Index of `name` in the five-entry table at 0x7E1B60, or -1.
-int __fastcall FUN_0048DB80(const char* name)
+int FUN_0048DB80(const char* name)
 {
     if (name != NULL) {
         for (int i = 0; i < 5; i++) {
@@ -436,7 +436,7 @@ int __fastcall FUN_0048DB80(const char* name)
 // pName arrives in ECX (__fastcall). EBX=pName, EDI=index, ESI walks the array
 // at 0x70 stride; on the first _stricmp==0 hit returns the index, else -1.
 // ---------------------------------------------------------------------------
-int __fastcall Theater::FindIndex(const char* pName)
+int Theater::FindIndex(const char* pName)
 {
     for (int i = 0; i < 6; ++i) {
         if (_stricmp(pName, Theater_Array[i].ID) == 0) {
@@ -451,7 +451,7 @@ int __fastcall Theater::FindIndex(const char* pName)
 // Drain CurrentObjects by repeatedly invoking object[0]'s vtable[+0x150] virtual
 // (each call de-registers itself, shrinking Count), then reset the drag latch and
 // clear the selection grid.
-void __fastcall MapClass::UnselectAll()
+void MapClass::UnselectAll()
 {
     while (CurrentObjects.Count != 0)
     {
@@ -473,7 +473,7 @@ void __fastcall MapClass::UnselectAll()
 //   abs 2 / 3        -> AircraftTypeClass::Array
 // The case blocks are written in retail physical-emit order (Unit, Building,
 // Infantry, Aircraft) so the jump table and block addresses line up byte-exact.
-TechnoTypeClass* __fastcall TechnoTypeClass::GetByTypeAndIndex(AbstractType abs, int index)
+TechnoTypeClass* TechnoTypeClass::GetByTypeAndIndex(AbstractType abs, int index)
 {
     switch (abs)
     {
@@ -501,7 +501,7 @@ TechnoTypeClass* __fastcall TechnoTypeClass::GetByTypeAndIndex(AbstractType abs,
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0048DE70
 // Index of `name` in the nineteen-entry table at 0x7E523C, or 0.
-int __fastcall FUN_0048DE70(const char* name)
+int FUN_0048DE70(const char* name)
 {
     if (name != NULL) {
         for (int i = 0; i < 19; i++) {
@@ -516,7 +516,7 @@ int __fastcall FUN_0048DE70(const char* name)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0048DEB0
 // One-bit mask for the index 0x5117D0 finds for `name`, or 0.
-int __fastcall FUN_0048DEB0(const char* name)
+int FUN_0048DEB0(const char* name)
 {
     int mask = 0;
     int index = FUN_005117D0(name);
@@ -528,14 +528,14 @@ int __fastcall FUN_0048DEB0(const char* name)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0048DED0
-void __fastcall FUN_0048DED0()
+void FUN_0048DED0()
 {
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48DF80  (__fastcall)
 // Map a land-type name to its index; "<none>" or NULL => -1; unknown => -1.
-int __fastcall MapClass::GetLandTypeFromName(const char* name)
+int MapClass::GetLandTypeFromName(const char* name)
 {
     if (strcmpi("<none>", name) != 0 && name != 0)
     {
@@ -555,7 +555,7 @@ int __fastcall MapClass::GetLandTypeFromName(const char* name)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0048DFD0
 // Name for one of twelve values, or the string at 0x817474.
-const char* __fastcall FUN_0048DFD0(unsigned int value)
+const char* FUN_0048DFD0(unsigned int value)
 {
     if (value < 12) {
         return DAT_0081DA28[value];

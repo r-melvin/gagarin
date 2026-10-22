@@ -25,8 +25,8 @@ GG_STATIC_ASSERT(offsetof(Module_00402940, field_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(Module_00402940, Tail) == 0x20);
 
 // FUNCTION: GAMEMD 0x4072C0 / 0x401000 — the two reset helpers, __fastcall.
-void __fastcall FUN_004072C0(void* part);
-void __fastcall FUN_00401000(void* part);
+void FUN_004072C0(void* part);
+void FUN_00401000(void* part);
 
 extern Module_00402940* DAT_00815E98;   // GLOBAL: GAMEMD 0x815E98
 extern void*            DAT_0087DE30;   // GLOBAL: GAMEMD 0x87DE30
@@ -52,7 +52,7 @@ struct Timer_00429500
 };
 
 // FUNCTION: GAMEMD 0x6C8C40 — reads the current tick from the timer's +0x4.
-int __fastcall FUN_006C8C40(void* handle);
+int FUN_006C8C40(void* handle);
 
 struct Source_00429500
 {

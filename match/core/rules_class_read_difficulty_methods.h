@@ -64,8 +64,8 @@ GG_STATIC_ASSERT(offsetof(Difficulty_0066D270, ContentScan)   == 0x4A);
 // FUNCTION: GAMEMD 0x66D270 — RulesClass::Read_Difficulty. Retail is
 // __fastcall (ini in ECX, output struct in EDX, section name on the stack,
 // RET 4); YRpp's __thiscall(CCINIClass*) spelling is a naming fact only.
-void __fastcall Read_Difficulty_0066D270(CCINI_0066D270* pINI,
-                                         Difficulty_0066D270* pOut,
-                                         const char* pSection);
+void Read_Difficulty_0066D270(CCINI_0066D270* pINI,
+                              Difficulty_0066D270* pOut,
+                              const char* pSection);
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_READ_DIFFICULTY_METHODS_H

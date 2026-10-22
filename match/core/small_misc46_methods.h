@@ -72,7 +72,7 @@ struct Obj_00433940
 GG_STATIC_ASSERT(offsetof(Obj_00433940, Block) == 0x8);
 
 // FUNCTION: GAMEMD 0x433940
-void __fastcall FUN_00433940(Obj_00433940* self);
+void FUN_00433940(Obj_00433940* self);
 
 // ---------------------------------------------------------------------------
 // 0x473980 — index of the first table entry either of whose two names matches.
@@ -91,6 +91,6 @@ struct NamePair_00473980
 extern NamePair_00473980 DAT_0081B7C8[11];
 
 // FUNCTION: GAMEMD 0x473980
-int __fastcall FUN_00473980(const char* name);
+int FUN_00473980(const char* name);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC46_METHODS_H

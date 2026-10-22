@@ -7,7 +7,7 @@
 // FUNCTION: GAMEMD 0x6C87F0  Unsorted::RegisterGameStartTime (__fastcall)
 // Restart the clock: a fresh timer temporary (start tick sampled through the
 // clock member) is copied over the global, and the running flag is raised.
-void __fastcall Unsorted_RegisterGameStartTime()
+void Unsorted_RegisterGameStartTime()
 {
     GameTimer = GameTimerClass();
     GameTimerRunning = true;
@@ -17,7 +17,7 @@ void __fastcall Unsorted_RegisterGameStartTime()
 // Stop the clock and bank how long the game ran. Retail loads the start tick
 // and clears the running flag *between* the call and the subtraction, which is
 // what reading the start into a local before clearing the flag produces.
-void __fastcall Unsorted_RegisterGameEndTime()
+void Unsorted_RegisterGameEndTime()
 {
     int now = GameTimer.Clock.GetTime();
     int start = GameTimer.StartTime;

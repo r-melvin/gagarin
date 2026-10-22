@@ -5,7 +5,7 @@
 #include "small_misc45_methods.h"
 
 // FUNCTION: GAMEMD 0x404D80
-void __fastcall FUN_00404D80(Obj_00404D80* self)
+void FUN_00404D80(Obj_00404D80* self)
 {
     int i = 0;
 
@@ -26,7 +26,7 @@ void __fastcall FUN_00404D80(Obj_00404D80* self)
 }
 
 // FUNCTION: GAMEMD 0x404DD0
-void __fastcall FUN_00404DD0(Obj_00404DD0* self)
+void FUN_00404DD0(Obj_00404DD0* self)
 {
     FUN_00407450(self);
 
@@ -58,7 +58,7 @@ void __fastcall FUN_00404DD0(Obj_00404DD0* self)
 // row-count branch. Earlier notes: a bottom-tested peel of either loop, a
 // hoisted `rows > 0` guard and a table re-derived at the subscript were all far
 // worse; the plain `for` shape is right.
-void* __fastcall FUN_00404E20(int rows)
+void* FUN_00404E20(int rows)
 {
     Row_00404E20* cursor = DAT_0087DE38;
 

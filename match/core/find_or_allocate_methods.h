@@ -40,8 +40,8 @@ struct Item
     char* FUN_0045DD90(const char* name);   // GAMEMD 0x45DD90
 };
 
-char* __fastcall FUN_0041CEF0(const char* name);   // FUNCTION: GAMEMD 0x41CEF0
-char* __fastcall FUN_0041FCA0(const char* name);   // FUNCTION: GAMEMD 0x41FCA0
-char* __fastcall FUN_004653C0(const char* name);   // FUNCTION: GAMEMD 0x4653C0
+char* FUN_0041CEF0(const char* name);   // FUNCTION: GAMEMD 0x41CEF0
+char* FUN_0041FCA0(const char* name);   // FUNCTION: GAMEMD 0x41FCA0
+char* FUN_004653C0(const char* name);   // FUNCTION: GAMEMD 0x4653C0
 
 #endif  // GG_MATCH_CORE_FIND_OR_ALLOCATE_METHODS_H

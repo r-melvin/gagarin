@@ -46,9 +46,9 @@ GG_STATIC_ASSERT(sizeof(Owner_004087F0) == 0xA4);
 // FUNCTION: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x4072C0 — initialise the embedded sub-object.
-void __fastcall FUN_004072C0(void* embedded);
+void FUN_004072C0(void* embedded);
 
 // FUNCTION: GAMEMD 0x4087F0
-Owner_004087F0* __fastcall FUN_004087F0();
+Owner_004087F0* FUN_004087F0();
 
 #endif  // GG_MATCH_CORE_SLOT_ARRAY_FACTORY_METHODS_H

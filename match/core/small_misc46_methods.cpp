@@ -28,7 +28,7 @@ VectorClassUnsignedShort::VectorClassUnsignedShort(int capacity, void* array)
 }
 
 // FUNCTION: GAMEMD 0x433940
-void __fastcall FUN_00433940(Obj_00433940* self)
+void FUN_00433940(Obj_00433940* self)
 {
     void* block = self->Block;
 
@@ -54,7 +54,7 @@ void __fastcall FUN_00433940(Obj_00433940* self)
 }
 
 // FUNCTION: GAMEMD 0x473980
-int __fastcall FUN_00473980(const char* name)
+int FUN_00473980(const char* name)
 {
     if (name == 0) {
         return -1;

@@ -8,7 +8,7 @@
 #include "find_by_name_methods.h"
 
 // FUNCTION: GAMEMD 0x41CAA0
-int __fastcall FUN_0041CAA0(const char* name)
+int FUN_0041CAA0(const char* name)
 {
     if (name != 0) {
         for (int i = 0; i < DAT_00A8B228; i++) {
@@ -22,7 +22,7 @@ int __fastcall FUN_0041CAA0(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x427CB0
-int __fastcall FUN_00427CB0(const char* name)
+int FUN_00427CB0(const char* name)
 {
     if (name != 0) {
         for (int i = 0; i < DAT_008B4160; i++) {
@@ -36,7 +36,7 @@ int __fastcall FUN_00427CB0(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x45E760
-int __fastcall FUN_0045E760(const char* name)
+int FUN_0045E760(const char* name)
 {
     if (name != 0) {
         for (int i = 0; i < DAT_00A83C78; i++) {
@@ -50,7 +50,7 @@ int __fastcall FUN_0045E760(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x45E7B0
-int __fastcall FUN_0045E7B0(const char* name)
+int FUN_0045E7B0(const char* name)
 {
     if (name != 0) {
         for (int i = 0; i < DAT_00A83C78; i++) {

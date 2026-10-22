@@ -59,7 +59,7 @@ void __cdecl FUN_005FA2A0()
 }
 
 // FUNCTION: GAMEMD 0x005FA430
-void __fastcall FUN_005FA430()
+void FUN_005FA430()
 {
 }
 

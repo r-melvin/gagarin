@@ -34,16 +34,16 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_D6A) == 0xD6A);
 //   +0x54   (bool query, negated into the result)
 //   +0x84   GetTechnoType() -> TechnoTypeClass*
 //   +0x160  (bool query)
-typedef int              (__fastcall* WhatAmIFunc)(TechnoClass*);
-typedef bool             (__fastcall* BoolQueryFunc)(TechnoClass*);
+typedef int              (* WhatAmIFunc)(TechnoClass*);
+typedef bool             (* BoolQueryFunc)(TechnoClass*);
 // Slot +0x54 returns a bool like the others. The earlier note here had it as a
 // byte on the theory that the narrow `TEST AL,AL; SETZ AL` implied a byte result;
 // that was the wrong lever. The operand type makes no difference — bool, unsigned
 // char and int all give the full-width `NEG/SBB/INC` for a negation. What decides
 // it is whether the negation is written as an *expression* or as a *branch*: see
 // the constructor of the return value in the .cpp.
-typedef bool             (__fastcall* ByteQueryFunc)(TechnoClass*);
-typedef TechnoTypeClass* (__fastcall* GetTypeFunc)(TechnoClass*);
+typedef bool             (* ByteQueryFunc)(TechnoClass*);
+typedef TechnoTypeClass* (* GetTypeFunc)(TechnoClass*);
 
 #define TECHNO_WHAT_AM_I(o)   ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 #define TECHNO_SLOT_54(o)     ((*(ByteQueryFunc*)(*(char**)(o) + 0x54))(o))

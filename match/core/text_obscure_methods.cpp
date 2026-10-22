@@ -16,7 +16,7 @@ extern unsigned char DAT_00832c14[8];
 // letters to a multiple of four (at least 16), whitened with a rolling CRC
 // of its reverse, masked and mixed four bytes at a time, and the CRC of the
 // result is returned.
-int __fastcall FUN_005f9e80(const char* text)
+int FUN_005f9e80(const char* text)
 {
     char buf[128];
     int len;

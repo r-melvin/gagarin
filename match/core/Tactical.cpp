@@ -290,7 +290,7 @@ class Tactical {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     // 0x6D20E0, static __fastcall: the height arrives in ECX.
-    static int __fastcall AdjustForZ(int Height);
+    static int AdjustForZ(int Height);
 };
 class TActionClass {
 public:
@@ -531,7 +531,7 @@ Point2D_006D1F10* Tactical_006D1F10::CoordsToScreen(Point2D_006D1F10* pDest,
 }
 
 // FUNCTION: GAMEMD 0x6D20E0  Tactical::AdjustForZ (__fastcall)
-int __fastcall Tactical::AdjustForZ(int Height)
+int Tactical::AdjustForZ(int Height)
 {
     int bias = 0;
     if (Height >= 728) {

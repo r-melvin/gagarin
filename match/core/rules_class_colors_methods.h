@@ -78,7 +78,7 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x626AB0 (decl; reloc) -- register a named colour.
-void __fastcall FUN_00626AB0(const char* name, ColorStruct* color);
+void FUN_00626AB0(const char* name, ColorStruct* color);
 
 struct HSVClass;
 struct PaletteClass;
@@ -87,9 +87,9 @@ struct ColorScheme
 {
     // FUNCTION: GAMEMD 0x68C9C0 (decl; reloc) -- find or make the scheme
     // (matched in match/renderer/color_scheme_find_methods.cpp).
-    static int __fastcall FindByName(const char* name, ColorStruct* color,
-                                     PaletteClass* pal1, PaletteClass* pal2,
-                                     int shade);
+    static int FindByName(const char* name, ColorStruct* color,
+                          PaletteClass* pal1, PaletteClass* pal2,
+                          int shade);
 };
 
 // GLOBAL: GAMEMD 0x886380 -- the palette object passed as the first palette.

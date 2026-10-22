@@ -11,7 +11,7 @@
 // remap level, and the converters of every per-palette scheme vector the hash
 // iterator yields. Then the map re-sweeps its cell lighting and the sidebar is
 // flagged for redraw.
-void __fastcall ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
+void ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
 {
     int i;
 

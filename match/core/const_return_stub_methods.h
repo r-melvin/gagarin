@@ -47,7 +47,7 @@ int   __stdcall FUN_00410310(int unused);   // FUNCTION: GAMEMD 0x410310
 void  __stdcall FUN_00413490(int unused);   // FUNCTION: GAMEMD 0x413490
 int   __cdecl   FUN_004125F0();             // FUNCTION: GAMEMD 0x4125F0
 int   __cdecl   FUN_00412600();             // FUNCTION: GAMEMD 0x412600
-void* __fastcall FUN_00420120(void* self);  // FUNCTION: GAMEMD 0x420120
+void* FUN_00420120(void* self);  // FUNCTION: GAMEMD 0x420120
 bool  __cdecl   FUN_00465D30();             // FUNCTION: GAMEMD 0x465D30
 
 #endif  // GG_MATCH_CORE_CONST_RETURN_STUB_METHODS_H

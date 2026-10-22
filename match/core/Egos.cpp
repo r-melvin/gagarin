@@ -47,8 +47,8 @@ struct RemapEntry
 GG_STATIC_ASSERT(sizeof(RemapEntry) == 4);   // entry pointer steps by 4
 
 // FUNCTION: GAMEMD 0x4C38E0
-unsigned char* __fastcall FUN_004c38e0(const ColorTable_00626070& palette, const RemapEntry* entries,
-                                       int count, unsigned char* buffer)
+unsigned char* FUN_004c38e0(const ColorTable_00626070& palette, const RemapEntry* entries,
+                            int count, unsigned char* buffer)
 {
     if (count != 0 && entries != 0)
     {

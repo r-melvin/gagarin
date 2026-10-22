@@ -26,7 +26,7 @@ struct Rec_00433C30 { char _pad00[0x4]; int at04; char _pad08[0x4]; int at0C; };
 struct Src_00433C30 { Rec_00433C30* FUN_00433990(); };   // GAMEMD 0x433990
 
 struct Obj_00433C30;
-void __fastcall FUN_00434700(Obj_00433C30* self);   // GAMEMD 0x434700
+void FUN_00434700(Obj_00433C30* self);   // GAMEMD 0x434700
 
 struct Obj_00433C30
 {

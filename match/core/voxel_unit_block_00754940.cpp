@@ -90,7 +90,7 @@ void __stdcall FUN_00754C00(float angle)
 extern int DAT_008467FC[];
 
 // FUNCTION: GAMEMD 0x755AC0
-int __fastcall FUN_00755AC0(int index)
+int FUN_00755AC0(int index)
 {
     return DAT_008467FC[index];
 }

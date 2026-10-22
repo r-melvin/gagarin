@@ -17,9 +17,9 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x4093B0 — the 64-bit reading, returned in EDX:EAX.
-unsigned __int64 __fastcall FUN_004093B0();
+unsigned __int64 FUN_004093B0();
 // FUNCTION: GAMEMD 0x48D080 — the yield, no arguments.
-void __fastcall FUN_0048D080();
+void FUN_0048D080();
 
 // ---------------------------------------------------------------------------
 // 0x4070B0 — wait while a pair of cursors disagree.
@@ -36,7 +36,7 @@ GG_STATIC_ASSERT(offsetof(Queue_004070B0, Tail) == 0x8);
 GG_STATIC_ASSERT(offsetof(Queue_004070B0, Interval) == 0x10);
 
 // FUNCTION: GAMEMD 0x4070B0
-void __fastcall FUN_004070B0(Queue_004070B0* self);
+void FUN_004070B0(Queue_004070B0* self);
 
 // ---------------------------------------------------------------------------
 // 0x4080F0 — the same wait one level down: the cursors and the interval live on
@@ -64,6 +64,6 @@ GG_STATIC_ASSERT(offsetof(Outer_004080F0, Flags) == 0xC);
 GG_STATIC_ASSERT(offsetof(Outer_004080F0, Inner) == 0x14);
 
 // FUNCTION: GAMEMD 0x4080F0
-void __fastcall FUN_004080F0(Outer_004080F0* self);
+void FUN_004080F0(Outer_004080F0* self);
 
 #endif  // GG_MATCH_CORE_SPIN_WAIT_METHODS_H

@@ -68,7 +68,7 @@ void __cdecl FUN_0063F690()
 }
 
 // FUNCTION: GAMEMD 0x63F7B0
-void __fastcall FUN_0063F7B0(void* self)
+void FUN_0063F7B0(void* self)
 {
     RadarClass_OneTime(self);
 }

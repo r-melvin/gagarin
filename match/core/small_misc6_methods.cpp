@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x401190
 // The field is taken as a 16.16 fixed-point value: only its high half is used
 // (`SHR ECX,0x10`, an unsigned shift), scaled, then divided by 100.
-int __fastcall Obj_00401100::FUN_00401190(int value) const
+int Obj_00401100::FUN_00401190(int value) const
 {
     return (int)(unknown_2C >> 16) * value / 100;
 }

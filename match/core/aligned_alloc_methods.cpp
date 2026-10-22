@@ -23,7 +23,7 @@
 // the mask named first, and the bias parenthesised onto the pointer.
 //
 // The same lever then took 0x4074D0 from 96.3% to 100%.
-Aligned_00408D80* __fastcall FUN_00408D80(int size, int shift)
+Aligned_00408D80* FUN_00408D80(int size, int shift)
 {
     Aligned_00408D80* node = (Aligned_00408D80*)FUN_007C8E17(0x3C);
 

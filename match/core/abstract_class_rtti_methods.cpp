@@ -14,7 +14,7 @@
 // dense. Retail walks a pointer over the Key fields while keeping the index in
 // EDX for the Name load, and falls back to the literal that sits directly after
 // the table.
-const char* __fastcall AbstractClass::GetRTTIName(int rtti)
+const char* AbstractClass::GetRTTIName(int rtti)
 {
     for (int i = 0; i < RTTI_NAME_COUNT; i++) {
         if (RTTINames[i].Key == rtti)

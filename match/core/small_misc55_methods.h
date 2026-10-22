@@ -30,7 +30,7 @@ struct Node_004022C0
 GG_STATIC_ASSERT(offsetof(Node_004022C0, Second) == 0x10);
 
 // FUNCTION: GAMEMD 0x407470 — advance the node, __fastcall.
-Node_004022C0* __fastcall FUN_00407470(Node_004022C0* node);
+Node_004022C0* FUN_00407470(Node_004022C0* node);
 
 typedef int (__cdecl* Override_004022C0)();
 
@@ -49,7 +49,7 @@ GG_STATIC_ASSERT(offsetof(Obj_004022C0, Node) == 0x16C);
 GG_STATIC_ASSERT(offsetof(Obj_004022C0, CachedC) == 0x178);
 
 // FUNCTION: GAMEMD 0x4022C0
-int __fastcall FUN_004022C0(Obj_004022C0* self);
+int FUN_004022C0(Obj_004022C0* self);
 
 // ---------------------------------------------------------------------------
 // 0x42F180 — stream a counted table of 16-byte records.

@@ -40,8 +40,8 @@ extern char VTABLE_007F71C4[];
 // VTABLE: GAMEMD 0x7F7624
 extern char VTABLE_007F7624[];
 
-void __fastcall FUN_00624110(void* self);   // GAMEMD 0x624110  base constructor
-void __fastcall FUN_0065D430(void* self);   // GAMEMD 0x65D430  base constructor
+void FUN_00624110(void* self);   // GAMEMD 0x624110  base constructor
+void FUN_0065D430(void* self);   // GAMEMD 0x65D430  base constructor
 
 // The five touch only the vtable pointer at +0.
 struct CtorSeatObject
@@ -50,10 +50,10 @@ struct CtorSeatObject
 };
 GG_STATIC_ASSERT(offsetof(CtorSeatObject, Vtbl) == 0x0);
 
-CtorSeatObject* __fastcall FUN_00765C70(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x765C70
-CtorSeatObject* __fastcall FUN_007670D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x7670D0
-CtorSeatObject* __fastcall FUN_0076A7C0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76A7C0
-CtorSeatObject* __fastcall FUN_0076BC60(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76BC60
-CtorSeatObject* __fastcall FUN_0077D1D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x77D1D0
+CtorSeatObject* FUN_00765C70(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x765C70
+CtorSeatObject* FUN_007670D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x7670D0
+CtorSeatObject* FUN_0076A7C0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76A7C0
+CtorSeatObject* FUN_0076BC60(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x76BC60
+CtorSeatObject* FUN_0077D1D0(CtorSeatObject* self);   // FUNCTION: GAMEMD 0x77D1D0
 
 #endif  // GG_MATCH_CORE_BASE_CTOR_VTABLE_SEAT_SWEEP_H

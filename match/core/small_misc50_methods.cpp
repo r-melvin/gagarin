@@ -55,7 +55,7 @@ forward:
 }
 
 // FUNCTION: GAMEMD 0x44FE60
-void __fastcall FUN_0044FE60(Ini_0044FE60* ini)
+void FUN_0044FE60(Ini_0044FE60* ini)
 {
     ini->FUN_005257C0(DAT_007E3E88, 0);
 

@@ -29,7 +29,7 @@ extern char** DAT_008B4154;
 extern int    DAT_008B4160;
 
 // FUNCTION: GAMEMD 0x422B20
-int __fastcall FUN_00422B20(const char* name);
+int FUN_00422B20(const char* name);
 
 // ---------------------------------------------------------------------------
 // 0x428DE0 — release the loaded image, once all three preconditions hold.
@@ -60,7 +60,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Enabled) == 0x35E);
 GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Loaded) == 0x35F);
 
 // FUNCTION: GAMEMD 0x428DE0
-void __fastcall FUN_00428DE0(Obj_00428DE0* self);
+void FUN_00428DE0(Obj_00428DE0* self);
 
 // ---------------------------------------------------------------------------
 // 0x432610 — deleting destructor.
@@ -73,7 +73,7 @@ void __fastcall FUN_00428DE0(Obj_00428DE0* self);
 extern char VT_007E3A2C;   // VTABLE: GAMEMD 0x7E3A2C
 
 // FUNCTION: GAMEMD 0x65CA00 — the base teardown, __fastcall.
-void __fastcall FUN_0065CA00(void* self);
+void FUN_0065CA00(void* self);
 
 struct Obj_00432610
 {

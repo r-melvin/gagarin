@@ -22,7 +22,7 @@ void __stdcall FUN_007DC720(unsigned int hr);
 // GLOBAL: GAMEMD 0xA8B230 — the provider consulted by 0x410230.
 struct Provider_00A8B230;
 extern Provider_00A8B230* DAT_00A8B230;
-int __fastcall FUN_0068BCB0(Provider_00A8B230* self);   // GAMEMD 0x68BCB0
+int FUN_0068BCB0(Provider_00A8B230* self);   // GAMEMD 0x68BCB0
 
 struct Sink_00410230 { char _pad[0xC]; int at0C; };
 

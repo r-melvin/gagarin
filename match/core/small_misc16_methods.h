@@ -15,7 +15,7 @@ extern int DAT_0087DE28;
 
 // A dispatch table with a flag word of its own at +0x0C.
 struct Obj_00402B80;
-typedef void (__fastcall* Slot18)(Obj_00402B80*);
+typedef void (* Slot18)(Obj_00402B80*);
 struct Table_00402B80 { char _pad[0xC]; int at0C; char _pad10[0x18 - 0x10]; };
 
 struct Obj_00402B80

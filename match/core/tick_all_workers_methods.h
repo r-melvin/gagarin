@@ -39,11 +39,11 @@ extern List_00408270 DAT_0087E810;
 extern int DAT_0087E81C;
 
 // FUNCTION: GAMEMD 0x4073C0 — first entry, or null.
-Entry_00408270* __fastcall FUN_004073C0(List_00408270* list);
+Entry_00408270* FUN_004073C0(List_00408270* list);
 // FUNCTION: GAMEMD 0x4073E0 — next entry, or null.
-Entry_00408270* __fastcall FUN_004073E0(Entry_00408270* entry);
+Entry_00408270* FUN_004073E0(Entry_00408270* entry);
 // FUNCTION: GAMEMD 0x402600 — kick one worker.
-void __fastcall FUN_00402600(int worker);
+void FUN_00402600(int worker);
 
 // FUNCTION: GAMEMD 0x408270
 void FUN_00408270();

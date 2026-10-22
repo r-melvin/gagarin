@@ -12,7 +12,7 @@
 // word at +0xA4. 0x4026C0 and 0x4026F0 differ only in whether they set or clear
 // bit 4, so they are the on/off pair for one property.
 struct Obj_004026C0;
-typedef void (__fastcall* DispSlot)(Obj_004026C0*);
+typedef void (* DispSlot)(Obj_004026C0*);
 
 struct Obj_004026C0
 {

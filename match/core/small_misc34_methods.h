@@ -10,7 +10,7 @@
 
 // No arguments (the entry reads only the hook at 0x87E848); returns a 64-bit
 // value in EDX:EAX.
-__int64 __fastcall FUN_004093B0();   // GAMEMD 0x4093B0
+__int64 FUN_004093B0();   // GAMEMD 0x4093B0
 
 struct Obj_00407170
 {
@@ -24,6 +24,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00407170, unknown_18) == 0x18);
 
 // FUNCTION: GAMEMD 0x407170 — the helper the three list walks and the tail-call
 // forwarders all end up in. Rearm the object at a new rate.
-void __fastcall FUN_00407170c(Obj_00407170* obj, int rate);
+void FUN_00407170c(Obj_00407170* obj, int rate);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC34_METHODS_H

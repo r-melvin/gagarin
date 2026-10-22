@@ -36,7 +36,7 @@ static inline int Prime_0040A260(Aux_0040A260* const& aux)
     return FUN_00402800(aux->Host, (const int*)(aux->Host->field_AC + 0x44));
 }
 
-int __fastcall FUN_0040A260(Host_0040A260* self)
+int FUN_0040A260(Host_0040A260* self)
 {
     Aux_0040A260* aux = (Aux_0040A260*)FUN_007C8E17(sizeof(Aux_0040A260));
     memset(aux, 0, sizeof(Aux_0040A260));

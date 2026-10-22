@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x408560
 // A zero divisor yields zero rather than faulting - the guard is on the
 // divisor, before any of the arithmetic.
-__int64 __fastcall Obj_00408560::FUN_00408560(int value) const
+__int64 Obj_00408560::FUN_00408560(int value) const
 {
     int divisor = Divisor;
 

@@ -112,8 +112,8 @@ GG_STATIC_ASSERT(offsetof(Sub_004079C0, Extent) == 0x90);
 GG_STATIC_ASSERT(offsetof(Sub_004079C0, Requested) == 0xA0);
 
 // FUNCTION: GAMEMD 0x4091C0 / 0x409310 — the two preparation steps.
-void __fastcall FUN_004091C0(Buffer_004079C0* buffer, int extent);
-void __fastcall FUN_00409310(Buffer_004079C0* buffer);
+void FUN_004091C0(Buffer_004079C0* buffer, int extent);
+void FUN_00409310(Buffer_004079C0* buffer);
 
 struct Obj_004079C0
 {
@@ -128,7 +128,7 @@ GG_STATIC_ASSERT(offsetof(Obj_004079C0, Sub) == 0xC0);
 GG_STATIC_ASSERT(offsetof(Obj_004079C0, ExtentB) == 0x178);
 
 // FUNCTION: GAMEMD 0x4079C0
-int __fastcall FUN_004079C0(Obj_004079C0* self);
+int FUN_004079C0(Obj_004079C0* self);
 
 // ---------------------------------------------------------------------------
 // 0x408460 — allocate a node and its payload, or clean up and answer null.
@@ -147,7 +147,7 @@ extern "C" void  __cdecl FUN_007C8B3D(void* block);
 extern "C" void* __cdecl memset(void* destination, int value, unsigned int count);
 
 // FUNCTION: GAMEMD 0x4072C0 — initialises the list header at +0x08.
-void __fastcall FUN_004072C0(void* header);
+void FUN_004072C0(void* header);
 
 struct Node_00408460
 {
@@ -161,7 +161,7 @@ struct Node_00408460
 GG_STATIC_ASSERT(sizeof(Node_00408460) == 0x20);
 
 // FUNCTION: GAMEMD 0x408460
-Node_00408460* __fastcall FUN_00408460(int size);
+Node_00408460* FUN_00408460(int size);
 
 // ---------------------------------------------------------------------------
 // 0x402790 — adopt a node and cache what it points at.
@@ -190,7 +190,7 @@ struct Node_00402790
 };
 
 // FUNCTION: GAMEMD 0x408520 — resolve the node to an item, __fastcall.
-Item_00402790* __fastcall FUN_00408520(Node_00402790* node);
+Item_00402790* FUN_00408520(Node_00402790* node);
 
 struct Obj_00402790
 {
@@ -205,6 +205,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00402790, Node) == 0x168);
 GG_STATIC_ASSERT(offsetof(Obj_00402790, CachedC) == 0x178);
 
 // FUNCTION: GAMEMD 0x402790
-void __fastcall FUN_00402790(Obj_00402790* self, Node_00402790* node);
+void FUN_00402790(Obj_00402790* self, Node_00402790* node);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC51_METHODS_H

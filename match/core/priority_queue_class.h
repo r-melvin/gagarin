@@ -41,7 +41,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 0x04);
 struct PriorityQueueClassNode
 {
     // Declared ascending by retail address (reccmp/isle TU discipline).
-    static int __fastcall ToSurfaceIndex(const CellStruct& mapCoord);  // GAMEMD 0x42B1C0
+    static int ToSurfaceIndex(const CellStruct& mapCoord);  // GAMEMD 0x42B1C0
     static int __stdcall  SurfaceDataCount();                          // GAMEMD 0x42B1F0
 };
 

@@ -5,7 +5,7 @@
 #include "spin_wait_methods.h"
 
 // FUNCTION: GAMEMD 0x4070B0
-void __fastcall FUN_004070B0(Queue_004070B0* self)
+void FUN_004070B0(Queue_004070B0* self)
 {
     unsigned __int64 deadline = FUN_004093B0() + self->Interval;
 
@@ -44,7 +44,7 @@ void __fastcall FUN_004070B0(Queue_004070B0* self)
 // (`if (!(FUN_004093B0() < deadline)) break;`) and the flag read without the
 // unsigned-char cast. Re-reading the inner pointer into a local inside the
 // guard is 33.3%, so the two reads of `self->Inner` stay in the guard.
-void __fastcall FUN_004080F0(Outer_004080F0* self)
+void FUN_004080F0(Outer_004080F0* self)
 {
     unsigned __int64 deadline = FUN_004093B0() + self->Inner->Interval;
 

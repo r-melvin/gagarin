@@ -117,7 +117,7 @@ public:                                                                   \
 // so the deleting tail can be written directly.
 // FUNCTION: GAMEMD 0x55A6F0 (decl; reloc) — the same base destructor COMREL
 // relays to, reached here through a plain declaration.
-void __fastcall PrimaryBaseDtor(void* self);
+void PrimaryBaseDtor(void* self);
 
 struct MultiVtableObject
 {

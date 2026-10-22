@@ -75,7 +75,7 @@ void FUN_005DAFD0(int a1, int a2)
 // Copies the decoded serial into out.
 // out receives an all-zero default first; returns false when the key file
 // cannot be opened.
-bool __fastcall FUN_005dc170(char* out)
+bool FUN_005dc170(char* out)
 {
     char serial[128];
     memset(serial, '0', 22);

@@ -17,7 +17,7 @@
 // too - unlike 0x407100, where the two halves go to separate fields and the
 // two-int struct form is the right model.
 // ---------------------------------------------------------------------------
-__int64 __fastcall FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
+__int64 FUN_004093B0();   // FUNCTION: GAMEMD 0x4093B0
 
 struct Obj_004053E0
 {
@@ -34,7 +34,7 @@ GG_STATIC_ASSERT(offsetof(Obj_004053E0, Accumulated) == 0x140);
 GG_STATIC_ASSERT(offsetof(Obj_004053E0, PauseCount) == 0x158);
 
 // FUNCTION: GAMEMD 0x4053E0
-void __fastcall FUN_004053E0(Obj_004053E0* self);
+void FUN_004053E0(Obj_004053E0* self);
 
 // FUNCTION: GAMEMD 0x405430 — resume: the mirror of 0x4053E0. The pause count
 // is floored down rather than counted up, and the accumulator gains the reading
@@ -44,7 +44,7 @@ void __fastcall FUN_004053E0(Obj_004053E0* self);
 // is which operand retail makes the destination: `ADD EAX,ECX; ADC EDX,EDI`
 // keeps the call's own return pair and adds the member into it. The subtract in
 // 0x4053E0 has no such freedom, which is why that one is still a partial.
-void __fastcall FUN_00405430(Obj_004053E0* self);
+void FUN_00405430(Obj_004053E0* self);
 
 // ---------------------------------------------------------------------------
 // 0x405040 — resume every timer on the global ring at 0x87E180.

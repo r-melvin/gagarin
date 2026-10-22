@@ -26,7 +26,7 @@ extern "C" __declspec(dllimport) int __stdcall FindNextFileA(void *find, FindDat
 extern "C" __declspec(dllimport) int __stdcall FindClose(void *find);
 
 // FUNCTION: GAMEMD 0x751ea0
-void __fastcall FUN_00751ea0(const char *path, int *dirs, int *files, int *bytes)
+void FUN_00751ea0(const char *path, int *dirs, int *files, int *bytes)
 {
 	char sub[260];
 	FindDataA data;

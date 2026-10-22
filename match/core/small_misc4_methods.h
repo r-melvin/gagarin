@@ -47,7 +47,7 @@ struct Obj_00408080
 GG_STATIC_ASSERT(offsetof(Obj_00408080, Buffer) == 0xA4);
 GG_STATIC_ASSERT(sizeof(Obj_00408080) == 0xF4);
 
-void __fastcall FUN_004072D0b(void* self);   // GAMEMD 0x4072D0
+void FUN_004072D0b(void* self);   // GAMEMD 0x4072D0
 
 struct Obj_004085E0
 {
@@ -68,8 +68,8 @@ GG_STATIC_ASSERT(offsetof(Obj_004085E0, unknown_14) == 0x14);
 // BuildingClass rather than inherited. The METHOD name is still unknown; only the
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
 struct BuildingClass_00459C00;
-bool __fastcall FUN_00465D40(void* self);            // GAMEMD 0x465D40
-void __fastcall FUN_006FC030(BuildingClass_00459C00* self);    // GAMEMD 0x6FC030
+bool FUN_00465D40(void* self);            // GAMEMD 0x465D40
+void FUN_006FC030(BuildingClass_00459C00* self);    // GAMEMD 0x6FC030
 
 struct BuildingClass_00459C00
 {

@@ -53,11 +53,11 @@ extern List_00402AF0* DAT_00815E98;
 extern int DAT_0087DE28;
 
 // FUNCTION: GAMEMD 0x4072D0 — initialise the fresh node.
-void __fastcall FUN_004072D0(Node_00402AF0* node);
+void FUN_004072D0(Node_00402AF0* node);
 // FUNCTION: GAMEMD 0x407420 — append the node to the list.
-void __fastcall FUN_00407420(List_00402AF0* list, Node_00402AF0* node);
+void FUN_00407420(List_00402AF0* list, Node_00402AF0* node);
 
 // FUNCTION: GAMEMD 0x402AF0
-Node_00402AF0* __fastcall FUN_00402AF0(Owner_00402AF0* owner);
+Node_00402AF0* FUN_00402AF0(Owner_00402AF0* owner);
 
 #endif  // GG_MATCH_CORE_HOOKED_NODE_CREATE_METHODS_H

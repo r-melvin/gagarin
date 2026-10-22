@@ -18,9 +18,9 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 struct Owner_00402EF0;
 
 // FUNCTION: GAMEMD 0x402550 — the per-entry teardown, __fastcall.
-void __fastcall FUN_00402550(ListNode* node);
+void FUN_00402550(ListNode* node);
 
-typedef void (__fastcall* RegistrarSlot_00402EF0)(Owner_00402EF0*);
+typedef void (* RegistrarSlot_00402EF0)(Owner_00402EF0*);
 
 struct Registrar_00402EF0
 {
@@ -47,7 +47,7 @@ GG_STATIC_ASSERT(offsetof(Owner_00402EF0, SlotIndex) == 0x1C);
 GG_STATIC_ASSERT(offsetof(Owner_00402EF0, Items) == 0xF8);
 
 // FUNCTION: GAMEMD 0x402EF0
-void __fastcall FUN_00402EF0(Owner_00402EF0* self);
+void FUN_00402EF0(Owner_00402EF0* self);
 
 // ---------------------------------------------------------------------------
 // 0x4033C0 — the same teardown, bracketed by a global busy counter.
@@ -67,9 +67,9 @@ GG_STATIC_ASSERT(offsetof(Busy_004033C0, Count) == 0x18);
 extern Busy_004033C0* DAT_00815E98;   // GLOBAL: GAMEMD 0x815E98
 
 // FUNCTION: GAMEMD 0x407450 — the unlink step, __fastcall.
-void __fastcall FUN_00407450(Owner_00402EF0* self);
+void FUN_00407450(Owner_00402EF0* self);
 
 // FUNCTION: GAMEMD 0x4033C0
-void __fastcall FUN_004033C0(Owner_00402EF0* self);
+void FUN_004033C0(Owner_00402EF0* self);
 
 #endif  // GG_MATCH_CORE_LIST_TEARDOWN_METHODS_H

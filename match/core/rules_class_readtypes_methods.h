@@ -46,9 +46,9 @@ public:
 // 100% against the right symbol name. Corrected here so the addresses stay
 // usable as repo facts.
 // ---------------------------------------------------------------------------
-int __fastcall InfantryType_FindOrAllocate(const char* pID);
-int __fastcall UnitType_FindOrAllocate(const char* pID);
-int __fastcall AircraftType_FindOrAllocate(const char* pID);
+int InfantryType_FindOrAllocate(const char* pID);
+int UnitType_FindOrAllocate(const char* pID);
+int AircraftType_FindOrAllocate(const char* pID);
 
 // RulesClass: only the three list-parsers are modelled; `this` is unused so no
 // members/base are needed for a byte-exact match.

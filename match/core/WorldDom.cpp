@@ -111,7 +111,7 @@ void FUN_007AF4F0(int a1, int a2)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x007B0210
-int __fastcall FUN_007B0210()
+int FUN_007B0210()
 {
     return (int)&DAT_00B77F58;
 }
@@ -142,7 +142,7 @@ int __cdecl FUN_007B0340()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x007B0370
-int __fastcall FUN_007B0370()
+int FUN_007B0370()
 {
     return (int)&DAT_00B77F68;
 }

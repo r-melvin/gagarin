@@ -91,7 +91,7 @@ GG_STATIC_ASSERT(sizeof(HashIterator_0053AD00) == 0xC);
 
 // FUNCTION: GAMEMD 0x626690 (decl; reloc) — __fastcall, iterator in ECX;
 // returns the next per-palette scheme vector or null.
-ColorSchemeVec_0053AD00* __fastcall FUN_00626690(HashIterator_0053AD00* it);
+ColorSchemeVec_0053AD00* FUN_00626690(HashIterator_0053AD00* it);
 // FUNCTION: GAMEMD 0x626C60 (decl; reloc) — number of schemes per palette.
 int __cdecl FUN_00626C60();
 
@@ -111,7 +111,7 @@ struct ScenarioClass
     // FUNCTION: GAMEMD 0x53AD00
     // The tint flag is a bool: as an int it takes the callee-saved register
     // that retail gives to `b` and the frame slot reuse flips with it.
-    static void __fastcall RecalcLighting(int r, int g, int b, bool tint);
+    static void RecalcLighting(int r, int g, int b, bool tint);
 };
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_RECALC_METHODS_H

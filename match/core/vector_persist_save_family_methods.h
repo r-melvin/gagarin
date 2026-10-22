@@ -110,12 +110,12 @@ struct PersistVector
     int   Count;              // +0x0010
     int   CapacityIncrement;  // +0x0014
 
-    static long __fastcall Save(Stream_0067FDF0* stream, PersistVector* vec);
+    static long Save(Stream_0067FDF0* stream, PersistVector* vec);
 };
 
 template<class T>
-long __fastcall PersistVector<T>::Save(Stream_0067FDF0* stream,
-                                       PersistVector<T>* vec)
+long PersistVector<T>::Save(Stream_0067FDF0* stream,
+                            PersistVector<T>* vec)
 {
     int count = vec->Count;
     long hr = PSAVE_WRITE(stream, &count, 4);

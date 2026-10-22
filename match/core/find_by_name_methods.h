@@ -24,9 +24,9 @@ extern int   DAT_008B4160;   // GLOBAL: GAMEMD 0x8B4160  item count
 extern int   DAT_00A83C78;   // GLOBAL: GAMEMD 0xA83C78  item count
 extern int   DAT_00A8B228;   // GLOBAL: GAMEMD 0xA8B228  item count
 
-int __fastcall FUN_0041CAA0(const char* name);   // FUNCTION: GAMEMD 0x41CAA0
-int __fastcall FUN_00427CB0(const char* name);   // FUNCTION: GAMEMD 0x427CB0
-int __fastcall FUN_0045E760(const char* name);   // FUNCTION: GAMEMD 0x45E760
-int __fastcall FUN_0045E7B0(const char* name);   // FUNCTION: GAMEMD 0x45E7B0
+int FUN_0041CAA0(const char* name);   // FUNCTION: GAMEMD 0x41CAA0
+int FUN_00427CB0(const char* name);   // FUNCTION: GAMEMD 0x427CB0
+int FUN_0045E760(const char* name);   // FUNCTION: GAMEMD 0x45E760
+int FUN_0045E7B0(const char* name);   // FUNCTION: GAMEMD 0x45E7B0
 
 #endif  // GG_MATCH_CORE_FIND_BY_NAME_METHODS_H

@@ -14,7 +14,7 @@
 //
 // Use the declared slot fields directly rather than manufacturing a cursor
 // through an interior member solely to control register allocation.
-Owner_004087F0* __fastcall FUN_004087F0()
+Owner_004087F0* FUN_004087F0()
 {
     Owner_004087F0* self = (Owner_004087F0*)FUN_007C8E17(sizeof(Owner_004087F0));
     memset(self, 0, sizeof(Owner_004087F0));

@@ -31,12 +31,12 @@ GG_STATIC_ASSERT(offsetof(VirtVector_00765960, Capacity) == 0x8);
 GG_STATIC_ASSERT(offsetof(VirtVector_00765960, IsAllocated) == 0xD);
 
 // FUNCTION: GAMEMD 0x00765960
-void __fastcall FUN_0000765960(VirtVector_00765960* self);
+void FUN_0000765960(VirtVector_00765960* self);
 // FUNCTION: GAMEMD 0x00766D30
-void __fastcall FUN_0000766D30(VirtVector_00765960* self);
+void FUN_0000766D30(VirtVector_00765960* self);
 // FUNCTION: GAMEMD 0x00769F50
-void __fastcall FUN_0000769F50(VirtVector_00765960* self);
+void FUN_0000769F50(VirtVector_00765960* self);
 // FUNCTION: GAMEMD 0x0076B9E0
-void __fastcall FUN_000076B9E0(VirtVector_00765960* self);
+void FUN_000076B9E0(VirtVector_00765960* self);
 
 #endif  // GG_MATCH_CORE_VECTOR_VIRTUAL_DTOR_FAMILY_METHODS_H

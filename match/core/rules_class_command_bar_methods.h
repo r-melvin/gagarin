@@ -51,13 +51,13 @@ public:
 
 // FUNCTION: GAMEMD 0x6CFCC0 (decl; reloc) -- ShapeButtonClass::FindIndex
 // (matched in match/ui/shape_button_class.cpp).
-int __fastcall FUN_006CFCC0(const char* name);
+int FUN_006CFCC0(const char* name);
 // FUNCTION: GAMEMD 0x6CFD20 (decl; reloc) -- store `value` in command slot
 // `index` of the table at 0xB0CB78.
-void __fastcall FUN_006CFD20(int index, int value);
+void FUN_006CFD20(int index, int value);
 // FUNCTION: GAMEMD 0x6CFDB0 (decl; reloc) -- set the button count (0xB0CB54)
 // and recompute the bar origin.
-void __fastcall FUN_006CFDB0(int count);
+void FUN_006CFDB0(int count);
 
 // GLOBAL: GAMEMD 0x8427CC -- the not-found command index.
 extern int DefaultCommandIndex;

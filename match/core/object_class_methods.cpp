@@ -23,7 +23,7 @@ struct ObjectTagRefCountView
 GG_STATIC_ASSERT(offsetof(ObjectTagRefCountView, InstanceCount) == 0x2C);
 GG_STATIC_ASSERT(sizeof(ObjectTagRefCountView) == 0x30);
 
-typedef ObjectTypeClass* (__fastcall* ObjectHealthGetType)(const ObjectClass*);
+typedef ObjectTypeClass* (* ObjectHealthGetType)(const ObjectClass*);
 struct ObjectHealthVtablePrefix
 {
     char unknown_00[0x88];

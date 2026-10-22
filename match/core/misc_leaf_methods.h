@@ -39,7 +39,7 @@ void __cdecl FUN_0040A940();
 void __cdecl FUN_00407020();
 
 // A helper taking (this, 0) in ECX/EDX, so __fastcall. Declared only.
-void __fastcall FUN_004091C0(void* self, int arg);
+void FUN_004091C0(void* self, int arg);
 
 struct Obj_00409300b
 {
@@ -59,7 +59,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00409300b, unknown_08) == 0x8);
 // AnimClass rather than inherited. The METHOD name is still unknown; only the
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
 struct AnimClass_00422B00;
-int __fastcall FUN_005F6BD0(AnimClass_00422B00* self);
+int FUN_005F6BD0(AnimClass_00422B00* self);
 
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AnimClass's own vtable is 0x7E3354.

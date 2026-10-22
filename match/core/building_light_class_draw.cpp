@@ -26,8 +26,8 @@ struct LightVector
 };
 
 // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) -- result = matrix * vector.
-LightVector* __fastcall FUN_005AFB80(LightVector* result, const Matrix3D* matrix,
-                                     const LightVector* vector);
+LightVector* FUN_005AFB80(LightVector* result, const Matrix3D* matrix,
+                          const LightVector* vector);
 
 // GLOBAL: GAMEMD 0xA8B230 -- the scenario object; a flag word is read at its start.
 extern int* DAT_00A8B230;

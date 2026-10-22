@@ -6,7 +6,7 @@
 extern unsigned short *DAT_00b1d14c;
 
 // FUNCTION: GAMEMD 0x748220
-bool __fastcall FUN_00748220(unsigned int mode)
+bool FUN_00748220(unsigned int mode)
 {
 	int rshift;
 	int gshift;

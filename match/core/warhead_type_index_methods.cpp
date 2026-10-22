@@ -19,7 +19,7 @@ static inline int WarheadIndexOf(WarheadTypeClass* item)
 // FUNCTION: GAMEMD 0x40F510
 // Returns the index of the warhead named `id`, creating it if absent; -1 for
 // the "no type" literals.
-int __fastcall WarheadTypeClass::FUN_0040F510(const char* id)
+int WarheadTypeClass::FUN_0040F510(const char* id)
 {
     if (_stricmp(id, "<none>") == 0 || _stricmp(id, "none") == 0)
         return -1;
@@ -33,7 +33,7 @@ int __fastcall WarheadTypeClass::FUN_0040F510(const char* id)
 }
 
 // FUNCTION: GAMEMD 0x40F5C0
-const char* __fastcall WarheadTypeClass::FUN_0040F5C0(int index)
+const char* WarheadTypeClass::FUN_0040F5C0(int index)
 {
     if (index == -1 || (unsigned)index >= (unsigned)WarheadTypeClassArray.Count)
         return 0;

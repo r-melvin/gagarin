@@ -25,7 +25,7 @@ extern int DAT_00A8EB78;
 struct ScenarioClass
 {
     // FUNCTION: GAMEMD 0x555AC0
-    static void __fastcall ScenarioLighting(int* red, int* green, int* blue);
+    static void ScenarioLighting(int* red, int* green, int* blue);
 };
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_METHODS_H

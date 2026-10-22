@@ -969,7 +969,7 @@ extern int DAT_008469f4[];
 // Fill the shade-per-normal table: for each normal of the set, a diffuse term
 // (dot with the first vector) plus a term from the normalised half vector of
 // the two inputs, scaled by 16. The last three entries are fixed at 16.
-void __fastcall FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
+void FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
 {
 	VoxelPoint d(a->X + b->X, b->Y + a->Y, b->Z + a->Z);
 	const Vector3D *t = DAT_008469e0[set];

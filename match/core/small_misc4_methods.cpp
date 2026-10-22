@@ -19,7 +19,7 @@ void __cdecl FUN_00407040()
 }
 
 // FUNCTION: GAMEMD 0x408080
-void __fastcall Obj_00408080::FUN_00408080(int fill)
+void Obj_00408080::FUN_00408080(int fill)
 {
     FUN_007C91D0(Buffer, fill, sizeof(Buffer));
 
@@ -34,7 +34,7 @@ int Obj_00408000c::FUN_004080D0() const
 }
 
 // FUNCTION: GAMEMD 0x4085E0
-void __fastcall Obj_004085E0::FUN_004085E0(int a, int b)
+void Obj_004085E0::FUN_004085E0(int a, int b)
 {
     unknown_10 = b;
     unknown_0C = a;

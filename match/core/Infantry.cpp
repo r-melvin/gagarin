@@ -160,7 +160,7 @@ extern HouseClass* CurrentPlayer;
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised text; the
 // last two arguments are the assert file and line.
-const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 // GLOBAL: GAMEMD 0x825560 -- "D:\\ra2mdpost\\Infantry.CPP"
 extern const char DAT_00825560[];

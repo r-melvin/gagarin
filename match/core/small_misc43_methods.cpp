@@ -25,7 +25,7 @@
 // before the subtract, and named `acc`/`res` temporaries loaded after the
 // call; hand-splitting into unsigned halves with an explicit borrow doubles
 // the instruction count. Only inline asm would reach the register pair.
-void __fastcall FUN_004053E0(Obj_004053E0* self)
+void FUN_004053E0(Obj_004053E0* self)
 {
     int count = self->PauseCount;
 
@@ -52,7 +52,7 @@ void __fastcall FUN_004053E0(Obj_004053E0* self)
 // ADC EDX,EDI`, pushing EDI for it) while VC6 reuses one register and never
 // takes a callee-saved one. Two instances of the same delta now, on an add and
 // on a subtract, which makes it a class rather than a one-off - see section 4.8.
-void __fastcall FUN_00405430(Obj_004053E0* self)
+void FUN_00405430(Obj_004053E0* self)
 {
     if (self->PauseCount != 0) {
         // Decrement written twice so the `TEST` survives - section 4.6.

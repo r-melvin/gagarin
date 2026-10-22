@@ -107,7 +107,7 @@ void Obj_00402190::FUN_00402220()
 // the record branch clears the entry through the pointer it already holds in
 // EDI, while the no-record branch re-reads `[ESI+0x168]`. Written with the
 // local on both sides VC6 keeps EDI in both and drops the reload.
-int __fastcall FUN_00402330(Obj_00402190* self)
+int FUN_00402330(Obj_00402190* self)
 {
     if (self->field_A8 != 0) {
         if (self->field_A8 != -1) {

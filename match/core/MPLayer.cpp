@@ -12,7 +12,7 @@
 
 // Library helpers. Out-of-line copies exist in retail; /Ob2 also inlines
 // them into the callers below.
-void __fastcall WordsIncrement(unsigned int* a, int n)
+void WordsIncrement(unsigned int* a, int n)
 {
     while (++*a == 0) {
         a++;
@@ -22,7 +22,7 @@ void __fastcall WordsIncrement(unsigned int* a, int n)
     }
 }
 
-void __fastcall WordsDecrement(unsigned int* a, int n)
+void WordsDecrement(unsigned int* a, int n)
 {
     while (--*a == 0xFFFFFFFF) {
         a++;
@@ -32,7 +32,7 @@ void __fastcall WordsDecrement(unsigned int* a, int n)
     }
 }
 
-void __fastcall WordsInvert(unsigned int* a, int n)
+void WordsInvert(unsigned int* a, int n)
 {
     for (int i = 0; i < n; i++) {
         *a = ~*a;
@@ -40,24 +40,24 @@ void __fastcall WordsInvert(unsigned int* a, int n)
     }
 }
 
-void __fastcall WordsNegate(unsigned int* a, int n)
+void WordsNegate(unsigned int* a, int n)
 {
     WordsInvert(a, n);
     WordsIncrement(a, n);
 }
 
-void __fastcall WordsCopy(unsigned int* dst, const unsigned int* src, int n)
+void WordsCopy(unsigned int* dst, const unsigned int* src, int n)
 {
     memcpy(dst, src, n * 4);
 }
 
-void __fastcall WordsSetSmall(unsigned int* r, unsigned int v, int n)
+void WordsSetSmall(unsigned int* r, unsigned int v, int n)
 {
     memset(r, 0, n * 4);
     *r = v;
 }
 
-int __fastcall WordsUsedCount(const unsigned int* a, int n)
+int WordsUsedCount(const unsigned int* a, int n)
 {
     a += n - 1;
     while (*a == 0) {
@@ -79,7 +79,7 @@ inline bool WordsAreOne(const unsigned int* a, int n)
     return *a == 1 && WordsUsedCount(a, n) <= 1;
 }
 
-int __fastcall WordsBitLength(const unsigned int* a, int n)
+int WordsBitLength(const unsigned int* a, int n)
 {
     int w = WordsUsedCount(a, n);
     if (w == 0) {
@@ -94,12 +94,12 @@ int __fastcall WordsBitLength(const unsigned int* a, int n)
     return bits;
 }
 
-void __fastcall WordsSetBit(unsigned int* a, unsigned int bit)
+void WordsSetBit(unsigned int* a, unsigned int bit)
 {
     a[bit >> 5] |= 1 << (bit & 31);
 }
 
-int __fastcall WordsCompare(const unsigned int* a, const unsigned int* b, int n)
+int WordsCompare(const unsigned int* a, const unsigned int* b, int n)
 {
     a += n - 1;
     b += n - 1;
@@ -116,7 +116,7 @@ int __fastcall WordsCompare(const unsigned int* a, const unsigned int* b, int n)
     return 0;
 }
 
-bool __fastcall WordsAddWithCarry(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool carry, int n)
+bool WordsAddWithCarry(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool carry, int n)
 {
     while (n--) {
         unsigned int sum = *x + *y;
@@ -130,7 +130,7 @@ bool __fastcall WordsAddWithCarry(unsigned int* dst, const unsigned int* x, cons
     return carry;
 }
 
-bool __fastcall WordsAddSmall(unsigned int* dst, const unsigned int* x, unsigned int y, bool carry, int n)
+bool WordsAddSmall(unsigned int* dst, const unsigned int* x, unsigned int y, bool carry, int n)
 {
     while (n--) {
         unsigned int sum = y + *x;
@@ -144,7 +144,7 @@ bool __fastcall WordsAddSmall(unsigned int* dst, const unsigned int* x, unsigned
     return carry;
 }
 
-bool __fastcall WordsSubWithBorrow(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool borrow, int n)
+bool WordsSubWithBorrow(unsigned int* dst, const unsigned int* x, const unsigned int* y, bool borrow, int n)
 {
     unsigned short* d = (unsigned short*)dst;
     const unsigned short* a = (const unsigned short*)x;
@@ -161,7 +161,7 @@ bool __fastcall WordsSubWithBorrow(unsigned int* dst, const unsigned int* x, con
     return borrow;
 }
 
-int __fastcall WordsMulSmall(unsigned int* dst, const unsigned int* src, short m, int n)
+int WordsMulSmall(unsigned int* dst, const unsigned int* src, short m, int n)
 {
     unsigned short* d = (unsigned short*)dst;
     const unsigned short* a = (const unsigned short*)src;
@@ -177,7 +177,7 @@ int __fastcall WordsMulSmall(unsigned int* dst, const unsigned int* src, short m
     return 0;
 }
 
-void __fastcall HalfWordsMulAdd(unsigned short* dst, const unsigned short* src, unsigned short m, int n)
+void HalfWordsMulAdd(unsigned short* dst, const unsigned short* src, unsigned short m, int n)
 {
     unsigned int carry = 0;
     for (int i = 0; i < n; i++) {
@@ -224,7 +224,7 @@ public:
 
 // Remainder of a (n words) by a 16-bit divisor; quotient into q. Defined
 // elsewhere; declared for the call below.
-unsigned short __fastcall FUN_005c71e0(unsigned int* q, unsigned int* a, unsigned short d, int n);
+unsigned short FUN_005c71e0(unsigned int* q, unsigned int* a, unsigned short d, int n);
 
 inline const unsigned short* FindTablePrime(unsigned short key)
 {
@@ -250,7 +250,7 @@ inline const unsigned short* FindTablePrime(unsigned short key)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6660
 // Shifts the n-word value at p right by shift bits, in place.
-void __fastcall FUN_005c6660(unsigned int* p, int shift, int n)
+void FUN_005c6660(unsigned int* p, int shift, int n)
 {
     unsigned int carry = 0;
     if (shift == 0) {
@@ -296,7 +296,7 @@ void __fastcall FUN_005c6660(unsigned int* p, int shift, int n)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c67a0
 // Shifts the n-word value at p left by shift bits, in place.
-void __fastcall FUN_005c67a0(unsigned int* p, int shift, int n)
+void FUN_005c67a0(unsigned int* p, int shift, int n)
 {
     if (shift == 0) {
         return;
@@ -342,7 +342,7 @@ void __fastcall FUN_005c67a0(unsigned int* p, int shift, int n)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6bc0
 // r = a * b over n words (shift-and-add). Always returns 0.
-int __fastcall FUN_005c6bc0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
+int FUN_005c6bc0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
 {
     WordsSetSmall(r, 0, n);
     if (WordsAreZero(a, n)) {
@@ -380,7 +380,7 @@ int __fastcall FUN_005c6bc0(unsigned int* r, unsigned int* a, unsigned int* b, i
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6fe0
 // Signed r = a * b over n words: multiplies magnitudes and fixes the sign.
-int __fastcall FUN_005c6fe0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
+int FUN_005c6fe0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
 {
     unsigned int ta[64];
     unsigned int tb[64];
@@ -412,7 +412,7 @@ int __fastcall FUN_005c6fe0(unsigned int* r, unsigned int* a, unsigned int* b, i
 // FUNCTION: GAMEMD 0x005c7310
 // rem = a % d, quot = a / d over n words (shift-and-subtract).
 // Returns -1 when d is zero, else 0.
-int __fastcall FUN_005c7310(unsigned int* rem, unsigned int* quot, unsigned int* a, unsigned int* d, int n)
+int FUN_005c7310(unsigned int* rem, unsigned int* quot, unsigned int* a, unsigned int* d, int n)
 {
     if (WordsAreZero(d, n)) {
         return -1;
@@ -454,7 +454,7 @@ int __fastcall FUN_005c7310(unsigned int* rem, unsigned int* quot, unsigned int*
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7740
 // inv = a^-1 mod m over n words (extended Euclid with three rotating rows).
-void __fastcall FUN_005c7740(unsigned int* inv, unsigned int* a, unsigned int* m, int n)
+void FUN_005c7740(unsigned int* inv, unsigned int* a, unsigned int* m, int n)
 {
     unsigned int g[3][64];
     unsigned int q[64];
@@ -483,7 +483,7 @@ void __fastcall FUN_005c7740(unsigned int* inv, unsigned int* a, unsigned int* m
 // FUNCTION: GAMEMD 0x005c7990
 // q = 2^(2*bits(d)-1) / d style reciprocal over n words (shift-and-subtract
 // starting from the top bit of d). Returns -1 when d is zero, else 0.
-int __fastcall FUN_005c7990(unsigned int* q, unsigned int* d, int n)
+int FUN_005c7990(unsigned int* q, unsigned int* d, int n)
 {
     unsigned int r[64];
     if (WordsAreZero(d, n)) {
@@ -520,7 +520,7 @@ int __fastcall FUN_005c7990(unsigned int* q, unsigned int* d, int n)
 // FUNCTION: GAMEMD 0x005c7ba0
 // Parses text into r (n words). A trailing H/O/B selects base 16/8/2,
 // otherwise base 10; a leading '-' negates; ',' separators are skipped.
-void __fastcall FUN_005c7ba0(const char* s, unsigned int* r, int n)
+void FUN_005c7ba0(const char* s, unsigned int* r, int n)
 {
     WordsSetSmall(r, 0, n);
     if (s == 0) {
@@ -580,7 +580,7 @@ void __fastcall FUN_005c7ba0(const char* s, unsigned int* r, int n)
 // FUNCTION: GAMEMD 0x005c7ec0
 // Installs mod (n words) as the current modulus and precomputes a
 // normalised two-word reciprocal of its top bits. Returns 0.
-int __fastcall FUN_005c7ec0(unsigned int* mod, int n)
+int FUN_005c7ec0(unsigned int* mod, int n)
 {
     WordsCopy(DAT_00abf5b4, mod, n);
     DAT_00abf6b8 = WordsBitLength(DAT_00abf5b4, n);
@@ -606,7 +606,7 @@ int __fastcall FUN_005c7ec0(unsigned int* mod, int n)
 // r = (a * b) mod the installed modulus, n words. Schoolbook 16-bit
 // multiply into the scratch buffer, then quotient-estimate reduction using
 // the precomputed reciprocal. Returns 0.
-int __fastcall FUN_005c80a0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
+int FUN_005c80a0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
 {
     WordsSetSmall(DAT_00abf6bc, 0, n * 2);
     const unsigned short* bp = (const unsigned short*)b;
@@ -656,7 +656,7 @@ int __fastcall FUN_005c80a0(unsigned int* r, unsigned int* a, unsigned int* b, i
 // r = base^exp mod mod, n words (left-to-right square and multiply).
 // Returns 0, or -1..-5 for 0^0, zero modulus, base >= mod, exp >= mod and a
 // failed modulus setup. Clears the modulus state afterwards.
-int __fastcall FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* exp, unsigned int* mod, int n)
+int FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* exp, unsigned int* mod, int n)
 {
     unsigned int tmp[64];
     WordsSetSmall(r, 1, n);
@@ -727,7 +727,7 @@ int __fastcall FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* e
 // FUNCTION: GAMEMD 0x005c8980
 // Fermat probable-prime test of p (n words) against the first count small
 // prime bases.
-bool __fastcall FUN_005c8980(unsigned int* p, unsigned int count, int n)
+bool FUN_005c8980(unsigned int* p, unsigned int count, int n)
 {
     unsigned int pm1[64];
     unsigned int base[64];
@@ -748,7 +748,7 @@ bool __fastcall FUN_005c8980(unsigned int* p, unsigned int count, int n)
 // FUNCTION: GAMEMD 0x005c8e40
 // r = random value in [lo, hi] (n words), drawn by rejection sampling from
 // the byte source.
-void __fastcall FUN_005c8e40(unsigned int* r, ByteSource_005C8980* src, unsigned int* lo, unsigned int* hi, int n)
+void FUN_005c8e40(unsigned int* r, ByteSource_005C8980* src, unsigned int* lo, unsigned int* hi, int n)
 {
     unsigned int range[64];
     WordsSubWithBorrow(range, hi, lo, false, n);
@@ -770,7 +770,7 @@ void __fastcall FUN_005c8e40(unsigned int* r, ByteSource_005C8980* src, unsigned
 // FUNCTION: GAMEMD 0x005c9020
 // Primality test of p (n words): table lookup for small values, trial
 // division by the prime table, then two Fermat rounds.
-bool __fastcall FUN_005c9020(unsigned int* p, int n)
+bool FUN_005c9020(unsigned int* p, int n)
 {
     unsigned int pm1[64];
     unsigned int tmp[64];

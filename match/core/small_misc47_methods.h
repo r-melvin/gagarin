@@ -25,7 +25,7 @@ extern "C" int __cdecl FUN_007C99B4(int c);   // isxdigit
 extern "C" int __cdecl FUN_007C97D3(int c);   // toupper
 
 // FUNCTION: GAMEMD 0x412610
-int __fastcall FUN_00412610(const char* text);
+int FUN_00412610(const char* text);
 
 // ---------------------------------------------------------------------------
 // 0x41D7E0 — "has this entry come due, or has its target changed?"
@@ -40,7 +40,7 @@ int __fastcall FUN_00412610(const char* text);
 #include "../core/frame_counter.h"
 
 // FUNCTION: GAMEMD 0x750010 — the mode test, __fastcall, byte result.
-bool __fastcall FUN_00750010(void* subject);
+bool FUN_00750010(void* subject);
 
 struct Obj_0041D7E0
 {

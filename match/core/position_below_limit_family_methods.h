@@ -30,18 +30,18 @@ GG_STATIC_ASSERT(offsetof(Cursor_004F28B0, Owner)    == 0x4);
 GG_STATIC_ASSERT(offsetof(Cursor_004F28B0, Position) == 0x8);
 
 // FUNCTION: GAMEMD 0x004F28B0
-bool __fastcall FUN_004F28B0(Cursor_004F28B0* self);
+bool FUN_004F28B0(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x004F3FC0
-bool __fastcall FUN_004F3FC0(Cursor_004F28B0* self);
+bool FUN_004F3FC0(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x00765700
-bool __fastcall FUN_00765700(Cursor_004F28B0* self);
+bool FUN_00765700(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x00766920
-bool __fastcall FUN_00766920(Cursor_004F28B0* self);
+bool FUN_00766920(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x0076F0B0
-bool __fastcall FUN_0076F0B0(Cursor_004F28B0* self);
+bool FUN_0076F0B0(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x0076F0E0
-bool __fastcall FUN_0076F0E0(Cursor_004F28B0* self);
+bool FUN_0076F0E0(Cursor_004F28B0* self);
 // FUNCTION: GAMEMD 0x0076F0F0
-bool __fastcall FUN_0076F0F0(Cursor_004F28B0* self);
+bool FUN_0076F0F0(Cursor_004F28B0* self);
 
 #endif  // GG_MATCH_CORE_POSITION_BELOW_LIMIT_FAMILY_METHODS_H

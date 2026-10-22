@@ -16,8 +16,8 @@ extern int  DAT_0089DFD4;
 extern char VT_007E4AB8[];
 
 struct Obj_004035F0;
-Obj_004035F0* __fastcall FUN_004035F0(void* self, int kind);        // GAMEMD 0x4035F0
-void          __fastcall FUN_00402440(Obj_004035F0* p, int arg);    // GAMEMD 0x402440
+Obj_004035F0* FUN_004035F0(void* self, int kind);        // GAMEMD 0x4035F0
+void          FUN_00402440(Obj_004035F0* p, int arg);    // GAMEMD 0x402440
 
 struct Obj_004036C0
 {

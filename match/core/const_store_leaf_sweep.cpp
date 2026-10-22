@@ -7,7 +7,7 @@
 #include "const_store_leaf_sweep.h"
 
 // FUNCTION: GAMEMD 0x5D8FC0
-void __fastcall FUN_005D8FC0(ConstStoreObject* self)
+void FUN_005D8FC0(ConstStoreObject* self)
 {
     self->Head = 0;
 }
@@ -15,7 +15,7 @@ void __fastcall FUN_005D8FC0(ConstStoreObject* self)
 
 // FUNCTION: GAMEMD 0x65D660
 // VTABLE: GAMEMD 0x7F0954
-void __fastcall FUN_0065D660(ConstStoreObject* self)
+void FUN_0065D660(ConstStoreObject* self)
 {
     self->Head = VTABLE_007F0954;
 }

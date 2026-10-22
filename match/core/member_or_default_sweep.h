@@ -40,9 +40,9 @@ struct DefaultingHolder
 };
 GG_STATIC_ASSERT(offsetof(DefaultingHolder, Object) == 0x0);
 
-void* __fastcall FUN_007B5400(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5400
-void* __fastcall FUN_007B5440(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5440
-void* __fastcall FUN_007B7100(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7100
-void* __fastcall FUN_007B7140(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7140
+void* FUN_007B5400(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5400
+void* FUN_007B5440(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5440
+void* FUN_007B7100(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7100
+void* FUN_007B7140(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7140
 
 #endif  // GG_MATCH_CORE_MEMBER_OR_DEFAULT_SWEEP_H

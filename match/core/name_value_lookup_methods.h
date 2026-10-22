@@ -30,8 +30,8 @@ extern NameValue DAT_00816EE0[74];
 extern NameValue DAT_00819288[6];
 
 // FUNCTION: GAMEMD 0x40DCE0
-int __fastcall FUN_0040DCE0(const char* name);
+int FUN_0040DCE0(const char* name);
 // FUNCTION: GAMEMD 0x45DD50
-int __fastcall FUN_0045DD50(const char* name);
+int FUN_0045DD50(const char* name);
 
 #endif  // GG_MATCH_CORE_NAME_VALUE_LOOKUP_METHODS_H

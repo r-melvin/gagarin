@@ -21,9 +21,9 @@
 
 struct Obj_004025B0;
 
-typedef void (__fastcall* DispatchSlot_004025B0)(Obj_004025B0*);
-typedef long (__fastcall* DispatchResult_004025B0)(Obj_004025B0*);
-typedef void (__fastcall* Handler_004025B0)(Obj_004025B0*);
+typedef void (* DispatchSlot_004025B0)(Obj_004025B0*);
+typedef long (* DispatchResult_004025B0)(Obj_004025B0*);
+typedef void (* Handler_004025B0)(Obj_004025B0*);
 
 #define DISPATCH_004025B0(o, off) \
     ((*(DispatchSlot_004025B0*)((char*)(o)->Dispatch + (off)))(o))
@@ -76,12 +76,12 @@ GG_STATIC_ASSERT(offsetof(Obj_004025B0, Dispatch) == 0xD4);
 GG_STATIC_ASSERT(offsetof(Obj_004025B0, Pending) == 0x168);
 
 // FUNCTION: GAMEMD 0x401080 — resets the sub-object at +0x10, __fastcall.
-void __fastcall FUN_00401080(void* part);
+void FUN_00401080(void* part);
 // FUNCTION: GAMEMD 0x402220 — the pre-step, __fastcall.
-void __fastcall FUN_00402220(Obj_004025B0* self);
+void FUN_00402220(Obj_004025B0* self);
 
 // FUNCTION: GAMEMD 0x4028B0 — the extra teardown step 0x402550 runs.
-void __fastcall FUN_004028B0(Obj_004025B0* self);
+void FUN_004028B0(Obj_004025B0* self);
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 #endif  // GG_MATCH_CORE_DISPATCH_STATE_METHODS_H

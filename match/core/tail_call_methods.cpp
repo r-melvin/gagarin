@@ -16,7 +16,7 @@ void Obj_00402600::FUN_004026B0() { (*(Slot*)(Dispatch + 0x2C))(this); }
 void Obj_00403800b::FUN_00403810() { Handler(this); }
 
 // FUNCTION: GAMEMD 0x407070
-void __fastcall FUN_00407070(void* self) { FUN_00407170(self, 0); }
+void FUN_00407070(void* self) { FUN_00407170(self, 0); }
 
 // FUNCTION: GAMEMD 0x4080C0
 void Obj_00408000b::FUN_004080C0() { FUN_00407170(unknown_14 + 0x10, 0); }

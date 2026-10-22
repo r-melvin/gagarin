@@ -19,13 +19,13 @@
 // 0x5004ED (MOV ECX,ESI; CALL 0x48DCD0 with idx still live in EDX). Declared
 // body-less so cl emits a (reloc-normalised) call. Returns a pointer whose
 // +0xE08 dword IS the value IsBuildCat5 returns.
-char* __fastcall ObjTypeFindFromCat(int abstractID, int idx);   // GAMEMD 0x48DCD0
+char* ObjTypeFindFromCat(int abstractID, int idx);   // GAMEMD 0x48DCD0
 
 class ObjectTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x5004E0  ObjectTypeClass::IsBuildCat5 (static __fastcall)
-    static int __fastcall IsBuildCat5(int abstractID, int idx);
+    static int IsBuildCat5(int abstractID, int idx);
 };
 
 #endif  // GG_MATCH_CORE_OBJECT_TYPE_CLASS_H

@@ -12,9 +12,9 @@
 // BuildTime, so the +0x48 byte lands before the +0x30 double. The section
 // probe is CCINIClass::Exists expanded in call-site flag form (banked rule).
 // No value is reported; an absent section leaves the block untouched.
-void __fastcall Read_Difficulty_0066D270(CCINI_0066D270* pINI,
-                                         Difficulty_0066D270* pOut,
-                                         const char* pSection)
+void Read_Difficulty_0066D270(CCINI_0066D270* pINI,
+                              Difficulty_0066D270* pOut,
+                              const char* pSection)
 {
     bool        ok  = false;
     const char* key = 0;

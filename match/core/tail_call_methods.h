@@ -18,13 +18,13 @@
 #include "../_rt/gg_static_assert.h"
 
 // Declared-only callees.
-void  __fastcall FUN_00407170(void* self, int arg);   // GAMEMD 0x407170
-void* __fastcall FUN_00407470(void* self);            // GAMEMD 0x407470
-void  __fastcall FUN_004072C0b(void* self);           // GAMEMD 0x4072C0
+void  FUN_00407170(void* self, int arg);   // GAMEMD 0x407170
+void* FUN_00407470(void* self);            // GAMEMD 0x407470
+void  FUN_004072C0b(void* self);           // GAMEMD 0x4072C0
 
 // A dispatch table of __thiscall slots hung off +0xD4.
 struct Obj_00402600;
-typedef void (__fastcall* Slot)(Obj_00402600*);
+typedef void (* Slot)(Obj_00402600*);
 struct Obj_00402600
 {
     char  _pad000[0xD4];
@@ -39,7 +39,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00402600, Dispatch) == 0xD4);
 
 // A function pointer stored directly in the object at +0x10C.
 struct Obj_00403800b;
-typedef void (__fastcall* SelfFn)(Obj_00403800b*);
+typedef void (* SelfFn)(Obj_00403800b*);
 struct Obj_00403800b
 {
     char   _pad000[0x10C];
@@ -51,7 +51,7 @@ struct Obj_00403800b
 GG_STATIC_ASSERT(offsetof(Obj_00403800b, Handler) == 0x10C);
 
 // FUNCTION: GAMEMD 0x407070
-void __fastcall FUN_00407070(void* self);
+void FUN_00407070(void* self);
 
 struct Obj_00408000b
 {

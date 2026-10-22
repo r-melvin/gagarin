@@ -25,7 +25,7 @@
 #include "type_class_findoralloc_methods.h"
 
 // FUNCTION: GAMEMD 0x428B80  AnimTypeClass::FindOrAllocate (__fastcall)
-AnimTypeClass* __fastcall AnimTypeClass::FindOrAllocate(const char* id)
+AnimTypeClass* AnimTypeClass::FindOrAllocate(const char* id)
 {
     if (_stricmp("<none>", id) == 0)
         return 0;
@@ -42,7 +42,7 @@ AnimTypeClass* __fastcall AnimTypeClass::FindOrAllocate(const char* id)
 }
 
 // FUNCTION: GAMEMD 0x71E2A0  TerrainTypeClass::FindOrAllocate (__fastcall)
-TerrainTypeClass* __fastcall TerrainTypeClass::FindOrAllocate(const char* id)
+TerrainTypeClass* TerrainTypeClass::FindOrAllocate(const char* id)
 {
     if (_stricmp("<none>", id) == 0)
         return 0;
@@ -59,7 +59,7 @@ TerrainTypeClass* __fastcall TerrainTypeClass::FindOrAllocate(const char* id)
 }
 
 // FUNCTION: GAMEMD 0x75E3B0  WarheadTypeClass::FindOrAllocate (__fastcall)
-WarheadTypeClass* __fastcall WarheadTypeClass::FindOrAllocate(const char* id)
+WarheadTypeClass* WarheadTypeClass::FindOrAllocate(const char* id)
 {
     if (_stricmp("<none>", id) == 0)
         return 0;

@@ -17,7 +17,7 @@
 // reaches 100%, and so does the re-derived form with the cell written first;
 // only the spellings that name the stride at the addition stay at 96.3%. Same
 // lever, found the same day, as 0x408D80.
-void* __fastcall FUN_004074D0(int count, int elementSize)
+void* FUN_004074D0(int count, int elementSize)
 {
     int stride = elementSize + 8;
 

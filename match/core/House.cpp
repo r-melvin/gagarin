@@ -1045,7 +1045,7 @@ int __stdcall HouseClusterView::GetIndex()
 }
 
 // FUNCTION: GAMEMD 0x004F6EB0
-void __fastcall FUN_004F6EB0()
+void FUN_004F6EB0()
 {
 }
 
@@ -1324,7 +1324,7 @@ void House_004FF550::RemoveTracking(Techno_004FF550* pTechno)
 //
 // abstractID is held in ESI (callee-saved) across the call so the two CMPs run
 // after it; idx stays live in EDX up to the call.
-int __fastcall ObjectTypeClass::IsBuildCat5(int abstractID, int idx)
+int ObjectTypeClass::IsBuildCat5(int abstractID, int idx)
 {
     char* p;
     if (idx < 0)
@@ -2130,7 +2130,7 @@ float Obj_0050C160::FUN_0050C160() const
 // into a 20-byte frame buffer (retail's inlined strcpy: REPNE SCASB then REP
 // MOVSD/MOVSB), and the comparison is the inlined strcmp byte loop. The count
 // is re-read from the global at the end of every iteration.
-int __fastcall House_0050C170::FindIndexByName(const char* name)
+int House_0050C170::FindIndexByName(const char* name)
 {
     char buf[20];
 
@@ -2230,7 +2230,7 @@ void House_0050D440::RespawnStartingForces()
 // FUNCTION: GAMEMD 0x0050D9C0
 //
 // True when the signed member at +0x164 is positive.
-bool __fastcall FUN_0050D9C0(Predicate_0050D9C0* self)
+bool FUN_0050D9C0(Predicate_0050D9C0* self)
 {
     return *(int*)(self->Bytes + 0x164) > 0;
 }
@@ -2239,7 +2239,7 @@ bool __fastcall FUN_0050D9C0(Predicate_0050D9C0* self)
 // FUNCTION: GAMEMD 0x0050D9D0
 //
 // True when the signed member at +0x168 is positive.
-bool __fastcall FUN_0050D9D0(Predicate_0050D9C0* self)
+bool FUN_0050D9D0(Predicate_0050D9C0* self)
 {
     return *(int*)(self->Bytes + 0x168) > 0;
 }

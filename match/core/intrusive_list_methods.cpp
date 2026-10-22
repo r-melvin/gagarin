@@ -80,7 +80,7 @@ ListNode* ListNode::FUN_004073E0()
 // why it scored zero. Spelled `__fastcall` on the member the node stays in EDX
 // and the body below is byte-identical to the free-function form, so the class
 // membership costs nothing.
-void __fastcall ListNode::FUN_00407420(ListNode* node)
+void ListNode::FUN_00407420(ListNode* node)
 {
     node->Next = this->Next;
     node->Prev = this;
@@ -90,7 +90,7 @@ void __fastcall ListNode::FUN_00407420(ListNode* node)
 
 // FUNCTION: GAMEMD 0x407440
 // Splice `node` in before `anchor`.
-void __fastcall ListNode::FUN_00407440(ListNode* node)
+void ListNode::FUN_00407440(ListNode* node)
 {
     node->Next = this;
 

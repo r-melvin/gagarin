@@ -78,18 +78,18 @@ ENTRY* __fastcall FUN_##ADDR(ENTRY* base, int count, const KEYTYPE* key)  \
 }
 
 // FUNCTION: GAMEMD 0x004D2F00
-SortedEntry_004D2F00* __fastcall FUN_004D2F00(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_004D2F00(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x00523440
-SortedEntry_004D2F00* __fastcall FUN_00523440(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_00523440(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x0052B6D0
-SortedEntry_004D2F00* __fastcall FUN_0052B6D0(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_0052B6D0(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x0052B750
-SortedEntry_004D2F00* __fastcall FUN_0052B750(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_0052B750(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x005FC120
-SortedEntry_004D2F00* __fastcall FUN_005FC120(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_005FC120(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x00710890
-SortedEntry_004D2F00* __fastcall FUN_00710890(SortedEntry_004D2F00* base, int count, const int* key);
+SortedEntry_004D2F00* FUN_00710890(SortedEntry_004D2F00* base, int count, const int* key);
 // FUNCTION: GAMEMD 0x00725070
-SortedEntryU_00725070* __fastcall FUN_00725070(SortedEntryU_00725070* base, int count, const unsigned int* key);
+SortedEntryU_00725070* FUN_00725070(SortedEntryU_00725070* base, int count, const unsigned int* key);
 
 #endif  // GG_MATCH_CORE_SORTED_PAIR_SEARCH_FAMILY_METHODS_H

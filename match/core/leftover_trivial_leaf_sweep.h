@@ -52,7 +52,7 @@ struct LeafObj_0x04
 };
 GG_STATIC_ASSERT(offsetof(LeafObj_0x04, unknown_04) == 0x4);
 
-int __fastcall FUN_0049FB60(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x49FB60
+int FUN_0049FB60(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x49FB60
 bool __cdecl   FUN_004A3BF0();                     // FUNCTION: GAMEMD 0x4A3BF0
 void __stdcall FUN_004AAD20(int unused);           // FUNCTION: GAMEMD 0x4AAD20
 bool __stdcall FUN_00484F10(int unused);           // FUNCTION: GAMEMD 0x484F10
@@ -62,16 +62,16 @@ bool __stdcall FUN_005B43F0(int unused);           // FUNCTION: GAMEMD 0x5B43F0
 bool __stdcall FUN_005D6310(int unused);           // FUNCTION: GAMEMD 0x5D6310
 bool __cdecl   FUN_005D6340();                     // FUNCTION: GAMEMD 0x5D6340
 bool __cdecl   FUN_005D7570();                     // FUNCTION: GAMEMD 0x5D7570
-int __fastcall FUN_006241D0(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x6241D0
+int FUN_006241D0(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x6241D0
 void __stdcall FUN_006A4FF0(int unused);           // FUNCTION: GAMEMD 0x6A4FF0
-int __fastcall FUN_0067A730(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A730
-int __fastcall FUN_0067A7C0(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A7C0
-int __fastcall FUN_0067A8A0(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A8A0
+int FUN_0067A730(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A730
+int FUN_0067A7C0(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A7C0
+int FUN_0067A8A0(LeafObj_0x10* self);   // FUNCTION: GAMEMD 0x67A8A0
 bool __cdecl   FUN_00711E80();                     // FUNCTION: GAMEMD 0x711E80
-int __fastcall FUN_00717A70(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x717A70
-int __fastcall FUN_0076F020(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F020
-int __fastcall FUN_0076F070(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F070
-int __fastcall FUN_0076F080(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F080
+int FUN_00717A70(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x717A70
+int FUN_0076F020(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F020
+int FUN_0076F070(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F070
+int FUN_0076F080(LeafObj_0x04* self);   // FUNCTION: GAMEMD 0x76F080
 
 // Three single-store leaves that publish their ECX argument into a fixed
 // global (`MOV [imm32],ECX; RET`). The destinations are read off the stores.
@@ -79,8 +79,8 @@ extern int DAT_00828140;   // GLOBAL: GAMEMD 0x828140
 extern int DAT_00829FF4;   // GLOBAL: GAMEMD 0x829FF4
 extern int DAT_00829FF8;   // GLOBAL: GAMEMD 0x829FF8
 
-void __fastcall FUN_0053F1F0(int value);   // FUNCTION: GAMEMD 0x53F1F0
-void __fastcall FUN_0055AF40(int value);   // FUNCTION: GAMEMD 0x55AF40
-void __fastcall FUN_0055AF50(int value);   // FUNCTION: GAMEMD 0x55AF50
+void FUN_0053F1F0(int value);   // FUNCTION: GAMEMD 0x53F1F0
+void FUN_0055AF40(int value);   // FUNCTION: GAMEMD 0x55AF40
+void FUN_0055AF50(int value);   // FUNCTION: GAMEMD 0x55AF50
 
 #endif  // GG_MATCH_CORE_LEFTOVER_TRIVIAL_LEAF_SWEEP_H

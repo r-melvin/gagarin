@@ -12,10 +12,10 @@
 
 // FUNCTION: GAMEMD 0x55BB90 (decl; reloc) -- block compress, __fastcall
 // (source ECX, length EDX; destination, out-length pointer, work buffer).
-int __fastcall FUN_0055BB90(const unsigned char* in, unsigned int in_len,
+int FUN_0055BB90(const unsigned char* in, unsigned int in_len,
     unsigned char* out, unsigned int* out_len, void* work);
 // FUNCTION: GAMEMD 0x55C0E0 (decl; reloc) -- block decompress, same convention.
-int __fastcall FUN_0055C0E0(const unsigned char* in, unsigned int in_len,
+int FUN_0055C0E0(const unsigned char* in, unsigned int in_len,
     unsigned char* out, unsigned int* out_len, void* work);
 
 struct LZOBlockHeader

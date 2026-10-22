@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x4036C0
 // Allocate of kind 1, then initialise only if the allocation succeeded. The
 // pointer comes back either way.
-Obj_004035F0* __fastcall Obj_004036C0::FUN_004036C0(int arg)
+Obj_004035F0* Obj_004036C0::FUN_004036C0(int arg)
 {
     Obj_004035F0* p = FUN_004035F0(this, 1);
 

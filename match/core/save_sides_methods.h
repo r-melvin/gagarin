@@ -55,6 +55,6 @@ extern "C" __declspec(dllimport) long __stdcall OleSaveToStream(Persist_006805F0
                                                                 Stream_006805F0* pStm);
 
 // FUNCTION: GAMEMD 0x6805F0  (__fastcall — stream in ECX, vector in EDX)
-long __fastcall Save_Sides(Stream_006805F0* stream, SideVector_006805F0* sides);
+long Save_Sides(Stream_006805F0* stream, SideVector_006805F0* sides);
 
 #endif  // GG_MATCH_CORE_SAVE_SIDES_METHODS_H

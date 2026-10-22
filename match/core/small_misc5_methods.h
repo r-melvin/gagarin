@@ -17,10 +17,10 @@ extern int   DAT_0081B1E8;
 extern char  VT_007E4AAC[];
 
 // Declared-only callees.
-void __fastcall FUN_004071C0(void* self);                 // GAMEMD 0x4071C0
-void __fastcall FUN_00403730(void* self, int arg);        // GAMEMD 0x403730
-void __fastcall FUN_00403770(void* self, int arg);        // GAMEMD 0x403770
-void __fastcall FUN_004037C0(void* self, int arg);        // GAMEMD 0x4037C0
+void FUN_004071C0(void* self);                 // GAMEMD 0x4071C0
+void FUN_00403730(void* self, int arg);        // GAMEMD 0x403730
+void FUN_00403770(void* self, int arg);        // GAMEMD 0x403770
+void FUN_004037C0(void* self, int arg);        // GAMEMD 0x4037C0
 void __cdecl    FUN_00404E70();                           // GAMEMD 0x404E70
 void __cdecl    FUN_00404FD0();                           // GAMEMD 0x404FD0
 void __cdecl    FUN_00405040();                           // GAMEMD 0x405040

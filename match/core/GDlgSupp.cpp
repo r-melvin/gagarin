@@ -79,7 +79,7 @@ extern "C" const char DAT_00817474[];
 // 0x4CAC40: x87 helper taking one double and returning one (callee only).
 double __cdecl FUN_004CAC40(double value);
 // 0x5117D0: name -> index, -1 when absent (callee only).
-int __fastcall FUN_005117D0(const char* name);
+int FUN_005117D0(const char* name);
 
 // ---------------------------------------------------------------------------
 
@@ -367,7 +367,7 @@ void __cdecl FUN_004E6140()
 // FUNCTION: GAMEMD 0x004E6150
 // Report the 0x7C5F3D byte and the signed byte at 0x84E863, and copy up to
 // `count` characters of the text at 0x84E865 when a buffer is given.
-void __fastcall FUN_004E6150(int* value, char* code, char* buffer, int count)
+void FUN_004E6150(int* value, char* code, char* buffer, int count)
 {
     *code = FUN_007C5F3D();
     FUN_007C5FFF();

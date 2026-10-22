@@ -45,10 +45,10 @@ extern char VTABLE_007F71C4[];
 // VTABLE: GAMEMD 0x7F7624
 extern char VTABLE_007F7624[];
 
-void __fastcall FUN_00431B80(void* self);   // GAMEMD 0x431B80  base destructor
-void __fastcall FUN_00624130(void* self);   // GAMEMD 0x624130  base destructor
-void __fastcall FUN_0065D460(void* self);   // GAMEMD 0x65D460  base destructor
-void __fastcall FUN_0065D660(void* self);   // GAMEMD 0x65D660  base destructor
+void FUN_00431B80(void* self);   // GAMEMD 0x431B80  base destructor
+void FUN_00624130(void* self);   // GAMEMD 0x624130  base destructor
+void FUN_0065D460(void* self);   // GAMEMD 0x65D460  base destructor
+void FUN_0065D660(void* self);   // GAMEMD 0x65D660  base destructor
 
 // Every one of the seven touches only the vtable pointer at +0.
 struct SeatDtorObject
@@ -57,12 +57,12 @@ struct SeatDtorObject
 };
 GG_STATIC_ASSERT(offsetof(SeatDtorObject, Vtbl) == 0x0);
 
-void __fastcall FUN_00535A60(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x535A60
-void __fastcall FUN_007668F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x7668F0
-void __fastcall FUN_00766900(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766900
-void __fastcall FUN_00766910(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766910
-void __fastcall FUN_00767300(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x767300
-void __fastcall FUN_0076F060(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x76F060
-void __fastcall FUN_0077D1F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x77D1F0
+void FUN_00535A60(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x535A60
+void FUN_007668F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x7668F0
+void FUN_00766900(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766900
+void FUN_00766910(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x766910
+void FUN_00767300(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x767300
+void FUN_0076F060(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x76F060
+void FUN_0077D1F0(SeatDtorObject* self);   // FUNCTION: GAMEMD 0x77D1F0
 
 #endif  // GG_MATCH_CORE_SEAT_VTABLE_TAIL_DTOR_SWEEP_H

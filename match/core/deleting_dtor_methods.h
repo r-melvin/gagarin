@@ -24,10 +24,10 @@
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 // The four real destructors, declared only so cl emits reloc-normalised calls.
-void __fastcall FUN_00414080(void* self);   // GAMEMD 0x414080
-void __fastcall FUN_004228E0(void* self);   // GAMEMD 0x4228E0
-void __fastcall FUN_00466560(void* self);   // GAMEMD 0x466560
-void __fastcall FUN_005565A0(void* self);   // GAMEMD 0x5565A0
+void FUN_00414080(void* self);   // GAMEMD 0x414080
+void FUN_004228E0(void* self);   // GAMEMD 0x4228E0
+void FUN_00466560(void* self);   // GAMEMD 0x466560
+void FUN_005565A0(void* self);   // GAMEMD 0x5565A0
 
 struct Obj_00408E00
 {

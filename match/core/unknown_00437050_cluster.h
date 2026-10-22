@@ -32,7 +32,7 @@ extern "C" unsigned int DAT_0089C564;
 struct UnknownVtable_004371B0
 {
     unsigned char unknown_00[0x70];
-    int (__fastcall *slot_1C)(void* receiver);
+    int (*slot_1C)(void* receiver);
 };
 
 // This view contains only the prefix read by entry 0x4371B0.
@@ -53,7 +53,7 @@ extern "C" int __cdecl FUN_004370B0();
 extern "C" void __cdecl FUN_00437190();
 
 // FUNCTION: GAMEMD 0x004371B0
-extern "C" int __fastcall FUN_004371B0(
+extern "C" int FUN_004371B0(
     UnknownObject_004371B0* object, int factor, int count);
 
 #endif  // GG_MATCH_CORE_UNKNOWN_00437050_CLUSTER_H

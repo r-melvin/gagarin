@@ -13,7 +13,7 @@
 #include "find_or_allocate_methods.h"
 
 // FUNCTION: GAMEMD 0x41CEF0
-char* __fastcall FUN_0041CEF0(const char* name)
+char* FUN_0041CEF0(const char* name)
 {
     if (FUN_007C8D20(STR_00817474, name) != 0
         && FUN_007C8D20(STR_00817694, name) != 0) {
@@ -35,7 +35,7 @@ char* __fastcall FUN_0041CEF0(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x41FCA0
-char* __fastcall FUN_0041FCA0(const char* name)
+char* FUN_0041FCA0(const char* name)
 {
     if (FUN_007C8D20(STR_00817474, name) != 0
         && FUN_007C8D20(STR_00817694, name) != 0) {
@@ -57,7 +57,7 @@ char* __fastcall FUN_0041FCA0(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x4653C0
-char* __fastcall FUN_004653C0(const char* name)
+char* FUN_004653C0(const char* name)
 {
     if (FUN_007C8D20(STR_00817474, name) != 0
         && FUN_007C8D20(STR_00817694, name) != 0) {

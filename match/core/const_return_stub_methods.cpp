@@ -37,7 +37,7 @@ void __stdcall FUN_00413490(int)
 }
 
 // FUNCTION: GAMEMD 0x420120
-void* __fastcall FUN_00420120(void* self)
+void* FUN_00420120(void* self)
 {
     return self;
 }

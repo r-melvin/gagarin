@@ -19,7 +19,7 @@ class AbstractClass;
 
 // WhatAmI() — virtual at primary-vtable slot +0x2C, zero-argument, so the
 // tree's __fastcall-fn-pointer idiom is the right tool here.
-typedef int (__fastcall* WhatAmIFunc)(AbstractClass*);
+typedef int (* WhatAmIFunc)(AbstractClass*);
 #define LOGIC_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 
 // GLOBAL: GAMEMD 0x008B40C8 — the logic list.

@@ -8,7 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-typedef void (__fastcall* ElemFn2)(void* elem);
+typedef void (* ElemFn2)(void* elem);
 
 // FUNCTION: GAMEMD 0x40AFD0 — the backwards counterpart of the forward walk at
 // 0x4068F0. The cursor starts one past the end and steps back before each call,

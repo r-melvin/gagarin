@@ -145,7 +145,7 @@ extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 // FUNCTION: GAMEMD 0x406F00 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00406F00();
 // FUNCTION: GAMEMD 0x5BF500 (decl; reloc) — __fastcall, flag in CL.
-void __fastcall FUN_005BF500(bool flag);
+void FUN_005BF500(bool flag);
 
 struct ScenarioClass
 {

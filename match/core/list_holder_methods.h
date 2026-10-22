@@ -44,6 +44,6 @@ struct Holder_004035D0
 
 // FUNCTION: GAMEMD 0x4035B0 — the node lives at +0xF8 of the owner, and the
 // result is written through a caller-supplied slot rather than returned.
-void __fastcall FUN_004035B0(void* owner, ListNode** out);
+void FUN_004035B0(void* owner, ListNode** out);
 
 #endif  // GG_MATCH_CORE_LIST_HOLDER_METHODS_H

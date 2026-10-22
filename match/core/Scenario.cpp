@@ -466,7 +466,7 @@ bool Scenario_00689D30::ReadStartPoints(CCINI_00689D30* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0068BCB0
-int __fastcall FUN_0068BCB0(Obj_0068BCB0* self)
+int FUN_0068BCB0(Obj_0068BCB0* self)
 {
     return ++self->unknown_214;
 }
@@ -521,9 +521,9 @@ int Obj_0068C030::FUN_0068C030(int index) const
 // Argument order to _stricmp is (name, candidate), read off the push order —
 // the opposite of HouseTypeClass::FindIndexOfName's inner compare. Getting it
 // backwards costs two instructions and 3.8%.
-int __fastcall ColorScheme::FindByName(const char* name, HSVClass* hsv,
-                                       PaletteClass* pal1, PaletteClass* pal2,
-                                       int shade)
+int ColorScheme::FindByName(const char* name, HSVClass* hsv,
+                            PaletteClass* pal1, PaletteClass* pal2,
+                            int shade)
 {
     for (;;)
     {

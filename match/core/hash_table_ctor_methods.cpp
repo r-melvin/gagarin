@@ -14,9 +14,9 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x6B94E0 (decl; reloc) -- key hash, key pointer in ECX.
-unsigned int __fastcall FUN_006B94E0(const void* key);
+unsigned int FUN_006B94E0(const void* key);
 
-typedef unsigned int (__fastcall* HashFunction)(const void* key);
+typedef unsigned int (* HashFunction)(const void* key);
 
 class StringHashTable_00AC4848
 {

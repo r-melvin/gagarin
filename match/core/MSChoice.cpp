@@ -508,13 +508,13 @@ Obj_007B4620* MapStageList::FindTitle(Obj_007B4620* key)
 }
 
 // FUNCTION: GAMEMD 0x5D0580
-void __fastcall FUN_005D0580(void* self)
+void FUN_005D0580(void* self)
 {
     FUN_007B46F0(self);
 }
 
 // FUNCTION: GAMEMD 0x005D0590
-void __fastcall FUN_005D0590()
+void FUN_005D0590()
 {
 }
 

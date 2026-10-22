@@ -5,7 +5,7 @@
 #include "small_misc55_methods.h"
 
 // FUNCTION: GAMEMD 0x4022C0
-int __fastcall FUN_004022C0(Obj_004022C0* self)
+int FUN_004022C0(Obj_004022C0* self)
 {
     // The override path is the fall-through: retail's `JZ` at 0x4022CE jumps
     // forward to the node walk, so the guard is written positively.

@@ -64,20 +64,20 @@ void __fastcall FUN_##ADDR(VtblVector_0049F9D0* self)                     \
 }
 
 // FUNCTION: GAMEMD 0x0049F9D0
-void __fastcall FUN_0049F9D0(VtblVector_0049F9D0* self);
+void FUN_0049F9D0(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x00679F70
-void __fastcall FUN_00679F70(VtblVector_0049F9D0* self);
+void FUN_00679F70(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x00679FA0
-void __fastcall FUN_00679FA0(VtblVector_0049F9D0* self);
+void FUN_00679FA0(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x00679FD0
-void __fastcall FUN_00679FD0(VtblVector_0049F9D0* self);
+void FUN_00679FD0(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x0067A000
-void __fastcall FUN_0067A000(VtblVector_0049F9D0* self);
+void FUN_0067A000(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x0067A030
-void __fastcall FUN_0067A030(VtblVector_0049F9D0* self);
+void FUN_0067A030(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x0067A060
-void __fastcall FUN_0067A060(VtblVector_0049F9D0* self);
+void FUN_0067A060(VtblVector_0049F9D0* self);
 // FUNCTION: GAMEMD 0x00771A00
-void __fastcall FUN_00771A00(VtblVector_0049F9D0* self);
+void FUN_00771A00(VtblVector_0049F9D0* self);
 
 #endif  // GG_MATCH_CORE_VECTOR_VTABLE_PLAIN_DTOR_FAMILY_METHODS_H

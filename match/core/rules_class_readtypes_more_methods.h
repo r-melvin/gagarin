@@ -38,12 +38,12 @@ public:
 //   ParticleSystemTypeClass::FindOrAllocate @0x644890
 //   HouseTypeClass::FindOrAllocate          @0x512680
 //   BuildingTypeClass::FindOrAllocate       @0x4653C0
-int __fastcall HouseType_FindOrAllocate(const char* pID);
-int __fastcall BuildingType_FindOrAllocate(const char* pID);
-int __fastcall AnimType_FindOrAllocate(const char* pID);
-int __fastcall VoxelAnimType_FindOrAllocate(const char* pID);
-int __fastcall ParticleType_FindOrAllocate(const char* pID);
-int __fastcall ParticleSystemType_FindOrAllocate(const char* pID);
+int HouseType_FindOrAllocate(const char* pID);
+int BuildingType_FindOrAllocate(const char* pID);
+int AnimType_FindOrAllocate(const char* pID);
+int VoxelAnimType_FindOrAllocate(const char* pID);
+int ParticleType_FindOrAllocate(const char* pID);
+int ParticleSystemType_FindOrAllocate(const char* pID);
 
 // RulesClass: `this` is only forwarded, so no members or base are needed.
 // Section-name globals for the two parsers that load a `char*` rather than

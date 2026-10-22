@@ -96,13 +96,13 @@ extern ScenarioClass* DAT_00A8B230;
 void __stdcall FUN_0053A140(CellStruct cell);
 
 // FUNCTION: GAMEMD 0x53B460 (decl; reloc)
-void __fastcall FUN_0053B460(int value);
+void FUN_0053B460(int value);
 
 // FUNCTION: GAMEMD 0x684060 (decl; reloc)
-void __fastcall FUN_00684060(int value);
+void FUN_00684060(int value);
 
 // FUNCTION: GAMEMD 0x750920 (decl; reloc)
-void* __fastcall FUN_00750920(int index, float volume, unsigned int pan, void* controller);
+void* FUN_00750920(int index, float volume, unsigned int pan, void* controller);
 
 // GLOBAL: GAMEMD 0xA8EAEC / 0xA8EAF8 -- TriggerClass::Array items and count.
 extern TriggerClass** DAT_00A8EAEC;
@@ -116,13 +116,13 @@ extern CellStruct DAT_00B0E680;
 extern int DAT_00A8E7AC;
 
 // FUNCTION: GAMEMD 0x53AD00 (decl; reloc)
-void __fastcall FUN_0053AD00(int a, int b, int c, int d);
+void FUN_0053AD00(int a, int b, int c, int d);
 
 // FUNCTION: GAMEMD 0x726910 (decl; reloc) -- the house a trigger belongs to.
-HouseClass* __fastcall FUN_00726910(TriggerClass* trigger);
+HouseClass* FUN_00726910(TriggerClass* trigger);
 
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc)
-bool __fastcall FUN_00510F60(int index);
+bool FUN_00510F60(int index);
 
 // The house named by an action's parameter (same lookup as 0x6E45E0, which retail also inlines here).
 static __inline HouseClass* FindActionHouseInner(TriggerClass* trigger, int index)
@@ -164,7 +164,7 @@ GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_1670) == 0x1670);
 extern TActionRulesView* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x48A620 (decl; reloc)
-void __fastcall FUN_0048A620(int a, int b, CoordStruct where, char c, unsigned int d);
+void FUN_0048A620(int a, int b, CoordStruct where, char c, unsigned int d);
 
 // GLOBAL: GAMEMD 0xA8EB44 / 0xA8EB50 -- BuildingClass::Array items and count.
 extern BuildingClass** DAT_00A8EB44;
@@ -840,7 +840,7 @@ bool TActionClass::FUN_006E3060(HouseClass* house, ObjectClass* object, TriggerC
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E30C0
-bool __fastcall IdCommandOwner::FUN_006E30C0(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E30C0(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -866,7 +866,7 @@ fail:
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3120
-bool __fastcall IdCommandOwner::FUN_006E3120(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E3120(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -892,7 +892,7 @@ fail:
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3180
-bool __fastcall IdCommandOwner::FUN_006E3180(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E3180(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -918,7 +918,7 @@ fail:
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E31E0
-bool __fastcall IdCommandOwner::FUN_006E31E0(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E31E0(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -944,7 +944,7 @@ fail:
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3240
-bool __fastcall IdCommandOwner::FUN_006E3240(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E3240(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -970,7 +970,7 @@ fail:
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E32A0
-bool __fastcall IdCommandOwner::FUN_006E32A0(int, int, int, void* handle, int)
+bool IdCommandOwner::FUN_006E32A0(int, int, int, void* handle, int)
 {
     int id = this->StoredId;
     void* obj;
@@ -1106,7 +1106,7 @@ unsigned char Obj_006E3B40::FUN_006E3B40(Arg1_006E3B40* a1, int a2, int a3, int 
 //
 // Which parameter-editing mode a trigger action kind uses. The cases are
 // written in the order of their result blocks in the retail image.
-int __fastcall TActionClass_006E3B60::GetMode(int kind)
+int TActionClass_006E3B60::GetMode(int kind)
 {
     switch (kind) {
     case 0x0B: case 0x67:

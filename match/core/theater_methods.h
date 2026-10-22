@@ -26,7 +26,7 @@
 // ---------------------------------------------------------------------------
 struct Theater
 {
-    static int __fastcall FindIndex(const char* pName);  // GAMEMD 0x48DBE0
+    static int FindIndex(const char* pName);  // GAMEMD 0x48DBE0
 
     char ID[0x10];          // +0x00  e.g. "TEMPERATE"
     char _pad[0x60];        // +0x10  remaining members (P2); pad to 0x70 stride

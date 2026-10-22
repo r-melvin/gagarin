@@ -23,6 +23,6 @@ extern RulesGravityShim* RulesGlobalPtr;
 
 // Half of [General]Gravity, as a double: the per-frame fall acceleration used
 // by floating/parachuting objects.
-double __fastcall Unsorted_GetFloaterGravity();   // GAMEMD 0x48ACF0
+double Unsorted_GetFloaterGravity();   // GAMEMD 0x48ACF0
 
 #endif  // GG_MATCH_CORE_UNSORTED_RULES_METHODS_H

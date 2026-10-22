@@ -16,7 +16,7 @@
 // The busy counter is raised and floored around the unlink, then the body is
 // exactly 0x402EF0's. Written out longhand rather than calling it, per the
 // family rule.
-void __fastcall FUN_004033C0(Owner_00402EF0* self)
+void FUN_004033C0(Owner_00402EF0* self)
 {
     DAT_00815E98->Count++;
 
@@ -68,7 +68,7 @@ void __fastcall FUN_004033C0(Owner_00402EF0* self)
 // all three callee-saved pushes land in the prologue.
 //
 // The registrar is re-read for each of its three uses rather than held.
-void __fastcall FUN_00402EF0(Owner_00402EF0* self)
+void FUN_00402EF0(Owner_00402EF0* self)
 {
     ListNode* next = (&self->Items)->FUN_004073C0();
     ListNode* node = next;

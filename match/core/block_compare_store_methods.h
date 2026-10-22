@@ -20,6 +20,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00402800, Block) == 0x17C);
 GG_STATIC_ASSERT(offsetof(Obj_00402800, Changed) == 0x19C);
 
 // FUNCTION: GAMEMD 0x402800
-int __fastcall FUN_00402800(Obj_00402800* self, const int* incoming);
+int FUN_00402800(Obj_00402800* self, const int* incoming);
 
 #endif  // GG_MATCH_CORE_BLOCK_COMPARE_STORE_METHODS_H

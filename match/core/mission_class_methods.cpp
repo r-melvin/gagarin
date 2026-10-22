@@ -29,7 +29,7 @@ extern const char*         MissionControlNames[];  // 0x816CAC
 int __cdecl MC_stricmp(const char* a, const char* b);  // 0x7C8D20
 
 // FUNCTION: GAMEMD 0x5B36E0  MissionControlClass::IsRecruitableMission (__fastcall)
-bool __fastcall MissionControlClass::IsRecruitableMission(int mission)
+bool MissionControlClass::IsRecruitableMission(int mission)
 {
     if (mission == -1)
         return true;
@@ -45,7 +45,7 @@ const char* MissionControlClass::GetName()
 }
 
 // FUNCTION: GAMEMD 0x5B3910  MissionControlClass::FindIndex (__fastcall)
-int __fastcall MissionControlClass::FindIndex(const char* name)
+int MissionControlClass::FindIndex(const char* name)
 {
     if (name != 0) {
         int index = 0;

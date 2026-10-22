@@ -26,7 +26,7 @@
 // The refusal path reaches the owner through the node's own back-pointer
 // (`MOV EAX,[ESI+0xC]`) rather than through the owner parameter still live in
 // EBX, so it is written that way.
-Node_00402AF0* __fastcall FUN_00402AF0(Owner_00402AF0* owner)
+Node_00402AF0* FUN_00402AF0(Owner_00402AF0* owner)
 {
     Node_00402AF0* node = (Node_00402AF0*)FUN_007C8E17(sizeof(Node_00402AF0));
     memset(node, 0, sizeof(Node_00402AF0));

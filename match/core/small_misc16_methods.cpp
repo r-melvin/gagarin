@@ -27,7 +27,7 @@ void Obj_00402B80::FUN_00402B80()
 // to the running total, point it back at the owner and drop the owner's bit 1.
 // The trailing load-and-store of +0x10 is that flag clear, not a return value -
 // `AND AL,0xFD` sits between them.
-void __fastcall Obj_00408B10::FUN_00408B10(Node_00408B10* node)
+void Obj_00408B10::FUN_00408B10(Node_00408B10* node)
 {
     ((ListNode*)((char*)this + 4))->FUN_00407440((ListNode*)node);
 

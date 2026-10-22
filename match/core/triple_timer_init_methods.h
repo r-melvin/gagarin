@@ -32,11 +32,11 @@ GG_STATIC_ASSERT(offsetof(Timer_00401000, Value) == 0x4);
 GG_STATIC_ASSERT(sizeof(Timer_00401000) == 0x28);
 
 // FUNCTION: GAMEMD 0x407100 — arm, __fastcall with the period in EDX.
-void __fastcall FUN_00407100(Timer_00401000* timer, int period);
+void FUN_00407100(Timer_00401000* timer, int period);
 // FUNCTION: GAMEMD 0x4071A0 — configure, __fastcall with two more on the stack.
-void __fastcall FUN_004071A0(Timer_00401000* timer, int value, int a, int b);
+void FUN_004071A0(Timer_00401000* timer, int value, int a, int b);
 // FUNCTION: GAMEMD 0x407150 — set the level, reached by `JMP`.
-void __fastcall FUN_00407150(Timer_00401000* timer, int level);
+void FUN_00407150(Timer_00401000* timer, int level);
 
 struct Obj_00401000
 {
@@ -49,19 +49,19 @@ GG_STATIC_ASSERT(offsetof(Obj_00401000, Second) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Third) == 0x50);
 
 // FUNCTION: GAMEMD 0x4071C0 — reset, __thiscall (ECX only, no argument).
-void __fastcall FUN_004071C0(Timer_00401000* timer);
+void FUN_004071C0(Timer_00401000* timer);
 
 // FUNCTION: GAMEMD 0x401000
-void __fastcall FUN_00401000(Obj_00401000* self);
+void FUN_00401000(Obj_00401000* self);
 // FUNCTION: GAMEMD 0x4010C0
-void __fastcall FUN_004010C0(Obj_00401000* self, Obj_00401000* other);
+void FUN_004010C0(Obj_00401000* self, Obj_00401000* other);
 
 // FUNCTION: GAMEMD 0x401170 — re-arm the group's first timer; __thiscall in
 // retail, spelled __fastcall here (receiver in ECX, no argument).
-void __fastcall FUN_00401170(Obj_00401000* self);
+void FUN_00401170(Obj_00401000* self);
 
 // FUNCTION: GAMEMD 0x401190 — derive the playback rate from the timer group and
 // the caller's setting; __fastcall (group in ECX, setting in EDX).
-int __fastcall FUN_00401190(Obj_00401000* self, int value);
+int FUN_00401190(Obj_00401000* self, int value);
 
 #endif  // GG_MATCH_CORE_TRIPLE_TIMER_INIT_METHODS_H

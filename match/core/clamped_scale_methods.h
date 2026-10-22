@@ -24,17 +24,17 @@ struct Sink_004061D0;
 // FUNCTION: GAMEMD 0x407150 (decl; reloc) — the mode-not-3 setter. Takes the
 // scaled value in EDX (`SHL EDX,0x10; MOV [ECX+8],EDX` at 0x407154), so it is
 // a __fastcall free function, not a __thiscall member.
-void __fastcall FUN_00407150(Sink_004061D0* sink, int scaled);
+void FUN_00407150(Sink_004061D0* sink, int scaled);
 
 // FUNCTION: GAMEMD 0x407170 (decl; reloc) — the mode-3 setter, reached by
 // `JMP` at 0x406204.
-int __fastcall FUN_00407170(Sink_004061D0* sink, int scaled);
+int FUN_00407170(Sink_004061D0* sink, int scaled);
 
 // FUNCTION: GAMEMD 0x4071C0 (decl; reloc) — the post-set notify, reached by
 // `MOV ECX,ESI; POP ESI; JMP` at 0x40623B. Only ECX is loaded, so __fastcall
 // and __thiscall are both consistent with the bytes; __fastcall is what makes
 // VC6 tail-jump it (a __thiscall member here stays a `CALL; POP; RET`).
-int __fastcall FUN_004071C0(Sink_004061D0* sink);
+int FUN_004071C0(Sink_004061D0* sink);
 
 struct Sink_004061D0
 {
@@ -73,6 +73,6 @@ GG_STATIC_ASSERT(offsetof(Obj_004061D0, Sink) == 0xB8);
 // stack. Both paths end in a tail-jump to an int-returning setter, and the
 // result is passed through.
 // FUNCTION: GAMEMD 0x4061D0
-int __fastcall FUN_004061D0(Obj_004061D0* self, unsigned level);
+int FUN_004061D0(Obj_004061D0* self, unsigned level);
 
 #endif  // GG_MATCH_CORE_CLAMPED_SCALE_METHODS_H

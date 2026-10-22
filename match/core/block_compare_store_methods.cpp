@@ -13,7 +13,7 @@
 //
 // PARTIAL: direct flag stores and return; no volatile reload for scheduling.
 // FUNCTION: GAMEMD 0x402800
-int __fastcall FUN_00402800(Obj_00402800* self, const int* incoming)
+int FUN_00402800(Obj_00402800* self, const int* incoming)
 {
     // The zero is a named variable, not a literal: retail materialises it
     // once with `XOR EBP,EBP` *before* the compare and uses that register for

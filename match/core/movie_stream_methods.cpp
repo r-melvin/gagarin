@@ -82,11 +82,11 @@ extern "C" int __cdecl _close(int fh);
 extern "C" long __cdecl _filelength(int fh);
 
 // unknown_1A0 table entries owned elsewhere.
-int __fastcall FUN_007bea40(MovieHandle_007BD470* h);
-int __fastcall FUN_007bf0b0(MovieHandle_007BD470* h);
-int __fastcall FUN_007bf140(MovieHandle_007BD470* h);
-int __fastcall FUN_007bf190(MovieHandle_007BD470* h);
-int __fastcall FUN_007bf230(MovieHandle_007BD470* h);
+int FUN_007bea40(MovieHandle_007BD470* h);
+int FUN_007bf0b0(MovieHandle_007BD470* h);
+int FUN_007bf140(MovieHandle_007BD470* h);
+int FUN_007bf190(MovieHandle_007BD470* h);
+int FUN_007bf230(MovieHandle_007BD470* h);
 void __cdecl FUN_007bf220(unsigned short*, unsigned short*, unsigned short*, int, int, int);
 void __cdecl FUN_007c3eb0(unsigned short*, unsigned short*, unsigned short*, int, int, int);
 void __cdecl FUN_007c39c0(unsigned short*, unsigned short*, unsigned short*, int, int, int);

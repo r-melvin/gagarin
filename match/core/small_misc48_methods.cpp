@@ -5,7 +5,7 @@
 #include "small_misc48_methods.h"
 
 // FUNCTION: GAMEMD 0x406570
-void __fastcall Obj_00406570::FUN_00406570(int flags)
+void Obj_00406570::FUN_00406570(int flags)
 {
     this->Flags = flags;
 

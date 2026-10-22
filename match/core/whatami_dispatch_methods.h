@@ -50,9 +50,9 @@ struct WhatAmIHolder
 // input here, not an accident.
 
 // FUNCTION: GAMEMD 0x40DD20
-WhatAmIHolder* __fastcall FUN_0040DD20(WhatAmIHolder* self);
+WhatAmIHolder* FUN_0040DD20(WhatAmIHolder* self);
 
 // FUNCTION: GAMEMD 0x40DD70
-WhatAmIHolder* __fastcall FUN_0040DD70(WhatAmIHolder* self);
+WhatAmIHolder* FUN_0040DD70(WhatAmIHolder* self);
 
 #endif  // GG_MATCH_CORE_WHATAMI_DISPATCH_METHODS_H

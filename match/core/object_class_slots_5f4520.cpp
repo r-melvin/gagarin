@@ -48,7 +48,7 @@ struct TechnoView_5F4520 : ObjectClass
 GG_STATIC_ASSERT(offsetof(TechnoView_5F4520, unknown_3D4) == 0x3D4);
 
 // FUNCTION: GAMEMD 0x40DD70 (decl; reloc) -- the object if it is a techno, else null.
-TechnoView_5F4520* __fastcall FUN_0040DD70(ObjectClass* object);
+TechnoView_5F4520* FUN_0040DD70(ObjectClass* object);
 
 // The house slot 15 answers.
 struct HouseView_5F4520
@@ -123,7 +123,7 @@ extern int DAT_00880990;
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc) -- deselect everything.
 void __cdecl FUN_0048DC90();
 // FUNCTION: GAMEMD 0x731D00 (decl; reloc)
-void __fastcall FUN_00731D00(int a1);
+void FUN_00731D00(int a1);
 
 // FUNCTION: GAMEMD 0x5F4520
 // PARTIAL 97.8%: two register pairs swap in the inlined vector adds

@@ -5,7 +5,7 @@
 #include "triple_timer_init_methods.h"
 
 // FUNCTION: GAMEMD 0x401000
-void __fastcall FUN_00401000(Obj_00401000* self)
+void FUN_00401000(Obj_00401000* self)
 {
     // The sub-object addresses are written inline, not hoisted into locals:
     // retail materialises each `LEA` lazily at its first use (after the
@@ -43,7 +43,7 @@ void __fastcall FUN_00401000(Obj_00401000* self)
 // The clamp either side is asymmetric in retail — the low end is a sign test
 // (`JNS`) and the high end an unsigned compare (`JBE`) — so the low guard is
 // written against a signed value and the high one against an unsigned.
-void __fastcall FUN_004010C0(Obj_00401000* self, Obj_00401000* other)
+void FUN_004010C0(Obj_00401000* self, Obj_00401000* other)
 {
     FUN_00407150(&self->First,
                  (int)(((self->First.Value >> 16) * (other->First.Value >> 16))

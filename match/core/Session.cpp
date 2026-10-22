@@ -599,7 +599,7 @@ void __cdecl FUN_00697B60()
 }
 
 // FUNCTION: GAMEMD 0x0069A300
-void __fastcall FUN_0069A300()
+void FUN_0069A300()
 {
 }
 
@@ -620,7 +620,7 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0069B540
-void __fastcall FUN_0069B540(Obj_0069B540* self)
+void FUN_0069B540(Obj_0069B540* self)
 {
     self->unknown_24 = 0;
     for (int i = 0; i < 8; i++) {
@@ -692,7 +692,7 @@ void SessionClass::Resume()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0069BBE0
-char __fastcall FUN_0069BBE0(Obj_0069BBE0* self)
+char FUN_0069BBE0(Obj_0069BBE0* self)
 {
     return self->unknown_30D8;
 }

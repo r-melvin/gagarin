@@ -5,7 +5,7 @@
 #include "small_misc49_methods.h"
 
 // FUNCTION: GAMEMD 0x422B20
-int __fastcall FUN_00422B20(const char* name)
+int FUN_00422B20(const char* name)
 {
     if (name != 0 && FUN_007C8D20(name, STR_00817474) != 0) {
         for (int i = 0; i < DAT_008B4160; i++) {
@@ -19,7 +19,7 @@ int __fastcall FUN_00422B20(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x428DE0
-void __fastcall FUN_00428DE0(Obj_00428DE0* self)
+void FUN_00428DE0(Obj_00428DE0* self)
 {
     if (self->Enabled && self->Image && self->Loaded) {
         FUN_004068E0(STR_00818688, self->Name);

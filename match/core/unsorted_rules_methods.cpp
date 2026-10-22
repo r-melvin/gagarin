@@ -7,7 +7,7 @@
 // FUNCTION: GAMEMD 0x48ACF0  Unsorted::GetFloaterGravity (__fastcall)
 // The integer rule is loaded straight onto the x87 stack (FILD) and halved by
 // the shared 0.5 constant at 0x007E1738; no register work at all.
-double __fastcall Unsorted_GetFloaterGravity()
+double Unsorted_GetFloaterGravity()
 {
     return RulesGlobalPtr->Gravity * 0.5;
 }

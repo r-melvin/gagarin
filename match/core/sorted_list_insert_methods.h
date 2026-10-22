@@ -25,6 +25,6 @@ GG_STATIC_ASSERT(offsetof(Node_004072E0, Prev) == 0x4);
 GG_STATIC_ASSERT(offsetof(Node_004072E0, Key) == 0x8);
 
 // FUNCTION: GAMEMD 0x4072E0
-int __fastcall FUN_004072E0(Node_004072E0* list, Node_004072E0* node);
+int FUN_004072E0(Node_004072E0* list, Node_004072E0* node);
 
 #endif  // GG_MATCH_CORE_SORTED_LIST_INSERT_METHODS_H

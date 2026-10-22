@@ -35,7 +35,7 @@ public:
 // entry's ID (+0x24); returns the index, or -1 if absent. Count and Items are
 // reloaded from the global each iteration.
 // ---------------------------------------------------------------------------
-int __fastcall CampaignClass::FindIndex(const char* name)
+int CampaignClass::FindIndex(const char* name)
 {
     for (int i = 0; i < CampaignArray.Count; ++i)
     {
@@ -132,7 +132,7 @@ __forceinline CampaignClass* CampaignClass::Construct(const char* name)
 //      argument) so the sum lands in the freshly loaded CapacityIncrement
 //      register as retail's `ADD ECX,EAX` does (98.2% -> 100%).
 // ---------------------------------------------------------------------------
-void __fastcall CampaignClass::CreateFromINIList(CCINIClass* pINI)
+void CampaignClass::CreateFromINIList(CCINIClass* pINI)
 {
     int count = pINI->GetKeyCount("Battles");
     for (int i = 0; i < count; ++i)

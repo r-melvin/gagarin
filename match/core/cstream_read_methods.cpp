@@ -15,8 +15,8 @@ typedef unsigned long ULONG;
 extern void __stdcall _com_issue_error(long hr);   // retail 0x7DC720, not matched
 
 // FUNCTION placeholder: retail 0x55C0E0, fastcall block decompressor.
-int __fastcall FUN_0055c0e0(void const* src, unsigned src_len, void* dst,
-                            unsigned* dst_len, void* work);
+int FUN_0055c0e0(void const* src, unsigned src_len, void* dst,
+                 unsigned* dst_len, void* work);
 
 struct IStreamView
 {

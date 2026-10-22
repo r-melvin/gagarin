@@ -19,11 +19,11 @@
 
 // FUNCTION: GAMEMD 0x551E50 (decl; reloc) -- LCW compress, __fastcall
 // (source ECX, destination EDX, count pushed); result used as a word.
-unsigned int __fastcall FUN_00551E50(const void* source, void* destination,
-                                     unsigned int count);
+unsigned int FUN_00551E50(const void* source, void* destination,
+                          unsigned int count);
 // FUNCTION: GAMEMD 0x551C60 (decl; reloc) -- LCW uncompress, __fastcall
 // (source ECX, destination EDX, a literal 0 pushed).
-void __fastcall FUN_00551C60(const void* source, void* destination, int length);
+void FUN_00551C60(const void* source, void* destination, int length);
 
 // The 4-byte header that prefixes every compressed block.
 struct LCWBlockHeader

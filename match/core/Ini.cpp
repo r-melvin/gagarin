@@ -602,10 +602,10 @@ extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 #include "../platform/ccini_class_type_list_methods.h"
 
 // FUNCTION: GAMEMD 0x751520 (decl; reloc) -- name -> record, or 0.
-void* __fastcall FUN_00751520(const char* name);
+void* FUN_00751520(const char* name);
 
 // FUNCTION: GAMEMD 0x7515C0 (decl; reloc) -- record -> registry index.
-int __fastcall FUN_007515C0(void* record);
+int FUN_007515C0(void* record);
 
 #include <stddef.h>
 #include <string.h>
@@ -641,7 +641,7 @@ extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int si
 int __cdecl FUN_0052B6A0(const void* a, const void* b);
 
 // FUNCTION: GAMEMD 0x52B6D0 (decl; reloc) -- table search.
-EntryNode_0052A4D0* __fastcall FUN_0052B6D0(EntryNode_0052A4D0* items, int count, int* key);
+EntryNode_0052A4D0* FUN_0052B6D0(EntryNode_0052A4D0* items, int count, int* key);
 
 // Read/write view of the observed INISection entry-index offsets; the
 // canonical INISection (ini_nodes.h) has no declaration for this method.
@@ -789,7 +789,7 @@ Obj_00524EC0* Obj_00524EC0::FUN_00524EC0()
 // FUNCTION: GAMEMD 0x525430
 // Read a comma-separated list of record names as registry indices. Unknown
 // names are skipped; a missing key returns the caller's default list.
-TypeListInt __fastcall FUN_00525430(CCINI_00475C70* ini, const char* section,
+TypeListInt FUN_00525430(CCINI_00475C70* ini, const char* section,
     const char* key, TypeListInt defaultValue)
 {
     char buffer[128];

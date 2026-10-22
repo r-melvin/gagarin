@@ -11,7 +11,7 @@
 extern "C" __declspec(dllimport) void __stdcall BinkGoto(void* bink, int frame, int flags);  // IAT 0x7E15AC
 extern "C" double __cdecl FUN_004CAC40(double v);   // GAMEMD 0x4CAC40
 
-bool __fastcall FUN_005F4D30(void* self);                 // GAMEMD 0x5F4D30
+bool FUN_005F4D30(void* self);                 // GAMEMD 0x5F4D30
 
 // The append is __thiscall, not __fastcall: retail pushes the item and puts
 // only the collection in ECX. A second register argument lands in EDX and the

@@ -30,7 +30,7 @@ extern "C" const char DAT_00817474[];
 // 0x4CAC40: x87 helper taking one double and returning one (callee only).
 double __cdecl FUN_004CAC40(double value);
 // 0x5117D0: name -> index, -1 when absent (callee only).
-int __fastcall FUN_005117D0(const char* name);
+int FUN_005117D0(const char* name);
 
 // ---------------------------------------------------------------------------
 
@@ -46,7 +46,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00483460, unknown_140) == 0x140);
 
 // FUNCTION: GAMEMD 0x00483460
 // Clear bit 0x10 of +0x140 and reset +0x50; true if the bit was set.
-bool __fastcall FUN_00483460(Obj_00483460* self)
+bool FUN_00483460(Obj_00483460* self)
 {
     unsigned int flags = self->unknown_140;
     if (flags & 0x10) {
@@ -67,7 +67,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00485060, unknown_38) == 0x38);
 
 // FUNCTION: GAMEMD 0x00485060
 // Is +0x38 inside the 14-wide window that starts at the global 0xAA0738.
-int __fastcall FUN_00485060(Obj_00485060* self)
+int FUN_00485060(Obj_00485060* self)
 {
     int value = self->unknown_38;
     if (value >= DAT_00AA0738 && value < DAT_00AA0738 + 14) {
@@ -113,7 +113,7 @@ Pair_00487F20 Pair_00487F20::FUN_00487F20(const Pair_00487F20& other) const
 // FUNCTION: GAMEMD 0x0048AB90
 // Scale an integer by a double and 1.2 (the constant at 0x7E5190), pass it through
 // 0x4CAC40 and truncate.
-int __fastcall FUN_0048AB90(int value, double scale)
+int FUN_0048AB90(int value, double scale)
 {
     return (int)FUN_004CAC40(value * scale * 1.2);
 }
@@ -126,7 +126,7 @@ struct Obj_0048BA80
 GG_STATIC_ASSERT(offsetof(Obj_0048BA80, unknown_1C) == 0x1C);
 
 // FUNCTION: GAMEMD 0x0048BA80
-int __fastcall FUN_0048BA80(Obj_0048BA80* self)
+int FUN_0048BA80(Obj_0048BA80* self)
 {
     return self->unknown_1C;
 }
@@ -229,7 +229,7 @@ struct Pair_004C1B50
 
 // FUNCTION: GAMEMD 0x004C1B50
 // Euclidean length of the pair through 0x4CAC40, truncated.
-int __fastcall FUN_004C1B50(const Pair_004C1B50* self)
+int FUN_004C1B50(const Pair_004C1B50* self)
 {
     double y = self->unknown_4;
     double x = self->unknown_0;
@@ -286,7 +286,7 @@ struct Obj_004CA160
 GG_STATIC_ASSERT(offsetof(Obj_004CA160, unknown_58) == 0x58);
 
 // FUNCTION: GAMEMD 0x004CA160
-int __fastcall FUN_004CA160(Obj_004CA160* self)
+int FUN_004CA160(Obj_004CA160* self)
 {
     return self->unknown_58;
 }
@@ -365,7 +365,7 @@ GG_STATIC_ASSERT(offsetof(Record_004D2790, unknown_60) == 0x60);
 // FUNCTION: GAMEMD 0x004D2790
 // For a kind-6 record, slot 0x90 of the object its +0x60 points at, with 0;
 // otherwise null.
-void* __fastcall FUN_004D2790(Record_004D2790* self)
+void* FUN_004D2790(Record_004D2790* self)
 {
     if (self->unknown_30 == 6) {
         Obj_004D2790* object = *self->unknown_60;

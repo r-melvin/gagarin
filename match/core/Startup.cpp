@@ -1134,7 +1134,7 @@ void __cdecl FUN_006BB240()
 }
 
 // FUNCTION: GAMEMD 0x6BB2E0
-inline bool __fastcall FUN_006BB2E0(const char* key, const char* subkey, const char* value)
+inline bool FUN_006BB2E0(const char* key, const char* subkey, const char* value)
 {
     HKEY hkey;
     char keybuf[260];
@@ -1160,7 +1160,7 @@ inline bool __fastcall FUN_006BB2E0(const char* key, const char* subkey, const c
 }
 
 // FUNCTION: GAMEMD 0x6BB390
-int __fastcall FUN_006bb390()
+int FUN_006bb390()
 {
     char module[260];
     char clsid_text[40];
@@ -1198,7 +1198,7 @@ int __fastcall FUN_006bb390()
 }
 
 // FUNCTION: GAMEMD 0x6BB760
-int __fastcall FUN_006bb760()
+int FUN_006bb760()
 {
     char clsid_key[72];
     char clsid_text[40];

@@ -50,7 +50,7 @@ public:
 
 // FUNCTION: GAMEMD 0x48DF30 (decl; reloc) — index of a movie by name in the
 // global movie array, -1 when it is not there yet.
-int __fastcall FUN_0048DF30(const char* name);
+int FUN_0048DF30(const char* name);
 
 // LIBRARY: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
 char* __cdecl GameStrdup_00674550(const char* str);

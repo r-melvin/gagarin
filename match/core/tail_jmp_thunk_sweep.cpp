@@ -7,27 +7,27 @@
 #include "tail_jmp_thunk_sweep.h"
 
 // FUNCTION: GAMEMD 0x4DA2B0
-void __fastcall FUN_004DA2B0(void* self)
+void FUN_004DA2B0(void* self)
 {
     FUN_005B2EF0(self);
 }
 
 // FUNCTION: GAMEMD 0x4DE620
-void __fastcall FUN_004DE620(void* self)
+void FUN_004DE620(void* self)
 {
     FUN_005F6B90(self);
 }
 
 
 // FUNCTION: GAMEMD 0x6D0260
-void __fastcall FUN_006D0260(void* self)
+void FUN_006D0260(void* self)
 {
     FUN_006A5000(self);
 }
 
 
 // FUNCTION: GAMEMD 0x7717F0
-void __fastcall FUN_007717F0(void* self)
+void FUN_007717F0(void* self)
 {
     FUN_007529E0(self);
 }

@@ -37,8 +37,8 @@ extern Entry_0046F810* DAT_00AC11B0;   // GLOBAL: GAMEMD 0xAC11B0
 extern Entry_0046F810* DAT_00AC11B4;   // GLOBAL: GAMEMD 0xAC11B4
 
 // FUNCTION: GAMEMD 0x46F810
-int __fastcall FUN_0046F810(int index);
+int FUN_0046F810(int index);
 // FUNCTION: GAMEMD 0x46F880
-int __fastcall FUN_0046F880(int index);
+int FUN_0046F880(int index);
 
 #endif  // GG_MATCH_CORE_HOUSE_INDEX_LOOKUP_METHODS_H

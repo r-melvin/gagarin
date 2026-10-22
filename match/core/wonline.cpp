@@ -111,7 +111,7 @@ struct ChainedHashTable
         Value NodeValue;   // +0x04
         Node* Next;        // +0x04 + sizeof(Value)
     };
-    typedef unsigned (__fastcall *HashFunc)(const Key& key);
+    typedef unsigned (*HashFunc)(const Key& key);
 
     Node**   Buckets;        // +0x00
     unsigned Count;          // +0x04
@@ -205,7 +205,7 @@ extern "C" void __cdecl gg_free(void*);
 
 
 // FUNCTION: GAMEMD 0x007B46F0 (decl; reloc) -- string object destructor (this in ECX).
-extern void __fastcall FUN_007B46F0(void* self);
+extern void FUN_007B46F0(void* self);
 
 struct CountedBlock {
     int count;          // +0x00
@@ -653,7 +653,7 @@ void FUN_0077CED0()
 
 // FUNCTION: GAMEMD 0x77D1D0
 // VTABLE: GAMEMD 0x7F7624
-CtorSeatObject* __fastcall FUN_0077D1D0(CtorSeatObject* self)
+CtorSeatObject* FUN_0077D1D0(CtorSeatObject* self)
 {
     FUN_00624110(self);
     self->Vtbl = VTABLE_007F7624;
@@ -663,7 +663,7 @@ CtorSeatObject* __fastcall FUN_0077D1D0(CtorSeatObject* self)
 
 // FUNCTION: GAMEMD 0x77D1F0
 // VTABLE: GAMEMD 0x7F7624
-void __fastcall FUN_0077D1F0(SeatDtorObject* self)
+void FUN_0077D1F0(SeatDtorObject* self)
 {
     self->Vtbl = VTABLE_007F7624;
     FUN_00624130(self);
@@ -677,7 +677,7 @@ void FUN_0077D200(Obj_0077D200* a1, int a2)
 }
 
 // FUNCTION: GAMEMD 0x77E110
-void __fastcall FUN_0077E110()
+void FUN_0077E110()
 {
     if (DAT_00AC116C != NULL) {
         DAT_00AC116C->Vtbl->At_7C(DAT_00AC116C, DAT_00B779BC);
@@ -711,7 +711,7 @@ int __cdecl FUN_007813B0(const void* left, const void* right)
 
 // FUNCTION: GAMEMD 0x7813E0
 // Builds {index, key} pairs for every record and sorts them by key.
-void __fastcall FUN_007813E0(Obj_00781380* pairs, bool descending)
+void FUN_007813E0(Obj_00781380* pairs, bool descending)
 {
     Record_00B76AE8 record;
     memset(&record, 0, sizeof(record));
@@ -747,7 +747,7 @@ int __cdecl FUN_00781CF0(const Obj_00781CC0* a, const Obj_00781CC0* b)
 }
 
 // FUNCTION: GAMEMD 0x783070
-void __fastcall FUN_00783070(void* object)
+void FUN_00783070(void* object)
 {
     int mode = DAT_00B77E48;
     if (mode == 1) {
@@ -878,7 +878,7 @@ void __cdecl FUN_00785360()
 }
 
 // FUNCTION: GAMEMD 0x786D90
-bool __fastcall FUN_00786D90()
+bool FUN_00786D90()
 {
     int index = DAT_00B76468;
     if (index >= 1 && index < DAT_00B778D8.count) {
@@ -891,7 +891,7 @@ bool __fastcall FUN_00786D90()
 
 // FUNCTION: GAMEMD 0x786E70
 // Index of the record whose text after the ':' at +0x18 equals the name, or -1.
-int __fastcall FUN_00786E70(String_007B4620* name)
+int FUN_00786E70(String_007B4620* name)
 {
     if (name->Length() != 0) {
         for (int i = 1; i < DAT_00B778D8.count; i++) {
@@ -909,14 +909,14 @@ int __fastcall FUN_00786E70(String_007B4620* name)
 }
 
 // FUNCTION: GAMEMD 0x78ABF0
-void __fastcall FUN_0078ABF0(char flag, const wchar_t* text)
+void FUN_0078ABF0(char flag, const wchar_t* text)
 {
     DAT_00B77E40 = flag;
     DAT_00B76230.FUN_007B7600(text);
 }
 
 // FUNCTION: GAMEMD 0x78F6B0
-int __fastcall FUN_0078F6B0(int id)
+int FUN_0078F6B0(int id)
 {
     if (id == 0x754) return 0;
     if (id == 0x755) return 1;
@@ -929,7 +929,7 @@ int __fastcall FUN_0078F6B0(int id)
 }
 
 // FUNCTION: GAMEMD 0x791AA0
-void __fastcall FUN_00791AA0(void* window)
+void FUN_00791AA0(void* window)
 {
     if (window != NULL) {
         FUN_005E2CD0(DAT_00AC10C8 == 0
@@ -943,7 +943,7 @@ void __fastcall FUN_00791AA0(void* window)
 }
 
 // FUNCTION: GAMEMD 0x792E90
-void __fastcall FUN_00792E90(LPARAM value)
+void FUN_00792E90(LPARAM value)
 {
     HWND dialog = FUN_00775940(0xC4);
     if (dialog != NULL) {
@@ -952,7 +952,7 @@ void __fastcall FUN_00792E90(LPARAM value)
 }
 
 // FUNCTION: GAMEMD 0x792EC0
-void __fastcall FUN_00792EC0(unsigned int mask)
+void FUN_00792EC0(unsigned int mask)
 {
     HWND dialog = FUN_00775940(0xC4);
     if (dialog != NULL) {
@@ -969,7 +969,7 @@ void __fastcall FUN_00792EC0(unsigned int mask)
 }
 
 // FUNCTION: GAMEMD 0x7930A0
-bool __fastcall FUN_007930A0()
+bool FUN_007930A0()
 {
     Entry_00B77908* record = FirstFlaggedRecord();
     if (record == NULL) return false;
@@ -977,7 +977,7 @@ bool __fastcall FUN_007930A0()
 }
 
 // FUNCTION: GAMEMD 0x793120
-bool __fastcall FUN_00793120(String_007B4620* name)
+bool FUN_00793120(String_007B4620* name)
 {
     Entry_00B77908* record = FirstFlaggedRecord();
     if (record == NULL) return false;
@@ -985,13 +985,13 @@ bool __fastcall FUN_00793120(String_007B4620* name)
 }
 
 // FUNCTION: GAMEMD 0x7931A0
-Entry_00B77908* __fastcall FUN_007931A0()
+Entry_00B77908* FUN_007931A0()
 {
     return FirstFlaggedRecord();
 }
 
 // FUNCTION: GAMEMD 0x7931F0
-void __fastcall FUN_007931F0(int slot)
+void FUN_007931F0(int slot)
 {
     if (slot >= 0 && slot < DAT_00A8DA84) {
         HWND dialog = FUN_00775940(0x130);
@@ -1005,7 +1005,7 @@ void __fastcall FUN_007931F0(int slot)
 }
 
 // FUNCTION: GAMEMD 0x793250
-void __fastcall FUN_00793250()
+void FUN_00793250()
 {
     HWND window = FUN_00775700(DAT_00B732F0, 0x130, DAT_00B73550, (void*)FUN_00793280, 0);
     if (window != NULL) {
@@ -1014,7 +1014,7 @@ void __fastcall FUN_00793250()
 }
 
 // FUNCTION: GAMEMD 0x793460
-void __fastcall FUN_00793460(int index, int value)
+void FUN_00793460(int index, int value)
 {
     if (index < DAT_00A8DA84) {
         if (DAT_00B73BB4[index] < DAT_0084A1E0[index]) {
@@ -1026,7 +1026,7 @@ void __fastcall FUN_00793460(int index, int value)
 // FUNCTION: GAMEMD 0x793710
 // Derives a port number from a base, an offset and a spread; the result is
 // never below 0x400.
-unsigned short __fastcall FUN_00793710(int base, int offset, int unused, int spread)
+unsigned short FUN_00793710(int base, int offset, int unused, int spread)
 {
     int port = base + offset;
 
@@ -1051,7 +1051,7 @@ unsigned short __fastcall FUN_00793710(int base, int offset, int unused, int spr
 }
 
 // FUNCTION: GAMEMD 0x793A10
-void __fastcall FUN_00793A10(const char* name, int port)
+void FUN_00793A10(const char* name, int port)
 {
     FUN_004068E0("Player %s is telling us we should send to port %d\n", name, port & 0xFFFF);
     for (int i = 0; i < 8; i++) {
@@ -1063,7 +1063,7 @@ void __fastcall FUN_00793A10(const char* name, int port)
 }
 
 // FUNCTION: GAMEMD 0x793B30
-void __fastcall FUN_00793B30(int digit, const char* text)
+void FUN_00793B30(int digit, const char* text)
 {
     char buffer[0x100];
 
@@ -1086,7 +1086,7 @@ void __cdecl FUN_00796B20()
 }
 
 // FUNCTION: GAMEMD 0x7975E0
-void __fastcall FUN_007975E0()
+void FUN_007975E0()
 {
     const wchar_t* label = FUN_00734E60("TXT_FETCHING_SERVLIST", NULL, DAT_0084A430, 0x5EEC);
     {
@@ -1101,7 +1101,7 @@ void __fastcall FUN_007975E0()
 // FUNCTION: GAMEMD 0x7982D0
 // Waits up to `seconds` for one of `count` events, pumping in 100 ms slices;
 // returns the signalled index (the event is reset) or 0x12 on timeout.
-DWORD __fastcall FUN_007982D0(int seconds, DWORD count)
+DWORD FUN_007982D0(int seconds, DWORD count)
 {
     int remaining = seconds * 1000;
     DWORD result = WaitForMultipleObjects(count, DAT_00B73684, FALSE, 100);
@@ -1116,7 +1116,7 @@ DWORD __fastcall FUN_007982D0(int seconds, DWORD count)
 }
 
 // FUNCTION: GAMEMD 0x798340
-void __fastcall FUN_00798340()
+void FUN_00798340()
 {
     for (int i = 0; i < 18; i++) {
         ResetEvent(DAT_00B73684[i]);
@@ -1124,7 +1124,7 @@ void __fastcall FUN_00798340()
 }
 
 // FUNCTION: GAMEMD 0x799CD0
-void __fastcall FUN_00799CD0()
+void FUN_00799CD0()
 {
     memset(DAT_00B76B10, 0, sizeof(DAT_00B76B10));
     memset(DAT_00B73BE8, 0, sizeof(DAT_00B73BE8));
@@ -1137,7 +1137,7 @@ void __fastcall FUN_00799CD0()
 
 // FUNCTION: GAMEMD 0x799D10
 // Releases every object the list head yields.
-void __fastcall FUN_00799D10()
+void FUN_00799D10()
 {
     void* object;
     for (object = FUN_00775B10(); object != NULL; object = FUN_00775B10()) {
@@ -1146,7 +1146,7 @@ void __fastcall FUN_00799D10()
 }
 
 // FUNCTION: GAMEMD 0x79BE70
-void __fastcall FUN_0079BE70()
+void FUN_0079BE70()
 {
     HWND window = FUN_00775700(DAT_00B732F0, 0x11E, DAT_00B73550, (void*)FUN_0079DB50, 0);
     FUN_00622820(window, 0x11E);
@@ -1159,7 +1159,7 @@ void __fastcall FUN_0079BE70()
 //   Not exact (72.9% positional, 83% aligned): retail keeps one false exit
 //   per path (the loop exit returns with the comparison result still in AL);
 //   this build merges them into one.
-bool __fastcall FUN_0079BED0()
+bool FUN_0079BED0()
 {
     if (DAT_00B76E24.Length() == 0) return false;
 
@@ -1169,7 +1169,7 @@ bool __fastcall FUN_0079BED0()
 }
 
 // FUNCTION: GAMEMD 0x79FC10
-void __fastcall FUN_0079FC10(int first, int second, int third)
+void FUN_0079FC10(int first, int second, int third)
 {
     DAT_00B77E14 = third;
     DAT_00B73A20 = first;
@@ -1178,7 +1178,7 @@ void __fastcall FUN_0079FC10(int first, int second, int third)
 }
 
 // FUNCTION: GAMEMD 0x7A0DD0
-void __fastcall FUN_007A0DD0(Entry_00B77908* entry)
+void FUN_007A0DD0(Entry_00B77908* entry)
 {
     if (entry == NULL) return;
 
@@ -1196,7 +1196,7 @@ void __fastcall FUN_007A0DD0(Entry_00B77908* entry)
 }
 
 // FUNCTION: GAMEMD 0x7A0E50
-void __fastcall FUN_007A0E50()
+void FUN_007A0E50()
 {
     for (int i = 0; i < 8; i++) {
         if (DAT_00A8DA90[i] == NULL || !FUN_005E93F0(DAT_00A8DA90[i])) {
@@ -1210,7 +1210,7 @@ void __fastcall FUN_007A0E50()
 // FUNCTION: GAMEMD 0x7A0EA0
 // Records the ping of the player whose name matches and files its quality
 // bucket with the object at 0x5E26C0.
-void __fastcall FUN_007A0EA0(const char* name, int ping)
+void FUN_007A0EA0(const char* name, int ping)
 {
     FUN_004068E0("Got ping from gameoptions.  name = %s, ping = %d\n", name, ping);
     for (int i = 0; i < 8; i++) {
@@ -1230,7 +1230,7 @@ void __fastcall FUN_007A0EA0(const char* name, int ping)
 }
 
 // FUNCTION: GAMEMD 0x7A2730
-void __fastcall FUN_007A2730()
+void FUN_007A2730()
 {
     if (DAT_00AC116C != NULL) {
         DAT_00AC116C->Vtbl->At_3C(DAT_00AC116C, DAT_0084D690);
@@ -1238,7 +1238,7 @@ void __fastcall FUN_007A2730()
 }
 
 // FUNCTION: GAMEMD 0x7A2750
-void __fastcall FUN_007A2750()
+void FUN_007A2750()
 {
     HWND dialog = (HWND)FUN_00775B10();
     HWND control = GetDlgItem(dialog, 0x59F);
@@ -1254,14 +1254,14 @@ void __fastcall FUN_007A2750()
 }
 
 // FUNCTION: GAMEMD 0x7A2800
-void __fastcall FUN_007A2800(int a, int b, int c)
+void FUN_007A2800(int a, int b, int c)
 {
     HWND window = FUN_00775940(0xC2);
     FUN_005EC880(window, a, b, c);
 }
 
 // FUNCTION: GAMEMD 0x7A2830
-void __fastcall FUN_007A2830(String_007B4620* name)
+void FUN_007A2830(String_007B4620* name)
 {
     Entry_00B77908 record;
 
@@ -1466,7 +1466,7 @@ bool Obj_007AC9D0::FUN_007AC9D0(Record_00B778E0** out, int index)
 template struct GrowList<GrowListRecord6C>;
 
 // FUNCTION: GAMEMD 0x7ACBD0
-void __fastcall FUN_007ACBD0(ConstStoreObject* self)
+void FUN_007ACBD0(ConstStoreObject* self)
 {
     self->Head = 0;
 }

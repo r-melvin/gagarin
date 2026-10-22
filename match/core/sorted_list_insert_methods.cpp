@@ -40,7 +40,7 @@
 // copied from the cursor, the clause hoisted out of the conjunction into its
 // own `if`, and advancing through a second name (2.4%). Treated as the
 // dominated-test-folding difference between cl 8447 and 8804.
-int __fastcall FUN_004072E0(Node_004072E0* list, Node_004072E0* node)
+int FUN_004072E0(Node_004072E0* list, Node_004072E0* node)
 {
     // The inserted node's key is read once, before the walk; left as
     // `node->Key` inside the comparison VC6 re-reads `[EDX+8]` every

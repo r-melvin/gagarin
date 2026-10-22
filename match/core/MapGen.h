@@ -373,25 +373,25 @@ inline bool Inline_0058BCF0(int a1)
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 // FUNCTION: GAMEMD 0x58BB00
-Pair_8* __fastcall FUN_0058BB00(Pair_8* a1, int a2);
+Pair_8* FUN_0058BB00(Pair_8* a1, int a2);
 // FUNCTION: GAMEMD 0x58BCF0
-bool __fastcall FUN_0058BCF0(int a1);
+bool FUN_0058BCF0(int a1);
 // FUNCTION: GAMEMD 0x58BD80
-bool __fastcall FUN_0058BD80(int a1, int a2);
+bool FUN_0058BD80(int a1, int a2);
 // FUNCTION: GAMEMD 0x58C100
-void __fastcall FUN_0058C100();
+void FUN_0058C100();
 // FUNCTION: GAMEMD 0x58CE90
-void __fastcall FUN_0058CE90();
+void FUN_0058CE90();
 // FUNCTION: GAMEMD 0x5A7FA0
-void __fastcall FUN_005A7FA0(int a1, CellStruct* a2, char a3);
+void FUN_005A7FA0(int a1, CellStruct* a2, char a3);
 // FUNCTION: GAMEMD 0x58D010
-void __fastcall FUN_0058D010(char a1);
+void FUN_0058D010(char a1);
 // FUNCTION: GAMEMD 0x5943E0
-MapRegionClass* __fastcall FUN_005943E0(int a1);
+MapRegionClass* FUN_005943E0(int a1);
 // FUNCTION: GAMEMD 0x599530
-void __fastcall FUN_00599530(Obj_0059C580* a1);
+void FUN_00599530(Obj_0059C580* a1);
 // FUNCTION: GAMEMD 0x59C530
-void __fastcall FUN_0059C530();
+void FUN_0059C530();
 // FUNCTION: GAMEMD 0x59C800
 bool __stdcall FUN_0059C800(int a1);
 // FUNCTION: GAMEMD 0x59E640
@@ -399,11 +399,11 @@ void __stdcall FUN_0059E640(int a1, char a2);
 // FUNCTION: GAMEMD 0x59E6C0
 void __stdcall FUN_0059E6C0(int a1, char a2);
 // FUNCTION: GAMEMD 0x5A1270
-void __fastcall FUN_005A1270();
+void FUN_005A1270();
 // FUNCTION: GAMEMD 0x5A12D0
 void __stdcall FUN_005A12D0(char a1, int a2);
 // FUNCTION: GAMEMD 0x734E60 (declaration) -- localised string lookup(label, index-out, file, line); __fastcall, RET 8.
-unsigned short* __fastcall FUN_00734E60(char* a1, int a2, char* a3, int a4);
+unsigned short* FUN_00734E60(char* a1, int a2, char* a3, int a4);
 // LIBRARY: GAMEMD 0x7CA489 -- CRT wcscpy (__cdecl).
 extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* a1, unsigned short* a2);
 
@@ -414,15 +414,15 @@ void __stdcall FUN_0059A670(int a1);
 // FUNCTION: GAMEMD 0x59BAB0
 bool __stdcall FUN_0059BAB0(CellStruct* a1, Rect_4i* a2, char a3, double a4, double a5);
 // FUNCTION: GAMEMD 0x5A6BA0
-bool __fastcall FUN_005A6BA0(CellStruct* a1);
+bool FUN_005A6BA0(CellStruct* a1);
 
 // FUNCTION: GAMEMD 0x58EBC0 (declaration)
-void __fastcall FUN_0058EBC0();
+void FUN_0058EBC0();
 // FUNCTION: GAMEMD 0x58EF10 (declaration)
-void __fastcall FUN_0058EF10();
+void FUN_0058EF10();
 // FUNCTION: GAMEMD 0x59B6D0
-void __fastcall FUN_0059B6D0();
+void FUN_0059B6D0();
 // FUNCTION: GAMEMD 0x5A3A60
-void __fastcall FUN_005A3A60();
+void FUN_005A3A60();
 
 #endif  // GG_MATCH_MAP_MAPGEN_H

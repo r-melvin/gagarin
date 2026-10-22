@@ -48,26 +48,26 @@ void __fastcall FUN_##ADDR(ComOwner_004B4D50* self)                       \
 }
 
 // FUNCTION: GAMEMD 0x004B4D50
-void __fastcall FUN_004B4D50(ComOwner_004B4D50* self);
+void FUN_004B4D50(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x004B4D60
-void __fastcall FUN_004B4D60(ComOwner_004B4D50* self);
+void FUN_004B4D60(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x004D0430
-void __fastcall FUN_004D0430(ComOwner_004B4D50* self);
+void FUN_004D0430(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x004E02C0
-void __fastcall FUN_004E02C0(ComOwner_004B4D50* self);
+void FUN_004E02C0(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x0067FDD0
-void __fastcall FUN_0067FDD0(ComOwner_004B4D50* self);
+void FUN_0067FDD0(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x0067FDE0
-void __fastcall FUN_0067FDE0(ComOwner_004B4D50* self);
+void FUN_0067FDE0(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x00683050
-void __fastcall FUN_00683050(ComOwner_004B4D50* self);
+void FUN_00683050(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x00683060
-void __fastcall FUN_00683060(ComOwner_004B4D50* self);
+void FUN_00683060(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x006C61C0
-void __fastcall FUN_006C61C0(ComOwner_004B4D50* self);
+void FUN_006C61C0(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x007AC670
-void __fastcall FUN_007AC670(ComOwner_004B4D50* self);
+void FUN_007AC670(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x007AC680
-void __fastcall FUN_007AC680(ComOwner_004B4D50* self);
+void FUN_007AC680(ComOwner_004B4D50* self);
 
 #endif  // GG_MATCH_CORE_COM_MEMBER_RELEASE_FAMILY_METHODS_H

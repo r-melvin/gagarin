@@ -6,7 +6,7 @@
 // FUNCTION: GAMEMD 0x007B46F0
 //
 // Release the held block and forget it.
-void __fastcall FUN_00007B46F0(Holder_007B46F0* self)
+void FUN_00007B46F0(Holder_007B46F0* self)
 {
     if (self->Block != 0) {
         gg_free(self->Block);
@@ -17,7 +17,7 @@ void __fastcall FUN_00007B46F0(Holder_007B46F0* self)
 // FUNCTION: GAMEMD 0x007B5340
 //
 // Release the held block and forget it.
-void __fastcall FUN_00007B5340(Holder_007B46F0* self)
+void FUN_00007B5340(Holder_007B46F0* self)
 {
     if (self->Block != 0) {
         gg_free(self->Block);
@@ -28,7 +28,7 @@ void __fastcall FUN_00007B5340(Holder_007B46F0* self)
 // FUNCTION: GAMEMD 0x007B6760
 //
 // Release the held block and forget it.
-void __fastcall FUN_00007B6760(Holder_007B46F0* self)
+void FUN_00007B6760(Holder_007B46F0* self)
 {
     if (self->Block != 0) {
         gg_free(self->Block);
@@ -39,7 +39,7 @@ void __fastcall FUN_00007B6760(Holder_007B46F0* self)
 // FUNCTION: GAMEMD 0x007B7040
 //
 // Release the held block and forget it.
-void __fastcall FUN_00007B7040(Holder_007B46F0* self)
+void FUN_00007B7040(Holder_007B46F0* self)
 {
     if (self->Block != 0) {
         gg_free(self->Block);

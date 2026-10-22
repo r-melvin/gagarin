@@ -18,8 +18,8 @@ struct Predicate_0050D9C0
 GG_STATIC_ASSERT(sizeof(Predicate_0050D9C0) == 0x16C);
 
 // FUNCTION: GAMEMD 0x0050D9C0 — tests +0x164 > 0
-bool __fastcall FUN_0050D9C0(Predicate_0050D9C0* self);
+bool FUN_0050D9C0(Predicate_0050D9C0* self);
 // FUNCTION: GAMEMD 0x0050D9D0 — tests +0x168 > 0
-bool __fastcall FUN_0050D9D0(Predicate_0050D9C0* self);
+bool FUN_0050D9D0(Predicate_0050D9C0* self);
 
 #endif

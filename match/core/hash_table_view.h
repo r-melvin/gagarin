@@ -25,7 +25,7 @@ template<class KEY, class VALUE>
 struct HashTable_006249A0
 {
     typedef HashNode_006249A0<KEY, VALUE> Node;
-    typedef int (__fastcall* HashOf)(const KEY* key);
+    typedef int (* HashOf)(const KEY* key);
 
     Node**   Buckets;        // +0x0000
     unsigned Count;          // +0x0004

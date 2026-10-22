@@ -242,7 +242,7 @@ found:
 }
 
 // FUNCTION: GAMEMD 0x523440 (decl; reloc) -- __fastcall sorted search: table in ECX, count in EDX, key by pointer.
-IndexNode* __fastcall FUN_00523440(IndexNode* table, int count, const IndexNode* key);
+IndexNode* FUN_00523440(IndexNode* table, int count, const IndexNode* key);
 
 inline IndexNode* AbstractIndexTable::SearchForNode(const int& id)
 {

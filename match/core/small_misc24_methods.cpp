@@ -7,7 +7,7 @@
 #include "small_misc24_methods.h"
 
 // FUNCTION: GAMEMD 0x422B80
-void __fastcall FUN_00422B80(void* key)
+void FUN_00422B80(void* key)
 {
     if (key == 0) {
         return;

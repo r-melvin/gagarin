@@ -110,7 +110,7 @@ GG_REHASH_NODE(007AEF50, 48);
 template<class Node>
 struct HashTable
 {
-    typedef int (__fastcall* HashOf)(Node* node);
+    typedef int (* HashOf)(Node* node);
 
     Node**   Buckets;      // +0x0000
     int      _unknown_04;  // +0x0004

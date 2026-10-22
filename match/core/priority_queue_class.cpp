@@ -23,7 +23,7 @@ extern int g_SurfaceHeight;
 //   ((X - W - 1 + Y) * W) + ((X - Y - 1 + W) >> 1)
 // where X = mapCoord.X (MOVSX word[ECX]), Y = mapCoord.Y (MOVSX word[ECX+2]),
 // W = g_SurfaceWidth (0x87F8DC). The second term is an arithmetic SAR by 1.
-int __fastcall PriorityQueueClassNode::ToSurfaceIndex(const CellStruct& mapCoord)
+int PriorityQueueClassNode::ToSurfaceIndex(const CellStruct& mapCoord)
 {
     return ((mapCoord.X - g_SurfaceWidth) - 1 + (int)mapCoord.Y) * g_SurfaceWidth
          + (((int)mapCoord.X - (int)mapCoord.Y) - 1 + g_SurfaceWidth >> 1);

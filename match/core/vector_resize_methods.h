@@ -25,7 +25,7 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);   // operator new
 extern "C" void  __cdecl FUN_007C8B3D(void* block);         // free
 
 struct VectorBase;
-typedef void (__fastcall* ClearFunc)(VectorBase*);
+typedef void (* ClearFunc)(VectorBase*);
 #define VECTOR_CLEAR(v) ((*(ClearFunc*)(*(char**)(v) + 0xc))(v))
 
 struct VectorBase

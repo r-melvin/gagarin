@@ -25,7 +25,7 @@ void __cdecl FUN_0040A940b();
 
 // FUNCTION: GAMEMD 0x473960 — bounds-checked table read; the compare is
 // unsigned (`JNC`), so a negative index takes the out-of-range path too.
-const char* __fastcall FUN_00473960(unsigned int index);
+const char* FUN_00473960(unsigned int index);
 
 struct Obj_00407100
 {

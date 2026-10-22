@@ -71,7 +71,7 @@ bool Obj_0045F1D0::FUN_0045F1D0(Shape_0045F1D0** shape, int* half)
 }
 
 // FUNCTION: GAMEMD 0x4079C0
-int __fastcall FUN_004079C0(Obj_004079C0* self)
+int FUN_004079C0(Obj_004079C0* self)
 {
     Sub_004079C0* sub = self->Sub;
 
@@ -128,7 +128,7 @@ int __fastcall FUN_004079C0(Obj_004079C0* self)
 // second local, and the clears from a named zero — all left the LEA sunk, and
 // a `volatile` header local was 2.2%. The lever was never the address; it was
 // the clears.
-Node_00408460* __fastcall FUN_00408460(int size)
+Node_00408460* FUN_00408460(int size)
 {
     Node_00408460* node = (Node_00408460*)FUN_007C8E17(0x20);
 
@@ -164,7 +164,7 @@ Node_00408460* __fastcall FUN_00408460(int size)
 }
 
 // FUNCTION: GAMEMD 0x402790
-void __fastcall FUN_00402790(Obj_00402790* self, Node_00402790* node)
+void FUN_00402790(Obj_00402790* self, Node_00402790* node)
 {
     self->Node = node;
 

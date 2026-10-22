@@ -27,8 +27,8 @@ extern char DAT_00887734;
 
 // FUNCTION: GAMEMD 0x734E60 — the registrar. Two register arguments (the
 // destination and a zero) plus the tag and a size on the stack.
-void* __fastcall FUN_00734E60(void* destination, int zero,
-                              const char* tag, int size);
+void* FUN_00734E60(void* destination, int zero,
+                   const char* tag, int size);
 
 struct Obj_00410960
 {
@@ -137,7 +137,7 @@ struct Ini_0044FE60
 };
 
 // FUNCTION: GAMEMD 0x44FE60
-void __fastcall FUN_0044FE60(Ini_0044FE60* ini);
+void FUN_0044FE60(Ini_0044FE60* ini);
 
 // ---------------------------------------------------------------------------
 // 0x45E520 — another constructor: base, five field initialisers, a secondary

@@ -36,7 +36,7 @@ class AbstractClass
 public:
     // Human-readable name for an AbstractType discriminant.
     // (static __fastcall: the discriminant arrives in ECX.)
-    static const char* __fastcall GetRTTIName(int rtti);   // GAMEMD 0x40DCB0
+    static const char* GetRTTIName(int rtti);   // GAMEMD 0x40DCB0
 };
 
 #endif  // GG_MATCH_CORE_ABSTRACT_CLASS_RTTI_METHODS_H

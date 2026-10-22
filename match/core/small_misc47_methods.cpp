@@ -6,7 +6,7 @@
 #include "small_misc47_methods.h"
 
 // FUNCTION: GAMEMD 0x412610
-int __fastcall FUN_00412610(const char* text)
+int FUN_00412610(const char* text)
 {
     int value = 0;
 

@@ -10,7 +10,7 @@
 #include "../_layout/object_type_class.h"
 #include "rules_class.h"
 
-typedef ObjectTypeClass* (__fastcall* ObjectHealthGetType)(const ObjectClass*);
+typedef ObjectTypeClass* (* ObjectHealthGetType)(const ObjectClass*);
 struct ObjectHealthVtablePrefix
 {
     char unknown_00[0x88];

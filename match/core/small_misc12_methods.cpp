@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x408500
 // Link the node in after the anchor, add its weight to the running total, and
 // point it back at the owner.
-void __fastcall Obj_00408500d::FUN_00408500(Node_00408500* node)
+void Obj_00408500d::FUN_00408500(Node_00408500* node)
 {
     ((ListNode*)((char*)this + 8))->FUN_00407420((ListNode*)node);
 

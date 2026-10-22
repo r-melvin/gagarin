@@ -48,7 +48,7 @@ extern int  GameElapsedTime;
 // GLOBAL: GAMEMD 0x00B0BDB4 — true while the game clock is running.
 extern bool GameTimerRunning;
 
-void __fastcall Unsorted_RegisterGameStartTime();  // GAMEMD 0x6C87F0
-void __fastcall Unsorted_RegisterGameEndTime();    // GAMEMD 0x6C8820
+void Unsorted_RegisterGameStartTime();  // GAMEMD 0x6C87F0
+void Unsorted_RegisterGameEndTime();    // GAMEMD 0x6C8820
 
 #endif  // GG_MATCH_CORE_GAME_TIMING_METHODS_H

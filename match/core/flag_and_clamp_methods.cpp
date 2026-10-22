@@ -43,7 +43,7 @@ static __forceinline int ClampPercent(int value)
 }
 
 // FUNCTION: GAMEMD 0x406620
-void __fastcall FUN_00406620(Obj_00406600* obj, int value)
+void FUN_00406620(Obj_00406600* obj, int value)
 {
     obj->unknown_68 = ClampPercent(value);
 }

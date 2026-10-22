@@ -20,7 +20,7 @@
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 // FUNCTION: GAMEMD 0x763720 — the element destructor, __fastcall.
-void __fastcall FUN_00763720(void* element);
+void FUN_00763720(void* element);
 
 // `MOV BL,byte ptr [ESP+8]` with the object in ECX makes the flag a *stack*
 // argument, so this is __thiscall: a free __fastcall taking two arguments would

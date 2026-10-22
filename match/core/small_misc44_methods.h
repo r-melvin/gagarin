@@ -64,7 +64,7 @@ extern "C" __declspec(dllimport) void __stdcall LeaveCriticalSection(CriticalSec
 extern CriticalSection_004081A0 DAT_0087E7F8;   // GLOBAL: GAMEMD 0x87E7F8
 
 // FUNCTION: GAMEMD 0x4025B0 — the transition, __fastcall.
-void __fastcall FUN_004025B0(void* subject);
+void FUN_004025B0(void* subject);
 
 struct Armed_004081A0
 {

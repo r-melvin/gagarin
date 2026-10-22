@@ -5,7 +5,7 @@
 #include "small_misc38_methods.h"
 
 // FUNCTION: GAMEMD 0x41C3F0
-void __fastcall FUN_0041C3F0(Triple_0041C3F0* self)
+void FUN_0041C3F0(Triple_0041C3F0* self)
 {
     if (self->X == 0.0 && self->Y == 0.0 && self->Z == 0.0) {
         self->X = 100.0;
@@ -121,7 +121,7 @@ void AnimFile_00426750::FUN_00426790()
 // null - retail's `MOV [EAX+ESI*4-4],0` sits after the increment, which is the
 // strength-reduced form of an unconditional `Items[i] = 0`, not something
 // inside the guard.
-void __fastcall FUN_0043A670(Obj_0043A670* self)
+void FUN_0043A670(Obj_0043A670* self)
 {
     int count = self->Count;
 
