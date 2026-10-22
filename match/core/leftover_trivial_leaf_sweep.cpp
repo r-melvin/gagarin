@@ -91,20 +91,3 @@ int __fastcall FUN_00717A70(LeafObj_0x04* self)
     return self->unknown_04;
 }
 
-// FUNCTION: GAMEMD 0x76F020
-int __fastcall FUN_0076F020(LeafObj_0x04* self)
-{
-    return self->unknown_04;
-}
-
-// FUNCTION: GAMEMD 0x76F070
-int __fastcall FUN_0076F070(LeafObj_0x04* self)
-{
-    return self->unknown_04;
-}
-
-// FUNCTION: GAMEMD 0x76F080
-int __fastcall FUN_0076F080(LeafObj_0x04* self)
-{
-    return self->unknown_04;
-}

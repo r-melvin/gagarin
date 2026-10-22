@@ -47,22 +47,3 @@ HouseClass* TechnoClass::GetOriginalOwner() const
     return this->Owner;
 }
 
-// FUNCTION: GAMEMD 0x734270  (__thiscall)
-// Removes this object from the two sidebar tab-object slots. A null this clears
-// both slots; otherwise only the slot(s) that point at this object are cleared.
-void TechnoClass::ClearSidebarTabObject()
-{
-    if (this == NULL) {
-        SidebarTabObjectA = NULL;
-        SidebarTabObjectB = NULL;
-        return;
-    }
-    if (this == SidebarTabObjectA) {
-        SidebarTabObjectA = NULL;
-        return;
-    }
-    if (this == SidebarTabObjectB) {
-        SidebarTabObjectB = NULL;
-        return;
-    }
-}

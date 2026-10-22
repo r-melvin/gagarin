@@ -114,30 +114,10 @@ struct Obj_00705D20
 };
 GG_STATIC_ASSERT(offsetof(Obj_00705D20, unknown_514) == 0x514);
 
-// FUNCTION: GAMEMD 0x00705D20
-int __fastcall FUN_00705D20(Obj_00705D20* self)
-{
-    return self->unknown_514;
-}
 
 // GLOBAL: GAMEMD 0x00843108
 extern "C" char DAT_00843108;
 
-// FUNCTION: GAMEMD 0x0070D180
-void __fastcall FUN_0070D180(char value)
-{
-    DAT_00843108 = value;
-}
-
-// FUNCTION: GAMEMD 0x0070E240
-// True when `slot` is non-null and holds a non-zero value.
-int __stdcall FUN_0070E240(const int* slot)
-{
-    if (slot != NULL && *slot != 0) {
-        return 1;
-    }
-    return 0;
-}
 
 struct Obj_00711EB0
 {

@@ -20,9 +20,3 @@ void __fastcall FUN_0065D660(ConstStoreObject* self)
     self->Head = VTABLE_007F0954;
 }
 
-// FUNCTION: GAMEMD 0x7ACBD0
-void __fastcall FUN_007ACBD0(ConstStoreObject* self)
-{
-    self->Head = 0;
-}
-

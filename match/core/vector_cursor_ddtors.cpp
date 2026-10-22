@@ -43,12 +43,3 @@ template class VectorCursor<rc_ptr<WorldDominationTour::GameOption>, DynamicVect
 // SYNTHETIC: GAMEMD 0x769DC0
 // VectorCursor<TRect<int> > (vtable 0x7F71CC)
 template class VectorCursor<TRect<int>, VectorClass<TRect<int> > >;
-// SYNTHETIC: GAMEMD 0x76F100
-// VectorCursor<MSSfxEntry*> (vtable 0x7F72C4)
-template class VectorCursor<MSSfxEntry*, DynamicVectorClass<MSSfxEntry*> >;
-// SYNTHETIC: GAMEMD 0x76F120
-// VectorCursor<rc_ptr<Territory> > (vtable 0x7F72D8)
-template class VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory> > >;
-// SYNTHETIC: GAMEMD 0x76F140
-// VectorCursor<MSAnim*> (vtable 0x7F72EC)
-template class VectorCursor<MSAnim*, DynamicVectorClass<MSAnim*> >;

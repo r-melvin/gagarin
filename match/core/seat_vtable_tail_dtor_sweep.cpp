@@ -31,27 +31,3 @@ void __fastcall FUN_00766910(SeatDtorObject* self)
     FUN_0065D460(self);
 }
 
-// FUNCTION: GAMEMD 0x767300
-// VTABLE: GAMEMD 0x7F7060
-void __fastcall FUN_00767300(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007F7060;
-    FUN_0065D660(self);
-}
-
-// FUNCTION: GAMEMD 0x76F060
-// VTABLE: GAMEMD 0x7F71C4
-void __fastcall FUN_0076F060(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007F71C4;
-    FUN_0065D460(self);
-}
-
-// FUNCTION: GAMEMD 0x77D1F0
-// VTABLE: GAMEMD 0x7F7624
-void __fastcall FUN_0077D1F0(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007F7624;
-    FUN_00624130(self);
-}
-

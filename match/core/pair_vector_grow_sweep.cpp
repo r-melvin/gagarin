@@ -50,34 +50,3 @@ fail:
     return false;
 }
 
-
-// FUNCTION: GAMEMD 0x710750
-bool GrowPairVector::Grow_710750(int extra)
-{
-    GrowPair* grown;
-    int total;
-    int i;
-
-    if (extra < 0) goto fail;
-
-    total = Capacity + extra;
-    grown = new GrowPair[total];
-    if (grown == 0) goto fail;
-
-    for (i = 0; i < Count; i++) {
-        int off = i * 8;
-        GrowPair* src = (GrowPair*)((char*)Items + off);
-        *(GrowPair*)((char*)grown + off) = *src;
-    }
-
-    delete[] Items;
-
-    Items    = grown;
-    Capacity = Capacity + extra;
-    Cached   = 0;
-    return true;
-
-fail:
-    return false;
-}
-

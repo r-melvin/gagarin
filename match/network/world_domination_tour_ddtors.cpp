@@ -30,15 +30,6 @@ void* WorldDominationTour::Conflict::DeletingDtor(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x767880
-void* WorldDominationTour::FlagGameOption::DeletingDtor(unsigned int flags)
-{
-    this->~FlagGameOption();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x767C10
 void* WorldDominationTour::History::DeletingDtor(unsigned int flags)
@@ -60,22 +51,3 @@ void* WorldDominationTour::State::DeletingDtor(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x770020
-void* WorldDominationTour::Territory::DeletingDtor(unsigned int flags)
-{
-    this->~Territory();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x77B030
-void* PlayerProfile::DeletingDtor(unsigned int flags)
-{
-    this->~PlayerProfile();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}

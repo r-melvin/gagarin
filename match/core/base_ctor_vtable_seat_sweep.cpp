@@ -46,13 +46,3 @@ CtorSeatObject* __fastcall FUN_0076BC60(CtorSeatObject* self)
     return self;
 }
 
-// FUNCTION: GAMEMD 0x77D1D0
-// VTABLE: GAMEMD 0x7F7624
-CtorSeatObject* __fastcall FUN_0077D1D0(CtorSeatObject* self)
-{
-    FUN_00624110(self);
-    self->Vtbl = VTABLE_007F7624;
-
-    return self;
-}
-

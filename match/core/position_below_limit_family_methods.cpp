@@ -29,27 +29,3 @@ bool __fastcall FUN_00766920(Cursor_004F28B0* self)
     return self->Position < self->Owner->Limit;
 }
 
-// FUNCTION: GAMEMD 0x0076F0B0
-//
-// Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0B0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// FUNCTION: GAMEMD 0x0076F0E0
-//
-// Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0E0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-
-// FUNCTION: GAMEMD 0x0076F0F0
-//
-// Is this cursor still inside its owner's limit.
-bool __fastcall FUN_0076F0F0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
-

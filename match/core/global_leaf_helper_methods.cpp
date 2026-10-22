@@ -56,15 +56,6 @@ int __cdecl FUN_006CF320(const void* a, const void* b)
     return 1;
 }
 
-// FUNCTION: GAMEMD 0x00710860
-int __cdecl FUN_00710860(const void* a, const void* b)
-{
-    if (*(const int*)a == *(const int*)b)
-        return 0;
-    if (*(const int*)a < *(const int*)b)
-        return -1;
-    return 1;
-}
 
 // FUNCTION: GAMEMD 0x00754720
 void FUN_00754720()

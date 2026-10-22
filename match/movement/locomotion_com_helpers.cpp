@@ -3,25 +3,6 @@
 
 #include "locomotion_com_helpers.h"
 
-// FUNCTION: GAMEMD 0x70F0B0
-//
-// Map a locomotor kind onto its expansion replacement. Only two kinds are
-// remapped, and only while the expansion's rule set is active; everything
-// else is handed back unchanged.
-int __fastcall FUN_0070F0B0(int kind, int, int)
-{
-    bool expansion = FUN_00731BF0();
-    if (kind == 1) {
-        if (expansion) {
-            return 0x3E;
-        }
-    } else if (kind == 5) {
-        if (expansion) {
-            return 0x3F;
-        }
-    }
-    return kind;
-}
 
 // FUNCTION: GAMEMD 0x719EE0
 //

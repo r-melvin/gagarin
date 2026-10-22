@@ -2552,7 +2552,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_combat_damage_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F3970",
   "sym": "?CombatDamage@Techno_006F3970@@QAEHH@Z",
   "len": "0x151",
@@ -2579,7 +2579,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_gattling_rate_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70E000",
   "sym": "?GattlingRateDown@Techno_0070E000@@QAEXH@Z",
   "len": "0x119",
@@ -2597,7 +2597,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_nearby_location_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x703590",
   "sym": "?NearbyLocation@Obj_00703590@@QAE?AUCell_00703590@@PAU1@@Z",
   "len": "0x123",
@@ -2615,7 +2615,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_passive_acquire_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7091D0",
   "sym": "?CanPassiveAcquireTargets@Obj_007091D0@@QAE_NXZ",
   "len": "0xb2",
@@ -2633,7 +2633,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_reloading_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6FB080",
   "sym": "?StartReloading@Techno_006FB080@@QAEXXZ",
   "len": "0xE5",
@@ -2696,7 +2696,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/unit_class_should_crash_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x7438F0",
   "sym": "?ShouldCrashIt@Obj_007438F0@@QAE_NPAU1@@Z",
   "len": "0x153",
@@ -2813,7 +2813,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/abstract_class_untargetable_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70D4A0",
   "sym": "?BecomeUntargetable@Abstract_0070D4A0@@QAEXXZ",
   "len": "0xe1",
@@ -3056,7 +3056,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/base_ctor_vtable_seat_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77D1D0",
   "sym": "?FUN_0077D1D0@@YIPAUCtorSeatObject@@PAU1@@Z",
   "len": "0x12",
@@ -4649,7 +4649,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/const_store_leaf_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7ACBD0",
   "sym": "?FUN_007ACBD0@@YIXPAUConstStoreObject@@@Z",
   "len": "0x7",
@@ -5306,7 +5306,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746E80",
   "sym": "?FUN_746E80@Obj_746E80@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5360,7 +5360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76EFE0",
   "sym": "?FUN_76EFE0@Obj_76EFE0@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5369,7 +5369,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD2F0",
   "sym": "?FUN_7AD2F0@Obj_7AD2F0@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5378,7 +5378,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD310",
   "sym": "?FUN_7AD310@Obj_7AD310@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5387,7 +5387,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD330",
   "sym": "?FUN_7AD330@Obj_7AD330@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5396,7 +5396,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD350",
   "sym": "?FUN_7AD350@Obj_7AD350@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5405,7 +5405,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AED20",
   "sym": "?FUN_7AED20@Obj_7AED20@@QAEPAXI@Z",
   "len": "0x1e",
@@ -7692,7 +7692,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/hash_bucket_mask_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AE0C0",
   "sym": "?FUN_007AE0C0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
@@ -7701,7 +7701,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/hash_bucket_mask_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AE5B0",
   "sym": "?FUN_007AE5B0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
@@ -7710,7 +7710,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/hash_bucket_mask_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AECB0",
   "sym": "?FUN_007AECB0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
@@ -8817,7 +8817,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F020",
   "sym": "?FUN_0076F020@@YIHPAULeafObj_0x04@@@Z",
   "len": "0x4",
@@ -8826,7 +8826,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F070",
   "sym": "?FUN_0076F070@@YIHPAULeafObj_0x04@@@Z",
   "len": "0x4",
@@ -8835,7 +8835,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F080",
   "sym": "?FUN_0076F080@@YIHPAULeafObj_0x04@@@Z",
   "len": "0x4",
@@ -9681,7 +9681,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pair_vector_grow_sweep.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710750",
   "sym": "?Grow_710750@GrowPairVector@@QAE_NH@Z",
   "len": "0x86",
@@ -10347,7 +10347,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724FA0",
   "sym": "?HasCachedKey@ToolTipTable@@QAE_NPBI@Z",
   "len": "0x1b",
@@ -10356,7 +10356,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/same_object_test_sweep.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746EA0",
   "sym": "?FUN_00746EA0@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -10482,7 +10482,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767300",
   "sym": "?FUN_00767300@@YIXPAUSeatDtorObject@@@Z",
   "len": "0xb",
@@ -10491,7 +10491,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F060",
   "sym": "?FUN_0076F060@@YIXPAUSeatDtorObject@@@Z",
   "len": "0xb",
@@ -10500,7 +10500,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77D1F0",
   "sym": "?FUN_0077D1F0@@YIXPAUSeatDtorObject@@@Z",
   "len": "0xb",
@@ -12409,7 +12409,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724FC0",
   "sym": "?Search@ToolTipTable@@QAEPAUToolTipTableEntry@@PAI@Z",
   "len": "0x79",
@@ -12742,7 +12742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D60",
   "sym": "?FUN_00705D60@@YIXPAX@Z",
   "len": "0x5",
@@ -12814,7 +12814,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_fire_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70ECE0",
   "sym": "?Fire@RecoilData@@QAEXXZ",
   "len": "0x2C",
@@ -12949,7 +12949,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_owner_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x734270",
   "sym": "?ClearSidebarTabObject@TechnoClass@@QAEXXZ",
   "len": "0x2D",
@@ -12958,7 +12958,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F7780",
   "sym": "?IsCloseEnoughToAttack@TechnoClass@@QAE_NPAVAbstractClass@@@Z",
   "len": "0x22",
@@ -12967,7 +12967,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7010D0",
   "sym": "?IsGuardingWithLiveWeapon@TechnoClass@@QAE_NXZ",
   "len": "0x45",
@@ -12976,7 +12976,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x701120",
   "sym": "?IsArmed@TechnoClass@@QAEHXZ",
   "len": "0x1a",
@@ -12985,7 +12985,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70C5A0",
   "sym": "?IsCloakable@TechnoClass@@QAE_NXZ",
   "len": "0xc",
@@ -12994,7 +12994,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70EFD0",
   "sym": "?IsUnderEMP@TechnoClass@@QAE_NXZ",
   "len": "0xe",
@@ -13003,7 +13003,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F090",
   "sym": "?CanAttackOnTheMove@TechnoClass@@QAE_NXZ",
   "len": "0x12",
@@ -13012,7 +13012,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_predicate_slots_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F850",
   "sym": "?CancelAndGoIdle@TechnoClass@@QAEXXZ",
   "len": "0x33",
@@ -15055,7 +15055,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x00724c30",
   "sym": "?Clear@?$DynamicVectorClass@PBVToolTip@@@@UAEXXZ",
   "len": "0x2a",
@@ -18421,7 +18421,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x00724EF0",
   "sym": "??_G?$VectorClass@PBVToolTip@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18430,7 +18430,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x00724F40",
   "sym": "??_G?$DynamicVectorClass@PBVToolTip@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -20437,7 +20437,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x00724d80",
   "sym": "?Clear@?$VectorClass@PBVToolTip@@@@UAEXXZ",
   "len": "0x27",
@@ -25569,7 +25569,7 @@
   "pct": 31.2
  },
  {
-  "tu": "match/movement/locomotion_begin_drain_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FD70",
   "sym": "?BeginDraining@Drainer_0070FD70@@QAEXPAUTarget_0070FD70@@@Z",
   "len": "0xcf",
@@ -25713,7 +25713,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_com_helpers.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F0B0",
   "sym": "?FUN_0070F0B0@@YIHHHH@Z",
   "len": "0x2e",
@@ -25731,7 +25731,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_forget_pointer_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710410",
   "sym": "?FUN_00710410@Holder_00710410@@QAEXPAX@Z",
   "len": "0x4d",
@@ -25740,7 +25740,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_link_query_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FEB0",
   "sym": "?IsDraining@LocoObject_0070FEB0@@QBE_NXZ",
   "len": "0xe",
@@ -25749,7 +25749,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_link_query_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710460",
   "sym": "?FreeWaypointBuffer@LocoObject_0070FEB0@@QAEXXZ",
   "len": "0x10",
@@ -25758,7 +25758,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_link_query_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710600",
   "sym": "?CanFireFromGround@LocoObject_0070FEB0@@QAEHXZ",
   "len": "0x2c",
@@ -25767,7 +25767,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_link_query_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710630",
   "sym": "?CanFireAny@LocoObject_0070FEB0@@QAEHXZ",
   "len": "0x38",
@@ -25776,7 +25776,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotion_velocity_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F670",
   "sym": "?ApplyVelocity@VelocitySource_0070F670@@QAEXPAUMover_0070F670@@@Z",
   "len": "0x2f",
@@ -25785,7 +25785,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_velocity_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F6A0",
   "sym": "?RemoveVelocity@VelocitySource_0070F670@@QAEXPAUMover_0070F670@@@Z",
   "len": "0x31",
@@ -26037,7 +26037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/techno_class_release_locomotor_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FEE0",
   "sym": "?ReleaseLocomotor@Techno_0070FEE0@@QAEX_N@Z",
   "len": "0x116",
@@ -26046,7 +26046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_astar_attempt_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746000",
   "sym": "?AStarAttempt@Unit_00746000@@QAE_NPBUCell_00746000@@0@Z",
   "len": "0xfe",
@@ -26082,7 +26082,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_occupation_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x740E80",
   "sym": "?APCOpenDoor@UnitClass@@QAEXXZ",
   "len": "0x52",
@@ -26091,7 +26091,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_occupation_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x7441B0",
   "sym": "?MarkAllOccupationBits@UnitClass@@QAEXABUCoordStruct@@@Z",
   "len": "0x5E",
@@ -26100,7 +26100,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_occupation_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x744210",
   "sym": "?UnmarkAllOccupationBits@UnitClass@@QAEXABUCoordStruct@@@Z",
   "len": "0x53",
@@ -29866,7 +29866,7 @@
   "pct": 92.4
  },
  {
-  "tu": "match/ui/toggle_class_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x723EA0",
   "sym": "?TurnOn@ToggleClass@@QAEXXZ",
   "len": "0x9",
@@ -29875,7 +29875,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/toggle_class_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x723EB0",
   "sym": "?TurnOff@ToggleClass@@QAEXXZ",
   "len": "0x9",
@@ -29884,7 +29884,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724AD0",
   "sym": "?Process@ToolTipManager@@QAE_NXZ",
   "len": "0xad",
@@ -29902,7 +29902,7 @@
   "pct": 15.2
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724520",
   "sym": "?SetTimerDelay@ToolTipManager@@QAEXH@Z",
   "len": "0xD",
@@ -29911,7 +29911,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724530",
   "sym": "?SaveTimerDelay@ToolTipManager@@QAEXXZ",
   "len": "0xD",
@@ -29920,7 +29920,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724540",
   "sym": "?RestoreTimeDelay@ToolTipManager@@QAEXXZ",
   "len": "0xD",
@@ -29929,7 +29929,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724C00",
   "sym": "?IsToolTipShowing@ToolTipManager@@QBE_NXZ",
   "len": "0xB",
@@ -29938,7 +29938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724730",
   "sym": "?Remove@ToolTipManager@@QAEXI@Z",
   "len": "0x181",
@@ -29947,7 +29947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x7241A0",
   "sym": "?SetState@ToolTipManager@@QAEX_N@Z",
   "len": "0x57",
@@ -30397,7 +30397,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/static_reset_00723e40.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x723E40",
   "sym": "@FUN_00723E40@0",
   "len": "0x17",
@@ -30460,7 +30460,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/toggle_class_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x723E60",
   "sym": "??0ToggleClass@@QAE@HHHHH@Z",
   "len": "0x3e",
@@ -31972,7 +31972,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724aa0",
   "sym": "?Update@ToolTipManager@@UAE_NAAUToolTipManagerData@@@Z",
   "len": "0x5",
@@ -31981,7 +31981,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724ab0",
   "sym": "?MarkToRedraw@ToolTipManager@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x14",
@@ -31990,7 +31990,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724b80",
   "sym": "?Draw@ToolTipManager@@UAEX_N@Z",
   "len": "0x26",
@@ -31999,7 +31999,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724bb0",
   "sym": "?DrawText@ToolTipManager@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x18",
@@ -32008,7 +32008,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724bd0",
   "sym": "?GetToolTipText@ToolTipManager@@UAEPAGI@Z",
   "len": "0x5",
@@ -32036,7 +32036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724000",
   "sym": "??0ToolTipManager@@QAE@PAX@Z",
   "len": "0xA7",
@@ -32099,7 +32099,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x725040",
   "sym": "_CompareToolTipTableEntries",
   "len": "0x22",
@@ -32117,7 +32117,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724C60",
   "sym": "?Slot5@?$DynamicVectorClass@PBVToolTip@@@@UBEHPAPBVToolTip@@@Z",
   "len": "0x1B",
@@ -32126,7 +32126,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724C80",
   "sym": "?Slot6@?$VectorClass@PBVToolTip@@@@UBEPBVToolTip@@H@Z",
   "len": "0x0D",
@@ -32135,7 +32135,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724C90",
   "sym": "??8?$VectorClass@PBVToolTip@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -32144,7 +32144,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724CD0",
   "sym": "?SetCapacity@?$VectorClass@PBVToolTip@@@@UAE_NHPAPBVToolTip@@@Z",
   "len": "0xAE",
@@ -32153,7 +32153,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724DB0",
   "sym": "?FindItemIndex@?$VectorClass@PBVToolTip@@@@UBEHABQBVToolTip@@@Z",
   "len": "0x33",
@@ -32162,7 +32162,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724DF0",
   "sym": "?Slot5@?$VectorClass@PBVToolTip@@@@UBEHPAPBVToolTip@@@Z",
   "len": "0x1B",
@@ -32171,7 +32171,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724E10",
   "sym": "?SetCapacity@?$DynamicVectorClass@PBVToolTip@@@@UAE_NHPAPBVToolTip@@@Z",
   "len": "0xb0",
@@ -32180,7 +32180,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_vector_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724EC0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVToolTip@@@@UBEHABQBVToolTip@@@Z",
   "len": "0x26",
@@ -57337,7 +57337,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767880",
   "sym": "?DeletingDtor@FlagGameOption@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x36",
@@ -57364,7 +57364,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cursor_ddtors.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F100",
   "sym": "??_G?$VectorCursor@PAVMSSfxEntry@@V?$DynamicVectorClass@PAVMSSfxEntry@@@@@@UAEPAXI@Z",
   "len": "0x20",
@@ -57373,7 +57373,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cursor_ddtors.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F120",
   "sym": "??_G?$VectorCursor@V?$rc_ptr@VTerritory@WorldDominationTour@@@@V?$DynamicVectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@@@UAEPAXI@Z",
   "len": "0x20",
@@ -57382,7 +57382,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cursor_ddtors.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F140",
   "sym": "??_G?$VectorCursor@PAVMSAnim@@V?$DynamicVectorClass@PAVMSAnim@@@@@@UAEPAXI@Z",
   "len": "0x20",
@@ -57400,7 +57400,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/core/WDTTerr.cpp",
   "addr": "0x770020",
   "sym": "?DeletingDtor@Territory@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x36",
@@ -57409,7 +57409,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/world_domination_tour_ddtors.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77B030",
   "sym": "?DeletingDtor@PlayerProfile@@UAEPAXI@Z",
   "len": "0x3E",
@@ -57418,7 +57418,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wonline_mapselect_ddtors.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC5D0",
   "sym": "?DeletingDtor@WonlineStringDialogControl@@UAEPAXI@Z",
   "len": "0x34",
@@ -57427,7 +57427,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wonline_mapselect_ddtors.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC630",
   "sym": "?DeletingDtor@CreateGameDialogControl@@UAEPAXI@Z",
   "len": "0x34",
@@ -60379,7 +60379,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/grow_list_insert_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7ACA00",
   "sym": "?Insert@?$GrowList@UGrowListRecord6C@@@@QAE_NABUGrowListRecord6C@@H@Z",
   "len": "0x186",
@@ -60388,7 +60388,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/grow_list_insert_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD790",
   "sym": "?Insert@?$GrowList@UGrowListRecord10C@@@@QAE_NABUGrowListRecord10C@@H@Z",
   "len": "0x197",
@@ -60397,7 +60397,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/grow_list_insert_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7ADB00",
   "sym": "?Insert@?$GrowList@H@@QAE_NABHH@Z",
   "len": "0x15A",
@@ -60406,7 +60406,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/chained_hash_table_remove_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7ADCD0",
   "sym": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
   "len": "0x291",
@@ -60415,7 +60415,7 @@
   "pct": 30.2
  },
  {
-  "tu": "match/core/grow_list_insert_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AE5D0",
   "sym": "?Insert@?$GrowList@UGrowListHandle@@@@QAE_NABUGrowListHandle@@H@Z",
   "len": "0x15C",
@@ -61333,7 +61333,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/member_setter_family_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D10",
   "sym": "?FUN_00705D10@Setter_00487C70@@QAEXH@Z",
   "len": "0xd",
@@ -61342,7 +61342,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_c.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D20",
   "sym": "?FUN_00705D20@@YIHPAUObj_00705D20@@@Z",
   "len": "0x7",
@@ -61351,7 +61351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_c.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70D180",
   "sym": "?FUN_0070D180@@YIXD@Z",
   "len": "0x7",
@@ -61360,7 +61360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_c.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70E240",
   "sym": "?FUN_0070E240@@YGHPBH@Z",
   "len": "0x1a",
@@ -61513,7 +61513,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F0B0",
   "sym": "?FUN_0076F0B0@@YI_NPAUCursor_004F28B0@@@Z",
   "len": "0xe",
@@ -61522,7 +61522,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F0E0",
   "sym": "?FUN_0076F0E0@@YI_NPAUCursor_004F28B0@@@Z",
   "len": "0xe",
@@ -61531,7 +61531,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F0F0",
   "sym": "?FUN_0076F0F0@@YI_NPAUCursor_004F28B0@@@Z",
   "len": "0xe",
@@ -72490,7 +72490,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/index_code_table_00723d20.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x723D20",
   "sym": "?FUN_00723D20@@YIHI@Z",
   "len": "0x8d",
@@ -72518,7 +72518,7 @@
   "note": "pct is diff_retail with the switch table slots compared separately; the residual is the inlined FUN_00724A30 loop layout (same as 0x724A30)."
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724510",
   "sym": "?FUN_00724510@ToolTipManager@@QBEHXZ",
   "len": "0x7",
@@ -72527,7 +72527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724550",
   "sym": "?FUN_00724550@ToolTipManager@@QBEHXZ",
   "len": "0x7",
@@ -72536,7 +72536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724560",
   "sym": "?FUN_00724560@ToolTipManager@@QAEXH@Z",
   "len": "0xd",
@@ -72545,7 +72545,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724570",
   "sym": "?FUN_00724570@ToolTipManager@@QBEHXZ",
   "len": "0x7",
@@ -72554,7 +72554,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724580",
   "sym": "?Add@ToolTipManager@@QAE_NAAVToolTip@@@Z",
   "len": "0x1ae",
@@ -72844,7 +72844,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767310",
   "sym": "?FUN_00767310@GameOption@WorldDominationTour@@QBE_NABV?$rc_ptr@VObj_007674E0@@@@@Z",
   "len": "0x5",
@@ -72853,7 +72853,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767400",
   "sym": "?vf_14@Obj_00767400@@UBEHI@Z",
   "len": "0x38",
@@ -72862,7 +72862,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767440",
   "sym": "?FUN_00767440@Obj_00767400@@QBEHI@Z",
   "len": "0x19",
@@ -72871,7 +72871,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x7674E0",
   "sym": "?vf_0C@FlagGameOption@WorldDominationTour@@UBEHABV?$rc_ptr@VObj_007674E0@@@@@Z",
   "len": "0x1d",
@@ -72880,7 +72880,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767600",
   "sym": "?FUN_00767600@Obj_00767600@@QBEHH@Z",
   "len": "0x5",
@@ -72889,7 +72889,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x7676F0",
   "sym": "?FUN_007676F0@@YI?AV?$rc_ptr@VMapSizeGameOption@WorldDominationTour@@@@I@Z",
   "len": "0x44",
@@ -72898,7 +72898,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_game_options.cpp",
+  "tu": "match/network/WDTGameOptions.cpp",
   "addr": "0x767800",
   "sym": "?vf_0C@MapSizeGameOption@WorldDominationTour@@UBEHABV?$rc_ptr@VObj_007674E0@@@@@Z",
   "len": "0x1e",
@@ -73033,7 +73033,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BE90",
   "sym": "?FUN_0076BE90@@YI?AV?$rc_ptr@VCampaignProperties@WorldDominationTour@@@@ABV?$rc_ptr@VWDTState@@@@@Z",
   "len": "0x3c",
@@ -73042,7 +73042,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BED0",
   "sym": "??1CampaignProperties@WorldDominationTour@@QAE@XZ",
   "len": "0x30",
@@ -73051,7 +73051,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BF00",
   "sym": "??0CampaignProperties@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTState@@@@@Z",
   "len": "0x93",
@@ -73060,7 +73060,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BFA0",
   "sym": "?FUN_0076BFA0@CampaignProperties@WorldDominationTour@@QBEHXZ",
   "len": "0xe",
@@ -73069,7 +73069,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BFC0",
   "sym": "?FUN_0076BFC0@CampaignProperties@WorldDominationTour@@QBEHXZ",
   "len": "0x15",
@@ -73078,7 +73078,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BFE0",
   "sym": "?FUN_0076BFE0@CampaignProperties@WorldDominationTour@@QBEHXZ",
   "len": "0xf",
@@ -73087,7 +73087,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76BFF0",
   "sym": "?FUN_0076BFF0@CampaignProperties@WorldDominationTour@@QBE?AVMember_7B46F0@@XZ",
   "len": "0x35",
@@ -73096,7 +73096,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wdt_props.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x76C030",
   "sym": "?DeletingDtor@CampaignProperties@WorldDominationTour@@UAEPAXI@Z",
   "len": "0x44",
@@ -78611,7 +78611,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_leaf_helper_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x710860",
   "sym": "?FUN_00710860@@YAHPBX0@Z",
   "len": "0x22",
@@ -79214,7 +79214,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77B920",
   "sym": "?FUN_0077B920@@YIXXZ",
   "len": "0x17",
@@ -79223,7 +79223,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77B960",
   "sym": "?FUN_0077B960@@YIXXZ",
   "len": "0x17",
@@ -79232,7 +79232,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77B9A0",
   "sym": "?FUN_0077B9A0@@YIXXZ",
   "len": "0x17",
@@ -79241,7 +79241,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77B9E0",
   "sym": "?FUN_0077B9E0@@YIXXZ",
   "len": "0x17",
@@ -79250,7 +79250,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77BA20",
   "sym": "?FUN_0077BA20@@YIXXZ",
   "len": "0x17",
@@ -79259,7 +79259,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C370",
   "sym": "?FUN_0077C370@@YIXXZ",
   "len": "0x3e",
@@ -79268,7 +79268,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C600",
   "sym": "?FUN_0077C600@@YIXXZ",
   "len": "0x3e",
@@ -79277,7 +79277,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C720",
   "sym": "?FUN_0077C720@@YIXXZ",
   "len": "0x3e",
@@ -79286,7 +79286,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C780",
   "sym": "?FUN_0077C780@@YIXXZ",
   "len": "0x3e",
@@ -79295,7 +79295,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C7E0",
   "sym": "?FUN_0077C7E0@@YIXXZ",
   "len": "0x3e",
@@ -79304,7 +79304,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C840",
   "sym": "?FUN_0077C840@@YIXXZ",
   "len": "0x3e",
@@ -79313,7 +79313,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C8A0",
   "sym": "?FUN_0077C8A0@@YIXXZ",
   "len": "0x3e",
@@ -79322,7 +79322,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C900",
   "sym": "?FUN_0077C900@@YIXXZ",
   "len": "0x3e",
@@ -79331,7 +79331,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C960",
   "sym": "?FUN_0077C960@@YIXXZ",
   "len": "0x3e",
@@ -79340,7 +79340,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77C9C0",
   "sym": "?FUN_0077C9C0@@YIXXZ",
   "len": "0x3e",
@@ -79349,7 +79349,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77CE70",
   "sym": "?FUN_0077CE70@@YIXXZ",
   "len": "0x3e",
@@ -79358,7 +79358,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_block_release_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77CED0",
   "sym": "?FUN_0077CED0@@YIXXZ",
   "len": "0x3e",
@@ -79367,7 +79367,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/pod_array_grow_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AEEC0",
   "sym": "?FUN_007AEEC0@Obj_007AEEC0@@QAE_NXZ",
   "len": "0x8f",
@@ -79376,7 +79376,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/pod_array_grow_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AF000",
   "sym": "?FUN_007AF000@Obj_007AF000@@QAE_NXZ",
   "len": "0x8f",
@@ -84416,7 +84416,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F60C0",
   "sym": "?FUN_006F60C0@Obj_006F60C0@@QAEXHH@Z",
   "len": "0x3",
@@ -84425,7 +84425,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F9DB0",
   "sym": "?FUN_006F9DB0@Obj_006F9DB0@@QBEHXZ",
   "len": "0xa",
@@ -84434,7 +84434,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F9DC0",
   "sym": "?FUN_006F9DC0@Obj_006F9DC0@@QBEHXZ",
   "len": "0x7",
@@ -84443,7 +84443,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6FC090",
   "sym": "?FUN_006FC090@Obj_006FC090@@QAEXHH@Z",
   "len": "0x17",
@@ -84452,7 +84452,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6FF950",
   "sym": "?FUN_006FF950@@YAXXZ",
   "len": "0x1",
@@ -84461,7 +84461,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x701190",
   "sym": "?FUN_00701190@Obj_00701190@@QBE_NXZ",
   "len": "0x3",
@@ -84470,7 +84470,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x703850",
   "sym": "?FUN_00703850@Obj_00703850@@QAEXXZ",
   "len": "0xb",
@@ -84479,7 +84479,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D30",
   "sym": "?FUN_00705D30@Obj_00705D30@@QAEEXZ",
   "len": "0x18",
@@ -84488,7 +84488,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D50",
   "sym": "?FUN_00705D50@Obj_00705D50@@QAE_NXZ",
   "len": "0xe",
@@ -84497,7 +84497,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x709460",
   "sym": "?FUN_00709460@@YGHH@Z",
   "len": "0x20",
@@ -84506,7 +84506,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7094E0",
   "sym": "?FUN_007094E0@Obj_007094E0@@QAEHXZ",
   "len": "0x1e",
@@ -84515,7 +84515,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x709800",
   "sym": "?FUN_00709800@@YGHH@Z",
   "len": "0x1b",
@@ -84524,7 +84524,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7099D0",
   "sym": "?FUN_007099D0@Obj_007099D0@@QBEHHH@Z",
   "len": "0x5",
@@ -84533,7 +84533,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x709A20",
   "sym": "?FUN_00709A20@Obj_00709A20@@QAEXH@Z",
   "len": "0x3",
@@ -84542,7 +84542,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70C5B0",
   "sym": "?FUN_0070C5B0@Obj_0070C5B0@@QBEEXZ",
   "len": "0x7",
@@ -84551,7 +84551,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70C5C0",
   "sym": "?FUN_0070C5C0@Obj_0070C5C0@@QBEEXZ",
   "len": "0x7",
@@ -84560,7 +84560,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70C5D0",
   "sym": "?FUN_0070C5D0@Obj_0070C5D0@@QAE_NXZ",
   "len": "0x17",
@@ -84569,7 +84569,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70C5F0",
   "sym": "?FUN_0070C5F0@Obj_0070C5F0@@QAE_NXZ",
   "len": "0x1a",
@@ -84578,7 +84578,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70CCF0",
   "sym": "?FUN_0070CCF0@@YIXHH@Z",
   "len": "0x12",
@@ -84587,7 +84587,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70D670",
   "sym": "?FUN_0070D670@Obj_0070D670@@QAEHXZ",
   "len": "0x12",
@@ -84596,7 +84596,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70D980",
   "sym": "?FUN_0070D980@Obj_0070D980@@QAEXXZ",
   "len": "0x1",
@@ -84605,7 +84605,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70DCE0",
   "sym": "?FUN_0070DCE0@Obj_0070DCE0@@QBE_NXZ",
   "len": "0xf",
@@ -84614,7 +84614,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70DD90",
   "sym": "?FUN_0070DD90@Obj_0070DD90@@QBEHXZ",
   "len": "0x6",
@@ -84623,7 +84623,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70DE20",
   "sym": "?FUN_0070DE20@Obj_0070DE20@@QAEXH@Z",
   "len": "0x15",
@@ -84632,7 +84632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F000",
   "sym": "?FUN_0070F000@Obj_0070F000@@QBEHPAUArg1_0070F000@@@Z",
   "len": "0xb",
@@ -84641,7 +84641,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F010",
   "sym": "?FUN_0070F010@Obj_0070F010@@QAEXXZ",
   "len": "0x1",
@@ -84650,7 +84650,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F020",
   "sym": "?FUN_0070F020@Obj_0070F020@@QBE_NXZ",
   "len": "0x3",
@@ -84659,7 +84659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F030",
   "sym": "?FUN_0070F030@Obj_0070F030@@QBE_NXZ",
   "len": "0x3",
@@ -84668,7 +84668,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F0E0",
   "sym": "?FUN_0070F0E0@Obj_0070F0E0@@QBE_NXZ",
   "len": "0x3",
@@ -84677,7 +84677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F0F0",
   "sym": "?FUN_0070F0F0@Obj_0070F0F0@@QBE_NXZ",
   "len": "0x3",
@@ -84686,7 +84686,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F100",
   "sym": "?FUN_0070F100@Obj_0070F100@@QAEXXZ",
   "len": "0x1",
@@ -84695,7 +84695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70F110",
   "sym": "?FUN_0070F110@Obj_0070F110@@QBE_NXZ",
   "len": "0x3",
@@ -84704,7 +84704,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu237_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FE40",
   "sym": "?FUN_0070FE40@Obj_0070FE40@@QAEXH@Z",
   "len": "0xd",
@@ -84821,7 +84821,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/trivial_tu248_methods.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x724F90",
   "sym": "?FUN_00724F90@Obj_00724F90@@QAEPAU1@XZ",
   "len": "0x3",
@@ -85028,7 +85028,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x730AD0",
   "sym": "?FUN_00730AD0@@YAHXZ",
   "len": "0x6",
@@ -85037,7 +85037,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x730AE0",
   "sym": "?FUN_00730AE0@@YAHXZ",
   "len": "0x6",
@@ -85046,7 +85046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x731A30",
   "sym": "?FUN_00731A30@@YIXHH@Z",
   "len": "0x16",
@@ -85055,7 +85055,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x731A90",
   "sym": "?FUN_00731A90@@YAXXZ",
   "len": "0x5",
@@ -85064,7 +85064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x731BE0",
   "sym": "?FUN_00731BE0@@YAXXZ",
   "len": "0x8",
@@ -85091,7 +85091,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x731CF0",
   "sym": "?FUN_00731CF0@@YAXXZ",
   "len": "0x8",
@@ -85100,7 +85100,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu256_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x732CA0",
   "sym": "?FUN_00732CA0@@YAXXZ",
   "len": "0x1c",
@@ -85127,7 +85127,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x7393B0",
   "sym": "?FUN_007393B0@@YAXXZ",
   "len": "0x1",
@@ -85136,7 +85136,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x740E50",
   "sym": "?FUN_00740E50@@YIXPAUObj_00740E50@@H@Z",
   "len": "0x5",
@@ -85145,7 +85145,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x740EE0",
   "sym": "?FUN_00740EE0@@YIXPAUObj_00740EE0@@H@Z",
   "len": "0x5",
@@ -85154,7 +85154,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x741490",
   "sym": "?FUN_00741490@Obj_00741490@@QBEHXZ",
   "len": "0x7",
@@ -85163,7 +85163,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x7447A0",
   "sym": "?FUN_007447A0@@YIXPAUObj_007447A0@@H@Z",
   "len": "0x5",
@@ -85172,7 +85172,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746400",
   "sym": "?FUN_00746400@Obj_00746400@@QBEEXZ",
   "len": "0x16",
@@ -85181,7 +85181,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746CB0",
   "sym": "?FUN_00746CB0@@YIXPAUObj_00746CB0@@H@Z",
   "len": "0x5",
@@ -85190,7 +85190,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746CC0",
   "sym": "?FUN_00746CC0@@YIXPAUObj_00746CC0@@H@Z",
   "len": "0x5",
@@ -85199,7 +85199,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746D00",
   "sym": "?FUN_00746D00@Obj_00746D00@@QBEEXZ",
   "len": "0xd",
@@ -85208,7 +85208,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746D60",
   "sym": "?FUN_00746D60@@YIXPAUObj_00746D60@@H@Z",
   "len": "0x11",
@@ -85217,7 +85217,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746D80",
   "sym": "?FUN_00746D80@Obj_00746D80@@QBEEXZ",
   "len": "0x7",
@@ -85226,7 +85226,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746D90",
   "sym": "?FUN_00746D90@Obj_00746D90@@QAEHXZ",
   "len": "0x1d",
@@ -85235,7 +85235,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746DD0",
   "sym": "?FUN_00746DD0@Obj_00746DD0@@QBEHXZ",
   "len": "0x6",
@@ -85244,7 +85244,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu258_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x746E20",
   "sym": "?FUN_00746E20@Obj_00746E20@@QBEHXZ",
   "len": "0x6",
@@ -85775,7 +85775,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F000",
   "sym": "?FUN_0076F000@Obj_0076F000@@QAEHHH@Z",
   "len": "0x1a",
@@ -85784,7 +85784,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F160",
   "sym": "?FUN_0076F160@Obj_0076F160@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85793,7 +85793,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F170",
   "sym": "?FUN_0076F170@Obj_0076F170@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85802,7 +85802,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F180",
   "sym": "?FUN_0076F180@Obj_0076F180@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85811,7 +85811,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F190",
   "sym": "?FUN_0076F190@Obj_0076F190@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85820,7 +85820,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F1A0",
   "sym": "?FUN_0076F1A0@Obj_0076F1A0@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85829,7 +85829,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu278_methods.cpp",
+  "tu": "match/core/WDTSel.cpp",
   "addr": "0x76F1B0",
   "sym": "?FUN_0076F1B0@Obj_0076F1B0@@QAEPAU1@XZ",
   "len": "0x6",
@@ -85838,7 +85838,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu280_methods.cpp",
+  "tu": "match/core/WDTTerr.cpp",
   "addr": "0x76FF20",
   "sym": "?FUN_0076FF20@Obj_0076FF20@@QAEXH@Z",
   "len": "0xa",
@@ -85847,7 +85847,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu280_methods.cpp",
+  "tu": "match/core/WDTTerr.cpp",
   "addr": "0x76FF30",
   "sym": "?FUN_0076FF30@Obj_0076FF30@@QAEHXZ",
   "len": "0xb",
@@ -86027,7 +86027,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x7786E0",
   "sym": "?FUN_007786E0@@YIXHH@Z",
   "len": "0x1b",
@@ -86036,7 +86036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x778700",
   "sym": "?FUN_00778700@@YIXHH@Z",
   "len": "0xa",
@@ -86045,7 +86045,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A760",
   "sym": "?FUN_0077A760@Obj_0077A760@@QAEEE@Z",
   "len": "0x15",
@@ -86054,7 +86054,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A780",
   "sym": "?FUN_0077A780@Obj_0077A780@@QAEHH@Z",
   "len": "0x15",
@@ -86063,7 +86063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A7A0",
   "sym": "?FUN_0077A7A0@Obj_0077A7A0@@QAEHH@Z",
   "len": "0x15",
@@ -86072,7 +86072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A870",
   "sym": "?FUN_0077A870@Obj_0077A870@@QAEXH@Z",
   "len": "0x18",
@@ -86081,7 +86081,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A890",
   "sym": "?FUN_0077A890@Obj_0077A890@@QAEXH@Z",
   "len": "0x18",
@@ -86090,7 +86090,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu286_methods.cpp",
+  "tu": "match/core/WOLPersonaInformation.cpp",
   "addr": "0x77A8B0",
   "sym": "?FUN_0077A8B0@Obj_0077A8B0@@QAEXH@Z",
   "len": "0x18",
@@ -86108,7 +86108,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x77D200",
   "sym": "?FUN_0077D200@@YIXPAUObj_0077D200@@H@Z",
   "len": "0x5",
@@ -86117,7 +86117,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x785360",
   "sym": "?FUN_00785360@@YAXXZ",
   "len": "0x9",
@@ -86126,7 +86126,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x796B20",
   "sym": "?FUN_00796B20@@YAXXZ",
   "len": "0x1",
@@ -86135,7 +86135,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AB330",
   "sym": "?FUN_007AB330@Obj_007AB330@@QBEHHHHH@Z",
   "len": "0x5",
@@ -86144,7 +86144,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AB340",
   "sym": "?FUN_007AB340@Obj_007AB340@@QBEHHHH@Z",
   "len": "0x5",
@@ -86153,7 +86153,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4A0",
   "sym": "?FUN_007AC4A0@Obj_007AC4A0@@QBEHHHH@Z",
   "len": "0x5",
@@ -86162,7 +86162,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4B0",
   "sym": "?FUN_007AC4B0@Obj_007AC4B0@@QBEHHHH@Z",
   "len": "0x5",
@@ -86171,7 +86171,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4C0",
   "sym": "?FUN_007AC4C0@Obj_007AC4C0@@QBEHHHH@Z",
   "len": "0x5",
@@ -86180,7 +86180,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4D0",
   "sym": "?FUN_007AC4D0@Obj_007AC4D0@@QBEHHHH@Z",
   "len": "0x5",
@@ -86189,7 +86189,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4E0",
   "sym": "?FUN_007AC4E0@Obj_007AC4E0@@QBEHHHH@Z",
   "len": "0x5",
@@ -86198,7 +86198,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AC4F0",
   "sym": "?FUN_007AC4F0@@YAXXZ",
   "len": "0x1",
@@ -86207,7 +86207,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu288_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x7AD610",
   "sym": "?FUN_007AD610@Obj_007AD610@@QBEHH@Z",
   "len": "0x5",
@@ -87742,6 +87742,249 @@
   "sym": "?FUN_006DCF40@@YAXXZ",
   "len": "0x1a",
   "name": "FUN_006DCF40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x6F28D0",
+  "sym": "?FUN_006F28D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_006F28D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x6F28F0",
+  "sym": "?FUN_006F28F0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_006F28F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x6F2A70",
+  "sym": "?FUN_006F2A70@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_006F2A70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ToolTip.cpp",
+  "addr": "0x723AC0",
+  "sym": "?FUN_00723AC0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00723AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ToolTip.cpp",
+  "addr": "0x723AE0",
+  "sym": "?FUN_00723AE0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00723AE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ToolTip.cpp",
+  "addr": "0x723C60",
+  "sym": "?FUN_00723C60@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00723C60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/UICmnds.cpp",
+  "addr": "0x7307B0",
+  "sym": "?FUN_007307B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007307B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/UICmnds.cpp",
+  "addr": "0x7307D0",
+  "sym": "?FUN_007307D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007307D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/UICmnds.cpp",
+  "addr": "0x730950",
+  "sym": "?FUN_00730950@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00730950",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/Unit.cpp",
+  "addr": "0x7351B0",
+  "sym": "?FUN_007351B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007351B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/Unit.cpp",
+  "addr": "0x7351D0",
+  "sym": "?FUN_007351D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007351D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/Unit.cpp",
+  "addr": "0x735350",
+  "sym": "?FUN_00735350@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00735350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x767140",
+  "sym": "?FUN_00767140@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00767140",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x767160",
+  "sym": "?FUN_00767160@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00767160",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTGameOptions.cpp",
+  "addr": "0x7672E0",
+  "sym": "?FUN_007672E0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_007672E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTProps.cpp",
+  "addr": "0x76BCD0",
+  "sym": "?FUN_0076BCD0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076BCD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTProps.cpp",
+  "addr": "0x76BCF0",
+  "sym": "?FUN_0076BCF0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076BCF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/WDTProps.cpp",
+  "addr": "0x76BE70",
+  "sym": "?FUN_0076BE70@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0076BE70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTSel.cpp",
+  "addr": "0x76C0D0",
+  "sym": "?FUN_0076C0D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076C0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTSel.cpp",
+  "addr": "0x76C0F0",
+  "sym": "?FUN_0076C0F0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076C0F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTSel.cpp",
+  "addr": "0x76C270",
+  "sym": "?FUN_0076C270@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0076C270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTTerr.cpp",
+  "addr": "0x76F750",
+  "sym": "?FUN_0076F750@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076F750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTTerr.cpp",
+  "addr": "0x76F770",
+  "sym": "?FUN_0076F770@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0076F770",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WDTTerr.cpp",
+  "addr": "0x76F8F0",
+  "sym": "?FUN_0076F8F0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0076F8F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WOLPersonaInformation.cpp",
+  "addr": "0x778520",
+  "sym": "?FUN_00778520@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00778520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WOLPersonaInformation.cpp",
+  "addr": "0x778540",
+  "sym": "?FUN_00778540@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00778540",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WOLPersonaInformation.cpp",
+  "addr": "0x7786C0",
+  "sym": "?FUN_007786C0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_007786C0",
   "status": "matched",
   "pct": 100
  }
