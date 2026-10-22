@@ -36,13 +36,13 @@ CoordStruct ObjectClass::vf_45(int a1)
 }
 
 // FUNCTION: GAMEMD 0x41BE60
-int ObjectClass::vf_51(int a1)
+ObjectTypeClass* ObjectClass::vf_51(bool a1)
 {
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x41BE70
-int ObjectClass::vf_52(int a1)
+HouseClass* ObjectClass::vf_52(bool a1)
 {
     return 0;
 }

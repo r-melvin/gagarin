@@ -154,6 +154,13 @@ public:
     unsigned char   unknown_bool_6B8;                  // +0x6B8 (bool)
     unsigned char   align_6B9[3];                      // +0x6B9
     unsigned int    unused_6BC;                        // +0x6BC (PROTECTED_PROPERTY)
+
+    // Overrides of base slots reached by InfantryClass (retail table 0x7E8C94).
+    virtual void vf_10(void* a1, bool a2);                         // 10  0x4D9960
+    virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x4DBAD0
+    virtual bool vf_53();                                          // 53  0x4DB260
+    virtual int vf_138();                                          // 138 0x4D5350
+    virtual int vf_139();                                          // 139 0x4D4200
 };
 
 GG_STATIC_ASSERT(offsetof(FootClass, PlanningPathIdx)            == 0x520);

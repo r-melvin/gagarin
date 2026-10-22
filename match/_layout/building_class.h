@@ -71,6 +71,8 @@ class AnimClass;
 class FactoryClass;
 class HouseClass;
 
+class InfantryClass;
+
 class BuildingClass : public TechnoClass
 {
 public:
@@ -220,6 +222,8 @@ public:
     unsigned int   DelayBeforeFiring;     // +0x714 ctor @0x0043B9EE
     int            TankBunkerState;       // +0x718 ctor @0x0043B9F4
     unsigned int   unknown_71C;           // +0x71C NOT confirmed — see header note; closes the object at 0x720
+    // FUNCTION: GAMEMD 0x457CE0 (decl; reloc) -- can the infantry occupy this building (one stack argument).
+    bool CanBeOccupiedBy(InfantryClass* infantry);
 };
 
 GG_STATIC_ASSERT(offsetof(BuildingClass, Type)                == 0x520);

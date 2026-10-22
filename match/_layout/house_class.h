@@ -382,6 +382,8 @@ public:
     BuildingTypeClass* FUN_005051E0(const void* typeList);
     // FUNCTION: GAMEMD 0x50E000 (decl; reloc) -- takes one cell by value, RET 4.
     void FUN_0050E000(Cell cell);
+    // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc) -- is the other house an ally (one stack argument).
+    bool IsAlliedWith(const HouseClass* house) const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
     bool FUN_0050B730();
     // FUNCTION: GAMEMD 0x4F9B70 (decl; reloc) -- RET 8.

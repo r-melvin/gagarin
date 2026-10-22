@@ -618,8 +618,11 @@ public:
     unsigned int       ShouldLoseTargetNow;          // +0x50C
     void*              FiringRadBeam;                // +0x510 RadBeam*
     void*              PlanningToken;                // +0x514 PlanningTokenClass*
-    void*              Disguise;                     // +0x518 ObjectTypeClass*
-    void*              DisguisedAsHouse;             // +0x51C HouseClass*
+    ObjectTypeClass*   Disguise;                     // +0x518
+    HouseClass*        DisguisedAsHouse;             // +0x51C
+
+    // FUNCTION: GAMEMD 0x70D0D0 (decl; reloc) -- does this object have the ability (one stack argument).
+    bool FUN_0070D0D0(int ability);
 };
 
 GG_STATIC_ASSERT(offsetof(TechnoClass, Flashing)                 == 0xF0);

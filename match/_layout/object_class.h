@@ -157,8 +157,8 @@ public:
     virtual bool vf_48();                                      // 48  0x426410: returns true
     virtual bool vf_49();                                      // 49  0x426420: returns false
     virtual bool vf_50(int a1);                                // 50  0x426430: returns false
-    virtual int vf_51(int a1);                                 // 51  0x41BE60: returns 0
-    virtual int vf_52(int a1);                                 // 52  0x41BE70: returns 0
+    virtual ObjectTypeClass* vf_51(bool a1);                   // 51  0x41BE60: returns 0
+    virtual HouseClass* vf_52(bool a1);                        // 52  0x41BE70: returns 0
     virtual bool vf_53();                                      // 53  0x5F4D30
     virtual bool vf_54(const CoordStruct& coord, int a2);       // 54  0x5F4EC0
     virtual void vf_55(bool removed);                          // 55  0x5F5280

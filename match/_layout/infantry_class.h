@@ -23,31 +23,66 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
+#include "infantry_type_class.h"
 
 class InfantryClass : public FootClass
 {
 public:
+    // IPersist::GetClassID (slot 3), 0x523300: copies InfantryClass's CLSID 0x7E9680.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+
     // Slots 341-342, introduced by InfantryClass (343 slots in all; retail table 0x7EB058).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
-    virtual void vf_341();                                         // 341 0x5228D0
+    virtual int vf_341();                                          // 341 0x5228D0
     virtual void vf_342(int a1, int a2, int a3);                   // 342 0x51D6F0
 
-    void*         Type;                 // +0x6C0  InfantryTypeClass*; ctor: MOV [ESI+0x6C0],ECX(=pType) @0x00517A6E
+    // Overrides of base slots (primary table 0x7EB058, 343 slots).
+    virtual void vf_10(void* a1, bool a2);                         // 10  0x51AA10
+    virtual void vf_13(Obj_004A1D30* crc);                         // 13  0x521C90
+    virtual const wchar_t* vf_36();                                // 36  0x51F2C0
+    virtual bool vf_53();                                          // 53  0x51DF10
+    virtual bool vf_58(const CoordStruct& coord);                  // 58  0x521760
+    virtual void vf_60(CoordStruct* coord);                        // 60  0x5217C0
+    virtual void vf_61(CoordStruct* coord);                        // 61  0x521850
+    virtual int vf_185(AbstractClass* target);                     // 185 0x5218E0
+    virtual int vf_243(int a1, int a2);                            // 243 0x51DF60
+    virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
+    virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
+    virtual int vf_138();                                          // 138 0x51F540
+    virtual int vf_139();                                          // 139 0x51F660
+    virtual bool vf_225();                                         // 225 0x522BC0
+    virtual void vf_284();                                         // 284 0x522780
+    virtual void vf_326();                                         // 326 0x521C10
+    virtual void vf_328(int a1);                                   // 328 0x521C60
+
+    // Non-virtual members (bodies in match/combat/Infantry.cpp).
+    // FUNCTION: GAMEMD 0x522510 -- true for the four SequenceAnim values 0x1B-0x1E.
+    int FUN_00522510();
+    // FUNCTION: GAMEMD 0x522C30 -- no use of this; the stack argument is a sequence index.
+    bool FUN_00522C30(int sequence);
+    // FUNCTION: GAMEMD 0x522C60 -- no use of this; the stack argument is a sequence index.
+    int FUN_00522C60(int sequence);
+    // FUNCTION: GAMEMD 0x522CB0 -- true for the sequence values SequenceAnim currently holds in that set.
+    int FUN_00522CB0();
+    // FUNCTION: GAMEMD 0x522FC0 -- slot 97 reports 10.
+    bool FUN_00522FC0();
+
+    InfantryTypeClass* Type;            // +0x6C0  InfantryTypeClass*; ctor: MOV [ESI+0x6C0],ECX(=pType) @0x00517A6E
     int           SequenceAnim;         // +0x6C4  Sequence enum; ctor: MOV [ESI+0x6C4],0xFFFFFFFF @0x00517A64
     CDTimerClass  unknown_Timer_6C8;    // +0x6C8  (0xC) ctor: StartTime MOV [ESI+0x6C8],EDX(=[0x00A8ED84], the
                                         //         frame clock) @0x00517A7F; TimeLeft MOV [ESI+0x6D0],EBX(0)
                                         //         @0x00517A85. 0x6CC is the CDTimerClass clock slot the ctor
                                         //         does not store, exactly as in every other CDTimerClass here.
     unsigned int  PanicDurationLeft;    // +0x6D4  ctor: MOV [ESI+0x6D4],EBX(0) @0x00517A8C
-    unsigned char PermanentBerzerk;     // +0x6D8  ctor: MOV byte [ESI+0x6D8],BL @0x00517A92
-    unsigned char Technician;           // +0x6D9  ctor: MOV byte [ESI+0x6D9],BL @0x00517A98
-    unsigned char unknown_bool_6DA;     // +0x6DA  ctor: MOV byte [ESI+0x6DA],BL @0x00517A9E
-    unsigned char Crawling;             // +0x6DB  ctor: MOV byte [ESI+0x6DB],BL @0x00517AA4
-    unsigned char unknown_bool_6DC;     // +0x6DC  ctor: MOV byte [ESI+0x6DC],BL @0x00517AAA
-    unsigned char unknown_bool_6DD;     // +0x6DD  ctor: MOV byte [ESI+0x6DD],BL @0x00517AB0
+    bool          PermanentBerzerk;     // +0x6D8  ctor: MOV byte [ESI+0x6D8],BL @0x00517A92
+    bool          Technician;           // +0x6D9  ctor: MOV byte [ESI+0x6D9],BL @0x00517A98
+    bool          unknown_bool_6DA;     // +0x6DA  ctor: MOV byte [ESI+0x6DA],BL @0x00517A9E
+    bool          Crawling;             // +0x6DB  ctor: MOV byte [ESI+0x6DB],BL @0x00517AA4
+    bool          unknown_bool_6DC;     // +0x6DC  ctor: MOV byte [ESI+0x6DC],BL @0x00517AAA
+    bool          unknown_bool_6DD;     // +0x6DD  ctor: MOV byte [ESI+0x6DD],BL @0x00517AB0
     unsigned char align_6DE[2];         // +0x6DE
     unsigned int  unknown_6E0;          // +0x6E0  ctor: MOV [ESI+0x6E0],EBX(0) @0x00517AB6
-    unsigned char ShouldDeploy;         // +0x6E4  ctor: MOV byte [ESI+0x6E4],BL @0x00517ABC
+    bool          ShouldDeploy;         // +0x6E4  ctor: MOV byte [ESI+0x6E4],BL @0x00517ABC
     unsigned char align_6E5[3];         // +0x6E5
     int           unknown_int_6E8;      // +0x6E8  ctor: MOV [ESI+0x6E8],2 @0x00517AC2
     unsigned int  unused_6EC;           // +0x6EC  (PROTECTED_PROPERTY; closes the object at 0x6F0)

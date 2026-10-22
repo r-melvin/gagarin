@@ -27,6 +27,7 @@
 
 // Returned by value from slots 18, 19 and 22 (defined in object_class.h).
 struct CoordStruct;
+class HouseClass;
 // The checksum sink slot 13 feeds (0x4A1CA0 / 0x4A1D50; _layout/obj_004a1d30.h).
 struct Obj_004A1D30;
 
@@ -93,7 +94,7 @@ public:
     virtual int vf_12() = 0;                              // 12  pure
     virtual void vf_13(Obj_004A1D30* crc);                // 13  0x410410: RET 4, feeds the checksum sink
     virtual int vf_14();                                  // 14  0x410490: returns -1
-    virtual int vf_15();                                  // 15  0x4104A0: returns 0
+    virtual HouseClass* vf_15();                          // 15  0x4104A0: returns 0
     virtual int vf_16();                                  // 16  0x4104B0: returns 0
     virtual bool vf_17();                                 // 17  0x410440: returns true
     virtual CoordStruct vf_18();                          // 18  0x4104C0: a coordinate by value

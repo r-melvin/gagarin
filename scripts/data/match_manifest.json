@@ -66438,7 +66438,7 @@
  {
   "tu": "match/core/abstract_class_slots.cpp",
   "addr": "0x4104A0",
-  "sym": "?vf_15@AbstractClass@@UAEHXZ",
+  "sym": "?vf_15@AbstractClass@@UAEPAVHouseClass@@XZ",
   "len": "0x3",
   "name": "AbstractClass::vf_15",
   "status": "matched",
@@ -66555,7 +66555,7 @@
  {
   "tu": "match/core/object_class_slots_41bdd0.cpp",
   "addr": "0x41BE60",
-  "sym": "?vf_51@ObjectClass@@UAEHH@Z",
+  "sym": "?vf_51@ObjectClass@@UAEPAVObjectTypeClass@@_N@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_51",
   "status": "matched",
@@ -66564,7 +66564,7 @@
  {
   "tu": "match/core/object_class_slots_41bdd0.cpp",
   "addr": "0x41BE70",
-  "sym": "?vf_52@ObjectClass@@UAEHH@Z",
+  "sym": "?vf_52@ObjectClass@@UAEPAVHouseClass@@_N@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_52",
   "status": "matched",
@@ -89788,6 +89788,213 @@
   "sym": "?FUN_0070FED0@TechnoClass@@QAE_NXZ",
   "len": "0xf",
   "name": "TechnoClass::FUN_0070FED0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51AA10",
+  "sym": "?vf_10@InfantryClass@@UAEXPAX_N@Z",
+  "len": "0x2a",
+  "name": "InfantryClass::vf_10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51DF10",
+  "sym": "?vf_53@InfantryClass@@UAE_NXZ",
+  "len": "0x4a",
+  "name": "InfantryClass::vf_53",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51DF60",
+  "sym": "?vf_243@InfantryClass@@UAEHHH@Z",
+  "len": "0x83",
+  "name": "InfantryClass::vf_243",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51F2C0",
+  "sym": "?vf_36@InfantryClass@@UAEPBGXZ",
+  "len": "0x65",
+  "name": "InfantryClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51F540",
+  "sym": "?vf_138@InfantryClass@@UAEHXZ",
+  "len": "0xd3",
+  "name": "InfantryClass::vf_138",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x51F660",
+  "sym": "?vf_139@InfantryClass@@UAEHXZ",
+  "len": "0x80",
+  "name": "InfantryClass::vf_139",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x521760",
+  "sym": "?vf_58@InfantryClass@@UAE_NABUCoordStruct@@@Z",
+  "len": "0x5a",
+  "name": "InfantryClass::vf_58",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x5217C0",
+  "sym": "?vf_60@InfantryClass@@UAEXPAUCoordStruct@@@Z",
+  "len": "0x8f",
+  "name": "InfantryClass::vf_60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x521850",
+  "sym": "?vf_61@InfantryClass@@UAEXPAUCoordStruct@@@Z",
+  "len": "0x89",
+  "name": "InfantryClass::vf_61",
+  "status": "partial",
+  "pct": 75.5
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x5218E0",
+  "sym": "?vf_185@InfantryClass@@UAEHPAVAbstractClass@@@Z",
+  "len": "0x7e",
+  "name": "InfantryClass::vf_185",
+  "status": "partial",
+  "pct": 51.2
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x521C10",
+  "sym": "?vf_326@InfantryClass@@UAEXXZ",
+  "len": "0x2c",
+  "name": "InfantryClass::vf_326",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x521C60",
+  "sym": "?vf_328@InfantryClass@@UAEXH@Z",
+  "len": "0x29",
+  "name": "InfantryClass::vf_328",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x521C90",
+  "sym": "?vf_13@InfantryClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0xa0",
+  "name": "InfantryClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522510",
+  "sym": "?FUN_00522510@InfantryClass@@QAEHXZ",
+  "len": "0x23",
+  "name": "InfantryClass::FUN_00522510",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522640",
+  "sym": "?vf_51@InfantryClass@@UAEPAVObjectTypeClass@@_N@Z",
+  "len": "0x7b",
+  "name": "InfantryClass::vf_51",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x5226C0",
+  "sym": "?vf_52@InfantryClass@@UAEPAVHouseClass@@_N@Z",
+  "len": "0x3d",
+  "name": "InfantryClass::vf_52",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522780",
+  "sym": "?vf_284@InfantryClass@@UAEXXZ",
+  "len": "0x6d",
+  "name": "InfantryClass::vf_284",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x5228D0",
+  "sym": "?vf_341@InfantryClass@@UAEHXZ",
+  "len": "0x33",
+  "name": "InfantryClass::vf_341",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522BC0",
+  "sym": "?vf_225@InfantryClass@@UAE_NXZ",
+  "len": "0x40",
+  "name": "InfantryClass::vf_225",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522C30",
+  "sym": "?FUN_00522C30@InfantryClass@@QAE_NH@Z",
+  "len": "0x2c",
+  "name": "InfantryClass::FUN_00522C30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522C60",
+  "sym": "?FUN_00522C60@InfantryClass@@QAEHH@Z",
+  "len": "0x43",
+  "name": "InfantryClass::FUN_00522C60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522CB0",
+  "sym": "?FUN_00522CB0@InfantryClass@@QAEHXZ",
+  "len": "0x41",
+  "name": "InfantryClass::FUN_00522CB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x522FC0",
+  "sym": "?FUN_00522FC0@InfantryClass@@QAE_NXZ",
+  "len": "0x13",
+  "name": "InfantryClass::FUN_00522FC0",
   "status": "matched",
   "pct": 100.0
  }

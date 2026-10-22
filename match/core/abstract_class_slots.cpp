@@ -48,7 +48,7 @@ int AbstractClass::vf_14()
 }
 
 // FUNCTION: GAMEMD 0x4104A0
-int AbstractClass::vf_15()
+HouseClass* AbstractClass::vf_15()
 {
     return 0;
 }

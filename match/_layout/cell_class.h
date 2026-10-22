@@ -146,8 +146,17 @@ public:
     // of these through the declared type will emit a DWORD store where retail
     // emits a byte store, and will not match. Re-derive the width before
     // matching any function that assigns to them.
-    unsigned int    OccupationFlags;         // +0x124  (see above)
-    unsigned int    AltOccupationFlags;      // +0x128  (see above)
+    // Both widths are attested: ObjectClass 0x5F60A0 reads and writes the whole
+    // dword, InfantryClass 0x5217C0/0x521850 set and clear bits in the low byte
+    // (OR/AND byte [reg+0x124]/[reg+0x128]).
+    union {
+        unsigned int    OccupationFlags;     // +0x124  (see above)
+        unsigned char   OccupationBits;      // +0x124  low byte
+    };
+    union {
+        unsigned int    AltOccupationFlags;  // +0x128  (see above)
+        unsigned char   AltOccupationBits;   // +0x128  low byte
+    };
     unsigned int    AltFlags;                // +0x12C ctor read-modify-write AND 0xFFFFFFE0
                                              //   @0x0047BC52..0x0047BC60 (a bitfield, low 5 bits cleared)
     int             ShroudCounter;           // +0x130 ctor MOV [ESI+0x130],1 @0x0047BD3A
@@ -212,6 +221,8 @@ GG_STATIC_ASSERT(offsetof(CellClass, Foggedness)              == 0x121);
 GG_STATIC_ASSERT(offsetof(CellClass, BlockedNeighbours)       == 0x122);
 GG_STATIC_ASSERT(offsetof(CellClass, OccupationFlags)         == 0x124);
 GG_STATIC_ASSERT(offsetof(CellClass, AltOccupationFlags)      == 0x128);
+GG_STATIC_ASSERT(offsetof(CellClass, OccupationBits)          == 0x124);
+GG_STATIC_ASSERT(offsetof(CellClass, AltOccupationBits)       == 0x128);
 GG_STATIC_ASSERT(offsetof(CellClass, AltFlags)                == 0x12C);
 GG_STATIC_ASSERT(offsetof(CellClass, ShroudCounter)           == 0x130);
 GG_STATIC_ASSERT(offsetof(CellClass, GapsCoveringThisCell)    == 0x134);

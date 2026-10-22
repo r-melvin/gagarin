@@ -26,347 +26,8 @@
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
 
-// GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
-extern const CLSID DAT_007E9660;
-// GLOBAL: GAMEMD 0x007E95B0 -- CLSID of AircraftTypeClass.
-extern const CLSID DAT_007E95B0;
-// GLOBAL: GAMEMD 0x007E98E0 -- CLSID of AirstrikeClass.
-extern const CLSID DAT_007E98E0;
-// GLOBAL: GAMEMD 0x007E9960 -- CLSID of AITriggerTypeClass.
-extern const CLSID DAT_007E9960;
-// GLOBAL: GAMEMD 0x007E99A0 -- CLSID of AlphaShapeClass.
-extern const CLSID DAT_007E99A0;
-// GLOBAL: GAMEMD 0x007E9670 -- CLSID of AnimClass.
-extern const CLSID DAT_007E9670;
-// GLOBAL: GAMEMD 0x007E9620 -- CLSID of AnimTypeClass.
-extern const CLSID DAT_007E9620;
-// GLOBAL: GAMEMD 0x007E9980 -- CLSID of NeuronClass.
-extern const CLSID DAT_007E9980;
-// GLOBAL: GAMEMD 0x007E96E0 -- CLSID of BulletClass.
-extern const CLSID DAT_007E96E0;
-// GLOBAL: GAMEMD 0x007E95D0 -- CLSID of BulletTypeClass.
-extern const CLSID DAT_007E95D0;
-// GLOBAL: GAMEMD 0x007E9900 -- CLSID of CampaignClass.
-extern const CLSID DAT_007E9900;
-// GLOBAL: GAMEMD 0x007E9930 -- CLSID of CellClass.
-extern const CLSID DAT_007E9930;
-// GLOBAL: GAMEMD 0x007E9890 -- CLSID of DiskLaserClass.
-extern const CLSID DAT_007E9890;
-// GLOBAL: GAMEMD 0x007E9A30 -- CLSID of DriveLocomotionClass.
-extern const CLSID DAT_007E9A30;
-// GLOBAL: GAMEMD 0x007E9940 -- CLSID of EMPulseClass.
-extern const CLSID DAT_007E9940;
-// GLOBAL: GAMEMD 0x007E9820 -- CLSID of FactoryClass.
-extern const CLSID DAT_007E9820;
-// GLOBAL: GAMEMD 0x007E9990 -- CLSID of FoggedObjectClass.
-extern const CLSID DAT_007E9990;
 // GLOBAL: GAMEMD 0x007E9680 -- CLSID of InfantryClass.
 extern const CLSID DAT_007E9680;
-// GLOBAL: GAMEMD 0x007E95A0 -- CLSID of InfantryTypeClass.
-extern const CLSID DAT_007E95A0;
-// GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
-extern const CLSID DAT_007E9640;
-// GLOBAL: GAMEMD 0x007E95F0 -- CLSID of IsometricTileTypeClass.
-extern const CLSID DAT_007E95F0;
-// GLOBAL: GAMEMD 0x007E9AC0 -- CLSID of JumpjetLocomotionClass.
-extern const CLSID DAT_007E9AC0;
-// GLOBAL: GAMEMD 0x007E98F0 -- CLSID of LightSourceClass.
-extern const CLSID DAT_007E98F0;
-// GLOBAL: GAMEMD 0x007E98A0 -- CLSID of ParasiteClass.
-extern const CLSID DAT_007E98A0;
-// GLOBAL: GAMEMD 0x007E98C0 -- CLSID of RadSiteClass.
-extern const CLSID DAT_007E98C0;
-// GLOBAL: GAMEMD 0x007E97A0 -- CLSID of ScriptClass.
-extern const CLSID DAT_007E97A0;
-// GLOBAL: GAMEMD 0x007E97B0 -- CLSID of ScriptTypeClass.
-extern const CLSID DAT_007E97B0;
-// GLOBAL: GAMEMD 0x007E9AB0 -- CLSID of ShipLocomotionClass.
-extern const CLSID DAT_007E9AB0;
-// GLOBAL: GAMEMD 0x007E9910 -- CLSID of SideClass.
-extern const CLSID DAT_007E9910;
-// GLOBAL: GAMEMD 0x007E9870 -- CLSID of SlaveManagerClass.
-extern const CLSID DAT_007E9870;
-// GLOBAL: GAMEMD 0x007E9860 -- CLSID of SpawnManagerClass.
-extern const CLSID DAT_007E9860;
-// GLOBAL: GAMEMD 0x007E9580 -- CLSID of SuperClass.
-extern const CLSID DAT_007E9580;
-// GLOBAL: GAMEMD 0x007E9570 -- CLSID of SuperWeaponTypeClass.
-extern const CLSID DAT_007E9570;
-// GLOBAL: GAMEMD 0x007E9950 -- CLSID of Tactical.
-extern const CLSID DAT_007E9950;
-// GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
-extern const CLSID DAT_007E9800;
-// GLOBAL: GAMEMD 0x007E97C0 -- CLSID of TagClass.
-extern const CLSID DAT_007E97C0;
-// GLOBAL: GAMEMD 0x007E97D0 -- CLSID of TagTypeClass.
-extern const CLSID DAT_007E97D0;
-// GLOBAL: GAMEMD 0x007E9770 -- CLSID of TaskForceClass.
-extern const CLSID DAT_007E9770;
-// GLOBAL: GAMEMD 0x007E9760 -- CLSID of TeamClass.
-extern const CLSID DAT_007E9760;
-// GLOBAL: GAMEMD 0x007E9780 -- CLSID of TeamTypeClass.
-extern const CLSID DAT_007E9780;
-// GLOBAL: GAMEMD 0x007E9A90 -- CLSID of TeleportLocomotionClass.
-extern const CLSID DAT_007E9A90;
-// GLOBAL: GAMEMD 0x007E98D0 -- CLSID of TemporalClass.
-extern const CLSID DAT_007E98D0;
-// GLOBAL: GAMEMD 0x007E9810 -- CLSID of TEventClass.
-extern const CLSID DAT_007E9810;
-// GLOBAL: GAMEMD 0x007E9920 -- CLSID of TiberiumClass.
-extern const CLSID DAT_007E9920;
-// GLOBAL: GAMEMD 0x007E97E0 -- CLSID of TriggerClass.
-extern const CLSID DAT_007E97E0;
-// GLOBAL: GAMEMD 0x007E97F0 -- CLSID of TriggerTypeClass.
-extern const CLSID DAT_007E97F0;
-// GLOBAL: GAMEMD 0x007E9750 -- CLSID of TubeClass.
-extern const CLSID DAT_007E9750;
-// GLOBAL: GAMEMD 0x007E9A50 -- CLSID of TunnelLocomotionClass.
-extern const CLSID DAT_007E9A50;
-// GLOBAL: GAMEMD 0x007E96F0 -- CLSID of UnitClass.
-extern const CLSID DAT_007E96F0;
-// GLOBAL: GAMEMD 0x007E9590 -- CLSID of UnitTypeClass.
-extern const CLSID DAT_007E9590;
-// GLOBAL: GAMEMD 0x007E9650 -- CLSID of VoxelAnimClass.
-extern const CLSID DAT_007E9650;
-// GLOBAL: GAMEMD 0x007E9790 -- CLSID of VoxelAnimTypeClass.
-extern const CLSID DAT_007E9790;
-// GLOBAL: GAMEMD 0x007E99B0 -- CLSID of VeinholeMonsterClass.
-extern const CLSID DAT_007E99B0;
-// GLOBAL: GAMEMD 0x007E9A60 -- CLSID of WalkLocomotionClass.
-extern const CLSID DAT_007E9A60;
-// GLOBAL: GAMEMD 0x007E9840 -- CLSID of WarheadTypeClass.
-extern const CLSID DAT_007E9840;
-// GLOBAL: GAMEMD 0x007E9720 -- CLSID of WaveClass.
-extern const CLSID DAT_007E9720;
-// GLOBAL: GAMEMD 0x007E9850 -- CLSID of WaypointPathClass.
-extern const CLSID DAT_007E9850;
-// GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
-extern const CLSID DAT_007E9830;
-
-class AircraftClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AircraftTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AirstrikeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AITriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AlphaShapeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class NeuronClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class CampaignClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class CellClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class DiskLaserClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class DriveLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class EMPulseClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class FactoryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class FoggedObjectClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class JumpjetLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class LightSourceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ParasiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class RadSiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ScriptClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ScriptTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ShipLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SlaveManagerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SpawnManagerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SuperClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SuperWeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class Tactical {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TActionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TaskForceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeleportLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TemporalClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TEventClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TiberiumClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TubeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TunnelLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VoxelAnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VoxelAnimTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VeinholeMonsterClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WalkLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WarheadTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WaypointPathClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 
 #include "trivial_tu099_b_methods.h"
 
@@ -394,6 +55,116 @@ extern int DAT_00A8F230;
 // GLOBAL: GAMEMD 0xA8F238
 extern double DAT_00A8F238;
 
+
+// ---- from the former Infantry.cpp ----
+//   CLI (disasm from each entry point). Original TU: Infantry.CPP, attested by the
+//   __FILE__ assert string at 0x825560 ("...\Infantry.CPP"); the TU spans
+//   0x517840-0x52348F. Class layout comes from the committed spine
+//   match/_layout/infantry_class.h. Slot numbers are RTTI-derived (InfantryClass
+//   vtable 0x7EB058); the vf_N and FUN_ names are placeholders.
+
+#include "../_layout/infantry_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "frame_counter.h"
+#include "../_layout/house_class.h"
+#include "../movement/loco_interfaces.h"
+#include "../_layout/building_class.h"
+#include "../_layout/cell_class.h"
+
+// Offsets this TU relies on, each read from an instruction in the matched bodies.
+GG_STATIC_ASSERT(offsetof(CellClass, OccupationFlags)    == 0x124);  // 0x5217C0
+GG_STATIC_ASSERT(offsetof(CellClass, AltOccupationFlags) == 0x128);  // 0x5217C0
+GG_STATIC_ASSERT(offsetof(CellClass, Flags)              == 0x140);  // 0x5217C0
+GG_STATIC_ASSERT(offsetof(InfantryClass, Type)              == 0x6C0);  // 0x51AA10
+GG_STATIC_ASSERT(offsetof(InfantryClass, SequenceAnim)      == 0x6C4);  // 0x522510
+GG_STATIC_ASSERT(offsetof(InfantryClass, PanicDurationLeft) == 0x6D4);  // 0x521C10
+GG_STATIC_ASSERT(offsetof(InfantryClass, Technician)        == 0x6D9);  // 0x521C90
+GG_STATIC_ASSERT(offsetof(InfantryTypeClass, Fearless)      == 0xEBC);  // 0x521C10
+
+// The FootClass locomotor is an ILocomotion COM smart pointer. Dereferencing it
+// checks for null and raises E_POINTER through the library helper (retail 0x7DC720),
+// then reloads the interface pointer; the check is inlined at every use.
+extern void __stdcall _com_issue_error(long hr);
+struct ILocomotionPtr
+{
+    ILocomotion* m_pInterface;
+    ILocomotion* operator->() const
+    {
+        if (m_pInterface == 0) {
+            _com_issue_error(0x80004003);
+        }
+        return m_pInterface;
+    }
+};
+GG_STATIC_ASSERT(offsetof(InfantryClass, Locomotor) == 0x674);
+static inline ILocomotionPtr* LocomotorOf(InfantryClass* unit)
+{
+    return reinterpret_cast<ILocomotionPtr*>(&unit->Locomotor);
+}
+
+// One entry of the infantry type's sequence table (0x24 bytes each; indexed by sequence number).
+struct SequenceStruct
+{
+    int unknown_00;
+    int unknown_04;
+    int unknown_08[7];
+};
+GG_STATIC_ASSERT(sizeof(SequenceStruct) == 0x24);
+
+// The map singleton (GAMEMD 0x87F7E8): the two lookups the occupation methods use.
+class MapClass
+{
+public:
+    // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
+    CellClass* GetTargetCell(const CoordStruct& where);
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- the floor height under a coordinate.
+    int GetCellFloorHeight(const CoordStruct& where);
+};
+// GLOBAL: GAMEMD 0x87F7E8
+extern MapClass MapClass_Instance;
+// GLOBAL: GAMEMD 0xA8F234 -- the height added to the floor before the bridge test.
+extern int DAT_00A8F234;
+
+// FUNCTION: GAMEMD 0x4810A0 (decl; reloc) -- the sub-cell slot a coordinate falls in.
+int FUN_004810A0(CoordStruct* coord);
+
+// The elapsed-time arithmetic of a CDTimerClass read, as retail inlines it (0x521C90).
+static inline int TimerRemaining(const CDTimerClass& timer)
+{
+    int timeLeft = timer.TimeLeft;
+    if (timer.StartTime != -1) {
+        int elapsed = CurrentFrame - timer.StartTime;
+        if (elapsed < timeLeft) {
+            return timeLeft - elapsed;
+        }
+        return 0;
+    }
+    return timeLeft;
+}
+
+// The rules object (GAMEMD 0x8871E0, RulesClass::Instance). Only the three
+// disguise type pointers read here are modelled.
+struct InfantryRulesView
+{
+    char             unknown_0000[0xD58];
+    ObjectTypeClass* DisguiseType0;   // +0xD58  used when the owner's side index is 0
+    ObjectTypeClass* DisguiseType1;   // +0xD5C  used when the side index is 1
+    ObjectTypeClass* DisguiseType2;   // +0xD60  used otherwise
+};
+GG_STATIC_ASSERT(offsetof(InfantryRulesView, DisguiseType0) == 0xD58);
+GG_STATIC_ASSERT(offsetof(InfantryRulesView, DisguiseType2) == 0xD60);
+// GLOBAL: GAMEMD 0x8871E0
+extern InfantryRulesView* DAT_008871E0;
+// GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
+extern HouseClass* CurrentPlayer;
+
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised text; the
+// last two arguments are the assert file and line.
+const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+
+// GLOBAL: GAMEMD 0x825560 -- "D:\\ra2mdpost\\Infantry.CPP"
+extern const char DAT_00825560[];
+
 // FUNCTION: GAMEMD 0x517870
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_00517870()
@@ -415,6 +186,73 @@ void __cdecl FUN_00517A10()
     DAT_00A8F230 = 0;
     DAT_00A8F228 = 0x80;
     DAT_00A8F22C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x51AA10
+void InfantryClass::vf_10(void* a1, bool a2)
+{
+    FootClass::vf_10(a1, a2);
+    if (this->Type == a1) {
+        this->Type = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x51DF10
+bool InfantryClass::vf_53()
+{
+    (*LocomotorOf(this))->StopMovementAnimation();
+    this->unknown_int_6E8 = 2;
+    this->Crawling = false;
+    this->SequenceAnim = 0;
+    return FootClass::vf_53();
+}
+
+// FUNCTION: GAMEMD 0x51DF60
+int InfantryClass::vf_243(int a1, int a2)
+{
+    this->IsFiring = 0;
+    int result = TechnoClass::vf_243(a1, a2);
+    if (result && !this->InLimbo && this->Type->Fraidycat && this->Ammo == 0) {
+        this->PanicDurationLeft = 300;
+        if (this->vf_97() == 1 || this->vf_97() == 15) {
+            this->vf_122(5, false);
+        }
+    }
+    return result;
+}
+
+// STRING: GAMEMD 0x825550 "TXT_TECHNICIAN"
+// FUNCTION: GAMEMD 0x51F2C0
+const wchar_t* InfantryClass::vf_36()
+{
+    if (this->Technician) {
+        return FUN_00734E60("TXT_TECHNICIAN", 0, DAT_00825560, 0x121C);
+    }
+    if (this->vf_49() && !this->Owner->IsAlliedWith(CurrentPlayer)) {
+        return this->vf_51(true)->UIName;
+    }
+    return this->Type->UIName;
+}
+
+// FUNCTION: GAMEMD 0x51F540
+int InfantryClass::vf_138()
+{
+    if (!this->Owner->IsControlledByHuman() && this->Target && this->Target->vf_11() == 6
+        && (this->Type->Infiltrate
+            || ((this->Type->Occupier || this->Type->Assaulter)
+                && static_cast<BuildingClass*>(this->Target)->CanBeOccupiedBy(this)))) {
+        this->SetDestination(this->Target, true);
+        this->vf_124(8);
+        return 1;
+    }
+    if (!this->Owner->IsControlledByHuman()) {
+        int s = this->SequenceAnim;
+        if ((s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) && !this->Target) {
+            this->vf_342(0x1F, 0, 0);
+            return 1;
+        }
+    }
+    return FootClass::vf_138();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -441,6 +279,23 @@ void FUN_0051F640(Obj_0051F640* a1, int a2)
     }
 }
 
+// FUNCTION: GAMEMD 0x51F660
+int InfantryClass::vf_139()
+{
+    int s = this->SequenceAnim;
+    if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+        if (this->vf_15()->IsControlledByHuman()) {
+            this->SetDestination(0, true);
+            return 1;
+        }
+        if (this->Type->UndeployDelay <= -1) {
+            this->vf_342(0x1F, 0, 0);
+            return this->Type->Sequence[0x1F].unknown_04;
+        }
+    }
+    return FootClass::vf_139();
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x51FAF0
 // Member getter (dword). Vtable slot 34 of InfantryClass (RTTI).
@@ -455,6 +310,73 @@ int Obj_0051FAF0::FUN_0051FAF0() const
 void FUN_005216C0(Obj_005216C0* a1, int a2)
 {
     FUN_004DED70(a1, a2);
+}
+
+// FUNCTION: GAMEMD 0x521760
+bool InfantryClass::vf_58(const CoordStruct& coord)
+{
+    if (ObjectClass::vf_58(coord)) {
+        if (this->Owner->IsControlledByHuman()) {
+            this->vf_122(5, false);
+        } else {
+            this->vf_122(15, false);
+        }
+        this->vf_342(0x21, 1, 0);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x5217C0
+void InfantryClass::vf_60(CoordStruct* coord)
+{
+    int slot = FUN_004810A0(coord);
+    CellClass* cell = MapClass_Instance.GetTargetCell(*coord);
+    int floor = MapClass_Instance.GetCellFloorHeight(*coord) + DAT_00A8F234;
+    if (floor <= coord->Z && (cell->Flags & 0x100)) {
+        cell->AltOccupationBits |= (1 << slot);
+        cell->AltInfantryOwnerIndex = this->vf_14();
+    } else {
+        cell->OccupationBits |= (1 << slot);
+        cell->InfantryOwnerIndex = this->vf_14();
+    }
+}
+
+// FUNCTION: GAMEMD 0x521850
+void InfantryClass::vf_61(CoordStruct* coord)
+{
+    int slot = FUN_004810A0(coord);
+    CellClass* cell = MapClass_Instance.GetTargetCell(*coord);
+    if (DAT_00A8F234 + MapClass_Instance.GetCellFloorHeight(*coord) <= coord->Z) {
+        cell->AltOccupationBits &= ~(1 << slot);
+        if (!(cell->AltOccupationBits & 0x1C)) {
+            cell->AltInfantryOwnerIndex = -1;
+        }
+    } else {
+        cell->OccupationBits &= ~(1 << slot);
+        if (!(cell->OccupationBits & 0x1C)) {
+            cell->InfantryOwnerIndex = -1;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x5218E0
+int InfantryClass::vf_185(AbstractClass* target)
+{
+    InfantryTypeClass* type = this->Type;
+    if (type->DeployFire) {
+        int s = this->SequenceAnim;
+        if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+            return type->DeployFireWeapon;
+        }
+        if (this->InOpenToppedTransport) {
+            if (this->vf_33()->OpenTransportWeapon != -1) {
+                return this->vf_33()->OpenTransportWeapon;
+            }
+        }
+        return 0;
+    }
+    return TechnoClass::vf_185(target);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -489,6 +411,14 @@ void Obj_00521B40::FUN_00521B40()
     }
 }
 
+// FUNCTION: GAMEMD 0x521C10
+void InfantryClass::vf_326()
+{
+    if (!this->Type->Fearless && !this->FUN_0070D0D0(13)) {
+        this->PanicDurationLeft = 300;
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x521C40
 // Branching. Vtable slot 327 of InfantryClass (RTTI).
@@ -499,6 +429,33 @@ Obj_00521C40_6C0* Obj_00521C40::FUN_00521C40()
         unknown_6D4 = 0;
     }
     return unknown_6C0;
+}
+
+// FUNCTION: GAMEMD 0x521C60
+void InfantryClass::vf_328(int a1)
+{
+    switch (a1) {
+    case 1:
+        this->vf_342(10, 0, 0);
+        break;
+    default:
+        this->vf_342(9, 0, 0);
+        break;
+    }
+}
+
+// FUNCTION: GAMEMD 0x521C90
+void InfantryClass::vf_13(Obj_004A1D30* crc)
+{
+    FootClass::vf_13(crc);
+    crc->FUN_004A1D50(this->SequenceAnim);
+    crc->FUN_004A1D50(TimerRemaining(this->unknown_Timer_6C8));
+    crc->FUN_004A1D50(this->PanicDurationLeft);
+    crc->FUN_004A1CA0(this->Technician);
+    crc->FUN_004A1CA0(this->unknown_bool_6DA);
+    crc->FUN_004A1CA0(this->Crawling);
+    crc->FUN_004A1CA0(this->unknown_bool_6DC);
+    crc->FUN_004A1CA0(this->unknown_bool_6DD);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -533,12 +490,74 @@ unsigned char Obj_005224F0::FUN_005224F0() const
     return unknown_6C0->unknown_6C4 > -1;
 }
 
+// FUNCTION: GAMEMD 0x522510
+int InfantryClass::FUN_00522510()
+{
+    int s = this->SequenceAnim;
+    if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+        return 1;
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x522540
 // Member getter (byte).
 unsigned char Obj_00522540::FUN_00522540() const
 {
     return unknown_6C0->unknown_6AC;
+}
+
+// FUNCTION: GAMEMD 0x522640
+ObjectTypeClass* InfantryClass::vf_51(bool a1)
+{
+    if (this->Owner->IsAlliedWith(CurrentPlayer) && !a1) {
+        return this->Type;
+    }
+    if (this->Disguise) {
+        return this->Disguise;
+    }
+    if (CurrentPlayer) {
+        int side = CurrentPlayer->SideIndex;
+        if (side == 0) {
+            return DAT_008871E0->DisguiseType0;
+        }
+        if (side == 1) {
+            return DAT_008871E0->DisguiseType1;
+        }
+    }
+    return DAT_008871E0->DisguiseType2;
+}
+
+// FUNCTION: GAMEMD 0x5226C0
+HouseClass* InfantryClass::vf_52(bool a1)
+{
+    if (this->Owner->IsAlliedWith(CurrentPlayer) && !a1) {
+        return this->Owner;
+    }
+    if (this->DisguisedAsHouse) {
+        return this->DisguisedAsHouse;
+    }
+    return CurrentPlayer;
+}
+
+// FUNCTION: GAMEMD 0x522780
+void InfantryClass::vf_284()
+{
+    if (this->Type->bools_D20[0x10]) {
+        this->Disguised = true;
+        this->DisguisedAsHouse = this->Owner;
+        int side = this->Owner->SideIndex;
+        if (side == 0) {
+            this->Disguise = DAT_008871E0->DisguiseType0;
+        } else if (side == 1) {
+            this->Disguise = DAT_008871E0->DisguiseType1;
+        } else {
+            this->Disguise = DAT_008871E0->DisguiseType2;
+        }
+    } else {
+        this->Disguised = false;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -557,11 +576,65 @@ void FUN_005228C0(Obj_005228C0* a1, int a2)
     FUN_0070F090(a1, a2);
 }
 
+// FUNCTION: GAMEMD 0x5228D0
+int InfantryClass::vf_341()
+{
+    if (this->Type->Deployer) {
+        int s = this->SequenceAnim;
+        if (s == 0x1B || s == 0x1C || s == 0x1D || s == 0x1E) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x522A50
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00522A50(int a1)
 {
+}
+
+// FUNCTION: GAMEMD 0x522BC0
+bool InfantryClass::vf_225()
+{
+    if (this->vf_97() == 5 || this->vf_97() == 11) {
+        int s = this->SequenceAnim;
+        if (s == 0 || s == 9 || s == 10 || s == 0x20) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x522C30
+bool InfantryClass::FUN_00522C30(int sequence)
+{
+    if (sequence == 9 || sequence == 10 || sequence == 0x12 || sequence == 0x13 || sequence == 0x17 || sequence == 0x20) {
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x522C60
+int InfantryClass::FUN_00522C60(int sequence)
+{
+    if (sequence == 11 || sequence == 12 || sequence == 13 || sequence == 14 || sequence == 15
+        || sequence == 0x22 || sequence == 0x23 || sequence == 0x24 || sequence == 0x14 || sequence == 0x15) {
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x522CB0
+int InfantryClass::FUN_00522CB0()
+{
+    int s = this->SequenceAnim;
+    if (s == 11 || s == 12 || s == 13 || s == 14 || s == 15
+        || s == 0x22 || s == 0x23 || s == 0x24 || s == 0x14 || s == 0x15) {
+        return 1;
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -581,6 +654,12 @@ void Obj_00522D00::FUN_00522D00()
 void Obj_00522D20::FUN_00522D20()
 {
     vf_122(5, 0);
+}
+
+// FUNCTION: GAMEMD 0x522FC0
+bool InfantryClass::FUN_00522FC0()
+{
+    return this->vf_97() == 10;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
