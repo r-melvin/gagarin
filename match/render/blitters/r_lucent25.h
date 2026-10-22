@@ -4,7 +4,11 @@
 // 0x48EBF0 allocates the non-alpha leaves as 0xC bytes and alpha leaves as
 // 0x10 bytes, then stores their vptrs at +0; those stores identify the size
 // assertions for each specialization. This is a method/layout view, not
-// constructor, destructor, pool ownership, or derived-vtable recovery.
+// destructor or pool ownership recovery.
+// The two-argument constructors are the owner 0x48EBF0's inline construction: after
+// `push 0xC; call 0x7C8E17` each site stores the pointer at +4, the second value at +8
+// and the vptr, nothing else. blitter_ddtors_lucent_methods.cpp instantiates them to
+// emit the vtables and scalar deleting destructors.
 // Allocation -> vptr evidence: 0x48FBCC -> 0x7E5570,
 // 0x48FCE2 -> 0x7E5510, 0x48FD78 -> 0x7E54E0, 0x48FE8E -> 0x7E5480;
 // 0x48FFDF -> 0x7E5430, 0x490149 -> 0x7E53E0,

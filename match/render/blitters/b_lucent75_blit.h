@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c; method accesses and allocation-site member bounds recorded in the M2 evidence package. | YRpp-cross-check
-// This header models the members touched by the retained BlitCopy bodies; it
-// does not claim native constructor/destructor or emitted-derived-vtable recovery.
+// This header models the members touched by the retained BlitCopy bodies.
+// The two-argument constructors are the owner 0x48EBF0's inline construction: after
+// `push 0xC; call 0x7C8E17` each site stores the pointer at +4, the second value at +8
+// and the vptr, nothing else. blitter_ddtors_lucent_methods.cpp instantiates them to
+// emit the vtables and scalar deleting destructors.
 #ifndef GG_MATCH_RENDER_BLITTERS_B_LUCENT75_BLIT_H
 #define GG_MATCH_RENDER_BLITTERS_B_LUCENT75_BLIT_H
 
