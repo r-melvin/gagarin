@@ -31,9 +31,6 @@ public:
     virtual ~VectorCursor() {}
 };
 
-// SYNTHETIC: GAMEMD 0x4F28C0
-// VectorCursor<GraphicMenuItem*> (vtable 0x7EA644)
-template class VectorCursor<GraphicMenuItem*, DynamicVectorClass<GraphicMenuItem*> >;
 // SYNTHETIC: GAMEMD 0x4F3FD0
 // VectorCursor<unsigned int> (vtable 0x7EA6C8)
 template class VectorCursor<unsigned int, DynamicVectorClass<unsigned int> >;

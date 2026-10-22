@@ -1,5 +1,47 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Original translation unit Init.CPP. The name is the source-file string at 0x825fb8
+//   in retail gamemd.exe v1.001, passed by the assert at 0x52c52d inside this object's
+//   code range (0x52b7c0-0x53910f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// Six key/value-vector Grow instances, ordered ascending by retail address.
+//
+// Grow the vector by `extra` slots: allocate, copy the live elements across
+// field by field, free the old block, and invalidate the cached lookup slot. A
+// negative request and a failed allocation both report false without touching
+// anything.
+//
+// The phrasing is the one already driven to 100% at 0x41C500 and is reproduced
+// unchanged. The two details that matter are recorded there and hold here: the
+// allocation is `new GrowPair[total]`, whose elided vector-constructor-iterator
+// setup is retail's `DEC`/spill pair after the null check, and the copy is a
+// whole-struct assignment through an explicit byte offset, which is what moves
+// the pair as two dwords sharing one address computation and keeps the index a
+// plain register. Count and Items are re-read every iteration rather than
+// hoisted.
+//
+// The seven vtable-seating base destructors, ordered ascending by address.
+//
+//   addresses below). Names cross-checked against YRpp
+//   (every offset/slot reconfirmed here).
+//
+//                                                        ECX=name, DL=forceCache)
+//
+// Match (period MSVC6 cl 12.00.ours vs retail, reloc-normalised):
+//   0x5301A0 Bootstrap  100%  (the probe is a temporary: the Is_Available
+//            call goes through the constructor's returned `this`.)
+//   0x5B40B0 Retrieve   89.6% (mnemonic multiset identical; residual is a pure
+//            ESI/EDI naming swap: retail keeps the CRC in EDI and the fresh
+//            node in ESI, cl 8804 the other way round, 15 instructions.)
+//
+//   Read off retail gamemd.exe v1.001 at 0x538D40 (no arguments, plain RET):
+//   the source palette pointer in the dword at 0xA8F918 read three bytes per
+//   colour, the 256x256 byte table at 0xA8F91C filled row by row (row pointer
+//   compared with 0xA9F91C), the 500000 (0x7A120) starting distance and the
+//   byte at 0xA9F91C cleared on exit.
 //
 // CommandClass and its keyboard-command subclasses: every slot body between
 // 0x535BD0 and 0x5384BD, in retail address order. The classes are declared in
@@ -14,6 +56,58 @@
 // string-table loader (0x734E60, __fastcall: label in ECX, null in EDX, file
 // and line pushed); the line numbers are the retail immediates.
 
+#include "../core/empty_function_family_methods.h"
+
+#include "../core/pair_vector_grow_sweep.h"
+
+#include "../core/seat_vtable_tail_dtor_sweep.h"
+
+#include "../core/trivial_tu102_methods.h"
+
+#include "../platform/mix_file_class.h"
+#include "../_layout/memory_buffer.h"
+#include <stdio.h>   // sprintf
+#include <string.h>  // strcpy, _strlwr, strstr
+
+// ---- external retail callees (declared; the harness reloc-normalises calls) --
+struct CRCEngine
+{
+    int a, b, c;
+    int Compute(const char* buf, int len);   // FUN_004A1DE0 __thiscall
+};
+
+// Cached-file index node (operator new(0x10)): left/right/key(crc)/value.
+// Key @+0x8, Value @+0xC confirmed from the walk: `node[2]==crc && node[3]!=0`
+// (CMP [EAX+0x8] / [EDX+... ]) and key<crc => node[1] (right @+0x4) else *node
+// (left @+0x0).
+struct IdxNode { IdxNode* Left; IdxNode* Right; int Key; void* Value; };
+GG_STATIC_ASSERT(offsetof(IdxNode, Key)   == 0x08);
+GG_STATIC_ASSERT(offsetof(IdxNode, Value) == 0x0C);
+GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
+extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
+void __fastcall IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
+
+// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
+extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
+
+// FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — CCFileClass::ReadWholeFile.
+void* __fastcall MakeCachedFile(CCFile_005B40B0* f);
+
+// The 0x24-byte object built on a forced / .SHP miss; its constructor is a
+// __thiscall taking the name (`PUSH EBP; MOV ECX,EAX; CALL 0x69E430`).
+struct Mix_0069E430
+{
+    // FUNCTION: GAMEMD 0x69E430 (decl; reloc) — constructor from a name.
+    void* FUN_0069E430(char* name);
+};
+
+// GLOBAL: GAMEMD 0xA8F918
+extern unsigned char* DAT_00A8F918;
+// GLOBAL: GAMEMD 0xA8F91C
+extern unsigned char DAT_00A8F91C[256][256];
+// GLOBAL: GAMEMD 0xA9F91C
+extern unsigned char DAT_00A9F91C;
+
 #include "command_class.h"
 #include "input_controls/ui_display_chain.h"
 #include "input_controls/display_command.h"
@@ -25,6 +119,7 @@
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
 wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
                                            const char* file, int line);
+
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 // LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
@@ -69,54 +164,79 @@ extern CommandScenario* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x647040 (decl; reloc)
 void FUN_00647040();
+
 // FUNCTION: GAMEMD 0x6470F0 (decl; reloc)
 void FUN_006470F0();
+
 // FUNCTION: GAMEMD 0x730AF0 (decl; reloc)
 void FUN_00730AF0();
+
 // FUNCTION: GAMEMD 0x730D60 (decl; reloc)
 void FUN_00730D60();
+
 // FUNCTION: GAMEMD 0x730EA0 (decl; reloc)
 void FUN_00730EA0();
+
 // FUNCTION: GAMEMD 0x730F30 (decl; reloc)
 void FUN_00730F30();
+
 // FUNCTION: GAMEMD 0x730FE0 (decl; reloc)
 void FUN_00730FE0();
+
 // FUNCTION: GAMEMD 0x731060 (decl; reloc)
 void FUN_00731060(int team);
+
 // FUNCTION: GAMEMD 0x7311C0 (decl; reloc)
 void FUN_007311C0(int team);
+
 // FUNCTION: GAMEMD 0x7313A0 (decl; reloc)
 void FUN_007313A0(int team);
+
 // FUNCTION: GAMEMD 0x7314C0 (decl; reloc)
 void FUN_007314C0(int team);
+
 // FUNCTION: GAMEMD 0x7315A0 (decl; reloc)
 void FUN_007315A0();
+
 // FUNCTION: GAMEMD 0x7318F0 (decl; reloc)
 void FUN_007318F0();
+
 // FUNCTION: GAMEMD 0x731A10 (decl; reloc)
 void FUN_00731A10();
+
 // FUNCTION: GAMEMD 0x731A30 (decl; reloc)
 void FUN_00731A30();
+
 // FUNCTION: GAMEMD 0x731A50 (decl; reloc)
 void FUN_00731A50(bool flag);
+
 // FUNCTION: GAMEMD 0x731A70 (decl; reloc)
 void FUN_00731A70(bool flag);
+
 // FUNCTION: GAMEMD 0x732280 (decl; reloc)
 void FUN_00732280(bool flag);
+
 // FUNCTION: GAMEMD 0x732CA0 (decl; reloc)
 void FUN_00732CA0();
+
 // FUNCTION: GAMEMD 0x732CC0 (decl; reloc)
 void FUN_00732CC0();
+
 // FUNCTION: GAMEMD 0x733380 (decl; reloc)
 void FUN_00733380(bool flag);
+
 // FUNCTION: GAMEMD 0x7336C0 (decl; reloc)
 void FUN_007336C0(bool flag);
+
 // FUNCTION: GAMEMD 0x734120 (decl; reloc)
 void FUN_00734120();
+
 // FUNCTION: GAMEMD 0x7342A0 (decl; reloc)
 DisplayCmdObject* FUN_007342A0();
+
 // FUNCTION: GAMEMD 0x7342B0 (decl; reloc)
 DisplayCmdObject* FUN_007342B0();
+
 // FUNCTION: GAMEMD 0x735120 (decl; reloc)
 const wchar_t* FUN_00735120(const char* text);
 
@@ -226,8 +346,10 @@ extern int DAT_00A8B394;
 extern bool DAT_00A8D108[];
 // GLOBAL: GAMEMD 0xA8DBA0
 extern bool DAT_00A8DBA0;
+
 // FUNCTION: GAMEMD 0x752B70 (decl; reloc)
 void FUN_00752B70();
+
 // LIBRARY: GAMEMD 0x7CA5D3 -- CRT _stricmp.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
@@ -259,6 +381,233 @@ inline void CommandStoreView(int view)
         CellStruct cell;
         DAT_00A8B230->Views[view] = *DisplayCmdTactical_00887324->FUN_006D6590(&cell, &where);
     }
+}
+
+// The surfaces and the mouse ScreenCapture drives. Only the slots it calls are
+// named; the rest pin their indices.
+struct CaptureSurface
+{
+    virtual void vf_00();
+    virtual void vf_04();
+    virtual bool Blit(RectangleStruct* dest, CaptureSurface* source,
+                      RectangleStruct* sourceRect, bool a, bool b);   // +0x08
+    virtual void vf_0C();  virtual void vf_10();  virtual void vf_14();
+    virtual void vf_18();  virtual void vf_1C();  virtual void vf_20();
+    virtual void vf_24();  virtual void vf_28();  virtual void vf_2C();
+    virtual void vf_30();  virtual void vf_34();  virtual void vf_38();
+    virtual void vf_3C();  virtual void vf_40();  virtual void vf_44();
+    virtual void vf_48();  virtual void vf_4C();  virtual void vf_50();
+    virtual void vf_54();  virtual void vf_58();  virtual void vf_5C();
+    virtual void vf_60();  virtual void vf_64();  virtual void vf_68();
+    virtual void vf_6C();  virtual void vf_70();  virtual void vf_74();
+    virtual void vf_78();
+    virtual int GetWidth();    // +0x7C
+    virtual int GetHeight();   // +0x80
+};
+struct CaptureMouse
+{
+    virtual void vf_00();
+    virtual void vf_04();
+    virtual void vf_08();
+    virtual void HideCursor();   // +0x0C
+    virtual void ShowCursor();   // +0x10
+};
+// GLOBAL: GAMEMD 0x88730C
+extern CaptureSurface* DAT_0088730C;
+// GLOBAL: GAMEMD 0x887308
+extern CaptureSurface* DAT_00887308;
+// GLOBAL: GAMEMD 0x887640
+extern CaptureMouse* DAT_00887640;
+// GLOBAL: GAMEMD 0xB73550 -- the main window.
+extern void* DAT_00B73550;
+// GLOBAL: GAMEMD 0x885780 -- the palette written with the capture.
+extern char DAT_00885780[];
+// User32 imports through IAT slots 0x7E14C4 and 0x7E14B8.
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* window, LTRBStruct* rect);
+extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void* window, Point2D* point);
+
+// FUNCTION: GAMEMD 0x7B05C0 (decl; reloc) -- write a surface to a PCX file;
+// __fastcall: file in ECX, surface in EDX, palette pushed.
+int __fastcall FUN_007B05C0(FileClass* file, CaptureSurface* surface, void* palette);
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7EB7F8
+extern const double DAT_007EB7F8;
+// GLOBAL: GAMEMD 0xA8F418
+extern double DAT_00A8F418;
+// GLOBAL: GAMEMD 0xA8F760
+extern double DAT_00A8F760;
+// GLOBAL: GAMEMD 0xA8F768
+extern int DAT_00A8F768;
+// GLOBAL: GAMEMD 0xA8F76C
+extern int DAT_00A8F76C;
+// GLOBAL: GAMEMD 0xA8F770
+extern int DAT_00A8F770;
+// GLOBAL: GAMEMD 0xA8F778
+extern double DAT_00A8F778;
+
+// FUNCTION: GAMEMD 0x52B7F0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0052B7F0()
+{
+    DAT_00A8F778 = DAT_00A8F418 / DAT_007EB7F8;
+}
+
+// FUNCTION: GAMEMD 0x52B810
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0052B810()
+{
+    DAT_00A8F760 = DAT_007E1718 / DAT_00A8F778;
+}
+
+// FUNCTION: GAMEMD 0x52B990
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_0052B990()
+{
+    DAT_00A8F770 = 0;
+    DAT_00A8F768 = 0x80;
+    DAT_00A8F76C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x0052CB80
+void __fastcall FUN_0052CB80()
+{
+}
+
+// FUNCTION: GAMEMD 0x52D610
+// Empty function.
+void __cdecl FUN_0052D610()
+{
+}
+
+// FUNCTION: GAMEMD 0x52D620
+// Empty function.
+void __cdecl FUN_0052D620()
+{
+}
+
+// FUNCTION: GAMEMD 0x52D630
+// Empty function.
+void __cdecl FUN_0052D630()
+{
+}
+
+// FUNCTION: GAMEMD 0x52F610
+// Stores, then tail-calls.
+void Obj_0052F610::FUN_0052F610()
+{
+    FUN_0075A790();
+    FUN_0075A7D0(0);
+}
+
+// ---------------------------------------------------------------------------
+// FUNCTION: GAMEMD 0x5301A0   MixFileClass::Bootstrap
+//
+// Mount EXPANDMD99.MIX .. EXPANDMD00.MIX (any that exist) into the global Array,
+// then the fixed set RA2MD / RA2 / CACHEMD / CACHE / LOCALMD / LOCAL, caching
+// the CACHE* archives. Restores the file-search mode on success.
+//
+// Exact. Three levers, all structural:
+//
+//   * The scratch name buffer is `char name[64]`, and the stack probe is 0x24
+//     bytes (`ScanFile::_body[0x20]`). Retail's frame is `SUB ESP,0x68`; with
+//     the four callee-saved pushes live it addresses the probe as `[ESP+0x14]`
+//     and the buffer as `[ESP+0x38]`, i.e. in-frame +0x04 and +0x28, so the
+//     buffer runs +0x28..+0x68, exactly 0x40.
+//   * The append is spelled as the free `DynamicVectorClass_Mix_AddItem(&v, x)`
+//     rather than `v.AddItem(x)` (the inlined grow path's register order).
+//   * The probe is a temporary, `ScanFile(name).Is_Available(0)`, and 0x65CA00
+//     is its destructor: retail calls Is_Available through the constructor's
+//     returned `this` (`MOV EDX,[EAX]; MOV ECX,EAX`) and destroys the
+//     temporary at the end of the full expression.
+// ---------------------------------------------------------------------------
+bool MixFileClass_Bootstrap()
+{
+    int saved = g_FileSearchMode;
+    SetFileSearchMode(-2);
+
+    for (int i = 99; i >= 0; --i)
+    {
+        char name[64];
+        sprintf(name, "EXPANDMD%02d.MIX", i);
+
+        char avail = ScanFile(name).Is_Available(0);
+        if (avail)
+        {
+            MixFileClass* mix = new MixFileClass(name);
+            if (mix)
+            {
+                DynamicVectorClass_Mix_AddItem(&MixArray, mix);
+                Log_4a4ac0(" %s", name);
+            }
+        }
+    }
+
+    // Nested success-chain: every failure falls through to the single shared
+    // `return false` epilogue (matches retail's converged 0x5302E4 exit).
+    g_RA2MD = new MixFileClass("RA2MD.MIX");
+    if (g_RA2MD)
+    {
+        g_RA2 = new MixFileClass("RA2.MIX");
+        if (g_RA2)
+        {
+            Log_4a4ac0(" CACHE.MIX");
+            g_CACHEMD = new MixFileClass("CACHEMD.MIX");
+            if (g_CACHEMD && MixCache("CACHEMD.MIX", 0))
+            {
+                Log_4a4ac0(" CACHE.MIX");
+                g_CACHE = new MixFileClass("CACHE.MIX");
+                if (g_CACHE && MixCache("CACHE.MIX", 0))
+                {
+                    Log_4a4ac0(" CACHE.MIX");
+                    g_LOCALMD = new MixFileClass("LOCALMD.MIX");
+                    if (g_LOCALMD)
+                    {
+                        g_LOCAL = new MixFileClass("LOCAL.MIX");
+                        if (g_LOCAL)
+                        {
+                            Log_4a4ac0(" LOCAL.MIX");
+                            SetFileSearchMode(saved);
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x00532130
+void __fastcall FUN_00532130()
+{
+}
+
+// FUNCTION: GAMEMD 0x532140
+// Empty function.
+void __cdecl FUN_00532140()
+{
+}
+
+// FUNCTION: GAMEMD 0x5355C0
+// Calls other functions.
+void FUN_005355C0(int a1, int a2)
+{
+    FUN_00721210(DAT_00A83D10, a2, DAT_008263A8);
+}
+
+// FUNCTION: GAMEMD 0x535A60
+// VTABLE: GAMEMD 0x7E1668
+void __fastcall FUN_00535A60(SeatDtorObject* self)
+{
+    self->Vtbl = VTABLE_007E1668;
+    FUN_00431B80(self);
 }
 
 // FUNCTION: GAMEMD 0x535BD0 -- CommandClass slot 5
@@ -1802,52 +2151,6 @@ const wchar_t* ScreenCaptureCommandClass::vf_4()
     return StringTable_LoadString("TXT_SCRNCAP_DESC", 0, INIT_CPP, 0x1F89);
 }
 
-// The surfaces and the mouse ScreenCapture drives. Only the slots it calls are
-// named; the rest pin their indices.
-struct CaptureSurface
-{
-    virtual void vf_00();
-    virtual void vf_04();
-    virtual bool Blit(RectangleStruct* dest, CaptureSurface* source,
-                      RectangleStruct* sourceRect, bool a, bool b);   // +0x08
-    virtual void vf_0C();  virtual void vf_10();  virtual void vf_14();
-    virtual void vf_18();  virtual void vf_1C();  virtual void vf_20();
-    virtual void vf_24();  virtual void vf_28();  virtual void vf_2C();
-    virtual void vf_30();  virtual void vf_34();  virtual void vf_38();
-    virtual void vf_3C();  virtual void vf_40();  virtual void vf_44();
-    virtual void vf_48();  virtual void vf_4C();  virtual void vf_50();
-    virtual void vf_54();  virtual void vf_58();  virtual void vf_5C();
-    virtual void vf_60();  virtual void vf_64();  virtual void vf_68();
-    virtual void vf_6C();  virtual void vf_70();  virtual void vf_74();
-    virtual void vf_78();
-    virtual int GetWidth();    // +0x7C
-    virtual int GetHeight();   // +0x80
-};
-struct CaptureMouse
-{
-    virtual void vf_00();
-    virtual void vf_04();
-    virtual void vf_08();
-    virtual void HideCursor();   // +0x0C
-    virtual void ShowCursor();   // +0x10
-};
-// GLOBAL: GAMEMD 0x88730C
-extern CaptureSurface* DAT_0088730C;
-// GLOBAL: GAMEMD 0x887308
-extern CaptureSurface* DAT_00887308;
-// GLOBAL: GAMEMD 0x887640
-extern CaptureMouse* DAT_00887640;
-// GLOBAL: GAMEMD 0xB73550 -- the main window.
-extern void* DAT_00B73550;
-// GLOBAL: GAMEMD 0x885780 -- the palette written with the capture.
-extern char DAT_00885780[];
-// User32 imports through IAT slots 0x7E14C4 and 0x7E14B8.
-extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* window, LTRBStruct* rect);
-extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void* window, Point2D* point);
-// FUNCTION: GAMEMD 0x7B05C0 (decl; reloc) -- write a surface to a PCX file;
-// __fastcall: file in ECX, surface in EDX, palette pushed.
-int __fastcall FUN_007B05C0(FileClass* file, CaptureSurface* surface, void* palette);
-
 // FUNCTION: GAMEMD 0x537BC0 -- ScreenCaptureCommandClass slot 8
 // STRING: GAMEMD 0x827A48 -- "SCRN%04d.pcx"
 // Copy the window's client area into the surface at 0x88730C, then write it to
@@ -1987,12 +2290,14 @@ const wchar_t* DeleteCommandClass::vf_4()
     return StringTable_LoadString("Cmnd:DeleteDesc", 0, INIT_CPP, 0x19A3);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x537F90 -- DeleteCommandClass slot 8
 void DeleteCommandClass::vf_8(int key)
 {
     FUN_00731A10();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x537FA0 -- MultiplayerDebugCommandClass scalar deleting destructor
 void* MultiplayerDebugCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2003,6 +2308,7 @@ void* MultiplayerDebugCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x537FC0 -- MultiplayerSyncCommandClass scalar deleting destructor
 void* MultiplayerSyncCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2013,6 +2319,7 @@ void* MultiplayerSyncCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x537FE0 -- FollowCommandClass scalar deleting destructor
 void* FollowCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2023,6 +2330,7 @@ void* FollowCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538000 -- View1CommandClass scalar deleting destructor
 void* View1CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2033,6 +2341,7 @@ void* View1CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538020 -- View2CommandClass scalar deleting destructor
 void* View2CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2043,6 +2352,7 @@ void* View2CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538040 -- View3CommandClass scalar deleting destructor
 void* View3CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2053,6 +2363,7 @@ void* View3CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538060 -- View4CommandClass scalar deleting destructor
 void* View4CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2063,6 +2374,7 @@ void* View4CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538080 -- SetView1CommandClass scalar deleting destructor
 void* SetView1CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2073,6 +2385,7 @@ void* SetView1CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5380A0 -- SetView2CommandClass scalar deleting destructor
 void* SetView2CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2083,6 +2396,7 @@ void* SetView2CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5380C0 -- SetView3CommandClass scalar deleting destructor
 void* SetView3CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2093,6 +2407,7 @@ void* SetView3CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5380E0 -- SetView4CommandClass scalar deleting destructor
 void* SetView4CommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2103,6 +2418,7 @@ void* SetView4CommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538100 -- OptionsCommandClass scalar deleting destructor
 void* OptionsCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2113,6 +2429,7 @@ void* OptionsCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538120 -- SidebarUpCommandClass scalar deleting destructor
 void* SidebarUpCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2123,6 +2440,7 @@ void* SidebarUpCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538140 -- SidebarDownCommandClass scalar deleting destructor
 void* SidebarDownCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2133,6 +2451,7 @@ void* SidebarDownCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538160 -- CenterREventCommandClass scalar deleting destructor
 void* CenterREventCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2143,6 +2462,7 @@ void* CenterREventCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538180 -- BeaconPlacementCommandClass scalar deleting destructor
 void* BeaconPlacementCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2153,6 +2473,7 @@ void* BeaconPlacementCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5381A0 -- ToggleSellCommandClass scalar deleting destructor
 void* ToggleSellCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2163,6 +2484,7 @@ void* ToggleSellCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5381C0 -- ToggleRepairCommandClass scalar deleting destructor
 void* ToggleRepairCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2173,6 +2495,7 @@ void* ToggleRepairCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5381E0 -- AllianceCommandClass scalar deleting destructor
 void* AllianceCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2183,6 +2506,7 @@ void* AllianceCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538200 -- CenterBaseCommandClass scalar deleting destructor
 void* CenterBaseCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2193,6 +2517,7 @@ void* CenterBaseCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538220 -- CenterViewCommandClass scalar deleting destructor
 void* CenterViewCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2203,6 +2528,7 @@ void* CenterViewCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538240 -- ScatterCommandClass scalar deleting destructor
 void* ScatterCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2213,6 +2539,7 @@ void* ScatterCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538260 -- GuardCommandClass scalar deleting destructor
 void* GuardCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2223,6 +2550,7 @@ void* GuardCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538280 -- StopCommandClass scalar deleting destructor
 void* StopCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2233,6 +2561,7 @@ void* StopCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5382A0 -- AllToCheerCommandClass scalar deleting destructor
 void* AllToCheerCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2243,6 +2572,7 @@ void* AllToCheerCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5382C0 -- DeployCommandClass scalar deleting destructor
 void* DeployCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2253,6 +2583,7 @@ void* DeployCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5382E0 -- PrevObjectCommandClass scalar deleting destructor
 void* PrevObjectCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2263,6 +2594,7 @@ void* PrevObjectCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538300 -- NextObjectCommandClass scalar deleting destructor
 void* NextObjectCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2273,6 +2605,7 @@ void* NextObjectCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538320 -- PlanningModeCommandClass scalar deleting destructor
 void* PlanningModeCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2283,6 +2616,7 @@ void* PlanningModeCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538340 -- CombatantSelectCommandClass scalar deleting destructor
 void* CombatantSelectCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2293,6 +2627,7 @@ void* CombatantSelectCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538360 -- TypeSelectCommandClass scalar deleting destructor
 void* TypeSelectCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2303,6 +2638,7 @@ void* TypeSelectCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538380 -- HealthNavCommandClass scalar deleting destructor
 void* HealthNavCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2313,6 +2649,7 @@ void* HealthNavCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5383A0 -- VeterancyNavCommandClass scalar deleting destructor
 void* VeterancyNavCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2323,6 +2660,7 @@ void* VeterancyNavCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5383C0 -- SetStructureTabCommandClass scalar deleting destructor
 void* SetStructureTabCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2333,6 +2671,7 @@ void* SetStructureTabCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5383E0 -- SetDefenseTabCommandClass scalar deleting destructor
 void* SetDefenseTabCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2343,6 +2682,7 @@ void* SetDefenseTabCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538400 -- SetUnitTabCommandClass scalar deleting destructor
 void* SetUnitTabCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2353,6 +2693,7 @@ void* SetUnitTabCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538420 -- SetInfantryTabCommandClass scalar deleting destructor
 void* SetInfantryTabCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2363,6 +2704,7 @@ void* SetInfantryTabCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538440 -- ScreenCaptureCommandClass scalar deleting destructor
 void* ScreenCaptureCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2373,6 +2715,7 @@ void* ScreenCaptureCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538460 -- PageUserCommandClass scalar deleting destructor
 void* PageUserCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2383,6 +2726,7 @@ void* PageUserCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538480 -- CursorPositionCommandClass scalar deleting destructor
 void* CursorPositionCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2393,6 +2737,7 @@ void* CursorPositionCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5384A0 -- DeleteCommandClass scalar deleting destructor
 void* DeleteCommandClass::DeletingDtor(unsigned int flags)
 {
@@ -2401,4 +2746,70 @@ void* DeleteCommandClass::DeletingDtor(unsigned int flags)
         operator delete(this);
     }
     return this;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x538B80
+bool GrowPairVector::Grow_538B80(int extra)
+{
+    GrowPair* grown;
+    int total;
+    int i;
+
+    if (extra < 0) goto fail;
+
+    total = Capacity + extra;
+    grown = new GrowPair[total];
+    if (grown == 0) goto fail;
+
+    for (i = 0; i < Count; i++) {
+        int off = i * 8;
+        GrowPair* src = (GrowPair*)((char*)Items + off);
+        *(GrowPair*)((char*)grown + off) = *src;
+    }
+
+    delete[] Items;
+
+    Items    = grown;
+    Capacity = Capacity + extra;
+    Cached   = 0;
+    return true;
+
+fail:
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x538D40
+// For every pair of palette colours, store the index of the palette colour
+// nearest (squared RGB distance) to their average.
+void __cdecl FUN_00538D40(void)
+{
+    const unsigned char* src = DAT_00A8F918;
+    for (int i = 0; i < 256; i++) {
+        int r0 = *src++;
+        int g0 = *src++;
+        int b0 = *src++;
+        const unsigned char* other = DAT_00A8F918;
+        for (int j = 0; j < 256; j++) {
+            int r = (*other++ + r0) >> 1;
+            int g = (*other++ + g0) >> 1;
+            int b = (*other++ + b0) >> 1;
+            int best = 0;
+            int bestdist = 500000;
+            const unsigned char* pal = DAT_00A8F918;
+            for (int k = 0; k < 256; k++) {
+                int dr = *pal++ - r;
+                int dg = *pal++ - g;
+                int db = *pal++ - b;
+                int dist = dr * dr + dg * dg + db * db;
+                if (dist < bestdist) {
+                    bestdist = dist;
+                    best = k;
+                }
+            }
+            DAT_00A8F91C[i][j] = best;
+        }
+    }
+    DAT_00A9F91C = 0;
 }

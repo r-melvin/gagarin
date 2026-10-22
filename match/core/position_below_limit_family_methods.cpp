@@ -4,13 +4,6 @@
 
 #include "position_below_limit_family_methods.h"
 
-// FUNCTION: GAMEMD 0x004F28B0
-//
-// Is this cursor still inside its owner's limit.
-bool __fastcall FUN_004F28B0(Cursor_004F28B0* self)
-{
-    return self->Position < self->Owner->Limit;
-}
 
 // FUNCTION: GAMEMD 0x004F3FC0
 //

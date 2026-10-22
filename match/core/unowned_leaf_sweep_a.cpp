@@ -385,18 +385,6 @@ extern "C" signed char DAT_0084E863;
 // GLOBAL: GAMEMD 0x0084E865
 extern "C" const char DAT_0084E865[];
 
-// FUNCTION: GAMEMD 0x004E6150
-// Report the 0x7C5F3D byte and the signed byte at 0x84E863, and copy up to
-// `count` characters of the text at 0x84E865 when a buffer is given.
-void __fastcall FUN_004E6150(int* value, char* code, char* buffer, int count)
-{
-    *code = FUN_007C5F3D();
-    FUN_007C5FFF();
-    *value = DAT_0084E863;
-    if (buffer != NULL) {
-        strncpy(buffer, DAT_0084E865, count);
-    }
-}
 
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
 #pragma intrinsic(strcpy)

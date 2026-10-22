@@ -29,11 +29,6 @@ bool __cdecl FUN_004A3BF0()
 }
 
 
-// FUNCTION: GAMEMD 0x4FF540
-void __stdcall FUN_004FF540(int)
-{
-}
-
 // FUNCTION: GAMEMD 0x53F1F0
 void __fastcall FUN_0053F1F0(int value)
 {

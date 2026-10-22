@@ -9,24 +9,10 @@
 
 #include "pair_vector_ctor_family_methods.h"
 
-// FUNCTION: GAMEMD 0x0050F3A0
-// DynamicVectorClass<ScoutStruct>::SetCapacity
-// FUNCTION: GAMEMD 0x0050F4A0
-// DynamicVectorClass<ScoutStruct>::FindItemIndex
-// VTABLE: GAMEMD 0x007EA9A4 -- VectorClass<ScoutStruct>.
-// VTABLE: GAMEMD 0x007EA904 -- DynamicVectorClass<ScoutStruct>.
-template class VectorClass<ScoutStruct>;
 template class DynamicVectorClass<ScoutStruct>;
 
 #include "pair_vector_ctor_family_methods.h"
 
-// FUNCTION: GAMEMD 0x0050F070
-// DynamicVectorClass<AngerStruct>::SetCapacity
-// FUNCTION: GAMEMD 0x0050F170
-// DynamicVectorClass<AngerStruct>::FindItemIndex
-// VTABLE: GAMEMD 0x007EA984 -- VectorClass<AngerStruct>.
-// VTABLE: GAMEMD 0x007EA924 -- DynamicVectorClass<AngerStruct>.
-template class VectorClass<AngerStruct>;
 template class DynamicVectorClass<AngerStruct>;
 
 #include "pair_vector_ctor_family_methods.h"

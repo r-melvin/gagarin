@@ -8,12 +8,6 @@
 // only slot 5 is claimed here.
 #include "pair_vector_ctor_family_methods.h"
 
-// TEMPLATE: GAMEMD 0x50E590
-// DynamicVectorClass<AngerStruct>::Slot5 (slot 5)
-template class DynamicVectorClass<AngerStruct>;
-// TEMPLATE: GAMEMD 0x50E600
-// DynamicVectorClass<ScoutStruct>::Slot5 (slot 5)
-template class DynamicVectorClass<ScoutStruct>;
 // TEMPLATE: GAMEMD 0x6CF520
 // DynamicVectorClass<SwizzlePointerClass>::Slot5 (slot 5)
 template class DynamicVectorClass<SwizzlePointerClass>;

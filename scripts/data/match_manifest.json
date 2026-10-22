@@ -146,7 +146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_anger_nodes_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x504790",
   "sym": "?UpdateAngerNodes@House_00504790@@QAEXHPAU1@@Z",
   "len": "0xcd",
@@ -155,7 +155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_find_building_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4FD060",
   "sym": "?FindBuildingOfType@House_004FD060@@QAEPAUBuilding_004FD060@@HH@Z",
   "len": "0xb3",
@@ -164,7 +164,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_find_index_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50C170",
   "sym": "?FindIndexByName@House_0050C170@@SIHPBD@Z",
   "len": "0x9d",
@@ -200,7 +200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_lost_powered_center_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E0E0",
   "sym": "?LostPoweredCenter@House_0050E0E0@@QAEXPAUType_0050E0E0@@@Z",
   "len": "0xc6",
@@ -254,7 +254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/house_class_respawn_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50D440",
   "sym": "?RespawnStartingForces@House_0050D440@@QAEXXZ",
   "len": "0xE4",
@@ -1947,7 +1947,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/lightning_storm_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53AB50",
   "sym": "?Init@LightningStorm@@SIXXZ",
   "len": "0x12",
@@ -4919,7 +4919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F2830",
   "sym": "?FUN_4F2830@Obj_4F2830@@QAEPAXI@Z",
   "len": "0x1e",
@@ -4928,7 +4928,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E380",
   "sym": "??_GHouseClusterView@@UAEPAXI@Z",
   "len": "0x1e",
@@ -4946,7 +4946,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x523350",
   "sym": "?FUN_523350@Obj_523350@@QAEPAXI@Z",
   "len": "0x1e",
@@ -4955,7 +4955,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52AE00",
   "sym": "?FUN_52AE00@Obj_52AE00@@QAEPAXI@Z",
   "len": "0x1e",
@@ -4964,7 +4964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52AEA0",
   "sym": "?FUN_52AEA0@Obj_52AEA0@@QAEPAXI@Z",
   "len": "0x1e",
@@ -4973,7 +4973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52AEE0",
   "sym": "?FUN_52AEE0@Obj_52AEE0@@QAEPAXI@Z",
   "len": "0x1e",
@@ -6504,7 +6504,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x004f6eb0",
   "sym": "?FUN_004F6EB0@@YIXXZ",
   "len": "0x1",
@@ -6513,7 +6513,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x0052cb80",
   "sym": "?FUN_0052CB80@@YIXXZ",
   "len": "0x1",
@@ -6522,7 +6522,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x00532130",
   "sym": "?FUN_00532130@@YIXXZ",
   "len": "0x1",
@@ -6891,7 +6891,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/general_structures.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510860",
   "sym": "?AddCapacity@BasePlanningCellContainer@@QAE_NH@Z",
   "len": "0x86",
@@ -6900,7 +6900,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/general_structures.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5108F0",
   "sym": "?Comparator@BasePlanningCellContainer@@SAHPBX0@Z",
   "len": "0x22",
@@ -7917,7 +7917,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B080",
   "sym": "??0IndexClass@@QAE@XZ",
   "len": "0x13",
@@ -7926,7 +7926,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B0A0",
   "sym": "?AddIndex@IndexClass@@QAE_NABHABQAX@Z",
   "len": "0xc7",
@@ -7935,7 +7935,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B170",
   "sym": "?IsPresent@IndexClass@@QBE_NABH@Z",
   "len": "0x97",
@@ -7944,7 +7944,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B210",
   "sym": "?FetchIndex@IndexClass@@QBEABQAXABH@Z",
   "len": "0x95",
@@ -7953,7 +7953,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B2B0",
   "sym": "?RemoveIndex@IndexClass@@QAE_NABH@Z",
   "len": "0xd5",
@@ -7962,7 +7962,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B390",
   "sym": "?IsPresent@IndexClassB@@QBE_NABH@Z",
   "len": "0x97",
@@ -7971,7 +7971,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B430",
   "sym": "?FetchIndex@IndexClassB@@QBEABQAXABH@Z",
   "len": "0x95",
@@ -7980,7 +7980,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B6A0",
   "sym": "?Comparator@IndexClass@@SAHPBX0@Z",
   "len": "0x22",
@@ -7989,7 +7989,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/index_class.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B720",
   "sym": "?Comparator@IndexClassB@@SAHPBX0@Z",
   "len": "0x22",
@@ -8673,7 +8673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4FF540",
   "sym": "?FUN_004FF540@@YGXH@Z",
   "len": "0x3",
@@ -9303,7 +9303,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/object_type_class.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5004E0",
   "sym": "?IsBuildCat5@ObjectTypeClass@@SIHHH@Z",
   "len": "0x28",
@@ -9645,7 +9645,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pair_vector_grow_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B570",
   "sym": "?Grow_52B570@GrowPairVector@@QAE_NH@Z",
   "len": "0x86",
@@ -9654,7 +9654,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pair_vector_grow_sweep.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538B80",
   "sym": "?Grow_538B80@GrowPairVector@@QAE_NH@Z",
   "len": "0x86",
@@ -10320,7 +10320,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/same_object_test_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B4D0",
   "sym": "?FUN_0052B4D0@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -10329,7 +10329,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/same_object_test_sweep.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52B600",
   "sym": "?FUN_0052B600@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -10446,7 +10446,7 @@
   "pct": 94.0
  },
  {
-  "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535A60",
   "sym": "?FUN_00535A60@@YIXPAUSeatDtorObject@@@Z",
   "len": "0xb",
@@ -12895,7 +12895,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_mindcontrol_query_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53C450",
   "sym": "?CanBePermaMindControlled@TechnoClass@@QAE_NXZ",
   "len": "0x6B",
@@ -22759,7 +22759,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_cost_multipliers_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50BF60",
   "sym": "?CalculateCostMultipliers@House_0050BF60@@QAEXXZ",
   "len": "0xeb",
@@ -22822,7 +22822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_first_buildable_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5051E0",
   "sym": "?FirstBuildableFromArray@House_005051E0@@QAEPAUTechnoType_005051E0@@PAUTypeVector_005051E0@@@Z",
   "len": "0x123",
@@ -22966,7 +22966,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_register_built_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4FB6B0",
   "sym": "?RegisterJustBuilt@House_004FB6B0@@QAEXPAUTechno_004FB6B0@@@Z",
   "len": "0x18b",
@@ -22975,7 +22975,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_remove_tracking_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4FF550",
   "sym": "?RemoveTracking@House_004FF550@@QAEXPAUTechno_004FF550@@@Z",
   "len": "0x1a7",
@@ -22984,7 +22984,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/house_class_silos_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F9970",
   "sym": "?UpdateAllSilos@House_004F9970@@QAEXHH@Z",
   "len": "0x9e",
@@ -26281,7 +26281,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C65A0",
   "sym": "??0EventClass@@QAE@HUSpecialPayload@@@Z",
   "len": "0x36",
@@ -26290,7 +26290,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C65E0",
   "sym": "??0EventClass@@QAE@HHUTargetClass@@@Z",
   "len": "0x67",
@@ -26299,7 +26299,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6650",
   "sym": "??0EventClass@@QAE@HHABUCellStruct@@@Z",
   "len": "0x6b",
@@ -26308,7 +26308,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C66C0",
   "sym": "??0EventClass@@QAE@HH@Z",
   "len": "0x57",
@@ -26317,7 +26317,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6720",
   "sym": "??0EventClass@@QAE@HHH@Z",
   "len": "0x5E",
@@ -26326,7 +26326,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6780",
   "sym": "??0EventClass@@QAE@HHUTargetClass@@0@Z",
   "len": "0x78",
@@ -26335,7 +26335,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6800",
   "sym": "??0EventClass@@QAE@HHPAXABUPoint2D@@@Z",
   "len": "0x60",
@@ -26344,7 +26344,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6860",
   "sym": "??0EventClass@@QAE@HUTargetClass@@E000@Z",
   "len": "0x7d",
@@ -26353,7 +26353,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C68E0",
   "sym": "??0EventClass@@QAE@HUTargetClass@@E00HH@Z",
   "len": "0x88",
@@ -26362,7 +26362,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6970",
   "sym": "??0EventClass@@QAE@HHW4RTTIType@@HH@Z",
   "len": "0x6C",
@@ -26371,7 +26371,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C69E0",
   "sym": "??0EventClass@@QAE@HHW4RTTIType@@ABUCellStruct@@@Z",
   "len": "0x7F",
@@ -26380,7 +26380,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6A60",
   "sym": "??0EventClass@@QAE@HHW4RTTIType@@HABUCellStruct@@@Z",
   "len": "0x7F",
@@ -26389,7 +26389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6AE0",
   "sym": "??0EventClass@@QAE@HHW4RTTIType@@HHABUCellStruct@@@Z",
   "len": "0x80",
@@ -26398,7 +26398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6B60",
   "sym": "??0EventClass@@QAE@HHHABUCellStruct@@@Z",
   "len": "0x71",
@@ -26407,7 +26407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6BE0",
   "sym": "??0EventClass@@QAE@HHW4RTTIType@@H@Z",
   "len": "0x66",
@@ -26416,7 +26416,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/event_class_ctors.cpp",
+  "tu": "match/network/Event.cpp",
   "addr": "0x4C6C50",
   "sym": "??0EventClass@@QAE@HPAVIPXAddressClass@@D@Z",
   "len": "0x60",
@@ -27399,7 +27399,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_get_section_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526810",
   "sym": "?GetSection@INIClass@@QAEPAUINISection@1@PBD@Z",
   "len": "0x131",
@@ -27444,7 +27444,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_key_count_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526960",
   "sym": "?GetKeyCount@INIClass@@QAEHPBD@Z",
   "len": "0xC1",
@@ -27453,7 +27453,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_key_name_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526CC0",
   "sym": "?GetKeyName@INIClass@@QAEPBDPBDH@Z",
   "len": "0xcd",
@@ -27462,7 +27462,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526B00",
   "sym": "?Reset@INIClass@@QAEXXZ",
   "len": "0x9",
@@ -27471,7 +27471,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x529560",
   "sym": "?WriteBool@INIClass@@QAE_NPBD0_N@Z",
   "len": "0x36",
@@ -27480,7 +27480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x5297E0",
   "sym": "?Write2Integers@INIClass@@QAE_NPBD0PAH@Z",
   "len": "0x40",
@@ -27768,7 +27768,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_time_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52A940",
   "sym": "?WriteTime@CCINI_0052A940@@QAE_NPBD0H@Z",
   "len": "0x91",
@@ -27840,7 +27840,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_unicode_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x528E00",
   "sym": "?WriteUnicodeString@CCINI_00528E00@@QAE_NPBD0PBG@Z",
   "len": "0xc7",
@@ -27849,7 +27849,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_uublock_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526E80",
   "sym": "?WriteUUBlock@CCINI_00526E80@@QAE_NPBDPBXH@Z",
   "len": "0x130",
@@ -27867,7 +27867,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_write_integer_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x5275C0",
   "sym": "?WriteInteger@INIClass@@QAE_NPBD0HH@Z",
   "len": "0x7B",
@@ -28155,7 +28155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/mix_file_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5301A0",
   "sym": "?MixFileClass_Bootstrap@@YI_NXZ",
   "len": "0x2B4",
@@ -30271,7 +30271,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/positive_field_predicates.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50D9C0",
   "sym": "?FUN_0050D9C0@@YI_NPAUPredicate_0050D9C0@@@Z",
   "len": "0xe",
@@ -30280,7 +30280,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/positive_field_predicates.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50D9D0",
   "sym": "?FUN_0050D9D0@@YI_NPAUPredicate_0050D9C0@@@Z",
   "len": "0xe",
@@ -49966,7 +49966,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F54A0",
   "sym": "??0HouseClusterView@@QAE@PAUHouseTypeView@@@Z",
   "len": "0x109a",
@@ -49975,7 +49975,7 @@
   "pct": 98.3
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6830",
   "sym": "?QueryInterface@HouseClusterView@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0xd7",
@@ -49984,7 +49984,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6910",
   "sym": "?HasEnoughPower@HouseClusterView@@UAG_NXZ",
   "len": "0x1e",
@@ -49993,7 +49993,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6930",
   "sym": "?GetMainInterface@HouseClusterView@@UAGPAUIUnknown@@XZ",
   "len": "0x1d",
@@ -50002,7 +50002,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6950",
   "sym": "?GetName@HouseClusterView@@UAGPAGXZ",
   "len": "0x32",
@@ -50011,7 +50011,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6990",
   "sym": "?GetCredits@HouseClusterView@@UAGHXZ",
   "len": "0x3a",
@@ -50020,7 +50020,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F69D0",
   "sym": "?GetTiberiumStored@HouseClusterView@@UAGHXZ",
   "len": "0x23",
@@ -50029,7 +50029,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6A00",
   "sym": "?GetPowerOutput@HouseClusterView@@UAGHXZ",
   "len": "0xd",
@@ -50038,7 +50038,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6A10",
   "sym": "?GetPowerDrain@HouseClusterView@@UAGHXZ",
   "len": "0xd",
@@ -50047,7 +50047,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6A20",
   "sym": "?CountOwnedOfCategory@HouseClusterView@@UAGHH@Z",
   "len": "0x58",
@@ -50056,7 +50056,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6A80",
   "sym": "?PublicCountOwnedOfCategory@HouseClusterView@@UAGHH@Z",
   "len": "0x58",
@@ -50065,7 +50065,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6AE0",
   "sym": "?SumScoreOfCategory@HouseClusterView@@UAGHH@Z",
   "len": "0x6b",
@@ -50074,7 +50074,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6B50",
   "sym": "?PublicSumScoreOfCategory@HouseClusterView@@UAGHH@Z",
   "len": "0x6b",
@@ -50083,7 +50083,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6BC0",
   "sym": "?GetBaseCenter@HouseClusterView@@UAGPAXPAX@Z",
   "len": "0x14a",
@@ -50092,7 +50092,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6D10",
   "sym": "?PublicGetBaseCenter@HouseClusterView@@UAGPAXPAX@Z",
   "len": "0x14a",
@@ -50101,7 +50101,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F6E60",
   "sym": "?GetIndex@HouseClusterView@@UAGHXZ",
   "len": "0xa",
@@ -50110,7 +50110,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4FB9B0",
   "sym": "?PointerExpired@HouseClusterView@@UAEXPAVHouseAbstractPtrView@@_N@Z",
   "len": "0x349",
@@ -50119,7 +50119,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5013A0",
   "sym": "?SellAllBuildings@HouseClusterView@@UAGHXZ",
   "len": "0x55",
@@ -50128,7 +50128,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x501400",
   "sym": "?DestroyAllTechnos@HouseClusterView@@UAGHXZ",
   "len": "0x13f",
@@ -50137,7 +50137,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5024F0",
   "sym": "?EnumConnectionPoints@HouseClusterView@@UAGJPAPAUIEnumConnectionPoints@@@Z",
   "len": "0x53",
@@ -50146,7 +50146,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x502550",
   "sym": "?FindConnectionPoint@HouseClusterView@@UAGJABU_GUID@@PAPAUIConnectionPoint@@@Z",
   "len": "0x93",
@@ -50155,7 +50155,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x502D60",
   "sym": "?ComputeCrc@HouseClusterView@@UAEXPAVHouseCrcView@@@Z",
   "len": "0x2de",
@@ -50164,7 +50164,7 @@
   "pct": 91.7
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x503040",
   "sym": "?Load@HouseClusterView@@UAGJPAUIStream@@@Z",
   "len": "0x1033",
@@ -50173,7 +50173,7 @@
   "pct": 99.6
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x504080",
   "sym": "?Save@HouseClusterView@@UAGJPAUIStream@@H@Z",
   "len": "0x665",
@@ -50182,7 +50182,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5046F0",
   "sym": "?GetClassID@HouseClusterView@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
@@ -50191,7 +50191,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x504730",
   "sym": "?Size@HouseClusterView@@UAEHXZ",
   "len": "0x6",
@@ -50200,7 +50200,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E340",
   "sym": "?AddRef@HouseClusterView@@UAGKXZ",
   "len": "0x8",
@@ -50209,7 +50209,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E350",
   "sym": "?Release@HouseClusterView@@UAGKXZ",
   "len": "0x8",
@@ -50218,7 +50218,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E360",
   "sym": "?WhatAmI@HouseClusterView@@UAEHXZ",
   "len": "0x6",
@@ -50227,7 +50227,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E370",
   "sym": "?vf_16@HouseClusterView@@UAEHXZ",
   "len": "0x4",
@@ -50236,7 +50236,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A20",
   "sym": "?QueryInterface@HouseClusterView@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -50245,7 +50245,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A30",
   "sym": "?AddRef@HouseClusterView@@W3AGKXZ",
   "len": "0xa",
@@ -50254,7 +50254,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A40",
   "sym": "?Release@HouseClusterView@@W3AGKXZ",
   "len": "0xa",
@@ -50263,7 +50263,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A50",
   "sym": "?QueryInterface@HouseClusterView@@WCE@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -50272,7 +50272,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A60",
   "sym": "?AddRef@HouseClusterView@@WCE@AGKXZ",
   "len": "0xa",
@@ -50281,7 +50281,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A70",
   "sym": "?Release@HouseClusterView@@WCE@AGKXZ",
   "len": "0xa",
@@ -50290,7 +50290,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A80",
   "sym": "?QueryInterface@HouseClusterView@@WCI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -50299,7 +50299,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510A90",
   "sym": "?AddRef@HouseClusterView@@WCI@AGKXZ",
   "len": "0xa",
@@ -50308,7 +50308,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AA0",
   "sym": "?Release@HouseClusterView@@WCI@AGKXZ",
   "len": "0xa",
@@ -50317,7 +50317,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AB0",
   "sym": "?GetIndex@HouseClusterView@@W3AGHXZ",
   "len": "0xa",
@@ -50326,7 +50326,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AC0",
   "sym": "?GetName@HouseClusterView@@W3AGPAGXZ",
   "len": "0xa",
@@ -50335,7 +50335,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AD0",
   "sym": "?QueryInterface@HouseClusterView@@WCM@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
@@ -50344,7 +50344,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AE0",
   "sym": "?AddRef@HouseClusterView@@WCM@AGKXZ",
   "len": "0xa",
@@ -50353,7 +50353,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/economy/house_building/house_class_core.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x510AF0",
   "sym": "?Release@HouseClusterView@@WCM@AGKXZ",
   "len": "0xa",
@@ -52270,7 +52270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_cursor_ddtors.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F28C0",
   "sym": "??_G?$VectorCursor@PAVGraphicMenuItem@@V?$DynamicVectorClass@PAVGraphicMenuItem@@@@@@UAEPAXI@Z",
   "len": "0x20",
@@ -52288,7 +52288,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_pair_dynamic_slot5_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E590",
   "sym": "?Slot5@?$DynamicVectorClass@UAngerStruct@@@@UBEHPAUAngerStruct@@@Z",
   "len": "0x1B",
@@ -52297,7 +52297,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_pair_dynamic_slot5_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E600",
   "sym": "?Slot5@?$DynamicVectorClass@UScoutStruct@@@@UBEHPAUScoutStruct@@@Z",
   "len": "0x1B",
@@ -52306,7 +52306,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E670",
   "sym": "?Slot5@?$DynamicVectorClass@PAUBuildChoiceClass@HouseClass@@@@UBEHPAPAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0x1B",
@@ -52315,7 +52315,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E690",
   "sym": "?Slot6@?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UBEPAUBuildChoiceClass@HouseClass@@H@Z",
   "len": "0xD",
@@ -52324,7 +52324,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F4E0",
   "sym": "??8?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -52333,7 +52333,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F520",
   "sym": "?SetCapacity@?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UAE_NHPAPAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0xAE",
@@ -52342,7 +52342,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F600",
   "sym": "?FindItemIndex@?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UBEHABQAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0x33",
@@ -52351,7 +52351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F640",
   "sym": "?Slot5@?$VectorClass@PAUBuildChoiceClass@HouseClass@@@@UBEHPAPAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0x1B",
@@ -52360,7 +52360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F660",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUBuildChoiceClass@HouseClass@@@@UAE_NHPAPAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0xB0",
@@ -52369,7 +52369,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F710",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUBuildChoiceClass@HouseClass@@@@UBEHABQAUBuildChoiceClass@HouseClass@@@Z",
   "len": "0x26",
@@ -52387,7 +52387,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535CD0",
   "sym": "?DeletingDtor@CreateTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52396,7 +52396,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D00",
   "sym": "?DeletingDtor@CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52405,7 +52405,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536090",
   "sym": "?DeletingDtor@SelectTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52414,7 +52414,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536180",
   "sym": "?DeletingDtor@AddTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52423,7 +52423,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536270",
   "sym": "?DeletingDtor@CenterTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52432,7 +52432,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536580",
   "sym": "?DeletingDtor@TauntCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52441,7 +52441,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537FA0",
   "sym": "?DeletingDtor@MultiplayerDebugCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52450,7 +52450,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537FC0",
   "sym": "?DeletingDtor@MultiplayerSyncCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52459,7 +52459,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537FE0",
   "sym": "?DeletingDtor@FollowCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52468,7 +52468,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538000",
   "sym": "?DeletingDtor@View1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52477,7 +52477,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538020",
   "sym": "?DeletingDtor@View2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52486,7 +52486,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538040",
   "sym": "?DeletingDtor@View3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52495,7 +52495,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538060",
   "sym": "?DeletingDtor@View4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52504,7 +52504,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538080",
   "sym": "?DeletingDtor@SetView1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52513,7 +52513,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5380A0",
   "sym": "?DeletingDtor@SetView2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52522,7 +52522,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5380C0",
   "sym": "?DeletingDtor@SetView3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52531,7 +52531,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5380E0",
   "sym": "?DeletingDtor@SetView4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52540,7 +52540,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538100",
   "sym": "?DeletingDtor@OptionsCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52549,7 +52549,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538120",
   "sym": "?DeletingDtor@SidebarUpCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52558,7 +52558,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538140",
   "sym": "?DeletingDtor@SidebarDownCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52567,7 +52567,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538160",
   "sym": "?DeletingDtor@CenterREventCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52576,7 +52576,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538180",
   "sym": "?DeletingDtor@BeaconPlacementCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52585,7 +52585,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5381A0",
   "sym": "?DeletingDtor@ToggleSellCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52594,7 +52594,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5381C0",
   "sym": "?DeletingDtor@ToggleRepairCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52603,7 +52603,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5381E0",
   "sym": "?DeletingDtor@AllianceCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52612,7 +52612,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538200",
   "sym": "?DeletingDtor@CenterBaseCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52621,7 +52621,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538220",
   "sym": "?DeletingDtor@CenterViewCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52630,7 +52630,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538240",
   "sym": "?DeletingDtor@ScatterCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52639,7 +52639,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538260",
   "sym": "?DeletingDtor@GuardCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52648,7 +52648,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538280",
   "sym": "?DeletingDtor@StopCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52657,7 +52657,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5382A0",
   "sym": "?DeletingDtor@AllToCheerCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52666,7 +52666,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5382C0",
   "sym": "?DeletingDtor@DeployCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52675,7 +52675,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5382E0",
   "sym": "?DeletingDtor@PrevObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52684,7 +52684,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538300",
   "sym": "?DeletingDtor@NextObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52693,7 +52693,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538320",
   "sym": "?DeletingDtor@PlanningModeCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52702,7 +52702,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538340",
   "sym": "?DeletingDtor@CombatantSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52711,7 +52711,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538360",
   "sym": "?DeletingDtor@TypeSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52720,7 +52720,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538380",
   "sym": "?DeletingDtor@HealthNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52729,7 +52729,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5383A0",
   "sym": "?DeletingDtor@VeterancyNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52738,7 +52738,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5383C0",
   "sym": "?DeletingDtor@SetStructureTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52747,7 +52747,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5383E0",
   "sym": "?DeletingDtor@SetDefenseTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52756,7 +52756,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538400",
   "sym": "?DeletingDtor@SetUnitTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52765,7 +52765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538420",
   "sym": "?DeletingDtor@SetInfantryTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52774,7 +52774,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538440",
   "sym": "?DeletingDtor@ScreenCaptureCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52783,7 +52783,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538460",
   "sym": "?DeletingDtor@PageUserCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52792,7 +52792,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538480",
   "sym": "?DeletingDtor@CursorPositionCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52801,7 +52801,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5384A0",
   "sym": "?DeletingDtor@DeleteCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -59479,7 +59479,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/remap_table_build_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "addr": "0x4C38E0",
   "sym": "?FUN_004c38e0@@YIPAEABUColorTable_00626070@@PBURemapEntry@@HPAE@Z",
   "len": "0x140",
@@ -59497,7 +59497,7 @@
   "pct": 75.5
  },
  {
-  "tu": "match/platform/ini_index_list_reader_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x525430",
   "sym": "?FUN_00525430@@YI?AUTypeListInt@@PAVCCINI_00475C70@@PBD1U1@@Z",
   "len": "0x1B7",
@@ -59533,7 +59533,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ini_section_find_entry_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x52A4D0",
   "sym": "?FindEntry@INISectionEntryView@@QAEPAUINIEntry@INIClass@@PBD@Z",
   "len": "0x131",
@@ -59551,7 +59551,7 @@
   "pct": 100
  },
  {
-  "tu": "match/render/palette_blend_table_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x538D40",
   "sym": "?FUN_00538D40@@YAXXZ",
   "len": "0x12D",
@@ -60856,7 +60856,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E6150",
   "sym": "?FUN_004E6150@@YIXPAHPAD1H@Z",
   "len": "0x3b",
@@ -60865,7 +60865,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/position_below_limit_family_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F28B0",
   "sym": "?FUN_004F28B0@@YI_NPAUCursor_004F28B0@@@Z",
   "len": "0xe",
@@ -60910,7 +60910,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x5095D0",
   "sym": "?FUN_005095D0@Obj_005095D0@@QAEHH@Z",
   "len": "0x3d",
@@ -60919,7 +60919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/member_setter_family_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DA00",
   "sym": "?FUN_0050DA00@Setter_00487C70@@QAEXH@Z",
   "len": "0xd",
@@ -60928,7 +60928,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DA10",
   "sym": "?FUN_0050DA10@Obj_0050DA10@@QAEXXZ",
   "len": "0xc",
@@ -60937,7 +60937,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DA50",
   "sym": "?FUN_0050DA50@Obj_0050DA10@@QAEXXZ",
   "len": "0x22",
@@ -60946,7 +60946,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DA80",
   "sym": "?FUN_0050DA80@Obj_0050DA10@@QBEHXZ",
   "len": "0x12",
@@ -60955,7 +60955,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DEF0",
   "sym": "?FUN_0050DEF0@Obj_0050DA10@@QBE?AUCell_0050DEF0@@XZ",
   "len": "0x3e",
@@ -60964,7 +60964,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/member_setter_family_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DFE0",
   "sym": "?FUN_0050DFE0@Setter_00487C70@@QAEXH@Z",
   "len": "0xd",
@@ -60973,7 +60973,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DFF0",
   "sym": "?FUN_0050DFF0@Obj_0050DA10@@QAEXXZ",
   "len": "0xc",
@@ -60982,7 +60982,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/member_setter_family_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E000",
   "sym": "?FUN_0050E000@Setter_00487C70@@QAEXH@Z",
   "len": "0xd",
@@ -60991,7 +60991,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53BAD0",
   "sym": "?FUN_0053BAD0@@YIHXZ",
   "len": "0xe",
@@ -61000,7 +61000,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53BAE0",
   "sym": "?FUN_0053BAE0@@YIHXZ",
   "len": "0xe",
@@ -61657,7 +61657,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535BD0",
   "sym": "?vf_5@CommandClass@@UAE_NH@Z",
   "len": "0x5",
@@ -61666,7 +61666,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535BE0",
   "sym": "?vf_6@CommandClass@@UAE_NH@Z",
   "len": "0xF",
@@ -61675,7 +61675,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535BF0",
   "sym": "?vf_7@CommandClass@@UAE_NH@Z",
   "len": "0x5",
@@ -61684,7 +61684,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535C20",
   "sym": "?vf_1@CreateTeamCommandClass@@UAEPBDXZ",
   "len": "0x1C",
@@ -61693,7 +61693,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535C40",
   "sym": "?vf_2@CreateTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61702,7 +61702,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535C70",
   "sym": "?vf_3@CreateTeamCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61711,7 +61711,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535C90",
   "sym": "?vf_4@CreateTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61720,7 +61720,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535CC0",
   "sym": "?vf_8@CreateTeamCommandClass@@UAEXH@Z",
   "len": "0xB",
@@ -61729,7 +61729,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535CF0",
   "sym": "?vf_2@CommandClass@@UAEPBGXZ",
   "len": "0x5",
@@ -61738,7 +61738,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D20",
   "sym": "?vf_1@SetStructureTabCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -61747,7 +61747,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D30",
   "sym": "?vf_2@SetStructureTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61756,7 +61756,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D50",
   "sym": "?vf_3@SetStructureTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61765,7 +61765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D70",
   "sym": "?vf_4@SetStructureTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61774,7 +61774,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535D90",
   "sym": "?vf_8@SetStructureTabCommandClass@@UAEXH@Z",
   "len": "0x41",
@@ -61783,7 +61783,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535DE0",
   "sym": "?vf_1@SetDefenseTabCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -61792,7 +61792,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535DF0",
   "sym": "?vf_2@SetDefenseTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61801,7 +61801,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535E10",
   "sym": "?vf_3@SetDefenseTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61810,7 +61810,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535E30",
   "sym": "?vf_4@SetDefenseTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61819,7 +61819,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535E50",
   "sym": "?vf_8@SetDefenseTabCommandClass@@UAEXH@Z",
   "len": "0x41",
@@ -61828,7 +61828,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535EA0",
   "sym": "?vf_1@SetInfantryTabCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -61837,7 +61837,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535EB0",
   "sym": "?vf_2@SetInfantryTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61846,7 +61846,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535ED0",
   "sym": "?vf_3@SetInfantryTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61855,7 +61855,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535EF0",
   "sym": "?vf_4@SetInfantryTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61864,7 +61864,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535F10",
   "sym": "?vf_8@SetInfantryTabCommandClass@@UAEXH@Z",
   "len": "0x1D",
@@ -61873,7 +61873,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535F30",
   "sym": "?vf_1@SetUnitTabCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -61882,7 +61882,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535F40",
   "sym": "?vf_2@SetUnitTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61891,7 +61891,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535F60",
   "sym": "?vf_3@SetUnitTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61900,7 +61900,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535F80",
   "sym": "?vf_4@SetUnitTabCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61909,7 +61909,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535FA0",
   "sym": "?vf_8@SetUnitTabCommandClass@@UAEXH@Z",
   "len": "0x1D",
@@ -61918,7 +61918,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x535FE0",
   "sym": "?vf_1@SelectTeamCommandClass@@UAEPBDXZ",
   "len": "0x1C",
@@ -61927,7 +61927,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536000",
   "sym": "?vf_2@SelectTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61936,7 +61936,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536030",
   "sym": "?vf_3@SelectTeamCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61945,7 +61945,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536050",
   "sym": "?vf_4@SelectTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61954,7 +61954,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536080",
   "sym": "?vf_8@SelectTeamCommandClass@@UAEXH@Z",
   "len": "0xB",
@@ -61963,7 +61963,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5360D0",
   "sym": "?vf_1@AddTeamCommandClass@@UAEPBDXZ",
   "len": "0x1C",
@@ -61972,7 +61972,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5360F0",
   "sym": "?vf_2@AddTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61981,7 +61981,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536120",
   "sym": "?vf_3@AddTeamCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -61990,7 +61990,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536140",
   "sym": "?vf_4@AddTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -61999,7 +61999,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536170",
   "sym": "?vf_8@AddTeamCommandClass@@UAEXH@Z",
   "len": "0xB",
@@ -62008,7 +62008,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5361C0",
   "sym": "?vf_1@CenterTeamCommandClass@@UAEPBDXZ",
   "len": "0x1C",
@@ -62017,7 +62017,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5361E0",
   "sym": "?vf_2@CenterTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -62026,7 +62026,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536210",
   "sym": "?vf_3@CenterTeamCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62035,7 +62035,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536230",
   "sym": "?vf_4@CenterTeamCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -62044,7 +62044,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536260",
   "sym": "?vf_8@CenterTeamCommandClass@@UAEXH@Z",
   "len": "0xB",
@@ -62053,7 +62053,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5362B0",
   "sym": "?vf_1@TauntCommandClass@@UAEPBDXZ",
   "len": "0x1C",
@@ -62062,7 +62062,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5362D0",
   "sym": "?vf_2@TauntCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -62071,7 +62071,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536300",
   "sym": "?vf_3@TauntCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62080,7 +62080,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536320",
   "sym": "?vf_4@TauntCommandClass@@UAEPBGXZ",
   "len": "0x2E",
@@ -62089,7 +62089,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536350",
   "sym": "?vf_8@TauntCommandClass@@UAEXH@Z",
   "len": "0x22F",
@@ -62098,7 +62098,7 @@
   "pct": 31.5
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5365A0",
   "sym": "?vf_1@NextObjectCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62107,7 +62107,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5365B0",
   "sym": "?vf_2@NextObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62116,7 +62116,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5365D0",
   "sym": "?vf_3@NextObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62125,7 +62125,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5365F0",
   "sym": "?vf_4@NextObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62134,7 +62134,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536610",
   "sym": "?vf_8@NextObjectCommandClass@@UAEXH@Z",
   "len": "0x81",
@@ -62143,7 +62143,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5366A0",
   "sym": "?vf_1@PlanningModeCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62152,7 +62152,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5366B0",
   "sym": "?vf_2@PlanningModeCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62161,7 +62161,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5366D0",
   "sym": "?vf_3@PlanningModeCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62170,7 +62170,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5366F0",
   "sym": "?vf_4@PlanningModeCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62179,7 +62179,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536710",
   "sym": "?vf_5@PlanningModeCommandClass@@UAE_NH@Z",
   "len": "0x16",
@@ -62188,7 +62188,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536730",
   "sym": "?vf_6@PlanningModeCommandClass@@UAE_NH@Z",
   "len": "0x5",
@@ -62197,7 +62197,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536740",
   "sym": "?vf_7@PlanningModeCommandClass@@UAE_NH@Z",
   "len": "0xF",
@@ -62206,7 +62206,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536750",
   "sym": "?vf_8@PlanningModeCommandClass@@UAEXH@Z",
   "len": "0x1D",
@@ -62215,7 +62215,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536770",
   "sym": "?vf_1@CombatantSelectCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62224,7 +62224,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536780",
   "sym": "?vf_2@CombatantSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62233,7 +62233,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5367A0",
   "sym": "?vf_3@CombatantSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62242,7 +62242,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5367C0",
   "sym": "?vf_4@CombatantSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62251,7 +62251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5367E0",
   "sym": "?vf_5@CombatantSelectCommandClass@@UAE_NH@Z",
   "len": "0xD",
@@ -62260,7 +62260,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5367F0",
   "sym": "?vf_8@CombatantSelectCommandClass@@UAEXH@Z",
   "len": "0x14",
@@ -62269,7 +62269,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536810",
   "sym": "?vf_1@TypeSelectCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62278,7 +62278,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536820",
   "sym": "?vf_2@TypeSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62287,7 +62287,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536840",
   "sym": "?vf_3@TypeSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62296,7 +62296,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536860",
   "sym": "?vf_4@TypeSelectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62305,7 +62305,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536880",
   "sym": "?vf_5@TypeSelectCommandClass@@UAE_NH@Z",
   "len": "0xD",
@@ -62314,7 +62314,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536890",
   "sym": "?vf_6@TypeSelectCommandClass@@UAE_NH@Z",
   "len": "0x5",
@@ -62323,7 +62323,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5368A0",
   "sym": "?vf_7@TypeSelectCommandClass@@UAE_NH@Z",
   "len": "0xF",
@@ -62332,7 +62332,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5368B0",
   "sym": "?vf_8@TypeSelectCommandClass@@UAEXH@Z",
   "len": "0x19",
@@ -62341,7 +62341,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5368D0",
   "sym": "?vf_1@HealthNavCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62350,7 +62350,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5368E0",
   "sym": "?vf_2@HealthNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62359,7 +62359,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536900",
   "sym": "?vf_3@HealthNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62368,7 +62368,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536920",
   "sym": "?vf_4@HealthNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62377,7 +62377,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536940",
   "sym": "?vf_5@HealthNavCommandClass@@UAE_NH@Z",
   "len": "0xD",
@@ -62386,7 +62386,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536950",
   "sym": "?vf_8@HealthNavCommandClass@@UAEXH@Z",
   "len": "0x14",
@@ -62395,7 +62395,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536970",
   "sym": "?vf_1@VeterancyNavCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62404,7 +62404,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536980",
   "sym": "?vf_2@VeterancyNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62413,7 +62413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5369A0",
   "sym": "?vf_3@VeterancyNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62422,7 +62422,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5369C0",
   "sym": "?vf_4@VeterancyNavCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62431,7 +62431,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5369E0",
   "sym": "?vf_5@VeterancyNavCommandClass@@UAE_NH@Z",
   "len": "0xD",
@@ -62440,7 +62440,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5369F0",
   "sym": "?vf_8@VeterancyNavCommandClass@@UAEXH@Z",
   "len": "0x14",
@@ -62449,7 +62449,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536A10",
   "sym": "?vf_1@PrevObjectCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62458,7 +62458,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536A20",
   "sym": "?vf_2@PrevObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62467,7 +62467,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536A40",
   "sym": "?vf_3@PrevObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62476,7 +62476,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536A60",
   "sym": "?vf_4@PrevObjectCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62485,7 +62485,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536A80",
   "sym": "?vf_8@PrevObjectCommandClass@@UAEXH@Z",
   "len": "0x81",
@@ -62494,7 +62494,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B10",
   "sym": "?vf_1@StopCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62503,7 +62503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B20",
   "sym": "?vf_2@StopCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62512,7 +62512,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B40",
   "sym": "?vf_3@StopCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62521,7 +62521,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B60",
   "sym": "?vf_4@StopCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62530,7 +62530,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B80",
   "sym": "?vf_8@StopCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62539,7 +62539,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536B90",
   "sym": "?vf_1@AllToCheerCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62548,7 +62548,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536BA0",
   "sym": "?vf_2@AllToCheerCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62557,7 +62557,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536BC0",
   "sym": "?vf_3@AllToCheerCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62566,7 +62566,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536BE0",
   "sym": "?vf_4@AllToCheerCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62575,7 +62575,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C00",
   "sym": "?vf_8@AllToCheerCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62584,7 +62584,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C10",
   "sym": "?vf_1@DeployCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62593,7 +62593,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C20",
   "sym": "?vf_2@DeployCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62602,7 +62602,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C40",
   "sym": "?vf_3@DeployCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62611,7 +62611,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C60",
   "sym": "?vf_4@DeployCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62620,7 +62620,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C80",
   "sym": "?vf_8@DeployCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62629,7 +62629,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536C90",
   "sym": "?vf_1@GuardCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62638,7 +62638,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536CA0",
   "sym": "?vf_2@GuardCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62647,7 +62647,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536CC0",
   "sym": "?vf_3@GuardCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62656,7 +62656,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536CE0",
   "sym": "?vf_4@GuardCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62665,7 +62665,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D00",
   "sym": "?vf_8@GuardCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62674,7 +62674,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D10",
   "sym": "?vf_1@ScatterCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62683,7 +62683,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D20",
   "sym": "?vf_2@ScatterCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62692,7 +62692,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D40",
   "sym": "?vf_3@ScatterCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62701,7 +62701,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D60",
   "sym": "?vf_4@ScatterCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62710,7 +62710,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D80",
   "sym": "?vf_8@ScatterCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62719,7 +62719,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536D90",
   "sym": "?vf_1@CenterViewCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62728,7 +62728,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536DA0",
   "sym": "?vf_2@CenterViewCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62737,7 +62737,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536DC0",
   "sym": "?vf_3@CenterViewCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62746,7 +62746,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536DE0",
   "sym": "?vf_4@CenterViewCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62755,7 +62755,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536E00",
   "sym": "?vf_8@CenterViewCommandClass@@UAEXH@Z",
   "len": "0x22",
@@ -62764,7 +62764,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536E30",
   "sym": "?vf_1@CenterBaseCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62773,7 +62773,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536E40",
   "sym": "?vf_2@CenterBaseCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62782,7 +62782,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536E60",
   "sym": "?vf_3@CenterBaseCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62791,7 +62791,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536E80",
   "sym": "?vf_4@CenterBaseCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62800,7 +62800,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536EA0",
   "sym": "?vf_8@CenterBaseCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62809,7 +62809,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536EB0",
   "sym": "?vf_1@AllianceCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62818,7 +62818,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536EC0",
   "sym": "?vf_2@AllianceCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62827,7 +62827,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536EE0",
   "sym": "?vf_3@AllianceCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62836,7 +62836,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F00",
   "sym": "?vf_4@AllianceCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62845,7 +62845,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F20",
   "sym": "?vf_8@AllianceCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -62854,7 +62854,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F30",
   "sym": "?vf_1@ToggleRepairCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62863,7 +62863,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F40",
   "sym": "?vf_2@ToggleRepairCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62872,7 +62872,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F60",
   "sym": "?vf_3@ToggleRepairCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62881,7 +62881,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536F80",
   "sym": "?vf_4@ToggleRepairCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62890,7 +62890,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536FA0",
   "sym": "?vf_8@ToggleRepairCommandClass@@UAEXH@Z",
   "len": "0xF",
@@ -62899,7 +62899,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536FB0",
   "sym": "?vf_1@ToggleSellCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62908,7 +62908,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536FC0",
   "sym": "?vf_2@ToggleSellCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62917,7 +62917,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x536FE0",
   "sym": "?vf_3@ToggleSellCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62926,7 +62926,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537000",
   "sym": "?vf_4@ToggleSellCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62935,7 +62935,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537020",
   "sym": "?vf_8@ToggleSellCommandClass@@UAEXH@Z",
   "len": "0xF",
@@ -62944,7 +62944,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537030",
   "sym": "?vf_1@BeaconPlacementCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62953,7 +62953,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537040",
   "sym": "?vf_2@BeaconPlacementCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62962,7 +62962,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537060",
   "sym": "?vf_3@BeaconPlacementCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62971,7 +62971,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537080",
   "sym": "?vf_4@BeaconPlacementCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -62980,7 +62980,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5370A0",
   "sym": "?vf_8@BeaconPlacementCommandClass@@UAEXH@Z",
   "len": "0x16",
@@ -62989,7 +62989,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5370C0",
   "sym": "?vf_1@CenterREventCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -62998,7 +62998,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5370D0",
   "sym": "?vf_2@CenterREventCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63007,7 +63007,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5370F0",
   "sym": "?vf_3@CenterREventCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63016,7 +63016,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537110",
   "sym": "?vf_4@CenterREventCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63025,7 +63025,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537130",
   "sym": "?vf_8@CenterREventCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -63034,7 +63034,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537140",
   "sym": "?vf_1@SidebarUpCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63043,7 +63043,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537150",
   "sym": "?vf_2@SidebarUpCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63052,7 +63052,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537170",
   "sym": "?vf_3@SidebarUpCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63061,7 +63061,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537190",
   "sym": "?vf_4@SidebarUpCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63070,7 +63070,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5371B0",
   "sym": "?vf_8@SidebarUpCommandClass@@UAEXH@Z",
   "len": "0x11",
@@ -63079,7 +63079,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5371D0",
   "sym": "?vf_1@SidebarDownCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63088,7 +63088,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5371E0",
   "sym": "?vf_2@SidebarDownCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63097,7 +63097,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537200",
   "sym": "?vf_3@SidebarDownCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63106,7 +63106,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537220",
   "sym": "?vf_4@SidebarDownCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63115,7 +63115,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537240",
   "sym": "?vf_8@SidebarDownCommandClass@@UAEXH@Z",
   "len": "0x11",
@@ -63124,7 +63124,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537260",
   "sym": "?vf_1@OptionsCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63133,7 +63133,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537270",
   "sym": "?vf_2@OptionsCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63142,7 +63142,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537290",
   "sym": "?vf_3@OptionsCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63151,7 +63151,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5372B0",
   "sym": "?vf_4@OptionsCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63160,7 +63160,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5372D0",
   "sym": "?vf_8@OptionsCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -63169,7 +63169,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5372E0",
   "sym": "?vf_1@View1CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63178,7 +63178,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5372F0",
   "sym": "?vf_2@View1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63187,7 +63187,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537310",
   "sym": "?vf_3@View1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63196,7 +63196,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537330",
   "sym": "?vf_4@View1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63205,7 +63205,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537350",
   "sym": "?vf_8@View1CommandClass@@UAEXH@Z",
   "len": "0x7E",
@@ -63214,7 +63214,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5373D0",
   "sym": "?vf_1@View2CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63223,7 +63223,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5373E0",
   "sym": "?vf_2@View2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63232,7 +63232,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537400",
   "sym": "?vf_3@View2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63241,7 +63241,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537420",
   "sym": "?vf_4@View2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63250,7 +63250,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537440",
   "sym": "?vf_8@View2CommandClass@@UAEXH@Z",
   "len": "0x7E",
@@ -63259,7 +63259,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5374C0",
   "sym": "?vf_1@View3CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63268,7 +63268,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5374D0",
   "sym": "?vf_2@View3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63277,7 +63277,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5374F0",
   "sym": "?vf_3@View3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63286,7 +63286,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537510",
   "sym": "?vf_4@View3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63295,7 +63295,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537530",
   "sym": "?vf_8@View3CommandClass@@UAEXH@Z",
   "len": "0x7E",
@@ -63304,7 +63304,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5375B0",
   "sym": "?vf_1@View4CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63313,7 +63313,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5375C0",
   "sym": "?vf_2@View4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63322,7 +63322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5375E0",
   "sym": "?vf_3@View4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63331,7 +63331,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537600",
   "sym": "?vf_4@View4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63340,7 +63340,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537620",
   "sym": "?vf_8@View4CommandClass@@UAEXH@Z",
   "len": "0x7E",
@@ -63349,7 +63349,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5376A0",
   "sym": "?vf_1@SetView1CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63358,7 +63358,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5376B0",
   "sym": "?vf_2@SetView1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63367,7 +63367,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5376D0",
   "sym": "?vf_3@SetView1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63376,7 +63376,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5376F0",
   "sym": "?vf_4@SetView1CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63385,7 +63385,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537710",
   "sym": "?vf_8@SetView1CommandClass@@UAEXH@Z",
   "len": "0x48",
@@ -63394,7 +63394,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537760",
   "sym": "?vf_1@SetView2CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63403,7 +63403,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537770",
   "sym": "?vf_2@SetView2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63412,7 +63412,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537790",
   "sym": "?vf_3@SetView2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63421,7 +63421,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5377B0",
   "sym": "?vf_4@SetView2CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63430,7 +63430,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5377D0",
   "sym": "?vf_8@SetView2CommandClass@@UAEXH@Z",
   "len": "0x48",
@@ -63439,7 +63439,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537820",
   "sym": "?vf_1@SetView3CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63448,7 +63448,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537830",
   "sym": "?vf_2@SetView3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63457,7 +63457,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537850",
   "sym": "?vf_3@SetView3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63466,7 +63466,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537870",
   "sym": "?vf_4@SetView3CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63475,7 +63475,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537890",
   "sym": "?vf_8@SetView3CommandClass@@UAEXH@Z",
   "len": "0x48",
@@ -63484,7 +63484,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5378E0",
   "sym": "?vf_1@SetView4CommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63493,7 +63493,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5378F0",
   "sym": "?vf_2@SetView4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63502,7 +63502,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537910",
   "sym": "?vf_3@SetView4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63511,7 +63511,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537930",
   "sym": "?vf_4@SetView4CommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63520,7 +63520,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537950",
   "sym": "?vf_8@SetView4CommandClass@@UAEXH@Z",
   "len": "0x48",
@@ -63529,7 +63529,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5379A0",
   "sym": "?vf_1@FollowCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63538,7 +63538,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5379B0",
   "sym": "?vf_2@FollowCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63547,7 +63547,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5379D0",
   "sym": "?vf_3@FollowCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63556,7 +63556,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5379F0",
   "sym": "?vf_4@FollowCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63565,7 +63565,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A10",
   "sym": "?vf_8@FollowCommandClass@@UAEXH@Z",
   "len": "0x3B",
@@ -63574,7 +63574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A50",
   "sym": "?vf_1@MultiplayerDebugCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63583,7 +63583,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A60",
   "sym": "?vf_3@MultiplayerDebugCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63592,7 +63592,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A70",
   "sym": "?vf_2@MultiplayerDebugCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63601,7 +63601,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A80",
   "sym": "?vf_4@MultiplayerDebugCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63610,7 +63610,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537A90",
   "sym": "?vf_8@MultiplayerDebugCommandClass@@UAEXH@Z",
   "len": "0x1B",
@@ -63619,7 +63619,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537AB0",
   "sym": "?vf_1@MultiplayerSyncCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63628,7 +63628,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537AC0",
   "sym": "?vf_3@MultiplayerSyncCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63637,7 +63637,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537AD0",
   "sym": "?vf_2@MultiplayerSyncCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63646,7 +63646,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537AE0",
   "sym": "?vf_4@MultiplayerSyncCommandClass@@UAEPBGXZ",
   "len": "0x6",
@@ -63655,7 +63655,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537AF0",
   "sym": "?vf_8@MultiplayerSyncCommandClass@@UAEXH@Z",
   "len": "0x43",
@@ -63664,7 +63664,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537B50",
   "sym": "?vf_1@ScreenCaptureCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63673,7 +63673,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537B60",
   "sym": "?vf_3@ScreenCaptureCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63682,7 +63682,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537B80",
   "sym": "?vf_2@ScreenCaptureCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63691,7 +63691,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537BA0",
   "sym": "?vf_4@ScreenCaptureCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63700,7 +63700,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537DE0",
   "sym": "?vf_1@PageUserCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63709,7 +63709,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537DF0",
   "sym": "?vf_2@PageUserCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63718,7 +63718,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E10",
   "sym": "?vf_3@PageUserCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63727,7 +63727,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E30",
   "sym": "?vf_4@PageUserCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63736,7 +63736,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E50",
   "sym": "?vf_8@PageUserCommandClass@@UAEXH@Z",
   "len": "0x11",
@@ -63745,7 +63745,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E80",
   "sym": "?vf_1@CursorPositionCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63754,7 +63754,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537E90",
   "sym": "?vf_2@CursorPositionCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63763,7 +63763,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537EB0",
   "sym": "?vf_3@CursorPositionCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63772,7 +63772,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537ED0",
   "sym": "?vf_4@CursorPositionCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63781,7 +63781,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537EF0",
   "sym": "?vf_8@CursorPositionCommandClass@@UAEXH@Z",
   "len": "0x12",
@@ -63790,7 +63790,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F20",
   "sym": "?vf_1@DeleteCommandClass@@UAEPBDXZ",
   "len": "0x6",
@@ -63799,7 +63799,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F30",
   "sym": "?vf_2@DeleteCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63808,7 +63808,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F50",
   "sym": "?vf_3@DeleteCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63817,7 +63817,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F70",
   "sym": "?vf_4@DeleteCommandClass@@UAEPBGXZ",
   "len": "0x17",
@@ -63826,7 +63826,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537F90",
   "sym": "?vf_8@DeleteCommandClass@@UAEXH@Z",
   "len": "0x8",
@@ -63835,7 +63835,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_class.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x537BC0",
   "sym": "?vf_8@ScreenCaptureCommandClass@@UAEXH@Z",
   "len": "0x20c",
@@ -75785,7 +75785,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_leaf_accessor_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E4580",
   "sym": "?FUN_004E4580@@YI_NH@Z",
   "len": "0x13",
@@ -75794,7 +75794,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/dialog_item_data_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E4E20",
   "sym": "?FUN_004E4E20@@YIHPAUHWND__@@HH@Z",
   "len": "0x35",
@@ -75803,7 +75803,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_leaf_accessor_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E50A0",
   "sym": "?FUN_004E50A0@@YI_NH@Z",
   "len": "0x13",
@@ -75812,7 +75812,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/dialog_item_data_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E5900",
   "sym": "?FUN_004E5900@@YIHPAUHWND__@@HH@Z",
   "len": "0x35",
@@ -75821,7 +75821,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_leaf_accessor_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E5B40",
   "sym": "?FUN_004E5B40@@YI_NH@Z",
   "len": "0x13",
@@ -75830,7 +75830,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/dialog_item_data_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E6030",
   "sym": "?FUN_004E6030@@YIHPAUHWND__@@HH@Z",
   "len": "0x35",
@@ -76307,7 +76307,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E730",
   "sym": "?Slot5@?$DynamicVectorClass@_N@@UBEHPA_N@Z",
   "len": "0x20",
@@ -76316,7 +76316,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E7A0",
   "sym": "?Slot5@?$DynamicVectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBEHPAU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x20",
@@ -76325,7 +76325,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F070",
   "sym": "?SetCapacity@?$DynamicVectorClass@UAngerStruct@@@@UAE_NHPAUAngerStruct@@@Z",
   "len": "0x100",
@@ -76334,7 +76334,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F170",
   "sym": "?FindItemIndex@?$DynamicVectorClass@UAngerStruct@@@@UBEHABUAngerStruct@@@Z",
   "len": "0x40",
@@ -76343,7 +76343,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F3A0",
   "sym": "?SetCapacity@?$DynamicVectorClass@UScoutStruct@@@@UAE_NHPAUScoutStruct@@@Z",
   "len": "0x100",
@@ -76352,7 +76352,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F4A0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@UScoutStruct@@@@UBEHABUScoutStruct@@@Z",
   "len": "0x40",
@@ -76361,7 +76361,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F9A0",
   "sym": "??8?$VectorClass@_N@@UBE_NABV0@@Z",
   "len": "0x40",
@@ -76370,7 +76370,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50F9E0",
   "sym": "?SetCapacity@?$VectorClass@_N@@UAE_NHPA_N@Z",
   "len": "0xb0",
@@ -76379,7 +76379,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FAC0",
   "sym": "?FindItemIndex@?$VectorClass@_N@@UBEHAB_N@Z",
   "len": "0x40",
@@ -76388,7 +76388,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FB00",
   "sym": "?Slot5@?$VectorClass@_N@@UBEHPA_N@Z",
   "len": "0x20",
@@ -76397,7 +76397,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FB20",
   "sym": "?SetCapacity@?$DynamicVectorClass@_N@@UAE_NHPA_N@Z",
   "len": "0xb0",
@@ -76406,7 +76406,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FBD0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@_N@@UBEHAB_N@Z",
   "len": "0x30",
@@ -76415,7 +76415,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FC00",
   "sym": "??8?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBE_NABV0@@Z",
   "len": "0x60",
@@ -76424,7 +76424,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FDB0",
   "sym": "?FindItemIndex@?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBEHABU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x50",
@@ -76433,7 +76433,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FE00",
   "sym": "?Slot5@?$VectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBEHPAU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x20",
@@ -76442,7 +76442,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FFB0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@U?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBEHABU?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@Z",
   "len": "0x40",
@@ -76451,7 +76451,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x523300",
   "sym": "?GetClassID@InfantryClass@@UAGJPAU_GUID@@@Z",
   "len": "0x40",
@@ -76460,7 +76460,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524C70",
   "sym": "?GetClassID@InfantryTypeClass@@UAGJPAU_GUID@@@Z",
   "len": "0x40",
@@ -81095,7 +81095,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu090_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E4F30",
   "sym": "?FUN_004E4F30@@YAXXZ",
   "len": "0x17",
@@ -81104,7 +81104,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu090_methods.cpp",
+  "tu": "match/core/GDlgSupp.cpp",
   "addr": "0x4E6140",
   "sym": "?FUN_004E6140@@YAXXZ",
   "len": "0x1",
@@ -81113,7 +81113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu092_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F1710",
   "sym": "?FUN_004F1710@@YAXXZ",
   "len": "0x1",
@@ -81122,7 +81122,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu092_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F2B40",
   "sym": "?FUN_004F2B40@Obj_004F2B40@@QAEPAU1@XZ",
   "len": "0x6",
@@ -81131,7 +81131,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu092_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F2B50",
   "sym": "?FUN_004F2B50@Obj_004F2B50@@QAEPAU1@XZ",
   "len": "0x6",
@@ -81176,7 +81176,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x4F7850",
   "sym": "?FUN_004F7850@Obj_004F7850@@QAEPAU1@XZ",
   "len": "0x1b",
@@ -81185,7 +81185,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x506B70",
   "sym": "?FUN_00506B70@@YAXXZ",
   "len": "0x1",
@@ -81194,7 +81194,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x506B80",
   "sym": "?FUN_00506B80@@YAXXZ",
   "len": "0x1",
@@ -81203,7 +81203,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x509CC0",
   "sym": "?FUN_00509CC0@@YGXH@Z",
   "len": "0x3",
@@ -81212,7 +81212,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50C160",
   "sym": "?FUN_0050C160@Obj_0050C160@@QBEMXZ",
   "len": "0xa",
@@ -81221,7 +81221,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50DA40",
   "sym": "?FUN_0050DA40@Obj_0050DA40@@QAEXH@Z",
   "len": "0xd",
@@ -81230,7 +81230,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E430",
   "sym": "?FUN_0050E430@Obj_0050E430@@QAEXEEE@Z",
   "len": "0x17",
@@ -81239,7 +81239,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E450",
   "sym": "?FUN_0050E450@Obj_0050E450@@QAEPAU1@HPAUArg2_0050E450@@@Z",
   "len": "0x1c",
@@ -81248,7 +81248,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu095_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50FF40",
   "sym": "?FUN_0050FF40@@YAXXZ",
   "len": "0x1",
@@ -81257,7 +81257,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x51F620",
   "sym": "?FUN_0051F620@@YIXPAUObj_0051F620@@H@Z",
   "len": "0x16",
@@ -81266,7 +81266,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_b_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x51F640",
   "sym": "?FUN_0051F640@@YIXPAUObj_0051F640@@H@Z",
   "len": "0x16",
@@ -81275,7 +81275,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x51FAF0",
   "sym": "?FUN_0051FAF0@Obj_0051FAF0@@QBEHXZ",
   "len": "0x7",
@@ -81284,7 +81284,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5216C0",
   "sym": "?FUN_005216C0@@YIXPAUObj_005216C0@@H@Z",
   "len": "0x5",
@@ -81293,7 +81293,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x521B20",
   "sym": "?FUN_00521B20@Obj_00521B20@@QAEXXZ",
   "len": "0x20",
@@ -81302,7 +81302,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x521B40",
   "sym": "?FUN_00521B40@Obj_00521B40@@QAEXXZ",
   "len": "0x20",
@@ -81311,7 +81311,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x521C40",
   "sym": "?FUN_00521C40@Obj_00521C40@@QAEPAUObj_00521C40_6C0@@XZ",
   "len": "0x1b",
@@ -81320,7 +81320,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5220F0",
   "sym": "?FUN_005220F0@Obj_005220F0@@QAEXXZ",
   "len": "0x8",
@@ -81329,7 +81329,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5224D0",
   "sym": "?FUN_005224D0@Obj_005224D0@@QBEEXZ",
   "len": "0xd",
@@ -81338,7 +81338,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5224E0",
   "sym": "?FUN_005224E0@Obj_005224E0@@QBEEXZ",
   "len": "0xd",
@@ -81347,7 +81347,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5224F0",
   "sym": "?FUN_005224F0@Obj_005224F0@@QBEEXZ",
   "len": "0x15",
@@ -81356,7 +81356,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x522540",
   "sym": "?FUN_00522540@Obj_00522540@@QBEEXZ",
   "len": "0xd",
@@ -81365,7 +81365,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5228B0",
   "sym": "?FUN_005228B0@@YIXPAUObj_005228B0@@H@Z",
   "len": "0x5",
@@ -81374,7 +81374,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5228C0",
   "sym": "?FUN_005228C0@@YIXPAUObj_005228C0@@H@Z",
   "len": "0x5",
@@ -81383,7 +81383,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x522A50",
   "sym": "?FUN_00522A50@@YGXH@Z",
   "len": "0x3",
@@ -81392,7 +81392,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x522D00",
   "sym": "?FUN_00522D00@Obj_00522D00@@QAEXXZ",
   "len": "0x16",
@@ -81401,7 +81401,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x522D20",
   "sym": "?FUN_00522D20@Obj_00522D20@@QAEXXZ",
   "len": "0xd",
@@ -81410,7 +81410,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x5232F0",
   "sym": "?FUN_005232F0@Obj_005232F0@@QBEHXZ",
   "len": "0x6",
@@ -81419,7 +81419,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu099_methods.cpp",
+  "tu": "match/core/Infantry.cpp",
   "addr": "0x523340",
   "sym": "?FUN_00523340@Obj_00523340@@QBEHXZ",
   "len": "0x6",
@@ -81428,7 +81428,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x523C80",
   "sym": "?FUN_00523C80@@YAXXZ",
   "len": "0x1",
@@ -81437,7 +81437,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524790",
   "sym": "?FUN_00524790@Obj_00524790@@QBEHXZ",
   "len": "0xc",
@@ -81446,7 +81446,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x5247A0",
   "sym": "?FUN_005247A0@Obj_005247A0@@QBEHXZ",
   "len": "0x3",
@@ -81455,7 +81455,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x5247B0",
   "sym": "?FUN_005247B0@Obj_005247B0@@QAEXXZ",
   "len": "0x5",
@@ -81464,7 +81464,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x5247C0",
   "sym": "?FUN_005247C0@Obj_005247C0@@QAEXXZ",
   "len": "0x5",
@@ -81473,7 +81473,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524D40",
   "sym": "?FUN_00524D40@Obj_00524D40@@QBEHXZ",
   "len": "0x6",
@@ -81482,7 +81482,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524D50",
   "sym": "?FUN_00524D50@Obj_00524D50@@QBEHXZ",
   "len": "0x6",
@@ -81491,7 +81491,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524D60",
   "sym": "?FUN_00524D60@Obj_00524D60@@QBEHXZ",
   "len": "0x7",
@@ -81500,7 +81500,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu100_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x524EC0",
   "sym": "?FUN_00524EC0@Obj_00524EC0@@QAEPAU1@XZ",
   "len": "0x3",
@@ -81509,7 +81509,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/trivial_tu101_methods.cpp",
+  "tu": "match/core/Ini.cpp",
   "addr": "0x526950",
   "sym": "?FUN_00526950@Obj_00526950@@QBEHXZ",
   "len": "0x4",
@@ -81518,7 +81518,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D610",
   "sym": "?FUN_0052D610@@YAXXZ",
   "len": "0x1",
@@ -81527,7 +81527,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D620",
   "sym": "?FUN_0052D620@@YAXXZ",
   "len": "0x1",
@@ -81536,7 +81536,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52D630",
   "sym": "?FUN_0052D630@@YAXXZ",
   "len": "0x1",
@@ -81545,7 +81545,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x52F610",
   "sym": "?FUN_0052F610@Obj_0052F610@@QAEXXZ",
   "len": "0xc",
@@ -81554,7 +81554,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x532140",
   "sym": "?FUN_00532140@@YAXXZ",
   "len": "0x1",
@@ -81563,7 +81563,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu102_methods.cpp",
+  "tu": "match/ui/Init.cpp",
   "addr": "0x5355C0",
   "sym": "?FUN_005355C0@@YIXHH@Z",
   "len": "0x10",
@@ -81572,7 +81572,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x539560",
   "sym": "?FUN_00539560@@YAXXZ",
   "len": "0xb",
@@ -81581,7 +81581,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x539570",
   "sym": "?FUN_00539570@@YAXXZ",
   "len": "0xb",
@@ -81590,7 +81590,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x539EA0",
   "sym": "?FUN_00539EA0@@YIXH@Z",
   "len": "0x7",
@@ -81608,7 +81608,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53A110",
   "sym": "?FUN_0053A110@@YA_NXZ",
   "len": "0xf",
@@ -81617,7 +81617,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53A120",
   "sym": "?FUN_0053A120@@YA_NXZ",
   "len": "0xf",
@@ -81626,7 +81626,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53B3F0",
   "sym": "?FUN_0053B3F0@@YAXXZ",
   "len": "0x1",
@@ -81635,7 +81635,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu104_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x53B400",
   "sym": "?FUN_0053B400@@YA_NXZ",
   "len": "0xb",
@@ -81779,7 +81779,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu117_methods.cpp",
+  "tu": "match/core/LdPrgMgr.cpp",
   "addr": "0x554350",
   "sym": "?FUN_00554350@Obj_00554350@@QAEXPAUArg1_00554350@@@Z",
   "len": "0x18",
@@ -86653,6 +86653,222 @@
   "sym": "?FUN_004B6970@@YAXXZ",
   "len": "0x1a",
   "name": "FUN_004B6970",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Event.cpp",
+  "addr": "0x4C6390",
+  "sym": "?FUN_004C6390@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004C6390",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Event.cpp",
+  "addr": "0x4C63B0",
+  "sym": "?FUN_004C63B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004C63B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Event.cpp",
+  "addr": "0x4C6530",
+  "sym": "?FUN_004C6530@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004C6530",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GDlgSupp.cpp",
+  "addr": "0x4E3160",
+  "sym": "?FUN_004E3160@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004E3160",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GDlgSupp.cpp",
+  "addr": "0x4E3180",
+  "sym": "?FUN_004E3180@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004E3180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GDlgSupp.cpp",
+  "addr": "0x4E3300",
+  "sym": "?FUN_004E3300@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004E3300",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GOptions.cpp",
+  "addr": "0x4F0F20",
+  "sym": "?FUN_004F0F20@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004F0F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GOptions.cpp",
+  "addr": "0x4F0F40",
+  "sym": "?FUN_004F0F40@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004F0F40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/GOptions.cpp",
+  "addr": "0x4F10C0",
+  "sym": "?FUN_004F10C0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004F10C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/House.cpp",
+  "addr": "0x4F4F30",
+  "sym": "?FUN_004F4F30@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004F4F30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/House.cpp",
+  "addr": "0x4F4F50",
+  "sym": "?FUN_004F4F50@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004F4F50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/House.cpp",
+  "addr": "0x4F50D0",
+  "sym": "?FUN_004F50D0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004F50D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x517870",
+  "sym": "?FUN_00517870@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00517870",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x517890",
+  "sym": "?FUN_00517890@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00517890",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Infantry.cpp",
+  "addr": "0x517A10",
+  "sym": "?FUN_00517A10@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00517A10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/Init.cpp",
+  "addr": "0x52B7F0",
+  "sym": "?FUN_0052B7F0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0052B7F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/Init.cpp",
+  "addr": "0x52B810",
+  "sym": "?FUN_0052B810@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0052B810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/Init.cpp",
+  "addr": "0x52B990",
+  "sym": "?FUN_0052B990@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0052B990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Ion.cpp",
+  "addr": "0x539380",
+  "sym": "?FUN_00539380@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00539380",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Ion.cpp",
+  "addr": "0x5393A0",
+  "sym": "?FUN_005393A0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005393A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Ion.cpp",
+  "addr": "0x539520",
+  "sym": "?FUN_00539520@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00539520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LdPrgMgr.cpp",
+  "addr": "0x552880",
+  "sym": "?FUN_00552880@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00552880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LdPrgMgr.cpp",
+  "addr": "0x5528A0",
+  "sym": "?FUN_005528A0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005528A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LdPrgMgr.cpp",
+  "addr": "0x552A20",
+  "sym": "?FUN_00552A20@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00552A20",
   "status": "matched",
   "pct": 100
  }

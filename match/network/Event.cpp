@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check |
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Original translation unit Event.CPP. The name is the source-file string at 0x820e44
+//   in retail gamemd.exe v1.001, passed by the assert at 0x4c6e70 inside this object's
+//   code range (0x4c6360-0x4c81ef). Functions are in ascending retail address order.
+//
 //             private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 at 0x4C65A0,
 //   0x4C65E0, 0x4C6650, 0x4C66C0, 0x4C6720, 0x4C6780, 0x4C6800, 0x4C6860,
@@ -25,6 +29,51 @@
 // Functions ordered ascending by retail address.
 
 #include "event_class_ctors.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E8818
+extern const double DAT_007E8818;
+// GLOBAL: GAMEMD 0x8A39A0
+extern double DAT_008A39A0;
+// GLOBAL: GAMEMD 0x8A39D8
+extern double DAT_008A39D8;
+// GLOBAL: GAMEMD 0x8A39E0
+extern int DAT_008A39E0;
+// GLOBAL: GAMEMD 0x8A39E4
+extern int DAT_008A39E4;
+// GLOBAL: GAMEMD 0x8A39E8
+extern int DAT_008A39E8;
+// GLOBAL: GAMEMD 0x8A39F0
+extern double DAT_008A39F0;
+
+// FUNCTION: GAMEMD 0x4C6390
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_004C6390()
+{
+    DAT_008A39F0 = DAT_008A39A0 / DAT_007E8818;
+}
+
+// FUNCTION: GAMEMD 0x4C63B0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_004C63B0()
+{
+    DAT_008A39D8 = DAT_007E1718 / DAT_008A39F0;
+}
+
+// FUNCTION: GAMEMD 0x4C6530
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_004C6530()
+{
+    DAT_008A39E8 = 0;
+    DAT_008A39E0 = 0x80;
+    DAT_008A39E4 = 0x80;
+}
 
 // FUNCTION: GAMEMD 0x4C65A0  EventClass::EventClass(int, SpecialPayload)
 // GLOBAL: GAMEMD 0xA8ED84
@@ -414,8 +463,3 @@ EventClass::EventClass(int houseIndex, IPXAddressClass* address, char playerId)
         Frame = CurrentFrame;
     }
 }
-
-// Not in this TU: EventClass::Execute at 0x4C6CB0, the ~5.5 KB switch that
-// drains the queue (jump table at 0x4C8114, 0x2E arms). It is the only other
-// EventClass member in the run and it reaches most of the gameplay classes, so
-// it belongs in its own translation unit.

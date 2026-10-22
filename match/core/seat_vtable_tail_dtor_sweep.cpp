@@ -6,13 +6,6 @@
 
 #include "seat_vtable_tail_dtor_sweep.h"
 
-// FUNCTION: GAMEMD 0x535A60
-// VTABLE: GAMEMD 0x7E1668
-void __fastcall FUN_00535A60(SeatDtorObject* self)
-{
-    self->Vtbl = VTABLE_007E1668;
-    FUN_00431B80(self);
-}
 
 // FUNCTION: GAMEMD 0x7668F0
 // VTABLE: GAMEMD 0x7F7024

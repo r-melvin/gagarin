@@ -1,4 +1,8 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+//   Original translation unit Egos.CPP. The name is the source-file string at 0x8207ec
+//   in retail gamemd.exe v1.001, passed by the assert at 0x4c40e4 inside this object's
+//   code range (0x4c35a0-0x4c4cff). Functions are in ascending retail address order.
 //
 // Builds a set of 256-byte colour remap tables from a palette and a list of
 // 4-byte entries {index, colour, ratio, -}. The first 256 bytes map each

@@ -55,17 +55,6 @@ template class VectorClass<DiscreteDistributionClass<CellClass>::DistributionObj
 template class DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 
 class BuildingTypeClass; 
-// FUNCTION: GAMEMD 0x0050FC00
-// VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::operator==
-// FUNCTION: GAMEMD 0x0050FDB0
-// VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x0050FE00
-// VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::Slot5
-// FUNCTION: GAMEMD 0x0050FFB0
-// DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x0050E7A0
-// DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::Slot5
-template class VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*> >;
 template class DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*> >;
 
 class AITriggerTypeClass; 

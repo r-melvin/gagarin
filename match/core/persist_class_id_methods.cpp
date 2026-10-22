@@ -504,23 +504,6 @@ HRESULT __stdcall FoggedObjectClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-// FUNCTION: GAMEMD 0x00523300
-HRESULT __stdcall InfantryClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E9680;
-    return S_OK;
-}
-
-// FUNCTION: GAMEMD 0x00524C70
-HRESULT __stdcall InfantryTypeClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E95A0;
-    return S_OK;
-}
 
 // FUNCTION: GAMEMD 0x00543AB0
 HRESULT __stdcall IsometricTileClass::GetClassID(CLSID* pClassID)

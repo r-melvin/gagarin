@@ -180,17 +180,6 @@ void* Obj_4E30F0::FUN_4E30F0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x4F2830
-void* Obj_4F2830::FUN_4F2830(unsigned int flags)
-{
-    FUN_004F21A0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x5172F0
 void* Obj_5172F0::FUN_5172F0(unsigned int flags)
@@ -204,53 +193,6 @@ void* Obj_5172F0::FUN_5172F0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x523350
-void* Obj_523350::FUN_523350(unsigned int flags)
-{
-    FUN_00517D90(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x52AE00
-void* Obj_52AE00::FUN_52AE00(unsigned int flags)
-{
-    FUN_0052AB80(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x52AEA0
-void* Obj_52AEA0::FUN_52AEA0(unsigned int flags)
-{
-    ((Straw*)this)->Straw::~Straw();
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x52AEE0
-void* Obj_52AEE0::FUN_52AEE0(unsigned int flags)
-{
-    ((Pipe*)this)->Pipe::~Pipe();
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x54A170
 void* Obj_54A170::FUN_54A170(unsigned int flags)

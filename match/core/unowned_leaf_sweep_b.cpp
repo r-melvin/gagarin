@@ -63,20 +63,6 @@ struct Obj_005095D0
     int FUN_005095D0(int kind);
 };
 
-// FUNCTION: GAMEMD 0x005095D0
-// Count the entries of the global vector at 0x8B40E8 whose +0x2C is this
-// object and whose +0x24 is `kind`, walking from the end.
-int Obj_005095D0::FUN_005095D0(int kind)
-{
-    int count = 0;
-    for (int i = DAT_008B40F8 - 1; i >= 0; i--) {
-        Team_005095D0* team = DAT_008B40EC[i];
-        if (team != NULL && team->unknown_2C == this && kind == team->unknown_24) {
-            count++;
-        }
-    }
-    return count;
-}
 
 struct Obj_0050DA10
 {
@@ -102,58 +88,6 @@ GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54F0) == 0x54F0);
 GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54FC) == 0x54FC);
 GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_577C) == 0x577C);
 
-// FUNCTION: GAMEMD 0x0050DA10
-void Obj_0050DA10::FUN_0050DA10()
-{
-    unknown_54F0 = DAT_00A8EF98;
-}
-
-// FUNCTION: GAMEMD 0x0050DA50
-void Obj_0050DA10::FUN_0050DA50()
-{
-    unknown_54F4 = DAT_00A8EF98;
-    unknown_54FC = -100;
-    unknown_54F8 = DAT_00A8EF98;
-}
-
-// FUNCTION: GAMEMD 0x0050DA80
-// +0x577C when it is 0..3, else 0.
-int Obj_0050DA10::FUN_0050DA80() const
-{
-    int value = unknown_577C;
-    if (value >= 0 && value <= 3) {
-        return value;
-    }
-    return 0;
-}
-
-// FUNCTION: GAMEMD 0x0050DEF0
-// +0x5490 while +0x5494 still holds the global cell at 0xA8EF98, else +0x5494.
-Cell_0050DEF0 Obj_0050DA10::FUN_0050DEF0() const
-{
-    if (unknown_5494 == DAT_00A8EF98) {
-        return unknown_5490;
-    }
-    return unknown_5494;
-}
-
-// FUNCTION: GAMEMD 0x0050DFF0
-void Obj_0050DA10::FUN_0050DFF0()
-{
-    unknown_5494 = DAT_00A8EF98;
-}
-
-// FUNCTION: GAMEMD 0x0053BAD0
-int FUN_0053BAD0()
-{
-    return DAT_00A9FAB0 != 0;
-}
-
-// FUNCTION: GAMEMD 0x0053BAE0
-int FUN_0053BAE0()
-{
-    return DAT_00A9FAB0 != 0;
-}
 
 // FUNCTION: GAMEMD 0x0053EC90
 // Live key state, or the recorded word for the key's low byte.

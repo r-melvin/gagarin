@@ -39,23 +39,6 @@ void FUN_00406730()
     DAT_00816108 = 0;
 }
 
-// FUNCTION: GAMEMD 0x004E4580
-bool FUN_004E4580(int index)
-{
-    return DAT_008B4040[index].key != -1;
-}
-
-// FUNCTION: GAMEMD 0x004E50A0
-bool FUN_004E50A0(int index)
-{
-    return DAT_008B3F38[index].key != -1;
-}
-
-// FUNCTION: GAMEMD 0x004E5B40
-bool FUN_004E5B40(int index)
-{
-    return DAT_008B3FC8[index].key != -1;
-}
 
 // FUNCTION: GAMEMD 0x0058BC20
 void FUN_0058BC20()

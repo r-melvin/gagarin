@@ -30,23 +30,6 @@ template class VectorClass<unsigned short>;
 template class DynamicVectorClass<unsigned short>;
 
 
-// FUNCTION: GAMEMD 0x0050F9A0
-// VectorClass<bool>::operator==
-// FUNCTION: GAMEMD 0x0050F9E0
-// VectorClass<bool>::SetCapacity
-// FUNCTION: GAMEMD 0x0050FAC0
-// VectorClass<bool>::FindItemIndex
-// FUNCTION: GAMEMD 0x0050FB00
-// VectorClass<bool>::Slot5
-// FUNCTION: GAMEMD 0x0050FB20
-// DynamicVectorClass<bool>::SetCapacity
-// FUNCTION: GAMEMD 0x0050FBD0
-// DynamicVectorClass<bool>::FindItemIndex
-// FUNCTION: GAMEMD 0x0050E730
-// DynamicVectorClass<bool>::Slot5
-// VTABLE: GAMEMD 0x007EAA5C -- VectorClass<bool>.
-// VTABLE: GAMEMD 0x007EAA7C -- DynamicVectorClass<bool>.
-template class VectorClass<bool>;
 template class DynamicVectorClass<bool>;
 
 
