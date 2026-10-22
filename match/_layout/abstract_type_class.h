@@ -32,7 +32,7 @@ public:
     virtual ~AbstractTypeClass();
     // Overrides and new slots of the primary table 0x7E2000 (27 slots).
     // Signatures are not recovered; placeholders keep the shape.
-    virtual void vf_13();                 // 13  0x410BE0
+    virtual void vf_13(Obj_004A1D30* crc); // 13  0x410BE0
     virtual void vf_24();                 // 24  0x410C20 (new)
     virtual void vf_25();                 // 25  0x410A60 (new)
     virtual void vf_26();                 // 26  0x410B90 (new)

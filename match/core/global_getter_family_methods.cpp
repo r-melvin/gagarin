@@ -76,12 +76,6 @@ int __fastcall FUN_0058B7D0()
     return DAT_00ABED0C;
 }
 
-// FUNCTION: GAMEMD 0x005B2EF0
-int __fastcall FUN_005B2EF0()
-{
-    return (int)&DAT_000001C2;
-}
-
 // FUNCTION: GAMEMD 0x005C61D0
 const unsigned short* __fastcall FUN_005C61D0()
 {

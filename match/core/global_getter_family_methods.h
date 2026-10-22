@@ -16,8 +16,6 @@ extern int DAT_00000001;
 extern int DAT_00000016;
 // GLOBAL: GAMEMD 0x47
 extern int DAT_00000047;
-// GLOBAL: GAMEMD 0x1C2
-extern int DAT_000001C2;
 // GLOBAL: GAMEMD 0xDB7
 extern int DAT_00000DB7;
 // GLOBAL: GAMEMD 0x8205D0
@@ -173,8 +171,6 @@ int __fastcall FUN_0053E720();
 char __fastcall FUN_0055CBF0();
 // FUNCTION: GAMEMD 0x0058B7D0
 int __fastcall FUN_0058B7D0();
-// FUNCTION: GAMEMD 0x005B2EF0
-int __fastcall FUN_005B2EF0();
 // FUNCTION: GAMEMD 0x005C61D0
 // Returns the 16-bit word table at 0x82E174: both callers (0x632BE0,
 // 0x632C40) read EAX as `word ptr [reg]`.

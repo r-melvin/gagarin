@@ -7,28 +7,7 @@
 //     and returns `this` (its six callers construct it in place).
 // Class names are descriptive; no allocation site was traced, so no size is
 // asserted.
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-
-extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
-extern "C" __declspec(dllimport) unsigned int __stdcall timeBeginPeriod(unsigned int period);
-
-class ElapsedTimer
-{
-public:
-    // FUNCTION: GAMEMD 0x4E2460
-    unsigned long Elapsed() const;
-
-    unsigned long Start;   // +0x00
-};
-GG_STATIC_ASSERT(offsetof(ElapsedTimer, Start) == 0x00);
-
-class TimerResolution
-{
-public:
-    // FUNCTION: GAMEMD 0x5D5870
-    TimerResolution();
-};
+#include "winmm_timer_methods.h"
 
 // FUNCTION: GAMEMD 0x4E2460
 unsigned long ElapsedTimer::Elapsed() const

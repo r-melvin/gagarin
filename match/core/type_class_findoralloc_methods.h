@@ -65,6 +65,10 @@ struct WarheadTypeClass
     WarheadTypeClass(const char* id) throw();   // GAMEMD 0x75CEC0 (declared; reloc)
 
     static WarheadTypeClass* __fastcall FindOrAllocate(const char* id);   // GAMEMD 0x75E3B0
+    // The index-returning lookup-or-create and the index-to-ID lookup emitted
+    // in the block at 0x40F2D0. Placeholder names.
+    static int __fastcall FUN_0040F510(const char* id);          // GAMEMD 0x40F510
+    static const char* __fastcall FUN_0040F5C0(int index);       // GAMEMD 0x40F5C0
 };
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ID) == 0x24);
 GG_STATIC_ASSERT(sizeof(WarheadTypeClass) == 0x1D0);

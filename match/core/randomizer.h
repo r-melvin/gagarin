@@ -26,6 +26,8 @@
 class Randomizer
 {
 public:
+    // FUNCTION: GAMEMD 0x65C6D0 (declaration) -- seeds the table; RET 4.
+    Randomizer(int seed);
     int Random();                     // GAMEMD 0x65C780 __thiscall
     int RandomRanged(int min, int max); // GAMEMD 0x65C7E0 __thiscall
 

@@ -379,7 +379,7 @@ public:
     virtual int  vf_40();                                // 40  0x4C9150 (__purecall)
     virtual bool vf_41(int a, int* b, bool c);           // 41  0x4A9840
     virtual void vf_42(const RectangleStruct* rect);     // 42  0x4A8960 (set the view dimensions)
-    virtual void vf_43();                                // 43  0x40D250
+    virtual void vf_43(int a1);                          // 43  0x40D250: bare RET 4
     virtual void vf_44(const Point2D* where);            // 44  0x4AAD20
     virtual void vf_45(const Point2D* where);            // 45  0x4AC310
     virtual void vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, int a4, bool a5);            // 46  0x4AAE90

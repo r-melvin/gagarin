@@ -25,6 +25,11 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_interfaces.h"
 
+// Returned by value from slots 18, 19 and 22 (defined in object_class.h).
+struct CoordStruct;
+// The checksum sink slot 13 feeds (0x4A1CA0 / 0x4A1D50; _layout/obj_004a1d30.h).
+struct Obj_004A1D30;
+
 // The argument of the no-initialisation constructor 0x4101C0 (RET 4, the
 // argument is never read). Placeholder name.
 struct AbstractNoInit { };
@@ -80,22 +85,23 @@ public:
     // FUNCTION: GAMEMD 0x4101F0 (declaration; native base destructor; slot 8
     // holds the scalar deleting destructor 0x4105A0)
     virtual ~AbstractClass();
-    // Slots 9-23. Signatures are not recovered; placeholders keep the shape.
-    virtual void vf_9();                  // 9   0x410470
-    virtual void vf_10();                 // 10  0x410480
-    virtual int vf_11() = 0;              // 11  pure (called by 0x410210)
-    virtual int vf_12() = 0;              // 12  pure
-    virtual void vf_13();                 // 13  0x410410
-    virtual void vf_14();                 // 14  0x410490
-    virtual void vf_15();                 // 15  0x4104A0
-    virtual void vf_16();                 // 16  0x4104B0
-    virtual void vf_17();                 // 17  0x410440
-    virtual void vf_18();                 // 18  0x4104C0
-    virtual void vf_19();                 // 19  0x4104F0
-    virtual void vf_20();                 // 20  0x410520
-    virtual void vf_21();                 // 21  0x410530
-    virtual void vf_22();                 // 22  0x410540
-    virtual void vf_23();                 // 23  0x410570
+    // Slots 9-23. Names are placeholders unless noted; argument counts come
+    // from each body's RET n (thiscall) and return types from its EAX/AL use.
+    virtual void vf_9();                                  // 9   0x410470: bare RET
+    virtual void vf_10(void* a1, bool a2);                // 10  0x410480: RET 8
+    virtual int vf_11() = 0;                              // 11  pure (called by 0x410210)
+    virtual int vf_12() = 0;                              // 12  pure
+    virtual void vf_13(Obj_004A1D30* crc);               // 13  0x410410: feeds the CRC accumulator
+    virtual int vf_14();                                  // 14  0x410490: returns -1
+    virtual int vf_15();                                  // 15  0x4104A0: returns 0
+    virtual int vf_16();                                  // 16  0x4104B0: returns 0
+    virtual bool vf_17();                                 // 17  0x410440: returns true
+    virtual CoordStruct vf_18();                          // 18  0x4104C0: a coordinate by value
+    virtual CoordStruct vf_19(int a1);                    // 19  0x4104F0: returns vf_18()
+    virtual bool IsOnFloor() const;                       // 20  0x410520: returns false
+    virtual bool IsInAir() const;                         // 21  0x410530: returns false
+    virtual CoordStruct vf_22();                          // 22  0x410540: returns vf_18()
+    virtual void vf_23();                                 // 23  0x410570: bare RET
 
     // The primary (IPersistStream-side) vtable pointer at +0x00, for code that
     // dispatches through slot views not yet modelled as virtuals.

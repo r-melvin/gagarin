@@ -35,6 +35,8 @@
 #include "object_class.h"     // ObjectClass spine + CoordStruct + AudioController
 #include "techno_class.h"     // StageClass
 
+struct AnimTypeClass;
+
 // BounceClass — the projectile-bounce physics block embedded in AnimClass at
 // 0x128. Size 0x50, proven by closure: the ctor takes EDI = this+0x128, stores
 // through [EDI+0x04]/[EDI+0x08]/[EDI+0x0C]/[EDI+0x10]/[EDI+0x14]
@@ -53,6 +55,16 @@ GG_STATIC_ASSERT(sizeof(BounceClass) == 0x50);
 
 struct AnimClass : ObjectClass
 {
+    // FUNCTION: GAMEMD 0x421EA0 (declaration; constructor, RET 0x1C)
+    AnimClass(AnimTypeClass* type, const CoordStruct& coord, int loopDelay, int loopCount,
+              unsigned int flags, int forceZ, bool reverse);
+    // Overrides of the pure base slots (declarations; bodies not recovered here).
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Load(IStream* pStm);
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    virtual int vf_11();
+    virtual int vf_12();
+
     StageClass      Animation;             // +0xAC (0x1C) ctor @0x00421EB8..0x00421EDB
     void*           Type;                  // +0xC8 AnimTypeClass*; ctor MOV [ESI+0xC8],ECX(=arg1) @0x00421EE5
     void*           OwnerObject;           // +0xCC ObjectClass*; ctor @0x00421EEE
