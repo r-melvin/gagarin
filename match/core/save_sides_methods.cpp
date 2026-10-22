@@ -27,7 +27,7 @@ long __fastcall Save_Sides(Stream_006805F0* stream, SideVector_006805F0* sides)
         hr = OleSaveToStream(persist, stream);
         if (hr < 0)
             return hr;
-        hr = COM_RELEASE(persist);
+        hr = COM_SLOT_08(persist);
         if (hr < 0)
             return hr;
     }

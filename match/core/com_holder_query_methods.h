@@ -24,7 +24,7 @@ typedef unsigned long (__stdcall* ReleaseSlot)(IUnk*);
 
 #define COM_QUERY(p, iid, ppv) \
     ((*(QuerySlot*)(*(char**)(p) + 0x00))(p, iid, ppv))
-#define COM_RELEASE(p) \
+#define COM_SLOT_08(p) \
     ((*(ReleaseSlot*)(*(char**)(p) + 0x08))(p))
 
 // The two interface identifiers, pushed by address as plain immediates.

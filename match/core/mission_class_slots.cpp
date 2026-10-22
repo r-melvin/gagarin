@@ -11,7 +11,7 @@
 
 // Frames left on a count-down timer (-1 start = stopped). Descriptive local
 // helper for code retail has inlined; no original name is attested.
-static inline int TimerRemaining(const CDTimerClass& t)
+static inline int Inline_005B3060(const CDTimerClass& t)
 {
     int left = t.TimeLeft;
     if (t.StartTime != -1) {
@@ -242,7 +242,7 @@ void MissionClass::vf_23()
     if (!IsAlive) {
         return;
     }
-    if (TimerRemaining(UpdateTimer) != 0) {
+    if (Inline_005B3060(UpdateTimer) != 0) {
         return;
     }
     if (Health <= 0) {
@@ -424,7 +424,7 @@ void MissionClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(SuspendedMission);
     crc->FUN_004A1D50(QueuedMission);
     crc->FUN_004A1D50(MissionStatus);
-    crc->FUN_004A1D50(TimerRemaining(UpdateTimer));
+    crc->FUN_004A1D50(Inline_005B3060(UpdateTimer));
     crc->FUN_004A1D50(CurrentMissionStartTime);
 }
 

@@ -14,7 +14,7 @@
 // at +0x28 and a 640x400 rectangle at +0x18.
 //
 // ELEMENT TYPES CORRECTED (whole-image RTTI sweep). The
-// two trailing vectors were annotated `VectorClass<StringClass*>`. That was a
+// two trailing vectors were annotated `VectorClass<Obj_007B4620*>`. That was a
 // guess from how their elements are USED, not a read of the binary. The
 // locators under those two tables say otherwise, re-read here with
 // `ghidra memory read` rather than taken on the sweep's word:
@@ -23,9 +23,9 @@
 // with the DERIVED tables 0x7EEA74 / 0x7EEA54 naming
 // `DynamicVectorClass<MSAnimEntry*>` / `<MSSfxEntry*>` to match. So the
 // elements are `MSAnimEntry*` and `MSSfxEntry*` -- two of the movie/menu/score
-// `MS*` family the sweep recovers -- NOT `StringClass*`.
+// `MS*` family the sweep recovers -- NOT `Obj_007B4620*`.
 //
-// The element POINTEE is still spelled `StringClass` in the code below, and
+// The element POINTEE is still spelled `Obj_007B4620` in the code below, and
 // that is deliberate: every access retail makes to an element in this run is a
 // `char*` read at offset +0x00 of the entry, so `MSAnimEntry`/`MSSfxEntry`
 // cannot be laid out from this TU alone -- only their first member can. The
@@ -45,7 +45,7 @@
 //   +0x1C  int  BoundsY             zeroed at 0x5CF630
 //   +0x20  int  BoundsW             set to 0x280 at 0x5CF637
 //   +0x24  int  BoundsH             set to 0x190 at 0x5CF63E
-//   +0x28  StringClass Name         `LEA ECX,[ESI+0x28]` into 0x7B46F0
+//   +0x28  Obj_007B4620 Name         `LEA ECX,[ESI+0x28]` into 0x7B46F0
 //   +0x2C  VectorClass<MSAnimEntry*> items +0x30, count +0x3C, flag +0x39
 //   +0x44  VectorClass<MSSfxEntry*>  items +0x48, count +0x54, flag +0x51
 //   sizeof 0x5C
@@ -75,7 +75,7 @@
 class StringMember
 {
 public:
-    StringClass Text;   // +0x00
+    Obj_007B4620 Text;   // +0x00
 
     __forceinline ~StringMember() throw() { Text.Destruct(); }
 };
@@ -84,8 +84,8 @@ GG_STATIC_ASSERT(sizeof(StringMember) == 4);
 class MapStage
 {
 public:
-    StringClass Name;    // +0x00
-    StringClass Title;   // +0x04
+    Obj_007B4620 Name;    // +0x00
+    Obj_007B4620 Title;   // +0x04
 
     // FUNCTION: GAMEMD 0x5D0070 (decl; reloc) — the stage destructor.
     void Destruct();
@@ -197,7 +197,7 @@ public:
     virtual int  Slot2();
     virtual void Clear();
 
-    StringClass** Vector;       // +0x04
+    Obj_007B4620** Vector;       // +0x04
     int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
@@ -242,7 +242,7 @@ public:
     virtual int  Slot2();
     virtual void Clear();
 
-    StringClass** Vector;       // +0x04
+    Obj_007B4620** Vector;       // +0x04
     int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
@@ -296,11 +296,11 @@ public:
     MapStageList* Construct();                      // 0x5CEDD0
     ~MapStageList() throw();                        // 0x5CEE60
     void       ClearAll();                          // 0x5CF5F0
-    MapStage*  FindByName(StringClass* key);        // 0x5CF6B0
-    MapStage*  FindByTitle(StringClass* key);       // 0x5CF760
+    MapStage*  FindByName(Obj_007B4620* key);        // 0x5CF6B0
+    MapStage*  FindByTitle(Obj_007B4620* key);       // 0x5CF760
     MapStage*  GetAt(unsigned short index);         // 0x5CF810
     int        AddStage(MapStage* stage);           // 0x5CF830
-    StringClass* FindTitle(StringClass* key);       // 0x5CF840
+    Obj_007B4620* FindTitle(Obj_007B4620* key);       // 0x5CF840
 };
 GG_STATIC_ASSERT(offsetof(MapStageList, BoundsX) == 0x18
               && offsetof(MapStageList, BoundsH) == 0x24

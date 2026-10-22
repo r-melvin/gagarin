@@ -52,7 +52,7 @@ GG_STATIC_ASSERT(offsetof(ListNode, Owner) == 0x8);
 
 // A free-list head. Popping hands back the block *past* the link word, so the
 // link is stored in the eight bytes preceding the payload.
-struct FreeListHead
+struct Obj_00407520
 {
     ListNode* First;   // +0x0000
 

@@ -4,7 +4,7 @@
 // (count +0x08, capacity +0x0C, data +0x10: the list shape of
 // window_list_collect_methods.cpp). Each entry holds an id (+0x00), two wide
 // strings (+0x04, +0x08; default constructor 0x7B66C0, destructor 0x7B6760,
-// assignment 0x7B68E0 -- the WideStringClass of
+// assignment 0x7B68E0 -- the Obj_007B66D0 of
 // core/wide_string_class.h, which does not declare the first two) and
 // three words (+0x0C = -1, +0x10 = 0, +0x14 = -1 when default-built). The
 // list's grow step (0x624810) and the entry copy constructor (0x6247D0) are

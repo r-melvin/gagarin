@@ -73,9 +73,9 @@ struct PathHeap
 };
 GG_STATIC_ASSERT(sizeof(PathHeap) == 0x14);   // operator new(0x14) at 0x42A741
 
-struct PathNode
+struct Obj_0042A6D0
 {
-    PathNode()
+    Obj_0042A6D0()
     {
         unknown_0C = 0;
         unknown_08 = 0;
@@ -93,7 +93,7 @@ struct PathNodePool_0042A6D0
     PathNodePool_0042A6D0() : Used(0) {}
     ~PathNodePool_0042A6D0() {}
 
-    PathNode Nodes[0x10000];   // +0x000000
+    Obj_0042A6D0 Nodes[0x10000];   // +0x000000
     int      Used;             // +0x100000
 };
 GG_STATIC_ASSERT(sizeof(PathNodePool_0042A6D0) == 0x100004);   // operator new(0x100004) at 0x42A7E8
@@ -277,7 +277,7 @@ public:
     bool          unknown_08;        // +0x08
     char          unknown_09[3];
     PathCellPool* CellPool;          // +0x0C
-    PathNodePool_0042A6D0* NodePool;          // +0x10
+    PathNodePool_0042A6D0* unknown_10;          // +0x10
     PathHeap*     OpenHeap;          // +0x14
     void*         unknown_18;        // +0x18
     void*         unknown_1C;        // +0x1C
@@ -303,7 +303,7 @@ public:
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, CellPool) == 0x0C);
-GG_STATIC_ASSERT(offsetof(PathSearchClass, NodePool) == 0x10);
+GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, OpenHeap) == 0x14);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(PathSearchClass, unknown_28) == 0x28);
@@ -340,10 +340,10 @@ PathSearchClass::PathSearchClass()
 {
     OpenHeap = new PathHeap(0x10000);
     SecondHeap = new PathHeap(10000);
-    NodePool = new PathNodePool_0042A6D0;
+    unknown_10 = new PathNodePool_0042A6D0;
     CellPool = new PathCellPool;
     CellPool->Used = 0;
-    NodePool->Used = 0;
+    unknown_10->Used = 0;
     OpenHeap->Clear();
     SecondHeap->Clear();
     for (int i = 0; i < 3; i++)
@@ -365,8 +365,8 @@ PathSearchClass::~PathSearchClass()
     OpenHeap = 0;
     delete SecondHeap;
     SecondHeap = 0;
-    delete NodePool;
-    NodePool = 0;
+    delete unknown_10;
+    unknown_10 = 0;
     delete CellPool;
     CellPool = 0;
     if (unknown_18 != 0)

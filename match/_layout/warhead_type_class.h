@@ -21,18 +21,18 @@ struct AnimTypeClass;        // opaque (4-byte ptr target)
 struct ParticleTypeClass;    // opaque (4-byte ptr target)
 
 // TypeList<T> — DynamicVectorClass(0x18) + trailing dword; size = 0x1C.
-struct WHT_TypeListBlock
+struct RawBlock1C
 {
     unsigned char _raw[0x1C];   // +0x00..0x1B
 };
-GG_STATIC_ASSERT(sizeof(WHT_TypeListBlock) == 0x1C);
+GG_STATIC_ASSERT(sizeof(RawBlock1C) == 0x1C);
 
 // _GUID — Locomotor class id; size = 0x10.
-struct WHT_GUIDBlock
+struct RawBlock10
 {
     unsigned char _raw[0x10];   // +0x00..0x0F
 };
-GG_STATIC_ASSERT(sizeof(WHT_GUIDBlock) == 0x10);
+GG_STATIC_ASSERT(sizeof(RawBlock10) == 0x10);
 
 // WarheadTypeClass  (0x98..0x1CF, sizeof = 0x1D0)
 struct WarheadTypeClass : AbstractTypeClass
@@ -41,7 +41,7 @@ struct WarheadTypeClass : AbstractTypeClass
     double            Verses[0xB];         // +0xA0  (0xA0..0xF7)
     double            ProneDamage;         // +0xF8
     int               DeformTreshold;      // +0x100
-    WHT_TypeListBlock AnimList;            // +0x104 (TypeList<AnimTypeClass*>)
+    RawBlock1C AnimList;            // +0x104 (TypeList<AnimTypeClass*>)
     int               InfDeath;            // +0x120 (enum)
     float             CellSpread;          // +0x124
     float             CellInset;           // +0x128
@@ -79,7 +79,7 @@ struct WarheadTypeClass : AbstractTypeClass
     bool Temporal;               // +0x15A
     bool IsLocomotor;            // +0x15B
 
-    WHT_GUIDBlock     Locomotor;           // +0x15C (_GUID, 0x10)
+    RawBlock10     Locomotor;           // +0x15C (_GUID, 0x10)
 
     // +0x16C..0x16E — 3 × bool
     bool Airstrike;              // +0x16C
@@ -104,8 +104,8 @@ struct WarheadTypeClass : AbstractTypeClass
     int ShakeYlo;                // +0x184
     int ShakeYhi;                // +0x188
 
-    WHT_TypeListBlock DebrisTypes;         // +0x18C (TypeList<VoxelAnimTypeClass*>)
-    WHT_TypeListBlock DebrisMaximums;      // +0x1A8 (TypeList<int>)
+    RawBlock1C DebrisTypes;         // +0x18C (TypeList<VoxelAnimTypeClass*>)
+    RawBlock1C DebrisMaximums;      // +0x1A8 (TypeList<int>)
     int               MaxDebris;           // +0x1C4
     int               MinDebris;           // +0x1C8
     unsigned long     unused_1CC;          // +0x1CC (DWORD)

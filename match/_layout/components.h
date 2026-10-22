@@ -30,11 +30,11 @@ GG_STATIC_ASSERT(sizeof(ColorStruct)      == 3);
 // Pointer members modelled as real pointers (decomp shows undefined4 truncation).
 struct VoxelStruct
 {
-    void* VoxelData;   // +0x00  (MotLib / VoxLib model ptr)
+    void* unknown_00;   // +0x00  (MotLib / VoxLib model ptr)
     void* HVAData;     // +0x04  (HVA animation ptr)
 };
 
-GG_STATIC_ASSERT(offsetof(VoxelStruct, VoxelData) == 0x00);
+GG_STATIC_ASSERT(offsetof(VoxelStruct, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(VoxelStruct, HVAData)   == 0x04);
 GG_STATIC_ASSERT(sizeof(VoxelStruct)              == 8);
 

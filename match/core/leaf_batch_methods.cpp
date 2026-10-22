@@ -26,7 +26,7 @@ void* SaveGameInformation_00681090::GetPlayerHousePtr() const
 int SaveGameInformation_00681090::GetCampaign() const { return this->Campaign; }
 
 // FUNCTION: GAMEMD 0x00681140
-int SaveGameInformation_00681090::GetScenarioNumber() const
+int SaveGameInformation_00681090::FUN_00681140() const
 {
     return this->ScenarioNumber;
 }

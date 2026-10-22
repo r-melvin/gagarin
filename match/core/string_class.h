@@ -15,15 +15,15 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-class StringClass
+class Obj_007B4620
 {
 public:
     // FUNCTION: GAMEMD 0x7B4690
-    StringClass(const StringClass& other);
+    Obj_007B4620(const Obj_007B4620& other);
     // FUNCTION: GAMEMD 0x7B4780
-    bool operator==(const StringClass& other) const;
+    bool operator==(const Obj_007B4620& other) const;
     // FUNCTION: GAMEMD 0x7B4860
-    bool operator!=(const StringClass& other) const;
+    bool operator!=(const Obj_007B4620& other) const;
     // FUNCTION: GAMEMD 0x7B50F0
     bool FUN_007B50F0(char ch);
     // FUNCTION: GAMEMD 0x7B51B0
@@ -47,11 +47,11 @@ public:
     // back to empty.
     void Reset();
     // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc) — lower-case in place.
-    void MakeLower();
+    void FUN_007B5B30();
 
     char* Str;   // +0x00
 };
-GG_STATIC_ASSERT(sizeof(StringClass) == 4
-              && offsetof(StringClass, Str) == 0x00);
+GG_STATIC_ASSERT(sizeof(Obj_007B4620) == 4
+              && offsetof(Obj_007B4620, Str) == 0x00);
 
 #endif // GG_MATCH_CORE_STRING_CLASS_H

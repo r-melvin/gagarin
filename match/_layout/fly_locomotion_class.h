@@ -61,7 +61,7 @@
 //       driver 0x004CD2A0 sets (`MOV BYTE PTR [ESI+0x5C],1` @0x004CD2CD) and
 //       0x004CD674/0x004CD67B reads and clears.
 //     * 0x53/0x54/0x58. match/movement/fly_locomotion_com_methods.h names these
-//       IsSpinning / SpinRate / SpinCount from the touchdown spin path
+//       IsSpinning / unknown_54 / SpinCount from the touchdown spin path
 //       (0x004CFD20, 0x004CFDD0) and that reading is kept here; YRpp leaves all
 //       three unnamed.
 //
@@ -175,7 +175,7 @@ struct FlyLocomotionClass : LocomotionLayoutView_0055A6C0
                                   //       @0x004CE5A6, cleared @0x004CE639; the
                                   //       touchdown spin gate (see
                                   //       fly_locomotion_com_methods.h)
-    int         SpinRate;         // +0x54 ctor @0x004CCA03 (=0); read/modified/written
+    int         unknown_54;         // +0x54 ctor @0x004CCA03 (=0); read/modified/written
                                   //       @0x004CE5E0, @0x004CE60A, @0x004CE624,
                                   //       @0x004CE62E
     int         SpinCount;        // +0x58 ctor @0x004CCA06 (=0); read/modified/written
@@ -200,7 +200,7 @@ GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, IsTakingOff)  == 0x50);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, IsLanding)    == 0x51);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, WasLanding)   == 0x52);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, IsSpinning)   == 0x53);
-GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, SpinRate)     == 0x54);
+GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, unknown_54)     == 0x54);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, SpinCount)    == 0x58);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, IsElevating)  == 0x5C);
 GG_STATIC_ASSERT(sizeof(FlyLocomotionClass)                 == 0x60);

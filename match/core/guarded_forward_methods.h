@@ -30,7 +30,7 @@ struct IFace;
 typedef void (__stdcall* IFaceSlot)(IFace* self);
 #define IFACE_CALL(p, slot) ((*(IFaceSlot*)(*(char**)(p) + (slot)))(p))
 
-struct Holder_IFace
+struct Obj_00437FC0
 {
     IFace* Held;   // +0x0000
     // FUNCTION: GAMEMD 0x437FC0

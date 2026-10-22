@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// StringClass bodies, ascending by retail address. The class and the
+// Obj_007B4620 bodies, ascending by retail address. The class and the
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
 
 // FUNCTION: GAMEMD 0x7B4690
-StringClass::StringClass(const StringClass& other)
+Obj_007B4620::Obj_007B4620(const Obj_007B4620& other)
 {
     Str = 0;
     if (other.Str != 0) {
@@ -16,7 +16,7 @@ StringClass::StringClass(const StringClass& other)
 }
 
 // FUNCTION: GAMEMD 0x7B4780
-bool StringClass::operator==(const StringClass& other) const
+bool Obj_007B4620::operator==(const Obj_007B4620& other) const
 {
     if (Str == 0 && other.Str == 0) {
         return true;
@@ -28,7 +28,7 @@ bool StringClass::operator==(const StringClass& other) const
 }
 
 // FUNCTION: GAMEMD 0x7B4860
-bool StringClass::operator!=(const StringClass& other) const
+bool Obj_007B4620::operator!=(const Obj_007B4620& other) const
 {
     if (Str == 0 && other.Str == 0) {
         return false;
@@ -40,7 +40,7 @@ bool StringClass::operator!=(const StringClass& other) const
 }
 
 // FUNCTION: GAMEMD 0x7B50F0
-bool StringClass::FUN_007B50F0(char ch)
+bool Obj_007B4620::FUN_007B50F0(char ch)
 {
     bool removed = false;
     if (Str == 0) {
@@ -65,14 +65,14 @@ bool StringClass::FUN_007B50F0(char ch)
 }
 
 // FUNCTION: GAMEMD 0x7B51B0
-void StringClass::FUN_007B51B0()
+void Obj_007B4620::FUN_007B51B0()
 {
     FUN_007B50F0(' ');
     FUN_007B50F0('\t');
 }
 
 // FUNCTION: GAMEMD 0x7B53B0
-void StringClass::Copy_Padded(char* dest, unsigned int size) const
+void Obj_007B4620::Copy_Padded(char* dest, unsigned int size) const
 {
     strncpy(dest, Str, size);
     unsigned int len = strlen(Str);
@@ -83,7 +83,7 @@ void StringClass::Copy_Padded(char* dest, unsigned int size) const
 }
 
 // FUNCTION: GAMEMD 0x7B54B0
-int StringClass::Length() const
+int Obj_007B4620::Length() const
 {
     if (Str == 0) {
         return 0;
@@ -92,7 +92,7 @@ int StringClass::Length() const
 }
 
 // FUNCTION: GAMEMD 0x7B5AB0
-bool StringClass::FUN_007B5AB0(char ch, unsigned int index)
+bool Obj_007B4620::FUN_007B5AB0(char ch, unsigned int index)
 {
     if (index >= strlen(Str)) {
         return false;

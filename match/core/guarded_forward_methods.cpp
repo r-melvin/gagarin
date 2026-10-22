@@ -7,7 +7,7 @@
 #include "guarded_forward_methods.h"
 
 // FUNCTION: GAMEMD 0x437FC0
-void Holder_IFace::FUN_00437FC0()
+void Obj_00437FC0::FUN_00437FC0()
 {
     if (Held) {
         IFACE_CALL(Held, 0x8);
@@ -15,7 +15,7 @@ void Holder_IFace::FUN_00437FC0()
 }
 
 // FUNCTION: GAMEMD 0x45A160
-void Holder_IFace::FUN_0045A160()
+void Obj_00437FC0::FUN_0045A160()
 {
     if (Held) {
         IFACE_CALL(Held, 0x8);
@@ -23,7 +23,7 @@ void Holder_IFace::FUN_0045A160()
 }
 
 // FUNCTION: GAMEMD 0x45A170
-void Holder_IFace::FUN_0045A170()
+void Obj_00437FC0::FUN_0045A170()
 {
     if (Held) {
         IFACE_CALL(Held, 0x4);

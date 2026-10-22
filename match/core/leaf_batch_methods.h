@@ -37,7 +37,7 @@ struct SaveGameInformation_00681090
     // FUNCTION: GAMEMD 0x00681120
     int GetCampaign() const;
     // FUNCTION: GAMEMD 0x00681140
-    int GetScenarioNumber() const;
+    int FUN_00681140() const;
     // FUNCTION: GAMEMD 0x006812D0
     int GetGameType() const;
 };

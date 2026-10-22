@@ -30,7 +30,7 @@ typedef long (__stdcall* Query_006805F0)(Side_006805F0*, const void*, void**);
 typedef long (__stdcall* Release_006805F0)(Persist_006805F0*);
 #define COM_QUERY(p, iid, ppv) \
     ((*(Query_006805F0*)(*(char**)(p) + 0x00))(p, iid, ppv))
-#define COM_RELEASE(p) \
+#define COM_SLOT_08(p) \
     ((*(Release_006805F0*)(*(char**)(p) + 0x08))(p))
 
 // DynamicVectorClass<SideClass*> head: vtable@0, Items@4, Count@0x10.

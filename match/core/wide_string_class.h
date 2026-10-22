@@ -4,7 +4,7 @@
 //   v1.001 through the local Ghidra CLI. Every offset, width, calling convention and CRT helper address below
 //   was re-derived from the retail disassembly at 0x7B66D0..0x7B7834.
 //
-// WideStringClass is a heap-owning wide-character string. The retail
+// Obj_007B66D0 is a heap-owning wide-character string. The retail
 // object is a single 4-byte member: a `wchar_t*` at +0x00, allocated with the
 // global `operator new` and released with the global `operator delete`. There
 // is no allocation header, no length cache and no reference count -- every
@@ -67,7 +67,7 @@ void* __cdecl memset(void* d, int c, unsigned int n);
 //   `MOV EBP,0x887734` at 0x7B6B6F substitute it for a null buffer.
 extern wchar_t WideEmptyString[];
 
-class WideStringClass
+class Obj_007B66D0
 {
 public:
     // The only member. Offset 0 and size 4 are pinned below.
@@ -101,14 +101,14 @@ public:
     __forceinline unsigned int Length() const;
 
     // ---- scored entry points, ascending by retail address ----------------
-    WideStringClass(const wchar_t* src);                       // 0x7B66D0
-    WideStringClass(const WideStringClass& other);             // 0x7B6720
+    Obj_007B66D0(const wchar_t* src);                       // 0x7B66D0
+    Obj_007B66D0(const Obj_007B66D0& other);             // 0x7B6720
     bool FUN_007B6780(const wchar_t* text) const;              // 0x7B6780
-    WideStringClass& operator=(const wchar_t* src);            // 0x7B6880
-    WideStringClass& operator=(const WideStringClass& other);  // 0x7B68E0
+    Obj_007B66D0& operator=(const wchar_t* src);            // 0x7B6880
+    Obj_007B66D0& operator=(const Obj_007B66D0& other);  // 0x7B68E0
     bool Concat(const wchar_t* src);                           // 0x7B6970
-    WideStringClass& operator+=(const wchar_t* src);           // 0x7B6AE0
-    WideStringClass& operator+=(const WideStringClass& other); // 0x7B6B60
+    Obj_007B66D0& operator+=(const wchar_t* src);           // 0x7B6AE0
+    Obj_007B66D0& operator+=(const Obj_007B66D0& other); // 0x7B6B60
     short Erase(int pos, int count);                           // 0x7B6D90
     // FUNCTION: GAMEMD 0x7B6E20 (decl; reloc) -- remove every occurrence of
     // one character (__thiscall, one stack word).
@@ -120,17 +120,17 @@ public:
     short Set(const wchar_t* src);                             // 0x7B7600
     bool FUN_007B7660(wchar_t ch, unsigned int index);         // 0x7B7660
     short Set(int count, const wchar_t* src);                  // 0x7B7690
-    void MakeLower();                                          // 0x7B76F0
-    WideStringClass* AsLower(WideStringClass* out) const;      // 0x7B7740
-    void MakeUpper();                                          // 0x7B77E0
-    WideStringClass* AsUpper(WideStringClass* out) const;      // 0x7B7830
+    void FUN_007B76F0();                                          // 0x7B76F0
+    Obj_007B66D0* AsLower(Obj_007B66D0* out) const;      // 0x7B7740
+    void FUN_007B77E0();                                          // 0x7B77E0
+    Obj_007B66D0* AsUpper(Obj_007B66D0* out) const;      // 0x7B7830
 };
 
 // Offsets confirmed numerically from the disassembly cited in the file header.
-GG_STATIC_ASSERT(sizeof(WideStringClass) == 4
-              && offsetof(WideStringClass, Buffer) == 0x00);
+GG_STATIC_ASSERT(sizeof(Obj_007B66D0) == 4
+              && offsetof(Obj_007B66D0, Buffer) == 0x00);
 
-__forceinline void WideStringClass::Release()
+__forceinline void Obj_007B66D0::Release()
 {
     if (Buffer != 0) {
         ::operator delete(Buffer);
@@ -138,7 +138,7 @@ __forceinline void WideStringClass::Release()
     Buffer = 0;
 }
 
-__forceinline void WideStringClass::Store(const wchar_t* src)
+__forceinline void Obj_007B66D0::Store(const wchar_t* src)
 {
     int len = (src != 0) ? (int)wcslen(src) + 1 : 1;
     Buffer = (wchar_t*)::operator new(len * 2);
@@ -148,7 +148,7 @@ __forceinline void WideStringClass::Store(const wchar_t* src)
     }
 }
 
-__forceinline const wchar_t* WideStringClass::Peek() const
+__forceinline const wchar_t* Obj_007B66D0::Peek() const
 {
     if (Buffer != 0) {
         return Buffer;
@@ -156,12 +156,12 @@ __forceinline const wchar_t* WideStringClass::Peek() const
     return WideEmptyString;
 }
 
-__forceinline unsigned int WideStringClass::Length() const
+__forceinline unsigned int Obj_007B66D0::Length() const
 {
     return (Buffer != 0) ? wcslen(Buffer) : 0;
 }
 
-__forceinline void WideStringClass::Append(const wchar_t* src)
+__forceinline void Obj_007B66D0::Append(const wchar_t* src)
 {
     wchar_t* old = Buffer;
     int len = (int)wcslen(src) + 1;

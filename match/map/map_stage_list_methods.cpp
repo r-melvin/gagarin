@@ -64,7 +64,7 @@ void MapStageList::ClearAll()
     int i;
 
     for (i = 0; i < Titles.Count; ++i) {
-        StringClass* title = Titles.Vector[i];
+        Obj_007B4620* title = Titles.Vector[i];
 
         if (title != 0) {
             title->Destruct();
@@ -80,7 +80,7 @@ void MapStageList::ClearAll()
     BoundsH = 400;
 
     for (i = 0; i < Strings.Count; ++i) {
-        StringClass* text = Strings.Vector[i];
+        Obj_007B4620* text = Strings.Vector[i];
 
         if (text != 0) {
             text->Destruct();
@@ -107,15 +107,15 @@ void MapStageList::ClearAll()
 // lower-cased into temporaries inside the loop, so the key is rebuilt on every
 // turn exactly as retail does it; the two temporaries are released on both the
 // hit and the miss path.
-MapStage* MapStageList::FindByName(StringClass* key)
+MapStage* MapStageList::FindByName(Obj_007B4620* key)
 {
     if (key->At(0) != 0) {
         for (int i = 0; i < Stages.Count; ++i) {
-            StringClass wanted(*key);
-            wanted.MakeLower();
+            Obj_007B4620 wanted(*key);
+            wanted.FUN_007B5B30();
 
-            StringClass candidate(Stages.Vector[i]->Name);
-            candidate.MakeLower();
+            Obj_007B4620 candidate(Stages.Vector[i]->Name);
+            candidate.FUN_007B5B30();
 
             if (wanted == candidate) {
                 MapStage* hit = Stages.Vector[i];
@@ -135,15 +135,15 @@ MapStage* MapStageList::FindByName(StringClass* key)
 // FUNCTION: GAMEMD 0x5CF760
 // The same search against each stage's title rather than its name. The only
 // difference in retail is the `ADD ECX,4` that steps to the second string.
-MapStage* MapStageList::FindByTitle(StringClass* key)
+MapStage* MapStageList::FindByTitle(Obj_007B4620* key)
 {
     if (key->At(0) != 0) {
         for (int i = 0; i < Stages.Count; ++i) {
-            StringClass wanted(*key);
-            wanted.MakeLower();
+            Obj_007B4620 wanted(*key);
+            wanted.FUN_007B5B30();
 
-            StringClass candidate(Stages.Vector[i]->Title);
-            candidate.MakeLower();
+            Obj_007B4620 candidate(Stages.Vector[i]->Title);
+            candidate.FUN_007B5B30();
 
             if (wanted == candidate) {
                 MapStage* hit = Stages.Vector[i];
@@ -187,19 +187,19 @@ int MapStageList::AddStage(MapStage* stage)
 // the two stage searches this one lower-cases the stored line first and the
 // caller's key second, which is the order retail's two constructor calls run
 // in.
-StringClass* MapStageList::FindTitle(StringClass* key)
+Obj_007B4620* MapStageList::FindTitle(Obj_007B4620* key)
 {
     if (SessionExists()) {
         int i;
 
     for (i = 0; i < Titles.Count; ++i) {
-            StringClass* line = Titles.Vector[i];
+            Obj_007B4620* line = Titles.Vector[i];
 
-            StringClass stored(*line);
-            stored.MakeLower();
+            Obj_007B4620 stored(*line);
+            stored.FUN_007B5B30();
 
-            StringClass wanted(*key);
-            wanted.MakeLower();
+            Obj_007B4620 wanted(*key);
+            wanted.FUN_007B5B30();
 
             if (stored == wanted) {
                 wanted.Destruct();

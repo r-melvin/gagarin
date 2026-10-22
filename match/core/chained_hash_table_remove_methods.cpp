@@ -34,7 +34,7 @@ struct ChainedHashTable
 {
     struct Node
     {
-        Key   NodeKey;     // +0x00
+        Key   unknown_00;     // +0x00
         Value NodeValue;   // +0x04
         Node* Next;        // +0x04 + sizeof(Value)
     };
@@ -63,7 +63,7 @@ struct ChainedHashTable
         Node** slot = old;
         for (int i = oldCount; i > 0; i--) {
             for (Node* node = *slot; node; ) {
-                unsigned index = ((1 << Bits) - 1) & Hash(node->NodeKey);
+                unsigned index = ((1 << Bits) - 1) & Hash(node->unknown_00);
                 Node* head = Buckets[index];
                 Buckets[index] = node;
                 Node* next = node->Next;
@@ -90,7 +90,7 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
         return false;
     }
 
-    if (prev->NodeKey == key) {
+    if (prev->unknown_00 == key) {
         *value = prev->NodeValue;
         Node* node = Buckets[index];
         Node* next = node->Next;
@@ -105,7 +105,7 @@ bool ChainedHashTable<Key, Value>::Remove(const Key& key, Value* value)
 
     bool found = false;
     for (Node* node = prev->Next; node; node = node->Next) {
-        if (node->NodeKey == key) {
+        if (node->unknown_00 == key) {
             *value = node->NodeValue;
             prev->Next = node->Next;
             Count--;

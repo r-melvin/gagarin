@@ -140,7 +140,7 @@ ListNode* ListNode::FUN_00407470() const
 // FUNCTION: GAMEMD 0x407520
 // Pop the head block. The returned pointer skips the eight-byte link header, so
 // the caller sees the payload; an empty list yields null.
-void* FreeListHead::FUN_00407520()
+void* Obj_00407520::FUN_00407520()
 {
     ListNode* node = First;
 

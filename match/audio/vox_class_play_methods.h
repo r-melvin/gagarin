@@ -22,7 +22,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../core/intrusive_list_methods.h"   // ListNode / FreeListHead / FUN_00407420
+#include "../core/intrusive_list_methods.h"   // ListNode / Obj_00407520 / FUN_00407420
 
 struct CoordStruct
 {
@@ -68,7 +68,7 @@ GG_STATIC_ASSERT(offsetof(VoxPlayNode, At_30) == 0x30);
 void __fastcall FUN_004072D0(ListNode* node);
 
 // GLOBAL: GAMEMD 0xB1D3A4 -- pool of free VoxPlayNode blocks (pointer global).
-extern FreeListHead* DAT_00B1D3A4;
+extern Obj_00407520* DAT_00B1D3A4;
 // GLOBAL: GAMEMD 0xB1D320 -- anchor of the live positional-voice list.
 extern ListNode DAT_00B1D320;
 // GLOBAL: GAMEMD 0xB1D3A8 -- live positional-voice count.

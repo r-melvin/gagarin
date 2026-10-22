@@ -48,7 +48,7 @@ long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
             IUnk* bad = Held;
 
             if (bad) {
-                COM_RELEASE(bad);
+                COM_SLOT_08(bad);
             }
 
             Held = 0;
@@ -60,7 +60,7 @@ long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
         IUnk* got  = (IUnk*)pv;
 
         if (prev) {
-            COM_RELEASE(prev);
+            COM_SLOT_08(prev);
         }
 
         Held = got;
@@ -72,7 +72,7 @@ long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
 
     if (old) {
         Held = 0;
-        COM_RELEASE(old);
+        COM_SLOT_08(old);
     }
 
     hr = 0x80004002;
@@ -97,7 +97,7 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
             IUnk* bad = Held;
 
             if (bad) {
-                COM_RELEASE(bad);
+                COM_SLOT_08(bad);
             }
 
             Held = 0;
@@ -109,7 +109,7 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
         IUnk* got  = (IUnk*)pv;
 
         if (prev) {
-            COM_RELEASE(prev);
+            COM_SLOT_08(prev);
         }
 
         Held = got;
@@ -121,7 +121,7 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
 
     if (old) {
         Held = 0;
-        COM_RELEASE(old);
+        COM_SLOT_08(old);
     }
 
     hr = 0x80004002;

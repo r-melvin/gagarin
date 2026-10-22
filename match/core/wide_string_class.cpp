@@ -12,7 +12,7 @@
 // source is measured (one extra for the terminator, or a bare one when there
 // is no source), a fresh block of that many wide characters is allocated, the
 // terminator is written straight away and the source, if any, is copied in.
-WideStringClass::WideStringClass(const wchar_t* src)
+Obj_007B66D0::Obj_007B66D0(const wchar_t* src)
 {
     Buffer = 0;
     Store(src);
@@ -22,7 +22,7 @@ WideStringClass::WideStringClass(const wchar_t* src)
 //
 // Copy-construct: null the slot, then, when the other instance holds a
 // buffer, allocate room for its characters plus the terminator and copy them.
-WideStringClass::WideStringClass(const WideStringClass& other)
+Obj_007B66D0::Obj_007B66D0(const Obj_007B66D0& other)
 {
     Buffer = 0;
     if (other.Buffer != 0) {
@@ -35,7 +35,7 @@ WideStringClass::WideStringClass(const WideStringClass& other)
 //
 // Compare with a raw wide string: two nulls are equal, one null is not, and
 // otherwise the CRT comparison decides.
-bool WideStringClass::FUN_007B6780(const wchar_t* text) const
+bool Obj_007B66D0::FUN_007B6780(const wchar_t* text) const
 {
     if (Buffer == 0 && text == 0) {
         return true;
@@ -50,7 +50,7 @@ bool WideStringClass::FUN_007B6780(const wchar_t* text) const
 //
 // Assign a raw wide string. The old buffer is released and the slot nulled,
 // then the same allocate-measure-copy body the constructor uses runs again.
-WideStringClass& WideStringClass::operator=(const wchar_t* src)
+Obj_007B66D0& Obj_007B66D0::operator=(const wchar_t* src)
 {
     Release();
     Store(src);
@@ -63,7 +63,7 @@ WideStringClass& WideStringClass::operator=(const wchar_t* src)
 // null buffers compare equal, and two live buffers go through wcscmp -- so the
 // release and reallocation only happen when the contents actually differ. A
 // null source buffer is substituted with the shared empty string.
-WideStringClass& WideStringClass::operator=(const WideStringClass& other)
+Obj_007B66D0& Obj_007B66D0::operator=(const Obj_007B66D0& other)
 {
     if (Buffer == 0 && other.Buffer == 0) {
         return *this;
@@ -84,7 +84,7 @@ WideStringClass& WideStringClass::operator=(const WideStringClass& other)
 // does nothing. The append reallocates: it measures both halves, takes a new
 // block, seeds it with the old contents (or just a terminator), concatenates
 // and frees the old block.
-bool WideStringClass::Concat(const wchar_t* src)
+bool Obj_007B66D0::Concat(const wchar_t* src)
 {
     if (src == 0) {
         return true;
@@ -96,7 +96,7 @@ bool WideStringClass::Concat(const wchar_t* src)
 // FUNCTION: GAMEMD 0x7B6AE0
 //
 // The operator form of the same append, returning the string itself.
-WideStringClass& WideStringClass::operator+=(const wchar_t* src)
+Obj_007B66D0& Obj_007B66D0::operator+=(const wchar_t* src)
 {
     if (src != 0) {
         Append(src);
@@ -110,7 +110,7 @@ WideStringClass& WideStringClass::operator+=(const wchar_t* src)
 // substitution first, and the raw append's own null guard is then emitted
 // against that already-substituted pointer -- the second test retail shows is
 // the inlined guard, not a second source-level check.
-WideStringClass& WideStringClass::operator+=(const WideStringClass& other)
+Obj_007B66D0& Obj_007B66D0::operator+=(const Obj_007B66D0& other)
 {
     const wchar_t* src = other.Peek();
     if (src != 0) {
@@ -127,7 +127,7 @@ WideStringClass& WideStringClass::operator+=(const WideStringClass& other)
 // after clipping fails. The removal itself is done by terminating the string
 // at the cut, copying the head into a fresh block and concatenating the tail
 // that begins just past the run.
-short WideStringClass::Erase(int pos, int count)
+short Obj_007B66D0::Erase(int pos, int count)
 {
     int len = (int)wcslen(Buffer);
     if (pos + count > len) {
@@ -154,7 +154,7 @@ short WideStringClass::Erase(int pos, int count)
 // FUNCTION: GAMEMD 0x7B6EC0
 //
 // Strip spaces and then tabs through the single-character remover 0x7B6E20.
-void WideStringClass::FUN_007B6EC0()
+void Obj_007B66D0::FUN_007B6EC0()
 {
     FUN_007B6E20(' ');
     FUN_007B6E20('\t');
@@ -164,7 +164,7 @@ void WideStringClass::FUN_007B6EC0()
 //
 // Discard the contents and reserve a zeroed block of `count` wide characters.
 // A negative count leaves the string released and empty.
-void WideStringClass::Resize(int count)
+void Obj_007B66D0::Resize(int count)
 {
     Release();
     if (count >= 0) {
@@ -177,7 +177,7 @@ void WideStringClass::Resize(int count)
 // FUNCTION: GAMEMD 0x7B7110
 //
 // The character at `index`, or 0 past the end.
-wchar_t WideStringClass::FUN_007B7110(unsigned int index) const
+wchar_t Obj_007B66D0::FUN_007B7110(unsigned int index) const
 {
     if (index < wcslen(Buffer)) {
         return Buffer[index];
@@ -188,7 +188,7 @@ wchar_t WideStringClass::FUN_007B7110(unsigned int index) const
 // FUNCTION: GAMEMD 0x7B7180
 //
 // A second copy of 0x7B7110.
-wchar_t WideStringClass::FUN_007B7180(unsigned int index) const
+wchar_t Obj_007B66D0::FUN_007B7180(unsigned int index) const
 {
     if (index < wcslen(Buffer)) {
         return Buffer[index];
@@ -200,7 +200,7 @@ wchar_t WideStringClass::FUN_007B7180(unsigned int index) const
 //
 // Replace the contents with a raw wide string, reporting success. Same body as
 // the assignment operator with a constant result in place of the object.
-short WideStringClass::Set(const wchar_t* src)
+short Obj_007B66D0::Set(const wchar_t* src)
 {
     Release();
     Store(src);
@@ -210,7 +210,7 @@ short WideStringClass::Set(const wchar_t* src)
 // FUNCTION: GAMEMD 0x7B7660
 //
 // Store `ch` at `index` if it lies inside the string.
-bool WideStringClass::FUN_007B7660(wchar_t ch, unsigned int index)
+bool Obj_007B66D0::FUN_007B7660(wchar_t ch, unsigned int index)
 {
     if (index >= wcslen(Buffer)) {
         return false;
@@ -225,7 +225,7 @@ bool WideStringClass::FUN_007B7660(wchar_t ch, unsigned int index)
 // terminated at `count`. The block is one wide character larger than the run,
 // the terminator is written before the copy so a null source leaves an empty
 // string, and the bounded copy is wcsncpy rather than wcscpy.
-short WideStringClass::Set(int count, const wchar_t* src)
+short Obj_007B66D0::Set(int count, const wchar_t* src)
 {
     Release();
     Buffer = (wchar_t*)::operator new(count * 2 + 2);
@@ -242,7 +242,7 @@ short WideStringClass::Set(int count, const wchar_t* src)
 // Lower-case the string in place. Only the plain ASCII upper-case range is
 // touched; the length is re-measured on every iteration, so the loop is the
 // un-rotated form retail shows.
-void WideStringClass::MakeLower()
+void Obj_007B66D0::FUN_007B76F0()
 {
     for (unsigned int i = 0; i < Length(); ++i) {
         wchar_t ch = Buffer[i];
@@ -259,7 +259,7 @@ void WideStringClass::MakeLower()
 // place over that block through a walking cursor, the caller's object takes a
 // second copy and the working block is freed. The result object is returned,
 // which is how the caller's out-parameter reaches EAX.
-WideStringClass* WideStringClass::AsLower(WideStringClass* out) const
+Obj_007B66D0* Obj_007B66D0::AsLower(Obj_007B66D0* out) const
 {
     wchar_t* work = 0;
     if (Buffer != 0) {
@@ -287,9 +287,9 @@ WideStringClass* WideStringClass::AsLower(WideStringClass* out) const
 
 // FUNCTION: GAMEMD 0x7B77E0
 //
-// Upper-case the string in place, the mirror of MakeLower over the ASCII
+// Upper-case the string in place, the mirror of FUN_007B76F0 over the ASCII
 // lower-case range.
-void WideStringClass::MakeUpper()
+void Obj_007B66D0::FUN_007B77E0()
 {
     for (unsigned int i = 0; i < Length(); ++i) {
         wchar_t ch = Buffer[i];
@@ -302,7 +302,7 @@ void WideStringClass::MakeUpper()
 // FUNCTION: GAMEMD 0x7B7830
 //
 // The upper-casing mirror of AsLower over the ASCII lower-case range.
-WideStringClass* WideStringClass::AsUpper(WideStringClass* out) const
+Obj_007B66D0* Obj_007B66D0::AsUpper(Obj_007B66D0* out) const
 {
     wchar_t* work = 0;
     if (Buffer != 0) {
