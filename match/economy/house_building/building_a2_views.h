@@ -1567,22 +1567,22 @@ extern unsigned char DAT_00822CF2;
 // STRING: GAMEMD 0x819030 - the EVA speech name.
 extern const char s_EVA_StructureSold_00819030[];
 // FUNCTION: GAMEMD 0x752700 (read-only here) - the string in ECX, two further arguments (EDX and the stack).
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x750D40 (read-only here) - stops/plays the sound of an audio controller at a position.
-void __fastcall FUN_00750D40(HBCoord* where, struct BA2AudioCtl* audio);
+void FUN_00750D40(HBCoord* where, struct BA2AudioCtl* audio);
 // FUNCTION: GAMEMD 0x4060F0 (read-only here) - clears a five-dword block.
-void __fastcall FUN_004060F0(struct BA2Block5* block, int a, int b);
+void FUN_004060F0(struct BA2Block5* block, int a, int b);
 // GLOBAL: GAMEMD 0xA8E7AC, 0x89C848 (a zero coordinate)
 extern int DAT_00A8E7AC;
 extern HBCoord DAT_0089C848;
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here) - the square root
 double __cdecl FUN_004CAC40(double a);
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position (the sound id in ECX).
-void __fastcall FUN_007509E0(int sound, HBCoord* where, void* unused);
+void FUN_007509E0(int sound, HBCoord* where, void* unused);
 // FUNCTION: GAMEMD 0x750E20 (read-only here) - plays a sound at a position (the sound id in ECX).
-void __fastcall FUN_00750E20(int sound, HBCoord* where, int unused);
+void FUN_00750E20(int sound, HBCoord* where, int unused);
 // FUNCTION: GAMEMD 0x49F420 (read-only here) - the scattered coordinate near a point (result buffer in ECX, point in EDX).
-HBCoord* __fastcall FUN_0049F420(HBCoord* out, HBCoord* from, int distance, int flag);
+HBCoord* FUN_0049F420(HBCoord* out, HBCoord* from, int distance, int flag);
 
 
 

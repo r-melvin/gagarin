@@ -95,7 +95,7 @@ extern wchar_t DAT_00AC029C[512];
 
 // FUNCTION: GAMEMD 0x623F60 (decl; reloc) -- __fastcall: read list item
 // `index` of the list box into the string.
-void __fastcall FUN_00623F60(HWND window, int index, Obj_007B66D0* out);
+void FUN_00623F60(HWND window, int index, Obj_007B66D0* out);
 
 // STRING: GAMEMD 0x831774
 extern const wchar_t DAT_00831774[];
@@ -123,30 +123,30 @@ extern MultiplayerGameMode* DAT_00A8B23C;
 
 // FUNCTION: GAMEMD 0x775700 (decl; reloc) -- __fastcall: create the dialog
 // with template `id` under the parent, with the given procedure.
-HWND __fastcall FUN_00775700(void* context, int id, HWND parent, void* proc, int param);
+HWND FUN_00775700(void* context, int id, HWND parent, void* proc, int param);
 
 // FUNCTION: GAMEMD 0x622820 (decl; reloc) -- __fastcall: set the dialog up.
-void __fastcall FUN_00622820(HWND dialog, int id);
+void FUN_00622820(HWND dialog, int id);
 
 // FUNCTION: GAMEMD 0x60B350 (decl; reloc) -- __fastcall: mark the control.
-void __fastcall FUN_0060B350(HWND control);
+void FUN_0060B350(HWND control);
 
 // FUNCTION: GAMEMD 0x7759E0 (decl; reloc) -- __fastcall: run the dialog.
-int __fastcall FUN_007759E0(HWND dialog, void* callback, int a, char b, char c);
+int FUN_007759E0(HWND dialog, void* callback, int a, char b, char c);
 
 // FUNCTION: GAMEMD 0x621E90 (decl; reloc) -- __fastcall on the window.
-void __fastcall FUN_00621E90(HWND window);
+void FUN_00621E90(HWND window);
 
 // FUNCTION: GAMEMD 0x607FD0 (decl; reloc) -- __fastcall on the window.
-void __fastcall FUN_00607FD0(HWND window);
+void FUN_00607FD0(HWND window);
 
 // FUNCTION: GAMEMD 0x6213A0 (decl; reloc) -- __fastcall on the owner-draw
 // item the message carries.
-void __fastcall FUN_006213A0(void* item);
+void FUN_006213A0(void* item);
 
 // FUNCTION: GAMEMD 0x7757E0 (decl; reloc) -- __fastcall: end the dialog with
 // the command id.
-void __fastcall FUN_007757E0(HWND dialog, int id);
+void FUN_007757E0(HWND dialog, int id);
 
 // FUNCTION: GAMEMD 0x5D5E10 (decl; reloc) -- no arguments; reached as a tail jump.
 void __cdecl FUN_005D5E10();
@@ -205,7 +205,7 @@ struct Obj_00A8E960
 extern Obj_00A8E960 DAT_00A8E960;
 
 // FUNCTION: GAMEMD 0x52FEC0 (decl; reloc) -- __fastcall (null, flag).
-void __fastcall FUN_0052FEC0(void* unused, unsigned char flag);
+void FUN_0052FEC0(void* unused, unsigned char flag);
 
 // FUNCTION: GAMEMD 0x72D120 (decl; reloc) -- no arguments.
 void __cdecl FUN_0072D120();
@@ -215,13 +215,13 @@ void __cdecl FUN_0072D170();
 
 // FUNCTION: GAMEMD 0x775700 (decl; reloc) -- __fastcall: create the dialog with
 // template `id` under the parent, with the given procedure.
-HWND __fastcall FUN_00775700(void* context, int id, HWND parent, void* proc, int param);
+HWND FUN_00775700(void* context, int id, HWND parent, void* proc, int param);
 
 // FUNCTION: GAMEMD 0x622820 (decl; reloc) -- __fastcall: set the dialog up.
-void __fastcall FUN_00622820(HWND dialog, int id);
+void FUN_00622820(HWND dialog, int id);
 
 // FUNCTION: GAMEMD 0x7759E0 (decl; reloc) -- __fastcall: run the dialog.
-int __fastcall FUN_007759E0(HWND dialog, void* callback, int a, char b, char c);
+int FUN_007759E0(HWND dialog, void* callback, int a, char b, char c);
 
 // FUNCTION: GAMEMD 0x5E6920 (decl; reloc) -- the lobby dialog procedure.
 int __stdcall FUN_005E6920(HWND window, UINT message, WPARAM wparam, LPARAM lparam);
@@ -333,10 +333,10 @@ extern long DAT_00AC11B8;
 extern unsigned char DAT_00AC11BC;
 
 // FUNCTION: GAMEMD 0x77E430 (decl; reloc) -- __fastcall: fill the options string (link form).
-void __fastcall FUN_0077E430(char* buffer);
+void FUN_0077E430(char* buffer);
 
 // FUNCTION: GAMEMD 0x5DBB60 (decl; reloc) -- __fastcall: fill the options string (local form).
-void __fastcall FUN_005DBB60(char* buffer);
+void FUN_005DBB60(char* buffer);
 
 // The change detector of 0x5E32D0, inlined with its arguments into 0x5EC290.
 static __forceinline void Publish_Options_Inline(char force, char poll)
@@ -446,10 +446,10 @@ extern int DAT_00AC10C8;
 extern PCX DAT_00AC4848;
 
 // FUNCTION: GAMEMD 0x603D30 (decl; reloc) -- __fastcall: put a surface on a control.
-void __fastcall FUN_00603D30(HWND control, void* surface);
+void FUN_00603D30(HWND control, void* surface);
 
 // FUNCTION: GAMEMD 0x775940 (decl; reloc) -- __fastcall: the open dialog with a template id, or null.
-HWND __fastcall FUN_00775940(int id);
+HWND FUN_00775940(int id);
 
 // ---- from the former netshare_slot_controls_005e9950.cpp ----
 //   Bytes matched against the user's retail gamemd.exe v1.001, 0x5E9950..0x5EA0CF
@@ -489,37 +489,37 @@ extern char PlayerHumanLabel[];
 
 // FUNCTION: GAMEMD 0x4E4170 (decl; reloc) -- __fastcall: the start-position
 // control's value (dialog, control id, default), RET 4.
-int __fastcall FUN_004E4170(HWND dialog, int control, int fallback);
+int FUN_004E4170(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x4E3830 (decl; reloc) -- __fastcall: the slot a start-position control belongs to.
-int __fastcall FUN_004E3830(int control);
+int FUN_004E3830(int control);
 
 // FUNCTION: GAMEMD 0x775940 (decl; reloc) -- __fastcall: the open dialog with a template id, or null.
-HWND __fastcall FUN_00775940(int id);
+HWND FUN_00775940(int id);
 
 // FUNCTION: GAMEMD 0x4E4E20 (decl; reloc) -- __fastcall: the house control's value, RET 4.
-int __fastcall FUN_004E4E20(HWND dialog, int control, int fallback);
+int FUN_004E4E20(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x4E4230 (decl; reloc) -- __fastcall: the slot a house control belongs to.
-int __fastcall FUN_004E4230(int control);
+int FUN_004E4230(int control);
 
 // FUNCTION: GAMEMD 0x4E4C20 (decl; reloc) -- __fastcall (dialog, control).
-void __fastcall FUN_004E4C20(HWND dialog, int control);
+void FUN_004E4C20(HWND dialog, int control);
 
 // FUNCTION: GAMEMD 0x4E5900 (decl; reloc) -- __fastcall: the colour control's value, RET 4.
-int __fastcall FUN_004E5900(HWND dialog, int control, int fallback);
+int FUN_004E5900(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x4E4EC0 (decl; reloc) -- __fastcall: the slot a colour control belongs to.
-int __fastcall FUN_004E4EC0(int control);
+int FUN_004E4EC0(int control);
 
 // FUNCTION: GAMEMD 0x4E5700 (decl; reloc) -- __fastcall (dialog, control).
-void __fastcall FUN_004E5700(HWND dialog, int control);
+void FUN_004E5700(HWND dialog, int control);
 
 // FUNCTION: GAMEMD 0x4E6030 (decl; reloc) -- __fastcall: the team control's value, RET 4.
-int __fastcall FUN_004E6030(HWND dialog, int control, int fallback);
+int FUN_004E6030(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x4E59A0 (decl; reloc) -- __fastcall: the slot a team control belongs to.
-int __fastcall FUN_004E59A0(int control);
+int FUN_004E59A0(int control);
 
 // ---- from the former netshare_slot_enable_005e9e70.cpp ----
 //   Bytes matched against the user's retail gamemd.exe v1.001, 0x5E9E70..0x5EA3DF
@@ -547,16 +547,16 @@ extern int DAT_00A8B2BC[8];
 
 // FUNCTION: GAMEMD 0x5EC9F0 (decl; reloc) -- __fastcall: refresh one slot's kind
 // control from a node (dialog, control, node, flag), RET 8.
-void __fastcall FUN_005EC9F0(HWND dialog, int control, NodeNameType* node, int flag);
+void FUN_005EC9F0(HWND dialog, int control, NodeNameType* node, int flag);
 
 // FUNCTION: GAMEMD 0x5EB7B0 (decl; reloc) -- __fastcall (dialog, first, count), RET 4.
-void __fastcall FUN_005EB7B0(HWND dialog, int first, int count);
+void FUN_005EB7B0(HWND dialog, int first, int count);
 
 // FUNCTION: GAMEMD 0x5DAFD0 (decl; reloc) -- no arguments.
 void __cdecl FUN_005DAFD0();
 
 // FUNCTION: GAMEMD 0x603D30 (decl; reloc) -- __fastcall: put a surface on a control.
-void __fastcall FUN_00603D30(HWND control, void* surface);
+void FUN_00603D30(HWND control, void* surface);
 
 // The status-picture control of slot `index` (0x6D2 + index), -1 outside 0..7.
 static __forceinline int Slot_Picture_Control(int index)
@@ -603,11 +603,11 @@ wchar_t* __cdecl wcscat(wchar_t* dst, const wchar_t* src);
 
 // FUNCTION: GAMEMD 0x5EDEF0 (decl; reloc) -- the slot-kind token of a node,
 // returned through the hidden first argument (netshare_slot_names_005edef0.cpp).
-Obj_007B4620* __fastcall FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node);
+Obj_007B4620* FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node);
 
 // FUNCTION: GAMEMD 0x7B7ED0 (decl; reloc) -- the wide copy of a narrow string,
 // returned through the hidden first argument.
-Obj_007B66D0 __fastcall FUN_007B7ED0(const Obj_007B4620* narrow);
+Obj_007B66D0 FUN_007B7ED0(const Obj_007B4620* narrow);
 
 // STRING: GAMEMD 0x8304FC -- L","
 extern const wchar_t DAT_008304FC[];
@@ -621,31 +621,31 @@ extern const wchar_t DAT_008304FC[];
 
 // FUNCTION: GAMEMD 0x5EC9F0 (decl; reloc) -- __fastcall: refresh one slot's
 // kind control from a node (dialog, control, node, flag), RET 8.
-void __fastcall FUN_005EC9F0(HWND dialog, int control, NodeNameType* node, int flag);
+void FUN_005EC9F0(HWND dialog, int control, NodeNameType* node, int flag);
 
 // FUNCTION: GAMEMD 0x5EE200 (decl; reloc) -- __fastcall on a lobby dialog.
-void __fastcall FUN_005EE200(HWND dialog);
+void FUN_005EE200(HWND dialog);
 
 // FUNCTION: GAMEMD 0x775940 (decl; reloc) -- __fastcall: the open dialog with a template id, or null.
-HWND __fastcall FUN_00775940(int id);
+HWND FUN_00775940(int id);
 
 // FUNCTION: GAMEMD 0x623EA0 (decl; reloc) -- __fastcall: read a control's text into a string.
-int __fastcall FUN_00623EA0(HWND control, Obj_007B66D0* out);
+int FUN_00623EA0(HWND control, Obj_007B66D0* out);
 
 // FUNCTION: GAMEMD 0x4E5700 (decl; reloc) -- __fastcall (dialog, control).
-void __fastcall FUN_004E5700(HWND dialog, int control);
+void FUN_004E5700(HWND dialog, int control);
 
 // FUNCTION: GAMEMD 0x4E5900 (decl; reloc) -- __fastcall: the colour control's value, RET 4.
-int __fastcall FUN_004E5900(HWND dialog, int control, int fallback);
+int FUN_004E5900(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x5EB7B0 (decl; reloc) -- __fastcall (dialog, first, count), RET 4.
-void __fastcall FUN_005EB7B0(HWND dialog, int first, int count);
+void FUN_005EB7B0(HWND dialog, int first, int count);
 
 // FUNCTION: GAMEMD 0x5EBA00 (decl; reloc) -- __fastcall on the lobby dialog.
-void __fastcall FUN_005EBA00(HWND dialog);
+void FUN_005EBA00(HWND dialog);
 
 // FUNCTION: GAMEMD 0x5EBC00 (decl; reloc) -- __fastcall (dialog, count).
-void __fastcall FUN_005EBC00(HWND dialog, int count);
+void FUN_005EBC00(HWND dialog, int count);
 
 // FUNCTION: GAMEMD 0x785360 (decl; reloc) -- no arguments.
 void __cdecl FUN_00785360();
@@ -655,10 +655,10 @@ void __cdecl FUN_005DAFD0();
 
 // FUNCTION: GAMEMD 0x4E37D0 / 0x4E41D0 are declared in netshare_win.h.
 // FUNCTION: GAMEMD 0x4E4170 (decl; reloc) -- __fastcall: the start-position control's value, RET 4.
-int __fastcall FUN_004E4170(HWND dialog, int control, int fallback);
+int FUN_004E4170(HWND dialog, int control, int fallback);
 
 // FUNCTION: GAMEMD 0x4E4E20 (decl; reloc) -- __fastcall: the house control's value, RET 4.
-int __fastcall FUN_004E4E20(HWND dialog, int control, int fallback);
+int FUN_004E4E20(HWND dialog, int control, int fallback);
 
 // GLOBAL: GAMEMD 0xA8B250 -- the identifier of the selected game mode (read as an int here;
 // netshare_slot_nodes.h names the same address as a list object).
@@ -743,7 +743,7 @@ extern char* DAT_0083171C;
 // FUNCTION: GAMEMD 0x7B7F90 (decl; reloc) -- __fastcall: build the narrow copy
 // of a wide string in the object the hidden first argument points at (which it
 // also returns).
-Obj_007B4620* __fastcall FUN_007B7F90(Obj_007B4620* out, const Obj_007B66D0* text);
+Obj_007B4620* FUN_007B7F90(Obj_007B4620* out, const Obj_007B66D0* text);
 
 // ---- from the former netshare_slot_queries_005e9580.cpp ----
 //   Bytes matched against the user's retail gamemd.exe v1.001, 0x5E9580..0x5E9950.
@@ -810,7 +810,7 @@ void __cdecl FUN_005E2600()
 //
 // Hash a wide string: seed with its length, then fold each character plus its
 // index in and rotate left by eight.
-unsigned int __fastcall FUN_005E2670(Obj_007B66D0* text)
+unsigned int FUN_005E2670(Obj_007B66D0* text)
 {
     unsigned int hash = text->FUN_007B71B0();
     for (unsigned int i = 0; i < text->FUN_007B71B0(); i++) {
@@ -884,7 +884,7 @@ void __cdecl FUN_005E2790(int param, const wchar_t* format, ...)
 // 0x5E29A0. A piece is cut at an embedded line feed or at the point where the
 // measured width reaches the control's inner width less four, backing up to
 // the last printable character first.
-void __fastcall FUN_005E2820(int param, const wchar_t* text, HWND window)
+void FUN_005E2820(int param, const wchar_t* text, HWND window)
 {
     int margin;
     RECT rect;
@@ -959,7 +959,7 @@ void __fastcall FUN_005E2820(int param, const wchar_t* text, HWND window)
 // once there are more than 500 and scrolling to the end when the list was
 // already showing its last line. The selection state is saved and restored
 // around the add through the 0x49D message.
-void __fastcall FUN_005E29A0(HWND window, const wchar_t* text, int length, int param)
+void FUN_005E29A0(HWND window, const wchar_t* text, int length, int param)
 {
     memset(DAT_00AC029C, 0, sizeof(DAT_00AC029C));
     wcsncpy(DAT_00AC029C, text, length);
@@ -1028,7 +1028,7 @@ void FUN_005E2AC0()
 // FUNCTION: GAMEMD 0x5E2BA0
 //
 // Count the other houses that are human-controlled and still in the game.
-int __fastcall FUN_005E2BA0(HouseClass* self)
+int FUN_005E2BA0(HouseClass* self)
 {
     int count = 0;
     for (int i = 0; i < DAT_00A80238; i++) {
@@ -1046,7 +1046,7 @@ int __fastcall FUN_005E2BA0(HouseClass* self)
 // that are allied with each other in both directions: every house that has no
 // mutual ally counts as a group of its own, and each mutual-ally cluster counts
 // once, at its first member.
-int __fastcall FUN_005E2BE0(HouseClass* self)
+int FUN_005E2BE0(HouseClass* self)
 {
     int groups = 0;
     for (int i = 0; i < DAT_00A80238; i++) {
@@ -1084,7 +1084,7 @@ int __fastcall FUN_005E2BE0(HouseClass* self)
 // Show a message box built from a dialog template: the template depends on the
 // button set (0 = one button, 1 = two, 4 = the second pair) and on the flag, the
 // buttons are made visible, the text goes into item 0x5B0, and the dialog is run.
-int __fastcall FUN_005E2CD0(const wchar_t* text, int buttons, void* callback, bool flag)
+int FUN_005E2CD0(const wchar_t* text, int buttons, void* callback, bool flag)
 {
     if (text != 0 && wcslen(text) != 0) {
         int id;
@@ -1164,7 +1164,7 @@ int __stdcall FUN_005E2E40(HWND window, UINT message, WPARAM wparam, LPARAM lpar
 // FUNCTION: GAMEMD 0x5E2EF0
 //
 // Put a game mode's name into the dialog's name field.
-void __fastcall FUN_005E2EF0(HWND dialog, MultiplayerGameMode* mode)
+void FUN_005E2EF0(HWND dialog, MultiplayerGameMode* mode)
 {
     if (mode != 0) {
         HWND field = GetDlgItem(dialog, 0x6EC);
@@ -1174,7 +1174,7 @@ void __fastcall FUN_005E2EF0(HWND dialog, MultiplayerGameMode* mode)
 
 // FUNCTION: GAMEMD 0x5E2F60
 // Calls other functions.
-void __fastcall FUN_005E2F60(HWND dialog)
+void FUN_005E2F60(HWND dialog)
 {
     HWND c0 = GetDlgItem(dialog, 0x5A8);
     SendMessageA(c0, 0x4B2, 0, (LPARAM)DAT_00A8B322);
@@ -1217,7 +1217,7 @@ void FUN_005E2FA0()
 }
 
 // FUNCTION: GAMEMD 0x5E32D0
-void __fastcall FUN_005E32D0(char force, char poll)
+void FUN_005E32D0(char force, char poll)
 {
     Publish_Options_Inline(force, poll);
 }
@@ -1293,7 +1293,7 @@ int FUN_005E3700(Obj_005E3700* a1, int a2)
 //
 // Broadcast a public game-options string (kind 0x17): through the link when
 // there is one, otherwise as a packet to every remote player.
-void __fastcall FUN_005E3720(const char* text)
+void FUN_005E3720(const char* text)
 {
     if (DAT_00AC116C != 0) {
         char line[0x400];
@@ -1320,7 +1320,7 @@ void __fastcall FUN_005E3720(const char* text)
 //
 // Send a private game-options string (kind 0x18) to the one remote player whose
 // handle matches `name`, or through the link when there is one.
-void __fastcall FUN_005E3850(const char* name, const char* text)
+void FUN_005E3850(const char* name, const char* text)
 {
     if (DAT_00AC116C != 0) {
         NetshareLinkMessage message;
@@ -1350,7 +1350,7 @@ void __fastcall FUN_005E3850(const char* name, const char* text)
 // Record a remote player's map-transfer state (the node's +0x7F) and post the
 // matching lobby chat line: "no map" for 0, "map transfer" for 2. A null handle
 // means the local player; the blank handle forces state 1.
-void __fastcall FUN_005E39C0(const char* handle, int state)
+void FUN_005E39C0(const char* handle, int state)
 {
     if (handle == 0) {
         handle = LocalHandle;
@@ -1417,7 +1417,7 @@ int FUN_005E6470()
 // The player limit for map `index`: the map's own count, capped by the live
 // game mode's slot-38 limit; kind 4 then forces an even count (or two when
 // the first predicate holds and the second does not).
-int __fastcall FUN_005E64C0(int index)
+int FUN_005E64C0(int index)
 {
     if (index == -1) {
         return 8;
@@ -1441,7 +1441,7 @@ int FUN_005E66D0()
 //
 // Open the lobby dialog (template 0x6B) under `parent`, run it, and answer its
 // result.
-int __fastcall FUN_005E68A0(HWND parent)
+int FUN_005E68A0(HWND parent)
 {
     FUN_0052FEC0(0, 1);
     FUN_0072D120();
@@ -1476,7 +1476,7 @@ void FUN_005E7460()
 // Is the node sitting at `index` in the player vector still unnamed? The
 // blank name at 0xA8D610 is the "not filled in yet" sentinel, and the node
 // pointer is its own name because Name is the first member.
-int __fastcall Node_Is_Blank_At(int index)
+int Node_Is_Blank_At(int index)
 {
     return wcscmp(PlayerNodes.Vector[index]->Name, BlankName) == 0;
 }
@@ -1485,7 +1485,7 @@ int __fastcall Node_Is_Blank_At(int index)
 //
 // The same question about the local player's own handle, which is stored
 // ANSI and widened for the comparison.
-int __fastcall Local_Handle_Is_Blank()
+int Local_Handle_Is_Blank()
 {
     wchar_t* handle = Widen_00735120(LocalHandle);
     return wcscmp(handle, BlankName) == 0;
@@ -1494,7 +1494,7 @@ int __fastcall Local_Handle_Is_Blank()
 // FUNCTION: GAMEMD 0x5E8780
 //
 // Does an arbitrary wide name belong to the local player?
-int __fastcall Name_Is_Local_Handle(const wchar_t* name)
+int Name_Is_Local_Handle(const wchar_t* name)
 {
     return wcscmp(name, Widen_00735120(LocalHandle)) == 0;
 }
@@ -1507,7 +1507,7 @@ int __fastcall Name_Is_Local_Handle(const wchar_t* name)
 // built" guard. Each node is then allocated and given its caption as its
 // name, so a slot's caption and a player's name are the same kind of string
 // everywhere else in this file.
-void __fastcall Build_Slot_Nodes()
+void Build_Slot_Nodes()
 {
     if (DAT_00AC117C == 0) {
         DAT_00AC117C = Fetch_String_00734E60(OpenLabel, 0, NetshareFileName, 4078);
@@ -1553,7 +1553,7 @@ void __fastcall Build_Slot_Nodes()
 //
 // Tear the lobby down: release each of the seven singleton slot nodes, then
 // hand the player vector to its own clear-and-delete helper.
-void __fastcall Destroy_Slot_Nodes()
+void Destroy_Slot_Nodes()
 {
     if (OpenNode != 0) {
         delete OpenNode;
@@ -1590,7 +1590,7 @@ void __fastcall Destroy_Slot_Nodes()
 //
 // Put every slot back to its starting state: the playable ones show Open and
 // the rest show Closed.
-void __fastcall Reset_Slots()
+void Reset_Slots()
 {
     int playable = Playable_Slot_Count();
 
@@ -1605,7 +1605,7 @@ void __fastcall Reset_Slots()
 // FUNCTION: GAMEMD 0x5E8B40
 //
 // Drop the four lobby redraw flags together.
-void __fastcall Clear_Lobby_Flags()
+void Clear_Lobby_Flags()
 {
     DirtyFlagA = false;
     DirtyFlagB = false;
@@ -1617,7 +1617,7 @@ void __fastcall Clear_Lobby_Flags()
 //
 // The full lobby reset: the slot reset above, then forget which slot the
 // local player picked, empty the lobby list and zero the two counters.
-void __fastcall Reset_Lobby()
+void Reset_Lobby()
 {
     int playable = Playable_Slot_Count();
 
@@ -1639,7 +1639,7 @@ void __fastcall Reset_Lobby()
 // Resolve a wide name to a node: the seven singletons first, in the order
 // they were created, then the real players. Case sensitive, unlike the slot
 // lookup below.
-NodeNameType* __fastcall Find_Node_By_Name(const wchar_t* name)
+NodeNameType* Find_Node_By_Name(const wchar_t* name)
 {
     if (wcscmp(OpenNode->Name, name) == 0) {
         return OpenNode;
@@ -1677,7 +1677,7 @@ NodeNameType* __fastcall Find_Node_By_Name(const wchar_t* name)
 //
 // Which slot currently shows this name? Case insensitive; empty slots are
 // skipped rather than compared.
-int __fastcall Find_Slot_By_Name(const wchar_t* name)
+int Find_Slot_By_Name(const wchar_t* name)
 {
     return Slot_Showing_Name(name);
 }
@@ -1686,7 +1686,7 @@ int __fastcall Find_Slot_By_Name(const wchar_t* name)
 //
 // The same search for the local player, who is always the vector's first
 // entry. With no players at all there is nothing to find.
-int __fastcall Find_Local_Player_Slot()
+int Find_Local_Player_Slot()
 {
     if (PlayerNodes.Count == 0) {
         return -1;
@@ -1698,7 +1698,7 @@ int __fastcall Find_Local_Player_Slot()
 // FUNCTION: GAMEMD 0x5E8D90
 //
 // Seat a node in a slot.
-void __fastcall Set_Slot_Node(int index, NodeNameType* node)
+void Set_Slot_Node(int index, NodeNameType* node)
 {
     Slots[index] = node;
 }
@@ -1706,7 +1706,7 @@ void __fastcall Set_Slot_Node(int index, NodeNameType* node)
 // FUNCTION: GAMEMD 0x5E8DA0
 //
 // Move the local player into a slot and remember the choice.
-void __fastcall Select_Slot(int index)
+void Select_Slot(int index)
 {
     SelectedSlotIndex = index;
     Slots[index] = PlayerNodes.Vector[0];
@@ -1716,7 +1716,7 @@ void __fastcall Select_Slot(int index)
 //
 // Write each slot as a wide string followed by a comma: a real player by name,
 // anything else (empty, closed, AI, waiting, observer) by its slot-kind token.
-void __fastcall FUN_005E8DC0(wchar_t* out)
+void FUN_005E8DC0(wchar_t* out)
 {
     *out = 0;
     for (int i = 0; i < 8; i++) {
@@ -1742,7 +1742,7 @@ void __fastcall FUN_005E8DC0(wchar_t* out)
 // Find a home for a node and take it. An observer, marked by -1 in the house
 // field, wants an observer slot; anyone else wants an open one. Answers the
 // slot index, or -1 when the lobby is full.
-int __fastcall Assign_Node_To_Slot(NodeNameType* node)
+int Assign_Node_To_Slot(NodeNameType* node)
 {
     for (int i = 0; i < 8; i++) {
         NodeNameType* seated = Slots[i];
@@ -1760,7 +1760,7 @@ int __fastcall Assign_Node_To_Slot(NodeNameType* node)
 // Give back the slot held by a node with this network address. An observer's
 // slot goes back to Observer; everyone else's goes back to Open if it is still
 // playable and Closed if it is not.
-void __fastcall Release_Slot_By_Address(const IPXAddressClass* address)
+void Release_Slot_By_Address(const IPXAddressClass* address)
 {
     int playable = Releasable_Slot_Count();
 
@@ -1782,7 +1782,7 @@ void __fastcall Release_Slot_By_Address(const IPXAddressClass* address)
 //
 // The same release keyed on an ANSI handle rather than an address. The node's
 // wide name is narrowed for the comparison, and empty slots are skipped.
-void __fastcall Release_Slot_By_Handle(const char* handle)
+void Release_Slot_By_Handle(const char* handle)
 {
     int playable = Releasable_Slot_Count();
 
@@ -1804,7 +1804,7 @@ void __fastcall Release_Slot_By_Handle(const char* handle)
 //
 // Is this a real human player rather than one of the seven singletons? Not in
 // the Ghidra function list; found by the pad sweep.
-int __fastcall Is_Player_Node(NodeNameType* node)
+int Is_Player_Node(NodeNameType* node)
 {
     if (node == 0 || node == OpenNode || node == ClosedNode ||
         node == WaitingNode || node == ObserverNode || node == EasyAINode ||
@@ -1817,7 +1817,7 @@ int __fastcall Is_Player_Node(NodeNameType* node)
 // FUNCTION: GAMEMD 0x5E9440
 //
 // Is this one of the three AI singletons?
-int __fastcall Is_AI_Node(NodeNameType* node)
+int Is_AI_Node(NodeNameType* node)
 {
     if (node != 0 &&
         (node == EasyAINode || node == MediumAINode || node == HardAINode)) {
@@ -1830,7 +1830,7 @@ int __fastcall Is_AI_Node(NodeNameType* node)
 //
 // Does something actually occupy this slot? Open, Closed, Observer and
 // Waiting all mean no; the AI singletons and real players mean yes.
-int __fastcall Is_Occupied_Node(NodeNameType* node)
+int Is_Occupied_Node(NodeNameType* node)
 {
     if (node == 0 || node == OpenNode || node == ClosedNode ||
         node == ObserverNode || node == WaitingNode) {
@@ -1843,7 +1843,7 @@ int __fastcall Is_Occupied_Node(NodeNameType* node)
 //
 // The difficulty an AI singleton stands for, counting down from Easy, and -1
 // for anything that is not an AI. Not in the Ghidra function list; found by the pad sweep.
-int __fastcall AI_Difficulty_Of(NodeNameType* node)
+int AI_Difficulty_Of(NodeNameType* node)
 {
     int difficulty = -1;
     if (node == EasyAINode) {
@@ -1859,7 +1859,7 @@ int __fastcall AI_Difficulty_Of(NodeNameType* node)
 // FUNCTION: GAMEMD 0x5E94D0
 //
 // How many slots the AI holds.
-int __fastcall Count_AI_Slots()
+int Count_AI_Slots()
 {
     int count = 0;
     for (int i = 0; i < 8; i++) {
@@ -1876,7 +1876,7 @@ int __fastcall Count_AI_Slots()
 //
 // Is the lobby full? Only the slots inside the smaller of the map's and the
 // session's player limits count, plus the one extra slot when it is available.
-bool __fastcall No_Open_Slot()
+bool No_Open_Slot()
 {
     // Only the ternary min reaches retail's register pair here: the two
     // if-spellings both hold the limit in the other register and carry the
@@ -1899,7 +1899,7 @@ bool __fastcall No_Open_Slot()
 // FUNCTION: GAMEMD 0x5E9560
 //
 // Is there nowhere left to observe from?
-bool __fastcall No_Observer_Slot()
+bool No_Observer_Slot()
 {
     for (int i = 0; i < 8; i++) {
         if (Slots[i] == ObserverNode) {
@@ -1944,13 +1944,13 @@ bool FUN_005E95E0()
 }
 
 // FUNCTION: GAMEMD 0x5E96A0
-bool __fastcall FUN_005E96A0(int choice)
+bool FUN_005E96A0(int choice)
 {
     return House_Choice_In_Use(choice);
 }
 
 // FUNCTION: GAMEMD 0x5E9720
-bool __fastcall FUN_005E9720(int choice)
+bool FUN_005E9720(int choice)
 {
     return Colour_Choice_In_Use(choice);
 }
@@ -1958,7 +1958,7 @@ bool __fastcall FUN_005E9720(int choice)
 // FUNCTION: GAMEMD 0x5E97A0
 //
 // A singleton node's kind number, 2..7; anything else answers 2.
-int __fastcall FUN_005E97A0(NodeNameType* node)
+int FUN_005E97A0(NodeNameType* node)
 {
     if (node == OpenNode) {
         return 2;
@@ -1981,7 +1981,7 @@ int __fastcall FUN_005E97A0(NodeNameType* node)
 // FUNCTION: GAMEMD 0x5E9800
 //
 // The inverse: the singleton node for a kind number 2..7, or null.
-NodeNameType* __fastcall FUN_005E9800(int kind)
+NodeNameType* FUN_005E9800(int kind)
 {
     if (kind == 2) {
         return OpenNode;
@@ -2032,7 +2032,7 @@ void FUN_005E9850()
 // FUNCTION: GAMEMD 0x5E98F0
 //
 // The control id of slot `index` (0x411 + index), or -1 outside 0..7.
-int __fastcall FUN_005E98F0(int index)
+int FUN_005E98F0(int index)
 {
     if (index == 0) {
         return 0x411;
@@ -2061,7 +2061,7 @@ int __fastcall FUN_005E98F0(int index)
 // FUNCTION: GAMEMD 0x5E9950
 //
 // The inverse of 0x5E98F0: slot index of a slot control id, or -1.
-int __fastcall FUN_005E9950(int control)
+int FUN_005E9950(int control)
 {
     if (control == 0x411) {
         return 0;
@@ -2091,7 +2091,7 @@ int __fastcall FUN_005E9950(int control)
 //
 // The caption for a slot node: the six singletons name themselves, and any
 // other node is a human player.
-wchar_t* __fastcall FUN_005E99C0(NodeNameType* node)
+wchar_t* FUN_005E99C0(NodeNameType* node)
 {
     if (node == OpenNode) {
         return Fetch_String_00734E60(PlayerOpenLabel, 0, NetshareFileName, 0x1354);
@@ -2118,7 +2118,7 @@ wchar_t* __fastcall FUN_005E99C0(NodeNameType* node)
 //
 // Select the combo-box entry whose item data is `data`, with the control hidden
 // while it changes.
-void __fastcall FUN_005E9AA0(HWND dialog, int control, int data)
+void FUN_005E9AA0(HWND dialog, int control, int data)
 {
     HWND item = GetDlgItem(dialog, control);
     ShowWindow(item, SW_HIDE);
@@ -2135,7 +2135,7 @@ void __fastcall FUN_005E9AA0(HWND dialog, int control, int data)
 // FUNCTION: GAMEMD 0x5E9B20
 //
 // The item data of a combo-box entry (the current one when `index` is -1); CB_ERR reads as 0.
-int __fastcall FUN_005E9B20(HWND dialog, int control, int index)
+int FUN_005E9B20(HWND dialog, int control, int index)
 {
     if (index == -1) {
         index = (int)SendDlgItemMessageA(dialog, control, CB_GETCURSEL, 0, 0);
@@ -2149,7 +2149,7 @@ int __fastcall FUN_005E9B20(HWND dialog, int control, int index)
 // Read a slot's start-position control back: for the local player's slot into
 // the session and the player node, for an AI slot into the start table, and for
 // any other slot clear its choices.
-void __fastcall FUN_005E9B60(HWND dialog, int control)
+void FUN_005E9B60(HWND dialog, int control)
 {
     int value = FUN_004E4170(dialog, control, -1);
     int slot = FUN_004E3830(control);
@@ -2175,7 +2175,7 @@ void __fastcall FUN_005E9B60(HWND dialog, int control)
 // Read a slot's house control back. For the local player's slot the choice is
 // first checked against every other holder and becomes -2 when taken, then
 // goes to the session and the player node.
-void __fastcall FUN_005E9C00(HWND dialog, int control)
+void FUN_005E9C00(HWND dialog, int control)
 {
     int value = FUN_004E4E20(dialog, control, -1);
     int slot = FUN_004E4230(control);
@@ -2196,7 +2196,7 @@ void __fastcall FUN_005E9C00(HWND dialog, int control)
 // FUNCTION: GAMEMD 0x5E9CE0
 //
 // The same for the colour control, against the colour table.
-void __fastcall FUN_005E9CE0(HWND dialog, int control)
+void FUN_005E9CE0(HWND dialog, int control)
 {
     int value = FUN_004E5900(dialog, control, -1);
     int slot = FUN_004E4EC0(control);
@@ -2216,7 +2216,7 @@ void __fastcall FUN_005E9CE0(HWND dialog, int control)
 // FUNCTION: GAMEMD 0x5E9DB0
 //
 // Read a slot's team control back.
-void __fastcall FUN_005E9DB0(HWND dialog, int control)
+void FUN_005E9DB0(HWND dialog, int control)
 {
     int value = FUN_004E6030(dialog, control, -1);
     int slot = FUN_004E59A0(control);
@@ -2233,7 +2233,7 @@ void __fastcall FUN_005E9DB0(HWND dialog, int control)
 // FUNCTION: GAMEMD 0x5E9E00
 //
 // Read all eight team controls back.
-void __fastcall FUN_005E9E00(HWND dialog)
+void FUN_005E9E00(HWND dialog)
 {
     int i = 0;
     do {
@@ -2258,7 +2258,7 @@ void __fastcall FUN_005E9E00(HWND dialog)
 // a live slot, disabled with its choices reset to -2 otherwise, and all four
 // disabled and hidden (start position -3) for an observer sitting in the extra
 // slot. Which controls are shown depends on how many slots the map allows.
-void __fastcall FUN_005E9E70(HWND dialog, int slot, unsigned char enable)
+void FUN_005E9E70(HWND dialog, int slot, unsigned char enable)
 {
     int startControl = FUN_004E37D0(slot);
     int houseControl = FUN_004E41D0(slot);
@@ -2326,7 +2326,7 @@ void __fastcall FUN_005E9E70(HWND dialog, int slot, unsigned char enable)
 //
 // Enable every slot's name control and set up all eight slots as disabled,
 // then set the chosen slot up as enabled.
-void __fastcall FUN_005EA0D0(HWND dialog, int chosen)
+void FUN_005EA0D0(HWND dialog, int chosen)
 {
     for (int i = 0; i < 8; i++) {
         HWND item = GetDlgItem(dialog, Slot_Control_Id(i));
@@ -2340,7 +2340,7 @@ void __fastcall FUN_005EA0D0(HWND dialog, int chosen)
 //
 // The same pass with the name controls disabled, and the chosen slot's name
 // control enabled at the end.
-void __fastcall FUN_005EA180(HWND dialog, int chosen)
+void FUN_005EA180(HWND dialog, int chosen)
 {
     for (int i = 0; i < 8; i++) {
         HWND item = GetDlgItem(dialog, Slot_Control_Id(i));
@@ -2357,7 +2357,7 @@ void __fastcall FUN_005EA180(HWND dialog, int chosen)
 // Show each slot's status picture: the host picture for a named player whose
 // name is the blank one, the accepted picture for an AI or a ready human, and
 // none otherwise.
-void __fastcall FUN_005EA2A0(HWND dialog)
+void FUN_005EA2A0(HWND dialog)
 {
     for (int i = 0; i < 8; i++) {
         HWND control = GetDlgItem(dialog, Slot_Picture_Control(i));
@@ -2380,7 +2380,7 @@ void __fastcall FUN_005EA2A0(HWND dialog)
 //
 // Turn every slot whose kind control currently shows an AI back into open (below
 // the playable count) or closed, clearing its choices, and answer whether any did.
-unsigned char __fastcall FUN_005EB660(HWND dialog)
+unsigned char FUN_005EB660(HWND dialog)
 {
     unsigned char changed = 0;
     int playable = Playable_Slot_Count();
@@ -2410,7 +2410,7 @@ unsigned char __fastcall FUN_005EB660(HWND dialog)
 // Move the lobby from `from` open slots to `to`, each end clamped by the slot
 // count when its game mode is not (vf_16) or the first predicate holds; growing
 // opens slots, shrinking closes them, and either way the dialog is refreshed.
-void __fastcall FUN_005EBDD0(HWND dialog, int from, int to, MultiplayerGameMode* mode)
+void FUN_005EBDD0(HWND dialog, int from, int to, MultiplayerGameMode* mode)
 {
     if (DAT_00A8B23C != 0 && !DAT_00A8B23C->vf_16() && !Is_005E8AE0_A()) {
         int playable = Playable_Slot_Count();
@@ -2442,7 +2442,7 @@ void __fastcall FUN_005EBDD0(HWND dialog, int from, int to, MultiplayerGameMode*
 // open, closed, waiting or observer is reset to open or closed by the playable
 // count (the extra slot is left alone); any other kind is refreshed as it
 // stands. Then redraw the range and publish the options (forced, unthrottled).
-void __fastcall FUN_005EBEC0(HWND dialog, int first, int count)
+void FUN_005EBEC0(HWND dialog, int first, int count)
 {
     int end = first + count;
     int playable = Playable_Slot_Count();
@@ -2473,7 +2473,7 @@ void __fastcall FUN_005EBEC0(HWND dialog, int first, int count)
 // From slot `first` on, reset every slot to open (below the playable count) or
 // closed, except the extra one, then redraw from `first`, ask the link or the
 // local side to refresh, and publish the options (forced, unthrottled).
-void __fastcall FUN_005EC290(HWND dialog, int first)
+void FUN_005EC290(HWND dialog, int first)
 {
     int playable = Playable_Slot_Count();
     for (int i = first; i < 8; i++) {
@@ -2502,7 +2502,7 @@ void __fastcall FUN_005EC290(HWND dialog, int first)
 // Select the slot-kind entry for kind number 2..7 in a combo box (the item data
 // is the singleton node), with the control hidden while it changes, then refresh
 // the slot.
-void __fastcall FUN_005ED270(HWND dialog, int control, int kind)
+void FUN_005ED270(HWND dialog, int control, int kind)
 {
     NodeNameType* node = Node_For_Kind(kind);
     HWND item = GetDlgItem(dialog, control);
@@ -2532,7 +2532,7 @@ void __fastcall FUN_005ED270(HWND dialog, int control, int kind)
 // first kind) with the start-position and house choices, then the five option
 // values. The stores index the buffer as ints (slot i's triple at element
 // 7 + 3 * i) and the option bytes at +0x14..+0x18.
-void __fastcall FUN_005ED400(HWND dialog, int* snapshot)
+void FUN_005ED400(HWND dialog, int* snapshot)
 {
     snapshot[0] = SelectedMode_00A8B250;
     snapshot[1] = DAT_00A8B254;
@@ -2559,7 +2559,7 @@ void __fastcall FUN_005ED400(HWND dialog, int* snapshot)
 // fits a narrow copy, otherwise cut it at the first character above 0x100 (but
 // never below 0x28), write the cut text back, strip the trailing set and return
 // a copy.
-Obj_007B66D0 __fastcall FUN_005EDD00(HWND edit)
+Obj_007B66D0 FUN_005EDD00(HWND edit)
 {
     Obj_007B66D0 text;
     FUN_00623EA0(edit, &text);
@@ -2595,7 +2595,7 @@ Obj_007B66D0 __fastcall FUN_005EDD00(HWND edit)
 //
 // Enable or disable the four controls of the local player's slot (every slot but
 // the extra one); the team control stays off when the game mode forbids allies.
-void __fastcall FUN_005EDDE0(HWND dialog, unsigned char enable)
+void FUN_005EDDE0(HWND dialog, unsigned char enable)
 {
     if (dialog != 0) {
         int slot = Local_Player_Slot();
@@ -2628,7 +2628,7 @@ void __fastcall FUN_005EDDE0(HWND dialog, unsigned char enable)
 //
 // The token for a slot node: the six singletons name themselves and anything
 // else reads as waiting.
-Obj_007B4620* __fastcall FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node)
+Obj_007B4620* FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node)
 {
     if (node == OpenNode) {
         out->Construct(DAT_00831704);
@@ -2666,7 +2666,7 @@ Obj_007B4620* __fastcall FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node)
 //
 // The singleton node a wide token names, or null (also when the token does not
 // fit a narrow copy).
-NodeNameType* __fastcall FUN_005EDFC0(Obj_007B66D0* token)
+NodeNameType* FUN_005EDFC0(Obj_007B66D0* token)
 {
     if (token->FUN_007B7D90()) {
         Obj_007B4620 narrow;
@@ -2714,7 +2714,7 @@ NodeNameType* __fastcall FUN_005EDFC0(Obj_007B66D0* token)
 // FUNCTION: GAMEMD 0x5EE100
 //
 // Is this one of the seven slot-kind tokens?
-int __fastcall FUN_005EE100(Obj_007B4620* token)
+int FUN_005EE100(Obj_007B4620* token)
 {
     if (token->FUN_007B4710(DAT_00831704) || token->FUN_007B4710(DAT_00831708) ||
         token->FUN_007B4710(DAT_0083170C) || token->FUN_007B4710(DAT_00831710) ||
@@ -2739,7 +2739,7 @@ int __cdecl FUN_005EE190()
 // Redraw the observer-dependent parts of a lobby dialog: the observer check box
 // (0x760), its picture (0x75F), and the join / observe captions of buttons 0x6CD
 // and 0x62D (the second reads "Join Game" in the dialog with template 0x113).
-void __fastcall FUN_005EE200(HWND dialog)
+void FUN_005EE200(HWND dialog)
 {
     if (dialog != 0) {
         HWND item = GetDlgItem(dialog, 0x760);
@@ -2785,7 +2785,7 @@ void __fastcall FUN_005EE200(HWND dialog)
 //
 // Run the 0x5EE200 refresh on the given dialog and on each of the three other
 // lobby dialogs (0x116, 0x113, 0xBB) that is open.
-void __fastcall FUN_005EE350(HWND dialog)
+void FUN_005EE350(HWND dialog)
 {
     if (dialog != 0) {
         FUN_005EE200(dialog);
@@ -2808,7 +2808,7 @@ void __fastcall FUN_005EE350(HWND dialog)
 // FUNCTION: GAMEMD 0x5EE6A0
 //
 // Read every slot's colour control back into its node.
-void __fastcall FUN_005EE6A0(HWND dialog)
+void FUN_005EE6A0(HWND dialog)
 {
     if (dialog != 0) {
         for (int i = 0; i < 8; i++) {

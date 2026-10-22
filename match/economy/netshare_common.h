@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(NetsharePacket, Name) == 0x04 &&
 // GLOBAL: GAMEMD 0xA8B394
 extern int DAT_00A8B394;
 // FUNCTION: GAMEMD 0x5DAC00 (decl; reloc) -- __fastcall: hash of a wide name.
-int __fastcall FUN_005DAC00(const wchar_t* name);
+int FUN_005DAC00(const wchar_t* name);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- the debug log printf; declared
 // with an int result in network/transport/conn_types.h.
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc) -- no arguments.
@@ -130,9 +130,9 @@ extern char HostNoMapLabel[];
 extern char HostMapTransferLabel[];
 
 // FUNCTION: GAMEMD 0x5E32D0
-void __fastcall FUN_005E32D0(char force, char poll);
+void FUN_005E32D0(char force, char poll);
 // FUNCTION: GAMEMD 0x5E3720
-void __fastcall FUN_005E3720(const char* text);
+void FUN_005E3720(const char* text);
 // FUNCTION: GAMEMD 0x5E2700 (HWND-free declaration shared with the window code).
 void __cdecl FUN_005E2700(int param, const wchar_t* format, ...);
 

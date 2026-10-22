@@ -101,7 +101,7 @@ bool BuildingClass::IsTraversable()
     // result is compared to 0x18). A __fastcall fn-pointer passes `this` in ECX
     // with no stack args, reproducing the thiscall sequence exactly under VC6
     // (which lacks a usable explicit __thiscall keyword).
-    typedef int (__fastcall* VtblSlot184Fn)(BuildingClass*);
+    typedef int (* VtblSlot184Fn)(BuildingClass*);
     int kind = (*(VtblSlot184Fn*)(*(char**)this + 0x184))(this);
     if (kind == 0x18 && this->TraverseHelper.Check_4A51B0())
         return true;

@@ -47,7 +47,7 @@ public:
     bool            IsInPlayerControl;        // +0x1ED
 
     // 0x502D30 — first house in the global Array whose Type->ArrayIndex2 matches.
-    static HouseClass* __fastcall FindByCountryIndex(int houseType);
+    static HouseClass* FindByCountryIndex(int houseType);
 
     // 0x50B6F0 — can the human player at this machine control this house?
     bool IsControlledByCurrentPlayer() const;

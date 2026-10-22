@@ -56,7 +56,7 @@ public:
 
 // Per-animation enable helper at 0x425270 — __fastcall with the anim in ECX.
 // Descriptive name; the binary attests no name for this address.
-void __fastcall AnimClass_Enable(AnimClass* anim);
+void AnimClass_Enable(AnimClass* anim);
 
 class BuildingClass
 {

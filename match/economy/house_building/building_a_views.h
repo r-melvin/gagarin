@@ -150,14 +150,14 @@ extern unsigned char DAT_00A8ED6B;
 extern const char s_EVA_Repairing_00818F18[];
 extern const char s_EVA_PrimaryBuildingSelected_00818F28[];
 // FUNCTION: GAMEMD 0x752700 (read-only here) - the string in ECX, two further arguments (EDX and the stack).
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position.
-void __fastcall FUN_007509E0(int sound, HBCoord* where, void* unused);
+void FUN_007509E0(int sound, HBCoord* where, void* unused);
 // FUNCTION: GAMEMD 0x750D40 (read-only here) - stops/plays the sound of an audio controller at a position.
-void __fastcall FUN_00750D40(HBCoord* where, struct BAAudioView* audio);
+void FUN_00750D40(HBCoord* where, struct BAAudioView* audio);
 
 // FUNCTION: GAMEMD 0x6D20E0 (read-only here) - one register argument: __fastcall.
-int __fastcall FUN_006D20E0(int key);
+int FUN_006D20E0(int key);
 // FUNCTION: GAMEMD 0x4CAE30 (read-only here)
 double __cdecl FUN_004CAE30(double a, double b);
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here)
@@ -1278,9 +1278,9 @@ extern class HBIdxView** DAT_00A83CBC;
 // GLOBAL: GAMEMD 0x7E27F8 - double constant
 extern const double DAT_007E27F8;
 // FUNCTION: GAMEMD 0x4CA160 (read-only here) - looks an object up by handle; one register argument: __fastcall.
-class BAProdView* __fastcall FUN_004CA160(int handle);
+class BAProdView* FUN_004CA160(int handle);
 // FUNCTION: GAMEMD 0x4C9FF0 (read-only here) - one register argument: __fastcall.
-void __fastcall FUN_004C9FF0(class BAObjView* factory);
+void FUN_004C9FF0(class BAObjView* factory);
 // GLOBAL: GAMEMD 0x87F770 (pointer) and 0xA8EBF8 / 0xA8EBFC
 extern BAGlobalAView* DAT_0087F770;
 extern int DAT_00A8EBF8;
@@ -1302,7 +1302,7 @@ extern BAVector<BuildingAView*> DAT_008B41E0;
 extern HBCoord DAT_0089C848;
 
 // FUNCTION: GAMEMD 0x772A90 (read-only here) - one register argument: __fastcall.
-unsigned int __fastcall FUN_00772A90(BAObjView* entry);
+unsigned int FUN_00772A90(BAObjView* entry);
 
 // GLOBAL: GAMEMD 0x87F7E8 - the map object (its address is loaded into ECX).
 extern BAMapView DAT_0087F7E8;

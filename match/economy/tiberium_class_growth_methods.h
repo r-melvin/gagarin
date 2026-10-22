@@ -75,7 +75,7 @@ GG_STATIC_ASSERT(sizeof(QueueNode_007235A0) == 0x8);
 
 // FUNCTION: GAMEMD 0x42B1C0 (decl; reloc) — PriorityQueueClassNode
 // surface index of a cell (cell reference in ECX).
-int __fastcall ToSurfaceIndex_007235A0(const Cell_007235A0& cell);
+int ToSurfaceIndex_007235A0(const Cell_007235A0& cell);
 // FUNCTION: GAMEMD 0x42B1F0 (decl; reloc) — PriorityQueueClassNode surface
 // data count.
 int __stdcall SurfaceDataCount_007235A0();

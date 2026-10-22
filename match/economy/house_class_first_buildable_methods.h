@@ -18,7 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x5117D0 (decl; reloc) — HouseTypeClass::FindIndexOfName, name in ECX.
-int __fastcall HouseType_FindIndexOfName_005051E0(const char* name);
+int HouseType_FindIndexOfName_005051E0(const char* name);
 
 // HouseTypeClass — ParentCountry name, ArrayIndex, ArrayIndex2.
 struct HouseType_005051E0

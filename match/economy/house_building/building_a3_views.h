@@ -2302,17 +2302,17 @@ extern const char s_FIRE3_00818E00[];
 // GLOBAL: GAMEMD 0x7E2AC8 - float constant
 extern const float DAT_007E2AC8;
 // FUNCTION: GAMEMD 0x6B59A0 / 0x6B5C90 (read-only here) - ECX/EDX in registers, two more on the stack.
-void __fastcall FUN_006B59A0(const HBCoord& where, int a, int b, char c);
-void __fastcall FUN_006B5C90(const HBCoord& where, int a, int b, char c);
+void FUN_006B59A0(const HBCoord& where, int a, int b, char c);
+void FUN_006B5C90(const HBCoord& where, int a, int b, char c);
 // FUNCTION: GAMEMD 0x49F420 / 0x49F550 (read-only here) - results come back through a hidden pointer in ECX.
-HBCoord* __fastcall FUN_0049F420(HBCoord* out, HBCoord* from, int distance, char flag);
-HBCoord* __fastcall FUN_0049F550(HBCoord* out, HBCoord* from, int distance);
+HBCoord* FUN_0049F420(HBCoord* out, HBCoord* from, int distance, char flag);
+HBCoord* FUN_0049F550(HBCoord* out, HBCoord* from, int distance);
 // FUNCTION: GAMEMD 0x427CB0 (read-only here) - looks an anim type up by name: one register argument.
-int __fastcall FUN_00427CB0(const char* name);
+int FUN_00427CB0(const char* name);
 // FUNCTION: GAMEMD 0x48DED0 (read-only here) - an empty body; the count is in ECX.
-void __fastcall FUN_0048DED0(int count);
+void FUN_0048DED0(int count);
 // FUNCTION: GAMEMD 0x750E20 (read-only here) - ECX/EDX in registers, one more on the stack.
-void __fastcall FUN_00750E20(int a, HBCoord* where, int b);
+void FUN_00750E20(int a, HBCoord* where, int b);
 // GLOBAL: GAMEMD 0x87F7E8 (the map object, its address is loaded into ECX), 0x8871E0 (rules), 0x887324.
 extern BA3MapView DAT_0087F7E8;
 extern BA3RulesView* RulesInstance;
@@ -2326,7 +2326,7 @@ double __cdecl FUN_004CAC40(double a);
 double __cdecl FUN_004CAD80(double a);
 double __cdecl FUN_004CAE30(double a, double b);
 // FUNCTION: GAMEMD 0x48A8D0 (read-only here) - first two arguments in ECX/EDX, the rest on the stack (ret 0x14).
-bool __fastcall FUN_0048A8D0(char flag, int a, int b, int z, double radius, HBDir* out);
+bool FUN_0048A8D0(char flag, int a, int b, int z, double radius, HBDir* out);
 // GLOBAL: GAMEMD 0xA8E7AC / 0xA8ED6B / 0xA8B538 / 0xA8B238 and the index array 0xA83CBC
 extern int DAT_00A8E7AC;
 extern unsigned char DAT_00A8ED6B;
@@ -2346,7 +2346,7 @@ extern const char s_EVA_ChronosphereDetected_00818E78[];
 extern const char s_EVA_PsychicDominatorDetected_00818EB0[];
 extern const char s_EVA_GeneticMutatorDetected_00818E94[];
 // FUNCTION: GAMEMD 0x752700 (read-only here) - the string in ECX, two further arguments (EDX and the stack).
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x65FA70 (read-only here) - ECX carries a small integer, one cell on the stack.
 struct BA3EvaView { bool FUN_0065FA70(HBCell cell); };
 // LIBRARY: GAMEMD intrinsics (/Oi expands them inline)
@@ -2357,7 +2357,7 @@ extern "C" unsigned int __cdecl strlen(const char*);
 // GLOBAL: GAMEMD 0x7E27F8 - double constant
 extern const double DAT_007E27F8;
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position.
-void __fastcall FUN_007509E0(int sound, HBCoord* where, void* unused);
+void FUN_007509E0(int sound, HBCoord* where, void* unused);
 // STRING: GAMEMD 0x81905C / 0x819044 / 0x818F18 - EVA speech names.
 extern const char s_EVA_UnitRepaired_0081905C[];
 extern const char s_EVA_InsufficientFunds_00819044[];
@@ -2381,9 +2381,9 @@ extern const double DAT_007E2818;
 double __cdecl FUN_004CACB0(double a);
 double __cdecl FUN_004CAD00(double a);
 // FUNCTION: GAMEMD 0x46B050 (read-only here) - ECX/EDX in registers, five more on the stack; creates the missile.
-BA3MissileView* __fastcall FUN_0046B050(int a, BA3ObjView* cell, BuildingA3View* owner, int b, int c, int speed, char flag);
+BA3MissileView* FUN_0046B050(int a, BA3ObjView* cell, BuildingA3View* owner, int b, int c, int speed, char flag);
 // FUNCTION: GAMEMD 0x422B20 (read-only here) - looks an anim type up by name: one register argument.
-int __fastcall FUN_00422B20(const char* name);
+int FUN_00422B20(const char* name);
 // STRING: GAMEMD 0x81907C / 0x819070 - "PSIWARN" / "PULSBALL"
 extern const char s_PSIWARN_0081907C[];
 extern const char s_PULSBALL_00819070[];

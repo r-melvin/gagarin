@@ -209,8 +209,8 @@ extern char ObserverLabel[];
 // with the label in ECX and a zero in EDX, then the source file and line as
 // callee-cleaned stack arguments (no `ADD ESP,8` follows any of the seven
 // calls in 0x5E87A0).
-wchar_t* __fastcall Fetch_String_00734E60(const char* label, int flag,
-                                          const char* file, int line);
+wchar_t* Fetch_String_00734E60(const char* label, int flag,
+                               const char* file, int line);
 // FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — CRT wcscpy.
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 
@@ -221,16 +221,16 @@ wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 // function has C++ linkage, and none at all when it has C linkage. That is
 // worth 17.5% against 100%, and `throw()` on the member constructor does not
 // substitute for it.
-void __fastcall Build_Slot_Nodes();
+void Build_Slot_Nodes();
 
 // FUNCTION: GAMEMD 0x5C6120 (decl; reloc) — delete every item of the vector,
 // then its virtual at slot +0xC. Written as a free __fastcall so the trailing
 // call at 0x5E8AD1 stays the tail JMP retail has.
-void __fastcall Clear_Nodes_005C6120(NodeNameVector* vector);
+void Clear_Nodes_005C6120(NodeNameVector* vector);
 // FUNCTION: GAMEMD 0x735120 (decl; reloc) — ANSI to wide, __fastcall.
-wchar_t* __fastcall Widen_00735120(const char* text);
+wchar_t* Widen_00735120(const char* text);
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc) — wide to ANSI, __fastcall.
-char* __fastcall Narrow_007350C0(const wchar_t* text);
+char* Narrow_007350C0(const wchar_t* text);
 // FUNCTION: GAMEMD 0x77D940 (decl; reloc) — session predicate, byte result.
 bool __cdecl Is_005E8AE0_A();
 // FUNCTION: GAMEMD 0x77D970 (decl; reloc) — session predicate, byte result.
@@ -239,27 +239,27 @@ bool __cdecl Is_005E8AE0_B();
 
 // --- the run ---------------------------------------------------------------
 
-int __fastcall Node_Is_Blank_At(int index);
-int __fastcall Local_Handle_Is_Blank();
-int __fastcall Name_Is_Local_Handle(const wchar_t* name);
-void __fastcall Destroy_Slot_Nodes();
-void __fastcall Reset_Slots();
-void __fastcall Clear_Lobby_Flags();
-void __fastcall Reset_Lobby();
-NodeNameType* __fastcall Find_Node_By_Name(const wchar_t* name);
-int __fastcall Find_Slot_By_Name(const wchar_t* name);
-int __fastcall Find_Local_Player_Slot();
-void __fastcall Set_Slot_Node(int index, NodeNameType* node);
-void __fastcall Select_Slot(int index);
-int __fastcall Assign_Node_To_Slot(NodeNameType* node);
-void __fastcall Release_Slot_By_Address(const IPXAddressClass* address);
-void __fastcall Release_Slot_By_Handle(const char* handle);
-int __fastcall Is_Player_Node(NodeNameType* node);
-int __fastcall Is_AI_Node(NodeNameType* node);
-int __fastcall Is_Occupied_Node(NodeNameType* node);
-int __fastcall AI_Difficulty_Of(NodeNameType* node);
-int __fastcall Count_AI_Slots();
-bool __fastcall No_Open_Slot();
-bool __fastcall No_Observer_Slot();
+int Node_Is_Blank_At(int index);
+int Local_Handle_Is_Blank();
+int Name_Is_Local_Handle(const wchar_t* name);
+void Destroy_Slot_Nodes();
+void Reset_Slots();
+void Clear_Lobby_Flags();
+void Reset_Lobby();
+NodeNameType* Find_Node_By_Name(const wchar_t* name);
+int Find_Slot_By_Name(const wchar_t* name);
+int Find_Local_Player_Slot();
+void Set_Slot_Node(int index, NodeNameType* node);
+void Select_Slot(int index);
+int Assign_Node_To_Slot(NodeNameType* node);
+void Release_Slot_By_Address(const IPXAddressClass* address);
+void Release_Slot_By_Handle(const char* handle);
+int Is_Player_Node(NodeNameType* node);
+int Is_AI_Node(NodeNameType* node);
+int Is_Occupied_Node(NodeNameType* node);
+int AI_Difficulty_Of(NodeNameType* node);
+int Count_AI_Slots();
+bool No_Open_Slot();
+bool No_Observer_Slot();
 
 #endif  // GG_MATCH_ECONOMY_NETSHARE_SLOT_NODES_H

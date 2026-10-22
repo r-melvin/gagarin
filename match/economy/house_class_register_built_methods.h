@@ -33,8 +33,8 @@ GG_STATIC_ASSERT(sizeof(Coord_004FB6B0) == 0xC);
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) — VocClass::PlayAt(index, coords,
 // controller). __fastcall: the index in ECX, the coordinate address in EDX.
-void* __fastcall VocClass_PlayAt_004FB6B0(int index, const Coord_004FB6B0& coords,
-                                          void* controller);
+void* VocClass_PlayAt_004FB6B0(int index, const Coord_004FB6B0& coords,
+                               void* controller);
 
 struct RulesClass_004FB6B0
 {

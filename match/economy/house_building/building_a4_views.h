@@ -92,11 +92,11 @@ GG_STATIC_ASSERT(sizeof(BA4Vector<int*>) == 0x18);
 
 // The audio/EVA entry points used by the owner-change body (read-only here).
 // FUNCTION: GAMEMD 0x752700 (read-only here) - the speech name in ECX, two further arguments (EDX and the stack).
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x752480 (read-only here)
-void __fastcall FUN_00752480(int id, int a, int b);
+void FUN_00752480(int id, int a, int b);
 // FUNCTION: GAMEMD 0x65FA70 (read-only here)
-bool __fastcall FUN_0065FA70(int a, HBCell cell);
+bool FUN_0065FA70(int a, HBCell cell);
 extern const char s_EVA_BuildingCaptured_00818FAC[];
 extern const char s_EVA_TechBuildingLost_00818FC4[];
 
@@ -198,7 +198,7 @@ struct BA4Matrix : public BA4MatrixTemp
 };
 GG_STATIC_ASSERT(sizeof(BA4Matrix) == 0x30);
 // FUNCTION: GAMEMD 0x5AF980 (read-only here) - dest in ECX, the second operand in EDX, the first on the stack.
-BA4MatrixTemp* __fastcall FUN_005AF980(BA4MatrixTemp* dest, BA4MatrixTemp* b, BA4MatrixTemp* a);
+BA4MatrixTemp* FUN_005AF980(BA4MatrixTemp* dest, BA4MatrixTemp* b, BA4MatrixTemp* a);
 
 // A voxel-set record of the type (a set pointer and its frame list).
 struct BA4Frames
@@ -1826,7 +1826,7 @@ extern const double DAT_007E4408;
 // FUNCTION: GAMEMD 0x4BBC90 (read-only here) - the pixel-format code of the display.
 int __cdecl FUN_004BBC90();
 // FUNCTION: GAMEMD 0x6D20E0 (read-only here)
-int __fastcall FUN_006D20E0(int key);
+int FUN_006D20E0(int key);
 
 
 

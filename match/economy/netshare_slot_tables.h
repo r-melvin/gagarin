@@ -116,24 +116,24 @@ struct LobbyDialog_005EA920
 extern LobbyDialog_005EA920* LobbyDialog;
 
 // FUNCTION: GAMEMD 0x4E4E60 (decl; reloc) — the colour list's per-index item.
-int __fastcall Colour_Item_004E4E60(int index);
+int Colour_Item_004E4E60(int index);
 // FUNCTION: GAMEMD 0x4E5940 (decl; reloc) — the team list's per-index item.
-int __fastcall Team_Item_004E5940(int index);
+int Team_Item_004E5940(int index);
 // FUNCTION: GAMEMD 0x4E5480 (decl; reloc) — seat one colour entry.
-void __fastcall Set_Colour_Entry_004E5480(void* target, int item, int value);
+void Set_Colour_Entry_004E5480(void* target, int item, int value);
 // FUNCTION: GAMEMD 0x4E5ED0 (decl; reloc) — seat one team entry.
-void __fastcall Set_Team_Entry_004E5ED0(void* target, int item, int value);
+void Set_Team_Entry_004E5ED0(void* target, int item, int value);
 
-int __fastcall Slot_Is_AI_Or_Ready(int index);
-int __fastcall Slot_Start_Position(int index);
-int __fastcall Slot_House(int index);
-int __fastcall Slot_Colour(int index);
-int __fastcall Slot_Team(int index);
-int __fastcall Slot_Control_Id(int index);
-void __fastcall Format_House_List(char* out);
-void __fastcall Format_Colour_List(char* out);
-void __fastcall Format_Team_List(char* out);
-void __fastcall Fill_Colour_List(void* target);
-void __fastcall Fill_Team_List(void* target);
+int Slot_Is_AI_Or_Ready(int index);
+int Slot_Start_Position(int index);
+int Slot_House(int index);
+int Slot_Colour(int index);
+int Slot_Team(int index);
+int Slot_Control_Id(int index);
+void Format_House_List(char* out);
+void Format_Colour_List(char* out);
+void Format_Team_List(char* out);
+void Fill_Colour_List(void* target);
+void Fill_Team_List(void* target);
 
 #endif  // GG_MATCH_ECONOMY_NETSHARE_SLOT_TABLES_H

@@ -20,7 +20,7 @@
 // Is this slot settled? An AI is always settled, and a human is settled once
 // its ready flag reads 1. Retail lets the null slot fall into the flag test,
 // which the short-circuit reproduces exactly.
-int __fastcall Slot_Is_AI_Or_Ready(int index)
+int Slot_Is_AI_Or_Ready(int index)
 {
     SlotNode* node = SlotChoices.Slots[index];
 
@@ -38,7 +38,7 @@ int __fastcall Slot_Is_AI_Or_Ready(int index)
 // The slot's start position. Inside a live lobby of the two session kinds that
 // place starts by hand, the dialog answers first and the slot only overrides
 // it; outside one the answer starts at -2.
-int __fastcall Slot_Start_Position(int index)
+int Slot_Start_Position(int index)
 {
     int position = -2;
     SlotNode* node = SlotChoices.Slots[index];
@@ -67,7 +67,7 @@ int __fastcall Slot_Start_Position(int index)
 //
 // The house this slot plays. An AI plays whatever the house table says; the
 // four non-playing singletons play nothing; a real player is asked.
-int __fastcall Slot_House(int index)
+int Slot_House(int index)
 {
     SlotNode* node = SlotChoices.Slots[index];
     if (node != 0 &&
@@ -93,7 +93,7 @@ int __fastcall Slot_House(int index)
 // FUNCTION: GAMEMD 0x5EAA10
 //
 // The same reader against the colour table.
-int __fastcall Slot_Colour(int index)
+int Slot_Colour(int index)
 {
     SlotNode* node = SlotChoices.Slots[index];
     if (node != 0 &&
@@ -119,7 +119,7 @@ int __fastcall Slot_Colour(int index)
 // FUNCTION: GAMEMD 0x5EAA70
 //
 // The same reader against the team table.
-int __fastcall Slot_Team(int index)
+int Slot_Team(int index)
 {
     SlotNode* node = SlotChoices.Slots[index];
     if (node != 0 &&
@@ -147,7 +147,7 @@ int __fastcall Slot_Team(int index)
 // The dialog control that draws a given slot: eight consecutive ids, and -1
 // for anything off the end. cl folds the last two arms into the
 // NEG/SBB/AND/ADD idiom retail has, so they are ordinary arms in the chain.
-int __fastcall Slot_Control_Id(int index)
+int Slot_Control_Id(int index)
 {
     if (index == 0) {
         return 0x6D2;
@@ -181,7 +181,7 @@ int __fastcall Slot_Control_Id(int index)
 // Every slot's house as one comma-terminated decimal list, for the lobby
 // packet. The four-byte scratch buffer is retail's own: the frame carries
 // exactly one dword between the return address and the saved registers.
-void __fastcall Format_House_List(char* out)
+void Format_House_List(char* out)
 {
     out[0] = '\0';
     for (int i = 0; i < 8; i++) {
@@ -212,7 +212,7 @@ void __fastcall Format_House_List(char* out)
 // FUNCTION: GAMEMD 0x5EAC00
 //
 // The same list for the colour table.
-void __fastcall Format_Colour_List(char* out)
+void Format_Colour_List(char* out)
 {
     out[0] = '\0';
     for (int i = 0; i < 8; i++) {
@@ -243,7 +243,7 @@ void __fastcall Format_Colour_List(char* out)
 // FUNCTION: GAMEMD 0x5EACD0
 //
 // The same list for the team table.
-void __fastcall Format_Team_List(char* out)
+void Format_Team_List(char* out)
 {
     out[0] = '\0';
     for (int i = 0; i < 8; i++) {
@@ -274,7 +274,7 @@ void __fastcall Format_Team_List(char* out)
 // FUNCTION: GAMEMD 0x5EADA0
 //
 // Push every slot's colour into the lobby's colour list control.
-void __fastcall Fill_Colour_List(void* target)
+void Fill_Colour_List(void* target)
 {
     for (int i = 0; i < 8; i++) {
         int item = Colour_Item_004E4E60(i);
@@ -303,7 +303,7 @@ void __fastcall Fill_Colour_List(void* target)
 // FUNCTION: GAMEMD 0x5EAE40
 //
 // The same for the team list control.
-void __fastcall Fill_Team_List(void* target)
+void Fill_Team_List(void* target)
 {
     for (int i = 0; i < 8; i++) {
         int item = Team_Item_004E5940(i);

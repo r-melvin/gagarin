@@ -26,7 +26,7 @@ public:
     int  ArrayIndex2;           // +0x00B8  second copy of the array index (ArrayIndex is +0xB4, returned by slot 16 0x512730); returned on a hit
 
     // GAMEMD 0x5117D0 — ECX carries the name, so this is __fastcall.
-    static int __fastcall FindIndexOfName(const char* name);
+    static int FindIndexOfName(const char* name);
 };
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 

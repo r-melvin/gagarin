@@ -89,7 +89,7 @@ extern HBSwizzleView TypesSwizzle;
 
 // FUNCTION: GAMEMD 0x7258D0 (read-only here) - announces that a pointer is going away. __fastcall: the
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone).
-void __fastcall TypesAnnouncePointerExpired(void* object, bool removed);
+void TypesAnnouncePointerExpired(void* object, bool removed);
 
 // TypeList<T> (match/_layout/techno_type_class.h: DynamicVectorClass plus one trailing dword, 0x1C).
 // The retail ctor expansion is `VectorClass(0, 0)` out of line, then the CapacityIncrement / Count
@@ -211,10 +211,10 @@ extern const char TypesEmptyText[];
 class InfantryTypeClass;
 class UnitTypeClass;
 class AircraftTypeClass;
-InfantryTypeClass* __fastcall TypesFindInfantryType(const char* name);
+InfantryTypeClass* TypesFindInfantryType(const char* name);
 // FUNCTION: GAMEMD 0x7480D0 (read-only here)
-UnitTypeClass* __fastcall TypesFindUnitType(const char* name);
+UnitTypeClass* TypesFindUnitType(const char* name);
 // FUNCTION: GAMEMD 0x41CEF0 (read-only here)
-AircraftTypeClass* __fastcall TypesFindAircraftType(const char* name);
+AircraftTypeClass* TypesFindAircraftType(const char* name);
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_BUILDING_TYPES_SHARED_H

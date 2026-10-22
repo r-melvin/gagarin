@@ -119,7 +119,7 @@ GG_STATIC_ASSERT(offsetof(FactoryVtbl_00509140, At_20) == 0x20);
 
 // FUNCTION: GAMEMD 0x6ABCD0 (decl; reloc) — map the (rtti, build category,
 // naval) triple to a sidebar tab. __fastcall: rtti in ECX, category in EDX.
-unsigned int __fastcall FUN_006ABCD0(int rtti, int buildCat, bool isNaval);
+unsigned int FUN_006ABCD0(int rtti, int buildCat, bool isNaval);
 
 struct Map_00509140
 {

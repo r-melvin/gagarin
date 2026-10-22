@@ -1676,7 +1676,7 @@ GG_STATIC_ASSERT(sizeof(BuildingBView) == 0x720);
 
 
 // FUNCTION: GAMEMD 0x456980 (read-only here; __fastcall, flags in cl/dl)
-void __fastcall BuildingBFunc_456980(char a, char b, HBCoord at, BuildingBColor color, float intensity, char c, char d);
+void BuildingBFunc_456980(char a, char b, HBCoord at, BuildingBColor color, float intensity, char c, char d);
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here; cdecl, double argument)
 double __cdecl BuildingBFunc_4CAC40(double value);

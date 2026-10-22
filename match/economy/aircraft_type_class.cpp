@@ -41,7 +41,7 @@ extern CCINIClass DAT_00887180;
 extern const char DAT_00889F64[];
 
 // FUNCTION: GAMEMD 0x428B80 (decl; reloc) -- __fastcall, the anim type for a name.
-AnimTypeClass* __fastcall FUN_00428B80(const char* name);
+AnimTypeClass* FUN_00428B80(const char* name);
 
 // The append to AircraftTypeClass::Array, in the free-function shape of the inlined
 // DynamicVectorClass::AddItem (as TagPtrVector_AddItem in tag_class_destroy_methods.h).

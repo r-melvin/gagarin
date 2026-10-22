@@ -26,7 +26,7 @@ class TechnoClass;
 
 // WhatAmI() at primary-vtable slot +0x2C — zero-argument, so the tree's
 // __fastcall-fn-pointer idiom is the right tool.
-typedef int (__fastcall* WhatAmIFunc)(TechnoClass*);
+typedef int (* WhatAmIFunc)(TechnoClass*);
 #define TECHNO_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x2c))(o))
 
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.

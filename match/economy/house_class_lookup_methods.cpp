@@ -46,7 +46,7 @@ extern int SessionGameMode;
 // Return the first house in the global Array whose country type-index
 // (Type->ArrayIndex2) equals `houseType`, or NULL if none.
 // ---------------------------------------------------------------------------
-HouseClass* __fastcall HouseClass::FindByCountryIndex(int houseType)
+HouseClass* HouseClass::FindByCountryIndex(int houseType)
 {
     for (int i = 0; i < HouseArray.Count; ++i) {
         HouseClass* pHouse = HouseArray.Items[i];

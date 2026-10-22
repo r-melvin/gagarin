@@ -154,10 +154,10 @@ extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir
 // STRING: GAMEMD 0x81834C ".SHP"
 extern const char TypesShpExtension[];
 // FUNCTION: GAMEMD 0x5F96B0 (read-only here) - stamps the theater letter into a file name. __fastcall.
-void __fastcall TypesStampTheater(char* name, int theaterIndex);
+void TypesStampTheater(char* name, int theaterIndex);
 // FUNCTION: GAMEMD 0x5F9710 (read-only here) - stamps the generic theater letter ('G') into a file name.
 // __fastcall (the name in ECX).
-void __fastcall TypesStampGenericTheater(char* name);
+void TypesStampGenericTheater(char* name);
 
 // The file object the demand loaders open (CCFileClass-shaped, read-only here; sizeof 0x6C, from the
 // frame layout of 0x45F040 and the constructor 0x4739F0). Three levels of destructor are visible in
@@ -208,12 +208,12 @@ GG_STATIC_ASSERT(sizeof(TypesFileView) == 0x6C);
 // GLOBAL: GAMEMD 0x887180 - the art INI reader (same interface as the rules reader).
 extern TypesIniView TypesArtIni;
 // FUNCTION: GAMEMD 0x7514D0 (read-only here) - looks up a sound by name, -1 when unknown. __fastcall.
-int __fastcall TypesFindVoc(const char* name);
+int TypesFindVoc(const char* name);
 // FUNCTION: GAMEMD 0x5FEC70 (read-only here) - looks up an overlay type by name. __fastcall.
-void* __fastcall TypesFindOverlay(const char* name);
+void* TypesFindOverlay(const char* name);
 // FUNCTION: GAMEMD 0x466000 (read-only here) - finds or allocates a building type by name in an array.
 // __fastcall (name in ECX, array in EDX).
-void* __fastcall TypesFindBuildingType(const char* name, void* array);
+void* TypesFindBuildingType(const char* name, void* array);
 // FUNCTION: GAMEMD 0x7E14B0 (import) - user32 wsprintfA.
 extern "C" __declspec(dllimport) int __cdecl wsprintfA(char* buffer, const char* format, ...);
 

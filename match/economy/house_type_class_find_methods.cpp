@@ -17,7 +17,7 @@
 // do: `name` is dereferenced by the first compare and only null-checked
 // afterwards, and the argument order flips between the sentinel compare
 // (name first) and the array compares (the candidate's string first).
-int __fastcall HouseTypeClass::FindIndexOfName(const char* name)
+int HouseTypeClass::FindIndexOfName(const char* name)
 {
     if (_stricmp(name, "<random>") == 0)
         return -2;
