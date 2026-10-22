@@ -104,6 +104,8 @@ public:
 
     // ---- scored entry points, ascending by retail address ----------------
     WideStringClass(const wchar_t* src);                       // 0x7B66D0
+    WideStringClass(const WideStringClass& other);             // 0x7B6720
+    bool FUN_007B6780(const wchar_t* text) const;              // 0x7B6780
     WideStringClass& operator=(const wchar_t* src);            // 0x7B6880
     WideStringClass& operator=(const WideStringClass& other);  // 0x7B68E0
     bool Concat(const wchar_t* src);                           // 0x7B6970
@@ -115,7 +117,10 @@ public:
     bool FUN_007B6E20(wchar_t ch);
     void FUN_007B6EC0();                                       // 0x7B6EC0
     void Resize(int count);                                    // 0x7B7060
+    wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
+    wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180
     short Set(const wchar_t* src);                             // 0x7B7600
+    bool FUN_007B7660(wchar_t ch, unsigned int index);         // 0x7B7660
     short Set(int count, const wchar_t* src);                  // 0x7B7690
     void MakeLower();                                          // 0x7B76F0
     WideStringClass* AsLower(WideStringClass* out) const;      // 0x7B7740

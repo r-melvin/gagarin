@@ -67,14 +67,8 @@ int TechnoClass_00707000::GetAmmo() const { return this->Ammo; }
 // Global function
 // ============================================================================
 
-// FUNCTION: GAMEMD 0x0070D180
-// This function sets a global byte. The actual calling convention appears to
-// use a register (CL), which doesn't match standard __cdecl conventions.
-// Dropping this function due to calling convention mismatch.
-// void technoSetGlobalFlag(char value)
-// {
-//     *(char*)0x00843108 = value;
-// }
+// 0x0070D180 (stores its CL argument into the byte at 0x843108) is defined,
+// as a __fastcall free function, in unowned_leaf_sweep_c.cpp.
 
 // ============================================================================
 // SelectableClass_006D0000

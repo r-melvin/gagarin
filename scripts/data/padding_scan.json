@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "c1f6de0205c15264b57e55491e4c9c64d30a84fa36ea30ba3b56aefed922ad62",
+  "manifest_sha256": "ec75868d416aa2f0acfac81cf0df294de70147fe7a0702e09ed46e2000f68a8c",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 6298,
-  "matched_entries_missed": 523,
+  "matched_entries": 6399,
+  "matched_entries_missed": 531,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -6014,6 +6014,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x4F4C20",
+   "tu": "match/core/unowned_leaf_sweep_a.cpp",
+   "name": "Obj_004F4C20::Obj_004F4C20",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x4F9750",
    "tu": "match/economy/house_class_misc_methods.cpp",
    "name": "GetWeedStoragePercentage",
@@ -6035,6 +6041,12 @@
    "addr": "0x50D9F0",
    "tu": "match/economy/house_class_accessor_methods.cpp",
    "name": "GetUnitSelfHealStep",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x50DA00",
+   "tu": "match/core/member_setter_family_methods.cpp",
+   "name": "Setter_00487C70::FUN_0050DA00",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6413,6 +6425,18 @@
    "addr": "0x53DCD0",
    "tu": "match/core/vector_ionblastclass_methods.cpp",
    "name": "DynamicVectorClass<IonBlastClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x53EC90",
+   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "name": "FUN_0053EC90",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x53ECB0",
+   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "name": "Obj_0053ECB0::Obj_0053ECB0",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -7070,6 +7094,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x696F20",
+   "tu": "match/core/unowned_leaf_sweep_b.cpp",
+   "name": "Obj_00696F10::FUN_00696F20",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x69CF70",
    "tu": "match/core/vector_multimission_slot_methods.cpp",
    "name": "DynamicVectorClass<MultiMission *>::FindItemIndex",
@@ -7664,6 +7694,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x6EF5F0",
+   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "name": "Obj_006EF5F0::FUN_006EF5F0",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x708DC0",
    "tu": "match/core/techno_class_voice_methods.cpp",
    "name": "TechnoClass::VoiceCapture",
@@ -7802,6 +7838,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x74FEF0",
+   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "name": "FUN_0074FEF0",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x751B60",
    "tu": "match/core/vector_vocclass_methods.cpp",
    "name": "DynamicVectorClass<VocClass*>::FindItemIndex",
@@ -7817,6 +7859,12 @@
    "addr": "0x7531A0",
    "tu": "match/audio/vox_class_play_methods.cpp",
    "name": "VoxClass::DeleteAll",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x753510",
+   "tu": "match/core/unowned_leaf_sweep_c.cpp",
+   "name": "FUN_00753510",
    "reason": "no-preceding-CC-or-90"
   },
   {

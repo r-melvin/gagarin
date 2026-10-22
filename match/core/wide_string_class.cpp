@@ -19,6 +19,34 @@ WideStringClass::WideStringClass(const wchar_t* src)
     Store(src);
 }
 
+// FUNCTION: GAMEMD 0x7B6720
+//
+// Copy-construct: null the slot, then, when the other instance holds a
+// buffer, allocate room for its characters plus the terminator and copy them.
+WideStringClass::WideStringClass(const WideStringClass& other)
+{
+    Buffer = 0;
+    if (other.Buffer != 0) {
+        Buffer = (wchar_t*)::operator new(wcslen(other.Buffer) * 2 + 2);
+        wcscpy(Buffer, other.Buffer);
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B6780
+//
+// Compare with a raw wide string: two nulls are equal, one null is not, and
+// otherwise the CRT comparison decides.
+bool WideStringClass::FUN_007B6780(const wchar_t* text) const
+{
+    if (Buffer == 0 && text == 0) {
+        return true;
+    }
+    if (Buffer != 0 && text != 0) {
+        return wcscmp(Buffer, text) == 0;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x7B6880
 //
 // Assign a raw wide string. The old buffer is released and the slot nulled,
@@ -147,6 +175,28 @@ void WideStringClass::Resize(int count)
     }
 }
 
+// FUNCTION: GAMEMD 0x7B7110
+//
+// The character at `index`, or 0 past the end.
+wchar_t WideStringClass::FUN_007B7110(unsigned int index) const
+{
+    if (index < wcslen(Buffer)) {
+        return Buffer[index];
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7B7180
+//
+// A second copy of 0x7B7110.
+wchar_t WideStringClass::FUN_007B7180(unsigned int index) const
+{
+    if (index < wcslen(Buffer)) {
+        return Buffer[index];
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x7B7600
 //
 // Replace the contents with a raw wide string, reporting success. Same body as
@@ -156,6 +206,18 @@ short WideStringClass::Set(const wchar_t* src)
     Release();
     Store(src);
     return 1;
+}
+
+// FUNCTION: GAMEMD 0x7B7660
+//
+// Store `ch` at `index` if it lies inside the string.
+bool WideStringClass::FUN_007B7660(wchar_t ch, unsigned int index)
+{
+    if (index >= wcslen(Buffer)) {
+        return false;
+    }
+    Buffer[index] = ch;
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x7B7690

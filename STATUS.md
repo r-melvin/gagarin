@@ -1,5 +1,41 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,399 matched function
+rows**, **428 partial rows**, **6,827 manifest rows**, **1,273 manifest
+translation units**, and **1,281 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+A claimed-leaf sweep gives manifest rows to functions whose addresses were
+mentioned or declared in tree but never scored: 101 are new exact matches and
+11 are documented partials. The 17 existing bodies of the member-setter and
+position-below-limit families are now scored; the ten setters become real
+`__thiscall` members of Setter_00487C70. Ninety small leaves that other
+translation units only declared get bodies in three new address-ordered sweep
+translation units, and WideStringClass gains five members (its copy
+constructor, 0x7B6780, 0x7B7110, 0x7B7180 and 0x7B7660). The stale
+annotations at 0x4CAD50 and 0x70D180 are re-marked so each address has one
+owner. Every exact row passes raw bytes and strict relocation checks. Across
+all project objects, sections change only by the three new translation units,
+the setter symbols (now members) and the five new WideStringClass bodies.
+
+The 6,399 matches represent 32.4% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **491,319
+bytes**, or 12.9% of 3,797,269 listed function bytes. The padding heuristic
+misses 531 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: mixed leaf batch
+
 As of **2026-10-22**, the verified snapshot reports **6,298 matched function
 rows**, **417 partial rows**, **6,715 manifest rows**, **1,268 manifest
 translation units**, and **1,278 tracked C++ files**. Whole-repository regression
@@ -31,14 +67,6 @@ bytes**, or 12.9% of 3,797,269 listed function bytes. The padding heuristic
 misses 523 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: UI input-controls module
 
