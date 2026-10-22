@@ -39,7 +39,8 @@ static inline Vector3 Divide(const Vector3& a, double d)
 // function. /Op rounds every double-typed intermediate through memory, which
 // is the shape retail sometimes shows, but adding it to this TU's flag line
 // makes the score collapse rather than close: the five float-heavy partials
-// were swept together under `/nologo /c /O2 /DNDEBUG /Gy /GX /Op` and scored
+// were swept together under `/nologo /c /O2 /DNDEBUG /Gy /GX /Op` (the flags
+// then in force, before /Gr and the removal of /GX) and scored
 // GetYRotation 58.3%->8.0%, MatrixApply 72.1%->72.1%, FromAxis 85.9%->3.3%,
 // FromQuaternion 19.8%->1.1% and DistanceFrom3D 92.9%->67.9%. Retail's x87
 // code in this family is *not* /Op code; do not re-test the flag here.

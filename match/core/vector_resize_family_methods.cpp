@@ -11,7 +11,7 @@
 // on success. The capacity-zero branch dispatches Clear; allocation failure
 // returns false. The ownership expression retains the verified short-circuit
 // term so VC6 schedules SETZ and the pointer/capacity stores as retail does.
-// These views remain verified under /O2 /DNDEBUG /Gy /GX.
+// These views remain verified under the default flags (/O2 /Gr /DNDEBUG /Gy, no /GX).
 
 #include "vector_resize_family_methods.h"
 
