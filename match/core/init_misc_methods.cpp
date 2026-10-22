@@ -15,7 +15,7 @@ bool __cdecl FUN_005DA6C0()
     int            first;
     Rec6_005DA6C0  rest;
 
-    if (Manager_00A8E9C0.FUN_00540A80() == 0) {
+    if (Manager_00A8E9C0.Init() == 0) {
         return false;
     }
 

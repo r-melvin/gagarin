@@ -190,7 +190,7 @@ GG_STATIC_ASSERT(offsetof(FlyLocoObject, LocomotorVptr) == 0x04 &&
 // The scenario's random generator; the touchdown spin is drawn from it.
 struct RandomClass_004CFDD0
 {
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — RandomClass::RandomRanged.
+    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
     int RandomRanged(int minval, int maxval);
 };
 

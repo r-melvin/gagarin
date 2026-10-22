@@ -8,11 +8,13 @@
 //   CapacityIncrement and the slot `[EDX+0x8]` (Resize, two pushed
 //   arguments, byte result); the swizzle queue call `PUSH &Items[i]; PUSH
 //   0xB0C110; CALL 0x6CF240`. The element count is read into the dead pStm
-//   parameter slot and each element into the one frame local. YRpp names
-//   the entry point MapClass::Load and 0xB0C110 SwizzleManagerClass
-//   (consult-only, name only); the body is the DynamicVectorClass<T*> load.
-#ifndef GG_MATCH_MAP_MAP_CLASS_LOAD_METHODS_H
-#define GG_MATCH_MAP_MAP_CLASS_LOAD_METHODS_H
+//   parameter slot and each element into the one frame local. The receiver
+//   is a LayerClass: DisplayClass::Load (0x4AE6F0, DisplayClass vtable slot
+//   30) calls this on each layer of the array at 0x8A0360, 0x18 bytes apart.
+//   YRpp names 0xB0C110 SwizzleManagerClass (consult-only, name only); the
+//   body is the DynamicVectorClass<T*> load.
+#ifndef GG_MATCH_MAP_LAYER_CLASS_LOAD_METHODS_H
+#define GG_MATCH_MAP_LAYER_CLASS_LOAD_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -41,8 +43,9 @@ struct Swizzle_00551B90
 // GLOBAL: GAMEMD 0xB0C110
 extern Swizzle_00551B90 DAT_00B0C110;
 
-// DynamicVectorClass<T*>. Slot +0x08 is Resize(newCapacity, array).
-struct PtrVector_00551B90
+// LayerClass, a DynamicVectorClass<ObjectClass*>. Slot +0x08 is
+// Resize(newCapacity, array).
+struct LayerClass
 {
     virtual void vt_000();
     virtual void vt_004();
@@ -76,13 +79,13 @@ struct PtrVector_00551B90
         return false;
     }
 
-    // FUNCTION: GAMEMD 0x551B90 — MapClass::Load (YRpp name).
+    // FUNCTION: GAMEMD 0x551B90 — LayerClass::Load.
     HRESULT Load(IStream_00551B90* pStm);
 };
-GG_STATIC_ASSERT(offsetof(PtrVector_00551B90, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(PtrVector_00551B90, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(PtrVector_00551B90, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(PtrVector_00551B90, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(PtrVector_00551B90, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(offsetof(LayerClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(LayerClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(LayerClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(LayerClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(LayerClass, CapacityIncrement) == 0x14);
 
-#endif  // GG_MATCH_MAP_MAP_CLASS_LOAD_METHODS_H
+#endif  // GG_MATCH_MAP_LAYER_CLASS_LOAD_METHODS_H

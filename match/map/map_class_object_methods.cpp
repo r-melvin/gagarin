@@ -7,6 +7,7 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x551A30  LayerClass::Sort          (__thiscall)
+//   FUNCTION: GAMEMD 0x55BAA0  LogicClass::AddObject     (__thiscall)
 //   FUNCTION: GAMEMD 0x55BAE0  LogicClass::RemoveObject  (__thiscall)
 
 #include "map_class_object_methods.h"
@@ -51,6 +52,25 @@ void LayerClass::Sort()
             ((void**)this->Items)[i] = b;
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x55BAA0  (__thiscall)
+// LogicClass's vtable 0x7E18FC holds this at slot 7, where LayerClass's table
+// has LayerClass::AddObject (0x5519B0). If the object is already in logic,
+// succeed immediately; otherwise add it to the layer and, on success, latch its
+// in-logic flag.
+bool LogicClass::AddObject(ObjectClass* pObject, bool sorted)
+{
+    if (pObject->IsInLogic)
+    {
+        return true;
+    }
+    if (this->LayerClass::AddObject(pObject, sorted))
+    {
+        pObject->IsInLogic = 1;
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x55BAE0  (__thiscall)

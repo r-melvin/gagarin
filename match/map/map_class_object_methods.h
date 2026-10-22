@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm at 0x551A30 /
-//   0x55BAE0). Member offsets and the two indirect vtable dispatches are
+//   0x55BAA0 / 0x55BAE0). Member offsets and the two indirect vtable dispatches are
 //   reconfirmed numerically from the disassembly; signatures cross-checked
 //   against YRpp MapClass.h (consult-only, no LICENSE).
 //
 // LayerClass : DynamicVectorClassLayout   (the per-layer object list)
 // LogicClass : LayerClass                          (the global logic layer)
 //   Sort()         @0x551A30  one bubble pass, ascending by element GetYSort()
+//   AddObject()    @0x55BAA0  LogicClass slot 7: add unless already in logic
 //   RemoveObject() @0x55BAE0  drop pObject from the layer, compacting in place
 #ifndef GG_MATCH_MAP_MAP_CLASS_OBJECT_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_OBJECT_METHODS_H
@@ -28,10 +29,14 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClassLayout, Count) == 0x10);
 struct LayerClass : DynamicVectorClassLayout
 {
     void Sort();
+    // FUNCTION: GAMEMD 0x5519B0 (decl; reloc) — LayerClass::AddObject, called
+    // directly (class-qualified) by LogicClass::AddObject.
+    bool AddObject(ObjectClass* pObject, bool sorted);
 };
 
 struct LogicClass : LayerClass
 {
+    bool AddObject(ObjectClass* pObject, bool sorted);
     void RemoveObject(ObjectClass* pObject);
 };
 

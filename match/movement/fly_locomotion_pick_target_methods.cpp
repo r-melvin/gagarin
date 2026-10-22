@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //   Measured: the two containers are scope objects with destructors, and
-//   under the locked /GX cl registers an unwind frame - five instructions of
+//   under /GX cl registers an unwind frame - five instructions of
 //   `MOV EAX,FS:[0]` prologue - that retail bare `SUB ESP,0x30` rules out.
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The flyer's target pick. Bytes diffed against the user's retail

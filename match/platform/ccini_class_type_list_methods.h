@@ -148,7 +148,8 @@ struct TypeListInt
     // The release the 0x475C70 writer inlines over its by-value parameter.
     // Retail tests the pointer first and the allocation flag second, and
     // seats no vtable, so the store the vector's own release would make is
-    // dead here. The no-throw specification keeps the locked /GX from
+    // dead here. The no-throw specification kept /GX, the tree's earlier flag
+    // set, from
     // wrapping the parameter's release in an unwind funclet retail has no
     // trace of.
     ~TypeListInt() throw()

@@ -1,8 +1,30 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4F4480.
+//   Bytes matched against retail gamemd.exe v1.001 at 0x4F42F0 and 0x4F4480.
 
 #include "gscreen_class_render_methods.h"
+
+// FUNCTION: GAMEMD 0x4F42F0
+//
+// GScreenClass::FlagToRedraw, slot 14 of GScreenClass's vtable 0x7EA6FC and of
+// every derived map layer's. Flag the tactical view for redraw, latch the
+// redraw mode unless a full redraw (2) is already pending, and bump the map's
+// redraw counter.
+void GScreen_004F4480::FlagToRedraw(int mode)
+{
+    if (DAT_00887324)
+    {
+        DAT_00887324->NeedsRedraw = 1;
+    }
+    if (mode != 0)
+    {
+        if (this->RedrawFlag != 2)
+        {
+            this->RedrawFlag = mode;
+        }
+        DAT_0087F7E8.FUN_00578AC0();
+    }
+}
 
 // FUNCTION: GAMEMD 0x4F4480
 //

@@ -82,11 +82,13 @@ void __stdcall FlyLocomotionProcess_004CFD20(ILocomotion_004CFD20* self)
     LocomotionClassProcess_0055A910(self);
 }
 
-// Movement orders go straight to the shared locomotor implementation.
+// FlyLocomotionClass::IsPowered: the locomotor interface's slot 24 (vtable
+// 0x7E8A54), answered by the shared locomotor implementation, which fills the
+// same slot of LocomotionClass's table.
 // FUNCTION: GAMEMD 0x4CFD90
-void __stdcall FlyLocomotionMoveTo_004CFD90(ILocomotion_004CFD20* self)
+bool __stdcall FlyLocomotionIsPowered_004CFD90(ILocomotion_004CFD20* self)
 {
-    LocomotionClassMoveTo_0055A930(self);
+    return LocomotionClassIsPowered_0055A930(self);
 }
 
 // True while the client's owner has the gate byte clear.

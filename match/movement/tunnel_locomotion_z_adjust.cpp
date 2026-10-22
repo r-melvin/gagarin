@@ -96,9 +96,9 @@ extern const double DAT_007E3550;
 extern "C" int __stdcall FUN_0055ABA0(TunnelLocomotionInterface_00729E50* resource);
 
 // FUNCTION: GAMEMD 0x729E50
-// PARTIAL (second look): 71 exact + 15 reloc of 150 compiled instructions
-// (57.3%; 140 are retail's function, the remainder is the jump table that
-// follows it in cl's section). The switch cases and their values are recovered
+// PARTIAL (second look): 71 exact + 15 reloc of 151 instructions (57.0%)
+// over the full 0x1C4-byte retail span, which ends in the five-entry jump
+// table at 0x72A000; cl's section carries the same table after the code. The switch cases and their values are recovered
 // from the binary table. Three corrections moved this from 22.1%: the mode-6
 // and mode-2 arms add the vertical delta (`yDelta`, kept in the dead parameter
 // home), not `coord.Z`; the facing read is the by-value `Current()` (its hidden

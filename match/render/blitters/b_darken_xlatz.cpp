@@ -7,7 +7,7 @@
 // deleting-destructor wrappers or derived vtables.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Paired /GX and no-/GX production compiles produced identical bytes for all
-// 20 functions; use the project-default /GX set.
+// 20 functions; use the project default set.
 #include "b_darken_xlatz.h"
 #include "r_shared_zwrap.h"
 // FUNCTION: GAMEMD 0x492670

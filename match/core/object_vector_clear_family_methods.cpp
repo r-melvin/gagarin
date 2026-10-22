@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
-//   The VC6FLAGS line above drops /GX from the locked set: with exception
+//   This TU must build without /GX, now the project default: with exception
 //   handling on, cl 8804 refuses to inline the vector destructor iterator and
 //   emits an out-of-line call where retail has the five inlined instructions.
 //   The same claim, with the same evidence, is already carried by

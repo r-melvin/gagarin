@@ -17,7 +17,7 @@ extern void* ColorSchemeCollection;
 // The collection's indexed accessor at 0x0068CA50. Genuinely __fastcall — retail
 // loads the collection into ECX and the literal index into EDX rather than
 // pushing either — and it returns null when the index is out of range. The name
-// is descriptive; the address carries no confirmed Westwood name.
+// is descriptive; nothing in the binary attests a name for this address.
 void* __fastcall ColorSchemeCollection_GetItem(void* collection, int index);
 
 // The owning class. Nothing at this address touches an instance, so no layout

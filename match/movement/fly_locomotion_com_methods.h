@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(FootVtbl_004CFC40, At_84) == 0x84 &&
 // The scenario's random generator; the touchdown spin is drawn from it.
 struct RandomClass_004CFD20
 {
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — RandomClass::RandomRanged.
+    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
     int RandomRanged(int minval, int maxval);
 };
 
@@ -155,8 +155,8 @@ GG_STATIC_ASSERT(offsetof(ILocomotion_004CFD20, LinkedTo) == 0x08 &&
 
 // FUNCTION: GAMEMD 0x55A910 (decl; reloc) — the shared locomotor process tail.
 void __stdcall LocomotionClassProcess_0055A910(ILocomotion_004CFD20* self);
-// FUNCTION: GAMEMD 0x55A930 (decl; reloc) — the shared locomotor move tail.
-void __stdcall LocomotionClassMoveTo_0055A930(ILocomotion_004CFD20* self);
+// FUNCTION: GAMEMD 0x55A930 (decl; reloc) — LocomotionClass::IsPowered.
+bool __stdcall LocomotionClassIsPowered_0055A930(ILocomotion_004CFD20* self);
 
 // FUNCTION: GAMEMD 0x4CFC80
 HRESULT __stdcall FlyLocomotionGetClassID_004CFC80(ILocomotion_004CFD20* self,
@@ -169,7 +169,7 @@ int __stdcall FlyLocomotionZAdjustment_004CFCF0(ILocomotion_004CFD20* self);
 // FUNCTION: GAMEMD 0x4CFD20
 void __stdcall FlyLocomotionProcess_004CFD20(ILocomotion_004CFD20* self);
 // FUNCTION: GAMEMD 0x4CFD90
-void __stdcall FlyLocomotionMoveTo_004CFD90(ILocomotion_004CFD20* self);
+bool __stdcall FlyLocomotionIsPowered_004CFD90(ILocomotion_004CFD20* self);
 // FUNCTION: GAMEMD 0x4CFDA0
 char __stdcall FlyLocomotionIsSurfacing_004CFDA0(ILocomotion_004CFD20* self);
 

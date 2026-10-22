@@ -215,7 +215,7 @@ extern int Mode_00A8B238;
 
 struct RandomClass_004CFE80
 {
-    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — RandomClass::RandomRanged.
+    // FUNCTION: GAMEMD 0x65C7E0 (decl; reloc) — Randomizer::RandomRanged.
     int RandomRanged(int minval, int maxval);
 };
 

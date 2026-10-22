@@ -16,7 +16,8 @@
 //   Class / method names from YRpp CCFileClass.h (consult-only; names only).
 //
 // Retail has no exception frame around the temporary (plain `SUB ESP,0x70`,
-// no FS:[0] registration). Under the locked /GX flags a real constructor/
+// no FS:[0] registration). Under /GX, the tree's earlier flag set, a real
+// constructor/
 // destructor pair makes cl 12.00 emit the EH registration and an unwind
 // funclet -- and `throw()` on every callee does not suppress it -- so the
 // construction and destruction sequences are modelled as explicit

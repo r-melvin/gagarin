@@ -1,0 +1,81 @@
+{
+ "schema": "gagarin-unlisted-entry-evidence/1",
+ "provenance": "own pinned PE reads (vtable slots located through the binary's own RTTI complete-object locators) and own entry-origin CFG walk; the Ghidra project has no function at these addresses",
+ "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+ "list": "scripts/data/unlisted_entry_points.json",
+ "scope": "Function entries absent from the Ghidra function list, the manifest and the padding scan. Each is referenced from a vtable slot; none starts after CC/90 filler (the preceding bytes are the previous function's jump or index tables, or code that ends in RET), which is why the padding scan misses them. Sizes are the CFG-closed span including the function's own tables. No source is claimed.",
+ "entries": [
+  {
+   "address": "0x417BD0",
+   "cfg_size": 176,
+   "vtable_refs": [
+    {
+     "slot_va": "0x7E23E8",
+     "class": "AircraftClass",
+     "slot": 81
+    }
+   ],
+   "note": "ends in its own jump and index tables"
+  },
+  {
+   "address": "0x417C80",
+   "cfg_size": 28,
+   "vtable_refs": [
+    {
+     "slot_va": "0x7E23E4",
+     "class": "AircraftClass",
+     "slot": 80
+    }
+   ]
+  },
+  {
+   "address": "0x51D0D0",
+   "cfg_size": 1568,
+   "vtable_refs": [
+    {
+     "slot_va": "0x7EB1CC",
+     "class": "InfantryClass",
+     "slot": 93
+    }
+   ]
+  },
+  {
+   "address": "0x6EAE60",
+   "cfg_size": 115,
+   "vtable_refs": [
+    {
+     "slot_va": "0x7F4758",
+     "class": "TeamClass",
+     "slot": 10
+    }
+   ]
+  },
+  {
+   "address": "0x7D2F57",
+   "cfg_size": 13,
+   "vtable_refs": [
+    {
+     "slot_va": "0x7F95D4",
+     "class": "__non_rtti_object",
+     "slot": 1
+    },
+    {
+     "slot_va": "0x7F95E0",
+     "class": "bad_typeid",
+     "slot": 1
+    },
+    {
+     "slot_va": "0x7F9664",
+     "class": "bad_cast",
+     "slot": 1
+    },
+    {
+     "slot_va": "0x7F9910",
+     "class": "exception",
+     "slot": 1
+    }
+   ],
+   "note": "runtime-library range; slot 1 of the C++ exception classes, a LIBRARY candidate"
+  }
+ ]
+}

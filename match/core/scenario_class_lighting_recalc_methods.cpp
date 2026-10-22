@@ -43,5 +43,5 @@ void __fastcall ScenarioClass::RecalcLighting(int r, int g, int b, bool tint)
     }
 
     MapInstance.FUN_004AE4C0();
-    MapInstance.RedrawSidebar(1);
+    MapInstance.FlagToRedraw(1);
 }

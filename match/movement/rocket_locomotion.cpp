@@ -45,7 +45,9 @@ LocoCoord __stdcall RocketLocomotionClass::Destination()
 }
 
 // FUNCTION: GAMEMD 0x6622C0
-// PARTIAL: diff_retail 3.7% over the requested 0xD4F-byte span.
+// PARTIAL: diff_retail 3.7% over the 0xD4F-byte code prefix. The full retail
+// span is 0xD68: an alignment byte and the six-entry jump table at 0x663010
+// follow the code, and diff_retail cannot decode table bytes.
 // The emitted section is 0xCC0 bytes, so this is not a full-span match. The
 // state labels below are a readable interpretation of branch behavior; original
 // state names and the wider Foot/Rules layouts are not claimed.

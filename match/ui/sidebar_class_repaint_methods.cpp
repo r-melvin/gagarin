@@ -8,12 +8,12 @@
 // FUNCTION: GAMEMD 0x6A60A0  SidebarClass::RepaintSidebar (__thiscall)
 //   this -> ECX,  tab -> [ESP+4]
 //   if (tab == ActiveTabIndex) { SidebarNeedsRedraw = 1;
-//     Tabs[tab].NeedsRedraw = 1; Instance->RedrawSidebar(0); }
+//     Tabs[tab].NeedsRedraw = 1; Instance->FlagToRedraw(0); }
 void SidebarClass::RepaintSidebar(int tab)
 {
     if (tab == this->ActiveTabIndex) {
         this->SidebarNeedsRedraw = 1;
         this->Tabs[tab].NeedsRedraw = 1;
-        SidebarClass_Instance.RedrawSidebar(0);
+        SidebarClass_Instance.FlagToRedraw(0);
     }
 }

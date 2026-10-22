@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
-//   The line above drops /GX from the tree's locked set. Both array-new
+//   This TU must build without /GX, now the project default. Both array-new
 //   constructors here build elements whose constructor is out of line, and with
 //   C++ exception handling on cl wraps the array-new loop in an unwind frame
 //   (___CxxFrameHandler, a .text$x funclet and an .xdata$x entry) that retail

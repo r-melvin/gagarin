@@ -824,5 +824,92 @@
     "current_objects_index_sha256": "38033e9baa705cde4b79a5ea532c54f2974820f5fea831cc3a8a13297eb12642",
     "current_objects_index_input_snapshot_unchanged": true,
     "notes": "Current object hashes for new rows are from this verification snapshot; historical rows retain their original build-object hashes. New source hashes were cross-checked against current tracked source bytes. Object hashes may vary with local build paths."
+  },
+  "partial_span_corrections": {
+    "scope": "Partial rows whose manifest span was shorter than the entry-origin CFG-closed extent (both jcc arms, in-function jumps, jump tables and the byte index tables they select through). The span change re-measures a partial; it proves no match.",
+    "functions": [
+      {
+        "address": "0x0041EAF0",
+        "source": "match/ai/ai_trigger_type_house_owns_methods.cpp",
+        "old_size": 324,
+        "corrected_size": 408,
+        "reason": "switch_table_tail",
+        "tables": [
+          "0x41EC34 dword x5",
+          "0x41EC48 byte x38",
+          "0x41EC70 dword x6"
+        ],
+        "pct_before": 4.3,
+        "pct_after": 4.3,
+        "pct_note": "diagnostic over the 0x144 code prefix; diff_retail cannot decode the trailing table bytes"
+      },
+      {
+        "address": "0x0041EE90",
+        "source": "match/ai/ai_trigger_type_house_owns_methods.cpp",
+        "old_size": 324,
+        "corrected_size": 408,
+        "reason": "switch_table_tail",
+        "tables": [
+          "0x41EFD4 dword x5",
+          "0x41EFE8 byte x38",
+          "0x41F010 dword x6"
+        ],
+        "pct_before": 4.3,
+        "pct_after": 4.3,
+        "pct_note": "diagnostic over the 0x144 code prefix; diff_retail cannot decode the trailing table bytes"
+      },
+      {
+        "address": "0x006622C0",
+        "source": "match/movement/rocket_locomotion.cpp",
+        "old_size": 3407,
+        "corrected_size": 3432,
+        "reason": "switch_table_or_alignment_tail",
+        "tables": [
+          "0x66300F alignment byte",
+          "0x663010 dword x6"
+        ],
+        "pct_before": 3.7,
+        "pct_after": 3.7,
+        "pct_note": "diagnostic over the 0xD4F code prefix; diff_retail cannot decode the trailing table bytes"
+      },
+      {
+        "address": "0x00729E50",
+        "source": "match/movement/tunnel_locomotion_z_adjust.cpp",
+        "old_size": 429,
+        "corrected_size": 452,
+        "reason": "switch_table_tail",
+        "tables": [
+          "0x72A000 dword x5"
+        ],
+        "pct_before": 57.3,
+        "pct_after": 57.0
+      }
+    ]
+  },
+  "rejected_span_leads": {
+    "scope": "Length differences proposed by a twin-binary comparison that the entry-origin CFG walk does not support; the manifest spans stand.",
+    "functions": [
+      {
+        "address": "0x0057CAB0",
+        "manifest_size": 290,
+        "proposed_size": 255,
+        "cfg_size": 290,
+        "reason": "the proposal stops before the second dword table and the 22-entry byte index table selected by `cmp eax,0x15`, which ends at 0x57CBD2"
+      },
+      {
+        "address": "0x0057CBE0",
+        "manifest_size": 266,
+        "proposed_size": 239,
+        "cfg_size": 266,
+        "reason": "the proposal stops before the second dword table and its byte index table, which ends at 0x57CCEA"
+      },
+      {
+        "address": "0x00407040",
+        "manifest_size": 23,
+        "proposed_size": 14673,
+        "cfg_size": 23,
+        "reason": "the longer span runs on past a call that does not return; the function ends at 0x407057 before alignment filler"
+      }
+    ]
   }
 }

@@ -70,7 +70,8 @@ GG_STATIC_ASSERT(offsetof(NullModemConnClass, Queue) == 0x4 &&
 
 // One entry of the Win32 modem registry enumeration: 0x1C bytes, built from a
 // zero-based index. Only the two name accessors are reached here, at +0x00 and
-// +0x04. The no-throw specification is load-bearing under the locked `/GX`:
+// +0x04. The no-throw specification was load-bearing under `/GX`, the tree's
+// earlier flag set:
 // without it the `new ModemEntry_005BB6E0(i)` below emits the unwind frame
 // that would free the block if the constructor threw, and retail has none.
 struct ModemEntry_005BB6E0

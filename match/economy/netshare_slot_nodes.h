@@ -188,7 +188,8 @@ wchar_t* __fastcall Fetch_String_00734E60(const char* label, int flag,
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 
 // FUNCTION: GAMEMD 0x5E87A0 — declared inside this C-linkage block on
-// purpose. Under the locked /GX, the `new NodeNameType` inside it emits a full
+// purpose. Under /GX (the tree's flag set when this was measured), the
+// `new NodeNameType` inside it emits a full
 // unwind frame (PUSH -1 / FS:[0] chain) that retail has no trace of when the
 // function has C++ linkage, and none at all when it has C linkage. That is
 // worth 17.5% against 100%, and `throw()` on the member constructor does not

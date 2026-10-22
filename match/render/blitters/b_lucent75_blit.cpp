@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: retail gamemd.exe v1.001 SHA-256 1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c; the retained method bodies, complete spans and field accesses were checked against the frozen M2 evidence and pinned retail image.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
-// Paired compile with /O2 /DNDEBUG /Gy also reproduces all retained methods; project-default /GX selected because both object sets match.
+// Paired compile with /O2 /DNDEBUG /Gy also reproduces all retained methods; the project default applies because both object sets match.
 // Explicit <unsigned short> member specializations emit only the 32 ordinary methods. This TU does not claim constructors, deleting destructors, or derived vtable emission.
 #include "b_lucent75_blit.h"
 #include "r_shared_zwrap.h"

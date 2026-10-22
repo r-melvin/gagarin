@@ -11,8 +11,9 @@
 //   redeclared locally with the Open override it lacks); YRpp CCFileClass.h
 //   consulted for names only (consult-only, no LICENSE). YRpp binds 0x65CB50
 //   to CCFileClass::Open; the bytes touch RawFileClass members and call
-//   CreateFileA directly, and the committed model already places
-//   CCFileClass::Open at 0x47AAB0, so this is RawFileClass::Open.
+//   CreateFileA directly, and the committed model places CDFileClass::Open
+//   at 0x47AAB0 and CCFileClass::Open at 0x473D10, so this is
+//   RawFileClass::Open.
 #ifndef GG_MATCH_PLATFORM_RAW_FILE_CLASS_OPEN_METHODS_H
 #define GG_MATCH_PLATFORM_RAW_FILE_CLASS_OPEN_METHODS_H
 

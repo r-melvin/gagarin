@@ -38,7 +38,7 @@ Timer_004E2450::Timer_004E2450()
 // 0x004F42D0 is NOT defined here. It was drafted in this batch as a
 // "SessionInputCursor" setter, but the address already had a body in
 // match/map/map_class_more_methods.cpp as MapClass::FUN_004F42D0, whose
-// neighbour RedrawSidebar at 0x4F42F0 identifies the class properly. The
+// neighbour at 0x4F42F0 identifies the class properly. The
 // collision survived because the pre-flight grep used the zero-padded spelling
 // 0x004F42D0 while the existing annotation is written 0x4F42D0. Use
 // scripts/vc6/claimed.py, which checks every spelling, rather than a bare grep.

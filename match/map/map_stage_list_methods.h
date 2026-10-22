@@ -67,7 +67,8 @@
 // Westwood's heap-owning narrow string: one `char*`. Its operations are
 // declared as named members rather than as constructors, destructors and
 // operators so that the translation unit registers no unwind frame under the
-// tree's locked `/GX` and so the calls come out in retail's own order.
+// `/GX` the tree used when this was written, and so the calls come out in
+// retail's own order.
 class StringClass
 {
 public:

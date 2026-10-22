@@ -61,7 +61,8 @@ public:
     char ID[0x18C];         // +0x0024
 
     // FUNCTION: GAMEMD 0x5113F0 (decl; reloc) — the name constructor. The
-    // no-throw specification keeps the locked /GX from wrapping the
+    // no-throw specification kept /GX, the tree's earlier flag set, from
+    // wrapping the
     // new-expression in an unwind funclet retail has no trace of.
     HouseType_005113F0(const char* name) throw();
 };

@@ -47,7 +47,8 @@ extern "C" int __cdecl wcscmp(wchar_t const* a, wchar_t const* b);
 // The heap node one entry becomes. `PUSH 8` sizes it, `MOV [EAX],ECX` writes
 // the text and `MOV BYTE PTR [EAX+4],0` the flag, so it is exactly two members
 // and eight bytes. The no-throw specification keeps the allocation out of an
-// unwind frame that retail has no trace of under the locked flags.
+// unwind frame that retail has no trace of under /GX, the tree's earlier
+// flag set.
 struct CheckItemClass
 {
     wchar_t const* Text;       // +0x00

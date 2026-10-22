@@ -48,8 +48,8 @@ GG_STATIC_ASSERT(sizeof(LinkCell) == 0x4);
 // it. Facing defaults to -1 (`MOVL $0xFFFFFFFF,0x4(%EAX)` in 0x5A9940 and in
 // the inlined array-new loops of every list constructor).
 //
-// The no-throw specification on every constructor is load-bearing under the
-// locked `/GX`: without it the `new TileLink[n]` expressions below emit the
+// The no-throw specification on every constructor was load-bearing under
+// `/GX`, the tree's earlier flag set: without it the `new TileLink[n]` expressions below emit the
 // unwind frame that would free the block if an element constructor threw, and
 // retail has no trace of one.
 struct TileLink

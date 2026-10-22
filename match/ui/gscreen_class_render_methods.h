@@ -16,6 +16,8 @@
 //   `[0xA8B8B4]` gating `XOR CL,CL; CALL 0x55F1E0`. Names from YRpp
 //   GScreenClass.h / Surface.h / WWMouseClass.h / TacticalClass.h /
 //   Unsorted.h (consult-only; names only).
+//   FlagToRedraw @0x4F42F0: the byte `[EAX+0xD7D]` on `[0x887324]`, `[ECX+0xC]`
+//   compared with 2 and stored, then `MOV ECX,0x87F7E8; CALL 0x578AC0`.
 #ifndef GG_MATCH_UI_GSCREEN_CLASS_RENDER_METHODS_H
 #define GG_MATCH_UI_GSCREEN_CLASS_RENDER_METHODS_H
 
@@ -62,13 +64,15 @@ GG_STATIC_ASSERT(offsetof(MouseVtbl_004F4480, At_40) == 0x40);
 // GLOBAL: GAMEMD 0x887640 — WWMouseClass::Instance.
 extern Mouse_004F4480* DAT_00887640;
 
-// TacticalClass — only Render is reached.
+// TacticalClass — Render, and the redraw byte FlagToRedraw sets.
 struct Tactical_004F4480
 {
-    char opaque[4];
+    char          _pad000[0xD7D];  // +0x0000
+    unsigned char NeedsRedraw;     // +0x0D7D
     // FUNCTION: GAMEMD 0x6D3D10 (decl; reloc) — TacticalClass::Render.
     void Render(Surface_004F4480* surface, bool flag, int mode);
 };
+GG_STATIC_ASSERT(offsetof(Tactical_004F4480, NeedsRedraw) == 0xD7D);
 // GLOBAL: GAMEMD 0x887324 — TacticalClass::Instance.
 extern Tactical_004F4480* DAT_00887324;
 
@@ -114,6 +118,17 @@ struct MessageList_004F4480
 // GLOBAL: GAMEMD 0xA8BC60 — MessageListClass::Instance.
 extern MessageList_004F4480 DAT_00A8BC60;
 
+// The map instance at 0x87F7E8; only its redraw-counter bump at 0x578AC0 is
+// reached, so the type takes that function's class name and the call binds to
+// it.
+struct ScreenRedraw_00578AC0
+{
+    // FUNCTION: GAMEMD 0x578AC0 (decl; reloc) — bump the redraw counter.
+    void FUN_00578AC0();
+};
+// GLOBAL: GAMEMD 0x87F7E8
+extern ScreenRedraw_00578AC0 DAT_0087F7E8;
+
 // GScreenClass — the redraw flag and two of its own virtuals.
 struct GScreenVtbl_004F4480;
 struct GScreen_004F4480
@@ -122,6 +137,8 @@ struct GScreen_004F4480
     char _pad004[0x0C - 0x04];     // +0x0004
     int  RedrawFlag;               // +0x000C
 
+    // FUNCTION: GAMEMD 0x4F42F0 — GScreenClass::FlagToRedraw.
+    void FlagToRedraw(int mode);
     // FUNCTION: GAMEMD 0x4F4480 — GScreenClass::Render.
     void Render();
 };

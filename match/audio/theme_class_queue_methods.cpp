@@ -7,7 +7,8 @@
 
 // FUNCTION: GAMEMD 0x720B20
 //
-// Queue a score to play next. Gated on scores being present, the audio engine
+// Queue a score to play next; the function's own trace names it
+// Theme::QueueSong. Gated on scores being present, the audio engine
 // being up and the suppress byte being clear; the request is recorded before
 // the "no-op" indexes (-1 / -2 / already-last) are filtered out. With a live
 // stream, a fade already in progress that has finished is cleared, and if the
@@ -17,7 +18,7 @@
 // AL,1; JNZ`) is a flag declared before the stream block, assigned inside it
 // and compared `== true` after it; every same-block spelling folds to a bare
 // TEST/JZ (61.7%). The engine probe 0x407000 returns int (retail tests EAX).
-void ThemeClass::Queue(int theme)
+void ThemeClass::QueueSong(int theme)
 {
     if (ScoresPresent_00A8EC74) {
         if (FUN_00407000() && !DAT_00A8ED64) {

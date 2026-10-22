@@ -17,7 +17,8 @@
 //   @0x87F698, ColorScheme::Array @0xB054D0, ColorScheme::LightConvert
 //   @+0x30C, ColorScheme::GetPaletteSchemesFromIterator @0x626690,
 //   ColorScheme::GetNumberOfSchemes @0x626C60, ScenarioClass::
-//   UpdateCellLighting @0x4AE4C0, MapClass::RedrawSidebar @0x4F42F0.
+//   UpdateCellLighting @0x4AE4C0. 0x4F42F0 is GScreenClass::FlagToRedraw,
+//   slot 14 of GScreenClass's vtable 0x7EA6FC.
 #ifndef GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_RECALC_METHODS_H
 #define GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_RECALC_METHODS_H
 
@@ -100,8 +101,8 @@ struct Map_0053AD00
 {
     // FUNCTION: GAMEMD 0x4AE4C0 (decl; reloc) — the cell lighting sweep.
     void FUN_004AE4C0();
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — MapClass::RedrawSidebar.
-    void RedrawSidebar(int mode);
+    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — GScreenClass::FlagToRedraw.
+    void FlagToRedraw(int mode);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_0053AD00 MapInstance;

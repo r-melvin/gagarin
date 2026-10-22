@@ -12,7 +12,7 @@
 // (Tabs @0x1544, sizeof(StripClass)==0xF94, NeedsRedraw @0x3C  =>
 //  0x1544 + tab*0xF94 + 0x3C == tab*0xF94 + 0x1580, exactly the retail
 //  [ECX + tab*997*4 + 0x1580] address term), then calls
-//  SidebarClass::Instance->RedrawSidebar(0)  (Instance @0x87F7E8, the literal
+//  SidebarClass::Instance->FlagToRedraw(0)  (Instance @0x87F7E8, the literal
 //  ECX target of the CALL 0x4F42F0).
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_REPAINT_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_REPAINT_METHODS_H
@@ -54,9 +54,10 @@ struct SidebarClass
     // GAMEMD 0x6A60A0  SidebarClass::RepaintSidebar (__thiscall)
     void RepaintSidebar(int tab);
 
-    // GAMEMD 0x4F42F0  SidebarClass::RedrawSidebar (__thiscall) — callee, not
-    // matched here; declared body-less so cl emits the CALL (reloc-normalised).
-    void RedrawSidebar(int mode);
+    // GAMEMD 0x4F42F0  GScreenClass::FlagToRedraw (__thiscall, vtable slot 14)
+    // — callee, not matched here; declared body-less so cl emits the CALL
+    // (reloc-normalised).
+    void FlagToRedraw(int mode);
 };
 
 GG_STATIC_ASSERT(offsetof(SidebarClass, Tabs) == 0x1544);
@@ -64,7 +65,7 @@ GG_STATIC_ASSERT(offsetof(SidebarClass, ActiveTabIndex) == 0x539C);
 GG_STATIC_ASSERT(offsetof(SidebarClass, SidebarNeedsRedraw) == 0x53A6);
 
 // SidebarClass::Instance — the singleton at 0x87F7E8 (the hard-coded ECX of
-// the retail RedrawSidebar call).  Address is the only thing that matters; the
+// the retail FlagToRedraw call).  Address is the only thing that matters; the
 // reloc is normalised by the differ.
 extern SidebarClass SidebarClass_Instance;
 

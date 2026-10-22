@@ -14,7 +14,7 @@
 //   object's own array index), plus `MOV EDX,[EBP+0x520]` and the byte
 //   `MOV AL,[EDX+0x16CB]`. Globals: the player singleton pointer 0xA83D4C
 //   (tested, then used as the ECX of CALL 0x50B370), MapClass::Instance as the
-//   immediate 0x87F7E8 feeding `PUSH 0; CALL 0x4F42F0` (RedrawSidebar), and
+//   immediate 0x87F7E8 feeding `PUSH 0; CALL 0x4F42F0` (FlagToRedraw), and
 //   the frame counter 0xA8ED84. The tab classifier is
 //   SidebarClass::GetObjectTabIdx expanded inline — the same compare chain
 //   already matched out of line at 0x6ABC60 in
@@ -57,8 +57,8 @@ struct TechnoType_006A5F20;
 struct Map_006A5F20
 {
     char _opaque[4];
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — MapClass::RedrawSidebar.
-    void RedrawSidebar(int which);
+    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — GScreenClass::FlagToRedraw.
+    void FlagToRedraw(int which);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the MapClass instance itself.
 extern Map_006A5F20 MapInstance_006A5F20;

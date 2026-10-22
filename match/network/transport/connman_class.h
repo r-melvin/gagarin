@@ -118,7 +118,8 @@ public:
     virtual void Slot24(int a1, int a2);                                   // slot 24 (empty body 0x543040)
 
     // FUNCTION: GAMEMD 0x540A80 (decl; reloc) -- direct caller 0x5DA6C0.
-    int FUN_00540A80();
+    // Named by its own trace string "**** IPXManagerClass::Init ***".
+    int Init();
     // FUNCTION: GAMEMD 0x542FC0 (decl; reloc) -- direct caller 0x5DA6C0.
     void FUN_00542FC0(int* value);
 

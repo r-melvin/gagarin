@@ -25,8 +25,9 @@ void __fastcall FUN_006AC5E0(void*, int, void* arg)
 }
 
 // FUNCTION: GAMEMD 0x6D1800
-void __fastcall FUN_006D1800(void*, int, void* arg)
+// TabClass's slot 33 forwards to SidebarClass's slot 33 with `this` left in ECX.
+void Tab_006D1800::vf_33(void* arg)
 {
-    FUN_006AC210(arg);
+    Sidebar_006D1800::vf_33(arg);
 }
 

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI. Queue @0x720B20: `[ESI+0x4]` (LastTheme), `[ESI+0x8]`
+//   local Ghidra CLI. QueueSong @0x720B20: `[ESI+0x4]` (LastTheme), `[ESI+0x8]`
 //   (QueuedTheme, stored), `[ESI+0x11]` (IsFading byte), `[ESI+0x2C]`
 //   (Stream), the byte globals `[0xA8EC74]` / `[0xA8ED64]`, the log format
 //   string at 0x8447D4 and the callees 0x407000 / 0x4068E0 / 0x4080D0 /
@@ -80,8 +80,8 @@ struct ThemeClass
     ThemeControlVector Themes;  // +0x14
     ThemeStream_00720B20* Stream;  // +0x2C
 
-    // FUNCTION: GAMEMD 0x720B20
-    void Queue(int theme);
+    // FUNCTION: GAMEMD 0x720B20 — named by its own trace string at 0x8447D4.
+    void QueueSong(int theme);
     // FUNCTION: GAMEMD 0x721140
     bool IsAvailable(int theme) const;
 };

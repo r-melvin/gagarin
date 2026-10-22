@@ -20,8 +20,9 @@
 //   YRpp names only (consult-only, no LICENSE): ScenarioClass::PauseGame
 //   (static), ScenarioClass::Instance @0xA8B230, SessionClass::Instance
 //   @0xA8B238, CCToolTip::Instance @0x887368, ToolTipManager::SetState
-//   @0x7241A0, WWMouseClass::Instance @0x887640, MapClass::RedrawSidebar
-//   @0x4F42F0, GScreenClass::Render @0x4F4480.
+//   @0x7241A0, WWMouseClass::Instance @0x887640, GScreenClass::Render
+//   @0x4F4480. 0x4F42F0 is GScreenClass::FlagToRedraw, slot 14 of
+//   GScreenClass's vtable 0x7EA6FC.
 #ifndef GG_MATCH_CORE_SCENARIO_CLASS_PAUSE_METHODS_H
 #define GG_MATCH_CORE_SCENARIO_CLASS_PAUSE_METHODS_H
 
@@ -70,8 +71,8 @@ GG_STATIC_ASSERT(sizeof(Timer_00683EB0) == 0xC);
 // The map singleton is a static object at 0x87F7E8.
 struct Map_00683EB0
 {
-    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — MapClass::RedrawSidebar.
-    void RedrawSidebar(int mode);
+    // FUNCTION: GAMEMD 0x4F42F0 (decl; reloc) — GScreenClass::FlagToRedraw.
+    void FlagToRedraw(int mode);
     // FUNCTION: GAMEMD 0x4F4480 (decl; reloc) — GScreenClass::Render.
     void Render();
     // FUNCTION: GAMEMD 0x5BDC80 (decl; reloc)

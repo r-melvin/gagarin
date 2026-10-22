@@ -22,9 +22,9 @@
 //           Three instantiations, varying only in their two vtables.
 //
 // Phrasing notes (two levers, both worth the whole family):
-//   * Under the locked /GX, COMREL's base-destructor call makes cl emit a full
-//     EH unwind frame retail does not have (0.0%). Declaring the destructors
-//     `throw()` removes it.
+//   * Under /GX (the tree's flag set when this was measured), COMREL's
+//     base-destructor call makes cl emit a full EH unwind frame retail does
+//     not have (0.0%). Declaring the destructors `throw()` removes it.
 //   * With the release written directly in the destructor body, cl hoists the
 //     interface load above the three vtable stores (66.7%). Retail stores all
 //     three vtables first. Moving the interface pointer into a small member

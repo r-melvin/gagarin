@@ -19,7 +19,8 @@
 // destructors are called, the member's with ECX pointing at +0x08.
 //
 // Phrasing notes (two levers, both needed):
-//   * Under the locked /GX, a destructor that destroys a subobject emits a full
+//   * Under /GX (the tree's flag set when this was measured), a destructor
+//     that destroys a subobject emits a full
 //     EH unwind frame (`PUSH -1; PUSH 0; MOV EAX,FS:[0]; ...`) that retail does
 //     not have — 0.0% against a body that is otherwise correct. Declaring every
 //     destructor in the chain `throw()` removes the frame and the function

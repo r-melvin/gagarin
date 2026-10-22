@@ -23,7 +23,8 @@ void __fastcall FUN_005BBEE0(void* self);   // GAMEMD 0x5BBEE0
 void __fastcall FUN_005F6B90(void* self);   // GAMEMD 0x5F6B90
 void __fastcall FUN_006370B0(void* self);   // GAMEMD 0x6370B0
 void __fastcall FUN_006385C0(void* self);   // GAMEMD 0x6385C0
-void __fastcall FUN_00652CF0(void* self);   // GAMEMD 0x652CF0
+// GAMEMD 0x652CF0: its own trace string reads "RadarClass::One_Time()".
+void __fastcall RadarClass_OneTime(void* self);
 void __fastcall FUN_006A5000(void* self);   // GAMEMD 0x6A5000
 void __fastcall FUN_007529E0(void* self);   // GAMEMD 0x7529E0
 void __fastcall FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0

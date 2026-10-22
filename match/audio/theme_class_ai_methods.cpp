@@ -42,7 +42,7 @@ void ThemeClass::AI()
                 // STRING: GAMEMD 0x8447B8
                 FUN_004068E0("Theme::AI(Next song = %d)\n", this->QueuedTheme);
             }
-            this->Play(this->QueuedTheme);
+            this->PlaySong(this->QueuedTheme);
             this->QueuedTheme = -2;
         }
     }

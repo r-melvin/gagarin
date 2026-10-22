@@ -56,7 +56,8 @@ public:
 
     // FUNCTION: GAMEMD 0x6A4550 (decl; reloc) — the name constructor.
     //
-    // The no-throw specification is load-bearing under the locked /GX: a
+    // The no-throw specification was load-bearing under /GX, the tree's
+    // earlier flag set: a
     // new-expression whose constructor may throw gets an unwind funclet that
     // frees the block, which retail has no trace of.
     MovieType_006A4550(const char* name) throw();

@@ -130,6 +130,7 @@ class CDFileClass : public BufferIOFileClass
 {
 public:
     virtual const char* SetFileName(const char* pFileName); // GAMEMD 0x47AE10 (decl; base call)
+    virtual bool Open(FileAccessMode access);               // GAMEMD 0x47AAB0 (matched)
 
     bool IsDisabled;        // +0x54
 private:
@@ -151,7 +152,7 @@ class CCFileClass : public CDFileClass
 public:
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x473C50 (matched)
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x473FC0 (matched)
-    virtual bool Open(FileAccessMode access);                     // GAMEMD 0x47AAB0 (matched)
+    virtual bool Open(FileAccessMode access);                     // GAMEMD 0x473D10 (decl)
     virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x401980 (matched)
     virtual void Close();                                         // GAMEMD 0x473CE0 (matched)
 

@@ -65,7 +65,8 @@ struct Holder_004CF830
     // The release is a real destructor: retail writes both components of the
     // return value into the hidden buffer and only then releases, which is
     // scope-exit order, not a statement the body could have written. The
-    // no-throw specification keeps the locked `/GX` from wrapping the scope
+    // no-throw specification kept `/GX`, the tree's earlier flag set, from
+    // wrapping the scope
     // in an unwind frame retail's bare prologue rules out.
     // Defined in-class so cl expands it at the scope exit; an out-of-line
     // definition is emitted as a call retail does not have.

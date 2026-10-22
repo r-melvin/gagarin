@@ -10,8 +10,8 @@
 //   the body is written once as a macro. Ordered ascending by retail address.
 //
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
-//   This TU departs from the locked flag set: it must be compiled WITHOUT
-//   /GX. With /GX on, cl declines to inline the vector destructor iterator and
+//   This TU must be compiled WITHOUT /GX, which is now the project default
+//   as well. With /GX on, cl declines to inline the vector destructor iterator and
 //   emits an out-of-line call instead; with it off it inlines retail's exact
 //   five instructions. That is worth 25.7% versus 100% across these eight
 //   functions, and no source-level spelling reaches it with /GX on (a throw()

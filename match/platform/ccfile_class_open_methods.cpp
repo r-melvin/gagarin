@@ -51,11 +51,13 @@ const char* CCFileClass::SetFileName(const char* pFileName)
     return CDFileClass::SetFileName(pFileName);
 }
 
-// FUNCTION: GAMEMD 0x47AAB0  CCFileClass::Open (__thiscall)
-// Straight delegation to the buffered-IO base. This cannot become a tail jump:
+// FUNCTION: GAMEMD 0x47AAB0  CDFileClass::Open (__thiscall)
+// CDFileClass's vtable 0x7E1668 holds this at slot 7; CCFileClass's slot 7 is
+// its own Open at 0x473D10, which calls this one. Straight delegation to the
+// buffered-IO base. This cannot become a tail jump:
 // the callee is __thiscall and pops its own argument, so the caller still owes
 // its own RET 4.
-bool CCFileClass::Open(FileAccessMode access)
+bool CDFileClass::Open(FileAccessMode access)
 {
     return BufferIOFileClass::Open(access);
 }

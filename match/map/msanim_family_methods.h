@@ -495,7 +495,8 @@ __forceinline MSRect MSRectIntersect(const MSRect* self, const MSRect& other)
 // the vptr seat that every destructor of a polymorphic class performs, while
 // leaving the thunk to this file.
 //
-// Every destructor carries `throw()`: under the tree's locked `/GX` a
+// Every destructor carries `throw()`: under `/GX`, the tree's flag set when
+// this was written, a
 // destructor that destroys a subobject otherwise acquires a full unwind frame
 // retail has no trace of.
 // ---------------------------------------------------------------------------

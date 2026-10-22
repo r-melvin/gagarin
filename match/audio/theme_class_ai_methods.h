@@ -57,8 +57,9 @@ struct ThemeClass
     void AI();
     // FUNCTION: GAMEMD 0x720A80 (decl; reloc) — pick the next score.
     int GetRandomIndex(int index);
-    // FUNCTION: GAMEMD 0x720BB0 (decl; reloc) — start playing a score.
-    void Play(int index);
+    // FUNCTION: GAMEMD 0x720BB0 (decl; reloc) — start playing a score; its
+    // own trace string at 0x8447EC names it Theme::PlaySong.
+    void PlaySong(int index);
 };
 GG_STATIC_ASSERT(offsetof(ThemeClass, LastTheme)   == 0x04);
 GG_STATIC_ASSERT(offsetof(ThemeClass, QueuedTheme) == 0x08);

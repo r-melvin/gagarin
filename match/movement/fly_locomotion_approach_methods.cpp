@@ -2,7 +2,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //   Measured, exactly as in fly_locomotion_draw_offset_methods.cpp: the
 //   queried interface is held by a scope object whose destructor is the
-//   release, and under the locked /GX cl wraps the scope in an unwind frame
+//   release, and under /GX cl wraps the scope in an unwind frame
 //   retail's bare `SUB ESP,0x1C` prologue rules out.
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   The flyer's approach steering. Bytes diffed against the user's retail

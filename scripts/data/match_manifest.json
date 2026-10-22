@@ -48,19 +48,21 @@
   "tu": "match/ai/ai_trigger_type_house_owns_methods.cpp",
   "addr": "0x41EAF0",
   "sym": "?EnemyHouseOwns@AITriggerType_0041EAF0@@QAE_NPAUHouse_0041EAF0@@0@Z",
-  "len": "0x144",
+  "len": "0x198",
   "name": "AITriggerTypeClass::EnemyHouseOwns",
   "status": "partial",
-  "pct": 4.3
+  "pct": 4.3,
+  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EC34. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0x144."
  },
  {
   "tu": "match/ai/ai_trigger_type_house_owns_methods.cpp",
   "addr": "0x41EE90",
   "sym": "?OwnerHouseOwns@AITriggerType_0041EAF0@@QAE_NPAUHouse_0041EAF0@@0@Z",
-  "len": "0x144",
+  "len": "0x198",
   "name": "AITriggerTypeClass::OwnerHouseOwns",
   "status": "partial",
-  "pct": 4.3
+  "pct": 4.3,
+  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EFD4. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0x144."
  },
  {
   "tu": "match/ai/aircraft_mission_004155f0.cpp",
@@ -1343,9 +1345,9 @@
  {
   "tu": "match/audio/theme_class_queue_methods.cpp",
   "addr": "0x720B20",
-  "sym": "?Queue@ThemeClass@@QAEXH@Z",
+  "sym": "?QueueSong@ThemeClass@@QAEXH@Z",
   "len": "0x86",
-  "name": "ThemeClass::Queue",
+  "name": "ThemeClass::QueueSong",
   "status": "matched",
   "pct": 100
  },
@@ -12497,9 +12499,9 @@
  {
   "tu": "match/core/stdcall_forward_sweep.cpp",
   "addr": "0x6D1800",
-  "sym": "?FUN_006D1800@@YIXPAXH0@Z",
+  "sym": "?vf_33@Tab_006D1800@@QAEXPAX@Z",
   "len": "0xd",
-  "name": "FUN_006d1800",
+  "name": "TabClass::vf_33",
   "status": "matched",
   "pct": 100
  },
@@ -23961,11 +23963,11 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_load_methods.cpp",
+  "tu": "match/map/layer_class_load_methods.cpp",
   "addr": "0x551B90",
-  "sym": "?Load@PtrVector_00551B90@@QAEJPAUIStream_00551B90@@@Z",
+  "sym": "?Load@LayerClass@@QAEJPAUIStream_00551B90@@@Z",
   "len": "0xc7",
-  "name": "MapClass::Load",
+  "name": "LayerClass::Load",
   "status": "matched",
   "pct": 100
  },
@@ -24061,24 +24063,6 @@
  },
  {
   "tu": "match/map/map_class_more_methods.cpp",
-  "addr": "0x4F42F0",
-  "sym": "?RedrawSidebar@MapClass@@QAEXH@Z",
-  "len": "0x2E",
-  "name": "RedrawSidebar",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/map/map_class_more_methods.cpp",
-  "addr": "0x55BAA0",
-  "sym": "?AddObject@MapClass@@QAE_NPAVObjectClass@@_N@Z",
-  "len": "0x36",
-  "name": "AddObject",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/map/map_class_more_methods.cpp",
   "addr": "0x568300",
   "sym": "?CoordinatesLegal@MapClass@@QBE_NABUCellStruct@@@Z",
   "len": "0x45",
@@ -24101,6 +24085,15 @@
   "sym": "?Sort@LayerClass@@QAEXXZ",
   "len": "0x55",
   "name": "LayerClass::Sort",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/map_class_object_methods.cpp",
+  "addr": "0x55BAA0",
+  "sym": "?AddObject@LogicClass@@QAE_NPAVObjectClass@@_N@Z",
+  "len": "0x36",
+  "name": "LogicClass::AddObject",
   "status": "matched",
   "pct": 100
  },
@@ -24177,11 +24170,11 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_save_methods.cpp",
+  "tu": "match/map/layer_class_save_methods.cpp",
   "addr": "0x551B20",
-  "sym": "?Save@MapClass@@QAEJPAUGg_IStream@@@Z",
+  "sym": "?Save@LayerClass@@QAEJPAUGg_IStream@@@Z",
   "len": "0x62",
-  "name": "MapClass::Save",
+  "name": "LayerClass::Save",
   "status": "matched",
   "pct": 100
  },
@@ -25232,9 +25225,9 @@
  {
   "tu": "match/movement/fly_locomotion_com_methods.cpp",
   "addr": "0x4CFD90",
-  "sym": "?FlyLocomotionMoveTo_004CFD90@@YGXPAUILocomotion_004CFD20@@@Z",
+  "sym": "?FlyLocomotionIsPowered_004CFD90@@YG_NPAUILocomotion_004CFD20@@@Z",
   "len": "0xD",
-  "name": "?FlyLocomotionMoveTo_004CFD90@@YGXPAUILo",
+  "name": "FlyLocomotionClass::IsPowered",
   "status": "matched",
   "pct": 100
  },
@@ -27034,9 +27027,9 @@
  {
   "tu": "match/platform/ccfile_class_open_methods.cpp",
   "addr": "0x47AAB0",
-  "sym": "?Open@CCFileClass@@UAE_NI@Z",
+  "sym": "?Open@CDFileClass@@UAE_NI@Z",
   "len": "0xD",
-  "name": "CCFileClass::Open",
+  "name": "CDFileClass::Open",
   "status": "matched",
   "pct": 100
  },
@@ -29265,6 +29258,15 @@
  },
  {
   "tu": "match/ui/gscreen_class_render_methods.cpp",
+  "addr": "0x4F42F0",
+  "sym": "?FlagToRedraw@GScreen_004F4480@@QAEXH@Z",
+  "len": "0x2E",
+  "name": "GScreenClass::FlagToRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gscreen_class_render_methods.cpp",
   "addr": "0x4F4480",
   "sym": "?Render@GScreen_004F4480@@QAEXXZ",
   "len": "0x129",
@@ -29547,7 +29549,7 @@
   "addr": "0x5D4AD0",
   "sym": "?SetWidth@MessageListClass@@QAEXH@Z",
   "len": "0x45",
-  "name": "SetWidth",
+  "name": "MessageListClass::SetWidth",
   "status": "matched",
   "pct": 100
  },
@@ -30401,10 +30403,10 @@
   "tu": "match/movement/tunnel_locomotion_z_adjust.cpp",
   "addr": "0x729E50",
   "sym": "_FUN_00729E50@4",
-  "len": "0x1ad",
+  "len": "0x1c4",
   "name": "TunnelLocomotionClass::ZAdjust (interface prefix)",
   "status": "partial",
-  "pct": 57.3
+  "pct": 57.0
  },
  {
   "tu": "match/core/static_reset_004cb990.cpp",
@@ -48557,10 +48559,11 @@
   "tu": "match/movement/rocket_locomotion.cpp",
   "addr": "0x6622C0",
   "sym": "?Process@RocketLocomotionClass@@UAG_NXZ",
-  "len": "0xD4F",
+  "len": "0xd68",
   "name": "RocketLocomotionClass::Process",
   "status": "partial",
-  "pct": 3.7
+  "pct": 3.7,
+  "note": "Retail span corrected to the CFG-closed extent 0xd68, which ends in the jump/index tables from 0x663010. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0xD4F."
  },
  {
   "tu": "match/movement/rocket_locomotion.cpp",

@@ -2,11 +2,13 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x551B90.
 
-#include "map_class_load_methods.h"
+#include "layer_class_load_methods.h"
 
 // FUNCTION: GAMEMD 0x551B90
 //
-// Load a pointer vector from a stream: the element count, then each saved
+// LayerClass::Load, the counterpart of LayerClass::Save (0x551B20); its callers
+// DisplayClass::Load (0x4AE6F0) and 0x67E730 pass each layer in ECX. Load the
+// layer's pointer vector from a stream: the element count, then each saved
 // pointer appended through AddItem, then every element queued with the
 // swizzle manager so the saved pointers are remapped to the reloaded
 // objects. A null stream is E_POINTER; a failed read returns its HRESULT.
@@ -14,7 +16,7 @@
 // The count lands in the dead `pStm` parameter slot (pStm lives in EDI after
 // the null check) and each element in the one frame local; both reads are
 // early returns on a negative HRESULT.
-HRESULT PtrVector_00551B90::Load(IStream_00551B90* pStm)
+HRESULT LayerClass::Load(IStream_00551B90* pStm)
 {
     if (pStm == 0) {
         return 0x80004003;

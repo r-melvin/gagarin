@@ -28,6 +28,20 @@ Across all 1,080 project objects, sections change only through the renamed
 symbols and function-pointer types, the promoted and improved rows, and
 destructors that now inline without `/GX`; none of those is a manifest row.
 
+A follow-up batch corrects identities from vtable slots, callers and the
+binary's own trace strings, with every emitted section unchanged: 0x4CFD90
+`FlyLocomotionClass::IsPowered`, 0x47AAB0 `CDFileClass::Open`, 0x55BAA0
+`LogicClass::AddObject`, 0x551B20/0x551B90 `LayerClass::Save`/`Load`, 0x4F42F0
+`GScreenClass::FlagToRedraw` (slot 14) and 0x6D1800 TabClass slot 33, plus the
+string-attested `ThemeClass::QueueSong`/`PlaySong`, `IPXManagerClass::Init` and
+`RadarClass_OneTime`. Four partial spans grow to their CFG-closed extent
+including jump and index tables (0x41EAF0 and 0x41EE90 to 0x198, 0x6622C0 to
+0xD68, 0x729E50 to 0x1C4, now 57.0%); the
+[extent audit](scripts/data/function_extent_audit.json) records them and three
+rejected span leads. Five vtable-referenced entries the Ghidra list lacks are
+added to the [unlisted entry points](scripts/data/unlisted_entry_points.json),
+with [evidence](scripts/data/unlisted_entry_points_evidence.json).
+
 The 5,157 matches represent 26.1% of 19,753 listed functions. Counts are per
 function, not executable completion. Matched body lengths total **384,253
 bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic

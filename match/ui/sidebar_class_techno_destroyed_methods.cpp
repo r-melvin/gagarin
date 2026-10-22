@@ -57,7 +57,7 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
         if (PlayerPtr_006A5F20->FUN_0050B370(type)) {
             this->At_53A6 = 1;
             this->Tabs[this->ActiveTabIndex].At_3C = 1;
-            MapInstance_006A5F20.RedrawSidebar(0);
+            MapInstance_006A5F20.FlagToRedraw(0);
             if (this->At_53A0 <= CurrentFrame) {
                 this->At_53A0 = CurrentFrame + 2;
             }
@@ -72,7 +72,7 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
             // because its index arithmetic already sits between the two.
             Strip_006A5F20* strip = &this->Tabs[3];
             strip->At_3C = 1;
-            MapInstance_006A5F20.RedrawSidebar(0);
+            MapInstance_006A5F20.FlagToRedraw(0);
             if (this->At_53A0 <= CurrentFrame) {
                 this->At_53A0 = CurrentFrame + 2;
             }

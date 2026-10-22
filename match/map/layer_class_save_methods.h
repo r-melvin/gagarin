@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI at 0x551B20. The receiver is vector-shaped — Items @0x04
+//   local Ghidra CLI at 0x551B20. The receiver is a LayerClass (its callers,
+//   DisplayClass::Save 0x4AE720 and 0x67D300, pass each layer of the array at
+//   0x8A0360 in ECX), vector-shaped — Items @0x04
 //   and Count @0x10 — and `Write` is dispatched through COM vtable slot +0x10,
 //   which is ISequentialStream::Write.
 //
@@ -10,8 +12,8 @@
 // parameter's stack home for the local because the parameter itself lives in
 // ESI for the whole body. That is an allocation choice, not something the
 // source expresses — a plain `int` local is what produces it.
-#ifndef GG_MATCH_MAP_MAP_CLASS_SAVE_METHODS_H
-#define GG_MATCH_MAP_MAP_CLASS_SAVE_METHODS_H
+#ifndef GG_MATCH_MAP_LAYER_CLASS_SAVE_METHODS_H
+#define GG_MATCH_MAP_LAYER_CLASS_SAVE_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
@@ -34,7 +36,7 @@ struct Gg_IStream
                                        unsigned long* pcbWritten) = 0;        // +0x10
 };
 
-struct MapClass
+struct LayerClass
 {
     void* _vtable;   // +0x00
     void* Items;     // +0x04
@@ -44,7 +46,7 @@ struct MapClass
 
     Gg_HRESULT Save(Gg_IStream* pStm);   // GAMEMD 0x551B20 __thiscall
 };
-GG_STATIC_ASSERT(offsetof(MapClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(MapClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(LayerClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(LayerClass, Count) == 0x10);
 
-#endif  // GG_MATCH_MAP_MAP_CLASS_SAVE_METHODS_H
+#endif  // GG_MATCH_MAP_LAYER_CLASS_SAVE_METHODS_H

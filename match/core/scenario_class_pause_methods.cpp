@@ -37,7 +37,7 @@ void ScenarioClass::PauseGame()
     MapInstance.FUN_006938C0();
     MapInstance.FUN_005BDC80(0, 0);
     (DAT_00887640->*DAT_00887640->Vtbl->At_0C)();
-    MapInstance.RedrawSidebar(2);
+    MapInstance.FlagToRedraw(2);
     MapInstance.Render();
     (DAT_00887640->*DAT_00887640->Vtbl->At_10)();
 }

@@ -69,7 +69,7 @@ struct CCFile_00473D10
     int             Position;     // +0x0064
     int             Availability; // +0x0068
 
-    // FUNCTION: GAMEMD 0x47AAB0 (decl; reloc) — CCFileClass::Open, the base
+    // FUNCTION: GAMEMD 0x47AAB0 (decl; reloc) — CDFileClass::Open, the base
     // implementation this one falls back to, called directly with the mode
     // pushed.
     int FUN_0047AAB0(unsigned int mode);
