@@ -8,8 +8,10 @@
 typedef unsigned int (*TickFn_004093F0)();
 
 // GLOBAL: GAMEMD 0x87E84C — bumped on entry and re-read to detect an update
-// that lands while the pair below is being read; volatile is what forces the
-// repeated loads retail performs.
+// that lands while the pair below is being read. Volatile with binary
+// evidence: this function is reached through the 0x4093B0 dispatcher both from
+// the thread procedure FUN_004095B0 (started by CreateThread at 0x409470) and
+// from main-thread callers, so the counter is shared between threads.
 extern volatile int DAT_0087E84C;
 // GLOBAL: GAMEMD 0x7E1764 — points at the high half of the running count.
 extern int* DAT_007E1764;

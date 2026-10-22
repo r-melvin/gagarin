@@ -196,6 +196,7 @@ public:
     LinkClass* BaseAddHead(LinkClass& object);    // LinkClass::AddHead        0x5566D0
     LinkClass* BaseAddTail(LinkClass& object);    // LinkClass::AddTail        0x556700
     LinkClass* BaseRemove();                      // GadgetClass::Remove       0x4E1480
+    unsigned   BaseAction(unsigned flags, unsigned* key, int extra); // ControlClass::Action 0x48E5A0
 };
 
 GG_STATIC_ASSERT(offsetof(ListClass, Y)               == 0x010);
@@ -332,14 +333,22 @@ GG_STATIC_ASSERT(offsetof(SliderVtbl, At_90) == 0x90);
 GG_STATIC_ASSERT(offsetof(SliderVtbl, At_A8) == 0xA8);
 GG_STATIC_ASSERT(offsetof(SliderVtbl, At_B0) == 0xB0);
 
-// GLOBAL: GAMEMD 0x00887640 -- the mouse/cursor singleton pointer. Action
-// reads it for the click Y-coordinate: `MOV ECX,[DAT_00887640]; MOV
-// EAX,[ECX]; CALL [EAX+0x30]`, i.e. a load of the pointer variable followed
-// by a vtable dereference on what it points to (the mouse/cursor object
-// noted in docs/decomp_spec/re_findings/frontend_gadget_system.md sec 2.1).
-// Action is written as a naked instruction stream (see the .cpp), so this is
-// declared just as an opaque global for the `mov ecx, [DAT_00887640]`
-// operand to bind to.
-extern "C" void* DAT_00887640;
+// ---------------------------------------------------------------------------
+// MouseShim -- the mouse/cursor object behind the 0x00887640 pointer, modelled
+// only for the one slot Action reaches: `MOV ECX,[DAT_00887640]; MOV EAX,[ECX];
+// CALL [EAX+0x30]`, whose int result is the cursor Y used for the row hit-test.
+// ---------------------------------------------------------------------------
+struct MouseVtbl;
+struct MouseShim { MouseVtbl* Vfptr; };
+typedef int (MouseShim::*MS_IntVoidFn)();
+struct MouseVtbl
+{
+    char         _pad00[0x30];
+    MS_IntVoidFn At_30;   // cursor Y -- called from ListClass::Action
+};
+GG_STATIC_ASSERT(offsetof(MouseVtbl, At_30) == 0x30);
+
+// GLOBAL: GAMEMD 0x00887640 -- the mouse/cursor singleton pointer.
+extern "C" MouseShim* DAT_00887640;
 
 #endif  // GG_MATCH_UI_LIST_CLASS_BASE_METHODS_H

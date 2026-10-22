@@ -38,10 +38,13 @@ extern DirectSoundResource_00409FF0* DAT_0087E89C;
 // GLOBAL: GAMEMD 0x87E898
 extern int DAT_0087E898;
 // GLOBAL: GAMEMD 0x87E878
-extern volatile int DAT_0087E878;
+extern int DAT_0087E878;  // reference count; main thread only (0x409470, 0x409FF0)
 // GLOBAL: GAMEMD 0x87E850
 extern int DAT_0087E850;
 // GLOBAL: GAMEMD 0x87E858
+// Volatile with binary evidence: 0x409470 starts FUN_004095B0 with
+// CreateThread(lpParameter = 0x87E850), and that thread procedure writes this
+// field (param+8) on exit; 0x40A047 spins on it from the main thread.
 extern volatile int DAT_0087E858;
 // GLOBAL: GAMEMD 0x87E86C
 extern HANDLE DAT_0087E86C;

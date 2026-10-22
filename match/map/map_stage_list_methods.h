@@ -284,17 +284,13 @@ class MapStageList
 {
 public:
     MapStageVector Stages;      // +0x00 (the object's own vector base)
-    // The four bounds fields are `volatile` for one reason and it is a
-    // codegen one: without it cl hoists the next loop's `Count` load
-    // above these four stores, where retail issues the stores first and the
-    // load after (0x5CF629..0x5CF655). cl reorders a load across stores it can
-    // prove do not alias, and every one of these is a member of the same
-    // object; the qualifier removes the proof and nothing else, since a
-    // constant store to a member encodes identically either way. 90.3 to 100.
-    volatile int   BoundsX;     // +0x18
-    volatile int   BoundsY;     // +0x1C
-    volatile int   BoundsW;     // +0x20
-    volatile int   BoundsH;     // +0x24
+    // Plain ints. ClearAll (0x5CF5F0) resets them and is a recorded partial:
+    // retail issues these four stores before the next loop's Count load and cl
+    // hoists the load above them.
+    int            BoundsX;     // +0x18
+    int            BoundsY;     // +0x1C
+    int            BoundsW;     // +0x20
+    int            BoundsH;     // +0x24
     StringMember   Name;        // +0x28
     MSAnimEntryVector  Strings;     // +0x2C
     MSSfxEntryVector  Titles;      // +0x44

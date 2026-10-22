@@ -1,5 +1,34 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **7,180 matched function
+rows**, **427 partial rows**, **7,607 manifest rows**, **1,306 manifest
+translation units**, and **1,314 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The four remaining naked-assembly bodies are now C++. BasePlanningCellContainer's
+AddCapacity and Dir16::StepToward match exactly; VelocityClass::SetPitch (96.4)
+and ListClass::Action (93.5) are documented partials. Removing compiler-steering
+volatiles from the MapStageList bounds, 0x89C818 and the sound reference count
+demotes 0x5CF5F0 (90.3) and 0x409FF0 (29.7). The naked-body baseline is now zero.
+
+The 7,180 matches represent 36.3% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **522,229
+bytes**, or 13.8% of 3,797,269 listed function bytes. The padding heuristic
+misses 536 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: tag, tag-type, target and globals units
+
 As of **2026-10-22**, the verified snapshot reports **7,184 matched function
 rows**, **423 partial rows**, **7,607 manifest rows**, **1,306 manifest
 translation units**, and **1,314 tracked C++ files**. Whole-repository regression
@@ -21,14 +50,6 @@ bytes**, or 13.8% of 3,797,269 listed function bytes. The padding heuristic
 misses 536 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: ObjectClass and MissionClass slot tables
 

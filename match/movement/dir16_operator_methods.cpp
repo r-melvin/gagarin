@@ -62,88 +62,21 @@ bool Dir16::IsWithin(Dir16 const& target, Dir16 const& tolerance) const
 // and the answer is true; otherwise it moves one full step in whichever
 // direction the wrapped difference points and the answer is false.
 //
-// STILL A TRANSCRIPTION -- debt, not a match. Same screening result as
-// IsWithin: no EBP frame (EBP is used as an ordinary data register holding the
-// rate, `MOV BP,word ptr [EDX]`), so this is frame-pointer-omitted compiler
-// output, not hand-written assembly.
-//
-// The equivalent C++ is
-//
-//   short r = rate.Raw, tgt = target.Raw, cur = Raw;
-//   volatile int absRate = abs((int)r);        // retail spills it to the
-//   int back = cur - tgt;                      // dead argument slot
-//   if (absRate >= abs((int)(short)back)) { Raw = tgt; return true; }
-//   int fwd = tgt - cur;
-//   if ((short)fwd < 0) { Raw = (short)(cur - r); return false; }
-//   Raw = (short)(r + cur);
-//   return false;
-//
-// which reaches 18.4% and reproduces the middle of the body -- the spill of the
-// rate's absolute value into the dead argument slot, the reload, the compare
-// and the whole snap-to-target arm -- byte for byte. It carries the same
-// absolute-value scheduling difference as IsWithin above, plus one consequence
-// of it: retail needs four callee-saved registers because the rate stays live
-// in EBP across both later arms, and cl manages with three. Spellings measured
-// this pass, on top of the earlier sweep that capped at 12.2%: the plain
-// abs()-first form (12.2%), the same with the rate's abs volatile (2.0%), a
-// single trailing return through a named bool (2.0%), the two differences taken
-// as ints and narrowed at the test (18.4%, the best), the same without the
-// volatile (12.2%), both differences kept in short arithmetic (2.0%), and the
-// last two arms exchanged (2.0%). Solve IsWithin's register-pressure residual
-// first; the two share one cause.
-__declspec(naked) bool Dir16::StepToward(Dir16 const&, Dir16 const&)
+// MATCHED (100%, 49/49) as plain C++. The lever is taking both differences
+// through the inline Dir16 operator- (as IsWithin does) and giving the
+// backward-step arm its own `return false`.
+bool Dir16::StepToward(Dir16 const& target, Dir16 const& rate)
 {
-    __asm {
-        mov     edx, dword ptr [esp+8]
-        mov     eax, dword ptr [esp+4]
-        push    ebx
-        push    ebp
-        mov     bp, word ptr [edx]
-        push    esi
-        push    edi
-        mov     di, word ptr [eax]
-        mov     si, word ptr [ecx]
-        movsx   eax, bp
-        cdq
-        xor     eax, edx
-        mov     ebx, esi
-        sub     eax, edx
-        sub     ebx, edi
-        mov     dword ptr [esp+0x14], eax
-        movsx   eax, bx
-        cdq
-        xor     eax, edx
-        sub     eax, edx
-        mov     edx, dword ptr [esp+0x14]
-        cmp     edx, eax
-        jl      L_step
-        mov     word ptr [ecx], di
-        pop     edi
-        pop     esi
-        pop     ebp
-        mov     al, 1
-        pop     ebx
-        ret     8
-    L_step:
-        sub     edi, esi
-        test    di, di
-        jge     L_forward
-        sub     esi, ebp
-        pop     edi
-        mov     word ptr [ecx], si
-        pop     esi
-        pop     ebp
-        xor     al, al
-        pop     ebx
-        ret     8
-    L_forward:
-        add     ebp, esi
-        pop     edi
-        mov     word ptr [ecx], bp
-        pop     esi
-        pop     ebp
-        xor     al, al
-        pop     ebx
-        ret     8
+    Dir16 diff = *this - target;
+    if (abs(rate.Raw) >= abs(diff.Raw)) {
+        Raw = target.Raw;
+        return true;
     }
+    Dir16 ahead = target - *this;
+    if (ahead.Raw < 0) {
+        Raw -= rate.Raw;
+        return false;
+    }
+    Raw += rate.Raw;
+    return false;
 }

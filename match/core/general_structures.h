@@ -26,6 +26,9 @@ struct CellStruct
 // 8-byte element stride (LEA [EBX*8]).
 struct BasePlanningCell
 {
+    // Empty default constructor: AddCapacity's array new keeps the dead
+    // counter store of its (emptied) construction loop, so the type has one.
+    BasePlanningCell() {}
     int        Weight;    // +0x00
     CellStruct Position;  // +0x04
 };

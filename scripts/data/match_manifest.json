@@ -1150,8 +1150,9 @@
   "sym": "?FUN_00409FF0@@YAXXZ",
   "len": "0x94",
   "name": "FUN_00409FF0",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 29.7,
+  "note": "volatile removed from DAT_0087E878 (no thread evidence). Retail reloads the count after the clamp; cl reuses EAX and adds one jmp, shifting the positional score."
  },
  {
   "tu": "match/audio/dsound_access_methods.cpp",
@@ -24320,8 +24321,9 @@
   "sym": "?ClearAll@MapStageList@@QAEXXZ",
   "len": "0xbf",
   "name": "MapStageList",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 90.3,
+  "note": "volatile removed from MapStageList Bounds members (steering). Multiset identical; cl hoists the second loop Count load above the four bounds stores."
  },
  {
   "tu": "match/map/map_stage_list_methods.cpp",
@@ -26110,9 +26112,10 @@
   "addr": "0x005B2A30",
   "sym": "?SetPitch@VelocityClass@@QAEXABUDir16@@@Z",
   "len": "0x156",
-  "name": "?SetPitch@VelocityClass@@QAEXABUDir16@@@",
-  "status": "matched",
-  "pct": 100
+  "name": "VelocityClass::SetPitch",
+  "status": "partial",
+  "pct": 96.4,
+  "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; one load of Z high half scheduled after the first sqrt spill instead of before."
  },
  {
   "tu": "match/movement/waypoint_path_class_methods.cpp",
@@ -29353,8 +29356,9 @@
   "sym": "?Action@ListClass@@QAEIIPAIH@Z",
   "len": "0xf0",
   "name": "ListClass::Action",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 93.5,
+  "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; load order of Y/CurrentTopIndex and the List.Count reload in the hit-test differ."
  },
  {
   "tu": "match/ui/list_class_base_methods.cpp",

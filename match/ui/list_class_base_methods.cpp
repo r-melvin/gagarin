@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   ListClass's own sixteen-body core (dtor, list mutation, scrolling,
-//   Add/AddHead/AddTail/Remove overrides), matched byte-for-byte against the
+//   Add/AddHead/AddTail/Remove overrides), diffed against the
 //   user's retail gamemd.exe v1.001. Bodies ordered ascending by address.
 //
-//   Fifteen of the sixteen are typed C++. One (Action, 0x557830) is still a
-//   `__declspec(naked)` instruction stream; the recorded residual sits above
-//   it. An earlier revision of this file had TEN naked bodies on the theory
+//   All sixteen are typed C++; Action (0x557830) is a recorded partial. An
+//   earlier revision of this file had TEN naked bodies on the theory
 //   that a shared block reached from two call sites, or several foreign
 //   vtables dispatched in one body, could not be regenerated from C++. That
 //   theory was wrong for nine of the ten and the note is retracted -- see the
@@ -34,10 +33,6 @@
 //       `/` -- there is no segment override, no string instruction, no
 //       BSWAP/RDTSC/CPUID/LOOP, no PUSHFD/POPFD and no carry-flag reuse.
 #include "list_class_base_methods.h"
-
-// Declared only as a relocation target for the one surviving naked body;
-// neither defined nor linked here.
-extern "C" void __stdcall LC_BaseAction(void*);   // 0x48E5A0 ControlClass::Action
 
 // FUNCTION: GAMEMD 0x557600
 // ListClass::~ListClass. If scrolling was active, restores the Width the
@@ -182,148 +177,44 @@ void ListClass::RemoveItem(wchar_t const* text)
 // Keyboard bit. Every path falls through to ControlClass::Action, each with its
 // own EDI/ESI/EBX epilogue (four separate `ret 0xc` tails).
 //
-// STILL NAKED -- recorded residual, do not re-run these. The C++ below is the
-// recovered source and reaches 97.8% (91/93 instructions, multiset IDENTICAL,
-// every branch target and every register assignment correct):
-//
-//     if (flags & 4) { *key = 0; BaseAction(flags & ~4, key, 0); return 1; }
-//     if (flags & 0x100) {
-//         if (*key == 0x26)      { (this->*Vfptr->At_A4)(-1); *key = 0; }
-//         else if (*key == 0x28) { (this->*Vfptr->At_A4)(1);  *key = 0; }
-//         else                   { flags &= ~0x100; }
-//     } else {
-//         MouseShim* m = DAT_00887640;
-//         int mouseY = (m->*m->Vfptr->At_30)();
-//         int top = *(volatile int*)&CurrentTopIndex;
-//         int row = (mouseY - Y - 1) / LineHeight + top;
-//         SelectedIndex = row;
-//         int last = *(volatile int*)&List.Count - 1;
-//         if (row >= last) { row = last; }
-//         SelectedIndex = row;
-//         if (row == -1) { SelectedIndex = 0; }
-//     }
-//     return BaseAction(flags, key, 0);
-//
-// The entire residual is ONE transposed pair of loads at 0x5578D8: retail
-// issues `MOV EDX,[ESI+0x10]` (Y) then `MOV ECX,[ESI+0x170]` (CurrentTopIndex)
-// before the `SUB EAX,EDX`; cl emits the same two loads into the same two
-// registers in the opposite order. Sixteen materially different spellings were
-// scored against 0x557830 in one batch each: both summand orders; the divide
-// bound to its own local; the numerator bound to its own local; the mouse call
-// bound to its own local; `Y`, `CurrentTopIndex` and both together read
-// `volatile`; `CurrentTopIndex` named as a local (forces it into EDI with an
-// extra PUSH/POP pair, 55.8%); `row` initialised from CurrentTopIndex and
-// accumulated (58.5%); the mouse arm hoisted ahead of the keyboard arms in an
-// else-if chain (31.2%); the whole object re-derived through a `self` alias;
-// and four clamp spellings. Best non-naked result 97.8%, second best 96.8%.
-// Two named locals were the key to getting this far (the clamp into a fresh
-// `row` and the volatile `last` took it from 80.6% to 96.8%); nothing reaches
-// the last two bytes. Multiset-identical plus two transposed independent
-// instructions is exactly the case docs/matching_methodology_and_toolchain.md
-// records as a naked body's legitimate use.
-__declspec(naked) unsigned ListClass::Action(unsigned /*flags*/, unsigned* /*key*/, int /*extra*/)
+// PARTIAL, 93.5% (87/93, multiset identical). The residual is load order in
+// the hit-test: retail loads Y then CurrentTopIndex ahead of the subtraction
+// and re-reads List.Count for the clamp; cl orders those loads differently.
+// Other natural spellings: the row computed straight into SelectedIndex
+// (80.6%), the key test as a switch with a ternary clamp (53.8%), and the
+// summands swapped or the mouse call inlined (both 93.5%).
+unsigned ListClass::Action(unsigned flags, unsigned* key, int extra)
 {
-    __asm {
-        push    ebx
-        mov     ebx, dword ptr [esp+0x8]
-        push    esi
-        mov     esi, ecx
-        test    bl, 4
-        jz      L_not_release
-        mov     eax, dword ptr [esp+0x10]
-        push    0
-        and     ebx, 0xfffffffb
-        push    eax
-        push    ebx
-        mov     dword ptr [eax], 0
-        call    LC_BaseAction
-        pop     esi
-        mov     eax, 1
-        pop     ebx
-        ret     0xc
-    L_not_release:
-        push    edi
-        mov     edi, dword ptr [esp+0x14]
-        test    bh, 1
-        jz      L_mouse
-        mov     eax, dword ptr [edi]
-        cmp     eax, 0x26
-        jnz     L_check_pgdn
-        mov     eax, dword ptr [esi]
-        push    -1
-        mov     ecx, esi
-        call    dword ptr [eax+0xa4]
-        push    0
-        push    edi
-        push    ebx
-        mov     ecx, esi
-        mov     dword ptr [edi], 0
-        call    LC_BaseAction
-        pop     edi
-        pop     esi
-        pop     ebx
-        ret     0xc
-    L_check_pgdn:
-        cmp     eax, 0x28
-        jnz     L_other_key
-        mov     edx, dword ptr [esi]
-        push    1
-        mov     ecx, esi
-        call    dword ptr [edx+0xa4]
-        push    0
-        push    edi
-        push    ebx
-        mov     ecx, esi
-        mov     dword ptr [edi], 0
-        call    LC_BaseAction
-        pop     edi
-        pop     esi
-        pop     ebx
-        ret     0xc
-    L_other_key:
-        and     bh, 0xfe
-        push    0
-        push    edi
-        push    ebx
-        mov     ecx, esi
-        call    LC_BaseAction
-        pop     edi
-        pop     esi
-        pop     ebx
-        ret     0xc
-    L_mouse:
-        mov     ecx, dword ptr [DAT_00887640]
-        mov     eax, dword ptr [ecx]
-        call    dword ptr [eax+0x30]
-        mov     edx, dword ptr [esi+0x10]
-        mov     ecx, dword ptr [esi+0x170]
-        sub     eax, edx
-        dec     eax
-        cdq
-        idiv    dword ptr [esi+0x4c]
-        add     eax, ecx
-        mov     dword ptr [esi+0x16c], eax
-        mov     ecx, dword ptr [esi+0x44]
-        dec     ecx
-        cmp     eax, ecx
-        jl      L_have_row
-        mov     eax, ecx
-    L_have_row:
-        cmp     eax, -1
-        mov     dword ptr [esi+0x16c], eax
-        jnz     L_mouse_base
-        mov     dword ptr [esi+0x16c], 0
-    L_mouse_base:
-        push    0
-        push    edi
-        push    ebx
-        mov     ecx, esi
-        call    LC_BaseAction
-        pop     edi
-        pop     esi
-        pop     ebx
-        ret     0xc
+    if (flags & 4) {
+        *key = 0;
+        BaseAction(flags & ~4, key, 0);
+        return 1;
     }
+    if (flags & 0x100) {
+        if (*key == 0x26) {
+            (this->*Vfptr->At_A4)(-1);
+            *key = 0;
+        } else if (*key == 0x28) {
+            (this->*Vfptr->At_A4)(1);
+            *key = 0;
+        } else {
+            flags &= ~0x100;
+        }
+    } else {
+        MouseShim* mouse = DAT_00887640;
+        int mouseY = (mouse->*mouse->Vfptr->At_30)();
+        int row = (mouseY - Y - 1) / LineHeight + CurrentTopIndex;
+        SelectedIndex = row;
+        int last = List.Count - 1;
+        if (row >= last) {
+            row = last;
+        }
+        SelectedIndex = row;
+        if (row == -1) {
+            SelectedIndex = 0;
+        }
+    }
+    return BaseAction(flags, key, 0);
 }
 
 // FUNCTION: GAMEMD 0x557A20

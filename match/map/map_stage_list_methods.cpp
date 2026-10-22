@@ -54,6 +54,11 @@ MapStageList::~MapStageList() throw()
 // and then asks the vector itself to drop its block, and each walks a signed
 // index against the live count reloaded every turn -- retail's `JL` on a
 // reloaded `Count` is a plain indexed `for`, not a pointer walk.
+//
+// PARTIAL, 90.3% (65/72, multiset identical). Retail issues the four bounds
+// stores before the second loop's first Count load; cl hoists that load above
+// them. Per-loop counters and a `while` form for the second sweep score the
+// same.
 void MapStageList::ClearAll()
 {
     int i;

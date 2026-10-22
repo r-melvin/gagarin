@@ -29,6 +29,7 @@ GG_STATIC_ASSERT(offsetof(Global_0089C818_View, words) == 0);
 GG_STATIC_ASSERT(sizeof(Global_0089C818_View) == 4);
 
 // GLOBAL: GAMEMD 0x0089C818
-// Volatile preserves the separate observed accesses; it is a source choice.
-extern volatile Global_0089C818_View DAT_0089C818;
+// Not volatile: the only writer is the static initialiser 0x43B0E0 (__xc
+// entry 0x8127A4) and no thread procedure touches it.
+extern Global_0089C818_View DAT_0089C818;
 #endif
