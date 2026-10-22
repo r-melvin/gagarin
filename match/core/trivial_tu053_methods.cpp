@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Bytes matched against retail gamemd.exe v1.001 at each address below.
+//
+//   Ordered ascending by retail address.
+
+#include "trivial_tu053_methods.h"
+
+// FUNCTION: GAMEMD 0x48BA90
+// Member getter (dword).
+int Obj_0048BA90::FUN_0048BA90() const
+{
+    return unknown_20;
+}
