@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: frozen M3 candidate; instructions revalidated against pinned retail gamemd.exe.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Cluster r-lucent50, families RLEBlitTransLucent50AlphaZRead / AlphaZReadWarp /
 // AlphaZReadWrite <us>. No /GX. See r_lucent50.h for the layout.
 //

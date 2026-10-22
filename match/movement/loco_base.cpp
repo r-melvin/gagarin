@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra; behavioral names remain hypotheses where noted.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // No /GX: none of these bodies unwinds, and the deleting destructor needs no
 // handler; this candidate was compiled with and without /GX.
 //

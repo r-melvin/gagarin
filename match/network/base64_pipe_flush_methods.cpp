@@ -11,7 +11,7 @@
 // Pending, and forms the two asserted buffer addresses. No full object-size
 // or destructor/table claim is made.
 // Paired /GX probe produced the same exact body and relocation targets.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 #include "base64_pipe_flush_methods.h"
 
 // FUNCTION: GAMEMD 0x42FD30 (decl; reloc) -- external call target only.

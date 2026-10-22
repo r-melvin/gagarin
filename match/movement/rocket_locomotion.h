@@ -47,7 +47,7 @@
 // Calls reuse the matched tracker methods; Rocket creates no storage owner.
 
 // FUNCTION: GAMEMD 0x4CADE0 (decl; reloc) - inferred double ABI from Rocket callers.
-extern "C" double RocketAtan(double v);
+extern "C" double __cdecl RocketAtan(double v);
 
 // GLOBAL: GAMEMD 0x7E9AD0 - CLSID of this locomotor (16 bytes, read from the image).
 extern "C" const CLSID CLSID_RocketLocomotion;

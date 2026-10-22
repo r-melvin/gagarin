@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5D5F30.
 
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // No /GX: retail inlines the DynamicVectorClass constructor around the
 // static guard with no EH frame; under /GX cl calls the whole constructor.
 #include "mp_game_mode_class_get_methods.h"

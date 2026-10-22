@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 // Cluster methods use the existing 0x644890 and 0x645820 function bodies as
 // source hypotheses; row identity and relocations require the current raw oracle.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 
 // Binary-backed string references (retail bytes including the terminating NUL):
 // STRING: GAMEMD 0x817474 "<none>"

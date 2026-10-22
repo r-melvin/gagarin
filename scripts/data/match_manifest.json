@@ -308,11 +308,11 @@
  {
   "tu": "match/ai/refresh_all_sides_methods.cpp",
   "addr": "0x452D40",
-  "sym": "?FUN_00452D40@@YAXXZ",
+  "sym": "?FUN_00452D40@@YIXXZ",
   "len": "0x80",
   "name": "FUN_00452D40",
-  "status": "partial",
-  "pct": 82.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ai/script_class_action_methods.cpp",
@@ -668,7 +668,7 @@
  {
   "tu": "match/ai/team_type_class_house_methods.cpp",
   "addr": "0x6F2040",
-  "sym": "?ProcessAllTaskforces@TeamTypeClass@@SAXXZ",
+  "sym": "?ProcessAllTaskforces@TeamTypeClass@@SIXXZ",
   "len": "0x25",
   "name": "ProcessAllTaskforces",
   "status": "matched",
@@ -1460,7 +1460,7 @@
  {
   "tu": "match/audio/vox_class_play_methods.cpp",
   "addr": "0x7531A0",
-  "sym": "?DeleteAll@VoxClass@@SAXXZ",
+  "sym": "?DeleteAll@VoxClass@@SIXXZ",
   "len": "0xa2",
   "name": "VoxClass::DeleteAll",
   "status": "matched",
@@ -1946,7 +1946,7 @@
  {
   "tu": "match/combat/lightning_storm_methods.cpp",
   "addr": "0x53AB50",
-  "sym": "?Init@LightningStorm@@SAXXZ",
+  "sym": "?Init@LightningStorm@@SIXXZ",
   "len": "0x12",
   "name": "LightningStorm::Init",
   "status": "matched",
@@ -2731,7 +2731,7 @@
  {
   "tu": "match/combat/veinhole_monster_deleteall_methods.cpp",
   "addr": "0x74D760",
-  "sym": "?DeleteAll@VeinholeMonsterClass@@SAXXZ",
+  "sym": "?DeleteAll@VeinholeMonsterClass@@SIXXZ",
   "len": "0x5C",
   "name": "DeleteAll",
   "status": "matched",
@@ -2740,7 +2740,7 @@
  {
   "tu": "match/combat/veinhole_monster_deleteall_methods.cpp",
   "addr": "0x74E880",
-  "sym": "?DeleteVeinholeGrowthData@VeinholeMonsterClass@@SAXXZ",
+  "sym": "?DeleteVeinholeGrowthData@VeinholeMonsterClass@@SIXXZ",
   "len": "0x1D",
   "name": "DeleteVeinholeGrowthData",
   "status": "matched",
@@ -6827,7 +6827,7 @@
  {
   "tu": "match/core/fps_counter_methods.cpp",
   "addr": "0x55AF60",
-  "sym": "?GetMinFrameRate@Detail@@SAIXZ",
+  "sym": "?GetMinFrameRate@Detail@@SIIXZ",
   "len": "0x49",
   "name": "Detail::GetMinFrameRate",
   "status": "matched",
@@ -10391,7 +10391,7 @@
  {
   "tu": "match/core/scenario_class_methods.cpp",
   "addr": "0x4AE4C0",
-  "sym": "?UpdateCellLighting@ScenarioClass@@SAXXZ",
+  "sym": "?UpdateCellLighting@ScenarioClass@@SIXXZ",
   "len": "0x2E",
   "name": "UpdateCellLighting",
   "status": "matched",
@@ -10418,16 +10418,16 @@
  {
   "tu": "match/core/scenario_class_pause_methods.cpp",
   "addr": "0x683EB0",
-  "sym": "?PauseGame@ScenarioClass@@SAXXZ",
+  "sym": "?PauseGame@ScenarioClass@@SIXXZ",
   "len": "0xfa",
   "name": "ScenarioClass::PauseGame",
-  "status": "partial",
-  "pct": 91.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/scenario_class_resume_methods.cpp",
   "addr": "0x683FB0",
-  "sym": "?ResumeGame@ScenarioClass@@SAXXZ",
+  "sym": "?ResumeGame@ScenarioClass@@SIXXZ",
   "len": "0xa2",
   "name": "ScenarioClass::ResumeGame",
   "status": "matched",
@@ -13118,7 +13118,7 @@
  {
   "tu": "match/core/tick_all_workers_methods.cpp",
   "addr": "0x408270",
-  "sym": "?FUN_00408270@@YAXXZ",
+  "sym": "?FUN_00408270@@YIXXZ",
   "len": "0x7b",
   "name": "FUN_00408270",
   "status": "partial",
@@ -13127,7 +13127,7 @@
  {
   "tu": "match/core/tick_snapshot_methods.cpp",
   "addr": "0x4093F0",
-  "sym": "?FUN_004093F0@@YA_JXZ",
+  "sym": "?FUN_004093F0@@YI_JXZ",
   "len": "0x7b",
   "name": "FUN_004093F0",
   "status": "matched",
@@ -13514,7 +13514,7 @@
  {
   "tu": "match/core/vector_array_init_methods.cpp",
   "addr": "0x412870",
-  "sym": "?FUN_00412870@@YAXXZ",
+  "sym": "?FUN_00412870@@YIXXZ",
   "len": "0x72",
   "name": "FUN_00412870",
   "status": "matched",
@@ -24701,7 +24701,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEDB0",
-  "sym": "?MSAnimResetCounters@@YAXXZ",
+  "sym": "?MSAnimResetCounters@@YIXXZ",
   "len": "0x17",
   "name": "",
   "status": "matched",
@@ -24764,7 +24764,7 @@
  {
   "tu": "match/map/tile_link_resolve_methods.cpp",
   "addr": "0x465CC0",
-  "sym": "?FUN_00465CC0@@YAXXZ",
+  "sym": "?FUN_00465CC0@@YIXXZ",
   "len": "0x6e",
   "name": "FUN_00465CC0",
   "status": "matched",
@@ -24890,7 +24890,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74CDF0",
-  "sym": "?UpdateAllVeinholes@VeinholeMonsterClass@@SAXXZ",
+  "sym": "?UpdateAllVeinholes@VeinholeMonsterClass@@SIXXZ",
   "len": "0x5c",
   "name": "VeinholeMonsterClass::UpdateAllVeinholes",
   "status": "matched",
@@ -24899,7 +24899,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EA30",
-  "sym": "?DestroyAll@VeinholeMonsterClass@@SAXXZ",
+  "sym": "?DestroyAll@VeinholeMonsterClass@@SIXXZ",
   "len": "0x3f",
   "name": "VeinholeMonsterClass::DestroyAll",
   "status": "matched",
@@ -24917,7 +24917,7 @@
  {
   "tu": "match/map/veinhole_monster_methods.cpp",
   "addr": "0x74EF00",
-  "sym": "?GetTerrainType@VeinholeMonsterClass@@SAPAXXZ",
+  "sym": "?GetTerrainType@VeinholeMonsterClass@@SIPAXXZ",
   "len": "0xc",
   "name": "VeinholeMonsterClass::GetTerrainType",
   "status": "matched",
@@ -25880,7 +25880,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661CB0",
-  "sym": "?Init_DAT_00B04E20@@YAXXZ",
+  "sym": "?Init_DAT_00B04E20@@YIXXZ",
   "len": "0x28",
   "name": "Init_DAT_00B04E20",
   "status": "matched",
@@ -25889,7 +25889,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661CE0",
-  "sym": "?Init_DAT_00B04E70@@YAXXZ",
+  "sym": "?Init_DAT_00B04E70@@YIXXZ",
   "len": "0x13",
   "name": "Init_DAT_00B04E70",
   "status": "matched",
@@ -25898,7 +25898,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661D00",
-  "sym": "?Init_DAT_00B04E58@@YAXXZ",
+  "sym": "?Init_DAT_00B04E58@@YIXXZ",
   "len": "0x13",
   "name": "Init_DAT_00B04E58",
   "status": "matched",
@@ -25907,7 +25907,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661D20",
-  "sym": "?Init_DAT_00B04E50@@YAXXZ",
+  "sym": "?Init_DAT_00B04E50@@YIXXZ",
   "len": "0x13",
   "name": "Init_DAT_00B04E50",
   "status": "matched",
@@ -25916,7 +25916,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661D40",
-  "sym": "?Init_DAT_00B04E28@@YAXXZ",
+  "sym": "?Init_DAT_00B04E28@@YIXXZ",
   "len": "0x13",
   "name": "Init_DAT_00B04E28",
   "status": "matched",
@@ -25925,7 +25925,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661D60",
-  "sym": "?Init_DAT_00B04E00@@YAXXZ",
+  "sym": "?Init_DAT_00B04E00@@YIXXZ",
   "len": "0x13",
   "name": "Init_DAT_00B04E00",
   "status": "matched",
@@ -25934,7 +25934,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661D80",
-  "sym": "?Init_DAT_00B04E78@@YAXXZ",
+  "sym": "?Init_DAT_00B04E78@@YIXXZ",
   "len": "0x31",
   "name": "Init_DAT_00B04E78",
   "status": "matched",
@@ -25943,7 +25943,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661DC0",
-  "sym": "?Init_DAT_00B04E30@@YAXXZ",
+  "sym": "?Init_DAT_00B04E30@@YIXXZ",
   "len": "0x21",
   "name": "Init_DAT_00B04E30",
   "status": "matched",
@@ -25952,7 +25952,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661DF0",
-  "sym": "?Init_DAT_00B04E48@@YAXXZ",
+  "sym": "?Init_DAT_00B04E48@@YIXXZ",
   "len": "0x2c",
   "name": "Init_DAT_00B04E48",
   "status": "matched",
@@ -25961,7 +25961,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661E20",
-  "sym": "?Init_DAT_00B04E6C@@YAXXZ",
+  "sym": "?Init_DAT_00B04E6C@@YIXXZ",
   "len": "0x27",
   "name": "Init_DAT_00B04E6C",
   "status": "matched",
@@ -25970,7 +25970,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661E50",
-  "sym": "?Init_DAT_00B04E18@@YAXXZ",
+  "sym": "?Init_DAT_00B04E18@@YIXXZ",
   "len": "0xf",
   "name": "Init_DAT_00B04E18",
   "status": "matched",
@@ -25979,7 +25979,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661E60",
-  "sym": "?Init_DAT_00B04E38@@YAXXZ",
+  "sym": "?Init_DAT_00B04E38@@YIXXZ",
   "len": "0x12",
   "name": "Init_DAT_00B04E38",
   "status": "matched",
@@ -25988,7 +25988,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661E80",
-  "sym": "?Init_DAT_00B04E60@@YAXXZ",
+  "sym": "?Init_DAT_00B04E60@@YIXXZ",
   "len": "0x1a",
   "name": "Init_DAT_00B04E60",
   "status": "matched",
@@ -25997,7 +25997,7 @@
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
   "addr": "0x661EA0",
-  "sym": "?Init_DAT_00B04E08@@YAXXZ",
+  "sym": "?Init_DAT_00B04E08@@YIXXZ",
   "len": "0x17",
   "name": "Init_DAT_00B04E08",
   "status": "matched",
@@ -28123,11 +28123,11 @@
  {
   "tu": "match/platform/mix_file_class.cpp",
   "addr": "0x5301A0",
-  "sym": "?MixFileClass_Bootstrap@@YA_NXZ",
+  "sym": "?MixFileClass_Bootstrap@@YI_NXZ",
   "len": "0x2B4",
   "name": "MixFileClass::Bootstrap",
   "status": "partial",
-  "pct": 96.5
+  "pct": 97.4
  },
  {
   "tu": "match/platform/mix_file_class.cpp",
@@ -28285,7 +28285,7 @@
  {
   "tu": "match/renderer/color_scheme_count_methods.cpp",
   "addr": "0x626C60",
-  "sym": "?GetNumberOfSchemes@ColorScheme_00626C60@@SAHXZ",
+  "sym": "?GetNumberOfSchemes@ColorScheme_00626C60@@SIHXZ",
   "len": "0x137",
   "name": "ColorScheme::GetNumberOfSchemes",
   "status": "matched",
@@ -28402,11 +28402,11 @@
  {
   "tu": "match/renderer/font_bias_methods.cpp",
   "addr": "0x45E8F0",
-  "sym": "?FUN_0045E8F0@@YAXXZ",
+  "sym": "?FUN_0045E8F0@@YIXXZ",
   "len": "0x72",
   "name": "FUN_0045E8F0",
   "status": "partial",
-  "pct": 86.0
+  "pct": 95.3
  },
  {
   "tu": "match/renderer/light_source_class_methods.cpp",
@@ -28555,11 +28555,11 @@
  {
   "tu": "match/renderer/present_frame_methods.cpp",
   "addr": "0x40A850",
-  "sym": "?FUN_0040A850@@YAXXZ",
+  "sym": "?FUN_0040A850@@YIXXZ",
   "len": "0xab",
   "name": "FUN_0040A850",
   "status": "partial",
-  "pct": 74.0
+  "pct": 78.0
  },
  {
   "tu": "match/renderer/scalar_deleting_dtor_methods.cpp",
@@ -28717,7 +28717,7 @@
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF390",
-  "sym": "?FUN_005FF390@@YAXXZ",
+  "sym": "?FUN_005FF390@@YIXXZ",
   "len": "0x84",
   "name": "FUN_005FF390",
   "status": "matched",
@@ -28726,7 +28726,7 @@
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF420",
-  "sym": "?FUN_005FF420@@YAXXZ",
+  "sym": "?FUN_005FF420@@YIXXZ",
   "len": "0x3D7",
   "name": "FUN_005FF420",
   "status": "partial",
@@ -28735,7 +28735,7 @@
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
   "addr": "0x5FF800",
-  "sym": "?FUN_005FF800@@YAXXZ",
+  "sym": "?FUN_005FF800@@YIXXZ",
   "len": "0x41",
   "name": "FUN_005FF800",
   "status": "matched",
@@ -28807,7 +28807,7 @@
  {
   "tu": "match/renderer/yrddraw_dispose_methods.cpp",
   "addr": "0x6BB8E0",
-  "sym": "?DisposeOfStuff@YRDDraw@@SAXXZ",
+  "sym": "?DisposeOfStuff@YRDDraw@@SIXXZ",
   "len": "0xAF",
   "name": "YRDDraw::DisposeOfStuff",
   "status": "matched",
@@ -28816,7 +28816,7 @@
  {
   "tu": "match/renderer/yrddraw_restore_methods.cpp",
   "addr": "0x4A44F0",
-  "sym": "?YRDDraw_Restore@@YAXXZ",
+  "sym": "?YRDDraw_Restore@@YIXXZ",
   "len": "0xcb",
   "name": "YRDDraw::Restore",
   "status": "matched",
@@ -29770,7 +29770,7 @@
  {
   "tu": "match/ui/string_table_unload_methods.cpp",
   "addr": "0x734D30",
-  "sym": "?Unload@StringTable@@SAXXZ",
+  "sym": "?Unload@StringTable@@SIXXZ",
   "len": "0xf6",
   "name": "StringTable::Unload",
   "status": "matched",
@@ -30058,7 +30058,7 @@
  {
   "tu": "match/ui/ui_updated_methods.cpp",
   "addr": "0x623120",
-  "sym": "?Updated@UI@@SA_NXZ",
+  "sym": "?Updated@UI@@SI_NXZ",
   "len": "0x42",
   "name": "UI::Updated",
   "status": "matched",
@@ -30319,7 +30319,7 @@
  {
   "tu": "match/core/static_reset_004cb990.cpp",
   "addr": "0x4CB990",
-  "sym": "_FUN_004CB990",
+  "sym": "@FUN_004CB990@0",
   "len": "0x17",
   "name": "FUN_004CB990",
   "status": "matched",
@@ -30328,7 +30328,7 @@
  {
   "tu": "match/core/static_reset_004cb990.cpp",
   "addr": "0x4CB9E0",
-  "sym": "_FUN_004CB9E0",
+  "sym": "@FUN_004CB9E0@0",
   "len": "0x13",
   "name": "FUN_004CB9E0",
   "status": "matched",
@@ -30337,7 +30337,7 @@
  {
   "tu": "match/core/static_reset_004cb990.cpp",
   "addr": "0x4CBA00",
-  "sym": "_FUN_004CBA00",
+  "sym": "@FUN_004CBA00@0",
   "len": "0x13",
   "name": "FUN_004CBA00",
   "status": "matched",
@@ -30346,7 +30346,7 @@
  {
   "tu": "match/core/static_reset_004cb990.cpp",
   "addr": "0x4CBA20",
-  "sym": "_FUN_004CBA20",
+  "sym": "@FUN_004CBA20@0",
   "len": "0x13",
   "name": "FUN_004CBA20",
   "status": "matched",
@@ -30355,7 +30355,7 @@
  {
   "tu": "match/core/static_reset_00723e40.cpp",
   "addr": "0x723E40",
-  "sym": "_FUN_00723E40",
+  "sym": "@FUN_00723E40@0",
   "len": "0x17",
   "name": "FUN_00723E40",
   "status": "matched",
@@ -30409,7 +30409,7 @@
  {
   "tu": "match/core/static_reset_004cb990.cpp",
   "addr": "0x4CB9B0",
-  "sym": "_FUN_004CB9B0",
+  "sym": "@FUN_004CB9B0@0",
   "len": "0x28",
   "name": "FUN_004CB9B0",
   "status": "matched",
@@ -30436,7 +30436,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBA40",
-  "sym": "_FUN_004CBA40",
+  "sym": "@FUN_004CBA40@0",
   "len": "0x13",
   "name": "FUN_004CBA40",
   "status": "matched",
@@ -30445,7 +30445,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBA60",
-  "sym": "_FUN_004CBA60",
+  "sym": "@FUN_004CBA60@0",
   "len": "0x13",
   "name": "FUN_004CBA60",
   "status": "matched",
@@ -30454,7 +30454,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBA80",
-  "sym": "_FUN_004CBA80",
+  "sym": "@FUN_004CBA80@0",
   "len": "0x31",
   "name": "FUN_004CBA80",
   "status": "matched",
@@ -30463,7 +30463,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBAC0",
-  "sym": "_FUN_004CBAC0",
+  "sym": "@FUN_004CBAC0@0",
   "len": "0x21",
   "name": "FUN_004CBAC0",
   "status": "matched",
@@ -30472,7 +30472,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBAF0",
-  "sym": "_FUN_004CBAF0",
+  "sym": "@FUN_004CBAF0@0",
   "len": "0x2c",
   "name": "FUN_004CBAF0",
   "status": "matched",
@@ -30481,7 +30481,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBB20",
-  "sym": "_FUN_004CBB20",
+  "sym": "@FUN_004CBB20@0",
   "len": "0x27",
   "name": "FUN_004CBB20",
   "status": "matched",
@@ -30490,7 +30490,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBB50",
-  "sym": "_FUN_004CBB50",
+  "sym": "@FUN_004CBB50@0",
   "len": "0xf",
   "name": "FUN_004CBB50",
   "status": "matched",
@@ -30499,7 +30499,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBB60",
-  "sym": "_FUN_004CBB60",
+  "sym": "@FUN_004CBB60@0",
   "len": "0x12",
   "name": "FUN_004CBB60",
   "status": "matched",
@@ -30508,7 +30508,7 @@
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
   "addr": "0x4CBB80",
-  "sym": "_FUN_004CBB80",
+  "sym": "@FUN_004CBB80@0",
   "len": "0x1a",
   "name": "FUN_004CBB80",
   "status": "matched",
@@ -30517,7 +30517,7 @@
  {
   "tu": "match/ui/bit_font_singleton_methods.cpp",
   "addr": "0x4354d0",
-  "sym": "?CreateBitFontSingleton@@YAXXZ",
+  "sym": "?CreateBitFontSingleton@@YIXXZ",
   "len": "0x2b",
   "name": "CreateBitFontSingleton",
   "status": "matched",
@@ -30526,7 +30526,7 @@
  {
   "tu": "match/ui/bit_font_singleton_methods.cpp",
   "addr": "0x435500",
-  "sym": "?DestroyBitFontSingleton@@YAXXZ",
+  "sym": "?DestroyBitFontSingleton@@YIXXZ",
   "len": "0x28",
   "name": "DestroyBitFontSingleton",
   "status": "matched",
@@ -30544,7 +30544,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x435610",
-  "sym": "_FUN_00435610",
+  "sym": "@FUN_00435610@0",
   "len": "0x28",
   "name": "FUN_00435610",
   "status": "matched",
@@ -30553,7 +30553,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x435640",
-  "sym": "_FUN_00435640",
+  "sym": "@FUN_00435640@0",
   "len": "0x13",
   "name": "FUN_00435640",
   "status": "matched",
@@ -30562,7 +30562,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x435660",
-  "sym": "_FUN_00435660",
+  "sym": "@FUN_00435660@0",
   "len": "0x13",
   "name": "FUN_00435660",
   "status": "matched",
@@ -30571,7 +30571,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x435680",
-  "sym": "_FUN_00435680",
+  "sym": "@FUN_00435680@0",
   "len": "0x13",
   "name": "FUN_00435680",
   "status": "matched",
@@ -30580,7 +30580,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x4356A0",
-  "sym": "_FUN_004356A0",
+  "sym": "@FUN_004356A0@0",
   "len": "0x13",
   "name": "FUN_004356A0",
   "status": "matched",
@@ -30589,7 +30589,7 @@
  {
   "tu": "match/core/angle_math_00435610.cpp",
   "addr": "0x4356C0",
-  "sym": "_FUN_004356C0",
+  "sym": "@FUN_004356C0@0",
   "len": "0x13",
   "name": "FUN_004356C0",
   "status": "matched",
@@ -30598,7 +30598,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x4356E0",
-  "sym": "_FUN_004356E0",
+  "sym": "@FUN_004356E0@0",
   "len": "0x31",
   "name": "FUN_004356E0",
   "status": "matched",
@@ -30607,7 +30607,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x435720",
-  "sym": "_FUN_00435720",
+  "sym": "@FUN_00435720@0",
   "len": "0x21",
   "name": "FUN_00435720",
   "status": "matched",
@@ -30616,7 +30616,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x435750",
-  "sym": "_FUN_00435750",
+  "sym": "@FUN_00435750@0",
   "len": "0x2c",
   "name": "FUN_00435750",
   "status": "matched",
@@ -30625,7 +30625,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x435780",
-  "sym": "_FUN_00435780",
+  "sym": "@FUN_00435780@0",
   "len": "0x27",
   "name": "FUN_00435780",
   "status": "matched",
@@ -30634,7 +30634,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x4357B0",
-  "sym": "_FUN_004357B0",
+  "sym": "@FUN_004357B0@0",
   "len": "0xf",
   "name": "FUN_004357B0",
   "status": "matched",
@@ -30643,7 +30643,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x4357C0",
-  "sym": "_FUN_004357C0",
+  "sym": "@FUN_004357C0@0",
   "len": "0x12",
   "name": "FUN_004357C0",
   "status": "matched",
@@ -30652,7 +30652,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x4357E0",
-  "sym": "_FUN_004357E0",
+  "sym": "@FUN_004357E0@0",
   "len": "0x1a",
   "name": "FUN_004357E0",
   "status": "matched",
@@ -30661,7 +30661,7 @@
  {
   "tu": "match/core/angle_math_004356e0.cpp",
   "addr": "0x435800",
-  "sym": "_FUN_00435800",
+  "sym": "@FUN_00435800@0",
   "len": "0x17",
   "name": "FUN_00435800",
   "status": "matched",
@@ -31273,7 +31273,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x00438340",
-  "sym": "_FUN_00438340",
+  "sym": "@FUN_00438340@0",
   "len": "0x28",
   "name": "FUN_00438340",
   "status": "matched",
@@ -31282,7 +31282,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x00438370",
-  "sym": "_FUN_00438370",
+  "sym": "@FUN_00438370@0",
   "len": "0x13",
   "name": "FUN_00438370",
   "status": "matched",
@@ -31291,7 +31291,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x00438390",
-  "sym": "_FUN_00438390",
+  "sym": "@FUN_00438390@0",
   "len": "0x13",
   "name": "FUN_00438390",
   "status": "matched",
@@ -31300,7 +31300,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x004383B0",
-  "sym": "_FUN_004383B0",
+  "sym": "@FUN_004383B0@0",
   "len": "0x13",
   "name": "FUN_004383B0",
   "status": "matched",
@@ -31309,7 +31309,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x004383D0",
-  "sym": "_FUN_004383D0",
+  "sym": "@FUN_004383D0@0",
   "len": "0x13",
   "name": "FUN_004383D0",
   "status": "matched",
@@ -31318,7 +31318,7 @@
  {
   "tu": "match/core/angle_math_00438340.cpp",
   "addr": "0x004383F0",
-  "sym": "_FUN_004383F0",
+  "sym": "@FUN_004383F0@0",
   "len": "0x13",
   "name": "FUN_004383F0",
   "status": "matched",
@@ -31435,7 +31435,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438410",
-  "sym": "_FUN_00438410",
+  "sym": "@FUN_00438410@0",
   "len": "0x31",
   "name": "FUN_00438410",
   "status": "matched",
@@ -31444,7 +31444,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438450",
-  "sym": "_FUN_00438450",
+  "sym": "@FUN_00438450@0",
   "len": "0x21",
   "name": "FUN_00438450",
   "status": "matched",
@@ -31453,7 +31453,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438480",
-  "sym": "_FUN_00438480",
+  "sym": "@FUN_00438480@0",
   "len": "0x2c",
   "name": "FUN_00438480",
   "status": "matched",
@@ -31462,7 +31462,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x004384B0",
-  "sym": "_FUN_004384B0",
+  "sym": "@FUN_004384B0@0",
   "len": "0x27",
   "name": "FUN_004384B0",
   "status": "matched",
@@ -31471,7 +31471,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x004384E0",
-  "sym": "_FUN_004384E0",
+  "sym": "@FUN_004384E0@0",
   "len": "0xf",
   "name": "FUN_004384E0",
   "status": "matched",
@@ -31480,7 +31480,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x004384F0",
-  "sym": "_FUN_004384F0",
+  "sym": "@FUN_004384F0@0",
   "len": "0x12",
   "name": "FUN_004384F0",
   "status": "matched",
@@ -31489,7 +31489,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438510",
-  "sym": "_FUN_00438510",
+  "sym": "@FUN_00438510@0",
   "len": "0x1a",
   "name": "FUN_00438510",
   "status": "matched",
@@ -31498,7 +31498,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438530",
-  "sym": "_FUN_00438530",
+  "sym": "@FUN_00438530@0",
   "len": "0x17",
   "name": "FUN_00438530",
   "status": "matched",
@@ -31507,7 +31507,7 @@
  {
   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
   "addr": "0x00438550",
-  "sym": "_FUN_00438550",
+  "sym": "@FUN_00438550@0",
   "len": "0x3d",
   "name": "FUN_00438550",
   "status": "matched",
@@ -31678,7 +31678,7 @@
  {
   "tu": "match/core/math_004b5910.cpp",
   "addr": "0x004B5910",
-  "sym": "_FUN_004B5910",
+  "sym": "@FUN_004B5910@0",
   "len": "0x13",
   "name": "FUN_004B5910",
   "status": "matched",
@@ -31687,7 +31687,7 @@
  {
   "tu": "match/core/math_004b5910.cpp",
   "addr": "0x004B5930",
-  "sym": "_FUN_004B5930",
+  "sym": "@FUN_004B5930@0",
   "len": "0x13",
   "name": "FUN_004B5930",
   "status": "matched",
@@ -31696,7 +31696,7 @@
  {
   "tu": "match/core/math_004b5910.cpp",
   "addr": "0x004B5950",
-  "sym": "_FUN_004B5950",
+  "sym": "@FUN_004B5950@0",
   "len": "0x13",
   "name": "FUN_004B5950",
   "status": "matched",
@@ -31705,7 +31705,7 @@
  {
   "tu": "match/core/angle_math_004b59b0.cpp",
   "addr": "0x004B59B0",
-  "sym": "_FUN_004B59B0",
+  "sym": "@FUN_004B59B0@0",
   "len": "0x21",
   "name": "FUN_004B59B0",
   "status": "matched",
@@ -31714,7 +31714,7 @@
  {
   "tu": "match/core/angle_math_004b59b0.cpp",
   "addr": "0x004B59E0",
-  "sym": "_FUN_004B59E0",
+  "sym": "@FUN_004B59E0@0",
   "len": "0x2C",
   "name": "FUN_004B59E0",
   "status": "matched",
@@ -31723,7 +31723,7 @@
  {
   "tu": "match/core/angle_globals_004b5a40.cpp",
   "addr": "0x004B5A40",
-  "sym": "_FUN_004B5A40",
+  "sym": "@FUN_004B5A40@0",
   "len": "0x0F",
   "name": "FUN_004B5A40",
   "status": "matched",
@@ -31732,7 +31732,7 @@
  {
   "tu": "match/core/angle_globals_004b5a40.cpp",
   "addr": "0x004B5A50",
-  "sym": "_FUN_004B5A50",
+  "sym": "@FUN_004B5A50@0",
   "len": "0x12",
   "name": "FUN_004B5A50",
   "status": "matched",
@@ -31741,7 +31741,7 @@
  {
   "tu": "match/core/angle_globals_004b5a40.cpp",
   "addr": "0x004B5A70",
-  "sym": "_FUN_004B5A70",
+  "sym": "@FUN_004B5A70@0",
   "len": "0x1A",
   "name": "FUN_004B5A70",
   "status": "matched",
@@ -31750,7 +31750,7 @@
  {
   "tu": "match/core/angle_globals_004b5a40.cpp",
   "addr": "0x004B5A90",
-  "sym": "_FUN_004B5A90",
+  "sym": "@FUN_004B5A90@0",
   "len": "0x17",
   "name": "FUN_004B5A90",
   "status": "matched",
@@ -38959,7 +38959,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43AF70",
-  "sym": "_FUN_0043AF70",
+  "sym": "@FUN_0043AF70@0",
   "len": "0x13",
   "name": "FUN_0043AF70",
   "status": "matched",
@@ -38968,7 +38968,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43AF90",
-  "sym": "_FUN_0043AF90",
+  "sym": "@FUN_0043AF90@0",
   "len": "0x13",
   "name": "FUN_0043AF90",
   "status": "matched",
@@ -39193,7 +39193,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43afb0",
-  "sym": "_FUN_0043AFB0",
+  "sym": "@FUN_0043AFB0@0",
   "len": "0x13",
   "name": "FUN_0043AFB0",
   "status": "matched",
@@ -39202,7 +39202,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43afd0",
-  "sym": "_FUN_0043AFD0",
+  "sym": "@FUN_0043AFD0@0",
   "len": "0x13",
   "name": "FUN_0043AFD0",
   "status": "matched",
@@ -39211,7 +39211,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43aff0",
-  "sym": "_FUN_0043AFF0",
+  "sym": "@FUN_0043AFF0@0",
   "len": "0x13",
   "name": "FUN_0043AFF0",
   "status": "matched",
@@ -39220,7 +39220,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b010",
-  "sym": "_FUN_0043B010",
+  "sym": "@FUN_0043B010@0",
   "len": "0x31",
   "name": "FUN_0043B010",
   "status": "matched",
@@ -39229,7 +39229,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b050",
-  "sym": "_FUN_0043B050",
+  "sym": "@FUN_0043B050@0",
   "len": "0x21",
   "name": "FUN_0043B050",
   "status": "matched",
@@ -39310,7 +39310,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b080",
-  "sym": "_FUN_0043B080",
+  "sym": "@FUN_0043B080@0",
   "len": "0x2c",
   "name": "FUN_0043B080",
   "status": "matched",
@@ -39319,7 +39319,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b0b0",
-  "sym": "_FUN_0043B0B0",
+  "sym": "@FUN_0043B0B0@0",
   "len": "0x27",
   "name": "FUN_0043B0B0",
   "status": "matched",
@@ -39328,7 +39328,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b0e0",
-  "sym": "_FUN_0043B0E0",
+  "sym": "@FUN_0043B0E0@0",
   "len": "0xf",
   "name": "FUN_0043B0E0",
   "status": "matched",
@@ -39337,7 +39337,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b0f0",
-  "sym": "_FUN_0043B0F0",
+  "sym": "@FUN_0043B0F0@0",
   "len": "0x12",
   "name": "FUN_0043B0F0",
   "status": "matched",
@@ -39346,7 +39346,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b110",
-  "sym": "_FUN_0043B110",
+  "sym": "@FUN_0043B110@0",
   "len": "0x1a",
   "name": "FUN_0043B110",
   "status": "matched",
@@ -39355,7 +39355,7 @@
  {
   "tu": "match/core/math_global_updates_0043af70.cpp",
   "addr": "0x43b130",
-  "sym": "_FUN_0043B130",
+  "sym": "@FUN_0043B130@0",
   "len": "0x17",
   "name": "FUN_0043B130",
   "status": "matched",
@@ -39571,7 +39571,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x4731C0",
-  "sym": "_FUN_004731C0",
+  "sym": "@FUN_004731C0@0",
   "len": "0x13",
   "name": "FUN_004731C0",
   "status": "matched",
@@ -39580,7 +39580,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x4731E0",
-  "sym": "_FUN_004731E0",
+  "sym": "@FUN_004731E0@0",
   "len": "0x13",
   "name": "FUN_004731E0",
   "status": "matched",
@@ -39589,7 +39589,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473200",
-  "sym": "_FUN_00473200",
+  "sym": "@FUN_00473200@0",
   "len": "0x13",
   "name": "FUN_00473200",
   "status": "matched",
@@ -39598,7 +39598,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473220",
-  "sym": "_FUN_00473220",
+  "sym": "@FUN_00473220@0",
   "len": "0x13",
   "name": "FUN_00473220",
   "status": "matched",
@@ -39607,7 +39607,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473240",
-  "sym": "_FUN_00473240",
+  "sym": "@FUN_00473240@0",
   "len": "0x13",
   "name": "FUN_00473240",
   "status": "matched",
@@ -39760,7 +39760,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473260",
-  "sym": "_FUN_00473260",
+  "sym": "@FUN_00473260@0",
   "len": "0x31",
   "name": "FUN_00473260",
   "status": "matched",
@@ -39769,7 +39769,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x4732A0",
-  "sym": "_FUN_004732A0",
+  "sym": "@FUN_004732A0@0",
   "len": "0x21",
   "name": "FUN_004732A0",
   "status": "matched",
@@ -39778,7 +39778,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x4732D0",
-  "sym": "_FUN_004732D0",
+  "sym": "@FUN_004732D0@0",
   "len": "0x2c",
   "name": "FUN_004732D0",
   "status": "matched",
@@ -39787,7 +39787,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473300",
-  "sym": "_FUN_00473300",
+  "sym": "@FUN_00473300@0",
   "len": "0x27",
   "name": "FUN_00473300",
   "status": "matched",
@@ -39796,7 +39796,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473330",
-  "sym": "_FUN_00473330",
+  "sym": "@FUN_00473330@0",
   "len": "0x0f",
   "name": "FUN_00473330",
   "status": "matched",
@@ -39805,7 +39805,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473340",
-  "sym": "_FUN_00473340",
+  "sym": "@FUN_00473340@0",
   "len": "0x12",
   "name": "FUN_00473340",
   "status": "matched",
@@ -39814,7 +39814,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473360",
-  "sym": "_FUN_00473360",
+  "sym": "@FUN_00473360@0",
   "len": "0x1a",
   "name": "FUN_00473360",
   "status": "matched",
@@ -39823,7 +39823,7 @@
  {
   "tu": "match/core/math_global_updates_004731c0.cpp",
   "addr": "0x473380",
-  "sym": "_FUN_00473380",
+  "sym": "@FUN_00473380@0",
   "len": "0x17",
   "name": "FUN_00473380",
   "status": "matched",
@@ -39832,7 +39832,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473570",
-  "sym": "_FUN_00473570",
+  "sym": "@FUN_00473570@0",
   "len": "0x13",
   "name": "FUN_00473570",
   "status": "matched",
@@ -39841,7 +39841,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473590",
-  "sym": "_FUN_00473590",
+  "sym": "@FUN_00473590@0",
   "len": "0x13",
   "name": "FUN_00473590",
   "status": "matched",
@@ -39850,7 +39850,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4735B0",
-  "sym": "_FUN_004735B0",
+  "sym": "@FUN_004735B0@0",
   "len": "0x13",
   "name": "FUN_004735B0",
   "status": "matched",
@@ -39859,7 +39859,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4735D0",
-  "sym": "_FUN_004735D0",
+  "sym": "@FUN_004735D0@0",
   "len": "0x13",
   "name": "FUN_004735D0",
   "status": "matched",
@@ -39868,7 +39868,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4735F0",
-  "sym": "_FUN_004735F0",
+  "sym": "@FUN_004735F0@0",
   "len": "0x13",
   "name": "FUN_004735F0",
   "status": "matched",
@@ -40021,7 +40021,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473610",
-  "sym": "_FUN_00473610",
+  "sym": "@FUN_00473610@0",
   "len": "0x31",
   "name": "FUN_00473610",
   "status": "matched",
@@ -40030,7 +40030,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473650",
-  "sym": "_FUN_00473650",
+  "sym": "@FUN_00473650@0",
   "len": "0x21",
   "name": "FUN_00473650",
   "status": "matched",
@@ -40039,7 +40039,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473680",
-  "sym": "_FUN_00473680",
+  "sym": "@FUN_00473680@0",
   "len": "0x2c",
   "name": "FUN_00473680",
   "status": "matched",
@@ -40048,7 +40048,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4736B0",
-  "sym": "_FUN_004736B0",
+  "sym": "@FUN_004736B0@0",
   "len": "0x27",
   "name": "FUN_004736B0",
   "status": "matched",
@@ -40057,7 +40057,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4736E0",
-  "sym": "_FUN_004736E0",
+  "sym": "@FUN_004736E0@0",
   "len": "0x0f",
   "name": "FUN_004736E0",
   "status": "matched",
@@ -40066,7 +40066,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x4736F0",
-  "sym": "_FUN_004736F0",
+  "sym": "@FUN_004736F0@0",
   "len": "0x12",
   "name": "FUN_004736F0",
   "status": "matched",
@@ -40075,7 +40075,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473710",
-  "sym": "_FUN_00473710",
+  "sym": "@FUN_00473710@0",
   "len": "0x1a",
   "name": "FUN_00473710",
   "status": "matched",
@@ -40084,7 +40084,7 @@
  {
   "tu": "match/core/math_global_updates_00473570.cpp",
   "addr": "0x473730",
-  "sym": "_FUN_00473730",
+  "sym": "@FUN_00473730@0",
   "len": "0x17",
   "name": "FUN_00473730",
   "status": "matched",
@@ -40102,7 +40102,7 @@
  {
   "tu": "match/core/static_table_lookup_00473940.cpp",
   "addr": "0x4739D0",
-  "sym": "_FUN_004739D0",
+  "sym": "@FUN_004739D0@0",
   "len": "0x17",
   "name": "FUN_004739D0",
   "status": "matched",
@@ -40336,7 +40336,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x473FE0",
-  "sym": "_FUN_00473FE0",
+  "sym": "@FUN_00473FE0@0",
   "len": "0x28",
   "name": "FUN_00473FE0",
   "status": "matched",
@@ -40345,7 +40345,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474070",
-  "sym": "_FUN_00474070",
+  "sym": "@FUN_00474070@0",
   "len": "0x13",
   "name": "FUN_00474070",
   "status": "matched",
@@ -40354,7 +40354,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474010",
-  "sym": "_FUN_00474010",
+  "sym": "@FUN_00474010@0",
   "len": "0x13",
   "name": "FUN_00474010",
   "status": "matched",
@@ -40363,7 +40363,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474030",
-  "sym": "_FUN_00474030",
+  "sym": "@FUN_00474030@0",
   "len": "0x13",
   "name": "FUN_00474030",
   "status": "matched",
@@ -40372,7 +40372,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474050",
-  "sym": "_FUN_00474050",
+  "sym": "@FUN_00474050@0",
   "len": "0x13",
   "name": "FUN_00474050",
   "status": "matched",
@@ -40381,7 +40381,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474090",
-  "sym": "_FUN_00474090",
+  "sym": "@FUN_00474090@0",
   "len": "0x13",
   "name": "FUN_00474090",
   "status": "matched",
@@ -40606,7 +40606,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x4740b0",
-  "sym": "_FUN_004740B0",
+  "sym": "@FUN_004740B0@0",
   "len": "0x31",
   "name": "FUN_004740B0",
   "status": "matched",
@@ -40615,7 +40615,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x4740f0",
-  "sym": "_FUN_004740F0",
+  "sym": "@FUN_004740F0@0",
   "len": "0x21",
   "name": "FUN_004740F0",
   "status": "matched",
@@ -40624,7 +40624,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474120",
-  "sym": "_FUN_00474120",
+  "sym": "@FUN_00474120@0",
   "len": "0x2c",
   "name": "FUN_00474120",
   "status": "matched",
@@ -40633,7 +40633,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474150",
-  "sym": "_FUN_00474150",
+  "sym": "@FUN_00474150@0",
   "len": "0x27",
   "name": "FUN_00474150",
   "status": "matched",
@@ -40642,7 +40642,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474180",
-  "sym": "_FUN_00474180",
+  "sym": "@FUN_00474180@0",
   "len": "0xf",
   "name": "FUN_00474180",
   "status": "matched",
@@ -40651,7 +40651,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x474190",
-  "sym": "_FUN_00474190",
+  "sym": "@FUN_00474190@0",
   "len": "0x12",
   "name": "FUN_00474190",
   "status": "matched",
@@ -40660,7 +40660,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x4741b0",
-  "sym": "_FUN_004741B0",
+  "sym": "@FUN_004741B0@0",
   "len": "0x1a",
   "name": "FUN_004741B0",
   "status": "matched",
@@ -40669,7 +40669,7 @@
  {
   "tu": "match/core/math_global_updates_00473fe0.cpp",
   "addr": "0x4741d0",
-  "sym": "_FUN_004741D0",
+  "sym": "@FUN_004741D0@0",
   "len": "0x17",
   "name": "FUN_004741D0",
   "status": "matched",
@@ -45627,7 +45627,7 @@
   "len": "0x17B0",
   "name": "DSurface::unknown_3C",
   "status": "partial",
-  "pct": 0.6,
+  "pct": 0.7,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },

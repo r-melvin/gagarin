@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra. Direct retail RTTI confirms the non-const
 // char* specialization and its zero-offset dynamic base. All entry-origin
 // spans and both seven-slot address points are verified against the pinned PE.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // The DynamicVectorClass deleting-dtor full span requires /GX disabled; other
 // methods are tested independently. Vtable weak defaults are conditional, not
 // final-link proof. The separate const-char* family is not described here.

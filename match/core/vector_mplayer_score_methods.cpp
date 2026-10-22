@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Retail PAUMPlayerScoreType RTTI identifies mutable struct pointers and
 // DynamicVectorClass -> VectorClass at offset zero. Complete entry-origin
 // spans establish the bound methods; no GX emits the full deleting bodies.

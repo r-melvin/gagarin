@@ -4,7 +4,7 @@
 // Instructions confirm base construction, field/vptr writes, identity copy,
 // array index and two vector appends. Original private names remain unknown.
 // LIBRARY: GAMEMD 0x7C91D0 -- strncpy.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // GX emits exception cleanup absent from the retail body.
 #include <stddef.h>
 #include "../_layout/tag_type_class.h"

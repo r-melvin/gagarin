@@ -68,6 +68,6 @@ extern "C" void __cdecl FUN_004128F0_atexit();
 // FUNCTION: GAMEMD 0x412870
 void FUN_00412870();
 // FUNCTION: GAMEMD 0x4128F0
-void FUN_004128F0();
+void __cdecl FUN_004128F0();
 
 #endif  // GG_MATCH_CORE_VECTOR_ARRAY_INIT_METHODS_H

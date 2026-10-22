@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Raw RTTI at 0x81C038/0x81C058 identifies the int base/dynamic templates.
 // Entry-origin span 0x4779E0..0x477A68 proves this copy constructor and all
 // touched offsets, asserted in vector_class_layout_asserts.cpp. Other emitted

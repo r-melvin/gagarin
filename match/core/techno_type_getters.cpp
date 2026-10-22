@@ -28,7 +28,7 @@ struct ScreenProjector
 };
 extern ScreenProjector* TacticalProjector;           // GAMEMD 0x887324
 
-extern double sqrt_helper(double x);                 // GAMEMD 0x4CAC40 (__cdecl)
+extern double __cdecl sqrt_helper(double x);               // GAMEMD 0x4CAC40 (__cdecl)
 
 // FUNCTION: GAMEMD 0x7177C0  (__thiscall)
 // Pointer to the weaponIndex'th primary weapon slot: &this->Weapon[index].

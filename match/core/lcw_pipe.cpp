@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
 // Entry-origin 0x551FF0, 0x552060, 0x5520A0, 0x5522D0 and 0x552390 (scalar deleting
 // destructor, compiler-emitted), checked against the pinned retail image.
 #include "lcw_pipe.h"

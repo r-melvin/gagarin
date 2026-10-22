@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Retail RTTI TypeDescriptors 0x00823448 and 0x00823478 identify
 // VectorClass<TeamClass*> and DynamicVectorClass<TeamClass*>; the dynamic
 // hierarchy records the former as its zero-offset base. Full function spans

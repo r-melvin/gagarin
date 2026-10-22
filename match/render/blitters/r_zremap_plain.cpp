@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Paired /GX and no-/GX builds leave all twelve ordinary method spans identical;
 // the exception-handling flag is not determined by these methods.
 // Cluster r-zremap, family RLEBlitTransZRemapXlat<T> (no depth test). See r_zremap.h for the layout.

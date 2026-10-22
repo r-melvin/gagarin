@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Retail RTTI TypeDescriptors 0x836890 and 0x8368C0 identify
 // VectorClass<EventClass*> and DynamicVectorClass<EventClass*>; the latter's
 // CHD names the former as its zero-offset base.

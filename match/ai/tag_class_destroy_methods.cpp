@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // GX adds new-expression exception cleanup absent from retail GetInstance;
 // the no-GX probe reproduces the complete native constructor-call path.
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6E5230,

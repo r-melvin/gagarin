@@ -23,9 +23,9 @@ class CCINIClass;
 // External (reloc-normalised) callees we are NOT matching.
 // ---------------------------------------------------------------------------
 // CRT _strcmpi (case-insensitive compare).  __cdecl, returns 0 on equal.
-int  Strcmpi(const char* a, const char* b);                  // GAMEMD 0x7C8D20
+int  __cdecl Strcmpi(const char* a, const char* b);                // GAMEMD 0x7C8D20
 // operator new(size_t).  __cdecl.
-void* OpNew(unsigned int size);                              // GAMEMD 0x7C8E17
+void* __cdecl OpNew(unsigned int size);                            // GAMEMD 0x7C8E17
 
 // ---------------------------------------------------------------------------
 // CCINIClass — only the three __thiscall readers used here are declared

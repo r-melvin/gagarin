@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5B9650-0x5B9A56.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 
 #include "wol_scenario_option_handlers.h"
 

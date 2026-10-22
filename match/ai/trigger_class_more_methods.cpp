@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // GX adds allocation exception cleanup absent from native GetInstance.
 //   Bodies reconstructed from the user's retail gamemd.exe v1.001 disassembly
 //   (Ghidra CLI at 0x726350 + 0x726630), cross-checked against YRpp

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: retail gamemd.exe v1.001, confirmed from entry-origin instructions and pinned PE data.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // No /GX: none of the matched bodies unwinds (confirmed with a paired /GX probe).
 //
 // HoverLocomotionClass (leaf of the locomotion module): the hovercraft locomotor.

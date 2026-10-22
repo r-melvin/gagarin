@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 #include "winsock_listen_methods.h"
 
 // STRING: GAMEMD 0x84DEA4 "Async select failed on primary socket - error code %d.\n"

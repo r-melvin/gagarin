@@ -35,7 +35,7 @@
 //
 //   Instantiations are in ascending retail-address order.
 //
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 
 #include "derived_sdd_family_methods.h"
 

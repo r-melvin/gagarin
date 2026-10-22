@@ -1,4 +1,4 @@
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //   No /GX. The by-value TypeList parameters of this file carry a
 //   destructor, and under /GX cl registers an unwind frame to release them
 //   if a callee throws: `PUSH -1; PUSH handler; PUSH FS:[0]; MOV FS:[0],ESP`

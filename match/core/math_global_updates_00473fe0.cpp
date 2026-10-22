@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Complete entry-origin spans 0x473FE0 through 0x4741D0 and global references.
 // Names, linkage and double helper result are compiler ABI views; original
 // declarations, ownership and startup role remain unestablished.

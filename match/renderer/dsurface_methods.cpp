@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Retail-compatible DSurface methods; no constructors or deleting wrapper.
 // Provenance: frozen M2 entry-origin bodies, checked against retail.
 #include <string.h>

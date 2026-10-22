@@ -1,5 +1,49 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,157 matched function
+rows**, **257 partial rows**, **5,414 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+The project default compiler flags are now `/nologo /c /O2 /Gr /DNDEBUG /Gy`.
+`/Gr` makes free and static functions `__fastcall` by default, and `/GX` is
+gone: the retail image has no C++ exception-handling tables. Every per-TU
+`VC6FLAGS` line gains `/Gr` and loses `/GX`; TU-specific `/Ob1`, `/Ob2` and
+`/Op` stay. No TU needed to keep `/GX`.
+
+Functions that retail calls with caller cleanup are now declared `__cdecl`:
+two atexit callbacks (0x438590 and the 0x4128F0 teardown), the CRT stand-ins
+`Strcmpi` (0x7C8D20), `OpNew` (0x7C8E17) and `pow`, and the table helpers at
+0x4CADE0 and 0x4CAC40. 152 manifest symbols are renamed for the new
+decoration (`@@YA` to `@@YI`, `@@SA` to `@@SI`, `_x` to `@x@N`). Two partials
+now match, each passing raw bytes and strict relocation checks:
+
+- `FUN_00452D40` (was 82.2%);
+- `ScenarioClass::PauseGame` (0x683EB0, was 91.0%).
+
+Four other partials improve (0x45E8F0 86.0% to 95.3%, 0x40A850 74.0% to
+78.0%, 0x5301A0 96.5% to 97.4%, 0x4BC750 0.6% to 0.7%). No row loses score.
+Across all 1,080 project objects, sections change only through the renamed
+symbols and function-pointer types, the promoted and improved rows, and
+destructors that now inline without `/GX`; none of those is a manifest row.
+
+The 5,157 matches represent 26.1% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **384,253
+bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic
+misses 313 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: canonical vector templates
+
 As of **2026-10-22**, the verified snapshot reports **5,155 matched function
 rows**, **259 partial rows**, **5,414 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -38,13 +82,6 @@ bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic
 misses 313 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: VectorClass rework
 

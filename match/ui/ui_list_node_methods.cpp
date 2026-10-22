@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5B3F50-0x5B4793.
 //   Ordered ascending by retail address.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 
 #include "ui_list_node_methods.h"
 

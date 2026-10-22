@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // /GX is off for this TU: /O2 /DNDEBUG /Gy /GX emits non-retail bodies. Cluster b-translucent:
 // BlitTranslucent50NonzeroAlpha<us>, BlitTranslucent50ZeroAlpha<us>,
 // BlitTranslucentWriteAlpha<us>. Slots 2-4 are forwarding shims (slot 1, warp = 0).

@@ -4,7 +4,7 @@
 //   pinned retail gamemd.exe v1.001. The static pool arrays are address-scoped
 //   layout fields, each 128 * 0x2A0 bytes; this TU does not claim constructor
 //   initialization or ownership beyond the observed allocator accesses.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 #include <new>
 #include "winsock_interface_class.h"
 

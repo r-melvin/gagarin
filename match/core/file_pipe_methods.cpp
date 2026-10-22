@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-pinned-PE and RTTI.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Paired probes: /GX adds EH setup to the ordinary destructor; no-GX
 // reproduces its complete span. The other three bodies match both sets.
 #include "../_layout/file_pipe.h"

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Cluster r-alpha (all <unsigned short>): RLEBlitTransXlatAlpha, ...ZRead, ...ZReadWrite
 // and RLEBlitTransZRemapXlatAlpha, ...ZRead, ...ZReadWrite. No /GX. Layouts in r_alpha.h.
 // Explicit member specializations only; this TU does not emit leaf vtables or lifetime code.

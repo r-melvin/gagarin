@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 #include <string.h>
 #include "conn_types.h"
 

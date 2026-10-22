@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Flag bisection: /GX outlines the derived deleting destructor; omitting
 // it reproduces the complete retail 0x724F40 body as well as all other slots.
 // Raw vtables 0x7F57E8 and 0x7F57C8, RTTI descriptors 0x844938/0x844968,

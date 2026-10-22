@@ -3,7 +3,7 @@
 // and confirms DynamicVectorClass<DynamicVectorClass<char*>*> derives from
 // VectorClass<DynamicVectorClass<char*>*> at offset zero. Entry-origin spans
 // and both seven-slot address points were checked against the pinned PE.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // The dynamic deleting-dtor full span needs /GX disabled; the remaining
 // tested bodies are exact with /GX as well. Vtable weak defaults are conditional
 // slot evidence, not final-link proof. The capacity constructors replace

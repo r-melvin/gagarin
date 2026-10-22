@@ -2,7 +2,7 @@
 // Provenance: frozen M2 retail-binary candidate; method spans from the pinned
 // gamemd.exe v1.001 row packet. This production-only subset covers the five
 // unsigned-short TransXlat alpha method families.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Twenty ordinary method specializations are ordered by retail address.
 // Constructors, destructors, deleting wrappers, vtable emission and alpha-pool
 // ownership are deliberately outside this method subset.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface slot +0x3C (0x4BC750): depth-tested, anti-aliased line on a
 // 16-bit surface. The candidate uses a readable loop structure and remains partial.
@@ -10,7 +10,7 @@
 #include "../render/blitters/b_shared_alpha.h"
 
 // FUNCTION: GAMEMD 0x7C8FB0 (decl; reloc) (LIBRARY: _CIpow, x87 register ABI), 0x7C5F00 (LIBRARY: _ftol).
-double pow(double, double);
+double __cdecl pow(double, double);
 
 // Address view of the data read through 0x887644; +0x14 holds the Surface whose Lock gives pixel addresses
 // (0x7BD130 GetPixelAddress: Lock(x,y) then Unlock). Evidence: 0x7BD130 body, 0x4BCAB8.

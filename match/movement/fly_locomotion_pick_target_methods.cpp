@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //   Measured: the two containers are scope objects with destructors, and
 //   under the locked /GX cl registers an unwind frame - five instructions of
 //   `MOV EAX,FS:[0]` prologue - that retail bare `SUB ESP,0x30` rules out.

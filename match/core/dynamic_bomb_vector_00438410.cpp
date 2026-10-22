@@ -44,7 +44,7 @@ extern "C" int DAT_0089C6F8;
 extern "C" int DAT_0089C6EC;
 
 // FUNCTION: GAMEMD 0x00438590 (decl; reloc)
-extern "C" void FUN_00438590();
+extern "C" void __cdecl FUN_00438590();
 
 // VTABLE: GAMEMD 0x007E17CC — RTTI TypeDescriptor at 0x00816918 names
 // DynamicVectorClass<BombClass*>. The seven function-pointer addresses were
@@ -210,7 +210,7 @@ extern "C" void FUN_00438550()
 }
 
 // FUNCTION: GAMEMD 0x00438590
-extern "C" void FUN_00438590()
+extern "C" void __cdecl FUN_00438590()
 {
     BombVectorState_0089C668.vptr = &VT_007E17EC;
     if (BombVectorState_0089C668.unknown_04 != 0 &&

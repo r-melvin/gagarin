@@ -6,7 +6,7 @@
 //
 // The INI node cluster, bodies ascending by retail address.
 
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 // Ob2 inlines native GenericList construction into List<INIEntry*>.
 #include "ini_class_node_methods.h"
 #include "../_layout/straw.h"

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 //
 // MechLocomotionClass (locomotion module leaf). Layout and evidence are in
 // mech_locomotion_class.h. Its two emitted tables are checked slot-for-slot

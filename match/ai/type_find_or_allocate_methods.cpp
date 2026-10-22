@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // /GX changes both bodies by adding the exception-cleanup path; no-GX
 // reproduces the complete 131-byte retail spans. Evidence: focused entry-origin
 // REA records ev_548001... and ev_11ba54... plus raw_match against pinned PE.

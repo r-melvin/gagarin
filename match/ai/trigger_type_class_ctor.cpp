@@ -3,7 +3,7 @@
 // Entry-origin retail span 0x726C80..0x726DF5: 374 bytes, RET 4.
 // RTTI confirms AbstractTypeClass as zero-offset base and four vptr stores.
 // Stores and vector dispatches establish the asserted offsets below.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // GX emits exception cleanup absent from retail; no GX matches the full body.
 #include <stddef.h>
 #include "../_layout/trigger_type_class.h"

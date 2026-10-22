@@ -5,7 +5,7 @@
 // the documented mask/xlat fields and, for Z variants, the shared row-wrap
 // global. Explicit specializations keep this TU from emitting unverified
 // deleting-destructor wrappers or derived vtables.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy /GX
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Paired /GX and no-/GX production compiles produced identical bytes for all
 // 20 functions; use the project-default /GX set.
 #include "b_darken_xlatz.h"

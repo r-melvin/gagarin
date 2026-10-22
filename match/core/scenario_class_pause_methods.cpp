@@ -13,23 +13,10 @@
 // redraw its sidebar and render, and the mouse gets its slot-3 call plus the
 // slot-4 tail jump.
 //
-// PARTIAL (91.0%, 61/67): the instruction multiset is identical; two pure
-// ordering deltas remain. (1) `MOV ECX,[0x887368]; TEST ECX,ECX; POP ESI; JZ`
-// in retail is emitted here as `MOV; POP ESI; TEST; JZ` (the POP moves one
-// slot). (2) Both calls on the static map object that take immediate
-// arguments — `PUSH 0; PUSH 0; CALL 0x5BDC80` and `PUSH 2; CALL 0x4F42F0` —
-// have retail's `MOV ECX,0x87F7E8` ahead of the pushes where cl 8804 pushes
-// first; this is the open "`this`-load / argument-push order in a call run"
-// class in docs/matching_methodology_and_toolchain.md (retail loads ECX
-// first once the constant object has already been used earlier in the
-// function, as it has here by the argument-less 0x6938C0 call). Variants
-// tried, all byte-identical to this one: a ternary object expression on the
-// two calls; a pointer local to the map; a reference/pointer helper; the
-// two-arg call wrapped in an inline member of a derived view; the whole
-// tail as one inline member; a static inline free helper taking the map
-// pointer; the tooltip pointer read into a local; the tooltip test as a
-// named bool; the session mode read into a local int; the timer taken
-// through a pointer local. Kept the plain phrasing.
+// Exact under the project default /Gr (static member, so fastcall). The
+// cdecl build of this body left two pure ordering deltas (91.0%): the POP ESI
+// position around the tooltip test, and ECX loaded after rather than before
+// the pushes for the two map calls. Neither moved under any source spelling.
 void ScenarioClass::PauseGame()
 {
     FUN_00406F00();

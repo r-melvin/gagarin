@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // Flag bisection: /GX adds exception-unwind code absent from constructor
 // 0x724000. This flag set reproduces its complete 0xA7-byte body; all other
 // methods in this TU are verified under the same flags.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra; retail TypeDescriptors/COLs and all 12
 // entry-origin spans plus both address-point tables were confirmed directly.
-// VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 // The dynamic deleting-dtor full span needs /GX disabled; with /GX, only that
 // emitted wrapper is short. The base deleting dtor also matches with /GX.
 // Vtable checks use recorded weak defaults and are conditional, not final-link proof.

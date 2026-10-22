@@ -57,7 +57,7 @@ void FUN_00412870()
 // steps back before each use, so every access is a negative displacement off it.
 // That is retail's shape (`MOV EAX,[ESI-0x18]` then `SUB ESI,0x18`), not an
 // artifact.
-void FUN_004128F0()
+void __cdecl FUN_004128F0()
 {
     int zero = 0;
 
