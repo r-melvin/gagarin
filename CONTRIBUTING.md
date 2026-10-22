@@ -97,7 +97,8 @@ don't work on the same function.
      each confirmed against an instruction in the binary;
    - the correct calling convention (`__thiscall` methods, `__stdcall` COM).
 3. Run `match.sh` and iterate on types, statement order, phrasing and flags.
-   Inline `_asm` is acceptable when nothing else reproduces the output.
+   No inline `_asm` or match-forcing tricks (`volatile`, redundant pointer
+   aliases, casts used only to steer codegen); see [AGENTS.md](AGENTS.md).
 4. For the last few register or ordering mismatches, try the permuter:
    `scripts/permuter/new_run.sh <addr> <C-name> <native-symbol> /tmp/run <length>`.
    The fifth argument is the full validated retail span in hex. Before searching,
@@ -129,7 +130,7 @@ Tags:
 | --- | --- |
 | `own-binary-via-Ghidra` | facts read from the retail binary (required for every committed fact) |
 | `YRpp-cross-check` | name or signature suggested by YRpp, reconfirmed in the binary |
-| `EA-GPL-RA1-reference` | naming or shape informed by EA's GPL RA1 source (carries EA's Section 7 terms) |
+| `EA-GPL-RA1-reference` | legacy: naming or shape informed by EA's GPL RA1 source (carries EA's Section 7 terms). Not for new code; existing uses are under review |
 | `Phobos-GPL3:<path>@<commit>` | Phobos's own material, with upstream path and full commit; import requires the provenance and applicable-terms review in [LEGAL.md](LEGAL.md), and retail facts still need binary confirmation |
 | `private-ref-cross-check` | location suggested by the author's unpublished notes, reconfirmed in the binary |
 | `original` | written from scratch (helpers, shims) |
@@ -143,8 +144,9 @@ int StorageClass::GetTotalValue() const { ... }
 ```
 
 `FUN_xxxxxxxx` names are fine until a real name is confirmed. Don't guess
-names. Westwood names come from YRpp, TSpp or RA1 idiom, and every one of them
-must still match the binary's behaviour.
+names. A name must be attested by the binary, or cross-checked against YRpp or
+Tiberian Sun structure and confirmed by the binary's behaviour. Never transcribe
+names or text from outside sources.
 
 ## Before opening a PR
 

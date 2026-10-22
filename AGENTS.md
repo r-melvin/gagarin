@@ -67,18 +67,23 @@ against an instruction in the binary before it lands as a repo fact.
 - Declare members in exact retail order. Name gaps `unknown_XX`. Add
   `GG_STATIC_ASSERT` (`match/_rt/gg_static_assert.h`) for every offset and
   size, and assert vtables slot by slot.
-- Inline `_asm` is allowed where it is the only way to reproduce the compiler's
-  output. Matching beats cleanliness.
+- No inline `_asm`, naked functions or `#pragma optimize` to force a match. A
+  readable partial beats a hack; asm is a last resort and needs the user's
+  explicit approval for the specific function.
 - Annotate every function, vtable, global and string with reccmp markers
   (`// FUNCTION: GAMEMD 0xADDR`, `VTABLE`, `GLOBAL`, `STRING`, plus `LIBRARY`,
   `STUB`, `TEMPLATE`, `SYNTHETIC` where they apply). Within a TU, order functions
   by ascending retail address.
 - `FUN_`/`DAT_` placeholder names and `unknown_XX` members are legitimate until a
-  real name is confirmed. Westwood names come from YRpp, TSpp (names and
-  structure only; TS addresses never transfer) or RA1 idiom converted to RA2
-  camelCase (`Take_Damage` → `ReceiveDamage`).
+  real name is confirmed. A real name must be attested by the binary (RTTI,
+  import, debug or INI string), or cross-checked against YRpp or Tiberian Sun
+  structure and confirmed by the binary's behaviour, and tagged accordingly.
+  Never transcribe names, comments or text from any outside source, and never
+  use names recalled from memory without that evidence; use a placeholder.
 - Pin compiler flags by bisection for each cluster, never by assumption. The
-  first cluster (`StorageClass`) locked at `/O2 /DNDEBUG /Gy /GX`.
+  binary has no C++ exception-handling tables, and free functions default to
+  `__fastcall`, so the target default is `/O2 /Gr /DNDEBUG /Gy` without `/GX`;
+  `/Ob2` is set per TU only where the evidence requires it.
 - Keep `scripts/data/match_manifest.json` truthful: a row is `matched` only if
   `scripts/vc6/verify_all.py` proves it.
 

@@ -16,8 +16,7 @@
 //   match/ui/check_list_class_methods.h (the two classes' RTTI blocks are
 //   laid down back to back in .rdata).
 //
-//   ListClass is ControlClass's list widget (reference/yrpp/ListClass.h,
-//   consult-only): a text vector plus a live vertical SliderClass with two
+//   ListClass is ControlClass's list widget (RTTI ListClass): a text vector plus a live vertical SliderClass with two
 //   ShapeButtonClass end buttons, spliced into and out of the same modal
 //   gadget chain as the list itself whenever scrolling is active. The full
 //   51-slot primary vtable was read as one block (0x7ED10C, 200 bytes) and
@@ -94,7 +93,7 @@
 #include "../core/vector_class_operations.h"
 
 // VTABLE: GAMEMD 0x007ED10C -- ListClass primary vtable (51 slots, read as one
-// block; membership/order cross-checked against reference/yrpp/ListClass.h).
+// block; membership/order read from retail).
 extern char VT_007ED10C[];
 
 // ---------------------------------------------------------------------------
