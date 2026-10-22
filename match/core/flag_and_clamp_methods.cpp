@@ -23,33 +23,26 @@ void Obj_00401000::FUN_00401170()
     unknown_28 &= ~2;
 }
 
-// PARTIAL (50% - 6/12). The upper bound is exact; the lower one is not. Retail
-// branches on it (`TEST EDX,EDX; JGE`), while our compiler
-// recognises `v < 0 ? 0 : v` as a max and goes branchless with
-// `XOR EAX,EAX; TEST; SETL AL; DEC EAX; AND EAX,EDX`. Four phrasings were
-// tried - the clamp inline in the setter, as a helper, force-inlined, and with
-// the lower test written `>= 0` instead of `< 0` - and every one that inlines
-// at all produces the branchless form. 8447 did not do that transform.
-//
-// FUNCTION: GAMEMD 0x406620
 // Store clamped to 0..100.
 //
-// The clamp is written as a value-returning helper rather than inline: retail
-// materialises each bound into EAX and stores from there
-// (`MOV EAX,0x64; MOV [ECX+0x68],EAX`), which is what an inlined function
-// returning the value produces. Assigning the constant directly gives
-// `MOV dword ptr [ECX+0x68],0x64` and misses.
+// The clamp is a value-returning inline helper that narrows a local, upper bound
+// first: retail materialises each bound into EAX and stores from there
+// (`MOV EAX,0x64; MOV [ECX+0x68],EAX`). Early-returning arms or a conditional
+// expression make VC6 go branchless or lose the arm shape; two successive
+// `if`s on one local reproduce the three-arm layout byte-for-byte.
 static __forceinline int ClampPercent(int value)
 {
-    if (value > 100) {
-        return 100;
+    int result = value;
+    if (result > 100) {
+        result = 100;
     }
-    if (value < 0) {
-        return 0;
+    if (result < 0) {
+        result = 0;
     }
-    return value;
+    return result;
 }
 
+// FUNCTION: GAMEMD 0x406620
 void __fastcall FUN_00406620(Obj_00406600* obj, int value)
 {
     obj->unknown_68 = ClampPercent(value);

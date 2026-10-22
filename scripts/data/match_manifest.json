@@ -6758,8 +6758,8 @@
   "sym": "?FUN_00406620@@YIXPAUObj_00406600@@H@Z",
   "len": "0x1c",
   "name": "FUN_00406620",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/flag_and_clamp_methods.cpp",
@@ -47596,8 +47596,8 @@
   "sym": "?vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z",
   "len": "0x45",
   "name": "ParticleClass::vf_66",
-  "status": "partial",
-  "pct": 52.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/combat/particles/particle_class.cpp",

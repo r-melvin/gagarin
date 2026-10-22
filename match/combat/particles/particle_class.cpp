@@ -174,14 +174,21 @@ bool ParticleClass::vf_73(int arg)
 }
 
 
+// This by-value helper induces the temporary construction sequence used by the
+// function-local static initializer. It is a source-level code-generation aid,
+// not a claim about a retail standalone helper symbol.
+static inline ParticleCellCoord MakeInvalidCell()
+{
+    ParticleCellCoord c(0x7FFF, 0x7FFF);
+    return c;
+}
+
 // FUNCTION: GAMEMD 0x62D710
-// CAPPED: retail builds the temporary inside the guard; the multiset of instructions is identical.
-// The function-local static (global 0xAC49D0, guard bit in 0xAC4998) is built through a temporary;
-// its destructor stub is the bare RET at 0x62D760 (compiler-generated atexit entry).
+// The function-local static uses global 0xAC49D0 and guard byte 0xAC4998;
+// its atexit callback is the bare RET at 0x62D760.
 ParticleCellCoord* ParticleClass::vf_66(void* unused)
 {
-    ParticleCellCoord invalid(0x7FFF, 0x7FFF);
-    static ParticleCellCoord invalidCell = invalid;
+    static ParticleCellCoord invalidCell = MakeInvalidCell();
     return &invalidCell;
 }
 
