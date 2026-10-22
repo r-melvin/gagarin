@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at the three addresses below.
+//   Bytes compared against retail gamemd.exe v1.001 at the three addresses below.
 
 #include "small_misc40_methods.h"
 
@@ -19,10 +19,9 @@ void __fastcall FUN_00403820(Obj_00403820* self)
     self->field_2C = 0;
     self->field_48 = 0;
     self->field_50 = 0;
-    // Pinned: the one non-zero store does not depend on the zero in EAX, so a
-    // plain store lets VC6 hoist it to the top of the function, ahead of every
-    // other write. Retail has it between +0x50 and +0x44.
-    *(volatile int*)&self->field_40 = 0x1388;
+    // PARTIAL: VC6 hoists this one non-zero store to the top of the function;
+    // retail has it between +0x50 and +0x44. Not steered.
+    self->field_40 = 0x1388;
     self->field_44 = 0;
     self->field_30 = 0;
     self->field_34 = 0;
@@ -53,12 +52,10 @@ void __fastcall FUN_00407100(Timer_00407100* self, int value)
 // FUNCTION: GAMEMD 0x408D30
 int Obj_00408D30::FUN_00408D30()
 {
-    // The volatile read of the second operand is what makes VC6 reuse ECX for
-    // it (`MOV ECX,[ECX+0x90]`, clobbering `this`) instead of taking a fresh
-    // EDX. Six other spellings - both operands in locals, both volatile, the
-    // free __fastcall form, a const member, unsigned operands, and a `+ 0` to
-    // block folding - all leave the load in EDX at 50%.
+    // PARTIAL (50%): retail loads the second operand into ECX
+    // (`MOV ECX,[ECX+0x90]`, clobbering `this`); VC6 takes EDX. A volatile read
+    // that forced ECX was removed as match steering.
     int head = Head;
 
-    return head - *(volatile int*)&Tail;
+    return head - Tail;
 }

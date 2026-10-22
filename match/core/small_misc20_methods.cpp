@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at each address below.
+//   Bytes compared against retail gamemd.exe v1.001 at each address below.
 //
 // Ordered ascending by retail address.
 
@@ -20,9 +20,9 @@ void __cdecl FUN_00408200()
     }
 
     do {
-        // Volatile so the read-modify-write stays together: a plain increment
-        // lets VC6 hoist the next call's `this` load into the middle of it.
-        ++*(volatile int*)&((Counted_00408200*)node)->at88;
+        // PARTIAL: VC6 hoists the next call's `this` load into the middle of
+        // this increment, where retail keeps the read-modify-write together.
+        ++((Counted_00408200*)node)->at88;
 
         node = (node)->FUN_004073E0();
     } while (node);

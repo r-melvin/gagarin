@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x402190 and 0x404140.
+//   Bytes compared against retail gamemd.exe v1.001 at 0x402190 and 0x404140.
 
 #include "paired_object_methods.h"
 
@@ -100,6 +100,9 @@ void Obj_00402190::FUN_00402220()
 // The countdown treats -1 as "runs forever" and is otherwise decremented, so
 // the guard is a comparison against -1 rather than against zero.
 //
+// PARTIAL (emitted section shorter than retail): retail reloads +0xA8 for each
+// of the three uses; with an ordinary member VC6 reuses the first load.
+//
 // The two branches read the entry differently and retail keeps that asymmetry:
 // the record branch clears the entry through the pointer it already holds in
 // EDI, while the no-record branch re-reads `[ESI+0x168]`. Written with the
@@ -144,28 +147,22 @@ int __fastcall FUN_00402330(Obj_00402190* self)
 
 // FUNCTION: GAMEMD 0x4024A0
 //
-// MATCHED (100%, second-look): the seed is stored before +0x90 in source order;
-// VC6 then loads it ahead of the +0x90 store as retail does. The earlier
-// "+0x90 first" order produced a 93.8% scheduling delta.
+// PARTIAL (emitted section shorter than retail). The seed is stored before
+// +0x90 in source order; VC6 then loads it ahead of the +0x90 store as retail
+// does.
 //
 // Re-run the bring-up, but only when bit 3 of +0xA4 asks for it. The bit is
 // cleared first and then +0xA4 is zeroed wholesale a few stores later, so the
-// initial clear is a dead store — and retail keeps it. VC6 eliminates it, taking
-// three instructions with it (12.5%), so the read-modify-write is spelled through
-// volatile lvalues to force it back.
-//
-// Both sides of the read-modify-write need the volatile spelling. With only the
-// store marked, VC6 folds the read into the branch's own memory test and reuses
-// it, which loses retail's separate test-then-reload; marking both keeps the
-// direct `TEST byte ptr` and the fresh load inside the branch, exactly as retail
-// has them.
+// initial clear is a dead store — and retail keeps it. VC6 eliminates it,
+// taking three instructions with it. Volatile lvalues that forced it back were
+// removed as match steering; the shorter body is accepted.
 //
 // This is 0x402190's body behind a flag test, and the two are written out
 // separately rather than shared.
 void Obj_00402190::FUN_004024A0()
 {
     if (this->field_A4 & 8) {
-        *(volatile int*)&this->field_A4 = *(volatile int*)&this->field_A4 & ~8;
+        this->field_A4 = this->field_A4 & ~8;
 
         int zero = 0;
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
-//   Bytes matched against the user's retail gamemd.exe v1.001 across
+//   Bytes compared against the user's retail gamemd.exe v1.001 across
 //   0x5CD320..0x5CEDC6. The class identities come from the image's own runtime
 //   type information (see the header); the private-reference seed contributed only the
 //   observation that this address run is one cluster. Six of the entry points
@@ -934,17 +934,10 @@ __forceinline int MSAnim::TimeLeft()
 {
     int remain = Timer.Remaining;
 
-    // The cast is load-bearing. Retail loads StartTime once and compares it
-    // against -1 twice, once for PauseTimer's own guard and once here; cl 8804
-    // folds the second compare away when both are spelled the same, and the
-    // whole block goes with it. Written as an unsigned comparison the two tests
-    // are different expressions, the fold does not happen, and the single load
-    // with two compares comes out exactly. Eight other spellings were measured
-    // (a flattened body, an early-return helper, a named local for the load, a
-    // `StartTime + 1 != 0` test, a bool accessor, a swapped tail store order,
-    // both arm orders) and they score between 7.7 and 23.1 percent; a volatile
-    // read of the member reaches 80.8.
-    if ((unsigned int)Timer.StartTime != 0xFFFFFFFFu) {
+    // Retail compares StartTime against -1 again here even when the caller
+    // has just done so (PauseTimer). An ordinary signed test lets cl fold the
+    // repeated compare; that difference is accepted rather than steered.
+    if (Timer.StartTime != -1) {
         int elapsed = Timer.Clock.GetTime() - Timer.StartTime;
 
         if (elapsed < remain) {
@@ -960,7 +953,8 @@ __forceinline int MSAnim::TimeLeft()
 // FUNCTION: GAMEMD 0x5CEAD0
 // Slot 2: freeze the animation's clock, banking whatever is left of the
 // current interval. Retail tests StartTime twice — once here and once inside
-// the reader it expands — which is why TimeLeft is its own helper.
+// the reader it expands — which is why TimeLeft is its own helper. PARTIAL
+// (emitted section shorter than retail): VC6 folds the second test.
 void MSAnim::PauseTimer()
 {
     if (Timer.StartTime != -1) {

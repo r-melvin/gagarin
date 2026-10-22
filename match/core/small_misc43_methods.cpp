@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at each annotated address below.
+//   Bytes compared against retail gamemd.exe v1.001 at each annotated address below.
 
 #include "small_misc43_methods.h"
 
 // FUNCTION: GAMEMD 0x4053E0
-// REGISTER-PRESSURE DELTA (status partial, 27.3% - 6/22). The guards match
-// exactly once the state read is volatile - without it VC6 folds the load into
-// `CMP dword ptr [ESI+0x1C],2` where retail loads to EAX first. The residual is
-// the 64-bit subtract. Retail pushes EDI *inside* the branch and keeps both
+// REGISTER-PRESSURE DELTA (status partial, 18.2%). With an ordinary state
+// read VC6 folds the load into `CMP dword ptr [ESI+0x1C],2` where retail loads
+// to EAX first; the volatile read that forced the load was removed as match
+// steering (it had reached 27.3%). The other residual is the 64-bit subtract. Retail pushes EDI *inside* the branch and keeps both
 // halves of the accumulator live at once (`MOV ECX,[+0x140]; MOV EDI,[+0x144];
 // SUB ECX,EAX; SBB EDI,EDX;` then both stores). Ours never takes a
 // callee-saved register: it loads the low half, subtracts, stores it, then
@@ -30,7 +30,7 @@ void __fastcall FUN_004053E0(Obj_004053E0* self)
     int count = self->PauseCount;
 
     if (count == 0) {
-        int state = *(volatile int*)&self->State;
+        int state = self->State;
 
         if (state == 2) {
             __int64 now = FUN_004093B0();
@@ -44,19 +44,17 @@ void __fastcall FUN_004053E0(Obj_004053E0* self)
 
 // FUNCTION: GAMEMD 0x405430
 //
-// REGISTER-PRESSURE DELTA (status partial, 50.0%). Both guards, the floored
-// decrement and the state test are exact; the residual is the same one that
-// caps its sibling 0x4053E0 at 27.3% - retail keeps *both* halves of the
+// REGISTER-PRESSURE DELTA (status partial, 14.3%). Retail loads +0x158 twice,
+// once for the entry guard and once for the decrement; with ordinary reads VC6
+// shares one load (the volatile guard read that forced two was removed as
+// match steering). The other residual is the one shared with 0x4053E0 - retail keeps *both* halves of the
 // accumulator live (`MOV ECX,[+0x140]; MOV EDI,[+0x144]; ADD EAX,ECX;
 // ADC EDX,EDI`, pushing EDI for it) while VC6 reuses one register and never
 // takes a callee-saved one. Two instances of the same delta now, on an add and
 // on a subtract, which makes it a class rather than a one-off - see section 4.8.
 void __fastcall FUN_00405430(Obj_004053E0* self)
 {
-    // The entry guard reads the counter volatile so it is not shared with the
-    // decrement's own read: retail loads +0x158 twice, once to test and once to
-    // decrement.
-    if (*(volatile int*)&self->PauseCount != 0) {
+    if (self->PauseCount != 0) {
         // Decrement written twice so the `TEST` survives - section 4.6.
         int count = self->PauseCount;
 
@@ -67,7 +65,7 @@ void __fastcall FUN_00405430(Obj_004053E0* self)
         }
 
         if (self->PauseCount == 0) {
-            int state = *(volatile int*)&self->State;
+            int state = self->State;
 
             if (state == 2) {
                 self->Accumulated = FUN_004093B0() + self->Accumulated;
@@ -97,9 +95,8 @@ void __cdecl FUN_00405040()
     }
 
     do {
-        // Volatile guard read so it is not shared with the decrement's own
-        // read - retail loads +0x158 twice, as in 0x405430.
-        if (*(volatile int*)&node->PauseCount != 0) {
+        // Retail loads +0x158 twice here, as in 0x405430; not steered.
+        if (node->PauseCount != 0) {
             int count = node->PauseCount;
 
             node->PauseCount = count - 1;

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at the five addresses below.
+//   Bytes compared against retail gamemd.exe v1.001 at the five addresses below.
 
 #include "small_misc37_methods.h"
 
@@ -34,14 +34,13 @@ void* BufferHolder_004019A0::FUN_004019A0(char flags)
 // store are both dwords, only the mask is a byte.
 int Obj_004023F0::FUN_004023F0()
 {
-    // Volatile pins both the order and the width. Plain stores let VC6 hoist
-    // the Flags load above the Pending store, and a plain `&=` comes out as
-    // `AND EDX,0xFFFFFFFA` where retail has the narrowed `AND AL,0xFA` - the
-    // narrowing peephole only fires for the AL form, and only once the value is
-    // in EAX. The volatile read-modify-write puts it there.
-    *(volatile int*)&Pending = 0;
-    *(volatile int*)&Flags &= ~5;
-    *(volatile int*)&FlagsHigh = 0;
+    // PARTIAL: with ordinary stores VC6 hoists the Flags load above the
+    // Pending store and emits `AND EDX,0xFFFFFFFA` where retail has the
+    // narrowed `AND AL,0xFA`. The volatile accesses that forced retail's order
+    // and width were removed as match steering.
+    Pending = 0;
+    Flags &= ~5;
+    FlagsHigh = 0;
 
     FUN_00401000(Sub);
 
@@ -56,12 +55,10 @@ int Obj_004023F0::FUN_004023F0()
 
 // FUNCTION: GAMEMD 0x405580
 //
-// Both flag writes are volatile, and both need to be. The volatile is not about
-// width here but about order: a plain `|= 0x60` on the detach path lets VC6
-// hoist the owner re-read in between, and retail loads +0xB0 only after the
-// flag store lands. The widths then fall out on their own - `OR AL,0x60` on the
-// detach path and `OR ECX,0x60` on the other, from the same source expression,
-// because the two blocks get different registers.
+// PARTIAL: both flag writes are ordinary `|= 0x60`. On the detach path VC6
+// hoists the owner re-read in between, where retail loads +0xB0 only after the
+// flag store lands; the volatile writes that forced that order were removed as
+// match steering.
 void __fastcall FUN_00405580(Obj_00405580* self)
 {
     // Retail tests the flag byte in place (`TEST byte ptr [ESI+0x18],0x20`)
@@ -76,14 +73,14 @@ void __fastcall FUN_00405580(Obj_00405580* self)
     if (owner && self == owner->Current) {
         FUN_004026A0(owner);
 
-        *(volatile int*)&self->Flags |= 0x60;
+        self->Flags |= 0x60;
 
         FUN_004026B0(self->Owner);
 
         return;
     }
 
-    *(volatile int*)&self->Flags |= 0x60;
+    self->Flags |= 0x60;
 }
 
 // FUNCTION: GAMEMD 0x406550

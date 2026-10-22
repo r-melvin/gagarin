@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x404DD0.
+//   Bytes compared against retail gamemd.exe v1.001 at 0x404DD0.
 
 #include "small_misc45_methods.h"
 
@@ -30,10 +30,9 @@ void __fastcall FUN_00404DD0(Obj_00404DD0* self)
 {
     FUN_00407450(self);
 
-    // Volatile: the flag load has no dependency on this store, so plainly
-    // written VC6 schedules it first; retail clears +0x138 before reading
-    // +0x18.
-    *(volatile int*)&self->Pending = 0;
+    // PARTIAL: VC6 schedules the flag load ahead of this store; retail clears
+    // +0x138 before reading +0x18. Not steered.
+    self->Pending = 0;
 
     if (*(unsigned char*)&self->Flags & 0x80) {
         FUN_007C8B3D(self);

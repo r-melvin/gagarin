@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at the four addresses below.
+//   Bytes compared against retail gamemd.exe v1.001 at the four addresses below.
 
 #include "small_misc48_methods.h"
 
@@ -45,9 +45,12 @@ void Obj_00407FB0::FUN_00407FB0()
 }
 
 // FUNCTION: GAMEMD 0x408000
+// PARTIAL: the entry guard is an ordinary read; retail loads the counter again
+// for the decrement. The volatile guard read that forced it was removed as
+// match steering.
 void Obj_00407FB0::FUN_00408000()
 {
-    if (*(volatile int*)&this->Entered != 0) {
+    if (this->Entered != 0) {
         // Decrement written twice so the `TEST` survives - section 4.6.
         int entered = this->Entered;
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at each address below.
+//   Bytes compared against retail gamemd.exe v1.001 at each address below.
 //
 // Leaf accessors, ordered ascending by retail address.
 
@@ -70,18 +70,13 @@ void Obj_00408600::FUN_00408600()
 // Retail loads the subtrahend into ECX, clobbering the object pointer on its
 // last use; the plain difference (`return unknown_4C - unknown_50;`) puts it in
 // EDX and leaves ECX alone - identical instructions, one register apart, 50%.
-// The banked free-the-this-register device closes it: naming the minuend and
-// reading the subtrahend through a volatile lvalue gives retail's
-// `MOV ECX,[ECX+0x50]` exactly (100%). Measured in one compile against this
-// address: this form 100%, an unsigned volatile subtrahend 100%, the plain
-// difference 50%, a volatile minuend instead 50%, the volatile subtrahend with
-// the minuend left inline 25%, both operands named with a volatile subtrahend
-// 25%, and a `volatile int` local copy of the subtrahend 0%.
+// PARTIAL (50%): a volatile subtrahend reached 100% only by steering the
+// register choice and was removed; the one-register difference is accepted.
 // FUNCTION: GAMEMD 0x408D40
 int Obj_00408D00::FUN_00408D40()
 {
     int value = unknown_4C;
-    return value - *(volatile int*)&unknown_50;
+    return value - unknown_50;
 }
 
 // FUNCTION: GAMEMD 0x408D50
@@ -91,12 +86,12 @@ int Obj_00408D00::FUN_00408D50() const
 }
 
 // FUNCTION: GAMEMD 0x409320
-// Same shape and the same lever as 0x408D40 above: the volatile subtrahend is
-// what frees ECX for retail's `MOV ECX,[ECX+0x38]`.
+// Same shape as 0x408D40 above and the same accepted register difference:
+// retail loads the subtrahend into ECX (`MOV ECX,[ECX+0x38]`). PARTIAL (50%).
 int Obj_00409300::FUN_00409320()
 {
     int value = unknown_34;
-    return value - *(volatile int*)&unknown_38;
+    return value - unknown_38;
 }
 
 // FUNCTION: GAMEMD 0x424C90

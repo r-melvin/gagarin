@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at each address below.
+//   Bytes compared against retail gamemd.exe v1.001 at each address below.
 //
 // Ordered ascending by retail address.
 
@@ -9,26 +9,26 @@
 // FUNCTION: GAMEMD 0x4026C0
 // Notify, set the bit, notify again - the second notification is a tail call.
 //
-// The flag update goes through a volatile lvalue for two reasons at once. A
-// plain `|= 0x10` lets VC6 narrow the operation to `OR AL,0x10`, where retail
-// keeps the full dword; a volatile access must be performed at its declared
-// width, so the narrowing stops. It also pins the update ahead of the dispatch
-// load, which the optimiser otherwise hoists between the read and the store.
+// PARTIAL: the flag update is an ordinary `|= 0x10`. VC6 narrows it to
+// `OR AL,0x10` and hoists the dispatch load between the read and the store,
+// where retail keeps the full dword operation ahead of the load. A volatile
+// lvalue that forced retail's form was removed as match steering.
 void Obj_004026C0::FUN_004026C0()
 {
     DISP(this, 0x28);
 
-    *(volatile int*)&Flags |= 0x10;
+    Flags |= 0x10;
 
     DISP(this, 0x2C);
 }
 
 // FUNCTION: GAMEMD 0x4026F0
+// The clearing twin of 0x4026C0, with the same accepted difference (PARTIAL).
 void Obj_004026C0::FUN_004026F0()
 {
     DISP(this, 0x28);
 
-    *(volatile int*)&Flags &= ~0x10;
+    Flags &= ~0x10;
 
     DISP(this, 0x2C);
 }

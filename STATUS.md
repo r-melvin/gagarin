@@ -1,5 +1,46 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,097 matched function
+rows**, **261 partial rows**, **5,358 manifest rows**, **1,069 manifest
+translation units**, and **1,079 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass. There are zero annotation issues across 5,391 body addresses.
+
+The latest batch is the second steering cleanup. It removes volatile-qualified
+accesses used only for scheduling or register choice from sixteen early utility
+translation units and two `SlaveManagerClass` methods. It also makes the shared
+`field_A8` countdown an ordinary `int`, replaces a pointer-to-pointer cursor
+alias in `PassengersClass::RemovePassenger`, and drops an unsigned cast in
+`MSAnim`'s inline time-left reader. Twenty-nine former matches are now partial,
+three existing partials are re-scored lower, and two more were recompiled
+without a score change. Four demoted functions now emit sections shorter than
+retail, so their percentages are diagnostic only. The 109 unaffected named
+sections in the changed translation units keep their bytes and relocation
+tuples. The cleanup ledger is
+[recorded here](scripts/data/match_steering_cleanup.json).
+
+The repository-wide steering audit continues, and further removals may lower
+the matched count. Rocket and DropPod integration candidates and the remaining
+second-look patches are under review; candidate code must meet the same rule.
+`MSPrintAnim::Update` remains partial pending its nine-slot table
+reconstruction.
+
+The 5,097 matches represent 25.8% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **378,253
+bytes**, or 10.0% of 3,797,269 listed function bytes. The padding heuristic
+misses 311 matched entries. The last diagnostic link, taken before this batch,
+reported **4,186 unique unresolved symbols**, **6,731 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: first steering cleanup and callback scoping
+
 As of **2026-10-22**, the verified snapshot reports **5,126 matched function
 rows**, **232 partial rows**, **5,358 manifest rows**, **1,069 manifest
 translation units**, and **1,079 tracked C++ files**. Whole-repository regression
@@ -30,13 +71,6 @@ lengths total **380,297 bytes**, or 10.0% of 3,797,269 listed function bytes.
 The padding heuristic misses 314 matched entries. The diagnostic link reports
 **4,186 unique unresolved symbols**, **6,731 reference lines**, and zero
 duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: index mutations and terrain constructor
 

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x408230.
+//   Bytes compared against retail gamemd.exe v1.001 at 0x408230.
 
 #include "floored_decrement_methods.h"
 
@@ -11,19 +11,18 @@
 // second trio, and a compound `+= 1` on each member makes cl take a second
 // register (ECX) for it, which is 84.2% instead of 100%. Binding the loaded
 // value to a name and reusing the same name for the second counter puts both
-// trios in one register, as retail has them. The volatile qualification is
-// still needed for a different reason: written plainly cl batches both loads,
-// both increments and both stores (68.4%); only the first volatile is 78.9%.
+// trios in one register, as retail has them. PARTIAL: with ordinary member
+// accesses cl batches both loads, increments and stores, where retail keeps
+// two separate trios; that difference is accepted.
 void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
 {
     member->Owner = self;
 
-    // Volatile so the two counters stay as separate load/inc/store trios;
-    // one shared local so both trios use one register, as retail does.
-    int n = *(volatile int*)&self->Attached;
-    *(volatile int*)&self->Attached = n + 1;
-    n = *(volatile int*)&self->Pending;
-    *(volatile int*)&self->Pending = n + 1;
+    // One shared local so both trios use one register, as retail does.
+    int n = self->Attached;
+    self->Attached = n + 1;
+    n = self->Pending;
+    self->Pending = n + 1;
 
     FUN_00407420(self->Link, member);
 
@@ -41,16 +40,17 @@ void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
 // Same shape as its sibling at 0x402860, and the same lever: both counter
 // trios through one shared named local. With a compound assignment on each
 // member instead, cl takes a second register for the second trio: 86.4%.
+// PARTIAL with ordinary member accesses (no volatile); see 0x402860.
 void __fastcall FUN_004028B0(Member_00402860* self)
 {
     Owner_00402860* owner = self->Owner;
 
     FUN_00407450(self);
 
-    int n = *(volatile int*)&owner->Attached;
-    *(volatile int*)&owner->Attached = n - 1;
-    n = *(volatile int*)&owner->Pending;
-    *(volatile int*)&owner->Pending = n + 1;
+    int n = owner->Attached;
+    owner->Attached = n - 1;
+    n = owner->Pending;
+    owner->Pending = n + 1;
 
     FUN_00407450(self);
 
@@ -78,14 +78,12 @@ void __fastcall FUN_004028B0(Member_00402860* self)
 // returns before the allocation (17.9%), the combined condition with an
 // explicit `else { member = 0; }` (33.3%), and an explicit `goto fail;` /
 // `goto attach;` layout that spells retail's block order literally in the
-// source (33.3%, byte-identical stream to the combined form). Volatile reads in
-// the capacity compare made it worse (25.0%). cl 8804 always sinks the
+// source (33.3%, byte-identical stream to the combined form). cl 8804 always sinks the
 // constant-zero tail past the body; the only residual is that placement (plus
 // the `JNZ body` / `JE tail` polarity it forces).
 // Lift pass 3 (2026-09-18): the shared-named-local bump lever that took
-// 0x402860, 0x4028B0 and 0x403530 to 100% does not reach this one - both
-// counter trios through one local is still 33.3%, and adding a volatile
-// capacity read on top of it is 25.0%. The bumps here were already in retail's
+// 0x402860, 0x4028B0 and 0x403530 does not reach this one - both
+// counter trios through one local is still 33.3%. The bumps here were already in retail's
 // registers; the residual really is only the block order.
 // Lift pass 2 (2026-09-18): re-tried the null-initialised result returned by
 // name from both guards (`return member;` twice) - 17.9%, worse again. This is
@@ -107,8 +105,8 @@ Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self)
 
     member->Owner = (Owner_00402860*)self;
 
-    *(volatile int*)&self->Attached += 1;
-    *(volatile int*)&self->Pending += 1;
+    self->Attached += 1;
+    self->Pending += 1;
 
     FUN_00407420(self->Link, member);
 
@@ -125,7 +123,7 @@ Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self)
 
 // FUNCTION: GAMEMD 0x403530
 //
-// The loop form of 0x4034B0. Two levers took it from 57.1% to 100%.
+// The loop form of 0x4034B0. Two source-shape findings:
 //
 //   * The loop is `while (1) { if (!(capacity test)) break; ... if (!(--count
 //     != 0)) break; }` with one shared return after it, the negation wrapping
@@ -141,15 +139,15 @@ Member_00402860* __fastcall FUN_004034B0(Pool_00402860* self)
 //     0x402860 and 0x4028B0 above — without it cl takes EDX for the second
 //     trio where retail reuses ECX, and the loop form sits at 92.1%.
 //
-// The volatile reads are still load-bearing: dropping them from the capacity
-// compare and the bumps costs the `XOR EDI,EDI` position and the separate
-// trios (86.8%).
+// PARTIAL (86.8%): the capacity compare and bumps are ordinary member
+// accesses. The earlier volatile reads that restored the `XOR EDI,EDI`
+// position and the separate trios were removed as match steering.
 int __fastcall FUN_00403530(Pool_00402860* self, int count)
 {
     int made = 0;
 
     while (1) {
-        if (!(*(volatile int*)&self->Attached < *(volatile int*)&self->Capacity)) {
+        if (!(self->Attached < self->Capacity)) {
             break;
         }
 
@@ -161,10 +159,10 @@ int __fastcall FUN_00403530(Pool_00402860* self, int count)
 
         member->Owner = (Owner_00402860*)self;
 
-        int n = *(volatile int*)&self->Attached;
-        *(volatile int*)&self->Attached = n + 1;
-        n = *(volatile int*)&self->Pending;
-        *(volatile int*)&self->Pending = n + 1;
+        int n = self->Attached;
+        self->Attached = n + 1;
+        n = self->Pending;
+        self->Pending = n + 1;
 
         FUN_00407420(self->Link, member);
 

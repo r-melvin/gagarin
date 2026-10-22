@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4072E0.
+//   Bytes compared against retail gamemd.exe v1.001 at 0x4072E0.
 
 #include "sorted_list_insert_methods.h"
 
@@ -9,8 +9,9 @@
 // Insert a node into a key-ordered circular list and return how many nodes it
 // was placed behind.
 //
-// PARTIAL (26.3%, 10/38; was 7.7%) — the loop rotation is solved and the only
-// residual is one dominated null test cl 8804 folds away. Two levers fired:
+// PARTIAL (13.2%; was 26.3% with a volatile key read, removed as match
+// steering). The loop rotation is solved; the residuals are the guard's
+// register naming and one dominated null test cl 8804 folds away.
 //
 //   * The loop-rotation lever: `while (1) { advance; if (!(whole conjunction))
 //     break; body }`, with the negation wrapping the WHOLE conjunction rather
@@ -23,11 +24,10 @@
 //     helper, a volatile advance load) all rotate; the negation has to wrap
 //     the conjunction. Same lever as 0x40E3E0 / 0x40E4C0 and 0x5B46E0.
 //
-//   * Reading the cursor's key through a volatile-qualified load in the guard
-//     fixes the register naming the earlier passes recorded as a tie-break:
-//     with it, EDI holds the node's key and EBX the cursor's, as retail has
-//     them, and the node-key load sits below all three pushes. 13.2% -> 26.3%,
-//     and the first fourteen bytes are then byte-exact.
+//   * Register naming: retail holds the node's key in EDI and the cursor's in
+//     EBX, with the node-key load below all three pushes. A volatile read of
+//     the cursor's key reproduced that (26.3%) only by steering, and was
+//     removed; the ordinary read is accepted.
 //
 // Retail loads the neighbour's `Prev` before the first store in both splices;
 // writing that load as its own statement reproduces it (no score change on its
@@ -39,11 +39,7 @@
 // local `int zero` compared as `(N*)zero`, `((unsigned)cur | 0u) != 0u`, a
 // `__forceinline` predicate by value and by const reference, a second name
 // copied from the cursor, the clause hoisted out of the conjunction into its
-// own `if`, a volatile-qualified read of the cursor variable itself (0.0%, it
-// homes the cursor to the stack), and advancing through a second name (2.4%).
-// Binding the cursor key to a plain local instead of leaving the volatile read
-// in the guard costs the register naming again (18.4%), and doing so without
-// the volatile node-key read costs it twice over (7.9%). Treated as the
+// own `if`, and advancing through a second name (2.4%). Treated as the
 // dominated-test-folding difference between cl 8447 and 8804.
 int __fastcall FUN_004072E0(Node_004072E0* list, Node_004072E0* node)
 {
@@ -61,7 +57,7 @@ int __fastcall FUN_004072E0(Node_004072E0* list, Node_004072E0* node)
     while (1) {
         cur = cur->Next;
         if (!(cur != 0
-              && cur != (Node_004072E0*)*(volatile int*)&cur->Key
+              && cur != (Node_004072E0*)cur->Key
               && cur != 0)) {
             break;
         }

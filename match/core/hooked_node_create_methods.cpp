@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x402AF0.
+//   Bytes compared against retail gamemd.exe v1.001 at 0x402AF0.
 
 #include <string.h>
 #include "hooked_node_create_methods.h"
@@ -13,14 +13,10 @@
 // decides: zero means it took, anything else means it refused and the node is
 // detached again and freed.
 //
-// MATCHED 100% (57/57). The last residual was one adjacent swap: retail stores
-// `At_10 = 0` and only then loads ECX for the hook call, while cl hoisted the
-// ECX setup one slot earlier. Naming the hook's result in a local and reaching
-// the hook through the node's back-pointer left it unchanged; qualifying the
-// `At_10` store volatile is what pins it ahead of the receiver setup. Measured
-// in one compile against this address: the plain stores 96.5%, a volatile
-// `At_10` store 100%, both stores volatile 100%, and a volatile `Owner` store
-// alone 96.5% — so it is specifically the zero store that has to be pinned.
+// PARTIAL (96.5%). The residual is one adjacent swap: retail stores
+// `At_10 = 0` and only then loads ECX for the hook call, while cl hoists the
+// ECX setup one slot earlier. A volatile store that pinned the order was
+// removed as match steering; the swap is accepted.
 //
 // Both outcomes re-test the node pointer against null even though it was tested
 // for null nowhere in between; retail has `TEST ESI,ESI` on both arms
@@ -36,9 +32,7 @@ Node_00402AF0* __fastcall FUN_00402AF0(Owner_00402AF0* owner)
     memset(node, 0, sizeof(Node_00402AF0));
 
     FUN_004072D0(node);
-    // Volatile only as a scheduling device (§4.6): it keeps the zero store
-    // ahead of the hook call's `MOV ECX,ESI`, which is retail's order.
-    *(volatile int*)&node->At_10 = 0;
+    node->At_10 = 0;
     node->Owner = owner;
 
     if ((node->*owner->Attach)() != 0) {

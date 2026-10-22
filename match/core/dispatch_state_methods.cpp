@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x4025B0, 0x402600 and
+//   Bytes compared against retail gamemd.exe v1.001 at 0x4025B0, 0x402600 and
 //   0x402650.
 
 #include "dispatch_state_methods.h"
@@ -10,7 +10,9 @@
 // The 0x4025B0 body with a value stored at +0x0C before the first dispatch and
 // bit 3 raised after the last. The store lands between the dispatch-table load
 // and the call, which is scheduling; the source order is what it looks like.
-// Written out longhand rather than shared, per the family rule.
+// Written out longhand rather than shared, per the family rule. PARTIAL: the
+// flag update is an ordinary read-modify-write; retail's exact scheduling
+// around it is not reproduced.
 void __fastcall Obj_004025B0::FUN_00402440(int value)
 {
     this->Recorded = value;
@@ -31,7 +33,7 @@ void __fastcall Obj_004025B0::FUN_00402440(int value)
 
     this->Pending = 0;
 
-    *(volatile int*)&this->Flags |= 8;
+    this->Flags |= 8;
 }
 
 // FUNCTION: GAMEMD 0x402720
@@ -56,11 +58,9 @@ long Obj_004025B0::FUN_00402720()
     long hr = DISPATCH_RESULT_004025B0(this, 0x0C);
 
     if (hr == 0) {
-        // Volatile even though the encoding it produces is the same narrowed
-        // `OR AL,0x1`: without it the value lingers in EAX and VC6 reuses that
-        // register for the following dispatch-table load, where retail takes
-        // EDX.
-        *(volatile int*)&this->Flags |= 1;
+        // PARTIAL: written as an ordinary flag update. VC6 then reuses EAX
+        // for the following dispatch-table load where retail takes EDX.
+        this->Flags |= 1;
     }
 
     DISPATCH_004025B0(this, 0x2C);
@@ -132,18 +132,14 @@ void Obj_004025B0::FUN_00402600()
     DISPATCH_004025B0(this, 0x28);
 
     if (*(unsigned char*)&this->Flags & 1) {
-        // Both flag updates are volatile. Plain, VC6 hoists the dispatch-table
-        // load between the clear and its store and picks its own registers;
-        // volatile pins each read-modify-write as its own load/modify/store
-        // pair, which is what retail has. The differing widths are *not*
-        // selected here - the clear comes out `AND ECX,0xFFFFFFFE` and the set
-        // `OR AL,0x4` from the same spelling, because they land in different
-        // registers and only the EAX form has a byte opcode.
-        *(volatile int*)&this->Flags &= ~1;
+        // PARTIAL: ordinary flag updates. VC6 hoists the dispatch-table load
+        // between the clear and its store, where retail keeps each update as
+        // its own load/modify/store pair.
+        this->Flags &= ~1;
 
         DISPATCH_004025B0(this, 0x14);
 
-        *(volatile int*)&this->Flags |= 4;
+        this->Flags |= 4;
     }
 
     DISPATCH_004025B0(this, 0x2C);
@@ -159,12 +155,11 @@ void Obj_004025B0::FUN_00402650()
     if (*(unsigned char*)&this->Flags & 4) {
         DISPATCH_004025B0(this, 0x18);
 
-        // Both volatile, same as the sibling. Plain, VC6 folds the pair into
-        // one load with `AND AL,0xFB; OR AL,0x1` between it and a single
-        // store; retail keeps two load/modify/store pairs, and the widths
-        // (`AND AL,0xFB` then `OR ECX,0x1`) again fall out of the registers.
-        *(volatile int*)&this->Flags &= ~4;
-        *(volatile int*)&this->Flags |= 1;
+        // PARTIAL (emitted section shorter than retail): VC6 folds the two
+        // ordinary updates into one load and store, where retail keeps two
+        // load/modify/store pairs.
+        this->Flags &= ~4;
+        this->Flags |= 1;
     }
 
     DISPATCH_004025B0(this, 0x2C);

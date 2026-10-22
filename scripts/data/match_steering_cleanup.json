@@ -2,7 +2,7 @@
  "provenance": "original; source cleanup required by user; scores measured by local MSVC6 oracle against pinned retail binary",
  "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
  "before_commit": "d25284a",
- "scope": "First cleanup batch; not a claim that every steering construct in the repository has been audited.",
+ "scope": "Cleanup batches 1 (base d25284a) and 2 (base 31d37c4, rows tagged before_commit); not a claim that every steering construct in the repository has been audited.",
  "rows": [
   {
    "addr": "0x45AEA0",
@@ -66,7 +66,356 @@
    "previous_pct": 66.7,
    "status": "partial",
    "pct": 66.7
+  },
+  {
+   "addr": "0x406270",
+   "tu": "match/audio/audio_pan_methods.cpp",
+   "removed": "volatile read of the event type",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 0.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x6B0C80",
+   "tu": "match/combat/slave_manager_class_methods.cpp",
+   "removed": "volatile header stores used to pin store order",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 79.2,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x6B0D60",
+   "tu": "match/combat/slave_manager_class_more_methods.cpp",
+   "removed": "volatile header stores used to pin store order",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 84.6,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402440",
+   "tu": "match/core/dispatch_state_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 83.3,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402600",
+   "tu": "match/core/dispatch_state_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 73.7,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402650",
+   "tu": "match/core/dispatch_state_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 52.6,
+   "before_commit": "31d37c4",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x402720",
+   "tu": "match/core/dispatch_state_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 94.6,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402860",
+   "tu": "match/core/floored_decrement_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 63.2,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4028B0",
+   "tu": "match/core/floored_decrement_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 72.7,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4034b0",
+   "tu": "match/core/floored_decrement_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "partial",
+   "previous_pct": 33.3,
+   "status": "partial",
+   "pct": 33.3,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x403530",
+   "tu": "match/core/floored_decrement_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 86.8,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402AF0",
+   "tu": "match/core/hooked_node_create_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 96.5,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x408D40",
+   "tu": "match/core/leaf_accessor_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 50.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x409320",
+   "tu": "match/core/leaf_accessor_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 50.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x402330",
+   "tu": "match/core/paired_object_methods.cpp",
+   "removed": "volatile qualifier on shared member Obj_00402190::field_A8",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 10.0,
+   "before_commit": "31d37c4",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x4024A0",
+   "tu": "match/core/paired_object_methods.cpp",
+   "removed": "volatile read-modify-write of field_A4",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 12.5,
+   "before_commit": "31d37c4",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x4026C0",
+   "tu": "match/core/small_misc11_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 54.5,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4026F0",
+   "tu": "match/core/small_misc11_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 54.5,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x408200",
+   "tu": "match/core/small_misc20_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 73.3,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x403870",
+   "tu": "match/core/small_misc33_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 42.1,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4023f0",
+   "tu": "match/core/small_misc37_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 66.7,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x405580",
+   "tu": "match/core/small_misc37_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 66.7,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x403820",
+   "tu": "match/core/small_misc40_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 40.9,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x408d30",
+   "tu": "match/core/small_misc40_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 50.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x405040",
+   "tu": "match/core/small_misc43_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "partial",
+   "previous_pct": 13.9,
+   "status": "partial",
+   "pct": 13.9,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4053e0",
+   "tu": "match/core/small_misc43_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "partial",
+   "previous_pct": 27.3,
+   "status": "partial",
+   "pct": 18.2,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x405430",
+   "tu": "match/core/small_misc43_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "partial",
+   "previous_pct": 50.0,
+   "status": "partial",
+   "pct": 14.3,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x404dd0",
+   "tu": "match/core/small_misc45_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 91.3,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x408000",
+   "tu": "match/core/small_misc48_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 12.9,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4038A0",
+   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 60.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4038C0",
+   "tu": "match/core/small_struct_ctor_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 60.0,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4072E0",
+   "tu": "match/core/sorted_list_insert_methods.cpp",
+   "removed": "volatile-qualified lvalue casts used only for scheduling or register choice",
+   "previous_status": "partial",
+   "previous_pct": 26.3,
+   "status": "partial",
+   "pct": 13.2,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x4734B0",
+   "tu": "match/core/techno_class.cpp",
+   "removed": "redundant FootClass** alias on the list cursor (permuter-found register steering)",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 97.1,
+   "before_commit": "31d37c4"
+  },
+  {
+   "addr": "0x5CEAD0",
+   "tu": "match/map/msanim_family_methods.cpp",
+   "removed": "unsigned StartTime cast in inline TimeLeft used only to defeat compare folding",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 7.7,
+   "before_commit": "31d37c4",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
   }
  ],
- "unaffected_full_sections_preserved": 44
+ "unaffected_full_sections_preserved": 44,
+ "batch2_checked_unchanged_rows": [
+  "0x402190 (field_A8 consumer)",
+  "0x5CDC50 (inline TimeLeft caller)"
+ ],
+ "batch2_unaffected_named_sections_preserved": 109
 }

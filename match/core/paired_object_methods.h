@@ -76,10 +76,7 @@ struct Obj_00402190
     Obj_00401000* field_9C;        // +0x009C
     int  field_A0;                 // +0x00A0
     int  field_A4;                 // +0x00A4
-    // Volatile: 0x402330 reads this three times in a row — for the zero test,
-    // for the -1 test and again for the decrement — and retail emits all three
-    // loads. Without it VC6 keeps the first in EAX and reuses it.
-    volatile int field_A8;         // +0x00A8
+    int  field_A8;                 // +0x00A8  countdown, -1 = forever
     Ctx_00402220* Context;         // +0x00AC
     Obj_00402190* Peer;            // +0x00B0
     Hook_00402190 Hook_B4;         // +0x00B4  optional per-instance callback

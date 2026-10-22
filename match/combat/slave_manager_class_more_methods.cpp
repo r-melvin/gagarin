@@ -56,25 +56,13 @@ void SlaveManagerClass::CreateSlave(SlaveControl* Node)
 // order every live slave (State != Dead(6), Slave != null) back to Guard via
 // vtable+0x3D0, walking SlaveNodes back-to-front.
 //
-// MATCH: 26/26 exact (100%). Two things were needed, and the earlier note here
-// had the second one backwards.
-//
-// The header stores go through volatile-qualified lvalues. Plain assignments
-// let the optimiser hoist the loop-count load above them and sink the State
-// store past the `dec`; volatile stores may not be reordered against each
-// other, so the pair stays put.
-//
-// The store order is State then LastScanFrame, which is what retail does
-// (`MOV [ESI+0x5c],4` at 0x6B0D6B before `MOV [ESI+0x60],0x7FFFFFFF`). This
-// file previously had them the other way round. That was invisible while the
-// scheduler was free to reorder them, and only became a real two-instruction
-// diff once the volatile qualifiers pinned source order - so the fix exposed
-// an ordering fact rather than merely reproducing one.
+// PARTIAL (84.6%): source intentionally uses ordinary stores after removing volatile
+// codegen steering. The prior forced-order full match is not claimed.
 void SlaveManagerClass::Deploy2()
 {
     if (this->State == 0) {
-        *(volatile int*)&this->State = 4;
-        *(volatile int*)&this->LastScanFrame = 0x7FFFFFFF;
+        this->State = 4;
+        this->LastScanFrame = 0x7FFFFFFF;
 
         for (int i = this->SlaveNodes.Count - 1; i >= 0; --i) {
             SlaveControl* node = ((SlaveControl**)this->SlaveNodes.Items)[i];

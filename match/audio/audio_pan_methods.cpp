@@ -20,11 +20,16 @@
 // playback type. The clamp is inlined into each branch (the retail code does
 // not hoist it), and each branch tail-calls a different setter, so the whole
 // thing lowers to `ADD ECX,0x108; JMP setter`.
+//
+// PARTIAL: retail loads the type into EAX before comparing it; the ordinary
+// read lets VC6 compare the member in memory. A volatile read that forced the
+// load was removed as match steering. (The positional score is 0.0% because
+// the one missing instruction shifts every later one.)
 // ---------------------------------------------------------------------------
 void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan)
 {
     AudioEventTag* ev = (AudioEventTag*)event;
-    int type = *(volatile int*)&ev->Type;
+    int type = ev->Type;
     if (type == 3)
     {
         if (pan > 0x4000)
