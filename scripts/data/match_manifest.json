@@ -83932,9 +83932,9 @@
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6D8630",
-  "sym": "?FUN_006D8630@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x1",
-  "name": "FUN_006D8630",
+  "name": "Tactical direction offset array cleanup",
   "status": "matched",
   "pct": 100
  },
@@ -92175,5 +92175,14 @@
   "name": "Tactical::FUN_006D5F60",
   "status": "partial",
   "pct": 87.5
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D8530",
+  "sym": "?FUN_006D8530@Tactical@@QAEXHH@Z",
+  "len": "0xfe",
+  "name": "Tactical::FUN_006D8530",
+  "status": "partial",
+  "pct": 94.1
  }
 ]

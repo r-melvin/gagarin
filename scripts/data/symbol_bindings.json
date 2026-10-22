@@ -6254,6 +6254,8 @@
  "match/core/Score.cpp::_$E2": "0x00690150",
  "match/core/Score.cpp::_?$S1@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4EA": "0x00B054F0",
  "match/core/Score.cpp::_?blink@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4VCountdownTimer_0068FFE0@@A": "0x00B05528",
+ "match/core/Tactical.cpp::_?$S1@?1??FUN_006D8530@Tactical@@QAEXHH@Z@4EA": "0x00B0CDE0",
+ "match/core/Tactical.cpp::_?offsets@?1??FUN_006D8530@Tactical@@QAEXHH@Z@4PAUPair_006D9F80@@A": "0x00B0CE38",
  "match/core/abstract_index_cast_sweep.cpp::_DAT_007F4630": "0x007F4630",
  "match/core/global_objects_004e62d0.cpp::_$E17": "0x004E7D30",
  "match/core/global_objects_004e62d0.cpp::_$E22": "0x004E7DE0",

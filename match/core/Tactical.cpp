@@ -885,10 +885,25 @@ void __stdcall FUN_006D6370(int x, int y, int* outX, int* outY)
     *outY = resultY;
 }
 
-// FUNCTION: GAMEMD 0x6D8630
-// Empty function.
-void __cdecl FUN_006D8630()
+// FUNCTION: GAMEMD 0x6D8530
+void Tactical::FUN_006D8530(int direction, int distance)
 {
+// SYNTHETIC: GAMEMD 0x6D8630
+// Generated array cleanup, one-byte RET. Guard at0xB0CDE0 is compiler-generated.
+// GLOBAL: GAMEMD 0xB0CE38
+    static Pair_006D9F80 offsets[8] = {
+        Pair_006D9F80(0, -1), Pair_006D9F80(1, -1),
+        Pair_006D9F80(1, 0), Pair_006D9F80(1, 1),
+        Pair_006D9F80(0, 1), Pair_006D9F80(-1, 1),
+        Pair_006D9F80(-1, 0), Pair_006D9F80(-1, -1)
+    };
+    Pair_006D9F80 old = unknown_D64;
+    Pair_006D9F80 next(offsets[direction].unknown_00 * distance + old.unknown_00,
+                      offsets[direction].unknown_04 * distance + old.unknown_04);
+    if (!(old == next)) {
+        unknown_D74.unknown_00 = next.unknown_00 - old.unknown_00 + unknown_D74.unknown_00;
+        unknown_D74.unknown_04 = next.unknown_04 - old.unknown_04 + unknown_D74.unknown_04;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
