@@ -6,10 +6,11 @@ translation units**, and **1,318 tracked C++ files**. Whole-repository regressio
 verification, the project object build and 142 tooling tests pass, and the
 compile/layout check passes on the tracked tree.
 
-The ObjectClass slot block 0x5F4360-0x5F6DA0 now sits on the real virtuals:
-39 exact and 6 documented partials in four new units. Six view bodies move onto
-their virtuals with unchanged bytes, the checksum sink unifies on Obj_004A1D30,
-and about two dozen slot signatures are retyped from their RET n and EAX/AL use.
+Names without binary attestation are now placeholders across the tree: 85
+names were replaced, 102 kept and 3 split by entity, with no object byte
+changed. Kept names whose role the binary confirms by behaviour, vtable slot or
+callers carry the new behaviour-confirmed-name provenance tag; YRpp-matched
+names carry YRpp-cross-check. Comments no longer cite private or external sources.
 
 The 7,219 matches represent 36.5% of 19,753 listed functions. Counts are per
 function, not executable completion. Matched body lengths total **525,446
@@ -25,6 +26,26 @@ The integration records below are historical batch snapshots. Their
 batch-specific counts describe earlier states and are
 superseded by the current totals above. They are retained as evidence of the
 sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: ObjectClass slot block 0x5F4360-0x5F6DA0
+
+As of **2026-10-22**, the verified snapshot reports **7,219 matched function
+rows**, **433 partial rows**, **7,652 manifest rows**, **1,310 manifest
+translation units**, and **1,318 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The ObjectClass slot block 0x5F4360-0x5F6DA0 now sits on the real virtuals:
+39 exact and 6 documented partials in four new units. Six view bodies move onto
+their virtuals with unchanged bytes, the checksum sink unifies on Obj_004A1D30,
+and about two dozen slot signatures are retyped from their RET n and EAX/AL use.
+
+The 7,219 matches represent 36.5% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **525,446
+bytes**, or 13.8% of 3,797,269 listed function bytes. The padding heuristic
+misses 538 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
 
 ## Historical snapshot: naked-asm rewrite and steering volatiles
 
