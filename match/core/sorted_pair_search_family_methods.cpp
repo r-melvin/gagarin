@@ -8,27 +8,12 @@
 //   in exactly one byte (JLE against JBE) because its key is unsigned.
 //   Ordered ascending by retail address.
 //
-// STATUS: PARTIAL, 94.3% (33/35 instructions, multiset identical). The only
-// residual is a two-position scheduling swap in the entry sequence: retail
-// tests the incoming count register before copying it (`TEST EDX,EDX;
-// PUSH EDI; MOV ESI,EDX`) while cl copies first and tests the copy
-// (`MOV ESI,EDX; PUSH EDI; TEST ESI,ESI`). Everything from the key load
-// onwards is exact. Eleven spellings were measured in two match_all runs —
-// `while (count > 0)`, `while (0 < count)`, `while (count >= 1)`,
-// `for (; count > 0; )`, an `if`-guarded do/while, an early `return 0` guard,
-// a do/while over a separate loop counter, and four spellings of the window
-// shrink — and every structurally correct one lands on exactly 94.3% or
-// worse; the guarded do/while forms collapse to 55.6%.
-//
-// A later pass added the ninth and tenth batches' boundary levers and they do
-// not reach it either: the loop moved into a free inline helper behind an
-// explicit wrapper (0.0%), the same helper with a forwarding return (5.6%),
-// the count tested without a relational operator (88.6%), the window length
-// copied into its own variable behind an early guard (91.4%), and the shrink
-// written as the remaining upper half (94.3%). Seventeen structurally correct
-// spellings now agree on 94.3%, which puts this residual in the same class as
-// the stream-save family's: a two-position entry-sequence swap that the
-// source side does not appear to reach.
+// STATUS: EXACT. The last residual was an entry-sequence swap: retail tests
+// the incoming count register before copying it (`TEST EDX,EDX; PUSH EDI;
+// MOV ESI,EDX`). That is the shape cl gives when the window size is its own
+// local seeded from the `count` parameter (`for (n = count; n > 0;)`); with
+// the parameter itself as the loop variable it copies first and tests the
+// copy. See GG_SORTED_PAIR_SEARCH_BODY in the header.
 
 #include "sorted_pair_search_family_methods.h"
 

@@ -26,12 +26,16 @@ struct Obj_004023F0
 {
     char             _pad000[0x10];
     char             Sub[0xA4 - 0x10];   // +0x0010
-    int              Flags;              // +0x00A4
-    int              FlagsHigh;          // +0x00A8
+    // volatile (+0xA4, +0xA8, +0x168): this body is the hook at +0x164 that the
+    // mixer thread 0x4095B0 (CreateThread @0x409511) calls @0x40974F; 0x4095B0
+    // also tests +0xA4 at 0x409626 and 0x402330 (hook +0x160, @0x409A8B)
+    // reads +0x168. The caller's thread writes all three (0x402440, 0x4024A0).
+    volatile int     Flags;              // +0x00A4
+    volatile int     FlagsHigh;          // +0x00A8
     char             _pad0AC[0xB8 - 0xAC];
     Handler_004023F0 Handler;            // +0x00B8
     char             _pad0BC[0x168 - 0xBC];
-    int              Pending;            // +0x0168
+    volatile int     Pending;            // +0x0168
 
     // FUNCTION: GAMEMD 0x4023F0
     int FUN_004023F0();

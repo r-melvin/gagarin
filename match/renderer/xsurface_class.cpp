@@ -46,19 +46,19 @@ int XSurface::unknown_4C(int, int, int, int, int, int)
 }
 
 // FUNCTION: GAMEMD 0x7BAB40
-bool XSurface::unknown_50(int, int, int, int)
+bool XSurface::unknown_50(Point2D*, Point2D*, int, bool)
 {
     return false;
 }
 
 // FUNCTION: GAMEMD 0x7BAB50
-bool XSurface::unknown_34(int, int, int, int, int, int, int)
+bool XSurface::unknown_34(RectangleStruct*, Point2D*, Point2D*, unsigned int, int, int, bool)
 {
     return false;
 }
 
 // FUNCTION: GAMEMD 0x7BAB60
-bool XSurface::unknown_38(int, int, int, int, int, int, int)
+bool XSurface::unknown_38(RectangleStruct*, Point2D*, Point2D*, int, int, int, bool)
 {
     return false;
 }
@@ -70,7 +70,7 @@ bool XSurface::unknown_3C(int, int, int, int, int, int, int, int, int, int, int)
 }
 
 // FUNCTION: GAMEMD 0x7BAB80
-bool XSurface::unknown_40(int, int, int, int, int, int, int)
+bool XSurface::unknown_40(RectangleStruct*, Point2D*, Point2D*, unsigned char*, float, int, int)
 {
     return false;
 }

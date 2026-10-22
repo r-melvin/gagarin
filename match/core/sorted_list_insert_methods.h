@@ -16,7 +16,10 @@ struct Node_004072E0
 {
     Node_004072E0* Next;   // +0x0000
     Node_004072E0* Prev;   // +0x0004
-    int            Key;    // +0x0008
+    // volatile: the stream thread 0x407680 (CreateThread @0x407610) walks the
+    // list at 0x87E810 with 0x4073C0/0x4073E0 (called @0x4076C0, @0x407730),
+    // which read +0x8 at 0x4073CA/0x4073EA; 0x4072D0 writes it on this side.
+    volatile int   Key;    // +0x0008
 };
 GG_STATIC_ASSERT(offsetof(Node_004072E0, Prev) == 0x4);
 GG_STATIC_ASSERT(offsetof(Node_004072E0, Key) == 0x8);

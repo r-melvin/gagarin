@@ -88,12 +88,8 @@ static inline void Brighten(unsigned short* pixel, int brightness)
 // FUNCTION: GAMEMD 0x4BBCA0
 // The base declaration keeps seven ints (retail RET 0x1c), so the typed values are recovered by casts:
 // (RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ).
-bool DSurface::unknown_38(int clipArg, int fromArg, int toArg, int brightness, int zFrom, int zTo, int writeZArg)
+bool DSurface::unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ)
 {
-    RectangleStruct* clip = (RectangleStruct*)clipArg;
-    Point2D* from = (Point2D*)fromArg;
-    Point2D* to = (Point2D*)toArg;
-    bool& writeZ = (bool&)writeZArg;
     RectangleStruct scratch;
     RectangleStruct* surfaceRect = &GetRect();
     RectangleStruct bounds = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);

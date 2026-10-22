@@ -10,10 +10,8 @@
 // store are both dwords, only the mask is a byte.
 int Obj_004023F0::FUN_004023F0()
 {
-    // PARTIAL: with ordinary stores VC6 hoists the Flags load above the
-    // Pending store and emits `AND EDX,0xFFFFFFFA` where retail has the
-    // narrowed `AND AL,0xFA`. The volatile accesses that forced retail's order
-    // and width were removed as match steering.
+    // The three fields are volatile (this body runs on the mixer thread; see
+    // the header), which keeps the Flags load after the Pending store.
     Pending = 0;
     Flags &= ~5;
     FlagsHigh = 0;

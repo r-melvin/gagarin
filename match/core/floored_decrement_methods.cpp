@@ -11,9 +11,9 @@
 // second trio, and a compound `+= 1` on each member makes cl take a second
 // register (ECX) for it, which is 84.2% instead of 100%. Binding the loaded
 // value to a name and reusing the same name for the second counter puts both
-// trios in one register, as retail has them. PARTIAL: with ordinary member
-// accesses cl batches both loads, increments and stores, where retail keeps
-// two separate trios; that difference is accepted.
+// trios in one register, as retail has them. PARTIAL (89.5%): Pending is
+// volatile (the mixer thread reads it; see the header), but Attached has no
+// cross-thread evidence and stays plain, so cl still batches its trio.
 void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
 {
     member->Owner = self;
@@ -40,7 +40,7 @@ void __fastcall FUN_00402860(Owner_00402860* self, Member_00402860* member)
 // Same shape as its sibling at 0x402860, and the same lever: both counter
 // trios through one shared named local. With a compound assignment on each
 // member instead, cl takes a second register for the second trio: 86.4%.
-// PARTIAL with ordinary member accesses (no volatile); see 0x402860.
+// PARTIAL (77.3%) for the same reason as 0x402860: only Pending is volatile.
 void __fastcall FUN_004028B0(Member_00402860* self)
 {
     Owner_00402860* owner = self->Owner;

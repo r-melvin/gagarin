@@ -63,7 +63,10 @@ struct Owner_00402860
     int  Attached;   // +0x00F0
     char _pad0F4[0xF8 - 0xF4];
     char Link[0x104 - 0xF8];   // +0x00F8
-    int  Pending;    // +0x0104
+    // volatile: the mixer thread 0x4095B0 (CreateThread @0x409511, parameter
+    // 0x87E850 whose +0x20 is this owner) reads it at 0x4095E2 and skips its
+    // pass while it is non-zero; 0x402860/0x4028B0/0x403530 raise and drop it.
+    volatile int Pending;      // +0x0104
 };
 GG_STATIC_ASSERT(offsetof(Owner_00402860, Attached) == 0xF0);
 GG_STATIC_ASSERT(offsetof(Owner_00402860, Link) == 0xF8);
@@ -92,7 +95,7 @@ struct Pool_00402860
     int              Attached;   // +0x00F0
     int              Capacity;   // +0x00F4
     char             Link[0x104 - 0xF8];   // +0x00F8
-    int              Pending;    // +0x0104
+    volatile int     Pending;    // +0x0104  (volatile: see Owner_00402860)
 };
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Capacity) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Link) == 0xF8);

@@ -50,6 +50,21 @@ struct CDTimerClass
     int StartTime;    // +0x00
     int unknown_04;   // +0x04
     int TimeLeft;     // +0x08
+
+    // Inline countdown read; same shape as the copy in
+    // techno_class_idle_action_methods.h (TimeLeft loaded once, a return per arm).
+    int GetTimeLeft() const
+    {
+        int timeLeft = this->TimeLeft;
+        if (this->StartTime != -1) {
+            int elapsed = CurrentFrame - this->StartTime;
+            if (elapsed < timeLeft) {
+                return timeLeft - elapsed;
+            }
+            return 0;
+        }
+        return timeLeft;
+    }
 };
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);

@@ -19,7 +19,11 @@ struct Cursor_00408930
     int               unknown_04;   // +0x0004
     int               unknown_08;   // +0x0008
     Source_00408930*  unknown_0C;   // +0x000C
-    int               Flags;        // +0x0010
+    // volatile: the stream threads 0x53E070 (CreateThread @0x53DF2A) and
+    // 0x407680 (@0x407610) update this channel word in 0x409100 (@0x4091AC)
+    // and 0x4091C0 (@0x40924A); this body clears bit 0 on the caller's thread
+    // (0x408840, called @0x53E381 and @0x407B0F).
+    volatile int      Flags;        // +0x0010
     int               Channel;      // +0x0014
     char              _pad18[0x28 - 0x18];
     Source_00408930*  Source;       // +0x0028

@@ -4,7 +4,9 @@
 
 #include "small_misc32_methods.h"
 
-// Use direct member stores; no receiver aliases or volatile flag access.
+// Use direct member stores; no receiver aliases. Flags is volatile only by its
+// declaration (shared with the stream threads; see the header). PARTIAL
+// (90.9%).
 
 // FUNCTION: GAMEMD 0x408930
 // Rewind the cursor onto its source. The flag clear at the end is written once

@@ -35,7 +35,9 @@ struct Obj_004025B0
     char             _pad000[0xC];
     int              Recorded;   // +0x000C
     char             Part[0xA4 - 0x10];   // +0x0010
-    int              Flags;      // +0x00A4
+    // volatile: shared with the mixer thread 0x4095B0 (CreateThread @0x409511),
+    // which tests it at 0x409626; written here and by 0x402600/0x402650.
+    volatile int     Flags;      // +0x00A4
     char             _pad0A8[0xBC - 0xA8];
     Handler_004025B0 Handler;    // +0x00BC
     char             _pad0C0[0xD4 - 0xC0];

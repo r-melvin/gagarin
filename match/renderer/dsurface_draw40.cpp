@@ -76,13 +76,8 @@ static inline int Distance(int dx, int dy)
 // FUNCTION: GAMEMD 0x4BDF00
 // clip = clip rectangle, from/to = endpoints, color = 3 bytes scaled by `scale`, zFrom/zTo = depths.
 // The base declaration keeps seven ints (retail RET 0x1c), so the typed values are recovered by casts.
-bool DSurface::unknown_40(int clipArg, int fromArg, int toArg, int colorArg, int scaleArg, int zFrom, int zTo)
+bool DSurface::unknown_40(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* color, float scale, int zFrom, int zTo)
 {
-    RectangleStruct* clip = (RectangleStruct*)clipArg;
-    Point2D* from = (Point2D*)fromArg;
-    Point2D* to = (Point2D*)toArg;
-    unsigned char*& color = (unsigned char*&)colorArg;
-    float& scale = (float&)scaleArg;
     int c0 = (int)(color[0] * scale);
     int c1 = (int)(color[1] * scale);
     int c2 = (int)(color[2] * scale);

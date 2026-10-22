@@ -29,11 +29,17 @@
 struct Obj_00403800
 {
     char _pad00[0x8];
-    int  unknown_08;    // +0x0008
-    int  unknown_0C;    // +0x000C
+    // volatile (+0x08..+0x0C, +0x20..+0x24): this block sits at +0x20 of the
+    // stream threads' parameters (0x87E770 for 0x407680, CreateThread
+    // @0x407610; 0xAA0378 for 0x53E070, @0x53DF2A) and at +0x170 of the mixer
+    // owner (0x4095B0, @0x409511). Those threads read all four words in
+    // 0x403920 (@0x403945, @0x403977; called @0x4076AF, @0x40960C, @0x53E0A0);
+    // these bodies write them from the caller's thread (@0x4075D3, @0x40A0BF).
+    volatile int unknown_08;    // +0x0008
+    volatile int unknown_0C;    // +0x000C
     char _pad10[0x20 - 0x10];
-    int  unknown_20;    // +0x0020
-    int  unknown_24;    // +0x0024
+    volatile int unknown_20;    // +0x0020
+    volatile int unknown_24;    // +0x0024
 
     // FUNCTION: GAMEMD 0x4038A0
     void FUN_004038A0(int a, int b);

@@ -70,13 +70,8 @@ static inline unsigned short Shade(unsigned int alpha, unsigned int ch0, unsigne
 // FUNCTION: GAMEMD 0x4BFD30
 // The base declaration keeps seven ints (retail RET 0x1c), so the typed values are recovered by casts:
 // (RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ).
-bool DSurface::unknown_34(int clipArg, int fromArg, int toArg, int colorArg, int zEnd, int zStart, int writeZArg)
+bool DSurface::unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ)
 {
-    RectangleStruct*& clip = (RectangleStruct*&)clipArg;
-    Point2D*& from = (Point2D*&)fromArg;
-    Point2D*& to = (Point2D*&)toArg;
-    unsigned int& color = (unsigned int&)colorArg;
-    bool& writeZ = (bool&)writeZArg;
     RectangleStruct scratch;
     RectangleStruct* surfaceRect = &GetRect();
     RectangleStruct area = *RectIntersect(&scratch, clip, surfaceRect, 0, 0);

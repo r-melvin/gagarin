@@ -10,9 +10,9 @@
 // The 0x4025B0 body with a value stored at +0x0C before the first dispatch and
 // bit 3 raised after the last. The store lands between the dispatch-table load
 // and the call, which is scheduling; the source order is what it looks like.
-// Written out longhand rather than shared, per the family rule. PARTIAL: the
-// flag update is an ordinary read-modify-write; retail's exact scheduling
-// around it is not reproduced.
+// Written out longhand rather than shared, per the family rule. Flags is
+// declared volatile (shared with the mixer thread; see the header), which
+// gives retail's separate load/modify/store around the dispatches.
 void __fastcall Obj_004025B0::FUN_00402440(int value)
 {
     this->Recorded = value;
@@ -58,8 +58,6 @@ long Obj_004025B0::FUN_00402720()
     long hr = DISPATCH_RESULT_004025B0(this, 0x0C);
 
     if (hr == 0) {
-        // PARTIAL: written as an ordinary flag update. VC6 then reuses EAX
-        // for the following dispatch-table load where retail takes EDX.
         this->Flags |= 1;
     }
 
@@ -132,9 +130,6 @@ void Obj_004025B0::FUN_00402600()
     DISPATCH_004025B0(this, 0x28);
 
     if (*(unsigned char*)&this->Flags & 1) {
-        // PARTIAL: ordinary flag updates. VC6 hoists the dispatch-table load
-        // between the clear and its store, where retail keeps each update as
-        // its own load/modify/store pair.
         this->Flags &= ~1;
 
         DISPATCH_004025B0(this, 0x14);
@@ -155,9 +150,7 @@ void Obj_004025B0::FUN_00402650()
     if (*(unsigned char*)&this->Flags & 4) {
         DISPATCH_004025B0(this, 0x18);
 
-        // PARTIAL (emitted section shorter than retail): VC6 folds the two
-        // ordinary updates into one load and store, where retail keeps two
-        // load/modify/store pairs.
+        // Two load/modify/store pairs: Flags is volatile (see the header).
         this->Flags &= ~4;
         this->Flags |= 1;
     }

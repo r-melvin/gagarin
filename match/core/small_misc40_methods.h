@@ -71,7 +71,10 @@ struct Obj_00408D30
 {
     char _pad000[0x8C];
     int  Head;   // +0x008C
-    int  Tail;   // +0x0090
+    // volatile: +0x90 is +0x38 of the second channel (+0x58, see 0x408C30),
+    // which the stream thread 0x53E070 (CreateThread @0x53DF2A) advances in
+    // 0x409100 (store @0x409127); it calls this body @0x53E0EB.
+    volatile int Tail;   // +0x0090
 
     // FUNCTION: GAMEMD 0x408D30
     int FUN_00408D30();

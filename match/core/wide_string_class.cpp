@@ -34,14 +34,16 @@ Obj_007B66D0::Obj_007B66D0(const Obj_007B66D0& other)
 // FUNCTION: GAMEMD 0x7B6780
 //
 // Compare with a raw wide string: two nulls are equal, one null is not, and
-// otherwise the CRT comparison decides.
+// otherwise the CRT comparison decides. Retail tests the wcscmp result and
+// SETZ's it straight into AL (`test eax,eax; sete al`), the selection form of
+// the result; the `== 0` comparison form gives cl's `neg/sbb/inc` instead.
 bool Obj_007B66D0::FUN_007B6780(const wchar_t* text) const
 {
     if (Buffer == 0 && text == 0) {
         return true;
     }
     if (Buffer != 0 && text != 0) {
-        return wcscmp(Buffer, text) == 0;
+        return wcscmp(Buffer, text) ? false : true;
     }
     return false;
 }

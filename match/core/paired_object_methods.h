@@ -75,8 +75,13 @@ struct Obj_00402190
     Obj_00401000* field_98;        // +0x0098
     Obj_00401000* field_9C;        // +0x009C
     int  field_A0;                 // +0x00A0
-    int  field_A4;                 // +0x00A4
-    int  field_A8;                 // +0x00A8  countdown, -1 = forever
+    // volatile: both are shared with the mixer thread 0x4095B0 (CreateThread
+    // @0x409511). It tests +0xA4 at 0x409626 and runs the hooks this object
+    // installs: 0x402330 (+0x160, called @0x409A8B via 0x409880) counts +0xA8
+    // down, 0x4023F0 (+0x164, called @0x40974F) clears both. The caller's
+    // thread writes them through 0x402190/0x4024A0 and 0x402600/0x402650.
+    volatile int field_A4;         // +0x00A4
+    volatile int field_A8;         // +0x00A8  countdown, -1 = forever
     Ctx_00402220* Context;         // +0x00AC
     Obj_00402190* Peer;            // +0x00B0
     Hook_00402190 Hook_B4;         // +0x00B4  optional per-instance callback

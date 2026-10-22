@@ -60,6 +60,14 @@ against an instruction in the binary before it lands as a repo fact.
 - Do not use `volatile`, redundant pointer aliases, or casts solely to force a
   byte match. Remove such steering and record the function as partial when
   ordinary C++ does not match. ABI and layout casts require binary evidence.
+- `volatile` is allowed only on the declaration of a field or global whose data
+  the binary proves is shared with another thread or callback (a thread
+  procedure started by `CreateThread`, a timer or multimedia callback, a
+  callback hook invoked from such a thread, or a critical section shared with
+  one). Cite the evidence in a comment at the declaration: the thread procedure
+  or callback address, the creating call site, and the reader and writer
+  addresses. Score every row in every TU that includes the header; any
+  regression rules it out. Never put `volatile` on an access, a cast or a local.
 
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;

@@ -52,10 +52,8 @@ GG_STATIC_ASSERT(sizeof(MaskRing) == 0x2C);
 // FUNCTION: GAMEMD 0x4C0E30
 // Arguments (base declaration types kept): from/to are Point2D* line ends relative to the surface origin,
 // color is the 16-bit pixel value, the last is a byte flag: write where the mask word is zero (true) or non-zero.
-bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
+bool DSurface::unknown_50(Point2D* from, Point2D* to, int color, bool flag)
 {
-    Point2D* from = (Point2D*)fromArg;
-    Point2D* to = (Point2D*)toArg;
 
     if (GetBytesPerPixel() != 2)
         return false;
@@ -89,11 +87,11 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
 
     int dx = b.X - a.X;
     int dy = b.Y - a.Y;
-    if ((unsigned char)flagArg) {
+    if (flag) {
         if (a.Y == b.Y) {
             for (int i = 0; i <= b.X - a.X; i++) {
                 if ((*mask == 0))
-                    *pixel = (unsigned short)colorArg;
+                    *pixel = (unsigned short)color;
                 STEP_MASK(mask, 1, rowStride);
                 pixel++;
             }
@@ -104,7 +102,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
             int count = abs(dy) + 1;
             for (; count > 0; count--) {
                 if ((*mask == 0))
-                    *pixel = (unsigned short)colorArg;
+                    *pixel = (unsigned short)color;
                 STEP_MASK(mask, rowStride, rowStride);
                 pixel = (unsigned short*)((char*)pixel + pitch);
             }
@@ -117,7 +115,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
                 int err = 2 * ady - dx;
                 for (int i = 0; i < dx; i++) {
                     if ((*mask == 0))
-                        pixel[i] = (unsigned short)colorArg;
+                        pixel[i] = (unsigned short)color;
                     if (err > 0) {
                         pixel = (unsigned short*)((char*)pixel + pitch);
                         STEP_MASK(mask, rowStride, 1);
@@ -131,7 +129,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
                 int xoff = 0;
                 for (int i = 0; i < ady; i++) {
                     if ((*mask == 0))
-                        pixel[xoff] = (unsigned short)colorArg;
+                        pixel[xoff] = (unsigned short)color;
                     if (err > 0) {
                         err -= 2 * ady;
                         STEP_MASK(mask, 1, 1);
@@ -147,7 +145,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
         if (a.Y == b.Y) {
             for (int i = 0; i <= b.X - a.X; i++) {
                 if ((*mask != 0))
-                    *pixel = (unsigned short)colorArg;
+                    *pixel = (unsigned short)color;
                 STEP_MASK(mask, 1, rowStride);
                 pixel++;
             }
@@ -158,7 +156,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
             int count = abs(dy) + 1;
             for (; count > 0; count--) {
                 if ((*mask != 0))
-                    *pixel = (unsigned short)colorArg;
+                    *pixel = (unsigned short)color;
                 STEP_MASK(mask, rowStride, rowStride);
                 pixel = (unsigned short*)((char*)pixel + pitch);
             }
@@ -171,7 +169,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
                 int err = 2 * ady - dx;
                 for (int i = 0; i < dx; i++) {
                     if ((*mask != 0))
-                        pixel[i] = (unsigned short)colorArg;
+                        pixel[i] = (unsigned short)color;
                     if (err > 0) {
                         pixel = (unsigned short*)((char*)pixel + pitch);
                         STEP_MASK(mask, rowStride, 1);
@@ -185,7 +183,7 @@ bool DSurface::unknown_50(int fromArg, int toArg, int colorArg, int flagArg)
                 int xoff = 0;
                 for (int i = 0; i < ady; i++) {
                     if ((*mask != 0))
-                        pixel[xoff] = (unsigned short)colorArg;
+                        pixel[xoff] = (unsigned short)color;
                     if (err > 0) {
                         err -= 2 * ady;
                         STEP_MASK(mask, 1, 1);

@@ -9,8 +9,8 @@
 // Insert a node into a key-ordered circular list and return how many nodes it
 // was placed behind.
 //
-// PARTIAL (13.2%; was 26.3% with a volatile key read, removed as match
-// steering). The loop rotation is solved; the residuals are the guard's
+// PARTIAL (26.3%, with Key declared volatile: the stream thread reads it; see
+// the header). The loop rotation is solved; the residuals are the guard's
 // register naming and one dominated null test cl 8804 folds away.
 //
 //   * The loop-rotation lever: `while (1) { advance; if (!(whole conjunction))
@@ -25,9 +25,8 @@
 //     the conjunction. Same lever as 0x40E3E0 / 0x40E4C0 and 0x5B46E0.
 //
 //   * Register naming: retail holds the node's key in EDI and the cursor's in
-//     EBX, with the node-key load below all three pushes. A volatile read of
-//     the cursor's key reproduced that (26.3%) only by steering, and was
-//     removed; the ordinary read is accepted.
+//     EBX, with the node-key load below all three pushes. The volatile Key
+//     declaration reproduces that (26.3%).
 //
 // Retail loads the neighbour's `Prev` before the first store in both splices;
 // writing that load as its own statement reproduces it (no score change on its

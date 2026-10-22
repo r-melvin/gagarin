@@ -94,7 +94,10 @@ struct Obj_00408D00
     int  unknown_14;   // +0x0014
     char _pad018[0x4C - 0x18];
     int  unknown_4C;   // +0x004C
-    int  unknown_50;   // +0x0050
+    // volatile: +0x50 is +0x38 of the channel at +0x18 (see 0x408C30), which
+    // the stream thread 0x53E070 (CreateThread @0x53DF2A) advances in 0x409100
+    // (store @0x409127, via 0x409030 @0x53E11A); it reads this body @0x53E108.
+    volatile int unknown_50;   // +0x0050
     // FUNCTION: GAMEMD 0x408D40
     int FUN_00408D40();
     // FUNCTION: GAMEMD 0x408D50
@@ -108,7 +111,10 @@ struct Obj_00409300
 {
     char _pad000[0x34 - 0x0];
     int  unknown_34;   // +0x0034
-    int  unknown_38;   // +0x0038
+    // volatile: the stream thread 0x53E070 (CreateThread @0x53DF2A) advances it
+    // in 0x409100 (store @0x409127, reached via 0x409030 @0x53E11A/@0x53E170);
+    // the caller's thread reads it here (0x53E1D0, 0x53E550, 0x53E770, ...).
+    volatile int unknown_38;   // +0x0038
     // FUNCTION: GAMEMD 0x409320
     int FUN_00409320();
 };

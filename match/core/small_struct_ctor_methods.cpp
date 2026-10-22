@@ -7,9 +7,9 @@
 
 #include "small_struct_ctor_methods.h"
 
-// PARTIAL (both writers): retail interleaves load-store-load-store; with
-// ordinary assignments VC6 hoists both argument loads ahead of both stores.
-// Volatile stores that pinned the order were removed as match steering.
+// Both writers: retail interleaves load-store-load-store, which is what the
+// volatile declarations give (the stream threads read these words; see the
+// header). Plain fields would let VC6 hoist both loads ahead of both stores.
 // FUNCTION: GAMEMD 0x4038A0
 void Obj_00403800::FUN_004038A0(int a, int b)
 {

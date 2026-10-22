@@ -17,7 +17,10 @@ typedef void (__fastcall* DispSlot)(Obj_004026C0*);
 struct Obj_004026C0
 {
     char  _pad000[0xA4];
-    int   Flags;      // +0x00A4
+    // volatile: shared with the mixer thread 0x4095B0 (CreateThread @0x409511),
+    // which tests it at 0x409626 and clears bits in 0x4023F0 (hook +0x164,
+    // called @0x40974F).
+    volatile int Flags; // +0x00A4
     char  _padA8[0xD4 - 0xA8];
     char* Dispatch;   // +0x00D4
 

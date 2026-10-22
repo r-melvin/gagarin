@@ -52,9 +52,9 @@ void __fastcall FUN_00407100(Timer_00407100* self, int value)
 // FUNCTION: GAMEMD 0x408D30
 int Obj_00408D30::FUN_00408D30()
 {
-    // PARTIAL (50%): retail loads the second operand into ECX
-    // (`MOV ECX,[ECX+0x90]`, clobbering `this`); VC6 takes EDX. A volatile read
-    // that forced ECX was removed as match steering.
+    // Retail loads the second operand into ECX (`MOV ECX,[ECX+0x90]`,
+    // clobbering `this`): Tail is volatile (shared with the stream thread;
+    // see the header).
     int head = Head;
 
     return head - Tail;

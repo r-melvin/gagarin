@@ -15,8 +15,11 @@ struct Obj_00403870
 {
     int Current;    // +0x0000  low half
     int CurrentHi;  // +0x0004  high half
-    int Original;   // +0x0008
-    int OriginalHi; // +0x000C
+    // volatile: the stream threads read this pair in 0x403920 (@0x403977,
+    // called @0x4076AF, @0x40960C, @0x53E0A0). Current/CurrentHi have no
+    // reader on another thread, so they stay plain.
+    volatile int Original;   // +0x0008
+    volatile int OriginalHi; // +0x000C
     char _pad10[0x20 - 0x10];
     int Scaled;     // +0x0020
     int ScaledHi;   // +0x0024

@@ -70,8 +70,8 @@ void Obj_00408600::FUN_00408600()
 // Retail loads the subtrahend into ECX, clobbering the object pointer on its
 // last use; the plain difference (`return unknown_4C - unknown_50;`) puts it in
 // EDX and leaves ECX alone - identical instructions, one register apart, 50%.
-// PARTIAL (50%): a volatile subtrahend reached 100% only by steering the
-// register choice and was removed; the one-register difference is accepted.
+// unknown_50 is declared volatile (the stream thread advances it; see the
+// header), and that declaration gives retail's ECX load.
 // FUNCTION: GAMEMD 0x408D40
 int Obj_00408D00::FUN_00408D40()
 {
@@ -86,8 +86,8 @@ int Obj_00408D00::FUN_00408D50() const
 }
 
 // FUNCTION: GAMEMD 0x409320
-// Same shape as 0x408D40 above and the same accepted register difference:
-// retail loads the subtrahend into ECX (`MOV ECX,[ECX+0x38]`). PARTIAL (50%).
+// Same shape as 0x408D40 above: retail loads the subtrahend into ECX
+// (`MOV ECX,[ECX+0x38]`), from the volatile declaration (see the header).
 int Obj_00409300::FUN_00409320()
 {
     int value = unknown_34;

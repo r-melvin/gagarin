@@ -53,21 +53,25 @@ GG_STATIC_ASSERT(sizeof(SortedEntryU_00725070) == 0x8);
 // fall-through and the equality test sits in the taken branch, as retail lays
 // them out; and the shrink has to be spelled `count - 1 - half` so cl folds
 // the two subtractions into retail's `OR EDX,-1; SUB EDX,EAX; ADD ESI,EDX`
-// rather than emitting a separate `DEC`.
+// rather than emitting a separate `DEC`. The window size is a separate local
+// `n` seeded from `count`: retail tests the incoming count in EDX before it
+// copies it into ESI (`TEST EDX,EDX` ahead of `MOV ESI,EDX`), which cl only
+// emits when the parameter itself is not the loop variable.
 #define GG_SORTED_PAIR_SEARCH_BODY(ADDR, ENTRY, KEYTYPE)                  \
 ENTRY* __fastcall FUN_##ADDR(ENTRY* base, int count, const KEYTYPE* key)  \
 {                                                                         \
-    while (count > 0) {                                                   \
-        int half = count / 2;                                             \
+    int n;                                                                \
+    for (n = count; n > 0;) {                                             \
+        int half = n / 2;                                                 \
         ENTRY* mid = base + half;                                         \
         if (mid->Key > *key) {                                            \
-            count = half;                                                 \
+            n = half;                                                     \
         } else {                                                          \
             if (mid->Key == *key) {                                       \
                 return mid;                                               \
             }                                                             \
             base = mid + 1;                                               \
-            count = count - 1 - half;                                     \
+            n = n - 1 - half;                                             \
         }                                                                 \
     }                                                                     \
     return 0;                                                             \

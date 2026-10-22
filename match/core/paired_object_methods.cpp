@@ -100,8 +100,8 @@ void Obj_00402190::FUN_00402220()
 // The countdown treats -1 as "runs forever" and is otherwise decremented, so
 // the guard is a comparison against -1 rather than against zero.
 //
-// PARTIAL (emitted section shorter than retail): retail reloads +0xA8 for each
-// of the three uses; with an ordinary member VC6 reuses the first load.
+// Retail reloads +0xA8 for each of the three uses: field_A8 is declared
+// volatile (this hook runs on the mixer thread; see the header).
 //
 // The two branches read the entry differently and retail keeps that asymmetry:
 // the record branch clears the entry through the pointer it already holds in
@@ -147,15 +147,13 @@ int __fastcall FUN_00402330(Obj_00402190* self)
 
 // FUNCTION: GAMEMD 0x4024A0
 //
-// PARTIAL (emitted section shorter than retail). The seed is stored before
-// +0x90 in source order; VC6 then loads it ahead of the +0x90 store as retail
-// does.
+// The seed is stored before +0x90 in source order; VC6 then loads it ahead
+// of the +0x90 store as retail does.
 //
 // Re-run the bring-up, but only when bit 3 of +0xA4 asks for it. The bit is
 // cleared first and then +0xA4 is zeroed wholesale a few stores later, so the
-// initial clear is a dead store — and retail keeps it. VC6 eliminates it,
-// taking three instructions with it. Volatile lvalues that forced it back were
-// removed as match steering; the shorter body is accepted.
+// initial clear is a dead store, and retail keeps it because +0xA4 is
+// declared volatile (shared with the mixer thread; see the header).
 //
 // This is 0x402190's body behind a flag test, and the two are written out
 // separately rather than shared.

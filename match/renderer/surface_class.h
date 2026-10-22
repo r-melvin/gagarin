@@ -126,10 +126,10 @@ public:
     // +0x30, XSurface 0x7BA5E0
     virtual bool DrawLine(Point2D* from, Point2D* to, unsigned int color) = 0;
     // +0x34..+0x40, XSurface stubs returning false (RET 0x1C, 0x1C, 0x2C, 0x1C)
-    virtual bool unknown_34(int, int, int, int, int, int, int) = 0;
-    virtual bool unknown_38(int, int, int, int, int, int, int) = 0;
+    virtual bool unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ) = 0;
+    virtual bool unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ) = 0;
     virtual bool unknown_3C(int, int, int, int, int, int, int, int, int, int, int) = 0;
-    virtual bool unknown_40(int, int, int, int, int, int, int) = 0;
+    virtual bool unknown_40(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* color, float scale, int zFrom, int zTo) = 0;
     // +0x44, XSurface 0x7BAB90
     virtual bool DrawLineCallback(RectangleStruct* clip, Point2D* from,
                                   Point2D* to, SurfacePixelCallback callback) = 0;
@@ -142,7 +142,7 @@ public:
     // +0x4C, XSurface stub 0x7BAB30 (returns 0; RET 0x18)
     virtual int unknown_4C(int, int, int, int, int, int) = 0;
     // +0x50, XSurface stub 0x7BAB40 (returns false; RET 0x10)
-    virtual bool unknown_50(int, int, int, int) = 0;
+    virtual bool unknown_50(Point2D* from, Point2D* to, int color, bool flag) = 0;
     // +0x54, XSurface 0x7BADC0
     virtual bool DrawRectEx(RectangleStruct* clip, RectangleStruct* rect,
                             unsigned int color) = 0;
@@ -233,10 +233,10 @@ public:
     // FUNCTION: GAMEMD 0x7BA5E0 (decl; reloc)
     virtual bool DrawLine(Point2D* from, Point2D* to, unsigned int color);
     // FUNCTION: GAMEMD 0x7BAB50 (decl; reloc) / 0x7BAB60 / 0x7BAB70 / 0x7BAB80
-    virtual bool unknown_34(int, int, int, int, int, int, int);
-    virtual bool unknown_38(int, int, int, int, int, int, int);
+    virtual bool unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ);
+    virtual bool unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ);
     virtual bool unknown_3C(int, int, int, int, int, int, int, int, int, int, int);
-    virtual bool unknown_40(int, int, int, int, int, int, int);
+    virtual bool unknown_40(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* color, float scale, int zFrom, int zTo);
     // FUNCTION: GAMEMD 0x7BAB90 (decl; reloc)
     virtual bool DrawLineCallback(RectangleStruct* clip, Point2D* from,
                                   Point2D* to, SurfacePixelCallback callback);
@@ -248,7 +248,7 @@ public:
     // FUNCTION: GAMEMD 0x7BAB30 (decl; reloc)
     virtual int unknown_4C(int, int, int, int, int, int);
     // FUNCTION: GAMEMD 0x7BAB40 (decl; reloc)
-    virtual bool unknown_50(int, int, int, int);
+    virtual bool unknown_50(Point2D* from, Point2D* to, int color, bool flag);
     // FUNCTION: GAMEMD 0x7BADC0 (decl; reloc)
     virtual bool DrawRectEx(RectangleStruct* clip, RectangleStruct* rect,
                             unsigned int color);

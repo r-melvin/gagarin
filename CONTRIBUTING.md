@@ -97,8 +97,10 @@ don't work on the same function.
      each confirmed against an instruction in the binary;
    - the correct calling convention (`__thiscall` methods, `__stdcall` COM).
 3. Run `match.sh` and iterate on types, statement order, phrasing and flags.
-   No inline `_asm` or match-forcing tricks (`volatile`, redundant pointer
-   aliases, casts used only to steer codegen); see [AGENTS.md](AGENTS.md).
+   No inline `_asm` or match-forcing tricks (`volatile` on accesses or locals,
+   redundant pointer aliases, casts used only to steer codegen); see
+   [AGENTS.md](AGENTS.md) for the one admissible `volatile`, on declarations
+   of data proven shared with another thread or callback.
 4. For the last few register or ordering mismatches, try the permuter:
    `scripts/permuter/new_run.sh <addr> <C-name> <native-symbol> /tmp/run <length>`.
    The fifth argument is the full validated retail span in hex. Before searching,

@@ -9,10 +9,8 @@
 // FUNCTION: GAMEMD 0x4026C0
 // Notify, set the bit, notify again - the second notification is a tail call.
 //
-// PARTIAL: the flag update is an ordinary `|= 0x10`. VC6 narrows it to
-// `OR AL,0x10` and hoists the dispatch load between the read and the store,
-// where retail keeps the full dword operation ahead of the load. A volatile
-// lvalue that forced retail's form was removed as match steering.
+// Flags is declared volatile (shared with the mixer thread; see the header),
+// so the update stays a full dword load/OR/store ahead of the dispatch load.
 void Obj_004026C0::FUN_004026C0()
 {
     DISP(this, 0x28);
@@ -23,7 +21,7 @@ void Obj_004026C0::FUN_004026C0()
 }
 
 // FUNCTION: GAMEMD 0x4026F0
-// The clearing twin of 0x4026C0, with the same accepted difference (PARTIAL).
+// The clearing twin of 0x4026C0.
 void Obj_004026C0::FUN_004026F0()
 {
     DISP(this, 0x28);

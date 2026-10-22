@@ -150,12 +150,12 @@ public:
     virtual bool FillRectEx(RectangleStruct* clip, RectangleStruct* rect, unsigned int color);
     virtual bool FillRect(RectangleStruct* rect, unsigned int color);
     virtual bool unknown_1C(RectangleStruct* rect, RectangleStruct* colorBytes, int percent);
-    virtual bool unknown_34(int, int, int, int, int, int, int);
-    virtual bool unknown_38(int, int, int, int, int, int, int);
+    virtual bool unknown_34(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned int color, int zEnd, int zStart, bool writeZ);
+    virtual bool unknown_38(RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ);
     virtual bool unknown_3C(int, int, int, int, int, int, int, int, int, int, int);
-    virtual bool unknown_40(int, int, int, int, int, int, int);
+    virtual bool unknown_40(RectangleStruct* clip, Point2D* from, Point2D* to, unsigned char* color, float scale, int zFrom, int zTo);
     virtual int unknown_4C(int, int, int, int, int, int);
-    virtual bool unknown_50(int, int, int, int);
+    virtual bool unknown_50(Point2D* from, Point2D* to, int color, bool flag);
     virtual void* Lock(Point2D origin);
     virtual bool Unlock();
     virtual bool unknown_64(unsigned int, unsigned int);

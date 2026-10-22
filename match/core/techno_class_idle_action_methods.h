@@ -47,18 +47,20 @@ struct CDTimerClass
     int unknown_04;   // +0x04
     int TimeLeft;     // +0x08
 
+    // Retail keeps the stored duration in a register from the first load and
+    // returns straight out of the running arm, so the accessor reads TimeLeft
+    // once into a local and has a return per arm (0x7099E0, 0x70F7E0).
     int GetTimeLeft() const
     {
-        if (this->StartTime == -1) {
-            return this->TimeLeft;
-        }
-        {
+        int timeLeft = this->TimeLeft;
+        if (this->StartTime != -1) {
             int elapsed = CurrentFrame - this->StartTime;
-            if (elapsed < this->TimeLeft) {
-                return this->TimeLeft - elapsed;
+            if (elapsed < timeLeft) {
+                return timeLeft - elapsed;
             }
+            return 0;
         }
-        return 0;
+        return timeLeft;
     }
 };
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);

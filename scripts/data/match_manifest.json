@@ -5699,8 +5699,8 @@
   "sym": "?FUN_00402440@Obj_004025B0@@QAIXH@Z",
   "len": "0x57",
   "name": "FUN_00402440",
-  "status": "partial",
-  "pct": 83.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/dispatch_state_methods.cpp",
@@ -5726,8 +5726,8 @@
   "sym": "?FUN_00402600@Obj_004025B0@@QAEXXZ",
   "len": "0x49",
   "name": "FUN_00402600",
-  "status": "partial",
-  "pct": 73.7
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/dispatch_state_methods.cpp",
@@ -5735,8 +5735,8 @@
   "sym": "?FUN_00402650@Obj_004025B0@@QAEXXZ",
   "len": "0x49",
   "name": "FUN_00402650",
-  "status": "partial",
-  "pct": 52.6
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/dispatch_state_methods.cpp",
@@ -5744,8 +5744,8 @@
   "sym": "?FUN_00402720@Obj_004025B0@@QAEJXZ",
   "len": "0x6e",
   "name": "FUN_00402720",
-  "status": "partial",
-  "pct": 94.6
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/drain_and_unlink_methods.cpp",
@@ -6789,7 +6789,7 @@
   "len": "0x4b",
   "name": "FUN_00402860",
   "status": "partial",
-  "pct": 63.2
+  "pct": 89.5
  },
  {
   "tu": "match/core/floored_decrement_methods.cpp",
@@ -6798,7 +6798,7 @@
   "len": "0x4e",
   "name": "FUN_004028B0",
   "status": "partial",
-  "pct": 72.7
+  "pct": 77.3
  },
  {
   "tu": "match/core/floored_decrement_methods.cpp",
@@ -8183,8 +8183,8 @@
   "sym": "?FUN_00408D40@Obj_00408D00@@QAEHXZ",
   "len": "0x9",
   "name": "FUN_00408D40",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_accessor_methods.cpp",
@@ -8201,8 +8201,8 @@
   "sym": "?FUN_00409320@Obj_00409300@@QAEHXZ",
   "len": "0x9",
   "name": "FUN_00409320",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/leaf_accessor_methods.cpp",
@@ -9722,8 +9722,8 @@
   "sym": "?FUN_00402330@@YIHPAUObj_00402190@@@Z",
   "len": "0xb2",
   "name": "FUN_00402330",
-  "status": "partial",
-  "pct": 10.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/paired_object_methods.cpp",
@@ -9731,8 +9731,8 @@
   "sym": "?FUN_004024A0@Obj_00402190@@QAEXXZ",
   "len": "0xa5",
   "name": "FUN_004024A0",
-  "status": "partial",
-  "pct": 12.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/paired_object_methods.cpp",
@@ -10559,8 +10559,8 @@
   "sym": "?FUN_004026C0@Obj_004026C0@@QAEXXZ",
   "len": "0x27",
   "name": "FUN_004026C0",
-  "status": "partial",
-  "pct": 54.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc11_methods.cpp",
@@ -10568,8 +10568,8 @@
   "sym": "?FUN_004026F0@Obj_004026C0@@QAEXXZ",
   "len": "0x27",
   "name": "FUN_004026F0",
-  "status": "partial",
-  "pct": 54.5
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc11_methods.cpp",
@@ -11136,7 +11136,7 @@
   "len": "0x38",
   "name": "FUN_00408930",
   "status": "partial",
-  "pct": 50.0
+  "pct": 90.9
  },
  {
   "tu": "match/core/small_misc33_methods.cpp",
@@ -11145,7 +11145,7 @@
   "len": "0x30",
   "name": "FUN_00403870",
   "status": "partial",
-  "pct": 42.1
+  "pct": 63.2
  },
  {
   "tu": "match/core/small_misc34_methods.cpp",
@@ -11208,8 +11208,8 @@
   "sym": "?FUN_004023F0@Obj_004023F0@@QAEHXZ",
   "len": "0x40",
   "name": "Obj_004023F0::FUN_004023F0",
-  "status": "partial",
-  "pct": 66.7
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc37_methods.cpp",
@@ -11424,8 +11424,8 @@
   "sym": "?FUN_00408D30@Obj_00408D30@@QAEHXZ",
   "len": "0xf",
   "name": "Obj_00408D30::FUN_00408D30",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc41_methods.cpp",
@@ -12279,8 +12279,8 @@
   "sym": "?FUN_004038A0@Obj_00403800@@QAEXHH@Z",
   "len": "0x11",
   "name": "FUN_004038A0",
-  "status": "partial",
-  "pct": 60.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_struct_ctor_methods.cpp",
@@ -12288,8 +12288,8 @@
   "sym": "?FUN_004038C0@Obj_00403800@@QAEXHH@Z",
   "len": "0x11",
   "name": "FUN_004038C0",
-  "status": "partial",
-  "pct": 60.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_struct_ctor_methods.cpp",
@@ -12424,7 +12424,7 @@
   "len": "0x4a",
   "name": "FUN_004072E0",
   "status": "partial",
-  "pct": 13.2
+  "pct": 26.3
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12432,8 +12432,8 @@
   "sym": "?FUN_004D2F00@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_004D2F00",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12441,8 +12441,8 @@
   "sym": "?FUN_00523440@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_00523440",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12450,8 +12450,8 @@
   "sym": "?FUN_0052B6D0@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_0052B6D0",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12459,8 +12459,8 @@
   "sym": "?FUN_0052B750@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_0052B750",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12468,8 +12468,8 @@
   "sym": "?FUN_005FC120@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_005FC120",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12477,8 +12477,8 @@
   "sym": "?FUN_00710890@@YIPAUSortedEntry_004D2F00@@PAU1@HPBH@Z",
   "len": "0x44",
   "name": "FUN_00710890",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/sorted_pair_search_family_methods.cpp",
@@ -12486,8 +12486,8 @@
   "sym": "?FUN_00725070@@YIPAUSortedEntryU_00725070@@PAU1@HPBI@Z",
   "len": "0x44",
   "name": "FUN_00725070",
-  "status": "partial",
-  "pct": 94.3
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/spin_wait_methods.cpp",
@@ -12837,8 +12837,8 @@
   "sym": "?IsTimeForIdleAction@TechnoClass@@QAE_NXZ",
   "len": "0x35",
   "name": "TechnoClass::IsTimeForIdleAction",
-  "status": "partial",
-  "pct": 35.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/techno_class_idle_action_methods.cpp",
@@ -12936,8 +12936,8 @@
   "sym": "?TargetingTimerFinished@TechnoClass@@QBE_NXZ",
   "len": "0x35",
   "name": "TargetingTimerFinished",
-  "status": "partial",
-  "pct": 35.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/techno_class_owner_methods.cpp",
@@ -44684,7 +44684,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab40",
-  "sym": "?unknown_50@XSurface@@UAE_NHHHH@Z",
+  "sym": "?unknown_50@XSurface@@UAE_NPAUPoint2D@@0H_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_50",
   "status": "matched",
@@ -44693,7 +44693,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab50",
-  "sym": "?unknown_34@XSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_34@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1IHH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_34",
   "status": "matched",
@@ -44702,7 +44702,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab60",
-  "sym": "?unknown_38@XSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_38@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1HHH_N@Z",
   "len": "0x5",
   "name": "XSurface::unknown_38",
   "status": "matched",
@@ -44720,7 +44720,7 @@
  {
   "tu": "match/renderer/xsurface_class.cpp",
   "addr": "0x7bab80",
-  "sym": "?unknown_40@XSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_40@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEMHH@Z",
   "len": "0x5",
   "name": "XSurface::unknown_40",
   "status": "matched",
@@ -45636,7 +45636,7 @@
  {
   "tu": "match/renderer/dsurface_draw34.cpp",
   "addr": "0x4BFD30",
-  "sym": "?unknown_34@DSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_34@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1IHH_N@Z",
   "len": "0xA17",
   "name": "DSurface::unknown_34",
   "status": "partial",
@@ -45647,7 +45647,7 @@
  {
   "tu": "match/renderer/dsurface_draw38.cpp",
   "addr": "0x4BBCA0",
-  "sym": "?unknown_38@DSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_38@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1HHH_N@Z",
   "len": "0xAAF",
   "name": "DSurface::unknown_38",
   "status": "partial",
@@ -45669,7 +45669,7 @@
  {
   "tu": "match/renderer/dsurface_draw40.cpp",
   "addr": "0x4BDF00",
-  "sym": "?unknown_40@DSurface@@UAE_NHHHHHHH@Z",
+  "sym": "?unknown_40@DSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1PAEMHH@Z",
   "len": "0xAC2",
   "name": "DSurface::unknown_40",
   "status": "partial",
@@ -45691,7 +45691,7 @@
  {
   "tu": "match/renderer/dsurface_draw50.cpp",
   "addr": "0x4C0E30",
-  "sym": "?unknown_50@DSurface@@UAE_NHHHH@Z",
+  "sym": "?unknown_50@DSurface@@UAE_NPAUPoint2D@@0H_N@Z",
   "len": "0x601",
   "name": "DSurface::unknown_50",
   "status": "partial",
@@ -61608,8 +61608,8 @@
   "sym": "?FUN_007B6780@Obj_007B66D0@@QBE_NPBG@Z",
   "len": "0x32",
   "name": "Obj_007B66D0::FUN_007B6780",
-  "status": "partial",
-  "pct": 72.7
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/wide_string_class.cpp",
