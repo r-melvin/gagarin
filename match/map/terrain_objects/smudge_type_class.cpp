@@ -11,6 +11,10 @@
 // FUNCTION: GAMEMD 0x6B5260
 // CAPPED at 97.3%: retail loads Count then Capacity (EAX, ECX) for the inlined AddItem, this compiles
 // Capacity first; the early-return and Count-first AddItem shapes tried fall to 94.5% / 57.0%.
+// The canonical DynamicVectorClass<SmudgeTypeClass*> with an inline AddItem was also tried and is
+// worse: nested early-out ifs 45.2%, one short-circuit condition 45.2%, and that condition storing
+// through an inline operator[] 94.5% (both CapacityIncrement + Capacity operand orders). The
+// terrain-module vector model stays.
 SmudgeTypeClass::SmudgeTypeClass(const char* id)
     : MapObjTypeClassView(id), ArrayIndex(-1), Width(1), Height(1), Crater(false), Burn(false)
 {

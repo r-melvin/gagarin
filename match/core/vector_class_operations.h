@@ -89,6 +89,27 @@ inline bool DynamicVectorClass<T>::Delete(int index)
     return false;
 }
 
+// Append, inline: expanded in ListClass::AddItem (0x5576A0). Growth by
+// CapacityIncrement happens only when the vector owns its block or has none.
+// The new index is taken before the store, so ActiveCount is loaded ahead of
+// Items, which is retail's order.
+template<class T>
+inline bool DynamicVectorClass<T>::AddItem(const T& item)
+{
+    if (ActiveCount >= this->Capacity) {
+        if ((this->IsAllocated || this->Capacity == 0) && CapacityIncrement > 0) {
+            if (!this->SetCapacity(this->Capacity + CapacityIncrement, 0))
+                return false;
+        } else {
+            return false;
+        }
+    }
+    int index = ActiveCount;
+    ActiveCount = index + 1;
+    this->Items[index] = item;
+    return true;
+}
+
 // By-value removal through the virtual FindItemIndex (slot +0x10). Inline in
 // SuperClass::Lose (0x6CB7B0) and ToolTipManager::Remove (0x724730); the call
 // through `this` inside the inlined body keeps the dispatch indirect.
@@ -146,6 +167,11 @@ template<class T> int DynamicVectorClass<T>::Slot5(T* elementAddress) const
 }
 
 
+// Caller storage is constructed in place, as in the constructor: the
+// eight-byte element instances 0x40B180, 0x50EEE0, 0x50F210 and 0x6CF5A0 run
+// the element constructor loop over pMem as well as over newly allocated
+// storage. For pointer and other trivially constructed elements the placement
+// form emits no code.
 template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
     if (capacity != 0) {
         T* newItems;
@@ -153,7 +179,7 @@ template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
         if (pMem == 0)
             newItems = new T[capacity];
         else
-            newItems = pMem;
+            newItems = new((void*)pMem) T[capacity];
         this->IsInitialized = true;
         if (newItems == 0)
             return false;

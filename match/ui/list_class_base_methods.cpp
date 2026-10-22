@@ -39,9 +39,6 @@
 // neither defined nor linked here.
 extern "C" void __stdcall LC_BaseAction(void*);   // 0x48E5A0 ControlClass::Action
 
-// `operator delete`-ish block free, called __cdecl from the destructor.
-extern "C" void __cdecl LC_FreeBlock(void*);      // 0x7C8B3D
-
 // FUNCTION: GAMEMD 0x557600
 // ListClass::~ListClass. If scrolling was active, restores the Width the
 // scrollbar had borrowed, clears the flag, and unhooks the Scroller and both
@@ -51,9 +48,9 @@ extern "C" void __cdecl LC_FreeBlock(void*);      // 0x7C8B3D
 // child widgets, re-stamps the base list's own vtable, frees its block if it
 // owned one, and chains to GadgetClass::~GadgetClass.
 //
-// Both vtable seats are plain stores rather than compiler-emitted ones: neither
-// ListClass nor TextDynVector is modelled as polymorphic here (each carries its
-// vptr as an explicit member), so the store retail makes is the store we write.
+// ListClass's own vtable seat is a plain store: ListClass is not modelled as
+// polymorphic here (it carries its vptr as an explicit member). The list
+// vector's seat comes from its inline destructor.
 // The `XOR EBX,EBX` zero register falls out of the seven zero uses on its own.
 void ListClass::Dtor()
 {
@@ -77,21 +74,19 @@ void ListClass::Dtor()
     ((SliderObj*)&Scroller)->Dtor();
     ((ShapeBtnObj*)&DownButton)->Dtor();
     ((ShapeBtnObj*)&UpButton)->Dtor();
-    // TextDynVector::~TextDynVector, expanded in place by retail.
-    *(char**)&List = VT_007ED1FC;
-    if (List.Vector != 0 && List.IsAllocated) {
-        LC_FreeBlock(List.Vector);
-        List.Vector = 0;
-    }
-    List.IsAllocated = false;
-    List.VectorMax = 0;
+    // The member vector's destructor, inline. DynamicVectorClass has no
+    // destructor of its own, so this is ~VectorClass: it reseats the
+    // VectorClass<wchar_t const*> vtable 0x7ED1FC and frees the block if it
+    // owns it. Calling the DynamicVectorClass destructor instead makes cl call
+    // the implicit one out of line (6.2%).
+    List.VectorClass<wchar_t const*>::~VectorClass();
     BaseDtor();
 }
 
 // FUNCTION: GAMEMD 0x5576A0
-// ListClass::AddItem. DynamicVectorClass<wchar_t const*>::Add expanded at the
-// call site (see TextDynVector::Add in the header): append if there is spare
-// capacity, else grow by GrowthStep -- only when the vector owns its block, or
+// ListClass::AddItem. DynamicVectorClass<wchar_t const*>::AddItem expanded at
+// the call site (vector_class_operations.h): append if there is spare
+// capacity, else grow by CapacityIncrement -- only when the vector owns its block, or
 // has never allocated one -- and fall into the same append code on success.
 // Unconditionally marks for redraw, turns the scrollbar on once the entry count
 // exceeds a page, and keeps a live Scroller's range current. Returns the index
@@ -105,7 +100,7 @@ void ListClass::Dtor()
 int ListClass::AddItem(wchar_t const* text)
 {
     if (text != 0) {
-        List.Add(text);
+        List.AddItem(text);
         (this->*Vfptr->At_48)();
         if (List.ActiveCount > LineCount) {
             (this->*Vfptr->At_8C)();
@@ -171,7 +166,7 @@ void ListClass::RemoveItem(wchar_t const* text)
 {
     if (text != 0) {
         ListClassVtbl* vt = Vfptr;
-        int index = List.ID(text);
+        int index = List.FindItemIndex(text);
         (this->*vt->At_A8)(index);
     }
 }
@@ -373,7 +368,7 @@ wchar_t const* ListClass::GetItem(int index)
     if (index >= last) {
         index = last;
     }
-    return List.Vector[index];
+    return List.Items[index];
 }
 
 // FUNCTION: GAMEMD 0x557AE0
@@ -384,7 +379,7 @@ wchar_t const* ListClass::GetCurrentItem()
     if (List.ActiveCount <= SelectedIndex) {
         return 0;
     }
-    return List.Vector[SelectedIndex];
+    return List.Items[SelectedIndex];
 }
 
 // FUNCTION: GAMEMD 0x557B70

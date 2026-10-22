@@ -70,6 +70,8 @@ public:
     bool Delete(int index);
     // Defined in vector_class_operations.h when the element type is complete.
     bool RemoveItem(const T& item);
+    // Inline append (vector_class_operations.h).
+    bool AddItem(const T& item);
     int ActiveCount;       // +0x10
     int CapacityIncrement; // +0x14
 };

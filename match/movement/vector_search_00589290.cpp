@@ -12,14 +12,6 @@ bool SearchVector8_00589290::Remove(int index)
     }
     return false;
 }
-// FUNCTION: GAMEMD 0x5892D0
-int SearchVector8_00589290::Find(const SearchRecord8_00589290& item) const
-{
-    for (int i = 0; i < Count; ++i) {
-        if (Data[i].Key == item.Key) return i;
-    }
-    return -1;
-}
 // FUNCTION: GAMEMD 0x589300
 // REA: ev_b81a01a29b2e7a1048fa4701ed2337aa73616f3f127d13bbb455ae8729ab8b03.
 // PARTIAL: 37/42 instructions (88.1%). The right-hand iterator is based at

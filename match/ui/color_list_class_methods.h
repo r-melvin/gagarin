@@ -32,6 +32,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/vector_class.h"
 
 void* __cdecl operator new[](size_t);
 void  __cdecl operator delete[](void*);
@@ -116,30 +117,11 @@ GG_STATIC_ASSERT(offsetof(ColorDynVector, GrowthStep)  == 0x14);
 GG_STATIC_ASSERT(sizeof(ColorDynVector)                == 0x18);
 
 // ---------------------------------------------------------------------------
-// DynamicVectorClass<wchar_t const*> — the base ListClass's own entry vector.
-// Only ID() (slot 0x10) is reached from this TU.
+// DynamicVectorClass<wchar_t const*> — the base ListClass's own entry vector
+// (RTTI VectorClass<unsigned short const*> at 0x7ED1FC; VC6's wchar_t is
+// unsigned short). Only FindItemIndex (slot 0x10) is reached from this TU.
 // ---------------------------------------------------------------------------
-class TextVector
-{
-public:
-    virtual ~TextVector();                                            // 0x00
-    virtual bool operator==(TextVector const& other) const;           // 0x04
-    virtual bool Resize(int capacity, wchar_t const* const* array);   // 0x08
-    virtual void Clear();                                             // 0x0C
-    virtual int  ID(wchar_t const* const& object) const;              // 0x10
-
-    wchar_t const** Vector;       // +0x04
-    int             VectorMax;    // +0x08
-    bool            IsValid;      // +0x0C
-    bool            IsAllocated;  // +0x0D
-};
-
-class TextDynVector : public TextVector
-{
-public:
-    int ActiveCount;  // +0x10
-    int GrowthStep;   // +0x14
-};
+typedef DynamicVectorClass<wchar_t const*> TextDynVector;
 GG_STATIC_ASSERT(sizeof(TextDynVector) == 0x18);
 
 // ---------------------------------------------------------------------------

@@ -91,81 +91,20 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 #include "../core/link_class_methods.h"
+#include "../core/vector_class_operations.h"
 
 // VTABLE: GAMEMD 0x007ED10C -- ListClass primary vtable (51 slots, read as one
 // block; membership/order cross-checked against reference/yrpp/ListClass.h).
 extern char VT_007ED10C[];
-// The base list's own dtor-installed sub-vtable (TextDynVector::~TextDynVector
-// et seq.), stamped into List.Vfptr by ListClass::~ListClass.
-extern char VT_007ED1FC[];
 
 // ---------------------------------------------------------------------------
 // TextDynVector -- DynamicVectorClass<wchar_t const*>, the base list's own
-// entry vector at ListClass+0x34. Layout and slot order already pinned
-// identically in match/ui/check_list_class_methods.h; reconfirmed here from
-// this TU's own disassembly (Vector/VectorMax/IsAllocated/ActiveCount/
-// GrowthStep all read via +0x34-relative offsets throughout).
+// entry vector at ListClass+0x34. Its destructor reseats 0x7ED1FC, which RTTI
+// names VectorClass<unsigned short const*> (VC6's wchar_t is unsigned short).
+// The canonical template; its own offsets are asserted with it.
 // ---------------------------------------------------------------------------
-struct TextDynVector
-{
-    virtual ~TextDynVector();                                          // 0x00
-    virtual bool operator==(TextDynVector const& other) const;         // 0x04
-    virtual bool Resize(int capacity, wchar_t const* const* array);    // 0x08
-    virtual void Clear();                                              // 0x0C
-    virtual int  ID(wchar_t const* const& object) const;               // 0x10
-
-    wchar_t const** Vector;       // +0x04
-    int             VectorMax;    // +0x08
-    bool            IsValid;      // +0x0C
-    bool            IsAllocated;  // +0x0D
-    int             ActiveCount;  // +0x10
-    int             GrowthStep;   // +0x14
-
-    // DynamicVectorClass<T>::Add, expanded inline at ListClass::AddItem's own
-    // call site in retail (0x5576A0 keeps `&List` live in ESI across the whole
-    // body and dispatches Resize through this vector's own vtable +0x08).
-    // The append is written as an index captured on its own line rather than
-    // as a post-increment: that is what makes cl load ActiveCount before the
-    // Vector pointer, which is retail's order (see the append-shape rule in
-    // docs/matching_methodology_and_toolchain.md).
-    bool Add(wchar_t const* const& object)
-    {
-        if (ActiveCount >= VectorMax) {
-            if ((IsAllocated || VectorMax == 0) && GrowthStep > 0) {
-                if (!Resize(VectorMax + GrowthStep, 0)) {
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
-        int index = ActiveCount;
-        ActiveCount = index + 1;
-        Vector[index] = object;
-        return true;
-    }
-
-    int Count() const { return ActiveCount; }
-
-    bool Delete(int index)
-    {
-        if (index < ActiveCount) {
-            ActiveCount--;
-            for (int i = index; i < ActiveCount; i++) {
-                Vector[i] = Vector[i + 1];
-            }
-            return true;
-        }
-        return false;
-    }
-};
-GG_STATIC_ASSERT(offsetof(TextDynVector, Vector)      == 0x04);
-GG_STATIC_ASSERT(offsetof(TextDynVector, VectorMax)   == 0x08);
-GG_STATIC_ASSERT(offsetof(TextDynVector, IsValid)     == 0x0C);
-GG_STATIC_ASSERT(offsetof(TextDynVector, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(TextDynVector, ActiveCount) == 0x10);
-GG_STATIC_ASSERT(offsetof(TextDynVector, GrowthStep)  == 0x14);
-GG_STATIC_ASSERT(sizeof(TextDynVector)                == 0x18);
+typedef DynamicVectorClass<wchar_t const*> TextDynVector;
+GG_STATIC_ASSERT(sizeof(TextDynVector) == 0x18);
 
 struct ListClassVtbl;
 

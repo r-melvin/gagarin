@@ -6,12 +6,15 @@
 //   Owner @0x6C and IsSuspended @0x70 are read directly by this function, and
 //   Object @0x58 sits immediately after a DynamicVectorClass — which places
 //   QueuedObjects at 0x40, hence Items @0x44 and Count @0x50, exactly the
-//   offsets the body uses.
+//   offsets the body uses. QueuedObjects is the canonical
+//   DynamicVectorClass<TechnoTypeClass*>; its own offsets are asserted in
+//   match/core/vector_class_layout_asserts.cpp.
 #ifndef GG_MATCH_ECONOMY_FACTORY_CLASS_START_METHODS_H
 #define GG_MATCH_ECONOMY_FACTORY_CLASS_START_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/vector_class_operations.h"
 
 struct HouseClass
 {
@@ -35,11 +38,8 @@ struct FactoryClass
 {
     char              _pad00[0x38];          // +0x0000
     int               unknown_38;            // +0x0038  gates the IsSuspended check
-    char              _pad3C[0x44 - 0x3C];   // +0x003C  (QueuedObjects vptr @0x40)
-    TechnoTypeClass** QueuedObjects_Items;   // +0x0044
-    char              _pad48[0x50 - 0x48];   // +0x0048
-    int               QueuedObjects_Count;   // +0x0050
-    char              _pad54[0x58 - 0x54];   // +0x0054
+    char              _pad3C[0x40 - 0x3C];   // +0x003C
+    DynamicVectorClass<TechnoTypeClass*> QueuedObjects;  // +0x0040
     void*             Object;                // +0x0058
     char              _pad5C[0x6C - 0x5C];   // +0x005C
     HouseClass*       Owner;                 // +0x006C
@@ -48,8 +48,7 @@ struct FactoryClass
     void StartProduction();                  // GAMEMD 0x4CA5A0
 };
 GG_STATIC_ASSERT(offsetof(FactoryClass, unknown_38)          == 0x38);
-GG_STATIC_ASSERT(offsetof(FactoryClass, QueuedObjects_Items) == 0x44);
-GG_STATIC_ASSERT(offsetof(FactoryClass, QueuedObjects_Count) == 0x50);
+GG_STATIC_ASSERT(offsetof(FactoryClass, QueuedObjects)       == 0x40);
 GG_STATIC_ASSERT(offsetof(FactoryClass, Object)              == 0x58);
 GG_STATIC_ASSERT(offsetof(FactoryClass, Owner)               == 0x6C);
 GG_STATIC_ASSERT(offsetof(FactoryClass, IsSuspended)         == 0x70);

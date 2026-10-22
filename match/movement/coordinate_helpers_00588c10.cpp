@@ -26,12 +26,6 @@ Coordinate_00588C40 Coordinate_00588C40::Subtract(const Coordinate_00588C40& del
 {
     return Coordinate_00588C40(X - delta.X, Y - delta.Y);
 }
-// FUNCTION: GAMEMD 0x588CC0
-unsigned int BufferIndex_00588CC0::Index8(const void* item) const
-{
-    if (!Valid) return 0;
-    return ((unsigned int)item - (unsigned int)Data) >> 3;
-}
 // FUNCTION: GAMEMD 0x588D10
 unsigned int BufferIndex_00588CC0::Index16(const void* item) const
 {

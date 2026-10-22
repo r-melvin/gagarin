@@ -3080,11 +3080,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_dtor_family_methods.cpp",
   "addr": "0x40B300",
-  "sym": "?FUN_0040B300@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@USubzoneConnectionStruct@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040B300",
+  "name": "VectorClass<SubzoneConnectionStruct>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100.0
  },
@@ -3557,11 +3557,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_clear_family_methods.cpp",
   "addr": "0x40B270",
-  "sym": "?FUN_0040B270@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@USubzoneConnectionStruct@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0040B270",
+  "name": "VectorClass<SubzoneConnectionStruct>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -9382,6 +9382,141 @@
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0040B120",
+  "sym": "?Slot6@?$VectorClass@USubzoneConnectionStruct@@@@UBE?AUSubzoneConnectionStruct@@H@Z",
+  "len": "0x1c",
+  "name": "VectorClass<SubzoneConnectionStruct>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0040B140",
+  "sym": "??8?$VectorClass@USubzoneConnectionStruct@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<SubzoneConnectionStruct>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0040B180",
+  "sym": "?SetCapacity@?$VectorClass@USubzoneConnectionStruct@@@@UAE_NHPAUSubzoneConnectionStruct@@@Z",
+  "len": "0xf0",
+  "name": "VectorClass<SubzoneConnectionStruct>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0040B2A0",
+  "sym": "?FindItemIndex@?$VectorClass@USubzoneConnectionStruct@@@@UBEHABUSubzoneConnectionStruct@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<SubzoneConnectionStruct>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0040B2E0",
+  "sym": "?Slot5@?$VectorClass@USubzoneConnectionStruct@@@@UBEHPAUSubzoneConnectionStruct@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<SubzoneConnectionStruct>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050E5B0",
+  "sym": "?Slot6@?$VectorClass@UAngerStruct@@@@UBE?AUAngerStruct@@H@Z",
+  "len": "0x1c",
+  "name": "VectorClass<AngerStruct>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050E620",
+  "sym": "?Slot6@?$VectorClass@UScoutStruct@@@@UBE?AUScoutStruct@@H@Z",
+  "len": "0x1c",
+  "name": "VectorClass<ScoutStruct>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050EE80",
+  "sym": "??8?$VectorClass@UAngerStruct@@@@UBE_NABV0@@Z",
+  "len": "0x52",
+  "name": "VectorClass<AngerStruct>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050EEE0",
+  "sym": "?SetCapacity@?$VectorClass@UAngerStruct@@@@UAE_NHPAUAngerStruct@@@Z",
+  "len": "0xf0",
+  "name": "VectorClass<AngerStruct>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F000",
+  "sym": "?FindItemIndex@?$VectorClass@UAngerStruct@@@@UBEHABUAngerStruct@@@Z",
+  "len": "0x46",
+  "name": "VectorClass<AngerStruct>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F050",
+  "sym": "?Slot5@?$VectorClass@UAngerStruct@@@@UBEHPAUAngerStruct@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<AngerStruct>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F1B0",
+  "sym": "??8?$VectorClass@UScoutStruct@@@@UBE_NABV0@@Z",
+  "len": "0x54",
+  "name": "VectorClass<ScoutStruct>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F210",
+  "sym": "?SetCapacity@?$VectorClass@UScoutStruct@@@@UAE_NHPAUScoutStruct@@@Z",
+  "len": "0xf0",
+  "name": "VectorClass<ScoutStruct>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F330",
+  "sym": "?FindItemIndex@?$VectorClass@UScoutStruct@@@@UBEHABUScoutStruct@@@Z",
+  "len": "0x46",
+  "name": "VectorClass<ScoutStruct>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x0050F380",
+  "sym": "?Slot5@?$VectorClass@UScoutStruct@@@@UBEHPAUScoutStruct@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<ScoutStruct>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x005106E0",
   "sym": "??0?$VectorClass@UAngerStruct@@@@QAE@HPAUAngerStruct@@@Z",
   "len": "0x93",
@@ -9400,10 +9535,91 @@
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x00588CC0",
+  "sym": "?Slot5@?$DynamicVectorClass@USubzoneConnectionStruct@@@@UBEHPAUSubzoneConnectionStruct@@@Z",
+  "len": "0x1b",
+  "name": "DynamicVectorClass<SubzoneConnectionStruct>::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x005890B0",
+  "sym": "??_G?$DynamicVectorClass@USubzoneConnectionStruct@@@@UAEPAXI@Z",
+  "len": "0x49",
+  "name": "DynamicVectorClass<SubzoneConnectionStruct>::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x00589190",
+  "sym": "?SetCapacity@?$DynamicVectorClass@USubzoneConnectionStruct@@@@UAE_NHPAUSubzoneConnectionStruct@@@Z",
+  "len": "0xfa",
+  "name": "DynamicVectorClass<SubzoneConnectionStruct>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x005892D0",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@USubzoneConnectionStruct@@@@UBEHABUSubzoneConnectionStruct@@@Z",
+  "len": "0x26",
+  "name": "DynamicVectorClass<SubzoneConnectionStruct>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x0058AC70",
   "sym": "??0?$VectorClass@USubzoneConnectionStruct@@@@QAE@HPAUSubzoneConnectionStruct@@@Z",
   "len": "0x93",
   "name": "VectorClass<T>::VectorClass(int,T*)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x006CF540",
+  "sym": "?Slot6@?$VectorClass@VSwizzlePointerClass@@@@UBE?AVSwizzlePointerClass@@H@Z",
+  "len": "0x1c",
+  "name": "VectorClass<SwizzlePointerClass>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x006CF560",
+  "sym": "??8?$VectorClass@VSwizzlePointerClass@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<SwizzlePointerClass>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x006CF5A0",
+  "sym": "?SetCapacity@?$VectorClass@VSwizzlePointerClass@@@@UAE_NHPAVSwizzlePointerClass@@@Z",
+  "len": "0xf0",
+  "name": "VectorClass<SwizzlePointerClass>::SetCapacity",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x006CF6C0",
+  "sym": "?FindItemIndex@?$VectorClass@VSwizzlePointerClass@@@@UBEHABVSwizzlePointerClass@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<SwizzlePointerClass>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pair_vector_ctor_family_methods.cpp",
+  "addr": "0x006CF700",
+  "sym": "?Slot5@?$VectorClass@VSwizzlePointerClass@@@@UBEHPAVSwizzlePointerClass@@@Z",
+  "len": "0x1b",
+  "name": "VectorClass<SwizzlePointerClass>::Slot5",
   "status": "matched",
   "pct": 100
  },
@@ -16996,15 +17212,6 @@
  },
  {
   "tu": "match/core/vector_dtor_family_methods.cpp",
-  "addr": "0x005890B0",
-  "sym": "??_G?$VectorClass@USubzoneConnectionStruct@@@@UAEPAXI@Z",
-  "len": "0x49",
-  "name": "VectorClass<SubzoneConnectionStruct>::`scalar deleting destructor'",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
   "addr": "0x0058A3D0",
   "sym": "??_G?$VectorClass@UZoneConnectionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18527,11 +18734,11 @@
  {
   "tu": "match/core/vector_owner_dtor_methods.cpp",
   "addr": "0x43a600",
-  "sym": "?FUN_0043A600@Owner_0043A600@@QAEXXZ",
+  "sym": "??1BrainClass@@UAE@XZ",
   "len": "0x68",
-  "name": "Owner_0043A600::FUN_0043A600",
-  "status": "partial",
-  "pct": 95.5
+  "name": "BrainClass::~BrainClass",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_persist_save_family_methods.cpp",
@@ -22382,8 +22589,8 @@
   "sym": "?StartProduction@FactoryClass@@QAEXXZ",
   "len": "0x72",
   "name": "FactoryClass::StartProduction",
-  "status": "partial",
-  "pct": 56.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/factory_class_unsuspend_methods.cpp",
@@ -30597,15 +30804,6 @@
  },
  {
   "tu": "match/movement/coordinate_helpers_00588c10.cpp",
-  "addr": "0x588CC0",
-  "sym": "?Index8@BufferIndex_00588CC0@@QBEIPBX@Z",
-  "len": "0x1b",
-  "name": "BufferIndex::Index8",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/movement/coordinate_helpers_00588c10.cpp",
   "addr": "0x588D10",
   "sym": "?Index16@BufferIndex_00588CC0@@QBEIPBX@Z",
   "len": "0x1b",
@@ -30943,15 +31141,6 @@
   "sym": "?Remove@SearchVector8_00589290@@QAE_NH@Z",
   "len": "0x39",
   "name": "Remove",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/movement/vector_search_00589290.cpp",
-  "addr": "0x5892D0",
-  "sym": "?Find@SearchVector8_00589290@@QBEHABUSearchRecord8_00589290@@@Z",
-  "len": "0x26",
-  "name": "Find",
   "status": "matched",
   "pct": 100
  },

@@ -1,5 +1,53 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,155 matched function
+rows**, **259 partial rows**, **5,414 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass. There are zero annotation issues across 5,447 body addresses.
+
+The latest batch binds more retail functions to the canonical `VectorClass` and
+`DynamicVectorClass` templates. RTTI shows that 0x40B300 and 0x40B270 are the
+deleting destructor and `Clear` of `VectorClass<SubzoneConnectionStruct>`
+(vtable 0x7E177C), and that 0x5890B0, 0x588CC0 and 0x5892D0 belong to
+`DynamicVectorClass<SubzoneConnectionStruct>` (vtable 0x7ED5A0). The old
+helper rows are renamed and moved. The other slots of the four pair-vector
+vtables and of 0x7ED5A0 are now claimed: 21 new rows, all exact, and all 35
+slots resolve to retail. Two partials now match:
+
+- `BrainClass::~BrainClass` (0x43A600), a real destructor over a
+  `DynamicVectorClass<NeuronClass*>` member, replacing the 95.5% view with a
+  hand-written vector alias;
+- `FactoryClass::StartProduction` (0x4CA5A0), through the inline `Delete`
+  (was 56.0%).
+
+The three hand-written `TextDynVector` definitions in the list controls are now
+the canonical template. `ListClass::AddItem` now expands the template's inline `AddItem` and stays exact.
+`MultiplayerGameMode::Get` (0x5D5F30, 79.3%) and the `SmudgeTypeClass`
+constructor (0x6B5260, 97.3%) were retried against the template and stay
+partial; the variants are recorded in their comments.
+
+No matched row is lost. Across all 1,080 project objects, named sections change
+only in the pair-vector TU, `StartProduction`, and `ListClass::Dtor`, which
+differs only in a renamed relocation target. Removed sections are the five
+retired helper bodies. Added sections are unannotated template members.
+
+The 5,155 matches represent 26.1% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **383,875
+bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic
+misses 313 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: VectorClass rework
+
 As of **2026-10-22**, the verified snapshot reports **5,132 matched function
 rows**, **261 partial rows**, **5,393 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -37,12 +85,6 @@ misses 312 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
 
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 
 ## Historical snapshot: second-look patches

@@ -30,11 +30,14 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
 // cl 8804 makes one decision for both expansions (both inline here). The
 // canonical DynamicVectorClass template gives the same 79.3% as the earlier
 // hand-written vector; see the history of this file for the variants tried.
+// Also 79.3%, so no lever on that decision: the count through Count() (kept
+// here), the count through a second inline accessor wrapping Modes, and the
+// item through an inline operator[] together with Count().
 MultiplayerGameMode_005D5F30* __fastcall MultiplayerGameMode_Get(int index)
 {
     int i;
 
-    for (i = 0; i < Modes_005D5F30().ActiveCount; i++) {
+    for (i = 0; i < Modes_005D5F30().Count(); i++) {
         MultiplayerGameMode_005D5F30* mode = Modes_005D5F30().Items[i];
         if (mode->At_28 == index) {
             return mode;

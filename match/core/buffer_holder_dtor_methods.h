@@ -6,6 +6,10 @@
 //   length at +0x08, ownership flag at +0x0D. None is bound by YRpp or the seed
 //   map.
 //
+// 0x40B300 was later re-identified from RTTI as slot 0 of the
+// VectorClass<SubzoneConnectionStruct> vtable 0x7E177C and moved to
+// vector_dtor_family_methods.cpp.
+//
 // The buffer-holder deleting destructor. Same class family as the plain
 // buffer-release template in buffer_release_methods.h, but here the release is
 // inlined into a scalar deleting destructor: install the vtable, free the
@@ -25,7 +29,6 @@
 #include "../_rt/gg_static_assert.h"
 #include "buffer_release_methods.h"
 
-extern char VTABLE_007E177C[];   // VTABLE: GAMEMD 0x7E177C
 extern char VTABLE_007E184C[];   // VTABLE: GAMEMD 0x7E184C
 extern char VTABLE_007E18DC[];   // VTABLE: GAMEMD 0x7E18DC
 extern char VTABLE_007E192C[];   // VTABLE: GAMEMD 0x7E192C
@@ -47,7 +50,6 @@ extern char VTABLE_007E4698[];   // VTABLE: GAMEMD 0x7E4698
 // The deleting destructors hang off the same layout as BufferHolder.
 struct BufferHolderDtor : BufferHolder
 {
-    void* FUN_0040B300(unsigned int flags);   // FUNCTION: GAMEMD 0x40B300
     void* FUN_0040C110(unsigned int flags);   // FUNCTION: GAMEMD 0x40C110
     void* FUN_0040C160(unsigned int flags);   // FUNCTION: GAMEMD 0x40C160
     void* FUN_0040CAE0(unsigned int flags);   // FUNCTION: GAMEMD 0x40CAE0

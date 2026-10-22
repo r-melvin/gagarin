@@ -11,6 +11,10 @@
 // when the buffer was borrowed or already null, so the clear is unconditional
 // and only the free is guarded.
 //
+// 0x40B270 was later re-identified from RTTI as slot 3 (Clear) of the
+// VectorClass<SubzoneConnectionStruct> vtable 0x7E177C and moved to
+// vector_clear_family_methods.cpp.
+//
 // These are 53 separate entry points on what are presumably as many classes;
 // they are modelled against one shared layout because the extraction proved the
 // layout identical, not because they are assumed to be one type. Each is
@@ -51,7 +55,6 @@ GG_STATIC_ASSERT(offsetof(BufferHolder, Length) == 0x08);
 GG_STATIC_ASSERT(offsetof(BufferHolder, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(BufferHolder, unknown_10) == 0x10);
 
-void __fastcall FUN_0040B270(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40B270
 void __fastcall FUN_0040BE50(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40BE50
 void __fastcall FUN_0040BFA0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40BFA0
 void __fastcall FUN_0040C820(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40C820

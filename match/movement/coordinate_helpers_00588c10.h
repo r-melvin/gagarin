@@ -32,14 +32,16 @@ GG_STATIC_ASSERT(offsetof(StateRecord_00588C10, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(StateRecord_00588C10, unknown_1C) == 0x1C);
 GG_STATIC_ASSERT(offsetof(StateRecord_00588C10, unknown_20) == 0x20);
 GG_STATIC_ASSERT(sizeof(StateRecord_00588C10) == 0x24);
-// Prefix views: only +4 and +0xC are accessed by the two index routines.
+// Prefix view: only +4 and +0xC are accessed by the index routine. The
+// eight-byte sibling at 0x588CC0 was re-identified from RTTI as slot 5 of the
+// DynamicVectorClass<SubzoneConnectionStruct> vtable 0x7ED5A0 and moved to
+// match/core/pair_vector_ctor_family_methods.cpp.
 struct BufferIndex_00588CC0 {
     char unknown_00[4];
     void* Data;
     char unknown_08[4];
     unsigned char Valid;
     char unknown_0D[3];
-    unsigned int Index8(const void* item) const;
     unsigned int Index16(const void* item) const;
 };
 GG_STATIC_ASSERT(offsetof(BufferIndex_00588CC0, Data) == 4);

@@ -33,6 +33,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../core/vector_class.h"
 
 void* __cdecl operator new(size_t);
 void  __cdecl operator delete(void*);
@@ -58,19 +59,11 @@ struct CheckItemClass
 GG_STATIC_ASSERT(offsetof(CheckItemClass, IsChecked) == 0x04);
 GG_STATIC_ASSERT(sizeof(CheckItemClass) == 8);
 
-// DynamicVectorClass<wchar_t const*> — the base list's entry vector. Only the
-// active count is reached from this TU, at List+0x10 == this+0x44.
-struct TextDynVector
-{
-    void* Vfptr;        // +0x00
-    void* Vector;       // +0x04
-    int   VectorMax;    // +0x08
-    bool  IsValid;      // +0x0C
-    bool  IsAllocated;  // +0x0D
-    int   ActiveCount;  // +0x10
-    int   GrowthStep;   // +0x14
-};
-GG_STATIC_ASSERT(offsetof(TextDynVector, ActiveCount) == 0x10);
+// DynamicVectorClass<wchar_t const*> — the base list's entry vector (RTTI
+// VectorClass<unsigned short const*> at 0x7ED1FC; VC6's wchar_t is unsigned
+// short). Only the active count is reached from this TU, at List+0x10 ==
+// this+0x44. Its own offsets are asserted with the canonical template.
+typedef DynamicVectorClass<wchar_t const*> TextDynVector;
 GG_STATIC_ASSERT(sizeof(TextDynVector) == 0x18);
 
 struct CheckListVtbl;

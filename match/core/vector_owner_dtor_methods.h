@@ -3,65 +3,52 @@
 //   Offsets, slot displacements and vtable addresses read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at 0x43A600.
 //
-// The destructor for the object whose release loop is already matched at
-// 0x43A670. This TU gives the same object a *fuller* layout than
-// small_misc38_methods.h does: what that header models as an opaque `Sub` with
-// a vtable at +0x04 is a whole DynamicVectorClass embedded there, and this
-// function reaches its buffer, its IsAllocated byte and its capacity word.
+// BrainClass's destructor. 0x43A600 stores vtable 0x7E3E74, whose RTTI
+// locator names BrainClass; that vtable has one slot, the deleting
+// destructor 0x43AA90. The vector it tears down at +0x04 is reseated to
+// 0x7E3E54, which RTTI names VectorClass<NeuronClass*>: a
+// DynamicVectorClass<NeuronClass*> member, destroyed through the inline
+// ~VectorClass because DynamicVectorClass has no destructor of its own.
 //
-// The correspondence is exact - the vector's Items at +0x04+0x04 is the same
-// word as the outer Items at +0x08, and its Count at +0x04+0x10 is the outer
-// Count at +0x14. The two views are kept separate rather than merged so the
-// already-matched functions in small_misc38 are left untouched.
+// NeuronClass's primary vtable 0x7E3DF0 has its deleting destructor at slot 8
+// (+0x20; 0x43A9C0 reseats the NeuronClass vtables and frees the object), so
+// `delete` on an element is the `PUSH 1; CALL [EDX+0x20]` in 0x43A600. Its
+// first eight slots are placeholders here; nothing in this TU calls them.
+//
+// small_misc38_methods.h models the same object's release loop (0x43A670) as
+// an opaque prefix view; it is left as it is.
 #ifndef GG_MATCH_CORE_VECTOR_OWNER_DTOR_METHODS_H
 #define GG_MATCH_CORE_VECTOR_OWNER_DTOR_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_class_operations.h"
 
-extern "C" void __cdecl FUN_007C8B3D(void* block);
-
-extern char VT_007E3E74;   // VTABLE: GAMEMD 0x7E3E74 — the owner
-extern char VT_007E3E54;   // VTABLE: GAMEMD 0x7E3E54 — the embedded vector
-
-struct Item_0043A600
+class NeuronClass
 {
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();
-    virtual void vt_010();
-    virtual void vt_014();
-    virtual void vt_018();
-    virtual void vt_01C();
-    virtual void vt_020(int flag);   // +0x0020
+public:
+    virtual void Slot00();
+    virtual void Slot04();
+    virtual void Slot08();
+    virtual void Slot0C();
+    virtual void Slot10();
+    virtual void Slot14();
+    virtual void Slot18();
+    virtual void Slot1C();
+    virtual ~NeuronClass();   // +0x20
 };
 
-struct Vector_0043A600
+// VTABLE: GAMEMD 0x7E3E74 -- BrainClass
+class BrainClass
 {
-    virtual void vt_000();
-    virtual void vt_004();
-    virtual void vt_008();
-    virtual void vt_00C();           // +0x000C
-
-    Item_0043A600** Items;         // +0x0004
-    int             Capacity;      // +0x0008
-    char            _pad00C[0x1];
-    char            IsAllocated;   // +0x000D
-    char            _pad00E[0x10 - 0x0E];
-    int             Count;         // +0x0010
-};
-GG_STATIC_ASSERT(offsetof(Vector_0043A600, IsAllocated) == 0xD);
-GG_STATIC_ASSERT(offsetof(Vector_0043A600, Count) == 0x10);
-
-struct Owner_0043A600
-{
-    char*           Vtable;   // +0x0000
-    Vector_0043A600 Items;    // +0x0004
-
+public:
     // FUNCTION: GAMEMD 0x43A600
-    void FUN_0043A600();
+    virtual ~BrainClass();
+
+    DynamicVectorClass<NeuronClass*> Neurons;   // +0x04
 };
-GG_STATIC_ASSERT(offsetof(Owner_0043A600, Items) == 0x4);
+
+GG_STATIC_ASSERT(offsetof(BrainClass, Neurons) == 0x04);
+GG_STATIC_ASSERT(sizeof(BrainClass) == 0x1C);
 
 #endif  // GG_MATCH_CORE_VECTOR_OWNER_DTOR_METHODS_H

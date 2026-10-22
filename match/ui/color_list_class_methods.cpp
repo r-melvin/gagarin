@@ -32,7 +32,7 @@ void ColorListClass::AddItem(wchar_t const* text, int color)
 // entry vector, drops the matching colour, then removes the entry itself.
 void ColorListClass::RemoveItem(wchar_t const* text)
 {
-    int index = this->List.ID(text);
+    int index = this->List.FindItemIndex(text);
 
     if (index != -1) {
         this->Colors.Delete(index);

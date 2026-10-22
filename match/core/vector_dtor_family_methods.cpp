@@ -194,6 +194,14 @@ struct tagCONNECTDATA;
 // address.
 // ---------------------------------------------------------------------------
 
+// FUNCTION: GAMEMD 0x0040B300
+// VectorClass<SubzoneConnectionStruct> -- reseats retail vtable 0x007E177C; locator 0x007FA5D8 -> type descriptor 0x00816848
+//   `.?AV?$VectorClass@USubzoneConnectionStruct@@@@`. 0x40B300 is slot 0 of
+//   that vtable. The identical body at 0x5890B0 is slot 0 of
+//   DynamicVectorClass<SubzoneConnectionStruct> (0x7ED5A0) and is bound in
+//   pair_vector_ctor_family_methods.cpp.
+template class VectorClass<SubzoneConnectionStruct>;
+
 // FUNCTION: GAMEMD 0x00477AC0
 // FUNCTION: GAMEMD 0x004786D0
 // FUNCTION: GAMEMD 0x00645B10
@@ -299,11 +307,6 @@ template class VectorClass<LightSourceClass::PendingCellClass*>;
 // VectorClass<CellClass*> -- reseats retail vtable 0x007ED480; locator 0x008055E0 -> type descriptor 0x0082AB78
 //   `.?AV?$VectorClass@PAVCellClass@@@@`.
 template class VectorClass<CellClass*>;
-
-// FUNCTION: GAMEMD 0x005890B0
-// VectorClass<SubzoneConnectionStruct> -- reseats retail vtable 0x007E177C; locator 0x007FA5D8 -> type descriptor 0x00816848
-//   `.?AV?$VectorClass@USubzoneConnectionStruct@@@@`.
-template class VectorClass<SubzoneConnectionStruct>;
 
 // FUNCTION: GAMEMD 0x0058A3D0
 // FUNCTION: GAMEMD 0x0058A420

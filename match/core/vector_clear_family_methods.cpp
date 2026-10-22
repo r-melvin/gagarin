@@ -205,6 +205,11 @@ struct tagCONNECTDATA;
 
 // Actual-template layout assertions are in vector_class_layout_asserts.cpp.
 
+// FUNCTION: GAMEMD 0x0040B270
+// VectorClass<SubzoneConnectionStruct> -- vtable 0x007E177C slot 3; locator 0x007FA5D8 -> type descriptor 0x00816848
+//   `.?AV?$VectorClass@USubzoneConnectionStruct@@@@`.
+template class VectorClass<SubzoneConnectionStruct>;
+
 // FUNCTION: GAMEMD 0x00478440
 // VectorClass<RGBClass> -- vtable 0x007E4E38 slot 3; locator 0x007FCF90 -> type descriptor 0x0081C198
 //   `.?AV?$VectorClass@VRGBClass@@@@`.
