@@ -46,7 +46,12 @@ GG_STATIC_ASSERT(sizeof(Vector3D_006D2280) == 0xC);
 // 3x4 row-major float affine transform.
 struct Matrix3D_006D2280
 {
-    float Row[3][4];          // +0x0000
+    float Row[3][4];
+
+    void FUN_005AE860(); // 0x5AE860; identity matrix
+    void FUN_005AEF60(float value); // 0x5AEF60; RET4
+    void FUN_005AF1A0(float value); // 0x5AF1A0; RET4
+    void FUN_005AEA10(float value); // 0x5AEA10; RET4          // +0x0000
 
     // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) — result = mat * vec, with the
     // result pointer in ECX, the matrix in EDX and the vector on the stack.
@@ -55,6 +60,9 @@ struct Matrix3D_006D2280
                                           const Vector3D_006D2280* vec);
 };
 GG_STATIC_ASSERT(sizeof(Matrix3D_006D2280) == 0x30);
+GG_STATIC_ASSERT(offsetof(Matrix3D_006D2280, Row) == 0);
+GG_STATIC_ASSERT(sizeof(((Matrix3D_006D2280*)0)->Row[0]) == 0x10);
+GG_STATIC_ASSERT(sizeof(((Matrix3D_006D2280*)0)->Row[0][0]) == 4);
 
 // GLOBAL: GAMEMD 0xB0CE08 — the "no coordinate" CoordStruct returned for a
 // client point outside the view.

@@ -10,7 +10,6 @@
 #include "../_rt/gg_static_assert.h"
 
 struct Arg1_006D6170;
-struct Obj_006D4E00;
 struct Obj_006D6170;
 struct Obj_006DC450;
 struct Obj_006DC460;
@@ -22,18 +21,6 @@ struct Arg1_006D6170
 };
 GG_STATIC_ASSERT(offsetof(Arg1_006D6170, unknown_00) == 0x0);
 GG_STATIC_ASSERT(offsetof(Arg1_006D6170, unknown_04) == 0x4);
-
-struct Obj_006D4E00
-{
-    char unknown_00[0x24];
-    unsigned short unknown_24;   // +0x0024
-    char unknown_26[0x7E];
-    int unknown_A4;   // +0x00A4
-    // FUNCTION: GAMEMD 0x6D4E00
-    void FUN_006D4E00();
-};
-GG_STATIC_ASSERT(offsetof(Obj_006D4E00, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(Obj_006D4E00, unknown_A4) == 0xA4);
 
 struct Obj_006D6170
 {

@@ -1,5 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// /Ob2 inlines the real destructor into the scalar deleting destructor
+// at 0x6DC470; /Ob1 leaves a call and scores12.5%. All prior exact rows
+// in this TU remain raw-exact under this flag.
 //   Original translation unit Tactical.CPP. The name is the source-file string at 0x842a64
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6d4ad7 inside this object's
 //   code range (0x6d1830-0x6dcd6f). Functions are in ascending retail address order.
@@ -286,12 +290,7 @@ class SuperWeaponTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class Tactical {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    // 0x6D20E0, static __fastcall: the height arrives in ECX.
-    static int AdjustForZ(int Height);
-};
+#include "../_layout/tactical.h"
 class TActionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -501,10 +500,108 @@ void __cdecl FUN_006D1A00()
     DAT_00B0CEAC = 0x80;
 }
 
+// GLOBAL: GAMEMD 0x7E1728
+extern "C" const double DAT_007E1728;
+// GLOBAL: GAMEMD 0xB0CD88
+extern double DAT_00B0CD88;
+// GLOBAL: GAMEMD 0xB0CE18
+extern double DAT_00B0CE18;
+// GLOBAL: GAMEMD 0xB0CDD8
+extern double DAT_00B0CDD8;
+// The existing table-trigonometry call at0x4CACB0 takes a cdecl double.
+extern "C" double __cdecl FUN_004CACB0(double angle);
+
 // FUNCTION: GAMEMD 0x6D1B00
 // Empty function.
 void __cdecl FUN_006D1B00()
 {
+}
+
+// FUNCTION: GAMEMD 0x6D1BB0
+void __cdecl FUN_006D1BB0()
+{
+    DAT_00B0CE18 = DAT_007E1728 / DAT_00B0CD78;
+    DAT_00B0CD48 = FUN_004CACB0(DAT_00B0CD88) * DAT_00B0CE18;
+}
+
+// FUNCTION: GAMEMD 0x6D1BF0
+void __cdecl FUN_006D1BF0()
+{
+    DAT_00B0CDD8 = DAT_00B0CD78 / (FUN_004CACB0(DAT_00B0CD88) * DAT_007E1728);
+}
+
+#include <string.h>
+// GLOBAL: GAMEMD 0xB0CD60
+extern int DAT_00B0CD60[4];
+// GLOBAL: GAMEMD 0xB0CD88
+extern double DAT_00B0CD88;
+// GLOBAL: GAMEMD 0xB0CE98
+extern double DAT_00B0CE98;
+// GLOBAL: GAMEMD 0xB0CD78
+extern double DAT_00B0CD78;
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+
+// FUNCTION: GAMEMD 0x6D1C20
+Tactical::Tactical()
+    : unknown_A8(-1), unknown_AC(false), unknown_AD(false),
+      unknown_B0(0, 0), unknown_B8(0, 0), unknown_C0(1.0),
+      unknown_C8(DAT_00B0CE08.X, DAT_00B0CE08.Y),
+      unknown_D0(DAT_00B0CE08.X, DAT_00B0CE08.Y),
+      unknown_D8(0.0f), unknown_DC(0.0f), unknown_E0(0),
+      unknown_D64(0, 0), unknown_D6C(0, 0), unknown_D74(0, 0),
+      unknown_D7C(1), unknown_D7D(false), unknown_D7E(false),
+      unknown_D80(DAT_00B0CD60[0]), unknown_D84(DAT_00B0CD60[1]),
+      unknown_D88(DAT_00B0CD60[2]), unknown_D8C(DAT_00B0CD60[3]),
+      unknown_D90(0, 0), unknown_D98(0, 0), unknown_DA0(0), unknown_DB0(0)
+{
+    memset(unknown_E4, 0, sizeof unknown_E4);
+    unknown_24[0] = 0;
+    unknown_A4 = -1;
+    unknown_DB4.FUN_005AE860();
+    unknown_DB4.FUN_005AEF60((float)DAT_00B0CD88);
+    unknown_DB4.FUN_005AF1A0((float)DAT_00B0CE98);
+    unknown_DB4.FUN_005AEA10((float)(60.0f / DAT_00B0CD78));
+    unknown_DE4.Row[0][0] = 4.26669979095459f;
+    unknown_DE4.Row[0][1] = 8.53339958190918f;
+    unknown_DE4.Row[0][2] = 0.0f;
+    unknown_DE4.Row[0][3] = 0.0f;
+    unknown_DE4.Row[1][0] = -4.26669979095459f;
+    unknown_DE4.Row[1][1] = 8.53339958190918f;
+    unknown_DE4.Row[1][2] = 0.0f;
+    unknown_DE4.Row[1][3] = 0.0f;
+    unknown_DE4.Row[2][0] = 0.0f;
+    unknown_DE4.Row[2][1] = 0.0f;
+    unknown_DE4.Row[2][2] = 1.0f;
+    unknown_DE4.Row[2][3] = 0.0f;
+    DAT_00887324 = this;
+}
+
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+
+// FUNCTION: GAMEMD 0x6D1E30
+Tactical::Tactical(const AbstractNoInit& noInit)
+    : AbstractClass(noInit)
+{
+}
+
+// FUNCTION: GAMEMD 0x6D1E80
+Tactical::~Tactical()
+{
+    DAT_00887324 = 0;
+}
+
+// FUNCTION: GAMEMD 0x6D1EB0
+Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
+{
+    int projectedX = x * 60 / 2;
+    int projectedY = x * 30 / 2;
+    projectedX += y * -60 / 2;
+    projectedY += y * 30 / 2;
+    unknown_00 = projectedX;
+    unknown_04 = projectedY;
+    return this;
 }
 
 // FUNCTION: GAMEMD 0x6D1F10
@@ -538,6 +635,30 @@ int Tactical::AdjustForZ(int Height)
         bias = 1;
     }
     return (int)(Height * AdjustForZ_Factor + bias + 0.5);
+}
+
+// GLOBAL: GAMEMD 0xB0CDD8
+extern double DAT_00B0CDD8;
+
+// The table is indexed in 12-byte records; only its first word is read here.
+struct Record_00B0CEC8
+{
+    ObjectClass* unknown_00;
+    int unknown_04;
+    int unknown_08;
+};
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(Record_00B0CEC8, unknown_08) == 8);
+GG_STATIC_ASSERT(sizeof(Record_00B0CEC8) == 12);
+// GLOBAL: GAMEMD 0xB0CEC8
+extern Record_00B0CEC8 DAT_00B0CEC8[];
+
+// FUNCTION: GAMEMD 0x6D2120
+// ECX supplies the integer; FILD, subtract 0.5, scale, and CRT conversion.
+int FUN_006D2120(int value)
+{
+    return (int)((value - 0.5) * DAT_00B0CDD8);
 }
 
 // FUNCTION: GAMEMD 0x6D2280
@@ -592,22 +713,74 @@ Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
     return pDest;
 }
 
+// FUNCTION: GAMEMD 0x6D2360
+Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
+                                       const Point2D_006D2280* point)
+{
+    if (point->X < DAT_00B0CE30 && point->Y < DAT_00B0CE34) {
+        Vector3D_006D2280 vector;
+        vector.X = (float)point->X;
+        vector.Y = (float)point->Y;
+        vector.Z = 0.0f;
+        {
+            Vector3D_006D2280 transformed;
+            vector = *Matrix3D_006D2280::MatrixApply(&transformed, &unknown_DE4, &vector);
+        }
+        Coord_006D2280 coordinate;
+        coordinate.X = (int)vector.X;
+        coordinate.Y = (int)vector.Y;
+        coordinate.Z = 0;
+        *out = coordinate;
+        return out;
+    }
+    *out = DAT_00B0CE08;
+    return out;
+}
+
 // FUNCTION: GAMEMD 0x6D2B50
 // Empty function that pops its stack arguments.
 void __stdcall FUN_006D2B50(int a1, int a2)
 {
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6D4E00
-// Stores several members.
-void Obj_006D4E00::FUN_006D4E00()
+// LIBRARY: GAMEMD 0x7CA489 -- null-terminated 16-bit string copy.
+extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* destination,
+                                              const unsigned short* source);
+
+// FUNCTION: GAMEMD 0x6D4DB0
+void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
-    unknown_A4 = -1;
-    unknown_24 = 0;
+    if (text == 0) {
+        FUN_006D4E00();
+    } else {
+        FUN_007CA489(unknown_24, text);
+    }
+    unknown_A4 = mode;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6D4E00
+// Stores several members.
+void Tactical::FUN_006D4E00()
+{
+    unknown_A4 = -1;
+    unknown_24[0] = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// GLOBAL: GAMEMD 0xA8ED6B
+extern unsigned char DAT_00A8ED6B;
+
+// FUNCTION: GAMEMD 0x6D6000
+void Tactical::FUN_006D6000(const Pair_006D9F80* point)
+{
+    Pair_006D9F80 checked = *point;
+    unknown_D64 = unknown_D74 =
+        FUN_006D8640(&checked) && DAT_00A8ED6B == 0 ? checked : *point;
+    FUN_006D8B30();
+    unknown_D7D = true;
+}
+
 // FUNCTION: GAMEMD 0x6D6170
 // Stores several members; pops its stack arguments.
 Arg1_006D6170* Obj_006D6170::FUN_006D6170(Arg1_006D6170* a1)
@@ -618,6 +791,75 @@ Arg1_006D6170* Obj_006D6170::FUN_006D6170(Arg1_006D6170* a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6D6190
+Pair_006D9F80 Tactical::FUN_006D6190() const
+{
+    Pair_006D9F80 position = unknown_D64;
+    Pair_006D9F80 offset = unknown_B0;
+    position.unknown_00 -= offset.unknown_00;
+    position.unknown_04 -= offset.unknown_04;
+    return position;
+}
+
+// FUNCTION: GAMEMD 0x6D61C0
+void FUN_006D61C0(int x, int y, int* outX, int* outY)
+{
+    *outX = x * 60 / 2;
+    *outY = x * 30 / 2;
+    *outX += y * -60 / 2;
+    *outY += y * 30 / 2;
+}
+
+// FUNCTION: GAMEMD 0x6D6220
+void FUN_006D6220(int x, int y, int* outX, int* outY)
+{
+    *outX = (x + 2 * y) * 15 / 576 - 65536;
+    *outY = (2 * y - x) * 15 / 576 + 65536;
+}
+
+// FUNCTION: GAMEMD 0x6D6280
+void __stdcall FUN_006D6280(int x, int y, int* outX, int* outY)
+{
+    x *= 256;
+    y *= 256;
+    *outX = (x + 2 * y) * 15 / 576 - 65536;
+    *outY = (2 * y - x) * 15 / 576 + 65536;
+}
+
+// FUNCTION: GAMEMD 0x6D62E0
+void __stdcall FUN_006D62E0(int x, int y, int* outX, int* outY)
+{
+    *outX = x * 60 / 2;
+    *outY = x * 30 / 2;
+    *outX += y * -60 / 2;
+    *outY += y * 30 / 2;
+    *outX /= 256;
+    *outY /= 256;
+    *outX += 15360;
+}
+
+// GLOBAL: GAMEMD 0x842904
+extern int DAT_00842904;
+// GLOBAL: GAMEMD 0x842908
+extern int DAT_00842908;
+
+// FUNCTION: GAMEMD 0x6D6370
+void __stdcall FUN_006D6370(int x, int y, int* outX, int* outY)
+{
+    x *= 256;
+    y *= 256;
+    int resultX = (x + 2 * y) * 15 / 576 - 65536;
+    int resultY = (2 * y - x) * 15 / 576 + 65536;
+    if (DAT_00842904 == -1 && DAT_00842908 == -1) {
+        DAT_00842908 = 65536;
+        DAT_00842904 = -65536;
+    }
+    resultX -= DAT_00842904;
+    resultY -= DAT_00842908;
+    *outX = resultX;
+    *outY = resultY;
+}
+
 // FUNCTION: GAMEMD 0x6D8630
 // Empty function.
 void __cdecl FUN_006D8630()
@@ -625,6 +867,179 @@ void __cdecl FUN_006D8630()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// GLOBAL: GAMEMD 0x87F8DC
+extern int DAT_0087F8DC;
+// GLOBAL: GAMEMD 0x87F8E4
+extern int DAT_0087F8E4;
+// GLOBAL: GAMEMD 0x87F8E8
+extern int DAT_0087F8E8;
+// GLOBAL: GAMEMD 0x87F8EC
+extern int DAT_0087F8EC;
+// GLOBAL: GAMEMD 0x87F8F0
+extern int DAT_0087F8F0;
+// GLOBAL: GAMEMD 0x886FA8
+extern int DAT_00886FA8;
+// GLOBAL: GAMEMD 0x886FAC
+extern int DAT_00886FAC;
+
+// FUNCTION: GAMEMD 0x6D8640
+bool Tactical::FUN_006D8640(Pair_006D9F80* point)
+{
+    int left = DAT_00886FA8 / 2 + (2 * DAT_0087F8E4 - DAT_0087F8DC) * 30;
+    int right = DAT_0087F8EC * 60 - DAT_00886FA8 + left;
+    int top = (DAT_0087F8DC - 5 + 2 * DAT_0087F8E8) * 15 + DAT_00886FAC / 2;
+    int bottom = (DAT_0087F8F0 * 60 + 270) / 2 - DAT_00886FAC + top;
+    bool changed = false;
+    if (point->unknown_04 < top) {
+        changed = true;
+        point->unknown_04 = top;
+    } else if (point->unknown_04 > bottom) {
+        point->unknown_04 = bottom;
+        changed = true;
+    }
+    if (point->unknown_00 < left) {
+        point->unknown_00 = left;
+        return true;
+    }
+    if (point->unknown_00 > right) {
+        point->unknown_00 = right;
+        return true;
+    }
+    return changed;
+}
+
+GG_STATIC_ASSERT(offsetof(Cell, X) == 0);
+GG_STATIC_ASSERT(offsetof(Cell, Y) == 2);
+GG_STATIC_ASSERT(sizeof(Cell) == 4);
+
+// FUNCTION: GAMEMD 0x6D8AE0
+bool Tactical::FUN_006D8AE0(const Cell* cell) const
+{
+    int x = cell->X;
+    int y = cell->Y;
+    if (x >= unknown_D80 && x < unknown_D80 + unknown_D88
+        && y >= unknown_D84 && y < unknown_D84 + unknown_D8C)
+        return true;
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6D8B30
+void Tactical::FUN_006D8B30()
+{
+    Pair_006D9F80 center = unknown_D64;
+    unknown_B0 = center;
+    unknown_B0.unknown_00 = center.unknown_00 - DAT_00B0CE30 / 2;
+    unknown_B0.unknown_04 = center.unknown_04 - DAT_00B0CE34 / 2;
+    Vector3D_006D2280 vector;
+    vector.X = (float)(unknown_B0.unknown_00 - 60);
+    vector.Y = (float)(unknown_B0.unknown_04 - 30);
+    vector.Z = 0.0f;
+    Vector3D_006D2280 transformed;
+    vector = *Matrix3D_006D2280::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int x = (int)vector.X;
+    int y = (int)vector.Y;
+    unknown_D80 = x / 256;
+    unknown_D84 = y / 256;
+    unknown_D88 = DAT_00B0CE30 / 60 + 2;
+    unknown_D8C = DAT_00B0CE34 / 15 + 4;
+}
+
+// FUNCTION: GAMEMD 0x6D9F80
+void Tactical::FUN_006D9F80(const Pair_006D9F80* value)
+{
+    if (unknown_D90.unknown_00 == 0 && unknown_D90.unknown_04 == 0) {
+        unknown_D90 = *value;
+        unknown_D98 = *value;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D9FC0
+void Tactical::FUN_006D9FC0(const Pair_006D9F80* value)
+{
+    if (unknown_D90.unknown_00 != 0 || unknown_D90.unknown_04 != 0)
+        unknown_D98 = *value;
+}
+
+template struct TRect<int>;
+typedef TRect<int> Rect_006D9FF0;
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, X) == 0);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Y) == 4);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Width) == 8);
+GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Height) == 12);
+GG_STATIC_ASSERT(sizeof(Rect_006D9FF0) == 16);
+
+// FUNCTION: GAMEMD 0x6D9FF0
+void Tactical::FUN_006D9FF0(int mode)
+{
+    if (!(unknown_D90 == Pair_006D9F80(0, 0))) {
+        int left = unknown_D90.unknown_00;
+        int right = unknown_D98.unknown_00;
+        int top = unknown_D90.unknown_04;
+        int bottom = unknown_D98.unknown_04;
+        if (left > right) {
+            int temporary = left;
+            left = right;
+            right = temporary;
+        }
+        if (top > bottom) {
+            int temporary = top;
+            top = bottom;
+            bottom = temporary;
+        }
+        TRect<int> rectangle;
+        rectangle.X = left;
+        rectangle.Y = top;
+        rectangle.Width = right - left + 1;
+        rectangle.Height = bottom - top + 1;
+        FUN_006DA5C0(&rectangle, mode);
+        unknown_D90 = Pair_006D9F80(0, 0);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6DA080
+int Tactical::FUN_006DA080() const
+{
+    int left = unknown_D90.unknown_00;
+    int right = unknown_D98.unknown_00;
+    int top = unknown_D90.unknown_04;
+    int bottom = unknown_D98.unknown_04;
+    if (left > right) {
+        int temporary = left;
+        left = right;
+        right = temporary;
+    }
+    if (top > bottom) {
+        int temporary = top;
+        top = bottom;
+        bottom = temporary;
+    }
+    TRect<int> rectangle;
+    rectangle.X = left;
+    rectangle.Y = top;
+    rectangle.Width = right - left + 1;
+    rectangle.Height = bottom - top + 1;
+    if (rectangle.Width > 0 && rectangle.Height > 0) {
+        for (int i = 0; i < unknown_DB0; ++i) {
+            if (DAT_00B0CEC8[i].unknown_00 != 0 && DAT_00B0CEC8[i].unknown_00->IsAlive) {
+                int x = DAT_00B0CEC8[i].unknown_04 - unknown_B0.unknown_00;
+                int y = DAT_00B0CEC8[i].unknown_08 - unknown_B0.unknown_04;
+                if (x >= rectangle.X && x < rectangle.X + rectangle.Width
+                    && y >= rectangle.Y && y < rectangle.Y + rectangle.Height)
+                    return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6DA160
+void Tactical::FUN_006DA160()
+{
+    Pair_006D9F80 value(0, 0);
+    unknown_D90 = value;
+    unknown_D98 = value;
+}
+
 // FUNCTION: GAMEMD 0x6DA350
 // Empty function.
 void __cdecl FUN_006DA350()
@@ -639,6 +1054,21 @@ void __stdcall FUN_006DA370(int a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+#include "../_layout/object_class.h"
+
+// GLOBAL: GAMEMD 0xA8ECBC
+extern ObjectClass** DAT_00A8ECBC;
+// GLOBAL: GAMEMD 0xA8ECC8
+extern int DAT_00A8ECC8;
+
+// FUNCTION: GAMEMD 0x6DA740
+void Tactical::FUN_006DA740()
+{
+    while (DAT_00A8ECC8 != 0)
+        DAT_00A8ECBC[0]->vf_84();
+    FUN_00731D00(0);
+}
+
 // FUNCTION: GAMEMD 0x006DBCE0
 HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
 {
@@ -646,6 +1076,36 @@ HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
         return E_POINTER;
     *pClassID = DAT_007E9950;
     return S_OK;
+}
+
+#include <new.h>
+#include "../_layout/swizzle_manager_class.h"
+// GLOBAL: GAMEMD 0xB0C110
+extern SwizzleManagerClass DAT_00B0C110;
+
+// FUNCTION: GAMEMD 0x6DBD20
+HRESULT __stdcall Tactical::Load(IStream* stream)
+{
+    HRESULT hr = AbstractClass::Load(stream);
+    if (hr < 0) return hr;
+    new (this) Tactical(AbstractNoInit());
+    unknown_DB0 = 0;
+    for (int i = 0; i < unknown_E0; ++i) {
+        // 0x6DBD69 pushes the address of each four-byte pointer to6CF240.
+        // The canonical placeholder slot takes an opaque32-bit integer;
+        // this ABI conversion preserves that binary-proven pointer argument.
+        DAT_00B0C110.SwizzleManagerClass::vf_4((int)&unknown_E4[i]);
+    }
+    Pair_006D9F80 point = unknown_D64;
+    if (FUN_006D8640(&point) && !DAT_00A8ED6B) {
+        unknown_D64 = point;
+        unknown_D74 = point;
+    } else {
+        unknown_D74 = unknown_D64;
+    }
+    FUN_006D8B30();
+    unknown_D7D = true;
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -663,6 +1123,12 @@ void __cdecl FUN_006DC410()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x6DC430
+ObjectClass* Tactical::FUN_006DC430(int index)
+{
+    return DAT_00B0CEC8[index].unknown_00;
+}
+
 // FUNCTION: GAMEMD 0x6DC450
 // Returns a constant. Vtable slot 11 of Tactical (RTTI).
 int Obj_006DC450::FUN_006DC450() const
@@ -679,6 +1145,9 @@ int Obj_006DC460::FUN_006DC460() const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// SYNTHETIC: GAMEMD 0x006DC470
+// Tactical::scalar deleting destructor
+
 // FUNCTION: GAMEMD 0x006DC5E0
 // VectorClass<DirtyAreaStruct>::operator==
 // FUNCTION: GAMEMD 0x006DC660

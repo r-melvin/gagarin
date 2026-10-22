@@ -83914,9 +83914,9 @@
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6D4E00",
-  "sym": "?FUN_006D4E00@Obj_006D4E00@@QAEXXZ",
+  "sym": "?FUN_006D4E00@Tactical@@QAEXXZ",
   "len": "0x11",
-  "name": "Obj_006D4E00::FUN_006D4E00",
+  "name": "Tactical::FUN_006D4E00",
   "status": "matched",
   "pct": 100
  },
@@ -91912,6 +91912,258 @@
   "sym": "?FUN_0077A840@Obj_0077A840@@QAEEPAUArg1_0077A840@@@Z",
   "len": "0x23",
   "name": "Obj_0077A840::FUN_0077A840",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1BB0",
+  "sym": "?FUN_006D1BB0@@YAXXZ",
+  "len": "0x34",
+  "name": "FUN_006D1BB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1BF0",
+  "sym": "?FUN_006D1BF0@@YAXXZ",
+  "len": "0x28",
+  "name": "FUN_006D1BF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1C20",
+  "sym": "??0Tactical@@QAE@XZ",
+  "len": "0x20a",
+  "name": "Tactical::Tactical",
+  "status": "partial",
+  "pct": 23.5
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1E30",
+  "sym": "??0Tactical@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x49",
+  "name": "Tactical::Tactical(noInit)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1E80",
+  "sym": "??1Tactical@@UAE@XZ",
+  "len": "0x2a",
+  "name": "Tactical::~Tactical",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D1EB0",
+  "sym": "?FUN_006D1EB0@Pair_006D9F80@@QAEPAU1@HH@Z",
+  "len": "0x59",
+  "name": "FUN_006D1EB0",
+  "status": "partial",
+  "pct": 28.6
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D2120",
+  "sym": "?FUN_006D2120@@YIHH@Z",
+  "len": "0x1c",
+  "name": "FUN_006D2120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D2360",
+  "sym": "?FUN_006D2360@Tactical@@QAEPAUCoord_006D2280@@PAU2@PBUPoint2D_006D2280@@@Z",
+  "len": "0xbe",
+  "name": "FUN_006D2360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D4DB0",
+  "sym": "?FUN_006D4DB0@Tactical@@QAEXPBGH@Z",
+  "len": "0x42",
+  "name": "Tactical::FUN_006D4DB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D6000",
+  "sym": "?FUN_006D6000@Tactical@@QAEXPBUPair_006D9F80@@@Z",
+  "len": "0x6e",
+  "name": "FUN_006D6000",
+  "status": "partial",
+  "pct": 48.6
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D6190",
+  "sym": "?FUN_006D6190@Tactical@@QBE?AUPair_006D9F80@@XZ",
+  "len": "0x2a",
+  "name": "FUN_006D6190",
+  "status": "partial",
+  "pct": 33.3
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D61C0",
+  "sym": "?FUN_006D61C0@@YIXHHPAH0@Z",
+  "len": "0x5a",
+  "name": "FUN_006D61C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D6220",
+  "sym": "?FUN_006D6220@@YIXHHPAH0@Z",
+  "len": "0x51",
+  "name": "FUN_006D6220",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D6280",
+  "sym": "?FUN_006D6280@@YGXHHPAH0@Z",
+  "len": "0x5f",
+  "name": "FUN_006D6280",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D62E0",
+  "sym": "?FUN_006D62E0@@YGXHHPAH0@Z",
+  "len": "0x89",
+  "name": "FUN_006D62E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D6370",
+  "sym": "?FUN_006D6370@@YGXHHPAH0@Z",
+  "len": "0x93",
+  "name": "FUN_006D6370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D8640",
+  "sym": "?FUN_006D8640@Tactical@@QAE_NPAUPair_006D9F80@@@Z",
+  "len": "0xbe",
+  "name": "FUN_006D8640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D8AE0",
+  "sym": "?FUN_006D8AE0@Tactical@@QBE_NPBUCell@@@Z",
+  "len": "0x46",
+  "name": "FUN_006D8AE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D8B30",
+  "sym": "?FUN_006D8B30@Tactical@@QAEXXZ",
+  "len": "0x121",
+  "name": "FUN_006D8B30",
+  "status": "partial",
+  "pct": 6.0
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D9F80",
+  "sym": "?FUN_006D9F80@Tactical@@QAEXPBUPair_006D9F80@@@Z",
+  "len": "0x3d",
+  "name": "FUN_006D9F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D9FC0",
+  "sym": "?FUN_006D9FC0@Tactical@@QAEXPBUPair_006D9F80@@@Z",
+  "len": "0x2c",
+  "name": "FUN_006D9FC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D9FF0",
+  "sym": "?FUN_006D9FF0@Tactical@@QAEXH@Z",
+  "len": "0x88",
+  "name": "FUN_006D9FF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DA080",
+  "sym": "?FUN_006DA080@Tactical@@QBEHXZ",
+  "len": "0xd5",
+  "name": "FUN_006DA080",
+  "status": "partial",
+  "pct": 57.5
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DA160",
+  "sym": "?FUN_006DA160@Tactical@@QAEXXZ",
+  "len": "0x1d",
+  "name": "FUN_006DA160",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DA740",
+  "sym": "?FUN_006DA740@Tactical@@QAEXXZ",
+  "len": "0x28",
+  "name": "FUN_006DA740",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DBD20",
+  "sym": "?Load@Tactical@@UAGJPAUIStream@@@Z",
+  "len": "0xd6",
+  "name": "Tactical::Load",
+  "status": "partial",
+  "pct": 39.1
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DC430",
+  "sym": "?FUN_006DC430@Tactical@@QAEPAVObjectClass@@H@Z",
+  "len": "0x11",
+  "name": "FUN_006DC430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DC470",
+  "sym": "??_GTactical@@UAEPAXI@Z",
+  "len": "0x43",
+  "name": "Tactical::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  }
