@@ -503,6 +503,147 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PhoneEntryClass* >) == 0x18);
 
 #include "vector_class_operations.h"
 
+
+struct Obj_00696F90;
+struct Obj_00696FC0;
+struct Obj_00696FF0;
+struct Obj_00697020;
+struct Obj_0069B720;
+
+#pragma pack(push, 1)
+struct Obj_00696F90
+{
+    char unknown_00[0x4B];
+    int unknown_4B;   // +0x004B
+    int unknown_4F;   // +0x004F
+    // FUNCTION: GAMEMD 0x696F90
+    int FUN_00696F90(int a1);
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00696F90, unknown_4B) == 0x4B);
+GG_STATIC_ASSERT(offsetof(Obj_00696F90, unknown_4F) == 0x4F);
+
+#pragma pack(push, 1)
+struct Obj_00696FC0
+{
+    char unknown_00[0x53];
+    int unknown_53;   // +0x0053
+    int unknown_57;   // +0x0057
+    // FUNCTION: GAMEMD 0x696FC0
+    int FUN_00696FC0(int a1);
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00696FC0, unknown_53) == 0x53);
+GG_STATIC_ASSERT(offsetof(Obj_00696FC0, unknown_57) == 0x57);
+
+#pragma pack(push, 1)
+struct Obj_00696FF0
+{
+    char unknown_00[0x5B];
+    int unknown_5B;   // +0x005B
+    int unknown_5F;   // +0x005F
+    // FUNCTION: GAMEMD 0x696FF0
+    int FUN_00696FF0(int a1);
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00696FF0, unknown_5B) == 0x5B);
+GG_STATIC_ASSERT(offsetof(Obj_00696FF0, unknown_5F) == 0x5F);
+
+#pragma pack(push, 1)
+struct Obj_00697020
+{
+    char unknown_00[0x63];
+    int unknown_63;   // +0x0063
+    int unknown_67;   // +0x0067
+    // FUNCTION: GAMEMD 0x697020
+    int FUN_00697020(int a1);
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00697020, unknown_63) == 0x63);
+GG_STATIC_ASSERT(offsetof(Obj_00697020, unknown_67) == 0x67);
+
+struct Obj_0069B720
+{
+    char unknown_00[0x15C];
+    int unknown_15C;   // +0x015C
+    int unknown_160;   // +0x0160
+    // FUNCTION: GAMEMD 0x69B720
+    int FUN_0069B720();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0069B720, unknown_15C) == 0x15C);
+GG_STATIC_ASSERT(offsetof(Obj_0069B720, unknown_160) == 0x160);
+
+// FUNCTION: GAMEMD 0x696F90
+// Branching.
+int Obj_00696F90::FUN_00696F90(int a1)
+{
+    if (a1 == -2)
+    {
+        unknown_4B = 0;
+        unknown_4F = a1;
+        return a1;
+    }
+    unknown_4B = a1;
+    unknown_4F = -1;
+    return a1;
+}
+
+// FUNCTION: GAMEMD 0x696FC0
+// Branching.
+int Obj_00696FC0::FUN_00696FC0(int a1)
+{
+    if (a1 == -2)
+    {
+        unknown_53 = -1;
+        unknown_57 = a1;
+        return a1;
+    }
+    unknown_53 = a1;
+    unknown_57 = -1;
+    return a1;
+}
+
+// FUNCTION: GAMEMD 0x696FF0
+// Branching.
+int Obj_00696FF0::FUN_00696FF0(int a1)
+{
+    if (a1 == -2)
+    {
+        unknown_5B = -1;
+        unknown_5F = a1;
+        return a1;
+    }
+    unknown_5B = a1;
+    unknown_5F = -1;
+    return a1;
+}
+
+// FUNCTION: GAMEMD 0x697020
+// Branching.
+int Obj_00697020::FUN_00697020(int a1)
+{
+    if (a1 == -2)
+    {
+        unknown_63 = -1;
+        unknown_67 = a1;
+        return a1;
+    }
+    unknown_63 = a1;
+    unknown_67 = -1;
+    return a1;
+}
+
+// FUNCTION: GAMEMD 0x69B720
+// Branching.
+int Obj_0069B720::FUN_0069B720()
+{
+    if (unknown_160 != -2)
+    {
+        return unknown_15C;
+    }
+    return -2;
+}
+
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 struct Wstring { char* unknown_00; Wstring(); Wstring(const Wstring& o); ~Wstring(); bool operator==(const Wstring& o) const; bool operator!=(const Wstring& o) const; };

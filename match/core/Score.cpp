@@ -259,6 +259,43 @@ void __cdecl FUN_00690150()
 {
 }
 
+
+struct Obj_00690EF0;
+
+// FUNCTION: GAMEMD 0x407000 (decl; reloc)
+int __cdecl FUN_00407000();
+// FUNCTION: GAMEMD 0x7D5408 (decl; reloc)
+int __cdecl FUN_007D5408(int);
+
+struct Obj_00690EF0
+{
+    int unknown_00;   // +0x0000
+    int unknown_04;   // +0x0004
+    unsigned char unknown_08;   // +0x0008
+    // FUNCTION: GAMEMD 0x690EF0
+    Obj_00690EF0* FUN_00690EF0(int a1, int a2);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(Obj_00690EF0, unknown_08) == 0x8);
+
+// FUNCTION: GAMEMD 0x690EF0
+// Branching.
+Obj_00690EF0* Obj_00690EF0::FUN_00690EF0(int a1, int a2)
+{
+    unknown_00 = 0;
+    unknown_04 = 0;
+    unknown_08 = 0;
+    int c0 = FUN_00407000();
+    if (c0 != 0)
+    {
+        int c1 = FUN_007D5408(a1);
+        unknown_00 = c1;
+        return this;
+    }
+    return this;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x690F20
 // Branching.

@@ -252,6 +252,22 @@ void __cdecl FUN_006DCF40()
     DAT_00B0E6CC = 0x80;
 }
 
+struct Obj_006E4790;
+
+// FUNCTION: GAMEMD 0x7C91D0 (decl; reloc)
+void __cdecl FUN_007C91D0(Obj_006E4790*, int, int);
+
+struct Obj_006E4790
+{
+    unsigned char unknown_00;   // +0x0000
+    char unknown_01[0x1E];
+    unsigned char unknown_1F;   // +0x001F
+    // FUNCTION: GAMEMD 0x6E4790
+    Obj_006E4790* FUN_006E4790(int a1);
+};
+GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_006E4790, unknown_1F) == 0x1F);
+
 // FUNCTION: GAMEMD 0x6DD2C0
 void TActionClass::vf_10(void* target, bool removed)
 {
@@ -1385,4 +1401,18 @@ inline TActionClass::~TActionClass()
     DAT_00B0F658.RemoveItem(this);
     DAT_00B0E658.RemoveItem(this);
     unknown_6D[0] = 0;
+}
+
+// FUNCTION: GAMEMD 0x6E4790
+// Branching.
+Obj_006E4790* Obj_006E4790::FUN_006E4790(int a1)
+{
+    if (a1 == 0)
+    {
+        unknown_00 = a1;
+        return this;
+    }
+    FUN_007C91D0(this, a1, 0x1F);
+    unknown_1F = 0;
+    return this;
 }

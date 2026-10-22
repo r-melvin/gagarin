@@ -148,6 +148,92 @@ void FUN_0049B420(int a1, int a2)
     FUN_0049E510(DAT_0089F518, a2);
 }
 
+
+struct Arg1_0049D0C0;
+struct Arg1_0049D0F0;
+struct Arg2_0049D0C0;
+struct Arg2_0049D0F0;
+struct Obj_0049D0C0;
+struct Obj_0049D0F0;
+
+struct Arg1_0049D0C0
+{
+    int unknown_00;   // +0x0000
+};
+GG_STATIC_ASSERT(offsetof(Arg1_0049D0C0, unknown_00) == 0x0);
+
+struct Arg1_0049D0F0
+{
+    int unknown_00;   // +0x0000
+};
+GG_STATIC_ASSERT(offsetof(Arg1_0049D0F0, unknown_00) == 0x0);
+
+struct Arg2_0049D0C0
+{
+    int unknown_00;   // +0x0000
+};
+GG_STATIC_ASSERT(offsetof(Arg2_0049D0C0, unknown_00) == 0x0);
+
+struct Arg2_0049D0F0
+{
+    int unknown_00;   // +0x0000
+};
+GG_STATIC_ASSERT(offsetof(Arg2_0049D0F0, unknown_00) == 0x0);
+
+struct Obj_0049D0C0
+{
+    char unknown_00[0x14];
+    int unknown_14;   // +0x0014
+    int unknown_18;   // +0x0018
+    char unknown_1C[0x50];
+    unsigned char unknown_6C;   // +0x006C
+    // FUNCTION: GAMEMD 0x49D0C0
+    unsigned char FUN_0049D0C0(Arg1_0049D0C0* a1, Arg2_0049D0C0* a2);
+};
+GG_STATIC_ASSERT(offsetof(Obj_0049D0C0, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(Obj_0049D0C0, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(Obj_0049D0C0, unknown_6C) == 0x6C);
+
+struct Obj_0049D0F0
+{
+    char unknown_00[0x30];
+    int unknown_30;   // +0x0030
+    int unknown_34;   // +0x0034
+    char unknown_38[0x34];
+    unsigned char unknown_6C;   // +0x006C
+    // FUNCTION: GAMEMD 0x49D0F0
+    unsigned char FUN_0049D0F0(Arg1_0049D0F0* a1, Arg2_0049D0F0* a2);
+};
+GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(Obj_0049D0F0, unknown_6C) == 0x6C);
+
+// FUNCTION: GAMEMD 0x49D0C0
+// Branching.
+unsigned char Obj_0049D0C0::FUN_0049D0C0(Arg1_0049D0C0* a1, Arg2_0049D0C0* a2)
+{
+    if (unknown_6C != 0)
+    {
+        a1->unknown_00 = unknown_14;
+        a2->unknown_00 = unknown_18;
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x49D0F0
+// Branching.
+unsigned char Obj_0049D0F0::FUN_0049D0F0(Arg1_0049D0F0* a1, Arg2_0049D0F0* a2)
+{
+    if (unknown_6C != 0)
+    {
+        a1->unknown_00 = unknown_30;
+        a2->unknown_00 = unknown_34;
+        return 1;
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x49E8E0
 template<> List<INIClass::INISection*>::List()

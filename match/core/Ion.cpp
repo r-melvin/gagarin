@@ -415,6 +415,52 @@ void FUN_00539EA0(int a1)
     DAT_00A9FAB4 = a1;
 }
 
+
+// GLOBAL: GAMEMD 0xA9F9CC
+extern int DAT_00A9F9CC;
+// GLOBAL: GAMEMD 0xA9F9F8
+extern int DAT_00A9F9F8;
+// GLOBAL: GAMEMD 0xA9FAB4
+extern unsigned char DAT_00A9FAB4;
+// GLOBAL: GAMEMD 0xA9FACC
+extern int DAT_00A9FACC;
+// GLOBAL: GAMEMD 0xA9FAD0
+extern unsigned char DAT_00A9FAD0;
+
+// FUNCTION: GAMEMD 0x53C280 (decl; reloc)
+void FUN_0053C280(unsigned char, int);
+
+
+// FUNCTION: GAMEMD 0x53A090
+unsigned char __cdecl FUN_0053A090();
+// FUNCTION: GAMEMD 0x53A0B0
+void FUN_0053A0B0(int a1, int a2);
+
+// FUNCTION: GAMEMD 0x53A090
+// Branching.
+unsigned char __cdecl FUN_0053A090()
+{
+    if (DAT_00A9FAB4 != 0)
+    {
+        DAT_00A9FAD0 = 1;
+    }
+    return DAT_00A9FAB4;
+}
+
+// FUNCTION: GAMEMD 0x53A0B0
+// Branching.
+void FUN_0053A0B0(int a1, int a2)
+{
+    if (DAT_00A9FAB4 != (unsigned char)0)
+    {
+        unsigned char t1 = DAT_00A9FAB4;
+        DAT_00A9FAB4 = 0;
+        DAT_00A9FACC = 0;
+        DAT_00A9F9CC = DAT_00A9F9F8;
+        FUN_0053C280(t1, a2);
+    }
+}
+
 // FUNCTION: GAMEMD 0x53A110
 // Returns a comparison result.
 bool __cdecl FUN_0053A110()

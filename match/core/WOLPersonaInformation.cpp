@@ -127,6 +127,42 @@ int Obj_0077A7A0::FUN_0077A7A0(int a1)
     return a1;
 }
 
+
+struct Arg1_0077A840;
+struct Obj_0077A840;
+
+struct Arg1_0077A840
+{
+    char unknown_00[0x10];
+    int unknown_10;   // +0x0010
+    char unknown_14[0x8];
+    int unknown_1C;   // +0x001C
+};
+GG_STATIC_ASSERT(offsetof(Arg1_0077A840, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(Arg1_0077A840, unknown_1C) == 0x1C);
+
+struct Obj_0077A840
+{
+    char unknown_00[0x24];
+    int unknown_24;   // +0x0024
+    int unknown_28;   // +0x0028
+    // FUNCTION: GAMEMD 0x77A840
+    unsigned char FUN_0077A840(Arg1_0077A840* a1);
+};
+GG_STATIC_ASSERT(offsetof(Obj_0077A840, unknown_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(Obj_0077A840, unknown_28) == 0x28);
+
+// FUNCTION: GAMEMD 0x77A840
+// Branching.
+unsigned char Obj_0077A840::FUN_0077A840(Arg1_0077A840* a1)
+{
+    if (a1->unknown_1C != unknown_24)
+    {
+        return 1;
+    }
+    return (a1->unknown_10 != unknown_28) ? true : false;
+}
+
 // FUNCTION: GAMEMD 0x77A870
 // Branching.
 void Obj_0077A870::FUN_0077A870(int a1)

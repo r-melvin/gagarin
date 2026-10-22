@@ -1,3 +1,42 @@
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_00558810;
+
+// GLOBAL: GAMEMD 0xA8B230
+extern int DAT_00A8B230;
+
+// FUNCTION: GAMEMD 0x558DD0 (decl; reloc)
+int FUN_00558DD0(Obj_00558810*, int);
+
+struct Obj_00558810
+{
+    char unknown_00[0x4];
+    int unknown_04;   // +0x0004
+    char unknown_08[0x4];
+    int unknown_0C;   // +0x000C
+};
+GG_STATIC_ASSERT(offsetof(Obj_00558810, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(Obj_00558810, unknown_0C) == 0xC);
+
+
+// FUNCTION: GAMEMD 0x558810
+int FUN_00558810(Obj_00558810* a1, int a2, int a3);
+
+// FUNCTION: GAMEMD 0x558810
+// Branching.
+int FUN_00558810(Obj_00558810* a1, int a2, int a3)
+{
+    a1->unknown_04 = 2;
+    if (a3 == 0)
+    {
+        a1->unknown_0C = DAT_00A8B230 + 0x1360;
+        return FUN_00558DD0(a1, a2);
+    }
+    a1->unknown_0C = a3;
+    return FUN_00558DD0(a1, a2);
+}
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit LoadDlg.CPP. The name is the source-file string at 0x829f5c

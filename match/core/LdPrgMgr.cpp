@@ -54,6 +54,32 @@ void __cdecl FUN_00552A20()
     DAT_00ABC9A4 = 0x80;
 }
 
+
+// GLOBAL: GAMEMD 0xABC9BC
+extern int DAT_00ABC9BC;
+
+// FUNCTION: GAMEMD 0x554370 (decl; reloc)
+void FUN_00554370(int, int);
+// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc)
+void __cdecl FUN_007C8B3D(int);
+
+
+// FUNCTION: GAMEMD 0x552AA0
+void FUN_00552AA0(int a1, int a2);
+
+// FUNCTION: GAMEMD 0x552AA0
+// Branching.
+void FUN_00552AA0(int a1, int a2)
+{
+    if (DAT_00ABC9BC != 0)
+    {
+        FUN_00554370(DAT_00ABC9BC, a2);
+        FUN_007C8B3D(DAT_00ABC9BC);
+        DAT_00ABC9BC = 0;
+    }
+    DAT_00ABC9BC = 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x554350
 // Branching.

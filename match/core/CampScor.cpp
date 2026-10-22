@@ -282,6 +282,43 @@ void FUN_0046FB50(HWND_ dlg)
     EnableWindow(first, 1);
 }
 
+
+struct Obj_0046FBD0;
+
+// GLOBAL: GAMEMD 0xA8B238
+extern int DAT_00A8B238;
+
+// FUNCTION: GAMEMD 0x48D080 (decl; reloc)
+void FUN_0048D080(Obj_0046FBD0*, int);
+// FUNCTION: GAMEMD 0x5DAF20 (decl; reloc)
+bool FUN_005DAF20(Obj_0046FBD0*, int);
+// FUNCTION: GAMEMD 0x77F900 (decl; reloc)
+bool FUN_0077F900(Obj_0046FBD0*, int);
+
+struct Obj_0046FBD0
+{
+};
+
+
+// FUNCTION: GAMEMD 0x46FBD0
+unsigned char FUN_0046FBD0(Obj_0046FBD0* a1, int a2);
+
+// FUNCTION: GAMEMD 0x46FBD0
+// Branching.
+unsigned char FUN_0046FBD0(Obj_0046FBD0* a1, int a2)
+{
+    if (DAT_00A8B238 == 3)
+    {
+        return FUN_005DAF20(a1, a2);
+    }
+    if (DAT_00A8B238 == 4)
+    {
+        return FUN_0077F900(a1, a2);
+    }
+    FUN_0048D080(a1, a2);
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x470C00
 Obj_00470C00* Obj_00470C00::FUN_00470C00()
 {

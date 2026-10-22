@@ -572,6 +572,27 @@ struct tagCONNECTDATA;
 
 #include "vector_class_operations.h"
 
+
+struct Obj_00656E50;
+
+struct Obj_00656E50
+{
+    char unknown_00[0x14AC];
+    int unknown_14AC;   // +0x14AC
+    int unknown_14B0;   // +0x14B0
+    // FUNCTION: GAMEMD 0x656E50
+    int FUN_00656E50();
+};
+GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14AC) == 0x14AC);
+GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14B0) == 0x14B0);
+
+// FUNCTION: GAMEMD 0x656E50
+// Branching.
+int Obj_00656E50::FUN_00656E50()
+{
+    return unknown_14B0 == 2 && unknown_14AC == 1;
+}
+
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "pair_vector_ctor_family_methods.h"
