@@ -47,6 +47,8 @@
 #include "../../core/stdcall_forward_sweep.h"
 
 #include "sidebar_class_layout.h"
+#include "../shape_button_class.h"
+#include "../../platform/ccini_class_small_readers_methods.h"
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
 extern unsigned char DAT_00A8D5F8;
@@ -330,6 +332,8 @@ extern int DAT_00B0B38C;
 extern int DAT_00B0B390;
 // GLOBAL: GAMEMD 0xB0B398
 extern double DAT_00B0B398;
+// GLOBAL: GAMEMD 0xA8E340
+extern int DAT_00A8E340;
 
 // FUNCTION: GAMEMD 0x6A4A50
 // Static-initialiser shape: stores a floating-point expression of globals.
@@ -381,6 +385,39 @@ void SidebarClass::vf_07()
     unknown_539C = 0;
     At_53A0 = 0;
     vf_54(0);
+}
+
+// FUNCTION: GAMEMD 0x6A5090
+void SidebarClass::FUN_006A5090()
+{
+    if (Scenario_00A8B230->At_34B8 == 0) {
+        SellOffset_00B0B4E4 = 0x40;
+        TabStep_00B0B4F0 = 0x1D;
+        ColumnStep_00B0B4FC = 0x3F;
+        int y = DAT_00886F94 + 8;
+        RepairY_00B0B4E0 = y;
+        y += 0x1F;
+        TabY_00B0B4EC = y;
+        y += 0x1E;
+        StripY_00B0B4F8 = y;
+        return;
+    }
+
+    int y;
+    if (Scenario_00A8B230->At_34B8 == 1) {
+        y = DAT_00886F94 + 7;
+    } else {
+        y = DAT_00886F94;
+        y += 7;
+    }
+    RepairY_00B0B4E0 = y;
+    y += 0x20;
+    TabY_00B0B4EC = y;
+    y += 0x1E;
+    SellOffset_00B0B4E4 = 0x34;
+    TabStep_00B0B4F0 = 0x20;
+    StripY_00B0B4F8 = y;
+    ColumnStep_00B0B4FC = 0x40;
 }
 
 // Slot 8: builds the sidebar's gadgets: positions the repair, sell, tab and scroll
@@ -689,6 +726,66 @@ void Sidebar_006A5F20::OnTechnoDestroyed(Techno_006A5F20* obj)
     }
 }
 
+// FUNCTION: GAMEMD 0x6A5ED0
+void SidebarClass::FUN_006A5ED0()
+{
+    At_53A6 = 1;
+    Strips[unknown_539C].At_3C = 1;
+    Map_0087F7E8.FlagToRedraw(0);
+    if (At_53A0 <= CurrentFrame_00A8ED84) {
+        At_53A0 = CurrentFrame_00A8ED84 + 2;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6A60E0
+void SidebarClass::FUN_006A60E0(int tab)
+{
+    if (tab == unknown_539C) {
+        At_53A6 = 1;
+        Strips[unknown_539C].At_3C = 1;
+        Map_0087F7E8.FlagToRedraw(0);
+        if (At_53A0 <= CurrentFrame_00A8ED84) {
+            At_53A0 = CurrentFrame_00A8ED84 + 2;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6A6220
+bool SidebarClass::FUN_006A6220(unsigned int value)
+{
+    unsigned char previous = At_5515;
+    if (value == 0xFFFFFFFFu) {
+        value = previous == 0;
+    }
+    At_5515 = value == 1 ? 1 : 0;
+    if (previous != At_5515) {
+        FlagToRedraw(0);
+        At_53A6 = 1;
+        if (At_5515 == 0) {
+            vf_18(0, false);
+        }
+    }
+    return previous != 0;
+}
+
+// FUNCTION: GAMEMD 0x6A6290
+bool SidebarClass::FUN_006A6290(unsigned int value)
+{
+    unsigned char previous = At_5514;
+    if (value == 0xFFFFFFFFu) {
+        value = previous == 0;
+    }
+    At_5514 = value == 1 ? 1 : 0;
+    if (previous != At_5514) {
+        FlagToRedraw(0);
+        At_53A6 = 1;
+        if (At_5514 == 0) {
+            vf_18(0, false);
+        }
+    }
+    return previous != 0;
+}
+
 // Slot 16: draws the sidebar: backdrop shapes, the buttons, the open/close animation
 // frames and the current strip, then folds the buttons' redraw flags into one.
 //
@@ -836,6 +933,13 @@ void Sidebar_006A7590::SetTab(int tab)
     this->At_53A7 = 1;
 }
 
+// FUNCTION: GAMEMD 0x6A7760
+void __stdcall FUN_006A7760(int index)
+{
+    // Retail steps 0x60 bytes from 0xB07C48 before calling ShapeButtonClass::StopFlashing.
+    ((ShapeButtonClass*)&TabButtons_00B07C48[index])->StopFlashing();
+}
+
 // Slot 54: shows or hides the sidebar (-1 toggles); registers or removes every gadget
 // and rebuilds the visible cameo buttons.
 //
@@ -925,6 +1029,18 @@ bool SidebarClass::vf_54(int control)
     return changed;
 }
 
+// FUNCTION: GAMEMD 0x6A8080
+int __fastcall FUN_006A8080(int index)
+{
+    return ColumnStep_00B0B4FC * index;
+}
+
+// FUNCTION: GAMEMD 0x6A8090
+int __fastcall FUN_006A8090(int index)
+{
+    return RowStep_00B0B500 * index + 1;
+}
+
 // FUNCTION: GAMEMD 0x6A8160
 // Calls other functions.
 int __stdcall FUN_006A8160(int a1)
@@ -932,6 +1048,16 @@ int __stdcall FUN_006A8160(int a1)
     int c0 = FUN_005B40B0(DAT_0083F92C, 0);
     DAT_00B07BC0 = c0;
     return c0;
+}
+
+// FUNCTION: GAMEMD 0x6A8180
+int __stdcall FUN_006A8180(unsigned int index)
+{
+    if (index < (unsigned int)DAT_00A8E340) {
+        // The retail instruction reads the dword at +0xB8 from this table entry.
+        return *(int*)((char*)DAT_00A8E334[index] + 0xB8);
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x6A8B10
@@ -1245,8 +1371,6 @@ int __cdecl FUN_006ABC40()
 // GLOBAL: GAMEMD 0xB0B468 is declared in the layout header (SideShapes).
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- SidebarMixRetrieve, declared in the layout header too.
 
-
-
 // Slot 34: repositions every sidebar gadget for the current layout (including the
 // 2-column cameo grid) and re-registers all tooltips.
 //
@@ -1419,6 +1543,18 @@ const wchar_t* SidebarClass::vf_33(int id)
         }
     }
     return text;
+}
+
+// FUNCTION: GAMEMD 0x6AC3E0
+int __cdecl FUN_006AC3E0()
+{
+    return SidebarRowCount();
+}
+
+// FUNCTION: GAMEMD 0x6AC430
+int __cdecl FUN_006AC430()
+{
+    return SidebarRowCount() * 2;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

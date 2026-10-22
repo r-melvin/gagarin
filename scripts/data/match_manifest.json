@@ -92634,5 +92634,104 @@
   "name": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@XZ",
   "status": "partial",
   "pct": 6.8
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A5090",
+  "sym": "?FUN_006A5090@SidebarClass@@QAEXXZ",
+  "len": "0x98",
+  "name": "SidebarClass::FUN_006A5090",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A5ED0",
+  "sym": "?FUN_006A5ED0@SidebarClass@@QAEXXZ",
+  "len": "0x4b",
+  "name": "SidebarClass::FUN_006A5ED0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A60E0",
+  "sym": "?FUN_006A60E0@SidebarClass@@QAEXH@Z",
+  "len": "0x55",
+  "name": "SidebarClass::FUN_006A60E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A6220",
+  "sym": "?FUN_006A6220@SidebarClass@@QAE_NI@Z",
+  "len": "0x61",
+  "name": "SidebarClass::FUN_006A6220",
+  "status": "partial",
+  "pct": 35.3
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A6290",
+  "sym": "?FUN_006A6290@SidebarClass@@QAE_NI@Z",
+  "len": "0x61",
+  "name": "SidebarClass::FUN_006A6290",
+  "status": "partial",
+  "pct": 35.3
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A7760",
+  "sym": "?FUN_006A7760@@YGXH@Z",
+  "len": "0x18",
+  "name": "FUN_006A7760",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A8080",
+  "sym": "?FUN_006A8080@@YIHH@Z",
+  "len": "0x9",
+  "name": "FUN_006A8080",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A8090",
+  "sym": "?FUN_006A8090@@YIHH@Z",
+  "len": "0xa",
+  "name": "FUN_006A8090",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A8180",
+  "sym": "?FUN_006A8180@@YGHI@Z",
+  "len": "0x25",
+  "name": "FUN_006A8180",
+  "status": "partial",
+  "pct": 30.0
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6AC3E0",
+  "sym": "?FUN_006AC3E0@@YAHXZ",
+  "len": "0x47",
+  "name": "FUN_006AC3E0",
+  "status": "partial",
+  "pct": 40.0
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6AC430",
+  "sym": "?FUN_006AC430@@YAHXZ",
+  "len": "0x49",
+  "name": "FUN_006AC430",
+  "status": "partial",
+  "pct": 42.9
  }
 ]

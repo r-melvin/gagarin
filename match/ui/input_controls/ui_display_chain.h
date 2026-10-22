@@ -579,7 +579,8 @@ struct StripClass
     int  At_24;                           // +0x0024
     RectangleStruct Rect;                 // +0x0028
     int  RowBase;                         // +0x0038
-    char unknown_3C[0x44 - 0x3C];         // +0x003C
+    unsigned char At_3C;                  // +0x003C (written by 0x6A5ED0 / 0x6A60E0)
+    char unknown_3D[0x44 - 0x3D];         // +0x003D
     int  TopRowIndex;                     // +0x0044
     int  At_48;                           // +0x0048
     char unknown_4C[0x54 - 0x4C];         // +0x004C
@@ -606,6 +607,7 @@ GG_STATIC_ASSERT(offsetof(StripClass, At_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(StripClass, At_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(StripClass, Rect) == 0x28);
 GG_STATIC_ASSERT(offsetof(StripClass, RowBase) == 0x38);
+GG_STATIC_ASSERT(offsetof(StripClass, At_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(StripClass, TopRowIndex) == 0x44);
 GG_STATIC_ASSERT(offsetof(StripClass, At_48) == 0x48);
 GG_STATIC_ASSERT(offsetof(StripClass, CameoCount) == 0x54);
@@ -638,6 +640,14 @@ public:
     void FUN_006A5090();
     // FUNCTION: GAMEMD 0x6A5130 (decl; reloc) -- RET 4.
     void FUN_006A5130(int arg);
+    // FUNCTION: GAMEMD 0x6A5ED0 (decl; partial).
+    void FUN_006A5ED0();
+    // FUNCTION: GAMEMD 0x6A60E0 (decl; partial) -- RET 4.
+    void FUN_006A60E0(int tab);
+    // FUNCTION: GAMEMD 0x6A6220 (decl; partial)
+    bool FUN_006A6220(unsigned int value);
+    // FUNCTION: GAMEMD 0x6A6290 (decl; partial)
+    bool FUN_006A6290(unsigned int value);
     // FUNCTION: GAMEMD 0x6A6610 (decl; reloc) -- rebuild the strip contents.
     void FUN_006A6610();
     // FUNCTION: GAMEMD 0x6A70E0 (decl; reloc) -- RET 4.
