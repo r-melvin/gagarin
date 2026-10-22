@@ -81,12 +81,12 @@ struct LightSource_00452260
 
 struct Anim_00452260;
 // FUNCTION: GAMEMD 0x425270 (decl; reloc) — per-animation enable.
-void __fastcall FUN_00425270(Anim_00452260* anim);
+void FUN_00425270(Anim_00452260* anim);
 
 struct VoxClass_00452260
 {
     // FUNCTION: GAMEMD 0x752700 (decl; reloc) — VoxClass::Play.
-    static void __fastcall Play(const char* name, int a, int b);
+    static void Play(const char* name, int a, int b);
 };
 
 struct BuildingClass_00452260

@@ -49,7 +49,7 @@ extern "C" const CLSID CLSID_ParticleSystemType =
 extern const char* const DAT_00836EE0[5];
 
 // FUNCTION: GAMEMD 0x645430 (decl; reloc) - looks a ParticleType name up (ECX = name).
-int __fastcall FUN_00645430(const char* name);
+int FUN_00645430(const char* name);
 
 // Index of the BehavesLike name in the table, -1 when absent.
 static inline int Inline_006442D0(const char* name)

@@ -54,7 +54,7 @@ int WeaponTypeClass::AllowedThreats()
 // Find the weapon type named `id` in the global Array (case-insensitive); if it
 // is not present, allocate and construct a fresh one. The reserved names
 // "<none>" and "none" are rejected (return null).
-WeaponTypeClass* __fastcall WeaponTypeClass::FindOrAllocate(const char* id)
+WeaponTypeClass* WeaponTypeClass::FindOrAllocate(const char* id)
 {
     if (gg_strcmpi("<none>", id) != 0 && gg_strcmpi("none", id) != 0)
     {

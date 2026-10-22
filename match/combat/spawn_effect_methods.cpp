@@ -12,7 +12,7 @@
 // The coordinate is built from the cell pair by scaling each component to leptons
 // and adding half a cell, leaving the height at zero — the effect sits on the
 // ground at the cell's centre rather than at its corner.
-void __fastcall FUN_004251F0(int, const short* cell)
+void FUN_004251F0(int, const short* cell)
 {
     Coord_004251F0 where;
     where.X = cell[0] * 0x100 + 0x80;

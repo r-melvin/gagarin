@@ -16,13 +16,13 @@
 // FUNCTION: GAMEMD 0x4F4D80
 // Retail's body is a single `JMP` to itself: the comparison calls itself in
 // tail position and never compares anything.
-bool __fastcall ScratchEntry::operator==(ScratchEntry const& other) const
+bool ScratchEntry::operator==(ScratchEntry const& other) const
 {
     return *this == other;
 }
 
 // FUNCTION: GAMEMD 0x4F4D90
-bool __fastcall ScratchEntry::operator!=(ScratchEntry const& other) const
+bool ScratchEntry::operator!=(ScratchEntry const& other) const
 {
     return !(*this == other);
 }

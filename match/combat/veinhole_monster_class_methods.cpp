@@ -13,7 +13,7 @@
 // FUNCTION: GAMEMD 0x74CD60  (__fastcall)
 // Scan the registry back-to-front for the monster whose home cell exactly
 // matches pCell (compare the CellStruct X then Y).
-VeinholeMonsterClass* __fastcall VeinholeMonsterClass::GetVeinholeMonsterFrom(CellStruct* pCell)
+VeinholeMonsterClass* VeinholeMonsterClass::GetVeinholeMonsterFrom(CellStruct* pCell)
 {
     int i = VeinholeArray.Count - 1;
     if (i >= 0)
@@ -40,7 +40,7 @@ VeinholeMonsterClass* __fastcall VeinholeMonsterClass::GetVeinholeMonsterFrom(Ce
 // the found path re-indexes (`MOV EAX,[EAX+ESI*4]`). With `int idx = ...;`
 // first, idx stays in EAX and Items goes to ECX, one `MOV` short and with the
 // base/index roles of the `CMP byte ptr` swapped (32.0%).
-VeinholeMonsterClass* __fastcall VeinholeMonsterClass::GetVeinholeMonsterAt(CellStruct* pCell)
+VeinholeMonsterClass* VeinholeMonsterClass::GetVeinholeMonsterAt(CellStruct* pCell)
 {
     for (int i = VeinholeArray.Count - 1; i >= 0; --i)
     {
@@ -52,7 +52,7 @@ VeinholeMonsterClass* __fastcall VeinholeMonsterClass::GetVeinholeMonsterAt(Cell
 
 // FUNCTION: GAMEMD 0x74D450  (__fastcall)
 // Build the theater-specific filename "VEINHOLE.<ext>" and cache its SHP.
-void __fastcall VeinholeMonsterClass::LoadVeinholeArt(int idxTheatre)
+void VeinholeMonsterClass::LoadVeinholeArt(int idxTheatre)
 {
     char filename[32];
     sprintf(filename, "VEINHOLE.%s", TheaterArray[idxTheatre].Extension);

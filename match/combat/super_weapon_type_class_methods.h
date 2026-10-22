@@ -29,7 +29,7 @@ class SuperWeaponTypeClass : public AbstractTypeClass
 {
 public:
     // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
-    static SuperWeaponTypeClass* __fastcall FindFirstOfAction(int action);
+    static SuperWeaponTypeClass* FindFirstOfAction(int action);
 
     char _pad_98[0xBC - 0x98];   // +0x98  ArrayIndex..SidebarImage (P2)
     int  Action;                 // +0xBC

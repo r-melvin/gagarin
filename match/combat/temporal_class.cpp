@@ -112,9 +112,9 @@ inline TemporalCell TemporalCellOf(const TemporalCoord& where)
 }
 
 // FUNCTION: GAMEMD 0x65FA70 (decl; reloc) -- __fastcall (type in ECX, the cell by value).
-bool __fastcall FUN_0065FA70(int type, TemporalCell cell);
+bool FUN_0065FA70(int type, TemporalCell cell);
 // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- __fastcall (name, two ints).
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 
 // Coordinate difference, read through the two references.
 inline TemporalCoord operator-(const TemporalCoord& a, const TemporalCoord& b)

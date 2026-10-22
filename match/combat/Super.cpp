@@ -80,7 +80,7 @@ void SuperClass::SetReadiness(bool ready)
 }
 
 // FUNCTION: GAMEMD 0x006CC070
-void __fastcall FUN_006CC070()
+void FUN_006CC070()
 {
 }
 

@@ -41,7 +41,7 @@
 class ParticleTypeClass : public ParticleTypeObjectView
 {
 public:
-    static ParticleTypeClass* __fastcall FindOrAllocate(const char* id);
+    static ParticleTypeClass* FindOrAllocate(const char* id);
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     // FUNCTION: GAMEMD 0x644BE0 - the named constructor, also what the INI reader calls to allocate a
     // type it has not seen yet.

@@ -25,7 +25,7 @@ struct AudioHandle_00459470;
 struct AudioController_00459470;
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
-AudioHandle_00459470* __fastcall VocClass_PlayAt_00459470(
+AudioHandle_00459470* VocClass_PlayAt_00459470(
     int index, Coord_00459470* coords, AudioController_00459470* controller);
 
 // One 0x44-byte per-animation record in BuildingTypeClass; only the two name

@@ -27,7 +27,7 @@ class BulletTypeClass
 {
 public:
     // STATIC: GAMEMD 0x46C790  (__fastcall)
-    static BulletTypeClass* __fastcall FindOrAllocate(const char* id);
+    static BulletTypeClass* FindOrAllocate(const char* id);
     // FUNCTION: GAMEMD 0x46C840  (__thiscall)
     void SetScaledSpawnDelay(int delay);
 

@@ -14,7 +14,7 @@
 // requested one. The argument arrives in ECX (fastcall); the loop hoists Items
 // into EDI and walks a parallel pointer (EDX) for the `->Action` dereference,
 // returning the indexed `Items[i]` on a hit, null otherwise.
-SuperWeaponTypeClass* __fastcall SuperWeaponTypeClass::FindFirstOfAction(int action)
+SuperWeaponTypeClass* SuperWeaponTypeClass::FindFirstOfAction(int action)
 {
     for (int i = 0; i < SuperWeaponTypeClass_Array.Count; ++i)
     {

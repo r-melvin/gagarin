@@ -112,7 +112,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00471FF0, At_3D4) == 0x3D4);
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt(index, coords,
 // controller). __fastcall: index in ECX, the coordinate address in EDX.
-void* __fastcall VocClass_PlayAt_00471FF0(
+void* VocClass_PlayAt_00471FF0(
     int index, const Coord_00471FF0& coords, void* controller);
 
 // Shared control-node record: Unit +0, OriginalOwner +4.

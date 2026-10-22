@@ -34,7 +34,7 @@ struct Veterancy_0070E000
     char opaque[4];
 };
 // FUNCTION: GAMEMD 0x750010 (decl; reloc) — gauge is in the elite band.
-bool __fastcall FUN_00750010(Veterancy_0070E000* vet);
+bool FUN_00750010(Veterancy_0070E000* vet);
 
 // TechnoTypeClass — WeaponStages, the two stage tables, RateDown.
 struct TechnoType_0070E000

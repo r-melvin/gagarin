@@ -58,12 +58,12 @@ inline void ParticleVec3::Normalize()
 // ParticleEmptyText is declared by particle_type_shared.h.
 
 // FUNCTION: GAMEMD 0x524EC0 (decl; reloc) (read-only here) - `MOV EAX,ECX; RET`: the identity on a name pointer.
-const char* __fastcall ParticleNameOf(const char* name);
+const char* ParticleNameOf(const char* name);
 
 class ParticleWarheadView;
 // FUNCTION: GAMEMD 0x75E3B0 (decl; reloc) (read-only here) - finds (or creates) the warhead of that name.
 // __fastcall: the name in ECX.
-ParticleWarheadView* __fastcall ParticleFindWarhead(const char* name);
+ParticleWarheadView* ParticleFindWarhead(const char* name);
 
 // A screen position (x, y).
 struct ParticleScreenPoint
@@ -83,7 +83,7 @@ extern int ParticleDetailMode;
 extern bool ParticleSkipShroudTest;
 extern int ParticleShroudEnabled;
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) (read-only here) - a height scaled by a float constant, __fastcall (ECX).
-int __fastcall ParticleHeightScale(int value);
+int ParticleHeightScale(int value);
 
 // The light map object (global pointer 0x87E8A4; read-only here).
 struct ParticleLightMapView
@@ -126,9 +126,9 @@ extern ParticleSurfaceView* ParticleSurface;
 extern void* ParticleDrawContext;
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) (read-only here) - draws a shape; __fastcall (surface, context), 14 stack
 // dwords.
-void __fastcall ParticleDrawShape(ParticleSurfaceView* surface, void* context, void* object, int frame,
-                                  void* where, ParticleRect* clip, int flags, int a6, int zAdjust,
-                                  int a8, int a9, int a10, int a11, int a12, ParticleScreenPoint offset);
+void ParticleDrawShape(ParticleSurfaceView* surface, void* context, void* object, int frame,
+                       void* where, ParticleRect* clip, int flags, int a6, int zAdjust,
+                       int a8, int a9, int a10, int a11, int a12, ParticleScreenPoint offset);
 // GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 - the pixel format's colour shifts (red right/left, blue, green).
 extern int ParticleRedRight, ParticleRedLeft, ParticleBlueRight, ParticleBlueLeft, ParticleGreenRight, ParticleGreenLeft;
 
@@ -146,6 +146,6 @@ extern ParticleTacticalView* ParticleTactical;
 
 // FUNCTION: GAMEMD 0x75F230 (decl; reloc) (read-only here) - the 8-way facing (0..7) of the line from one screen
 // point to another. __fastcall: the two points in ECX and EDX.
-int __fastcall ParticleFacingBetween(ParticleScreenPoint* from, ParticleScreenPoint* to);
+int ParticleFacingBetween(ParticleScreenPoint* from, ParticleScreenPoint* to);
 
 #endif  // GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H

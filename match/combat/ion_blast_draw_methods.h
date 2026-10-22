@@ -53,7 +53,7 @@ extern Surface* DSurface_Temp;
 
 // FUNCTION: GAMEMD 0x53D8E0 (decl; reloc) — the n-th point of a square spiral
 // walked outward from the origin, returned by value (hidden pointer in ECX).
-Point2D __fastcall FUN_0053D8E0(int index);
+Point2D FUN_0053D8E0(int index);
 
 // Number of spiral points held by the offset table: 289 = 17 x 17.
 #define ION_BLAST_OFFSET_COUNT 289
@@ -71,7 +71,7 @@ struct IonBlastClass
     void Draw();
 
     // FUNCTION: GAMEMD 0x53D850
-    static void __fastcall DrawAll();
+    static void DrawAll();
 };
 
 // GLOBAL: GAMEMD 0xAA0118 — IonBlastClass::Array (Items 0xAA011C, Count 0xAA0128).

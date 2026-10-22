@@ -76,7 +76,7 @@ struct RadBeam
     RadBeam(int type) throw();
 
     // FUNCTION: GAMEMD 0x659110
-    static RadBeam* __fastcall Allocate(int type);
+    static RadBeam* Allocate(int type);
 };
 GG_STATIC_ASSERT(offsetof(RadBeam, At_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(RadBeam) == 0xC8);

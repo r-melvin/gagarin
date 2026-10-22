@@ -35,7 +35,7 @@ typedef long (__stdcall* LocoSlot0_0070FC90)(ILocomotion*);
     ((*(LocoSlot0_0070FC90*)(*(char**)(p) + (slot)))(p))
 
 void __stdcall FUN_007DC720(unsigned int hr);
-int __fastcall VocClass_PlayAt(int index, CoordStruct* coords, int volume);
+int VocClass_PlayAt(int index, CoordStruct* coords, int volume);
 
 struct DeactVtbl;
 struct TechnoDeactivate;

@@ -21,7 +21,7 @@ int __cdecl gg_strcmpi(const char* a, const char* b);
 // Find the bullet type named `id` in the global Array (case-insensitive); if it
 // is not present, allocate and construct a fresh one. The reserved names
 // "<none>" and "none" are rejected (return null).
-BulletTypeClass* __fastcall BulletTypeClass::FindOrAllocate(const char* id)
+BulletTypeClass* BulletTypeClass::FindOrAllocate(const char* id)
 {
     // Single shared `return 0` tail (one `xor eax,eax` epilogue, reached by JZ
     // from both reserved-name rejects and the alloc-failure path) — the retail

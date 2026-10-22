@@ -55,7 +55,7 @@ class ParticleSystemTypeClass : public ParticleTypeObjectView
 public:
     // FUNCTION: GAMEMD 0x6440A0
     ParticleSystemTypeClass(const char* id);
-    static ParticleSystemTypeClass* __fastcall FindOrAllocate(const char* id);
+    static ParticleSystemTypeClass* FindOrAllocate(const char* id);
     // No-init constructor (Load re-runs it through placement new): only the base
     // no-init constructor (0x5F7320) and the four vptrs.
     ParticleSystemTypeClass(const ParticleNoInit& noInit) : ParticleTypeObjectView(noInit) {}

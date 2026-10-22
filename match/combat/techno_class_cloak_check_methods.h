@@ -26,9 +26,9 @@
 // VeterancyStruct in ECX (a single-pointer __fastcall has the same call
 // shape as a 0-arg __thiscall).
 // FUNCTION: GAMEMD 0x74FF90 (decl; reloc) — gauge is in the veteran band.
-bool __fastcall FUN_0074FF90(VeterancyStruct* vet);
+bool FUN_0074FF90(VeterancyStruct* vet);
 // FUNCTION: GAMEMD 0x750010 (decl; reloc) — gauge is in the elite band.
-bool __fastcall FUN_00750010(VeterancyStruct* vet);
+bool FUN_00750010(VeterancyStruct* vet);
 
 // CellStruct — the user-declared constructor selects the hidden-pointer
 // return convention for the inline coordinate-to-cell helper.

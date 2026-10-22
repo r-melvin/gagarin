@@ -37,7 +37,7 @@ struct TechnoType_006F3970
 GG_STATIC_ASSERT(offsetof(TechnoType_006F3970, IsGattling) == 0xCD5);
 
 // FUNCTION: GAMEMD 0x717880 (decl; reloc) — does this type fire in bursts.
-bool __fastcall FUN_00717880(TechnoType_006F3970* type);
+bool FUN_00717880(TechnoType_006F3970* type);
 
 struct Vtbl_006F3970;
 

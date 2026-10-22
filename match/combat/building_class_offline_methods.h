@@ -58,7 +58,7 @@ GG_STATIC_ASSERT(offsetof(Type_00452360, Powered) == 0x1573);
 struct VoxClass_00452360
 {
     // FUNCTION: GAMEMD 0x752700 (decl; reloc) — VoxClass::Play.
-    static void __fastcall Play(const char* name, int a, int b);
+    static void Play(const char* name, int a, int b);
 };
 
 // STRING: GAMEMD 0x819108 — "EVA_BuildingOffLine".

@@ -155,19 +155,19 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00458200, GetMapCoords)     == 0x1B8 &&
                  offsetof(Vtbl_00458200, GetOccupantCount) == 0x408);
 
 // FUNCTION: GAMEMD 0x6A46D0 (decl; reloc) — the side lookup by name.
-int __fastcall FindSideIndex_00458200(const char* name);
+int FindSideIndex_00458200(const char* name);
 
 struct VoxClass_00458200
 {
     // FUNCTION: GAMEMD 0x752700 (decl; reloc) — VoxClass::Play.
-    static void __fastcall Play(const char* name, int a, int b);
+    static void Play(const char* name, int a, int b);
 };
 
 struct RadarEventClass_00458200
 {
     // FUNCTION: GAMEMD 0x65FA70 (decl; reloc) — RadarEventClass::Create
     // (the cell goes on the stack; only the type reaches ECX).
-    static bool __fastcall Create(int type, CellStruct_00458200 mapCoords);
+    static bool Create(int type, CellStruct_00458200 mapCoords);
 };
 
 // STRING: GAMEMD 0x818164 — "Civilian".

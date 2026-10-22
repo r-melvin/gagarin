@@ -11,7 +11,7 @@
 // the temp surface's pitch changed since last time: entry i is the pixel
 // offset X + Y * pitch of the i-th square-spiral point, entry 0 the origin.
 // Then the array is swept from the back, each blast drawing itself.
-void __fastcall IonBlastClass::DrawAll()
+void IonBlastClass::DrawAll()
 {
     if ((DSurface_Temp->*DSurface_Temp->Vtbl->GetPitch)() != IonBlastOffsetsPitch) {
         int pitch = (DSurface_Temp->*DSurface_Temp->Vtbl->GetPitch)();

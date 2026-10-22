@@ -50,7 +50,7 @@ void __stdcall FUN_007DC720(unsigned int hr);
 // VocClass::PlayAt — static, __fastcall: ECX = sound index, EDX = coordinate,
 // third argument (0 here) pushed.
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc)
-int __fastcall VocClass_PlayAt(int index, CoordStruct* coords, int volume);
+int VocClass_PlayAt(int index, CoordStruct* coords, int volume);
 
 // Declaration order matters — see match/_rt/gg_vslot.h: the class must be
 // complete before the member-function-pointer types.

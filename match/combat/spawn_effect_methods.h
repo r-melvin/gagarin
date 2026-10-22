@@ -40,15 +40,15 @@ extern Queue_004251F0 DAT_00885780;
 extern "C" void FUN_0048D080();
 
 // FUNCTION: GAMEMD 0x489280
-void __fastcall FUN_00489280(Coord_004251F0* where, int a, int b, int c,
-                             int d, int e);
+void FUN_00489280(Coord_004251F0* where, int a, int b, int c,
+                  int d, int e);
 // FUNCTION: GAMEMD 0x4A3C30
-void __fastcall FUN_004A3C30(Queue_004251F0* queue, int slot, void (*fn)());
+void FUN_004A3C30(Queue_004251F0* queue, int slot, void (*fn)());
 
 // FUNCTION: GAMEMD 0x4251F0
 //
 // The first parameter is never read — retail overwrites ECX with the address of
 // its own local before the call — so it keeps a placeholder name.
-void __fastcall FUN_004251F0(int unused, const short* cell);
+void FUN_004251F0(int unused, const short* cell);
 
 #endif  // GG_MATCH_COMBAT_SPAWN_EFFECT_METHODS_H

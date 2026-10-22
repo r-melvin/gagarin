@@ -10,7 +10,7 @@
 // seed its +0x18 value from the type: 10 for type 1, 20 for anything else.
 // The list's answer is discarded, and the +0x18 store is made whether or not
 // the allocation succeeded (retail dereferences the result unconditionally).
-RadBeam* __fastcall RadBeam::Allocate(int type)
+RadBeam* RadBeam::Allocate(int type)
 {
     RadBeam* beam = new RadBeam(type);
 

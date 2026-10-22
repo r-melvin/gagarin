@@ -13,7 +13,7 @@
 #include "particle_type_class.h"
 
 // FUNCTION: GAMEMD 0x644890
-ParticleSystemTypeClass* __fastcall ParticleSystemTypeClass::FindOrAllocate(const char* id)
+ParticleSystemTypeClass* ParticleSystemTypeClass::FindOrAllocate(const char* id)
 {
     if (_stricmp("<none>", id) == 0)
         return 0;
@@ -29,7 +29,7 @@ ParticleSystemTypeClass* __fastcall ParticleSystemTypeClass::FindOrAllocate(cons
 }
 
 // FUNCTION: GAMEMD 0x645820
-ParticleTypeClass* __fastcall ParticleTypeClass::FindOrAllocate(const char* id)
+ParticleTypeClass* ParticleTypeClass::FindOrAllocate(const char* id)
 {
     if (_stricmp("<none>", id) == 0)
         return 0;

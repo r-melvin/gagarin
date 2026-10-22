@@ -70,7 +70,7 @@ GG_STATIC_ASSERT(offsetof(BuildingType_0043E7B0, At_EB8) == 0xEB8);
 
 // FUNCTION: GAMEMD 0x4CA160 (decl; reloc) — the object a factory is
 // currently building, __fastcall.
-Object_0043E7B0* __fastcall FUN_004CA160(Object_0043E7B0* factory);
+Object_0043E7B0* FUN_004CA160(Object_0043E7B0* factory);
 
 struct TypeVtbl_0043E7B0;
 
@@ -110,10 +110,10 @@ extern Rect_0043E7B0* DAT_0087F6C4;
 
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) — draw a UI string, __fastcall:
 // the surface in ECX, the rectangle in EDX and fourteen stack arguments.
-void __fastcall FUN_004AED70(Surface_0043E7B0* surface, Rect_0043E7B0* rect,
-                             const wchar_t* text, int a3, Point_0043E7B0* pos,
-                             unsigned int flags, int a6, int a7, int a8, int a9,
-                             int a10, int a11, int a12, int a13, Point_0043E7B0 offset);
+void FUN_004AED70(Surface_0043E7B0* surface, Rect_0043E7B0* rect,
+                  const wchar_t* text, int a3, Point_0043E7B0* pos,
+                  unsigned int flags, int a6, int a7, int a8, int a9,
+                  int a10, int a11, int a12, int a13, Point_0043E7B0 offset);
 
 struct Vtbl_0043E7B0;
 

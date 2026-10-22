@@ -31,7 +31,7 @@ extern HouseClass* CurrentPlayer;
 
 struct ScenarioClass
 {
-    static void __fastcall UpdateLighting();   // GAMEMD 0x53C280 (declared; reloc)
+    static void UpdateLighting();   // GAMEMD 0x53C280 (declared; reloc)
 };
 
 struct LightningStorm

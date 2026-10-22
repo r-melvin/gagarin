@@ -22,10 +22,10 @@ extern ParticleDynVector<ParticleTypeClass*> ParticleTypeArray;
 extern const char ParticleEmptyText[];
 
 // FUNCTION: GAMEMD 0x524EC0 (decl; reloc) - identity call view for name pointers.
-const char* __fastcall ParticleNameOf(const char* name);
+const char* ParticleNameOf(const char* name);
 
 class ParticleWarheadView;
 // FUNCTION: GAMEMD 0x75E3B0 (decl; reloc) - lookup by the supplied name.
-ParticleWarheadView* __fastcall ParticleFindWarhead(const char* name);
+ParticleWarheadView* ParticleFindWarhead(const char* name);
 
 #endif

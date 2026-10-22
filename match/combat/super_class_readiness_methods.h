@@ -34,7 +34,7 @@ extern const char DAT_008424FC[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) — resolve a label to its localised
 // text. __fastcall with two further arguments on the stack.
-gg_wchar* __fastcall FUN_00734E60(const char* label, int flags,
+gg_wchar* FUN_00734E60(const char* label, int flags,
                                  const char* file, int line);
 
 // SuperWeaponTypeClass — only UseChargeDrain @0xE5 is read here.

@@ -125,7 +125,7 @@ extern ParticleSwizzleView ParticleSwizzle;
 // FUNCTION: GAMEMD 0x7258D0 (read-only here) - announces that a pointer is going away. __fastcall:
 // the object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone) to tell
 // each holder to drop its pointer.
-void __fastcall ParticleAnnouncePointerExpired(void* object, bool removed);
+void ParticleAnnouncePointerExpired(void* object, bool removed);
 
 // HouseClass (partial): only the field ParticleSystemClass reads.
 struct ParticleHouseView

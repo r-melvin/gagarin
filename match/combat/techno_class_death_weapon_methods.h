@@ -142,7 +142,7 @@ GG_STATIC_ASSERT(offsetof(BulletVtbl_0070D690, At_D4)   == 0xD4);
 // FUNCTION: GAMEMD 0x46B050 (decl; reloc) — create a bullet of the projectile
 // type: __fastcall with the projectile in ECX and the owner in EDX, then
 // target, damage, warhead, speed and the bright flag on the stack.
-Bullet_0070D690* __fastcall FUN_0046B050(BulletType_0070D690* projectile,
+Bullet_0070D690* FUN_0046B050(BulletType_0070D690* projectile,
                                           TechnoClass* owner,
                                           TechnoClass* target,
                                           int damage,

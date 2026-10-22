@@ -59,7 +59,7 @@ class WeaponTypeClass : public AbstractTypeClass
 {
 public:
     // STATIC: GAMEMD 0x772FA0  (__fastcall)
-    static WeaponTypeClass* __fastcall FindOrAllocate(const char* id);
+    static WeaponTypeClass* FindOrAllocate(const char* id);
     // FUNCTION: GAMEMD 0x7729F0  (__thiscall)
     void CalculateSpeed();
     // FUNCTION: GAMEMD 0x772A90  (__thiscall)
@@ -131,6 +131,6 @@ GG_STATIC_ASSERT(offsetof(RulesData, Field16B8) == 0x16B8);
 
 extern RulesData* GameRulesPtr;                                  // GLOBAL 0x8871E0
 double           Func_0048ACF0();                                // GAMEMD 0x48ACF0
-__int64 __fastcall Func_0048AB90(int range, double value);       // GAMEMD 0x48AB90
+__int64 Func_0048AB90(int range, double value);       // GAMEMD 0x48AB90
 
 #endif  // GG_MATCH_COMBAT_WEAPON_TYPE_CLASS_H

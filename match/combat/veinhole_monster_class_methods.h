@@ -61,20 +61,20 @@ extern void* VeinSHPData;
 
 // CellStruct -> linear cell index (GAMEMD 0x0042B1C0, __fastcall); used to
 // probe a monster's per-cell affection map.
-int __fastcall CellStructToIndex(CellStruct* pCell);
+int CellStructToIndex(CellStruct* pCell);
 
 // SHP loader (GAMEMD 0x005B40B0, __fastcall(name, fileType)) returning the
 // cached SHPStruct*.
-void* __fastcall LoadVeinholeSHP(const char* name, char fileType);
+void* LoadVeinholeSHP(const char* name, char fileType);
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 class VeinholeMonsterClass
 {
 public:
-    static VeinholeMonsterClass* __fastcall GetVeinholeMonsterFrom(CellStruct* pCell);
-    static VeinholeMonsterClass* __fastcall GetVeinholeMonsterAt(CellStruct* pCell);
-    static void __fastcall LoadVeinholeArt(int idxTheatre);
+    static VeinholeMonsterClass* GetVeinholeMonsterFrom(CellStruct* pCell);
+    static VeinholeMonsterClass* GetVeinholeMonsterAt(CellStruct* pCell);
+    static void LoadVeinholeArt(int idxTheatre);
 
     // Only the two members the lookups touch are modelled (full layout is P2):
     //   SpreadData (CellIndexesWithVeins) bool* @0xC4, Position CellStruct @0xF8.
