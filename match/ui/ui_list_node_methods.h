@@ -2,8 +2,10 @@
 // Provenance: own-binary-via-Ghidra
 // Entry-origin retail bodies at 0x5B3F50..0x5B4793 confirm the layouts,
 // call conventions and operations below. RTTI names GenericNode at 0x7E1B0C,
-// GenericList at 0x7E1B04, MixFileClass at 0x7EDF50 (TD0x82C320), and
-// BlowStraw at 0x7EDF40 (TD0x82C340). SortedTreeNode is a descriptive name.
+// GenericList at 0x7E1B04 and MixFileClass at 0x7EDF50 (TD0x82C320).
+// SortedTreeNode is a descriptive name. BlowStraw's deleting destructor
+// 0x5B45C0, which sits in this address run, is emitted from its class in
+// match/platform/pk_blow_pipes.h.
 // Intrusive-node fields now use the shared layout; the original source-file
 // grouping is not established by these functions.
 #ifndef GG_MATCH_UI_UI_LIST_NODE_METHODS_H
@@ -12,7 +14,6 @@
 #include <stddef.h>
 #include "../_layout/generic_list.h"
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/straw.h"
 
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
 extern "C" void __cdecl gg_free(void* block);
@@ -22,18 +23,6 @@ extern "C" void __cdecl FUN_007C93E8(void* block);
 
 // VTABLE: GAMEMD 0x7EDF50 — MixFileClass.
 extern char VT_007EDF50;
-// VTABLE: GAMEMD 0x7EDF40 — BlowStraw (the same constant the pipe/straw
-// family seats at 0x633370).
-extern char VT_007EDF40;
-
-// FUNCTION: GAMEMD 0x437FC0 (decl; reloc) — the payload's non-virtual,
-// out-of-line destructor.
-struct NodePayload
-{
-    int Opaque;
-    ~NodePayload();
-};
-
 // ---------------------------------------------------------------------------
 // The sorted binary tree (0x5B3FF0, 0x5B4080).
 //
@@ -62,30 +51,6 @@ GG_STATIC_ASSERT(sizeof(SortedTreeNode) == 0x0C);
 
 // ---------------------------------------------------------------------------
 // GenericNode and its primitives use the shared binary-confirmed layout.
-
-// The BlowStraw sub-object destroyed at 0x5B45C0: vtable 0x7EDF40, an owned
-// payload at +0x0C (`MOV EDI,[ESI + 0xC]`, deleted and then cleared) and the
-// shared base destructor at 0x6C9850.
-struct BlowStraw
-{
-    char*        Vptr;        // +0x00
-    int          unknown_04;  // +0x04
-    int          unknown_08;  // +0x08
-    NodePayload* Payload;     // +0x0C
-
-    void DestructInPlace()
-    {
-        Vptr = &VT_007EDF40;
-        delete Payload;
-        Payload = 0;
-        ((Straw*)this)->Straw::~Straw();
-    }
-
-    // FUNCTION: GAMEMD 0x5B45C0
-    BlowStraw* ScalarDeletingDtor(char flags);
-};
-GG_STATIC_ASSERT(offsetof(BlowStraw, Payload) == 0x0C);
-GG_STATIC_ASSERT(sizeof(BlowStraw) == 0x10);
 
 // ---------------------------------------------------------------------------
 // The MixFileClass destroyed at 0x5B3F50 and 0x5B4630: a GenericNode with four

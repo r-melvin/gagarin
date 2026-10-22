@@ -1955,29 +1955,29 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/observable_node_dtor_methods.cpp",
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x632F90",
-  "sym": "?ScalarDeletingDtor@BlowPipe@@QAEPAU1@D@Z",
+  "sym": "??_GBlowPipe@@UAEPAXI@Z",
   "len": "0x46",
-  "name": "BlowPipe::ScalarDeletingDtor",
+  "name": "BlowPipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/observable_node_dtor_methods.cpp",
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x632FF0",
-  "sym": "?ScalarDeletingDtor@Obj_00632FF0@@QAEPAU1@D@Z",
+  "sym": "??_GPKPipe@@UAEPAXI@Z",
   "len": "0x52",
-  "name": "Obj_00632FF0::ScalarDeletingDtor",
+  "name": "PKPipe scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/combat/observable_node_dtor_methods.cpp",
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x633370",
-  "sym": "?ScalarDeletingDtor@Obj_00633370@@QAEPAU1@D@Z",
+  "sym": "??_GPKStraw@@UAEPAXI@Z",
   "len": "0x52",
-  "name": "Obj_00633370::ScalarDeletingDtor",
+  "name": "PKStraw scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -30031,11 +30031,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/ui_list_node_methods.cpp",
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
   "addr": "0x5B45C0",
-  "sym": "?ScalarDeletingDtor@BlowStraw@@QAEPAU1@D@Z",
+  "sym": "??_GBlowStraw@@UAEPAXI@Z",
   "len": "0x46",
-  "name": "BlowStraw::ScalarDeletingDtor",
+  "name": "BlowStraw scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -50489,5 +50489,437 @@
   "name": "HouseTypeClass::Release (adjustor thunk)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/bench_timer_methods.cpp",
+  "addr": "0x431920",
+  "sym": "?Reset@BenchTimer@@QAEXXZ",
+  "len": "0xc",
+  "name": "BenchTimer::Reset",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/bench_timer_methods.cpp",
+  "addr": "0x431A10",
+  "sym": "?Average@BenchTimer@@QAEIXZ",
+  "len": "0x15",
+  "name": "BenchTimer::Average",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/blow_pipe_put_methods.cpp",
+  "addr": "0x4380A0",
+  "sym": "?FUN_00631D10@BlowPipe@@UAEHHH@Z",
+  "len": "0x123",
+  "name": "BlowPipe::FUN_00631D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "addr": "0x4A2030",
+  "sym": "?FUN_00631D10@HashPipe_004A2030@@UAEHHH@Z",
+  "len": "0x26",
+  "name": "HashPipe_004A2030::FUN_00631D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "addr": "0x4A20B0",
+  "sym": "?FUN_006C98E0@HashStraw_004A20B0@@UAEHHH@Z",
+  "len": "0x38",
+  "name": "HashStraw_004A20B0::FUN_006C98E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "addr": "0x4A2780",
+  "sym": "?FUN_006C98E0@CacheStraw@@UAEHHH@Z",
+  "len": "0x93",
+  "name": "CacheStraw::FUN_006C98E0",
+  "status": "partial",
+  "pct": 93.7
+ },
+ {
+  "tu": "match/renderer/ddraw_query_methods.cpp",
+  "addr": "0x4A45C0",
+  "sym": "?Get_Free_Video_Memory@@YIKXZ",
+  "len": "0x56",
+  "name": "Get_Free_Video_Memory",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/ddraw_query_methods.cpp",
+  "addr": "0x4A4830",
+  "sym": "?FUN_004A4830@@YIXXZ",
+  "len": "0x19",
+  "name": "FUN_004A4830",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/winmm_timer_methods.cpp",
+  "addr": "0x4E2460",
+  "sym": "?Elapsed@ElapsedTimer@@QBEKXZ",
+  "len": "0x17",
+  "name": "ElapsedTimer::Elapsed",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/hsv_colour_methods.cpp",
+  "addr": "0x517360",
+  "sym": "?Adjust@HSVColour@@QAEXEABV1@@Z",
+  "len": "0x86",
+  "name": "HSVColour::Adjust",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/hsv_colour_methods.cpp",
+  "addr": "0x5173F0",
+  "sym": "?Difference@HSVColour@@QBEHABV1@@Z",
+  "len": "0x4e",
+  "name": "HSVColour::Difference",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/compression_straw_ctors.cpp",
+  "addr": "0x5523E0",
+  "sym": "??0LCWStraw@@QAE@W4CompControl@0@H@Z",
+  "len": "0x67",
+  "name": "LCWStraw::LCWStraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/lcw_uncompress.cpp",
+  "addr": "0x552640",
+  "sym": "?LCW_Uncompress@@YAHPBXPAX@Z",
+  "len": "0x1e2",
+  "name": "LCW_Uncompress",
+  "status": "partial",
+  "pct": 25.0
+ },
+ {
+  "tu": "match/platform/compression_straw_ctors.cpp",
+  "addr": "0x55C2B0",
+  "sym": "??0LZOPipe@@QAE@W4CompControl@0@H@Z",
+  "len": "0x57",
+  "name": "LZOPipe::LZOPipe",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/compression_straw_ctors.cpp",
+  "addr": "0x55C720",
+  "sym": "??0LZOStraw@@QAE@W4CompControl@0@H@Z",
+  "len": "0x5b",
+  "name": "LZOStraw::LZOStraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/zero_init_ctor_methods.cpp",
+  "addr": "0x5A9BF0",
+  "sym": "??0PairHolder_005A9BF0@@QAE@XZ",
+  "len": "0x10",
+  "name": "PairHolder_005A9BF0::PairHolder_005A9BF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/int_compare_methods.cpp",
+  "addr": "0x5B3C00",
+  "sym": "?FUN_005B3C00@@YAHPBX0@Z",
+  "len": "0x1e",
+  "name": "FUN_005B3C00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/message_log_printf_methods.cpp",
+  "addr": "0x5BD1F0",
+  "sym": "?Printf@MessageLog_005BD0D0@@QAAXPBDZZ",
+  "len": "0x4c",
+  "name": "MessageLog_005BD0D0::Printf",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/winmm_timer_methods.cpp",
+  "addr": "0x5D5870",
+  "sym": "??0TimerResolution@@QAE@XZ",
+  "len": "0xf",
+  "name": "TimerResolution::TimerResolution",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x632CB0",
+  "sym": "??0PKPipe@@QAE@W4PipeDirection@0@PAVStraw@@@Z",
+  "len": "0x53",
+  "name": "PKPipe::PKPipe",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x632F30",
+  "sym": "?FUN_00632F30@PKPipe@@QBEHXZ",
+  "len": "0x28",
+  "name": "PKPipe::FUN_00632F30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x632F60",
+  "sym": "?FUN_00632F60@PKPipe@@QBEHXZ",
+  "len": "0x27",
+  "name": "PKPipe::FUN_00632F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x632FE0",
+  "sym": "?FUN_00632FE0@PKPipe@@UAEXPAVPipe@@@Z",
+  "len": "0xd",
+  "name": "PKPipe::FUN_00632FE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x633050",
+  "sym": "??0PKStraw@@QAE@W4PipeDirection@0@PAVStraw@@@Z",
+  "len": "0x62",
+  "name": "PKStraw::PKStraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x633110",
+  "sym": "?FUN_00633110@PKStraw@@QAEXPAVPKKeyView@@@Z",
+  "len": "0x20",
+  "name": "PKStraw::FUN_00633110",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x633300",
+  "sym": "?FUN_00633300@PKStraw@@QBEHXZ",
+  "len": "0x28",
+  "name": "PKStraw::FUN_00633300",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x633330",
+  "sym": "?FUN_00633330@PKStraw@@QBEHXZ",
+  "len": "0x27",
+  "name": "PKStraw::FUN_00633330",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/pk_pipe_straw_methods.cpp",
+  "addr": "0x633360",
+  "sym": "?FUN_00633360@PKStraw@@UAEXPAVStraw@@@Z",
+  "len": "0xd",
+  "name": "PKStraw::FUN_00633360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/lcg_random_methods.cpp",
+  "addr": "0x65C640",
+  "sym": "??RLCGRandom@@QAEHXZ",
+  "len": "0x18",
+  "name": "LCGRandom::operator()",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/hash_table_ctor_methods.cpp",
+  "addr": "0x6B9450",
+  "sym": "??0StringHashTable_00AC4848@@QAE@XZ",
+  "len": "0x89",
+  "name": "StringHashTable_00AC4848::StringHashTable_00AC4848",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/audio_stream_forward_methods.cpp",
+  "addr": "0x752CA0",
+  "sym": "?FUN_00752CA0@@YIXXZ",
+  "len": "0x10",
+  "name": "FUN_00752CA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/audio/audio_stream_forward_methods.cpp",
+  "addr": "0x753500",
+  "sym": "?FUN_00753500@@YIXXZ",
+  "len": "0x10",
+  "name": "FUN_00753500",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/zero_init_ctor_methods.cpp",
+  "addr": "0x7636F0",
+  "sym": "??0Triple_007636F0@@QAE@XZ",
+  "len": "0xd",
+  "name": "Triple_007636F0::Triple_007636F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/zero_init_ctor_methods.cpp",
+  "addr": "0x769480",
+  "sym": "??0Triple_00769480@@QAE@XZ",
+  "len": "0xd",
+  "name": "Triple_00769480::Triple_00769480",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/winmodem_status_methods.cpp",
+  "addr": "0x7748B0",
+  "sym": "?Get_Modem_Status@WinModemClass@@UAEHXZ",
+  "len": "0x41",
+  "name": "WinModemClass::Get_Modem_Status",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/winmodem_status_methods.cpp",
+  "addr": "0x7754A0",
+  "sym": "?Set_Value_64@WinModemClass@@UAEXH@Z",
+  "len": "0xa",
+  "name": "WinModemClass::Set_Value_64",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/winmodem_status_methods.cpp",
+  "addr": "0x7754B0",
+  "sym": "?Set_Value_68@WinModemClass@@UAEXH@Z",
+  "len": "0xa",
+  "name": "WinModemClass::Set_Value_68",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B4690",
+  "sym": "??0StringClass@@QAE@ABV0@@Z",
+  "len": "0x52",
+  "name": "StringClass::StringClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B4780",
+  "sym": "??8StringClass@@QBE_NABV0@@Z",
+  "len": "0x66",
+  "name": "StringClass::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B4860",
+  "sym": "??9StringClass@@QBE_NABV0@@Z",
+  "len": "0x66",
+  "name": "StringClass::operator!=",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B50F0",
+  "sym": "?FUN_007B50F0@StringClass@@QAE_ND@Z",
+  "len": "0xb7",
+  "name": "StringClass::FUN_007B50F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B51B0",
+  "sym": "?FUN_007B51B0@StringClass@@QAEXXZ",
+  "len": "0x15",
+  "name": "StringClass::FUN_007B51B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B53B0",
+  "sym": "?Copy_Padded@StringClass@@QBEXPADI@Z",
+  "len": "0x50",
+  "name": "StringClass::Copy_Padded",
+  "status": "partial",
+  "pct": 88.9
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B54B0",
+  "sym": "?Length@StringClass@@QBEHXZ",
+  "len": "0x19",
+  "name": "StringClass::Length",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B5AB0",
+  "sym": "?FUN_007B5AB0@StringClass@@QAE_NDI@Z",
+  "len": "0x29",
+  "name": "StringClass::FUN_007B5AB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/wide_string_class.cpp",
+  "addr": "0x7B6EC0",
+  "sym": "?FUN_007B6EC0@WideStringClass@@QAEXXZ",
+  "len": "0x15",
+  "name": "WideStringClass::FUN_007B6EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/buffer_pipe_straw_methods.cpp",
+  "addr": "0x7BA3C0",
+  "sym": "?FUN_00631D10@BufferPipe@@UAEHHH@Z",
+  "len": "0x58",
+  "name": "BufferPipe::FUN_00631D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/buffer_pipe_straw_methods.cpp",
+  "addr": "0x7BA4D0",
+  "sym": "?FUN_006C98E0@BufferStraw@@UAEHHH@Z",
+  "len": "0x58",
+  "name": "BufferStraw::FUN_006C98E0",
+  "status": "matched",
+  "pct": 100
  }
 ]

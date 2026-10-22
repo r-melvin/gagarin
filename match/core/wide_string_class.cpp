@@ -124,6 +124,15 @@ short WideStringClass::Erase(int pos, int count)
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x7B6EC0
+//
+// Strip spaces and then tabs through the single-character remover 0x7B6E20.
+void WideStringClass::FUN_007B6EC0()
+{
+    FUN_007B6E20(' ');
+    FUN_007B6E20('\t');
+}
+
 // FUNCTION: GAMEMD 0x7B7060
 //
 // Discard the contents and reserve a zeroed block of `count` wide characters.

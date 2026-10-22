@@ -33,6 +33,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "win_modem_class.h"
 
 // The connection's packet queue. Only the queue reset at 0x48B390 is reached
 // from this translation unit, as a direct (non-virtual) call.
@@ -106,24 +107,7 @@ GG_STATIC_ASSERT(offsetof(SerialSettings_005F19E0, Port) == 0x0 &&
                  offsetof(SerialSettings_005F19E0, Baud) == 0x8 &&
                  offsetof(SerialSettings_005F19E0, ModemName) == 0x30);
 
-// The Win32 serial-port wrapper the port detector and the shutdown path share
-// through the global at 0xB72D20. Slot 0 is its deleting destructor; the port
-// close is a direct call.
-struct WinModemClass
-{
-    virtual ~WinModemClass();   // slot 0
-    // VTABLE slot 1 — open the named device; -1 is the invalid handle.
-    virtual int vf_1(char* device, int baud, int parity,
-                               int a4, int a5);
-
-    char unknown_04[0x2084];    // +0x0004 — `PUSH 0x2088` in 0x5F19E0.
-
-    // FUNCTION: GAMEMD 0x774120 (decl; reloc) — the constructor.
-    WinModemClass() throw();
-    // FUNCTION: GAMEMD 0x774950 (decl; reloc) — WinModemClass::FUN_00774950.
-    void FUN_00774950();
-};
-GG_STATIC_ASSERT(sizeof(WinModemClass) == 0x2088);
+// WinModemClass (the serial-port wrapper) lives in win_modem_class.h.
 
 // GLOBAL: GAMEMD 0xB72D20 — the one shared WinModemClass instance.
 extern WinModemClass* WinModem_00B72D20;

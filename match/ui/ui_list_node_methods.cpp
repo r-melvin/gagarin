@@ -73,20 +73,6 @@ void GenericNode::ListNodeUnlink()
     }
 }
 
-// FUNCTION: GAMEMD 0x5B45C0
-//
-// The BlowStraw sub-object's scalar deleting destructor: reseat the vtable,
-// delete and clear the payload, run the shared base destructor, and free the
-// object itself only when bit 0 of the flags byte is set.
-BlowStraw* BlowStraw::ScalarDeletingDtor(char flags)
-{
-    DestructInPlace();
-    if (flags & 1) {
-        gg_free(this);
-    }
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x5B4630
 //
 // The MixFileClass scalar deleting destructor: the same body as Destruct

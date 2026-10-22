@@ -63,35 +63,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// Westwood's heap-owning narrow string: one `char*`. Its operations are
-// declared as named members rather than as constructors, destructors and
-// operators so that the translation unit registers no unwind frame under the
-// `/GX` the tree used when this was written, and so the calls come out in
-// retail's own order.
-class StringClass
-{
-public:
-    char* Str;   // +0x00
-
-    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc) — the empty construction.
-    void Init();
-    // FUNCTION: GAMEMD 0x7B5340 (decl; reloc) — drop whatever is held and go
-    // back to empty, called on the container's name string at 0x5CEE43.
-    void Reset();
-    // FUNCTION: GAMEMD 0x7B4690 (decl; reloc) — copy-construct from another.
-    void CopyFrom(const StringClass* other);
-    // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) — release the copy.
-    void Destruct();
-    // FUNCTION: GAMEMD 0x7B4780 (decl; reloc) — compare two strings.
-    bool Equals(const StringClass* other);
-    // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) — indexed character.
-    char At(int index);
-    // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc) — lower-case in place.
-    void MakeLower();
-};
-GG_STATIC_ASSERT(sizeof(StringClass) == 4
-              && offsetof(StringClass, Str) == 0x00);
+#include "../core/string_class.h"
 
 // One stage of the campaign map. Only its two leading strings are reached from
 // this run: the key the name lookup compares at +0x00 and the title the second

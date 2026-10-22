@@ -106,15 +106,13 @@ MapStage* MapStageList::FindByName(StringClass* key)
 {
     if (key->At(0) != 0) {
         for (int i = 0; i < Stages.Count; ++i) {
-            StringClass wanted;
-            wanted.CopyFrom(key);
+            StringClass wanted(*key);
             wanted.MakeLower();
 
-            StringClass candidate;
-            candidate.CopyFrom(&Stages.Vector[i]->Name);
+            StringClass candidate(Stages.Vector[i]->Name);
             candidate.MakeLower();
 
-            if (wanted.Equals(&candidate)) {
+            if (wanted == candidate) {
                 MapStage* hit = Stages.Vector[i];
                 candidate.Destruct();
                 wanted.Destruct();
@@ -136,15 +134,13 @@ MapStage* MapStageList::FindByTitle(StringClass* key)
 {
     if (key->At(0) != 0) {
         for (int i = 0; i < Stages.Count; ++i) {
-            StringClass wanted;
-            wanted.CopyFrom(key);
+            StringClass wanted(*key);
             wanted.MakeLower();
 
-            StringClass candidate;
-            candidate.CopyFrom(&Stages.Vector[i]->Title);
+            StringClass candidate(Stages.Vector[i]->Title);
             candidate.MakeLower();
 
-            if (wanted.Equals(&candidate)) {
+            if (wanted == candidate) {
                 MapStage* hit = Stages.Vector[i];
                 candidate.Destruct();
                 wanted.Destruct();
@@ -194,15 +190,13 @@ StringClass* MapStageList::FindTitle(StringClass* key)
     for (i = 0; i < Titles.Count; ++i) {
             StringClass* line = Titles.Vector[i];
 
-            StringClass stored;
-            stored.CopyFrom(line);
+            StringClass stored(*line);
             stored.MakeLower();
 
-            StringClass wanted;
-            wanted.CopyFrom(key);
+            StringClass wanted(*key);
             wanted.MakeLower();
 
-            if (stored.Equals(&wanted)) {
+            if (stored == wanted) {
                 wanted.Destruct();
                 stored.Destruct();
                 return line;

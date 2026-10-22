@@ -19,6 +19,11 @@ public:
     Straw* ChainTo;   // +0x04
     Straw* ChainFrom; // +0x08
 
+    // Inlined into derived constructors: LCWStraw 0x5523E0 and LZOStraw
+    // 0x55C720 zero +4/+8 with no base call, and the base vptr store is
+    // dead-store eliminated.
+    Straw() : ChainTo(0), ChainFrom(0) {}
+
     // The compiler emits scalar deleting destructor 0x4AEC10 and the
     // ordinary destructor body at 0x6C9850 from this virtual destructor.
     virtual ~Straw();
@@ -26,6 +31,10 @@ public:
     // Slot +0x04; descriptively named for its observed link mutation.
     // FUNCTION: GAMEMD 0x6C9890
     virtual void SetChainTo(Straw* next);
+    // Reference convenience over slot +0x04. Inlined in PKStraw's constructor
+    // 0x633050, where the call stays indirect through the freshly stored
+    // vtable (`CALL [0x7EFDE4]`) instead of being bound statically.
+    void SetChainTo(Straw& next) { SetChainTo(&next); }
 
     // Slot +0x08. The name and high-level argument types are not recovered;
     // these int parameters are the observed two-word stack ABI view.

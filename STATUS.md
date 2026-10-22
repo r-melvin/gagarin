@@ -1,5 +1,41 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,321 matched function
+rows**, **319 partial rows**, **5,640 manifest rows**, **1,116 manifest
+translation units**, and **1,126 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+Stream, string and timer leaves land: the BlowPipe/PKPipe/PKStraw and LCW/LZO
+compression straws, the buffer, cache and hash pipes and straws, StringClass
+members, WinModemClass status slots and small timer, colour, hash-table and
+constructor leaves. 45 functions are new exact matches and 3 are new partials.
+The BlowPipe, BlowStraw, PKPipe and PKStraw deleting destructors (0x5B45C0,
+0x632F90, 0x632FF0, 0x633370) are now emitted by their real classes, which
+retires `observable_node_dtor_methods`. WinModemClass and StringClass have
+single shared definitions, and the wide whitespace helper (0x7B6EC0) moves onto
+WideStringClass. Every exact row passes raw bytes and strict relocation
+checks. Across all project objects, sections change only by the new TUs, the
+moved destructors and the 0x7B6EC0 body; three MapStageList sections keep
+their bytes and change only the names of their StringClass relocation targets.
+
+The 5,321 matches represent 26.9% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **402,852
+bytes**, or 10.6% of 3,797,269 listed function bytes. The padding heuristic
+misses 315 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: house/building module
+
 As of **2026-10-22**, the verified snapshot reports **5,276 matched function
 rows**, **316 partial rows**, **5,592 manifest rows**, **1,099 manifest
 translation units**, and **1,109 tracked C++ files**. Whole-repository regression
@@ -18,21 +54,6 @@ named after the INI keys they are read from, and HouseTypeClass +0xB8 becomes
 confirmed, and the BuildingClass constructor (0x43B740) is blocked on the
 canonical TechnoClass. Across all project objects, sections change only by
 the new TUs and by the removal of the 15 migrated functions from their old TUs.
-
-The 5,276 matches represent 26.7% of 19,753 listed functions. Counts are per
-function, not executable completion. Matched body lengths total **400,216
-bytes**, or 10.5% of 3,797,269 listed function bytes. The padding heuristic
-misses 315 matched entries. The last diagnostic link, taken before the second
-cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
-lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: /Gr default and identity corrections
 

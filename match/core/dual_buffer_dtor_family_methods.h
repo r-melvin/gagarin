@@ -27,11 +27,12 @@
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
 
-// VTABLE: GAMEMD 0x007ECF44
+// The vtables of LCWStraw (0x7ECF44), LZOPipe (0x7ED37C) and LZOStraw
+// (0x7ED394). Their VTABLE annotations live with the classes in
+// match/platform/compression_straws.h; these address-named references are the
+// view this family's destructors store.
 extern char VT_007ECF44;
-// VTABLE: GAMEMD 0x007ED37C
 extern char VT_007ED37C;
-// VTABLE: GAMEMD 0x007ED394
 extern char VT_007ED394;
 
 struct DualBuf

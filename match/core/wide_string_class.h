@@ -110,6 +110,10 @@ public:
     WideStringClass& operator+=(const wchar_t* src);           // 0x7B6AE0
     WideStringClass& operator+=(const WideStringClass& other); // 0x7B6B60
     short Erase(int pos, int count);                           // 0x7B6D90
+    // FUNCTION: GAMEMD 0x7B6E20 (decl; reloc) -- remove every occurrence of
+    // one character (__thiscall, one stack word).
+    bool FUN_007B6E20(wchar_t ch);
+    void FUN_007B6EC0();                                       // 0x7B6EC0
     void Resize(int count);                                    // 0x7B7060
     short Set(const wchar_t* src);                             // 0x7B7600
     short Set(int count, const wchar_t* src);                  // 0x7B7690
