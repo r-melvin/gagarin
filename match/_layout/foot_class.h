@@ -71,6 +71,12 @@ public:
     virtual void vf_338();                                         // 338 0x4DBA30
     virtual void vf_339();                                         // 339 0x4DBA40
     virtual void vf_340(int a1);                                   // 340 0x4DDC60
+    // FUNCTION: GAMEMD 0x4CBC40
+    // Searches square rings of growing radius around `center`, starting from
+    // the side facing `from`, for the first cell the object may enter
+    // (ObjectClass::vf_107 returns 0). Rings run from `firstRadius` up to but
+    // not including `endRadius`. Hidden result pointer first, RET 0x14.
+    Cell FUN_004CBC40(CellStruct* from, CellStruct* center, int firstRadius, int endRadius);
 
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)

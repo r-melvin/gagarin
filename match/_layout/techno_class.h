@@ -80,6 +80,8 @@ GG_STATIC_ASSERT(sizeof(PassengersClass)                   == 8);
 struct VeterancyStruct
 {
     float Veterancy;   // +0x00
+    // FUNCTION: GAMEMD 0x750010 (decl; reloc) -- ECX receiver, no stack arguments.
+    bool FUN_00750010();
 };
 GG_STATIC_ASSERT(sizeof(VeterancyStruct) == 4);
 #endif
@@ -94,6 +96,9 @@ struct Point2D
 };
 GG_STATIC_ASSERT(sizeof(Point2D) == 8);
 #endif
+
+struct SHPStruct;
+struct RectangleStruct;
 
 // StorageClass — four-tiberium-type cargo cells (sizeof = 0x10). Owns the
 // matched StorageClass::GetTotalValue @0x6C9600 family.
@@ -115,6 +120,18 @@ GG_STATIC_ASSERT(sizeof(StorageClass) == 0x10);
 #define GG_MATCH_LAYOUT_TRANSITIONTIMER_DEFINED
 struct TransitionTimer
 {
+    // Query methods on the deploy/undeploy state; no stack arguments, result in AL.
+    // FUNCTION: GAMEMD 0x4A5110 (decl; reloc)
+    bool FUN_004A5110();
+    // FUNCTION: GAMEMD 0x4A5130 (decl; reloc)
+    bool FUN_004A5130();
+    // FUNCTION: GAMEMD 0x4A51B0 (decl; reloc)
+    bool FUN_004A51B0();
+    // FUNCTION: GAMEMD 0x4A51D0 (decl; reloc)
+    bool FUN_004A51D0();
+    // FUNCTION: GAMEMD 0x4A52F0 (decl; reloc) -- fraction of the transition done
+    double PercentageDone();
+
     double        Rate1;         // +0x00
     CDTimerClass  ActionTimer;   // +0x08  (0xC)
     unsigned int  Rate2;         // +0x14
@@ -151,6 +168,11 @@ struct FacingClass
 
     // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) -- the current heading, by value.
     DirStruct FUN_004C93D0() const;
+    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) -- the same function reached
+    // with a hidden result pointer: stores the heading into `out` and returns it.
+    DirStruct* FUN_004C93D0(DirStruct* out);
+    // FUNCTION: GAMEMD 0x4C9480 (decl; reloc) -- is the facing still turning.
+    bool FUN_004C9480() const;
 };
 GG_STATIC_ASSERT(offsetof(FacingClass, RotationTimer) == 0x08);
 GG_STATIC_ASSERT(sizeof(FacingClass)                  == 0x18);
@@ -194,11 +216,26 @@ class HouseClass;
 class TechnoClass : public RadioClass
 {
 public:
+    // FUNCTION: GAMEMD 0x6F9E50 (decl; reloc)
+    void FUN_006F9E50();
+    // FUNCTION: GAMEMD 0x70DDC0 (decl; reloc)
+    int FUN_0070DDC0();
+    // FUNCTION: GAMEMD 0x70DDD0 (decl; reloc) -- one stack argument.
+    void FUN_0070DDD0(int unknownStackArg0);
+    // FUNCTION: GAMEMD 0x70DDF0 (decl; reloc)
+    int FUN_0070DDF0();
+    // FUNCTION: GAMEMD 0x70DE40 (decl; reloc) -- one stack argument.
+    void FUN_0070DE40(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x705D20 (decl; reloc) -- the planning token this unit is on.
     PlanningTokenClass* FUN_00705D20();
     // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) -- kill the passengers (one
     // stack argument, the killer).
     void KillPassengers(TechnoClass* killer);
+    // FUNCTION: GAMEMD 0x705E00 (decl; reloc) -- draws one shape at a screen
+    // point inside a clip rectangle; sixteen stack arguments (RET 0x40).
+    void FUN_00705E00(SHPStruct* shape, int frame, Point2D* point, RectangleStruct* clip,
+                      int a5, int a6, int zAdjust, int a8, int a9, int zSort, int tint,
+                      int a12, int a13, int a14, int a15, int a16);
 
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40

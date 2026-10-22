@@ -29,12 +29,16 @@
 // Local component structs (sizes proven by the oracle doc).
 // ---------------------------------------------------------------------------
 
-// Point2D — pixel/cell 2-space coordinate (size = 8).
+// Point2D — pixel/cell 2-space coordinate (size = 8). Same guard as geometry2d.h
+// so both headers can be included by one translation unit.
+#ifndef GG_MATCH_LAYOUT_POINT2D_DEFINED
+#define GG_MATCH_LAYOUT_POINT2D_DEFINED
 struct Point2D
 {
     int X;   // +0x00
     int Y;   // +0x04
 };
+#endif
 GG_STATIC_ASSERT(sizeof(Point2D) == 8);
 
 // BuildingAnimFrameStruct — 3-int building-anim frame descriptor (size = 0xC).
@@ -67,6 +71,11 @@ class IsometricTileTypeClass;
 class BuildingTypeClass : public TechnoTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x45EC90 (decl; reloc)
+    int GetFoundationWidth() const;
+    // FUNCTION: GAMEMD 0x45ECA0 (decl; reloc) -- one stack argument (RET 4)
+    int GetFoundationHeight(bool includeBib) const;
+
     int               ArrayIndex;                  // +0xDF8
     CellStruct*       FoundationData;              // +0xDFC
     SHPStruct*        Buildup;                     // +0xE00
@@ -149,7 +158,7 @@ public:
     int               unknown_153C;                // +0x153C
     int               unknown_1540;                // +0x1540
     int               unknown_1544;                // +0x1544
-    unsigned short    ExtraLight;                  // +0x1548 (WORD)
+    short             ExtraLight;                  // +0x1548 (WORD, read with a sign-extending load at 0x43D824)
     bool              TogglePower;                 // +0x154A
     // 8 x bool: HasSpotlight, IsTemple, IsPlug, HoverPad, BaseNormal,
     // EligibileForAllyBuilding, EligibleForDelayKill, NeedsEngineer.

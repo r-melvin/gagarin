@@ -22,7 +22,9 @@ struct RulesClass
     AnimTypeClass** TouchdownAnims; // +0x108
     char unknown_10C[0x244 - 0x10C];
     int BunkerSound;
-    char unknown_248[0x354 - 0x248];
+    char unknown_248[0x344 - 0x248];
+    AnimTypeClass* unknown_344;
+    char unknown_348[0x354 - 0x348];
     AnimTypeClass* SpawnAnim; // +0x354
     char unknown_358[0x54C - 0x358];
     int At_54C;
@@ -31,7 +33,14 @@ struct RulesClass
     int unknown_5A8;
     int MinFall; // +0x5AC
     double Angle; // +0x5B0
-    char unknown_5B8[0x0FA8 - 0x5B8];
+    char unknown_5B8[0x788 - 0x5B8];
+    int unknown_788;
+    int unknown_78C;
+    char unknown_790[0x7A8 - 0x790];
+    int unknown_7A8;
+    char unknown_7AC[0xE04 - 0x7AC];
+    int unknown_E04;
+    char unknown_E08[0x0FA8 - 0xE08];
     int unknown_FA8;
     char unknown_FAC[0x1700 - 0xFAC];
     double ConditionYellow;
@@ -49,6 +58,11 @@ GG_STATIC_ASSERT(offsetof(RulesClass, Weapon) == 0x5A4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_5A8) == 0x5A8);
 GG_STATIC_ASSERT(offsetof(RulesClass, MinFall) == 0x5AC);
 GG_STATIC_ASSERT(offsetof(RulesClass, Angle) == 0x5B0);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_344) == 0x344);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_E04) == 0xE04);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_788) == 0x788);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_78C) == 0x78C);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7A8) == 0x7A8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_FA8) == 0x0FA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionYellow) == 0x1700);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionRed) == 0x1708);

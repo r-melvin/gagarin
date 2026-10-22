@@ -47,17 +47,37 @@ public:
     unsigned char* GetCharacterBitmap(wchar_t wch);  // GAMEMD 0x4346C0
     int            UnLock(Surface* pSurface);        // GAMEMD 0x434990
 
+    void Lock(Surface* pSurface);                    // GAMEMD 0x4348F0
+    void FUN_00434110(int value);                    // GAMEMD 0x434110
+    int  FUN_00434120(unsigned short glyph, int x, int y, int color);  // GAMEMD 0x434120
+
     void*                __vtable;     // +0x00 (retail vtable pointer)
     BitFontInternalData* InternalPTR;  // +0x04
     void*                Pointer_8;    // +0x08
     short*               pGraphBuffer; // +0x0C
     int                  PitchDiv2;    // +0x10
+    char                 unknown_14[0x08];  // +0x14
+    int                  unknown_1C;   // +0x1C  line advance, added to the pen y per text line (0x434CD0)
+    int                  unknown_20;   // +0x20  written by 0x434110
+    unsigned short       unknown_24;   // +0x24  text colour, 0x434CD0 reads it as the draw colour
+    short                unknown_26;   // +0x26
+    int                  unknown_28;   // +0x28  tab width (0x434CD0 rounds the line width to it)
+    int                  unknown_2C;   // +0x2C  glyph spacing added to every advance
+    char                 unknown_30[0x10];  // +0x30
+    unsigned char        unknown_40;   // +0x40  nonzero: 0x4353F0 draws twice for a doubled stroke
+    char                 unknown_41[3];  // +0x41
 };
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(BitFont, InternalPTR)  == 0x04);  // ptr-width-sensitive
 GG_STATIC_ASSERT(offsetof(BitFont, pGraphBuffer) == 0x0C);
 GG_STATIC_ASSERT(offsetof(BitFont, PitchDiv2)    == 0x10);
+GG_STATIC_ASSERT(offsetof(BitFont, unknown_1C)   == 0x1C);
+GG_STATIC_ASSERT(offsetof(BitFont, unknown_24)   == 0x24);
+GG_STATIC_ASSERT(offsetof(BitFont, unknown_28)   == 0x28);
+GG_STATIC_ASSERT(offsetof(BitFont, unknown_2C)   == 0x2C);
+GG_STATIC_ASSERT(offsetof(BitFont, unknown_40)   == 0x40);
+GG_STATIC_ASSERT(sizeof(BitFont)                 == 0x44);
 #endif
 
 #endif  // GG_MATCH_RENDERER_BIT_FONT_H

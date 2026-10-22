@@ -48,6 +48,7 @@
 #include "techno_class.h"     // TechnoClass spine + CDTimerClass + CoordStruct + StageClass + AudioController
 #include "vector_class.h"     // DynamicVectorClass
 #include "components.h"       // ColorStruct
+#include "building_type_class_layout.h"   // BuildingTypeClass
 
 // Shared XYWH rectangle; offsets are asserted in geometry2d.h.
 #include "geometry2d.h"
@@ -66,7 +67,8 @@ GG_STATIC_ASSERT(offsetof(RateTimer, Rate) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RateTimer)         == 0x10);
 #endif
 
-class BuildingTypeClass;
+class AnimClass;
+class FactoryClass;
 class HouseClass;
 
 class BuildingClass : public TechnoClass
@@ -80,14 +82,41 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);    // 6  0x454190
     virtual int vf_11();                                                // 11 0x459EC0
     virtual int vf_12();                                                // 12 0x459E70
+    // FUNCTION: GAMEMD 0x43FB20 (slot 23; the per-frame update)
+    virtual void vf_23();
 
+    // Non-virtual BuildingClass members called by vf_23; bodies not recovered here.
+    // FUNCTION: GAMEMD 0x43C0D0 (decl; reloc)
+    void FUN_0043C0D0();
+    // FUNCTION: GAMEMD 0x4500F0 (decl; reloc)
+    void FUN_004500F0();
+    // FUNCTION: GAMEMD 0x4503F0 (decl; reloc)
+    void FUN_004503F0();
+    // FUNCTION: GAMEMD 0x4509D0 (decl; reloc)
+    void FUN_004509D0();
+    // FUNCTION: GAMEMD 0x450630 (decl; reloc)
+    void FUN_00450630();
+    // FUNCTION: GAMEMD 0x4549B0 (decl; reloc)
+    void FUN_004549B0();
+    // FUNCTION: GAMEMD 0x458200 (decl; reloc)
+    void FUN_00458200();
+    // FUNCTION: GAMEMD 0x441F60 (decl; reloc)
+    void FUN_00441F60();
+    // FUNCTION: GAMEMD 0x442D90 (decl; reloc) -- one stack argument.
+    void FUN_00442D90(int unknownStackArg0);
+
+
+    // More primary-table (0x7E3EBC) overrides of ObjectClass slots.
+    virtual bool vf_65(RectangleStruct* rect, bool force, int a3);      // 65 0x43CEA0
+    virtual void vf_69(Point2D* point, RectangleStruct* clip);          // 69 0x43D290 (draws the building)
+    virtual void vf_70(Point2D* point, RectangleStruct* clip);          // 70 0x43D030
     // Slots 309-321, introduced by BuildingClass (322 slots in all; retail table 0x7E3EBC).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual void vf_309(int a1, int a2, int a3);                   // 309 0x44EFB0
     virtual void vf_310(int a1);                                   // 310 0x447E00
     virtual void vf_311(int a1);                                   // 311 0x445F80
     virtual void vf_312();                                         // 312 0x4456D0
-    virtual void vf_313(int a1, int a2);                           // 313 0x43DA80
+    virtual void vf_313(Point2D* point, RectangleStruct* clip);    // 313 0x43DA80
     virtual void vf_314(int a1, int a2);                           // 314 0x43ED40
     virtual void vf_315(int a1, int a2, int a3, int a4);           // 315 0x4415F0
     virtual void vf_316();                                         // 316 0x448160
@@ -97,8 +126,14 @@ public:
     virtual void vf_320(int a1);                                   // 320 0x455980
     virtual void vf_321();                                         // 321 0x452250
 
-    void*          Type;                  // +0x520 BuildingTypeClass*; ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
-    void*          Factory;               // +0x524 FactoryClass*; ctor @0x0043B75C (=0)
+
+    // FUNCTION: GAMEMD 0x43EF90 (decl; reloc) -- no stack arguments, result in EAX.
+    int FUN_0043EF90();
+    // FUNCTION: GAMEMD 0x65AD40 (decl; reloc) -- one stack argument (RET 4); the object being worked on.
+    ObjectClass* FUN_0065AD40(int a1);
+
+    BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
+    FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)
     CDTimerClass   C4Timer;               // +0x528 (0xC) ctor StartTime @0x0043B76B, TimeLeft @0x0043B771
     int            BState;                // +0x534 ctor @0x0043B777
     int            QueueBState;           // +0x538 ctor @0x0043B77D
@@ -108,7 +143,7 @@ public:
     void*          FirestormAnim;         // +0x548 AnimClass*; ctor @0x0043B795
     void*          PsiWarnAnim;           // +0x54C AnimClass*; ctor @0x0043B79B
     CDTimerClass   FactoryRetryTimer;     // +0x550 (0xC) ctor StartTime @0x0043B7A7, TimeLeft @0x0043B7AD
-    void*          Anims[0x15];           // +0x55C .. 0x5AF  ctor: MOV ECX,0x15 / LEA EDI,[ESI+0x55C] /
+    AnimClass*     Anims[0x15];           // +0x55C .. 0x5AF  ctor: MOV ECX,0x15 / LEA EDI,[ESI+0x55C] /
                                           //   REP STOSD @0x0043BA63..0x0043BA70 — 21 dwords, exact
     unsigned char  AnimStates[0x15];      // +0x5B0 .. 0x5C4  ctor zeroes 5 dwords + 1 byte @0x0043BA7F..0x0043BAA3
     unsigned char  align_5C5[3];          // +0x5C5

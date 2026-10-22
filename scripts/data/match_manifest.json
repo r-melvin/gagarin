@@ -88014,5 +88014,107 @@
   "name": "FUN_007AF280",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/bit_font_print_methods.cpp",
+  "addr": "0x434CD0",
+  "sym": "?FUN_00434CD0@Obj_00434CD0@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
+  "len": "0x643",
+  "name": "Obj_00434CD0::FUN_00434CD0",
+  "status": "partial",
+  "pct": 1.4
+ },
+ {
+  "tu": "match/ui/bit_font_print_methods.cpp",
+  "addr": "0x4353F0",
+  "sym": "?FUN_004353F0@Obj_00434CD0@@QAE_NPAVBitFont@@PAVSurface@@PBGHHHHHHH@Z",
+  "len": "0xd3",
+  "name": "Obj_00434CD0::FUN_004353F0",
+  "status": "partial",
+  "pct": 13.2
+ },
+ {
+  "tu": "match/core/building_light_class.cpp",
+  "addr": "0x435820",
+  "sym": "??0BuildingLightClass@@QAE@PAVBuildingClass@@@Z",
+  "len": "0x330",
+  "name": "BuildingLightClass::BuildingLightClass",
+  "status": "partial",
+  "pct": 10.4,
+  "note": "Aligned diff_retail pct. Multiset 231 vs 221 instructions: retail stores the four vptrs after the member stores (compiler emits them first), uses FIADD where the compiled code widens through FLD/FADD, and indexes the list search differently. Retail virtual call to slot 109 and the base ObjectClass ctor 0x5F3900 are reproduced."
+ },
+ {
+  "tu": "match/core/building_light_class_draw.cpp",
+  "addr": "0x435BE0",
+  "sym": "?FUN_00435BE0@BuildingLightClass@@QAEXHH@Z",
+  "len": "0x5e9",
+  "name": "BuildingLightClass::FUN_00435BE0",
+  "status": "partial",
+  "pct": 8.3,
+  "note": "Aligned diff_retail pct over the full 0x5E9 span; multiset 440 vs 458 instructions. The new-expression allocates before the Payload copy in retail; the compiled order differs, shifting the whole prefix."
+ },
+ {
+  "tu": "match/ui/building_draw_methods.cpp",
+  "addr": "0x43CEA0",
+  "sym": "?vf_65@BuildingClass@@UAE_NPAURectangleStruct@@_NH@Z",
+  "len": "0x183",
+  "name": "BuildingClass::vf_65",
+  "status": "partial",
+  "pct": 32.4
+ },
+ {
+  "tu": "match/ui/building_draw_methods.cpp",
+  "addr": "0x43D030",
+  "sym": "?vf_70@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "len": "0x257",
+  "name": "BuildingClass::vf_70",
+  "status": "partial",
+  "pct": 6.9
+ },
+ {
+  "tu": "match/ui/building_draw_methods.cpp",
+  "addr": "0x43D290",
+  "sym": "?vf_69@BuildingClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
+  "len": "0x7e6",
+  "name": "BuildingClass::vf_69",
+  "status": "partial",
+  "pct": 30.0
+ },
+ {
+  "tu": "match/combat/building_class_update.cpp",
+  "addr": "0x43FB20",
+  "sym": "?vf_23@BuildingClass@@UAEXXZ",
+  "len": "0xa5b",
+  "name": "BuildingClass::vf_23",
+  "status": "partial",
+  "pct": 5.6,
+  "note": "Aligned diff_retail pct; multiset 749 vs 699 instructions. First 36 instructions exact, then the Location copy and branch layout shift."
+ },
+ {
+  "tu": "match/movement/foot_cell_ring_search_004cbc40.cpp",
+  "addr": "0x4CBC40",
+  "sym": "?FUN_004CBC40@FootClass@@QAE?AVCell@@PAUCellStruct@@0HH@Z",
+  "len": "0x2a5",
+  "name": "FootClass::FUN_004CBC40",
+  "status": "partial",
+  "pct": 4.4
+ },
+ {
+  "tu": "match/map/cell_flag_search_005835d0.cpp",
+  "addr": "0x5835D0",
+  "sym": "?FUN_005835D0@@YG?AVCell@@PBUCellStruct@@0@Z",
+  "len": "0x245",
+  "name": "FUN_005835D0",
+  "status": "partial",
+  "pct": 12.6
+ },
+ {
+  "tu": "match/map/cell_zone_search_00583820.cpp",
+  "addr": "0x583820",
+  "sym": "?FUN_00583820@MapClass@@QAE?AVCell@@PBUCellStruct@@HH@Z",
+  "len": "0x2a8",
+  "name": "MapClass::FUN_00583820",
+  "status": "partial",
+  "pct": 12.5
  }
 ]

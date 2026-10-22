@@ -45,6 +45,15 @@ struct CoordStruct
     int X;   // +0x00
     int Y;   // +0x04
     int Z;   // +0x08
+
+    // FUNCTION: GAMEMD 0x41C230 (decl; reloc) -- builds the coordinate in place
+    // and returns it (__thiscall, RET 0xC).
+    CoordStruct* FUN_0041C230(int x, int y, int z);
+    // FUNCTION: GAMEMD 0x41C380 (decl; reloc) -- the length of the vector.
+    int FUN_0041C380();
+    // FUNCTION: GAMEMD 0x437160 (decl; reloc) -- writes this minus `rhs` into
+    // `out` and returns it (__thiscall, RET 8).
+    CoordStruct* FUN_00437160(CoordStruct* out, const CoordStruct* rhs);
 };
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 #endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
@@ -76,6 +85,8 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 class ObjectClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5F3900 (declaration; native base constructor)
+    ObjectClass();
     // FUNCTION: GAMEMD 0x5F3B80 (declaration; destructor)
     virtual ~ObjectClass();
     // FUNCTION: GAMEMD 0x5F5B50

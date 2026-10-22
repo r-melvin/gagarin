@@ -21,4 +21,18 @@ public:
     virtual void vf_9();    // 9  0x40CC10: bare RET
 };
 
+// LogicClass : LayerClass, RTTI ".?AVLogicClass@@" on the 11-slot table
+// 0x7E18FC; it overrides slot 7 and adds slot 10 (not modelled here).
+// VTABLE: GAMEMD 0x7E18FC
+class LogicClass : public LayerClass
+{
+public:
+    // FUNCTION: GAMEMD 0x55BAA0 (declaration; slot 7)
+    virtual bool AddObject(ObjectClass* pObject, bool sorted);
+};
+
+// GLOBAL: GAMEMD 0x87F778 -- the one LogicClass object (retail loads its
+// address as an immediate).
+extern LogicClass DAT_0087F778;
+
 #endif  // GG_MATCH_LAYOUT_LAYER_CLASS_H

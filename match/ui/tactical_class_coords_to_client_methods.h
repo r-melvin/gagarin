@@ -18,6 +18,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+struct CoordStruct;
+struct Point2D;
+
 struct Point2D_006D2140
 {
     int X;                    // +0x0000
@@ -51,6 +54,11 @@ struct Tactical_006D2140
     // the coordinate to a client point and answers whether it is within 360
     // x 180 pixels of the view.
     bool CoordsToClient(const Coord_006D2140* pCoord, Point2D_006D2140* pDest);
+    // The same function reached with the canonical coordinate and point types.
+    bool CoordsToClient(const CoordStruct* pCoord, Point2D* pDest);
+    // FUNCTION: GAMEMD 0x6D2070 (decl; reloc) -- writes the projected point into
+    // `pOut` and returns it.
+    Point2D* FUN_006D2070(Point2D* pOut, const Point2D* pIn);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_006D2140, Offset_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(Tactical_006D2140, Offset_B0.Y) == 0xB4);

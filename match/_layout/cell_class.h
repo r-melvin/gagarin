@@ -41,6 +41,19 @@ class TagClass;
 class CellClass : public AbstractClass
 {
 public:
+    // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
+    // bodies are not reconstructed here. They make CellClass a complete type.
+    // FUNCTION: GAMEMD 0x485200 (decl; slot 3)
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // FUNCTION: GAMEMD 0x4839F0 (decl; slot 5)
+    virtual HRESULT __stdcall Load(IStream* pStm);
+    // FUNCTION: GAMEMD 0x483C10 (decl; slot 6)
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    // FUNCTION: GAMEMD 0x487E60 (decl; slot 11)
+    virtual int vf_11();
+    // FUNCTION: GAMEMD 0x487E70 (decl; slot 12)
+    virtual int vf_12();
+
     // FUNCTION: GAMEMD 0x485250
     void ReplaceTag(TagClass* tag);
 
@@ -51,6 +64,17 @@ public:
     CoordStruct GetCoords() const;
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;
+    // FUNCTION: GAMEMD 0x481810 (decl; reloc)
+    // The adjacent cell in direction `facing` (0-7, offsets at 0x89F688);
+    // __thiscall, RET 4.
+    CellClass* FUN_00481810(unsigned int facing);
+    // FUNCTION: GAMEMD 0x486750 (decl; reloc)
+    // True when IsoTileTypeIndex lies in [0xAA0E28, 0xAA0E28 + 0x10) and that
+    // global is not -1.
+    bool FUN_00486750();
+    // FUNCTION: GAMEMD 0x486770 (decl; reloc)
+    // As 0x486750, against the global at 0xABAD1C.
+    bool FUN_00486770();
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     void*           FoggedObjects;           // +0x28 ctor @0x0047BC05 (=0)

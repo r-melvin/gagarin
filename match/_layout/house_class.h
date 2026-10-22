@@ -107,6 +107,12 @@ class BuildingTypeClass;
 class HouseClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
+    void FUN_004F9790(int unknownStackArg0);
+    // FUNCTION: GAMEMD 0x4F9950 (decl; reloc) -- one stack argument.
+    void FUN_004F9950(int unknownStackArg0);
+    // FUNCTION: GAMEMD 0x4FCE30 (decl; reloc)
+    double FUN_004FCE30();
     // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
     bool IsControlledByCurrentPlayer() const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc)
