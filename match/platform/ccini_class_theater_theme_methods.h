@@ -31,15 +31,15 @@ extern const char STR_00817474[];
 // Name -> index parsers. Each takes its single argument in ECX with nothing
 // pushed and no stack cleanup at the call site, so each is __fastcall.
 // FUNCTION: GAMEMD 0x6A46D0 (decl; reloc) — movie name -> index, -1 if absent.
-int __fastcall FUN_006A46D0(const char* name);
+int FUN_006A46D0(const char* name);
 // FUNCTION: GAMEMD 0x48DF30 (decl; reloc)
-int __fastcall FUN_0048DF30(const char* name);
+int FUN_0048DF30(const char* name);
 // FUNCTION: GAMEMD 0x48DBE0 (decl; reloc)
-int __fastcall FUN_0048DBE0(const char* name);
+int FUN_0048DBE0(const char* name);
 // FUNCTION: GAMEMD 0x48DB80 (decl; reloc)
-int __fastcall FUN_0048DB80(const char* name);
+int FUN_0048DB80(const char* name);
 // FUNCTION: GAMEMD 0x48DE70 (decl; reloc)
-int __fastcall FUN_0048DE70(const char* name);
+int FUN_0048DE70(const char* name);
 
 // The movie record the 0x4756F0 reader allocates when the name is new:
 // `PUSH 0xB4; CALL 0x7C8E17` is operator new of 0xB4 bytes, and the

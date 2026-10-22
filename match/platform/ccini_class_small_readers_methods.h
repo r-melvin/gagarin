@@ -28,21 +28,21 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x473960 (decl; reloc) — bounds-checked enum -> name.
-const char* __fastcall FUN_00473960(unsigned int index);
+const char* FUN_00473960(unsigned int index);
 // FUNCTION: GAMEMD 0x473980 (decl; reloc) — the matching name -> enum.
-int __fastcall FUN_00473980(const char* name);
+int FUN_00473980(const char* name);
 // FUNCTION: GAMEMD 0x40DCB0 (decl; reloc) — a second enum -> name table.
-void* __fastcall FUN_0040DCB0(int key);
+void* FUN_0040DCB0(int key);
 // FUNCTION: GAMEMD 0x40DCE0 (decl; reloc) — its name -> enum.
-int __fastcall FUN_0040DCE0(const char* name);
+int FUN_0040DCE0(const char* name);
 // FUNCTION: GAMEMD 0x45DD20 (decl; reloc) — a third enum -> name table.
-void* __fastcall FUN_0045DD20(int key);
+void* FUN_0045DD20(int key);
 // FUNCTION: GAMEMD 0x45DD50 (decl; reloc) — its name -> enum.
-int __fastcall FUN_0045DD50(const char* name);
+int FUN_0045DD50(const char* name);
 // FUNCTION: GAMEMD 0x6CEE60 (decl; reloc) — parse a name into an index.
-int __fastcall FUN_006CEE60(const char* name);
+int FUN_006CEE60(const char* name);
 // FUNCTION: GAMEMD 0x753250 (decl; reloc) — parse a name into an index.
-int __fastcall FUN_00753250(const char* name);
+int FUN_00753250(const char* name);
 
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];

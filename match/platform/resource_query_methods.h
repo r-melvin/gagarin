@@ -18,6 +18,6 @@ extern HINSTANCE GameInstance;
 
 // Find, load and lock an embedded resource in one step, returning a pointer to
 // its bytes or null at the first failed stage.
-void* __fastcall Unsorted_GetResource(int id, const char* type);   // GAMEMD 0x4A3B40
+void* Unsorted_GetResource(int id, const char* type);   // GAMEMD 0x4A3B40
 
 #endif  // GG_MATCH_PLATFORM_RESOURCE_QUERY_METHODS_H

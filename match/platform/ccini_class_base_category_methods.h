@@ -70,7 +70,7 @@ extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
 // FUNCTION: GAMEMD 0x7C8D20 (decl; reloc) — the CRT case-insensitive compare.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) — category name -> bit number.
-int __fastcall FUN_0045E7B0(const char* name);
+int FUN_0045E7B0(const char* name);
 
 class CCINI_00475A40
 {

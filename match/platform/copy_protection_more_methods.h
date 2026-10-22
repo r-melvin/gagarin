@@ -14,7 +14,7 @@ namespace CopyProtection
     // MSG* is opaque here; the retail body never dereferences it.
     struct MSG;
 
-    void __fastcall DispatchLauncherMessage(MSG* pMsg);
+    void DispatchLauncherMessage(MSG* pMsg);
     // YRpp types the return as LSTATUS (long), but the retail body is a bare
     // `ret` that never touches EAX, so modelling it as void reproduces the
     // exact byte (and avoids fabricating a return value that retail omits).

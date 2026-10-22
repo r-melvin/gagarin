@@ -16,7 +16,7 @@ namespace CopyProtection
 {
 
 // FUNCTION: GAMEMD 0x49F740  (__fastcall)
-void __fastcall DispatchLauncherMessage(MSG*)
+void DispatchLauncherMessage(MSG*)
 {
 }
 

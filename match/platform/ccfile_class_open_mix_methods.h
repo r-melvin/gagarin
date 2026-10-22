@@ -32,9 +32,9 @@ GG_STATIC_ASSERT(offsetof(Mix_00473D10, FileName) == 0xC);
 // FUNCTION: GAMEMD 0x5B4430 (decl; reloc) — MixFileClass::Offset, __fastcall:
 // the name in ECX, the data out-pointer in EDX, then the mix, offset and size
 // out-pointers on the stack.
-bool __fastcall MixFileClass_Offset_00473D10(const char* name, void** data,
-                                             Mix_00473D10** mix, int* offset,
-                                             int* size);
+bool MixFileClass_Offset_00473D10(const char* name, void** data,
+                                  Mix_00473D10** mix, int* offset,
+                                  int* size);
 
 struct CCFile_00473D10;
 

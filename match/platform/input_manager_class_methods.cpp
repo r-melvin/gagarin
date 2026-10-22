@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) int __stdcall GetSystemMetrics(int nIndex);
 // Retail callees we do NOT match here; declared only so cl emits direct/indirect
 // calls (reloc-normalised by the differ).
 //   0x53EC90 — low-level key-state probe; key passed in ECX (__fastcall).
-short __fastcall FUN_0053EC90(unsigned int key);   // 0x53EC90
+short FUN_0053EC90(unsigned int key);   // 0x53EC90
 
 // FUNCTION: GAMEMD 0x54F5C0  InputManagerClass::IsKeyPressed (__thiscall)
 bool InputManagerClass::IsKeyPressed(int key) const

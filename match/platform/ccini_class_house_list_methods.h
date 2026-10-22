@@ -30,9 +30,9 @@ extern const char STR_00817F70[];
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
 
 // FUNCTION: GAMEMD 0x48DEB0 (decl; reloc) — house-type name -> bit mask.
-int __fastcall FUN_0048DEB0(const char* name);
+int FUN_0048DEB0(const char* name);
 // FUNCTION: GAMEMD 0x50C170 (decl; reloc) — house name -> bit number.
-int __fastcall FUN_0050C170(const char* name);
+int FUN_0050C170(const char* name);
 
 // One house record. Only its bit index and its inline name are touched.
 struct House_004752E0

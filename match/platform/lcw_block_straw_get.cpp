@@ -7,9 +7,9 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x551E50 (decl; reloc) - block compress (src ECX, dst EDX, count).
-int __fastcall FUN_00551E50(const void* source, void* dest, int count);
+int FUN_00551E50(const void* source, void* dest, int count);
 // FUNCTION: GAMEMD 0x551C60 (decl; reloc) - block uncompress (src ECX, dst EDX, 0).
-int __fastcall FUN_00551C60(const void* source, void* dest, int length);
+int FUN_00551C60(const void* source, void* dest, int length);
 
 // Data straw base: vptr, chain-to, chain-from.
 class DataStraw_00552490

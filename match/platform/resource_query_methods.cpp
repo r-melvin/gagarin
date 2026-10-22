@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) void*   __stdcall LockResource(HGLOBAL hResData
 // FUNCTION: GAMEMD 0x4A3B40  Unsorted::GetResource (__fastcall)
 // The id is narrowed to a word and passed as a MAKEINTRESOURCE pseudo-pointer.
 // Both early exits are bare RETs: EAX already holds the null the caller gets.
-void* __fastcall Unsorted_GetResource(int id, const char* type)
+void* Unsorted_GetResource(int id, const char* type)
 {
     HRSRC found = FindResourceA(GameInstance, (const char*)(id & 0xFFFF), type);
     if (found == 0)

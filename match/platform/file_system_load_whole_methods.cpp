@@ -13,7 +13,7 @@
 // allocated. The file object is torn down inline: this class's vtable, the
 // +0x64 reset, the +0x58 sub-object release, the base vtable, the base
 // destructor.
-void* __fastcall FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated)
+void* FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated)
 {
     *allocated = false;
 

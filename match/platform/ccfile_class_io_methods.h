@@ -142,8 +142,8 @@ public:
 // MixFileClass::Offset @ 0x5B4430 (static __fastcall in YRpp; declared bodiless
 // here so cl emits a direct CALL the differ normalises as a reloc). The matched
 // disasm passes ECX=name, EDX=0 and stack args 0,0,&length.
-bool __fastcall MixFileClass_Offset(const char* name, void* data, void* mixfile,
-                                    int offset, int* length);
+bool MixFileClass_Offset(const char* name, void* data, void* mixfile,
+                         int offset, int* length);
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(CCFileClass, Buffer)   == 0x58);

@@ -20,14 +20,14 @@
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) — MixFileClass::Retrieve, __fastcall
 // with the force flag in DL.
-void* __fastcall FUN_005B40B0(const char* name, unsigned char force);
+void* FUN_005B40B0(const char* name, unsigned char force);
 
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — the allocator (operator new,
 // __cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
@@ -68,6 +68,6 @@ GG_STATIC_ASSERT(offsetof(Vtbl_004A38D0, At_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(Vtbl_004A38D0, At_2C) == 0x2C);
 
 // FUNCTION: GAMEMD 0x4A38D0 — FileSystem::LoadWholeFileEx (static).
-void* __fastcall FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated);
+void* FileSystem_LoadWholeFileEx(const char* fileName, bool* allocated);
 
 #endif  // GG_MATCH_PLATFORM_FILE_SYSTEM_LOAD_WHOLE_METHODS_H

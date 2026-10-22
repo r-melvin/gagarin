@@ -24,7 +24,7 @@ GenericNode::GenericNode()
 // inside the second guard rather than after it.
 //
 // FUNCTION: GAMEMD 0x52AA90
-void __fastcall INIClass::FUN_0052AA90(char* buffer)
+void INIClass::FUN_0052AA90(char* buffer)
 {
     if (buffer != 0) {
         char* comment = FUN_007CAF30(buffer, ';');
@@ -41,7 +41,7 @@ void __fastcall INIClass::FUN_0052AA90(char* buffer)
 // `isspace` table lookup.
 //
 // FUNCTION: GAMEMD 0x52AAC0
-bool __fastcall INIClass::FUN_0052AAC0(char* buffer)
+bool INIClass::FUN_0052AAC0(char* buffer)
 {
     if (buffer != 0) {
         while (*buffer != '\0' && (unsigned char)*buffer <= ' ') {

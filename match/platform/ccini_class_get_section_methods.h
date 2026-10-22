@@ -49,7 +49,7 @@ extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int si
 int __cdecl FUN_0052B720(const void* a, const void* b);
 // FUNCTION: GAMEMD 0x52B750 (decl; reloc) — the table search, __fastcall:
 // the array in ECX, the count in EDX and the probe key pushed.
-Entry_00526810* __fastcall FUN_0052B750(Entry_00526810* items, int count, int* key);
+Entry_00526810* FUN_0052B750(Entry_00526810* items, int count, int* key);
 
 // Explicit read/write view of only the observed index offsets in INIClass.
 // It is not a competing concrete class declaration.

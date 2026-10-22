@@ -37,12 +37,12 @@ GG_STATIC_ASSERT(offsetof(IdxNode, Key)   == 0x08);
 GG_STATIC_ASSERT(offsetof(IdxNode, Value) == 0x0C);
 GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
 extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
-void __fastcall IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
+void IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
 
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — CCFileClass::ReadWholeFile.
-void* __fastcall MakeCachedFile(CCFile_005B40B0* f);
+void* MakeCachedFile(CCFile_005B40B0* f);
 // The 0x24-byte object built on a forced / .SHP miss; its constructor is a
 // __thiscall taking the name (`PUSH EBP; MOV ECX,EAX; CALL 0x69E430`).
 struct Mix_0069E430
@@ -80,7 +80,7 @@ struct Mix_0069E430
 // insert read different names (no change). Filed as the ESI/EDI tie-break
 // class (cf. 0x74E930).
 // ---------------------------------------------------------------------------
-void* __fastcall MixFileClass_Retrieve(char* name, bool force)
+void* MixFileClass_Retrieve(char* name, bool force)
 {
     char buf[0x101];                 // lowercase name scratch
     strcpy(buf, name);               // intrinsic: repne scasb + rep movs

@@ -12,7 +12,7 @@
 // (full-screen DirectDraw leaves the client rectangle meaningless). The
 // resulting offset is clamped at zero on each axis and applied without a
 // resize or a z-order change.
-void __fastcall Unsorted_CenterWindowIn(HWND child, HWND parent)
+void Unsorted_CenterWindowIn(HWND child, HWND parent)
 {
     RECT outer;
     RECT inner;

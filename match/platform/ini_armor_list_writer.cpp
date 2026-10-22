@@ -11,7 +11,7 @@
 void __cdecl operator delete(void* p);
 
 // FUNCTION: GAMEMD 0x751590 (decl; reloc) - armour index -> name text.
-const char* __fastcall FUN_00751590(int index);
+const char* FUN_00751590(int index);
 
 // A growable list of ints passed by value (0x24 bytes of arguments in total
 // with the two strings: RET 0x24 proves the 0x1C-byte copy).

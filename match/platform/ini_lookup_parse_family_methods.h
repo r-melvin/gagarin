@@ -51,15 +51,15 @@ struct GgIniReader
 };
 
 // FUNCTION: GAMEMD 0x75E3B0 (decl; reloc)
-int __fastcall GgParse_0067B500(char* text);
+int GgParse_0067B500(char* text);
 // FUNCTION: GAMEMD 0x524CB0 (decl; reloc)
-int __fastcall GgParse_0067BAC0(char* text);
+int GgParse_0067BAC0(char* text);
 // FUNCTION: GAMEMD 0x4653C0 (decl; reloc)
-int __fastcall GgParse_0067BCE0(char* text);
+int GgParse_0067BCE0(char* text);
 // FUNCTION: GAMEMD 0x41CEF0 (decl; reloc)
-int __fastcall GgParse_0067BD30(char* text);
+int GgParse_0067BD30(char* text);
 // FUNCTION: GAMEMD 0x71E2A0 (decl; reloc)
-int __fastcall GgParse_0067BD80(char* text);
+int GgParse_0067BD80(char* text);
 
 // Read one INI entry into a 0x80-byte stack buffer and hand it to this
 // instance's parser; on a miss, give the caller its fallback back.

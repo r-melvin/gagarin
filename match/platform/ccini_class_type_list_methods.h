@@ -204,7 +204,7 @@ struct TypeId_00476240
 };
 // FUNCTION: GAMEMD 0x6E7330 (decl; reloc) — packed identity -> record. The
 // identity arrives in ECX.
-ObjectType_00476240* __fastcall FUN_006E7330(TypeId_00476240* id);
+ObjectType_00476240* FUN_006E7330(TypeId_00476240* id);
 
 // The two registries the 0x476020 reader looks a name up in, in order.
 // GLOBAL: GAMEMD 0xA8E34C — the first registry's item array.
@@ -213,16 +213,16 @@ extern AbstractType_006E6AB0** DAT_00A8E34C;
 extern AbstractType_006E6AB0** DAT_00A83CE4;
 
 // FUNCTION: GAMEMD 0x523C90 (decl; reloc) — first registry: name -> index.
-int __fastcall FUN_00523C90(const char* name);
+int FUN_00523C90(const char* name);
 // FUNCTION: GAMEMD 0x747370 (decl; reloc) — second registry: name -> index.
-int __fastcall FUN_00747370(const char* name);
+int FUN_00747370(const char* name);
 
 // FUNCTION: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
 // FUNCTION: GAMEMD 0x7C9BFD (decl; reloc) — the CRT decimal parser.
 extern "C" int __cdecl FUN_007C9BFD(const char* text);
 // FUNCTION: GAMEMD 0x751590 (decl; reloc) — armour index -> armour name.
-const char* __fastcall FUN_00751590(int index);
+const char* FUN_00751590(int index);
 
 GG_STATIC_ASSERT(offsetof(TypeId_00476240, RTTI) == 0x04 &&
                  sizeof(TypeId_00476240) == 0x08);

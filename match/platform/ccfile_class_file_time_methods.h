@@ -31,15 +31,15 @@ GG_STATIC_ASSERT(offsetof(Mix_00473E50, FileName) == 0xC);
 // FUNCTION: GAMEMD 0x5B4430 (decl; reloc) — MixFileClass::Offset, __fastcall:
 // the name in ECX, the data out-pointer in EDX, then the mix out-pointer, the
 // offset out-pointer and the size out-pointer on the stack.
-bool __fastcall MixFileClass_Offset(const char* name, void** data,
-                                    Mix_00473E50** mix, int* offset, int* size);
+bool MixFileClass_Offset(const char* name, void** data,
+                         Mix_00473E50** mix, int* offset, int* size);
 
 // FUNCTION: GAMEMD 0x47AA30 (decl; reloc) — the base (CDFileClass) constructor.
-void __fastcall FUN_0047AA30(void* self);
+void FUN_0047AA30(void* self);
 // FUNCTION: GAMEMD 0x43AE50 (decl; reloc) — release the buffer sub-object.
-void __fastcall FUN_0043AE50(void* holder);
+void FUN_0043AE50(void* holder);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass

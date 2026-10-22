@@ -55,9 +55,9 @@ extern int DebugWindowListCount;
 // with `i` pre-set to 1 (`MOV ESI,0x1` at 0x53E3DB, `MOV EDX,0x1` at 0x53E439).
 
 // FUNCTION: GAMEMD 0x53E3C0
-void __fastcall FUN_0053E3C0(void* window);
+void FUN_0053E3C0(void* window);
 
 // FUNCTION: GAMEMD 0x53E420
-void __fastcall FUN_0053E420(void* window);
+void FUN_0053E420(void* window);
 
 #endif  // GG_MATCH_PLATFORM_DEBUG_WINDOW_LIST_METHODS_H

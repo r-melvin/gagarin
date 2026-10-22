@@ -51,12 +51,12 @@ extern int DAT_00886FBC;
 void FUN_00406EA0();                                     // GAMEMD 0x406EA0 (decl; reloc)
 void FUN_00406EC0();                                     // GAMEMD 0x406EC0 (decl; reloc)
 void FUN_0040A850();                                     // GAMEMD 0x40A850 (decl; reloc)
-void __fastcall FUN_0040A7C0(int rate, int bits, int channels);   // GAMEMD 0x40A7C0 (decl; reloc)
-bool __fastcall FUN_005C0640(const char* name, char* out, int unused);   // GAMEMD 0x5C0640 (decl; reloc)
-Obj_005C01A0* __fastcall FUN_005BFAA0(const char* name, void* surface,
-                                      RectangleStruct a, RectangleStruct b, int c, int d);   // GAMEMD 0x5BFAA0 (decl; reloc)
-void __fastcall FUN_005BFF00(Obj_005C01A0* data);        // GAMEMD 0x5BFF00 (decl; reloc)
-void __fastcall FUN_005BFF60(Obj_005C01A0* data, bool a, int b, int c);   // GAMEMD 0x5BFF60 (decl; reloc)
+void FUN_0040A7C0(int rate, int bits, int channels);   // GAMEMD 0x40A7C0 (decl; reloc)
+bool FUN_005C0640(const char* name, char* out, int unused);   // GAMEMD 0x5C0640 (decl; reloc)
+Obj_005C01A0* FUN_005BFAA0(const char* name, void* surface,
+                           RectangleStruct a, RectangleStruct b, int c, int d);   // GAMEMD 0x5BFAA0 (decl; reloc)
+void FUN_005BFF00(Obj_005C01A0* data);        // GAMEMD 0x5BFF00 (decl; reloc)
+void FUN_005BFF60(Obj_005C01A0* data, bool a, int b, int c);   // GAMEMD 0x5BFF60 (decl; reloc)
 void FUN_005BF530();
 void FUN_005BF580();
 
@@ -124,13 +124,13 @@ void FUN_004082F0();                                     // GAMEMD 0x4082F0 (dec
 void FUN_004083D0();                                     // GAMEMD 0x4083D0 (decl; reloc)
 void FUN_007535B0();                                     // GAMEMD 0x7535B0 (decl; reloc)
 void FUN_00753620();                                     // GAMEMD 0x753620 (decl; reloc)
-void __fastcall FUN_00407170(void* obj, int flag);       // GAMEMD 0x407170 (decl; reloc)
-void __fastcall FUN_004F4780(bool a, void* surface, int b);   // GAMEMD 0x4F4780 (decl; reloc)
-MovieHandle* __fastcall FUN_005C07D0(const char* name, void* surface, int a);   // GAMEMD 0x5C07D0 (decl; reloc)
-void __fastcall Play_Movie(const char* name, int x, int a, int b, int c, int d);
+void FUN_00407170(void* obj, int flag);       // GAMEMD 0x407170 (decl; reloc)
+void FUN_004F4780(bool a, void* surface, int b);   // GAMEMD 0x4F4780 (decl; reloc)
+MovieHandle* FUN_005C07D0(const char* name, void* surface, int a);   // GAMEMD 0x5C07D0 (decl; reloc)
+void Play_Movie(const char* name, int x, int a, int b, int c, int d);
 
 // FUNCTION: GAMEMD 0x5BED20
-void __fastcall FUN_005BED20(const char* name, int x, int a, int b, int c)
+void FUN_005BED20(const char* name, int x, int a, int b, int c)
 {
     Play_Movie(name, x, a, b, c, 1);
 }
@@ -142,7 +142,7 @@ void __fastcall FUN_005BED20(const char* name, int x, int a, int b, int c)
 // Play a movie by name, full screen: Bink files through a local Bink player,
 // everything else through a VQ state block (stretched to the screen when
 // the options ask for it).
-void __fastcall Play_Movie(const char* name, int x, int a, int b, int c, int d)
+void Play_Movie(const char* name, int x, int a, int b, int c, int d)
 {
     char buffer[256];
     if (!FUN_005C0640(name, buffer, true) || DAT_00A8B238 != 0)
@@ -262,7 +262,7 @@ void FUN_005BF580()
 }
 
 // FUNCTION: GAMEMD 0x5BF180
-void __fastcall FUN_005BF180(const char* name)
+void FUN_005BF180(const char* name)
 {
     MovieHandle* movie = FUN_005C07D0(name, DAT_0088730C, 0);
     if (movie != 0) {
@@ -280,7 +280,7 @@ void __fastcall FUN_005BF180(const char* name)
 // FUNCTION: GAMEMD 0x5BF260
 // The caller's EDX (always -1 at the call sites) is not read; Play_Movie
 // gets its own -1.
-void __fastcall FUN_005BF260(int index, int unused, int a, int b, int c)
+void FUN_005BF260(int index, int unused, int a, int b, int c)
 {
     if (index >= 0 && index < DAT_00ABF3A0) {
         bool saved = DAT_00A8E378;
@@ -291,7 +291,7 @@ void __fastcall FUN_005BF260(int index, int unused, int a, int b, int c)
 }
 
 // FUNCTION: GAMEMD 0x5BF360
-void __fastcall FUN_005BF360(Obj_005BF360* arg)
+void FUN_005BF360(Obj_005BF360* arg)
 {
     if (arg != 0)
         DAT_00A8BC60.FUN_005D3BA0(0, 0, arg->unknown_14, 0, 0x4046, arg->unknown_04, 0);
@@ -303,7 +303,7 @@ void __fastcall FUN_005BF360(Obj_005BF360* arg)
 // increment (`ADD ECX,EAX`) and stores through `Items[Count++]` (MOV/INC),
 // where the canonical body emits `ADD EAX,ECX` and LEA. Not rewritten here:
 // the fix belongs in the shared header (see the packet notes).
-void __fastcall FUN_005BF2B0(const char* name, bool flag)
+void FUN_005BF2B0(const char* name, bool flag)
 {
     if (DAT_00A8B238 == 0) {
         MovieHandle* movie = FUN_005C07D0(name, DAT_00887300, 0);
@@ -318,7 +318,7 @@ void __fastcall FUN_005BF2B0(const char* name, bool flag)
 
 // FUNCTION: GAMEMD 0x5BF390
 // PARTIAL (68.3%): the inlined 0x5BF2B0 carries the same AddItem difference.
-void __fastcall FUN_005BF390(int index, bool flag)
+void FUN_005BF390(int index, bool flag)
 {
     if (index >= 0 && index < DAT_00ABF3A0)
         FUN_005BF2B0(DAT_00ABF394[index], flag);

@@ -31,25 +31,25 @@ extern const char STR_0081C008[];
 extern const char* DAT_007E5210[];
 
 // FUNCTION: GAMEMD 0x772A50 (decl; reloc) — armour name -> armour index.
-int __fastcall FUN_00772A50(const char* name);
+int FUN_00772A50(const char* name);
 // FUNCTION: GAMEMD 0x751590 (decl; reloc) — armour index -> armour name.
-const char* __fastcall FUN_00751590(int index);
+const char* FUN_00751590(int index);
 // FUNCTION: GAMEMD 0x48DFD0 (decl; reloc) — land type -> name.
-const char* __fastcall FUN_0048DFD0(int index);
+const char* FUN_0048DFD0(int index);
 // FUNCTION: GAMEMD 0x48DF80 (decl; reloc) — name -> land type.
-int __fastcall FUN_0048DF80(const char* name);
+int FUN_0048DF80(const char* name);
 
 // The house-name helpers the 0x475540 / 0x475610 pair share.
 // FUNCTION: GAMEMD 0x510FB0 (decl; reloc) — name -> pseudo-house code.
-int __fastcall FUN_00510FB0(const char* name);
+int FUN_00510FB0(const char* name);
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) — is this code a pseudo-house?
-bool __fastcall FUN_00510F60(int code);
+bool FUN_00510F60(int code);
 // FUNCTION: GAMEMD 0x510E10 (decl; reloc) — pseudo-house code -> name. The
 // size arrives on the stack and the other two in ECX/EDX, so __fastcall.
-void __fastcall FUN_00510E10(int code, char* buffer, int size);
+void FUN_00510E10(int code, char* buffer, int size);
 // FUNCTION: GAMEMD 0x5117D0 (decl; reloc) — house-type name -> index, -1 if
 // the name is not registered.
-int __fastcall FUN_005117D0(const char* name);
+int FUN_005117D0(const char* name);
 
 // The house-type record. Only the inline ID text at +0x24 is touched, and
 // the record is 0x1B0 bytes wide: that is the constant the 0x475540 reader

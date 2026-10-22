@@ -28,13 +28,13 @@ extern TechnoTypeClass** DAT_00A83C6C;
 
 // The per-kind FindIndex lookups: name in ECX, index or -1 back.
 // FUNCTION: GAMEMD 0x523C90 (decl; reloc) -- AircraftTypeClass::FindIndex.
-int __fastcall FUN_00523C90(const char* name);
+int FUN_00523C90(const char* name);
 // FUNCTION: GAMEMD 0x747370 (decl; reloc) -- BuildingTypeClass::FindIndex.
-int __fastcall FUN_00747370(const char* name);
+int FUN_00747370(const char* name);
 // FUNCTION: GAMEMD 0x41CAA0 (decl; reloc) -- InfantryTypeClass::FindIndex.
-int __fastcall FUN_0041CAA0(const char* name);
+int FUN_0041CAA0(const char* name);
 // FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) -- UnitTypeClass::FindIndex.
-int __fastcall FUN_0045E7B0(const char* name);
+int FUN_0045E7B0(const char* name);
 
 // No member of the INI object is touched here; only the calling convention
 // and the forwarded reader matter, so the body stays opaque.

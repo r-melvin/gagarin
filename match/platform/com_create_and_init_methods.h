@@ -29,7 +29,7 @@ struct Target_0046B050
 };
 
 // FUNCTION: GAMEMD 0x46B050
-Target_0046B050* __fastcall FUN_0046B050(int a, int b, int c, int d, int e,
-                                         int f, int g);
+Target_0046B050* FUN_0046B050(int a, int b, int c, int d, int e,
+                              int f, int g);
 
 #endif  // GG_MATCH_PLATFORM_COM_CREATE_AND_INIT_METHODS_H

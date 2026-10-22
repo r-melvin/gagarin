@@ -23,6 +23,6 @@ extern int DAT_008A00A4;
 extern int DAT_008A00A8;
 
 // FUNCTION: GAMEMD 0x777080 -- Unsorted::CenterWindowIn (static, __fastcall).
-void __fastcall Unsorted_CenterWindowIn(HWND child, HWND parent);
+void Unsorted_CenterWindowIn(HWND child, HWND parent);
 
 #endif  // GG_MATCH_PLATFORM_CENTER_WINDOW_METHODS_H

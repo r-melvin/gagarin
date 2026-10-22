@@ -30,7 +30,7 @@ extern "C" __declspec(dllimport) int  __stdcall CloseHandle(void* handle);  // I
 // 0x7C8B3D. That is an explicit destructor call followed by operator delete,
 // not the compiler-generated deleting destructor - a `??_G` would have folded
 // the two into one call.
-void __fastcall FUN_006C9AE0(void* helper);
+void FUN_006C9AE0(void* helper);
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 struct BinkPlayer_00432700

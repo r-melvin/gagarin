@@ -32,7 +32,7 @@
 // hoist, the bound becomes a compiler temp and lands in EBX as retail has it.
 // The remove path below wants the opposite — same table, same walk, but there
 // the *local* form is the one that matches.
-void __fastcall FUN_0053E3C0(void* window)
+void FUN_0053E3C0(void* window)
 {
     if (DebugWindowListActive == 0 || window == 0) {
         return;
@@ -69,7 +69,7 @@ void __fastcall FUN_0053E3C0(void* window)
 // makes VC6 materialise `count - 1` in a register and scores 6.7%; the pointer
 // plus 1-based counter scores 92%, and moving `slot++` into the for-increment
 // after `i++` orders the two adds the way retail has them for the last 8%.
-void __fastcall FUN_0053E420(void* window)
+void FUN_0053E420(void* window)
 {
     if (!DebugWindowListActive)
         return;

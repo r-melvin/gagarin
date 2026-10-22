@@ -66,12 +66,12 @@ extern Surface_005BF950* DAT_00887310;
 extern HWND DAT_00B73550;
 
 // FUNCTION: GAMEMD 0x75A810 (decl; reloc)
-bool __fastcall FUN_0075A810(int key);
+bool FUN_0075A810(int key);
 // FUNCTION: GAMEMD 0x4F4780 (decl; reloc)
-void __fastcall FUN_004F4780(bool a, void* surface, int b);
+void FUN_004F4780(bool a, void* surface, int b);
 
 // FUNCTION: GAMEMD 0x5BFF60 (decl; reloc)
-void __fastcall FUN_005BFF60(Obj_005C01A0* data, bool a, int b, int c);
+void FUN_005BFF60(Obj_005C01A0* data, bool a, int b, int c);
 
 // FUNCTION: GAMEMD 0x5BF850
 // PARTIAL (84.4%): load order around the second call differs (retail reads
@@ -132,7 +132,7 @@ void FUN_005BF950()
 }
 
 // FUNCTION: GAMEMD 0x5BFF00
-void __fastcall FUN_005BFF00(Obj_005C01A0* data)
+void FUN_005BFF00(Obj_005C01A0* data)
 {
     Release_005BFF00(data);
 }
@@ -401,15 +401,15 @@ struct Surface_005C07D0
 };
 
 // FUNCTION: GAMEMD 0x5BFAA0 (decl; reloc)
-Obj_005C01A0* __fastcall FUN_005BFAA0(const char* name, Surface_005C07D0* surface,
-                                      RectangleStruct a, RectangleStruct b, int c, int d);
+Obj_005C01A0* FUN_005BFAA0(const char* name, Surface_005C07D0* surface,
+                           RectangleStruct a, RectangleStruct b, int c, int d);
 
 // FUNCTION: GAMEMD 0x5C0640
 // PARTIAL (71.8%): the .VQA strcpy is scheduled differently. Tried: nested
 // ifs (45.1%), one || condition (38.3%), a found flag (best, both forms).
 // Strip the extension, tell the options object the bare name, then look for
 // NAME.BIK and then NAME.VQA; copy the one found to `out` when given.
-bool __fastcall FUN_005C0640(const char* name, char* out, int unused)
+bool FUN_005C0640(const char* name, char* out, int unused)
 {
     char buffer[200];
     strcpy(buffer, name);
@@ -436,7 +436,7 @@ bool __fastcall FUN_005C0640(const char* name, char* out, int unused)
 // store order differs (see 0x5C0240).
 // Open a movie by name on a surface: a Bink handle for .bik files, otherwise
 // a VQ handle over a freshly loaded state block.
-MovieHandle* __fastcall FUN_005C07D0(const char* name, Surface_005C07D0* surface, RectangleStruct* rect)
+MovieHandle* FUN_005C07D0(const char* name, Surface_005C07D0* surface, RectangleStruct* rect)
 {
     char buffer[200];
     if (surface == 0 || !FUN_005C0640(name, buffer, true))

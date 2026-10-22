@@ -127,7 +127,7 @@ GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 struct CCFile_005B40B0
 {
@@ -148,10 +148,10 @@ GG_STATIC_ASSERT(sizeof(CCFile_005B40B0)            == 0x6C);
 
 // Cache(name, mode) — FUN_005B43E0, __fastcall(const char* name, int mode),
 // returns bool. Mounts a generic .MIX into the engine cache.
-bool __fastcall MixCache(const char* name, int mode);
+bool MixCache(const char* name, int mode);
 
 // FUN_004790B0 — __fastcall(int): push/restore the file search mode.
-void __fastcall SetFileSearchMode(int mode);
+void SetFileSearchMode(int mode);
 
 // FUN_004A4AC0 — variadic cdecl progress logger (" %s", " CACHE.MIX", ...).
 void Log_4a4ac0(const char* fmt, ...);

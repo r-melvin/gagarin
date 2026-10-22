@@ -35,11 +35,11 @@ extern char VT_007E16B0;
 extern char VT_007E1668;
 
 // FUNCTION: GAMEMD 0x47AA30 (decl; reloc) -- the CDFileClass constructor.
-void __fastcall FUN_0047AA30(void* self);
+void FUN_0047AA30(void* self);
 // FUNCTION: GAMEMD 0x43AE50 (decl; reloc) -- MemoryBuffer release.
-void __fastcall FUN_0043AE50(void* buffer);
+void FUN_0043AE50(void* buffer);
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) -- the BufferIOFileClass destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 // The MIX archive record: only its file name at +0x0C is read.
 struct Mix_00473F00
@@ -52,8 +52,8 @@ GG_STATIC_ASSERT(offsetof(Mix_00473F00, FileName) == 0x0C);
 // FUNCTION: GAMEMD 0x5B4430 (decl; reloc) -- MixFileClass::Offset: locate a
 // file by name across the loaded archives; the archive comes back through
 // the third argument.
-bool __fastcall FUN_005B4430(const char* filename, void** data,
-                             Mix_00473F00** mixfile, int* offset, int* length);
+bool FUN_005B4430(const char* filename, void** data,
+                  Mix_00473F00** mixfile, int* offset, int* length);
 
 // MemoryBuffer (0x0C bytes): the (void*, int) constructor is out of line.
 struct MemoryBuffer_00473F00

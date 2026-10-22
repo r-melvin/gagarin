@@ -83,7 +83,7 @@ extern "C" void  __cdecl FUN_007C8B3D(void* block);
 extern "C" char* __cdecl FUN_007CAF30(const char* string, int ch);
 // FUNCTION: GAMEMD 0x727CF0  strtrim - trims leading and trailing whitespace
 // in place. Takes its buffer in ECX and pops nothing, so it is __fastcall.
-void __fastcall FUN_00727CF0(char* buffer);
+void FUN_00727CF0(char* buffer);
 // Slot zero of every class in this cluster: the scalar deleting destructor.
 // `this` in ECX, the flag word pushed, the object returned in EAX. Modelled as
 // slot zero of an abstract stand-in so the indirect call keeps retail's shape

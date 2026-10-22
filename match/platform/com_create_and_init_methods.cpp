@@ -20,8 +20,8 @@
 // for both the call and the return. The copy is what produces that (40.5% to
 // byte parity), and it is also why retail saves one more register than the
 // address-taken form needs.
-Target_0046B050* __fastcall FUN_0046B050(int a, int b, int c, int d, int e,
-                                         int f, int g)
+Target_0046B050* FUN_0046B050(int a, int b, int c, int d, int e,
+                              int f, int g)
 {
     Target_0046B050* created = 0;
 

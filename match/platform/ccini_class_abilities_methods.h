@@ -31,7 +31,7 @@ extern const char DAT_00817F70[];
 
 // FUNCTION: GAMEMD 0x74FEF0 (decl; reloc) — ability name to index, -1 if
 // unknown; the string arrives in ECX.
-int __fastcall FUN_0074FEF0(const char* name);
+int FUN_0074FEF0(const char* name);
 
 // One flag per veteran/elite ability, 18 of them.
 struct AbilitiesStruct
