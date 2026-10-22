@@ -69,7 +69,7 @@ extern bool DAT_008487BC;
 extern bool DAT_008487BD;
 
 // FUNCTION: GAMEMD 0x72E450 (decl; reloc) -- __fastcall, (surface, rectangle, 1).
-void __fastcall FUN_0072E450(int surface, MSRect* area, int flag);
+void FUN_0072E450(int surface, MSRect* area, int flag);
 
 // ---- MSFrameAnim -----------------------------------------------------------------------------------------------------
 
@@ -205,7 +205,7 @@ class WDTPalette : public WDTOwned
 };
 
 // FUNCTION: GAMEMD 0x5CB590 (decl; reloc) -- __fastcall, loads the named palette.
-WDTPalette* __fastcall FUN_005CB590(const Obj_007B4620& name);
+WDTPalette* FUN_005CB590(const Obj_007B4620& name);
 
 // Screen surfaces released by the map's destructor.
 class WDTScreenSurface
@@ -297,7 +297,7 @@ using WorldDominationTour::Map;
 
 // FUNCTION: GAMEMD 0x767FB0
 // The Map factory (hidden result pointer in ECX, the first argument in EDX).
-rc_ptr<Map> __fastcall FUN_00767FB0(int a, int b, int c)
+rc_ptr<Map> FUN_00767FB0(int a, int b, int c)
 {
     return rc_ptr<Map>(new Map(a, b, c));
 }
@@ -424,7 +424,7 @@ int Map::FUN_00769440(const WDTPoint* point)
 
 // FUNCTION: GAMEMD 0x769540
 // Clamp: values above 29 become 255.
-int __fastcall FUN_00769540(unsigned int value)
+int FUN_00769540(unsigned int value)
 {
     if (value > 0x1D)
         value = 0xFF;

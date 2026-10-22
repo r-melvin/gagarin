@@ -18,8 +18,8 @@ extern const char STR_00825FD0[];
 extern const char STR_0082E134[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
-                                           const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
 
 // The 4-byte local the dialog runs on: one pointer, set to &DAT_0082083C.
 struct Dialog_005D3490
@@ -38,7 +38,7 @@ GG_STATIC_ASSERT(sizeof(Dialog_005D3490) == 4);
 
 // FUNCTION: GAMEMD 0x5C60D0
 // Ask an OK / Cancel question; true when the first button (OK) was chosen.
-bool __fastcall FUN_005C60D0(const wchar_t* message)
+bool FUN_005C60D0(const wchar_t* message)
 {
     Dialog_005D3490 dialog;
     return dialog.FUN_005D3490(message,

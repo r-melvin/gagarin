@@ -298,7 +298,7 @@ GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_3C) == 0x3C);
 
 // 0x53F830 (defined in conn_ipx.cpp)
-int __fastcall FUN_0053F830(void* buf, int buflen);
+int FUN_0053F830(void* buf, int buflen);
 
 // LIBRARY: GAMEMD 0x7CA489 (CRT wcscpy, cdecl)
 extern "C" wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);

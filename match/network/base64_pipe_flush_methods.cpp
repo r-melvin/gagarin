@@ -15,9 +15,9 @@
 #include "base64_pipe_flush_methods.h"
 
 // FUNCTION: GAMEMD 0x42FD30 (decl; reloc) -- external call target only.
-int __fastcall FUN_0042FD30(void* state, int pending, void* buffer, int width);
+int FUN_0042FD30(void* state, int pending, void* buffer, int width);
 // FUNCTION: GAMEMD 0x42FE50 (decl; reloc) -- external call target only.
-int __fastcall FUN_0042FE50(void* state, int pending, void* buffer, int width);
+int FUN_0042FE50(void* state, int pending, void* buffer, int width);
 
 // FUNCTION: GAMEMD 0x42DF40
 int Base64Pipe::FUN_00631D30()

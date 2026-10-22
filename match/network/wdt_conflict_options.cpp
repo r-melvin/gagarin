@@ -22,7 +22,7 @@ using WorldDominationTour::Conflict;
 // FUNCTION: GAMEMD 0x765F60
 // Wraps a new Conflict over the territory; the result is the hidden first
 // argument.
-rc_ptr<Conflict> __fastcall FUN_00765F60(const rc_ptr<WDTTerritory>& territory)
+rc_ptr<Conflict> FUN_00765F60(const rc_ptr<WDTTerritory>& territory)
 {
     return rc_ptr<Conflict>(new Conflict(territory));
 }
@@ -43,13 +43,13 @@ int Conflict::FUN_00766060() const
 }
 
 // FUNCTION: GAMEMD 0x7667E0
-int __fastcall FUN_007667E0(const Obj_007667E0* object)
+int FUN_007667E0(const Obj_007667E0* object)
 {
     return object->unknown_0E;
 }
 
 // FUNCTION: GAMEMD 0x7667F0
-int __fastcall FUN_007667F0(const Obj_007667E0* object)
+int FUN_007667F0(const Obj_007667E0* object)
 {
     return object->unknown_0F;
 }

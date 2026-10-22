@@ -53,13 +53,13 @@ GG_STATIC_ASSERT(sizeof(LoopbackAddress_00AA06AC) == 0xC);
 
 // FUNCTION: GAMEMD 0x53F4F0 (decl; reloc) -- stores its seven arguments in
 // the 0xAA05xx block; ECX/EDX + five stack words, RET 0x14.
-void __fastcall FUN_0053F4F0(unsigned short a1, int a2, int a3, int a4, int a5, int a6, int a7);
+void FUN_0053F4F0(unsigned short a1, int a2, int a3, int a4, int a5, int a6, int a7);
 // FUNCTION: GAMEMD 0x53F540 (decl; reloc)
 int __cdecl FUN_0053F540();
 // FUNCTION: GAMEMD 0x53F5B0 (decl; reloc)
 void __cdecl FUN_0053F5B0();
 // FUNCTION: GAMEMD 0x735120 (decl; reloc) -- widen a narrow string; ECX = text.
-wchar_t* __fastcall FUN_00735120(const char* text);
+wchar_t* FUN_00735120(const char* text);
 
 // GLOBAL: GAMEMD 0xA8DA74 -- the player vector (Items 0xA8DA78, Count 0xA8DA84).
 extern DynamicVectorClass<NetPlayerClass*> Players_00A8DA74;

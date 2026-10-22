@@ -42,6 +42,6 @@ GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x5D5F30 — MultiplayerGameMode::Get (static).
-MultiplayerGameMode* __fastcall MultiplayerGameMode_Get(int index);
+MultiplayerGameMode* MultiplayerGameMode_Get(int index);
 
 #endif  // GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_GET_METHODS_H

@@ -140,13 +140,13 @@ String_007B4620 DAT_00B76AC4;
 extern int DAT_00A8B244;
 
 // FUNCTION: GAMEMD 0x77CF40
-int __fastcall FUN_0077CF40()
+int FUN_0077CF40()
 {
     return DAT_00A8B244 == 3 || DAT_00A8B244 == 1 || DAT_00A8B244 == 2;
 }
 
 // FUNCTION: GAMEMD 0x77CF60
-int __fastcall FUN_0077CF60()
+int FUN_0077CF60()
 {
     return DAT_00A8B244 == 2;
 }
@@ -180,7 +180,7 @@ String_007B4620 DAT_00B765EC;
 String_007B4620 DAT_00B76900;
 
 // FUNCTION: GAMEMD 0x77D190
-void __fastcall FUN_0077D190()
+void FUN_0077D190()
 {
 }
 
@@ -190,7 +190,7 @@ WideString_007B66C0 DAT_00B76230;
 
 // FUNCTION: GAMEMD 0x77D210
 // Replaces every space in the text with an underscore.
-void __fastcall FUN_0077D210(char* text)
+void FUN_0077D210(char* text)
 {
     char* p = strchr(text, ' ');
     while (p != NULL) {
@@ -209,7 +209,7 @@ extern Entry_00B77908* DAT_00B77908;
 
 // FUNCTION: GAMEMD 0x77D240
 // Index of the record whose +0x24 name equals `name` (case-insensitive), or -1.
-int __fastcall FUN_0077D240(String_007B4620* name)
+int FUN_0077D240(String_007B4620* name)
 {
     Entry_00B77908* entry = NULL;
 
@@ -225,9 +225,9 @@ int __fastcall FUN_0077D240(String_007B4620* name)
 }
 
 // FUNCTION: GAMEMD 0x775940 (decl; reloc)
-int __fastcall FUN_00775940(int id);
+int FUN_00775940(int id);
 // FUNCTION: GAMEMD 0x7B7D90 (decl; reloc)
-bool __fastcall FUN_007B7D90(void* object);
+bool FUN_007B7D90(void* object);
 
 // GLOBAL: GAMEMD 0xB779C0
 extern int DAT_00B779C0;
@@ -240,7 +240,7 @@ struct Obj_0077D2A0
 };
 
 // FUNCTION: GAMEMD 0x77D2A0
-bool __fastcall FUN_0077D2A0(Obj_0077D2A0* flags)
+bool FUN_0077D2A0(Obj_0077D2A0* flags)
 {
     if (flags == NULL) return false;
     if (flags->unknown_00 & 1) return true;
@@ -250,7 +250,7 @@ bool __fastcall FUN_0077D2A0(Obj_0077D2A0* flags)
 }
 
 // FUNCTION: GAMEMD 0x77D2E0
-bool __fastcall FUN_0077D2E0(Obj_0077D2A0* flags, void* object)
+bool FUN_0077D2E0(Obj_0077D2A0* flags, void* object)
 {
     if (flags == NULL) return false;
     if (flags->unknown_00 & 1) return true;
@@ -261,7 +261,7 @@ bool __fastcall FUN_0077D2E0(Obj_0077D2A0* flags, void* object)
 }
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
-const wchar_t* __fastcall FUN_00734E60(const char* label, int* out, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int* out, const char* file, int line);
 // FUNCTION: GAMEMD 0x7DDE80 (decl; reloc)
 int __cdecl FUN_007DDE80(void* target, const wchar_t* text, int length);
 
@@ -269,7 +269,7 @@ int __cdecl FUN_007DDE80(void* target, const wchar_t* text, int length);
 static const char DAT_0084A430[] = "D:\\ra2mdpost\\wonline.cpp";
 
 // FUNCTION: GAMEMD 0x77D350
-bool __fastcall FUN_0077D350(void* target)
+bool FUN_0077D350(void* target)
 {
     wchar_t text[256];
     swprintf(text, FUN_00734E60("TXT_BUDDY_FILTER", NULL, DAT_0084A430, 0x369));
@@ -300,7 +300,7 @@ static inline bool FUN_0077D4C0_InList(Entry_00B77908* entry)
 // FUNCTION: GAMEMD 0x77D4C0
 //   Not exact (75% aligned): retail keeps one 4-byte frame slot and shares the
 //   exits; this build allocates two slots and duplicates the epilogues.
-bool __fastcall FUN_0077D4C0(Entry_00B77908* entry)
+bool FUN_0077D4C0(Entry_00B77908* entry)
 {
     if (!DAT_00B76AF0 && !DAT_00B73AD0) return true;
     if (!FUN_00775940(0x113)) return true;
@@ -330,10 +330,10 @@ bool __fastcall FUN_0077D4C0(Entry_00B77908* entry)
 }
 
 // FUNCTION: GAMEMD 0x77F900 (decl; reloc)
-void __fastcall FUN_0077F900();
+void FUN_0077F900();
 
 // FUNCTION: GAMEMD 0x77D710
-void __fastcall FUN_0077D710()
+void FUN_0077D710()
 {
     FUN_0077F900();
 }
@@ -371,7 +371,7 @@ GG_STATIC_ASSERT(offsetof(Obj_0077D720, unknown_18) == 0x18);
 // FUNCTION: GAMEMD 0x77D720
 //   Not exact (29% aligned): retail zeroes the address as one dword and
 //   schedules the octet stores differently.
-Value_0053ECE0 __fastcall FUN_0077D720(Obj_0077D720* host)
+Value_0053ECE0 FUN_0077D720(Obj_0077D720* host)
 {
     Address_0077D720 address = { { 0, 0, 0, 0 }, 0 };
     int first = 0;
@@ -390,7 +390,7 @@ extern ThemeClass DAT_00A83D10;
 static const char DAT_008263A8[] = "INTRO";
 
 // FUNCTION: GAMEMD 0x77D7A0
-void __fastcall FUN_0077D7A0(bool start)
+void FUN_0077D7A0(bool start)
 {
     if (start) {
         if (!DAT_00A83D10.FUN_00720FD0()) {
@@ -410,11 +410,11 @@ void __fastcall FUN_0077D7A0(bool start)
 }
 
 // FUNCTION: GAMEMD 0x5E26C0 (decl; reloc)
-void* __fastcall FUN_005E26C0();
+void* FUN_005E26C0();
 
 
 // FUNCTION: GAMEMD 0x77D820
-bool __fastcall FUN_0077D820()
+bool FUN_0077D820()
 {
     UI::Updated();
     void* window = FUN_005E26C0();
@@ -427,7 +427,7 @@ bool __fastcall FUN_0077D820()
 // FUNCTION: GAMEMD 0x78D120 (decl; reloc)
 int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wparam, long lparam);
 // FUNCTION: GAMEMD 0x7759E0 (decl; reloc)
-void __fastcall FUN_007759E0(void* window, bool (__fastcall* idle)(), int unknown, bool flag1, bool flag2);
+void FUN_007759E0(void* window, bool (* idle)(), int unknown, bool flag1, bool flag2);
 
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
@@ -446,7 +446,7 @@ extern GScreen_004F4480 GScreen_0087F7E8;
 // FUNCTION: GAMEMD 0x77D840
 //   The idle callback is chosen by two whole calls: cl merges their common
 //   pushes and selects EDX last, as retail does.
-void __fastcall FUN_0077D840()
+void FUN_0077D840()
 {
     void* window = UI_BeginDialog(0xCF, FUN_0078D120, 0);
     DAT_00A8ED9C = true;
@@ -463,34 +463,34 @@ void __fastcall FUN_0077D840()
 }
 
 // FUNCTION: GAMEMD 0x773E90 (decl; reloc)
-void __fastcall FUN_00773E90(const char* page);
+void FUN_00773E90(const char* page);
 
 // FUNCTION: GAMEMD 0x77D8C0
-void __fastcall FUN_0077D8C0()
+void FUN_0077D8C0()
 {
     FUN_00773E90("Battleclans");
 }
 
 // FUNCTION: GAMEMD 0x77D8D0
-void __fastcall FUN_0077D8D0()
+void FUN_0077D8D0()
 {
     FUN_00773E90("Battleclans");
 }
 
 // FUNCTION: GAMEMD 0x77D8E0
-void __fastcall FUN_0077D8E0()
+void FUN_0077D8E0()
 {
     FUN_00773E90("Ladder");
 }
 
 // FUNCTION: GAMEMD 0x77D8F0
-void __fastcall FUN_0077D8F0()
+void FUN_0077D8F0()
 {
     FUN_00773E90("News");
 }
 
 // FUNCTION: GAMEMD 0x77D900
-void __fastcall FUN_0077D900()
+void FUN_0077D900()
 {
     FUN_00773E90("Manage");
 }
@@ -515,7 +515,7 @@ GG_STATIC_ASSERT(sizeof(Obj_0077D910) == 0x24);
 // FUNCTION: GAMEMD 0x77D910
 //   Not exact (45% aligned): retail spills the bit to a byte local and returns
 //   0/1 through EAX.
-bool __fastcall FUN_0077D910(Obj_0077D910* flags)
+bool FUN_0077D910(Obj_0077D910* flags)
 {
     if (DAT_00A8B238 != 4) return false;
     if (flags->unknown_14 != 0) return true;
@@ -524,21 +524,21 @@ bool __fastcall FUN_0077D910(Obj_0077D910* flags)
 }
 
 // FUNCTION: GAMEMD 0x77D990
-bool __fastcall FUN_0077D990(Obj_0077D910* flags)
+bool FUN_0077D990(Obj_0077D910* flags)
 {
     if (DAT_00A8B238 != 4) return false;
     return flags->unknown_20_8;
 }
 
 // FUNCTION: GAMEMD 0x77D9B0
-bool __fastcall FUN_0077D9B0(Obj_0077D910* flags)
+bool FUN_0077D9B0(Obj_0077D910* flags)
 {
     if (DAT_00A8B238 != 4) return false;
     return flags->unknown_20_11;
 }
 
 // FUNCTION: GAMEMD 0x77D9D0
-bool __fastcall FUN_0077D9D0(Obj_0077D910* flags)
+bool FUN_0077D9D0(Obj_0077D910* flags)
 {
     if (DAT_00A8B238 != 4) return false;
     return flags->unknown_20_12;
@@ -551,7 +551,7 @@ String_007B4620 DAT_00B73E40;
 String_007B4620 DAT_00B7778C;
 
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
-const char* __fastcall FUN_007350C0(const wchar_t* text);
+const char* FUN_007350C0(const wchar_t* text);
 
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;
@@ -582,7 +582,7 @@ inline VALUE* HashFind_0077DA50(HashTable_006249A0<KEY, VALUE>& table, const KEY
 //   the node offset.
 // A fresh copy of the record filed under the lower-cased name, or a zeroed
 // one when it is absent; null when allocation fails.
-Entry_00B77908* __fastcall FUN_0077DA50(const wchar_t* name)
+Entry_00B77908* FUN_0077DA50(const wchar_t* name)
 {
     String_007B4620 key(FUN_007350C0(name));
     key.FUN_007B5B30();
@@ -602,11 +602,11 @@ Entry_00B77908* __fastcall FUN_0077DA50(const wchar_t* name)
 }
 
 // FUNCTION: GAMEMD 0x5E93F0 (decl; reloc)
-bool __fastcall FUN_005E93F0(const wchar_t* text);
+bool FUN_005E93F0(const wchar_t* text);
 // FUNCTION: GAMEMD 0x5EDEF0 (decl; reloc)
-String_007B4620 __fastcall FUN_005EDEF0(const wchar_t* text);
+String_007B4620 FUN_005EDEF0(const wchar_t* text);
 // FUNCTION: GAMEMD 0x7B7F90 (decl; reloc)
-String_007B4620 __fastcall FUN_007B7F90(const WideString_007B66C0& text);
+String_007B4620 FUN_007B7F90(const WideString_007B66C0& text);
 // LIBRARY: GAMEMD 0x7CB550 -- CRT strncat.
 
 // GLOBAL: GAMEMD 0xA8DA90
@@ -632,7 +632,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_3C) == 0x3C);
 extern Obj_00AC116C* DAT_00AC116C;
 
 // FUNCTION: GAMEMD 0x77DB90
-void __fastcall FUN_0077DB90()
+void FUN_0077DB90()
 {
     char text[256];
     strcpy(text, DAT_0084A480);
@@ -660,7 +660,7 @@ void __fastcall FUN_0077DB90()
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 
 // FUNCTION: GAMEMD 0x5E2CD0 (decl; reloc)
-int __fastcall FUN_005E2CD0(const wchar_t* text, int buttons, void (__fastcall* idle)(), bool flag);
+int FUN_005E2CD0(const wchar_t* text, int buttons, void (* idle)(), bool flag);
 
 // STRING: GAMEMD 0x82976C
 extern const char DAT_0082976C[];
@@ -675,7 +675,7 @@ extern bool DAT_00A8ED80;
 // Opens `url` in the system browser (found through a temporary HTML file)
 // and waits for the browser to exit or the game to come back to the front.
 // Without `quiet` the player is asked first.
-void __fastcall FUN_0077DC90(const char* url, int quiet)
+void FUN_0077DC90(const char* url, int quiet)
 {
     char command[272];
     char browser[264];

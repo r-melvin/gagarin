@@ -14,8 +14,8 @@
 using WorldDominationTour::CampaignProperties;
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
-                                           const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
 
 // GLOBAL: GAMEMD 0x889F64 -- the shared empty default string.
 extern const char STR_00889F64[];

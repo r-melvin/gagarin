@@ -223,7 +223,7 @@ extern DynamicVectorClass<PlayerNode_005D6890*> PlayerList_00A8DA74;
 extern int DAT_00A8B548;
 
 // FUNCTION: GAMEMD 0x5C1030 (decl; reloc) -- a new MultiplayerBattleTeam for an index.
-MultiplayerTeam* __fastcall FUN_005C1030(int index);
+MultiplayerTeam* FUN_005C1030(int index);
 
 // GLOBAL: GAMEMD 0xABFDD4
 static bool DAT_00ABFDD4;
@@ -489,7 +489,7 @@ bool MultiplayerGameMode::vf_13(int a)
 // Also 79.3%, so no lever on that decision: the count through GetCount() (kept
 // here), the count through a second inline accessor wrapping Modes, and the
 // item through an inline operator[] together with GetCount().
-MultiplayerGameMode* __fastcall MultiplayerGameMode_Get(int index)
+MultiplayerGameMode* MultiplayerGameMode_Get(int index)
 {
     int i;
 

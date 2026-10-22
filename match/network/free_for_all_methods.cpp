@@ -8,7 +8,7 @@
 #include "mpteams_methods.h"
 
 // FUNCTION: GAMEMD 0x623840 (decl; reloc) -- empty a combo box.
-int __fastcall FUN_00623840(HWND hWnd);
+int FUN_00623840(HWND hWnd);
 
 // FUNCTION: GAMEMD 0x5C5CE0
 // All six arguments go straight to the base constructor.

@@ -5,7 +5,7 @@
 #include "mp_battle_class.h"
 
 // FUNCTION: GAMEMD 0x7B7DD0 (decl; reloc)
-Obj_007B66D0 __fastcall FUN_007B7DD0(int index);
+Obj_007B66D0 FUN_007B7DD0(int index);
 
 // FUNCTION: GAMEMD 0x5C0DD0
 MultiplayerBattle::MultiplayerBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
@@ -34,7 +34,7 @@ MultiplayerBattleTeam::MultiplayerBattleTeam(const Obj_007B66D0& name, int index
 // PARTIAL (67.6%): instruction multiset identical; retail keeps the index in
 // EDI and the block in ESI, cl swaps them. Tried: direct return, a named
 // local, an unsigned index.
-MultiplayerTeam* __fastcall FUN_005C1030(int index)
+MultiplayerTeam* FUN_005C1030(int index)
 {
     return new MultiplayerBattleTeam(FUN_007B7DD0(index), index);
 }

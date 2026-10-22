@@ -94,7 +94,7 @@ GG_STATIC_ASSERT(offsetof(NullModemDialView, unknown_28) == 0x28
               && offsetof(NullModemDialView, unknown_30) == 0x30);
 
 // Short pause helper (fastcall, one argument).
-void __fastcall FUN_004a50a0(int ticks);
+void FUN_004a50a0(int ticks);
 
 // The pump-enable flags, used here as a whole dword (bit 0 cleared while the
 // modem is driven directly); same declaration as core/unsorted_callback_methods.h.
@@ -490,7 +490,7 @@ bool NullModemInitView::FUN_005f3170()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005F3340
-void __fastcall FUN_005F3340()
+void FUN_005F3340()
 {
 }
 

@@ -64,12 +64,12 @@ GG_STATIC_ASSERT(sizeof(History) == 0x10);
 }  // namespace WorldDominationTour
 
 // FUNCTION: GAMEMD 0x76F470 (decl; reloc) -- the State factory, same shape as 0x767B00.
-rc_ptr<WorldDominationTour::State> __fastcall FUN_0076F470(const rc_ptr<WDTState>& state, int arg);
+rc_ptr<WorldDominationTour::State> FUN_0076F470(const rc_ptr<WDTState>& state, int arg);
 
 // FUNCTION: GAMEMD 0x767B00
 // The History factory: a new History over `state`, returned in a handle
 // (hidden result pointer in ECX, the source in EDX).
-rc_ptr<WorldDominationTour::History> __fastcall FUN_00767B00(const rc_ptr<WDTState>& state)
+rc_ptr<WorldDominationTour::History> FUN_00767B00(const rc_ptr<WDTState>& state)
 {
     return rc_ptr<WorldDominationTour::History>(new WorldDominationTour::History(state));
 }

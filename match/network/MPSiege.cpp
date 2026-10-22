@@ -47,7 +47,7 @@ extern DynamicVectorClass<HouseClass*> DAT_00A80228;
 
 // FUNCTION: GAMEMD 0x688380 (decl; reloc) -- the scenario's start cells, built
 // into the caller's vector (hidden pointer in ECX, the flag in DL).
-DynamicVectorClass<Cell> __fastcall FUN_00688380(bool unknown);
+DynamicVectorClass<Cell> FUN_00688380(bool unknown);
 
 // GLOBAL: GAMEMD 0x8871E0 -- the rules object; 0x5CAB33 passes the address of
 // its +0x8AC member (a type list) to 0x5051E0.
@@ -61,11 +61,11 @@ extern Rules_008871E0* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x688ED0 (decl; reloc) -- __fastcall: the building in ECX,
 // the cell's address in EDX, one stacked dword; nonzero on success.
-int __fastcall FUN_00688ED0(BuildingClass* building, const Cell& cell, int unknown);
+int FUN_00688ED0(BuildingClass* building, const Cell& cell, int unknown);
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised
 // text; __fastcall with the file and line on the stack, RET 8.
-const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 // SYNTHETIC: GAMEMD 0x5CA450
 // GLOBAL: GAMEMD 0xABFA70

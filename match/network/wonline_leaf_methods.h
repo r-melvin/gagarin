@@ -16,13 +16,13 @@
 #include "../audio/theme_class_methods.h"
 
 // FUNCTION: GAMEMD 0x775B10 (decl; reloc)
-void* __fastcall FUN_00775B10();
+void* FUN_00775B10();
 
 // FUNCTION: GAMEMD 0x7757E0 (decl; reloc)
-void __fastcall FUN_007757E0(void* object, int flag);
+void FUN_007757E0(void* object, int flag);
 
 // FUNCTION: GAMEMD 0x775940 (decl; reloc)
-HWND __fastcall FUN_00775940(int id);
+HWND FUN_00775940(int id);
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
 
@@ -84,7 +84,7 @@ struct Vec_00B778D8
 extern Vec_00B778D8 DAT_00B778D8;
 
 // FUNCTION: GAMEMD 0x7864C0 (decl; reloc)
-bool __fastcall FUN_007864C0(Record_00B778E0* record);
+bool FUN_007864C0(Record_00B778E0* record);
 
 // GLOBAL: GAMEMD 0xA8DA84
 extern int DAT_00A8DA84;
@@ -131,7 +131,7 @@ extern int DAT_00B77D70;
 extern int DAT_00B77A88;
 
 // FUNCTION: GAMEMD 0x785740 (decl; reloc)
-void __fastcall FUN_00785740(int value);
+void FUN_00785740(int value);
 
 struct Obj_007ACD30
 {
@@ -199,16 +199,16 @@ struct Table_007AE8E0 : public HashTable_006249A0<String_007B4620, Value_007AE8E
 };
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
-const wchar_t* __fastcall FUN_00734E60(const char* label, int* out, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int* out, const char* file, int line);
 
 // FUNCTION: GAMEMD 0x775700 (decl; reloc)
-HWND __fastcall FUN_00775700(void* context, int id, HWND parent, void* proc, int flags);
+HWND FUN_00775700(void* context, int id, HWND parent, void* proc, int flags);
 
 // FUNCTION: GAMEMD 0x622820 (decl; reloc)
-void __fastcall FUN_00622820(HWND window, int id);
+void FUN_00622820(HWND window, int id);
 
 // FUNCTION: GAMEMD 0x7759E0 (decl; reloc)
-void __fastcall FUN_007759E0(HWND window, void* proc, int a, int b, int c);
+void FUN_007759E0(HWND window, void* proc, int a, int b, int c);
 
 // FUNCTION: GAMEMD 0x77F900 (decl; reloc)
 void __cdecl FUN_0077F900();
@@ -235,13 +235,13 @@ struct Obj_00781CC0
 };
 
 // FUNCTION: GAMEMD 0x781FB0 (decl; reloc)
-void __fastcall FUN_00781FB0(void* object, bool flag);
+void FUN_00781FB0(void* object, bool flag);
 
 // FUNCTION: GAMEMD 0x782320 (decl; reloc)
-void __fastcall FUN_00782320(void* object, bool flag);
+void FUN_00782320(void* object, bool flag);
 
 // FUNCTION: GAMEMD 0x782BB0 (decl; reloc)
-void __fastcall FUN_00782BB0(void* object, bool flag);
+void FUN_00782BB0(void* object, bool flag);
 
 // GLOBAL: GAMEMD 0xB77E48
 extern int DAT_00B77E48;
@@ -250,13 +250,13 @@ extern int DAT_00B77E48;
 void __cdecl FUN_005E2700(int id, const wchar_t* format, ...);
 
 // FUNCTION: GAMEMD 0x5E2CD0 (decl; reloc)
-void __fastcall FUN_005E2CD0(const wchar_t* text, int a, void* proc, char b);
+void FUN_005E2CD0(const wchar_t* text, int a, void* proc, char b);
 
 // FUNCTION: GAMEMD 0x735120 (decl; reloc)
-const wchar_t* __fastcall FUN_00735120(const char* text);
+const wchar_t* FUN_00735120(const char* text);
 
 // FUNCTION: GAMEMD 0x77EBA0 (decl; reloc)
-int __fastcall FUN_0077EBA0(String_007B4620* name);
+int FUN_0077EBA0(String_007B4620* name);
 
 // LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
 extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
@@ -277,19 +277,19 @@ extern String_007B4620 DAT_00B76E24;
 extern HashTable_006249A0<String_007B4620, int> DAT_00B76990;
 
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
-const char* __fastcall FUN_007350C0(void* player);
+const char* FUN_007350C0(void* player);
 
 // FUNCTION: GAMEMD 0x5E26C0 (decl; reloc)
-void* __fastcall FUN_005E26C0();
+void* FUN_005E26C0();
 
 // FUNCTION: GAMEMD 0x4E34A0 (decl; reloc)
-void __fastcall FUN_004E34A0(void* object, int slot, int value);
+void FUN_004E34A0(void* object, int slot, int value);
 
 // FUNCTION: GAMEMD 0x5E93F0 (decl; reloc)
-bool __fastcall FUN_005E93F0(void* player);
+bool FUN_005E93F0(void* player);
 
 // FUNCTION: GAMEMD 0x7A0EA0
-void __fastcall FUN_007A0EA0(const char* name, int value);
+void FUN_007A0EA0(const char* name, int value);
 
 // GLOBAL: GAMEMD 0xA8DA90 -- the eight player slots.
 extern void* DAT_00A8DA90[8];
@@ -298,10 +298,10 @@ extern void* DAT_00A8DA90[8];
 extern int DAT_00B76440[8];
 
 // FUNCTION: GAMEMD 0x792BE0 (decl; reloc)
-void __fastcall FUN_00792BE0(int mode, WideString_007B66C0* text, int flag);
+void FUN_00792BE0(int mode, WideString_007B66C0* text, int flag);
 
 // FUNCTION: GAMEMD 0x797640 (decl; reloc)
-void __fastcall FUN_00797640(int mode);
+void FUN_00797640(int mode);
 
 // GLOBAL: GAMEMD 0xA8B244
 extern int DAT_00A8B244;
@@ -316,7 +316,7 @@ extern int DAT_00B77E60;
 extern int DAT_00B77E64;
 
 // FUNCTION: GAMEMD 0x5EC880 (decl; reloc)
-void __fastcall FUN_005EC880(HWND window, int a, int b, int c);
+void FUN_005EC880(HWND window, int a, int b, int c);
 
 // GLOBAL: GAMEMD 0xA8E050 -- per-slot port numbers.
 extern short DAT_00A8E050[];
@@ -410,6 +410,6 @@ extern int DAT_00B76234;
 // GLOBAL: GAMEMD 0xB7690C
 extern int DAT_00B7690C;
 // FUNCTION: GAMEMD 0x5EE350 (decl; reloc)
-void __fastcall FUN_005EE350(int value);
+void FUN_005EE350(int value);
 
 #endif // GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H

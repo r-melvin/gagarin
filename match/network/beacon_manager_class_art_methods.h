@@ -31,7 +31,7 @@ extern Shp_004309D0* DAT_0089C474;
 extern Shp_004309D0* DAT_0089C478;
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) — MixFileClass::Retrieve.
-Shp_004309D0* __fastcall FUN_005B40B0(const char* name, char force);
+Shp_004309D0* FUN_005B40B0(const char* name, char force);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) — the debug log sink.
 void __cdecl FUN_004068E0(const char* text);
 

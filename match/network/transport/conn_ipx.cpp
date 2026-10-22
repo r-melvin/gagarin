@@ -116,7 +116,7 @@ int IPXConnClass::vf_10(void* buf, int buflen, IPXAddressClass* address,
 // FUNCTION: GAMEMD 0x53F830
 // Broadcasts one packet through the packet interface (slot 4, not the alternate
 // port) and always reports success.
-int __fastcall FUN_0053F830(void* buf, int buflen)
+int FUN_0053F830(void* buf, int buflen)
 {
     Interface_00887628->Broadcast(buf, buflen, false);
     return 1;

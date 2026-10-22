@@ -56,7 +56,7 @@ extern IPXAddressClass Address_00A8BB1C;
 // STRING: GAMEMD 0x8286DC
 
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
-extern const char* __fastcall NarrowName_007350C0(const unsigned short* name);
+extern const char* NarrowName_007350C0(const unsigned short* name);
 
 // One row of the per-connection statistics table at 0xA8B574 (stride 0x68).
 struct ConnStat
@@ -90,7 +90,7 @@ extern void* PlayerSkipped_00A83D4C;
 // Register-argument convention (ECX = dest, EDX = src, one stack word,
 // callee pops): __fastcall.
 // FUNCTION: GAMEMD 0x735090 (decl; reloc)
-extern void __fastcall WideToNarrow_00735090(char* dest, const unsigned short* src, int max);
+extern void WideToNarrow_00735090(char* dest, const unsigned short* src, int max);
 
 // FUNCTION: GAMEMD 0x540C60
 void IPXManagerClass::SetTiming(int retrydelta, int maxretries, int timeout, bool setglobal)

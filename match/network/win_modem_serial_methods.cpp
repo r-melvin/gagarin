@@ -198,7 +198,7 @@ extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
 //
 // Walk the subkeys of `key`, open the one named `name` for reading and return
 // it (0 when none matches). The parent is closed afterwards on request.
-HKEY __fastcall FUN_007741C0(HKEY key, const char* name, bool closeParent)
+HKEY FUN_007741C0(HKEY key, const char* name, bool closeParent)
 {
     char className[0x400];
     DWORD classLength;

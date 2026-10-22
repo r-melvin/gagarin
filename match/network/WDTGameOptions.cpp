@@ -116,7 +116,7 @@ void __cdecl FUN_007672E0()
 
 // FUNCTION: GAMEMD 0x767300
 // VTABLE: GAMEMD 0x7F7060
-void __fastcall FUN_00767300(SeatDtorObject* self)
+void FUN_00767300(SeatDtorObject* self)
 {
     self->Vtbl = VTABLE_007F7060;
     FUN_0065D660(self);
@@ -162,7 +162,7 @@ int Obj_00767600::FUN_00767600(int) const
 
 // FUNCTION: GAMEMD 0x7676F0
 // Wraps a new MapSizeGameOption; the result is the hidden first argument.
-rc_ptr<MapSizeGameOption> __fastcall FUN_007676F0(unsigned int value)
+rc_ptr<MapSizeGameOption> FUN_007676F0(unsigned int value)
 {
     return rc_ptr<MapSizeGameOption>(new MapSizeGameOption(value));
 }

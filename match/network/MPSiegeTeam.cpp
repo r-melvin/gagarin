@@ -32,7 +32,7 @@ extern const char DAT_0082FFF4[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised
 // text; __fastcall with the file and line on the stack, RET 8.
-const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 // SYNTHETIC: GAMEMD 0x5CAC50
 // GLOBAL: GAMEMD 0xABFAF0

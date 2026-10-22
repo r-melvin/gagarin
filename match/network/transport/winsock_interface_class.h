@@ -33,7 +33,7 @@ extern HWND DAT_00B73550;
 
 // Additional ordinary-base dependencies used by the isolated selected methods.
 // FUNCTION: GAMEMD 0x64DE80 (decl; reloc) -- one checksum update.
-void __fastcall FUN_0064DE80(unsigned long* crc, unsigned long value);
+void FUN_0064DE80(unsigned long* crc, unsigned long value);
 
 // The retail SendPacket/Broadcast methods inline this vector AddItem behavior.
 template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)

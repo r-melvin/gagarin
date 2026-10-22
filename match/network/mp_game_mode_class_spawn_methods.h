@@ -73,7 +73,7 @@ struct House_005D7030
 };
 
 // FUNCTION: GAMEMD 0x688ED0 (decl; reloc) — scatter-place a unit near a cell.
-int __fastcall FUN_00688ED0(Unit_005D7030* unit, Cell_005D7030* cell, int flag);
+int FUN_00688ED0(Unit_005D7030* unit, Cell_005D7030* cell, int flag);
 
 struct MultiplayerGameMode_005D7030
 {

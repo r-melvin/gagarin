@@ -12,7 +12,7 @@
 // Wide-string-or-empty accessor @0x7B7140 (__fastcall, single pointer arg in
 // ECX): returns *ptr, or a static empty wide string when *ptr is null.
 // Declared (no body) so the harness reloc-normalises the direct call.
-extern "C" const wchar_t* __fastcall MPTeam_TitleOrEmpty(wchar_t** ptr);
+extern "C" const wchar_t* MPTeam_TitleOrEmpty(wchar_t** ptr);
 
 // FUNCTION: GAMEMD 0x5D8D10  (__thiscall)
 // Add this team's title to the list/combo box (CB_ADDSTRING = 0x143), then tag
