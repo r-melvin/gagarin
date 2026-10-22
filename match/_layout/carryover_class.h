@@ -15,7 +15,7 @@
 class CarryoverClass : public LinkClass
 {
 public:
-    virtual ~CarryoverClass();                                  // 0  0x473920: deleting destructor override
+    // 0  0x473920: deleting destructor; no destructor of its own is attested (calls the base destructor 0x5565A0 directly)
     int unknown_0C;  // +0xC store at 0x473760
     int unknown_10;  // +0x10 store at 0x4737B3
     int unknown_14;  // +0x14 store at 0x473763

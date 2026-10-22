@@ -16,7 +16,7 @@
 class MapSeedClass : public LoadOptionsClass
 {
 public:
-    virtual ~MapSeedClass();                                    // 0  0x5AC270: deleting destructor override
+    // 0  0x5AC270: deleting destructor; no destructor of its own is attested (calls the base destructor 0x558790 directly)
     virtual bool Slot1(char const *);                           // 1  0x597A30: override of LoadOptionsClass
     virtual bool Slot2(char const *, unsigned short const *);   // 2  0x597760: override of LoadOptionsClass
     virtual bool DeleteMission(char const *);                   // 3  0x597D50: override of LoadOptionsClass
@@ -42,7 +42,7 @@ public:
     int unknown_6C;  // +0x6C store at 0x5956BE
     int unknown_70;  // +0x70 store at 0x5956C1
     int unknown_74;  // +0x74 store at 0x5956C4
-    unsigned short unknown_78;  // +0x78 store at 0x595689
+    unsigned short unknown_78;  // +0x78 store at 0x5956D8
     unsigned char unknown_7A[254];  // +0x7A
 };
 GG_STATIC_ASSERT(offsetof(MapSeedClass, unknown_38) == 0x38);

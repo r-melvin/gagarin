@@ -33,7 +33,7 @@ public:
     virtual class ObjectTypeClass * vf_34();                   // 34  0x75F8A0: override of ObjectClass
     virtual bool vf_53();                                       // 53  0x75F980: override of ObjectClass
     virtual bool vf_54(struct CoordStruct const &, int);        // 54  0x75F8B0: override of ObjectClass
-    virtual void vf_69(int, int);                               // 69  0x75F9F0: override of ObjectClass
+    virtual void vf_69(Point2D* point, RectangleStruct* clip);  // 69  0x75F9F0: override of ObjectClass (RET 8)
     int unknown_AC;  // +0xAC store at 0x75E975
     int unknown_B0;  // +0xB0 store at 0x75E97B
     unsigned char unknown_B4[120];  // +0xB4

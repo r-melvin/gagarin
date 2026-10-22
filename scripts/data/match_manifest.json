@@ -59445,9 +59445,9 @@
  {
   "tu": "match/ui/direction_dial_ctor_methods.cpp",
   "addr": "0x4A53B0",
-  "sym": "??0DirectionDial_004A53B0@@QAE@HHHHHH@Z",
+  "sym": "??0Dial8Class@@QAE@HHHHHH@Z",
   "len": "0x2B0",
-  "name": "DirectionDial_004A53B0::ctor",
+  "name": "Dial8Class::Dial8Class",
   "status": "matched",
   "pct": 100
  },

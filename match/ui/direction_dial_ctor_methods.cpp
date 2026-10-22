@@ -1,19 +1,13 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
-// Constructor of the eight-way direction dial control (vtable 0x7E5E3C), a
+// Constructor of Dial8Class, the eight-way direction dial control (vtable 0x7E5E3C), a
 // ControlClass built with flags 7 and sticky. It caches the face centre and
 // two rings of eight compass points (outer ring at 0.4 / 0.28 of the size,
 // inner ring at 0.3 / 0.21) and the initial direction and its facing.
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "control_class.h"
-
-struct DialPoint
-{
-    int X;   // +0x0
-    int Y;   // +0x4
-};
+#include "../_layout/dial8_class.h"
 
 // Direction held as the high byte of a 16-bit binary angle; the facing is
 // read back through the full dword.
@@ -29,32 +23,8 @@ union DialDirection
     unsigned short Raw;
 };
 
-// VTABLE: GAMEMD 0x7E5E3C
-struct DirectionDial_004A53B0 : ControlClass
-{
-    DirectionDial_004A53B0(int id, int x, int y, int width, int height, int direction);
-
-    virtual int Draw(int forced);
-    virtual int Action(unsigned flags, unsigned* key, int modifier);
-
-    int       unknown_2C;           // +0x2C
-    int       unknown_30;           // +0x30
-    DialPoint OuterPoint[8];   // +0x34
-    DialPoint InnerPoint[8];   // +0x74
-    int       Direction;       // +0xB4
-    int       Facing;          // +0xB8
-    int       unknown_BC;       // +0xBC
-};
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, unknown_30) == 0x30);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, OuterPoint) == 0x34);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, InnerPoint) == 0x74);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, Direction) == 0xB4);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, Facing) == 0xB8);
-GG_STATIC_ASSERT(offsetof(DirectionDial_004A53B0, unknown_BC) == 0xBC);
-
 // FUNCTION: GAMEMD 0x4A53B0
-DirectionDial_004A53B0::DirectionDial_004A53B0(int id, int x, int y, int width, int height, int direction)
+Dial8Class::Dial8Class(int id, int x, int y, int width, int height, int direction)
     : ControlClass(id, x, y, width, height, 7, 1)
 {
     unknown_2C = X + Width / 2;

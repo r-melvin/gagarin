@@ -22,7 +22,7 @@ public:
     virtual HRESULT __stdcall Skip(ULONG cConnections);         // 4  0x4A0160: implements IEnumConnections
     virtual HRESULT __stdcall Reset(void);                      // 5  0x4A0180: implements IEnumConnections
     virtual HRESULT __stdcall Clone(IEnumConnections * *ppEnum);// 6  0x4A0190: implements IEnumConnections
-    int unknown_04;  // +0x4 vptr store at 0x4A02BC
+    int unknown_04;  // +0x4 vptr store at 0x4A02CE
     int unknown_08;  // +0x8 store at 0x4A02C1
     int unknown_0C;  // +0xC store at 0x4A02C4
     unsigned char unknown_10;  // +0x10 store at 0x4A02C7

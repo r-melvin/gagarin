@@ -16,7 +16,7 @@
 class ScoreBigFontClass : public ScoreFontClass
 {
 public:
-    virtual ~ScoreBigFontClass();                               // 0  0x691100: deleting destructor override
+    // 0  0x691100: deleting destructor; no destructor of its own is attested (no store of its own vtable)
 };
 GG_STATIC_ASSERT(sizeof(ScoreBigFontClass) == 0x18);
 

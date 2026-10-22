@@ -23,7 +23,7 @@ public:
     virtual HRESULT __stdcall Advise(IUnknown *pUnkSink, DWORD *pdwCookie);// 5  0x4A0630: implements IConnectionPoint
     virtual HRESULT __stdcall Unadvise(DWORD dwCookie);         // 6  0x4A0700: implements IConnectionPoint
     virtual HRESULT __stdcall EnumConnections(IEnumConnections * *ppEnum);// 7  0x4A0760: implements IConnectionPoint
-    int unknown_04;  // +0x4 store at 0x4A0877
+    int unknown_04;  // +0x4 store at 0x4A087C (+0x4..+0x13 copied from the first argument)
     int unknown_08;  // +0x8 store at 0x4A0881
     int unknown_0C;  // +0xC store at 0x4A0887
     int unknown_10;  // +0x10 store at 0x4A088D

@@ -3,7 +3,7 @@
 //   RTTI: TypeDescriptor 0x00842730 `.?AVSwizzleManagerClass@@`; class hierarchy descriptor 0x0080B720.
 //   Bases in RTTI (declaration) order: ISwizzle +0x0.
 // VTABLE: GAMEMD 0x7F4108 (10 slots)
-//   Virtual slots are named vf_<slot>; the binary attests no names. Argument counts come from each target's RET n;
+//   Virtual slots are named vf_<slot>; the binary attests no names. Slots past IUnknown are __stdcall (each body reads `this` from the stack); argument counts come from RET n less `this`;
 //   return types are not recovered (void placeholder). Member offsets come from constructor stores only.
 #ifndef GG_MATCH_LAYOUT_SWIZZLE_MANAGER_CLASS_H
 #define GG_MATCH_LAYOUT_SWIZZLE_MANAGER_CLASS_H
@@ -18,13 +18,13 @@ public:
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void * *ppvObject);// 0  0x6CF430: override (SDK declaration)
     virtual ULONG __stdcall AddRef(void);                       // 1  0x6CF4B0: override (SDK declaration)
     virtual ULONG __stdcall Release(void);                      // 2  0x6CF4C0: override (SDK declaration)
-    virtual void vf_3(int a1);                                  // 3  0x6CF230: RET 0x4
-    virtual void vf_4(int a1, int a2);                          // 4  0x6CF240: RET 0x8
-    virtual void vf_5(int a1, int a2, int a3);                  // 5  0x6CF490: RET 0xC
-    virtual void vf_6(int a1, int a2, int a3);                  // 6  0x6CF2C0: RET 0xC
-    virtual void vf_7(int a1, int a2, int a3);                  // 7  0x6CF4D0: RET 0xC
-    virtual void vf_8(int a1, int a2, int a3, int a4);          // 8  0x6CF4E0: RET 0x10
-    virtual void vf_9(int a1, int a2);                          // 9  0x6CF410: RET 0x8
+    virtual void __stdcall vf_3();                              // 3  0x6CF230: RET 0x4, this on the stack
+    virtual void __stdcall vf_4(int a1);                        // 4  0x6CF240: RET 0x8, this on the stack
+    virtual void __stdcall vf_5(int a1, int a2);                // 5  0x6CF490: RET 0xC, this on the stack
+    virtual void __stdcall vf_6(int a1, int a2);                // 6  0x6CF2C0: RET 0xC, this on the stack
+    virtual void __stdcall vf_7(int a1, int a2);                // 7  0x6CF4D0: RET 0xC, this on the stack
+    virtual void __stdcall vf_8(int a1, int a2, int a3);        // 8  0x6CF4E0: RET 0x10, this on the stack
+    virtual void __stdcall vf_9(int a1);                        // 9  0x6CF410: RET 0x8, this on the stack
     int unknown_04;  // +0x4 vptr store at 0x6CF196
     int unknown_08;  // +0x8 store at 0x6CF189
     int unknown_0C;  // +0xC store at 0x6CF18C
