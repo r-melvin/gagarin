@@ -86,6 +86,7 @@ struct HashTable_006249A0
     // Defined per using TU; an explicit instantiation emits only the members
     // whose definitions it can see.
     HashTable_006249A0();
+    bool Find(const KEY& key, VALUE*& pValue);
     bool Remove(const KEY& key, VALUE& value);
     bool PopFirst(KEY& key, VALUE& value);
     ~HashTable_006249A0();

@@ -120,6 +120,8 @@ public:
     // FUNCTION: GAMEMD 0x7B7140 (decl; reloc) -- the buffer, or the shared
     // empty string when there is none (Peek's out-of-line form).
     const wchar_t* FUN_007B7140() const;
+    // FUNCTION: GAMEMD 0x7B7040 (decl; reloc) -- release the buffer and forget it.
+    void FUN_007B7040();
     void Resize(int count);                                    // 0x7B7060
     wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
     wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180

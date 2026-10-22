@@ -10,8 +10,6 @@
 #include "../_rt/gg_static_assert.h"
 
 struct Obj_00600660;
-struct Obj_00603DB0;
-struct Obj_006071D0;
 struct Obj_00624080;
 struct Obj_00624090;
 struct Obj_006241C0;
@@ -22,10 +20,6 @@ extern char DAT_00AC4848[];
 
 // FUNCTION: GAMEMD 0x6B9530 (declaration)
 void FUN_006B9530(void*, int);
-// Import SendMessageA from USER32.dll (IAT slot 0x7E14A4)
-extern "C" __declspec(dllimport) void __stdcall SendMessageA(Obj_00603DB0*, int, int, int);
-// Import EnumChildWindows from USER32.dll (IAT slot 0x7E14E4)
-extern "C" __declspec(dllimport) void __stdcall EnumChildWindows(Obj_006071D0*, int, int);
 
 struct Obj_00600660
 {
@@ -34,16 +28,6 @@ struct Obj_00600660
     int FUN_00600660() const;
 };
 GG_STATIC_ASSERT(offsetof(Obj_00600660, unknown_00) == 0x0);
-
-struct Obj_00603DB0
-{
-};
-
-struct Obj_006071D0
-{
-    // FUNCTION: GAMEMD 0x6071D0
-    void FUN_006071D0();
-};
 
 struct Obj_00624080
 {
@@ -80,6 +64,5 @@ struct Obj_006241E0
 // FUNCTION: GAMEMD 0x600550
 void FUN_00600550(int a1, int a2);
 // FUNCTION: GAMEMD 0x603DB0
-void FUN_00603DB0(Obj_00603DB0* a1, int a2);
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU171_METHODS_H

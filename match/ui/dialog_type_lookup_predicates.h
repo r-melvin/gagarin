@@ -37,21 +37,56 @@ typedef void* GG_HWND;
 // GLOBAL: GAMEMD 0x7E13B4 — __imp__GetDlgCtrlID.
 extern "C" __declspec(dllimport) int __stdcall GetDlgCtrlID(GG_HWND hCtl);
 
-// The value object a node carries, starting at node+0x04.
+// The value object a node carries, starting at node+0x04. It spans the whole
+// 0x200 bytes between the key and the chain pointer; only the fields retail
+// touches are named, at the displacements of the instructions that use them.
 struct MapValue_00602B90
 {
-    char _pad000[0x6C];   // +0x0000
+    char _pad000[0x14];   // +0x0000
+    int  Field14;         // +0x0014  (node +0x18)
+    char _pad018[0x68 - 0x18];
+    int  Field68;         // +0x0068
     int  Field6C;         // +0x006C  (node +0x70)
+    int  Field70;         // +0x0070
+    int  Field74;         // +0x0074
+    char _pad078[0xBC - 0x78];
+    bool FieldBC;         // +0x00BC
+    bool FieldBD;         // +0x00BD
+    char _pad0BE[0xC0 - 0xBE];
+    int  FieldC0;         // +0x00C0
+    char _pad0C4[0xD4 - 0xC4];
+    bool FieldD4;         // +0x00D4
+    bool FieldD5;         // +0x00D5
+    bool FieldD6;         // +0x00D6
+    bool FieldD7;         // +0x00D7
+    bool FieldD8;         // +0x00D8
+    char _pad0D9[0xE0 - 0xD9];
+    int  FieldE0;         // +0x00E0
+    int  FieldE4;         // +0x00E4
+    char _pad0E8[0x200 - 0xE8];
 };
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field14) == 0x14);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field68) == 0x68);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field6C) == 0x6C);
-GG_STATIC_ASSERT(sizeof(MapValue_00602B90) == 0x70);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field70) == 0x70);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field74) == 0x74);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldBC) == 0xBC);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldBD) == 0xBD);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldC0) == 0xC0);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD4) == 0xD4);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD5) == 0xD5);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD6) == 0xD6);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD7) == 0xD7);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD8) == 0xD8);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldE0) == 0xE0);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldE4) == 0xE4);
+GG_STATIC_ASSERT(sizeof(MapValue_00602B90) == 0x200);
 
 // One hash-table node: key, value, then the chain pointer at +0x204.
 struct MapNode_00602B90
 {
     int                Key;                    // +0x0000
     MapValue_00602B90  Value;                  // +0x0004
-    char               _pad074[0x204 - 0x74];
     MapNode_00602B90*  Next;                   // +0x0204
 };
 GG_STATIC_ASSERT(offsetof(MapNode_00602B90, Value) == 0x04);

@@ -46,6 +46,8 @@ public:
     // FUNCTION: GAMEMD 0x7B5340 (decl; reloc) — drop whatever is held and go
     // back to empty.
     void Reset();
+    // FUNCTION: GAMEMD 0x7B48D0 (decl; reloc) — assign from a C string.
+    void FUN_007B48D0(const char* src);
     // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc) — lower-case in place.
     void FUN_007B5B30();
 

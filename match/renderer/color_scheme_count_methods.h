@@ -137,6 +137,8 @@ struct Owner_00626C60
     Table_00626C60*  Table;           // +0x000C
 
     Owner_00626C60() throw();
+    // FUNCTION: GAMEMD 0x6272A0 (decl; reloc) -- the out-of-line destructor.
+    ~Owner_00626C60();
 };
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, VecA) == 0x4);
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, Table) == 0xC);
