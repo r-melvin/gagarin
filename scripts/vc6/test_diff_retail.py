@@ -265,5 +265,150 @@ class LiteralPoolGuardTests(unittest.TestCase):
         self.assertNotIn("HARD FLOAT-LITERAL FAILURE", output)
 
 
+def label_object(path, code, relocs, labels):
+    """Write a one-section COFF object: `func` at 0, `$L` labels, DIR32 relocations.
+
+    `labels` maps a label name (at most 8 bytes) to its section offset; `relocs`
+    maps a relocation offset to the label it names, as VC6 does for switch tables."""
+    names = list(labels)
+    section_ptr = 20 + 40
+    reloc_ptr = section_ptr + len(code)
+    symbol_ptr = reloc_ptr + 10 * len(relocs)
+
+    def symbol(name, value, storage):
+        return struct.pack("<8sIhHBB", name.ljust(8, b"\0"), value, 1, 0, storage, 0)
+
+    table = [symbol(b"func", 0, 2)] + [symbol(n.encode(), labels[n], 6) for n in names]
+    reloc_data = b"".join(struct.pack("<IIH", at, 1 + names.index(n) + 0, 0x0006)
+                          for at, n in relocs.items())
+    header = struct.pack("<HHIIIHH", 0x14C, 1, 0, symbol_ptr, len(table), 0, 0)
+    section = struct.pack("<8sIIIIIIHHI", b".text", 0, 0, len(code), section_ptr,
+                          reloc_ptr, 0, len(relocs), 0, 0x60000020)
+    path.write_bytes(header + section + code + reloc_data + b"".join(table)
+                     + struct.pack("<I", 4))
+
+
+ADDR = 0x401000
+HEAD = bytes.fromhex("8b442404 83f801 770d")         # mov eax,[esp+4]; cmp eax,1; ja +13
+CASES = bytes.fromhex("b801000000 c3 33c0c3")         # case 0: eax=1; case 1: eax=0
+PAD = bytes.fromhex("909090")
+
+
+def jump_switch(addr, table_at, slots, pad=PAD):
+    """Function body, alignment padding, then a dword jump table at `table_at`."""
+    code = (HEAD + bytes.fromhex("ff2485") + struct.pack("<I", table_at) + CASES + pad
+            + b"".join(struct.pack("<I", slot) for slot in slots))
+    return code
+
+
+def run_diff(obj, retail, length):
+    output = io.StringIO()
+    argv = ["diff_retail.py", "--obj", str(obj), "--sym", "func",
+            "--addr", hex(ADDR), "--len", hex(length)]
+    with patch("sys.argv", argv), \
+            patch.object(diff_module, "ghidra_bytes", return_value=retail), \
+            contextlib.redirect_stdout(output):
+        try:
+            diff_module.main()
+        except SystemExit as exc:
+            return exc.code, output.getvalue()
+    raise AssertionError("diff_retail.main did not exit")
+
+
+class SwitchTableTests(unittest.TestCase):
+    """Switch tables are compared as relocation targets, never decoded as code."""
+
+    def score(self, code, relocs, labels, retail, length):
+        with tempfile.TemporaryDirectory() as temp:
+            obj = Path(temp) / "switch.obj"
+            label_object(obj, code, relocs, labels)
+            return run_diff(obj, retail, length)
+
+    def jump_case(self, retail_slots=(ADDR + 16, ADDR + 22), length=36, retail_tail=None):
+        retail = jump_switch(ADDR, ADDR + 28, retail_slots)
+        compiled = jump_switch(0, 0, (0, 0))
+        labels = {"$LTAB": 28, "$LC0": 16, "$LC1": 22}
+        relocs = {12: "$LTAB", 28: "$LC0", 32: "$LC1"}
+        return self.score(compiled, relocs, labels, retail[:length], length)
+
+    def test_table_inside_span_is_compared_not_decoded(self):
+        code, out = self.jump_case()
+        self.assertEqual(code, 0)
+        self.assertIn("table: 2/2 switch table entries match", out)
+        self.assertIn("match: 100.0%", out)
+        self.assertNotIn("add byte ptr", out)
+
+    def test_table_slot_targeting_another_case_is_a_mismatch(self):
+        code, out = self.jump_case(retail_slots=(ADDR + 16, ADDR + 16))
+        self.assertEqual(code, 1)
+        self.assertIn("table: 1/2 switch table entries match", out)
+        self.assertNotIn("match: 100.0%", out)
+
+    def test_compiled_side_longer_than_span_does_not_misread_the_table(self):
+        # Retail's span stops after the last case; the compiled code runs three
+        # alignment bytes longer, so its table starts inside the compared length.
+        code, out = self.jump_case(length=25)
+        self.assertEqual(code, 0)
+        self.assertIn("lies outside the retail span", out)
+        self.assertIn("match: 100.0%", out)
+
+    def test_compiled_code_longer_than_retail_still_fails(self):
+        extra = bytes.fromhex("40")                  # inc eax before the final ret
+        retail = jump_switch(ADDR, ADDR + 28, (ADDR + 16, ADDR + 22))[:25]
+        compiled = HEAD + bytes.fromhex("ff2485") + b"\0" * 4 + CASES[:-1] + extra + CASES[-1:]
+        compiled += bytes.fromhex("909090") + b"\0" * 8
+        code, out = self.score(compiled, {12: "$LTAB", 29: "$LC0", 33: "$LC1"},
+                               {"$LTAB": 29, "$LC0": 16, "$LC1": 22}, retail, 25)
+        self.assertEqual(code, 1)
+        self.assertNotIn("match: 100.0%", out)
+
+    def byte_case(self, retail_bytes):
+        head = bytes.fromhex("8b442404 33c9")
+        body = (head + bytes.fromhex("8a88") + b"{btab}" + bytes.fromhex("ff248d") + b"{jtab}"
+                + CASES)
+
+        def build(btab, jtab, slots, index):
+            code = body.replace(b"{btab}", struct.pack("<I", btab)).replace(
+                b"{jtab}", struct.pack("<I", jtab))
+            return code + b"".join(struct.pack("<I", s) for s in slots) + index
+
+        retail = build(ADDR + 36, ADDR + 28, (ADDR + 19, ADDR + 25), retail_bytes)
+        compiled = build(0, 0, (0, 0), bytes.fromhex("000101"))
+        labels = {"$LBTAB": 36, "$LJTAB": 28, "$LC0": 19, "$LC1": 25}
+        relocs = {8: "$LBTAB", 15: "$LJTAB", 28: "$LC0", 32: "$LC1"}
+        return self.score(compiled, relocs, labels, retail, len(retail))
+
+    def test_byte_index_table_is_compared(self):
+        code, out = self.byte_case(bytes.fromhex("000101"))
+        self.assertEqual(code, 0)
+        self.assertIn("table: 5/5 switch table entries match", out)
+        self.assertIn("match: 100.0%", out)
+
+    def test_byte_index_table_difference_is_a_mismatch(self):
+        code, out = self.byte_case(bytes.fromhex("000100"))
+        self.assertEqual(code, 1)
+        self.assertIn("table: 4/5 switch table entries match", out)
+        self.assertNotIn("match: 100.0%", out)
+
+    def test_function_without_a_table_is_unchanged(self):
+        # The compiled tail past --len is dropped after a terminator, exactly as
+        # before, and nothing table-related is printed.
+        retail = HEAD + CASES
+        compiled = HEAD + CASES + bytes.fromhex("90 0000 0000")
+        code, out = self.score(compiled, {}, {}, retail, len(retail))
+        self.assertEqual(code, 0)
+        self.assertIn("dropped 5 bytes past the function end", out)
+        self.assertNotIn("table:", out)
+        self.assertIn("match: 100.0%", out)
+
+    def test_function_without_a_table_still_fails_on_a_changed_instruction(self):
+        retail = HEAD + CASES
+        compiled = HEAD + CASES.replace(bytes.fromhex("33c0"), bytes.fromhex("33c9"))
+        code, out = self.score(compiled, {}, {}, retail, len(retail))
+        self.assertEqual(code, 1)
+        self.assertNotIn("table:", out)
+        self.assertNotIn("match: 100.0%", out)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -3,6 +3,35 @@
 As of **2026-10-22**, the verified snapshot reports **7,753 matched function
 rows**, **516 partial rows**, **8,269 manifest rows**, **1,352 manifest
 translation units**, and **1,360 tracked C++ files**. Whole-repository regression
+verification, the project object build and 150 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+diff_retail now compares switch jump and index tables as relocation targets
+instead of decoding them as code. Every manifest row was re-scored: no matched
+row regressed, the 27 matched rows that previously passed only through
+raw_match now also reach 100% in diff_retail, and 14 partial figures were
+corrected. 0x5CDC50 stays partial on its vtable and an unbound callee.
+
+The 7,753 matches represent 39.2% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **560,215
+bytes**, or 14.8% of 3,797,269 listed function bytes. The padding heuristic
+misses 553 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: DriveLocomotionClass, TechnoClass slot block, online-services, Script and Scroll units
+
+As of **2026-10-22**, the verified snapshot reports **7,753 matched function
+rows**, **516 partial rows**, **8,269 manifest rows**, **1,352 manifest
+translation units**, and **1,360 tracked C++ files**. Whole-repository regression
 verification, the project object build and 142 tooling tests pass, and the
 compile/layout check passes on the tracked tree.
 
@@ -19,14 +48,6 @@ bytes**, or 14.8% of 3,797,269 listed function bytes. The padding heuristic
 misses 553 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: near-miss pass and ObjectClass slots 65 and 91
 

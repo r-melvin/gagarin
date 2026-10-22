@@ -51,8 +51,8 @@
   "len": "0x198",
   "name": "AITriggerTypeClass::EnemyHouseOwns",
   "status": "partial",
-  "pct": 4.3,
-  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EC34. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0x144."
+  "pct": 5.1,
+  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EC34. pct is diff_retail's instruction diagnostic over the code prefix 0x144, with the switch table slots compared separately."
  },
  {
   "tu": "match/ai/ai_trigger_type_house_owns_methods.cpp",
@@ -61,8 +61,8 @@
   "len": "0x198",
   "name": "AITriggerTypeClass::OwnerHouseOwns",
   "status": "partial",
-  "pct": 4.3,
-  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EFD4. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0x144."
+  "pct": 5.1,
+  "note": "Retail span corrected to the CFG-closed extent 0x198, which ends in the jump/index tables from 0x41EFD4. pct is diff_retail's instruction diagnostic over the code prefix 0x144, with the switch table slots compared separately."
  },
  {
   "tu": "match/ai/aircraft_mission_004155f0.cpp",
@@ -260,7 +260,7 @@
   "len": "0xE4",
   "name": "HouseClass::RespawnStartingForces",
   "status": "partial",
-  "pct": 66.0
+  "pct": 81.9
  },
  {
   "tu": "match/ai/house_class_spy_planes_methods.cpp",
@@ -24476,7 +24476,8 @@
   "len": "0x28c",
   "name": "MSPrintAnim",
   "status": "partial",
-  "pct": 100
+  "pct": 100,
+  "note": "Body is 100.0% (raw_match exact modulo relocations) but the row is held partial: MSPrintAnim's compiled vtable has 6 slots against retail's 9, so verify_vtable fails, and strict verify_relocations fails on the unbound callee ?GetTime@MSClockClass@@QAEHXZ."
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -30447,7 +30448,7 @@
   "len": "0x1c4",
   "name": "TunnelLocomotionClass::ZAdjust (interface prefix)",
   "status": "partial",
-  "pct": 57.0
+  "pct": 60.6
  },
  {
   "tu": "match/core/static_reset_004cb990.cpp",
@@ -48594,8 +48595,8 @@
   "len": "0xd68",
   "name": "RocketLocomotionClass::Process",
   "status": "partial",
-  "pct": 3.7,
-  "note": "Retail span corrected to the CFG-closed extent 0xd68, which ends in the jump/index tables from 0x663010. diff_retail cannot decode trailing table bytes, so pct is the instruction diagnostic over the code prefix 0xD4F."
+  "pct": 3.6,
+  "note": "Retail span corrected to the CFG-closed extent 0xd68, which ends in the jump/index tables from 0x663010. pct is diff_retail's instruction diagnostic over the code prefix 0xD4F, with the switch table slots compared separately."
  },
  {
   "tu": "match/movement/rocket_locomotion.cpp",
@@ -48919,7 +48920,7 @@
   "len": "0xb8f",
   "name": "BuildingClass::vf_101",
   "status": "partial",
-  "pct": 15.2
+  "pct": 15.6
  },
  {
   "tu": "match/economy/house_building/building_a4_vf_313.cpp",
@@ -48955,7 +48956,7 @@
   "len": "0x98c",
   "name": "BuildingClass::vf_73",
   "status": "partial",
-  "pct": 8.5
+  "pct": 8.6
  },
  {
   "tu": "match/economy/house_building/building_a4_vf_54.cpp",
@@ -49323,7 +49324,7 @@
   "len": "0x355",
   "name": "BuildingClass::vf_149",
   "status": "partial",
-  "pct": 66.7
+  "pct": 69.0
  },
  {
   "tu": "match/economy/house_building/building_a_methods_3.cpp",
@@ -57774,7 +57775,7 @@
   "len": "0x909",
   "name": "DisplayClass::vf_46",
   "status": "partial",
-  "pct": 13.1
+  "pct": 16.2
  },
  {
   "tu": "match/ui/input_controls/display_command.cpp",
@@ -59682,7 +59683,7 @@
   "len": "0x1CE",
   "name": "FUN_005c7ba0",
   "status": "partial",
-  "pct": 50.8
+  "pct": 58.9
  },
  {
   "tu": "match/core/mp_word_arith_methods.cpp",
@@ -60510,7 +60511,7 @@
   "len": "0x132",
   "name": "FUN_007bf240",
   "status": "partial",
-  "pct": 16.4
+  "pct": 18.8
  },
  {
   "tu": "match/core/movie_stream_methods.cpp",
@@ -69096,7 +69097,7 @@
   "len": "0x1f4",
   "name": "AITriggerTypeClass::FUN_0041EC90",
   "status": "partial",
-  "pct": 5.9,
+  "pct": 6.8,
   "note": "Retail span is the CFG-closed extent 0x1F4 ending in the jump/index tables from 0x41EE30; pct is the instruction diagnostic over the code prefix 0x1A0 (aligned 41.8%). Same residual as the 0x41EAF0/0x41EE90 twins: retail saves EBP inside the type branch and keeps one copy of the call tail per counter arm; this build hoists the push and cross-jumps the arms."
  },
  {
@@ -72513,8 +72514,8 @@
   "len": "0x1f4",
   "name": "ToolTipManager::FUN_00724200",
   "status": "partial",
-  "pct": 27.0,
-  "note": "pct is positional over a span whose switch tables decode as code; the residual is the inlined FUN_00724A30 loop layout (same as 0x724A30)."
+  "pct": 48.2,
+  "note": "pct is diff_retail with the switch table slots compared separately; the residual is the inlined FUN_00724A30 loop layout (same as 0x724A30)."
  },
  {
   "tu": "match/ui/tooltip_manager.cpp",
@@ -74127,7 +74128,7 @@
   "len": "0x101",
   "name": "TechnoClass::vf_186",
   "status": "partial",
-  "pct": 12.4
+  "pct": 13.7
  },
  {
   "tu": "match/core/techno_class_slots_6f32d0.cpp",

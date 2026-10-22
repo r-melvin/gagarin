@@ -15,7 +15,7 @@
 #                  --addr 0x6C9600 --len 0x4f
 #
 # Exit 0 iff every instruction matches (modulo relocations).
-import argparse, collections, json, os, re, struct, subprocess, sys, tempfile
+import argparse, collections, itertools, json, os, re, struct, subprocess, sys, tempfile
 from retail_image import configured_span
 import raw_match
 from verify_vtable import VerifyError, defined_symbol, parse_coff
@@ -252,6 +252,123 @@ def regs(ops):
     return REG_RE.findall(ops.lower())
 
 
+def compiled_reloc_targets(obj, sym):
+    """{reloc offset: target offset} for DIR32 relocations in sym's section that
+    point back into the same section, both relative to the symbol start.
+
+    These are the switch jump-table slots (and the `jmp`/`movzx` operands that
+    address a table): the linker would fix them up, so their stored value says
+    nothing and the symbol they name is what has to be compared."""
+    try:
+        data, sections, symbols, _ = parse_coff(obj)
+        function = defined_symbol(sections, symbols, sym)
+    except (OSError, ValueError, VerifyError) as exc:
+        raise SystemExit(f"diff_retail: cannot read COFF symbol {sym} in {obj}: {exc}") from exc
+    section = sections[function["section"]]
+    start = function["value"]
+    out = {}
+    for rva, index, kind in section["relocs"]:
+        target = symbols.get(index)
+        if (kind == 0x0006 and rva >= start and target
+                and target["section"] == function["section"]):
+            addend, = struct.unpack_from("<I", data, section["raw_ptr"] + rva)
+            out[rva - start] = target["value"] + addend - start
+    return out
+
+
+_TABLE_OPERAND = {
+    # `jmp dword ptr [reg*4+table]` reads a switch's dword jump table;
+    # `movzx reg,byte ptr [reg+table]` (or `mov r8,...` after an `xor`) reads its
+    # byte index table.
+    "jmp": (re.compile(r"dword ptr \[\w+\*4\+0x([0-9a-f]+)\]"), "dword"),
+    "movzx": (re.compile(r"byte ptr \[\w+\+0x([0-9a-f]+)\]"), "byte"),
+    "mov": (re.compile(r"^[abcd]l,byte ptr \[\w+\+0x([0-9a-f]+)\]"), "byte"),
+}
+
+
+def table_refs(insns, resolve):
+    """{table offset: 'dword'|'byte'} for the tables the code references.
+
+    `resolve(insn)` returns the table offset an instruction addresses, or None.
+    Tables sit after all the code, so the scan stops at the first table start:
+    everything beyond it is table data that happens to decode as instructions."""
+    found = {}
+    for insn in insns:
+        if insn[0] >= min(found, default=insn[0] + 1):
+            break
+        kind = _TABLE_OPERAND.get(insn[2])
+        offset = resolve(insn) if kind else None
+        if offset is not None:
+            found[offset] = kind[1]
+    return found
+
+
+def retail_table_resolver(addr, length):
+    def resolve(insn):
+        m = _TABLE_OPERAND[insn[2]][0].search(insn[3])
+        target = int(m.group(1), 16) - addr if m else -1
+        return target if 0 <= target < length else None
+    return resolve
+
+
+def compiled_table_resolver(targets):
+    def resolve(insn):
+        # The 32-bit table displacement is the last field of both encodings.
+        return targets.get(insn[0] + len(insn[1]) // 2 - 4)
+    return resolve
+
+
+def trim_padding(insns):
+    """Drop trailing alignment padding: `nop`, `lea reg,[reg+0x0]`, `mov reg,reg`."""
+    def padding(insn):
+        mnemonic, ops = insn[2], insn[3]
+        return (mnemonic == "nop"
+                or (mnemonic == "lea" and "+0x0]" in ops
+                    and regs(ops)[:1] == regs(ops)[1:2])
+                or (mnemonic == "mov" and re.fullmatch(r"(e[a-z]{2}),\1", ops)))
+    while insns and padding(insns[-1]):
+        insns.pop()
+    return insns
+
+
+def read_tables(starts, data, end, code, slot_target):
+    """Entries of every table, in address order, as [(kind, [entry, ...])].
+
+    `starts` is {table offset: kind}; a table runs to the next table or `end`.
+    A dword table is the run of slots `slot_target(offset)` accepts, each mapped
+    to the index in `code` of the instruction it lands on (-1 if none); a byte
+    table is its bytes minus trailing 0x90/0xcc padding."""
+    by_offset = {insn[0]: i for i, insn in enumerate(code)}
+    order = sorted(starts)
+    tables = []
+    for n, start in enumerate(order):
+        stop = order[n + 1] if n + 1 < len(order) else end
+        if starts[start] == "byte":
+            tables.append(("byte", list(data[start:stop].rstrip(b"\x90\xcc"))))
+            continue
+        entries = []
+        for at in range(start, stop - 3, 4):
+            target = slot_target(at)
+            if target is None:
+                break
+            entries.append(by_offset.get(target, -1))
+        tables.append(("dword", entries))
+    return tables
+
+
+def compare_tables(retail_tables, comp_tables):
+    """(matching, mismatching) entry counts; a missing table or entry is a miss."""
+    good = bad = 0
+    for r, c in itertools.zip_longest(retail_tables, comp_tables):
+        if r is None or c is None or r[0] != c[0]:
+            bad += max([len(t[1]) for t in (r, c) if t] + [1])
+            continue
+        same = sum(x == y for x, y in zip(r[1], c[1]))
+        good += same
+        bad += max(len(r[1]), len(c[1])) - same
+    return good, bad
+
+
 def reloc_normalised_equal(rb, cb, insn_off, relocs):
     """True if compiled bytes cb match retail bytes rb once the relocation
     fields the linker would rewrite are masked out.
@@ -305,30 +422,59 @@ def main():
     length = explicit_length(a.len)
 
     retail_raw = ghidra_bytes(addr, length)
-    retail = raw_x86_insns(retail_raw, addr)
+    retail = raw_x86_insns(retail_raw, addr, allow_data=True)
     comp, relocs = objdump_insns(a.obj, a.sym)
-    # Trim trailing alignment padding from the compiled side. VC6 pads with
-    # both the one-byte `nop` and the multi-byte `lea reg,[reg+0x0]` form.
-    while comp and (comp[-1][2] == "nop"
-                    or (comp[-1][2] == "lea" and "+0x0]" in comp[-1][3]
-                        and regs(comp[-1][3])[:1] == regs(comp[-1][3])[1:2])):
-        comp.pop()
-
     # A /Gy switch emits its jump and index tables immediately after the code,
     # inside the same COMDAT, and objdump happily disassembles that data as
-    # instructions. The caller supplies the validated function span, so the
-    # retail side includes exactly those bytes. Drop the compiled tail past
-    # that span --
+    # instructions. Find the tables from the code that reads them (`jmp
+    # [reg*4+table]`, and `movzx`/`mov r8` of `[reg+table]`), stop decoding at the
+    # first one on both sides, and compare the slots separately below. The
+    # compiled side names its tables through relocations; retail holds addresses.
+    comp_targets = compiled_reloc_targets(a.obj, a.sym)
+    retail_tabs = table_refs(retail, retail_table_resolver(addr, length))
+    comp_tabs = table_refs(comp, compiled_table_resolver(comp_targets))
+    comp_data = bytes.fromhex("".join(c[1] for c in comp))
+    if retail_tabs:
+        retail = [r for r in retail if r[0] < min(retail_tabs)]
+    if comp_tabs:
+        comp = [c for c in comp if c[0] < min(comp_tabs)]
+    # Table data may be undecodable, but code must not be.
+    for r in retail:
+        if r[2] == ".byte":
+            raise SystemExit(f"diff_retail: objdump could not decode byte at "
+                             f"{addr + r[0]:#x}; check the explicit span")
+
+    # Trim trailing alignment padding from the compiled side. VC6 pads with
+    # both the one-byte `nop` and the multi-byte `lea reg,[reg+0x0]` form.
+    trim_padding(comp)
+    if retail_tabs:
+        trim_padding(retail)
+
+    # Without a table, the compiled tail past the validated span may still be
+    # switch data. Drop it --
     # but only when the last instruction still inside the length is a terminator
     # (`ret` or an unconditional `jmp`), so a function that genuinely runs longer
     # than retail's still fails on the extra instructions rather than being
     # silently truncated. The dropped byte count is printed either way.
     inside = [c for c in comp if c[0] < length]
-    if len(inside) < len(comp) and inside and inside[-1][2] in ("ret", "jmp"):
+    if (not comp_tabs and len(inside) < len(comp) and inside
+            and inside[-1][2] in ("ret", "jmp")):
         dropped = sum(len(c[1]) // 2 for c in comp[len(inside):])
         print(f"note: dropped {dropped} bytes past the function end "
               f"(switch tables / alignment data)\n")
         comp = inside
+
+    table_good = table_bad = 0
+    if retail_tabs:
+        def retail_slot(at):
+            target = struct.unpack_from("<I", retail_raw, at)[0] - addr
+            return target if 0 <= target < length else None
+        table_good, table_bad = compare_tables(
+            read_tables(retail_tabs, retail_raw, length, retail, retail_slot),
+            read_tables(comp_tabs, comp_data, len(comp_data), comp, comp_targets.get))
+        print(f"table: {table_good}/{table_good + table_bad} switch table entries match\n")
+    elif comp_tabs:
+        print("table: compiled switch table lies outside the retail span; not compared\n")
 
     n = max(len(retail), len(comp))
     exact = reloc = mismatch = 0
@@ -350,6 +496,10 @@ def main():
             mismatch += 1
         print(f"{(r[0] if r[0] is not None else 0):#06x}  "
               f"{r[2]+' '+r[3]:<22.22} {c[2]+' '+c[3]:<22.22} {v}")
+    # Table slots only ever lower the score: matching slots add no credit, each
+    # mismatching one counts as a differing unit.
+    mismatch += table_bad
+    n += table_bad
     total = exact + reloc
     print(f"\n{total}/{n} instructions match "
           f"({exact} exact, {reloc} reloc-normalised, {mismatch} diff)")
