@@ -26,7 +26,7 @@ ToolTipManager::ToolTipManager(void* window)
     gg_free(Table.Items);
     Table.Items = 0;
     Table.Count = 0;
-    Table.unknown_08 = 0;
+    Table.Capacity = 0;
     Table.IsSorted = 0;
     Table.Cached = 0;
 }
@@ -49,6 +49,12 @@ void ToolTipManager::SetState(bool bState)
                               this->IsActive == 1 ? "on" : "off");
 }
 
+// FUNCTION: GAMEMD 0x724510
+int ToolTipManager::FUN_00724510() const
+{
+    return ToolTipDelay;
+}
+
 // FUNCTION: GAMEMD 0x724520  (__thiscall)
 // MOV EAX,[ESP+4]; MOV [ECX+0x228],EAX; RET 4
 void ToolTipManager::SetTimerDelay(int value)
@@ -68,6 +74,67 @@ void ToolTipManager::SaveTimerDelay()
 void ToolTipManager::RestoreTimeDelay()
 {
     this->ToolTipDelay = this->LastToolTipDelay;
+}
+
+// FUNCTION: GAMEMD 0x724550
+int ToolTipManager::FUN_00724550() const
+{
+    return unknown_230;
+}
+
+// FUNCTION: GAMEMD 0x724560
+void ToolTipManager::FUN_00724560(int value)
+{
+    unknown_230 = value;
+}
+
+// FUNCTION: GAMEMD 0x724570
+int ToolTipManager::FUN_00724570() const
+{
+    return ToolTips.Count;
+}
+
+// FUNCTION: GAMEMD 0x724580
+// Registers a copy of `tip` unless its gadget id is already in the table.
+bool ToolTipManager::Add(ToolTip& tip)
+{
+    ToolTipTable* table = &Table;
+    unsigned int key = tip.GadgetID;
+    if (table->Count != 0) {
+        if (table->HasCachedKey(&key))
+            return false;
+        ToolTipTableEntry* found = table->Search(&key);
+        if (found != 0) {
+            table->Cached = found;
+            return false;
+        }
+    }
+    ToolTip* copy = new ToolTip(tip);
+    if (copy == 0)
+        return false;
+    if (!ToolTips.AddItem(copy)) {
+        delete copy;
+        return false;
+    }
+    if (table->Count + 1 > table->Capacity) {
+        int grow = table->Capacity == 0 ? 10 : table->Capacity;
+        if (grow < 0)
+            return true;
+        ToolTipTableEntry* items = new ToolTipTableEntry[table->Capacity + grow];
+        if (items == 0)
+            return true;
+        for (int i = 0; i < table->Count; ++i)
+            items[i] = table->Items[i];
+        delete table->Items;
+        table->Items = items;
+        table->Capacity += grow;
+        table->Cached = 0;
+    }
+    table->Items[table->Count].Key = copy->GadgetID;
+    table->Items[table->Count].Data = copy;
+    table->IsSorted = 0;
+    ++table->Count;
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x724730 ToolTipManager::Remove (__thiscall, RET 4)
@@ -164,14 +231,6 @@ void ToolTipManager::DrawText(ToolTipManagerData& from)
 wchar_t* ToolTipManager::GetToolTipText(unsigned int id)
 {
     return 0;
-}
-
-// FUNCTION: GAMEMD 0x724BE0
-void ToolTipManager::FUN_00724BE0()
-{
-    if (CurrentToolTip != 0) {
-        MarkToRedraw(CurrentToolTipData);
-    }
 }
 
 // FUNCTION: GAMEMD 0x724C00  ToolTipManager::IsToolTipShowing (__thiscall)

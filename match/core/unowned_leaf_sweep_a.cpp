@@ -447,6 +447,19 @@ void __fastcall FUN_004E6150(int* value, char* code, char* buffer, int count)
     }
 }
 
+extern "C" char* __cdecl strcpy(char* dst, const char* src);
+#pragma intrinsic(strcpy)
+extern "C" char* __cdecl _strupr(char* text);
+
+struct Text_004F4CB0
+{
+    char unknown_0[1];
+
+    Text_004F4CB0* FUN_004F4C30(const char* text);
+    Text_004F4CB0* FUN_004F4C70(const char* text);
+    Text_004F4CB0* FUN_004F4CB0(const char* text);
+};
+
 struct Obj_004F4C20
 {
     char unknown_0;
@@ -461,22 +474,30 @@ Obj_004F4C20::Obj_004F4C20()
     unknown_0 = 0;
 }
 
+// FUNCTION: GAMEMD 0x004F4C30
+// Copy `text` into the buffer at `this`, then upper-case it in place
+// (the CRT _strupr at 0x7DCFC4).
+Text_004F4CB0* Text_004F4CB0::FUN_004F4C30(const char* text)
+{
+    strcpy(unknown_0, text);
+    _strupr(unknown_0);
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x004F4C70
+// Copy `text` into the buffer at `this`; same body as 0x4F4CB0.
+Text_004F4CB0* Text_004F4CB0::FUN_004F4C70(const char* text)
+{
+    strcpy(unknown_0, text);
+    return this;
+}
+
 // FUNCTION: GAMEMD 0x004F4CA0
 // True when the first byte is zero.
 bool Obj_004F4C20::FUN_004F4CA0() const
 {
     return unknown_0 == 0;
 }
-
-extern "C" char* __cdecl strcpy(char* dst, const char* src);
-#pragma intrinsic(strcpy)
-
-struct Text_004F4CB0
-{
-    char unknown_0[1];
-
-    Text_004F4CB0* FUN_004F4CB0(const char* text);
-};
 
 // FUNCTION: GAMEMD 0x004F4CB0
 // Copy `text` into the buffer at `this`.

@@ -18,6 +18,9 @@
 #include "../_rt/gg_static_assert.h"
 #include <string.h>
 #include "../_layout/abstract_class.h"
+struct HouseClass;
+class ObjectClass;
+struct CDTimer_00726400;
 
 // ---------------------------------------------------------------------------
 // TEventClass : public AbstractClass
@@ -65,6 +68,11 @@ struct TEventClass : public AbstractClass
     void LoadFromINI();
     bool GetStateA() const;   // GAMEMD 0x71F950 __thiscall
     bool GetStateB() const;   // GAMEMD 0x71F9C0 __thiscall
+    // FUNCTION: GAMEMD 0x71E940 (decl; reloc) -- RET 0x18.
+    bool FUN_0071E940(int event, HouseClass* house, ObjectClass* object,
+                      CDTimer_00726400* timer, bool* flag, int arg);
+    // FUNCTION: GAMEMD 0x71FA30 (decl; reloc) -- returns +0x54.
+    void* FUN_0071FA30();
 
     int   ArrayIndex;   // +0x24
     void* NextEvent;    // +0x28

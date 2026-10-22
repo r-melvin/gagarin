@@ -38,6 +38,8 @@ struct Entry_00626690
     bool IsBlank();
     // FUNCTION: GAMEMD 0x4F4CE0 (decl; reloc) — key equality.
     bool Equals(Entry_00626690* other);
+    // FUNCTION: GAMEMD 0x4F4D30 (decl; reloc) — key inequality.
+    bool FUN_004F4D30(Entry_00626690* other);
 };
 GG_STATIC_ASSERT(offsetof(Entry_00626690, Value) == 0x100);
 GG_STATIC_ASSERT(sizeof(Entry_00626690) == 0x104);

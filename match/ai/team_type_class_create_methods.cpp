@@ -21,7 +21,7 @@ TeamClass* TeamTypeClass::CreateTeam(HouseClass* house)
     if (house == 0) {
         house = this->Owner;
         if (house == 0) {
-            if (!IsCountryIndex(this->idxHouse)) {
+            if (!FUN_00510F60(this->idxHouse)) {
                 return 0;
             }
             house = FindHouseByCountryIndex(this->idxHouse);

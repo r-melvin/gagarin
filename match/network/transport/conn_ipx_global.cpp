@@ -258,6 +258,16 @@ void IPXGlobalConnClass::vf_17(unsigned int age)
     FUN_004068E0("Done stripping. Num receive = %d\n", Queue->unknown_38);
 }
 
+// GLOBAL: GAMEMD 0xAA05A4
+extern int DAT_00AA05A4;
+
+// FUNCTION: GAMEMD 0x5402B0
+void IPXGlobalConnClass::FUN_005402B0(int unused)
+{
+    if (DAT_00AA05A4 != 0)
+        unknown_C4 = 0;
+}
+
 // FUNCTION: GAMEMD 0x5402D0
 int IPXGlobalConnClass::vf_6()
 {

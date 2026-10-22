@@ -26,38 +26,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// VTABLE: GAMEMD 0x7F094C (rc_ptr_base)
-class rc_ptr_base
-{
-public:
-    // FUNCTION: GAMEMD 0x65D430 (decl; reloc)
-    rc_ptr_base();
-    // FUNCTION: GAMEMD 0x65D460 (decl; reloc)
-    virtual ~rc_ptr_base();
-    // FUNCTION: GAMEMD 0x65D480 (decl; reloc) -- RET 4.
-    void Assign(void* pointer);
-
-    void* Pointer;   // +0x04
-};
-GG_STATIC_ASSERT(offsetof(rc_ptr_base, Pointer) == 0x04);
-GG_STATIC_ASSERT(sizeof(rc_ptr_base) == 0x08);
-
-template <class T>
-class rc_ptr : public rc_ptr_base
-{
-public:
-    rc_ptr() {}
-    rc_ptr(T* pointer) { Assign(pointer); }
-    rc_ptr(const rc_ptr<T>& other) { Assign(other.Pointer); }
-    virtual ~rc_ptr() {}
-    rc_ptr<T>& operator=(const rc_ptr<T>& other)
-    {
-        Assign(other.Pointer);
-        return *this;
-    }
-    bool operator==(const rc_ptr<T>& other) const { return Pointer == other.Pointer; }
-    bool operator!=(const rc_ptr<T>& other) const { return Pointer != other.Pointer; }
-};
+#include "wdt_rc_ptr_base.h"
 
 // VTABLE: GAMEMD 0x7F0954
 // Three slots: the deleting destructor (0x65D6A0), 0x65D690 and 0x65D670

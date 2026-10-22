@@ -12,7 +12,7 @@
 //   GLOBAL:   GAMEMD 0xA8ECA0   TeamTypeClass::Array
 //   GLOBAL:   GAMEMD 0x8B40E8   TeamClass::Array
 //   CALLEE:   GAMEMD 0x6F1FA0   TeamTypeClass::ProcessTaskForce
-//   CALLEE:   GAMEMD 0x510F60   IsCountryIndex / 0x510ED0 FindHouseByCountryIndex
+//   CALLEE:   GAMEMD 0x510F60   FUN_00510F60 / 0x510ED0 FindHouseByCountryIndex
 
 #include "team_type_class_house_methods.h"
 
@@ -63,7 +63,7 @@ HouseClass* TeamTypeClass::GetHouse() const
     if (this->Owner) {
         return this->Owner;
     }
-    if (IsCountryIndex(this->idxHouse)) {
+    if (FUN_00510F60(this->idxHouse)) {
         return FindHouseByCountryIndex(this->idxHouse);
     }
     return 0;

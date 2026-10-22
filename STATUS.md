@@ -1,5 +1,36 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **7,612 matched function
+rows**, **492 partial rows**, **8,104 manifest rows**, **1,348 manifest
+translation units**, and **1,356 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The World Domination Tour options, territory and property classes, the
+IsometricTileClass, TriggerClass body, ToolTipManager and the house and screen
+leaves land with 93 rows: 84 new exact, 8 new partial and one moved exact. One header,
+network/world_domination_tour.h, holds the RTTI-named data classes and shares
+rc_ptr_base and rc_ptr<T> with the other World Domination Tour units. The four
+vector SetCapacity partials, re-scored after the delete[] change, stay partial
+at 53.9% and 57.0%.
+
+The 7,612 matches represent 38.5% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **552,548
+bytes**, or 14.6% of 3,797,269 listed function bytes. The padding heuristic
+misses 551 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: multiplayer game-mode, IPX, teleport and temporal units on one MultiplayerGameMode
+
 As of **2026-10-22**, the verified snapshot reports **7,528 matched function
 rows**, **484 partial rows**, **8,012 manifest rows**, **1,338 manifest
 translation units**, and **1,346 tracked C++ files**. Whole-repository regression
@@ -20,14 +51,6 @@ bytes**, or 14.4% of 3,797,269 listed function bytes. The padding heuristic
 misses 549 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: placeholder names for unattested identifiers
 

@@ -11,6 +11,7 @@
 #include "vector_class.h"
 #include "../core/frame_counter.h"
 class TriggerTypeClass;
+struct Obj_004A1D30;
 class ObjectClass;
 struct CellStruct;
 
@@ -26,6 +27,20 @@ struct CDTimer_00726400
     {
         StartTime = CurrentFrame;
         TimeLeft = duration;
+    }
+    // The frames left: TimeLeft while stopped (StartTime -1), else what is
+    // left after the frames elapsed since StartTime (inlined by 0x726790).
+    int GetTimeLeft() const
+    {
+        int left = TimeLeft;
+        if (StartTime != -1) {
+            int elapsed = CurrentFrame - StartTime;
+            if (elapsed < left)
+                left -= elapsed;
+            else
+                left = 0;
+        }
+        return left;
     }
 };
 GG_STATIC_ASSERT(offsetof(CDTimer_00726400, StartTime) == 0);
@@ -43,6 +58,11 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x7268D0
     virtual int vf_11();                                                  // 11  0x726940
     virtual int vf_12();                                                  // 12  0x726930
+    virtual void vf_10(void* target, bool removed);                       // 10  0x726690
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x726790
+    // FUNCTION: GAMEMD 0x726140 (declaration; destructor, slot 8 via 0x726950)
+    ~TriggerClass();
+    TriggerClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     // FUNCTION: GAMEMD 0x725FA0 (constructor declaration)
     TriggerClass(TriggerTypeClass* type);
     // FUNCTION: GAMEMD 0x726250
@@ -67,8 +87,22 @@ public:
     bool FireActions(ObjectClass* object, CellStruct location);
     // FUNCTION: GAMEMD 0x726630
     static TriggerClass* __fastcall GetInstance(TriggerTypeClass* type);
+    // FUNCTION: GAMEMD 0x7266C0 (declaration)
+    void FUN_007266C0(int index);
+    // FUNCTION: GAMEMD 0x7266E0 (declaration)
+    void FUN_007266E0(int index);
+    // FUNCTION: GAMEMD 0x726700 (declaration)
+    bool FUN_00726700(int index) const;
     // FUNCTION: GAMEMD 0x726720
     void Destroy();
+    // FUNCTION: GAMEMD 0x726780 (declaration)
+    bool FUN_00726780() const;
+    // FUNCTION: GAMEMD 0x7268F0 (declaration)
+    void FUN_007268F0();
+    // FUNCTION: GAMEMD 0x726900 (declaration)
+    void FUN_00726900();
+    // FUNCTION: GAMEMD 0x726920 (declaration)
+    void FUN_00726920(void* value);
 
     TriggerTypeClass* Type;
     // Both existing source names denote the same observed link at +0x28.

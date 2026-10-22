@@ -78,6 +78,8 @@ struct ScratchEntry
     ScratchEntry();
     // FUNCTION: GAMEMD 0x4F4D80 (decl; reloc) -- __fastcall comparison.
     bool __fastcall operator==(ScratchEntry const& other) const;
+    // FUNCTION: GAMEMD 0x4F4D90 (decl; reloc) -- the negation of 0x4F4D80.
+    bool __fastcall operator!=(ScratchEntry const& other) const;
 
     ScratchEntry& operator=(ScratchEntry const& other)
     {

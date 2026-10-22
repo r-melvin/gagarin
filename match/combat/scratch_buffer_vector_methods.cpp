@@ -8,9 +8,24 @@
 //   retail build compiled this translation unit without /GX.
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 at 0x6285A0,
-//   0x628A70, 0x628B00, 0x628D10, 0x628D80, 0x628DF0 and 0x628ED0.
+//   0x628A70, 0x628B00, 0x628D10, 0x628D80, 0x628DF0 and 0x628ED0, plus
+//   0x4F4D80 and 0x4F4D90.
 
 #include "scratch_buffer_vector_methods.h"
+
+// FUNCTION: GAMEMD 0x4F4D80
+// Retail's body is a single `JMP` to itself: the comparison calls itself in
+// tail position and never compares anything.
+bool __fastcall ScratchEntry::operator==(ScratchEntry const& other) const
+{
+    return *this == other;
+}
+
+// FUNCTION: GAMEMD 0x4F4D90
+bool __fastcall ScratchEntry::operator!=(ScratchEntry const& other) const
+{
+    return !(*this == other);
+}
 
 // FUNCTION: GAMEMD 0x6285A0
 //

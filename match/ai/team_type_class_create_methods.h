@@ -64,7 +64,7 @@ GG_STATIC_ASSERT(offsetof(TeamTypeClass, idxHouse) == 0xC8);
 GG_STATIC_ASSERT(offsetof(TeamTypeClass, At_DC)    == 0xDC);
 
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) — does the index name a country.
-bool        __fastcall IsCountryIndex(int idxHouse);
+bool        __fastcall FUN_00510F60(int idxHouse);
 // FUNCTION: GAMEMD 0x510ED0 (decl; reloc) — HouseClass::FindByCountryIndex.
 HouseClass* __fastcall FindHouseByCountryIndex(int idxHouse);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) — printf-style log sink.

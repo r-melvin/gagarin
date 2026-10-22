@@ -32016,13 +32016,14 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/tooltip_manager.cpp",
+  "tu": "match/ui/tooltip_manager_message.cpp",
   "addr": "0x724be0",
   "sym": "?FUN_00724BE0@ToolTipManager@@QAEXXZ",
   "len": "0x11",
   "name": "ToolTipManager::FUN_00724BE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100,
+  "_change": "tu moved from match/ui/tooltip_manager.cpp"
  },
  {
   "tu": "match/ui/shape_button_class.cpp",
@@ -72268,6 +72269,837 @@
   "sym": "??0?$VectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@QAE@HPAV?$rc_ptr@VTerritory@WorldDominationTour@@@@@Z",
   "len": "0xbd",
   "name": "VectorClass<rc_ptr<WorldDominationTour::Territory>>::VectorClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "addr": "0x4F4C30",
+  "sym": "?FUN_004F4C30@Text_004F4CB0@@QAEPAU1@PBD@Z",
+  "len": "0x37",
+  "name": "Text_004F4CB0::FUN_004F4C30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "addr": "0x4F4C70",
+  "sym": "?FUN_004F4C70@Text_004F4CB0@@QAEPAU1@PBD@Z",
+  "len": "0x2c",
+  "name": "Text_004F4CB0::FUN_004F4C70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/color_scheme_iterator_methods.cpp",
+  "addr": "0x4F4CE0",
+  "sym": "?Equals@Entry_00626690@@QAE_NPAU1@@Z",
+  "len": "0x4f",
+  "name": "Entry_00626690::Equals",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/color_scheme_iterator_methods.cpp",
+  "addr": "0x4F4D30",
+  "sym": "?FUN_004F4D30@Entry_00626690@@QAE_NPAU1@@Z",
+  "len": "0x4f",
+  "name": "Entry_00626690::FUN_004F4D30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+  "addr": "0x4F4D80",
+  "sym": "??8ScratchEntry@@QBI_NABU0@@Z",
+  "len": "0x2",
+  "name": "ScratchEntry::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/scratch_buffer_vector_methods.cpp",
+  "addr": "0x4F4D90",
+  "sym": "??9ScratchEntry@@QBI_NABU0@@Z",
+  "len": "0xb",
+  "name": "ScratchEntry::operator!=",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_house_slot6_methods.cpp",
+  "addr": "0x50E750",
+  "sym": "?Slot6@?$VectorClass@_N@@UBE_NH@Z",
+  "len": "0xd",
+  "name": "VectorClass<bool>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/vector_house_slot6_methods.cpp",
+  "addr": "0x50E7C0",
+  "sym": "?Slot6@?$VectorClass@V?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@@@UBE?AV?$DistributionObject@PAVBuildingTypeClass@@@?$DiscreteDistributionClass@VBuildingTypeClass@@@@H@Z",
+  "len": "0x1c",
+  "name": "VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "addr": "0x510D10",
+  "sym": "?FUN_00510D10@@YIXPAUHWND__@@@Z",
+  "len": "0xf5",
+  "name": "FUN_00510D10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "addr": "0x510E10",
+  "sym": "?FUN_00510E10@@YIXHPADH@Z",
+  "len": "0xb4",
+  "name": "FUN_00510E10",
+  "status": "partial",
+  "pct": 85.7
+ },
+ {
+  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "addr": "0x510F60",
+  "sym": "?FUN_00510F60@@YI_NH@Z",
+  "len": "0x46",
+  "name": "FUN_00510F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/house_class_lookup_methods.cpp",
+  "addr": "0x510FB0",
+  "sym": "?FUN_00510FB0@@YIHPBD@Z",
+  "len": "0x222",
+  "name": "FUN_00510FB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/intro_movie_play.cpp",
+  "addr": "0x539320",
+  "sym": "?FUN_00539320@@YIXXZ",
+  "len": "0x24",
+  "name": "FUN_00539320",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/conn_ipx.cpp",
+  "addr": "0x53F830",
+  "sym": "?FUN_0053F830@@YIHPAXH@Z",
+  "len": "0x19",
+  "name": "FUN_0053F830",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/conn_ipx_global.cpp",
+  "addr": "0x5402B0",
+  "sym": "?FUN_005402B0@IPXGlobalConnClass@@QAEXH@Z",
+  "len": "0x16",
+  "name": "IPXGlobalConnClass::FUN_005402B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543780",
+  "sym": "??0IsometricTileClass@@QAE@HPBUMapObjCell@@@Z",
+  "len": "0xfd",
+  "name": "IsometricTileClass::IsometricTileClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543990",
+  "sym": "?Load@IsometricTileClass@@UAGJPAUIStream@@@Z",
+  "len": "0x5a",
+  "name": "IsometricTileClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543A10",
+  "sym": "?Unlimbo@IsometricTileClass@@UAE_NPBUMapObjCoord@@H@Z",
+  "len": "0x29",
+  "name": "IsometricTileClass::Unlimbo",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543A40",
+  "sym": "?vf_53@IsometricTileClass@@UAE_NXZ",
+  "len": "0x4c",
+  "name": "IsometricTileClass::vf_53",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543A90",
+  "sym": "?Size@IsometricTileClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "IsometricTileClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543AA0",
+  "sym": "?WhatAmI@IsometricTileClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "IsometricTileClass::WhatAmI",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543AF0",
+  "sym": "?GetType@IsometricTileClass@@UAEPAVMapObjTypeClassView@@XZ",
+  "len": "0x7",
+  "name": "IsometricTileClass::GetType",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543B00",
+  "sym": "?vf_69@IsometricTileClass@@UAEXPAUMapObjPoint@@PAUMapObjRect@@@Z",
+  "len": "0x3",
+  "name": "IsometricTileClass::vf_69",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/map/terrain_objects/isometric_tile_class.cpp",
+  "addr": "0x543B10",
+  "sym": "??_GIsometricTileClass@@UAEPAXI@Z",
+  "len": "0x123",
+  "name": "IsometricTileClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/index_code_table_00723d20.cpp",
+  "addr": "0x723D20",
+  "sym": "?FUN_00723D20@@YIHI@Z",
+  "len": "0x8d",
+  "name": "FUN_00723D20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager_message.cpp",
+  "addr": "0x7240B0",
+  "sym": "??1ToolTipManager@@UAE@XZ",
+  "len": "0xee",
+  "name": "ToolTipManager::~ToolTipManager",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager_message.cpp",
+  "addr": "0x724200",
+  "sym": "?FUN_00724200@ToolTipManager@@QAEXPBUtagMSG@@@Z",
+  "len": "0x1f4",
+  "name": "ToolTipManager::FUN_00724200",
+  "status": "partial",
+  "pct": 27.0,
+  "note": "pct is positional over a span whose switch tables decode as code; the residual is the inlined FUN_00724A30 loop layout (same as 0x724A30)."
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724510",
+  "sym": "?FUN_00724510@ToolTipManager@@QBEHXZ",
+  "len": "0x7",
+  "name": "ToolTipManager::FUN_00724510",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724550",
+  "sym": "?FUN_00724550@ToolTipManager@@QBEHXZ",
+  "len": "0x7",
+  "name": "ToolTipManager::FUN_00724550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724560",
+  "sym": "?FUN_00724560@ToolTipManager@@QAEXH@Z",
+  "len": "0xd",
+  "name": "ToolTipManager::FUN_00724560",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724570",
+  "sym": "?FUN_00724570@ToolTipManager@@QBEHXZ",
+  "len": "0x7",
+  "name": "ToolTipManager::FUN_00724570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/tooltip_manager.cpp",
+  "addr": "0x724580",
+  "sym": "?Add@ToolTipManager@@QAE_NAAVToolTip@@@Z",
+  "len": "0x1ae",
+  "name": "ToolTipManager::Add",
+  "status": "partial",
+  "pct": 0.0,
+  "note": "pct is positional; aligned_diff 49.7%. Retail keeps no stack frame (key and grow reuse the argument slot); this build reserves 0xC bytes. Capped after 3 variants (table-append helper, inline append, member-wise copy ctor)."
+ },
+ {
+  "tu": "match/ui/tooltip_manager_message.cpp",
+  "addr": "0x724A30",
+  "sym": "?FUN_00724A30@ToolTipManager@@QBEPBVToolTip@@ABUPoint2D@@@Z",
+  "len": "0x6f",
+  "name": "ToolTipManager::FUN_00724A30",
+  "status": "partial",
+  "pct": 63.5,
+  "note": "Retail places the found-return after the not-found exit; VC6 here keeps it in the loop. Capped after 3 loop variants."
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726140",
+  "sym": "??1TriggerClass@@UAE@XZ",
+  "len": "0x10b",
+  "name": "TriggerClass::~TriggerClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x7264C0",
+  "sym": "?FUN_007264C0@TriggerClass@@QAE_NHPAVObjectClass@@_N1H@Z",
+  "len": "0xfb",
+  "name": "TriggerClass::FUN_007264C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726690",
+  "sym": "?vf_10@TriggerClass@@UAEXPAX_N@Z",
+  "len": "0x2e",
+  "name": "TriggerClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x7266C0",
+  "sym": "?FUN_007266C0@TriggerClass@@QAEXH@Z",
+  "len": "0x13",
+  "name": "TriggerClass::FUN_007266C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x7266E0",
+  "sym": "?FUN_007266E0@TriggerClass@@QAEXH@Z",
+  "len": "0x1a",
+  "name": "TriggerClass::FUN_007266E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726700",
+  "sym": "?FUN_00726700@TriggerClass@@QBE_NH@Z",
+  "len": "0x1b",
+  "name": "TriggerClass::FUN_00726700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726780",
+  "sym": "?FUN_00726780@TriggerClass@@QBE_NXZ",
+  "len": "0x4",
+  "name": "TriggerClass::FUN_00726780",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726790",
+  "sym": "?vf_13@TriggerClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x86",
+  "name": "TriggerClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726860",
+  "sym": "?Load@TriggerClass@@UAGJPAUIStream@@@Z",
+  "len": "0x6f",
+  "name": "TriggerClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x7268F0",
+  "sym": "?FUN_007268F0@TriggerClass@@QAEXXZ",
+  "len": "0x9",
+  "name": "TriggerClass::FUN_007268F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726900",
+  "sym": "?FUN_00726900@TriggerClass@@QAEXXZ",
+  "len": "0x5",
+  "name": "TriggerClass::FUN_00726900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726920",
+  "sym": "?FUN_00726920@TriggerClass@@QAEXPAX@Z",
+  "len": "0xa",
+  "name": "TriggerClass::FUN_00726920",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726930",
+  "sym": "?vf_12@TriggerClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TriggerClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726940",
+  "sym": "?vf_11@TriggerClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TriggerClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/trigger_class_body.cpp",
+  "addr": "0x726950",
+  "sym": "??_GTriggerClass@@UAEPAXI@Z",
+  "len": "0x11f",
+  "name": "TriggerClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x765F60",
+  "sym": "?FUN_00765F60@@YI?AV?$rc_ptr@VConflict@WorldDominationTour@@@@ABV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x67",
+  "name": "FUN_00765F60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766010",
+  "sym": "??8Conflict@WorldDominationTour@@QBE_NABV01@@Z",
+  "len": "0x18",
+  "name": "WorldDominationTour::Conflict::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766060",
+  "sym": "?FUN_00766060@Conflict@WorldDominationTour@@QBEHXZ",
+  "len": "0xe",
+  "name": "WorldDominationTour::Conflict::FUN_00766060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x7667E0",
+  "sym": "?FUN_007667E0@@YIHPBUObj_007667E0@@@Z",
+  "len": "0x6",
+  "name": "FUN_007667E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x7667F0",
+  "sym": "?FUN_007667F0@@YIHPBUObj_007667E0@@@Z",
+  "len": "0x6",
+  "name": "FUN_007667F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766850",
+  "sym": "?Slot6@?$VectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UBE?AV?$rc_ptr@VGameOption@WorldDominationTour@@@@H@Z",
+  "len": "0x2f",
+  "name": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766A80",
+  "sym": "?vf_0C@?$ValueGameOption@E@WorldDominationTour@@UBEHABV?$rc_ptr@VObj_007674E0@@@@@Z",
+  "len": "0x1d",
+  "name": "WorldDominationTour::ValueGameOption<unsigned char>::vf_0C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766BC0",
+  "sym": "??8?$VectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UBE_NABV0@@Z",
+  "len": "0x46",
+  "name": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766C10",
+  "sym": "?SetCapacity@?$VectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UAE_NHPAV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
+  "len": "0x11a",
+  "name": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>::SetCapacity",
+  "status": "partial",
+  "pct": 53.9
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766D60",
+  "sym": "?FindItemIndex@?$VectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UBEHABV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
+  "len": "0x37",
+  "name": "VectorClass<rc_ptr<WorldDominationTour::GameOption>>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766DC0",
+  "sym": "?SetCapacity@?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UAE_NHPAV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
+  "len": "0x11d",
+  "name": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>::SetCapacity",
+  "status": "partial",
+  "pct": 57.0
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766EE0",
+  "sym": "?AddItem@?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@QAE_NABV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
+  "len": "0x57",
+  "name": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>::AddItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766F40",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@V?$rc_ptr@VGameOption@WorldDominationTour@@@@@@UBEHABV?$rc_ptr@VGameOption@WorldDominationTour@@@@@Z",
+  "len": "0x2a",
+  "name": "DynamicVectorClass<rc_ptr<WorldDominationTour::GameOption>>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x766F70",
+  "sym": "??0?$rc_ptr@VGameOption@WorldDominationTour@@@@QAE@ABV0@@Z",
+  "len": "0x23",
+  "name": "rc_ptr<WorldDominationTour::GameOption>::rc_ptr",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_conflict_options.cpp",
+  "addr": "0x767010",
+  "sym": "??_E?$rc_ptr@VGameOption@WorldDominationTour@@@@UAEPAXI@Z",
+  "len": "0x6a",
+  "name": "rc_ptr<WorldDominationTour::GameOption>::`vector deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x767310",
+  "sym": "?FUN_00767310@GameOption@WorldDominationTour@@QBE_NABV?$rc_ptr@VObj_007674E0@@@@@Z",
+  "len": "0x5",
+  "name": "WorldDominationTour::GameOption::FUN_00767310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x767400",
+  "sym": "?vf_14@Obj_00767400@@UBEHI@Z",
+  "len": "0x38",
+  "name": "Obj_00767400::vf_14",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x767440",
+  "sym": "?FUN_00767440@Obj_00767400@@QBEHI@Z",
+  "len": "0x19",
+  "name": "Obj_00767400::FUN_00767440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x7674E0",
+  "sym": "?vf_0C@FlagGameOption@WorldDominationTour@@UBEHABV?$rc_ptr@VObj_007674E0@@@@@Z",
+  "len": "0x1d",
+  "name": "WorldDominationTour::FlagGameOption::vf_0C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x767600",
+  "sym": "?FUN_00767600@Obj_00767600@@QBEHH@Z",
+  "len": "0x5",
+  "name": "Obj_00767600::FUN_00767600",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x7676F0",
+  "sym": "?FUN_007676F0@@YI?AV?$rc_ptr@VMapSizeGameOption@WorldDominationTour@@@@I@Z",
+  "len": "0x44",
+  "name": "FUN_007676F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_game_options.cpp",
+  "addr": "0x767800",
+  "sym": "?vf_0C@MapSizeGameOption@WorldDominationTour@@UBEHABV?$rc_ptr@VObj_007674E0@@@@@Z",
+  "len": "0x1e",
+  "name": "WorldDominationTour::MapSizeGameOption::vf_0C",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76AAB0",
+  "sym": "?FUN_0076AAB0@@YI?AV?$rc_ptr@VWDTTerritory@@@@XZ",
+  "len": "0x39",
+  "name": "FUN_0076AAB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76AAF0",
+  "sym": "??0WDTTerritory@@QAE@XZ",
+  "len": "0x91",
+  "name": "WDTTerritory::WDTTerritory",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76AB90",
+  "sym": "??1WDTTerritory@@QAE@XZ",
+  "len": "0xb",
+  "name": "WDTTerritory::~WDTTerritory",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76ABA0",
+  "sym": "?FUN_0076ABA0@@YI?AV?$rc_ptr@VWDTState@@@@PAX@Z",
+  "len": "0x3c",
+  "name": "FUN_0076ABA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B080",
+  "sym": "?FUN_0076B080@WDTState@@QBE_NXZ",
+  "len": "0x9",
+  "name": "WDTState::FUN_0076B080",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B090",
+  "sym": "?FUN_0076B090@WDTState@@QBEEXZ",
+  "len": "0x4",
+  "name": "WDTState::FUN_0076B090",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B760",
+  "sym": "?Slot6@?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UBE?AV?$rc_ptr@VWDTTerritory@@@@H@Z",
+  "len": "0x2f",
+  "name": "VectorClass<rc_ptr<WDTTerritory>>::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B790",
+  "sym": "??0?$rc_ptr@VWDTTerritory@@@@QAE@PAVWDTTerritory@@@Z",
+  "len": "0x20",
+  "name": "rc_ptr<WDTTerritory>::rc_ptr",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B7B0",
+  "sym": "??4?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@QAEAAV0@ABV0@@Z",
+  "len": "0xb9",
+  "name": "VectorClass<rc_ptr<WDTTerritory>>::operator=",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B870",
+  "sym": "??8?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UBE_NABV0@@Z",
+  "len": "0x46",
+  "name": "VectorClass<rc_ptr<WDTTerritory>>::operator==",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76B8C0",
+  "sym": "?SetCapacity@?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UAE_NHPAV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x11a",
+  "name": "VectorClass<rc_ptr<WDTTerritory>>::SetCapacity",
+  "status": "partial",
+  "pct": 53.9
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76BA10",
+  "sym": "?FindItemIndex@?$VectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UBEHABV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x37",
+  "name": "VectorClass<rc_ptr<WDTTerritory>>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76BA70",
+  "sym": "?SetCapacity@?$DynamicVectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UAE_NHPAV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x11d",
+  "name": "DynamicVectorClass<rc_ptr<WDTTerritory>>::SetCapacity",
+  "status": "partial",
+  "pct": 57.0
+ },
+ {
+  "tu": "match/network/wdt_net.cpp",
+  "addr": "0x76BB90",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@V?$rc_ptr@VWDTTerritory@@@@@@UBEHABV?$rc_ptr@VWDTTerritory@@@@@Z",
+  "len": "0x2a",
+  "name": "DynamicVectorClass<rc_ptr<WDTTerritory>>::FindItemIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BE90",
+  "sym": "?FUN_0076BE90@@YI?AV?$rc_ptr@VCampaignProperties@WorldDominationTour@@@@ABV?$rc_ptr@VWDTState@@@@@Z",
+  "len": "0x3c",
+  "name": "FUN_0076BE90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BED0",
+  "sym": "??1CampaignProperties@WorldDominationTour@@QAE@XZ",
+  "len": "0x30",
+  "name": "WorldDominationTour::CampaignProperties::~CampaignProperties",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BF00",
+  "sym": "??0CampaignProperties@WorldDominationTour@@QAE@ABV?$rc_ptr@VWDTState@@@@@Z",
+  "len": "0x93",
+  "name": "WorldDominationTour::CampaignProperties::CampaignProperties",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BFA0",
+  "sym": "?FUN_0076BFA0@CampaignProperties@WorldDominationTour@@QBEHXZ",
+  "len": "0xe",
+  "name": "WorldDominationTour::CampaignProperties::FUN_0076BFA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BFC0",
+  "sym": "?FUN_0076BFC0@CampaignProperties@WorldDominationTour@@QBEHXZ",
+  "len": "0x15",
+  "name": "WorldDominationTour::CampaignProperties::FUN_0076BFC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BFE0",
+  "sym": "?FUN_0076BFE0@CampaignProperties@WorldDominationTour@@QBEHXZ",
+  "len": "0xf",
+  "name": "WorldDominationTour::CampaignProperties::FUN_0076BFE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76BFF0",
+  "sym": "?FUN_0076BFF0@CampaignProperties@WorldDominationTour@@QBE?AVMember_7B46F0@@XZ",
+  "len": "0x35",
+  "name": "WorldDominationTour::CampaignProperties::FUN_0076BFF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wdt_props.cpp",
+  "addr": "0x76C030",
+  "sym": "?DeletingDtor@CampaignProperties@WorldDominationTour@@UAEPAXI@Z",
+  "len": "0x44",
+  "name": "WorldDominationTour::CampaignProperties::DeletingDtor",
   "status": "matched",
   "pct": 100
  }

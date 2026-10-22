@@ -30,7 +30,7 @@ struct TeamTypeClass;    // forward (TeamClass::Type points back to it)
 // take the single int index in ECX (one-arg __fastcall reproduces the retail
 // `MOV ECX,idx / CALL`).  Body-less so cl emits reloc-normalised direct calls.
 // ---------------------------------------------------------------------------
-bool        __fastcall IsCountryIndex(int idxHouse);          // GAMEMD 0x510F60
+bool        __fastcall FUN_00510F60(int idxHouse);          // GAMEMD 0x510F60
 HouseClass* __fastcall FindHouseByCountryIndex(int idxHouse); // GAMEMD 0x510ED0
 
 // ---------------------------------------------------------------------------

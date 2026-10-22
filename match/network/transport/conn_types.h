@@ -297,7 +297,7 @@ GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_3C) == 0x3C);
 
-// FUNCTION: GAMEMD 0x53F830 (decl; reloc)
+// 0x53F830 (defined in conn_ipx.cpp)
 int __fastcall FUN_0053F830(void* buf, int buflen);
 
 // LIBRARY: GAMEMD 0x7CA489 (CRT wcscpy, cdecl)
@@ -427,6 +427,9 @@ public:
     virtual int vf_16(IPXAddressClass* address,
                                     unsigned short port);          // slot 16 0x540340
     virtual void vf_17(unsigned int age);              // slot 17 0x540110
+    // 0x5402B0: clears unknown_C4 while the global flag
+    // 0xAA05A4 is set; the argument is popped (RET 4) but not read.
+    void FUN_005402B0(int unused);
 
     ConnGlobalPacketHeader* GlobalHeader() { return (ConnGlobalPacketHeader*)unknown_20; }
 

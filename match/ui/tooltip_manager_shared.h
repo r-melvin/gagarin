@@ -26,6 +26,13 @@ struct ToolTipBounds
     int Y;
     int Width;
     int Height;
+
+    // Edge-inclusive hit test, inlined by 0x724A30 and its two copies in 0x724200.
+    bool Contains(const Point2D& point) const
+    {
+        return point.X >= X && point.X <= X + Width
+            && point.Y >= Y && point.Y <= Y + Height;
+    }
 };
 GG_STATIC_ASSERT(offsetof(ToolTipBounds, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(ToolTipBounds, Y) == 0x04);
@@ -36,6 +43,12 @@ GG_STATIC_ASSERT(sizeof(ToolTipBounds) == 0x10);
 class ToolTip
 {
 public:
+    ToolTip() {}
+    // Member-wise copy, inlined by Add (0x724580): the bounds group is copied
+    // as one four-dword block between the id and the text.
+    ToolTip(const ToolTip& other)
+        : GadgetID(other.GadgetID), Bounds(other.Bounds), Text(other.Text),
+          field_18(other.field_18) {}
     unsigned int GadgetID; // +0x00
     ToolTipBounds Bounds;   // +0x04
     const char* Text;       // +0x14
@@ -70,6 +83,11 @@ GG_STATIC_ASSERT(sizeof(wchar_t) == 2);
 
 struct ToolTipTableEntry
 {
+    // Add's array new (0x724580) passes an out-of-line empty constructor,
+    // 0x724F90, to the vector-construct helper 0x4068F0; Remove (0x724730)
+    // builds entries with no call. Declaring it out of line costs Remove its
+    // match, so it stays inline here and 0x724F90 is not claimed.
+    ToolTipTableEntry() {}
     unsigned int Key; // +0x00
     ToolTip* Data;    // +0x04
 };
@@ -86,10 +104,22 @@ extern "C" void __cdecl gg_free(void* block);
 struct ToolTipTable
 {
     // Inlined initialization recovered from constructor 0x724000.
-    ToolTipTable() : Items(0), Count(0), unknown_08(0), IsSorted(0), Cached(0) {}
+    ToolTipTable() : Items(0), Count(0), Capacity(0), IsSorted(0), Cached(0) {}
+    // Inlined release recovered from destructor 0x7240B0, which runs it once
+    // in its body and once more as this member's destructor.
+    ~ToolTipTable() { Clear(); }
+    void Clear()
+    {
+        gg_free(Items);
+        Items = 0;
+        Count = 0;
+        Capacity = 0;
+        IsSorted = 0;
+        Cached = 0;
+    }
     ToolTipTableEntry* Items; // +0x00, manager +0x24C
     int Count;                // +0x04, manager +0x250
-    int unknown_08;           // +0x08, manager +0x254
+    int Capacity;             // +0x08, manager +0x254
     unsigned char IsSorted;   // +0x0C, manager +0x258
     unsigned char unknown_0D[3];
     ToolTipTableEntry* Cached; // +0x10, manager +0x25C
@@ -176,7 +206,7 @@ struct ToolTipTable
 
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Items) == 0x00);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Count) == 0x04);
-GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(ToolTipTable, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, IsSorted) == 0x0C);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, unknown_0D) == 0x0D);
 GG_STATIC_ASSERT(offsetof(ToolTipTable, Cached) == 0x10);
@@ -219,6 +249,8 @@ GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot5) == 0x14);
 GG_STATIC_ASSERT(offsetof(ToolTipVectorVtableLayout, Slot6) == 0x18);
 GG_STATIC_ASSERT(sizeof(ToolTipVectorVtableLayout) == 0x1C);
 
+struct tagMSG;
+
 struct ToolTipManager
 {
     // VTABLE: GAMEMD 0x7F57AC (primary ToolTipManager address point)
@@ -253,8 +285,20 @@ struct ToolTipManager
     void SaveTimerDelay();
     // FUNCTION: GAMEMD 0x724540
     void RestoreTimeDelay();
+    // FUNCTION: GAMEMD 0x724200 (declaration) -- the window-message hook, RET 4.
+    void FUN_00724200(const tagMSG* msg);
+    // FUNCTION: GAMEMD 0x724510 (declaration)
+    int FUN_00724510() const;
+    // FUNCTION: GAMEMD 0x724550 (declaration)
+    int FUN_00724550() const;
+    // FUNCTION: GAMEMD 0x724560 (declaration)
+    void FUN_00724560(int value);
+    // FUNCTION: GAMEMD 0x724570 (declaration)
+    int FUN_00724570() const;
     // FUNCTION: GAMEMD 0x724580
     bool Add(ToolTip& tip);
+    // FUNCTION: GAMEMD 0x724A30 (declaration) -- the first tip whose bounds hold the point.
+    const ToolTip* FUN_00724A30(const Point2D& point) const;
     // FUNCTION: GAMEMD 0x724730
     void Remove(unsigned int key);
     // FUNCTION: GAMEMD 0x724AD0

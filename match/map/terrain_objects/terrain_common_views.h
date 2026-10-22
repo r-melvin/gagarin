@@ -300,7 +300,7 @@ public:
     virtual void vf_106();                                                                       // 106 base 0x5F4410
     virtual int vf_107(MapObjOccupierView* who, int a2, int a3, int a4, int a5);                 // 107 base 0x4264C0; overridden by Terrain 0x71C4D0
     virtual void vf_108();                                                                       // 108 base 0x4264D0
-    virtual void vf_109(MapObjCoord* where);                                                     // 109 base 0x5F6940
+    virtual void vf_109(const MapObjCoord* where);                                               // 109 base 0x5F6940; IsometricTileClass passes its Unlimbo coordinate
     virtual MapObjCell* vf_110(MapObjCell* out);                                                              // 110 base 0x41BEA0
     virtual void vf_111();                                                                       // 111 base 0x5F6960
     virtual void vf_112();                                                                       // 112 base 0x5F69C0
