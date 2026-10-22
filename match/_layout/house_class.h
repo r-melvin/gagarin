@@ -103,8 +103,44 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 #endif
 
 class BuildingTypeClass;
+class HouseTypeClass;
 
-class HouseClass : public AbstractClass
+#include <ocidl.h>   // IConnectionPointContainer (VC98 SDK, LIBRARY)
+
+// COM interfaces HouseClass implements. RTTI names both `.?AU` structs with a
+// single IUnknown base. Slot names are placeholders; argument counts come from
+// RET n of each slot's target (IHouse table 0x7EA834: slots 3-9 and 13-14 RET 4,
+// 10-12 RET 8; IPublicHouse table 0x7EA80C: slots 3-4 adjust to IHouse 3-4,
+// 5-7 RET 8, 8 RET 4). Return types are not recovered.
+struct IHouse : public IUnknown
+{
+    virtual HRESULT __stdcall vf_03() = 0;                     // 3
+    virtual HRESULT __stdcall vf_04() = 0;                     // 4
+    virtual HRESULT __stdcall vf_05() = 0;                     // 5
+    virtual HRESULT __stdcall vf_06() = 0;                     // 6
+    virtual HRESULT __stdcall vf_07() = 0;                     // 7
+    virtual HRESULT __stdcall vf_08() = 0;                     // 8
+    virtual HRESULT __stdcall vf_09() = 0;                     // 9
+    virtual HRESULT __stdcall vf_10(int a1) = 0;               // 10
+    virtual HRESULT __stdcall vf_11(int a1) = 0;               // 11
+    virtual HRESULT __stdcall vf_12(int a1) = 0;               // 12
+    virtual HRESULT __stdcall vf_13() = 0;                     // 13
+    virtual HRESULT __stdcall vf_14() = 0;                     // 14
+};
+
+struct IPublicHouse : public IUnknown
+{
+    virtual HRESULT __stdcall vf_03() = 0;                     // 3 (same target as IHouse 3)
+    virtual HRESULT __stdcall vf_04() = 0;                     // 4 (same target as IHouse 4)
+    virtual HRESULT __stdcall vf_05(int a1) = 0;               // 5
+    virtual HRESULT __stdcall vf_06(int a1) = 0;               // 6
+    virtual HRESULT __stdcall vf_07(int a1) = 0;               // 7
+    virtual HRESULT __stdcall vf_08() = 0;                     // 8
+};
+
+// Bases per retail CHD (COL 0x802A28): IHouse mdisp 0x24, IPublicHouse 0x28,
+// IConnectionPointContainer 0x2C.
+class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
     // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
@@ -121,11 +157,10 @@ public:
     // Its element fields and complete size remain unknown.
     struct StartingTechnoStruct;
     struct BuildChoiceClass;    // RTTI: .?AUBuildChoiceClass@HouseClass@@ (vector element)
-    void*  Vfptr_24;                       // +0x24 interface vptr; ctor 0x7EA834 @0x004F5DE8; RTTI COL base 0x24
-    void*  Vfptr_28;                       // +0x28 interface vptr; ctor 0x7EA80C @0x004F5DEF; RTTI COL base 0x28
-    void*  Vfptr_2C;                       // +0x2C interface vptr; ctor 0x7EA7F4 @0x004F5DFB; RTTI COL base 0x2C
+    // +0x24/+0x28/+0x2C: IHouse, IPublicHouse, IConnectionPointContainer vptrs
+    //   (ctor stores 0x7EA834 @0x004F5DE8, 0x7EA80C @0x004F5DEF, 0x7EA7F4 @0x004F5DFB).
     int    ArrayIndex;                     // +0x30 ctor MOV [EBP+0x30],-1 @0x004F54B8
-    void*  Type;                           // +0x34 HouseTypeClass*; ctor MOV [EBP+0x34],EAX(=arg) @0x004F54C2
+    HouseTypeClass* Type;                  // +0x34 ctor MOV [EBP+0x34],EAX(=arg) @0x004F54C2
     DynamicVectorClassLayout RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
     DynamicVectorClassLayout ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
     DynamicVectorClassLayout Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
@@ -405,7 +440,6 @@ public:
     void FUN_0050DFE0(CellStruct cell);
 };
 
-GG_STATIC_ASSERT(offsetof(HouseClass, Vfptr_24)                   == 0x24);
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex)                 == 0x30);
 GG_STATIC_ASSERT(offsetof(HouseClass, Type)                       == 0x34);
 GG_STATIC_ASSERT(offsetof(HouseClass, RelatedTags)                == 0x38);
