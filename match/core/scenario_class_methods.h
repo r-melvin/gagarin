@@ -43,6 +43,11 @@ struct MapInstanceClass
     // FUNCTION: GAMEMD 0x56BEC0 (decl; reloc)
     bool FUN_0056BEC0(CellStruct cell, int value);
     void FUN_004AD7E0(CCINIClass* ini); // GAMEMD 0x4AD7E0
+    // Hidden Cell result precedes fourteen explicit stack arguments at 0x6885B5.
+    Cell FUN_0056DC20(const CellStruct& from, int speedType, int a4,
+                     int zone, bool alt, int sizeX, int sizeY,
+                     bool a9, bool a10, bool a11, bool ignoreOccupied,
+                     const CellStruct& closeTo, bool a14, bool buildable); // GAMEMD 0x56DC20
     // FUNCTION: GAMEMD 0x5657a0 (decl; reloc)
     // ?FUN_005657A0@MapInstanceClass@@QAEPAVCellClass@@PBUCellStruct@@@Z
     CellClass* FUN_005657A0(const CellStruct* cell);

@@ -50,6 +50,14 @@
 // GLOBAL: GAMEMD 0x00B0C110
 extern SwizzleManagerClass DAT_00B0C110;
 extern const char STR_0083DDF8[]; // STRING: GAMEMD 0x0083DDF8 (decl)
+extern const char STR_0083DD20[]; // STRING: GAMEMD 0x0083DD20 (decl)
+extern const char STR_0083DCD4[]; // STRING: GAMEMD 0x0083DCD4 (decl)
+extern const char STR_0083DC9C[]; // STRING: GAMEMD 0x0083DC9C (decl)
+extern int DAT_00A8B274; // GLOBAL: GAMEMD 0x00A8B274
+extern int DAT_0087F90C; // GLOBAL: GAMEMD 0x0087F90C
+extern int DAT_0087F910; // GLOBAL: GAMEMD 0x0087F910
+extern int DAT_0087F914; // GLOBAL: GAMEMD 0x0087F914
+extern int DAT_0087F918; // GLOBAL: GAMEMD 0x0087F918
 
 // GLOBAL: GAMEMD 0x00B72D20
 extern WinModemClass* WinModem_00B72D20;
@@ -977,6 +985,51 @@ void __fastcall FUN_00687CE0(const char* filename, bool flag)
     FUN_006E5FE0(&ini);
     RawFileClass output(filename);
     ini.WriteCCFile(&output, true);
+}
+
+// FUNCTION: GAMEMD 0x688380
+DynamicVectorClass<Cell> __fastcall FUN_00688380()
+{
+    DynamicVectorClass<Cell> points(0, 0);
+    int defined = 0;
+    for (int i = 0; i < 8; ++i) {
+        if (i >= 702 || i < 0 ||
+            (ScenarioInstance->Waypoints[i].X == WaypointUndefined.X &&
+             ScenarioInstance->Waypoints[i].Y == WaypointUndefined.Y)) break;
+        ++defined;
+    }
+    int spectators = 0;
+    for (i = 0; i < PlayerCount_00A8DA84; ++i)
+        if (Players_00A8DA78[i]->unknown_6B == -1) ++spectators;
+    int count = PlayerCount_00A8DA84 - spectators + DAT_00A8B274;
+    if (defined > count) count = defined;
+    for (i = 0; i < count; ++i) {
+        if (i < 702 && i >= 0 &&
+            (ScenarioInstance->Waypoints[i].X != WaypointUndefined.X ||
+             ScenarioInstance->Waypoints[i].Y != WaypointUndefined.Y)) {
+            points.AddItem(Cell(ScenarioInstance->Waypoints[i].X,
+                                ScenarioInstance->Waypoints[i].Y));
+            CellStruct point = ScenarioInstance->Waypoints[i];
+            FUN_004068E0(STR_0083DD20, point.X, point.Y);
+        }
+    }
+    if (count > points.Count) {
+        FUN_004068E0(STR_0083DCD4);
+        while (points.Count < count) {
+            int y = ScenarioInstance->unknown_0218.RandomRanged(0, DAT_0087F918 - 10);
+            int x = ScenarioInstance->unknown_0218.RandomRanged(10, DAT_0087F914 - 10);
+            Cell start(x + DAT_0087F90C, y + DAT_0087F910 + 10);
+            Cell closeTo(0, 0);
+            Cell point = MapInstance.FUN_0056DC20(start, 1, -1, 0, false, 8, 8,
+                                                false, false, false, true,
+                                                closeTo, false, false);
+            if (point.X != WaypointUndefined.X || point.Y != WaypointUndefined.Y) {
+                points.AddItem(point);
+                FUN_004068E0(STR_0083DC9C, point.X, point.Y);
+            }
+        }
+    }
+    return points;
 }
 
 // FUNCTION: GAMEMD 0x689310

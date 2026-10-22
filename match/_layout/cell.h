@@ -7,6 +7,7 @@
 #define GG_MATCH_LAYOUT_CELL_H
 
 #include "../_rt/gg_static_assert.h"
+#include <stddef.h>
 
 // CellStruct — 2D short cell coordinate (sizeof = 4). Self-guarded for reuse.
 #ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
@@ -17,6 +18,8 @@ struct CellStruct
     short Y;   // +0x02
 };
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
+GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);
+GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
 #endif
 
 // Cell -- the cell type RTTI names in `.?AV?$VectorClass@VCell@@@@` (table
@@ -29,6 +32,8 @@ class Cell : public CellStruct
 {
 public:
     Cell() {}
+    // Word stores for the coordinate pair at 0x688573/0x688588.
+    Cell(short x, short y) { X = x; Y = y; }
     // Element comparisons the VectorClass<Cell> table's bodies use (declared only).
     bool operator==(const Cell& other) const;
     bool operator!=(const Cell& other) const;

@@ -92625,5 +92625,14 @@
   "name": "ScenarioClass::FUN_00689470",
   "status": "partial",
   "pct": 2.0
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x688380",
+  "sym": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@XZ",
+  "len": "0x32d",
+  "name": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@XZ",
+  "status": "partial",
+  "pct": 6.8
  }
 ]
