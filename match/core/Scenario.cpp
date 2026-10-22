@@ -40,6 +40,13 @@
 #include "../audio/vox_class_methods.h"
 #include "campaign_class.h"
 #include "../_layout/house_type_class.h"
+#include "rules_class.h"
+#include "../_layout/building_class.h"
+
+// GLOBAL: GAMEMD 0x008B41E4
+extern BuildingClass** DAT_008B41E4;
+// GLOBAL: GAMEMD 0x008B41F0
+extern int DAT_008B41F0;
 
 #include "scenario_class_start_points_methods.h"
 
@@ -1414,6 +1421,31 @@ struct ScenarioConvert_00555DA0
         const unsigned char* table, int shade); // GAMEMD 0x555DA0
 };
 GG_STATIC_ASSERT(sizeof(ScenarioConvert_00555DA0) == 0x1B4);
+
+// FUNCTION: GAMEMD 0x68C050
+void __fastcall FUN_0068C050()
+{
+    void* selected = 0;
+    if (DAT_008B41F0 > 0 && RulesInstance->unknown_D54 > 0 &&
+        RulesInstance->unknown_D54 >= DAT_008B41F0) {
+        DynamicVectorClass<int> choices(0, 0);
+        for (int i = 0; i < RulesInstance->unknown_D54; ++i)
+            choices.AddItem(i);
+        for (i = 0; i < DAT_008B41F0; ++i) {
+            int index = ScenarioInstance->unknown_0218.RandomRanged(0, choices.Count - 1);
+            choices.Delete(index);
+            if (index + 1 > RulesInstance->unknown_D10) {
+                index -= RulesInstance->unknown_D10;
+                if (index + 1 > RulesInstance->unknown_D2C) {
+                    index -= RulesInstance->unknown_D2C;
+                    if (index + 1 <= RulesInstance->unknown_D48)
+                        selected = RulesInstance->unknown_D3C[index];
+                } else selected = RulesInstance->unknown_D20[index];
+            } else selected = RulesInstance->unknown_D04[index];
+            if (selected) DAT_008B41E4[i]->SecretProduction = selected;
+        }
+    }
+}
 
 // FUNCTION: GAMEMD 0x68C3B0
 void* __fastcall FUN_0068C3B0(const void* hsv, PaletteClass* pal1, PaletteClass* pal2,

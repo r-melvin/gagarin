@@ -92598,5 +92598,14 @@
   "name": "FUN_00687CE0",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x68C050",
+  "sym": "?FUN_0068C050@@YIXXZ",
+  "len": "0x1a1",
+  "name": "?FUN_0068C050@@YIXXZ",
+  "status": "partial",
+  "pct": 0.0
  }
 ]
