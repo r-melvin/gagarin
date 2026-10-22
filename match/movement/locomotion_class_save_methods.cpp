@@ -10,16 +10,11 @@
 
 // FUNCTION: GAMEMD 0x55AA60  (__stdcall)
 //
-// The shared `done:` epilogue is load-bearing: it forces cl to preserve the
-// non-volatile EDI in the prologue (push EDI before the null-branch, pop EDI in
-// the inline E_POINTER tail) exactly as retail does, instead of shrink-wrapping
-// the save into the success path. With this shape the whole body is byte-exact.
-//
-// RESIDUAL (bool-delta, toolchain register-allocation): retail (cl build 8447)
-// places pStm in ESI and `this` in EDI; our compiler swaps them
-// (pStm->EDI, this->ESI). The three prologue setup instructions differ only by
-// that ESI<->EDI choice; every other byte (control flow, the two IStream::Write
-// thiscalls, Size(), the dirty-flag clear, the epilogue) is identical. 92.5%.
+// PARTIAL (67.5%): the instruction multiset agrees, but register assignment
+// and scheduling differ. Retail holds pStm in ESI and this in EDI; this build
+// swaps those registers. The shared done epilogue keeps the early null exit
+// and common cleanup shape. Earlier byte-exact/92.5% comments were not
+// reproduced by the second-look verification and have been removed.
 HRESULT __stdcall SaveView_0055AA60::Save(Gg_IStream* pStm, LONG fClearDirty)
 {
     HRESULT hr;

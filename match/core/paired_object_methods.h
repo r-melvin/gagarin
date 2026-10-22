@@ -117,6 +117,22 @@ struct Obj_00402190
     // FUNCTION: GAMEMD 0x404140
     void FUN_00404140();
 };
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_0C) == 0xC);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_94) == 0x94);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_98) == 0x98);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_9C) == 0x9C);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_A0) == 0xA0);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_A4) == 0xA4);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_A8) == 0xA8);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, Context) == 0xAC);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, Hook_B4) == 0xB4);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_B8) == 0xB8);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_BC) == 0xBC);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, Hook160) == 0x160);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, Hook164) == 0x164);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_16C) == 0x16C);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_170) == 0x170);
+GG_STATIC_ASSERT(offsetof(Obj_00402190, field_174) == 0x174);
 GG_STATIC_ASSERT(offsetof(Obj_00402190, TimersA) == 0x10);
 GG_STATIC_ASSERT(offsetof(Obj_00402190, field_90) == 0x90);
 GG_STATIC_ASSERT(offsetof(Obj_00402190, Peer) == 0xB0);

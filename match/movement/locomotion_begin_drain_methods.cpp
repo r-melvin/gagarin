@@ -9,21 +9,9 @@
 // target's owner, release whatever the target was holding, spawn the drain
 // animation and attach it, then refresh this object's display.
 //
-// PARTIAL, 97.0% (64 of 67 instructions; the multiset differs by nothing but
-// the register holding the display pointer). Retail loads it into ECX and
-// tests ECX; cl uses EAX. Four tail spellings were measured on cloned classes
-// and all four score identically: the guard as a three-term conjunction, the
-// display named inside a nested block, three separate early returns, and a
-// nested test inside the conjunction. The register choice is not reachable
-// from the tail's shape.
-//
-// Three model errors were found and fixed on the way here, each of which
-// first read as a codegen problem: the link store was written to the wrong
-// object; vtable slot +0x48 returns a coordinate through a hidden buffer and
-// takes five arguments, not six; and the display refresh pushes all three of
-// its arguments rather than using the register convention. The length was
-// also one byte too long, which pulled the next function's first byte into
-// the comparison and showed up as a phantom retail-only instruction.
+// The display refresh is a thiscall: retail loads the display pointer from
+// this+0x5D4 into ECX and passes owner, -1 and 1 on the stack. Modelling it
+// as a free stdcall function omitted the display receiver.
 void Drainer_0070FD70::BeginDraining(Target_0070FD70* target)
 {
     if (target == 0) {
@@ -57,9 +45,9 @@ void Drainer_0070FD70::BeginDraining(Target_0070FD70* target)
     }
 
     if (this != 0 && (this->Flags & 4) != 0) {
-        void* display = this->Display;
+        Display_0070FD70* display = this->Display;
         if (display != 0) {
-            FUN_006EA870(this, -1, 1);
+            display->Refresh(this, -1, 1);
         }
     }
 }

@@ -4,6 +4,7 @@
 
 #include "building_class_voxel_barrel_methods.h"
 
+// GLOBAL: GAMEMD 0x7E4408
 // One 32nd of a turn, negated: the double at 0x7E4408.
 static const double VoxelBarrelStep_00458810 = -0.19634954084936207;
 
@@ -24,31 +25,9 @@ static inline int BarrelFacingIndex_00458810(const DirStruct_00458810* dir)
 // current facing, translate out to the pitch pivot, then scale uniformly by
 // the type's barrel scale.
 //
-// PARTIAL (96.6%, 113/117 instructions; the instruction multiset is identical
-// throughout, so every residual is scheduling). Two levers were found:
-//   * the facing index helper must take the DirStruct the facing slot returns,
-//     not its raw word. Dereferencing `->Raw` at the call site lets cl land the
-//     first index chain in EAX where retail uses ECX, and that one register
-//     choice then shifts the EAX/ECX/EDX rotation of the type-pointer load by
-//     one register across all nine translate calls downstream: 70.9% versus
-//     96.6%. Taking the DirStruct by const reference works equally well.
-//   * the barrel scale must be read AFTER the pitch-pivot translates, in
-//     retail's own textual order; reading it before them costs 31 points.
-// The 4-instruction residual is the first translate of the pitch-pivot group,
-// where retail issues `FILD [ECX+0x1730]` before the `PUSH ECX` that allocates
-// the float argument slot and cl issues it after. It is the only one of the
-// nine translate blocks retail schedules that way (the other eight, this one
-// included in our output, push first), so it is a scheduler coin-flip rather
-// than a shape. Eighteen phrasings were measured across three batches scored
-// in one compile each: two separate DirStruct temporaries (59.8%); the raw
-// word bound to its own local before the call (49.6% / 96.6% depending on
-// where); the index expression written inline with no int locals (70.9%); the
-// dir temporary declared after the matrix (70.9%); the multiply written with
-// the constant first (70.9%); the pitch pivot bound to a reference (70.9%) or
-// to a pointer (70.9%); the type pointer cached once for the whole body
-// (7.7%); all three translate groups routed through a free helper (18.8%);
-// just the pitch group routed through it (69.2%); and the scale re-read at
-// each of the three Scale calls (76.2%).
+// The facing index helper takes the returned direction object. A named float
+// pitch temporary preserves retail's floating-point instruction order before
+// the pitch-pivot translations. Read the scale after those translations.
 Matrix3D_00458810* BuildingClass_00458810::GetVoxelBarrelOffsetMatrix(
     Matrix3D_00458810& ret)
 {
@@ -67,7 +46,8 @@ Matrix3D_00458810* BuildingClass_00458810::GetVoxelBarrelOffsetMatrix(
     mtx.TranslateZ((float)Type->VoxelBarrelOffsetToRotatePivotPoint.Z);
 
     int barrel = BarrelFacingIndex_00458810(BarrelFacing.Current(&dir));
-    mtx.RotateY((float)-(barrel * VoxelBarrelStep_00458810));
+    float pitch = (float)-(barrel * VoxelBarrelStep_00458810);
+    mtx.RotateY(pitch);
 
     mtx.TranslateX((float)Type->VoxelBarrelOffsetToPitchPivotPoint.X);
     mtx.TranslateY((float)Type->VoxelBarrelOffsetToPitchPivotPoint.Y);

@@ -1706,8 +1706,8 @@
   "sym": "?GetVoxelBarrelOffsetMatrix@BuildingClass_00458810@@QAEPAUMatrix3D_00458810@@AAU2@@Z",
   "len": "0x1b0",
   "name": "BuildingClass::GetVoxelBarrelOffsetMatrix",
-  "status": "partial",
-  "pct": 96.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/combat/bullet_class_lose_target_methods.cpp",
@@ -9512,8 +9512,8 @@
   "sym": "?FUN_004024A0@Obj_00402190@@QAEXXZ",
   "len": "0xa5",
   "name": "FUN_004024A0",
-  "status": "partial",
-  "pct": 93.8
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/paired_object_methods.cpp",
@@ -11384,8 +11384,8 @@
   "sym": "?FUN_00404E20@@YIPAXH@Z",
   "len": "0x4b",
   "name": "FUN_00404E20",
-  "status": "partial",
-  "pct": 94.9
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc46_methods.cpp",
@@ -24227,8 +24227,8 @@
   "sym": "?MSCountPages@@YIHPAVWideStringClass@@PAVMSFont@@H@Z",
   "len": "0xb9",
   "name": "",
-  "status": "partial",
-  "pct": 92.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -24237,7 +24237,7 @@
   "len": "0x28c",
   "name": "MSPrintAnim",
   "status": "partial",
-  "pct": 98.7
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -25334,8 +25334,8 @@
   "sym": "?BeginDraining@Drainer_0070FD70@@QAEXPAUTarget_0070FD70@@@Z",
   "len": "0xcf",
   "name": "Drainer::BeginDraining",
-  "status": "partial",
-  "pct": 97.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/loco_base.cpp",
@@ -25356,13 +25356,13 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_class_iloco_methods.cpp",
+  "tu": "match/movement/loco_base.cpp",
   "addr": "0x55A910",
-  "sym": "?PowerOff@PowerOffView_0055A910@@UAG_NXZ",
+  "sym": "?PowerOff@LocomotionClass@@UAG_NXZ",
   "len": "0x11",
   "name": "PowerOff",
-  "status": "partial",
-  "pct": 66.7
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/loco_base.cpp",

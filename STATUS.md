@@ -1,5 +1,37 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,092 matched function
+rows**, **227 partial rows**, **5,319 manifest rows**, **1,068 manifest
+translation units**, and **1,078 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 123 tooling
+tests pass. There are zero annotation issues across 5,352 body addresses.
+
+The latest batch promotes five functions from Claude's partial-function second
+look and integrates exact native `LocomotionClass::PowerOff`, retiring its old
+address-local view. The changes use ordinary C++ declaration order, a walking
+row cursor, a named float temporary, a corrected display receiver and a pointer
+to the powered flag. Across those candidates and existing locomotion methods,
+41 rebuilt bodies pass raw and strict checks over 83 relocation fields.
+Eighty unaffected prior emitted sections preserve their complete bytes and
+relocation tuples, including three partials. `MSPrintAnim::Update` also has exact
+body bytes but remains partial: its emitted class table has six slots versus
+nine in retail. Its structural integration is still under review.
+
+The 5,092 matches represent 25.8% of 19,753 listed functions. Matched body
+lengths total **377,609 bytes**, or 9.9% of 3,797,269 listed function bytes.
+The padding heuristic misses 314 matched entries. The diagnostic link reports
+**4,140 unique unresolved symbols**, **6,670 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots archived on
+2026-10-21. Their batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: native locomotion base methods
+
 As of **2026-10-22**, the verified snapshot reports **5,086 matched function
 rows**, **233 partial rows**, **5,319 manifest rows**, **1,069 manifest
 translation units**, and **1,079 tracked C++ files**. Whole-repository regression
@@ -20,13 +52,6 @@ lengths total **376,528 bytes**, or 9.9% of 3,797,269 listed function bytes.
 The padding heuristic misses 314 matched entries. The diagnostic link reports
 **4,140 unique unresolved symbols**, **6,670 reference lines**, and zero
 duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native particle runtime methods
 

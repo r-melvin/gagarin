@@ -50,29 +50,22 @@ void __fastcall FUN_00404DD0(Obj_00404DD0* self)
 
 // FUNCTION: GAMEMD 0x404E20
 //
-// SCHEDULING DELTA (status partial, 94.9% - 37/39). One instruction is in the
-// wrong place: retail materialises the table base (`MOV EBX,0x87DE38`) between
-// the row-count test and its `JLE`, and we emit it after the `JLE`. Everything
-// else, both loop rotations and the 0xA4 bias included, is exact. Holding the
-// base in a named local, indexing the global directly, flattening to a single
-// header array, and driving both loops on walking pointers all give the same
-// 94.9%, so the placement is register-allocator state rather than source order.
+// Walk the ten-header rows in order and return the owning object of the first
+// non-empty header (node - 0xA4), or 0 if every header is empty.
 //
-// The loop-rotation lever was measured here and this is the case its
-// precondition excludes. Retail's outer back edge is already a conditional
-// `CMP EBP,EAX; JL`, i.e. a bottom-tested loop cl reaches from a plain `for`.
-// Writing the peel out literally - `if (row < rows) { do { ... } while (row <
-// rows); }` - inverts the layout and costs 42 points (52.5%), and so does the
-// same peel on both loops, on a walked row pointer (55.0%), or with the table
-// re-derived at the subscript. Hoisting the guard to `if (rows > 0)` around the
-// whole body is 9.8%. The plain `for` is the best measured form.
+// Second-look result: 100% (raw bytes identical). The row cursor is a walking
+// pointer advanced with the row counter (`row++, cursor++`) while the columns are
+// indexed off it. Retail's table base then lands in its register ahead of the
+// row-count branch. Earlier notes: a bottom-tested peel of either loop, a
+// hoisted `rows > 0` guard and a table re-derived at the subscript were all far
+// worse; the plain `for` shape is right.
 void* __fastcall FUN_00404E20(int rows)
 {
-    Row_00404E20* table = DAT_0087DE38;
+    Row_00404E20* cursor = DAT_0087DE38;
 
-    for (int row = 0; row < rows; row++) {
+    for (int row = 0; row < rows; row++, cursor++) {
         for (int column = 0; column < 10; column++) {
-            ListNode* node = (&table[row].Headers[column])->FUN_004073C0();
+            ListNode* node = cursor->Headers[column].FUN_004073C0();
 
             if (node) {
                 return (char*)node - 0xA4;

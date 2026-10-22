@@ -90,20 +90,11 @@
 // now uses (90.6); the clock store spelled through the member's `Value` rather
 // than the struct, and a named local for the interval, each changed nothing.
 //
-// PARTIAL — 0x5CDB90 MSCountPages, 94.7% (72/76 instructions, three real byte
-// runs). The three guards share one exit block in retail; cl duplicates that
-// five-instruction epilogue at each guard instead. Four spellings measured --
-// three separate early returns, one `||` chain, nested ifs with a single
-// trailing `return 0`, and a `goto` to a common label -- all four emit the same
-// three copies, and /O1, /Os and /Oxs do not change it either. The residual is
-// a block-layout difference, not a phrasing one.
-//
-// PARTIAL — 0x5CDC50 MSPrintAnim::Update, 99.1% (230/232 instructions, multiset
-// identical, two real byte runs). The measuring loop's first indexed read
-// pushes a register that is zero: retail pushes the width accumulator's, cl
-// pushes the index's. All three declaration orders of the three inner locals
-// were measured (two at 98.3 and one at 99.1); the winning one reads the
-// font's lead before either counter is zeroed.
+// BODY-EXACT — 0x5CDB90 MSCountPages and 0x5CDC50 MSPrintAnim::Update. Both
+// were register-assignment residuals: the three locals of each loop take their
+// registers in declaration order, and the first indexed read pushes whichever
+// is zero. MSCountPages declares i, pages, used; Update's measuring block
+// declares lead, j, width.
 //
 // PARTIAL — 0x5CE8C0 MSPCXAnim::Draw, 35.1%. The intersection expands inline
 // here (the out-of-line 0x421B60 the other two callers use is not called), so
@@ -404,9 +395,9 @@ int __fastcall MSCountPages(WideStringClass* text, MSFont* font, int limit)
     if (!text->Equals(0)) {
         if (font != 0) {
             if (limit >= font->LineHeight) {
-                int used = 0;
                 int i = 0;
                 int pages = 0;
+                int used = 0;
 
                 while (text->CharAt(i) != 0) {
                     while (text->CharAt(i) != 0 && text->CharAt(i) != 10) {
@@ -495,8 +486,8 @@ bool MSPrintAnim::Update(int context, MSRect* out)
             // cl pushes whichever of them it zeroed first, and only one of the
             // three orders puts retail's register there.
             int lead = Font->Lead;
-            int width = 0;
             int j = 0;
+            int width = 0;
 
             while (line.CharAt(j) != 0) {
                 if (line.CharAt(j) == 10) {

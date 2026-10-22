@@ -83,6 +83,7 @@ struct Row_00404E20
 {
     ListNode Headers[10];   // 10 x 0x0C = 0x78
 };
+GG_STATIC_ASSERT(offsetof(Row_00404E20, Headers) == 0);
 GG_STATIC_ASSERT(sizeof(Row_00404E20) == 0x78);
 
 // GLOBAL: GAMEMD 0x87DE38 — the table.

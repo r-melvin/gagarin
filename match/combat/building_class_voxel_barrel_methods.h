@@ -54,6 +54,7 @@ struct Matrix3D_00458810
     // FUNCTION: GAMEMD 0x5AF1A0 (decl; reloc) — Matrix3D::RotateZ.
     void RotateZ(float theta);
 };
+GG_STATIC_ASSERT(offsetof(Matrix3D_00458810, Row) == 0);
 GG_STATIC_ASSERT(sizeof(Matrix3D_00458810) == 0x30);
 
 // A 16-bit binary angle, read here as a dword.
@@ -61,6 +62,7 @@ struct DirStruct_00458810
 {
     unsigned Raw;   // +0x0000
 };
+GG_STATIC_ASSERT(offsetof(DirStruct_00458810, Raw) == 0);
 GG_STATIC_ASSERT(sizeof(DirStruct_00458810) == 4);
 
 // FacingClass — 0x18 bytes (the two sub-objects at +0x370 and +0x388 are that
@@ -82,6 +84,9 @@ struct Coord_00458810
     int Y;   // +0x0004
     int Z;   // +0x0008
 };
+GG_STATIC_ASSERT(offsetof(Coord_00458810, X) == 0);
+GG_STATIC_ASSERT(offsetof(Coord_00458810, Y) == 4);
+GG_STATIC_ASSERT(offsetof(Coord_00458810, Z) == 8);
 GG_STATIC_ASSERT(sizeof(Coord_00458810) == 0xC);
 
 // BuildingTypeClass — only the voxel-barrel block.

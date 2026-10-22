@@ -144,8 +144,9 @@ int __fastcall FUN_00402330(Obj_00402190* self)
 
 // FUNCTION: GAMEMD 0x4024A0
 //
-// PARTIAL (93.8%, 30/32) — identical multiset. One scheduling difference: retail
-// loads the +0x94 seed before storing +0x90, VC6 after.
+// MATCHED (100%, second-look): the seed is stored before +0x90 in source order;
+// VC6 then loads it ahead of the +0x90 store as retail does. The earlier
+// "+0x90 first" order produced a 93.8% scheduling delta.
 //
 // Re-run the bring-up, but only when bit 3 of +0xA4 asks for it. The bit is
 // cleared first and then +0xA4 is zeroed wholesale a few stores later, so the
@@ -160,9 +161,7 @@ int __fastcall FUN_00402330(Obj_00402190* self)
 // has them.
 //
 // This is 0x402190's body behind a flag test, and the two are written out
-// separately rather than shared because they are not identical: 0x402190 stores
-// +0x94 before +0x90, this one stores +0x90 first. That is the family rule
-// earning its keep — the pair look interchangeable and are not.
+// separately rather than shared.
 void Obj_00402190::FUN_004024A0()
 {
     if (this->field_A4 & 8) {
@@ -185,8 +184,8 @@ void Obj_00402190::FUN_004024A0()
         this->field_A4 = zero;
         this->field_A0 = zero;
 
-        this->field_90 = 0;
         this->field_94 = DAT_0087DE30;
+        this->field_90 = 0;
         this->field_98 = 0;
         this->field_9C = 0;
 

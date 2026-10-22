@@ -94,7 +94,7 @@ public:
     virtual void __stdcall Unlimbo();                                     // 20  0x55AC20
     virtual void __stdcall TiltPitchAI();                                 // 21  0x55AB90
     virtual bool __stdcall PowerOn();                                     // 22  0x55A8F0
-    virtual bool __stdcall PowerOff();                                    // 23  0x55A910 (READ-ONLY)
+    virtual bool __stdcall PowerOff();                                    // 23  0x55A910
     virtual bool __stdcall IsPowered();                                   // 24  0x55A930
     virtual bool __stdcall IsIonSensitive();                              // 25  0x55A940
     virtual bool __stdcall Push(unsigned long dir);                       // 26  0x55AB70

@@ -10,7 +10,7 @@
 // and evidence are in loco_base.h / loco_interfaces.h and the adjacent candidate report.
 //
 // This candidate defines only the base method bodies listed in its row file.
-// Constructor/destructor expansion, vtables, thunks, Save/PowerOff, and Load are
+// Constructor/destructor expansion, vtables, thunks, Save, and Load are
 // intentionally not owned here.
 
 #include "loco_base.h"
@@ -84,6 +84,15 @@ LocoPoint2D __stdcall LocomotionClass::ShadowPoint()
 bool __stdcall LocomotionClass::PowerOn()
 {
     Powered = true;
+    return IsPowered();
+}
+
+// FUNCTION: GAMEMD 0x55A910
+// The pointer local preserves retail's store-before-vptr-load instruction order.
+bool __stdcall LocomotionClass::PowerOff()
+{
+    bool* flag = &Powered;
+    *flag = false;
     return IsPowered();
 }
 

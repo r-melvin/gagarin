@@ -21,8 +21,12 @@ extern "C" void* __cdecl gg_operator_new(unsigned int size);
 void* __fastcall FUN_0047C520(void* cell);
 // FUNCTION: GAMEMD 0x472140 (decl; reloc) — release the target's buffer.
 void __fastcall FUN_00472140(void* buffer);
-// FUNCTION: GAMEMD 0x6EA870 (decl; reloc) — refresh this object's display.
-void __stdcall FUN_006EA870(void* self, int a, int b);
+// The display object this drainer owns (+0x5D4).
+struct Display_0070FD70
+{
+    // FUNCTION: GAMEMD 0x6EA870 (decl; reloc) — refresh the display for an owner.
+    void Refresh(void* owner, int a, int b);
+};
 
 struct Coord_0070FD70
 {
@@ -81,7 +85,7 @@ struct Drainer_0070FD70
     void*           DrainingMe;            // +0x01D0
     Anim_0070FD70*  DrainAnim;             // +0x01D4
     char            _pad1D8[0x5D4 - 0x1D8];
-    void*           Display;               // +0x05D4
+    Display_0070FD70* Display;             // +0x05D4
 
     // FUNCTION: GAMEMD 0x70FD70
     void BeginDraining(Target_0070FD70* target);
