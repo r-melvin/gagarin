@@ -43,6 +43,7 @@
 #include "../movement/loco_base.h"
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
+#include "../_layout/i_link_stream.h"
 
 template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFIID riid, void** ppv)
 {
@@ -63,27 +64,33 @@ template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFI
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 // FUNCTION: GAMEMD 0x004A2820 (decl; reloc) -- CStreamClass default constructor.
-class CStreamClass : public IPersistStream
+// RTTI (CHD at COL 0x7FF9B8): IStream at +0, ILinkStream at +4. Primary vtable
+// 0x7E5DAC has the 14 IStream slots plus the destructor (slot 14); the
+// ILinkStream vtable 0x7E5D94 has 5.
+class CStreamClass : public IStream, public ILinkStream
 {
 public:
     CStreamClass();
     virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
     virtual ULONG __stdcall AddRef();
     virtual ULONG __stdcall Release();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall IsDirty();
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize);
-    virtual void vf_8();
-    virtual void vf_9();
-    virtual void vf_10();
-    virtual void vf_11();
-    virtual void vf_12();
-    virtual void vf_13();
+    virtual HRESULT __stdcall Read(void* pv, ULONG cb, ULONG* pcbRead);
+    virtual HRESULT __stdcall Write(const void* pv, ULONG cb, ULONG* pcbWritten);
+    virtual HRESULT __stdcall Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin, ULARGE_INTEGER* plibNewPosition);
+    virtual HRESULT __stdcall SetSize(ULARGE_INTEGER libNewSize);
+    virtual HRESULT __stdcall CopyTo(IStream* pstm, ULARGE_INTEGER cb, ULARGE_INTEGER* pcbRead, ULARGE_INTEGER* pcbWritten);
+    virtual HRESULT __stdcall Commit(DWORD grfCommitFlags);
+    virtual HRESULT __stdcall Revert();
+    virtual HRESULT __stdcall LockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType);
+    virtual HRESULT __stdcall UnlockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType);
+    virtual HRESULT __stdcall Stat(STATSTG* pstatstg, DWORD grfStatFlag);
+    virtual HRESULT __stdcall Clone(IStream** ppstm);
+    virtual void vf_3();
+    virtual void vf_4();
     virtual ~CStreamClass();
-    unsigned char unknown_[0x2C - sizeof(IPersistStream)];
+    unsigned char unknown_[0x2C - 8];
 };
+GG_STATIC_ASSERT(sizeof(CStreamClass) == 0x2C);
 
 // FUNCTION: GAMEMD 0x0071DA80 (decl; reloc) -- TerrainTypeClass default constructor.
 class TerrainTypeClass : public AbstractClass

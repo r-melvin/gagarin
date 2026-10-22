@@ -28780,7 +28780,7 @@
   "addr": "0x6D2280",
   "sym": "?ClientToCoords@Tactical_006D2280@@QAEPAUCoord_006D2280@@PAU2@PBUPoint2D_006D2280@@@Z",
   "len": "0xdf",
-  "name": "TacticalClass::ClientToCoords",
+  "name": "Tactical::ClientToCoords",
   "status": "matched",
   "pct": 100
  },
@@ -28789,34 +28789,34 @@
   "addr": "0x6D1F10",
   "sym": "?CoordsToScreen@Tactical_006D1F10@@QAEPAUPoint2D_006D1F10@@PAU2@PBUCoord_006D1F10@@@Z",
   "len": "0xc8",
-  "name": "TacticalClass::CoordsToScreen",
+  "name": "Tactical::CoordsToScreen",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/renderer/tactical_class_matrix_methods.cpp",
   "addr": "0x6D1FE0",
-  "sym": "?AdjustForZShapeMove@TacticalClass@@QAEPAHPAHPBH@Z",
+  "sym": "?AdjustForZShapeMove@Tactical@@QAEPAHPAHPBH@Z",
   "len": "0x84",
-  "name": "TacticalClass::AdjustForZShapeMove",
+  "name": "Tactical::AdjustForZShapeMove",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/renderer/tactical_class_matrix_methods.cpp",
   "addr": "0x6D2070",
-  "sym": "?ApplyMatrix_Pixel@TacticalClass@@QAEPAHPAHPBH@Z",
+  "sym": "?ApplyMatrix_Pixel@Tactical@@QAEPAHPAHPBH@Z",
   "len": "0x6b",
-  "name": "TacticalClass::ApplyMatrix_Pixel",
+  "name": "Tactical::ApplyMatrix_Pixel",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/renderer/tactical_class_selectable_methods.cpp",
   "addr": "0x6D9EF0",
-  "sym": "?AddSelectable@TacticalClass@@QAE_NPAXHH@Z",
+  "sym": "?AddSelectable@Tactical@@QAE_NPAXHH@Z",
   "len": "0x8b",
-  "name": "TacticalClass::AddSelectable",
+  "name": "Tactical::AddSelectable",
   "status": "matched",
   "pct": 100
  },
@@ -29834,7 +29834,7 @@
   "addr": "0x6D2140",
   "sym": "?CoordsToClient@Tactical_006D2140@@QAE_NPBUCoord_006D2140@@PAUPoint2D_006D2140@@@Z",
   "len": "0x132",
-  "name": "TacticalClass::CoordsToClient",
+  "name": "Tactical::CoordsToClient",
   "status": "matched",
   "pct": 100.0
  },
@@ -29843,14 +29843,14 @@
   "addr": "0x6D2420",
   "sym": "?FocusOn@Tactical_006D2420@@QAEXPBUCoord_006D2420@@H@Z",
   "len": "0x11B",
-  "name": "TacticalClass::FocusOn",
+  "name": "Tactical::FocusOn",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6D20E0",
-  "sym": "?AdjustForZ@TacticalClass@@SIHH@Z",
+  "sym": "?AdjustForZ@Tactical@@SIHH@Z",
   "len": "0x3C",
   "name": "AdjustForZ",
   "status": "matched",
@@ -29861,7 +29861,7 @@
   "addr": "0x6D6070",
   "sym": "?SetTacticalPosition@Tactical_006D6070@@QAEXPBUCoord_006D6070@@@Z",
   "len": "0xff",
-  "name": "TacticalClass::SetTacticalPosition",
+  "name": "Tactical::SetTacticalPosition",
   "status": "partial",
   "pct": 92.4
  },

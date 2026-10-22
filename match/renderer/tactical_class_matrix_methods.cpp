@@ -3,8 +3,8 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6D1FE0 and 0x6D2070.
 //
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x6D1FE0  TacticalClass::AdjustForZShapeMove (__thiscall)
-//   FUNCTION: GAMEMD 0x6D2070  TacticalClass::ApplyMatrix_Pixel   (__thiscall)
+//   FUNCTION: GAMEMD 0x6D1FE0  Tactical::AdjustForZShapeMove (__thiscall)
+//   FUNCTION: GAMEMD 0x6D2070  Tactical::ApplyMatrix_Pixel   (__thiscall)
 //   FUNCTION: GAMEMD 0x5AFB80  Matrix3D::MatrixApply (referenced; reloc)
 //   LIBRARY:  GAMEMD 0x7C5F00  __ftol                (referenced; reloc)
 
@@ -36,7 +36,7 @@ static inline Point2D IsoProject(int x, int y)
 // written to pDest as one Point2D and pDest is returned. x and y are read
 // into named locals first so x claims ESI ahead of y (VC6 evaluates the
 // inline's arguments right-to-left otherwise, which swaps ESI/EDI).
-int* TacticalClass::AdjustForZShapeMove(int* pDest, const int* pClient)
+int* Tactical::AdjustForZShapeMove(int* pDest, const int* pClient)
 {
     int x = pClient[0];
     int y = pClient[1];
@@ -57,7 +57,7 @@ int* TacticalClass::AdjustForZShapeMove(int* pDest, const int* pClient)
 // off the returned pointer), both `__ftol` conversions are done into a
 // Point2D, and that is stored to pOut as one struct so both stores follow
 // the second conversion.
-int* TacticalClass::ApplyMatrix_Pixel(int* pOut, const int* pIn)
+int* Tactical::ApplyMatrix_Pixel(int* pOut, const int* pIn)
 {
     Vector3D v;
     Vector3D r;

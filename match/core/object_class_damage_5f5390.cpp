@@ -37,47 +37,6 @@ GG_STATIC_ASSERT(offsetof(RulesView_5F5390, unknown_1708) == 0x1708);
 // GLOBAL: GAMEMD 0x8871E0
 extern RulesView_5F5390* DAT_008871E0;
 
-// The InfantryClass members reached after slot 11 reports 0xF. The
-// placeholder virtuals pad the table from the last slot RadioClass and TechnoClass declare
-// to slot 342 (+0x558).
-struct InfantryView_5F5390 : InfantryClass
-{
-    virtual void vf_309();
-    virtual void vf_310();
-    virtual void vf_311();
-    virtual void vf_312();
-    virtual void vf_313();
-    virtual void vf_314();
-    virtual void vf_315();
-    virtual void vf_316();
-    virtual void vf_317();
-    virtual void vf_318();
-    virtual void vf_319();
-    virtual void vf_320();
-    virtual void vf_321();
-    virtual void vf_322();
-    virtual void vf_323();
-    virtual void vf_324();
-    virtual void vf_325();
-    virtual void vf_326();
-    virtual void vf_327();
-    virtual void vf_328();
-    virtual void vf_329();
-    virtual void vf_330();
-    virtual void vf_331();
-    virtual void vf_332();
-    virtual void vf_333();
-    virtual void vf_334();
-    virtual void vf_335();
-    virtual void vf_336();
-    virtual void vf_337();
-    virtual void vf_338();
-    virtual void vf_339();
-    virtual void vf_340();
-    virtual void vf_341();
-    virtual void vf_342(int a1, bool a2, int a3);
-};
-
 // The InfantryTypeClass fields read here.
 struct InfantryTypeView_5F5390
 {
@@ -153,13 +112,13 @@ int ObjectClass::vf_91(int* damage, int distance, void* warhead, void* source, b
         }
         Health = health - *damage;
         if (Health <= 0 && vf_11() == 0xF && !a5) {
-            InfantryView_5F5390* infantry = (InfantryView_5F5390*)this;
+            InfantryClass* infantry = (InfantryClass*)this;
             if (((InfantryTypeView_5F5390*)infantry->Type)->Cyborg && !infantry->Crawling) {
                 new AnimClass(DAT_008871E0->unknown_009C, CoordStruct(Location), 0, 1, 0x600, 0, false);
                 Health = (int)(((InfantryTypeView_5F5390*)infantry->Type)->Strength * 0.25);
                 Health = Health > 1 ? Health : 1;
                 infantry->Crawling = true;
-                infantry->vf_342(6, true, 0);
+                infantry->vf_342(6, 1, 0);
                 result = 3;
             }
         }

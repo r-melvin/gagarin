@@ -27,6 +27,11 @@
 class InfantryClass : public FootClass
 {
 public:
+    // Slots 341-342, introduced by InfantryClass (343 slots in all; retail table 0x7EB058).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_341();                                         // 341 0x5228D0
+    virtual void vf_342(int a1, int a2, int a3);                   // 342 0x51D6F0
+
     void*         Type;                 // +0x6C0  InfantryTypeClass*; ctor: MOV [ESI+0x6C0],ECX(=pType) @0x00517A6E
     int           SequenceAnim;         // +0x6C4  Sequence enum; ctor: MOV [ESI+0x6C4],0xFFFFFFFF @0x00517A64
     CDTimerClass  unknown_Timer_6C8;    // +0x6C8  (0xC) ctor: StartTime MOV [ESI+0x6C8],EDX(=[0x00A8ED84], the

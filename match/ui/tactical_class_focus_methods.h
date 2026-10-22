@@ -53,7 +53,7 @@ struct Tactical_006D2420
     char             _padE0[0xD64 - 0xE0];   // +0x00E0
     Point2D_006D2420 TacticalPos;            // +0x0D64
 
-    // FUNCTION: GAMEMD 0x6D2420 — TacticalClass::FocusOn.
+    // FUNCTION: GAMEMD 0x6D2420 — Tactical::FocusOn.
     void FocusOn(const Coord_006D2420* pCoord, int speed);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_006D2420, Offset_B0) == 0xB0);

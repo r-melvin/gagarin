@@ -100,6 +100,14 @@ public:
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
     virtual bool vf_40();                                                 // 40
     virtual bool vf_41();                                                 // 41
+    // Slots 42-47, introduced by TechnoTypeClass (48 slots in all; retail table 0x7F4ED8).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_42(int a1, int a2);                            // 42 0x716150
+    virtual void vf_43();                                          // 43 0x711EB0
+    virtual void vf_44();                                          // 44 0x7120D0
+    virtual void vf_45();                                          // 45 0x712120
+    virtual void vf_46(int a1, int a2);                            // 46 0x711F60
+    virtual void vf_47();                                          // 47 0x717800
 
     int             WalkRate;                       // +0x294
     int             IdleRate;                       // +0x298

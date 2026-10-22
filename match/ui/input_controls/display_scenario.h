@@ -309,11 +309,11 @@ extern bool DisplayScFlag_00A8ED5D;
 extern int  DisplayScValue_00A8ED7C;
 // GLOBAL: GAMEMD 0x822CF8 -- the theater last loaded.
 extern int DisplayScTheater_00822CF8;
-// GLOBAL: GAMEMD 0x887324 -- TacticalClass::Instance.
+// GLOBAL: GAMEMD 0x887324 -- Tactical::Instance.
 struct DisplayScTactical
 {
     char opaque[4];
-    // FUNCTION: GAMEMD 0x6D6070 (decl; reloc) -- TacticalClass::SetTacticalPosition
+    // FUNCTION: GAMEMD 0x6D6070 (decl; reloc) -- Tactical::SetTacticalPosition
     void FUN_006D6070(DisplayScCoord* coord);
 };
 extern DisplayScTactical* DisplayScTactical_00887324;

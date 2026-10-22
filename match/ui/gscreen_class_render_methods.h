@@ -64,16 +64,16 @@ GG_STATIC_ASSERT(offsetof(MouseVtbl_004F4480, At_40) == 0x40);
 // GLOBAL: GAMEMD 0x887640 — WWMouseClass::Instance.
 extern Mouse_004F4480* DAT_00887640;
 
-// TacticalClass — Render, and the redraw byte FlagToRedraw sets.
+// Tactical — Render, and the redraw byte FlagToRedraw sets.
 struct Tactical_004F4480
 {
     char          _pad000[0xD7D];  // +0x0000
     unsigned char NeedsRedraw;     // +0x0D7D
-    // FUNCTION: GAMEMD 0x6D3D10 (decl; reloc) — TacticalClass::Render.
+    // FUNCTION: GAMEMD 0x6D3D10 (decl; reloc) — Tactical::Render.
     void Render(Surface_004F4480* surface, bool flag, int mode);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_004F4480, NeedsRedraw) == 0xD7D);
-// GLOBAL: GAMEMD 0x887324 — TacticalClass::Instance.
+// GLOBAL: GAMEMD 0x887324 — Tactical::Instance.
 extern Tactical_004F4480* DAT_00887324;
 
 // An optional object at 0xA8EF54 whose slot +0x2C takes one argument.

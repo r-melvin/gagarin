@@ -81,6 +81,22 @@ public:
     virtual int vf_11();                                                // 11 0x459EC0
     virtual int vf_12();                                                // 12 0x459E70
 
+    // Slots 309-321, introduced by BuildingClass (322 slots in all; retail table 0x7E3EBC).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_309(int a1, int a2, int a3);                   // 309 0x44EFB0
+    virtual void vf_310(int a1);                                   // 310 0x447E00
+    virtual void vf_311(int a1);                                   // 311 0x445F80
+    virtual void vf_312();                                         // 312 0x4456D0
+    virtual void vf_313(int a1, int a2);                           // 313 0x43DA80
+    virtual void vf_314(int a1, int a2);                           // 314 0x43ED40
+    virtual void vf_315(int a1, int a2, int a3, int a4);           // 315 0x4415F0
+    virtual void vf_316();                                         // 316 0x448160
+    virtual void vf_317(int a1);                                   // 317 0x455820
+    virtual void vf_318(int a1);                                   // 318 0x4556D0
+    virtual void vf_319(int a1);                                   // 319 0x455A80
+    virtual void vf_320(int a1);                                   // 320 0x455980
+    virtual void vf_321();                                         // 321 0x452250
+
     void*          Type;                  // +0x520 BuildingTypeClass*; ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     void*          Factory;               // +0x524 FactoryClass*; ctor @0x0043B75C (=0)
     CDTimerClass   C4Timer;               // +0x528 (0xC) ctor StartTime @0x0043B76B, TimeLeft @0x0043B771

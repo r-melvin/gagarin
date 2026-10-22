@@ -8,13 +8,14 @@
 #include <string.h>
 
 // The tactical view behind the global pointer 0x887324.
-struct TacticalClass
+class Tactical
 {
+public:
     // FUNCTION: GAMEMD 0x6D2140 (declaration) -- project a coordinate to a client point.
     bool CoordsToClient(const CoordStruct* coord, Point2D* point);
 };
 // GLOBAL: GAMEMD 0x887324
-extern TacticalClass* DAT_00887324;
+extern Tactical* DAT_00887324;
 
 // The shape returned by slot 27.
 struct ShapeView_5F4730

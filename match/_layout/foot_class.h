@@ -36,6 +36,42 @@
 class FootClass : public TechnoClass
 {
 public:
+    // Slots 309-340, introduced by FootClass (341 slots in all; retail table 0x7E8C94).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered. Slots 323 and 324
+    // pop 0x40 and 0x28 bytes, so some of those words are by-value structures.
+    virtual void vf_309(int a1);                                   // 309 0x4DE750
+    virtual void vf_310(int a1);                                   // 310 0x4DE760
+    virtual void vf_311();                                         // 311 0x4DC790
+    virtual void vf_312();                                         // 312 0x4DBFD0
+    virtual void vf_313();                                         // 313 0x41C060
+    virtual void vf_314(int a1);                                   // 314 0x4DE7B0
+    virtual void vf_315(int a1);                                   // 315 0x4DE940
+    virtual void vf_316(int a1);                                   // 316 0x4D9FF0
+    virtual void vf_317();                                         // 317 0x4DC030
+    virtual void vf_318();                                         // 318 0x41C080
+    virtual void vf_319(int a1);                                   // 319 0x4D55F0
+    virtual void vf_320();                                         // 320 0x4D55C0
+    virtual void vf_321();                                         // 321 0x4DB9B0
+    virtual void vf_322(int a1, int a2, int a3);                   // 322 0x4DF7F0
+    virtual void vf_323(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, int a13, int a14, int a15, int a16);// 323 0x41C090
+    virtual void vf_324(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);// 324 0x4DAF10
+    virtual void vf_325();                                         // 325 0x41C0F0
+    virtual void vf_326();                                         // 326 0x41C100
+    virtual void vf_327();                                         // 327 0x41C110
+    virtual void vf_328(int a1);                                   // 328 0x41C120
+    virtual void vf_329();                                         // 329 0x4D9C00
+    virtual void vf_330(int a1, int a2, int a3);                   // 330 0x4DF040
+    virtual void vf_331(int a1, int a2, int a3, int a4);           // 331 0x4DEE80
+    virtual void vf_332(int a1, int a2, int a3);                   // 332 0x4DEE50
+    virtual void vf_333(int a1, int a2);                           // 333 0x41C130
+    virtual void vf_334();                                         // 334 0x4DB1A0
+    virtual void vf_335(int a1);                                   // 335 0x4D5690
+    virtual void vf_336(int a1);                                   // 336 0x41C140
+    virtual void vf_337(int a1, int a2);                           // 337 0x4D3710
+    virtual void vf_338();                                         // 338 0x4DBA30
+    virtual void vf_339();                                         // 339 0x4DBA40
+    virtual void vf_340(int a1);                                   // 340 0x4DDC60
+
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)
     CellStruct      WaypointCell;                     // +0x528 (4)

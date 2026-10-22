@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6D9EF0.
 //
 // reccmp annotations:
-//   FUNCTION: GAMEMD 0x6D9EF0  TacticalClass::AddSelectable (__thiscall)
+//   FUNCTION: GAMEMD 0x6D9EF0  Tactical::AddSelectable (__thiscall)
 //   GLOBAL:   GAMEMD 0xB0CEC8  TacticalSelectables[500]
 //   GLOBAL:   GAMEMD 0x886FA8  view bound width
 //   GLOBAL:   GAMEMD 0x886FAC  view bound height
@@ -22,7 +22,7 @@
 // point is stored into the queue entry as one Point2D, which is what makes
 // VC6 re-read the count once and address both stores as `[EAX*4+disp]` off a
 // single `LEA EAX,[EAX+EAX*2]` instead of hoisting `&entry` with a SHL.
-bool TacticalClass::AddSelectable(void* pTechno, int x, int y)
+bool Tactical::AddSelectable(void* pTechno, int x, int y)
 {
     int count = this->SelectableCount;
 

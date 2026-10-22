@@ -44,8 +44,9 @@ struct Matrix3D
 };
 GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);
 
-struct TacticalClass
+class Tactical
 {
+public:
     char     _pad000[0xDE4];  // +0x0000
     Matrix3D IsoTransformMatrix;  // +0x0DE4  passed to MatrixApply in EDX
 
@@ -55,6 +56,6 @@ struct TacticalClass
     // FUNCTION: GAMEMD 0x6D2070
     int* ApplyMatrix_Pixel(int* pOut, const int* pIn);
 };
-GG_STATIC_ASSERT(offsetof(TacticalClass, IsoTransformMatrix) == 0xDE4);
+GG_STATIC_ASSERT(offsetof(Tactical, IsoTransformMatrix) == 0xDE4);
 
 #endif  // GG_MATCH_RENDERER_TACTICAL_CLASS_MATRIX_METHODS_H

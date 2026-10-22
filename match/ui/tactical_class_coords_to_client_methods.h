@@ -47,7 +47,7 @@ struct Tactical_006D2140
     char             _pad000[0xB0];       // +0x0000
     Point2D_006D2140 Offset_B0;           // +0x00B0  view offset (X, Y)
 
-    // FUNCTION: GAMEMD 0x6D2140 — TacticalClass::CoordsToClient. Projects
+    // FUNCTION: GAMEMD 0x6D2140 — Tactical::CoordsToClient. Projects
     // the coordinate to a client point and answers whether it is within 360
     // x 180 pixels of the view.
     bool CoordsToClient(const Coord_006D2140* pCoord, Point2D_006D2140* pDest);

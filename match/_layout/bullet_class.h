@@ -77,6 +77,12 @@ GG_STATIC_ASSERT(sizeof(BulletVelocity)      == 0x18);
 class BulletClass : public ObjectClass
 {
 public:
+    // Slots 122-124, introduced by BulletClass (125 slots in all; retail table 0x7E46E4).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_122();                                         // 122 0x468000
+    virtual void vf_123(int a1);                                   // 123 0x46B5A0
+    virtual void vf_124(int a1, int a2);                           // 124 0x468670
+
     void*          Type;                // +0xAC BulletTypeClass*; ctor @0x00466391
     void*          Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
     unsigned char  unknown_B4;          // +0xB4 ctor MOV byte [ESI+0xB4],BL @0x0046639D

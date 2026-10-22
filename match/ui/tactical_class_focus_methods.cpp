@@ -19,7 +19,7 @@ static inline Point2D_006D2420 IsoProject(const int* p)
     return r;
 }
 
-// TacticalClass::AdjustForZ (0x6D20E0) inlined: (int)(z * scale + bias + 0.5)
+// Tactical::AdjustForZ (0x6D20E0) inlined: (int)(z * scale + bias + 0.5)
 // with bias 1 from a bridge height (728 leptons) up.
 static inline int AdjustForZ(int z)
 {

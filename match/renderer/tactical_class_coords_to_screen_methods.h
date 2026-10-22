@@ -35,7 +35,7 @@ extern double DAT_00B0CD48;
 
 struct Tactical_006D1F10
 {
-    // FUNCTION: GAMEMD 0x6D1F10 — TacticalClass::CoordsToScreen. `this` is
+    // FUNCTION: GAMEMD 0x6D1F10 — Tactical::CoordsToScreen. `this` is
     // unused; the coordinate is projected to the raw iso pixel position.
     Point2D_006D1F10* CoordsToScreen(Point2D_006D1F10* pDest,
                                      const Coord_006D1F10* pCoord);

@@ -20,7 +20,7 @@ static inline Point2D_006D2140 IsoProject(const int* p)
     return r;
 }
 
-// TacticalClass::AdjustForZ (0x6D20E0) inlined; the bias lands in the dead
+// Tactical::AdjustForZ (0x6D20E0) inlined; the bias lands in the dead
 // pCoord parameter slot.
 static inline int AdjustForZ(int z)
 {
@@ -31,7 +31,7 @@ static inline int AdjustForZ(int z)
     return (int)(z * DAT_00B0CD48 + bias + 0.5);
 }
 
-// TacticalClass::CoordsToScreen (0x6D1F10) inlined.
+// Tactical::CoordsToScreen (0x6D1F10) inlined.
 static inline void CoordsToScreen(Point2D_006D2140* pDest, const Coord_006D2140* pCoord)
 {
     int xy[2];

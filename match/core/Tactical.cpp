@@ -289,6 +289,8 @@ public:
 class Tactical {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    // 0x6D20E0, static __fastcall: the height arrives in ECX.
+    static int __fastcall AdjustForZ(int Height);
 };
 class TActionClass {
 public:
@@ -415,7 +417,7 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 
 // Lepton (x, y) to the un-normalised iso pixel offset, read through a pointer
 // to a two-int local. This is the pClient shape of the sibling
-// TacticalClass::AdjustForZShapeMove (match/renderer/tactical_class_matrix_
+// Tactical::AdjustForZShapeMove (match/renderer/tactical_class_matrix_
 // methods.cpp) and it is what retail inlined here: the address-taken local
 // makes VC6 store Y into the temporary's second slot and reload it
 // (`MOV [ESP+0x10],EAX; MOV EDI,[ESP+0x10]`), while X is forwarded straight
@@ -436,7 +438,7 @@ static inline Point2D_006D1F10 IsoProject(const int* p)
 
 // Height in leptons to the rounded pixel lift, (int)(z * scale + bias + 0.5)
 // with bias 1 once the height reaches a bridge level (728 leptons). This is
-// TacticalClass::AdjustForZ (0x6D20E0, match/ui/tactical_class_methods.cpp)
+// Tactical::AdjustForZ (0x6D20E0, match/ui/tactical_class_methods.cpp)
 // inlined; the bias lands in the dead pCoord parameter slot.
 static inline int AdjustForZ(int z)
 {
@@ -447,7 +449,6 @@ static inline int AdjustForZ(int z)
     return (int)(z * DAT_00B0CD48 + bias + 0.5);
 }
 
-#include "../ui/tactical_class_methods.h"
 
 // The scaling factor lives at the fixed global address 0xB0CD48 (runtime-init
 // double). Referenced as an extern symbol so cl emits a direct memory operand
@@ -529,8 +530,8 @@ Point2D_006D1F10* Tactical_006D1F10::CoordsToScreen(Point2D_006D1F10* pDest,
     return pDest;
 }
 
-// FUNCTION: GAMEMD 0x6D20E0  TacticalClass::AdjustForZ (__fastcall)
-int __fastcall TacticalClass::AdjustForZ(int Height)
+// FUNCTION: GAMEMD 0x6D20E0  Tactical::AdjustForZ (__fastcall)
+int __fastcall Tactical::AdjustForZ(int Height)
 {
     int bias = 0;
     if (Height >= 728) {
@@ -542,7 +543,7 @@ int __fastcall TacticalClass::AdjustForZ(int Height)
 // FUNCTION: GAMEMD 0x6D2280
 //
 // Client (screen) point to a world coordinate — the inverse of
-// TacticalClass::CoordsToScreen. A point outside the view's X/Y extents gets
+// Tactical::CoordsToScreen. A point outside the view's X/Y extents gets
 // the "no coordinate" global. Otherwise the point is shifted by the view
 // offset, run through the iso transform matrix at +0xDE4 as a float vector
 // (Z taken as 0), and the transformed X/Y are truncated back to ints; Z of
@@ -558,7 +559,7 @@ int __fastcall TacticalClass::AdjustForZ(int Height)
 // Y limit is written `DAT_00B0CE34 + DAT_00B0CE2C` so the +0x34 global is
 // loaded first. The helper's result is copied back into the input vector (the
 // 3-dword copy off the returned pointer) exactly as in
-// TacticalClass::ApplyMatrix_Pixel, and the result is stored to pDest as one
+// Tactical::ApplyMatrix_Pixel, and the result is stored to pDest as one
 // struct so all three stores follow the second conversion.
 Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
                                                   const Point2D_006D2280* pClient)

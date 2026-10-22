@@ -13,6 +13,10 @@
 // 0x48FCE2 -> 0x7E5510, 0x48FD78 -> 0x7E54E0, 0x48FE8E -> 0x7E5480;
 // 0x48FFDF -> 0x7E5430, 0x490149 -> 0x7E53E0,
 // 0x49022A -> 0x7E53B0, 0x490349 -> 0x7E5360.
+// The alpha leaves declare their destructors because retail has real ones: the
+// scalar deleting destructors in slot 0 (0x49AB00, 0x49AC40, 0x49AD00, 0x49AE40)
+// first store the leaf's own vptr, release the +8 table through 0x420270 on
+// 0x87E8A8, clear +8, then store RLEBlitter's vptr 0x7E5BA0.
 #ifndef GG_MATCH_RENDER_BLITTERS_R_LUCENT25_H
 #define GG_MATCH_RENDER_BLITTERS_R_LUCENT25_H
 

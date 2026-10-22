@@ -35,6 +35,10 @@ GG_STATIC_ASSERT(sizeof(RandomStruct) == 8);
 class AnimTypeClass : public ObjectTypeClass
 {
 public:
+    // Slot 40, introduced by AnimTypeClass (41 slots in all; retail table 0x7E3608).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_40(int a1);                                    // 40 0x427B50
+
     int           ArrayIndex;              // +0x294
     int           MiddleFrameIndex;        // +0x298
     int           MiddleFrameWidth;        // +0x29C

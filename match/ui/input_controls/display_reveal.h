@@ -57,7 +57,7 @@ GG_STATIC_ASSERT(offsetof(DisplayCell, Layer1Value) == 0x121);
 GG_STATIC_ASSERT(offsetof(DisplayCell, Flags12C) == 0x12C);
 GG_STATIC_ASSERT(offsetof(DisplayCell, Flags140) == 0x140);
 
-// The projector (TacticalClass) instance at 0x887324.
+// The projector (Tactical) instance at 0x887324.
 class DisplayProjector
 {
 public:

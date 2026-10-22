@@ -35,6 +35,13 @@
 class UnitClass : public FootClass
 {
 public:
+    // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.
+    virtual void vf_341(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 341 0x73B470
+    virtual void vf_342(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8);         // 342 0x73C5F0
+    virtual void vf_343(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9); // 343 0x73B140
+
     int           CurrentFiringFrame;   // +0x6C0  ctor: MOV [ESI+0x6C0],EDI(-1) @0x007353E0
     void*         Type;                 // +0x6C4  UnitTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x007353E6
     void*         FollowerCar;          // +0x6C8  UnitClass*;     ctor: MOV [ESI+0x6C8],EBX(0) @0x007353EC

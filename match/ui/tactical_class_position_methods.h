@@ -33,7 +33,7 @@ struct Coord_006D6070
 };
 GG_STATIC_ASSERT(offsetof(Coord_006D6070, Z) == 0x8);
 
-// FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) — TacticalClass::AdjustForZ,
+// FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) — Tactical::AdjustForZ,
 // height in ECX, pixel lift in EAX.
 int __fastcall AdjustForZ_006D6070(int z);
 
@@ -58,7 +58,7 @@ struct Tactical_006D6070
     // position change.
     void FUN_006D8B30();
 
-    // FUNCTION: GAMEMD 0x6D6070 — TacticalClass::SetTacticalPosition.
+    // FUNCTION: GAMEMD 0x6D6070 — Tactical::SetTacticalPosition.
     void SetTacticalPosition(const Coord_006D6070* pCoord);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_006D6070, Offset_B0) == 0xB0);

@@ -66,6 +66,10 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
     virtual int vf_11();
     virtual int vf_12();
+    // Slots 122-123, introduced by AnimClass (124 slots in all; retail table 0x7E3354).
+    // Names are placeholders; argument counts come from RET n, return types are not recovered.
+    virtual void vf_122();                                         // 122 0x423930
+    virtual void vf_123();                                         // 123 0x425510
 
     StageClass      Animation;             // +0xAC (0x1C) ctor @0x00421EB8..0x00421EDB
     void*           Type;                  // +0xC8 AnimTypeClass*; ctor MOV [ESI+0xC8],ECX(=arg1) @0x00421EE5

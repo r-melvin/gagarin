@@ -73,7 +73,7 @@ struct Tactical_006D2280
     char     _padB8[0xDE4 - 0xB8];       // +0x00B8
     Matrix3D_006D2280 IsoTransformMatrix; // +0x0DE4
 
-    // FUNCTION: GAMEMD 0x6D2280 — TacticalClass::ClientToCoords.
+    // FUNCTION: GAMEMD 0x6D2280 — Tactical::ClientToCoords.
     Coord_006D2280* ClientToCoords(Coord_006D2280* pDest,
                                    const Point2D_006D2280* pClient);
 };

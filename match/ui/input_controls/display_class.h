@@ -27,7 +27,7 @@ struct DisplayRect
 };
 GG_STATIC_ASSERT(sizeof(DisplayRect) == 0x10);
 
-// TacticalClass (0x887324). Only the entries below are reached.
+// Tactical (0x887324). Only the entries below are reached.
 struct DisplayTactical
 {
     char  unknown_000[0xD8];   // +0x000
@@ -50,7 +50,7 @@ struct DisplayTactical
 };
 GG_STATIC_ASSERT(offsetof(DisplayTactical, unknown_0D8) == 0xD8);
 GG_STATIC_ASSERT(offsetof(DisplayTactical, unknown_D7D) == 0xD7D);
-// GLOBAL: GAMEMD 0x887324 -- TacticalClass::Instance.
+// GLOBAL: GAMEMD 0x887324 -- Tactical::Instance.
 extern DisplayTactical* DisplayTactical_00887324;
 
 // A draw layer: a vector object (vptr at +0) laid out in 0x18-byte elements from 0x8A0360; vf_03 is dispatched

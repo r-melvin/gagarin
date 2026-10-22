@@ -53,13 +53,13 @@ extern Map_0074D490 DAT_0087F7E8;
 
 struct Tactical_0074D490
 {
-    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- TacticalClass::CoordsToClient.
+    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- Tactical::CoordsToClient.
     bool CoordsToClient(const Coord_0074D490* coord, Point_0074D490* dest);
-    // FUNCTION: GAMEMD 0x6D9EF0 (decl; reloc) -- TacticalClass::AddSelectable.
+    // FUNCTION: GAMEMD 0x6D9EF0 (decl; reloc) -- Tactical::AddSelectable.
     bool AddSelectable(void* object, int x, int y);
 };
 
-// GLOBAL: GAMEMD 0x887324 -- TacticalClass::Instance (a pointer variable).
+// GLOBAL: GAMEMD 0x887324 -- Tactical::Instance (a pointer variable).
 extern Tactical_0074D490* DAT_00887324;
 
 // GLOBAL: GAMEMD 0x887314 -- the surface/blitter instance handed to 0x4AED70.
