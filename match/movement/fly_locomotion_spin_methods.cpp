@@ -9,23 +9,12 @@
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // GLOBAL: GAMEMD 0x87F7E8 — the map.
 
-// PARTIAL -- 87.3% (71 retail instructions, identical multiset, 62 exact).
-// The whole residual is one commutative addition's destination register and
-// the six instructions that cascade from it: retail accumulates the shifted
-// spin rate into ECX (`ADD ECX,EAX`) and stores CX into the facing temporary,
-// while cl accumulates into EAX and stores AX, which then moves the LEA of
-// the temporary and the receiver load past one another. Measured across
-// nineteen spellings in four batches: naming the reader's result as a local
-// (69.0%), re-deriving it at the use site (87.3%, the spelling kept here),
-// reversing the operands (87.3%), a compound `+=` in three placements (21.9%,
-// 21.9%, 69.0%), folding the whole expression into the store (64.8%), taking
-// the temporary's address early (31.0%), binding the facing slot to a local
-// (84.5%), declaring the two temporaries in either order (87.3%), and both
-// operand orders of the decay addition in the tail (no change). Everything
-// else - both guards, the interface dispatch through the object's own +0x04
-// vptr, the self-copy of the by-value facing temporary, the inline `abs`, the
-// clamp, both decay arms with their own epilogues, and the whole cell-touch
-// block - is byte-exact.
+// MATCHED (second look): the earlier residual was the destination of the
+// spin/facing addition. Reading the facing first into a named local and forming
+// `base + SpinRate * 256` as a separate int keeps the sum in 32 bits (the
+// inlined form narrowed to 16-bit operations), and the negative-rate decay arm
+// must re-read `SpinRate` (`SpinRate = SpinRate + step`) rather than reuse the
+// `rate` local to get retail's `ADD ECX,EAX`.
 //
 // One frame of the touchdown spin: while the spin is running and the client
 // still has travel left, either step the shared move and, once it reports
@@ -43,8 +32,8 @@ void FlyLocoSpin::ProcessSpin()
 
     if (((ILoco_004CE5A0*)&LocomotorVptr)->MoveStep() == 0) {
         DirValue_004C93D0 current;
-        int turn = (SpinRate << 8) +
-                   LinkedTo->Facing.Current(&current)->Value;
+        int base = LinkedTo->Facing.Current(&current)->Value;
+        int turn = base + SpinRate * 256;
         Facing_004C9300 turned;
         turned.Raw = (short)turn;
         Facing_004C9300 passed = turned;
@@ -56,7 +45,7 @@ void FlyLocoSpin::ProcessSpin()
             step = 1;
         }
         if (rate < 0) {
-            SpinRate = rate + step;
+            SpinRate = SpinRate + step;
             return;
         }
         SpinRate = rate - step;

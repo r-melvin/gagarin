@@ -25,6 +25,7 @@ struct Cell_00689D30
     int X;   // +0x0000
     int Y;   // +0x0004
     Cell_00689D30() {}
+    Cell_00689D30(int x, int y) : X(x), Y(y) {}
 };
 GG_STATIC_ASSERT(sizeof(Cell_00689D30) == 8);
 

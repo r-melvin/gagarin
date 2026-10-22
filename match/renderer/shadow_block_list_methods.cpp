@@ -104,6 +104,7 @@ __forceinline static void EnsureGradientSurface(BSurface_005FF800** slot)
     if (*slot == 0)
     {
         RawSurface_005FF420* entry = (RawSurface_005FF420*)operator new(0x20);
+        RawSurface_005FF420* built;
         if (entry != 0)
         {
             ((SurfaceFieldInit_004AEC60*)entry)->Init(0x100, 0x80);
@@ -112,8 +113,13 @@ __forceinline static void EnsureGradientSurface(BSurface_005FF800** slot)
             entry->BytesPerPixel = 1;
             ((MemoryBufferRaw_0043AD00*)&entry->Buffer)->Construct(0, 0x8000);
             entry->VTable = (void*)0x7E2070;
+            built = entry;
         }
-        *slot = (BSurface_005FF800*)entry;
+        else
+        {
+            built = 0;
+        }
+        *slot = (BSurface_005FF800*)built;
     }
 }
 
@@ -134,14 +140,15 @@ __forceinline static void ConstructRamp(RawSurface_005FF420* ramp)
 // Downsample the 0x100-tall ramp into the cached 0x80-tall entry, one row at a
 // time, via the cached BSurface table's slot 2: source row is always double the
 // destination row.
-__forceinline static void DownsampleInto(BSurface_005FF800* cached, RawSurface_005FF420* ramp)
+__forceinline static void DownsampleInto(BSurface_005FF800** slot, RawSurface_005FF420* ramp)
 {
-    Vtbl_Surface* cachedVtbl = (Vtbl_Surface*)((RawSurface_005FF420*)cached)->VTable;
     for (int row = 0; row < 0x80; ++row)
     {
         Quad_005FF420 dst = { 0, row, 0xff, 1 };
         Quad_005FF420 src = { 0, row * 2, 0xff, 1 };
-        (((RawSurface_005FF420*)cached)->*cachedVtbl->CopyFromPart)(&dst, ramp, &src, 0, 1);
+        RawSurface_005FF420* cached = (RawSurface_005FF420*)*slot;
+        Vtbl_Surface* cachedVtbl = (Vtbl_Surface*)cached->VTable;
+        (cached->*cachedVtbl->CopyFromPart)(&dst, ramp, &src, 0, 1);
     }
 }
 
@@ -152,24 +159,20 @@ __forceinline static void DownsampleInto(BSurface_005FF800* cached, RawSurface_0
 // probe at 0x4E6150, which retail (and this TU) still calls unconditionally
 // every time.
 //
-// PARTIAL (best 3.9%, up from 3.2% pre-ordering): the control flow, literal
-// constants and the three-phase Surface/XSurface/BSurface vtable-poke
-// sequence are all confirmed against the disassembly (multiset gap only
-// ~21 of 279 instructions), but a full byte match is not reached. Two
-// concrete open items for the next pass:
-//   1. Retail builds a SECOND throwaway 16-byte {0,0,0xFF,0xFF} block
-//      (`SUB ESP,0x10` at 0x5FF660, filled the same way as this file's
-//      `Quad_005FF420`) immediately before the near-band's 0x7BB920 call,
-//      which this draft does not construct or pass -- an argument to that
-//      call (or to 0x7BBAB0) this pass never accounted for.
-//   2. The outer loops still round-trip `radius`/`slot` through the stack at
-//      loop entry (`store; JMP to test; reload`) where retail keeps them in
-//      registers across the whole body; tried reordering the two locals'
-//      declarations (no material change) -- next: try hoisting the
-//      `RawSurface_005FF420 ramp` local out of the loop body (one shared
-//      instance reused/reconstructed per iteration, rather than one fresh
-//      automatic per iteration) to relieve whatever register pressure is
-//      forcing the spill.
+// PARTIAL (second look: instruction multiset gap now 2 of 279 -- retail-only AND/OR, ours MOV/XOR --
+// positional 6.5%; best positional variant 16.8% kept out of this file). Findings this pass, all read
+// from the retail disassembly:
+//   * 0x7BB920 takes (width, height, band, Quad area BY VALUE, limit): the second 16-byte
+//     {0,0,0xFF,0xFF} block is that by-value area, and the fifth argument is min(0xC + 4k, 0xFF) in the
+//     near loop and the running `farBand` (0x80, 0x7A, ...) in the far loop.
+//   * the bias multiply reads a qword at 0x7EF6F8 (double), not a float.
+//   * the downsample loop re-reads `*slot` every row (the cached pointer is not hoisted).
+//   * the gradient entry is built in `if (entry) { ... built = entry } else built = 0` form.
+//   * the table-pack tail combines red<<16 | green<<8 | blue (shift operands are the retail words at
+//     0x8A0DD0/D4, DE0/E4, DD8/DC).
+// Remaining delta: register assignment -- retail keeps `slot` in EBP and the constant 1 in EDI (reloaded
+// after the band loop), ours spills `slot` and keeps the 1 in EBP; retail's 64K-entry pack loop counts in
+// EBX (so the byte temporaries spill to [ESP+0x19/0x1A]) where ours counts in ESI.
 void FUN_005FF420()
 {
     if (DAT_00AC1834 == 0)
@@ -182,14 +185,22 @@ void FUN_005FF420()
         BSurface_005FF800** slot = &DAT_00AC1698[0];
         do
         {
+            int limit = 12;
             EnsureGradientSurface(slot);
             (((RawSurface_005FF420*)*slot)->*((Vtbl_Surface*)((RawSurface_005FF420*)*slot)->VTable)->Fill)(0);
 
             RawSurface_005FF420 ramp;
             ConstructRamp(&ramp);
             for (int band = radius; band > 0; band -= 2)
-                ((SurfaceSpread_007BB920*)&ramp)->Spread(0x80, 0x80, band, 0);
-            DownsampleInto(*slot, &ramp);
+            {
+                Quad_005FF420 area = { 0, 0, 0xff, 0xff };
+                int clamped = limit;
+                if (clamped > 0xff)
+                    clamped = 0xff;
+                ((SurfaceSpread_007BB920*)&ramp)->Spread(0x80, 0x80, band, area, clamped);
+                limit += 4;
+            }
+            DownsampleInto(slot, &ramp);
             ((MemoryBufferRaw_0043AD00*)&ramp.Buffer)->Destruct();
 
             ++slot;
@@ -207,9 +218,10 @@ void FUN_005FF420()
             RawSurface_005FF420 ramp;
             ConstructRamp(&ramp);
             int fieldScaled = *(int*)(DAT_008871E0 + 0x7A8) * 0x3C;
-            int bias = (int)((float)fieldScaled * DAT_007EF6F8);
-            ((SurfaceSpread_007BB920*)&ramp)->Spread(0x80, 0x80, i - bias, 0);
-            DownsampleInto(*slot, &ramp);
+            int bias = (int)((double)fieldScaled * DAT_007EF6F8);
+            Quad_005FF420 area = { 0, 0, 0xff, 0xff };
+            ((SurfaceSpread_007BB920*)&ramp)->Spread(0x80, 0x80, i - bias, area, farBand);
+            DownsampleInto(slot, &ramp);
             ((MemoryBufferRaw_0043AD00*)&ramp.Buffer)->Destruct();
 
             farBand -= 6;
@@ -230,11 +242,11 @@ void FUN_005FF420()
         for (int i = 0; i < 0x10000; ++i)
         {
             unsigned short lo = (unsigned short)i;
-            unsigned char redSample  = (unsigned char)((char)(lo >> RedShiftRight)   << RedShiftLeft);
-            unsigned char grnSample  = (unsigned char)((char)(lo >> GreenShiftRight) << GreenShiftLeft);
-            unsigned char bluSample  = (unsigned char)((char)(lo >> BlueShiftRight)  << BlueShiftLeft);
+            unsigned char redSample  = (unsigned char)((char)(lo >> RedShiftLeft)   << RedShiftRight);
+            unsigned char grnSample  = (unsigned char)((char)(lo >> GreenShiftLeft) << GreenShiftRight);
+            unsigned char bluSample  = (unsigned char)((char)(lo >> BlueShiftLeft)  << BlueShiftRight);
             ((unsigned*)DAT_00AC1838)[i] =
-                ((unsigned)bluSample << 8 | grnSample) << 8 | redSample;
+                ((unsigned)redSample << 8 | grnSample) << 8 | bluSample;
         }
     }
 }

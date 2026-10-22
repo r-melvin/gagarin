@@ -90,9 +90,9 @@ static inline void Brighten(unsigned short* pixel, int brightness)
 // (RectangleStruct* clip, Point2D* from, Point2D* to, int brightness, int zFrom, int zTo, bool writeZ).
 bool DSurface::unknown_38(int clipArg, int fromArg, int toArg, int brightness, int zFrom, int zTo, int writeZArg)
 {
-    RectangleStruct*& clip = (RectangleStruct*&)clipArg;
-    Point2D*& from = (Point2D*&)fromArg;
-    Point2D*& to = (Point2D*&)toArg;
+    RectangleStruct* clip = (RectangleStruct*)clipArg;
+    Point2D* from = (Point2D*)fromArg;
+    Point2D* to = (Point2D*)toArg;
     bool& writeZ = (bool&)writeZArg;
     RectangleStruct scratch;
     RectangleStruct* surfaceRect = &GetRect();
@@ -115,18 +115,20 @@ bool DSurface::unknown_38(int clipArg, int fromArg, int toArg, int brightness, i
         zTo = swapZ;
     }
 
-    Point2D origin = p0;
-    Point2D endPoint = p1;
+    int ox = p0.X;
+    int oy = p0.Y;
+    int ex = p1.X;
+    int ey = p1.Y;
     if (!ClipLine(&p0, &p1, &bounds))
         return false;
 
-    if (p1.X != endPoint.X || p1.Y != endPoint.Y) {
+    if (p1.X != ex || p1.Y != ey) {
         LengthVector whole;
-        whole.X = origin.X - endPoint.X;
-        whole.Y = origin.Y - endPoint.Y;
+        whole.X = ox - ex;
+        whole.Y = oy - ey;
         LengthVector part;
-        part.X = origin.X - p1.X;
-        part.Y = origin.Y - p1.Y;
+        part.X = ox - p1.X;
+        part.Y = oy - p1.Y;
         int wholeLength = whole.Length();
         int partLength = part.Length();
         int dz = abs((int)((double)partLength / wholeLength * (zFrom - zTo)));
@@ -135,11 +137,11 @@ bool DSurface::unknown_38(int clipArg, int fromArg, int toArg, int brightness, i
         else
             zTo = zFrom - dz;
     }
-    if (p0.X != origin.X || p0.Y != origin.Y) {
-        double partLength = SquareRoot((double)(p0.X - endPoint.X) * (p0.X - endPoint.X) + (double)(p0.Y - endPoint.Y) * (p0.Y - endPoint.Y));
+    if (p0.X != ox || p0.Y != oy) {
+        double partLength = SquareRoot((double)(p0.X - ex) * (p0.X - ex) + (double)(p0.Y - ey) * (p0.Y - ey));
         int partLen = (int)partLength;
-        int wholeLen = (int)SquareRoot((double)(origin.X - endPoint.X) * (origin.X - endPoint.X) +
-                                 (double)(origin.Y - endPoint.Y) * (origin.Y - endPoint.Y));
+        int wholeLen = (int)SquareRoot((double)(ox - ex) * (ox - ex) +
+                                 (double)(oy - ey) * (oy - ey));
         int dz = abs((int)(partLen / (double)wholeLen * (zFrom - zTo)));
         if (zTo > zFrom)
             zFrom = zTo - dz;

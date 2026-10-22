@@ -131,8 +131,8 @@
   "sym": "?FUN_0041B890@AircraftClass_0041B890@@QAE_NXZ",
   "len": "0x67",
   "name": "AircraftClass_0041B890::FUN_0041B890",
-  "status": "partial",
-  "pct": 59.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ai/foot_class_recruit_methods.cpp",
@@ -213,7 +213,7 @@
   "len": "0x127",
   "name": "HouseClass::Fire_ParaDrop",
   "status": "partial",
-  "pct": 31.1
+  "pct": 42.2
  },
  {
   "tu": "match/ai/house_class_pick_target_methods.cpp",
@@ -753,7 +753,7 @@
   "len": "0x32",
   "name": "Node_006386E0::FUN_00634290",
   "status": "partial",
-  "pct": 42.3
+  "pct": 92.3
  },
  {
   "tu": "match/ai/techno_class_planning_node_helpers.cpp",
@@ -9386,8 +9386,8 @@
   "sym": "?FUN_005106E0@@YIPAUPairVector@@PAU1@HHPAUPairElemD@@@Z",
   "len": "0x93",
   "name": "PairVector::ctor",
-  "status": "partial",
-  "pct": 82.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
@@ -9395,8 +9395,8 @@
   "sym": "?FUN_00510780@@YIPAUPairVector@@PAU1@HHPAUPairElemB@@@Z",
   "len": "0x93",
   "name": "PairVector::ctor",
-  "status": "partial",
-  "pct": 82.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
@@ -9404,8 +9404,8 @@
   "sym": "?FUN_0058AC70@@YIPAUPairVector@@PAU1@HHPAUPairElemB@@@Z",
   "len": "0x93",
   "name": "PairVector::ctor",
-  "status": "partial",
-  "pct": 82.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
@@ -9413,8 +9413,8 @@
   "sym": "?FUN_006CF8F0@@YIPAUPairVector@@PAU1@HHPAUPairElemD@@@Z",
   "len": "0x93",
   "name": "PairVector::ctor",
-  "status": "partial",
-  "pct": 82.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/pair_vector_grow_sweep.cpp",
@@ -9932,11 +9932,11 @@
  {
   "tu": "match/core/remove_last_matching_methods.cpp",
   "addr": "0x471f90",
-  "sym": "?FUN_00471F90@Obj_00471F90@@QAEXPAX@Z",
+  "sym": "?FUN_00471F90@Obj_00471F90@@QAE_NPAX@Z",
   "len": "0x5d",
   "name": "Obj_00471F90::FUN_00471F90",
-  "status": "partial",
-  "pct": 60.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/rules_class_color_add_methods.cpp",
@@ -9945,7 +9945,7 @@
   "len": "0xaa",
   "name": "RulesClass::Read_ColorAdd",
   "status": "partial",
-  "pct": 63.6
+  "pct": 81.8
  },
  {
   "tu": "match/core/rules_class_colors_methods.cpp",
@@ -10224,7 +10224,7 @@
   "len": "0x15c",
   "name": "ScenarioClass::ReadStartPoints",
   "status": "partial",
-  "pct": 8.0
+  "pct": 94.0
  },
  {
   "tu": "match/core/seat_vtable_tail_dtor_sweep.cpp",
@@ -10526,11 +10526,11 @@
  {
   "tu": "match/core/small_misc16_methods.cpp",
   "addr": "0x433ED0",
-  "sym": "?FUN_00433ED0@@YGHHH@Z",
+  "sym": "?FUN_00433ED0@Obj_00433CF0@@QAEHHH@Z",
   "len": "0x1d",
-  "name": "FUN_00433ED0",
-  "status": "partial",
-  "pct": 60.0
+  "name": "Obj_00433CF0::FUN_00433ED0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc17_methods.cpp",
@@ -12582,7 +12582,7 @@
   "len": "0x35",
   "name": "TechnoClass::IsTimeForIdleAction",
   "status": "partial",
-  "pct": 5
+  "pct": 35.0
  },
  {
   "tu": "match/core/techno_class_idle_action_methods.cpp",
@@ -24210,7 +24210,7 @@
   "len": "0x115",
   "name": "MSPrintAnim::Construct",
   "status": "partial",
-  "pct": 45.8
+  "pct": 93.8
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -25190,8 +25190,8 @@
   "sym": "?ProcessSpin@FlyLocoSpin@@QAEXXZ",
   "len": "0xd2",
   "name": "FlyLocomotionClass::ProcessSpin",
-  "status": "partial",
-  "pct": 87.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/fly_locomotion_spin_methods.cpp",
@@ -28523,7 +28523,7 @@
   "len": "0x3D7",
   "name": "FUN_005FF420",
   "status": "partial",
-  "pct": 3.9
+  "pct": 6.5
  },
  {
   "tu": "match/renderer/shadow_block_list_methods.cpp",
@@ -29863,8 +29863,8 @@
   "sym": "?UpdateColorCombo@WolScenarioColorDlgClass@@QAEXXZ",
   "len": "0x93",
   "name": "WolScenarioColorDlgClass::UpdateColorCombo",
-  "status": "partial",
-  "pct": 69.8
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/wol_scenario_color_methods.cpp",
@@ -29872,8 +29872,8 @@
   "sym": "?OnColorSelChanged@WolScenarioColorDlgClass@@QAEXXZ",
   "len": "0x70",
   "name": "WolScenarioColorDlgClass::OnColorSelChanged",
-  "status": "partial",
-  "pct": 70.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/wol_scenario_option_handlers.cpp",
@@ -30197,7 +30197,7 @@
   "len": "0x1ad",
   "name": "TunnelLocomotionClass::ZAdjust (interface prefix)",
   "status": "partial",
-  "pct": 22.1
+  "pct": 57.3
  },
  {
   "tu": "match/core/static_reset_004cb990.cpp",
@@ -30224,7 +30224,7 @@
   "len": "0x226",
   "name": "BuildingClass_00453840::FUN_00453840",
   "status": "partial",
-  "pct": 3.6
+  "pct": 9.3
  },
  {
   "tu": "match/core/math_initializers_004cba40.cpp",
@@ -30485,7 +30485,7 @@
   "len": "0xe0",
   "name": "FUN_00434BF0",
   "status": "partial",
-  "pct": 72.4
+  "pct": 81.6
  },
  {
   "tu": "match/movement/cell_neighbor_flags_0057cbe0.cpp",
@@ -35057,7 +35057,7 @@
   "len": "0x193",
   "name": "TriggerClass::TriggerClass(TriggerTypeClass*)",
   "status": "partial",
-  "pct": 79.1
+  "pct": 80.3
  },
  {
   "addr": "0x4E91D0",
@@ -43978,8 +43978,8 @@
   "sym": "?BlitCopyTint@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HHG@Z",
   "len": "0xdf",
   "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitCopyTint",
-  "status": "partial",
-  "pct": 68.4,
+  "status": "matched",
+  "pct": 100,
   "metric": "instruction-position",
   "note": "Frozen M2 instruction-position diagnostic; not byte-exact. Body preserved; matching search capped."
  },
@@ -44044,7 +44044,7 @@
   "len": "0x1f5",
   "name": "BlitTranslucentWriteAlpha<unsigned short>::BlitCopy",
   "status": "partial",
-  "pct": 60.8,
+  "pct": 88.0,
   "metric": "instruction-position",
   "note": "Frozen capped body:87/143 instruction positions (60.8%);335/501 raw bytes identical. Relocation positions differ; not byte-exact."
  },
@@ -44568,7 +44568,7 @@
   "len": "0x153",
   "name": "XSurface::CopyFromPart",
   "status": "partial",
-  "pct": 21.5,
+  "pct": 85.1,
   "metric": "instruction-position",
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  },
@@ -44634,7 +44634,7 @@
   "len": "0x5c6",
   "name": "XSurface::DrawEllipse",
   "status": "partial",
-  "pct": 4.6,
+  "pct": 5.4,
   "metric": "instruction-position",
   "note": "Frozen readable Surface M1 candidate; capped diagnostic score, not byte-exact. Semantic equivalence not independently established."
  },
@@ -44736,8 +44736,8 @@
   "sym": "?RLEBlit@?$RLEBlitTransRemapXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0x109",
   "name": "RLEBlitTransRemapXlatZReadWrite<unsigned char>::RLEBlit",
-  "status": "partial",
-  "pct": 82.8,
+  "status": "matched",
+  "pct": 100,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
  },
@@ -44775,7 +44775,7 @@
   "len": "0xCB",
   "name": "RLEBlitTransDarkenZRead<unsigned short>::RLEBlit",
   "status": "partial",
-  "pct": 45.1,
+  "pct": 46.3,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
  },
@@ -44903,7 +44903,7 @@
   "len": "0x1ac",
   "name": "RLEBlitTransLucent50AlphaZRead<unsigned short>::RLEBlit",
   "status": "partial",
-  "pct": 20.1,
+  "pct": 22.8,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
  },
@@ -44923,7 +44923,7 @@
   "len": "0x1b1",
   "name": "RLEBlitTransLucent50AlphaZReadWarp<unsigned short>::RLEBlit",
   "status": "partial",
-  "pct": 12.7,
+  "pct": 22.7,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
  },
@@ -44942,8 +44942,8 @@
   "sym": "?RLEBlit@?$RLEBlitTransLucent50AlphaZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0x1e5",
   "name": "RLEBlitTransLucent50AlphaZReadWrite<unsigned short>::RLEBlit",
-  "status": "partial",
-  "pct": 20.6,
+  "status": "matched",
+  "pct": 100,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
  },
@@ -45106,8 +45106,8 @@
   "sym": "?RLEBlit@?$RLEBlitTransXlatZReadWrite@E@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0xe1",
   "name": "RLEBlitTransXlatZReadWrite<unsigned char>::RLEBlit",
-  "status": "partial",
-  "pct": 67.4,
+  "status": "matched",
+  "pct": 100,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
  },
@@ -45162,8 +45162,8 @@
   "sym": "?RLEBlit@?$RLEBlitTransXlatZReadWrite@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0xe8",
   "name": "RLEBlitTransXlatZReadWrite<unsigned short>::RLEBlit",
-  "status": "partial",
-  "pct": 64.0,
+  "status": "matched",
+  "pct": 100,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search. Emitted COFF section is shorter than the validated retail span; no full-span raw percentage is claimed."
  },
@@ -45201,7 +45201,7 @@
   "len": "0x122",
   "name": "RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit",
   "status": "partial",
-  "pct": 83.2,
+  "pct": 89.7,
   "metric": "instruction-position",
   "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
  },
@@ -45427,7 +45427,7 @@
   "len": "0xAAF",
   "name": "DSurface::unknown_38",
   "status": "partial",
-  "pct": 8.9,
+  "pct": 9.3,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },
@@ -45449,7 +45449,7 @@
   "len": "0xAC2",
   "name": "DSurface::unknown_40",
   "status": "partial",
-  "pct": 6.5,
+  "pct": 6.6,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent. Compiled section is shorter than the retail span; no full-span raw-byte percentage is available."
  },
@@ -45482,7 +45482,7 @@
   "len": "0x5db",
   "name": "DSurface::DrawLineGradient",
   "status": "partial",
-  "pct": 8.7,
+  "pct": 21.3,
   "metric": "instruction-position",
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
  },
@@ -45634,7 +45634,7 @@
   "len": "0x1D4",
   "name": "IPXConnClass::Send_To_Address",
   "status": "partial",
-  "pct": 52.0,
+  "pct": 57.9,
   "pct_metric": "instruction-position",
   "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: emitted section 0x1D0 is shorter than retail 0x1D4."
  },
@@ -45758,7 +45758,7 @@
   "len": "0x213",
   "name": "IPXGlobalConnClass::Send_To_Address",
   "status": "partial",
-  "pct": 0.0,
+  "pct": 1.3,
   "pct_metric": "instruction-position",
   "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: emitted section 0x1F0 is shorter than retail 0x213."
  },
@@ -45909,7 +45909,7 @@
   "len": "0xA5F",
   "name": "IPXManagerClass::Service",
   "status": "partial",
-  "pct": 6.0,
+  "pct": 3.6,
   "pct_metric": "instruction-position",
   "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim. Raw full-span check ineligible: a relocation at compiled offset 0xA5E crosses retail span 0xA5F."
  },
@@ -46760,7 +46760,7 @@
   "len": "0xbc",
   "name": "TerrainClass::Mark",
   "status": "partial",
-  "pct": 80.6
+  "pct": 91.0
  },
  {
   "tu": "match/map/terrain_objects/terrain_class.cpp",
@@ -46850,7 +46850,7 @@
   "len": "0x149",
   "name": "TerrainClass::vf_65",
   "status": "partial",
-  "pct": 84.5
+  "pct": 89.7
  },
  {
   "tu": "match/map/terrain_objects/terrain_class.cpp",
@@ -46913,7 +46913,7 @@
   "len": "0x18e",
   "name": "TerrainClass::vf_75",
   "status": "partial",
-  "pct": 12.8
+  "pct": 23.4
  },
  {
   "tu": "match/map/terrain_objects/terrain_class.cpp",

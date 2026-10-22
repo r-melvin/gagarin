@@ -15,17 +15,17 @@
 // Levers that matched the 50% pair: copy abuf into a local (`ap`) BEFORE the
 // `if (len > 0)`; wrap the alpha row through the inline BTranslucentWrapRow(ap + 1)
 // after ++d (retail adds to abuf second); table/mask read inside the loop.
-// CAP 0x494690 BlitTranslucentWriteAlpha<us>::BlitCopy 60.8%: 142 retail vs 143
-// compiled instructions; multiset delta retail-only {lea 1}, compiled-only
-// {mov 1, add 1} (retail forms abuf+2 with LEA into a fresh register). Frame size
-// (0x18), the unsigned char[3] src/dest channel arrays, clamp order (b,g,r with a
-// ternary for g) and every IMUL/SAR/OR all match. Remaining gap: retail keeps dest,
-// src and the counter in their own argument slots, spills `this` and stores abuf
-// back to its own slot at entry; we spill c into the src slot and keep s separate.
-// Tried: all s/d/n declaration orders, abuf direct vs `ap` copy at top / in the if
-// (copy gives 5%, +3 MOV), explicit wrap-global local vs direct, len as counter,
-// c/sc/dc declared at function scope in all orders, 6 clamp orders, wrap written
-// as helper / inline / temp pointer (compiler normalises all to the same bytes).
+// PARTIAL 0x494690 BlitTranslucentWriteAlpha<us>::BlitCopy 88.0% (125/142 instruction
+// positions; multiset identical, 427/501 raw bytes): dest and src are the running
+// pointers themselves (parameters advanced in place, no d/s locals), while `abuf`
+// and the count are copied to locals `ap` and `n` ahead of use, which is what makes
+// retail's self-stores of the abuf and len slots appear. Residual: retail evaluates
+// the channel-0 term first and keeps it in EDX with the cached pos0/loss0 registers
+// (EBX/EBP) for the final OR, and loads dc[0] before sc[0] for the first multiply;
+// ours shifts the third channel first through memory loads and swaps EAX/EDX in the
+// first multiply. Measured with no effect: all 6 declaration orders of r/g/b, all 6
+// clamp orders, g2 temp or in-place, all 8 per-channel sum operand orders, all 6 OR
+// operand orders (plain and parenthesised), and building the pixel in a local.
 #include "b_translucent.h"
 
 
@@ -34,14 +34,14 @@
 template <class T>
 void BlitTranslucentWriteAlpha<T>::BlitCopy(void* dest, const void* src, int len, int, unsigned short*, unsigned short* abuf, int, int)
 {
+    unsigned short* ap = abuf;
     if (len > 0) {
         int n = len;
-        T* d = (T*)dest;
-        const unsigned char* s = (const unsigned char*)src;
         do {
-            unsigned char c = *s++;
+            unsigned char c = *(const unsigned char*)src;
+            src = (const unsigned char*)src + 1;
             if (c) {
-                int a = *abuf;
+                int a = *ap;
                 int ia = 255 - a;
                 if (a == 255) a = 256;
                 unsigned char sc[3];
@@ -50,7 +50,7 @@ void BlitTranslucentWriteAlpha<T>::BlitCopy(void* dest, const void* src, int len
                 sc[0] = (sp >> gg_b_translucent_pixel_format.pos0) << gg_b_translucent_pixel_format.loss0;
                 sc[1] = (sp >> gg_b_translucent_pixel_format.pos1) << gg_b_translucent_pixel_format.loss1;
                 sc[2] = (sp >> gg_b_translucent_pixel_format.pos2) << gg_b_translucent_pixel_format.loss2;
-                T dp = *d;
+                T dp = *(T*)dest;
                 dc[0] = (dp >> gg_b_translucent_pixel_format.pos0) << gg_b_translucent_pixel_format.loss0;
                 dc[1] = (dp >> gg_b_translucent_pixel_format.pos1) << gg_b_translucent_pixel_format.loss1;
                 dc[2] = (dp >> gg_b_translucent_pixel_format.pos2) << gg_b_translucent_pixel_format.loss2;
@@ -60,12 +60,12 @@ void BlitTranslucentWriteAlpha<T>::BlitCopy(void* dest, const void* src, int len
                 if (b > 255) b = 255;
                 int g2 = g > 255 ? 255 : g;
                 if (r > 255) r = 255;
-                *d = ((r >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0)
+                *(T*)dest = ((r >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0)
                    | ((g2 >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1)
                    | ((b >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2);
             }
-            ++d;
-            abuf = BTranslucentWrapRow(abuf + 1);
+            dest = (T*)dest + 1;
+            ap = BTranslucentWrapRow(ap + 1);
         } while (--n);
     }
 }

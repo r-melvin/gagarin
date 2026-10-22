@@ -1,5 +1,55 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,129 matched function
+rows**, **264 partial rows**, **5,393 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass. There are zero annotation issues across 5,426 body addresses.
+
+The latest batch reviews the remaining second-look patches against current
+source. Fifteen functions now match, including the four pair-vector
+constructors, five RLE and alpha blitters, the two WOL colour-dialog handlers,
+`FlyLocomotionClass::ProcessSpin`, and two small helpers whose earlier source
+was wrong. 0x471F90 walks its table backwards and returns a bool. 0x433ED0 and
+its callee are `__thiscall` members. Each of the fifteen passes raw bytes and
+strict relocation checks. Twenty-seven partials are re-scored, and four
+semantic corrections were confirmed against the binary first:
+
+- the tunnel `ZAdjust` arms add the vertical delta, not `coord.Z`;
+- one Lucent50 blend term shifts by one, not two;
+- the network manager compares player names with the CRT's case-insensitive
+  compare;
+- the shadow-gradient builder passes a by-value area and a limit to its
+  spread call, and reads its bias factor as a double.
+
+`MSPrintAnim::Construct` now subtracts the font lead, not the margin, as
+retail does. The network manager's positional score falls (6.0% to 3.6%)
+because its frame is now the right size.
+
+Patches that relied on an alias, a volatile, undefined behaviour, a misdeclared
+type or an unproven argument grouping were rejected or held, and the
+remaining review leads stay out of the tree. Every other named section in
+the 44 checked objects keeps its bytes and relocation tuples.
+`MSPrintAnim::Update` remains partial pending its nine-slot table
+reconstruction.
+
+The 5,129 matches represent 26.0% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **381,343
+bytes**, or 10.0% of 3,797,269 listed function bytes. The padding heuristic
+misses 312 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+
+## Historical snapshot: native Rocket and DropPod locomotion
+
 As of **2026-10-22**, the verified snapshot reports **5,114 matched function
 rows**, **279 partial rows**, **5,393 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -34,14 +84,6 @@ bytes**, or 10.0% of 3,797,269 listed function bytes. The padding heuristic
 misses 311 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
-
 
 ## Historical snapshot: third steering cleanup
 

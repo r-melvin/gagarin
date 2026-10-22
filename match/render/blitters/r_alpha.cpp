@@ -26,9 +26,10 @@
 // the alpha-row pointer built in two steps (clamp first, scale and table pointer after
 // d/z/ab/zs are loaded); abuf wrapped through RLEAlphaWrapRow after every iteration.
 //
-// CAP 0x497A10 RLEBlitTransZRemapXlatAlpha::RLEBlit 83.2%: multiset identical (107/107),
-//   the only difference is the register holding `skip` (retail EDX, loaded after the
-//   alpha-row store; ours ESI, loaded before it), 18 positional diffs. Tried: every
+// PARTIAL 0x497A10 RLEBlitTransZRemapXlatAlpha::RLEBlit 89.7% (was 83.2%; the skip
+//   loop now reads the RLE byte into a named local, as the closed leaves do): multiset
+//   identical (107/107); the residual is register choice around `skip` (retail EDX,
+//   loaded after the alpha-row store; ours ESI, loaded before it). Tried: every
 //   declaration order of {s,d,a,row/at,ab,rm}, with and without ab/sk/n copies, idx
 //   inline vs local, six spellings of the row expression, clamp and scale split in two,
 //   alvl modified in place instead of a local.
@@ -118,7 +119,8 @@ void RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit(void* dest, const void
     {
         while (skip > 0)
         {
-            if (*s++ == 0)
+            unsigned char r = *s++;
+            if (r == 0)
                 skip -= *s++;
             else
                 skip--;

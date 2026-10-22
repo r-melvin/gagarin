@@ -39,15 +39,12 @@ void __fastcall Obj_00408B10::FUN_00408B10(Node_00408B10* node)
     unknown_10 &= ~2;
 }
 
-// EVALUATION-ORDER DELTA (status partial, 60% - 6/10). Every instruction is
-// present. Retail computes the address of the second parameter first
-// (`LEA EDX,[ESP+8]`) and loads the first parameter after the initial push;
-// we load the first parameter early and take the address after. Argument
-// evaluation order inside a call is unspecified, and neither taking the address
-// inline nor binding it to a local ahead of the call moves it. Two phrasings
-// tried.
+// MATCHED. Both 0x433ED0 and its callee 0x433CF0 are __thiscall members: 0x433CF0
+// reads ECX as its receiver (`MOV EAX,[ECX+4]`), and 0x433ED0 leaves ECX untouched
+// so the receiver passes straight through (RET 8, two stack arguments). As a
+// __stdcall free function it scored 60% on argument-evaluation order.
 // FUNCTION: GAMEMD 0x433ED0
-int __stdcall FUN_00433ED0(int a, int b)
+int Obj_00433CF0::FUN_00433ED0(int a, int b)
 {
     FUN_00433CF0(a, &b, 0, b);
 

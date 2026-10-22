@@ -29,7 +29,7 @@ struct Obj_00471F90
     int    Count;   // +0x0034
 
     // FUNCTION: GAMEMD 0x471F90
-    void FUN_00471F90(void* key);
+    bool FUN_00471F90(void* key);
 };
 GG_STATIC_ASSERT(offsetof(Obj_00471F90, Items) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00471F90, Count) == 0x34);

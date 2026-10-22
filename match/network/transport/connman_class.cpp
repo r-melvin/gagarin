@@ -5,6 +5,8 @@
 #include "connman_class.h"
 #include "winsock_interface_class.h"
 
+extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);   // CRT _strcmpi
+
 // GLOBAL: GAMEMD 0xA8B550 -- shared packet scheduling lead limit.
 extern int MaxAhead;
 
@@ -268,9 +270,17 @@ int IPXManagerClass::ReceivePacket(void* buf, int* buflen, int* id)
 }
 
 // FUNCTION: GAMEMD 0x541820
-// CAPPED at 6.2% (51/816 instructions, FINAL after three attempts: baseline, trimmed locals,
-// ulong port with casts). Control flow and callees are recovered from the binary; frame size
-// (0x4BC vs 0x4B8) and register allocation diverge, so the diff cascades.
+// PARTIAL, 3.6% by position (28/783) but structurally closer than the previous 6.0%:
+// retail calls CRT _strcmpi (0x7C8D20) for the two name compares, not an inlined strcmp
+// (previous source used strcmp, which also had the wrong case sensitivity); with the call
+// the frame is the retail 0x4B8 (was 0x4BC), the instruction count falls 814 -> 783 against
+// retail 760, and the `ok = 1` initialiser now precedes the IPXAddressClass constructor as
+// in retail. The positional score drops only because the earlier alignment was accidental.
+// Residual: retail does not rotate the packet loop (bottom is `test ebx,ebx; jz exit;
+// jmp top`, top reloads [0x887628]); cl here duplicates the GetPacket head at the loop
+// bottom (one extra call and its argument setup, ~23 instructions) and, in the for(;;)
+// spelling, also hoists a zero register (EDI) over the whole function, which retail only
+// creates (EBP) for the tail. Tried: for(;;) with `next_packet: if (size == 0) break;`.
 int IPXManagerClass::Service()
 {
     IPXPacket packet;
@@ -278,14 +288,13 @@ int IPXManagerClass::Service()
     char name[0x16];
     int fromlen;
     int buflen;
-    int ok;
+    int ok = 1;
     unsigned int size;
     IPXAddressClass addr;
     unsigned short port;
     int i;
     int j;
 
-    ok = 1;
     if (Interface_00887628) {
         do {
             buflen = 0x400;
@@ -327,7 +336,7 @@ int IPXManagerClass::Service()
                 memset(name, 0, sizeof(name));
                 strncpy(name, CurrentPacket->Name, 0x14);
                 for (i = 0; i < PlayerCount_00A8DA84; ++i) {
-                    if (strcmp(NarrowName_007350C0(Players_00A8DA78[i]->Name), name) == 0) {
+                    if (FUN_007C8D20(NarrowName_007350C0(Players_00A8DA78[i]->Name), name) == 0) {
                         goto found_player;
                     }
                 }
@@ -350,7 +359,7 @@ int IPXManagerClass::Service()
                     SlotPlayers_00A8DA90[Session_00A8B238.FUN_0069BC60(i)]->Address.FUN_0053F200(port);
                 }
                 for (j = 0; j < NumConn; ++j) {
-                    if (strcmp(NarrowName_007350C0(Connection[j]->Name), name) == 0) {
+                    if (FUN_007C8D20(NarrowName_007350C0(Connection[j]->Name), name) == 0) {
                         Connection[j]->Address = addr;
                         Connection[j]->Address.FUN_0053F200(port);
                         Debug_Printf("Set address for connection %d to %s\n", j, Connection[j]->Address.FUN_0053F0E0(0));

@@ -41,8 +41,13 @@ int IPXConnClass::Send_To(void* buf, int buflen, void* extrabuf, int extralen,
 }
 
 // FUNCTION: GAMEMD 0x53F650
-// CAP 52.0%: control-flow layout differs (retail hoists nothing, loads buf
-// into EBP per branch; idx chain laid out as jle/jl); 3 variants tried.
+// PARTIAL 57.9% (was 52.0%). The header-stamping half is a plain if/else on
+// `is_global || !Flag_00A8DBA0` (the goto labels are gone), which lines it up with
+// retail up to the ConnectionIndexOf call. Residual: the connection-index chain
+// (retail `cmp -4; je; jle` then a repeated `test esi,esi`), and retail clears
+// the header dword through a separate `LEA` of hdr+8. That LEA is the shape of an
+// intrinsic 4-byte memset; it is not reproduced here because the field's type
+// (array or dword) has no independent evidence yet.
 int IPXConnClass::Send_To_Address(void* buf, int buflen, IPXAddressClass* address,
                                   unsigned long* network, bool is_global,
                                   unsigned short unknown_6)
@@ -60,32 +65,30 @@ int IPXConnClass::Send_To_Address(void* buf, int buflen, IPXAddressClass* addres
     unsigned short port = 0;
     CommHeaderType* hdr;
     if (is_global || !Flag_00A8DBA0) {
-        goto skip;
-    }
-    hdr = (CommHeaderType*)buf;
-    if (hdr->unknown_03 == 0) {
-        unsigned char id = IdMap_00B052D0.FUN_00663D60(ID);
-        if (!id) {
-            return 0;
+        hdr = (CommHeaderType*)buf;
+        hdr->unknown_0C = 0;
+        hdr->unknown_08 = 0;
+    } else {
+        hdr = (CommHeaderType*)buf;
+        if (hdr->unknown_03 == 0) {
+            unsigned char id = IdMap_00B052D0.FUN_00663D60(ID);
+            if (!id) {
+                return 0;
+            }
+            hdr->unknown_03 = id;
         }
-        hdr->unknown_03 = id;
+        local = Address_00A8DBA4;
+        port = Port_00841F3C;
+        if (Address_00A8DBB0.Equals_EE70(Players_00A8DA78[0]->Address)
+            && local.Equals_EF30(Players_00A8DA78[0]->Address)) {
+            hdr->unknown_0C = 0;
+            hdr->unknown_08 = 0;
+        } else {
+            hdr->unknown_0C = (unsigned short)Port_00841F3C;
+            port = Port_00A8DBBC;
+            hdr->unknown_08 = 0;
+        }
     }
-    local = Address_00A8DBA4;
-    port = Port_00841F3C;
-    if (Address_00A8DBB0.Equals_EE70(Players_00A8DA78[0]->Address)
-        && local.Equals_EF30(Players_00A8DA78[0]->Address)) {
-        goto zero;
-    }
-    hdr->unknown_0C = (unsigned short)Port_00841F3C;
-    port = Port_00A8DBBC;
-    hdr->unknown_08 = 0;
-    goto stamped;
-skip:
-    hdr = (CommHeaderType*)buf;
-zero:
-    hdr->unknown_0C = 0;
-    hdr->unknown_08 = 0;
-stamped:
 
     if (Session_00A8B238.GameMode == 4 && !Flag_00A8DBA0) {
         int idx = Manager_00A8E9C0.IPXManagerClass::ConnectionIndexOf(this);

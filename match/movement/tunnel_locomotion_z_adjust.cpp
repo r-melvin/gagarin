@@ -30,7 +30,7 @@ struct Facing_00729E50
     // 0x4C93D0 reads members at +0x08, +0x10 and +0x14 on this object.
     char unknown_00[0x18];
     // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc)
-    DirValue_00729E50* Current(DirValue_00729E50* out);
+    DirValue_00729E50 Current();
 };
 GG_STATIC_ASSERT(sizeof(Facing_00729E50) == 0x18);
 
@@ -96,10 +96,16 @@ extern const double DAT_007E3550;
 extern "C" int __stdcall FUN_0055ABA0(TunnelLocomotionInterface_00729E50* resource);
 
 // FUNCTION: GAMEMD 0x729E50
-// PARTIAL: 31/140 instructions (22.1%) after the unsigned-shift correction.
-// The switch cases and their values are recovered from the binary table.
-// VC6 still lays out progress calculations, live locals and case blocks
-// differently from retail; 109 instruction mismatches remain.
+// PARTIAL (second look): 71 exact + 15 reloc of 150 compiled instructions
+// (57.3%; 140 are retail's function, the remainder is the jump table that
+// follows it in cl's section). The switch cases and their values are recovered
+// from the binary table. Three corrections moved this from 22.1%: the mode-6
+// and mode-2 arms add the vertical delta (`yDelta`, kept in the dead parameter
+// home), not `coord.Z`; the facing read is the by-value `Current()` (its hidden
+// temporary shares retail's [ESP+0x14] slot with the progress divisor, giving
+// retail's `SUB ESP,0x28`); and the elapsed test compares against the local copy.
+// Remaining delta: retail names the vertical delta EDI and the divisor EBX where
+// cl swaps them, and the elapsed-progress local is EAX in retail, ECX here.
 extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resource)
 {
     Coord_00729E50 coord = resource->Base->Location;
@@ -120,7 +126,7 @@ extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resour
         int elapsedProgress = resource->At_2C;
         if (resource->At_24 != -1) {
             int elapsed = CurrentFrame - resource->At_24;
-            if (elapsed < resource->At_2C) {
+            if (elapsed < elapsedProgress) {
                 elapsedProgress -= elapsed;
             } else {
                 elapsedProgress = 0;
@@ -129,16 +135,14 @@ extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resour
         progress = (double)(total - elapsedProgress) / total;
     }
 
-    DirValue_00729E50 facing;
-    DirValue_00729E50* facingValue = resource->Base->PrimaryFacing.Current(&facing);
-    int direction = ((facingValue->Value >> 7) + 1) >> 1;
+    int direction = ((resource->Base->PrimaryFacing.Current().Value >> 7) + 1) >> 1;
     direction &= 0xFF;
 
     switch (resource->At_14) {
     case 4:
         return DAT_00844A9C + yDelta;
     case 6:
-        return (int)((DAT_007E1718 - progress) * DAT_00844A98 + coord.Z);
+        return (int)((DAT_007E1718 - progress) * DAT_00844A98 + yDelta);
     case 2:
         if (progress > DAT_007E3550 && resource->At_34 == 0) {
             resource->At_34 = 1;
@@ -146,7 +150,7 @@ extern "C" int __stdcall FUN_00729E50(TunnelLocomotionInterface_00729E50* resour
         if (direction > 0x46 && direction < 0x8C) {
             return DAT_00844A9C + yDelta;
         }
-        return (int)(DAT_00844A9C * progress + coord.Z);
+        return (int)(DAT_00844A9C * progress + yDelta);
     case 3:
     {
         int result = yDelta;

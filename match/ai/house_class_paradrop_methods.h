@@ -27,6 +27,8 @@ struct Cell_00509CD0
 {
     short X;   // +0x0000
     short Y;   // +0x0002
+    Cell_00509CD0() {}
+    Cell_00509CD0(short x, short y) : X(x), Y(y) {}
 };
 GG_STATIC_ASSERT(sizeof(Cell_00509CD0) == 4);
 

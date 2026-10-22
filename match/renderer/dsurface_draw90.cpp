@@ -17,9 +17,9 @@ struct BlendedColor
 
 static inline unsigned short PackPixel(const BlendedColor& c)
 {
-    return (c.Channel[2] >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2 |
+    return (c.Channel[0] >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0 |
            (c.Channel[1] >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1 |
-           (c.Channel[0] >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0;
+           (c.Channel[2] >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2;
 }
 
 // Pixel for the current blend factor.
@@ -47,6 +47,10 @@ static inline void Advance(float* step, float* blend)
 }
 
 // FUNCTION: GAMEMD 0x4BF750
+// PARTIAL (second look, 21.3% positional; instruction multiset gap 8 of 483). Channel terms are packed in
+// channel 0, 1, 2 order and the horizontal store precedes the pointer increment. Remaining delta: retail
+// keeps `this` in EBP (ours EBX), zeroes the first channel with `XOR DX,DX; MOV DL,AL`, and loads the
+// 0x661020 arguments in a different order.
 bool DSurface::DrawLineGradient(RectangleStruct* clip, Point2D* from, Point2D* to, const unsigned char* colorA,
                                 const unsigned char* colorB, float* step, float* blend)
 {
@@ -71,8 +75,9 @@ bool DSurface::DrawLineGradient(RectangleStruct* clip, Point2D* from, Point2D* t
             if (pixel) {
             if (p1.Y == p2.Y) {
                 for (int i = 0; i <= p2.X - p1.X; i++) {
-                    *pixel++ = PixelAt(colorA, colorB, blend);
+                    *pixel = PixelAt(colorA, colorB, blend);
                     Advance(step, blend);
+                    pixel++;
                 }
                 Unlock();
                 return true;

@@ -44,11 +44,16 @@ struct Obj_00408B10
 };
 GG_STATIC_ASSERT(offsetof(Obj_00408B10, Total) == 0x14);
 
-// Callee-cleanup, four arguments.
-void __stdcall FUN_00433CF0(int a, int* b, int c, int d);
+// Receiver of 0x433CF0 / 0x433ED0. 0x433ED0 never touches ECX: the receiver
+// passes straight through to the helper, so both are __thiscall members.
+struct Obj_00433CF0
+{
+    // FUNCTION: GAMEMD 0x433CF0 — callee-cleanup, four stack arguments.
+    void FUN_00433CF0(int a, int* b, int c, int d);
 
-// FUNCTION: GAMEMD 0x433ED0 — hands the second argument to the helper both by
-// value and by address, then returns it.
-int __stdcall FUN_00433ED0(int a, int b);
+    // FUNCTION: GAMEMD 0x433ED0 — hands the second argument to the helper both
+    // by value and by address, then returns it.
+    int FUN_00433ED0(int a, int b);
+};
 
 #endif  // GG_MATCH_CORE_SMALL_MISC16_METHODS_H

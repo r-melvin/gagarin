@@ -16,6 +16,14 @@ struct Coord_00453840
     int X;
     int Y;
     int Z;
+
+    Coord_00453840* Set(int x, int y, int z)
+    {
+        X = x;
+        Y = y;
+        Z = z;
+        return this;
+    }
 };
 GG_STATIC_ASSERT(sizeof(Coord_00453840) == 0xC);
 GG_STATIC_ASSERT(offsetof(Coord_00453840, X) == 0x0);

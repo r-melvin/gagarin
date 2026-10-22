@@ -22,7 +22,8 @@ void RLEBlitTransXlatZReadWrite<T>::RLEBlit(void* dest, const void* src, int len
     {
         while (skip > 0)
         {
-            if (*s++ == 0)
+            unsigned char r = *s++;
+            if (r == 0)
                 skip -= *s++;
             else
                 skip--;
@@ -41,25 +42,24 @@ void RLEBlitTransXlatZReadWrite<T>::RLEBlit(void* dest, const void* src, int len
             c = *s++;
             len -= c;
             d += c;
-            z += c;
             zs += c;
+            z += c;
         }
         else
         {
             if (zval - *zs < *z)
             {
-                *d = table[c];
+                *d++ = table[c];
                 *z = zval - *zs;
-                zs++;
-                d++;
                 z++;
+                zs++;
                 len--;
             }
             else
             {
-                zs++;
                 d++;
                 z++;
+                zs++;
                 len--;
             }
         }

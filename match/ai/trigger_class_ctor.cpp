@@ -9,8 +9,10 @@
 // VC6FLAGS: /nologo /c /O2 /DNDEBUG /Gy
 // /GX adds exception-cleanup code around ResetTimers/vector append calls that
 // is absent from retail. This source remains partial: the fixed-span oracle
-// scores 79.1% (102/129 instructions), with 27 differences in emitted control
-// flow/scheduling. Three strategies were exhausted; no exact match is claimed.
+// scores 80.3% (102/127 instructions) with the mode tests as one `||` chain;
+// the residual is that cl duplicates the return block after the first mode
+// test (it threads mode==0 past the other two compares) where retail keeps
+// the compare chain and one shared return. No exact match is claimed.
 
 #include <stddef.h>
 #include "../_layout/trigger_class.h"
@@ -99,19 +101,16 @@ TriggerClass::TriggerClass(TriggerTypeClass* type)
 
     if (this->Type != 0) {
         this->ResetTimers();
-        if (reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type)->Flags[3] == 0) {
+        TriggerCtorTypeFlagsView* typeFlags =
+            reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type);
+        int mode = 0;
+        if (typeFlags->Flags[3] == 0
+            || ((mode = reinterpret_cast<TriggerCtorScenarioModeView*>(
+                    DAT_00A8B230)->CurrentMode) == 0
+                && typeFlags->Flags[0] == 0)
+            || (mode == 1 && typeFlags->Flags[1] == 0)
+            || (mode == 2 && typeFlags->Flags[2] == 0)) {
             this->Enabled = false;
-        } else {
-            int mode = reinterpret_cast<TriggerCtorScenarioModeView*>(
-                DAT_00A8B230)->CurrentMode;
-            TriggerCtorTypeFlagsView* typeFlags =
-                reinterpret_cast<TriggerCtorTypeFlagsView*>(this->Type);
-            if (mode == 0 && typeFlags->Flags[0] == 0)
-                this->Enabled = false;
-            if (mode == 1 && typeFlags->Flags[1] == 0)
-                this->Enabled = false;
-            if (mode == 2 && typeFlags->Flags[2] == 0)
-                this->Enabled = false;
         }
     }
 }

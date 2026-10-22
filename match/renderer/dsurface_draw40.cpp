@@ -78,9 +78,9 @@ static inline int Distance(int dx, int dy)
 // The base declaration keeps seven ints (retail RET 0x1c), so the typed values are recovered by casts.
 bool DSurface::unknown_40(int clipArg, int fromArg, int toArg, int colorArg, int scaleArg, int zFrom, int zTo)
 {
-    RectangleStruct*& clip = (RectangleStruct*&)clipArg;
-    Point2D*& from = (Point2D*&)fromArg;
-    Point2D*& to = (Point2D*&)toArg;
+    RectangleStruct* clip = (RectangleStruct*)clipArg;
+    Point2D* from = (Point2D*)fromArg;
+    Point2D* to = (Point2D*)toArg;
     unsigned char*& color = (unsigned char*&)colorArg;
     float& scale = (float&)scaleArg;
     int c0 = (int)(color[0] * scale);
@@ -109,20 +109,22 @@ bool DSurface::unknown_40(int clipArg, int fromArg, int toArg, int colorArg, int
         zFrom = zTo;
         zTo = z;
     }
-    Point2D origA = a;
-    Point2D origB = b;
+    int ax = a.X;
+    int ay = a.Y;
+    int bx = b.X;
+    int by = b.Y;
     bool ok = ClipLine(&a, &b, &bounds);
     if (ok) {
 
-    if (b.X != origB.X || b.Y != origB.Y) {
-        int clipped = Distance(origA.X - b.X, origA.Y - b.Y);
-        int full = Distance(origA.X - origB.X, origA.Y - origB.Y);
+    if (b.X != bx || b.Y != by) {
+        int clipped = Distance(ax - b.X, ay - b.Y);
+        int full = Distance(ax - bx, ay - by);
         int delta = Abs((int)((double)clipped / (double)full * (double)(zFrom - zTo)));
         zTo = zFrom < zTo ? zFrom + delta : zFrom - delta;
     }
-    if (a.X != origA.X || a.Y != origA.Y) {
-        int clipped = Distance(a.X - origB.X, a.Y - origB.Y);
-        int full = Distance(origA.X - origB.X, origA.Y - origB.Y);
+    if (a.X != ax || a.Y != ay) {
+        int clipped = Distance(a.X - bx, a.Y - by);
+        int full = Distance(ax - bx, ay - by);
         int delta = Abs((int)((double)clipped / (double)full * (double)(zFrom - zTo)));
         zFrom = zFrom < zTo ? zTo - delta : zTo + delta;
     }

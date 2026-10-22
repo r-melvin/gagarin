@@ -172,6 +172,10 @@ void BlitTransXlatAlphaZRead<unsigned short>::BlitCopy(void* dest, const void* s
         } while (--n);
     }
 }
+// Tint variant is 100% (z advanced inside the compare, `*z++`, which is where retail
+// bumps it). The same spelling in the plain BlitCopy at 0x494B60 keeps the instruction
+// multiset identical but drops it to 57.3% by position (retail hoists the Z-wrap global
+// into EBP there; the `*z++` spelling loses that hoist), so BlitCopy keeps its original form.
 // TEMPLATE: GAMEMD 0x494C40
 // BlitTransXlatAlphaZRead<unsigned short>::BlitCopyTint
 template <>
@@ -188,12 +192,11 @@ void BlitTransXlatAlphaZRead<unsigned short>::BlitCopyTint(void* dest, const voi
         int n = len;
         unsigned short* d = (unsigned short*)dest;
         do {
-            if (zval < *z) {
+            if (zval < *z++) {
                 unsigned char c = *(const unsigned char*)src;
                 if (c)
                     *d = xlat[row[*ab] | c] | tint;
             }
-            ++z;
             src = (const unsigned char*)src + 1;
             ++d;
             z = RLEZWrapRow(z);

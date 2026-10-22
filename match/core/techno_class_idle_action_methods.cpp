@@ -20,25 +20,25 @@
 //
 // The exit is `MOV AL,CL`, so the return type is bool, not int.
 //
-// RESIDUAL 5.0%, and the percentage is not the story: the instruction multiset
-// is retail-only {mov: 2}, 20 against 18, and every branch, every displacement
-// and every constant is retail's. Retail keeps the running duration in EAX and
-// borrows ECX to build the boolean (`XOR ECX,ECX; TEST EAX,EAX; SETZ CL;
-// MOV AL,CL`, twice); cl keeps it in EDX and so can zero EAX up front and
-// `SETE AL` directly, which is the same computation two instructions shorter.
-// This is the register-colouring class of docs/residual_census.md. Three
-// materially different spellings — `return GetTimeLeft() == 0;`, an
-// if/else GetTimeLeft, and an early-return GetTimeLeft plus a named local and
-// an explicit `if` — all emitted BYTE-IDENTICAL output, so cl never saw a
-// choice here and the expression level is retired for this body.
+// PARTIAL 35.0% (7/20, was 5.0%). Written as the explicit inline countdown
+// (the same shape as 0x70F7E0), the control flow, displacements and the shared
+// long-form tail (`XOR ECX,ECX; TEST EAX,EAX; SETZ CL; MOV AL,CL`) are
+// retail's. The one residual is the live-subtraction tail: retail repeats the
+// long-form tail after the `SUB`, we emit `NEG EAX; SBB EAX,EAX; INC EAX`.
+// Tried against it: `(timeLeft - elapsed) == 0`, `!(...)`, a ternary clamp
+// (`SETE AL` right after the SUB, 5.0%), a bound bool local, a switch, and
+// `if (x == 0) return true; return false;` - all 35.0% or worse. Earlier
+// GetTimeLeft()-based spellings were byte-identical to each other at 5.0%.
 bool TechnoClass::IsTimeForIdleAction()
 {
-    int remaining = this->IdleActionTimer.GetTimeLeft();
-
-    if (remaining == 0) {
-        return true;
+    int timeLeft = this->IdleActionTimer.TimeLeft;
+    if (this->IdleActionTimer.StartTime != -1) {
+        int elapsed = CurrentFrame - this->IdleActionTimer.StartTime;
+        if (elapsed < timeLeft)
+            return (timeLeft - elapsed) == 0;
+        timeLeft = 0;
     }
-    return false;
+    return timeLeft == 0;
 }
 
 // FUNCTION: GAMEMD 0x709A30  (__thiscall)

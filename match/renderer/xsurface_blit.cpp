@@ -25,6 +25,17 @@ bool XSurface::CopyFromWhole(Surface* src, bool a, bool b)
 
 // FUNCTION: GAMEMD 0x7BBB90
 // The fifth argument is not read.
+//
+// PARTIAL: the clip test is written as the positive `if (ClipBlitRects(...))`
+// with `return false` after it, which is what puts retail's failure epilogue at
+// the end and stops the four BlitDriver tails merging (21.5% -> 85.1%, multiset
+// identical). Remaining delta: retail keeps the four blitter locals in four
+// distinct 4-byte stack slots (frame 0x40) and stores each vptr after the
+// argument setup; this build overlaps the sibling-scope locals (frame 0x30), so
+// every ESP displacement into the blitter slots differs. Tried: the four
+// blitters as function-scope locals (vptr stores hoisted to the top, 23.1%),
+// an inline template helper (still overlapped) and address-of temporaries
+// (still overlapped).
 bool XSurface::CopyFromPart(RectangleStruct* dest, Surface* src,
                             RectangleStruct* srcRect, bool a, bool b)
 {
@@ -32,23 +43,23 @@ bool XSurface::CopyFromPart(RectangleStruct* dest, Surface* src,
     RectangleStruct d = *dest;
     RectangleStruct s = *srcRect;
 
-    if (!ClipBlitRects(&d, surfaceRect, &s, srcSurfaceRect))
-        return false;
-
-    if (a) {
-        if (GetBytesPerPixel() == 1) {
-            BlitTrans<unsigned char> blitter;
+    if (ClipBlitRects(&d, surfaceRect, &s, srcSurfaceRect)) {
+        if (a) {
+            if (GetBytesPerPixel() == 1) {
+                BlitTrans<unsigned char> blitter;
+                return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
+            }
+            BlitTrans<unsigned short> blitter;
             return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
         }
-        BlitTrans<unsigned short> blitter;
+        if (GetBytesPerPixel() == 1) {
+            BlitPlain<unsigned char> blitter;
+            return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
+        }
+        BlitPlain<unsigned short> blitter;
         return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
     }
-    if (GetBytesPerPixel() == 1) {
-        BlitPlain<unsigned char> blitter;
-        return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
-    }
-    BlitPlain<unsigned short> blitter;
-    return BlitDriver(this, &d, src, &s, &blitter, 0, 3, 1000, 0);
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x7BBCF0

@@ -300,10 +300,11 @@ int IPXGlobalConnClass::Remove_Packets_From(IPXAddressClass* address,
 }
 
 // FUNCTION: GAMEMD 0x5403F0
-// CAP 0.0% positional (prologue differs: ours keeps a zero in EBX, retail uses TEST and a
-// 0x28 frame). Multiset delta: retail-only {mov x8, lea x3, test x9, je, jmp}, compiled-only
-// {push, xor x2, cmp x9, jne, pop}. Variants: current, locals scoped in the if, hdr hoisted,
-// loop counter declared outside. Retail hdr+8/+0xC looks like a 6-byte struct zeroed via LEA.
+// PARTIAL 1.3% positional (was 0.0%; section 0x1F0 against retail 0x213). The network
+// override and the player lookup share one net/node pair, as retail's single 8-byte pair
+// (frame 0x28) does. Prologue differs: ours keeps a zero in EBX, retail uses TEST. Retail
+// clears the header dword at hdr+8 through a separate LEA (the shape of an intrinsic 4-byte
+// memset); not reproduced until the field's type has independent evidence.
 int IPXGlobalConnClass::Send_To_Address(void* buf, int buflen,
                                         IPXAddressClass* address,
                                         unsigned long* network, bool is_global,
@@ -325,10 +326,8 @@ int IPXGlobalConnClass::Send_To_Address(void* buf, int buflen,
         hdr = (CommHeaderType*)buf;
         if (hdr->unknown_03 == 0) {
             IPXAddressClass copy = local;
-            NetworkNumberType net2;
-            NodeAddressType node2;
-            copy.Get_Address(net2, node2);
-            copy.Set_Address(net2, node2, unknown_6);
+            copy.Get_Address(net, node);
+            copy.Set_Address(net, node, unknown_6);
             int player_id = -1;
             for (int i = 0; i < PlayerCount_00A8DA84; i++) {
                 if (Players_00A8DA78[i]->Address.Equals_EE70(copy)) {

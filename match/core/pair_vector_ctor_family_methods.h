@@ -52,59 +52,31 @@ GG_STATIC_ASSERT(offsetof(PairVector, Vptr)        == 0x0 &&
 // Seat the vtable and the bookkeeping, then take the caller's storage if it
 // supplied any and otherwise allocate a block of `count` elements; either way
 // every element is zeroed before the pointer is published. Returns `this`.
-// Seat the vtable and the bookkeeping, then take the caller's storage if it
-// supplied any and otherwise allocate a block of `count` elements; either way
-// every element is zeroed before the pointer is published. Returns `this`.
 //
-// PARTIAL, 82.5%. The whole prologue, both zeroing loops, the storage branch
-// and the allocation branch are instruction-for-instruction exact, registers
-// included. Two residuals remain:
-//   1. Retail keeps two copies of the "publish the block and set the allocated
-//      flag" tail, one for the loop-exit path and one entered from the
-//      allocation-failure path (which materialises the null with its own
-//      `XOR EAX,EAX` before falling into the shared stores). cl 8804 merges
-//      the two into one tail, so the compiled body is eight instructions
-//      shorter. The register allocation is coupled to this: every spelling
-//      that gets the two copies (an explicit `if (block == 0) { ...; return; }`
-//      arm, an if/else, an early-return success arm, and the same three with
-//      the loop hoisted into an inline helper per the ninth batch's un-merge
-//      lever) swaps ESI and EDI and drops to 36.5-57.1%, while every spelling
-//      that merges keeps retail's ESI=count / EDI=this and scores 82.5%.
-//   2. The single `XOR EAX,EAX` of that failure path. Writing the store as
-//      `self->Items = block` with `block` known null, and as a literal 0, give
-//      the same code.
-// The translation-unit-shape lever does not reach this one. The same body was
-// compiled alone in a file and with two, three, four, five and eight siblings:
-// 82.5% in every case, so cl's decision to merge the two tails here is not the
-// cross-jumping that a sibling function suppresses. Six more spellings were
-// measured in one compile and all confirm the coupling recorded above - the
-// loop-entered arm returning on its own 52.4%, a peeled `do/while` with the
-// trip test repeated after the advance 55.6%, an early return on allocation
-// failure 36.5%, a volatile publish in the loop arm only 57.1%, and `count - 1`
-// hoisted into its own local ahead of a duplicated tail 52.4%.
-//
-// MEMBER-VERSUS-FREE, and the C front end: both refuted this pass. The body is
-// written as a free `__fastcall` function with an explicit self parameter,
-// which the nineteenth batch warns inverts the ranking of a member function's
-// variants. Re-measured as a real `__thiscall` member of a cloned class it is
-// 82.5%, byte-identical to the free form, and the duplicated-tail arm is 36.5%
-// as a member exactly as it is as a free function -- so the harness shape is
-// not hiding a winner here. Compiled as `.c` (batch thirty-nine) the same two
-// arms score 82.5% and 36.5%, the same numbers again. A flag sweep over nine
-// sets (/GX and /Gy on and off, /Ox, /O1, /Og /Oi /Ot /Oy /Ob1, /Op, /Gr) moves
-// nothing except /O1, which collapses it to 22.2%. The tail fold is neither a
-// front-end nor a flag effect.
-//
-// Eight spellings were measured. Four loop forms were also measured on the way
-// in: only `for (i = count - 1; i >= 0; i--)` over a walked pointer produces
-// retail's `LEA ECX,[ESI-1]; CMP; JL; INC ECX` trip-count preamble (4.8% for
-// the index form, 57.1% for that loop alone before the tail work).
+// The allocate-and-zero step is an inline helper that returns the block, or
+// null when the allocation failed. Inlining it is what gives retail's two
+// tails (the loop-exit copy and the failure-entered copy with its own
+// `XOR EAX,EAX`); the positive `if (p != 0) { ...; return p; } return 0;`
+// spelling is the one that puts the zeroing loop before the failure arm.
+// The earlier open-coded forms topped out at 82.5%.
 #define GG_PAIR_VECTOR_CTOR_BODY(TAG, VT, ELEM)                           \
+static inline ELEM* NewZeroed_##TAG(int n)                                \
+{                                                                         \
+    ELEM* p = (ELEM*)gg_alloc(n * 8);                                     \
+    if (p != 0) {                                                         \
+        ELEM* q = p;                                                      \
+        for (int i = n - 1; i >= 0; i--) {                                \
+            q->A = 0;                                                     \
+            q->B = 0;                                                     \
+            q++;                                                          \
+        }                                                                 \
+        return p;                                                         \
+    }                                                                     \
+    return 0;                                                             \
+}                                                                         \
 PairVector* __fastcall FUN_##TAG(PairVector* self, int, int count,        \
                                  ELEM* storage)                           \
 {                                                                         \
-    int i;                                                                \
-    ELEM* p;                                                              \
     self->Items = 0;                                                      \
     self->Capacity = count;                                               \
     self->IsValid = 1;                                                    \
@@ -112,8 +84,8 @@ PairVector* __fastcall FUN_##TAG(PairVector* self, int, int count,        \
     self->Vptr = &VT_##VT;                                                \
     if (count != 0) {                                                     \
         if (storage != 0) {                                               \
-            p = storage;                                                  \
-            for (i = count - 1; i >= 0; i--) {                            \
+            ELEM* p = storage;                                            \
+            for (int i = count - 1; i >= 0; i--) {                        \
                 p->A = 0;                                                 \
                 p->B = 0;                                                 \
                 p++;                                                      \
@@ -121,20 +93,8 @@ PairVector* __fastcall FUN_##TAG(PairVector* self, int, int count,        \
             self->Items = storage;                                        \
             return self;                                                  \
         }                                                                 \
-        {                                                                 \
-            ELEM* block = (ELEM*)gg_alloc(count * 8);                     \
-            if (block != 0) {                                             \
-                p = block;                                                \
-                for (i = count - 1; i >= 0; i--) {                        \
-                    p->A = 0;                                             \
-                    p->B = 0;                                             \
-                    p++;                                                  \
-                }                                                         \
-            }                                                             \
-            self->Items = block;                                          \
-            self->IsAllocated = 1;                                        \
-            return self;                                                  \
-        }                                                                 \
+        self->Items = NewZeroed_##TAG(count);                             \
+        self->IsAllocated = 1;                                            \
     }                                                                     \
     return self;                                                          \
 }

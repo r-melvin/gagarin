@@ -83,7 +83,10 @@ TerrainClass::TerrainClass()
 }
 
 // FUNCTION: GAMEMD 0x71BFB0
-// CAPPED at 80.6% (multiset identical, 67 of 67). The residual is the register naming of the
+// CAPPED at 91.0% (multiset identical, 67 of 67; was 80.6% with the sum written in one expression). Lever:
+// the tactical offset and the current position are copied into locals first, then the sum is built from
+// them. The residual is the schedule of the ScreenPos.Y load (retail loads it after the X add) and the
+// register naming of the
 // ScreenPos + Offset sum (retail: tactical pointer in EAX, reused for Offset.Y; cl: EDX plus EDI). Variants
 // tried: free and member operator+, swapped operand order, int locals, a named sum temporary, `+=`.
 bool TerrainClass::Mark(int arg)
@@ -98,7 +101,9 @@ bool TerrainClass::Mark(int arg)
         case 3: {
             MapObjMap.Func_5683C0(&cell, this);
             MapObjTactical->CoordsToClient(vf_43(), &ScreenPos);
-            ScreenPos = ScreenPos + MapObjTactical->Offset;
+            MapObjPoint off = MapObjTactical->Offset;
+            MapObjPoint cur = ScreenPos;
+            ScreenPos = MapObjPoint(cur.X + off.X, cur.Y + off.Y);
             break;
         }
         }
@@ -344,9 +349,9 @@ bool TerrainClass::vf_53()
 }
 
 // FUNCTION: GAMEMD 0x71CC50
-// CAPPED at 84.5% (multiset identical). Frame 0x18 in retail against 0x28 here (the Intersect result, the
-// GetRect temporary and the world rectangle share one slot in retail), plus the register naming that
-// follows. Variants tried: separate rectangles (kept), one shared temporary, a work variable assigned
+// CAPPED at 89.7% (multiset identical; was 84.5%). The frame now equals retail (0x18): the Intersect temporary
+// is scoped to its own block so its slot is shared with the vf_75 temporary. The residual is register naming
+// of the world rectangle (clip origin loaded in EBX/EBP in retail). Variants tried: separate rectangles (kept), one shared temporary, a work variable assigned
 // from the by-value vf_75, scalar left/top/width/height locals.
 bool TerrainClass::vf_65(MapObjRect* rect, bool force, int unused)
 {
@@ -355,8 +360,10 @@ bool TerrainClass::vf_65(MapObjRect* rect, bool force, int unused)
             return false;
     }
     unknown_80 = 0;
-    MapObjRect clipped;
-    *rect = *TerrainIntersect(&clipped, rect, &MapObjClipRect, 0, 0);
+    {
+        MapObjRect clipped;
+        *rect = *TerrainIntersect(&clipped, rect, &MapObjClipRect, 0, 0);
+    }
     MapObjRect world = MapObjRectShifted(vf_75(), MapObjClipRect.X, MapObjClipRect.Y);
     if (rect->X < world.X + world.Width && rect->Y < world.Y + world.Height && rect->X + rect->Width > world.X &&
         rect->Y + rect->Height > world.Y) {
@@ -452,15 +459,17 @@ MapObjTypeClassView* TerrainClass::GetType()
 }
 
 // FUNCTION: GAMEMD 0x71D160
-// CAPPED at 12.8% (140 of 141 instructions). Retail pushes only ESI in the prologue and the other
+// CAPPED at 23.4% (was 12.8%; lever: the tactical offset is copied to a local before the position sums)
+// (140 of 141 instructions). Retail pushes only ESI in the prologue and the other
 // callee-saved registers after the empty-image early return (frame 0x40 against 0x44), keeps the image in
 // ESI where cl uses EDI/EBX, and loads the offsets before the screen position. Variants tried: struct copies
 // of the two bounds, a rectangle temporary for the union, scalar locals (kept), a MapObjPoint offset
 // from operator-.
 MapObjRect TerrainClass::vf_75()
 {
-    int dx = ScreenPos.X - MapObjTactical->Offset.X;
-    int dy = ScreenPos.Y - MapObjTactical->Offset.Y;
+    MapObjPoint offset = MapObjTactical->Offset;
+    int dx = ScreenPos.X - offset.X;
+    int dy = ScreenPos.Y - offset.Y;
     MapObjShapeView* image = (MapObjShapeView*)MapObjClassView::GetImage();
     if (image == 0)
         return TerrainEmptyRect;

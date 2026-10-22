@@ -76,6 +76,15 @@
 //     +0x5C that no class in this file has) and runs to 0x5CE2A4.
 //   0x5CD850 is 0x335 exactly, one body.
 //
+// PARTIAL — 0x5CD570 MSPrintAnim::Construct, 93.8%. Retail's centring block
+// starts the running width at zero and subtracts the font lead at the end
+// (0x5CD611..0x5CD66F: the lead and the accumulator sit in the dead a8 and
+// centred argument slots); the margin argument only seeds Interval. The earlier
+// source seeded the width with the lead and subtracted the margin, which was
+// wrong as well as worse (45.8%). The remaining delta is the two timer stores,
+// which retail places above the string constructor's argument setup; that is
+// accepted rather than forced with a receiver alias.
+//
 // HISTORICAL ATTEMPTS — 0x5CD570 MSPrintAnim::Construct, old oracle
 // reported 90.6% (87/96 instructions,
 // multiset identical). Two residuals. cl keeps the address of the clock member
@@ -298,8 +307,9 @@ MSPrintAnim* MSPrintAnim::Construct(const wchar_t* text, int x, int y,
     Layout(rect);
 
     if (centred) {
+        int lead = Font->Lead;
         int i = 0;
-        int width = Font->Lead;
+        int width = 0;
 
         while (Text.CharAt(i) != 0) {
             if (Text.CharAt(i) == 10) {
@@ -310,7 +320,7 @@ MSPrintAnim* MSPrintAnim::Construct(const wchar_t* text, int x, int y,
             ++i;
         }
 
-        CentreOffset = (Bounds.Width - width - margin) / 2;
+        CentreOffset = (Bounds.Width - width - lead) / 2;
     }
 
     return this;

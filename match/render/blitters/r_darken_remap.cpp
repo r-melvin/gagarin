@@ -360,10 +360,8 @@ void RLEBlitTransRemapXlatZReadWrite<T>::RLEBlit(void* dest, const void* src, in
         {
             if (zval - *zs < *z)
             {
-                *d = table2[table1[c]];
-                *z = zval - *zs++;
-                d++;
-                z++;
+                *d++ = table2[table1[c]];
+                *z++ = zval - *zs++;
                 len--;
             }
             else
@@ -484,9 +482,9 @@ void RLEBlitTransDarkenZRead<T>::RLEBlit(void* dest, const void* src, int len, i
         {
             if (zval - *zs++ < *z)
                 *d = (*d >> 1) & mask;
+            len--;
             z++;
             d++;
-            len--;
         }
         z = RLEZWrapRow(z);
     }

@@ -28,6 +28,11 @@
 // where cl pushes both immediates and keeps the zero in EAX. Passing the 5
 // through a named local, declared either side of the base-centre read, is
 // constant-folded and leaves the stream unchanged (31.1% both ways).
+// Second-look lever (42.2%): the by-value zero cell is built in the argument
+// list as a temporary (`Cell(0, 0)`, needs the two-argument ctor added to
+// Cell_00509CD0 in the header), so its stores happen at argument-evaluation
+// time just before the call as in retail, rather than as a named local
+// initialised ahead of the pushes.
 void House_00509CD0::Fire_ParaDrop(Super_00509CD0* pSuper)
 {
     House_00509CD0* enemy;
@@ -47,12 +52,9 @@ void House_00509CD0::Fire_ParaDrop(Super_00509CD0* pSuper)
         goto join;
     }
     {
-        Cell_00509CD0 zero;
-        zero.X = 0;
-        zero.Y = 0;
         cell = enemy->GetBaseCenter();
         cell = *MapInstance_00509CD0.NearByLocation(&buf, cell, 0, -1, 0, false, 5, 5,
-                                                    false, false, false, true, zero,
+                                                    false, false, false, true, Cell_00509CD0(0, 0),
                                                     false, false);
         cell.X += 2;
         cell.Y += 2;

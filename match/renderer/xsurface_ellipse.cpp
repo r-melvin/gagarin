@@ -13,10 +13,14 @@
     ((px) >= clip.X && (px) < clip.Width + clip.X && (py) >= clip.Y && (py) < clip.Height + clip.Y)
 
 // FUNCTION: GAMEMD 0x7BB350
+// PARTIAL (second look, 5.4% positional, 483 retail vs 455 compiled instructions). Row words are the
+// signed `(int)GetPitch() >> 1` (SAR, not SHR) and `2*rx2`/`2*ry2` are named locals. Remaining delta:
+// retail spills far more of the loop state to the stack ([ESP+0x10..0x58]) and rebuilds the four row
+// pointers with LEA; not reproduced.
 bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
                            unsigned int color)
 {
-    int rowWords = GetPitch() >> 1;
+    int rowWords = (int)GetPitch() >> 1;
     Point2D pt;
 
     int below = cy + ry;
@@ -34,6 +38,8 @@ bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
 
     int rx2 = rx * rx;
     int ry2 = ry * ry;
+    int rx22 = 2 * rx2;
+    int ry22 = 2 * ry2;
     int bound = 2 * rx2 * ry;
     int term = 0;
     int y = ry;
@@ -53,7 +59,7 @@ bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
     for (;;) {
         d += term + ry2;
         if (d >= 0) {
-            bound -= 2 * rx2;
+            bound -= rx22;
             d -= bound;
             y--;
             pBelowRight -= rowWords;
@@ -61,7 +67,7 @@ bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
             pAboveRight += rowWords;
             pBelowLeft -= rowWords;
         }
-        term += 2 * ry2;
+        term += ry22;
         xr++;
         xl--;
         pBelowRight++;
@@ -109,7 +115,7 @@ bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
     for (;;) {
         d += term + rx2;
         if (d >= 0) {
-            bound -= 2 * ry2;
+            bound -= ry22;
             d -= bound;
             pBelowRight--;
             pAboveLeft++;
@@ -118,7 +124,7 @@ bool XSurface::DrawEllipse(int cx, int cy, int rx, int ry, RectangleStruct clip,
             xl++;
             pBelowLeft++;
         }
-        term += 2 * rx2;
+        term += rx22;
         j++;
         pBelowRight += rowWords;
         pAboveLeft -= rowWords;

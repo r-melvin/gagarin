@@ -14,41 +14,27 @@ int DAT_00AC4B84[24];
 // (retail's `OR EAX,0xffffffff` seeds the -1 answer before the guard) rather
 // than folding the empty case into the loop test, so an empty node returns -1
 // without ever touching `Entries`.
-// PARTIAL (42.3%, 11/26 by position; multiset otherwise identical apart from
-// register colouring): register roles and every load/compare/increment match
-// once the walk is written as a raw pointer increment over `Entries` (retail
-// never re-indexes; `ADD ECX,0x4` walks the entry pointer directly) rather
-// than `entries[i]`, which is what took this from 3.8% to here. The residual
-// is retail's single guarded do-while (`test; jle skip; LOOP: body; inc; cmp;
-// JL LOOP`) against cl 8804's loop-rotated form, which peels the first
-// comparison out of the loop and runs the remainder as a tighter body that
-// falls through to the found case instead of testing it explicitly. Every
-// materially different loop spelling tried gives one of these two shapes:
-// a `while` with an internal early `return -1` re-tests the guard a second
-// time at the loop head (3.8%, both `entries[i]` and pointer-walk); a `do
-// {...} while` or an equivalent `goto`-loop with the match test as the body's
-// first statement is what cl rotates/peels (this 42.3%, both index and
-// pointer forms). No spelling reproduces retail's unrotated single-test loop
-// under the locked flags; recorded here rather than spent further.
+// PARTIAL (92.3%, 24/26): a `for` over the entries with a `break` on the first
+// owner match, written `count > i` as the loop test, gives retail's single
+// guarded loop with the walk as a raw entry-pointer increment, the `OR EAX,-1`
+// seed and the unrotated test. The one residual instruction is the loop test's
+// direction: retail has `CMP EDX,ESI; JL`, this has `CMP ESI,EDX; JG` (the
+// `i < count` spelling gives the retail compare but swaps the EDX/ESI roles,
+// 69.2%).
 int Node_006386E0::FUN_00634290(void* owner)
 {
     int index = -1;
     int count = this->At_010;
+    int i = 0;
     if (count > 0) {
         Entry_006386E0** entries = this->Entries;
-        int i = 0;
-    loop:
-        if (*(int*)*entries == (int)owner) {
-            index = i;
-            goto done;
-        }
-        i++;
-        entries++;
-        if (i < count) {
-            goto loop;
+        for (; count > i; i++, entries++) {
+            if (*(int*)*entries == (int)owner) {
+                index = i;
+                break;
+            }
         }
     }
-done:
     return index;
 }
 

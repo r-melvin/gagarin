@@ -260,7 +260,7 @@ struct SurfaceFinalize_007BBAB0
 // reimplemented in this TU.
 struct SurfaceSpread_007BB920
 {
-    void Spread(int width, int height, int band, int flag);   // GAMEMD 0x7BB920 (decl; reloc)
+    void Spread(int width, int height, int band, Quad_005FF420 area, int limit);   // GAMEMD 0x7BB920 (decl; reloc)
 };
 
 // FUNCTION: GAMEMD 0x4BBC90 (decl; reloc). GAMEMD 0x4E6150 (decl; reloc) --
@@ -276,10 +276,8 @@ extern int DAT_00833588;
 // GLOBAL: GAMEMD 0x8871E0 -- pointer with an observed dword read at +0x7A8.
 extern char* DAT_008871E0;
 // GLOBAL: GAMEMD 0x7EF6F8
-// Known partial-model error: retail FMUL at 0x5FF68C reads a qword. The
-// legacy float below is deferred with 0x5FF420 pending retry direction; it
-// does not establish the retail operand type or width.
-extern float DAT_007EF6F8;
+// Retail's FMUL at 0x5FF68C reads a qword, so the bias factor is a double.
+extern double DAT_007EF6F8;
 
 // GLOBAL: GAMEMD 0x8A0DD0/D4/D8/DC/E0/E4 -- six observed shift operands.
 // Shared declarations from

@@ -37,11 +37,27 @@ int __stdcall FUN_00434B40(BitFont_00434B40* font,
     return result;
 }
 
+// One lock/prepare/draw/unlock band. Written as an inline helper because that is
+// what takes the second band's `second + 1` increment ahead of its Lock call, as
+// retail does.
+static inline int DrawBand(BitFont_00434B40* font, Surface* surface,
+    int first, int second, int third, int fourth)
+{
+    font->Lock(surface);
+    font->FUN_00434110(second);
+    int result = font->FUN_00434500(first, second, third, fourth, 0);
+    font->UnLock(surface);
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x434BF0
 // Complete retail span: 0xE0 bytes, including RET immediate at 0x434CCD.
-// PARTIAL: 63/87 instructions (72.4%; 52 exact, 11 relocation-normalised,
-// 24 differing). The remaining differences are register/local scheduling;
-// retail and candidate instruction multisets are identical.
+// PARTIAL: 71/87 instructions (81.6%; 59 exact, 12 relocation-normalised,
+// 16 differing); multiset identical. Remaining delta: retail loads the
+// remaining stack arguments (and the cached `second`) before `mov ecx,esi` and
+// before pushing the constant 0 fifth argument; this build sets ECX first and
+// pushes the 0 before loading. Single-exit `int result = 0` if/else form (77.0%)
+// and the helper (81.6%) were measured; early-return forms collapse (<15%).
 int __stdcall FUN_00434BF0(BitFont_00434B40* font,
     Surface* surface, int first, int second, int third, int fourth)
 {
@@ -49,21 +65,12 @@ int __stdcall FUN_00434BF0(BitFont_00434B40* font,
     if (font != 0) {
         if (font->At_040 != 0) {
             font->At_02C = 2;
-            font->Lock(surface);
-            font->FUN_00434110(second);
-            result = font->FUN_00434500(first, second, third, fourth, 0);
-            font->UnLock(surface);
-            font->Lock(surface);
-            font->FUN_00434110(second + 1);
-            result = font->FUN_00434500(first, second + 1, third, fourth, 0);
-            font->UnLock(surface);
+            DrawBand(font, surface, first, second, third, fourth);
+            result = DrawBand(font, surface, first, second + 1, third, fourth);
             font->At_02C = 1;
-            return result;
+        } else {
+            result = DrawBand(font, surface, first, second, third, fourth);
         }
-        font->Lock(surface);
-        font->FUN_00434110(second);
-        result = font->FUN_00434500(first, second, third, fourth, 0);
-        font->UnLock(surface);
     }
     return result;
 }
