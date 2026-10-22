@@ -869,6 +869,24 @@ unsigned short SessionClass::FUN_0069BC20(int id)
     return 0;
 }
 
+// GLOBAL: GAMEMD 0xA8DA90
+extern NetPlayerClass* SlotPlayers_00A8DA90[8];
+GG_STATIC_ASSERT(sizeof(SlotPlayers_00A8DA90) == 0x20);
+// FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
+extern const char* NarrowName_007350C0(const unsigned short* name);
+
+// FUNCTION: GAMEMD 0x69BCC0
+// RET4 and a single stack argument; ECX is unused on entry. No incoming
+// references survive in current analysis, so retain an address-scoped ABI model.
+int __stdcall FUN_0069BCC0(const char* name)
+{
+    for (int index = 0; index < 8; ++index) {
+        if (_stricmp(name, NarrowName_007350C0(SlotPlayers_00A8DA90[index]->Name)) == 0)
+            return index;
+    }
+    return 0;
+}
+
 // TEMPLATE: GAMEMD 0x69C4F0
 // VectorClass<DiskID>::Slot6 (slot 6)
 // TEMPLATE: GAMEMD 0x69C710

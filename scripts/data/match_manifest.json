@@ -92788,5 +92788,14 @@
   "name": "SessionClass::FUN_0069BC20",
   "status": "partial",
   "pct": 65.4
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69BCC0",
+  "sym": "?FUN_0069BCC0@@YGHPBD@Z",
+  "len": "0x3f",
+  "name": "?FUN_0069BCC0@@YGHPBD@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
