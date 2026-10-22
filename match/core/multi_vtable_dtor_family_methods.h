@@ -22,9 +22,10 @@
 //           Three instantiations, varying only in their two vtables.
 //
 // Phrasing notes (two levers, both worth the whole family):
-//   * Under /GX (the tree's flag set when this was measured), COMREL's
-//     base-destructor call makes cl emit a full EH unwind frame retail does
-//     not have (0.0%). Declaring the destructors `throw()` removes it.
+//   * The destructors are declared `throw()`. That was measured under the
+//     tree's old /GX default, where COMREL's base-destructor call made cl emit
+//     a full EH unwind frame retail does not have (0.0%); the default no
+//     longer has /GX.
 //   * With the release written directly in the destructor body, cl hoists the
 //     interface load above the three vtable stores (66.7%). Retail stores all
 //     three vtables first. Moving the interface pointer into a small member
@@ -122,20 +123,21 @@ struct MultiVtableObject
 {
     char* Vptr00;                 /* +0x0000 */
     char* Vptr04;                 /* +0x0004 */
+
+    MultiVtableObject* FUN_004D03A0(char flags);
 };
 GG_STATIC_ASSERT(offsetof(MultiVtableObject, Vptr04) == 0x4);
 
 #define GG_SDD43_BODY(TAG, VT0, VT4)                                      \
-MultiVtableObject* __fastcall FUN_##TAG(MultiVtableObject* self, int,     \
-                                        char flags)                       \
+MultiVtableObject* MultiVtableObject::FUN_##TAG(char flags)               \
 {                                                                         \
-    self->Vptr00 = &VT0;                                                  \
-    self->Vptr04 = &VT4;                                                  \
-    PrimaryBaseDtor(self);                                                \
+    this->Vptr00 = &VT0;                                                  \
+    this->Vptr04 = &VT4;                                                  \
+    PrimaryBaseDtor(this);                                                \
     if (flags & 1) {                                                      \
-        gg_free(self);                                                    \
+        gg_free(this);                                                    \
     }                                                                     \
-    return self;                                                          \
+    return this;                                                          \
 }
 
 // VTABLE: GAMEMD 0x007E7F7C

@@ -6,23 +6,6 @@
 
 #include "small_misc8_methods.h"
 
-// FUNCTION: GAMEMD 0x401950
-// A deleting destructor that installs its own vtable before running the base
-// destructor - the same shape as the buffer-holder family, with the base call
-// left to a fixed address rather than inlined.
-void* Obj_00401950::FUN_00401950(unsigned int flags)
-{
-    *(char**)this = VT_007E1668;
-
-    FUN_00431B80(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x4092F0
 // Always resets with zero, then again with the stored value if there is one.
 // The constant returned is a fixed status rather than anything computed.

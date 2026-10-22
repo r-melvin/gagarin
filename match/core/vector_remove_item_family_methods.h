@@ -23,6 +23,17 @@ struct ItemVector_0063DFD0
     int*           Items;   // +0x0004
     char           _pad008[0x10 - 0x08];
     int            Count;   // +0x0010
+
+    // FUNCTION: GAMEMD 0x0063DFD0
+    bool FUN_000063DFD0(int item);
+    // FUNCTION: GAMEMD 0x0063E5D0
+    bool FUN_000063E5D0(int item);
+    // FUNCTION: GAMEMD 0x0063E900
+    bool FUN_000063E900(int item);
+    // FUNCTION: GAMEMD 0x0063EBD0
+    bool FUN_000063EBD0(int item);
+    // FUNCTION: GAMEMD 0x006CE2D0
+    bool FUN_00006CE2D0(int item);
 };
 GG_STATIC_ASSERT(offsetof(ItemVector_0063DFD0, Items) == 0x4);
 GG_STATIC_ASSERT(offsetof(ItemVector_0063DFD0, Count) == 0x10);
@@ -35,16 +46,5 @@ struct Vtbl_0063DFD0
     Fn10_0063DFD0 IndexOf;        // +0x0010
 };
 GG_STATIC_ASSERT(offsetof(Vtbl_0063DFD0, IndexOf) == 0x10);
-
-// FUNCTION: GAMEMD 0x0063DFD0
-bool __fastcall FUN_000063DFD0(ItemVector_0063DFD0* self, int, int item);
-// FUNCTION: GAMEMD 0x0063E5D0
-bool __fastcall FUN_000063E5D0(ItemVector_0063DFD0* self, int, int item);
-// FUNCTION: GAMEMD 0x0063E900
-bool __fastcall FUN_000063E900(ItemVector_0063DFD0* self, int, int item);
-// FUNCTION: GAMEMD 0x0063EBD0
-bool __fastcall FUN_000063EBD0(ItemVector_0063DFD0* self, int, int item);
-// FUNCTION: GAMEMD 0x006CE2D0
-bool __fastcall FUN_00006CE2D0(ItemVector_0063DFD0* self, int, int item);
 
 #endif  // GG_MATCH_CORE_VECTOR_REMOVE_ITEM_FAMILY_METHODS_H

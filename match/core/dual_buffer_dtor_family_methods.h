@@ -45,6 +45,10 @@ struct DualBuf
     void Dtor_00552450();
     void Dtor_0055C310();
     void Dtor_0055C780();
+
+    void* FUN_005525F0(char flags);
+    void* FUN_0055C6D0(char flags);
+    void* FUN_0055C990(char flags);
 };
 GG_STATIC_ASSERT(offsetof(DualBuf, Vptr) == 0x0 &&
                  offsetof(DualBuf, BufA) == 0x14 &&
@@ -67,22 +71,18 @@ void DualBuf::Dtor_##TAG()                                                \
 // The 73-byte scalar-deleting destructor: the same body inlined, then the
 // caller-requested free and the `this` return.
 #define GG_DUALBUF_SDD_BODY(TAG, VT, BASE_CLEANUP)                                      \
-void* __fastcall FUN_##TAG(DualBuf* self, int, char flags)                \
+void* DualBuf::FUN_##TAG(char flags)                                      \
 {                                                                         \
-    self->Vptr = &VT_##VT;                                                \
-    gg_free(self->BufA);                                                  \
-    self->BufA = 0;                                                       \
-    gg_free(self->BufB);                                                  \
-    self->BufB = 0;                                                       \
+    this->Vptr = &VT_##VT;                                                \
+    gg_free(this->BufA);                                                  \
+    this->BufA = 0;                                                       \
+    gg_free(this->BufB);                                                  \
+    this->BufB = 0;                                                       \
     BASE_CLEANUP;                                                     \
     if (flags & 1) {                                                      \
-        gg_free(self);                                                    \
+        gg_free(this);                                                    \
     }                                                                     \
-    return self;                                                          \
+    return this;                                                          \
 }
-
-void* __fastcall FUN_005525F0(DualBuf* self, int, char flags);
-void* __fastcall FUN_0055C6D0(DualBuf* self, int, char flags);
-void* __fastcall FUN_0055C990(DualBuf* self, int, char flags);
 
 #endif  // GG_MATCH_CORE_DUAL_BUFFER_DTOR_FAMILY_METHODS_H

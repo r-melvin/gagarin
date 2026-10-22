@@ -96,6 +96,7 @@ private:
 class BufferIOFileClass : public RawFileClass
 {
 public:
+    virtual ~BufferIOFileClass();                                 // GAMEMD 0x431B80 (decl; reloc)
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x431F10 (matched)
     virtual bool Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; base call)
     virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x431F50 (matched)
@@ -129,6 +130,9 @@ public:
 class CDFileClass : public BufferIOFileClass
 {
 public:
+    CDFileClass();                                          // GAMEMD 0x47AA30 (decl; reloc)
+    // Inline and empty: retail seats vtable 0x7E1668 before ~BufferIOFileClass.
+    virtual ~CDFileClass() {}
     virtual const char* SetFileName(const char* pFileName); // GAMEMD 0x47AE10 (decl; base call)
     virtual bool Open(FileAccessMode access);               // GAMEMD 0x47AAB0 (matched)
 
@@ -150,6 +154,14 @@ bool __fastcall MixFileClass_Offset(const char* filename, void** data,
 class CCFileClass : public CDFileClass
 {
 public:
+    // FUNCTION: GAMEMD 0x4739F0
+    CCFileClass(const char* pFileName);
+    // Inline: retail expands it in the deleting destructor 0x4019A0 and at
+    // each stack instance (0x537BC0). The body clears Position, releases the
+    // buffer through 0x43AE50, and ~CDFileClass then seats vtable 0x7E1668
+    // and calls ~BufferIOFileClass (0x431B80).
+    ~CCFileClass() { Position = 0; Buffer.Clear(); }
+
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x473C50 (matched)
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x473FC0 (matched)
     virtual bool Open(FileAccessMode access);                     // GAMEMD 0x473D10 (decl)

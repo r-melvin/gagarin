@@ -17,6 +17,7 @@
 #include "command_class.h"
 #include "input_controls/ui_display_chain.h"
 #include "input_controls/display_command.h"
+#include "../platform/ccfile_class.h"
 
 // The source-file string every text load passes (0x825FB8).
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"
@@ -1799,6 +1800,105 @@ const wchar_t* ScreenCaptureCommandClass::vf_2()
 const wchar_t* ScreenCaptureCommandClass::vf_4()
 {
     return StringTable_LoadString("TXT_SCRNCAP_DESC", 0, INIT_CPP, 0x1F89);
+}
+
+// The surfaces and the mouse ScreenCapture drives. Only the slots it calls are
+// named; the rest pin their indices.
+struct CaptureSurface
+{
+    virtual void vf_00();
+    virtual void vf_04();
+    virtual bool Blit(RectangleStruct* dest, CaptureSurface* source,
+                      RectangleStruct* sourceRect, bool a, bool b);   // +0x08
+    virtual void vf_0C();  virtual void vf_10();  virtual void vf_14();
+    virtual void vf_18();  virtual void vf_1C();  virtual void vf_20();
+    virtual void vf_24();  virtual void vf_28();  virtual void vf_2C();
+    virtual void vf_30();  virtual void vf_34();  virtual void vf_38();
+    virtual void vf_3C();  virtual void vf_40();  virtual void vf_44();
+    virtual void vf_48();  virtual void vf_4C();  virtual void vf_50();
+    virtual void vf_54();  virtual void vf_58();  virtual void vf_5C();
+    virtual void vf_60();  virtual void vf_64();  virtual void vf_68();
+    virtual void vf_6C();  virtual void vf_70();  virtual void vf_74();
+    virtual void vf_78();
+    virtual int GetWidth();    // +0x7C
+    virtual int GetHeight();   // +0x80
+};
+struct CaptureMouse
+{
+    virtual void vf_00();
+    virtual void vf_04();
+    virtual void vf_08();
+    virtual void HideCursor();   // +0x0C
+    virtual void ShowCursor();   // +0x10
+};
+// GLOBAL: GAMEMD 0x88730C
+extern CaptureSurface* DAT_0088730C;
+// GLOBAL: GAMEMD 0x887308
+extern CaptureSurface* DAT_00887308;
+// GLOBAL: GAMEMD 0x887640
+extern CaptureMouse* DAT_00887640;
+// GLOBAL: GAMEMD 0xB73550 -- the main window.
+extern void* DAT_00B73550;
+// GLOBAL: GAMEMD 0x885780 -- the palette written with the capture.
+extern char DAT_00885780[];
+// User32 imports through IAT slots 0x7E14C4 and 0x7E14B8.
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* window, LTRBStruct* rect);
+extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void* window, Point2D* point);
+// FUNCTION: GAMEMD 0x7B05C0 (decl; reloc) -- write a surface to a PCX file;
+// __fastcall: file in ECX, surface in EDX, palette pushed.
+int __fastcall FUN_007B05C0(FileClass* file, CaptureSurface* surface, void* palette);
+
+// FUNCTION: GAMEMD 0x537BC0 -- ScreenCaptureCommandClass slot 8
+// STRING: GAMEMD 0x827A48 -- "SCRN%04d.pcx"
+// Copy the window's client area into the surface at 0x88730C, then write it to
+// the first free SCRNnnnn.pcx.
+void ScreenCaptureCommandClass::vf_8(int key)
+{
+    LTRBStruct client;
+    if (!GetClientRect(DAT_00B73550, &client)) {
+        return;
+    }
+    Point2D topLeft;
+    topLeft.X = client.Left;
+    topLeft.Y = client.Top;
+    if (!ClientToScreen(DAT_00B73550, &topLeft)) {
+        return;
+    }
+    Point2D bottomRight;
+    bottomRight.X = client.Right;
+    bottomRight.Y = client.Bottom;
+    if (!ClientToScreen(DAT_00B73550, &bottomRight)) {
+        return;
+    }
+
+    RectangleStruct source;
+    source.X = topLeft.X;
+    source.Y = topLeft.Y;
+    source.Width = client.Right + 1;
+    source.Height = client.Bottom + 1;
+    if (source.Width >= DAT_0088730C->GetWidth()) {
+        source.Width = DAT_0088730C->GetWidth();
+    }
+    if (source.Height >= DAT_0088730C->GetHeight()) {
+        source.Height = DAT_0088730C->GetHeight();
+    }
+
+    DAT_00887640->HideCursor();
+    int width = DAT_0088730C->GetWidth();
+    int height = DAT_0088730C->GetHeight();
+    RectangleStruct dest = {0, 0, width, height};
+    DAT_0088730C->Blit(&dest, DAT_00887308, &source, false, true);
+    DAT_00887640->ShowCursor();
+
+    char name[128];
+    int index = -1;
+    do {
+        ++index;
+        sprintf(name, "SCRN%04d.pcx", index);
+    } while (CCFileClass(name).Exists(false));
+
+    CCFileClass file(name);
+    FUN_007B05C0(&file, DAT_0088730C, DAT_00885780);
 }
 
 // FUNCTION: GAMEMD 0x537DE0 -- PageUserCommandClass slot 1

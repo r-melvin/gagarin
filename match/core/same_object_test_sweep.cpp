@@ -11,9 +11,9 @@
 #include "same_object_test_sweep.h"
 
 // FUNCTION: GAMEMD 0x52B4D0
-bool __fastcall FUN_0052B4D0(HandleHolder* self, int, void** other)
+bool HandleHolder::FUN_0052B4D0(void** other)
 {
-    if (self->Held != 0 && *self->Held == *other) {
+    if (this->Held != 0 && *this->Held == *other) {
         return true;
     }
 
@@ -21,9 +21,9 @@ bool __fastcall FUN_0052B4D0(HandleHolder* self, int, void** other)
 }
 
 // FUNCTION: GAMEMD 0x52B600
-bool __fastcall FUN_0052B600(HandleHolder* self, int, void** other)
+bool HandleHolder::FUN_0052B600(void** other)
 {
-    if (self->Held != 0 && *self->Held == *other) {
+    if (this->Held != 0 && *this->Held == *other) {
         return true;
     }
 
@@ -31,9 +31,9 @@ bool __fastcall FUN_0052B600(HandleHolder* self, int, void** other)
 }
 
 // FUNCTION: GAMEMD 0x55F6C0
-bool __fastcall FUN_0055F6C0(HandleHolder* self, int, void** other)
+bool HandleHolder::FUN_0055F6C0(void** other)
 {
-    if (self->Held != 0 && *self->Held == *other) {
+    if (this->Held != 0 && *this->Held == *other) {
         return true;
     }
 
@@ -41,9 +41,9 @@ bool __fastcall FUN_0055F6C0(HandleHolder* self, int, void** other)
 }
 
 // FUNCTION: GAMEMD 0x746EA0
-bool __fastcall FUN_00746EA0(HandleHolder* self, int, void** other)
+bool HandleHolder::FUN_00746EA0(void** other)
 {
-    if (self->Held != 0 && *self->Held == *other) {
+    if (this->Held != 0 && *this->Held == *other) {
         return true;
     }
 

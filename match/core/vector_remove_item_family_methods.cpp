@@ -7,14 +7,14 @@
 //
 // Remove the given element: ask the vector where it is, then shift the tail
 // down one slot over it.
-bool __fastcall FUN_000063DFD0(ItemVector_0063DFD0* self, int, int item)
+bool ItemVector_0063DFD0::FUN_000063DFD0(int item)
 {
-    int index = (self->*self->Vtbl->IndexOf)(item);
+    int index = (this->*this->Vtbl->IndexOf)(item);
     if (index != -1) {
-        if (index < self->Count) {
-            self->Count = self->Count - 1;
-            for (int i = index; i < self->Count; i++) {
-                self->Items[i] = self->Items[i + 1];
+        if (index < this->Count) {
+            this->Count = this->Count - 1;
+            for (int i = index; i < this->Count; i++) {
+                this->Items[i] = this->Items[i + 1];
             }
             return true;
         }
@@ -26,14 +26,14 @@ bool __fastcall FUN_000063DFD0(ItemVector_0063DFD0* self, int, int item)
 //
 // Remove the given element: ask the vector where it is, then shift the tail
 // down one slot over it.
-bool __fastcall FUN_000063E5D0(ItemVector_0063DFD0* self, int, int item)
+bool ItemVector_0063DFD0::FUN_000063E5D0(int item)
 {
-    int index = (self->*self->Vtbl->IndexOf)(item);
+    int index = (this->*this->Vtbl->IndexOf)(item);
     if (index != -1) {
-        if (index < self->Count) {
-            self->Count = self->Count - 1;
-            for (int i = index; i < self->Count; i++) {
-                self->Items[i] = self->Items[i + 1];
+        if (index < this->Count) {
+            this->Count = this->Count - 1;
+            for (int i = index; i < this->Count; i++) {
+                this->Items[i] = this->Items[i + 1];
             }
             return true;
         }
@@ -45,14 +45,14 @@ bool __fastcall FUN_000063E5D0(ItemVector_0063DFD0* self, int, int item)
 //
 // Remove the given element: ask the vector where it is, then shift the tail
 // down one slot over it.
-bool __fastcall FUN_000063E900(ItemVector_0063DFD0* self, int, int item)
+bool ItemVector_0063DFD0::FUN_000063E900(int item)
 {
-    int index = (self->*self->Vtbl->IndexOf)(item);
+    int index = (this->*this->Vtbl->IndexOf)(item);
     if (index != -1) {
-        if (index < self->Count) {
-            self->Count = self->Count - 1;
-            for (int i = index; i < self->Count; i++) {
-                self->Items[i] = self->Items[i + 1];
+        if (index < this->Count) {
+            this->Count = this->Count - 1;
+            for (int i = index; i < this->Count; i++) {
+                this->Items[i] = this->Items[i + 1];
             }
             return true;
         }
@@ -64,14 +64,14 @@ bool __fastcall FUN_000063E900(ItemVector_0063DFD0* self, int, int item)
 //
 // Remove the given element: ask the vector where it is, then shift the tail
 // down one slot over it.
-bool __fastcall FUN_000063EBD0(ItemVector_0063DFD0* self, int, int item)
+bool ItemVector_0063DFD0::FUN_000063EBD0(int item)
 {
-    int index = (self->*self->Vtbl->IndexOf)(item);
+    int index = (this->*this->Vtbl->IndexOf)(item);
     if (index != -1) {
-        if (index < self->Count) {
-            self->Count = self->Count - 1;
-            for (int i = index; i < self->Count; i++) {
-                self->Items[i] = self->Items[i + 1];
+        if (index < this->Count) {
+            this->Count = this->Count - 1;
+            for (int i = index; i < this->Count; i++) {
+                this->Items[i] = this->Items[i + 1];
             }
             return true;
         }
@@ -83,14 +83,14 @@ bool __fastcall FUN_000063EBD0(ItemVector_0063DFD0* self, int, int item)
 //
 // Remove the given element: ask the vector where it is, then shift the tail
 // down one slot over it.
-bool __fastcall FUN_00006CE2D0(ItemVector_0063DFD0* self, int, int item)
+bool ItemVector_0063DFD0::FUN_00006CE2D0(int item)
 {
-    int index = (self->*self->Vtbl->IndexOf)(item);
+    int index = (this->*this->Vtbl->IndexOf)(item);
     if (index != -1) {
-        if (index < self->Count) {
-            self->Count = self->Count - 1;
-            for (int i = index; i < self->Count; i++) {
-                self->Items[i] = self->Items[i + 1];
+        if (index < this->Count) {
+            this->Count = this->Count - 1;
+            for (int i = index; i < this->Count; i++) {
+                this->Items[i] = this->Items[i + 1];
             }
             return true;
         }

@@ -7,19 +7,19 @@
 //
 // Forget the item wherever this holder still refers to it, then pass it on to
 // the shared release helper.
-void __fastcall FUN_00710410(Holder_00710410* self, int, void* item)
+void Holder_00710410::FUN_00710410(void* item)
 {
-    if (item == self->RefA) {
-        self->RefA = 0;
+    if (item == this->RefA) {
+        this->RefA = 0;
     }
-    if (item == self->RefB) {
-        self->RefB = 0;
+    if (item == this->RefB) {
+        this->RefB = 0;
     }
-    if (item == self->RefC) {
-        self->RefC = 0;
+    if (item == this->RefC) {
+        this->RefC = 0;
     }
-    if (item == self->RefD) {
-        self->RefD = 0;
+    if (item == this->RefD) {
+        this->RefD = 0;
     }
     FUN_005F6DA0(item);
 }

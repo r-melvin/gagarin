@@ -18,8 +18,8 @@
 //   frees the real block. The extra null test in front of it is the one
 //   `delete[]` itself emits. 84 bytes against the raw family's 73.
 //
-//   BUILD NOTE: this TU must be compiled WITHOUT /GX
-//   (`VC6_FLAGS="/nologo /c /O2 /DNDEBUG /Gy"`). Under /GX cl refuses to
+//   BUILD NOTE: this TU must be compiled without /GX, which the project
+//   default no longer has. Under /GX cl refuses to
 //   inline the vector destructor iterator and emits an out-of-line
 //   `??_M`-style call with four pushed arguments instead (25.7%); with
 //   exception handling off it inlines exactly retail's five instructions and
@@ -62,6 +62,23 @@ struct ObjVector_004E0D80
     int               Capacity;     // +0x0008
     char              _pad00C;      // +0x000C
     char              IsAllocated;  // +0x000D
+
+    // FUNCTION: GAMEMD 0x004E0D80
+    ObjVector_004E0D80* FUN_004E0D80(char flags);
+    // FUNCTION: GAMEMD 0x004E0E20
+    ObjVector_004E0D80* FUN_004E0E20(char flags);
+    // FUNCTION: GAMEMD 0x00510400
+    ObjVector_004E0D80* FUN_00510400(char flags);
+    // FUNCTION: GAMEMD 0x005104A0
+    ObjVector_004E0D80* FUN_005104A0(char flags);
+    // FUNCTION: GAMEMD 0x006F2680
+    ObjVector_004E0D80* FUN_006F2680(char flags);
+    // FUNCTION: GAMEMD 0x006F2720
+    ObjVector_004E0D80* FUN_006F2720(char flags);
+    // FUNCTION: GAMEMD 0x00763FF0
+    ObjVector_004E0D80* FUN_00763FF0(char flags);
+    // FUNCTION: GAMEMD 0x00764050
+    ObjVector_004E0D80* FUN_00764050(char flags);
 };
 GG_STATIC_ASSERT(offsetof(ObjVector_004E0D80, Vptr)        == 0x0);
 GG_STATIC_ASSERT(offsetof(ObjVector_004E0D80, Items)       == 0x4);
@@ -69,37 +86,19 @@ GG_STATIC_ASSERT(offsetof(ObjVector_004E0D80, Capacity)    == 0x8);
 GG_STATIC_ASSERT(offsetof(ObjVector_004E0D80, IsAllocated) == 0xD);
 
 #define GG_VECTOR_OBJECT_SDD_BODY(ADDR, VT)                               \
-ObjVector_004E0D80* __fastcall FUN_##ADDR(ObjVector_004E0D80* self, int,  \
-                                          char flags)                    \
+ObjVector_004E0D80* ObjVector_004E0D80::FUN_##ADDR(char flags)            \
 {                                                                         \
-    self->Vptr = &VT_##VT;                                                \
-    if (self->Items != 0 && self->IsAllocated) {                          \
-        delete[] self->Items;                                             \
-        self->Items = 0;                                                  \
+    this->Vptr = &VT_##VT;                                                \
+    if (this->Items != 0 && this->IsAllocated) {                          \
+        delete[] this->Items;                                             \
+        this->Items = 0;                                                  \
     }                                                                     \
-    self->IsAllocated = 0;                                                \
-    self->Capacity = 0;                                                   \
+    this->IsAllocated = 0;                                                \
+    this->Capacity = 0;                                                   \
     if (flags & 1) {                                                      \
-        gg_free(self);                                                    \
+        gg_free(this);                                                    \
     }                                                                     \
-    return self;                                                          \
+    return this;                                                          \
 }
-
-// FUNCTION: GAMEMD 0x004E0D80
-ObjVector_004E0D80* __fastcall FUN_004E0D80(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x004E0E20
-ObjVector_004E0D80* __fastcall FUN_004E0E20(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x00510400
-ObjVector_004E0D80* __fastcall FUN_00510400(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x005104A0
-ObjVector_004E0D80* __fastcall FUN_005104A0(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x006F2680
-ObjVector_004E0D80* __fastcall FUN_006F2680(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x006F2720
-ObjVector_004E0D80* __fastcall FUN_006F2720(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x00763FF0
-ObjVector_004E0D80* __fastcall FUN_00763FF0(ObjVector_004E0D80* self, int, char flags);
-// FUNCTION: GAMEMD 0x00764050
-ObjVector_004E0D80* __fastcall FUN_00764050(ObjVector_004E0D80* self, int, char flags);
 
 #endif  // GG_MATCH_CORE_VECTOR_OBJECT_SDD_FAMILY_METHODS_H

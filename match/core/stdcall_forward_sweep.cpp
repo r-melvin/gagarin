@@ -7,19 +7,19 @@
 #include "stdcall_forward_sweep.h"
 
 // FUNCTION: GAMEMD 0x658770
-void __fastcall FUN_00658770(void*, int, void* arg)
+void Radar_00658770::FUN_00658770(void* arg)
 {
     FUN_004AE4F0(arg);
 }
 
 // FUNCTION: GAMEMD 0x6AC5D0
-void __fastcall FUN_006AC5D0(void*, int, void* arg)
+void Sidebar_006D1800::FUN_006AC5D0(void* arg)
 {
     FUN_006568A0(arg);
 }
 
 // FUNCTION: GAMEMD 0x6AC5E0
-void __fastcall FUN_006AC5E0(void*, int, void* arg)
+void Sidebar_006D1800::FUN_006AC5E0(void* arg)
 {
     FUN_00656AC0(arg);
 }

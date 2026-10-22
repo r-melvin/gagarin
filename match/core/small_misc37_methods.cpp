@@ -1,32 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes compared against retail gamemd.exe v1.001 at the five addresses below.
+//   Bytes compared against retail gamemd.exe v1.001 at the four addresses below.
 
 #include "small_misc37_methods.h"
-
-// FUNCTION: GAMEMD 0x4019A0
-//
-// The usual deleting-destructor shape: install this class's vtable, tear down
-// the members, install the base's vtable, run the base destructor, and free
-// only when the caller's flag bit says the object was heap-allocated. The
-// object pointer is handed back either way.
-void* BufferHolder_004019A0::FUN_004019A0(char flags)
-{
-    Vtable = &VT_007E16B0;
-    Reset  = 0;
-
-    Buffer.Clear();
-
-    Vtable = &VT_007E1668;
-
-    FUN_00431B80(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x4023F0
 //

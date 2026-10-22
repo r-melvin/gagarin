@@ -57,6 +57,23 @@ struct PolyVector_00765B60
     int                Capacity;     // +0x0008
     char               _pad00C;      // +0x000C
     char               IsAllocated;  // +0x000D
+
+    // FUNCTION: GAMEMD 0x00765B60
+    PolyVector_00765B60* FUN_00765B60(char flags);
+    // FUNCTION: GAMEMD 0x00765C20
+    PolyVector_00765B60* FUN_00765C20(char flags);
+    // FUNCTION: GAMEMD 0x00766FC0
+    PolyVector_00765B60* FUN_00766FC0(char flags);
+    // FUNCTION: GAMEMD 0x00767080
+    PolyVector_00765B60* FUN_00767080(char flags);
+    // FUNCTION: GAMEMD 0x0076A5C0
+    PolyVector_00765B60* FUN_0076A5C0(char flags);
+    // FUNCTION: GAMEMD 0x0076A680
+    PolyVector_00765B60* FUN_0076A680(char flags);
+    // FUNCTION: GAMEMD 0x0076BBC0
+    PolyVector_00765B60* FUN_0076BBC0(char flags);
+    // FUNCTION: GAMEMD 0x0076BC10
+    PolyVector_00765B60* FUN_0076BC10(char flags);
 };
 GG_STATIC_ASSERT(offsetof(PolyVector_00765B60, Vptr)        == 0x0);
 GG_STATIC_ASSERT(offsetof(PolyVector_00765B60, Items)       == 0x4);
@@ -64,37 +81,19 @@ GG_STATIC_ASSERT(offsetof(PolyVector_00765B60, Capacity)    == 0x8);
 GG_STATIC_ASSERT(offsetof(PolyVector_00765B60, IsAllocated) == 0xD);
 
 #define GG_VECTOR_POLY_SDD_BODY(ADDR, VT)                                  \
-PolyVector_00765B60* __fastcall FUN_##ADDR(PolyVector_00765B60* self, int, \
-                                           char flags)                     \
+PolyVector_00765B60* PolyVector_00765B60::FUN_##ADDR(char flags)           \
 {                                                                          \
-    self->Vptr = &VT_##VT;                                                 \
-    if (self->Items != 0 && self->IsAllocated) {                           \
-        delete[] self->Items;                                              \
-        self->Items = 0;                                                   \
+    this->Vptr = &VT_##VT;                                                 \
+    if (this->Items != 0 && this->IsAllocated) {                           \
+        delete[] this->Items;                                              \
+        this->Items = 0;                                                   \
     }                                                                      \
-    self->IsAllocated = 0;                                                 \
-    self->Capacity = 0;                                                    \
+    this->IsAllocated = 0;                                                 \
+    this->Capacity = 0;                                                    \
     if (flags & 1) {                                                       \
-        gg_free(self);                                                     \
+        gg_free(this);                                                     \
     }                                                                      \
-    return self;                                                           \
+    return this;                                                           \
 }
-
-// FUNCTION: GAMEMD 0x00765B60
-PolyVector_00765B60* __fastcall FUN_00765B60(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x00765C20
-PolyVector_00765B60* __fastcall FUN_00765C20(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x00766FC0
-PolyVector_00765B60* __fastcall FUN_00766FC0(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x00767080
-PolyVector_00765B60* __fastcall FUN_00767080(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x0076A5C0
-PolyVector_00765B60* __fastcall FUN_0076A5C0(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x0076A680
-PolyVector_00765B60* __fastcall FUN_0076A680(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x0076BBC0
-PolyVector_00765B60* __fastcall FUN_0076BBC0(PolyVector_00765B60* self, int, char flags);
-// FUNCTION: GAMEMD 0x0076BC10
-PolyVector_00765B60* __fastcall FUN_0076BC10(PolyVector_00765B60* self, int, char flags);
 
 #endif  // GG_MATCH_CORE_VECTOR_POLYMORPHIC_SDD_FAMILY_METHODS_H

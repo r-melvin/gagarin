@@ -18,15 +18,11 @@
 // stack, so it is a one-argument `__fastcall`, not a virtual slot: retail moves
 // `this` out to ESI first and then loads ECX from the stack argument.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
-// (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
-// functions. Converting would cost nothing in bytes — a member spelled
-// `__fastcall` keeps the receiver in ECX and the first explicit argument in
-// EDX — but `HashTableIndex` is not one recovered class: it is six separate entry points spread from 0x624C80 to 0x7AECB0, modelled against one
-// shared layout because the extraction proved the layout identical, not
-// because they are one type. Declaring them members of a single struct would
-// assert a class identity the evidence does not establish, which batch
-// forty-one explicitly rules out. Each receiver's true class is undetermined.
+// Callers load the table into ECX (`MOV ECX,<table>`) and push the key, and
+// each entry point ends `RET 4`, so all six are __thiscall members of the
+// shared layout view. The view stands for six separate entry points spread
+// from 0x624C80 to 0x7AECB0 whose layout is identical; each receiver's true
+// class is undetermined.
 #ifndef GG_MATCH_CORE_HASH_BUCKET_MASK_SWEEP_H
 #define GG_MATCH_CORE_HASH_BUCKET_MASK_SWEEP_H
 
@@ -41,15 +37,15 @@ struct HashTableIndex
     int          BitWidth;        // +0x000C  log2 of the bucket count
     char         _pad010[0x08];   // +0x0010
     HashFunction Hash;            // +0x0018
+
+    int FUN_00624C80(const void* key);   // FUNCTION: GAMEMD 0x624C80
+    int FUN_00625070(const void* key);   // FUNCTION: GAMEMD 0x625070
+    int FUN_00625390(const void* key);   // FUNCTION: GAMEMD 0x625390
+    int FUN_007AE0C0(const void* key);   // FUNCTION: GAMEMD 0x7AE0C0
+    int FUN_007AE5B0(const void* key);   // FUNCTION: GAMEMD 0x7AE5B0
+    int FUN_007AECB0(const void* key);   // FUNCTION: GAMEMD 0x7AECB0
 };
 GG_STATIC_ASSERT(offsetof(HashTableIndex, BitWidth) == 0x0C);
 GG_STATIC_ASSERT(offsetof(HashTableIndex, Hash) == 0x18);
-
-int __fastcall FUN_00624C80(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x624C80
-int __fastcall FUN_00625070(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x625070
-int __fastcall FUN_00625390(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x625390
-int __fastcall FUN_007AE0C0(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x7AE0C0
-int __fastcall FUN_007AE5B0(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x7AE5B0
-int __fastcall FUN_007AECB0(HashTableIndex* self, int, const void* key);   // FUNCTION: GAMEMD 0x7AECB0
 
 #endif  // GG_MATCH_CORE_HASH_BUCKET_MASK_SWEEP_H

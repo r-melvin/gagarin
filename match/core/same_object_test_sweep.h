@@ -12,7 +12,7 @@
 // the two handles refer to the same underlying thing. All four remaining instances are
 // byte-for-byte identical, relocations included.
 //
-// Only one dereference per side. Spelled with two (`**self->Held == **other`)
+// Only one dereference per side. Spelled with two (`**Held == **other`)
 // cl emits an extra load on each side and the body diverges after the fourth
 // instruction.
 //
@@ -30,12 +30,12 @@ struct HandleHolder
 {
     char   _pad000[0x10];   // +0x0000
     void** Held;            // +0x0010
+
+    bool FUN_0052B4D0(void** other);   // FUNCTION: GAMEMD 0x52B4D0
+    bool FUN_0052B600(void** other);   // FUNCTION: GAMEMD 0x52B600
+    bool FUN_0055F6C0(void** other);   // FUNCTION: GAMEMD 0x55F6C0
+    bool FUN_00746EA0(void** other);   // FUNCTION: GAMEMD 0x746EA0
 };
 GG_STATIC_ASSERT(offsetof(HandleHolder, Held) == 0x10);
-
-bool __fastcall FUN_0052B4D0(HandleHolder* self, int, void** other);   // FUNCTION: GAMEMD 0x52B4D0
-bool __fastcall FUN_0052B600(HandleHolder* self, int, void** other);   // FUNCTION: GAMEMD 0x52B600
-bool __fastcall FUN_0055F6C0(HandleHolder* self, int, void** other);   // FUNCTION: GAMEMD 0x55F6C0
-bool __fastcall FUN_00746EA0(HandleHolder* self, int, void** other);   // FUNCTION: GAMEMD 0x746EA0
 
 #endif  // GG_MATCH_CORE_SAME_OBJECT_TEST_SWEEP_H

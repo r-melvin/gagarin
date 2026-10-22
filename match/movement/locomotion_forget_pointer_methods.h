@@ -25,13 +25,13 @@ struct Holder_00710410
     void* RefB;                  // +0x01D4
     char  _pad1D8[0x2C8 - 0x1D8];
     void* RefC;                  // +0x02C8
+
+    // FUNCTION: GAMEMD 0x710410
+    void FUN_00710410(void* item);
 };
 GG_STATIC_ASSERT(offsetof(Holder_00710410, RefA) == 0x12C);
 GG_STATIC_ASSERT(offsetof(Holder_00710410, RefD) == 0x130);
 GG_STATIC_ASSERT(offsetof(Holder_00710410, RefB) == 0x1D4);
 GG_STATIC_ASSERT(offsetof(Holder_00710410, RefC) == 0x2C8);
-
-// FUNCTION: GAMEMD 0x710410
-void __fastcall FUN_00710410(Holder_00710410* self, int, void* item);
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_FORGET_POINTER_METHODS_H

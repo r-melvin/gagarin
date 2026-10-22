@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at the five addresses below.
+//   Bytes matched against retail gamemd.exe v1.001 at the seven addresses below.
 
 #include "small_misc38_methods.h"
 
@@ -162,28 +162,11 @@ void Obj_0043A670::FUN_0043A6B0(int first, int second)
     field_20 = second;
 }
 
-// FUNCTION: GAMEMD 0x4739F0
-//
-// A constructor, so it hands `this` back in EAX. The three field writes land
-// between the argument push and the final call in retail; that is scheduling,
-// and the source order below is what produces it.
-Obj_004739F0* Obj_004739F0::FUN_004739F0(int value)
-{
-    FUN_0047AA30(this);
-    Member.FUN_0043AD00(0, 0);
-
-    Reset64 = 0;
-    Vtable  = &VT_007E16B0;
-    Reset68 = 0;
-
-    FUN_0047AE10(value);
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x473A30
 //
-// The 0x4739F0 constructor with the argument routed through 0x7B5440 first.
+// The CCFileClass(const char*) constructor (0x4739F0, in
+// match/platform/ccfile_class.cpp) with the argument routed through 0x7B5440
+// first.
 // +0x68 is written twice - once with the other field initialisers and again
 // after the mapping call - and retail keeps both.
 //

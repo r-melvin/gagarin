@@ -128,8 +128,11 @@ PlanningEmptyInit unknown_006339A0;
 
 // FUNCTION: GAMEMD 0x0063ECA0
 // FUNCTION: GAMEMD 0x0063ED40
-// The scalar deleting destructors in slot 0 of DynamicVectorClass<PlanningMemberClass*> (0x7EFEE4, locator 0x808070)
-// and DynamicVectorClass<PlanningBranchClass*> (0x7EFEC4, locator 0x808008); this object emits both tables.
+// FUNCTION: GAMEMD 0x0063EF20
+// The scalar deleting destructors in slot 0 of DynamicVectorClass<PlanningMemberClass*> (0x7EFEE4, locator 0x808070),
+// DynamicVectorClass<PlanningBranchClass*> (0x7EFEC4, locator 0x808008) and DynamicVectorClass<PlanningTokenClass*>
+// (0x7EFE84, locator 0x807F70 -> `.?AV?$DynamicVectorClass@PAVPlanningTokenClass@@@@`); this object emits all
+// three tables.
 
 // GLOBAL: GAMEMD 0xAC4CCC
 extern PlanningNodeClass* DAT_00AC4CCC;

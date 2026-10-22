@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Every offset, flag mask and call target below is read numerically off the
-//   user's retail gamemd.exe v1.001 via the local Ghidra CLI at the five
+//   user's retail gamemd.exe v1.001 via the local Ghidra CLI at the four
 //   addresses named. None is bound by YRpp or the seed map, so the retail
 //   placeholder names are kept.
 #ifndef GG_MATCH_CORE_SMALL_MISC37_METHODS_H
@@ -9,33 +9,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/memory_buffer.h"
-
-extern "C" void __cdecl FUN_007C8B3D(void* block);
-
-// ---------------------------------------------------------------------------
-// 0x4019A0 — a deleting destructor with a buffer member and a base chain.
-// ---------------------------------------------------------------------------
-struct BufferHolder_004019A0;
-
-// FUNCTION: GAMEMD 0x431B80 — the base destructor.
-void __fastcall FUN_00431B80(void* self);
-
-extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — this class
-extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — the base
-
-struct BufferHolder_004019A0
-{
-    char* Vtable;      // +0x0000
-    char  _pad004[0x58 - 0x04];
-    MemoryBuffer Buffer;   // +0x0058
-    int   Reset;       // +0x0064
-
-    // FUNCTION: GAMEMD 0x4019A0
-    void* FUN_004019A0(char flags);
-};
-GG_STATIC_ASSERT(offsetof(BufferHolder_004019A0, Buffer) == 0x58);
-GG_STATIC_ASSERT(offsetof(BufferHolder_004019A0, Reset) == 0x64);
 
 // ---------------------------------------------------------------------------
 // 0x4023F0 — clear three fields, reset a sub-object, then hand off through a

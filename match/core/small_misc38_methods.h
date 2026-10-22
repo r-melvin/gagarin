@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Every offset, slot, constant and call target below is read numerically off
-//   the user's retail gamemd.exe v1.001 via the local Ghidra CLI at the five
+//   the user's retail gamemd.exe v1.001 via the local Ghidra CLI at the seven
 //   addresses named. None is bound by YRpp or the seed map.
 #ifndef GG_MATCH_CORE_SMALL_MISC38_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC38_METHODS_H
@@ -152,8 +152,10 @@ void __fastcall FUN_0043A670(Obj_0043A670* self);
 
 
 // ---------------------------------------------------------------------------
-// 0x4739F0 — a constructor: base, then the member at +0x58, then three fields
-// and this class's vtable, then one more initialiser that takes the argument.
+// 0x473A30 — a CCFileClass constructor (vtable 0x7E16B0): base, then the
+// member at +0x58, then three fields and the vtable, then one more initialiser
+// that takes the mapped argument. Its sibling 0x4739F0 is the real
+// CCFileClass(const char*) in match/platform/ccfile_class.cpp.
 // ---------------------------------------------------------------------------
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0
 
@@ -185,8 +187,6 @@ struct Obj_004739F0
     // FUNCTION: GAMEMD 0x47AE10
     void FUN_0047AE10(int value);
 
-    // FUNCTION: GAMEMD 0x4739F0
-    Obj_004739F0* FUN_004739F0(int value);
     // FUNCTION: GAMEMD 0x473A30
     Obj_004739F0* FUN_00473A30(int value);
 };

@@ -1,5 +1,36 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,895 matched function
+rows**, **420 partial rows**, **7,315 manifest rows**, **1,275 manifest
+translation units**, and **1,283 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The 39 entry points modelled as __fastcall free functions with an unused EDX
+parameter are now __thiscall members of their existing views, with identical
+bytes. 0x63EF20 is re-owned as DynamicVectorClass<PlanningTokenClass*>'s
+scalar deleting destructor, as its RTTI places it. ccfile_class.h gains the
+CCFileClass(const char*) constructor and the inline CCFileClass/CDFileClass
+destructor chain, moving 0x4739F0, 0x4019A0 and 0x401950 onto the real
+classes, and ScreenCaptureCommandClass slot 8 (0x537BC0) is newly exact.
+
+The 6,895 matches represent 34.9% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **510,311
+bytes**, or 13.4% of 3,797,269 listed function bytes. The padding heuristic
+misses 534 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: screen resource block
+
 As of **2026-10-22**, the verified snapshot reports **6,894 matched function
 rows**, **420 partial rows**, **7,314 manifest rows**, **1,275 manifest
 translation units**, and **1,283 tracked C++ files**. Whole-repository regression
@@ -20,14 +51,6 @@ bytes**, or 13.4% of 3,797,269 listed function bytes. The padding heuristic
 misses 534 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: command-class family and PlanMgr block
 

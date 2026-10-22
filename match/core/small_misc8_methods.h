@@ -9,18 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-extern "C" void __cdecl FUN_007C8B3D(void* block);
-
-// VTABLE: GAMEMD 0x7E1668
-extern char VT_007E1668[];
-void __fastcall FUN_00431B80(void* self);   // GAMEMD 0x431B80 — the base destructor
-
-struct Obj_00401950
-{
-    // FUNCTION: GAMEMD 0x401950
-    void* FUN_00401950(unsigned int flags);
-};
-
 void __fastcall FUN_004091C0(void* self, int arg);   // GAMEMD 0x4091C0
 
 struct Obj_004092F0
