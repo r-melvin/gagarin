@@ -51,13 +51,6 @@ extern char DAT_00B77F78;
 extern char DAT_0084E7C0;
 extern char DAT_0084E7C4;
 
-// FUNCTION: GAMEMD 0x00612910
-void FUN_00612910()
-{
-    void* block = DAT_00AC1DE0.data;
-    DAT_00AC1DE0.count = 0;
-    gg_free(block);
-}
 
 // FUNCTION: GAMEMD 0x006C6B60
 void FUN_006C6B60()

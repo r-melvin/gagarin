@@ -19,18 +19,6 @@ void __fastcall FUN_004DE620(void* self)
 }
 
 
-// FUNCTION: GAMEMD 0x6370A0
-void __fastcall FUN_006370A0(void* self)
-{
-    FUN_006370B0(self);
-}
-
-// FUNCTION: GAMEMD 0x63F7B0
-void __fastcall FUN_0063F7B0(void* self)
-{
-    RadarClass_OneTime(self);
-}
-
 // FUNCTION: GAMEMD 0x6D0260
 void __fastcall FUN_006D0260(void* self)
 {

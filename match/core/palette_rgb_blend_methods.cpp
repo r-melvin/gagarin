@@ -43,55 +43,6 @@ struct ColorTable_00626070
 
 GG_STATIC_ASSERT(offsetof(ColorTable_00626070, Colors) == 0x000);
 
-// FUNCTION: GAMEMD 0x626070
-ColorTable_00626070::ColorTable_00626070(const ColorTable_00626070& other)
-{
-    *this = other;
-}
-
-// FUNCTION: GAMEMD 0x626120
-void ColorTable_00626070::FUN_00626120(int ratio, const ColorTable_00626070& target)
-{
-    for (int i = 0; i < 256; i++) {
-        Colors[i].Blend(ratio, target[i]);
-    }
-}
-
-// FUNCTION: GAMEMD 0x626170
-void ColorTable_00626070::FUN_00626170(int ratio, const char* marks)
-{
-    for (int i = 0; i < 256; i++) {
-        if (marks[i]) {
-            Colors[i].Blend(ratio, DAT_00A83CD9);
-        }
-    }
-}
-
-// FUNCTION: GAMEMD 0x6261B0
-void ColorTable_00626070::FUN_006261B0(int ratio, const ColorTable_00626070& target, const char* marks)
-{
-    for (int i = 0; i < 256; i++) {
-        if (marks[i]) {
-            Colors[i].Blend(ratio, target[i]);
-        }
-    }
-}
-
-// FUNCTION: GAMEMD 0x626200
-int ColorTable_00626070::Nearest(const ColorRGB_00661350& color) const
-{
-    int best = 0;
-    int bestDiff = -1;
-    const ColorRGB_00661350* entry = Colors;
-    for (int i = 0; i < 256; i++) {
-        int diff = color.Difference(*entry++);
-        if (bestDiff == -1 || diff < bestDiff) {
-            bestDiff = diff;
-            best = i;
-        }
-    }
-    return best;
-}
 
 // FUNCTION: GAMEMD 0x661350
 int ColorRGB_00661350::Difference(const ColorRGB_00661350& other) const

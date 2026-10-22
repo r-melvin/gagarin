@@ -23,23 +23,6 @@ struct Obj_006253B0 {
 };
 GG_STATIC_ASSERT(offsetof(Obj_006253B0, data) == 0x08);
 
-// FUNCTION: GAMEMD 0x006253B0
-bool Obj_006253B0::FUN_006253B0()
-{
-    if (count < capacity)
-        return false;
-    int newCapacity = count * 2;
-    if (newCapacity < 10)
-        newCapacity = 10;
-    int* block = new int[newCapacity];
-    memset(block, 0, newCapacity * sizeof(int));
-    if (data != 0)
-        memcpy(block, data, count * sizeof(int));
-    gg_free(data);
-    capacity = newCapacity;
-    data = block;
-    return true;
-}
 
 struct Obj_00625990 {
     int count;     // +0x00
@@ -49,23 +32,6 @@ struct Obj_00625990 {
 };
 GG_STATIC_ASSERT(offsetof(Obj_00625990, data) == 0x08);
 
-// FUNCTION: GAMEMD 0x00625990
-bool Obj_00625990::FUN_00625990()
-{
-    if (count < capacity)
-        return false;
-    int newCapacity = count * 2;
-    if (newCapacity < 10)
-        newCapacity = 10;
-    int* block = new int[newCapacity];
-    memset(block, 0, newCapacity * sizeof(int));
-    if (data != 0)
-        memcpy(block, data, count * sizeof(int));
-    gg_free(data);
-    capacity = newCapacity;
-    data = block;
-    return true;
-}
 
 struct Obj_007AEEC0 {
     int count;     // +0x00

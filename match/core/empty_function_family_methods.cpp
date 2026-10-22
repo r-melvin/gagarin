@@ -16,21 +16,6 @@ void __fastcall FUN_004A4AC0()
 }
 
 
-// FUNCTION: GAMEMD 0x005FA430
-void __fastcall FUN_005FA430()
-{
-}
-
-// FUNCTION: GAMEMD 0x0060D430
-void __fastcall FUN_0060D430()
-{
-}
-
-// FUNCTION: GAMEMD 0x0060D440
-void __fastcall FUN_0060D440()
-{
-}
-
 // FUNCTION: GAMEMD 0x00691B30
 void __fastcall FUN_00691B30()
 {

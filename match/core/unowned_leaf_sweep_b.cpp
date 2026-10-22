@@ -365,12 +365,6 @@ struct Obj_00656580
     Record_00656580* FUN_00656580(const Key_00656580* key);
 };
 
-// FUNCTION: GAMEMD 0x00656580
-// Record number (key +0xEF0) + 197 of the 24-byte records at `this`.
-Record_00656580* Obj_00656580::FUN_00656580(const Key_00656580* key)
-{
-    return &unknown_0[key->unknown_EF0 + 0xC5];
-}
 
 struct Obj_0065AD30
 {
@@ -409,11 +403,6 @@ struct Obj_0068BCB0
 };
 GG_STATIC_ASSERT(offsetof(Obj_0068BCB0, unknown_214) == 0x214);
 
-// FUNCTION: GAMEMD 0x0068BCB0
-int __fastcall FUN_0068BCB0(Obj_0068BCB0* self)
-{
-    return ++self->unknown_214;
-}
 
 struct Obj_0068C030
 {
@@ -424,15 +413,6 @@ struct Obj_0068C030
 };
 GG_STATIC_ASSERT(offsetof(Obj_0068C030, unknown_1180) == 0x1180);
 
-// FUNCTION: GAMEMD 0x0068C030
-// Entry `index` of the sixteen at +0x1180, or -1 out of range.
-int Obj_0068C030::FUN_0068C030(int index) const
-{
-    if (index >= 0 && index < 16) {
-        return unknown_1180[index];
-    }
-    return -1;
-}
 
 struct Owner_006915D0
 {

@@ -60,12 +60,6 @@ bool __stdcall FUN_005B43F0(int)
 }
 
 
-// FUNCTION: GAMEMD 0x6241D0
-int __fastcall FUN_006241D0(LeafObj_0x04* self)
-{
-    return self->unknown_04;
-}
-
 // FUNCTION: GAMEMD 0x67A730
 int __fastcall FUN_0067A730(LeafObj_0x10* self)
 {

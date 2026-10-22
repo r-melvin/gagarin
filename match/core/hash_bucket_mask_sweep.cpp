@@ -14,29 +14,6 @@
 
 #include "hash_bucket_mask_sweep.h"
 
-// FUNCTION: GAMEMD 0x624C80
-int HashTableIndex::FUN_00624C80(const void* key)
-{
-    int hash = this->Hash(key);
-
-    return ((1 << this->BitWidth) - 1) & hash;
-}
-
-// FUNCTION: GAMEMD 0x625070
-int HashTableIndex::FUN_00625070(const void* key)
-{
-    int hash = this->Hash(key);
-
-    return ((1 << this->BitWidth) - 1) & hash;
-}
-
-// FUNCTION: GAMEMD 0x625390
-int HashTableIndex::FUN_00625390(const void* key)
-{
-    int hash = this->Hash(key);
-
-    return ((1 << this->BitWidth) - 1) & hash;
-}
 
 // FUNCTION: GAMEMD 0x7AE0C0
 int HashTableIndex::FUN_007AE0C0(const void* key)

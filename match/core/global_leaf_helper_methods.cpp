@@ -45,15 +45,6 @@ int FUN_005C00B0()
     return DAT_00ABF3F4 != 0;
 }
 
-// FUNCTION: GAMEMD 0x00652630
-int __cdecl FUN_00652630(const void* a, const void* b)
-{
-    if (*(const int*)a == *(const int*)b)
-        return 0;
-    if (*(const int*)a < *(const int*)b)
-        return -1;
-    return 1;
-}
 
 // FUNCTION: GAMEMD 0x006CF320
 int __cdecl FUN_006CF320(const void* a, const void* b)

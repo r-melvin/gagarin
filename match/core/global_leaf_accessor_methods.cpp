@@ -64,11 +64,6 @@ int __stdcall FUN_005BE990(int index)
     return DAT_0082D028[index].f04;
 }
 
-// FUNCTION: GAMEMD 0x0063B090
-void FUN_0063B090()
-{
-    DAT_00AC4BF0 = 0;
-}
 
 // FUNCTION: GAMEMD 0x00645BA0
 int FUN_00645BA0(int index)

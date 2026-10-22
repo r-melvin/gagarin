@@ -336,25 +336,6 @@ template class VectorClass<HSVClass>;
 //   `.?AV?$VectorClass@U?$HashObject@VHashString@@PAVSchemeNode@@@@@@`.
 template class VectorClass<HashObject<HashString, SchemeNode*> >;
 
-// FUNCTION: GAMEMD 0x0063DE30
-// VectorClass<PlanningMemberClass*> -- vtable 0x007EFF04 slot 3; locator 0x008080A0 -> type descriptor 0x00836A60
-//   `.?AV?$VectorClass@PAVPlanningMemberClass@@@@`.
-template class VectorClass<PlanningMemberClass*>;
-
-// FUNCTION: GAMEMD 0x0063E140
-// VectorClass<PlanningBranchClass*> -- vtable 0x007EFF24 slot 3; locator 0x008080D0 -> type descriptor 0x008369E8
-//   `.?AV?$VectorClass@PAVPlanningBranchClass@@@@`.
-template class VectorClass<PlanningBranchClass*>;
-
-// FUNCTION: GAMEMD 0x0063EA40
-// VectorClass<PlanningTokenClass*> -- vtable 0x007EFEA4 slot 3; locator 0x00807FA0 -> type descriptor 0x00836970
-//   `.?AV?$VectorClass@PAVPlanningTokenClass@@@@`.
-template class VectorClass<PlanningTokenClass*>;
-
-// FUNCTION: GAMEMD 0x00658A70
-// VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>> -- vtable 0x007F044C slot 3; locator 0x008083F0 -> type descriptor 0x008393E0
-//   `.?AV?$VectorClass@U?$HashObject@URadarTrackingStruct@@PAVTechnoClass@@@@@@`.
-template class VectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >;
 
 // FUNCTION: GAMEMD 0x0065C040
 // VectorClass<RadSiteClass*> -- vtable 0x007F07C4 slot 3; locator 0x00808628 -> type descriptor 0x00839598

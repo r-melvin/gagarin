@@ -54,17 +54,6 @@ template class VectorClass<HashObject<unsigned int,SubzoneConnectionStruct> >;
 template class DynamicVectorClass<HashObject<unsigned int,SubzoneConnectionStruct> >;
 
 struct RadarTrackingStruct { int unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } }; class TechnoClass; 
-// FUNCTION: GAMEMD 0x00658AA0
-// VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x00658AF0
-// VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::Slot5
-// FUNCTION: GAMEMD 0x006588E0
-// VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::Slot6
-// FUNCTION: GAMEMD 0x00658C20
-// DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x006588C0
-// DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::Slot5
-template class VectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 template class DynamicVectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 
 struct AcceleratorTracker { int A; int B; AcceleratorTracker() : A(0), B(0) {} bool operator==(const AcceleratorTracker& o) const { return A==o.A && B==o.B; } bool operator!=(const AcceleratorTracker& o) const { return !(*this==o); } };

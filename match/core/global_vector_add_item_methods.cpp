@@ -30,38 +30,7 @@ void FUN_005D4E70(Obj_005D4E70* item)
 struct Obj_00638A20;
 extern DynamicVectorClass<Obj_00638A20*> DAT_00AC4C18;
 
-// FUNCTION: GAMEMD 0x00638A20
-void FUN_00638A20(Obj_00638A20* item)
-{
-    DynamicVectorClass<Obj_00638A20*>& v = DAT_00AC4C18;
-    if (v.Count >= v.Capacity) {
-        if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0) {
-            if (!v.SetCapacity(v.CapacityIncrement + v.Capacity, 0))
-                return;
-        } else {
-            return;
-        }
-    }
-    int index = v.Count++;
-    v.Items[index] = item;
-}
 
 struct Obj_00638DC0;
 extern DynamicVectorClass<Obj_00638DC0*> DAT_00AC4B30;
-
-// FUNCTION: GAMEMD 0x00638DC0
-void FUN_00638DC0(Obj_00638DC0* item)
-{
-    DynamicVectorClass<Obj_00638DC0*>& v = DAT_00AC4B30;
-    if (v.Count >= v.Capacity) {
-        if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0) {
-            if (!v.SetCapacity(v.CapacityIncrement + v.Capacity, 0))
-                return;
-        } else {
-            return;
-        }
-    }
-    int index = v.Count++;
-    v.Items[index] = item;
-}
 

@@ -27,26 +27,3 @@ void ScenarioClass::UpdateCellLighting()
     }
 }
 
-// FUNCTION: GAMEMD 0x68BCC0  ScenarioClass::GetWaypointCoords (__thiscall, ret 0x8)
-// Returns the 4-byte CellStruct by value, so retail's RET 0x8 covers the hidden
-// return-buffer pointer plus the index. No bounds check — callers are expected
-// to have asked IsDefinedWaypoint first.
-CellStruct ScenarioClass::GetWaypointCoords(int idx)
-{
-    return Waypoints[idx];
-}
-
-// FUNCTION: GAMEMD 0x68BD80  (__thiscall)
-// True iff waypoint `idx` is in range [0..701] and its stored cell differs from
-// the sentinel "undefined" cell. The first mismatching coordinate short-circuits
-// to true; an exact match (both X and Y equal the sentinel) is "not defined".
-bool ScenarioClass::IsDefinedWaypoint(int idx)
-{
-    if (idx < 702 && idx >= 0 &&
-        (Waypoints[idx].X != WaypointUndefined.X ||
-         Waypoints[idx].Y != WaypointUndefined.Y))
-    {
-        return true;
-    }
-    return false;
-}

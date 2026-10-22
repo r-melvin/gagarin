@@ -30,22 +30,5 @@ template class VectorClass<RGBClass>;
 template class DynamicVectorClass<RGBClass>;
 
 struct HSVClass { unsigned char unknown_00; unsigned char unknown_01; unsigned char unknown_02; HSVClass() : unknown_00(0), unknown_01(0), unknown_02(0) {} bool __fastcall operator==(const HSVClass& o) const; bool operator!=(const HSVClass& o) const; };
-// FUNCTION: GAMEMD 0x006281F0
-// VectorClass<HSVClass>::operator==
-// FUNCTION: GAMEMD 0x006282E0
-// VectorClass<HSVClass>::SetCapacity
-// FUNCTION: GAMEMD 0x00628410
-// VectorClass<HSVClass>::FindItemIndex
-// FUNCTION: GAMEMD 0x00628470
-// VectorClass<HSVClass>::Slot5
-// FUNCTION: GAMEMD 0x00627DE0
-// VectorClass<HSVClass>::Slot6
-// FUNCTION: GAMEMD 0x006284A0
-// DynamicVectorClass<HSVClass>::SetCapacity
-// FUNCTION: GAMEMD 0x00627DB0
-// DynamicVectorClass<HSVClass>::Slot5
-// VTABLE: GAMEMD 0x007EF7F0 -- VectorClass<HSVClass>.
-// VTABLE: GAMEMD 0x007EF750 -- DynamicVectorClass<HSVClass>.
-template class VectorClass<HSVClass>;
 template class DynamicVectorClass<HSVClass>;
 

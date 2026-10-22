@@ -90,25 +90,6 @@ void* VersionClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x6244A0 -- OwnerDraw::DialogControl scalar deleting destructor
-void* OwnerDraw::DialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~DialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x6244C0 -- OwnerDraw::SimpleDialogControl scalar deleting destructor
-void* OwnerDraw::SimpleDialogControl::DeletingDtor(unsigned int flags)
-{
-    this->~SimpleDialogControl();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x631F40 -- PixelFXClass scalar deleting destructor
 void* PixelFXClass::DeletingDtor(unsigned int flags)
