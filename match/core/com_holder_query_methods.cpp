@@ -32,32 +32,8 @@
 // - 43.4%. Distinct locals defeat that partial-redundancy elimination and the
 // two blocks come out as retail has them.
 //
-// SCHEDULING DELTA (status partial, 92.5% - 49/53, was 86.8%). Two residual spots, both
-// instruction order rather than content. In the success epilogue retail is
-// `POP EBX; MOV EAX,EDI` and we emit those two the other way round. On the
-// empty-source path retail materialises the constant into the HRESULT's own
-// register first (`MOV EDI,0x80004002; MOV EAX,EDI`) while we fold it straight
-// into EAX, one instruction shorter. Nine phrasings were tried: assigning the
-// constant before the release block, initialising `hr` at its declaration,
-// routing it through a second local, a redundant `if (hr)` before the return,
-// volatile reads of the member on either or both arms, if/else instead of early
-// returns, and the inverted `hr >= 0` test. Every one of them lands on exactly
-// 86.8% or worse. Thirteen more were measured in one compile since: the
-// constant as the declaration initialiser, assigned before the release guard,
-// returned as the assignment expression, carried in a second local live across
-// the call, the release written through the member with no local, a single
-// trailing return for the empty path, a full if/else with one exit (13.2%), a
-// volatile-qualified `hr` (24.1%), and an inline-asm pin (0.0%) - all 86.8% or
-// worse except one.
-//
-// That one is the volatile *read* at the return, which is what the body now
-// uses: 92.5%. It restores retail's two-instruction `<reg> = const; EAX =
-// <reg>` shape, and with the multiset back in agreement the epilogue cascade
-// disappears too. It does not reach 100% because retail's register is EDI and
-// the volatile lvalue is a stack home, which also leaves the success
-// epilogue's `POP EBX` / `MOV EAX,EDI` pair transposed. The cause is NOT the
-// toolchain: our objects stamp @comp.id 0x000b20ff, i.e. build 8447, retail's
-// exact backend.
+// PARTIAL: retail uses a different HRESULT register and epilogue ordering.
+// Use an ordinary return; volatile reloads used only for scheduling are forbidden.
 long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
 {
     long   hr;
@@ -101,11 +77,7 @@ long ComHolder_0045AEA0::FUN_0045AEA0(IUnk** source)
 
     hr = 0x80004002;
 
-    // Retail keeps the HRESULT in EDI on every path and ends each one with
-    // `MOV EAX,EDI`; cl folds the constant straight into EAX here because the
-    // local is dead. Reading it back through a volatile lvalue restores the
-    // two-instruction form (86.8% -> 92.5%). See the note above.
-    return *(volatile long*)&hr;
+    return hr;
 }
 
 // FUNCTION: GAMEMD 0x45AF20
@@ -154,9 +126,5 @@ long ComHolder_0045AEA0::FUN_0045AF20(IUnk** source)
 
     hr = 0x80004002;
 
-    // Retail keeps the HRESULT in EDI on every path and ends each one with
-    // `MOV EAX,EDI`; cl folds the constant straight into EAX here because the
-    // local is dead. Reading it back through a volatile lvalue restores the
-    // two-instruction form (86.8% -> 92.5%). See the note above.
-    return *(volatile long*)&hr;
+    return hr;
 }

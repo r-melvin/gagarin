@@ -115,18 +115,8 @@
 // reverse, which costs one `MOV` and shifts every later displacement -- plus
 // the unmerged sixteen bytes.
 //
-// MATCHED — 0x5CD330 MSBitPrintAnim::Construct, 100% (35/35), closed by
-// decomp-permuter; see the PERMUTER FINDING in the body. It had been 88.6%
-// (31/35 instructions, multiset identical). Four instructions are transposed: retail stores the
-// stamped clock and the zeroed remainder before it sets up the string
-// constructor's call, where cl 8804 sinks both stores below the `LEA`/`PUSH`
-// pair. Six materially different spellings were measured — the string as a
-// member with a named build call (34.3), as a real member-initialiser (37.1),
-// as a non-polymorphic second base (37.1, byte-identical output to the first
-// two), the body reordered (34.3), the seat moved ahead of the two stores
-// (85.7), and `Remaining` made volatile (85.7, and it costs PauseTimer 17
-// points). The winning shape is the hand-seated builder plus named locals for
-// the two rectangle loads; the residual is a scheduling one.
+// MSBitPrintAnim construction uses direct timer stores. Redundant receiver
+// aliases used only to force scheduling have been removed.
 
 #include "msanim_family_methods.h"
 #include "../_layout/memory_buffer.h"
@@ -158,33 +148,11 @@ MSBitPrintAnim* MSBitPrintAnim::Construct(const wchar_t* text,
     int x = rect->X;
     int y = rect->Y;
 
-    // PERMUTER FINDING (decomp-permuter; base 130, relocation floor 10 from the
-    // two vtable-seat immediates, closed at the floor inside a 31.5k-candidate
-    // run). Six hand spellings had held this at 88.6% with the two timer stores
-    // sunk below the string constructor's `LEA`/`PUSH` pair. The lever is a
-    // DOUBLE pointer alias on the receiver of the `Timer.Remaining` store: the
-    // store is made through a pointer read out of another pointer, which is
-    // what pins both timer stores above the argument setup and reproduces
-    // retail's `MOV [ESI+0x10]; MOV [ESI+0x18],0; PUSH EDX; LEA ECX,[ESI+0x1C]`.
-    //
-    // Minimised, one construct at a time, against this exact address:
-    //   * the double alias            REQUIRED  (dropping it: 88.6%)
-    //   * a SINGLE alias instead      NOT ENOUGH (88.6%) -- the same asymmetry
-    //     already recorded at 0x408930, so this is the second instance of it
-    //   * a named temp for the GetTime result   worth 0
-    //   * an alias on the string constructor's receiver   worth 0
-    //   * an alias carried through the rectangle copy and the tail   worth 0
-    //   * `(float)0` in place of `0` for Started   worth 0
-    // Because the store is inside MSAnim::Init, the base's five statements are
-    // spelled out here rather than called; Init itself is unchanged and its two
-    // other callers (0x5CE4A0, 0x5CE640) still match at 100%.
     Field04 = x;
     Field08 = y;
     Enabled = true;
     Timer.StartTime = Timer.Clock.GetTime();
-    MSBitPrintAnim* seat = this;
-    MSBitPrintAnim* seat2 = seat;
-    seat2->Timer.Remaining = 0;
+    Timer.Remaining = 0;
     SeatBaseVptr();
     Text.Construct(text);
     Bounds = *rect;

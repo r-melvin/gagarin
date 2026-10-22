@@ -68,11 +68,6 @@ int LCWPipe::FUN_00631D10(int first, int slen)
                 Counter += len;
                 slen -= len;
                 first += len;
-                // Matching workaround found by the permuter: VC6 folds this
-                // pair away but changes register allocation to match retail.
-                // This is compiler steering, not recovered original source.
-                Counter++;
-                Counter--;
                 if (Counter == BlockHeader.CompCount) {
                     FUN_00551C60(Buffer, Buffer2, 0);
                     total += Pipe::FUN_00631D10((int)Buffer2, BlockHeader.UncompCount);

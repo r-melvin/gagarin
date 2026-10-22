@@ -1,0 +1,72 @@
+{
+ "provenance": "original; source cleanup required by user; scores measured by local MSVC6 oracle against pinned retail binary",
+ "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+ "before_commit": "d25284a",
+ "scope": "First cleanup batch; not a claim that every steering construct in the repository has been audited.",
+ "rows": [
+  {
+   "addr": "0x45AEA0",
+   "tu": "match/core/com_holder_query_methods.cpp",
+   "removed": "volatile HRESULT return reload",
+   "previous_status": "partial",
+   "previous_pct": 92.5,
+   "status": "partial",
+   "pct": 86.8
+  },
+  {
+   "addr": "0x45AF20",
+   "tu": "match/core/com_holder_query_methods.cpp",
+   "removed": "volatile HRESULT return reload",
+   "previous_status": "partial",
+   "previous_pct": 92.5,
+   "status": "partial",
+   "pct": 86.8
+  },
+  {
+   "addr": "0x5520a0",
+   "tu": "match/core/lcw_pipe.cpp",
+   "removed": "canceling counter updates used only for register allocation",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 99.0
+  },
+  {
+   "addr": "0x4087F0",
+   "tu": "match/core/slot_array_factory_methods.cpp",
+   "removed": "interior-member cursor and offset casts used only for register allocation",
+   "previous_status": "partial",
+   "previous_pct": 86.2,
+   "status": "partial",
+   "pct": 72.4
+  },
+  {
+   "addr": "0x408930",
+   "tu": "match/core/small_misc32_methods.cpp",
+   "removed": "double receiver alias and volatile flag cast",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 50.0
+  },
+  {
+   "addr": "0x5CD330",
+   "tu": "match/map/msanim_family_methods.cpp",
+   "removed": "redundant receiver aliases for timer-store scheduling",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 88.6
+  },
+  {
+   "addr": "0x402800",
+   "tu": "match/core/block_compare_store_methods.cpp",
+   "removed": "volatile flag reload",
+   "previous_status": "partial",
+   "previous_pct": 66.7,
+   "status": "partial",
+   "pct": 66.7
+  }
+ ],
+ "unaffected_full_sections_preserved": 44
+}

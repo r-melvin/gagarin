@@ -4418,7 +4418,7 @@
   "len": "0x75",
   "name": "ComHolder::FUN_0045AEA0",
   "status": "partial",
-  "pct": 92.5
+  "pct": 86.8
  },
  {
   "tu": "match/core/com_holder_query_methods.cpp",
@@ -4427,7 +4427,7 @@
   "len": "0x75",
   "name": "ComHolder::FUN_0045AF20",
   "status": "partial",
-  "pct": 92.5
+  "pct": 86.8
  },
  {
   "tu": "match/core/com_member_release_family_methods.cpp",
@@ -10296,7 +10296,7 @@
   "len": "0x4d",
   "name": "FUN_004087F0",
   "status": "partial",
-  "pct": 86.2
+  "pct": 72.4
  },
  {
   "tu": "match/core/small_misc10_methods.cpp",
@@ -10916,8 +10916,8 @@
   "sym": "?FUN_00408930@Cursor_00408930@@QAEXXZ",
   "len": "0x38",
   "name": "FUN_00408930",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 50.0
  },
  {
   "tu": "match/core/small_misc33_methods.cpp",
@@ -24146,8 +24146,8 @@
   "sym": "?Construct@MSBitPrintAnim@@QAEPAV1@PBGPBUMSRect@@_N@Z",
   "len": "0x6e",
   "name": "MSBitPrintAnim::Construct",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 88.6
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -40933,8 +40933,8 @@
   "sym": "?FUN_00631D10@LCWPipe@@UAEHHH@Z",
   "len": "0x227",
   "name": "LCWPipe::FUN_00631D10",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 99.0
  },
  {
   "tu": "match/core/lcw_pipe.cpp",
