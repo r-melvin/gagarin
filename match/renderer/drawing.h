@@ -29,7 +29,7 @@ GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 // real signatures; the rest are placeholders that merely pin the slot offsets.
 //   slot  0 (0x00): Destroy(int)            — ReleaseSurface  CALL [EAX]
 //   slot  5 (0x14): FillRect(Rect*, int)    — Fill / FillRect CALL [EAX+0x14]
-//   slot 23 (0x5C): GetOffset(int, int)     — GetBuffer       CALL [EAX+0x5C]
+//   slot 23 (0x5C): vf_23(int, int)     — GetBuffer       CALL [EAX+0x5C]
 //   slot 24 (0x60): Lock()                  — GetBuffer       CALL [EAX+0x60]
 // ---------------------------------------------------------------------------
 // This address-scoped call interface remains separate from native BSurface.
@@ -59,7 +59,7 @@ public:
     virtual void vf50() = 0;                                     // 0x50
     virtual void vf54() = 0;                                     // 0x54
     virtual void vf58() = 0;                                     // 0x58
-    virtual int  GetOffset(int x, int y) = 0;                    // 0x5C
+    virtual int  vf_23(int x, int y) = 0;                    // 0x5C
     virtual int  Lock() = 0;                                     // 0x60
 };
 

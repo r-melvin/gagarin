@@ -12,7 +12,7 @@
 //   The retail class name is IsometricTileTypeClass.
 //
 //   Member offsets confirmed numerically from the bodies:
-//     +0x0A4  TileData   `MOV EAX,[ESI+0xa4]`, twice in 0x544CB0
+//     +0x0A4  unknown_A4   `MOV EAX,[ESI+0xa4]`, twice in 0x544CB0
 //     +0x2F4  the byte gating the lazy load, `MOV CL,[ESI+0x2f4]`
 //   Tile-image header, reached through slot +0x9C:
 //     +0x00 / +0x04  the two dimensions, multiplied to give the sub-tile count
@@ -68,12 +68,12 @@ public:
 
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x0A4 - 0x004];
-    TileImageHeader* TileData;                 // +0x0A4
+    TileImageHeader* unknown_A4;                 // +0x0A4
     char             _pad_0A8[0x2F4 - 0x0A8];
     unsigned char    TileDataLoadable;         // +0x2F4
 };
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
-GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, TileData)         == 0x0A4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, TileDataLoadable) == 0x2F4);
 
 // The class has to be complete before this typedef, or VC6 falls back to the

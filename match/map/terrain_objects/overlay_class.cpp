@@ -420,7 +420,7 @@ void OverlayClass::vf_70(MapObjPoint* where, MapObjRect* clip)
         int index = OverlayTypeArray.FindIndex(Type);
         OverlayTiberiumView* tiberium = OverlayTiberiumTypes[OverlayTiberiumIndexOf(index)];
         OverlayPaletteView* palette = OverlayPalettes[tiberium->PaletteIndex];
-        void* tiberiumShape = OverlayTypeArray.Items[tiberium->ImageType->ArrayIndex]->vf_39();
+        void* tiberiumShape = OverlayTypeArray.Items[tiberium->unknown_E0->ArrayIndex]->vf_39();
         if (tiberiumShape == 0 && Type->CellAnim)
             tiberiumShape = Type->CellAnim->vf_39();
         OverlayDrawShapeInline(MapObjSurface, palette->Convert, tiberiumShape, 0, &point, clip, 0xE00, 0,
@@ -441,12 +441,12 @@ void OverlayClass::vf_70(MapObjPoint* where, MapObjRect* clip)
             mapCell = MapObjMap.GetCellAtCoord(coord);
         } else {
             MapObjCell screenCell;
-            if (!MapObjMap.IsValid(*MapObjTactical->PointToCell(&screenCell, &point))) {
+            if (!MapObjMap.IsValid(*MapObjTactical->FUN_006D6590(&screenCell, &point))) {
                 screenCell.X = 1;
                 screenCell.Y = MapObjMapEdge;
                 mapCell = MapObjMap.GetCellAt(screenCell);
             } else {
-                mapCell = MapObjMap.GetCellAt(*MapObjTactical->PointToCell(&screenCell, &point));
+                mapCell = MapObjMap.GetCellAt(*MapObjTactical->FUN_006D6590(&screenCell, &point));
             }
         }
         OverlayDrawShapeInline(MapObjSurface, mapCell->Convert, shape, 0, &point, clip, 0xE00, 0,

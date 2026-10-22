@@ -84,9 +84,9 @@ GG_STATIC_ASSERT(offsetof(House_0074D490, unknown_30C) == 0x30C);
 struct Scenario_0074D490
 {
     char _pad0000[0x16054];    // +0x0000
-    int  PlayerIndex;          // +0x16054
+    int  unknown_16054;          // +0x16054
 };
-GG_STATIC_ASSERT(offsetof(Scenario_0074D490, PlayerIndex) == 0x16054);
+GG_STATIC_ASSERT(offsetof(Scenario_0074D490, unknown_16054) == 0x16054);
 
 // GLOBAL: GAMEMD 0xA83D4C -- ScenarioClass::Instance.
 extern Scenario_0074D490* DAT_00A83D4C;

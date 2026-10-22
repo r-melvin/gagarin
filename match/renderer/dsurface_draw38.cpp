@@ -38,7 +38,7 @@ GG_STATIC_ASSERT(offsetof(ZBufferLike_004BBCA0, Stride) == 0x28);
 GG_STATIC_ASSERT(sizeof(ZBufferLike_004BBCA0) == 0x2C);
 
 
-// FUNCTION: GAMEMD 0x4C1B50 (decl; reloc). fastcall: ECX = vector, returns (int)SquareRoot(x*x + y*y).
+// FUNCTION: GAMEMD 0x4C1B50 (decl; reloc). fastcall: ECX = vector, returns (int)FUN_004CAC40(x*x + y*y).
 struct LengthVector : public Point2D
 {
     int Length() const;
@@ -46,7 +46,7 @@ struct LengthVector : public Point2D
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; LIBRARY). cdecl square root wrapper: returns 0.0 for non-positive input
 // (compares against the float at 0x7E1748). Takes the double on the stack, result in ST0.
-double __cdecl SquareRoot(double value);
+double __cdecl FUN_004CAC40(double value);
 
 static inline void StepRowUp(unsigned short*& zp, int step, ZBufferLike_004BBCA0* zb)
 {
@@ -138,9 +138,9 @@ bool DSurface::unknown_38(int clipArg, int fromArg, int toArg, int brightness, i
             zTo = zFrom - dz;
     }
     if (p0.X != ox || p0.Y != oy) {
-        double partLength = SquareRoot((double)(p0.X - ex) * (p0.X - ex) + (double)(p0.Y - ey) * (p0.Y - ey));
+        double partLength = FUN_004CAC40((double)(p0.X - ex) * (p0.X - ex) + (double)(p0.Y - ey) * (p0.Y - ey));
         int partLen = (int)partLength;
-        int wholeLen = (int)SquareRoot((double)(ox - ex) * (ox - ex) +
+        int wholeLen = (int)FUN_004CAC40((double)(ox - ex) * (ox - ex) +
                                  (double)(oy - ey) * (oy - ey));
         int dz = abs((int)(partLen / (double)wholeLen * (zFrom - zTo)));
         if (zTo > zFrom)

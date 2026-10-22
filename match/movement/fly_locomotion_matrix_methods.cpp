@@ -31,12 +31,12 @@ Matrix3D_004CF610 __stdcall FlyLocoMatrix::Draw_Matrix(int* key)
 
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_1C8)() > 0) {
         if (this->LinkedTo->IsTilting != 0) {
-            m.RotateX(this->LinkedTo->PitchRate);
+            m.RotateX(this->LinkedTo->unknown_328);
             if (this->Height > (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchHeight) {
-                m.RotateY((float)(this->LinkedTo->RollRate +
+                m.RotateY((float)(this->LinkedTo->unknown_32C +
                                   (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchAngle));
             } else {
-                m.RotateY(this->LinkedTo->RollRate);
+                m.RotateY(this->LinkedTo->unknown_32C);
             }
             if (key != 0) {
                 *key = -1;

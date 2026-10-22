@@ -22,11 +22,11 @@
 // the member on the way out.
 TileImageHeader* IsometricTileTypeClass::GetTileData()
 {
-    TileImageHeader* data = this->TileData;
+    TileImageHeader* data = this->unknown_A4;
 
     if (data == 0 && this->TileDataLoadable) {
         this->LoadTileData();
-        data = this->TileData;
+        data = this->unknown_A4;
     }
     return data;
 }

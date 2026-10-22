@@ -30,14 +30,14 @@ bool AlphaBuffer::Fill(unsigned short Color)
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x7BD130  (__thiscall)
-// Compute a circular-buffer pointer: BufferPosition + Surface->GetOffset(X,Y),
+// Compute a circular-buffer pointer: BufferPosition + Surface->vf_23(X,Y),
 // wrapped down by BufferSize once it reaches BufferTail (unsigned compare).
 // Surface->Lock() (slot 0x60) is called for its side effect; its return is
 // discarded.
 // ---------------------------------------------------------------------------
 void* AlphaBuffer::GetBuffer(int X, int Y)
 {
-    unsigned int offset = (unsigned int)this->Surface->GetOffset(X, Y);
+    unsigned int offset = (unsigned int)this->Surface->vf_23(X, Y);
     this->Surface->Lock();
     unsigned int pos = (unsigned int)this->BufferPosition + offset;
     if (pos >= (unsigned int)this->BufferTail)

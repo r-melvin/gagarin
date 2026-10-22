@@ -111,9 +111,9 @@ void __stdcall FlyLocoAssignTarget_004CFC10(FlyLocoIface* self, void* target)
 void FlyLocoObject::StartSpin()
 {
     IsSpinning = 1;
-    SpinRate = Scenario_00A8B230->RandomNumber.RandomRanged(0x14, 0x1E);
+    unknown_54 = Scenario_00A8B230->RandomNumber.RandomRanged(0x14, 0x1E);
     if (Scenario_00A8B230->RandomNumber.RandomRanged(0, 0x63) < 0x32) {
-        SpinRate = -SpinRate;
+        unknown_54 = -unknown_54;
     }
 }
 

@@ -26,7 +26,7 @@
 //   +0x44 Height            `FLD QWORD PTR [EAX+0x44]` in 0x4CCAC0, 0x4CFE20
 //   +0x4C IsTakingOff       `MOV CL,[EAX+0x4C]`       in 0x4CFE50
 //   +0x4D IsLanding         `MOV CL,[EAX+0x4D]`       in 0x4CFE50
-//   +0x4F IsSpinning, +0x50 SpinRate, +0x54 SpinCount - object +0x53/+0x54/
+//   +0x4F IsSpinning, +0x50 unknown_50, +0x54 SpinCount - object +0x53/+0x54/
 //                           +0x58, written by 0x4CFDD0 off ECX.
 // LinkedTo's own slots: +0x2C returns the type discriminant 0x4CCA20 compares
 // against two, +0x84 returns the owner object, +0x1C8 the remaining travel.
@@ -174,7 +174,7 @@ struct FlyLocoObject
     void* LocomotorVptr;    // +0x0004
     char  _pad008[0x4B];    // +0x0008
     char  IsSpinning;       // +0x0053
-    int   SpinRate;         // +0x0054
+    int   unknown_54;         // +0x0054
     int   SpinCount;        // +0x0058
 
     // FUNCTION: GAMEMD 0x4CCA70
@@ -184,7 +184,7 @@ struct FlyLocoObject
 };
 GG_STATIC_ASSERT(offsetof(FlyLocoObject, LocomotorVptr) == 0x04 &&
                  offsetof(FlyLocoObject, IsSpinning) == 0x53 &&
-                 offsetof(FlyLocoObject, SpinRate) == 0x54 &&
+                 offsetof(FlyLocoObject, unknown_54) == 0x54 &&
                  offsetof(FlyLocoObject, SpinCount) == 0x58);
 
 // The scenario's random generator; the touchdown spin is drawn from it.

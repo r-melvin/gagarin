@@ -6,7 +6,7 @@
 
 // Advance the iterator to the next non-blank entry of the palette table and
 // return it, or null (and mark the iterator done) once the buckets run out.
-static inline Entry_00626690* NextEntry(Table_00626690* table, HashIterator_00626690* it)
+static inline Entry_00626690* Inline_00626690_a(Table_00626690* table, HashIterator_00626690* it)
 {
     if (it->Done != 0) {
         return 0;
@@ -29,7 +29,7 @@ static inline Entry_00626690* NextEntry(Table_00626690* table, HashIterator_0062
 
 // Look an entry's key up again through the hash and return the address of the
 // matching entry's value slot, or null.
-static inline Palette_00626690** FindValue(Table_00626690* table, Entry_00626690* key)
+static inline Palette_00626690** Inline_00626690_b(Table_00626690* table, Entry_00626690* key)
 {
     int h = (*table->Hash)(key) % table->NumBuckets;
     Bucket_00626690* bucket = &table->Buckets[h];
@@ -57,11 +57,11 @@ static inline Palette_00626690** FindValue(Table_00626690* table, Entry_00626690
 ColorSchemeVec_00626690* __fastcall GetPaletteSchemesFromIterator(HashIterator_00626690* it)
 {
     Table_00626690* table = DAT_00AC48F0->Table;
-    Entry_00626690* entry = NextEntry(table, it);
+    Entry_00626690* entry = Inline_00626690_a(table, it);
     if (entry == 0) {
         return 0;
     }
-    Palette_00626690** value = FindValue(DAT_00AC48F0->Table, entry);
+    Palette_00626690** value = Inline_00626690_b(DAT_00AC48F0->Table, entry);
     if (value == 0) {
         return 0;
     }

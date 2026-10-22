@@ -65,7 +65,7 @@ void __cdecl FUN_0072BA80()
         DAT_00B0FD60.Palette = 0;
     }
     if (DAT_00B0FD60.Convert != 0) {
-        DAT_00B0FD60.Convert->DeleteThis(1);
+        DAT_00B0FD60.Convert->vf_0(1);
         DAT_00B0FD60.Convert = 0;
     }
 }
@@ -110,7 +110,7 @@ void __cdecl FUN_0072CB60()
         DAT_00B0FCF4.Palette = 0;
     }
     if (DAT_00B0FCF4.Convert != 0) {
-        DAT_00B0FCF4.Convert->DeleteThis(1);
+        DAT_00B0FCF4.Convert->vf_0(1);
         DAT_00B0FCF4.Convert = 0;
     }
 }

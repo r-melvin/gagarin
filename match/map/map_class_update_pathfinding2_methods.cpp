@@ -23,8 +23,8 @@ void Map_00586990::Update_Pathfinding_2(CellVector_00586990* cells)
                       + cells->Items[i].X;
             if (index < 0)
                 index = 0;
-            else if (index >= SubzoneCount)
-                index = SubzoneCount - 1;
+            else if (index >= unknown_6C)
+                index = unknown_6C - 1;
             Subzones[index].Value = 0;
 
             CellStruct* p = &cells->Items[i];
@@ -47,8 +47,8 @@ void Map_00586990::Update_Pathfinding_2(CellVector_00586990* cells)
             int index = (unknown_F8 + unknown_F4 + 1) * cell.Y + cell.X;
             if (index < 0)
                 index = 0;
-            else if (index >= SubzoneCount)
-                index = SubzoneCount - 1;
+            else if (index >= unknown_6C)
+                index = unknown_6C - 1;
             if (Subzones[index].Value == 0)
                 FUN_00584550(cell);
         }

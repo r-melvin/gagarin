@@ -26,7 +26,7 @@ void VeinholeMonsterClass::UpdateAllVeinholes()
         VeinholeMonsterClass** items = VeinholeArray.Items;
         do {
             VeinholeMonsterClass* monster = items[i];
-            if (monster->IsDead && monster->GrowthQueue->Count == 0) {
+            if (monster->IsDead && monster->unknown_B0->Count == 0) {
                 if (monster) {
                     delete monster;
                     items = VeinholeArray.Items;
@@ -58,7 +58,7 @@ void VeinholeMonsterClass::DestroyAll()
         VeinholeMonsterClass** items = VeinholeArray.Items;
         do {
             VeinholeMonsterClass* monster = items[i];
-            if (monster->IsDead && monster->GrowthQueue->Count == 0) {
+            if (monster->IsDead && monster->unknown_B0->Count == 0) {
                 if (monster) {
                     delete monster;
                     items = VeinholeArray.Items;

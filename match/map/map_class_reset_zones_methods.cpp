@@ -17,8 +17,8 @@ void Map_0056D460::ResetZones(const Cell_0056D460& cell)
     int index = (unknown_F8 + unknown_F4 + 1) * cell.Y + cell.X;
     if (index < 0)
         index = 0;
-    else if (index >= ZoneCount)
-        index = ZoneCount - 1;
+    else if (index >= unknown_6C)
+        index = unknown_6C - 1;
 
     Zone_0056D460* here = &Zones[index];
 

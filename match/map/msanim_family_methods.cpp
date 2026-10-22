@@ -11,12 +11,12 @@
 // Percentages in the attempt notes below are historical; current partial
 // scores are recorded in scripts/data/match_manifest.json.
 // reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x5CD320  MSVQAnim::IsFinished
+//   FUNCTION: GAMEMD 0x5CD320  MSVQAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CD330  MSBitPrintAnim::Construct
 //   FUNCTION: GAMEMD 0x5CD3A0  MSBitPrintAnim::~MSBitPrintAnim (out of line)
 //   FUNCTION: GAMEMD 0x5CD3C0  MSBitPrintAnim::SetStarted
 //   FUNCTION: GAMEMD 0x5CD3D0  MSBitPrintAnim::GetRect
-//   FUNCTION: GAMEMD 0x5CD400  MSBitPrintAnim::IsFinished
+//   FUNCTION: GAMEMD 0x5CD400  MSBitPrintAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CD410  MSBitPrintAnim::Update
 //   FUNCTION: GAMEMD 0x5CD4D0  MSBitPrintAnim::Draw
 //   FUNCTION: GAMEMD 0x5CD570  MSPrintAnim::Construct      (PARTIAL; see manifest)
@@ -26,7 +26,7 @@
 //   FUNCTION: GAMEMD 0x5CDEE0  MSPrintAnim::Draw
 //   FUNCTION: GAMEMD 0x5CE2B0  MSPrintAnim::GetRect
 //   FUNCTION: GAMEMD 0x5CE2E0  MSPrintAnim::SetActive
-//   FUNCTION: GAMEMD 0x5CE300  MSPrintAnim::IsFinished
+//   FUNCTION: GAMEMD 0x5CE300  MSPrintAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CE330  MSPrintAnim::MeasureWidth
 //   FUNCTION: GAMEMD 0x5CE3A0  MSPrintAnim::DrawLines
 //   FUNCTION: GAMEMD 0x5CE4A0  MSPCXAnim::ConstructCentred
@@ -36,11 +36,11 @@
 //   FUNCTION: GAMEMD 0x5CE8C0  MSPCXAnim::Draw             (PARTIAL, 35.1%)
 //   FUNCTION: GAMEMD 0x5CEA40  MSPCXAnim::Attach
 //   FUNCTION: GAMEMD 0x5CEA80  MSPCXAnim::GetRect
-//   FUNCTION: GAMEMD 0x5CEAB0  MSPCXAnim::IsFinished
+//   FUNCTION: GAMEMD 0x5CEAB0  MSPCXAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CEAC0  MSAnim::SetEnabled
 //   FUNCTION: GAMEMD 0x5CEAD0  MSAnim::PauseTimer
 //   FUNCTION: GAMEMD 0x5CEB20  MSAnim::ResumeTimer
-//   FUNCTION: GAMEMD 0x5CEB40  MSAnim::IsFinished
+//   FUNCTION: GAMEMD 0x5CEB40  MSAnim::vf_7
 //   FUNCTION: GAMEMD 0x5CEB50  MSAnim::Attach
 //   FUNCTION: GAMEMD 0x5CEB60  MSAnim::DeletingDtor
 //   FUNCTION: GAMEMD 0x5CEB80  MSShapeAnim::DeletingDtor
@@ -138,7 +138,7 @@ char VT_007E1668;
 // FUNCTION: GAMEMD 0x5CD320
 // Slot 7 for the VQA animation: a cached flag, the same one-byte load the PCX
 // animation's slot 7 performs out of its own member.
-bool MSVQAnim::IsFinished()
+bool MSVQAnim::vf_7()
 {
     return Finished;
 }
@@ -195,7 +195,7 @@ MSRect MSBitPrintAnim::GetRect()
 
 // FUNCTION: GAMEMD 0x5CD400
 // Slot 7: the started flag doubles as the finished one for a bit-printed line.
-bool MSBitPrintAnim::IsFinished()
+bool MSBitPrintAnim::vf_7()
 {
     return Started;
 }
@@ -366,7 +366,7 @@ void MSPrintAnim::Layout(const MSRect* area)
 // put a form feed in front of each one. The inner walk is a rotated
 // `while (ch && ch != newline)`: the terminator test is peeled to the top, the
 // newline test heads the body, and the terminator test closes it.
-int __fastcall MSCountPages(WideStringClass* text, MSFont* font, int limit)
+int __fastcall MSCountPages(Obj_007B66D0* text, MSFont* font, int limit)
 {
     if (!text->Equals(0)) {
         if (font != 0) {
@@ -451,7 +451,7 @@ bool MSPrintAnim::Update(int context, MSRect* out)
         }
 
         if (centred) {
-            WideStringClass line;
+            Obj_007B66D0 line;
 
             line.CopyFrom(&Text);
             line.Slice(0, i);
@@ -573,7 +573,7 @@ void MSPrintAnim::Draw(int context, MSRect* clip)
             }
         } else {
             if (centred) {
-                WideStringClass line;
+                Obj_007B66D0 line;
 
                 line.CopyFrom(&Text);
                 line.Slice(0, i);
@@ -628,7 +628,7 @@ void MSPrintAnim::SetActive(bool on)
 // of its text, and has held the completed page for more than two ticks. Both
 // comparisons are unsigned in retail (JBE twice), which is what pins CharPos
 // and LineCount as unsigned rather than signed counters.
-int MSPrintAnim::IsFinished()
+int MSPrintAnim::vf_7()
 {
     if (Active) {
         if (CharPos > Text.Length()) {
@@ -647,7 +647,7 @@ int MSPrintAnim::IsFinished()
 // the index each time rather than holding it — retail calls the indexed
 // reader three times per turn, once for the newline test, once for the width
 // and once for the loop condition.
-int MSPrintAnim::MeasureWidth(WideStringClass* text)
+int MSPrintAnim::MeasureWidth(Obj_007B66D0* text)
 {
     int i = 0;
     int width = 0;
@@ -710,7 +710,7 @@ void MSPrintAnim::DrawLines(MSSurface* surface, MSRect* clip)
 MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
                                        MSAnimVector* owner, bool flag)
 {
-    InitEmpty();
+    Inline_005CE4A0();
     SeatBaseVptr();
 
     Surface = MSScreenSurface;
@@ -773,7 +773,7 @@ MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
 MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
                                   const MSPoint* where, bool flag)
 {
-    InitEmpty();
+    Inline_005CE4A0();
     SeatBaseVptr();
 
     Surface = MSScreenSurface;
@@ -923,7 +923,7 @@ MSRect MSPCXAnim::GetRect()
 // FUNCTION: GAMEMD 0x5CEAB0
 // Slot 7: the PCX animation caches its own finished flag rather than deriving
 // one, so the body is a single byte load.
-bool MSPCXAnim::IsFinished()
+bool MSPCXAnim::vf_7()
 {
     return Finished;
 }
@@ -982,7 +982,7 @@ void MSAnim::ResumeTimer()
 
 // FUNCTION: GAMEMD 0x5CEB40
 // Slot 7 of the base: an animation with no completion notion never finishes.
-bool MSAnim::IsFinished()
+bool MSAnim::vf_7()
 {
     return false;
 }

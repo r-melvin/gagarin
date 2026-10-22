@@ -71,9 +71,9 @@ void __stdcall FlyLocomotionProcess_004CFD20(ILocomotion_004CFD20* self)
 {
     if (self->IsToHaveShadow()) {
         self->IsSpinning = 1;
-        self->SpinRate = Scenario_00A8B230->RandomNumber.RandomRanged(0x14, 0x1E);
+        self->unknown_50 = Scenario_00A8B230->RandomNumber.RandomRanged(0x14, 0x1E);
         if (Scenario_00A8B230->RandomNumber.RandomRanged(0, 0x63) < 0x32) {
-            self->SpinRate = -self->SpinRate;
+            self->unknown_50 = -self->unknown_50;
         }
         self->MarkAllOccupationBits();
         self->SpinCount = 0;

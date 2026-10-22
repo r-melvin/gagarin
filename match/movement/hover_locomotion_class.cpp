@@ -59,7 +59,7 @@ HoverLocomotionClass::HoverLocomotionClass()
 HRESULT __stdcall HoverLocomotionClass::LinkToObject(FootClass* object)
 {
     HRESULT hr = LocomotionClass::LinkToObject(object);
-    HoverFacingView facing(HoverFoot(LinkedTo)->Slot_084()->RotationRate << 1);
+    HoverFacingView facing(HoverFoot(LinkedTo)->Slot_084()->unknown_71C << 1);
     Facing = facing;
     return hr;
 }

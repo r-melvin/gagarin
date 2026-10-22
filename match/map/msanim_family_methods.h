@@ -38,7 +38,7 @@
 //   slot 4  0x4C9150   Update()              — the folded `return 0` stub
 //   slot 5  0x4C9150   Draw()                — same folded stub
 //   slot 6  0x4C9150   GetRect()             — same folded stub
-//   slot 7  0x5CEB40   IsFinished()          — `XOR AL,AL; RET`
+//   slot 7  0x5CEB40   vf_7()          — `XOR AL,AL; RET`
 //   slot 8  0x5CEB50   Attach(void*)         — `RET 4`, an empty hook
 //
 // Slots 1..3 hold the same three addresses in all nine vtables, which is the
@@ -137,7 +137,7 @@ GG_STATIC_ASSERT(sizeof(MSTimer) == 0xC);
 // the measured length at 0x7B71B0 (called from 0x5CE30D). 0x7B71B0 is
 // `MOV EAX,[ECX]; TEST EAX,EAX; JNZ; RET` falling into `wcslen`, so the length
 // is unsigned and the null buffer answers zero without a branch of its own.
-class WideStringClass
+class Obj_007B66D0
 {
 public:
     wchar_t* Buffer;  // +0x00
@@ -174,7 +174,7 @@ public:
     // (0x5CDD48): the copy build. Declared as its own overload because the
     // argument is a string object where the other call passes a character
     // pointer; both emit the same reloc-normalised call.
-    void CopyFrom(const WideStringClass* other);  // FUNCTION: GAMEMD 0x7B6720
+    void CopyFrom(const Obj_007B66D0* other);  // FUNCTION: GAMEMD 0x7B6720
     // 0x7B6D90, reached at 0x5CDD54 with (0, index): keep only that many
     // leading characters.
     void Slice(int start, int count);     // FUNCTION: GAMEMD 0x7B6D90 (decl)
@@ -183,8 +183,8 @@ public:
     // its breaks.
     void Insert(int ch, int index);       // FUNCTION: GAMEMD 0x7B7660 (decl)
 };
-GG_STATIC_ASSERT(sizeof(WideStringClass) == 4
-              && offsetof(WideStringClass, Buffer) == 0x00);
+GG_STATIC_ASSERT(sizeof(Obj_007B66D0) == 4
+              && offsetof(Obj_007B66D0, Buffer) == 0x00);
 
 // The Bink playback object held by MSBinkAnim. Its destructor is an ordinary
 // non-virtual one: 0x5CEC83 is `MOV ECX,EDI; CALL 0x432700` followed by the
@@ -583,7 +583,7 @@ public:
     void  SetEnabled(bool on);            // 0x5CEAC0, slot 1
     void  PauseTimer();                   // 0x5CEAD0, slot 2
     void  ResumeTimer();                  // 0x5CEB20, slot 3
-    bool  IsFinished();                   // 0x5CEB40, slot 7
+    bool  vf_7();                   // 0x5CEB40, slot 7
     void  Attach(void* target);           // 0x5CEB50, slot 8
     void* DeletingDtor(unsigned int f);   // 0x5CEB60, slot 0
 
@@ -753,7 +753,7 @@ public:
         SeatBaseVptr();
     }
 
-    bool  IsFinished();                   // 0x5CD320, slot 7
+    bool  vf_7();                   // 0x5CD320, slot 7
     void* DeletingDtor(unsigned int f);   // 0x5CECB0
 };
 GG_STATIC_ASSERT(offsetof(MSVQAnim, Player) == 0x1C
@@ -764,7 +764,7 @@ GG_STATIC_ASSERT(offsetof(MSVQAnim, Player) == 0x1C
 // out of line (0x5CED1C), so the member's destructor is declared and not
 // defined here.
 //
-//   +0x1C  WideStringClass Text     constructed at 0x5CD367, released at
+//   +0x1C  Obj_007B66D0 Text     constructed at 0x5CD367, released at
 //                                   0x5CD3AC and 0x5CED1C
 //   +0x20  MSRect Bounds            the caller's rectangle copied in whole at
 //                                   0x5CD36C..0x5CD390, and copied back out by
@@ -789,7 +789,7 @@ public:
 class MSBitPrintAnim : public MSAnim
 {
 public:
-    WideStringClass Text;     // +0x1C
+    Obj_007B66D0 Text;     // +0x1C
     MSRect          Bounds;   // +0x20
     bool            Started;  // +0x30
     bool            Centred;  // +0x31
@@ -826,7 +826,7 @@ public:
     void Draw(int context, MSRect* area);
 
     MSRect GetRect();                     // 0x5CD3D0, slot 6
-    bool  IsFinished();                   // 0x5CD400, slot 7
+    bool  vf_7();                   // 0x5CD400, slot 7
     void  SetStarted(bool on);            // 0x5CD3C0
     void* DeletingDtor(unsigned int f);   // 0x5CED10
 };
@@ -838,7 +838,7 @@ GG_STATIC_ASSERT(offsetof(MSBitPrintAnim, Text) == 0x1C
 // MSPrintAnim is the one class in this run whose gameplay members are visible
 // from the three small slots reconstructed here.
 //
-//   +0x1C  WideStringClass Text     destroyed out of line at 0x5CED4C
+//   +0x1C  Obj_007B66D0 Text     destroyed out of line at 0x5CED4C
 //   +0x24  unsigned CharPos         `CMP [ESI+0x24],EAX; JBE` at 0x5CE312 —
 //                                   unsigned against the string length
 //   +0x28  unsigned LineCount       `CMP [ESI+0x28],2; JBE` at 0x5CE317
@@ -857,7 +857,7 @@ public:
 class MSPrintAnim : public MSAnim
 {
 public:
-    WideStringClass Text;        // +0x1C
+    Obj_007B66D0 Text;        // +0x1C
     // The character count the layout walks (`CMP EDI,EAX` / `JB` at 0x5CE484
     // against this member, and `TEST EAX,EAX` / `JBE` at 0x5CE3FC): unsigned.
     unsigned int    Field20;     // +0x20
@@ -897,7 +897,7 @@ public:
 
     // 0x5CE330 — the measured width of one line of the given text, stopping
     // at the terminator or the first newline.
-    int   MeasureWidth(WideStringClass* text);
+    int   MeasureWidth(Obj_007B66D0* text);
 
     MSRect GetRect();                     // 0x5CE2B0, slot 6
     void  SetActive(bool on);             // 0x5CE2E0
@@ -905,7 +905,7 @@ public:
     // `XOR EAX,EAX`), where a `bool` return gives the one-byte form. This one
     // override answers an int even though the slot's other implementations
     // answer a byte.
-    int   IsFinished();                   // 0x5CE300, slot 7
+    int   vf_7();                   // 0x5CE300, slot 7
     void* DeletingDtor(unsigned int f);   // 0x5CED40
 };
 GG_STATIC_ASSERT(offsetof(MSPrintAnim, Interval) == 0x2C
@@ -975,7 +975,7 @@ public:
     // and the enabled flag starts CLEAR and is raised again at the end of the
     // derived build-up (`MOV BYTE PTR [ESI+0xC],BL` at 0x5CE4B7 then
     // `MOV BYTE PTR [ESI+0xC],1` at 0x5CE50B).
-    __forceinline void InitEmpty()
+    __forceinline void Inline_005CE4A0()
     {
         Field04 = 0;
         Field08 = 0;
@@ -994,7 +994,7 @@ public:
     bool  Update(int context, MSRect* out);  // 0x5CE7D0, slot 4
     void  Draw(int context, MSRect* area);   // 0x5CE8C0, slot 5
     MSRect GetRect();                     // 0x5CEA80, slot 6
-    bool  IsFinished();                   // 0x5CEAB0, slot 7
+    bool  vf_7();                   // 0x5CEAB0, slot 7
     void  Attach(void* target);           // 0x5CEA40, slot 8
     void* DeletingDtor(unsigned int f);   // 0x5CED70
 };

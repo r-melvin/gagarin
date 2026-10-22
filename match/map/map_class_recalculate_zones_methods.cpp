@@ -73,8 +73,8 @@ void Map_0056D5A0::RecalculateZones(CellStruct_0056D5A0& cell)
     int idx = (this->At_F8 + this->At_F4 + 1) * cell.Y + cell.X;
     if (idx < 0) {
         idx = 0;
-    } else if (idx >= this->ZoneCount) {
-        idx = this->ZoneCount - 1;
+    } else if (idx >= this->unknown_6C) {
+        idx = this->unknown_6C - 1;
     }
 
     Zone_0056D5A0* here = this->Zones + idx;

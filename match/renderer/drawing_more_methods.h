@@ -28,7 +28,7 @@ GG_STATIC_ASSERT(sizeof(RectangleStruct) == 0x10);
 // `MOV EAX,[ECX]; CALL [EAX+off]`. Only the slots the two matched methods invoke
 // carry real signatures; the rest merely pin the slot offsets.
 //   slot  5 (0x14): FillRect(Rect*, int)   — Fill      CALL [EAX+0x14]
-//   slot 23 (0x5C): GetOffset(int, int)    — GetBuffer CALL [EAX+0x5C]
+//   slot 23 (0x5C): vf_23(int, int)    — GetBuffer CALL [EAX+0x5C]
 //   slot 24 (0x60): Lock()                 — GetBuffer CALL [EAX+0x60]
 // ---------------------------------------------------------------------------
 class AlphaSurface
@@ -57,7 +57,7 @@ public:
     virtual void vf50() = 0;                                     // 0x50
     virtual void vf54() = 0;                                     // 0x54
     virtual void vf58() = 0;                                     // 0x58
-    virtual int  GetOffset(int x, int y) = 0;                    // 0x5C
+    virtual int  vf_23(int x, int y) = 0;                    // 0x5C
     virtual int  Lock() = 0;                                     // 0x60
 };
 

@@ -160,10 +160,10 @@ struct OverlayTiberiumView
     char unknown_00[0xC0];
     int  PaletteIndex;      // +0xC0
     char unknown_C4[0xE0 - 0xC4];
-    OverlayTypeClass* ImageType;   // +0xE0
+    OverlayTypeClass* unknown_E0;   // +0xE0
 };
 GG_STATIC_ASSERT(offsetof(OverlayTiberiumView, PaletteIndex) == 0xC0);
-GG_STATIC_ASSERT(offsetof(OverlayTiberiumView, ImageType) == 0xE0);
+GG_STATIC_ASSERT(offsetof(OverlayTiberiumView, unknown_E0) == 0xE0);
 // GLOBAL: GAMEMD 0xB0F4EC - the tiberium type array (a pointer to the array; read-only here).
 extern OverlayTiberiumView** OverlayTiberiumTypes;
 // FUNCTION: GAMEMD 0x5FDD20 (read-only here, matched elsewhere) - the tiberium type index of an overlay

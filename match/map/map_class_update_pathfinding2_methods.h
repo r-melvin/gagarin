@@ -66,7 +66,7 @@ extern CellClass   InvalidCell_00586990;
 struct Map_00586990
 {
     char                    _pad000[0x6C];             // +0x0000
-    int                     SubzoneCount;              // +0x006C
+    int                     unknown_6C;              // +0x006C
     SubzoneRecord_00586990* Subzones;                  // +0x0070
     char                    _pad074[0xF4 - 0x74];      // +0x0074
     int                     unknown_F4;                // +0x00F4
@@ -80,7 +80,7 @@ struct Map_00586990
     // FUNCTION: GAMEMD 0x586990 — MapClass::Update_Pathfinding_2.
     void Update_Pathfinding_2(CellVector_00586990* cells);
 };
-GG_STATIC_ASSERT(offsetof(Map_00586990, SubzoneCount) == 0x6C);
+GG_STATIC_ASSERT(offsetof(Map_00586990, unknown_6C) == 0x6C);
 GG_STATIC_ASSERT(offsetof(Map_00586990, Subzones)     == 0x70);
 GG_STATIC_ASSERT(offsetof(Map_00586990, unknown_F4)   == 0xF4);
 GG_STATIC_ASSERT(offsetof(Map_00586990, unknown_F8)   == 0xF8);

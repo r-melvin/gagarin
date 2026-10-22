@@ -98,7 +98,7 @@ struct VeinholeMonsterClass
     virtual void Update();   // +0x5C  AbstractClass::Update
 
     char             _pad004[0xB0 - 0x04];   // +0x0004  (ObjectClass body + GrowthLogic.NextFreeNodeIndex)
-    Queue_0074CDF0*  GrowthQueue;            // +0x00B0
+    Queue_0074CDF0*  unknown_B0;            // +0x00B0
     char             _padB4[0x100 - 0xB4];   // +0x00B4
     char             IsDead;                 // +0x0100
 
@@ -111,7 +111,7 @@ struct VeinholeMonsterClass
     // FUNCTION: GAMEMD 0x74EF00
     static void* GetTerrainType();
 };
-GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, GrowthQueue) == 0xB0);
+GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(VeinholeMonsterClass, IsDead)      == 0x100);
 
 // FUNCTION: GAMEMD 0x410320 (decl; reloc) — the shared object save, __stdcall

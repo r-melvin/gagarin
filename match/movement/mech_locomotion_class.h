@@ -468,12 +468,12 @@ public:
     virtual bool __stdcall IsMovingHere(LocoCoord to);
     // FUNCTION: GAMEMD 0x5B01C0 (decl; reloc), unowned movement-step binding.
     void MovementStep(int arg);
-    LocoCoord MoveDestination;
+    LocoCoord unknown_18;
     LocoCoord MoveHeadTo;
     bool Moving;
     char unknown_31[3];
 };
-GG_STATIC_ASSERT(offsetof(MechLocomotionClass, MoveDestination)==0x18);
+GG_STATIC_ASSERT(offsetof(MechLocomotionClass, unknown_18)==0x18);
 GG_STATIC_ASSERT(offsetof(MechLocomotionClass, MoveHeadTo)==0x24);
 GG_STATIC_ASSERT(offsetof(MechLocomotionClass, Moving)==0x30);
 GG_STATIC_ASSERT(offsetof(MechLocomotionClass, unknown_31)==0x31);

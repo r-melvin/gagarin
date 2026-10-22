@@ -97,7 +97,7 @@ struct FlyLocomotionClass
     char  IsLanding;            // +0x0051
     char  _pad052[0x1];         // +0x0052
     char  IsSpinning;           // +0x0053
-    int   SpinRate;             // +0x0054
+    int   unknown_54;             // +0x0054
     int   SpinCount;            // +0x0058
 
     // FUNCTION: GAMEMD 0x4CFC40
@@ -109,7 +109,7 @@ GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, LocomotorVptr) == 0x04 &&
                  offsetof(FlyLocomotionClass, IsTakingOff) == 0x50 &&
                  offsetof(FlyLocomotionClass, IsLanding) == 0x51 &&
                  offsetof(FlyLocomotionClass, IsSpinning) == 0x53 &&
-                 offsetof(FlyLocomotionClass, SpinRate) == 0x54 &&
+                 offsetof(FlyLocomotionClass, unknown_54) == 0x54 &&
                  offsetof(FlyLocomotionClass, SpinCount) == 0x58);
 
 // The same object seen through its locomotor interface at +0x04. COM methods
@@ -145,12 +145,12 @@ struct ILocomotion_004CFD20
     Foot_004CFC40* LinkedTo;    // +0x0008  (object +0x0C)
     char  _pad00C[0x43];        // +0x000C
     char  IsSpinning;           // +0x004F  (object +0x53)
-    int   SpinRate;             // +0x0050  (object +0x54)
+    int   unknown_50;             // +0x0050  (object +0x54)
     int   SpinCount;            // +0x0054  (object +0x58)
 };
 GG_STATIC_ASSERT(offsetof(ILocomotion_004CFD20, LinkedTo) == 0x08 &&
                  offsetof(ILocomotion_004CFD20, IsSpinning) == 0x4F &&
-                 offsetof(ILocomotion_004CFD20, SpinRate) == 0x50 &&
+                 offsetof(ILocomotion_004CFD20, unknown_50) == 0x50 &&
                  offsetof(ILocomotion_004CFD20, SpinCount) == 0x54);
 
 // FUNCTION: GAMEMD 0x55A910 (decl; reloc) — the shared locomotor process tail.

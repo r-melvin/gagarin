@@ -434,7 +434,7 @@ void FUN_0072D460(int sideIndex);
 inline void ReleaseB0FB94Sets()
 {
     if (DAT_00B0FB9C.Convert != 0) {
-        DAT_00B0FB9C.Convert->DeleteThis(1);
+        DAT_00B0FB9C.Convert->vf_0(1);
         DAT_00B0FB9C.Convert = 0;
     }
     if (DAT_00B0FB9C.Palette != 0) {
@@ -446,7 +446,7 @@ inline void ReleaseB0FB94Sets()
         DAT_00B0FB94.Palette = 0;
     }
     if (DAT_00B0FB94.Convert != 0) {
-        DAT_00B0FB94.Convert->DeleteThis(1);
+        DAT_00B0FB94.Convert->vf_0(1);
         DAT_00B0FB94.Convert = 0;
     }
 }
@@ -951,7 +951,7 @@ void FUN_0072B930()
             DAT_00B0FD60.Palette = 0;
         }
         if (DAT_00B0FD60.Convert != 0) {
-            DAT_00B0FD60.Convert->DeleteThis(1);
+            DAT_00B0FD60.Convert->vf_0(1);
             DAT_00B0FD60.Convert = 0;
         }
     }
@@ -1001,7 +1001,7 @@ void FUN_0072BB10()
             DAT_00B0FD54.Palette = 0;
         }
         if (DAT_00B0FD54.Convert != 0) {
-            DAT_00B0FD54.Convert->DeleteThis(1);
+            DAT_00B0FD54.Convert->vf_0(1);
             DAT_00B0FD54.Convert = 0;
         }
     }
@@ -1056,7 +1056,7 @@ void FUN_0072BC60()
         DAT_00B0FD54.Palette = 0;
     }
     if (DAT_00B0FD54.Convert != 0) {
-        DAT_00B0FD54.Convert->DeleteThis(1);
+        DAT_00B0FD54.Convert->vf_0(1);
         DAT_00B0FD54.Convert = 0;
     }
 }
@@ -1109,7 +1109,7 @@ void FUN_0072BE40()
         DAT_00B0FD44.Set.Palette = 0;
     }
     if (DAT_00B0FD44.Set.Convert != 0) {
-        DAT_00B0FD44.Set.Convert->DeleteThis(1);
+        DAT_00B0FD44.Set.Convert->vf_0(1);
         DAT_00B0FD44.Set.Convert = 0;
     }
 }
@@ -1162,7 +1162,7 @@ void FUN_0072C020()
         DAT_00B0FD38.Set.Palette = 0;
     }
     if (DAT_00B0FD38.Set.Convert != 0) {
-        DAT_00B0FD38.Set.Convert->DeleteThis(1);
+        DAT_00B0FD38.Set.Convert->vf_0(1);
         DAT_00B0FD38.Set.Convert = 0;
     }
 }
@@ -1198,7 +1198,7 @@ void FUN_0072C0B0()
             DAT_00B0FD30.Palette = 0;
         }
         if (DAT_00B0FD30.Convert != 0) {
-            DAT_00B0FD30.Convert->DeleteThis(1);
+            DAT_00B0FD30.Convert->vf_0(1);
             DAT_00B0FD30.Convert = 0;
         }
     }
@@ -1253,7 +1253,7 @@ void FUN_0072C200()
         DAT_00B0FD30.Palette = 0;
     }
     if (DAT_00B0FD30.Convert != 0) {
-        DAT_00B0FD30.Convert->DeleteThis(1);
+        DAT_00B0FD30.Convert->vf_0(1);
         DAT_00B0FD30.Convert = 0;
     }
 }
@@ -1289,7 +1289,7 @@ void FUN_0072C290()
             DAT_00B0FD24.Palette = 0;
         }
         if (DAT_00B0FD24.Convert != 0) {
-            DAT_00B0FD24.Convert->DeleteThis(1);
+            DAT_00B0FD24.Convert->vf_0(1);
             DAT_00B0FD24.Convert = 0;
         }
     }
@@ -1344,7 +1344,7 @@ void FUN_0072C3E0()
         DAT_00B0FD24.Palette = 0;
     }
     if (DAT_00B0FD24.Convert != 0) {
-        DAT_00B0FD24.Convert->DeleteThis(1);
+        DAT_00B0FD24.Convert->vf_0(1);
         DAT_00B0FD24.Convert = 0;
     }
 }
@@ -1380,7 +1380,7 @@ void FUN_0072C470()
             DAT_00B0FD18.Palette = 0;
         }
         if (DAT_00B0FD18.Convert != 0) {
-            DAT_00B0FD18.Convert->DeleteThis(1);
+            DAT_00B0FD18.Convert->vf_0(1);
             DAT_00B0FD18.Convert = 0;
         }
     }
@@ -1435,7 +1435,7 @@ void FUN_0072C5C0()
         DAT_00B0FD18.Palette = 0;
     }
     if (DAT_00B0FD18.Convert != 0) {
-        DAT_00B0FD18.Convert->DeleteThis(1);
+        DAT_00B0FD18.Convert->vf_0(1);
         DAT_00B0FD18.Convert = 0;
     }
 }
@@ -1471,7 +1471,7 @@ void FUN_0072C650()
             DAT_00B0FD0C.Palette = 0;
         }
         if (DAT_00B0FD0C.Convert != 0) {
-            DAT_00B0FD0C.Convert->DeleteThis(1);
+            DAT_00B0FD0C.Convert->vf_0(1);
             DAT_00B0FD0C.Convert = 0;
         }
     }
@@ -1526,7 +1526,7 @@ void FUN_0072C7A0()
         DAT_00B0FD0C.Palette = 0;
     }
     if (DAT_00B0FD0C.Convert != 0) {
-        DAT_00B0FD0C.Convert->DeleteThis(1);
+        DAT_00B0FD0C.Convert->vf_0(1);
         DAT_00B0FD0C.Convert = 0;
     }
 }
@@ -1562,7 +1562,7 @@ void FUN_0072C830()
             DAT_00B0FD00.Palette = 0;
         }
         if (DAT_00B0FD00.Convert != 0) {
-            DAT_00B0FD00.Convert->DeleteThis(1);
+            DAT_00B0FD00.Convert->vf_0(1);
             DAT_00B0FD00.Convert = 0;
         }
     }
@@ -1617,7 +1617,7 @@ void FUN_0072C980()
         DAT_00B0FD00.Palette = 0;
     }
     if (DAT_00B0FD00.Convert != 0) {
-        DAT_00B0FD00.Convert->DeleteThis(1);
+        DAT_00B0FD00.Convert->vf_0(1);
         DAT_00B0FD00.Convert = 0;
     }
 }
@@ -1653,7 +1653,7 @@ void FUN_0072CA10()
             DAT_00B0FCF4.Palette = 0;
         }
         if (DAT_00B0FCF4.Convert != 0) {
-            DAT_00B0FCF4.Convert->DeleteThis(1);
+            DAT_00B0FCF4.Convert->vf_0(1);
             DAT_00B0FCF4.Convert = 0;
         }
     }
@@ -1703,7 +1703,7 @@ void FUN_0072CBE0()
             DAT_00B0FC74.Palette = 0;
         }
         if (DAT_00B0FC74.Convert != 0) {
-            DAT_00B0FC74.Convert->DeleteThis(1);
+            DAT_00B0FC74.Convert->vf_0(1);
             DAT_00B0FC74.Convert = 0;
         }
     }
@@ -1756,7 +1756,7 @@ void FUN_0072CD20()
         DAT_00B0FC74.Palette = 0;
     }
     if (DAT_00B0FC74.Convert != 0) {
-        DAT_00B0FC74.Convert->DeleteThis(1);
+        DAT_00B0FC74.Convert->vf_0(1);
         DAT_00B0FC74.Convert = 0;
     }
 }
@@ -1792,7 +1792,7 @@ void FUN_0072CDB0()
             DAT_00B0FCE8.Palette = 0;
         }
         if (DAT_00B0FCE8.Convert != 0) {
-            DAT_00B0FCE8.Convert->DeleteThis(1);
+            DAT_00B0FCE8.Convert->vf_0(1);
             DAT_00B0FCE8.Convert = 0;
         }
     }
@@ -1847,7 +1847,7 @@ void FUN_0072CF00()
         DAT_00B0FCE8.Palette = 0;
     }
     if (DAT_00B0FCE8.Convert != 0) {
-        DAT_00B0FCE8.Convert->DeleteThis(1);
+        DAT_00B0FCE8.Convert->vf_0(1);
         DAT_00B0FCE8.Convert = 0;
     }
 }
@@ -1883,7 +1883,7 @@ void FUN_0072CF90()
             DAT_00B0FCDC.Palette = 0;
         }
         if (DAT_00B0FCDC.Convert != 0) {
-            DAT_00B0FCDC.Convert->DeleteThis(1);
+            DAT_00B0FCDC.Convert->vf_0(1);
             DAT_00B0FCDC.Convert = 0;
         }
     }
@@ -1938,7 +1938,7 @@ void FUN_0072D0E0()
         DAT_00B0FCDC.Palette = 0;
     }
     if (DAT_00B0FCDC.Convert != 0) {
-        DAT_00B0FCDC.Convert->DeleteThis(1);
+        DAT_00B0FCDC.Convert->vf_0(1);
         DAT_00B0FCDC.Convert = 0;
     }
 }
@@ -1974,7 +1974,7 @@ void FUN_0072D170()
             DAT_00B0FCD0.Palette = 0;
         }
         if (DAT_00B0FCD0.Convert != 0) {
-            DAT_00B0FCD0.Convert->DeleteThis(1);
+            DAT_00B0FCD0.Convert->vf_0(1);
             DAT_00B0FCD0.Convert = 0;
         }
     }
@@ -2029,7 +2029,7 @@ void FUN_0072D2C0()
         DAT_00B0FCD0.Palette = 0;
     }
     if (DAT_00B0FCD0.Convert != 0) {
-        DAT_00B0FCD0.Convert->DeleteThis(1);
+        DAT_00B0FCD0.Convert->vf_0(1);
         DAT_00B0FCD0.Convert = 0;
     }
 }
@@ -2094,7 +2094,7 @@ void FUN_0072D350()
             DAT_00B0FBA4.Palette = 0;
         }
         if (DAT_00B0FBA4.Convert != 0) {
-            DAT_00B0FBA4.Convert->DeleteThis(1);
+            DAT_00B0FBA4.Convert->vf_0(1);
             DAT_00B0FBA4.Convert = 0;
         }
     }
@@ -2206,7 +2206,7 @@ void FUN_0072D6F0()
         DAT_00B0FBA4.Palette = 0;
     }
     if (DAT_00B0FBA4.Convert != 0) {
-        DAT_00B0FBA4.Convert->DeleteThis(1);
+        DAT_00B0FBA4.Convert->vf_0(1);
         DAT_00B0FBA4.Convert = 0;
     }
 }
@@ -2284,7 +2284,7 @@ void FUN_0072D960()
         DAT_00B0FBB0.Palette = 0;
     }
     if (DAT_00B0FBB0.Convert != 0) {
-        DAT_00B0FBB0.Convert->DeleteThis(1);
+        DAT_00B0FBB0.Convert->vf_0(1);
         DAT_00B0FBB0.Convert = 0;
     }
 }

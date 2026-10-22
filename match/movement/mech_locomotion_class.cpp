@@ -22,7 +22,7 @@ extern "C" const CLSID CLSID_MechLocomotion =
 
 // FUNCTION: GAMEMD 0x5AFEF0
 MechLocomotionClass::MechLocomotionClass()
-    : MoveDestination(DAT_00ABEE10), MoveHeadTo(DAT_00ABEE10), Moving(false)
+    : unknown_18(DAT_00ABEE10), MoveHeadTo(DAT_00ABEE10), Moving(false)
 {
 }
 
@@ -37,9 +37,9 @@ LocoCoord __stdcall MechLocomotionClass::Destination()
 {
     LocoCoord c;
     if (IsMoving()) {
-        c.X = MoveDestination.X;
-        c.Y = MoveDestination.Y;
-        c.Z = MoveDestination.Z;
+        c.X = unknown_18.X;
+        c.Y = unknown_18.Y;
+        c.Z = unknown_18.Z;
         return c;
     }
     c.X = DAT_00ABEE10.X;
@@ -88,16 +88,16 @@ void __stdcall MechLocomotionClass::MoveTo(LocoCoord to)
     if (MechFoot(LinkedTo)->vf_37C() || MechFoot(LinkedTo)->vf_380()
         || MechFoot(LinkedTo)->vf_1D4() || MechFoot(LinkedTo)->vf_1D8())
         return;
-    MoveDestination = to;
+    unknown_18 = to;
     if (MechCellAt(to)->Flags & 0x100)
-        MoveDestination.Z += LocoHeightScale(0x3C);
+        unknown_18.Z += LocoHeightScale(0x3C);
     Moving = true;
 }
 
 // FUNCTION: GAMEMD 0x5B0120
 void __stdcall MechLocomotionClass::StopMoving()
 {
-    MoveDestination = DAT_00ABEE10;
+    unknown_18 = DAT_00ABEE10;
     if (MoveHeadTo.X == DAT_00ABEE10.X && MoveHeadTo.Y == DAT_00ABEE10.Y && MoveHeadTo.Z == DAT_00ABEE10.Z)
         Moving = false;
 }

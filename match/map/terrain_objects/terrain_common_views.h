@@ -577,7 +577,7 @@ public:
     void Func_6D2790(MapObjRect rect, int arg);
     // FUNCTION: GAMEMD 0x6D6590 (decl; reloc) - the cell under a screen point, written to `out`
     // (which is also returned).
-    MapObjCell* PointToCell(MapObjCell* out, const MapObjPoint* point);
+    MapObjCell* FUN_006D6590(MapObjCell* out, const MapObjPoint* point);
 };
 GG_STATIC_ASSERT(offsetof(MapObjTacticalView, Offset) == 0xB0);
 // GLOBAL: GAMEMD 0x887324

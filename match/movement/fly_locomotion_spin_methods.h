@@ -19,7 +19,7 @@
 //   +0x50 IsTakingOff, +0x51 IsLanding, +0x52 the third flag - the three
 //                              byte stores at 0x4CFADF
 //   +0x53 IsSpinning           `MOV AL,[ESI+0x53]` in 0x4CE5A0
-//   +0x54 SpinRate             `MOV ECX,[ESI+0x54]` in 0x4CE5A0
+//   +0x54 unknown_54             `MOV ECX,[ESI+0x54]` in 0x4CE5A0
 // LinkedTo's members: +0x6C a signed count, +0x9C a coordinate, +0x388 the
 // facing slot, +0x6C4 the type. Its vtable slots: +0x2C the type
 // discriminant, +0x1BC, +0x184, +0x484.
@@ -173,7 +173,7 @@ struct FlyLocoSpin
     char  IsLanding;           // +0x0051
     char  Unknown52;           // +0x0052
     char  IsSpinning;          // +0x0053
-    int   SpinRate;            // +0x0054
+    int   unknown_54;            // +0x0054
 
     // FUNCTION: GAMEMD 0x4CE5A0
     void ProcessSpin();
@@ -187,7 +187,7 @@ GG_STATIC_ASSERT(offsetof(FlyLocoSpin, LocomotorVptr) == 0x04 &&
                  offsetof(FlyLocoSpin, IsLanding) == 0x51 &&
                  offsetof(FlyLocoSpin, Unknown52) == 0x52 &&
                  offsetof(FlyLocoSpin, IsSpinning) == 0x53 &&
-                 offsetof(FlyLocoSpin, SpinRate) == 0x54);
+                 offsetof(FlyLocoSpin, unknown_54) == 0x54);
 
 // FUNCTION: GAMEMD 0x705D60 (decl; reloc) — the client's own landing gate.
 struct FootGate_00705D60

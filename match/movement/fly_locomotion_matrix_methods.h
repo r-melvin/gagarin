@@ -26,8 +26,8 @@
 //
 // The linked object's own members, read off the member accesses:
 //   +0x009C Location        `MOV EDX,[EAX+0x9C]` in 0x4CFB00
-//   +0x0328 PitchRate       `MOV EAX,[ECX+0x328]` in 0x4CF610 (float)
-//   +0x032C RollRate        `FLD DWORD PTR [ECX+0x32C]` in 0x4CF610 (float)
+//   +0x0328 unknown_328       `MOV EAX,[ECX+0x328]` in 0x4CF610 (float)
+//   +0x032C unknown_32C        `FLD DWORD PTR [ECX+0x32C]` in 0x4CF610 (float)
 //   +0x03A0 SecondaryFacing `ADD ECX,0x3A0` before 0x4C93D0/0x4C94B0/0x4C94F0
 //   +0x0425 IsTilting       `MOV AL,[ECX+0x425]` in 0x4CF610
 // and its vtable slots +0x84 (the type object) and +0x1C8 (remaining travel).
@@ -117,16 +117,16 @@ struct Foot_004CF610
     char            _pad004[0x9C - 0x4];  // +0x0004
     Coord_004CF610  Location;             // +0x009C
     char            _pad0A8[0x328 - 0xA8];
-    float           PitchRate;            // +0x0328
-    float           RollRate;             // +0x032C
+    float           unknown_328;            // +0x0328
+    float           unknown_32C;             // +0x032C
     char            _pad330[0x3A0 - 0x330];
     Facing_004CF610 SecondaryFacing;      // +0x03A0
     char            _pad3B8[0x425 - 0x3B8];
     char            IsTilting;            // +0x0425
 };
 GG_STATIC_ASSERT(offsetof(Foot_004CF610, Location) == 0x9C &&
-                 offsetof(Foot_004CF610, PitchRate) == 0x328 &&
-                 offsetof(Foot_004CF610, RollRate) == 0x32C &&
+                 offsetof(Foot_004CF610, unknown_328) == 0x328 &&
+                 offsetof(Foot_004CF610, unknown_32C) == 0x32C &&
                  offsetof(Foot_004CF610, SecondaryFacing) == 0x3A0 &&
                  offsetof(Foot_004CF610, IsTilting) == 0x425);
 

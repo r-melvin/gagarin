@@ -56,7 +56,7 @@ struct Map_0056D5A0
     short*         ZoneRemap;           // +0x0018
     char           _pad01C[0x68 - 0x1C];
     Zone_0056D5A0* Zones;               // +0x0068
-    int            ZoneCount;           // +0x006C
+    int            unknown_6C;           // +0x006C
     char           _pad070[0xF4 - 0x70];
     int            At_F4;               // +0x00F4
     int            At_F8;               // +0x00F8
@@ -69,7 +69,7 @@ struct Map_0056D5A0
 };
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, ZoneRemap) == 0x18);
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, Zones) == 0x68);
-GG_STATIC_ASSERT(offsetof(Map_0056D5A0, ZoneCount) == 0x6C);
+GG_STATIC_ASSERT(offsetof(Map_0056D5A0, unknown_6C) == 0x6C);
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, At_F4) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Map_0056D5A0, At_F8) == 0xF8);
 

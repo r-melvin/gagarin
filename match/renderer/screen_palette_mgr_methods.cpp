@@ -22,7 +22,7 @@ void __cdecl FreeGamePalettePairs()
         DAT_00B0FB6C.Palette = 0;
     }
     if (DAT_00B0FB6C.Convert != 0) {
-        DAT_00B0FB6C.Convert->DeleteThis(3);
+        DAT_00B0FB6C.Convert->vf_0(3);
         DAT_00B0FB6C.Convert = 0;
     }
 
@@ -31,7 +31,7 @@ void __cdecl FreeGamePalettePairs()
         DAT_00B0FB64.Palette = 0;
     }
     if (DAT_00B0FB64.Convert != 0) {
-        DAT_00B0FB64.Convert->DeleteThis(3);
+        DAT_00B0FB64.Convert->vf_0(3);
         DAT_00B0FB64.Convert = 0;
     }
 
@@ -40,7 +40,7 @@ void __cdecl FreeGamePalettePairs()
         DAT_00B0FB5C.Palette = 0;
     }
     if (DAT_00B0FB5C.Convert != 0) {
-        DAT_00B0FB5C.Convert->DeleteThis(3);
+        DAT_00B0FB5C.Convert->vf_0(3);
         DAT_00B0FB5C.Convert = 0;
     }
 
@@ -49,7 +49,7 @@ void __cdecl FreeGamePalettePairs()
         DAT_00B0FB74.Palette = 0;
     }
     if (DAT_00B0FB74.Convert != 0) {
-        DAT_00B0FB74.Convert->DeleteThis(3);
+        DAT_00B0FB74.Convert->vf_0(3);
         DAT_00B0FB74.Convert = 0;
     }
 }
@@ -64,7 +64,7 @@ void __cdecl FreeGamePalettePairs()
 void __fastcall ReloadLoadingScreenVariant(const char* name)
 {
     if (DAT_00B0FB84.Convert != 0) {
-        DAT_00B0FB84.Convert->DeleteThis(1);
+        DAT_00B0FB84.Convert->vf_0(1);
         DAT_00B0FB84.Convert = 0;
     }
     if (DAT_00B0FB84.Palette != 0) {
@@ -119,7 +119,7 @@ void __cdecl FreeLoadingScreenPalettes()
         DAT_00B0FB7C.Palette = 0;
     }
     if (DAT_00B0FB7C.Convert != 0) {
-        DAT_00B0FB7C.Convert->DeleteThis(1);
+        DAT_00B0FB7C.Convert->vf_0(1);
         DAT_00B0FB7C.Convert = 0;
     }
 
@@ -128,7 +128,7 @@ void __cdecl FreeLoadingScreenPalettes()
         DAT_00B0FB84.Palette = 0;
     }
     if (DAT_00B0FB84.Convert != 0) {
-        DAT_00B0FB84.Convert->DeleteThis(1);
+        DAT_00B0FB84.Convert->vf_0(1);
         DAT_00B0FB84.Convert = 0;
     }
 
@@ -137,7 +137,7 @@ void __cdecl FreeLoadingScreenPalettes()
         DAT_00B0FB8C.Palette = 0;
     }
     if (DAT_00B0FB8C.Convert != 0) {
-        DAT_00B0FB8C.Convert->DeleteThis(1);
+        DAT_00B0FB8C.Convert->vf_0(1);
         DAT_00B0FB8C.Convert = 0;
     }
 }
@@ -149,7 +149,7 @@ void __cdecl FreeLoadingScreenPalettes()
 void __fastcall ReloadMpLobbySecondaryPalette(const char* name)
 {
     if (DAT_00B0FB9C.Convert != 0) {
-        DAT_00B0FB9C.Convert->DeleteThis(1);
+        DAT_00B0FB9C.Convert->vf_0(1);
         DAT_00B0FB9C.Convert = 0;
     }
     if (DAT_00B0FB9C.Palette != 0) {
@@ -168,7 +168,7 @@ void __fastcall ReloadMpLobbySecondaryPalette(const char* name)
 void __cdecl FreeMpLobbyPalettes()
 {
     if (DAT_00B0FB9C.Convert != 0) {
-        DAT_00B0FB9C.Convert->DeleteThis(1);
+        DAT_00B0FB9C.Convert->vf_0(1);
         DAT_00B0FB9C.Convert = 0;
     }
     if (DAT_00B0FB9C.Palette != 0) {
@@ -181,7 +181,7 @@ void __cdecl FreeMpLobbyPalettes()
         DAT_00B0FB94.Palette = 0;
     }
     if (DAT_00B0FB94.Convert != 0) {
-        DAT_00B0FB94.Convert->DeleteThis(1);
+        DAT_00B0FB94.Convert->vf_0(1);
         DAT_00B0FB94.Convert = 0;
     }
 }
@@ -235,7 +235,7 @@ void __cdecl FreeAutoLoginQueryPalette()
             DAT_00B0FD44.Set.Palette = 0;
         }
         if (DAT_00B0FD44.Set.Convert != 0) {
-            DAT_00B0FD44.Set.Convert->DeleteThis(1);
+            DAT_00B0FD44.Set.Convert->vf_0(1);
             DAT_00B0FD44.Set.Convert = 0;
         }
     }
@@ -281,7 +281,7 @@ void __cdecl FreeQuickmatchPalette()
             DAT_00B0FD38.Set.Palette = 0;
         }
         if (DAT_00B0FD38.Set.Convert != 0) {
-            DAT_00B0FD38.Set.Convert->DeleteThis(1);
+            DAT_00B0FD38.Set.Convert->vf_0(1);
             DAT_00B0FD38.Set.Convert = 0;
         }
     }
@@ -340,7 +340,7 @@ void __cdecl FreeMpScreenPalette()
             DAT_00B0FBB0.Palette = 0;
         }
         if (DAT_00B0FBB0.Convert != 0) {
-            DAT_00B0FBB0.Convert->DeleteThis(1);
+            DAT_00B0FBB0.Convert->vf_0(1);
             DAT_00B0FBB0.Convert = 0;
         }
     }
@@ -357,7 +357,7 @@ void __cdecl FreeFsMenuPalettes()
         DAT_00B0FCB0.Palette = 0;
     }
     if (DAT_00B0FCB0.Convert != 0) {
-        DAT_00B0FCB0.Convert->DeleteThis(1);
+        DAT_00B0FCB0.Convert->vf_0(1);
         DAT_00B0FCB0.Convert = 0;
     }
 
@@ -366,7 +366,7 @@ void __cdecl FreeFsMenuPalettes()
         DAT_00B0FCB8.Palette = 0;
     }
     if (DAT_00B0FCB8.Convert != 0) {
-        DAT_00B0FCB8.Convert->DeleteThis(1);
+        DAT_00B0FCB8.Convert->vf_0(1);
         DAT_00B0FCB8.Convert = 0;
     }
 
@@ -375,7 +375,7 @@ void __cdecl FreeFsMenuPalettes()
         DAT_00B0FCC0.Palette = 0;
     }
     if (DAT_00B0FCC0.Convert != 0) {
-        DAT_00B0FCC0.Convert->DeleteThis(1);
+        DAT_00B0FCC0.Convert->vf_0(1);
         DAT_00B0FCC0.Convert = 0;
     }
 
@@ -384,7 +384,7 @@ void __cdecl FreeFsMenuPalettes()
         DAT_00B0FBBC.Palette = 0;
     }
     if (DAT_00B0FBBC.Convert != 0) {
-        DAT_00B0FBBC.Convert->DeleteThis(1);
+        DAT_00B0FBBC.Convert->vf_0(1);
         DAT_00B0FBBC.Convert = 0;
     }
 }
@@ -400,7 +400,7 @@ void __cdecl FreeAudioTimerPairs()
         DAT_00B0FBC8.Palette = 0;
     }
     if (DAT_00B0FBC8.Convert != 0) {
-        DAT_00B0FBC8.Convert->DeleteThis(1);
+        DAT_00B0FBC8.Convert->vf_0(1);
         DAT_00B0FBC8.Convert = 0;
     }
 
@@ -409,7 +409,7 @@ void __cdecl FreeAudioTimerPairs()
         DAT_00B0FBD0.Palette = 0;
     }
     if (DAT_00B0FBD0.Convert != 0) {
-        DAT_00B0FBD0.Convert->DeleteThis(1);
+        DAT_00B0FBD0.Convert->vf_0(1);
         DAT_00B0FBD0.Convert = 0;
     }
 
@@ -418,7 +418,7 @@ void __cdecl FreeAudioTimerPairs()
         DAT_00B0FBD8.Palette = 0;
     }
     if (DAT_00B0FBD8.Convert != 0) {
-        DAT_00B0FBD8.Convert->DeleteThis(1);
+        DAT_00B0FBD8.Convert->vf_0(1);
         DAT_00B0FBD8.Convert = 0;
     }
 }

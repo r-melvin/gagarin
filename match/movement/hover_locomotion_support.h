@@ -173,11 +173,11 @@ struct HoverTypeView : HoverTypeVirtuals
     double unknown_360;
     double unknown_368;
     char unknown_370[0x71C - 0x370];
-    int RotationRate;
+    int unknown_71C;
 };
 GG_STATIC_ASSERT(offsetof(HoverTypeView, unknown_360) == 0x360);
 GG_STATIC_ASSERT(offsetof(HoverTypeView, unknown_368) == 0x368);
-GG_STATIC_ASSERT(offsetof(HoverTypeView, RotationRate) == 0x71C);
+GG_STATIC_ASSERT(offsetof(HoverTypeView, unknown_71C) == 0x71C);
 GG_STATIC_ASSERT(sizeof(HoverTypeView) == 0x720); // accessed prefix only
 
 // Rules prefix used for the pointer read at +0x94.

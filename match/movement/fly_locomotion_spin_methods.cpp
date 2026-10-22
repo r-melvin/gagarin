@@ -11,9 +11,9 @@
 
 // MATCHED (second look): the earlier residual was the destination of the
 // spin/facing addition. Reading the facing first into a named local and forming
-// `base + SpinRate * 256` as a separate int keeps the sum in 32 bits (the
+// `base + unknown_54 * 256` as a separate int keeps the sum in 32 bits (the
 // inlined form narrowed to 16-bit operations), and the negative-rate decay arm
-// must re-read `SpinRate` (`SpinRate = SpinRate + step`) rather than reuse the
+// must re-read `unknown_54` (`unknown_54 = unknown_54 + step`) rather than reuse the
 // `rate` local to get retail's `ADD ECX,EAX`.
 //
 // One frame of the touchdown spin: while the spin is running and the client
@@ -33,22 +33,22 @@ void FlyLocoSpin::ProcessSpin()
     if (((ILoco_004CE5A0*)&LocomotorVptr)->MoveStep() == 0) {
         DirValue_004C93D0 current;
         int base = LinkedTo->Facing.Current(&current)->Value;
-        int turn = base + SpinRate * 256;
+        int turn = base + unknown_54 * 256;
         Facing_004C9300 turned;
         turned.Raw = (short)turn;
         Facing_004C9300 passed = turned;
         LinkedTo->Facing.Assign(&passed);
 
-        int rate = SpinRate;
+        int rate = unknown_54;
         int step = abs(rate);
         if (step >= 1) {
             step = 1;
         }
         if (rate < 0) {
-            SpinRate = SpinRate + step;
+            unknown_54 = unknown_54 + step;
             return;
         }
-        SpinRate = rate - step;
+        unknown_54 = rate - step;
         return;
     }
 

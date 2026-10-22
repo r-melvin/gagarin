@@ -24373,9 +24373,9 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD320",
-  "sym": "?IsFinished@MSVQAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSVQAnim@@QAE_NXZ",
   "len": "0x4",
-  "name": "?IsFinished@MSVQAnim@@QAE_NXZ",
+  "name": "?vf_7@MSVQAnim@@QAE_NXZ",
   "status": "matched",
   "pct": 100
  },
@@ -24418,9 +24418,9 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CD400",
-  "sym": "?IsFinished@MSBitPrintAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSBitPrintAnim@@QAE_NXZ",
   "len": "0x4",
-  "name": "?IsFinished@MSBitPrintAnim@@QAE_NXZ",
+  "name": "?vf_7@MSBitPrintAnim@@QAE_NXZ",
   "status": "matched",
   "pct": 100
  },
@@ -24463,7 +24463,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CDB90",
-  "sym": "?MSCountPages@@YIHPAVWideStringClass@@PAVMSFont@@H@Z",
+  "sym": "?MSCountPages@@YIHPAVObj_007B66D0@@PAVMSFont@@H@Z",
   "len": "0xb9",
   "name": "",
   "status": "matched",
@@ -24508,7 +24508,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE300",
-  "sym": "?IsFinished@MSPrintAnim@@QAEHXZ",
+  "sym": "?vf_7@MSPrintAnim@@QAEHXZ",
   "len": "0x28",
   "name": "MSPrintAnim",
   "status": "matched",
@@ -24517,7 +24517,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CE330",
-  "sym": "?MeasureWidth@MSPrintAnim@@QAEHPAVWideStringClass@@@Z",
+  "sym": "?MeasureWidth@MSPrintAnim@@QAEHPAVObj_007B66D0@@@Z",
   "len": "0x64",
   "name": "?MeasureWidth@MSPrintAnim@@QAEHPAVWideString",
   "status": "matched",
@@ -24598,7 +24598,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEAB0",
-  "sym": "?IsFinished@MSPCXAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSPCXAnim@@QAE_NXZ",
   "len": "0x4",
   "name": "MSPCXAnim",
   "status": "matched",
@@ -24634,7 +24634,7 @@
  {
   "tu": "match/map/msanim_family_methods.cpp",
   "addr": "0x5CEB40",
-  "sym": "?IsFinished@MSAnim@@QAE_NXZ",
+  "sym": "?vf_7@MSAnim@@QAE_NXZ",
   "len": "0x3",
   "name": "MSAnim",
   "status": "matched",

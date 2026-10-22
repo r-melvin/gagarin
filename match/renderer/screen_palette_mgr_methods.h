@@ -80,7 +80,7 @@ GG_STATIC_ASSERT(sizeof(ColorStruct_Res) == 3);
 struct ConvertClass_Res
 {
     // VTABLE: GAMEMD slot 0 — scalar/vector deleting destructor.
-    virtual void DeleteThis(int flags);
+    virtual void vf_0(int flags);
 };
 
 // FUNCTION: GAMEMD 0x72ADE0 (decl; reloc) — ConvertClass::CreateFromFile.

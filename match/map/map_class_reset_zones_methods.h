@@ -42,7 +42,7 @@ struct Map_0056D460
     short*         ZoneConnections;            // +0x0018
     char           _pad001C[0x68 - 0x1C];      // +0x001C
     Zone_0056D460* Zones;                      // +0x0068
-    int            ZoneCount;                  // +0x006C
+    int            unknown_6C;                  // +0x006C
     char           _pad0070[0xF4 - 0x70];      // +0x0070
     int            unknown_F4;                 // +0x00F4
     int            unknown_F8;                 // +0x00F8
@@ -55,7 +55,7 @@ struct Map_0056D460
 };
 GG_STATIC_ASSERT(offsetof(Map_0056D460, ZoneConnections) == 0x18);
 GG_STATIC_ASSERT(offsetof(Map_0056D460, Zones)           == 0x68);
-GG_STATIC_ASSERT(offsetof(Map_0056D460, ZoneCount)       == 0x6C);
+GG_STATIC_ASSERT(offsetof(Map_0056D460, unknown_6C)       == 0x6C);
 GG_STATIC_ASSERT(offsetof(Map_0056D460, unknown_F4)      == 0xF4);
 GG_STATIC_ASSERT(offsetof(Map_0056D460, unknown_F8)      == 0xF8);
 
