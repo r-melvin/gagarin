@@ -163,6 +163,8 @@ struct SessionRef_00A8B238
     int FUN_0069BC20(int a1);
     // FUNCTION: GAMEMD 0x697E70 (decl; reloc)
     bool FUN_00697E70(void* house);
+    // FUNCTION: GAMEMD 0x69AE90 (decl; reloc), delay argument at 0x684514.
+    void FUN_0069AE90(int delay);
     // FUNCTION: GAMEMD 0x69BC60 (decl; reloc)
     int FUN_0069BC60(int index);
 };
@@ -350,6 +352,8 @@ struct NetPlayerClass
     char            unknown_4F[0x6B - 0x4F];
     int             unknown_6B;         // +0x6B (unaligned; siege team 1/2, stamped by 0x5CA680)
     int             Id;                 // +0x6F (unaligned; indexes the player tables)
+    // FUNCTION: GAMEMD 0x7350C0 (decl; reloc), ECX player at 0x684565.
+    const char* FUN_007350C0();
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Name) == 0x00);

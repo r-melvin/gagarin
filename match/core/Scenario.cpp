@@ -42,6 +42,21 @@
 #include "../_layout/house_type_class.h"
 #include "rules_class.h"
 #include "../_layout/building_class.h"
+#include "../_layout/audio_0048d080.h"
+#include "../platform/input_manager_class_methods.h"
+#include "../network/win_modem_class.h"
+
+// GLOBAL: GAMEMD 0x00B72D20
+extern WinModemClass* WinModem_00B72D20;
+// GLOBAL: GAMEMD 0x00A8022C
+extern HouseClass** HouseClass_ArrayItems;
+// GLOBAL: GAMEMD 0x00A8E2AC
+extern int DAT_00A8E2AC;
+// GLOBAL: GAMEMD 0x00A8E258
+extern wchar_t DAT_00A8E258[21];
+extern const char STR_0083D984[]; // STRING: GAMEMD 0x0083D984 (decl)
+extern const char STR_0083D94C[]; // STRING: GAMEMD 0x0083D94C (decl)
+void __fastcall FUN_005DA750(int id, int value); // FUNCTION: GAMEMD 0x5DA750 (decl; ECX id, EDX=1 at 0x684596)
 
 // GLOBAL: GAMEMD 0x008B41E4
 extern BuildingClass** DAT_008B41E4;
@@ -755,6 +770,57 @@ void __fastcall FUN_006842F0(bool enabled)
     } else if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
         FUN_004068E0(STR_0083D924);
         FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+}
+
+// FUNCTION: GAMEMD 0x684370
+bool __fastcall FUN_00684370()
+{
+    if (Session_00A8B238.GameMode == 0 || Session_00A8B238.GameMode == 5)
+        return true;
+    ScenarioElapsedTimer timeout;
+    ScenarioElapsedTimer update(300);
+    timeout = ScenarioElapsedTimer(3600);
+    double previous = DAT_00AC4F58.FUN_006433D0();
+    for (;;) {
+        DAT_0087F770->FUN_0054F000();
+        FUN_0048D080();
+        if (Session_00A8B238.GameMode == 1 && WinModem_00B72D20 &&
+            !(WinModem_00B72D20->Get_Modem_Status() & 0x80)) {
+            FUN_004068E0(STR_0083D984);
+            return false;
+        }
+        if (timeout.GetTimeLeft() <= 0) {
+            int source = 1;
+            for (int index = 1; index < PlayerCount_00A8DA84; ++index, ++source) {
+                if (DAT_00AC4F58.FUN_00643E90(source) < 0.999) {
+                    const char* first = Players_00A8DA78[index]->FUN_007350C0();
+                    const char* second = Players_00A8DA78[index]->FUN_007350C0();
+                    FUN_004068E0(STR_0083D94C, first, second);
+                    int id = Players_00A8DA78[index]->Id;
+                    FUN_005DA750(id, 1);
+                    if (Session_00A8B238.FUN_00697E70(HouseClass_ArrayItems[id])) {
+                        DAT_00A8E2AC = -1;
+                        memset(DAT_00A8E258, 0, 42);
+                    }
+                    --index;
+                }
+            }
+            return false;
+        }
+        double current = DAT_00AC4F58.FUN_006433D0();
+        if (current >= 0.9995) {
+            Session_00A8B238.FUN_0069AE90(ScenarioInstance->unknown_34BD ? 200 : 100);
+            return true;
+        }
+        if (current != previous) {
+            timeout = ScenarioElapsedTimer(7200);
+            previous = current;
+        }
+        if (update.GetTimeLeft() <= 0) {
+            update = ScenarioElapsedTimer(60);
+            Session_00A8B238.FUN_0069AE90(ScenarioInstance->unknown_34BD ? 200 : 100);
+        }
     }
 }
 

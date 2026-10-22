@@ -53,15 +53,8 @@ struct Queue_0048D080
 // GLOBAL: GAMEMD 0xA8EA70 — the queue.
 extern Queue_0048D080 DAT_00A8EA70;
 
-// The audio object the chat blip is played through.
-struct Audio_0048D080
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x643C50 (decl; reloc) — play a sound.
-    void FUN_00643C50(int flag, double value, int a3, int a4);
-};
-// GLOBAL: GAMEMD 0xAC4F58 — the audio object.
-extern Audio_0048D080 DAT_00AC4F58;
+// Existing receiver shared with the Scenario loading wait.
+#include "../_layout/audio_0048d080.h"
 
 // The scenario; only the byte at +0x3598 is read.
 struct Scenario_0048D080

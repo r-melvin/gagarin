@@ -92607,5 +92607,14 @@
   "name": "?FUN_0068C050@@YIXXZ",
   "status": "partial",
   "pct": 0.0
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x684370",
+  "sym": "?FUN_00684370@@YI_NXZ",
+  "len": "0x2a4",
+  "name": "?FUN_00684370@@YI_NXZ",
+  "status": "partial",
+  "pct": 72.2
  }
 ]
