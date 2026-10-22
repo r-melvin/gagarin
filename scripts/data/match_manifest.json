@@ -83941,9 +83941,9 @@
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "?FUN_006DA350@@YAXXZ",
+  "sym": "_$E4",
   "len": "0x1",
-  "name": "FUN_006DA350",
+  "name": "Tactical direction-check array cleanup",
   "status": "matched",
   "pct": 100
  },
@@ -92184,5 +92184,14 @@
   "name": "Tactical::FUN_006D8530",
   "status": "partial",
   "pct": 94.1
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DA230",
+  "sym": "?FUN_006DA230@Tactical@@QAEHH@Z",
+  "len": "0x11c",
+  "name": "Tactical::FUN_006DA230",
+  "status": "partial",
+  "pct": 91.0
  }
 ]

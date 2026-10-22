@@ -1084,10 +1084,33 @@ void Tactical::FUN_006DA160()
     unknown_D98 = value;
 }
 
-// FUNCTION: GAMEMD 0x6DA350
-// Empty function.
-void __cdecl FUN_006DA350()
+// GLOBAL: GAMEMD 0x84290C
+// Nine signed-offset lookup entries; retail indexes the middle at0x84291C.
+extern const int DAT_0084290C[9];
+
+// FUNCTION: GAMEMD 0x6DA230
+int Tactical::FUN_006DA230(int direction)
 {
+// SYNTHETIC: GAMEMD 0x6DA350
+// Generated cleanup for this function-local array.
+// GLOBAL: GAMEMD 0xB0CD98
+    static Pair_006D9F80 offsets[8] = {
+        Pair_006D9F80(0, -1), Pair_006D9F80(1, -1),
+        Pair_006D9F80(1, 0), Pair_006D9F80(1, 1),
+        Pair_006D9F80(0, 1), Pair_006D9F80(-1, 1),
+        Pair_006D9F80(-1, 0), Pair_006D9F80(-1, -1)
+    };
+    Pair_006D9F80 current = unknown_D64;
+    Pair_006D9F80 next(offsets[direction].unknown_00 + current.unknown_00,
+                      offsets[direction].unknown_04 + current.unknown_04);
+    if (!(next == current)) {
+        Pair_006D9F80 checked = next;
+        if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0)
+            next = checked;
+        direction = DAT_0084290C[(unknown_D64.unknown_00 - next.unknown_00) +
+                                (unknown_D64.unknown_04 - next.unknown_04) * 3 + 4];
+    }
+    return direction;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

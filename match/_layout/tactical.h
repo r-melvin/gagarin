@@ -72,6 +72,7 @@ public:
     void FUN_006D9F80(const Pair_006D9F80* value);
     void FUN_006D9FC0(const Pair_006D9F80* value);
     void FUN_006DA160();
+    int FUN_006DA230(int direction); // 0x6DA230; RET4
     int FUN_006DC420(); // 0x6DC420; no stack arguments
     ObjectClass* FUN_006DC430(int index); // 0x6DC430; RET 4
     void FUN_006DA740(); // 0x6DA740
