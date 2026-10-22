@@ -61,6 +61,8 @@ public:
     void NotifyLocalChanged(int index);
     // FUNCTION: GAMEMD 0x726400
     void ResetTimers();
+    // FUNCTION: GAMEMD 0x7264C0 (decl; reloc) -- RET 0x14.
+    bool FUN_007264C0(int event, ObjectClass* object, bool flag, bool persistent, int arg);
     // FUNCTION: GAMEMD 0x7265C0
     bool FireActions(ObjectClass* object, CellStruct location);
     // FUNCTION: GAMEMD 0x726630

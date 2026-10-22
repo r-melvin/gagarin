@@ -16,13 +16,38 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "techno_type_class.h"   // TechnoTypeClass (sizeof 0xDF8), AnimTypeClass
+#include "techno_type_class.h"
+#include "../core/vector_class.h"   // TechnoTypeClass (sizeof 0xDF8), AnimTypeClass
 
 // ---------------------------------------------------------------------------
 // AircraftTypeClass  (0xDF8..0xE0F, sizeof = 0xE10)
 // ---------------------------------------------------------------------------
+// VTABLE: GAMEMD 0x7E2868 (IPersistStream side)
+// VTABLE: GAMEMD 0x7E284C (IRTTITypeInfo side, +0x04)
+// VTABLE: GAMEMD 0x7E2844 (INoticeSink side, +0x08)
+// VTABLE: GAMEMD 0x7E283C (INoticeSource side, +0x0C)
 struct AircraftTypeClass : TechnoTypeClass
 {
+    // FUNCTION: GAMEMD 0x41C8B0 (declaration; constructor)
+    AircraftTypeClass(const char* id);
+    // FUNCTION: GAMEMD 0x41C9F0 (declaration; no-initialisation constructor)
+    AircraftTypeClass(const AbstractNoInit& noInit);
+    // FUNCTION: GAMEMD 0x41CA20 (declaration; destructor; slot 8 = 0x41CFE0)
+    ~AircraftTypeClass();
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 3   0x41CEB0
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x41CE20
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x41CE90
+    virtual int vf_11();                                                  // 11  0x41CFB0
+    virtual int vf_12();                                                  // 12  0x41CFC0
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x41CDB0
+    virtual int vf_16();                                                  // 16  0x41CFD0
+    virtual bool vf_25(CCINIClass* ini);                                  // 25  0x41CC20
+    virtual CoordStruct vf_31();                                          // 31  0x41CBF0
+    virtual bool vf_32(int a1, int a2);                                   // 32  0x41CBE0
+    virtual void* vf_35(void* house);                                     // 35  0x41CB20
+    virtual bool vf_40();                                                 // 40  0x41CB50
+    virtual bool vf_41();                                                 // 41  0x41CB60
+
     int            ArrayIndex;     // +0xDF8
     bool           Carryall;       // +0xDFC
     unsigned char  _pad_DFD[3];    // +0xDFD
@@ -36,6 +61,9 @@ struct AircraftTypeClass : TechnoTypeClass
     bool           AirportBound;   // +0xE0D
     bool           Fighter;        // +0xE0E
     unsigned char  align_E0F[1];   // +0xE0F
+
+    // GLOBAL: GAMEMD 0xA8B218
+    static DynamicVectorClass<AircraftTypeClass*> Array;
 };
 
 // --- Representative offset asserts (spanning the struct) + final sizeof ------

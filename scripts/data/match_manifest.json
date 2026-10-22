@@ -10771,11 +10771,11 @@
  {
   "tu": "match/core/abstract_class_ctor.cpp",
   "addr": "0x4101C0",
-  "sym": "??0AbstractClass@@QAE@UAbstractNoInit@@@Z",
-  "len": "0x2e",
-  "name": "AbstractClass::AbstractClass(AbstractNoInit)",
+  "sym": "??0AbstractClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2E",
+  "name": "AbstractClass::AbstractClass",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/memory_buffer_methods.cpp",
@@ -67299,6 +67299,1320 @@
   "sym": "?vf_81@ObjectClass@@UAE_NHHH@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_81",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41C6D0",
+  "sym": "_$E3",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00889F50)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41C6F0",
+  "sym": "_$E6",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00889F30)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41C870",
+  "sym": "_$E9",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00889F40)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41C8B0",
+  "sym": "??0AircraftTypeClass@@QAE@PBD@Z",
+  "len": "0x138",
+  "name": "AircraftTypeClass::AircraftTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41C9F0",
+  "sym": "??0AircraftTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2E",
+  "name": "AircraftTypeClass::AircraftTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CA20",
+  "sym": "??1AircraftTypeClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "AircraftTypeClass::~AircraftTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CB50",
+  "sym": "?vf_40@AircraftTypeClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "AircraftTypeClass::vf_40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CB60",
+  "sym": "?vf_41@AircraftTypeClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "AircraftTypeClass::vf_41",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CBE0",
+  "sym": "?vf_32@AircraftTypeClass@@UAE_NHH@Z",
+  "len": "0x5",
+  "name": "AircraftTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CBF0",
+  "sym": "?vf_31@AircraftTypeClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x24",
+  "name": "AircraftTypeClass::vf_31",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CC20",
+  "sym": "?vf_25@AircraftTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0x184",
+  "name": "AircraftTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CDB0",
+  "sym": "?vf_13@AircraftTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x67",
+  "name": "AircraftTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CE20",
+  "sym": "?Load@AircraftTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x64",
+  "name": "AircraftTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CFA0",
+  "sym": "?vf_39@ObjectTypeClass@@UAEPAXXZ",
+  "len": "0x7",
+  "name": "ObjectTypeClass::vf_39",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CFB0",
+  "sym": "?vf_11@AircraftTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "AircraftTypeClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CFC0",
+  "sym": "?vf_12@AircraftTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "AircraftTypeClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CFD0",
+  "sym": "?vf_16@AircraftTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "AircraftTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/aircraft_type_class.cpp",
+  "addr": "0x41CFE0",
+  "sym": "??_GAircraftTypeClass@@UAEPAXI@Z",
+  "len": "0x8D",
+  "name": "AircraftTypeClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D0A0",
+  "sym": "_$E3",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00889FF0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D0C0",
+  "sym": "_$E6",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00889FD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D240",
+  "sym": "_$E9",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00889FE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D490",
+  "sym": "??0AirstrikeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2E",
+  "name": "AirstrikeClass::AirstrikeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D4C0",
+  "sym": "??1AirstrikeClass@@UAE@XZ",
+  "len": "0x72",
+  "name": "AirstrikeClass::~AirstrikeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41D6F0",
+  "sym": "?Load@AirstrikeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x8F",
+  "name": "AirstrikeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DC50",
+  "sym": "?vf_23@AirstrikeClass@@UAEXXZ",
+  "len": "0x1",
+  "name": "AirstrikeClass::vf_23",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DC60",
+  "sym": "?FUN_0041DC60@AirstrikeClass@@QAEXXZ",
+  "len": "0x13",
+  "name": "AirstrikeClass::FUN_0041DC60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DD10",
+  "sym": "?FUN_0041DD10@AirstrikeClass@@QAEXXZ",
+  "len": "0x11",
+  "name": "AirstrikeClass::FUN_0041DD10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DD30",
+  "sym": "?vf_12@AirstrikeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "AirstrikeClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DD40",
+  "sym": "?vf_11@AirstrikeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "AirstrikeClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/airstrike_class.cpp",
+  "addr": "0x41DD50",
+  "sym": "??_GAirstrikeClass@@UAEPAXI@Z",
+  "len": "0x86",
+  "name": "AirstrikeClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x428E40",
+  "sym": "?vf_28@ObjectTypeClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "ObjectTypeClass::vf_28",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C35D0",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A0F38)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C35F0",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A0F20)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C3770",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_008A0F28)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C3A20",
+  "sym": "?FUN_004C3A20@@YIPAEABURemapPalette_004C3A20@@PBURemapEntry_004C3A20@@HPAE@Z",
+  "len": "0xA1",
+  "name": "FUN_004C3A20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C3C90",
+  "sym": "??0EgoClass@@QAE@HHPBGH@Z",
+  "len": "0x40",
+  "name": "EgoClass::EgoClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C3D00",
+  "sym": "?FUN_004C3D00@EgoClass@@QAEX_N@Z",
+  "len": "0xC7",
+  "name": "EgoClass::FUN_004C3D00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ego_class.cpp",
+  "addr": "0x4C3DD0",
+  "sym": "?FUN_004C3DD0@EgoClass@@QAEXPAX@Z",
+  "len": "0x5F",
+  "name": "EgoClass::FUN_004C3DD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/id_text_unit_004c4d00.cpp",
+  "addr": "0x4C4D30",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A3808)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/id_text_unit_004c4d00.cpp",
+  "addr": "0x4C4D50",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A37F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/id_text_unit_004c4d00.cpp",
+  "addr": "0x4C4ED0",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_008A37F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/id_text_unit_004c4d00.cpp",
+  "addr": "0x4C4F90",
+  "sym": "?FUN_004C4F90@Obj_004C4F90@@QBEPADXZ",
+  "len": "0x22",
+  "name": "Obj_004C4F90::FUN_004C4F90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5030",
+  "sym": "_$E3",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A38A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5050",
+  "sym": "_$E6",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A3890)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C51D0",
+  "sym": "_$E9",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_008A3898)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C52B0",
+  "sym": "??0EMPulseClass@@QAE@UCellStruct@@HHPAVTechnoClass@@@Z",
+  "len": "0xB1",
+  "name": "EMPulseClass::EMPulseClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5370",
+  "sym": "??0EMPulseClass@@QAE@XZ",
+  "len": "0x3A",
+  "name": "EMPulseClass::EMPulseClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C53B0",
+  "sym": "??0EMPulseClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2E",
+  "name": "EMPulseClass::EMPulseClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C53E0",
+  "sym": "??1EMPulseClass@@UAE@XZ",
+  "len": "0x89",
+  "name": "EMPulseClass::~EMPulseClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C54A0",
+  "sym": "?FUN_004C54A0@EMPulseClass@@SGXXZ",
+  "len": "0x37",
+  "name": "EMPulseClass::FUN_004C54A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C58C0",
+  "sym": "?FUN_004C58C0@EMPulseClass@@QAEXXZ",
+  "len": "0xD2",
+  "name": "EMPulseClass::FUN_004C58C0",
+  "status": "partial",
+  "pct": 64.9
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C59A0",
+  "sym": "?vf_13@EMPulseClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x4C",
+  "name": "EMPulseClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5A30",
+  "sym": "?Load@EMPulseClass@@UAGJPAUIStream@@@Z",
+  "len": "0x45",
+  "name": "EMPulseClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5AA0",
+  "sym": "?vf_12@EMPulseClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "EMPulseClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5AB0",
+  "sym": "?vf_11@EMPulseClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "EMPulseClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5AC0",
+  "sym": "??_GEMPulseClass@@UAEPAXI@Z",
+  "len": "0x9D",
+  "name": "EMPulseClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5EC0",
+  "sym": "?FUN_004C5EC0@@YIXXZ",
+  "len": "0x1",
+  "name": "FUN_004C5EC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/empulse_class.cpp",
+  "addr": "0x4C5ED0",
+  "sym": "?FUN_004C5ED0@@YIXXZ",
+  "len": "0x1",
+  "name": "FUN_004C5ED0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C5F10",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A3970)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C5F30",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008A3958)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C60B0",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_008A3960)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C60F0",
+  "sym": "_$E13",
+  "len": "0x3A",
+  "name": "dynamic initializer (DAT_008A38E0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C6130",
+  "sym": "_$E11",
+  "len": "0x1",
+  "name": "atexit callback (DAT_008A38E0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/evade_unit_globals.cpp",
+  "addr": "0x4C6170",
+  "sym": "?FUN_004C6170@@YIXXZ",
+  "len": "0x1",
+  "name": "FUN_004C6170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1B40",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008B3F08)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1B60",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_008B3EF0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1CE0",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_008B3EF8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1D00",
+  "sym": "?FUN_004E1D00@Obj_004E1D00@@QAEXXZ",
+  "len": "0xDB",
+  "name": "Obj_004E1D00::FUN_004E1D00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1DE0",
+  "sym": "?FUN_004E1DE0@Obj_004E1D00@@QAEXXZ",
+  "len": "0x1FF",
+  "name": "Obj_004E1D00::FUN_004E1DE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E1FE0",
+  "sym": "?FUN_004E1FE0@@YGHPAXIIJ@Z",
+  "len": "0x3DC",
+  "name": "FUN_004E1FE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E23C0",
+  "sym": "?FUN_004E23C0@@YIXPAUHWND__@@H0I@Z",
+  "len": "0x73",
+  "name": "FUN_004E23C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/game_controls_dialog.cpp",
+  "addr": "0x4E2440",
+  "sym": "_$E11",
+  "len": "0xC",
+  "name": "dynamic initializer (DAT_008B3F14)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E6300",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00A8EC98)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E6320",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00A8EB58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E64A0",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00A8EC68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7CE0",
+  "sym": "_$E11",
+  "len": "0xB",
+  "name": "dynamic initializer (DAT_00A8E8C8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7CF0",
+  "sym": "_$E14",
+  "len": "0x1C",
+  "name": "dynamic initializer (DAT_00A8E3A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7D10",
+  "sym": "_$E19",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00A8E7B0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7D30",
+  "sym": "_$E17",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8E7B0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7DC0",
+  "sym": "_$E24",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00A8ECE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7DE0",
+  "sym": "_$E22",
+  "len": "0xB",
+  "name": "atexit callback (DAT_00A8ECE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7DF0",
+  "sym": "_$E29",
+  "len": "0x18",
+  "name": "dynamic initializer (DAT_00A8ECD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7E10",
+  "sym": "_$E27",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8ECD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7E20",
+  "sym": "_$E32",
+  "len": "0xA",
+  "name": "dynamic initializer (DAT_00A8EB60)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7E90",
+  "sym": "_$E35",
+  "len": "0xA",
+  "name": "dynamic initializer (DAT_00A83E18)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7EA0",
+  "sym": "_$E38",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00A802C8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7ED0",
+  "sym": "_$E41",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_008B41F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E7F00",
+  "sym": "_$E44",
+  "len": "0x27",
+  "name": "dynamic initializer (DAT_00A83ED0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8030",
+  "sym": "_$E49",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00A8B238)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8050",
+  "sym": "_$E47",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8B238)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8060",
+  "sym": "_$E54",
+  "len": "0x24",
+  "name": "dynamic initializer (DAT_00A8EA70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8090",
+  "sym": "_$E52",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8EA70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E80A0",
+  "sym": "_$E59",
+  "len": "0x31",
+  "name": "dynamic initializer (DAT_00A8E9C0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E80E0",
+  "sym": "_$E57",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8E9C0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E80F0",
+  "sym": "_$E64",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00A8E8E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8110",
+  "sym": "_$E62",
+  "len": "0xA",
+  "name": "atexit callback (DAT_00A8E8E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8140",
+  "sym": "_$E67",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00A83CD4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8160",
+  "sym": "_$E70",
+  "len": "0x12",
+  "name": "dynamic initializer (DAT_00A80220)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8180",
+  "sym": "_$E73",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_00A8EAE4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E81A0",
+  "sym": "_$E76",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_00A83EC8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E81C0",
+  "sym": "_$E79",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_00A8E8C4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E81E0",
+  "sym": "_$E82",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_00A83DC0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8200",
+  "sym": "_$E85",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_008B40E0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8220",
+  "sym": "_$E88",
+  "len": "0x14",
+  "name": "dynamic initializer (DAT_00A8E980)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/global_objects_004e62d0.cpp",
+  "addr": "0x4E8260",
+  "sym": "?LockServer@TiberianSunClassFactory@@UAGJH@Z",
+  "len": "0x5",
+  "name": "TiberianSunClassFactory::LockServer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F75B0",
+  "sym": "?vf_29@ObjectTypeClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "ObjectTypeClass::vf_29",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F75E0",
+  "sym": "?vf_31@ObjectTypeClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x24",
+  "name": "ObjectTypeClass::vf_31",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F7610",
+  "sym": "?vf_33@ObjectTypeClass@@UAEHH@Z",
+  "len": "0x5",
+  "name": "ObjectTypeClass::vf_33",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F7620",
+  "sym": "?vf_34@ObjectTypeClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "ObjectTypeClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/object_type_class_slots.cpp",
+  "addr": "0x5F7630",
+  "sym": "?vf_38@ObjectTypeClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "ObjectTypeClass::vf_38",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E4B80",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E770)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E4BA0",
+  "sym": "_$E8",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E758)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E4D20",
+  "sym": "_$E11",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00B0E760)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E4F60",
+  "sym": "??1TagClass@@UAE@XZ",
+  "len": "0x2C4",
+  "name": "TagClass::~TagClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E5290",
+  "sym": "?FUN_006E5290@TagClass@@QBE_NXZ",
+  "len": "0x4",
+  "name": "TagClass::FUN_006E5290",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E52F0",
+  "sym": "?FUN_006E52F0@TagClass@@QBEPAUCellStruct@@PAU2@@Z",
+  "len": "0xC",
+  "name": "TagClass::FUN_006E52F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E5360",
+  "sym": "?FUN_006E5360@TagClass@@QBEHXZ",
+  "len": "0x19",
+  "name": "TagClass::FUN_006E5360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E53A0",
+  "sym": "?FUN_006E53A0@TagClass@@QAE_NHPAVObjectClass@@UCellStruct@@_NH@Z",
+  "len": "0x1B9",
+  "name": "TagClass::FUN_006E53A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E55A0",
+  "sym": "?FUN_006E55A0@TagClass@@QAEXH@Z",
+  "len": "0x10",
+  "name": "TagClass::FUN_006E55A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E5610",
+  "sym": "?vf_10@TagClass@@UAEXPAX_N@Z",
+  "len": "0x83",
+  "name": "TagClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E56E0",
+  "sym": "?vf_13@TagClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x4B",
+  "name": "TagClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E5730",
+  "sym": "?Load@TagClass@@UAGJPAUIStream@@@Z",
+  "len": "0x61",
+  "name": "TagClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E5890",
+  "sym": "?vf_12@TagClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TagClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_class_body.cpp",
+  "addr": "0x6E58A0",
+  "sym": "?vf_11@TagClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TagClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5900",
+  "sym": "_$E4",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E808)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5920",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E7F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5AA0",
+  "sym": "_$E10",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00B0E7F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5CA0",
+  "sym": "??1TagTypeClass@@UAE@XZ",
+  "len": "0x12D",
+  "name": "TagTypeClass::~TagTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5DD0",
+  "sym": "?FUN_006E5DD0@TagTypeClass@@QAE_NPAVTriggerTypeClass@@@Z",
+  "len": "0x24",
+  "name": "TagTypeClass::FUN_006E5DD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5E00",
+  "sym": "?FUN_006E5E00@TagTypeClass@@QAE_NPAVTriggerTypeClass@@@Z",
+  "len": "0x49",
+  "name": "TagTypeClass::FUN_006E5E00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E5E50",
+  "sym": "?vf_10@TagTypeClass@@UAEXPAX_N@Z",
+  "len": "0x1D",
+  "name": "TagTypeClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E62E0",
+  "sym": "?FUN_006E62E0@TagTypeClass@@QBE_NPAVTriggerTypeClass@@@Z",
+  "len": "0x26",
+  "name": "TagTypeClass::FUN_006E62E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E63E0",
+  "sym": "?vf_13@TagTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x21",
+  "name": "TagTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E6410",
+  "sym": "?Load@TagTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x56",
+  "name": "TagTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E6490",
+  "sym": "?vf_11@TagTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TagTypeClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E64A0",
+  "sym": "?vf_12@TagTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TagTypeClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/tag_type_class_body.cpp",
+  "addr": "0x6E64B0",
+  "sym": "?vf_16@TagTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "TagTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6870",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E8A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6890",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B0E888)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6A10",
+  "sym": "_$E8",
+  "len": "0x1A",
+  "name": "dynamic initializer (DAT_00B0E890)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6AB0",
+  "sym": "??0AbstractIdOwner@@QAE@PAVAbstractClass@@@Z",
+  "len": "0x66",
+  "name": "AbstractIdOwner::AbstractIdOwner",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6B20",
+  "sym": "??0AbstractIdOwner@@QAE@ABUCellStruct@@@Z",
+  "len": "0x42",
+  "name": "AbstractIdOwner::AbstractIdOwner",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6B70",
+  "sym": "??0AbstractIdOwner@@QAE@ABUCoordStruct@@@Z",
+  "len": "0x3C",
+  "name": "AbstractIdOwner::AbstractIdOwner",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6E20",
+  "sym": "?FUN_006E6E20@AbstractIdOwner@@QAEPAVAbstractClass@@XZ",
+  "len": "0xF6",
+  "name": "AbstractIdOwner::FUN_006E6E20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E6F20",
+  "sym": "?FUN_006E6F20@AbstractIdOwner@@QAEPAXXZ",
+  "len": "0xC4",
+  "name": "AbstractIdOwner::FUN_006E6F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/abstract_index_cast_sweep.cpp",
+  "addr": "0x6E7C20",
+  "sym": "?FUN_006E7C20@AbstractIdOwner@@QAEPAUCellClass@@XZ",
+  "len": "0x45",
+  "name": "AbstractIdOwner::FUN_006E7C20",
   "status": "matched",
   "pct": 100
  }

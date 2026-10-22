@@ -18,6 +18,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
 
+class CCINIClass;
+
 // AbstractTypeClass  (0x24..0x97, sizeof = 0x98)
 // VTABLE: GAMEMD 0x7E2000 (IPersistStream side, slots 0-26)
 // VTABLE: GAMEMD 0x7E1FE4 (IRTTITypeInfo side, +0x04)
@@ -28,13 +30,15 @@ class AbstractTypeClass : public AbstractClass
 public:
     // FUNCTION: GAMEMD 0x410800 (constructor declaration)
     AbstractTypeClass(const char* id);
+    // FUNCTION: GAMEMD 0x410960 (declaration; no-initialisation constructor)
+    AbstractTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x4109C0 (declaration; destructor, slot 8 = 0x410C30)
     virtual ~AbstractTypeClass();
     // Overrides and new slots of the primary table 0x7E2000 (27 slots).
     // Signatures are not recovered; placeholders keep the shape.
     virtual void vf_13(Obj_004A1D30* crc); // 13  0x410BE0
     virtual void vf_24();                 // 24  0x410C20 (new)
-    virtual void vf_25();                 // 25  0x410A60 (new)
+    virtual bool vf_25(CCINIClass* ini);  // 25  0x410A60 (new; RET 4, bool)
     virtual void vf_26();                 // 26  0x410B90 (new)
     char           ID[0x18];          // +0x24  strncpy(pID, 0x18)
     unsigned char  zero_3C;           // +0x3C  ID NUL-terminator slot

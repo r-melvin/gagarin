@@ -20,6 +20,8 @@
 
 class TagTypeClass;
 class TriggerClass;
+class ObjectClass;
+struct Obj_004A1D30;
 
 // Retail TypeDescriptor 0x8249E8 names ".?AVTagClass@@".
 class TagClass : public AbstractClass
@@ -32,24 +34,38 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x6E57A0
     virtual int vf_11();                                                  // 11  0x6E58A0
     virtual int vf_12();                                                  // 12  0x6E5890
+    virtual void vf_10(void* target, bool removed);                       // 10  0x6E5610
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x6E56E0
     // FUNCTION: GAMEMD 0x6E4DE0 (declaration; constructor)
     TagClass(TagTypeClass* type);
+    // The stream loader's in-place construction: only the four tables.
+    TagClass(const AbstractNoInit& noInit) : AbstractClass(noInit) {}
     // FUNCTION: GAMEMD 0x6E4F60 (declaration; destructor)
     ~TagClass();
     // FUNCTION: GAMEMD 0x6E5230
     void Destroy();
     // FUNCTION: GAMEMD 0x6E52A0
     static TagClass* __fastcall GetInstance(TagTypeClass* type);
+    // FUNCTION: GAMEMD 0x6E5290
+    bool FUN_006E5290() const;
+    // FUNCTION: GAMEMD 0x6E52F0
+    CellStruct* FUN_006E52F0(CellStruct* out) const;
     // FUNCTION: GAMEMD 0x6E5300
     bool HasCrossesVerticalLineEvent() const;
     // FUNCTION: GAMEMD 0x6E5320
     bool HasCrossesHorizontalLineEvent() const;
     // FUNCTION: GAMEMD 0x6E5340
     bool HasZoneEntryByEvent() const;
+    // FUNCTION: GAMEMD 0x6E5360
+    int FUN_006E5360() const;
     // FUNCTION: GAMEMD 0x6E5380
     bool ContainsTrigger(TriggerClass* trigger) const;
+    // FUNCTION: GAMEMD 0x6E53A0
+    bool FUN_006E53A0(int event, ObjectClass* object, CellStruct cell, bool flag, int arg);
     // FUNCTION: GAMEMD 0x6E5570
     static void __stdcall DeleteAll();
+    // FUNCTION: GAMEMD 0x6E55A0
+    void FUN_006E55A0(int index);
     // FUNCTION: GAMEMD 0x6E57C0
     bool ShouldReplace() const;
     // FUNCTION: GAMEMD 0x6E57F0
@@ -62,12 +78,12 @@ public:
     // FUNCTION: GAMEMD 0x6E58B0
     void* FUN_006E58B0(unsigned int flags);
 
-    void*         Type;            // +0x24 TagTypeClass*; ctor = arg1 @0x006E4DF0
-    void*         FirstTrigger;    // +0x28 TriggerClass*; ctor @0x006E4DF3
+    TagTypeClass* Type;            // +0x24 ctor = arg1 @0x006E4DF0
+    TriggerClass* FirstTrigger;    // +0x28 ctor @0x006E4DF3
     int           InstanceCount;   // +0x2C ctor @0x006E4DF6
     CellStruct    DefaultCoords;   // +0x30 ctor MOV [ESI+0x30],EAX(=[0x00B0E700]) @0x006E4DFE
-    unsigned char Destroyed;       // +0x34 ctor @0x006E4E01
-    unsigned char IsExecuting;     // +0x35 ctor @0x006E4E04
+    bool          Destroyed;       // +0x34 ctor @0x006E4E01
+    bool          IsExecuting;     // +0x35 ctor @0x006E4E04
     unsigned char unknown_36[2];   // +0x36 unclassified tail bytes; closes the object at 0x38
     // GLOBAL: GAMEMD 0xB0E720 -- loader-zero registry storage.
     static DynamicVectorClassLayout Array;

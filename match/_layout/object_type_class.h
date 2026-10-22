@@ -17,25 +17,43 @@
 #include "abstract_type_class.h"
 #include "components.h"
 
+// CoordStruct — absolute 3D lepton coordinate (3 ints, sizeof = 0xC).
+#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
+#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
+struct CoordStruct
+{
+    int X;   // +0x00
+    int Y;   // +0x04
+    int Z;   // +0x08
+};
+GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
+#endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
+
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
+// VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)
 struct ObjectTypeClass : AbstractTypeClass
 {
-    // Slots 27-39 of the primary table (40 slots, RTTI ".?AVObjectTypeClass@@").
-    // Placeholders; argument counts from each base body's RET n. Slots 32 and
-    // 35 hold the shared stub 0x4C9150 in the ObjectTypeClass table.
-    virtual void* vf_27(void* a1, void* a2);   // 27  0x41CF80
-    virtual int vf_28();                       // 28  0x428E40
-    virtual int vf_29();                       // 29  0x5F75B0
-    virtual int vf_30(int a1);                 // 30  0x5F75C0
-    virtual int vf_31(int a1);                 // 31  0x5F75E0
-    virtual int vf_32();                       // 32  0x4C9150
-    virtual int vf_33(int a1);                 // 33  0x5F7610
-    virtual int vf_34();                       // 34  0x5F7620
-    virtual int vf_35();                       // 35  0x4C9150
-    virtual void* vf_36(int a1);               // 36  0x5F7640
-    virtual void vf_37(int a1, int a2, int a3, int a4); // 37  0x5F7900
-    virtual int vf_38();                       // 38  0x5F7630
-    virtual void* vf_39();                     // 39  0x41CFA0: returns Image (+0xA4)
+    // Slots 5, 25 and 27-39 (retail table 0x7EF2D8). Placeholder names; the
+    // signatures are read off the bodies (argument bytes popped, return shape).
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x5F9720
+    virtual bool vf_25(CCINIClass* ini);                                  // 25  0x5F92D0
+    virtual CoordStruct vf_27(const CoordStruct& coord);                  // 27  0x41CF80
+    virtual int vf_28();                                                  // 28  0x428E40
+    virtual int vf_29();                                                  // 29  0x5F75B0
+    virtual CoordStruct vf_30();                                          // 30  0x5F75C0
+    virtual CoordStruct vf_31();                                          // 31  0x5F75E0
+    virtual bool vf_32(int a1, int a2) = 0;                               // 32  pure (__purecall 0x4C9150)
+    virtual int vf_33(int a1);                                            // 33  0x5F7610
+    virtual int vf_34();                                                  // 34  0x5F7620
+    virtual void* vf_35(void* house) = 0;                                 // 35  pure (__purecall 0x4C9150; creates an object)
+    virtual void* vf_36(int a1);                                          // 36  0x5F7640: RET 4, a1 unused
+    virtual void* vf_37(bool a1, bool a2, bool a3, void* house);          // 37  0x5F7900
+    virtual int vf_38();                                                  // 38  0x5F7630
+    virtual void* vf_39();                                                // 39  0x41CFA0
+    // FUNCTION: GAMEMD 0x5F8110 (decl; reloc)
+    void FUN_005F8110();
+    // FUNCTION: GAMEMD 0x5F9070 (decl; reloc)
+    void FUN_005F9070();
 
     ColorStruct   RadialColor;            // +0x98  (3 bytes)
     unsigned char unused_9B;              // +0x9B

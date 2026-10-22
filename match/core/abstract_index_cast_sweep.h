@@ -93,12 +93,26 @@ GG_STATIC_ASSERT(offsetof(IndexNode, ID) == 0x0);
 GG_STATIC_ASSERT(offsetof(IndexNode, Data) == 0x4);
 GG_STATIC_ASSERT(sizeof(IndexNode) == 0x8);
 
+class AbstractClass;
+struct CellClass;
+struct CellStruct;
+struct CoordStruct;
+
 // The owner: an integer ID at +0 and the one-byte abstract tag at +4. Every
-// member of the family is a method on this shape.
+// member of the family is a method on this shape. The constructors encode an
+// object (tag 0x34, its IRTTITypeInfo id), a cell (tag 0x0B, X + Y * 1000) or
+// nothing (tag 0).
 struct AbstractIdOwner
 {
     int  ID;      // +0x0000
     char Rtti;    // +0x0004
+
+    AbstractIdOwner(AbstractClass* object);        // FUNCTION: GAMEMD 0x6E6AB0
+    AbstractIdOwner(const CellStruct& cell);       // FUNCTION: GAMEMD 0x6E6B20
+    AbstractIdOwner(const CoordStruct& coord);     // FUNCTION: GAMEMD 0x6E6B70
+    AbstractClass* FUN_006E6E20();                  // FUNCTION: GAMEMD 0x6E6E20
+    void* FUN_006E6F20();                          // FUNCTION: GAMEMD 0x6E6F20
+    CellClass* FUN_006E7C20();                      // FUNCTION: GAMEMD 0x6E7C20
 
     void* AsAbstractTypeClass();         // FUNCTION: GAMEMD 0x6E6BB0
     void* AsTagClass();                  // FUNCTION: GAMEMD 0x6E6C80
@@ -125,7 +139,7 @@ GG_STATIC_ASSERT(offsetof(AbstractIdOwner, Rtti) == 0x4);
 // The index itself. Four of the five members are pinned by the four absolute
 // displacements the family touches - 0xB0E840, 0xB0E844, 0xB0E84C and 0xB0E850
 // - which places the never-read size field at 0xB0E848.
-struct IndexClass
+struct AbstractIndexTable
 {
     IndexNode* IndexTable;    // +0x0000   0xB0E840
     int        IndexCount;    // +0x0004   0xB0E844
@@ -135,16 +149,21 @@ struct IndexClass
 
     IndexNode* SearchSorted(const int* key);
     void**     Fetch(const AbstractIdOwner* owner);
+    // The second spelling of the lookup (0x6E6E20): presence test first, the
+    // binary search out of line in 0x523440.
+    IndexNode* SearchForNode(const int& id);
+    bool       IsPresent(const int& id);
+    void**     FetchIndex(const int& id);
 };
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexTable) == 0x0);
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexCount) == 0x4);
-GG_STATIC_ASSERT(offsetof(IndexClass, IndexSize) == 0x8);
-GG_STATIC_ASSERT(offsetof(IndexClass, IsSorted) == 0xC);
-GG_STATIC_ASSERT(offsetof(IndexClass, Archive) == 0x10);
-GG_STATIC_ASSERT(sizeof(IndexClass) == 0x14);
+GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexTable) == 0x0);
+GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexCount) == 0x4);
+GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IndexSize) == 0x8);
+GG_STATIC_ASSERT(offsetof(AbstractIndexTable, IsSorted) == 0xC);
+GG_STATIC_ASSERT(offsetof(AbstractIndexTable, Archive) == 0x10);
+GG_STATIC_ASSERT(sizeof(AbstractIndexTable) == 0x14);
 
 // GLOBAL: GAMEMD 0xB0E840
-extern IndexClass AbstractIndex;
+extern AbstractIndexTable AbstractIndex;
 // GLOBAL: GAMEMD 0xB78828   the slot the fetch yields on a miss
 extern void* IndexErrorValue;
 
@@ -162,7 +181,7 @@ extern void* IndexErrorValue;
 //     exit falls into the error block and the archive store sits in the cold
 //     tail past the return. Spelled `if (node == 0) goto error; ... goto found;`
 //     with `found` last, cl lays the store inline and the tail diverges (63.0%).
-inline IndexNode* IndexClass::SearchSorted(const int* key)
+inline IndexNode* AbstractIndexTable::SearchSorted(const int* key)
 {
     int k = *key;
     IndexNode* base = IndexTable;
@@ -187,7 +206,7 @@ inline IndexNode* IndexClass::SearchSorted(const int* key)
     return 0;
 }
 
-inline void** IndexClass::Fetch(const AbstractIdOwner* owner)
+inline void** AbstractIndexTable::Fetch(const AbstractIdOwner* owner)
 {
     IndexNode* node;
 
@@ -221,6 +240,48 @@ store:
 
 found:
     return &node->Data;
+}
+
+// FUNCTION: GAMEMD 0x523440 (decl; reloc) -- __fastcall sorted search: table in ECX, count in EDX, key by pointer.
+IndexNode* __fastcall FUN_00523440(IndexNode* table, int count, const IndexNode* key);
+
+inline IndexNode* AbstractIndexTable::SearchForNode(const int& id)
+{
+    if (IndexCount == 0) {
+        return 0;
+    }
+    if (!IsSorted) {
+        FUN_007C8B48(IndexTable, IndexCount, sizeof(IndexNode), FUN_0041C610);
+        Archive = 0;
+        IsSorted = true;
+    }
+    IndexNode key;
+    key.ID = id;
+    return FUN_00523440(IndexTable, IndexCount, &key);
+}
+
+inline bool AbstractIndexTable::IsPresent(const int& id)
+{
+    if (IndexCount == 0) {
+        return false;
+    }
+    if (Archive != 0 && Archive->ID == id) {
+        return true;
+    }
+    IndexNode* node = SearchForNode(id);
+    if (node != 0) {
+        Archive = node;
+        return true;
+    }
+    return false;
+}
+
+inline void** AbstractIndexTable::FetchIndex(const int& id)
+{
+    if (IsPresent(id)) {
+        return &Archive->Data;
+    }
+    return &IndexErrorValue;
 }
 
 #endif  // GG_MATCH_CORE_ABSTRACT_INDEX_CAST_SWEEP_H

@@ -9,6 +9,7 @@
 #include "abstract_type_class.h"
 #include "../core/vector_class.h"
 class TriggerTypeClass;
+struct Obj_004A1D30;
 struct TagINI_006E6080;
 struct CCINI_006E5ED0;
 struct CCINI_006E5FE0;
@@ -27,8 +28,19 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 6   0x6E6470
     virtual int vf_11();                                                  // 11  0x6E6490
     virtual int vf_12();                                                  // 12  0x6E64A0
+    virtual void vf_10(void* target, bool removed);                       // 10  0x6E5E50
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x6E63E0
+    virtual int vf_16();                                                  // 16  0x6E64B0
     // FUNCTION: GAMEMD 0x6E5B60 (constructor declaration)
     TagTypeClass(const char* id);
+    // The stream loader's in-place construction: only the four tables.
+    TagTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
+    // FUNCTION: GAMEMD 0x6E5CA0 (declaration; destructor)
+    ~TagTypeClass();
+    // FUNCTION: GAMEMD 0x6E5DD0
+    bool FUN_006E5DD0(TriggerTypeClass* trigger);
+    // FUNCTION: GAMEMD 0x6E5E00
+    bool FUN_006E5E00(TriggerTypeClass* trigger);
     // FUNCTION: GAMEMD 0x6E6310
     static TagTypeClass* __fastcall FindOrAllocate(const char* id);
     int               unknown_98;           // +0x0098
@@ -51,6 +63,8 @@ public:
     bool HasCrossesHorizontalLineEvent() const;   // GAMEMD 0x6E6250
     bool HasCrossesVerticalLineEvent() const;     // GAMEMD 0x6E6280
     bool HasZoneEntryByEvent() const;             // GAMEMD 0x6E62B0
+    // FUNCTION: GAMEMD 0x6E62E0
+    bool FUN_006E62E0(TriggerTypeClass* trigger) const;
 };
 GG_STATIC_ASSERT(offsetof(TagTypeClass, unknown_98) == 0x98);
 GG_STATIC_ASSERT(offsetof(TagTypeClass, Persistence) == 0x9C);

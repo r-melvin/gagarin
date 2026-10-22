@@ -17,6 +17,6 @@ AbstractClass::AbstractClass()
 }
 
 // FUNCTION: GAMEMD 0x4101C0
-AbstractClass::AbstractClass(AbstractNoInit)
+AbstractClass::AbstractClass(const AbstractNoInit&)
 {
 }

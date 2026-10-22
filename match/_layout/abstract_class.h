@@ -57,7 +57,7 @@ public:
     // FUNCTION: GAMEMD 0x410170 (declaration; native base constructor)
     AbstractClass();
     // FUNCTION: GAMEMD 0x4101C0 (declaration; no-initialisation constructor)
-    AbstractClass(AbstractNoInit noInit);
+    AbstractClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x7258D0 (declaration; ECX receiver, DL flag)
     void __fastcall AnnounceExpiredPointer(unsigned char removed);
 
@@ -88,10 +88,10 @@ public:
     // Slots 9-23. Names are placeholders unless noted; argument counts come
     // from each body's RET n (thiscall) and return types from its EAX/AL use.
     virtual void vf_9();                                  // 9   0x410470: bare RET
-    virtual void vf_10(void* a1, bool a2);                // 10  0x410480: RET 8
+    virtual void vf_10(void* target, bool removed);       // 10  0x410480: RET 8
     virtual int vf_11() = 0;                              // 11  pure (called by 0x410210)
     virtual int vf_12() = 0;                              // 12  pure
-    virtual void vf_13(Obj_004A1D30* crc);               // 13  0x410410: feeds the CRC accumulator
+    virtual void vf_13(Obj_004A1D30* crc);                // 13  0x410410: RET 4, feeds the checksum sink
     virtual int vf_14();                                  // 14  0x410490: returns -1
     virtual int vf_15();                                  // 15  0x4104A0: returns 0
     virtual int vf_16();                                  // 16  0x4104B0: returns 0

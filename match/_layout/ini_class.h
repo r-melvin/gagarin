@@ -29,12 +29,18 @@ public:
     INIEntry* GetEntry(const char* section, const char* key);
     // FUNCTION: GAMEMD 0x526CC0
     const char* GetKeyName(const char* section, int index);
+    // FUNCTION: GAMEMD 0x5276D0 (decl; reloc) -- read an integer, RET 0xC.
+    int FUN_005276D0(const char* section, const char* key, int fallback);
     // FUNCTION: GAMEMD 0x5275C0
     bool WriteInteger(const char* section, const char* key, int value, int format);
     // FUNCTION: GAMEMD 0x528660
     bool WriteString(const char* section, const char* key, const char* value);
+    // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- read a string into a buffer, RET 0x14.
+    int FUN_00528A10(const char* section, const char* key, const char* fallback, char* buffer, int size);
     // FUNCTION: GAMEMD 0x529560
     bool WriteBool(const char* section, const char* key, bool value);
+    // FUNCTION: GAMEMD 0x5295F0 (decl; reloc) -- read a bool, RET 0xC.
+    bool FUN_005295F0(const char* section, const char* key, bool fallback);
     // FUNCTION: GAMEMD 0x5297E0
     bool Write2Integers(const char* section, const char* key, int* values);
     // FUNCTION: GAMEMD 0x52AA90

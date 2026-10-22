@@ -23,7 +23,7 @@
 struct VersionClass
 {
     // VTABLE: GAMEMD 0x7EA57C
-    virtual ~VersionClass();
+    virtual ~VersionClass() {}
 
     unsigned int   Version;              // +0x0004  cached (major<<16)|minor
     unsigned short MajorVersion;         // +0x0008

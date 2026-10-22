@@ -31,14 +31,8 @@
 // Local component structs (sizes proven by the oracle doc).
 // ---------------------------------------------------------------------------
 
-// CoordStruct - lepton 3-space coordinate (size = 0xC).
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
-GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
+// CoordStruct - lepton 3-space coordinate (size = 0xC); now provided, guarded,
+// by object_type_class.h.
 
 // _GUID - Locomotor class id (size = 0x10).
 struct GUIDStruct
@@ -90,6 +84,18 @@ struct ColorScheme;
 // ---------------------------------------------------------------------------
 struct TechnoTypeClass : ObjectTypeClass
 {
+    // FUNCTION: GAMEMD 0x710AF0 (declaration; constructor) -- RET 8.
+    TechnoTypeClass(const char* id, int speedType);
+    // FUNCTION: GAMEMD 0x711840 (declaration; no-initialisation constructor)
+    TechnoTypeClass(const AbstractNoInit& noInit);
+    // FUNCTION: GAMEMD 0x711AE0 (declaration; destructor)
+    ~TechnoTypeClass();
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
+    virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
+    virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
+    virtual bool vf_40();                                                 // 40
+    virtual bool vf_41();                                                 // 41
+
     int             WalkRate;                       // +0x294
     int             IdleRate;                       // +0x298
     AbilitiesStruct VeteranAbilities;               // +0x29C (0x12)
