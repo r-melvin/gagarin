@@ -113,7 +113,7 @@ bool ShapeButtonClass::AI()
 }
 
 // FUNCTION: GAMEMD 0x6CFCC0
-int __fastcall ShapeButtonClass::FindIndex(const char* name)
+int ShapeButtonClass::FindIndex(const char* name)
 {
     int index = 0;
     const char* const* p;
@@ -127,7 +127,7 @@ int __fastcall ShapeButtonClass::FindIndex(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x6CFD40
-ShapeButtonClass* __fastcall ShapeButtonClass::GetButton(int index)
+ShapeButtonClass* ShapeButtonClass::GetButton(int index)
 {
     int slot = ButtonIndexTable[index];
     if (slot >= 0 && slot < 0x19)
@@ -136,8 +136,8 @@ ShapeButtonClass* __fastcall ShapeButtonClass::GetButton(int index)
 }
 
 // FUNCTION: GAMEMD 0x6D09C0
-void __fastcall ShapeButtonClass::SetToolTip(ShapeButtonClass* pButton,
-                                             const char* tip)
+void ShapeButtonClass::SetToolTip(ShapeButtonClass* pButton,
+                                  const char* tip)
 {
     if (pButton)
     {

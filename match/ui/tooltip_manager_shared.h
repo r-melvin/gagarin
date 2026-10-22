@@ -337,8 +337,8 @@ inline void ClearDimension(ToolTipManagerData& data)
 }
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) — StringTable::LoadString.
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
-                                           const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
 // LIBRARY: GAMEMD 0x7CA405 (CRT wcslen).
 extern "C" unsigned int __cdecl wcslen(const wchar_t* text);
 // FUNCTION: GAMEMD 0x7CA422 (LIBRARY, CRT wcsncpy).

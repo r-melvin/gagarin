@@ -144,9 +144,9 @@ GG_STATIC_ASSERT(offsetof(DragTargetInfo, Window) == 0x04 &&
 GG_STATIC_ASSERT(sizeof(DragTargetInfo) == 0x28);
 
 // FUNCTION: GAMEMD 0x776490 (decl; reloc)
-DragTargetInfo __fastcall FUN_00776490(LPARAM point);
+DragTargetInfo FUN_00776490(LPARAM point);
 
-HFONT __fastcall FUN_007760B0(HDC dc, const char* face, int height,
+HFONT FUN_007760B0(HDC dc, const char* face, int height,
                                     int width, unsigned style);
 
 // FUNCTION: GAMEMD 0x775BC0
@@ -198,7 +198,7 @@ BOOL CALLBACK ScaleChildEnumProc(HWND window, LPARAM relative)
 //
 // Return the cached font for (face, height, width, style), creating and
 // caching it when `dc` is supplied.
-HFONT __fastcall FUN_00775DB0(HDC dc, const char* face, int height,
+HFONT FUN_00775DB0(HDC dc, const char* face, int height,
                                 int width, int style)
 {
     FontCacheEntry entry;
@@ -232,7 +232,7 @@ HFONT __fastcall FUN_00775DB0(HDC dc, const char* face, int height,
 // Create a font of the given device size and style bits (1 bold, 2 italic,
 // 4 underline, 8 strike-out) in an identity-mapped DC; with a height, the
 // width is refitted from the first font's average character width.
-HFONT __fastcall FUN_007760B0(HDC dc, const char* face, int height,
+HFONT FUN_007760B0(HDC dc, const char* face, int height,
                                     int width, unsigned style)
 {
     POINT size;
@@ -281,7 +281,7 @@ HFONT __fastcall FUN_007760B0(HDC dc, const char* face, int height,
 // Finish a tree-view drag at `point`: ask the window under the point whether
 // it takes the drop (0x4C8), show the matching cursor, tear down the drag
 // image, deliver the drop (0x4CA) and clear the drop highlight.
-bool __fastcall FUN_00776320(LPARAM point)
+bool FUN_00776320(LPARAM point)
 {
     if (DAT_00B7309C) {
         ImageList_DragShowNolock(FALSE);

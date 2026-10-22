@@ -9,7 +9,7 @@
 // switch: VC6 turns a switch over these values into a jump table (2% match),
 // while retail is a straight compare chain in source order with the fallthrough
 // -1 emitted before the return blocks.
-int __fastcall SidebarClass::FUN_006ABC60(int abs, int idxType, int unused)
+int SidebarClass::FUN_006ABC60(int abs, int idxType, int unused)
 {
     if (abs == ABS_INFANTRYTYPE || abs == ABS_UNITTYPE)
         return 2;

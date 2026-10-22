@@ -45,7 +45,7 @@
 // FUNCTION: GAMEMD 0x5004E0 (decl; reloc) — ObjectTypeClass::IsBuildCat5,
 // already matched in match/core/object_type_class.cpp; called here with the
 // discriminant in ECX and the index in EDX.
-int __fastcall IsBuildCat5_006A5F20(int abs, int idx);
+int IsBuildCat5_006A5F20(int abs, int idx);
 
 struct TechnoType_006A5F20;
 

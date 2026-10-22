@@ -55,7 +55,7 @@ struct Font_005D49A0
 };
 // FUNCTION: GAMEMD 0x4A60D0 (decl; reloc) — the font for a set of print
 // flags (flags in ECX).
-Font_005D49A0* __fastcall FUN_004A60D0(int flags);
+Font_005D49A0* FUN_004A60D0(int flags);
 
 // Surface: only the rect query slot.
 struct SurfaceVtbl_005D49A0;

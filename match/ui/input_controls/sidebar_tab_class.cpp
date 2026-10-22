@@ -94,7 +94,7 @@ extern SidebarShapeFile* CommandButtonShape_00B0FA90;
 extern SidebarTabRect* ButtonRectA_00B0FC60;
 extern SidebarTabRect* ButtonRectB_00B0FC64;
 // FUNCTION: GAMEMD 0x72F430 (decl; reloc) -- returns non-zero when the tab bar is enabled.
-char __fastcall SidebarTabBarEnabled();
+char SidebarTabBarEnabled();
 
 // FUNCTION: GAMEMD 0x6D03A0
 void TabClass::vf_08()
@@ -239,20 +239,20 @@ void FUN_00730D60();
 void FUN_00730EA0();
 void FUN_00732950();
 // FUNCTION: GAMEMD 0x731A50 / 0x731A70 (decl; reloc) -- toggle handlers, flag in CL.
-void __fastcall FUN_00731A50(bool flag);
-void __fastcall FUN_00731A70(bool flag);
+void FUN_00731A50(bool flag);
+void FUN_00731A70(bool flag);
 // FUNCTION: GAMEMD 0x730A10 / 0x730990 / 0x731060 / 0x7313A0 / 0x7311C0 / 0x7310D0
 // (decl; reloc) -- numbered command handlers, index in ECX.
-int __fastcall FUN_00730A10(int index);
-bool __fastcall FUN_00730990(int index);
-void __fastcall FUN_00731060(int index);
-void __fastcall FUN_007313A0(int index);
-void __fastcall FUN_007311C0(int index);
-void __fastcall FUN_007310D0(int index);
+int FUN_00730A10(int index);
+bool FUN_00730990(int index);
+void FUN_00731060(int index);
+void FUN_007313A0(int index);
+void FUN_007311C0(int index);
+void FUN_007310D0(int index);
 // FUNCTION: GAMEMD 0x6CFD40 (decl; reloc) -- ShapeButtonClass::GetButton.
-SidebarButton* __fastcall SidebarGetButton(int index);
+SidebarButton* SidebarGetButton(int index);
 // FUNCTION: GAMEMD 0x6D09C0 (decl; reloc) -- ShapeButtonClass::SetToolTip.
-void __fastcall SidebarSetToolTip(SidebarButton* button, const char* text);
+void SidebarSetToolTip(SidebarButton* button, const char* text);
 
 // Frames left on a countdown that started at `start` (-1: not started yet) and
 // lasts `delay` frames; zero once it has run out.
@@ -401,10 +401,10 @@ extern bool BarHover_00B0CD40;
 extern int BarHistoryCount_00B0CD44;
 extern SidebarSurfaceView* BarHistory_00B0CC00[4];
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) -- draw a shape (see sidebar_class_draw.cpp).
-void __fastcall SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
-                                 SidebarShapeFile* shape, int frame, Point2D* position,
-                                 SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
-                                 int zAdjust, int a10, int a11, int a12, Point2D offset);
+void SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
+                      SidebarShapeFile* shape, int frame, Point2D* position,
+                      SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
+                      int zAdjust, int a10, int a11, int a12, Point2D offset);
 
 // The last mouse position seen by the bar draw (a function-local static in retail).
 struct SidebarLastMouse

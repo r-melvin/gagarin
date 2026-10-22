@@ -43,7 +43,7 @@ __forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
 //
 // The category tests come first in every clause because that is retail's own
 // order — the category is compared, and only on a hit is the control ID walked.
-bool __fastcall FUN_00602B90(int nKey, GG_HWND hCtl)
+bool FUN_00602B90(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
@@ -76,7 +76,7 @@ bool __fastcall FUN_00602B90(int nKey, GG_HWND hCtl)
 // control ID 0x71C, so the answer is simply whether the keyed object is one of
 // them and the control is that one. Unlike its sibling this one answers a full
 // dword, which is why the constant returns are written as `int`.
-int __fastcall FUN_00603240(int nKey, GG_HWND hCtl)
+int FUN_00603240(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;

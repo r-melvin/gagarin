@@ -19,8 +19,8 @@
 // the second's (`MOV EAX,[storage]; JMP`), which is the retail block order.
 // A single `if (hr >= 0 && Read() >= 0)` inverts both branches (JL instead of
 // JGE) and puts the success block first.
-bool __fastcall LoadOptionsClass_ReadFromFile(const char* fileName,
-                                              SavegameInfo_0067FD20* info)
+bool LoadOptionsClass_ReadFromFile(const char* fileName,
+                                   SavegameInfo_0067FD20* info)
 {
     IStorage_0067FD20* storage = 0;
     unsigned short     wide[64];

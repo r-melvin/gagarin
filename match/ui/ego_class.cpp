@@ -43,11 +43,11 @@ struct RemapEntry_004C3A20
 GG_STATIC_ASSERT(sizeof(RemapEntry_004C3A20) == 4);
 
 // FUNCTION: GAMEMD 0x4C37D0 (decl; reloc) -- __fastcall, fills one 256-byte table.
-void __fastcall FUN_004C37D0(const RemapPalette_004C3A20& palette, unsigned char* table, int color, int ratio);
+void FUN_004C37D0(const RemapPalette_004C3A20& palette, unsigned char* table, int color, int ratio);
 
 // FUNCTION: GAMEMD 0x4C3A20
-unsigned char* __fastcall FUN_004C3A20(const RemapPalette_004C3A20& palette, const RemapEntry_004C3A20* entries,
-                                       int count, unsigned char* buffer)
+unsigned char* FUN_004C3A20(const RemapPalette_004C3A20& palette, const RemapEntry_004C3A20* entries,
+                            int count, unsigned char* buffer)
 {
     if (count != 0 && entries != 0)
     {
@@ -113,10 +113,10 @@ struct EgoFont
     int FUN_00433ED0(const wchar_t* text, int flag);
 };
 // FUNCTION: GAMEMD 0x4A60D0 (decl; reloc) -- __fastcall, the font for a set of print flags.
-EgoFont* __fastcall FUN_004A60D0(int flags);
+EgoFont* FUN_004A60D0(int flags);
 // FUNCTION: GAMEMD 0x6211D0 (decl; reloc) -- __fastcall text print.
-void __fastcall FUN_006211D0(int color, int unknown, EgoRect* rect, const wchar_t* text, int length,
-                             int align, int a7, void* a8, int a9);
+void FUN_006211D0(int color, int unknown, EgoRect* rect, const wchar_t* text, int length,
+                  int align, int a7, void* a8, int a9);
 
 // FUNCTION: GAMEMD 0x4C3C90
 EgoClass::EgoClass(int a1, int y, const wchar_t* text, int flags)

@@ -101,7 +101,7 @@ struct HashMap_00602B90
     int                Shift;        // +0x000C
     int                unknown_10;   // +0x0010
     int                unknown_14;   // +0x0014
-    unsigned (__fastcall* Hash)(const int* pKey);   // +0x0018
+    unsigned (* Hash)(const int* pKey);   // +0x0018
 };
 GG_STATIC_ASSERT(offsetof(HashMap_00602B90, Count) == 0x04);
 GG_STATIC_ASSERT(offsetof(HashMap_00602B90, Shift) == 0x0C);
@@ -111,8 +111,8 @@ GG_STATIC_ASSERT(offsetof(HashMap_00602B90, Hash) == 0x18);
 extern HashMap_00602B90 DAT_00AC1B00;
 
 // FUNCTION: GAMEMD 0x602B90 (__fastcall)
-bool __fastcall FUN_00602B90(int nKey, GG_HWND hCtl);
+bool FUN_00602B90(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x603240 (__fastcall)
-int __fastcall FUN_00603240(int nKey, GG_HWND hCtl);
+int FUN_00603240(int nKey, GG_HWND hCtl);
 
 #endif  // GG_MATCH_UI_DIALOG_TYPE_LOOKUP_PREDICATES_H

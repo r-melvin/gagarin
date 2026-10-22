@@ -17,14 +17,14 @@ extern const char DAT_0081B304[];
 
 // FUNCTION: GAMEMD 0x734E60 — resolve a label to its localised text. __fastcall
 // with two further arguments on the stack, which it pops itself.
-gg_wchar* __fastcall FUN_00734E60(const char* label, int flags,
+gg_wchar* FUN_00734E60(const char* label, int flags,
                                  const char* file, int line);
 // LIBRARY: GAMEMD 0x7CA564 — swprintf.
 extern "C" int __cdecl FUN_007CA564(gg_wchar* buffer, const gg_wchar* format, ...);
 
 // FUNCTION: GAMEMD 0x46D360
-void __fastcall FUN_0046D360(gg_wchar* buffer, int seconds);
+void FUN_0046D360(gg_wchar* buffer, int seconds);
 // FUNCTION: GAMEMD 0x470C90
-void __fastcall FUN_00470C90(gg_wchar* buffer, int seconds);
+void FUN_00470C90(gg_wchar* buffer, int seconds);
 
 #endif  // GG_MATCH_UI_FORMAT_DURATION_METHODS_H

@@ -35,7 +35,7 @@ GG_STATIC_ASSERT(offsetof(Coord_006D6070, Z) == 0x8);
 
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) — Tactical::AdjustForZ,
 // height in ECX, pixel lift in EAX.
-int __fastcall AdjustForZ_006D6070(int z);
+int AdjustForZ_006D6070(int z);
 
 // GLOBAL: GAMEMD 0xA8ED6B — Unsorted::ArmageddonMode (byte).
 extern unsigned char DAT_00A8ED6B;

@@ -17,7 +17,7 @@ extern void* ColorSchemeCollection;
 // loads the collection into ECX and the literal index into EDX rather than
 // pushing either — and it returns null when the index is out of range. The name
 // is descriptive; nothing in the binary attests a name for this address.
-void* __fastcall ColorSchemeCollection_GetItem(void* collection, int index);
+void* ColorSchemeCollection_GetItem(void* collection, int index);
 
 // The owning class is the real GadgetClass: GetColorScheme is declared there as a
 // static member (the scheme index the UI is currently drawing gadgets with, or 0

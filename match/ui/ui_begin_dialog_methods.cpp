@@ -21,7 +21,7 @@
 // zero-stores: `int i = DAT_00B72F50++` copies the index first (29.9%) and
 // `DAT_00B72F50 = i + 1` becomes an LEA (83.3%); only the standalone
 // increment INCs the already-consumed index register in place.
-void* __fastcall UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param)
+void* UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param)
 {
     void* tmpl = FUN_004A3B40(id, (const char*)5);
     if (tmpl == 0)

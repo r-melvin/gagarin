@@ -13,6 +13,6 @@ typedef struct HWND__* HWND;
 
 // Bring the game window up and hand it the foreground.
 // FUNCTION: GAMEMD 0x622800 (decl; reloc)
-void __fastcall UI_FocusOnWindow(HWND hWnd);
+void UI_FocusOnWindow(HWND hWnd);
 
 #endif  // GG_MATCH_UI_UI_FOCUS_METHODS_H

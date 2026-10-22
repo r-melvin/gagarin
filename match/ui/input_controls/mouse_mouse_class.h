@@ -59,7 +59,7 @@ GG_STATIC_ASSERT(sizeof(MouseCursorTimer) == 0x0C);
 extern MouseCursorTimer MouseTimer;
 
 // FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) - FileSystem::LoadWholeFileEx, __fastcall (name in ECX, flag byte in EDX).
-void* __fastcall FUN_004A38D0(const char* name, char* flag);
+void* FUN_004A38D0(const char* name, char* flag);
 
 // The MapClass containers Load rebuilds (MapVectorView, MapBucketTable, MapWordEntry, MapOwned) are declared in
 // ui_display_chain.h with the class chain.
@@ -82,8 +82,8 @@ public:
     // 0x427940 / 0x6B5490 (decl; reloc) - all __thiscall / __fastcall on the target.
     void Method_71DCA0();
     void Method_547110();
-    static void __fastcall Method_545150(MouseSceneTarget* self, bool arg);
-    static void __fastcall Method_546DA0(bool a, bool b);
+    static void Method_545150(MouseSceneTarget* self, bool arg);
+    static void Method_546DA0(bool a, bool b);
     void Method_5FE620();
     void Method_45E970();
     void Method_427940();

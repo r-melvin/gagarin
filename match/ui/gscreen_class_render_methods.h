@@ -44,7 +44,7 @@ extern bool DAT_00A8B8B4;
 // FUNCTION: GAMEMD 0x53BAE0 (decl; reloc) — a global byte test, no receiver.
 bool __cdecl FUN_0053BAE0();
 // FUNCTION: GAMEMD 0x55F1E0 (decl; reloc) — __fastcall, flag in CL.
-void __fastcall FUN_0055F1E0(bool flag);
+void FUN_0055F1E0(bool flag);
 
 // WWMouseClass — slots +0x3C / +0x40 take (surface, flag).
 struct MouseVtbl_004F4480;

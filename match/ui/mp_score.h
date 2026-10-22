@@ -73,7 +73,7 @@ struct Obj_005C9700
 };
 
 // FUNCTION: GAMEMD 0x5C97B0 (declaration)
-void __fastcall FUN_005C97B0(wchar_t* buffer, int seconds);
+void FUN_005C97B0(wchar_t* buffer, int seconds);
 // FUNCTION: GAMEMD 0x5C98A0 (declaration)
 void __cdecl FUN_005C98A0();
 // FUNCTION: GAMEMD 0x5C9AA0 (declaration)
@@ -81,7 +81,7 @@ void __cdecl FUN_005C9AA0();
 // FUNCTION: GAMEMD 0x5C9AE0 (declaration)
 int __cdecl FUN_005C9AE0(const void* a, const void* b);
 // FUNCTION: GAMEMD 0x5CA110 (declaration)
-void* __fastcall FUN_005CA110(int index);
+void* FUN_005CA110(int index);
 // FUNCTION: GAMEMD 0x5C9B10 (declaration) -- the score dialog's procedure.
 struct HWND__;
 int __stdcall FUN_005C9B10(HWND__* dialog, unsigned int message, unsigned int wParam, long lParam);

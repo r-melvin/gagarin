@@ -106,7 +106,7 @@ void __cdecl FUN_00723C60()
 }
 
 // FUNCTION: GAMEMD 0x723D20
-int __fastcall FUN_00723D20(unsigned int index)
+int FUN_00723D20(unsigned int index)
 {
     switch (index) {
     case 0x00:

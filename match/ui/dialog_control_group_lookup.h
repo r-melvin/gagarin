@@ -63,12 +63,12 @@ GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field6C) == 0x6C);
 extern SessionFlags_00A8B238 DAT_00A8B238_Session;
 
 // FUNCTION: GAMEMD 0x600CA0 (__fastcall)
-int __fastcall FUN_00600CA0(int nKey, GG_HWND hCtl);
+int FUN_00600CA0(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x6015E0 (__fastcall)
-int __fastcall FUN_006015E0(int nKey, GG_HWND hCtl);
+int FUN_006015E0(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x601D20 (__fastcall)
-int __fastcall FUN_00601D20(int nKey, GG_HWND hCtl);
+int FUN_00601D20(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x602490 (__fastcall)
-bool __fastcall FUN_00602490(int nKey, GG_HWND hCtl);
+bool FUN_00602490(int nKey, GG_HWND hCtl);
 
 #endif  // GG_MATCH_UI_DIALOG_CONTROL_GROUP_LOOKUP_H

@@ -114,7 +114,7 @@ extern bool DisplayFlag_00A9FA94;
 extern int DisplayCurrentFrame_00A8ED84;
 
 // FUNCTION: GAMEMD 0x4F4780 (decl; reloc) -- __fastcall: bool in CL, surface in EDX, one stacked int.
-void __fastcall FUN_004F4780(bool flag, DisplaySurface* surface, int arg);
+void FUN_004F4780(bool flag, DisplaySurface* surface, int arg);
 
 // GScreenClass itself is declared in ui_display_chain.h.
 

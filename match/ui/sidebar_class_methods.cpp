@@ -18,7 +18,7 @@
 #include "sidebar_class_methods.h"
 
 // FUNCTION: GAMEMD 0x6ABCD0  SidebarClass::GetObjectTabIdx (static __fastcall)
-int __fastcall SidebarClass::GetObjectTabIdx(int abs, int buildCat, int isNaval)
+int SidebarClass::GetObjectTabIdx(int abs, int buildCat, int isNaval)
 {
     if (abs == 0x10)
         return 2;

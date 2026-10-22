@@ -40,10 +40,10 @@ GG_STATIC_ASSERT(offsetof(SidebarShapeFile, Frames) == 0x06);
 
 // FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) -- FileSystem::LoadWholeFileEx,
 // __fastcall(name, out owned).
-SidebarShapeFile* __fastcall SidebarLoadWholeFileEx(const char* name, bool* owned);
+SidebarShapeFile* SidebarLoadWholeFileEx(const char* name, bool* owned);
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- MixFileClass::Retrieve,
 // __fastcall(name, flag byte in DL).
-SidebarShapeFile* __fastcall SidebarMixRetrieve(const char* name, unsigned char flag);
+SidebarShapeFile* SidebarMixRetrieve(const char* name, unsigned char flag);
 
 // A 256-entry RGB palette (0x300 bytes), copied by value with REP MOVSD.
 struct SidebarPalette
@@ -53,9 +53,9 @@ struct SidebarPalette
 GG_STATIC_ASSERT(sizeof(SidebarPalette) == 0x300);
 
 // FUNCTION: GAMEMD 0x72F4A0 (decl; reloc) -- returns the first palette.
-SidebarPalette* __fastcall SidebarGetPalette1();
+SidebarPalette* SidebarGetPalette1();
 // FUNCTION: GAMEMD 0x72F4E0 (decl; reloc) -- returns the second palette.
-SidebarPalette* __fastcall SidebarGetPalette2();
+SidebarPalette* SidebarGetPalette2();
 
 // ConvertClass: allocated with `PUSH 0x188; CALL 0x7C8E17` at 0x6A587B and
 // 0x6A5A73, constructed by 0x48E740 (RET 0x14), destroyed through slot 0

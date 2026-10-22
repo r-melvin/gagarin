@@ -28,6 +28,6 @@ extern int DAT_00A8DA8C;
 extern char DAT_0089E000[];
 
 // FUNCTION: GAMEMD 0x46FB50
-void __fastcall FUN_0046FB50(HWND_ dlg);
+void FUN_0046FB50(HWND_ dlg);
 
 #endif  // GG_MATCH_UI_DIALOG_ENABLE_METHODS_H

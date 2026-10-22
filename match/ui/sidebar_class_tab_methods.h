@@ -26,7 +26,7 @@
 // (retail pushes nothing and does not set ECX) and returns an int the caller
 // compares against 5. Descriptive name; the address carries no confirmed
 // binary name.
-int __fastcall GetCurrentSidebarContext();
+int GetCurrentSidebarContext();
 
 #include "sidebar_class_methods.h"
 

@@ -62,25 +62,25 @@ struct Map_0087F7E8
 extern Map_0087F7E8 DAT_0087F7E8;
 
 // FUNCTION: GAMEMD 0x622650 (decl; reloc)
-void* __fastcall UI_BeginDialog(unsigned short id, int (__stdcall* proc)(void*, unsigned, unsigned, long), int arg);
+void* UI_BeginDialog(unsigned short id, int (__stdcall* proc)(void*, unsigned, unsigned, long), int arg);
 // FUNCTION: GAMEMD 0x622720 (decl; reloc)
-void __fastcall UI_EndDialog(void* window);
+void UI_EndDialog(void* window);
 // FUNCTION: GAMEMD 0x622800 (decl; reloc)
-void __fastcall UI_FocusOnWindow(HWND hWnd);
+void UI_FocusOnWindow(HWND hWnd);
 struct UI
 {
     // FUNCTION: GAMEMD 0x623120 (decl; reloc)
-    static bool __fastcall Updated();
+    static bool Updated();
 };
 // FUNCTION: GAMEMD 0x532100 (decl; reloc) -- __fastcall, one byte flag.
-void __fastcall FUN_00532100(bool flag);
+void FUN_00532100(bool flag);
 // FUNCTION: GAMEMD 0x70D180 (decl; reloc) -- __fastcall, one byte flag.
-void __fastcall FUN_0070D180(bool flag);
+void FUN_0070D180(bool flag);
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- __fastcall, the shared dialog message filter.
-int __fastcall FUN_00622B50(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
+int FUN_00622B50(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out, const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out, const char* file, int line);
 // FUNCTION: GAMEMD 0x407000 (decl; reloc) -- the caller passes the whole EAX on.
 int __cdecl FUN_00407000();
 // GLOBAL: GAMEMD 0xA8EDDC
@@ -100,7 +100,7 @@ extern const char* DAT_00822774[];
 
 // FUNCTION: GAMEMD 0x4E1FE0 (decl; reloc) -- the dialog procedure.
 int __stdcall FUN_004E1FE0(void* window, unsigned message, unsigned wParam, long lParam);
-void __fastcall FUN_004E23C0(HWND window, int command, HWND control, unsigned notify);
+void FUN_004E23C0(HWND window, int command, HWND control, unsigned notify);
 
 // The game-controls dialog: its window handle.
 struct Obj_004E1D00
@@ -329,7 +329,7 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
 
 // FUNCTION: GAMEMD 0x4E23C0
 // A command handler: ECX = the window, EDX = the command id, then two stack words.
-void __fastcall FUN_004E23C0(HWND window, int command, HWND control, unsigned notify)
+void FUN_004E23C0(HWND window, int command, HWND control, unsigned notify)
 {
     int* result = (int*)GetWindowLongA(window, DWL_USER);
     switch (command) {

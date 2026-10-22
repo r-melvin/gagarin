@@ -94,20 +94,20 @@ extern bool MenusLoadFlagB;
 extern void* MenusDefaultHeaderPad;
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall(label ECX, index-out EDX, file, line), RET 8.
-const wchar_t* __fastcall MenusGetText(const char* label, int* index, const char* file, int line);
+const wchar_t* MenusGetText(const char* label, int* index, const char* file, int line);
 // FUNCTION: GAMEMD 0x623230 (decl; reloc) -- __fastcall(text ECX, EDX, one stack word), RET 4; returns the
 // dialog handle. Every caller here passes zero for both.
-void* __fastcall MenusShowDialog(const wchar_t* text, int a, int b);
+void* MenusShowDialog(const wchar_t* text, int a, int b);
 // FUNCTION: GAMEMD 0x622800 (decl; reloc) -- the existing exact UI::FocusOnWindow, __fastcall(handle).
-void __fastcall MenusFocusOnWindow(void* handle);
+void MenusFocusOnWindow(void* handle);
 // FUNCTION: GAMEMD 0x622720 (decl; reloc) -- the existing exact UI::EndDialog, __fastcall(handle).
-void __fastcall MenusEndDialog(void* handle);
+void MenusEndDialog(void* handle);
 // FUNCTION: GAMEMD 0x67E440 (decl; reloc) -- __fastcall(file name ECX), returns the load result.
-bool __fastcall MenusLoadGame(const char* fileName);
+bool MenusLoadGame(const char* fileName);
 // FUNCTION: GAMEMD 0x67CEF0 (decl; reloc) -- __fastcall(file name ECX, description EDX, 0), RET 4.
-bool __fastcall MenusSaveGame(const char* fileName, const wchar_t* description, int zero);
+bool MenusSaveGame(const char* fileName, const wchar_t* description, int zero);
 // FUNCTION: GAMEMD 0x67FD20 (decl; reloc) -- the existing exact ReadFromFile, __fastcall(file name, header).
-bool __fastcall MenusReadFromFile(const char* fileName, MenusSaveHeader* header);
+bool MenusReadFromFile(const char* fileName, MenusSaveHeader* header);
 
 // VTABLE: GAMEMD 0x7ED2E4
 class LoadOptionsClass

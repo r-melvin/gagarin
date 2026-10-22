@@ -28,7 +28,7 @@
 #include "../_rt/gg_vslot.h"
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
@@ -95,8 +95,8 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // FUNCTION: GAMEMD 0x630310 (decl; reloc) — Read_PCX_File(file, palette,
 // buffer, size); the file arrives in ECX and the palette in EDX.
-Surface_00641DB0* __fastcall FUN_00630310(File_00641DB0* file, char* palette,
-                                          void* buffer, long size);
+Surface_00641DB0* FUN_00630310(File_00641DB0* file, char* palette,
+                               void* buffer, long size);
 
 struct PreviewClass
 {

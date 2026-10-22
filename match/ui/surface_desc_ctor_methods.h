@@ -36,7 +36,7 @@ GG_STATIC_ASSERT(offsetof(Info_00433880, Height) == 0xC);
 struct Key_00433880;
 
 // FUNCTION: GAMEMD 0x433990 — resolve the key to an info block, or null.
-Info_00433880* __fastcall FUN_00433990(Key_00433880* key);
+Info_00433880* FUN_00433990(Key_00433880* key);
 
 // RTTI-confirmed (Tier 1, re-verified independently against the user's own
 // binary): vtable 0x7E3A78's complete object locator (at 0x7E3A74) resolves to

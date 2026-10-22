@@ -39,7 +39,7 @@ struct SavegameInfo_0067FD20
 };
 
 // FUNCTION: GAMEMD 0x67FD20 — LoadOptionsClass::ReadFromFile (static).
-bool __fastcall LoadOptionsClass_ReadFromFile(const char* fileName,
-                                              SavegameInfo_0067FD20* info);
+bool LoadOptionsClass_ReadFromFile(const char* fileName,
+                                   SavegameInfo_0067FD20* info);
 
 #endif  // GG_MATCH_UI_LOAD_OPTIONS_READ_METHODS_H

@@ -79,7 +79,7 @@ public:
     virtual int        Clicked(unsigned* key, unsigned flags, int x, int y, int modifier);  // 0x80  0x4E13F0
 
     GadgetClass* ExtractGadgetAt(int x, int y);   // 0x4E15A0 (non-virtual)
-    static int __fastcall GetColorScheme();       // 0x4E12D0
+    static int GetColorScheme();       // 0x4E12D0
 
     int           X;           // +0x0C
     int           Y;           // +0x10

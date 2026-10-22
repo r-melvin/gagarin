@@ -85,13 +85,13 @@ GG_STATIC_ASSERT(offsetof(IdxNode, Key)   == 0x08);
 GG_STATIC_ASSERT(offsetof(IdxNode, Value) == 0x0C);
 GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
 extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
-void __fastcall IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
+void IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
 
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — CCFileClass::ReadWholeFile.
-void* __fastcall MakeCachedFile(CCFile_005B40B0* f);
+void* MakeCachedFile(CCFile_005B40B0* f);
 
 // The 0x24-byte object built on a forced / .SHP miss; its constructor is a
 // __thiscall taking the name (`PUSH EBP; MOV ECX,EAX; CALL 0x69E430`).
@@ -117,8 +117,8 @@ extern unsigned char DAT_00A9F91C;
 #define INIT_CPP "D:\\ra2mdpost\\Init.CPP"
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
-wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
-                                           const char* file, int line);
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
 
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
@@ -428,7 +428,7 @@ extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void* window, Poin
 
 // FUNCTION: GAMEMD 0x7B05C0 (decl; reloc) -- write a surface to a PCX file;
 // __fastcall: file in ECX, surface in EDX, palette pushed.
-int __fastcall FUN_007B05C0(FileClass* file, CaptureSurface* surface, void* palette);
+int FUN_007B05C0(FileClass* file, CaptureSurface* surface, void* palette);
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -476,7 +476,7 @@ void __cdecl FUN_0052B990()
 }
 
 // FUNCTION: GAMEMD 0x0052CB80
-void __fastcall FUN_0052CB80()
+void FUN_0052CB80()
 {
 }
 
@@ -585,7 +585,7 @@ bool MixFileClass_Bootstrap()
 }
 
 // FUNCTION: GAMEMD 0x00532130
-void __fastcall FUN_00532130()
+void FUN_00532130()
 {
 }
 
@@ -604,7 +604,7 @@ void FUN_005355C0(int a1, int a2)
 
 // FUNCTION: GAMEMD 0x535A60
 // VTABLE: GAMEMD 0x7E1668
-void __fastcall FUN_00535A60(SeatDtorObject* self)
+void FUN_00535A60(SeatDtorObject* self)
 {
     self->Vtbl = VTABLE_007E1668;
     FUN_00431B80(self);

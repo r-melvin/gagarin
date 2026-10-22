@@ -35,7 +35,7 @@ extern LayerClass DisplayLayers[];
 // InWhichLayer() — ObjectClass virtual at primary-vtable slot +0x78, dispatched
 // through the same __fastcall-fn-pointer idiom the rest of the tree uses so VC6
 // reproduces `MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0x78]`.
-typedef int (__fastcall* InWhichLayerFunc)(ObjectClass*);
+typedef int (* InWhichLayerFunc)(ObjectClass*);
 #define OBJ_IN_WHICH_LAYER(obj) ((*(InWhichLayerFunc*)(*(char**)(obj) + 0x78))(obj))
 
 class DisplayClass

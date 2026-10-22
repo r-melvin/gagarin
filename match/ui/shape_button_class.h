@@ -35,9 +35,9 @@ public:
     bool StartFlashing(int nDelay, int nInitDelay, bool bStart);         // 0x69DFC0
     bool StopFlashing();                                                 // 0x69DFF0
     bool AI();                                                           // 0x69E010
-    static int __fastcall FindIndex(const char* name);                   // 0x6CFCC0
-    static ShapeButtonClass* __fastcall GetButton(int index);            // 0x6CFD40
-    static void __fastcall SetToolTip(ShapeButtonClass* pButton,
+    static int FindIndex(const char* name);                   // 0x6CFCC0
+    static ShapeButtonClass* GetButton(int index);            // 0x6CFD40
+    static void SetToolTip(ShapeButtonClass* pButton,
                                      const char* tip);                   // 0x6D09C0
 
     // ToggleClass supplies the confirmed prefix through +0x33.

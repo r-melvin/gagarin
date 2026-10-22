@@ -8,7 +8,7 @@
 #include "bit_font_reset_004349f0.h"
 
 // FUNCTION: GAMEMD 0x4349F0
-void __fastcall FUN_004349F0(BitFontResetView_004349F0* self)
+void FUN_004349F0(BitFontResetView_004349F0* self)
 {
     int zero = 0;
     int one = 1;

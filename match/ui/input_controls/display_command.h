@@ -312,7 +312,7 @@ extern bool DisplayCmdFlag_00884D44;
 void __cdecl UnselectAll_0048DC90();
 
 // FUNCTION: GAMEMD 0x70F0B0 (decl; reloc) -- __fastcall: action in ECX, cell in EDX, one stacked argument.
-int __fastcall FUN_0070F0B0(int action, CellStruct* cell, DisplayCmdAbstract* target);
+int FUN_0070F0B0(int action, CellStruct* cell, DisplayCmdAbstract* target);
 // FUNCTION: GAMEMD 0x731CC0 (decl; reloc) -- returns the constant 0x16.
 int __cdecl FUN_00731CC0();
 // FUNCTION: GAMEMD 0x731CB0 (decl; reloc) -- returns the constant 0x47.
@@ -442,7 +442,7 @@ extern int DisplayCmdValue_00880990;
 extern int DisplayCmdValue_00880994;
 
 // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- VoxClass::Play, __fastcall: name in ECX, -1 in EDX, -1 pushed.
-void __fastcall FUN_00752700(const char* name, int a, int b);
+void FUN_00752700(const char* name, int a, int b);
 // GLOBAL: GAMEMD 0x82012C -- the cue name string ("EVA_CannotDeployHere").
 extern const char DisplayCmdCue_0082012C[];
 // FUNCTION: GAMEMD 0x731CF0 (decl; reloc)
@@ -456,9 +456,9 @@ bool __cdecl FUN_00639130();
 // FUNCTION: GAMEMD 0x732D00 (decl; reloc)
 bool __cdecl FUN_00732D00();
 // FUNCTION: GAMEMD 0x734270 (decl; reloc)
-void __fastcall FUN_00734270(DisplayCmdObject* building);
+void FUN_00734270(DisplayCmdObject* building);
 // FUNCTION: GAMEMD 0x6CEEB0 (decl; reloc)
-DisplayCmdActionInfo* __fastcall FUN_006CEEB0(int action);
+DisplayCmdActionInfo* FUN_006CEEB0(int action);
 
 // RTTI type descriptors (addresses only).
 // GLOBAL: GAMEMD 0x817F78 -- .?AVObjectTypeClass@@

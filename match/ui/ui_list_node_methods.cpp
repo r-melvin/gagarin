@@ -24,7 +24,7 @@ void MixFileClass::Destruct()
 // carries the slot that will hold the new node rather than the parent, so the
 // descent, the empty-tree case and the final store are all one assignment. The
 // node's own children are cleared after the link, not before.
-void __fastcall SortedTreeNode::SortedTreeInsert(SortedTreeNode** slot)
+void SortedTreeNode::SortedTreeInsert(SortedTreeNode** slot)
 {
     SortedTreeNode* cursor = *slot;
     if (cursor != 0) {

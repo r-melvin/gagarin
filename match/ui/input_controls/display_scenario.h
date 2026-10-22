@@ -123,7 +123,7 @@ extern int DisplayScDrawing_00B73550;
 extern wchar_t DisplayScText_008A0630[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall(label ECX, index-out EDX, file, line), RET 8.
-const wchar_t* __fastcall FUN_00734E60(const char* label, int* index, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int* index, const char* file, int line);
 // FUNCTION: GAMEMD 0x7CA564 (decl; reloc) -- LIBRARY _swprintf.
 extern "C" int __cdecl _swprintf(wchar_t* buffer, const wchar_t* format, ...);
 
@@ -152,7 +152,7 @@ struct DisplayScTagType
     DisplayScTagInstance* FUN_006E52A0();
 };
 // FUNCTION: GAMEMD 0x6E6310 (decl; reloc) -- TagTypeClass::FindOrAllocate, __fastcall(name ECX).
-DisplayScTagType* __fastcall FUN_006E6310(const char* name);
+DisplayScTagType* FUN_006E6310(const char* name);
 
 // The straw pair the packed sections are fed through (see the UUBlock writer for the same shapes). Flat structs with
 // explicit vtable seat stores, the repository convention for the straw classes.
@@ -328,17 +328,17 @@ extern DisplayScSession DisplayScSession_00A8B238;
 // FUNCTION: GAMEMD 0x48D080 (decl; reloc) -- Unsorted::CallBack, no arguments.
 void __cdecl FUN_0048D080();
 // FUNCTION: GAMEMD 0x71DCA0 / 0x5FE620 / 0x45E970 / 0x427940 / 0x6B5490 (decl; reloc) -- per-theater loaders, ECX.
-void __fastcall FUN_0071DCA0(int theater);
-void __fastcall FUN_005FE620(int theater);
-void __fastcall FUN_0045E970(int theater);
-void __fastcall FUN_00427940(int theater);
-void __fastcall FUN_006B5490(int theater);
+void FUN_0071DCA0(int theater);
+void FUN_005FE620(int theater);
+void FUN_0045E970(int theater);
+void FUN_00427940(int theater);
+void FUN_006B5490(int theater);
 // FUNCTION: GAMEMD 0x545150 (decl; reloc) -- __fastcall(unused ECX, flag DL).
-void __fastcall FUN_00545150(int unused, char flag);
+void FUN_00545150(int unused, char flag);
 // FUNCTION: GAMEMD 0x547110 (decl; reloc)
 void __cdecl FUN_00547110();
 // FUNCTION: GAMEMD 0x546DA0 (decl; reloc) -- __fastcall(flag CL, value DL).
-void __fastcall FUN_00546DA0(bool flag, unsigned char value);
+void FUN_00546DA0(bool flag, unsigned char value);
 // LIBRARY: GAMEMD 0x7C8D20 -- strcmp; GAMEMD 0x7C9BFD -- atoi.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
 extern "C" int __cdecl FUN_007C9BFD(const char* s);

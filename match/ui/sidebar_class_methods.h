@@ -16,13 +16,13 @@ class SidebarClass
 public:
     // GAMEMD 0x6ABC60. Distinct classifier; the original name is unconfirmed.
     // Shares the fastcall ABI, but not the body, of GetObjectTabIdx below.
-    static int __fastcall FUN_006ABC60(int abs, int idxType, int unused);
+    static int FUN_006ABC60(int abs, int idxType, int unused);
 
     // GAMEMD 0x6ABCD0  SidebarClass::GetObjectTabIdx (static __fastcall)
     //   abs      -> ECX   (AbstractType id)
     //   buildCat -> EDX   (BuildCat)
     //   isNaval  -> stack  (unused in this overload; RET 0x4 cleans it)
-    static int __fastcall GetObjectTabIdx(int abs, int buildCat, int isNaval);
+    static int GetObjectTabIdx(int abs, int buildCat, int isNaval);
 };
 
 #endif  // GG_MATCH_UI_SIDEBAR_CLASS_METHODS_H

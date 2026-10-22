@@ -30,7 +30,7 @@ extern "C" void __cdecl gg_free_0642AE0(void* block);
 
 // FUNCTION: GAMEMD 0x68CA50 (decl; reloc) -- find a gadget by caption text
 // and type; genuinely __fastcall (ECX=name, EDX=type).
-extern "C" void* __fastcall FindGadgetByCaption_0068CA50(const char* name, int type);
+extern "C" void* FindGadgetByCaption_0068CA50(const char* name, int type);
 
 // STRING: GAMEMD 0x836EC0  "AlliedLoad"
 extern const char STR_00836EC0[];

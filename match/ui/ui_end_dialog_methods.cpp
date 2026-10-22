@@ -21,7 +21,7 @@
 // epilogue and the found block sits after it. A `count` local swaps the
 // count and pointer registers (82.1%); a pointer local costs EBX; the
 // do/while and while forms rotate the loop the wrong way round.
-void __fastcall UI_EndDialog(void* hWnd)
+void UI_EndDialog(void* hWnd)
 {
     DAT_0087F770->DoSomething();
     FUN_00608070(hWnd);

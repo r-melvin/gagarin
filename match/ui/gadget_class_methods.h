@@ -86,7 +86,7 @@ public:
 
     // Non-virtual public helper (not present in the vtable dump).
     // FUNCTION: GAMEMD 0x4E12D0 (decl) -- the scheme index gadgets draw with (__fastcall, static).
-    static int __fastcall GetColorScheme();
+    static int GetColorScheme();
     bool IsEnabled() const;                          // GAMEMD 0x4E1470
     // FUNCTION: GAMEMD 0x4E15A0 — smallest enabled gadget under (x, y).
     GadgetClass* ExtractGadgetAt(int x, int y);

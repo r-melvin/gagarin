@@ -21,7 +21,7 @@
 #include <string.h>
 
 // Opens subkey name under root; returns 0 on failure.
-HKEY __fastcall FUN_007741c0(HKEY root, const char* name, int flags);
+HKEY FUN_007741c0(HKEY root, const char* name, int flags);
 
 #include "../core/tail_jmp_thunk_sweep.h"
 
@@ -338,7 +338,7 @@ void* Obj_5BB560::FUN_5BB560(unsigned int flags)
 // FUNCTION: GAMEMD 0x005bb580
 // Returns the first subkey (searched depth-first below root) whose string
 // value valueName equals match, still open; 0 when none is found.
-HKEY __fastcall FUN_005bb580(HKEY root, const char* valueName, const char* match)
+HKEY FUN_005bb580(HKEY root, const char* valueName, const char* match)
 {
     DWORD size = 256;
     DWORD index = 0;
@@ -379,7 +379,7 @@ HKEY __fastcall FUN_005bb580(HKEY root, const char* valueName, const char* match
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5BBED0
-void __fastcall FUN_005BBED0(void* self)
+void FUN_005BBED0(void* self)
 {
     FUN_005BBEE0(self);
 }

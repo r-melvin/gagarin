@@ -26,6 +26,6 @@ extern "C" __declspec(dllimport) GG_HWND __stdcall GetNextDlgTabItem(GG_HWND hDl
 extern "C" __declspec(dllimport) GG_HWND __stdcall SetFocus(GG_HWND hWnd);           // IAT 0x7E13CC
 
 // FUNCTION: GAMEMD 0x600C70 (__fastcall)
-bool __fastcall FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious);
+bool FUN_00600C70(GG_HWND hCtl, unsigned char bPrevious);
 
 #endif  // GG_MATCH_UI_DIALOG_TAB_FOCUS_METHODS_H

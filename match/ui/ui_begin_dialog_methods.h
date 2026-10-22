@@ -50,14 +50,14 @@ extern void* DAT_00B732F0;
 
 // FUNCTION: GAMEMD 0x4A3B40 (decl; reloc) — Unsorted::GetResource: find, load
 // and lock a resource by id and type.
-void* __fastcall FUN_004A3B40(int id, const char* type);
+void* FUN_004A3B40(int id, const char* type);
 
 // FUNCTION: GAMEMD 0x5D4E70 (decl; reloc) — record the new dialog window.
-void __fastcall FUN_005D4E70(void* hWnd);
+void FUN_005D4E70(void* hWnd);
 
 typedef int (__stdcall* DlgProc_00622650)(void*, unsigned int, unsigned int, long);
 
 // FUNCTION: GAMEMD 0x622650 — UI::BeginDialog.
-void* __fastcall UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param);
+void* UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param);
 
 #endif  // GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H

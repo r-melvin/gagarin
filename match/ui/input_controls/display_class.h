@@ -95,9 +95,9 @@ extern void* DisplayPlaceShape_008A03FC;
 extern void* DisplayShadowShape_008A072C;
 
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) -- MixFileClass::Retrieve: name in ECX, flag in DL, shape pointer in EAX.
-void* __fastcall FUN_005B40B0(const char* name, bool flag);
+void* FUN_005B40B0(const char* name, bool flag);
 // FUNCTION: GAMEMD 0x72AD20 (decl; reloc) -- fills the 16-byte rectangle passed in ECX and returns it.
-RectangleStruct* __fastcall FUN_0072AD20(RectangleStruct* out);
+RectangleStruct* FUN_0072AD20(RectangleStruct* out);
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- square root of a double (cdecl, result in ST0).
 double __cdecl FUN_004CAC40(double value);

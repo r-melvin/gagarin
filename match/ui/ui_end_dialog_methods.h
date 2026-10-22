@@ -36,9 +36,9 @@ extern int DAT_00B72F48;
 extern void* DAT_00B73550;
 
 // FUNCTION: GAMEMD 0x608070 (decl; reloc) — detach the window's gadget list.
-void __fastcall FUN_00608070(void* hWnd);
+void FUN_00608070(void* hWnd);
 
 // FUNCTION: GAMEMD 0x622720 (decl; reloc) — UI::EndDialog.
-void __fastcall UI_EndDialog(void* hWnd);
+void UI_EndDialog(void* hWnd);
 
 #endif  // GG_MATCH_UI_UI_END_DIALOG_METHODS_H

@@ -85,10 +85,10 @@ inline int SidebarRowCount()
 
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) -- draw a shape: surface in ECX, convert
 // in EDX, fourteen stack arguments (RET 0x38).
-void __fastcall SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
-                                 SidebarShapeFile* shape, int frame, Point2D* position,
-                                 SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
-                                 int zAdjust, int a10, int a11, int a12, Point2D offset);
+void SidebarDrawShape(SidebarSurfaceView* surface, SidebarConvert* convert,
+                      SidebarShapeFile* shape, int frame, Point2D* position,
+                      SidebarAreaRect* bounds, int flags, int a6, int a7, int a8,
+                      int zAdjust, int a10, int a11, int a12, Point2D offset);
 
 // One 0x400-flag shape draw at (0, y) on the sidebar surface; expanded inline by 0x6A6C30.
 inline void DrawSidebarShape(int shape, int frame, int y, SidebarAreaRect* bounds)
@@ -122,7 +122,7 @@ extern SidebarHouse** HouseItems_00A8022C;
 extern void** ColorRegistry_00B054D4;
 
 // FUNCTION: GAMEMD 0x68CA50 (decl; reloc) -- colour scheme lookup by name.
-void* __fastcall SidebarFindColor(const char* name, int flag);
+void* SidebarFindColor(const char* name, int flag);
 
 // The nth player house that is neither defeated nor the observer nor a
 // non-human one (inlined twice by 0x6A5310).
@@ -195,7 +195,7 @@ inline int HouseCredits(SidebarHouse* house)
 #include "sidebar_class_layout.h"
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
-wchar_t* __fastcall SidebarLoadString(const char* label, int* out, const char* file, int line);
+wchar_t* SidebarLoadString(const char* label, int* out, const char* file, int line);
 
 extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
 
@@ -229,17 +229,17 @@ inline const wchar_t* DisabledTip(const SidebarButton* button, const wchar_t* te
 // ---------------------------------------------------------------------------
 
 // FUNCTION: GAMEMD 0x48DCD0 (decl; reloc) -- TechnoTypeClass::GetByTypeAndIndex.
-SelectTechnoType* __fastcall SelectGetByTypeAndIndex(int type, int index);
+SelectTechnoType* SelectGetByTypeAndIndex(int type, int index);
 
 // FUNCTION: GAMEMD 0x752700 (decl; reloc) -- VoxClass::Play(name, a, b).
-void __fastcall SelectVoxPlay(const char* name, int a, int b);
+void SelectVoxPlay(const char* name, int a, int b);
 
 
 // FUNCTION: GAMEMD 0x40DD70 (decl; reloc) -- WhatAmIHolder check on the placement object.
-void* __fastcall SelectCheckPlacement(void* object);
+void* SelectCheckPlacement(void* object);
 
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc) -- MapClass::UnselectAll.
-void __fastcall SelectUnselectAll();
+void SelectUnselectAll();
 
 // FUNCTION: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (_ftol).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);

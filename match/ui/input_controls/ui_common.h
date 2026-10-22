@@ -239,28 +239,28 @@ struct Font
 GG_STATIC_ASSERT(offsetof(Font, Height) == 0x1C);
 
 // 0x4A60D0: the font for a set of print flags (flags in ECX).
-Font* __fastcall FUN_004A60D0(int flags);
+Font* FUN_004A60D0(int flags);
 // 0x4A5A50: bevelled box. Rectangle in ECX, style in EDX, one stack argument (RET 4).
-void __fastcall FUN_004A5A50(Rect* area, int style, int arg);
+void FUN_004A5A50(Rect* area, int style, int arg);
 // 0x4A6500: text draw. The hidden return buffer arrives in ECX and the text in EDX, the rest on the stack
 // (callee pops 0x20).
-Point2D __fastcall FUN_004A6500(const wchar_t* text, Surface* surface, Rect* clip, Point2D* pos,
-                                ColorScheme* scheme, int back, unsigned flags, int width, int tabStops);
+Point2D FUN_004A6500(const wchar_t* text, Surface* surface, Rect* clip, Point2D* pos,
+                     ColorScheme* scheme, int back, unsigned flags, int width, int tabStops);
 // 0x4A61C0: prints text on a surface inside a clip rectangle; the returned point comes back through the
 // hidden first stack word. Caller-cleaned (cdecl).
 Point2D __cdecl FUN_004A61C0(const wchar_t* text, Surface* surface, Rect* clip, Point2D* position,
                              ColorScheme* scheme, int background, int flags);
 // 0x4A6010: print variant with one extra trailing argument. The result point is written through the pointer
 // in ECX and the text is in EDX; seven words follow on the stack (RET 0x1C).
-void __fastcall FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, Rect* clip,
-                             Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
+void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface, Rect* clip,
+                  Point2D* position, ColorScheme* scheme, int background, int flags, int extra);
 // 0x4AED70: shape blitter. Surface in ECX, the palette lookup in EDX, fourteen stack words; the last
 // two are one offset point passed by value (callers zero two registers for it).
-void __fastcall FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape, int frame,
-                             Point2D* position, Rect* clip, int flags, int a8, int a9, int a10, int a11,
-                             int a12, int a13, int a14, Point2D offset);
+void FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape, int frame,
+                  Point2D* position, Rect* clip, int flags, int a8, int a9, int a10, int a11,
+                  int a12, int a13, int a14, Point2D offset);
 // 0x623880: draws a label's text. Surface in ECX, rectangle in EDX, nine stack words (RET 0x24).
-void __fastcall FUN_00623880(Surface* surface, Rect* area, const wchar_t* text, int length, Font* font,
-                             unsigned colour, int* extra, int focused, int a8, int a9, int shown);
+void FUN_00623880(Surface* surface, Rect* area, const wchar_t* text, int length, Font* font,
+                  unsigned colour, int* extra, int focused, int a8, int a9, int shown);
 
 #endif  // GG_MATCH_UI_INPUT_CONTROLS_UI_COMMON_H

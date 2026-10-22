@@ -115,7 +115,7 @@ public:
 };
 
 // FUNCTION: GAMEMD 0x778A20 (decl; reloc) -- __fastcall(hidden result in ECX, name in EDX), plain RET.
-MenusProfileRef __fastcall MenusFindProfile(const MenusWebString& name);
+MenusProfileRef MenusFindProfile(const MenusWebString& name);
 
 // A five-byte flag record: zeroed inline, filled in by 0x5175F0, tested by 0x5176B0.
 struct MenusLoginFlags
@@ -128,7 +128,7 @@ struct MenusLoginFlags
 };
 
 // FUNCTION: GAMEMD 0x789500 (decl; reloc) -- __fastcall(login ECX, password EDX, 1, profile word), RET 8.
-void __fastcall MenusRegisterLogin(const char* login, const char* password, int one, int profileWord);
+void MenusRegisterLogin(const char* login, const char* password, int one, int profileWord);
 
 // SessionClass::Instance (0xA8B238); only 0x6990A0 is called here.
 struct MenusWebSession

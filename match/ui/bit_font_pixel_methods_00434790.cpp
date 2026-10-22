@@ -16,7 +16,7 @@ unsigned int BitFontPixelMethods_00434790::FUN_00434790(unsigned short* value)
 }
 
 // FUNCTION: GAMEMD 0x4347B0
-void __fastcall FUN_004347B0(BitFontPixelMethods_00434790* font)
+void FUN_004347B0(BitFontPixelMethods_00434790* font)
 {
     BitFontInternalData* data = font->unknown_04;
     if (data != 0) {
@@ -39,7 +39,7 @@ void __fastcall FUN_004347B0(BitFontPixelMethods_00434790* font)
 }
 
 // FUNCTION: GAMEMD 0x4347E0
-void __fastcall FUN_004347E0(BitFontPixelMethods_00434790* font)
+void FUN_004347E0(BitFontPixelMethods_00434790* font)
 {
     BitFontInternalData* data = font->unknown_04;
     if (data != 0) {

@@ -24,7 +24,7 @@ extern ControlsRules* ControlsRulesInstance;
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 // 0x4371D0 and 0x437290: capture the surface region to a buffer, and put it back
 // (surface in ECX, rectangle in EDX, buffer on the stack, RET 4).
-void __fastcall FUN_004371D0(Surface* surface, Rect* area, MemoryBuffer* buffer);
-void __fastcall FUN_00437290(Surface* surface, Rect* area, MemoryBuffer* buffer);
+void FUN_004371D0(Surface* surface, Rect* area, MemoryBuffer* buffer);
+void FUN_00437290(Surface* surface, Rect* area, MemoryBuffer* buffer);
 
 #endif

@@ -49,7 +49,7 @@ extern const char DAT_0082FE24[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised
 // text; __fastcall with the file and line on the stack, RET 8.
-const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+const wchar_t* FUN_00734E60(const char* label, int flags, const char* file, int line);
 
 // GLOBAL: GAMEMD 0xA80228 -- the house registry (Items +0x04 = 0xA8022C, Count +0x10 = 0xA80238).
 extern DynamicVectorClass<HouseClass*> DAT_00A80228;
@@ -123,20 +123,20 @@ extern int DAT_008A00A4;
 extern int DAT_008A00A8;
 
 // FUNCTION: GAMEMD 0x72D730 (decl; reloc)
-void __fastcall EnsureMpScreenPalette(int sideIndex);
+void EnsureMpScreenPalette(int sideIndex);
 
 // FUNCTION: GAMEMD 0x72D780 (decl; reloc)
 void __cdecl FreeMpScreenPalette();
 
 // FUNCTION: GAMEMD 0x72EAD0 (decl; reloc) -- __fastcall: surface in ECX, rectangle in EDX.
-void __fastcall FUN_0072EAD0(Surface_0088730C* surface, Rect_005C9720* rect);
+void FUN_0072EAD0(Surface_0088730C* surface, Rect_005C9720* rect);
 
 // FUNCTION: GAMEMD 0x4F4780 (decl; reloc) -- __fastcall: bool in CL, surface in EDX, one stacked int.
-void __fastcall FUN_004F4780(bool flag, Surface_0088730C* surface, int arg);
+void FUN_004F4780(bool flag, Surface_0088730C* surface, int arg);
 
 // FUNCTION: GAMEMD 0x60D380 (decl; reloc) -- __fastcall: dialog resource id in ECX,
 // dialog procedure in EDX, one stacked dword; runs the dialog.
-int __fastcall FUN_0060D380(int resource, int (__stdcall* procedure)(HWND, UINT, WPARAM, LPARAM), int arg);
+int FUN_0060D380(int resource, int (__stdcall* procedure)(HWND, UINT, WPARAM, LPARAM), int arg);
 
 // GLOBAL: GAMEMD 0xAC4848 -- the loaded-PCX table.
 extern PCX DAT_00AC4848;
@@ -148,19 +148,19 @@ extern const char* DAT_00844B4C[10];
 extern const char* DAT_00844B74[10];
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- __fastcall, the shared dialog message filter.
-int __fastcall FUN_00622B50(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
+int FUN_00622B50(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
 
 // FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
-void __fastcall FUN_00775690(HWND window, RECT* rect);
+void FUN_00775690(HWND window, RECT* rect);
 
 // FUNCTION: GAMEMD 0x72AA10 (decl; reloc) -- __fastcall: the rectangle, two offsets.
-void __fastcall FUN_0072AA10(Rect_005C9720* rect, int dx, int dy);
+void FUN_0072AA10(Rect_005C9720* rect, int dx, int dy);
 
 // FUNCTION: GAMEMD 0x621B80 (decl; reloc) -- __fastcall: rectangle, surface, two dwords.
-void __fastcall FUN_00621B80(Rect_005C9720* rect, Surface_0088730C* surface, int unknown_3, int unknown_4);
+void FUN_00621B80(Rect_005C9720* rect, Surface_0088730C* surface, int unknown_3, int unknown_4);
 
 // FUNCTION: GAMEMD 0x603D30 (decl; reloc) -- __fastcall: put a surface on a control.
-void __fastcall FUN_00603D30(HWND control, void* surface);
+void FUN_00603D30(HWND control, void* surface);
 
 // GLOBAL: GAMEMD 0x887310
 extern Surface_0088730C* DAT_00887310;
@@ -259,7 +259,7 @@ void Obj_005C9700::FUN_005C9720()
 // Format a duration in seconds as hours, minutes and seconds, capped at
 // 99:59:59. The same formatter as 0x46D360 and 0x470C90, written out again in
 // this unit (its own file path and line 0xD9).
-void __fastcall FUN_005C97B0(wchar_t* buffer, int seconds)
+void FUN_005C97B0(wchar_t* buffer, int seconds)
 {
     if (buffer == 0) {
         return;
@@ -281,7 +281,7 @@ void __fastcall FUN_005C97B0(wchar_t* buffer, int seconds)
 // FUNCTION: GAMEMD 0x5C9850
 //
 // Print a number into a dialog item (message 0x4B2 sets its text).
-void __fastcall FUN_005C9850(HWND dialog, int item, int value)
+void FUN_005C9850(HWND dialog, int item, int value)
 {
     wchar_t buffer[0x20];
     swprintf(buffer, L"%d", value);
@@ -506,7 +506,7 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
 // The score screen's side-specific bar image for one row: side 0, 1 and 2 of
 // the multiplayer screen each have ten names (0x844B24, 0x844B4C, 0x844B74);
 // anything else gives no surface.
-void* __fastcall FUN_005CA110(int index)
+void* FUN_005CA110(int index)
 {
     int side = DAT_00A8B230->unknown_34B8;
     if (side == 0) {
