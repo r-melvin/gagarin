@@ -30,6 +30,10 @@ GG_STATIC_ASSERT(offsetof(RGBClass, Green) == 1);
 GG_STATIC_ASSERT(offsetof(RGBClass, Blue) == 2);
 
 // FUNCTION: GAMEMD 0x6613A0
+// PARTIAL (97.5%). Saturation is cleared after the channel minimum is found,
+// not at its declaration; that order gives retail's register assignment. The
+// remaining delta is the stack slot of the result temporary (retail [ESP+0x1C],
+// ours [ESP+0x10]).
 HSVClass RGBClass::FUN_006613A0() const
 {
     HSVClass hsv;
@@ -37,13 +41,15 @@ HSVClass RGBClass::FUN_006613A0() const
     int green = Green;
     int blue = Blue;
     unsigned int hue = 0;
-    int saturation = 0;
+    int saturation;
     unsigned int rc, gc, bc;
 
     int value = (red > green) ? red : green;
     if (blue > value) value = blue;
     int low = (red < green) ? red : green;
     if (blue < low) low = blue;
+
+    saturation = 0;
 
     if (value != 0) {
         saturation = ((value - low) * 255) / value;

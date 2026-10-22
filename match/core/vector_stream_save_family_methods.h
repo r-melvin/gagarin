@@ -41,6 +41,17 @@ struct SaveVector_0067A3C0
     char  _pad00E[2];         // +0x000E
     int   Count;              // +0x0010
     int   CapacityIncrement;  // +0x0014
+
+    int FUN_0067A3C0(Stream_0067A3C0* stream);
+    int FUN_0067A4A0(Stream_0067A3C0* stream);
+    int FUN_0067A520(Stream_0067A3C0* stream);
+    int FUN_0067A630(Stream_0067A3C0* stream);
+    int FUN_0067A6E0(Stream_0067A3C0* stream);
+    int FUN_0067A770(Stream_0067A3C0* stream);
+    int FUN_0067A7D0(Stream_0067A3C0* stream);
+    int FUN_0067A850(Stream_0067A3C0* stream);
+    int FUN_0067A8E0(Stream_0067A3C0* stream);
+    int FUN_00717B20(Stream_0067A3C0* stream);
 };
 GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Count) == 0x10);
@@ -54,36 +65,15 @@ GG_STATIC_ASSERT(sizeof(SaveVector_0067A3C0) == 0x18);
 // to survive the call for the return; written as `void` the reload disappears
 // and one instruction is missing (66.7%, retail-only {mov}).
 #define GG_VECTOR_STREAM_SAVE_BODY(ADDR)                                  \
-int __fastcall FUN_##ADDR(SaveVector_0067A3C0* self, int,                 \
-                          Stream_0067A3C0* stream)                        \
+int SaveVector_0067A3C0::FUN_##ADDR(Stream_0067A3C0* stream)              \
 {                                                                         \
-    int count = self->Count;                                              \
+    int count = Count;                                                    \
     GG_SAVE_WRITE(stream, &count, 4);                                     \
     for (int i = 0; i < count; ++i) {                                     \
-        GG_SAVE_WRITE(stream, &self->Items[i], 4);                        \
+        GG_SAVE_WRITE(stream, &Items[i], 4);                              \
     }                                                                     \
     return count;                                                         \
 }
 
-// FUNCTION: GAMEMD 0x0067A3C0
-int __fastcall FUN_0067A3C0(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A4A0
-int __fastcall FUN_0067A4A0(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A520
-int __fastcall FUN_0067A520(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A630
-int __fastcall FUN_0067A630(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A6E0
-int __fastcall FUN_0067A6E0(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A770
-int __fastcall FUN_0067A770(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A7D0
-int __fastcall FUN_0067A7D0(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A850
-int __fastcall FUN_0067A850(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x0067A8E0
-int __fastcall FUN_0067A8E0(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
-// FUNCTION: GAMEMD 0x00717B20
-int __fastcall FUN_00717B20(SaveVector_0067A3C0* self, int, Stream_0067A3C0* stream);
 
 #endif  // GG_MATCH_CORE_VECTOR_STREAM_SAVE_FAMILY_METHODS_H

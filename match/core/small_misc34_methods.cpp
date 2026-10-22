@@ -39,16 +39,6 @@ void __fastcall FUN_00407170c(Obj_00407170* obj, int rate)
 
     obj->Flags = flags & ~1;
 
-    // PERMUTER FINDING (score 0 at candidate 15, base 10): an inert `if (1) {}`
-    // placed between the flags store and the comparison is what swaps the two
-    // comparand loads into retail's EAX/ECX assignment. A bare `{ }` block does
-    // nothing (89.5%) and the same `if (1) {}` above the loads does nothing
-    // (89.5%) - it is the basic-block boundary at exactly this point that the
-    // register allocator responds to. Found by decomp-permuter; see
-    // docs/permuter_workflow.md.
-    if (1) {
-    }
-
     if (current == target) {
         *(__int64*)&obj->unknown_18 = FUN_004093B0(target);
     }

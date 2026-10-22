@@ -7,16 +7,16 @@
 #include "small_misc17_methods.h"
 
 // FUNCTION: GAMEMD 0x4103E0
-// PARTIAL, 87.5% (14/16). Plain stores: retail writes out[0] then out[1]; cl
-// emits the two stores in the opposite order.
+// Fills the two consecutive out slots in order: the provider's +4 view, then
+// a null second slot.
 long __stdcall FUN_004103E0(Provider_004103E0* provider, void** out)
 {
     if (out == 0) {
         return 0x80004003;
     }
 
-    out[0] = SLOT_30(provider) + 4;
-    out[1] = 0;
+    *out++ = SLOT_30(provider) + 4;
+    *out = 0;
 
     return 0;
 }

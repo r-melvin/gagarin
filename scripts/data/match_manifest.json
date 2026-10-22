@@ -10108,8 +10108,8 @@
   "sym": "?RandomRanged@Randomizer@@QAEHHH@Z",
   "len": "0xAD",
   "name": "RandomRanged",
-  "status": "partial",
-  "pct": 77.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/rect_contains_point_methods.cpp",
@@ -10765,8 +10765,8 @@
   "sym": "?FUN_004103E0@@YGJPAUProvider_004103E0@@PAPAX@Z",
   "len": "0x2d",
   "name": "FUN_004103E0",
-  "status": "partial",
-  "pct": 87.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc17_methods.cpp",
@@ -11161,8 +11161,9 @@
   "sym": "?FUN_00407170c@@YIXPAUObj_00407170@@H@Z",
   "len": "0x2b",
   "name": "FUN_00407170",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 89.5,
+  "note": "Inert `if (1) {}` removed as a dead statement; the residual is the EAX/ECX assignment of the two comparand loads (17/19)."
  },
  {
   "tu": "match/core/small_misc35_methods.cpp",
@@ -21157,92 +21158,92 @@
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A3C0",
-  "sym": "?FUN_0067A3C0@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A3C0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A3C0",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A3C0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A4A0",
-  "sym": "?FUN_0067A4A0@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A4A0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A4A0",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A4A0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A520",
-  "sym": "?FUN_0067A520@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A520@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A520",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A520",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A630",
-  "sym": "?FUN_0067A630@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A630@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A630",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A630",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A6E0",
-  "sym": "?FUN_0067A6E0@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A6E0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A6E0",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A6E0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A770",
-  "sym": "?FUN_0067A770@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A770@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A770",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A770",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A7D0",
-  "sym": "?FUN_0067A7D0@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A7D0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A7D0",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A7D0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A850",
-  "sym": "?FUN_0067A850@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A850@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A850",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A850",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A8E0",
-  "sym": "?FUN_0067A8E0@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A8E0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_0067A8E0",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_0067A8E0",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x717B20",
-  "sym": "?FUN_00717B20@@YIHPAUSaveVector_0067A3C0@@HPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_00717B20@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
   "len": "0x4b",
-  "name": "FUN_00717B20",
-  "status": "partial",
-  "pct": 88.9
+  "name": "SaveVector_0067A3C0::FUN_00717B20",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
@@ -59982,7 +59983,7 @@
   "len": "0x141",
   "name": "RGBClass::FUN_006613A0",
   "status": "partial",
-  "pct": 84.7
+  "pct": 97.5
  },
  {
   "tu": "match/core/zero_run_codec_methods.cpp",

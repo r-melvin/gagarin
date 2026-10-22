@@ -98,8 +98,7 @@ void __stdcall FlyLocoMoveTo::MoveTo(Coord_004CCC80 to)
         return;
     }
 
-    Foot_004CCC80* gate = this->LinkedTo;
-    if ((gate->*gate->Vtbl->At_37C)() != 0) {
+    if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_37C)() != 0) {
         return;
     }
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_380)() != 0) {
@@ -207,8 +206,7 @@ void __stdcall FlyLocoMoveTo::MoveTo(Coord_004CCC80 to)
         }
         this->unknown_58 = high;
 
-        Foot_004CCC80* kind = this->LinkedTo;
-        if ((kind->*kind->Vtbl->At_2C)() == 2) {
+        if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_2C)() == 2) {
             if (this->LinkedTo->Type->At_E0A == 0) {
                 this->unknown_58 = 1;
             }

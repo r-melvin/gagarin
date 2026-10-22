@@ -58,31 +58,11 @@ int Randomizer::Random()
 // EAX and the pick in EDI). The `pick = magnitude + 1; while (pick >
 // magnitude)` pre-test gives `LEA EAX,[EDI+1]; CMP EAX,EDI; JLE`.
 //
-// PARTIAL (77.3%, 51/66; multiset identical). Pure ESI/EDI naming: retail
-// homes the magnitude in EDI and the inlined step's table temporaries in
-// ESI, cl 8804 the reverse, so the two deferred pushes and every use of
-// either register differ. Variants tried without effect: `return lo + pick`;
-// a single temporary inside the inline step; an unsigned result; `const`
-// magnitude; the draw split into a named local before the mask; the step
-// declared `inline` out of class with its address kept (same 77.3%, and the
-// out-of-line Random() copy is no longer emitted); a for/break spelling of
-// the high-bit search (peels differently, 41.8%) and a do/while draw loop
-// (drops the pre-test, 18.2%).
-//
-// TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply. Retail's
-// pushes are already sunk in our output too — PUSH EBX ahead of the equality
-// test, PUSH EBP and PUSH EDI after the bound swap, PUSH ESI only on entry to
-// the draw loop — and retail's staircase epilogue (POP ESI; POP EDI; ADD
-// EAX,EBX; POP EBP; POP EBX; RET 8, entered at three different points by the
-// min==max return, the loop-skip and the loop exit) is reproduced
-// instruction-for-instruction. Nothing is merged that retail leaves split.
-// Four further spellings measured this pass, all 77.3% and byte-identical to
-// the control: the draw loop lifted into a free `Draw(this, magnitude, mask)`
-// inline helper; the same with its result bound to a named local before the
-// `+ lo`; the high-bit search, the mask and the draw all lifted into one
-// inline helper taking only the magnitude; and a `for` spelling of the draw
-// loop with the pre-test in the init clause. The ESI/EDI exchange survives
-// every function boundary that can be drawn through this body.
+// The draw is two statements, the step result and then the mask applied to
+// it. Written as one expression (`pick = RandomStep() & mask`) cl swaps the
+// ESI/EDI homes of the magnitude and the step's table temporaries (77.3%);
+// the two-statement form gives retail's assignment. Found by a permuter run
+// under the current /Gr flag set and reduced by hand to this one change.
 int Randomizer::RandomRanged(int min, int max)
 {
     int lo = min;
@@ -109,7 +89,10 @@ int Randomizer::RandomRanged(int min, int max)
     // past the magnitude so the while-guard always enters in the normal case.
     int pick = magnitude + 1;
     while (pick > magnitude)
-        pick = this->RandomStep() & mask;
+    {
+        pick = this->RandomStep();
+        pick &= mask;
+    }
 
     return pick + lo;
 }
