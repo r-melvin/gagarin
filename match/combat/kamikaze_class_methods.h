@@ -26,21 +26,8 @@ class CellClass;
 // esp,4`. Declared (no body) so cl emits a normalised call reloc. GAMEMD 0x7C8B3D.
 void __cdecl GameDelete(void* block);
 
-typedef long HRESULT;
-
-// Minimal IStream COM interface. Only the vtable layout matters: the matched
-// calls dispatch through Write at slot 4 (+0x10). COM methods are __stdcall, so
-// `this` is passed as the first *stacked* argument (PUSH pStm; CALL [vtbl+0x10]).
-struct IStream
-{
-    virtual long          __stdcall QueryInterface(const void* riid, void** ppv) = 0; // +0x00
-    virtual unsigned long __stdcall AddRef() = 0;                                     // +0x04
-    virtual unsigned long __stdcall Release() = 0;                                    // +0x08
-    virtual long          __stdcall Read(void* pv, unsigned long cb,
-                                         unsigned long* pcbRead) = 0;                 // +0x0C
-    virtual long          __stdcall Write(const void* pv, unsigned long cb,
-                                          unsigned long* pcbWritten) = 0;             // +0x10
-};
+// SDK IStream supplies the same five-slot prefix used by these calls.
+#include <objidl.h>
 
 // KamikazeControl — one suicide aircraft and the cell it dives at (8 bytes).
 struct KamikazeControl
@@ -73,17 +60,8 @@ GG_STATIC_ASSERT(offsetof(KamikazeNodeVector, Items)    == 0x04);
 GG_STATIC_ASSERT(offsetof(KamikazeNodeVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(KamikazeNodeVector, Count)    == 0x10);
 
-// CDTimerClass = TimerStruct<FrameTimer> — StartTime, a (functor) CurrentTime
-// slot, then TimeLeft; sizeof = 0x0C (YRpp: offsetof(TimeLeft) == 8).
-struct CDTimerClass
-{
-    int StartTime;     // +0x00
-    int CurrentTime;   // +0x04  (FrameTimer functor occupies this 4-byte cell)
-    int TimeLeft;      // +0x08
-};
-
-GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
-GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);
+// Reuse the existing canonical data-only frame timer layout.
+#include "../_layout/mission_class.h"
 
 struct Kamikaze
 {

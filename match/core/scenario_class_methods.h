@@ -55,6 +55,8 @@ struct MapInstanceClass
     void FUN_004F4480(); // GAMEMD 0x4F4480, __thiscall
     void FUN_00655B20(); // GAMEMD 0x655B20, __thiscall
     void FUN_004F42F0(int value); // GAMEMD 0x4F42F0, __thiscall
+    void FUN_00565B00(); // GAMEMD 0x565B00
+    void FUN_005BDF50(); // GAMEMD 0x5BDF50
     void FUN_006938C0(); // GAMEMD 0x6938C0, __thiscall
     void       IteratorBegin_578350();   // GAMEMD 0x578350  __thiscall
     CellClass* IteratorNext_578290();    // GAMEMD 0x578290  __thiscall
@@ -205,7 +207,8 @@ struct ScenarioClass
     void FUN_0068BF50(int index, CellStruct value);
 
     // ---- members touched by the matched methods ----
-    char unknown_0000[0x218];
+    char unknown_0000[0x214];
+    int unknown_0214;
     Randomizer unknown_0218;
     int Difficulty;
     char unknown_0610[4];
@@ -253,9 +256,26 @@ struct ScenarioClass
     bool unknown_3598;
     char unknown_3599[0x35A2 - 0x3599];
     unsigned char unknown_35A2;
+    char unknown_35A3;
+    int unknown_35A4, unknown_35A8, unknown_35AC;
+    char unknown_35B0;
+    char unknown_35B1[30];
+    char unknown_35CF;
+    char unknown_35D0[30];
+    char unknown_35EE;
+    char unknown_35EF[30];
+    char unknown_360D;
 };
 
 #if GG_TARGET_ABI_32
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0214) == 0x214);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A4) == 0x35A4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A8) == 0x35A8);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35AC) == 0x35AC);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35B0) == 0x35B0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35CF) == 0x35CF);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35EE) == 0x35EE);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_360D) == 0x360D);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, Difficulty) == 0x60C);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, Timer_11E8) == 0x11E8);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A5) == 0x34A5);

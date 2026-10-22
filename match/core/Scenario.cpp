@@ -46,6 +46,51 @@
 #include "../platform/input_manager_class_methods.h"
 #include "../network/win_modem_class.h"
 #include "../_layout/swizzle_manager_class.h"
+#include "../_layout/tactical.h"
+#include "../_layout/aircraft_tracker_class.h"
+#include "../_layout/layer_class.h"
+#include "../_layout/tag_type_class.h"
+#include "../combat/kamikaze_class_methods.h"
+#include "../combat/particles/system_class.h"
+#include "small_misc35_methods.h"
+
+extern Tactical* TacticalInstance; // GLOBAL: GAMEMD 0x00887324
+extern ParticleSystemClass* DAT_00A8ED78; // GLOBAL: GAMEMD 0x00A8ED78
+extern AircraftTrackerClass AircraftTracker; // GLOBAL: GAMEMD 0x00887888
+extern Kamikaze DAT_00ABC5F8; // GLOBAL: GAMEMD 0x00ABC5F8
+extern Obj_00439110 DAT_0087F5D8; // GLOBAL: GAMEMD 0x0087F5D8
+extern HouseClass* CurrentPlayer; // GLOBAL: GAMEMD 0x00A83D4C
+extern DynamicVectorClass<AbstractTypeClass*> DAT_00A8E968; // GLOBAL: GAMEMD 0x00A8E968
+class IsometricTileTypeClass;
+extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28; // GLOBAL: GAMEMD 0x00A8ED28
+extern DynamicVectorClass<ObjectClass*> DAT_00A8E360; // GLOBAL: GAMEMD 0x00A8E360
+class TagClass;
+extern DynamicVectorClass<TagClass*> DAT_008B41A8; // GLOBAL: GAMEMD 0x008B41A8
+extern DynamicVectorClass<TagClass*> DAT_008B40C8; // GLOBAL: GAMEMD 0x008B40C8
+extern DynamicVectorClass<ObjectClass*> DAT_00A8ECB8; // GLOBAL: GAMEMD 0x00A8ECB8
+extern DynamicVectorClass<void*> DAT_0087F838; // GLOBAL: GAMEMD 0x0087F838
+extern int DAT_0083D834; // GLOBAL: GAMEMD 0x0083D834
+extern bool DAT_00829AE4; // GLOBAL: GAMEMD 0x00829AE4
+extern int DAT_0087F8D4; // GLOBAL: GAMEMD 0x0087F8D4
+extern int DAT_0087F8D8; // GLOBAL: GAMEMD 0x0087F8D8
+extern int DAT_0087F8DC; // GLOBAL: GAMEMD 0x0087F8DC
+extern int DAT_0087F8E0; // GLOBAL: GAMEMD 0x0087F8E0
+extern const char STR_0083DAF8[]; // STRING: GAMEMD 0x0083DAF8 (decl)
+extern const char STR_0083DAE8[]; // STRING: GAMEMD 0x0083DAE8 (decl)
+extern const char STR_0083DAD0[]; // STRING: GAMEMD 0x0083DAD0 (decl)
+extern const char STR_0083DAB0[]; // STRING: GAMEMD 0x0083DAB0 (decl)
+extern const char STR_0083DA9C[]; // STRING: GAMEMD 0x0083DA9C (decl)
+void __fastcall FUN_0053A090(); // GAMEMD 0x53A090
+void __fastcall FUN_00534450(); // GAMEMD 0x534450
+void __fastcall FUN_006E5570(); // GAMEMD 0x6E5570
+void __fastcall FUN_005549A0(); // GAMEMD 0x5549A0
+void __fastcall FUN_00539760(); // GAMEMD 0x539760
+void __fastcall FUN_004C5470(); // GAMEMD 0x4C5470
+void __fastcall FUN_0074D760(); // GAMEMD 0x74D760
+void __fastcall FUN_00722390(); // GAMEMD 0x722390
+void __fastcall FUN_00722E50(); // GAMEMD 0x722E50
+void __fastcall FUN_006370B0(); // GAMEMD 0x6370B0
+void __fastcall FUN_0052CB90(); // GAMEMD 0x52CB90
 
 // GLOBAL: GAMEMD 0x00B0C110
 extern SwizzleManagerClass DAT_00B0C110;
@@ -166,8 +211,6 @@ void __fastcall FUN_006B5490(int value); // GAMEMD 0x006B5490
 void __fastcall FUN_00734270(ObjectClass* value); // GAMEMD 0x734270
 // GLOBAL: GAMEMD 0x00B0EA80
 extern CDTimerClass DAT_00B0EA80;
-// GLOBAL: GAMEMD 0x0087F8D4
-extern char DAT_0087F8D4;
 // GLOBAL: GAMEMD 0x00B73550
 extern HWND DAT_00B73550;
 
@@ -858,6 +901,91 @@ void __fastcall FUN_00685120()
     FUN_00734210();
     FUN_00734270(0);
     FUN_00660C50();
+}
+
+// FUNCTION: GAMEMD 0x6851F0
+void __fastcall FUN_006851F0()
+{
+    ScenarioInstance->unknown_0214 = 1000000;
+    ScenarioInstance->unknown_0218.unknown_00 = true;
+    DAT_0083D834 = 0x4000;
+    FUN_00407150(DAT_0087E758, 0x4000);
+    FUN_00750FA0();
+    CurrentPlayer = 0;
+    ScenarioInstance->FUN_00683610();
+    FUN_0053A090();
+    for (int i = DAT_00A8E968.Count - 1; i >= 0; --i) {
+        if (DAT_00A8E968.Items[i]->vf_rtti_3() == 0x12) DAT_00A8E968.Delete(i);
+    }
+    FUN_00534450();
+    for (i = 0; i < DAT_00A8ED28.Count; ++i) {
+        // The native type registry stores each tile object's offset-zero
+        // AbstractTypeClass pointer; 0x685253/0x685256 confirms its +4 RTTI side.
+        DAT_00A8E968.AddItem(reinterpret_cast<AbstractTypeClass*>(DAT_00A8ED28.Items[i]));
+    }
+    MapInstance.FUN_00565B00();
+    DAT_0087F838.Clear();
+    FUN_006E5570();
+    for (i = 0; i < 50; ++i) {
+        if (ScenarioInstance->unknown_1C88[i].unknown_28) {
+            ScenarioInstance->unknown_1C88[i].unknown_28 = 0;
+            ScenarioInstance->unknown_34AA = true;
+            FUN_006E57F0(i);
+        }
+    }
+    delete TacticalInstance;
+    TacticalInstance = new Tactical;
+    TacticalInstance->FUN_006DA980();
+    DAT_00829AE4 = false;
+    while (DAT_00A8E360.Count) {
+        if (DAT_00A8E360.Items[0]->vf_11() == 8) DAT_00A8E360.Items[0]->Release();
+        else delete DAT_00A8E360.Items[0];
+    }
+    DAT_00829AE4 = true;
+    while (TagTypes.Count) delete TagTypes.Items[0];
+    DAT_008B41A8.Clear();
+    DAT_008B40C8.Clear();
+    ScenarioInstance->unknown_35A4 = 3600;
+    ScenarioInstance->unknown_35A8 = ScenarioInstance->unknown_35A4;
+    ScenarioInstance->unknown_35AC = ScenarioInstance->unknown_35A4;
+    ScenarioInstance->unknown_35B0 = 0;
+    ScenarioInstance->unknown_35CF = 0;
+    ScenarioInstance->unknown_35EE = 0;
+    ScenarioInstance->unknown_360D = 0;
+    FUN_005549A0();
+    FUN_00539760();
+    FUN_004C5470();
+    FUN_0074D760();
+    FUN_00722390();
+    FUN_00722E50();
+    DAT_0087F5D8.FUN_00439110();
+    DAT_00ABC5F8.Clear();
+    AircraftTracker.Clear();
+    FUN_006370B0();
+    DAT_0087F8D4 = 0;
+    DAT_0087F8D8 = 0;
+    DAT_0087F8DC = 0;
+    DAT_0087F8E0 = 0;
+    FUN_004068E0(STR_0083DAF8);
+    MapInstance.FUN_005BDF50();
+    FUN_004068E0(STR_0083DAE8);
+    DAT_0087F778.Clear();
+    FUN_004068E0(STR_0083DAD0);
+    DAT_00A8ECB8.Clear();
+    FUN_004068E0(STR_0083DAB0);
+    for (i = 0; i < 702; ++i) ScenarioInstance->Waypoints[i] = WaypointUndefined;
+    FUN_004068E0(STR_0083DA9C);
+    FUN_0052CB90();
+    if (DAT_00A8ED78) {
+        DAT_00A8ED78->FUN_0062E650();
+        delete DAT_00A8ED78;
+        DAT_00A8ED78 = 0;
+    }
+    ScenarioInstance->unknown_0218.unknown_00 = false;
+    FUN_00734210();
+    FUN_00734270(0);
+    FUN_00660C50();
+    ScenarioInstance->unknown_0214 = 1000000;
 }
 
 // FUNCTION: GAMEMD 0x6863E0

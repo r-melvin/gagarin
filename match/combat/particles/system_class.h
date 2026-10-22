@@ -43,6 +43,7 @@ class ParticleSystemClass : public ParticleObjectView
 public:
     // FUNCTION: GAMEMD 0x62DF20
     ParticleSystemClass();
+    void FUN_0062E650(); // GAMEMD 0x62E650, caller0x685618
     ParticleClass* SpawnParticle(const ParticleCoord& coords1, const ParticleCoord& coords2);
     ParticleClass* SpawnParticle(ParticleTypeClass* pType, const ParticleCoord& coords);
     // FUNCTION: GAMEMD 0x62DC50
