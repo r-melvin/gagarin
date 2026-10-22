@@ -299,7 +299,7 @@ void __cdecl FreeQuickmatchPalette()
 void __fastcall EnsureMpScreenPalette(int sideIndex)
 {
     if (!DAT_00B0FBB8) {
-        FUN_0072D830();
+        FUN_0072D830(sideIndex);
         const char* name;
         if (sideIndex == 0) {
             name = DAT_00844BD4;

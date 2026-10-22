@@ -64529,5 +64529,1454 @@
   "name": "PlanningNodeClass::FUN_00634770",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A6B0",
+  "sym": "_$E1",
+  "len": "0x28",
+  "name": "DAT_00B0FA28 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A6E0",
+  "sym": "_$E4",
+  "len": "0x13",
+  "name": "DAT_00B0FB40 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A700",
+  "sym": "_$E7",
+  "len": "0x13",
+  "name": "DAT_00B0FAF0 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A720",
+  "sym": "_$E10",
+  "len": "0x13",
+  "name": "DAT_00B0FAE0 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A740",
+  "sym": "_$E13",
+  "len": "0x13",
+  "name": "DAT_00B0FA40 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A760",
+  "sym": "_$E16",
+  "len": "0x13",
+  "name": "DAT_00B0F9F0 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A780",
+  "sym": "_$E19",
+  "len": "0x31",
+  "name": "DAT_00B0FB58 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A7C0",
+  "sym": "_$E22",
+  "len": "0x21",
+  "name": "DAT_00B0FA58 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A7F0",
+  "sym": "_$E25",
+  "len": "0x2c",
+  "name": "DAT_00B0FAB0 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A820",
+  "sym": "_$E28",
+  "len": "0x27",
+  "name": "DAT_00B0FB38 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A850",
+  "sym": "_$E31",
+  "len": "0xf",
+  "name": "DAT_00B0FA24 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A860",
+  "sym": "_$E34",
+  "len": "0x12",
+  "name": "DAT_00B0FA80 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A880",
+  "sym": "_$E37",
+  "len": "0x1a",
+  "name": "DAT_00B0FB20 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A8A0",
+  "sym": "_$E40",
+  "len": "0x14",
+  "name": "DAT_00B0FB4C dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A8C0",
+  "sym": "_$E43",
+  "len": "0x14",
+  "name": "DAT_00B0FA94 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A8E0",
+  "sym": "_$E46",
+  "len": "0x16",
+  "name": "DAT_00B0F9FC dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A900",
+  "sym": "_$E49",
+  "len": "0x14",
+  "name": "DAT_00B0FB14 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A920",
+  "sym": "_$E52",
+  "len": "0x14",
+  "name": "DAT_00B0FB19 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A940",
+  "sym": "_$E55",
+  "len": "0x16",
+  "name": "DAT_00B0F9D8 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A960",
+  "sym": "_$E58",
+  "len": "0x14",
+  "name": "DAT_00B0FB04 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A980",
+  "sym": "_$E61",
+  "len": "0x14",
+  "name": "DAT_00B0FAA0 dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A9A0",
+  "sym": "_$E64",
+  "len": "0x12",
+  "name": "DAT_00B0FA1C dynamic initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A9C0",
+  "sym": "?FUN_0072A9C0@@YIPAUPoint2D@@PAU1@PBU1@@Z",
+  "len": "0xd",
+  "name": "FUN_0072A9C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A9D0",
+  "sym": "?FUN_0072A9D0@@YIXPAUPoint2D@@PBU1@@Z",
+  "len": "0xb",
+  "name": "FUN_0072A9D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72A9E0",
+  "sym": "?FUN_0072A9E0@@YIXPAURectangleStruct@@H@Z",
+  "len": "0x22",
+  "name": "FUN_0072A9E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AA10",
+  "sym": "?FUN_0072AA10@@YIXPAURectangleStruct@@HH@Z",
+  "len": "0x2f",
+  "name": "FUN_0072AA10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AA40",
+  "sym": "?FUN_0072AA40@@YIXXZ",
+  "len": "0x1f9",
+  "name": "FUN_0072AA40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AC40",
+  "sym": "?FUN_0072AC40@@YIXXZ",
+  "len": "0xd6",
+  "name": "FUN_0072AC40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AD20",
+  "sym": "?FUN_0072AD20@@YIPAURectangleStruct@@PAU1@@Z",
+  "len": "0x62",
+  "name": "FUN_0072AD20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AD90",
+  "sym": "?FUN_0072AD90@@YIPAURectangleStruct@@PAU1@@Z",
+  "len": "0x48",
+  "name": "FUN_0072AD90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AF10",
+  "sym": "?FUN_0072AF10@@YIXXZ",
+  "len": "0xbe",
+  "name": "FUN_0072AF10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AFD0",
+  "sym": "?FUN_0072AFD0@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0072AFD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72AFE0",
+  "sym": "?FUN_0072AFE0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072AFE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B000",
+  "sym": "?FUN_0072B000@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B000",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B020",
+  "sym": "?FUN_0072B020@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B020",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B040",
+  "sym": "?FUN_0072B040@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B040",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B060",
+  "sym": "?FUN_0072B060@@YIXXZ",
+  "len": "0x6a",
+  "name": "FUN_0072B060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B0D0",
+  "sym": "?FUN_0072B0D0@@YIXXZ",
+  "len": "0x55",
+  "name": "FUN_0072B0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B130",
+  "sym": "?FUN_0072B130@@YIXXZ",
+  "len": "0xf2",
+  "name": "FUN_0072B130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B2F0",
+  "sym": "?FUN_0072B2F0@@YIPBDHHH@Z",
+  "len": "0x15",
+  "name": "FUN_0072B2F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B310",
+  "sym": "?FUN_0072B310@@YIPBDHHH@Z",
+  "len": "0x15",
+  "name": "FUN_0072B310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B330",
+  "sym": "?FUN_0072B330@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B330",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B350",
+  "sym": "?FUN_0072B350@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B370",
+  "sym": "?FUN_0072B370@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B4F0",
+  "sym": "?FUN_0072B4F0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B4F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B510",
+  "sym": "?FUN_0072B510@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B510",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B530",
+  "sym": "?FUN_0072B530@@YIXH@Z",
+  "len": "0x2e1",
+  "name": "FUN_0072B530",
+  "status": "partial",
+  "pct": 18.7
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B8E0",
+  "sym": "?FUN_0072B8E0@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072B8E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B930",
+  "sym": "?FUN_0072B930@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072B930",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B9B0",
+  "sym": "?FUN_0072B9B0@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072B9B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72B9C0",
+  "sym": "?FUN_0072B9C0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072B9C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BAC0",
+  "sym": "?FUN_0072BAC0@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072BAC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BB10",
+  "sym": "?FUN_0072BB10@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072BB10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BB90",
+  "sym": "?FUN_0072BB90@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072BB90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BBA0",
+  "sym": "?FUN_0072BBA0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072BBA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BBC0",
+  "sym": "?FUN_0072BBC0@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072BBC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BBF0",
+  "sym": "?FUN_0072BBF0@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072BBF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BC10",
+  "sym": "?FUN_0072BC10@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072BC10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BC60",
+  "sym": "?FUN_0072BC60@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072BC60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BD70",
+  "sym": "?FUN_0072BD70@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072BD70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BD80",
+  "sym": "?FUN_0072BD80@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072BD80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BDA0",
+  "sym": "?FUN_0072BDA0@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072BDA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BDD0",
+  "sym": "?FUN_0072BDD0@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072BDD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BDF0",
+  "sym": "?FUN_0072BDF0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072BDF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BE40",
+  "sym": "?FUN_0072BE40@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072BE40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BF50",
+  "sym": "?FUN_0072BF50@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072BF50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BF60",
+  "sym": "?FUN_0072BF60@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072BF60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BF80",
+  "sym": "?FUN_0072BF80@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072BF80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BFB0",
+  "sym": "?FUN_0072BFB0@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072BFB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72BFD0",
+  "sym": "?FUN_0072BFD0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072BFD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C020",
+  "sym": "?FUN_0072C020@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C020",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C060",
+  "sym": "?FUN_0072C060@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C060",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C0B0",
+  "sym": "?FUN_0072C0B0@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072C0B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C130",
+  "sym": "?FUN_0072C130@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072C130",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C140",
+  "sym": "?FUN_0072C140@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072C140",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C160",
+  "sym": "?FUN_0072C160@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072C160",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C190",
+  "sym": "?FUN_0072C190@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072C190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C1B0",
+  "sym": "?FUN_0072C1B0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072C1B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C200",
+  "sym": "?FUN_0072C200@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C240",
+  "sym": "?FUN_0072C240@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C240",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C290",
+  "sym": "?FUN_0072C290@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072C290",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C310",
+  "sym": "?FUN_0072C310@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072C310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C320",
+  "sym": "?FUN_0072C320@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072C320",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C340",
+  "sym": "?FUN_0072C340@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072C340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C370",
+  "sym": "?FUN_0072C370@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072C370",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C390",
+  "sym": "?FUN_0072C390@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072C390",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C3E0",
+  "sym": "?FUN_0072C3E0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C3E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C420",
+  "sym": "?FUN_0072C420@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C420",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C470",
+  "sym": "?FUN_0072C470@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072C470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C4F0",
+  "sym": "?FUN_0072C4F0@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072C4F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C500",
+  "sym": "?FUN_0072C500@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072C500",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C520",
+  "sym": "?FUN_0072C520@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072C520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C550",
+  "sym": "?FUN_0072C550@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072C550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C570",
+  "sym": "?FUN_0072C570@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072C570",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C5C0",
+  "sym": "?FUN_0072C5C0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C5C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C600",
+  "sym": "?FUN_0072C600@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C600",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C650",
+  "sym": "?FUN_0072C650@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072C650",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C6D0",
+  "sym": "?FUN_0072C6D0@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072C6D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C6E0",
+  "sym": "?FUN_0072C6E0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072C6E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C700",
+  "sym": "?FUN_0072C700@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072C700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C730",
+  "sym": "?FUN_0072C730@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072C730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C750",
+  "sym": "?FUN_0072C750@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072C750",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C7A0",
+  "sym": "?FUN_0072C7A0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C7A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C7E0",
+  "sym": "?FUN_0072C7E0@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C7E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C830",
+  "sym": "?FUN_0072C830@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072C830",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C8B0",
+  "sym": "?FUN_0072C8B0@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072C8B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C8C0",
+  "sym": "?FUN_0072C8C0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072C8C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C8E0",
+  "sym": "?FUN_0072C8E0@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072C8E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C910",
+  "sym": "?FUN_0072C910@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072C910",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C930",
+  "sym": "?FUN_0072C930@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072C930",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C980",
+  "sym": "?FUN_0072C980@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072C980",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72C9C0",
+  "sym": "?FUN_0072C9C0@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072C9C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CA10",
+  "sym": "?FUN_0072CA10@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072CA10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CA90",
+  "sym": "?FUN_0072CA90@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072CA90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CAA0",
+  "sym": "?FUN_0072CAA0@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072CAA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CBA0",
+  "sym": "?FUN_0072CBA0@@YIXXZ",
+  "len": "0x39",
+  "name": "FUN_0072CBA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CBE0",
+  "sym": "?FUN_0072CBE0@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072CBE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CC60",
+  "sym": "?FUN_0072CC60@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072CC60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CC70",
+  "sym": "?FUN_0072CC70@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072CC70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CC90",
+  "sym": "?FUN_0072CC90@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_0072CC90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CCB0",
+  "sym": "?FUN_0072CCB0@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_0072CCB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CCD0",
+  "sym": "?FUN_0072CCD0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072CCD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CD20",
+  "sym": "?FUN_0072CD20@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072CD20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CD60",
+  "sym": "?FUN_0072CD60@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072CD60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CDB0",
+  "sym": "?FUN_0072CDB0@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072CDB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CE30",
+  "sym": "?FUN_0072CE30@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072CE30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CE40",
+  "sym": "?FUN_0072CE40@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072CE40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CE60",
+  "sym": "?FUN_0072CE60@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072CE60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CE90",
+  "sym": "?FUN_0072CE90@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072CE90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CEB0",
+  "sym": "?FUN_0072CEB0@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072CEB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CF00",
+  "sym": "?FUN_0072CF00@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072CF00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CF40",
+  "sym": "?FUN_0072CF40@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072CF40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72CF90",
+  "sym": "?FUN_0072CF90@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072CF90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D010",
+  "sym": "?FUN_0072D010@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072D010",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D020",
+  "sym": "?FUN_0072D020@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072D020",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D040",
+  "sym": "?FUN_0072D040@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072D040",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D070",
+  "sym": "?FUN_0072D070@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072D070",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D090",
+  "sym": "?FUN_0072D090@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072D090",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D0E0",
+  "sym": "?FUN_0072D0E0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072D0E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D120",
+  "sym": "?FUN_0072D120@@YIXXZ",
+  "len": "0x47",
+  "name": "FUN_0072D120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D170",
+  "sym": "?FUN_0072D170@@YIXXZ",
+  "len": "0x72",
+  "name": "FUN_0072D170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D1F0",
+  "sym": "?FUN_0072D1F0@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072D1F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D200",
+  "sym": "?FUN_0072D200@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072D200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D220",
+  "sym": "?FUN_0072D220@@YIXXZ",
+  "len": "0x22",
+  "name": "FUN_0072D220",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D250",
+  "sym": "?FUN_0072D250@@YIXXZ",
+  "len": "0x16",
+  "name": "FUN_0072D250",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D270",
+  "sym": "?FUN_0072D270@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072D270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D2C0",
+  "sym": "?FUN_0072D2C0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072D2C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D300",
+  "sym": "?FUN_0072D300@@YIXH@Z",
+  "len": "0x46",
+  "name": "FUN_0072D300",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D350",
+  "sym": "?FUN_0072D350@@YIXXZ",
+  "len": "0xd5",
+  "name": "FUN_0072D350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D430",
+  "sym": "?FUN_0072D430@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072D430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D440",
+  "sym": "?FUN_0072D440@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072D440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D460",
+  "sym": "?FUN_0072D460@@YIXH@Z",
+  "len": "0x1a1",
+  "name": "FUN_0072D460",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D610",
+  "sym": "?FUN_0072D610@@YIXH@Z",
+  "len": "0x3b",
+  "name": "FUN_0072D610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D650",
+  "sym": "?FUN_0072D650@@YIXXZ",
+  "len": "0x94",
+  "name": "FUN_0072D650",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D6F0",
+  "sym": "?FUN_0072D6F0@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072D6F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D800",
+  "sym": "?FUN_0072D800@@YI_NXZ",
+  "len": "0x6",
+  "name": "FUN_0072D800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D810",
+  "sym": "?FUN_0072D810@@YIPAUColorStruct_Res@@XZ",
+  "len": "0x6",
+  "name": "FUN_0072D810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D830",
+  "sym": "?FUN_0072D830@@YIXH@Z",
+  "len": "0x92",
+  "name": "FUN_0072D830",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D8D0",
+  "sym": "?FUN_0072D8D0@@YIXH@Z",
+  "len": "0x3b",
+  "name": "FUN_0072D8D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D910",
+  "sym": "?FUN_0072D910@@YIXXZ",
+  "len": "0x42",
+  "name": "FUN_0072D910",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/screen_resource_methods.cpp",
+  "addr": "0x72D960",
+  "sym": "?FUN_0072D960@@YIXXZ",
+  "len": "0x37",
+  "name": "FUN_0072D960",
+  "status": "matched",
+  "pct": 100
  }
 ]

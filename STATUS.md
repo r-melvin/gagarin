@@ -1,5 +1,36 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,894 matched function
+rows**, **420 partial rows**, **7,314 manifest rows**, **1,275 manifest
+translation units**, and **1,283 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+match/renderer/screen_resource_methods.cpp covers the screen resource block
+0x72A6B0..0x72D9A0 in address order: the block's run-time initialiser chain,
+the point and rectangle helpers, and the per-screen load, release and query
+families over whole-file blocks and palette sets. It adds 160 exact rows and
+1 partial (0x72B530). FUN_0072D830 now takes the side index it receives in
+ECX, with unchanged bytes. Every new exact row passes raw bytes and strict
+relocation checks.
+
+The 6,894 matches represent 34.9% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **509,787
+bytes**, or 13.4% of 3,797,269 listed function bytes. The padding heuristic
+misses 534 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: command-class family and PlanMgr block
+
 As of **2026-10-22**, the verified snapshot reports **6,734 matched function
 rows**, **419 partial rows**, **7,153 manifest rows**, **1,274 manifest
 translation units**, and **1,282 tracked C++ files**. Whole-repository regression
@@ -23,14 +54,6 @@ bytes**, or 13.2% of 3,797,269 listed function bytes. The padding heuristic
 misses 534 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: residual pass
 

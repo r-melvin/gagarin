@@ -88,8 +88,8 @@ void __fastcall ConvertClass_CreateFromFile(const char* pFilename,
                                             ColorStruct_Res*& pPalette,
                                             ConvertClass_Res*& pDestination);
 
-// FUNCTION: GAMEMD 0x72D830 (decl; reloc) — load the multiplayer screen SHP.
-void __cdecl FUN_0072D830();
+// FUNCTION: GAMEMD 0x72D830 (decl; reloc) — load the multiplayer screen SHP for a side (ECX).
+void FUN_0072D830(int sideIndex);
 
 // ---------------------------------------------------------------------------
 // Layout
