@@ -16,6 +16,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_type_class.h"
+#include "../core/vector_class.h"
 
 // ---------------------------------------------------------------------------
 // BulletTypeClass — partial model of the Projectile pointee (only the members
@@ -75,12 +76,17 @@ struct WeaponTypeClass : AbstractTypeClass
     WarheadTypeClass* Warhead;                // +0xAC
     int               ROF;                    // +0xB0
     int               Range;                  // +0xB4
-    char              _tail[0x160 - 0xB8];    // +0xB8  remaining Rules fields (P2)
+    unsigned int      unknown_B8;             // +0xB8
+    DynamicVectorClass<int> Reports;           // +0xBC (items +0xC0, count +0xCC)
+    char              _tail[0x160 - 0xD4];    // +0xD4  remaining Rules fields (P2)
 };
 
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed)      == 0xA8);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range)      == 0xB4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
 GG_STATIC_ASSERT(sizeof(WeaponTypeClass)               == 0x160);
 
 // VectorClass head for WeaponTypeClass::Array (DynamicVectorClass of pointers).

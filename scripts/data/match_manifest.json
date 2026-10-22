@@ -31685,24 +31685,6 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
-  "addr": "0x004B5B30",
-  "sym": "_FUN_004B5B30@4",
-  "len": "0x5",
-  "name": "FUN_004B5B30",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
-  "addr": "0x004B5B40",
-  "sym": "_FUN_004B5B40@8",
-  "len": "0x24",
-  "name": "FUN_004B5B40",
-  "status": "matched",
-  "pct": 100
- },
- {
   "tu": "match/ui/control_class.cpp",
   "addr": "0x48e520",
   "sym": "??0ControlClass@@QAE@HHHHHID@Z",
@@ -31820,38 +31802,11 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
-  "addr": "0x4b6200",
-  "sym": "?GetClassID@DropPodLocomotionClass@@QAGJPAUGuidWords@@@Z",
-  "len": "0x38",
-  "name": "DropPodLocomotionClass::GetClassID",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
-  "addr": "0x4b6240",
-  "sym": "?Load@DropPodLocomotionClass@@QAGJPAUIStream_0055AAC0@@@Z",
-  "len": "0x7f",
-  "name": "DropPodLocomotionClass::Load",
-  "status": "matched",
-  "pct": 100
- },
- {
   "tu": "match/ui/tooltip_manager.cpp",
   "addr": "0x724000",
   "sym": "??0ToolTipManager@@QAE@PAX@Z",
   "len": "0xA7",
   "name": "ToolTipManager::ToolTipManager",
-  "status": "matched",
-  "pct": 100
- },
- {
-  "tu": "match/movement/drop_pod_interface_004b5b30.cpp",
-  "addr": "0x4B63A0",
-  "sym": "?Unknown_48@DropPodILocomotionView_007E8278@@QAGXXZ",
-  "len": "0x3",
-  "name": "DropPod ILocomotion slot +0x48",
   "status": "matched",
   "pct": 100
  },
@@ -48370,6 +48325,366 @@
   "sym": "?Size@MechLocomotionClass@@UAEHXZ",
   "len": "0x6",
   "name": "MechLocomotionClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x661EC0",
+  "sym": "??0RocketLocomotionClass@@QAE@XZ",
+  "len": "0x6A",
+  "name": "RocketLocomotionClass::RocketLocomotionClass",
+  "status": "partial",
+  "pct": 13.3
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x661F50",
+  "sym": "?IsMoving@RocketLocomotionClass@@UAG_NXZ",
+  "len": "0x38",
+  "name": "RocketLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x661F90",
+  "sym": "?IsMovingNow@RocketLocomotionClass@@UAG_NXZ",
+  "len": "0x1B",
+  "name": "RocketLocomotionClass::IsMovingNow",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x661FB0",
+  "sym": "?Destination@RocketLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x24",
+  "name": "RocketLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6622C0",
+  "sym": "?Process@RocketLocomotionClass@@UAG_NXZ",
+  "len": "0xD4F",
+  "name": "RocketLocomotionClass::Process",
+  "status": "partial",
+  "pct": 3.7
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6632E0",
+  "sym": "?MoveTo@RocketLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0xDA",
+  "name": "RocketLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 30.2
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6633C0",
+  "sym": "?StopMoving@RocketLocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "RocketLocomotionClass::StopMoving",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6633D0",
+  "sym": "?GetClassID@RocketLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "RocketLocomotionClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x663410",
+  "sym": "?Load@RocketLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x46",
+  "name": "RocketLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x663460",
+  "sym": "?InWhichLayer@RocketLocomotionClass@@UAGHXZ",
+  "len": "0x8",
+  "name": "RocketLocomotionClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x663470",
+  "sym": "?DrawMatrix@RocketLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "len": "0x134",
+  "name": "RocketLocomotionClass::DrawMatrix",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6635B0",
+  "sym": "?Size@RocketLocomotionClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "RocketLocomotionClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/rocket_locomotion.cpp",
+  "addr": "0x6635C0",
+  "sym": "??_GRocketLocomotionClass@@UAEPAXI@Z",
+  "len": "0x2B",
+  "name": "RocketLocomotionClass::scalarDeletingDestructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B5AB0",
+  "sym": "??0DropPodLocomotionClass@@QAE@XZ",
+  "len": "0x45",
+  "name": "DropPodLocomotionClass::DropPodLocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B5B30",
+  "sym": "?IsMoving@DropPodLocomotionClass@@UAG_NXZ",
+  "len": "0x5",
+  "name": "DropPodLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B5B40",
+  "sym": "?Destination@DropPodLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x24",
+  "name": "DropPodLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B5B70",
+  "sym": "?Process@DropPodLocomotionClass@@UAG_NXZ",
+  "len": "0x4c9",
+  "name": "DropPodLocomotionClass::Process",
+  "status": "partial",
+  "pct": 2.3
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6040",
+  "sym": "?MoveTo@DropPodLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0x1b8",
+  "name": "DropPodLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 27.1
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6200",
+  "sym": "?GetClassID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "DropPodLocomotionClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6240",
+  "sym": "?Load@DropPodLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x7f",
+  "name": "DropPodLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B62C0",
+  "sym": "?Save@DropPodLocomotionClass@@UAGJPAUIStream@@H@Z",
+  "len": "0xda",
+  "name": "DropPodLocomotionClass::Save",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B63A0",
+  "sym": "?StopMoving@DropPodLocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "DropPodLocomotionClass::StopMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B63B0",
+  "sym": "?BeginPiggyback@DropPodLocomotionClass@@UAGJPAVILocomotion@@@Z",
+  "len": "0x43",
+  "name": "DropPodLocomotionClass::BeginPiggyback",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6400",
+  "sym": "?EndPiggyback@DropPodLocomotionClass@@UAGJPAPAVILocomotion@@@Z",
+  "len": "0x31",
+  "name": "DropPodLocomotionClass::EndPiggyback",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6440",
+  "sym": "?IsOkToEnd@DropPodLocomotionClass@@UAG_NXZ",
+  "len": "0x26",
+  "name": "DropPodLocomotionClass::IsOkToEnd",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6470",
+  "sym": "?QueryInterface@DropPodLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5d",
+  "name": "DropPodLocomotionClass::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B64D0",
+  "sym": "?InWhichLayer@DropPodLocomotionClass@@UAGHXZ",
+  "len": "0x8",
+  "name": "DropPodLocomotionClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B64E0",
+  "sym": "?PiggybackCLSID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x10b",
+  "name": "DropPodLocomotionClass::PiggybackCLSID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B65F0",
+  "sym": "?DrawingCode@DropPodLocomotionClass@@UAGHXZ",
+  "len": "0x11",
+  "name": "DropPodLocomotionClass::DrawingCode",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B66A0",
+  "sym": "?AddRef@DropPodLocomotionClass@@UAGKXZ",
+  "len": "0xd",
+  "name": "DropPodLocomotionClass::AddRef",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B66B0",
+  "sym": "?Release@DropPodLocomotionClass@@UAGKXZ",
+  "len": "0xd",
+  "name": "DropPodLocomotionClass::Release",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B66C0",
+  "sym": "?IsPiggybacking@DropPodLocomotionClass@@UAG_NXZ",
+  "len": "0x11",
+  "name": "DropPodLocomotionClass::IsPiggybacking",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B66E0",
+  "sym": "?Size@DropPodLocomotionClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "DropPodLocomotionClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B66F0",
+  "sym": "??_GDropPodLocomotionClass@@UAEPAXI@Z",
+  "len": "0x41",
+  "name": "DropPodLocomotionClass::scalarDeletingDestructor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6740",
+  "sym": "?QueryInterface@DropPodLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6750",
+  "sym": "?AddRef@DropPodLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6760",
+  "sym": "?Release@DropPodLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6770",
+  "sym": "?QueryInterface@DropPodLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6780",
+  "sym": "?AddRef@DropPodLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6790",
+  "sym": "?Release@DropPodLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "DropPodLocomotionClass::Release (IPiggyback adjustor)",
   "status": "matched",
   "pct": 100
  }

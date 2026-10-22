@@ -16,6 +16,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../movement/loco_interfaces.h"
+
+struct DropPodObjectView;
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2.
 struct CellStruct
@@ -92,6 +95,15 @@ struct MapClass
 
     // FUNCTION: GAMEMD 0x578AD0
     bool MakeTraversable(Obj_00578AD0 const* visitor, CellStruct const& cell) const;
+    // Address-bound method declarations used by DropPod's exact call sites.
+    // Signatures are ABI views for those calls, not a complete MapClass API.
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc)
+    int GetHeightAt(const LocoCoord* coord);
+    // FUNCTION: GAMEMD 0x5785F0 (decl; reloc)
+    bool IsWithinUsableArea(LocoCoord* coord);
+    // FUNCTION: GAMEMD 0x565730 (decl; reloc)
+    DropPodObjectView* GetCellAt(const LocoCoord& coord);
+    DropPodObjectView* GetCellAt(const LocoCoord* coord);
 };
 GG_STATIC_ASSERT(offsetof(MapClass, Cells) == 0x13C);
 

@@ -1,5 +1,50 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,114 matched function
+rows**, **279 partial rows**, **5,393 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass. There are zero annotation issues across 5,426 body addresses.
+
+The latest batch integrates native `RocketLocomotionClass` and
+`DropPodLocomotionClass` implementations. Rocket adds ten exact functions. Its
+constructor, `Process` and `MoveTo` stay partial (13.3%, 3.7% and 30.2%); the
+last two emit sections shorter than retail. DropPod has 25 exact functions:
+five rows migrate from the retired interface translation unit and twenty are
+new. `Process` (2.3%, short section) and `MoveTo` (27.1%) stay partial. A
+redundant reference alias was removed from DropPod `MoveTo`. The ordinary
+destructor at 0x4B5B00 stays with its existing generic row. `IID_IPiggyback` is
+now defined once, and the CLSIDs and IIDs match the retail data. Both
+ILocomotion tables (50 slots) and the DropPod IPiggyback table (8 slots) verify
+slot by slot. The ten-slot primary tables verify only if the compiler's weak
+default is accepted for the deleting destructor, so final linking is not
+proven. The 0x8A0820 storage is now one three-dword coordinate view. The
+competing layout-only Rocket and DropPod headers are retired. Every other
+named section in the 1,078 objects present before and after the batch keeps
+its bytes and relocation tuples.
+
+The repository-wide steering audit continues, and further removals may lower
+the matched count. The remaining second-look patches are under review.
+`MSPrintAnim::Update` remains partial pending its nine-slot table
+reconstruction.
+
+The 5,114 matches represent 25.9% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **378,631
+bytes**, or 10.0% of 3,797,269 listed function bytes. The padding heuristic
+misses 311 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+
+## Historical snapshot: third steering cleanup
+
 As of **2026-10-22**, the verified snapshot reports **5,084 matched function
 rows**, **274 partial rows**, **5,358 manifest rows**, **1,069 manifest
 translation units**, and **1,079 tracked C++ files**. Whole-repository regression
@@ -34,13 +79,6 @@ bytes**, or 9.9% of 3,797,269 listed function bytes. The padding heuristic
 misses 311 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: second steering cleanup
 

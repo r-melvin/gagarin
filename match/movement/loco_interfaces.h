@@ -94,6 +94,8 @@ struct FootClass;   // linked object; any layout view is scoped by its owning TU
 // ---------------------------------------------------------------------------
 // GLOBAL: GAMEMD 0x7ED358
 extern "C" const IID IID_ILocomotion;
+// GLOBAL: GAMEMD 0x7E9B10 — IPiggyback interface identifier.
+extern "C" const IID IID_IPiggyback;
 
 // ---------------------------------------------------------------------------
 // ILocomotion: RTTI base at +4 of every locomotor, vtable of 50 slots
@@ -207,6 +209,20 @@ public:
     virtual int __stdcall GetTrackIndex() = 0;
     // Slot 49 +0xC4. Behavioural name; base -1.
     virtual int __stdcall GetSpeedAccum() = 0;
+};
+
+
+// VTABLE: GAMEMD 0x7E8254 — IPiggyback interface prefix (8 entries). The
+// DropPod table and the five other piggyback tables expose the same five
+// methods after IUnknown's three slots.
+class __declspec(novtable) IPiggyback : public IUnknown
+{
+public:
+    virtual HRESULT __stdcall BeginPiggyback(ILocomotion* locomotion) = 0;
+    virtual HRESULT __stdcall EndPiggyback(ILocomotion** locomotion) = 0;
+    virtual bool __stdcall IsOkToEnd() = 0;
+    virtual HRESULT __stdcall PiggybackCLSID(CLSID* clsid) = 0;
+    virtual bool __stdcall IsPiggybacking() = 0;
 };
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_LOCO_INTERFACES_H

@@ -25,6 +25,10 @@
 extern "C" const IID IID_ILocomotion =
     { 0x070F3290, 0x9841, 0x11D1, { 0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
+// GLOBAL: GAMEMD 0x7E9B10
+extern "C" const IID IID_IPiggyback =
+    { 0x92FEA800, 0xA184, 0x11D1, { 0xB7, 0x0A, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
+
 // FUNCTION: GAMEMD 0x55A710
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 HRESULT __stdcall LocomotionClass::LinkToObject(FootClass* object)
