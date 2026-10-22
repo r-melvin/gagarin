@@ -17817,11 +17817,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/ai/planning_manager.cpp",
   "addr": "0x0063ECA0",
-  "sym": "??_G?$VectorClass@PAVPlanningMemberClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVPlanningMemberClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<PlanningMemberClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<PlanningMemberClass*>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -17835,11 +17835,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/ai/planning_manager.cpp",
   "addr": "0x0063ED40",
-  "sym": "??_G?$VectorClass@PAVPlanningBranchClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVPlanningBranchClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<PlanningBranchClass*>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<PlanningBranchClass*>::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100
  },
@@ -52390,7 +52390,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x535CD0",
   "sym": "?DeletingDtor@CreateTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52399,7 +52399,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x535D00",
   "sym": "?DeletingDtor@CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52408,7 +52408,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x536090",
   "sym": "?DeletingDtor@SelectTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52417,7 +52417,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x536180",
   "sym": "?DeletingDtor@AddTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52426,7 +52426,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x536270",
   "sym": "?DeletingDtor@CenterTeamCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52435,7 +52435,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x536580",
   "sym": "?DeletingDtor@TauntCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52444,7 +52444,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x537FA0",
   "sym": "?DeletingDtor@MultiplayerDebugCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52453,7 +52453,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x537FC0",
   "sym": "?DeletingDtor@MultiplayerSyncCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52462,7 +52462,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x537FE0",
   "sym": "?DeletingDtor@FollowCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52471,7 +52471,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538000",
   "sym": "?DeletingDtor@View1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52480,7 +52480,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538020",
   "sym": "?DeletingDtor@View2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52489,7 +52489,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538040",
   "sym": "?DeletingDtor@View3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52498,7 +52498,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538060",
   "sym": "?DeletingDtor@View4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52507,7 +52507,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538080",
   "sym": "?DeletingDtor@SetView1CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52516,7 +52516,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5380A0",
   "sym": "?DeletingDtor@SetView2CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52525,7 +52525,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5380C0",
   "sym": "?DeletingDtor@SetView3CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52534,7 +52534,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5380E0",
   "sym": "?DeletingDtor@SetView4CommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52543,7 +52543,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538100",
   "sym": "?DeletingDtor@OptionsCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52552,7 +52552,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538120",
   "sym": "?DeletingDtor@SidebarUpCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52561,7 +52561,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538140",
   "sym": "?DeletingDtor@SidebarDownCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52570,7 +52570,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538160",
   "sym": "?DeletingDtor@CenterREventCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52579,7 +52579,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538180",
   "sym": "?DeletingDtor@BeaconPlacementCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52588,7 +52588,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5381A0",
   "sym": "?DeletingDtor@ToggleSellCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52597,7 +52597,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5381C0",
   "sym": "?DeletingDtor@ToggleRepairCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52606,7 +52606,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5381E0",
   "sym": "?DeletingDtor@AllianceCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52615,7 +52615,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538200",
   "sym": "?DeletingDtor@CenterBaseCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52624,7 +52624,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538220",
   "sym": "?DeletingDtor@CenterViewCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52633,7 +52633,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538240",
   "sym": "?DeletingDtor@ScatterCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52642,7 +52642,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538260",
   "sym": "?DeletingDtor@GuardCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52651,7 +52651,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538280",
   "sym": "?DeletingDtor@StopCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52660,7 +52660,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5382A0",
   "sym": "?DeletingDtor@AllToCheerCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52669,7 +52669,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5382C0",
   "sym": "?DeletingDtor@DeployCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52678,7 +52678,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5382E0",
   "sym": "?DeletingDtor@PrevObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52687,7 +52687,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538300",
   "sym": "?DeletingDtor@NextObjectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52696,7 +52696,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538320",
   "sym": "?DeletingDtor@PlanningModeCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52705,7 +52705,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538340",
   "sym": "?DeletingDtor@CombatantSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52714,7 +52714,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538360",
   "sym": "?DeletingDtor@TypeSelectCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52723,7 +52723,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538380",
   "sym": "?DeletingDtor@HealthNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52732,7 +52732,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5383A0",
   "sym": "?DeletingDtor@VeterancyNavCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52741,7 +52741,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5383C0",
   "sym": "?DeletingDtor@SetStructureTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52750,7 +52750,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5383E0",
   "sym": "?DeletingDtor@SetDefenseTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52759,7 +52759,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538400",
   "sym": "?DeletingDtor@SetUnitTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52768,7 +52768,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538420",
   "sym": "?DeletingDtor@SetInfantryTabCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52777,7 +52777,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538440",
   "sym": "?DeletingDtor@ScreenCaptureCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52786,7 +52786,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538460",
   "sym": "?DeletingDtor@PageUserCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52795,7 +52795,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x538480",
   "sym": "?DeletingDtor@CursorPositionCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -52804,7 +52804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/command_ddtors.cpp",
+  "tu": "match/ui/command_class.cpp",
   "addr": "0x5384A0",
   "sym": "?DeletingDtor@DeleteCommandClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -61658,5 +61658,2876 @@
   "name": "MissionClass scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535BD0",
+  "sym": "?vf_5@CommandClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "CommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535BE0",
+  "sym": "?vf_6@CommandClass@@UAE_NH@Z",
+  "len": "0xF",
+  "name": "CommandClass::vf_6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535BF0",
+  "sym": "?vf_7@CommandClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "CommandClass::vf_7",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535C20",
+  "sym": "?vf_1@CreateTeamCommandClass@@UAEPBDXZ",
+  "len": "0x1C",
+  "name": "CreateTeamCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535C40",
+  "sym": "?vf_2@CreateTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "CreateTeamCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535C70",
+  "sym": "?vf_3@CreateTeamCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CreateTeamCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535C90",
+  "sym": "?vf_4@CreateTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "CreateTeamCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535CC0",
+  "sym": "?vf_8@CreateTeamCommandClass@@UAEXH@Z",
+  "len": "0xB",
+  "name": "CreateTeamCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535CF0",
+  "sym": "?vf_2@CommandClass@@UAEPBGXZ",
+  "len": "0x5",
+  "name": "CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535D20",
+  "sym": "?vf_1@SetStructureTabCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetStructureTabCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535D30",
+  "sym": "?vf_2@SetStructureTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetStructureTabCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535D50",
+  "sym": "?vf_3@SetStructureTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetStructureTabCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535D70",
+  "sym": "?vf_4@SetStructureTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetStructureTabCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535D90",
+  "sym": "?vf_8@SetStructureTabCommandClass@@UAEXH@Z",
+  "len": "0x41",
+  "name": "SetStructureTabCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535DE0",
+  "sym": "?vf_1@SetDefenseTabCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetDefenseTabCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535DF0",
+  "sym": "?vf_2@SetDefenseTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetDefenseTabCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535E10",
+  "sym": "?vf_3@SetDefenseTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetDefenseTabCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535E30",
+  "sym": "?vf_4@SetDefenseTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetDefenseTabCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535E50",
+  "sym": "?vf_8@SetDefenseTabCommandClass@@UAEXH@Z",
+  "len": "0x41",
+  "name": "SetDefenseTabCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535EA0",
+  "sym": "?vf_1@SetInfantryTabCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetInfantryTabCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535EB0",
+  "sym": "?vf_2@SetInfantryTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetInfantryTabCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535ED0",
+  "sym": "?vf_3@SetInfantryTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetInfantryTabCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535EF0",
+  "sym": "?vf_4@SetInfantryTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetInfantryTabCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535F10",
+  "sym": "?vf_8@SetInfantryTabCommandClass@@UAEXH@Z",
+  "len": "0x1D",
+  "name": "SetInfantryTabCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535F30",
+  "sym": "?vf_1@SetUnitTabCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetUnitTabCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535F40",
+  "sym": "?vf_2@SetUnitTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetUnitTabCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535F60",
+  "sym": "?vf_3@SetUnitTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetUnitTabCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535F80",
+  "sym": "?vf_4@SetUnitTabCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetUnitTabCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535FA0",
+  "sym": "?vf_8@SetUnitTabCommandClass@@UAEXH@Z",
+  "len": "0x1D",
+  "name": "SetUnitTabCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x535FE0",
+  "sym": "?vf_1@SelectTeamCommandClass@@UAEPBDXZ",
+  "len": "0x1C",
+  "name": "SelectTeamCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536000",
+  "sym": "?vf_2@SelectTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "SelectTeamCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536030",
+  "sym": "?vf_3@SelectTeamCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SelectTeamCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536050",
+  "sym": "?vf_4@SelectTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "SelectTeamCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536080",
+  "sym": "?vf_8@SelectTeamCommandClass@@UAEXH@Z",
+  "len": "0xB",
+  "name": "SelectTeamCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5360D0",
+  "sym": "?vf_1@AddTeamCommandClass@@UAEPBDXZ",
+  "len": "0x1C",
+  "name": "AddTeamCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5360F0",
+  "sym": "?vf_2@AddTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "AddTeamCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536120",
+  "sym": "?vf_3@AddTeamCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AddTeamCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536140",
+  "sym": "?vf_4@AddTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "AddTeamCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536170",
+  "sym": "?vf_8@AddTeamCommandClass@@UAEXH@Z",
+  "len": "0xB",
+  "name": "AddTeamCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5361C0",
+  "sym": "?vf_1@CenterTeamCommandClass@@UAEPBDXZ",
+  "len": "0x1C",
+  "name": "CenterTeamCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5361E0",
+  "sym": "?vf_2@CenterTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "CenterTeamCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536210",
+  "sym": "?vf_3@CenterTeamCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterTeamCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536230",
+  "sym": "?vf_4@CenterTeamCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "CenterTeamCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536260",
+  "sym": "?vf_8@CenterTeamCommandClass@@UAEXH@Z",
+  "len": "0xB",
+  "name": "CenterTeamCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5362B0",
+  "sym": "?vf_1@TauntCommandClass@@UAEPBDXZ",
+  "len": "0x1C",
+  "name": "TauntCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5362D0",
+  "sym": "?vf_2@TauntCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "TauntCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536300",
+  "sym": "?vf_3@TauntCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "TauntCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536320",
+  "sym": "?vf_4@TauntCommandClass@@UAEPBGXZ",
+  "len": "0x2E",
+  "name": "TauntCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536350",
+  "sym": "?vf_8@TauntCommandClass@@UAEXH@Z",
+  "len": "0x22F",
+  "name": "TauntCommandClass::vf_8",
+  "status": "partial",
+  "pct": 31.5
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5365A0",
+  "sym": "?vf_1@NextObjectCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "NextObjectCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5365B0",
+  "sym": "?vf_2@NextObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "NextObjectCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5365D0",
+  "sym": "?vf_3@NextObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "NextObjectCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5365F0",
+  "sym": "?vf_4@NextObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "NextObjectCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536610",
+  "sym": "?vf_8@NextObjectCommandClass@@UAEXH@Z",
+  "len": "0x81",
+  "name": "NextObjectCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5366A0",
+  "sym": "?vf_1@PlanningModeCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "PlanningModeCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5366B0",
+  "sym": "?vf_2@PlanningModeCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PlanningModeCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5366D0",
+  "sym": "?vf_3@PlanningModeCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PlanningModeCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5366F0",
+  "sym": "?vf_4@PlanningModeCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PlanningModeCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536710",
+  "sym": "?vf_5@PlanningModeCommandClass@@UAE_NH@Z",
+  "len": "0x16",
+  "name": "PlanningModeCommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536730",
+  "sym": "?vf_6@PlanningModeCommandClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "PlanningModeCommandClass::vf_6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536740",
+  "sym": "?vf_7@PlanningModeCommandClass@@UAE_NH@Z",
+  "len": "0xF",
+  "name": "PlanningModeCommandClass::vf_7",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536750",
+  "sym": "?vf_8@PlanningModeCommandClass@@UAEXH@Z",
+  "len": "0x1D",
+  "name": "PlanningModeCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536770",
+  "sym": "?vf_1@CombatantSelectCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "CombatantSelectCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536780",
+  "sym": "?vf_2@CombatantSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CombatantSelectCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5367A0",
+  "sym": "?vf_3@CombatantSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CombatantSelectCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5367C0",
+  "sym": "?vf_4@CombatantSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CombatantSelectCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5367E0",
+  "sym": "?vf_5@CombatantSelectCommandClass@@UAE_NH@Z",
+  "len": "0xD",
+  "name": "CombatantSelectCommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5367F0",
+  "sym": "?vf_8@CombatantSelectCommandClass@@UAEXH@Z",
+  "len": "0x14",
+  "name": "CombatantSelectCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536810",
+  "sym": "?vf_1@TypeSelectCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "TypeSelectCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536820",
+  "sym": "?vf_2@TypeSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "TypeSelectCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536840",
+  "sym": "?vf_3@TypeSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "TypeSelectCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536860",
+  "sym": "?vf_4@TypeSelectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "TypeSelectCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536880",
+  "sym": "?vf_5@TypeSelectCommandClass@@UAE_NH@Z",
+  "len": "0xD",
+  "name": "TypeSelectCommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536890",
+  "sym": "?vf_6@TypeSelectCommandClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "TypeSelectCommandClass::vf_6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5368A0",
+  "sym": "?vf_7@TypeSelectCommandClass@@UAE_NH@Z",
+  "len": "0xF",
+  "name": "TypeSelectCommandClass::vf_7",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5368B0",
+  "sym": "?vf_8@TypeSelectCommandClass@@UAEXH@Z",
+  "len": "0x19",
+  "name": "TypeSelectCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5368D0",
+  "sym": "?vf_1@HealthNavCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "HealthNavCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5368E0",
+  "sym": "?vf_2@HealthNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "HealthNavCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536900",
+  "sym": "?vf_3@HealthNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "HealthNavCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536920",
+  "sym": "?vf_4@HealthNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "HealthNavCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536940",
+  "sym": "?vf_5@HealthNavCommandClass@@UAE_NH@Z",
+  "len": "0xD",
+  "name": "HealthNavCommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536950",
+  "sym": "?vf_8@HealthNavCommandClass@@UAEXH@Z",
+  "len": "0x14",
+  "name": "HealthNavCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536970",
+  "sym": "?vf_1@VeterancyNavCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "VeterancyNavCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536980",
+  "sym": "?vf_2@VeterancyNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "VeterancyNavCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5369A0",
+  "sym": "?vf_3@VeterancyNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "VeterancyNavCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5369C0",
+  "sym": "?vf_4@VeterancyNavCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "VeterancyNavCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5369E0",
+  "sym": "?vf_5@VeterancyNavCommandClass@@UAE_NH@Z",
+  "len": "0xD",
+  "name": "VeterancyNavCommandClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5369F0",
+  "sym": "?vf_8@VeterancyNavCommandClass@@UAEXH@Z",
+  "len": "0x14",
+  "name": "VeterancyNavCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536A10",
+  "sym": "?vf_1@PrevObjectCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "PrevObjectCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536A20",
+  "sym": "?vf_2@PrevObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PrevObjectCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536A40",
+  "sym": "?vf_3@PrevObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PrevObjectCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536A60",
+  "sym": "?vf_4@PrevObjectCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PrevObjectCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536A80",
+  "sym": "?vf_8@PrevObjectCommandClass@@UAEXH@Z",
+  "len": "0x81",
+  "name": "PrevObjectCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B10",
+  "sym": "?vf_1@StopCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "StopCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B20",
+  "sym": "?vf_2@StopCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "StopCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B40",
+  "sym": "?vf_3@StopCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "StopCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B60",
+  "sym": "?vf_4@StopCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "StopCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B80",
+  "sym": "?vf_8@StopCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "StopCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536B90",
+  "sym": "?vf_1@AllToCheerCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "AllToCheerCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536BA0",
+  "sym": "?vf_2@AllToCheerCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllToCheerCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536BC0",
+  "sym": "?vf_3@AllToCheerCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllToCheerCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536BE0",
+  "sym": "?vf_4@AllToCheerCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllToCheerCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C00",
+  "sym": "?vf_8@AllToCheerCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "AllToCheerCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C10",
+  "sym": "?vf_1@DeployCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "DeployCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C20",
+  "sym": "?vf_2@DeployCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeployCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C40",
+  "sym": "?vf_3@DeployCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeployCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C60",
+  "sym": "?vf_4@DeployCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeployCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C80",
+  "sym": "?vf_8@DeployCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "DeployCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536C90",
+  "sym": "?vf_1@GuardCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "GuardCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536CA0",
+  "sym": "?vf_2@GuardCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "GuardCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536CC0",
+  "sym": "?vf_3@GuardCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "GuardCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536CE0",
+  "sym": "?vf_4@GuardCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "GuardCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D00",
+  "sym": "?vf_8@GuardCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "GuardCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D10",
+  "sym": "?vf_1@ScatterCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "ScatterCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D20",
+  "sym": "?vf_2@ScatterCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScatterCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D40",
+  "sym": "?vf_3@ScatterCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScatterCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D60",
+  "sym": "?vf_4@ScatterCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScatterCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D80",
+  "sym": "?vf_8@ScatterCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "ScatterCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536D90",
+  "sym": "?vf_1@CenterViewCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "CenterViewCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536DA0",
+  "sym": "?vf_2@CenterViewCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterViewCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536DC0",
+  "sym": "?vf_3@CenterViewCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterViewCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536DE0",
+  "sym": "?vf_4@CenterViewCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterViewCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536E00",
+  "sym": "?vf_8@CenterViewCommandClass@@UAEXH@Z",
+  "len": "0x22",
+  "name": "CenterViewCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536E30",
+  "sym": "?vf_1@CenterBaseCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "CenterBaseCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536E40",
+  "sym": "?vf_2@CenterBaseCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterBaseCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536E60",
+  "sym": "?vf_3@CenterBaseCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterBaseCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536E80",
+  "sym": "?vf_4@CenterBaseCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterBaseCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536EA0",
+  "sym": "?vf_8@CenterBaseCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "CenterBaseCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536EB0",
+  "sym": "?vf_1@AllianceCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "AllianceCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536EC0",
+  "sym": "?vf_2@AllianceCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllianceCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536EE0",
+  "sym": "?vf_3@AllianceCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllianceCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F00",
+  "sym": "?vf_4@AllianceCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "AllianceCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F20",
+  "sym": "?vf_8@AllianceCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "AllianceCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F30",
+  "sym": "?vf_1@ToggleRepairCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "ToggleRepairCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F40",
+  "sym": "?vf_2@ToggleRepairCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleRepairCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F60",
+  "sym": "?vf_3@ToggleRepairCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleRepairCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536F80",
+  "sym": "?vf_4@ToggleRepairCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleRepairCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536FA0",
+  "sym": "?vf_8@ToggleRepairCommandClass@@UAEXH@Z",
+  "len": "0xF",
+  "name": "ToggleRepairCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536FB0",
+  "sym": "?vf_1@ToggleSellCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "ToggleSellCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536FC0",
+  "sym": "?vf_2@ToggleSellCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleSellCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x536FE0",
+  "sym": "?vf_3@ToggleSellCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleSellCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537000",
+  "sym": "?vf_4@ToggleSellCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ToggleSellCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537020",
+  "sym": "?vf_8@ToggleSellCommandClass@@UAEXH@Z",
+  "len": "0xF",
+  "name": "ToggleSellCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537030",
+  "sym": "?vf_1@BeaconPlacementCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "BeaconPlacementCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537040",
+  "sym": "?vf_2@BeaconPlacementCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "BeaconPlacementCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537060",
+  "sym": "?vf_3@BeaconPlacementCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "BeaconPlacementCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537080",
+  "sym": "?vf_4@BeaconPlacementCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "BeaconPlacementCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5370A0",
+  "sym": "?vf_8@BeaconPlacementCommandClass@@UAEXH@Z",
+  "len": "0x16",
+  "name": "BeaconPlacementCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5370C0",
+  "sym": "?vf_1@CenterREventCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "CenterREventCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5370D0",
+  "sym": "?vf_2@CenterREventCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterREventCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5370F0",
+  "sym": "?vf_3@CenterREventCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterREventCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537110",
+  "sym": "?vf_4@CenterREventCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CenterREventCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537130",
+  "sym": "?vf_8@CenterREventCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "CenterREventCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537140",
+  "sym": "?vf_1@SidebarUpCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SidebarUpCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537150",
+  "sym": "?vf_2@SidebarUpCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarUpCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537170",
+  "sym": "?vf_3@SidebarUpCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarUpCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537190",
+  "sym": "?vf_4@SidebarUpCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarUpCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5371B0",
+  "sym": "?vf_8@SidebarUpCommandClass@@UAEXH@Z",
+  "len": "0x11",
+  "name": "SidebarUpCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5371D0",
+  "sym": "?vf_1@SidebarDownCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SidebarDownCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5371E0",
+  "sym": "?vf_2@SidebarDownCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarDownCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537200",
+  "sym": "?vf_3@SidebarDownCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarDownCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537220",
+  "sym": "?vf_4@SidebarDownCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SidebarDownCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537240",
+  "sym": "?vf_8@SidebarDownCommandClass@@UAEXH@Z",
+  "len": "0x11",
+  "name": "SidebarDownCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537260",
+  "sym": "?vf_1@OptionsCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "OptionsCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537270",
+  "sym": "?vf_2@OptionsCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "OptionsCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537290",
+  "sym": "?vf_3@OptionsCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "OptionsCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5372B0",
+  "sym": "?vf_4@OptionsCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "OptionsCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5372D0",
+  "sym": "?vf_8@OptionsCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "OptionsCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5372E0",
+  "sym": "?vf_1@View1CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "View1CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5372F0",
+  "sym": "?vf_2@View1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View1CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537310",
+  "sym": "?vf_3@View1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View1CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537330",
+  "sym": "?vf_4@View1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View1CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537350",
+  "sym": "?vf_8@View1CommandClass@@UAEXH@Z",
+  "len": "0x7E",
+  "name": "View1CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5373D0",
+  "sym": "?vf_1@View2CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "View2CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5373E0",
+  "sym": "?vf_2@View2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View2CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537400",
+  "sym": "?vf_3@View2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View2CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537420",
+  "sym": "?vf_4@View2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View2CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537440",
+  "sym": "?vf_8@View2CommandClass@@UAEXH@Z",
+  "len": "0x7E",
+  "name": "View2CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5374C0",
+  "sym": "?vf_1@View3CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "View3CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5374D0",
+  "sym": "?vf_2@View3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View3CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5374F0",
+  "sym": "?vf_3@View3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View3CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537510",
+  "sym": "?vf_4@View3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View3CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537530",
+  "sym": "?vf_8@View3CommandClass@@UAEXH@Z",
+  "len": "0x7E",
+  "name": "View3CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5375B0",
+  "sym": "?vf_1@View4CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "View4CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5375C0",
+  "sym": "?vf_2@View4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View4CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5375E0",
+  "sym": "?vf_3@View4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View4CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537600",
+  "sym": "?vf_4@View4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "View4CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537620",
+  "sym": "?vf_8@View4CommandClass@@UAEXH@Z",
+  "len": "0x7E",
+  "name": "View4CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5376A0",
+  "sym": "?vf_1@SetView1CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetView1CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5376B0",
+  "sym": "?vf_2@SetView1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView1CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5376D0",
+  "sym": "?vf_3@SetView1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView1CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5376F0",
+  "sym": "?vf_4@SetView1CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView1CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537710",
+  "sym": "?vf_8@SetView1CommandClass@@UAEXH@Z",
+  "len": "0x48",
+  "name": "SetView1CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537760",
+  "sym": "?vf_1@SetView2CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetView2CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537770",
+  "sym": "?vf_2@SetView2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView2CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537790",
+  "sym": "?vf_3@SetView2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView2CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5377B0",
+  "sym": "?vf_4@SetView2CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView2CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5377D0",
+  "sym": "?vf_8@SetView2CommandClass@@UAEXH@Z",
+  "len": "0x48",
+  "name": "SetView2CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537820",
+  "sym": "?vf_1@SetView3CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetView3CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537830",
+  "sym": "?vf_2@SetView3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView3CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537850",
+  "sym": "?vf_3@SetView3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView3CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537870",
+  "sym": "?vf_4@SetView3CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView3CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537890",
+  "sym": "?vf_8@SetView3CommandClass@@UAEXH@Z",
+  "len": "0x48",
+  "name": "SetView3CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5378E0",
+  "sym": "?vf_1@SetView4CommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "SetView4CommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5378F0",
+  "sym": "?vf_2@SetView4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView4CommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537910",
+  "sym": "?vf_3@SetView4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView4CommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537930",
+  "sym": "?vf_4@SetView4CommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "SetView4CommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537950",
+  "sym": "?vf_8@SetView4CommandClass@@UAEXH@Z",
+  "len": "0x48",
+  "name": "SetView4CommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5379A0",
+  "sym": "?vf_1@FollowCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "FollowCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5379B0",
+  "sym": "?vf_2@FollowCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "FollowCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5379D0",
+  "sym": "?vf_3@FollowCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "FollowCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x5379F0",
+  "sym": "?vf_4@FollowCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "FollowCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A10",
+  "sym": "?vf_8@FollowCommandClass@@UAEXH@Z",
+  "len": "0x3B",
+  "name": "FollowCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A50",
+  "sym": "?vf_1@MultiplayerDebugCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "MultiplayerDebugCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A60",
+  "sym": "?vf_3@MultiplayerDebugCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerDebugCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A70",
+  "sym": "?vf_2@MultiplayerDebugCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerDebugCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A80",
+  "sym": "?vf_4@MultiplayerDebugCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerDebugCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537A90",
+  "sym": "?vf_8@MultiplayerDebugCommandClass@@UAEXH@Z",
+  "len": "0x1B",
+  "name": "MultiplayerDebugCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537AB0",
+  "sym": "?vf_1@MultiplayerSyncCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "MultiplayerSyncCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537AC0",
+  "sym": "?vf_3@MultiplayerSyncCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerSyncCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537AD0",
+  "sym": "?vf_2@MultiplayerSyncCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerSyncCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537AE0",
+  "sym": "?vf_4@MultiplayerSyncCommandClass@@UAEPBGXZ",
+  "len": "0x6",
+  "name": "MultiplayerSyncCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537AF0",
+  "sym": "?vf_8@MultiplayerSyncCommandClass@@UAEXH@Z",
+  "len": "0x43",
+  "name": "MultiplayerSyncCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537B50",
+  "sym": "?vf_1@ScreenCaptureCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "ScreenCaptureCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537B60",
+  "sym": "?vf_3@ScreenCaptureCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScreenCaptureCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537B80",
+  "sym": "?vf_2@ScreenCaptureCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScreenCaptureCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537BA0",
+  "sym": "?vf_4@ScreenCaptureCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "ScreenCaptureCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537DE0",
+  "sym": "?vf_1@PageUserCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "PageUserCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537DF0",
+  "sym": "?vf_2@PageUserCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PageUserCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537E10",
+  "sym": "?vf_3@PageUserCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PageUserCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537E30",
+  "sym": "?vf_4@PageUserCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "PageUserCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537E50",
+  "sym": "?vf_8@PageUserCommandClass@@UAEXH@Z",
+  "len": "0x11",
+  "name": "PageUserCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537E80",
+  "sym": "?vf_1@CursorPositionCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "CursorPositionCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537E90",
+  "sym": "?vf_2@CursorPositionCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CursorPositionCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537EB0",
+  "sym": "?vf_3@CursorPositionCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CursorPositionCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537ED0",
+  "sym": "?vf_4@CursorPositionCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "CursorPositionCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537EF0",
+  "sym": "?vf_8@CursorPositionCommandClass@@UAEXH@Z",
+  "len": "0x12",
+  "name": "CursorPositionCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537F20",
+  "sym": "?vf_1@DeleteCommandClass@@UAEPBDXZ",
+  "len": "0x6",
+  "name": "DeleteCommandClass::vf_1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537F30",
+  "sym": "?vf_2@DeleteCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeleteCommandClass::vf_2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537F50",
+  "sym": "?vf_3@DeleteCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeleteCommandClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537F70",
+  "sym": "?vf_4@DeleteCommandClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "DeleteCommandClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/command_class.cpp",
+  "addr": "0x537F90",
+  "sym": "?vf_8@DeleteCommandClass@@UAEXH@Z",
+  "len": "0x8",
+  "name": "DeleteCommandClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633400",
+  "sym": "_$E8",
+  "len": "0x13",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CE8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633420",
+  "sym": "_$E11",
+  "len": "0x13",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CC0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633440",
+  "sym": "_$E14",
+  "len": "0x13",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CB8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633460",
+  "sym": "_$E17",
+  "len": "0x13",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4C10)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633480",
+  "sym": "_$E20",
+  "len": "0x13",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4B68)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6334A0",
+  "sym": "_$E23",
+  "len": "0x31",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CF0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6334E0",
+  "sym": "_$E26",
+  "len": "0x21",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4C30)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633510",
+  "sym": "_$E29",
+  "len": "0x2C",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4C70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633540",
+  "sym": "_$E32",
+  "len": "0x27",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CE4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633570",
+  "sym": "_$E35",
+  "len": "0xF",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4BE4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633580",
+  "sym": "_$E38",
+  "len": "0x12",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4C58)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6335A0",
+  "sym": "_$E41",
+  "len": "0x1A",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4CD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6335C0",
+  "sym": "_$E44",
+  "len": "0x17",
+  "name": "PlanMgr dynamic initializer (DAT_00AC4B70)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6335E0",
+  "sym": "_$E50",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (EventClass list, guard byte 0xAC4B61)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633620",
+  "sym": "_$E47",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (EventClass list, guard byte 0xAC4B61)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633680",
+  "sym": "_$E56",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (node list, guard byte 0xAC4B60)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6336C0",
+  "sym": "_$E53",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (node list, guard byte 0xAC4B60)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633720",
+  "sym": "_$E62",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (TechnoClass list, guard byte 0xAC4B63)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633760",
+  "sym": "_$E59",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (TechnoClass list, guard byte 0xAC4B63)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6337C0",
+  "sym": "_$E68",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (node list, guard byte 0xAC4B62 bit 0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633800",
+  "sym": "_$E65",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (node list, guard byte 0xAC4B62 bit 0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633860",
+  "sym": "_$E73",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (node list, guard byte 0xAC4B62 bit 1)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6338A0",
+  "sym": "_$E71",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (node list, guard byte 0xAC4B62 bit 1)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633900",
+  "sym": "_$E78",
+  "len": "0x3D",
+  "name": "PlanMgr dynamic initializer (token list, guard byte 0xAC4B62 bit 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633940",
+  "sym": "_$E76",
+  "len": "0x58",
+  "name": "PlanMgr cleanup callback (token list, guard byte 0xAC4B62 bit 2)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6339A0",
+  "sym": "_$E81",
+  "len": "0x1",
+  "name": "PlanMgr dynamic initializer (unknown_006339A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6339E0",
+  "sym": "?FUN_006339E0@@YIPAUPoint2D@@PAU1@ABUCoordStruct@@@Z",
+  "len": "0x3B",
+  "name": "FUN_006339E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A20",
+  "sym": "??0PlanningMemberClass@@QAE@XZ",
+  "len": "0x14",
+  "name": "PlanningMemberClass::PlanningMemberClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A40",
+  "sym": "?FUN_00633A40@PlanningMemberClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x9",
+  "name": "PlanningMemberClass::FUN_00633A40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A50",
+  "sym": "?FUN_00633A50@PlanningMemberClass@@QAEXPAVEventClass@@@Z",
+  "len": "0xA",
+  "name": "PlanningMemberClass::FUN_00633A50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A60",
+  "sym": "?FUN_00633A60@PlanningMemberClass@@QAEXH@Z",
+  "len": "0xA",
+  "name": "PlanningMemberClass::FUN_00633A60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A70",
+  "sym": "?FUN_00633A70@PlanningMemberClass@@QAEX_N@Z",
+  "len": "0xA",
+  "name": "PlanningMemberClass::FUN_00633A70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A80",
+  "sym": "?FUN_00633A80@PlanningMemberClass@@QAEPAVTechnoClass@@XZ",
+  "len": "0x3",
+  "name": "PlanningMemberClass::FUN_00633A80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633A90",
+  "sym": "?FUN_00633A90@PlanningMemberClass@@QAEPAVEventClass@@XZ",
+  "len": "0x4",
+  "name": "PlanningMemberClass::FUN_00633A90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633AA0",
+  "sym": "?FUN_00633AA0@PlanningMemberClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningMemberClass::FUN_00633AA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633AB0",
+  "sym": "?FUN_00633AB0@PlanningMemberClass@@QAE_NXZ",
+  "len": "0x4",
+  "name": "PlanningMemberClass::FUN_00633AB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633AC0",
+  "sym": "??0PlanningBranchClass@@QAE@XZ",
+  "len": "0x14",
+  "name": "PlanningBranchClass::PlanningBranchClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633AE0",
+  "sym": "?FUN_00633AE0@PlanningBranchClass@@QAEXPBVEventClass@@@Z",
+  "len": "0x17",
+  "name": "PlanningBranchClass::FUN_00633AE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B00",
+  "sym": "?FUN_00633B00@PlanningBranchClass@@QAEXH@Z",
+  "len": "0xA",
+  "name": "PlanningBranchClass::FUN_00633B00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B10",
+  "sym": "?FUN_00633B10@PlanningBranchClass@@QAEXH@Z",
+  "len": "0xA",
+  "name": "PlanningBranchClass::FUN_00633B10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B20",
+  "sym": "?FUN_00633B20@PlanningBranchClass@@QAEXXZ",
+  "len": "0x8",
+  "name": "PlanningBranchClass::FUN_00633B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B30",
+  "sym": "?FUN_00633B30@PlanningBranchClass@@QAEHXZ",
+  "len": "0x8",
+  "name": "PlanningBranchClass::FUN_00633B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B40",
+  "sym": "?FUN_00633B40@PlanningBranchClass@@QAEHXZ",
+  "len": "0x8",
+  "name": "PlanningBranchClass::FUN_00633B40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B50",
+  "sym": "?FUN_00633B50@PlanningBranchClass@@QAE?AVEventClass@@XZ",
+  "len": "0x19",
+  "name": "PlanningBranchClass::FUN_00633B50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B70",
+  "sym": "?FUN_00633B70@PlanningBranchClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningBranchClass::FUN_00633B70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B80",
+  "sym": "?FUN_00633B80@PlanningBranchClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningBranchClass::FUN_00633B80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633B90",
+  "sym": "?FUN_00633B90@PlanningBranchClass@@QAE?AUCoordStruct@@XZ",
+  "len": "0x2E",
+  "name": "PlanningBranchClass::FUN_00633B90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633BC0",
+  "sym": "?FUN_00633BC0@@YIPAUCoordStruct@@PAU1@ABVEventClass@@@Z",
+  "len": "0x96",
+  "name": "FUN_00633BC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633C60",
+  "sym": "?FUN_00633C60@PlanningBranchClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "len": "0x5D",
+  "name": "PlanningBranchClass::FUN_00633C60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633CC0",
+  "sym": "??0PlanningNodeClass@@QAE@H@Z",
+  "len": "0x69",
+  "name": "PlanningNodeClass::PlanningNodeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633D30",
+  "sym": "??1PlanningNodeClass@@QAE@XZ",
+  "len": "0x118",
+  "name": "PlanningNodeClass::~PlanningNodeClass",
+  "status": "partial",
+  "pct": 10.9
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633E50",
+  "sym": "?FUN_00633E50@PlanningNodeClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningNodeClass::FUN_00633E50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633E60",
+  "sym": "?FUN_00633E60@PlanningNodeClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningNodeClass::FUN_00633E60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633E70",
+  "sym": "?FUN_00633E70@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
+  "len": "0x21",
+  "name": "PlanningNodeClass::FUN_00633E70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633EA0",
+  "sym": "?FUN_00633EA0@PlanningNodeClass@@QAEPAV1@PAVTechnoClass@@@Z",
+  "len": "0x7A",
+  "name": "PlanningNodeClass::FUN_00633EA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633F20",
+  "sym": "?FUN_00633F20@PlanningNodeClass@@QAEPAV1@PAVTechnoClass@@@Z",
+  "len": "0x7B",
+  "name": "PlanningNodeClass::FUN_00633F20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x633FA0",
+  "sym": "?FUN_00633FA0@PlanningNodeClass@@QAEXPAVTechnoClass@@PBVEventClass@@@Z",
+  "len": "0x107",
+  "name": "PlanningNodeClass::FUN_00633FA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6340B0",
+  "sym": "?FUN_006340B0@PlanningNodeClass@@QAEXPAVTechnoClass@@@Z",
+  "len": "0x1DB",
+  "name": "PlanningNodeClass::FUN_006340B0",
+  "status": "partial",
+  "pct": 5.1
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6342D0",
+  "sym": "?FUN_006342D0@PlanningNodeClass@@QAEPAVTechnoClass@@H@Z",
+  "len": "0xF",
+  "name": "PlanningNodeClass::FUN_006342D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6342E0",
+  "sym": "?FUN_006342E0@PlanningNodeClass@@QAE?AVEventClass@@H@Z",
+  "len": "0x24",
+  "name": "PlanningNodeClass::FUN_006342E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634310",
+  "sym": "?FUN_00634310@PlanningNodeClass@@QAE?AVEventClass@@PAVTechnoClass@@@Z",
+  "len": "0x4C",
+  "name": "PlanningNodeClass::FUN_00634310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634360",
+  "sym": "?FUN_00634360@PlanningNodeClass@@QAE_NPAVTechnoClass@@@Z",
+  "len": "0x42",
+  "name": "PlanningNodeClass::FUN_00634360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6343B0",
+  "sym": "?FUN_006343B0@PlanningNodeClass@@QAEPAXXZ",
+  "len": "0xE",
+  "name": "PlanningNodeClass::FUN_006343B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6343C0",
+  "sym": "?FUN_006343C0@PlanningNodeClass@@QAE?AUCoordStruct@@XZ",
+  "len": "0x34",
+  "name": "PlanningNodeClass::FUN_006343C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634400",
+  "sym": "?FUN_00634400@PlanningNodeClass@@QAEPAUPoint2D@@PAU2@@Z",
+  "len": "0x63",
+  "name": "PlanningNodeClass::FUN_00634400",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634470",
+  "sym": "?FUN_00634470@PlanningNodeClass@@QAEHHH@Z",
+  "len": "0x98",
+  "name": "PlanningNodeClass::FUN_00634470",
+  "status": "partial",
+  "pct": 24.1
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634510",
+  "sym": "?FUN_00634510@@YIPAUPlanningRect@@PAU1@HUPoint2D@@@Z",
+  "len": "0x35",
+  "name": "FUN_00634510",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634550",
+  "sym": "?FUN_00634550@PlanningNodeClass@@QAE_NHHH@Z",
+  "len": "0x47",
+  "name": "PlanningNodeClass::FUN_00634550",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6345A0",
+  "sym": "?FUN_006345A0@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "len": "0x83",
+  "name": "PlanningNodeClass::FUN_006345A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634630",
+  "sym": "?FUN_00634630@PlanningNodeClass@@QAE_NXZ",
+  "len": "0x4F",
+  "name": "PlanningNodeClass::FUN_00634630",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634680",
+  "sym": "?FUN_00634680@PlanningNodeClass@@QAEXXZ",
+  "len": "0x24",
+  "name": "PlanningNodeClass::FUN_00634680",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x6346B0",
+  "sym": "?FUN_006346B0@PlanningNodeClass@@QAEPAVPlanningMemberClass@@PAVTechnoClass@@@Z",
+  "len": "0x41",
+  "name": "PlanningNodeClass::FUN_006346B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634700",
+  "sym": "?FUN_00634700@PlanningNodeClass@@QAEHXZ",
+  "len": "0x4",
+  "name": "PlanningNodeClass::FUN_00634700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634710",
+  "sym": "?FUN_00634710@PlanningNodeClass@@QAE_NXZ",
+  "len": "0xE",
+  "name": "PlanningNodeClass::FUN_00634710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634720",
+  "sym": "?FUN_00634720@PlanningNodeClass@@QAE_NXZ",
+  "len": "0x1C",
+  "name": "PlanningNodeClass::FUN_00634720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634740",
+  "sym": "?FUN_00634740@PlanningNodeClass@@QAEPAVTechnoClass@@H@Z",
+  "len": "0x2F",
+  "name": "PlanningNodeClass::FUN_00634740",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/planning_manager.cpp",
+  "addr": "0x634770",
+  "sym": "?FUN_00634770@PlanningNodeClass@@QAEPAVTechnoClass@@XZ",
+  "len": "0x29",
+  "name": "PlanningNodeClass::FUN_00634770",
+  "status": "matched",
+  "pct": 100
  }
 ]

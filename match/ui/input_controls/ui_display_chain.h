@@ -403,6 +403,18 @@ public:
     void SetBeaconMode_004AC960(int mode);
     // FUNCTION: GAMEMD 0x4AE750 (decl; reloc)
     void FUN_004AE750(DisplayCmdObject* target, CellStruct cell, int action);
+    // FUNCTION: GAMEMD 0x4A91B0 (decl; reloc) -- RET 8.
+    void FUN_004A91B0(CellStruct* out, void* arg);
+    // FUNCTION: GAMEMD 0x4AA2B0 (decl; reloc) -- RET 4; the object after the one given.
+    DisplayCmdObject* FUN_004AA2B0(DisplayCmdObject* from);
+    // FUNCTION: GAMEMD 0x4AA380 (decl; reloc) -- RET 4; the object before the one given.
+    DisplayCmdObject* FUN_004AA380(DisplayCmdObject* from);
+    // FUNCTION: GAMEMD 0x4AE290 (decl; reloc)
+    void FUN_004AE290();
+    // FUNCTION: GAMEMD 0x4AEB10 (decl; reloc)
+    int FUN_004AEB10();
+    // FUNCTION: GAMEMD 0x4AEB30 (decl; reloc) -- RET 4.
+    void FUN_004AEB30(DisplayCmdObject* object);
 
     CellStruct unknown_1174;              // +0x1174 (the constructor copies the default cell 0x8A03F8)
     CellStruct FoundationOffset;          // +0x1178
@@ -582,6 +594,8 @@ struct StripClass
     wchar_t* FUN_006A92E0(int row);
     // FUNCTION: GAMEMD 0x6A9540 (decl; reloc) -- draw the strip; RET 4.
     void FUN_006A9540(bool full);
+    // FUNCTION: GAMEMD 0x6ABAC0 (decl; reloc)
+    bool FUN_006ABAC0();
 };
 GG_STATIC_ASSERT(offsetof(StripClass, Timer) == 0x08);
 GG_STATIC_ASSERT(offsetof(StripClass, unknown_18) == 0x18);
@@ -626,6 +640,10 @@ public:
     void FUN_006A6610();
     // FUNCTION: GAMEMD 0x6A70E0 (decl; reloc) -- RET 4.
     void FUN_006A70E0(bool flag);
+    // FUNCTION: GAMEMD 0x6A6A00 (decl; reloc) -- RET 8.
+    bool Scroll(bool up, int amount);
+    // FUNCTION: GAMEMD 0x6A7590 (decl; reloc) -- RET 4.
+    void SetTab(int tab);
 
     StripClass Strips[4];                 // +0x1544
     int unknown_5394;                     // +0x5394

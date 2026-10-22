@@ -78,18 +78,26 @@ extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 #pragma pack(push, 1)
 
 // A network-portable object reference: a heap/cell id plus its RTTI tag.
+class TargetAbstract;   // the resolved object; typed by the TU that calls through it
+
 struct TargetClass
 {
+    // FUNCTION: GAMEMD 0x6E6E20 (decl; reloc) -- the object this target names, or null.
+    TargetAbstract* FUN_006E6E20() const;
+
     int           ID;     // +0x00
     unsigned char RTTI;   // +0x04
 };
 
 // Map cell coordinates as they travel inside an event payload.
+#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
+#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 struct CellStruct
 {
     short X;   // +0x00
     short Y;   // +0x02
 };
+#endif
 
 // The per-house special-options bitfield block. It travels as a single dword
 // (`MOV dword ptr [EAX+0x7],ECX` at 0x4C65B4 from one pushed argument slot),
@@ -109,11 +117,14 @@ enum RTTIType
 };
 
 // A 32-bit coordinate pair (the animation payload's placement).
+#ifndef GG_MATCH_LAYOUT_POINT2D_DEFINED
+#define GG_MATCH_LAYOUT_POINT2D_DEFINED
 struct Point2D
 {
     int X;   // +0x00
     int Y;   // +0x04
 };
+#endif
 
 // Event type tags, named after the retail event-name table at 0x82091C and
 // valued from the immediates the constructors below store into Type.
@@ -127,6 +138,9 @@ struct Point2D
 class EventClass
 {
 public:
+    // An empty event: `new EventClass` stores 0 at +0 before the copy at
+    // 0x633FE5, as the embedded event of PlanningBranchClass does (0x633AC2).
+    EventClass() : Type(EVENT_EMPTY) {}
     // Declared ascending by retail address.
     EventClass(int houseIndex, SpecialPayload special);
     EventClass(int houseIndex, int eventType, TargetClass target);

@@ -79,7 +79,8 @@ public:
     virtual void vf_85(); virtual void vf_86(); virtual void vf_87(); virtual void vf_88(); virtual void vf_89();
     virtual void vf_90(); virtual void vf_91(); virtual void vf_92(); virtual void vf_93(); virtual void vf_94();
     virtual void vf_95(); virtual void vf_96(); virtual void vf_97(); virtual void vf_98(); virtual void vf_99();
-    virtual void vf_100(); virtual void vf_101(); virtual void vf_102(); virtual void vf_103(); virtual void vf_104();
+    virtual void* vf_100(int a, int b);   // 0x190
+    virtual void vf_101(); virtual void vf_102(); virtual void vf_103(); virtual void vf_104();
     virtual void vf_105(); virtual void vf_106(); virtual void vf_107(); virtual void vf_108(); virtual void vf_109();
     virtual void vf_110(); virtual void vf_111(); virtual void vf_112(); virtual void vf_113(); virtual void vf_114();
     virtual void vf_115(); virtual void vf_116(); virtual void vf_117(); virtual void vf_118(); virtual void vf_119();
@@ -232,6 +233,8 @@ struct DisplayCmdHouse
     bool FUN_0050B6F0();
     // FUNCTION: GAMEMD 0x502460 (decl; reloc)
     void GetPlanningWaypointProperties_00502460(int waypoint, int* colourIndex, ColorStruct* colour);
+    // FUNCTION: GAMEMD 0x4FB840 (decl; reloc) -- RET 8.
+    void FUN_004FB840(void* target, DisplayCmdObject* object);
 };
 GG_STATIC_ASSERT(offsetof(DisplayCmdHouse, unknown_30) == 0x30);
 GG_STATIC_ASSERT(offsetof(DisplayCmdHouse, unknown_20C) == 0x20C);
@@ -381,6 +384,12 @@ struct DisplayCmdTactical
     int FUN_006DA080();
     // FUNCTION: GAMEMD 0x6D9FF0 (decl; reloc)
     void FUN_006D9FF0(void (DisplayCmdObject::*callback)());
+    // FUNCTION: GAMEMD 0x6D6070 (decl; reloc) -- RET 4.
+    void FUN_006D6070(const DisplayCmdVec3* where);
+    // FUNCTION: GAMEMD 0x6D6190 (decl; reloc) -- fills and returns the 8-byte result; RET 4.
+    Point2D* FUN_006D6190(Point2D* out);
+    // FUNCTION: GAMEMD 0x6D6590 (decl; reloc) -- fills and returns the cell; RET 8.
+    CellStruct* FUN_006D6590(CellStruct* out, const Point2D* where);
 };
 GG_STATIC_ASSERT(offsetof(DisplayCmdTactical, unknown_D7D) == 0xD7D);
 // GLOBAL: GAMEMD 0x887324 -- the tactical view.

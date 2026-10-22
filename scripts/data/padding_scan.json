@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "a22880e883325fb5a1697dc3537b0ee993d0131ff6ef36301222bca5733a185b",
+  "manifest_sha256": "feb4c33dd229a12fd88223b3037d106c87256f0f8b09a5515877788840c68593",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 6419,
-  "matched_entries_missed": 531,
+  "matched_entries": 6734,
+  "matched_entries_missed": 534,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -6146,6 +6146,18 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x535CF0",
+   "tu": "match/ui/command_class.cpp",
+   "name": "CommandClass::vf_2",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x535D20",
+   "tu": "match/ui/command_class.cpp",
+   "name": "SetStructureTabCommandClass::vf_1",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5360B0",
    "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
    "name": "Seat1_007EBE8C::ctor",
@@ -6164,242 +6176,248 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5365A0",
+   "tu": "match/ui/command_class.cpp",
+   "name": "NextObjectCommandClass::vf_1",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x537FC0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "MultiplayerSyncCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x537FE0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "FollowCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538000",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "View1CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538020",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "View2CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538040",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "View3CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538060",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "View4CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538080",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetView1CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5380A0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetView2CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5380C0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetView3CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5380E0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetView4CommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538100",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "OptionsCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538120",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SidebarUpCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538140",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SidebarDownCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538160",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "CenterREventCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538180",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "BeaconPlacementCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5381A0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "ToggleSellCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5381C0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "ToggleRepairCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5381E0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "AllianceCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538200",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "CenterBaseCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538220",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "CenterViewCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538240",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "ScatterCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538260",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "GuardCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538280",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "StopCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5382A0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "AllToCheerCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5382C0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "DeployCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5382E0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "PrevObjectCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538300",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "NextObjectCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538320",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "PlanningModeCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538340",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "CombatantSelectCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538360",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "TypeSelectCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538380",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "HealthNavCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5383A0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "VeterancyNavCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5383C0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetStructureTabCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5383E0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetDefenseTabCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538400",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetUnitTabCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538420",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "SetInfantryTabCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538440",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "ScreenCaptureCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538460",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "PageUserCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x538480",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "CursorPositionCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
    "addr": "0x5384A0",
-   "tu": "match/ui/command_ddtors.cpp",
+   "tu": "match/ui/command_class.cpp",
    "name": "DeleteCommandClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },

@@ -374,13 +374,11 @@ template class VectorClass<HSVClass>;
 template class VectorClass<HashObject<HashString, SchemeNode*> >;
 
 // FUNCTION: GAMEMD 0x0063EC50
-// FUNCTION: GAMEMD 0x0063ECA0
 // VectorClass<PlanningMemberClass*> -- reseats retail vtable 0x007EFF04; locator 0x008080A0 -> type descriptor 0x00836A60
 //   `.?AV?$VectorClass@PAVPlanningMemberClass@@@@`.
 template class VectorClass<PlanningMemberClass*>;
 
 // FUNCTION: GAMEMD 0x0063ECF0
-// FUNCTION: GAMEMD 0x0063ED40
 // VectorClass<PlanningBranchClass*> -- reseats retail vtable 0x007EFF24; locator 0x008080D0 -> type descriptor 0x008369E8
 //   `.?AV?$VectorClass@PAVPlanningBranchClass@@@@`.
 template class VectorClass<PlanningBranchClass*>;

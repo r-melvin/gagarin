@@ -1,5 +1,39 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,734 matched function
+rows**, **419 partial rows**, **7,153 manifest rows**, **1,274 manifest
+translation units**, and **1,282 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The keyboard command family now has one canonical nine-slot CommandClass base
+and the 47 command classes' bodies in match/ui/command_class.cpp, which absorbs
+the former deleting-destructor TU with identical bytes. The CommandClass table
+is emitted and verified 9/9. match/ai/planning_manager.cpp covers the planning
+block: its 20 run-time initialisers in retail order, PlanningMemberClass,
+PlanningBranchClass and PlanningNodeClass. Together they add 315 exact and 4
+partial rows. The scalar deleting destructors at 0x63ECA0 and 0x63ED40 are
+re-owned as the DynamicVectorClass<PlanningMemberClass*> and
+<PlanningBranchClass*> slot-0 bodies, as RTTI places them. Every new exact row
+passes raw bytes and strict relocation checks.
+
+The 6,734 matches represent 34.1% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **501,727
+bytes**, or 13.2% of 3,797,269 listed function bytes. The padding heuristic
+misses 534 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: residual pass
+
 As of **2026-10-22**, the verified snapshot reports **6,419 matched function
 rows**, **415 partial rows**, **6,834 manifest rows**, **1,273 manifest
 translation units**, and **1,281 tracked C++ files**. Whole-repository regression
@@ -21,14 +55,6 @@ bytes**, or 13.0% of 3,797,269 listed function bytes. The padding heuristic
 misses 531 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: AbstractClass COM bases
 
