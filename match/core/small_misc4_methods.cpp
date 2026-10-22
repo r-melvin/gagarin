@@ -44,16 +44,6 @@ void __fastcall Obj_004085E0::FUN_004085E0(int a, int b)
     unknown_14 = 0;
 }
 
-// FUNCTION: GAMEMD 0x458DB0
-bool BuildingClass_00458DB0::FUN_00458DB0()
-{
-    if (SLOT_400(this)) {
-        return true;
-    }
-
-    return FUN_00701120(this);
-}
-
 // BLOCK-ORDER DELTA (status partial, 41.7% - 5/12). Retail branches *into* the
 // call (`JNZ` to a block placed after an earlier `POP ESI; RET`), so the
 // function carries two epilogues with the call block out of line. We emit one

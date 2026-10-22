@@ -23,12 +23,12 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 struct HouseTypeClass : AbstractTypeClass
 {
     char _pad98[0xB8 - 0x98];   // +0x0098
-    int  ArrayIndex;            // +0x00B8  returned on a hit
+    int  ArrayIndex2;           // +0x00B8  second copy of the array index (ArrayIndex is +0xB4, returned by slot 16 0x512730); returned on a hit
 
     // GAMEMD 0x5117D0 — ECX carries the name, so this is __fastcall.
     static int __fastcall FindIndexOfName(const char* name);
 };
-GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB8);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 
 // GLOBAL: GAMEMD 0x00A83C98 — HouseTypeClass::Array.
 extern DynamicVectorClassLayout HouseTypeArray;

@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "d0c8d183e4dcd61e7d03107ff7c9e2cdbf8b50a8f48483dfddd4d3e8dab29966",
+  "manifest_sha256": "1d915a26a092d080b7551e91528aebf83201376228dccba11e28248ebd6fb93c",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 5157,
-  "matched_entries_missed": 313,
+  "matched_entries": 5276,
+  "matched_entries_missed": 315,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5063,6 +5063,18 @@
    "addr": "0x438A90",
    "tu": "match/core/bomb_serialize_00438a90.cpp",
    "name": "BombSerializeView_00438A90::FUN_00438A90",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x456F80",
+   "tu": "match/economy/house_building/building_b_part4.cpp",
+   "name": "BuildingClass::vf_281",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x457620",
+   "tu": "match/economy/house_building/building_b_part4.cpp",
+   "name": "BuildingClass::vf_32",
    "reason": "no-preceding-CC-or-90"
   },
   {

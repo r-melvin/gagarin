@@ -22,41 +22,6 @@ struct Obj_00433C00
 };
 GG_STATIC_ASSERT(offsetof(Obj_00433C00, unknown_1C) == 0x1C);
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x449410 -> BuildingClass slot 46 (byte-off 0xB8).
-// No other table in the image holds it, so the slot is declared on
-// BuildingClass rather than inherited. The METHOD name is still unknown; only the
-// class is proven, so the `FUN_<addr>` member name stays a placeholder.
-struct BuildingClass_00449410;
-int __fastcall FUN_005F6BD0b(BuildingClass_00449410* self);   // GAMEMD 0x5F6BD0
-
-struct Flags_00449410
-{
-    char          _pad0000[0x16B7];
-    unsigned char at16B7;   // +0x16B7
-    char          _pad16B8[0x16C5 - 0x16B8];
-    unsigned char at16C5;   // +0x16C5
-};
-GG_STATIC_ASSERT(offsetof(Flags_00449410, at16C5) == 0x16C5);
-
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x449410 -> BuildingClass slot 46 (byte-off 0xB8).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_00449410
-{
-    char             _pad000[0x520];
-    Flags_00449410*  unknown_520;   // +0x0520
-
-    // FUNCTION: GAMEMD 0x449410
-    int FUN_00449410();
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_00449410, unknown_520) == 0x520);
-
 // A pair of doubles. Zeroed means "unset", and the reset value is 100.0 written
 // as two dword stores.
 struct Pair2d

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, IAT slots, globals and call targets read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at 0x406570,
-//   0x407FB0, 0x409360 and 0x44EB10.
+//   0x407FB0 and 0x409360.
 #ifndef GG_MATCH_CORE_SMALL_MISC48_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC48_METHODS_H
 
@@ -98,67 +98,5 @@ void __fastcall FUN_004093F0();
 
 // FUNCTION: GAMEMD 0x409360
 void __cdecl FUN_00409360();
-
-// ---------------------------------------------------------------------------
-// 0x44EB10 — a special-cased answer, otherwise the ordinary one.
-//
-// Three conditions have to hold together for the shortcut: the suppression byte
-// at +0x6E3 clear, the count from 0x65C7E0 under 0x19, and the settings mode
-// exactly 7. Only then does the answer come from RulesClass +0xF70.
-// ---------------------------------------------------------------------------
-struct Settings_0044EB10
-{
-    char _pad000[0xEB8];
-    int  Mode;   // +0x0EB8
-};
-GG_STATIC_ASSERT(offsetof(Settings_0044EB10, Mode) == 0xEB8);
-
-struct Rules_0044EB10
-{
-    char _pad000[0xF70];
-    int  Fallback;   // +0x0F70
-};
-GG_STATIC_ASSERT(offsetof(Rules_0044EB10, Fallback) == 0xF70);
-
-extern Rules_0044EB10* RulesInstance;   // GLOBAL: GAMEMD 0x8871E0
-
-struct Counter_0044EB10
-{
-    // FUNCTION: GAMEMD 0x65C7E0
-    int FUN_0065C7E0(int first, int second);
-};
-
-struct Source_0044EB10
-{
-    char             _pad000[0x218];
-    Counter_0044EB10 Counter;   // +0x0218
-};
-GG_STATIC_ASSERT(offsetof(Source_0044EB10, Counter) == 0x218);
-
-extern Source_0044EB10* DAT_00A8B230;   // GLOBAL: GAMEMD 0xA8B230
-
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x44EB10 -> BuildingClass slot 195 (byte-off 0x30C).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_0044EB10
-{
-    char                _pad000[0x520];
-    Settings_0044EB10*  Settings;      // +0x0520
-    char                _pad524[0x6E3 - 0x524];
-    char                Suppressed;    // +0x06E3
-
-    // FUNCTION: GAMEMD 0x707D20 — the ordinary answer. Declared as a member so
-    // the tail position stays a `CALL`.
-    int FUN_00707D20();
-
-    // FUNCTION: GAMEMD 0x44EB10
-    int FUN_0044EB10();
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_0044EB10, Settings) == 0x520);
-GG_STATIC_ASSERT(offsetof(BuildingClass_0044EB10, Suppressed) == 0x6E3);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC48_METHODS_H

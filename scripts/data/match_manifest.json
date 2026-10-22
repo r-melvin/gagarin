@@ -119,13 +119,13 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/can_retaliate_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x44F5C0",
-  "sym": "?FUN_0044F5C0@BuildingClass_0044F5C0@@QAE_NXZ",
+  "sym": "?vf_40@BuildingBView@@UAE_NXZ",
   "len": "0x77",
-  "name": "BuildingClass_0044F5C0::FUN_0044F5C0",
+  "name": "BuildingClass::vf_40",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/deploy_ready_methods.cpp",
@@ -1829,13 +1829,13 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/damage_flags_methods.cpp",
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x445F00",
-  "sym": "?FUN_00445F00@BuildingClass_00445F00@@QAEXIHH@Z",
+  "sym": "?vf_241@BuildingAView@@UAEXIHH@Z",
   "len": "0x72",
-  "name": "BuildingClass_00445F00::FUN_00445F00",
+  "name": "BuildingClass::vf_241",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/disk_laser_pointer_methods.cpp",
@@ -4702,20 +4702,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/deleting_dtor_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459F20",
-  "sym": "?FUN_00459F20@BuildingClass_00459F00@@QAEPAXI@Z",
+  "sym": "?vf_8@BuildingBView@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_00459F20",
+  "name": "BuildingClass::vf_8",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/deleting_dtor_methods.cpp",
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
   "addr": "0x465DC0",
-  "sym": "?FUN_00465DC0@BuildingTypeClass_00465D00b@@QAEPAXI@Z",
+  "sym": "??_GBuildingTypeClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_00465DC0",
+  "name": "BuildingTypeClass::`scalar deleting destructor'",
   "status": "matched",
   "pct": 100.0
  },
@@ -4927,13 +4927,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/economy/house_building/house_class_core.cpp",
   "addr": "0x50E380",
-  "sym": "?FUN_50E380@Obj_50E380@@QAEPAXI@Z",
+  "sym": "??_GHouseClusterView@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_0050e380",
+  "name": "HouseClass::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -10715,11 +10715,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc15_methods.cpp",
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
   "addr": "0x45E880",
-  "sym": "?FUN_0045E880@BuildingTypeClass_0045E880@@QAEPADH@Z",
+  "sym": "?vf_35@BuildingTypeClass@@UAEPAXPAX@Z",
   "len": "0x2b",
-  "name": "FUN_0045E880",
+  "name": "BuildingTypeClass::vf_35",
   "status": "matched",
   "pct": 100.0
  },
@@ -10805,11 +10805,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc19_methods.cpp",
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x449410",
-  "sym": "?FUN_00449410@BuildingClass_00449410@@QAEHXZ",
+  "sym": "?vf_46@BuildingAView@@UAEHXZ",
   "len": "0x2e",
-  "name": "FUN_00449410",
+  "name": "BuildingClass::vf_46",
   "status": "matched",
   "pct": 100.0
  },
@@ -11174,13 +11174,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc36_methods.cpp",
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x43e900",
-  "sym": "?FUN_0043E900@BuildingClass_0043E900@@QAEHXZ",
+  "sym": "?vf_187@BuildingAView@@UAEHXZ",
   "len": "0x34",
-  "name": "BuildingClass_0043E900::FUN_0043E900",
+  "name": "BuildingClass::vf_187",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc36_methods.cpp",
@@ -11291,13 +11291,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc38_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x452630",
-  "sym": "?FUN_00452630@BuildingClass_00452630@@QAE_NXZ",
+  "sym": "?vf_37@BuildingBView@@UAE_NXZ",
   "len": "0x3d",
-  "name": "BuildingClass_00452630::FUN_00452630",
+  "name": "BuildingClass::vf_37",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc38_methods.cpp",
@@ -11624,13 +11624,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc46_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x458e00",
-  "sym": "?FUN_00458E00@BuildingClass_00458E00@@QAEHXZ",
+  "sym": "?vf_257@BuildingBView@@UAEHXZ",
   "len": "0x4a",
-  "name": "BuildingClass_00458E00::FUN_00458E00",
+  "name": "BuildingClass::vf_257",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc46_methods.cpp",
@@ -11660,22 +11660,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc47_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part3.cpp",
   "addr": "0x455d50",
-  "sym": "?FUN_00455D50@BuildingClass_00455D50@@QAEXPAX0@Z",
+  "sym": "?vf_288@BuildingBView@@UAEXPAX0@Z",
   "len": "0x47",
-  "name": "BuildingClass_00455D50::FUN_00455D50",
+  "name": "BuildingClass::vf_288",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc47_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part3.cpp",
   "addr": "0x455da0",
-  "sym": "?FUN_00455DA0@BuildingClass_00455D50@@QAE_NXZ",
+  "sym": "?vf_161@BuildingBView@@UAE_NXZ",
   "len": "0x30",
-  "name": "BuildingClass_00455D50::FUN_00455DA0",
+  "name": "BuildingClass::vf_161",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc48_methods.cpp",
@@ -11714,13 +11714,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc48_methods.cpp",
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44eb10",
-  "sym": "?FUN_0044EB10@BuildingClass_0044EB10@@QAEHXZ",
+  "sym": "?vf_195@BuildingAView@@UAEHXZ",
   "len": "0x4c",
-  "name": "BuildingClass_0044EB10::FUN_0044EB10",
+  "name": "BuildingClass::vf_195",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc49_methods.cpp",
@@ -11795,11 +11795,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc4_methods.cpp",
+  "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x458DB0",
-  "sym": "?FUN_00458DB0@BuildingClass_00458DB0@@QAE_NXZ",
+  "sym": "?vf_171@BuildingBView@@UAE_NXZ",
   "len": "0x1c",
-  "name": "FUN_00458DB0",
+  "name": "BuildingClass::vf_171",
   "status": "matched",
   "pct": 100.0
  },
@@ -11903,13 +11903,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc52_methods.cpp",
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x447ac0",
-  "sym": "?FUN_00447AC0@BuildingClass_00447AC0@@QAE?AUPoint_00447AC0@@XZ",
+  "sym": "?FUN_00447AC0@BuildingAView@@QAE?AUHBCoord@@XZ",
   "len": "0x54",
-  "name": "BuildingClass_00447AC0::FUN_00447AC0",
+  "name": "BuildingClass::FUN_00447AC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc53_methods.cpp",
@@ -48879,5 +48879,1615 @@
   "name": "DropPodLocomotionClass::Release (IPiggyback adjustor)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_radio.cpp",
+  "addr": "0x43C2D0",
+  "sym": "?vf_101@BA2Building@@UAEHPAVBA2Other@@HAAPAVBA2Obj@@@Z",
+  "len": "0xb8f",
+  "name": "BuildingClass::vf_101",
+  "status": "partial",
+  "pct": 15.2
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_313.cpp",
+  "addr": "0x43DA80",
+  "sym": "?vf_313@BA4Building@@UAEXPAUHBPoint2D@@H@Z",
+  "len": "0xd22",
+  "name": "BuildingClass::vf_313",
+  "status": "partial",
+  "pct": 2.4
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_43e940.cpp",
+  "addr": "0x43E940",
+  "sym": "?vf_178@BuildingA3View@@UAE?AUHBDir@@PAVBA3ObjView@@@Z",
+  "len": "0x3f4",
+  "name": "BuildingClass::vf_178",
+  "status": "partial",
+  "pct": 11.5
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x43ED40",
+  "sym": "?vf_314@BuildingAView@@UAE?AUHBDir@@PAVBAObjView@@@Z",
+  "len": "0x104",
+  "name": "BuildingClass::vf_314",
+  "status": "partial",
+  "pct": 10.1
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_73.cpp",
+  "addr": "0x43F180",
+  "sym": "?vf_73@BA4Building@@UAE_NH@Z",
+  "len": "0x98c",
+  "name": "BuildingClass::vf_73",
+  "status": "partial",
+  "pct": 8.5
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_54.cpp",
+  "addr": "0x440580",
+  "sym": "?vf_54@BA4Building@@UAE_NPAUHBCoordPod@@H@Z",
+  "len": "0x1069",
+  "name": "BuildingClass::vf_54",
+  "status": "partial",
+  "pct": 5.6
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_4415f0.cpp",
+  "addr": "0x4415F0",
+  "sym": "?vf_315@BuildingA3View@@UAEXHHDPAF@Z",
+  "len": "0x967",
+  "name": "BuildingClass::vf_315",
+  "status": "partial",
+  "pct": 4.4
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_damage.cpp",
+  "addr": "0x442230",
+  "sym": "?vf_91@BA2Building@@UAEHPAHHPAUBA2Warhead@@PAVBA2Obj@@_N3PAVBA2House@@@Z",
+  "len": "0x9e7",
+  "name": "BuildingClass::vf_91",
+  "status": "partial",
+  "pct": 1.6
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x442C40",
+  "sym": "?vf_9@BuildingAView@@UAEXXZ",
+  "len": "0x147",
+  "name": "BuildingClass::vf_9",
+  "status": "partial",
+  "pct": 86.5
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_443410.cpp",
+  "addr": "0x443410",
+  "sym": "?vf_81@BuildingA3View@@UAE_NHPAVBA3ObjView@@H@Z",
+  "len": "0x2db",
+  "name": "BuildingClass::vf_81",
+  "status": "partial",
+  "pct": 70.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x4436F0",
+  "sym": "?vf_80@BuildingAView@@UAE_NHPAUHBCell@@HH@Z",
+  "len": "0x169",
+  "name": "BuildingClass::vf_80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x443B90",
+  "sym": "?vf_242@BuildingAView@@UAEXPAVBAObjView@@@Z",
+  "len": "0xcf",
+  "name": "BuildingClass::vf_242",
+  "status": "partial",
+  "pct": 17.1
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_exit.cpp",
+  "addr": "0x443C60",
+  "sym": "?vf_64@BA2Building@@UAEHPAVBA2Other@@UHBCell@@@Z",
+  "len": "0x1a45",
+  "name": "BuildingClass::vf_64",
+  "status": "partial",
+  "pct": 0.8
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x4456D0",
+  "sym": "?vf_312@BuildingAView@@UAEXXZ",
+  "len": "0x1aa",
+  "name": "BuildingClass::vf_312",
+  "status": "matched",
+  "pct": 100.0,
+  "pct_metric": "relocation-normalized-bytes",
+  "note": "raw bytes equal over the whole span (code plus its jump/index tables); the instruction decoder reads the tables as code (88.1%)"
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_53.cpp",
+  "addr": "0x445880",
+  "sym": "?vf_53@BA4Building@@UAE_NXZ",
+  "len": "0x5c6",
+  "name": "BuildingClass::vf_53",
+  "status": "partial",
+  "pct": 39.1
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x445E50",
+  "sym": "?vf_170@BuildingAView@@UAE?AUHBDir@@XZ",
+  "len": "0xab",
+  "name": "BuildingClass::vf_170",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_445f80.cpp",
+  "addr": "0x445F80",
+  "sym": "?vf_311@BuildingA3View@@UAEXD@Z",
+  "len": "0x1068",
+  "name": "BuildingClass::vf_311",
+  "status": "partial",
+  "pct": 4.2,
+  "metric": "instruction-position",
+  "note": "scored on the code span 0x1040 (the jump tables after it are not scored)"
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x446FF0",
+  "sym": "?vf_103@BuildingAView@@UAEXH@Z",
+  "len": "0x117",
+  "name": "BuildingClass::vf_103",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x447110",
+  "sym": "?vf_104@BuildingAView@@UAEXH@Z",
+  "len": "0xf7",
+  "name": "BuildingClass::vf_104",
+  "status": "partial",
+  "pct": 39.7
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x447210",
+  "sym": "?vf_29@BuildingAView@@UAEHPAVBAObjView@@D@Z",
+  "len": "0x328",
+  "name": "BuildingClass::vf_29",
+  "status": "partial",
+  "pct": 3.3
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x447540",
+  "sym": "?vf_28@BuildingAView@@UAEHPAUHBCell@@DD@Z",
+  "len": "0x238",
+  "name": "BuildingClass::vf_28",
+  "status": "partial",
+  "pct": 42.2
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x447B20",
+  "sym": "?FUN_00447B20@BuildingAView@@QAE?AUHBCoord@@PAVBAObjView@@@Z",
+  "len": "0x2d9",
+  "name": "BuildingClass::FUN_00447B20",
+  "status": "partial",
+  "pct": 5.3
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x447E00",
+  "sym": "?vf_310@BuildingAView@@UAEHPAVBAObjView@@@Z",
+  "len": "0x8a",
+  "name": "BuildingClass::vf_310",
+  "status": "partial",
+  "pct": 75.9
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x447E90",
+  "sym": "?FUN_00447E90@BuildingAView@@QAE?AUHBCoord@@PAVBAObjView@@@Z",
+  "len": "0x79",
+  "name": "BuildingClass::FUN_00447E90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x447F10",
+  "sym": "?vf_240@BuildingAView@@UAEHPAVBAObjView@@HH@Z",
+  "len": "0x155",
+  "name": "BuildingClass::vf_240",
+  "status": "partial",
+  "pct": 91.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x448160",
+  "sym": "?vf_316@BuildingAView@@UAEDXZ",
+  "len": "0xfb",
+  "name": "BuildingClass::vf_316",
+  "status": "partial",
+  "pct": 81.7
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_245.cpp",
+  "addr": "0x448260",
+  "sym": "?vf_245@BA4Building@@UAE_NPAVBA4House@@_N@Z",
+  "len": "0x11a6",
+  "name": "BuildingClass::vf_245",
+  "status": "partial",
+  "pct": 3.7
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x449440",
+  "sym": "?vf_107@BuildingAView@@UAEHPAUBAOccupierView@@HHHH@Z",
+  "len": "0x75",
+  "name": "BuildingClass::vf_107",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x4494C0",
+  "sym": "?vf_38@BuildingAView@@UAE_NXZ",
+  "len": "0x7a",
+  "name": "BuildingClass::vf_38",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x4496B0",
+  "sym": "?vf_135@BuildingAView@@UAEHXZ",
+  "len": "0x387",
+  "name": "BuildingClass::vf_135",
+  "status": "partial",
+  "pct": 41.5
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x449A40",
+  "sym": "?vf_136@BuildingAView@@UAEXXZ",
+  "len": "0x8",
+  "name": "BuildingClass::vf_136",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_2.cpp",
+  "addr": "0x449A50",
+  "sym": "?vf_145@BuildingAView@@UAEHXZ",
+  "len": "0x163",
+  "name": "BuildingClass::vf_145",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_sell.cpp",
+  "addr": "0x449C30",
+  "sym": "?vf_146@BA2Building@@UAEHXZ",
+  "len": "0xf96",
+  "name": "BuildingClass::vf_146",
+  "status": "partial",
+  "pct": 6.7
+ },
+ {
+  "tu": "match/economy/house_building/building_a4_vf_132.cpp",
+  "addr": "0x44ACF0",
+  "sym": "?vf_132@BA4Building@@UAEHXZ",
+  "len": "0xa35",
+  "name": "BuildingClass::vf_132",
+  "status": "partial",
+  "pct": 8.3
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44B760",
+  "sym": "?vf_133@BuildingAView@@UAEXXZ",
+  "len": "0x5",
+  "name": "BuildingClass::vf_133",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44B770",
+  "sym": "?vf_137@BuildingAView@@UAEXXZ",
+  "len": "0x5",
+  "name": "BuildingClass::vf_137",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_44b780.cpp",
+  "addr": "0x44B780",
+  "sym": "?vf_147@BuildingA3View@@UAEHXZ",
+  "len": "0x11fd",
+  "name": "BuildingClass::vf_147",
+  "status": "partial",
+  "pct": 3.9
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_44c980.cpp",
+  "addr": "0x44C980",
+  "sym": "?vf_148@BuildingA3View@@UAEHXZ",
+  "len": "0xc48",
+  "name": "BuildingClass::vf_148",
+  "status": "partial",
+  "pct": 2.0,
+  "metric": "instruction-position",
+  "note": "scored on the code span 0xc21 (the jump tables after it are not scored)"
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44D5D0",
+  "sym": "?vf_102@BuildingAView@@UAE_NPAVBAHouseView@@@Z",
+  "len": "0xce",
+  "name": "BuildingClass::vf_102",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44D6A0",
+  "sym": "?vf_289@BuildingAView@@UAE_N_NH@Z",
+  "len": "0x5d",
+  "name": "BuildingClass::vf_289",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44D700",
+  "sym": "?vf_174@BuildingAView@@UAEHXZ",
+  "len": "0x5c",
+  "name": "BuildingClass::vf_174",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44D760",
+  "sym": "?vf_238@BuildingAView@@UAEXPAX@Z",
+  "len": "0x6c",
+  "name": "BuildingClass::vf_238",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_1.cpp",
+  "addr": "0x44D7D0",
+  "sym": "?vf_194@BuildingAView@@UAEPAUHBDir@@PAU2@@Z",
+  "len": "0xa1",
+  "name": "BuildingClass::vf_194",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a3_body_44d880.cpp",
+  "addr": "0x44D880",
+  "sym": "?vf_143@BuildingA3View@@UAEHXZ",
+  "len": "0xb20",
+  "name": "BuildingClass::vf_143",
+  "status": "partial",
+  "pct": 3.1,
+  "metric": "instruction-position",
+  "note": "scored on the code span 0xb09 (the jump tables after it are not scored)"
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_state.cpp",
+  "addr": "0x44E440",
+  "sym": "?vf_149@BA2Building@@UAEHXZ",
+  "len": "0x355",
+  "name": "BuildingClass::vf_149",
+  "status": "partial",
+  "pct": 66.7
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x44E8F0",
+  "sym": "?vf_10@BuildingAView@@UAEXPAVBAObjView@@_N@Z",
+  "len": "0x218",
+  "name": "BuildingClass::vf_10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_a_methods_3.cpp",
+  "addr": "0x44EBF0",
+  "sym": "?vf_55@BuildingAView@@UAEXD@Z",
+  "len": "0x38d",
+  "name": "BuildingClass::vf_55",
+  "status": "partial",
+  "pct": 67.4
+ },
+ {
+  "tu": "match/economy/house_building/building_a2_cells.cpp",
+  "addr": "0x44EFB0",
+  "sym": "?vf_309@BA2Building@@UAE?AUHBCell@@PAVBA2Obj@@U2@@Z",
+  "len": "0x605",
+  "name": "BuildingClass::vf_309",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x44F640",
+  "sym": "?vf_45@BuildingBView@@UAEPAUHBCoord@@PAU2@H@Z",
+  "len": "0x9e",
+  "name": "BuildingClass::vf_45",
+  "status": "partial",
+  "pct": 26.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x4500A0",
+  "sym": "?vf_41@BuildingBView@@UAEPAUHBCoord@@PAU2@@Z",
+  "len": "0x4e",
+  "name": "BuildingClass::vf_41",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x451330",
+  "sym": "?vf_180@BuildingBView@@UAEHXZ",
+  "len": "0x9e",
+  "name": "BuildingClass::vf_180",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x4513D0",
+  "sym": "?vf_27@BuildingBView@@UAEHXZ",
+  "len": "0x30",
+  "name": "BuildingClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x452250",
+  "sym": "?vf_321@BuildingBView@@UAEHXZ",
+  "len": "0x3",
+  "name": "BuildingClass::vf_321",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x4526F0",
+  "sym": "?vf_254@BuildingBView@@UAEXH@Z",
+  "len": "0xd3",
+  "name": "BuildingClass::vf_254",
+  "status": "partial",
+  "pct": 48.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part1.cpp",
+  "addr": "0x4527D0",
+  "sym": "?vf_255@BuildingBView@@UAE_NXZ",
+  "len": "0x4d",
+  "name": "BuildingClass::vf_255",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x453A70",
+  "sym": "?vf_192@BuildingBView@@UAEPAUHBCoord@@PAU2@H@Z",
+  "len": "0x176",
+  "name": "BuildingClass::vf_192",
+  "status": "partial",
+  "pct": 11.2
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x453D60",
+  "sym": "?vf_60@BuildingBView@@UAEXPAUHBCoord@@@Z",
+  "len": "0x55",
+  "name": "BuildingClass::vf_60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x453DC0",
+  "sym": "?vf_61@BuildingBView@@UAEXPAUHBCoord@@@Z",
+  "len": "0x55",
+  "name": "BuildingClass::vf_61",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x453E20",
+  "sym": "?Load@BuildingBView@@UAGJPAUIStream@@@Z",
+  "len": "0x366",
+  "name": "BuildingClass::Load",
+  "status": "partial",
+  "pct": 8.9
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x454190",
+  "sym": "?Save@BuildingBView@@UAGJPAUIStream@@H@Z",
+  "len": "0xbb",
+  "name": "BuildingClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x454250",
+  "sym": "?vf_128@BuildingBView@@UAE_NXZ",
+  "len": "0xc",
+  "name": "BuildingClass::vf_128",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part2.cpp",
+  "addr": "0x454260",
+  "sym": "?vf_13@BuildingBView@@UAEXPAVBuildingBCrcView@@@Z",
+  "len": "0x23b",
+  "name": "BuildingClass::vf_13",
+  "status": "partial",
+  "pct": 93.2
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x4544A0",
+  "sym": "?vf_26@BuildingBView@@UAEH_NPAVBuildingBTargetView@@@Z",
+  "len": "0x130",
+  "name": "BuildingClass::vf_26",
+  "status": "partial",
+  "pct": 70.1
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x454DB0",
+  "sym": "?vf_260@BuildingBView@@UAEX_N@Z",
+  "len": "0x81c",
+  "name": "BuildingClass::vf_260",
+  "status": "partial",
+  "pct": 0.6
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x4555D0",
+  "sym": "?vf_212@BuildingBView@@UAE_NXZ",
+  "len": "0xf4",
+  "name": "BuildingClass::vf_212",
+  "status": "partial",
+  "pct": 84.2
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x4556D0",
+  "sym": "?vf_318@BuildingBView@@UAEXUHBCell@@@Z",
+  "len": "0x145",
+  "name": "BuildingClass::vf_318",
+  "status": "partial",
+  "pct": 3.8
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x455820",
+  "sym": "?vf_317@BuildingBView@@UAEXUHBCell@@@Z",
+  "len": "0x158",
+  "name": "BuildingClass::vf_317",
+  "status": "partial",
+  "pct": 24.3
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x455980",
+  "sym": "?vf_320@BuildingBView@@UAEXUHBCell@@@Z",
+  "len": "0xf9",
+  "name": "BuildingClass::vf_320",
+  "status": "partial",
+  "pct": 33.7
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x455A80",
+  "sym": "?vf_319@BuildingBView@@UAEXUHBCell@@@Z",
+  "len": "0x10d",
+  "name": "BuildingClass::vf_319",
+  "status": "partial",
+  "pct": 34.8
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part3.cpp",
+  "addr": "0x455C20",
+  "sym": "?vf_75@BuildingBView@@UAEPAUHBRect@@PAU2@@Z",
+  "len": "0x12e",
+  "name": "BuildingClass::vf_75",
+  "status": "partial",
+  "pct": 75.3
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x4565E0",
+  "sym": "?vf_294@BuildingBView@@UAEXXZ",
+  "len": "0x5d",
+  "name": "BuildingClass::vf_294",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x456640",
+  "sym": "?vf_295@BuildingBView@@UAEXXZ",
+  "len": "0x66",
+  "name": "BuildingClass::vf_295",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x456750",
+  "sym": "?vf_76@BuildingBView@@UAEXUBuildingBColor@@@Z",
+  "len": "0x21a",
+  "name": "BuildingClass::vf_76",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x456E00",
+  "sym": "?vf_82@BuildingBView@@UAEXH@Z",
+  "len": "0x180",
+  "name": "BuildingClass::vf_82",
+  "status": "partial",
+  "pct": 95.2
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x456F80",
+  "sym": "?vf_281@BuildingBView@@UAEHH@Z",
+  "len": "0x28",
+  "name": "BuildingClass::vf_281",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x457020",
+  "sym": "?vf_201@BuildingBView@@UAE_NPAH@Z",
+  "len": "0x1b8",
+  "name": "BuildingClass::vf_201",
+  "status": "partial",
+  "pct": 56.7
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x457620",
+  "sym": "?vf_32@BuildingBView@@UAE_NXZ",
+  "len": "0xb",
+  "name": "BuildingClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x4576F0",
+  "sym": "?vf_184@BuildingBView@@UAEXXZ",
+  "len": "0x7f",
+  "name": "BuildingClass::vf_184",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x457770",
+  "sym": "?vf_168@BuildingBView@@UAE_NXZ",
+  "len": "0x147",
+  "name": "BuildingClass::vf_168",
+  "status": "partial",
+  "pct": 15.4
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x4578C0",
+  "sym": "?vf_169@BuildingBView@@UAE_NXZ",
+  "len": "0x147",
+  "name": "BuildingClass::vf_169",
+  "status": "partial",
+  "pct": 15.4
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x457C90",
+  "sym": "?vf_85@BuildingBView@@UAEXHHH@Z",
+  "len": "0x4e",
+  "name": "BuildingClass::vf_85",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part4.cpp",
+  "addr": "0x4581F0",
+  "sym": "?vf_258@BuildingBView@@UAEHXZ",
+  "len": "0x7",
+  "name": "BuildingClass::vf_258",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x458A80",
+  "sym": "?vf_292@BuildingBView@@UAE_NPAUHBCoord@@H@Z",
+  "len": "0x329",
+  "name": "BuildingClass::vf_292",
+  "status": "partial",
+  "pct": 10.4
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x458DD0",
+  "sym": "?vf_256@BuildingBView@@UAE_NXZ",
+  "len": "0x2f",
+  "name": "BuildingClass::vf_256",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459870",
+  "sym": "?vf_181@BuildingBView@@UAEHXZ",
+  "len": "0xd",
+  "name": "BuildingClass::vf_181",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459880",
+  "sym": "?vf_182@BuildingBView@@UAEHXZ",
+  "len": "0xd",
+  "name": "BuildingClass::vf_182",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459890",
+  "sym": "?vf_183@BuildingBView@@UAEHXZ",
+  "len": "0xd",
+  "name": "BuildingClass::vf_183",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459900",
+  "sym": "?vf_282@BuildingBView@@UAEXXZ",
+  "len": "0x300",
+  "name": "BuildingClass::vf_282",
+  "status": "partial",
+  "pct": 4.2
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459C20",
+  "sym": "?vf_219@BuildingBView@@UAEXXZ",
+  "len": "0x7f",
+  "name": "BuildingClass::vf_219",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459E70",
+  "sym": "?vf_12@BuildingBView@@UAEHXZ",
+  "len": "0x6",
+  "name": "BuildingClass::vf_12",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459E80",
+  "sym": "?GetClassID@BuildingBView@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "BuildingClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459EC0",
+  "sym": "?vf_11@BuildingBView@@UAEHXZ",
+  "len": "0x6",
+  "name": "BuildingClass::vf_11",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459ED0",
+  "sym": "?vf_36@BuildingBView@@UAEHXZ",
+  "len": "0xa",
+  "name": "BuildingClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459EE0",
+  "sym": "?vf_34@BuildingBView@@UAEPAVBuildingBTypeView@@XZ",
+  "len": "0x7",
+  "name": "BuildingClass::vf_34",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/building_b_part5.cpp",
+  "addr": "0x459EF0",
+  "sym": "?vf_43@BuildingBView@@UAEPAUHBCoord@@PAU2@@Z",
+  "len": "0x2b",
+  "name": "BuildingClass::vf_43",
+  "status": "partial",
+  "pct": 41.2
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45DD90",
+  "sym": "??0BuildingTypeClass@@QAE@PBD@Z",
+  "len": "0x782",
+  "name": "BuildingTypeClass::BuildingTypeClass",
+  "status": "partial",
+  "pct": 0.3
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45E800",
+  "sym": "?vf_32@BuildingTypeClass@@UAE_NPAX0@Z",
+  "len": "0x76",
+  "name": "BuildingTypeClass::vf_32",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45EBD0",
+  "sym": "?vf_30@BuildingTypeClass@@UAE?AUHBCoord@@XZ",
+  "len": "0x4c",
+  "name": "BuildingTypeClass::vf_30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45EC20",
+  "sym": "?vf_36@BuildingTypeClass@@UAEPAX_N@Z",
+  "len": "0x53",
+  "name": "BuildingTypeClass::vf_36",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45ECE0",
+  "sym": "?vf_29@BuildingTypeClass@@UAEHXZ",
+  "len": "0x6c",
+  "name": "BuildingTypeClass::vf_29",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45EDD0",
+  "sym": "?vf_33@BuildingTypeClass@@UAEHH@Z",
+  "len": "0x91",
+  "name": "BuildingTypeClass::vf_33",
+  "status": "partial",
+  "pct": 20.3
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x45F040",
+  "sym": "?vf_39@BuildingTypeClass@@UAEPAXXZ",
+  "len": "0x11e",
+  "name": "BuildingTypeClass::vf_39",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_readini.cpp",
+  "addr": "0x45FE50",
+  "sym": "?ReadINI@BuildingTypeClass@@UAE_NPAVTypesIniView@@@Z",
+  "len": "0x4c06",
+  "name": "BuildingTypeClass::ReadINI",
+  "status": "partial",
+  "pct": 7.6
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x464A70",
+  "sym": "?vf_27@BuildingTypeClass@@UAE?AUHBCoord@@PBU2@@Z",
+  "len": "0x4a",
+  "name": "BuildingTypeClass::vf_27",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x464AC0",
+  "sym": "?vf_42@BuildingTypeClass@@UAE_NPAX0@Z",
+  "len": "0x21",
+  "name": "BuildingTypeClass::vf_42",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x464AF0",
+  "sym": "?vf_31@BuildingTypeClass@@UAE?AUHBCoord@@XZ",
+  "len": "0x3f",
+  "name": "BuildingTypeClass::vf_31",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x464B30",
+  "sym": "?ComputeCRC@BuildingTypeClass@@UAEXAAVTypesCrcView@@@Z",
+  "len": "0x4d6",
+  "name": "BuildingTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465010",
+  "sym": "?Load@BuildingTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x2e7",
+  "name": "BuildingTypeClass::Load",
+  "status": "partial",
+  "pct": 96.6
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465300",
+  "sym": "?Save@BuildingTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x71",
+  "name": "BuildingTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465380",
+  "sym": "?GetClassID@BuildingTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "BuildingTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465910",
+  "sym": "?vf_40@BuildingTypeClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "BuildingTypeClass::vf_40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465920",
+  "sym": "?vf_41@BuildingTypeClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "BuildingTypeClass::vf_41",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465960",
+  "sym": "?vf_48@BuildingTypeClass@@UAEPAXXZ",
+  "len": "0x18d",
+  "name": "BuildingTypeClass::vf_48",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465D90",
+  "sym": "?WhatAmI@BuildingTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "BuildingTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465DA0",
+  "sym": "?Size@BuildingTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "BuildingTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_building_type_class.cpp",
+  "addr": "0x465DB0",
+  "sym": "?vf_16@BuildingTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "BuildingTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F54A0",
+  "sym": "??0HouseClusterView@@QAE@PAUHouseTypeView@@@Z",
+  "len": "0x109a",
+  "name": "HouseClass::HouseClass",
+  "status": "partial",
+  "pct": 98.3
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6830",
+  "sym": "?QueryInterface@HouseClusterView@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0xd7",
+  "name": "HouseClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6910",
+  "sym": "?HasEnoughPower@HouseClusterView@@UAG_NXZ",
+  "len": "0x1e",
+  "name": "HouseClass::HasEnoughPower",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6930",
+  "sym": "?GetMainInterface@HouseClusterView@@UAGPAUIUnknown@@XZ",
+  "len": "0x1d",
+  "name": "HouseClass::GetMainInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6950",
+  "sym": "?GetName@HouseClusterView@@UAGPAGXZ",
+  "len": "0x32",
+  "name": "HouseClass::GetName",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6990",
+  "sym": "?GetCredits@HouseClusterView@@UAGHXZ",
+  "len": "0x3a",
+  "name": "HouseClass::GetCredits",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F69D0",
+  "sym": "?GetTiberiumStored@HouseClusterView@@UAGHXZ",
+  "len": "0x23",
+  "name": "HouseClass::GetTiberiumStored",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6A00",
+  "sym": "?GetPowerOutput@HouseClusterView@@UAGHXZ",
+  "len": "0xd",
+  "name": "HouseClass::GetPowerOutput",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6A10",
+  "sym": "?GetPowerDrain@HouseClusterView@@UAGHXZ",
+  "len": "0xd",
+  "name": "HouseClass::GetPowerDrain",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6A20",
+  "sym": "?CountOwnedOfCategory@HouseClusterView@@UAGHH@Z",
+  "len": "0x58",
+  "name": "HouseClass::CountOwnedOfCategory",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6A80",
+  "sym": "?PublicCountOwnedOfCategory@HouseClusterView@@UAGHH@Z",
+  "len": "0x58",
+  "name": "HouseClass::PublicCountOwnedOfCategory",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6AE0",
+  "sym": "?SumScoreOfCategory@HouseClusterView@@UAGHH@Z",
+  "len": "0x6b",
+  "name": "HouseClass::SumScoreOfCategory",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6B50",
+  "sym": "?PublicSumScoreOfCategory@HouseClusterView@@UAGHH@Z",
+  "len": "0x6b",
+  "name": "HouseClass::PublicSumScoreOfCategory",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6BC0",
+  "sym": "?GetBaseCenter@HouseClusterView@@UAGPAXPAX@Z",
+  "len": "0x14a",
+  "name": "HouseClass::GetBaseCenter",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6D10",
+  "sym": "?PublicGetBaseCenter@HouseClusterView@@UAGPAXPAX@Z",
+  "len": "0x14a",
+  "name": "HouseClass::PublicGetBaseCenter",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4F6E60",
+  "sym": "?GetIndex@HouseClusterView@@UAGHXZ",
+  "len": "0xa",
+  "name": "HouseClass::GetIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x4FB9B0",
+  "sym": "?PointerExpired@HouseClusterView@@UAEXPAVHouseAbstractPtrView@@_N@Z",
+  "len": "0x349",
+  "name": "HouseClass::PointerExpired",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x5013A0",
+  "sym": "?SellAllBuildings@HouseClusterView@@UAGHXZ",
+  "len": "0x55",
+  "name": "HouseClass::SellAllBuildings",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x501400",
+  "sym": "?DestroyAllTechnos@HouseClusterView@@UAGHXZ",
+  "len": "0x13f",
+  "name": "HouseClass::DestroyAllTechnos",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x5024F0",
+  "sym": "?EnumConnectionPoints@HouseClusterView@@UAGJPAPAUIEnumConnectionPoints@@@Z",
+  "len": "0x53",
+  "name": "HouseClass::EnumConnectionPoints",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x502550",
+  "sym": "?FindConnectionPoint@HouseClusterView@@UAGJABU_GUID@@PAPAUIConnectionPoint@@@Z",
+  "len": "0x93",
+  "name": "HouseClass::FindConnectionPoint",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x502D60",
+  "sym": "?ComputeCrc@HouseClusterView@@UAEXPAVHouseCrcView@@@Z",
+  "len": "0x2de",
+  "name": "HouseClass::ComputeCrc",
+  "status": "partial",
+  "pct": 91.7
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x503040",
+  "sym": "?Load@HouseClusterView@@UAGJPAUIStream@@@Z",
+  "len": "0x1033",
+  "name": "HouseClass::Load",
+  "status": "partial",
+  "pct": 99.6
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x504080",
+  "sym": "?Save@HouseClusterView@@UAGJPAUIStream@@H@Z",
+  "len": "0x665",
+  "name": "HouseClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x5046F0",
+  "sym": "?GetClassID@HouseClusterView@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "HouseClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x504730",
+  "sym": "?Size@HouseClusterView@@UAEHXZ",
+  "len": "0x6",
+  "name": "HouseClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x50E340",
+  "sym": "?AddRef@HouseClusterView@@UAGKXZ",
+  "len": "0x8",
+  "name": "HouseClass::AddRef",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x50E350",
+  "sym": "?Release@HouseClusterView@@UAGKXZ",
+  "len": "0x8",
+  "name": "HouseClass::Release",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x50E360",
+  "sym": "?WhatAmI@HouseClusterView@@UAEHXZ",
+  "len": "0x6",
+  "name": "HouseClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x50E370",
+  "sym": "?vf_16@HouseClusterView@@UAEHXZ",
+  "len": "0x4",
+  "name": "HouseClass::vf_16",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A20",
+  "sym": "?QueryInterface@HouseClusterView@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "HouseClass::QueryInterface (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A30",
+  "sym": "?AddRef@HouseClusterView@@W3AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::AddRef (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A40",
+  "sym": "?Release@HouseClusterView@@W3AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::Release (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A50",
+  "sym": "?QueryInterface@HouseClusterView@@WCE@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "HouseClass::QueryInterface (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A60",
+  "sym": "?AddRef@HouseClusterView@@WCE@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::AddRef (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A70",
+  "sym": "?Release@HouseClusterView@@WCE@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::Release (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A80",
+  "sym": "?QueryInterface@HouseClusterView@@WCI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "HouseClass::QueryInterface (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510A90",
+  "sym": "?AddRef@HouseClusterView@@WCI@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::AddRef (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AA0",
+  "sym": "?Release@HouseClusterView@@WCI@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::Release (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AB0",
+  "sym": "?GetIndex@HouseClusterView@@W3AGHXZ",
+  "len": "0xa",
+  "name": "HouseClass::GetIndex (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AC0",
+  "sym": "?GetName@HouseClusterView@@W3AGPAGXZ",
+  "len": "0xa",
+  "name": "HouseClass::GetName (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AD0",
+  "sym": "?QueryInterface@HouseClusterView@@WCM@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "HouseClass::QueryInterface (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AE0",
+  "sym": "?AddRef@HouseClusterView@@WCM@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::AddRef (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/house_class_core.cpp",
+  "addr": "0x510AF0",
+  "sym": "?Release@HouseClusterView@@WCM@AGKXZ",
+  "len": "0xa",
+  "name": "HouseClass::Release (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x5113F0",
+  "sym": "??0HouseTypeClass@@QAE@PBD@Z",
+  "len": "0x258",
+  "name": "HouseTypeClass::HouseTypeClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x511850",
+  "sym": "?ReadINI@HouseTypeClass@@UAE_NPAVTypesIniView@@@Z",
+  "len": "0x915",
+  "name": "HouseTypeClass::ReadINI",
+  "status": "partial",
+  "pct": 57.7
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512170",
+  "sym": "?ComputeCRC@HouseTypeClass@@UAEXAAVTypesCrcView@@@Z",
+  "len": "0x109",
+  "name": "HouseTypeClass::ComputeCRC",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512280",
+  "sym": "?IsDirty@HouseTypeClass@@UAGJXZ",
+  "len": "0x5",
+  "name": "HouseTypeClass::IsDirty",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512290",
+  "sym": "?Load@HouseTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x1e5",
+  "name": "HouseTypeClass::Load",
+  "status": "partial",
+  "pct": 9.9
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512480",
+  "sym": "?Save@HouseTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0xe1",
+  "name": "HouseTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512570",
+  "sym": "?GetSizeMax@HouseTypeClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
+  "len": "0x22",
+  "name": "HouseTypeClass::GetSizeMax",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x5125A0",
+  "sym": "?QueryInterface@HouseTypeClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x9b",
+  "name": "HouseTypeClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512640",
+  "sym": "?GetClassID@HouseTypeClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "HouseTypeClass::GetClassID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512710",
+  "sym": "?WhatAmI@HouseTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "HouseTypeClass::WhatAmI",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512720",
+  "sym": "?Size@HouseTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "HouseTypeClass::Size",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512730",
+  "sym": "?GetArrayIndex@HouseTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "HouseTypeClass::GetArrayIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512740",
+  "sym": "?AddRef@HouseTypeClass@@UAGKXZ",
+  "len": "0x8",
+  "name": "HouseTypeClass::AddRef",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512750",
+  "sym": "?Release@HouseTypeClass@@UAGKXZ",
+  "len": "0x8",
+  "name": "HouseTypeClass::Release",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x512760",
+  "sym": "??_GHouseTypeClass@@UAEPAXI@Z",
+  "len": "0x137",
+  "name": "HouseTypeClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x5139E0",
+  "sym": "?QueryInterface@HouseTypeClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "HouseTypeClass::QueryInterface (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x5139F0",
+  "sym": "?AddRef@HouseTypeClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "HouseTypeClass::AddRef (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/house_building/types_house_type_class.cpp",
+  "addr": "0x513A00",
+  "sym": "?Release@HouseTypeClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "HouseTypeClass::Release (adjustor thunk)",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

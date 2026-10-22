@@ -88,16 +88,3 @@ void __cdecl FUN_00409360()
 
     DAT_0087E848 = (void*)FUN_004093F0;
 }
-
-// FUNCTION: GAMEMD 0x44EB10
-int BuildingClass_0044EB10::FUN_0044EB10()
-{
-    if (!Suppressed
-        && DAT_00A8B230->Counter.FUN_0065C7E0(0, 0x63) < 0x19
-        && Settings->Mode == 7) {
-
-        return RulesInstance->Fallback;
-    }
-
-    return FUN_00707D20();
-}

@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// Ordered ascending by retail address. The two allocate-and-construct helpers
-// are written out longhand per the family rule.
+// Ordered ascending by retail address. The allocate-and-construct helper
+// is written out longhand per the family rule.
 
 #include "small_misc15_methods.h"
 
@@ -37,16 +37,4 @@ int Obj_00459840::FUN_00459840() const
     }
 
     return unknown_6F4;
-}
-
-// FUNCTION: GAMEMD 0x45E880
-char* BuildingTypeClass_0045E880::FUN_0045E880(int arg)
-{
-    void* p = FUN_007C8E17(0x720);
-
-    if (p) {
-        return ((Made_0045E880*)p)->FUN_0043B740(this, arg);
-    }
-
-    return 0;
 }

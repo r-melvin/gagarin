@@ -30,19 +30,6 @@ void Obj_00433C00::FUN_00433C00()
     FUN_007C8B3D(this);
 }
 
-// FUNCTION: GAMEMD 0x449410
-// Two flags adjust the base value in opposite directions. Retail selects each
-// contribution branchlessly (`NEG; SBB; AND mask`), which is what a conditional
-// expression produces here.
-int BuildingClass_00449410::FUN_00449410()
-{
-    int base = FUN_005F6BD0b(this);
-
-    Flags_00449410* flags = unknown_520;
-
-    return base + ((flags->at16C5 ? 0x20 : 0) - (flags->at16B7 ? 0x10 : 0));
-}
-
 // FUNCTION: GAMEMD 0x459F60
 int Triple3i::FUN_00459F60(const Triple3i* other) const
 {

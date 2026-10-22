@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at 0x412610, 0x455D50 and
-//   0x455DA0.
+//   Bytes matched against retail gamemd.exe v1.001 at 0x412610 and
+//   0x41D7E0.
 
 #include "small_misc47_methods.h"
 
@@ -28,40 +28,6 @@ int __fastcall FUN_00412610(const char* text)
     }
 
     return value;
-}
-
-// FUNCTION: GAMEMD 0x455D50
-void BuildingClass_00455D50::FUN_00455D50(void* first, void* second)
-{
-    if (Type == 0x13) {
-        return;
-    }
-
-    if (vt_284() || Settings->FlagB9) {
-        FUN_0070C610(first);
-    }
-
-    FUN_00709A30(first, second);
-}
-
-// FUNCTION: GAMEMD 0x455DA0
-//
-// Four independent reasons to say yes, all landing on the same `MOV AL,0x1`, so
-// they nest down to one trailing `return true` rather than four early exits.
-bool BuildingClass_00455D50::FUN_00455DA0()
-{
-    Settings_00455D50* settings = Settings;
-
-    int mode = settings->Mode;
-
-    if (mode != 0x28
-        && mode != 0x10
-        && !settings->FlagAC
-        && !settings->FlagA9) {
-        return false;
-    }
-
-    return true;
 }
 
 // FUNCTION: GAMEMD 0x41D7E0

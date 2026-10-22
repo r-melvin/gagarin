@@ -27,7 +27,7 @@ int __fastcall HouseTypeClass::FindIndexOfName(const char* name)
             HouseTypeClass* type = ((HouseTypeClass**)HouseTypeArray.Items)[i];
 
             if (_stricmp(type->Name, name) == 0 || _stricmp(type->ID, name) == 0)
-                return type->ArrayIndex;
+                return type->ArrayIndex2;
         }
     }
 

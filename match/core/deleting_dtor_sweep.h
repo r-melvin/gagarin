@@ -39,7 +39,6 @@ void __fastcall FUN_004D1650(void* self);   // GAMEMD 0x4D1650
 void __fastcall FUN_004D3590(void* self);   // GAMEMD 0x4D3590
 void __fastcall FUN_004E1390(void* self);   // GAMEMD 0x4E1390
 void __fastcall FUN_004F21A0(void* self);   // GAMEMD 0x4F21A0
-void __fastcall FUN_004F7140(void* self);   // GAMEMD 0x4F7140
 void __fastcall FUN_00517D90(void* self);   // GAMEMD 0x517D90
 void __fastcall FUN_0052AB80(void* self);   // GAMEMD 0x52AB80
 void __fastcall FUN_00544A70(void* self);   // GAMEMD 0x544A70
@@ -107,7 +106,6 @@ struct Obj_4E1AD0 { void* FUN_4E1AD0(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_4E30D0 { void* FUN_4E30D0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4E30D0
 struct Obj_4E30F0 { void* FUN_4E30F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x4E30F0
 struct Obj_4F2830 { void* FUN_4F2830(unsigned int flags); };  // FUNCTION: GAMEMD 0x4F2830
-struct Obj_50E380 { void* FUN_50E380(unsigned int flags); };  // FUNCTION: GAMEMD 0x50E380
 struct Obj_5172F0 { void* FUN_5172F0(unsigned int flags); };  // FUNCTION: GAMEMD 0x5172F0
 struct Obj_523350 { void* FUN_523350(unsigned int flags); };  // FUNCTION: GAMEMD 0x523350
 struct Obj_52AE00 { void* FUN_52AE00(unsigned int flags); };  // FUNCTION: GAMEMD 0x52AE00

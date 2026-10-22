@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x408E00 / 0x40E4A0 / 0x41C210 / 0x426590 / 0x459F20. None is
+//   Ghidra CLI at 0x408E00 / 0x40E4A0 / 0x41C210 / 0x426590. None is
 //   bound by YRpp or the seed map.
 //
 // Four scalar deleting destructors and one teardown.
@@ -26,8 +26,6 @@ extern "C" void __cdecl FUN_007C8B3D(void* block);
 // The four real destructors, declared only so cl emits reloc-normalised calls.
 void __fastcall FUN_00414080(void* self);   // GAMEMD 0x414080
 void __fastcall FUN_004228E0(void* self);   // GAMEMD 0x4228E0
-void __fastcall FUN_0043BCF0(void* self);   // GAMEMD 0x43BCF0
-void __fastcall FUN_0045E580(void* self);   // GAMEMD 0x45E580
 void __fastcall FUN_00466560(void* self);   // GAMEMD 0x466560
 void __fastcall FUN_005565A0(void* self);   // GAMEMD 0x5565A0
 
@@ -58,21 +56,6 @@ struct AircraftClass_0041C200b { void* FUN_0041C210(unsigned int flags); }; // F
 // AnimClass rather than inherited. The METHOD name is still unknown; only the
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
 struct AnimClass_00426500 { void* FUN_00426590(unsigned int flags); };  // FUNCTION: GAMEMD 0x426590
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x459F20 -> BuildingClass slot 8 (byte-off 0x20).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_00459F00 { void* FUN_00459F20(unsigned int flags); };  // FUNCTION: GAMEMD 0x459F20
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_` placeholder). BuildingTypeClass's own vtable is 0x7E4570.
-//   0x465DC0 -> BuildingTypeClass slot 8 (byte-off 0x20).
-// No other table in the image holds it, so the slot is declared on
-// BuildingTypeClass rather than inherited. The METHOD name is still unknown; only the
-// class is proven, so the `FUN_<addr>` member name stays a placeholder.
-struct BuildingTypeClass_00465D00b { void* FUN_00465DC0(unsigned int flags); }; // FUNCTION: GAMEMD 0x465DC0
 struct Obj_0046B500 { void* FUN_0046B5C0(unsigned int flags); };  // FUNCTION: GAMEMD 0x46B5C0
 struct Obj_00473900 { void* FUN_00473920(unsigned int flags); };  // FUNCTION: GAMEMD 0x473920
 

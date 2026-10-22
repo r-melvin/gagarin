@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Offsets, slot displacements and the scaling read numerically off the user's
-//   retail gamemd.exe v1.001 via the local Ghidra CLI at 0x417F80 and
-//   0x447AC0.
+//   retail gamemd.exe v1.001 via the local Ghidra CLI at 0x417F80.
 #ifndef GG_MATCH_CORE_SMALL_MISC52_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC52_METHODS_H
 
@@ -299,49 +298,5 @@ struct AircraftClass_00417F80
     int FUN_00417F80(int first, int second, int third);
 };
 GG_STATIC_ASSERT(offsetof(AircraftClass_00417F80, Owner) == 0x21C);
-
-// ---------------------------------------------------------------------------
-// 0x447AC0 — the object's centre in world units.
-//
-// Each of the two cell dimensions is scaled by 128 and then pulled back half a
-// cell (`SHL 7` then `SUB 0x80`), and the results are added to the coordinate
-// triple at +0x9C. The height passes through untouched. Note the order: the
-// +0x18 query runs first but its result lands in Y, and the +0x08 query's lands
-// in X.
-// ---------------------------------------------------------------------------
-struct Settings_00447AC0
-{
-    // FUNCTION: GAMEMD 0x45EC90
-    int FUN_0045EC90();
-    // FUNCTION: GAMEMD 0x45ECA0
-    int FUN_0045ECA0(int which);
-};
-
-struct Point_00447AC0
-{
-    int X;   // +0x0000
-    int Y;   // +0x0004
-    int Z;   // +0x0008
-};
-
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x447AC0 -> BuildingClass slot 18 (byte-off 0x48).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_00447AC0
-{
-    char             _pad000[0x9C];
-    Point_00447AC0   Cell;       // +0x009C
-    char             _pad0A8[0x520 - 0xA8];
-    Settings_00447AC0* Settings; // +0x0520
-
-    // FUNCTION: GAMEMD 0x447AC0
-    Point_00447AC0 FUN_00447AC0();
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_00447AC0, Cell) == 0x9C);
-GG_STATIC_ASSERT(offsetof(BuildingClass_00447AC0, Settings) == 0x520);
 
 #endif  // GG_MATCH_CORE_SMALL_MISC52_METHODS_H

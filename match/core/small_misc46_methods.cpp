@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001 at the four addresses below.
+//   Bytes matched against retail gamemd.exe v1.001 at the three addresses below.
 
 #include "small_misc46_methods.h"
 
@@ -51,18 +51,6 @@ void __fastcall FUN_00433940(Obj_00433940* self)
 
         FUN_007C8B3D(sub);
     }
-}
-
-// FUNCTION: GAMEMD 0x458E00
-int BuildingClass_00458E00::FUN_00458E00()
-{
-    int limit = Settings->FUN_0045ECA0(0);
-
-    if (Settings->FUN_0045EC90() < limit) {
-        return Settings->FUN_0045EC90() / 2;
-    }
-
-    return Settings->FUN_0045ECA0(0) / 2;
 }
 
 // FUNCTION: GAMEMD 0x473980

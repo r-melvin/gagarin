@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, table extents, element strides and call targets read numerically
 //   off the user's retail gamemd.exe v1.001 via the local Ghidra CLI at
-//   0x42DD60, 0x433940, 0x458E00 and 0x473980.
+//   0x42DD60, 0x433940 and 0x473980.
 #ifndef GG_MATCH_CORE_SMALL_MISC46_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC46_METHODS_H
 
@@ -75,37 +75,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00433940, Block) == 0x8);
 
 // FUNCTION: GAMEMD 0x433940
 void __fastcall FUN_00433940(Obj_00433940* self);
-
-// ---------------------------------------------------------------------------
-// 0x458E00 — half of whichever of two measurements is smaller.
-//
-// The settings pointer at +0x520 is re-read before every call, four times in
-// all, and the halving is the signed `CDQ; SUB EAX,EDX; SAR EAX,1` idiom.
-// ---------------------------------------------------------------------------
-struct Settings_00458E00
-{
-    // FUNCTION: GAMEMD 0x45EC90
-    int FUN_0045EC90();
-    // FUNCTION: GAMEMD 0x45ECA0
-    int FUN_0045ECA0(int which);
-};
-
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x458E00 -> BuildingClass slot 257 (byte-off 0x404).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_00458E00
-{
-    char               _pad000[0x520];
-    Settings_00458E00* Settings;   // +0x0520
-
-    // FUNCTION: GAMEMD 0x458E00
-    int FUN_00458E00();
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458E00, Settings) == 0x520);
 
 // ---------------------------------------------------------------------------
 // 0x473980 — index of the first table entry either of whose two names matches.

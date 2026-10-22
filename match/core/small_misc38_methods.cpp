@@ -162,27 +162,6 @@ void Obj_0043A670::FUN_0043A6B0(int first, int second)
     field_20 = second;
 }
 
-// FUNCTION: GAMEMD 0x452630
-//
-// Three independent refusals, each with its own `XOR AL,AL; POP ESI; RET`, so
-// three separate `return false` statements rather than one chain.
-bool BuildingClass_00452630::FUN_00452630()
-{
-    if (Subject == 0) {
-        return false;
-    }
-
-    if (!Settings->Enabled) {
-        return false;
-    }
-
-    if (vt_080()) {
-        return false;
-    }
-
-    return FUN_00701140();
-}
-
 // FUNCTION: GAMEMD 0x4739F0
 //
 // A constructor, so it hands `this` back in EAX. The three field writes land

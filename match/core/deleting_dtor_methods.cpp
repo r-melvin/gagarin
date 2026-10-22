@@ -55,30 +55,6 @@ void* AnimClass_00426500::FUN_00426590(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x459F20
-void* BuildingClass_00459F00::FUN_00459F20(unsigned int flags)
-{
-    FUN_0043BCF0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x465DC0
-void* BuildingTypeClass_00465D00b::FUN_00465DC0(unsigned int flags)
-{
-    FUN_0045E580(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x46B5C0
 void* Obj_0046B500::FUN_0046B5C0(unsigned int flags)
 {

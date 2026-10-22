@@ -1,5 +1,41 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,276 matched function
+rows**, **316 partial rows**, **5,592 manifest rows**, **1,099 manifest
+translation units**, and **1,109 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+The house/building module lands under `match/economy/house_building/`:
+BuildingClass, BuildingTypeClass, HouseClass and HouseTypeClass bodies. 119
+functions are new exact matches and 59 are new partials; 15 matched functions
+move here from older TUs (two of which, `damage_flags_methods` and
+`can_retaliate_methods`, are now empty and removed). Every exact row in the
+module passes raw bytes and strict relocation checks. Rules view members are
+named after the INI keys they are read from, and HouseTypeClass +0xB8 becomes
+`ArrayIndex2` (+0xB4, returned by slot 16, stays `ArrayIndex`).
+`HouseClass::Update` (0x4F8440) is held back until its callee signatures are
+confirmed, and the BuildingClass constructor (0x43B740) is blocked on the
+canonical TechnoClass. Across all project objects, sections change only by
+the new TUs and by the removal of the 15 migrated functions from their old TUs.
+
+The 5,276 matches represent 26.7% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **400,216
+bytes**, or 10.5% of 3,797,269 listed function bytes. The padding heuristic
+misses 315 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: /Gr default and identity corrections
+
 As of **2026-10-22**, the verified snapshot reports **5,157 matched function
 rows**, **257 partial rows**, **5,414 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -48,13 +84,6 @@ bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic
 misses 313 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: canonical vector templates
 

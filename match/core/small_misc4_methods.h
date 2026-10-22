@@ -62,31 +62,6 @@ struct Obj_004085E0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004085E0, unknown_14) == 0x14);
 
-// Zero-argument virtual at +0x400 returning bool.
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x458DB0 -> BuildingClass slot 171 (byte-off 0x2AC).
-// No other table in the image holds it, so the slot is declared on
-// BuildingClass rather than inherited. The METHOD name is still unknown; only the
-// class is proven, so the `FUN_<addr>` member name stays a placeholder.
-struct BuildingClass_00458DB0;
-typedef bool (__fastcall* Slot400)(BuildingClass_00458DB0*);
-#define SLOT_400(o) ((*(Slot400*)(*(char**)(o) + 0x400))(o))
-bool __fastcall FUN_00701120(BuildingClass_00458DB0* self);   // GAMEMD 0x701120
-
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
-// the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
-//   0x458DB0 -> BuildingClass slot 171 (byte-off 0x2AC).
-// That table is the only table in the image that holds it, so the slot is
-// declared on BuildingClass and not inherited from TechnoClass/ObjectClass above it.
-// The METHOD name is still unknown; only the class is proven, so the
-// `FUN_<addr>` member name stays as the transitional placeholder.
-struct BuildingClass_00458DB0
-{
-    // FUNCTION: GAMEMD 0x458DB0
-    bool FUN_00458DB0();
-};
-
 // CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
 // the raw `Obj_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
 //   0x459C00 -> BuildingClass slot 79 (byte-off 0x13C).
