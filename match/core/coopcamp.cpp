@@ -1,0 +1,188 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit coopcamp.cpp. The name is the source-file string at 0x81f370
+//   in retail gamemd.exe v1.001, passed by the assert at 0x49dc91 inside this object's
+//   code range (0x49b180-0x49f0df). Functions are in ascending retail address order.
+//
+// List<INIClass::INISection*> constructor. Retail 0x49E8E0 seats both
+// sentinel nodes (0x7E1B0C), the GenericList table (0x7E1B04), links the head
+// to the tail, then seats the derived table 0x7E1AFC (RTTI names it
+// List<INIClass::INISection*>). Ten callers construct INIClass objects.
+//
+//   Provenance note: own-binary-via-Ghidra. Direct retail RTTI confirms the non-const
+// char* specialization and its zero-offset dynamic base. All entry-origin
+// spans and both seven-slot address points are verified against the pinned PE.
+// The DynamicVectorClass deleting-dtor full span requires /GX disabled; other
+// methods are tested independently. Vtable weak defaults are conditional, not
+// final-link proof. The separate const-char* family is not described here.
+//
+//   Provenance note: own-binary-via-Ghidra. Direct retail RTTI names the two types
+// and confirms DynamicVectorClass<DynamicVectorClass<char*>*> derives from
+// VectorClass<DynamicVectorClass<char*>*> at offset zero. Entry-origin spans
+// and both seven-slot address points were checked against the pinned PE.
+// The dynamic deleting-dtor full span needs /GX disabled; the remaining
+// tested bodies are exact with /GX as well. Vtable weak defaults are conditional
+// slot evidence, not final-link proof. The capacity constructors replace
+// address-bound PodElem4 stand-ins; no complete pointee-layout or original-TU
+// claim is made.
+
+#include "../_layout/ini_class.h"
+
+// VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
+extern "C" void* GG_VTABLE_LISTOFINISECTION;
+
+// Bodies owned elsewhere (0x40E320, 0x52ACE0); repeated inline here so /Ob2
+// expands them into the derived constructor as retail does.
+inline GenericNode::GenericNode()
+{
+    NextNode = 0;
+    PrevNode = 0;
+    Vtable = &GG_VTABLE_GENERIC_NODE_SLOTS;
+}
+
+inline GenericList::GenericList()
+{
+    Vtable = &GG_VTABLE_GENERIC_LIST_SLOTS;
+    FirstNode.Link(&LastNode);
+}
+
+#include "trivial_tu057_methods.h"
+
+#include "vector_class_operations.h"
+
+template class DynamicVectorClass<char*>;
+
+// VTABLE: GAMEMD 0x007E5BC4 -- DynamicVectorClass<char*>.
+// VTABLE: GAMEMD 0x007E5C24 -- VectorClass<char*>.
+typedef VectorClass<char*> GgCharPtrVector;
+typedef DynamicVectorClass<char*> GgCharPtrDynamicVector;
+GG_STATIC_ASSERT(sizeof(char*) == 4);
+GG_STATIC_ASSERT(sizeof(GgCharPtrVector) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCharPtrVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCharPtrVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCharPtrVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCharPtrVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgCharPtrVector, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(sizeof(GgCharPtrDynamicVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, CapacityIncrement) == 0x14);
+
+#include "vector_class_operations.h"
+
+template class DynamicVectorClass<DynamicVectorClass<char*>*>;
+
+// VTABLE: GAMEMD 0x007E5BE4 -- DynamicVectorClass<DynamicVectorClass<char*>*>.
+// VTABLE: GAMEMD 0x007E5C04 -- VectorClass<DynamicVectorClass<char*>*>.
+typedef VectorClass<DynamicVectorClass<char*>*> GgNestedCharVector;
+typedef DynamicVectorClass<DynamicVectorClass<char*>*> GgNestedCharDynamicVector;
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<char*>*) == 4);
+GG_STATIC_ASSERT(sizeof(GgNestedCharVector) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgNestedCharVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgNestedCharVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgNestedCharVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgNestedCharVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgNestedCharVector, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(sizeof(GgNestedCharDynamicVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, unknown_0E) == 0x0E);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, CapacityIncrement) == 0x14);
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E5BB0
+extern const double DAT_007E5BB0;
+// GLOBAL: GAMEMD 0x89F5A0
+extern double DAT_0089F5A0;
+// GLOBAL: GAMEMD 0x89F658
+extern double DAT_0089F658;
+// GLOBAL: GAMEMD 0x89F660
+extern int DAT_0089F660;
+// GLOBAL: GAMEMD 0x89F664
+extern int DAT_0089F664;
+// GLOBAL: GAMEMD 0x89F668
+extern int DAT_0089F668;
+// GLOBAL: GAMEMD 0x89F670
+extern double DAT_0089F670;
+
+// FUNCTION: GAMEMD 0x49B1B0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0049B1B0()
+{
+    DAT_0089F670 = DAT_0089F5A0 / DAT_007E5BB0;
+}
+
+// FUNCTION: GAMEMD 0x49B1D0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0049B1D0()
+{
+    DAT_0089F658 = DAT_007E1718 / DAT_0089F670;
+}
+
+// FUNCTION: GAMEMD 0x49B350
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_0049B350()
+{
+    DAT_0089F668 = 0;
+    DAT_0089F660 = 0x80;
+    DAT_0089F664 = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x49B420
+// Tail-calls a method on a global object.
+void FUN_0049B420(int a1, int a2)
+{
+    FUN_0049E510(DAT_0089F518, a2);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x49E8E0
+template<> List<INIClass::INISection*>::List()
+{
+    Vtable = &GG_VTABLE_LISTOFINISECTION;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0049E950
+// FUNCTION: GAMEMD 0x0049E980
+// FUNCTION: GAMEMD 0x0049E9A0
+// FUNCTION: GAMEMD 0x0049EA30
+// FUNCTION: GAMEMD 0x0049EA70
+// FUNCTION: GAMEMD 0x0049EB20
+// FUNCTION: GAMEMD 0x0049EE10
+// FUNCTION: GAMEMD 0x0049EE60
+// FUNCTION: GAMEMD 0x0049EF10
+// FUNCTION: GAMEMD 0x0049EF40
+// FUNCTION: GAMEMD 0x0049EF80
+// FUNCTION: GAMEMD 0x0049EFA0
+template class VectorClass<char*>;
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0049E9B0
+// FUNCTION: GAMEMD 0x0049E9E0
+// FUNCTION: GAMEMD 0x0049EA00
+// FUNCTION: GAMEMD 0x0049EB50
+// FUNCTION: GAMEMD 0x0049EB90
+// FUNCTION: GAMEMD 0x0049EC40
+// FUNCTION: GAMEMD 0x0049EC70
+// FUNCTION: GAMEMD 0x0049ECB0
+// FUNCTION: GAMEMD 0x0049ECD0
+// FUNCTION: GAMEMD 0x0049ED30
+// FUNCTION: GAMEMD 0x0049EDE0
+// FUNCTION: GAMEMD 0x0049EFF0
+// FUNCTION: GAMEMD 0x0049F040
+// FUNCTION: GAMEMD 0x0049F090
+template class VectorClass<DynamicVectorClass<char*>*>;

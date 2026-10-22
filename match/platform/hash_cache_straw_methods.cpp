@@ -22,31 +22,3 @@ int HashStraw_004A20B0::FUN_006C98E0(int first, int second)
     return counter;
 }
 
-// FUNCTION: GAMEMD 0x4A2780
-int CacheStraw::FUN_006C98E0(int first, int second)
-{
-    int total = 0;
-
-    if (Buffer.Buffer != 0 && first != 0 && second > 0) {
-        while (second > 0) {
-            if (Length > 0) {
-                int tocopy = (Length < second) ? Length : second;
-                memmove((void*)first, (char*)Buffer.Buffer + Index, tocopy);
-                second -= tocopy;
-                Index += tocopy;
-                total += tocopy;
-                Length -= tocopy;
-                first += tocopy;
-            }
-            if (second == 0) {
-                break;
-            }
-            Length = Straw::FUN_006C98E0((int)Buffer.Buffer, Buffer.Size);
-            Index = 0;
-            if (Length == 0) {
-                break;
-            }
-        }
-    }
-    return total;
-}

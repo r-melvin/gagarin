@@ -28,10 +28,6 @@ bool __cdecl FUN_004A3BF0()
     return true;
 }
 
-// FUNCTION: GAMEMD 0x4AAD20
-void __stdcall FUN_004AAD20(int)
-{
-}
 
 // FUNCTION: GAMEMD 0x4FF540
 void __stdcall FUN_004FF540(int)

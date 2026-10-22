@@ -131,55 +131,6 @@ int __fastcall FUN_0048BA80(Obj_0048BA80* self)
     return self->unknown_1C;
 }
 
-// FUNCTION: GAMEMD 0x0048DB80
-// Index of `name` in the five-entry table at 0x7E1B60, or -1.
-int __fastcall FUN_0048DB80(const char* name)
-{
-    if (name != NULL) {
-        for (int i = 0; i < 5; i++) {
-            if (_stricmp(DAT_007E1B60[i], name) == 0) {
-                return i;
-            }
-        }
-    }
-    return -1;
-}
-
-// FUNCTION: GAMEMD 0x0048DE70
-// Index of `name` in the nineteen-entry table at 0x7E523C, or 0.
-int __fastcall FUN_0048DE70(const char* name)
-{
-    if (name != NULL) {
-        for (int i = 0; i < 19; i++) {
-            if (_stricmp(name, DAT_007E523C[i]) == 0) {
-                return i;
-            }
-        }
-    }
-    return 0;
-}
-
-// FUNCTION: GAMEMD 0x0048DEB0
-// One-bit mask for the index 0x5117D0 finds for `name`, or 0.
-int __fastcall FUN_0048DEB0(const char* name)
-{
-    int mask = 0;
-    int index = FUN_005117D0(name);
-    if (index != -1) {
-        mask = 1 << index;
-    }
-    return mask;
-}
-
-// FUNCTION: GAMEMD 0x0048DFD0
-// Name for one of twelve values, or the string at 0x817474.
-const char* __fastcall FUN_0048DFD0(unsigned int value)
-{
-    if (value < 12) {
-        return DAT_0081DA28[value];
-    }
-    return DAT_00817474;
-}
 
 struct Obj_004A1D30
 {

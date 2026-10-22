@@ -389,7 +389,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/slot_grid_find_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431170",
   "sym": "?FUN_00431170@Grid_00431170@@QAEPAUEntry_00431170@@H@Z",
   "len": "0x4c",
@@ -4658,7 +4658,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/ctor_431b20_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431b20",
   "sym": "?FUN_00431B20@Obj_00431B20@@QAEPAU1@XZ",
   "len": "0x5f",
@@ -6018,7 +6018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49ECD0",
   "sym": "??0?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@QAE@HPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x5d",
@@ -6477,7 +6477,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x0048ded0",
   "sym": "?FUN_0048DED0@@YIXXZ",
   "len": "0x1",
@@ -6495,7 +6495,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004b69d0",
   "sym": "?FUN_004B69D0@@YIXXZ",
   "len": "0x1",
@@ -6864,7 +6864,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/free_and_compare_methods.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410A40",
   "sym": "?FUN_00410A40@Obj_00410A00@@QBE_NPBD@Z",
   "len": "0x19",
@@ -7845,7 +7845,7 @@
   "pct": 96.5
  },
  {
-  "tu": "match/core/house_index_lookup_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46f810",
   "sym": "?FUN_0046F810@@YIHH@Z",
   "len": "0x6a",
@@ -7854,7 +7854,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/house_index_lookup_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46f880",
   "sym": "?FUN_0046F880@@YIHH@Z",
   "len": "0x6a",
@@ -7998,7 +7998,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/ini_read_names_methods.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410b90",
   "sym": "?FUN_00410B90@Obj_00410B90@@QAE_NPAUCCINI_00410B90@@@Z",
   "len": "0x47",
@@ -8664,7 +8664,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AAD20",
   "sym": "?FUN_004AAD20@@YGXH@Z",
   "len": "0x3",
@@ -10689,7 +10689,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc14_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431060",
   "sym": "?FUN_00431060@Obj_00431060@@QAEXXZ",
   "len": "0x2a",
@@ -12040,7 +12040,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc5_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46D330",
   "sym": "?FUN_0046D330@Obj_0046D330@@QAEPAU1@XZ",
   "len": "0x1e",
@@ -12166,7 +12166,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/small_misc7_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x470C00",
   "sym": "?FUN_00470C00@Obj_00470C00@@QAEPAU1@XZ",
   "len": "0x21",
@@ -12202,7 +12202,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/abstract_type_class_slots.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410BE0",
   "sym": "?vf_13@AbstractTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x34",
@@ -13111,7 +13111,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_type_class_getbytype_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DCD0",
   "sym": "?GetByTypeAndIndex@TechnoTypeClass@@SIPAV1@W4AbstractType@@H@Z",
   "len": "0x7c",
@@ -13147,7 +13147,7 @@
   "pct": 12.5
  },
  {
-  "tu": "match/core/theater_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DBE0",
   "sym": "?FindIndex@Theater@@SIHPBD@Z",
   "len": "0x33",
@@ -13507,7 +13507,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unsorted_callback_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48D080",
   "sym": "?Unsorted_CallBack@@YAXXZ",
   "len": "0x143",
@@ -13741,7 +13741,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E950",
   "sym": "?Clear@?$DynamicVectorClass@PAD@@UAEXXZ",
   "len": "0x2a",
@@ -13750,7 +13750,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E9B0",
   "sym": "?Clear@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEXXZ",
   "len": "0x2a",
@@ -15217,7 +15217,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49F090",
   "sym": "??0?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@QAE@HPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x4a",
@@ -15721,7 +15721,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EE10",
   "sym": "??_G?$DynamicVectorClass@PAD@@UAEPAXI@Z",
   "len": "0x49",
@@ -15730,7 +15730,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EFA0",
   "sym": "??_G?$VectorClass@PAD@@UAEPAXI@Z",
   "len": "0x49",
@@ -15739,7 +15739,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EFF0",
   "sym": "??_G?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15748,7 +15748,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49F040",
   "sym": "??_G?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -19132,7 +19132,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EC40",
   "sym": "?Clear@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAEXXZ",
   "len": "0x27",
@@ -19141,7 +19141,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EF10",
   "sym": "?Clear@?$VectorClass@PAD@@UAEXXZ",
   "len": "0x27",
@@ -20824,7 +20824,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EA70",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAD@@UAE_NHPAPAD@Z",
   "len": "0xb0",
@@ -20833,7 +20833,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49ED30",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UAE_NHPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0xb0",
@@ -24037,7 +24037,7 @@
   "pct": 96.9
  },
  {
-  "tu": "match/map/map_class_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DC90",
   "sym": "?UnselectAll@MapClass@@SIXXZ",
   "len": "0x32",
@@ -24046,7 +24046,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DF80",
   "sym": "?GetLandTypeFromName@MapClass@@SIHPBD@Z",
   "len": "0x4B",
@@ -24109,7 +24109,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_next_object_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AA2B0",
   "sym": "?NextObject@Map_004AA2B0@@QAEPAUObj_004AA2B0@@PAU2@@Z",
   "len": "0xcb",
@@ -24280,7 +24280,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_waypoint_mode_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC700",
   "sym": "?SetWaypointMode@Map_004AC700@@QAEXH_N@Z",
   "len": "0x112",
@@ -26218,7 +26218,7 @@
   "pct": 9.1
  },
  {
-  "tu": "match/network/beacon_class_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x4308B0",
   "sym": "?VisibleToPlayer@BeaconClass@@QBE_NXZ",
   "len": "0x5E",
@@ -26227,7 +26227,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/beacon_manager_class.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430980",
   "sym": "?Reset@BeaconManagerClass@@QAEXXZ",
   "len": "0x43",
@@ -26236,7 +26236,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/beacon_manager_class.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430F30",
   "sym": "?CanPlaceBeacon@BeaconManagerClass@@QAE_NH@Z",
   "len": "0x24",
@@ -26245,7 +26245,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/beacon_manager_class.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431410",
   "sym": "?DeleteAllBeacons@BeaconManagerClass@@QAEXH@Z",
   "len": "0x38",
@@ -26254,7 +26254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/beacon_manager_class_art_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x4309D0",
   "sym": "?LoadArt@BeaconManager_004309D0@@QAEXXZ",
   "len": "0xeb",
@@ -26263,7 +26263,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/beacon_manager_class_draw_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430AC0",
   "sym": "?Draw@BeaconManager_00430AC0@@QAEXPAUSurface_00430AC0@@URect_00430AC0@@@Z",
   "len": "0xd4",
@@ -27066,7 +27066,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_open_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47AAB0",
   "sym": "?Open@CDFileClass@@UAE_NI@Z",
   "len": "0xD",
@@ -29028,7 +29028,7 @@
   "pct": 28.0
  },
  {
-  "tu": "match/ui/dialog_enable_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46FB50",
   "sym": "?FUN_0046FB50@@YIXPAUHWND__@@@Z",
   "len": "0x74",
@@ -29064,7 +29064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/display_class_active_foundation_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8BF0",
   "sym": "?SetActiveFoundation@Display_004A8BF0@@QAEXPAUFoundation_004A8BF0@@@Z",
   "len": "0x141",
@@ -29091,7 +29091,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/format_duration_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46D360",
   "sym": "?FUN_0046D360@@YIXPAGH@Z",
   "len": "0x98",
@@ -29100,7 +29100,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/format_duration_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x470C90",
   "sym": "?FUN_00470C90@@YIXPAGH@Z",
   "len": "0x98",
@@ -40640,7 +40640,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cd_callback_00473ab0.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x4790E0",
   "sym": "?FUN_004790E0@CD_004790E0@@UAE_NH@Z",
   "len": "0x2C",
@@ -40721,7 +40721,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cd_global_state_update_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47ADA0",
   "sym": "?FUN_0047ADA0@@YIXI@Z",
   "len": "0x11",
@@ -40793,7 +40793,7 @@
   "name": "DynamicVectorClass<TeamClass*>::FindItemIndex"
  },
  {
-  "tu": "match/core/cd_global_state_update_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47aac0",
   "len": "0x43",
   "sym": "?FUN_0047AAC0@@YAHXZ",
@@ -40802,7 +40802,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cd_global_state_update_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47ad50",
   "len": "0x45",
   "sym": "?FUN_0047AD50@@YIXPAD@Z",
@@ -40820,7 +40820,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cd_global_state_update_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47ADC0",
   "len": "0x42",
   "sym": "?FUN_0047ADC0@@YAXXZ",
@@ -40991,7 +40991,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E9E0",
   "sym": "?Slot5@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x1b",
@@ -41000,7 +41000,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EA00",
   "sym": "?Slot6@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEPAV?$DynamicVectorClass@PAD@@H@Z",
   "len": "0x0d",
@@ -41009,7 +41009,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EB50",
   "sym": "??8?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41018,7 +41018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EB90",
   "sym": "?SetCapacity@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UAE_NHPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0xae",
@@ -41027,7 +41027,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EC70",
   "sym": "?FindItemIndex@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x33",
@@ -41036,7 +41036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49ECB0",
   "sym": "?Slot5@?$VectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHPAPAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x1b",
@@ -41045,7 +41045,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nested_char_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EDE0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@UBEHABQAV?$DynamicVectorClass@PAD@@@Z",
   "len": "0x26",
@@ -41054,7 +41054,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E980",
   "sym": "?Slot5@?$DynamicVectorClass@PAD@@UBEHPAPAD@Z",
   "len": "0x1b",
@@ -41063,7 +41063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E9A0",
   "sym": "?Slot6@?$VectorClass@PAD@@UBEPADH@Z",
   "len": "0x0d",
@@ -41072,7 +41072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EA30",
   "sym": "??8?$VectorClass@PAD@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41081,7 +41081,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EB20",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAD@@UBEHABQAD@Z",
   "len": "0x26",
@@ -41090,7 +41090,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EE60",
   "sym": "?SetCapacity@?$VectorClass@PAD@@UAE_NHPAPAD@Z",
   "len": "0xae",
@@ -41099,7 +41099,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EF40",
   "sym": "?FindItemIndex@?$VectorClass@PAD@@UBEHABQAD@Z",
   "len": "0x33",
@@ -41108,7 +41108,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_charptr_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49EF80",
   "sym": "?Slot5@?$VectorClass@PAD@@UBEHPAPAD@Z",
   "len": "0x1b",
@@ -45711,7 +45711,7 @@
   "note": "Readable partial; no byte-exact or semantic-equivalence claim. Diagnostic remeasured with corrected decoder and validated full retail extent."
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BE60",
   "sym": "??0ConnectionClass@@QAE@HHHGHHHH@Z",
   "len": "0x76",
@@ -45721,7 +45721,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BEE0",
   "sym": "??1ConnectionClass@@UAE@XZ",
   "len": "0x24",
@@ -45731,7 +45731,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BF10",
   "sym": "?Init@ConnectionClass@@UAEXXZ",
   "len": "0x2E",
@@ -45741,7 +45741,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BF40",
   "sym": "?vf_2@ConnectionClass@@UAEHPAXHHE@Z",
   "len": "0xF2",
@@ -45751,7 +45751,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C040",
   "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUConnPacketHeader@@H@Z",
   "len": "0x2D5",
@@ -45762,7 +45762,7 @@
   "note": "Frozen capped source; positional diagnostic only. Retail full extent independently confirmed; not a semantic-equivalence claim."
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C320",
   "sym": "?vf_4@ConnectionClass@@UAEHPAXPAH@Z",
   "len": "0x90",
@@ -45772,7 +45772,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C3B0",
   "sym": "?Service@ConnectionClass@@UAEHXZ",
   "len": "0x22",
@@ -45782,7 +45782,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C3E0",
   "sym": "?Service_Send_Queue@ConnectionClass@@UAEHXZ",
   "len": "0x1A4",
@@ -45792,7 +45792,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C590",
   "sym": "?vf_6@ConnectionClass@@UAEHXZ",
   "len": "0x3",
@@ -45802,7 +45802,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C5A0",
   "sym": "?vf_8@ConnectionClass@@UAEHXZ",
   "len": "0x51",
@@ -45812,7 +45812,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/transport/conn_connection.cpp",
+  "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48C650",
   "sym": "??_GConnectionClass@@UAEPAXI@Z",
   "len": "0x38",
@@ -50524,7 +50524,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/bench_timer_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431920",
   "sym": "?Reset@BenchTimer@@QAEXXZ",
   "len": "0xc",
@@ -50533,7 +50533,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/bench_timer_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x431A10",
   "sym": "?Average@BenchTimer@@QAEIXZ",
   "len": "0x15",
@@ -50569,7 +50569,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/hash_cache_straw_methods.cpp",
+  "tu": "match/platform/Credits.cpp",
   "addr": "0x4A2780",
   "sym": "?FUN_006C98E0@CacheStraw@@UAEHHH@Z",
   "len": "0x93",
@@ -51739,7 +51739,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_ddtors.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x471500",
   "sym": "?DeletingDtor@CampaignScoreClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -51748,7 +51748,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/score_ddtors.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x471520",
   "sym": "?DeletingDtor@CampaignEndScoreClass@@UAEPAXI@Z",
   "len": "0x20",
@@ -57508,7 +57508,7 @@
   "pct": 29.0
  },
  {
-  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x478BA0",
   "sym": "?Update@CCToolTip@@UAE_NAAUToolTipManagerData@@@Z",
   "len": "0x20E",
@@ -57517,7 +57517,7 @@
   "pct": 99.0
  },
  {
-  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x478DB0",
   "sym": "?MarkToRedraw@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x5F",
@@ -57526,7 +57526,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x478E10",
   "sym": "?Draw@CCToolTip@@UAEX_N@Z",
   "len": "0x18",
@@ -57535,7 +57535,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x478E30",
   "sym": "?DrawText@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
   "len": "0x21B",
@@ -57544,7 +57544,7 @@
   "pct": 2.9
  },
  {
-  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479050",
   "sym": "?GetToolTipText@CCToolTip@@UAEPAGI@Z",
   "len": "0x26",
@@ -57670,7 +57670,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8850",
   "sym": "?vf_05@DisplayClass@@UAEXXZ",
   "len": "0x65",
@@ -57679,7 +57679,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A88C0",
   "sym": "?vf_07@DisplayClass@@UAEXXZ",
   "len": "0x62",
@@ -57688,7 +57688,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8930",
   "sym": "?vf_08@DisplayClass@@UAEXXZ",
   "len": "0x29",
@@ -57697,7 +57697,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8960",
   "sym": "?vf_42@DisplayClass@@UAEXPBURectangleStruct@@@Z",
   "len": "0x284",
@@ -57706,7 +57706,7 @@
   "pct": 92.0
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9700",
   "sym": "?vf_10@DisplayClass@@UAEXPAHPAUPoint2D@@@Z",
   "len": "0x12",
@@ -57715,7 +57715,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9840",
   "sym": "?vf_41@DisplayClass@@UAE_NHPAH_N@Z",
   "len": "0x4E",
@@ -57724,7 +57724,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9890",
   "sym": "?vf_36@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
   "len": "0x40C",
@@ -57733,7 +57733,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9CA0",
   "sym": "?vf_37@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@_N@Z",
   "len": "0x129",
@@ -57742,7 +57742,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A9DD0",
   "sym": "?vf_38@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
   "len": "0x276",
@@ -57751,7 +57751,7 @@
   "pct": 44.6
  },
  {
-  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AA050",
   "sym": "?vf_39@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
   "len": "0x23D",
@@ -57760,7 +57760,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_command.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AAD30",
   "sym": "?vf_49@DisplayClass@@UAEXH@Z",
   "len": "0x157",
@@ -57769,7 +57769,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_command.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AAE90",
   "sym": "?vf_46@DisplayClass@@UAEXPAUCellStruct@@HPAVDisplayCmdAbstract@@H_N@Z",
   "len": "0x909",
@@ -57778,7 +57778,7 @@
   "pct": 16.2
  },
  {
-  "tu": "match/ui/input_controls/display_command.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AB9B0",
   "sym": "?vf_48@DisplayClass@@UAEXHPAUCellStruct@@PAVDisplayCmdObject@@H_N@Z",
   "len": "0x8FA",
@@ -57787,7 +57787,7 @@
   "pct": 44.2
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC310",
   "sym": "?vf_45@DisplayClass@@UAEXPBUPoint2D@@@Z",
   "len": "0x61",
@@ -57796,7 +57796,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AC380",
   "sym": "?vf_47@DisplayClass@@UAEXPBUPoint2D@@@Z",
   "len": "0x167",
@@ -57805,7 +57805,7 @@
   "pct": 93.1
  },
  {
-  "tu": "match/ui/input_controls/display_scenario.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4ACE70",
   "sym": "?vf_32@DisplayClass@@UAEXPAUDisplayScIni@@@Z",
   "len": "0x964",
@@ -57814,7 +57814,7 @@
   "pct": 30.0
  },
  {
-  "tu": "match/ui/input_controls/display_scenario.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE4F0",
   "sym": "?vf_33@DisplayClass@@UAEPBGH@Z",
   "len": "0x1B5",
@@ -57823,7 +57823,7 @@
   "pct": 14.3
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE6B0",
   "sym": "?vf_34@DisplayClass@@UAEXXZ",
   "len": "0x1B",
@@ -57832,7 +57832,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE6F0",
   "sym": "?vf_30@DisplayClass@@UAEJPAUIStream@@@Z",
   "len": "0x23",
@@ -57841,7 +57841,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AE720",
   "sym": "?vf_31@DisplayClass@@UAEJPAUIStream@@@Z",
   "len": "0x27",
@@ -57850,7 +57850,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/display_class.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AEAD0",
   "sym": "?vf_35@DisplayClass@@UAEXXZ",
   "len": "0x34",
@@ -59344,7 +59344,7 @@
   "pct": 7.3
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479740",
   "sym": "?FUN_00479740@CDDriveControl@@QAEXD@Z",
   "len": "0x1B5",
@@ -59353,7 +59353,7 @@
   "pct": 9.0
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479BA0",
   "sym": "?FUN_00479ba0@CDDriveControl@@QAE_ND@Z",
   "len": "0x1BE",
@@ -59362,7 +59362,7 @@
   "pct": 56.6
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479D60",
   "sym": "?FUN_00479d60@CDDriveControl@@QAE_ND@Z",
   "len": "0x181",
@@ -59371,7 +59371,7 @@
   "pct": 70.4
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479EF0",
   "sym": "?FUN_00479ef0@CDDriveControl@@QAE_ND@Z",
   "len": "0x181",
@@ -59380,7 +59380,7 @@
   "pct": 70.4
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47A3F0",
   "sym": "?FUN_0047a3f0@CDDriveControl@@QAE_NPAXD@Z",
   "len": "0x16E",
@@ -59389,7 +59389,7 @@
   "pct": 81.2
  },
  {
-  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47A6F0",
   "sym": "?FUN_0047a6f0@CDDriveControl@@SG_NPAV1@PAXEEF@Z",
   "len": "0x15A",
@@ -59398,7 +59398,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/cd_find_file_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x47AF70",
   "sym": "?FUN_0047af70@@YI_NPAD@Z",
   "len": "0x14B",
@@ -59407,7 +59407,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/list_inisection_ctor_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49E8E0",
   "sym": "??0?$List@PAUINISection@INIClass@@@@QAE@XZ",
   "len": "0x6F",
@@ -60694,7 +60694,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DB80",
   "sym": "?FUN_0048DB80@@YIHPBD@Z",
   "len": "0x39",
@@ -60703,7 +60703,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DE70",
   "sym": "?FUN_0048DE70@@YIHPBD@Z",
   "len": "0x38",
@@ -60712,7 +60712,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DEB0",
   "sym": "?FUN_0048DEB0@@YIHPBD@Z",
   "len": "0x1c",
@@ -60721,7 +60721,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_a.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DFD0",
   "sym": "?FUN_0048DFD0@@YIPBDI@Z",
   "len": "0x13",
@@ -79790,7 +79790,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu014_methods.cpp",
+  "tu": "match/core/AbsType.cpp",
   "addr": "0x410C20",
   "sym": "?FUN_00410C20@Obj_00410C20@@QAEXH@Z",
   "len": "0x3",
@@ -80186,7 +80186,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu029_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430580",
   "sym": "?FUN_00430580@@YGXHHHHHHH@Z",
   "len": "0x3",
@@ -80195,7 +80195,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu029_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430600",
   "sym": "?FUN_00430600@@YAXXZ",
   "len": "0x1",
@@ -80204,7 +80204,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu029_methods.cpp",
+  "tu": "match/network/Beacon.cpp",
   "addr": "0x430610",
   "sym": "?FUN_00430610@Obj_00430610@@QAEXXZ",
   "len": "0x5",
@@ -80429,7 +80429,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu043_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46D350",
   "sym": "?FUN_0046D350@Obj_0046D350@@QAEXXZ",
   "len": "0x7",
@@ -80438,7 +80438,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu043_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46D480",
   "sym": "?FUN_0046D480@@YIXPAUObj_0046D480@@H@Z",
   "len": "0x7",
@@ -80447,7 +80447,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu043_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x46D490",
   "sym": "?FUN_0046D490@Obj_0046D490@@QBEEXZ",
   "len": "0x7",
@@ -80456,7 +80456,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu043_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x470C30",
   "sym": "?FUN_00470C30@Obj_00470C30@@QAEXXZ",
   "len": "0x7",
@@ -80465,7 +80465,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu043_methods.cpp",
+  "tu": "match/core/CampScor.cpp",
   "addr": "0x471400",
   "sym": "?FUN_00471400@@YAXXZ",
   "len": "0x20",
@@ -80501,7 +80501,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu049_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479700",
   "sym": "?FUN_00479700@@YAXXZ",
   "len": "0x1",
@@ -80510,7 +80510,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu049_methods.cpp",
+  "tu": "match/core/CD.cpp",
   "addr": "0x479730",
   "sym": "?FUN_00479730@@YAXXZ",
   "len": "0x1",
@@ -80645,7 +80645,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu055_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48C8A0",
   "sym": "?FUN_0048C8A0@@YAXXZ",
   "len": "0x1",
@@ -80654,7 +80654,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu055_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48D1D0",
   "sym": "?FUN_0048D1D0@@YI_NPAUObj_0048D1D0@@H@Z",
   "len": "0x8",
@@ -80663,7 +80663,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu055_methods.cpp",
+  "tu": "match/core/Conquer.cpp",
   "addr": "0x48DB70",
   "sym": "?FUN_0048DB70@@YAXXZ",
   "len": "0x1",
@@ -80681,7 +80681,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu057_methods.cpp",
+  "tu": "match/core/coopcamp.cpp",
   "addr": "0x49B420",
   "sym": "?FUN_0049B420@@YIXHH@Z",
   "len": "0xa",
@@ -80780,7 +80780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8D40",
   "sym": "?FUN_004A8D40@@YAXXZ",
   "len": "0x1",
@@ -80789,7 +80789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4A8EA0",
   "sym": "?FUN_004A8EA0@@YAXXZ",
   "len": "0x1",
@@ -80798,7 +80798,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AEB30",
   "sym": "?FUN_004AEB30@Obj_004AEB30@@QAEXH@Z",
   "len": "0x18",
@@ -80807,7 +80807,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AEBA0",
   "sym": "?FUN_004AEBA0@Obj_004AEBA0@@QBEHXZ",
   "len": "0x3",
@@ -80816,7 +80816,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AEBD0",
   "sym": "?vf_16@GScreenClass@@UAEX_N@Z",
   "len": "0x3",
@@ -80825,7 +80825,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu067_methods.cpp",
+  "tu": "match/ui/input_controls/Display.cpp",
   "addr": "0x4AEBE0",
   "sym": "?vf_26@MapClass@@UAE_NXZ",
   "len": "0x3",
@@ -86410,6 +86410,249 @@
   "sym": "?FUN_007C3950@@YIXPAUObj_007C3950@@H@Z",
   "len": "0x7",
   "name": "FUN_007C3950",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/AbsType.cpp",
+  "addr": "0x410640",
+  "sym": "?FUN_00410640@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00410640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/AbsType.cpp",
+  "addr": "0x410660",
+  "sym": "?FUN_00410660@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00410660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/AbsType.cpp",
+  "addr": "0x4107E0",
+  "sym": "?FUN_004107E0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004107E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Beacon.cpp",
+  "addr": "0x42FFD0",
+  "sym": "?FUN_0042FFD0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0042FFD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Beacon.cpp",
+  "addr": "0x42FFF0",
+  "sym": "?FUN_0042FFF0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0042FFF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Beacon.cpp",
+  "addr": "0x430170",
+  "sym": "?FUN_00430170@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00430170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/CampScor.cpp",
+  "addr": "0x46D150",
+  "sym": "?FUN_0046D150@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0046D150",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/CampScor.cpp",
+  "addr": "0x46D170",
+  "sym": "?FUN_0046D170@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0046D170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/CampScor.cpp",
+  "addr": "0x46D2F0",
+  "sym": "?FUN_0046D2F0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0046D2F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/Connect.cpp",
+  "addr": "0x48BCA0",
+  "sym": "?FUN_0048BCA0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0048BCA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/Connect.cpp",
+  "addr": "0x48BCC0",
+  "sym": "?FUN_0048BCC0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0048BCC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/transport/Connect.cpp",
+  "addr": "0x48BE40",
+  "sym": "?FUN_0048BE40@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0048BE40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Conquer.cpp",
+  "addr": "0x48C6E0",
+  "sym": "?FUN_0048C6E0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0048C6E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Conquer.cpp",
+  "addr": "0x48C700",
+  "sym": "?FUN_0048C700@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0048C700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Conquer.cpp",
+  "addr": "0x48C880",
+  "sym": "?FUN_0048C880@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0048C880",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/coopcamp.cpp",
+  "addr": "0x49B1B0",
+  "sym": "?FUN_0049B1B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0049B1B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/coopcamp.cpp",
+  "addr": "0x49B1D0",
+  "sym": "?FUN_0049B1D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0049B1D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/coopcamp.cpp",
+  "addr": "0x49B350",
+  "sym": "?FUN_0049B350@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0049B350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/Credits.cpp",
+  "addr": "0x4A2190",
+  "sym": "?FUN_004A2190@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004A2190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/Credits.cpp",
+  "addr": "0x4A21B0",
+  "sym": "?FUN_004A21B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004A21B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/Credits.cpp",
+  "addr": "0x4A2330",
+  "sym": "?FUN_004A2330@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004A2330",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8470",
+  "sym": "?FUN_004A8470@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004A8470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8490",
+  "sym": "?FUN_004A8490@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004A8490",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4A8610",
+  "sym": "?FUN_004A8610@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004A8610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Dropship.cpp",
+  "addr": "0x4B67D0",
+  "sym": "?FUN_004B67D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004B67D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Dropship.cpp",
+  "addr": "0x4B67F0",
+  "sym": "?FUN_004B67F0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_004B67F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/Dropship.cpp",
+  "addr": "0x4B6970",
+  "sym": "?FUN_004B6970@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_004B6970",
   "status": "matched",
   "pct": 100
  }

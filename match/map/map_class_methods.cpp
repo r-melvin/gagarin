@@ -33,44 +33,12 @@ extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 // "remove from CurrentObjects" virtual driving the drain loop.
 typedef void (__fastcall* UnselectFn)(void* self);
 
-// FUNCTION: GAMEMD 0x48DC90  (__fastcall)
-// Drain CurrentObjects by repeatedly invoking object[0]'s vtable[+0x150] virtual
-// (each call de-registers itself, shrinking Count), then reset the drag latch and
-// clear the selection grid.
-void __fastcall MapClass::UnselectAll()
-{
-    while (CurrentObjects.Count != 0)
-    {
-        void* self = ((void**)CurrentObjects.Items)[0];
-        (*(UnselectFn*)(*(char**)self + 0x150))(self);
-    }
-    sub_731D00(0);
-    sub_431060(&DAT_0089C3B0);
-}
 
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:
 // "Clear","Road","Water","Rock","Wall","Tiberium",...). Loop bound is the
 // one-past pointer 0x0081DA58.
 extern const char* const LandTypeName[12];
 
-// FUNCTION: GAMEMD 0x48DF80  (__fastcall)
-// Map a land-type name to its index; "<none>" or NULL => -1; unknown => -1.
-int __fastcall MapClass::GetLandTypeFromName(const char* name)
-{
-    if (strcmpi("<none>", name) != 0 && name != 0)
-    {
-        int i = 0;
-        const char* const* p = LandTypeName;
-        while ((int)p < (int)&LandTypeName[12])
-        {
-            if (strcmpi(*p, name) == 0)
-                return i;
-            ++p;
-            ++i;
-        }
-    }
-    return -1;
-}
 
 // FUNCTION: GAMEMD 0x5865E0  MapClass::IsLocationFogged (__thiscall)
 // Retail stub: always false. The argument is accepted and ignored (RET 0x4).

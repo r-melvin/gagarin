@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Original translation unit Connect.CPP. The name is the source-file string at 0x81d42c
+//   in retail gamemd.exe v1.001, passed by the assert at 0x48c123 inside this object's
+//   code range (0x48bc70-0x48c6af). Functions are in ascending retail address order.
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+
 #include <string.h>
 #include "conn_types.h"
 
@@ -21,6 +25,51 @@
 // STRING: GAMEMD 0x81D448
 // STRING: GAMEMD 0x81D490
 // STRING: GAMEMD 0x81D4AC
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E51A0
+extern const double DAT_007E51A0;
+// GLOBAL: GAMEMD 0x89E8B8
+extern double DAT_0089E8B8;
+// GLOBAL: GAMEMD 0x89E8F0
+extern double DAT_0089E8F0;
+// GLOBAL: GAMEMD 0x89E8F8
+extern int DAT_0089E8F8;
+// GLOBAL: GAMEMD 0x89E8FC
+extern int DAT_0089E8FC;
+// GLOBAL: GAMEMD 0x89E900
+extern int DAT_0089E900;
+// GLOBAL: GAMEMD 0x89E908
+extern double DAT_0089E908;
+
+// FUNCTION: GAMEMD 0x48BCA0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0048BCA0()
+{
+    DAT_0089E908 = DAT_0089E8B8 / DAT_007E51A0;
+}
+
+// FUNCTION: GAMEMD 0x48BCC0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0048BCC0()
+{
+    DAT_0089E8F0 = DAT_007E1718 / DAT_0089E908;
+}
+
+// FUNCTION: GAMEMD 0x48BE40
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_0048BE40()
+{
+    DAT_0089E900 = 0;
+    DAT_0089E8F8 = 0x80;
+    DAT_0089E8FC = 0x80;
+}
 
 // FUNCTION: GAMEMD 0x48BE60
 ConnectionClass::ConnectionClass(int sendSlots, int receiveSlots, int maxlen,
@@ -195,6 +244,7 @@ send_ack:
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48C320
 int ConnectionClass::vf_4(void* buf, int* buflen)
 {
@@ -224,6 +274,7 @@ found:
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48C3B0
 int ConnectionClass::Service()
 {
@@ -233,6 +284,7 @@ int ConnectionClass::Service()
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48C3E0
 int ConnectionClass::Service_Send_Queue()
 {
@@ -290,12 +342,14 @@ int ConnectionClass::Service_Send_Queue()
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48C590
 int ConnectionClass::vf_6()
 {
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x48C5A0
 int ConnectionClass::vf_8()
 {
@@ -312,4 +366,5 @@ int ConnectionClass::vf_8()
     return 1;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // SYNTHETIC: GAMEMD 0x48C650  ConnectionClass::`scalar deleting destructor' (inlines ~ConnectionClass)

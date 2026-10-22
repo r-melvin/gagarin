@@ -24,24 +24,3 @@ void __stdcall FUN_004068F0(char* base, int stride, int count, ElemFn fn)
     }
 }
 
-// FUNCTION: GAMEMD 0x431060
-// Clear bit 1 on every live slot - eight groups of three, walked as one
-// pointer. The whole sweep is skipped unless the field at +0x60 is set.
-void Obj_00431060::FUN_00431060()
-{
-    if (unknown_60 == 0) {
-        return;
-    }
-
-    Flagged_00431060** slot = Slots;
-
-    for (int group = 8; group != 0; group--) {
-        for (int i = 3; i != 0; i--) {
-            if (*slot) {
-                (*slot)->at0C &= ~2;
-            }
-
-            slot++;
-        }
-    }
-}

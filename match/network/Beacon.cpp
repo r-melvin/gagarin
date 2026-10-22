@@ -1,0 +1,372 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   Original translation unit Beacon.CPP. The name is the source-file string at 0x818ad8
+//   in retail gamemd.exe v1.001, passed by the assert at 0x430d11 inside this object's
+//   code range (0x42ffa0-0x431b7f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// A small timing accumulator. Its neighbour at 0x4319D0 stores a start stamp
+// at +0x00/+0x04 and adds an elapsed span into +0x08 while bumping +0x0C and
+// +0x10; the two leaves below read and clear exactly those three dwords.
+// The class name and member names are descriptive; no allocation site was
+// found, so the object size is not asserted.
+//
+//   Names cross-checked against YRpp.
+//
+//   cross-checked against YRpp.
+
+#include "../ai/slot_grid_find_methods.h"
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+class BenchTimer
+{
+public:
+    void Reset();
+    unsigned int Average();
+
+    unsigned int StartLo;   // +0x00
+    unsigned int StartHi;   // +0x04
+    unsigned int Total;     // +0x08
+    unsigned int Count;     // +0x0C
+    unsigned int Samples;   // +0x10
+};
+GG_STATIC_ASSERT(offsetof(BenchTimer, StartLo) == 0x00);
+GG_STATIC_ASSERT(offsetof(BenchTimer, StartHi) == 0x04);
+GG_STATIC_ASSERT(offsetof(BenchTimer, Total)   == 0x08);
+GG_STATIC_ASSERT(offsetof(BenchTimer, Count)   == 0x0C);
+GG_STATIC_ASSERT(offsetof(BenchTimer, Samples) == 0x10);
+
+#include "../core/ctor_431b20_methods.h"
+
+#include "../core/small_misc14_methods.h"
+
+#include "beacon_class_methods.h"
+
+#include "beacon_manager_class.h"
+
+// Game memory free (cdecl, single pointer arg) @0x7C8B3D — `push p; call; add
+// esp,4`. Declared (no body) so the harness reloc-normalises the call.
+extern "C" void __cdecl GameDelete(void* pMem);
+
+#include "beacon_manager_class_art_methods.h"
+
+#include "beacon_manager_class_draw_methods.h"
+
+#include "trivial_tu029_methods.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E3A18
+extern const double DAT_007E3A18;
+// GLOBAL: GAMEMD 0x89C398
+extern double DAT_0089C398;
+// GLOBAL: GAMEMD 0x89C450
+extern double DAT_0089C450;
+// GLOBAL: GAMEMD 0x89C458
+extern int DAT_0089C458;
+// GLOBAL: GAMEMD 0x89C45C
+extern int DAT_0089C45C;
+// GLOBAL: GAMEMD 0x89C460
+extern int DAT_0089C460;
+// GLOBAL: GAMEMD 0x89C468
+extern double DAT_0089C468;
+
+// FUNCTION: GAMEMD 0x42FFD0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0042FFD0()
+{
+    DAT_0089C468 = DAT_0089C398 / DAT_007E3A18;
+}
+
+// FUNCTION: GAMEMD 0x42FFF0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_0042FFF0()
+{
+    DAT_0089C450 = DAT_007E1718 / DAT_0089C468;
+}
+
+// FUNCTION: GAMEMD 0x430170
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_00430170()
+{
+    DAT_0089C460 = 0;
+    DAT_0089C458 = 0x80;
+    DAT_0089C45C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x430580
+// Empty function that pops its stack arguments.
+void __stdcall FUN_00430580(int a1, int a2, int a3, int a4, int a5, int a6, int a7)
+{
+}
+
+// FUNCTION: GAMEMD 0x430600
+// Empty function.
+void __cdecl FUN_00430600()
+{
+}
+
+// FUNCTION: GAMEMD 0x430610
+// Updates one member in place.
+void Obj_00430610::FUN_00430610()
+{
+    unknown_0C &= 0xFE;
+}
+
+// FUNCTION: GAMEMD 0x4308B0  (__thiscall)
+// Visible iff the beacon's bit-0 flag is set, the local player is allied with
+// the beacon's owning house (by index), that house is allied back with the
+// player, and the house's +0x1F5 flag is clear. Each link short-circuits to a
+// false return; the trailing flag is reloaded through the Array global because
+// the intervening alliance call may alias it.
+bool BeaconClass::VisibleToPlayer() const
+{
+    if (this->Bitfield & 1) {
+        if (HouseClass_CurrentPlayer->IsAlliedWith(this->HouseID)) {
+            if (HouseClass_ArrayItems[this->HouseID]->IsAlliedWith(HouseClass_CurrentPlayer)) {
+                if (HouseClass_ArrayItems[this->HouseID]->field_1F5 == 0)
+                    return true;
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x430980  (__thiscall)
+// Free every live beacon pointer and zero the count. Skips entirely when no
+// beacons are allocated.
+void BeaconManagerClass::Reset()
+{
+    if (AllocatedCount != 0)
+    {
+        for (int i = 0; i < 8; ++i)
+        {
+            for (int j = 0; j < 3; ++j)
+            {
+                if (Beacons[i][j] != 0)
+                {
+                    GameDelete(Beacons[i][j]);
+                    Beacons[i][j] = 0;
+                }
+            }
+        }
+        AllocatedCount = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x4309D0  BeaconManagerClass::LoadArt
+//
+// Load the two beacon shapes: try the loose file first, then the mix
+// archives; on success cache the header's width, height and frame count
+// (the radar one also keeps frames * 4), otherwise log the failure. The two
+// file objects are declared at function scope in that order (beacon high,
+// radar low); the fallback is `if (!art) art = Retrieve(); if (art) {...}
+// else log` so the read path threads straight to the stores and the log
+// block trails.
+// STRING: GAMEMD 0x818A5C "PBEACON.SHP"   STRING: GAMEMD 0x818A40
+// STRING: GAMEMD 0x818A30 "RDRBEACN.SHP"  STRING: GAMEMD 0x818A10
+void BeaconManager_004309D0::LoadArt()
+{
+    File_004309D0 beacon;
+    File_004309D0 radar;
+
+    ((RawBase_004309D0*)&beacon)->Construct("PBEACON.SHP");
+    DAT_0089C474 = beacon.ReadWholeFile();
+    if (DAT_0089C474 == 0)
+        DAT_0089C474 = FUN_005B40B0("PBEACON.SHP", 0);
+    if (DAT_0089C474 != 0) {
+        BeaconWidth = DAT_0089C474->Width;
+        BeaconHeight = DAT_0089C474->Height;
+        BeaconFrames = DAT_0089C474->Frames;
+    } else {
+        FUN_004068E0("Failed to load BeaconArt");
+    }
+
+    ((RawBase_004309D0*)&radar)->Construct("RDRBEACN.SHP");
+    DAT_0089C478 = radar.ReadWholeFile();
+    if (DAT_0089C478 == 0)
+        DAT_0089C478 = FUN_005B40B0("RDRBEACN.SHP", 0);
+    if (DAT_0089C478 != 0) {
+        unknown_70 = DAT_0089C478->Width;
+        unknown_74 = DAT_0089C478->Height;
+        int frames = DAT_0089C478->Frames;
+        RadarFrames = frames;
+        RadarFramesX4 = frames << 2;
+    } else {
+        FUN_004068E0("Failed to load RadarBeaconArt");
+    }
+
+    ((RawBase_004309D0*)&radar)->Destruct();
+    ((RawBase_004309D0*)&beacon)->Destruct();
+}
+
+// FUNCTION: GAMEMD 0x430AC0  BeaconManagerClass::Draw
+//
+// Draw every placed beacon whose owning house the current player is allied
+// with (both ways) and which is not in the +0x1F5 state. Nothing is drawn
+// while no beacon is allocated. The loops are plain counted-up indexes into
+// the 8x3 table: VC6 strength-reduces them into one walking pointer kept in
+// the `this` register and two down-counters on the frame. An explicit
+// walking pointer gets a caller-saved register and a spill (14.9%).
+void BeaconManager_00430AC0::Draw(Surface_00430AC0* surface, Rect_00430AC0 bounds)
+{
+    if (AllocatedCount != 0) {
+        for (int row = 0; row < 8; ++row) {
+            for (int col = 0; col < 3; ++col) {
+                Beacon_00430AC0* beacon = Beacons[row][col];
+                if (beacon != 0 && (beacon->Flags & 1)
+                    && DAT_00A83D4C->FUN_004F9A10(beacon->HouseIndex)
+                    && DAT_00A8022C[beacon->HouseIndex]->FUN_004F9A50(DAT_00A83D4C)
+                    && DAT_00A8022C[beacon->HouseIndex]->At_1F5 == 0) {
+                    beacon->Draw(surface, bounds);
+                }
+            }
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x430F30  (__thiscall)
+// True if the house has a free beacon slot (one of its three is empty).
+bool BeaconManagerClass::CanPlaceBeacon(int houseId)
+{
+    for (int i = 0; i < 3; ++i)
+    {
+        if (Beacons[houseId][i] == 0)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431060
+// Clear bit 1 on every live slot - eight groups of three, walked as one
+// pointer. The whole sweep is skipped unless the field at +0x60 is set.
+void Obj_00431060::FUN_00431060()
+{
+    if (unknown_60 == 0) {
+        return;
+    }
+
+    Flagged_00431060** slot = Slots;
+
+    for (int group = 8; group != 0; group--) {
+        for (int i = 3; i != 0; i--) {
+            if (*slot) {
+                (*slot)->at0C &= ~2;
+            }
+
+            slot++;
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431170
+//
+// Find the first eligible entry in the grid, optionally matching a key. A key of
+// -1 means "any", which is why that test short-circuits ahead of the comparison
+// against the entry's own key.
+//
+// The whole search is skipped when +0x60 is clear — the guard is on the object,
+// not on the grid contents, so an empty grid is not the same as a disabled one.
+Entry_00431170* Grid_00431170::FUN_00431170(int key)
+{
+    if (this->At_60 == 0) {
+        return 0;
+    }
+
+    for (int row = 0; row < 8; row++) {
+        for (int col = 0; col < 3; col++) {
+            Entry_00431170* entry = this->Slots[row][col];
+            if (entry != 0 && (entry->Flags & 2)
+                && (key == -1 || key == entry->Key)) {
+                return entry;
+            }
+        }
+    }
+
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431410  (__thiscall)
+// Delete all three beacons owned by a house. Skips when nothing is allocated.
+void BeaconManagerClass::DeleteAllBeacons(int houseId)
+{
+    if (AllocatedCount != 0)
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            if (Beacons[houseId][i] != 0)
+            {
+                DeleteBeacon(houseId, i);
+            }
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431920
+void BenchTimer::Reset()
+{
+    Total = 0;
+    Count = 0;
+    Samples = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431A10
+unsigned int BenchTimer::Average()
+{
+    if (Count != 0) {
+        return Total / Count;
+    }
+    return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x431B20
+Obj_00431B20* Obj_00431B20::FUN_00431B20()
+{
+    field_04 = 0;
+    field_08 = 1;
+    field_0C = 0;
+    field_10 = -1;
+    field_14 = -1;
+    field_18 = 0;
+    field_1C = 0;
+    field_1E = 0;
+    field_20 = 0;
+    field_24 = 0;
+    field_25 = 0;
+    field_26 = 0;
+    field_27 = 0;
+    field_28 = 0;
+    field_29 = 0;
+    field_2C = 0;
+    field_30 = 0;
+    field_34 = 0;
+    field_38 = 0;
+    field_3C = 0;
+    field_40 = -1;
+    field_44 = -1;
+    field_48 = 0;
+    field_4C = 0;
+    field_50 = 0;
+
+    Vtable = &VT_007E3A2C;
+
+    return this;
+}

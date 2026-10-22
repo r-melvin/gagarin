@@ -1,0 +1,85 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit Credits.CPP. The name is the source-file string at 0x81fbbc
+//   in retail gamemd.exe v1.001, passed by the assert at 0x4a248d inside this object's
+//   code range (0x4a2160-0x4a292f). Functions are in ascending retail address order.
+//
+// The parameters keep the canonical Pipe/Straw int ABI view (pointer, count);
+// the casts below hand that view to memmove and the hash as pointers.
+
+#include "buffer_straws.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7E5D80
+extern const double DAT_007E5D80;
+// GLOBAL: GAMEMD 0x89F900
+extern double DAT_0089F900;
+// GLOBAL: GAMEMD 0x89F938
+extern double DAT_0089F938;
+// GLOBAL: GAMEMD 0x89F940
+extern int DAT_0089F940;
+// GLOBAL: GAMEMD 0x89F944
+extern int DAT_0089F944;
+// GLOBAL: GAMEMD 0x89F948
+extern int DAT_0089F948;
+// GLOBAL: GAMEMD 0x89F950
+extern double DAT_0089F950;
+
+// FUNCTION: GAMEMD 0x4A2190
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_004A2190()
+{
+    DAT_0089F950 = DAT_0089F900 / DAT_007E5D80;
+}
+
+// FUNCTION: GAMEMD 0x4A21B0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_004A21B0()
+{
+    DAT_0089F938 = DAT_007E1718 / DAT_0089F950;
+}
+
+// FUNCTION: GAMEMD 0x4A2330
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_004A2330()
+{
+    DAT_0089F948 = 0;
+    DAT_0089F940 = 0x80;
+    DAT_0089F944 = 0x80;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4A2780
+int CacheStraw::FUN_006C98E0(int first, int second)
+{
+    int total = 0;
+
+    if (Buffer.Buffer != 0 && first != 0 && second > 0) {
+        while (second > 0) {
+            if (Length > 0) {
+                int tocopy = (Length < second) ? Length : second;
+                memmove((void*)first, (char*)Buffer.Buffer + Index, tocopy);
+                second -= tocopy;
+                Index += tocopy;
+                total += tocopy;
+                Length -= tocopy;
+                first += tocopy;
+            }
+            if (second == 0) {
+                break;
+            }
+            Length = Straw::FUN_006C98E0((int)Buffer.Buffer, Buffer.Size);
+            Index = 0;
+            if (Length == 0) {
+                break;
+            }
+        }
+    }
+    return total;
+}

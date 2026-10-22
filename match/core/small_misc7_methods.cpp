@@ -51,14 +51,3 @@ Vec3d* Vec3d::FUN_0046B960(const Vec3d* other)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x470C00
-Obj_00470C00* Obj_00470C00::FUN_00470C00()
-{
-    _vtable = VT_007E4AB8;
-
-    DAT_0089E008 = -1;
-    DAT_0089E020 = 0;
-    DAT_0089DFD4 = 0;
-
-    return this;
-}

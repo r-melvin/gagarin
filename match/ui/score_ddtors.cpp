@@ -57,25 +57,6 @@ public:
     virtual void* DeletingDtor(unsigned int flags);
 };
 
-// FUNCTION: GAMEMD 0x471500 -- CampaignScoreClass scalar deleting destructor
-void* CampaignScoreClass::DeletingDtor(unsigned int flags)
-{
-    this->~CampaignScoreClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x471520 -- CampaignEndScoreClass scalar deleting destructor
-void* CampaignEndScoreClass::DeletingDtor(unsigned int flags)
-{
-    this->~CampaignEndScoreClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x690FE0 -- ScoreAnimClass scalar deleting destructor
 void* ScoreAnimClass::DeletingDtor(unsigned int flags)

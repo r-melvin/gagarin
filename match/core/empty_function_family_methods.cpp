@@ -9,20 +9,12 @@ void __fastcall FUN_00489270()
 {
 }
 
-// FUNCTION: GAMEMD 0x0048DED0
-void __fastcall FUN_0048DED0()
-{
-}
 
 // FUNCTION: GAMEMD 0x004A4AC0
 void __fastcall FUN_004A4AC0()
 {
 }
 
-// FUNCTION: GAMEMD 0x004B69D0
-void __fastcall FUN_004B69D0()
-{
-}
 
 // FUNCTION: GAMEMD 0x004F6EB0
 void __fastcall FUN_004F6EB0()

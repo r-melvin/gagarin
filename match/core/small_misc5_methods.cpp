@@ -66,14 +66,3 @@ int Obj_00432C50::FUN_00432C50() const
     return unknown_04->atC >= unknown_04->at8 || unknown_04->atC < unknown_30;
 }
 
-// FUNCTION: GAMEMD 0x46D330
-Obj_0046D330* Obj_0046D330::FUN_0046D330()
-{
-    _vtable = VT_007E4AAC;
-    unknown_04 = 0;
-
-    DAT_0089E050 = 0;
-    DAT_0081B1E8 = -1;
-
-    return this;
-}

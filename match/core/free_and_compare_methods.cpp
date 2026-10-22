@@ -27,11 +27,3 @@ void Obj_00408500::FUN_004085A0()
     memset(this, 0, sizeof(*this));
 }
 
-// FUNCTION: GAMEMD 0x410A40
-// `NEG EAX; SBB EAX,EAX; INC EAX` after the call is the bool form of `== 0`,
-// so the comparison is an equality test rather than an ordering one. Argument
-// order is (other, Name) — the pushes put the caller's string first.
-bool Obj_00410A00::FUN_00410A40(const char* other) const
-{
-    return FUN_007C8D20(other, Name) == 0;
-}

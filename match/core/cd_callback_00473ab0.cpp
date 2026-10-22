@@ -73,11 +73,3 @@ GG_STATIC_ASSERT(sizeof(CDSlot0Call_004790E0) == 4);
 GG_STATIC_ASSERT(offsetof(CDVtablePrefix_004790E0, slot0) == 0);
 GG_STATIC_ASSERT(sizeof(CDVtablePrefix_004790E0) == 4);
 
-// FUNCTION: GAMEMD 0x004790E0 (44 bytes, ending RET 4)
-bool CD_004790E0::FUN_004790E0(int value)
-{
-    if (value == -2) return true;
-    if (DAT_0089E3A0 == 1) return true;
-    unknown_04 = 0xffffffff;
-    return FUN_004A8270(value);
-}
