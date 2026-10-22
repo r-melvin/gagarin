@@ -32,7 +32,7 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 // ECX (__fastcall single-int arg) and returns the tiberium index; declared
 // (no body) so cl emits a relocatable tail-call. Confirmed from the disasm:
 // GetContainedTiberiumIndex loads [ECX+0x44] into ECX then JMPs here.
-int __fastcall OverlayTypeIndexToTiberium(int idxOverlay);
+int OverlayTypeIndexToTiberium(int idxOverlay);
 
 // TiberiumClass — only the AbstractTypeClass UIName pointer at +0x60 is needed
 // (GetUIName loads [EDX+0x60] from the array element). Full layout is P2.

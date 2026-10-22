@@ -25,13 +25,13 @@ extern "C" int __cdecl strcmpi(const char* a, const char* b);
 //   0x00731D00  __fastcall(arg in ECX)   — clears a selection-drag latch pair.
 //   0x00431060  __fastcall(this in ECX)  — clears the per-cell select flags of
 //                                          the global selection grid @ 0x0089C3B0.
-void __fastcall sub_731D00(void* a);
-void __fastcall sub_431060(void* self);
+void sub_731D00(void* a);
+void sub_431060(void* self);
 extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 
 // __thiscall (ECX=this), no explicit args, vtable slot at +0x150 — the per-object
 // "remove from CurrentObjects" virtual driving the drain loop.
-typedef void (__fastcall* UnselectFn)(void* self);
+typedef void (* UnselectFn)(void* self);
 
 
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:

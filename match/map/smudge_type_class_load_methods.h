@@ -29,7 +29,7 @@ extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir
                                   const char* fname, const char* ext);
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass

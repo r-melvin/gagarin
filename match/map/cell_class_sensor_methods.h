@@ -46,7 +46,7 @@ extern unsigned char CellOccupiersValid;
 // `MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0x2C]`. Modelled as a __fastcall
 // function pointer through the vtable so VC6 emits the indirect __thiscall
 // (ECX = this, no stack arguments) with no extra register traffic.
-typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
+typedef int (* WhatAmIFunc)(const ObjectClass*);
 
 class CellClass
 {
@@ -82,7 +82,7 @@ GG_STATIC_ASSERT(offsetof(CellClass, LandType)                == 0xEC);
 GG_STATIC_ASSERT(offsetof(CellClass, OccupyHeightsCoveringMe) == 0x100);
 
 // FUNCTION: GAMEMD 0x487EA0
-CellStruct* __fastcall FUN_00487EA0(CellStruct* dest, CellStruct const* src,
-                                    int dir);
+CellStruct* FUN_00487EA0(CellStruct* dest, CellStruct const* src,
+                         int dir);
 
 #endif  // GG_MATCH_MAP_CELL_CLASS_SENSOR_METHODS_H

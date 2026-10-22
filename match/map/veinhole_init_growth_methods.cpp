@@ -43,7 +43,7 @@
 // still 5.9%, same single missing shared zero. That lever governs which
 // register holds a constructed pointer; this residual is a materialisation
 // retail performs and cl does not, so the two do not meet.
-void __fastcall InitVeinGrowthData(bool rebuild)
+void InitVeinGrowthData(bool rebuild)
 {
     unsigned int size = FUN_0042B1F0();
 

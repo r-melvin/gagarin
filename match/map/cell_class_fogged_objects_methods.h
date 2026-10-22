@@ -46,7 +46,7 @@ struct ObjVtbl_00486C50
 GG_STATIC_ASSERT(offsetof(ObjVtbl_00486C50, At_20) == 0x20);
 
 // FUNCTION: GAMEMD 0x4D2790 (decl; reloc) -- the record's occupy list, or 0.
-short* __fastcall FUN_004D2790(Obj_00486C50* object);
+short* FUN_004D2790(Obj_00486C50* object);
 
 struct VecVtbl_00486C50;
 

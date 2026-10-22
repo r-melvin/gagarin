@@ -37,7 +37,7 @@ extern TiberiumClass** TiberiumArrayItems;
 // Overlay-index -> tiberium-index lookup @0x5FDD20. Takes the overlay index in
 // ECX (__fastcall single-int arg), returns the tiberium index or -1. Declared
 // (no body) so cl emits a relocatable call.
-int __fastcall OverlayTypeIndexToTiberium(int idxOverlay);
+int OverlayTypeIndexToTiberium(int idxOverlay);
 
 // CellFlags is a 32-bit flag enum; modelling it as an enum makes cl materialise
 // the |= as load / or al,0x20 / store (the byte-OR the retail emits).

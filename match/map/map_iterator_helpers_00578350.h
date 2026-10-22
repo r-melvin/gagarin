@@ -51,7 +51,7 @@ GG_STATIC_ASSERT(offsetof(ScreenRedraw_00578AC0, redrawCounter) == 0x1158);
 GG_STATIC_ASSERT(sizeof(ScreenRedraw_00578AC0) == 0x1159);
 
 // FUNCTION: GAMEMD 0x578D60
-unsigned char __fastcall FUN_00578D60(int value);
+unsigned char FUN_00578D60(int value);
 // GLOBAL: GAMEMD 0xABAD28
 extern int DAT_00ABAD28;
 #endif

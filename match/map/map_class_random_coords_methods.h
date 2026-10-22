@@ -82,7 +82,7 @@ struct Coord_0049F420
 GG_STATIC_ASSERT(sizeof(Coord_0049F420) == 0xC);
 
 // FUNCTION: GAMEMD 0x49F420 — MapClass::GetRandomCoordsNear (static).
-Coord_0049F420 __fastcall MapClass_GetRandomCoordsNear(const Coord_0049F420& coords,
-                                                       int distance, bool center);
+Coord_0049F420 MapClass_GetRandomCoordsNear(const Coord_0049F420& coords,
+                                            int distance, bool center);
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_RANDOM_COORDS_METHODS_H

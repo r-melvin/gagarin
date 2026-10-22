@@ -161,7 +161,7 @@ extern MapObjSwizzleView MapObjSwizzle;
 // FUNCTION: GAMEMD 0x7258D0 (decl; reloc) - announces that a pointer is going away. __fastcall: the
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone) to tell each
 // holder to drop its pointer.
-void __fastcall MapObjAnnouncePointerExpired(void* object, bool removed);
+void MapObjAnnouncePointerExpired(void* object, bool removed);
 
 // A map cell coordinate with the one out-of-partition method that takes the cell the object stands on
 // as its receiver (FUNCTION: GAMEMD 0x489270, a bare RET). Slot 110 returns this.
@@ -687,16 +687,16 @@ extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir
                                   const char* ext);
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) - loads the shape file of that path and returns the loaded
 // image; the flag selects the load mode. __fastcall: the path in ECX, the flag in DL.
-void* __fastcall MapObjLoadShape(const char* path, bool flag);
+void* MapObjLoadShape(const char* path, bool flag);
 // FUNCTION: GAMEMD 0x4AED70 (decl; reloc) - draws a shape; __fastcall (surface, context), 14 stack
 // dwords. The last two are one screen offset passed by value: every caller builds it from two
 // zeros held in registers (`xor ecx,ecx; xor eax,eax; push ecx; push eax`) and reuses one of them
 // for the other zero arguments, which is what cl does for a by-value point built from (0, 0).
-void __fastcall MapObjDrawShape(MapObjSurfaceView* surface, void* context, void* shape, int frame,
-                                MapObjPoint* where, MapObjRect* clip, int flags, int a6, int zAdjust,
-                                int a8, int a9, int a10, int a11, int a12, MapObjPoint offset);
+void MapObjDrawShape(MapObjSurfaceView* surface, void* context, void* shape, int frame,
+                     MapObjPoint* where, MapObjRect* clip, int flags, int a6, int zAdjust,
+                     int a8, int a9, int a10, int a11, int a12, MapObjPoint offset);
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) - a height scaled by a float constant, __fastcall (ECX).
-int __fastcall MapObjHeightScale(int value);
+int MapObjHeightScale(int value);
 
 // GLOBAL: GAMEMD 0x886FA0 - the clip rectangle intersected with by TerrainClass::vf_65; its first two
 // dwords (0x886FA0 / 0x886FA4) are the screen offset OverlayClass adds to projected positions.

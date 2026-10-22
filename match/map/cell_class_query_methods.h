@@ -28,7 +28,7 @@ struct TunnelClass;
 
 // Reveal() — virtual at primary-vtable slot +0xFC, dispatched exactly like
 // WhatAmI below (`MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0xFC]`).
-typedef void (__fastcall* RevealFunc)(ObjectClass*);
+typedef void (* RevealFunc)(ObjectClass*);
 
 // TunnelClass::Array — GetTunnel reads the element count from 0x008B4148 and
 // the Items base from 0x008B413C (the vector object sits at 0x008B4138).
@@ -44,7 +44,7 @@ extern unsigned char CellOccupiersValid;
 // __thiscall (ECX = this, no stack args) exactly, matching
 // `MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0x2C]`. Returns the AbstractType (the
 // full dword loaded into EAX; modelled int to keep the CMP integer-typed).
-typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
+typedef int (* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the three queries dereference; the unknown base is padded to 0xE4.

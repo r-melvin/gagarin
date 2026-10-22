@@ -12,7 +12,7 @@
 // and then the slope frames — and the first tiberium whose ranges contain the
 // index wins. A flagged overlay that no tiberium claims is logged (the name
 // travels by value) and reported as tiberium 0.
-int __fastcall OverlayClass::GetTiberiumType(int idxOverlay)
+int OverlayClass::GetTiberiumType(int idxOverlay)
 {
     OverlayType_005FDD20* type;
     if (idxOverlay == -1 || (type = (OverlayType_005FDD20*)DAT_00A83D84[idxOverlay])->Tiberium == 0) {

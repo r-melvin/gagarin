@@ -28,8 +28,8 @@ public:
     // FUNCTION: GAMEMD 0x5FE250 - the named constructor, also what the INI loader calls to allocate a
     // type it has not seen yet.
     OverlayTypeClass(const char* id);
-    static int __fastcall FindIndex(const char* pID); // existing row 0x5FE470
-    static void __fastcall LoadArt(int idxTheater);  // existing row 0x5FE620
+    static int FindIndex(const char* pID); // existing row 0x5FE470
+    static void LoadArt(int idxTheater);  // existing row 0x5FE620
     // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching any other member.
     OverlayTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}

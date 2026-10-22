@@ -41,7 +41,7 @@ extern int* DAT_00A8ED2C;
 extern int DAT_00A8ED38;
 
 // FUNCTION: GAMEMD 0x544CE0 — resolve a tile name to its index, or negative.
-int __fastcall FUN_00544CE0(const char* name);
+int FUN_00544CE0(const char* name);
 
 // FUNCTION: GAMEMD 0x465CC0
 void FUN_00465CC0();

@@ -25,8 +25,8 @@
 // made through a `Pair* outp = dest` alias - is NOT load-bearing and was
 // dropped. Note the first run's best (55) was a local optimum; restarting the
 // search from it is what found the second construct.
-Pair_0042D490* __fastcall FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
-                                       int dir)
+Pair_0042D490* FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
+                            int dir)
 {
     Pair_0042D490 out;
 

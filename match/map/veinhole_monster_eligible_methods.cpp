@@ -10,7 +10,7 @@
 // During scenario setup anything goes. Otherwise the cell must be at least
 // three cells from every existing veinhole, sit above ground level, and the
 // 3x3 block around it must be flat, of land type zero and all at that level.
-bool __fastcall VeinholeMonsterClass::IsCellEligibleForVeinHole(const Cell_0074D670* cell)
+bool VeinholeMonsterClass::IsCellEligibleForVeinHole(const Cell_0074D670* cell)
 {
     if (DAT_00A8E7AC > 0)
         return true;

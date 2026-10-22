@@ -73,8 +73,8 @@ bool CellClass::FUN_00487E00() const
 // Step `src` one square in direction `dir`, wrapping the direction into the
 // eight-entry step table. The pair is built in a temporary and copied out as a
 // single dword, which is the shape retail emits.
-CellStruct* __fastcall FUN_00487EA0(CellStruct* dest, CellStruct const* src,
-                                    int dir)
+CellStruct* FUN_00487EA0(CellStruct* dest, CellStruct const* src,
+                         int dir)
 {
     CellStruct const* step = &AdjacentCellTable[dir & 7];
     CellStruct out;

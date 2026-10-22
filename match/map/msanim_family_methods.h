@@ -377,7 +377,7 @@ extern char VT_007E16B0;
 // VTABLE: GAMEMD 0x7E1668 — CDFileClass, the base the destructor drops to.
 extern char VT_007E1668;
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 // The 0x6C-byte stack file object both builders open the PCX through. Only the
 // pieces these two functions touch are named; the teardown is the same inline
@@ -402,8 +402,8 @@ GG_STATIC_ASSERT(offsetof(MSFileClass, Sub58) == 0x58
 
 // FUNCTION: GAMEMD 0x630310 (decl; reloc) — Read_PCX_File(file, palette,
 // buffer, size); the file arrives in ECX and the palette in EDX.
-MSImageSurface* __fastcall MSReadPCXFile(MSFileClass* file, char* palette,
-                                         void* buffer, long size);
+MSImageSurface* MSReadPCXFile(MSFileClass* file, char* palette,
+                              void* buffer, long size);
 
 // The 16-byte rectangle both GetRect overloads copy out whole.
 struct MSRect
@@ -438,8 +438,8 @@ GG_STATIC_ASSERT(sizeof(MSRectBuild) == 0x10);
 // intersection the PCX draw expands inline: the destination arrives in ECX,
 // the clipping rectangle in EDX, and the rectangle being clipped plus the two
 // optional origin adjustments are pushed. It hands the destination back in EAX.
-MSRect* __fastcall MSRectIntersectOut(MSRect* out, const MSRect* clip,
-                                      const MSRect* self, int* x, int* y);
+MSRect* MSRectIntersectOut(MSRect* out, const MSRect* clip,
+                           const MSRect* self, int* x, int* y);
 
 __forceinline MSRect MSRectIntersect(const MSRect* self, const MSRect& other)
 {
@@ -1049,9 +1049,9 @@ extern MSAnimCounters MSAnimCounts;
 void MSAnimResetCounters();
 
 // FUNCTION: GAMEMD 0x5CE7B0 — the out-of-line ~MSPCXAnim.
-void __fastcall MSPCXAnim_Destroy(MSPCXAnim* self);
+void MSPCXAnim_Destroy(MSPCXAnim* self);
 
 // FUNCTION: GAMEMD 0x5CD3A0 — the out-of-line ~MSBitPrintAnim.
-void __fastcall MSBitPrintAnim_Destroy(MSBitPrintAnim* self);
+void MSBitPrintAnim_Destroy(MSBitPrintAnim* self);
 
 #endif  // GG_MATCH_MAP_MSANIM_FAMILY_METHODS_H

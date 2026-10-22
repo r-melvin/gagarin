@@ -15,7 +15,7 @@
 // ObjectClass::GetYSort dispatched through the element's PRIMARY vtable slot at
 // byte offset 0xB8 (no args, returns the int sort key):
 //   MOV ECX,obj; MOV reg,[obj]; CALL [reg+0xB8]
-typedef int (__fastcall* GetYSortFunc)(void* self);
+typedef int (* GetYSortFunc)(void* self);
 #define GET_YSORT(obj) ((*(GetYSortFunc*)(*(char**)(obj) + 0xb8))(obj))
 
 // Minimal abstract interface used solely to materialise the LayerClass virtual

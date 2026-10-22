@@ -19,8 +19,8 @@
 // `return 0;` blocks each get their own epilogue (8.2%). The `cond ? x : 0`
 // forms reproduce the SETcc/DEC/AND idiom, and the int operands stay inline
 // in the float expression so they reach FIMUL/FIDIV from their spill slots.
-int __fastcall MapClass::GetTotalDamage(int damage, WarheadType_00489180* warhead,
-                                        int armor, int distance)
+int MapClass::GetTotalDamage(int damage, WarheadType_00489180* warhead,
+                             int armor, int distance)
 {
     if (damage == 0 || (ScenarioInstance->SpecialFlags & 0x20) || warhead == 0) {
         return 0;

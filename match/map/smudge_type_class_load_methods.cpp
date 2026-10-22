@@ -13,7 +13,7 @@
 // type's image. The file object is torn down inline: this class's vtable, the
 // +0x64 reset, the +0x58 sub-object release, the base vtable, the base
 // destructor.
-void __fastcall SmudgeTypeClass::LoadFromIniList(int idxTheater)
+void SmudgeTypeClass::LoadFromIniList(int idxTheater)
 {
     for (int i = 0; i < DAT_00A8EC28; ++i) {
         SmudgeTypeClass* type = DAT_00A8EC1C[i];

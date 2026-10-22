@@ -21,8 +21,8 @@ class CellClass;
 class MapClass
 {
 public:
-    static void __fastcall UnselectAll();
-    static int  __fastcall GetLandTypeFromName(const char* name);  // LandType (enum=int)
+    static void UnselectAll();
+    static int  GetLandTypeFromName(const char* name);  // LandType (enum=int)
 
     // FUNCTION: GAMEMD 0x5865E0  MapClass::IsLocationFogged (__thiscall, ret 4)
     // A non-static __thiscall taking one pointer argument. Retail is the

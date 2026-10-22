@@ -51,7 +51,7 @@ public:
         MapObjAnnouncePointerExpired(this, true);
         TerrainTypeArray.RemoveItem(this);
     }
-    static TerrainTypeClass* __fastcall FindOrAllocate(const char* id); // existing row 0x71E2A0
+    static TerrainTypeClass* FindOrAllocate(const char* id); // existing row 0x71E2A0
     virtual int WhatAmI();                                                  // 11  0x71E330
     virtual int Size();                                                     // 12  0x71E340
     virtual void ComputeCRC(MapObjCrcView& crc);                           // 13  0x71E140

@@ -173,7 +173,7 @@ MSBitPrintAnim* MSBitPrintAnim::Construct(const wchar_t* text,
 // The out-of-line copy of the destructor. Both vtable seats survive here
 // because the string release between them can observe the first, which is the
 // same reason the inlined copy at 0x5CED10 keeps only one.
-void __fastcall MSBitPrintAnim_Destroy(MSBitPrintAnim* self)
+void MSBitPrintAnim_Destroy(MSBitPrintAnim* self)
 {
     self->MSBitPrintAnim::~MSBitPrintAnim();
 }
@@ -366,7 +366,7 @@ void MSPrintAnim::Layout(const MSRect* area)
 // put a form feed in front of each one. The inner walk is a rotated
 // `while (ch && ch != newline)`: the terminator test is peeled to the top, the
 // newline test heads the body, and the terminator test closes it.
-int __fastcall MSCountPages(Obj_007B66D0* text, MSFont* font, int limit)
+int MSCountPages(Obj_007B66D0* text, MSFont* font, int limit)
 {
     if (!text->Equals(0)) {
         if (font != 0) {
@@ -826,7 +826,7 @@ MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
 }
 
 // FUNCTION: GAMEMD 0x5CE7B0
-void __fastcall MSPCXAnim_Destroy(MSPCXAnim* self)
+void MSPCXAnim_Destroy(MSPCXAnim* self)
 {
     self->MSPCXAnim::~MSPCXAnim();
 }

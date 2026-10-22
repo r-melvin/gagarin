@@ -66,7 +66,7 @@ public:
     // member: the cell it inspects arrives in ECX, but the cell is the
     // argument, not the receiver — the routine belongs to the monster class,
     // not to CellClass.
-    static bool __fastcall IsCellEligibleForVeinHole(const Cell_0074D670* cell);
+    static bool IsCellEligibleForVeinHole(const Cell_0074D670* cell);
 };
 
 #endif  // GG_MATCH_MAP_VEINHOLE_MONSTER_ELIGIBLE_METHODS_H

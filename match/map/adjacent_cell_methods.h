@@ -35,7 +35,7 @@ extern Host_0042D490 DAT_0087F7E8;
 // GLOBAL: GAMEMD 0x8B413C — table of slot pointers, indexed by the found id.
 extern Slot_0042D490** DAT_008B413C;
 // FUNCTION: GAMEMD 0x42D490
-Pair_0042D490* __fastcall FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
-                                       int dir);
+Pair_0042D490* FUN_0042D490(Pair_0042D490* dest, Pair_0042D490* src,
+                            int dir);
 
 #endif  // GG_MATCH_MAP_ADJACENT_CELL_METHODS_H

@@ -28,7 +28,7 @@ void ScreenRedraw_00578AC0::FUN_00578AC0()
 }
 
 // FUNCTION: GAMEMD 0x578D60
-unsigned char __fastcall FUN_00578D60(int value)
+unsigned char FUN_00578D60(int value)
 {
     int first = DAT_00ABAD28;
     if (value >= first && value < first + 0x2A) return 1;

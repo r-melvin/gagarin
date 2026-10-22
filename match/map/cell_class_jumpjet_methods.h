@@ -36,7 +36,7 @@ public:
 GG_STATIC_ASSERT(offsetof(ObjectClass, Flags) == 0x14);
 // FootClass::Jumpjet_OccupyCell @0x4E00B0 — __fastcall with the object in ECX
 // and the cell coordinate pushed. Declared only; relocation-normalised.
-void __fastcall Jumpjet_OccupyCell(ObjectClass* object, CellStruct coords);
+void Jumpjet_OccupyCell(ObjectClass* object, CellStruct coords);
 
 // GLOBAL: GAMEMD 0x0089E748 — the coordinate handed over when a cell releases
 // its jumpjet occupant.

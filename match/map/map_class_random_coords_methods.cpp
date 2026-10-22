@@ -29,8 +29,8 @@
 // conversion helpers, a named short, an inline random-angle helper, the
 // result declared first with the arithmetic in a block, fx/fy declaration
 // order, and Z read before or after the draw.
-Coord_0049F420 __fastcall MapClass_GetRandomCoordsNear(const Coord_0049F420& coords,
-                                                       int distance, bool center)
+Coord_0049F420 MapClass_GetRandomCoordsNear(const Coord_0049F420& coords,
+                                            int distance, bool center)
 {
     int x;
     int y;

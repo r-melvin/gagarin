@@ -63,7 +63,7 @@ extern const char OverlayShpExtension[];
 
 // FUNCTION: GAMEMD 0x5F96B0 (decl; reloc) - stamps the theater letter into name[1]; a theater
 // index of -1 leaves the name alone. __fastcall: the name in ECX, the index in EDX.
-void __fastcall OverlayStampTheater(char* name, int idxTheater);
+void OverlayStampTheater(char* name, int idxTheater);
 
 // GLOBAL: GAMEMD 0x87F6B8 - the context handed to the shape drawer.
 extern void* OverlayDrawContext;
@@ -121,7 +121,7 @@ GG_STATIC_ASSERT(sizeof(OverlayFileView) == 0x6C);
 extern const char OverlayEmptyText[];
 // FUNCTION: GAMEMD 0x428B80 (decl; reloc) - finds the animation type of that name. __fastcall: the
 // name in ECX.
-MapObjTypeClassView* __fastcall OverlayFindAnimType(const char* name);
+MapObjTypeClassView* OverlayFindAnimType(const char* name);
 
 // The shape drawer through the inline the originals call it by: the arguments are evaluated into
 // the call sequence after the surrounding code instead of being hoisted above it.
@@ -168,7 +168,7 @@ GG_STATIC_ASSERT(offsetof(OverlayTiberiumView, unknown_E0) == 0xE0);
 extern OverlayTiberiumView** OverlayTiberiumTypes;
 // FUNCTION: GAMEMD 0x5FDD20 (read-only here, matched elsewhere) - the tiberium type index of an overlay
 // type index. __fastcall (ECX).
-int __fastcall OverlayTiberiumIndexOf(int overlayIndex);
+int OverlayTiberiumIndexOf(int overlayIndex);
 
 // ---- bindings used by OverlayClass::Mark (0x5FC570) -------------------------------------------------
 
@@ -202,6 +202,6 @@ public:
 GG_STATIC_ASSERT(sizeof(OverlayVeinholeView) == 0x108);
 // FUNCTION: GAMEMD 0x74D670 (decl; reloc) - whether a veinhole may stand on that cell. __fastcall
 // shape (the coordinate in ECX).
-bool __fastcall OverlayVeinholeEligible(MapObjCell* cell);
+bool OverlayVeinholeEligible(MapObjCell* cell);
 
 #endif  // GG_MATCH_MAP_TERRAIN_OBJECTS_OVERLAY_SHARED_H

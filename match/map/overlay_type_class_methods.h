@@ -16,9 +16,9 @@ void __cdecl operator delete(void* p);
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir, const char* fname, const char* ext);
 
 struct Image_005FE620;
-Image_005FE620* __fastcall FUN_005B40B0(const char* name, unsigned char flag);
-void __fastcall FUN_005F96B0(char* name, int idxTheater);
-void __fastcall FUN_005F9710(char* name);
+Image_005FE620* FUN_005B40B0(const char* name, unsigned char flag);
+void FUN_005F96B0(char* name, int idxTheater);
+void FUN_005F9710(char* name);
 extern const char STR_0081834C[];
 
 struct Theater_005FE620 {

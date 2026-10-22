@@ -52,8 +52,8 @@ class MapClass
 {
 public:
     // FUNCTION: GAMEMD 0x489180
-    static int __fastcall GetTotalDamage(int damage, WarheadType_00489180* warhead,
-                                         int armor, int distance);
+    static int GetTotalDamage(int damage, WarheadType_00489180* warhead,
+                              int armor, int distance);
 };
 
 #endif  // GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H

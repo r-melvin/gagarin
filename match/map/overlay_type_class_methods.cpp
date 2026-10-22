@@ -33,7 +33,7 @@
 // is read through the array object, not hoisted into a local), and the
 // candidate's ID is the *first* _stricmp argument while the array walk in the
 // sibling VocClass::FindIndex passes the needle first.
-int __fastcall OverlayTypeClass::FindIndex(const char* pID)
+int OverlayTypeClass::FindIndex(const char* pID)
 {
     if (pID)
     {
@@ -62,7 +62,7 @@ int __fastcall OverlayTypeClass::FindIndex(const char* pID)
 // second character of its name, falling back to the generic 'G' art when the
 // theater-specific file is missing. Types whose art is supplied elsewhere are
 // skipped on the way in and have their owned image released on the way out.
-void __fastcall OverlayTypeClass::LoadArt(int idxTheater)
+void OverlayTypeClass::LoadArt(int idxTheater)
 {
     char path[0x200];
 

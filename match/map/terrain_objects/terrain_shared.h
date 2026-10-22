@@ -55,7 +55,7 @@ GG_STATIC_ASSERT(sizeof(TerrainIndexNode) == 8);
 int __cdecl TerrainIndexCompare(const void* a, const void* b);
 // FUNCTION: GAMEMD 0x523440 (decl; reloc) - the sorted search the index uses: ECX = table, EDX =
 // count, the key by pointer.
-TerrainIndexNode* __fastcall TerrainIndexSearch(TerrainIndexNode* table, int count, const int* key);
+TerrainIndexNode* TerrainIndexSearch(TerrainIndexNode* table, int count, const int* key);
 struct TerrainIndexView
 {
     TerrainIndexNode* IndexTable;   // +0x00
@@ -158,17 +158,17 @@ extern const double TerrainMillionth;
 // FUNCTION: GAMEMD 0x48ACE0 (decl; reloc) - stub returning -15; takes a coordinate by value.
 int __cdecl TerrainFunc_48ACE0(MapObjCoord coord);
 // FUNCTION: GAMEMD 0x48A4F0 (decl; reloc) - picks an anim type; __fastcall (count, table) + 2 stack.
-void* __fastcall TerrainPickAnimType(int count, void* table, int value, const MapObjCoord& coord);
+void* TerrainPickAnimType(int count, void* table, int value, const MapObjCoord& coord);
 // FUNCTION: GAMEMD 0x489280 (decl; reloc); __fastcall (coord, count) + 4 stack args.
-void __fastcall TerrainFunc_489280(const MapObjCoord& coord, int count, int a1, void* table, int a3, int a4);
+void TerrainFunc_489280(const MapObjCoord& coord, int count, int a1, void* table, int a3, int a4);
 
 // GLOBAL: GAMEMD 0xB73550 - flag tested by the terrain bodies.
 extern int TerrainFlag_B73550;
 // FUNCTION: GAMEMD 0x421B60 (decl; reloc) - intersects two rectangles: ECX = result, EDX = first,
 // then second and two optional offset outputs on the stack.
-MapObjRect* __fastcall TerrainIntersect(MapObjRect* out, const MapObjRect* a, const MapObjRect* b,
-                                        int* dx, int* dy);
+MapObjRect* TerrainIntersect(MapObjRect* out, const MapObjRect* a, const MapObjRect* b,
+                             int* dx, int* dy);
 // FUNCTION: GAMEMD 0x422B80 (decl; reloc) - __fastcall (ECX = the burning object).
-void __fastcall TerrainFunc_422B80(void* object);
+void TerrainFunc_422B80(void* object);
 
 #endif  // GG_MATCH_MAP_TERRAIN_OBJECTS_TERRAIN_SHARED_H

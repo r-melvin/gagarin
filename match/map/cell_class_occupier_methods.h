@@ -37,7 +37,7 @@ extern unsigned char CellOccupiersValid;
 // __thiscall (ECX = this, no stack args) exactly, matching
 // `MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0x2C]`. Returns the AbstractType (the
 // full dword loaded into EAX; modelled int to keep the CMP integer-typed).
-typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
+typedef int (* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the queries dereference; the unknown base is padded to 0xE4.

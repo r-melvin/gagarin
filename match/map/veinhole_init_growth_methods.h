@@ -141,15 +141,15 @@ struct Map_0074DE90
 };
 
 // FUNCTION: GAMEMD 0x42B1F0 (decl; reloc) — the growth buffer's byte size.
-unsigned int __fastcall FUN_0042B1F0(void);
+unsigned int FUN_0042B1F0(void);
 // FUNCTION: GAMEMD 0x42B1C0 (decl; reloc) — flat cell index of a coordinate.
-int  __fastcall FUN_0042B1C0(CellStruct* cell);
+int  FUN_0042B1C0(CellStruct* cell);
 // FUNCTION: GAMEMD 0x74E1C0 (decl; reloc) — first-time vein growth seeding.
-void __fastcall FUN_0074E1C0(Veinhole_0074DE90* monster);
+void FUN_0074E1C0(Veinhole_0074DE90* monster);
 // FUNCTION: GAMEMD 0x74E6B0 (decl; reloc) — VeinholeMonsterClass::RecalculateSpread.
-void __fastcall FUN_0074E6B0(Veinhole_0074DE90* monster);
+void FUN_0074E6B0(Veinhole_0074DE90* monster);
 // FUNCTION: GAMEMD 0x74E8A0 (decl; reloc) — release one monster's growth data.
-void __fastcall FUN_0074E8A0(Veinhole_0074DE90* monster);
+void FUN_0074E8A0(Veinhole_0074DE90* monster);
 
 // LIBRARY: GAMEMD 0x7C8B3D — free (excluded from the match target).
 void  __cdecl VeinFree(void* block);
@@ -157,6 +157,6 @@ void  __cdecl VeinFree(void* block);
 void* __cdecl VeinOperatorNew(unsigned int size);
 
 // FUNCTION: GAMEMD 0x74DE90 — VeinholeMonsterClass::InitVeinGrowthData.
-void __fastcall InitVeinGrowthData(bool rebuild);
+void InitVeinGrowthData(bool rebuild);
 
 #endif  // GG_MATCH_MAP_VEINHOLE_INIT_GROWTH_METHODS_H

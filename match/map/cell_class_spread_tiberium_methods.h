@@ -26,7 +26,7 @@
 
 // FUNCTION: GAMEMD 0x5FDD20 (decl; reloc) -- overlay index -> tiberium index,
 // or -1. __fastcall, the overlay index in ECX.
-int __fastcall OverlayTypeIndexToTiberium_00483780(int overlayIndex);
+int OverlayTypeIndexToTiberium_00483780(int overlayIndex);
 
 struct CellStruct_00483780
 {
