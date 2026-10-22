@@ -156,20 +156,7 @@ extern ConnTimerStruct ConnTimer;
 // hierarchies; its first member is the game mode (4 selects the network-game
 // address handling), and 0x69BC20 / 0x697E70 / 0x69BC60 are called on the
 // object itself.
-struct SessionRef_00A8B238
-{
-    int GameMode;                       // +0x00
-    // FUNCTION: GAMEMD 0x69BC20 (decl; reloc)
-    int FUN_0069BC20(int a1);
-    // FUNCTION: GAMEMD 0x697E70 (decl; reloc)
-    bool FUN_00697E70(void* house);
-    // FUNCTION: GAMEMD 0x69AE90 (decl; reloc), delay argument at 0x684514.
-    void FUN_0069AE90(int delay);
-    // FUNCTION: GAMEMD 0x69BC60 (decl; reloc)
-    int FUN_0069BC60(int index);
-};
-GG_STATIC_ASSERT(offsetof(SessionRef_00A8B238, GameMode) == 0);
-extern SessionRef_00A8B238 Session_00A8B238;
+#include "../../_layout/session_class.h"
 // GLOBAL: GAMEMD 0xA8DBA0 -- byte flag gating the address-stamping paths.
 extern bool Flag_00A8DBA0;
 // GLOBAL: GAMEMD 0xA8EA0C -- the global (broadcast) connection object.
