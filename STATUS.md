@@ -1,5 +1,47 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,298 matched function
+rows**, **417 partial rows**, **6,715 manifest rows**, **1,268 manifest
+translation units**, and **1,278 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+A mixed leaf batch lands across platform, network, renderer, map, movement and
+core code: 75 functions are new exact matches and 76 are documented partials.
+Twelve existing partials become exact and two improve. The five blitter
+specialisations 0x493CC0, 0x494B60, 0x494D90, 0x496820 and 0x497A10 are
+replaced in place. The GadgetClass constructor (0x4E12F0) becomes exact once
+LinkClass gains its inline constructor. The bodies at 0x4882D0, 0x5B2990 and
+0x5CEAD0 stay with their existing owners, CheckListClass, Dir16 and MSAnim,
+rather than new placeholder classes; the CheckListClass scalar deleting
+destructor (0x4886E0) becomes exact with them. 0x5C61D0 now returns
+`const unsigned short*` everywhere, since both callers read EAX as a word
+table. 0x646480's partial score is re-measured at 89.4%. Three single-function
+translation units that became empty are removed, and the XSurface circle
+routine (0x7BB920) is declared in the shared renderer/surface_class.h. Every exact row
+passes raw bytes and strict relocation checks. Across all project objects,
+sections change only by the new and removed TUs, the replaced bodies, the
+0x5C61D0 return type, the DAT_00A8DAB8 relocation symbol (now `unsigned int`,
+identical bytes), and compiler label numbering in ColorListClass::DrawItem
+(identical bytes and label offsets).
+
+The 6,298 matches represent 31.9% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **488,715
+bytes**, or 12.9% of 3,797,269 listed function bytes. The padding heuristic
+misses 523 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: UI input-controls module
+
 As of **2026-10-22**, the verified snapshot reports **6,210 matched function
 rows**, **354 partial rows**, **6,564 manifest rows**, **1,204 manifest
 translation units**, and **1,214 tracked C++ files**. Whole-repository regression
@@ -31,14 +73,6 @@ bytes**, or 12.1% of 3,797,269 listed function bytes. The padding heuristic
 misses 522 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: vector, class-factory and generated-code quick wins
 
@@ -3206,7 +3240,7 @@ Verified consolidation steps:
 - [ControlClass](match/ui/control_class.h) and [ToggleClass](match/ui/toggle_class_methods.h):
   shared inheritance replaces Toggle's separate constructor prefix view and
   opaque virtual table. Five Control methods and three Toggle methods match;
-  the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is a documented partial.
+  the [Gadget constructor](match/ui/gadget_class_ctor.cpp) is exact.
 - [ToolTipManager](match/ui/tooltip_manager_shared.h): seventeen verified family functions
   share one declaration and [implementation](match/ui/tooltip_manager.cpp), also
   used by ShapeButton's tooltip calls. The embedded vector now uses the shared

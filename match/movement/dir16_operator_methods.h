@@ -33,6 +33,14 @@ struct Dir16
     short Spare;  // +0x02  never written; exists because the return copy is a
                   //        single dword move, so the object is four bytes
 
+    // Inline wrapped difference; IsWithin uses it in place of the out-of-line Sub.
+    Dir16 operator-(Dir16 const& other) const
+    {
+        Dir16 result;
+        result.Raw = (short)(Raw - other.Raw);
+        return result;
+    }
+
     // FUNCTION: GAMEMD 0x5B2930
     Dir16 Add(Dir16 const& other) const;
     // FUNCTION: GAMEMD 0x5B2950

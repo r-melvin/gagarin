@@ -118,6 +118,21 @@ struct MSTimer
         StartTime = Clock.GetTime();
         Remaining = duration;
     }
+
+    // The time still on the clock (ordinary inline; PauseTimer's reader).
+    int TimeLeft()
+    {
+        int left = Remaining;
+        if (StartTime != -1) {
+            int elapsed = Clock.GetTime() - StartTime;
+            if (elapsed < left) {
+                left -= elapsed;
+            } else {
+                left = 0;
+            }
+        }
+        return left;
+    }
 };
 GG_STATIC_ASSERT(sizeof(MSTimer) == 0xC);
 
@@ -577,10 +592,8 @@ public:
     void  Attach(void* target);           // 0x5CEB50, slot 8
     void* DeletingDtor(unsigned int f);   // 0x5CEB60, slot 0
 
-    // The remaining time, expanded inside PauseTimer at 0x5CEAD3. Retail tests
-    // StartTime twice — once to decide whether to pause at all and once inside
-    // this reader — which is why the reader is a separate forced-inline helper
-    // rather than folded into its one caller.
+    // The remaining time, forced inline into MSPrintAnim::Update (0x5CDC50).
+    // PauseTimer uses MSTimer::TimeLeft instead.
     __forceinline int TimeLeft();
 };
 GG_STATIC_ASSERT(sizeof(MSAnim) == 0x1C

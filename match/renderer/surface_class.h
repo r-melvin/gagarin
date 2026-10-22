@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra. Surface/XSurface RTTI, vtables, slot
 // bodies and member offsets are read from retail gamemd.exe v1.001; every
-// address cited below was disassembled from its entry point. Slot names marked
-// "(Westwood idiom)" follow the RA1/TS-era Surface API and are accepted only
-// because the body's behaviour matches; the others keep unknown_XX names.
+// address cited below was disassembled from its entry point. Slot names
+// describe the behaviour of the slot bodies; the others keep unknown_XX names.
 #ifndef GG_MATCH_RENDER_SURFACES_SURFACE_H
 #define GG_MATCH_RENDER_SURFACES_SURFACE_H
 
@@ -94,18 +93,18 @@ public:
     // FUNCTION: GAMEMD 0x4AEC60 (decl; reloc)
     Surface(int width, int height);
 
-    // +0x04 (Westwood idiom: Copy_From whole surface), XSurface 0x7BBAF0
+    // +0x04, XSurface 0x7BBAF0
     virtual bool CopyFromWhole(Surface* src, bool a, bool b) = 0;
-    // +0x08 (Westwood idiom: Copy_From a source rectangle), XSurface 0x7BBB90; arg4 selects the
+    // +0x08, XSurface 0x7BBB90; arg4 selects the
     // BlitTrans leaf, arg5 is unread
     virtual bool CopyFromPart(RectangleStruct* dest, Surface* src,
                               RectangleStruct* srcRect, bool a, bool b) = 0;
-    // +0x0C (Westwood idiom: Copy_From with both clip rectangles), XSurface 0x7BBCF0;
+    // +0x0C, XSurface 0x7BBCF0;
     // arg1/arg4 are the destination/source surface bounds, arg2/arg5 the rectangles; arg7 is unread
     virtual bool CopyFrom(RectangleStruct* destClip, RectangleStruct* destRect,
                           Surface* src, RectangleStruct* srcClip,
                           RectangleStruct* srcRect, bool a, bool b) = 0;
-    // +0x10 (Westwood idiom: Fill_Rect), XSurface 0x7BB050
+    // +0x10, XSurface 0x7BB050
     virtual bool FillRectEx(RectangleStruct* clip, RectangleStruct* rect,
                             unsigned int color) = 0;
     // +0x14, XSurface 0x7BB020
@@ -114,14 +113,14 @@ public:
     virtual bool Fill(unsigned int color) = 0;
     // +0x1C, XSurface stub 0x7BB340 (returns false)
     virtual bool unknown_1C(RectangleStruct* clip, RectangleStruct* rect, int a) = 0;
-    // +0x20 (Westwood idiom: Draw_Ellipse), XSurface 0x7BB350
+    // +0x20, XSurface 0x7BB350
     virtual bool DrawEllipse(int cx, int cy, int rx, int ry,
                              RectangleStruct clip, unsigned int color) = 0;
-    // +0x24 (Westwood idiom: Put_Pixel), XSurface 0x7BAEB0
+    // +0x24, XSurface 0x7BAEB0
     virtual bool PutPixel(const Point2D* point, unsigned int color) = 0;
-    // +0x28 (Westwood idiom: Get_Pixel), XSurface 0x7BAE60
+    // +0x28, XSurface 0x7BAE60
     virtual unsigned int GetPixel(const Point2D* point) = 0;
-    // +0x2C (Westwood idiom: Draw_Line), XSurface 0x7BA610
+    // +0x2C, XSurface 0x7BA610
     virtual bool DrawLineEx(RectangleStruct* clip, Point2D* from, Point2D* to,
                             unsigned int color) = 0;
     // +0x30, XSurface 0x7BA5E0
@@ -264,13 +263,16 @@ public:
     virtual bool IsLocked();
     // FUNCTION: GAMEMD 0x411590 (decl; reloc) -- returns false.
     virtual bool unknown_84();
-    // FUNCTION: GAMEMD 0x7BAF90 (decl; reloc) -- bounded pixel write (Westwood idiom: Put_Pixel
-    // with a clip rectangle); bounds are half-open XYWH.
+    // FUNCTION: GAMEMD 0x7BAF90 (decl; reloc) -- bounded pixel write; bounds are half-open XYWH.
     virtual bool PutPixelClipped(const Point2D& point, unsigned int color,
                                  const XYWHStruct& bounds);
     // FUNCTION: GAMEMD 0x7BAF10 (decl; reloc) -- bounded pixel read.
     virtual unsigned int GetPixelClipped(const Point2D& point,
                                          const XYWHStruct& bounds);
+
+    // FUNCTION: GAMEMD 0x7BB920 -- midpoint circle as four mirrored spans.
+    void FUN_007BB920(int cx, int cy, int radius, RectangleStruct clip,
+                      unsigned int color);
 
     int LockLevel; // +0x0C: ++ by Lock, -- by Unlock, IsLocked is (!= 0)
 };

@@ -83,9 +83,9 @@ int __fastcall FUN_005B2EF0()
 }
 
 // FUNCTION: GAMEMD 0x005C61D0
-int __fastcall FUN_005C61D0()
+const unsigned short* __fastcall FUN_005C61D0()
 {
-    return (int)&DAT_0082E174;
+    return (const unsigned short*)&DAT_0082E174;
 }
 
 // FUNCTION: GAMEMD 0x005C61E0

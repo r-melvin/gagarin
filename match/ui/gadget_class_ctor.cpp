@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // Retail 0x4E12F0..0x4E133E establishes all stores and the conditional flag OR.
-// Partial: 17/26 instructions (65.4%); remaining differences are load/store
-// scheduling. Source rewrites, flag bisection and a validated bounded permuter
-// run did not improve this complete, native C++ body.
+// Exact once Next/Previous come from the inline LinkClass constructor: the base
+// stores them first, ahead of the member initialisers.
 #include "gadget_class_methods.h"
 
 extern GadgetClass* GadgetClass_StuckOn;    // 0x008B3E88
@@ -16,8 +15,6 @@ GadgetClass::GadgetClass(int x, int y, int width, int height,
     : X(x), Y(y), Width(width), Height(height), RedrawPending(0),
       IsSticky(sticky), IsDisabled(0), Flags(flags)
 {
-    Next = 0;
-    Previous = 0;
     if (sticky != 0) {
         Flags |= 5;
     }

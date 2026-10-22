@@ -3,6 +3,8 @@
 // Production-only explicit member-function specializations. Constructor,
 // destructor, derived vtable, harness table, and alpha-pool bodies are excluded.
 #include "b_zremap.h"
+#include "b_xlatalpha.h"   // BlitAlphaWrapRow
+#include "r_shared_zwrap.h"
 
 // FUNCTION: GAMEMD 0x491590
 // Provenance: retail entry 0x491590, full span 0x47 bytes; reviewed frozen M2 body against pinned v1.001 PE.
@@ -233,28 +235,34 @@ void BlitTransZRemapXlatAlpha<unsigned short>::BlitMoveTint(void* dest, const vo
 // FUNCTION: GAMEMD 0x494D90
 // Provenance: retail entry 0x494D90, full span 0xF8 bytes; reviewed frozen M2 body against pinned v1.001 PE.
 template <>
-void BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitCopy(void* dest, const void* src, int len, int zval, unsigned short* zbuf, unsigned short* abuf, int alvl, int)
+void BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitCopy(void* dest, const void* src, int len,
+                                                             int zval, unsigned short* zbuf,
+                                                             unsigned short* abuf, int alvl, int)
 {
-    unsigned short* z = zbuf;
-    const unsigned char* table = *xlat;
+    unsigned short* zb = zbuf;
     unsigned short* ab = abuf;
-    alvl = alvl > 0 ? alvl : 0;
-    alvl = (alvl * 261) >> 11;
-    if (alvl > 0xFE) alvl = 0xFE;
-    const unsigned short* row = alpha + (alvl << 8);
+    const unsigned char* table = *xlat;
+    int level = alvl > 0 ? alvl : 0;
+    level = (level * 261) >> 11;
+    if (level > 254)
+        level = 254;
+    unsigned short* row = alpha + (level << 8);
     if (len > 0) {
         int n = len;
+        unsigned short* d = (unsigned short*)dest;
         do {
-            if (zval < *z++) {
+            if (zval < *zb++) {
                 unsigned char c = *(const unsigned char*)src;
-                if (c) *(unsigned short*)dest = remap[row[*ab] | table[c]];
+                if (c != 0) {
+                    unsigned int a = *ab;
+                    *d = remap[row[a] | table[c]];
+                }
             }
-            dest = (unsigned short*)dest + 1;
             src = (const unsigned char*)src + 1;
-            z = RLEZWrapRow(z);
-            ++ab;
-            if (ab >= gg_blit_alpha_wrap_global->wrap_end)
-                ab = (unsigned short*)((unsigned char*)ab - gg_blit_alpha_wrap_global->wrap_step);
+            d++;
+            zb = RLEZWrapRow(zb);
+            ab++;
+            ab = BlitAlphaWrapRow(ab);
         } while (--n);
     }
 }

@@ -45,18 +45,15 @@ Dir16 Dir16::Div(int divisor) const
 // FUNCTION: GAMEMD 0x5B2990
 // True when this angle is within `tolerance` of `target`: the wrapped signed
 // difference, in absolute value, is no larger than the absolute tolerance.
-//
-// PARTIAL, 5.6% (1/18). Retail takes the tolerance's absolute value first,
-// into callee-saved ESI (a PUSH/POP pair), and returns a bare `SETGE AL`; the
-// plain body computes the difference first and returns via
-// `XOR EDX,EDX; SETGE DL; MOV AL,DL`. `abs(diff) <= abs(tolerance)` as a single
-// expression scores the same.
+// An explicit true/false return gives retail's bare `SETGE AL`; returning the
+// comparison itself zero-extends through another register first.
 bool Dir16::IsWithin(Dir16 const& target, Dir16 const& tolerance) const
 {
-    short diff = (short)(this->Raw - target.Raw);
-    int tol = abs((int)tolerance.Raw);
-
-    return tol >= abs((int)diff);
+    Dir16 diff = *this - target;
+    if (abs(tolerance.Raw) >= abs(diff.Raw)) {
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x5B29C0

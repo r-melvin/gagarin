@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "f551495e0f8e81e7a98b0ac0a88e15ca2b7e5ce04c66e7e653bb427759f1a655",
+  "manifest_sha256": "c1f6de0205c15264b57e55491e4c9c64d30a84fa36ea30ba3b56aefed922ad62",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 6210,
-  "matched_entries_missed": 522,
+  "matched_entries": 6298,
+  "matched_entries_missed": 523,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -6881,6 +6881,12 @@
    "addr": "0x631D30",
    "tu": "match/core/pipe_class_methods.cpp",
    "name": "Pipe::FUN_00631D30()",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x633130",
+   "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+   "name": "PKStraw::FUN_006C98E0",
    "reason": "no-preceding-CC-or-90"
   },
   {

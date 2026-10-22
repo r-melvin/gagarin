@@ -93,8 +93,9 @@ extern int DAT_00B45B68;
 extern Pump_0048D080** DAT_00B45B5C;
 // GLOBAL: GAMEMD 0xA8B238 — SessionClass::Instance.GameMode.
 extern int DAT_00A8B238;
-// GLOBAL: GAMEMD 0xA8DAB8 — the pump-enable flags.
-extern unsigned char DAT_00A8DAB8;
+// GLOBAL: GAMEMD 0xA8DAB8 — the pump-enable flags (a dword: 0x5F3170 reads,
+// masks and stores it whole; the bit-0 tests here compile to a byte TEST).
+extern unsigned int DAT_00A8DAB8;
 // GLOBAL: GAMEMD 0xA8DB30 — the local player's index.
 extern int DAT_00A8DB30;
 // GLOBAL: GAMEMD 0xB77DC2 — set while the screensaver guard is off.

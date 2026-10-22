@@ -7018,7 +7018,7 @@
  {
   "tu": "match/core/global_getter_family_methods.cpp",
   "addr": "0x005c61d0",
-  "sym": "?FUN_005C61D0@@YIHXZ",
+  "sym": "?FUN_005C61D0@@YIPBGXZ",
   "len": "0x6",
   "name": "FUN_005C61D0",
   "status": "matched",
@@ -23972,13 +23972,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_class_local_radar_methods.cpp",
+  "tu": "match/map/map_rect_usable_check.cpp",
   "addr": "0x578390",
-  "sym": "?InLocalRadar@Map_00578390@@QAEHPAURect_00578390@@_N@Z",
-  "len": "0xcd",
-  "name": "MapClass::InLocalRadar",
-  "status": "partial",
-  "pct": 94.4
+  "sym": "?IsRectWithinUsableArea@Map_00578390@@QAEHABURect_00578390@@_N@Z",
+  "len": "0xCD",
+  "name": "Map_00578390::IsRectWithinUsableArea",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/map_class_local_radar_methods.cpp",
@@ -24580,8 +24580,8 @@
   "sym": "?PauseTimer@MSAnim@@QAEXXZ",
   "len": "0x41",
   "name": "MSAnim",
-  "status": "partial",
-  "pct": 7.7
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/msanim_family_methods.cpp",
@@ -24985,8 +24985,8 @@
   "sym": "?IsWithin@Dir16@@QBE_NABU1@0@Z",
   "len": "0x2a",
   "name": "Dir16::IsWithin",
-  "status": "partial",
-  "pct": 5.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/dir16_operator_methods.cpp",
@@ -27754,13 +27754,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccini_class_type_list_methods.cpp",
+  "tu": "match/platform/ini_armor_list_writer.cpp",
   "addr": "0x475C70",
-  "sym": "?WriteArmorList@CCINI_00475C70@@QAE_NPBD0UTypeListInt@@@Z",
-  "len": "0xf7",
-  "name": "CCINIClass::WriteArmorList",
+  "sym": "?WriteArmorList@IniFile_00475C70@@QAE_NPBD0UIntList_00475C70@@@Z",
+  "len": "0xF7",
+  "name": "IniFile_00475C70::WriteArmorList",
   "status": "partial",
-  "pct": 4.4
+  "pct": 13.3
  },
  {
   "tu": "match/platform/ccini_class_type_list_methods.cpp",
@@ -27853,13 +27853,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/com_create_holder_methods.cpp",
+  "tu": "match/platform/com_holder_create_instance.cpp",
   "addr": "0x41C250",
-  "sym": "?Create@Holder_0041C250@@QAEJPBXPAUIUnknown_0041C250@@I@Z",
+  "sym": "?CreateInstance@ComPtr_0041C250@@QAEJPBXPAUComUnknown_0041C250@@K@Z",
   "len": "0x88",
-  "name": "Holder_0041C250::Create",
-  "status": "partial",
-  "pct": 42.9
+  "name": "ComPtr_0041C250::CreateInstance",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/platform/com_holder_ctor_methods.cpp",
@@ -28186,13 +28186,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/straws_get_methods.cpp",
+  "tu": "match/platform/lcw_block_straw_get.cpp",
   "addr": "0x552490",
-  "sym": "?Get@Straw_00552490@@QAEHPAXH@Z",
+  "sym": "?Get@BlockCompressStraw_00552490@@UAEHPAXH@Z",
   "len": "0x15A",
-  "name": "LCWStraw::Get",
-  "status": "partial",
-  "pct": 4.6
+  "name": "BlockCompressStraw_00552490::Get",
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/platform/system_query_methods.cpp",
@@ -28453,16 +28453,16 @@
   "len": "0x10A",
   "name": "Matrix3D::FromAxis",
   "status": "partial",
-  "pct": 85.9
+  "pct": 89.4
  },
  {
-  "tu": "match/renderer/matrix3d_quaternion_methods.cpp",
+  "tu": "match/renderer/quaternion_matrix_methods.cpp",
   "addr": "0x646980",
   "sym": "?FromQuaternion@Matrix3D@@SI?AU1@ABUQuaternion@@@Z",
-  "len": "0xf5",
+  "len": "0xF5",
   "name": "Matrix3D::FromQuaternion",
   "status": "partial",
-  "pct": 19.8
+  "pct": 23.5
  },
  {
   "tu": "match/renderer/matrix3d_rotate_methods.cpp",
@@ -28848,8 +28848,8 @@
   "sym": "?Dtor@CheckListClass@@QAEXXZ",
   "len": "0x3f",
   "name": "CheckListClass::Dtor",
-  "status": "partial",
-  "pct": 92.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/check_list_class_methods.cpp",
@@ -28893,8 +28893,8 @@
   "sym": "?ScalarDeletingDtor@CheckListClass@@QAEPAV1@E@Z",
   "len": "0x53",
   "name": "CheckListClass::ScalarDeletingDtor",
-  "status": "partial",
-  "pct": 93.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/color_list_class_methods.cpp",
@@ -31917,8 +31917,8 @@
   "sym": "??0GadgetClass@@QAE@HHHHID@Z",
   "len": "0x4F",
   "name": "GadgetClass::GadgetClass",
-  "status": "partial",
-  "pct": 65.4
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/control_class.cpp",
@@ -42627,10 +42627,8 @@
   "sym": "?BlitCopy@?$BlitPlainXlatAlpha@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0x9C",
   "name": "BlitPlainXlatAlpha<unsigned short>::BlitCopy",
-  "status": "partial",
-  "pct": 91.2,
-  "metric": "instruction-position",
-  "qualification": "Instruction-position metric: 52/57 = 91.2%; separate raw comparison is 140/156 with one relocation and three real difference runs."
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/b_plainxlat.cpp",
@@ -43976,10 +43974,8 @@
   "sym": "?BlitCopy@?$BlitTransZRemapXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
   "len": "0xF8",
   "name": "BlitTransZRemapXlatAlphaZRead<unsigned short>::BlitCopy",
-  "status": "partial",
-  "pct": 97.6,
-  "metric": "instruction-position",
-  "note": "Frozen capped body:83/85 instruction positions,233/248 raw bytes identical; relocation/load ordering differs. Not byte-exact."
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/b_zremap.cpp",
@@ -44154,14 +44150,12 @@
  },
  {
   "tu": "match/render/blitters/b_xlatalpha.cpp",
-  "addr": "0x494b60",
+  "addr": "0x494B60",
   "sym": "?BlitCopy@?$BlitTransXlatAlphaZRead@G@@UAEXPAXPBXHHPAG2HH@Z",
-  "len": "0xda",
+  "len": "0xDA",
   "name": "BlitTransXlatAlphaZRead<unsigned short>::BlitCopy",
-  "status": "partial",
-  "pct": 69.3,
-  "metric": "instruction-position",
-  "note": "Frozen M2 instruction-position diagnostic; not byte-exact. Body preserved; matching search capped."
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/b_xlatalpha.cpp",
@@ -44965,10 +44959,8 @@
   "sym": "?RLEBlit@?$RLEBlitTransDarkenZRead@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0xCB",
   "name": "RLEBlitTransDarkenZRead<unsigned short>::RLEBlit",
-  "status": "partial",
-  "pct": 46.3,
-  "metric": "instruction-position",
-  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/r_darken_remap.cpp",
@@ -45387,14 +45379,12 @@
  },
  {
   "tu": "match/render/blitters/r_alpha.cpp",
-  "addr": "0x497a10",
+  "addr": "0x497A10",
   "sym": "?RLEBlit@?$RLEBlitTransZRemapXlatAlpha@G@@UAEXPAXPBXHHHPAG2HHPBC@Z",
   "len": "0x122",
   "name": "RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit",
-  "status": "partial",
-  "pct": 89.7,
-  "metric": "instruction-position",
-  "note": "Frozen M3 readable body; capped instruction-position diagnostic, not byte-exact. No further matching search."
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/render/blitters/r_alpha.cpp",
@@ -59237,5 +59227,1364 @@
   "name": "WWMouseClass::vf_14",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "addr": "0x4116A0",
+  "sym": "?FUN_004116a0@@YAIPAUStreamSampleView@@@Z",
+  "len": "0x171",
+  "name": "FUN_004116a0",
+  "status": "partial",
+  "pct": 4.4
+ },
+ {
+  "tu": "match/core/audio_stream_slot_methods.cpp",
+  "addr": "0x4123A0",
+  "sym": "?FUN_004123a0@@YGXIIPAUStreamSampleView@@II@Z",
+  "len": "0x1A0",
+  "name": "FUN_004123a0",
+  "status": "partial",
+  "pct": 27.3
+ },
+ {
+  "tu": "match/core/frame_delta_decode_methods.cpp",
+  "addr": "0x4270D0",
+  "sym": "?FUN_004270d0@@YG_NPBXHPAXH@Z",
+  "len": "0x198",
+  "name": "FUN_004270d0",
+  "status": "partial",
+  "pct": 3.7
+ },
+ {
+  "tu": "match/core/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42A6D0",
+  "sym": "??0PathSearchClass@@QAE@XZ",
+  "len": "0x22A",
+  "name": "PathSearchClass::ctor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42A900",
+  "sym": "??1PathSearchClass@@QAE@XZ",
+  "len": "0x13D",
+  "name": "PathSearchClass::dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42BCA0",
+  "sym": "?FUN_0042bca0@PathSearchClass@@QAEXPAHHH0PAUPathCell@@@Z",
+  "len": "0x173",
+  "name": "PathSearchClass::FUN_0042bca0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42CCD0",
+  "sym": "?FUN_0042ccd0@PathSearchClass@@QAEXH@Z",
+  "len": "0x1D3",
+  "name": "PathSearchClass::FUN_0042ccd0",
+  "status": "partial",
+  "pct": 15.9
+ },
+ {
+  "tu": "match/core/path_search_ctor_dtor_methods.cpp",
+  "addr": "0x42CF80",
+  "sym": "?FUN_0042cf80@PathSearchClass@@QAEXHH@Z",
+  "len": "0x1E7",
+  "name": "PathSearchClass::FUN_0042cf80",
+  "status": "partial",
+  "pct": 7.3
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x479740",
+  "sym": "?FUN_00479740@CDDriveControl@@QAEXD@Z",
+  "len": "0x1B5",
+  "name": "CDDriveControl::FUN_00479740",
+  "status": "partial",
+  "pct": 9.0
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x479BA0",
+  "sym": "?FUN_00479ba0@CDDriveControl@@QAE_ND@Z",
+  "len": "0x1BE",
+  "name": "CDDriveControl::FUN_00479ba0",
+  "status": "partial",
+  "pct": 56.6
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x479D60",
+  "sym": "?FUN_00479d60@CDDriveControl@@QAE_ND@Z",
+  "len": "0x181",
+  "name": "CDDriveControl::FUN_00479d60",
+  "status": "partial",
+  "pct": 70.4
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x479EF0",
+  "sym": "?FUN_00479ef0@CDDriveControl@@QAE_ND@Z",
+  "len": "0x181",
+  "name": "CDDriveControl::FUN_00479ef0",
+  "status": "partial",
+  "pct": 70.4
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x47A3F0",
+  "sym": "?FUN_0047a3f0@CDDriveControl@@QAE_NPAXD@Z",
+  "len": "0x16E",
+  "name": "CDDriveControl::FUN_0047a3f0",
+  "status": "partial",
+  "pct": 81.2
+ },
+ {
+  "tu": "match/core/cd_drive_lock_methods.cpp",
+  "addr": "0x47A6F0",
+  "sym": "?FUN_0047a6f0@CDDriveControl@@SG_NPAV1@PAXEEF@Z",
+  "len": "0x15A",
+  "name": "CDDriveControl::FUN_0047a6f0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cd_find_file_methods.cpp",
+  "addr": "0x47AF70",
+  "sym": "?FUN_0047af70@@YI_NPAD@Z",
+  "len": "0x14B",
+  "name": "FUN_0047af70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/list_inisection_ctor_methods.cpp",
+  "addr": "0x49E8E0",
+  "sym": "??0?$List@PAUINISection@INIClass@@@@QAE@XZ",
+  "len": "0x6F",
+  "name": "??0?$List@PAUINISection@INIClass@@@@QAE@XZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A2B60",
+  "sym": "?Read@CStreamClass@@QAGJPAXJPAK@Z",
+  "len": "0x168",
+  "name": "CStreamClass::Read",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/ddraw_set_mode_methods.cpp",
+  "addr": "0x4A42F0",
+  "sym": "?FUN_004a42f0@@YI_NPAXHHH@Z",
+  "len": "0x1FB",
+  "name": "FUN_004a42f0",
+  "status": "partial",
+  "pct": 50.3
+ },
+ {
+  "tu": "match/renderer/ddraw_mode_list_methods.cpp",
+  "addr": "0x4A4900",
+  "sym": "?FUN_004a4900@@YIPAKKKKKK@Z",
+  "len": "0x1BB",
+  "name": "FUN_004a4900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/direction_dial_ctor_methods.cpp",
+  "addr": "0x4A53B0",
+  "sym": "??0DirectionDial_004A53B0@@QAE@HHHHHH@Z",
+  "len": "0x2B0",
+  "name": "DirectionDial_004A53B0::ctor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dib_section_ctor_methods.cpp",
+  "addr": "0x4A6840",
+  "sym": "??0DibSectionClass@@QAE@PAXHHABUDibPalette@@@Z",
+  "len": "0x1AE",
+  "name": "DibSectionClass::ctor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dib_surface_holder_methods.cpp",
+  "addr": "0x4A69F0",
+  "sym": "??1DibSurfaceHolder@@QAE@XZ",
+  "len": "0x30",
+  "name": "DibSurfaceHolder::dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/dsurface_dtor_methods.cpp",
+  "addr": "0x4BA6B0",
+  "sym": "??1DSurface@@UAE@XZ",
+  "len": "0x62",
+  "name": "DSurface::dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/remap_table_build_methods.cpp",
+  "addr": "0x4C38E0",
+  "sym": "?FUN_004c38e0@@YIPAEABUColorTable_00626070@@PBURemapEntry@@HPAE@Z",
+  "len": "0x140",
+  "name": "FUN_004c38e0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/hsv_to_rgb_methods.cpp",
+  "addr": "0x517440",
+  "sym": "?FUN_00517440@HSVTriple@@QBE?AURGBTripleValue@@XZ",
+  "len": "0x115",
+  "name": "HSVTriple::FUN_00517440",
+  "status": "partial",
+  "pct": 75.5
+ },
+ {
+  "tu": "match/platform/ini_index_list_reader_methods.cpp",
+  "addr": "0x525430",
+  "sym": "?FUN_00525430@@YI?AUTypeListInt@@PAVCCINI_00475C70@@PBD1U1@@Z",
+  "len": "0x1B7",
+  "name": "FUN_00525430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "addr": "0x527C10",
+  "sym": "?WriteIntQuad@INIClass@@QAE_NPBD0ABUIniIntQuad@@@Z",
+  "len": "0x48",
+  "name": "INIClass::WriteIntQuad",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "addr": "0x529BF0",
+  "sym": "?WriteIntTriple@INIClass@@QAE_NPBD0ABUIniIntTriple@@@Z",
+  "len": "0x44",
+  "name": "INIClass::WriteIntTriple",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "addr": "0x52A040",
+  "sym": "?WriteFloatTriple@INIClass@@QAE_NPBD0ABUIniFloatTriple@@@Z",
+  "len": "0x53",
+  "name": "INIClass::WriteFloatTriple",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/platform/ini_section_find_entry_methods.cpp",
+  "addr": "0x52A4D0",
+  "sym": "?FindEntry@INISectionEntryView@@QAEPAUINIEntry@INIClass@@PBD@Z",
+  "len": "0x131",
+  "name": "INISectionEntryView::FindEntry",
+  "status": "partial",
+  "pct": 37.0
+ },
+ {
+  "tu": "match/core/ini_composite_writers_methods.cpp",
+  "addr": "0x52A610",
+  "sym": "?WriteKeyBlocks@CCINIClass@@QAE_NABVIniKeyBlockSource@@@Z",
+  "len": "0x5A",
+  "name": "CCINIClass::WriteKeyBlocks",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/render/palette_blend_table_methods.cpp",
+  "addr": "0x538D40",
+  "sym": "?FUN_00538D40@@YAXXZ",
+  "len": "0x12D",
+  "name": "FUN_00538D40",
+  "status": "partial",
+  "pct": 86.8
+ },
+ {
+  "tu": "match/render/cell_light_queue_methods.cpp",
+  "addr": "0x554D50",
+  "sym": "?FUN_00554D50@@YIXH_N@Z",
+  "len": "0x319",
+  "name": "FUN_00554D50",
+  "status": "partial",
+  "pct": 8.5
+ },
+ {
+  "tu": "match/core/lzo_pipe_put.cpp",
+  "addr": "0x55C350",
+  "sym": "?FUN_00631D10@LZOPipe@@UAEHHH@Z",
+  "len": "0x28B",
+  "name": "LZOPipe::FUN_00631D10",
+  "status": "partial",
+  "pct": 99.1
+ },
+ {
+  "tu": "match/map/map_cache_prune_methods.cpp",
+  "addr": "0x595CE0",
+  "sym": "?FUN_00595CE0@@YAXXZ",
+  "len": "0x2C8",
+  "name": "FUN_00595CE0",
+  "status": "partial",
+  "pct": 78.0
+ },
+ {
+  "tu": "match/map/cell_rect_check_methods.cpp",
+  "addr": "0x5A7250",
+  "sym": "?FUN_005A7250@@YI_NPBURect_005A7250@@_N1@Z",
+  "len": "0x1E6",
+  "name": "FUN_005A7250",
+  "status": "partial",
+  "pct": 9.6
+ },
+ {
+  "tu": "match/renderer/quaternion_matrix_methods.cpp",
+  "addr": "0x5AF710",
+  "sym": "?FUN_005AF710@Matrix3D@@QAEXABUVector3@@0M@Z",
+  "len": "0x26D",
+  "name": "Matrix3D::FUN_005AF710",
+  "status": "partial",
+  "pct": 95.8
+ },
+ {
+  "tu": "match/core/registry_value_search_methods.cpp",
+  "addr": "0x5BB580",
+  "sym": "?FUN_005bb580@@YIPAUHKEY__@@PAU1@PBD1@Z",
+  "len": "0x159",
+  "name": "FUN_005bb580",
+  "status": "partial",
+  "pct": 17.4
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C6660",
+  "sym": "?FUN_005c6660@@YIXPAIHH@Z",
+  "len": "0x132",
+  "name": "FUN_005c6660",
+  "status": "partial",
+  "pct": 10.5
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C67A0",
+  "sym": "?FUN_005c67a0@@YIXPAIHH@Z",
+  "len": "0x132",
+  "name": "FUN_005c67a0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C6BC0",
+  "sym": "?FUN_005c6bc0@@YIHPAI00H@Z",
+  "len": "0x1CD",
+  "name": "FUN_005c6bc0",
+  "status": "partial",
+  "pct": 61.0
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C6FE0",
+  "sym": "?FUN_005c6fe0@@YIHPAI00H@Z",
+  "len": "0x1FB",
+  "name": "FUN_005c6fe0",
+  "status": "partial",
+  "pct": 4.6
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C7310",
+  "sym": "?FUN_005c7310@@YIHPAI000H@Z",
+  "len": "0x210",
+  "name": "FUN_005c7310",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C7740",
+  "sym": "?FUN_005c7740@@YIXPAI00H@Z",
+  "len": "0x249",
+  "name": "FUN_005c7740",
+  "status": "partial",
+  "pct": 62.5
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C7990",
+  "sym": "?FUN_005c7990@@YIHPAI0H@Z",
+  "len": "0x206",
+  "name": "FUN_005c7990",
+  "status": "partial",
+  "pct": 48.4
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C7BA0",
+  "sym": "?FUN_005c7ba0@@YIXPBDPAIH@Z",
+  "len": "0x1CE",
+  "name": "FUN_005c7ba0",
+  "status": "partial",
+  "pct": 50.8
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C7EC0",
+  "sym": "?FUN_005c7ec0@@YIHPAIH@Z",
+  "len": "0x1DB",
+  "name": "FUN_005c7ec0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C80A0",
+  "sym": "?FUN_005c80a0@@YIHPAI00H@Z",
+  "len": "0x311",
+  "name": "FUN_005c80a0",
+  "status": "partial",
+  "pct": 2.1
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C8500",
+  "sym": "?FUN_005c8500@@YIHPAI000H@Z",
+  "len": "0x36F",
+  "name": "FUN_005c8500",
+  "status": "partial",
+  "pct": 27.6
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C8980",
+  "sym": "?FUN_005c8980@@YI_NPAIIH@Z",
+  "len": "0x130",
+  "name": "FUN_005c8980",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C8E40",
+  "sym": "?FUN_005c8e40@@YIXPAIPAVByteSource_005C8980@@00H@Z",
+  "len": "0x1D7",
+  "name": "FUN_005c8e40",
+  "status": "partial",
+  "pct": 27.5
+ },
+ {
+  "tu": "match/core/mp_word_arith_methods.cpp",
+  "addr": "0x5C9020",
+  "sym": "?FUN_005c9020@@YI_NPAIH@Z",
+  "len": "0x1AB",
+  "name": "FUN_005c9020",
+  "status": "partial",
+  "pct": 35.4
+ },
+ {
+  "tu": "match/map/msvqanim_draw_methods.cpp",
+  "addr": "0x5CD0E0",
+  "sym": "?Draw@MSVQAnimDraw@@UAEXHPAUMSRect@@@Z",
+  "len": "0x15E",
+  "name": "MSVQAnimDraw::Draw",
+  "status": "partial",
+  "pct": 17.3
+ },
+ {
+  "tu": "match/core/wol_serial_key_methods.cpp",
+  "addr": "0x5DC170",
+  "sym": "?FUN_005dc170@@YI_NPAD@Z",
+  "len": "0x1D2",
+  "name": "FUN_005dc170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/null_modem_init_methods.cpp",
+  "addr": "0x5F16E0",
+  "sym": "?Init@NullModemInitView@@QAEHHHPADHDHH@Z",
+  "len": "0x261",
+  "name": "NullModemInitView::Init",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/null_modem_init_methods.cpp",
+  "addr": "0x5F3170",
+  "sym": "?FUN_005f3170@NullModemInitView@@QAE_NXZ",
+  "len": "0x1AE",
+  "name": "NullModemInitView::FUN_005f3170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/text_obscure_methods.cpp",
+  "addr": "0x5F9E80",
+  "sym": "?FUN_005f9e80@@YIHPBD@Z",
+  "len": "0x242",
+  "name": "FUN_005f9e80",
+  "status": "partial",
+  "pct": 54.3
+ },
+ {
+  "tu": "match/core/pcx_bits_strip_methods.cpp",
+  "addr": "0x621D30",
+  "sym": "?FUN_00621d30@@YIXPAURect_00621D30@@PAX@Z",
+  "len": "0x155",
+  "name": "FUN_00621d30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/window_list_collect_methods.cpp",
+  "addr": "0x622470",
+  "sym": "?FUN_00622470@@YGHPAUHWND__@@J@Z",
+  "len": "0x16D",
+  "name": "FUN_00622470",
+  "status": "partial",
+  "pct": 9.0
+ },
+ {
+  "tu": "match/core/hash_table_remove_methods.cpp",
+  "addr": "0x6249A0",
+  "sym": "?Remove@?$HashTable_006249A0@HH@@QAE_NABHAAH@Z",
+  "len": "0x23F",
+  "name": "?Remove@?$HashTable_006249A0@HH@@QAE_NABHAAH@Z",
+  "status": "partial",
+  "pct": 99.1
+ },
+ {
+  "tu": "match/core/hash_table_remove_methods.cpp",
+  "addr": "0x625090",
+  "sym": "?Remove@?$HashTable_006249A0@UCellKey_00625090@@D@@QAE_NABUCellKey_00625090@@AAD@Z",
+  "len": "0x25F",
+  "name": "?Remove@?$HashTable_006249A0@UCellKey_00625090@@D@@QAE_NABUCellKey_00625090@@AAD@Z",
+  "status": "partial",
+  "pct": 20.3
+ },
+ {
+  "tu": "match/core/entry_list_copy_methods.cpp",
+  "addr": "0x6255F0",
+  "sym": "??0EntryRecord_006255F0@@QAE@ABV0@@Z",
+  "len": "0x184",
+  "name": "EntryRecord_006255F0::ctor",
+  "status": "partial",
+  "pct": 22.2
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x626070",
+  "sym": "??0ColorTable_00626070@@QAE@ABU0@@Z",
+  "len": "0x30",
+  "name": "ColorTable_00626070::ctor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x626120",
+  "sym": "?FUN_00626120@ColorTable_00626070@@QAEXHABU1@@Z",
+  "len": "0x41",
+  "name": "ColorTable_00626070::FUN_00626120",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x626170",
+  "sym": "?FUN_00626170@ColorTable_00626070@@QAEXHPBD@Z",
+  "len": "0x36",
+  "name": "ColorTable_00626070::FUN_00626170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x6261B0",
+  "sym": "?FUN_006261B0@ColorTable_00626070@@QAEXHABU1@PBD@Z",
+  "len": "0x4B",
+  "name": "ColorTable_00626070::FUN_006261B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x626200",
+  "sym": "?Nearest@ColorTable_00626070@@QBEHABUColorRGB_00661350@@@Z",
+  "len": "0x45",
+  "name": "ColorTable_00626070::Nearest",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pk_key_generate_methods.cpp",
+  "addr": "0x632050",
+  "sym": "?FUN_00632050@@YIXPAVStraw@@HPAVPKey_00632740@@1@Z",
+  "len": "0x6EB",
+  "name": "FUN_00632050",
+  "status": "partial",
+  "pct": 89.8
+ },
+ {
+  "tu": "match/core/pk_block_crypt_methods.cpp",
+  "addr": "0x632740",
+  "sym": "?Encrypt@PKey_00632740@@QBEHPBXHPAX@Z",
+  "len": "0x12F",
+  "name": "PKey_00632740::Encrypt",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pk_block_crypt_methods.cpp",
+  "addr": "0x632870",
+  "sym": "?Decrypt@PKey_00632740@@QBEHPBXHPAX@Z",
+  "len": "0x150",
+  "name": "PKey_00632740::Decrypt",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/modular_counter_bank_methods.cpp",
+  "addr": "0x632C40",
+  "sym": "?Advance@ModularCounterBank_00632C40@@QAEXG@Z",
+  "len": "0x6C",
+  "name": "ModularCounterBank_00632C40::Advance",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+  "addr": "0x632DC0",
+  "sym": "?FUN_00631D10@PKPipe@@UAEHHH@Z",
+  "len": "0x168",
+  "name": "PKPipe::FUN_00631D10",
+  "status": "partial",
+  "pct": 88.3
+ },
+ {
+  "tu": "match/core/pk_pipe_straw_io_methods.cpp",
+  "addr": "0x633130",
+  "sym": "?FUN_006C98E0@PKStraw@@UAEHHH@Z",
+  "len": "0x1C7",
+  "name": "PKStraw::FUN_006C98E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/polygon_scan_methods.cpp",
+  "addr": "0x63F080",
+  "sym": "?FUN_0063F080@@YIXPAUPolygon_0063F080@@PAUScanBuffer_0063F080@@@Z",
+  "len": "0x25A",
+  "name": "FUN_0063F080",
+  "status": "partial",
+  "pct": 35.9
+ },
+ {
+  "tu": "match/core/polygon_scan_methods.cpp",
+  "addr": "0x63F2E0",
+  "sym": "?FUN_0063F2E0@@YIXHHHHHHPAPAUScanSpan_0063F080@@@Z",
+  "len": "0x1B7",
+  "name": "FUN_0063F2E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/quaternion_matrix_methods.cpp",
+  "addr": "0x646590",
+  "sym": "?FUN_00646590@@YI?AUQuaternion@@ABU1@0M@Z",
+  "len": "0x199",
+  "name": "FUN_00646590",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/quaternion_matrix_methods.cpp",
+  "addr": "0x646730",
+  "sym": "?FUN_00646730@@YI?AUQuaternion@@ABUMatrix3D@@@Z",
+  "len": "0x245",
+  "name": "FUN_00646730",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/palette_rgb_blend_methods.cpp",
+  "addr": "0x661350",
+  "sym": "?Difference@ColorRGB_00661350@@QBEHABU1@@Z",
+  "len": "0x46",
+  "name": "ColorRGB_00661350::Difference",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rgb_to_hsv_methods.cpp",
+  "addr": "0x6613A0",
+  "sym": "?FUN_006613A0@RGBClass@@QBE?AUHSVClass@@XZ",
+  "len": "0x141",
+  "name": "RGBClass::FUN_006613A0",
+  "status": "partial",
+  "pct": 84.7
+ },
+ {
+  "tu": "match/core/zero_run_codec_methods.cpp",
+  "addr": "0x661530",
+  "sym": "?FUN_00661530@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
+  "len": "0x5F",
+  "name": "ZeroRunCodec_00661530::FUN_00661530",
+  "status": "partial",
+  "pct": 8.5
+ },
+ {
+  "tu": "match/core/zero_run_codec_methods.cpp",
+  "addr": "0x661590",
+  "sym": "?Encode@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
+  "len": "0x3E",
+  "name": "ZeroRunCodec_00661530::Encode",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/zero_run_codec_methods.cpp",
+  "addr": "0x6615D0",
+  "sym": "?Decode@ZeroRunCodec_00661530@@QAEHPBEPAEH@Z",
+  "len": "0x62",
+  "name": "ZeroRunCodec_00661530::Decode",
+  "status": "partial",
+  "pct": 54.2
+ },
+ {
+  "tu": "match/core/storage_name_stream_methods.cpp",
+  "addr": "0x682640",
+  "sym": "?FUN_00682640@@YGJPAUIStorage@@HPBD@Z",
+  "len": "0x137",
+  "name": "FUN_00682640",
+  "status": "partial",
+  "pct": 94.6
+ },
+ {
+  "tu": "match/core/blink_cursor_draw_methods.cpp",
+  "addr": "0x68FFE0",
+  "sym": "?FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z",
+  "len": "0x163",
+  "name": "BlinkCursorHost_0068FFE0::FUN_0068FFE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/sha_partial_block_methods.cpp",
+  "addr": "0x69D8C0",
+  "sym": "?FUN_0069D8C0@ShaEngineView_0069D8C0@@QAEXAAPBXAAJ@Z",
+  "len": "0x93",
+  "name": "ShaEngineView_0069D8C0::FUN_0069D8C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/sha_block_methods.cpp",
+  "addr": "0x69DB30",
+  "sym": "?FUN_0069DB30@SHAState_0069DB30@@QBEXPBXAAUShaState_0069DB30@@@Z",
+  "len": "0x195",
+  "name": "SHAState_0069DB30::FUN_0069DB30",
+  "status": "partial",
+  "pct": 83.1
+ },
+ {
+  "tu": "match/core/hash_table_clear_methods.cpp",
+  "addr": "0x6B9530",
+  "sym": "??1?$HashTable_006249A0@VKey_006B9530@@UValue_006B9530@@@@QAE@XZ",
+  "len": "0x20E",
+  "name": "??1?$HashTable_006249A0@VKey_006B9530@@UValue_006B9530@@@@QAE@XZ",
+  "status": "partial",
+  "pct": 16.8
+ },
+ {
+  "tu": "match/core/hash_table_clear_methods.cpp",
+  "addr": "0x6BAEF0",
+  "sym": "?Shrink@?$HashTable_006249A0@VKey_006B9530@@UValue_006B9530@@@@QAEXXZ",
+  "len": "0xAE",
+  "name": "?Shrink@?$HashTable_006249A0@VKey_006B9530@@UValue_006B9530@@@@QAEXXZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/com_server_registry_methods.cpp",
+  "addr": "0x6BB2E0",
+  "sym": "?FUN_006BB2E0@@YI_NPBD00@Z",
+  "len": "0xA4",
+  "name": "FUN_006BB2E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/com_server_registry_methods.cpp",
+  "addr": "0x6BB390",
+  "sym": "?FUN_006bb390@@YIHXZ",
+  "len": "0x3C1",
+  "name": "FUN_006bb390",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/com_server_registry_methods.cpp",
+  "addr": "0x6BB760",
+  "sym": "?FUN_006bb760@@YIHXZ",
+  "len": "0x17A",
+  "name": "FUN_006bb760",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/rgb_lookup_table_methods.cpp",
+  "addr": "0x748220",
+  "sym": "?FUN_00748220@@YI_NI@Z",
+  "len": "0x140",
+  "name": "FUN_00748220",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/product_version_string_methods.cpp",
+  "addr": "0x74FDC0",
+  "sym": "?FUN_0074fdc0@@YIPADXZ",
+  "len": "0x130",
+  "name": "FUN_0074fdc0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/directory_usage_scan_methods.cpp",
+  "addr": "0x751EA0",
+  "sym": "?FUN_00751ea0@@YIXPBDPAH11@Z",
+  "len": "0x171",
+  "name": "FUN_00751ea0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_draw_buffer_clear_methods.cpp",
+  "addr": "0x753E00",
+  "sym": "?FUN_00753e00@@YIXXZ",
+  "len": "0x183",
+  "name": "FUN_00753e00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_draw_bounds_methods.cpp",
+  "addr": "0x7540F0",
+  "sym": "?FUN_007540f0@@YIXPAUVoxelSectionSource@@HHPAUMatrix3DRows@@@Z",
+  "len": "0x1F7",
+  "name": "FUN_007540f0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x756590",
+  "sym": "?FUN_00756590@VoxelModel@@QAEXPAUVoxelDrawEntry@@PAUVector3D@@@Z",
+  "len": "0x2C7",
+  "name": "VoxelModel::FUN_00756590",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x756BB0",
+  "sym": "?FUN_00756bb0@VoxelModel@@QAEXXZ",
+  "len": "0x21E",
+  "name": "VoxelModel::FUN_00756bb0",
+  "status": "partial",
+  "pct": 98.7
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x756DD0",
+  "sym": "?FUN_00756dd0@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x1A1",
+  "name": "FUN_00756dd0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x756F80",
+  "sym": "?FUN_00756f80@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x19B",
+  "name": "FUN_00756f80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x757120",
+  "sym": "?FUN_00757120@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x235",
+  "name": "FUN_00757120",
+  "status": "partial",
+  "pct": 98.8
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x757360",
+  "sym": "?FUN_00757360@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x233",
+  "name": "FUN_00757360",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x757E70",
+  "sym": "?FUN_00757e70@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x1B6",
+  "name": "FUN_00757e70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x758030",
+  "sym": "?FUN_00758030@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x1BE",
+  "name": "FUN_00758030",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x7581F0",
+  "sym": "?FUN_007581f0@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x233",
+  "name": "FUN_007581f0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_model_span_methods.cpp",
+  "addr": "0x758430",
+  "sym": "?FUN_00758430@@YAXPAUVoxelSpanParams@@@Z",
+  "len": "0x231",
+  "name": "FUN_00758430",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/voxel_palette_shade_methods.cpp",
+  "addr": "0x758B70",
+  "sym": "?FUN_00758b70@VoxelShadePalette@@QAEXPAMH@Z",
+  "len": "0x299",
+  "name": "VoxelShadePalette::FUN_00758b70",
+  "status": "partial",
+  "pct": 22.6
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x7741C0",
+  "sym": "?FUN_007741C0@@YIPAUHKEY__@@PAU1@PBD_N@Z",
+  "len": "0x148",
+  "name": "FUN_007741C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774410",
+  "sym": "?FUN_00774410@WinModemClass@@UAEPAXPADHHHH@Z",
+  "len": "0x25B",
+  "name": "WinModemClass::FUN_00774410",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774670",
+  "sym": "?Enter_Failsafe_Mode@WinModemClass@@QAE_NXZ",
+  "len": "0x143",
+  "name": "WinModemClass::Enter_Failsafe_Mode",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774980",
+  "sym": "?Read_Serial_Chars@WinModemClass@@QAE_NXZ",
+  "len": "0x1AF",
+  "name": "WinModemClass::Read_Serial_Chars",
+  "status": "partial",
+  "pct": 90.1
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774CD0",
+  "sym": "?Get_Modem_Result@WinModemClass@@UAEHHPADHH@Z",
+  "len": "0x277",
+  "name": "WinModemClass::Get_Modem_Result",
+  "status": "partial",
+  "pct": 87.8
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x774F50",
+  "sym": "?Dial_Modem@WinModemClass@@UAEXPAD@Z",
+  "len": "0x1B2",
+  "name": "WinModemClass::Dial_Modem",
+  "status": "partial",
+  "pct": 92.1
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x775110",
+  "sym": "?FUN_00775110@WinModemClass@@UAEHPADD0HHHH@Z",
+  "len": "0x384",
+  "name": "WinModemClass::FUN_00775110",
+  "status": "partial",
+  "pct": 38.3
+ },
+ {
+  "tu": "match/network/win_modem_serial_methods.cpp",
+  "addr": "0x7754D0",
+  "sym": "?FUN_007754D0@WinModemClass@@QAEXKU_COMSTAT@@@Z",
+  "len": "0x13D",
+  "name": "WinModemClass::FUN_007754D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x775BC0",
+  "sym": "?ScaleChildEnumProc@@YGHPAUHWND__@@J@Z",
+  "len": "0x1A4",
+  "name": "ScaleChildEnumProc",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x775DB0",
+  "sym": "?FUN_00775DB0@@YIPAUHFONT__@@PAUHDC__@@PBDHHH@Z",
+  "len": "0x2FF",
+  "name": "FUN_00775DB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x7760B0",
+  "sym": "?FUN_007760B0@@YIPAUHFONT__@@PAUHDC__@@PBDHHI@Z",
+  "len": "0x15E",
+  "name": "FUN_007760B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x776320",
+  "sym": "?FUN_00776320@@YI_NJ@Z",
+  "len": "0x16A",
+  "name": "FUN_00776320",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x7768F0",
+  "sym": "?FUN_007768F0@@YGHPAUHWND__@@J@Z",
+  "len": "0x171",
+  "name": "FUN_007768F0",
+  "status": "partial",
+  "pct": 93.8
+ },
+ {
+  "tu": "match/ui/dialog_window_helpers.cpp",
+  "addr": "0x776B40",
+  "sym": "?FUN_00776B40@@YGHPAUHWND__@@J@Z",
+  "len": "0x18E",
+  "name": "FUN_00776B40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/grow_list_handle_tables_methods.cpp",
+  "addr": "0x797C20",
+  "sym": "?FUN_00797C20@@YIXXZ",
+  "len": "0x4F4",
+  "name": "FUN_00797C20",
+  "status": "partial",
+  "pct": 33.6
+ },
+ {
+  "tu": "match/core/grow_list_handle_tables_methods.cpp",
+  "addr": "0x798140",
+  "sym": "?FUN_00798140@@YIXXZ",
+  "len": "0x152",
+  "name": "FUN_00798140",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/grow_list_insert_methods.cpp",
+  "addr": "0x7ACA00",
+  "sym": "?Insert@?$GrowList@UGrowListRecord6C@@@@QAE_NABUGrowListRecord6C@@H@Z",
+  "len": "0x186",
+  "name": "?Insert@?$GrowList@UGrowListRecord6C@@@@QAE_NABUGrowListRecord6C@@H@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/grow_list_insert_methods.cpp",
+  "addr": "0x7AD790",
+  "sym": "?Insert@?$GrowList@UGrowListRecord10C@@@@QAE_NABUGrowListRecord10C@@H@Z",
+  "len": "0x197",
+  "name": "?Insert@?$GrowList@UGrowListRecord10C@@@@QAE_NABUGrowListRecord10C@@H@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/grow_list_insert_methods.cpp",
+  "addr": "0x7ADB00",
+  "sym": "?Insert@?$GrowList@H@@QAE_NABHH@Z",
+  "len": "0x15A",
+  "name": "GrowList<H>::Insert",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/chained_hash_table_remove_methods.cpp",
+  "addr": "0x7ADCD0",
+  "sym": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
+  "len": "0x291",
+  "name": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
+  "status": "partial",
+  "pct": 30.2
+ },
+ {
+  "tu": "match/core/grow_list_insert_methods.cpp",
+  "addr": "0x7AE5D0",
+  "sym": "?Insert@?$GrowList@UGrowListHandle@@@@QAE_NABUGrowListHandle@@H@Z",
+  "len": "0x15C",
+  "name": "?Insert@?$GrowList@UGrowListHandle@@@@QAE_NABUGrowListHandle@@H@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/heap_string_concat_methods.cpp",
+  "addr": "0x7B4DA0",
+  "sym": "??HHeapString@@QBE?AV0@PBD@Z",
+  "len": "0x12F",
+  "name": "??HHeapString@@QBE?AV0@PBD@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/heap_string_concat_methods.cpp",
+  "addr": "0x7B4ED0",
+  "sym": "??HHeapString@@QBE?AV0@ABV0@@Z",
+  "len": "0x146",
+  "name": "??HHeapString@@QBE?AV0@ABV0@@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/renderer/xsurface_circle_methods.cpp",
+  "addr": "0x7BB920",
+  "sym": "?FUN_007BB920@XSurface@@QAEXHHHURectangleStruct@@I@Z",
+  "len": "0x189",
+  "name": "XSurface::FUN_007BB920",
+  "status": "partial",
+  "pct": 2.9
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BD470",
+  "sym": "?FUN_007bd470@@YAHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x14A",
+  "name": "FUN_007bd470",
+  "status": "partial",
+  "pct": 1.7
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BD690",
+  "sym": "?FUN_007bd690@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x8E2",
+  "name": "FUN_007bd690",
+  "status": "partial",
+  "pct": 10.2
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BE4A0",
+  "sym": "?FUN_007be4a0@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x12C",
+  "name": "FUN_007be4a0",
+  "status": "partial",
+  "pct": 12.4
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BE670",
+  "sym": "?FUN_007be670@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x1BF",
+  "name": "FUN_007be670",
+  "status": "partial",
+  "pct": 4.7
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BEA80",
+  "sym": "?FUN_007bea80@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x399",
+  "name": "FUN_007bea80",
+  "status": "partial",
+  "pct": 0.9
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BEE20",
+  "sym": "?FUN_007bee20@@YIHPAUMovieHandle_007BD470@@PAUMovieConfig_007BD470@@PAUMovieDrawState_007BD470@@PAUMovieFrame_007BD470@@I@Z",
+  "len": "0x1B4",
+  "name": "FUN_007bee20",
+  "status": "partial",
+  "pct": 86.1
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7BF240",
+  "sym": "?FUN_007bf240@@YAHPAUMovieHandle_007BD470@@HPAXH@Z",
+  "len": "0x132",
+  "name": "FUN_007bf240",
+  "status": "partial",
+  "pct": 16.4
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C0530",
+  "sym": "?FUN_007c0530@@YIHPAUMovieHandle_007BD470@@HH@Z",
+  "len": "0x179",
+  "name": "FUN_007c0530",
+  "status": "partial",
+  "pct": 46.3
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C0740",
+  "sym": "?FUN_007c0740@@YIHPAUMovieHandle_007BD470@@HHDDPAD@Z",
+  "len": "0x539",
+  "name": "FUN_007c0740",
+  "status": "partial",
+  "pct": 2.6
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C1150",
+  "sym": "?FUN_007c1150@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x153",
+  "name": "FUN_007c1150",
+  "status": "partial",
+  "pct": 78.8
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C1A70",
+  "sym": "?FUN_007c1a70@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x161",
+  "name": "FUN_007c1a70",
+  "status": "partial",
+  "pct": 78.6
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C1BE0",
+  "sym": "?FUN_007c1be0@@YIHPAUMovieHandle_007BD470@@@Z",
+  "len": "0x152",
+  "name": "FUN_007c1be0",
+  "status": "partial",
+  "pct": 78.8
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C2250",
+  "sym": "?FUN_007c2250@@YIHPAUMovieHandle_007BD470@@H@Z",
+  "len": "0x1BB",
+  "name": "FUN_007c2250",
+  "status": "partial",
+  "pct": 98.8
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C2410",
+  "sym": "?FUN_007c2410@@YIHPAUMovieHandle_007BD470@@I@Z",
+  "len": "0x175",
+  "name": "FUN_007c2410",
+  "status": "partial",
+  "pct": 95.1
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C2590",
+  "sym": "?FUN_007c2590@@YIHPBDPAUMovieConfig_007BD470@@PAPAUMovieHandle_007BD470@@@Z",
+  "len": "0x6C7",
+  "name": "FUN_007c2590",
+  "status": "partial",
+  "pct": 9.9
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C2D00",
+  "sym": "?FUN_007c2d00@@YIHPAUMovieHandle_007BD470@@HH@Z",
+  "len": "0x3C2",
+  "name": "FUN_007c2d00",
+  "status": "partial",
+  "pct": 47.9
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C30D0",
+  "sym": "?FUN_007c30d0@@YIHPAUMovieHandle_007BD470@@HH@Z",
+  "len": "0x15D",
+  "name": "FUN_007c30d0",
+  "status": "partial",
+  "pct": 90.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C3270",
+  "sym": "?FUN_007c3270@@YIHPAUMovieHandle_007BD470@@PAEIIHH@Z",
+  "len": "0x1B8",
+  "name": "FUN_007c3270",
+  "status": "partial",
+  "pct": 22.3
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C3D60",
+  "sym": "?FUN_007c3d60@@YAXPAG00HHH@Z",
+  "len": "0x146",
+  "name": "FUN_007c3d60",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/movie_stream_methods.cpp",
+  "addr": "0x7C4260",
+  "sym": "?FUN_007c4260@@YAXPAG00HHH@Z",
+  "len": "0x13D",
+  "name": "FUN_007c4260",
+  "status": "partial",
+  "pct": 0.0
  }
 ]

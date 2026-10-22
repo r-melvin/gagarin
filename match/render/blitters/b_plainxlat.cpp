@@ -3,6 +3,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 #include <string.h>
 #include "b_plainxlat.h"
+#include "b_xlatalpha.h"   // BlitAlphaWrapRow
 
 // LIBRARY: GAMEMD 0x7CA090 -- CRT memmove (__cdecl).
 
@@ -174,22 +175,26 @@ void BlitPlainXlatZReadWrite<unsigned short>::BlitMoveTint(void* dest, const voi
 // TEMPLATE: GAMEMD 0x493CC0
 // BlitPlainXlatAlpha<unsigned short>::BlitCopy
 template <>
-void BlitPlainXlatAlpha<unsigned short>::BlitCopy(void* dest, const void* src, int len, int, unsigned short*, unsigned short* abuf, int alvl, int)
+void BlitPlainXlatAlpha<unsigned short>::BlitCopy(void* dest, const void* src, int len,
+                                                  int, unsigned short*, unsigned short* abuf,
+                                                  int alvl, int)
 {
     unsigned short* ab = abuf;
-    alvl = alvl > 0 ? alvl : 0;
-    alvl = (alvl * 261) >> 11;
-    if (alvl > 0xFE) alvl = 0xFE;
-    const unsigned short* row = (const unsigned short*)((const unsigned char*)alpha + (alvl << 9));
-    int n = len;
+    int level = alvl > 0 ? alvl : 0;
+    level = (level * 261) >> 11;
+    if (level > 254)
+        level = 254;
+    unsigned short* row = alpha + (level << 8);
     if (len > 0) {
+        int n = len;
+        const unsigned char* s = (const unsigned char*)src;
+        unsigned short* d = (unsigned short*)dest;
         do {
-            unsigned char c = *(const unsigned char*)src;
-            src = (const unsigned char*)src + 1;
-            *(unsigned short*)dest = xlat[row[*ab++] | c];
-            dest = (unsigned short*)dest + 1;
-            if (ab >= gg_blit_alpha_wrap_global->wrap_end)
-                ab = (unsigned short*)((unsigned char*)ab - gg_blit_alpha_wrap_global->wrap_step);
+            unsigned char c = *s;
+            unsigned int a = *ab++;
+            s++;
+            *d++ = xlat[row[a] | c];
+            ab = BlitAlphaWrapRow(ab);
         } while (--n);
     }
 }

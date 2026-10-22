@@ -963,12 +963,12 @@ __forceinline int MSAnim::TimeLeft()
 // FUNCTION: GAMEMD 0x5CEAD0
 // Slot 2: freeze the animation's clock, banking whatever is left of the
 // current interval. Retail tests StartTime twice — once here and once inside
-// the reader it expands — which is why TimeLeft is its own helper. PARTIAL
-// (emitted section shorter than retail): VC6 folds the second test.
+// the timer's ordinary inline reader (MSTimer::TimeLeft); the forced-inline
+// MSAnim::TimeLeft lets cl fold the second test.
 void MSAnim::PauseTimer()
 {
     if (Timer.StartTime != -1) {
-        Timer.Remaining = TimeLeft();
+        Timer.Remaining = Timer.TimeLeft();
         Timer.StartTime = -1;
     }
 }

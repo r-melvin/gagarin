@@ -102,49 +102,43 @@ void RLEBlitTransXlatAlpha<unsigned short>::RLEBlitTint(void* dest, const void* 
 // TEMPLATE: GAMEMD 0x497A10
 // RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit
 template <>
-void RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit(void* dest, const void* src, int len, int skip, int zval,
-    unsigned short* zbuf, unsigned short* abuf, int alvl, int warp,
-    const signed char* zshape)
+void RLEBlitTransZRemapXlatAlpha<unsigned short>::RLEBlit(void* dest, const void* src, int len,
+                                                          int skip, int, unsigned short*,
+                                                          unsigned short* abuf, int alvl, int,
+                                                          const signed char*)
 {
-    const unsigned char* s = static_cast<const unsigned char*>(src);
-    int a = alvl > 0 ? alvl : 0;
-    unsigned short* d = static_cast<unsigned short*>(dest);
-    const unsigned char* rm = *remap;
+    const unsigned char* s = (const unsigned char*)src;
+    unsigned short* d = (unsigned short*)dest;
+    const unsigned char* rt = *remap;
     unsigned short* ab = abuf;
-    a = (a * 261) >> 11;
-    if (a > 0xFE)
-        a = 0xFE;
-    const unsigned char* atab = reinterpret_cast<const unsigned char*>(alpha) + (a << 9);
-    if (skip > 0)
-    {
-        while (skip > 0)
-        {
-            unsigned char r = *s++;
-            if (r == 0)
+    int level = alvl > 0 ? alvl : 0;
+    level = (level * 261) >> 11;
+    if (level > 254)
+        level = 254;
+    unsigned short* row = alpha + (level << 8);
+    if (skip > 0) {
+        do {
+            if (*s++ == 0)
                 skip -= *s++;
             else
                 skip--;
-        }
+        } while (skip > 0);
         int over = -skip;
-        d += over;
         len -= over;
-        ab = RLEAlphaWrapRow(abuf + over);
+        d += over;
+        ab = ab + over;
+        if (ab >= gg_blit_alpha_wrap_global->wrap_end)
+            ab = (unsigned short*)((unsigned char*)ab - gg_blit_alpha_wrap_global->wrap_step);
     }
-
-    while (len > 0)
-    {
+    while (len > 0) {
         unsigned char c = *s++;
-        if (c == 0)
-        {
+        if (c == 0) {
             c = *s++;
             len -= c;
             d += c;
             ab += c;
-        }
-        else
-        {
-            unsigned short idx = *reinterpret_cast<const unsigned short*>(atab + *ab * 2) | rm[c];
-            *d++ = table[idx];
+        } else {
+            *d++ = table[row[*ab] | rt[c]];
             len--;
             ab++;
         }

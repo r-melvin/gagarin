@@ -26,6 +26,10 @@
 
 struct LinkClass
 {
+    // Inline: a derived constructor (GadgetClass, 0x4E12F0) stores both
+    // pointers as zero before its own members.
+    LinkClass() : Next(0), Previous(0) {}
+
     // vtable in retail slot order (vptr @ +0x00).
     virtual ~LinkClass();                            // slot 0
     virtual LinkClass* GetNext();                    // slot 1  GAMEMD 0x556620

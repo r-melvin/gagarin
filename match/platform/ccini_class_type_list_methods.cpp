@@ -13,59 +13,6 @@
 
 #include "ccini_class_type_list_methods.h"
 
-// FUNCTION: GAMEMD 0x475C70
-//
-// Write a list of armour indices out as a comma-separated line of armour
-// names. The list arrives by value, which is what lets the compiler hoist
-// Items and Count into registers and walk the array by pointer; the release
-// of that copy is the inlined free at the tail, after the write result has
-// been parked in BL.
-//
-// PARTIAL, one instruction short of the retail stream. Every instruction of
-// the body, both inlined strcats, the resolver call, the countdown loop and
-// the inlined release are identical; the single residual is that retail
-// shrink-wraps EBP as well as ESI, pushing both inside the count>0 arm and
-// copying the count across with `MOV EBP,EAX`, while cl 8804 allocates the
-// count straight into EBP and therefore pushes EBP in the prologue. That
-// shifts every byte after offset 0x0B, so the byte oracle reads 20 of 247.
-// Five materially different spellings were measured and none moved it: the
-// plain `for (i = 0; i < list.Count; ++i)` over `list.Items[i]`; a named
-// `count` local with a do-while pointer walk (the spelling below); the same
-// with the guard reading `list.Count` directly so the two reads might not
-// coalesce; an early `return` for the empty case, which is worse still
-// because it duplicates the WriteString tail; and a forced-inline helper
-// taking the count as a parameter of its own, which is what split the live
-// range in the sibling reader and does not split it here. The single-exit
-// lever that fixed 0x475A60 is the mirror of what is needed here and does
-// not apply: this body already has one exit. What would fix it is anything
-// that keeps the count out of a callee-saved register until after the test,
-// since retail's `MOV EBP,EAX` is a live-range split cl declines to make.
-bool CCINI_00475C70::WriteArmorList(const char* section, const char* key,
-                                    TypeListInt list)
-{
-    char buffer[128] = "";
-
-    int count = list.Count;
-
-    if (count > 0) {
-        const int* p = list.Items;
-        int remaining = count;
-
-        do {
-            if (buffer[0] != '\0') {
-                strcat(buffer, STR_00817F70);
-            }
-
-            const char* name = FUN_00751590(*p);
-
-            strcat(buffer, name);
-            ++p;
-        } while (--remaining != 0);
-    }
-
-    return WriteString(section, key, buffer);
-}
-
 // FUNCTION: GAMEMD 0x475D70
 //
 // Read a comma-separated list of decimal integers. Each token is parsed and

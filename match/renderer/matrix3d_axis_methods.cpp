@@ -33,7 +33,7 @@ static inline Vector3 Divide(const Vector3& a, double d)
 // value (the trick that fixed the division block); `s * n.X` operand order
 // in a nested scope; and /Ox. Recorded as a suspected 8447-vs-8804 push-
 // hoisting difference in the same family as the FromQuaternion store-hoisting
-// residual in matrix3d_quaternion_methods.cpp.
+// residual in quaternion_matrix_methods.cpp.
 //
 // FLOAT-CONSISTENCY FLAG (/Op): measured this pass and REFUTED for this
 // function. /Op rounds every double-typed intermediate through memory, which

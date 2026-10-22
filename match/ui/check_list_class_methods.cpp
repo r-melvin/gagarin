@@ -8,9 +8,9 @@
 // expanded inside the deleting thunk at 0x4886E0 -- so the drain loop is spelled
 // out in both rather than delegated.
 //
-// Both copies are PARTIAL with the plain vptr store (0x4882D0 92.0%, 23/25;
-// 0x4886E0 93.5%, 29/31): retail stores the vptr and only then loads the entry
-// count, and cl hoists the count load above the store.
+// Both copies read the entry count through the vector's inline GetCount(),
+// which keeps the vptr store ahead of the count load as in retail; reading the
+// Count member directly lets cl hoist the load above the store (92.0% / 93.5%).
 
 // FUNCTION: GAMEMD 0x4882D0
 // CheckListClass::~CheckListClass. Each entry is a heap node the base list does
@@ -20,7 +20,7 @@ void CheckListClass::Dtor()
 {
     this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
-    while (this->List.Count != 0) {
+    while (this->List.GetCount() != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
 
         this->ListClass_RemoveItem(0);
@@ -106,7 +106,7 @@ CheckListClass* CheckListClass::ScalarDeletingDtor(unsigned char flags)
 {
     this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
-    while (this->List.Count != 0) {
+    while (this->List.GetCount() != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
 
         this->ListClass_RemoveItem(0);

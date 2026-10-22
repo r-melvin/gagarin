@@ -449,44 +449,40 @@ void RLEBlitTransDarkenZRead<T>::RLEBlit(void* dest, const void* src, int len, i
                          int zval, unsigned short* zbuf, unsigned short*, int, int,
                          const signed char* zshape)
 {
+    unsigned short* zb = zbuf;
     const unsigned char* s = static_cast<const unsigned char*>(src);
     T* d = static_cast<T*>(dest);
-    unsigned short* z = zbuf;
     const signed char* zs = zshape;
-    if (skip > 0)
-    {
-        while (skip > 0)
-        {
+    if (skip > 0) {
+        do {
             if (*s++ == 0)
                 skip -= *s++;
             else
                 skip--;
-        }
+        } while (skip > 0);
         int over = -skip;
-        d += over;
         len -= over;
-        z = RLEZWrapRow(zbuf + over);
+        d += over;
+        zb = RLEZWrapRow(zb + over);
     }
-    while (len > 0)
-    {
-        unsigned char c = *s++;
-        if (c == 0)
-        {
-            c = *s++;
-            len -= c;
-            zs += c;
-            d += c;
-            z += c;
+    while (len > 0) {
+        if (*s++ == 0) {
+            unsigned char run = *s++;
+            len -= run;
+            d += run;
+            zs += run;
+            zb += run;
+        } else {
+            if (zval - *zs++ < *zb++) {
+                *d = (T)((*d >> 1) & mask);
+                len--;
+                d++;
+            } else {
+                len--;
+                d++;
+            }
         }
-        else
-        {
-            if (zval - *zs++ < *z)
-                *d = (*d >> 1) & mask;
-            len--;
-            z++;
-            d++;
-        }
-        z = RLEZWrapRow(z);
+        zb = RLEZWrapRow(zb);
     }
 }
 

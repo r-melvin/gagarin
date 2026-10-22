@@ -146,29 +146,34 @@ void BlitTransXlatMultWriteAlpha<unsigned short>::BlitMoveTint(void* dest, const
 // TEMPLATE: GAMEMD 0x494B60
 // BlitTransXlatAlphaZRead<unsigned short>::BlitCopy
 template <>
-void BlitTransXlatAlphaZRead<unsigned short>::BlitCopy(void* dest, const void* src, int len, int zval, unsigned short* zbuf, unsigned short* abuf, int alvl, int)
+void BlitTransXlatAlphaZRead<unsigned short>::BlitCopy(void* dest, const void* src, int len,
+                                                       int zval, unsigned short* zbuf,
+                                                       unsigned short* abuf, int alvl, int)
 {
-    unsigned short* z = zbuf;
+    unsigned short* zb = zbuf;
     unsigned short* ab = abuf;
-    int a = alvl > 0 ? alvl : 0;
-    int level = (a * 261) >> 11;
-    if (level > 0xFE)
-        level = 0xFE;
-    const unsigned short* row = (const unsigned short*)((const unsigned char*)alpha + (level << 9));
+    int level = alvl > 0 ? alvl : 0;
+    level = (level * 261) >> 11;
+    if (level > 254)
+        level = 254;
+    unsigned short* row = alpha + (level << 8);
     if (len > 0) {
         int n = len;
         unsigned short* d = (unsigned short*)dest;
         do {
-            if (zval < *z) {
+            if (zval < *zb++) {
                 unsigned char c = *(const unsigned char*)src;
-                if (c)
-                    *d = xlat[row[*ab] | c];
+                if (c != 0) {
+                    unsigned int a = *ab;
+                    *d = xlat[row[a] | c];
+                }
             }
-            ++z;
             src = (const unsigned char*)src + 1;
-            ++d;
-            z = RLEZWrapRow(z);
-            ab = BlitAlphaWrapRow(ab + 1);
+            d++;
+            zb = RLEZWrapRow(zb);
+            ab++;
+            if (ab >= gg_blit_alpha_wrap_global->wrap_end)
+                ab = (unsigned short*)((unsigned char*)ab - gg_blit_alpha_wrap_global->wrap_step);
         } while (--n);
     }
 }

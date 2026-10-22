@@ -176,7 +176,9 @@ int __fastcall FUN_0058B7D0();
 // FUNCTION: GAMEMD 0x005B2EF0
 int __fastcall FUN_005B2EF0();
 // FUNCTION: GAMEMD 0x005C61D0
-int __fastcall FUN_005C61D0();
+// Returns the 16-bit word table at 0x82E174: both callers (0x632BE0,
+// 0x632C40) read EAX as `word ptr [reg]`.
+const unsigned short* __fastcall FUN_005C61D0();
 // FUNCTION: GAMEMD 0x005C61E0
 int __fastcall FUN_005C61E0();
 // FUNCTION: GAMEMD 0x00637AA0
