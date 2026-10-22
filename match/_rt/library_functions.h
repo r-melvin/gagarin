@@ -28,6 +28,17 @@
 //   `JMP dword ptr [__imp_X]` stubs (53 KERNEL32, 6 OLEAUT32 by ordinal),
 //   each resolved through the retail import address table. They come from
 //   the import libraries and have no source.
+//
+//   Linker import thunks at 0x7C8962-0x7C8A3A (30 six-byte `JMP dword ptr
+//   [__imp_X]` stubs: 19 WSOCK32, DDRAW, DSOUND by ordinal, 3 VERSION, 6 IMM32),
+//   each resolved through the retail import address table.
+//
+//   LIBCMT functions at 0x7C8A8E-0x7C9442, each a unique relocation-wildcarded
+//   match of the LIBCMT.LIB member function at that address, except operator
+//   delete 0x7C8B3D and operator new 0x7C8E17: their tiny bodies also occur
+//   elsewhere, and they are classified by the callees (free 0x7C93E8 and
+//   _nh_malloc 0x7C9442). The _pow body begins at 0x7C8FC9; the entry points
+//   0x7C8FD2 and 0x7C91A5 in the listing are inside it.
 #ifndef GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 #define GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 
@@ -41,6 +52,161 @@
 // Structural classification only; not byte-matched (see above).
 // LIBRARY: GAMEMD 0x55c0e0
 // lzo1x_decompress
+
+// Linker import thunks (JMP through the import address table), 0x7c8962-0x7c8a3a.
+// LIBRARY: GAMEMD 0x7c8962
+// WSOCK32!htonl
+
+// LIBRARY: GAMEMD 0x7c8968
+// WSOCK32!htons
+
+// LIBRARY: GAMEMD 0x7c896e
+// WSOCK32!ntohl
+
+// LIBRARY: GAMEMD 0x7c8974
+// WSOCK32!ntohs
+
+// LIBRARY: GAMEMD 0x7c897a
+// WSOCK32!WSAGetLastError
+
+// LIBRARY: GAMEMD 0x7c8980
+// WSOCK32!gethostbyname
+
+// LIBRARY: GAMEMD 0x7c8986
+// WSOCK32!inet_ntoa
+
+// LIBRARY: GAMEMD 0x7c898c
+// WSOCK32!getsockopt
+
+// LIBRARY: GAMEMD 0x7c8992
+// WSOCK32!closesocket
+
+// LIBRARY: GAMEMD 0x7c8998
+// WSOCK32!bind
+
+// LIBRARY: GAMEMD 0x7c899e
+// WSOCK32!socket
+
+// LIBRARY: GAMEMD 0x7c89a4
+// WSOCK32!setsockopt
+
+// LIBRARY: GAMEMD 0x7c89aa
+// WSOCK32!recvfrom
+
+// LIBRARY: GAMEMD 0x7c89b0
+// WSOCK32!sendto
+
+// LIBRARY: GAMEMD 0x7c89b6
+// WSOCK32!WSACleanup
+
+// LIBRARY: GAMEMD 0x7c89bc
+// WSOCK32!WSAAsyncSelect
+
+// LIBRARY: GAMEMD 0x7c89c2
+// WSOCK32!EnumProtocolsA
+
+// LIBRARY: GAMEMD 0x7c89c8
+// WSOCK32!WSAStartup
+
+// LIBRARY: GAMEMD 0x7c89ce
+// WSOCK32!gethostname
+
+// LIBRARY: GAMEMD 0x7c89d4
+// DDRAW!DirectDrawCreate
+
+// LIBRARY: GAMEMD 0x7c89da
+// DSOUND!ordinal 1
+
+// LIBRARY: GAMEMD 0x7c89e0
+// VERSION!VerQueryValueA
+
+// LIBRARY: GAMEMD 0x7c89e6
+// VERSION!GetFileVersionInfoA
+
+// LIBRARY: GAMEMD 0x7c89ec
+// VERSION!GetFileVersionInfoSizeA
+
+// LIBRARY: GAMEMD 0x7c8a1c
+// IMM32!ImmAssociateContext
+
+// LIBRARY: GAMEMD 0x7c8a22
+// IMM32!ImmGetContext
+
+// LIBRARY: GAMEMD 0x7c8a28
+// IMM32!ImmNotifyIME
+
+// LIBRARY: GAMEMD 0x7c8a2e
+// IMM32!ImmGetCandidateListA
+
+// LIBRARY: GAMEMD 0x7c8a34
+// IMM32!ImmGetCompositionStringA
+
+// LIBRARY: GAMEMD 0x7c8a3a
+// IMM32!ImmSetOpenStatus
+
+// CRT (LIBCMT.LIB), 0x7c8a8e-0x7c9442.
+// LIBRARY: GAMEMD 0x7c8a8e
+// ??1type_info@@UAE@XZ
+
+// LIBRARY: GAMEMD 0x7c8ad3
+// ??8type_info@@QBEHABV0@@Z
+
+// LIBRARY: GAMEMD 0x7c8b3d
+// ??3@YAXPAX@Z
+
+// LIBRARY: GAMEMD 0x7c8b48
+// _qsort
+
+// LIBRARY: GAMEMD 0x7c8c9c
+// _shortsort
+
+// LIBRARY: GAMEMD 0x7c8cea
+// _swap
+
+// LIBRARY: GAMEMD 0x7c8d20
+// __stricmp
+
+// LIBRARY: GAMEMD 0x7c8df0
+// _strrchr
+
+// LIBRARY: GAMEMD 0x7c8e17
+// ??2@YAPAXI@Z
+
+// LIBRARY: GAMEMD 0x7c8e25
+// _bsearch
+
+// LIBRARY: GAMEMD 0x7c8ec0
+// __allmul
+
+// LIBRARY: GAMEMD 0x7c8ef4
+// _sprintf
+
+// LIBRARY: GAMEMD 0x7c8f46
+// __fpmath
+
+// LIBRARY: GAMEMD 0x7c8f5e
+// __cfltcvt_init
+
+// LIBRARY: GAMEMD 0x7c8fb0
+// __CIpow
+
+// LIBRARY: GAMEMD 0x7c8fc9
+// _pow
+
+// LIBRARY: GAMEMD 0x7c91d0
+// _strncpy
+
+// LIBRARY: GAMEMD 0x7c92d0
+// __alldiv
+
+// LIBRARY: GAMEMD 0x7c9380
+// __aulldiv
+
+// LIBRARY: GAMEMD 0x7c93e8
+// _free
+
+// LIBRARY: GAMEMD 0x7c9430
+// _malloc
 
 // CRT strchr fragment.
 // LIBRARY: GAMEMD 0x7caf20
