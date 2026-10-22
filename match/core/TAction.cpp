@@ -26,8 +26,7 @@
 // Retail IPersist::GetClassID (slot 3 of each class's primary vtable) copies a
 // 16-byte CLSID global to the caller and returns E_POINTER for a null pointer.
 // The owning class of each address is read from the RTTI-named vtable that holds
-// it in slot 3. Each class is declared here only as far as this one virtual
-// (no layout is claimed); the bodies move into the canonical class once it exists.
+// it in slot 3.
 
 #include "../ai/taction_class_mode_methods.h"
 
@@ -39,347 +38,8 @@
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
 
-// GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
-extern const CLSID DAT_007E9660;
-// GLOBAL: GAMEMD 0x007E95B0 -- CLSID of AircraftTypeClass.
-extern const CLSID DAT_007E95B0;
-// GLOBAL: GAMEMD 0x007E98E0 -- CLSID of AirstrikeClass.
-extern const CLSID DAT_007E98E0;
-// GLOBAL: GAMEMD 0x007E9960 -- CLSID of AITriggerTypeClass.
-extern const CLSID DAT_007E9960;
-// GLOBAL: GAMEMD 0x007E99A0 -- CLSID of AlphaShapeClass.
-extern const CLSID DAT_007E99A0;
-// GLOBAL: GAMEMD 0x007E9670 -- CLSID of AnimClass.
-extern const CLSID DAT_007E9670;
-// GLOBAL: GAMEMD 0x007E9620 -- CLSID of AnimTypeClass.
-extern const CLSID DAT_007E9620;
-// GLOBAL: GAMEMD 0x007E9980 -- CLSID of NeuronClass.
-extern const CLSID DAT_007E9980;
-// GLOBAL: GAMEMD 0x007E96E0 -- CLSID of BulletClass.
-extern const CLSID DAT_007E96E0;
-// GLOBAL: GAMEMD 0x007E95D0 -- CLSID of BulletTypeClass.
-extern const CLSID DAT_007E95D0;
-// GLOBAL: GAMEMD 0x007E9900 -- CLSID of CampaignClass.
-extern const CLSID DAT_007E9900;
-// GLOBAL: GAMEMD 0x007E9930 -- CLSID of CellClass.
-extern const CLSID DAT_007E9930;
-// GLOBAL: GAMEMD 0x007E9890 -- CLSID of DiskLaserClass.
-extern const CLSID DAT_007E9890;
-// GLOBAL: GAMEMD 0x007E9A30 -- CLSID of DriveLocomotionClass.
-extern const CLSID DAT_007E9A30;
-// GLOBAL: GAMEMD 0x007E9940 -- CLSID of EMPulseClass.
-extern const CLSID DAT_007E9940;
-// GLOBAL: GAMEMD 0x007E9820 -- CLSID of FactoryClass.
-extern const CLSID DAT_007E9820;
-// GLOBAL: GAMEMD 0x007E9990 -- CLSID of FoggedObjectClass.
-extern const CLSID DAT_007E9990;
-// GLOBAL: GAMEMD 0x007E9680 -- CLSID of InfantryClass.
-extern const CLSID DAT_007E9680;
-// GLOBAL: GAMEMD 0x007E95A0 -- CLSID of InfantryTypeClass.
-extern const CLSID DAT_007E95A0;
-// GLOBAL: GAMEMD 0x007E9640 -- CLSID of IsometricTileClass.
-extern const CLSID DAT_007E9640;
-// GLOBAL: GAMEMD 0x007E95F0 -- CLSID of IsometricTileTypeClass.
-extern const CLSID DAT_007E95F0;
-// GLOBAL: GAMEMD 0x007E9AC0 -- CLSID of JumpjetLocomotionClass.
-extern const CLSID DAT_007E9AC0;
-// GLOBAL: GAMEMD 0x007E98F0 -- CLSID of LightSourceClass.
-extern const CLSID DAT_007E98F0;
-// GLOBAL: GAMEMD 0x007E98A0 -- CLSID of ParasiteClass.
-extern const CLSID DAT_007E98A0;
-// GLOBAL: GAMEMD 0x007E98C0 -- CLSID of RadSiteClass.
-extern const CLSID DAT_007E98C0;
-// GLOBAL: GAMEMD 0x007E97A0 -- CLSID of ScriptClass.
-extern const CLSID DAT_007E97A0;
-// GLOBAL: GAMEMD 0x007E97B0 -- CLSID of ScriptTypeClass.
-extern const CLSID DAT_007E97B0;
-// GLOBAL: GAMEMD 0x007E9AB0 -- CLSID of ShipLocomotionClass.
-extern const CLSID DAT_007E9AB0;
-// GLOBAL: GAMEMD 0x007E9910 -- CLSID of SideClass.
-extern const CLSID DAT_007E9910;
-// GLOBAL: GAMEMD 0x007E9870 -- CLSID of SlaveManagerClass.
-extern const CLSID DAT_007E9870;
-// GLOBAL: GAMEMD 0x007E9860 -- CLSID of SpawnManagerClass.
-extern const CLSID DAT_007E9860;
-// GLOBAL: GAMEMD 0x007E9580 -- CLSID of SuperClass.
-extern const CLSID DAT_007E9580;
-// GLOBAL: GAMEMD 0x007E9570 -- CLSID of SuperWeaponTypeClass.
-extern const CLSID DAT_007E9570;
-// GLOBAL: GAMEMD 0x007E9950 -- CLSID of Tactical.
-extern const CLSID DAT_007E9950;
 // GLOBAL: GAMEMD 0x007E9800 -- CLSID of TActionClass.
 extern const CLSID DAT_007E9800;
-// GLOBAL: GAMEMD 0x007E97C0 -- CLSID of TagClass.
-extern const CLSID DAT_007E97C0;
-// GLOBAL: GAMEMD 0x007E97D0 -- CLSID of TagTypeClass.
-extern const CLSID DAT_007E97D0;
-// GLOBAL: GAMEMD 0x007E9770 -- CLSID of TaskForceClass.
-extern const CLSID DAT_007E9770;
-// GLOBAL: GAMEMD 0x007E9760 -- CLSID of TeamClass.
-extern const CLSID DAT_007E9760;
-// GLOBAL: GAMEMD 0x007E9780 -- CLSID of TeamTypeClass.
-extern const CLSID DAT_007E9780;
-// GLOBAL: GAMEMD 0x007E9A90 -- CLSID of TeleportLocomotionClass.
-extern const CLSID DAT_007E9A90;
-// GLOBAL: GAMEMD 0x007E98D0 -- CLSID of TemporalClass.
-extern const CLSID DAT_007E98D0;
-// GLOBAL: GAMEMD 0x007E9810 -- CLSID of TEventClass.
-extern const CLSID DAT_007E9810;
-// GLOBAL: GAMEMD 0x007E9920 -- CLSID of TiberiumClass.
-extern const CLSID DAT_007E9920;
-// GLOBAL: GAMEMD 0x007E97E0 -- CLSID of TriggerClass.
-extern const CLSID DAT_007E97E0;
-// GLOBAL: GAMEMD 0x007E97F0 -- CLSID of TriggerTypeClass.
-extern const CLSID DAT_007E97F0;
-// GLOBAL: GAMEMD 0x007E9750 -- CLSID of TubeClass.
-extern const CLSID DAT_007E9750;
-// GLOBAL: GAMEMD 0x007E9A50 -- CLSID of TunnelLocomotionClass.
-extern const CLSID DAT_007E9A50;
-// GLOBAL: GAMEMD 0x007E96F0 -- CLSID of UnitClass.
-extern const CLSID DAT_007E96F0;
-// GLOBAL: GAMEMD 0x007E9590 -- CLSID of UnitTypeClass.
-extern const CLSID DAT_007E9590;
-// GLOBAL: GAMEMD 0x007E9650 -- CLSID of VoxelAnimClass.
-extern const CLSID DAT_007E9650;
-// GLOBAL: GAMEMD 0x007E9790 -- CLSID of VoxelAnimTypeClass.
-extern const CLSID DAT_007E9790;
-// GLOBAL: GAMEMD 0x007E99B0 -- CLSID of VeinholeMonsterClass.
-extern const CLSID DAT_007E99B0;
-// GLOBAL: GAMEMD 0x007E9A60 -- CLSID of WalkLocomotionClass.
-extern const CLSID DAT_007E9A60;
-// GLOBAL: GAMEMD 0x007E9840 -- CLSID of WarheadTypeClass.
-extern const CLSID DAT_007E9840;
-// GLOBAL: GAMEMD 0x007E9720 -- CLSID of WaveClass.
-extern const CLSID DAT_007E9720;
-// GLOBAL: GAMEMD 0x007E9850 -- CLSID of WaypointPathClass.
-extern const CLSID DAT_007E9850;
-// GLOBAL: GAMEMD 0x007E9830 -- CLSID of WeaponTypeClass.
-extern const CLSID DAT_007E9830;
-
-class AircraftClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AircraftTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AirstrikeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AITriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AlphaShapeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class NeuronClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class BulletTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class CampaignClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class CellClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class DiskLaserClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class DriveLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class EMPulseClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class FactoryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class FoggedObjectClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class InfantryTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class IsometricTileTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class JumpjetLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class LightSourceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ParasiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class RadSiteClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ScriptClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ScriptTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class ShipLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SlaveManagerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SpawnManagerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SuperClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SuperWeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class Tactical {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TActionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TagTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TaskForceClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeamTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TeleportLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TemporalClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TEventClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TiberiumClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TriggerTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TubeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class TunnelLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VoxelAnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VoxelAnimTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class VeinholeMonsterClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WalkLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WarheadTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WaypointPathClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class WeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 
 #include "trivial_tu230_methods.h"
 
@@ -405,6 +65,170 @@ extern int DAT_00B0E6D0;
 // GLOBAL: GAMEMD 0xB0E6D8
 extern double DAT_00B0E6D8;
 
+
+// ---- from the former TAction.cpp ----
+//   CLI (disasm from each entry point). Original TU: TAction.CPP, attested by
+//   the __FILE__ assert string at 0x842BF8 ("D:\ra2mdpost\TAction.CPP"); the
+//   TU spans 0x6DCD70-0x6E4B4F. Every name is a placeholder (FUN_/DAT_/
+//   unknown_) derived from an address or offset in that binary.
+
+#include "../ai/taction_class_methods.h"
+#include "scenario_class_methods.h"
+#include "../_layout/house_class.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/trigger_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/tag_type_class.h"
+#include "../_layout/building_class.h"
+#include <new.h>
+#include "../_layout/object_class.h"
+#include <string.h>
+#include "../movement/locomotion_load_support.h"
+#include "vector_class_operations.h"
+#include "frame_counter.h"
+
+// ---- external state and callees, bound by address ----
+
+// GLOBAL: GAMEMD 0xA8B230 -- the scenario object.
+extern ScenarioClass* DAT_00A8B230;
+
+// FUNCTION: GAMEMD 0x53A140 (decl; reloc)
+void __stdcall FUN_0053A140(CellStruct cell);
+
+// FUNCTION: GAMEMD 0x53B460 (decl; reloc)
+void __fastcall FUN_0053B460(int value);
+
+// FUNCTION: GAMEMD 0x684060 (decl; reloc)
+void __fastcall FUN_00684060(int value);
+
+// FUNCTION: GAMEMD 0x750920 (decl; reloc)
+void* __fastcall FUN_00750920(int index, float volume, unsigned int pan, void* controller);
+
+// GLOBAL: GAMEMD 0xA8EAEC / 0xA8EAF8 -- TriggerClass::Array items and count.
+extern TriggerClass** DAT_00A8EAEC;
+extern int DAT_00A8EAF8;
+// GLOBAL: GAMEMD 0xB0E724 / 0xB0E730 -- TagClass::Array items and count.
+extern TagClass** DAT_00B0E724;
+extern int DAT_00B0E730;
+// GLOBAL: GAMEMD 0xB0E680 -- the undefined cell.
+extern CellStruct DAT_00B0E680;
+// GLOBAL: GAMEMD 0xA8E7AC -- nonzero while the scenario is being set up.
+extern int DAT_00A8E7AC;
+
+// FUNCTION: GAMEMD 0x53AD00 (decl; reloc)
+void __fastcall FUN_0053AD00(int a, int b, int c, int d);
+
+// FUNCTION: GAMEMD 0x726910 (decl; reloc) -- the house a trigger belongs to.
+HouseClass* __fastcall FUN_00726910(TriggerClass* trigger);
+
+// FUNCTION: GAMEMD 0x510F60 (decl; reloc)
+bool __fastcall FUN_00510F60(int index);
+
+// The house named by an action's parameter (same lookup as 0x6E45E0, which retail also inlines here).
+static __inline HouseClass* FindActionHouseInner(TriggerClass* trigger, int index)
+{
+    if (index == 0x2325)
+        return FUN_00726910(trigger);
+
+    if (index == -1)
+        return 0;
+
+    if (FUN_00510F60(index))
+        return FUN_00510ED0(index);
+
+    return FUN_00502D30(index);
+}
+
+static __inline HouseClass* FindActionHouse(TriggerClass* trigger, int index)
+{
+    if (trigger == 0)
+        return 0;
+
+    return FindActionHouseInner(trigger, index);
+}
+
+
+// The rules object (GLOBAL 0x8871E0); only the dword read here is named.
+struct TActionRulesView
+{
+    unsigned char unknown_00[0xFA8];
+    int unknown_FA8;                        // +0xFA8
+    unsigned char unknown_FAC[0x1668 - 0xFAC];
+    double unknown_1668;                    // +0x1668
+    double unknown_1670;                    // +0x1670
+};
+GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_FA8) == 0xFA8);
+GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_1668) == 0x1668);
+GG_STATIC_ASSERT(offsetof(TActionRulesView, unknown_1670) == 0x1670);
+// GLOBAL: GAMEMD 0x8871E0
+extern TActionRulesView* DAT_008871E0;
+
+// FUNCTION: GAMEMD 0x48A620 (decl; reloc)
+void __fastcall FUN_0048A620(int a, int b, CoordStruct where, char c, unsigned int d);
+
+// GLOBAL: GAMEMD 0xA8EB44 / 0xA8EB50 -- BuildingClass::Array items and count.
+extern BuildingClass** DAT_00A8EB44;
+extern int DAT_00A8EB50;
+// GLOBAL: GAMEMD 0x8B3DC4 / 0x8B3DD0 -- a techno array, items and count.
+extern TechnoClass** DAT_008B3DC4;
+extern int DAT_008B3DD0;
+// GLOBAL: GAMEMD 0xA8EC7C / 0xA8EC88 -- a techno array, items and count.
+extern TechnoClass** DAT_00A8EC7C;
+extern int DAT_00A8EC88;
+// GLOBAL: GAMEMD 0xA8020C / 0xA80218 -- an object array, items and count.
+extern ObjectClass** DAT_00A8020C;
+extern int DAT_00A80218;
+
+// A 0x14-byte object created at a map coordinate by 0x6E3380 (constructor 0x53CB10).
+class Obj_0053CB10
+{
+public:
+    unsigned char unknown_00[0x14];
+    // FUNCTION: GAMEMD 0x53CB10 (decl; reloc)
+    Obj_0053CB10(CoordStruct where);
+};
+GG_STATIC_ASSERT(sizeof(Obj_0053CB10) == 0x14);
+
+// One strip of the sidebar (stride 0xF94 from 0x880D2C); only the predicate is called here.
+struct Obj_00880D2C
+{
+    unsigned char unknown_00[0xF94];
+    // FUNCTION: GAMEMD 0x6ABAC0 (decl; reloc)
+    bool FUN_006ABAC0();
+};
+GG_STATIC_ASSERT(sizeof(Obj_00880D2C) == 0xF94);
+// GLOBAL: GAMEMD 0x880D2C
+extern Obj_00880D2C DAT_00880D2C[4];
+
+// An entry of the named array at 0xA8EB04 (count at 0xA8EB10); only its text at +0x24 is read here.
+struct Obj_00A8EB04
+{
+    unsigned char unknown_00[0x24];
+    char unknown_24[0x19];
+};
+// GLOBAL: GAMEMD 0xA8EB04 / 0xA8EB10 -- the array's items and count.
+extern Obj_00A8EB04** DAT_00A8EB04;
+extern int DAT_00A8EB10;
+
+static __inline int FindNamedIndex(const char* name)
+{
+    int result = -1;
+    int i = DAT_00A8EB10;
+    i--;
+    for (; i >= 0; i--) {
+        if (strcmp(DAT_00A8EB04[i]->unknown_24, name) == 0) {
+            result = i;
+            break;
+        }
+    }
+    return result;
+}
+
+// GLOBAL: GAMEMD 0xB0F670 / 0xB0F658 / 0xB0E658 -- the registries a TActionClass leaves when destroyed.
+extern DynamicVectorClass<TActionClass*> DAT_00B0F670;
+extern DynamicVectorClass<TActionClass*> DAT_00B0F658;
+extern DynamicVectorClass<TActionClass*> DAT_00B0E658;
+
 // FUNCTION: GAMEMD 0x6DCDA0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_006DCDA0()
@@ -428,10 +252,50 @@ void __cdecl FUN_006DCF40()
     DAT_00B0E6CC = 0x80;
 }
 
+// FUNCTION: GAMEMD 0x6DD2C0
+void TActionClass::vf_10(void* target, bool removed)
+{
+    if (unknown_28 == target) {
+        unknown_28 = unknown_28->unknown_28;
+    }
+    if (unknown_30 == target) {
+        unknown_30 = 0;
+    }
+    if (unknown_50 == target) {
+        unknown_50 = 0;
+    }
+    if (unknown_4C == target) {
+        unknown_4C = 0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x6E0040
 // Returns a constant boolean; pops its stack arguments.
 bool __stdcall FUN_006E0040(int a1, int a2, int a3, int a4)
 {
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0050
+bool TActionClass::FUN_006E0050(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0053A140(DAT_00A8B230->GetWaypointCoords(unknown_44));
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0080
+bool TActionClass::FUN_006E0080(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    for (int i = 0; i < DAT_00A80218; i++) {
+        ObjectClass* o = DAT_00A8020C[i];
+        if (o->IsAlive) {
+            CellStruct at = o->vf_110();
+            if (at.X == where.X && at.Y == where.Y) {
+                o->vf_62();
+            }
+        }
+    }
     return true;
 }
 
@@ -456,6 +320,149 @@ bool Obj_006E0270::FUN_006E0270(int a1, int a2, int a3, int a4)
 bool Obj_006E0290::FUN_006E0290(int a1, int a2, int a3, int a4)
 {
     DAT_00A8B230->unknown_34A8 = unknown_90;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E02B0
+bool TActionClass::FUN_006E02B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    for (int i = 0; i < DAT_008B3DD0; i++) {
+        TechnoClass* t = DAT_008B3DC4[i];
+        if (t->vf_97() == 0 && t->Health > 0 && t->IsAlive && t->IsOnMap && !t->InLimbo && house != t->Owner) {
+            t->vf_122(5, false);
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0330
+bool TActionClass::FUN_006E0330(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    for (int i = 0; i < DAT_008B3DD0; i++) {
+        TechnoClass* t = DAT_008B3DC4[i];
+        if (t->vf_97() == 0x17 && t->Health > 0 && t->IsAlive && t->IsOnMap && !t->InLimbo && t->Owner == house) {
+            t->vf_122(5, false);
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E03B0
+bool TActionClass::FUN_006E03B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    for (int i = 0; i < DAT_00A8EC88; i++) {
+        TechnoClass* t = DAT_00A8EC7C[i];
+        if (t->Group == unknown_90 && (t->vf_97() == 0 || t->vf_97() == 0x17) && t->Health > 0 && t->IsAlive
+            && t->IsOnMap && !t->InLimbo) {
+            t->vf_122(5, false);
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0790
+bool TActionClass::FUN_006E0790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    int sound = DAT_008871E0->unknown_FA8;
+    CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
+    FUN_0048A620(0x32, sound, where, 0, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E07F0
+bool TActionClass::FUN_006E07F0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    int sound = DAT_008871E0->unknown_FA8;
+    CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
+    FUN_0048A620(100, sound, where, 0, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0850
+bool TActionClass::FUN_006E0850(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    int sound = DAT_008871E0->unknown_FA8;
+    CoordStruct where = DAT_00A8B230->FUN_0068BD00(unknown_90);
+    FUN_0048A620(300, sound, where, 0, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E08B0
+bool TActionClass::FUN_006E08B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    for (int i = 0; i < DAT_00A8EB50; i++) {
+        BuildingClass* b = DAT_00A8EB44[i];
+        if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)) {
+            b->vf_104(1);
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E09A0
+bool TActionClass::FUN_006E09A0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    for (int i = 0; i < DAT_00A8EB50; i++) {
+        BuildingClass* b = DAT_00A8EB44[i];
+        if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)
+            && b->HasPower) {
+            b->FUN_00452360();
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E0A20
+bool TActionClass::FUN_006E0A20(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    bool result = false;
+    for (int i = 0; i < DAT_00A8EB50; i++) {
+        BuildingClass* b = DAT_00A8EB44[i];
+        if (b->IsAlive && b->IsOnMap && !b->InLimbo && b->AttachedTag && b->AttachedTag->ContainsTrigger(trigger)
+            && !b->HasPower) {
+            b->FUN_00452260();
+            result = true;
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x6E0CA0
+bool TActionClass::FUN_006E0CA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    house->FUN_0050D290(target);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0DF0
+bool TActionClass::FUN_006E0DF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    house->FUN_004F9B70(target, false);
+    target->FUN_004F9B70(house, false);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0E60
+bool TActionClass::FUN_006E0E60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    house->FUN_004F9F90(target, false);
+    target->FUN_004F9F90(house, false);
     return true;
 }
 
@@ -486,6 +493,43 @@ bool Obj_006E0FC0::FUN_006E0FC0(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E1180
+bool TActionClass::FUN_006E1180(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_90);
+    MapInstance.FUN_0057B790(&where);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E13A0
+bool TActionClass::FUN_006E13A0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (DAT_00A8B230->Timer_11E8.IsOff()) {
+        DAT_00A8B230->Timer_11E8.Start();
+        MapInstance.FUN_006D0F00();
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E13E0
+bool TActionClass::FUN_006E13E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (DAT_00A8B230->Timer_11E8.IsOn()) {
+        DAT_00A8B230->Timer_11E8.Stop();
+        MapInstance.FUN_006D0F00();
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1440
+bool TActionClass::FUN_006E1440(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    ScenarioTimer& timer = DAT_00A8B230->Timer_11E8;
+    timer = ScenarioTimer(timer.GetTimeLeft() + unknown_90 * 15);
+    MapInstance.FUN_006D0F00();
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1720
 // Calls other functions.
@@ -504,6 +548,21 @@ bool Obj_006E1740::FUN_006E1740(int a1, int a2, int a3, int a4)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E1760
+bool TActionClass::FUN_006E1760(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_00750920(unknown_90, 1.0f, 0x2000, 0);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1A40
+bool TActionClass::FUN_006E1A40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    house->FUN_0050D6D0(where);
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E1B90
 // Calls other functions.
@@ -519,6 +578,39 @@ bool FUN_006E1B90(Obj_006E1B90* a1, int a2, int a3, int a4, int a5, int a6)
 bool Obj_006E1BB0::FUN_006E1BB0(int a1, int a2, int a3, int a4)
 {
     FUN_00752480(unknown_90, 2, -1);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1E40
+bool TActionClass::FUN_006E1E40(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    target->Production = 1;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1EA0
+bool TActionClass::FUN_006E1EA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    target->AIMode = 4;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E1F00
+bool TActionClass::FUN_006E1F00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    target->AutocreateAllowed = 1;
     return true;
 }
 
@@ -580,6 +672,81 @@ bool FUN_006E2950(int a1, int a2, int a3, int a4, int a5, int a6)
     return true;
 }
 
+// FUNCTION: GAMEMD 0x6E2A10
+bool TActionClass::FUN_006E2A10(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_50) {
+        for (int i = DAT_00A8EAF8 - 1; i >= 0; i--) {
+            if (DAT_00A8EAEC[i]->Type == unknown_50) {
+                DAT_00A8EAEC[i]->Destroy();
+            }
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2A50
+bool TActionClass::FUN_006E2A50(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_4C) {
+        int count = DAT_00B0E730;
+        for (int i = 0; i < count; i++) {
+            if (DAT_00B0E724[i]->Type == unknown_4C) {
+                if (DAT_00B0E724[i]) {
+                    delete DAT_00B0E724[i];
+                }
+                i--;
+            }
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2AA0
+bool TActionClass::FUN_006E2AA0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_50) {
+        for (int i = 0; i < DAT_00A8EAF8; i++) {
+            if (DAT_00A8EAEC[i]->Type == unknown_50) {
+                DAT_00A8EAEC[i]->FireActions(0, DAT_00B0E680);
+            }
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2AF0
+bool TActionClass::FUN_006E2AF0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_50) {
+        for (int i = 0; i < DAT_00A8EAF8; i++) {
+            TriggerClass* t = DAT_00A8EAEC[i];
+            TriggerTypeClass* type = t->Type;
+            if (type == unknown_50) {
+                int difficulty = DAT_00A8B230->Difficulty;
+                if (!((difficulty == 0 && !type->Difficulty_9C) || (difficulty == 1 && !type->Difficulty_9D)
+                      || (difficulty == 2 && !type->Difficulty_9E))) {
+                    t->FUN_007268F0();
+                }
+            }
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2B70
+bool TActionClass::FUN_006E2B70(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (unknown_50) {
+        for (int i = 0; i < DAT_00A8EAF8; i++) {
+            if (DAT_00A8EAEC[i]->Type == unknown_50) {
+                DAT_00A8EAEC[i]->FUN_00726900();
+            }
+        }
+    }
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E2BE0
 // Calls other functions.
@@ -613,6 +780,61 @@ bool Obj_006E2E20::FUN_006E2E20(int a1, int a2, int a3, int a4)
 bool Obj_006E2E40::FUN_006E2E40(int a1, int a2, int a3, int a4)
 {
     DAT_008871E0->unknown_1668 = unknown_90;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2E60
+bool TActionClass::FUN_006E2E60(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0053AD00(unknown_90 * 10, DAT_00A8B230->unknown_3538 * 10, DAT_00A8B230->unknown_353C * 10, 0);
+    DAT_00A8B230->unknown_3534 = unknown_90;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2EB0
+bool TActionClass::FUN_006E2EB0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0053AD00(DAT_00A8B230->unknown_3534 * 10, unknown_90 * 10, DAT_00A8B230->unknown_353C * 10, 0);
+    DAT_00A8B230->unknown_3538 = unknown_90;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2F50
+bool TActionClass::FUN_006E2F50(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    DAT_00A8B230->unknown_3528 = unknown_90;
+    if (!DAT_00A8B230->FUN_0053A100()) {
+        DAT_00A8B230->unknown_3530 = DAT_00A8B230->unknown_3528;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E2F90
+bool TActionClass::FUN_006E2F90(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_0053B460(unknown_90);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E3000
+bool TActionClass::FUN_006E3000(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    target->AITriggersActive = 0;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E3060
+bool TActionClass::FUN_006E3060(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    target->FUN_0050C8C0();
     return true;
 }
 
@@ -820,6 +1042,19 @@ unsigned char Obj_006E3360::FUN_006E3360(Arg1_006E3360* a1, int a2, int a3, int 
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x6E3380
+bool TActionClass::FUN_006E3380(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct wp = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    CoordStruct where;
+    where.Z = 0;
+    where.Y = wp.Y * 256 + 0x80;
+    where.X = wp.X * 256 + 0x80;
+    where.Z = MapInstance.FUN_00578080(&where);
+    new Obj_0053CB10(where);
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E3890
 // Branching.
@@ -834,6 +1069,13 @@ unsigned char Obj_006E3890::FUN_006E3890(int a1, int a2, int a3, int a4)
         return 0;
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x6E38B0
+bool TActionClass::FUN_006E38B0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    return MapInstance.FUN_0056BEC0(where, unknown_90);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -957,6 +1199,53 @@ HRESULT __stdcall TActionClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
+// FUNCTION: GAMEMD 0x6E3DB0
+HRESULT __stdcall TActionClass::Load(IStream* pStm)
+{
+    HRESULT hr = AbstractClass::Load(pStm);
+    if (hr < 0) {
+        return hr;
+    }
+    new (this) TActionClass(AbstractNoInit());
+    DAT_00B0C110.FUN_006CF240((void**)&unknown_28);
+    DAT_00B0C110.FUN_006CF240((void**)&unknown_30);
+    DAT_00B0C110.FUN_006CF240((void**)&unknown_4C);
+    DAT_00B0C110.FUN_006CF240((void**)&unknown_50);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6E3F70
+CoordStruct TActionClass::FUN_006E3F70()
+{
+    return DAT_00A8B230->FUN_0068BD00(unknown_90);
+}
+
+// FUNCTION: GAMEMD 0x6E3FB0
+void TActionClass::FUN_006E3FB0(const unsigned char* text)
+{
+    unknown_6D[0] = 0;
+    if (text) {
+        while (*text && *text <= ' ') {
+            text++;
+        }
+        if (*text) {
+            strncpy(unknown_6D, (const char*)text, 0x1f);
+            unknown_6D[0x1f] = 0;
+            int length = strlen(unknown_6D);
+            while (length && (unsigned char)unknown_6D[length - 1] <= ' ') {
+                length--;
+            }
+            unknown_6D[length] = 0;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6E4010
+const char* TActionClass::FUN_006E4010()
+{
+    return unknown_6D[0] ? unknown_6D : 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6E4020
 // Branching.
@@ -970,6 +1259,63 @@ unsigned char FUN_006E4020(Obj_006E4020* a1, int a2, int a3, int a4, int a5, int
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x6E4080
+bool TActionClass::FUN_006E4080(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    FUN_00684060(unknown_90);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E4100
+bool TActionClass::FUN_006E4100(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    int index = unknown_90;
+    if (index < 4 && index >= 0 && DAT_00880D2C[index].FUN_006ABAC0()) {
+        MapInstance.FUN_006A7590(index);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6E4150
+bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    int index = FindNamedIndex(unknown_54);
+    if (index < DAT_00A8EB10 && index >= 0) {
+        MapInstance.FUN_006AC5F0(DAT_00A8EB04[index], unknown_90);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6E43E0
+bool TActionClass::FUN_006E43E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (house == 0) {
+        return false;
+    }
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    if (where.X == DAT_00B0E680.X && where.Y == DAT_00B0E680.Y) {
+        return false;
+    }
+    house->FUN_0050DA00(where);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E4460
+bool TActionClass::FUN_006E4460(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (house == 0) {
+        return false;
+    }
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    if (where.X == DAT_00B0E680.X && where.Y == DAT_00B0E680.Y) {
+        return false;
+    }
+    house->FUN_0050DA20(where);
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006E44C0
 bool __stdcall FUN_006E44C0(void* p, int, int, int)
@@ -978,6 +1324,20 @@ bool __stdcall FUN_006E44C0(void* p, int, int, int)
         return false;
     }
     FUN_0050DA50(p);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E44E0
+bool TActionClass::FUN_006E44E0(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    if (house == 0) {
+        return false;
+    }
+    CellStruct where = DAT_00A8B230->GetWaypointCoords(unknown_44);
+    if (where.X == DAT_00B0E680.X && where.Y == DAT_00B0E680.Y) {
+        return false;
+    }
+    house->FUN_0050DFE0(where);
     return true;
 }
 
@@ -1014,4 +1374,15 @@ int Obj_006E4640::FUN_006E4640() const
 int Obj_006E4650::FUN_006E4650() const
 {
     return unknown_24;
+}
+
+// The scalar deleting form of the destructor (??_G); the destructor body is inlined into it.
+// FUNCTION: GAMEMD 0x6E4660
+inline TActionClass::~TActionClass()
+{
+    AnnounceExpiredPointer(1);
+    DAT_00B0F670.RemoveItem(this);
+    DAT_00B0F658.RemoveItem(this);
+    DAT_00B0E658.RemoveItem(this);
+    unknown_6D[0] = 0;
 }

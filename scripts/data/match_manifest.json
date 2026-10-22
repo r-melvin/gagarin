@@ -89997,5 +89997,437 @@
   "name": "InfantryClass::FUN_00522FC0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6DD2C0",
+  "sym": "?vf_10@TActionClass@@UAEXPAX_N@Z",
+  "len": "0x34",
+  "name": "TActionClass::vf_10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0050",
+  "sym": "?FUN_006E0050@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x23",
+  "name": "TActionClass::FUN_006E0050",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0080",
+  "sym": "?FUN_006E0080@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x82",
+  "name": "TActionClass::FUN_006E0080",
+  "status": "partial",
+  "pct": 45.3
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E02B0",
+  "sym": "?FUN_006E02B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x78",
+  "name": "TActionClass::FUN_006E02B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0330",
+  "sym": "?FUN_006E0330@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x79",
+  "name": "TActionClass::FUN_006E0330",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E03B0",
+  "sym": "?FUN_006E03B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x8e",
+  "name": "TActionClass::FUN_006E03B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0790",
+  "sym": "?FUN_006E0790@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E0790",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E07F0",
+  "sym": "?FUN_006E07F0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E07F0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0850",
+  "sym": "?FUN_006E0850@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E0850",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E08B0",
+  "sym": "?FUN_006E08B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x71",
+  "name": "TActionClass::FUN_006E08B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E09A0",
+  "sym": "?FUN_006E09A0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x76",
+  "name": "TActionClass::FUN_006E09A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0A20",
+  "sym": "?FUN_006E0A20@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x76",
+  "name": "TActionClass::FUN_006E0A20",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0CA0",
+  "sym": "?FUN_006E0CA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x56",
+  "name": "TActionClass::FUN_006E0CA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0DF0",
+  "sym": "?FUN_006E0DF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x68",
+  "name": "TActionClass::FUN_006E0DF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E0E60",
+  "sym": "?FUN_006E0E60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x68",
+  "name": "TActionClass::FUN_006E0E60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1180",
+  "sym": "?FUN_006E1180@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x37",
+  "name": "TActionClass::FUN_006E1180",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E13A0",
+  "sym": "?FUN_006E13A0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x31",
+  "name": "TActionClass::FUN_006E13A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E13E0",
+  "sym": "?FUN_006E13E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x56",
+  "name": "TActionClass::FUN_006E13E0",
+  "status": "partial",
+  "pct": 28.6
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1440",
+  "sym": "?FUN_006E1440@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x60",
+  "name": "TActionClass::FUN_006E1440",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1760",
+  "sym": "?FUN_006E1760@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x1c",
+  "name": "TActionClass::FUN_006E1760",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1A40",
+  "sym": "?FUN_006E1A40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x27",
+  "name": "TActionClass::FUN_006E1A40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1E40",
+  "sym": "?FUN_006E1E40@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x53",
+  "name": "TActionClass::FUN_006E1E40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1EA0",
+  "sym": "?FUN_006E1EA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x56",
+  "name": "TActionClass::FUN_006E1EA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E1F00",
+  "sym": "?FUN_006E1F00@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x53",
+  "name": "TActionClass::FUN_006E1F00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2A10",
+  "sym": "?FUN_006E2A10@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x39",
+  "name": "TActionClass::FUN_006E2A10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2A50",
+  "sym": "?FUN_006E2A50@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x4b",
+  "name": "TActionClass::FUN_006E2A50",
+  "status": "partial",
+  "pct": 15.2
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2AA0",
+  "sym": "?FUN_006E2AA0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x46",
+  "name": "TActionClass::FUN_006E2AA0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2AF0",
+  "sym": "?FUN_006E2AF0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x7f",
+  "name": "TActionClass::FUN_006E2AF0",
+  "status": "partial",
+  "pct": 27.1
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2B70",
+  "sym": "?FUN_006E2B70@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x3e",
+  "name": "TActionClass::FUN_006E2B70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2E60",
+  "sym": "?FUN_006E2E60@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x4a",
+  "name": "TActionClass::FUN_006E2E60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2EB0",
+  "sym": "?FUN_006E2EB0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x4a",
+  "name": "TActionClass::FUN_006E2EB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2F50",
+  "sym": "?FUN_006E2F50@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x31",
+  "name": "TActionClass::FUN_006E2F50",
+  "status": "partial",
+  "pct": 25.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E2F90",
+  "sym": "?FUN_006E2F90@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x10",
+  "name": "TActionClass::FUN_006E2F90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3000",
+  "sym": "?FUN_006E3000@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x53",
+  "name": "TActionClass::FUN_006E3000",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3060",
+  "sym": "?FUN_006E3060@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x53",
+  "name": "TActionClass::FUN_006E3060",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3380",
+  "sym": "?FUN_006E3380@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x8d",
+  "name": "TActionClass::FUN_006E3380",
+  "status": "partial",
+  "pct": 26.2
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E38B0",
+  "sym": "?FUN_006E38B0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x31",
+  "name": "TActionClass::FUN_006E38B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3DB0",
+  "sym": "?Load@TActionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x7d",
+  "name": "TActionClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3F70",
+  "sym": "?FUN_006E3F70@TActionClass@@QAE?AUCoordStruct@@XZ",
+  "len": "0x3a",
+  "name": "TActionClass::FUN_006E3F70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E3FB0",
+  "sym": "?FUN_006E3FB0@TActionClass@@QAEXPBE@Z",
+  "len": "0x5d",
+  "name": "TActionClass::FUN_006E3FB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4010",
+  "sym": "?FUN_006E4010@TActionClass@@QAEPBDXZ",
+  "len": "0xd",
+  "name": "TActionClass::FUN_006E4010",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4080",
+  "sym": "?FUN_006E4080@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x10",
+  "name": "TActionClass::FUN_006E4080",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4100",
+  "sym": "?FUN_006E4100@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x44",
+  "name": "TActionClass::FUN_006E4100",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4150",
+  "sym": "?FUN_006E4150@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0xae",
+  "name": "TActionClass::FUN_006E4150",
+  "status": "partial",
+  "pct": 89.7
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E43E0",
+  "sym": "?FUN_006E43E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E43E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4460",
+  "sym": "?FUN_006E4460@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E4460",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E44E0",
+  "sym": "?FUN_006E44E0@TActionClass@@QAE_NPAVHouseClass@@PAVObjectClass@@PAVTriggerClass@@PAUCellStruct@@@Z",
+  "len": "0x54",
+  "name": "TActionClass::FUN_006E44E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/TAction.cpp",
+  "addr": "0x6E4660",
+  "sym": "??_GTActionClass@@UAEPAXI@Z",
+  "len": "0x123",
+  "name": "??_GTActionClass@@UAEPAXI@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

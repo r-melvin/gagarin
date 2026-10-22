@@ -388,6 +388,20 @@ public:
     bool FUN_0050B730();
     // FUNCTION: GAMEMD 0x4F9B70 (decl; reloc) -- RET 8.
     void FUN_004F9B70(HouseClass* other, bool flag);
+    // FUNCTION: GAMEMD 0x4F9F90 (decl; reloc) -- RET 8.
+    void FUN_004F9F90(HouseClass* other, bool flag);
+    // FUNCTION: GAMEMD 0x50C8C0 (decl; reloc)
+    void FUN_0050C8C0();
+    // FUNCTION: GAMEMD 0x50D290 (decl; reloc)
+    void FUN_0050D290(HouseClass* other);
+    // FUNCTION: GAMEMD 0x50D6D0 (decl; reloc) -- takes a cell by value.
+    void FUN_0050D6D0(CellStruct cell);
+    // FUNCTION: GAMEMD 0x50DA00 (decl; reloc) -- takes a cell by value.
+    void FUN_0050DA00(CellStruct cell);
+    // FUNCTION: GAMEMD 0x50DA20 (decl; reloc) -- takes a cell by value.
+    void FUN_0050DA20(CellStruct cell);
+    // FUNCTION: GAMEMD 0x50DFE0 (decl; reloc) -- takes a cell by value.
+    void FUN_0050DFE0(CellStruct cell);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, Vfptr_24)                   == 0x24);

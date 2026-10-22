@@ -25,8 +25,9 @@
 
 extern "C" void* __fastcall FUN_00726910(void* handle);   // GAMEMD 0x726910
 extern "C" bool  __fastcall FUN_00510F60(int id);         // GAMEMD 0x510F60
-extern "C" void* __fastcall FUN_00510ED0(int id);         // GAMEMD 0x510ED0
-extern "C" void* __fastcall FUN_00502D30(int id);         // GAMEMD 0x502D30
+class HouseClass;
+extern "C" HouseClass* __fastcall FUN_00510ED0(int id);   // GAMEMD 0x510ED0: the house of a multiplayer index
+extern "C" HouseClass* __fastcall FUN_00502D30(int id);   // GAMEMD 0x502D30: the house of a country index
 extern "C" void  __fastcall FUN_0050D440(void* obj);       // GAMEMD 0x50D440  action
 extern "C" void  __fastcall FUN_0050D320(void* obj);       // GAMEMD 0x50D320  action
 extern "C" void  __fastcall FUN_004FC6D0(void* obj);       // GAMEMD 0x4FC6D0  action

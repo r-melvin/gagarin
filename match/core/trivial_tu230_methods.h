@@ -15,8 +15,6 @@ struct Arg1_006E3320;
 struct Arg1_006E3340;
 struct Arg1_006E3360;
 struct Arg1_006E3B40;
-struct Gptr_008871E0;
-struct Gptr_00A8B230;
 struct Obj_006E0250;
 struct Obj_006E0270;
 struct Obj_006E0290;
@@ -48,12 +46,8 @@ struct Obj_006E4650;
 
 // GLOBAL: GAMEMD 0x87F7E8
 extern char DAT_0087F7E8[];
-// GLOBAL: GAMEMD 0x8871E0
-extern Gptr_008871E0* DAT_008871E0;
 // GLOBAL: GAMEMD 0xA83D10
 extern char DAT_00A83D10[];
-// GLOBAL: GAMEMD 0xA8B230
-extern Gptr_00A8B230* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x577C90 (declaration)
 void FUN_00577C90(void*, int, int);
@@ -110,32 +104,6 @@ struct Arg1_006E3B40
     // FUNCTION: GAMEMD 0x50BCD0
     void FUN_0050BCD0(int);
 };
-
-struct Gptr_008871E0
-{
-    char unknown_00[0x1668];
-    double unknown_1668;   // +0x1668
-    double unknown_1670;   // +0x1670
-};
-GG_STATIC_ASSERT(offsetof(Gptr_008871E0, unknown_1668) == 0x1668);
-GG_STATIC_ASSERT(offsetof(Gptr_008871E0, unknown_1670) == 0x1670);
-
-struct Gptr_00A8B230
-{
-    char unknown_00[0x34A5];
-    bool unknown_34A5;   // +0x34A5
-    bool unknown_34A6;   // +0x34A6
-    bool unknown_34A7;   // +0x34A7
-    bool unknown_34A8;   // +0x34A8
-    // FUNCTION: GAMEMD 0x689670
-    void FUN_00689670(int, int);
-    // FUNCTION: GAMEMD 0x689910
-    void FUN_00689910(int, int);
-};
-GG_STATIC_ASSERT(offsetof(Gptr_00A8B230, unknown_34A5) == 0x34A5);
-GG_STATIC_ASSERT(offsetof(Gptr_00A8B230, unknown_34A6) == 0x34A6);
-GG_STATIC_ASSERT(offsetof(Gptr_00A8B230, unknown_34A7) == 0x34A7);
-GG_STATIC_ASSERT(offsetof(Gptr_00A8B230, unknown_34A8) == 0x34A8);
 
 struct Obj_006E0250
 {

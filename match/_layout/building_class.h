@@ -133,6 +133,10 @@ public:
     int FUN_0043EF90();
     // FUNCTION: GAMEMD 0x65AD40 (decl; reloc) -- one stack argument (RET 4); the object being worked on.
     ObjectClass* FUN_0065AD40(int a1);
+    // FUNCTION: GAMEMD 0x452260 (decl; reloc)
+    void FUN_00452260();
+    // FUNCTION: GAMEMD 0x452360 (decl; reloc)
+    void FUN_00452360();
 
     BuildingTypeClass* Type;              // +0x520 ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     FactoryClass*  Factory;               // +0x524 ctor @0x0043B75C (=0)
