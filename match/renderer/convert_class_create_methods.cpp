@@ -68,9 +68,9 @@
 // tested cleanly: the conversion loop wants to be its own inline function
 // carrying its own return, which should un-merge the two epilogues and restore
 // the sunk ESI/EDI pushes. Not attempted in this pass.
-void __fastcall ConvertClass::CreateFromFile(const char* pFilename,
-                                             ColorStruct_0072ADE0*& pPalette,
-                                             ConvertClass*& pDestination)
+void ConvertClass::CreateFromFile(const char* pFilename,
+                                  ColorStruct_0072ADE0*& pPalette,
+                                  ConvertClass*& pDestination)
 {
     File_0072ADE0 file;
     file.FUN_004739F0(pFilename);

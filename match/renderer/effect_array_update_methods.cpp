@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x53D310  IonBlastClass::UpdateAll (__fastcall, static)
 // Descending walk so an element that removes itself does not skip its
 // neighbour.
-void __fastcall IonBlastClass::UpdateAll()
+void IonBlastClass::UpdateAll()
 {
     for (int i = IonBlastArray.Count - 1; i >= 0; i--) {
         ((IonBlastClass**)IonBlastArray.Items)[i]->Update();
@@ -17,7 +17,7 @@ void __fastcall IonBlastClass::UpdateAll()
 }
 
 // FUNCTION: GAMEMD 0x5FFFA0  SpotLightClass::DrawAll (__fastcall, static)
-void __fastcall SpotLightClass::DrawAll()
+void SpotLightClass::DrawAll()
 {
     for (int i = SpotlightArray.Count - 1; i >= 0; i--) {
         ((SpotLightClass**)SpotlightArray.Items)[i]->Draw();

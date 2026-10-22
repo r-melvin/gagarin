@@ -44,7 +44,7 @@ static inline Vector3 Divide(const Vector3& a, double d)
 // GetYRotation 58.3%->8.0%, MatrixApply 72.1%->72.1%, FromAxis 85.9%->3.3%,
 // FromQuaternion 19.8%->1.1% and DistanceFrom3D 92.9%->67.9%. Retail's x87
 // code in this family is *not* /Op code; do not re-test the flag here.
-Quaternion __fastcall Matrix3D::FromAxis(const Vector3& axis, float angle)
+Quaternion Matrix3D::FromAxis(const Vector3& axis, float angle)
 {
     Vector3 v = axis;
     double len = FUN_004CAC40(v.X * v.X + v.Y * v.Y + v.Z * v.Z);

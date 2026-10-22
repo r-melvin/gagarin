@@ -29,7 +29,7 @@ extern Source_0045E8F0 DAT_008193F4;
 extern Image_0045E8F0* DAT_0089DDBC;
 
 // FUNCTION: GAMEMD 0x5B40B0
-Image_0045E8F0* __fastcall FUN_005B40B0(Source_0045E8F0* source, char flag);
+Image_0045E8F0* FUN_005B40B0(Source_0045E8F0* source, char flag);
 
 // FUNCTION: GAMEMD 0x45E8F0
 void FUN_0045E8F0();

@@ -44,7 +44,7 @@ extern "C" __declspec(dllimport) int __stdcall MessageBoxA(void* window, char co
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- printf-style log sink.
 extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 // FUNCTION: GAMEMD 0x4A3E40 (decl; reloc)
-void __fastcall FUN_004a3e40();
+void FUN_004a3e40();
 
 // GLOBAL: GAMEMD 0x8A0094 -- the DirectDraw object.
 extern DDrawModeView* DAT_008A0094;
@@ -53,7 +53,7 @@ extern int DAT_008A00A4;
 extern int DAT_008A00A8;
 extern int DAT_008A00AC;
 // GLOBAL: GAMEMD 0x8A00B0 -- the DirectDraw error callback.
-extern void (__fastcall* DAT_008A00B0)(long hr);
+extern void (* DAT_008A00B0)(long hr);
 // GLOBAL: GAMEMD 0xB73550 -- the main window.
 extern void* DAT_00B73550;
 // GLOBAL: GAMEMD 0x89F978 -- selects the cooperative-level flags.
@@ -78,7 +78,7 @@ inline void DDraw_Report(long hr)
 }
 
 // FUNCTION: GAMEMD 0x4A42F0
-bool __fastcall FUN_004a42f0(void* window, int width, int height, int bpp)
+bool FUN_004a42f0(void* window, int width, int height, int bpp)
 {
     FUN_004068E0("Prep direct draw.\n");
     if (DAT_008A0094 == 0)

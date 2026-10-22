@@ -24,7 +24,7 @@
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // A __thiscall element constructor: the element goes in ECX.
-typedef void (__fastcall* ElemFn_00626C60)(void* elem);
+typedef void (* ElemFn_00626C60)(void* elem);
 
 // FUNCTION: GAMEMD 0x4068F0 (decl; reloc) — the vector constructor iterator:
 // run `fn` over `count` elements of `stride` bytes starting at `base`.
@@ -32,7 +32,7 @@ void __stdcall FUN_004068F0(char* base, int stride, int count, ElemFn_00626C60 f
 
 // FUNCTION: GAMEMD 0x628740 (decl; reloc) — the bucket vector's default
 // constructor, reached through the iterator above with the bucket in ECX.
-void __fastcall FUN_00628740(void* bucket);
+void FUN_00628740(void* bucket);
 
 // VectorClass<T> base: vtable, Items, Capacity, IsInitialized, IsAllocated.
 // One base per scheme vector because each has its own out-of-line ctor.
@@ -108,10 +108,10 @@ struct Bucket_00626C60
 GG_STATIC_ASSERT(offsetof(Bucket_00626C60, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(Bucket_00626C60) == 0x18);
 
-typedef int (__fastcall* HashFn_00626C60)(void* key);
+typedef int (* HashFn_00626C60)(void* key);
 
 // FUNCTION: GAMEMD 0x626660 (decl; reloc) — the palette-name hash routine.
-int __fastcall FUN_00626660(void* key);
+int FUN_00626660(void* key);
 
 // The palette hash table (0x10 bytes).
 struct Table_00626C60

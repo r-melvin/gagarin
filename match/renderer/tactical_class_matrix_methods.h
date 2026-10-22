@@ -39,8 +39,8 @@ struct Matrix3D
 
     // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) — result = mat * vec, with the
     // result pointer in ECX, the matrix in EDX and the vector on the stack.
-    static Vector3D* __fastcall MatrixApply(Vector3D* ret, const Matrix3D* mat,
-                                            const Vector3D* vec);
+    static Vector3D* MatrixApply(Vector3D* ret, const Matrix3D* mat,
+                                 const Vector3D* vec);
 };
 GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);
 

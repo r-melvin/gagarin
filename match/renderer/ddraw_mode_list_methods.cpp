@@ -60,9 +60,9 @@ long __stdcall FUN_004a4850(DDModeDesc* desc, void* context);
 int __cdecl FUN_004a48c0(void const* a, void const* b);
 
 // FUNCTION: GAMEMD 0x4A4900
-unsigned long* __fastcall FUN_004a4900(unsigned long min_width, unsigned long min_height,
-                                       unsigned long max_width, unsigned long max_height,
-                                       unsigned long bit_count)
+unsigned long* FUN_004a4900(unsigned long min_width, unsigned long min_height,
+                            unsigned long max_width, unsigned long max_height,
+                            unsigned long bit_count)
 {
     if (DAT_008A0094 == 0)
     {

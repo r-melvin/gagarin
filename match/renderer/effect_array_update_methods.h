@@ -26,7 +26,7 @@
 struct IonBlastClass
 {
     void Update();                 // GAMEMD 0x53CBE0 __thiscall (declared; reloc)
-    static void __fastcall UpdateAll();   // GAMEMD 0x53D310
+    static void UpdateAll();   // GAMEMD 0x53D310
 };
 
 // GLOBAL: GAMEMD 0x00AA0118 — IonBlastClass::Array. The sweep reads Items from

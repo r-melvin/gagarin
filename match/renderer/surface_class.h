@@ -16,7 +16,7 @@ class Blitter;
 // Per-pixel callback of DrawLineCallback (slot +0x44). Retail calls it with
 // ECX = pointer to the pixel's Point2D and no stack arguments (0x7BAC7B,
 // 0x7BAD14: `lea ecx,[esp+N]; call ebx`), i.e. one __fastcall argument.
-typedef void(__fastcall* SurfacePixelCallback)(Point2D* pixel);
+typedef void(* SurfacePixelCallback)(Point2D* pixel);
 
 // ---------------------------------------------------------------------------
 // Read-only dependencies called by the Surface/XSurface bodies. They are owned
@@ -28,10 +28,10 @@ typedef void(__fastcall* SurfacePixelCallback)(Point2D* pixel);
 // (hidden), EDX = first rectangle, stack = second rectangle plus two optional
 // offset-out pointers, RET 0xC. Returns the result pointer in EAX. A degenerate
 // intersection yields an all-zero rectangle.
-RectangleStruct* __fastcall RectIntersect(RectangleStruct* result,
-                                          const RectangleStruct* a,
-                                          const RectangleStruct* b, int* adjustX,
-                                          int* adjustY);
+RectangleStruct* RectIntersect(RectangleStruct* result,
+                               const RectangleStruct* a,
+                               const RectangleStruct* b, int* adjustX,
+                               int* adjustY);
 
 // FUNCTION: GAMEMD 0x45A130 (decl; reloc) (decl; reloc). thiscall rectangle builder:
 // ECX = destination, stack = (const Point2D*, width, height), RET 0xC.
@@ -51,24 +51,24 @@ struct PointCopier : public Point2D
 // rectangle (edited), EDX = destination surface rectangle, stack = source
 // rectangle (edited) and source surface rectangle, RET 8. Returns whether any
 // pixels remain. Not in the surface cluster's reserved list: expansion lead.
-bool __fastcall ClipBlitRects(RectangleStruct* destRect,
-                              const RectangleStruct* destSurfaceRect,
-                              RectangleStruct* srcRect,
-                              const RectangleStruct* srcSurfaceRect);
+bool ClipBlitRects(RectangleStruct* destRect,
+                   const RectangleStruct* destSurfaceRect,
+                   RectangleStruct* srcRect,
+                   const RectangleStruct* srcSurfaceRect);
 
 // FUNCTION: GAMEMD 0x7BC2B0 (decl; reloc) (decl; reloc). Line clipper (Cohen-Sutherland with
 // double arithmetic). ECX = first point, EDX = second point (both edited),
 // stack = clip rectangle, RET 4. Returns whether any of the line survives.
 // Not in the reserved list: expansion lead.
-bool __fastcall ClipLine(Point2D* a, Point2D* b, const RectangleStruct* clip);
+bool ClipLine(Point2D* a, Point2D* b, const RectangleStruct* clip);
 
 // FUNCTION: GAMEMD 0x437350 (decl; reloc) (decl; reloc). Scanline blit driver. ECX = destination
 // surface, EDX = destination rectangle, stack = (source surface, source
 // rectangle, Blitter*, 0, 3, 1000, 0), RET 0x1C. Returns the driver result in
 // AL. Not in the reserved list: expansion lead (blitter module's neighbour).
-bool __fastcall BlitDriver(Surface* dest, const RectangleStruct* destRect,
-                           Surface* src, const RectangleStruct* srcRect,
-                           Blitter* blitter, int a, int b, int c, int d);
+bool BlitDriver(Surface* dest, const RectangleStruct* destRect,
+                Surface* src, const RectangleStruct* srcRect,
+                Blitter* blitter, int a, int b, int c, int d);
 
 // ---------------------------------------------------------------------------
 // Surface -- RTTI .?AVSurface@@ (TD 0x817878, COL 0x7FB2F8), vtable 0x7E2198.

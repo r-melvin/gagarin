@@ -29,7 +29,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — operator delete / free, __cdecl.
@@ -84,9 +84,9 @@ public:
                                void* surface, int shadeCount, char skipBlitters);
 
     // FUNCTION: GAMEMD 0x72ADE0
-    static void __fastcall CreateFromFile(const char* pFilename,
-                                          ColorStruct_0072ADE0*& pPalette,
-                                          ConvertClass*& pDestination);
+    static void CreateFromFile(const char* pFilename,
+                               ColorStruct_0072ADE0*& pPalette,
+                               ConvertClass*& pDestination);
 };
 GG_STATIC_ASSERT(sizeof(ConvertClass) == 0x188);
 

@@ -21,7 +21,7 @@ struct Matrix3D
     float Row[3][4];          // +0x0000
 
     // FUNCTION: GAMEMD 0x5AFC20
-    static Matrix3D __fastcall TransposeMatrix(const Matrix3D& mat);
+    static Matrix3D TransposeMatrix(const Matrix3D& mat);
 };
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x0);
 GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);

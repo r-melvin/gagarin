@@ -56,7 +56,7 @@ struct Matrix3D
     float Row[3][4];   // +0x0000
 
     // FUNCTION: GAMEMD 0x646480  Matrix3D::FromAxis (static __fastcall)
-    static Quaternion __fastcall FromAxis(const Vector3& axis, float angle);
+    static Quaternion FromAxis(const Vector3& axis, float angle);
 };
 GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);
 

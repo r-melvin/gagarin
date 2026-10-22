@@ -66,10 +66,10 @@ GG_STATIC_ASSERT(offsetof(Mode_0040A850, Rows) == 0x4C);
 GG_STATIC_ASSERT(offsetof(Mode_0040A850, Bands) == 0x54);
 
 // FUNCTION: GAMEMD 0x407010 — the current mode, or null.
-Mode_0040A850* __fastcall FUN_00407010();
+Mode_0040A850* FUN_00407010();
 
 // FUNCTION: GAMEMD 0x40A7C0
-void __fastcall FUN_0040A7C0(int rows, int height, int step);
+void FUN_0040A7C0(int rows, int height, int step);
 // FUNCTION: GAMEMD 0x40A850
 void FUN_0040A850();
 

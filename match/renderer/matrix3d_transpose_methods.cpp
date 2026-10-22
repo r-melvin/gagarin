@@ -11,7 +11,7 @@
 // translation column becomes minus the transposed rotation applied to the
 // original translation. The result is assembled in a stack local and block-
 // copied into the caller's return buffer.
-Matrix3D __fastcall Matrix3D::TransposeMatrix(const Matrix3D& mat)
+Matrix3D Matrix3D::TransposeMatrix(const Matrix3D& mat)
 {
     Matrix3D t;
 

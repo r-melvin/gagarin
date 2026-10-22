@@ -47,7 +47,7 @@ GG_STATIC_ASSERT(sizeof(LineBuffer_004BDF00) == 0x2C);
 
 // FUNCTION: GAMEMD 0x4BE9D0 (decl; reloc). ECX = pixel colour bytes, EDX = red delta, stack = (green, blue),
 // RET 8: adds the deltas (saturating) and packs the 16-bit pixel.
-unsigned short __fastcall BlendPixel(const unsigned char* rgb, int r, int g, int b);
+unsigned short BlendPixel(const unsigned char* rgb, int r, int g, int b);
 
 // Advance a circular-buffer pointer by `step` words and wrap it into [Start, End).
 static inline unsigned short* WrapStep(LineBuffer_004BDF00* buffer, unsigned short* p, int step)

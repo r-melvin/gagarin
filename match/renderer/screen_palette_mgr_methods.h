@@ -61,8 +61,8 @@ struct WholeFileBlock
 // __fastcall, name in ECX and the "allocated" out-flag in EDX. Modelled
 // independently here so this TU stands alone; agrees with
 // match/platform/file_system_load_whole_methods.h (not edited).
-WholeFileBlock* __fastcall FileSystem_LoadWholeFileEx(const char* fileName,
-                                                      bool* allocated);
+WholeFileBlock* FileSystem_LoadWholeFileEx(const char* fileName,
+                                           bool* allocated);
 
 // A palette buffer: 0x100 three-byte entries, released with a bare
 // `FUN_007C8B3D` (see convert_class_create_methods.h, 0x72ADE0).
@@ -84,9 +84,9 @@ struct ConvertClass_Res
 };
 
 // FUNCTION: GAMEMD 0x72ADE0 (decl; reloc) — ConvertClass::CreateFromFile.
-void __fastcall ConvertClass_CreateFromFile(const char* pFilename,
-                                            ColorStruct_Res*& pPalette,
-                                            ConvertClass_Res*& pDestination);
+void ConvertClass_CreateFromFile(const char* pFilename,
+                                 ColorStruct_Res*& pPalette,
+                                 ConvertClass_Res*& pDestination);
 
 // FUNCTION: GAMEMD 0x72D830 (decl; reloc) — load the multiplayer screen SHP for a side (ECX).
 void FUN_0072D830(int sideIndex);
@@ -212,16 +212,16 @@ extern ScreenPaletteRes DAT_00B0FD44;
 // ---------------------------------------------------------------------------
 
 void __cdecl FreeGamePalettePairs();                                  // 0x72B230
-void __fastcall ReloadLoadingScreenVariant(const char* name);         // 0x72B390
-void __fastcall EnsureLoadingScreenPalettes(int sideIndex);           // 0x72B3E0
+void ReloadLoadingScreenVariant(const char* name);         // 0x72B390
+void EnsureLoadingScreenPalettes(int sideIndex);           // 0x72B3E0
 void __cdecl FreeLoadingScreenPalettes();                             // 0x72B460
-void __fastcall ReloadMpLobbySecondaryPalette(const char* name);      // 0x72B820
+void ReloadMpLobbySecondaryPalette(const char* name);      // 0x72B820
 void __cdecl FreeMpLobbyPalettes();                                   // 0x72B870
 void __cdecl EnsureAutoLoginQueryPalette();                           // 0x72BCA0
 void __cdecl FreeAutoLoginQueryPalette();                             // 0x72BCF0
 void __cdecl EnsureQuickmatchPalette();                               // 0x72BE80
 void __cdecl FreeQuickmatchPalette();                                 // 0x72BED0
-void __fastcall EnsureMpScreenPalette(int sideIndex);                 // 0x72D730
+void EnsureMpScreenPalette(int sideIndex);                 // 0x72D730
 void __cdecl FreeMpScreenPalette();                                   // 0x72D780
 void __cdecl FreeFsMenuPalettes();                                    // 0x72DCF0
 void __cdecl FreeAudioTimerPairs();                                   // 0x72F140

@@ -58,7 +58,7 @@ void Matrix3D::FUN_005AF710(const Vector3& from, const Vector3& to, float roll)
 // FUNCTION: GAMEMD 0x646590
 // Spherical interpolation from a to b by t. Nearly-parallel inputs fall back
 // to linear weights; opposite inputs use quarter-turn sine weights.
-Quaternion __fastcall FUN_00646590(const Quaternion& a, const Quaternion& b, float t)
+Quaternion FUN_00646590(const Quaternion& a, const Quaternion& b, float t)
 {
     Quaternion r;
     r.X = 0.0f;
@@ -102,7 +102,7 @@ static inline float Element(const float* f, int n)
 // FUNCTION: GAMEMD 0x646730
 // Rotation matrix to quaternion via the trace, or via the largest diagonal
 // element when the trace is not positive. A zero trace returns identity.
-Quaternion __fastcall FUN_00646730(const Matrix3D& m)
+Quaternion FUN_00646730(const Matrix3D& m)
 {
     Quaternion q(0.0f, 0.0f, 0.0f, 1.0f);
     int diag[3] = {0, 5, 10};
@@ -156,7 +156,7 @@ Quaternion __fastcall FUN_00646730(const Matrix3D& m)
 
 // FUNCTION: GAMEMD 0x646980
 // Rotation matrix of a unit quaternion; the fourth column is zero.
-Matrix3D __fastcall Matrix3D::FromQuaternion(const Quaternion& q)
+Matrix3D Matrix3D::FromQuaternion(const Quaternion& q)
 {
     return Matrix3D(
         1.0f - 2.0f * (q.Y * q.Y + q.Z * q.Z),

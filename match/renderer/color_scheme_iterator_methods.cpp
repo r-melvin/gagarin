@@ -72,7 +72,7 @@ static inline Palette_00626690** Inline_00626690_b(Table_00626690* table, Entry_
 // through a local becomes `LEA ECX,[EAX+1]` ahead of it (82.4%). The lookup's
 // found body returns through the loop's cached entry pointer (`LEA
 // EAX,[ESI+0x100]`) rather than re-indexing the bucket.
-ColorSchemeVec_00626690* __fastcall GetPaletteSchemesFromIterator(HashIterator_00626690* it)
+ColorSchemeVec_00626690* GetPaletteSchemesFromIterator(HashIterator_00626690* it)
 {
     Table_00626690* table = DAT_00AC48F0->Table;
     Entry_00626690* entry = Inline_00626690_a(table, it);

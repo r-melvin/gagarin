@@ -22,7 +22,7 @@
 // The global is re-read before each of the last two calls. That is not a
 // pessimisation: a call could store to it, so the compiler must reload, and
 // only the first use can reuse the register the null test left behind.
-void __fastcall FUN_0040A7C0(int rows, int height, int step)
+void FUN_0040A7C0(int rows, int height, int step)
 {
     if (DAT_0087E8A0 != 0) {
         Region_0040A7C0 region;

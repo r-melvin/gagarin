@@ -82,7 +82,7 @@ struct PCX
     char               _pad08[4];  // +0x08
     int                Bits;       // +0x0C  log2 of the bucket count
     char               _pad10[8];  // +0x10
-    unsigned int (__fastcall* Hash)(PCXKey_006BA140* key);   // +0x18
+    unsigned int (* Hash)(PCXKey_006BA140* key);   // +0x18
 
     // FUNCTION: GAMEMD 0x6BA140
     void* GetSurface(const char* filename, BytePalette_006BA140* palette);

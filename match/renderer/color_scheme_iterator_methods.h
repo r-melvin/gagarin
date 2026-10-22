@@ -57,7 +57,7 @@ GG_STATIC_ASSERT(offsetof(Bucket_00626690, Entries) == 0x04);
 GG_STATIC_ASSERT(offsetof(Bucket_00626690, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(Bucket_00626690) == 0x18);
 
-typedef int (__fastcall* HashFn_00626690)(Entry_00626690* key);
+typedef int (* HashFn_00626690)(Entry_00626690* key);
 
 struct Table_00626690
 {
@@ -92,6 +92,6 @@ GG_STATIC_ASSERT(sizeof(HashIterator_00626690) == 0xC);
 
 // FUNCTION: GAMEMD 0x626690 — ColorScheme::GetPaletteSchemesFromIterator
 // (static; the iterator rides in ECX).
-ColorSchemeVec_00626690* __fastcall GetPaletteSchemesFromIterator(HashIterator_00626690* it);
+ColorSchemeVec_00626690* GetPaletteSchemesFromIterator(HashIterator_00626690* it);
 
 #endif  // GG_MATCH_RENDERER_COLOR_SCHEME_ITERATOR_METHODS_H

@@ -61,7 +61,7 @@ void __cdecl FreeGamePalettePairs()
 // from the supplied file name. The name arrives in ECX and is handed straight
 // on to CreateFromFile in ECX, so this is __fastcall with a single register
 // parameter that survives the two releases in EDI.
-void __fastcall ReloadLoadingScreenVariant(const char* name)
+void ReloadLoadingScreenVariant(const char* name)
 {
     if (DAT_00B0FB84.Convert != 0) {
         DAT_00B0FB84.Convert->vf_0(1);
@@ -81,7 +81,7 @@ void __fastcall ReloadLoadingScreenVariant(const char* name)
 // file name depends on the side index; retail tail-merges the three arms onto
 // one CALL, which is why this is spelled as three separate calls rather than a
 // name selected into a local.
-void __fastcall EnsureLoadingScreenPalettes(int sideIndex)
+void EnsureLoadingScreenPalettes(int sideIndex)
 {
     if (DAT_00B0FB7C.Convert == 0) {
         ConvertClass_CreateFromFile(DAT_00844BAC, DAT_00B0FB7C.Palette,
@@ -146,7 +146,7 @@ void __cdecl FreeLoadingScreenPalettes()
 //
 // The multiplayer-lobby twin of 0x72B390: drop the secondary lobby set and
 // rebuild it from the supplied file name, which arrives and leaves in ECX.
-void __fastcall ReloadMpLobbySecondaryPalette(const char* name)
+void ReloadMpLobbySecondaryPalette(const char* name)
 {
     if (DAT_00B0FB9C.Convert != 0) {
         DAT_00B0FB9C.Convert->vf_0(1);
@@ -296,7 +296,7 @@ void __cdecl FreeQuickmatchPalette()
 // written as a `const char* name` local rather than as three separate calls;
 // the three-call spelling duplicates the push and the EDX load into every arm
 // and scores 28.0%.
-void __fastcall EnsureMpScreenPalette(int sideIndex)
+void EnsureMpScreenPalette(int sideIndex)
 {
     if (!DAT_00B0FBB8) {
         FUN_0072D830(sideIndex);

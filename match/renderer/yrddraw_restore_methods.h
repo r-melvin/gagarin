@@ -20,7 +20,7 @@ extern int DAT_008A00A4;
 extern int DAT_008A00A8;
 extern int DAT_008A00AC;
 // GLOBAL: GAMEMD 0x8A00B0 — the DirectDraw error callback.
-extern void (__fastcall* DAT_008A00B0)(long hr);
+extern void (* DAT_008A00B0)(long hr);
 // GLOBAL: GAMEMD 0xB73550 — the main window.
 extern void* DAT_00B73550;
 

@@ -86,7 +86,7 @@ void* ABuffer::GetBuffer(int X, int Y)
 // Pack (r,g,b) into the surface's current packed-colour format by quantising
 // each channel (>> shiftRight) then repositioning it (<< shiftLeft).
 // ---------------------------------------------------------------------------
-int __fastcall Drawing::RGB_To_Int(int red, int green, int blue)
+int Drawing::RGB_To_Int(int red, int green, int blue)
 {
     return (red >> RedShiftRight << RedShiftLeft)
          | (green >> GreenShiftRight << GreenShiftLeft)

@@ -157,7 +157,7 @@ public:
     // FUNCTION: GAMEMD 0x5FF850 __thiscall (declaration only; body unrecovered)
     void Draw();
     // FUNCTION: GAMEMD 0x5FFFA0 (declared; matched separately)
-    static void __fastcall DrawAll();
+    static void DrawAll();
 
     Payload_005FF250 Payload;      // +0x00
     int              Age;          // +0x0C  zeroed by the ctor, +8 per sweep
@@ -267,7 +267,7 @@ struct SurfaceSpread_007BB920
 // observed calls preceding the table build. Neither is reimplemented
 // in this TU.
 extern "C" int  __stdcall FUN_004BBC90();
-extern "C" void __fastcall FUN_004E6150(int* param1, char* outFlag, char* param3, unsigned param4);
+extern "C" void FUN_004E6150(int* param1, char* outFlag, char* param3, unsigned param4);
 
 // GLOBAL: GAMEMD 0xAC1834 -- one-shot "gradient cache built" latch.
 extern unsigned char DAT_00AC1834;

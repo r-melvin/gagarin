@@ -62,12 +62,12 @@ struct Matrix3D
     }
 
     void FUN_005AF710(const Vector3& from, const Vector3& to, float roll);
-    static Quaternion __fastcall FromAxis(const Vector3& axis, float angle);
-    static Matrix3D __fastcall FromQuaternion(const Quaternion& q);
+    static Quaternion FromAxis(const Vector3& axis, float angle);
+    static Matrix3D FromQuaternion(const Quaternion& q);
 };
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x00);
 
-Quaternion __fastcall FUN_00646590(const Quaternion& a, const Quaternion& b, float t);
-Quaternion __fastcall FUN_00646730(const Matrix3D& m);
+Quaternion FUN_00646590(const Quaternion& a, const Quaternion& b, float t);
+Quaternion FUN_00646730(const Matrix3D& m);
 
 #endif

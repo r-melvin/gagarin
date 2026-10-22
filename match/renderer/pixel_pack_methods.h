@@ -36,6 +36,6 @@ extern unsigned char DAT_008A0DE4;
 // Pack a raw 8-bit-per-channel {R,G,B} triple into the display's native pixel
 // format using the six shift globals, __fastcall with the triple pointer in
 // ECX.
-unsigned int __fastcall PackPixel_0063DAD0(const unsigned char* rgb);
+unsigned int PackPixel_0063DAD0(const unsigned char* rgb);
 
 #endif  // GG_MATCH_RENDERER_PIXEL_PACK_METHODS_H

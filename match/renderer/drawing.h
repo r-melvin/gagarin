@@ -107,7 +107,7 @@ GG_STATIC_ASSERT(offsetof(ABuffer, BufferTail) == 0x1C);
 class Drawing
 {
 public:
-    static int __fastcall RGB_To_Int(int red, int green, int blue);  // GAMEMD 0x4355D0
+    static int RGB_To_Int(int red, int green, int blue);  // GAMEMD 0x4355D0
 };
 
 #endif  // GG_MATCH_RENDERER_DRAWING_H

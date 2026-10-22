@@ -50,9 +50,9 @@ struct Matrix3D_006D2280
 
     // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) — result = mat * vec, with the
     // result pointer in ECX, the matrix in EDX and the vector on the stack.
-    static Vector3D_006D2280* __fastcall MatrixApply(Vector3D_006D2280* ret,
-                                                     const Matrix3D_006D2280* mat,
-                                                     const Vector3D_006D2280* vec);
+    static Vector3D_006D2280* MatrixApply(Vector3D_006D2280* ret,
+                                          const Matrix3D_006D2280* mat,
+                                          const Vector3D_006D2280* vec);
 };
 GG_STATIC_ASSERT(sizeof(Matrix3D_006D2280) == 0x30);
 
