@@ -77,7 +77,7 @@ public:
     // FUNCTION: GAMEMD 0x41F180 (decl; reloc) -- defined in ai/ai_trigger_charged_methods.cpp.
     bool ChronoSphereCharged(HouseClass* callingHouse, HouseClass* targetHouse) const;
     // FUNCTION: GAMEMD 0x41F2E0 (declaration)
-    static void __fastcall FUN_0041F2E0(CCINIClass* ini, int isGlobal);
+    static void FUN_0041F2E0(CCINIClass* ini, int isGlobal);
     // FUNCTION: GAMEMD 0x41FD60 (decl; reloc) -- defined in ai/ai_trigger_register_methods.cpp.
     void RegisterSuccess();
     // FUNCTION: GAMEMD 0x41FE20 (decl; reloc) -- defined in ai/ai_trigger_register_methods.cpp.

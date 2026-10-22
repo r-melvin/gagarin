@@ -45,7 +45,7 @@ public:
     // FUNCTION: GAMEMD 0x6E5230
     void Destroy();
     // FUNCTION: GAMEMD 0x6E52A0
-    static TagClass* __fastcall GetInstance(TagTypeClass* type);
+    static TagClass* GetInstance(TagTypeClass* type);
     // FUNCTION: GAMEMD 0x6E5290
     bool FUN_006E5290() const;
     // FUNCTION: GAMEMD 0x6E52F0
@@ -69,9 +69,9 @@ public:
     // FUNCTION: GAMEMD 0x6E57C0
     bool ShouldReplace() const;
     // FUNCTION: GAMEMD 0x6E57F0
-    static void __fastcall NotifyGlobalChanged(int idxGlobal);
+    static void NotifyGlobalChanged(int idxGlobal);
     // FUNCTION: GAMEMD 0x6E5820
-    static void __fastcall NotifyLocalChanged(int idxLocal);
+    static void NotifyLocalChanged(int idxLocal);
     // FUNCTION: GAMEMD 0x6E5850
     bool IsOnlyInstanceOfType() const;
 

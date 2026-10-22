@@ -56,9 +56,9 @@ public:
     ScriptTypeClass(const AbstractNoInit& noInit) : AbstractTypeClass(noInit) {}
 
     // FUNCTION: GAMEMD 0x691B40
-    static ScriptTypeClass* __fastcall FUN_00691B40(const char* name);
+    static ScriptTypeClass* FUN_00691B40(const char* name);
     // FUNCTION: GAMEMD 0x691BB0
-    static ScriptTypeClass* __fastcall FUN_00691BB0(const char* name);
+    static ScriptTypeClass* FUN_00691BB0(const char* name);
 
     int              ArrayIndex;          // +0x98  (vf_16 returns it)
     int              IsGlobal;            // +0x9C  constructor clears it

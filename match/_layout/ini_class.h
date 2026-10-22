@@ -48,9 +48,9 @@ public:
     // FUNCTION: GAMEMD 0x5297E0
     bool Write2Integers(const char* section, const char* key, int* values);
     // FUNCTION: GAMEMD 0x52AA90
-    static void __fastcall FUN_0052AA90(char* buffer);
+    static void FUN_0052AA90(char* buffer);
     // FUNCTION: GAMEMD 0x52AAC0
-    static bool __fastcall FUN_0052AAC0(char* buffer);
+    static bool FUN_0052AAC0(char* buffer);
     void* unknown_04;
     void* unknown_08;
     // RTTI table 0x7E1AFC; explicit inherited vptr view is retained.

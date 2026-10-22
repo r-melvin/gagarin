@@ -86,7 +86,7 @@ public:
     // FUNCTION: GAMEMD 0x7265C0
     bool FireActions(ObjectClass* object, CellStruct location);
     // FUNCTION: GAMEMD 0x726630
-    static TriggerClass* __fastcall GetInstance(TriggerTypeClass* type);
+    static TriggerClass* GetInstance(TriggerTypeClass* type);
     // FUNCTION: GAMEMD 0x7266C0 (declaration)
     void FUN_007266C0(int index);
     // FUNCTION: GAMEMD 0x7266E0 (declaration)

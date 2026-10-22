@@ -52,15 +52,15 @@ public:
     // FUNCTION: GAMEMD 0x727050
     bool HasLocalSetOrClearedEvent(int value) const;
     // FUNCTION: GAMEMD 0x727120
-    static TriggerTypeClass* __fastcall FindByNameOrID(const char* name);
+    static TriggerTypeClass* FindByNameOrID(const char* name);
     // FUNCTION: GAMEMD 0x7271E0
     unsigned int GetFlags();
     // FUNCTION: GAMEMD 0x7275D0
-    static void __fastcall LoadFromINIList(CCINI_007275D0* ini);
+    static void LoadFromINIList(CCINI_007275D0* ini);
     // FUNCTION: GAMEMD 0x727880
-    static void __fastcall SaveToINIList(CCINI_00727880* ini);
+    static void SaveToINIList(CCINI_00727880* ini);
     // FUNCTION: GAMEMD 0x727AA0
-    static TriggerTypeClass* __fastcall FindOrAllocate(const char* id);
+    static TriggerTypeClass* FindOrAllocate(const char* id);
     int ArrayIndex;
     // +0x9C..+0x9E: three per-difficulty flags, set separately by the
     // constructor's member initialisers (0x726C80).

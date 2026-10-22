@@ -42,18 +42,18 @@ public:
     // FUNCTION: GAMEMD 0x6E5E00
     bool FUN_006E5E00(TriggerTypeClass* trigger);
     // FUNCTION: GAMEMD 0x6E6310
-    static TagTypeClass* __fastcall FindOrAllocate(const char* id);
+    static TagTypeClass* FindOrAllocate(const char* id);
     int               unknown_98;           // +0x0098
     int               Persistence;          // +0x009C (store at 0x6E60E1)
     TriggerTypeClass* FirstTrigger;          // +0x00A0  (MOV ESI,[ECX+0xA0])
 
     // Additional methods, in retail address order.
     // FUNCTION: GAMEMD 0x6E5E70
-    static TagTypeClass* __fastcall FindByNameOrID(const char* name);
+    static TagTypeClass* FindByNameOrID(const char* name);
     // FUNCTION: GAMEMD 0x6E5ED0
-    static void __fastcall LoadFromINIList(CCINI_006E5ED0* ini);
+    static void LoadFromINIList(CCINI_006E5ED0* ini);
     // FUNCTION: GAMEMD 0x6E5FE0
-    static void __fastcall SaveToINIList(CCINI_006E5FE0* ini);
+    static void SaveToINIList(CCINI_006E5FE0* ini);
     // FUNCTION: GAMEMD 0x6E6080
     bool ReadFromINI(TagINI_006E6080* ini);
     // FUNCTION: GAMEMD 0x6E6160

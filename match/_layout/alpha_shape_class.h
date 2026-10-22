@@ -94,7 +94,7 @@ public:
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x420DA0
 
     // FUNCTION: GAMEMD 0x420E90 (declaration)
-    static void __fastcall FUN_00420E90();
+    static void FUN_00420E90();
 
     ObjectClass*     unknown_24;   // +0x24 the object the shape follows
     AlphaShapeRect   unknown_28;   // +0x28 the screen rectangle
