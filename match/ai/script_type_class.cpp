@@ -72,7 +72,7 @@ static inline bool AddItem_ScriptTypeArray(ScriptTypeVector* self,
 // the matching ScriptTypeClass (constructor + Array.AddItem inlined), load it,
 // and stamp IsGlobal.
 // ---------------------------------------------------------------------------
-void __fastcall ScriptTypeClass::LoadFromINIList(CCINIClass* pINI, int isGlobal)
+void ScriptTypeClass::LoadFromINIList(CCINIClass* pINI, int isGlobal)
 {
     char buffer[0x18];
 
@@ -122,7 +122,7 @@ have_item:
 // Look up a ScriptTypeClass by id; allocate + register one if absent.  "<none>"
 // and "none" both resolve to null.
 // ---------------------------------------------------------------------------
-ScriptTypeClass* __fastcall ScriptTypeClass::FindOrAllocate(const char* pID)
+ScriptTypeClass* ScriptTypeClass::FindOrAllocate(const char* pID)
 {
     if (Strcmpi("<none>", pID) && Strcmpi("none", pID)) {
         int i = 0;

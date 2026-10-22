@@ -14,7 +14,7 @@
 // The key count is hoisted into a register for the first loop, but the
 // section-name pointer is a global and is re-read after every call; the second
 // loop re-reads both the item table and the count each time round.
-void __fastcall TagTypeClass::SaveToINIList(CCINI_006E5FE0* ini)
+void TagTypeClass::SaveToINIList(CCINI_006E5FE0* ini)
 {
     char buffer[32];
     int  i;

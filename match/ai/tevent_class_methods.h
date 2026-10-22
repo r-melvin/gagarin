@@ -32,7 +32,7 @@ struct CDTimer_00726400;
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6F0FC0 (decl; reloc) — team type by name (ECX = name).
 struct TeamType_0071F4E0;
-TeamType_0071F4E0* __fastcall FUN_006F0FC0(const char* name);
+TeamType_0071F4E0* FUN_006F0FC0(const char* name);
 
 // A 24-character name plus terminator. Built from a C string with strncpy
 // (or emptied when there is none), and assigned with a self-assignment guard

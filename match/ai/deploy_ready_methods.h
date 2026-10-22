@@ -12,7 +12,7 @@
 #include "../_rt/gg_vslot.h"
 
 // FUNCTION: GAMEMD 0x6EC300 — ask the linked type whether it is enabled.
-char __fastcall FUN_006EC300(int linked);
+char FUN_006EC300(int linked);
 
 struct Vtbl_0041B890;
 

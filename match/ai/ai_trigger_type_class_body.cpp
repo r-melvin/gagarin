@@ -104,19 +104,19 @@ extern const char STR_00817F70[];
 // 0x7C9DBD -- strtol; 0x7C9D66 -- atof; 0x7C5F00 -- _ftol; 0x7C9BFD -- atoi.
 
 // FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- in-place whitespace trim.
-void __fastcall FUN_00727CF0(char* buffer);
+void FUN_00727CF0(char* buffer);
 // FUNCTION: GAMEMD 0x6F0FC0 (decl; reloc) -- team type by name.
-TeamTypeClass* __fastcall FUN_006F0FC0(const char* name);
+TeamTypeClass* FUN_006F0FC0(const char* name);
 // FUNCTION: GAMEMD 0x5117D0 (decl; reloc) -- house-type name -> index, -1 if absent.
-int __fastcall FUN_005117D0(const char* name);
+int FUN_005117D0(const char* name);
 // FUNCTION: GAMEMD 0x523C90 (decl; reloc) -- first type registry: name -> index.
-int __fastcall FUN_00523C90(const char* name);
+int FUN_00523C90(const char* name);
 // FUNCTION: GAMEMD 0x747370 (decl; reloc) -- second type registry: name -> index.
-int __fastcall FUN_00747370(const char* name);
+int FUN_00747370(const char* name);
 // FUNCTION: GAMEMD 0x41CAA0 (decl; reloc) -- third type registry: name -> index.
-int __fastcall FUN_0041CAA0(const char* name);
+int FUN_0041CAA0(const char* name);
 // FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) -- fourth type registry: name -> index.
-int __fastcall FUN_0045E7B0(const char* name);
+int FUN_0045E7B0(const char* name);
 // GLOBAL: GAMEMD 0xA8E348 -- the first type registry.
 extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8E348;
 // GLOBAL: GAMEMD 0xA83CE0 -- the second type registry.
@@ -131,7 +131,7 @@ extern DynamicVectorClass<AITriggerHouse*> DAT_00A80220;
 // STRING: GAMEMD 0x818164 -- "Civilian"
 extern const char STR_00818164[];
 // FUNCTION: GAMEMD 0x6A46D0 (decl; reloc) -- name -> index, -1 if absent.
-int __fastcall FUN_006A46D0(const char* name);
+int FUN_006A46D0(const char* name);
 
 // The append to AITriggerTypes, in the free-function shape of the inlined
 // DynamicVectorClass::AddItem (as EMPulse_AddItem in combat/empulse_class.cpp).
@@ -369,7 +369,7 @@ static inline AITriggerTypeClass* AITriggerType_FindOrAllocate(const char* name)
 // it enabled. A map read then applies the enable section to the types it
 // names (a type is enabled when its key is true or the game is not a
 // campaign).
-void __fastcall AITriggerTypeClass::FUN_0041F2E0(CCINIClass* ini, int isGlobal)
+void AITriggerTypeClass::FUN_0041F2E0(CCINIClass* ini, int isGlobal)
 {
     int count = ini->GetKeyCount(DAT_007E2A18);
     int i;
@@ -694,12 +694,12 @@ int AITriggerTypeClass::vf_12()
 
 // FUNCTION: GAMEMD 0x420130
 // An empty body; 0x40AD80 tail-jumps to it.
-void __fastcall FUN_00420130()
+void FUN_00420130()
 {
 }
 
 // FUNCTION: GAMEMD 0x420360
 // An empty body with no recovered caller.
-void __fastcall FUN_00420360()
+void FUN_00420360()
 {
 }

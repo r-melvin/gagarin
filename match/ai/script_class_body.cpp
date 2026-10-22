@@ -22,7 +22,7 @@
 #include "../platform/ccini_class_methods.h"
 
 // FUNCTION: GAMEMD 0x727CF0 (decl; reloc) -- trims a buffer in place.
-void __fastcall FUN_00727CF0(char* buffer);
+void FUN_00727CF0(char* buffer);
 
 // GLOBAL: GAMEMD 0x889F64 -- the shared empty default string.
 extern const char DAT_00889F64[];
@@ -146,7 +146,7 @@ bool ScriptTypeClass::vf_25(CCINIClass* ini)
 }
 
 // FUNCTION: GAMEMD 0x691B40
-ScriptTypeClass* __fastcall ScriptTypeClass::FUN_00691B40(const char* name)
+ScriptTypeClass* ScriptTypeClass::FUN_00691B40(const char* name)
 {
     if (name) {
         for (int i = 0; i < ScriptTypes.Count; i++) {
@@ -160,7 +160,7 @@ ScriptTypeClass* __fastcall ScriptTypeClass::FUN_00691B40(const char* name)
 }
 
 // FUNCTION: GAMEMD 0x691BB0
-ScriptTypeClass* __fastcall ScriptTypeClass::FUN_00691BB0(const char* name)
+ScriptTypeClass* ScriptTypeClass::FUN_00691BB0(const char* name)
 {
     if (name) {
         for (int i = 0; i < ScriptTypes.Count; i++) {

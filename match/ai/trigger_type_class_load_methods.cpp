@@ -16,7 +16,7 @@
 //
 // The key count is hoisted into a frame slot for the loop, but the section-name
 // pointer is a global and is re-read after every call.
-void __fastcall TriggerTypeClass::LoadFromINIList(CCINI_007275D0* ini)
+void TriggerTypeClass::LoadFromINIList(CCINI_007275D0* ini)
 {
     int count = ini->GetKeyCount(DAT_007F58C8);
     for (int n = 0; n < count; n++) {

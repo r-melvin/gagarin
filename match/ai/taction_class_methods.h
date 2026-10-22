@@ -158,7 +158,7 @@ public:
     // GAMEMD 0x6E3EE0 — returns a flag bitfield for a given action id.
     // The retail single-arg form is register-passed (ECX) with a plain ret:
     // model it as __fastcall so cl emits the `add ecx,-0xe` / jump-table form.
-    static int __fastcall GetFlags(int actionKind);
+    static int GetFlags(int actionKind);
 
     // GAMEMD 0x6E45E0 — resolve a house from (opaque source ptr, house index).
     // Free helper: two stack args, callee-cleaned 8 bytes (__stdcall).

@@ -23,7 +23,7 @@
 struct TEventClass_0071F680
 {
     // FUNCTION: GAMEMD 0x71F680  (static __fastcall — kind in ECX)
-    static unsigned int __fastcall GetAttachType(int kind);
+    static unsigned int GetAttachType(int kind);
 };
 
 #endif  // GG_MATCH_AI_TEVENT_CLASS_ATTACH_TYPE_METHODS_H

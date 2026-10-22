@@ -12,7 +12,7 @@
 // null tag; otherwise the existing tag type of that name is reused, or a
 // new one built. Either way the name is registered and the tag loads its
 // own record.
-void __fastcall TagTypeClass::LoadFromINIList(CCINI_006E5ED0* ini)
+void TagTypeClass::LoadFromINIList(CCINI_006E5ED0* ini)
 {
     int count = ini->GetKeyCount(DAT_007F4550);
     for (int i = 0; i < count; i++) {

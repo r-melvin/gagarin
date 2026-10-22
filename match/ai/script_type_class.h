@@ -83,10 +83,10 @@ public:
     void AbsCtor(const char* id);                 // GAMEMD 0x410800
 
     // FUNCTION: GAMEMD 0x691970  ScriptTypeClass::LoadFromINIList (static __fastcall)
-    static void __fastcall LoadFromINIList(CCINIClass* pINI, int isGlobal);
+    static void LoadFromINIList(CCINIClass* pINI, int isGlobal);
 
     // FUNCTION: GAMEMD 0x691C00  ScriptTypeClass::FindOrAllocate (static __fastcall)
-    static ScriptTypeClass* __fastcall FindOrAllocate(const char* pID);
+    static ScriptTypeClass* FindOrAllocate(const char* pID);
 };
 
 #if GG_TARGET_ABI_32

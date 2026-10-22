@@ -58,7 +58,7 @@ GG_STATIC_ASSERT(offsetof(TagTypeLoadCallView, Vtable) == 0);
 GG_STATIC_ASSERT(offsetof(TagTypeLoadCallViewVtable, Method) == 0x64);
 
 // FUNCTION: GAMEMD 0x412610 (decl; reloc) — the name's registry key.
-int __fastcall FUN_00412610(const char* name);
+int FUN_00412610(const char* name);
 // GLOBAL: GAMEMD 0xB0C110 — the name registry.
 extern char DAT_00B0C110;
 // FUNCTION: GAMEMD 0x6CF2C0 (decl; reloc) — register a tag type by name.

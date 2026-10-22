@@ -15,7 +15,7 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 // FUNCTION: GAMEMD 0x006E6310 (entry through RET at 0x6E6392, 0x83 bytes)
 // GLOBAL: GAMEMD 0xB0E780 TagTypes (Items +4, Count +0x10).
 // Calls constructor 0x6E5B60; sizeof(TagTypeClass) 0xA4.
-TagTypeClass* __fastcall TagTypeClass::FindOrAllocate(const char* id)
+TagTypeClass* TagTypeClass::FindOrAllocate(const char* id)
 {
     if (_strcmpi("<none>", id) != 0 && _strcmpi("none", id) != 0)
     {
@@ -31,7 +31,7 @@ TagTypeClass* __fastcall TagTypeClass::FindOrAllocate(const char* id)
 // FUNCTION: GAMEMD 0x00727AA0 (entry through RET at 0x727B22, 0x83 bytes)
 // GLOBAL: GAMEMD 0x8B4178 TriggerTypeClass::Array (Items +4, Count +0x10).
 // Calls constructor 0x726C80; sizeof(TriggerTypeClass) 0xB4.
-TriggerTypeClass* __fastcall TriggerTypeClass::FindOrAllocate(const char* id)
+TriggerTypeClass* TriggerTypeClass::FindOrAllocate(const char* id)
 {
     if (_strcmpi("<none>", id) != 0 && _strcmpi("none", id) != 0)
     {

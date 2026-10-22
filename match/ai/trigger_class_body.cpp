@@ -21,7 +21,7 @@
 #include "tevent_class_methods.h"
 
 // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- __fastcall, house for a country index.
-HouseClass* __fastcall FUN_00502D30(int index);
+HouseClass* FUN_00502D30(int index);
 
 // The registries the destructor removes `this` from (abstract_registry.h holds their storage).
 static inline void Trigger_RemoveFrom(DynamicVectorClassLayout* list, TriggerClass* trigger)

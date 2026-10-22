@@ -16,7 +16,7 @@ struct TActionClass_006E3B60
 {
     // FUNCTION: GAMEMD 0x6E3B60 — TActionClass::GetMode (static __fastcall:
     // the action kind arrives in ECX).
-    static int __fastcall GetMode(int kind);
+    static int GetMode(int kind);
 };
 
 #endif  // GG_MATCH_AI_TACTION_CLASS_MODE_METHODS_H

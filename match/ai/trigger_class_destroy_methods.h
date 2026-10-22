@@ -38,7 +38,7 @@ struct CellStruct
 class HouseClass
 {
 public:
-    static HouseClass* __fastcall FindByCountryIndex(int houseType);
+    static HouseClass* FindByCountryIndex(int houseType);
 };
 
 // HouseTypeClass — only ArrayIndex @0xB4 is touched (the FindByCountryIndex arg).

@@ -16,7 +16,7 @@
 // The key count is hoisted into a register for the first loop, but the
 // section-name pointers are globals and are re-read after every call; the
 // item loops re-read both the item table and the count each time round.
-void __fastcall AITriggerType_0041F490::SaveToINIList(CCINI_0041F490* ini, int isGlobal)
+void AITriggerType_0041F490::SaveToINIList(CCINI_0041F490* ini, int isGlobal)
 {
     char buffer[32];
     int  i;

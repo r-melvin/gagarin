@@ -45,7 +45,7 @@ extern Cell_0050D170 DAT_00A8EF98;
 
 // FUNCTION: GAMEMD 0x645BB0 (decl; reloc) — maps a target-type index to the
 // ThreatType mask used by GreatestThreat (a switch on 2..11).
-int __fastcall FUN_00645BB0(int targetType);
+int FUN_00645BB0(int targetType);
 
 struct House_0050D170;
 

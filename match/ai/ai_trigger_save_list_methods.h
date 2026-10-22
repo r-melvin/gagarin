@@ -60,7 +60,7 @@ struct AITriggerType_0041F490
     // member: the INI arrives in ECX and the global flag on the stack, which
     // is what `static __fastcall` spells. Declared here rather than as a free
     // function so the class the list belongs to is named in the source.
-    static void __fastcall SaveToINIList(CCINI_0041F490* ini, int isGlobal);
+    static void SaveToINIList(CCINI_0041F490* ini, int isGlobal);
 };
 GG_STATIC_ASSERT(offsetof(AITriggerType_0041F490, ID) == 0x24);
 GG_STATIC_ASSERT(offsetof(AITriggerType_0041F490, IsGlobal) == 0x9C);

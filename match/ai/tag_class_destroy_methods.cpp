@@ -50,7 +50,7 @@ void TagClass::Destroy()
 // The scan reads Array.Count once into ESI. The native new-expression emits
 // operator new(0x38), a null guard, and the constructor call at 0x6E4DE0.
 // ---------------------------------------------------------------------------
-TagClass* __fastcall TagClass::GetInstance(TagTypeClass* pType)
+TagClass* TagClass::GetInstance(TagTypeClass* pType)
 {
     for (int i = 0; i < TagClass::Array.Count; ++i)
     {

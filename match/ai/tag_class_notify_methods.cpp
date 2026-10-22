@@ -20,7 +20,7 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClassLayout, Count) == 0x10);
 // Pass each tag's FirstTrigger pointer unchanged to 0x7263A0. The registry
 // count is reloaded after the call. Original forwarding-method ownership is
 // not established by this callsite.
-void __fastcall TagClass::NotifyGlobalChanged(int idxGlobal)
+void TagClass::NotifyGlobalChanged(int idxGlobal)
 {
     for (int i = 0; i < Array.Count; ++i) {
         static_cast<TriggerClass*>(((TagClass**)Array.Items)[i]->FirstTrigger)
@@ -29,7 +29,7 @@ void __fastcall TagClass::NotifyGlobalChanged(int idxGlobal)
 }
 
 // FUNCTION: GAMEMD 0x6E5820  (static __fastcall, idxLocal in ECX)
-void __fastcall TagClass::NotifyLocalChanged(int idxLocal)
+void TagClass::NotifyLocalChanged(int idxLocal)
 {
     for (int i = 0; i < Array.Count; ++i) {
         static_cast<TriggerClass*>(((TagClass**)Array.Items)[i]->FirstTrigger)

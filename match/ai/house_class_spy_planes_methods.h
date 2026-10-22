@@ -52,7 +52,7 @@ extern Cell_0065EAB0 DAT_00B04C38;
 struct House_0065EAB0;
 
 // FUNCTION: GAMEMD 0x50DA80 (decl; reloc) — the house's fallback map side.
-int __fastcall FUN_0050DA80(House_0065EAB0* house);
+int FUN_0050DA80(House_0065EAB0* house);
 
 struct MapClass_0065EAB0
 {

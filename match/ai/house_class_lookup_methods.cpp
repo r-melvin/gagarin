@@ -12,7 +12,7 @@ extern "C" int __cdecl strcmp(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x510D10
 // Add the eight "<Player @ X>" names to a combo box (0x143 = CB_ADDSTRING),
 // tagging each new item with its code (0x151 = CB_SETITEMDATA).
-void __fastcall FUN_00510D10(HWND__* combo)
+void FUN_00510D10(HWND__* combo)
 {
     long index;
 
@@ -41,7 +41,7 @@ void __fastcall FUN_00510D10(HWND__* combo)
 // PARTIAL 85.7%: retail saves ESI/EDI before the size test (the early return
 // shares the epilogue); cl shrink-wraps them after it. Tried an outer size
 // guard, an if/else on `size > 0` and a block-scoped body: all 85.7%.
-void __fastcall FUN_00510E10(int code, char* buffer, int size)
+void FUN_00510E10(int code, char* buffer, int size)
 {
     const char* name;
 
@@ -83,7 +83,7 @@ void __fastcall FUN_00510E10(int code, char* buffer, int size)
 //
 // The eight arms are a plain if-chain in retail, each arm pushing its slot
 // constant and falling into one cross-jumped copy of the lookup call.
-HouseClass* __fastcall HouseClass::FindByPlayerAt(int at)
+HouseClass* HouseClass::FindByPlayerAt(int at)
 {
     int idx;
 
@@ -114,7 +114,7 @@ HouseClass* __fastcall HouseClass::FindByPlayerAt(int at)
 }
 
 // FUNCTION: GAMEMD 0x510F60
-bool __fastcall FUN_00510F60(int code)
+bool FUN_00510F60(int code)
 {
     if (code == 0x117B || code == 0x117C || code == 0x117D || code == 0x117E
         || code == 0x117F || code == 0x1180 || code == 0x1181 || code == 0x1182) {
@@ -125,7 +125,7 @@ bool __fastcall FUN_00510F60(int code)
 
 // FUNCTION: GAMEMD 0x510FB0
 // The pseudo-house code a "<Player @ X>" name stands for, or -1.
-int __fastcall FUN_00510FB0(const char* name)
+int FUN_00510FB0(const char* name)
 {
     if (strcmp(name, "<Player @ A>") == 0) {
         return 0x117B;

@@ -76,7 +76,7 @@ GG_STATIC_ASSERT(offsetof(AnimClass, At_19D) == 0x19D);
 GG_STATIC_ASSERT(sizeof(AnimClass) == 0x1C8);
 
 // FUNCTION: GAMEMD 0x427CB0 (decl; reloc) — AnimTypeClass::FindIndex(name).
-int __fastcall AnimType_FindIndex(const char* name);
+int AnimType_FindIndex(const char* name);
 
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeArray;

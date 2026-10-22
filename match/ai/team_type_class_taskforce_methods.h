@@ -48,7 +48,7 @@ GG_STATIC_ASSERT(offsetof(TaskForce_006F1FA0, Entries) + offsetof(TaskForceEntry
 
 // FUNCTION: GAMEMD 0x5889F0 (decl; reloc) — folds one type's +0x5B4 value into
 // the running value. Two register arguments, nothing on the stack.
-int __fastcall FUN_005889F0(int value, int running);
+int FUN_005889F0(int value, int running);
 
 // TeamTypeClass (partial) — only the members ProcessTaskForce touches.
 class TeamTypeClass

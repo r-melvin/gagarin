@@ -21,7 +21,7 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 // either the entry's ID (+0x24) or its Name (+0x64). Returns the entry pointer,
 // or null. Count/Items are reloaded from the global each iteration.
 // ---------------------------------------------------------------------------
-TagTypeClass* __fastcall TagTypeClass::FindByNameOrID(const char* name)
+TagTypeClass* TagTypeClass::FindByNameOrID(const char* name)
 {
     if (name)
     {

@@ -62,7 +62,7 @@ extern DynamicVectorClass<TagClass*> DAT_008B41A8;
 extern int DAT_00A83DBC;
 
 // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- __fastcall, house for a country index.
-HouseClass* __fastcall FUN_00502D30(int index);
+HouseClass* FUN_00502D30(int index);
 
 // GLOBAL: GAMEMD 0x87F7E8 -- the map; 0x5657A0 returns the cell at a coordinate.
 struct Map_0087F7E8

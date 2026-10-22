@@ -13,8 +13,8 @@
 // setup is held open around the creating calls. Returns how many planes made
 // it in; a plane that cannot be placed is deleted and the count comes back
 // one short.
-int __fastcall House_0065EAB0::SendSpyPlanes(int typeIndex, int count, int a2,
-                                             int a3, void* a4)
+int House_0065EAB0::SendSpyPlanes(int typeIndex, int count, int a2,
+                                  int a3, void* a4)
 {
     AircraftType_0065EAB0* type = DAT_00A8B21C[typeIndex];
     // The edge search's out cell is declared outside the loop: inside it, cl

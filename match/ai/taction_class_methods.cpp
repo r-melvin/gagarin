@@ -16,16 +16,16 @@
 //   0x510F60 — predicate over a raw house index (returns bool in AL).
 //   0x510ED0 — house lookup when the predicate holds.
 //   0x502D30 — house lookup otherwise.
-int __fastcall TActionClass_Sub726910(void* pSource);
-bool __fastcall TActionClass_Sub510F60(int index);
-int __fastcall TActionClass_Sub510ED0(int index);
-int __fastcall TActionClass_Sub502D30(int index);
+int TActionClass_Sub726910(void* pSource);
+bool TActionClass_Sub510F60(int index);
+int TActionClass_Sub510ED0(int index);
+int TActionClass_Sub502D30(int index);
 
 // FUNCTION: GAMEMD 0x6E3EE0  (__fastcall)
 // Sparse switch over the action id: a handful of ids carry flag bit 0x2, the
 // rest return 0. cl lowers this to the `add ecx,-0xe` range-reduce + a packed
 // byte index table feeding a 2-entry jump table.
-int __fastcall TActionClass::GetFlags(int actionKind)
+int TActionClass::GetFlags(int actionKind)
 {
     int flags = 0;
     switch (actionKind)

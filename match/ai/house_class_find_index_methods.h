@@ -19,7 +19,7 @@ struct House_0050C170
     char PlainName[21];       // +0x15FF4
 
     // FUNCTION: GAMEMD 0x50C170 — index of the house whose name matches.
-    static int __fastcall FindIndexByName(const char* name);
+    static int FindIndexByName(const char* name);
 };
 GG_STATIC_ASSERT(offsetof(House_0050C170, PlainName) == 0x15FF4);
 

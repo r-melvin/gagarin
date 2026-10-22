@@ -44,7 +44,7 @@ bool TriggerClass::HasGlobalSetOrClearedEvent(int idxGlobal) const
 // global Array linearly; if none is found a fresh instance is allocated and
 // constructed. A null pType (or a failed allocation) yields null.
 // ---------------------------------------------------------------------------
-TriggerClass* __fastcall TriggerClass::GetInstance(TriggerTypeClass* pType)
+TriggerClass* TriggerClass::GetInstance(TriggerTypeClass* pType)
 {
     if (pType)
     {

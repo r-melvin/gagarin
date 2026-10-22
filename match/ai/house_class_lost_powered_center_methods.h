@@ -79,7 +79,7 @@ extern const char STR_00824E4C[];
 struct Vox_0050E0E0
 {
     // FUNCTION: GAMEMD 0x752700 (decl; reloc) — VoxClass::Play.
-    static void __fastcall Play(const char* name, int a, int b);
+    static void Play(const char* name, int a, int b);
 };
 
 struct House_0050E0E0

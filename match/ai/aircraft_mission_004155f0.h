@@ -134,6 +134,6 @@ extern Map_004155F0 MapInstance_004155F0;
 // GLOBAL: GAMEMD 0x889E68 — the two-word sentinel read by the final comparison.
 extern Cell_004155F0 EmptyCell_004155F0;
 // FUNCTION: GAMEMD 0x7509E0 — index in ECX, coordinates in EDX, RET 4.
-void* __fastcall FUN_007509E0(int index, const Coord_004155F0* location, void* controller);
+void* FUN_007509E0(int index, const Coord_004155F0* location, void* controller);
 
 #endif // GG_AIRCRAFT_MISSION_004155F0_H

@@ -16,8 +16,8 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 
 // Event-kind -> flag bits (GAMEMD 0x71F680) and action-kind -> flag bits
 // (GAMEMD 0x6E3EE0). Both take the kind in ECX and return the bits in EAX.
-int __fastcall EventKindToFlags(int kind);   // 0x71F680
-int __fastcall ActionKindToFlags(int kind);  // 0x6E3EE0
+int EventKindToFlags(int kind);   // 0x71F680
+int ActionKindToFlags(int kind);  // 0x6E3EE0
 
 
 // ---------------------------------------------------------------------------
@@ -27,7 +27,7 @@ int __fastcall ActionKindToFlags(int kind);  // 0x6E3EE0
 // either the entry's ID (+0x24) or its Name (+0x64). Returns the entry pointer,
 // or null. Count/Items are reloaded from the global each iteration.
 // ---------------------------------------------------------------------------
-TriggerTypeClass* __fastcall TriggerTypeClass::FindByNameOrID(const char* name)
+TriggerTypeClass* TriggerTypeClass::FindByNameOrID(const char* name)
 {
     if (name)
     {

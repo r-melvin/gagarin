@@ -21,11 +21,11 @@ class FootClass;
 // Recruitability predicate on the AbstractType, at 0x005B36E0 — __fastcall with
 // the type in ECX (`MOV ECX,EAX; CALL rel32`). Descriptive name; the address
 // carries no binary-attested one.
-bool __fastcall IsRecruitableRTTI(int rtti);
+bool IsRecruitableRTTI(int rtti);
 
 // WhatAmI() — virtual at +0x184 of this vtable, dispatched through the tree's
 // usual __fastcall-fn-pointer idiom.
-typedef int (__fastcall* WhatAmIFunc)(FootClass*);
+typedef int (* WhatAmIFunc)(FootClass*);
 #define FOOT_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x184))(o))
 
 class FootClass

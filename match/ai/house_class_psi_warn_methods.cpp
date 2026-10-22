@@ -14,8 +14,8 @@
 //
 // __fastcall member: this in ECX, the target in EDX, bullet + name on the
 // stack (RET 8).
-AnimClass* __fastcall HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
-                                          const char* animName)
+AnimClass* HouseClass::PsiWarn(CellClass* target, BulletClass* bullet,
+                               const char* animName)
 {
     AnimTypeClass* type =
         ((AnimTypeClass**)AnimTypeArray.Items)[AnimType_FindIndex(animName)];

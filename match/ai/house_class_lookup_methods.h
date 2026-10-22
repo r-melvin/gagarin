@@ -48,7 +48,7 @@ class HouseClass
 {
 public:
     // FUNCTION: GAMEMD 0x510ED0
-    static HouseClass* __fastcall FindByPlayerAt(int at);
+    static HouseClass* FindByPlayerAt(int at);
 };
 
 // GLOBAL: GAMEMD 0x889F64 -- the shared empty string.
@@ -64,12 +64,12 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND__* wnd,
                                                              long lParam);
 
 // FUNCTION: GAMEMD 0x510D10 (decl; reloc) -- fill a combo box with the names.
-void __fastcall FUN_00510D10(HWND__* combo);
+void FUN_00510D10(HWND__* combo);
 // FUNCTION: GAMEMD 0x510E10 (decl; reloc) -- code -> name into a buffer.
-void __fastcall FUN_00510E10(int code, char* buffer, int size);
+void FUN_00510E10(int code, char* buffer, int size);
 // FUNCTION: GAMEMD 0x510F60 (decl; reloc) -- is this a pseudo-house code?
-bool __fastcall FUN_00510F60(int code);
+bool FUN_00510F60(int code);
 // FUNCTION: GAMEMD 0x510FB0 (decl; reloc) -- name -> code, -1 if none.
-int __fastcall FUN_00510FB0(const char* name);
+int FUN_00510FB0(const char* name);
 
 #endif  // GG_MATCH_AI_HOUSE_CLASS_LOOKUP_METHODS_H

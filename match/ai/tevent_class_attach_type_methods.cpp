@@ -12,7 +12,7 @@
 // (range check, index byte, JMP [table]); the third set has only two members
 // and is a pair of compares. The first set assigns (MOV ESI,1) rather than ORs
 // because the accumulator is still known to be zero there.
-unsigned int __fastcall TEventClass_0071F680::GetAttachType(int kind)
+unsigned int TEventClass_0071F680::GetAttachType(int kind)
 {
     unsigned int bits = 0;
 

@@ -15,7 +15,7 @@
 // Each key name is bound to a local before the read: retail calls
 // GetKeyName and only then pushes the read's own arguments, where the
 // nested call form pushes the constants first.
-void __fastcall TriggerTypeClass::SaveToINIList(CCINI_00727880* ini)
+void TriggerTypeClass::SaveToINIList(CCINI_00727880* ini)
 {
     char buffer[0x20];
     int  i;
