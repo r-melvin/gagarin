@@ -52,7 +52,7 @@ GG_STATIC_ASSERT(sizeof(Foundation_004A8BF0) == 0x1E0);
 struct Display_004A8BF0
 {
     char                 _pad0000[0x1174];   // +0x0000
-    Cell_004A8BF0        CursorCell;         // +0x1174
+    Cell_004A8BF0        unknown_1174;         // +0x1174
     Cell_004A8BF0        Offset;             // +0x1178
     Foundation_004A8BF0* Active;             // +0x117C
 
@@ -66,7 +66,7 @@ struct Display_004A8BF0
     // FUNCTION: GAMEMD 0x4A8BF0 — DisplayClass::SetActiveFoundation.
     void SetActiveFoundation(Foundation_004A8BF0* foundation);
 };
-GG_STATIC_ASSERT(offsetof(Display_004A8BF0, CursorCell) == 0x1174);
+GG_STATIC_ASSERT(offsetof(Display_004A8BF0, unknown_1174) == 0x1174);
 GG_STATIC_ASSERT(offsetof(Display_004A8BF0, Offset)     == 0x1178);
 GG_STATIC_ASSERT(offsetof(Display_004A8BF0, Active)     == 0x117C);
 

@@ -28,8 +28,8 @@
 void Display_004A8BF0::SetActiveFoundation(Foundation_004A8BF0* foundation)
 {
     if (Active != 0) {
-        RedrawFoundation(MakeCell_004A8BF0(Offset.X + CursorCell.X,
-                                           Offset.Y + CursorCell.Y), 0);
+        RedrawFoundation(MakeCell_004A8BF0(Offset.X + unknown_1174.X,
+                                           Offset.Y + unknown_1174.Y), 0);
     }
 
     Offset = DAT_008A03F8;
@@ -48,8 +48,8 @@ void Display_004A8BF0::SetActiveFoundation(Foundation_004A8BF0* foundation)
         half.Y = (short)(-span.Y / 2);
         Offset = half;
 
-        RedrawFoundation(MakeCell_004A8BF0(CursorCell.X + Offset.X,
-                                           CursorCell.Y + Offset.Y), 1);
+        RedrawFoundation(MakeCell_004A8BF0(unknown_1174.X + Offset.X,
+                                           unknown_1174.Y + Offset.Y), 1);
     } else {
         Active = 0;
     }

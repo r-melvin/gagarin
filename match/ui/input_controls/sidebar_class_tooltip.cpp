@@ -69,7 +69,7 @@ const wchar_t* SidebarClass::vf_33(int id)
     if (id >= 1000) {
         int rows = (DAT_00886F9C - StripY_00B0B4F8 - margin + DAT_00886F94 - 7) / 50;
         if (id < 1000 + rows * 2) {
-            return Strips[ActiveTab].FUN_006A92E0(id - 1000);
+            return Strips[unknown_539C].FUN_006A92E0(id - 1000);
         }
     }
     return text;

@@ -18,11 +18,11 @@ bool GraphicMenuImageItem::Slot2(const Point2D* point)
 void GraphicMenuImageItem::Slot4(bool value)
 {
     if (Sink24)
-        Sink24->SetFlag(Visible && !value);
+        Sink24->vf_1(Visible && !value);
     if (Sink28)
-        Sink28->SetFlag(Visible && value);
+        Sink28->vf_1(Visible && value);
     if (Sink2C)
-        Sink2C->SetFlag(!Visible);
+        Sink2C->vf_1(!Visible);
     Sprite->Func_5D26C0(&Rect);
     Sprite->Func_5D1E50();
     if (value && Part30)
@@ -33,11 +33,11 @@ void GraphicMenuImageItem::Slot4(bool value)
 void GraphicMenuImageItem::Slot5(bool value)
 {
     if (Sink24)
-        Sink24->SetFlag(value && !Flag08);
+        Sink24->vf_1(value && !Flag08);
     if (Sink28)
-        Sink28->SetFlag(value && Flag08);
+        Sink28->vf_1(value && Flag08);
     if (Sink2C)
-        Sink2C->SetFlag(!value);
+        Sink2C->vf_1(!value);
     Sprite->Func_5D26C0(&Rect);
     Sprite->Func_5D1E50();
 }

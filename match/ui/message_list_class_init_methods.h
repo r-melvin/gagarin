@@ -47,8 +47,8 @@ struct Label_005D3A60
 struct MessageList_005D3A60
 {
     Label_005D3A60* MessageList;      // +0x0000
-    int     MessageX;                 // +0x0004
-    int     MessageY;                 // +0x0008
+    int     unknown_04;                 // +0x0004
+    int     unknown_08;                 // +0x0008
     int     MaxMessageCount;          // +0x000C
     int     MaxCharacters;            // +0x0010
     int     Height;                   // +0x0014
@@ -76,7 +76,7 @@ struct MessageList_005D3A60
               int editX, int editY, bool enableOverflow, int overflowStart,
               int overflowEnd, int width);
 };
-GG_STATIC_ASSERT(offsetof(MessageList_005D3A60, MessageX)        == 0x004);
+GG_STATIC_ASSERT(offsetof(MessageList_005D3A60, unknown_04)        == 0x004);
 GG_STATIC_ASSERT(offsetof(MessageList_005D3A60, MaxMessageCount) == 0x00C);
 GG_STATIC_ASSERT(offsetof(MessageList_005D3A60, MaxCharacters)   == 0x010);
 GG_STATIC_ASSERT(offsetof(MessageList_005D3A60, Height)          == 0x014);

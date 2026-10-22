@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x65CDD0:
-//     BiasStart   [ESI+0x0C] (ADD ECX,EBP @0x65CE98; SUB EAX,[ESI+0xC] @0x65CEDE)
-//     BiasLength  [ESI+0x10] (CMP [ESI+0x10],-1 @0x65CE42; stored @0x65CEE1)
+//     unknown_0C   [ESI+0x0C] (ADD ECX,EBP @0x65CE98; SUB EAX,[ESI+0xC] @0x65CEDE)
+//     unknown_10  [ESI+0x10] (CMP [ESI+0x10],-1 @0x65CE42; stored @0x65CEE1)
 //     Handle      [ESI+0x14] (-> WriteFile / SetFilePointer)
 //     FileName    [ESI+0x18] (-> CDCheck)
 //   vtable slots dispatched: HasHandle +0x18, Open +0x1C (pushed 2 == Write),
@@ -59,8 +59,8 @@ public:
     virtual int  WriteBytes(const void* pBuffer, int nBytes);
 
     FileAccessMode FileAccess;   // +0x08
-    int   BiasStart;             // +0x0C  (YRpp: FilePointer)
-    int   BiasLength;            // +0x10  (YRpp: FileSize)
+    int   unknown_0C;             // +0x0C  (YRpp: FilePointer)
+    int   unknown_10;            // +0x10  (YRpp: FileSize)
     void* Handle;                // +0x14
     const char* FileName;        // +0x18
     short unknown_short_1C;      // +0x1C
@@ -74,8 +74,8 @@ private:
     int RawSeek(int offset, int mode);
 };
 
-GG_STATIC_ASSERT(offsetof(RawFileClass, BiasStart)   == 0x0C);
-GG_STATIC_ASSERT(offsetof(RawFileClass, BiasLength)  == 0x10);
+GG_STATIC_ASSERT(offsetof(RawFileClass, unknown_0C)   == 0x0C);
+GG_STATIC_ASSERT(offsetof(RawFileClass, unknown_10)  == 0x10);
 GG_STATIC_ASSERT(offsetof(RawFileClass, Handle)      == 0x14);
 GG_STATIC_ASSERT(offsetof(RawFileClass, FileName)    == 0x18);
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);

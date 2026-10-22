@@ -18,7 +18,7 @@
 // Flat early returns plus the repaint colour chosen into one local before a
 // single SendMessage reproduce retail's register naming (receiver in EDI,
 // control handle in EBX).
-void WolScenarioColorDlgClass::UpdateColorCombo()
+void WolScenarioColorDlgClass::FUN_005B59B0()
 {
     HWND_ dialog = this->Dialog;
     HWND_ control = GetDlgItem(dialog, 0x405);
@@ -33,7 +33,7 @@ void WolScenarioColorDlgClass::UpdateColorCombo()
     PlayerColor = selection;
     this->OptionsChanged = true;
     this->unknown_08 = true;
-    unsigned color = (selection >= 0 && selection < 8) ? ColorSchemes[selection] : DefaultSchemeColor;
+    unsigned color = (selection >= 0 && selection < 8) ? DAT_008316A8[selection] : DefaultSchemeColor;
     SendMessageA(control, GG_CBM_SETCOLOR, 0, color);
 }
 
@@ -42,7 +42,7 @@ void WolScenarioColorDlgClass::UpdateColorCombo()
 // The colour combo's selection changed. The tail is the same publish-and-repaint
 // run as the reconcile above, without the advance-past-our-own-colour step.
 //
-// EXACT (47/47 instructions); same spelling as UpdateColorCombo.
+// EXACT (47/47 instructions); same spelling as FUN_005B59B0.
 void WolScenarioColorDlgClass::OnColorSelChanged()
 {
     HWND_ dialog = this->Dialog;
@@ -53,6 +53,6 @@ void WolScenarioColorDlgClass::OnColorSelChanged()
     PlayerColor = selection;
     this->OptionsChanged = true;
     this->unknown_08 = true;
-    unsigned color = (selection >= 0 && selection < 8) ? ColorSchemes[selection] : DefaultSchemeColor;
+    unsigned color = (selection >= 0 && selection < 8) ? DAT_008316A8[selection] : DefaultSchemeColor;
     SendMessageA(control, GG_CBM_SETCOLOR, 0, color);
 }

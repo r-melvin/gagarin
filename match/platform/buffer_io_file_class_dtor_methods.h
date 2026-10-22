@@ -43,20 +43,20 @@ struct BufferIOFileClass
 
     char           _pad04[0x24 - 0x04];   // +0x0004  (RawFileClass spine, P2)
     unsigned char  IsAllocated;           // +0x0024
-    unsigned char  IsOpen;                // +0x0025
+    unsigned char  unknown_25;                // +0x0025
     unsigned char  _unknown_26;           // +0x0026  (not touched here)
-    unsigned char  IsDiskOpen;            // +0x0027
-    unsigned char  IsCached;              // +0x0028
-    unsigned char  IsChanged;             // +0x0029
+    unsigned char  unknown_27;            // +0x0027
+    unsigned char  unknown_28;              // +0x0028
+    unsigned char  unknown_29;             // +0x0029
     char           _pad2A[0x30 - 0x2A];   // +0x002A
     void*          Buffer;                // +0x0030
     int            BufferSize;            // +0x0034
 };
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, IsAllocated) == 0x24);
-GG_STATIC_ASSERT(offsetof(BufferIOFileClass, IsOpen) == 0x25);
-GG_STATIC_ASSERT(offsetof(BufferIOFileClass, IsDiskOpen) == 0x27);
-GG_STATIC_ASSERT(offsetof(BufferIOFileClass, IsCached) == 0x28);
-GG_STATIC_ASSERT(offsetof(BufferIOFileClass, IsChanged) == 0x29);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_25) == 0x25);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_27) == 0x27);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_29) == 0x29);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, Buffer) == 0x30);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, BufferSize) == 0x34);
 

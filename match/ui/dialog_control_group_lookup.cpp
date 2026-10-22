@@ -21,7 +21,7 @@
 // guard is the first of retail's two null tests on the hit path and the
 // caller's own `p ? p->Field6C : 0` is the second. Dropping either one loses
 // the `ADD EAX,4` block.
-__forceinline static MapValue_00602B90* FindValue(int nKey)
+__forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
 {
     if (DAT_00AC1B00.Count != 0)
     {
@@ -73,7 +73,7 @@ __forceinline static MapValue_00602B90* FindValue(int nKey)
 // out of line and its side effects are not visible here.
 int __fastcall FUN_00600CA0(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 
@@ -176,7 +176,7 @@ int __fastcall FUN_00600CA0(int nKey, GG_HWND hCtl)
 // 1, which is what keeps the TEST AL,AL and the 0x695 compare in the body.
 int __fastcall FUN_006015E0(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 
@@ -276,7 +276,7 @@ int __fastcall FUN_006015E0(int nKey, GG_HWND hCtl)
 // not a source-level goto.
 int __fastcall FUN_00601D20(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 
@@ -393,7 +393,7 @@ int __fastcall FUN_00601D20(int nKey, GG_HWND hCtl)
 // session object at 0xA8B238 + 0x30D8 through the accessor at 0x69BBE0.
 bool __fastcall FUN_00602490(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 

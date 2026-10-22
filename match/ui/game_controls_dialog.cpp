@@ -207,7 +207,7 @@ void Obj_004E1D00::FUN_004E1DE0()
 }
 
 // The scroll handler of the dialog procedure (inlined there).
-static inline void Dialog_OnHScroll(HWND window, HWND control, WPARAM wParam)
+static inline void Inline_004E1FE0_a(HWND window, HWND control, WPARAM wParam)
 {
     if (LOWORD(wParam) != SB_THUMBTRACK) {
         return;
@@ -240,7 +240,7 @@ static inline void Dialog_OnHScroll(HWND window, HWND control, WPARAM wParam)
 }
 
 // Hide the game-speed slider, its frame and its caption.
-static inline void Dialog_HideSpeed(HWND window)
+static inline void Inline_004E1FE0_b(HWND window)
 {
     HWND item = GetDlgItem(window, 0x529);
     ShowWindow(item, SW_HIDE);
@@ -263,7 +263,7 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
         FUN_004E23C0(window, LOWORD(wParam), (HWND)lParam, HIWORD(wParam));
         break;
     case WM_HSCROLL:
-        Dialog_OnHScroll(window, (HWND)lParam, wParam);
+        Inline_004E1FE0_a(window, (HWND)lParam, wParam);
         break;
     case 0x497: {
         HWND item = GetDlgItem(window, 0x529);
@@ -279,9 +279,9 @@ int __stdcall FUN_004E1FE0(void* hwnd, unsigned message, unsigned wParam, long l
             SendMessageA(item, 0x405, 1, 6 - DAT_00A8EB60.GameSpeed);
         }
         if (DAT_00A8B538) {
-            Dialog_HideSpeed(window);
+            Inline_004E1FE0_b(window);
             if (DAT_00A8B538) {
-                Dialog_HideSpeed(window);
+                Inline_004E1FE0_b(window);
             }
         }
         item = GetDlgItem(window, 0x52A);

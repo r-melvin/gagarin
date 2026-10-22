@@ -401,11 +401,11 @@ struct CheckListClass : public ListClass
 GG_STATIC_ASSERT(offsetof(CheckListClass, IsReadOnly) == 0x174);
 
 // Vector of colour-scheme indices (DynamicVectorClass<int> over VectorClass<int>).
-struct ColorVector
+struct Obj_007E4DB8
 {
-    ColorVector() { Vector = 0; VectorMax = 0; IsValid = true; IsAllocated = false; }
-    virtual ~ColorVector() { ColorVector::Clear(); }
-    virtual bool operator==(ColorVector const& other) const;
+    Obj_007E4DB8() { Vector = 0; VectorMax = 0; IsValid = true; IsAllocated = false; }
+    virtual ~Obj_007E4DB8() { Obj_007E4DB8::Clear(); }
+    virtual bool operator==(Obj_007E4DB8 const& other) const;
     virtual bool Resize(int capacity, int const* array);
     virtual void Clear()
     {
@@ -424,16 +424,16 @@ struct ColorVector
     bool  IsAllocated;  // +0x0D
 };
 
-struct ColorDynVector : public ColorVector
+struct ColorDynVector : public Obj_007E4DB8
 {
-    ColorDynVector() { GrowthStep = 10; ActiveCount = 0; }
+    ColorDynVector() { unknown_14 = 10; ActiveCount = 0; }
 
     int ActiveCount;  // +0x10
-    int GrowthStep;   // +0x14
+    int unknown_14;   // +0x14
 
     int& operator[](int index) { return Vector[index]; }
 };
-GG_STATIC_ASSERT(offsetof(ColorVector, Vector) == 0x04);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, Vector) == 0x04);
 GG_STATIC_ASSERT(offsetof(ColorDynVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(sizeof(ColorDynVector) == 0x18);   // Style +0x18C after Colors +0x174
 

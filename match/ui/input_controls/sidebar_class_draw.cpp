@@ -103,7 +103,7 @@ void SidebarClass::vf_16(bool forced)
         }
         SidebarTouched_00B0B518 = 1;
     }
-    Strips[ActiveTab].FUN_006A9540(At_53A7);
+    Strips[unknown_539C].FUN_006A9540(At_53A7);
     PowerClass::vf_16(forced || drewBackground);
     if (SellButton_00B07DF8.At_54) {
         SellButton_00B07DF8.At_54 = false;

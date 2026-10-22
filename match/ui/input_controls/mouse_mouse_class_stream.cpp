@@ -70,7 +70,7 @@ long MouseClass::vf_30(IStream* stream)
         return hr;
 
     if (this) {
-        NoInitClass noInit;
+        Obj_005BDF70 noInit;
         new (this) MouseClass(noInit);
     }
 

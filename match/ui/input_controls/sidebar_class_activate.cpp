@@ -66,8 +66,8 @@ bool SidebarClass::vf_54(int control)
                     TabButtons_00B07C48[j].Enable();
                 }
             }
-            TabButtons_00B07C48[ActiveTab].TurnOn();
-            StripClass* strip = &Strips[ActiveTab];
+            TabButtons_00B07C48[unknown_539C].TurnOn();
+            StripClass* strip = &Strips[unknown_539C];
             strip->At_1C = 1;
             int margin = 0x1A;
             if (Scenario_00A8B230->At_34B8) {
@@ -91,7 +91,7 @@ bool SidebarClass::vf_54(int control)
             }
             vf_13(&ScrollDownButton_00B0B328);
             vf_13(&ScrollUpButton_00B0B408);
-            StripClass* strip = &Strips[ActiveTab];
+            StripClass* strip = &Strips[unknown_539C];
             for (int k = 0; k < 60; ++k) {
                 MapInstance_0087F7E8.FUN_004F4450(&CameoButtons_00B07E80[strip->RowBase * 60 + k]);
             }

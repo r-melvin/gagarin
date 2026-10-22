@@ -82,17 +82,17 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             SetRepairMode_004AC8C0(-1);
         } else if (code >= 0x80CB && code < 0x80CF) {
             int tab = code - 0x80CB;
-            if (tab != ActiveTab) {
-                TabButtons_00B07C48[ActiveTab].TurnOff();
-                StripClass* previous = &Strips[ActiveTab];
+            if (tab != unknown_539C) {
+                TabButtons_00B07C48[unknown_539C].TurnOff();
+                StripClass* previous = &Strips[unknown_539C];
                 previous->At_1C = 0;
                 for (int i = 0; i < 60; ++i) {
                     MapInstance_0087F7E8.FUN_004F4450(
                         &CameoButtons_00B07E80[previous->RowBase * 60 + i]);
                 }
-                ActiveTab = tab;
+                unknown_539C = tab;
                 TabButtons_00B07C48[tab].TurnOn();
-                StripClass* strip = &Strips[ActiveTab];
+                StripClass* strip = &Strips[unknown_539C];
                 strip->At_1C = 1;
                 int rows = SidebarRowCount() * 2;
                 for (int j = 0; j < rows; ++j) {
@@ -106,7 +106,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             SidebarPlayGlobal(Rules_008871E0->Sound190, 0x2000, 1.0f, 0);
         } else if ((code & ~0x4000) == (ScrollDownButton_00B0B328.ID | 0x8000)) {
             ScrollDownButton_00B0B328.At_2C = 0;
-            StripClass* strip = &Strips[ActiveTab];
+            StripClass* strip = &Strips[unknown_539C];
             int step = SidebarRowCount();
             if (CurrentPlayer_00A83D4C == Observer_00AC1198) {
                 step = 1;
@@ -126,7 +126,7 @@ void SidebarClass::vf_10(int* key, Point2D* mouse)
             }
         } else if (code == (ScrollUpButton_00B0B408.ID | 0x8000)) {
             ScrollUpButton_00B0B408.At_2C = 0;
-            StripClass* strip = &Strips[ActiveTab];
+            StripClass* strip = &Strips[unknown_539C];
             int rows = SidebarRowCount();
             if (CurrentPlayer_00A83D4C == Observer_00AC1198) {
                 rows = 1;

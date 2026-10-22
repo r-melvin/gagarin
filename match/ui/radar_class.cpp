@@ -66,8 +66,8 @@ void RadarClass::SetVisibleRect(const RectangleStruct& mapRect)
     a.X = (short)ax;
     a.Y = (short)ay;
     RadarBounds.Width = 0;
-    int bx = MapCellWidth - 1;                             // [0x104]
-    int by = 1 - MapCellWidth;
+    int bx = unknown_104 - 1;                             // [0x104]
+    int by = 1 - unknown_104;
     b.X = (short)bx;
     b.Y = (short)by;
     unknown_1498 = -1;
@@ -92,7 +92,7 @@ void RadarClass::SetVisibleRect(const RectangleStruct& mapRect)
                 x = 0;
                 span = 1;
             }
-            else if (x == MapCellWidth * 2 - 1)
+            else if (x == unknown_104 * 2 - 1)
             {
                 span = 1;
             }

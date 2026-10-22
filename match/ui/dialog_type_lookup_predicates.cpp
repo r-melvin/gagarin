@@ -15,7 +15,7 @@
 // `n ? &n->Value : 0` guard: that guard is the first of retail's two null tests
 // on the hit path, and the caller's own `p ? p->Field6C : 0` is the second.
 // Dropping either one loses the `ADD EAX,4` block entirely.
-__forceinline static MapValue_00602B90* FindValue(int nKey)
+__forceinline static MapValue_00602B90* Inline_00600CA0(int nKey)
 {
     if (DAT_00AC1B00.Count != 0)
     {
@@ -45,7 +45,7 @@ __forceinline static MapValue_00602B90* FindValue(int nKey)
 // order — the category is compared, and only on a hit is the control ID walked.
 bool __fastcall FUN_00602B90(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 
@@ -78,7 +78,7 @@ bool __fastcall FUN_00602B90(int nKey, GG_HWND hCtl)
 // dword, which is why the constant returns are written as `int`.
 int __fastcall FUN_00603240(int nKey, GG_HWND hCtl)
 {
-    MapValue_00602B90* value = FindValue(nKey);
+    MapValue_00602B90* value = Inline_00600CA0(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
 

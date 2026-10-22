@@ -72,9 +72,9 @@ struct MenusSaveHeader
     MenusSaveHeader();                         // 0x680FF0
     void* GetPad0() const;                     // 0x681090
     const wchar_t* GetDescription() const;     // 0x6810C0
-    const wchar_t* GetPlayerHouse() const;     // 0x681100
+    const wchar_t* FUN_00681100() const;     // 0x681100
     int GetCampaign() const;                   // 0x681120
-    int GetScenarioNumber() const;             // 0x681140
+    int FUN_00681140() const;             // 0x681140
     int GetGameType() const;                   // 0x6812D0
     char _pad[0x3F4];
 };

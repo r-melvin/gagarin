@@ -34,9 +34,9 @@ typedef unsigned int FileAccessMode;
 // stack argument (ADD ESP,4 cleanup). Declared bodiless so cl emits a direct
 // CALL that the differ normalises as a relocation.
 //   GameFree   == 0x7C93E8 (free(block))
-//   GameStrdup == 0x7D5408 (strdup(str))
+//   FUN_007D5408 == 0x7D5408 (strdup(str))
 void  __cdecl GameFree(void* block);
-char* __cdecl GameStrdup(const char* str);
+char* __cdecl FUN_007D5408(const char* str);
 
 // ---------------------------------------------------------------------------
 // FileClass — abstract base. Virtuals declared in exact retail vtable order so

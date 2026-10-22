@@ -11,7 +11,7 @@ unsigned char BitFontStateView::SwapFlag(unsigned char value)
 // FUNCTION: GAMEMD 0x434100
 int BitFontStateView::SwapTabWidth(int value)
 {
-    int previous = TabWidth;
-    TabWidth = value;
+    int previous = unknown_28;
+    unknown_28 = value;
     return previous;
 }

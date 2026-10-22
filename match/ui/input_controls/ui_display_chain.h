@@ -62,7 +62,7 @@ struct DisplayGuid { char Bytes[16]; };
 GG_STATIC_ASSERT(sizeof(DisplayGuid) == 16);
 
 // The "do not initialise" tag the load path passes to the placement constructor.
-struct NoInitClass { };
+struct Obj_005BDF70 { };
 
 struct IStream;
 
@@ -648,7 +648,7 @@ public:
     StripClass Strips[4];                 // +0x1544
     int unknown_5394;                     // +0x5394
     int unknown_5398;                     // +0x5398
-    int ActiveTab;                        // +0x539C
+    int unknown_539C;                        // +0x539C
     int At_53A0;                          // +0x53A0
     bool unknown_53A4;                    // +0x53A4
     bool At_53A5;                         // +0x53A5
@@ -674,7 +674,7 @@ public:
     char unknown_5516[2];                 // +0x5516
 };
 GG_STATIC_ASSERT(offsetof(SidebarClass, Strips) == 0x1544);
-GG_STATIC_ASSERT(offsetof(SidebarClass, ActiveTab) == 0x539C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, unknown_539C) == 0x539C);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A0) == 0x53A0);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A5) == 0x53A5);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A6) == 0x53A6);
@@ -771,7 +771,7 @@ public:
     // FUNCTION: GAMEMD 0x692290
     ScrollClass();
     // FUNCTION: GAMEMD 0x5BE9B0 (decl; reloc) -- the "no initialisation" constructor the load path runs; RET 4.
-    ScrollClass(const NoInitClass& noInit);
+    ScrollClass(const Obj_005BDF70& noInit);
 
     virtual void vf_08();                                // 8   0x40D270
     virtual void vf_10(int* key, Point2D* where);        // 10  0x6922E0
@@ -810,7 +810,7 @@ class MouseClass : public ScrollClass
 public:
     // The "no initialisation" constructor Load re-runs over the freshly read object: the out-of-line base part
     // (0x5BE9B0) then the two vptr stores.
-    MouseClass(const NoInitClass& noInit) : ScrollClass(noInit) {}
+    MouseClass(const Obj_005BDF70& noInit) : ScrollClass(noInit) {}
     // FUNCTION: GAMEMD 0x40D290 (scalar deleting destructor) -- see mouse_mouse_class.h for its state.
     virtual ~MouseClass() {}                             // 4   0x40D290
 

@@ -13,7 +13,7 @@ void ColorListClass::Dtor()
     this->Vfptr = (void*)VT_007E5054;
     this->Colors.Clear();
     this->SelectColor = 0;
-    this->Colors.ColorVector::~ColorVector();
+    this->Colors.Obj_007E4DB8::~Obj_007E4DB8();
     this->ListClass_Dtor();
 }
 

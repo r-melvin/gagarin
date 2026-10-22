@@ -41,7 +41,7 @@ GG_STATIC_ASSERT(sizeof(MenusString) == 0x04);
 struct MenusFlagSink
 {
     virtual ~MenusFlagSink();
-    virtual void SetFlag(bool on);
+    virtual void vf_1(bool on);
 };
 
 // The sprite the image item places and redraws: 0x5D26C0 takes the item rectangle, 0x5D1E50 refreshes.

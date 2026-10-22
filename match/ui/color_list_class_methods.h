@@ -46,12 +46,12 @@ extern char VT_007E5054[];
 // The destructor's `CALL [EAX+0xC]` is therefore Clear(), and Add's
 // `CALL [EDX+0x8]` with two pushed arguments is Resize(capacity, array).
 // ---------------------------------------------------------------------------
-class ColorVector
+class Obj_007E4DB8
 {
 public:
     // VTABLE: GAMEMD 0x007E4DB8
-    virtual ~ColorVector() { ColorVector::Clear(); }                 // 0x00
-    virtual bool operator==(ColorVector const& other) const;         // 0x04
+    virtual ~Obj_007E4DB8() { Obj_007E4DB8::Clear(); }                 // 0x00
+    virtual bool operator==(Obj_007E4DB8 const& other) const;         // 0x04
     virtual bool Resize(int capacity, int const* array);             // 0x08
     virtual void Clear()                                             // 0x0C
     {
@@ -69,13 +69,13 @@ public:
     bool IsValid;      // +0x0C
     bool IsAllocated;  // +0x0D
 };
-GG_STATIC_ASSERT(offsetof(ColorVector, Vector)      == 0x04);
-GG_STATIC_ASSERT(offsetof(ColorVector, Capacity)   == 0x08);
-GG_STATIC_ASSERT(offsetof(ColorVector, IsValid)     == 0x0C);
-GG_STATIC_ASSERT(offsetof(ColorVector, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(sizeof(ColorVector)                == 0x10);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, Vector)      == 0x04);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, Capacity)   == 0x08);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, IsValid)     == 0x0C);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(sizeof(Obj_007E4DB8)                == 0x10);
 
-class ColorDynVector : public ColorVector
+class ColorDynVector : public Obj_007E4DB8
 {
 public:
     int Count;  // +0x10

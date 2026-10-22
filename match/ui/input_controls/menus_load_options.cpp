@@ -63,11 +63,11 @@ bool LoadOptionsClass::Slot4(MenusSaveListInfo* out, FileEntryClass* entry)
                     out->NotDefault = false;
                 }
                 out->ReadOk = ok;
-                out->ScenarioNumber = header.GetScenarioNumber();
+                out->ScenarioNumber = header.FUN_00681140();
                 out->Campaign = header.GetCampaign();
                 out->GameType = header.GetGameType();
                 strcpy(out->Name, entry->FileName);
-                wcscpy(out->House, header.GetPlayerHouse());
+                wcscpy(out->House, header.FUN_00681100());
                 if (strlen(out->Name) == 0)
                     strcpy(out->Name, entry->AltName);
                 out->Field1B0 = entry->Field18;

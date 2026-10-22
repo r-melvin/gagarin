@@ -9,7 +9,7 @@
 #include "../_rt/gg_static_assert.h"
 struct BitFontStateView {
     char unknown_00[0x28];
-    int TabWidth;
+    int unknown_28;
     char unknown_2C[0x14];
     unsigned char Flag;
     char unknown_41[3];
@@ -18,7 +18,7 @@ struct BitFontStateView {
     // FUNCTION: GAMEMD 0x434100
     int SwapTabWidth(int value);
 };
-GG_STATIC_ASSERT(offsetof(BitFontStateView, TabWidth) == 0x28);
+GG_STATIC_ASSERT(offsetof(BitFontStateView, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(BitFontStateView, Flag) == 0x40);
 GG_STATIC_ASSERT(sizeof(BitFontStateView) == 0x44);
 #endif

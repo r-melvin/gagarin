@@ -24,10 +24,10 @@ BufferIOFileClass::~BufferIOFileClass()
     }
 
     BufferSize = 0;
-    IsOpen = 0;
-    IsDiskOpen = 0;
-    IsCached = 0;
-    IsChanged = 0;
+    unknown_25 = 0;
+    unknown_27 = 0;
+    unknown_28 = 0;
+    unknown_29 = 0;
 
     ((RawFileClassBase*)this)->FUN_0065CA00();
 }
@@ -47,8 +47,8 @@ void BufferIOFileClass::FUN_00431D90()
     }
 
     BufferSize = 0;
-    IsOpen = 0;
-    IsDiskOpen = 0;
-    IsCached = 0;
-    IsChanged = 0;
+    unknown_25 = 0;
+    unknown_27 = 0;
+    unknown_28 = 0;
+    unknown_29 = 0;
 }

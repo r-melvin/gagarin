@@ -13,7 +13,7 @@
 //   FUNCTION: GAMEMD 0x65CF00   RawFileClass::Seek          (callee; reloc)
 //   FUNCTION: GAMEMD 0x65D0D0   RawFileClass::GetFileSize   (callee; reloc)
 //   FUNCTION: GAMEMD 0x7C93E8   GameFree                    (callee; reloc)
-//   LIBRARY: GAMEMD 0x7D5408   GameStrdup                  (callee; reloc)
+//   LIBRARY: GAMEMD 0x7D5408   FUN_007D5408                  (callee; reloc)
 
 #include "ccfile_class_name_methods.h"
 
@@ -35,7 +35,7 @@ const char* RawFileClass::SetFileName(const char* pFileName)
 
     this->FilePointer = 0;
     this->FileSize = -1;
-    this->FileName = GameStrdup(pFileName);
+    this->FileName = FUN_007D5408(pFileName);
     if (!this->FileName) {
         this->CDCheck(0xC, false, pFileName);
         return 0;

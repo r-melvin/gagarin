@@ -42,8 +42,8 @@ void MessageList_005D3A60::Init(int x, int y, int maxMessages, int maxChars,
     }
 
     this->MessageList = 0;
-    this->MessageX = x;
-    this->MessageY = y;
+    this->unknown_04 = x;
+    this->unknown_08 = y;
     this->MaxMessageCount = maxMessages;
     if (maxMessages > 14) {
         this->MaxMessageCount = 14;

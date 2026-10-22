@@ -30110,9 +30110,9 @@
  {
   "tu": "match/ui/wol_scenario_color_methods.cpp",
   "addr": "0x5B59B0",
-  "sym": "?UpdateColorCombo@WolScenarioColorDlgClass@@QAEXXZ",
+  "sym": "?FUN_005B59B0@WolScenarioColorDlgClass@@QAEXXZ",
   "len": "0x93",
-  "name": "WolScenarioColorDlgClass::UpdateColorCombo",
+  "name": "WolScenarioColorDlgClass::FUN_005B59B0",
   "status": "matched",
   "pct": 100
  },

@@ -83,7 +83,7 @@ struct RadarClass
     char _gap_F8[0x4];       // 0x0F8
     int  MapCellLeft;        // 0x0FC
     int  MapCellTop;         // 0x100
-    int  MapCellWidth;       // 0x104
+    int  unknown_104;       // 0x104
     char _gap_108[0x1490 - 0x108];  // 0x108
     int  unknown_1490;       // 0x1490
     int  unknown_1494;       // 0x1494
@@ -95,7 +95,7 @@ struct RadarClass
 GG_STATIC_ASSERT(offsetof(RadarClass, MapSizeX)     == 0x0F4);
 GG_STATIC_ASSERT(offsetof(RadarClass, MapCellLeft)  == 0x0FC);
 GG_STATIC_ASSERT(offsetof(RadarClass, MapCellTop)   == 0x100);
-GG_STATIC_ASSERT(offsetof(RadarClass, MapCellWidth) == 0x104);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_104) == 0x104);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1490) == 0x1490);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1494) == 0x1494);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1498) == 0x1498);

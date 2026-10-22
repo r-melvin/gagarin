@@ -52,9 +52,9 @@ int RawFileClass::WriteBytes(const void* buffer, int size)
         this->CDCheck(GetLastError(), 0, this->FileName);
     }
 
-    if (this->BiasLength != -1) {
-        if (this->RawSeek(0, 1) > this->BiasStart + this->BiasLength) {
-            this->BiasLength = this->RawSeek(0, 1) - this->BiasStart;
+    if (this->unknown_10 != -1) {
+        if (this->RawSeek(0, 1) > this->unknown_0C + this->unknown_10) {
+            this->unknown_10 = this->RawSeek(0, 1) - this->unknown_0C;
         }
     }
 

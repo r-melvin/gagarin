@@ -110,7 +110,7 @@ void SidebarClass::vf_07()
     for (int i = 0; i < 4; ++i) {
         Strips[i].FUN_006A81B0();
     }
-    ActiveTab = 0;
+    unknown_539C = 0;
     At_53A0 = 0;
     vf_54(0);
 }
@@ -202,7 +202,7 @@ void SidebarClass::vf_08()
             StripClass& strip = Strips[i];
             strip.At_20 = StripX_00B0B4F4;
             strip.At_24 = StripY_00B0B4F8;
-            strip.Rect = SidebarRect(0, 0, 0x3C, StripHeight_00B0B504);
+            strip.Rect = Obj_006A5310(0, 0, 0x3C, StripHeight_00B0B504);
             strip.FUN_006A8220(i);
         }
 

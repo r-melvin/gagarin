@@ -74,11 +74,11 @@ extern SidebarConvert* ConvertA_0087F6CC;
 
 // A RectangleStruct built in one expression: the strip setup assigns StripClass::Rect from such a temporary, which is
 // what reproduces retail's store order (0x6A5310).
-struct SidebarRect : public RectangleStruct
+struct Obj_006A5310 : public RectangleStruct
 {
-    SidebarRect(int x, int y, int w, int h) { X = x; Y = y; Width = w; Height = h; }
+    Obj_006A5310(int x, int y, int w, int h) { X = x; Y = y; Width = w; Height = h; }
 };
-GG_STATIC_ASSERT(sizeof(SidebarRect) == 0x10);
+GG_STATIC_ASSERT(sizeof(Obj_006A5310) == 0x10);
 
 // One 0x60-byte ShapeButtonClass object (the sidebar's static buttons: repair,
 // sell, scroll up/down and the four tabs). sizeof pinned by the 0x60 stride of
