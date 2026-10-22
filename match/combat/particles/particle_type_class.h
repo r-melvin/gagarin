@@ -46,7 +46,7 @@ public:
     // FUNCTION: GAMEMD 0x644BE0 - the named constructor, also what the INI reader calls to allocate a
     // type it has not seen yet.
     ParticleTypeClass(const char* id);
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs and the colour list's vptr without touching any other member.
     ParticleTypeClass(const ParticleNoInit& noInit) : ParticleTypeObjectView(noInit), ColorList(0, 0) {}
 

@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x72B230, 0x72B390,
 //   0x72B3E0, 0x72B460, 0x72B820, 0x72B870, 0x72BCA0, 0x72BCF0, 0x72BE80,
 //   0x72BED0, 0x72D730, 0x72D780, 0x72DCF0 and 0x72F140. Semantic names are a
-//   private-reference cross-check only (see the header); every instruction, offset and
+//   cross-check only (see the header); every instruction, offset and
 //   global below was re-derived from the retail disassembly.
 
 #include "screen_palette_mgr_methods.h"

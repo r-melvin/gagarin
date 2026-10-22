@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x4135A0).
-//   Name cross-checked vs YRpp AircraftTrackerClass.h (consult-only):
+//   Name cross-checked vs YRpp:
 //     bool IsJumpjet(TechnoClass* entry)  JMP_THIS(0x4135A0)
 //   The function ignores its own `this` (ECX) and works purely on `entry`.
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_JUMPJET_H

@@ -5,8 +5,7 @@
 // the no-GX probe reproduces the complete native constructor-call path.
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6E5230,
 //   0x6E52A0). Every offset, global address and vtable slot reconfirmed
-//   numerically; names cross-checked against YRpp TagClass.h / ArrayClasses.h
-//   (consult-only).
+//   numerically; names cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6E5230  TagClass::Destroy     (__thiscall)

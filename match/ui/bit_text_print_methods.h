@@ -5,7 +5,7 @@
 //
 // The single-line text draw at 0x434B90.
 //
-// Naming: YRpp BitText.h binds this address to a *non-static* `BitText::Print`,
+// Naming: YRpp binds this address to a *non-static* `BitText::Print`,
 // and that cannot be right — retail never reads ECX. The receiver of all four
 // calls in the body is the first stack argument, and `RET 0x1C` accounts for
 // seven stack arguments with nothing left over for a `this`. So this is a free

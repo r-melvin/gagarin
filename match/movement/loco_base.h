@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: candidate native declaration, based on pinned retail layout/RTTI evidence.
 //   Layout, tables and vptr offsets read from the retail gamemd.exe v1.001:
-//   RTTI .?AVLocomotionClass@@ (TD 0x820228, COL 0x8032E8 for the primary
+//   RTTI.?AVLocomotionClass@@ (TD 0x820228, COL 0x8032E8 for the primary
 //   table and the COL word before 0x7EADF4 for the ILocomotion table), the
 //   primary vtable 0x7EAEC0 (10 slots), the ILocomotion vtable 0x7EADF4 (50
 //   slots), the constructor 0x55A6C0 (vptr stores `[ECX]=0x7EAEC0`,
 //   `[ECX+4]=0x7EADF4`) and the eleven leaf constructors, each of which calls
 //   0x55A6C0 first and then stores its own vptrs and members (Mech/Fly store
 //   their first member at +0x18, Drive/DropPod store the IPiggyback vptr at
-//   +0x18 and their first member at +0x1C). Member names follow YRpp
-//   (consult-only); the two object pointers are indistinguishable in the
+//   +0x18 and their first member at +0x1C). Member names follow YRpp;
+//   the two object pointers are indistinguishable in the
 //   shared code (see Owner/LinkedTo below).
 //
 // LocomotionClass: candidate shared base supported by constructor/RTTI evidence.
@@ -42,7 +42,7 @@ class LocomotionClass : public IPersistStream, public ILocomotion
 public:
     // FUNCTION: GAMEMD 0x55A6C0 (decl only; out of this candidate scope).
     LocomotionClass();
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to
+    // No-init constructor: Load re-runs it through placement new to
     // restore the vptrs without touching members. Empty and inline; it is never emitted standalone.
     LocomotionClass(int) {}
     // Primary slot 8 (scalar deleting destructor 0x5172F0, synthetic). The

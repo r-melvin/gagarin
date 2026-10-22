@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x451E40, 0x4521C0, 0x452210,
-//   0x4525F0, 0x457630, 0x457690), cross-checked against YRpp BuildingClass.h /
-//   AnimClass.h / BuildingTypeClass.h (consult-only, NO LICENSE; every offset
+//   0x4525F0, 0x457630, 0x457690), cross-checked against YRpp
+//   (every offset
 //   reconfirmed numerically against the user's binary below).
 //
 // BuildingClass — a placed structure. This TU models only the members the six

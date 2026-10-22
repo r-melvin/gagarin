@@ -29,7 +29,7 @@ void __fastcall FUN_006A5000(void* self);   // GAMEMD 0x6A5000
 void __fastcall FUN_007529E0(void* self);   // GAMEMD 0x7529E0
 void __fastcall FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 
-// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep, docs/rtti_sweep.md).
+// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep).
 // 0x4DA2B0 is slot 143 (byte-off 0x23C) of FootClass's own vtable 0x7E8C94 --
 // but it is a tail jump to 0x5B2EF0, and 0x5B2EF0 occupies slot 143 of
 // MissionClass (0x7EDCC0), RadioClass (0x7F0508) and TechnoClass (0x7F4960)

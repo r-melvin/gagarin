@@ -20,7 +20,7 @@
 //   AbstractType (Unit=1, Aircraft=2, Building=6, Infantry=15), the
 //   VocClass::PlayAt declaration in match/combat/capture_manager_free_unit_methods.h
 //   and the GetArrayIndex slot in match/ai/ai_trigger_type_house_owns_methods.h,
-//   all re-derived here from the disassembly. (YRpp is consult-only, NO LICENSE.)
+//   all re-derived here from the disassembly.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_REGISTER_BUILT_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_REGISTER_BUILT_METHODS_H
 

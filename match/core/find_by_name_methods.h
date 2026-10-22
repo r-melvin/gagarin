@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Globals and name offsets extracted individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI, one disassembly per entry
-//   point. None of these addresses is bound by YRpp or the seed map.
+//   point. None of these addresses is bound by YRpp.
 //
 // Find-by-name over a global array. Walk the array comparing each item's inline
 // name against the caller's string and return the index, or -1.

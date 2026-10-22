@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x70F7E0 / 0x70F820 /
-//   0x734270). Names cross-checked against YRpp TechnoClass.h (consult-only,
+//   0x734270). Names cross-checked against YRpp (consult-only,
 //   no LICENSE; every offset reconfirmed numerically below from the matched
 //   bodies). Only the members the matched bodies touch are modelled; the full
 //   layout is the committed spine (match/_layout/techno_class.h) / P2.

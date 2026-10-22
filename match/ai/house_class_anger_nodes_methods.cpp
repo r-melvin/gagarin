@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x504790. Name from
-//   YRpp HouseClass.h (consult-only).
+//   YRpp.
 
 #include "house_class_anger_nodes_methods.h"
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x46C790 / 0x46C840), cross-checked
-//   against YRpp BulletTypeClass.h (consult-only, no LICENSE; every offset and
+//   against YRpp (every offset and
 //   address reconfirmed numerically below).
 //
 // BulletTypeClass — a projectile *type* (rules-driven template for bullets).

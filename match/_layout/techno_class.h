@@ -12,7 +12,7 @@
 //   @0x440/0x458/0x470 (PTR_FUN_007e4e78 / PTR_FUN_007e91ec), and the four
 //   AudioController ctors FUN_0x00405BE0(this+0x488/0x4A4/0x4C0/0x4DC). The four
 //   COM vptrs are written last (PTR_FUN_007f4960 et al). Cross-checked vs YRpp
-//   TechnoClass.h (which static_asserts sizeof==0x520).
+//   (which static_asserts sizeof==0x520).
 //
 // TechnoClass — base of every buildable/ownable combat object (units,
 // buildings, infantry, aircraft). Derives RadioClass at offset 0 and adds the

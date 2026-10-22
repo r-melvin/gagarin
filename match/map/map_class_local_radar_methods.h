@@ -4,7 +4,7 @@
 //   CLI at 0x578390: the rectangle's X/Y/Width/Height at +0/+4/+8/+0xC, four
 //   corner CellStructs handed to 0x578460 with the bool forwarded, the first
 //   two built in the dead parameter slots and the last two in the 8-byte
-//   frame. YRpp (consult-only, no LICENSE) names InLocalRadar and the callee
+//   frame. YRpp names InLocalRadar and the callee
 //   IsWithinUsableArea(CellStruct*, bool); the retail return is a full-width
 //   int (MOV EAX,1 / XOR EAX,EAX), not YRpp's bool. IsWithinUsableArea itself
 //   (0x578460) reads the map rectangle at [ECX+0xF4] and the visible

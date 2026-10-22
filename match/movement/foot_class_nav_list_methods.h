@@ -13,7 +13,7 @@
 //   offsets agree with match/_layout/foot_class.h, which is included; the
 //   vector is re-typed locally because the shared DynamicVectorClass carries
 //   no byte-granular IsAllocated and no AddItem. Method name from YRpp
-//   FootClass.h (consult-only; name only).
+//   (name only).
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_NAV_LIST_METHODS_H
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_NAV_LIST_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x727010,
 //   0x727050). Every offset reconfirmed numerically; names cross-checked
-//   against YRpp TriggerTypeClass.h / TEventClass.h (consult-only).
+//   against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x727010  TriggerTypeClass::HasGlobalSetOrClearedEvent (__thiscall)

@@ -16,8 +16,8 @@
 //     SuperWeaponTypeClass::ManualControl [EAX+0xF5] (MOV DL,[EAX+0xF5] @0x6CB4F9)
 //   Globals: Unsorted::CurrentFrame 0x00A8ED84 (MOV EDX,[0xA8ED84] @0x6CB509);
 //   float constant 0x007EAAE0 = 0x3C23D70A = 0.01f (FMUL @0x6CC214).
-//   Names cross-checked against YRpp SuperClass.h / SuperWeaponTypeClass.h /
-//   Timer.h (consult-only, no LICENSE; every offset reconfirmed above). The
+//   Names cross-checked against YRpp
+//   (every offset reconfirmed above). The
 //   member run agrees with match/combat/super_class_methods.h and
 //   super_class_more_methods.h (not edited; re-derived here so the TU stands
 //   alone, extended with RechargeTimer, CanHold and IsOneTime).

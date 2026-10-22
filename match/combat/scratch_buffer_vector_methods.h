@@ -4,9 +4,7 @@
 //   read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI at 0x6285A0, 0x628A70, 0x628B00, 0x628D10, 0x628D80, 0x628DF0
 //   and 0x628ED0. The container is a VectorClass/DynamicVectorClass pair (RTTI-named vector
-//   classes; offsets as read here). The private-reference seed
-//   (consult-only, no LICENSE) names this address run the "scratch buffer
-//   array"; it supplied intent only, no layout, no convention and no bytes.
+//   classes; offsets as read here).
 //
 // One address run, two template instantiations of the same container pair.
 //

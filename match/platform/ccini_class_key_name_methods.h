@@ -12,7 +12,7 @@
 //   `[EAX+0x8]` (prev) tested non-null and its name read at `[EAX+0xC]`.
 //   Same index model as match/platform/ccini_class_key_count_methods.h, but
 //   here the archive probe and the fetch are out of line. Method name from
-//   YRpp CCINIClass.h (consult-only; name only).
+//   YRpp (consult-only; name only).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_KEY_NAME_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_KEY_NAME_METHODS_H
 

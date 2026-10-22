@@ -11,7 +11,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
 //   0x456580 -> BuildingClass slot 293 (byte-off 0x494).
 // No other table in the image holds it, so the slot is declared on
@@ -51,7 +51,7 @@ struct Registry_00456580
 // GLOBAL: GAMEMD 0x87F7E8
 extern Registry_00456580 DAT_0087F7E8;
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
 //   0x456580 -> BuildingClass slot 293 (byte-off 0x494).
 // That table is the only table in the image that holds it, so the slot is

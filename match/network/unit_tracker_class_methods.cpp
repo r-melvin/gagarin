@@ -25,11 +25,10 @@ void UnitTrackerClass::IncrementUnitTotal(int unitType)
 // ClearUnitTotal: retail has no call, and it reloads UnitCount each iteration
 // exactly as the standalone clear does.
 //
-// NOTE: `Init` is a descriptive placeholder name — this address carries no
-// confirmed Westwood name. TS++'s UnitTrackerClass *constructor* has this exact
-// body, but retail's constructor is a different, inlined sequence at 0x748FD7
-// (it also zeroes InNetworkFormat and returns `this` in EAX, which this does
-// not), so the two are not the same function.
+// NOTE: `Init` is a descriptive placeholder name — the binary attests no
+// name for this address. Retail's constructor is a different, inlined sequence
+// at 0x748FD7 (it also zeroes InNetworkFormat and returns `this` in EAX, which
+// this does not), so the two are not the same function.
 void UnitTrackerClass::Init(int unitCount)
 {
     UnitCount = UNIT_TRACKER_MAX_TYPES;

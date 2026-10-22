@@ -11,8 +11,8 @@
 //   operator new; the record is appended to the DynamicVectorClass at
 //   0xAC4B48 (vtable +0, Items 0xAC4B4C, Capacity 0xAC4B50, IsAllocated
 //   0xAC4B55, Count 0xAC4B58, CapacityIncrement 0xAC4B5C) by the inlined
-//   AddItem. Names cross-checked against YRpp TechnoClass.h /
-//   PlanningTokenClass.h (consult-only) and used as names only.
+//   AddItem. Names cross-checked against YRpp
+//     and used as names only.
 #ifndef GG_MATCH_AI_TECHNO_CLASS_PLANNING_TOKEN_METHODS_H
 #define GG_MATCH_AI_TECHNO_CLASS_PLANNING_TOKEN_METHODS_H
 

@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6C9600 (Ghidra disasm).
-//   Names cross-checked against YRpp AbstractClass.h (consult-only, no LICENSE;
-//   each offset/address reconfirmed against the user's binary below).
+//   Names cross-checked against YRpp
+//   (each offset/address reconfirmed against the user's binary below).
 //
-// Translation unit: StorageClass::GetTotalValue (the P0.4 "hello-world" leaf —
-// see docs/preservation_recreation_plan.md). Drives toolchain + flag locking.
+// Translation unit: StorageClass::GetTotalValue (the P0.4 "hello-world" leaf).
+// Drives toolchain + flag locking.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6C9600   StorageClass::GetTotalValue    (__thiscall)
@@ -29,7 +29,7 @@
 struct TiberiumClass;
 
 // VectorClass<TiberiumClass*> head: vtable at +0, Items at +4 (confirmed by
-// `MOV EDI,[0xB0F4EC]` == &Array.Items, Array @0xB0F4E8). YRpp ArrayClasses.h.
+// `MOV EDI,[0xB0F4EC]` == &Array.Items, Array @0xB0F4E8). YRpp.
 struct DynamicVectorClass_TiberiumPtr
 {
     void*           vtable;        // +0x00
@@ -46,7 +46,7 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TiberiumPtr, Items) == 0x04);
 #endif
 
 // TiberiumClass: only Value @0xB8 is needed here. FILD dword[EAX+0xB8] in
-// 0x6C9600 loads it as an int; YRpp TiberiumClass.h names it `Value`.
+// 0x6C9600 loads it as an int; YRpp names it `Value`.
 struct TiberiumClass
 {
     char _layout_pad_P2[0xB8];     // full AbstractTypeClass-derived layout = P2

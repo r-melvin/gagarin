@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: AnimTypeClass ctor FUN_0x00427530 member-access sites
-//   (docs/decomp_spec/type_hierarchy_layout.md, "### AnimTypeClass"). Parent
+//   Parent
 //   ctor 0x5F7090 (ObjectTypeClass). Pad anchors unknown_2A4@0x2A4 and
 //   unknown_double_320@0x320 confirmed; double slots (Damage@0x2A8,
 //   Elasticity@0x310) and Layer@0x364 land only if the base sizeof == 0x294.
@@ -22,7 +22,7 @@
 struct WarheadTypeClass;
 class OverlayTypeClass;
 
-// RandomStruct — Westwood ranged-random pair (min/max ints), size = 8. Modelled
+// RandomStruct — ranged-random pair (min/max ints), size = 8. Modelled
 // as an exact-size byte block so downstream offsets stay byte-exact.
 struct RandomStruct
 {

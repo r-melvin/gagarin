@@ -13,8 +13,8 @@
 //   (`MOV EDX,[ESP+0x14]`), which is the parameter-slot reuse of a plain int
 //   local. Callee conventions from their own entry points: 0x406130
 //   __thiscall(controller), 0x406310 / 0x4052F0 / 0x405190 / 0x4061D0 /
-//   0x406270 / 0x4060F0 __fastcall. Names from YRpp VocClass.h / Audio.h
-//   (consult-only; names only, no text copied). The non-positional twin,
+//   0x406270 / 0x4060F0 __fastcall. Names from YRpp
+//   (names only, no text copied). The non-positional twin,
 //   PlayGlobal 0x750920, is matched in match/audio/voc_class_play_global_methods.
 #ifndef GG_MATCH_AUDIO_VOC_CLASS_PLAY_AT_METHODS_H
 #define GG_MATCH_AUDIO_VOC_CLASS_PLAY_AT_METHODS_H

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + behaviour derived from the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI (disasm at 0x623120), cross-checked against YRpp UI.h
+//   local Ghidra CLI (disasm at 0x623120), cross-checked against YRpp
 //   (consult-only, no LICENSE; every global/branch reconfirmed from the disasm).
 //
 // UI::Updated — the per-frame "should we keep pumping the main loop?" gate used

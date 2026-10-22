@@ -10,8 +10,7 @@
 //   0xABDC50, MapCoords @0x24) and the shroud bit `TEST byte [cell+0x12C],8`.
 //   0x481810 is CellClass::GetNeighbourCell, matched in
 //   match/map/cell_class_shroud_methods.cpp. `this` is unused (ECX never
-//   read). Names cross-checked against YRpp MapClass.h / CellClass.h
-//   (consult-only, NO LICENSE).
+//   read). Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_MAP_CLASS_LOCATION_SHROUDED_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_LOCATION_SHROUDED_METHODS_H
 

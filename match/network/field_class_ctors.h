@@ -28,8 +28,7 @@
 //   The class name is the retail RTTI name. The type-tag constants are the
 //   immediates each constructor stores, named by value. The overload set is
 //   the one the retail constructors require: each one's parameter width and
-//   signedness is read off its own stores and extensions. The private-reference
-//   seed (consult-only) supplied the `network/field_class.cpp` grouping.
+//   signedness is read off its own stores and extensions.
 //
 // FieldClass — one tagged, length-prefixed field inside a network PacketClass.
 // The data payload is always a fresh heap copy owned by the field.

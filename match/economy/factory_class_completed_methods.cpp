@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4CA1A0. Method name
-//   from the consult-only YRpp FactoryClass.h (name only).
+//   from the YRpp (name only).
 
 #include "factory_class_completed_methods.h"
 

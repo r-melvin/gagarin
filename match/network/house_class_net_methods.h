@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x749060-0x74919A), cross-checked
-//   against YRpp HouseClass.h::UnitTrackerClass (consult-only; reconfirmed
+//   against YRpp (reconfirmed
 //   numerically here).
 //
 // UnitTrackerClass — the per-house unit census used by the network layer.

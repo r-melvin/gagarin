@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, globals and offsets read off the user's retail gamemd.exe v1.001 via
-//   the local Ghidra CLI at 0x5117D0 (see the RE dossier at
-//   docs/decomp_spec/re_findings/next_targets_2026-08-07.md §7). The array
+//   the local Ghidra CLI at 0x5117D0. The array
 //   globals are Items 0x00A83C9C and Count 0x00A83CA8 — +0x04 and +0x10 of one
 //   DynamicVectorClass, so the vector object is at 0x00A83C98. The two member
 //   reads confirm the committed AbstractTypeClass spine: `LEA ECX,[ESI+0x64]`

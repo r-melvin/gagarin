@@ -20,8 +20,7 @@
 //   leading-whitespace trim (ECX = the string) and 0x422B20 a __fastcall
 //   name->index lookup (ECX = the string). The section probe is the
 //   CCINIClass::Exists call-site flag form already banked for 0x674550.
-//   Names cross-checked against YRpp RulesClass::Read_Powerups / CCINIClass.h
-//   (consult-only, NO LICENSE).
+//   Names cross-checked against YRpp (RulesClass::Read_Powerups).
 #ifndef GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READ_POWERUPS_METHODS_H
 

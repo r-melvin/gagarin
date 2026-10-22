@@ -15,7 +15,7 @@
 //   close-to cell in the second's ([ESP+0x58]/[ESP+0x5A]); the
 //   NearByLocation out buffer is the one real local. Names cross-checked
 //   against YRpp HouseClass::DroppedFlag / UpdateFlagCoords,
-//   MapClass::CoordinatesLegal / NearByLocation (consult-only, no LICENSE)
+//   MapClass::CoordinatesLegal / NearByLocation
 //   and the sibling match/economy/house_class_flag_methods.h (Type @0x34,
 //   the +0x53DC slot, ColorSchemeIndex @0xB8), re-derived here.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_DROPPED_FLAG_METHODS_H

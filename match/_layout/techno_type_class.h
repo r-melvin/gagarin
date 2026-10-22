@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor FUN_0x00710AF0 (docs/decomp_spec/type_hierarchy_layout.md,
+//   Oracle: ctor FUN_0x00710AF0,
 //   "TechnoTypeClass (0x294-0xDF7) - BINARY-ACCURATE"), cross-checked vs YRpp
-//   TechnoTypeClass.h. Verified by all 12 YRpp pad anchors landing exactly
+//   Verified by all 12 YRpp pad anchors landing exactly
 //   (0x2FC, 0x35C, 0x398, 0x39C, 0x3C0, 0x3C4, 0x6EF, 0x70E, 0xCB4, 0xCC8,
 //   0xCC9, 0xDF4) plus ctor ground-truth spot-checks (WalkRate@0x294=1,
 //   VeteranAbilities@0x29C, Locomotor@0x34C, Cost@0x610, CameoFile@0x6D6,

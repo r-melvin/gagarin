@@ -5,10 +5,7 @@
 //   RTTI type descriptors reached from the vtables (0x839620 ".?AVRAMFileClass@@"
 //   and 0x815DE0 ".?AVFileClass@@") are what name the classes. Virtual method
 //   names follow the YRpp FileClass slot names, checked slot by slot against
-//   the vtable below and against each body's behaviour. The private-reference
-//   seed row core/raw_file_class.cpp supplied the initial hint that this
-//   address cluster is a file facility; it is not a source of bytes, layout or
-//   convention.
+//   the vtable below and against each body's behaviour.
 //
 // RAMFileClass implements the abstract FileClass interface over a memory
 // block: the constructor takes a buffer and a length, and every slot reads,

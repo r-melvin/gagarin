@@ -5,7 +5,7 @@
 //   P2 spine and is reconfirmed from the member-access instructions:
 //   ObjectClass::InLimbo @0x81, TechnoClass::Owner @0x21C,
 //   TechnoClass::RecruitableA @0x421, FootClass::Team @0x5D4. Method name
-//   cross-checked against YRpp (`FootClass::CanBeRecruited`, consult-only).
+//   cross-checked against YRpp (`FootClass::CanBeRecruited`).
 //
 // A local offset-pinned shim rather than the full spine: this TU needs four
 // members spread across three levels of the hierarchy and nothing else.
@@ -20,7 +20,7 @@ struct FootClass;
 
 // Recruitability predicate on the AbstractType, at 0x005B36E0 — __fastcall with
 // the type in ECX (`MOV ECX,EAX; CALL rel32`). Descriptive name; the address
-// carries no confirmed Westwood one.
+// carries no binary-attested one.
 bool __fastcall IsRecruitableRTTI(int rtti);
 
 // WhatAmI() — virtual at +0x184 of this vtable, dispatched through the tree's

@@ -7,8 +7,8 @@
 //   MixFileClass::Retrieve fallback 0x5B40B0 (ECX = name, DL = 0), the log
 //   sink 0x4068E0, the SHP headers cached at 0x89C474 / 0x89C478 (YRpp
 //   BeaconArt / RadarBeaconArt) and the manager's ints at +0x64..+0x7C read
-//   from the header's three shorts at +2/+4/+6. YRpp (consult-only, no
-//   LICENSE) names LoadArt.
+//   from the header's three shorts at +2/+4/+6. YRpp
+//   names LoadArt.
 #ifndef GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_ART_METHODS_H
 #define GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_ART_METHODS_H
 

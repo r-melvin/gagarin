@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6E5230 / 0x6E52A0), cross-checked
-//   against YRpp TagClass.h / ArrayClasses.h (consult-only; every offset and
+//   against YRpp (every offset and
 //   vtable slot reconfirmed numerically here).
 //
 // Destroy grows the deferred tag list through its runtime slot +0x08.

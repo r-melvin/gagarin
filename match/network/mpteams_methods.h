@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x5D8D10), cross-checked against
-//   YRpp MPTeams.h (consult-only; reconfirmed here).
+//   YRpp (reconfirmed here).
 //
 // MPTeam — one entry in the multiplayer "alliance team" list (Team:A/B/C/D in
 // the frontend). A title string plus an index. AddToList pushes the entry into

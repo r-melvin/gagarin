@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4CA620 / 0x4CA670), cross-checked
-//   against YRpp FactoryClass.h / ArrayClasses.h / TechnoClass.h (consult-only,
-//   no LICENSE; every offset reconfirmed numerically below).
+//   against YRpp
+//   (every offset reconfirmed numerically below).
 //
 // Translation unit: FactoryClass production-queue mutators.
 //   RemoveOneFromQueue  -> locates pItem in QueuedObjects (virtual FindItemIndex

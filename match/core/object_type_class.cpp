@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x5004E0 (Ghidra disasm).
-//   Name cross-checked against YRpp ObjectTypeClass.h (consult-only, no LICENSE;
+//   Name cross-checked against YRpp (consult-only, no LICENSE;
 //   convention + 0xE08 offset reconfirmed against the user's binary below).
 //
 // Translation unit: ObjectTypeClass::IsBuildCat5.

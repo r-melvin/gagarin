@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, slot displacements and flag masks read numerically off the user's
 //   retail gamemd.exe v1.001 via the local Ghidra CLI at 0x4025B0, 0x402600 and
-//   0x402650. None is bound by YRpp or the seed map.
+//   0x402650. None is bound by YRpp.
 //
 // Three state transitions on the same object. Each opens by running slot +0x28
 // of the dispatch table at +0xD4, then does its own flag work, then runs slot

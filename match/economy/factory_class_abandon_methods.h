@@ -14,8 +14,8 @@
 //   0x50B730 (IsControlledByHuman) on Owner, the owner's `[EAX+0x5654]`,
 //   `[EAX+0x5650]`, `[EAX+0x5658]`, `[EAX+0x564C]` (-1 per WhatAmI 0xF / 1 /
 //   2 / 6) and the global counter `[0xA8E7AC]` bumped around the delete.
-//   Names cross-checked against YRpp FactoryClass.h / HouseClass.h
-//   (consult-only) and used as names only.
+//   Names cross-checked against YRpp
+//   and used as names only.
 #ifndef GG_MATCH_ECONOMY_FACTORY_CLASS_ABANDON_METHODS_H
 #define GG_MATCH_ECONOMY_FACTORY_CLASS_ABANDON_METHODS_H
 

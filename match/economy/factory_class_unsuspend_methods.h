@@ -10,7 +10,7 @@
 //   +0x24 is dispatched `PUSH EAX; MOV ECX,[EAX]; CALL [ECX+0x18]`
 //   (__stdcall slot 6 = Available_Money). CALL 0x6F47A0 is TechnoClass::
 //   TimeToBuild on the Object.  Names cross-checked against YRpp
-//   FactoryClass.h / Interfaces.h (consult-only) and used as names only.
+//   and used as names only.
 #ifndef GG_MATCH_ECONOMY_FACTORY_CLASS_UNSUSPEND_METHODS_H
 #define GG_MATCH_ECONOMY_FACTORY_CLASS_UNSUSPEND_METHODS_H
 

@@ -8,8 +8,8 @@
 //   byte `[EAX+0xD35]` is tested), `[EDX+0x2C]` (compared to 1) and
 //   `[EAX+0x160]` (AL result), the members `[ESI+0x2E4]`, `[ESI+0x2CC]` and
 //   `[ESI+0xAC]` (compared to 0x13 / 0x12), and the direct call 0x7105E0.
-//   Names cross-checked against YRpp CaptureManagerClass.h / TechnoClass.h /
-//   TechnoTypeClass.h (consult-only, NO LICENSE); every offset reconfirmed
+//   Names cross-checked against YRpp
+//   every offset reconfirmed
 //   here and against match/_layout/techno_class.h (MindControlledByHouse
 //   @0x2CC, BunkerLinkedItem @0x2E4) and mission_class.h (CurrentMission
 //   @0xAC).

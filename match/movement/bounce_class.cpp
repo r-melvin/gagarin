@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm).
-//   Cross-checked against YRpp BounceClass.h / Matrix3D.h (consult-only).
+//   Cross-checked against YRpp.
 //
 // Translation unit: BounceClass read accessors.
 //

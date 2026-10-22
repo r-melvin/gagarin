@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets and globals read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x4010A0 / 0x401170 / 0x406620 /
-//   0x407000. None is bound by YRpp or the seed map.
+//   0x407000. None is bound by YRpp.
 //
 // Flag tests, a flag clear and a clamped setter.
 #ifndef GG_MATCH_CORE_FLAG_AND_CLAMP_METHODS_H

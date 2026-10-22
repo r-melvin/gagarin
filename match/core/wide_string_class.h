@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Layout and conventions read numerically off the user's retail gamemd.exe
-//   v1.001 through the local Ghidra CLI. The private reference's `core/wide_string_class.cpp`
-//   supplied only the semantic names for this family (what each entry point
-//   does); every offset, width, calling convention and CRT helper address below
+//   v1.001 through the local Ghidra CLI. Every offset, width, calling convention and CRT helper address below
 //   was re-derived from the retail disassembly at 0x7B66D0..0x7B7834.
 //
-// WideStringClass is Westwood's heap-owning wide-character string. The retail
+// WideStringClass is a heap-owning wide-character string. The retail
 // object is a single 4-byte member: a `wchar_t*` at +0x00, allocated with the
 // global `operator new` and released with the global `operator delete`. There
 // is no allocation header, no length cache and no reference count -- every

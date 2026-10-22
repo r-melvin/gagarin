@@ -22,8 +22,7 @@
 //       and `[anim+0x100] = 0xFFFFFF38` (-200) written on the result whether
 //       or not the allocation succeeded (retail's own null path).
 //     * killer slot +0xE0 takes the occupant; occupant slot +0xF8 takes none.
-//   Names cross-checked against YRpp BuildingClass.h / AnimClass.h
-//   (consult-only, NO LICENSE).
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_KILL_OCCUPANTS_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_KILL_OCCUPANTS_METHODS_H
 

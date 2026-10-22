@@ -17,7 +17,7 @@
 //   confirmed in match/ai/aircraft_tracker_class.h (Add/Remove at 100%),
 //   restated here under local names so this TU compiles standalone and adds
 //   no member to that header. Names cross-checked against YRpp
-//   AircraftTrackerClass (consult-only, NO LICENSE).
+//   AircraftTrackerClass.
 #ifndef GG_MATCH_AI_AIRCRAFT_TRACKER_UPDATE_METHODS_H
 #define GG_MATCH_AI_AIRCRAFT_TRACKER_UPDATE_METHODS_H
 

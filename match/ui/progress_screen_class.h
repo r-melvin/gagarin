@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   ProgressScreenClass.h (consult-only, no LICENSE; reconfirmed here).
+//   (consult-only, no LICENSE; reconfirmed here).
 //
 // ProgressScreenClass — the load/progress screen. Only the PlayerSide accessor
 // pair (SetSide/GetSide) is modelled in this TU; the full layout is P2.

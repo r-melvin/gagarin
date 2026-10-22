@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm at 0x7514D0).
-//   Names cross-checked against YRpp VocClass.h (consult-only; every offset
+//   Names cross-checked against YRpp (every offset
 //   reconfirmed numerically from the disassembly below).
 //
 // VocClass::FindIndex — case-insensitive lookup of a sound name within the

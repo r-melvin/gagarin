@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Each offset
 //   and vtable slot reconfirmed below from the member-access disassembly; names
-//   cross-checked against YRpp BitFont.h (consult-only, no LICENSE).
+//   cross-checked against YRpp (consult-only, no LICENSE).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x4346C0   BitFont::GetCharacterBitmap  (__thiscall)

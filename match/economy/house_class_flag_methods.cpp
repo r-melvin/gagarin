@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x4FC060).
 //   Each offset and constant reconfirmed numerically from the disassembly; YRpp
-//   HouseClass.h consulted for names only (no LICENSE).
+//   consulted for names only.
 //
 // reccmp annotations:
 //   FUNCTION: GAMEMD 0x4FC060   HouseClass::PickedUpFlag       (__thiscall)

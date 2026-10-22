@@ -16,8 +16,8 @@
 //   `FCOMP float ptr` / `TEST AH,0x40`. Offsets 0x44, 0x11B, 0x140 and 0xEC
 //   agree with match/map/cell_class_methods.h, cell_class_fog_methods.h,
 //   cell_class_shroud_methods.h and cell_class_tiberium_germinate_methods.h.
-//   The parameter list and its names are YRpp's CellClass::IsClearToMove
-//   (consult-only, NO LICENSE), re-derived here from the 0x1C-byte `RET`.
+//   The parameter list and its names are YRpp's CellClass::IsClearToMove,
+//   re-derived here from the 0x1C-byte `RET`.
 #ifndef GG_MATCH_MAP_CELL_CLASS_CLEAR_TO_MOVE_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_CLEAR_TO_MOVE_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every address, every destructor call target and every byte of the shared
 //   body below was read off the user's own retail gamemd.exe v1.001 with the
-//   local Ghidra CLI. No YRpp or seed-map name is bound here.
+//   local Ghidra CLI. No YRpp name is bound here.
 //
 // Scalar deleting destructors, swept as one family.
 //
@@ -89,12 +89,11 @@ struct Obj_4AEBF0 { void* FUN_4AEBF0(unsigned int flags); };  // FUNCTION: GAMEM
 // RTTI-confirmed (Tier 1, re-verified independently against the binary):
 // vtable 0x7E81A4 (this function's own address at slot 0, the usual
 // self-referential deleting-destructor slot) -> complete object locator
-// @0x7E81A0 -> type descriptor 0x820280 -> name `.?AVEditClass@@`. See
-// docs/naming_proposals.md #5.
+// @0x7E81A0 -> type descriptor 0x820280 -> name `.?AVEditClass@@`.
 struct EditClass { void* ScalarDeletingDestructor(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57D0
 struct Obj_4B5810 { void* FUN_4B5810(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B5810
 struct Obj_4D2910 { void* FUN_4D2910(unsigned int flags); };  // FUNCTION: GAMEMD 0x4D2910
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). FootClass's own vtable is 0x7E8C94.
 //   0x4E0170 -> FootClass slot 8 (byte-off 0x20).
 // That table is the only table in the image that holds it, so the slot is

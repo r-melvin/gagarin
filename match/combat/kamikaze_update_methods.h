@@ -13,7 +13,7 @@
 //   pointer) and [EAX+0x1E8] (QueueMission, two pushed dwords 1, 0); the
 //   neighbour lookup CALL 0x481810 with the 3-bit direction pushed.
 //   0xA8ED84 is the frame counter. Names cross-checked against YRpp
-//   Kamikaze.h / TechnoClass.h / Facing.h (consult-only; NO LICENSE; every
+//   (every
 //   offset reconfirmed above). Ammo @0x2FC and PrimaryFacing @0x388 agree
 //   with match/_layout/techno_class.h (not included: this TU needs the
 //   pointer-to-member vtable idiom on a locally complete type).

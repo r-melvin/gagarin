@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, globals and constants read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x405130 / 0x405140 /
-//   0x405160 / 0x405170 / 0x42E6D0. None of these addresses is bound by YRpp
-//   or the seed map, so the types and entry points keep placeholder names.
+//   0x405160 / 0x405170 / 0x42E6D0. None of these addresses is bound by YRpp,
+//   so the types and entry points keep placeholder names.
 //
 // Four accessors on one object that all return a neutral value unless a shared
 // global is set, plus one component-wise short-pair add.

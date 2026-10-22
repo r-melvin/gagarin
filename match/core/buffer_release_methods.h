@@ -4,7 +4,7 @@
 //   gamemd.exe v1.001 via the local Ghidra CLI, one disassembly per entry
 //   point in the original 53-entry family: buffer at +0x04, length at +0x08, ownership flag
 //   at +0x0D, and on 25 of them an extra word at +0x10 cleared up front. None
-//   of these addresses is bound by YRpp or the seed map.
+//   of these addresses is bound by YRpp.
 //
 // The buffer-release template. Free the buffer only if this object owns it,
 // then reset the holder either way — note the flag and length are cleared even
@@ -20,8 +20,8 @@
 // layout identical, not because they are assumed to be one type. Each is
 // written out as its own function and verified against its own address.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch
-// forty-one (the free-`__fastcall`-with-a-receiver debt) and deliberately
+// Reviewed in the batch forty-one pass
+// (the free-`__fastcall`-with-a-receiver debt) and deliberately
 // LEFT as free functions: `obj` has a receiver and no further argument, so
 // converting to a `__thiscall` member would be free in bytes, but
 // `BufferHolder` is not one recovered class — it is 53 different, presumably

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp LocomotionClass.h (consult-only).
+//   cross-checked against YRpp.
 //
 // SaveView_0055AA60 is an address-local partial view of the IPersistStream +
 // ILocomotion prefix used by the saved-function candidate. It is not a claim

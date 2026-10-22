@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm
 //   0x70E280-0x70E2A4, len 0x25). Names cross-checked against YRpp
-//   TechnoClass.h (consult-only).
+//   (consult-only).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x70E280  TechnoClass::DisguiseAs (__thiscall)

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Strings, globals, allocation sizes and constructor targets extracted
 //   individually from the user's retail gamemd.exe v1.001 via the local Ghidra
-//   CLI, one disassembly per entry point. None is bound by YRpp or the seed map.
+//   CLI, one disassembly per entry point. None is bound by YRpp.
 //
 // FindOrAllocate. Reject the two "no type" spellings, look the name up in the
 // global array, and construct a new item when it is absent.

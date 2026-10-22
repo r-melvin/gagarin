@@ -5,7 +5,7 @@
 //   sizeof: `PUSH 0x74` before the ctor call at both allocation sites.
 //   RTTI: 0x007F0810 / 0x007F07F4 (and the +8/+0xC tables) resolve to
 //   ".?AVRadSiteClass@@" (stored @0x0065B228..0x0065B23C).
-//   Cross-read against YRpp RadSiteClass.h: 13 named members claimed, 12
+//   Cross-read against YRpp: 13 named members claimed, 12
 //   confirmed; Tint is bounded but never written.
 //
 // RadSiteClass — a radiation field centred on a cell. Derives AbstractClass.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Small leaf functions (3-20 bytes) with addresses < 0x500000,
-//   identified from private-reference worklist; offsets confirmed via instruction
+//   offsets confirmed via instruction
 //   read widths and operand encoding against local Ghidra disassembly of
 //   the user's retail gamemd.exe v1.001.
 #ifndef GG_MATCH_CORE_LEAF_BATCH2_METHODS_H

@@ -18,7 +18,7 @@
 //   0xA8E334 holds a pointer to an array of object pointers whose inline ID
 //   text starts at `[obj+0x24]` (`MOV EDX,[0xA8E334];
 //   MOV EAX,[EDX+EAX*4]; ADD EAX,0x24` at 0x474F5C..0x474F65).
-//   INI method names cross-checked against YRpp CCINIClass.h (consult-only;
+//   INI method names cross-checked against YRpp (consult-only;
 //   NO LICENSE) — the ten functions themselves have no YRpp name and keep
 //   their Ghidra placeholders.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_SMALL_READERS_METHODS_H

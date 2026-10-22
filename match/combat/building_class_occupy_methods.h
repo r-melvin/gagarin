@@ -15,8 +15,7 @@
 //   At 0x457D8F, retail passes the same receiver in ECX directly to 0x5F5CD0;
 //   the canonical ObjectClass declaration is used through this offset-zero
 //   ABI view, without claiming a complete class hierarchy here.
-//   Names cross-checked against YRpp BuildingClass.h / BuildingTypeClass.h /
-//   InfantryTypeClass.h (consult-only; NO LICENSE).
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPY_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPY_METHODS_H
 

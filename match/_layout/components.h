@@ -1,12 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: ObjectTypeClass ctor FUN_0x0058B8F0 member-access sites
-//   (docs/decomp_spec/type_hierarchy_layout.md, "IndexClass object layout"),
 //   cross-checked vs YRpp ColorStruct/IndexClass/AbilitiesStruct. P2 leaf
 //   components reused by ObjectTypeClass (RadialColor, MainVoxel, voxel caches,
 //   Veteran/EliteAbilities).
 //
-// Component struct sizes proven by the oracle doc:
+// Component struct sizes proven by the ctor member-access sites:
 //   ColorStruct = 3, VoxelStruct = 8, IndexClass = 0x14, AbilitiesStruct = 0x12.
 #ifndef GG_MATCH_LAYOUT_COMPONENTS_H
 #define GG_MATCH_LAYOUT_COMPONENTS_H
@@ -49,7 +48,7 @@ struct AbilitiesStruct
 
 GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
 
-// IndexClass — Westwood key->index hash/lookup object (size = 0x14, independent
+// IndexClass — key->index hash/lookup object (size = 0x14, independent
 // of the Key/Value template; the NodeElement sizing affects only the heap
 // table, not the object). Used by ObjectTypeClass voxel caches. Pointer members
 // modelled as real pointers (decomp shows truncation at IndexTable/Archive).

@@ -9,8 +9,8 @@
 //   1`); on each target `[EDI+0x294]` (owning airstrike) plus slots +0x2C
 //   (no args, compared with 6), +0x158 (no args), +0x15C (`PUSH 0x186A0`)
 //   and +0x124 (`PUSH 2`); the sibling 0x41DB40 (ClearTarget) called with
-//   `this`. Method name from YRpp AirstrikeClass.h (consult-only, no
-//   LICENSE); layout re-derived here and shared with the ClearTarget TU.
+//   `this`. Method name from YRpp
+//   ; layout re-derived here and shared with the ClearTarget TU.
 #ifndef GG_MATCH_COMBAT_AIRSTRIKE_CLASS_RESET_TARGET_METHODS_H
 #define GG_MATCH_COMBAT_AIRSTRIKE_CLASS_RESET_TARGET_METHODS_H
 

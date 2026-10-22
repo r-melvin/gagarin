@@ -9,7 +9,7 @@
 //   compared with 6) and +0x124 (`PUSH 2`); the airstrike registry Items
 //   `[0x889FBC]` and Count `[0x889FC8]` (the vector at 0x889FB8); the active
 //   byte `[0xA8E9A0]`. Method name and the registry/active names are YRpp's
-//   (consult-only, no LICENSE); each reconfirmed here.
+//   each reconfirmed here.
 #ifndef GG_MATCH_COMBAT_AIRSTRIKE_CLASS_CLEAR_TARGET_METHODS_H
 #define GG_MATCH_COMBAT_AIRSTRIKE_CLASS_CLEAR_TARGET_METHODS_H
 

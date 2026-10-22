@@ -8,10 +8,10 @@
 //   the word pair `[0x89DDF0]` / `[0x89DDF2]` (a CellStruct, bytes 00 00 00
 //   00) and `MOV ECX,0x87F7E8` feeding CALL 0x5657A0 (MapClass::GetCellAt
 //   on the static map object) with `LEA EDX,[ESP+4]` pushed. The slot names
-//   come from docs/decomp_spec/vtable_map_techno.md (0x48 getCoords) and the
+//   come from the vtable layout (0x48 getCoords) and the
 //   YRpp method map (0x5F6B90 ObjectClass::IsInAir, read out of the leaf
 //   vftable at 0x7F4960+0x54); YRpp also names 0xA8E7AC (ScenarioInit) and
-//   the function (BulletClass::LoseTarget). Consult-only, no LICENSE.
+//   the function (BulletClass::LoseTarget).
 #ifndef GG_MATCH_COMBAT_BULLET_CLASS_LOSE_TARGET_METHODS_H
 #define GG_MATCH_COMBAT_BULLET_CLASS_LOSE_TARGET_METHODS_H
 

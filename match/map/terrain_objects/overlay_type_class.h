@@ -30,7 +30,7 @@ public:
     OverlayTypeClass(const char* id);
     static int __fastcall FindIndex(const char* pID); // existing row 0x5FE470
     static void __fastcall LoadArt(int idxTheater);  // existing row 0x5FE620
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching any other member.
     OverlayTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}
 

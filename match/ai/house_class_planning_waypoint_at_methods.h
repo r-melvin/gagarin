@@ -7,8 +7,8 @@
 //   `MOV EAX,[ECX+0x38]` (Waypoints.Count), `CALL 0x763980` (GetWaypoint)
 //   and the node's X/Y ints at +0x00/+0x04 (`MOV EAX,[ESI]` / `[ESI+4]`,
 //   each signed-divided by 256 via CDQ/AND EDX,0xFF/ADD/SAR 8 and compared as
-//   16 bits against the CellStruct argument).  Names from YRpp HouseClass.h /
-//   WaypointPathClass.h (consult-only; every offset reconfirmed here).  The
+//   16 bits against the CellStruct argument). Names from YRpp
+//   (every offset reconfirmed here). The
 //   layout agrees with match/ai/house_class_planning_methods.h (not edited;
 //   re-derived here so the TU stands alone).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PLANNING_WAYPOINT_AT_METHODS_H

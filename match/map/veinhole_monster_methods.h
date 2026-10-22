@@ -6,10 +6,10 @@
 //   (0x74CDF0, 0x74EA30); the per-monster `[ECX+0x100]` byte and `[ECX+0xB0]`
 //   pointer at 0x74EA45/0x74EA4F; the `CALL [EDX+0x5C]` slot at 0x74CE08 and
 //   the `PUSH 1; CALL [EAX+0x20]` deleting-destructor slot at 0x74EA62; the
-//   three stack words forwarded at 0x74EEE0. YRpp VeinholeMonsterClass.h was
-//   consulted for the method names only (consult-only; nothing copied).
+//   three stack words forwarded at 0x74EEE0. YRpp was
+//   consulted for the method names only (nothing copied).
 //
-// VeinholeMonsterClass — the vein-spawning monster of the Tiberian theatres.
+// VeinholeMonsterClass — the vein-spawning monster.
 // This TU covers its per-frame driver and three small statics; the class is a
 // placeholder shape (vtable index + the two members the sweep tests), not the
 // full 0x108-byte layout.

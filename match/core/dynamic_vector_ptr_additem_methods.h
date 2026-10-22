@@ -5,24 +5,12 @@
 //
 //   The shape is `DynamicVectorClass<T*>::AddItem(T item)`: append one element
 //   to a growable vector, growing it through the vector's own virtual
-//   `SetCapacity` slot when it is full. YRpp's ArrayClasses.h ships the source
-//   of this template verbatim (consult-only, reconfirmed against retail
-//   below), and its `AddItem` matches this body instruction for instruction:
-//
-//     bool AddItem(T item) {
-//         if (Count >= Capacity) {
-//             if (!IsAllocated && Capacity != 0)      return false;
-//             if (CapacityIncrement <= 0)             return false;
-//             if (!SetCapacity(Capacity + CapacityIncrement, nullptr))
-//                 return false;
-//         }
-//         Items[Count++] = std::move(item);
-//         return true;
-//     }
+//   `SetCapacity` slot when it is full. The method name is cross-checked
+//   against YRpp and the body below is reconfirmed against retail.
 //
 //   That is a real recovered method name, not a placeholder: this family is
 //   converted from the free-`__fastcall`-with-a-receiver shortcut (batch
-//   forty-one of docs/matching_methodology_and_toolchain.md) to genuine
+//   forty-one) to genuine
 //   `__thiscall` members of the class the receiver actually belongs to.
 //
 //   All 23 members are byte-identical to one another over the whole 0x50

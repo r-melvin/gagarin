@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm @ 0x5785F0).
-//   Signature cross-checked against YRpp MapClass.h (consult-only):
+//   Signature cross-checked against YRpp:
 //     bool MapClass::IsWithinUsableArea(const CoordStruct& coords) const
 //   which converts the coord to a cell (signed /256 per axis) and tail-calls
 //   the CellStruct overload @ 0x578460 with checkLevel = true.

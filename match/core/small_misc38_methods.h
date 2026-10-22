@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every offset, slot, constant and call target below is read numerically off
 //   the user's retail gamemd.exe v1.001 via the local Ghidra CLI at the seven
-//   addresses named. None is bound by YRpp or the seed map.
+//   addresses named. None is bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC38_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC38_METHODS_H
 
@@ -62,7 +62,7 @@ struct SubObject_00426790
     virtual void* vt_000(char flags);   // +0x0000  deleting destructor
 };
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AnimFile's own vtable is 0x7E3584.
 //   0x426750 -> AnimFile slot 1 (byte-off 0x4).
 //   0x426790 -> AnimFile slot 2 (byte-off 0x8).

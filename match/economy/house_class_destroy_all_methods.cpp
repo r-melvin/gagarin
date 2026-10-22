@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4FC790 via the local
 //   Ghidra disassembly. Offsets, vtable slots and globals confirmed numerically
-//   (see the header). Name from YRpp HouseClass.h (consult-only, reconfirmed:
+//   (see the header). Name from YRpp (reconfirmed:
 //   the whatAmI comparison against AbstractType::Building at 0x4FC7BE is what
 //   distinguishes this member of the DestroyAll family).
 //

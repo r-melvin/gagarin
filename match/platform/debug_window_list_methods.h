@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Every fact below is read numerically off the user's retail gamemd.exe
-//   v1.001 via the local Ghidra CLI at 0x53E3C0 / 0x53E420. No YRpp or RA1
+//   v1.001 via the local Ghidra CLI at 0x53E3C0 / 0x53E420. No YRpp
 //   binding exists for this pair, so the retail placeholder names are kept.
 //
 // The debug-window registry — a small fixed-capacity open-addressed table of
 // window handles that the 0x53Exxx logging module echoes output to.
 //
-// Naming: neither YRpp nor the state/decomp seed map binds these two addresses,
+// Naming: YRpp does not bind these two addresses,
 // so they keep their Ghidra placeholder names per the project's naming rule.
 // What they do is unambiguous from the bytes and the call sites: 0x53E3C0 adds
 // a handle to the table if it is not already present, 0x53E420 clears it out

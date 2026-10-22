@@ -20,7 +20,7 @@
 //     0x48E740 is called with (palette, palette, [0x887310], 1, 0).
 //   The file object agrees with match/map/smudge_type_class_load_methods.h and
 //   match/ui/preview_class_pcx_methods.h (neither edited; re-derived here so the
-//   TU stands alone). Names cross-checked against YRpp ConvertClass.h
+//   TU stands alone). Names cross-checked against YRpp
 //   (consult-only; NO LICENSE; every offset reconfirmed above).
 #ifndef GG_MATCH_RENDERER_CONVERT_CLASS_CREATE_METHODS_H
 #define GG_MATCH_RENDERER_CONVERT_CLASS_CREATE_METHODS_H

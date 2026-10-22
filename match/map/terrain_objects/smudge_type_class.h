@@ -35,7 +35,7 @@ public:
     // FUNCTION: GAMEMD 0x6B5260
     SmudgeTypeClass(const char* id);
     static void __fastcall LoadFromIniList(int idxTheater); // existing row 0x6B5490
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
     SmudgeTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}
 

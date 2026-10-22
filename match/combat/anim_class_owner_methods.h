@@ -9,7 +9,7 @@
 //   EDX,4`), the display instance `MOV ECX,0x87F7E8`, and the three virtual
 //   slots `[EAX+0x48]` (GetCoords, out-pointer returned in EAX),
 //   `[EAX+0x1B4]` (takes a CoordStruct*) and `[EDX+0x17C]` on the owner.
-//   YRpp (consult-only, no LICENSE) names AnimClass::SetOwnerObject and
+//   YRpp names AnimClass::SetOwnerObject and
 //   DisplayClass::Remove / Submit.
 #ifndef GG_MATCH_COMBAT_ANIM_CLASS_OWNER_METHODS_H
 #define GG_MATCH_COMBAT_ANIM_CLASS_OWNER_METHODS_H

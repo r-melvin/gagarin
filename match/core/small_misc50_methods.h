@@ -74,7 +74,7 @@ GG_STATIC_ASSERT(offsetof(Entry_004253B0, Key) == 0x30C);
 extern Entry_004253B0** DAT_00B054D4;
 extern int              DAT_00B054E0;
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from the
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from the
 // invented `Subject_004253B0`). 0x4253B0 sits at slot 6 (byte-off 0x18) of
 // AnimClass's own vtable 0x7E3354, and in no other table in the image. The
 // virtual is `__stdcall`, so `this` arrives as the first STACK argument rather

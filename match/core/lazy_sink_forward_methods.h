@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, the allocation size and both call targets read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at 0x4381D0 and
-//   0x438300. Neither is bound by YRpp or the seed map.
+//   0x438300. Neither is bound by YRpp.
 //
 // A lazily-created sink at +0x0C plus a two-argument forward to it. The two
 // entry points are the same code twice, down to the call targets - only their

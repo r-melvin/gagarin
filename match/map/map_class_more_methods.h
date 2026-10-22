@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm). Member offsets and
 //   globals reconfirmed numerically from the disasm at each method address;
-//   field names cross-checked against YRpp MapClass.h / GScreenClass.h
-//   (consult-only, no license).
+//   field names cross-checked against YRpp.
 //
 //   Confirmed from disasm:
 //     MapClass::Bitfield       @ 0x0c (int)   -- FUN_004F42D0 [ECX+0xc]

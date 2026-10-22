@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4CB8B0-0x4CB978), cross-checked
-//   against YRpp PacketClass.h (FieldClass) (consult-only; reconfirmed here).
+//   against YRpp (FieldClass) (reconfirmed here).
 //
 // FieldClass — one network packet field: a 4-byte ID, a 16-bit data-type tag,
 // a 16-bit size, and a pointer to the field's data. HostToNet / NetToHost

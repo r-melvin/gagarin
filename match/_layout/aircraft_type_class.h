@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor FUN_0x0041C8B0 (docs/decomp_spec/type_hierarchy_layout.md,
+//   Oracle: ctor FUN_0x0041C8B0,
 //   "AircraftTypeClass (start 0xDF8, size 0xE10) -- ctor 0x41C8B0"; parent ctor
 //   TechnoTypeClass 0x710AF0). Anchored member-access sites ArrayIndex@0xDF8,
-//   Trailer@0xE00, SpawnDelay@0xE04, cross-checked vs YRpp AircraftTypeClass.h.
+//   Trailer@0xE00, SpawnDelay@0xE04, cross-checked vs YRpp.
 //
 // AircraftTypeClass - leaf blueprint for aircraft object types. Derives
 // TechnoTypeClass (sizeof 0xDF8) at offset 0 and adds the aircraft-specific

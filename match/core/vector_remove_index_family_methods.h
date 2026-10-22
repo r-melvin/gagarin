@@ -8,21 +8,13 @@
 //   sixteen have identical retail bytes, so the family carries no
 //   per-instance constant.
 //
-//   YRpp's ArrayClasses.h ships DynamicVectorClass<T>::RemoveItem(int index)
-//   verbatim (consult-only, reconfirmed against retail below), and its shape
-//   matches this body instruction for instruction (its `ValidIndex` bounds
-//   check folds to the same `index < Count` test seen in the disassembly):
-//
-//     bool RemoveItem(int index) {
-//         if (!ValidIndex(index)) return false;
-//         --Count;
-//         for (int i = index; i < Count; ++i) Items[i] = Items[i + 1];
-//         return true;
-//     }
+//   The method name DynamicVectorClass<T>::RemoveItem(int index) is
+//   cross-checked against YRpp; the body is reconfirmed against retail below
+//   (the bounds check is the `index < Count` test seen in the disassembly).
 //
 //   That is a real recovered method name, not a placeholder: this family is
 //   converted from the free-`__fastcall`-with-a-receiver shortcut (batch
-//   forty-one of docs/matching_methodology_and_toolchain.md) to genuine
+//   forty-one) to genuine
 //   `__thiscall` members of the class the receiver actually belongs to.
 //
 //   Each of the 16 retail addresses is its own template instantiation of the

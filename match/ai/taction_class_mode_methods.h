@@ -3,7 +3,7 @@
 //   Bytes read off the user's retail gamemd.exe v1.001 via the local Ghidra
 //   CLI at 0x6E3B60: a __fastcall static taking the action kind in ECX,
 //   lowered to one byte-indexed jump table over kinds 1..0x90 with 34 result
-//   blocks and a zero default. YRpp (consult-only, no LICENSE) names
+//   blocks and a zero default. YRpp names
 //   TActionClass::GetMode.
 #ifndef GG_MATCH_AI_TACTION_CLASS_MODE_METHODS_H
 #define GG_MATCH_AI_TACTION_CLASS_MODE_METHODS_H

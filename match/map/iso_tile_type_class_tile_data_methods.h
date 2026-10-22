@@ -9,8 +9,7 @@
 //     ghidra memory read 0x007ECC44 4   -> complete object locator 0x00804BC0
 //     ghidra memory read 0x00804BCC 4   -> type descriptor 0x008290C8
 //     ghidra memory read 0x008290C8 64  -> ".?AVIsometricTileTypeClass@@"
-//   The retail class name is IsometricTileTypeClass. (private-reference's seed files
-//   call it `iso_tile_type_class`; the binary spells it out in full.)
+//   The retail class name is IsometricTileTypeClass.
 //
 //   Member offsets confirmed numerically from the bodies:
 //     +0x0A4  TileData   `MOV EAX,[ESI+0xa4]`, twice in 0x544CB0
@@ -22,10 +21,8 @@
 //     +0x24  flag word, bit 2 is the connect/ramp flag (`SHR EAX,2; AND EAX,1`)
 //     +0x2A  the morph/slope byte, read with MOVSX, so signed char
 //
-//   Behaviour claims cross-checked against docs/decomp_spec/re_findings/
-//   faithful_terrain_lighting-lat.md section B.3, which is right about the
-//   morph byte, the connect flag and the modulo — see the CORRECTION on the
-//   fall-back value in the .cpp.
+//   The morph byte, the connect flag and the modulo are read from the bodies;
+//   see the .cpp for the fall-back value.
 #ifndef GG_MATCH_MAP_ISO_TILE_TYPE_CLASS_TILE_DATA_METHODS_H
 #define GG_MATCH_MAP_ISO_TILE_TYPE_CLASS_TILE_DATA_METHODS_H
 

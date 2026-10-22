@@ -5,7 +5,7 @@
 //   from 0x820030 to 0x82003C, the 0x18-byte layer records at 0x8A0360 (Items
 //   at +0x04 = 0x8A0364, Count at +0x10 = 0x8A0370), the object's flag byte at
 //   +0x14 (bit 0), and the two zero-argument bool virtuals at +0x64 and
-//   +0x13C. YRpp (consult-only, no LICENSE) names the function
+//   +0x13C. YRpp names the function
 //   MapClass::NextObject and the layer array ObjectsInLayers; every offset is
 //   reconfirmed here.
 #ifndef GG_MATCH_MAP_MAP_CLASS_NEXT_OBJECT_METHODS_H

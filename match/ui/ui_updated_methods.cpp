@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x623120).
 //   Every global address and branch reconfirmed below from the disassembly;
-//   names cross-checked against YRpp UI.h / Unsorted.h (consult-only, no LICENSE).
+//   names cross-checked against YRpp (consult-only, no LICENSE).
 //
 // reccmp annotation:
 //   FUNCTION: GAMEMD 0x623120   UI::Updated   (static, __cdecl)

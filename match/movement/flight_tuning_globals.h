@@ -10,8 +10,8 @@
 // step at 0x5B20F0. None of them appears in the Ghidra function list -- the
 // analysis stops at 0x5B2A30 and the next listed entry is 0x5B2DA0 -- so they
 // were found by walking the gap; each has a clean entry at a 16-byte boundary
-// and its own RET. (The "Ghidra function list is not a complete worklist"
-// hazard, recorded in docs/entry_point_corrections.md.)
+// and its own RET. (The Ghidra function list is not a complete
+// worklist.)
 //
 // Every one of them writes a field of one contiguous block of file-scope
 // statics based at 0x00ABEF10, which is also where the flight step reads its

@@ -11,7 +11,7 @@
 //   0x7C8B3D (free), 0x407F40 (stop the engine), 0x752370 (reset the
 //   queue), 0x752680 (the entry's live node, priority at `+0x18`),
 //   0x752590 (start it) and 0x752760 (pump). Names cross-checked against
-//   YRpp VoxClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_AUDIO_VOX_CLASS_PLAY_INDEX_METHODS_H
 #define GG_MATCH_AUDIO_VOX_CLASS_PLAY_INDEX_METHODS_H
 

@@ -7,8 +7,8 @@
 //   `[ESI+0x2C]` (Stream, receiver of 0x4080D0 / 0x407F40 / 0x408070), the
 //   byte globals `[0xA8ED64]` / `[0xA8EC74]`, the dword global `[0xA8E7AC]`,
 //   the log format string at 0x8447B8 and the callees 0x407000 / 0x4068E0 /
-//   0x720A80 / 0x720BB0. Names cross-checked against YRpp ThemeClass.h
-//   (consult-only, NO LICENSE); every offset reconfirmed here. The layout
+//   0x720A80 / 0x720BB0. Names cross-checked against YRpp
+//   every offset reconfirmed here. The layout
 //   repeats the one proven in match/audio/theme_class_queue_methods.h.
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_AI_METHODS_H
 #define GG_MATCH_AUDIO_THEME_CLASS_AI_METHODS_H

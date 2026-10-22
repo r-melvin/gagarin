@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + arithmetic derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly @ 0x42B1C0 / 0x42B1F0),
-//   cross-checked against YRpp PriorityQueueClass.h (consult-only, no LICENSE;
+//   cross-checked against YRpp (consult-only, no LICENSE;
 //   every offset reconfirmed against the user's binary below).
 //
 // PriorityQueueClassNode — the surface-data helper the A* surface heap hangs off.

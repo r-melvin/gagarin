@@ -7,9 +7,8 @@
 //   is unused. 0x719EE0 is the COM hand-off of a pending object: the
 //   interface pointer is reached at a negative displacement of 0xC from the
 //   passed object, which is the usual adjustor for a secondary COM base, and
-//   the two fields cleared there are at +0x428 and +0x42C. Names
-//   cross-checked against the private-reference seed (consult-only); every offset and
-//   convention re-derived here.
+//   the two fields cleared there are at +0x428 and +0x42C. Every offset and
+//   convention is derived here.
 #ifndef GG_MATCH_MOVEMENT_LOCOMOTION_COM_HELPERS_H
 #define GG_MATCH_MOVEMENT_LOCOMOTION_COM_HELPERS_H
 

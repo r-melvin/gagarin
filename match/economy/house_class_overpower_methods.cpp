@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x4F9AF0 / 0x50C8C0 (Ghidra
-//   disasm). Cross-checked vs YRpp HouseClass.h CanOverpower / Cheer
-//   (consult-only; each offset, vtable slot and global reconfirmed below).
+//   disasm). Cross-checked vs YRpp CanOverpower / Cheer
+//   (each offset, vtable slot and global reconfirmed below).
 //
 // Translation unit: HouseClass::CanOverpower + HouseClass::Cheer.
 //

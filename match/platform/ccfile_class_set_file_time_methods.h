@@ -13,7 +13,7 @@
 //   its SetFileTime is slot 15 (`CALL [EDX+0x3C]`); the destructor chain
 //   re-stores 0x7E16B0, zeroes +0x64, releases the buffer (`CALL 0x43AE50`),
 //   stores the base vtable 0x7E1668 and calls the base destructor 0x431B80.
-//   Class / method names from YRpp CCFileClass.h (consult-only; names only).
+//   Class / method names from YRpp (consult-only; names only).
 //
 // Retail has no exception frame around the temporary (plain `SUB ESP,0x70`,
 // no FS:[0] registration). Under /GX, the tree's earlier flag set, a real

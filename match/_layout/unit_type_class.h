@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: UnitTypeClass ctor FUN_0x007470D0 member-access sites
-//   (docs/decomp_spec/type_hierarchy_layout.md, "### UnitTypeClass (start 0xDF8,
-//   size ~0xE78) - ctor 0x7470D0"), cross-checked vs YRpp UnitTypeClass.h.
-//   Verified by the doc anchor unknown_E10@0xE10 plus the ctor spot-checks
+//   (start 0xDF8, size ~0xE78), cross-checked vs YRpp.
+//   Verified by the pad anchor unknown_E10@0xE10 plus the ctor spot-checks
 //   Facings@0xE3C, AltImage@0xE58, WalkFrames@0xE5C. Parent ctor 0x710AF0
 //   (TechnoTypeClass) runs first, so the leaf body starts at 0xDF8.
 //

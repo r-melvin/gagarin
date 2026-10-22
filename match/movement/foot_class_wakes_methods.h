@@ -20,7 +20,7 @@
 //   match/ai/trigger_class_reset_timers_methods.h and the 0x1C8/0x421EA0 pair
 //   with match/ai/house_class_psi_warn_methods.h (neither edited; both
 //   re-derived here so the TU stands alone). Names cross-checked against YRpp
-//   FootClass.h / AnimClass.h (consult-only; NO LICENSE; offsets reconfirmed).
+//   (offsets reconfirmed).
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_WAKES_METHODS_H
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_WAKES_METHODS_H
 

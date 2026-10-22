@@ -8,7 +8,7 @@
 //   0xA8022C / 0xA80238 (HouseClass::Array Items / Count), 0xA8B238
 //   (SessionClass GameMode) and 0xA8E7AC (ScenarioInit); the "Civilian"
 //   house-type index lookup 0x6A46D0 with the name in ECX. Names cross-checked
-//   against YRpp HouseClass.h / HouseTypeClass.h (consult-only; NO LICENSE).
+//   against YRpp.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_CAN_ALLY_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_CAN_ALLY_METHODS_H
 

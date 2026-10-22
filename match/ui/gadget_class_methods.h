@@ -5,7 +5,7 @@
 //   was read directly from memory at 0x7E92BC (the address the scalar-deleting
 //   destructor at 0x4E1A60 stores into [this]), and each slot identified by its
 //   target address against the known method entry points. Cross-checked against
-//   YRpp GadgetClass.h / LinkClass.h (consult-only; every offset reconfirmed
+//   YRpp (consult-only; every offset reconfirmed
 //   here from the disassembly).
 //
 // GadgetClass — base of the GUI gadget hierarchy. It is a doubly-linked-list

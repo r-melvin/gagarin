@@ -50,7 +50,7 @@ public:
                   ParticleSystemClass* owner) throw();
     // FUNCTION: GAMEMD 0x62BB20
     ParticleClass();
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to
+    // No-init constructor: Load re-runs it through placement new to
     // restore the vptrs without touching members.
     ParticleClass(const ParticleNoInit& noInit) : ParticleObjectView(noInit) {}
 

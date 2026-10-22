@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor 0x75CEC0 (docs/decomp_spec/type_hierarchy_layout.md,
-//   "### WarheadTypeClass (start 0x98, size 0x1D0)"), member offsets from the
-//   ctor member-access sites, cross-checked vs YRpp WarheadTypeClass.h. The
+//   Oracle: ctor 0x75CEC0 (start 0x98, size 0x1D0), member offsets from the
+//   ctor member-access sites, cross-checked vs YRpp. The
 //   ctor chains the AbstractTypeClass parent ctor 0x410800. P2 layout-spine.
 //
 // WarheadTypeClass — the INI [Warheads] blueprint: damage Verses[] table,

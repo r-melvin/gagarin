@@ -8,7 +8,7 @@
 //       Last write @0x18(+8) => sizeof == 0x20.
 //   - IsRecruitableMission @0x5B36E0: `SHL ECX,5` (mission*0x20) +
 //       `MOV AL,[ECX+0xA8E3AE]` => Array base 0xA8E3A8, Recruitable@0x06.
-//   Cross-checked vs YRpp MissionClass.h `class MissionControlClass`.
+//   Cross-checked vs YRpp `class MissionControlClass`.
 //
 // MissionControlClass — the per-Mission control record (one per Mission enum
 // value). The global Array @0xA8E3A8 holds 0x20-byte records; a parallel

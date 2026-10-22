@@ -181,7 +181,7 @@ GG_STATIC_ASSERT(sizeof(LocomotionLayoutView_0055A6C0)                  == 0x18)
 // NAME. There is no such class in the binary; this is the shared shape of the
 // six locomotors whose RTTI carries a third complete object locator at base
 // offset 0x18 (IPiggyback). The name is deliberately not a *Class name so it
-// cannot be mistaken for a recovered Westwood symbol.
+// cannot be mistaken for a recovered symbol.
 // ---------------------------------------------------------------------------
 #ifndef GG_MATCH_LAYOUT_LOCOMOTIONPIGGYBACKBASE_DEFINED
 #define GG_MATCH_LAYOUT_LOCOMOTIONPIGGYBACKBASE_DEFINED

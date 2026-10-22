@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every shape below read numerically off the user's retail gamemd.exe v1.001
 //   via the local Ghidra CLI at the address in each annotation. None is bound
-//   by YRpp or the seed map, so all keep Ghidra placeholder names.
+//   by YRpp, so all keep Ghidra placeholder names.
 //
 // The trivial leaves left over after the large shape sweeps: one- and
 // two-instruction functions that survived the earlier passes because their
@@ -18,7 +18,7 @@
 // that ignores its `this`; the free __stdcall form is used because it claims
 // less.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
+// Reviewed in the batch forty-one pass
 // (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
 // functions. Converting would cost nothing in bytes — a member spelled
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in

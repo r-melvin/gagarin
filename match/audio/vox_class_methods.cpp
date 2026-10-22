@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names cross-
-//   checked against YRpp VoxClass.h (consult-only, no LICENSE; each offset and
+//   checked against YRpp (each offset and
 //   global address reconfirmed against the user's binary below).
 //
 // Translation unit: VoxClass EVA-voice dispatch.

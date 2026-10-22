@@ -8,8 +8,8 @@
 //   0x408070 / 0x4080C0), the byte globals `[0xA8EC74]` / `[0xA8ED64]`, the
 //   engine probe `CALL 0x407000`, the log sink `CALL 0x4068E0` with the
 //   strings at 0x844830 / 0x84481C, and the byte parameter `MOV AL,[ESP+8]`.
-//   Names cross-checked against YRpp ThemeClass.h (consult-only, no
-//   LICENSE); the layout repeats match/audio/theme_class_queue_methods.h.
+//   Names cross-checked against YRpp
+//   ; the layout repeats match/audio/theme_class_queue_methods.h.
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_STOP_METHODS_H
 #define GG_MATCH_AUDIO_THEME_CLASS_STOP_METHODS_H
 

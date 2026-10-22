@@ -10,7 +10,7 @@
 //   `[ESI+0x4C]` and the byte `[ESI+0x11C]` (SlopeIndex). Calls: 0x47C550 with
 //   one pushed 0 and 0x47C520 with none (both __thiscall on the cell), and
 //   0x578390 on the map with (rect, 1). Names cross-checked against YRpp
-//   MapClass.h / CellClass.h (consult-only) and used as names only.
+//   and used as names only.
 #ifndef GG_MATCH_MAP_MAP_CLASS_AREA_FREE_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_AREA_FREE_METHODS_H
 

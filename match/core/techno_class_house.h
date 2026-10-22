@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6339B0). Names cross-checked
-//   against YRpp TechnoClass.h / HouseClass.h (consult-only, no LICENSE; every
+//   against YRpp (consult-only, no LICENSE; every
 //   offset reconfirmed numerically below from the matched body).
 //
 // This TU matches one TechnoClass query helper:

@@ -4,9 +4,9 @@
 //   v1.001 via the local Ghidra CLI at 0x5D62C0. The two globals it reads,
 //   0x00A8DA78 (Items) and 0x00A8DA84 (Count), sit at +0x04 and +0x10 of a
 //   DynamicVectorClass, which pins the vector object to 0x00A8DA74. Address
-//   binding cross-checked against YRpp (consult-only, no LICENSE), which knows
+//   binding cross-checked against YRpp, which knows
 //   this only as MultiplayerGameMode::vt_entry_10.
-// CLASS NAME CORRECTED (whole-image RTTI sweep, docs/rtti_sweep.md):
+// CLASS NAME CORRECTED (whole-image RTTI sweep):
 // `MPGameModeClass` is YRpp's spelling and does not exist in this binary. The
 // retail name is `MultiplayerGameMode` (TD 0x008307C0 shows the class inside
 // `.?AV?$VectorClass@PAVMultiplayerGameMode@@@@`; its own table is 0x7EED60).

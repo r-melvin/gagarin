@@ -9,8 +9,7 @@
 //   `[ESI+0x21C]` (Owner), `[EAX+0x6AE]` (FootClass::IsLetGoByLocomotor);
 //   vtable slots `[EAX+0x1C8]` GetHeight, `[EAX+0x3A0]` (clear-target
 //   action), `[EDX+0x480]` SetDestination(0, true) and `[EAX+0x3C8]`
-//   SetTarget(0). Names cross-checked against YRpp TechnoClass.h /
-//   FootClass.h (consult-only; NO LICENSE).
+//   SetTarget(0). Names cross-checked against YRpp.
 #ifndef GG_MATCH_MOVEMENT_TECHNO_CLASS_RELEASE_LOCOMOTOR_METHODS_H
 #define GG_MATCH_MOVEMENT_TECHNO_CLASS_RELEASE_LOCOMOTOR_METHODS_H
 

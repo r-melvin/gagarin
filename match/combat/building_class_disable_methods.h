@@ -8,7 +8,7 @@
 //   `[EAX+0x16C7]`, `[EAX+0x1707]`, `[EAX+0xCD1]`, `[EAX+0x16BE]` and the
 //   0x44-byte animation records from `[ECX+0xF8C]` (21 of them: the loop
 //   stops at 0x594). Slot +0x418 is a zero-argument virtual. Names cross-
-//   checked against YRpp (consult-only, no LICENSE): DisableStuff,
+//   checked against YRpp: DisableStuff,
 //   LightSource, CloakRadius, Type->CloakGenerator/CloakRadiusInCells/
 //   GapGenerator; every offset reconfirmed here.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_DISABLE_METHODS_H

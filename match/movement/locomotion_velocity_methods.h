@@ -6,8 +6,8 @@
 //   the current contribution through vtable slot +0x2C0, remembers it at
 //   +0x508, converts it through slot +0x38 and hands it to the mover; the
 //   undo negates the remembered value, converts it the same way, hands it
-//   over and forgets it. Names cross-checked against the private-reference seed
-//   (consult-only); every offset and convention re-derived here.
+//   over and forgets it. Every offset and
+//   convention is derived here.
 #ifndef GG_MATCH_MOVEMENT_LOCOMOTION_VELOCITY_METHODS_H
 #define GG_MATCH_MOVEMENT_LOCOMOTION_VELOCITY_METHODS_H
 

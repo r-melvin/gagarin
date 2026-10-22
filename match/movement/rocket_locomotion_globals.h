@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | original
 //   Every address, constant and member offset below was read numerically off
-//   the user's own retail gamemd.exe v1.001 through the local Ghidra CLI. No
-//   YRpp header, RA1 file or TS++ header was consulted for this cluster - the
+//   the user's own retail gamemd.exe v1.001 through the local Ghidra CLI. The
 //   run carries no runtime type information of its own and was identified from
 //   the CRT static-initialiser table instead.
 //

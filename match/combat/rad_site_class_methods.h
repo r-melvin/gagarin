@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x65B4C0-0x65B527), cross-checked
-//   against YRpp RadSiteClass.h / RulesClass.h (consult-only; reconfirmed
+//   against YRpp (reconfirmed
 //   numerically here).
 //   Add at 0x65B530 independently confirms the shared fields/global;
 //   its 0x4A-byte entry-origin body was rechecked through REA/Ghidra.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor FUN_0x005F7090 (docs/decomp_spec/type_hierarchy_layout.md),
-//   field writes cross-checked vs YRpp ObjectTypeClass.h. Triple-confirmed via
+//   Oracle: ctor FUN_0x005F7090,
+//   field writes cross-checked vs YRpp. Triple-confirmed via
 //   YRpp pad anchors (unused_9B / align_A9 / align_1E9 / align_23E) and the
 //   downstream TechnoTypeClass align_2FC@0x2FC, which lands only if size==0x294.
 //

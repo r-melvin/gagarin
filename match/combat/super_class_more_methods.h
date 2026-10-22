@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6CE1A0), cross-checked against
-//   YRpp SuperClass.h / SuperWeaponTypeClass.h (consult-only; every offset
+//   YRpp (every offset
 //   reconfirmed numerically here).
 //
 // SuperClass::ShouldFlashTab — sidebar tab flash logic for a per-house

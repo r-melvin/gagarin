@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and globals read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4E12D0. Signature cross-checked against YRpp
-//   GadgetClass.h (`static int __fastcall GetColorScheme()`, consult-only, no
+//   (`static int __fastcall GetColorScheme()`, consult-only, no
 //   LICENSE).
 //
 // Lives in its own TU rather than gadget_class_methods.cpp because it needs

@@ -10,7 +10,7 @@
 //   store `[ESI+0x24A]`; the session game mode `[0xA8B238]`; the callees
 //   `CALL 0x4F9F90` (HouseClass::MakeEnemy) and `CALL 0x4F9B70`
 //   (HouseClass::MakeAlly), both __thiscall with (house, 0) pushed. Names
-//   cross-checked against YRpp HouseClass.h (consult-only, no LICENSE);
+//   cross-checked against YRpp;
 //   declaration style follows match/economy/house_class_can_ally_methods.h
 //   and the inlined IsControlledByHuman shape of house_class_accessor_methods.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_ALLY_AI_METHODS_H

@@ -7,8 +7,7 @@
 //   GetCellAt 0x5657A0 (one argument, RET 4), the cell flag word
 //   `[EAX+0x140]` bit 8 (the alternate/bridge level), and the AStarClass
 //   instance 0x87E8B8 whose AttemptPath 0x42D170 takes six stack arguments.
-//   Names cross-checked against YRpp UnitClass.h / AStarClass.h / MapClass.h
-//   (consult-only; NO LICENSE).
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_MOVEMENT_UNIT_CLASS_ASTAR_ATTEMPT_METHODS_H
 #define GG_MATCH_MOVEMENT_UNIT_CLASS_ASTAR_ATTEMPT_METHODS_H
 

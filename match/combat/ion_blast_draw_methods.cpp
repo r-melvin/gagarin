@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x53D850. Method name
-//   from the consult-only YRpp IonBlastClass.h (name only).
+//   from YRpp (name only).
 
 #include "ion_blast_draw_methods.h"
 

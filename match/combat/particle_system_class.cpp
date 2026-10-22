@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp ParticleSystemClass.h / ParticleClass.h
-//   (consult-only).
+//   cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x62E380  ParticleSystemClass::SpawnParticle(coord,coord) (__thiscall)

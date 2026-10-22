@@ -4,8 +4,8 @@
 //   about. Every one of them sits in an address gap between two listed
 //   functions, behind a pad of 0x90 bytes, and was found by sweeping the
 //   gaps as raw bytes (`ghidra memory read` piped through `objdump -D -b
-//   binary -m i386`) rather than from the function list or from the
-//   private-reference seed, neither of which names any of them. They belong to the
+//   binary -m i386`) rather than from the function list, which names
+//   none of them. They belong to the
 //   same retail translation unit as the readers in
 //   ccini_class_name_table_readers_methods.cpp,
 //   ccini_class_armor_house_type_methods.cpp,

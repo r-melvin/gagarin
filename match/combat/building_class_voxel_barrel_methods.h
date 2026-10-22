@@ -18,7 +18,7 @@
 //       Matrix3D at 48 bytes, and it is copied to the hidden reference
 //       argument at `[ESP+0x44]` with `RET 0x4`.
 //   Names cross-checked against YRpp BuildingClass::GetVoxelBarrelOffsetMatrix,
-//   Matrix3D.h and Facing.h (consult-only, NO LICENSE); every offset above is
+//  ; every offset above is
 //   re-derived from the user's binary. NOTE: the double at 0x1728 falls inside
 //   what YRpp spells as `char VoxelBarrelFile[0x1C]` at 0x1714 — the binary
 //   says that array is 0x14 bytes and a double follows it, so the scale member

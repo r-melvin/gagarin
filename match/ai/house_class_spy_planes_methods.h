@@ -24,8 +24,7 @@
 //   `MOVSX EAX,DI` and `MOVSX ECX,word [ESP+0x3A]` — one half out of the
 //   register and the other out of the whole-dword spill, scaled
 //   `SHL 8; ADD 0x80` into a three-dword CoordStruct whose Z is stored 0.
-//   Names cross-checked against YRpp HouseClass / AircraftTypeClass
-//   (consult-only, NO LICENSE).
+//   Names cross-checked against YRpp HouseClass / AircraftTypeClass.
 #ifndef GG_MATCH_AI_HOUSE_CLASS_SPY_PLANES_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_SPY_PLANES_METHODS_H
 

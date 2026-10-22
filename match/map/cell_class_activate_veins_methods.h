@@ -13,7 +13,7 @@
 //   cell's own height query 0x47B3A0 taking a sub-cell offset. Offsets
 //   agree with match/map/cell_class_fog_methods.h (Flags 0x140) and
 //   match/map/cell_class_wall_owner_methods.h (OverlayTypeIndex 0x44).
-//   Names cross-checked against YRpp CellClass.h (consult-only; NO LICENSE).
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_CELL_CLASS_ACTIVATE_VEINS_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_ACTIVATE_VEINS_METHODS_H
 

@@ -7,12 +7,9 @@
 //   that as a transitional name, and it is the honest one here — the receiver
 //   is TechnoClass (both sit in the 0x6Fxxxx TechnoClass run and both take the
 //   receiver in ECX with a TechnoClass member access), but neither behaviour is
-//   pinned to a Westwood name by anything better than a private-reference guess
-//   ("technoSelectNavalTargeting", "technoClickedMission"), and neither guess
-//   is supported by what the bodies actually read.
+//   pinned to a name by the binary, so both keep placeholder names.
 //
-//   Slots reached, from docs/decomp_spec/vtable_map_techno.md and consistent
-//   with the bytes:
+//   Slots reached, read from the bytes:
 //     +0x084  GetTechnoType()             -> TechnoTypeClass*
 //     +0x184  GetCurrentMission()         -> int   (line 188, HIGH)
 //     +0x274  TransmitMessage(int)        -> int   (line 315, RadioClass)

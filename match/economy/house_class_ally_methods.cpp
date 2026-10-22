@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x4F9A10 / 0x4F9A50 /
-//   0x4F9A90 (Ghidra disasm). Cross-checked vs YRpp HouseClass.h IsAlliedWith
-//   (consult-only; each offset/branch reconfirmed against the disassembly).
+//   0x4F9A90 (Ghidra disasm). Cross-checked vs YRpp IsAlliedWith
+//   (each offset/branch reconfirmed against the disassembly).
 //
 // Translation unit: HouseClass::IsAlliedWith(int / HouseClass* / ObjectClass*).
 // Each tests this->Allies (bitfield dword @0x5788) against (1 << otherIndex),

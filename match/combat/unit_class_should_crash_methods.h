@@ -13,7 +13,7 @@
 //       explicit out pointer (0x74393E, 0x74394C) — and [EDX+0xC8] (0x743A26);
 //     the coordinate triple is read at [EAX+0], [EAX+4], [EAX+8] off the
 //       returned pointer (0x74394F..0x743968).
-//   Names cross-checked against YRpp (consult-only, NO LICENSE); every offset
+//   Names cross-checked against YRpp; every offset
 //   reconfirmed above.
 #ifndef GG_MATCH_COMBAT_UNIT_CLASS_SHOULD_CRASH_METHODS_H
 #define GG_MATCH_COMBAT_UNIT_CLASS_SHOULD_CRASH_METHODS_H

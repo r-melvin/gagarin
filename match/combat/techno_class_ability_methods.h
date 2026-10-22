@@ -9,8 +9,8 @@
 //   Every offset agrees with the committed spines match/_layout/techno_class.h
 //   and match/_layout/techno_type_class.h (the latter cannot be included next
 //   to the former — both define TurretControl — so the two ability tables are
-//   modelled by a local placeholder here). Method name from YRpp TechnoClass.h
-//   (HasAbility @0x70D0D0, consult-only).
+//   modelled by a local placeholder here). Method name from YRpp
+//   (HasAbility @0x70D0D0).
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_ABILITY_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_ABILITY_METHODS_H
 

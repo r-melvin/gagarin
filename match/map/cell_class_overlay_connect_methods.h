@@ -8,8 +8,7 @@
 //   (BuildingClass::Type); RulesClass 0x8871E0 building-type pointers at
 //   +0x86C / +0x870 / +0x874 / +0x878 / +0x87C (GDIGateOne, GDIGateTwo,
 //   NodGateOne, NodGateTwo, WallTower). The overlay indices 2 / 0x1A / 0xF3
-//   are the wall overlays a gate joins. Names cross-checked against YRpp
-//   CellClass.h / RulesClass.h (consult-only; NO LICENSE).
+//   are the wall overlays a gate joins. Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_CELL_CLASS_OVERLAY_CONNECT_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_OVERLAY_CONNECT_METHODS_H
 

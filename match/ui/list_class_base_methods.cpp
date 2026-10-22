@@ -11,7 +11,7 @@
 //   theory was wrong for nine of the ten and the note is retracted -- see the
 //   lever notes on the individual bodies below.
 //
-//   Hand-assembly screen (docs/matching_methodology_and_toolchain.md, batch
+//   Hand-assembly screen (batch
 //   thirty-eight): NONE of these sixteen retail bodies carries the inline-`_asm`
 //   signature, so all of them were compiled from ordinary C++ and converting
 //   our transcriptions was the right call. Evidence, from the retail bytes:

@@ -12,8 +12,7 @@
 //   one-byte type. The `MOV AL,1` / `XOR AL,AL` exits pin the return to a
 //   one-byte bool.
 //
-//   The private-reference seed files this under audio/voc_codec.cpp; that is a grouping
-//   artefact. The function is a Win32 dialog keyboard-navigation helper and has
+//   The function is a Win32 dialog keyboard-navigation helper and has
 //   nothing to do with audio.
 #ifndef GG_MATCH_UI_DIALOG_TAB_FOCUS_METHODS_H
 #define GG_MATCH_UI_DIALOG_TAB_FOCUS_METHODS_H

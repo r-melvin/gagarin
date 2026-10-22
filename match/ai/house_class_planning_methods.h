@@ -5,8 +5,8 @@
 //   `CMP EDI,0xC` (PlanningPaths[12] @0x210), `PUSH 0x40` / `CALL 0x7C8E17`
 //   / `CALL 0x763810` (0x40-byte WaypointPathClass + one-int ctor),
 //   `MOV EAX,[ECX+0x38]` (Waypoints.Count = vector @0x28 + Count @0x10) and
-//   `CALL 0x763980` (GetWaypoint).  Names from YRpp HouseClass.h /
-//   WaypointPathClass.h (consult-only; every offset reconfirmed here).
+//   `CALL 0x763980` (GetWaypoint). Names from YRpp
+//   (every offset reconfirmed here).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PLANNING_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_PLANNING_METHODS_H
 

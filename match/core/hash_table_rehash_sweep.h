@@ -54,7 +54,7 @@
 //   KNOWN LIMITATION -- this file is a staging ground, not a destination. The
 //   TU-partition work established that MSVC6 emits each template
 //   instantiation as a COMDAT into the translation unit that instantiated it.
-//   These instantiations therefore belong to many different original Westwood
+//   These instantiations therefore belong to many different original
 //   translation units, not to one. Grouping them in a single sweep file is
 //   correct for matching bytes now and wrong for reproducing retail's link
 //   order eventually; they will have to be redistributed to their owning TUs

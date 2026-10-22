@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x5301A0 / 0x5B40B0),
-//   cross-checked against YRpp MixFileClass.h / ArrayClasses.h (consult-only,
+//   cross-checked against YRpp (consult-only,
 //   no LICENSE; every offset/slot reconfirmed against the user's binary here).
 //
 // MixFileClass — the engine's mounted .MIX archive. This TU covers the two
@@ -18,7 +18,7 @@
 struct MixFileClass;
 
 // ---------------------------------------------------------------------------
-// DynamicVectorClass<MixFileClass*>  (YRpp ArrayClasses.h layout/vtable order,
+// DynamicVectorClass<MixFileClass*>  (YRpp layout/vtable order,
 // reconfirmed from the inlined AddItem at 0x53020B-0x530277):
 //   +0x00 vtable   +0x04 Items   +0x08 Capacity   +0x0C IsInitialized(bool)
 //   +0x0D IsAllocated(bool)   +0x10 Count   +0x14 CapacityIncrement

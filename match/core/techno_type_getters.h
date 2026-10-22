@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 via the local Ghidra CLI
 //   (member-access disassembly at 0x7177C0 / 0x7177E0 / 0x7178C0). Signatures
-//   cross-checked against YRpp TechnoTypeClass.h (consult-only, no LICENSE;
+//   cross-checked against YRpp (consult-only, no LICENSE;
 //   every offset reconfirmed numerically from the disassembly below).
 //
 // TechnoTypeClass weapon/particle-offset getters. The full TechnoTypeClass

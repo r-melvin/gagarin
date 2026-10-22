@@ -24,10 +24,8 @@ extern "C" int   __cdecl FUN_007C8D20(const char* a, const char* b);
 // Class identity RTTI-confirmed (Tier 1, re-verified independently against
 // the binary): vtable 0x7E3824 -> complete object locator @0x7E3820 ->
 // type descriptor 0x818868 -> name `.?AV?$VectorClass@G@@` (`G` = MSVC's
-// mangling code for `unsigned short`). This corrects
-// re_findings/next_targets_2026-08-07.md:674, which called it
-// `VectorClass<short>` (signed) — the RTTI name is unsigned. See
-// docs/naming_proposals.md #4. Note: the same vtable (0x7E3824) is also
+// mangling code for `unsigned short`). It is not
+// `VectorClass<short>` (signed) — the RTTI name is unsigned. Note: the same vtable (0x7E3824) is also
 // reseated by FUN_0042DBB0/FUN_0042DC00 in buffer_holder_dtor_methods.cpp -
 // those are this same class's own scalar deleting destructors, still modelled
 // there under the generic `BufferHolderDtor` shape; reconciling that naming is

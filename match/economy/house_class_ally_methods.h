@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4F9A10-0x4F9ADE), cross-checked
-//   against YRpp HouseClass.h / AbstractClass.h (consult-only; reconfirmed here).
+//   against YRpp (reconfirmed here).
 //
 // HouseClass::IsAlliedWith overload trio. Only the two members these methods
 // touch are modelled (ArrayIndex@0x30, Allies bitfield dword@0x5788). Other

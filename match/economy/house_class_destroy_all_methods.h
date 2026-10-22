@@ -2,10 +2,9 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets and slots read numerically off the user's retail gamemd.exe v1.001
 //   via the local Ghidra CLI at 0x4FC790. Slot 0x2C (whatAmI) and slot 0x16C
-//   (receiveDamage) are the two the map at docs/decomp_spec/vtable_map_techno.md
-//   records as HIGH confidence; member offsets Health @0x6C, InLimbo @0x81 and
+//   (receiveDamage) are confirmed by their call shapes at this site; member offsets Health @0x6C, InLimbo @0x81 and
 //   TemporalTargetingMe @0x278 are already committed in match/_layout/. Names
-//   cross-checked against YRpp HouseClass.h / ObjectClass.h (consult-only).
+//   cross-checked against YRpp.
 //
 // HouseClass::DestroyAllBuildings @0x4FC790 — walk every techno in the global
 // array and destroy the ones this house owns.
@@ -37,7 +36,7 @@ struct TemporalClass;
 struct TechnoTypeClass;
 struct CaptureManagerClass;
 
-// AbstractType::Building, per YRpp GeneralDefinitions.h; retail compares the
+// AbstractType::Building, per YRpp; retail compares the
 // whatAmI result against 6 at 0x4FC7BE.
 enum { ABSTRACT_TYPE_BUILDING = 6 };
 
@@ -183,8 +182,8 @@ struct TechnoTypeClass
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xCCE);
 
 // CaptureManagerClass — one predicate, reached as
-// `MOV ECX,[EAX+0x2bc]; PUSH ESI; CALL 0x472330` at 0x4FC71E. Neither YRpp nor
-// the seed map binds 0x472330, so it keeps its placeholder name; what it does
+// `MOV ECX,[EAX+0x2bc]; PUSH ESI; CALL 0x472330` at 0x4FC71E. YRpp does not
+// bind 0x472330, so it keeps its placeholder name; what it does
 // is "is this techno one of mine", which is what lets DestroyAll spare a unit
 // that its original owner has since mind-controlled away.
 struct CaptureManagerClass

@@ -9,7 +9,7 @@
 //   -3 +0x900, -4 +0xA34, -5 +0x91C, -6 +0x8E4), each read through Count
 //   +0x10 and vtable slot +0x18 (one pushed index). `this` (ECX) is unused;
 //   YRpp still models the method as a member. Names cross-checked against
-//   YRpp HouseClass.h / RulesClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_PREREQUISITES_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_PREREQUISITES_METHODS_H
 

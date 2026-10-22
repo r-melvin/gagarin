@@ -8,14 +8,10 @@
 //   methods.h (`Cell_004838E0::IsoTileTypeIndex == 0x38`), and the three bodies
 //   here sit in the 0x486xxx CellClass run.
 //
-//   Behaviour claim cross-checked, and it holds: docs/decomp_spec/re_findings/
-//   bridge_endpoint.md lines 133-148 and 387-388 describe 0x00486750 as
-//   `tile_IsBridge`, testing the half-open iso-tile range [0xAA0E28, +0x10),
-//   and 0x00486770 as `tile_IsWoodBridge` over [0xABAD1C, +0x10). Both the
-//   globals and the `+0x10` span are exactly what the disassembly shows, so
-//   this is one of the places the RE corpus paid for itself.
+//   The disassembly shows 0x00486750 testing the half-open iso-tile range
+//   [0xAA0E28, +0x10) and 0x00486770 the range [0xABAD1C, +0x10).
 //
-//   0x00486790 is a third sibling the documents do not mention, found by
+//   0x00486790 is a third sibling, found by
 //   reading on past 0x486770: the same range test against 0x00AA0E24, with no
 //   "-1 means no such tile set" guard.
 //

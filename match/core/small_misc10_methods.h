@@ -3,7 +3,7 @@
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI. Import identified from the IAT
 //   thunk at 0x7E1368 (OLEAUT32 ordinal 2 = SysAllocString). None of these
-//   addresses is bound by YRpp or the seed map.
+//   addresses is bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC10_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC10_METHODS_H
 
@@ -30,7 +30,7 @@ struct Sink_00410230 { char _pad[0xC]; int at0C; };
 // is no provider.
 void __stdcall FUN_00410230(Sink_00410230* sink);
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41ADC0 -> AircraftClass slot 30 (byte-off 0x78).
 // That table is the only table in the image that holds it, so the slot is
@@ -47,7 +47,7 @@ struct AircraftClass_0041ADC0
 };
 GG_STATIC_ASSERT(offsetof(AircraftClass_0041ADC0, unknown_674) == 0x674);
 
-// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep, docs/rtti_sweep.md).
+// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep).
 // 0x429420 and 0x429450 are slots 3 and 4 (byte-off 0x0C, 0x10) of
 // ApplicationClass's own vtable 0x7E36D4, and appear in no other table --
 // ApplicationClass : IApplication : IUnknown, and the two interfaces carry no

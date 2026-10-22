@@ -12,7 +12,7 @@
 //   (loaded into EBX, called twice), IAT 0x7E11C0 SetFilePointer (loaded
 //   into EDI, called twice from the two inlined Raw_Seek(0, SEEK_CUR)).
 //   Same class run as match/platform/raw_file_class_read_bytes_methods.h
-//   (re-declared here so the TU stands alone); YRpp CCFileClass.h consulted
+//   (re-declared here so the TU stands alone); YRpp consulted
 //   for the method name only. This is the raw-file layer exactly as
 //   ReadBytes was: the seek is done straight on the handle, not via slot 10.
 #ifndef GG_MATCH_PLATFORM_RAW_FILE_CLASS_WRITE_BYTES_METHODS_H

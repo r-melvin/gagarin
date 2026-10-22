@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/bodies derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   HouseClass.h (consult-only, no LICENSE; reconfirmed numerically here).
+//   (reconfirmed numerically here).
 //
 // Three tiny accessors grouped by subsystem (economy):
 //   HouseClass::AcquiredThreatNode            @0x509130  (__thiscall)

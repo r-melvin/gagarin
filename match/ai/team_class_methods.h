@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6EC3A0), cross-checked
-//   against YRpp TeamClass.h / FootClass.h (consult-only, no LICENSE; every
+//   against YRpp (every
 //   offset/slot reconfirmed below from the disassembly).
 //
 // TeamClass — an AI strike team. Only the members ScanLimit touches are

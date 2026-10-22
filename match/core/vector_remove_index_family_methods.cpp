@@ -11,8 +11,8 @@
 
 // Remove the element at `index` by shifting the tail down one slot. The count
 // is decremented first, so the shift runs while the index is still below the
-// new count. Recovered as DynamicVectorClass<T>::RemoveItem per YRpp
-// ArrayClasses.h.
+// new count. Recovered as DynamicVectorClass<T>::RemoveItem (name
+// cross-checked against YRpp).
 #define GG_REMOVE_VECTOR_BODY(addr)                                          \
     bool RemoveVector_##addr::RemoveItem(int index)                         \
     {                                                                       \

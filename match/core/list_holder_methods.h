@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x402C00 / 0x402C20 / 0x4031F0 / 0x4035B0 / 0x4035D0. None is
-//   bound by YRpp or the seed map.
+//   bound by YRpp.
 //
 // Holders that cache a list node and refresh it through the validity filters in
 // intrusive_list_methods.h. Three of these (0x402C20, 0x4031F0, 0x4035D0) are

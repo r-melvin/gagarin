@@ -8,8 +8,7 @@
 //   `[ESI+0x8C]` (OnBridge byte); the map object 0x87F7E8 with
 //   GetMovementZoneType 0x56D230 (cell, zone, bridge) and NearByLocation
 //   0x56DC20 (fifteen pushed arguments). The hidden result pointer is the
-//   first stack argument (RET 8). Names cross-checked against YRpp
-//   TechnoClass.h / MapClass.h (consult-only; NO LICENSE).
+//   first stack argument (RET 8). Names cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_NEARBY_LOCATION_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_NEARBY_LOCATION_METHODS_H
 

@@ -71,7 +71,7 @@ public:
     TerrainClass(TerrainTypeClass* type, const MapObjCell* cell);
     // FUNCTION: GAMEMD 0x71BDF0 - the default constructor (the allocation at 0x6BF3BC).
     TerrainClass();
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
     TerrainClass(const MapObjNoInit& noInit) : MapObjClassView(noInit), TerrainStageView(noInit) {}
 

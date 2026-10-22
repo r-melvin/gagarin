@@ -11,7 +11,7 @@
 //   owner at [ESI+0x24], the regen rate at [ESI+0x30], the node timer at
 //   node+0x08 and the node dword at node+0x14, and on the unit the int at
 //   [EDX+0x6C] and the byte at [EDX+0x6CA]. Names cross-checked against YRpp
-//   SpawnManagerClass.h / Kamikaze.h (consult-only; NO LICENSE — every offset
+//   (every offset
 //   reconfirmed here).
 #ifndef GG_MATCH_COMBAT_SPAWN_MANAGER_CLASS_RESET_METHODS_H
 #define GG_MATCH_COMBAT_SPAWN_MANAGER_CLASS_RESET_METHODS_H

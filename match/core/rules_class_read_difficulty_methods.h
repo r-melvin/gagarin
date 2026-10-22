@@ -11,7 +11,7 @@
 //   +0x30 BuildTime (0x825464), +0x38 RepairDelay (0x83B3EC), +0x40
 //   BuildDelay (0x83B3E0); bools at +0x48 BuildSlowdown (0x83B3D0), +0x49
 //   DestroyWalls (0x83B3C0), +0x4A ContentScan (0x83B3B4). Names
-//   cross-checked against YRpp RulesClass.h / GeneralStructures.h
+//   cross-checked against YRpp
 //   (consult-only; NO LICENSE).
 #ifndef GG_MATCH_CORE_RULES_CLASS_READ_DIFFICULTY_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READ_DIFFICULTY_METHODS_H

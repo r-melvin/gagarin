@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Five more CCINIClass accessors the Ghidra function list does not know
 //   about, found by sweeping the 0x47465A..0x474810 address gap as raw
-//   bytes behind its 0x90 pads. The private-reference seed names none of them.
+//   bytes behind its 0x90 pads.
 //   They sit immediately below the already-matched fixed-point reader at
 //   0x474620 and share its INI plumbing.
 //

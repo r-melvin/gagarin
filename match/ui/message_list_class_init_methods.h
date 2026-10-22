@@ -15,7 +15,7 @@
 //   `[+0x2B0]`/`[+0x2B4]` edit positions, `word [+0x2B8]` cursor,
 //   `[+0x2BC]`/`[+0x2C0]` OverflowStart/End clamped against MaxCharacters.
 //   Eleven stack arguments (`RET 0x2C`); arg 5 is never read. Names are
-//   YRpp's MessageListClass.h (consult-only, no LICENSE); layout agrees with
+//   YRpp's (consult-only, no LICENSE); layout agrees with
 //   match/ui/message_list_class_draw_methods.h.
 #ifndef GG_MATCH_UI_MESSAGE_LIST_CLASS_INIT_METHODS_H
 #define GG_MATCH_UI_MESSAGE_LIST_CLASS_INIT_METHODS_H

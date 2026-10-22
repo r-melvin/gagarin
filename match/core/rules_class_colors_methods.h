@@ -11,7 +11,7 @@
 //   0x626AB0 (__fastcall name, colour) and twice to ColorScheme::FindByName
 //   0x68C9C0 (__fastcall name, colour, 0x886380, 0x885780, shade) with the
 //   shades 1 and 0x35. `this` is never touched (RET 4 with ECX unused).
-//   Names cross-checked against YRpp RulesClass.h / CCINIClass.h
+//   Names cross-checked against YRpp
 //   (consult-only; every slot reconfirmed above).
 #ifndef GG_MATCH_CORE_RULES_CLASS_COLORS_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_COLORS_METHODS_H

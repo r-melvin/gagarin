@@ -13,7 +13,7 @@
 //   Imports: IAT 0x7E1120 KERNEL32 GetFileSize, IAT 0x7E1200 GetLastError.
 //   The member run mirrors the already-confirmed layout in
 //   match/platform/ccfile_class.h (not edited; re-declared here so the TU
-//   stands alone); YRpp CCFileClass.h consulted for names only.
+//   stands alone); YRpp consulted for names only.
 #ifndef GG_MATCH_PLATFORM_RAW_FILE_CLASS_SIZE_METHODS_H
 #define GG_MATCH_PLATFORM_RAW_FILE_CLASS_SIZE_METHODS_H
 

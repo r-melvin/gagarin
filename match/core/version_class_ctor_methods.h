@@ -6,8 +6,8 @@
 //   `[EAX+0xA]`, the byte stores `[EAX+0xC]`, `[EAX+0x2A]` and the four-bit
 //   clear `AND EDX,0xFFFFFFF0` on `[EAX+0x44]`. Field meaning cross-read from
 //   Version_Number at 0x74F760 (masks 1/2/4/8 on +0x44; the 16-byte text read
-//   into +0x2A terminated at +0x39). YRpp VersionClass.h consulted for the
-//   class and method names only (consult-only; nothing copied).
+//   into +0x2A terminated at +0x39). Class and method names cross-checked
+//   against YRpp only (nothing copied).
 //
 // VersionClass — the network-protocol version record. The constructor leaves
 // every cached value unset and clears all four "computed" bits so the getters

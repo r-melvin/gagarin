@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Table bases, the four sentinel globals and both call targets are read
 //   numerically off the user's retail gamemd.exe v1.001 via the local Ghidra
-//   CLI at 0x46F810 and 0x46F880. Neither entry point is bound by YRpp or the
-//   seed map.
+//   CLI at 0x46F810 and 0x46F880. Neither entry point is bound by YRpp.
 //
 // Two index-keyed lookups over the same object array at 0xA8DA90. Each asks the
 // object a yes/no question; on yes it answers from its own parallel table

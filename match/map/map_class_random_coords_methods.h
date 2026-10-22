@@ -10,7 +10,7 @@
 //   table sin 0x4CACB0 and cos 0x4CAD00 each taking the angle as a pushed
 //   double, __ftol 0x7C5F00, and the three-int coordinate constructor
 //   0x41C230 building the result in the frame. Names cross-checked against
-//   YRpp MapClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_MAP_MAP_CLASS_RANDOM_COORDS_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_RANDOM_COORDS_METHODS_H
 

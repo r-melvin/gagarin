@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm) at the
 //   address annotated below. Layout/vtable cross-checked against YRpp
-//   CCFileClass.h (consult-only; reconfirmed from the disasm).
+//   (consult-only; reconfirmed from the disasm).
 //
 // Translation unit: RawFileClass::Close (the raw-file handle teardown).
 //

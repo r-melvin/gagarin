@@ -8,8 +8,8 @@
 //   the coordinate slot `CALL [EAX+0x48]` with one pushed out-pointer, the
 //   map singleton as the immediate `MOV ECX,0x87F7E8` feeding CALL 0x5657A0
 //   (MapClass::GetCellAt), and the destination slot `CALL [EDI+0x480]` with
-//   (cell, 1) pushed. Names from YRpp FootClass.h / MapClass.h
-//   (consult-only, NO LICENSE); every offset re-derived here.
+//   (cell, 1) pushed. Names from YRpp;
+//   every offset re-derived here.
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_WEED_METHODS_H
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_MOVE_TO_WEED_METHODS_H
 

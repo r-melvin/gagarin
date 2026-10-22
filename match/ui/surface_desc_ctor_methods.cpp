@@ -6,7 +6,7 @@
 //
 // Class identity RTTI-confirmed directly against the user's binary (Tier 1):
 // vtable 0x7E3A78 -> complete object locator @0x7E3A74 -> type descriptor
-// 0x818B68 -> name `.?AVBitFont@@`. See docs/naming_proposals.md #1.
+// 0x818B68 -> name `.?AVBitFont@@`.
 
 #include "surface_desc_ctor_methods.h"
 

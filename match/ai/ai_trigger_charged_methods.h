@@ -13,8 +13,7 @@
 //   Globals: Unsorted::CurrentFrame 0xA8ED84, RulesClass::Instance 0x8871E0,
 //   the 1.0f literal at 0x7E2AC8.  Only the first stack argument is read; the
 //   `RET 0x8` fixes a second (unused) one.  Names cross-checked against YRpp
-//   AITriggerTypeClass.h / SuperClass.h / SuperWeaponTypeClass.h /
-//   RulesClass.h (consult-only; every offset reconfirmed above).  The
+//   (every offset reconfirmed above). The
 //   SuperClass / CDTimerClass member run agrees with
 //   match/combat/super_class_charge_methods.h (not edited; re-derived here so
 //   the TU stands alone).

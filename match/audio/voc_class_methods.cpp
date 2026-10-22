@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm). Name cross-checked
-//   against YRpp VocClass.h (consult-only; reconfirmed from the disassembly).
+//   against YRpp (reconfirmed from the disassembly).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x007514D0  VocClass::FindIndex  (__fastcall, static)

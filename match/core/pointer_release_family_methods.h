@@ -5,7 +5,7 @@
 //   at +0 and forget it. All four are byte-identical apart from the call
 //   relocation, which resolves to the CRT free in every one.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
+// Reviewed in the batch forty-one pass
 // (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
 // functions. Converting would cost nothing in bytes — a member spelled
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in

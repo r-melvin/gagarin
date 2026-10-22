@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, vtable addresses and the global registry address were read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
-//   CLI at 0x49A200 and its 36 neighbours. No YRpp or EA-GPL reference was
+//   CLI at 0x49A200 and its 36 neighbours. No YRpp name was
 //   consulted; the bodies carry no name in the binary, so they keep their
 //   FUN_ placeholder names.
 //

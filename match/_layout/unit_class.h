@@ -14,7 +14,7 @@
 //   COM interface subobjects sit at +4, +8 and +0xC exactly as the ctor stores
 //   them.
 //
-//   Members cross-read against YRpp UnitClass.h; all 15 named members it
+//   Members cross-read against YRpp; all 15 named members it
 //   claims were independently confirmed here. No disagreement found.
 //
 //   CAUTION for future scans: UnitClass::TryToDeploy @0x007393C0 contains

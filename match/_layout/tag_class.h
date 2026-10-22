@@ -6,7 +6,7 @@
 //   the layout is pinned below with a sizeof assertion.
 //   RTTI: primary vtable 0x7F44E0 -> COL 0x80BBA0 -> TypeDescriptor
 //   0x8249E8, whose name at 0x8249F0 is ".?AVTagClass@@".
-//   Cross-read against YRpp TagClass.h: 6 named members claimed, 6 confirmed.
+//   Cross-read against YRpp: 6 named members claimed, 6 confirmed.
 //   No disagreement found.
 //
 // TagClass — a live map tag binding triggers to objects. Derives AbstractClass.

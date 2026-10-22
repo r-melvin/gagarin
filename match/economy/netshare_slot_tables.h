@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every offset and address below was read numerically off the user's retail
-//   gamemd.exe v1.001 with the local Ghidra CLI over 0x5EA8E0..0x5EAEDA. The
-//   private-reference seed (economy/mp_lobby_player_slots.cpp) named the cluster and
-//   nothing else: it carries only `FUN_` placeholders here, so every name is
-//   this tree's own.
+//   gamemd.exe v1.001 with the local Ghidra CLI over 0x5EA8E0..0x5EAEDA.
+//   Every name is this tree's own.
 //
 //   This is the second half of netshare.cpp (see netshare_slot_nodes.h for the
 //   first): the three per-slot choice tables that sit beside the slot array,

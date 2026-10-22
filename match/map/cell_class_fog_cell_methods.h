@@ -23,8 +23,7 @@
 //       pointer, already confirmed in match/combat/building_class_fog_methods.h);
 //       `MOV AL,byte ptr [ESI+0x6ED]` compared with 0xF.
 //   0x5657A0 MapClass::GetCellAt, 0x457A10 BuildingClass::CheckFog and
-//   0x457AA0 are declared only. Names cross-checked against YRpp CellClass.h /
-//   BuildingClass.h (consult-only, NO LICENSE).
+//   0x457AA0 are declared only. Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_CELL_CLASS_FOG_CELL_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_FOG_CELL_METHODS_H
 

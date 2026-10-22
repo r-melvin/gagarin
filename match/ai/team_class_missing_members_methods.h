@@ -9,7 +9,7 @@
 //   `[EDI+0x5D8]`; on the output vector (ESI) the inlined AddItem reading
 //   +0x08 / +0x0D / +0x14 / +0x10 / +0x04 and calling slot +0x08 (SetCapacity),
 //   the virtual `[EAX+0x10]` (FindItemIndex, address of the item pushed) and
-//   the inlined RemoveItem. Names are YRpp's (consult-only, no LICENSE); every
+//   the inlined RemoveItem. Names are YRpp's; every
 //   offset reconfirmed here and against match/ai/team_type_class_taskforce_
 //   methods.h (TaskForce +0xE4, CountEntries +0x9C, Entries +0xA4) and
 //   match/_layout/foot_class.h (NextTeamMember +0x5D8).

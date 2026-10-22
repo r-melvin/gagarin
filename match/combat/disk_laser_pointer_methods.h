@@ -11,7 +11,7 @@
 //   as the pending-delete list in match/core/object_class_uninit_methods.h
 //   and match/ai/tag_class_destroy_methods.h. Names for the method and the
 //   members (DiskLaserClass::PointerGotInvalid, Owner, Target, unknown_30)
-//   from YRpp DiskLaserClass.h (consult-only; names only).
+//   from YRpp (names only).
 //
 // DiskLaserClass::PointerGotInvalid -- when either end of the laser is the
 // object being retired, drop the +0x30 handle and queue the laser itself on

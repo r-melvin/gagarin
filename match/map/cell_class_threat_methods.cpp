@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x481870).
-//   Names cross-checked against YRpp CellClass.h / HouseClass.h (consult-only,
-//   no LICENSE; every offset/address reconfirmed against the binary).
+//   Names cross-checked against YRpp
+//   (every offset/address reconfirmed against the binary).
 //
 // reccmp annotation:
 //   FUNCTION: GAMEMD 0x481870   CellClass::UpdateThreat              (__thiscall)

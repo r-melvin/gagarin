@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x408E00 / 0x40E4A0 / 0x41C210 / 0x426590. None is
-//   bound by YRpp or the seed map.
+//   bound by YRpp.
 //
 // Four scalar deleting destructors and one teardown.
 //
@@ -42,14 +42,14 @@ GG_STATIC_ASSERT(offsetof(Obj_00408E00, unknown_10) == 0x10);
 // The flag argument is declared unsigned int — four bytes of stack, matching
 // `RET 4` — even though retail only ever tests its low byte.
 struct Obj_0040E400 { void* FUN_0040E4A0(unsigned int flags); };  // FUNCTION: GAMEMD 0x40E4A0
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41C210 -> AircraftClass slot 8 (byte-off 0x20).
 // No other table in the image holds it, so the slot is declared on
 // AircraftClass rather than inherited. The METHOD name is still unknown; only the
 // class is proven, so the `FUN_<addr>` member name stays a placeholder.
 struct AircraftClass_0041C200b { void* FUN_0041C210(unsigned int flags); }; // FUNCTION: GAMEMD 0x41C210
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AnimClass's own vtable is 0x7E3354.
 //   0x426590 -> AnimClass slot 8 (byte-off 0x20).
 // No other table in the image holds it, so the slot is declared on

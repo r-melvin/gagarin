@@ -11,7 +11,7 @@
 //   `[EDI+0x11C]`, `[EDI+0x38]` (IsoTileTypeIndex) bounded by the
 //   DynamicVectorClass at 0xA8ED28 (Items +4 = 0xA8ED2C, Count +0x10 =
 //   0xA8ED38) and `[EDX+0x306]` (IsometricTileTypeClass byte). Names are
-//   cross-checked against YRpp (consult-only) and used as names only.
+//   cross-checked against YRpp and used as names only.
 #ifndef GG_MATCH_MAP_CELL_CLASS_TIBERIUM_GERMINATE_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_TIBERIUM_GERMINATE_METHODS_H
 

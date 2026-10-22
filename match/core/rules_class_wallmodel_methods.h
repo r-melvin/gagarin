@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, globals and offsets read off the user's retail gamemd.exe v1.001 via
-//   the local Ghidra CLI at 0x66D1F0 (derivation in the RE dossier,
-//   docs/decomp_spec/re_findings/next_targets_2026-08-07.md §12).
+//   the local Ghidra CLI at 0x66D1F0.
 //
 //   0x007F0C90  char* section-name global -> "WallModel" (string at 0x839E64)
 //   0x0083B39C  "AlliedWallTransparency"

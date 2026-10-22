@@ -7,8 +7,8 @@
 //   CapacityIncrement `[0x89DE2C]`), `[ESI+0xAC]` (BulletClass::Type) and
 //   `[ECX+0x2E4]` (BulletTypeClass::SpawnDelay, immediately before the
 //   ScaledSpawnDelay pinned at 0x2E8 by match/combat/bullet_type_class.h).
-//   Names cross-checked against the consult-only YRpp BulletClass.h /
-//   BulletTypeClass.h / ArrayClasses.h (names only; no text copied).
+//   Names cross-checked against YRpp
+//   (names only; no text copied).
 #ifndef GG_MATCH_COMBAT_BULLET_CLASS_SCALABLE_METHODS_H
 #define GG_MATCH_COMBAT_BULLET_CLASS_SCALABLE_METHODS_H
 

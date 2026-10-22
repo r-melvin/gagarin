@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm). Signatures
-//   cross-checked against YRpp MapClass.h (consult-only):
+//   cross-checked against YRpp:
 //     static void __fastcall MapClass::UnselectAll()
 //     static LandType __fastcall MapClass::GetLandTypeFromName(const char* name)
 #ifndef GG_MATCH_MAP_MAP_CLASS_METHODS_H

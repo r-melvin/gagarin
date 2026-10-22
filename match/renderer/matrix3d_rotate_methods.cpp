@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5AEF60 / 0x5AF080 /
-//   0x5AF1A0. Names from YRpp Matrix3D.h (consult-only).
+//   0x5AF1A0. Names from YRpp (consult-only).
 
 #include "matrix3d_rotate_methods.h"
 

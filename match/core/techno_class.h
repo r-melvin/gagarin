@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access + virtual-call disassembly). Names
-//   cross-checked against YRpp TechnoClass.h / ObjectClass.h / TechnoTypeClass.h
+//   cross-checked against YRpp
 //   (consult-only, no LICENSE; every offset reconfirmed numerically below).
 //
 // This TU matches the passenger-list helpers (PassengersClass, the embedded
@@ -66,7 +66,7 @@ public:
 
 // ---------------------------------------------------------------------------
 // PassengersClass — { int NumPassengers; FootClass* FirstPassenger; } singly
-// linked through FootClass::NextObject.  (YRpp TechnoClass.h)
+// linked through FootClass::NextObject.
 // ---------------------------------------------------------------------------
 class PassengersClass
 {

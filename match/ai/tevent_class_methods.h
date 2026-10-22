@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x71F950 / 0x71F9C0), cross-
-//   checked against YRpp TEventClass.h / AbstractClass.h (consult-only, no
-//   LICENSE; the one touched offset reconfirmed below).
+//   checked against YRpp
+//   (the one touched offset reconfirmed below).
 //
 // TEventClass — a single trigger-event condition slot.  GetStateA / GetStateB
 // are pure switch lookups on EventKind (the TriggerEvent enum) at +0x2c that

@@ -4,7 +4,7 @@
 // GX adds allocation exception cleanup absent from native GetInstance.
 //   Bodies reconstructed from the user's retail gamemd.exe v1.001 disassembly
 //   (Ghidra CLI at 0x726350 + 0x726630), cross-checked against YRpp
-//   TriggerClass.h (consult-only). Every offset reconfirmed numerically in the
+//   Every offset reconfirmed numerically in the
 //   companion header.
 //
 //   FUNCTION: GAMEMD 0x726350  TriggerClass::HasGlobalSetOrClearedEvent (__thiscall)

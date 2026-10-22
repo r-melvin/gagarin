@@ -12,8 +12,7 @@
 //   increment, `[0xABF394]` items, and its slot +0x08 is reached through
 //   `MOV EAX,[0xABF390]; CALL [EAX+8]` with `MOV ECX,0xABF390`. `this` is
 //   never touched (RET 4 with ECX unused). Names cross-checked against YRpp
-//   RulesClass::Read_Movies / CCINIClass.h / MovieInfo::Array (consult-only,
-//   no LICENSE; every slot reconfirmed above).
+//   (RulesClass::Read_Movies, MovieInfo::Array; every slot reconfirmed above).
 #ifndef GG_MATCH_CORE_RULES_CLASS_READ_MOVIES_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_READ_MOVIES_METHODS_H
 

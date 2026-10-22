@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, vtable slots and globals read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at the addresses below.
-//   None is bound by YRpp or the seed map, so placeholder names are kept.
+//   None is bound by YRpp, so placeholder names are kept.
 //
 // A small __thiscall method with its own vtable-shaped class: the dummy `vt_XXX` slots exist to place the one
 // or two slots actually called at the right displacement, and carry no claim

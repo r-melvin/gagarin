@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6F1F30 / 0x6F1F70),
-//   cross-checked against YRpp TeamTypeClass.h / TeamClass.h (consult-only, no
-//   LICENSE; every offset/global/call target reconfirmed numerically below).
+//   cross-checked against YRpp
+//   (every offset/global/call target reconfirmed numerically below).
 //
 // TeamTypeClass instance-enumeration helpers.  Neither method dereferences any
 // TeamTypeClass member: `this` is used only as a pointer-identity key, matched

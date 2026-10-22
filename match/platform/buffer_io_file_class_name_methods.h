@@ -11,7 +11,7 @@
 //     RawFileClass::SetFileName      0x65CAC0 (CALL @0x431EF2)
 //   The member run mirrors the already-confirmed layout in
 //   match/platform/ccfile_class.h (not edited; re-declared here so the TU
-//   stands alone); YRpp CCFileClass.h consulted for names only.
+//   stands alone); YRpp consulted for names only.
 #ifndef GG_MATCH_PLATFORM_BUFFER_IO_FILE_CLASS_NAME_METHODS_H
 #define GG_MATCH_PLATFORM_BUFFER_IO_FILE_CLASS_NAME_METHODS_H
 

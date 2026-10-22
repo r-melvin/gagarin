@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x438A00: `CMP [ECX+0x30],1` and `MOV EDX,[ECX+0x34]`.
-//   Name and member identities cross-checked against YRpp BombClass.h
-//   (consult-only, no LICENSE); the AbstractClass base size of 0x24 is the
+//   Name and member identities cross-checked against YRpp
+//   the AbstractClass base size of 0x24 is the
 //   committed value in match/_layout/abstract_class.h, which places YRpp's
 //   DeathBomb at +0x30 and PlantingFrame at +0x34 exactly where retail reads.
 //

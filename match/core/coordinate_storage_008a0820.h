@@ -2,8 +2,8 @@
 // Provenance: pinned retail instruction operands at 0x4B5A50 and DropPod
 //             uses at 0x4B5AB0 / 0x4B6070.
 // Address-scoped view of the three adjacent dwords at 0x008A0820. This records
-// their demonstrated coordinate use; it does not assert Westwood's original
-// aggregate type or name.
+// their demonstrated coordinate use; it does not assert an original aggregate
+// type or name.
 #ifndef GG_MATCH_CORE_COORDINATE_STORAGE_008A0820_H
 #define GG_MATCH_CORE_COORDINATE_STORAGE_008A0820_H
 

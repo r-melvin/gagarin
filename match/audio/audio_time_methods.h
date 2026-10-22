@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and the global address read off the user's retail gamemd.exe v1.001
 //   via the local Ghidra CLI at 0x4093B0. Name cross-checked against YRpp
-//   (`Audio::GetTime`, consult-only, no LICENSE).
+//   (`Audio::GetTime`).
 //
 // The audio clock is indirected through a hook pointer so the sound backend can
 // supply its own timebase; with no backend installed the engine reports 0.

@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 over
 //   0x5EA8E0..0x5EAEDA. Layout evidence is documented in
-//   netshare_slot_tables.h. The seed carries only FUN_ placeholders for this
-//   run, so it contributed the grouping and nothing more.
+//   netshare_slot_tables.h.
 //
 //   The shared shape below — AI slots answer from the table, the four
 //   non-playing singletons answer -2, and anything else is asked directly —

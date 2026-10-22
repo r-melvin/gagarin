@@ -11,7 +11,7 @@
 //   0x752700 (VoxClass::Play, __fastcall: ECX=name, EDX=-1, pushed -1) and
 //   0x509140 (HouseClass::Update_FactoriesQueues, __thiscall, three pushed
 //   args). Names cross-checked against YRpp BuildingClass::GoOffline /
-//   HouseClass.h / BuildingTypeClass.h and the committed spines
+//   and the committed spines
 //   match/_layout/object_class.h (NeedsRedraw @0x80), techno_class.h (Owner
 //   @0x21C), techno_type_class.h (Naval @0xCCE), building_type_class_layout.h
 //   (Factory @0xEB8, PowerDrain @0xEE4) and match/economy/

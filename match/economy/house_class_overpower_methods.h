@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x4F9AF0 (CanOverpower)
 //   and 0x50C8C0 (Cheer), via the local Ghidra CLI. Cross-checked vs YRpp
-//   HouseClass.h / TechnoClass.h / AbstractClass.h (consult-only; every
+//   (every
 //   offset, vtable slot and global address reconfirmed against the disasm).
 //
 // Only the members/slots these two methods touch are modelled:

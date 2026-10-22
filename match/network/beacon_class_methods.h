@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4308B0), cross-checked against
-//   YRpp BeaconClass.h / HouseClass.h (consult-only; reconfirmed numerically
+//   YRpp (reconfirmed numerically
 //   from the disassembly here).
 //
 // BeaconClass — a single map/radar beacon dropped by a player. VisibleToPlayer

@@ -26,7 +26,7 @@
 //       Timer.StartTime 0x628, Timer.TimeLeft 0x630, Rate 0x634, Step 0x638(=1)
 //       — the exact StageClass shape already proven in techno_class.h.
 //
-//   DISAGREEMENTS / gaps vs YRpp BuildingClass.h:
+//   DISAGREEMENTS / gaps vs YRpp:
 //     * YRpp annotates the 0x5E8..0x5F8 region "5E8 - 5F8 ????????" and is
 //       unsure where Upgrades[3] sits. The binary settles it: the ctor stores
 //       the same value to 0x5EC, 0x5F0 and 0x5F4 in one run

@@ -10,7 +10,7 @@
 //   [ESP+0x14] to +4, the duration to +8); the unit's slot `[EAX+0xF8]`
 //   (no arguments); the kamikaze manager 0xABC5F8 with 0x54E590 (one pushed
 //   unit) and 0x54E3B0 (pushed target, pushed unit). Names cross-checked
-//   against YRpp SpawnManagerClass.h / Kamikaze.h (consult-only; NO LICENSE
+//   against YRpp (
 //   — every offset reconfirmed here) and the sibling
 //   match/combat/spawn_manager_class_reset_methods.h.
 #ifndef GG_MATCH_COMBAT_SPAWN_MANAGER_CLASS_KILL_NODES_METHODS_H

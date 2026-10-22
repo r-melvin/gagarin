@@ -6,11 +6,10 @@
 //   byte is [EAX+0x2A9] and its 0x31-byte Name at EAX+0x64 (the `REP MOVSD`
 //   of 12 dwords plus `MOVSB` into a 0x34-byte argument block ahead of CALL
 //   0x4068E0 with the string 0x833490). TiberiumClass::Array.Items at
-//   0xB0F4EC and .Count at 0xB0F4F8; per tiberium Image [EAX+0xE0] whose
+//   0xB0F4EC and.Count at 0xB0F4F8; per tiberium Image [EAX+0xE0] whose
 //   ArrayIndex is [EDX+0x294], NumImages [EAX+0xE8], NumSlopes [EAX+0xEC]
 //   and the returned ArrayIndex [EAX+0x98]. Names cross-checked against YRpp
-//   OverlayClass.h / OverlayTypeClass.h / TiberiumClass.h (consult-only; NO
-//   LICENSE; every offset reconfirmed above); the two counts are named
+//   (every offset reconfirmed above); the two counts are named
 //   positionally after YRpp's member run.
 #ifndef GG_MATCH_MAP_OVERLAY_CLASS_TIBERIUM_TYPE_METHODS_H
 #define GG_MATCH_MAP_OVERLAY_CLASS_TIBERIUM_TYPE_METHODS_H

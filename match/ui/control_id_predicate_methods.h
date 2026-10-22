@@ -7,17 +7,14 @@
 //
 //   The two differ in return width, and the exit instruction is the only place
 //   that says so: 0x602AE0 ends `MOV EAX,1` / `XOR EAX,EAX`, a full-dword
-//   result, while 0x601360 ends `MOV AL,1` / `XOR AL,AL`, a one-byte bool. The
-//   private-reference seed types both as the same thing.
+//   result, while 0x601360 ends `MOV AL,1` / `XOR AL,AL`, a one-byte bool.
 //
 //   The body is a flat chain of `CMP ECX,imm32; JZ` in source order, with no
 //   jump table and no binary search, so the source is a single disjunction of
 //   equality tests rather than a switch. The eighteen accepted identifiers, in
 //   retail's own order, are the constant list below.
 //
-//   The private-reference seed files this under audio/voc_codec.cpp as
-//   `isAudioEffectEnabled`; the grouping is right and the name is a guess —
-//   nothing in the body touches audio state, so the placeholder name is kept.
+//   Nothing in the body touches audio state; the placeholder name is kept.
 #ifndef GG_MATCH_UI_CONTROL_ID_PREDICATE_METHODS_H
 #define GG_MATCH_UI_CONTROL_ID_PREDICATE_METHODS_H
 

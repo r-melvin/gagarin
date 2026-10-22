@@ -11,11 +11,11 @@
 //   @0x5E0 (=-1), Locomotor @0x674, unknown_point3d_678 @0x678, TubeIndex @0x684
 //   (=0xFF), ParalysisTimer @0x6A0, FrozenStill @0x6B6 (=1), and the four COM
 //   vptrs written late (PTR_FUN_007e8c94 et al). Cross-checked vs YRpp
-//   FootClass.h (which static_asserts sizeof==0x6C0).
+//   (which static_asserts sizeof==0x6C0).
 //
 //   NOTE: the binary places MoveSoundAudioController at 0x544 (ctor's
 //   FUN_00405BE0 site), so there is an extra 4-byte slot at 0x540 that YRpp's
-//   FootClass.h does not enumerate (YRpp lists only IsMoveSoundPlaying +
+//   does not enumerate (YRpp lists only IsMoveSoundPlaying +
 //   MoveSoundDelay before it). We follow the binary: a byte-zeroed slot exists
 //   at 0x53C and a dword slot at 0x540, with the AudioController at 0x544.
 //

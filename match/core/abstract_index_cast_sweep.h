@@ -4,7 +4,6 @@
 //   read numerically off the user's own retail gamemd.exe v1.001 with the local
 //   Ghidra CLI (disasm at 0x6E6BB0 and its seventeen siblings, memory read at
 //   0xB0E840 / 0xB78828 and at each `.?AV...@@` descriptor). No YRpp binding.
-// Reference: EA RA1 GPLv3 IndexClass - shape and naming only, no verbatim copy.
 //
 // The 204-byte "look the abstract object up by ID, then dynamic_cast it" family.
 //

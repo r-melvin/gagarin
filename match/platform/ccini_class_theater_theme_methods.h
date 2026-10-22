@@ -8,18 +8,15 @@
 //   (ReadString 0x528A10, WriteString 0x528660, "" at 0x889F64) is taken
 //   from that file's confirmed conventions rather than re-derived.
 //
-//   Table identities were confirmed by reading the tables themselves, not
-//   taken from the seed: 0x7E1B60 holds char* "North"/"East"/"South"/"Air"
+//   Table identities were confirmed by reading the tables themselves:
+//   0x7E1B60 holds char* "North"/"East"/"South"/"Air"
 //   (the map-edge names) and 0x7E1B78 is a 0x70-stride record array whose
 //   first field is the inline name "TEMPERATE" (the theaters). The theme
 //   object at 0x00A83D10 is reached as a receiver in ECX by both 0x720940
 //   and 0x721210, so it is a real object, not a table.
 //
-//   The private-reference seed (consult-only, no LICENSE) named this cluster
-//   readTheater/writeTheaterByIndex/readTheme/writeThemeByIndex/readEdge/
-//   writeEdgeByIndex/readPowerup; its names are shifted by one across the
-//   family, so only the three confirmed from table contents are used and
-//   the rest keep Ghidra placeholders.
+//   Only the three names confirmed from table contents are used; the rest
+//   keep Ghidra placeholders.
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_THEATER_THEME_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_THEATER_THEME_METHODS_H
 

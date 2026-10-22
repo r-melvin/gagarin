@@ -7,7 +7,7 @@
 //   `[ECX+0x38]` (Production.Rate), the `LEA EDI,[ECX+0x2C]` timer base with
 //   `[EDI]`/`[EDI+4]`/`[EDI+8]` stores (Production.Timer), and the global
 //   `[0x00A8ED84]` (Unsorted::CurrentFrame). Names cross-checked against the
-//   consult-only YRpp FactoryClass.h / StageClass.h (no text copied); the
+//   YRpp (no text copied); the
 //   binding agrees with match/economy/factory_class_methods.h and
 //   factory_class_more_methods.h, re-derived here so the TU is standalone.
 #ifndef GG_MATCH_ECONOMY_FACTORY_CLASS_COMPLETED_METHODS_H

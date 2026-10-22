@@ -3,8 +3,8 @@
 //   Every vtable constant and member displacement below read numerically off
 //   the user's retail gamemd.exe v1.001 with the local Ghidra CLI, from the
 //   `MOV dword ptr [EAX],imm32` and `MOV [EAX+n],reg` stores of the function at
-//   each annotated address. None of these classes is bound by YRpp or the seed
-//   map, so all keep Ghidra placeholder names.
+//   each annotated address. None of these classes is bound by YRpp,
+//   so all keep Ghidra placeholder names.
 //
 // Shape: constructors whose whole body is "seat the vtable and return this",
 //   optionally copying one or two arguments into the first members first. The

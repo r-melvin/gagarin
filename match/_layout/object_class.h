@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: ObjectClass ctor FUN_0x005F3900 (chains AbstractClass ctor
 //   FUN_0x00410170 at offset 0). Every member offset below is read directly
-//   from a field-init write in that ctor; cross-checked vs YRpp ObjectClass.h.
+//   from a field-init write in that ctor; cross-checked vs YRpp.
 //   Key confirmations: NextObject @0x30 (param[0xC]), AmbientSoundController
 //   ctor FUN_0x00405BE0(this+0x3C) / CustomSoundController(this+0x50) prove
 //   sizeof(AudioController)==0x14, Location.{X,Y,Z} @0x9C/0xA0/0xA4,

@@ -11,7 +11,7 @@
 //   0x4F9A50 (IsAlliedWith), 0x50B730, 0x500510, 0x4CA160 and the
 //   fourteen-argument text draw 0x4AED70 on the globals 0x887314 and
 //   0x87F6C4; and CurrentPlayer at 0xA83D4C. Names cross-checked against
-//   YRpp BuildingClass.h / HouseClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_INFO_TIP_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_INFO_TIP_METHODS_H
 

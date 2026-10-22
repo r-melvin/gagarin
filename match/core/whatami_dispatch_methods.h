@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Entry points, vtable slot and both dispatch tables read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI. Neither address is
-//   bound by YRpp or the seed map, so the placeholder names are kept.
+//   bound by YRpp, so the placeholder names are kept.
 //
 // A pair of type-filter helpers at 0x40DD20 and 0x40DD70. Both are
 // byte-identical apart from their table addresses: null-check the pointer, ask

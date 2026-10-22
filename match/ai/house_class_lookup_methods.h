@@ -5,8 +5,8 @@
 //   0x1182` arms, `MOV ECX,[0xA8B230]` / `CALL 0x68C030` (ScenarioClass
 //   instance + its 0x1180-based HouseIndices lookup, seen at 0x68C03D as
 //   `[ECX+EAX*4+0x1180]`), `CMP EAX,[0xA80238]` (HouseClass::Array.Count) and
-//   `MOV ECX,[0xA8022C]` (Array.Items).  Names from YRpp HouseClass.h /
-//   ScenarioClass.h (consult-only; every address reconfirmed here).
+//   `MOV ECX,[0xA8022C]` (Array.Items). Names from YRpp
+//   (every address reconfirmed here).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_LOOKUP_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_LOOKUP_METHODS_H
 

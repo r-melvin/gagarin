@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI at 0x5D4390 (shape first sketched in the RE dossier,
-//   docs/decomp_spec/re_findings/next_targets_2026-08-07.md §5).
+//   local Ghidra CLI at 0x5D4390.
 //
 // Note the IsEditing flag is read again at 0x5D43BC after being cleared at
 // 0x5D43A2. That is *not* a dead test: the Unlock call at 0x778170 sits between

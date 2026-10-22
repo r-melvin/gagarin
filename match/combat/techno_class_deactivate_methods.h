@@ -8,7 +8,7 @@
 //   Deactivated at +0x1C8, slot +0x84 GetTechnoType and the type's sound at
 //   +0x5AC, Location at +0x9C. The twin Reactivate at 0x70FBE0 shares the
 //   layout (match/combat/techno_class_reactivate_methods.*). YRpp
-//   (consult-only, no LICENSE) names Deactivate.
+//   names Deactivate.
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_DEACTIVATE_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_DEACTIVATE_METHODS_H
 

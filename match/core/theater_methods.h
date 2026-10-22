@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly + memory read of the array at
-//   0x7E1B78), cross-checked against YRpp Theater.h (consult-only; every
+//   0x7E1B78), cross-checked against YRpp (consult-only; every
 //   offset/size reconfirmed numerically from the disassembly below).
 //
 // Theater — the 0x70-byte per-theater descriptor (TEMPERATE, SNOW, ...). There

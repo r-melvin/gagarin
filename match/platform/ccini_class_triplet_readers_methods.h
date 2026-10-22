@@ -8,9 +8,7 @@
 //   an output parameter: `RET 0x10` with only three source-level arguments,
 //   the first stack dword reloaded at the end and handed back in EAX
 //   (0x4764C0 `MOV EAX,ECX`). `this` reaches ReadString in ECX untouched,
-//   so both are __thiscall members. The private-reference seed (consult-only) called
-//   them free functions taking an INIClass pointer and an out pointer,
-//   which is the same information read off the wrong side of the ABI.
+//   so both are __thiscall members.
 //
 //   Frame evidence: the default triple is copied into a 12-byte local at
 //   ESP+0x00..0x0B and the parse buffer is the 0x200 bytes above it, which

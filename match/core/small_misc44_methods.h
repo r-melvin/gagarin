@@ -113,8 +113,7 @@ void __cdecl FUN_0040A950();
 // points at what we just destroyed - that re-read is retail's `CMP ESI,[0x89C4D0]`
 // and is the whole point of holding the old value in ESI.
 //
-// CLASS IDENTITY CORRECTION (re-verified against the binary before applying
-// docs/naming_proposals.md's Tier 1 #2): that proposal claimed this was
+// CLASS IDENTITY CORRECTION (re-verified against the binary): an earlier proposal claimed this was
 // `BitFont`'s own scalar deleting destructor, reasoning that 0x7E3A80 is
 // "slot +0x08 of BitFont's vtable 0x7E3A78". It is not - the disasm here
 // stamps `MOV [this], 0x7E3A80`, and 0x7E3A80 carries its OWN complete object

@@ -2,13 +2,13 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access + virtual-call disassembly),
-//   cross-checked against YRpp CCFileClass.h / MixFileClass.h (consult-only, no
+//   cross-checked against YRpp (consult-only, no
 //   LICENSE; every offset reconfirmed numerically against the disasm below).
 //
 // Translation unit for the CCFileClass buffered-IO primitives:
 //   0x473AE0 WriteBytes, 0x473BA0 Seek, 0x473C00 GetFileSize.
 //
-// The Westwood FileClass hierarchy (the MIX/CD/raw file stack):
+// The FileClass hierarchy (the MIX/CD/raw file stack):
 //   FileClass (abstract COM-ish base) -> RawFileClass -> BufferIOFileClass
 //   -> CDFileClass -> CCFileClass.
 //

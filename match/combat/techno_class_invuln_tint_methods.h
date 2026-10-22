@@ -5,8 +5,8 @@
 //   compared with -1), `[ECX+0x1A0]` (IronTintTimer.TimeLeft), the dword
 //   global `[0xA8ED84]` (CurrentFrame, minus StartTime) and `[ECX+0x1A4]`
 //   (IronTintStage, the jump-table selector 1..9 via `LEA EAX,[ECX-1]; CMP
-//   EAX,8; JA`). Names from the YRpp method map / TechnoClass.h
-//   (consult-only, no LICENSE); the timer and stage agree with
+//   EAX,8; JA`). Names from the YRpp method map
+//   the timer and stage agree with
 //   match/_layout/techno_class.h (IronTintTimer @0x198, IronTintStage @0x1A4).
 //   Shape mirrors the sibling GetAirstrikeTintIntensity (0x70E4B0) in
 //   match/renderer/techno_class_airstrike_tint_methods.h.

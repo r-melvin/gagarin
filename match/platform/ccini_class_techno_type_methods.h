@@ -6,7 +6,7 @@
 //   default; four name lookups (0x523C90, 0x747370, 0x41CAA0, 0x45E7B0), each
 //   taking the buffer in ECX and answering -1 for a miss; the hit is indexed
 //   into the matching pointer array `[0xA8E34C]`, `[0xA83CE4]`, `[0xA8B21C]`,
-//   `[0xA83C6C]` (`MOV EAX,[ECX+EAX*4]`). Method name from YRpp CCINIClass.h
+//   `[0xA83C6C]` (`MOV EAX,[ECX+EAX*4]`). Method name from YRpp
 //   (consult-only; name only, no text copied).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_TECHNO_TYPE_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_TECHNO_TYPE_METHODS_H

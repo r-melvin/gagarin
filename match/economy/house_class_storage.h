@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly @0x42F380 and @0x4F6E70),
-//   cross-checked against YRpp HouseClass.h (consult-only, no LICENSE; every
+//   cross-checked against YRpp (every
 //   offset reconfirmed below against the user's binary).
 //
 // HouseClass economy/base helpers:

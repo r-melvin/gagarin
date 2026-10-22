@@ -22,7 +22,7 @@
 //   HouseClass::RemoveTracking, AbstractType (Unit=1, Aircraft=2,
 //   Building=6, Infantry=15) and the GetArrayIndex slot already confirmed in
 //   match/economy/house_class_register_built_methods.h, all re-derived here
-//   from the disassembly. (YRpp is consult-only, NO LICENSE.)
+//   from the disassembly.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_REMOVE_TRACKING_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_REMOVE_TRACKING_METHODS_H
 

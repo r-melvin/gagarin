@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6CB820, 0x6CC260-0x6CC297),
-//   cross-checked against YRpp SuperClass.h / SuperWeaponTypeClass.h
-//   (consult-only; reconfirmed numerically here).
+//   cross-checked against YRpp
+//   (reconfirmed numerically here).
 //
 // SuperClass — a per-house superweapon instance: recharge bookkeeping
 // (CustomChargeTime override vs Type's [Type]RechargeTime) and the IsReady flag.

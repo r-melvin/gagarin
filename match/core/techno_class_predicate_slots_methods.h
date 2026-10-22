@@ -31,8 +31,7 @@
 //   the SIGNED greater-than; an unsigned compare would be `SETA`. The member is
 //   a signed int. Modelled as int here.
 //
-//   CORRECTION to docs/decomp_spec/vtable_map_techno.md line 114: slot +0x2AC
-//   is listed as `isArmed() -> bool`. The body at 0x00701120 returns with
+//   Slot +0x2AC returns int, not bool. The body at 0x00701120 returns with
 //   `MOV EAX,0x1` / `XOR EAX,EAX`, which is int width; a bool return would be
 //   `MOV AL,0x1` / `XOR AL,AL`, as the neighbouring 0x007010D0 in fact is.
 //   Declared bool, the body does not match; declared int, it does.

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6B0A20, 0x6B0C80, ctor 0x6AF1A0),
-//   cross-checked against YRpp SlaveManagerClass.h (consult-only;
+//   cross-checked against YRpp (
 //   reconfirmed numerically here).
 //
 // SlaveManagerClass — manages a Yuri slave-miner's owned slave infantry.

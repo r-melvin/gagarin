@@ -8,7 +8,7 @@
 //   by-value CoordStruct), `PUSH 0x1C8` / `CALL 0x7C8E17` / `CALL 0x421EA0`
 //   (sizeof(AnimClass) + its 7-arg ctor), `CALL 0x424C90` / `CALL 0x424CA0`
 //   (two one-arg AnimClass setters) and `MOV BYTE [ESI+0x19D],1`.  Names from
-//   YRpp HouseClass.h / AnimClass.h (consult-only; reconfirmed here).
+//   YRpp (reconfirmed here).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PSI_WARN_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_PSI_WARN_METHODS_H
 

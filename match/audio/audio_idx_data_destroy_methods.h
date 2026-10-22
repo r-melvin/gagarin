@@ -5,7 +5,7 @@
 //
 // The AudioIDXData teardown at 0x401580.
 //
-// Naming: YRpp Audio.h binds this address to `~AudioIDXData()`. It cannot be a
+// Naming: YRpp binds this address to `~AudioIDXData`. It cannot be a
 // destructor — the last thing it does is hand `this` itself to the deallocator
 // at 0x4015B3. A destructor never frees its own storage; the caller's `delete`
 // does that afterwards, and doing both would be a double free. So this is a

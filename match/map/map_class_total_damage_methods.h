@@ -4,8 +4,7 @@
 //   local Ghidra CLI at 0x489180: the scenario flag byte `TEST byte ptr
 //   [EAX],0x20` through `[0xA8B230]`, the warhead fields `[EDI+0x12C]`,
 //   `[EDI+0x124]` and the double table `[EDI+EDX*8+0xA0]`, and the rules cap
-//   `[ECX+0x16C8]` through `[0x8871E0]`.  Names cross-checked against YRpp
-//   MapClass.h / WarheadTypeClass.h / RulesClass.h (consult-only).
+//   `[ECX+0x16C8]` through `[0x8871E0]`.  Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_TOTAL_DAMAGE_METHODS_H
 

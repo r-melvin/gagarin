@@ -5,7 +5,7 @@
 //   loaded from `[0x7F4550]` before every call, the vector's Items and Count
 //   are `[0xB0E784]` / `[0xB0E790]` (base 0xB0E780, +0x04 / +0x10), and the
 //   per-item virtual is `CALL [EDX+0x68]` with one pushed argument. Method
-//   names are the YRpp ones (consult-only); every offset re-derived here.
+//   names are the YRpp ones; every offset re-derived here.
 #ifndef GG_MATCH_AI_TAG_TYPE_CLASS_SAVE_METHODS_H
 #define GG_MATCH_AI_TAG_TYPE_CLASS_SAVE_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, the table address and the member offset read off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x5FB2E0. Class and member
-//   names cross-checked against YRpp GameOptionsClass.h (consult-only, no
+//   names cross-checked against YRpp (consult-only, no
 //   LICENSE), whose first member is `int GameSpeed` — the `MOV ECX,[ECX]` the
 //   retail body opens with.
 #ifndef GG_MATCH_UI_GAME_OPTIONS_CLASS_METHODS_H

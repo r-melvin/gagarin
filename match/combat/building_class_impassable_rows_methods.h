@@ -18,8 +18,8 @@
 //       member, and the X half is the low word.
 //   The type-member names (NumberImpassableRows at 0x1620, Bunker at 0x16AB)
 //   and TechnoClass::BunkerLinkedItem at 0x2E4 were cross-checked against
-//   YRpp BuildingTypeClass.h / TechnoClass.h / CellClass.h (consult-only, NO
-//   LICENSE; every offset above is re-derived from the user's binary).
+//   YRpp
+//   (every offset above is re-derived from the user's binary).
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_IMPASSABLE_ROWS_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_IMPASSABLE_ROWS_METHODS_H
 

@@ -12,7 +12,7 @@
 //   RTTI (read from the binary): all four vptr targets resolve to
 //   ".?AVInfantryClass@@" with COL base-offset 0 / 4 / 8 / 12.
 //
-//   Cross-read against YRpp InfantryClass.h: 11 named members claimed, 11
+//   Cross-read against YRpp: 11 named members claimed, 11
 //   confirmed. No disagreement found.
 //
 // InfantryClass — a foot soldier. Derives FootClass at offset 0

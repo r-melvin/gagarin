@@ -11,7 +11,7 @@
 //   0xA8022C and the house byte at +0x1F5. The two house probes 0x4F9A10 and
 //   0x4F9A50 are __thiscall with one pushed argument; the beacon's own
 //   DrawRadar at 0x430650 takes the surface, the bounds rectangle by value
-//   and a pushed 0. YRpp (consult-only, no LICENSE) names DrawRadar, Beacons,
+//   and a pushed 0. YRpp names DrawRadar, Beacons,
 //   AllocatedCount, RadarBeaconFrameCount, RadarBeaconAnimPeriod,
 //   CurrentFrame and CurrentPlayer; every offset reconfirmed here.
 #ifndef GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_RADAR_METHODS_H

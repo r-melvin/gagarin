@@ -4,8 +4,8 @@
 //   read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI: the vtables from the two `MOV dword ptr [reg],imm32` stores, the
 //   subobject displacement from `LEA ECX,[ESI+8]`, and the two destructor
-//   addresses from the CALL displacements. Neither class is bound by YRpp or
-//   the seed map, so both keep placeholder names built from their own vtable.
+//   addresses from the CALL displacements. Neither class is bound by YRpp,
+//   so both keep placeholder names built from their own vtable.
 //
 // Shape (32 bytes):
 //   `PUSH ESI; MOV ESI,ECX; LEA ECX,[ESI+8]; MOV [ESI],host-vtbl;

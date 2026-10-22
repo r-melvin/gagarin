@@ -5,8 +5,7 @@
 //   arrive in ECX, EDX and `[ESP+0xC]` with `RET 4` (__fastcall, no `this`),
 //   each is clamped to 1000 and floored at 0 in place, and the dword global
 //   `[0xA8EB78]` selects the mask (0..2) through a `SUB ECX,0 / DEC / DEC`
-//   chain. YRpp ScenarioClass.h consulted for the name only (consult-only,
-//   no LICENSE).
+//   chain. Name cross-checked against YRpp only.
 #ifndef GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_METHODS_H
 #define GG_MATCH_CORE_SCENARIO_CLASS_LIGHTING_METHODS_H
 

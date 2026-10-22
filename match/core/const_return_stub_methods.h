@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every shape below read numerically off the user's retail gamemd.exe v1.001
 //   via the local Ghidra CLI at the address in each annotation. None is bound
-//   by YRpp or the seed map, so all keep Ghidra placeholder names.
+//   by YRpp, so all keep Ghidra placeholder names.
 //
 // Constant-return and identity leaves. These do not belong to one class — they
 // are grouped because they share a shape and each is a single instruction pair

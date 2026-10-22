@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI at 0x7BCAE0. Class identity cross-checked against YRpp
-//   Drawing.h, which binds 0x7BCAE0 to ZBuffer::ReleaseSurface (consult-only,
+//   local Ghidra CLI at 0x7BCAE0. Class identity cross-checked against YRpp,
+//   which binds 0x7BCAE0 to ZBuffer::ReleaseSurface (consult-only,
 //   no LICENSE).
 //
 // ZBuffer — the engine's depth buffer. Only the owned drawing surface at +0x14

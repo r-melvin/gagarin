@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   BuildingTypeClass.h (consult-only, no LICENSE; every offset reconfirmed
+//   (every offset reconfirmed
 //   numerically from the disasm below).
 //
 // BuildingTypeClass — the type/template descriptor for a building. Only the

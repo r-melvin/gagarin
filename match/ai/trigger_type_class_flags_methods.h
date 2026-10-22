@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x727120 / 0x7271E0), cross-checked
-//   against YRpp TriggerTypeClass.h (consult-only; reconfirmed numerically here).
+//   against YRpp (reconfirmed numerically here).
 //
 //   This TU uses the shared TriggerTypeClass layout. These methods touch:
 //     - the static lookup array TriggerTypeClass::Array (global @0x8B4178)

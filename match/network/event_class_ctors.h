@@ -44,8 +44,7 @@
 //   Payload tags follow the retail event-name table at 0x82091C. Member names
 //   are YRpp cross-checks confirmed by the stores above; names without that
 //   support are descriptive. The overload set is the one the sixteen retail
-//   constructors require. The private-reference seed (consult-only) supplied
-//   the `network/event_class.cpp` grouping.
+//   constructors require.
 //
 // EventClass — one queued multiplayer command. Constructors stamp the payload,
 // the originating house and the frame the command must execute on.

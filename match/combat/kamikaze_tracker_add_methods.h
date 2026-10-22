@@ -11,8 +11,8 @@
 //   0x5657A0 on the map object 0x87F7E8, `[ESI+0x6CA]` (a flag byte set to
 //   1) and `[ESI+0x2FC]` (Ammo = 1), and the node vector at +0x0C
 //   (Capacity +0x14, IsAllocated +0x19, Count +0x1C, CapacityIncrement
-//   +0x20, Resize slot +0x08). Names cross-checked against YRpp Kamikaze.h /
-//   TechnoClass.h / TechnoTypeClass.h (consult-only; NO LICENSE), and the
+//   +0x20, Resize slot +0x08). Names cross-checked against YRpp
+//   and the
 //   sibling match/combat/kamikaze_update_methods.h / kamikaze_load_methods.h.
 #ifndef GG_MATCH_COMBAT_KAMIKAZE_TRACKER_ADD_METHODS_H
 #define GG_MATCH_COMBAT_KAMIKAZE_TRACKER_ADD_METHODS_H

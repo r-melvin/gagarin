@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at
 //   0x6E57F0 / 0x6E5820 / 0x6E5850). Names cross-checked against YRpp
-//   TagClass.h (consult-only; offsets reconfirmed numerically here).
+//   (offsets reconfirmed numerically here).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6E57F0  TagClass::NotifyGlobalChanged  (__fastcall)

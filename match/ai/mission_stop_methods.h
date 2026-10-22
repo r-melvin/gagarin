@@ -17,7 +17,7 @@
 // multiple-inheritance representation and emits a `this` adjustment.
 struct Vtbl_004158E0;
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x4158E0 -> AircraftClass slot 152 (byte-off 0x260).
 // That table is the only table in the image that holds it, so the slot is

@@ -17,8 +17,7 @@
 //   The CellClass offsets agree with the already-matched
 //   match/map/cell_class_tiberium_methods.h and
 //   match/map/cell_class_tiberium_germinate_methods.h (read, not edited;
-//   re-derived here so this TU stands alone). Names cross-checked against YRpp
-//   (consult-only, NO LICENSE).
+//   re-derived here so this TU stands alone). Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_CELL_CLASS_SPREAD_TIBERIUM_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_SPREAD_TIBERIUM_METHODS_H
 

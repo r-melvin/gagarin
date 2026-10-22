@@ -10,7 +10,7 @@
 //   `sprintf` 0x7C8EF4 from "Waypoint%d" at 0x83DE24; and the waypoint
 //   read 0x529880, a __thiscall returning an eight-byte cell through a
 //   hidden pointer with the current entry passed as the default. Names
-//   cross-checked against YRpp ScenarioClass.h / CCINIClass.h
+//   cross-checked against YRpp
 //   (consult-only; NO LICENSE).
 #ifndef GG_MATCH_CORE_SCENARIO_CLASS_START_POINTS_METHODS_H
 #define GG_MATCH_CORE_SCENARIO_CLASS_START_POINTS_METHODS_H

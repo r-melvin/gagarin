@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4399A0-0x439A07), cross-checked
-//   against YRpp BounceClass.h / Matrix3D.h (consult-only, no LICENSE;
-//   every offset reconfirmed numerically here).
+//   against YRpp
+//   (every offset reconfirmed numerically here).
 //
 // BounceClass - ballistic trajectory state used by (Voxel)Animations. Only the
 // two read accessors GetCoords / GetDrawingMatrix are modelled in this TU; the

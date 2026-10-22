@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/globals derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x74D760-0x74D7BB), cross-
-//   checked against YRpp VeinholeMonsterClass.h / ArrayClasses.h (consult-only;
+//   checked against YRpp (
 //   every offset reconfirmed numerically here).
 //
 // VeinholeMonsterClass::DeleteAll: walks the global VeinholeMonster registry

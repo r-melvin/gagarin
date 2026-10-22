@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, the vtable slot, the two RulesClass fields and the global read are
 //   taken numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x41B920 and 0x41B980. Neither address is bound by YRpp or
-//   the seed map, so the placeholder names are kept.
+//   Ghidra CLI at 0x41B920 and 0x41B980. Neither address is bound by YRpp,
+//   so the placeholder names are kept.
 //
 // A pair of predicates that route on the object's type index and, for two
 // particular types, answer from a COM interface instead. They differ in exactly
@@ -47,7 +47,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, TypeB) == 0x514);
 // GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
 extern RulesClass* RulesInstance;
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41B920 -> AircraftClass slot 21 (byte-off 0x54).
 //   0x41B980 -> AircraftClass slot 20 (byte-off 0x50).

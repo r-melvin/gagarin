@@ -2,10 +2,8 @@
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every address, offset and vtable slot below was read numerically off the
 //   user's retail gamemd.exe v1.001 with the local Ghidra CLI over
-//   0x5CEDD0..0x5CF8D6 and the vtable block at 0x7EEAB4..0x7EEB54. The private-reference
-//   seed grouped these addresses correctly and named them wrongly: its
-//   "mapSelGetCount" at 0x5CF830 is a one-line forwarder into the container's
-//   own virtual Add, and its "mapSelGetAtIndex" takes an unsigned short.
+//   0x5CEDD0..0x5CF8D6 and the vtable block at 0x7EEAB4..0x7EEB54. 0x5CF830 is a one-line
+//   forwarder into the container's own virtual Add.
 //
 // WHAT THIS IS. The campaign map screen keeps its stages in a container that
 // IS a vector: the runtime type information under 0x7EEAB4 reads
@@ -15,7 +13,7 @@
 // at +0x2C and +0x44 (base vtables 0x7EEAD4 and 0x7EEAF4), with a name string
 // at +0x28 and a 640x400 rectangle at +0x18.
 //
-// ELEMENT TYPES CORRECTED (whole-image RTTI sweep, docs/rtti_sweep.md). The
+// ELEMENT TYPES CORRECTED (whole-image RTTI sweep). The
 // two trailing vectors were annotated `VectorClass<StringClass*>`. That was a
 // guess from how their elements are USED, not a read of the binary. The
 // locators under those two tables say otherwise, re-read here with
@@ -133,7 +131,7 @@ public:
 // constant is named in the comment beside each one. `Clear` is slot 3, read
 // off `CALL [EDX+0xC]` at 0x5CF626, 0x5CF676 and 0x5CF6A8.
 //
-// Clear's body is Westwood's own: release the block only when this vector
+// Clear's body as retail has it: release the block only when this vector
 // allocated it, then forget the block and the capacity unconditionally.
 
 // VTABLE: GAMEMD 0x7EEAB4 — VectorClass<MapStage*>
@@ -145,7 +143,7 @@ public:
     virtual int  Slot2();
     virtual void Clear();
     // Slot 4, reached through `CALL [EAX+0x10]` at 0x5CF837 with the address
-    // of the caller's pointer pushed -- Westwood's `Add(T const& object)`.
+    // of the caller's pointer pushed -- an `Add(T const& object)` shape.
     virtual int  Add(MapStage* const& stage);
 
     MapStage** Vector;       // +0x04

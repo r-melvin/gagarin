@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x720A80. Name from
-//   YRpp ThemeClass.h (consult-only).
+//   YRpp.
 
 #include "theme_class_random_methods.h"
 

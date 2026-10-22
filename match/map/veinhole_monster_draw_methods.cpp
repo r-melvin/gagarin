@@ -19,7 +19,7 @@
 // five trailing blitter arguments, pushed as ECX/EAX/ECX/ECX/ECX -- where cl
 // 8804 pushes the immediate `0` under every flag set. That is the recorded
 // 8447-vs-8804 "repeated push constants materialised into registers" class
-// (see docs/matching_methodology_and_toolchain.md), already observed at
+// already observed at
 // 0x4FBF60, 0x703590 and 0x41A2C0. The three missing XORs shift the whole
 // stream, which is why the reported percentage is far below the real delta;
 // the secondary difference is that retail holds the cell-centre X in EAX and Y

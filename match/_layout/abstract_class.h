@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: retail constructor 0x00410170, the RTTI descriptors and the four
-//   AbstractClass vtables below. YRpp AbstractClass.h was consulted for naming
+//   AbstractClass vtables below. YRpp was consulted for naming
 //   hypotheses only.
 //
 //   RTTI: COL of vtable 0x7E1F50 -> TypeDescriptor ".?AVAbstractClass@@",

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4CC770. Names cross-checked against YRpp
-//   TechnoClass.h `struct FlashData` (consult-only, no LICENSE).
+//   `struct FlashData`.
 //
 // FlashData — the damage/selection flash timer embedded in TechnoClass. Note it
 // has no vtable: retail reads `[ECX]` as the countdown itself, which is what

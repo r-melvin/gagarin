@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe via the local Ghidra CLI
 //   (member-access disassembly at 0x763980 / 0x763BA0), cross-checked against
-//   YRpp WaypointPathClass.h + ArrayClasses.h (consult-only; every offset and
+//   YRpp (every offset and
 //   vtable slot reconfirmed numerically from the disasm here).
 //
 // WaypointPathClass — a mouse-placed "planning mode" waypoint path: a

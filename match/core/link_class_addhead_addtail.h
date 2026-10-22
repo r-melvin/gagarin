@@ -3,7 +3,7 @@
 //   LinkClass::AddHead / LinkClass::AddTail list-splice ops, matched
 //   byte-for-byte against the user's retail gamemd.exe v1.001 (Ghidra CLI
 //   disassembly at 0x5566D0 / 0x556700), cross-checked against YRpp
-//   LinkClass.h (consult-only; reconfirmed here).
+//   (consult-only; reconfirmed here).
 //
 // Reuses the binding LinkClass layout + vtable-slot order from
 // link_class_methods.h. The vtable slots these methods call indirectly:

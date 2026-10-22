@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x54E6F0 Clear / 0x54E750 Save),
-//   cross-checked against YRpp Kamikaze.h / ArrayClasses.h / Timer.h
-//   (consult-only; every offset reconfirmed numerically here).
+//   cross-checked against YRpp
+//   (every offset reconfirmed numerically here).
 //
 // Kamikaze — the global kamikaze (suicide-aircraft) manager: a frame-counted
 // update timer plus a DynamicVectorClass of KamikazeControl nodes (one per
@@ -51,7 +51,7 @@ struct KamikazeControl
 
 GG_STATIC_ASSERT(sizeof(KamikazeControl) == 8);
 
-// DynamicVectorClass<KamikazeControl*> — Westwood growable pointer vector.
+// DynamicVectorClass<KamikazeControl*> — growable pointer vector.
 // Virtuals modelled in their retail vtable order so Clear() dispatches through
 // slot 3 (+0x0C) and SetCapacity() through slot 2 (+0x08); only those two and
 // the vptr/Items/Capacity/Count members are touched by Kamikaze::Clear.
@@ -74,7 +74,7 @@ GG_STATIC_ASSERT(offsetof(KamikazeNodeVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(KamikazeNodeVector, Count)    == 0x10);
 
 // CDTimerClass = TimerStruct<FrameTimer> — StartTime, a (functor) CurrentTime
-// slot, then TimeLeft; sizeof = 0x0C (YRpp Timer.h: offsetof(TimeLeft) == 8).
+// slot, then TimeLeft; sizeof = 0x0C (YRpp: offsetof(TimeLeft) == 8).
 struct CDTimerClass
 {
     int StartTime;     // +0x00

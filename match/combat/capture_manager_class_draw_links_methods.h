@@ -11,7 +11,7 @@
 //   type returned by slot `[EDX+0x84]`, `[ECX+0x21C]` plus `0x56F9` (a
 //   three-byte colour read word-then-byte) and the owner slot `[ESI+0xB0]`,
 //   which returns a CoordStruct through a hidden pointer. YRpp
-//   (consult-only, no LICENSE) names CaptureManagerClass::DrawLinks.
+//   names CaptureManagerClass::DrawLinks.
 #ifndef GG_MATCH_COMBAT_CAPTURE_MANAGER_CLASS_DRAW_LINKS_METHODS_H
 #define GG_MATCH_COMBAT_CAPTURE_MANAGER_CLASS_DRAW_LINKS_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Logic + calling convention derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (disasm at 0x6A60A0), cross-checked
-//   against YRpp SidebarClass.h (consult-only; reconfirmed from disasm).
+//   against YRpp (consult-only; reconfirmed from disasm).
 #include "sidebar_class_repaint_methods.h"
 
 // FUNCTION: GAMEMD 0x6A60A0  SidebarClass::RepaintSidebar (__thiscall)

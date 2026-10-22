@@ -8,7 +8,7 @@
 //     `MOV ECX,[0x887640]; MOV EAX,[ECX]; CALL [EAX+0x1C]`    (mouse slot 7)
 //     `MOV ECX,[0x887640]; MOV EDX,[ECX]; CALL [EDX+0x18]`    (mouse slot 6)
 //     `MOV ECX,[0x87E758]; MOV EDX,0x4000; JMP 0x407150`      (__fastcall tail)
-//   YRpp names only (consult-only): SessionClass::Resume @0x69BAB0,
+//   YRpp names only: SessionClass::Resume @0x69BAB0,
 //   InGameFrameActive @+0x30D8, Unsorted::IsActive @0xA8E9A0,
 //   GameOptionsClass::Instance @0xA8EB60, WWMouseClass::Instance @0x887640,
 //   Unsorted::CurrentFrame @0xA8ED84.

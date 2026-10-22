@@ -9,7 +9,7 @@
 //   0x8B417C (Items) / 0x8B4188 (Count) whose entries are saved through
 //   vtable slot +0x68. The INI and vector shapes match the sibling
 //   match/ai/ai_trigger_save_list_methods.h. Names cross-checked against
-//   YRpp TriggerTypeClass.h / CCINIClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_AI_TRIGGER_TYPE_CLASS_SAVE_LIST_METHODS_H
 #define GG_MATCH_AI_TRIGGER_TYPE_CLASS_SAVE_LIST_METHODS_H
 

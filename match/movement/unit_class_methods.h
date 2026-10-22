@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp UnitClass.h (consult-only).
+//   cross-checked against YRpp.
 //
-//   UnitClass : FootClass (FootClass sizeof = 0x6C0; spine in ../_layout).
+//   UnitClass : FootClass (FootClass sizeof = 0x6C0; spine in../_layout).
 //   The methods here touch:
 //     - Deactivated @0x1C8  (TechnoClass base, already in the spine)
 //     - FlagHouseIndex @0x6CC (UnitClass-specific; confirmed [ECX+0x6CC])

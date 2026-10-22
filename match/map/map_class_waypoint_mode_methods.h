@@ -10,7 +10,7 @@
 //   __thiscall 0x5090A0 returns the waypoint slot. Vtable slot `[EAX+0x50]`
 //   is the same one the other mode setters use (match/map/map_class_mode_methods);
 //   the mouse singleton `[0x887640]` is shown via slot +0x10. Names
-//   cross-checked against YRpp MapClass::SetWaypointMode (consult-only).
+//   cross-checked against YRpp MapClass::SetWaypointMode.
 #ifndef GG_MATCH_MAP_MAP_CLASS_WAYPOINT_MODE_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_WAYPOINT_MODE_METHODS_H
 

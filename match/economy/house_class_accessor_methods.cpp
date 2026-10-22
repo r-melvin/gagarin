@@ -68,7 +68,7 @@ int HouseClass::GetUnitSelfHealStep() const
 // FUNCTION: GAMEMD 0x50E1B0  HouseClass::GainedPoweredCenter (__thiscall, ret 0x4)
 // NOTE: the retail body ignores its argument entirely and just reports whether
 // the powered-centre count at +0x2D8 is positive (`SETG AL`), so this is a
-// bool-returning predicate, not the void mutator YRpp's HouseClass.h declares
+// bool-returning predicate, not the void mutator YRpp declares
 // for this address. The name is kept from YRpp; the signature follows the bytes.
 bool HouseClass::GainedPoweredCenter(TechnoTypeClass* type)
 {

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x726350 + 0x726630), cross-checked
-//   against YRpp TriggerClass.h (consult-only; reconfirmed numerically here).
+//   against YRpp (reconfirmed numerically here).
 //
 // Two further TriggerClass entry points:
 //   0x726350  HasGlobalSetOrClearedEvent(int idxGlobal) const

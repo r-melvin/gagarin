@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x471C90 (name from the
-//   YRpp method map, consult-only).
+//   YRpp method map).
 
 #include "capture_manager_can_capture_methods.h"
 

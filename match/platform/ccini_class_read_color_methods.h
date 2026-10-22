@@ -9,7 +9,7 @@
 //   default text, 64-byte buffer, 64). On success the three ints parsed by
 //   the CRT sscanf at 0x7CA530 are packed as a word + byte store into the out
 //   struct; on failure the default is copied the same way. The method name
-//   and the by-value/by-reference pair come from YRpp CCINIClass.h
+//   and the by-value/by-reference pair come from YRpp
 //   (consult-only; every slot reconfirmed above).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_READ_COLOR_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_READ_COLOR_METHODS_H

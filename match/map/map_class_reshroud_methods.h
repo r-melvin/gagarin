@@ -16,8 +16,8 @@
 //   `[EAX+0x134] = 0`, `[EAX+0x140] &= ~3`; and the final `PUSH 2; CALL
 //   [EDX+0x38]` on `this`. Cell offsets agree with
 //   match/map/cell_class_shroud_methods.h (AltFlags @0x12C, ShroudCounter
-//   @0x130, Flags @0x140; not edited). YRpp names only (consult-only, no
-//   LICENSE): MapClass::Reshroud, HouseClass::ArrayIndex, HouseClass::Array
+//   @0x130, Flags @0x140; not edited). YRpp names only
+//   MapClass::Reshroud, HouseClass::ArrayIndex, HouseClass::Array
 //   @0xA80228, HouseClass::CurrentPlayer @0xA83D4C, MapClass::
 //   CellIteratorNext @0x578290, CellIteratorReset @0x578350.
 #ifndef GG_MATCH_MAP_MAP_CLASS_RESHROUD_METHODS_H

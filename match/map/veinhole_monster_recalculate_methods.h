@@ -12,8 +12,8 @@
 //   (the inlined by-value helper plus the const-ref temporary, the same shape
 //   as the matched 0x481810), CALL 0x485AF0 on each cell, `CALL 0x74E6B0` on
 //   `this`, `PUSH EBP; MOV ECX,0x87F7E8; CALL 0x56D460` and `CALL 0x584550`,
-//   and the byte `[ESI+0x100] = 1`. YRpp names only (consult-only, no
-//   LICENSE): VeinholeMonsterClass::Recalculate, RecalculateSpread
+//   and the byte `[ESI+0x100] = 1`. YRpp names only
+//   VeinholeMonsterClass::Recalculate, RecalculateSpread
 //   @0x74E6B0, CellClass::RecalcAttributes @0x47D2B0, GetNeighbourCell
 //   @0x481810, MapClass::GetCellAt @0x5657A0, ResetZones @0x56D460,
 //   RecalculateSubZones @0x584550.

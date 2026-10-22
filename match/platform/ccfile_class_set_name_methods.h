@@ -14,7 +14,7 @@
 //     REP MOVSB).
 //   The member run mirrors the already-confirmed layout in
 //   match/platform/ccfile_class.h (not edited; re-declared here so the TU
-//   stands alone); YRpp CCFileClass.h consulted for names only.
+//   stands alone); YRpp consulted for names only.
 #ifndef GG_MATCH_PLATFORM_CCFILE_CLASS_SET_NAME_METHODS_H
 #define GG_MATCH_PLATFORM_CCFILE_CLASS_SET_NAME_METHODS_H
 

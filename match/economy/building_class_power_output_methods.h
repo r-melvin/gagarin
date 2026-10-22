@@ -7,12 +7,12 @@
 //   `[ESI+0x668]` (HasExtraPowerBonus), `[ESI+0x114]` (Passengers count),
 //   `[ESI+0x702]` (UpgradeLevel), `LEA ECX,[ESI+0x5EC]` with a 3-count
 //   (Upgrades[3]), `[ESI+0x660]` (HasPower), and the virtual `CALL
-//   [EDX+0x1D4]` (ObjectClass::IsBeingWarpedOut per
-//   docs/decomp_spec/vtable_map_techno.md). Names for the method, the
+//   [EDX+0x1D4]` (ObjectClass::IsBeingWarpedOut, the
+//   techno vtable slot at +0x1D4). Names for the method, the
 //   members and the health-ratio callee 0x5F5C60 (ObjectClass::
 //   GetHealthPercentage, between AttachTrigger 0x5F5B50 and
 //   SetHealthPercentage 0x5F5C80 in match/_layout/object_class.h) are
-//   YRpp's (consult-only); every offset is reconfirmed here. The two type
+//   YRpp's; every offset is reconfirmed here. The two type
 //   flag bytes keep placeholder names: YRpp's adjacent UnitAbsorb /
 //   InfantryAbsorb pair is the likely identity but their offsets were not
 //   re-derived.

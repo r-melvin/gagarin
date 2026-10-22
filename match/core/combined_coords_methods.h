@@ -30,7 +30,7 @@ struct AttachVtbl_00422BE0
 };
 GG_STATIC_ASSERT(offsetof(AttachVtbl_00422BE0, At_48) == 0x48);
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AnimClass's own vtable is 0x7E3354.
 //   0x422BE0 -> AnimClass slot 18 (byte-off 0x48).
 // That table is the only table in the image that holds it, so the slot is

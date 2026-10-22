@@ -11,8 +11,7 @@
 //   (OwnedBuildingTypes), +0x5564 (OwnedUnitTypes), +0x5578
 //   (OwnedInfantryTypes), +0x558C (OwnedAircraftTypes) each handed to
 //   0x49FAE0 (CounterClass::GetItemCount, one pushed index). Names
-//   cross-checked against YRpp AITriggerTypeClass.h / HouseClass.h
-//   (consult-only; NO LICENSE).
+//   cross-checked against YRpp.
 #ifndef GG_MATCH_AI_AI_TRIGGER_TYPE_HOUSE_OWNS_METHODS_H
 #define GG_MATCH_AI_AI_TRIGGER_TYPE_HOUSE_OWNS_METHODS_H
 

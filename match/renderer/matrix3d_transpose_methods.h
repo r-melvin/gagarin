@@ -6,7 +6,7 @@
 //   `[EDX+0x2C]`); the result is built as a 0x30-byte stack local and copied
 //   out with `MOV ECX,0xC; REP MOVSD` into the hidden return buffer that
 //   arrived in ECX (`MOV EAX,ECX` .. `MOV EDI,EAX`). Method name from YRpp
-//   Matrix3D.h (consult-only; name only, no text copied).
+//   (consult-only; name only, no text copied).
 #ifndef GG_MATCH_RENDERER_MATRIX3D_TRANSPOSE_METHODS_H
 #define GG_MATCH_RENDERER_MATRIX3D_TRANSPOSE_METHODS_H
 

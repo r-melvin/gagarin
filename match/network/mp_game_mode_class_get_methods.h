@@ -9,12 +9,12 @@
 //   (0, 0) pushed and registered with atexit CALL 0x7C978A for the teardown
 //   0x5D5B20 (which restores the base vtable 0x7EED40 and frees Items through
 //   0x7C8B3D). The element compare is `CMP [EAX+0x28],ECX` against the
-//   __fastcall argument. YRpp (consult-only, no LICENSE) names the function
+//   __fastcall argument. YRpp names the function
 //   `MPGameModeClass::Get`; every offset re-derived here.
 //
-//   CLASS NAME CORRECTED (whole-image RTTI sweep, docs/rtti_sweep.md).
+//   CLASS NAME CORRECTED (whole-image RTTI sweep).
 //   `MPGameModeClass` does not exist in this binary -- it is YRpp's own
-//   spelling, not Westwood's. The locators under the two vtables name the
+//   spelling. The locators under the two vtables name the
 //   retail class, re-read here with `ghidra memory read` rather than taken on
 //   the sweep's word:
 //     [0x7EED3C] = 0x00806F58 -> TD 0x008307C0

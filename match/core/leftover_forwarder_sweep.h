@@ -3,7 +3,7 @@
 //   Every member displacement, vtable slot index and relayed address below read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
 //   CLI at the address in each annotation. None of these classes is bound by
-//   YRpp or the seed map, so all keep Ghidra placeholder names.
+//   YRpp, so all keep Ghidra placeholder names.
 //
 // One forwarding shape:
 //

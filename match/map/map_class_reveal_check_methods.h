@@ -6,8 +6,8 @@
 //   0x13C) bounded by the constant 0x40000, the fallback cell at 0xABDC50
 //   with its coords at 0xABDC74, the techno vtable slot +0x198 with one
 //   pushed argument, and the two callees 0x6565A0 (map singleton, CellStruct*)
-//   and 0x47C3D0 (cell, Point2D const&, bool, exclude). YRpp (consult-only,
-//   no LICENSE) names RevealCheck, InvalidCell, FindTechnoNearestTo and the
+//   and 0x47C3D0 (cell, Point2D const&, bool, exclude). YRpp
+//   names RevealCheck, InvalidCell, FindTechnoNearestTo and the
 //   vtable map names slot 0x198 DiscoveredBy; every offset reconfirmed here.
 #ifndef GG_MATCH_MAP_MAP_CLASS_REVEAL_CHECK_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_REVEAL_CHECK_METHODS_H

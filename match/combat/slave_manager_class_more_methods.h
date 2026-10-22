@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6AF580,
 //   0x6AF650, 0x6B0D60; ctor 0x6AF1A0; primary vtable @0x7F31C8). Names
-//   cross-checked against YRpp SlaveManagerClass.h / Timer.h (consult-only;
+//   cross-checked against YRpp (
 //   every offset reconfirmed numerically from the disassembly below).
 //
 // SlaveManagerClass extra methods: SetOwner / CreateSlave / Deploy2.

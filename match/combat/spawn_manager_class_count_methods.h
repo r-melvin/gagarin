@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access + virtual-call disassembly at 0x6B7D80),
-//   cross-checked against YRpp SpawnManagerClass.h (consult-only; NO LICENSE —
+//   cross-checked against YRpp (
 //   every offset reconfirmed numerically here).
 //
 // SpawnManagerClass::CountLaunchingSpawns — walk the SpawnedNodes vector and

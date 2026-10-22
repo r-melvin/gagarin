@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6F1870 / 0x6F18A0 /
 //   0x6F18E0 (Ghidra disasm).  Structure cross-checked against YRpp
-//   TeamTypeClass.h / AbstractTypeClass.h (consult-only, no LICENSE; each offset
+//   (each offset
 //   and call target reconfirmed against the user's binary).
 //
 // Translation unit: TeamTypeClass waypoint/group accessors.

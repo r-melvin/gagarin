@@ -27,7 +27,7 @@
 //       buffer by the returned cell index. `[o+0x44]`/`0x7E` is the same
 //       overlay-index pair already confirmed in
 //       match/map/veinhole_monster_recalculate_methods.h.
-//   YRpp (consult-only, NO LICENSE) names VeinholeMonsterClass and
+//   YRpp names VeinholeMonsterClass and
 //   RecalculateSpread @0x74E6B0; every offset is reconfirmed above.
 #ifndef GG_MATCH_MAP_VEINHOLE_INIT_GROWTH_METHODS_H
 #define GG_MATCH_MAP_VEINHOLE_INIT_GROWTH_METHODS_H

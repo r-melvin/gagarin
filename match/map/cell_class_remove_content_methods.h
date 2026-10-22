@@ -5,8 +5,8 @@
 //   the list spine `[ESI+0x30]`, the cell coordinate `MOVSX ECX,[EDI+0x24]` /
 //   `MOVSX EDX,[EDI+0x26]`, the object location `LEA EDX,[ESI+0x9C]`, and the
 //   three primary-vtable slots `CALL [EAX+0x2C]`, `CALL [EDX+0xC0]`,
-//   `CALL [EAX+0xF4]`. Name from the YRpp method map (CellClass::RemoveContent,
-//   consult-only).
+//   `CALL [EAX+0xF4]`. Name from the YRpp method map (CellClass::RemoveContent
+//   ).
 #ifndef GG_MATCH_MAP_CELL_CLASS_REMOVE_CONTENT_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_REMOVE_CONTENT_METHODS_H
 

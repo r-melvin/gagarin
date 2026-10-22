@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x5587F0 / 0x559EB0), cross-checked
-//   against YRpp LoadOptionsClass.h (consult-only; reconfirmed here).
+//   against YRpp (consult-only; reconfirmed here).
 //
 // LoadOptionsClass — the load/save/delete savegame dialog driver. It carries a
 // COM-style vtable pointer at +0x00 (virtual dtor) followed by the dialog Mode,
@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// LoadOptionsMode (YRpp LoadOptionsClass.h, reconfirmed from the disasm:
+// LoadOptionsMode (YRpp, reconfirmed from the disasm:
 // LoadDialog stores 1 into Mode@+4, SaveDialog stores 2, DeleteDialog stores 3).
 enum LoadOptionsMode
 {

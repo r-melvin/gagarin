@@ -10,7 +10,7 @@
 //     ghidra memory read 0x00817B90 40 -> ".?AVAircraftClass@@"
 //   and it carries 0x007099E0 at slot +0x474. AircraftClass overrides the two
 //   later slots, so +0x480 = 0x00709A30 and +0x484 = 0x00709A40 are the base
-//   assignments recorded in docs/decomp_spec/vtable_map_techno.md; the bodies
+//   assignments; the bodies
 //   here are pinned by their addresses regardless of slot.
 //
 //   Member offsets confirmed numerically from the three bodies:
@@ -20,12 +20,9 @@
 //   Both agree with the committed spine match/_layout/techno_class.h (lines
 //   207 and 252).
 //
-//   NOTE, recorded because the seed disagrees: the private worklist seed
-//   calls 0x007099E0 `technoIsReloadComplete`. It is not a reload predicate —
-//   the timer it reads is at +0x168, which the TechnoClass constructor and the
-//   committed spine both give as IdleActionTimer (the reload timer is a
-//   different member). docs/decomp_spec/re_findings/update_idle_action.md has
-//   it right: "isItTimeForIdleActionYet".
+//   0x007099E0 is not a reload predicate: the timer it reads is at +0x168,
+//   which the TechnoClass constructor and the committed spine both give as
+//   IdleActionTimer (the reload timer is a different member).
 #ifndef GG_MATCH_CORE_TECHNO_CLASS_IDLE_ACTION_METHODS_H
 #define GG_MATCH_CORE_TECHNO_CLASS_IDLE_ACTION_METHODS_H
 

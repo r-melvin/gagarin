@@ -5,7 +5,7 @@
 //   (`MOV EDI,ECX`) and scales by 0x70 (`LEA ECX,[EDI*8]; SUB ECX,EDI;
 //   SHL ECX,4`) onto 0x7E1BC6 == &TheaterArray[0].Extension, so the table
 //   base is 0x7E1B78 with Extension at +0x4E; SmudgeTypeClass::Array.Items
-//   at 0xA8EC1C and .Count at 0xA8EC28; per type the Theater byte
+//   at 0xA8EC1C and.Count at 0xA8EC28; per type the Theater byte
 //   [ESI+0x22C], the ID at ESI+0x24 (pushed as the file-name argument) and
 //   Image at [ESI+0xA4]. The five pushed arguments and `ADD ESP,0x14` give
 //   the __cdecl CRT _makepath at 0x7C9FF0 (path, drive, dir, fname, ext);
@@ -13,8 +13,7 @@
 //   object at [ESP+0x0C], constructed by CALL 0x4739F0, read through CALL
 //   0x4A3890 and torn down inline (0x7E16B0 at +0, +0x64 zeroed, 0x43AE50
 //   on +0x58, 0x7E1668 at +0, 0x431B80). Names cross-checked against YRpp
-//   SmudgeTypeClass.h / ObjectTypeClass.h / Theater.h (consult-only; NO
-//   LICENSE; every offset reconfirmed above). The file object agrees with
+//   (every offset reconfirmed above). The file object agrees with
 //   match/platform/file_system_load_whole_methods.h and the Theater record
 //   with match/combat/veinhole_monster_class_methods.h (neither edited;
 //   re-derived here so the TU stands alone).

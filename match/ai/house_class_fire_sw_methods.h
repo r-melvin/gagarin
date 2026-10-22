@@ -13,8 +13,8 @@
 //   SuperClass::SetReadiness 0x6CB820, SuperClass::StopPreclickAnim 0x6CB830
 //   and the per-house notification 0x4FAF00 (__thiscall SuperClass*,
 //   CellStruct&). `RET 0x8` fixes two stack arguments.  Names cross-checked
-//   against YRpp HouseClass.h / SuperClass.h / SuperWeaponTypeClass.h
-//   (consult-only; every offset reconfirmed above).
+//   against YRpp
+//   (every offset reconfirmed above).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_FIRE_SW_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_FIRE_SW_METHODS_H
 

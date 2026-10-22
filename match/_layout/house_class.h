@@ -31,7 +31,7 @@
 //     the ten UnitTrackerClass blocks at stride 0x808, 0x328 -> 0x5378;
 //     the twelve CounterClass blocks at stride 0x14, 0x5500 -> 0x55F0.
 //
-//   Cross-read against YRpp HouseClass.h: 185 named members claimed;
+//   Cross-read against YRpp: 185 named members claimed;
 //   180 confirmed by a ctor store or by exact closure between two confirmed
 //   neighbours; 5 unconfirmed and recorded as unknown_XX (0x549C ZoneInfos —
 //   bounded but never written, 0x16058/0x1605C StartingPoint/StartingAllies,

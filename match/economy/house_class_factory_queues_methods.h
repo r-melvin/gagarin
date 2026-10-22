@@ -23,8 +23,8 @@
 //   bodies are laid out in the source order 7, 0x28, 0x10, 3. The FactoryClass
 //   offsets agree with match/economy/factory_class_methods.h (Items @0x44,
 //   Count @0x50, Object @0x58, IsSuspended @0x70, IsManual @0x71). Names
-//   cross-checked against YRpp HouseClass / FactoryClass (consult-only, NO
-//   LICENSE) and re-derived here from the disassembly.
+//   cross-checked against YRpp HouseClass / FactoryClass
+//   and re-derived here from the disassembly.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_FACTORY_QUEUES_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_FACTORY_QUEUES_METHODS_H
 

@@ -2,9 +2,7 @@
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every offset and virtual slot below is read numerically off the user's
 //   retail gamemd.exe v1.001 with the local Ghidra CLI at 0x632D10 and
-//   0x6330C0. The private-reference seed (consult-only, no LICENSE) names these the
-//   observable-node target setters; it supplied intent only, and no layout, no
-//   calling convention and no bytes.
+//   0x6330C0.
 //
 // Two instances of the same "point this slot at that node" operation. Both
 // take the new node in the single stack argument, return nothing (`RET 0x4`

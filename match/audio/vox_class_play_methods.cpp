@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x750E20 / 0x7531A0.
-//   Names from YRpp VoxClass.h (consult-only).
+//   Names from YRpp.
 
 #include "vox_class_play_methods.h"
 

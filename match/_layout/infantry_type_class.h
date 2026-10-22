@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: InfantryTypeClass ctor FUN_0x005236A0 member-access sites
-//   (docs/decomp_spec/type_hierarchy_layout.md, "### InfantryTypeClass
-//   (start 0xDF8, size 0xED0) — ctor 0x5236A0"), cross-checked vs YRpp
-//   InfantryTypeClass.h. Verified by the doc anchors align_ECC@0xECC,
+//   (start 0xDF8, size 0xED0), cross-checked vs YRpp.
+//   Verified by the pad anchors align_ECC@0xECC,
 //   FireUp@0xE40, DeadBodies@0xE50, HarvestRate@0xEB8 landing exactly.
 //
 // InfantryTypeClass — leaf type blueprint for infantry units. Derives

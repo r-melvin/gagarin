@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x71AE50. Name from
-//   YRpp TemporalClass.h (consult-only).
+//   YRpp.
 
 #include "temporal_class_warp_target_methods.h"
 

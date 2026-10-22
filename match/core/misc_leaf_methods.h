@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x407020 / 0x409310 / 0x411640 / 0x422BC0 / 0x437F30. None is
-//   bound by YRpp or the seed map.
+//   bound by YRpp.
 //   Bytes and offsets read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at each address below. Nothing names any
 //   of these three, so they keep Ghidra placeholder names.
@@ -52,7 +52,7 @@ struct Obj_00409300b
 GG_STATIC_ASSERT(offsetof(Obj_00409300b, unknown_08) == 0x8);
 
 // Declared only; __thiscall, returns an int.
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AnimClass's own vtable is 0x7E3354.
 //   0x422BC0 -> AnimClass slot 46 (byte-off 0xB8).
 // No other table in the image holds it, so the slot is declared on
@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00409300b, unknown_08) == 0x8);
 struct AnimClass_00422B00;
 int __fastcall FUN_005F6BD0(AnimClass_00422B00* self);
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AnimClass's own vtable is 0x7E3354.
 //   0x422BC0 -> AnimClass slot 46 (byte-off 0xB8).
 // That table is the only table in the image that holds it, so the slot is
@@ -96,7 +96,7 @@ struct Obj_00437F00
     Pair8 FUN_00437F30() const;
 };
 
-// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep, docs/rtti_sweep.md).
+// PLACEHOLDER DELIBERATELY KEPT (whole-image RTTI sweep).
 // 0x4DB250 is slot 69 (byte-off 0x114) of FootClass's own vtable 0x7E8C94 and
 // appears in no other table in the image, so FootClass declares it -- an empty
 // `__stdcall` virtual. The modelled signature takes two raw `unsigned int`s and

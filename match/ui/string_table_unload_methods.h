@@ -7,7 +7,7 @@
 //   pointer arrays `[0xB1CF78]` and `[0xB1CF7C]` walked with `[ECX+ESI*4]`
 //   against the count `[0xB1CF70]`; the single buffer `[0xB1CF74]`; the
 //   dword store `MOV [0xB1CF80],EDI` (a 4-byte flag); and the CRT free at
-//   0x7C8B3D (`PUSH p; CALL; ADD ESP,4`). YRpp StringTable.h names only
+//   0x7C8B3D (`PUSH p; CALL; ADD ESP,4`). YRpp names only
 //   (consult-only, no LICENSE): StringTable::Unload (static), ValueCount
 //   @0xB1CF70, Labels @0xB1CF74, Values @0xB1CF78, ExtraValues @0xB1CF7C,
 //   IsLoaded @0xB1CF80, LastLoadedString @0xB1CF88; 0xB1CF8C is unnamed there.

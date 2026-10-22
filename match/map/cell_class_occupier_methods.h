@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 via the local Ghidra CLI
 //   (member-access + virtual-call disassembly at 0x47EBA0 / 0x47EBF0 /
-//   0x47EC40). Signatures cross-checked against YRpp CellClass.h (consult-only,
-//   no LICENSE; every offset reconfirmed numerically below).
+//   0x47EC40). Signatures cross-checked against YRpp
+//   (every offset reconfirmed numerically below).
 //
 // Three CellClass occupier-type accessors. Each is gated by a global byte flag
 // (MOV AL,[0x00A8E9A0]) then walks the cell occupier linked list, calling the

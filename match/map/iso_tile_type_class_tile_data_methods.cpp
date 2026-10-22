@@ -58,11 +58,9 @@ int IsometricTileTypeClass::GetMorphType(int idx)
 // Bit 2 of the sub-tile's flag word: the connect/ramp flag the LAT draw uses to
 // pick a transition variant.
 //
-// CORRECTION to docs/decomp_spec/re_findings/faithful_terrain_lighting-lat.md
-// section B.3, which gives this body's out-of-range fall-back as
-// `return subtile / cellCount;`. It is not: both failure paths in the binary
-// jump to 0x00547221, which is `XOR AL,AL; RET 4`. The document is reading a
-// Ghidra artefact — EAX happens to hold the IDIV quotient at that label, so the
+// The out-of-range fall-back is not `return subtile / cellCount;`: both
+// failure paths in the binary jump to 0x00547221, which is `XOR AL,AL; RET 4`.
+// A quotient there would be a Ghidra artefact — EAX happens to hold the IDIV quotient at that label, so the
 // decompiler attributed it as the returned value. The zeroing of AL alone (not
 // EAX) is also what fixes the return width here as bool, against the int of
 // its sibling at 0x5471B0.

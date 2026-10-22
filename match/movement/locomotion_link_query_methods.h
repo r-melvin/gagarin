@@ -7,9 +7,8 @@
 //   two ends of the same drain link. 0x710460 tail-jumps to 0x472140 with
 //   `[ECX+0x2BC]` already in ECX. 0x710600 and 0x710630 both dispatch through
 //   vtable slot +0x2C (the type discriminator) and slot +0x84 (the type
-//   object), then read the byte at +0xD97 of the type. Names cross-checked
-//   against the private-reference seed (consult-only); every offset and every
-//   convention re-derived here from the disassembly.
+//   object), then read the byte at +0xD97 of the type. Every offset and
+//   every convention is derived here from the disassembly.
 #ifndef GG_MATCH_MOVEMENT_LOCOMOTION_LINK_QUERY_METHODS_H
 #define GG_MATCH_MOVEMENT_LOCOMOTION_LINK_QUERY_METHODS_H
 

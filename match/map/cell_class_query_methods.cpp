@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Bodies and
 //   member offsets derived directly from the disassembly; signatures
-//   cross-checked against YRpp CellClass.h (consult-only, no LICENSE).
+//   cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x47C4D0  CellClass::FindObjectOfType (__thiscall)
@@ -12,7 +12,7 @@
 
 #include "cell_class_query_methods.h"
 
-// AbstractType discriminants returned by WhatAmI() (YRpp GeneralDefinitions.h).
+// AbstractType discriminants returned by WhatAmI() (YRpp).
 #define ABS_BUILDING 6     // CMP EAX,0x06
 #define ABS_TERRAIN  0x24  // CMP EAX,0x24
 

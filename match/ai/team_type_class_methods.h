@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6F1870 / 0x6F18A0 /
-//   0x6F18E0), cross-checked against YRpp TeamTypeClass.h / AbstractTypeClass.h
-//   (consult-only, no LICENSE; every offset reconfirmed numerically below).
+//   0x6F18E0), cross-checked against YRpp
+//   (every offset reconfirmed numerically below).
 //
 // TeamTypeClass — an AI [TeamTypes] INI "team blueprint", derived from
 // AbstractTypeClass.  Only the members the three matched accessors touch are

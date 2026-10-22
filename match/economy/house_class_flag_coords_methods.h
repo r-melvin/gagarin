@@ -12,9 +12,9 @@
 //   arguments, AL); the map object 0x87F7E8 with CoordinatesLegal 0x568300
 //   (one pushed cell pointer, AL) and GetCellAt 0x5657A0 (one pushed cell
 //   pointer, cell pointer in EAX); CellClass 0x483460 (__thiscall, no
-//   arguments, AL). Names cross-checked against YRpp HouseClass.h
-//   (UpdateFlagCoords, OurFlagCarrier, OurFlagCoords; consult-only, no
-//   LICENSE) and re-derived here.
+//   arguments, AL). Names cross-checked against YRpp
+//   (UpdateFlagCoords, OurFlagCarrier, OurFlagCoords
+//   ) and re-derived here.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_FLAG_COORDS_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_FLAG_COORDS_METHODS_H
 

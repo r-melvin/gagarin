@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 via the local Ghidra CLI
 //   (member-access + virtual-call disassembly at 0x4DE710). Signatures
-//   cross-checked against YRpp FootClass.h / TechnoClass.h / TechnoTypeClass.h
-//   (consult-only, no LICENSE; every offset reconfirmed numerically below).
+//   cross-checked against YRpp
+//   (every offset reconfirmed numerically below).
 //
 // FootClass::RemoveFirstPassenger (retail 0x4DE710) pops the head of the
 // embedded transport cargo list and, when the transport is OpenTopped and the
@@ -30,7 +30,7 @@ class TechnoTypeClass;
 class FootClass;
 
 // PassengersClass -- { int NumPassengers; FootClass* FirstPassenger; } singly
-// linked through ObjectClass::NextObject. (YRpp TechnoClass.h)
+// linked through ObjectClass::NextObject. (YRpp)
 class PassengersClass
 {
 public:

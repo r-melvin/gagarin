@@ -11,7 +11,7 @@
 //   The same handle/voice/peer shapes are already pinned by 0x405FD0 in
 //   match/audio/sample_registry_methods.h; this TU redeclares them locally
 //   (with the token typed as a pointer, which is how 0x406060 reads it) so it
-//   stands alone. The parent map names 0x406060 Audio::EndLooping.
+//   stands alone. YRpp names 0x406060 Audio::EndLooping.
 #ifndef GG_MATCH_AUDIO_AUDIO_END_LOOPING_METHODS_H
 #define GG_MATCH_AUDIO_AUDIO_END_LOOPING_METHODS_H
 

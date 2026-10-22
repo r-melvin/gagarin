@@ -3,7 +3,7 @@
 //   Entry points and vtable addresses extracted individually from the user's
 //   retail gamemd.exe v1.001 via the local Ghidra CLI. Three remaining instances
 //   share the VectorBase layout pinned in vector_resize_methods.h. None is
-//   bound by YRpp or the seed map.
+//   bound by YRpp.
 //
 // VectorClass construction. Take a size and an optional caller-supplied buffer:
 // adopt the buffer when one is given, allocate when it is not, and do neither

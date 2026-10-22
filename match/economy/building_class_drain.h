@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x70FEC0 (Ghidra disasm).
 //   Offset 0x1D0 (DrainingMe) read directly from `MOV EDX,[ECX+0x1d0]` in
-//   IsBeingDrained; cross-checked vs YRpp TechnoClass.h DrainingMe @0x1D0.
+//   IsBeingDrained; cross-checked vs YRpp DrainingMe @0x1D0.
 //
 // BuildingClass::IsBeingDrained — predicate: is some draining unit (e.g. a
 // Floating Disc) currently siphoning power from this building? Reads the

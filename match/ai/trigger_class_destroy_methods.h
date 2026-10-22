@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x7265C0 / 0x726720), cross-checked
-//   against YRpp TriggerClass.h / TriggerTypeClass.h / TActionClass.h /
-//   HouseTypeClass.h / HouseClass.h / ArrayClasses.h (consult-only; every
+//   against YRpp
+//   (every
 //   offset reconfirmed numerically here).
 //
 // TriggerClass::FireActions walks the trigger's type action list and Execute()s

@@ -7,7 +7,7 @@
 //   / `MOV byte ptr [ESI+0x1C8],0`, the type virtual `CALL [EDX+0x84]`, the
 //   sound index `CMP dword ptr [EAX+0x5A8],-1`, and the coordinate copy from
 //   `LEA EAX,[ESI+0x9C]`. Names for the method, the E_POINTER reporter
-//   (0x7DC720) and VocClass::PlayAt (0x7509E0) come from YRpp (consult-only).
+//   (0x7DC720) and VocClass::PlayAt (0x7509E0) come from YRpp.
 //
 // TechnoClass::Reactivate — bring a deactivated (EMP'd / powered-down) object
 // back: reset via the +0x3D0 virtual, power the locomotor back on if this is a

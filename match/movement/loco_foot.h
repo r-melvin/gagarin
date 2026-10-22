@@ -5,7 +5,7 @@
 //     +0x388 PrimaryFacing   0x55A730 / 0x55A7D0 `ADD ECX,0x388`
 //     vtable +0x1C8          0x55A8C0 `CALL [EDX+0x1C8]` (int result)
 //     vtable +0x538          0x55AD10 `CALL [EDX+0x538]` (int result)
-//   Names from YRpp (consult-only).
+//   Names from YRpp.
 //
 // Address-local prefix view of the linked object. The public method signatures
 // use the project FootClass forward declaration; this uniquely named layout view

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every offset, flag mask and call target below is read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at the four
-//   addresses named. None is bound by YRpp or the seed map, so the retail
+//   addresses named. None is bound by YRpp, so the retail
 //   placeholder names are kept.
 #ifndef GG_MATCH_CORE_SMALL_MISC37_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC37_METHODS_H

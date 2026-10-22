@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every offset and argument slot read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at the address in each
-//   annotation. None is bound by YRpp or the seed map, so the types and entry
+//   annotation. None is bound by YRpp, so the types and entry
 //   points keep Ghidra placeholder names and the fields stay unknown_XX.
 //
 // Small value-type constructors and paired field writers.

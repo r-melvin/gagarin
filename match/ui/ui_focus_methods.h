@@ -3,7 +3,7 @@
 //   Bytes and IAT slots read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x622800. The two indirect calls were resolved from the
 //   binary's own import labels: 0x007E1498 is PTR_ShowWindow and 0x007E14D0 is
-//   PTR_SetForegroundWindow. Signature cross-checked against YRpp UI.h
+//   PTR_SetForegroundWindow. Signature cross-checked against YRpp
 //   (`static void __fastcall FocusOnWindow(HWND)`, consult-only, no LICENSE).
 #ifndef GG_MATCH_UI_UI_FOCUS_METHODS_H
 #define GG_MATCH_UI_UI_FOCUS_METHODS_H

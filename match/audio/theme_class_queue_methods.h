@@ -12,8 +12,8 @@
 //   with `[EDX+0x34]` (Type) and `[EDX+0xBC]` (the type's side index), the int
 //   global `[0xA8B238]` (SessionClass::Instance.GameMode) and the pointer
 //   global `[0xA8B230]` (ScenarioClass::Instance) with `[ECX+0x1254]`.
-//   Names cross-checked against YRpp ThemeClass.h / HouseClass.h /
-//   ScenarioClass.h (consult-only, NO LICENSE); every offset reconfirmed here.
+//   Names cross-checked against YRpp
+//   every offset reconfirmed here.
 //   The ThemeClass / ThemeControl layout repeats the one already proven in
 //   match/audio/theme_class_methods.h (Themes@0x14 -> Items@0x18, Count@0x24).
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_QUEUE_METHODS_H

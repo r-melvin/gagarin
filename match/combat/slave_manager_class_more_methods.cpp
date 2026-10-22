@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6AF580,
-//   0x6AF650, 0x6B0D60). Names cross-checked against YRpp SlaveManagerClass.h
-//   (consult-only); every offset reconfirmed numerically from the disassembly.
+//   0x6AF650, 0x6B0D60). Names cross-checked against YRpp
+//   every offset reconfirmed numerically from the disassembly.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6AF580  SlaveManagerClass::SetOwner    (__thiscall)

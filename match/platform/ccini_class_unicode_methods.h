@@ -10,7 +10,7 @@
 //   strlen off the buffer start; the forward to 0x528660 (WriteString,
 //   __thiscall, three pushed pointers). No member of `this` is touched: it is
 //   spilled to the frame at entry and reloaded into ECX for the forward.
-//   Method names from YRpp CCINIClass.h (consult-only; names only).
+//   Method names from YRpp (consult-only; names only).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_UNICODE_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_UNICODE_METHODS_H
 

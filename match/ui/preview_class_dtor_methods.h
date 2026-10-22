@@ -9,7 +9,7 @@
 //     vtable slot 0 with a pushed `1` (the scalar-deleting-destructor
 //     "free the block too" flag), the same slot already confirmed in
 //     match/ui/preview_class_surface_methods.h.
-//   Name cross-checked against YRpp PreviewClass.h
+//   Name cross-checked against YRpp
 //   (`~PreviewClass() JMP_THIS(0x6406F0)`; consult-only, NO LICENSE; the
 //   offset reconfirmed above).
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_DTOR_METHODS_H

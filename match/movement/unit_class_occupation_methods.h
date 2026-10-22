@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp UnitClass.h / Interfaces.h (consult-only).
+//   cross-checked against YRpp.
 //
-//   UnitClass : FootClass (FootClass sizeof = 0x6C0; spine in ../_layout).
+//   UnitClass : FootClass (FootClass sizeof = 0x6C0; spine in../_layout).
 //   The occupation / door methods touch:
 //     - UnloadTimer       @0x350 (TechnoClass base — start the door transition)
 //     - Locomotor         @0x674 (FootClass base — ILocomotion COM smart ptr)

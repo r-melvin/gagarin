@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x44E880), cross-checked against
-//   YRpp BuildingClass.h / BuildingTypeClass.h (consult-only, NO LICENSE;
-//   every offset reconfirmed numerically from the disasm below).
+//   YRpp
+//   (every offset reconfirmed numerically from the disasm below).
 //
 // BuildingClass::GetPowerDrain — the structure's per-frame power consumption.
 // The retail body is:

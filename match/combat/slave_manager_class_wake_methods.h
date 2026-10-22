@@ -13,11 +13,11 @@
 //   bytes 00 00 00 00). Owner@0x21C and IsHumanPlayer@0x1EC agree with
 //   match/_layout/techno_class.h and match/economy/house_class_lookup_methods.h;
 //   State/LastScanFrame with match/combat/slave_manager_class_methods.h (none
-//   edited; re-derived here so the TU stands alone). Slot 0x1BC is getCell per
-//   docs/decomp_spec/vtable_map_techno.md; slot 0x338 (0x70F8F0 in the leaf
-//   vftable at 0x7F4960) is not named by the map or YRpp and stays a
+//   edited; re-derived here so the TU stands alone). Slot 0x1BC is getCell;
+//   slot 0x338 (0x70F8F0 in the leaf
+//   vftable at 0x7F4960) is not named by YRpp and stays a
 //   placeholder. YRpp names the function (SlaveManagerClass::ShouldWakeUpNow)
-//   and RulesClass::Instance - consult-only, no LICENSE.
+//   and RulesClass::Instance.
 #ifndef GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_WAKE_METHODS_H
 #define GG_MATCH_COMBAT_SLAVE_MANAGER_CLASS_WAKE_METHODS_H
 

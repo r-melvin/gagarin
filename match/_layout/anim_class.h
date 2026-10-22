@@ -23,7 +23,7 @@
 //     * SkipProcessOnce (0x19C) and RemainingIterations (0x195) are the only
 //       two fields in the 0x194..0x19E bool run set to 1.
 //
-//   Cross-read against YRpp AnimClass.h: 37 named members claimed, 37
+//   Cross-read against YRpp: 37 named members claimed, 37
 //   confirmed. No disagreement found.
 //
 // AnimClass — a playing animation. Derives ObjectClass at offset 0.

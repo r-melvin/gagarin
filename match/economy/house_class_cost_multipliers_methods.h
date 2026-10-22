@@ -4,8 +4,8 @@
 //   local Ghidra CLI at 0x50BF60: the five float multipliers at +0x5390..
 //   +0x53A0 seeded with 1.0f, the owned-building list at +0x144 (Items) /
 //   +0x150 (Count) walked per building, the building's Type at +0x520 and
-//   the type's five factor floats at +0x16D0..+0x16E0. YRpp (consult-only,
-//   no LICENSE) names CalculateCostMultipliers.
+//   the type's five factor floats at +0x16D0..+0x16E0. YRpp
+//   names CalculateCostMultipliers.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_COST_MULTIPLIERS_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_COST_MULTIPLIERS_METHODS_H
 

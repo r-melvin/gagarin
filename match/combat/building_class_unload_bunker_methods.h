@@ -6,7 +6,7 @@
 //   +0x674 with the COM slots +0x58 (no args) and +0x70 (int, CoordStruct by
 //   value), the building's GetCoords slot +0x48, the unit's slot +0x544
 //   (one double) and the building's slot +0x274 (one int). YRpp
-//   (consult-only, no LICENSE) names UnloadBunker and BunkerLinkedItem.
+//   names UnloadBunker and BunkerLinkedItem.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_UNLOAD_BUNKER_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_UNLOAD_BUNKER_METHODS_H
 

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Behaviour + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly @ 0x672280 / 0x672360 /
-//   0x6723D0), cross-checked against YRpp RulesClass.h (consult-only, no LICENSE;
+//   0x6723D0), cross-checked against YRpp (consult-only, no LICENSE;
 //   every address + calling convention reconfirmed below from the disasm).
 //
 // RulesClass::Read_{Infantry,Vehicle,Aircraft}Types — the P4 INI list parsers.

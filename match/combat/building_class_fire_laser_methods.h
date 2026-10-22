@@ -11,8 +11,8 @@
 //   value); on the new laser `[EAX+0x1C]` = 3 and byte `[EAX+0x20]` = 1;
 //   on the building `[ESI+0x664]` = 0 and the timer at `LEA EDX,[ESI+0x2EC]`
 //   stamped from `[0xA8ED84]` (CurrentFrame) with `[[0x8871E0]+0x4A4]`.
-//   Names cross-checked against YRpp BuildingClass.h / LaserDrawClass.h
-//   (consult-only) and used as names only.
+//   Names cross-checked against YRpp
+//   and used as names only.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_FIRE_LASER_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_FIRE_LASER_METHODS_H
 

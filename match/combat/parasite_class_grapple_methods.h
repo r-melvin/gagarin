@@ -9,7 +9,7 @@
 //   `[EAX+0xAC]` (the frame index), the timer rewrite at `[ECX+0xB4]` /
 //   `[EBP+4]` / `[EBP+8]` storing frame / an uninitialised stack dword /
 //   0x80, and `[ECX+0xC0]` = 0x80; 0xA8ED84 is the frame counter. Names
-//   cross-checked against YRpp ParasiteClass.h / AnimClass.h (consult-only;
+//   cross-checked against YRpp (
 //   every offset reconfirmed above). Victim @0x28 and the parasite's Owner
 //   @0x24 agree with match/combat/parasite_class_infect_methods.h.
 #ifndef GG_MATCH_COMBAT_PARASITE_CLASS_GRAPPLE_METHODS_H

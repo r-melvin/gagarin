@@ -7,7 +7,7 @@
 //   with the CRT `qsort` 0x7C8B48 against the comparison function at
 //   0x725040; the lookup is an inlined binary search expanded twice, and
 //   the copy is a 28-byte `REP MOVSD` from the entry's data or from the
-//   default at 0xB78820. Names cross-checked against YRpp ToolTipManager.h
+//   default at 0xB78820. Names cross-checked against YRpp
 //   (consult-only; NO LICENSE).
 #ifndef GG_MATCH_UI_TOOLTIP_MANAGER_FIND_METHODS_H
 #define GG_MATCH_UI_TOOLTIP_MANAGER_FIND_METHODS_H

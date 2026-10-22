@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6B7D80).
-//   Names cross-checked against YRpp SpawnManagerClass.h (consult-only).
+//   Names cross-checked against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6B7D80  SpawnManagerClass::CountLaunchingSpawns (__thiscall)

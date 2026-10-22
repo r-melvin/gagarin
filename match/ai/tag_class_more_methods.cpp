@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at 0x6E5380,
 //   0x6E5570). Every offset/global reconfirmed numerically; names cross-checked
-//   against YRpp TagClass.h / TriggerClass.h (consult-only).
+//   against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6E5380  TagClass::ContainsTrigger (__thiscall)

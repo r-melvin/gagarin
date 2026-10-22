@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6E5E70), cross-checked against
-//   YRpp TagTypeClass.h (consult-only; reconfirmed numerically here).
+//   YRpp (reconfirmed numerically here).
 //
 //   TagTypeClass derives the committed AbstractTypeClass layout spine. The only
 //   members FindByNameOrID touches are ID (+0x24) and Name (+0x64) — both from

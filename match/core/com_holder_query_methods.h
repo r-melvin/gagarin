@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Slot numbers, the HRESULT constant and both IID addresses are read
 //   numerically off the user's retail gamemd.exe v1.001 via the local Ghidra
-//   CLI at 0x45AEA0 and 0x45AF20. Neither entry point is bound by YRpp or the
-//   seed map.
+//   CLI at 0x45AEA0 and 0x45AF20. Neither entry point is bound by YRpp.
 //
 // A pair of "re-point this holder at an interface queried from another" helpers.
 // They differ only in the IID pushed (0x818858 against 0x819088).

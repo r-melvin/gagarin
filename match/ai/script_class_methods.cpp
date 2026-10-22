@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp ScriptClass.h (consult-only, no LICENSE; each
+//   cross-checked against YRpp (each
 //   offset reconfirmed against the user's binary).
 //
 // Translation unit: ScriptClass mission-cursor accessors.

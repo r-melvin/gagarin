@@ -34,7 +34,7 @@ class SmudgeClass : public MapObjClassView
 public:
     // FUNCTION: GAMEMD 0x6B4A50
     SmudgeClass(SmudgeTypeClass* type, const MapObjCoord& coord, int arg3);
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
     SmudgeClass(const MapObjNoInit& noInit) : MapObjClassView(noInit) {}
 

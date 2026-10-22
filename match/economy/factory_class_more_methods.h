@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly of Suspend / GetBuildTimeFrames),
-//   cross-checked against the consult-only YRpp FactoryClass.h / StageClass.h /
-//   Timer.h / TechnoClass.h (no LICENSE; every offset reconfirmed numerically
+//   cross-checked against the YRpp
+//   (every offset reconfirmed numerically
 //   below). Shares the FactoryClass binding pinned in factory_class_methods.h;
 //   re-derived here so this translation unit is self-contained.
 //
@@ -69,7 +69,7 @@ GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 
 // ---------------------------------------------------------------------------
-// StageClass (YRpp StageClass.h)  (sizeof = 0x1C)
+// StageClass (YRpp)  (sizeof = 0x1C)
 //   +0x00 int          Value
 //   +0x04 bool         HasChanged
 //   +0x08 CDTimerClass Timer

@@ -44,7 +44,7 @@ GG_STATIC_ASSERT(offsetof(CategoryType_00475B70, ID) == 0x24);
 
 // The registry the reader and the writer share. Its Items pointer is read
 // from 0xA83C6C and its Count from 0xA83C78, twelve bytes apart, which puts
-// the vector's own base at 0xA83C68: the tree's Westwood vector header of
+// the vector's own base at 0xA83C68: the tree's vector header of
 // vtable / Items / Capacity / IsInitialized / IsAllocated / Count /
 // CapacityIncrement.
 struct CategoryTypeVector

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Each offset
-//   and constant reconfirmed numerically from the disassembly; YRpp HouseClass.h
-//   consulted for names only (no LICENSE).
+//   and constant reconfirmed numerically from the disassembly; YRpp
+//   consulted for names only.
 //
 // Translation unit: three independent HouseClass leaves.
 //

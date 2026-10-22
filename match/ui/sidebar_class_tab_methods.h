@@ -9,7 +9,7 @@
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_TAB_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_TAB_METHODS_H
 
-// AbstractType discriminants this switch tests (YRpp GeneralDefinitions.h).
+// AbstractType discriminants this switch tests (YRpp).
 #define ABS_UNIT           0x01
 #define ABS_AIRCRAFT       0x02
 #define ABS_BUILDING       0x03   // note: the *type* discriminant, not ABS_BUILDING(6)
@@ -25,7 +25,7 @@
 // The current sidebar/production context, at 0x005004E0 — takes no arguments
 // (retail pushes nothing and does not set ECX) and returns an int the caller
 // compares against 5. Descriptive name; the address carries no confirmed
-// Westwood one.
+// binary name.
 int __fastcall GetCurrentSidebarContext();
 
 #include "sidebar_class_methods.h"

@@ -9,7 +9,7 @@
 //   slots at [ESP+0x8/0x10/0xC]; the three-byte result written as a word
 //   plus a byte through the hidden return pointer ([ESP+0x98], `RET 0x10`),
 //   and the default copied the same way (`MOV DX,[ESI]; MOV DL,[ESI+2]`)
-//   on the miss path. Method name from YRpp CCINIClass.h (consult-only;
+//   on the miss path. Method name from YRpp (consult-only;
 //   name only).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_READ3BYTES_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_READ3BYTES_METHODS_H

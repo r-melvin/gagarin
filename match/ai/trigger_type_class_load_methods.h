@@ -9,7 +9,7 @@
 //   at `[item+0x24]`; the allocation is `PUSH 0xB4; CALL 0x7C8E17` followed
 //   by the __thiscall constructor 0x726C80 with the name pushed; and the
 //   per-item virtual is `CALL [EDX+0x64]` with the INI pushed. Method names
-//   are the YRpp ones (consult-only); every offset re-derived here.
+//   are the YRpp ones; every offset re-derived here.
 #ifndef GG_MATCH_AI_TRIGGER_TYPE_CLASS_LOAD_METHODS_H
 #define GG_MATCH_AI_TRIGGER_TYPE_CLASS_LOAD_METHODS_H
 

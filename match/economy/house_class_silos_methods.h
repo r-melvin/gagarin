@@ -6,8 +6,8 @@
 //   `FIDIV [EDI+0x310]` (TotalStorage), the building list `[EDI+0x6C]` with
 //   its count `[EDI+0x78]`, the building's `[ECX+0x81]` InLimbo and
 //   `[ECX+0x520]` Type, the type's `[EDX+0x16A8]` flag, and the building's
-//   slot `[EAX+0x124]` (Mark) called with 2. Names from YRpp HouseClass.h /
-//   BuildingClass.h (consult-only; names only).
+//   slot `[EAX+0x124]` (Mark) called with 2. Names from YRpp
+//   (names only).
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_SILOS_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_SILOS_METHODS_H
 

@@ -5,8 +5,8 @@
 //   CLI: the vtables from the `MOV dword ptr [ESI+n],imm32` stores, the
 //   subobject displacements from the store offsets (+0x00, +0x04, +0x18), the
 //   COM member displacement from `MOV EAX,[ESI+n]`, and the relayed addresses
-//   from the CALL displacements. None of these classes is bound by YRpp or the
-//   seed map, so all keep placeholder names built from their own addresses.
+//   from the CALL displacements. None of these classes is bound by YRpp,
+//   so all keep placeholder names built from their own addresses.
 //
 // Two destructor shapes for classes that carry more than one vtable, both
 // relaying to the same base destructor at 0x55A6F0:

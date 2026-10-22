@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, globals, the two out-parameter helpers and the vtable slots read
 //   off the user's retail gamemd.exe v1.001 via the local Ghidra CLI at
-//   0x5D7030. YRpp (consult-only, no LICENSE) supplies the names
+//   0x5D7030. YRpp supplies the names
 //   `MPGameModeClass::SpawnBaseUnits` (retail class name: MultiplayerGameMode),
 //   Unsorted::Bases (0xA8B258) and the
 //   UnitClass(UnitTypeClass*, HouseClass*) constructor at 0x7353C0; every

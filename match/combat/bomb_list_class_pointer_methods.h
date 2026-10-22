@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x439150. Address binding from YRpp
-//   (`BombListClass::PointerGotInvalid`, consult-only, no LICENSE).
+//   (`BombListClass::PointerGotInvalid`).
 //
 // The bomb vector sits at offset 0 of BombListClass — the existing sibling TU
 // models it as an opaque `char Bombs[0x18]`, but this function calls a *virtual*

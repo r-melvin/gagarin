@@ -11,7 +11,7 @@
 //   `[0xA8E9A0]` (byte), `[0xA8B238]` (dword), `[0xA83D4C]` (HouseClass*) and
 //   `[0xA8E7AC]` (dword); and the EVA call `MOV ECX,0x824E4C; OR EDX,-1;
 //   PUSH -1; CALL 0x752700` (VoxClass::Play, __fastcall). Names are the YRpp
-//   ones (consult-only); every offset re-derived here. Owner @0x21C and
+//   ones; every offset re-derived here. Owner @0x21C and
 //   InLimbo @0x81 agree with match/_layout/techno_class.h (not included:
 //   this TU needs the pointer-to-member vtable idiom on a locally complete
 //   type).

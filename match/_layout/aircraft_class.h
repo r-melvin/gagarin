@@ -15,7 +15,7 @@
 //   that vptr: `MOV dword [ESI+0x6C0],0x7E2250` @0x00413DA2. So AircraftClass's
 //   own data starts at 0x6C4, not 0x6C0.
 //
-//   Cross-read against YRpp AircraftClass.h: 10 named members claimed, 10
+//   Cross-read against YRpp: 10 named members claimed, 10
 //   confirmed. No disagreement found. (YRpp lists Type first and leaves the
 //   IFlyControl vptr implicit in the base list; the binary places it at 0x6C0,
 //   so the two agree once the second base subobject is written out.)

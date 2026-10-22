@@ -16,7 +16,7 @@
 //   match/audio/sample_registry_methods.h; neither is edited — this TU
 //   redeclares the parts it needs (plus the peer fields 0x90..0xBC and the
 //   voice fields 0x1C/0x28/0xA8/0x278, which are new here) so it stands alone.
-//   The parent map names 0x405D40 Audio::Stop (YRpp Audio.h, consult-only).
+//   YRpp names 0x405D40 Audio::Stop.
 #ifndef GG_MATCH_AUDIO_AUDIO_STOP_METHODS_H
 #define GG_MATCH_AUDIO_AUDIO_STOP_METHODS_H
 

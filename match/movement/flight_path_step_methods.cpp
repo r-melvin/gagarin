@@ -59,9 +59,8 @@
 // change; /Ox identical to /O2. Operand order reversed on the radian
 // multiplies: no change.
 //
-// Next verification step: rebuild the same body under a 12.00.8447 cl, which
-// docs/toolchain_evidence.md already records as the outstanding toolchain
-// follow-up, and re-measure. If the FILD round trip is the backend difference
+// Next verification step: rebuild the same body under a 12.00.8447 cl (an
+// outstanding toolchain follow-up), and re-measure. If the FILD round trip is the backend difference
 // it looks like, that alone realigns the stream and the remaining work is the
 // two copy blocks.
 int __fastcall FlightPathStep(CoordStruct* coord, VelocityClass* velocity,

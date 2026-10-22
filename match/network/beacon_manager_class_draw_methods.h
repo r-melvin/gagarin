@@ -8,7 +8,7 @@
 //   the house byte at +0x1F5. The two house probes 0x4F9A10 (int) and
 //   0x4F9A50 (HouseClass*) are __thiscall with one pushed argument; the
 //   beacon's own Draw at 0x430250 takes the surface and the bounds rectangle
-//   by value. YRpp (consult-only, no LICENSE) names Draw, Beacons,
+//   by value. YRpp names Draw, Beacons,
 //   AllocatedCount and CurrentPlayer; every offset reconfirmed here.
 #ifndef GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_DRAW_METHODS_H
 #define GG_MATCH_NETWORK_BEACON_MANAGER_CLASS_DRAW_METHODS_H

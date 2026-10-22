@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6F0A70 / 0x6F2040 /
 //   0x6F2070 (Ghidra disasm).  Structure cross-checked against YRpp
-//   TeamTypeClass.h / TeamClass.h (consult-only, no LICENSE; each offset,
+//   (each offset,
 //   global and call target reconfirmed against the user's binary).
 //
 // Translation unit: TeamTypeClass house/taskforce/instance helpers.

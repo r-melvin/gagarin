@@ -2,17 +2,12 @@
 // Provenance: own-binary-via-Ghidra | TSpp-name-cross-check
 //   Layout and every offset were read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI (the five methods below plus the
-//   inlined constructor body at 0x748FD7). Method names are cross-checked
-//   against TS++ src/utracker.h (Vinifera-Developers, GPL-3.0), corrected from
-//   Westwood snake_case to RA2 camelCase (`Increment_Unit_Total` ->
-//   `IncrementUnitTotal`, `Get_Total_Of_All` -> `GetTotalOfAll`).
+//   inlined constructor body at 0x748FD7).
 //
 // UnitTrackerClass — the per-house unit-production tally used for multiplayer
 // end-game statistics.
 //
-// RA2 DIVERGES FROM TIBERIAN SUN HERE. TS's UnitTrackerClass holds a heap
-// pointer (`long* UnitTotals; int UnitCount; int InNetworkFormat;`, 12 bytes).
-// RA2 inlines the table into the object: 512 ints at +0x000..+0x7FC, then
+// The table is inline in the object: 512 ints at +0x000..+0x7FC, then
 // UnitCount at +0x800 and InNetworkFormat at +0x804, for sizeof 0x808. The
 // binary proves it two ways:
 //   * GetAllTotals @0x7490C0 is `MOV EAX,ECX; RET` — the totals base *is* the

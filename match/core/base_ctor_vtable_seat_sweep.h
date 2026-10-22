@@ -14,7 +14,7 @@
 // The `this` return is load-bearing: written as `void` the trailing
 // `MOV EAX,ESI` disappears.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
+// Reviewed in the batch forty-one pass
 // (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
 // functions. Converting would cost nothing in bytes — a member spelled
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in

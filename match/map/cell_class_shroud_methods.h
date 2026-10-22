@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x481810, 0x487630, 0x487950),
-//   cross-checked against YRpp CellClass.h / MapClass.h (consult-only;
-//   reconfirmed numerically here). CellClass derives AbstractClass.
+//   cross-checked against YRpp
+//   (reconfirmed numerically here). CellClass derives AbstractClass.
 //
 // CellClass — shroud / neighbour helpers. This TU models only the members the
 // three matched methods touch:

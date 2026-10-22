@@ -11,13 +11,13 @@
 //       (`LEA EDX,[EAX+EAX*4]; MOV word ptr [EAX+EDX*2],0`) whose first word
 //       is the field written/tested.
 //     * the flat cell index is `Y*512 + X` (`SHL ECX,9; ADD ECX,EDX`) bounds
-//       checked against 0 .. 0x40000 and read from `[0x87F924]`, with the
+//       checked against 0.. 0x40000 and read from `[0x87F924]`, with the
 //       miss stamping the packed coord into `[0xABDC74]` (InvalidCell at
 //       0xABDC50, MapCoords @ +0x24) — the same fallback shape already
 //       confirmed in match/map/map_class_location_shrouded_methods.h.
 //   0x578460 is MapClass::IsWithinUsableArea(CellStruct const&, bool), already
 //   matched in match/map/map_class_local_radar_methods.cpp. Names cross-checked
-//   against YRpp MapClass.h (consult-only, NO LICENSE); offsets reconfirmed
+//   against YRpp; offsets reconfirmed
 //   here from the disassembly.
 #ifndef GG_MATCH_MAP_MAP_CLASS_UPDATE_PATHFINDING2_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_UPDATE_PATHFINDING2_METHODS_H

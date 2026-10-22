@@ -10,7 +10,7 @@
 //   `[EAX+0xD10]` (RateDown) and the stage tables reached as
 //   `[EAX+EDI*4+0xCD8]` / `[EAX+EDI*4+0xCF0]` (WeaponStage / EliteStage at
 //   0xCDC / 0xCF4, indexed one below the stage). Names cross-checked against
-//   YRpp TechnoClass.h / TechnoTypeClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_GATTLING_RATE_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_GATTLING_RATE_METHODS_H
 

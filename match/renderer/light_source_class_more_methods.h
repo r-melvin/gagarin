@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x554AA0-0x554AE5), cross-checked
-//   against YRpp LightSourceClass.h / BasicStructures.h (consult-only;
+//   against YRpp (consult-only;
 //   reconfirmed numerically from the disasm).
 //
 // LightSourceClass — extra (ChangeLevels) binding. Models only the members the

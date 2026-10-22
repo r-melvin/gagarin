@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   ScriptClass.h / ScriptTypeClass.h (consult-only, no LICENSE; every offset
+//   (every offset
 //   reconfirmed against the user's binary below).
 //
 // ScriptClass mission cursor accessors. ScriptClass : AbstractClass; the two

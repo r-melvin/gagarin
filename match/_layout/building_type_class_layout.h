@@ -1,9 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Oracle: BuildingTypeClass ctor FUN_0x0045DD90 member-access sites
-//   (docs/decomp_spec/type_hierarchy_layout.md, "### BuildingTypeClass
-//   (start 0xDF8, size 0x1798) — ctor 0x45DD90"), cross-checked vs YRpp
-//   BuildingTypeClass.h. Parent ctor 0x710AF0 (TechnoTypeClass). Anchors
+//   (start 0xDF8, size 0x1798), cross-checked vs YRpp.
+//   Parent ctor 0x710AF0 (TechnoTypeClass). Anchors
 //   align_E24, unknown_1538/153C/1540/1544, align_1794 land exactly; ctor
 //   ground-truth spot-checks ArrayIndex@0xDF8, Buildup@0xE00,
 //   unknown_1538@0x1538, DockingOffsets@0x1784.

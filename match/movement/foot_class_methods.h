@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 via the local Ghidra CLI
 //   (member-access + virtual-call disassembly at 0x4DF0D0 / 0x4DA1C0).
-//   Signatures cross-checked against YRpp FootClass.h (consult-only, no
-//   LICENSE; every offset reconfirmed numerically below).
+//   Signatures cross-checked against YRpp
+//   (every offset reconfirmed numerically below).
 //
 // Two small FootClass movement methods layered on the committed instance-side
 // spine (../_layout/foot_class.h). The spine models the COM vptrs as plain data

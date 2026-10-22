@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm). Names cross-checked
-//   against YRpp WaypointPathClass.h / ArrayClasses.h (consult-only).
+//   against YRpp.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x763980  WaypointPathClass::GetWaypoint      (__thiscall)

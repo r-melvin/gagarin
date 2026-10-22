@@ -13,8 +13,8 @@
 //     RulesClass +0xD0 [ESI+0xD0]  double (FMUL at 0x41FE50, failure coeff)
 //   Globals: RulesClass::Instance 0x8871E0; the 0.0 double at 0x7E2800 and
 //   the 0.5 double at 0x7E1738 (both read with `ghidra memory read`).
-//   Names cross-checked against YRpp AITriggerTypeClass.h / RulesClass.h
-//   (consult-only; NO LICENSE; every offset reconfirmed above). YRpp lists
+//   Names cross-checked against YRpp
+//   (every offset reconfirmed above). YRpp lists
 //   the two counters positionally as TimesExecuted / TimesCompleted; the
 //   retail bodies show +0x104 bumped on success only and +0x108 on both, so
 //   they are named Successes / Attempts here.

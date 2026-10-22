@@ -6,7 +6,7 @@
 //   clip rectangle, OR-tested for all-zero); surface slots `CALL [EDX+0x5C]`
 //   (Lock, two zeroed dwords pushed from two separately materialised
 //   registers), `[EAX+0x74]` (pitch), `[EDX+0x7C]` (width), `[EAX+0x80]`
-//   (height). Names cross-checked against YRpp BitFont.h / Surface.h
+//   (height). Names cross-checked against YRpp
 //   (consult-only, no LICENSE); YRpp types the Lock slot as (int, int), but
 //   only a by-value two-int struct reproduces the two XORs, so it is modelled
 //   that way here.

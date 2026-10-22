@@ -8,7 +8,7 @@
 //   +0xEC (2, 3, 6 accepted), flags at +0x140 (bit 0x100 = bridge) and
 //   overlay index at +0x44 (the 0x4A..0x63 and 0xCD..0xE6 bands), and the
 //   cell helpers 0x47C550 (one pushed argument) and 0x47C520. YRpp
-//   (consult-only, no LICENSE) names CanExistOnVictimCell; the parasite
+//   names CanExistOnVictimCell; the parasite
 //   layout agrees with match/combat/parasite_class_infect_methods.h.
 #ifndef GG_MATCH_COMBAT_PARASITE_CLASS_VICTIM_CELL_METHODS_H
 #define GG_MATCH_COMBAT_PARASITE_CLASS_VICTIM_CELL_METHODS_H

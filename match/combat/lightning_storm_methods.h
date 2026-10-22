@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, globals and offsets read off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x53AB50. The three bindings were taken from YRpp
-//   (consult-only, no LICENSE) and reconfirmed against the disassembly:
+//   and reconfirmed against the disassembly:
 //   0x53AB50 = LightningStorm::Init, the tail-position callee 0x53C280 =
 //   ScenarioClass::UpdateLighting, and the pointer global 0x00A83D4C =
 //   HouseClass::CurrentPlayer.

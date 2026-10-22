@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x7B66D0..0x7B7834.
-//   The private reference's `core/wide_string_class.cpp` named the entry points; the
-//   layout, the `__thiscall` conventions, the CRT helper addresses and every
+//   The layout, the `__thiscall` conventions, the CRT helper addresses and every
 //   constant below come from the retail disassembly.
 
 #include "wide_string_class.h"

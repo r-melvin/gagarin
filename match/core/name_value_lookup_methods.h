@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Table bases, extents and the element stride are read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI at 0x40DCE0 and
-//   0x45DD50. Neither entry point is bound by YRpp or the seed map.
+//   0x45DD50. Neither entry point is bound by YRpp.
 //
 // Two case-insensitive name lookups over static {name, value} tables. Both walk
 // a pointer by 8 while keeping a separate index, and the index is what the hit

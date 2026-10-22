@@ -6,7 +6,7 @@
 //   operator_new(4)), RadioLinks.Capacity @0xE8 (param[0x3A]=1),
 //   RadioLinks.IsAllocated @0xEC (byte param[0x3B]=1); LastCommands[0..2]
 //   @0xD4/0xD8/0xDC (param[0x35..0x37]=0). RadioLinks ends at 0xF0 ->
-//   sizeof(RadioClass)==0xF0. Cross-checked vs YRpp RadioClass.h.
+//   sizeof(RadioClass)==0xF0. Cross-checked vs YRpp.
 //
 // RadioClass — base of every object that can hold radio links (docked units,
 // transports, mind-control, etc.). Derives MissionClass at offset 0 and adds

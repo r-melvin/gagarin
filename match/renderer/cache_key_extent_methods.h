@@ -11,11 +11,9 @@
 //       in both, which is what fixes the field order below.
 //   Field names are positional: no RTTI reaches these two (the key is a plain
 //   POD with no vtable), so `Width`/`Height` is a reading of the multiply, not
-//   a recovered Westwood name.
+//   a recovered name.
 //
-//   The private-reference seed files these under audio/voc_codec.cpp as
-//   `computeFrameSize` / `compareAudioMixerStates`; the grouping is right (they
-//   are neighbours of one cache) and the audio attribution is not.
+//   They are neighbours of one cache; neither touches audio state.
 #ifndef GG_MATCH_RENDERER_CACHE_KEY_EXTENT_METHODS_H
 #define GG_MATCH_RENDERER_CACHE_KEY_EXTENT_METHODS_H
 

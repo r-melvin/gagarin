@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   AbstractClass.h `struct StorageClass` (consult-only; reconfirmed here).
+//   `struct StorageClass` (reconfirmed here).
 //
 // StorageClass — the 16-byte per-object Tiberium store (4 floats, one per
 // Tiberium type). Base of every harvester/refinery/silo's stored value.

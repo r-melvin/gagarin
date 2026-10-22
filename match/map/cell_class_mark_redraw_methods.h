@@ -15,8 +15,7 @@
 //       four dword stores through `MOV EDX,ESP`) plus a trailing flag.
 //     * `MOV EAX,<this>; ADD EAX,0x24; MOV ECX,0x87F7E8; CALL 0x6551C0` —
 //       CellClass::MapCoords at +0x24 handed to a MapClass singleton method.
-//   Names cross-checked against YRpp CellClass.h / RectangleStruct
-//   (consult-only, NO LICENSE).
+//   Names cross-checked against YRpp / RectangleStruct.
 #ifndef GG_MATCH_MAP_CELL_CLASS_MARK_REDRAW_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_MARK_REDRAW_METHODS_H
 

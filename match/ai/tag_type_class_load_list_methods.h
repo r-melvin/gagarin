@@ -11,7 +11,7 @@
 //   0x6CF2C0 on the table at 0xB0C110, and the per-entry load through
 //   vtable slot +0x64. The INI and vector shapes match the sibling
 //   match/ai/tag_type_class_save_methods.h. Names cross-checked against
-//   YRpp TagTypeClass.h (consult-only; NO LICENSE).
+//   YRpp.
 #ifndef GG_MATCH_AI_TAG_TYPE_CLASS_LOAD_LIST_METHODS_H
 #define GG_MATCH_AI_TAG_TYPE_CLASS_LOAD_LIST_METHODS_H
 

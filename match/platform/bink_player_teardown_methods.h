@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets, guards and import identities read numerically off the user's
 //   retail gamemd.exe v1.001 via the local Ghidra CLI at 0x432700 and
-//   0x432A60. Neither address is bound by YRpp or the seed map.
+//   0x432A60. Neither address is bound by YRpp.
 //
 // Two byte-identical teardowns for a Bink video player object: release the
 // helper allocation at +0x20, close the Bink handle at +0x04, close the Win32

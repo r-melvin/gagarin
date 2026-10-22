@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @0x46CC90 / @0x46CE10 (Ghidra
-//   disasm). INI method addresses cross-checked against YRpp CCINIClass.h
+//   disasm). INI method addresses cross-checked against YRpp
 //   (consult-only, no LICENSE; reconfirmed below). Each offset confirmed
 //   numerically from the member-access disassembly.
 //
@@ -17,7 +17,7 @@
 extern "C" int __cdecl _strcmpi(const char*, const char*);
 
 // CCINIClass — only the three methods CreateFromINIList uses, bound to their
-// retail addresses (YRpp CCINIClass.h, reconfirmed). Modelled as __thiscall
+// retail addresses (YRpp, reconfirmed). Modelled as __thiscall
 // members so cl emits ECX=this + the reloc CALL.
 class CCINIClass
 {

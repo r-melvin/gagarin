@@ -10,7 +10,7 @@
 //   `[0xA83D4C]`: `ADD [EAX+0x1DC]`. Callees: `CALL 0x689670` (__thiscall on
 //   the scenario, two stack args), `CALL 0x7C5F00` (__ftol), `CALL 0x4F9950`
 //   (HouseClass::GiveMoney), `CALL 0x4F6EC0` (HouseClass::AssignHandicap).
-//   Names from the YRpp method map (consult-only): EvadeClass::Do,
+//   Names from the YRpp method map: EvadeClass::Do,
 //   ScenarioClass::Instance, HouseClass::CurrentPlayer, Unsorted::CurrentFrame.
 #ifndef GG_MATCH_COMBAT_EVADE_CLASS_DO_METHODS_H
 #define GG_MATCH_COMBAT_EVADE_CLASS_DO_METHODS_H

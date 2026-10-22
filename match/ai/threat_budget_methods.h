@@ -17,7 +17,7 @@ struct Vtbl_0045ED50;
 // class: the comparison at 0x45ED71 tests `this` against a dereferenced
 // +0x3EC, and the trailing object at +0xEA0 is called through the same
 // vtable slot as the two pair entries.
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). BuildingTypeClass's own vtable is 0x7E4570.
 //   0x45ED50 -> BuildingTypeClass slot 43 (byte-off 0xAC).
 // That table is the only table in the image that holds it, so the slot is

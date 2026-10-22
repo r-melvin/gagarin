@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/addresses derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x481870 and its callees),
-//   cross-checked against YRpp CellClass.h / HouseClass.h (consult-only; every
+//   cross-checked against YRpp (every
 //   offset reconfirmed numerically below).
 //
 // CellClass::UpdateThreat is the helper called by TechnoClass::UpdateThreatInCell.

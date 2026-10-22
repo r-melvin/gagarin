@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x487D00, 0x480A30),
-//   cross-checked against YRpp CellClass.h (consult-only; reconfirmed
+//   cross-checked against YRpp (reconfirmed
 //   numerically here). CellClass derives AbstractClass.
 //
 // CellClass — radiation / cell-coordinate helpers. This TU models only the

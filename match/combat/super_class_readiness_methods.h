@@ -11,7 +11,7 @@
 //   read`) into the __fastcall lookup at 0x734E60. The member run agrees with
 //   match/combat/super_class_methods.h (not edited; re-derived here so the TU
 //   stands alone). YRpp names only: SuperClass::NameReadiness,
-//   SuperWeaponTypeClass::UseChargeDrain (consult-only, no LICENSE).
+//   SuperWeaponTypeClass::UseChargeDrain.
 #ifndef GG_MATCH_COMBAT_SUPER_CLASS_READINESS_METHODS_H
 #define GG_MATCH_COMBAT_SUPER_CLASS_READINESS_METHODS_H
 

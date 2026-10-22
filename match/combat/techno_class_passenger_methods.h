@@ -6,7 +6,7 @@
 //   passenger the chain link `MOV EAX,[ESI+0x30]` (ObjectClass::NextObject),
 //   the foot test `MOV CL,[EAX+0x14]; SHR CL,2; AND CL,1` (AbstractFlags bit
 //   2, read as a byte bit-field), and the virtual `CALL [EAX+0xD4]`. The
-//   method name is YRpp's TechnoClass::AddPassenger (consult-only); the
+//   method name is YRpp's TechnoClass::AddPassenger; the
 //   receiver is the embedded PassengersClass at TechnoClass+0x114, as in the
 //   siblings 0x473430 / 0x473450.
 //

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm at the
-//   addresses below). Names cross-checked against YRpp MixFileClass.h
+//   addresses below). Names cross-checked against YRpp
 //   (consult-only, no LICENSE; every offset/slot reconfirmed here).
 //
 // reccmp annotations (ascending by retail address within this TU):

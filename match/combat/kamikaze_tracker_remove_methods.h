@@ -12,8 +12,8 @@
 //   `CALL [EDX+0x3C8]` (SetTarget, one pushed pointer) and `CALL
 //   [EDX+0x1E8]` (QueueMission, pushed 1 and 0); and the CRT free at
 //   0x7C8B3D (cdecl, `ADD ESP,4`). Names cross-checked against YRpp
-//   Kamikaze::Remove / KamikazeControl / TechnoClass.h (consult-only, no
-//   LICENSE) and the sibling match/combat/kamikaze_class_methods.h (Nodes
+//   Kamikaze::Remove / KamikazeControl
+//   and the sibling match/combat/kamikaze_class_methods.h (Nodes
 //   @0x0C), re-derived here under this TU's own tags.
 #ifndef GG_MATCH_COMBAT_KAMIKAZE_TRACKER_REMOVE_METHODS_H
 #define GG_MATCH_COMBAT_KAMIKAZE_TRACKER_REMOVE_METHODS_H

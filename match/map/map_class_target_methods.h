@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm @ 0x565730).
-//   Signature cross-checked against YRpp MapClass.h (consult-only):
+//   Signature cross-checked against YRpp:
 //     CellClass* MapClass::GetTargetCell(Point2D& location)
 //   All offsets reconfirmed numerically from the disassembly:
 //     [ECX+0x13c] = Cells (CellClass**), [ECX+0x140] = TotalCells (int),

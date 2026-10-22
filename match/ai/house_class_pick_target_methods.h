@@ -12,7 +12,7 @@
 //   at the parameter's home slot, and the 4-byte sentinel at 0xA8EF98 copied
 //   through the hidden result pointer (RET 8: hidden pointer + type). The
 //   vector at 0x8B40E8 is TeamClass::Array and +0x2C its Owner per YRpp
-//   TeamClass.h (consult-only; names only, offsets reconfirmed here); the
+//   (names only, offsets reconfirmed here); the
 //   method name is YRpp's HouseClass::PickTargetByType.
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PICK_TARGET_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_PICK_TARGET_METHODS_H

@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes, frame layout and imports derived from the user's retail gamemd.exe
-//   v1.001 via the local Ghidra CLI at 0x65D240 (full derivation in the RE
-//   dossier, docs/decomp_spec/re_findings/next_targets_2026-08-07.md §1).
+//   v1.001 via the local Ghidra CLI at 0x65D240.
 //   Imports resolved from the binary's own labels: 0x007E1128
 //   GetFileInformationByHandle, 0x007E1130 DosDateTimeToFileTime, 0x007E112C
 //   SetFileTime.

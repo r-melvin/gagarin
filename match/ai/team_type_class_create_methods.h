@@ -10,7 +10,7 @@
 //   (SessionClass::Instance.GameMode), the house call `CALL 0x5095D0` with
 //   `this` pushed, `PUSH 0xA0; CALL 0x7C8E17` (operator new, the TeamClass
 //   size) and the constructor `CALL 0x6E8A90` with (this, house, 0). Names
-//   cross-checked against YRpp TeamTypeClass.h (consult-only, no LICENSE);
+//   cross-checked against YRpp;
 //   the Owner/idxHouse pair repeats match/ai/team_type_class_house_methods.h.
 #ifndef GG_MATCH_AI_TEAM_TYPE_CLASS_CREATE_METHODS_H
 #define GG_MATCH_AI_TEAM_TYPE_CLASS_CREATE_METHODS_H

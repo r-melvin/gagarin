@@ -12,7 +12,7 @@
 //     vtable slots [EAX+0x84], [EDX+0x3D4] on the unit and [EDX+0xF8] on the
 //     ring animation.
 //   Names (FreeUnit, MindControlRingAnim, VocClass::PlayAt) cross-checked
-//   against YRpp (consult-only); no YRpp text copied.
+//   against YRpp; no YRpp text copied.
 #ifndef GG_MATCH_COMBAT_CAPTURE_MANAGER_FREE_UNIT_METHODS_H
 #define GG_MATCH_COMBAT_CAPTURE_MANAGER_FREE_UNIT_METHODS_H
 

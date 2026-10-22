@@ -9,7 +9,7 @@
 //   (-1 when nothing qualifies). The inlined ally test is the same body as
 //   HouseClass::IsAlliedWith(HouseClass const*) at 0x4F9A50
 //   (match/economy/house_class_ally_methods.cpp). Method name from YRpp
-//   HouseClass.h (consult-only; name only).
+//   (name only).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_ANGER_NODES_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_ANGER_NODES_METHODS_H
 

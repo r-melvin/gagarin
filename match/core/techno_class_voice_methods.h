@@ -24,12 +24,9 @@
 //   and those three offsets agree with the committed spine
 //   match/_layout/techno_type_class.h lines 166-175.
 //
-//   NOTE, recorded because the seed disagrees: the private worklist seed
-//   names these three technoSetMissionRecharge / technoSetMissionDeath /
-//   technoSetMissionAltDeath. That is wrong — no body here writes a mission
-//   field; each reads a voice index out of the type and hands it to the
-//   QueueVoice slot. docs/decomp_spec/vtable_map_techno.md lines 118-121 have
-//   it right.
+//   None of these is a mission setter: no body here writes a mission field;
+//   each reads a voice index out of the type and hands it to the QueueVoice
+//   slot.
 #ifndef GG_MATCH_CORE_TECHNO_CLASS_VOICE_METHODS_H
 #define GG_MATCH_CORE_TECHNO_CLASS_VOICE_METHODS_H
 

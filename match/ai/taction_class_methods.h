@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (disasm at 0x6E3EE0 and 0x6E45E0), cross-checked against
-//   YRpp TActionClass.h (consult-only; reconfirmed numerically here).
+//   YRpp (reconfirmed numerically here).
 //
 // TActionClass — trigger-action logic. The two methods matched here touch NO
 // instance members of TActionClass:

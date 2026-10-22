@@ -5,7 +5,7 @@
 //   the member run already committed in super_class_methods.h and are
 //   reconfirmed here. The vector globals — vptr 0x00A83D50, Items 0x00A83D54,
 //   Count 0x00A83D60 — are +0x00/+0x04/+0x10 of one object, which is YRpp's
-//   SuperClass::ShowTimers at 0x00A83D50 (consult-only, no LICENSE).
+//   SuperClass::ShowTimers at 0x00A83D50.
 #ifndef GG_MATCH_COMBAT_SUPER_CLASS_LOSE_METHODS_H
 #define GG_MATCH_COMBAT_SUPER_CLASS_LOSE_METHODS_H
 

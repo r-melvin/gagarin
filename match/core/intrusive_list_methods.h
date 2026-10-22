@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Link offsets read numerically off the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI at 0x4073B0 / 0x4073C0 / 0x4073E0 / 0x407520. None of
-//   these addresses is bound by YRpp or the seed map.
+//   these addresses is bound by YRpp.
 //
 // A small intrusive-list toolkit. The list is circular: 0x4073B0 walks it until
 // the link comes back around to the header rather than until it hits null,

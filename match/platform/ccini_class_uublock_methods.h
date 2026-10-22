@@ -11,7 +11,7 @@
 //   sprintf'd (0x7C8EF4, "%d" at 0x817F6C) into `[ESP+0x90]`; 0x5257C0 is
 //   Clear(section, 0) and 0x528660 WriteString(section, key, value).
 //   Teardown: 0x6C9850 (straw dtor) on both straws, 0x43AE50 (buffer cleanup)
-//   between them. Method name from YRpp CCINIClass.h (consult-only).
+//   between them. Method name from YRpp (consult-only).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_UUBLOCK_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_UUBLOCK_METHODS_H
 

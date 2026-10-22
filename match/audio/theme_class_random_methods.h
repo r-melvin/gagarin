@@ -6,7 +6,7 @@
 //   `[ESI+0x10]` (IsScoreRepeat), `[ESI+0x12]` (IsScoreShuffle), the global
 //   Randomizer at 0x886B88 (`MOV ECX,0x886B88; CALL 0x65C7E0`) and the
 //   __thiscall IsAvailable at 0x721140. Names cross-checked against YRpp
-//   ThemeClass.h (consult-only; names only, no text copied).
+//   (names only, no text copied).
 //
 // ThemeClass -- the score jukebox. Layout mirrors match/audio/
 // theme_class_methods.h (Themes vector @0x14 -> Items @0x18, Count @0x24) and

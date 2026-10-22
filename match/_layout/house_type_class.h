@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Oracle: ctor FUN_0x005113F0 (docs/decomp_spec/type_hierarchy_layout.md),
+//   Oracle: ctor FUN_0x005113F0,
 //   parent AbstractTypeClass ctor 0x00410800; member writes cross-checked vs
-//   YRpp HouseTypeClass.h. Pad anchors align_B1@0xB1, align_C4@0xC4,
+//   YRpp. Pad anchors align_B1@0xB1, align_C4@0xC4,
 //   padding_1A9@0x1A9 confirmed; ctor writes ArrayIndex@0xB4, FirepowerMult@0xC8,
 //   VeteranInfantry@0x14C. P2 layout-spine.
 //

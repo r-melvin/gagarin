@@ -10,7 +10,7 @@
 //   five SHA-1 seeds, Save 0x526470, Result 0x69E9E0, destructor 0x631C80)
 //   and the five-dword `REPE CMPSD` digest compare. Same shapes as the
 //   WriteCCFile twin in match/platform/ccini_class_write_ccfile_methods.h.
-//   Names cross-checked against YRpp CCINIClass.h (consult-only; NO LICENSE).
+//   Names cross-checked against YRpp (consult-only; NO LICENSE).
 #ifndef GG_MATCH_PLATFORM_CCINI_CLASS_READ_CCFILE_METHODS_H
 #define GG_MATCH_PLATFORM_CCINI_CLASS_READ_CCFILE_METHODS_H
 

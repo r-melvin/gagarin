@@ -3,7 +3,7 @@
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm at 0x551A30 /
 //   0x55BAA0 / 0x55BAE0). Member offsets and the two indirect vtable dispatches are
 //   reconfirmed numerically from the disassembly; signatures cross-checked
-//   against YRpp MapClass.h (consult-only, no LICENSE).
+//   against YRpp.
 //
 // LayerClass : DynamicVectorClassLayout   (the per-layer object list)
 // LogicClass : LayerClass                          (the global logic layer)

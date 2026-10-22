@@ -22,7 +22,7 @@
 //   The first 0x44 bytes of 0x431F70 are BufferIOFileClass::Close (0x4325C0)
 //   expanded inline; it is defined in-class here so cl inlines it the same way.
 //   The member run mirrors match/platform/buffer_io_file_class_name_methods.h
-//   (not edited; re-declared so this TU stands alone). YRpp CCFileClass.h was
+//   (not edited; re-declared so this TU stands alone). YRpp was
 //   consulted for the class/method names only; the YRpp map lists 0x431F70 as
 //   CCFileClass::Open, but the bytes are the BufferIOFileClass layer (the
 //   +0x24..+0x50 buffer members, the RawFileClass base calls), so it is named

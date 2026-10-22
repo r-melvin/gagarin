@@ -9,7 +9,7 @@
 //   `[EDI+0x117C]`, compares the base cell against the global pair at
 //   0x8A03F8, and flips bit 1 of `[EAX+0x12C]` on each legal cell. The two
 //   MapClass calls are 0x568300 (CoordinatesLegal) and 0x5657A0 (GetCellAt).
-//   Names cross-checked against YRpp DisplayClass.h.
+//   Names cross-checked against YRpp.
 #ifndef GG_MATCH_MAP_DISPLAY_CLASS_FOUNDATION_METHODS_H
 #define GG_MATCH_MAP_DISPLAY_CLASS_FOUNDATION_METHODS_H
 

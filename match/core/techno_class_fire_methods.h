@@ -2,12 +2,12 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly of 0x70ECE0), cross-checked
-//   against YRpp TechnoClass.h / TechnoTypeClass.h (consult-only; every offset
+//   against YRpp (consult-only; every offset
 //   reconfirmed numerically from the 0x70ECE0 disassembly below).
 //
 // NOTE ON NAMING: the orchestrator tasked this TU as "TechnoClass-fire", but the
-// symbol that actually lives at retail 0x70ECE0 is RecoilData::Fire (YRpp
-// TechnoClass.h:181, `void Fire() { JMP_THIS(0x70ECE0); }`). The function tests
+// symbol that actually lives at retail 0x70ECE0 is RecoilData::Fire (name
+// cross-checked against YRpp). The function tests
 // [ECX] (== Turret.Travel, an int) for zero and uses it as a float-division
 // numerator, which a real TechnoClass (vtable @ +0) could never do. We therefore
 // model the small RecoilData/TurretControl helper structs the function genuinely
@@ -19,7 +19,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
-// TurretControl  (sizeof = 0x10) -- YRpp TechnoTypeClass.h:47.
+// TurretControl  (sizeof = 0x10).
 // Fire() reads Travel (+0x00) and CompressFrames (+0x04).
 // ---------------------------------------------------------------------------
 struct TurretControl
@@ -31,7 +31,7 @@ struct TurretControl
 };
 
 // ---------------------------------------------------------------------------
-// RecoilData  (sizeof = 0x20) -- YRpp TechnoClass.h:162.
+// RecoilData  (sizeof = 0x20).
 //
 // Confirmed from 0x70ECE0 (RecoilData::Fire):
 //   [ECX]      Turret.Travel      (int, numerator, tested for 0)

@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets + global addresses derived from the user's retail gamemd.exe v1.001
 //   via the local Ghidra CLI (member-access disassembly), cross-checked against
-//   YRpp HouseClass.h / HouseTypeClass.h / SessionClass.h (consult-only, no
-//   LICENSE; every offset/address reconfirmed numerically from the disasm).
+//   YRpp
+//   (every offset/address reconfirmed numerically from the disasm).
 //
 // HouseClass lookup/query leaves:
 //   0x502D30  HouseClass::FindByCountryIndex      (static __fastcall)
@@ -21,7 +21,7 @@
 // HouseTypeClass — only ArrayIndex2 @0xB8 is touched (the loop key in
 // 0x502D30: `CMP [EBX+0xB8], ECX`, where EBX = house->Type).
 // AbstractTypeClass base = 0x98; FixedString<25> ParentCountry @0x98 + 3 align,
-// int ArrayIndex @0xB4, int ArrayIndex2 @0xB8 (YRpp HouseTypeClass.h).
+// int ArrayIndex @0xB4, int ArrayIndex2 @0xB8 (YRpp).
 // ---------------------------------------------------------------------------
 struct HouseTypeClass
 {

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x486BF0), cross-checked against
-//   YRpp CellClass.h / MapClass.h (consult-only; reconfirmed numerically here).
+//   YRpp (reconfirmed numerically here).
 //   CellClass derives AbstractClass.
 //
 // CellClass — fog helper. This TU models only the members CleanFog touches:

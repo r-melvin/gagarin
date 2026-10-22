@@ -7,7 +7,7 @@
 //   CurrentMissionStartTime @0xC0, MissionAccumulateTime @0xC4,
 //   UpdateTimer.StartTime @0xC8 (param[0x32]) / .TimeLeft @0xD0 (param[0x34]).
 //   Last member UpdateTimer ends at 0xD4 -> sizeof(MissionClass)==0xD4.
-//   Cross-checked vs YRpp MissionClass.h.
+//   Cross-checked vs YRpp.
 //
 // MissionClass — base of every game object that runs an AI mission state
 // machine. Derives ObjectClass at offset 0 and adds the mission/sub-mission

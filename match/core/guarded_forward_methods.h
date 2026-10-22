@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Slots and offsets extracted individually from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, one disassembly per entry point. None of
-//   these addresses is bound by YRpp or the seed map.
+//   these addresses is bound by YRpp.
 //
 // Two more templates found by shape clustering.
 //

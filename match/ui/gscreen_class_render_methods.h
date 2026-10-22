@@ -15,7 +15,7 @@
 //   0x5D49A0` (MessageListClass::Draw on the instance); the byte
 //   `[0xA8B8B4]` gating `XOR CL,CL; CALL 0x55F1E0`. Names from YRpp
 //   GScreenClass.h / Surface.h / WWMouseClass.h / TacticalClass.h /
-//   Unsorted.h (consult-only; names only).
+//   (consult-only; names only).
 //   FlagToRedraw @0x4F42F0: the byte `[EAX+0xD7D]` on `[0x887324]`, `[ECX+0xC]`
 //   compared with 2 and stored, then `MOV ECX,0x87F7E8; CALL 0x578AC0`.
 #ifndef GG_MATCH_UI_GSCREEN_CLASS_RENDER_METHODS_H

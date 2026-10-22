@@ -3,7 +3,7 @@
 //   Offsets/layout derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x5AF410-0x5AF46C, plus the
 //   callee signatures at 0x5AFB80 MatrixApply and 0x4CAE30 atan2), cross-checked
-//   against YRpp Matrix3D.h (consult-only; reconfirmed here).
+//   against YRpp (reconfirmed here).
 //
 // Matrix3D — a 4x3 (3 rows x 4 cols) row-major float affine transform.
 //   Storage is a flat float[3][4] at offset 0 (no base class / no vtable),

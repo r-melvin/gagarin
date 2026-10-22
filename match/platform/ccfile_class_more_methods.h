@@ -2,14 +2,14 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access + virtual-call disassembly),
-//   cross-checked against YRpp CCFileClass.h / Memory.h (consult-only, no
+//   cross-checked against YRpp (consult-only, no
 //   LICENSE; every offset reconfirmed numerically against the disasm below).
 //
 // Translation unit for two more FileClass-hierarchy primitives:
 //   0x4A3890 FileClass::ReadWholeFile  (non-virtual helper)
 //   0x65D150 RawFileClass::CreateFile  (virtual slot 3)
 //
-// The Westwood FileClass hierarchy (the MIX/CD/raw file stack):
+// The FileClass hierarchy (the MIX/CD/raw file stack):
 //   FileClass (abstract COM-ish base) -> RawFileClass -> ...
 //
 // Confirmed offsets (from the matched bodies):

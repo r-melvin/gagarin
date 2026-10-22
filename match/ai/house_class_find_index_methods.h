@@ -4,7 +4,7 @@
 //   Ghidra CLI at 0x50C170: the global list `MOV EBP,[0xA8022C]` with its
 //   count `MOV EAX,[0xA80238]`, and the per-item name at `ADD EDI,0x15FF4`
 //   (the string an inlined strcpy copies into the 20-byte frame buffer).
-//   Method name from YRpp HouseClass.h (consult-only; name only).
+//   Method name from YRpp (name only).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_FIND_INDEX_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_FIND_INDEX_METHODS_H
 

@@ -16,7 +16,7 @@
 //   0x50B6F0 (HouseClass::IsControlledByCurrentPlayer, __thiscall, AL) and
 //   0x752700 (VoxClass::Play, __fastcall: ECX = name, EDX = -1, pushed -1).
 //   Names cross-checked against YRpp BuildingClass::GoOnline / EnableStuff
-//   (consult-only, no LICENSE) and the sibling TUs
+//   and the sibling TUs
 //   match/combat/building_class_offline_methods.h and
 //   match/economy/building_class_enable_methods.h, re-derived here under
 //   this TU's own tags; +0x504 is TechnoClass::EMPLockRemaining per

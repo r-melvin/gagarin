@@ -8,7 +8,7 @@
 //   TurnRate, Speed, Climb, CruiseHeight, Acceleration, WobblesPerSecond,
 //   WobbleDeviation) with the key strings at 0x83D554, 0x81D9CC, 0x83D54C,
 //   0x83D53C, 0x81B140, 0x83D528, 0x83D518. Names cross-checked against
-//   YRpp RulesClass.h / CCINIClass.h (consult-only; NO LICENSE).
+//   YRpp (consult-only; NO LICENSE).
 #ifndef GG_MATCH_CORE_RULES_CLASS_JUMPJET_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_JUMPJET_METHODS_H
 

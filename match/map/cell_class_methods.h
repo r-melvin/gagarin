@@ -3,7 +3,7 @@
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x484FF0, 0x485010, 0x485240,
 //   0x487CE0),
-//   cross-checked against YRpp CellClass.h (consult-only; reconfirmed
+//   cross-checked against YRpp (reconfirmed
 //   numerically here). CellClass derives AbstractClass.
 //
 // CellClass — a single map cell. This TU models only the members touched by

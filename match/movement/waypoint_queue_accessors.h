@@ -5,8 +5,8 @@
 //   three counters at +0x04, +0x08 and +0x0C whose setters all clamp a
 //   non-positive argument up to one (`TEST EAX,EAX; JG; MOV EAX,1`). The
 //   emptiness test reads only the low byte of the head, which is why the head
-//   is reached twice at two widths. Names cross-checked against the private-reference
-//   seed (consult-only); every offset and convention re-derived here.
+//   is reached twice at two widths. Every offset and
+//   convention is derived here.
 #ifndef GG_MATCH_MOVEMENT_WAYPOINT_QUEUE_ACCESSORS_H
 #define GG_MATCH_MOVEMENT_WAYPOINT_QUEUE_ACCESSORS_H
 

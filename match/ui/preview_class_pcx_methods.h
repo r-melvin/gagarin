@@ -19,7 +19,7 @@
 //   The file object agrees with match/map/smudge_type_class_load_methods.h and
 //   match/platform/file_system_load_whole_methods.h (neither edited; re-derived
 //   here so the TU stands alone). Names cross-checked against YRpp
-//   PreviewClass.h (consult-only; NO LICENSE; every offset reconfirmed above).
+//   (consult-only; NO LICENSE; every offset reconfirmed above).
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_PCX_METHODS_H
 #define GG_MATCH_UI_PREVIEW_CLASS_PCX_METHODS_H
 

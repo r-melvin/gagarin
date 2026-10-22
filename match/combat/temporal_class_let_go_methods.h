@@ -7,8 +7,8 @@
 //   next link; on the target TemporalTargetingMe at +0x278, the byte at
 //   +0x270, Owner at +0x21C with the house bytes +0x5778 / +0x1FC, the
 //   WhatAmI slot +0x2C (6 = building) and the Mark slot +0x124 (one int);
-//   0x452210 is a __thiscall on the building. YRpp (consult-only, no
-//   LICENSE) names LetGo, Target, PrevTemporal, NextTemporal,
+//   0x452210 is a __thiscall on the building. YRpp
+//   names LetGo, Target, PrevTemporal, NextTemporal,
 //   TemporalTargetingMe and BeingWarpedOut.
 #ifndef GG_MATCH_COMBAT_TEMPORAL_CLASS_LET_GO_METHODS_H
 #define GG_MATCH_COMBAT_TEMPORAL_CLASS_LET_GO_METHODS_H

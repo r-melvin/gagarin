@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x406520 / 0x406530 / 0x406540 / 0x4065C0 / 0x4065D0 /
-//   0x4065E0 / 0x406640. No YRpp or seed-map binding covers any of them.
+//   0x4065E0 / 0x406640. No YRpp binding covers any of them.
 //
 // A family of one-instruction field setters clustered at 0x4065xx, all on the
 // same object. Nothing names the type, so both it and the seven entry points

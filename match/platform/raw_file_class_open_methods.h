@@ -8,7 +8,7 @@
 //   `CALL [EDX+0x40]` (CDCheck, with 2), `CALL [EAX+0x28]` (Seek). The
 //   hierarchy and slot order are the committed model in
 //   match/platform/ccfile_class.h (not editable here, so the class is
-//   redeclared locally with the Open override it lacks); YRpp CCFileClass.h
+//   redeclared locally with the Open override it lacks); YRpp
 //   consulted for names only (consult-only, no LICENSE). YRpp binds 0x65CB50
 //   to CCFileClass::Open; the bytes touch RawFileClass members and call
 //   CreateFileA directly, and the committed model places CDFileClass::Open

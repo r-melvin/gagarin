@@ -23,7 +23,7 @@
 //     * DisguiseSensorsOfHouses — same idiom at 0xAC, `MOV ECX,0xC`
 //       @0x0047BD82..0x0047BD8D. Also 24 words.
 //
-//   Cross-read against YRpp CellClass.h: 48 named members claimed, 48
+//   Cross-read against YRpp: 48 named members claimed, 48
 //   confirmed. No disagreement found.
 //
 // CellClass — one map cell. Derives AbstractClass at offset 0.

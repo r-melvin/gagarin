@@ -8,7 +8,7 @@
 //   strings are 0x844714 "%d,%d,%s", 0x8258DC "%d,%d,%d,%s" and 0x8189B0
 //   "%d,%d,%d"; the printf is the USER32 import wsprintfA at IAT 0x7E14B0
 //   (`CALL [0x7E14B0]`, cdecl, `ADD ESP,0x18` / `0x14`). The name is YRpp's
-//   TEventClass::PrepareSaveToINI (consult-only, no LICENSE); the layout is
+//   TEventClass::PrepareSaveToINI; the layout is
 //   the one match/ai/tevent_class_methods.h already pins, redefined here
 //   under its own tag.
 #ifndef GG_MATCH_AI_TEVENT_CLASS_PREPARE_SAVE_METHODS_H

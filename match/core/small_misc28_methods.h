@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI. Imports read from the IAT
-//   thunks at 0x7E11E8 and 0x7E11EC. Not bound by YRpp or the seed map.
+//   thunks at 0x7E11E8 and 0x7E11EC. Not bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC28_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC28_METHODS_H
 

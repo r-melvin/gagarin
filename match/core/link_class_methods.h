@@ -2,10 +2,10 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot order derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access disassembly at the LinkClass
-//   method addresses), cross-checked against YRpp LinkClass.h (consult-only;
+//   method addresses), cross-checked against YRpp (consult-only;
 //   reconfirmed here).
 //
-// LinkClass — Westwood's intrusive doubly-linked-list node base. A single vptr
+// LinkClass — intrusive doubly-linked-list node base. A single vptr
 // at +0x00, then two self-pointers: Next (+0x04) and Previous (+0x08).
 //
 // Offsets confirmed numerically:

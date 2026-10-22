@@ -7,7 +7,7 @@
 //   which is also the value YRpp static_asserts.
 //   RTTI: 0x007F66A8 / 0x007F668C / 0x007F6684 / 0x007F667C all resolve to
 //   ".?AVVeinholeMonsterClass@@" (stored @0x0074C669..0x0074C67C).
-//   Cross-read against YRpp VeinholeMonsterClass.h: 14 named members claimed,
+//   Cross-read against YRpp: 14 named members claimed,
 //   14 confirmed. No disagreement found.
 //
 // VeinholeMonsterClass — a vein hole and its spreading veins. Derives

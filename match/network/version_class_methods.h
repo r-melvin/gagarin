@@ -2,9 +2,9 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   VersionClass.h (consult-only, no LICENSE; every offset reconfirmed here).
+//   (every offset reconfirmed here).
 //
-// VersionClass — RA1-derived network-protocol versioning. This TU models the
+// VersionClass — network-protocol versioning. This TU models the
 // members and global table its five matched methods touch; the full class
 // layout is P2 work.
 //
@@ -18,7 +18,7 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
-// CommProtocolType — YRpp VersionClass.h. The protocol field stored in the
+// CommProtocolType — YRpp. The protocol field stored in the
 // VersionProtocol table at 0x846140 (confirmed: values 0/1/2 at +4 of each
 // 8-byte entry).
 typedef enum CommProtocolEnum

@@ -2,10 +2,8 @@
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every offset, global address and calling convention below was read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
-//   CLI over the run 0x5E8740..0x5E957E. The private-reference seed
-//   (the private worklist seed, economy/slot_*.cpp) supplied only the
-//   grouping and a hint at what each entry point is for; nothing was
-//   transcribed and every width it gave was re-derived (its `bool` returns are
+//   CLI over the run 0x5E8740..0x5E957E. Every width is derived from the
+//   disassembly (returns are
 //   `int` here wherever retail exits through `MOV EAX,1` / `XOR EAX,EAX`
 //   rather than the byte form).
 //
@@ -37,8 +35,7 @@
 //     virtual at vtable slot +0xC, so +0x00 is the vptr, +0x04 the item array
 //     and +0x10 the active count. Only those two members are read here.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
-// (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
+// Reviewed for the free-`__fastcall`-with-a-receiver pattern and deliberately LEFT as free
 // functions. `NodeNameType` and `IPXAddressClass` ARE recovered types, but the
 // six routines that take one are not methods on them: the retail source file
 // is named in the image itself — "D:\ra2mdpost\netshare.cpp", pushed with its

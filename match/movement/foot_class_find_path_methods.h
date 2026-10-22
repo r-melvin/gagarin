@@ -6,7 +6,7 @@
 //   the committed FootClass spine), the __fastcall walker at 0x429780 taking
 //   its hidden return pointer in ECX (RET 8), and the AStarClass global
 //   `MOV ECX,0x87E8B8` whose FindPath at 0x42C900 takes seven stack args.
-//   Method names from YRpp FootClass.h / AStarClass.h (consult-only).
+//   Method names from YRpp.
 #ifndef GG_MATCH_MOVEMENT_FOOT_CLASS_FIND_PATH_METHODS_H
 #define GG_MATCH_MOVEMENT_FOOT_CLASS_FIND_PATH_METHODS_H
 

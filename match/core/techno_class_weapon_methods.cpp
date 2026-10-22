@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm
 //   0x70E1A0-0x70E1D7 len 0x38, 0x710550-0x710583 len 0x34). Names
-//   cross-checked against YRpp TechnoClass.h / TechnoTypeClass.h (consult-only).
+//   cross-checked against YRpp (consult-only).
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x70E1A0  TechnoClass::GetPrimaryWeapon       (__thiscall)

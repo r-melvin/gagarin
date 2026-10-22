@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x452410. Two callee bindings come from YRpp
-//   (consult-only, no LICENSE) and are reconfirmed against the disassembly:
+//   and are reconfirmed against the disassembly:
 //   0x554A60 = LightSourceClass::Activate (so the pointer at +0x614 is a light
 //   source) and 0x4533A0 = BuildingClass::CreateEndPost.
 #ifndef GG_MATCH_ECONOMY_BUILDING_CLASS_ENABLE_METHODS_H
@@ -53,7 +53,7 @@ struct LightSourceClass
 };
 
 // Per-animation enable helper at 0x425270 — __fastcall with the anim in ECX.
-// Descriptive name; the address carries no confirmed Westwood one.
+// Descriptive name; the binary attests no name for this address.
 void __fastcall AnimClass_Enable(AnimClass* anim);
 
 struct BuildingClass

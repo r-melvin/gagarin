@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
-//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp or the
-//   seed map, so all keep placeholder names.
+//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp,
+//   so all keep placeholder names.
 //
 // The remaining one- and two-instruction leaves, grouped by shape because each
 // has nothing to model on its own.

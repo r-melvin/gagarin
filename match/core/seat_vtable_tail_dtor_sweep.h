@@ -14,7 +14,7 @@
 // The tail jump falls out of writing the base call last in a `void __fastcall`
 // function of the same signature; cl emits `JMP` rather than `CALL`/`RET`.
 //
-// Reviewed against docs/matching_methodology_and_toolchain.md batch forty-one
+// Reviewed in the batch forty-one pass
 // (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
 // functions. Converting would cost nothing in bytes — a member spelled
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in

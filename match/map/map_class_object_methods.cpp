@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe (Ghidra disasm). Bodies derived
 //   directly from the disassembly at the listed addresses; signatures
-//   cross-checked against YRpp MapClass.h (consult-only, no LICENSE; every
+//   cross-checked against YRpp (every
 //   offset reconfirmed numerically below).
 //
 // reccmp annotations (ascending by retail address within this TU):

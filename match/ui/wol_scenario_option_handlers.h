@@ -1,31 +1,23 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //
-//   The WOL (Westwood Online) scenario-setup dialog's option-control change
+//   The WOL scenario-setup dialog's option-control change
 //   handlers: sixteen small __thiscall methods at 0x5B9650-0x5B9A56 that read a
 //   trackbar position or a checkbox state out of a dialog control and publish
 //   it into the global game-mode option block, then mark the dialog dirty.
 //
 //   Every address, control id, message id, member offset and global offset
 //   below was read numerically off the user's retail gamemd.exe v1.001 through
-//   the local Ghidra CLI (`ghidra disasm`). The semantic grouping came from the
-//   user's own behavioural reimplementation (private-reference,
-//   `ui/wol_scenario_setup_sliders.cpp`, `ui/wol_connection_dialog.cpp`); that
-//   project is a 64-bit reimplementation and contributed nothing to the bytes,
-//   layout or conventions here. Its per-function names proved to be shifted by
-//   one against the option each body actually writes (its "Credits" handler
-//   writes UnitCount, its "Superweapons" handler writes MCVRedeploy, and so
-//   on), so the names used here are taken from the global each body stores to,
-//   cross-checked against YRpp's GameModeOptionsClass (consult-only).
+//   the local Ghidra CLI (`ghidra disasm`). The names used here are taken from
+//   the global each body stores to, cross-checked against YRpp's
+//   GameModeOptionsClass (consult-only).
 //
 //   Convention: each body opens `PUSH ESI; MOV ESI,ECX` and returns with a bare
 //   `RET` after popping, so the receiver arrives in ECX and there is no stack
 //   argument — __thiscall with no parameters.
 //
 //   Imports (indirect through the IAT, so declared __declspec(dllimport)):
-//     0x7E14A8 GetDlgItem, 0x7E14A4 SendMessageA, 0x7E1490 SendDlgItemMessageA
-//   (named in `state/decomp/gamemd.h` as PTR_GetDlgItem_007e14a8,
-//   PTR_SendMessageA_007e14a4, PTR_SendDlgItemMessageA_007e1490).
+//     0x7E14A8 GetDlgItem, 0x7E14A4 SendMessageA, 0x7E1490 SendDlgItemMessageA.
 #ifndef GG_MATCH_UI_WOL_SCENARIO_OPTION_HANDLERS_H
 #define GG_MATCH_UI_WOL_SCENARIO_OPTION_HANDLERS_H
 

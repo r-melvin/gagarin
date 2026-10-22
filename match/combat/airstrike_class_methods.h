@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read off the user's retail gamemd.exe v1.001 via the local Ghidra
 //   CLI at 0x41D830 (`MOV AL,[ECX+0x3C]`, `CMP EAX,[ECX+0x50]`). Method names
-//   cross-checked against YRpp AirstrikeClass.h (consult-only, no LICENSE),
+//   cross-checked against YRpp,
 //   which binds StartMission @0x41D830 and ResetTarget @0x41DA20.
 //   The rest of the layout comes from the constructor 0x41D380 (stores at
 //   +0x24..+0x5C), the stream loader 0x41D6F0 (pointers swizzled at +0x4C,

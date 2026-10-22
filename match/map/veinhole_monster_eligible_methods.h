@@ -5,8 +5,8 @@
 //   VeinholeMonsterClass::Array Items 0xB1D294 / Count 0xB1D2A0 with each
 //   monster's cell shorts at +0xF8 / +0xFA, MapClass::GetCellAt at 0x5657A0
 //   on the map object 0x87F7E8, and the cell's Level (+0x11B, signed),
-//   SlopeIndex (+0x11C) and LandType (+0xEC). YRpp (consult-only, no
-//   LICENSE) names IsCellEligibleForVeinHole and the array.
+//   SlopeIndex (+0x11C) and LandType (+0xEC). YRpp
+//   names IsCellEligibleForVeinHole and the array.
 #ifndef GG_MATCH_MAP_VEINHOLE_MONSTER_ELIGIBLE_METHODS_H
 #define GG_MATCH_MAP_VEINHOLE_MONSTER_ELIGIBLE_METHODS_H
 

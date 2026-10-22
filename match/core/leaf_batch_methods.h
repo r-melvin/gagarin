@@ -12,7 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // ============================================================================
-// SaveGameInformation - from private-reference seed at 0x00681090
+// SaveGameInformation - entry at 0x00681090
 // ============================================================================
 struct SaveGameInformation_00681090
 {
@@ -49,7 +49,7 @@ GG_STATIC_ASSERT(offsetof(SaveGameInformation_00681090, ScenarioNumber) == 396);
 GG_STATIC_ASSERT(offsetof(SaveGameInformation_00681090, GameType) == 1008);
 
 // ============================================================================
-// VQASession - from private-reference seed at 0x00759E50
+// VQASession - entry at 0x00759E50
 // ============================================================================
 struct VQASession_00759E50
 {
@@ -82,7 +82,7 @@ GG_STATIC_ASSERT(offsetof(VQASession_00759E50, Height) == 1308);
 GG_STATIC_ASSERT(offsetof(VQASession_00759E50, Flags) == 1360);
 
 // ============================================================================
-// TechnoClass subset - from private-reference seed
+// TechnoClass subset
 // ============================================================================
 struct TechnoClass_00707000
 {
@@ -106,7 +106,7 @@ GG_STATIC_ASSERT(offsetof(TechnoClass_00707000, CaptureTarget) == 320);
 GG_STATIC_ASSERT(offsetof(TechnoClass_00707000, Ammo) == 324);
 
 // ============================================================================
-// SelectableClass subset - from private-reference seed at 0x006DC420
+// SelectableClass subset - entry at 0x006DC420
 // ============================================================================
 struct SelectableClass_006D0000
 {

@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x430980 / 0x430F30 /
-//   0x431410), cross-checked against YRpp BeaconManagerClass.h (consult-only;
-//   reconfirmed numerically here).
+//   0x431410), cross-checked against YRpp
+//   (reconfirmed numerically here).
 //
 // BeaconManagerClass — the multiplayer radar/map beacon table: an 8x3 grid of
 // BeaconClass pointers (8 houses, up to 3 beacons each) plus the live count.

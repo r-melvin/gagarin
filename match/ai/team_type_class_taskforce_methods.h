@@ -6,8 +6,7 @@
 //   `[EAX+0x9C]` (entry count) and `[EAX+EBP]` with EBP starting at 0xA8 and
 //   stepping by 8 (the per-entry type pointer) on the taskforce; `[EAX+0xCCE]`,
 //   `[EAX+0x5E0]`, `[EAX+0x5B4]` on the techno type. The method name and the
-//   entry pairing (amount, type) are cross-checked against YRpp
-//   TeamTypeClass.h / TaskForceClass.h (consult-only, no LICENSE).
+//   entry pairing (amount, type) are cross-checked against YRpp.
 #ifndef GG_MATCH_AI_TEAM_TYPE_CLASS_TASKFORCE_METHODS_H
 #define GG_MATCH_AI_TEAM_TYPE_CLASS_TASKFORCE_METHODS_H
 

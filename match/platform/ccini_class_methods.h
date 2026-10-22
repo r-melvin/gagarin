@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + behaviour derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly @ 0x529560 / 0x5297E0 /
-//   0x679F40), cross-checked against YRpp CCINIClass.h / INIClass (consult-only,
+//   0x679F40), cross-checked against YRpp / INIClass (consult-only,
 //   no LICENSE; every address + convention reconfirmed below from the disasm).
 //
 // INIClass uses the shared binary-confirmed layout. CCINIClass::Exists

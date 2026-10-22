@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4137A0 / 0x413800), cross-checked
-//   against YRpp AircraftTrackerClass.h / ArrayClasses.h (consult-only;
+//   against YRpp (
 //   reconfirmed numerically here).
 //
 // AircraftTrackerClass — tracks aerial units in a 20x20 grid of

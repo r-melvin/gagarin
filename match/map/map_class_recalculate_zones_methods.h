@@ -20,7 +20,7 @@
 //               0x56C510 fallback (`MOV ECX,0x87F7E8`).
 //   0x87F7E8 as an object (not a pointer) agrees with
 //   match/economy/house_class_flag_coords_methods.h (not edited). Names
-//   cross-checked against YRpp MapClass.h (consult-only; NO LICENSE; every
+//   cross-checked against YRpp (every
 //   offset reconfirmed above).
 #ifndef GG_MATCH_MAP_MAP_CLASS_RECALCULATE_ZONES_METHODS_H
 #define GG_MATCH_MAP_MAP_CLASS_RECALCULATE_ZONES_METHODS_H

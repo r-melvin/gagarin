@@ -16,7 +16,7 @@ char __fastcall FUN_006EC300(int linked);
 
 struct Vtbl_0041B890;
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41B890 -> AircraftClass slot 311 (byte-off 0x4DC).
 // That table is the only table in the image that holds it, so the slot is

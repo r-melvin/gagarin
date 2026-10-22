@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4389B0–0x438A8F), cross-checked
-//   against YRpp BombClass.h / Audio.h / Fundamentals.h (consult-only;
+//   against YRpp (
 //   reconfirmed numerically here).
 //
 // BombClass — a planted Ivan/time bomb: owner bookkeeping, a target object,

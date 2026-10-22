@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Offsets and callees read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI at 0x4084C0 / 0x4085A0 / 0x410A40. None is
-//   bound by YRpp or the seed map.
+//   bound by YRpp.
 //
 // A teardown, a zeroing initialiser and a name comparison.
 #ifndef GG_MATCH_CORE_FREE_AND_COMPARE_METHODS_H

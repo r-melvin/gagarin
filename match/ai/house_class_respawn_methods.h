@@ -12,7 +12,7 @@
 //   (coords pointer and 0 pushed, AL returned) and `[EDX+0xF8]` (no args).
 //   The jump table at 0x50D524 and its index bytes at 0x50D530 dispatch
 //   WhatAmI values 3, 7 and 0x28 to one body and 0x10 to another. Names are
-//   YRpp's (consult-only, no LICENSE); every offset reconfirmed here. The
+//   YRpp's; every offset reconfirmed here. The
 //   map singleton, GetCellAt and the GetCoords slot agree with
 //   match/combat/bullet_class_lose_target_methods.h.
 #ifndef GG_MATCH_AI_HOUSE_CLASS_RESPAWN_METHODS_H

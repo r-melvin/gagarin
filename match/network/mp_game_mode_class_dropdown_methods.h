@@ -7,7 +7,7 @@
 //   with 1 (deleting destructor), the team's Title at +0x04 and Index at
 //   +0x08, the game-mode array at 0xA8DA74 (Items 0xA8DA78, Count 0xA8DA84)
 //   whose packed entries carry the dword at +0x6B, and SendMessageA through
-//   the import slot 0x7E14A4. YRpp (consult-only, no LICENSE) names
+//   the import slot 0x7E14A4. YRpp names
 //   PopulateTeamDropdownForPlayer, CreateMPTeams and the MPTeam members;
 //   every offset reconfirmed here.
 #ifndef GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_DROPDOWN_METHODS_H

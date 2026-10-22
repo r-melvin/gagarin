@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Every body below was written against the retail disassembly of the user's
-//   gamemd.exe v1.001 read through the local Ghidra CLI. The private-reference
-//   seed row core/raw_file_class.cpp named the cluster and nothing else.
+//   gamemd.exe v1.001 read through the local Ghidra CLI.
 //
 // RAMFileClass — the FileClass interface implemented over a memory block.
 // Bodies are ordered ascending by retail address.

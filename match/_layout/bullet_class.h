@@ -35,7 +35,7 @@
 //       [ECX+0xAC], i.e. it is the BulletTypeClass, not the bullet.)
 //     * 0x15C: YRpp calls it `int Range`. No access found.
 //
-//   Cross-read against YRpp BulletClass.h: 28 named members claimed, 24
+//   Cross-read against YRpp: 28 named members claimed, 24
 //   confirmed, 4 recorded as unknown_XX (above).
 //
 // BulletClass — a projectile in flight. Derives ObjectClass at offset 0.

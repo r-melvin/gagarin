@@ -34,7 +34,7 @@ struct Sink_004272A0 { SinkVtbl_004272A0* Vptr; };
 typedef int (Sink_004272A0::*Fn00_004272A0)(int flags);
 struct SinkVtbl_004272A0 { Fn00_004272A0 At_00; };
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AnimFile's own vtable is 0x7E3584.
 //   0x4272A0 -> AnimFile slot 0 (byte-off 0x0).
 // That table is the only table in the image that holds it, so the slot is

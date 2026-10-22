@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly @0x46CC90 / @0x46CE10),
-//   cross-checked against YRpp CampaignClass.h / CCINIClass.h (consult-only, no
+//   cross-checked against YRpp (consult-only, no
 //   LICENSE; every offset reconfirmed numerically from the disasm below).
 //
 // CampaignClass — a single-player campaign/battle definition. It derives from

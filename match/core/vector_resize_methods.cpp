@@ -10,7 +10,7 @@
 // shape from 68.5% to 100% are written up there in full: the retail body is
 // DynamicVectorClass::Resize with VectorClass::Resize inlined into it, so
 // spelling it as the two nested functions puts the `return false` epilogue
-// last where retail has it; and the ownership flag needs the RA1 spelling
+// last where retail has it; and the ownership flag needs the spelling
 // `IsAllocated = (Vector != 0 && array == 0)`, whose redundant leading
 // short-circuit term is what splits retail's XOR/TEST/SETZ idiom across the
 // two pointer stores. The shared inner half lives in VectorBase::ResizeBase

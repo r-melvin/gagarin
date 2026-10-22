@@ -7,8 +7,7 @@
 //   byte allocated flag, `[0xB04A70]` count, `[0xB04A74]` increment,
 //   `[0xB04A64]` items, with its slot +0x08 reached through
 //   `MOV EAX,[0xB04A60]; CALL [EAX+8]`. The method name and the vector's
-//   identity (RadBeam::Array) are cross-checked against YRpp RadBeam.h
-//   (consult-only, no LICENSE).
+//   identity (RadBeam::Array) are cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_RAD_BEAM_ALLOCATE_METHODS_H
 #define GG_MATCH_COMBAT_RAD_BEAM_ALLOCATE_METHODS_H
 

@@ -6,8 +6,7 @@
 //   the type slot `[EAX+0x84]`, the gattling probe 0x717880 with the type
 //   in ECX and the type's byte at `+0xCD5`, the gattling stage at
 //   `[ESI+0x138]`, and the weapon type's damage at `+0xA4` and its second
-//   term at `+0x98`. Names cross-checked against YRpp TechnoClass.h /
-//   WeaponTypeClass.h (consult-only; NO LICENSE).
+//   term at `+0x98`. Names cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_COMBAT_DAMAGE_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_COMBAT_DAMAGE_METHODS_H
 

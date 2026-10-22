@@ -4,7 +4,7 @@
 //   Ghidra CLI at 0x42FCB0 and 0x42FC40. The two differ only in element size —
 //   0x42FCB0 scales by 4 (`LEA EAX,[EDI*4]`) and 0x42FC40 by 0x10
 //   (`MOV EAX,EDI; SHL EAX,4`, since LEA cannot scale by sixteen) — and in their
-//   vtables, 0x7E38D0 against 0x7E38F0. Layout is the VectorClass one asserted below. See re_findings §19 for the family.
+//   vtables, 0x7E38D0 against 0x7E38F0. Layout is the VectorClass one asserted below.
 #ifndef GG_MATCH_CORE_VECTOR_CLASS_CTOR_METHODS_H
 #define GG_MATCH_CORE_VECTOR_CLASS_CTOR_METHODS_H
 

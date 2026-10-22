@@ -4,7 +4,7 @@
 //   tables 0x7F00A8 (primary, 40 slots) / 0x7F008C (6) / 0x7F0084 (1) / 0x7F007C (1),
 //   constructor 0x6440A0 (three allocations `push 0x310; call 0x7C8E17`, e.g. 0x644683),
 //   member offsets from the constructor and from ReadINI 0x6442D0 / CRC 0x644700.
-//   Names follow YRpp where the bodies confirm the behaviour (consult-only).
+//   Names follow YRpp where the bodies confirm the behaviour.
 //
 // ParticleSystemTypeClass: the rules-side description of a particle system.
 //

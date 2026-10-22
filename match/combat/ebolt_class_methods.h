@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x4C2BD0–0x4C2C08), cross-checked
-//   against YRpp EBolt.h / ObjectClass.h (consult-only; reconfirmed
+//   against YRpp (reconfirmed
 //   numerically here).
 //
 // EBolt — an electric-bolt visual effect. SetOwner latches the firing unit and

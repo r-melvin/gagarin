@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @ 0x6F1F30 / 0x6F1F70
-//   (Ghidra disasm).  Structure cross-checked against YRpp TeamTypeClass.h /
-//   TeamClass.h (consult-only, no LICENSE; each offset/global/call target
+//   (Ghidra disasm). Structure cross-checked against YRpp
+//   (each offset/global/call target
 //   reconfirmed against the user's binary).
 //
 // Translation unit: TeamTypeClass instance-enumeration helpers.

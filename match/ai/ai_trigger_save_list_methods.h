@@ -8,7 +8,7 @@
 //   (a dword against the EDX register argument), the per-item virtual is
 //   `CALL [EDX+0x68]` with one pushed argument, and the enable pass pushes
 //   `[EAX+0xA4]` (a byte) and `EAX+0x24` (the item's name buffer). Method
-//   and member names are the YRpp ones (consult-only, no LICENSE); every
+//   and member names are the YRpp ones; every
 //   offset re-derived here. Same shape as match/ai/tag_type_class_save_methods.h.
 #ifndef GG_MATCH_AI_AI_TRIGGER_SAVE_LIST_METHODS_H
 #define GG_MATCH_AI_AI_TRIGGER_SAVE_LIST_METHODS_H

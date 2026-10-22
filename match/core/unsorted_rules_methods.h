@@ -4,8 +4,7 @@
 //   via the local Ghidra CLI at 0x48ACF0: `MOV EAX,[0x008871E0]` (the global
 //   RulesClass pointer), `FILD dword ptr [EAX+0x16B8]`, then `FMUL qword ptr
 //   [0x007E1738]`, whose eight bytes read 00 00 00 00 00 00 E0 3F = 0.5.
-//   Member name cross-checked against YRpp RulesClass.h `int Gravity`
-//   (consult-only, no LICENSE).
+//   Member name cross-checked against YRpp (`int Gravity`).
 #ifndef GG_MATCH_CORE_UNSORTED_RULES_METHODS_H
 #define GG_MATCH_CORE_UNSORTED_RULES_METHODS_H
 

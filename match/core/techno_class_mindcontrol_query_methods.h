@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// AbstractType discriminant returned by WhatAmI() (YRpp GeneralDefinitions.h).
+// AbstractType discriminant returned by WhatAmI().
 #define ABS_BUILDING 6
 
 class TechnoClass;

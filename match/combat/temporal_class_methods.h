@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x71AB10/0x71AD40/0x71ADE0),
-//   cross-checked against YRpp TemporalClass.h (consult-only; every offset and
+//   cross-checked against YRpp (every offset and
 //   vtable slot reconfirmed numerically from the disassembly here).
 //
 // TemporalClass - the chrono-warp impactor attached to a TechnoClass while it

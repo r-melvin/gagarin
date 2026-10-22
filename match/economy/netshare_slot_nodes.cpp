@@ -3,9 +3,8 @@
 //   Bytes matched against the user's retail gamemd.exe v1.001 over
 //   0x5E8740..0x5E957E. Layout evidence and the retail source-file name are
 //   documented in netshare_slot_nodes.h.
-//   The private-reference seed named the cluster and what each entry point is for.
-//   Three of the bodies here — 0x5E8760, 0x5E93F0 and 0x5E94A0 — are in
-//   neither the seed nor the Ghidra function list, and were found by sweeping
+//   Three of the bodies here — 0x5E8760, 0x5E93F0 and 0x5E94A0 — are not
+//   in the Ghidra function list, and were found by sweeping
 //   the address run as raw bytes and reading the twelve-byte 0x90 pads that
 //   separate functions. NodeNameType and IPXAddressClass are retail RTTI
 //   names; their members sit where the disassembly places them.
@@ -376,7 +375,7 @@ void __fastcall Release_Slot_By_Handle(const char* handle)
 // FUNCTION: GAMEMD 0x5E93F0
 //
 // Is this a real human player rather than one of the seven singletons? Not in
-// the seed and not in the Ghidra function list; found by the pad sweep.
+// the Ghidra function list; found by the pad sweep.
 int __fastcall Is_Player_Node(NodeNameType* node)
 {
     if (node == 0 || node == OpenNode || node == ClosedNode ||
@@ -415,7 +414,7 @@ int __fastcall Is_Occupied_Node(NodeNameType* node)
 // FUNCTION: GAMEMD 0x5E94A0
 //
 // The difficulty an AI singleton stands for, counting down from Easy, and -1
-// for anything that is not an AI. Not in the seed; found by the pad sweep.
+// for anything that is not an AI. Not in the Ghidra function list; found by the pad sweep.
 int __fastcall AI_Difficulty_Of(NodeNameType* node)
 {
     int difficulty = -1;

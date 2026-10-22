@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes and offsets read off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4CA5A0. The member layout is confirmed against YRpp
-//   FactoryClass.h (consult-only) working *backwards* from its named tail:
+//   working *backwards* from its named tail:
 //   Owner @0x6C and IsSuspended @0x70 are read directly by this function, and
 //   Object @0x58 sits immediately after a DynamicVectorClass — which places
 //   QueuedObjects at 0x40, hence Items @0x44 and Count @0x50, exactly the

@@ -8,8 +8,8 @@
 //   / Count `[0xAA0128]` (IonBlastClass::Array @0xAA0118), the __fastcall
 //   Point2D-returning helper at 0x53D8E0 (ECX = hidden result, EDX = index,
 //   `[EAX]`/`[EAX+4]` read back) and the per-element `CALL 0x53D580`.
-//   Names cross-checked against the consult-only YRpp IonBlastClass.h /
-//   Surface.h (names only; slot 0x74 is GetPitch in YRpp's Surface order).
+//   Names cross-checked against YRpp
+//   (names only; slot 0x74 is GetPitch in YRpp's Surface order).
 #ifndef GG_MATCH_COMBAT_ION_BLAST_DRAW_METHODS_H
 #define GG_MATCH_COMBAT_ION_BLAST_DRAW_METHODS_H
 

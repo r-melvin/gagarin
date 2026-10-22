@@ -12,7 +12,7 @@
 
 // The one shared body: append `*item` to the vector, growing through the
 // vector's own virtual SetCapacity (vtable slot +0x8) when it is full.
-// Recovered as DynamicVectorClass<T*>::AddItem per YRpp ArrayClasses.h.
+// Recovered as DynamicVectorClass<T*>::AddItem (name cross-checked against YRpp).
 #define GG_DYNVEC_PTR_ADDITEM_BODY(addr)                                      \
     bool DynVecPtr_##addr::AddItem(void* const* item)                        \
     {                                                                        \

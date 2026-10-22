@@ -7,7 +7,7 @@
 //   member slots +0x1E8 (mission, bool), +0x480 (destination, bool) and
 //   +0x3C8 (target); the target's WhatAmI slot +0x2C (0xB = cell); and
 //   MapClass::IsWithinUsableArea(CellClass*, bool) at 0x578540 on the map
-//   object 0x87F7E8. YRpp (consult-only, no LICENSE) names
+//   object 0x87F7E8. YRpp names
 //   AssignMissionTarget, Target, FirstUnit, NextTeamMember.
 #ifndef GG_MATCH_AI_TEAM_CLASS_MISSION_TARGET_METHODS_H
 #define GG_MATCH_AI_TEAM_CLASS_MISSION_TARGET_METHODS_H

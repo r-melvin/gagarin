@@ -6,7 +6,7 @@
 //   (frame / an uninitialised stack dword / the duration); the type reached
 //   through slot `[EAX+0x84]` (GetTechnoType) and read at `[EAX+0x684]`,
 //   `[EAX+0x69C]`, `[EAX+0x3E4]`, `[EAX+0x6A0]` and `[EAX+0x698]`; 0xA8ED84 is
-//   the frame counter. Member names are YRpp's (consult-only, no LICENSE);
+//   the frame counter. Member names are YRpp's;
 //   every offset reconfirmed here and against match/_layout/techno_class.h /
 //   techno_type_class.h (not included: this TU needs a timer with a ctor).
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_RELOADING_METHODS_H

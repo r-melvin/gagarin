@@ -16,7 +16,7 @@
 //     match/ai/techno_class_planning_token_methods.h (read, not edited).
 //     Owner side: [EAX+0x21C] (0x6387C2) and [ECX+0x30] / [EAX+0x30]
 //     (0x6387C8, 0x6387DD).
-//   Names cross-checked against YRpp (consult-only, NO LICENSE); every offset
+//   Names cross-checked against YRpp; every offset
 //   reconfirmed above.
 #ifndef GG_MATCH_AI_TECHNO_CLASS_CLEAR_TOKENS_METHODS_H
 #define GG_MATCH_AI_TECHNO_CLASS_CLEAR_TOKENS_METHODS_H

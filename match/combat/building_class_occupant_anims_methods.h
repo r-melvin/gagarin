@@ -22,8 +22,8 @@
 //   Names cross-checked against YRpp BuildingClass::PlayNthAnim / PlayAnim,
 //   BuildingTypeClass::BuildingAnimStruct, RulesClass::ConditionYellow,
 //   ObjectClass::GetHealthPercentage and the BuildingAnimSlot enum (Active=3,
-//   ActiveTwo=4, ActiveThree=5, ActiveFour=6, Idle=18) — consult-only, NO
-//   LICENSE; every offset above is re-derived from the user's binary.
+//   ActiveTwo=4, ActiveThree=5, ActiveFour=6, Idle=18);
+//   every offset above is re-derived from the user's binary.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPANT_ANIMS_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPANT_ANIMS_METHODS_H
 

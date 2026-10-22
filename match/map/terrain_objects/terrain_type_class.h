@@ -32,7 +32,7 @@ class TerrainTypeClass : public MapObjTypeClassView
 public:
     // FUNCTION: GAMEMD 0x71DA80 - the named constructor.
     TerrainTypeClass(const char* id) throw();
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
     TerrainTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}
 

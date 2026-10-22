@@ -2,9 +2,8 @@
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Bytes compared against the user's retail gamemd.exe v1.001 across
 //   0x5CD320..0x5CEDC6. The class identities come from the image's own runtime
-//   type information (see the header); the private-reference seed contributed only the
-//   observation that this address run is one cluster. Six of the entry points
-//   below carry no name in either the seed or the analysis database and were
+//   type information (see the header). Six of the entry points
+//   below carry no name in the analysis database and were
 //   found by sweeping the range as raw bytes for the 0x90 alignment pads that
 //   separate functions; those are scored with scripts/vc6/raw_match.py, which
 //   does not need the analysis to know the address.
@@ -69,8 +68,7 @@
 //   LIBRARY:  GAMEMD 0x7C8B3D  operator delete (CRT; excluded from the match)
 //
 // ENTRY-POINT CORRECTIONS the raw sweep's implied lengths get wrong. A pool
-// address's length is an upper bound on the first body there, never its length
-// (docs/matching_methodology_and_toolchain.md, twenty-seventh batch):
+// address's length is an upper bound on the first body there, never its length:
 //   0x5CDEE0 is 0x1E0, not 0x3C4. The body ends at 0x5CE0BD and an unrelated
 //     class's function begins at 0x5CE0C0 (it reads members at +0x50, +0x54 and
 //     +0x5C that no class in this file has) and runs to 0x5CE2A4.

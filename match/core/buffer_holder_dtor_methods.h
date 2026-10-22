@@ -3,8 +3,7 @@
 //   The original 53 entry points and their vtable addresses were extracted
 //   individually from the user's retail gamemd.exe v1.001 via the local Ghidra
 //   CLI, one disassembly each. Every one agreed on the layout: buffer at +0x04,
-//   length at +0x08, ownership flag at +0x0D. None is bound by YRpp or the seed
-//   map.
+//   length at +0x08, ownership flag at +0x0D. None is bound by YRpp.
 //
 // 0x40B300 was later re-identified from RTTI as slot 0 of the
 // VectorClass<SubzoneConnectionStruct> vtable 0x7E177C and moved to

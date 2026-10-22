@@ -2,14 +2,14 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + vtable-slot offsets derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (member-access + virtual-call disassembly),
-//   cross-checked against YRpp CCFileClass.h (consult-only, no LICENSE; every
+//   cross-checked against YRpp (consult-only, no LICENSE; every
 //   offset reconfirmed numerically against the disasm below).
 //
 // Translation unit for two FileClass-hierarchy file operations:
 //   0x47AF10 CDFileClass::OpenEx     (slot 8 of the CDFileClass vtable @0x7E1668)
 //   0x65D190 RawFileClass::DeleteFile(slot 4 of the same vtable)
 //
-// The Westwood FileClass hierarchy (the MIX/CD/raw file stack):
+// The FileClass hierarchy (the MIX/CD/raw file stack):
 //   FileClass (abstract COM-ish base) -> RawFileClass -> BufferIOFileClass
 //   -> CDFileClass -> CCFileClass.
 //

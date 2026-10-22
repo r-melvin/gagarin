@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names and
-//   member order cross-checked against YRpp ThemeClass.h (`struct ThemeControl`
-//   / `class ThemeClass`, consult-only, NO LICENSE; every offset reconfirmed
+//   member order cross-checked against YRpp (`struct ThemeControl`
+//   `class ThemeClass`; every offset reconfirmed
 //   numerically from the disassembly below).
 //
 // ThemeClass — the global music/score jukebox. Holds a DynamicVectorClass of
@@ -22,7 +22,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // ---------------------------------------------------------------------------
-// ThemeControl — one registered score's metadata. YRpp ThemeClass.h order:
+// ThemeControl — one registered score's metadata. YRpp order:
 //   FixedString<0x100>  ID      @0x000
 //   FixedString<0x100>  Sound   @0x100
 //   FixedWString<0x40>  UIName  @0x200   (0x40 wchar_t == 0x80 bytes)

@@ -11,7 +11,7 @@
 //   (matched in match/core/small_struct_ctor_methods.cpp; the sibling inlined
 //   copy of this loop in Read_File 0x668C43 calls it out of line with
 //   `PUSH 0` x3), inlined here as the three `MOV [ESP+0x2C..0x2E],BL`.
-//   Names cross-checked against YRpp RulesClass.h / CCINIClass.h
+//   Names cross-checked against YRpp
 //   (consult-only; every offset reconfirmed above).
 #ifndef GG_MATCH_CORE_RULES_CLASS_COLOR_ADD_METHODS_H
 #define GG_MATCH_CORE_RULES_CLASS_COLOR_ADD_METHODS_H

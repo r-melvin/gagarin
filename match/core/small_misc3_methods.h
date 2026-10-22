@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI. Import names read from the IAT
-//   thunks. None of these addresses is bound by YRpp or the seed map.
+//   thunks. None of these addresses is bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC3_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC3_METHODS_H
 

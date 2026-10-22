@@ -26,7 +26,7 @@ public:
     // FUNCTION: GAMEMD 0x5FC380
     OverlayClass(OverlayTypeClass* type, const MapObjCell& cell, int arg);
     static int __fastcall GetTiberiumType(int idxOverlay); // existing row 0x5FDD20
-    // No-init constructor (Westwood NoInit idiom): Load re-runs it through placement new to restore
+    // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
     OverlayClass(const MapObjNoInit& noInit) : MapObjClassView(noInit) {}
 

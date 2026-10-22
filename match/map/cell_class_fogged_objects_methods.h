@@ -11,8 +11,8 @@
 //   shorts at a time out of 0x4D2790. The cell coordinate is the inlined
 //   signed divide by 256 (`CDQ; AND EDX,0xFF; ADD; SAR 8`) and the
 //   MapClass::GetCellAt receiver is the fixed instance `MOV ECX,0x87F7E8`.
-//   CellClass::ClearFoggedObjects and MapClass::GetCellAt are YRpp names
-//   (consult-only, no LICENSE); every offset is reconfirmed here.
+//   CellClass::ClearFoggedObjects and MapClass::GetCellAt are YRpp names;
+//   every offset is reconfirmed here.
 #ifndef GG_MATCH_MAP_CELL_CLASS_FOGGED_OBJECTS_METHODS_H
 #define GG_MATCH_MAP_CELL_CLASS_FOGGED_OBJECTS_METHODS_H
 

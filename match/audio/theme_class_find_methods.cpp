@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Name
-//   cross-checked against YRpp ThemeClass.h (consult-only, NO LICENSE; each
+//   cross-checked against YRpp (each
 //   offset/global reconfirmed against the user's binary below).
 //
 // Translation unit: ThemeClass::FindIndex. Linear search of the Themes vector

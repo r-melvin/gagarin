@@ -11,7 +11,7 @@
 //   parameter slot and each element into the one frame local. The receiver
 //   is a LayerClass: DisplayClass::Load (0x4AE6F0, DisplayClass vtable slot
 //   30) calls this on each layer of the array at 0x8A0360, 0x18 bytes apart.
-//   YRpp names 0xB0C110 SwizzleManagerClass (consult-only, name only); the
+//   YRpp names 0xB0C110 SwizzleManagerClass (name only); the
 //   body is the DynamicVectorClass<T*> load.
 #ifndef GG_MATCH_MAP_LAYER_CLASS_LOAD_METHODS_H
 #define GG_MATCH_MAP_LAYER_CLASS_LOAD_METHODS_H

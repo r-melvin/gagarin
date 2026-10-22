@@ -66,7 +66,7 @@ GG_STATIC_ASSERT(offsetof(Source_00429500, Base) == 0x61C);
 extern Source_00429500* DAT_00A8B230;   // GLOBAL: GAMEMD 0xA8B230
 
 // FUNCTION: GAMEMD 0x429500
-// PLACEHOLDER DELIBERATELY KEPT (RTTI sweep, docs/rtti_sweep.md): 0x429500 is
+// PLACEHOLDER DELIBERATELY KEPT (RTTI sweep): 0x429500 is
 // slot 7 (byte-off 0x1C) of ApplicationClass's own vtable 0x7E36D4 and appears
 // in no other table, so ApplicationClass declares it. Same reason as 0x429420:
 // the receiver is an untouched first stack argument of a free `__stdcall`, so

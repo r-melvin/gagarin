@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
-//   cross-checked against YRpp Audio.h (consult-only, no LICENSE; every offset
+//   cross-checked against YRpp (every offset
 //   and global address reconfirmed against the user's binary below).
 //
 // reccmp annotations (ascending by retail address within this TU):

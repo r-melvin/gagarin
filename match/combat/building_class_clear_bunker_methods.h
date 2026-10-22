@@ -8,7 +8,7 @@
 //   per match/economy/building_class_enable_methods.h), `[ESI+0x718]`, the
 //   rules globals `[0x8871E0]` `+0x244` (int, -1 = none) and `+0x1700`
 //   (double, the FCOMP operand), and the two virtual slots `[EDX+0x274]` and
-//   `[EDX+0x1E8]`. YRpp (consult-only, no LICENSE) names ClearBunker,
+//   `[EDX+0x1E8]`. YRpp names ClearBunker,
 //   BunkerLinkedItem and the health-ratio callee 0x5F5C60.
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_CLEAR_BUNKER_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_CLEAR_BUNKER_METHODS_H

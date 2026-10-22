@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm).
-//   Names cross-checked against YRpp HouseClass.h / HouseTypeClass.h /
-//   SessionClass.h (consult-only, no LICENSE; each offset/address reconfirmed
+//   Names cross-checked against YRpp
+//   (each offset/address reconfirmed
 //   against the user's binary below).
 //
 // reccmp annotations (ascending by retail address within this TU):
@@ -17,7 +17,7 @@
 // ---------------------------------------------------------------------------
 // Offset-pinned model of the global HouseClass::Array (DynamicVectorClass head).
 // Confirmed from 0x502D30: `MOV ESI,[0xA8022C]` == &Array.Items (Array @0xA80228,
-// Items @+0x04) and `MOV EDI,[0xA80238]` == Array.Count (@+0x10). YRpp ArrayClasses.h.
+// Items @+0x04) and `MOV EDI,[0xA80238]` == Array.Count (@+0x10). YRpp.
 // ---------------------------------------------------------------------------
 struct DynamicVectorClass_HousePtr
 {

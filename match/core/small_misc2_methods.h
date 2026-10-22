@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
-//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp or the
-//   seed map, so all keep placeholder names.
+//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp,
+//   so all keep placeholder names.
 #ifndef GG_MATCH_CORE_SMALL_MISC2_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC2_METHODS_H
 

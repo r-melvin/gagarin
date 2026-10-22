@@ -6,7 +6,7 @@
 //   ccini_class_small_readers_methods.cpp, whose confirmed ReadString
 //   (0x528A10) and WriteString (0x528660) conventions are reused here.
 //
-//   Table identity confirmed from the binary rather than the seed:
+//   Table identity confirmed from the binary:
 //   0x7E5210 is an array of name pointers reading "none", "flak", ... which
 //   is the armour table. The house-type registry's count is read from
 //   0xA83CA8 and its item array from 0xA83C9C, twelve bytes apart, the

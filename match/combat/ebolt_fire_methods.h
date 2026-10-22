@@ -12,7 +12,7 @@
 //   (operator new) null-tested, then the 6-argument __thiscall 0x62DC50 on
 //   the block with `[[0x8871E0]+0x1020]`, the address of the second
 //   coordinate, 0, 0, 0x8A0E50 and 0. Names cross-checked against YRpp
-//   EBolt.h / RulesClass.h (consult-only; every offset reconfirmed above).
+//   (every offset reconfirmed above).
 #ifndef GG_MATCH_COMBAT_EBOLT_FIRE_METHODS_H
 #define GG_MATCH_COMBAT_EBOLT_FIRE_METHODS_H
 

@@ -8,7 +8,7 @@
 //   `MOV ECX,0x87F7E8` feeding CALL 0x5657A0 (MapClass::GetCellAt), and the
 //   cell flag word `TEST [EAX+0x140],0x400000`. Names cross-checked against
 //   YRpp BuildingClass::CheckFog / ObjectClass::GetMapCoords /
-//   GetFoundationData (consult-only; re-derived here).
+//   GetFoundationData (re-derived here).
 #ifndef GG_MATCH_COMBAT_BUILDING_CLASS_FOG_METHODS_H
 #define GG_MATCH_COMBAT_BUILDING_CLASS_FOG_METHODS_H
 

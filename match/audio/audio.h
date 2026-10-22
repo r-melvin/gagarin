@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   Audio.h `AudioIDXData` / `AudioController` (consult-only, NO LICENSE; every
+//   `AudioIDXData` / `AudioController` (every
 //   offset reconfirmed numerically from the disassembly below).
 //
 // Two cooperating audio types:

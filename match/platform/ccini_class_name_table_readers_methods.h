@@ -7,8 +7,8 @@
 //   ccini_class_small_readers_methods.cpp, from which ReadString's
 //   convention and the "" literal at 0x889F64 are taken.
 //
-//   Every table identity below was confirmed by reading the table, not by
-//   trusting the seed: `ghidra memory read` gives 0x81B958 -> {"green",1}
+//   Every table identity below was confirmed by reading the table:
+//   `ghidra memory read` gives 0x81B958 -> {"green",1}
 //   (pips), 0x81B9B0 -> {"Ammo",1} (pip scales), 0x81B9D8 -> {"1x1",0}
 //   (building foundations), 0x81BA88 -> "Normal" (movement zones) and
 //   0x7E4C50 -> "None" (super-weapon actions). The table extents come from

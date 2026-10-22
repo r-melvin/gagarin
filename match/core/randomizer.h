@@ -2,10 +2,10 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   Randomizer.h `class Randomizer` (consult-only, no LICENSE; reconfirmed
+//   `class Randomizer` (reconfirmed
 //   here from the 0x65C780 / 0x65C7E0 disassembly).
 //
-// Randomizer — Westwood XOR lagged-table PRNG (250-entry table, two indices).
+// Randomizer — XOR lagged-table PRNG (250-entry table, two indices).
 // Used for RMG / out-of-match randomness. Random() advances the table and
 // returns one value; RandomRanged() does rejection sampling into [min,max].
 #ifndef GG_MATCH_CORE_RANDOMIZER_H

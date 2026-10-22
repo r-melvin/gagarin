@@ -12,7 +12,7 @@
 //       vector at 0xB1D4A0 (vtable `[0xB1D4A0]`, Items `[0xB1D4A4]`, Count
 //       `[0xB1D4B0]`) issues FindItemIndex via `[EDX+0x10]` and shifts the
 //       tail down (inlined RemoveItem) before `CALL 0x7C8B3D` frees the entry.
-//   Method names from YRpp VoxClass.h / VocClass.h (consult-only; names only).
+//   Method names from YRpp (names only).
 //
 // VoxClass -- the EVA voice table (see match/audio/vox_class_methods.h for the
 // Play/SilenceIndex side). PlayAtPos spawns a positional EVA voice through the

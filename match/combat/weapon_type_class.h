@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x7729F0 / 0x772A90 / 0x772FA0),
-//   cross-checked against YRpp WeaponTypeClass.h (consult-only, no LICENSE;
+//   cross-checked against YRpp (
 //   every offset and address reconfirmed numerically below).
 //
 // WeaponTypeClass — a weapon *type* (rules-driven template). Derives the shared

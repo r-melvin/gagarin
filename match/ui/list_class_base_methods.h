@@ -2,11 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: the user's retail gamemd.exe v1.001 through the local Ghidra
 //   CLI, address run 0x557600-0x557F40 (plus the shared vtable read at
-//   0x7ED10C). This whole run carried NO worklist row under its true name; the
-//   private-reference seed misfiled eleven of these bodies under "ai/ai_functions_
-//   batch2.cpp" (cell "ai") because the pool-address heuristic that seeded the
-//   cell had no class name to key on. The owning class came out of the
-//   destructor's own vtable store instead:
+//   0x7ED10C). This whole run carried NO worklist row under its true name.
+//   The owning class came out of the destructor's own vtable store:
 //     0x557609  MOV [ESI],0x7ed10c            -- ListClass's own vtable
 //     0x7ed108 -4 -> 0x00805218  (complete object locator)
 //     0x00805218 + 0xC -> 0x0081d110  (type descriptor)
@@ -52,12 +49,11 @@
 //   Bump (0x557A20) and Step (0x557A70) disassemble byte-for-byte identical
 //   apart from relative addresses -- two vtable slots compiled from the same
 //   source shape, not a shared body (each survives independently at its own
-//   address; see the byte-identical-siblings rule banked in
-//   docs/matching_methodology_and_toolchain.md).
+//   address).
 //
 // Layout, member by member, confirmed numerically from THIS TU's own
 // disassembly only (fields this TU never touches stay `unknown_XX` gaps
-// rather than borrowing unconfirmed names from the consult-only re_finding):
+// rather than borrowing unconfirmed names):
 //   +0x00  Vfptr           `MOV [ESI],0x7ed10c` in the destructor
 //   +0x10  Y               `MOV EDX,[ESI+0x10]` in Action's hit-test
 //   +0x14  Width           `param_1[5] +=/-= Scroller.Width` in the
@@ -113,8 +109,7 @@ struct ListClassVtbl;
 // gadget chain while scrolling is active. Only the members this TU's sixteen
 // bodies actually touch are named; every other byte is an `unknown_XX` gap
 // (LinkClass's Next/Previous, GadgetClass's X/Height/flags/..., ControlClass's
-// ID/SendTo, and ListClass's own TextFlags/Tabs -- all confirmed elsewhere in
-// docs/decomp_spec/re_findings/frontend_gadget_system.md but not independently
+// ID/SendTo, and ListClass's own TextFlags/Tabs -- not independently
 // re-derived by this TU, so they stay unnamed here per AGENTS.md). `Vfptr` is
 // declared against the forward-declared `ListClassVtbl` above -- a pointer to
 // an incomplete type is fine here; the pointer-to-member-function trick below
@@ -189,8 +184,7 @@ public:
 
     // The non-virtual base-class bodies this TU chains to. Declared, never
     // defined here: each is only a relocation target, and the receiver has to
-    // arrive in ECX, which VC6 grants only to a member function (see the
-    // stand-in rule in docs/matching_methodology_and_toolchain.md).
+    // arrive in ECX, which VC6 grants only to a member function).
     void       BaseDtor();                        // GadgetClass::~GadgetClass 0x4E1390
     LinkClass* BaseAdd(LinkClass& object);        // LinkClass::Add            0x5566A0
     LinkClass* BaseAddHead(LinkClass& object);    // LinkClass::AddHead        0x5566D0

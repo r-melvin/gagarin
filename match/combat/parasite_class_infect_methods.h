@@ -6,8 +6,7 @@
 //   `[ESI+0x694]` ParasiteEatingMe, `[ESI+0x2E4]` BunkerLinkedItem (the same
 //   offsets the committed FootClass spine pins); slots `[EAX+0x84]` (GetTechnoType) and
 //   `[EAX+0x1BC]` (GetCell); on the type `[EAX+0xD38]` and `[EAX+0xCCE]`
-//   (Naval); on this `[EDI+0x24]` Owner. Method/type names from YRpp
-//   ParasiteClass.h / TechnoTypeClass.h / CellClass.h (consult-only).
+//   (Naval); on this `[EDI+0x24]` Owner. Method/type names from YRpp.
 #ifndef GG_MATCH_COMBAT_PARASITE_CLASS_INFECT_METHODS_H
 #define GG_MATCH_COMBAT_PARASITE_CLASS_INFECT_METHODS_H
 

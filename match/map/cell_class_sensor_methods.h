@@ -5,8 +5,8 @@
 //   0x487E00 / 0x487EA0. The cluster carried no name in any worklist; the
 //   owning class was recovered from the member-access displacements (the
 //   receiver at 0x45590A..0x45591E is the cell the MapClass singleton at
-//   0x87F7E8 hands back) and cross-checked against YRpp CellClass.h
-//   (consult-only, no LICENSE; every offset below reconfirmed numerically).
+//   0x87F7E8 hands back) and cross-checked against YRpp
+//   (every offset below reconfirmed numerically).
 //
 // CellClass sensor counters and two small cell queries.
 //

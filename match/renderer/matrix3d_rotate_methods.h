@@ -5,7 +5,7 @@
 //   4 floats at `[ESI+0x00..0x2C]`; RotateX touches `[ESI+0x4]/[ESI+0x8]`
 //   (cols 1,2), RotateY `[ESI]/[ESI+0x8]` (cols 0,2), RotateZ `[ESI]/[ESI+0x4]`
 //   (cols 0,1) in each of the three rows (+0x00, +0x10, +0x20). Method names
-//   from YRpp Matrix3D.h (consult-only; names only, no text copied).
+//   from YRpp (consult-only; names only, no text copied).
 //
 // Matrix3D -- a 3x4 row-major float affine transform, the same 0x30 layout
 // already proven in match/movement/matrix3d_methods.h. Redefined locally so

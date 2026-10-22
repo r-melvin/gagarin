@@ -7,8 +7,8 @@
 //   `[0xA8EAEC]` (TriggerClass::Array Count/Items, base 0xA8EAE8),
 //   `[ECX+0x24]` (TriggerClass::Type), `[EDX+0xA4]` (TriggerTypeClass::House),
 //   `[EDI+0x34]` (HouseClass::Type) and the three `PUSH 1 / CALL [vtbl+0x20]`
-//   scalar-deleting-destructor dispatches.  Name from YRpp HouseClass.h
-//   (consult-only; every offset/address reconfirmed here).
+//   scalar-deleting-destructor dispatches. Name from YRpp
+//   (every offset/address reconfirmed here).
 #ifndef GG_MATCH_AI_HOUSE_CLASS_TEARDOWN_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_TEARDOWN_METHODS_H
 

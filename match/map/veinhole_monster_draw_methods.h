@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x74D490: `[EDI+0x100]` (IsDead) and `LEA
-//   ESI,[EDI+0xF8]` with `MOVSX ...,word [EDI+0xF8]` / `[EDI+0xFA]` (the
+//   ESI,[EDI+0xF8]` with `MOVSX...,word [EDI+0xF8]` / `[EDI+0xFA]` (the
 //   monster's CellStruct) -- both already asserted in
 //   match/map/veinhole_monster_methods.h and
 //   match/map/veinhole_monster_eligible_methods.h -- plus `[EDI+0xFC]`
@@ -13,7 +13,7 @@
 //   `0x886FA0`, `[0x887324]`, `[0x887314]`, `[0xA83D4C]+0x16054` and
 //   `[0xB054D4]` with `[EAX+0x30C]` off the indexed house. The map instance
 //   is the fixed `MOV ECX,0x87F7E8`. VeinholeMonsterClass::DrawIt is YRpp's
-//   name (consult-only, no LICENSE); every offset is reconfirmed here.
+//   name; every offset is reconfirmed here.
 #ifndef GG_MATCH_MAP_VEINHOLE_MONSTER_DRAW_METHODS_H
 #define GG_MATCH_MAP_VEINHOLE_MONSTER_DRAW_METHODS_H
 

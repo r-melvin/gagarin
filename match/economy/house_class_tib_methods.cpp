@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 @0x4F9610 and @0x500510
-//   (Ghidra disasm). Names cross-checked against YRpp HouseClass.h (consult-
-//   only, no LICENSE); each offset/address reconfirmed against the binary.
+//   (Ghidra disasm). Names cross-checked against YRpp;
+//   each offset/address reconfirmed against the binary.
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x4F9610   HouseClass::GiveTiberium       (__thiscall)

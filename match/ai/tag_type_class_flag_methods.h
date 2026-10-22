@@ -4,8 +4,8 @@
 //   local Ghidra CLI at 0x6E61F0 / 0x6E6220 / 0x6E6250 / 0x6E6280 / 0x6E62B0:
 //   every one of the five opens `MOV ESI,[ECX+0xA0]` (the tag's first trigger)
 //   and advances with `MOV ESI,[ESI+0xA8]` (the trigger's next link). Method
-//   names and the callee bindings cross-checked against YRpp TagTypeClass.h /
-//   TriggerTypeClass.h (consult-only, no LICENSE; reconfirmed here).
+//   names and the callee bindings cross-checked against YRpp
+//   (reconfirmed here).
 //
 // Additional binary evidence for the INI methods:
 //   0x6E5B78/0x6E5B82/0x6E5B88 initialise +0x98/+0x9C/+0xA0;

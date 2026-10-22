@@ -9,9 +9,9 @@
 //   [ESI+0x40] (`AND` with `~(1 << CL)`). 0xA8ED84 is the frame counter,
 //   0xA8B230 ScenarioClass::Instance whose Randomizer sits at +0x218
 //   (`LEA ECX,[EAX+0x218]` before CALL 0x65C7E0 with 0 and the value
-//   pushed). Names cross-checked against YRpp TriggerClass.h /
-//   TriggerTypeClass.h / TEventClass.h / ScenarioClass.h (consult-only; NO
-//   LICENSE; every offset reconfirmed above). Type @0x24 agrees with
+//   pushed). Names cross-checked against YRpp
+//
+//   (every offset reconfirmed above). Type @0x24 agrees with
 //   match/ai/trigger_class_methods.h (not edited).
 #ifndef GG_MATCH_AI_TRIGGER_CLASS_RESET_TIMERS_METHODS_H
 #define GG_MATCH_AI_TRIGGER_CLASS_RESET_TIMERS_METHODS_H

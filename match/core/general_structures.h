@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly), cross-checked against YRpp
-//   GeneralStructures.h `struct BasePlanningCellContainer` (consult-only; no
-//   LICENSE; every offset reconfirmed numerically from the disasm below).
+//   `struct BasePlanningCellContainer` (every offset reconfirmed numerically from the disasm below).
 //
 // BasePlanningCellContainer — a growable array of weighted base-planning cells
 // used by the AI base layout routines. Element = BasePlanningCell (8 bytes:

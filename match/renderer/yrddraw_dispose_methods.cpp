@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6BB8E0. Names from
-//   YRpp YRDDraw.h (consult-only).
+//   YRpp (consult-only).
 
 #include "yrddraw_dispose_methods.h"
 

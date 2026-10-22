@@ -9,7 +9,7 @@
 //   neighbour offsets are built from the globals `[0x87F8DC]` and
 //   `[0x87F8E0]` (again summed with 1), and the fallback recalculation is
 //   invoked on the fixed instance `MOV ECX,0x87F7E8`. MapClass::ResetZones
-//   is YRpp's name (consult-only, no LICENSE) and matches the declaration
+//   is YRpp's name and matches the declaration
 //   already carried by match/map/veinhole_monster_recalculate_methods.h;
 //   every offset is reconfirmed here.
 #ifndef GG_MATCH_MAP_MAP_CLASS_RESET_ZONES_METHODS_H

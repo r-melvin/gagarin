@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
-//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp or the
-//   seed map.
+//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC9_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC9_METHODS_H
 
@@ -33,7 +32,7 @@ struct Pair2i
     Pair2i FUN_00437F10(const Pair2i* other) const;
 };
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41A590 -> AircraftClass slot 93 (byte-off 0x174).
 // No other table in the image holds it, so the slot is declared on
@@ -47,7 +46,7 @@ Probe_005B3A00* __fastcall FUN_005B3A00(AircraftClass_0041A590* self);   // GAME
 // function-pointer idiom cannot express it and __fastcall would put the first
 // in EDX. Same situation as receiveDamage at +0x16C: declare the slots in order
 // and let cl generate the call. The dummy slots are never defined or called.
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_`/`Sub_`/`Subject_` placeholder). AircraftClass's own vtable is 0x7E22A4.
 //   0x41A590 -> AircraftClass slot 93 (byte-off 0x174).
 // That table is the only table in the image that holds it, so the slot is

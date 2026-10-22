@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets derived from the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI (member-access disassembly at 0x6B7B90 / 0x6B7D30 / 0x6B7D50),
-//   cross-checked against YRpp SpawnManagerClass.h (consult-only; NO LICENSE —
+//   cross-checked against YRpp (
 //   every offset reconfirmed numerically here).
 //
 // SpawnManagerClass — manages a carrier's spawned aircraft (e.g. Aircraft

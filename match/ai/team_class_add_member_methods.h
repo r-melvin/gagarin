@@ -13,7 +13,7 @@
 //   member/&slot/flag), 0x6EA870 (TeamClass::LiberateMember), 0x6F1870
 //   (TeamTypeClass::GetGroup), 0x5F5B50 (ObjectClass::AttachTrigger),
 //   0x6EAEE0 (two-pointer __thiscall). Method and callee names from YRpp
-//   (consult-only, no LICENSE); each reconfirmed here.
+//   each reconfirmed here.
 #ifndef GG_MATCH_AI_TEAM_CLASS_ADD_MEMBER_METHODS_H
 #define GG_MATCH_AI_TEAM_CLASS_ADD_MEMBER_METHODS_H
 

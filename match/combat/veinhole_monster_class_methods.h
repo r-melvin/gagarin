@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/globals derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x74CD60-0x74D48A), cross-
-//   checked against YRpp VeinholeMonsterClass.h / Theater.h (consult-only;
+//   checked against YRpp (
 //   reconfirmed numerically here).
 //
 // VeinholeMonsterClass static helpers: two cell-lookups over the global
@@ -24,7 +24,7 @@ struct CellStruct
 };
 
 // Theater - per-theater data table, a 6-entry array of 0x70-byte records at
-// GAMEMD 0x007E1B78 (YRpp Theater.h). LoadVeinholeArt only touches the
+// GAMEMD 0x007E1B78 (YRpp). LoadVeinholeArt only touches the
 // Extension field @+0x4E ("TEM"/"SNO"/...); &Array[0].Extension == 0x007E1BC6,
 // the folded ADD constant seen in the disasm. The rest is laid out to fix
 // sizeof == 0x70 (the *112 stride the codegen strength-reduces).

@@ -8,7 +8,7 @@
 //   the locomotor interface's vptr to +0x04 and the persist vptr to +0x00,
 //   which the loader at 0x4CFCC0 re-seats with exactly those two constants
 //   (0x7E8AC0 at +0, 0x7E89F4 at +4). YRpp names FlyLocomotionClass and the
-//   ILocomotion slot order - name-only cross-check, consult-only.
+//   ILocomotion slot order - name-only cross-check.
 //
 // Offsets confirmed numerically against the user's retail gamemd.exe v1.001:
 //   +0x00 the persist vptr, +0x04 the locomotor vptr, +0x0C LinkedTo (read

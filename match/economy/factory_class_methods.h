@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly of the four production
-//   accessors), cross-checked against YRpp FactoryClass.h / StageClass.h
-//   (consult-only, no LICENSE; each offset reconfirmed numerically below).
+//   accessors), cross-checked against YRpp
+//   (each offset reconfirmed numerically below).
 //
 // FactoryClass — produces units/buildings for a HouseClass. Derives from
 // AbstractClass (0x24 bytes; Production.Value lands at this+0x24, so the base is
@@ -19,7 +19,7 @@ struct TechnoTypeClass;
 class TechnoClass;
 struct HouseClass;
 
-// StageClass (YRpp StageClass.h): Value@0x00, HasChanged@0x04, CDTimerClass
+// StageClass (YRpp): Value@0x00, HasChanged@0x04, CDTimerClass
 // Timer@0x08 (0xC bytes), Rate@0x14, Step@0x18 => sizeof 0x1C. Only Value is
 // read here (GetProgress / IsDone load [this+0x24] == Production.Value).
 struct StageClass

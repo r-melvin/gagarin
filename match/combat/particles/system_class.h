@@ -4,7 +4,7 @@
 //   tables 0x7EFB9C (primary, 122 slots) / 0x7EFB80 (6) / 0x7EFB78 (1) / 0x7EFB70 (1),
 //   constructor 0x62DF20 (allocation `push 0x100; call 0x7C8E17` at 0x6C59BC), member
 //   offsets from the constructor, Load/Save/ComputeCRC/Update bodies in system_class.cpp.
-//   Names follow YRpp where the bodies confirm the behaviour (consult-only).
+//   Names follow YRpp where the bodies confirm the behaviour.
 //
 // ParticleSystemClass: an object that owns a vector of particles and spawns/updates them
 // according to its ParticleSystemTypeClass behaviour.

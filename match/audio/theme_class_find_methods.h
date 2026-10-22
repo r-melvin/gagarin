@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Member order
-//   cross-checked against YRpp ThemeClass.h (`struct ThemeControl` / `class
-//   ThemeClass`, consult-only, NO LICENSE; every offset reconfirmed numerically
+//   cross-checked against YRpp (`struct ThemeControl` / `class
+//   ThemeClass`; every offset reconfirmed numerically
 //   from the disassembly below).
 //
 // ThemeClass::FindIndex — locate a registered score by its ID string. Walks the
@@ -24,7 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // ThemeControl — one registered score. Only ID (offset 0) is touched here; the
-// rest is modelled for size faithfulness (YRpp ThemeClass.h order).
+// rest is modelled for size faithfulness (YRpp order).
 struct ThemeControl
 {
     char    ID[0x100];      // +0x000  FixedString<0x100>

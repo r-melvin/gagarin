@@ -3,11 +3,7 @@
 //   Every address, member offset, vtable slot and calling convention below was
 //   read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI over 0x5CD320..0x5CEDC6 and the vtable block at
-//   0x7EE8E8..0x7EEA50. The private reference's `core/map_sel_text_ticker.cpp` supplied
-//   nothing but the hint that this address run is one cluster; its per-function
-//   names ("dtorFreeBuf", "dtorWithFont", "pauseTimer") are placeholders that
-//   name neither the class nor, in several cases, the operation, and its file
-//   label ("text ticker") is wrong for eight of the nine classes here.
+//   0x7EE8E8..0x7EEA50.
 //
 // WHAT THIS FAMILY IS, from the binary's own runtime type information.
 //
@@ -94,8 +90,7 @@ struct MSClockClass
     // The clock is one dword. Retail carries it out of an uninitialised stack
     // slot in the timer temporary at 0x5CD5EE (`MOV ECX,[ESP+0x14]` reading a
     // member the temporary's constructor never wrote), which is the same
-    // three-dword timer shape docs/matching_methodology_and_toolchain.md
-    // records at 0x6B7BB0.
+    // three-dword timer shape seen at 0x6B7BB0.
     int Value;   // +0x00
 
     int GetTime();
@@ -136,7 +131,7 @@ struct MSTimer
 };
 GG_STATIC_ASSERT(sizeof(MSTimer) == 0xC);
 
-// Westwood's heap-owning wide string, the member at +0x1C of both print
+// The heap-owning wide string, the member at +0x1C of both print
 // animations. Only the two entry points this file reaches are declared: the
 // out-of-line destructor at 0x7B6760 (called from 0x5CED1C and 0x5CED4C) and
 // the measured length at 0x7B71B0 (called from 0x5CE30D). 0x7B71B0 is
@@ -351,7 +346,7 @@ public:
     virtual struct MSRect* GetRect(struct MSRect* out);   // slot 30
 };
 
-// Westwood's heap-owning narrow string, the PCX file name's type. Written as
+// The heap-owning narrow string, the PCX file name's type. Written as
 // named members for the same reason the wide string above is: a member with a
 // real destructor changes what cl will inline around it, and retail's calls are
 // plain __thiscalls on the object's address either way.
@@ -423,7 +418,7 @@ GG_STATIC_ASSERT(sizeof(MSRect) == 0x10
               && offsetof(MSRect, Width) == 0x08
               && offsetof(MSRect, Height) == 0x0C);
 
-// Westwood's rectangle intersection, expanded inline into the PCX draw at
+// The rectangle intersection, expanded inline into the PCX draw at
 // 0x5CE8C0 and into the print animation's layout at 0x5CD690. Both copies have
 // the same six early exits and the same `(0,0,0,0)` local the failures hand
 // back, which is what identifies it as one shared source function rather than

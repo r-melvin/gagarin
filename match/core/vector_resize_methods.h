@@ -3,7 +3,7 @@
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at each address below. Shape identified by clustering the
 //   111-300 byte unmatched pool; two remaining outer views, byte-identical apart from the
-//   entry point. None is bound by YRpp or the seed map.
+//   entry point. None is bound by YRpp.
 //
 // VectorClass::Resize. Take a new size and an optional caller-supplied buffer;
 // allocate when none is given, copy across the smaller of the old and new

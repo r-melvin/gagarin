@@ -3,7 +3,7 @@
 //   Bytes, the vector layout and the two callees read off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI at 0x5D6690: the vector's
 //   Items/Capacity/IsAllocated/Count/CapacityIncrement at +0x04/+0x08/+0x0D/
-//   +0x10/+0x14 and its slot +0x08 (Resize). YRpp (consult-only, no LICENSE)
+//   +0x10/+0x14 and its slot +0x08 (Resize). YRpp
 //   names the function `MPGameModeClass::CreateMPTeams` (retail: MultiplayerGameMode::CreateMPTeams) and the 12-byte MPTeam
 //   whose constructor is 0x5C9470.
 #ifndef GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_TEAMS_METHODS_H

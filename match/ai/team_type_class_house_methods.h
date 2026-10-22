@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x6F0A70 / 0x6F2040 /
-//   0x6F2070), cross-checked against YRpp TeamTypeClass.h / AbstractTypeClass.h
-//   / TeamClass.h (consult-only, no LICENSE; every offset/global/call target
+//   0x6F2070), cross-checked against YRpp
+//   (every offset/global/call target
 //   reconfirmed numerically below).
 //
 // TeamTypeClass — house/taskforce/instance helpers.  Three retail functions:

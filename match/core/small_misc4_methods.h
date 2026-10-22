@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Each entry point disassembled individually from the user's retail
-//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp or the
-//   seed map.
+//   gamemd.exe v1.001 via the local Ghidra CLI. None is bound by YRpp.
 #ifndef GG_MATCH_CORE_SMALL_MISC4_METHODS_H
 #define GG_MATCH_CORE_SMALL_MISC4_METHODS_H
 
@@ -62,7 +61,7 @@ struct Obj_004085E0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004085E0, unknown_14) == 0x14);
 
-// CLASS IDENTITY (whole-image RTTI sweep, docs/rtti_sweep.md; renamed from
+// CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). BuildingClass's own vtable is 0x7E3EBC.
 //   0x459C00 -> BuildingClass slot 79 (byte-off 0x13C).
 // No other table in the image holds it, so the slot is declared on

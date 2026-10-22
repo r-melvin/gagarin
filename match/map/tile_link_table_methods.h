@@ -2,8 +2,7 @@
 // Provenance: own-binary-via-Ghidra
 //   Every offset, element width, allocation size and sentinel below was read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
-//   CLI over the 0x5A9920-0x5A9C18 run. TS++ (consult-only, GPL-3.0) was read
-//   for shape only; none of its text is reproduced here.
+//   CLI over the 0x5A9920-0x5A9C18 run.
 //
 // The theater tile-link table at 0xABE370. The static initialiser at 0x5A9C40
 // fills 109 fixed slots of 0xC bytes each -- 101 at 0xABE370..0xABE834 and 8

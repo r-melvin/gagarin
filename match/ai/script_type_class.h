@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets/convention derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x691970 / 0x691C00), cross-
-//   checked against YRpp ScriptTypeClass.h / AbstractTypeClass.h / ArrayClasses.h
-//   (consult-only, no LICENSE; every offset/slot reconfirmed below).
+//   checked against YRpp
+//   (every offset/slot reconfirmed below).
 //
 // ScriptTypeClass — an AI script template loaded from the [ScriptTypes] INI
 // section.  Only the members the two matched static methods touch are modelled;

@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Logic + calling convention derived from the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI (disasm at 0x6ABCD0), cross-checked
-//   against YRpp SidebarClass.h `GetObjectTabIdx` (consult-only; reconfirmed).
+//   against YRpp `GetObjectTabIdx` (consult-only; reconfirmed).
 //
 // SidebarClass::GetObjectTabIdx — a static __fastcall classifier mapping an
 // AbstractType id (+ build category) to a build-tab index. It touches no

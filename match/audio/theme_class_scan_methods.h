@@ -15,7 +15,7 @@
 //   ThemeClass offsets match the committed model in
 //   match/audio/theme_class_find_methods.h and the CCFileClass offsets
 //   match match/platform/ccfile_class_open_mix_methods.h. Names
-//   cross-checked against YRpp ThemeClass.h (consult-only; NO LICENSE).
+//   cross-checked against YRpp.
 #ifndef GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H
 #define GG_MATCH_AUDIO_THEME_CLASS_SCAN_METHODS_H
 

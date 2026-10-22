@@ -10,9 +10,7 @@
 //   (BuildingTypeClass::SuperWeapon); the super's Type `[EDX+0x28]` and its
 //   `[ECX+0xE7]` (DisableableFromShell); the array argument's Items +0x4 and
 //   Count +0x10; RulesClass 0x8871E0 BuildConst Items +0x920 / Count +0x92C;
-//   the byte gate 0xA8B263 (SWAllowed). Names cross-checked against YRpp
-//   HouseClass.h / TechnoTypeClass.h / BuildingTypeClass.h /
-//   SuperWeaponTypeClass.h / RulesClass.h (consult-only; NO LICENSE).
+//   the byte gate 0xA8B263 (SWAllowed). Names cross-checked against YRpp.
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_FIRST_BUILDABLE_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_FIRST_BUILDABLE_METHODS_H
 

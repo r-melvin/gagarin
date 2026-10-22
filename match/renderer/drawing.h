@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI (member-access disassembly at 0x410E50 / 0x4112D0 /
-//   0x411310 / 0x4114B0 / 0x4355D0), cross-checked against YRpp Drawing.h
+//   0x411310 / 0x4114B0 / 0x4355D0), cross-checked against YRpp
 //   (consult-only, no LICENSE; every offset/slot reconfirmed from the disasm).
 //
 // Renderer drawing helpers:

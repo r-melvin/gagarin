@@ -13,8 +13,8 @@
 //   ECX) and count 0x42B1F0 (no args, minus 10); the scenario `[0xA8B230]`
 //   randomizer at +0x218 (0x65C780), abs / % 50 (`CDQ; XOR; SUB; IDIV`) plus
 //   the frame counter 0xA8ED84; the sibling 0x7233A0 called with `this`.
-//   Names cross-checked against YRpp TiberiumClass.h / PriorityQueueClass.h
-//   (consult-only; NO LICENSE — every offset reconfirmed here).
+//   Names cross-checked against YRpp
+//   (every offset reconfirmed here).
 #ifndef GG_MATCH_ECONOMY_TIBERIUM_CLASS_GROWTH_METHODS_H
 #define GG_MATCH_ECONOMY_TIBERIUM_CLASS_GROWTH_METHODS_H
 

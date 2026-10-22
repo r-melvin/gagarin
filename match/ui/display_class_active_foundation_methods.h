@@ -9,7 +9,7 @@
 //   byte 0x8A0618, `atexit` 0x7C978A and destructor thunk 0x4A8D40, the
 //   size query 0x4A94F0 (out pointer and foundation pushed) and the
 //   redraw 0x4A95A0 (cell reference and flag pushed). Names cross-checked
-//   against YRpp DisplayClass.h (consult-only; NO LICENSE).
+//   against YRpp (consult-only; NO LICENSE).
 #ifndef GG_MATCH_UI_DISPLAY_CLASS_ACTIVE_FOUNDATION_METHODS_H
 #define GG_MATCH_UI_DISPLAY_CLASS_ACTIVE_FOUNDATION_METHODS_H
 

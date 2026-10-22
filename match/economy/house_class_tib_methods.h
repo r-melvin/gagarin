@@ -2,8 +2,8 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets + control flow derived from the user's retail gamemd.exe v1.001 via
 //   the local Ghidra CLI (member-access disassembly @0x4F9610 and @0x500510),
-//   cross-checked against YRpp HouseClass.h / HouseTypeClass.h /
-//   GeneralDefinitions.h (consult-only, no LICENSE; every offset reconfirmed
+//   cross-checked against YRpp
+//   (every offset reconfirmed
 //   below against the user's binary).
 //
 // HouseClass Tiberium/factory helpers:
@@ -18,7 +18,7 @@
 class FactoryClass;   // pointer-only; full layout is P2
 
 // ---------------------------------------------------------------------------
-// AbstractType — the engine's RTTI tag (GeneralDefinitions.h). Plain C++98
+// AbstractType — the engine's RTTI tag. Plain C++98
 // enum (VC6 has no `enum class`); only the values the 0x500510 switch tests are
 // load-bearing, but the full dense range is declared so the case labels read
 // faithfully. Values reconfirmed from the jump/index tables at 0x500574.
@@ -36,7 +36,7 @@ enum AbstractType
     abs_UnitType     = 40
 };
 
-// BuildCat — sidebar build category (GeneralDefinitions.h). Only Combat(==5),
+// BuildCat — sidebar build category. Only Combat(==5),
 // the value 0x50054C compares against, is load-bearing here.
 enum BuildCat
 {
@@ -52,7 +52,7 @@ enum BuildCat
 // HouseTypeClass (partial) — the country blueprint pointed to by HouseClass+0x34.
 // 0x4F9610 reads only IncomeMult @0x148 (`FMUL float[EAX+0x148]`). Derives the
 // AbstractTypeClass COM/type head (0x00..0x97); members up to 0x148 per YRpp
-// HouseTypeClass.h (FixedString ParentCountry, the 7 doubles, the Armor/Cost/
+// (FixedString ParentCountry, the 7 doubles, the Armor/Cost/
 // Speed/Buildtime float blocks) collapse to padding (full layout = P2).
 // ---------------------------------------------------------------------------
 struct HouseTypeClass

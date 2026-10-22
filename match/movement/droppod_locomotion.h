@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout, tables and member offsets read from the retail gamemd.exe v1.001:
-//   RTTI .?AVDropPodLocomotionClass@@ (TD 0x8202F8; COLs 0x8000A8 / 0x800040 /
+//   RTTI.?AVDropPodLocomotionClass@@ (TD 0x8202F8; COLs 0x8000A8 / 0x800040 /
 //   0x800028 at base offsets 0 / 4 / 24), tables 0x7E8344 (primary, 10 slots),
 //   0x7E8278 (ILocomotion, 50) and 0x7E8254 (IPiggyback, 8), the constructor
 //   0x4B5AB0 and its only allocation (`PUSH 0x30; CALL 0x7C8E17` at 0x6C493C).
-//   Names follow YRpp (consult-only) where the bodies confirm the behaviour.
+//   Names follow YRpp where the bodies confirm the behaviour.
 //
 // DropPodLocomotionClass: the locomotor that drops a unit from the sky. It
 // piggybacks the unit's previous locomotor (IPiggyback) and hands it back when

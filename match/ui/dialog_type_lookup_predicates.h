@@ -25,9 +25,7 @@
 //       `MOV AL,1` / `XOR AL,AL` (bool) while 0x603240 ends `MOV EAX,1` /
 //       `XOR EAX,EAX` (a full dword).
 //
-//   The private-reference seed files both under audio/voc_codec.cpp as
-//   `vocCodecInit` / `decompressImaAdpcmFrame`; the grouping is right and the
-//   names are not — neither function touches audio, so the placeholders stay.
+//   Neither function touches audio, so the placeholders stay.
 #ifndef GG_MATCH_UI_DIALOG_TYPE_LOOKUP_PREDICATES_H
 #define GG_MATCH_UI_DIALOG_TYPE_LOOKUP_PREDICATES_H
 

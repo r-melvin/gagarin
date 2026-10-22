@@ -3,10 +3,9 @@
 //   Every offset below was read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, from the member-access instructions in the
 //   seven functions this header serves (addresses in the comments). Member and
-//   method *names* are cross-checked against YRpp HouseClass.h / RulesClass.h
-//   (consult-only, no LICENSE) and TS++ src/house.h (Vinifera-Developers,
-//   GPL-3.0 — `IsHuman`/`IsPlayerControl` there, widened to RA2's
-//   `IsHumanPlayer`/`IsInPlayerControl`).
+//   method *names* are cross-checked against YRpp
+//   (`IsHumanPlayer`/`IsInPlayerControl`); each is confirmed by the byte
+//   flag the method reads in the disassembly cited beside it.
 //
 // HouseClass accessor leaves — seven independent small methods spanning the
 // money, alliance, control, shroud, self-heal, and powered-centre surfaces.

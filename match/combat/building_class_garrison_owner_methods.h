@@ -22,10 +22,8 @@
 //       VocClass::PlayGlobal, 0x65FA70 RadarEventClass::Create and 0x752700
 //       VoxClass::Play;
 //     * strings 0x818164 "Civilian" and 0x81926C "EVA_StructureAbandoned".
-//   Names cross-checked against YRpp HouseClass.h (Array at 0xA80228),
-//   RulesClass.h (Instance at 0x8871E0), VocClass.h, VoxClass.h,
-//   RadarEventClass.h and BuildingClass.h (Occupants) — consult-only, NO
-//   LICENSE; every offset above is re-derived from the user's binary. The two
+//   Names cross-checked against YRpp (Array at 0xA80228, Instance at
+//   0x8871E0, Occupants); every offset above is re-derived from the user's binary. The two
 //   members whose meaning the bytes do not fix are left as `unknown_XX`.
 //   At 0x458218, retail passes the receiver in ECX directly to 0x5F5CD0.
 //   The canonical ObjectClass declaration is used through this offset-zero

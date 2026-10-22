@@ -5,7 +5,7 @@
 //   `CMP byte ptr [0xB0BCF5],BL` / `MOV byte ptr [0xB0BCF5],1`; the six
 //   surface pointers loaded through `MOV ECX,[0x88730C]` .. `[0x887308]`,
 //   each released via the slot-0 deleting destructor (`MOV EAX,[ECX]; PUSH 1;
-//   CALL [EAX]`) and then zeroed. Method / class names from YRpp YRDDraw.h
+//   CALL [EAX]`) and then zeroed. Method / class names from YRpp
 //   (consult-only; names only, no text copied).
 #ifndef GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H
 #define GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H

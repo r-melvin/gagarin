@@ -13,7 +13,7 @@
 //   (the cloak ability at index 6 of the veteran / elite tables); the map
 //   object 0x87F7E8 with GetCellAt 0x5657A0. Every offset agrees with the
 //   spine match/_layout/techno_class.h (included). Method name from YRpp
-//   TechnoClass.h (ShouldNotBeCloaked; consult-only, no LICENSE).
+//   (ShouldNotBeCloaked).
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_CLOAK_CHECK_METHODS_H
 #define GG_MATCH_COMBAT_TECHNO_CLASS_CLOAK_CHECK_METHODS_H
 

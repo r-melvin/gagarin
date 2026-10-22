@@ -5,7 +5,7 @@
 //   sizeof: `PUSH 0x80` before the ctor call at its allocation site.
 //   RTTI: 0x007F3FE8 / 0x007F3FCC / 0x007F3FC4 / 0x007F3FBC all resolve to
 //   ".?AVSuperClass@@" (stored @0x006CAFF7..0x006CB00A).
-//   Cross-read against YRpp SuperClass.h: 18 named members claimed, 16
+//   Cross-read against YRpp: 18 named members claimed, 16
 //   confirmed, 1 (SpecialSoundLocation) left in place but never written by the
 //   ctor and so recorded as unknown, plus the PROTECTED_PROPERTY paddings.
 //

@@ -10,8 +10,7 @@
 //   `MOV ECX,[0x8871E0]` / `[ECX+0x330]` (RulesClass::Instance anim type),
 //   `PUSH 0x1C8` / `CALL 0x7C8E17` / `CALL 0x421EA0` (sizeof(AnimClass) and
 //   its 7-arg ctor) and the by-value CoordStruct argument (`RET 0xC`, Z read
-//   from `[ESP+0x20]` and stored +5). Names cross-checked against YRpp
-//   SuperClass.h / AnimClass.h / Notifications.h (consult-only; NO LICENSE).
+//   from `[ESP+0x20]` and stored +5). Names cross-checked against YRpp.
 #ifndef GG_MATCH_COMBAT_SUPER_CLASS_CHRONO_ANIM_METHODS_H
 #define GG_MATCH_COMBAT_SUPER_CLASS_CHRONO_ANIM_METHODS_H
 

@@ -20,7 +20,7 @@
 //   KNOWN LIMITATION -- staging ground, not a destination: MSVC6 emits each
 //   template instantiation as a COMDAT into the translation unit that
 //   instantiated it, so these 34 instantiations belong to many different
-//   original Westwood translation units. One sweep file is right for matching
+//   original translation units. One sweep file is right for matching
 //   bytes now and wrong for retail's eventual link order.
 //
 //   Instantiations are in ascending retail-address order.

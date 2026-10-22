@@ -15,7 +15,7 @@
 //   one arg), bullet slots `[EDX+0xD4]` (no args) and `[EDX+0x8]` (COM
 //   Release, receiver pushed), `CALL 0x4690B0` (BulletClass::Detonate), and
 //   `CALL 0x7C5F00` (__ftol). Names from the YRpp method map / the vtable
-//   map (consult-only); the type offsets agree with match/_layout/
+//   map; the type offsets agree with match/_layout/
 //   techno_type_class.h and object_type_class.h, the weapon offsets with
 //   match/combat/weapon_type_class.h (Bright @0x12F is local to this TU).
 #ifndef GG_MATCH_COMBAT_TECHNO_CLASS_DEATH_WEAPON_METHODS_H

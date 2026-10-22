@@ -6,8 +6,8 @@
 //   (SlopeIndex byte) and `MOVSX ESI,[EAX+0x11B]` (Level, signed char); on
 //   the map `[ECX+0xF4]` (MapRect.Width), `[ECX+0xFC]` / `[ECX+0x100]` /
 //   `[ECX+0x104]` / `[ECX+0x108]` (VisibleRect X / Y / Width / Height).
-//   Names cross-checked against YRpp MapClass.h / CellClass.h (consult-only,
-//   NO LICENSE); MapRect @0xEC / VisibleRect @0xFC agree with
+//   Names cross-checked against YRpp;
+//   MapRect @0xEC / VisibleRect @0xFC agree with
 //   match/map/map_class_more_methods.h (Width @0xF4, Height @0xF8) and
 //   match/map/map_class_sublocation_methods.h (Level @0x11B).
 #ifndef GG_MATCH_MAP_MAP_CLASS_USABLE_AREA_METHODS_H
