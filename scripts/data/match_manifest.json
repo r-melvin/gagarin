@@ -7494,7 +7494,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x007b0210",
   "sym": "?FUN_007B0210@@YIHXZ",
   "len": "0x6",
@@ -7503,7 +7503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x007b0370",
   "sym": "?FUN_007B0370@@YIHXZ",
   "len": "0x6",
@@ -50938,7 +50938,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/buffer_pipe_straw_methods.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA3C0",
   "sym": "?FUN_00631D10@BufferPipe@@UAEHHH@Z",
   "len": "0x58",
@@ -59128,7 +59128,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B89F0",
   "sym": "?GetHideCount@WWMouseClass@@UAEHXZ",
   "len": "0x4",
@@ -59137,7 +59137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B8A00",
   "sym": "?SetCursor@WWMouseClass@@UAEXPBUPoint2D@@PAVMouseShapeView@@H@Z",
   "len": "0x247",
@@ -59146,7 +59146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B90C0",
   "sym": "?DrawMouseOnto@WWMouseClass@@UAEXPAVMouseSurfaceView@@_N@Z",
   "len": "0x201",
@@ -59155,7 +59155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B92D0",
   "sym": "?DrawCachedOnto@WWMouseClass@@UAEXPAVMouseSurfaceView@@_N@Z",
   "len": "0x118",
@@ -59164,7 +59164,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9750",
   "sym": "?vf_4@WWMouseClass@@UAEXXZ",
   "len": "0x1D1",
@@ -59173,7 +59173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9930",
   "sym": "?vf_3@WWMouseClass@@UAEXXZ",
   "len": "0x125",
@@ -59182,7 +59182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9A60",
   "sym": "?CaptureMouse@WWMouseClass@@UAEXXZ",
   "len": "0x1C2",
@@ -59191,7 +59191,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9C30",
   "sym": "?vf_5@WWMouseClass@@UAEXXZ",
   "len": "0x138",
@@ -59200,7 +59200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9D70",
   "sym": "?vf_8@WWMouseClass@@UAEXHHHH@Z",
   "len": "0x8",
@@ -59209,7 +59209,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9D90",
   "sym": "?ConvertCoords@WWMouseClass@@UAEXPAH0@Z",
   "len": "0x5C",
@@ -59218,7 +59218,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA320",
   "sym": "?IsMouseHidden@WWMouseClass@@UAE_NXZ",
   "len": "0xB",
@@ -59227,7 +59227,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA330",
   "sym": "?IsCaptured@WWMouseClass@@UAE_NXZ",
   "len": "0x4",
@@ -59236,7 +59236,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA340",
   "sym": "?vf_11@WWMouseClass@@UAEHXZ",
   "len": "0x4",
@@ -59245,7 +59245,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA350",
   "sym": "?vf_12@WWMouseClass@@UAEHXZ",
   "len": "0x4",
@@ -59254,7 +59254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA360",
   "sym": "?vf_13@WWMouseClass@@UAEPAUPoint2D@@PAU2@@Z",
   "len": "0x12",
@@ -59263,7 +59263,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA380",
   "sym": "?vf_14@WWMouseClass@@UAEXHH@Z",
   "len": "0x11",
@@ -86216,7 +86216,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF390",
   "sym": "?FUN_007AF390@@YIXHH@Z",
   "len": "0xa",
@@ -86225,7 +86225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF3A0",
   "sym": "?FUN_007AF3A0@@YIXHH@Z",
   "len": "0xa",
@@ -86234,7 +86234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF3B0",
   "sym": "?FUN_007AF3B0@@YIXHH@Z",
   "len": "0xa",
@@ -86243,7 +86243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF3C0",
   "sym": "?FUN_007AF3C0@@YIXHH@Z",
   "len": "0xa",
@@ -86252,7 +86252,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF4C0",
   "sym": "?FUN_007AF4C0@@YIXHH@Z",
   "len": "0xa",
@@ -86261,7 +86261,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF4D0",
   "sym": "?FUN_007AF4D0@@YIXHH@Z",
   "len": "0xa",
@@ -86270,7 +86270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF4E0",
   "sym": "?FUN_007AF4E0@@YIXHH@Z",
   "len": "0xa",
@@ -86279,7 +86279,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7AF4F0",
   "sym": "?FUN_007AF4F0@@YIXHH@Z",
   "len": "0xa",
@@ -86288,7 +86288,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7B0290",
   "sym": "?FUN_007B0290@@YAPAXXZ",
   "len": "0x6",
@@ -86297,7 +86297,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7B0310",
   "sym": "?FUN_007B0310@@YAHXZ",
   "len": "0x6",
@@ -86306,7 +86306,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7B0340",
   "sym": "?FUN_007B0340@@YAHXZ",
   "len": "0x6",
@@ -86315,7 +86315,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7B0380",
   "sym": "?FUN_007B0380@@YAPAXXZ",
   "len": "0x6",
@@ -86324,7 +86324,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu289_methods.cpp",
+  "tu": "match/core/WorldDom.cpp",
   "addr": "0x7B0430",
   "sym": "?FUN_007B0430@@YA_NXZ",
   "len": "0x3",
@@ -86351,7 +86351,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu293_methods.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B7D80",
   "sym": "?FUN_007B7D80@Obj_007B7D80@@QAEXXZ",
   "len": "0x10",
@@ -86360,7 +86360,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu293_methods.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B84D0",
   "sym": "?FUN_007B84D0@@YIXHH@Z",
   "len": "0x19",
@@ -86369,7 +86369,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu294_methods.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9D80",
   "sym": "?FUN_007B9D80@Obj_007B9D80@@QAEXXZ",
   "len": "0x5",
@@ -87985,6 +87985,33 @@
   "sym": "?FUN_007786C0@@YAXXZ",
   "len": "0x1a",
   "name": "FUN_007786C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WorldDom.cpp",
+  "addr": "0x7AF0E0",
+  "sym": "?FUN_007AF0E0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007AF0E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WorldDom.cpp",
+  "addr": "0x7AF100",
+  "sym": "?FUN_007AF100@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_007AF100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/WorldDom.cpp",
+  "addr": "0x7AF280",
+  "sym": "?FUN_007AF280@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_007AF280",
   "status": "matched",
   "pct": 100
  }

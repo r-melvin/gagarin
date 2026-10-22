@@ -1,8 +1,28 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
+//   Original translation unit wwmous.cpp. The name is the source-file string at 0x84e61c
+//   in retail gamemd.exe v1.001, passed by the assert at 0x7b8657 inside this object's
+//   code range (0x7b7831-0x7ba41f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// The parameters keep the canonical Pipe/Straw int ABI view (pointer, count).
+//
+//   Entry-point disassembly of retail gamemd.exe v1.001 at 0x7B89F0, 0x7B9D70, 0x7B9D90 and 0x7BA320..0x7BA38E,
+//   all reached through the WWMouseClass vtable 0x7F7B2C (layout and slot evidence: mouse_ww_mouse_class.h).
+//
 //   Entry-point disassembly of retail gamemd.exe v1.001 at 0x7B8A00, 0x7B90C0, 0x7B92D0, 0x7B9750, 0x7B9930,
 //   0x7B9A60 and 0x7B9C30, all reached through the WWMouseClass vtable 0x7F7B2C (layout, slot and global evidence:
 //   mouse_ww_mouse_class.h). Strings: 'Capture_Mouse()\n' 0x84E690, 'Release_Mouse()\n' 0x84E6A4.
+
+#include "../../core/trivial_tu293_methods.h"
+
+#include "../../core/trivial_tu294_methods.h"
+
+#include "../../platform/buffer_straws.h"
+
+#include "mouse_ww_mouse_lock.h"
 
 #include "mouse_ww_mouse_lock.h"
 
@@ -44,6 +64,34 @@ inline void WWMouseClass::DrawCursorBlock()
     }
     Method_7B93F0(Screen, 0, 0);
     UnlockMouse();
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x7B7D80
+// Calls other functions.
+void Obj_007B7D80::FUN_007B7D80()
+{
+    FUN_007CB9B8(unknown_00, 0, 0xA);
+}
+
+// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
+// FUNCTION: GAMEMD 0x7B84D0
+// Branching.
+void FUN_007B84D0(int a1, int a2)
+{
+    if (DAT_00B7816C == 0)
+    {
+        if (DAT_00B78164 != 0)
+        {
+            FUN_007BA090(DAT_00B78164, a2);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B89F0
+int WWMouseClass::GetHideCount()
+{
+    return unknown_C;
 }
 
 // FUNCTION: GAMEMD 0x7B8A00
@@ -211,4 +259,93 @@ void WWMouseClass::vf_5()
             ;
     }
     UnlockMouse();
+}
+
+// FUNCTION: GAMEMD 0x7B9D70
+// Slot 8 takes four stack arguments (RET 0x10), ignores them and calls slot 3 (vf_3).
+void WWMouseClass::vf_8(int, int, int, int)
+{
+    vf_3();
+}
+
+// FUNCTION: GAMEMD 0x7B9D80
+// Tail-calls a virtual method of its receiver. Vtable slot 9 of WWMouseClass (RTTI).
+void Obj_007B9D80::FUN_007B9D80()
+{
+    vf_4();
+}
+
+// FUNCTION: GAMEMD 0x7B9D90
+void WWMouseClass::ConvertCoords(int* x, int* y)
+{
+    *x -= Bounds.X;
+    *y -= Bounds.Y;
+    if (*x < 0)
+        *x = 0;
+    if (*y < 0 && !MouseConvertFlag)
+        *y = 0;
+    if (*x >= Bounds.Width)
+        *x = Bounds.Width - 1;
+    if (*y >= Bounds.Height)
+        *y = Bounds.Height - 1;
+}
+
+// FUNCTION: GAMEMD 0x7BA320
+bool WWMouseClass::IsMouseHidden()
+{
+    return unknown_C < 0;
+}
+
+// FUNCTION: GAMEMD 0x7BA330
+bool WWMouseClass::IsCaptured()
+{
+    return Captured;
+}
+
+// FUNCTION: GAMEMD 0x7BA340
+int WWMouseClass::vf_11()
+{
+    return ReportedPosition.X;
+}
+
+// FUNCTION: GAMEMD 0x7BA350
+int WWMouseClass::vf_12()
+{
+    return ReportedPosition.Y;
+}
+
+// FUNCTION: GAMEMD 0x7BA360
+// Returns its argument (EAX still holds `out` at the RET); the copy goes through a local so both coordinates are loaded
+// before either is stored.
+Point2D* WWMouseClass::vf_13(Point2D* out)
+{
+    Point2D position = ReportedPosition;
+    *out = position;
+    return out;
+}
+
+// FUNCTION: GAMEMD 0x7BA380
+void WWMouseClass::vf_14(int x, int y)
+{
+    ReportedPosition.X = x;
+    ReportedPosition.Y = y;
+}
+
+// FUNCTION: GAMEMD 0x7BA3C0
+int BufferPipe::FUN_00631D10(int first, int second)
+{
+    int total = 0;
+    if (Buffer.Buffer != 0 && first != 0 && second > 0) {
+        int len = second;
+        if (Buffer.Size != 0) {
+            int avail = Buffer.Size - Index;
+            len = (second < avail) ? second : avail;
+        }
+        if (len > 0) {
+            memmove((char*)Buffer.Buffer + Index, (const void*)first, len);
+        }
+        Index += len;
+        total = len;
+    }
+    return total;
 }

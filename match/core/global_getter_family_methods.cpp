@@ -389,17 +389,6 @@ int __fastcall FUN_00778120()
     return DAT_00B73570;
 }
 
-// FUNCTION: GAMEMD 0x007B0210
-int __fastcall FUN_007B0210()
-{
-    return (int)&DAT_00B77F58;
-}
-
-// FUNCTION: GAMEMD 0x007B0370
-int __fastcall FUN_007B0370()
-{
-    return (int)&DAT_00B77F68;
-}
 
 // FUNCTION: GAMEMD 0x007B2730
 int __fastcall FUN_007B2730()
