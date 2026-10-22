@@ -9,7 +9,9 @@
 #include "index_class.h"
 
 // Grows the table to hold `amount` more entries, copying the live entries over
-// field by field and dropping the cached node because the array moved. Retail
+// node by node and dropping the cached node because the array moved. The new
+// table is an array-new of nodes with a no-throw empty constructor, which is
+// what leaves retail's dead "count minus one" local in the frame. Retail
 // has this expanded into AddIndex, with its own early return for a negative
 // amount surviving as the one conditional on the doubling path.
 __forceinline bool IndexClass::IncreaseTableSize(int amount)
@@ -17,13 +19,11 @@ __forceinline bool IndexClass::IncreaseTableSize(int amount)
     if (amount < 0) return false;
 
     int newsize = IndexSize + amount;
-    NodeElement* table =
-        (NodeElement*)FUN_007C8E17(newsize * sizeof(NodeElement));
+    NodeElement* table = new NodeElement[newsize];
     if (table != 0) {
 
         for (int index = 0; index < IndexCount; index++) {
-            table[index].ID = IndexTable[index].ID;
-            table[index].Data = IndexTable[index].Data;
+            table[index] = IndexTable[index];
         }
 
         FUN_007C8B3D(IndexTable);
@@ -154,23 +154,9 @@ IndexClass::IndexClass()
     Archive = 0;
 }
 
-// PARTIAL 3.7% (best of four spellings). The instruction multiset is close and
-// the growth arithmetic, the doubling choice and the copy loop all appear, but
-// retail reserves one dword of frame (`PUSH ECX` at entry) that our build does
-// not, and it keeps the new element count as a live local it decrements and
-// stores without ever reading back. Every instruction after that dead store
-// lands one slot early, which is what depresses the score. Variants measured:
-// the allocation size written inline versus bound to a named `newsize` local
-// (3.7% either way at the head, the named form matching retail's paired LEAs);
-// the per-entry copy written field by field (3.7%) versus as a whole-struct
-// assignment (0.0%, cl then emits its own two-dword copy with the other
-// addressing). Next step is the frame-size sweep from the thirteenth batch:
-// recover the real local count from the frame-relative addresses before
-// touching the body again.
-//
 // Appends an entry, growing the table first when it is full. Growth doubles
 // the table, or takes ten entries when there is none yet; the old contents are
-// copied field by field, which is what retail's paired dword stores are, and
+// copied node by node, which is what retail's paired dword stores are, and
 // the cached node is dropped because the table moved. The append itself leaves
 // the index unsorted.
 // FUNCTION: GAMEMD 0x52B0A0
@@ -210,17 +196,9 @@ void* const& IndexClass::FetchIndex(const int& id) const
     return reinterpret_cast<void* const&>(DAT_00B78830);
 }
 
-// PARTIAL 4.4% (best of three spellings). The multiset is identical at 90
-// instructions against 90, so the body is right; the whole stream sits one
-// instruction out because retail opens with `SUB ESP,8` for two spilled locals
-// and our build spills one. The residual multiset is retail-only SUB/ADD/ADD/
-// XOR/INC against our two LEAs, which is the same frame difference seen from
-// the other end. Variants measured: the three failure paths merged into one
-// shared tail (4.4%) versus each returning where it stands (0.0%); the search
-// comparison written key-against-node, which is retail's operand order, versus
-// node-against-key (0.0%); the shift loop and the last-slot zeroing written
-// field by field (4.4%) versus as struct assignments through a named zero
-// temporary (0.0%). The frame-size sweep is the next step here too.
+// The search key lives in a local node (retail's 8-byte frame is that node: the
+// key is its ID, its Data is never written), the shift is a whole-node copy, and
+// the freed last slot is cleared by assigning a zeroed node.
 //
 // Removes an entry. The table is sorted and searched as in IsPresent, then the
 // tail is shifted down one slot, the count drops and the freed last slot is
@@ -230,15 +208,7 @@ bool IndexClass::RemoveIndex(const int& id)
 {
     NodeElement* nodeptr = 0;
 
-    // Every failure path leaves through one shared tail, which is why the
-    // empty-index test jumps forward past the whole body instead of returning
-    // where it stands.
     if (IndexCount != 0) {
-
-        // RemoveIndex carries its own copy of the search rather than sharing
-        // the one above: retail spells its comparison the other way round,
-        // testing the key against the node instead of the node against the
-        // key, and that shows up as the whole loop's operand order.
         if (!IsSorted) {
             FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement),
                          &IndexClassB::Comparator);
@@ -247,17 +217,18 @@ bool IndexClass::RemoveIndex(const int& id)
         }
 
         int num = IndexCount;
-        int key = id;
+        NodeElement elem;
+        elem.ID = id;
         NodeElement* base = IndexTable;
 
         while (num > 0) {
             int half = num / 2;
             NodeElement* mid = &base[half];
 
-            if (key < mid->ID) {
+            if (elem.ID < mid->ID) {
                 num = half;
             } else {
-                if (mid->ID == key) {
+                if (mid->ID == elem.ID) {
                     nodeptr = mid;
                     break;
                 }
@@ -272,13 +243,14 @@ bool IndexClass::RemoveIndex(const int& id)
             if (found_index != -1) {
 
                 for (int index = found_index + 1; index < IndexCount; index++) {
-                    IndexTable[index - 1].ID = IndexTable[index].ID;
-                    IndexTable[index - 1].Data = IndexTable[index].Data;
+                    IndexTable[index - 1] = IndexTable[index];
                 }
 
                 IndexCount--;
-                IndexTable[IndexCount].ID = 0;
-                IndexTable[IndexCount].Data = 0;
+                NodeElement zero;
+                zero.ID = 0;
+                zero.Data = 0;
+                IndexTable[IndexCount] = zero;
                 Archive = 0;
 
                 return true;

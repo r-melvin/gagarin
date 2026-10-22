@@ -57,6 +57,10 @@ against an instruction in the binary before it lands as a repo fact.
 
 ## Engineering rules
 
+- Do not use `volatile`, redundant pointer aliases, or casts solely to force a
+  byte match. Remove such steering and record the function as partial when
+  ordinary C++ does not match. ABI and layout casts require binary evidence.
+
 - Target the 32-bit MSVC6 ABI: `__thiscall` (ECX = `this`) for methods,
   `__stdcall` for COM/WinAPI virtuals, 4-byte pointers. Do not assume `/Gz`;
   determine the convention from the disassembly for each function.

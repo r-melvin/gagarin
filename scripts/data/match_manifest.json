@@ -7928,8 +7928,8 @@
   "sym": "?AddIndex@IndexClass@@QAE_NABHABQAX@Z",
   "len": "0xc7",
   "name": "IndexClass::AddIndex",
-  "status": "partial",
-  "pct": 3.7
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/index_class.cpp",
@@ -7955,8 +7955,8 @@
   "sym": "?RemoveIndex@IndexClass@@QAE_NABH@Z",
   "len": "0xd5",
   "name": "IndexClass::RemoveIndex",
-  "status": "partial",
-  "pct": 4.4
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/index_class.cpp",
@@ -46993,8 +46993,8 @@
   "sym": "??0TerrainTypeClass@@QAE@PBD@Z",
   "len": "0x147",
   "name": "TerrainTypeClass::TerrainTypeClass",
-  "status": "partial",
-  "pct": 85.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/map/terrain_objects/terrain_type_class.cpp",

@@ -14,12 +14,9 @@ extern "C" const CLSID CLSID_TerrainType =
     { 0x5AF2CE7B, 0x0634, 0x11D2, { 0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };
 
 // FUNCTION: GAMEMD 0x71DA80
-// CAPPED at 85.0% (80 of 80 instructions; retail-only 1 `mov`, cl-only 1 `lea`). The array append goes
-// through `T* slot = &Items[Count++]` (the only form that gives retail's EAX = Count, ECX = Capacity
-// assignment; index forms give the registers the other way round). Residual: the sum Capacity + increment
-// is formed in EDX in retail and in ECX here, and the slot address is a `LEA` where retail indexes
-// `[EAX+ECX*4]`. Variants tried: early-return and one-condition AddItem, index, +1, pre-increment,
-// reference and pointer slots, both operand orders of the sum.
+// MATCHED (second look): the array append is the same inlined expansion the OverlayTypeClass
+// constructor uses (AddItemEarlyOut: Capacity held in a local across the growth tests, the
+// element stored through an index local), not the `T* slot = &Items[Count++]` shape.
 TerrainTypeClass::TerrainTypeClass(const char* id) throw()
     : MapObjTypeClassView(id), ArrayIndex(-1), Foundation(0), RadarColor(0, 0, 0), AnimationRate(0),
       AnimationProbability(0),
@@ -32,7 +29,7 @@ TerrainTypeClass::TerrainTypeClass(const char* id) throw()
     unknown_22F = true;
     unknown_231 = false;
     unknown_232 = true;
-    TerrainTypeArray.AddItemSlotEarlyOut(this);
+    TerrainTypeArray.AddItemEarlyOut(this);
     ArrayIndex = TerrainTypeArray.FindIndex(this);
     unknown_A0 = -1;
     unknown_9C = 6;

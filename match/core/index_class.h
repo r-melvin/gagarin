@@ -64,6 +64,11 @@ public:
     {
         int   ID;
         void* Data;
+        // Empty no-throw constructor + array operator new: this is what makes
+        // `new NodeElement[n]` compile to the bare allocation call with the
+        // loop counter left as a dead local, as in retail.
+        NodeElement() throw() {}
+        static void* operator new[](unsigned int size) { return FUN_007C8E17(size); }
     };
 
     // FUNCTION: GAMEMD 0x52B080
@@ -103,6 +108,7 @@ GG_STATIC_ASSERT(offsetof(IndexClass, IndexTable) == 0x00 &&
                  offsetof(IndexClass, Archive) == 0x10 &&
                  sizeof(IndexClass) == 0x14 &&
                  sizeof(IndexClass::NodeElement) == 0x08 &&
+                 offsetof(IndexClass::NodeElement, ID) == 0x00 &&
                  offsetof(IndexClass::NodeElement, Data) == 0x04);
 
 // The second retail instantiation. Same layout, same bodies; only the two
@@ -135,6 +141,9 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(IndexClassB, Archive) == 0x10 &&
-                 sizeof(IndexClassB) == 0x14);
+                 sizeof(IndexClassB) == 0x14 &&
+                 offsetof(IndexClassB::NodeElement, ID) == 0x00 &&
+                 offsetof(IndexClassB::NodeElement, Data) == 0x04 &&
+                 sizeof(IndexClassB::NodeElement) == 0x08);
 
 #endif  // GG_MATCH_CORE_INDEX_CLASS_H
