@@ -12960,7 +12960,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x6F7780",
-  "sym": "?IsCloseEnoughToAttack@TechnoClass@@QAE_NPAVAbstractClass@@@Z",
+  "sym": "?IsCloseEnoughToAttack@TechnoClass@@UAE_NPAVAbstractClass@@@Z",
   "len": "0x22",
   "name": "TechnoClass::IsCloseEnoughToAttack",
   "status": "matched",
@@ -12969,16 +12969,16 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x7010D0",
-  "sym": "?IsGuardingWithLiveWeapon@TechnoClass@@QAE_NXZ",
+  "sym": "?vf_39@TechnoClass@@UAE_NXZ",
   "len": "0x45",
-  "name": "TechnoClass::IsGuardingWithLiveWeapon",
+  "name": "TechnoClass::vf_39",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x701120",
-  "sym": "?IsArmed@TechnoClass@@QAEHXZ",
+  "sym": "?IsArmed@TechnoClass@@UAEHXZ",
   "len": "0x1a",
   "name": "TechnoClass::IsArmed",
   "status": "matched",
@@ -12987,7 +12987,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x70C5A0",
-  "sym": "?IsCloakable@TechnoClass@@QAE_NXZ",
+  "sym": "?IsCloakable@TechnoClass@@UAE_NXZ",
   "len": "0xc",
   "name": "TechnoClass::IsCloakable",
   "status": "matched",
@@ -12996,7 +12996,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x70EFD0",
-  "sym": "?IsUnderEMP@TechnoClass@@QAE_NXZ",
+  "sym": "?IsUnderEMP@TechnoClass@@UAE_NXZ",
   "len": "0xe",
   "name": "TechnoClass::IsUnderEMP",
   "status": "matched",
@@ -13005,7 +13005,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x70F090",
-  "sym": "?CanAttackOnTheMove@TechnoClass@@QAE_NXZ",
+  "sym": "?CanAttackOnTheMove@TechnoClass@@UAE_NXZ",
   "len": "0x12",
   "name": "TechnoClass::CanAttackOnTheMove",
   "status": "matched",
@@ -13014,7 +13014,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x70F850",
-  "sym": "?CancelAndGoIdle@TechnoClass@@QAEXXZ",
+  "sym": "?CancelAndGoIdle@TechnoClass@@UAEXXZ",
   "len": "0x33",
   "name": "TechnoClass::CancelAndGoIdle",
   "status": "matched",
@@ -89493,5 +89493,302 @@
   "name": "HashTable<Node_007AEC00>::Shrink",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x6F4A40",
+  "sym": "?vf_71@TechnoClass@@UAEXXZ",
+  "len": "0x24",
+  "name": "TechnoClass::vf_71",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x6F7930",
+  "sym": "?vf_236@TechnoClass@@UAEXPAUCoordStruct@@@Z",
+  "len": "0x31",
+  "name": "TechnoClass::vf_236",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x7013A0",
+  "sym": "?vf_125@TechnoClass@@UAEXHHH@Z",
+  "len": "0x36",
+  "name": "TechnoClass::vf_125",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x7018C0",
+  "sym": "?FUN_007018C0@TechnoClass@@QAEXPAVHouseClass@@@Z",
+  "len": "0x31",
+  "name": "TechnoClass::FUN_007018C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x705CA0",
+  "sym": "?vf_267@TechnoClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x69",
+  "name": "TechnoClass::vf_267",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x708D70",
+  "sym": "?vf_194@TechnoClass@@UAE?AUDirStruct@@XZ",
+  "len": "0x1a",
+  "name": "TechnoClass::vf_194",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x708D90",
+  "sym": "?vf_213@TechnoClass@@UAEXH@Z",
+  "len": "0x30",
+  "name": "TechnoClass::vf_213",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x709500",
+  "sym": "?FUN_00709500@TechnoClass@@QAEHXZ",
+  "len": "0x4a",
+  "name": "TechnoClass::FUN_00709500",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70AD50",
+  "sym": "?vf_191@TechnoClass@@UAE?AUCellStruct@@HH@Z",
+  "len": "0x4e",
+  "name": "TechnoClass::vf_191",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70CC90",
+  "sym": "?vf_293@TechnoClass@@UAEXXZ",
+  "len": "0x25",
+  "name": "TechnoClass::vf_293",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70CCC0",
+  "sym": "?vf_294@TechnoClass@@UAEXXZ",
+  "len": "0x25",
+  "name": "TechnoClass::vf_294",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70D150",
+  "sym": "?FUN_0070D150@@YIXXZ",
+  "len": "0x25",
+  "name": "FUN_0070D150",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70D190",
+  "sym": "?vf_281@TechnoClass@@UAEHH@Z",
+  "len": "0x31",
+  "name": "TechnoClass::vf_281",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70D420",
+  "sym": "?vf_202@TechnoClass@@UAE_NXZ",
+  "len": "0x3c",
+  "name": "TechnoClass::vf_202",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70D460",
+  "sym": "?vf_203@TechnoClass@@UAE_NPAVHouseClass@@@Z",
+  "len": "0x3c",
+  "name": "TechnoClass::vf_203",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DC50",
+  "sym": "?FUN_0070DC50@TechnoClass@@QAE_NXZ",
+  "len": "0xf",
+  "name": "TechnoClass::FUN_0070DC50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DC60",
+  "sym": "?FUN_0070DC60@TechnoClass@@QAE_NXZ",
+  "len": "0xf",
+  "name": "TechnoClass::FUN_0070DC60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DD00",
+  "sym": "?FUN_0070DD00@TechnoClass@@QAEHXZ",
+  "len": "0x1c",
+  "name": "TechnoClass::FUN_0070DD00",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DD50",
+  "sym": "?vf_248@TechnoClass@@UAE_NXZ",
+  "len": "0x1c",
+  "name": "TechnoClass::vf_248",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DD70",
+  "sym": "?vf_249@TechnoClass@@UAEHXZ",
+  "len": "0x18",
+  "name": "TechnoClass::vf_249",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DDA0",
+  "sym": "?vf_251@TechnoClass@@UAEHXZ",
+  "len": "0x18",
+  "name": "TechnoClass::vf_251",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70DE40",
+  "sym": "?FUN_0070DE40@TechnoClass@@QAEXH@Z",
+  "len": "0x25",
+  "name": "TechnoClass::FUN_0070DE40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70E120",
+  "sym": "?vf_252@TechnoClass@@UAEPAUWeaponStruct@@XZ",
+  "len": "0x18",
+  "name": "TechnoClass::vf_252",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70E140",
+  "sym": "?vf_254@TechnoClass@@UAEPAUWeaponStruct@@H@Z",
+  "len": "0x55",
+  "name": "TechnoClass::vf_254",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70E1E0",
+  "sym": "?FUN_0070E1E0@TechnoClass@@QAEHH@Z",
+  "len": "0x5a",
+  "name": "TechnoClass::FUN_0070E1E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70E260",
+  "sym": "?FUN_0070E260@TechnoClass@@QAEHXZ",
+  "len": "0x1a",
+  "name": "TechnoClass::FUN_0070E260",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70E340",
+  "sym": "?vf_86@TechnoClass@@UAEXXZ",
+  "len": "0x20",
+  "name": "TechnoClass::vf_86",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70EFE0",
+  "sym": "?vf_227@TechnoClass@@UAEHXZ",
+  "len": "0x16",
+  "name": "TechnoClass::vf_227",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70F040",
+  "sym": "?vf_301@TechnoClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "TechnoClass::vf_301",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70F050",
+  "sym": "?vf_302@TechnoClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x1e",
+  "name": "TechnoClass::vf_302",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70F070",
+  "sym": "?vf_303@TechnoClass@@UAE_NXZ",
+  "len": "0x12",
+  "name": "TechnoClass::vf_303",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70F740",
+  "sym": "?FUN_0070F740@TechnoClass@@QAEXH@Z",
+  "len": "0x24",
+  "name": "TechnoClass::FUN_0070F740",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Techno.cpp",
+  "addr": "0x70FED0",
+  "sym": "?FUN_0070FED0@TechnoClass@@QAE_NXZ",
+  "len": "0xf",
+  "name": "TechnoClass::FUN_0070FED0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

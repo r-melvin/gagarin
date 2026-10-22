@@ -62,6 +62,8 @@ public:
     // explicitly; the entry body is bound as a const method until the full
     // virtual hierarchy is reconstructed. CoordStruct uses a hidden result.
     CoordStruct GetCoords() const;
+    // FUNCTION: GAMEMD 0x4870D0 (decl; reloc) -- reads a word table at +0x7C indexed by the argument.
+    bool FUN_004870D0(int index);
     // FUNCTION: GAMEMD 0x47B3A0 (decl; reloc)
     int GetFloorHeight(const Point2D& subcoords) const;
     // FUNCTION: GAMEMD 0x481810 (decl; reloc)

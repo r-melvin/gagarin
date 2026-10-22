@@ -54,9 +54,11 @@ GG_STATIC_ASSERT(sizeof(TypeListLayout) == 0x1C);
 
 // WeaponStruct - weapon slot (WeaponType ptr + FLH + flags); size = 0x1C.
 // Internal members not member-resolved in the oracle; exact-size byte block.
+class WeaponTypeClass;
 struct WeaponStruct
 {
-    unsigned char _raw[0x1C];
+    WeaponTypeClass* WeaponType;   // +0x00
+    unsigned char    unknown_04[0x18];
 };
 GG_STATIC_ASSERT(sizeof(WeaponStruct) == 0x1C);
 
@@ -98,6 +100,12 @@ public:
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
+    // FUNCTION: GAMEMD 0x717880 (decl; reloc) -- non-virtual; ECX = the type.
+    bool FUN_00717880();
+    // FUNCTION: GAMEMD 0x7177C0 (decl; reloc) -- the weapon in slot `index`.
+    WeaponStruct* GetWeapon(int index);
+    // FUNCTION: GAMEMD 0x7177E0 (decl; reloc) -- the elite weapon in slot `index`.
+    WeaponStruct* GetEliteWeapon(int index);
     virtual bool vf_40();                                                 // 40
     virtual bool vf_41();                                                 // 41
     // Slots 42-47, introduced by TechnoTypeClass (48 slots in all; retail table 0x7F4ED8).

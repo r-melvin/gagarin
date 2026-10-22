@@ -101,9 +101,7 @@ extern void* DAT_00B77F60;
 
 #include "tail_jmp_thunk_sweep.h"
 
-#include "techno_class_fire_methods.h"
 
-#include "techno_class_predicate_slots_methods.h"
 
 #include "trivial_tu237_methods.h"
 
@@ -343,6 +341,67 @@ extern int DAT_00B0EB20;
 // GLOBAL: GAMEMD 0xB0EB28
 extern double DAT_00B0EB28;
 
+
+// ---- from the former Techno.cpp ----
+//   CLI (disasm from each entry point). Original TU: Techno.CPP, attested by the
+//   __FILE__ assert string at 0x843178 (pushed at 0x70AAD3, 0x70ABFD, 0x70AC33);
+//   the TU spans 0x6F28A0-0x7108DF. Class layout and vtable slots come from the committed
+//   spine match/_layout/techno_class.h. Slot numbers are RTTI-derived
+//   (TechnoClass vtable 0x7F4960); the vf_N names are placeholders.
+
+#include "../_layout/techno_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../combat/weapon_type_class.h"
+#include "frame_counter.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/house_class.h"
+
+// Offsets this TU relies on, each read from an instruction in the matched bodies.
+GG_STATIC_ASSERT(offsetof(TechnoClass, CurrentTurretNumber)       == 0x124);  // 0x70DD00
+GG_STATIC_ASSERT(offsetof(TechnoClass, unknown_int_128)           == 0x128);  // 0x70DD00
+GG_STATIC_ASSERT(offsetof(TechnoClass, GattlingValue)             == 0x144);  // 0x70DE40
+GG_STATIC_ASSERT(offsetof(TechnoClass, AirstrikeTimer)            == 0x1A8);  // 0x70E340
+GG_STATIC_ASSERT(offsetof(TechnoClass, LastTarget)                == 0x2B8);  // 0x7013A0
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsOwnedByCurrentPlayer)    == 0x41A);  // 0x7018C0
+GG_STATIC_ASSERT(offsetof(TechnoClass, DiscoveredByCurrentPlayer) == 0x41B);  // 0x6F4A40
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsRadarTracked)            == 0x423);  // 0x70CC90
+GG_STATIC_ASSERT(offsetof(TechnoClass, QueuedVoiceIndex)          == 0x4F0);  // 0x708D90
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Drainable)             == 0x5EF);  // 0x70FED0
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Speed)                 == 0x678);  // 0x70EFE0
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SprayAttack)           == 0x691);  // 0x70DD70
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, HasTurretTooltips)     == 0x806);  // 0x70DC50
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, WeaponCount)           == 0x80C);  // 0x70E1E0
+
+// The map singleton (GAMEMD 0x87F7E8). Only the cell lookup is reached here; it
+// reads the X and Y words of the coordinate it is handed.
+class MapClass
+{
+public:
+    // FUNCTION: GAMEMD 0x565730 (decl; reloc) -- the cell under a coordinate.
+    CellClass* GetTargetCell(const CoordStruct& where);
+    // FUNCTION: GAMEMD 0x655560 (decl; reloc) -- takes the unit and its RadarPosition.
+    void FUN_00655560(TechnoClass* unit, Point2D position);
+    // FUNCTION: GAMEMD 0x655740 (decl; reloc) -- takes the unit and its RadarPosition.
+    void FUN_00655740(TechnoClass* unit, Point2D position);
+};
+
+// GLOBAL: GAMEMD 0x87F7E8
+extern MapClass MapClass_Instance;
+// GLOBAL: GAMEMD 0xB0EA80 -- a frame timer restarted by 0x70D150.
+extern CDTimerClass DAT_00B0EA80;
+// GLOBAL: GAMEMD 0x822CF2
+extern bool DAT_00822CF2;
+// GLOBAL: GAMEMD 0xA83D4C -- the local player's house.
+extern HouseClass* CurrentPlayer;
+
+static inline CellStruct CoordToCell(const CoordStruct& coord)
+{
+    CellStruct cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
 // FUNCTION: GAMEMD 0x6F28D0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_006F28D0()
@@ -439,6 +498,16 @@ int Techno_006F3970::CombatDamage(int which)
     return total;
 }
 
+// FUNCTION: GAMEMD 0x6F4A40
+void TechnoClass::vf_71()
+{
+    if (this->DiscoveredByCurrentPlayer) {
+        if (!this->Owner->IsControlledByHuman()) {
+            this->DiscoveredByCurrentPlayer = false;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6F60C0
 // Empty function that pops its stack arguments. Vtable slot 274 of TechnoClass (RTTI) and 5 derived vtable(s).
 void Obj_006F60C0::FUN_006F60C0(int a1, int a2)
@@ -450,8 +519,14 @@ void Obj_006F60C0::FUN_006F60C0(int a1, int a2)
 // One weapon selection feeding one range test, both on the same cached vtable.
 bool TechnoClass::IsCloseEnoughToAttack(AbstractClass* target)
 {
-    return (this->*this->Vfptr->At_3A8)(target,
-                                        (this->*this->Vfptr->At_2E4)(target));
+    return vf_234(target, vf_185(target));
+}
+
+// FUNCTION: GAMEMD 0x6F7930
+void TechnoClass::vf_236(CoordStruct* a1)
+{
+    CellClass* cell = MapClass_Instance.GetTargetCell(*a1);
+    this->vf_234(cell, this->vf_185(cell));
 }
 
 // FUNCTION: GAMEMD 0x6F9DB0
@@ -534,13 +609,13 @@ void __cdecl FUN_006FF950()
 // early returns the last gate folds into `TEST AL,AL; SETE AL` and the
 // materialised `MOV AL,0x1` disappears (59.3%); inverting only the last gate
 // does not help, because cl folds whichever negated test ends the function.
-bool TechnoClass::IsGuardingWithLiveWeapon()
+bool TechnoClass::vf_39()
 {
     if (!this->Deactivated) {
         if (this->Owner->IsControlledByCurrentPlayer()) {
-            WeaponStruct* weapon = (this->*this->Vfptr->At_3F4)();
+            WeaponStruct* weapon = GetPrimaryWeapon();
             if (weapon != 0 && weapon->WeaponType != 0) {
-                if (!(this->*this->Vfptr->At_37C)()) {
+                if (!IsUnderEMP()) {
                     return true;
                 }
             }
@@ -558,7 +633,7 @@ bool TechnoClass::IsGuardingWithLiveWeapon()
 // vtable map calls this slot `-> bool`, and the bytes say otherwise.
 int TechnoClass::IsArmed()
 {
-    WeaponStruct* weapon = (this->*this->Vfptr->At_3F4)();
+    WeaponStruct* weapon = GetPrimaryWeapon();
 
     if (weapon != 0 && weapon->WeaponType != 0) {
         return 1;
@@ -571,6 +646,21 @@ int TechnoClass::IsArmed()
 bool Obj_00701190::FUN_00701190() const
 {
     return false;
+}
+
+// FUNCTION: GAMEMD 0x7013A0
+void TechnoClass::vf_125(int mission, int a2, int a3)
+{
+    this->LastTarget = this->Target;
+    MissionClass::vf_125(mission, a2, a3);
+    this->vf_242(a2);
+}
+
+// FUNCTION: GAMEMD 0x7018C0
+void TechnoClass::FUN_007018C0(HouseClass* house)
+{
+    this->Owner = house;
+    this->IsOwnedByCurrentPlayer = (house == CurrentPlayer && CurrentPlayer != 0);
 }
 
 // FUNCTION: GAMEMD 0x703590
@@ -638,6 +728,15 @@ void Obj_00703850::FUN_00703850()
     vf_279(0);
 }
 
+// FUNCTION: GAMEMD 0x705CA0
+CoordStruct TechnoClass::vf_267()
+{
+    if (this->vf_97() == 1 && this->Target != 0) {
+        return this->Target->vf_22();
+    }
+    return this->Location;
+}
+
 // FUNCTION: GAMEMD 0x00705D10
 //
 // Store the argument into the member at +0x514.
@@ -674,6 +773,20 @@ bool Obj_00705D50::FUN_00705D50()
 void __fastcall FUN_00705D60(void* self)
 {
     FUN_006385C0(self);
+}
+
+// FUNCTION: GAMEMD 0x708D70
+DirStruct TechnoClass::vf_194()
+{
+    return this->vf_170();
+}
+
+// FUNCTION: GAMEMD 0x708D90
+void TechnoClass::vf_213(int a1)
+{
+    if (DAT_00822CF2 && a1 != -1 && this->Owner->IsControlledByCurrentPlayer()) {
+        this->QueuedVoiceIndex = a1;
+    }
 }
 
 // FUNCTION: GAMEMD 0x7091D0
@@ -725,6 +838,18 @@ int Obj_007094E0::FUN_007094E0()
     return unknown_AC == 2 || unknown_AC == 0xA || unknown_AC == 5;
 }
 
+// FUNCTION: GAMEMD 0x709500
+int TechnoClass::FUN_00709500()
+{
+    int mission = this->CurrentMission;
+    if (mission == 0 || mission == 7 || mission == 13 || mission == 14 || mission == 16
+        || mission == 18 || mission == 19 || mission == 20 || mission == 22 || mission == 23
+        || mission == 28 || mission == 24) {
+        return 1;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x709800
 // Branching.
 int __stdcall FUN_00709800(int a1)
@@ -743,6 +868,12 @@ int Obj_007099D0::FUN_007099D0(int a1, int a2) const
 // Empty function that pops its stack arguments. Vtable slot 287 of TechnoClass (RTTI) and 1 derived vtable(s).
 void Obj_00709A20::FUN_00709A20(int a1)
 {
+}
+
+// FUNCTION: GAMEMD 0x70AD50
+CellStruct TechnoClass::vf_191(int a1, int a2)
+{
+    return CoordToCell(this->vf_42(a1));
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -808,6 +939,20 @@ bool Obj_0070C5F0::FUN_0070C5F0()
     return true;
 }
 
+// FUNCTION: GAMEMD 0x70CC90
+void TechnoClass::vf_293()
+{
+    MapClass_Instance.FUN_00655560(this, this->RadarPosition);
+    this->IsRadarTracked = true;
+}
+
+// FUNCTION: GAMEMD 0x70CCC0
+void TechnoClass::vf_294()
+{
+    MapClass_Instance.FUN_00655740(this, this->RadarPosition);
+    this->IsRadarTracked = false;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70CCF0
 // Calls other functions. Vtable slot 295 of TechnoClass (RTTI) and 4 derived vtable(s).
@@ -816,11 +961,49 @@ void FUN_0070CCF0(int a1, int a2)
     FUN_006562D0(DAT_0087F7E8, a2, a1 + 0x208);
 }
 
+// FUNCTION: GAMEMD 0x70D150
+void FUN_0070D150()
+{
+    CDTimerClass timer;
+    timer.StartTime = CurrentFrame;
+    timer.TimeLeft = 25;
+    DAT_00B0EA80 = timer;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0070D180
 void __fastcall FUN_0070D180(char value)
 {
     DAT_00843108 = value;
+}
+
+// FUNCTION: GAMEMD 0x70D190
+int TechnoClass::vf_281(int a1)
+{
+    if ((this->Flashing.DurationRemaining & 2) == 2) {
+        return (a1 > 1500) ? 500 : 2000;
+    }
+    return a1;
+}
+
+// FUNCTION: GAMEMD 0x70D420
+bool TechnoClass::vf_202()
+{
+    if (CurrentPlayer != 0) {
+        CellClass* cell = MapClass_Instance.GetTargetCell(this->vf_18());
+        return cell->FUN_004870D0(CurrentPlayer->ArrayIndex);
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x70D460
+bool TechnoClass::vf_203(HouseClass* a1)
+{
+    if (a1 != 0) {
+        CellClass* cell = MapClass_Instance.GetTargetCell(this->vf_18());
+        return cell->FUN_004870D0(a1->ArrayIndex);
+    }
+    return false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -887,12 +1070,50 @@ void Obj_0070D980::FUN_0070D980()
 {
 }
 
+// FUNCTION: GAMEMD 0x70DC50
+bool TechnoClass::FUN_0070DC50()
+{
+    return this->vf_33()->HasTurretTooltips;
+}
+
+// FUNCTION: GAMEMD 0x70DC60
+bool TechnoClass::FUN_0070DC60()
+{
+    return this->vf_33()->FUN_00717880();
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70DCE0
 // Returns a comparison result.
 bool Obj_0070DCE0::FUN_0070DCE0() const
 {
     return unknown_124 != -1;
+}
+
+// FUNCTION: GAMEMD 0x70DD00
+int TechnoClass::FUN_0070DD00()
+{
+    int changed = this->CurrentTurretNumber != this->unknown_int_128;
+    this->unknown_int_128 = this->CurrentTurretNumber;
+    return changed;
+}
+
+// FUNCTION: GAMEMD 0x70DD50
+// The weapon-type byte at +0x150 of the weapon in slot 252, false when there is
+// no weapon record or it names no type.
+bool TechnoClass::vf_248()
+{
+    WeaponStruct* weapon = this->vf_252();
+    if (weapon != 0 && weapon->WeaponType != 0) {
+        return weapon->WeaponType->unknown_150;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x70DD70
+int TechnoClass::vf_249()
+{
+    return !this->vf_33()->SprayAttack;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -903,12 +1124,27 @@ int Obj_0070DD90::FUN_0070DD90() const
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x70DDA0
+int TechnoClass::vf_251()
+{
+    return !this->vf_33()->SprayAttack;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70DE20
 // Updates one member in place.
 void Obj_0070DE20::FUN_0070DE20(int a1)
 {
     unknown_144 += a1;
+}
+
+// FUNCTION: GAMEMD 0x70DE40
+void TechnoClass::FUN_0070DE40(int a1)
+{
+    this->GattlingValue -= a1;
+    if (this->GattlingValue < 0 || a1 == 0) {
+        this->GattlingValue = 0;
+    }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -962,6 +1198,38 @@ void Techno_0070E000::GattlingRateDown(int rate)
     }
 }
 
+// FUNCTION: GAMEMD 0x70E120
+WeaponStruct* TechnoClass::vf_252()
+{
+    return this->vf_254(this->vf_249());
+}
+
+// FUNCTION: GAMEMD 0x70E140
+WeaponStruct* TechnoClass::vf_254(int a1)
+{
+    if (a1 == -1) {
+        return 0;
+    }
+    if (this->Veterancy.FUN_00750010()) {
+        WeaponStruct* weapon = this->vf_33()->GetEliteWeapon(a1);
+        if (weapon != 0 && weapon->WeaponType != 0) {
+            return weapon;
+        }
+    }
+    return this->vf_33()->GetWeapon(a1);
+}
+
+// FUNCTION: GAMEMD 0x70E1E0
+int TechnoClass::FUN_0070E1E0(int a1)
+{
+    bool low = a1 < 2;
+    bool inRange = this->vf_33()->FUN_00717880() && a1 < this->vf_33()->WeaponCount;
+    if (a1 >= -1 && (low || inRange)) {
+        return 1;
+    }
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0070E240
 // True when `slot` is non-null and holds a non-zero value.
@@ -971,6 +1239,25 @@ int __stdcall FUN_0070E240(const int* slot)
         return 1;
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x70E260
+int TechnoClass::FUN_0070E260()
+{
+    WeaponStruct* weapon = this->GetPrimaryWeapon();
+    if (weapon != 0 && weapon->WeaponType != 0) {
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x70E340
+void TechnoClass::vf_86()
+{
+    CDTimerClass timer;
+    timer.StartTime = CurrentFrame;
+    timer.TimeLeft = 0;
+    this->AirstrikeTimer = timer;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -995,6 +1282,16 @@ void RecoilData::Fire()
 bool TechnoClass::IsUnderEMP()
 {
     return this->EMPLockRemaining > 0;
+}
+
+// FUNCTION: GAMEMD 0x70EFE0
+int TechnoClass::vf_227()
+{
+    TechnoTypeClass* type = this->vf_33();
+    if (type != 0) {
+        return type->Speed;
+    }
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1028,6 +1325,28 @@ bool Obj_0070F030::FUN_0070F030() const
     return false;
 }
 
+// FUNCTION: GAMEMD 0x70F040
+int TechnoClass::vf_301()
+{
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x70F050
+CoordStruct TechnoClass::vf_302()
+{
+    CoordStruct coord;
+    coord.X = -1;
+    coord.Y = -1;
+    coord.Z = -1;
+    return coord;
+}
+
+// FUNCTION: GAMEMD 0x70F070
+bool TechnoClass::vf_303()
+{
+    return this->vf_33()->vf_40();
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F090  (__thiscall)
 // Forwarded wholesale to the type: the object asks what it is, then asks the
@@ -1036,9 +1355,9 @@ bool Obj_0070F030::FUN_0070F030() const
 // dispatch is the whole return expression.
 bool TechnoClass::CanAttackOnTheMove()
 {
-    TechnoTypeClass* type = (this->*this->Vfptr->At_84)();
+    TechnoTypeClass* type = vf_33();
 
-    return (type->*type->Vfptr->At_A4)();
+    return type->vf_41();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1120,16 +1439,25 @@ void VelocitySource_0070F670::RemoveVelocity(Mover_0070F670* mover)
     }
 }
 
+// FUNCTION: GAMEMD 0x70F740
+void TechnoClass::FUN_0070F740(int a1)
+{
+    CDTimerClass timer;
+    timer.StartTime = CurrentFrame;
+    timer.TimeLeft = a1;
+    this->TargetingTimer = timer;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70F850  (__thiscall)
 // Drop everything and go idle: clear the movement destination, clear the combat
 // target, forget the archived target, and force the object into mission 5.
 void TechnoClass::CancelAndGoIdle()
 {
-    (this->*this->Vfptr->At_480)(0, true);
-    (this->*this->Vfptr->At_3C8)(0);
+    SetDestination(0, true);
+    vf_242(0);
     this->ArchiveTarget = 0;
-    (this->*this->Vfptr->At_1F0)(5);
+    vf_124(5);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1199,6 +1527,12 @@ void Obj_0070FE40::FUN_0070FE40(int a1)
 bool LocoObject_0070FEB0::IsDraining() const
 {
     return this->DrainingWhom != 0;
+}
+
+// FUNCTION: GAMEMD 0x70FED0
+bool TechnoClass::FUN_0070FED0()
+{
+    return this->vf_33()->Drainable;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

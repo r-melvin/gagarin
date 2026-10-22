@@ -196,6 +196,9 @@ GG_STATIC_ASSERT(sizeof(TurretControl) == 0x10);
 #define GG_MATCH_LAYOUT_RECOILDATA_DEFINED
 struct RecoilData
 {
+    // FUNCTION: GAMEMD 0x70ECE0 (decl) -- starts the recoil travel (__thiscall).
+    void Fire();
+
     TurretControl Turret;            // +0x00  (0x10)
     float         TravelPerFrame;    // +0x10
     float         TravelSoFar;       // +0x14
@@ -209,6 +212,7 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 class PlanningTokenClass;
 struct WeaponStruct;
 struct CellStruct;
+class CellClass;
 class HouseClass;
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
@@ -224,10 +228,28 @@ public:
     void FUN_0070DDD0(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x70DDF0 (decl; reloc)
     int FUN_0070DDF0();
-    // FUNCTION: GAMEMD 0x70DE40 (decl; reloc) -- one stack argument.
-    void FUN_0070DE40(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x705D20 (decl; reloc) -- the planning token this unit is on.
     PlanningTokenClass* FUN_00705D20();
+    // FUNCTION: GAMEMD 0x70E260 (decl) -- non-virtual; true when the primary weapon slot names a type.
+    int FUN_0070E260();
+    // FUNCTION: GAMEMD 0x70DD00 (decl) -- non-virtual; latches CurrentTurretNumber into unknown_int_128 and reports a change.
+    // FUNCTION: GAMEMD 0x70DC50 (decl) -- non-virtual; HasTurretTooltips of the type.
+    bool FUN_0070DC50();
+    // FUNCTION: GAMEMD 0x70DC60 (decl) -- non-virtual; the type's FUN_00717880.
+    bool FUN_0070DC60();
+    // FUNCTION: GAMEMD 0x70FED0 (decl) -- non-virtual; Drainable of the type.
+    bool FUN_0070FED0();
+    // FUNCTION: GAMEMD 0x70DE40 (decl) -- non-virtual; subtracts a1 from GattlingValue, flooring at 0.
+    void FUN_0070DE40(int a1);
+    // FUNCTION: GAMEMD 0x7018C0 (decl) -- non-virtual; sets Owner and the current-player flag.
+    void FUN_007018C0(HouseClass* house);
+    // FUNCTION: GAMEMD 0x709500 (decl) -- non-virtual; true for the listed CurrentMission values.
+    int FUN_00709500();
+    // FUNCTION: GAMEMD 0x70E1E0 (decl) -- non-virtual; is a1 a usable weapon index for this type.
+    int FUN_0070E1E0(int a1);
+    int FUN_0070DD00();
+    // FUNCTION: GAMEMD 0x70F740 (decl) -- non-virtual; restarts TargetingTimer with a1 frames.
+    void FUN_0070F740(int a1);
     // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) -- kill the passengers (one
     // stack argument, the killer).
     void KillPassengers(TechnoClass* killer);
@@ -240,11 +262,15 @@ public:
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
     virtual bool vf_25();                                          // 25  0x6F32D0
+    virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
     virtual bool vf_50(int a1);                                    // 50  0x41C020: returns Disguised
+    virtual void vf_71();                                          // 71  0x6F4A40
+    virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
     virtual bool vf_102(HouseClass* house);                        // 102 0x6F4960
+    virtual void vf_125(int mission, int a2, int a3);              // 125 0x7013A0
 
     // Slots 161-308, introduced by TechnoClass (RTTI ".?AVTechnoClass@@" on
     // 0x7F4960). Names are placeholders except where a tree row already carries
@@ -274,16 +300,16 @@ public:
     virtual int vf_182();                                          // 182 0x41BF10
     virtual int vf_183();                                          // 183 0x41BF20
     virtual void vf_184();                                         // 184 0x70D980
-    virtual int vf_185(int a1);                                    // 185 0x6F3330
+    virtual int vf_185(AbstractClass* target);                         // 185 0x6F3330: the weapon index for a target
     virtual int vf_186(TechnoClass* other);                        // 186 0x6F3820
     virtual int vf_187();                                          // 187 0x704350
     virtual int vf_188();                                          // 188 0x459DA0
     virtual CellStruct vf_189();                                   // 189 0x459DB0
     virtual void vf_190(int a1);                                   // 190 0x459DC0
-    virtual void vf_191(int a1, int a2, int a3);                   // 191 0x70AD50
+    virtual CellStruct vf_191(int a1, int a2);                        // 191 0x70AD50
     virtual int vf_192(int a1, int a2);                            // 192 0x6F3D60
     virtual int vf_193(int a1, int a2);                            // 193 0x708C10
-    virtual void vf_194(int a1);                                   // 194 0x708D70
+    virtual DirStruct vf_194();                                       // 194 0x708D70
     virtual int vf_195();                                          // 195 0x707D20
     virtual int vf_196();                                          // 196 0x700D10
     virtual void vf_197();                                         // 197 0x700D50
@@ -291,8 +317,8 @@ public:
     virtual int vf_199(int a1);                                    // 199 0x707E60
     virtual bool vf_200();                                         // 200 0x459DD0
     virtual void vf_201(int a1);                                   // 201 0x70D1D0
-    virtual void vf_202();                                         // 202 0x70D420
-    virtual void vf_203(int a1);                                   // 203 0x70D460
+    virtual bool vf_202();                                         // 202 0x70D420
+    virtual bool vf_203(HouseClass* a1);                           // 203 0x70D460
     virtual bool vf_204();                                         // 204 0x41BF30
     virtual void vf_205();                                         // 205 0x459DE0
     virtual void vf_206(int a1, int a2, int a3);                   // 206 0x70F8F0
@@ -323,9 +349,9 @@ public:
     virtual void vf_231(int a1, int a2);                           // 231 0x709820
     virtual void vf_232();                                         // 232 0x6FCD40
     virtual int vf_233(int a1);                                    // 233 0x6F7660
-    virtual bool vf_234(int a1, int a2);                           // 234 0x6F77B0
+    virtual bool vf_234(AbstractClass* target, int weapon);            // 234 0x6F77B0: is the target in that weapon's range
     virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
-    virtual void vf_236(int a1);                                   // 236 0x6F7930
+    virtual void vf_236(CoordStruct* a1);                                // 236 0x6F7930
     virtual void vf_237(int a1);                                   // 237 0x6F78D0
     virtual int vf_238();                                          // 238 0x4C9150
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
@@ -341,9 +367,9 @@ public:
     virtual int vf_249();                                          // 249 0x70DD70
     virtual int vf_250();                                          // 250 0x70DD90
     virtual int vf_251();                                          // 251 0x70DDA0
-    virtual void vf_252();                                         // 252 0x70E120
+    virtual WeaponStruct* vf_252();                                      // 252 0x70E120
     virtual WeaponStruct* GetPrimaryWeapon();                      // 253 0x70E1A0
-    virtual int vf_254(int a1);                                    // 254 0x70E140
+    virtual WeaponStruct* vf_254(int a1);                                 // 254 0x70E140
     virtual bool vf_255();                                         // 255 0x41BFA0
     virtual bool vf_256();                                         // 256 0x41BFB0
     virtual int vf_257();                                          // 257 0x41BFC0
@@ -356,7 +382,7 @@ public:
     virtual void vf_264();                                         // 264 0x6F4EB0
     virtual void vf_265();                                         // 265 0x6FB010
     virtual void vf_266();                                         // 266 0x41BFE0
-    virtual void vf_267(int a1);                                   // 267 0x705CA0
+    virtual CoordStruct vf_267();                                     // 267 0x705CA0
     virtual bool vf_268();                                         // 268 0x705D50
     virtual bool vf_269(int a1);                                   // 269 0x41BFF0
     virtual void vf_270(int a1, int a2);                           // 270 0x459E60
@@ -391,7 +417,7 @@ public:
     virtual bool vf_299();                                         // 299 0x70F020
     virtual bool vf_300();                                         // 300 0x70F030
     virtual int vf_301();                                          // 301 0x70F040
-    virtual void vf_302(int a1);                                   // 302 0x70F050
+    virtual CoordStruct vf_302();                                  // 302 0x70F050
     virtual bool vf_303();                                         // 303 0x70F070
     virtual bool CanAttackOnTheMove();                             // 304 0x70F090
     virtual bool vf_305();                                         // 305 0x70F0E0
@@ -482,7 +508,7 @@ public:
     void*              DirectRockerLinkedUnit;   // +0x2A8 FootClass*
     void*              LocomotorTarget;          // +0x2AC FootClass*
     void*              LocomotorSource;          // +0x2B0 FootClass*
-    void*              Target;                   // +0x2B4 AbstractClass*
+    AbstractClass*     Target;                   // +0x2B4
     void*              LastTarget;               // +0x2B8 AbstractClass*
     void*              CaptureManager;           // +0x2BC CaptureManagerClass*
     void*              MindControlledBy;         // +0x2C0 TechnoClass*
@@ -587,7 +613,7 @@ public:
     unsigned char      align_4F9[3];                 // +0x4F9
     unsigned int       unknown_4FC;                  // +0x4FC
     void*              QueueUpToEnter;               // +0x500 TechnoClass*
-    unsigned int       EMPLockRemaining;             // +0x504
+    int                EMPLockRemaining;             // +0x504 (signed: 0x70EFD0 tests it with SETG)
     unsigned int       ThreatPosed;                  // +0x508
     unsigned int       ShouldLoseTargetNow;          // +0x50C
     void*              FiringRadBeam;                // +0x510 RadBeam*

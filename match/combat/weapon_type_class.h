@@ -80,7 +80,9 @@ public:
     int               Range;                  // +0xB4
     unsigned int      unknown_B8;             // +0xB8
     DynamicVectorClass<int> Reports;           // +0xBC (items +0xC0, count +0xCC)
-    char              _tail[0x160 - 0xD4];    // +0xD4  remaining Rules fields (P2)
+    char              _tail[0x150 - 0xD4];    // +0xD4  remaining Rules fields (P2)
+    bool              unknown_150;            // +0x150 (bool; read by TechnoClass slot 248 @0x70DD50)
+    char              _tail2[0x160 - 0x151];  // +0x151 remaining Rules fields (P2)
 };
 
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
@@ -89,6 +91,7 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range)      == 0xB4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_150) == 0x150);
 GG_STATIC_ASSERT(sizeof(WeaponTypeClass)               == 0x160);
 
 // VectorClass head for WeaponTypeClass::Array (DynamicVectorClass of pointers).
