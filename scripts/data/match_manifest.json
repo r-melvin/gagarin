@@ -82411,9 +82411,9 @@
  {
   "tu": "match/economy/netshare.cpp",
   "addr": "0x5E2F60",
-  "sym": "?FUN_005E2F60@Obj_005E2F60@@QAEXXZ",
+  "sym": "?FUN_005E2F60@@YIXPAUHWND__@@@Z",
   "len": "0x20",
-  "name": "Obj_005E2F60::FUN_005E2F60",
+  "name": "FUN_005E2F60",
   "status": "matched",
   "pct": 100
  },
@@ -90924,5 +90924,563 @@
   "name": "FUN_63CA80",
   "status": "partial",
   "pct": 88.9
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2670",
+  "sym": "?FUN_005E2670@@YIIPAVObj_007B66D0@@@Z",
+  "len": "0x46",
+  "name": "FUN_005E2670",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2700",
+  "sym": "?FUN_005E2700@@YAXHPBGZZ",
+  "len": "0x87",
+  "name": "FUN_005E2700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2790",
+  "sym": "?FUN_005E2790@@YAXHPBGZZ",
+  "len": "0x87",
+  "name": "FUN_005E2790",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2820",
+  "sym": "?FUN_005E2820@@YIXHPBGPAUHWND__@@@Z",
+  "len": "0x180",
+  "name": "FUN_005E2820",
+  "status": "partial",
+  "pct": 38.8
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E29A0",
+  "sym": "?FUN_005E29A0@@YIXPAUHWND__@@PBGHH@Z",
+  "len": "0x116",
+  "name": "FUN_005E29A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2AC0",
+  "sym": "?FUN_005E2AC0@@YIXXZ",
+  "len": "0xe0",
+  "name": "FUN_005E2AC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2BA0",
+  "sym": "?FUN_005E2BA0@@YIHPAVHouseClass@@@Z",
+  "len": "0x40",
+  "name": "FUN_005E2BA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2BE0",
+  "sym": "?FUN_005E2BE0@@YIHPAVHouseClass@@@Z",
+  "len": "0xeb",
+  "name": "FUN_005E2BE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2CD0",
+  "sym": "?FUN_005E2CD0@@YIHPBGHPAX_N@Z",
+  "len": "0x16c",
+  "name": "FUN_005E2CD0",
+  "status": "partial",
+  "pct": 1.4
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2E40",
+  "sym": "?FUN_005E2E40@@YGHPAUHWND__@@IIJ@Z",
+  "len": "0x91",
+  "name": "FUN_005E2E40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2EF0",
+  "sym": "?FUN_005E2EF0@@YIXPAUHWND__@@PAVMultiplayerGameMode@@@Z",
+  "len": "0x30",
+  "name": "FUN_005E2EF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2F80",
+  "sym": "?FUN_005E2F80@@YIXXZ",
+  "len": "0x15",
+  "name": "FUN_005E2F80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2FA0",
+  "sym": "?FUN_005E2FA0@@YIXXZ",
+  "len": "0x65",
+  "name": "FUN_005E2FA0",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E32D0",
+  "sym": "?FUN_005E32D0@@YIXDD@Z",
+  "len": "0x2cb",
+  "name": "FUN_005E32D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E35A0",
+  "sym": "?FUN_005E35A0@@YIXXZ",
+  "len": "0x8f",
+  "name": "FUN_005E35A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E3630",
+  "sym": "?FUN_005E3630@@YIXXZ",
+  "len": "0xae",
+  "name": "FUN_005E3630",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E36E0",
+  "sym": "?FUN_005E36E0@@YIXXZ",
+  "len": "0x1a",
+  "name": "FUN_005E36E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E3720",
+  "sym": "?FUN_005E3720@@YIXPBD@Z",
+  "len": "0x127",
+  "name": "FUN_005E3720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E3850",
+  "sym": "?FUN_005E3850@@YIXPBD0@Z",
+  "len": "0x16f",
+  "name": "FUN_005E3850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E39C0",
+  "sym": "?FUN_005E39C0@@YIXPBDH@Z",
+  "len": "0xe7",
+  "name": "FUN_005E39C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E6440",
+  "sym": "?FUN_005E6440@@YIHXZ",
+  "len": "0x2d",
+  "name": "FUN_005E6440",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E6470",
+  "sym": "?FUN_005E6470@@YIHXZ",
+  "len": "0x44",
+  "name": "FUN_005E6470",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E64C0",
+  "sym": "?FUN_005E64C0@@YIHH@Z",
+  "len": "0x5b",
+  "name": "FUN_005E64C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E66D0",
+  "sym": "?FUN_005E66D0@@YIHXZ",
+  "len": "0x1b",
+  "name": "FUN_005E66D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E68A0",
+  "sym": "?FUN_005E68A0@@YIHPAUHWND__@@@Z",
+  "len": "0x7f",
+  "name": "FUN_005E68A0",
+  "status": "partial",
+  "pct": 89.2
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E7460",
+  "sym": "?FUN_005E7460@@YIXXZ",
+  "len": "0x7e",
+  "name": "FUN_005E7460",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E8DC0",
+  "sym": "?FUN_005E8DC0@@YIXPAG@Z",
+  "len": "0xd6",
+  "name": "FUN_005E8DC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9580",
+  "sym": "?FUN_005E9580@@YI_NXZ",
+  "len": "0x5c",
+  "name": "FUN_005E9580",
+  "status": "partial",
+  "pct": 83.8
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E95E0",
+  "sym": "?FUN_005E95E0@@YI_NXZ",
+  "len": "0xba",
+  "name": "FUN_005E95E0",
+  "status": "partial",
+  "pct": 86.7
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E96A0",
+  "sym": "?FUN_005E96A0@@YI_NH@Z",
+  "len": "0x7d",
+  "name": "FUN_005E96A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9720",
+  "sym": "?FUN_005E9720@@YI_NH@Z",
+  "len": "0x7d",
+  "name": "FUN_005E9720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E97A0",
+  "sym": "?FUN_005E97A0@@YIHPAUNodeNameType@@@Z",
+  "len": "0x58",
+  "name": "FUN_005E97A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9800",
+  "sym": "?FUN_005E9800@@YIPAUNodeNameType@@H@Z",
+  "len": "0x49",
+  "name": "FUN_005E9800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9850",
+  "sym": "?FUN_005E9850@@YIXXZ",
+  "len": "0x9c",
+  "name": "FUN_005E9850",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E98F0",
+  "sym": "?FUN_005E98F0@@YIHH@Z",
+  "len": "0x60",
+  "name": "FUN_005E98F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9950",
+  "sym": "?FUN_005E9950@@YIHH@Z",
+  "len": "0x69",
+  "name": "FUN_005E9950",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E99C0",
+  "sym": "?FUN_005E99C0@@YIPAGPAUNodeNameType@@@Z",
+  "len": "0xd1",
+  "name": "FUN_005E99C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9AA0",
+  "sym": "?FUN_005E9AA0@@YIXPAUHWND__@@HH@Z",
+  "len": "0x7d",
+  "name": "FUN_005E9AA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9B20",
+  "sym": "?FUN_005E9B20@@YIHPAUHWND__@@HH@Z",
+  "len": "0x3e",
+  "name": "FUN_005E9B20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9B60",
+  "sym": "?FUN_005E9B60@@YIXPAUHWND__@@H@Z",
+  "len": "0x93",
+  "name": "FUN_005E9B60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9C00",
+  "sym": "?FUN_005E9C00@@YIXPAUHWND__@@H@Z",
+  "len": "0xd4",
+  "name": "FUN_005E9C00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9CE0",
+  "sym": "?FUN_005E9CE0@@YIXPAUHWND__@@H@Z",
+  "len": "0xc7",
+  "name": "FUN_005E9CE0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9DB0",
+  "sym": "?FUN_005E9DB0@@YIXPAUHWND__@@H@Z",
+  "len": "0x4e",
+  "name": "FUN_005E9DB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9E00",
+  "sym": "?FUN_005E9E00@@YIXPAUHWND__@@@Z",
+  "len": "0x61",
+  "name": "FUN_005E9E00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E9E70",
+  "sym": "?FUN_005E9E70@@YIXPAUHWND__@@HE@Z",
+  "len": "0x251",
+  "name": "FUN_005E9E70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EA0D0",
+  "sym": "?FUN_005EA0D0@@YIXPAUHWND__@@H@Z",
+  "len": "0xac",
+  "name": "FUN_005EA0D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EA180",
+  "sym": "?FUN_005EA180@@YIXPAUHWND__@@H@Z",
+  "len": "0x11d",
+  "name": "FUN_005EA180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EA2A0",
+  "sym": "?FUN_005EA2A0@@YIXPAUHWND__@@@Z",
+  "len": "0x139",
+  "name": "FUN_005EA2A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EB660",
+  "sym": "?FUN_005EB660@@YIEPAUHWND__@@@Z",
+  "len": "0x14a",
+  "name": "FUN_005EB660",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EBDD0",
+  "sym": "?FUN_005EBDD0@@YIXPAUHWND__@@HHPAVMultiplayerGameMode@@@Z",
+  "len": "0xe1",
+  "name": "FUN_005EBDD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EBEC0",
+  "sym": "?FUN_005EBEC0@@YIXPAUHWND__@@HH@Z",
+  "len": "0x169",
+  "name": "FUN_005EBEC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EC290",
+  "sym": "?FUN_005EC290@@YIXPAUHWND__@@H@Z",
+  "len": "0x10a",
+  "name": "FUN_005EC290",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5ED270",
+  "sym": "?FUN_005ED270@@YIXPAUHWND__@@HH@Z",
+  "len": "0xf4",
+  "name": "FUN_005ED270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5ED400",
+  "sym": "?FUN_005ED400@@YIXPAUHWND__@@PAH@Z",
+  "len": "0x199",
+  "name": "FUN_005ED400",
+  "status": "partial",
+  "pct": 4.4
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EDD00",
+  "sym": "?FUN_005EDD00@@YI?AVObj_007B66D0@@PAUHWND__@@@Z",
+  "len": "0xda",
+  "name": "FUN_005EDD00",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EDDE0",
+  "sym": "?FUN_005EDDE0@@YIXPAUHWND__@@E@Z",
+  "len": "0x106",
+  "name": "FUN_005EDDE0",
+  "status": "partial",
+  "pct": 63.0
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EDEF0",
+  "sym": "?FUN_005EDEF0@@YIPAVObj_007B4620@@PAV1@PAUNodeNameType@@@Z",
+  "len": "0xc7",
+  "name": "FUN_005EDEF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EDFC0",
+  "sym": "?FUN_005EDFC0@@YIPAUNodeNameType@@PAVObj_007B66D0@@@Z",
+  "len": "0x13f",
+  "name": "FUN_005EDFC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EE100",
+  "sym": "?FUN_005EE100@@YIHPAVObj_007B4620@@@Z",
+  "len": "0x87",
+  "name": "FUN_005EE100",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EE200",
+  "sym": "?FUN_005EE200@@YIXPAUHWND__@@@Z",
+  "len": "0x148",
+  "name": "FUN_005EE200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EE350",
+  "sym": "?FUN_005EE350@@YIXPAUHWND__@@@Z",
+  "len": "0x49",
+  "name": "FUN_005EE350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5EE6A0",
+  "sym": "?FUN_005EE6A0@@YIXPAUHWND__@@@Z",
+  "len": "0x4b",
+  "name": "FUN_005EE6A0",
+  "status": "matched",
+  "pct": 100
  }
 ]

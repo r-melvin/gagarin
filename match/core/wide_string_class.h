@@ -101,6 +101,10 @@ public:
     __forceinline unsigned int Length() const;
 
     // ---- scored entry points, ascending by retail address ----------------
+    // FUNCTION: GAMEMD 0x7B66C0 (decl; reloc) -- the default construction,
+    // `this->Buffer = 0` out of line (reached by callers in netshare.cpp,
+    // 0x5E2AC0, as a plain CALL on a stack temporary).
+    Obj_007B66D0();
     Obj_007B66D0(const wchar_t* src);                       // 0x7B66D0
     Obj_007B66D0(const Obj_007B66D0& other);             // 0x7B6720
     // FUNCTION: GAMEMD 0x7B6760 (decl; reloc) -- the out-of-line destructor
@@ -122,6 +126,23 @@ public:
     const wchar_t* FUN_007B7140() const;
     // FUNCTION: GAMEMD 0x7B7040 (decl; reloc) -- release the buffer and forget it.
     void FUN_007B7040();
+    // FUNCTION: GAMEMD 0x7B7D90 (decl; reloc) -- true when every character is
+    // below 0x100 (the string survives a narrow copy); __thiscall.
+    bool FUN_007B7D90() const;
+    // FUNCTION: GAMEMD 0x7B78D0 (decl; reloc) -- __thiscall, one argument: cut
+    // the string to that many characters (reallocating).
+    void FUN_007B78D0(unsigned int count);
+    // FUNCTION: GAMEMD 0x7B6F40 (decl; reloc) -- __thiscall, one argument: a
+    // second string that names a character set, read against this string's tail.
+    void FUN_007B6F40(const Obj_007B66D0* set);
+    // FUNCTION: GAMEMD 0x7B7100 (decl; reloc) -- the same buffer-or-shared-empty
+    // read as 0x7B7140, a second out-of-line copy of it that callers in
+    // netshare.cpp (0x5E2670) reach with a plain CALL.
+    const wchar_t* FUN_007B7100() const;
+    // FUNCTION: GAMEMD 0x7B71B0 (decl; reloc) -- the measured length (Length's
+    // out-of-line form); callers in netshare.cpp (0x5E2670) reach it with a
+    // plain CALL.
+    unsigned int FUN_007B71B0() const;
     void Resize(int count);                                    // 0x7B7060
     wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
     wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180

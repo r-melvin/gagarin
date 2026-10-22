@@ -39,6 +39,16 @@ public:
     // their call-site names; no body for them is recovered yet.
     // FUNCTION: GAMEMD 0x7B4620 (decl; reloc) — the empty construction.
     void Init();
+    // An empty-bodied default construction: it stores nothing, so callers that
+    // hand the object to a constructing call (0x7B4630, or a hidden-pointer
+    // return) can declare one.
+    Obj_007B4620() {}
+    // FUNCTION: GAMEMD 0x7B4630 (decl; reloc) — construct a copy of a C string
+    // in place (a null pointer leaves the string empty); __thiscall, RET 4.
+    void Construct(const char* text);
+    // FUNCTION: GAMEMD 0x7B4710 (decl; reloc) — compare with a C string (two
+    // empty strings are equal); __thiscall, RET 4.
+    bool FUN_007B4710(const char* text) const;
     // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) — release the copy.
     void Destruct();
     // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) — indexed character.
