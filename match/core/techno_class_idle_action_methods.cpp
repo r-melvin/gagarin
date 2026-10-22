@@ -63,7 +63,7 @@ bool TechnoClass::EnterIdleMode(bool initial, bool unused)
     TemporalClass* temporal = this->TemporalImUsing;
 
     if (temporal != 0 && temporal->Target != 0) {
-        temporal->LetGo();
+        temporal->FUN_0071ABC0();
     }
     if (!(this->*this->Vfptr->At_4D0)()) {
         if ((this->*this->Vfptr->At_430)()) {

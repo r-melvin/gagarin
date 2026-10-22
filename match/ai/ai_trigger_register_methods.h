@@ -39,26 +39,8 @@ GG_STATIC_ASSERT(offsetof(Rules_0041FD60, AITriggerTrackRecordCoefficient) == 0x
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern Rules_0041FD60* Rules;
 
-struct AITriggerTypeClass
-{
-    char   _pad000[0xB8];      // +0x0000
-    double Weight_Current;     // +0x00B8
-    double Weight_Minimum;     // +0x00C0
-    double Weight_Maximum;     // +0x00C8
-    char   _pad0D0[0x104 - 0xD0];
-    int    Successes;          // +0x0104
-    int    Attempts;           // +0x0108
-
-    // FUNCTION: GAMEMD 0x41FD60
-    void RegisterSuccess();
-
-    // FUNCTION: GAMEMD 0x41FE20
-    void RegisterFailure();
-};
-GG_STATIC_ASSERT(offsetof(AITriggerTypeClass, Weight_Current) == 0xB8);
-GG_STATIC_ASSERT(offsetof(AITriggerTypeClass, Weight_Minimum) == 0xC0);
-GG_STATIC_ASSERT(offsetof(AITriggerTypeClass, Weight_Maximum) == 0xC8);
-GG_STATIC_ASSERT(offsetof(AITriggerTypeClass, Successes) == 0x104);
-GG_STATIC_ASSERT(offsetof(AITriggerTypeClass, Attempts) == 0x108);
+// AITriggerTypeClass: the canonical class (weights +0xB8..+0xC8, Successes
+// +0x104, Attempts +0x108).
+#include "../_layout/ai_trigger_type_class.h"
 
 #endif  // GG_MATCH_AI_AI_TRIGGER_REGISTER_METHODS_H

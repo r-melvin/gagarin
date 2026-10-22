@@ -104,13 +104,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, AIMinorSuperReadyPercent) == 0xD70);
 // GLOBAL: GAMEMD 0x8871E0 — RulesClass::Instance.
 extern RulesClass* Rules;
 
-struct AITriggerTypeClass
-{
-    // FUNCTION: GAMEMD 0x41F0D0
-    bool IronCurtainCharged(HouseClass* callingHouse, HouseClass* targetHouse) const;
-
-    // FUNCTION: GAMEMD 0x41F180
-    bool ChronoSphereCharged(HouseClass* callingHouse, HouseClass* targetHouse) const;
-};
+// AITriggerTypeClass: the canonical class.
+#include "../_layout/ai_trigger_type_class.h"
 
 #endif  // GG_MATCH_AI_AI_TRIGGER_CHARGED_METHODS_H

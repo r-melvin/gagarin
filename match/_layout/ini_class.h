@@ -15,6 +15,10 @@ public:
     // Retail TypeDescriptors name these nested structs.
     struct INIEntry;
     struct INISection;
+    // The inline construction, as CCINIClass's constructor expands it at
+    // 0x5D5C07: +0x04/+0x08 zeroed, the list (0x49E8E0) and index (0x49EA10)
+    // constructors called, +0x3C zeroed.
+    INIClass() : unknown_04(0), unknown_08(0), unknown_3C(0) {}
     // FUNCTION: GAMEMD 0x5256F0
     virtual ~INIClass();
     // FUNCTION: GAMEMD 0x5257C0

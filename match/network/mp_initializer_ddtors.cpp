@@ -11,6 +11,8 @@
 // them the `??_G` wrappers. Neither class touches a member in these bodies, so
 // no layout is reconstructed.
 
+#include "multiplayer_game_mode.h"
+
 class MultiplayerBattle;
 class MultiplayerManBattle;
 class MultiplayerSiege;
@@ -18,24 +20,8 @@ class UnholyAlliance;
 class FreeForAll;
 class MPCooperative;
 
-class MultiplayerGameMode
-{
-public:
-    // VTABLE: GAMEMD 0x7EEE74
-    class InitializerBase
-    {
-    public:
-        InitializerBase() {}
-        virtual ~InitializerBase() {}
-    };
-
-    template <class T>
-    class Initializer : public InitializerBase
-    {
-    public:
-        Initializer() {}
-    };
-};
+// MultiplayerGameMode::InitializerBase and Initializer<T> are declared in the
+// canonical class (multiplayer_game_mode.h).
 
 // SYNTHETIC: GAMEMD 0x5D7FD0
 // MultiplayerGameMode::InitializerBase scalar deleting destructor

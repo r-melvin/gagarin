@@ -11,6 +11,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../movement/matrix3d_apply_methods.h"
+#include "voxel_section_source.h"
 
 struct BoundsFloat3
 {
@@ -19,18 +20,6 @@ struct BoundsFloat3
 	float X;
 	float Y;
 	float Z;
-};
-
-struct VoxelSectionBounds
-{
-	unsigned char unknown_00[0x40];
-	Vector3D Corners[8];   // +0x40
-};
-GG_STATIC_ASSERT(offsetof(VoxelSectionBounds, Corners) == 0x40);
-
-struct VoxelSectionSource
-{
-	VoxelSectionBounds *FUN_007564b0(int section, int frame);
 };
 
 struct VoxelDrawEntry

@@ -66,8 +66,20 @@ GG_STATIC_ASSERT(offsetof(RateTimer, Rate) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RateTimer)         == 0x10);
 #endif
 
+struct BuildingTypeClass;
+struct HouseClass;
+
 struct BuildingClass : TechnoClass
 {
+    // FUNCTION: GAMEMD 0x43B740 (decl; reloc) -- (type, owner), RET 8; allocated
+    // with PUSH 0x720 / operator new (e.g. 0x5CAB4B).
+    BuildingClass(BuildingTypeClass* type, HouseClass* owner);
+    // The primary-table (0x7E3EBC) overrides of AbstractClass's pure slots.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);              // 3  0x459E80
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);    // 6  0x454190
+    virtual int vf_11();                                                // 11 0x459EC0
+    virtual int vf_12();                                                // 12 0x459E70
+
     void*          Type;                  // +0x520 BuildingTypeClass*; ctor MOV [ESI+0x520],ECX(=pType) @0x0043B756
     void*          Factory;               // +0x524 FactoryClass*; ctor @0x0043B75C (=0)
     CDTimerClass   C4Timer;               // +0x528 (0xC) ctor StartTime @0x0043B76B, TimeLeft @0x0043B771

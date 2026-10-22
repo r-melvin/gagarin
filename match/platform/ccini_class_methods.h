@@ -16,11 +16,25 @@
 #include "../_layout/ini_class.h"
 
 
+class FileClass;
+
+// VTABLE: GAMEMD 0x7E1AF4
+//   sizeof 0x58: `PUSH 0x58; CALL operator new` before the inline
+//   construction at 0x5D5BD9. ReadCCFile 0x4741F0 clears and sets +0x40 and
+//   writes the SHA result to +0x41.
 class CCINIClass : public INIClass
 {
 public:
+    CCINIClass() : DigestValid(false) {}
+    // FUNCTION: GAMEMD 0x4741F0 (decl; reloc) -- RET 0xC.
+    int ReadCCFile(FileClass* file, bool withDigest, bool flag);
     // FUNCTION: GAMEMD 0x679F40  CCINIClass::Exists         (__thiscall)
     bool Exists(const char* pSection, const char* pKey);
+
+    bool          DigestValid;     // +0x40
+    unsigned char Digest[0x14];    // +0x41
 };
+GG_STATIC_ASSERT(offsetof(CCINIClass, DigestValid) == 0x40);
+GG_STATIC_ASSERT(sizeof(CCINIClass) == 0x58);
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_METHODS_H

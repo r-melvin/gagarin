@@ -313,6 +313,8 @@ public:
     DisplayScCellObject* FUN_005657A0(const CellStruct* cell);
     // FUNCTION: GAMEMD 0x5657E0 (decl; reloc) -- RET 4.
     bool FUN_005657E0(const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x577F30 (decl; reloc) -- RET 4; takes a house (null at 0x5C9430).
+    void FUN_00577F30(void* house);
     // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the iteration, or null. Two typed views again (the
     // display_scenario.h and mouse_mouse_class.h CellClass views).
     DisplayScCellObject* FUN_00578290();

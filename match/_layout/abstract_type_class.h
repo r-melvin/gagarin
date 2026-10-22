@@ -39,7 +39,7 @@ public:
     virtual void vf_13(Obj_004A1D30* crc); // 13  0x410BE0
     virtual void vf_24();                 // 24  0x410C20 (new)
     virtual bool vf_25(CCINIClass* ini);  // 25  0x410A60 (new; RET 4, bool)
-    virtual void vf_26();                 // 26  0x410B90 (new)
+    virtual bool vf_26(CCINIClass* ini);  // 26  0x410B90 (new; RET 4, bool)
     char           ID[0x18];          // +0x24  strncpy(pID, 0x18)
     unsigned char  zero_3C;           // +0x3C  ID NUL-terminator slot
     char           UINameLabel[0x20]; // +0x3D

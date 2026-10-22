@@ -15,6 +15,8 @@ struct IndexClassRaw
     int   IndexSize;    // +0x08
     char  IsSorted;     // +0x0C
     void* Archive;      // +0x10
+    // FUNCTION: GAMEMD 0x49EA10 (decl; reloc) -- zero all five fields.
+    IndexClassRaw();
 
     __forceinline void Clear();
 };

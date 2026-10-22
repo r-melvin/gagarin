@@ -33,25 +33,15 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
+#include "multiplayer_game_mode.h"
 
 // One game mode. Only the member the lookup compares is modelled.
-struct MultiplayerGameMode_005D5F30
-{
-    char _pad000[0x28];   // +0x0000
-    int  At_28;           // +0x0028  the identifier Get() searches for
-};
-GG_STATIC_ASSERT(offsetof(MultiplayerGameMode_005D5F30, At_28) == 0x28);
-
-// VTABLE: GAMEMD 0x7EED40 — VectorClass<MultiplayerGameMode*>.
-// VTABLE: GAMEMD 0x7EED20 — DynamicVectorClass<MultiplayerGameMode*>.
-// FUNCTION: GAMEMD 0x5D89F0 (decl) — VectorClass(size, array), out-of-line
-// instance of the canonical template constructor.
-typedef DynamicVectorClass<MultiplayerGameMode_005D5F30*> ModeVector_005D5F30;
+typedef DynamicVectorClass<MultiplayerGameMode*> ModeVector_005D5F30;
 GG_STATIC_ASSERT(sizeof(ModeVector_005D5F30) == 0x18);
 GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x5D5F30 — MultiplayerGameMode::Get (static).
-MultiplayerGameMode_005D5F30* __fastcall MultiplayerGameMode_Get(int index);
+MultiplayerGameMode* __fastcall MultiplayerGameMode_Get(int index);
 
 #endif  // GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_GET_METHODS_H

@@ -55,6 +55,9 @@ GG_STATIC_ASSERT(sizeof(IPXInterfaceClassVtableLayout) == 0x5C);
 class IPXInterfaceClass : public WinsockInterfaceClass
 {
 public:
+    // FUNCTION: GAMEMD 0x7B0D90 (decl; reloc) -- constructor; the IPXManagerClass
+    // constructor 0x5408F0 calls it on a fresh 0x3F310-byte allocation.
+    IPXInterfaceClass();
     // Type declaration for slot 0; the existing 0x7B1790 deleting entry and
     // any ordinary destructor body remain outside this candidate.
     virtual ~IPXInterfaceClass();

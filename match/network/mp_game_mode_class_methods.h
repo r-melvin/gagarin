@@ -34,6 +34,8 @@ struct MPGameModeEntry
     int  unknown_6B;     // +0x006B  (stamped with the entry's own index)
 
     int Classify() const;   // GAMEMD 0x696F10 __thiscall (declared; reloc)
+    int FUN_00696F30();     // GAMEMD 0x696F30 __thiscall (declared; reloc)
+    void FUN_00696F90(int value);   // GAMEMD 0x696F90 __thiscall RET 4 (declared; reloc)
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(MPGameModeEntry, unknown_6B) == 0x6B);
@@ -41,9 +43,8 @@ GG_STATIC_ASSERT(offsetof(MPGameModeEntry, unknown_6B) == 0x6B);
 // GLOBAL: GAMEMD 0x00A8DA74
 extern DynamicVectorClassLayout MPGameModeArray;
 
-struct MultiplayerGameMode
-{
-    bool vt_entry_10();   // GAMEMD 0x5D62C0
-};
+// MultiplayerGameMode is the canonical class in multiplayer_game_mode.h; slot 4
+// (vf_4, 0x5D62C0) is declared there.
+#include "multiplayer_game_mode.h"
 
 #endif  // GG_MATCH_NETWORK_MP_GAME_MODE_CLASS_METHODS_H

@@ -33,13 +33,13 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
 // Also 79.3%, so no lever on that decision: the count through GetCount() (kept
 // here), the count through a second inline accessor wrapping Modes, and the
 // item through an inline operator[] together with GetCount().
-MultiplayerGameMode_005D5F30* __fastcall MultiplayerGameMode_Get(int index)
+MultiplayerGameMode* __fastcall MultiplayerGameMode_Get(int index)
 {
     int i;
 
     for (i = 0; i < Modes_005D5F30().GetCount(); i++) {
-        MultiplayerGameMode_005D5F30* mode = Modes_005D5F30().Items[i];
-        if (mode->At_28 == index) {
+        MultiplayerGameMode* mode = Modes_005D5F30().Items[i];
+        if (mode->unknown_28 == index) {
             return mode;
         }
     }

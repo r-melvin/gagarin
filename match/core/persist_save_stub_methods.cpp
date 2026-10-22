@@ -59,12 +59,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class AITriggerTypeClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
 class AnimTypeClass : public ObjectTypeClass
 {
 public:
@@ -209,12 +203,6 @@ public:
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
 };
 
-class TemporalClass : public AbstractClass
-{
-public:
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-};
-
 class TEventClass : public AbstractClass
 {
 public:
@@ -276,15 +264,6 @@ HRESULT __stdcall AircraftTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 HRESULT __stdcall AirstrikeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
     return AbstractClass::Save(pStm, fClearDirty);
-}
-
-// FUNCTION: GAMEMD 0x41E5C0
-HRESULT __stdcall AITriggerTypeClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    HRESULT hr = AbstractClass::Save(pStm, fClearDirty);
-    if (hr >= 0)
-        hr = 0;
-    return hr;
 }
 
 // FUNCTION: GAMEMD 0x428970
@@ -495,12 +474,6 @@ HRESULT __stdcall TeamTypeClass::Save(IStream* pStm, BOOL fClearDirty)
     if (hr >= 0)
         hr = 0;
     return hr;
-}
-
-// FUNCTION: GAMEMD 0x71A700
-HRESULT __stdcall TemporalClass::Save(IStream* pStm, BOOL fClearDirty)
-{
-    return AbstractClass::Save(pStm, fClearDirty);
 }
 
 // FUNCTION: GAMEMD 0x71F930

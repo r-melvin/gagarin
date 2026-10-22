@@ -8,22 +8,22 @@
 //   FUNCTION: GAMEMD 0x71AD40  TemporalClass::JustLetGo      (__thiscall)
 //   FUNCTION: GAMEMD 0x71ADE0  TemporalClass::Detach         (__thiscall)
 
-#include "temporal_class_methods.h"
+#include "../_layout/temporal_class.h"
 
 // FUNCTION: GAMEMD 0x71AB10  (__thiscall)
 // Accumulate this temporal's warp-per-step plus that of every helper temporal
-// chained through PrevTemporal (capped at 50 helpers deep), and cache the local
+// chained through unknown_44 (capped at 50 helpers deep), and cache the local
 // value in WarpPerStep.
 int TemporalClass::GetWarpPerStep(int nHelperCount) const
 {
     int helper = 0;
-    if (PrevTemporal) {
+    if (unknown_44) {
         if (nHelperCount <= 50)
-            helper = PrevTemporal->GetWarpPerStep(nHelperCount + 1);
+            helper = unknown_44->GetWarpPerStep(nHelperCount + 1);
     }
 
-    int amount = Owner->GetWeapon(Owner->SelectWeapon(0))->WeaponType->WarpAmount;
-    WarpPerStep = amount;
+    int amount = Owner->vf_3F8(Owner->vf_2E4(0))->Type->unknown_A4;
+    unknown_4C = amount;
     return amount + helper;
 }
 
@@ -33,29 +33,29 @@ int TemporalClass::GetWarpPerStep(int nHelperCount) const
 void TemporalClass::JustLetGo()
 {
     if (Target) {
-        Target->TemporalImpact = 0;
-        Target->TemporalTargetingMe = 0;
+        Target->unknown_270 = 0;
+        Target->unknown_278 = 0;
         Target = 0;
     }
 
-    if (PrevTemporal) {
-        if (PrevTemporal->NextTemporal == this)
-            PrevTemporal->NextTemporal = 0;
-        PrevTemporal->Detach();
-        PrevTemporal = 0;
+    if (unknown_44) {
+        if (unknown_44->unknown_40 == this)
+            unknown_44->unknown_40 = 0;
+        unknown_44->Detach();
+        unknown_44 = 0;
     }
 
-    if (NextTemporal) {
-        if (NextTemporal->PrevTemporal == this)
-            NextTemporal->PrevTemporal = 0;
-        NextTemporal->Detach();
-        NextTemporal = 0;
+    if (unknown_40) {
+        if (unknown_40->unknown_44 == this)
+            unknown_40->unknown_44 = 0;
+        unknown_40->Detach();
+        unknown_40 = 0;
     }
 
-    PrevTemporal = 0;
-    NextTemporal = 0;
-    SourceSW = 0;
-    unknown_pointer_38 = 0;
+    unknown_44 = 0;
+    unknown_40 = 0;
+    unknown_3C = 0;
+    unknown_38 = 0;
 }
 
 // FUNCTION: GAMEMD 0x71ADE0  (__thiscall)
@@ -63,27 +63,27 @@ void TemporalClass::JustLetGo()
 // recursively detach both helper neighbours, then notify the owner.
 void TemporalClass::Detach()
 {
-    Target->TemporalImpact = 0;
-    Target->TemporalTargetingMe = 0;
+    Target->unknown_270 = 0;
+    Target->unknown_278 = 0;
     Target = 0;
 
-    if (PrevTemporal) {
-        if (PrevTemporal->NextTemporal == this)
-            PrevTemporal->NextTemporal = 0;
-        PrevTemporal->Detach();
+    if (unknown_44) {
+        if (unknown_44->unknown_40 == this)
+            unknown_44->unknown_40 = 0;
+        unknown_44->Detach();
     }
 
-    if (NextTemporal) {
-        if (NextTemporal->PrevTemporal == this)
-            NextTemporal->PrevTemporal = 0;
-        NextTemporal->Detach();
+    if (unknown_40) {
+        if (unknown_40->unknown_44 == this)
+            unknown_40->unknown_44 = 0;
+        unknown_40->Detach();
     }
 
-    PrevTemporal = 0;
-    NextTemporal = 0;
-    SourceSW = 0;
-    unknown_pointer_38 = 0;
+    unknown_44 = 0;
+    unknown_40 = 0;
+    unknown_3C = 0;
+    unknown_38 = 0;
 
     if (Owner)
-        Owner->NotifyOwnerOfDetach(0, 1);
+        Owner->vf_484(0, 1);
 }

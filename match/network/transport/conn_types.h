@@ -99,7 +99,7 @@ public:
     // FUNCTION: GAMEMD 0x48B2A0 (decl; reloc)
     void Init();
     // FUNCTION: GAMEMD 0x48B410 (decl; reloc)
-    int FUN_0048B410(void* a1, int a2, void* a3, int a4, int a5);
+    int FUN_0048B410(void* a1, int a2, void* a3, int a4, unsigned short a5);   // a5 stored as a word (0x48B410)
     // FUNCTION: GAMEMD 0x48B570 (decl; reloc)
     int FUN_0048B570(void* a1, void* a2, int a3, void* a4, void* a5, int a6);
     // FUNCTION: GAMEMD 0x48B720 (decl; reloc)
@@ -345,12 +345,14 @@ struct NetPlayerClass
 {
     unsigned short  Name[0x14];         // +0x00 name-input view; capacity modeled
     IPXAddressClass Address;            // +0x28
-    char            _pad34[0x6F - 0x34];
+    char            _pad34[0x6B - 0x34];
+    int             unknown_6B;         // +0x6B (unaligned; siege team 1/2, stamped by 0x5CA680)
     int             Id;                 // +0x6F (unaligned; indexes the player tables)
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Name) == 0x00);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Address) == 0x28);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_6B) == 0x6B);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Id) == 0x6F);
 
 // GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass, owned by
@@ -412,7 +414,7 @@ public:
                                 unsigned long* network, bool is_global,
                                 unsigned short unknown_6);         // slot 10 0x5403F0
     virtual int vf_11(void* buf, int buflen, IPXAddressClass* address,
-                               int needsAck, int unknown_5, int packet_id); // slot 11 0x53FBD0
+                               int needsAck, unsigned short unknown_5, int packet_id); // slot 11 0x53FBD0
     virtual int vf_12(ConnPacketHeader* packet, int buflen,
                                     IPXAddressClass* address,
                                     unsigned short port);          // slot 12 0x53FCB0

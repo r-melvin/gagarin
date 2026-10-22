@@ -127,6 +127,10 @@ extern int DAT_00b43184;
 extern unsigned char DAT_00b1d5e0[0x10000];
 extern unsigned char DAT_00b2ff78[0x10000];
 extern VoxelStepPair DAT_00b45590[];
+// GLOBAL: GAMEMD 0xB41178  DAT_00b41178 (shade x colour lookup, 256 per row)
+extern unsigned char DAT_00b41178[][256];
+// GLOBAL: GAMEMD 0xB45990  DAT_00b45990 (shade per normal index; filled by 0x7586F0)
+extern unsigned char DAT_00b45990[];
 
 // FUNCTION: GAMEMD 0x756590
 void VoxelModel::FUN_00756590(VoxelDrawEntry *entry, Vector3D *origin)
@@ -447,6 +451,268 @@ void __cdecl FUN_00757360(VoxelSpanParams *params)
 	}
 }
 
+// FUNCTION: GAMEMD 0x7575a0
+// PARTIAL (40.4%). Register/spill allocation differs (retail keeps the
+// colour and normal in byte stack slots). Tried: step-table operand order,
+// separate shade local, sequential *data++ reads (24.8-40.4%).
+void __cdecl FUN_007575a0(VoxelSpanParams *params)
+{
+	DAT_00b45590[0].X = 0;
+	DAT_00b45590[0].Y = 0;
+	for (unsigned int i = 1; i < params->Size[2]; i++) {
+		DAT_00b45590[i].X = DAT_00b45590[i - 1].X + params->StepZ[0];
+		DAT_00b45590[i].Y = DAT_00b45590[i - 1].Y + params->StepZ[1];
+	}
+
+	unsigned short px = params->Origin[0];
+	unsigned short py = params->Origin[1];
+	for (unsigned int row = 0; row < params->Size[1]; row++) {
+		unsigned short rowX = px;
+		unsigned short rowY = py;
+		int rowOffset = params->Offset;
+		for (unsigned int col = 0; col < params->Size[0]; col++) {
+			unsigned short colX = px;
+			unsigned short colY = py;
+			int span = params->A[params->Offset];
+			if (span != -1) {
+				unsigned char *data = params->C + span;
+				int remaining = params->Size[2];
+				while (remaining != 0) {
+					unsigned char skip = *data;
+					data++;
+					px += DAT_00b45590[skip].X;
+					py += DAT_00b45590[skip].Y;
+					remaining -= skip;
+					int count = *data++;
+					if (count != 0) {
+						remaining -= count;
+						int n = count;
+						do {
+							unsigned char colour = *data++;
+							unsigned char normal = *data++;
+							unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+							DAT_00b2ff78[(py & 0xFF00) | (px >> 8)] = lit;
+							DAT_00b2ff78[((py & 0xFF00) | (px >> 8)) + 1] = lit;
+							px += params->StepZ[0];
+							py += params->StepZ[1];
+						} while (--n);
+					}
+					data++;
+				}
+			}
+			px = params->StepX[0] + colX;
+			py = params->StepX[1] + colY;
+			params->Offset += params->StepA;
+		}
+		px = params->StepY[0] + rowX;
+		py = params->StepY[1] + rowY;
+		params->Offset = params->StepB + rowOffset;
+	}
+}
+
+// FUNCTION: GAMEMD 0x757790
+// PARTIAL (37.1%). Register/spill allocation differs. Tried: index local,
+// inline index, shade read before the colour (33.6-37.1%).
+void __cdecl FUN_00757790(VoxelSpanParams *params)
+{
+	DAT_00b45590[0].X = 0;
+	DAT_00b45590[0].Y = 0;
+	for (unsigned int i = 1; i < params->Size[2]; i++) {
+		DAT_00b45590[i].X = DAT_00b45590[i - 1].X + params->StepZ[0];
+		DAT_00b45590[i].Y = DAT_00b45590[i - 1].Y + params->StepZ[1];
+	}
+
+	unsigned short px = params->Origin[0];
+	unsigned short py = params->Origin[1];
+	for (unsigned int row = 0; row < params->Size[1]; row++) {
+		unsigned short rowX = px;
+		unsigned short rowY = py;
+		int rowOffset = params->Offset;
+		for (unsigned int col = 0; col < params->Size[0]; col++) {
+			unsigned short colX = px;
+			unsigned short colY = py;
+			int span = params->B[params->Offset];
+			if (span != -1) {
+				unsigned char *data = params->C + span;
+				int remaining = params->Size[2];
+				while (remaining != 0) {
+					int count = *data--;
+					if (count != 0) {
+						remaining -= count;
+						int n = count;
+						do {
+							unsigned char shade = DAT_00b45990[*data--];
+							data--;
+							unsigned char lit = DAT_00b41178[shade][data[1]];
+							DAT_00b2ff78[(py & 0xFF00) | (px >> 8)] = lit;
+							DAT_00b2ff78[((py & 0xFF00) | (px >> 8)) + 1] = lit;
+							px += params->StepZ[0];
+							py += params->StepZ[1];
+						} while (--n);
+					}
+					unsigned char skip = *--data;
+					data--;
+					px += DAT_00b45590[skip].X;
+					py += DAT_00b45590[skip].Y;
+					remaining -= skip;
+				}
+			}
+			px = params->StepX[0] + colX;
+			py = params->StepX[1] + colY;
+			params->Offset += params->StepA;
+		}
+		px = params->StepY[0] + rowX;
+		py = params->StepY[1] + rowY;
+		params->Offset = params->StepB + rowOffset;
+	}
+}
+
+// FUNCTION: GAMEMD 0x757980
+// PARTIAL (18.5%). Retail keeps the depth in DX for the whole span and
+// spills X/Y; cl spills the depth. Tried: lookup via data[] then data += 2,
+// colour/normal read inside the depth test with an else (10.5-18.5%).
+void __cdecl FUN_00757980(VoxelSpanParams *params)
+{
+	DAT_00b45590[0].X = 0;
+	DAT_00b45590[0].Y = 0;
+	for (unsigned int i = 1; i < params->Size[2]; i++) {
+		DAT_00b45590[i].X = DAT_00b45590[i - 1].X + params->StepZ[0];
+		DAT_00b45590[i].Y = DAT_00b45590[i - 1].Y + params->StepZ[1];
+	}
+
+	unsigned short px = params->Origin[0];
+	unsigned short py = params->Origin[1];
+	unsigned short pz = params->Origin[2];
+	for (unsigned int row = 0; row < params->Size[1]; row++) {
+		int rowOffset = params->Offset;
+		unsigned short rowX = px;
+		unsigned short rowY = py;
+		unsigned short rowZ = pz;
+		for (unsigned int col = 0; col < params->Size[0]; col++) {
+			unsigned short colX = px;
+			unsigned short colY = py;
+			unsigned short colZ = pz;
+			int span = params->A[params->Offset];
+			if (span != -1) {
+				unsigned char *data = params->C + span;
+				int remaining = params->Size[2];
+				while (remaining != 0) {
+					unsigned char value;
+					value = *data;
+					data++;
+					px += DAT_00b45590[value].X;
+					py += DAT_00b45590[value].Y;
+					pz += value * params->StepZ[2];
+					remaining -= value;
+					int count = *data++;
+					if (count != 0) {
+						remaining -= count;
+						int n = count;
+						do {
+							int index = (py & 0xFF00) | (px >> 8);
+							if ((unsigned short)(pz >> 8) > DAT_00b1d5e0[index]) {
+								unsigned char colour = *data++;
+								unsigned char normal = *data++;
+								DAT_00b1d5e0[index] = (unsigned char)(pz >> 8);
+								DAT_00b1d5e0[index + 1] = (unsigned char)(pz >> 8);
+								unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+								DAT_00b2ff78[index] = lit;
+								DAT_00b2ff78[index + 1] = lit;
+							} else {
+								data += 2;
+							}
+							px += params->StepZ[0];
+							py += params->StepZ[1];
+							pz += params->StepZ[2];
+						} while (--n);
+					}
+					data++;
+				}
+			}
+			px = params->StepX[0] + colX;
+			py = params->StepX[1] + colY;
+			pz = params->StepX[2] + colZ;
+			params->Offset += params->StepA;
+		}
+		px = params->StepY[0] + rowX;
+		py = params->StepY[1] + rowY;
+		pz = params->StepY[2] + rowZ;
+		params->Offset = params->StepB + rowOffset;
+	}
+}
+
+// FUNCTION: GAMEMD 0x757bf0
+// PARTIAL (14.4%). As 0x757980, walking backwards. Tried the same two
+// shapes (3.3-14.4%).
+void __cdecl FUN_00757bf0(VoxelSpanParams *params)
+{
+	DAT_00b45590[0].X = 0;
+	DAT_00b45590[0].Y = 0;
+	for (unsigned int i = 1; i < params->Size[2]; i++) {
+		DAT_00b45590[i].X = DAT_00b45590[i - 1].X + params->StepZ[0];
+		DAT_00b45590[i].Y = DAT_00b45590[i - 1].Y + params->StepZ[1];
+	}
+
+	unsigned short px = params->Origin[0];
+	unsigned short py = params->Origin[1];
+	unsigned short pz = params->Origin[2];
+	for (unsigned int row = 0; row < params->Size[1]; row++) {
+		int rowOffset = params->Offset;
+		unsigned short rowX = px;
+		unsigned short rowY = py;
+		unsigned short rowZ = pz;
+		for (unsigned int col = 0; col < params->Size[0]; col++) {
+			unsigned short colX = px;
+			unsigned short colY = py;
+			unsigned short colZ = pz;
+			int span = params->B[params->Offset];
+			if (span != -1) {
+				unsigned char *data = params->C + span;
+				int remaining = params->Size[2];
+				while (remaining != 0) {
+					unsigned char value;
+					int count = *data--;
+					if (count != 0) {
+						remaining -= count;
+						int n = count;
+						do {
+							int index = (py & 0xFF00) | (px >> 8);
+							if ((unsigned short)(pz >> 8) > DAT_00b1d5e0[index]) {
+								unsigned char normal = *data--;
+								unsigned char colour = *data--;
+								DAT_00b1d5e0[index] = (unsigned char)(pz >> 8);
+								DAT_00b1d5e0[index + 1] = (unsigned char)(pz >> 8);
+								unsigned char lit = DAT_00b41178[DAT_00b45990[normal]][colour];
+								DAT_00b2ff78[index] = lit;
+								DAT_00b2ff78[index + 1] = lit;
+							} else {
+								data -= 2;
+							}
+							px += params->StepZ[0];
+							py += params->StepZ[1];
+							pz += params->StepZ[2];
+						} while (--n);
+					}
+					value = *--data;
+					data--;
+					px += DAT_00b45590[value].X;
+					py += DAT_00b45590[value].Y;
+					pz += value * params->StepZ[2];
+					remaining -= value;
+				}
+			}
+			px = params->StepX[0] + colX;
+			py = params->StepX[1] + colY;
+			pz = params->StepX[2] + colZ;
+			params->Offset += params->StepA;
+		}
+		px = params->StepY[0] + rowX;
+		py = params->StepY[1] + rowY;
+		pz = params->StepY[2] + rowZ;
+		params->Offset = params->StepB + rowOffset;
+	}
+}
+
 // FUNCTION: GAMEMD 0x757e70
 void __cdecl FUN_00757e70(VoxelSpanParams *params)
 {
@@ -687,4 +953,49 @@ void __cdecl FUN_00758430(VoxelSpanParams *params)
 		pz = params->StepY[2] + rowZ;
 		params->Offset = params->StepB + rowOffset;
 	}
+}
+
+// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt(double).
+extern "C" double __cdecl FUN_004CAC40(double v);
+// GLOBAL: GAMEMD 0x8469E0  DAT_008469e0 (normal vector table per set)
+extern Vector3D *DAT_008469e0[];
+// GLOBAL: GAMEMD 0x8469F4  DAT_008469f4 (normal count per set)
+extern int DAT_008469f4[];
+
+// FUNCTION: GAMEMD 0x7586f0
+// PARTIAL (53.4%). Retail squares Z straight off the FST of the sum and
+// holds the set index in EBX; cl reloads Z and uses EDI. Tried: plain
+// Vector3D locals (13.6%), VoxelPoint constructors (53.4%), X-first sum order
+// (53.4%).
+// Fill the shade-per-normal table: for each normal of the set, a diffuse term
+// (dot with the first vector) plus a term from the normalised half vector of
+// the two inputs, scaled by 16. The last three entries are fixed at 16.
+void __fastcall FUN_007586f0(const Vector3D *a, const Vector3D *b, float k, int set)
+{
+	VoxelPoint d(a->X + b->X, b->Y + a->Y, b->Z + a->Z);
+	const Vector3D *t = DAT_008469e0[set];
+	double len = FUN_004CAC40(d.Z * d.Z + d.X * d.X + d.Y * d.Y);
+	VoxelPoint n;
+	if (len != 0.0)
+		n = VoxelPoint((float)(d.X / len), (float)(d.Y / len), (float)(d.Z / len));
+	else
+		n = d;
+	int count = DAT_008469f4[set];
+	for (int i = 0; i < count; i++, t++) {
+		float s1 = t->Z * a->Z + t->Y * a->Y + t->X * a->X;
+		float s2 = n.X * t->X + n.Y * t->Y + n.Z * t->Z;
+		float v = s2 / (k - s2 * k + s2);
+		if (v < 0.0f)
+			v = 0.0f;
+		if (s1 < 0.0f)
+			s1 = 0.0f;
+		float s = s1 + v;
+		if (s < 0.0)
+			DAT_00b45990[i] = 0;
+		else
+			DAT_00b45990[i] = (unsigned char)(s * 16.0f);
+	}
+	DAT_00b45990[255] = 0x10;
+	DAT_00b45990[254] = 0x10;
+	DAT_00b45990[253] = 0x10;
 }

@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //
-// Scalar deleting destructors of the World Domination Tour data classes and
-// of rc_ptr_base, their shared smart-pointer root. Each one runs the class's
+// Scalar deleting destructors of the World Domination Tour data classes
+// (rc_ptr_base's own is in rc_ptr_base.cpp). Each one runs the class's
 // destructor inline (the vtable store, then the member destructors in reverse
 // declaration order, then the base destructor out of line), frees the object
 // when bit 0 of the flag is set, and returns `this`.
@@ -37,62 +37,20 @@ public:
     void* Data;
 };
 
-// The pointee interface: rc_ptr_base releases through slot 2.
-class RcTarget
-{
-public:
-    virtual long QueryInterface(const void* iid, void** out) = 0;
-    virtual unsigned long AddRef() = 0;
-    virtual unsigned long Release() = 0;
-};
-
-// VTABLE: GAMEMD 0x7F094C
-class rc_ptr_base
-{
-public:
-    ~rc_ptr_base()
-    {
-        if (Pointer != 0) {
-            RcTarget* old = Pointer;
-            Pointer = 0;
-            old->Release();
-        }
-    }
-    virtual void* DeletingDtor(unsigned int flags);
-
-    RcTarget* Pointer;   // +0x04
-};
-
-GG_STATIC_ASSERT(offsetof(rc_ptr_base, Pointer) == 0x04);
-
-// The out-of-line rc_ptr_base destructor body at 0x65D460, as reached from a
-// derived rc_ptr<T>: a separate view, since the destructor above is the
-// inline one the deleting wrapper expands.
-class rc_ptr_base_ool
-{
-public:
-    ~rc_ptr_base_ool();
-    virtual void* DeletingDtor(unsigned int flags);
-    RcTarget* Pointer;
-};
-
-// rc_ptr<T>: an empty derived destructor reseating its own table, then the
-// base destructor out of line.
-template <class T>
-class rc_ptr : public rc_ptr_base_ool
-{
-public:
-    ~rc_ptr() {}
-};
+// rc_ptr<T> is the canonical one: its inline destructor reseats the table,
+// then calls the rc_ptr_base destructor 0x65D460 out of line.
+#include "wdt_rc_ptr.h"
 
 class WDTTerritory;
 class WDTState;
 
-// ReferenceCounted (RTTI vtable 0x7F0954): destructor out of line at 0x65D660.
-class ReferenceCounted
+// ReferenceCounted (RTTI vtable 0x7F0954) as these wrappers see it: the
+// destructor out of line at 0x65D660 and slot 0 holding the deleting wrapper.
+// A separate view of the class in wdt_rc_ptr.h, whose destructor is virtual.
+class ReferenceCounted_0065D660
 {
 public:
-    ~ReferenceCounted();
+    ~ReferenceCounted_0065D660();
     virtual void* DeletingDtor(unsigned int flags);
     long RefCount;   // +0x04
 };
@@ -100,7 +58,7 @@ public:
 namespace WorldDominationTour {
 
 // VTABLE: GAMEMD 0x7F6FC4
-class Conflict : public ReferenceCounted
+class Conflict : public ReferenceCounted_0065D660
 {
 public:
     ~Conflict() {}
@@ -109,7 +67,7 @@ public:
 };
 
 // VTABLE: GAMEMD 0x7F70DC
-class History : public ReferenceCounted
+class History : public ReferenceCounted_0065D660
 {
 public:
     ~History() {}
@@ -118,7 +76,7 @@ public:
 };
 
 // VTABLE: GAMEMD 0x7F7314
-class State : public ReferenceCounted
+class State : public ReferenceCounted_0065D660
 {
 public:
     ~State() {}
@@ -127,7 +85,7 @@ public:
 };
 
 // VTABLE: GAMEMD 0x7F7334
-class Territory : public ReferenceCounted
+class Territory : public ReferenceCounted_0065D660
 {
 public:
     ~Territory() {}
@@ -139,7 +97,7 @@ public:
 };
 
 // VTABLE: GAMEMD 0x7F7060
-class GameOption : public ReferenceCounted
+class GameOption : public ReferenceCounted_0065D660
 {
 public:
     ~GameOption() {}
@@ -159,7 +117,7 @@ public:
 }  // namespace WorldDominationTour
 
 // VTABLE: GAMEMD 0x7F74F4
-class PlayerProfile : public ReferenceCounted
+class PlayerProfile : public ReferenceCounted_0065D660
 {
 public:
     ~PlayerProfile() {}
@@ -179,16 +137,6 @@ GG_STATIC_ASSERT(offsetof(WorldDominationTour::FlagGameOption, Member_18) == 0x1
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_0C) == 0x0C);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(PlayerProfile, Member_40) == 0x40);
-
-// FUNCTION: GAMEMD 0x65D4D0
-void* rc_ptr_base::DeletingDtor(unsigned int flags)
-{
-    this->~rc_ptr_base();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x7667A0
 void* WorldDominationTour::Conflict::DeletingDtor(unsigned int flags)

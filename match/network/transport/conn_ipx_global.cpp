@@ -40,7 +40,7 @@ IPXGlobalConnClass::IPXGlobalConnClass(int sendSlots, int receiveSlots, int maxl
 // FUNCTION: GAMEMD 0x53FBD0
 int IPXGlobalConnClass::vf_11(void* buf, int buflen,
                                        IPXAddressClass* address, int needsAck,
-                                       int unknown_5, int packet_id)
+                                       unsigned short unknown_5, int packet_id)
 {
     IPXAddressClass local;
     GlobalHeader()->unknown_08 = 0;

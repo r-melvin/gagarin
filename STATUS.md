@@ -1,5 +1,36 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **7,528 matched function
+rows**, **484 partial rows**, **8,012 manifest rows**, **1,338 manifest
+translation units**, and **1,346 tracked C++ files**. Whole-repository regression
+verification, the project object build and 142 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+The multiplayer game-mode, IPX, teleport/temporal, AI-trigger, world-domination-tour,
+movie, Walk-locomotion and voxel units land together: 370 rows, 318 exact and 52
+documented partial. MultiplayerGameMode and MultiplayerTeam each have one
+definition, with the real constructors 0x5D5B60 (partial) and 0x5D8C50 (exact)
+emitting the vtables and deleting destructors. AITriggerTypeClass, TemporalClass
+and rc_ptr_base each have one definition. VectorClass storage is released with
+delete[], which makes 0x7680C0 exact.
+
+The 7,528 matches represent 38.1% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **546,914
+bytes**, or 14.4% of 3,797,269 listed function bytes. The padding heuristic
+misses 549 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: placeholder names for unattested identifiers
+
 As of **2026-10-22**, the verified snapshot reports **7,219 matched function
 rows**, **433 partial rows**, **7,652 manifest rows**, **1,310 manifest
 translation units**, and **1,318 tracked C++ files**. Whole-repository regression
@@ -18,14 +49,6 @@ bytes**, or 13.8% of 3,797,269 listed function bytes. The padding heuristic
 misses 538 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: ObjectClass slot block 0x5F4360-0x5F6DA0
 

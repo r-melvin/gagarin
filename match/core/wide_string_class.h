@@ -103,6 +103,9 @@ public:
     // ---- scored entry points, ascending by retail address ----------------
     Obj_007B66D0(const wchar_t* src);                       // 0x7B66D0
     Obj_007B66D0(const Obj_007B66D0& other);             // 0x7B6720
+    // FUNCTION: GAMEMD 0x7B6760 (decl; reloc) -- the out-of-line destructor
+    // (Release, then return); callers' temporaries end in CALL 0x7B6760.
+    ~Obj_007B66D0();
     bool FUN_007B6780(const wchar_t* text) const;              // 0x7B6780
     Obj_007B66D0& operator=(const wchar_t* src);            // 0x7B6880
     Obj_007B66D0& operator=(const Obj_007B66D0& other);  // 0x7B68E0
@@ -114,6 +117,9 @@ public:
     // one character (__thiscall, one stack word).
     bool FUN_007B6E20(wchar_t ch);
     void FUN_007B6EC0();                                       // 0x7B6EC0
+    // FUNCTION: GAMEMD 0x7B7140 (decl; reloc) -- the buffer, or the shared
+    // empty string when there is none (Peek's out-of-line form).
+    const wchar_t* FUN_007B7140() const;
     void Resize(int count);                                    // 0x7B7060
     wchar_t FUN_007B7110(unsigned int index) const;            // 0x7B7110
     wchar_t FUN_007B7180(unsigned int index) const;            // 0x7B7180

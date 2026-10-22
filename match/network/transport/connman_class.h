@@ -89,6 +89,9 @@ public:
 class IPXManagerClass : public ConnManClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5408F0 (declaration) -- constructor; RET 0x18.
+    IPXManagerClass(int a1, int a2, int a3, int a4, unsigned short a5,
+                    unsigned short a6);
     // FUNCTION: GAMEMD 0x5409F0 (decl; reloc) -- ordinary destructor.
     // SYNTHETIC: GAMEMD 0x5430E0 (decl; reloc) -- scalar deleting entry.
     virtual ~IPXManagerClass();                                            // slot 0
@@ -120,6 +123,62 @@ public:
     // FUNCTION: GAMEMD 0x540A80 (decl; reloc) -- direct caller 0x5DA6C0.
     // Named by its own trace string "**** IPXManagerClass::Init ***".
     int Init();
+    // FUNCTION: GAMEMD 0x540C50 (declaration)
+    int FUN_00540C50();
+    // FUNCTION: GAMEMD 0x540DC0 (declaration)
+    int FUN_00540DC0(int id, wchar_t* name, IPXAddressClass* address);
+    // FUNCTION: GAMEMD 0x540E70 (declaration)
+    int FUN_00540E70();
+    // FUNCTION: GAMEMD 0x540F00 (declaration)
+    int FUN_00540F00(int id);
+    // FUNCTION: GAMEMD 0x540FC0 (declaration)
+    wchar_t* FUN_00540FC0(int id);
+    // FUNCTION: GAMEMD 0x541000 (declaration)
+    IPXAddressClass* FUN_00541000(int id);
+    // FUNCTION: GAMEMD 0x5410C0 (declaration)
+    void FUN_005410C0(int index, int id, wchar_t* name);
+    // FUNCTION: GAMEMD 0x5410F0 (declaration)
+    int FUN_005410F0(void* buf, int buflen, int needsAck, IPXAddressClass* address,
+                     unsigned short port, int packet_id);
+    // FUNCTION: GAMEMD 0x541170 (declaration)
+    int FUN_00541170(void* buf, int buflen, int needsAck, int id);
+    // FUNCTION: GAMEMD 0x541260 (declaration)
+    int FUN_00541260(void* buf, int buflen, int needsAck, const wchar_t* name);
+    // FUNCTION: GAMEMD 0x541370 (declaration)
+    int FUN_00541370(void* buf, int* buflen, IPXAddressClass* address, unsigned short* port);
+    // FUNCTION: GAMEMD 0x5413B0 (declaration)
+    int FUN_005413B0(int index, void* buf, int* buflen, IPXAddressClass* address,
+                     unsigned short* port, unsigned long* packet_id);
+    // FUNCTION: GAMEMD 0x5413F0 (declaration)
+    void FUN_005413F0(int index);
+    // FUNCTION: GAMEMD 0x541410 (declaration)
+    int FUN_00541410(void* buf, int buflen, unsigned char needsAck);
+    // FUNCTION: GAMEMD 0x541480 (declaration)
+    int FUN_00541480(void* buf, int* buflen, IPXAddressClass* address, unsigned short* port);
+    // FUNCTION: GAMEMD 0x542280 (declaration)
+    void FUN_00542280(int id, IPXAddressClass* address);
+    // FUNCTION: GAMEMD 0x5422C0 (declaration)
+    int FUN_005422C0();
+    // FUNCTION: GAMEMD 0x542430 (declaration)
+    void FUN_00542430(unsigned short port);
+    // FUNCTION: GAMEMD 0x5424C0 (declaration)
+    unsigned long FUN_005424C0();
+    // FUNCTION: GAMEMD 0x5424E0 (declaration)
+    unsigned long FUN_005424E0();
+    // FUNCTION: GAMEMD 0x542500 (declaration)
+    unsigned long FUN_00542500();
+    // FUNCTION: GAMEMD 0x542F30 (declaration)
+    char* FUN_00542F30();
+    // FUNCTION: GAMEMD 0x543050 (declaration)
+    void FUN_00543050(IPXAddressClass* address);
+    // FUNCTION: GAMEMD 0x543080 (declaration)
+    void FUN_00543080();
+    // FUNCTION: GAMEMD 0x543090 (declaration)
+    void FUN_00543090();
+    // FUNCTION: GAMEMD 0x5430A0 (declaration)
+    void FUN_005430A0(IPXAddressClass* address, unsigned short port);
+    // FUNCTION: GAMEMD 0x5430C0 (declaration)
+    void FUN_005430C0(unsigned int age);
     // FUNCTION: GAMEMD 0x542FC0 (decl; reloc) -- direct caller 0x5DA6C0.
     void FUN_00542FC0(int* value);
 
@@ -152,9 +211,17 @@ public:
     int              SavedRetryDelta;         // +0x64
     int              SavedMaxRetries;         // +0x68
     int              SavedTimeout;            // +0x6C
-    char             unknown_70[0x8C - 0x70];
+    int              unknown_70;              // +0x70
+    int              unknown_74;              // +0x74 (Init passes it to 0x53F4F0)
+    int              unknown_78;              // +0x78
+    int              unknown_7C;              // +0x7C (Init passes it to 0x53F4F0)
+    int              unknown_80;              // +0x80 (Init passes it to 0x53F4F0)
+    char             unknown_84[0x8C - 0x84];
     IPXPacket*       unknown_8C;           // +0x8C
-    char             unknown_90[0xA0 - 0x90];
+    int              unknown_90;              // +0x90
+    int              unknown_94;              // +0x94 (Init passes it to 0x53F4F0)
+    int              unknown_98;              // +0x98 (Init passes it to 0x53F4F0)
+    int              unknown_9C;              // +0x9C
     int              unknown_A0;              // +0xA0
     int              unknown_A4;              // +0xA4
     int              FailedId;                // +0xA8
@@ -183,7 +250,12 @@ GG_STATIC_ASSERT(offsetof(IPXManagerClass, Timeout)         == 0x60);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedRetryDelta) == 0x64);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedMaxRetries) == 0x68);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedTimeout)    == 0x6C);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_74)      == 0x74);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_7C)      == 0x7C);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_80)      == 0x80);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_8C)   == 0x8C);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_94)      == 0x94);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_98)      == 0x98);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_A0)      == 0xA0);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_A4)      == 0xA4);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, FailedId)        == 0xA8);

@@ -67,7 +67,12 @@ GG_STATIC_ASSERT(sizeof(UnitTrackerClass) == 0x808);
 // (ctor LEA ECX sites 0x004F5AAB..0x004F5B2E).
 #ifndef GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
 #define GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
-struct CounterClass { unsigned char unknown_00[0x14]; };
+struct CounterClass
+{
+    unsigned char unknown_00[0x14];
+    // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
+    int FUN_0049FB60() const;
+};
 GG_STATIC_ASSERT(sizeof(CounterClass) == 0x14);
 #endif
 
@@ -95,6 +100,8 @@ GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);
 struct ZoneInfoStruct { unsigned char unknown_00[0xC]; };
 GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 #endif
+
+struct BuildingTypeClass;
 
 struct HouseClass : AbstractClass
 {
@@ -353,6 +360,20 @@ struct HouseClass : AbstractClass
     int    TotalOwnedVehicleCost;          // +0x160AC ctor @0x004F5DBA
     int    TotalOwnedAircraftCost;         // +0x160B0 ctor @0x004F5DC0
     int    PowerSurplus;                   // +0x160B4 ctor @0x004F5DC6; closes the object at 0x160B8
+
+    // Methods reached from other units (__thiscall; bodies not recovered here).
+    // FUNCTION: GAMEMD 0x50DEF0 (decl; reloc) -- a cell by value through a hidden pointer, RET 4.
+    Cell FUN_0050DEF0() const;
+    // FUNCTION: GAMEMD 0x50DF30 (decl; reloc) -- a coordinate by value through a hidden pointer, RET 4.
+    CoordStruct FUN_0050DF30() const;
+    // FUNCTION: GAMEMD 0x5051E0 (decl; reloc) -- the first buildable type of a rules type list, RET 4.
+    BuildingTypeClass* FUN_005051E0(const void* typeList);
+    // FUNCTION: GAMEMD 0x50E000 (decl; reloc) -- takes one cell by value, RET 4.
+    void FUN_0050E000(Cell cell);
+    // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
+    bool FUN_0050B730();
+    // FUNCTION: GAMEMD 0x4F9B70 (decl; reloc) -- RET 8.
+    void FUN_004F9B70(HouseClass* other, bool flag);
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, Vfptr_24)                   == 0x24);

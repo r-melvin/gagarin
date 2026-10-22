@@ -62,8 +62,7 @@ struct LayerClass
     // DynamicVectorClass::AddItem, expanded inline by VC6 at 0x551BE6. The
     // index is `index = Count; Count = index + 1;` so the increment becomes
     // retail's LEA, and the grown size is `CapacityIncrement + cap` with the
-    // capacity bound to a local (the shape proven in
-    // match/network/mp_game_mode_class_teams_methods.h).
+    // capacity bound to a local.
     bool AddItem(void* const& item)
     {
         int cap = Capacity;

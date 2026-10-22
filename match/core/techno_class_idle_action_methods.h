@@ -65,18 +65,8 @@ GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);
 #endif
 
-// TemporalClass — the Chrono-legionnaire erase state. Only its target link and
-// its detach entry point are reached from this TU.
-class TemporalClass
-{
-public:
-    // FUNCTION: GAMEMD 0x71ABC0 (decl; reloc) — TemporalClass::LetGo
-    void LetGo();
-
-    char  _pad_000[0x28];    // +0x00
-    void* Target;            // +0x28
-};
-GG_STATIC_ASSERT(offsetof(TemporalClass, Target) == 0x28);
+// TemporalClass: the canonical class (its Target at +0x28 and 0x71ABC0).
+#include "../_layout/temporal_class.h"
 
 class TechnoClass
 {

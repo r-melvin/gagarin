@@ -92,6 +92,9 @@ struct Matrix3D
         this->Row[2][1] = b * Cos - a * Sin;
     }
 
+    // FUNCTION: GAMEMD 0x5AE860 (decl; reloc) -- identity (body in
+    // movement/matrix3d_methods.cpp, same symbol).
+    void MakeIdentity();
     // FUNCTION: GAMEMD 0x5AEF60
     void RotateX(float angle);
     // FUNCTION: GAMEMD 0x5AF080

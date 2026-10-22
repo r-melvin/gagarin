@@ -32,7 +32,7 @@
 struct HouseClass;
 struct WarheadTypeClass;
 class ObjectClass;
-struct TemporalClass;
+class TemporalClass;
 struct TechnoTypeClass;
 struct CaptureManagerClass;
 
@@ -191,14 +191,9 @@ struct CaptureManagerClass
     bool FUN_00472330(TechnoClass* techno);   // GAMEMD 0x472330
 };
 
-// TemporalClass — only the method invoked when a techno is being chrono-warped
-// out is needed (`MOV ECX,[ESI+0x278]; CALL 0x71AD40`). 0x71AD40 is
-// JustLetGo, the release that does not notify the owner; Detach is the
-// separate function at 0x71ADE0, which JustLetGo calls on its neighbours.
-struct TemporalClass
-{
-    void JustLetGo();   // GAMEMD 0x71AD40
-};
+// TemporalClass: the canonical class; 0x71AD40 is its JustLetGo
+// (`MOV ECX,[ESI+0x278]; CALL 0x71AD40`).
+#include "../_layout/temporal_class.h"
 
 // ---------------------------------------------------------------------------
 // Globals.
