@@ -61,8 +61,8 @@ struct BeaconManager_004309D0
     int BeaconWidth;         // +0x0064
     int BeaconHeight;        // +0x0068
     int BeaconFrames;        // +0x006C
-    int RadarWidth;          // +0x0070
-    int RadarHeight;         // +0x0074
+    int unknown_70;          // +0x0070
+    int unknown_74;         // +0x0074
     int RadarFrames;         // +0x0078
     int RadarFramesX4;       // +0x007C
 

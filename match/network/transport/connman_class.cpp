@@ -305,7 +305,7 @@ int IPXManagerClass::Service()
                 break;
             }
             addr = *(IPXAddressClass*)from;
-            CurrentPacket = &packet;
+            unknown_8C = &packet;
 
             if (packet.Magic == GlobalChannel->unknown_24) {
                 if (FUN_00541680(&packet, &packet, size, &from, port)) {
@@ -330,11 +330,11 @@ int IPXManagerClass::Service()
                 if (size < 0x10 || packet.Code == 2 || size < 0x3f) {
                     continue;
                 }
-                if (CurrentPacket->Type != 0x27 && CurrentPacket->Type != 0x29 && CurrentPacket->Type != 0xd) {
+                if (unknown_8C->Type != 0x27 && unknown_8C->Type != 0x29 && unknown_8C->Type != 0xd) {
                     continue;
                 }
                 memset(name, 0, sizeof(name));
-                strncpy(name, CurrentPacket->Name, 0x14);
+                strncpy(name, unknown_8C->Name, 0x14);
                 for (i = 0; i < PlayerCount_00A8DA84; ++i) {
                     if (FUN_007C8D20(NarrowName_007350C0(Players_00A8DA78[i]->Name), name) == 0) {
                         goto found_player;
@@ -620,7 +620,7 @@ int IPXManagerClass::ResponseTimeOf(int index)
 }
 
 // FUNCTION: GAMEMD 0x542520
-void IPXManagerClass::UpdateStats()
+void IPXManagerClass::vf_23()
 {
     for (int i = 0; i < ConnectionCount; ++i) {
         void* player = PlayerTable_00A8022C[Connection[i]->ID];

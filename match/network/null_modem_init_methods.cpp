@@ -161,7 +161,7 @@ int NullModemInitView::Init(int port, int unused, char* modemName, int baud,
                 unknown_34 = new ModemEntry_005BB6E0(i);
                 if (unknown_34->GetModemName()) {
                     if (!strcmp(modemName, unknown_34->GetModemName())) {
-                        device = unknown_34->GetDeviceName();
+                        device = unknown_34->Inline_005F16E0();
                         break;
                     }
                 }

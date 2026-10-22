@@ -107,7 +107,7 @@ int NullModemClass::FUN_005F19E0(SerialSettings_005F19E0* settings)
                 unknown_34 = new ModemEntry_005BB6E0(i);
                 if (unknown_34->GetModemName()) {
                     if (!strcmp(device, unknown_34->GetModemName())) {
-                        device = unknown_34->GetDeviceName();
+                        device = unknown_34->Inline_005F16E0();
                         break;
                     }
                 }

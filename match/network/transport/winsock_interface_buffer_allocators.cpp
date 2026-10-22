@@ -39,7 +39,7 @@ WinsockInterfaceClass::WinsockBufferType* WinsockInterfaceClass::AllocOutBuffer(
         }
         if (buffer)
         {
-            buffer->IsAlternate = 0;
+            buffer->unknown_17 = 0;
             buffer->unknown_18 = 0;
         }
     }
@@ -69,7 +69,7 @@ WinsockInterfaceClass::WinsockBufferType* WinsockInterfaceClass::AllocOutBuffer(
         }
         if (buffer)
         {
-            buffer->IsAlternate = 1;
+            buffer->unknown_17 = 1;
             buffer->unknown_18 = 0;
         }
     }
@@ -105,7 +105,7 @@ WinsockInterfaceClass::WinsockBufferType* WinsockInterfaceClass::AllocInBuffer()
     }
     if (buffer)
     {
-        buffer->IsAlternate = 0;
+        buffer->unknown_17 = 0;
         buffer->unknown_18 = 0;
     }
     return buffer;

@@ -46208,9 +46208,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542520",
-  "sym": "?UpdateStats@IPXManagerClass@@UAEXXZ",
+  "sym": "?vf_23@IPXManagerClass@@UAEXXZ",
   "len": "0xF7",
-  "name": "IPXManagerClass::UpdateStats",
+  "name": "IPXManagerClass::vf_23",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"

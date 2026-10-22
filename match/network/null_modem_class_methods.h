@@ -87,7 +87,7 @@ struct ModemEntry_005BB6E0
     ~ModemEntry_005BB6E0() throw();
 
     char* GetModemName() const { return ModemName; }
-    char* GetDeviceName() const { return DeviceName; }
+    char* Inline_005F16E0() const { return DeviceName; }
 };
 GG_STATIC_ASSERT(offsetof(ModemEntry_005BB6E0, ModemName) == 0x0 &&
                  offsetof(ModemEntry_005BB6E0, DeviceName) == 0x4 &&

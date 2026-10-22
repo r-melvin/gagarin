@@ -114,7 +114,7 @@ public:
     virtual int  vf_20();                                         // slot 20
     virtual int  vf_21();                                      // slot 21
     virtual int  ResponseTimeOf(int index);                                // slot 22 (behavioural)
-    virtual void UpdateStats();                                            // slot 23 (behavioural)
+    virtual void vf_23();                                            // slot 23 (behavioural)
     virtual void Slot24(int a1, int a2);                                   // slot 24 (empty body 0x543040)
 
     // FUNCTION: GAMEMD 0x540A80 (decl; reloc) -- direct caller 0x5DA6C0.
@@ -153,7 +153,7 @@ public:
     int              SavedMaxRetries;         // +0x68
     int              SavedTimeout;            // +0x6C
     char             unknown_70[0x8C - 0x70];
-    IPXPacket*       CurrentPacket;           // +0x8C
+    IPXPacket*       unknown_8C;           // +0x8C
     char             unknown_90[0xA0 - 0x90];
     int              unknown_A0;              // +0xA0
     int              unknown_A4;              // +0xA4
@@ -183,7 +183,7 @@ GG_STATIC_ASSERT(offsetof(IPXManagerClass, Timeout)         == 0x60);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedRetryDelta) == 0x64);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedMaxRetries) == 0x68);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, SavedTimeout)    == 0x6C);
-GG_STATIC_ASSERT(offsetof(IPXManagerClass, CurrentPacket)   == 0x8C);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_8C)   == 0x8C);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_A0)      == 0xA0);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_A4)      == 0xA4);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, FailedId)        == 0xA8);

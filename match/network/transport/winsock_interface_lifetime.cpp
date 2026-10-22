@@ -19,11 +19,11 @@ WinsockInterfaceClass::WinsockInterfaceClass()
         StaticInBuffers[i].IsAllocated = 0;
         StaticOutBuffers[i].InUse = 0;
         StaticOutBuffers[i].IsAllocated = 0;
-        StaticOutBuffers[i].IsAlternate = 0;
+        StaticOutBuffers[i].unknown_17 = 0;
         StaticOutBuffers[i].unknown_18 = 0;
         StaticAltOutBuffers[i].InUse = 0;
         StaticAltOutBuffers[i].IsAllocated = 0;
-        StaticAltOutBuffers[i].IsAlternate = 1;
+        StaticAltOutBuffers[i].unknown_17 = 1;
         StaticAltOutBuffers[i].unknown_18 = 0;
     }
     StaticInBuffersInUse = 0;

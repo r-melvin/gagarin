@@ -95,7 +95,7 @@ public:
         unsigned char IsBroadcast;
         unsigned char InUse;
         unsigned char IsAllocated;
-        unsigned char IsAlternate;
+        unsigned char unknown_17;
         unsigned char unknown_18;
         unsigned char unknown_19;
         unsigned short unknown_1A;
@@ -205,7 +205,7 @@ GG_STATIC_ASSERT(offsetof(WinsockBufferType, Address) == 0x00);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, BufferLen) == 0x10);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, InUse) == 0x15);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, IsAllocated) == 0x16);
-GG_STATIC_ASSERT(offsetof(WinsockBufferType, IsAlternate) == 0x17);
+GG_STATIC_ASSERT(offsetof(WinsockBufferType, unknown_17) == 0x17);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, Crc) == 0x1C);
 GG_STATIC_ASSERT(offsetof(WinsockBufferType, Payload) == 0x20);
 GG_STATIC_ASSERT(sizeof(WinsockBufferType*) == 4);

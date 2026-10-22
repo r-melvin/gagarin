@@ -37,8 +37,8 @@ void BeaconManager_004309D0::LoadArt()
     if (DAT_0089C478 == 0)
         DAT_0089C478 = FUN_005B40B0("RDRBEACN.SHP", 0);
     if (DAT_0089C478 != 0) {
-        RadarWidth = DAT_0089C478->Width;
-        RadarHeight = DAT_0089C478->Height;
+        unknown_70 = DAT_0089C478->Width;
+        unknown_74 = DAT_0089C478->Height;
         int frames = DAT_0089C478->Frames;
         RadarFrames = frames;
         RadarFramesX4 = frames << 2;
