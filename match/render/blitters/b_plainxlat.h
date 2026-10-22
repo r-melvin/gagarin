@@ -37,7 +37,7 @@ public:
 
     const T* xlat; // +0x04
 
-    BlitPlainXlat(const T* table);
+    BlitPlainXlat(const T* table) : xlat(table) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitPlainXlat<unsigned char>) == 8);
@@ -66,7 +66,7 @@ public:
 
     const T* xlat; // +0x04
 
-    BlitPlainXlatZRead(const T* table);
+    BlitPlainXlatZRead(const T* table) : xlat(table) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitPlainXlatZRead<unsigned short>) == 8);
@@ -94,7 +94,7 @@ public:
 
     const T* xlat; // +0x04
 
-    BlitPlainXlatZReadWrite(const T* table);
+    BlitPlainXlatZReadWrite(const T* table) : xlat(table) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitPlainXlatZReadWrite<unsigned short>) == 8);

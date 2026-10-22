@@ -40,23 +40,23 @@ typedef unsigned short wchar_t;
 // compiles standalone under the period toolchain; the diff harness normalises
 // the relocation, so only the convention and the argument shape matter.
 extern "C" {
-// FUNCTION: GAMEMD 0x7CA405 (decl; reloc) — wcslen.
+// LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — wcslen.
 unsigned int __cdecl wcslen(const wchar_t* s);
 // FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — wcscpy.
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 // FUNCTION: GAMEMD 0x7CA422 (decl; reloc) — wcsncpy.
 wchar_t* __cdecl wcsncpy(wchar_t* dst, const wchar_t* src, unsigned int n);
-// FUNCTION: GAMEMD 0x7CA45F (decl; reloc) — wcscat.
+// LIBRARY: GAMEMD 0x7CA45F (decl; reloc) — wcscat.
 wchar_t* __cdecl wcscat(wchar_t* dst, const wchar_t* src);
 // FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) — wcscmp.
 int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
-// FUNCTION: GAMEMD 0x7CAFF4 (decl; reloc) — towlower.
-//   Declared int-in/int-out: retail zero-extends the character with
-//   `AND EAX,0xFFFF` before the push (0x7B771B), which is the widening a
-//   wide-character argument to an `int` parameter costs.
-int __cdecl towlower(int c);
-// FUNCTION: GAMEMD 0x7C97D3 (decl; reloc) — towupper.
-int __cdecl towupper(int c);
+// LIBRARY: GAMEMD 0x7CAFF4 (decl; reloc) — CRT tolower.
+//   The callee is the narrow CRT tolower (LIBCMT tolower.obj), not towlower:
+//   retail zero-extends the wide character with `AND EAX,0xFFFF` before the
+//   push (0x7B771B), the widening a wchar_t argument to an `int` costs.
+int __cdecl tolower(int c);
+// LIBRARY: GAMEMD 0x7C97D3 (decl; reloc) — CRT toupper (LIBCMT toupper.obj).
+int __cdecl toupper(int c);
 // The allocator pair is the global operator new / operator delete at
 // GAMEMD 0x7C8E17 and 0x7C8B3D (decl; reloc), reached through the ordinary
 // `::operator new` / `::operator delete` spellings below.

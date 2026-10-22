@@ -65,6 +65,7 @@ template <class T>
 class BlitTransXlatWriteAlpha : public Blitter
 {
 public:
+    BlitTransXlatWriteAlpha() {}
     virtual void BlitCopy(void*, const void*, int, int, unsigned short*, unsigned short*, int, int);
     virtual void BlitCopyTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, int, unsigned short);
     virtual void BlitMove(void*, const void*, int, int, unsigned short*, unsigned short*, int);
@@ -75,6 +76,7 @@ template <class T>
 class BlitTransXlatMultWriteAlpha : public Blitter
 {
 public:
+    BlitTransXlatMultWriteAlpha() {}
     virtual void BlitCopy(void*, const void*, int, int, unsigned short*, unsigned short*, int, int);
     virtual void BlitCopyTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, int, unsigned short);
     virtual void BlitMove(void*, const void*, int, int, unsigned short*, unsigned short*, int);

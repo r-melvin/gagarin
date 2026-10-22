@@ -35,7 +35,7 @@ extern const char riid_00817BC0[16];
 // GLOBAL: GAMEMD 0x818C08 — the interface the holder wants.
 extern const char riid_00818C08[16];
 
-// FUNCTION: GAMEMD 0x7DC720 — report a failed HRESULT. __stdcall: retail pushes
+// LIBRARY: GAMEMD 0x7DC720 — report a failed HRESULT. __stdcall: retail pushes
 // the value and there is no stack cleanup after the call, so the callee pops it.
 void __stdcall FUN_007DC720(long hr);
 

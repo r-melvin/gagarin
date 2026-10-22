@@ -21,6 +21,7 @@ template <class T>
 class BlitTrans : public Blitter
 {
 public:
+    BlitTrans() {}
     virtual void BlitCopy(void* dest, const void* src, int len, int zval,
                           unsigned short* zbuf, unsigned short* abuf,
                           int alvl, int warp);

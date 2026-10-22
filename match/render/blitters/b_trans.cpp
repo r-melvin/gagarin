@@ -87,6 +87,10 @@
 // BlitTransRemapXlat<unsigned char> scalar deleting destructor
 // TEMPLATE: GAMEMD 0x7BC610
 // BlitTrans<unsigned char>::BlitCopy
+// SYNTHETIC: GAMEMD 0x7BC680
+// BlitTrans<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x7BC6A0
+// BlitTrans<unsigned short> scalar deleting destructor
 // TEMPLATE: GAMEMD 0x7BC6C0
 // BlitTrans<unsigned char>::BlitMove
 // TEMPLATE: GAMEMD 0x7BC6F0

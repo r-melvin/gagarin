@@ -32,7 +32,7 @@
 extern "C" {
 // FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — CRT wcscpy.
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
-// FUNCTION: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
+// LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
 unsigned int __cdecl wcslen(const wchar_t* s);
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 void* __cdecl FUN_007C8E17(unsigned int size);

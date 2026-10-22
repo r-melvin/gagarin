@@ -38,7 +38,7 @@ int  __fastcall FUN_00409320(void* ring);
 // FUNCTION: GAMEMD 0x409030 (decl; reloc) — drain `count` bytes of the ring
 // into the stream.
 int  __fastcall FUN_00409030(void* ring, void* stream, unsigned count, void* unused);
-// FUNCTION: GAMEMD 0x7CB19C (decl; reloc) — CRT fflush.
+// LIBRARY: GAMEMD 0x7CB19C (decl; reloc) — CRT fflush.
 int  __cdecl   FUN_007CB19C(void* stream);
 
 // FUNCTION: GAMEMD 0x53E6B0 — YRpp: Unsorted::StreamerThreadFlush.

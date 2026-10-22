@@ -179,7 +179,7 @@ GG_STATIC_ASSERT(offsetof(FootVtbl_004CCC80, At_2C) == 0x2C &&
                  offsetof(FootVtbl_004CCC80, At_37C) == 0x37C &&
                  offsetof(FootVtbl_004CCC80, At_380) == 0x380);
 
-// FUNCTION: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
+// LIBRARY: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
 void __stdcall FUN_007DC720(long hr);
 
 // The one-pointer smart holder. Unlike the copies in

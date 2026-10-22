@@ -44,7 +44,7 @@ typedef long (__stdcall* LocoSlot0)(ILocomotion*);
 
 // __stdcall, one argument. 0x80004003 is E_POINTER — the report the
 // smart-pointer dereference emits for a null interface.
-// FUNCTION: GAMEMD 0x7DC720 (decl; reloc)
+// LIBRARY: GAMEMD 0x7DC720 (decl; reloc)
 void __stdcall FUN_007DC720(unsigned int hr);
 
 // VocClass::PlayAt — static, __fastcall: ECX = sound index, EDX = coordinate,

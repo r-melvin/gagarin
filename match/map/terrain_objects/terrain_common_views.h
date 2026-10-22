@@ -682,7 +682,7 @@ GG_STATIC_ASSERT(sizeof(MapObjAnimView) == 0x1C8);
 
 // ---- retail functions and globals bound by address -------------------------------------------------
 
-// FUNCTION: GAMEMD 0x7C9FF0 (LIBRARY) - CRT _makepath, __cdecl.
+// LIBRARY: GAMEMD 0x7C9FF0 - CRT _makepath, __cdecl.
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir, const char* fname,
                                   const char* ext);
 // FUNCTION: GAMEMD 0x5B40B0 (decl; reloc) - loads the shape file of that path and returns the loaded

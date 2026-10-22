@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "434a320de77a1520303e9cf040192f8372b76cb1c38680c70ad6b17a2a7396e3",
+  "manifest_sha256": "29b00a57e6bda6b3ecf017cdf66735da552f8d2d7ef7b7282aa4ff0ea08e0404",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 5321,
-  "matched_entries_missed": 315,
+  "matched_entries": 6045,
+  "matched_entries_missed": 516,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -4940,15 +4940,57 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x40C0E0",
+   "tu": "match/core/vector_commandclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<CommandClass const *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x40C4C0",
    "tu": "match/core/vector_lightconvertclass_methods.cpp",
    "name": "DynamicVectorClass<LightConvertClass*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x40CAB0",
+   "tu": "match/core/vector_isometrictileclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<IsometricTileClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x40CF00",
+   "tu": "match/core/vector_objectclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<ObjectClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x40D7D0",
+   "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<MixFileClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x40EA80",
+   "tu": "match/core/vector_scriptclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<ScriptClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x40F150",
+   "tu": "match/core/vector_voxelanimclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<VoxelAnimClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x40F870",
    "tu": "match/core/vector_warheadtypeclass_methods.cpp",
    "name": "DynamicVectorClass<WarheadTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x40FE40",
+   "tu": "match/core/vector_weapontypeclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<WeaponTypeClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5003,6 +5045,12 @@
    "addr": "0x42D830",
    "tu": "match/core/vector_add_item_methods.cpp",
    "name": "VectorAddTarget::FUN_0042D830",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x42D880",
+   "tu": "match/core/vector_uint_slot_methods.cpp",
+   "name": "DynamicVectorClass<unsigned int>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5108,6 +5156,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x45A990",
+   "tu": "match/core/vector_reestablish_slot_methods.cpp",
+   "name": "DynamicVectorClass<Reestablish *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x466080",
    "tu": "match/core/buffer_holder_dtor_methods.cpp",
    "name": "FUN_00466080",
@@ -5117,6 +5171,12 @@
    "addr": "0x46B890",
    "tu": "match/core/vector_bulletclass_methods.cpp",
    "name": "DynamicVectorClass<BulletClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x471520",
+   "tu": "match/ui/score_ddtors.cpp",
+   "name": "CampaignEndScoreClass::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5222,6 +5282,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x499CE0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitPlainXlat<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x499D00",
    "tu": "match/render/blitters/b_trans.cpp",
    "name": "BlitTransXlat<unsigned char> scalar deleting destructor",
@@ -5240,15 +5306,237 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x499D80",
+   "tu": "match/render/blitters/r_xlat_xlat_uchar.cpp",
+   "name": "RLEBlitTransXlat<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499DA0",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitter::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499DC0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlat<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499DE0",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapDest<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499E00",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapXlat<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499E20",
+   "tu": "match/render/blitters/r_xlat_zread_uchar.cpp",
+   "name": "RLEBlitTransXlatZRead<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499E40",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlatZRead<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499E60",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapDestZRead<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499E80",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapXlatZRead<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499EA0",
+   "tu": "match/render/blitters/r_xlat_zrw_uchar.cpp",
+   "name": "RLEBlitTransXlatZReadWrite<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499EC0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499EE0",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapDestZReadWrite<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499F00",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransRemapXlatZReadWrite<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499F20",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitPlainXlat<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499F60",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransDarken<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499FA0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransLucent50<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499FE0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitPlainXlatZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A000",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransXlatZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A040",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransDarkenZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A080",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransLucent50ZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A0E0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransLucent50ZReadWarp<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A120",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitPlainXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A140",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A180",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransDarkenZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A1C0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransLucent50ZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A200",
    "tu": "match/core/cached_resource_dtor_family_methods.cpp",
    "name": "FUN_0049A200",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A3A0",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitTransXlatMultWriteAlpha<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A3C0",
+   "tu": "match/render/blitters/b_translucent.cpp",
+   "name": "BlitTranslucentWriteAlpha<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A3E0",
+   "tu": "match/render/blitters/b_translucent.cpp",
+   "name": "BlitTranslucent50NonzeroAlpha<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A400",
+   "tu": "match/render/blitters/b_translucent.cpp",
+   "name": "BlitTranslucent50ZeroAlpha<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A420",
    "tu": "match/core/cached_resource_dtor_family_methods.cpp",
    "name": "FUN_0049A420",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A780",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlat<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A7A0",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransDarken<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A820",
+   "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
+   "name": "RLEBlitTransXlatZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A840",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlatZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A860",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransDarkenZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A940",
+   "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
+   "name": "RLEBlitTransXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A960",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "RLEBlitTransZRemapXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A980",
+   "tu": "match/render/blitters/r_darken_remap.cpp",
+   "name": "RLEBlitTransDarkenZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5453,6 +5741,12 @@
    "addr": "0x4E9690",
    "tu": "match/core/vector_buildingclass_methods.cpp",
    "name": "DynamicVectorClass<BuildingClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4E98F0",
+   "tu": "match/core/vector_superclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<SuperClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5750,6 +6044,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x50F710",
+   "tu": "match/core/vector_houseclass_buildchoiceclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<HouseClass::BuildChoiceClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x50F970",
    "tu": "match/core/vector_teamtype_methods.cpp",
    "name": "DynamicVectorClass<const TeamTypeClass*>::FindItemIndex",
@@ -5834,6 +6134,246 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x537FC0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "MultiplayerSyncCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x537FE0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "FollowCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538000",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "View1CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538020",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "View2CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538040",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "View3CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538060",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "View4CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538080",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetView1CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5380A0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetView2CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5380C0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetView3CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5380E0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetView4CommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538100",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "OptionsCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538120",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SidebarUpCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538140",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SidebarDownCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538160",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "CenterREventCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538180",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "BeaconPlacementCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5381A0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "ToggleSellCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5381C0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "ToggleRepairCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5381E0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "AllianceCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538200",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "CenterBaseCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538220",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "CenterViewCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538240",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "ScatterCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538260",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "GuardCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538280",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "StopCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5382A0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "AllToCheerCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5382C0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "DeployCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5382E0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "PrevObjectCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538300",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "NextObjectCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538320",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "PlanningModeCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538340",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "CombatantSelectCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538360",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "TypeSelectCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538380",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "HealthNavCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5383A0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "VeterancyNavCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5383C0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetStructureTabCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5383E0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetDefenseTabCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538400",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetUnitTabCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538420",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "SetInfantryTabCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538440",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "ScreenCaptureCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538460",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "PageUserCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x538480",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "CursorPositionCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5384A0",
+   "tu": "match/ui/command_ddtors.cpp",
+   "name": "DeleteCommandClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5384C0",
    "tu": "match/core/vector_cciniclass_methods.cpp",
    "name": "DynamicVectorClass<CCINIClass*>::Clear",
@@ -5876,6 +6416,18 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x54A480",
+   "tu": "match/core/vector_ushort_ptr_slot_methods.cpp",
+   "name": "DynamicVectorClass<unsigned short *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x54A6E0",
+   "tu": "match/core/vector_isometrictiletypeclass_tileinserttype_slot_methods.cpp",
+   "name": "DynamicVectorClass<IsometricTileTypeClass::TileInsertType *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x54E4D0",
    "tu": "match/combat/kamikaze_update_methods.cpp",
    "name": "Kamikaze::Update",
@@ -5897,6 +6449,12 @@
    "addr": "0x5554F0",
    "tu": "match/core/vector_lightsourceclass_methods.cpp",
    "name": "DynamicVectorClass<LightSourceClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x555750",
+   "tu": "match/core/vector_lightsourceclass_pendingcellclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<LightSourceClass::PendingCellClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5993,6 +6551,12 @@
    "addr": "0x5ACC90",
    "tu": "match/core/vector_win32_find_dataa_methods.cpp",
    "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5AD0C0",
+   "tu": "match/core/vector_cellclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<CellClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6134,6 +6698,42 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x5D7FF0",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<MultiplayerBattle>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8010",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<MultiplayerManBattle>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8030",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<MultiplayerSiege>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8050",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<UnholyAlliance>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8070",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<FreeForAll>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D8090",
+   "tu": "match/network/mp_initializer_ddtors.cpp",
+   "name": "MultiplayerGameMode::Initializer<MPCooperative>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x5D80B0",
    "tu": "match/core/vector_multiplayerteam_methods.cpp",
    "name": "DynamicVectorClass<MultiplayerTeam*>::Clear",
@@ -6143,6 +6743,12 @@
    "addr": "0x5D8520",
    "tu": "match/core/vector_multiplayerteam_methods.cpp",
    "name": "DynamicVectorClass<MultiplayerTeam*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x5D87E0",
+   "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+   "name": "DynamicVectorClass<MultiplayerGameMode *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6212,6 +6818,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x6244C0",
+   "tu": "match/core/empty_dtor_class_ddtors.cpp",
+   "name": "OwnerDraw::SimpleDialogControl::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x628040",
    "tu": "match/core/vector_colorscheme_methods.cpp",
    "name": "DynamicVectorClass<ColorScheme*>::FindItemIndex",
@@ -6257,6 +6869,12 @@
    "addr": "0x63DFD0",
    "tu": "match/core/vector_remove_item_family_methods.cpp",
    "name": "FUN_000063DFD0",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x63E2E0",
+   "tu": "match/core/vector_planningbranchclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<PlanningBranchClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6314,6 +6932,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x65C180",
+   "tu": "match/core/vector_radsiteclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<RadSiteClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x660F10",
    "tu": "match/core/vector_remove_index_family_methods.cpp",
    "name": "RemoveVector_00660F10::RemoveItem",
@@ -6329,6 +6953,12 @@
    "addr": "0x6647B0",
    "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
    "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct*>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x664A40",
+   "tu": "match/core/vector_ownertalkclass_connectionliststruct_slot_methods.cpp",
+   "name": "DynamicVectorClass<OwnerTalkClass::ConnectionListStruct *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6392,15 +7022,39 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x691000",
+   "tu": "match/ui/score_ddtors.cpp",
+   "name": "ScoreTimeClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x691020",
+   "tu": "match/ui/score_ddtors.cpp",
+   "name": "ScorePrintClass::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x691160",
    "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_00691160::AddItem",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x69CF70",
+   "tu": "match/core/vector_multimission_slot_methods.cpp",
+   "name": "DynamicVectorClass<MultiMission *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x69D1D0",
    "tu": "match/core/vector_globalpackettype_methods.cpp",
    "name": "DynamicVectorClass<GlobalPacketType*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x69D430",
+   "tu": "match/core/vector_phoneentryclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<PhoneEntryClass *>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6416,15 +7070,507 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x6B16A0",
+   "tu": "match/core/vector_slavemanagerclass_slavecontrol_slot_methods.cpp",
+   "name": "DynamicVectorClass<SlaveManagerClass::SlaveControl *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6B1900",
+   "tu": "match/core/vector_slavemanagerclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<SlaveManagerClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x6B47A0",
    "tu": "match/core/vector_dtor_family_methods.cpp",
    "name": "VectorClass<UndoInfoStruct>::`scalar deleting destructor'",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x6B84B0",
+   "tu": "match/core/vector_spawnmanagerclass_spawncontrol_slot_methods.cpp",
+   "name": "DynamicVectorClass<SpawnManagerClass::SpawnControl *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6B8710",
+   "tu": "match/core/vector_spawnmanagerclass_slot_methods.cpp",
+   "name": "DynamicVectorClass<SpawnManagerClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BEE50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<CStreamClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BEFD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<WaveClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF150",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TerrainTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF2D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TerrainClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF450",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SuperWeaponTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF5D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SuperClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF750",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<Tactical>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BF8D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<CellClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BFA50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<EMPulseClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BFBD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<LightSourceClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BFD50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SideClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6BFED0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TiberiumClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0050",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TubeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C01D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<CampaignClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0350",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BuildingLightClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C04D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<WaypointPathClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0650",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TemporalClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C07D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AirstrikeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0950",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SpawnManagerClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0AD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SlaveManagerClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0C50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<CaptureManagerClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0DD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<DiskLaserClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C0F50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ParasiteClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C10D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BombClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1250",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<RadSiteClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C13D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TEventClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1550",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<VoxelAnimTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C16D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<VoxelAnimClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1850",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TActionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C19D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TriggerClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1B50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TriggerTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1CD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ScriptClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1E50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ScriptTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C1FD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TagClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2150",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TagTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C22D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TeamClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2450",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TeamTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C25D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TaskForceClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2750",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<UnitTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C28D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BuildingTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2A50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AircraftTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2BD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<InfantryTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2D50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BulletTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C2ED0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<IsometricTileTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3050",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<OverlayTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C31D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<SmudgeTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3350",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<UnitClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C34D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BuildingClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3650",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AircraftClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C37D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<InfantryClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3950",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AnimClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3AD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AnimTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3C50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<HouseTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3DD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<HouseClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C3F50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<DriveLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C40D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<JumpjetLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4250",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<HoverLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C43D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<RocketLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4550",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TunnelLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C46D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<WalkLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4850",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<DropPodLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C49D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<FlyLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4B50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<TeleportLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4CD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<MechLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4E50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ShipLocomotionClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C4FD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<BulletClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5150",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<FactoryClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C52D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<WarheadTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5450",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<WeaponTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C55D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ParticleClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5750",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ParticleTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C58D0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ParticleSystemClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5A50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<ParticleSystemTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5BD0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AITriggerTypeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5D50",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<NeuronClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C5ED0",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<FoggedObjectClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C6050",
+   "tu": "match/core/class_factory.cpp",
+   "name": "TClassFactory<AlphaShapeClass>::QueryInterface",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x6C6400",
    "tu": "match/core/dynamic_vector_ptr_additem_methods.cpp",
    "name": "DynVecPtr_006C6400::AddItem",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6C6450",
+   "tu": "match/core/vector_ulong_slot_methods.cpp",
+   "name": "DynamicVectorClass<unsigned long>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6479,6 +7625,12 @@
    "addr": "0x6E6770",
    "tu": "match/core/vector_tagtypeclass_methods.cpp",
    "name": "DynamicVectorClass<TagTypeClass*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6EC540",
+   "tu": "match/core/persist_save_stub_methods.cpp",
+   "name": "TeamClass::Save",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6548,6 +7700,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x7213B0",
+   "tu": "match/core/vector_themecontrol_slot_methods.cpp",
+   "name": "DynamicVectorClass<ThemeControl *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x7239C0",
    "tu": "match/core/vector_tiberiumclass_methods.cpp",
    "name": "DynamicVectorClass<TiberiumClass*>::FindItemIndex",
@@ -6557,6 +7715,12 @@
    "addr": "0x724EC0",
    "tu": "match/ui/tooltip_vector_methods.cpp",
    "name": "DynamicVectorClass<const ToolTip*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7281E0",
+   "tu": "match/core/persist_save_stub_methods.cpp",
+   "name": "TubeClass::Save",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6674,15 +7838,39 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x767C10",
+   "tu": "match/network/world_domination_tour_ddtors.cpp",
+   "name": "WorldDominationTour::History::DeletingDtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x76A360",
    "tu": "match/core/vector_animationpalette_methods.cpp",
    "name": "DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x76F120",
+   "tu": "match/core/vector_cursor_ddtors.cpp",
+   "name": "VectorCursor<rc_ptr<WorldDominationTour::Territory>, DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x76F140",
+   "tu": "match/core/vector_cursor_ddtors.cpp",
+   "name": "VectorCursor<MSAnim *, DynamicVectorClass<MSAnim *>>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x771A00",
    "tu": "match/core/vector_vtable_plain_dtor_family_methods.cpp",
    "name": "FUN_00771A00",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7AC630",
+   "tu": "match/ui/wonline_mapselect_ddtors.cpp",
+   "name": "CreateGameDialogControl::DeletingDtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6749,6 +7937,24 @@
    "addr": "0x7BAEB0",
    "tu": "match/renderer/xsurface_class.cpp",
    "name": "XSurface::PutPixel",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7BC660",
+   "tu": "match/render/blitters/blitter_ddtors.cpp",
+   "name": "BlitPlain<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7BC680",
+   "tu": "match/render/blitters/b_trans.cpp",
+   "name": "BlitTrans<unsigned char>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x7BC6A0",
+   "tu": "match/render/blitters/b_trans.cpp",
+   "name": "BlitTrans<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {

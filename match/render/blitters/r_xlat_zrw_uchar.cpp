@@ -82,3 +82,5 @@ void RLEBlitTransXlatZReadWrite<T>::RLEBlitTint(void* dest, const void* src, int
 }
 
 template class RLEBlitTransXlatZReadWrite<unsigned char>;
+// SYNTHETIC: GAMEMD 0x499EA0
+// RLEBlitTransXlatZReadWrite<unsigned char> scalar deleting destructor

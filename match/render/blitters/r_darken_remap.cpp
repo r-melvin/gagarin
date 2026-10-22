@@ -585,3 +585,23 @@ template class RLEBlitTransRemapDestZReadWrite<unsigned char>;
 template class RLEBlitTransRemapXlat<unsigned char>;
 template class RLEBlitTransRemapXlatZRead<unsigned char>;
 template class RLEBlitTransRemapXlatZReadWrite<unsigned char>;
+// SYNTHETIC: GAMEMD 0x499DA0
+// RLEBlitter scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499DE0
+// RLEBlitTransRemapDest<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499E00
+// RLEBlitTransRemapXlat<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499E60
+// RLEBlitTransRemapDestZRead<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499E80
+// RLEBlitTransRemapXlatZRead<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499EE0
+// RLEBlitTransRemapDestZReadWrite<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x499F00
+// RLEBlitTransRemapXlatZReadWrite<unsigned char> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x49A7A0
+// RLEBlitTransDarken<unsigned short> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x49A860
+// RLEBlitTransDarkenZRead<unsigned short> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x49A980
+// RLEBlitTransDarkenZReadWrite<unsigned short> scalar deleting destructor

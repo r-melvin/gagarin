@@ -18,7 +18,7 @@ extern char DAT_0089E41C[];
 extern "C" void __cdecl FUN_007C93E8(void* block);
 // LIBRARY: GAMEMD 0x007C8B3D (caller cleanup)
 extern "C" void __cdecl FUN_007C8B3D(void* block);
-// FUNCTION: GAMEMD 0x007D5408 (decl; reloc; caller-cleanup duplicate helper)
+// LIBRARY: GAMEMD 0x007D5408 (decl; reloc; caller-cleanup duplicate helper)
 extern "C" char* __cdecl FUN_007D5408(char* text);
 // LIBRARY: GAMEMD 0x007C8E17 (caller cleanup; operator new)
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);

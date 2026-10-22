@@ -99,7 +99,7 @@ struct IFace_004CE680 { IFaceVtbl_004CE680* Vtbl; };
 // GLOBAL: GAMEMD 0x822410 — the interface id the client is queried for.
 extern const char riid_00822410[16];
 
-// FUNCTION: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
+// LIBRARY: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
 void __stdcall FUN_007DC720(long hr);
 // FUNCTION: GAMEMD 0x4CAE30 (decl; reloc) — two-argument arctangent, __cdecl.
 double __cdecl FUN_004CAE30(double y, double x);

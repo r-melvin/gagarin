@@ -14,7 +14,7 @@
 class RLEBlitter
 {
 public:
-    virtual ~RLEBlitter();
+    virtual ~RLEBlitter() {}
     virtual void RLEBlit(void* dest, const void* src, int len, int skip,
                          int zval, unsigned short* zbuf, unsigned short* abuf,
                          int alvl, int warp, const signed char* zshape) = 0;

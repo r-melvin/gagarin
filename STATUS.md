@@ -1,5 +1,42 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,045 matched function
+rows**, **319 partial rows**, **6,364 manifest rows**, **1,164 manifest
+translation units**, and **1,174 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+Vector, class-factory and generated-code quick wins land: VectorClass and
+DynamicVectorClass slot bodies for 36 element types, the TClassFactory<T>
+template with its 77 instantiations, and compiler-generated deleting
+destructors, persist Save stubs and refcount stubs. 724 functions are new exact
+matches; the 77 factory constructors move off the VtableObj stand-in onto the
+real constructor with identical bytes, and the 77 factory vtables verify 5/5.
+LZO1X, COMSUPP, a CRT strchr fragment and 59 import thunks are marked LIBRARY,
+CRT callee declarations become LIBRARY markers, and WideStringClass now calls
+the narrow CRT tolower/toupper. Every exact row passes raw bytes and strict
+relocation checks. Across all project objects, sections change only by the new
+TUs, the removed VtableObj constructors, the RLE blitter destructors (which now
+inline the empty base destructor, as retail does), the added BlitTrans
+constructors and the four WideStringClass case-conversion relocation names.
+
+The 6,045 matches represent 30.6% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **439,336
+bytes**, or 11.6% of 3,797,269 listed function bytes. The padding heuristic
+misses 516 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: stream, string and timer leaves
+
 As of **2026-10-22**, the verified snapshot reports **5,321 matched function
 rows**, **319 partial rows**, **5,640 manifest rows**, **1,116 manifest
 translation units**, and **1,126 tracked C++ files**. Whole-repository regression
@@ -18,21 +55,6 @@ WideStringClass. Every exact row passes raw bytes and strict relocation
 checks. Across all project objects, sections change only by the new TUs, the
 moved destructors and the 0x7B6EC0 body; three MapStageList sections keep
 their bytes and change only the names of their StringClass relocation targets.
-
-The 5,321 matches represent 26.9% of 19,753 listed functions. Counts are per
-function, not executable completion. Matched body lengths total **402,852
-bytes**, or 10.6% of 3,797,269 listed function bytes. The padding heuristic
-misses 315 matched entries. The last diagnostic link, taken before the second
-cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
-lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: house/building module
 

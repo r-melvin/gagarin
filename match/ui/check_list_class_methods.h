@@ -40,7 +40,7 @@ void  __cdecl operator delete(void*);
 // VTABLE: GAMEMD 0x007E4F84 — CheckListClass
 extern char VT_007E4F84[];
 
-// FUNCTION: GAMEMD 0x7DD0F8 (decl; reloc) — the wide-string compare the two
+// LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) — the wide-string compare the two
 // text lookups run; __cdecl, two pushed arguments, `ADD ESP,8` afterwards.
 extern "C" int __cdecl wcscmp(wchar_t const* a, wchar_t const* b);
 

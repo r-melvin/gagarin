@@ -25,7 +25,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "terrain_objects/smudge_type_class.h"
 
-// FUNCTION: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath, __cdecl.
+// LIBRARY: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath, __cdecl.
 extern "C" void __cdecl _makepath(char* path, const char* drive, const char* dir,
                                   const char* fname, const char* ext);
 

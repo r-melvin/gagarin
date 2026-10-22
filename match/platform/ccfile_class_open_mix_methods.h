@@ -39,7 +39,7 @@ bool __fastcall MixFileClass_Offset_00473D10(const char* name, void** data,
 struct CCFile_00473D10;
 
 
-// FUNCTION: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
+// LIBRARY: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
 extern "C" char* __cdecl gg_strdup(const char* s);
 // FUNCTION: GAMEMD 0x7C93E8 (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* p);

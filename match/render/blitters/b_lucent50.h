@@ -43,7 +43,7 @@ public:
     const T* xlat;                    // +0x04
     unsigned short mask;              // +0x08
 
-    BlitTransLucent50(const T* table, unsigned short m);
+    BlitTransLucent50(const T* table, unsigned short m) : xlat(table), mask(m) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitTransLucent50<unsigned short>) == 0xC);
@@ -73,7 +73,7 @@ public:
     const T* xlat;                    // +0x04
     unsigned short mask;              // +0x08
 
-    BlitTransLucent50ZRead(const T* table, unsigned short m);
+    BlitTransLucent50ZRead(const T* table, unsigned short m) : xlat(table), mask(m) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitTransLucent50ZRead<unsigned short>) == 0xC);
@@ -103,7 +103,7 @@ public:
     const T* xlat;                    // +0x04
     unsigned short mask;              // +0x08
 
-    BlitTransLucent50ZReadWarp(const T* table, unsigned short m);
+    BlitTransLucent50ZReadWarp(const T* table, unsigned short m) : xlat(table), mask(m) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitTransLucent50ZReadWarp<unsigned short>) == 0xC);
@@ -133,7 +133,7 @@ public:
     const T* xlat;                    // +0x04
     unsigned short mask;              // +0x08
 
-    BlitTransLucent50ZReadWrite(const T* table, unsigned short m);
+    BlitTransLucent50ZReadWrite(const T* table, unsigned short m) : xlat(table), mask(m) {}
 };
 
 GG_STATIC_ASSERT(sizeof(BlitTransLucent50ZReadWrite<unsigned short>) == 0xC);

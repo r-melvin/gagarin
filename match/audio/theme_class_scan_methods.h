@@ -32,11 +32,11 @@ int __cdecl FUN_00407000();
 // STRING: GAMEMD 0x844768 — ".WAV".
 extern const char STR_00844768[];
 
-// FUNCTION: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath.
+// LIBRARY: GAMEMD 0x7C9FF0 (decl; reloc) — CRT _makepath.
 extern "C" void __cdecl gg_makepath(char* path, const char* drive,
                                     const char* dir, const char* fname,
                                     const char* ext);
-// FUNCTION: GAMEMD 0x7C9380 (decl; reloc) — CRT __aulldiv. The 64-bit
+// LIBRARY: GAMEMD 0x7C9380 (decl; reloc) — CRT __aulldiv. The 64-bit
 // helpers pop their own arguments, so it is declared __stdcall.
 extern "C" unsigned __int64 __stdcall gg_aulldiv(unsigned __int64 a,
                                                  unsigned __int64 b);

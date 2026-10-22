@@ -22,6 +22,7 @@ template <class T>
 class BlitPlain : public Blitter
 {
 public:
+    BlitPlain() {}
     virtual void BlitCopy(void* dest, const void* src, int len, int zval,
                           unsigned short* zbuf, unsigned short* abuf,
                           int alvl, int warp);

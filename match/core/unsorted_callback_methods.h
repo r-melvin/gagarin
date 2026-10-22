@@ -128,7 +128,7 @@ extern Com_0048D080* DAT_00AC1170;
 void __cdecl FUN_00406F70();
 // FUNCTION: GAMEMD 0x48D1E0 (decl; reloc) — the in-game callback half.
 void __cdecl FUN_0048D1E0();
-// FUNCTION: GAMEMD 0x7CA67F (decl; reloc) — CRT time.
+// LIBRARY: GAMEMD 0x7CA67F (decl; reloc) — CRT time.
 extern "C" int __cdecl gg_time(int* out);
 
 // FUNCTION: GAMEMD 0x48D080 — Unsorted::CallBack.

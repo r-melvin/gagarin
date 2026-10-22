@@ -61,3 +61,5 @@ void RLEBlitTransXlat<T>::RLEBlitTint(void* dest, const void* src, int len, int 
 }
 
 template class RLEBlitTransXlat<unsigned short>;
+// SYNTHETIC: GAMEMD 0x49A760
+// RLEBlitTransXlat<unsigned short> scalar deleting destructor

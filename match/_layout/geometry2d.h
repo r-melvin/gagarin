@@ -16,6 +16,22 @@ GG_STATIC_ASSERT(offsetof(Point2D, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(Point2D, Y) == 0x04);
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
 
+// Member-wise equality and its negation, X then Y: the element compare that
+// VectorClass<Point2D>::operator== (0x5D07F0) and FindItemIndex (0x5D0950)
+// inline, two CMP/JNZ pairs on +0 then +4. Free and inline, so the struct
+// stays a plain aggregate and no code is emitted unless it is used.
+#ifndef GG_MATCH_LAYOUT_POINT2D_EQUALITY_DEFINED
+#define GG_MATCH_LAYOUT_POINT2D_EQUALITY_DEFINED
+inline bool operator==(const Point2D& a, const Point2D& b)
+{
+    return a.X == b.X && a.Y == b.Y;
+}
+inline bool operator!=(const Point2D& a, const Point2D& b)
+{
+    return !(a == b);
+}
+#endif
+
 // Coordinates plus dimensions, as distinct from left/top/right/bottom bounds.
 // RectangleStruct is the existing reconstruction's name; binary evidence
 // establishes the layout, not the original source type spelling.

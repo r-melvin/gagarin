@@ -53,7 +53,7 @@ public:
 // global movie array, -1 when it is not there yet.
 int __fastcall FUN_0048DF30(const char* name);
 
-// FUNCTION: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
+// LIBRARY: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
 char* __cdecl GameStrdup_00674550(const char* str);
 
 // DynamicVectorClass<MovieInfo> — the global movie list; each entry is the

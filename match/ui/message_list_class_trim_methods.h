@@ -15,7 +15,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
+// LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
 extern "C" unsigned int __cdecl wcslen(const wchar_t* s);
 // CRT memcpy — the /Oi intrinsic here (retail's inlined REP MOVSD/MOVSB).
 extern "C" void* __cdecl memcpy(void* destination, const void* source, unsigned int count);

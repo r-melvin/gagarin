@@ -181,3 +181,9 @@ void BlitTranslucent50ZeroAlpha<T>::BlitMoveTint(void* dest, const void* src, in
 template class BlitTranslucent50NonzeroAlpha<unsigned short>;
 template class BlitTranslucent50ZeroAlpha<unsigned short>;
 template class BlitTranslucentWriteAlpha<unsigned short>;
+// SYNTHETIC: GAMEMD 0x49A3C0
+// BlitTranslucentWriteAlpha<unsigned short> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x49A3E0
+// BlitTranslucent50NonzeroAlpha<unsigned short> scalar deleting destructor
+// SYNTHETIC: GAMEMD 0x49A400
+// BlitTranslucent50ZeroAlpha<unsigned short> scalar deleting destructor

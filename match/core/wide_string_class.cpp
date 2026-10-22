@@ -186,7 +186,7 @@ void WideStringClass::MakeLower()
     for (unsigned int i = 0; i < Length(); ++i) {
         wchar_t ch = Buffer[i];
         if (ch >= L'A' && ch <= L'Z') {
-            Buffer[i] = (wchar_t)towlower(ch);
+            Buffer[i] = (wchar_t)tolower(ch);
         }
     }
 }
@@ -211,7 +211,7 @@ WideStringClass* WideStringClass::AsLower(WideStringClass* out) const
     for (; i < (work != 0 ? wcslen(work) : 0); ++i, ++cursor) {
         wchar_t ch = *cursor;
         if (ch >= L'A' && ch <= L'Z') {
-            *cursor = (wchar_t)towlower(ch);
+            *cursor = (wchar_t)tolower(ch);
         }
     }
 
@@ -233,7 +233,7 @@ void WideStringClass::MakeUpper()
     for (unsigned int i = 0; i < Length(); ++i) {
         wchar_t ch = Buffer[i];
         if (ch >= L'a' && ch <= L'z') {
-            Buffer[i] = (wchar_t)towupper(ch);
+            Buffer[i] = (wchar_t)toupper(ch);
         }
     }
 }
@@ -254,7 +254,7 @@ WideStringClass* WideStringClass::AsUpper(WideStringClass* out) const
     for (; i < (work != 0 ? wcslen(work) : 0); ++i, ++cursor) {
         wchar_t ch = *cursor;
         if (ch >= L'a' && ch <= L'z') {
-            *cursor = (wchar_t)towupper(ch);
+            *cursor = (wchar_t)toupper(ch);
         }
     }
 

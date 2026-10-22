@@ -52,7 +52,7 @@ extern const char riid_00822410[16];
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"
 
-// FUNCTION: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
+// LIBRARY: GAMEMD 0x7DC720 (decl; reloc) — report a failed HRESULT.
 void __stdcall FUN_007DC720(long hr);
 // FUNCTION: GAMEMD 0x4CACB0 (decl; reloc) — table sine of a double.
 extern "C" float __cdecl FUN_004CACB0(double angle);

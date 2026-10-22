@@ -13,7 +13,7 @@
 //   FUNCTION: GAMEMD 0x65CF00   RawFileClass::Seek          (callee; reloc)
 //   FUNCTION: GAMEMD 0x65D0D0   RawFileClass::GetFileSize   (callee; reloc)
 //   FUNCTION: GAMEMD 0x7C93E8   GameFree                    (callee; reloc)
-//   FUNCTION: GAMEMD 0x7D5408   GameStrdup                  (callee; reloc)
+//   LIBRARY: GAMEMD 0x7D5408   GameStrdup                  (callee; reloc)
 
 #include "ccfile_class_name_methods.h"
 

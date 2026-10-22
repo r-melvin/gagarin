@@ -14,7 +14,7 @@
 //   FUNCTION: GAMEMD 0x5B40B0  image loader          (referenced; reloc)
 //   FUNCTION: GAMEMD 0x5F96B0  theater-letter stamp  (referenced; reloc)
 //   FUNCTION: GAMEMD 0x5F9710  theater-letter reset  (referenced; reloc)
-//   FUNCTION: GAMEMD 0x7C9FF0  CRT _makepath         (referenced; reloc)
+//   LIBRARY: GAMEMD 0x7C9FF0  CRT _makepath         (referenced; reloc)
 //   LIBRARY:  GAMEMD 0x7C8B3D  game-heap free        (referenced; reloc)
 //   GLOBAL:   GAMEMD 0xAC1608  default CellStruct for CreateObject
 //   GLOBAL:   GAMEMD 0x7E1B78  the theater table

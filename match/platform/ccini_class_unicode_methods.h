@@ -17,9 +17,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
+// LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — CRT wcslen.
 extern "C" unsigned int __cdecl wcslen(const wchar_t* s);
-// FUNCTION: GAMEMD 0x7D468C (decl; reloc) — CRT _itoa.
+// LIBRARY: GAMEMD 0x7D468C (decl; reloc) — CRT _itoa.
 extern "C" char* __cdecl _itoa(int value, char* buffer, int radix);
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);

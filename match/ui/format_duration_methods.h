@@ -19,7 +19,7 @@ extern const char DAT_0081B304[];
 // with two further arguments on the stack, which it pops itself.
 gg_wchar* __fastcall FUN_00734E60(const char* label, int flags,
                                  const char* file, int line);
-// FUNCTION: GAMEMD 0x7CA564 — swprintf.
+// LIBRARY: GAMEMD 0x7CA564 — swprintf.
 extern "C" int __cdecl FUN_007CA564(gg_wchar* buffer, const gg_wchar* format, ...);
 
 // FUNCTION: GAMEMD 0x46D360

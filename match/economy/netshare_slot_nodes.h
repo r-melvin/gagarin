@@ -57,7 +57,7 @@
 extern "C" {
 // FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) — CRT wcscmp.
 int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
-// FUNCTION: GAMEMD 0x7DD0F8 (decl; reloc) — CRT _wcsicmp.
+// LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) — CRT _wcsicmp.
 int __cdecl _wcsicmp(const wchar_t* a, const wchar_t* b);
 // FUNCTION: GAMEMD 0x7C8D20 (decl; reloc) — CRT _stricmp.
 int __cdecl _stricmp(const char* a, const char* b);
