@@ -6,11 +6,11 @@ translation units**, and **1,360 tracked C++ files**. Whole-repository regressio
 verification, the project object build and 153 tooling tests pass, and the
 compile/layout check passes on the tracked tree.
 
-Fields that the mixer and stream threads read or write are declared volatile,
-with the thread procedure, creating call site and reader/writer addresses
-cited at each declaration; AGENTS.md now allows volatile only there. The
-sorted-pair search loop, the Surface slot types, the inline TimeLeft read and
-the 0x7B6780 wide-string compare add 24 exact rows and improve 5 partials.
+Sixteen RTTI classes with no declaration anywhere in the tree get canonical
+headers in match/_layout, with bases in RTTI order, retail vtable slots and
+allocation-backed sizes, plus three interface stubs for bases without a
+vtable. No translation unit includes them yet. Classes that already have a
+definition in the tree get no second header.
 
 The 7,777 matches represent 39.4% of 19,753 listed functions. Counts are per
 function, not executable completion. Matched body lengths total **561,742
@@ -26,6 +26,27 @@ The integration records below are historical batch snapshots. Their
 batch-specific counts describe earlier states and are
 superseded by the current totals above. They are retained as evidence of the
 sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: thread-shared volatile declarations and sorted-pair loop
+
+As of **2026-10-22**, the verified snapshot reports **7,777 matched function
+rows**, **492 partial rows**, **8,269 manifest rows**, **1,352 manifest
+translation units**, and **1,360 tracked C++ files**. Whole-repository regression
+verification, the project object build and 153 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+Fields that the mixer and stream threads read or write are declared volatile,
+with the thread procedure, creating call site and reader/writer addresses
+cited at each declaration; AGENTS.md now allows volatile only there. The
+sorted-pair search loop, the Surface slot types, the inline TimeLeft read and
+the 0x7B6780 wide-string compare add 24 exact rows and improve 5 partials.
+
+The 7,777 matches represent 39.4% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **561,742
+bytes**, or 14.8% of 3,797,269 listed function bytes. The padding heuristic
+misses 554 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
 
 ## Historical snapshot: verify_all private object directory
 
