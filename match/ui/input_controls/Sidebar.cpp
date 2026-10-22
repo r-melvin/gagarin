@@ -1041,6 +1041,63 @@ int __fastcall FUN_006A8090(int index)
     return RowStep_00B0B500 * index + 1;
 }
 
+// FUNCTION: GAMEMD 0x6A80A0
+StripClass* StripClass::FUN_006A80A0(void* unknown_00)
+{
+    this->unknown_00 = 0;
+    this->unknown_04 = false;
+    int currentFrame = CurrentFrame_00A8ED84;
+    this->unknown_14 = 0;
+    this->Timer.StartFrame = currentFrame;
+    this->Timer.TimeLeft = 0;
+    this->unknown_18 = 1;
+    this->At_20 = 0;
+    this->At_24 = 0;
+    this->Rect.X = BackdropRect_00B07DC8.X;
+    this->Rect.Y = BackdropRect_00B07DC8.Y;
+    this->Rect.Width = BackdropRect_00B07DC8.Width;
+    this->Rect.Height = BackdropRect_00B07DC8.Height;
+    this->RowBase = 0;
+    this->At_3C = 1;
+    this->unknown_3D = 0;
+    this->unknown_3E = 0;
+    this->unknown_3F = 0;
+    this->unknown_40 = -1;
+    this->TopRowIndex = 0;
+    this->At_48 = 0;
+    this->unknown_4C = 0;
+    this->unknown_50 = 0;
+    this->CameoCount = 0;
+
+    SidebarCameo* cameo = Cameos;
+    int count = 0x4B;
+    do {
+        cameo->unknown_14 = 0;
+        cameo->unknown_18.Bytes.Low = 0;
+        cameo->unknown_1C = 0;
+        cameo->unknown_24 = CurrentFrame_00A8ED84;
+        cameo->unknown_28 = 0;
+        cameo->unknown_2C = 1;
+        ++cameo;
+        --count;
+    } while (count != 0);
+
+    cameo = Cameos;
+    count = 0x4B;
+    do {
+        cameo->unknown_00 = 0;
+        cameo->unknown_04[0] = 0;
+        cameo->unknown_04[1] = 0;
+        cameo->unknown_04[2] = 0;
+        cameo->unknown_04[3] = 0;
+        cameo->unknown_08 = 0;
+        cameo->Pointer = 0;
+        ++cameo;
+        --count;
+    } while (count != 0);
+    return this;
+}
+
 // FUNCTION: GAMEMD 0x6A8160
 // Calls other functions.
 int __stdcall FUN_006A8160(int a1)
@@ -1595,4 +1652,16 @@ void* Obj_6AC7A0::FUN_6AC7A0(unsigned int flags)
     }
 
     return this;
+}
+
+// FUNCTION: GAMEMD 0x6AC870
+SidebarCameo* __fastcall FUN_006AC870(SidebarCameo* cameo)
+{
+    cameo->unknown_00 = 0;
+    cameo->unknown_04[0] = 0;
+    cameo->unknown_08 = CurrentFrame_00A8ED84;
+    cameo->unknown_10 = 0;
+    cameo->unknown_14 = 0;
+    cameo->unknown_18.Word = 1;
+    return cameo;
 }

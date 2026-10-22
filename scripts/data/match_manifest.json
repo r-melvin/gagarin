@@ -92733,5 +92733,24 @@
   "name": "FUN_006AC430",
   "status": "partial",
   "pct": 42.9
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6A80A0",
+  "sym": "?FUN_006A80A0@StripClass@@QAEPAU1@PAX@Z",
+  "len": "0xb8",
+  "name": "StripClass::FUN_006A80A0",
+  "status": "partial",
+  "pct": 3.1,
+  "note": "Pointer-return receiver ABI is a conservative model of observed EAX=this at RET 4, not proof of original source return type or constructor identity. Caller 0x6A4E60 passes a local-byte pointer. Retail stores -1 at +0x40 and clears +0x44; the corrected layout is recorded. Three materially distinct formulations remain capped: current compile has 65 instructions and 2/60 exact."
+ },
+ {
+  "tu": "match/ui/input_controls/Sidebar.cpp",
+  "addr": "0x6AC870",
+  "sym": "?FUN_006AC870@@YIPAUSidebarCameo@@PAU1@@Z",
+  "len": "0x20",
+  "name": "FUN_006AC870",
+  "status": "matched",
+  "pct": 100
  }
 ]

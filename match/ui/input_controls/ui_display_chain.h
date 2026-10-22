@@ -539,17 +539,51 @@ GG_STATIC_ASSERT(sizeof(PowerClass) == 0x1544);
 
 // ---- SidebarClass ------------------------------------------------------------------------------------------------
 
+struct SidebarCameoUnknown18Bytes
+{
+    unsigned char Low;
+    char unknown_19[3];
+};
+union SidebarCameoUnknown18
+{
+    int Word;
+    SidebarCameoUnknown18Bytes Bytes;
+};
+GG_STATIC_ASSERT(sizeof(SidebarCameoUnknown18) == 4);
+
 // One of the 75 per-strip cameo entries (0x34 bytes). Its destructor is the empty function 0x40D260 (a lone RET);
 // retail passes its address to the vector-destructor helper (0x40AFD0).
 struct SidebarCameo
 {
-    char  unknown_00[0xC];
+    int   unknown_00;                     // +0x00 (cleared by StripClass initializer)
+    unsigned char unknown_04[4];           // +0x04 (initializer writes the first byte; strip reset clears the dword)
+    int   unknown_08;                     // +0x08
     void* Pointer;                        // +0x0C (registered with the swizzle manager after a load)
-    char  unknown_10[0x34 - 0x10];
+    int   unknown_10;                     // +0x10
+    int   unknown_14;                     // +0x14
+    SidebarCameoUnknown18 unknown_18;     // +0x18 (word store by 0x6AC870; low-byte store by 0x6A80A0)
+    int   unknown_1C;                     // +0x1C
+    int   unknown_20;                     // +0x20
+    int   unknown_24;                     // +0x24
+    int   unknown_28;                     // +0x28
+    int   unknown_2C;                     // +0x2C
+    int   unknown_30;                     // +0x30
     // FUNCTION: GAMEMD 0x40D260 -- empty destructor.
     ~SidebarCameo() {}
 };
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, Pointer) == 0x0C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(SidebarCameoUnknown18Bytes, Low) == 0x00);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_2C) == 0x2C);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_30) == 0x30);
 GG_STATIC_ASSERT(sizeof(SidebarCameo) == 0x34);
 
 // The timer at strip +0x08 (start frame at +0, the countdown at +8; 0x6A4E60 stores the current frame and zero).
@@ -563,6 +597,8 @@ struct StripTimer
     int TimeLeft;                         // +0x08
 };
 GG_STATIC_ASSERT(sizeof(StripTimer) == 0x0C);
+GG_STATIC_ASSERT(offsetof(StripTimer, StartFrame) == 0x00);
+GG_STATIC_ASSERT(offsetof(StripTimer, TimeLeft) == 0x08);
 
 // StripClass: one build column. sizeof 0xF94 (stride of the strip array); origin +0x1544, see the file header.
 struct StripClass
@@ -580,13 +616,19 @@ struct StripClass
     RectangleStruct Rect;                 // +0x0028
     int  RowBase;                         // +0x0038
     unsigned char At_3C;                  // +0x003C (written by 0x6A5ED0 / 0x6A60E0)
-    char unknown_3D[0x44 - 0x3D];         // +0x003D
+    unsigned char unknown_3D;             // +0x003D
+    unsigned char unknown_3E;             // +0x003E
+    unsigned char unknown_3F;             // +0x003F
+    int  unknown_40;                      // +0x0040
     int  TopRowIndex;                     // +0x0044
     int  At_48;                           // +0x0048
-    char unknown_4C[0x54 - 0x4C];         // +0x004C
+    int  unknown_4C;                      // +0x004C
+    int  unknown_50;                      // +0x0050
     int  CameoCount;                      // +0x0054
     SidebarCameo Cameos[75];              // +0x0058
 
+    // FUNCTION: GAMEMD 0x6A80A0 (decl; reloc) -- strip initializer; returns this, RET 4.
+    StripClass* FUN_006A80A0(void* unknown_00);
     // FUNCTION: GAMEMD 0x6A81B0 (decl; reloc) -- strip reset.
     void FUN_006A81B0();
     // FUNCTION: GAMEMD 0x6A8220 (decl; reloc) -- strip init(index); RET 4.
@@ -601,6 +643,9 @@ struct StripClass
     bool FUN_006ABAC0();
 };
 GG_STATIC_ASSERT(offsetof(StripClass, Timer) == 0x08);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(StripClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(StripClass, At_1C) == 0x1C);
 GG_STATIC_ASSERT(offsetof(StripClass, At_20) == 0x20);
@@ -608,8 +653,14 @@ GG_STATIC_ASSERT(offsetof(StripClass, At_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(StripClass, Rect) == 0x28);
 GG_STATIC_ASSERT(offsetof(StripClass, RowBase) == 0x38);
 GG_STATIC_ASSERT(offsetof(StripClass, At_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_3D) == 0x3D);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_3E) == 0x3E);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_3F) == 0x3F);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_40) == 0x40);
 GG_STATIC_ASSERT(offsetof(StripClass, TopRowIndex) == 0x44);
 GG_STATIC_ASSERT(offsetof(StripClass, At_48) == 0x48);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(StripClass, CameoCount) == 0x54);
 GG_STATIC_ASSERT(offsetof(StripClass, Cameos) == 0x58);
 GG_STATIC_ASSERT(sizeof(StripClass) == 0xF94);

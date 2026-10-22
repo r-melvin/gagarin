@@ -977,6 +977,7 @@
  "?AttemptPath@AStar_00746000@@QAEHPBUCell_00746000@@0PAUUnit_00746000@@_N2H@Z": "0x0042D170",
  "?AudioIDXData_Instance@@3PAUAudioIDXData@@A": "0x0087E294",
  "?AudioTimeHook@@3P6A_JXZA": "0x0087E848",
+ "?BackdropRect_00B07DC8@@3USidebarClipRect@@A": "0x00B07DC8",
  "?BaseAdd@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "0x005566A0",
  "?BaseAddHead@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "0x005566D0",
  "?BaseAddTail@ListClass@@QAEPAVLinkClass@@AAV2@@Z": "0x00556700",
