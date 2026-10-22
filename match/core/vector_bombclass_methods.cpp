@@ -56,5 +56,5 @@ GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgBombDynamicVector, CapacityIncrement) == 0x14);

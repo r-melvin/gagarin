@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMapStageDynamicVector, CapacityIncrement) == 0x14);

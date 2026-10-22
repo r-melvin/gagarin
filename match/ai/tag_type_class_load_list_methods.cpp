@@ -24,9 +24,9 @@ void __fastcall TagTypeClass::LoadFromINIList(CCINI_006E5ED0* ini)
                 || gg_strcmp(STR_00817694, key) == 0) {
                 tag = 0;
             } else {
-                for (int j = 0; j < TagTypeClass::Array.Count; j++) {
-                    if (gg_strcmp(TagTypeClass::Array.Items[j]->ID, key) == 0) {
-                        tag = TagTypeClass::Array.Items[j];
+                for (int j = 0; j < TagTypes.ActiveCount; j++) {
+                    if (gg_strcmp(TagTypes.Items[j]->ID, key) == 0) {
+                        tag = TagTypes.Items[j];
                         goto have;
                     }
                 }

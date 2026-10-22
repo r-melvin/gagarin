@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const TechnoTypeClass*) == 4);

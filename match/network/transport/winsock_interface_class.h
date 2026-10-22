@@ -38,7 +38,7 @@ void __fastcall FUN_0064DE80(unsigned long* crc, unsigned long value);
 // The retail SendPacket/Broadcast methods inline this vector AddItem behavior.
 template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)
 {
-    if (v.Count >= v.Capacity)
+    if (v.ActiveCount >= v.Capacity)
     {
         if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0)
         {
@@ -48,7 +48,7 @@ template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)
         else
             return false;
     }
-    int index = v.Count++;
+    int index = v.ActiveCount++;
     v.Items[index] = item;
     return true;
 }
@@ -211,7 +211,7 @@ GG_STATIC_ASSERT(offsetof(WinsockBufferType, Payload) == 0x20);
 GG_STATIC_ASSERT(sizeof(WinsockBufferType*) == 4);
 GG_STATIC_ASSERT(sizeof(WinsockBufferVector) == 0x18);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(WinsockBufferVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, CapacityIncrement) == 0x14);

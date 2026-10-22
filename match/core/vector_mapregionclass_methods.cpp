@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(MapRegionClass*) == 4);

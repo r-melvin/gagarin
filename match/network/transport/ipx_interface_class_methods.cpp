@@ -181,7 +181,7 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
             ClearSocketError(Socket);
             return 0;
         }
-        while (OutBuffers.Count != 0)
+        while (OutBuffers.ActiveCount != 0)
         {
             WinsockBufferType* buffer = OutBuffers.Items[0];
             address.sa_family = AF_IPX;
@@ -205,10 +205,10 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
                 return 0;
             }
 
-            if (OutBuffers.Count > 0)
+            if (OutBuffers.ActiveCount > 0)
             {
-                OutBuffers.Count--;
-                for (int i = 0; i < OutBuffers.Count; i++)
+                OutBuffers.ActiveCount--;
+                for (int i = 0; i < OutBuffers.ActiveCount; i++)
                     OutBuffers.Items[i] = OutBuffers.Items[i + 1];
             }
             if (buffer->IsAllocated)

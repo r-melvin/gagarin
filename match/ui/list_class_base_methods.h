@@ -144,6 +144,20 @@ struct TextDynVector
         Vector[index] = object;
         return true;
     }
+
+    int Count() const { return ActiveCount; }
+
+    bool Delete(int index)
+    {
+        if (index < ActiveCount) {
+            ActiveCount--;
+            for (int i = index; i < ActiveCount; i++) {
+                Vector[i] = Vector[i + 1];
+            }
+            return true;
+        }
+        return false;
+    }
 };
 GG_STATIC_ASSERT(offsetof(TextDynVector, Vector)      == 0x04);
 GG_STATIC_ASSERT(offsetof(TextDynVector, VectorMax)   == 0x08);

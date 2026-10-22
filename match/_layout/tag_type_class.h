@@ -12,6 +12,11 @@ class TriggerTypeClass;
 struct TagINI_006E6080;
 struct CCINI_006E5ED0;
 struct CCINI_006E5FE0;
+class TagTypeClass;
+// GLOBAL: GAMEMD 0xB0E780
+// A namespace-scope object, not a class static: retail's atexit cleanup at
+// 0x6E5B20 has no destruction guard, which VC6 emits for a static data member.
+extern DynamicVectorClass<TagTypeClass*> TagTypes;
 class TagTypeClass : public AbstractTypeClass
 {
 public:
@@ -19,8 +24,6 @@ public:
     TagTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x6E6310
     static TagTypeClass* __fastcall FindOrAllocate(const char* id);
-    // GLOBAL: GAMEMD 0xB0E780
-    static DynamicVectorClass<TagTypeClass*> Array;
     int               unknown_98;           // +0x0098
     int               Persistence;          // +0x009C (store at 0x6E60E1)
     TriggerTypeClass* FirstTrigger;          // +0x00A0  (MOV ESI,[ECX+0xA0])

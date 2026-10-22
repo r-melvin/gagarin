@@ -10,7 +10,7 @@
 // counters are zeroed at the end rather than trusted to have reached zero.
 void WinsockInterfaceClass::DiscardInBuffers()
 {
-    while (InBuffers.Count != 0)
+    while (InBuffers.ActiveCount != 0)
     {
         WinsockBufferType* packet = InBuffers.Items[0];
 
@@ -24,10 +24,10 @@ void WinsockInterfaceClass::DiscardInBuffers()
             StaticInBuffersInUse--;
         }
 
-        if (InBuffers.Count > 0)
+        if (InBuffers.ActiveCount > 0)
         {
-            InBuffers.Count--;
-            for (int i = 0; i < InBuffers.Count; i++)
+            InBuffers.ActiveCount--;
+            for (int i = 0; i < InBuffers.ActiveCount; i++)
                 InBuffers.Items[i] = InBuffers.Items[i + 1];
         }
     }

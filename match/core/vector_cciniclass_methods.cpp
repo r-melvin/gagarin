@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCCINIClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(CCINIClass*) == 4);

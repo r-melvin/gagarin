@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEgoClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(EgoClass*) == 4);

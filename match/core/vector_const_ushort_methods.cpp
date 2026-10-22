@@ -60,7 +60,7 @@ GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgConstUshortDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const unsigned short*) == 4);

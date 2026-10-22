@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, CapacityIncrement) == 0x14);

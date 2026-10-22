@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgRadbeamDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(RadBeam*) == 4);

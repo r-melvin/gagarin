@@ -32,6 +32,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/vector_class_operations.h"
 
 // One game mode. Only the member the lookup compares is modelled.
 struct MultiplayerGameMode_005D5F30
@@ -42,86 +43,13 @@ struct MultiplayerGameMode_005D5F30
 GG_STATIC_ASSERT(offsetof(MultiplayerGameMode_005D5F30, At_28) == 0x28);
 
 // VTABLE: GAMEMD 0x7EED40 — VectorClass<MultiplayerGameMode*>.
-extern void* const VTBL_007EED40[];
 // VTABLE: GAMEMD 0x7EED20 — DynamicVectorClass<MultiplayerGameMode*>.
-extern void* const VTBL_007EED20[];
-
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new.
-extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
-extern "C" void __cdecl FUN_007C8B3D(void* block);
-
-// VectorClass<MultiplayerGameMode*> (sizeof 0x10). The constructor body is read
-// off retail's out-of-line 0x5D89F0 (zero Items, take the size, set IsValid,
-// clear IsAllocated, install the base vtable, then adopt or allocate the
-// array); it is defined inline because retail's second guard expansion has it
-// folded in with size == 0. The destructor lives on the derived class so the
-// derived constructor stays inlinable under /GX (a base with a destructor
-// makes cl 8804 emit the derived constructor out of line).
-struct ModeVectorBase_005D5F30
-{
-    void*                   Vptr;          // +0x0000
-    MultiplayerGameMode_005D5F30**   Items;         // +0x0004
-    int                     Capacity;      // +0x0008
-    char                    IsValid;       // +0x000C
-    char                    IsAllocated;   // +0x000D
-    char                    _pad00E[2];    // +0x000E
-
-    // FUNCTION: GAMEMD 0x5D89F0 (decl; body per the retail disassembly,
-    // expanded inline here) — VectorClass(size, array).
-    ModeVectorBase_005D5F30(int size, MultiplayerGameMode_005D5F30** array)
-    {
-        Items = 0;
-        Capacity = size;
-        IsValid = 1;
-        IsAllocated = 0;
-        Vptr = (void*)VTBL_007EED40;
-        if (size != 0) {
-            if (array != 0) {
-                Items = array;
-            } else {
-                Items = (MultiplayerGameMode_005D5F30**)FUN_007C8E17(size * 4);
-                IsAllocated = 1;
-            }
-        }
-    }
-};
-GG_STATIC_ASSERT(offsetof(ModeVectorBase_005D5F30, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(ModeVectorBase_005D5F30, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(ModeVectorBase_005D5F30, IsValid) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ModeVectorBase_005D5F30, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(sizeof(ModeVectorBase_005D5F30) == 0x10);
-
-// DynamicVectorClass<MultiplayerGameMode*> (sizeof 0x18). The constructor stores
-// in retail's order (vtable, GrowthStep, Count); the destructor is what the
-// atexit teardown 0x5D5B20 inlines.
-struct ModeVector_005D5F30 : ModeVectorBase_005D5F30
-{
-    int Count;        // +0x0010
-    int GrowthStep;   // +0x0014
-
-    __forceinline ModeVector_005D5F30()
-        : ModeVectorBase_005D5F30(0, 0)
-    {
-        Vptr = (void*)VTBL_007EED20;
-        GrowthStep = 10;
-        Count = 0;
-    }
-
-    ~ModeVector_005D5F30()
-    {
-        Vptr = (void*)VTBL_007EED40;
-        if (Items != 0 && IsAllocated != 0) {
-            FUN_007C8B3D(Items);
-            Items = 0;
-        }
-        IsAllocated = 0;
-        Capacity = 0;
-    }
-};
-GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, GrowthStep) == 0x14);
+// FUNCTION: GAMEMD 0x5D89F0 (decl) — VectorClass(size, array), out-of-line
+// instance of the canonical template constructor.
+typedef DynamicVectorClass<MultiplayerGameMode_005D5F30*> ModeVector_005D5F30;
 GG_STATIC_ASSERT(sizeof(ModeVector_005D5F30) == 0x18);
+GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x5D5F30 — MultiplayerGameMode::Get (static).
 MultiplayerGameMode_005D5F30* __fastcall MultiplayerGameMode_Get(int index);

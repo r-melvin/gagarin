@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7EB6D4 -- TypeList<const AnimTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgAnimTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgAnimTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAnimTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAnimTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAnimTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAnimTypeList, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAnimTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const AnimTypeClass*) == 4);

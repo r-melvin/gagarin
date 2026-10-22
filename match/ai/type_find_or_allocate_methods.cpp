@@ -13,16 +13,16 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 // STRING: GAMEMD 0x817474 "<none>".
 // STRING: GAMEMD 0x817694 "none".
 // FUNCTION: GAMEMD 0x006E6310 (entry through RET at 0x6E6392, 0x83 bytes)
-// GLOBAL: GAMEMD 0xB0E780 TagTypeClass::Array (Items +4, Count +0x10).
+// GLOBAL: GAMEMD 0xB0E780 TagTypes (Items +4, Count +0x10).
 // Calls constructor 0x6E5B60; sizeof(TagTypeClass) 0xA4.
 TagTypeClass* __fastcall TagTypeClass::FindOrAllocate(const char* id)
 {
     if (_strcmpi("<none>", id) != 0 && _strcmpi("none", id) != 0)
     {
-        for (int i = 0; i < TagTypeClass::Array.Count; ++i)
+        for (int i = 0; i < TagTypes.ActiveCount; ++i)
         {
-            if (_strcmpi(TagTypeClass::Array.Items[i]->ID, id) == 0)
-                return TagTypeClass::Array.Items[i];
+            if (_strcmpi(TagTypes.Items[i]->ID, id) == 0)
+                return TagTypes.Items[i];
         }
         return new TagTypeClass(id);
     }

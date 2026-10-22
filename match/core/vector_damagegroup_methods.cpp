@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgDamageGroupDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(DamageGroup*) == 4);

@@ -6,7 +6,7 @@
 //
 //   TagTypeClass derives the committed AbstractTypeClass layout spine. The only
 //   members FindByNameOrID touches are ID (+0x24) and Name (+0x64) — both from
-//   AbstractTypeClass — and the static lookup array TagTypeClass::Array.
+//   AbstractTypeClass — and the static lookup array TagTypes.
 #ifndef GG_MATCH_AI_TAG_TYPE_CLASS_METHODS_H
 #define GG_MATCH_AI_TAG_TYPE_CLASS_METHODS_H
 

@@ -48,5 +48,5 @@ GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTeamDynamicVector, CapacityIncrement) == 0x14);

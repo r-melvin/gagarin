@@ -24,8 +24,7 @@ extern "C" void __cdecl gg_free(void*);
 // only an argument/result shape, not a source-level name.
 template<class T> class VectorClass {
 public:
-    VectorClass() : Items(0), Capacity(0), IsInitialized(true), IsAllocated(false) {}
-    VectorClass(int capacity, T* pMem);
+    VectorClass(int capacity = 0, T* pMem = 0);
     VectorClass(const VectorClass<T>& other);
     VectorClass<T>& operator=(const VectorClass<T>& other);
     virtual ~VectorClass();
@@ -60,21 +59,23 @@ template<class T> void VectorClass<T>::Clear() {
 // count and capacity increment occupy the two added dwords.
 template<class T> class DynamicVectorClass : public VectorClass<T> {
 public:
-    DynamicVectorClass() { CapacityIncrement = 10; Count = 0; }
-    DynamicVectorClass(int capacity, T* pMem);
+    DynamicVectorClass(int capacity = 0, T* pMem = 0);
     DynamicVectorClass(const DynamicVectorClass<T>& other);
     virtual bool SetCapacity(int capacity, T* pMem);
     virtual void Clear();
     virtual int FindItemIndex(const T& item) const;
     virtual int Slot5(T* elementAddress) const;
+    int Count() const { return ActiveCount; }
+    // Inline by-index removal (vector_class_operations.h).
+    bool Delete(int index);
     // Defined in vector_class_operations.h when the element type is complete.
     bool RemoveItem(const T& item);
-    int Count;             // +0x10
+    int ActiveCount;       // +0x10
     int CapacityIncrement; // +0x14
 };
 
 template<class T> void DynamicVectorClass<T>::Clear() {
-    Count = 0;
+    ActiveCount = 0;
     if (this->Items != 0 && this->IsAllocated) {
         gg_free(this->Items);
         this->Items = 0;

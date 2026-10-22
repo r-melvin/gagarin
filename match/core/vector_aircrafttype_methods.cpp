@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7EABC8 -- TypeList<const AircraftTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAircrafttypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const AircraftTypeClass*) == 4);

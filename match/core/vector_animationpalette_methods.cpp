@@ -63,7 +63,7 @@ GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAnimationpaletteDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(WorldDominationTour::Map::AnimationPalette*) == 4);

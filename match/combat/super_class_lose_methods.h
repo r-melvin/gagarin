@@ -11,33 +11,13 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/vector_class_operations.h"
 
 struct SuperClass;
 
-// DynamicVectorClass<SuperClass*>. Retail issues FindItemIndex *indirectly*
-// through the object's vptr rather than devirtualising it, so the slot run is
-// declared for real. The placeholder slots are declared rather than made pure:
-// an `extern` object of the type has to be concrete, and no vtable is emitted
-// because the class is never instantiated here. The argument is taken by reference: retail hands over the
-// address of a stack temporary (`MOV [ESP],ECX; LEA EAX,[ESP]; PUSH EAX`).
-struct SuperTimerVectorClass
-{
-    virtual void v00();
-    virtual void v04();
-    virtual void v08();
-    virtual void v0C();
-    virtual int  FindItemIndex(SuperClass* const& item);   // +0x10 (declared; reloc)
-
-    SuperClass** Items;        // +0x04
-    int          Capacity;     // +0x08
-    int          IsAllocated;  // +0x0C
-    int          Count;        // +0x10
-};
-GG_STATIC_ASSERT(offsetof(SuperTimerVectorClass, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(SuperTimerVectorClass, Count) == 0x10);
-
-// GLOBAL: GAMEMD 0x00A83D50 — SuperClass::ShowTimers.
-extern SuperTimerVectorClass ShowTimers;
+// GLOBAL: GAMEMD 0x00A83D50
+// DynamicVectorClass<SuperClass*>: vptr +0x00, Items +0x04, Count +0x10.
+extern DynamicVectorClass<SuperClass*> ShowTimers;
 
 struct SuperClass
 {

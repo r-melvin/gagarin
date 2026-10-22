@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, Items) ==
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(ParticleSystemTypeClass*) == 4);

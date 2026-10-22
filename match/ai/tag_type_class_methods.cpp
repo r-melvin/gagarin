@@ -5,7 +5,7 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6E5E70  TagTypeClass::FindByNameOrID  (__fastcall)
-//   GLOBAL:   GAMEMD 0xB0E780  TagTypeClass::Array  (DynamicVectorClass<TagTypeClass*>)
+//   GLOBAL:   GAMEMD 0xB0E780  TagTypes  (DynamicVectorClass<TagTypeClass*>)
 //   LIBRARY:  GAMEMD 0x7C8D20  _strcmpi  (CRT; excluded from match target)
 
 #include "tag_type_class_methods.h"
@@ -17,7 +17,7 @@ extern "C" int __cdecl _strcmpi(const char*, const char*);
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x6E5E70  (__fastcall — name in ECX)
 //
-// Linear case-insensitive lookup of `name` in TagTypeClass::Array, matching
+// Linear case-insensitive lookup of `name` in TagTypes, matching
 // either the entry's ID (+0x24) or its Name (+0x64). Returns the entry pointer,
 // or null. Count/Items are reloaded from the global each iteration.
 // ---------------------------------------------------------------------------
@@ -25,9 +25,9 @@ TagTypeClass* __fastcall TagTypeClass::FindByNameOrID(const char* name)
 {
     if (name)
     {
-        for (int i = 0; i < TagTypeClass::Array.Count; ++i)
+        for (int i = 0; i < TagTypes.ActiveCount; ++i)
         {
-            TagTypeClass* item = TagTypeClass::Array.Items[i];
+            TagTypeClass* item = TagTypes.Items[i];
             if (_strcmpi(item->ID, name) == 0 ||
                 _strcmpi(item->Name, name) == 0)
                 return item;

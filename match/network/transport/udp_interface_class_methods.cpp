@@ -43,13 +43,13 @@
 // FUNCTION: GAMEMD 0x7B2F90  UDPInterfaceClass::ClearBroadcastAddresses (slot 12)
 void UDPInterfaceClass::ClearBroadcastAddresses()
 {
-    while (BroadcastAddresses.Count != 0)
+    while (BroadcastAddresses.ActiveCount != 0)
     {
         operator delete(BroadcastAddresses.Items[0]);
-        if (BroadcastAddresses.Count > 0)
+        if (BroadcastAddresses.ActiveCount > 0)
         {
-            BroadcastAddresses.Count--;
-            for (int i = 0; i < BroadcastAddresses.Count; i++)
+            BroadcastAddresses.ActiveCount--;
+            for (int i = 0; i < BroadcastAddresses.ActiveCount; i++)
                 BroadcastAddresses.Items[i] = BroadcastAddresses.Items[i + 1];
         }
     }
@@ -67,7 +67,7 @@ void UDPInterfaceClass::AddBroadcastAddress(const char* dottedAddress, unsigned 
     address[3] = (unsigned char)d;
     if (port == 0)
         port = DAT_00841F30;
-    BroadcastPorts[BroadcastAddresses.Count] = port;
+    BroadcastPorts[BroadcastAddresses.ActiveCount] = port;
     WinsockAddItem(BroadcastAddresses, address);
 }
 
@@ -225,13 +225,13 @@ bool UDPInterfaceClass::Init(int)
     if (host == 0)
         Debug_Printf("gethostbyname failed! Error code %d\n", WSAGetLastError());
 
-    while (LocalAddresses.Count != 0)
+    while (LocalAddresses.ActiveCount != 0)
     {
         operator delete(LocalAddresses.Items[0]);
-        if (LocalAddresses.Count > 0)
+        if (LocalAddresses.ActiveCount > 0)
         {
-            LocalAddresses.Count--;
-            for (int i = 0; i < LocalAddresses.Count; i++)
+            LocalAddresses.ActiveCount--;
+            for (int i = 0; i < LocalAddresses.ActiveCount; i++)
                 LocalAddresses.Items[i] = LocalAddresses.Items[i + 1];
         }
     }
@@ -288,7 +288,7 @@ void UDPInterfaceClass::SendPacket(void* packet, int packetLen, void* address,
 void UDPInterfaceClass::Broadcast(void* packet, int packetLen, bool alternate)
 {
     int i = 0;
-    if (BroadcastAddresses.Count > 0)
+    if (BroadcastAddresses.ActiveCount > 0)
     {
         unsigned short* port = BroadcastPorts;
         do
@@ -317,7 +317,7 @@ void UDPInterfaceClass::Broadcast(void* packet, int packetLen, bool alternate)
             FUN_005D4D50();
             i++;
             port++;
-        } while (i < BroadcastAddresses.Count);
+        } while (i < BroadcastAddresses.ActiveCount);
     }
 }
 
@@ -395,7 +395,7 @@ unsigned int UDPInterfaceClass::MessageForSocket(int socket)
 // FUNCTION: GAMEMD 0x7B4140  UDPInterfaceClass::GetNumLocalAddresses (slot 18)
 int UDPInterfaceClass::GetNumLocalAddresses()
 {
-    return LocalAddresses.Count;
+    return LocalAddresses.ActiveCount;
 }
 
 // FUNCTION: GAMEMD 0x7B4150  UDPInterfaceClass::GetLocalAddress (slot 19)

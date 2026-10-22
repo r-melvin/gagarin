@@ -35,7 +35,7 @@ static inline void DiscardQueue(WinsockInterfaceClass::WinsockBufferType**& item
 // FUNCTION: GAMEMD 0x7B1D10  WinsockInterfaceClass::DiscardOutBuffers (slot 6)
 void WinsockInterfaceClass::DiscardOutBuffers()
 {
-    DiscardQueue(OutBuffers.Items, OutBuffers.Count, StaticOutBuffersInUse, StaticOutBufferPos);
-    DiscardQueue(AltOutBuffers.Items, AltOutBuffers.Count, StaticAltOutBuffersInUse,
+    DiscardQueue(OutBuffers.Items, OutBuffers.ActiveCount, StaticOutBuffersInUse, StaticOutBufferPos);
+    DiscardQueue(AltOutBuffers.Items, AltOutBuffers.ActiveCount, StaticAltOutBuffersInUse,
                  StaticAltOutBufferPos);
 }

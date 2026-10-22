@@ -12,19 +12,19 @@
 // forward-declared aggregate types without instantiating element assignment.
 #ifndef GG_MATCH_CORE_VECTOR_CLASS_OPERATIONS_H
 #define GG_MATCH_CORE_VECTOR_CLASS_OPERATIONS_H
+#include <new.h>
 #include "vector_class.h"
 
-// Capacity constructors at 0x477BE0/0x477DB0 and 0x478790/0x68C200 establish
-// int and TechnoType pointer specializations. Unlike SetCapacity, the allocation
-// path sets ownership without a null-result test. Further pointer specializations
-// are verified individually in native specialization implementations; other emitted
-// constructors are unclaimed.
+// Capacity constructors at 0x477BE0/0x477DB0, 0x478790/0x68C200 and the
+// eight-byte element family 0x5106E0/0x510780/0x58AC70/0x6CF8F0. Caller
+// storage is constructed in place with placement array-new; otherwise the
+// array is allocated and owned (ownership is set without a null test).
 template<class T> VectorClass<T>::VectorClass(int capacity, T* pMem)
     : Items(0), Capacity(capacity), IsInitialized(true), IsAllocated(false)
 {
     if (capacity != 0) {
         if (pMem != 0)
-            Items = pMem;
+            Items = new((void*)pMem) T[capacity];
         else {
             Items = new T[capacity];
             IsAllocated = true;
@@ -36,7 +36,7 @@ template<class T> DynamicVectorClass<T>::DynamicVectorClass(int capacity, T* pMe
     : VectorClass<T>(capacity, pMem)
 {
     this->CapacityIncrement = 10;
-    this->Count = 0;
+    this->ActiveCount = 0;
 }
 
 // The base copy/assignment path is expanded into DynamicVectorClass<int>'s
@@ -70,20 +70,34 @@ template<class T> inline VectorClass<T>& VectorClass<T>::operator=(const VectorC
 }
 
 template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& other)
-    : VectorClass<T>(other), Count(other.Count), CapacityIncrement(other.CapacityIncrement)
+    : VectorClass<T>(other), ActiveCount(other.ActiveCount), CapacityIncrement(other.CapacityIncrement)
 {
 }
 
+// By-index removal, inline: expanded in ListClass::RemoveItem at 0x557730
+// (its bound test repeats the caller's). Out-of-line instances exist where
+// cl declines to inline it.
 template<class T>
-bool DynamicVectorClass<T>::RemoveItem(const T& item)
+inline bool DynamicVectorClass<T>::Delete(int index)
 {
-    int index = FindItemIndex(item);
-    if (index != -1 && index < Count) {
-        Count = Count - 1;
-        for (; index < Count; ++index)
-            this->Items[index] = this->Items[index + 1];
+    if (index < ActiveCount) {
+        ActiveCount--;
+        for (int i = index; i < ActiveCount; i++)
+            this->Items[i] = this->Items[i + 1];
         return true;
     }
+    return false;
+}
+
+// By-value removal through the virtual FindItemIndex (slot +0x10). Inline in
+// SuperClass::Lose (0x6CB7B0) and ToolTipManager::Remove (0x724730); the call
+// through `this` inside the inlined body keeps the dispatch indirect.
+template<class T>
+inline bool DynamicVectorClass<T>::RemoveItem(const T& item)
+{
+    int index = FindItemIndex(item);
+    if (index != -1)
+        return Delete(index);
     return false;
 }
 template<class T> bool VectorClass<T>::operator==(const VectorClass<T>& other) const
@@ -119,7 +133,7 @@ template<class T> T VectorClass<T>::Slot6(int index) const
 
 template<class T> int DynamicVectorClass<T>::FindItemIndex(const T& item) const
 {
-    for (int i = 0; i < this->Count; ++i) {
+    for (int i = 0; i < this->ActiveCount; ++i) {
         if (this->Items[i] == item) return i;
     }
     return -1;
@@ -167,8 +181,8 @@ template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
 
 template<class T> bool DynamicVectorClass<T>::SetCapacity(int capacity, T* pMem) {
     if (VectorClass<T>::SetCapacity(capacity, pMem)) {
-        if (this->Capacity < this->Count)
-            this->Count = this->Capacity;
+        if (this->Capacity < this->ActiveCount)
+            this->ActiveCount = this->Capacity;
         return true;
     }
     return false;

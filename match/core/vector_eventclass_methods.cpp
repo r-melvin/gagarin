@@ -56,5 +56,5 @@ GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEventDynamicVector, CapacityIncrement) == 0x14);

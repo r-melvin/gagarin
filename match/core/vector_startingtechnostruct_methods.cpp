@@ -63,7 +63,7 @@ GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, Items) == 0x
 GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgStartingtechnostructDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(HouseClass::StartingTechnoStruct*) == 4);

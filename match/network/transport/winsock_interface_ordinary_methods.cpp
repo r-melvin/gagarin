@@ -126,7 +126,7 @@ int WinsockInterfaceClass::GetPacket(void* packet, int* packetLen, void* address
                                      unsigned int* addressLen, unsigned short* unknown1A)
 {
     DAT_0087F770->FUN_0054F000();
-    if (InBuffers.Count == 0)
+    if (InBuffers.ActiveCount == 0)
         return 0;
 
     WinsockBufferType* buffer = InBuffers.Items[0];
@@ -139,10 +139,10 @@ int WinsockInterfaceClass::GetPacket(void* packet, int* packetLen, void* address
     *unknown1A = buffer->unknown_1A;
     *packetLen = buffer->BufferLen;
 
-    if (InBuffers.Count > 0)
+    if (InBuffers.ActiveCount > 0)
     {
-        InBuffers.Count--;
-        for (int i = 0; i < InBuffers.Count; i++)
+        InBuffers.ActiveCount--;
+        for (int i = 0; i < InBuffers.ActiveCount; i++)
             InBuffers.Items[i] = InBuffers.Items[i + 1];
     }
 

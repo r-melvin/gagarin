@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgKamikazecontrolDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(KamikazeControl*) == 4);

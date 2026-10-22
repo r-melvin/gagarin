@@ -65,7 +65,7 @@ GG_STATIC_ASSERT(sizeof(unsigned short) == 0x02);
 GG_STATIC_ASSERT(offsetof(UDPAddressVector, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(UDPAddressVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(UDPAddressVector, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(UDPAddressVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(UDPAddressVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(UDPAddressVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(offsetof(UDPInterfaceClass, PrimaryPort) == sizeof(WinsockInterfaceClass));
 GG_STATIC_ASSERT(offsetof(UDPInterfaceClass, PrimaryPort) == 0x3F2FC);

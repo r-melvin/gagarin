@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Items) == 0x04)
 GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(CoopCampaignClass*) == 4);

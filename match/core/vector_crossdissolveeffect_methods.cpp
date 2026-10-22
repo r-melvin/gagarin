@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, Items) == 0x0
 GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(CrossDissolveEffect*) == 4);

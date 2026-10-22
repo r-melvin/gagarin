@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgIonblastclassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(IonBlastClass*) == 4);

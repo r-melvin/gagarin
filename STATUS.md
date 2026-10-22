@@ -1,5 +1,52 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,132 matched function
+rows**, **261 partial rows**, **5,393 manifest rows**, **1,070 manifest
+translation units**, and **1,080 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass. There are zero annotation issues across 5,426 body addresses.
+
+The latest batch reworks `VectorClass` and `DynamicVectorClass` toward their
+original class structure. One constructor, `VectorClass(int, T*)` with both
+arguments defaulted, replaces the default/capacity pair and constructs caller
+storage in place. The count field is now `ActiveCount`, read through an inline
+`Count()` accessor, and by-index `Delete` and by-value `RemoveItem` are inline
+members. The four pair-vector constructors are now explicit instantiations of
+that constructor rather than a macro, and stay exact. Three functions now
+match, each passing raw bytes and strict relocation checks:
+
+- `ListClass::RemoveItem` (0x557730), through the inline `Delete` and `Count()`;
+- `SuperClass::Lose` (0x6CB7B0), through the inline `RemoveItem`, which keeps
+  retail's indirect `FindItemIndex` call;
+- the `TagTypes` cleanup callback (0x6E5B20). The registry at 0xB0E780 is a
+  namespace-scope object, not a class static: retail's cleanup has no
+  destruction guard, which VC6 emits for a static data member.
+
+Every use of the renamed field was found by compiling the whole tree with the
+accessor removed, because `v.Count != 0` and `v.Count` bound to `int&` still
+compile against an accessor. No matched row was lost. Across all 1,080 project
+objects, every other named section keeps its bytes and relocation tuples except
+where a symbol was renamed or an unannotated template member is now emitted in
+a different object. `MultiplayerGameMode::Get` (0x5D5F30) now uses the
+canonical template and stays at 79.3%.
+
+The 5,132 matches represent 26.0% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **381,695
+bytes**, or 10.1% of 3,797,269 listed function bytes. The padding heuristic
+misses 312 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+
+## Historical snapshot: second-look patches
+
 As of **2026-10-22**, the verified snapshot reports **5,129 matched function
 rows**, **264 partial rows**, **5,393 manifest rows**, **1,070 manifest
 translation units**, and **1,080 tracked C++ files**. Whole-repository regression
@@ -39,14 +86,6 @@ bytes**, or 10.0% of 3,797,269 listed function bytes. The padding heuristic
 misses 312 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
-
 
 ## Historical snapshot: native Rocket and DropPod locomotion
 
@@ -2110,6 +2149,8 @@ flag-bisection and explicit-destructor probes did not resolve the difference,
 so further matching was capped and work continued elsewhere. No assembly or
 manual startup/cleanup adapter was added. Runtime initialization is now modeled,
 but the cleanup and complete-image fidelity remain unfinished.
+(Superseded: the VectorClass batch makes the registry a namespace-scope
+`TagTypes` object, which removes the guard and matches 0x6E5B20.)
 
 The [DiskLaserClass](match/core/vector_disklaserclass_methods.cpp),
 [EMPulseClass](match/core/vector_empulseclass_methods.cpp),

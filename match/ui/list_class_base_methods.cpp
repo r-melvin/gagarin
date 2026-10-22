@@ -125,38 +125,30 @@ int ListClass::AddItem(wchar_t const* text)
 // against the pre-removal count, JNC) and the inner one signed (JGE, the
 // inlined DynamicVectorClass::Delete's own guard).
 //
-// PARTIAL, 8.2% (5/61), and the emitted section is shorter than retail's
-// (0xC0 vs 0xC4), so the percentage is diagnostic only. Written plainly, with
-// every access through the `List` member (retail also addresses the vector
-// off the object register, never through a separate pointer). Two deltas:
-//   * retail compares `EAX,ECX` twice off one load (0x55773A and 0x557742);
-//     with both tests against `List.ActiveCount` cl keeps the flags from the
-//     first compare and drops the second instruction, shifting the body.
-//   * retail reloads the count for the last guard at 0x5577C3; cl reuses the
-//     register the selection guard left behind.
+// The removal is the vector's inline by-index Delete, and every count read
+// goes through the inline Count() accessor. Retail's repeated `CMP EAX,ECX`
+// (0x55773A/0x557742) is the inlined Delete re-testing the bound, and its
+// count reload at 0x5577C3 follows from the accessor; reading the field
+// directly lets cl reuse flags and registers (8.2%, and 70.5% with Delete
+// alone).
 void ListClass::RemoveItem(int index)
 {
-    if ((unsigned)index < (unsigned)List.ActiveCount) {
-        if (index < List.ActiveCount) {
-            List.ActiveCount--;
-            for (int i = index; i < List.ActiveCount; i++) {
-                List.Vector[i] = List.Vector[i + 1];
-            }
-        }
-        if (List.ActiveCount <= LineCount) {
+    if ((unsigned)index < (unsigned)List.Count()) {
+        List.Delete(index);
+        if (List.Count() <= LineCount) {
             (this->*Vfptr->At_B0)();
         }
         if (IsScrollActive) {
             SliderShim* scroller = (SliderShim*)&Scroller;
-            (scroller->*scroller->Vfptr->At_88)(List.ActiveCount);
+            (scroller->*scroller->Vfptr->At_88)(List.Count());
         }
-        if (SelectedIndex >= List.ActiveCount) {
+        if (SelectedIndex >= List.Count()) {
             SelectedIndex--;
             if (SelectedIndex < 0) {
                 SelectedIndex = 0;
             }
         }
-        if (CurrentTopIndex >= List.ActiveCount) {
+        if (CurrentTopIndex >= List.Count()) {
             CurrentTopIndex--;
             if (CurrentTopIndex < 0) {
                 CurrentTopIndex = 0;

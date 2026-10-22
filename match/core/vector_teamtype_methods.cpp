@@ -68,7 +68,7 @@ GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7EA9C4 -- TypeList<const TeamTypeClass*>.
@@ -78,7 +78,7 @@ GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const TeamTypeClass*) == 4);

@@ -54,5 +54,5 @@ GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTubeClassDynamicVector, CapacityIncrement) == 0x14);

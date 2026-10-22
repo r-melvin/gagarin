@@ -2,19 +2,19 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// Four constructors of a growable vector over an eight-byte element. Ordered
-// ascending by retail address.
+// Four instances of the VectorClass<T>(int, T*) capacity constructor over an
+// eight-byte element. Ordered ascending by retail address.
 
 #include "pair_vector_ctor_family_methods.h"
 
 // FUNCTION: GAMEMD 0x005106E0
-GG_PAIR_VECTOR_CTOR_BODY(005106E0, 007EA984, PairElemD)
+template class VectorClass<AngerStruct>;
 
 // FUNCTION: GAMEMD 0x00510780
-GG_PAIR_VECTOR_CTOR_BODY(00510780, 007EA9A4, PairElemB)
+template class VectorClass<ScoutStruct>;
 
 // FUNCTION: GAMEMD 0x0058AC70
-GG_PAIR_VECTOR_CTOR_BODY(0058AC70, 007E177C, PairElemB)
+template class VectorClass<SubzoneConnectionStruct>;
 
 // FUNCTION: GAMEMD 0x006CF8F0
-GG_PAIR_VECTOR_CTOR_BODY(006CF8F0, 007F4154, PairElemD)
+template class VectorClass<SwizzlePointerClass>;

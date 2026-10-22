@@ -5,6 +5,7 @@
 // virtual cleanup dispatch and vector destruction. /Ob2 preserves the retail
 // inline copies while the ordinary functions each have one out-of-line definition.
 #include "winsock_interface_class.h"
+#include "../../core/vector_class_operations.h"
 // STRING: GAMEMD 0x84DE48
 // FUNCTION: GAMEMD 0x7B19C0
 WinsockInterfaceClass::WinsockInterfaceClass()

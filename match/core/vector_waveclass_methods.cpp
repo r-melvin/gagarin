@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgWaveClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(WaveClass*) == 4);

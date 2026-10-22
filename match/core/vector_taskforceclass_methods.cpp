@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTaskForceClassDynamicVector, CapacityIncrement) == 0x14);

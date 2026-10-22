@@ -56,5 +56,5 @@ GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgLightConvertDynamicVector, CapacityIncrement) == 0x14);

@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(_WIN32_FIND_DATAA*) == 4);

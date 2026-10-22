@@ -114,7 +114,7 @@ bool __stdcall DropPodLocomotionClass::Process()
             if (!foot->House->IsAlliedWith(MapInstance.GetCellAt(&DestCoord)->FindTechnoNearestTo(&offset, false, 0))) {
                 LocoCoord pos;
                 pos = DropPod_RandomCoordsNear(DestCoord, 0x55, false);
-                DropPod_PlaySample(weapon->Reports.Items[DAT_00886B88.Random() % weapon->Reports.Count], &pos, 0);
+                DropPod_PlaySample(weapon->Reports.Items[DAT_00886B88.Random() % weapon->Reports.ActiveCount], &pos, 0);
                 DropPod_DamageArea(&pos, weapon->Damage << 1, foot, (int)weapon->Warhead, 1, 0);
                 new DropPodAnimAllocationView(DropPod_SelectDamageAnim(weapon->Damage << 1, (int)weapon->Warhead, 0, &pos), &pos, 0, 1, 0x2600, DropPod_ZAdjust(pos), false);
             }

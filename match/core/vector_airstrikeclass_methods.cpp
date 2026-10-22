@@ -56,5 +56,5 @@ GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgAirstrikeDynamicVector, CapacityIncrement) == 0x14);

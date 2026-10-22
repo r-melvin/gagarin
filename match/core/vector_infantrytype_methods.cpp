@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7EAC08 -- TypeList<const InfantryTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgInfantrytypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const InfantryTypeClass*) == 4);

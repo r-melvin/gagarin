@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7F0D1C -- TypeList<const SmudgeTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSmudgeTypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const SmudgeTypeClass*) == 4);

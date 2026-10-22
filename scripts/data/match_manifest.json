@@ -2435,8 +2435,8 @@
   "sym": "?Lose@SuperClass@@QAE_NXZ",
   "len": "0x61",
   "name": "SuperClass::Lose",
-  "status": "partial",
-  "pct": 17.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/combat/super_class_methods.cpp",
@@ -9383,36 +9383,36 @@
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x005106E0",
-  "sym": "?FUN_005106E0@@YIPAUPairVector@@PAU1@HHPAUPairElemD@@@Z",
+  "sym": "??0?$VectorClass@UAngerStruct@@@@QAE@HPAUAngerStruct@@@Z",
   "len": "0x93",
-  "name": "PairVector::ctor",
+  "name": "VectorClass<T>::VectorClass(int,T*)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x00510780",
-  "sym": "?FUN_00510780@@YIPAUPairVector@@PAU1@HHPAUPairElemB@@@Z",
+  "sym": "??0?$VectorClass@UScoutStruct@@@@QAE@HPAUScoutStruct@@@Z",
   "len": "0x93",
-  "name": "PairVector::ctor",
+  "name": "VectorClass<T>::VectorClass(int,T*)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x0058AC70",
-  "sym": "?FUN_0058AC70@@YIPAUPairVector@@PAU1@HHPAUPairElemB@@@Z",
+  "sym": "??0?$VectorClass@USubzoneConnectionStruct@@@@QAE@HPAUSubzoneConnectionStruct@@@Z",
   "len": "0x93",
-  "name": "PairVector::ctor",
+  "name": "VectorClass<T>::VectorClass(int,T*)",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/pair_vector_ctor_family_methods.cpp",
   "addr": "0x006CF8F0",
-  "sym": "?FUN_006CF8F0@@YIPAUPairVector@@PAU1@HHPAUPairElemD@@@Z",
+  "sym": "??0?$VectorClass@VSwizzlePointerClass@@@@QAE@HPAVSwizzlePointerClass@@@Z",
   "len": "0x93",
-  "name": "PairVector::ctor",
+  "name": "VectorClass<T>::VectorClass(int,T*)",
   "status": "matched",
   "pct": 100
  },
@@ -29089,8 +29089,8 @@
   "sym": "?RemoveItem@ListClass@@QAEXH@Z",
   "len": "0xc4",
   "name": "ListClass::RemoveItem",
-  "status": "partial",
-  "pct": 8.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/list_class_base_methods.cpp",
@@ -36556,20 +36556,20 @@
  {
   "tu": "match/ai/tag_type_class_array.cpp",
   "addr": "0x6E5AE0",
-  "sym": "_$E6",
+  "sym": "_$E4",
   "len": "0x3D",
-  "name": "TagTypeClass::Array dynamic initializer",
+  "name": "TagTypes dynamic initializer",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ai/tag_type_class_array.cpp",
   "addr": "0x6E5B20",
-  "sym": "_$E3",
+  "sym": "_$E2",
   "len": "0x3B",
-  "name": "TagTypeClass::Array cleanup callback",
-  "status": "partial",
-  "pct": 0.0
+  "name": "TagTypes cleanup callback",
+  "status": "matched",
+  "pct": 100
  },
  {
   "addr": "0x4E85D0",

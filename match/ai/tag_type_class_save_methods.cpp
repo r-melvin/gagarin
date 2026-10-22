@@ -27,8 +27,8 @@ void __fastcall TagTypeClass::SaveToINIList(CCINI_006E5FE0* ini)
     }
     ini->Clear(DAT_007F4550, 0);
 
-    for (i = 0; i < TagTypeClass::Array.Count; i++) {
-        TagTypeClass* item = TagTypeClass::Array.Items[i];
+    for (i = 0; i < TagTypes.ActiveCount; i++) {
+        TagTypeClass* item = TagTypes.Items[i];
         TagTypeSaveCallView* view = reinterpret_cast<TagTypeSaveCallView*>(item);
         (view->*view->Vtable->Method)(ini);
     }

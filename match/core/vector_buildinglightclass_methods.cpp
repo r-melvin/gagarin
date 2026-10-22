@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, Items) == 0x04
 GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgBuildingLightClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(BuildingLightClass*) == 4);
