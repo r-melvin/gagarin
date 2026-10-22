@@ -92166,5 +92166,14 @@
   "name": "Tactical::scalar deleting destructor",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D5F60",
+  "sym": "?FUN_006D5F60@Tactical@@QAEXPBU?$TRect@H@@@Z",
+  "len": "0x9d",
+  "name": "Tactical::FUN_006D5F60",
+  "status": "partial",
+  "pct": 87.5
  }
 ]

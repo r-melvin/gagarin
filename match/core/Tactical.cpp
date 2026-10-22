@@ -771,6 +771,31 @@ void Tactical::FUN_006D4E00()
 // GLOBAL: GAMEMD 0xA8ED6B
 extern unsigned char DAT_00A8ED6B;
 
+// GLOBAL: GAMEMD 0xB0CE28
+extern int DAT_00B0CE28;
+
+// FUNCTION: GAMEMD 0x6D5F60
+void Tactical::FUN_006D5F60(const TRect<int>* bounds)
+{
+    DAT_00B0CE28 = bounds->X;
+    DAT_00B0CE2C = bounds->Y;
+    DAT_00B0CE30 = bounds->Width;
+    DAT_00B0CE34 = bounds->Height;
+    Pair_006D9F80 checked = unknown_D74;
+    int x, y;
+    if (FUN_006D8640(&checked) && DAT_00A8ED6B == 0) {
+        x = checked.unknown_00;
+        y = checked.unknown_04;
+    } else {
+        x = unknown_D74.unknown_00;
+        y = unknown_D74.unknown_04;
+    }
+    unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
+    unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+    FUN_006D8B30();
+    unknown_D7D = true;
+}
+
 // FUNCTION: GAMEMD 0x6D6000
 void Tactical::FUN_006D6000(const Pair_006D9F80* point)
 {

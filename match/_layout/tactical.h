@@ -63,6 +63,7 @@ public:
     Pair_006D9F80 FUN_006D6190() const;
     void FUN_006D4DB0(const unsigned short* text, int mode); // 0x6D4DB0
     void FUN_006D4E00(); // 0x6D4E00
+    void FUN_006D5F60(const TRect<int>* bounds); // 0x6D5F60; RET4
     void FUN_006D6070(const CoordStruct* coordinate); // 0x6D6070; RET 4
     void FUN_006D6000(const Pair_006D9F80* point);
     bool FUN_006D8640(Pair_006D9F80* point); // 0x6D8640; RET 4
