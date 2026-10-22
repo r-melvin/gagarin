@@ -23,6 +23,7 @@
 #include "abstract_class.h"
 
 class TagClass;
+struct HouseClass;
 struct AnimClass;
 struct ObjectTypeClass;
 // Returned by value from slots 110 and 112 (defined by the TUs that need it;
@@ -196,7 +197,7 @@ public:
     virtual void vf_99(int a1);                                // 99  0x4264B0: bare RET 4
     virtual void vf_100(bool a1, bool a2);                     // 100 0x5F5C20
     virtual int vf_101(int a1, int event, int a3);             // 101 0x5F5320
-    virtual void vf_102(int a1);                               // 102 0x5F5930
+    virtual bool vf_102(HouseClass* house);                    // 102 0x5F5930: TechnoClass 0x6F4960 tests its AL
     virtual void vf_103(int a1);                               // 103 0x5F43F0: bare RET 4
     virtual void vf_104(int a1);                               // 104 0x5F4400: bare RET 4
     virtual void vf_105(int a1, int a2);                       // 105 0x5F6B50: bare RET 8
@@ -221,7 +222,7 @@ public:
     int             unknown_28;                  // +0x28
     int             FallRate;                    // +0x2C
     void*           NextObject;                  // +0x30  ObjectClass* (cell/transport list)
-    void*           AttachedTag;                 // +0x34  TagClass*
+    TagClass*       AttachedTag;                 // +0x34
     void*           AttachedBomb;                // +0x38  BombClass*
     AudioController AmbientSoundController;       // +0x3C  (0x14)
     AudioController CustomSoundController;        // +0x50  (0x14)

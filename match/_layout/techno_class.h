@@ -147,6 +147,9 @@ struct FacingClass
     DirStruct    StartFacing;     // +0x04
     CDTimerClass RotationTimer;   // +0x08  (0xC)
     DirStruct    ROT;             // +0x14
+
+    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) -- the current heading, by value.
+    DirStruct FUN_004C93D0() const;
 };
 GG_STATIC_ASSERT(offsetof(FacingClass, RotationTimer) == 0x08);
 GG_STATIC_ASSERT(sizeof(FacingClass)                  == 0x18);
@@ -181,6 +184,9 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 #endif
 
 class PlanningTokenClass;
+struct WeaponStruct;
+struct CellStruct;
+struct HouseClass;
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.
@@ -192,6 +198,168 @@ public:
     // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) -- kill the passengers (one
     // stack argument, the killer).
     void KillPassengers(TechnoClass* killer);
+
+    // Overrides of base slots (primary table 0x7F4960, 309 slots).
+    virtual void vf_9();                                           // 9   0x6F3F40
+    virtual bool vf_25();                                          // 25  0x6F32D0
+    virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
+    virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
+    virtual bool vf_50(int a1);                                    // 50  0x41C020: returns Disguised
+    virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
+    virtual bool vf_102(HouseClass* house);                        // 102 0x6F4960
+
+    // Slots 161-308, introduced by TechnoClass (RTTI ".?AVTechnoClass@@" on
+    // 0x7F4960). Names are placeholders except where a tree row already carries
+    // one; argument counts come from RET n. Return types are confirmed only for
+    // slots with bodies in the tree; the rest are provisional (EAX/AL use).
+    virtual bool vf_161();                                         // 161 0x41BEE0
+    virtual bool IsCloakable();                                    // 162 0x70C5A0
+    virtual bool FUN_006F3280();                                   // 163 0x6F3280
+    virtual bool vf_164();                                         // 164 0x459D80
+    virtual bool vf_165();                                         // 165 0x70BE80
+    virtual bool vf_166();                                         // 166 0x6F9E10
+    virtual bool vf_167();                                         // 167 0x41BEF0
+    virtual bool vf_168();                                         // 168 0x6FBDC0
+    virtual bool vf_169();                                         // 169 0x6FBC90
+    virtual DirStruct vf_170();                                    // 170 0x4E0150
+    virtual int IsArmed();                                         // 171 0x701120
+    virtual void vf_172();                                         // 172 0x70C620
+    virtual void vf_173();                                         // 173 0x708BC0
+    virtual int vf_174();                                          // 174 0x708C30
+    virtual void vf_175();                                         // 175 0x70ADA0
+    virtual int vf_176();                                          // 176 0x708B40
+    virtual bool vf_177(int a1);                                   // 177 0x459D90
+    virtual void vf_178(int a1, int a2);                           // 178 0x6FDA00
+    virtual void vf_179(int a1);                                   // 179 0x707F60
+    virtual int vf_180();                                          // 180 0x6F3950
+    virtual int vf_181();                                          // 181 0x41BF00
+    virtual int vf_182();                                          // 182 0x41BF10
+    virtual int vf_183();                                          // 183 0x41BF20
+    virtual void vf_184();                                         // 184 0x70D980
+    virtual int vf_185(int a1);                                    // 185 0x6F3330
+    virtual int vf_186(TechnoClass* other);                        // 186 0x6F3820
+    virtual int vf_187();                                          // 187 0x704350
+    virtual int vf_188();                                          // 188 0x459DA0
+    virtual CellStruct vf_189();                                   // 189 0x459DB0
+    virtual void vf_190(int a1);                                   // 190 0x459DC0
+    virtual void vf_191(int a1, int a2, int a3);                   // 191 0x70AD50
+    virtual int vf_192(int a1, int a2);                            // 192 0x6F3D60
+    virtual int vf_193(int a1, int a2);                            // 193 0x708C10
+    virtual void vf_194(int a1);                                   // 194 0x708D70
+    virtual int vf_195();                                          // 195 0x707D20
+    virtual int vf_196();                                          // 196 0x700D10
+    virtual void vf_197();                                         // 197 0x700D50
+    virtual int vf_198(int a1);                                    // 198 0x6FCFA0
+    virtual int vf_199(int a1);                                    // 199 0x707E60
+    virtual bool vf_200();                                         // 200 0x459DD0
+    virtual void vf_201(int a1);                                   // 201 0x70D1D0
+    virtual void vf_202();                                         // 202 0x70D420
+    virtual void vf_203(int a1);                                   // 203 0x70D460
+    virtual bool vf_204();                                         // 204 0x41BF30
+    virtual void vf_205();                                         // 205 0x459DE0
+    virtual void vf_206(int a1, int a2, int a3);                   // 206 0x70F8F0
+    virtual bool vf_207();                                         // 207 0x459DF0
+    virtual bool vf_208();                                         // 208 0x459E00
+    virtual bool vf_209();                                         // 209 0x459E10
+    virtual bool vf_210();                                         // 210 0x459E20
+    virtual bool vf_211();                                         // 211 0x459E30
+    virtual bool vf_212();                                         // 212 0x701190
+    virtual void vf_213(int a1);                                   // 213 0x708D90
+    virtual void VoiceEnter();                                     // 214 0x709020
+    virtual void VoiceHarvest();                                   // 215 0x709060
+    virtual int vf_216();                                          // 216 0x708EB0
+    virtual void VoiceCapture();                                   // 217 0x708DC0
+    virtual int vf_218();                                          // 218 0x708FC0
+    virtual void vf_219();                                         // 219 0x708E00
+    virtual int vf_220(int a1);                                    // 220 0x7090A0
+    virtual void vf_221(int a1);                                   // 221 0x6FFE00
+    virtual int vf_222(int a1, int a2, int a3, int a4);            // 222 0x6FFBE0
+    virtual bool IsUnderEMP();                                     // 223 0x70EFD0
+    virtual bool vf_224();                                         // 224 0x459E40
+    virtual bool vf_225();                                         // 225 0x41BF80
+    virtual void vf_226(int a1);                                   // 226 0x41BF90
+    virtual int vf_227();                                          // 227 0x70EFE0
+    virtual int vf_228();                                          // 228 0x70D670
+    virtual void vf_229(int a1);                                   // 229 0x710670
+    virtual int vf_230(int a1);                                    // 230 0x70EF00
+    virtual void vf_231(int a1, int a2);                           // 231 0x709820
+    virtual void vf_232();                                         // 232 0x6FCD40
+    virtual int vf_233(int a1);                                    // 233 0x6F7660
+    virtual bool vf_234(int a1, int a2);                           // 234 0x6F77B0
+    virtual bool IsCloseEnoughToAttack(AbstractClass* target);     // 235 0x6F7780
+    virtual void vf_236(int a1);                                   // 236 0x6F7930
+    virtual void vf_237(int a1);                                   // 237 0x6F78D0
+    virtual int vf_238();                                          // 238 0x4C9150
+    virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
+    virtual bool vf_240(int a1, int a2, int a3);                   // 240 0x6FC0B0
+    virtual int vf_241(int a1, int a2, int a3);                    // 241 0x6F8DF0
+    virtual void vf_242(int a1);                                   // 242 0x6FCDB0
+    virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
+    virtual void CancelAndGoIdle();                                // 244 0x70F850
+    virtual int vf_245(int a1, int a2);                            // 245 0x7014A0
+    virtual void vf_246(int a1, int a2, int a3);                   // 246 0x70B280
+    virtual bool vf_247(int a1);                                   // 247 0x459E50
+    virtual bool vf_248();                                         // 248 0x70DD50
+    virtual int vf_249();                                          // 249 0x70DD70
+    virtual int vf_250();                                          // 250 0x70DD90
+    virtual int vf_251();                                          // 251 0x70DDA0
+    virtual void vf_252();                                         // 252 0x70E120
+    virtual WeaponStruct* GetPrimaryWeapon();                      // 253 0x70E1A0
+    virtual int vf_254(int a1);                                    // 254 0x70E140
+    virtual bool vf_255();                                         // 255 0x41BFA0
+    virtual bool vf_256();                                         // 256 0x41BFB0
+    virtual int vf_257();                                          // 257 0x41BFC0
+    virtual int vf_258();                                          // 258 0x41BFD0
+    virtual void vf_259();                                         // 259 0x701410
+    virtual void vf_260(int a1);                                   // 260 0x6FB740
+    virtual void vf_261();                                         // 261 0x6FB170
+    virtual void vf_262();                                         // 262 0x6FB470
+    virtual void vf_263();                                         // 263 0x70B570
+    virtual void vf_264();                                         // 264 0x6F4EB0
+    virtual void vf_265();                                         // 265 0x6FB010
+    virtual void vf_266();                                         // 266 0x41BFE0
+    virtual void vf_267(int a1);                                   // 267 0x705CA0
+    virtual bool vf_268();                                         // 268 0x705D50
+    virtual bool vf_269(int a1);                                   // 269 0x41BFF0
+    virtual void vf_270(int a1, int a2);                           // 270 0x459E60
+    virtual void vf_271(int a1);                                   // 271 0x70ED80
+    virtual bool vf_272(int a1);                                   // 272 0x70EE30
+    virtual void vf_273(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10); // 273 0x706640
+    virtual void vf_274(int a1, int a2);                           // 274 0x6F60C0
+    virtual void vf_275(int a1, int a2, int a3);                   // 275 0x6F64A0
+    virtual void vf_276(int a1, int a2, int a3);                   // 276 0x709A90
+    virtual void vf_277(int a1, int a2);                           // 277 0x70A990
+    virtual void vf_278(int a1, int a2, int a3);                   // 278 0x70AA60
+    virtual void vf_279(int a1);                                   // 279 0x7036C0
+    virtual void vf_280(int a1);                                   // 280 0x703770
+    virtual int vf_281(int a1);                                    // 281 0x70D190
+    virtual void vf_282();                                         // 282 0x41C000
+    virtual unsigned long DisguiseAs(AbstractClass* target);       // 283 0x70E280
+    virtual void vf_284();                                         // 284 0x41C030
+    virtual bool IsTimeForIdleAction();                            // 285 0x7099E0
+    virtual bool vf_286();                                         // 286 0x41C040
+    virtual void vf_287(int a1);                                   // 287 0x709A20
+    virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x709A30
+    virtual bool EnterIdleMode(bool initial, bool a2);             // 289 0x709A40
+    virtual void vf_290(int a1, int a2, int a3, int a4, int a5);   // 290 0x70AF50
+    virtual void vf_291(int a1, int a2, int a3, int a4);           // 291 0x70B1D0
+    virtual int vf_292();                                          // 292 0x4C9150
+    virtual void vf_293();                                         // 293 0x70CC90
+    virtual void vf_294();                                         // 294 0x70CCC0
+    virtual void vf_295();                                         // 295 0x70CCF0
+    virtual void vf_296(int a1);                                   // 296 0x70D990
+    virtual int vf_297(int a1);                                    // 297 0x70F000
+    virtual void vf_298();                                         // 298 0x70F010
+    virtual bool vf_299();                                         // 299 0x70F020
+    virtual bool vf_300();                                         // 300 0x70F030
+    virtual int vf_301();                                          // 301 0x70F040
+    virtual void vf_302(int a1);                                   // 302 0x70F050
+    virtual bool vf_303();                                         // 303 0x70F070
+    virtual bool CanAttackOnTheMove();                             // 304 0x70F090
+    virtual bool vf_305();                                         // 305 0x70F0E0
+    virtual bool vf_306();                                         // 306 0x70F0F0
+    virtual void vf_307();                                         // 307 0x70F100
+    virtual bool vf_308();                                         // 308 0x70F110
 
     FlashData          Flashing;                 // +0xF0  (8)
     StageClass         Animation;                // +0xF8  (0x1C)
@@ -229,7 +397,7 @@ public:
     void*              DrainTarget;              // +0x1CC TechnoClass*
     void*              DrainingMe;               // +0x1D0 TechnoClass*
     void*              DrainAnim;                // +0x1D4 AnimClass*
-    unsigned char      Disguised;                // +0x1D8 (bool)
+    bool               Disguised;                // +0x1D8
     unsigned char      align_1D9[3];             // +0x1D9
     unsigned int       DisguiseCreationFrame;    // +0x1DC
     CDTimerClass       InfantryBlinkTimer;       // +0x1E0 (0xC)
@@ -241,7 +409,7 @@ public:
     unsigned int       DisplayProductionTo;      // +0x210 (IndexBitfield<HouseClass*>)
     int                Group;                    // +0x214 (ctor = -1)
     void*              ArchiveTarget;            // +0x218 AbstractClass*
-    void*              Owner;                    // +0x21C HouseClass* (ctor = param_1)
+    HouseClass*        Owner;                    // +0x21C (ctor = param_1)
     int                CloakState;               // +0x220 (CloakState enum)
     StageClass         CloakProgress;            // +0x224 (0x1C)
     CDTimerClass       CloakDelayTimer;          // +0x240 (0xC)

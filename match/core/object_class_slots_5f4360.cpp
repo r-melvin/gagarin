@@ -449,7 +449,7 @@ HRESULT __stdcall ObjectClass::Load(IStream* pStm)
         return hr;
     }
     DAT_00B0C110.FUN_006CF240(&NextObject);
-    DAT_00B0C110.FUN_006CF240(&AttachedTag);
+    DAT_00B0C110.FUN_006CF240((void**)&AttachedTag);
     DAT_00B0C110.FUN_006CF240(&AttachedBomb);
     DAT_00B0C110.FUN_006CF240((void**)&unknown_18);
     DAT_00B0C110.FUN_006CF240((void**)&Parachute);

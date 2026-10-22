@@ -69,6 +69,7 @@ struct RateTimer : public CDTimerClass
 {
     int Rate;
 
+    RateTimer() {}
     RateTimer(int rate)
     {
         this->Rate = rate;

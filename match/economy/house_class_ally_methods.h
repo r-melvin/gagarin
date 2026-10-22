@@ -14,6 +14,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+// First declaration decides the mangled key (PAV, as the row 0x4F9A50 has it);
+// object_class.h forward-declares HouseClass as a struct.
+class HouseClass;
 #include "../_layout/object_class.h"
 
 // ---------------------------------------------------------------------------

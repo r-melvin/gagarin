@@ -105,6 +105,10 @@ struct BuildingTypeClass;
 
 struct HouseClass : AbstractClass
 {
+    // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
+    bool IsControlledByCurrentPlayer() const;
+    // FUNCTION: GAMEMD 0x50B730 (decl; reloc)
+    bool IsControlledByHuman() const;
     // Nested pointer spelling confirmed by RTTI at tables 0x7EA964/0x7EA944.
     // Its element fields and complete size remain unknown.
     struct StartingTechnoStruct;

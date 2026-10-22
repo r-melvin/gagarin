@@ -16,6 +16,7 @@
 
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
+#include "../../network/wonline.h"
 
 typedef long MenusHResult;
 typedef unsigned long MenusULong;
@@ -136,9 +137,6 @@ struct MenusWebSession
 };
 // GLOBAL: GAMEMD 0xA8B238
 extern MenusWebSession MenusWebSessionInstance;
-// GLOBAL: GAMEMD 0xB73E40 / 0xB7778C -- the stored login and password holders.
-extern MenusWebString MenusStoredLogin;
-extern MenusWebString MenusStoredPassword;
 
 // VTABLE: GAMEMD 0x7F743C
 class WebBrowser

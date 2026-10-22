@@ -113,8 +113,8 @@ MenusHResult __stdcall WebBrowser::Slot16(const wchar_t* login, const wchar_t* p
         MenusRegisterLogin(loginName, passwordName, 1, profile.Ptr->Field10);
         MenusWebSessionInstance.Func_6990A0();
     }
-    MenusStoredLogin = loginName;
-    MenusStoredPassword = passwordName;
+    DAT_00B73E40 = loginName;
+    DAT_00B7778C = passwordName;
     return 0;
 }
 

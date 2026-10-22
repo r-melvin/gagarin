@@ -35,6 +35,14 @@ public:
     bool HasAnyLink() const;                             // GAMEMD 0x65AE30
     void SetLinkCount(int count);                        // GAMEMD 0x65AE60
 
+    // Slots 157-160, introduced by RadioClass (161 slots in all, RTTI
+    // ".?AVRadioClass@@" on 0x7F0508). Names are placeholders; argument
+    // counts come from RET n, return types provisionally from EAX/AL use.
+    virtual int vf_157(int a1);                                    // 157 0x65ACB0
+    virtual int vf_158(int a1, int a2);                            // 158 0x65AAA0
+    virtual int vf_159(int a1, int a2, int a3);                    // 159 0x65A970
+    virtual void vf_160(int a1);                                   // 160 0x65ACE0
+
     int         LastCommands[3];   // +0xD4  (RadioCommand enum x3)
     VectorClassLayout RadioLinks;        // +0xE0  (0x10; docked units etc.)
 };

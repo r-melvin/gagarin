@@ -280,6 +280,17 @@ int __stdcall DropPodLocomotionClass::DrawingCode()
     return unknown_1C != 0;
 }
 
+// FUNCTION: GAMEMD 0x4B6620
+// FUNCTION: GAMEMD 0x4B6630
+// FUNCTION: GAMEMD 0x4B6640
+// FUNCTION: GAMEMD 0x4B6650
+// FUNCTION: GAMEMD 0x4B6660
+// FUNCTION: GAMEMD 0x4B6670
+// FUNCTION: GAMEMD 0x4B6680
+// FUNCTION: GAMEMD 0x4B6690
+// (LocomotionClass inline slots 39-41 and 45-49, emitted here through this
+// class's ILocomotion table, which inherits them; see loco_base.h.)
+
 // FUNCTION: GAMEMD 0x4B66A0
 ULONG __stdcall DropPodLocomotionClass::AddRef()
 {

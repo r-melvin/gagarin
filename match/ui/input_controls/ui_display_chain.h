@@ -782,8 +782,17 @@ public:
     virtual void vf_44(const Point2D* where);            // 44  0x693880
     virtual void vf_49(int unused);                      // 49  0x693840
 
-    // FUNCTION: GAMEMD 0x692F30 (decl; reloc)
+    // FUNCTION: GAMEMD 0x692300 (decl; reloc) -- RET 0x18.
+    bool FUN_00692300(const Point2D* where, CellStruct* cell, DisplayCmdVec3* coord, DisplayCmdAbstract** target,
+                      bool* a5, bool* a6);
+    // FUNCTION: GAMEMD 0x692610 (decl; reloc) -- RET 0xC.
+    int FUN_00692610(CellStruct* cell, DisplayCmdAbstract* target, bool a3);
+    // FUNCTION: GAMEMD 0x692B60 (decl; reloc) -- RET 4.
+    void FUN_00692B60(const Point2D* where);
+    // FUNCTION: GAMEMD 0x692F30
     void FUN_00692F30();
+    // FUNCTION: GAMEMD 0x693440 (decl; reloc) -- RET 4.
+    void FUN_00693440(const Point2D* where);
 
     int  unknown_5548;                    // +0x5548
     bool unknown_554C;                    // +0x554C

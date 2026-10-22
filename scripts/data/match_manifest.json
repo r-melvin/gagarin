@@ -30873,29 +30873,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
-  "addr": "0x004B4C00",
-  "sym": "?FUN_004B4C00@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C00",
+  "sym": "?GetTrackNumber@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
-  "name": "FUN_004B4C00",
+  "name": "DriveLocomotionClass::GetTrackNumber",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
-  "addr": "0x004B4C10",
-  "sym": "?FUN_004B4C10@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C10",
+  "sym": "?GetTrackIndex@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
-  "name": "FUN_004B4C10",
+  "name": "DriveLocomotionClass::GetTrackIndex",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_interface_getters_004b4c00.cpp",
-  "addr": "0x004B4C20",
-  "sym": "?FUN_004B4C20@@YGHPAUDriveLocomotionInterfaceView_004B4C00@@@Z",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C20",
+  "sym": "?GetSpeedAccum@DriveLocomotionClass@@UAGHXZ",
   "len": "0xa",
-  "name": "FUN_004B4C20",
+  "name": "DriveLocomotionClass::GetSpeedAccum",
   "status": "matched",
   "pct": 100
  },
@@ -30972,29 +30972,29 @@
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_persist_getter_004b4c30.cpp",
+  "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4C30",
-  "sym": "?FUN_004B4C30@@YGJPAULocomotionLayoutView_0055A6C0@@@Z",
+  "sym": "?IsDirty@LocomotionClass@@UAGJXZ",
   "len": "0x11",
-  "name": "DriveLocomotion::IsDirty",
+  "name": "LocomotionClass::IsDirty",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_refcount_methods_004b4cb0.cpp",
-  "addr": "0x004B4CB0",
-  "sym": "?FUN_004B4CB0@@YGJPAVLocomotionClass@@@Z",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4CB0",
+  "sym": "?AddRef@DriveLocomotionClass@@UAGKXZ",
   "len": "0xd",
-  "name": "FUN_004B4CB0",
+  "name": "DriveLocomotionClass::AddRef",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_refcount_methods_004b4cb0.cpp",
-  "addr": "0x004B4CC0",
-  "sym": "?FUN_004B4CC0@@YGJPAVLocomotionClass@@@Z",
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4CC0",
+  "sym": "?Release@DriveLocomotionClass@@UAGKXZ",
   "len": "0xd",
-  "name": "FUN_004B4CC0",
+  "name": "DriveLocomotionClass::Release",
   "status": "matched",
   "pct": 100
  },
@@ -31008,20 +31008,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_piggyback_size_004b4cd0.cpp",
+  "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4CD0",
-  "sym": "?FUN_004B4CD0@@YG_NPAUDrivePiggybackInterfaceView_004B4CD0@@@Z",
+  "sym": "?IsPiggybacking@DriveLocomotionClass@@UAG_NXZ",
   "len": "0x11",
-  "name": "DriveLocomotion::IsPiggybacking",
+  "name": "DriveLocomotionClass::IsPiggybacking",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/drive_locomotion_piggyback_size_004b4cd0.cpp",
+  "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4CF0",
-  "sym": "?Size@DriveLocomotionClassSizeMethodView_004B4CF0@@QAEHXZ",
+  "sym": "?Size@DriveLocomotionClass@@UAEHXZ",
   "len": "0x6",
-  "name": "DriveLocomotion::Size",
+  "name": "DriveLocomotionClass::Size",
   "status": "matched",
   "pct": 100
  },
@@ -73120,5 +73120,1479 @@
   "name": "ObjectClass::vf_91",
   "status": "partial",
   "pct": 76.1
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BEE0",
+  "sym": "?vf_161@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_161",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BEF0",
+  "sym": "?vf_167@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_167",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF00",
+  "sym": "?vf_181@TechnoClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_181",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF10",
+  "sym": "?vf_182@TechnoClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_182",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF20",
+  "sym": "?vf_183@TechnoClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_183",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF30",
+  "sym": "?vf_204@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_204",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF40",
+  "sym": "?vf_88@TechnoClass@@UAE_NXZ",
+  "len": "0x35",
+  "name": "TechnoClass::vf_88",
+  "status": "partial",
+  "pct": 15.0
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF80",
+  "sym": "?vf_225@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_225",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BF90",
+  "sym": "?vf_226@TechnoClass@@UAEXH@Z",
+  "len": "0x3",
+  "name": "TechnoClass::vf_226",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFA0",
+  "sym": "?vf_255@TechnoClass@@UAE_NXZ",
+  "len": "0xf",
+  "name": "TechnoClass::vf_255",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFB0",
+  "sym": "?vf_256@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_256",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFC0",
+  "sym": "?vf_257@TechnoClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_257",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFD0",
+  "sym": "?vf_258@TechnoClass@@UAEHXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_258",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFE0",
+  "sym": "?vf_266@TechnoClass@@UAEXXZ",
+  "len": "0x1",
+  "name": "TechnoClass::vf_266",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41BFF0",
+  "sym": "?vf_269@TechnoClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "TechnoClass::vf_269",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41C000",
+  "sym": "?vf_282@TechnoClass@@UAEXXZ",
+  "len": "0x1",
+  "name": "TechnoClass::vf_282",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41C010",
+  "sym": "?vf_49@TechnoClass@@UAE_NXZ",
+  "len": "0x7",
+  "name": "TechnoClass::vf_49",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41C020",
+  "sym": "?vf_50@TechnoClass@@UAE_NH@Z",
+  "len": "0x9",
+  "name": "TechnoClass::vf_50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41C030",
+  "sym": "?vf_284@TechnoClass@@UAEXXZ",
+  "len": "0x8",
+  "name": "TechnoClass::vf_284",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_41bee0.cpp",
+  "addr": "0x41C040",
+  "sym": "?vf_286@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_286",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459D80",
+  "sym": "?vf_164@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_164",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459D90",
+  "sym": "?vf_177@TechnoClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "TechnoClass::vf_177",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DA0",
+  "sym": "?vf_188@TechnoClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "TechnoClass::vf_188",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DB0",
+  "sym": "?vf_189@TechnoClass@@UAE?AUCellStruct@@XZ",
+  "len": "0xf",
+  "name": "TechnoClass::vf_189",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DC0",
+  "sym": "?vf_190@TechnoClass@@UAEXH@Z",
+  "len": "0x3",
+  "name": "TechnoClass::vf_190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DD0",
+  "sym": "?vf_200@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_200",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DE0",
+  "sym": "?vf_205@TechnoClass@@UAEXXZ",
+  "len": "0x1",
+  "name": "TechnoClass::vf_205",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459DF0",
+  "sym": "?vf_207@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_207",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E00",
+  "sym": "?vf_208@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_208",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E10",
+  "sym": "?vf_209@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_209",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E20",
+  "sym": "?vf_210@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_210",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E30",
+  "sym": "?vf_211@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_211",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E40",
+  "sym": "?vf_224@TechnoClass@@UAE_NXZ",
+  "len": "0x3",
+  "name": "TechnoClass::vf_224",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E50",
+  "sym": "?vf_247@TechnoClass@@UAE_NH@Z",
+  "len": "0x5",
+  "name": "TechnoClass::vf_247",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/techno_class_slots_459d80.cpp",
+  "addr": "0x459E60",
+  "sym": "?vf_270@TechnoClass@@UAEXHH@Z",
+  "len": "0x3",
+  "name": "TechnoClass::vf_270",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF540",
+  "sym": "??0DriveLocomotionClass@@QAE@XZ",
+  "len": "0x9a",
+  "name": "DriveLocomotionClass::DriveLocomotionClass",
+  "status": "partial",
+  "pct": 93.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF610",
+  "sym": "?PiggybackCLSID@DriveLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x10b",
+  "name": "DriveLocomotionClass::PiggybackCLSID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF720",
+  "sym": "?QueryInterface@DriveLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5d",
+  "name": "DriveLocomotionClass::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF780",
+  "sym": "?Load@DriveLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x7f",
+  "name": "DriveLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF8E0",
+  "sym": "?BeginPiggyback@DriveLocomotionClass@@UAGJPAVILocomotion@@@Z",
+  "len": "0x43",
+  "name": "DriveLocomotionClass::BeginPiggyback",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF930",
+  "sym": "?EndPiggyback@DriveLocomotionClass@@UAGJPAPAVILocomotion@@@Z",
+  "len": "0x31",
+  "name": "DriveLocomotionClass::EndPiggyback",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF970",
+  "sym": "?IsOkToEnd@DriveLocomotionClass@@UAG_NXZ",
+  "len": "0x3a",
+  "name": "DriveLocomotionClass::IsOkToEnd",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AF9B0",
+  "sym": "?FUN_004AF9B0@DriveLocomotionClass@@QAE?AULocoMatrix3D@@XZ",
+  "len": "0xe3",
+  "name": "DriveLocomotionClass::FUN_004AF9B0",
+  "status": "partial",
+  "pct": 37.3
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFAA0",
+  "sym": "?FUN_004AFAA0@DriveLocomotionClass@@QAENXZ",
+  "len": "0x5b",
+  "name": "DriveLocomotionClass::FUN_004AFAA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFB00",
+  "sym": "?FUN_004AFB00@DriveLocomotionClass@@QAEXH@Z",
+  "len": "0x3a",
+  "name": "DriveLocomotionClass::FUN_004AFB00",
+  "status": "partial",
+  "pct": 50.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFB40",
+  "sym": "?ForceNewSlope@DriveLocomotionClass@@UAGXH@Z",
+  "len": "0x35",
+  "name": "DriveLocomotionClass::ForceNewSlope",
+  "status": "partial",
+  "pct": 38.9
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFB80",
+  "sym": "?IsMoving@DriveLocomotionClass@@UAG_NXZ",
+  "len": "0x96",
+  "name": "DriveLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFC20",
+  "sym": "?IsMovingNow@DriveLocomotionClass@@UAG_NXZ",
+  "len": "0x67",
+  "name": "DriveLocomotionClass::IsMovingNow",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFC90",
+  "sym": "?Destination@DriveLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x24",
+  "name": "DriveLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFCC0",
+  "sym": "?HeadToCoord@DriveLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x71",
+  "name": "DriveLocomotionClass::HeadToCoord",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFD40",
+  "sym": "?MoveTo@DriveLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0xb5",
+  "name": "DriveLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 38.2
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFE00",
+  "sym": "?StopMoving@DriveLocomotionClass@@UAGXXZ",
+  "len": "0xc8",
+  "name": "DriveLocomotionClass::StopMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4AFED0",
+  "sym": "?FUN_004AFED0@DriveLocomotionClass@@QAEHXZ",
+  "len": "0x8e",
+  "name": "DriveLocomotionClass::FUN_004AFED0",
+  "status": "partial",
+  "pct": 10.2
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0410",
+  "sym": "?ShadowMatrix@DriveLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "len": "0xb2",
+  "name": "DriveLocomotionClass::ShadowMatrix",
+  "status": "partial",
+  "pct": 26.7
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B04D0",
+  "sym": "?Unlimbo@DriveLocomotionClass@@UAGXXZ",
+  "len": "0x25",
+  "name": "DriveLocomotionClass::Unlimbo",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0AD0",
+  "sym": "?FUN_004B0AD0@DriveLocomotionClass@@QAEXPBULocoCoord@@H@Z",
+  "len": "0x16e",
+  "name": "DriveLocomotionClass::FUN_004B0AD0",
+  "status": "partial",
+  "pct": 73.6
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0C40",
+  "sym": "?ForceTrack@DriveLocomotionClass@@UAGXHULocoCoord@@@Z",
+  "len": "0x15e",
+  "name": "DriveLocomotionClass::ForceTrack",
+  "status": "partial",
+  "pct": 20.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0DA0",
+  "sym": "?FUN_004B0DA0@DriveLocomotionClass@@QAE_NXZ",
+  "len": "0x47",
+  "name": "DriveLocomotionClass::FUN_004B0DA0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0DF0",
+  "sym": "?FUN_004B0DF0@DriveLocomotionClass@@QAE_NPBULocoCoord@@@Z",
+  "len": "0xf2",
+  "name": "DriveLocomotionClass::FUN_004B0DF0",
+  "status": "partial",
+  "pct": 84.3
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B0EF0",
+  "sym": "?DoTurn@DriveLocomotionClass@@UAGXK@Z",
+  "len": "0x22",
+  "name": "DriveLocomotionClass::DoTurn",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4770",
+  "sym": "?FUN_004B4770@@YAXXZ",
+  "len": "0x1",
+  "name": "FUN_004B4770",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4780",
+  "sym": "?FUN_004B4780@DriveLocomotionClass@@QAE?AULocoPoint2D@@PBU2@PAH@Z",
+  "len": "0x7c",
+  "name": "DriveLocomotionClass::FUN_004B4780",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4800",
+  "sym": "?FUN_004B4800@DriveLocomotionClass@@QAEXH@Z",
+  "len": "0x16",
+  "name": "DriveLocomotionClass::FUN_004B4800",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4870",
+  "sym": "?ZAdjust@DriveLocomotionClass@@UAGHXZ",
+  "len": "0x5",
+  "name": "DriveLocomotionClass::ZAdjust",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4890",
+  "sym": "?FUN_004B4890@DriveLocomotionClass@@QAE_NXZ",
+  "len": "0x36",
+  "name": "DriveLocomotionClass::FUN_004B4890",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B48D0",
+  "sym": "?MarkAllOccupationBits@DriveLocomotionClass@@UAGXH@Z",
+  "len": "0x41",
+  "name": "DriveLocomotionClass::MarkAllOccupationBits",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4920",
+  "sym": "?IsMovingHere@DriveLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "len": "0x1d7",
+  "name": "DriveLocomotionClass::IsMovingHere",
+  "status": "partial",
+  "pct": 6.9
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4B00",
+  "sym": "?WillJumpTracks@DriveLocomotionClass@@UAG_NXZ",
+  "len": "0xd9",
+  "name": "DriveLocomotionClass::WillJumpTracks",
+  "status": "partial",
+  "pct": 13.7
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C60",
+  "sym": "?GetStatus@LocomotionClass@@UAGHXZ",
+  "len": "0x5",
+  "name": "LocomotionClass::GetStatus",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C70",
+  "sym": "?AcquireHunterSeekerTarget@LocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "LocomotionClass::AcquireHunterSeekerTarget",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C80",
+  "sym": "?IsSurfacing@LocomotionClass@@UAG_NXZ",
+  "len": "0x5",
+  "name": "LocomotionClass::IsSurfacing",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4C90",
+  "sym": "?StopMovementAnimation@LocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "LocomotionClass::StopMovementAnimation",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4CA0",
+  "sym": "?ClearCoords@LocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "LocomotionClass::ClearCoords",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4D00",
+  "sym": "??_GDriveLocomotionClass@@UAEPAXI@Z",
+  "len": "0x41",
+  "name": "DriveLocomotionClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6620",
+  "sym": "?MarkAllOccupationBits@LocomotionClass@@UAGXH@Z",
+  "len": "0x3",
+  "name": "LocomotionClass::MarkAllOccupationBits",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6630",
+  "sym": "?IsMovingHere@LocomotionClass@@UAG_NULocoCoord@@@Z",
+  "len": "0x5",
+  "name": "LocomotionClass::IsMovingHere",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6640",
+  "sym": "?WillJumpTracks@LocomotionClass@@UAG_NXZ",
+  "len": "0x5",
+  "name": "LocomotionClass::WillJumpTracks",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6650",
+  "sym": "?Lock@LocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "LocomotionClass::Lock",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6660",
+  "sym": "?Unlock@LocomotionClass@@UAGXXZ",
+  "len": "0x3",
+  "name": "LocomotionClass::Unlock",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6670",
+  "sym": "?GetTrackNumber@LocomotionClass@@UAGHXZ",
+  "len": "0x6",
+  "name": "LocomotionClass::GetTrackNumber",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6680",
+  "sym": "?GetTrackIndex@LocomotionClass@@UAGHXZ",
+  "len": "0x6",
+  "name": "LocomotionClass::GetTrackIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/droppod_locomotion.cpp",
+  "addr": "0x4B6690",
+  "sym": "?GetSpeedAccum@LocomotionClass@@UAGHXZ",
+  "len": "0x6",
+  "name": "LocomotionClass::GetSpeedAccum",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/techno_class_slot_4e0150.cpp",
+  "addr": "0x4E0150",
+  "sym": "?vf_170@TechnoClass@@UAE?AUDirStruct@@XZ",
+  "len": "0x1d",
+  "name": "TechnoClass::vf_170",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6911E0",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B05618)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691200",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B05600)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691380",
+  "sym": "_$E8",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_00B05608)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6913C0",
+  "sym": "??0ScriptClass@@QAE@PAVScriptTypeClass@@@Z",
+  "len": "0x94",
+  "name": "ScriptClass::ScriptClass",
+  "status": "partial",
+  "pct": 67.5
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691460",
+  "sym": "??1ScriptClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "ScriptClass::~ScriptClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6914E0",
+  "sym": "?vf_13@ScriptClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x1e",
+  "name": "ScriptClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691630",
+  "sym": "?Load@ScriptClass@@UAGJPAUIStream@@@Z",
+  "len": "0x53",
+  "name": "ScriptClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6916B0",
+  "sym": "??0ScriptTypeClass@@QAE@PBD@Z",
+  "len": "0xbf",
+  "name": "ScriptTypeClass::ScriptTypeClass",
+  "status": "partial",
+  "pct": 34.0
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691770",
+  "sym": "??1ScriptTypeClass@@UAE@XZ",
+  "len": "0x79",
+  "name": "ScriptTypeClass::~ScriptTypeClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6917F0",
+  "sym": "?vf_26@ScriptTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0xa1",
+  "name": "ScriptTypeClass::vf_26",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x6918A0",
+  "sym": "?vf_25@ScriptTypeClass@@UAE_NPAVCCINIClass@@@Z",
+  "len": "0xcf",
+  "name": "ScriptTypeClass::vf_25",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691B40",
+  "sym": "?FUN_00691B40@ScriptTypeClass@@SIPAV1@PBD@Z",
+  "len": "0x61",
+  "name": "ScriptTypeClass::FUN_00691B40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691BB0",
+  "sym": "?FUN_00691BB0@ScriptTypeClass@@SIPAV1@PBD@Z",
+  "len": "0x47",
+  "name": "ScriptTypeClass::FUN_00691BB0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691D90",
+  "sym": "?Load@ScriptTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0x45",
+  "name": "ScriptTypeClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691E00",
+  "sym": "?vf_13@ScriptTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x21",
+  "name": "ScriptTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691E30",
+  "sym": "?vf_10@ScriptTypeClass@@UAEXPAX_N@Z",
+  "len": "0x90",
+  "name": "ScriptTypeClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691EC0",
+  "sym": "?vf_11@ScriptClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ScriptClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691ED0",
+  "sym": "?vf_12@ScriptClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ScriptClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691EE0",
+  "sym": "??_GScriptClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "ScriptClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691F70",
+  "sym": "?vf_11@ScriptTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ScriptTypeClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691F80",
+  "sym": "?vf_12@ScriptTypeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "ScriptTypeClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691F90",
+  "sym": "?vf_16@ScriptTypeClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "ScriptTypeClass::vf_16",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ai/script_class_body.cpp",
+  "addr": "0x691FA0",
+  "sym": "??_GScriptTypeClass@@UAEPAXI@Z",
+  "len": "0x8d",
+  "name": "ScriptTypeClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x692080",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B056B8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x6920A0",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B056A0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x692220",
+  "sym": "_$E8",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_00B056A8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x692F30",
+  "sym": "?FUN_00692F30@ScrollClass@@QAEXXZ",
+  "len": "0x128",
+  "name": "ScrollClass::FUN_00692F30",
+  "status": "partial",
+  "pct": 25.7
+ },
+ {
+  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "addr": "0x6F32D0",
+  "sym": "?vf_25@TechnoClass@@UAE_NXZ",
+  "len": "0x5c",
+  "name": "TechnoClass::vf_25",
+  "status": "partial",
+  "pct": 63.6
+ },
+ {
+  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "addr": "0x6F3820",
+  "sym": "?vf_186@TechnoClass@@UAEHPAV1@@Z",
+  "len": "0x101",
+  "name": "TechnoClass::vf_186",
+  "status": "partial",
+  "pct": 12.4
+ },
+ {
+  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "addr": "0x6F3950",
+  "sym": "?vf_180@TechnoClass@@UAEHXZ",
+  "len": "0x18",
+  "name": "TechnoClass::vf_180",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "addr": "0x6F4960",
+  "sym": "?vf_102@TechnoClass@@UAE_NPAUHouseClass@@@Z",
+  "len": "0xdf",
+  "name": "TechnoClass::vf_102",
+  "status": "partial",
+  "pct": 22.8
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B6C0",
+  "sym": "_$E2",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B77CD8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B6E0",
+  "sym": "_$E5",
+  "len": "0x13",
+  "name": "dynamic initializer (DAT_00B778E8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B860",
+  "sym": "_$E8",
+  "len": "0x1a",
+  "name": "dynamic initializer (DAT_00B779F8)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B8F0",
+  "sym": "_$E11",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B73AE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77C050",
+  "sym": "_$E16",
+  "len": "0x12e",
+  "name": "atexit cleanup (DAT_00B76640)",
+  "status": "partial",
+  "pct": 80.0,
+  "note": "85.3% aligned; register swap (count/floor) in the shrink loop"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CA20",
+  "sym": "_$E21",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B73ACC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CA50",
+  "sym": "_$E26",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76E24)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CCD0",
+  "sym": "_$E31",
+  "len": "0x137",
+  "name": "atexit cleanup (DAT_00B76608)",
+  "status": "partial",
+  "pct": 80.0,
+  "note": "85.3% aligned; register swap as 0x77C050"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CE10",
+  "sym": "_$E36",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B765F0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CE30",
+  "sym": "_$E39",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B73E3C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF30",
+  "sym": "_$E42",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76AC4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF40",
+  "sym": "?FUN_0077CF40@@YIHXZ",
+  "len": "0x1d",
+  "name": "FUN_0077CF40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF60",
+  "sym": "?FUN_0077CF60@@YIHXZ",
+  "len": "0xf",
+  "name": "FUN_0077CF60",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF90",
+  "sym": "_$E47",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76E34)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CFC0",
+  "sym": "_$E52",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B73B30)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CFF0",
+  "sym": "_$E57",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B7622C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D020",
+  "sym": "_$E62",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76908)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D050",
+  "sym": "_$E67",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B77794)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D080",
+  "sym": "_$E72",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B778F4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D0B0",
+  "sym": "_$E77",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B778FC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D0E0",
+  "sym": "_$E82",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B765EC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D110",
+  "sym": "_$E87",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76900)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D190",
+  "sym": "?FUN_0077D190@@YIXXZ",
+  "len": "0x1",
+  "name": "FUN_0077D190",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D1C0",
+  "sym": "_$E92",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B76230)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D210",
+  "sym": "?FUN_0077D210@@YIXPAD@Z",
+  "len": "0x22",
+  "name": "FUN_0077D210",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D240",
+  "sym": "?FUN_0077D240@@YIHPAVString_007B4620@@@Z",
+  "len": "0x59",
+  "name": "FUN_0077D240",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D2A0",
+  "sym": "?FUN_0077D2A0@@YI_NPAUObj_0077D2A0@@@Z",
+  "len": "0x3f",
+  "name": "FUN_0077D2A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D2E0",
+  "sym": "?FUN_0077D2E0@@YI_NPAUObj_0077D2A0@@PAX@Z",
+  "len": "0x61",
+  "name": "FUN_0077D2E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D350",
+  "sym": "?FUN_0077D350@@YI_NPAX@Z",
+  "len": "0x50",
+  "name": "FUN_0077D350",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D4C0",
+  "sym": "?FUN_0077D4C0@@YI_NPAUEntry_00B77908@@@Z",
+  "len": "0x243",
+  "name": "FUN_0077D4C0",
+  "status": "partial",
+  "pct": 5.2,
+  "note": "75.0% aligned; extra frame slot and duplicated epilogues"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D710",
+  "sym": "?FUN_0077D710@@YIXXZ",
+  "len": "0x5",
+  "name": "FUN_0077D710",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D720",
+  "sym": "?FUN_0077D720@@YI?AUValue_0053ECE0@@PAUObj_0077D720@@@Z",
+  "len": "0x71",
+  "name": "FUN_0077D720",
+  "status": "partial",
+  "pct": 2.4,
+  "note": "28.6% aligned; dword zeroing and octet store scheduling"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D7A0",
+  "sym": "?FUN_0077D7A0@@YIX_N@Z",
+  "len": "0x77",
+  "name": "FUN_0077D7A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D820",
+  "sym": "?FUN_0077D820@@YI_NXZ",
+  "len": "0x1c",
+  "name": "FUN_0077D820",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D840",
+  "sym": "?FUN_0077D840@@YIXXZ",
+  "len": "0x79",
+  "name": "FUN_0077D840",
+  "status": "partial",
+  "pct": 81.2,
+  "note": "90.6% aligned; argument pushes vs callback select order"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D8C0",
+  "sym": "?FUN_0077D8C0@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0077D8C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D8D0",
+  "sym": "?FUN_0077D8D0@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0077D8D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D8E0",
+  "sym": "?FUN_0077D8E0@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0077D8E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D8F0",
+  "sym": "?FUN_0077D8F0@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0077D8F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D900",
+  "sym": "?FUN_0077D900@@YIXXZ",
+  "len": "0xa",
+  "name": "FUN_0077D900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D910",
+  "sym": "?FUN_0077D910@@YI_NPAUObj_0077D910@@@Z",
+  "len": "0x2e",
+  "name": "FUN_0077D910",
+  "status": "partial",
+  "pct": 15.0,
+  "note": "45.0% aligned; byte spill of the bit and 0/1 return"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D990",
+  "sym": "?FUN_0077D990@@YI_NPAUObj_0077D910@@@Z",
+  "len": "0x16",
+  "name": "FUN_0077D990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D9B0",
+  "sym": "?FUN_0077D9B0@@YI_NPAUObj_0077D910@@@Z",
+  "len": "0x16",
+  "name": "FUN_0077D9B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D9D0",
+  "sym": "?FUN_0077D9D0@@YI_NPAUObj_0077D910@@@Z",
+  "len": "0x16",
+  "name": "FUN_0077D9D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DA10",
+  "sym": "_$E97",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B73E40)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DA40",
+  "sym": "_$E102",
+  "len": "0xa",
+  "name": "atexit cleanup (DAT_00B7778C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DA50",
+  "sym": "?FUN_0077DA50@@YIPAUEntry_00B77908@@PBG@Z",
+  "len": "0x133",
+  "name": "FUN_0077DA50",
+  "status": "partial",
+  "pct": 51.8,
+  "note": "93.8% aligned; re-test of the value pointer after the node offset"
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DB90",
+  "sym": "?FUN_0077DB90@@YIXXZ",
+  "len": "0xfd",
+  "name": "FUN_0077DB90",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DC90",
+  "sym": "?FUN_0077DC90@@YIXPBDH@Z",
+  "len": "0x239",
+  "name": "FUN_0077DC90",
+  "status": "matched",
+  "pct": 100
  }
 ]

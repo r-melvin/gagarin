@@ -61,10 +61,14 @@ struct WeaponStruct
 GG_STATIC_ASSERT(sizeof(WeaponStruct) == 0x1C);
 
 // TurretControl - turret/barrel animation control block (size = 0x10).
+// Shares techno_class.h's guard; whichever header comes first defines it.
+#ifndef GG_MATCH_LAYOUT_TURRETCONTROL_DEFINED
+#define GG_MATCH_LAYOUT_TURRETCONTROL_DEFINED
 struct TurretControl
 {
     unsigned char _raw[0x10];
 };
+#endif
 GG_STATIC_ASSERT(sizeof(TurretControl) == 0x10);
 
 // Opaque forward decls for the truncation-site pointer members (4 bytes each).
