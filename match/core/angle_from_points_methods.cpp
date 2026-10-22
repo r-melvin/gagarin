@@ -39,13 +39,7 @@ Angle_004265B0* Angle_004265B0::FUN_004265B0(Point_004265B0* from,
 // halves early and re-orders the whole argument setup.
 Angle16_0041C2E0 Vector_0041C2E0::FUN_0041C2E0()
 {
-    // PERMUTER FINDING (score 10 = the two-constant relocation floor, from
-    // base 230, at ~54k candidates). The lever is the comma operator: a
-    // discarded `0` in front of the sqrt call is what moves the height's high
-    // dword read ahead of the square root's store, i.e. retail's rotation.
-    // This is the first CALL-RUN residual in the tree reached from the source
-    // side - the census had six of them recorded as backend-only.
-    double distance = (0, FUN_004CAC40(X * X + Z * Z));
+    double distance = FUN_004CAC40(X * X + Z * Z);
 
     double radians = FUN_004CAE30(Height, distance);
 

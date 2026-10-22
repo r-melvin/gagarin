@@ -15,11 +15,9 @@
 // same-type neighbour at all) forces the full rebuild on the map singleton.
 //
 // Phrasing notes (load-bearing):
-//   * The eight neighbour offsets must live in a `volatile int[8]`. Without it
-//     cl 8804 forwards the stored values into both walks — the first iteration
-//     of each loop is then folded against the register still holding
-//     -stride — where retail re-reads every offset from the frame slot through
-//     the walking pointer. volatile alone lifted this from 12.7% to 23.5%.
+//   * The eight neighbour offsets are a plain `int[8]`. cl 8804 forwards the
+//     stored values into the walks where retail re-reads every offset from the
+//     frame slot through the walking pointer; that is the largest delta.
 //   * `here->Type` is read into an int before the offsets are built, so the
 //     zero-extended byte load lands where retail has it.
 //   * `touched <= 3` keeps retail's `CMP dword ptr [ESP+0x3C],3; JG`; `< 4`
@@ -28,8 +26,9 @@
 //     for the success path and a `break` for the rest, so both failure paths
 //     share the single rebuild call after the loop.
 //
-// PARTIAL (29.4%, 32/109). The whole prologue through the clamp is byte-exact
-// (21 instructions). Three residual deltas, all recorded classes:
+// PARTIAL (11.7%, 13/111) with the plain offset array. The notes from here
+// down were measured with an earlier volatile-qualified array (29.4%) and are
+// historical; the prologue is no longer byte-exact. Deltas recorded then:
 //   1. cl 8804 duplicates the head of the first search loop at the back edge
 //      (`MOV EBX,dword ptr [ESP+0x18]` peeled for iteration 0, then the rotated
 //      body); retail's loop is a plain do-while with the load at the top.
@@ -80,7 +79,7 @@ void Map_0056D5A0::RecalculateZones(CellStruct_0056D5A0& cell)
 
     Zone_0056D5A0* here = this->Zones + idx;
 
-    volatile int offsets[8];
+    int offsets[8];
     offsets[2] = 1;
     offsets[6] = -1;
 
@@ -95,14 +94,14 @@ void Map_0056D5A0::RecalculateZones(CellStruct_0056D5A0& cell)
 
     if (type != 7) {
         int i = 0;
-        volatile int* p = offsets;
+        int* p = offsets;
         do {
             Zone_0056D5A0* other = here + *p;
             if (other->Type == type) {
                 int best = 0;
                 if (other != 0) {
                     int touched = 0;
-                    volatile int* q = offsets;
+                    int* q = offsets;
                     int n = 8;
                     do {
                         int off = *q;

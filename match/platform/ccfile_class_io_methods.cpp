@@ -35,21 +35,10 @@ int CCFileClass::WriteBytes(void* pBuffer, int nNumBytes)
 // CCFileClass::Seek — seek within the in-memory buffer (clamped to [0, Size]);
 // otherwise defer to the buffered file.
 //
-// MATCHED (100%, 32/32, was 90.6%). The residual was three transposed
-// instructions in the clamp tail: retail stores the low-clamped position and
-// only then loads Buffer.Size for the high clamp, while cl hoists the size
-// load above the store because it cannot see the two as aliasing but has no
-// reason to keep the order either. Qualifying the low clamp's *store* as
-// volatile pins it ahead of the load and the rest falls into place. Six other
-// spellings were measured against a cloned layout first — the size bound to a
-// named local after the store, the high clamp written as an if, a running
-// local published at each step, a volatile read of the size instead, and both
-// clamps re-read through the member — and none of them moved the pair.
-//
-// Worth noting for the method: the clone scored the control at 60.6% rather
-// than the real TU's 90.6%, because the deferred base call is a __thiscall
-// tail call that the stand-in got wrong. The clone still ranked the winner
-// first, but the absolute numbers from an unfaithful clone mean nothing.
+// PARTIAL, 90.6% (29/32). Three transposed instructions in the clamp tail:
+// retail stores the low-clamped position and only then loads Buffer.Size for
+// the high clamp, while cl hoists the size load above the store. Writing both
+// clamps as `if` statements scores 5.9%.
 int CCFileClass::Seek(int offset, int mode)
 {
     if (this->Buffer.Buffer) {
@@ -62,7 +51,7 @@ int CCFileClass::Seek(int offset, int mode)
             break;
         }
         this->Position += offset;
-        *(volatile int*)&this->Position = this->Position < 0 ? 0 : this->Position;
+        this->Position = this->Position < 0 ? 0 : this->Position;
         this->Position = this->Position > this->Buffer.Size ? this->Buffer.Size : this->Position;
         return this->Position;
     }

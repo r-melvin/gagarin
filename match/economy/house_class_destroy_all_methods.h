@@ -193,10 +193,12 @@ struct CaptureManagerClass
 };
 
 // TemporalClass — only the method invoked when a techno is being chrono-warped
-// out is needed (`MOV ECX,[ESI+0x278]; CALL 0x71AD40`).
+// out is needed (`MOV ECX,[ESI+0x278]; CALL 0x71AD40`). 0x71AD40 is
+// JustLetGo, the release that does not notify the owner; Detach is the
+// separate function at 0x71ADE0, which JustLetGo calls on its neighbours.
 struct TemporalClass
 {
-    void Detach();   // GAMEMD 0x71AD40
+    void JustLetGo();   // GAMEMD 0x71AD40
 };
 
 // ---------------------------------------------------------------------------

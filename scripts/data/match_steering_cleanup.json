@@ -2,7 +2,7 @@
  "provenance": "original; source cleanup required by user; scores measured by local MSVC6 oracle against pinned retail binary",
  "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
  "before_commit": "d25284a",
- "scope": "Cleanup batches 1 (base d25284a) and 2 (base 31d37c4, rows tagged before_commit); not a claim that every steering construct in the repository has been audited.",
+ "scope": "Cleanup batches 1 (base d25284a), 2 (base 31d37c4) and 3 (base f66a2d9), rows tagged before_commit; not a claim that every steering construct in the repository has been audited.",
  "rows": [
   {
    "addr": "0x45AEA0",
@@ -410,6 +410,191 @@
    "pct": 7.7,
    "before_commit": "31d37c4",
    "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x6CB7B0",
+   "tu": "match/combat/super_class_lose_methods.cpp",
+   "removed": "vector pointer and this aliases",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 17.1,
+   "before_commit": "f66a2d9",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x41c2e0",
+   "tu": "match/core/angle_from_points_methods.cpp",
+   "removed": "discarded comma operand",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 88.6,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x4103E0",
+   "tu": "match/core/small_misc17_methods.cpp",
+   "removed": "volatile out-parameter stores",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 87.5,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x4101C0",
+   "tu": "match/core/small_misc18_methods.cpp",
+   "removed": "six volatile vptr stores",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 12.5,
+   "before_commit": "f66a2d9",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x432690",
+   "tu": "match/core/small_misc22_methods.cpp",
+   "removed": "volatile field-clear casts",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "matched",
+   "pct": 100.0,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x410170",
+   "tu": "match/core/abstract_class_ctor.cpp",
+   "removed": "volatile vptr, UniqueID and flag-byte casts",
+   "previous_status": "partial",
+   "previous_pct": 81.2,
+   "status": "partial",
+   "pct": 12.5,
+   "before_commit": "f66a2d9",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x45e520",
+   "tu": "match/core/small_misc50_methods.cpp",
+   "removed": "volatile byte store",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 78.9,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x43a600",
+   "tu": "match/core/vector_owner_dtor_methods.cpp",
+   "removed": "count pointer alias",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 95.5,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x4CA5A0",
+   "tu": "match/economy/factory_class_start_methods.cpp",
+   "removed": "volatile re-read of the queue count",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 56.0,
+   "before_commit": "f66a2d9",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
+  },
+  {
+   "addr": "0x4FC790",
+   "tu": "match/economy/house_class_destroy_all_methods.cpp",
+   "removed": "volatile store to the damage local",
+   "previous_status": "matched",
+   "previous_pct": 100.0,
+   "status": "partial",
+   "pct": 93.0,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x487D70",
+   "tu": "match/map/cell_class_jumpjet_methods.cpp",
+   "removed": "byte union alias of the flag word (header)",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 97.7,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x56D5A0",
+   "tu": "match/map/map_class_recalculate_zones_methods.cpp",
+   "removed": "volatile offset array and walk pointers",
+   "previous_status": "partial",
+   "previous_pct": 29.4,
+   "status": "partial",
+   "pct": 11.7,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x5B2990",
+   "tu": "match/movement/dir16_operator_methods.cpp",
+   "removed": "difference pointer alias and dead result local",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 5.6,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x5AF410",
+   "tu": "match/movement/matrix3d_yrot_methods.cpp",
+   "removed": "volatile result vector with per-field copy",
+   "previous_status": "partial",
+   "previous_pct": 58.3,
+   "status": "matched",
+   "pct": 100.0,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x473BA0",
+   "tu": "match/platform/ccfile_class_io_methods.cpp",
+   "removed": "volatile low-clamp store",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 90.6,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x4882D0",
+   "tu": "match/ui/check_list_class_methods.cpp",
+   "removed": "volatile vptr store",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 92.0,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x4886E0",
+   "tu": "match/ui/check_list_class_methods.cpp",
+   "removed": "volatile vptr store",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 93.5,
+   "before_commit": "f66a2d9"
+  },
+  {
+   "addr": "0x557730",
+   "tu": "match/ui/list_class_base_methods.cpp",
+   "removed": "volatile count read and named vector pointer alias",
+   "previous_status": "matched",
+   "previous_pct": 100,
+   "status": "partial",
+   "pct": 8.2,
+   "before_commit": "f66a2d9",
+   "note": "emitted section shorter than the retail span; percentage is diagnostic only"
   }
  ],
  "unaffected_full_sections_preserved": 44,
@@ -417,5 +602,26 @@
   "0x402190 (field_A8 consumer)",
   "0x5CDC50 (inline TimeLeft caller)"
  ],
- "batch2_unaffected_named_sections_preserved": 109
+ "batch2_unaffected_named_sections_preserved": 109,
+ "batch3_retained_constructs": [
+  {
+   "addr": "0x43A600",
+   "construct": "named pointer to the embedded vector for its inlined teardown",
+   "reason": "retail materialises the vector address in a register (LEA ESI,[EDI+0x4]) and addresses its fields off it; member-access spelling scores 52.3%"
+  }
+ ],
+ "batch3_binding_corrections": [
+  {
+   "tu": "match/economy/house_class_destroy_all_methods.cpp",
+   "callee": "0x71AD40",
+   "old_symbol": "?Detach@TemporalClass@@QAEXXZ",
+   "new_symbol": "?JustLetGo@TemporalClass@@QAEXXZ",
+   "reason": "the four DestroyAll* call sites call 0x71AD40; Detach is the separate function at 0x71ADE0"
+  }
+ ],
+ "batch3_checked_unchanged_rows": [
+  "0x4E00B0 (cell_class_jumpjet_methods.h consumer by name; section byte-identical)",
+  "0x432690 (cleaned; section byte-identical)"
+ ],
+ "batch3_unaffected_named_sections_preserved": 39
 }

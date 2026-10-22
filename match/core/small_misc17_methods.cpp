@@ -7,17 +7,16 @@
 #include "small_misc17_methods.h"
 
 // FUNCTION: GAMEMD 0x4103E0
+// PARTIAL, 87.5% (14/16). Plain stores: retail writes out[0] then out[1]; cl
+// emits the two stores in the opposite order.
 long __stdcall FUN_004103E0(Provider_004103E0* provider, void** out)
 {
     if (out == 0) {
         return 0x80004003;
     }
 
-    // Volatile-qualified so the pair keeps source order: retail writes the
-    // pointer before the companion word, and a plain assignment lets VC6 emit
-    // them the other way round.
-    *(void* volatile*)&out[0] = SLOT_30(provider) + 4;
-    *(void* volatile*)&out[1] = 0;
+    out[0] = SLOT_30(provider) + 4;
+    out[1] = 0;
 
     return 0;
 }

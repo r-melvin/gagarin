@@ -2435,8 +2435,8 @@
   "sym": "?Lose@SuperClass@@QAE_NXZ",
   "len": "0x61",
   "name": "SuperClass::Lose",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 17.1
  },
  {
   "tu": "match/combat/super_class_methods.cpp",
@@ -2995,8 +2995,8 @@
   "sym": "?FUN_0041C2E0@Vector_0041C2E0@@QAE?AUAngle16_0041C2E0@@XZ",
   "len": "0x63",
   "name": "Vector_0041C2E0::FUN_0041C2E0",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 88.6
  },
  {
   "tu": "match/core/angle_from_points_methods.cpp",
@@ -10538,8 +10538,8 @@
   "sym": "?FUN_004103E0@@YGJPAUProvider_004103E0@@PAPAX@Z",
   "len": "0x2d",
   "name": "FUN_004103E0",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 87.5
  },
  {
   "tu": "match/core/small_misc17_methods.cpp",
@@ -10556,8 +10556,8 @@
   "sym": "?FUN_004101C0@Obj_004101C0@@QAEPAU1@H@Z",
   "len": "0x2e",
   "name": "FUN_004101C0",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 12.5
  },
  {
   "tu": "match/core/memory_buffer_methods.cpp",
@@ -11322,7 +11322,7 @@
   "len": "0x47",
   "name": "AbstractClass::AbstractClass",
   "status": "partial",
-  "pct": 81.2
+  "pct": 12.5
  },
  {
   "tu": "match/core/small_misc44_methods.cpp",
@@ -11627,8 +11627,8 @@
   "sym": "?FUN_0045E520@Obj_0045E520@@QAEPAU1@H@Z",
   "len": "0x59",
   "name": "Obj_0045E520::FUN_0045E520",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 78.9
  },
  {
   "tu": "match/core/small_misc51_methods.cpp",
@@ -18530,8 +18530,8 @@
   "sym": "?FUN_0043A600@Owner_0043A600@@QAEXXZ",
   "len": "0x68",
   "name": "Owner_0043A600::FUN_0043A600",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 95.5
  },
  {
   "tu": "match/core/vector_persist_save_family_methods.cpp",
@@ -22382,8 +22382,8 @@
   "sym": "?StartProduction@FactoryClass@@QAEXXZ",
   "len": "0x72",
   "name": "FactoryClass::StartProduction",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 56.0
  },
  {
   "tu": "match/economy/factory_class_unsuspend_methods.cpp",
@@ -22535,8 +22535,8 @@
   "sym": "?DestroyAllBuildings@HouseClass@@QAEXXZ",
   "len": "0x8f",
   "name": "HouseClass::DestroyAllBuildings",
-  "status": "matched",
-  "pct": 100.0
+  "status": "partial",
+  "pct": 93.0
  },
  {
   "tu": "match/economy/house_class_destroy_all_methods.cpp",
@@ -23309,8 +23309,8 @@
   "sym": "?TryAssignJumpjet@CellClass@@QAE_NPAVObjectClass@@@Z",
   "len": "0x74",
   "name": "CellClass::TryAssignJumpjet",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 97.7
  },
  {
   "tu": "match/map/cell_class_mark_redraw_methods.cpp",
@@ -23931,7 +23931,7 @@
   "len": "0x132",
   "name": "MapClass::RecalculateZones",
   "status": "partial",
-  "pct": 29.4
+  "pct": 11.7
  },
  {
   "tu": "match/map/map_class_redraw_tiles_methods.cpp",
@@ -24785,8 +24785,8 @@
   "sym": "?IsWithin@Dir16@@QBE_NABU1@0@Z",
   "len": "0x2a",
   "name": "Dir16::IsWithin",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 5.6
  },
  {
   "tu": "match/movement/dir16_operator_methods.cpp",
@@ -25667,8 +25667,8 @@
   "sym": "?GetYRotation@Matrix3D@@QBENXZ",
   "len": "0x5D",
   "name": "Matrix3D::GetYRotation",
-  "status": "partial",
-  "pct": 58.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/rocket_locomotion_globals.cpp",
@@ -26758,8 +26758,8 @@
   "sym": "?Seek@CCFileClass@@UAEHHH@Z",
   "len": "0x5B",
   "name": "CCFileClass::Seek",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 90.6
  },
  {
   "tu": "match/platform/ccfile_class_io_methods.cpp",
@@ -28648,8 +28648,8 @@
   "sym": "?Dtor@CheckListClass@@QAEXXZ",
   "len": "0x3f",
   "name": "CheckListClass::Dtor",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 92.0
  },
  {
   "tu": "match/ui/check_list_class_methods.cpp",
@@ -28693,8 +28693,8 @@
   "sym": "?ScalarDeletingDtor@CheckListClass@@QAEPAV1@E@Z",
   "len": "0x53",
   "name": "CheckListClass::ScalarDeletingDtor",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 93.5
  },
  {
   "tu": "match/ui/color_list_class_methods.cpp",
@@ -29089,8 +29089,8 @@
   "sym": "?RemoveItem@ListClass@@QAEXH@Z",
   "len": "0xc4",
   "name": "ListClass::RemoveItem",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 8.2
  },
  {
   "tu": "match/ui/list_class_base_methods.cpp",

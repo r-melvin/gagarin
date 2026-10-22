@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "89d8e988e70d7dfbb91a8790e8287658713e354ab40a88ae56e79195415dfcf9",
+  "manifest_sha256": "1f586ba913d561e098af68a8d62ab8bc7aac8bc064e8beeafbf4e89e24e65196",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,7 +29,7 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 5097,
+  "matched_entries": 5084,
   "matched_entries_missed": 311,
   "padding_run_lengths": {
    "1": 1725,

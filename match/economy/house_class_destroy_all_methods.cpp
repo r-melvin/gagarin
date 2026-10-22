@@ -51,7 +51,7 @@ void HouseClass::DestroyAll()
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->Detach();
+                techno->TemporalTargetingMe->JustLetGo();
             }
 
             techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
@@ -108,11 +108,10 @@ void HouseClass::DestroyAllBuildings()
             && !techno->InLimbo
             && techno != lastDestroyed) {
 
-            int damage;
-            *(volatile int*)&damage = techno->Health;
+            int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->Detach();
+                techno->TemporalTargetingMe->JustLetGo();
             }
 
             techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
@@ -152,7 +151,7 @@ void HouseClass::DestroyAllNonBuildingsNonNaval()
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->Detach();
+                techno->TemporalTargetingMe->JustLetGo();
             }
 
             techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);
@@ -185,7 +184,7 @@ void HouseClass::DestroyAllNonBuildingsNaval()
             int damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
-                techno->TemporalTargetingMe->Detach();
+                techno->TemporalTargetingMe->JustLetGo();
             }
 
             techno->ReceiveDamage(&damage, 0, Rules->C4Warhead, 0, true, true, 0);

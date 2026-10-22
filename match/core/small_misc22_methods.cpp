@@ -59,13 +59,11 @@ void __stdcall FUN_0040AFD0(char* base, int stride, int count, ElemFn2 fn)
 // zero: -1 at +0x28 and 1 at +0x2C.
 Obj_00432690* Obj_00432690::FUN_00432690(int arg)
 {
-    // Volatile so the argument load stays where retail has it - immediately
-    // before the push - rather than being hoisted above the field writes.
-    *(volatile unsigned char*)&unknown_00 = 0;
-    *(volatile int*)&unknown_04 = 0;
-    *(volatile int*)&unknown_0C = 0;
-    *(volatile int*)&unknown_20 = 0;
-    *(volatile unsigned char*)&unknown_2D = 0;
+    unknown_00 = 0;
+    unknown_04 = 0;
+    unknown_0C = 0;
+    unknown_20 = 0;
+    unknown_2D = 0;
 
     unknown_28 = -1;
     unknown_2C = 1;
@@ -80,8 +78,9 @@ Obj_00432690* Obj_00432690::FUN_00432690(int arg)
 // register holds which argument and where the zeroing XOR sits. Retail loads
 // the call's argument into EDX and pushes it before the first field store; we
 // load it into EAX, store the field first, then zero EAX and push from ECX.
-// The volatile pattern that fixed the sibling at 0x432690 makes this one worse
-// (33.3%), so it is left plain.
+// The sibling at 0x432690 matches with plain field stores; an earlier
+// volatile-store spelling of this function scored lower (33.3%) and is not
+// used under the no-steering rule.
 //
 // FUNCTION: GAMEMD 0x4326C0
 Obj_00432690* Obj_00432690::FUN_004326C0(int arg, int extra)

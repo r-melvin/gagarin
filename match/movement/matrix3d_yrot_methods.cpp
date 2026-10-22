@@ -24,16 +24,8 @@
 // `return ret`), and tail-passes X then Z (promoted to double) to atan2
 // (0x4CAE30), leaving the angle in ST0.
 //
-// Phrasing note: our compiler is a stronger optimiser than retail's
-// 8447 and would copy-propagate/DSE the `return ret` struct copy away entirely
-// (reading the MatrixApply result straight into the atan2 args). Capturing the
-// MatrixApply return pointer (an opaque extern result => EAX-relative reads,
-// matching retail) plus a `volatile` destination is what forces our compiler to retain
-// the copy. The ONLY residual vs retail is the placement of the two arg-reserve
-// `sub esp,8` instructions: `volatile` orders the copy stores ahead of the
-// float marshalling, whereas 8447 wove the reserves into the copy. That is a
-// pure unexplained-codegen scheduling delta (the prologue, EAX-relative copy, x87
-// float promotion, the atan2 call and the epilogue all match exactly).
+// MATCHED 100% (24/24 by diff_retail; raw bytes exact apart from the two
+// relocated calls) with the plain copy `Vector3D res = *MatrixApply(...)`.
 //
 // FLOAT-CONSISTENCY FLAG (/Op): measured this pass and REFUTED for this
 // function. /Op rounds every double-typed intermediate through memory, which
@@ -47,10 +39,6 @@ double Matrix3D::GetYRotation() const
 {
     Vector3D axis(0.0f, 0.0f, 1.0f);
     Vector3D tmp;
-    Vector3D* p = MatrixApply(&tmp, this, &axis);
-    volatile Vector3D res;
-    res.X = p->X;
-    res.Y = p->Y;
-    res.Z = p->Z;
+    Vector3D res = *MatrixApply(&tmp, this, &axis);
     return atan2(res.X, res.Z);
 }

@@ -11,6 +11,11 @@
 // The whole body is guarded positively so the `return false` lands in the
 // trailing block, matching retail's layout; an early `if (!IsPresent) return
 // false;` inverts the branch and scores 11.4%.
+//
+// PARTIAL, 17.1% (6/35). Called on the object, `ShowTimers.FindItemIndex` is
+// devirtualised by cl into a direct CALL; retail loads the vptr and dispatches
+// indirectly (`MOV EDX,[0xA83D50]; CALL [EDX+0x10]`), so the body from the call
+// on is shifted.
 bool SuperClass::Lose()
 {
     if (IsPresent)
@@ -18,19 +23,12 @@ bool SuperClass::Lose()
         IsReady = false;
         IsPresent = false;
 
-        // Through a pointer, not the object: calling `ShowTimers.FindItemIndex`
-        // directly lets VC6 devirtualise (a direct CALL), while retail loads the
-        // vptr and dispatches indirectly (`MOV EDX,[0xA83D50]; CALL [EDX+0x10]`).
-        // Taking the address first keeps the dispatch indirect and still emits
-        // the object address as an immediate.
-        SuperTimerVectorClass* timers = &ShowTimers;
-        SuperClass* self = this;
-        int idx = timers->FindItemIndex(self);
-        if (idx != -1 && idx < timers->Count)
+        int idx = ShowTimers.FindItemIndex(this);
+        if (idx != -1 && idx < ShowTimers.Count)
         {
-            timers->Count--;
-            for (int j = idx; j < timers->Count; j++)
-                timers->Items[j] = timers->Items[j + 1];
+            ShowTimers.Count--;
+            for (int j = idx; j < ShowTimers.Count; j++)
+                ShowTimers.Items[j] = ShowTimers.Items[j + 1];
         }
 
         return true;

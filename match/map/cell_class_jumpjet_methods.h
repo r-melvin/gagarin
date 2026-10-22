@@ -20,24 +20,16 @@ struct CellStruct
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // The AbstractClass flag word at +0x14 (an int, as in match/_layout/
-// abstract_class.h). Bit 2 (mask 4) marks a FootClass-derived object. The
-// null-safe checked downcast reads it through the byte alias (`MOV CL,byte ptr
-// [EAX+0x14]; AND CL,4`) while the guard tests the int (`TEST byte ptr
-// [EAX+0x14],4`); the two different widths are what keep VC6 from folding the
-// cast's re-test into the guard.
+// abstract_class.h). Bit 2 (mask 4) marks a FootClass-derived object.
 #define ABSFLAGS_ISFOOT 4
 // Retail RTTI 0x817AF8 establishes the class key; public access preserves this ABI view.
 class ObjectClass
 {
 public:
     char _pad00[0x14];                 // +0x0000
-    union {
-        int           AbstractFlags;   // +0x0014
-        unsigned char AbstractFlagsLow;
-    };
+    int  AbstractFlags;                // +0x0014
 };
 GG_STATIC_ASSERT(offsetof(ObjectClass, AbstractFlags) == 0x14);
-GG_STATIC_ASSERT(offsetof(ObjectClass, AbstractFlagsLow) == 0x14);
 // FootClass::Jumpjet_OccupyCell @0x4E00B0 — __fastcall with the object in ECX
 // and the cell coordinate pushed. Declared only; relocation-normalised.
 void __fastcall Jumpjet_OccupyCell(ObjectClass* object, CellStruct coords);

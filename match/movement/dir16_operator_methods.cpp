@@ -46,28 +46,17 @@ Dir16 Dir16::Div(int divisor) const
 // True when this angle is within `tolerance` of `target`: the wrapped signed
 // difference, in absolute value, is no larger than the absolute tolerance.
 //
-// 100% compiled C++, 18/18 instructions exact. It was a `__declspec(naked)`
-// transcription at 16.7% through twenty-seven hand spellings across two
-// sessions; the body below was found by decomp-permuter in 3648 iterations
-// (about three minutes) and then minimised by hand from its output. See
-// docs/permuter_workflow.md.
-//
-// Two levers, and both are needed — either one alone scores 205 or 520:
-//   * the difference is read back through a *pointer alias* (`p`), not from
-//     `diff` directly. That is what makes cl take the tolerance's absolute
-//     value first, into callee-saved ESI (retail's PUSH/POP pair), leaving the
-//     difference as a word in CX until the second `MOVSX`;
-//   * the comparison is assigned to a dead `int` on the way out. Returning the
-//     comparison directly costs retail's bare `SETGE AL` and pays
-//     `XOR EDX,EDX; SETGE DL; MOV AL,DL` instead.
+// PARTIAL, 5.6% (1/18). Retail takes the tolerance's absolute value first,
+// into callee-saved ESI (a PUSH/POP pair), and returns a bare `SETGE AL`; the
+// plain body computes the difference first and returns via
+// `XOR EDX,EDX; SETGE DL; MOV AL,DL`. `abs(diff) <= abs(tolerance)` as a single
+// expression scores the same.
 bool Dir16::IsWithin(Dir16 const& target, Dir16 const& tolerance) const
 {
-    int result;
     short diff = (short)(this->Raw - target.Raw);
-    short const* p = &diff;
     int tol = abs((int)tolerance.Raw);
 
-    return result = tol >= abs((int)(*p));
+    return tol >= abs((int)diff);
 }
 
 // FUNCTION: GAMEMD 0x5B29C0

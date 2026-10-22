@@ -10,30 +10,9 @@
 // is gated and not suspended. The unlink is DynamicVectorClass::RemoveItem(0)
 // written out inline.
 //
-// MATCHED 100% (was 56.0%). Two things had to be true at once, and each alone
-// still reads as a wrong body:
-//
-//   * The shift loop's bound is the *member* `QueuedObjects_Count`, re-read on
-//     every iteration (retail's `MOV ECX,[ESI+0x50]` inside the loop), not a
-//     local copy. The store through `QueuedObjects_Items[i]` can alias the
-//     member, so a faithful source cannot hoist it and neither does cl.
-//   * The count read that feeds the guard and the decrement has to be a genuine
-//     second load. Retail loads `[ESI+0x50]` twice, once for the empty-queue
-//     guard at the top and again after `Items[0]` has been dereferenced; cl
-//     common-subexpression-eliminates the two and hoists the surviving test
-//     above the dereference, which shifts the whole unlink by one instruction
-//     and is what capped every earlier spelling. Reading it through a volatile
-//     lvalue pins the reload without changing anything else, and the
-//     `LEA ECX,[EAX-1]` that keeps the original live then falls out of
-//     `Count = count - 1`.
-//
-// Measured in two match_all batches: the previous local-count spelling 56.0%,
-// member bound with an ordinary reload 12.0%, `i-1`/`i` indices 54.0%, the
-// decrement in its own local 12.0%, members throughout 12.0%, a while-loop
-// 12.0%, the forced reload with the loop bound also volatile 31.4%, the forced
-// reload over the old local-count body 33.3%, and the forced reload with the
-// member bound 100% (this spelling; the same with the decrement in a named
-// local also reaches 100%).
+// PARTIAL, 56.0% (28/50). Retail reloads the count from the member after
+// dereferencing Items[0] and re-reads the member as the loop bound; this
+// local-count body reads it once (a member-bound loop scores 12.0%).
 void FactoryClass::StartProduction()
 {
     if (QueuedObjects_Count == 0)
@@ -47,11 +26,12 @@ void FactoryClass::StartProduction()
 
     TechnoTypeClass* type = QueuedObjects_Items[0];
 
-    int count = *(volatile int*)&QueuedObjects_Count;
+    int count = QueuedObjects_Count;
     if (count > 0)
     {
-        QueuedObjects_Count = count - 1;
-        for (int i = 0; i < QueuedObjects_Count; i++)
+        count--;
+        QueuedObjects_Count = count;
+        for (int i = 0; i < count; i++)
             QueuedObjects_Items[i] = QueuedObjects_Items[i + 1];
     }
 

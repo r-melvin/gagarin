@@ -69,6 +69,8 @@ void __fastcall FUN_0044FE60(Ini_0044FE60* ini)
 }
 
 // FUNCTION: GAMEMD 0x45E520
+// PARTIAL, 78.9% (15/19). Plain stores: cl lifts the `field_1790 = 1` byte
+// store ahead of the three zero stores; retail emits it after them.
 Obj_0045E520* Obj_0045E520::FUN_0045E520(int value)
 {
     FUN_00711840(value);
@@ -76,9 +78,7 @@ Obj_0045E520* Obj_0045E520::FUN_0045E520(int value)
     field_E00  = 0;
     field_1788 = 0;
     field_178C = 0;
-    // Pinned: the only store whose value does not come from the shared zero, so
-    // plainly written VC6 lifts it ahead of the other four.
-    *(volatile char*)&field_1790 = 1;
+    field_1790 = 1;
     field_1791 = 0;
 
     Secondary = &VT_007E4638;

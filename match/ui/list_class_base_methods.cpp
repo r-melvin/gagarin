@@ -125,27 +125,22 @@ int ListClass::AddItem(wchar_t const* text)
 // against the pre-removal count, JNC) and the inner one signed (JGE, the
 // inlined DynamicVectorClass::Delete's own guard).
 //
-// Two levers, both about making cl re-issue a load or a compare it would
-// otherwise reuse:
+// PARTIAL, 8.2% (5/61), and the emitted section is shorter than retail's
+// (0xC0 vs 0xC4), so the percentage is diagnostic only. Written plainly, with
+// every access through the `List` member (retail also addresses the vector
+// off the object register, never through a separate pointer). Two deltas:
 //   * retail compares `EAX,ECX` twice off one load (0x55773A and 0x557742);
-//     written with both tests against `List.ActiveCount` cl keeps the flags
-//     from the first compare and drops the second instruction entirely.
-//     Reaching the inlined Delete body through a NAMED POINTER to the vector
-//     gives the second test a different lvalue expression, and cl re-issues
-//     the compare without re-issuing the load. Spelling one test `unsigned`
-//     -- the banked counter for this fold -- does not reach it here, nor do
-//     a separate count local, an unsigned index local, an early return, or
-//     `!(a >= b)`: all five stall on the same single missing CMP.
-//   * the last guard reloads the count at 0x5577C3 where cl would reuse the
-//     register the selection guard left behind; a volatile read pins it.
+//     with both tests against `List.ActiveCount` cl keeps the flags from the
+//     first compare and drops the second instruction, shifting the body.
+//   * retail reloads the count for the last guard at 0x5577C3; cl reuses the
+//     register the selection guard left behind.
 void ListClass::RemoveItem(int index)
 {
     if ((unsigned)index < (unsigned)List.ActiveCount) {
-        TextDynVector* list = &List;
-        if (index < list->ActiveCount) {
-            list->ActiveCount--;
-            for (int i = index; i < list->ActiveCount; i++) {
-                list->Vector[i] = list->Vector[i + 1];
+        if (index < List.ActiveCount) {
+            List.ActiveCount--;
+            for (int i = index; i < List.ActiveCount; i++) {
+                List.Vector[i] = List.Vector[i + 1];
             }
         }
         if (List.ActiveCount <= LineCount) {
@@ -161,7 +156,7 @@ void ListClass::RemoveItem(int index)
                 SelectedIndex = 0;
             }
         }
-        if (CurrentTopIndex >= *(volatile int*)&List.ActiveCount) {
+        if (CurrentTopIndex >= List.ActiveCount) {
             CurrentTopIndex--;
             if (CurrentTopIndex < 0) {
                 CurrentTopIndex = 0;

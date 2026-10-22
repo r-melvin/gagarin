@@ -7,20 +7,19 @@
 #include "small_misc18_methods.h"
 
 // FUNCTION: GAMEMD 0x4101C0
-// The first two stores are dead - both slots are overwritten below - and VC6
-// removes them. Retail keeps them, because in the original they are a base
-// constructor's vtable installs that the derived constructor then replaces.
-// Volatile qualifiers stop the dead-store elimination and hold the six writes
-// in order.
+// PARTIAL, 12.5% (1/8). The first two stores are dead - both slots are
+// overwritten below - and VC6 removes them, so this emits four stores where
+// retail has six. In the original they are presumably a base constructor's
+// vtable installs that the derived constructor then replaces.
 Obj_004101C0* Obj_004101C0::FUN_004101C0(int)
 {
-    *(char* volatile*)&vt2 = VT_007E1FBC;
-    *(char* volatile*)&vt3 = VT_007E1FB4;
+    vt2 = VT_007E1FBC;
+    vt3 = VT_007E1FB4;
 
-    *(char* volatile*)&vt0 = VT_007E1F50b;
-    *(char* volatile*)&vt1 = VT_007E1F34b;
-    *(char* volatile*)&vt2 = VT_007E1F2Cb;
-    *(char* volatile*)&vt3 = VT_007E1F24b;
+    vt0 = VT_007E1F50b;
+    vt1 = VT_007E1F34b;
+    vt2 = VT_007E1F2Cb;
+    vt3 = VT_007E1F24b;
 
     return this;
 }

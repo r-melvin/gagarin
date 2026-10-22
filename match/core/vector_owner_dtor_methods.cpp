@@ -9,9 +9,7 @@
 // SCHEDULING DELTA (status partial, 95.5% - 42/44). Two instructions are
 // transposed: retail installs the vtable and then loads the element count,
 // while VC6 loads the count first. The store depends on nothing, so it floats.
-// Marking either side volatile pins the order but costs more than it gains -
-// both spellings drop to 90.9% by changing how the loop's registers are
-// assigned - so the plain form is kept.
+// The count is read straight from the member.
 //
 // The tenth batch's boundary levers were measured against it and none reaches
 // it. The release loop as a free function taking the vector as its first
@@ -36,15 +34,7 @@ void Owner_0043A600::FUN_0043A600()
 {
     Vtable = &VT_007E3E74;
 
-    // PERMUTER FINDING (score 10 from base 205, ~49k candidates). Minimised to
-    // one construct: the count is read back through a *pointer alias* rather
-    // than from the member directly, which is what lets cl sink the load below
-    // the vtable store into retail's order. Reading the member directly emits
-    // the load first no matter how the statements are arranged (nine spellings
-    // above), and neither a comma operator nor an inert `if (1) {}` in front of
-    // the load moves it (both 95.5%).
-    int* countp = &Items.Count;
-    int count = *countp;
+    int count = Items.Count;
 
     for (int i = 0; i < count; i++) {
         Item_0043A600* item = Items.Items[i];
@@ -56,6 +46,11 @@ void Owner_0043A600::FUN_0043A600()
         Items.Items[i] = 0;
     }
 
+    // The embedded vector's own teardown, inlined: retail materialises its
+    // address (`LEA ESI,[EDI+0x4]`) and addresses IsAllocated, Items and
+    // Capacity off that register (+0xD/+0x4/+0x8), so the vector's `this` is
+    // named here. Writing the same teardown through `Items.` member accesses
+    // instead scores 52.3%.
     Vector_0043A600* vector = &Items;
 
     vector->vt_00C();

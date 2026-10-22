@@ -8,16 +8,9 @@
 // expanded inside the deleting thunk at 0x4886E0 -- so the drain loop is spelled
 // out in both rather than delegated.
 //
-// Both copies need the vtable seat written through a volatile lvalue cast.
-// Retail stores the vptr and only then loads the entry count; with a plain
-// assignment cl hoists the count load above the store and the two copies sit at
-// 92.0% with an otherwise identical stream. Measured against the plain store,
-// a guarded do/while, a volatile *read* of the count, both volatile, a count
-// cached in a local and refreshed at the latch, the drain lifted into a
-// forced-inline helper, and the seat written through a layout-compatible
-// stand-in: every one of those is 92.0%, and only the volatile store is 100%.
-// (An earlier pass recorded "a volatile store" as tried and failing; that was a
-// volatile *member*, which is a different probe from the lvalue cast.)
+// Both copies are PARTIAL with the plain vptr store (0x4882D0 92.0%, 23/25;
+// 0x4886E0 93.5%, 29/31): retail stores the vptr and only then loads the entry
+// count, and cl hoists the count load above the store.
 
 // FUNCTION: GAMEMD 0x4882D0
 // CheckListClass::~CheckListClass. Each entry is a heap node the base list does
@@ -25,7 +18,7 @@
 // zero, unhook it, free it -- and then runs the base list destructor.
 void CheckListClass::Dtor()
 {
-    *(CheckListVtbl* volatile*)&this->Vfptr = (CheckListVtbl*)VT_007E4F84;
+    this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
     while (this->List.ActiveCount != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
@@ -111,7 +104,7 @@ int CheckListClass::Action(unsigned flags, void* key, int extra)
 // here rather than called, so the drain loop is spelled out a second time.
 CheckListClass* CheckListClass::ScalarDeletingDtor(unsigned char flags)
 {
-    *(CheckListVtbl* volatile*)&this->Vfptr = (CheckListVtbl*)VT_007E4F84;
+    this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
     while (this->List.ActiveCount != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
