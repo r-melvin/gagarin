@@ -901,6 +901,21 @@ int __stdcall FUN_0069BCC0(const char* name)
     return 0;
 }
 
+// REA bytes: ev_6c3466240f0af9379dc0fd78a02b209a8d15120ced2c3bd76c6742cfb62f3565.
+// Entry disassembly closes both RET4 paths at 0x69BD59; incoming ECX is unused.
+// FUNCTION: GAMEMD 0x69BD00
+int __stdcall FUN_0069BD00(int slot)
+{
+    for (int index = 0; index < PlayerCount_00A8DA84; ++index) {
+        NetPlayerClass* selected = SlotPlayers_00A8DA90[slot];
+        const char* playerName = NarrowName_007350C0(Players_00A8DA78[index]->Name);
+        const char* slotName = NarrowName_007350C0(selected->Name);
+        if (_stricmp(playerName, slotName) == 0)
+            return index;
+    }
+    return 0;
+}
+
 // TEMPLATE: GAMEMD 0x69C4F0
 // VectorClass<DiskID>::Slot6 (slot 6)
 // TEMPLATE: GAMEMD 0x69C710
