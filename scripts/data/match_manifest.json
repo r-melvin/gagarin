@@ -92193,5 +92193,14 @@
   "name": "Tactical::FUN_006DA230",
   "status": "partial",
   "pct": 91.0
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6D8C60",
+  "sym": "?FUN_006D8C60@@YIXPAVObjectClass@@H@Z",
+  "len": "0x149",
+  "name": "FUN_006D8C60",
+  "status": "partial",
+  "pct": 8.9
  }
 ]

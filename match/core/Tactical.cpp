@@ -988,6 +988,27 @@ void Tactical::FUN_006D8B30()
     unknown_D8C = DAT_00B0CE34 / 15 + 4;
 }
 
+#include "../_layout/object_class.h"
+
+// FUNCTION: GAMEMD 0x6D8C60
+void FUN_006D8C60(ObjectClass* object, int argument)
+{
+    CoordStruct coordinate = object->vf_18();
+    int xy[2] = { coordinate.X, coordinate.Y };
+    Point2D_006D1F10 projected = IsoProject(xy);
+    Pair_006D9F80 point(projected.X / 256,
+                        projected.Y / 256 - AdjustForZ(coordinate.Z));
+    point.unknown_00 -= DAT_00887324->unknown_B0.unknown_00;
+    point.unknown_04 -= DAT_00887324->unknown_B0.unknown_04;
+    if (point.unknown_00 >= -360 && point.unknown_00 <= DAT_00B0CE30 + 360 &&
+        point.unknown_04 >= -180 && point.unknown_04 <= DAT_00B0CE34 + 180) {
+        // 0x6D8D86/0x6D8D97 pass the address of this two-int point.
+        // The canonical virtual slots currently use opaque32-bit arguments.
+        object->vf_67((int)&point, argument);
+        object->vf_68((int)&point, argument);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D9F80
 void Tactical::FUN_006D9F80(const Pair_006D9F80* value)
 {
