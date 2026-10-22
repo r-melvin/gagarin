@@ -5072,7 +5072,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2700",
   "sym": "?FUN_5D2700@Obj_5D2700@@QAEPAXI@Z",
   "len": "0x1e",
@@ -6531,7 +6531,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0590",
   "sym": "?FUN_005D0590@@YIXXZ",
   "len": "0x1",
@@ -6540,7 +6540,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_function_family_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x005f3340",
   "sym": "?FUN_005F3340@@YIXXZ",
   "len": "0x1",
@@ -8007,7 +8007,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/init_misc_methods.cpp",
+  "tu": "match/core/NetDlg.cpp",
   "addr": "0x5DA6C0",
   "sym": "?FUN_005DA6C0@@YA_NXZ",
   "len": "0x52",
@@ -8727,7 +8727,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6310",
   "sym": "?FUN_005D6310@@YG_NH@Z",
   "len": "0x5",
@@ -8736,7 +8736,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6340",
   "sym": "?FUN_005D6340@@YA_NXZ",
   "len": "0x3",
@@ -8745,7 +8745,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7570",
   "sym": "?FUN_005D7570@@YA_NXZ",
   "len": "0x3",
@@ -12706,7 +12706,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0580",
   "sym": "?FUN_005D0580@@YIXPAX@Z",
   "len": "0x5",
@@ -14605,7 +14605,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0670",
   "sym": "?Clear@?$DynamicVectorClass@PAVMapSelection@@@@UAEXXZ",
   "len": "0x2a",
@@ -14614,7 +14614,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d06d0",
   "sym": "?Clear@?$DynamicVectorClass@PAVMapStage@@@@UAEXXZ",
   "len": "0x2a",
@@ -14623,7 +14623,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0730",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSAnimEntry@@@@UAEXXZ",
   "len": "0x2a",
@@ -14632,7 +14632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d0790",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSSfxEntry@@@@UAEXXZ",
   "len": "0x2a",
@@ -14641,7 +14641,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2720",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSAnim@@@@UAEXXZ",
   "len": "0x2a",
@@ -14650,7 +14650,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2780",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSSfx@@@@UAEXXZ",
   "len": "0x2A",
@@ -14677,7 +14677,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d80b0",
   "sym": "?Clear@?$DynamicVectorClass@PAVMultiplayerTeam@@@@UAEXXZ",
   "len": "0x2a",
@@ -17503,7 +17503,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D1800",
   "sym": "??_G?$VectorClass@PAVMapSelection@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17512,7 +17512,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D1850",
   "sym": "??_G?$DynamicVectorClass@PAVMapSelection@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17521,7 +17521,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d18a0",
   "sym": "??_G?$VectorClass@PAVMapStage@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17530,7 +17530,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d18f0",
   "sym": "??_G?$DynamicVectorClass@PAVMapStage@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17539,7 +17539,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D1940",
   "sym": "??_G?$VectorClass@PAVMSAnimEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17548,7 +17548,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D1990",
   "sym": "??_G?$DynamicVectorClass@PAVMSAnimEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17557,7 +17557,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d19e0",
   "sym": "??_G?$VectorClass@PAVMSSfxEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17566,7 +17566,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1a30",
   "sym": "??_G?$DynamicVectorClass@PAVMSSfxEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17575,7 +17575,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2ca0",
   "sym": "??_G?$VectorClass@PAVMSAnim@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17584,7 +17584,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2cf0",
   "sym": "??_G?$DynamicVectorClass@PAVMSAnim@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17593,7 +17593,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2D40",
   "sym": "??_G?$VectorClass@PAVMSSfx@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17602,7 +17602,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2D90",
   "sym": "??_G?$DynamicVectorClass@PAVMSSfx@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17647,7 +17647,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8810",
   "sym": "??_G?$VectorClass@PAVMultiplayerTeam@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17656,7 +17656,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8860",
   "sym": "??_G?$DynamicVectorClass@PAVMultiplayerTeam@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -19996,7 +19996,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0e30",
   "sym": "?Clear@?$VectorClass@PAVMapSelection@@@@UAEXXZ",
   "len": "0x27",
@@ -20005,7 +20005,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1090",
   "sym": "?Clear@?$VectorClass@PAVMapStage@@@@UAEXXZ",
   "len": "0x27",
@@ -20014,7 +20014,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d12f0",
   "sym": "?Clear@?$VectorClass@PAVMSAnimEntry@@@@UAEXXZ",
   "len": "0x27",
@@ -20023,7 +20023,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1550",
   "sym": "?Clear@?$VectorClass@PAVMSSfxEntry@@@@UAEXXZ",
   "len": "0x27",
@@ -20032,7 +20032,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d28d0",
   "sym": "?Clear@?$VectorClass@PAVMSAnim@@@@UAEXXZ",
   "len": "0x27",
@@ -20041,7 +20041,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2B30",
   "sym": "?Clear@?$VectorClass@PAVMSSfx@@@@UAEXXZ",
   "len": "0x27",
@@ -20068,7 +20068,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d83e0",
   "sym": "?Clear@?$VectorClass@PAVMultiplayerTeam@@@@UAEXXZ",
   "len": "0x27",
@@ -21013,7 +21013,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0EC0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMapSelection@@@@UAE_NHPAPAVMapSelection@@@Z",
   "len": "0xb0",
@@ -21022,7 +21022,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8730",
   "sym": "?FUN_5D8730@VectorResizeFamily@@QAE_NHPAPAX@Z",
   "len": "0xb0",
@@ -23038,7 +23038,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8740",
   "sym": "?Node_Is_Blank_At@@YIHH@Z",
   "len": "0x1c",
@@ -23047,7 +23047,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8760",
   "sym": "?Local_Handle_Is_Blank@@YIHXZ",
   "len": "0x1e",
@@ -23056,7 +23056,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8780",
   "sym": "?Name_Is_Local_Handle@@YIHPBG@Z",
   "len": "0x1e",
@@ -23065,7 +23065,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E87A0",
   "sym": "@Build_Slot_Nodes@0",
   "len": "0x27c",
@@ -23074,7 +23074,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8A20",
   "sym": "?Destroy_Slot_Nodes@@YIXXZ",
   "len": "0xb6",
@@ -23083,7 +23083,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8AE0",
   "sym": "?Reset_Slots@@YIXXZ",
   "len": "0x5d",
@@ -23092,7 +23092,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8B40",
   "sym": "?Clear_Lobby_Flags@@YIXXZ",
   "len": "0x17",
@@ -23101,7 +23101,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8B60",
   "sym": "?Reset_Lobby@@YIXXZ",
   "len": "0x83",
@@ -23110,7 +23110,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8BF0",
   "sym": "?Find_Node_By_Name@@YIPAUNodeNameType@@PBG@Z",
   "len": "0x10b",
@@ -23119,7 +23119,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8D00",
   "sym": "?Find_Slot_By_Name@@YIHPBG@Z",
   "len": "0x39",
@@ -23128,7 +23128,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8D40",
   "sym": "?Find_Local_Player_Slot@@YIHXZ",
   "len": "0x4b",
@@ -23137,7 +23137,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8D90",
   "sym": "?Set_Slot_Node@@YIXHPAUNodeNameType@@@Z",
   "len": "0x8",
@@ -23146,7 +23146,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E8DA0",
   "sym": "?Select_Slot@@YIXH@Z",
   "len": "0x15",
@@ -23155,7 +23155,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9240",
   "sym": "?Assign_Node_To_Slot@@YIHPAUNodeNameType@@@Z",
   "len": "0x4d",
@@ -23164,7 +23164,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9290",
   "sym": "?Release_Slot_By_Address@@YIXPBVIPXAddressClass@@@Z",
   "len": "0xa4",
@@ -23173,7 +23173,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9340",
   "sym": "?Release_Slot_By_Handle@@YIXPBD@Z",
   "len": "0xae",
@@ -23182,7 +23182,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E93F0",
   "sym": "?Is_Player_Node@@YIHPAUNodeNameType@@@Z",
   "len": "0x45",
@@ -23191,7 +23191,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9440",
   "sym": "?Is_AI_Node@@YIHPAUNodeNameType@@@Z",
   "len": "0x25",
@@ -23200,7 +23200,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9470",
   "sym": "?Is_Occupied_Node@@YIHPAUNodeNameType@@@Z",
   "len": "0x2d",
@@ -23209,7 +23209,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E94A0",
   "sym": "?AI_Difficulty_Of@@YIHPAUNodeNameType@@@Z",
   "len": "0x2c",
@@ -23218,7 +23218,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E94D0",
   "sym": "?Count_AI_Slots@@YIHXZ",
   "len": "0x3e",
@@ -23227,7 +23227,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9510",
   "sym": "?No_Open_Slot@@YI_NXZ",
   "len": "0x4e",
@@ -23236,7 +23236,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/netshare_slot_nodes.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E9560",
   "sym": "?No_Observer_Slot@@YI_NXZ",
   "len": "0x1f",
@@ -24298,7 +24298,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CEDD0",
   "sym": "?Construct@MapStageList@@QAEPAV1@XZ",
   "len": "0x86",
@@ -24307,7 +24307,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CEE60",
   "sym": "??1MapStageList@@QAE@XZ",
   "len": "0x84",
@@ -24316,7 +24316,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF5F0",
   "sym": "?ClearAll@MapStageList@@QAEXXZ",
   "len": "0xbf",
@@ -24326,7 +24326,7 @@
   "note": "volatile removed from MapStageList Bounds members (steering). Multiset identical; cl hoists the second loop Count load above the four bounds stores."
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF6B0",
   "sym": "?FindByName@MapStageList@@QAEPAVMapStage@@PAVObj_007B4620@@@Z",
   "len": "0xa2",
@@ -24335,7 +24335,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF760",
   "sym": "?FindByTitle@MapStageList@@QAEPAVMapStage@@PAVObj_007B4620@@@Z",
   "len": "0xa5",
@@ -24344,7 +24344,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF810",
   "sym": "?GetAt@MapStageList@@QAEPAVMapStage@@G@Z",
   "len": "0x1e",
@@ -24353,7 +24353,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF830",
   "sym": "?AddStage@MapStageList@@QAEHPAVMapStage@@@Z",
   "len": "0xd",
@@ -24362,7 +24362,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/map_stage_list_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5CF840",
   "sym": "?FindTitle@MapStageList@@QAEPAVObj_007B4620@@PAV2@@Z",
   "len": "0x97",
@@ -26544,7 +26544,7 @@
   "pct_metric": "relocation-normalized-bytes"
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6540",
   "sym": "?PopulateTeamDropdownForPlayer@MultiplayerGameMode@@UAEXPAXH@Z",
   "len": "0xd1",
@@ -26553,7 +26553,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_game_mode_class_get_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5F30",
   "sym": "?MultiplayerGameMode_Get@@YIPAVMultiplayerGameMode@@H@Z",
   "len": "0xC9",
@@ -26562,7 +26562,7 @@
   "pct": 79.3
  },
  {
-  "tu": "match/network/mp_game_mode_class_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D62C0",
   "sym": "?vf_4@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x49",
@@ -26571,7 +26571,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_game_mode_class_spawn_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7030",
   "sym": "?SpawnBaseUnits@MultiplayerGameMode_005D7030@@QAE_NPAUHouse_005D7030@@K@Z",
   "len": "0xb5",
@@ -26580,7 +26580,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6690",
   "sym": "?CreateMPTeams@MultiplayerGameMode@@UAEXAAV?$DynamicVectorClass@PAVMultiplayerTeam@@@@@Z",
   "len": "0xbf",
@@ -26598,7 +26598,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1950",
   "sym": "?FUN_005F1950@NullModemClass@@QBEHXZ",
   "len": "0x4",
@@ -26607,7 +26607,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1960",
   "sym": "?FUN_005F1960@NullModemClass@@QAEHXZ",
   "len": "0x5A",
@@ -26616,7 +26616,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F19C0",
   "sym": "?FUN_005F19C0@NullModemClass@@QAEHXZ",
   "len": "0x15",
@@ -26625,7 +26625,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F19E0",
   "sym": "?FUN_005F19E0@NullModemClass@@QAEHPAUSerialSettings_005F19E0@@@Z",
   "len": "0x184",
@@ -26634,7 +26634,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1B70",
   "sym": "?Shutdown@NullModemClass@@QAEXXZ",
   "len": "0x42",
@@ -26643,7 +26643,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1BC0",
   "sym": "?SetTiming@NullModemClass@@QAEXHHHH@Z",
   "len": "0x30",
@@ -26652,7 +26652,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1BF0",
   "sym": "?FUN_005F1BF0@NullModemClass@@QAEHPAXHH@Z",
   "len": "0x34",
@@ -26661,7 +26661,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_class_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1C30",
   "sym": "?FUN_005F1C30@NullModemClass@@QAEHPAXPAH@Z",
   "len": "0x21",
@@ -40505,7 +40505,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D06A0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMapSelection@@@@UBEHPAPAVMapSelection@@@Z",
   "len": "0x1b",
@@ -40514,7 +40514,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D06C0",
   "sym": "?Slot6@?$VectorClass@PAVMapSelection@@@@UBEPAVMapSelection@@H@Z",
   "len": "0xd",
@@ -40523,7 +40523,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0D40",
   "sym": "??8?$VectorClass@PAVMapSelection@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -40532,7 +40532,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0D80",
   "sym": "?SetCapacity@?$VectorClass@PAVMapSelection@@@@UAE_NHPAPAVMapSelection@@@Z",
   "len": "0xae",
@@ -40541,7 +40541,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0E60",
   "sym": "?FindItemIndex@?$VectorClass@PAVMapSelection@@@@UBEHABQAVMapSelection@@@Z",
   "len": "0x33",
@@ -40550,7 +40550,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0EA0",
   "sym": "?Slot5@?$VectorClass@PAVMapSelection@@@@UBEHPAPAVMapSelection@@@Z",
   "len": "0x1b",
@@ -40559,7 +40559,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapselection_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0F70",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMapSelection@@@@UBEHABQAVMapSelection@@@Z",
   "len": "0x26",
@@ -40833,7 +40833,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "??8?$VectorClass@PAVMSAnimEntry@@@@UBE_NABV0@@Z",
   "name": "VectorClass<MSAnimEntry*>::operator=="
  },
@@ -40842,7 +40842,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVMSAnimEntry@@@@UAE_NHPAPAVMSAnimEntry@@@Z",
   "name": "VectorClass<MSAnimEntry*>::SetCapacity"
  },
@@ -40851,7 +40851,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVMSAnimEntry@@@@UBEHABQAVMSAnimEntry@@@Z",
   "name": "VectorClass<MSAnimEntry*>::FindItemIndex"
  },
@@ -40860,7 +40860,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot5@?$VectorClass@PAVMSAnimEntry@@@@UBEHPAPAVMSAnimEntry@@@Z",
   "name": "VectorClass<MSAnimEntry*>::Slot5"
  },
@@ -40869,7 +40869,7 @@
   "len": "0x0d",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot6@?$VectorClass@PAVMSAnimEntry@@@@UBEPAVMSAnimEntry@@H@Z",
   "name": "VectorClass<MSAnimEntry*>::Slot6"
  },
@@ -40878,7 +40878,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSAnimEntry@@@@UAE_NHPAPAVMSAnimEntry@@@Z",
   "name": "DynamicVectorClass<MSAnimEntry*>::SetCapacity"
  },
@@ -40887,7 +40887,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSAnimEntry@@@@UBEHABQAVMSAnimEntry@@@Z",
   "name": "DynamicVectorClass<MSAnimEntry*>::FindItemIndex"
  },
@@ -40896,7 +40896,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_msanimentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMSAnimEntry@@@@UBEHPAPAVMSAnimEntry@@@Z",
   "name": "DynamicVectorClass<MSAnimEntry*>::Slot5"
  },
@@ -41216,7 +41216,7 @@
   "len": "0x26"
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d27e0",
   "sym": "??8?$VectorClass@PAVMSAnim@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41225,7 +41225,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2820",
   "sym": "?SetCapacity@?$VectorClass@PAVMSAnim@@@@UAE_NHPAPAVMSAnim@@@Z",
   "len": "0xae",
@@ -41234,7 +41234,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2900",
   "sym": "?FindItemIndex@?$VectorClass@PAVMSAnim@@@@UBEHABQAVMSAnim@@@Z",
   "len": "0x33",
@@ -41243,7 +41243,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2940",
   "sym": "?Slot5@?$VectorClass@PAVMSAnim@@@@UBEHPAPAVMSAnim@@@Z",
   "len": "0x1b",
@@ -41252,7 +41252,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2770",
   "sym": "?Slot6@?$VectorClass@PAVMSAnim@@@@UBEPAVMSAnim@@H@Z",
   "len": "0xd",
@@ -41261,7 +41261,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2960",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSAnim@@@@UAE_NHPAPAVMSAnim@@@Z",
   "len": "0xb0",
@@ -41270,7 +41270,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2a10",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSAnim@@@@UBEHABQAVMSAnim@@@Z",
   "len": "0x26",
@@ -41279,7 +41279,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_msanim_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d2750",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMSAnim@@@@UBEHPAPAVMSAnim@@@Z",
   "len": "0x1b",
@@ -41738,7 +41738,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d0fa0",
   "sym": "??8?$VectorClass@PAVMapStage@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41747,7 +41747,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d0fe0",
   "sym": "?SetCapacity@?$VectorClass@PAVMapStage@@@@UAE_NHPAPAVMapStage@@@Z",
   "len": "0xae",
@@ -41756,7 +41756,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d10c0",
   "sym": "?FindItemIndex@?$VectorClass@PAVMapStage@@@@UBEHABQAVMapStage@@@Z",
   "len": "0x33",
@@ -41765,7 +41765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1100",
   "sym": "?Slot5@?$VectorClass@PAVMapStage@@@@UBEHPAPAVMapStage@@@Z",
   "len": "0x1b",
@@ -41774,7 +41774,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d0720",
   "sym": "?Slot6@?$VectorClass@PAVMapStage@@@@UBEPAVMapStage@@H@Z",
   "len": "0xd",
@@ -41783,7 +41783,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1120",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMapStage@@@@UAE_NHPAPAVMapStage@@@Z",
   "len": "0xb0",
@@ -41792,7 +41792,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d11d0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMapStage@@@@UBEHABQAVMapStage@@@Z",
   "len": "0x26",
@@ -41801,7 +41801,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapstage_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d0700",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMapStage@@@@UBEHPAPAVMapStage@@@Z",
   "len": "0x1b",
@@ -41810,7 +41810,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1460",
   "sym": "??8?$VectorClass@PAVMSSfxEntry@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41819,7 +41819,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d14a0",
   "sym": "?SetCapacity@?$VectorClass@PAVMSSfxEntry@@@@UAE_NHPAPAVMSSfxEntry@@@Z",
   "len": "0xae",
@@ -41828,7 +41828,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1580",
   "sym": "?FindItemIndex@?$VectorClass@PAVMSSfxEntry@@@@UBEHABQAVMSSfxEntry@@@Z",
   "len": "0x33",
@@ -41837,7 +41837,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d15c0",
   "sym": "?Slot5@?$VectorClass@PAVMSSfxEntry@@@@UBEHPAPAVMSSfxEntry@@@Z",
   "len": "0x1b",
@@ -41846,7 +41846,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d07e0",
   "sym": "?Slot6@?$VectorClass@PAVMSSfxEntry@@@@UBEPAVMSSfxEntry@@H@Z",
   "len": "0xd",
@@ -41855,7 +41855,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d15e0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSSfxEntry@@@@UAE_NHPAPAVMSSfxEntry@@@Z",
   "len": "0xb0",
@@ -41864,7 +41864,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d1690",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSSfxEntry@@@@UBEHABQAVMSSfxEntry@@@Z",
   "len": "0x26",
@@ -41873,7 +41873,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfxentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5d07c0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMSSfxEntry@@@@UBEHPAPAVMSSfxEntry@@@Z",
   "len": "0x1b",
@@ -41882,7 +41882,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D27B0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMSSfx@@@@UBEHPAPAVMSSfx@@@Z",
   "len": "0x1B",
@@ -41891,7 +41891,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D27D0",
   "sym": "?Slot6@?$VectorClass@PAVMSSfx@@@@UBEPAVMSSfx@@H@Z",
   "len": "0x0D",
@@ -41900,7 +41900,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2A40",
   "sym": "??8?$VectorClass@PAVMSSfx@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -41909,7 +41909,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2A80",
   "sym": "?SetCapacity@?$VectorClass@PAVMSSfx@@@@UAE_NHPAPAVMSSfx@@@Z",
   "len": "0xAE",
@@ -41918,7 +41918,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2B60",
   "sym": "?FindItemIndex@?$VectorClass@PAVMSSfx@@@@UBEHABQAVMSSfx@@@Z",
   "len": "0x33",
@@ -41927,7 +41927,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2BA0",
   "sym": "?Slot5@?$VectorClass@PAVMSSfx@@@@UBEHPAPAVMSSfx@@@Z",
   "len": "0x1B",
@@ -41936,7 +41936,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2BC0",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSSfx@@@@UAE_NHPAPAVMSSfx@@@Z",
   "len": "0xB0",
@@ -41945,7 +41945,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mssfx_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D2C70",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSSfx@@@@UBEHABQAVMSSfx@@@Z",
   "len": "0x26",
@@ -41954,7 +41954,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d82f0",
   "sym": "??8?$VectorClass@PAVMultiplayerTeam@@@@UBE_NABV0@@Z",
   "len": "0x3e",
@@ -41963,7 +41963,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8330",
   "sym": "?SetCapacity@?$VectorClass@PAVMultiplayerTeam@@@@UAE_NHPAPAVMultiplayerTeam@@@Z",
   "len": "0xae",
@@ -41972,7 +41972,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8410",
   "sym": "?FindItemIndex@?$VectorClass@PAVMultiplayerTeam@@@@UBEHABQAVMultiplayerTeam@@@Z",
   "len": "0x33",
@@ -41981,7 +41981,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8450",
   "sym": "?Slot5@?$VectorClass@PAVMultiplayerTeam@@@@UBEHPAPAVMultiplayerTeam@@@Z",
   "len": "0x1b",
@@ -41990,7 +41990,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8100",
   "sym": "?Slot6@?$VectorClass@PAVMultiplayerTeam@@@@UBEPAVMultiplayerTeam@@H@Z",
   "len": "0xd",
@@ -41999,7 +41999,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8470",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMultiplayerTeam@@@@UAE_NHPAPAVMultiplayerTeam@@@Z",
   "len": "0xb0",
@@ -42008,7 +42008,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d8520",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMultiplayerTeam@@@@UBEHABQAVMultiplayerTeam@@@Z",
   "len": "0x26",
@@ -42017,7 +42017,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayerteam_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5d80e0",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMultiplayerTeam@@@@UBEHPAPAVMultiplayerTeam@@@Z",
   "len": "0x1b",
@@ -53170,7 +53170,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7FD0",
   "sym": "??_GInitializerBase@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53179,7 +53179,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7FF0",
   "sym": "??_G?$Initializer@VMultiplayerBattle@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53188,7 +53188,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8010",
   "sym": "??_G?$Initializer@VMultiplayerManBattle@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53197,7 +53197,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8030",
   "sym": "??_G?$Initializer@VMultiplayerSiege@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53206,7 +53206,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8050",
   "sym": "??_G?$Initializer@VUnholyAlliance@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53215,7 +53215,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8070",
   "sym": "??_G?$Initializer@VFreeForAll@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53224,7 +53224,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_initializer_ddtors.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8090",
   "sym": "??_G?$Initializer@VMPCooperative@@@MultiplayerGameMode@@UAEPAXI@Z",
   "len": "0x20",
@@ -53233,7 +53233,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8140",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMultiplayerGameMode@@@@UBEHPAPAVMultiplayerGameMode@@@Z",
   "len": "0x1B",
@@ -53242,7 +53242,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8160",
   "sym": "?Slot6@?$VectorClass@PAVMultiplayerGameMode@@@@UBEPAVMultiplayerGameMode@@H@Z",
   "len": "0xD",
@@ -53251,7 +53251,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8550",
   "sym": "??8?$VectorClass@PAVMultiplayerGameMode@@@@UBE_NABV0@@Z",
   "len": "0x3E",
@@ -53260,7 +53260,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8590",
   "sym": "?SetCapacity@?$VectorClass@PAVMultiplayerGameMode@@@@UAE_NHPAPAVMultiplayerGameMode@@@Z",
   "len": "0xAE",
@@ -53269,7 +53269,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8670",
   "sym": "?FindItemIndex@?$VectorClass@PAVMultiplayerGameMode@@@@UBEHABQAVMultiplayerGameMode@@@Z",
   "len": "0x33",
@@ -53278,7 +53278,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D86B0",
   "sym": "?Slot5@?$VectorClass@PAVMultiplayerGameMode@@@@UBEHPAPAVMultiplayerGameMode@@@Z",
   "len": "0x1B",
@@ -53287,7 +53287,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multiplayergamemode_slot_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D87E0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMultiplayerGameMode@@@@UBEHABQAVMultiplayerGameMode@@@Z",
   "len": "0x26",
@@ -59749,7 +59749,7 @@
   "pct": 17.3
  },
  {
-  "tu": "match/core/wol_serial_key_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DC170",
   "sym": "?FUN_005dc170@@YI_NPAD@Z",
   "len": "0x1D2",
@@ -59758,7 +59758,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_init_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F16E0",
   "sym": "?Init@NullModemInitView@@QAEHHHPADHDHH@Z",
   "len": "0x261",
@@ -59767,7 +59767,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/null_modem_init_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F3170",
   "sym": "?FUN_005f3170@NullModemInitView@@QAE_NXZ",
   "len": "0x1AE",
@@ -70699,7 +70699,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9540",
   "sym": "_$E2",
   "len": "0x13",
@@ -70708,7 +70708,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9560",
   "sym": "_$E5",
   "len": "0x13",
@@ -70717,7 +70717,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C96E0",
   "sym": "_$E8",
   "len": "0x1a",
@@ -70726,7 +70726,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9700",
   "sym": "??0Obj_005C9700@@QAE@XZ",
   "len": "0x1f",
@@ -70735,7 +70735,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9720",
   "sym": "?FUN_005C9720@Obj_005C9700@@QAEXXZ",
   "len": "0x8d",
@@ -70744,7 +70744,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C97B0",
   "sym": "?FUN_005C97B0@@YIXPAGH@Z",
   "len": "0x98",
@@ -70753,7 +70753,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9850",
   "sym": "?FUN_005C9850@@YIXPAUHWND__@@HH@Z",
   "len": "0x43",
@@ -70762,7 +70762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C98A0",
   "sym": "?FUN_005C98A0@@YAXXZ",
   "len": "0x1f3",
@@ -70771,7 +70771,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9AA0",
   "sym": "?FUN_005C9AA0@@YAXXZ",
   "len": "0x3e",
@@ -70780,7 +70780,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9AE0",
   "sym": "?FUN_005C9AE0@@YAHPBX0@Z",
   "len": "0x28",
@@ -70789,7 +70789,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5C9B10",
   "sym": "?FUN_005C9B10@@YGHPAUHWND__@@IIJ@Z",
   "len": "0x5ff",
@@ -70798,7 +70798,7 @@
   "pct": 37.9
  },
  {
-  "tu": "match/ui/mp_score.cpp",
+  "tu": "match/ui/MPScore.cpp",
   "addr": "0x5CA110",
   "sym": "?FUN_005CA110@@YIPAXH@Z",
   "len": "0x30e",
@@ -70807,7 +70807,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA450",
   "sym": "_$E2",
   "len": "0x13",
@@ -70816,7 +70816,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA470",
   "sym": "_$E5",
   "len": "0x13",
@@ -70825,7 +70825,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA5F0",
   "sym": "_$E8",
   "len": "0x1a",
@@ -70834,7 +70834,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA630",
   "sym": "??0MultiplayerSiege@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
   "len": "0x34",
@@ -70843,7 +70843,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA670",
   "sym": "??1MultiplayerSiege@@UAE@XZ",
   "len": "0xb",
@@ -70852,7 +70852,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA680",
   "sym": "?vf_4@MultiplayerSiege@@UAE_NXZ",
   "len": "0x4f",
@@ -70861,7 +70861,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA6D0",
   "sym": "?vf_5@MultiplayerSiege@@UAE_NAAVObj_007B66D0@@@Z",
   "len": "0xf2",
@@ -70870,7 +70870,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA7D0",
   "sym": "?vf_6@MultiplayerSiege@@UAE_NXZ",
   "len": "0x5",
@@ -70879,7 +70879,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA7E0",
   "sym": "?vf_15@MultiplayerSiege@@UAE_NXZ",
   "len": "0x3",
@@ -70888,7 +70888,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA7F0",
   "sym": "?vf_31@MultiplayerSiege@@UAE_NXZ",
   "len": "0x5",
@@ -70897,7 +70897,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA800",
   "sym": "?vf_33@MultiplayerSiege@@UAE_N_N@Z",
   "len": "0x1ad",
@@ -70906,7 +70906,7 @@
   "pct": 10.1
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA9B0",
   "sym": "?CreateMPTeams@MultiplayerSiege@@UAEXAAV?$DynamicVectorClass@PAVMultiplayerTeam@@@@@Z",
   "len": "0x10d",
@@ -70915,7 +70915,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege.cpp",
+  "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CAAC0",
   "sym": "?SpawnBaseUnits@MultiplayerSiege@@UAE_NPAVHouseClass@@H@Z",
   "len": "0x104",
@@ -70924,7 +70924,7 @@
   "pct": 6.5
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAC50",
   "sym": "_$E2",
   "len": "0x13",
@@ -70933,7 +70933,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAC70",
   "sym": "_$E5",
   "len": "0x13",
@@ -70942,7 +70942,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CADF0",
   "sym": "_$E8",
   "len": "0x1a",
@@ -70951,7 +70951,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAE10",
   "sym": "??0MultiplayerSiegeDefenderTeam@@QAE@XZ",
   "len": "0x43",
@@ -70960,7 +70960,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAE60",
   "sym": "??1MultiplayerSiegeDefenderTeam@@UAE@XZ",
   "len": "0xb",
@@ -70969,7 +70969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAE70",
   "sym": "?vf_1@MultiplayerSiegeDefenderTeam@@UAE_NH@Z",
   "len": "0x3f",
@@ -70978,7 +70978,7 @@
   "pct": 67.9
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAEB0",
   "sym": "??0MultiplayerSiegeAttackerTeam@@QAE@XZ",
   "len": "0x43",
@@ -70987,7 +70987,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_siege_team.cpp",
+  "tu": "match/network/MPSiegeTeam.cpp",
   "addr": "0x5CAF00",
   "sym": "??1MultiplayerSiegeAttackerTeam@@UAE@XZ",
   "len": "0xb",
@@ -70996,7 +70996,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5B60",
   "sym": "??0MultiplayerGameMode@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
   "len": "0x1c0",
@@ -71005,7 +71005,7 @@
   "pct": 64.4
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5DB0",
   "sym": "?vf_10@MultiplayerGameMode@@UAEHXZ",
   "len": "0x6",
@@ -71014,7 +71014,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5DC0",
   "sym": "?vf_11@MultiplayerGameMode@@UAEHXZ",
   "len": "0xe",
@@ -71023,7 +71023,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5DD0",
   "sym": "?vf_12@MultiplayerGameMode@@UAEHXZ",
   "len": "0xe",
@@ -71032,7 +71032,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5DE0",
   "sym": "?vf_13@MultiplayerGameMode@@UAE_NH@Z",
   "len": "0x2b",
@@ -71041,7 +71041,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6320",
   "sym": "?vf_24@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x3",
@@ -71050,7 +71050,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6330",
   "sym": "?vf_25@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x3",
@@ -71059,7 +71059,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6350",
   "sym": "?vf_15@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x4",
@@ -71068,7 +71068,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6360",
   "sym": "?vf_16@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x3",
@@ -71077,7 +71077,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6370",
   "sym": "?vf_17@MultiplayerGameMode@@UAEHXZ",
   "len": "0x64",
@@ -71086,7 +71086,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6430",
   "sym": "?vf_27@MultiplayerGameMode@@UAEHXZ",
   "len": "0xa",
@@ -71095,7 +71095,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6440",
   "sym": "?vf_28@MultiplayerGameMode@@UAEHXZ",
   "len": "0x5",
@@ -71104,7 +71104,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6450",
   "sym": "?vf_18@MultiplayerGameMode@@UAEXPAXPAV?$DynamicVectorClass@H@@H@Z",
   "len": "0x6d",
@@ -71113,7 +71113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D64C0",
   "sym": "?vf_19@MultiplayerGameMode@@UAEXPAXPAV?$DynamicVectorClass@H@@H@Z",
   "len": "0x72",
@@ -71122,7 +71122,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6790",
   "sym": "?vf_31@MultiplayerGameMode@@UAE_NXZ",
   "len": "0xf",
@@ -71131,7 +71131,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D67A0",
   "sym": "?vf_7@MultiplayerGameMode@@UAE_NH@Z",
   "len": "0x5",
@@ -71140,7 +71140,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6890",
   "sym": "?vf_49@MultiplayerGameMode@@UAE?AVCell@@HAAV?$DynamicVectorClass@VCell@@@@PA_N@Z",
   "len": "0x34c",
@@ -71149,7 +71149,7 @@
   "pct": 20.5
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6BE0",
   "sym": "?vf_32@MultiplayerGameMode@@UAE_N_N@Z",
   "len": "0x8b",
@@ -71158,7 +71158,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D6C70",
   "sym": "?vf_33@MultiplayerGameMode@@UAE_N_N@Z",
   "len": "0x10a",
@@ -71167,7 +71167,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D70F0",
   "sym": "?vf_51@MultiplayerGameMode@@UAE_NPAVHouseClass@@PAH@Z",
   "len": "0x3ab",
@@ -71176,7 +71176,7 @@
   "pct": 5.0
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D74A0",
   "sym": "?vf_34@MultiplayerGameMode@@UAE_NXZ",
   "len": "0xae",
@@ -71185,7 +71185,7 @@
   "pct": 18.5
  },
  {
-  "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7F20",
   "sym": "??_GMultiplayerGameMode@@UAEPAXI@Z",
   "len": "0xaa",
@@ -76901,7 +76901,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0850",
   "sym": "?SetCapacity@?$VectorClass@UPoint2D@@@@UAE_NHPAUPoint2D@@@Z",
   "len": "0xd0",
@@ -76910,7 +76910,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D09C0",
   "sym": "?SetCapacity@?$DynamicVectorClass@UPoint2D@@@@UAE_NHPAUPoint2D@@@Z",
   "len": "0xe0",
@@ -76919,7 +76919,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0AA0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@UPoint2D@@@@UBEHABUPoint2D@@@Z",
   "len": "0x40",
@@ -82283,7 +82283,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu153_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D26F0",
   "sym": "?FUN_005D26F0@Obj_005D26F0@@QAEXXZ",
   "len": "0x1",
@@ -82328,7 +82328,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu156_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7580",
   "sym": "?FUN_005D7580@Obj_005D7580@@QAEPAU1@XZ",
   "len": "0x9",
@@ -82337,7 +82337,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu156_methods.cpp",
+  "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7CD0",
   "sym": "?FUN_005D7CD0@Obj_005D7CD0@@QAEXXZ",
   "len": "0x7",
@@ -82364,7 +82364,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu160_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DAF10",
   "sym": "?FUN_005DAF10@@YAXXZ",
   "len": "0x1",
@@ -82373,7 +82373,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu160_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DAFD0",
   "sym": "?FUN_005DAFD0@@YIXHH@Z",
   "len": "0x7",
@@ -82382,7 +82382,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu160_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DFDD0",
   "sym": "?FUN_005DFDD0@@YAXXZ",
   "len": "0x1",
@@ -82391,7 +82391,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu160_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DFDE0",
   "sym": "?FUN_005DFDE0@@YAXXZ",
   "len": "0x1",
@@ -82400,7 +82400,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu160_methods.cpp",
+  "tu": "match/core/netdlg2.cpp",
   "addr": "0x5DFDF0",
   "sym": "?FUN_005DFDF0@@YAXXZ",
   "len": "0x1",
@@ -82409,7 +82409,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/trivial_tu161_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E2F60",
   "sym": "?FUN_005E2F60@Obj_005E2F60@@QAEXXZ",
   "len": "0x20",
@@ -82418,7 +82418,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/trivial_tu161_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5E3700",
   "sym": "?FUN_005E3700@@YIHPAUObj_005E3700@@H@Z",
   "len": "0x1a",
@@ -82427,7 +82427,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/trivial_tu161_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5EE190",
   "sym": "?FUN_005EE190@@YAHXZ",
   "len": "0x1c",
@@ -82454,7 +82454,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu164_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F3440",
   "sym": "?FUN_005F3440@@YGHH@Z",
   "len": "0x5",
@@ -82463,7 +82463,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu164_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F3520",
   "sym": "?FUN_005F3520@Obj_005F3520@@QBEHH@Z",
   "len": "0x5",
@@ -82472,7 +82472,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/trivial_tu164_methods.cpp",
+  "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F3530",
   "sym": "?FUN_005F3530@Obj_005F3530@@QBEHH@Z",
   "len": "0x5",
@@ -87058,6 +87058,168 @@
   "sym": "?FUN_005B77C0@@YAXXZ",
   "len": "0x1a",
   "name": "FUN_005B77C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Multiplayer.cpp",
+  "addr": "0x5D58E0",
+  "sym": "?FUN_005D58E0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005D58E0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Multiplayer.cpp",
+  "addr": "0x5D5900",
+  "sym": "?FUN_005D5900@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005D5900",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/Multiplayer.cpp",
+  "addr": "0x5D5A80",
+  "sym": "?FUN_005D5A80@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005D5A80",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NetDlg.cpp",
+  "addr": "0x5DA500",
+  "sym": "?FUN_005DA500@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005DA500",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NetDlg.cpp",
+  "addr": "0x5DA520",
+  "sym": "?FUN_005DA520@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005DA520",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NetDlg.cpp",
+  "addr": "0x5DA6A0",
+  "sym": "?FUN_005DA6A0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005DA6A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/netdlg2.cpp",
+  "addr": "0x5DAD20",
+  "sym": "?FUN_005DAD20@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005DAD20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/netdlg2.cpp",
+  "addr": "0x5DAD40",
+  "sym": "?FUN_005DAD40@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005DAD40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/netdlg2.cpp",
+  "addr": "0x5DAEC0",
+  "sym": "?FUN_005DAEC0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005DAEC0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2460",
+  "sym": "?FUN_005E2460@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005E2460",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2480",
+  "sym": "?FUN_005E2480@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005E2480",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/economy/netshare.cpp",
+  "addr": "0x5E2600",
+  "sym": "?FUN_005E2600@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005E2600",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NullDlg.cpp",
+  "addr": "0x5EF320",
+  "sym": "?FUN_005EF320@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005EF320",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NullDlg.cpp",
+  "addr": "0x5EF340",
+  "sym": "?FUN_005EF340@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005EF340",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/NullDlg.cpp",
+  "addr": "0x5EF4C0",
+  "sym": "?FUN_005EF4C0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005EF4C0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F1400",
+  "sym": "?FUN_005F1400@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005F1400",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F1420",
+  "sym": "?FUN_005F1420@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005F1420",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/NullMgr.cpp",
+  "addr": "0x5F15A0",
+  "sym": "?FUN_005F15A0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005F15A0",
   "status": "matched",
   "pct": 100
  }

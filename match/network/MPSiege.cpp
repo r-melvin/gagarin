@@ -1,12 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+//   Original translation unit MPSiege.cpp. The name is the source-file string at 0x82ff2c
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5ca726 inside this object's
+//   code range (0x5ca420-0x5cac1f). Functions are in ascending retail address order.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
 //
 // The MPSiege.cpp block of retail .text (0x5CA420..0x5CAC1F; the unit's own
 // assert path at 0x82FF2C names it): three of the unit's run-time
 // initialisers and the MultiplayerSiege constructor, destructor and slot
 // overrides, in retail address order. MultiplayerSiege is declared in
 // multiplayer_game_mode.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
 //
 // STRING: GAMEMD 0x82FEE8 "MP:NoAttackers"
 // STRING: GAMEMD 0x82FEF8 "MP:OnlyOneBeseiged"
@@ -31,16 +37,6 @@ extern double DAT_00ABFA20;
 // GLOBAL: GAMEMD 0x7EE6E8
 const double DAT_007EE6E8 = 60.0;
 
-// SYNTHETIC: GAMEMD 0x5CA450
-// GLOBAL: GAMEMD 0xABFA70
-double DAT_00ABFA70 = DAT_00ABFA20 / DAT_007EE6E8;
-// SYNTHETIC: GAMEMD 0x5CA470
-// GLOBAL: GAMEMD 0xABFA58
-double DAT_00ABFA58 = 1.0 / DAT_00ABFA70;
-// SYNTHETIC: GAMEMD 0x5CA5F0
-// GLOBAL: GAMEMD 0xABFA60
-TuningCoordInit DAT_00ABFA60(128, 128, 0);
-
 // ---- MultiplayerSiege ----------------------------------------------------------------------------------------------
 
 // GLOBAL: GAMEMD 0x82FF2C -- this unit's build path, handed to the label lookup.
@@ -48,7 +44,6 @@ extern const char DAT_0082FF2C[];
 
 // GLOBAL: GAMEMD 0xA80228 -- the house registry (Items +0x04 = 0xA8022C, Count +0x10 = 0xA80238).
 extern DynamicVectorClass<HouseClass*> DAT_00A80228;
-
 
 // FUNCTION: GAMEMD 0x688380 (decl; reloc) -- the scenario's start cells, built
 // into the caller's vector (hidden pointer in ECX, the flag in DL).
@@ -71,6 +66,18 @@ int __fastcall FUN_00688ED0(BuildingClass* building, const Cell& cell, int unkno
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- resolve a label to its localised
 // text; __fastcall with the file and line on the stack, RET 8.
 const wchar_t* __fastcall FUN_00734E60(const char* label, int flags, const char* file, int line);
+
+// SYNTHETIC: GAMEMD 0x5CA450
+// GLOBAL: GAMEMD 0xABFA70
+double DAT_00ABFA70 = DAT_00ABFA20 / DAT_007EE6E8;
+
+// SYNTHETIC: GAMEMD 0x5CA470
+// GLOBAL: GAMEMD 0xABFA58
+double DAT_00ABFA58 = 1.0 / DAT_00ABFA70;
+
+// SYNTHETIC: GAMEMD 0x5CA5F0
+// GLOBAL: GAMEMD 0xABFA60
+TuningCoordInit DAT_00ABFA60(128, 128, 0);
 
 // FUNCTION: GAMEMD 0x5CA630
 MultiplayerSiege::MultiplayerSiege(const Obj_007B66D0& name, const Obj_007B66D0& description,
@@ -148,24 +155,28 @@ bool MultiplayerSiege::vf_5(Obj_007B66D0& message)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA7D0
 bool MultiplayerSiege::vf_6()
 {
     return MultiplayerGameMode::vf_6();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA7E0
 bool MultiplayerSiege::vf_15()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA7F0
 bool MultiplayerSiege::vf_31()
 {
     return MultiplayerGameMode::vf_31();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA800
 //
 // Hand out the start cells: the first team-1 player's house takes cell 0,
@@ -219,6 +230,7 @@ bool MultiplayerSiege::vf_33(bool unknown)
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA9B0
 //
 // The siege's three teams, in order: observers, defenders, attackers.
@@ -229,6 +241,7 @@ void MultiplayerSiege::CreateMPTeams(DynamicVectorClass<MultiplayerTeam*>& teams
     teams.AddItem(new MultiplayerSiegeAttackerTeam);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CAAC0
 //
 // A defending player's house gets one building of the first buildable type

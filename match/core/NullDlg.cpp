@@ -1,0 +1,50 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit NullDlg.CPP. The name is the source-file string at 0x831e84
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5ef768 inside this object's
+//   code range (0x5ef2f0-0x5f13cf). Functions are in ascending retail address order.
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7EEFB8
+extern const double DAT_007EEFB8;
+// GLOBAL: GAMEMD 0xAC1210
+extern double DAT_00AC1210;
+// GLOBAL: GAMEMD 0xAC1248
+extern double DAT_00AC1248;
+// GLOBAL: GAMEMD 0xAC1250
+extern int DAT_00AC1250;
+// GLOBAL: GAMEMD 0xAC1254
+extern int DAT_00AC1254;
+// GLOBAL: GAMEMD 0xAC1258
+extern int DAT_00AC1258;
+// GLOBAL: GAMEMD 0xAC1260
+extern double DAT_00AC1260;
+
+// FUNCTION: GAMEMD 0x5EF320
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005EF320()
+{
+    DAT_00AC1260 = DAT_00AC1210 / DAT_007EEFB8;
+}
+
+// FUNCTION: GAMEMD 0x5EF340
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005EF340()
+{
+    DAT_00AC1248 = DAT_007E1718 / DAT_00AC1260;
+}
+
+// FUNCTION: GAMEMD 0x5EF4C0
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_005EF4C0()
+{
+    DAT_00AC1258 = 0;
+    DAT_00AC1250 = 0x80;
+    DAT_00AC1254 = 0x80;
+}

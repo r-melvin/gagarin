@@ -59,23 +59,6 @@ bool __stdcall FUN_005B43F0(int)
     return true;
 }
 
-// FUNCTION: GAMEMD 0x5D6310
-bool __stdcall FUN_005D6310(int)
-{
-    return true;
-}
-
-// FUNCTION: GAMEMD 0x5D6340
-bool __cdecl FUN_005D6340()
-{
-    return true;
-}
-
-// FUNCTION: GAMEMD 0x5D7570
-bool __cdecl FUN_005D7570()
-{
-    return true;
-}
 
 // FUNCTION: GAMEMD 0x6241D0
 int __fastcall FUN_006241D0(LeafObj_0x04* self)

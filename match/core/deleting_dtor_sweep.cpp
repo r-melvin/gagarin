@@ -257,18 +257,6 @@ void* Obj_5C10D0::FUN_5C10D0(unsigned int flags)
 }
 
 
-// FUNCTION: GAMEMD 0x5D2700
-void* Obj_5D2700::FUN_5D2700(unsigned int flags)
-{
-    FUN_005D1B30(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x5D3450
 void* Obj_5D3450::FUN_5D3450(unsigned int flags)
 {

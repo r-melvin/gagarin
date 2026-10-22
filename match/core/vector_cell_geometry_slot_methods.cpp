@@ -67,15 +67,6 @@ template<class T> struct TPoint3D { T X; T Y; T Z; TPoint3D() {} bool operator==
 template class VectorClass<TPoint3D<int> >;
 
 struct Point2D { int X; int Y; Point2D() {} bool operator==(const Point2D& o) const { return X==o.X && Y==o.Y; } bool operator!=(const Point2D& o) const { return !(*this==o); } };
-// FUNCTION: GAMEMD 0x005D0850
-// VectorClass<Point2D>::SetCapacity
-// FUNCTION: GAMEMD 0x005D09C0
-// DynamicVectorClass<Point2D>::SetCapacity
-// FUNCTION: GAMEMD 0x005D0AA0
-// DynamicVectorClass<Point2D>::FindItemIndex
-// VTABLE: GAMEMD 0x007EEB74 -- VectorClass<Point2D>.
-// VTABLE: GAMEMD 0x007EEB54 -- DynamicVectorClass<Point2D>.
-template class VectorClass<Point2D>;
 template class DynamicVectorClass<Point2D>;
 
 template<class T> struct TRect { T X; T Y; T Width; T Height; TRect() {} bool operator==(const TRect<T>& o) const { return X==o.X && Y==o.Y && Width==o.Width && Height==o.Height; } bool operator!=(const TRect<T>& o) const { return !(*this==o); } };

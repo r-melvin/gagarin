@@ -1,5 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | private-ref-cross-check
+//   Original translation unit netshare.cpp. The name is the source-file string at 0x8317d8
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5e3a50 inside this object's
+//   code range (0x5e2430-0x5ef18f). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
 //   Bytes matched against the user's retail gamemd.exe v1.001 over
 //   0x5E8740..0x5E957E. Layout evidence and the retail source-file name are
 //   documented in netshare_slot_nodes.h.
@@ -13,6 +20,127 @@
 //   0x7C8B3D operator delete (all reloc).
 
 #include "netshare_slot_nodes.h"
+
+// How many of the eight slots are playable in this session kind. Session kind
+// 4 is the one that shrinks: two slots for the stripped-down case, six
+// otherwise, and eight for every other session kind.
+static __forceinline int Playable_Slot_Count()
+{
+    int playable;
+    if (SessionKind == 4) {
+        if (Is_005E8AE0_A() && !Is_005E8AE0_B()) {
+            playable = 2;
+        } else {
+            playable = 6;
+        }
+    } else {
+        playable = 8;
+    }
+    return playable;
+}
+
+// The slot search both name lookups share. Retail has it out of line at
+// 0x5E8D00 and inlined into 0x5E8D40, so it must be a forced-inline helper
+// with the out-of-line copy as its own wrapper: a plain call from 0x5E8D40
+// comes out as a tail JMP instead.
+static __forceinline int Slot_Showing_Name(const wchar_t* name)
+{
+    for (int i = 0; i < 8; i++) {
+        NodeNameType* node = Slots[i];
+        if (node != 0 && _wcsicmp(name, node->Name) == 0) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+// The playable count as the two release paths want it: one extra slot opens up
+// when the extra-slot flag is clear and there is room for it.
+static __forceinline int Releasable_Slot_Count()
+{
+    int playable;
+    if (SessionKind == 4) {
+        if (Is_005E8AE0_A() && !Is_005E8AE0_B()) {
+            playable = 2;
+        } else {
+            playable = 6;
+        }
+    } else {
+        playable = 8;
+    }
+
+    if (NoExtraSlot == 0 && playable < 7) {
+        playable++;
+    }
+    return playable;
+}
+
+#include "trivial_tu161_methods.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7EEF18
+extern const double DAT_007EEF18;
+// GLOBAL: GAMEMD 0xAC0CE8
+extern double DAT_00AC0CE8;
+// GLOBAL: GAMEMD 0xAC10E8
+extern double DAT_00AC10E8;
+// GLOBAL: GAMEMD 0xAC1148
+extern int DAT_00AC1148;
+// GLOBAL: GAMEMD 0xAC114C
+extern int DAT_00AC114C;
+// GLOBAL: GAMEMD 0xAC1150
+extern int DAT_00AC1150;
+// GLOBAL: GAMEMD 0xAC1160
+extern double DAT_00AC1160;
+
+// FUNCTION: GAMEMD 0x5E2460
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005E2460()
+{
+    DAT_00AC1160 = DAT_00AC0CE8 / DAT_007EEF18;
+}
+
+// FUNCTION: GAMEMD 0x5E2480
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005E2480()
+{
+    DAT_00AC10E8 = DAT_007E1718 / DAT_00AC1160;
+}
+
+// FUNCTION: GAMEMD 0x5E2600
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_005E2600()
+{
+    DAT_00AC1150 = 0;
+    DAT_00AC1148 = 0x80;
+    DAT_00AC114C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x5E2F60
+// Calls other functions.
+void Obj_005E2F60::FUN_005E2F60()
+{
+    int c0 = GetDlgItem(this, 0x5A8);
+    SendMessageA(c0, 0x4B2, 0, DAT_00A8B322);
+}
+
+// FUNCTION: GAMEMD 0x5E3700
+// Branching.
+int FUN_005E3700(Obj_005E3700* a1, int a2)
+{
+    DAT_00A8DAB0 = 0;
+    if (DAT_00AC116C != 0)
+    {
+        return FUN_007A27D0(a1, a2);
+    }
+    return FUN_005E23A0(a1, a2);
+}
 
 // FUNCTION: GAMEMD 0x5E8740
 //
@@ -129,24 +257,6 @@ void __fastcall Destroy_Slot_Nodes()
     Clear_Nodes_005C6120(&PlayerNodes);
 }
 
-// How many of the eight slots are playable in this session kind. Session kind
-// 4 is the one that shrinks: two slots for the stripped-down case, six
-// otherwise, and eight for every other session kind.
-static __forceinline int Playable_Slot_Count()
-{
-    int playable;
-    if (SessionKind == 4) {
-        if (Is_005E8AE0_A() && !Is_005E8AE0_B()) {
-            playable = 2;
-        } else {
-            playable = 6;
-        }
-    } else {
-        playable = 8;
-    }
-    return playable;
-}
-
 // FUNCTION: GAMEMD 0x5E8AE0
 //
 // Put every slot back to its starting state: the playable ones show Open and
@@ -234,21 +344,6 @@ NodeNameType* __fastcall Find_Node_By_Name(const wchar_t* name)
     return 0;
 }
 
-// The slot search both name lookups share. Retail has it out of line at
-// 0x5E8D00 and inlined into 0x5E8D40, so it must be a forced-inline helper
-// with the out-of-line copy as its own wrapper: a plain call from 0x5E8D40
-// comes out as a tail JMP instead.
-static __forceinline int Slot_Showing_Name(const wchar_t* name)
-{
-    for (int i = 0; i < 8; i++) {
-        NodeNameType* node = Slots[i];
-        if (node != 0 && _wcsicmp(name, node->Name) == 0) {
-            return i;
-        }
-    }
-    return -1;
-}
-
 // FUNCTION: GAMEMD 0x5E8D00
 //
 // Which slot currently shows this name? Case insensitive; empty slots are
@@ -304,27 +399,6 @@ int __fastcall Assign_Node_To_Slot(NodeNameType* node)
         }
     }
     return -1;
-}
-
-// The playable count as the two release paths want it: one extra slot opens up
-// when the extra-slot flag is clear and there is room for it.
-static __forceinline int Releasable_Slot_Count()
-{
-    int playable;
-    if (SessionKind == 4) {
-        if (Is_005E8AE0_A() && !Is_005E8AE0_B()) {
-            playable = 2;
-        } else {
-            playable = 6;
-        }
-    } else {
-        playable = 8;
-    }
-
-    if (NoExtraSlot == 0 && playable < 7) {
-        playable++;
-    }
-    return playable;
 }
 
 // FUNCTION: GAMEMD 0x5E9290
@@ -479,4 +553,13 @@ bool __fastcall No_Observer_Slot()
         }
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x5EE190
+// Calls other functions.
+int __cdecl FUN_005EE190()
+{
+    int c0 = DAT_008870C0.FUN_005276D0(DAT_0082642C, DAT_00831DA4, 0);
+    DAT_00AC10C8 = c0;
+    return c0;
 }

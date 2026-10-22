@@ -1,12 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+//   Original translation unit MPScore.cpp. The name is the source-file string at 0x82fe24
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5c982a inside this object's
+//   code range (0x5c9510-0x5ca41f). Functions are in ascending retail address order.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
 //
 // The MPScore.cpp block of retail .text (0x5C9510..0x5CA41F; the unit's own
 // path at 0x82FE24 names it): three of the unit's run-time initialisers, the
 // score-screen object's constructor and run method, the duration formatter,
 // the number-to-dialog-item helper, the per-house score table builder and its
 // sort, in retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
 //
 // STRING: GAMEMD 0x81B2EC "TXT_TIME_FORMAT_HOURS"
 // STRING: GAMEMD 0x81B3D0 L"%d"
@@ -35,16 +41,6 @@
 extern double DAT_00ABF998;
 // GLOBAL: GAMEMD 0x7EE6D8
 const double DAT_007EE6D8 = 60.0;
-
-// SYNTHETIC: GAMEMD 0x5C9540
-// GLOBAL: GAMEMD 0xABF9E8
-double DAT_00ABF9E8 = DAT_00ABF998 / DAT_007EE6D8;
-// SYNTHETIC: GAMEMD 0x5C9560
-// GLOBAL: GAMEMD 0xABF9D0
-double DAT_00ABF9D0 = 1.0 / DAT_00ABF9E8;
-// SYNTHETIC: GAMEMD 0x5C96E0
-// GLOBAL: GAMEMD 0xABF9D8
-TuningCoordInit DAT_00ABF9D8(128, 128, 0);
 
 // ---- what the unit reaches outside itself --------------------------------------------------------------------------
 
@@ -128,12 +124,16 @@ extern int DAT_008A00A8;
 
 // FUNCTION: GAMEMD 0x72D730 (decl; reloc)
 void __fastcall EnsureMpScreenPalette(int sideIndex);
+
 // FUNCTION: GAMEMD 0x72D780 (decl; reloc)
 void __cdecl FreeMpScreenPalette();
+
 // FUNCTION: GAMEMD 0x72EAD0 (decl; reloc) -- __fastcall: surface in ECX, rectangle in EDX.
 void __fastcall FUN_0072EAD0(Surface_0088730C* surface, Rect_005C9720* rect);
+
 // FUNCTION: GAMEMD 0x4F4780 (decl; reloc) -- __fastcall: bool in CL, surface in EDX, one stacked int.
 void __fastcall FUN_004F4780(bool flag, Surface_0088730C* surface, int arg);
+
 // FUNCTION: GAMEMD 0x60D380 (decl; reloc) -- __fastcall: dialog resource id in ECX,
 // dialog procedure in EDX, one stacked dword; runs the dialog.
 int __fastcall FUN_0060D380(int resource, int (__stdcall* procedure)(HWND, UINT, WPARAM, LPARAM), int arg);
@@ -149,14 +149,19 @@ extern const char* DAT_00844B74[10];
 
 // FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- __fastcall, the shared dialog message filter.
 int __fastcall FUN_00622B50(HWND window, UINT message, WPARAM wParam, LPARAM lParam);
+
 // FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
 void __fastcall FUN_00775690(HWND window, RECT* rect);
+
 // FUNCTION: GAMEMD 0x72AA10 (decl; reloc) -- __fastcall: the rectangle, two offsets.
 void __fastcall FUN_0072AA10(Rect_005C9720* rect, int dx, int dy);
+
 // FUNCTION: GAMEMD 0x621B80 (decl; reloc) -- __fastcall: rectangle, surface, two dwords.
 void __fastcall FUN_00621B80(Rect_005C9720* rect, Surface_0088730C* surface, int unknown_3, int unknown_4);
+
 // FUNCTION: GAMEMD 0x603D30 (decl; reloc) -- __fastcall: put a surface on a control.
 void __fastcall FUN_00603D30(HWND control, void* surface);
+
 // GLOBAL: GAMEMD 0x887310
 extern Surface_0088730C* DAT_00887310;
 
@@ -205,6 +210,18 @@ extern const int DAT_0082FDFC[2];
 extern const int DAT_0082FE04[8];
 
 // ---- the score screen ----------------------------------------------------------------------------------------------
+
+// SYNTHETIC: GAMEMD 0x5C9540
+// GLOBAL: GAMEMD 0xABF9E8
+double DAT_00ABF9E8 = DAT_00ABF998 / DAT_007EE6D8;
+
+// SYNTHETIC: GAMEMD 0x5C9560
+// GLOBAL: GAMEMD 0xABF9D0
+double DAT_00ABF9D0 = 1.0 / DAT_00ABF9E8;
+
+// SYNTHETIC: GAMEMD 0x5C96E0
+// GLOBAL: GAMEMD 0xABF9D8
+TuningCoordInit DAT_00ABF9D8(128, 128, 0);
 
 // FUNCTION: GAMEMD 0x5C9700
 //
@@ -483,6 +500,7 @@ int __stdcall FUN_005C9B10(HWND dialog, UINT message, WPARAM wParam, LPARAM lPar
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5CA110
 //
 // The score screen's side-specific bar image for one row: side 0, 1 and 2 of
