@@ -21,28 +21,6 @@ struct Obj_004092F0
 };
 GG_STATIC_ASSERT(offsetof(Obj_004092F0, unknown_08) == 0x8);
 
-// Two __thiscall sinks, each taking one pushed argument.
-struct Sink_004A1C00
-{
-    void FUN_004A1D50(int value);            // GAMEMD 0x4A1D50
-    void FUN_004A1CA0(unsigned char flag);   // GAMEMD 0x4A1CA0
-    void FUN_004A1DB0(const void* block);    // GAMEMD 0x4A1DB0
-};
-
-struct Obj_00410410
-{
-    char          _pad00[0x10];
-    int           unknown_10;   // +0x0010
-    char          _pad14[0x20 - 0x14];
-    unsigned char unknown_20;   // +0x0020
-
-    // FUNCTION: GAMEMD 0x410410
-    void FUN_00410410(Sink_004A1C00* sink);
-    // FUNCTION: GAMEMD 0x410BE0
-    void FUN_00410BE0(Sink_004A1C00* sink);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00410410, unknown_20) == 0x20);
-
 // __fastcall: the second argument arrives in DL, zeroed at both call sites.
 struct Obj_005B40B0;
 Obj_005B40B0* __fastcall FUN_005B40B0(void* self, unsigned char flag);   // GAMEMD 0x5B40B0

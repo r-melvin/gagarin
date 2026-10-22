@@ -8,19 +8,19 @@
 //
 // Retire the object. Disarm an attached bomb; if this is a TechnoClass
 // (AbstractFlags bit 0) kill its passengers with no killer; announce the
-// pointer as expired so everything referencing it lets go; limbo it through the
-// +0xD4 virtual; mark it dead; and queue it on the pending-delete vector, whose
+// pointer as expired so everything referencing it lets go; limbo it through
+// slot 53; mark it dead; and queue it on the pending-delete vector, whose
 // AddItem (with its virtual SetCapacity growth path) is inlined into the tail.
-void ObjectUnInit::UnInit()
+void ObjectClass::vf_62()
 {
     if (this->AttachedBomb != 0)
         ((UnInitBomb*)this->AttachedBomb)->Disarm();
 
     if (this != 0 && this->Flags.IsTechno)
-        this->KillPassengers(0);
+        ((TechnoClass*)this)->KillPassengers(0);
 
     this->AnnounceExpiredPointer(1);
-    (this->*(*(UnInitVtbl**)this)->Limbo)();
+    this->vf_53();
     this->IsAlive = 0;
 
     reinterpret_cast<UnInitVector*>(&DAT_00B0F698)->AddItem(this);

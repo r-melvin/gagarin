@@ -3,7 +3,7 @@
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x5F65F0: AttachedBomb `MOV ECX,[ESI+0x38]`, the techno
 //   test `TEST byte ptr [ESI+0x14],1` (AbstractFlags), IsAlive
-//   `MOV byte ptr [ESI+0x90],0`, the virtual `CALL [EAX+0xD4]`, and the
+//   `MOV byte ptr [ESI+0x90],0`, the virtual `CALL [EAX+0xD4]` (slot 53), and the
 //   DynamicVectorClass at 0xB0F698 (`MOV EAX,[0xB0F6A0]` Capacity,
 //   `CMP [0xB0F6A8],EAX` Count, `MOV CL,[0xB0F6A5]` IsAllocated,
 //   `MOV ECX,[0xB0F6AC]` CapacityIncrement, `MOV ECX,[0xB0F69C]` Items,
@@ -11,7 +11,7 @@
 //   BombClass::Disarm 0x4389B0, TechnoClass::KillPassengers 0x707CB0,
 //   AbstractClass::AnnounceExpiredPointer 0x7258D0 — from YRpp (consult-only).
 //
-// ObjectClass::UnInit — retire an object: disarm any attached bomb, kill the
+// ObjectClass slot 62 (UnInit) — retire an object: disarm any attached bomb, kill the
 // passengers if this is a TechnoClass, announce the expiring pointer, limbo,
 // clear IsAlive, and push the object onto the pending-delete vector.
 #ifndef GG_MATCH_CORE_OBJECT_CLASS_UNINIT_METHODS_H
@@ -19,8 +19,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
-#include "../_layout/object_class.h"   // ObjectClass : AbstractClass
+#include "../_layout/techno_class.h"   // TechnoClass : ... : ObjectClass
 
 GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
 GG_STATIC_ASSERT(offsetof(ObjectClass,   AttachedBomb)  == 0x38);
@@ -32,29 +31,6 @@ struct UnInitBomb
     // FUNCTION: GAMEMD 0x4389B0 (decl; reloc) — BombClass::Disarm, __thiscall.
     void Disarm();
 };
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct UnInitVtbl;
-
-// No-data host over the committed ObjectClass spine; layout identical.
-struct ObjectUnInit : ObjectClass
-{
-    // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) — TechnoClass::KillPassengers,
-    // __thiscall, one stack argument (the killer; retail pushes 0).
-    void KillPassengers(ObjectClass* killer);
-
-    // FUNCTION: GAMEMD 0x5F65F0  ObjectClass::UnInit  (__thiscall)
-    void UnInit();
-};
-
-typedef int (IPersistStream::*FnD4_UnInit)();
-
-struct UnInitVtbl
-{
-    char        _pad000[0xD4];   // +0x0000
-    FnD4_UnInit Limbo;           // +0x00D4
-};
-GG_STATIC_ASSERT(offsetof(UnInitVtbl, Limbo) == 0xD4);
 
 // Call view for shared pending-delete storage at 0xB0F698. The
 // retail vtable order is confirmed by the inlined AddItem's growth call going

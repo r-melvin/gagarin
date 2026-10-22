@@ -189,6 +189,9 @@ class TechnoClass : public RadioClass
 public:
     // FUNCTION: GAMEMD 0x705D20 (decl; reloc) -- the planning token this unit is on.
     PlanningTokenClass* FUN_00705D20();
+    // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) -- kill the passengers (one
+    // stack argument, the killer).
+    void KillPassengers(TechnoClass* killer);
 
     FlashData          Flashing;                 // +0xF0  (8)
     StageClass         Animation;                // +0xF8  (0x1C)

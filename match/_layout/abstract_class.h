@@ -116,7 +116,7 @@ public:
     AbstractFlagBits Flags;         // +0x14
     int   unknown_18;               // +0x18
     long  RefCount;                 // +0x1C
-    unsigned char Dirty;            // +0x20  (bool)
+    bool  Dirty;                    // +0x20
     unsigned char _pad_21[3];       // +0x21
 };
 

@@ -8,7 +8,7 @@
 // These methods use the existing receiver layout. 0x4726F0 calls the
 // owner's +4 interface through slot +0x10 with COM-style stack this.
 #include "../_layout/capture_manager_class.h"
-#include "../core/small_misc8_methods.h"
+#include "../_layout/obj_004a1d30.h"
 #include "../_rt/gg_istream.h"
 #include "../_layout/control_node.h"
 
@@ -81,9 +81,9 @@ bool CaptureManagerClass::FUN_004726C0(bool* state)
 }
 
 // FUNCTION: GAMEMD 0x4726F0
-void CaptureManagerClass::FUN_004726F0(Sink_004A1C00* sink)
+void CaptureManagerClass::FUN_004726F0(Obj_004A1D30* sink)
 {
-    ((Obj_00410410*)this)->FUN_00410410(sink);
+    AbstractClass::vf_13(sink);
     if (Owner != 0) {
         CaptureOwnerSubobject_4726F0* ownerInterface =
             &((CaptureOwnerView_4726F0*)Owner)->unknown_04;

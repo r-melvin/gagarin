@@ -22,26 +22,6 @@ int Obj_004092F0::FUN_004092F0()
     return 0x80040000;
 }
 
-// FUNCTION: GAMEMD 0x410410
-void Obj_00410410::FUN_00410410(Sink_004A1C00* sink)
-{
-    sink->FUN_004A1D50(unknown_10);
-    sink->FUN_004A1CA0(unknown_20);
-}
-
-// FUNCTION: GAMEMD 0x410BE0
-// The two scalar fields first (through 0x410410), then three raw blocks at
-// +0x24, +0x64 and +0x3D. The last offset overlaps the +0x24 block, so these
-// are not disjoint records - the third write is a sub-range of the first.
-void Obj_00410410::FUN_00410BE0(Sink_004A1C00* sink)
-{
-    FUN_00410410(sink);
-
-    sink->FUN_004A1DB0((char*)this + 0x24);
-    sink->FUN_004A1DB0((char*)this + 0x64);
-    sink->FUN_004A1DB0((char*)this + 0x3D);
-}
-
 // FUNCTION: GAMEMD 0x41CAF0
 void __cdecl FUN_0041CAF0()
 {

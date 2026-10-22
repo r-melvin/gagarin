@@ -25,6 +25,12 @@
 class TagClass;
 struct AnimClass;
 struct ObjectTypeClass;
+// Returned by value from slots 110 and 112 (defined by the TUs that need it;
+// several unguarded definitions exist across the tree).
+struct CellStruct;
+struct TechnoTypeClass;
+struct CellClass;
+struct RectangleStruct;   // geometry2d.h
 
 // --- shared instance-side leaf components -----------------------------------
 // Self-guarded so a downstream layer in the same chain can reuse them.
@@ -53,6 +59,11 @@ struct AudioController
     void* EventType;    // +0x08  VocClass* (truncation)
     void* AudioIndex;   // +0x0C  AudioIDXData** (truncation)
     int   Unused;       // +0x10
+
+    // FUNCTION: GAMEMD 0x405D40 (declaration)
+    void FUN_00405D40();
+    // FUNCTION: GAMEMD 0x405FD0 (declaration)
+    void FUN_00405FD0();
 };
 GG_STATIC_ASSERT(offsetof(AudioController, Stamp)     == 0x04);
 GG_STATIC_ASSERT(offsetof(AudioController, EventType) == 0x08);
@@ -113,9 +124,9 @@ public:
     virtual int vf_28(int a1, int a2, int a3);                 // 28  0x5F4250: returns 0
     virtual int vf_29(int a1, int a2);                         // 29  0x5F4240: returns 0
     virtual int vf_30();                                       // 30  0x5F4260: layer
-    virtual int vf_31();                                       // 31  0x5F6C10
+    virtual bool vf_31();                                      // 31  0x5F6C10
     virtual bool vf_32();                                      // 32  0x4263B0: returns false
-    virtual int vf_33();                                       // 33  0x5F6BC0
+    virtual TechnoTypeClass* vf_33();                          // 33  0x5F6BC0
     virtual ObjectTypeClass* vf_34();                          // 34  0x4E0130: returns null; every class overrides it
     virtual int vf_35();                                       // 35  0x5F42A0: returns 0x7FFFFFFF
     virtual const wchar_t* vf_36();                            // 36  0x4263C0: returns L"No name"
@@ -129,21 +140,21 @@ public:
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4); // 44  0x4263D0: vf_18() raised by 50
     virtual CoordStruct vf_45(int a1);                         // 45  0x41BE30: returns vf_18()
     virtual int GetYSort() const;                              // 46  0x5F6BD0
-    virtual void vf_47(int a1);                                // 47  0x5F6A70
+    virtual bool vf_47(int a1);                                // 47  0x5F6A70
     virtual bool vf_48();                                      // 48  0x426410: returns true
     virtual bool vf_49();                                      // 49  0x426420: returns false
     virtual bool vf_50(int a1);                                // 50  0x426430: returns false
     virtual int vf_51(int a1);                                 // 51  0x41BE60: returns 0
     virtual int vf_52(int a1);                                 // 52  0x41BE70: returns 0
     virtual bool vf_53();                                      // 53  0x5F4D30
-    virtual bool vf_54(int a1, int a2);                        // 54  0x5F4EC0
-    virtual void vf_55(int a1);                                // 55  0x5F5280
+    virtual bool vf_54(const CoordStruct& coord, int a2);       // 54  0x5F4EC0
+    virtual void vf_55(bool removed);                          // 55  0x5F5280
     virtual void vf_56(int a1);                                // 56  0x5F42F0: bare RET 4
     virtual void vf_57(int a1);                                // 57  0x5F4300: bare RET 4
-    virtual void vf_58(int a1);                                // 58  0x5F5940
+    virtual bool vf_58(const CoordStruct& coord);              // 58  0x5F5940
     virtual void vf_59();                                      // 59  0x5F4160
-    virtual void vf_60(int a1);                                // 60  0x5F60A0
-    virtual void vf_61(int a1);                                // 61  0x5F6120
+    virtual void vf_60(CoordStruct* coord);                    // 60  0x5F60A0
+    virtual void vf_61(CoordStruct* coord);                    // 61  0x5F6120
     virtual void vf_62();                                      // 62  0x5F65F0
     virtual void vf_63();                                      // 63  0x5F4310: bare RET
     virtual int vf_64(int a1, int a2);                         // 64  0x5F4320: returns 0
@@ -155,17 +166,17 @@ public:
     virtual void vf_70(int a1, int a2);                        // 70  0x5F65D0
     virtual void vf_71();                                      // 71  0x5F4330: bare RET
     virtual void vf_72(int a1, int a2);                        // 72  0x5F4340: bare RET 8
-    virtual bool vf_73(int a1);                                // 73  0x5F5850
-    virtual void vf_74(int a1);                                // 74  0x5F4730
-    virtual void vf_75(int a1);                                // 75  0x5F4870
+    virtual bool vf_73(int mode);                              // 73  0x5F5850
+    virtual RectangleStruct vf_74();                           // 74  0x5F4730
+    virtual RectangleStruct vf_75();                           // 75  0x5F4870
     virtual void vf_76(int a1);                                // 76  0x41BE80: bare RET 4
-    virtual bool vf_77();                                      // 77  0x5F4D10
-    virtual void vf_78();                                      // 78  0x5F6C30
-    virtual void vf_79(int a1, int a2);                        // 79  0x5F6C70
+    virtual void vf_77();                                      // 77  0x5F4D10
+    virtual bool vf_78();                                      // 78  0x5F6C30
+    virtual bool vf_79();                                      // 79  0x5F6C70: returns vf_78()
     virtual bool vf_80(int a1, int a2, int a3, int a4);        // 80  0x5F4360: returns false
     virtual bool vf_81(int a1, int a2, int a3);                // 81  0x5F4350: returns false
     virtual void vf_82(int a1);                                // 82  0x5F4370: bare RET 4
-    virtual void vf_83();                                      // 83  0x5F4520
+    virtual bool vf_83();                                      // 83  0x5F4520
     virtual void vf_84();                                      // 84  0x5F44A0
     virtual void vf_85(int a1, int a2, int a3);                // 85  0x426460: bare RET 0xC
     virtual void vf_86();                                      // 86  0x426470: bare RET
@@ -182,28 +193,28 @@ public:
     virtual int vf_97();                                       // 97  0x5F43E0: returns -1
     virtual void vf_98(int a1);                                // 98  0x41BE90: bare RET 4
     virtual void vf_99(int a1);                                // 99  0x4264B0: bare RET 4
-    virtual void vf_100(int a1, int a2);                       // 100 0x5F5C20
-    virtual void vf_101(int a1, int a2, int a3);               // 101 0x5F5320
+    virtual void vf_100(bool a1, bool a2);                     // 100 0x5F5C20
+    virtual int vf_101(int a1, int event, int a3);             // 101 0x5F5320
     virtual void vf_102(int a1);                               // 102 0x5F5930
     virtual void vf_103(int a1);                               // 103 0x5F43F0: bare RET 4
     virtual void vf_104(int a1);                               // 104 0x5F4400: bare RET 4
     virtual void vf_105(int a1, int a2);                       // 105 0x5F6B50: bare RET 8
     virtual void vf_106(int a1);                               // 106 0x5F4410
-    virtual int vf_107(int a1, int a2, int a3, int a4, int a5); // 107 0x4264C0: returns 0
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, int a5); // 107 0x4264C0: returns 0
     virtual int vf_108(int a1, int a2, int a3, int a4, int a5); // 108 0x4264D0: returns 0
-    virtual void vf_109(int a1);                               // 109 0x5F6940
-    virtual void* vf_110(void* a1);                            // 110 0x41BEA0
-    virtual void vf_111();                                     // 111 0x5F6960
-    virtual void vf_112(int a1);                               // 112 0x5F69C0
+    virtual void vf_109(const CoordStruct& coord);             // 109 0x5F6940
+    virtual CellStruct vf_110();                               // 110 0x41BEA0: the cell under Location
+    virtual CellClass* vf_111();                               // 111 0x5F6960
+    virtual CellStruct vf_112();                               // 112 0x5F69C0
     virtual void vf_113();                                     // 113 0x5F6A10
     virtual int vf_114();                                      // 114 0x5F5F40
-    virtual void vf_115(int a1);                               // 115 0x5F5FA0
+    virtual void vf_115(int height);                           // 115 0x5F5FA0
     virtual int FUN_005F5F30() const;                          // 116 0x5F5F30
     virtual bool vf_117();                                     // 117 0x4264E0: returns false
     virtual bool vf_118();                                     // 118 0x4264F0: returns false
     virtual bool vf_119();                                     // 119 0x426500: returns false
     virtual bool vf_120();                                     // 120 0x426510: returns true
-    virtual int vf_121();                                      // 121 0x426520: returns 0
+    virtual void* vf_121();                                    // 121 0x426520: returns null
 
     int             unknown_24;                  // +0x24
     int             unknown_28;                  // +0x28
@@ -214,30 +225,30 @@ public:
     AudioController AmbientSoundController;       // +0x3C  (0x14)
     AudioController CustomSoundController;        // +0x50  (0x14)
     int             CustomSound;                 // +0x64  (ctor = -1)
-    unsigned char   BombVisible;                 // +0x68  (bool)
+    bool            BombVisible;                 // +0x68
     unsigned char   align_69[3];                 // +0x69
     int             Health;                      // +0x6C
     int             EstimatedHealth;             // +0x70
-    unsigned char   IsOnMap;                     // +0x74  (bool)
+    bool            IsOnMap;                     // +0x74
     unsigned char   align_75[3];                 // +0x75
     int             unknown_78;                  // +0x78  (ctor = 1)
     int             unknown_7C;                  // +0x7C
-    unsigned char   NeedsRedraw;                 // +0x80  (bool)
-    unsigned char   InLimbo;                     // +0x81  (bool, ctor = 1)
-    unsigned char   InOpenToppedTransport;       // +0x82  (bool)
-    unsigned char   IsSelected;                  // +0x83  (bool)
-    unsigned char   HasParachute;                // +0x84  (bool)
+    bool            NeedsRedraw;                 // +0x80
+    bool            InLimbo;                     // +0x81  (ctor = 1)
+    bool            InOpenToppedTransport;       // +0x82
+    bool            IsSelected;                  // +0x83
+    bool            HasParachute;                // +0x84
     unsigned char   align_85[3];                 // +0x85
     AnimClass*      Parachute;                   // +0x88
-    unsigned char   OnBridge;                    // +0x8C  (bool)
-    unsigned char   IsFallingDown;               // +0x8D  (bool)
-    unsigned char   WasFallingDown;              // +0x8E  (bool)
-    unsigned char   IsABomb;                     // +0x8F  (bool)
-    unsigned char   IsAlive;                     // +0x90  (bool, ctor = 1)
+    bool            OnBridge;                    // +0x8C
+    bool            IsFallingDown;               // +0x8D
+    bool            WasFallingDown;              // +0x8E
+    bool            IsABomb;                     // +0x8F
+    bool            IsAlive;                     // +0x90  (ctor = 1)
     unsigned char   align_91[3];                 // +0x91
     int             LastLayer;                   // +0x94  (Layer enum, ctor = -1)
-    unsigned char   IsInLogic;                   // +0x98  (bool)
-    unsigned char   IsVisible;                   // +0x99  (bool, ctor = 1)
+    bool            IsInLogic;                   // +0x98
+    bool            IsVisible;                   // +0x99  (ctor = 1)
     unsigned char   align_9A[2];                 // +0x9A
     CoordStruct     Location;                    // +0x9C  (0xC)
     void*           LineTrailer;                 // +0xA8  LineTrail*

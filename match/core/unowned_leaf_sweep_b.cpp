@@ -370,48 +370,6 @@ void Vector_005C6120::FUN_005C6120()
     vf_3();
 }
 
-struct Coord_005F65A0
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-
-    Coord_005F65A0() {}
-};
-
-struct Obj_005F65A0
-{
-    char Pad_00[0x9C];
-    Coord_005F65A0 unknown_9C;
-
-    Coord_005F65A0 FUN_005F65A0() const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_005F65A0, unknown_9C) == 0x9C);
-
-// FUNCTION: GAMEMD 0x005F65A0
-Coord_005F65A0 Obj_005F65A0::FUN_005F65A0() const
-{
-    return unknown_9C;
-}
-
-struct Obj_005F6DA0
-{
-    char Pad_00[0x88];
-    void* unknown_88;
-
-    void FUN_005F6DA0(void* target);
-};
-GG_STATIC_ASSERT(offsetof(Obj_005F6DA0, unknown_88) == 0x88);
-
-// FUNCTION: GAMEMD 0x005F6DA0
-// Forget `target` if +0x88 holds it.
-void Obj_005F6DA0::FUN_005F6DA0(void* target)
-{
-    if (target == unknown_88) {
-        unknown_88 = NULL;
-    }
-}
-
 struct Obj_005F9710
 {
     char unknown_0;

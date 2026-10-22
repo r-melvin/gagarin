@@ -70,18 +70,3 @@ void __fastcall FUN_00406550(Obj_00406550* self)
     FUN_00407150(sub);
     FUN_004071C0(sub);
 }
-
-// FUNCTION: GAMEMD 0x41BEA0
-//
-// `CDQ; AND EDX,0xFF; ADD EAX,EDX; SAR EAX,8` is the signed divide-by-256
-// idiom, so both members are 8.8 fixed-point and the result is their whole
-// parts.
-Packed16 Obj_0041BEA0::FUN_0041BEA0()
-{
-    Packed16 packed;
-
-    packed.X = (short)(ValueX / 256);
-    packed.Y = (short)(ValueY / 256);
-
-    return packed;
-}

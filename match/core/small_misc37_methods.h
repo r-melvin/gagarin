@@ -89,42 +89,4 @@ struct Obj_00406550
 // FUNCTION: GAMEMD 0x406550
 void __fastcall FUN_00406550(Obj_00406550* self);
 
-// ---------------------------------------------------------------------------
-// 0x41BEA0 — pack two 8.8 fixed-point members into a pair of 16-bit fields and
-// return them by value.
-//
-// The result is four bytes and comes back through a caller-supplied pointer
-// (`MOV EAX,[ESP+8]` after the one local push), which is what a struct with any
-// user-declared special member gets. The copy out is a single dword move, so
-// the copy constructor stays implicit.
-// ---------------------------------------------------------------------------
-struct Packed16
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-
-    // Declared, never defined, never used. A user-declared copy assignment
-    // operator makes the type non-POD, which is what moves a 4-byte return
-    // from EAX into the caller-supplied buffer retail uses (`MOV EAX,[ESP+8]`
-    // and `RET 4`). Declaring a constructor instead would suppress the
-    // implicit default one and make `Packed16 packed;` emit a call retail does
-    // not have; declaring a destructor emits one at scope exit. Copy
-    // assignment costs nothing at either end, and the copy constructor stays
-    // implicit so `return packed;` is a single dword move.
-    Packed16& operator=(const Packed16& other);
-};
-GG_STATIC_ASSERT(sizeof(Packed16) == 4);
-
-struct Obj_0041BEA0
-{
-    char _pad000[0x9C];
-    int  ValueX;   // +0x009C
-    int  ValueY;   // +0x00A0
-
-    // FUNCTION: GAMEMD 0x41BEA0
-    Packed16 FUN_0041BEA0();
-};
-GG_STATIC_ASSERT(offsetof(Obj_0041BEA0, ValueX) == 0x9C);
-GG_STATIC_ASSERT(offsetof(Obj_0041BEA0, ValueY) == 0xA0);
-
 #endif  // GG_MATCH_CORE_SMALL_MISC37_METHODS_H

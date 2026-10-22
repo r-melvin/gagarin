@@ -6,9 +6,18 @@
 // tables; names other than IsDirty / Notice / IsOnFloor / IsInAir are
 // placeholders (abstract_class.h).
 #include "../_layout/object_class.h"
+#include "../_layout/obj_004a1d30.h"
 
 // GLOBAL: GAMEMD 0x887680 -- the coordinate slot 18 returns.
 extern CoordStruct DAT_00887680;
+
+// FUNCTION: GAMEMD 0x410410
+// Feed UniqueID and the Dirty byte to the checksum sink.
+void AbstractClass::vf_13(Obj_004A1D30* crc)
+{
+    crc->FUN_004A1D50(UniqueID);
+    crc->FUN_004A1CA0(Dirty);
+}
 
 // FUNCTION: GAMEMD 0x410440
 bool AbstractClass::vf_17()

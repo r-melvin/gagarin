@@ -2,7 +2,8 @@
 // Provenance: own-binary-via-Ghidra
 //   The object slot 13 of the AbstractClass family receives: each override
 //   feeds its fields to it through 0x4A1CA0 (one byte, RET 4) and 0x4A1D50
-//   (one dword, RET 4), both __thiscall on the passed pointer.
+//   (one dword, RET 4), both __thiscall on the passed pointer; 0x4A1DB0
+//   (RET 4) takes the address of a character field.
 #ifndef GG_MATCH_LAYOUT_OBJ_004A1D30_H
 #define GG_MATCH_LAYOUT_OBJ_004A1D30_H
 
@@ -14,6 +15,8 @@ struct Obj_004A1D30
     void FUN_004A1D30(unsigned short value);
     // FUNCTION: GAMEMD 0x4A1D50 (decl; reloc) -- add one dword.
     void FUN_004A1D50(int value);
+    // FUNCTION: GAMEMD 0x4A1DB0 (decl; reloc) -- add a NUL-terminated string.
+    void FUN_004A1DB0(const char* text);
 };
 
 #endif  // GG_MATCH_LAYOUT_OBJ_004A1D30_H

@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 // Entry 438A90..438AF8, REA ev_5474ce0feecd99da094e63cb3b259d0fe7b6a1d2695f3deb32d9b9a29d3b6273.
-#include "small_misc8_methods.h"
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+#include "../_layout/abstract_class.h"
+#include "../_layout/obj_004a1d30.h"
 // The three runtime references select their own tables. Retail proves the
 // stdcall slot at +0x10; their concrete dynamic types are not established here.
 struct BombReferencedInterface_00438A90 {
@@ -21,8 +24,8 @@ struct BombSerializeView_00438A90 {
     BombReferencedObject_00438A90* unknown_28;
     BombReferencedObject_00438A90* unknown_2C;
     char unknown_30[0x28];
-    unsigned char unknown_58;
-    void FUN_00438A90(Sink_004A1C00* sink);
+    bool unknown_58;
+    void FUN_00438A90(Obj_004A1D30* sink);
 };
 GG_STATIC_ASSERT(sizeof(void*) == 4);
 GG_STATIC_ASSERT(sizeof(BombReferencedInterface_00438A90) == 4);
@@ -50,11 +53,11 @@ GG_STATIC_ASSERT(offsetof(BombReferenceSlots_00438A90, slot0C) == 0xC);
 GG_STATIC_ASSERT(offsetof(BombReferenceSlots_00438A90, slot10) == 0x10);
 GG_STATIC_ASSERT(sizeof(BombReferenceSlots_00438A90) == 0x14);
 
-// Helpers 410410, 4A1D50 and 4A1CA0 are thiscall with one stack word,
+// The AbstractClass slot-13 base body 410410 and helpers 4A1D50 and 4A1CA0 are thiscall with one stack word,
 // confirmed by their entry disassembly and RET 4. The last takes a byte.
 // FUNCTION: GAMEMD 0x00438A90
-void BombSerializeView_00438A90::FUN_00438A90(Sink_004A1C00* sink) {
-    ((Obj_00410410*)this)->FUN_00410410(sink);
+void BombSerializeView_00438A90::FUN_00438A90(Obj_004A1D30* sink) {
+    ((AbstractClass*)this)->AbstractClass::vf_13(sink);
     if (unknown_28) sink->FUN_004A1D50(unknown_28->interface_04.Slot10());
     if (unknown_24) sink->FUN_004A1D50(unknown_24->interface_04.Slot10());
     if (unknown_2C) sink->FUN_004A1D50(unknown_2C->interface_04.Slot10());

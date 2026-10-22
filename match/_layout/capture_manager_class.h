@@ -28,7 +28,7 @@
 #include "abstract_class.h"
 #include "vector_class.h"
 
-struct Sink_004A1C00;
+struct Obj_004A1D30;
 struct Gg_IStream;
 struct Guid_472960;
 struct Techno_00471C90;
@@ -63,7 +63,7 @@ public:
     // FUNCTION: GAMEMD 0x4726C0
     bool FUN_004726C0(bool* state);
     // FUNCTION: GAMEMD 0x4726F0
-    void FUN_004726F0(Sink_004A1C00* sink);
+    void FUN_004726F0(Obj_004A1D30* sink);
     // FUNCTION: GAMEMD 0x4728E0
     long __stdcall Save(Gg_IStream* stream, int clearDirty);
     // FUNCTION: GAMEMD 0x472960
