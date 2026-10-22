@@ -22,7 +22,7 @@ void Map_0056D460::ResetZones(const Cell_0056D460& cell)
 
     Zone_0056D460* here = &Zones[index];
 
-    int len = DAT_0087F8E0 + DAT_0087F8DC + 1;
+    int len = DAT_0087F8DC + DAT_0087F8E0 + 1;
     int offsets[8];
     offsets[2] = 1;
     offsets[6] = -1;

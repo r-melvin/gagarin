@@ -69,16 +69,18 @@ GG_STATIC_ASSERT(offsetof(HouseType_005113F0, ID) == 0x24 &&
                  sizeof(HouseType_005113F0) == 0x1B0);
 
 // The house-type registry: Items at 0xA83C9C, Count at 0xA83CA8.
+// Partial registry view through Count; intermediate bytes remain unknown.
 struct HouseTypeVector
 {
     void*                   _vtable;    // +0x0000
     HouseType_005113F0**    Items;      // +0x0004
     int                     Capacity;   // +0x0008
-    int                     Count;      // +0x000C
+    char unknown_0C[4];                 // +0x000C
+    int                     Count;      // +0x0010
 };
 GG_STATIC_ASSERT(offsetof(HouseTypeVector, Items) == 0x04 &&
-                 offsetof(HouseTypeVector, Count) == 0x0C &&
-                 sizeof(HouseTypeVector) == 0x10);
+                 offsetof(HouseTypeVector, Count) == 0x10 &&
+                 sizeof(HouseTypeVector) == 0x14);
 
 // GLOBAL: GAMEMD 0xA83C98 — the house-type registry.
 extern HouseTypeVector DAT_00A83C98;

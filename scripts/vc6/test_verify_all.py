@@ -46,6 +46,26 @@ class GateDecisionTests(unittest.TestCase):
     def test_matched_rows_still_require_oracle(self):
         self.assertEqual(self.run_gate([row(100), row(50)]), (0, 1, 1))
 
+    def test_partial_row_with_100_percent_diagnostic_stays_partial(self):
+        entry = row(100)
+        entry['status'] = 'partial'
+        with tempfile.TemporaryDirectory() as work:
+            manifest = Path(work) / 'manifest.json'
+            manifest.write_text(json.dumps([entry]))
+            output = io.StringIO()
+            with patch('sys.argv', ['verify_all.py', '--manifest', str(manifest)]), \
+                    patch.object(verify_all.os.path, 'exists', return_value=True), \
+                    patch.object(verify_all.os, 'remove'), \
+                    patch.object(verify_all.subprocess, 'run',
+                                 return_value=subprocess.CompletedProcess([], 0)), \
+                    patch.object(verify_all, 'verify', return_value=(True, '100.0%')) as oracle, \
+                    contextlib.redirect_stdout(output), \
+                    self.assertRaises(SystemExit) as exit_status:
+                verify_all.main()
+            self.assertEqual(exit_status.exception.code, 0)
+            self.assertEqual(oracle.call_count, 0)
+            self.assertIn('matched 0  partial 1', output.getvalue())
+
     def test_regressed_match_fails_gate(self):
         self.assertEqual(self.run_gate([row(100)], match=False), (1, 1, 1))
 

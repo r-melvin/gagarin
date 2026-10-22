@@ -143,7 +143,7 @@ extern "C" int DAT_0089C694;
 extern "C" void FUN_00438410()
 {
     DAT_0089C6F8 = (int)(FUN_004CAD50(DAT_0089C680 - DAT_0089C6A8)
-                         * DAT_0089C6A0 * DAT_007E1738);
+                         * DAT_007E1738 * DAT_0089C6A0);
 }
 
 // FUNCTION: GAMEMD 0x00438450

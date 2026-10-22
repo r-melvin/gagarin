@@ -65,18 +65,20 @@ GG_STATIC_ASSERT(sizeof(MovieType_006A4550) == 0xB4);
 
 // The movie-type registry. Retail reads the count from 0x8B4130 and the item
 // array from 0x8B4124, twelve bytes apart, which is the tree's usual
-// VectorClass(vtable, Items, Capacity) + DynamicVectorClass(Count) header
-// laid out from 0x8B4120.
+// partial header laid out from 0x8B4120. The bytes at +0x0C are not
+// interpreted here; Count is at +0x10.
+// Partial registry view through Count; intermediate bytes remain unknown.
 struct MovieTypeVector
 {
     void*                   _vtable;    // +0x0000
     MovieType_006A4550**    Items;      // +0x0004
     int                     Capacity;   // +0x0008
-    int                     Count;      // +0x000C
+    char unknown_0C[4];                 // +0x000C
+    int                     Count;      // +0x0010
 };
 GG_STATIC_ASSERT(offsetof(MovieTypeVector, Items) == 0x04 &&
-                 offsetof(MovieTypeVector, Count) == 0x0C &&
-                 sizeof(MovieTypeVector) == 0x10);
+                 offsetof(MovieTypeVector, Count) == 0x10 &&
+                 sizeof(MovieTypeVector) == 0x14);
 
 // GLOBAL: GAMEMD 0x8B4120 — the movie-type registry (Items 0x8B4124,
 // Count 0x8B4130).

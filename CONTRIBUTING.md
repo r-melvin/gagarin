@@ -41,7 +41,11 @@ python3 scripts/vc6/verify_all.py
 SHA-256 against the project pin and require the full span to be backed by one
 PE section. A configured bad path or hash fails; it never falls back to Ghidra.
 With the variable unset, the existing Ghidra memory reader remains available.
-REA/Ghidra is still used for analysis and entry-point evidence.
+REA/Ghidra is still used for analysis and entry-point evidence. Address-labelled
+`DAT_XXXXXXXX` operands are checked against their named address plus the COFF
+relocation addend; a mismatch is a hard failure that instruction-diff fallback
+cannot override. This guard covers those named globals, not every relocation;
+use `verify_relocations.py` for complete explicit target binding.
 
 To compile every tracked C++ translation unit into a persistent,
 path-preserving object tree, run:

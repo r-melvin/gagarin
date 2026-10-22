@@ -380,8 +380,11 @@ def main():
     # established diagnostic path.
     if mismatch == 0 and len(retail) == len(comp):
         try:
-            raw_match.verify_float_literals_for_raw_exact_span(
+            raw_match.verify_relocation_targets_for_raw_exact_span(
                 a.obj, a.sym, addr, retail_raw)
+        except raw_match.AddressLabelRelocationError as exc:
+            print(f"diff_retail: HARD DAT-RELOCATION FAILURE: {exc}")
+            sys.exit(raw_match.HARD_RELOCATION_FAILURE)
         except raw_match.FloatLiteralCheckError as exc:
             print(f"diff_retail: HARD FLOAT-LITERAL FAILURE: {exc}")
             sys.exit(raw_match.HARD_LITERAL_FAILURE)

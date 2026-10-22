@@ -1,0 +1,692 @@
+{
+ "provenance": "Pinned retail PE operands compared with current VC6 COFF relocations; no executable bytes included.",
+ "binary_sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
+ "before_commit": "d63faf2",
+ "scope": "Undefined address-labelled DAT relocations in recorded matched functions; does not establish all relocation bindings.",
+ "fields_audited": 1729,
+ "incorrect_fields": 69,
+ "affected_functions": 37,
+ "affected_translation_units": 15,
+ "corrections": [
+  {
+   "addr": "0x004383B0",
+   "tu": "match/core/angle_math_00438340.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4383b2",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e3cd8"
+    },
+    {
+     "field": "0x4383b8",
+     "symbol": "_DAT_007E3CD8",
+     "expected": "0x7e3cd8",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x004383D0",
+   "tu": "match/core/angle_math_00438340.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4383d2",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e3cd8"
+    },
+    {
+     "field": "0x4383d8",
+     "symbol": "_DAT_007E3CD8",
+     "expected": "0x7e3cd8",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x004383F0",
+   "tu": "match/core/angle_math_00438340.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4383f2",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e3cd8"
+    },
+    {
+     "field": "0x4383f8",
+     "symbol": "_DAT_007E3CD8",
+     "expected": "0x7e3cd8",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x00438410",
+   "tu": "match/core/dynamic_bomb_vector_00438410.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x438429",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89c6a0"
+    },
+    {
+     "field": "0x438432",
+     "symbol": "_DAT_0089C6A0",
+     "expected": "0x89c6a0",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x439510",
+   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x439512",
+     "symbol": "?DAT_007E1720@@3NA",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e3d78"
+    },
+    {
+     "field": "0x439518",
+     "symbol": "?DAT_007E3D78@@3NA",
+     "expected": "0x7e3d78",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x439530",
+   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x439532",
+     "symbol": "?DAT_007E1728@@3NA",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e3d78"
+    },
+    {
+     "field": "0x439538",
+     "symbol": "?DAT_007E3D78@@3NA",
+     "expected": "0x7e3d78",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x439550",
+   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x439552",
+     "symbol": "?DAT_007E1730@@3NA",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e3d78"
+    },
+    {
+     "field": "0x439558",
+     "symbol": "?DAT_007E3D78@@3NA",
+     "expected": "0x7e3d78",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x439570",
+   "tu": "match/core/periodic_state_updates_00439480.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x439589",
+     "symbol": "?DAT_007E1738@@3NA",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89c720"
+    },
+    {
+     "field": "0x439592",
+     "symbol": "?DAT_0089C720@@3NA",
+     "expected": "0x89c720",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x43afb0",
+   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x43afb2",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e3e80"
+    },
+    {
+     "field": "0x43afb8",
+     "symbol": "_DAT_007E3E80",
+     "expected": "0x7e3e80",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x43afd0",
+   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x43afd2",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e3e80"
+    },
+    {
+     "field": "0x43afd8",
+     "symbol": "_DAT_007E3E80",
+     "expected": "0x7e3e80",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x43aff0",
+   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x43aff2",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e3e80"
+    },
+    {
+     "field": "0x43aff8",
+     "symbol": "_DAT_007E3E80",
+     "expected": "0x7e3e80",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x43b010",
+   "tu": "match/core/math_global_updates_0043af70.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x43b029",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89c820"
+    },
+    {
+     "field": "0x43b032",
+     "symbol": "_DAT_0089C820",
+     "expected": "0x89c820",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x473200",
+   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x473202",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e4be8"
+    },
+    {
+     "field": "0x473208",
+     "symbol": "_DAT_007E4BE8",
+     "expected": "0x7e4be8",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x473220",
+   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x473222",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e4be8"
+    },
+    {
+     "field": "0x473228",
+     "symbol": "_DAT_007E4BE8",
+     "expected": "0x7e4be8",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x473240",
+   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x473242",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e4be8"
+    },
+    {
+     "field": "0x473248",
+     "symbol": "_DAT_007E4BE8",
+     "expected": "0x7e4be8",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x473260",
+   "tu": "match/core/math_global_updates_004731c0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x473279",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89e1a0"
+    },
+    {
+     "field": "0x473282",
+     "symbol": "_DAT_0089E1A0",
+     "expected": "0x89e1a0",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x4735B0",
+   "tu": "match/core/math_global_updates_00473570.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4735b2",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e4bf8"
+    },
+    {
+     "field": "0x4735b8",
+     "symbol": "_DAT_007E4BF8",
+     "expected": "0x7e4bf8",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x4735D0",
+   "tu": "match/core/math_global_updates_00473570.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4735d2",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e4bf8"
+    },
+    {
+     "field": "0x4735d8",
+     "symbol": "_DAT_007E4BF8",
+     "expected": "0x7e4bf8",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x4735F0",
+   "tu": "match/core/math_global_updates_00473570.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4735f2",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e4bf8"
+    },
+    {
+     "field": "0x4735f8",
+     "symbol": "_DAT_007E4BF8",
+     "expected": "0x7e4bf8",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x473610",
+   "tu": "match/core/math_global_updates_00473570.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x473629",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89e220"
+    },
+    {
+     "field": "0x473632",
+     "symbol": "_DAT_0089E220",
+     "expected": "0x89e220",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x474050",
+   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x474052",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e4c48"
+    },
+    {
+     "field": "0x474058",
+     "symbol": "_DAT_007E4C48",
+     "expected": "0x7e4c48",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x474070",
+   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x474072",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e4c48"
+    },
+    {
+     "field": "0x474078",
+     "symbol": "_DAT_007E4C48",
+     "expected": "0x7e4c48",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x474090",
+   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x474092",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e4c48"
+    },
+    {
+     "field": "0x474098",
+     "symbol": "_DAT_007E4C48",
+     "expected": "0x7e4c48",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x4740b0",
+   "tu": "match/core/math_global_updates_00473fe0.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4740c9",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x89e2b0"
+    },
+    {
+     "field": "0x4740d2",
+     "symbol": "_DAT_0089E2B0",
+     "expected": "0x89e2b0",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x475150",
+   "tu": "match/platform/ccini_class_enum_writers_methods.cpp",
+   "correction": "registry count offset",
+   "fields": [
+    {
+     "field": "0x475171",
+     "symbol": "?DAT_00A83C98@@3UHouseTypeRecordVector@@A",
+     "expected": "0xa83ca4",
+     "previous_actual": "0xa83ca8"
+    }
+   ]
+  },
+  {
+   "addr": "0x4752E0",
+   "tu": "match/platform/ccini_class_house_list_methods.cpp",
+   "correction": "registry count offset",
+   "fields": [
+    {
+     "field": "0x475301",
+     "symbol": "?DAT_00A80228@@3UHouseVector@@A",
+     "expected": "0xa80234",
+     "previous_actual": "0xa80238"
+    }
+   ]
+  },
+  {
+   "addr": "0x475540",
+   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+   "correction": "registry count offset",
+   "fields": [
+    {
+     "field": "0x4755c3",
+     "symbol": "?DAT_00A83C98@@3UHouseTypeVector@@A",
+     "expected": "0xa83ca4",
+     "previous_actual": "0xa83ca8"
+    }
+   ]
+  },
+  {
+   "addr": "0x475610",
+   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
+   "correction": "registry count offset",
+   "fields": [
+    {
+     "field": "0x475690",
+     "symbol": "?DAT_00A83C98@@3UHouseTypeVector@@A",
+     "expected": "0xa83ca4",
+     "previous_actual": "0xa83ca8"
+    }
+   ]
+  },
+  {
+   "addr": "0x4756F0",
+   "tu": "match/platform/ccini_class_theater_theme_methods.cpp",
+   "correction": "registry count offset",
+   "fields": [
+    {
+     "field": "0x47574d",
+     "symbol": "?DAT_008B4120@@3UMovieTypeVector@@A",
+     "expected": "0x8b412c",
+     "previous_actual": "0x8b4130"
+    }
+   ]
+  },
+  {
+   "addr": "0x004B5910",
+   "tu": "match/core/math_004b5910.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4b5912",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e8248"
+    },
+    {
+     "field": "0x4b5918",
+     "symbol": "_DAT_007E8248",
+     "expected": "0x7e8248",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x004B5930",
+   "tu": "match/core/math_004b5910.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4b5932",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e8248"
+    },
+    {
+     "field": "0x4b5938",
+     "symbol": "_DAT_007E8248",
+     "expected": "0x7e8248",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x004B5950",
+   "tu": "match/core/math_004b5910.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4b5952",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e8248"
+    },
+    {
+     "field": "0x4b5958",
+     "symbol": "_DAT_007E8248",
+     "expected": "0x7e8248",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x4CBA20",
+   "tu": "match/core/static_reset_004cb990.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4cba22",
+     "symbol": "_DAT_007E1720",
+     "expected": "0x7e1720",
+     "previous_actual": "0x7e89b0"
+    },
+    {
+     "field": "0x4cba28",
+     "symbol": "_DAT_007E89B0",
+     "expected": "0x7e89b0",
+     "previous_actual": "0x7e1720"
+    }
+   ]
+  },
+  {
+   "addr": "0x4CBA40",
+   "tu": "match/core/math_initializers_004cba40.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4cba42",
+     "symbol": "_DAT_007E1728",
+     "expected": "0x7e1728",
+     "previous_actual": "0x7e89b0"
+    },
+    {
+     "field": "0x4cba48",
+     "symbol": "_DAT_007E89B0",
+     "expected": "0x7e89b0",
+     "previous_actual": "0x7e1728"
+    }
+   ]
+  },
+  {
+   "addr": "0x4CBA60",
+   "tu": "match/core/math_initializers_004cba40.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4cba62",
+     "symbol": "_DAT_007E1730",
+     "expected": "0x7e1730",
+     "previous_actual": "0x7e89b0"
+    },
+    {
+     "field": "0x4cba68",
+     "symbol": "_DAT_007E89B0",
+     "expected": "0x7e89b0",
+     "previous_actual": "0x7e1730"
+    }
+   ]
+  },
+  {
+   "addr": "0x4CBA80",
+   "tu": "match/core/math_initializers_004cba40.cpp",
+   "correction": "x87 operand order",
+   "fields": [
+    {
+     "field": "0x4cba99",
+     "symbol": "_DAT_007E1738",
+     "expected": "0x7e1738",
+     "previous_actual": "0x8b3b50"
+    },
+    {
+     "field": "0x4cbaa2",
+     "symbol": "_DAT_008B3B50",
+     "expected": "0x8b3b50",
+     "previous_actual": "0x7e1738"
+    }
+   ]
+  },
+  {
+   "addr": "0x56D460",
+   "tu": "match/map/map_class_reset_zones_methods.cpp",
+   "correction": "integer operand order",
+   "fields": [
+    {
+     "field": "0x56d4ad",
+     "symbol": "?DAT_0087F8E0@@3HA",
+     "expected": "0x87f8e0",
+     "previous_actual": "0x87f8dc"
+    },
+    {
+     "field": "0x56d4b3",
+     "symbol": "?DAT_0087F8DC@@3HA",
+     "expected": "0x87f8dc",
+     "previous_actual": "0x87f8e0"
+    }
+   ]
+  }
+ ],
+ "after_verification": {
+  "raw_exact_functions": 37,
+  "strict_target_checked_functions": 37,
+  "strict_relocation_fields": 157,
+  "unaffected_prior_sections_preserved": 90,
+  "same_scope_address_mismatches": 0
+ }
+}

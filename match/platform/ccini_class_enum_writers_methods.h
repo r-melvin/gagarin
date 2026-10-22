@@ -67,15 +67,17 @@ struct HouseTypeRecord
 GG_STATIC_ASSERT(offsetof(HouseTypeRecord, ID) == 0x24 &&
                  offsetof(HouseTypeRecord, Index) == 0xB8);
 
+// Partial registry view through Count; intermediate bytes remain unknown.
 struct HouseTypeRecordVector
 {
     void*               _vtable;    // +0x0000
     HouseTypeRecord**   Items;      // +0x0004
     int                 Capacity;   // +0x0008
-    int                 Count;      // +0x000C
+    char unknown_0C[4];                 // +0x000C
+    int                 Count;      // +0x0010
 };
 GG_STATIC_ASSERT(offsetof(HouseTypeRecordVector, Items) == 0x04 &&
-                 offsetof(HouseTypeRecordVector, Count) == 0x0C);
+                 offsetof(HouseTypeRecordVector, Count) == 0x10);
 
 // GLOBAL: GAMEMD 0xA83C98 — the house-type registry (Items 0xA83C9C,
 // Count 0xA83CA8).

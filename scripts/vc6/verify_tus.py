@@ -64,14 +64,16 @@ def verify(obj, entry):
             capture_output=True, text=True)
         if tool == "raw_match.py" and result.returncode == 3:
             return False, "hard float-literal relocation failure"
-        if "100.0%" in result.stdout:
+        if tool == "raw_match.py" and result.returncode == 4:
+            return False, "address-labelled DAT relocation target mismatch"
+        if result.returncode == 0 and "100.0%" in result.stdout:
             return True, "100.0%"
         percentages = [line.split()[-1] for line in result.stdout.splitlines()
                        if line.startswith("match:")]
-        if percentages:
-            last = percentages[-1]
-        elif result.returncode:
+        if result.returncode:
             last = f"{tool} failed (exit {result.returncode})"
+        elif percentages:
+            last = percentages[-1]
     return False, last
 
 

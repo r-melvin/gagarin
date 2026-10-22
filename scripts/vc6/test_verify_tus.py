@@ -80,6 +80,17 @@ class CompileSelectedTests(unittest.TestCase):
 
 
 class ManifestSelectionTests(unittest.TestCase):
+    def test_diff_hard_failure_with_100_stdout_is_not_accepted(self):
+        results = [
+            SimpleNamespace(returncode=1, stdout="match: 20.0%"),
+            SimpleNamespace(returncode=4, stdout="HARD DAT-RELOCATION FAILURE\nmatch: 100.0%"),
+        ]
+        with patch.object(verify_tus.subprocess, "run", side_effect=results):
+            accepted, score = verify_tus.verify(
+                "fixture.obj", {"sym": "f", "addr": "0x1", "len": "0x1"})
+        self.assertFalse(accepted)
+        self.assertEqual(score, "diff_retail.py failed (exit 4)")
+
     def test_main_reads_public_data_manifest_not_docs(self):
         with tempfile.TemporaryDirectory() as work:
             root = Path(work)

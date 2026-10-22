@@ -28,12 +28,23 @@
 #                --sym '?HostToNet@FieldClass@@QAEXXZ' --addr 0x4CB8B0 --len 0x5A
 #
 # Exit 0 iff every byte difference lies in a relocation slot.
-import argparse, json, os, struct, subprocess, sys
+import argparse, json, os, re, struct, subprocess, sys
 from retail_image import configured_span
-from verify_relocations import parse_coff, VerifyError
+from verify_vtable import parse_coff, defined_symbol, VerifyError
 
 GHIDRA = os.path.expanduser("~/.cargo/bin/ghidra")
 HARD_LITERAL_FAILURE = 3
+HARD_RELOCATION_FAILURE = 4  # address-labelled DAT_ target mismatch
+
+# Address-labelled data symbols are either plain C names, leading-underscore C
+# names, or MSVC data symbols beginning with `?DAT_...@@`. Anchor at the symbol
+# start so a method/class/template name that merely contains `DAT_XXXXXXXX`
+# cannot be mistaken for a global address claim.
+DAT_ADDRESS_RE = re.compile(r"^(?:\?)?_?DAT_([0-9A-Fa-f]{8})(?:@@|$)")
+
+
+class AddressLabelRelocationError(Exception):
+    """An address-labelled DAT_ relocation does not point at its named VA."""
 
 
 class FloatLiteralCheckError(Exception):
@@ -90,6 +101,135 @@ def verify_float_literals_for_raw_exact_span(obj, sym, function_addr,
     verify_float_literal_relocations(obj, sym, function_addr, retail_function)
     return True
 
+
+def verify_address_label_relocations(obj, sym, function_addr, retail_function):
+    """Verify address-labelled DAT_ targets in an otherwise exact raw span.
+
+    Relocation normalization intentionally ignores fixup bytes. For a symbol
+    whose own spelling records its retail VA (DAT_XXXXXXXX), prove that the
+    relocated operand still names that VA, including the COFF addend. This is
+    deliberately narrow: it neither resolves arbitrary functions nor turns a
+    partial body into a hard failure.
+    """
+    try:
+        coff, sections, symbols, _ = parse_coff(obj)
+    except (OSError, VerifyError, ValueError, struct.error) as exc:
+        raise AddressLabelRelocationError(f"cannot parse COFF for DAT_ target audit: {exc}") from exc
+
+    function = None
+    for item in symbols.values():
+        if item["name"] == sym and item["section"] in sections:
+            if function is not None and (function["section"], function["value"]) != (item["section"], item["value"]):
+                raise AddressLabelRelocationError(f"ambiguous COFF definitions for {sym}")
+            function = item
+    if function is None:
+        raise AddressLabelRelocationError(f"defined COFF function not found for DAT_ audit: {sym}")
+
+    code = sections[function["section"]]
+    if code["uninitialized"]:
+        raise AddressLabelRelocationError(f"function {sym} is in uninitialized COFF storage")
+    start = function["value"]
+    end = start + len(retail_function)
+    if end > code["raw_size"] or code["raw_ptr"] + end > len(coff):
+        raise AddressLabelRelocationError(f"function {sym} DAT_ audit span exceeds its COFF section")
+
+    for rva, symbol_index, kind in code["relocs"]:
+        if rva < start or rva >= end:
+            continue
+        target = symbols.get(symbol_index)
+        if target is None:
+            raise AddressLabelRelocationError(
+                f"relocation at {rva:#x} refers to non-primary COFF symbol index {symbol_index}")
+        match = DAT_ADDRESS_RE.match(target["name"])
+        if match is None:
+            continue
+        if kind not in (0x0006, 0x0014):
+            raise AddressLabelRelocationError(
+                f"unsupported relocation type {kind:#x} for address-labelled {target['name']}")
+        if rva + 4 > end:
+            raise AddressLabelRelocationError(
+                f"relocation for {target['name']} crosses the requested function span")
+
+        relative = rva - start
+        if kind == 0x0006:  # IMAGE_REL_I386_DIR32: S + A
+            addend = struct.unpack_from("<I", coff, code["raw_ptr"] + rva)[0]
+            observed = struct.unpack_from("<I", retail_function, relative)[0]
+        else:  # IMAGE_REL_I386_REL32: S + A - P - 4
+            addend = struct.unpack_from("<i", coff, code["raw_ptr"] + rva)[0]
+            displacement = struct.unpack_from("<i", retail_function, relative)[0]
+            observed = (function_addr + relative + 4 + displacement) & 0xFFFFFFFF
+        expected = (int(match.group(1), 16) + addend) & 0xFFFFFFFF
+        if observed != expected:
+            raise AddressLabelRelocationError(
+                f"+{relative:#x}: {target['name']} with COFF addend {addend:+#x} "
+                f"resolves to {expected:#010x}, retail operand targets {observed:#010x}")
+
+
+def verify_relocation_targets_for_raw_exact_span(obj, sym, function_addr,
+                                                  retail_function):
+    """Audit address-labelled relocations before accepting an exact diff.
+
+    For a complete span, the caller uses this before accepting a raw or
+    instruction-level exact result. Address-labelled operands are checked even
+    if unrelated bytes make the body partial. A short COFF section checks only
+    complete DAT_ relocation fields in its emitted prefix. Float-pool checking
+    remains limited to a byte-exact complete span.
+    """
+    try:
+        object_function, reloc_offsets = obj_func_bytes(obj, sym, len(retail_function))
+    except ValueError as exc:
+        # A short emitted COMDAT is a known partial-match shape. Do not turn
+        # it into a hard failure just because the requested whole retail span
+        # cannot be sliced. Still inspect every address-labelled relocation
+        # present in the emitted prefix: those operands are independently
+        # checkable, and instruction-diff fallback must not bless a swapped
+        # DAT_ target there.
+        if "exceeds COFF section size" in str(exc):
+            try:
+                coff, sections, symbols, _ = parse_coff(obj)
+                function = defined_symbol(sections, symbols, sym)
+                section = sections[function["section"]]
+                available = max(0, min(len(retail_function),
+                                       section["raw_size"] - function["value"]))
+                # If truncation leaves only part of a relocation field, its
+                # retail target is unknowable. Exclude that incomplete field
+                # from the prefix audit instead of turning a short partial
+                # into a hard failure.
+                limit = function["value"] + available
+                for rva, _, _ in section["relocs"]:
+                    if function["value"] <= rva < limit and rva + 4 > limit:
+                        available = min(available, rva - function["value"])
+                        limit = function["value"] + available
+                verify_address_label_relocations(
+                    obj, sym, function_addr, retail_function[:available])
+            except (OSError, ValueError, StopIteration, struct.error, VerifyError) as nested:
+                raise AddressLabelRelocationError(
+                    f"cannot audit address-labelled targets in short candidate {sym}: {nested}") from nested
+            return False
+        raise AddressLabelRelocationError(
+            f"cannot read candidate function span for relocation audit: {exc}") from exc
+    except (OSError, struct.error, VerifyError) as exc:
+        raise AddressLabelRelocationError(
+            f"cannot read candidate function span for relocation audit: {exc}") from exc
+    if object_function is None:
+        raise AddressLabelRelocationError(f"candidate function {sym} has no defined COFF body")
+    if len(object_function) != len(retail_function):
+        raise AddressLabelRelocationError(
+            f"candidate function span has {len(object_function)} bytes, "
+            f"retail request has {len(retail_function)}")
+    # Address-labelled globals are semantic operands even when some unrelated
+    # byte keeps the whole body partial. Check them before the ordinary byte
+    # difference return so diff_retail's instruction fallback cannot bless a
+    # normalized but wrongly targeted DAT_ relocation.
+    verify_address_label_relocations(obj, sym, function_addr, retail_function)
+    covered = set()
+    for offset in reloc_offsets:
+        covered.update(range(offset, offset + 4))
+    if any(a != b and i not in covered
+           for i, (a, b) in enumerate(zip(retail_function, object_function))):
+        return False
+    verify_float_literals_for_raw_exact_span(obj, sym, function_addr, retail_function)
+    return True
 
 def verify_float_literal_relocations(obj, sym, function_addr, retail_function):
     """Compare referenced defined __real@4@/__real@8@ values with retail.
@@ -339,7 +479,11 @@ def main():
     # instruction-position fallback after this failure.
     if not real:
         try:
+            verify_address_label_relocations(a.obj, a.sym, int(a.addr, 16), rb)
             verify_float_literal_relocations(a.obj, a.sym, int(a.addr, 16), rb)
+        except AddressLabelRelocationError as exc:
+            print(f"raw_match: HARD DAT-RELOCATION FAILURE: {exc}")
+            sys.exit(HARD_RELOCATION_FAILURE)
         except FloatLiteralCheckError as exc:
             print(f"raw_match: HARD FLOAT-LITERAL FAILURE: {exc}")
             sys.exit(HARD_LITERAL_FAILURE)

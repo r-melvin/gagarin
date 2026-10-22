@@ -50,6 +50,8 @@ def verify(obj, sym, addr, length):
                            capture_output=True, text=True)
         if tool == "raw_match.py" and r.returncode == 3:
             return False, "hard float-literal relocation failure"
+        if tool == "raw_match.py" and r.returncode == 4:
+            return False, "address-labelled DAT relocation target mismatch"
         if r.returncode == 0 and "100.0%" in r.stdout:
             return True, "100.0%"
         last = r.stdout
@@ -89,7 +91,10 @@ def main():
             md.append(f"| `{tu}` | — | — | **COMPILE FAIL** |"); continue
         m = p = 0; bad = []
         for e in by_tu[tu]:
-            if e.get("pct") == 100:
+            # Manifest status is authoritative. A partial row may have a
+            # 100% diagnostic score while still lacking structural proof
+            # (for example, a vtable slot closure); never promote it here.
+            if e.get("status") == "matched":
                 ok, pc = verify(obj, e["sym"], e["addr"], e["len"])
                 if ok:
                     m += 1

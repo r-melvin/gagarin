@@ -3,19 +3,22 @@
 As of **2026-10-22**, the verified snapshot reports **5,092 matched function
 rows**, **227 partial rows**, **5,319 manifest rows**, **1,068 manifest
 translation units**, and **1,078 tracked C++ files**. Whole-repository regression
-verification, compile/layout checks, the project object build and 123 tooling
+verification, compile/layout checks, the project object build and 139 tooling
 tests pass. There are zero annotation issues across 5,352 body addresses.
 
-The latest batch promotes five functions from Claude's partial-function second
-look and integrates exact native `LocomotionClass::PowerOff`, retiring its old
-address-local view. The changes use ordinary C++ declaration order, a walking
-row cursor, a named float temporary, a corrected display receiver and a pointer
-to the powered flag. Across those candidates and existing locomotion methods,
-41 rebuilt bodies pass raw and strict checks over 83 relocation fields.
-Eighty unaffected prior emitted sections preserve their complete bytes and
-relocation tuples, including three partials. `MSPrintAnim::Update` also has exact
-body bytes but remains partial: its emitted class table has six slots versus
-nine in retail. Its structural integration is still under review.
+The latest audit corrects 37 previously recorded matches: 31 x87 initializers
+had swapped constant operands, one map method swapped global operands, and five
+CCINI methods used registry count fields four bytes early. The byte oracle now
+checks address-labelled `DAT_` targets, including relocation addends, and rejects
+mismatches before fallback. It also respects explicit partial status at 100%.
+All 37 corrected bodies pass raw and strict checks over 157 relocation fields;
+90 unaffected prior function sections are preserved. The scoped audit checks
+1,729 address-labelled fields with zero remaining mismatches. Other relocation
+bindings still require their separate strict checks. The correction ledger is
+[saved here](scripts/data/named_dat_target_corrections.json).
+
+`MSPrintAnim::Update` has exact body bytes but remains partial pending its
+nine-slot vtable reconstruction. Hover and Mech integrations remain under review.
 
 The 5,092 matches represent 25.8% of 19,753 listed functions. Matched body
 lengths total **377,609 bytes**, or 9.9% of 3,797,269 listed function bytes.
