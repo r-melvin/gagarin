@@ -14,7 +14,9 @@ __int64 Obj_00408560::FUN_00408560(int value) const
     int divisor = Divisor;
 
     if (divisor != 0) {
-        return (__int64)value * 1000 / divisor;
+        // Both operands are sign-extended, the product (0x7C8EC0) is then divided
+        // unsigned (0x7C9380): the scaled value is an unsigned 64-bit quantity.
+        return (unsigned __int64)((__int64)value * 1000) / (__int64)divisor;
     }
 
     return 0;

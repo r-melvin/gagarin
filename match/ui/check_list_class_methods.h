@@ -40,9 +40,9 @@ void  __cdecl operator delete(void*);
 // VTABLE: GAMEMD 0x007E4F84 — CheckListClass
 extern char VT_007E4F84[];
 
-// LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) — the wide-string compare the two
-// text lookups run; __cdecl, two pushed arguments, `ADD ESP,8` afterwards.
-extern "C" int __cdecl wcscmp(wchar_t const* a, wchar_t const* b);
+// LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) -- CRT _wcsicmp: the two text lookups compare
+// case-insensitively (the body folds A-Z with +0x20 before comparing).
+extern "C" int __cdecl _wcsicmp(wchar_t const* a, wchar_t const* b);
 
 // The heap node one entry becomes. `PUSH 8` sizes it, `MOV [EAX],ECX` writes
 // the text and `MOV BYTE PTR [EAX+4],0` the flag, so it is exactly two members

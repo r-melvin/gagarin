@@ -244,7 +244,7 @@ int FUN_0046F880(int index)
         return -2;
     }
 
-    return entry->FUN_00696F20();
+    return entry->FUN_00696F50();
 }
 
 // FUNCTION: GAMEMD 0x46FB50

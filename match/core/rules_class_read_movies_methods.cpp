@@ -13,7 +13,7 @@
 // The section test is CCINIClass::Exists with its key defaulted to null,
 // written out in flag form (the banked Read_WallModel shape). The append is
 // DynamicVectorClass::AddItem expanded inline from the header.
-// STRING: GAMEMD 0x817474 ""
+// STRING: GAMEMD 0x817474 "<none>"
 bool Rules_00674550::Read_Movies(CCINI_00674550* pINI)
 {
     bool        ok  = false;
@@ -31,7 +31,7 @@ bool Rules_00674550::Read_Movies(CCINI_00674550* pINI)
             char buffer[0x20];
             if (pINI->ReadString(MoviesSection_00674550,
                                  pINI->GetKeyName(MoviesSection_00674550, i),
-                                 "", buffer, 0x20) != 0) {
+                                 "<none>", buffer, 0x20) != 0) {
                 if (FUN_0048DF30(buffer) == -1) {
                     DAT_00ABF390.AddItem(GameStrdup_00674550(buffer));
                 }

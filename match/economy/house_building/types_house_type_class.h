@@ -153,9 +153,11 @@ public:
     float         BuildtimeBuildingsMult;   // +0x140
     float         BuildtimeDefensesMult;    // +0x144
     float         IncomeMult;               // +0x148
-    TypesTypeList<InfantryTypeClass*> VeteranInfantry;   // +0x14C
-    TypesTypeList<UnitTypeClass*>     VeteranUnits;      // +0x168
-    TypesTypeList<AircraftTypeClass*> VeteranAircraft;   // +0x184
+    // RTTI: the three lists are VectorClass<const T*> (.?AV?$VectorClass@PBVInfantryTypeClass@@@@,
+    // tables 0x7EAC28 / 0x7EAC48 / 0x7EAC68, stored by the destructor 0x512760).
+    TypesTypeList<const InfantryTypeClass*> VeteranInfantry;   // +0x14C
+    TypesTypeList<const UnitTypeClass*>     VeteranUnits;      // +0x168
+    TypesTypeList<const AircraftTypeClass*> VeteranAircraft;   // +0x184
     char          Suffix[4];                // +0x1A0
     char          Prefix;                   // +0x1A4
     bool          Multiplay;                // +0x1A5

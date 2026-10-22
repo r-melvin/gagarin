@@ -46,7 +46,7 @@ void CheckListClass::RemoveItem(wchar_t const* text)
     for (int i = 0; i < (this->*this->Vfptr->At_94)(); i++) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(i);
 
-        if (item != 0 && wcscmp(item->Text, text) == 0) {
+        if (item != 0 && _wcsicmp(item->Text, text) == 0) {
             this->ListClass_RemoveItem(i);
             delete item;
             return;
@@ -62,7 +62,7 @@ void CheckListClass::FUN_004883F0(wchar_t const* text)
     for (int i = 0; i < (this->*this->Vfptr->At_94)(); i++) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(i);
 
-        if (item != 0 && wcscmp(item->Text, text) == 0) {
+        if (item != 0 && _wcsicmp(item->Text, text) == 0) {
             (this->*this->Vfptr->At_B8)(i);
             return;
         }

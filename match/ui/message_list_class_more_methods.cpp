@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   FUNCTION: GAMEMD 0x5D4AD0  MessageListClass::SetWidth   (__thiscall)
 //   LIBRARY:  GAMEMD 0x4068E0  FUN_004068E0 (variadic; release stub)
-//   STRING:   GAMEMD 0x8306A8  "MessageListClass"
+//   STRING:   GAMEMD 0x8306A8  "MessageListClass::Set_Width(%d)\n"
 //
 // Bytes reconfirmed from the local Ghidra disassembly of retail gamemd.exe.
 #include "message_list_class_more_methods.h"
@@ -19,7 +19,7 @@ void MessageListClass::SetWidth(int width)
 {
     width -= 8;
     Width = width;
-    FUN_004068E0("MessageListClass", width);
+    FUN_004068E0("MessageListClass::Set_Width(%d)\n", width);
 
     TextLabelClass* node = MessageList;
     while (node)

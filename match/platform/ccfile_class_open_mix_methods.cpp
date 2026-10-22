@@ -40,7 +40,7 @@ int CCFile_00473D10::Open(unsigned int mode)
                     FUN_0065D2B0(0, -1);
                     FUN_0065D2B0(offset, size);
                     (this->*Vtbl->At_28)(0, 0);
-                    gg_free(dup);
+                    FUN_007C93E8(dup);
                     return 1;
                 }
                 return 0;

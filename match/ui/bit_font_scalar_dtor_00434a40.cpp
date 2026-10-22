@@ -7,6 +7,10 @@
 //   vtable slot and one stack flags parameter; both helpers use caller cleanup.
 #include "bit_font_scalar_dtor_00434a40.h"
 
+// LIBRARY: GAMEMD 0x7C93E8 (decl; reloc) -- CRT free (the project-wide free symbol is
+// bound to operator delete 0x7C8B3D by its other callers).
+extern "C" void __cdecl FUN_007C93E8(void* block);
+
 // FUNCTION: GAMEMD 0x434A40
 void* BitFontScalarDtorView_00434A40::ScalarDeletingDestructor(unsigned int flags)
 {
@@ -14,7 +18,7 @@ void* BitFontScalarDtorView_00434A40::ScalarDeletingDestructor(unsigned int flag
     void* cachedPixels = self->unknown_08;
     self->unknown_00 = (void*)0x7E3A78;
     if (cachedPixels != 0) {
-        ::free(cachedPixels);
+        FUN_007C93E8(cachedPixels);
     }
 
     BitFontPayload_00434A40* payload = self->unknown_04;

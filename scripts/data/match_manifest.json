@@ -1727,8 +1727,8 @@
   "sym": "?InitScalable@BulletClass@@QAEXXZ",
   "len": "0x89",
   "name": "BulletClass::InitScalable",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 90.9
  },
  {
   "tu": "match/combat/bullet_type_class.cpp",

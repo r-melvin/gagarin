@@ -41,8 +41,9 @@ struct CCFile_00473D10;
 
 // LIBRARY: GAMEMD 0x7D5408 (decl; reloc) — CRT strdup.
 extern "C" char* __cdecl gg_strdup(const char* s);
-// FUNCTION: GAMEMD 0x7C93E8 (decl; reloc) — CRT free.
-extern "C" void __cdecl gg_free(void* p);
+// LIBRARY: GAMEMD 0x7C93E8 (decl; reloc) — CRT free. Its own name: the project-wide
+// gg_free/free symbols are bound to operator delete 0x7C8B3D by their other callers.
+extern "C" void __cdecl FUN_007C93E8(void* block);
 
 // The +0x58 buffer sub-object; its setter takes both arguments on the stack
 // and is reached through a pointer that retail null-tests first.

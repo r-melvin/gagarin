@@ -41,12 +41,12 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
 // collected in order; without the key the existing list is returned unchanged. Retail expands this
 // inline once per list (the returned list is a copy, assigned to the member by the caller).
 #define TYPES_DEFINE_READ_LIST(TYPE, FIND, NAME)                                                       \
-    inline TypesTypeList<TYPE*> NAME##Impl(TypesIniView* ini, const char* section, const char* key,   \
-                                           const TypesTypeList<TYPE*>& current)                        \
+    inline TypesTypeList<const TYPE*> NAME##Impl(TypesIniView* ini, const char* section, const char* key,   \
+                                           const TypesTypeList<const TYPE*>& current)                    \
     {                                                                                                  \
         char buffer[0x80];                                                                             \
         if (ini->ReadString(section, key, TypesEmptyText, buffer, 0x80)) {                             \
-            TypesTypeList<TYPE*> list;                                                                 \
+            TypesTypeList<const TYPE*> list;                                                           \
             for (char* name = strtok(buffer, ","); name; name = strtok(0, ",")) {                      \
                 if (*name) {                                                                           \
                     TYPE* type = FIND(name);                                                           \
@@ -59,7 +59,7 @@ template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
         return current;                                                                                \
     }                                                                                                  \
     inline void NAME(TypesIniView* ini, const char* section, const char* key,                           \
-                     TypesTypeList<TYPE*>& member)                                                      \
+                     TypesTypeList<const TYPE*>& member)                                                \
     {                                                                                                  \
         member = NAME##Impl(ini, section, key, member);                                                \
     }

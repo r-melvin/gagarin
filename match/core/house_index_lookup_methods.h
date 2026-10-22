@@ -20,6 +20,8 @@ struct Entry_0046F810
     // FUNCTION: GAMEMD 0x696F20 (decl; reloc) — the fallback. Declared as a member so the
     // tail position stays a `CALL` rather than becoming a `JMP`.
     int FUN_00696F20();
+    // FUNCTION: GAMEMD 0x696F50 (decl; reloc) -- the second table's answer (0x46F880 +0x62).
+    int FUN_00696F50();
 };
 
 // GLOBAL: GAMEMD 0xA8DA90 — the object array, indexed by the argument.

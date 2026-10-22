@@ -10,7 +10,7 @@
 //   FUNCTION: GAMEMD 0x5B3910   MissionControlClass::FindIndex            (__fastcall)
 //   GLOBAL:   GAMEMD 0xA8E3A8   MissionControlClass MissionControls[]
 //   GLOBAL:   GAMEMD 0x816CAC   const char* MissionControlNames[]
-//   GLOBAL:   GAMEMD 0x817474   "" (empty-name sentinel)
+//   GLOBAL:   GAMEMD 0x817474   "<none>" (the name of an unset mission)
 //   LIBRARY:  GAMEMD 0x7C8D20   _stricmp  (CRT; excluded from match target)
 //
 // Verified: IsRecruitableMission/FindIndex 100% via diff_retail.py; GetName
@@ -40,7 +40,7 @@ bool MissionControlClass::IsRecruitableMission(int mission)
 const char* MissionControlClass::GetName()
 {
     if (this->ArrayIndex == -1)
-        return "";
+        return "<none>";
     return MissionControlNames[this->ArrayIndex];
 }
 

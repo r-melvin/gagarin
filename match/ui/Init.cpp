@@ -350,7 +350,7 @@ extern bool DAT_00A8DBA0;
 // FUNCTION: GAMEMD 0x752B70 (decl; reloc)
 void FUN_00752B70();
 
-// LIBRARY: GAMEMD 0x7CA5D3 -- CRT _stricmp.
+// LIBRARY: GAMEMD 0x7C8D20 -- CRT _stricmp (0x7CA5D3 is the wide wcscmp: it compares words).
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" char* __cdecl strcpy(char* dst, const char* src);
 

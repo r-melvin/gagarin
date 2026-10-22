@@ -683,7 +683,7 @@ void FUN_0077DC90(const char* url, int quiet)
     tmpnam(probe);
     strcat(probe, DAT_0082976C);
     FILE* file = fopen(probe, DAT_0082AF10);
-    fprintf(file, "<title>Hi there</title>");
+    fprintf(file, "<title>Hi there.</title>");
     fclose(file);
 
     HINSTANCE found = FindExecutableA(probe, NULL, browser);
