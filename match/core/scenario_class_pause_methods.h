@@ -75,8 +75,9 @@ struct Map_00683EB0
     void FlagToRedraw(int mode);
     // FUNCTION: GAMEMD 0x4F4480 (decl; reloc) — GScreenClass::Render.
     void Render();
-    // FUNCTION: GAMEMD 0x5BDC80 (decl; reloc)
-    void FUN_005BDC80(int a, int b);
+    // FUNCTION: GAMEMD 0x5BDC80 (decl; reloc) — MouseClass vtable slot 19, called
+    // directly on the map object: (cursor, flag), returns bool, RET 8.
+    bool FUN_005BDC80(int cursor, bool flag);
     // FUNCTION: GAMEMD 0x6938C0 (decl; reloc)
     void FUN_006938C0();
 };

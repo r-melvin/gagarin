@@ -24,13 +24,25 @@ enum LoadOptionsMode
     LOM_Delete = 3
 };
 
+// VTABLE: GAMEMD 0x7ED2E4 (RTTI .?AVLoadOptionsClass@@, no base; 9 slots). The
+// slot bodies never touch `this`; each takes its arguments from the first stack
+// slots (RET 4 / RET 8), i.e. __thiscall with an unused ECX. DeleteMission
+// (0x559EB0) is slot 3: the same body as the former static __stdcall view.
 struct LoadOptionsClass
 {
+    virtual ~LoadOptionsClass();                                           // slot 0, 0x55A0D0 (scalar deleting)
+    virtual bool Slot1(const char* fileName);                              // slot 1, 0x559D60
+    virtual bool Slot2(const char* fileName, const wchar_t* description);  // slot 2, 0x559E40
+    virtual bool DeleteMission(const char* pFilename);                     // slot 3, 0x559EB0
+    virtual bool Slot4(void* out, void* entry);                            // slot 4, 0x559ED0
+    virtual const wchar_t* Slot5();                                        // slot 5, 0x55A050
+    virtual const wchar_t* Slot6();                                        // slot 6, 0x55A070
+    virtual const wchar_t* Slot7();                                        // slot 7, 0x55A090
+    virtual const wchar_t* Slot8();                                        // slot 8, 0x55A0B0
+
     bool LoadDialog();                  // GAMEMD 0x5587F0 __thiscall
     bool ProcessDialog();               // GAMEMD 0x558DD0 (worker, declared)
-    static bool __stdcall DeleteMission(const char* pFilename); // GAMEMD 0x559EB0
 
-    void*          _vtable;             // +0x00  COM vptr (virtual dtor) — P2
     LoadOptionsMode Mode;              // +0x04
     const char*    Extension;          // +0x08
     const wchar_t* Description;        // +0x0C

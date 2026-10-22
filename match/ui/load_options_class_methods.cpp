@@ -5,7 +5,7 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x5587F0  LoadOptionsClass::LoadDialog      (__thiscall)
-//   FUNCTION: GAMEMD 0x559EB0  LoadOptionsClass::DeleteMission   (__stdcall)
+//   FUNCTION: GAMEMD 0x559EB0  LoadOptionsClass::DeleteMission   (__thiscall, slot 3; ECX unused)
 //   FUNCTION: GAMEMD 0x558DD0  LoadOptionsClass::ProcessDialog   (referenced; tail-jmp)
 
 #include "load_options_class_methods.h"
@@ -26,10 +26,10 @@ bool LoadOptionsClass::LoadDialog()
     return this->ProcessDialog();
 }
 
-// FUNCTION: GAMEMD 0x559EB0  (__stdcall)
+// FUNCTION: GAMEMD 0x559EB0  (__thiscall, vtable slot 3; ECX unused)
 // Delete one savegame file; report success only when DeleteFileA returns
 // exactly 1 (TRUE).
-bool __stdcall LoadOptionsClass::DeleteMission(const char* pFilename)
+bool LoadOptionsClass::DeleteMission(const char* pFilename)
 {
     // Bind the comparison to a bool local so cl emits the lean `cmp eax,1;
     // sete al` tail (retail's exact form) instead of the branchless

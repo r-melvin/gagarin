@@ -66,6 +66,20 @@ GG_STATIC_ASSERT(sizeof(CheckItemClass) == 8);
 typedef DynamicVectorClass<wchar_t const*> TextDynVector;
 GG_STATIC_ASSERT(sizeof(TextDynVector) == 0x18);
 
+// CONSOLIDATION NOTE (proposal): this view is non-polymorphic (an explicit
+// Vfptr plus hand-built slot tables). The retail classes are polymorphic:
+// ListClass : ControlClass : GadgetClass : LinkClass (vtable 0x7ED10C, 51 slots;
+// new slots from +0x88 AddItem .. +0xC8 DrawItem, RemoveItem(int) at +0xA8 and
+// RemoveItem(text) at +0xAC because VC6 lays overloaded virtuals out in reverse
+// declaration order), CheckListClass : ListClass (0x7E4F84, IsReadOnly +0x174)
+// and ColorListClass : ListClass (0x7E5054, 53 slots; Colors +0x174, Style
+// +0x18C, SelectColor +0x190; new slots +0xCC AddItem(text, color), +0xD0
+// SetStyle). A polymorphic model with embedded ShapeButtonClass (+0x58, +0xB8)
+// and SliderClass (+0x118) members verifies all 51/53 slots and reproduces the
+// compiler-emitted deleting destructors 0x558060 / 0x488F00 byte for byte (no
+// /GX, destructor defined inline in its own TU). Moving these headers onto it
+// changes the matched destructor TUs here, so it must be re-gated with
+// verify_all.py before it lands; the code rewrite is not drafted in this patch.
 struct CheckListVtbl;
 
 class CheckListClass

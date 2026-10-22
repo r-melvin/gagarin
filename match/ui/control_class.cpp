@@ -5,7 +5,7 @@
 // FUNCTION: GAMEMD 0x48E520
 ControlClass::ControlClass(int id, int x, int y, int width, int height,
                            unsigned int flags, char sticky)
-    : GadgetClass(x, y, width, height, flags, sticky), ID(id), unknown_28(0)
+    : GadgetClass(x, y, width, height, flags, sticky), ID(id), Peer(0)
 {
 }
 
@@ -26,17 +26,17 @@ int ControlClass::Action(unsigned flags, unsigned* key, int modifier)
         }
     }
 
-    if (unknown_28 != 0) {
-        unknown_28->PeerToPeer(flags, key, this);
+    if (Peer != 0) {
+        Peer->PeerToPeer(flags, key, this);
     }
 
     return GadgetClass::Action(flags, key, 0);
 }
 
 // FUNCTION: GAMEMD 0x48E600
-void ControlClass::FUN_0048E600(GadgetClass* gadget)
+void ControlClass::SetPeer(GadgetClass* gadget)
 {
-    unknown_28 = gadget;
+    Peer = gadget;
 }
 
 // FUNCTION: GAMEMD 0x48E610
@@ -48,8 +48,8 @@ unsigned int ControlClass::GetID()
 // FUNCTION: GAMEMD 0x48E620
 int ControlClass::Draw(int forced)
 {
-    if (unknown_28) {
-        unknown_28->Draw(0);
+    if (Peer) {
+        Peer->Draw(0);
     }
     return GadgetClass::Draw(forced);
 }

@@ -29430,7 +29430,7 @@
  {
   "tu": "match/ui/load_options_class_methods.cpp",
   "addr": "0x559EB0",
-  "sym": "?DeleteMission@LoadOptionsClass@@SG_NPBD@Z",
+  "sym": "?DeleteMission@LoadOptionsClass@@UAE_NPBD@Z",
   "len": "0x14",
   "name": "DeleteMission",
   "status": "matched",
@@ -31887,9 +31887,9 @@
  {
   "tu": "match/ui/control_class.cpp",
   "addr": "0x48e600",
-  "sym": "?FUN_0048E600@ControlClass@@UAEXPAUGadgetClass@@@Z",
+  "sym": "?SetPeer@ControlClass@@UAEXPAUGadgetClass@@@Z",
   "len": "0xa",
-  "name": "ControlClass::FUN_0048E600",
+  "name": "ControlClass::SetPeer",
   "status": "matched",
   "pct": 100
  },
@@ -57435,6 +57435,1806 @@
   "sym": "??_G?$BlitTrans@G@@UAEPAXI@Z",
   "len": "0x20",
   "name": "BlitTrans<unsigned short>::scalar_deleting_dtor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x40D230",
+  "sym": "?AddRef@GScreenClass@@UAGKXZ",
+  "len": "0x8",
+  "name": "GScreenClass::AddRef",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x40D240",
+  "sym": "?Release@GScreenClass@@UAGKXZ",
+  "len": "0x8",
+  "name": "GScreenClass::Release",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x40D280",
+  "sym": "?vf_40@MouseClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "MouseClass::vf_40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
+  "addr": "0x40D290",
+  "sym": "??_GMouseClass@@UAEPAXI@Z",
+  "len": "0x61",
+  "name": "MouseClass::`scalar deleting destructor'",
+  "status": "partial",
+  "pct": 29.0
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "addr": "0x478BA0",
+  "sym": "?Update@CCToolTip@@UAE_NAAUToolTipManagerData@@@Z",
+  "len": "0x20E",
+  "name": "CCToolTip::Update",
+  "status": "partial",
+  "pct": 99.0
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "addr": "0x478DB0",
+  "sym": "?MarkToRedraw@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
+  "len": "0x5F",
+  "name": "CCToolTip::MarkToRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "addr": "0x478E10",
+  "sym": "?Draw@CCToolTip@@UAEX_N@Z",
+  "len": "0x18",
+  "name": "CCToolTip::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "addr": "0x478E30",
+  "sym": "?DrawText@CCToolTip@@UAEXAAUToolTipManagerData@@@Z",
+  "len": "0x21B",
+  "name": "CCToolTip::DrawText",
+  "status": "partial",
+  "pct": 2.9
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_cctooltip.cpp",
+  "addr": "0x479050",
+  "sym": "?GetToolTipText@CCToolTip@@UAEPAGI@Z",
+  "len": "0x26",
+  "name": "CCToolTip::GetToolTipText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_checklist.cpp",
+  "addr": "0x488350",
+  "sym": "?GetCurrentItem@CheckListClass@@UAEPBGXZ",
+  "len": "0xF",
+  "name": "CheckListClass::GetCurrentItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_checklist.cpp",
+  "addr": "0x488360",
+  "sym": "?GetItem@CheckListClass@@UAEPBGH@Z",
+  "len": "0x18",
+  "name": "CheckListClass::GetItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_checklist.cpp",
+  "addr": "0x488520",
+  "sym": "?DrawItem@CheckListClass@@UAEXHHHHH@Z",
+  "len": "0x167",
+  "name": "CheckListClass::DrawItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "addr": "0x488690",
+  "sym": "?MarkListToRedraw@GadgetClass@@UAEXXZ",
+  "len": "0xB",
+  "name": "GadgetClass::MarkListToRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "addr": "0x4886A0",
+  "sym": "?IsToRedraw@GadgetClass@@UAEEXZ",
+  "len": "0x4",
+  "name": "GadgetClass::IsToRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x4886B0",
+  "sym": "?GetCount@ListClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "ListClass::GetCount",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_checklist.cpp",
+  "addr": "0x4886C0",
+  "sym": "?RemoveItem@CheckListClass@@UAEXH@Z",
+  "len": "0xD",
+  "name": "CheckListClass::RemoveItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_checklist.cpp",
+  "addr": "0x4886D0",
+  "sym": "?vf_46@CheckListClass@@UAEXH@Z",
+  "len": "0xD",
+  "name": "CheckListClass::vf_46",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "addr": "0x488760",
+  "sym": "??0ColorListClass@@QAE@HHHHHIPBX0@Z",
+  "len": "0x83",
+  "name": "ColorListClass::ColorListClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "addr": "0x488960",
+  "sym": "?SetStyle@ColorListClass@@UAEXHH@Z",
+  "len": "0x17",
+  "name": "ColorListClass::SetStyle",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "addr": "0x488980",
+  "sym": "?DrawItem@ColorListClass@@UAEXHHHHH@Z",
+  "len": "0x53D",
+  "name": "ColorListClass::DrawItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "addr": "0x488EE0",
+  "sym": "?AddItem@ColorListClass@@UAEHPBG@Z",
+  "len": "0x12",
+  "name": "ColorListClass::AddItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "addr": "0x488F00",
+  "sym": "??_GColorListClass@@UAEPAXI@Z",
+  "len": "0x67",
+  "name": "ColorListClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A8850",
+  "sym": "?vf_05@DisplayClass@@UAEXXZ",
+  "len": "0x65",
+  "name": "DisplayClass::vf_05",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A88C0",
+  "sym": "?vf_07@DisplayClass@@UAEXXZ",
+  "len": "0x62",
+  "name": "DisplayClass::vf_07",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A8930",
+  "sym": "?vf_08@DisplayClass@@UAEXXZ",
+  "len": "0x29",
+  "name": "DisplayClass::vf_08",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A8960",
+  "sym": "?vf_42@DisplayClass@@UAEXPBURectangleStruct@@@Z",
+  "len": "0x284",
+  "name": "DisplayClass::vf_42",
+  "status": "partial",
+  "pct": 92.0
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A9700",
+  "sym": "?vf_10@DisplayClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x12",
+  "name": "DisplayClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4A9840",
+  "sym": "?vf_41@DisplayClass@@UAE_NHPAH_N@Z",
+  "len": "0x4E",
+  "name": "DisplayClass::vf_41",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "addr": "0x4A9890",
+  "sym": "?vf_36@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
+  "len": "0x40C",
+  "name": "DisplayClass::vf_36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "addr": "0x4A9CA0",
+  "sym": "?vf_37@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@_N@Z",
+  "len": "0x129",
+  "name": "DisplayClass::vf_37",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "addr": "0x4A9DD0",
+  "sym": "?vf_38@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
+  "len": "0x276",
+  "name": "DisplayClass::vf_38",
+  "status": "partial",
+  "pct": 44.6
+ },
+ {
+  "tu": "match/ui/input_controls/display_reveal.cpp",
+  "addr": "0x4AA050",
+  "sym": "?vf_39@DisplayClass@@UAE_NPAUCellStruct@@PAVDisplayHouse@@@Z",
+  "len": "0x23D",
+  "name": "DisplayClass::vf_39",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_command.cpp",
+  "addr": "0x4AAD30",
+  "sym": "?vf_49@DisplayClass@@UAEXH@Z",
+  "len": "0x157",
+  "name": "DisplayClass::vf_49",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_command.cpp",
+  "addr": "0x4AAE90",
+  "sym": "?vf_46@DisplayClass@@UAEXPAUCellStruct@@HPAVDisplayCmdAbstract@@H_N@Z",
+  "len": "0x909",
+  "name": "DisplayClass::vf_46",
+  "status": "partial",
+  "pct": 13.1
+ },
+ {
+  "tu": "match/ui/input_controls/display_command.cpp",
+  "addr": "0x4AB9B0",
+  "sym": "?vf_48@DisplayClass@@UAEXHPAUCellStruct@@PAVDisplayCmdObject@@H_N@Z",
+  "len": "0x8FA",
+  "name": "DisplayClass::vf_48",
+  "status": "partial",
+  "pct": 44.2
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AC310",
+  "sym": "?vf_45@DisplayClass@@UAEXPBUPoint2D@@@Z",
+  "len": "0x61",
+  "name": "DisplayClass::vf_45",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AC380",
+  "sym": "?vf_47@DisplayClass@@UAEXPBUPoint2D@@@Z",
+  "len": "0x167",
+  "name": "DisplayClass::vf_47",
+  "status": "partial",
+  "pct": 93.1
+ },
+ {
+  "tu": "match/ui/input_controls/display_scenario.cpp",
+  "addr": "0x4ACE70",
+  "sym": "?vf_32@DisplayClass@@UAEXPAUDisplayScIni@@@Z",
+  "len": "0x964",
+  "name": "DisplayClass::vf_32",
+  "status": "partial",
+  "pct": 30.0
+ },
+ {
+  "tu": "match/ui/input_controls/display_scenario.cpp",
+  "addr": "0x4AE4F0",
+  "sym": "?vf_33@DisplayClass@@UAEPBGH@Z",
+  "len": "0x1B5",
+  "name": "DisplayClass::vf_33",
+  "status": "partial",
+  "pct": 14.3
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AE6B0",
+  "sym": "?vf_34@DisplayClass@@UAEXXZ",
+  "len": "0x1B",
+  "name": "DisplayClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AE6F0",
+  "sym": "?vf_30@DisplayClass@@UAEJPAUIStream@@@Z",
+  "len": "0x23",
+  "name": "DisplayClass::vf_30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AE720",
+  "sym": "?vf_31@DisplayClass@@UAEJPAUIStream@@@Z",
+  "len": "0x27",
+  "name": "DisplayClass::vf_31",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_class.cpp",
+  "addr": "0x4AEAD0",
+  "sym": "?vf_35@DisplayClass@@UAEXXZ",
+  "len": "0x34",
+  "name": "DisplayClass::vf_35",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_droplist.cpp",
+  "addr": "0x4B4E10",
+  "sym": "??0DropListClass@@QAE@HPAGHIHHHHPBXPBUShapeHeader@@@Z",
+  "len": "0xCE",
+  "name": "DropListClass::DropListClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_droplist.cpp",
+  "addr": "0x4B4EE0",
+  "sym": "?Zap@DropListClass@@UAEXXZ",
+  "len": "0x3E",
+  "name": "DropListClass::Zap",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_droplist.cpp",
+  "addr": "0x4B5530",
+  "sym": "?SelectItem@DropListClass@@UAEXPBG@Z",
+  "len": "0x63",
+  "name": "DropListClass::SelectItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_droplist.cpp",
+  "addr": "0x4B55F0",
+  "sym": "??_GDropListClass@@UAEPAXI@Z",
+  "len": "0x39",
+  "name": "DropListClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C30E0",
+  "sym": "?SetText@EditClass@@UAEXPAGH@Z",
+  "len": "0x29",
+  "name": "EditClass::SetText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C3110",
+  "sym": "?Draw@EditClass@@UAEHH@Z",
+  "len": "0x79",
+  "name": "EditClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C3190",
+  "sym": "?Action@EditClass@@UAEHIPAIH@Z",
+  "len": "0x106",
+  "name": "EditClass::Action",
+  "status": "partial",
+  "pct": 2.9
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C32A0",
+  "sym": "?vf_36@EditClass@@UAEXXZ",
+  "len": "0x33",
+  "name": "EditClass::vf_36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C32E0",
+  "sym": "?DrawText@EditClass@@UAEXPBG@Z",
+  "len": "0x135",
+  "name": "EditClass::DrawText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C3420",
+  "sym": "?vf_38@EditClass@@UAE_NH@Z",
+  "len": "0x143",
+  "name": "EditClass::vf_38",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_edit.cpp",
+  "addr": "0x4C3570",
+  "sym": "?SetFocus@EditClass@@UAEXXZ",
+  "len": "0x26",
+  "name": "EditClass::SetFocus",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "addr": "0x4E13F0",
+  "sym": "?Clicked@GadgetClass@@UAEHPAIIHHH@Z",
+  "len": "0x57",
+  "name": "GadgetClass::Clicked",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "addr": "0x4E1640",
+  "sym": "?Input@GadgetClass@@UAEIXZ",
+  "len": "0x2DC",
+  "name": "GadgetClass::Input",
+  "status": "partial",
+  "pct": 80.0
+ },
+ {
+  "tu": "match/ui/input_controls/lists_gadget.cpp",
+  "addr": "0x4E1920",
+  "sym": "?ExtractGadget@GadgetClass@@UAEPAU1@I@Z",
+  "len": "0x36",
+  "name": "GadgetClass::ExtractGadget",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_class_ctor.cpp",
+  "addr": "0x4E1A60",
+  "sym": "??_GGadgetClass@@UAEPAXI@Z",
+  "len": "0x67",
+  "name": "GadgetClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2580",
+  "sym": "?vf_34@GaugeClass@@UAEHH@Z",
+  "len": "0x20",
+  "name": "GaugeClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E25A0",
+  "sym": "?SetValue@GaugeClass@@UAEHH@Z",
+  "len": "0x2F",
+  "name": "GaugeClass::SetValue",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E25D0",
+  "sym": "?vf_40@GaugeClass@@UAEHH@Z",
+  "len": "0x7D",
+  "name": "GaugeClass::vf_40",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2650",
+  "sym": "?vf_41@GaugeClass@@UAEHH@Z",
+  "len": "0x3B",
+  "name": "GaugeClass::vf_41",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2690",
+  "sym": "?Draw@GaugeClass@@UAEHH@Z",
+  "len": "0x1A0",
+  "name": "GaugeClass::Draw",
+  "status": "partial",
+  "pct": 38.8
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2830",
+  "sym": "?Action@GaugeClass@@UAEHIPAIH@Z",
+  "len": "0x161",
+  "name": "GaugeClass::Action",
+  "status": "partial",
+  "pct": 45.7
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E29A0",
+  "sym": "?vf_39@GaugeClass@@UAEXXZ",
+  "len": "0xAC",
+  "name": "GaugeClass::vf_39",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2AF0",
+  "sym": "?vf_42@TriColorGaugeClass@@UAEHH@Z",
+  "len": "0x22",
+  "name": "TriColorGaugeClass::vf_42",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2B20",
+  "sym": "?vf_43@TriColorGaugeClass@@UAEHH@Z",
+  "len": "0x22",
+  "name": "TriColorGaugeClass::vf_43",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E2B50",
+  "sym": "?Draw@TriColorGaugeClass@@UAEHH@Z",
+  "len": "0x550",
+  "name": "TriColorGaugeClass::Draw",
+  "status": "partial",
+  "pct": 3.8
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E30A0",
+  "sym": "?GetValue@GaugeClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "GaugeClass::GetValue",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E30B0",
+  "sym": "?vf_37@GaugeClass@@UAEXH@Z",
+  "len": "0xF",
+  "name": "GaugeClass::vf_37",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_gauge.cpp",
+  "addr": "0x4E30C0",
+  "sym": "?vf_38@GaugeClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "GaugeClass::vf_38",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_anim.cpp",
+  "addr": "0x4F3090",
+  "sym": "?Slot2@GraphicMenuAnimItem@@UAE_NPBUPoint2D@@@Z",
+  "len": "0x42",
+  "name": "GraphicMenuAnimItem::Slot2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F3640",
+  "sym": "?Slot2@GraphicMenuImageItem@@UAE_NPBUPoint2D@@@Z",
+  "len": "0x42",
+  "name": "GraphicMenuImageItem::Slot2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F3690",
+  "sym": "?Slot4@GraphicMenuImageItem@@UAEX_N@Z",
+  "len": "0x88",
+  "name": "GraphicMenuImageItem::Slot4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F3720",
+  "sym": "?Slot5@GraphicMenuImageItem@@UAEX_N@Z",
+  "len": "0x75",
+  "name": "GraphicMenuImageItem::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_image.cpp",
+  "addr": "0x4F37A0",
+  "sym": "?Slot3@GraphicMenuImageItem@@UAEXPAUMenusItemHost@@@Z",
+  "len": "0x95",
+  "name": "GraphicMenuImageItem::Slot3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
+  "addr": "0x4F3AF0",
+  "sym": "?Slot2@GraphicMenuItem@@UAE_NPBUPoint2D@@@Z",
+  "len": "0x5",
+  "name": "GraphicMenuItem::Slot2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
+  "addr": "0x4F3B00",
+  "sym": "?Slot1@GraphicMenuItem@@UAE_NI@Z",
+  "len": "0x5",
+  "name": "GraphicMenuItem::Slot1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_item.cpp",
+  "addr": "0x4F3B10",
+  "sym": "?Slot3@GraphicMenuItem@@UAEXPAUMenusItemHost@@@Z",
+  "len": "0xF",
+  "name": "GraphicMenuItem::Slot3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_graphic_menu_shortcut.cpp",
+  "addr": "0x4F3EE0",
+  "sym": "?Slot1@GraphicMenuShortcutItem@@UAE_NI@Z",
+  "len": "0x78",
+  "name": "GraphicMenuShortcutItem::Slot1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4220",
+  "sym": "??0GScreenClass@@QAE@XZ",
+  "len": "0x18",
+  "name": "GScreenClass::GScreenClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4240",
+  "sym": "?QueryInterface@GScreenClass@@UAGJPBUDisplayGuid@@PAPAX@Z",
+  "len": "0x5B",
+  "name": "GScreenClass::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F42B0",
+  "sym": "?vf_06@GScreenClass@@UAEXH@Z",
+  "len": "0x13",
+  "name": "GScreenClass::vf_06",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4320",
+  "sym": "?Input@GScreenClass@@UAEXPAH00@Z",
+  "len": "0xC5",
+  "name": "GScreenClass::Input",
+  "status": "partial",
+  "pct": 81.2
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F43F0",
+  "sym": "?IsButtonListHead@GScreenClass@@UAE_NPAVDisplayGadget@@@Z",
+  "len": "0x1B",
+  "name": "GScreenClass::IsButtonListHead",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4410",
+  "sym": "?AddButton@GScreenClass@@UAE_NPAVDisplayGadget@@@Z",
+  "len": "0x38",
+  "name": "GScreenClass::AddButton",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4450",
+  "sym": "?vf_13@GScreenClass@@UAE_NPAVDisplayGadget@@@Z",
+  "len": "0x25",
+  "name": "GScreenClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F45B0",
+  "sym": "?vf_17@GScreenClass@@UAEXXZ",
+  "len": "0x1C4",
+  "name": "GScreenClass::vf_17",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4BB0",
+  "sym": "?vf_10@GScreenClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x42",
+  "name": "GScreenClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_gscreen.cpp",
+  "addr": "0x4F4C00",
+  "sym": "??_GGScreenClass@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "GScreenClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557230",
+  "sym": "??0ListClass@@QAE@HHHHHIPBX0@Z",
+  "len": "0x14D",
+  "name": "ListClass::ListClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557570",
+  "sym": "?SetPosition@ListClass@@UAEXHH@Z",
+  "len": "0x88",
+  "name": "ListClass::SetPosition",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557920",
+  "sym": "?Draw@ListClass@@UAEHH@Z",
+  "len": "0xF4",
+  "name": "ListClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557B00",
+  "sym": "?GetSelectedIndex@ListClass@@UAEHXZ",
+  "len": "0x7",
+  "name": "ListClass::GetSelectedIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557B10",
+  "sym": "?PeerToPeer@ListClass@@UAEXIPAIPAUGadgetClass@@@Z",
+  "len": "0x59",
+  "name": "ListClass::PeerToPeer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557D10",
+  "sym": "?vf_47@ListClass@@UAEXH@Z",
+  "len": "0xA",
+  "name": "ListClass::vf_47",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557D20",
+  "sym": "?DrawItem@ListClass@@UAEXHHHHH@Z",
+  "len": "0xE2",
+  "name": "ListClass::DrawItem",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557F40",
+  "sym": "?vf_46@ListClass@@UAEXH@Z",
+  "len": "0x69",
+  "name": "ListClass::vf_46",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557FB0",
+  "sym": "?StepSelectedIndex@ListClass@@UAEHH@Z",
+  "len": "0x1C",
+  "name": "ListClass::StepSelectedIndex",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x557FD0",
+  "sym": "?MarkRedraw@ListClass@@UAEXXZ",
+  "len": "0x3A",
+  "name": "ListClass::MarkRedraw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x558010",
+  "sym": "?SetSelectedText@ListClass@@UAEXPBG@Z",
+  "len": "0x4D",
+  "name": "ListClass::SetSelectedText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/lists_list.cpp",
+  "addr": "0x558060",
+  "sym": "??_GListClass@@UAEPAXI@Z",
+  "len": "0xB3",
+  "name": "ListClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x558120",
+  "sym": "?vf_38@SliderClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "SliderClass::vf_38",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x559D60",
+  "sym": "?Slot1@LoadOptionsClass@@UAE_NPBD@Z",
+  "len": "0xD1",
+  "name": "LoadOptionsClass::Slot1",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x559E40",
+  "sym": "?Slot2@LoadOptionsClass@@UAE_NPBDPBG@Z",
+  "len": "0x69",
+  "name": "LoadOptionsClass::Slot2",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x559ED0",
+  "sym": "?Slot4@LoadOptionsClass@@UAE_NPAUMenusSaveListInfo@@PAVFileEntryClass@@@Z",
+  "len": "0x17B",
+  "name": "LoadOptionsClass::Slot4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x55A050",
+  "sym": "?Slot5@LoadOptionsClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "LoadOptionsClass::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x55A070",
+  "sym": "?Slot6@LoadOptionsClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "LoadOptionsClass::Slot6",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x55A090",
+  "sym": "?Slot7@LoadOptionsClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "LoadOptionsClass::Slot7",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "addr": "0x55A0B0",
+  "sym": "?Slot8@LoadOptionsClass@@UAEPBGXZ",
+  "len": "0x17",
+  "name": "LoadOptionsClass::Slot8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDA80",
+  "sym": "?vf_18@MouseClass@@UAEXH_N@Z",
+  "len": "0x1A",
+  "name": "MouseClass::vf_18",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDAA0",
+  "sym": "?vf_20@MouseClass@@UAEXXZ",
+  "len": "0xF",
+  "name": "MouseClass::vf_20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDAB0",
+  "sym": "?vf_21@MouseClass@@UAEX_N@Z",
+  "len": "0xD5",
+  "name": "MouseClass::vf_21",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDC80",
+  "sym": "?vf_19@MouseClass@@UAE_NH_N@Z",
+  "len": "0x136",
+  "name": "MouseClass::vf_19",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDDC0",
+  "sym": "?vf_10@MouseClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x16D",
+  "name": "MouseClass::vf_10",
+  "status": "partial",
+  "pct": 92.6
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDF30",
+  "sym": "?vf_05@MouseClass@@UAEXXZ",
+  "len": "0x1A",
+  "name": "MouseClass::vf_05",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_methods.cpp",
+  "addr": "0x5BDF50",
+  "sym": "?vf_07@MouseClass@@UAEXXZ",
+  "len": "0x18",
+  "name": "MouseClass::vf_07",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
+  "addr": "0x5BDF70",
+  "sym": "?vf_30@MouseClass@@UAEJPAUIStream@@@Z",
+  "len": "0x752",
+  "name": "MouseClass::vf_30",
+  "status": "partial",
+  "pct": 84.8
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
+  "addr": "0x5BE6D0",
+  "sym": "?vf_31@MouseClass@@UAEJPAUIStream@@@Z",
+  "len": "0x265",
+  "name": "MouseClass::vf_31",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_dtors.cpp",
+  "addr": "0x5BE9E0",
+  "sym": "??_GTabClass@@UAEPAXI@Z",
+  "len": "0x47",
+  "name": "TabClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_progress_screen.cpp",
+  "addr": "0x643E80",
+  "sym": "?Slot0@ProgressScreenClass@@UAEXH@Z",
+  "len": "0xA",
+  "name": "ProgressScreenClass::Slot0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x692290",
+  "sym": "??0ScrollClass@@QAE@XZ",
+  "len": "0x49",
+  "name": "ScrollClass::ScrollClass",
+  "status": "partial",
+  "pct": 56.2
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x6922E0",
+  "sym": "?vf_10@ScrollClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x1D",
+  "name": "ScrollClass::vf_10",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x693060",
+  "sym": "?vf_26@ScrollClass@@UAE_NXZ",
+  "len": "0x35",
+  "name": "ScrollClass::vf_26",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x693840",
+  "sym": "?vf_49@ScrollClass@@UAEXH@Z",
+  "len": "0x38",
+  "name": "ScrollClass::vf_49",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x693880",
+  "sym": "?vf_44@ScrollClass@@UAEXPBUPoint2D@@@Z",
+  "len": "0x3F",
+  "name": "ScrollClass::vf_44",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x6938C0",
+  "sym": "?vf_35@ScrollClass@@UAEXXZ",
+  "len": "0x27",
+  "name": "ScrollClass::vf_35",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/display_scroll.cpp",
+  "addr": "0x6938F0",
+  "sym": "??_GScrollClass@@UAEPAXI@Z",
+  "len": "0x47",
+  "name": "ScrollClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_shape_button.cpp",
+  "addr": "0x69DE00",
+  "sym": "?vf_34@ShapeButtonClass@@UAEXPAUShapeHeader@@HH@Z",
+  "len": "0x63",
+  "name": "ShapeButtonClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_shape_button.cpp",
+  "addr": "0x69DEB0",
+  "sym": "?Draw@ShapeButtonClass@@UAEHH@Z",
+  "len": "0x106",
+  "name": "ShapeButtonClass::Draw",
+  "status": "partial",
+  "pct": 16.7
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_init.cpp",
+  "addr": "0x6A5000",
+  "sym": "?vf_05@SidebarClass@@UAEXXZ",
+  "len": "0x21",
+  "name": "SidebarClass::vf_05",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_init.cpp",
+  "addr": "0x6A5030",
+  "sym": "?vf_07@SidebarClass@@UAEXXZ",
+  "len": "0x57",
+  "name": "SidebarClass::vf_07",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_init.cpp",
+  "addr": "0x6A5310",
+  "sym": "?vf_08@SidebarClass@@UAEXXZ",
+  "len": "0x52D",
+  "name": "SidebarClass::vf_08",
+  "status": "partial",
+  "pct": 47.9
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_init.cpp",
+  "addr": "0x6A5840",
+  "sym": "?vf_53@SidebarClass@@UAEXXZ",
+  "len": "0x3A8",
+  "name": "SidebarClass::vf_53",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_init.cpp",
+  "addr": "0x6A5BF0",
+  "sym": "?vf_50@SidebarClass@@UAEXXZ",
+  "len": "0x2DF",
+  "name": "SidebarClass::vf_50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_draw.cpp",
+  "addr": "0x6A6C30",
+  "sym": "?vf_16@SidebarClass@@UAEX_N@Z",
+  "len": "0x4A1",
+  "name": "SidebarClass::vf_16",
+  "status": "partial",
+  "pct": 5.6
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_input.cpp",
+  "addr": "0x6A7780",
+  "sym": "?vf_10@SidebarClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x594",
+  "name": "SidebarClass::vf_10",
+  "status": "partial",
+  "pct": 35.9
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_activate.cpp",
+  "addr": "0x6A7D70",
+  "sym": "?vf_54@SidebarClass@@UAE_NH@Z",
+  "len": "0x30F",
+  "name": "SidebarClass::vf_54",
+  "status": "partial",
+  "pct": 86.0
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_select_class.cpp",
+  "addr": "0x6AAD00",
+  "sym": "?Action@SidebarSelectClass@@UAEHIPAIH@Z",
+  "len": "0xC87",
+  "name": "SidebarSelectClass::Action",
+  "status": "partial",
+  "pct": 2.5
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_select_class.cpp",
+  "addr": "0x6AB990",
+  "sym": "?v70@SidebarSelectClass@@UAEXXZ",
+  "len": "0x42",
+  "name": "SidebarSelectClass::v70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_select_class.cpp",
+  "addr": "0x6AB9E0",
+  "sym": "?v74@SidebarSelectClass@@UAEXXZ",
+  "len": "0x35",
+  "name": "SidebarSelectClass::v74",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_select_class.cpp",
+  "addr": "0x6ABA40",
+  "sym": "?Action@SidebarSBGadgetClass@@UAEHIPAIH@Z",
+  "len": "0x16",
+  "name": "SidebarSBGadgetClass::Action",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_reposition.cpp",
+  "addr": "0x6ABD30",
+  "sym": "?vf_34@SidebarClass@@UAEXXZ",
+  "len": "0x4D3",
+  "name": "SidebarClass::vf_34",
+  "status": "partial",
+  "pct": 95.7
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_tooltip.cpp",
+  "addr": "0x6AC210",
+  "sym": "?vf_33@SidebarClass@@UAEPBGH@Z",
+  "len": "0x1C6",
+  "name": "SidebarClass::vf_33",
+  "status": "partial",
+  "pct": 30.4
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_class_dtors.cpp",
+  "addr": "0x6AC7F0",
+  "sym": "??_GSidebarClass@@UAEPAXI@Z",
+  "len": "0x47",
+  "name": "SidebarClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B1D40",
+  "sym": "?vf_34@SliderClass@@UAEHH@Z",
+  "len": "0x76",
+  "name": "SliderClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B1DC0",
+  "sym": "?vf_42@SliderClass@@UAEXH@Z",
+  "len": "0x86",
+  "name": "SliderClass::vf_42",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B1E50",
+  "sym": "?SetValue@SliderClass@@UAEHH@Z",
+  "len": "0x87",
+  "name": "SliderClass::SetValue",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B1F50",
+  "sym": "?Action@SliderClass@@UAEHIPAIH@Z",
+  "len": "0xAA",
+  "name": "SliderClass::Action",
+  "status": "partial",
+  "pct": 69.1
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B2000",
+  "sym": "?Bump@SliderClass@@UAEHH@Z",
+  "len": "0x31",
+  "name": "SliderClass::Bump",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B2040",
+  "sym": "?Step@SliderClass@@UAEHH@Z",
+  "len": "0x23",
+  "name": "SliderClass::Step",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B2070",
+  "sym": "?vf_39@SliderClass@@UAEXXZ",
+  "len": "0x74",
+  "name": "SliderClass::vf_39",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B20F0",
+  "sym": "?Draw@SliderClass@@UAEHH@Z",
+  "len": "0x6C",
+  "name": "SliderClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_slider.cpp",
+  "addr": "0x6B2160",
+  "sym": "?PeerToPeer@SliderClass@@UAEXIPAIPAUGadgetClass@@@Z",
+  "len": "0x39",
+  "name": "SliderClass::PeerToPeer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C6540",
+  "sym": "??0StaticButtonClass@@QAE@HPBGHHHHH@Z",
+  "len": "0x90",
+  "name": "StaticButtonClass::StaticButtonClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C6640",
+  "sym": "?Draw@StaticButtonClass@@UAEHH@Z",
+  "len": "0x38",
+  "name": "StaticButtonClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C6680",
+  "sym": "?SetText@StaticButtonClass@@UAEXPBG_N@Z",
+  "len": "0xB1",
+  "name": "StaticButtonClass::SetText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C6740",
+  "sym": "?vf_34@StaticButtonClass@@UAEXXZ",
+  "len": "0xA6",
+  "name": "StaticButtonClass::vf_34",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C67F0",
+  "sym": "?DrawText@StaticButtonClass@@UAEXPBG@Z",
+  "len": "0x89",
+  "name": "StaticButtonClass::DrawText",
+  "status": "partial",
+  "pct": 56.9
+ },
+ {
+  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "addr": "0x6C6880",
+  "sym": "??_GStaticButtonClass@@UAEPAXI@Z",
+  "len": "0x3E",
+  "name": "StaticButtonClass::`scalar deleting destructor'",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D0270",
+  "sym": "?vf_50@TabClass@@UAEXXZ",
+  "len": "0x3F",
+  "name": "TabClass::vf_50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D02B0",
+  "sym": "?vf_53@TabClass@@UAEXXZ",
+  "len": "0xE4",
+  "name": "TabClass::vf_53",
+  "status": "partial",
+  "pct": 63.3
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D03A0",
+  "sym": "?vf_08@TabClass@@UAEXXZ",
+  "len": "0xF4",
+  "name": "TabClass::vf_08",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D04F0",
+  "sym": "?vf_54@TabClass@@UAE_NH@Z",
+  "len": "0x18C",
+  "name": "TabClass::vf_54",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D0680",
+  "sym": "?vf_10@TabClass@@UAEXPAHPAUPoint2D@@@Z",
+  "len": "0x336",
+  "name": "TabClass::vf_10",
+  "status": "partial",
+  "pct": 95.2
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D0A20",
+  "sym": "?vf_16@TabClass@@UAEX_N@Z",
+  "len": "0x427",
+  "name": "TabClass::vf_16",
+  "status": "partial",
+  "pct": 2.3
+ },
+ {
+  "tu": "match/ui/input_controls/sidebar_tab_class.cpp",
+  "addr": "0x6D1770",
+  "sym": "?Notice@TabClass@@UAE_NHH@Z",
+  "len": "0x84",
+  "name": "TabClass::Notice",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x71FFE0",
+  "sym": "?Draw@TextButtonClass@@UAEHH@Z",
+  "len": "0x38",
+  "name": "TextButtonClass::Draw",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x720020",
+  "sym": "?SetText@TextButtonClass@@UAEXPBG_N@Z",
+  "len": "0x4A",
+  "name": "TextButtonClass::SetText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x720070",
+  "sym": "?vf_36@TextButtonClass@@UAEXXZ",
+  "len": "0xCF",
+  "name": "TextButtonClass::vf_36",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x720140",
+  "sym": "?DrawText@TextButtonClass@@UAEXPBG@Z",
+  "len": "0xB2",
+  "name": "TextButtonClass::DrawText",
+  "status": "partial",
+  "pct": 46.2
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_button.cpp",
+  "addr": "0x720200",
+  "sym": "?SetPrintFlags@TextButtonClass@@UAEXH@Z",
+  "len": "0xA",
+  "name": "TextButtonClass::SetPrintFlags",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/controls_toggle.cpp",
+  "addr": "0x723EC0",
+  "sym": "?Action@ToggleClass@@UAEHIPAIH@Z",
+  "len": "0x116",
+  "name": "ToggleClass::Action",
+  "status": "partial",
+  "pct": 65.4
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_label.cpp",
+  "addr": "0x72A4A0",
+  "sym": "?Draw@TextLabelClass@@UAEHH@Z",
+  "len": "0x1B7",
+  "name": "TextLabelClass::Draw",
+  "status": "partial",
+  "pct": 18.9
+ },
+ {
+  "tu": "match/ui/input_controls/controls_text_label.cpp",
+  "addr": "0x72A660",
+  "sym": "?SetText@TextLabelClass@@UAEXPBG@Z",
+  "len": "0xA",
+  "name": "TextLabelClass::SetText",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773A40",
+  "sym": "?QueryInterface@WebBrowser@@UAGJABUMenusGuid@@PAPAX@Z",
+  "len": "0x54",
+  "name": "WebBrowser::QueryInterface",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773AA0",
+  "sym": "?AddRef@WebBrowser@@UAGKXZ",
+  "len": "0x10",
+  "name": "WebBrowser::AddRef",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773AB0",
+  "sym": "?Release@WebBrowser@@UAGKXZ",
+  "len": "0x1D",
+  "name": "WebBrowser::Release",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773AD0",
+  "sym": "?Slot3@WebBrowser@@UAGJXZ",
+  "len": "0x22",
+  "name": "WebBrowser::Slot3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773B10",
+  "sym": "?Slot5@WebBrowser@@UAGJPAXH@Z",
+  "len": "0x25",
+  "name": "WebBrowser::Slot5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773BA0",
+  "sym": "?Slot12@WebBrowser@@UAGJXZ",
+  "len": "0x8",
+  "name": "WebBrowser::Slot12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773BC0",
+  "sym": "?Slot14@WebBrowser@@UAGJXZ",
+  "len": "0x152",
+  "name": "WebBrowser::Slot14",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773D20",
+  "sym": "?Slot15@WebBrowser@@UAGJPBG@Z",
+  "len": "0x17",
+  "name": "WebBrowser::Slot15",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/menus_web_browser.cpp",
+  "addr": "0x773D40",
+  "sym": "?Slot16@WebBrowser@@UAGJPBG0@Z",
+  "len": "0xE7",
+  "name": "WebBrowser::Slot16",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7B89F0",
+  "sym": "?GetHideCount@WWMouseClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "WWMouseClass::GetHideCount",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B8A00",
+  "sym": "?SetCursor@WWMouseClass@@UAEXPBUPoint2D@@PAVMouseShapeView@@H@Z",
+  "len": "0x247",
+  "name": "WWMouseClass::SetCursor",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B90C0",
+  "sym": "?DrawMouseOnto@WWMouseClass@@UAEXPAVMouseSurfaceView@@_N@Z",
+  "len": "0x201",
+  "name": "WWMouseClass::DrawMouseOnto",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B92D0",
+  "sym": "?DrawCachedOnto@WWMouseClass@@UAEXPAVMouseSurfaceView@@_N@Z",
+  "len": "0x118",
+  "name": "WWMouseClass::DrawCachedOnto",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B9750",
+  "sym": "?vf_4@WWMouseClass@@UAEXXZ",
+  "len": "0x1D1",
+  "name": "WWMouseClass::vf_4",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B9930",
+  "sym": "?vf_3@WWMouseClass@@UAEXXZ",
+  "len": "0x125",
+  "name": "WWMouseClass::vf_3",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B9A60",
+  "sym": "?CaptureMouse@WWMouseClass@@UAEXXZ",
+  "len": "0x1C2",
+  "name": "WWMouseClass::CaptureMouse",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_cursor.cpp",
+  "addr": "0x7B9C30",
+  "sym": "?vf_5@WWMouseClass@@UAEXXZ",
+  "len": "0x138",
+  "name": "WWMouseClass::vf_5",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7B9D70",
+  "sym": "?vf_8@WWMouseClass@@UAEXHHHH@Z",
+  "len": "0x8",
+  "name": "WWMouseClass::vf_8",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7B9D90",
+  "sym": "?ConvertCoords@WWMouseClass@@UAEXPAH0@Z",
+  "len": "0x5C",
+  "name": "WWMouseClass::ConvertCoords",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA320",
+  "sym": "?IsMouseHidden@WWMouseClass@@UAE_NXZ",
+  "len": "0xB",
+  "name": "WWMouseClass::IsMouseHidden",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA330",
+  "sym": "?IsCaptured@WWMouseClass@@UAE_NXZ",
+  "len": "0x4",
+  "name": "WWMouseClass::IsCaptured",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA340",
+  "sym": "?vf_11@WWMouseClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "WWMouseClass::vf_11",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA350",
+  "sym": "?vf_12@WWMouseClass@@UAEHXZ",
+  "len": "0x4",
+  "name": "WWMouseClass::vf_12",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA360",
+  "sym": "?vf_13@WWMouseClass@@UAEPAUPoint2D@@PAU2@@Z",
+  "len": "0x12",
+  "name": "WWMouseClass::vf_13",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/input_controls/mouse_ww_mouse_accessors.cpp",
+  "addr": "0x7BA380",
+  "sym": "?vf_14@WWMouseClass@@UAEXHH@Z",
+  "len": "0x11",
+  "name": "WWMouseClass::vf_14",
   "status": "matched",
   "pct": 100
  }

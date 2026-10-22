@@ -57,11 +57,11 @@ struct GadgetClass : public LinkClass
     virtual LinkClass* GetNext();                    // 0x04 slot 1   (override) <- matched
     virtual LinkClass* GetPrev();                    // 0x08 slot 2   (override) <- matched
     virtual LinkClass* Remove();                     // 0x24 slot 9   (override) <- matched
-    virtual void v28();                              // 0x28 Input    (first new slot)
+    virtual unsigned Input();                        // 0x28 slot 10  (first new slot) 0x4E1640
     virtual void DrawAll(bool forced);               // 0x2C slot 11  <- matched
     virtual void DeleteList();                        // 0x30 slot 12  <- matched
-    virtual void v34();                              // 0x34 ExtractGadget
-    virtual void v38();                              // 0x38 MarkListToRedraw
+    virtual GadgetClass* ExtractGadget(unsigned id); // 0x34 slot 13  0x4E1920
+    virtual void MarkListToRedraw();                 // 0x38 slot 14  0x488690
     virtual void Disable();                          // 0x3C slot 15  <- matched
     virtual void Enable();                           // 0x40 slot 16  <- matched
     virtual unsigned int GetID();                    // 0x44, returns zero at 0x4AEBA0
@@ -72,17 +72,20 @@ struct GadgetClass : public LinkClass
     virtual void KillFocus();                        // 0x54 slot 21  <- matched
     virtual bool IsFocused();                        // 0x58 slot 22  <- matched
     virtual int  IsListToRedraw();                   // 0x5C slot 23  <- matched
-    virtual void v60();                              // 0x60 IsToRedraw
+    virtual unsigned char IsToRedraw();              // 0x60 slot 24  0x4886A0
     virtual void SetPosition(int x, int y);          // 0x64 slot 25  <- matched
     virtual void SetDimension(int w, int h);         // 0x68 slot 26  <- matched
     virtual int  Draw(int forced);                   // 0x6C slot 27 (arg widened to int)
-    virtual void v70();                              // 0x70 OnMouseEnter
-    virtual void v74();                              // 0x74 OnMouseLeave
+    virtual void OnMouseEnter();                     // 0x70 slot 28  0x4E1510
+    virtual void OnMouseLeave();                     // 0x74 slot 29  0x4E1520
     virtual void StickyProcess(unsigned flags);      // 0x78 slot 30  <- matched
     virtual int  Action(unsigned flags, unsigned* key, int modifier);  // 0x7C slot 31  <- matched
-    virtual void v80();                              // 0x80 Clicked
+    // 0x80: 0x4E13F0 masks `flags` with Flags, hit-tests (x, y) and forwards to Action.
+    virtual int  Clicked(unsigned* key, unsigned flags, int x, int y, int modifier);  // 0x80 slot 32
 
     // Non-virtual public helper (not present in the vtable dump).
+    // FUNCTION: GAMEMD 0x4E12D0 (decl) -- the scheme index gadgets draw with (__fastcall, static).
+    static int __fastcall GetColorScheme();
     bool IsEnabled() const;                          // GAMEMD 0x4E1470
     // FUNCTION: GAMEMD 0x4E15A0 — smallest enabled gadget under (x, y).
     GadgetClass* ExtractGadgetAt(int x, int y);

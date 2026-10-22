@@ -1,5 +1,47 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **6,210 matched function
+rows**, **354 partial rows**, **6,564 manifest rows**, **1,204 manifest
+translation units**, and **1,214 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 142 tooling
+tests pass.
+
+The UI input-controls module lands: the gadget, control, list, gauge, slider
+and button families, the GScreen/Display/Scroll/Mouse chain, the sidebar
+classes, the graphic menus, load-options, progress-screen and web-browser
+screens, and the window-manager mouse. 165 functions are new exact matches
+(including five constructors that are compiled so their translation units emit
+the vtables and deleting destructors) and 35 are documented partials. Two
+existing rows change symbol only: 0x48E600 becomes ControlClass::SetPeer and
+0x559EB0 becomes a LoadOptionsClass virtual. The GadgetClass deleting
+destructor and vtable come from the canonical constructor's translation unit,
+so the constructor has a single definition; 0x4F42F0 keeps the name
+GScreenClass::FlagToRedraw. VectorClass gains a member-template element
+accessor. Every exact row passes raw bytes and strict relocation checks, and
+the ten in-tree UI vtables verify every requested slot. Across all project
+objects, sections change only by the new TUs, the two renamed symbols, the
+GadgetClass slot names in four gadget vtables, ShapeButton's added slot 34, the
+GadgetClass deleting destructor (now emitted with its body), one renamed
+callee in ScenarioClass::PauseGame, and compiler label numbering in three
+BuildingClass bodies (identical bytes and label offsets).
+
+The 6,210 matches represent 31.4% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **460,381
+bytes**, or 12.1% of 3,797,269 listed function bytes. The padding heuristic
+misses 522 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: vector, class-factory and generated-code quick wins
+
 As of **2026-10-22**, the verified snapshot reports **6,045 matched function
 rows**, **319 partial rows**, **6,364 manifest rows**, **1,164 manifest
 translation units**, and **1,174 tracked C++ files**. Whole-repository regression
@@ -26,14 +68,6 @@ bytes**, or 11.6% of 3,797,269 listed function bytes. The padding heuristic
 misses 516 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: stream, string and timer leaves
 

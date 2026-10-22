@@ -3,6 +3,8 @@
 // Retail RTTI at vtable 0x7E8118 (COL 0x800010, type 0x8202D8)
 // identifies ToggleClass. Constructor 0x723E60 calls ControlClass and
 // initializes +0x2C, +0x2D, +0x30; TurnOn/Off dispatch via inherited slot +0x48.
+// Action 0x723EC0 sets +0x2C on a press and clears it on the release; on a
+// release inside the gadget +0x30 == 1 flips IsOn and +0x30 == 2 latches it on.
 #ifndef GG_MATCH_UI_TOGGLE_CLASS_METHODS_H
 #define GG_MATCH_UI_TOGGLE_CLASS_METHODS_H
 #include "control_class.h"

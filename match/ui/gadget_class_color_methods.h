@@ -20,15 +20,10 @@ extern void* ColorSchemeCollection;
 // is descriptive; nothing in the binary attests a name for this address.
 void* __fastcall ColorSchemeCollection_GetItem(void* collection, int index);
 
-// The owning class. Nothing at this address touches an instance, so no layout
-// is recovered here; the struct exists so the routine is spelled as the static
-// member it is rather than as a free function, and so the next address on this
-// class has somewhere to attach.
-struct GadgetClass
-{
-    // The scheme index the UI is currently drawing gadgets with, or 0 when the
-    // collection has no entry 1.
-    static int __fastcall GetColorScheme();   // GAMEMD 0x4E12D0
-};
+// The owning class is the real GadgetClass: GetColorScheme is declared there as a
+// static member (the scheme index the UI is currently drawing gadgets with, or 0
+// when the collection has no entry 1). Nothing at this address touches an
+// instance, so including the full class changes no code in this TU.
+#include "gadget_class_methods.h"
 
 #endif  // GG_MATCH_UI_GADGET_CLASS_COLOR_METHODS_H

@@ -34,6 +34,10 @@ public:
     virtual int FindItemIndex(const T& item) const;
     virtual int Slot5(T* elementAddress) const;
     virtual T Slot6(int index) const;
+    // Element access, expanded at its call sites (ListClass::DrawItem 0x557D20 and
+    // ColorListClass::DrawItem 0x488980). A member template, so that an explicit
+    // instantiation over an incomplete element type does not instantiate it.
+    template<class I> T& operator[](I index) { return Items[index]; }
 
     T* Items;                    // +0x04
     int Capacity;                // +0x08

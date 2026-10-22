@@ -1,0 +1,829 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
+//   The display chain as one class hierarchy, read from the user's retail gamemd.exe v1.001 via the local Ghidra CLI.
+//   RTTI (class hierarchy descriptors) gives the chain
+//     GScreenClass > MapClass > DisplayClass > RadarClass > PowerClass > SidebarClass > TabClass > ScrollClass
+//     > MouseClass,
+//   with TabClass's second base INoticeSink at +0x5518 (RTTI base offset 21784). Primary vtables (slot counts from the
+//   RTTI vtable census): GScreenClass 0x7EA6FC (22), MapClass 0x7ED404 (30), DisplayClass 0x7E6114 (50), RadarClass
+//   0x7F0344 (54), PowerClass 0x7EFF54 (54), SidebarClass 0x7F3058 (55), TabClass 0x7EDFB4 (55), ScrollClass
+//   0x7F1094 (55), MouseClass 0x7E1964 (55); the INoticeSink tables are 0x7E1FBC (INoticeSink), 0x7EDFAC (TabClass),
+//   0x7F108C (ScrollClass) and 0x7E195C (MouseClass), one slot each (0x6D1770 in the three derived tables).
+//   Each class below declares exactly the slots its retail table changes (override or new slot); the slot numbers in
+//   the comments are retail indices, the address is the function that retail table holds.
+//   Member offsets come from the constructor stores: GScreenClass 0x4F4220, DisplayClass 0x4A8730 (stores
+//   +0x1174..+0x11E0), RadarClass 0x652960 (first store +0x11E8), PowerClass 0x63F6B0 (+0x150C..+0x1540),
+//   SidebarClass 0x6A4E60 (strips from +0x1544, +0x539C..+0x5515), TabClass 0x6CFE20 (INoticeSink vptr at +0x5518,
+//   sub-object constructor 0x4A2350 on +0x551C, +0x552C..+0x5546), ScrollClass 0x692290 (+0x5548..+0x555A), and from
+//   the members the module entries touch. MouseClass's size 0x556C is the byte count its Save writes (0x5BE715).
+//   Names are kept only where the binary confirms the role (YRpp-cross-check); everything else is unknown_XX or FUN_ placeholders.
+//
+// Where a member or parameter type is a module-local view of a class outside this chain (a house, a cell, an INI
+// reader), it is forward-declared here under the view's name and defined in the module header that dereferences it.
+//
+// StripClass origin (+0x1544, not +0x154C). The SidebarClass constructor 0x6A4E60 loads ESI = this+0x1544 and writes
+// the strip's first members there ([ESI] dword, [ESI+4] byte, [ESI+8] the frame counter, [ESI+0x10..0x18]), builds the
+// 75-entry cameo array at ESI+0x58 (vector constructor 0x4068F0, 0x34-byte entries, constructor 0x6AC7C0), steps
+// ESI by 0xF94, and then calls the strip method 0x6A80A0 with ECX = this+0x1544. So the strip begins at +0x1544 and
+// its cameos at +0x58. The MouseClass destructor 0x40D290 reads as if the strip began at +0x154C because it calls the
+// empty out-of-line destructor 0x40D300 with ECX = strip+8: that is the destructor of the timer member at strip+8,
+// not of a strip base, and the cameos it tears down at ESI+0x50 are the same bytes (strip+0x58).
+#ifndef GG_MATCH_UI_INPUT_CONTROLS_UI_DISPLAY_CHAIN_H
+#define GG_MATCH_UI_INPUT_CONTROLS_UI_DISPLAY_CHAIN_H
+
+#include <stddef.h>
+#include "../../_rt/gg_static_assert.h"
+#include "../../_layout/geometry2d.h"
+
+// ---- shared value types ------------------------------------------------------------------------------------------
+
+#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
+#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
+// A packed map cell (two 16-bit coordinates).
+struct CellStruct
+{
+    short X;   // +0x00
+    short Y;   // +0x02
+};
+#endif
+GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
+
+// A 3-byte colour (DisplayClass +0x11CC, the 256-entry ring at 0x885180).
+struct ColorStruct
+{
+    unsigned char R;   // +0x00
+    unsigned char G;   // +0x01
+    unsigned char B;   // +0x02
+};
+GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
+
+// The 16-byte interface id GScreenClass::QueryInterface compares (IID layout).
+struct DisplayGuid { char Bytes[16]; };
+GG_STATIC_ASSERT(sizeof(DisplayGuid) == 16);
+
+// The "do not initialise" tag the load path passes to the placement constructor.
+struct NoInitClass { };
+
+struct IStream;
+
+// Views defined by the module headers that dereference them.
+class DisplayHouse;           // display_reveal.h  (HouseClass)
+class DisplayCell;            // display_reveal.h  (CellClass)
+struct DisplayScCellObject;   // display_scenario.h (CellClass)
+struct DisplayScIni;          // display_scenario.h (CCINIClass)
+class DisplayCmdAbstract;     // display_command.h (AbstractClass-shaped target)
+class DisplayCmdObject;       // display_command.h (ObjectClass)
+class DisplayCmdPendType;     // display_command.h (the pending placement's type)
+struct DisplayCmdVec3;        // display_command.h (CoordStruct)
+struct MapSavedObject;        // mouse_mouse_class.h (an IPersistStream object on a cell)
+
+// GadgetClass as the screen's button list sees it (kept as a local view until the module's gadget headers are
+// consolidated). The sidebar's button views derive from it. Only the slots 0x4F4320..0x4F4450 dispatch through are typed;
+// the others keep their slot position.
+class DisplayGadget
+{
+public:
+    virtual void vf_00();                              // 0x00
+    virtual void vf_01();                              // 0x04
+    virtual void vf_02();                              // 0x08
+    virtual void vf_03();                              // 0x0C
+    virtual void AppendTo(DisplayGadget* head);        // 0x10  attach after the list head
+    virtual void vf_05();                              // 0x14
+    virtual DisplayGadget* GetHead();                  // 0x18
+    virtual void vf_07();                              // 0x1C
+    virtual void vf_08();                              // 0x20
+    virtual DisplayGadget* Unlink();                   // 0x24  returns the new head
+    virtual int Input();                               // 0x28  returns the pressed key
+    virtual void vf_11();                              // 0x2C
+    virtual void vf_12();                              // 0x30
+    virtual void vf_13();                              // 0x34
+    virtual void vf_14();                              // 0x38
+    virtual void vf_15();                              // 0x3C
+    virtual void vf_16();                              // 0x40
+    virtual void vf_17();                              // 0x44
+    virtual void vf_18();                              // 0x48
+    virtual void vf_19();                              // 0x4C
+    virtual void vf_20();                              // 0x50
+    virtual void vf_21();                              // 0x54
+    virtual void vf_22();                              // 0x58
+    virtual int IsActive();                            // 0x5C
+};
+
+// ---- MapClass containers (layout views; DynamicVectorClass shape, sizeof 0x18) ----------------------------------
+
+template <class T>
+class MapVectorView
+{
+public:
+    virtual ~MapVectorView();                             // slot 0
+    virtual void vf_01();                                 // slot 1
+    virtual bool SetCapacity(int newCapacity, int arg);   // slot 2 (+0x08)
+    virtual void Clear();                                 // slot 3 (+0x0C)
+
+    T& operator[](int index) { return Items[index]; }
+
+    // The inline shape of DynamicVectorClass::AddItem: room, or a successful grow, then append.
+    bool AddItem(const T& item)
+    {
+        int cap = Capacity;
+        if (Count < cap || ((IsAllocated || cap == 0) && Growth > 0 && SetCapacity(Growth + cap, 0))) {
+            (*this)[Count++] = item;
+            return true;
+        }
+        return false;
+    }
+
+    T*   Items;           // +0x04
+    int  Capacity;        // +0x08
+    bool IsInitialized;   // +0x0C
+    bool IsAllocated;     // +0x0D
+    int  Count;           // +0x10
+    int  Growth;          // +0x14
+};
+GG_STATIC_ASSERT(sizeof(MapVectorView<int>) == 0x18);
+GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(MapVectorView<int>, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Growth) == 0x14);
+
+// One saved record of the vector at MapClass +0x50.
+struct MapSaveItem
+{
+    CellStruct a;    // +0x00
+    CellStruct b;    // +0x04
+    bool c;          // +0x08
+    int  d;          // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(MapSaveItem, c) == 0x08);
+GG_STATIC_ASSERT(offsetof(MapSaveItem, d) == 0x0C);
+GG_STATIC_ASSERT(sizeof(MapSaveItem) == 0x10);
+
+// Vector-shaped buckets (0x18 bytes, vptr first); both kinds are built by an out-of-line two-argument constructor
+// and carry their growth increment at +0x14.
+class MapBucketA
+{
+public:
+    // FUNCTION: GAMEMD 0x5BEA30 (decl; reloc) - constructor (capacity, items), RET 8.
+    MapBucketA(int capacity = 0, int items = 0);
+    virtual ~MapBucketA();       // vector-deleting destructor reached through slot 0 with flag 3
+    char unknown_04[0x14 - 4];   // +0x04
+    int  Growth;                 // +0x14
+};
+GG_STATIC_ASSERT(offsetof(MapBucketA, Growth) == 0x14);
+GG_STATIC_ASSERT(sizeof(MapBucketA) == 0x18);
+
+class MapBucketBBase
+{
+public:
+    // FUNCTION: GAMEMD 0x58B070 (decl; reloc) - constructor (capacity, items), RET 8.
+    MapBucketBBase(int capacity, int items);
+    virtual ~MapBucketBBase();
+    char unknown_04[0x10 - 4];   // +0x04
+    int  Count;                  // +0x10
+    int  Growth;                 // +0x14
+};
+
+// The derived bucket sets its own vtable (0x7ED520), the count 0 and the increment 10 after the base constructor.
+class MapBucketB : public MapBucketBBase
+{
+public:
+    MapBucketB() : MapBucketBBase(0, 0)
+    {
+        Growth = 10;
+        Count = 0;
+    }
+    virtual ~MapBucketB();
+};
+GG_STATIC_ASSERT(sizeof(MapBucketB) == 0x18);
+
+// FUNCTION: GAMEMD 0x56CB80 (decl; reloc) - stored in the table header by the inline constructor below.
+void __cdecl MapBucketCallback();
+
+// A 0x10-byte table of 0x100 buckets (header: items, callback, count, increment), allocated inline by Load.
+template <class Bucket>
+struct MapBucketTable
+{
+    Bucket* Items;                 // +0x00
+    void (__cdecl* Callback)();    // +0x04
+    int     Count;                 // +0x08
+    int     Increment_;            // +0x0C
+    MapBucketTable()
+    {
+        Callback = MapBucketCallback;
+        Count = 0x100;
+        Increment_ = 0x14;
+        Items = new Bucket[0x100];
+        for (int i = 0; i < Count; i++)
+            Items[i].Growth = 0x14;
+    }
+};
+
+// A four-byte record of the word table (two bytes set by the inline constructor).
+struct MapWordEntry
+{
+    unsigned char a;
+    unsigned char b;
+    unsigned char unknown_02[2];
+    MapWordEntry() : a(7), b(0) {}
+};
+GG_STATIC_ASSERT(sizeof(MapWordEntry) == 4);
+
+// A pointer-owning object released through slot 8 (`PUSH 1; CALL [vtbl+0x20]`).
+class MapOwned
+{
+public:
+    virtual void vf_00();
+    virtual void vf_01();
+    virtual void vf_02();
+    virtual void vf_03();
+    virtual void vf_04();
+    virtual void vf_05();
+    virtual void vf_06();
+    virtual void vf_07();
+    virtual ~MapOwned();   // slot 8
+};
+
+// ---- GScreenClass ------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7EA6FC (22 slots; COM-shaped: QueryInterface / AddRef / Release first)
+class GScreenClass
+{
+public:
+    virtual long __stdcall QueryInterface(const DisplayGuid* riid, void** ppv);   // 0   0x4F4240
+    virtual unsigned long __stdcall AddRef();                                     // 1   0x40D230
+    virtual unsigned long __stdcall Release();                                    // 2   0x40D240
+    virtual void vf_03();                                                         // 3   0x4C9150 (__purecall)
+    // FUNCTION: GAMEMD 0x4F4C00 (scalar deleting destructor; ??_G)
+    virtual ~GScreenClass() {}                                                    // 4   0x4F4C00
+    virtual void vf_05();                                                         // 5   0x4F42A0
+    virtual void vf_06(int unused);                                               // 6   0x4F42B0
+    virtual void vf_07();                                                         // 7   0x4F42D0
+    virtual void vf_08();                                                         // 8   0x4F42E0
+    virtual void Input(int* key, int* x, int* y);                                 // 9   0x4F4320
+    virtual void vf_10(int* key, Point2D* where);                                 // 10  0x4F4BB0
+    virtual bool IsButtonListHead(DisplayGadget* gadget);                         // 11  0x4F43F0
+    virtual bool AddButton(DisplayGadget* gadget);                                // 12  0x4F4410
+    virtual bool vf_13(DisplayGadget* gadget);                             // 13  0x4F4450
+    virtual void FlagToRedraw(int mode);                                          // 14  0x4F42F0 (redraw request)
+    virtual void vf_15();                                                         // 15  0x4F4480
+    virtual void vf_16(bool forced);                                              // 16  0x4AEBD0 (draw)
+    virtual void vf_17();                                                         // 17  0x4F45B0
+    virtual void vf_18(int cursor, bool flag);                                    // 18  0x4C9150 (__purecall)
+    virtual bool vf_19(int cursor, bool flag);                                    // 19  0x4C9150 (__purecall)
+    virtual void vf_20();                                                         // 20  0x4C9150 (__purecall)
+    virtual void vf_21(bool flag);                                                // 21  0x4C9150 (__purecall)
+
+    // FUNCTION: GAMEMD 0x4F4220
+    GScreenClass();
+
+    int unknown_04;   // +0x04
+    int unknown_08;   // +0x08
+    int RedrawFlag;   // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(GScreenClass, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(GScreenClass, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(GScreenClass, RedrawFlag) == 0x0C);
+GG_STATIC_ASSERT(sizeof(GScreenClass) == 0x10);
+
+// ---- MapClass ----------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7ED404 (30 slots)
+class MapClass : public GScreenClass
+{
+public:
+    virtual void vf_03();                    // 3   0x5656D0
+    // The scalar deleting destructor is 0x588BF0; the destructor body is not modelled.
+    virtual ~MapClass();                     // 4   0x588BF0 (??_G)
+    virtual void vf_05();                    // 5   0x565800
+    virtual void vf_07();                    // 7   0x5659F0
+
+    virtual void vf_22();                    // 22  0x565AA0
+    virtual void vf_23();                    // 23  0x565B00
+    virtual void vf_24();                    // 24  0x565BC0
+    virtual void vf_25();                    // 25  0x577920
+    virtual bool vf_26();                    // 26  0x4AEBE0
+    virtual void vf_27();                    // 27  0x56BBE0
+    virtual void vf_28(RectangleStruct* rect, int a, int b, int c);   // 28  0x565C10
+    virtual void vf_29(RectangleStruct* rect);   // 29  0x567230
+
+    // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) -- the cell at a coordinate. Two typed views of the one retail function
+    // (by reference and by pointer, same ABI) until the module CellClass views are consolidated.
+    DisplayCell* GetCellAt_005657A0(CellStruct const& cell);
+    DisplayScCellObject* FUN_005657A0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x5657E0 (decl; reloc) -- RET 4.
+    bool FUN_005657E0(const CellStruct& cell);
+    // FUNCTION: GAMEMD 0x578290 (decl; reloc) -- the next cell of the iteration, or null. Two typed views again (the
+    // display_scenario.h and mouse_mouse_class.h CellClass views).
+    DisplayScCellObject* FUN_00578290();
+    MapSavedObject* NextSavedObject_00578290();
+    // FUNCTION: GAMEMD 0x578350 (decl; reloc) -- rewind the cell-object iteration.
+    void FUN_00578350();
+
+    char  unknown_10[0x14 - 0x10];                   // +0x0010
+    MapBucketTable<MapBucketA>* BucketsA;            // +0x0014
+    void* Buffers[13];                               // +0x0018 13 tables of BufferShorts 16-bit entries
+    int   BufferShorts;                              // +0x004C
+    MapVectorView<MapSaveItem> SaveItems;            // +0x0050
+    MapWordEntry* Words;                             // +0x0068
+    int   WordCount;                                 // +0x006C
+    char* Records;                                   // +0x0070 ten bytes per word
+    char  unknown_74[0x80 - 0x74];                   // +0x0074
+    MapBucketTable<MapBucketB>* BucketsB[3];         // +0x0080
+    MapVectorView<void*> Rings[3];                   // +0x008C stride 0x18
+    MapVectorView<int> ListA;                        // +0x00D4
+    RectangleStruct MapRect;                         // +0x00EC [Map] Size (its address is the first argument of slot 28)
+    RectangleStruct LocalRect;                       // +0x00FC [Map] LocalSize
+    char  unknown_10C[0x138 - 0x10C];                // +0x010C
+    MapVectorView<MapOwned*> Owned;                  // +0x0138
+    char  unknown_150[0x115C - 0x150];               // +0x0150
+    MapVectorView<CellStruct> CellTags;              // +0x115C
+};
+GG_STATIC_ASSERT(offsetof(MapClass, BucketsA) == 0x14);
+GG_STATIC_ASSERT(offsetof(MapClass, Buffers) == 0x18);
+GG_STATIC_ASSERT(offsetof(MapClass, BufferShorts) == 0x4C);
+GG_STATIC_ASSERT(offsetof(MapClass, SaveItems) == 0x50);
+GG_STATIC_ASSERT(offsetof(MapClass, Words) == 0x68);
+GG_STATIC_ASSERT(offsetof(MapClass, WordCount) == 0x6C);
+GG_STATIC_ASSERT(offsetof(MapClass, Records) == 0x70);
+GG_STATIC_ASSERT(offsetof(MapClass, BucketsB) == 0x80);
+GG_STATIC_ASSERT(offsetof(MapClass, Rings) == 0x8C);
+GG_STATIC_ASSERT(offsetof(MapClass, ListA) == 0xD4);
+GG_STATIC_ASSERT(offsetof(MapClass, MapRect) == 0xEC);
+GG_STATIC_ASSERT(offsetof(MapClass, LocalRect) == 0xFC);
+GG_STATIC_ASSERT(offsetof(MapClass, Owned) == 0x138);
+GG_STATIC_ASSERT(offsetof(MapClass, CellTags) == 0x115C);
+GG_STATIC_ASSERT(sizeof(MapClass) == 0x1174);
+
+// ---- DisplayClass ------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7E6114 (50 slots)
+class DisplayClass : public MapClass
+{
+public:
+    virtual void vf_05();                                // 5   0x4A8850
+    virtual void vf_07();                                // 7   0x4A88C0
+    virtual void vf_08();                                // 8   0x4A8930
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x4A9700
+
+    virtual long vf_30(IStream* stream);                 // 30  0x4AE6F0 (load)
+    virtual long vf_31(IStream* stream);                 // 31  0x4AE720 (save)
+    virtual void vf_32(DisplayScIni* ini);               // 32  0x4ACE70 (read the scenario INI)
+    virtual const wchar_t* vf_33(int id);                // 33  0x4AE4F0 (tooltip text)
+    virtual void vf_34();                                // 34  0x4AE6B0
+    virtual void vf_35();                                // 35  0x4AEAD0
+    virtual bool vf_36(CellStruct* cell, DisplayHouse* house);                  // 36  0x4A9890
+    virtual bool vf_37(CellStruct* cell, DisplayHouse* house, bool increase);   // 37  0x4A9CA0
+    virtual bool vf_38(CellStruct* cell, DisplayHouse* house);                  // 38  0x4A9DD0
+    virtual bool vf_39(CellStruct* cell, DisplayHouse* house);                  // 39  0x4AA050
+    virtual int  vf_40();                                // 40  0x4C9150 (__purecall)
+    virtual bool vf_41(int a, int* b, bool c);           // 41  0x4A9840
+    virtual void vf_42(const RectangleStruct* rect);     // 42  0x4A8960 (set the view dimensions)
+    virtual void vf_43();                                // 43  0x40D250
+    virtual void vf_44(const Point2D* where);            // 44  0x4AAD20
+    virtual void vf_45(const Point2D* where);            // 45  0x4AC310
+    virtual void vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, int a4, bool a5);            // 46  0x4AAE90
+    virtual void vf_47(const Point2D* where);            // 47  0x4AC380
+    virtual void vf_48(int unused, CellStruct* cell, DisplayCmdObject* target, int action, bool a5);      // 48  0x4AB9B0
+    virtual void vf_49(int unused);                      // 49  0x4AAD30
+
+    // FUNCTION: GAMEMD 0x4A8BF0 (decl; reloc)
+    void SetActiveFoundation_004A8BF0(void* foundation);
+    // FUNCTION: GAMEMD 0x4A8EB0 (decl; reloc)
+    bool FUN_004A8EB0(DisplayCmdPendType* type, int field, void* foundation, const CellStruct& at);
+    // FUNCTION: GAMEMD 0x4AC660 (decl; reloc) -- set the sell mode; RET 4.
+    void SetSellMode_004AC660(int mode);
+    // FUNCTION: GAMEMD 0x4AC700 (decl; reloc)
+    void SetWaypointMode_004AC700(int mode, int arg);
+    // FUNCTION: GAMEMD 0x4AC820 (decl; reloc)
+    void SetPowerMode_004AC820(int mode);
+    // FUNCTION: GAMEMD 0x4AC8C0 (decl; reloc) -- set the repair mode; RET 4.
+    void SetRepairMode_004AC8C0(int mode);
+    // FUNCTION: GAMEMD 0x4AC960 (decl; reloc)
+    void SetBeaconMode_004AC960(int mode);
+    // FUNCTION: GAMEMD 0x4AE750 (decl; reloc)
+    void FUN_004AE750(DisplayCmdObject* target, CellStruct cell, int action);
+
+    CellStruct unknown_1174;              // +0x1174 (the constructor copies the default cell 0x8A03F8)
+    CellStruct FoundationOffset;          // +0x1178
+    void* CurrentFoundation;              // +0x117C
+    bool CanPlace;                        // +0x1180
+    bool unknown_1181;                    // +0x1181
+    CellStruct SavedCell;                 // +0x1182
+    CellStruct SavedOffset;               // +0x1186
+    char unknown_118A[2];                 // +0x118A
+    void* SavedFoundation;                // +0x118C
+    DisplayCmdObject* SavedPending;       // +0x1190
+    DisplayCmdPendType* SavedType;        // +0x1194
+    int  SavedField;                      // +0x1198
+    bool unknown_119C;                    // +0x119C
+    char unknown_119D[3];                 // +0x119D
+    void* unknown_11A0;                   // +0x11A0 (swizzled after a load)
+    DisplayCmdObject* Pending;            // +0x11A4 (swizzled after a load)
+    DisplayCmdPendType* unknown_11A8;     // +0x11A8 (swizzled after a load)
+    int  unknown_11AC;                    // +0x11AC (-1 = none)
+    bool RepairMode;                      // +0x11B0
+    bool SellMode;                        // +0x11B1
+    bool PowerMode;                       // +0x11B2
+    bool WaypointMode;                    // +0x11B3
+    bool BeaconMode;                      // +0x11B4
+    char unknown_11B5[3];                 // +0x11B5
+    int  unknown_11B8;                    // +0x11B8 (-1 = none)
+    DisplayCmdVec3* WaypointCoord;        // +0x11BC (cleared at the end of a load)
+    char unknown_11C0[0x11CC - 0x11C0];   // +0x11C0
+    ColorStruct SavedColor;               // +0x11CC (the palette entry the highlight animation restores)
+    bool unknown_11CF;                    // +0x11CF
+    bool unknown_11D0;                    // +0x11D0
+    char unknown_11D1[3];                 // +0x11D1
+    Point2D DragStart;                    // +0x11D4
+    Point2D DragCurrent;                  // +0x11DC
+};
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_1174) == 0x1174);
+GG_STATIC_ASSERT(offsetof(DisplayClass, FoundationOffset) == 0x1178);
+GG_STATIC_ASSERT(offsetof(DisplayClass, CurrentFoundation) == 0x117C);
+GG_STATIC_ASSERT(offsetof(DisplayClass, CanPlace) == 0x1180);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedCell) == 0x1182);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedOffset) == 0x1186);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedFoundation) == 0x118C);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedType) == 0x1194);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedField) == 0x1198);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_119C) == 0x119C);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11A0) == 0x11A0);
+GG_STATIC_ASSERT(offsetof(DisplayClass, Pending) == 0x11A4);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11A8) == 0x11A8);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11AC) == 0x11AC);
+GG_STATIC_ASSERT(offsetof(DisplayClass, RepairMode) == 0x11B0);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SellMode) == 0x11B1);
+GG_STATIC_ASSERT(offsetof(DisplayClass, PowerMode) == 0x11B2);
+GG_STATIC_ASSERT(offsetof(DisplayClass, WaypointMode) == 0x11B3);
+GG_STATIC_ASSERT(offsetof(DisplayClass, BeaconMode) == 0x11B4);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11B8) == 0x11B8);
+GG_STATIC_ASSERT(offsetof(DisplayClass, WaypointCoord) == 0x11BC);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedColor) == 0x11CC);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11CF) == 0x11CF);
+GG_STATIC_ASSERT(offsetof(DisplayClass, unknown_11D0) == 0x11D0);
+GG_STATIC_ASSERT(offsetof(DisplayClass, DragStart) == 0x11D4);
+GG_STATIC_ASSERT(offsetof(DisplayClass, DragCurrent) == 0x11DC);
+GG_STATIC_ASSERT(sizeof(DisplayClass) == 0x11E4);
+
+// ---- RadarClass --------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7F0344 (54 slots)
+class RadarClass : public DisplayClass
+{
+public:
+    // FUNCTION: GAMEMD 0x652C00 (decl; reloc) -- the RadarClass destructor body (called by every derived ??_G).
+    virtual ~RadarClass();                               // 4   0x6587A0 (??_G)
+    virtual void vf_05();                                // 5   0x652CF0
+    virtual void vf_07();                                // 7   0x652DE0
+    virtual void vf_08();                                // 8   0x653010
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x653850
+    virtual void vf_16(bool forced);                     // 16  0x653100
+    virtual void vf_28(RectangleStruct* rect, int a, int b, int c);   // 28  0x653F50
+    virtual void vf_29(RectangleStruct* rect);           // 29  0x654490 (forwards the rectangle to 0x567230)
+    virtual long vf_30(IStream* stream);                 // 30  0x6568A0
+    virtual long vf_31(IStream* stream);                 // 31  0x656AC0
+    virtual const wchar_t* vf_33(int id);                // 33  0x658770
+    virtual void vf_34();                                // 34  0x654320
+    virtual bool vf_36(CellStruct* cell, DisplayHouse* house);                  // 36  0x653810
+    virtual bool vf_37(CellStruct* cell, DisplayHouse* house, bool increase);   // 37  0x653830
+
+    virtual void vf_50();                                // 50  0x652D90 (free the art)
+    virtual void vf_51();                                // 51  0x653760
+    virtual void vf_52();                                // 52  0x653F70
+    virtual void vf_53();                                // 53  0x652E90 (load the art)
+
+    // FUNCTION: GAMEMD 0x652E50 (decl; reloc) -- RET 4.
+    void FUN_00652E50(bool on);
+
+    // +0x11E4..+0x150B: members not touched by the module (the constructor stores from +0x11E8).
+    char unknown_11E4[0x150C - 0x11E4];   // +0x11E4
+};
+GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);
+
+// ---- PowerClass --------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7EFF54 (54 slots). The destructor is implicit (0x6404B0 is its ??_G).
+class PowerClass : public RadarClass
+{
+public:
+    virtual void vf_05();                                // 5   0x63F7B0
+    virtual void vf_07();                                // 7   0x63F730
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x63FEA0
+    virtual void vf_16(bool forced);                     // 16  0x63FB20
+    virtual const wchar_t* vf_33(int id);                // 33  0x640450
+    virtual void vf_34();                                // 34  0x6403A0
+    virtual void vf_50();                                // 50  0x63F7E0
+    virtual void vf_53();                                // 53  0x63F7C0
+
+    // +0x150C..+0x1543: the constructor 0x63F6B0 stores +0x150C (byte) through +0x1540; none is touched here.
+    char unknown_150C[0x1544 - 0x150C];   // +0x150C
+};
+// SidebarClass's constructor writes its first member (the first strip) at +0x1544.
+GG_STATIC_ASSERT(sizeof(PowerClass) == 0x1544);
+
+// ---- SidebarClass ------------------------------------------------------------------------------------------------
+
+// One of the 75 per-strip cameo entries (0x34 bytes). Its destructor is the empty function 0x40D260 (a lone RET);
+// retail passes its address to the vector-destructor helper (0x40AFD0).
+struct SidebarCameo
+{
+    char  unknown_00[0xC];
+    void* Pointer;                        // +0x0C (registered with the swizzle manager after a load)
+    char  unknown_10[0x34 - 0x10];
+    // FUNCTION: GAMEMD 0x40D260 -- empty destructor.
+    ~SidebarCameo() {}
+};
+GG_STATIC_ASSERT(offsetof(SidebarCameo, Pointer) == 0x0C);
+GG_STATIC_ASSERT(sizeof(SidebarCameo) == 0x34);
+
+// The timer at strip +0x08 (start frame at +0, the countdown at +8; 0x6A4E60 stores the current frame and zero).
+// Retail's MouseClass destructor calls an empty out-of-line destructor (0x40D300) on it; the SidebarClass, TabClass
+// and ScrollClass destructors do not (it was inlined away in their units). One type cannot carry both, so it is
+// modelled with the implicit destructor that the three matched destructors need.
+struct StripTimer
+{
+    int StartFrame;                       // +0x00
+    int unknown_04;                       // +0x04
+    int TimeLeft;                         // +0x08
+};
+GG_STATIC_ASSERT(sizeof(StripTimer) == 0x0C);
+
+// StripClass: one build column. sizeof 0xF94 (stride of the strip array); origin +0x1544, see the file header.
+struct StripClass
+{
+    int  unknown_00;                      // +0x0000 (zeroed by the constructor)
+    bool unknown_04;                      // +0x0004 (zeroed by the constructor)
+    char unknown_05[3];                   // +0x0005
+    StripTimer Timer;                     // +0x0008
+    int  unknown_14;                      // +0x0014
+    int  unknown_18;                      // +0x0018 (set to 1 by the constructor)
+    unsigned char At_1C;                  // +0x001C
+    char unknown_1D[3];                   // +0x001D
+    int  At_20;                           // +0x0020
+    int  At_24;                           // +0x0024
+    RectangleStruct Rect;                 // +0x0028
+    int  RowBase;                         // +0x0038
+    char unknown_3C[0x44 - 0x3C];         // +0x003C
+    int  TopRowIndex;                     // +0x0044
+    int  At_48;                           // +0x0048
+    char unknown_4C[0x54 - 0x4C];         // +0x004C
+    int  CameoCount;                      // +0x0054
+    SidebarCameo Cameos[75];              // +0x0058
+
+    // FUNCTION: GAMEMD 0x6A81B0 (decl; reloc) -- strip reset.
+    void FUN_006A81B0();
+    // FUNCTION: GAMEMD 0x6A8220 (decl; reloc) -- strip init(index); RET 4.
+    void FUN_006A8220(int index);
+    // FUNCTION: GAMEMD 0x6A8B30 (decl; reloc) -- strip input (key, point); RET 8.
+    bool FUN_006A8B30(int* key, Point2D* point);
+    // FUNCTION: GAMEMD 0x6A92E0 (decl; reloc) -- text of the cameo at a row; RET 4.
+    wchar_t* FUN_006A92E0(int row);
+    // FUNCTION: GAMEMD 0x6A9540 (decl; reloc) -- draw the strip; RET 4.
+    void FUN_006A9540(bool full);
+};
+GG_STATIC_ASSERT(offsetof(StripClass, Timer) == 0x08);
+GG_STATIC_ASSERT(offsetof(StripClass, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(StripClass, At_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(StripClass, At_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(StripClass, At_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(StripClass, Rect) == 0x28);
+GG_STATIC_ASSERT(offsetof(StripClass, RowBase) == 0x38);
+GG_STATIC_ASSERT(offsetof(StripClass, TopRowIndex) == 0x44);
+GG_STATIC_ASSERT(offsetof(StripClass, At_48) == 0x48);
+GG_STATIC_ASSERT(offsetof(StripClass, CameoCount) == 0x54);
+GG_STATIC_ASSERT(offsetof(StripClass, Cameos) == 0x58);
+GG_STATIC_ASSERT(sizeof(StripClass) == 0xF94);
+
+struct SidebarHouse;   // sidebar_class_layout.h (HouseClass)
+
+// VTABLE: GAMEMD 0x7F3058 (55 slots). The destructor is implicit: retail's ??_G (0x6AC7F0) tears the strip array
+// down inline and calls the RadarClass destructor body.
+class SidebarClass : public PowerClass
+{
+public:
+    SidebarClass();
+
+    virtual void vf_05();                                // 5   0x6A5000 (one-time init)
+    virtual void vf_07();                                // 7   0x6A5030
+    virtual void vf_08();                                // 8   0x6A5310 (init IO)
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x6A7780 (AI)
+    virtual void vf_16(bool forced);                     // 16  0x6A6C30 (draw)
+    virtual long vf_30(IStream* stream);                 // 30  0x6AC5D0
+    virtual long vf_31(IStream* stream);                 // 31  0x6AC5E0
+    virtual const wchar_t* vf_33(int id);                // 33  0x6AC210 (tooltip text)
+    virtual void vf_34();                                // 34  0x6ABD30 (reposition)
+    virtual void vf_50();                                // 50  0x6A5BF0 (free the art)
+    virtual void vf_53();                                // 53  0x6A5840 (load the art)
+    virtual bool vf_54(int control);                     // 54  0x6A7D70 (activate) -- new slot
+
+    // FUNCTION: GAMEMD 0x6A5090 (decl; reloc)
+    void FUN_006A5090();
+    // FUNCTION: GAMEMD 0x6A5130 (decl; reloc) -- RET 4.
+    void FUN_006A5130(int arg);
+    // FUNCTION: GAMEMD 0x6A6610 (decl; reloc) -- rebuild the strip contents.
+    void FUN_006A6610();
+    // FUNCTION: GAMEMD 0x6A70E0 (decl; reloc) -- RET 4.
+    void FUN_006A70E0(bool flag);
+
+    StripClass Strips[4];                 // +0x1544
+    int unknown_5394;                     // +0x5394
+    int unknown_5398;                     // +0x5398
+    int ActiveTab;                        // +0x539C
+    int At_53A0;                          // +0x53A0
+    bool unknown_53A4;                    // +0x53A4
+    bool At_53A5;                         // +0x53A5
+    bool At_53A6;                         // +0x53A6
+    bool At_53A7;                         // +0x53A7
+    char unknown_53A8[0x53AC - 0x53A8];   // +0x53A8
+    SidebarHouse* Houses[8];              // +0x53AC
+    int Totals[8];                        // +0x53CC
+    int Values[8];                        // +0x53EC
+    int At_540C[8];                       // +0x540C
+    void* Colors[8];                      // +0x542C
+    int At_544C[8];                       // +0x544C
+    int At_546C[8];                       // +0x546C
+    int At_548C[8];                       // +0x548C
+    int At_54AC[8];                       // +0x54AC
+    int At_54CC[8];                       // +0x54CC
+    int At_54EC[8];                       // +0x54EC
+    unsigned char At_550C;                // +0x550C
+    char unknown_550D[3];                 // +0x550D
+    int Count;                            // +0x5510
+    unsigned char At_5514;                // +0x5514
+    unsigned char At_5515;                // +0x5515
+    char unknown_5516[2];                 // +0x5516
+};
+GG_STATIC_ASSERT(offsetof(SidebarClass, Strips) == 0x1544);
+GG_STATIC_ASSERT(offsetof(SidebarClass, ActiveTab) == 0x539C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A0) == 0x53A0);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A5) == 0x53A5);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A6) == 0x53A6);
+GG_STATIC_ASSERT(offsetof(SidebarClass, Houses) == 0x53AC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, Totals) == 0x53CC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, Values) == 0x53EC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_540C) == 0x540C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, Colors) == 0x542C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_544C) == 0x544C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_546C) == 0x546C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_548C) == 0x548C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_54AC) == 0x54AC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_54CC) == 0x54CC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_54EC) == 0x54EC);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_550C) == 0x550C);
+GG_STATIC_ASSERT(offsetof(SidebarClass, Count) == 0x5510);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_5514) == 0x5514);
+GG_STATIC_ASSERT(offsetof(SidebarClass, At_5515) == 0x5515);
+// TabClass's INoticeSink sub-object sits at +0x5518 (RTTI base offset 21784).
+GG_STATIC_ASSERT(sizeof(SidebarClass) == 0x5518);
+
+// ---- TabClass ----------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7E1FBC (1 slot) -- stored first by the TabClass constructor, then replaced by 0x7EDFAC.
+class INoticeSink
+{
+public:
+    virtual bool Notice(int id, int arg) = 0;            // 0
+};
+GG_STATIC_ASSERT(sizeof(INoticeSink) == 4);
+
+// The sub-object at TabClass +0x551C (constructed by 0x4A2350).
+struct TabNoticeData
+{
+    char unknown_00[4];
+    // FUNCTION: GAMEMD 0x4A2370 (decl; reloc) -- one bool argument; RET 4.
+    void FUN_004A2370(bool arg);
+    // FUNCTION: GAMEMD 0x4A2600 (decl; reloc) -- one int argument; RET 4.
+    void FUN_004A2600(int arg);
+};
+
+// VTABLE: GAMEMD 0x7EDFB4 (55 slots; INoticeSink table 0x7EDFAC at +0x5518)
+class TabClass : public SidebarClass, public INoticeSink
+{
+public:
+    // FUNCTION: GAMEMD 0x6CFE20 (decl; reloc)
+    TabClass();
+
+    virtual void vf_05();                                // 5   0x6D0260
+    virtual void vf_08();                                // 8   0x6D03A0
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x6D0680
+    virtual void vf_16(bool forced);                     // 16  0x6D0A20 (draw)
+    virtual const wchar_t* vf_33(int id);                // 33  0x6D1800
+    virtual void vf_50();                                // 50  0x6D0270
+    virtual void vf_53();                                // 53  0x6D02B0
+    virtual bool vf_54(int control);                     // 54  0x6D04F0
+
+    // INoticeSink slot 0 (0x6D1770): entered with ECX = the sub-object at +0x5518, which the body does not use.
+    virtual bool Notice(int id, int arg);
+
+    // FUNCTION: GAMEMD 0x6D04D0 (decl; reloc)
+    void FUN_006D04D0();
+    // FUNCTION: GAMEMD 0x6D0FD0 (decl; reloc)
+    void FUN_006D0FD0();
+    // FUNCTION: GAMEMD 0x6D1200 (decl; reloc)
+    void FUN_006D1200();
+
+    TabNoticeData unknown_551C;           // +0x551C
+    int At_5520;                          // +0x5520
+    char unknown_5524[0x5538 - 0x5524];   // +0x5524 (the constructor stores the frame counter at +0x552C)
+    int At_5538;                          // +0x5538
+    char unknown_553C[4];                 // +0x553C
+    int At_5540;                          // +0x5540
+    bool At_5544;                         // +0x5544
+    bool At_5545;                         // +0x5545
+    bool At_5546;                         // +0x5546
+    char unknown_5547[1];                 // +0x5547
+};
+GG_STATIC_ASSERT(offsetof(TabClass, unknown_551C) == 0x551C);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5520) == 0x5520);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5538) == 0x5538);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5540) == 0x5540);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5544) == 0x5544);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5545) == 0x5545);
+GG_STATIC_ASSERT(offsetof(TabClass, At_5546) == 0x5546);
+GG_STATIC_ASSERT(sizeof(TabClass) == 0x5548);
+
+// ---- ScrollClass -------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7F1094 (55 slots; INoticeSink table 0x7F108C at +0x5518). The destructor is implicit (0x6938F0).
+class ScrollClass : public TabClass
+{
+public:
+    // FUNCTION: GAMEMD 0x692290
+    ScrollClass();
+    // FUNCTION: GAMEMD 0x5BE9B0 (decl; reloc) -- the "no initialisation" constructor the load path runs; RET 4.
+    ScrollClass(const NoInitClass& noInit);
+
+    virtual void vf_08();                                // 8   0x40D270
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x6922E0
+    virtual bool vf_26();                                // 26  0x693060
+    virtual void vf_35();                                // 35  0x6938C0
+    virtual void vf_44(const Point2D* where);            // 44  0x693880
+    virtual void vf_49(int unused);                      // 49  0x693840
+
+    // FUNCTION: GAMEMD 0x692F30 (decl; reloc)
+    void FUN_00692F30();
+
+    int  unknown_5548;                    // +0x5548
+    bool unknown_554C;                    // +0x554C
+    char unknown_554D[3];                 // +0x554D
+    int  unknown_5550;                    // +0x5550  X of the saved position (vf_44)
+    int  unknown_5554;                    // +0x5554  Y of the saved position (vf_44)
+    bool unknown_5558;                    // +0x5558
+    bool unknown_5559;                    // +0x5559  set to 1 by the constructor
+    bool unknown_555A;                    // +0x555A
+    char unknown_555B[1];                 // +0x555B
+};
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_5548) == 0x5548);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_554C) == 0x554C);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_5550) == 0x5550);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_5554) == 0x5554);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_5558) == 0x5558);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_5559) == 0x5559);
+GG_STATIC_ASSERT(offsetof(ScrollClass, unknown_555A) == 0x555A);
+GG_STATIC_ASSERT(sizeof(ScrollClass) == 0x555C);
+
+// ---- MouseClass --------------------------------------------------------------------------------------------------
+
+// VTABLE: GAMEMD 0x7E1964 (55 slots; INoticeSink table 0x7E195C at +0x5518)
+class MouseClass : public ScrollClass
+{
+public:
+    // The "no initialisation" constructor Load re-runs over the freshly read object: the out-of-line base part
+    // (0x5BE9B0) then the two vptr stores.
+    MouseClass(const NoInitClass& noInit) : ScrollClass(noInit) {}
+    // FUNCTION: GAMEMD 0x40D290 (scalar deleting destructor) -- see mouse_mouse_class.h for its state.
+    virtual ~MouseClass() {}                             // 4   0x40D290
+
+    virtual void vf_05();                                // 5   0x5BDF30 loads MOUSE.SHA
+    virtual void vf_07();                                // 7   0x5BDF50 reset
+    virtual void vf_10(int* key, Point2D* where);        // 10  0x5BDDC0 per-frame update
+    virtual void vf_18(int cursor, bool flag);           // 18  0x5BDA80
+    virtual bool vf_19(int cursor, bool flag);           // 19  0x5BDC80 apply a cursor row
+    virtual void vf_20();                                // 20  0x5BDAA0 re-apply the requested cursor
+    virtual void vf_21(bool flag);                       // 21  0x5BDAB0 switch the alternate-frame flag
+    virtual long vf_30(IStream* stream);                 // 30  0x5BDF70 Load
+    virtual long vf_31(IStream* stream);                 // 31  0x5BE6D0 Save
+    virtual int  vf_40();                                // 40  0x40D280
+
+    // Shared inline step of vf_19 / vf_21 (mouse_mouse_class_methods.cpp).
+    void ApplyCursorRow(int index, bool flag);
+
+    bool CursorFlag;                      // +0x555C the "alternate frames" flag of the applied cursor
+    int  CursorIndex;                     // +0x5560 the applied row of the cursor table
+    int  RequestedCursor;                 // +0x5564 the last cursor id requested through slot 18
+    int  CursorFrame;                     // +0x5568 animation frame within the applied row
+};
+GG_STATIC_ASSERT(offsetof(MouseClass, CursorFlag) == 0x555C);
+GG_STATIC_ASSERT(offsetof(MouseClass, CursorIndex) == 0x5560);
+GG_STATIC_ASSERT(offsetof(MouseClass, RequestedCursor) == 0x5564);
+GG_STATIC_ASSERT(offsetof(MouseClass, CursorFrame) == 0x5568);
+// sizeof from Save: `PUSH 0x556C` is the byte count written for the whole object (0x5BE715).
+GG_STATIC_ASSERT(sizeof(MouseClass) == 0x556C);
+
+// GLOBAL: GAMEMD 0x87F7E8 -- the map object (a static MouseClass; MOV ECX,0x87F7E8 at every call through it). Calls
+// made on the object itself are direct calls to the slot body the MouseClass table holds.
+extern MouseClass Map_0087F7E8;
+
+#endif  // GG_MATCH_UI_INPUT_CONTROLS_UI_DISPLAY_CHAIN_H

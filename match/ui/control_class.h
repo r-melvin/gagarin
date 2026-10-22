@@ -14,16 +14,16 @@ struct ControlClass : GadgetClass
     virtual unsigned int GetID();                         // slot 17, 0x48E610
     virtual int Draw(int forced);                         // slot 27, 0x48E620
     virtual int Action(unsigned flags, unsigned* key, int modifier); // slot 31, 0x48E5A0
-    virtual void FUN_0048E600(GadgetClass* gadget);        // slot 33, 0x48E600
+    virtual void SetPeer(GadgetClass* peer);              // slot 33, 0x48E600 (stores +0x28)
 
     // FUNCTION: GAMEMD 0x48E520 (decl)
     ControlClass(int id, int x, int y, int width, int height,
                  unsigned int flags, char sticky);
 
     unsigned int ID;              // +0x24, GetID
-    GadgetClass* unknown_28;       // +0x28, stored by 0x48E600; Draw calls slot +0x6C
+    GadgetClass* Peer;             // +0x28, stored by 0x48E600; Draw calls slot +0x6C, Action slot +0x4C
 };
 GG_STATIC_ASSERT(offsetof(ControlClass, ID) == 0x24);
-GG_STATIC_ASSERT(offsetof(ControlClass, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(ControlClass, Peer) == 0x28);
 GG_STATIC_ASSERT(sizeof(ControlClass) == 0x2C);
 #endif
