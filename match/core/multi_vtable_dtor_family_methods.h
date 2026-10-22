@@ -164,10 +164,6 @@ GG_STATIC_ASSERT(offsetof(ComRel_004AF5E0, Holder) == 0x68 &&
 extern char VT_007E8AC0;
 // VTABLE: GAMEMD 0x007E89F4
 extern char VT_007E89F4;
-// VTABLE: GAMEMD 0x007EDC38
-extern char VT_007EDC38;
-// VTABLE: GAMEMD 0x007EDB6C
-extern char VT_007EDB6C;
 
 // Address -> class map for COMREL. A destructor cannot be redeclared at
 // namespace scope, so its reccmp `// FUNCTION:` annotations live on the bodies

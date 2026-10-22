@@ -63,9 +63,9 @@ public:
     // Slot 4. S_OK/S_FALSE convention: returns 1 (S_FALSE) while Dirty == 0.
 // Inline default implementation observed at the 0x4B4C30 call site; this is not a separate standalone match row. The existing 0x4B4C30 free-function binding remains owned by its COLUMNZERO row until that migration is handled.
     virtual HRESULT __stdcall IsDirty() { return !Dirty; }                // 0x4B4C30 (inline in retail)
-    // Slot 5 Load is pure in the table; the body at 0x55AAC0 is a protected
-    // helper that the leaf Load methods call with a qualified call.
-    virtual HRESULT __stdcall Load(IStream* pStm) = 0;                    // body 0x55AAC0 (read-only here)
+    // Slot 5 Load remains pure in this base table. Its out-of-line body in
+    // loco_base.cpp is used by derived loaders through a qualified call.
+    virtual HRESULT __stdcall Load(IStream* pStm) = 0;
     // Slot 6. READ-ONLY binding (0x55AA60 is owned elsewhere).
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 0x55AA60
     // Slot 7. pcbSize = Size() + 4 (low dword), high dword 0; E_POINTER on null.

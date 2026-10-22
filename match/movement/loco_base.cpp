@@ -10,10 +10,11 @@
 // and evidence are in loco_base.h / loco_interfaces.h and the adjacent candidate report.
 //
 // This candidate defines only the base method bodies listed in its row file.
-// Constructor/destructor expansion, vtables, thunks, Save, and Load are
-// intentionally not owned here.
+// Constructor/destructor expansion, vtables, thunks, and Save are intentionally
+// not owned here. Load has a qualified base body for derived stream loaders.
 
 #include "loco_base.h"
+#include "locomotion_load_support.h"
 #include "loco_foot.h"
 #include "locomotion_rotation_step.h"
 
@@ -155,6 +156,31 @@ HRESULT __stdcall LocomotionClass::QueryInterface(REFIID riid, void** ppv)
 
     AddRef();
     return S_OK;
+}
+
+// FUNCTION: GAMEMD 0x55AAC0
+HRESULT __stdcall LocomotionClass::Load(IStream* pStm)
+{
+    if (pStm == 0) {
+        return 0x80004003;
+    }
+
+    int id;
+    HRESULT hr = pStm->Read(&id, 4, 0);
+    if (hr < 0) {
+        return hr;
+    }
+
+    DAT_00B0C110.FUN_006CF2C0(id, this);
+
+    LONG keep = RefCount;
+    hr = pStm->Read(this, (unsigned long)Size(), 0);
+    RefCount = keep;
+
+    DAT_00B0C110.FUN_006CF240((void**)&LinkedTo);
+    DAT_00B0C110.FUN_006CF240((void**)&Owner);
+
+    return hr;
 }
 
 // FUNCTION: GAMEMD 0x55AB40

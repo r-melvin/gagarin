@@ -11,7 +11,7 @@
 //   and Resize `CALL [EDX+0x8]` (the inlined AddItem); the loop counter in
 //   the parameter's home slot [ESP+0x1C]; `RET 4`. Same Kamikaze / vector /
 //   swizzle model as match/combat/kamikaze_update_methods.h and
-//   match/movement/locomotion_class_load_methods.h. Method name from YRpp
+//   match/movement/locomotion_load_support.h. Method name from YRpp
 //   Kamikaze.h (consult-only; name only).
 #ifndef GG_MATCH_COMBAT_KAMIKAZE_LOAD_METHODS_H
 #define GG_MATCH_COMBAT_KAMIKAZE_LOAD_METHODS_H

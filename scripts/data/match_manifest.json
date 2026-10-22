@@ -9165,11 +9165,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+  "tu": "match/movement/mech_locomotion_class.cpp",
   "addr": "0x5B1B50",
-  "sym": "?FUN_005B1B50@@YIPAUMultiVtableObject@@PAU1@HD@Z",
+  "sym": "??_GMechLocomotionClass@@UAEPAXI@Z",
   "len": "0x2b",
-  "name": "FUN_005B1B50",
+  "name": "MechLocomotionClass::scalarDeletingDestructor",
   "status": "matched",
   "pct": 100
  },
@@ -25410,9 +25410,9 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/locomotion_class_load_methods.cpp",
+  "tu": "match/movement/loco_base.cpp",
   "addr": "0x55AAC0",
-  "sym": "?FUN_0055AAC0@@YGJPAULoco_0055AAC0@@PAUIStream_0055AAC0@@@Z",
+  "sym": "?Load@LocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7a",
   "name": "LocomotionClass::Load",
   "status": "matched",
@@ -48226,6 +48226,150 @@
   "sym": "?Size@HoverLocomotionClass@@UAEHXZ",
   "len": "0x6",
   "name": "HoverLocomotionClass::Size",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5AFEF0",
+  "sym": "??0MechLocomotionClass@@QAE@XZ",
+  "len": "0x56",
+  "name": "MechLocomotionClass::MechLocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5AFF70",
+  "sym": "?IsMoving@MechLocomotionClass@@UAG_NXZ",
+  "len": "0xa",
+  "name": "MechLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5AFF80",
+  "sym": "?Destination@MechLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x51",
+  "name": "MechLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5AFFE0",
+  "sym": "?HeadToCoord@MechLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x71",
+  "name": "MechLocomotionClass::HeadToCoord",
+  "status": "partial",
+  "pct": 7.3
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B0060",
+  "sym": "?Process@MechLocomotionClass@@UAG_NXZ",
+  "len": "0x19",
+  "name": "MechLocomotionClass::Process",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B0080",
+  "sym": "?MoveTo@MechLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0x95",
+  "name": "MechLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 39.6
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B0120",
+  "sym": "?StopMoving@MechLocomotionClass@@UAGXXZ",
+  "len": "0x4e",
+  "name": "MechLocomotionClass::StopMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B0170",
+  "sym": "?DoTurn@MechLocomotionClass@@UAGXK@Z",
+  "len": "0x22",
+  "name": "MechLocomotionClass::DoTurn",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B01A0",
+  "sym": "?ForceImmediateDestination@MechLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0x20",
+  "name": "MechLocomotionClass::ForceImmediateDestination",
+  "status": "partial",
+  "pct": 0
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B1960",
+  "sym": "?GetClassID@MechLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "MechLocomotionClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B19A0",
+  "sym": "?Load@MechLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x29",
+  "name": "MechLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B19D0",
+  "sym": "?InWhichLayer@MechLocomotionClass@@UAGHXZ",
+  "len": "0x8",
+  "name": "MechLocomotionClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B19E0",
+  "sym": "?IsMovingNow@MechLocomotionClass@@UAG_NXZ",
+  "len": "0x67",
+  "name": "MechLocomotionClass::IsMovingNow",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B1A50",
+  "sym": "?MarkAllOccupationBits@MechLocomotionClass@@UAGXH@Z",
+  "len": "0x46",
+  "name": "MechLocomotionClass::MarkAllOccupationBits",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B1AA0",
+  "sym": "?IsMovingHere@MechLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "len": "0x99",
+  "name": "MechLocomotionClass::IsMovingHere",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/mech_locomotion_class.cpp",
+  "addr": "0x5B1B40",
+  "sym": "?Size@MechLocomotionClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "MechLocomotionClass::Size",
   "status": "matched",
   "pct": 100
  }

@@ -3,7 +3,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/droppod_locomotion_class.h"
-#include "locomotion_class_load_methods.h"
+#include "loco_base.h"
+#include "locomotion_load_support.h"
 #include "loco_interfaces.h"
 
 // The incoming interface is the complete object's +4 subobject. Reuse the
@@ -112,7 +113,9 @@ long __stdcall DropPodLocomotionClass::GetClassID(
 // FUNCTION: GAMEMD 0x004B6240 — IPersistStream::Load, slot 5.
 long __stdcall DropPodLocomotionClass::Load(IStream_0055AAC0* stream)
 {
-    long result = FUN_0055AAC0((Loco_0055AAC0*)this, stream);
+    // The constructor calls the LocomotionClass base at complete-object +0;
+    // call its body explicitly so this slot does not dispatch through DropPod's override.
+    long result = reinterpret_cast<LocomotionClass*>(this)->LocomotionClass::Load(reinterpret_cast<IStream*>(stream));
     if (result >= 0) {
         if (this != 0) {
             this->Piggybackee = 0;

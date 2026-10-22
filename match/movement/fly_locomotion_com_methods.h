@@ -153,9 +153,6 @@ GG_STATIC_ASSERT(offsetof(ILocomotion_004CFD20, LinkedTo) == 0x08 &&
                  offsetof(ILocomotion_004CFD20, SpinRate) == 0x50 &&
                  offsetof(ILocomotion_004CFD20, SpinCount) == 0x54);
 
-// FUNCTION: GAMEMD 0x55AAC0 (decl; reloc) — LocomotionClass::Load.
-HRESULT __stdcall LocomotionClassLoad_0055AAC0(FlyLocomotionClass* self,
-                                               void* stream);
 // FUNCTION: GAMEMD 0x55A910 (decl; reloc) — the shared locomotor process tail.
 void __stdcall LocomotionClassProcess_0055A910(ILocomotion_004CFD20* self);
 // FUNCTION: GAMEMD 0x55A930 (decl; reloc) — the shared locomotor move tail.

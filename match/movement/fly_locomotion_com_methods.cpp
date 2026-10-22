@@ -5,6 +5,7 @@
 //   the class name was read out of its own runtime type information and for
 //   the numeric offset derivation. Bodies ordered ascending by retail address.
 #include "fly_locomotion_com_methods.h"
+#include "loco_base.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E8AC0 — the persist vtable (base offset 0).
@@ -43,7 +44,9 @@ HRESULT __stdcall FlyLocomotionGetClassID_004CFC80(ILocomotion_004CFD20*,
 HRESULT __stdcall FlyLocomotionLoad_004CFCC0(FlyLocomotionClass* self,
                                              void* stream)
 {
-    HRESULT hr = LocomotionClassLoad_0055AAC0(self, stream);
+    // Fly's persist vptr is the complete-object primary base at +0; preserve the
+    // old direct base-call target while using the canonical native declaration.
+    HRESULT hr = reinterpret_cast<LocomotionClass*>(self)->LocomotionClass::Load((IStream*)stream);
     if (hr >= 0 && self != 0) {
         self->PersistVptr = (void*)0x7E8AC0;
         self->LocomotorVptr = (void*)0x7E89F4;
