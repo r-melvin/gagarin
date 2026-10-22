@@ -1,5 +1,35 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **8,316 matched function
+rows**, **492 partial rows**, **8,808 manifest rows**, **1,379 manifest
+translation units**, and **1,387 tracked C++ files**. Whole-repository regression
+verification, the project object build and 153 tooling tests pass, and the
+compile/layout check passes on the tracked tree.
+
+One source per duplicate family lands 539 exact rows: static DynamicVectorClass
+destructor stubs, IPersist::GetClassID per class, TClassFactory<T>::CreateInstance
+with 77 verified factory vtables, the blitter deleting wrappers, COM forwarders
+and VectorClass/DynamicVectorClass slots for 27 element types. SideClass comes
+from its canonical header; the other per-unit RTTI-named class views remain
+structure debt for the class upgrades.
+
+The 8,316 matches represent 42.1% of 19,753 listed functions. Counts are per
+function, not executable completion. Matched body lengths total **604,113
+bytes**, or 15.9% of 3,797,269 listed function bytes. The padding heuristic
+misses 588 matched entries. The last diagnostic link, taken before the second
+cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
+lines**, and zero duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: sixteen canonical RTTI class headers
+
 As of **2026-10-22**, the verified snapshot reports **7,777 matched function
 rows**, **492 partial rows**, **8,269 manifest rows**, **1,352 manifest
 translation units**, and **1,360 tracked C++ files**. Whole-repository regression
@@ -18,14 +48,6 @@ bytes**, or 14.8% of 3,797,269 listed function bytes. The padding heuristic
 misses 554 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: thread-shared volatile declarations and sorted-pair loop
 

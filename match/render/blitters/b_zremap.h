@@ -20,6 +20,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const unsigned char* const* xlat; // +0x04
     const T* remap;                   // +0x08
+    BlitTransZRemapXlat(const unsigned char* const* x, const T* r) : xlat(x), remap(r) {}
 };
 typedef BlitTransZRemapXlat<unsigned char> BlitTransZRemapXlatUC_;
 typedef BlitTransZRemapXlat<unsigned short> BlitTransZRemapXlatUS_;
@@ -40,6 +41,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const unsigned char* const* xlat; // +0x04
     const T* remap;                   // +0x08
+    BlitTransZRemapXlatZRead(const unsigned char* const* x, const T* r) : xlat(x), remap(r) {}
 };
 typedef BlitTransZRemapXlatZRead<unsigned short> BlitTransZRemapXlatZReadUS_;
 GG_STATIC_ASSERT(sizeof(BlitTransZRemapXlatZReadUS_) == 0x0C);
@@ -56,6 +58,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const unsigned char* const* xlat; // +0x04
     const T* remap;                   // +0x08
+    BlitTransZRemapXlatZReadWrite(const unsigned char* const* x, const T* r) : xlat(x), remap(r) {}
 };
 typedef BlitTransZRemapXlatZReadWrite<unsigned short> BlitTransZRemapXlatZReadWriteUS_;
 GG_STATIC_ASSERT(sizeof(BlitTransZRemapXlatZReadWriteUS_) == 0x0C);

@@ -19,6 +19,8 @@
 class SideClass : public AbstractTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x006A4550 (decl; reloc) -- SideClass default constructor.
+    SideClass(int unknown_arg0 = 0);
     virtual HRESULT __stdcall GetClassID(CLSID *pClassID);      // 3  0x6A4740: override (SDK declaration)
     virtual HRESULT __stdcall Load(IStream* pStm);              // 5  0x6A4780: override (declaration from the base header)
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);// 6  0x6A48A0: override (declaration from the base header)

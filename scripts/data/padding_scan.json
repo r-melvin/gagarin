@@ -10,7 +10,7 @@
   "section_end_exclusive": "0x7E038D",
   "section_bytes_scanned": 4060045,
   "function_export_sha256": "1bbb9ace51992e9c8af10261e3e804f7b57a7042fafdb5dbb3300f537cfe9e8a",
-  "manifest_sha256": "f3e877747c296eb76db6118fe64975825312d9aafc4310cd62c5c48da6514497",
+  "manifest_sha256": "10a7d6d12d74353d03b5126eb611d39ec35ba887a12ffc444eed2d7985337efd",
   "limitations": [
    "False positives include embedded data and filler-valued instruction operands.",
    "False negatives include unaligned entries, entries without filler and entries starting with CC/90.",
@@ -29,8 +29,8 @@
   "unlisted_unclaimed_outside_listed_bounding_spans": 47,
   "unlisted_inside_listed_bounding_span": 742,
   "listed_entries_missed": 1477,
-  "matched_entries": 7777,
-  "matched_entries_missed": 554,
+  "matched_entries": 8316,
+  "matched_entries_missed": 588,
   "padding_run_lengths": {
    "1": 1725,
    "2": 1061,
@@ -5180,6 +5180,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x465FD0",
+   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+   "name": "VectorClass<TPoint3D<int>>::Slot5",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x466080",
    "tu": "match/core/buffer_holder_dtor_methods.cpp",
    "name": "FUN_00466080",
@@ -5312,6 +5318,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x499D20",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransZRemapXlat<unsigned char> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x499D40",
    "tu": "match/render/blitters/b_trans.cpp",
    "name": "BlitTransRemapDest<unsigned char> scalar deleting destructor",
@@ -5408,15 +5420,33 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x499F40",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransZRemapXlat<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x499F60",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarken<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x499F80",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent75<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x499FA0",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x499FC0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent25<unsigned short> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5432,9 +5462,21 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A020",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransZRemapXlatZRead<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A040",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarkenZRead<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A060",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent75ZRead<unsigned short> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5444,9 +5486,27 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A0A0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent25ZRead<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A0C0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent75ZReadWarp<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A0E0",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50ZReadWarp<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A100",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent25ZReadWarp<unsigned short> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5462,15 +5522,33 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A160",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransZRemapXlatZReadWrite<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A180",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransDarkenZReadWrite<unsigned short>::scalar_deleting_dtor",
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A1A0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent75ZReadWrite<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A1C0",
    "tu": "match/render/blitters/blitter_ddtors.cpp",
    "name": "BlitTransLucent50ZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A1E0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "BlitTransLucent25ZReadWrite<unsigned short> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5522,6 +5600,24 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A7C0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent75<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A7E0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent50<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A800",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent25<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A820",
    "tu": "match/render/blitters/r_xlat_zread_ushort.cpp",
    "name": "RLEBlitTransXlatZRead<unsigned short>::scalar_deleting_dtor",
@@ -5540,6 +5636,42 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x49A880",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent75ZRead<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A8A0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent50ZRead<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A8C0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent25ZRead<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A8E0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent75ZReadWarp<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A900",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent50ZReadWarp<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A920",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent25ZReadWarp<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x49A940",
    "tu": "match/render/blitters/r_xlat_zrw_ushort.cpp",
    "name": "RLEBlitTransXlatZReadWrite<unsigned short>::scalar_deleting_dtor",
@@ -5555,6 +5687,24 @@
    "addr": "0x49A980",
    "tu": "match/render/blitters/r_darken_remap.cpp",
    "name": "RLEBlitTransDarkenZReadWrite<unsigned short>::scalar_deleting_dtor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A9A0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent75ZReadWrite<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A9C0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent50ZReadWrite<unsigned short> scalar deleting destructor",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x49A9E0",
+   "tu": "match/render/blitters/blitter_ddtors_lucent_methods.cpp",
+   "name": "RLEBlitTransLucent25ZReadWrite<unsigned short> scalar deleting destructor",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5585,6 +5735,12 @@
    "addr": "0x49FB60",
    "tu": "match/core/leftover_trivial_leaf_sweep.cpp",
    "name": "FUN_0049FB60",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4A1200",
+   "tu": "match/core/vector_small_struct_slot_methods.cpp",
+   "name": "DynamicVectorClass<tagCONNECTDATA>::FindItemIndex",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -5765,6 +5921,12 @@
    "addr": "0x4E30A0",
    "tu": "match/ui/input_controls/controls_gauge.cpp",
    "name": "GaugeClass::GetValue",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x4E6030",
+   "tu": "match/core/dialog_item_data_methods.cpp",
+   "name": "FUN_004E6030",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6980,6 +7142,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x6281F0",
+   "tu": "match/core/vector_color_slot_methods.cpp",
+   "name": "VectorClass<HSVClass>::operator==",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x628760",
    "tu": "match/core/vector_dtor_family_methods.cpp",
    "name": "VectorClass<HSVClass>::`scalar deleting destructor'",
@@ -7067,6 +7235,12 @@
    "addr": "0x63EBD0",
    "tu": "match/core/vector_remove_item_family_methods.cpp",
    "name": "ItemVector_0063DFD0::FUN_000063EBD0",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x658AF0",
+   "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+   "name": "VectorClass<HashObject<RadarTrackingStruct, TechnoClass*>>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -7208,6 +7382,18 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x69CB00",
+   "tu": "match/core/vector_wstring_slot_methods.cpp",
+   "name": "VectorClass<Wstring>::Clear",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x69CB50",
+   "tu": "match/core/vector_wstring_slot_methods.cpp",
+   "name": "VectorClass<Wstring>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x69CF70",
    "tu": "match/core/vector_multimission_slot_methods.cpp",
    "name": "DynamicVectorClass<MultiMission *>::FindItemIndex",
@@ -7247,6 +7433,12 @@
    "addr": "0x6B1900",
    "tu": "match/core/vector_slavemanagerclass_slot_methods.cpp",
    "name": "DynamicVectorClass<SlaveManagerClass *>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x6B4620",
+   "tu": "match/core/vector_pair_hash_slot_methods.cpp",
+   "name": "VectorClass<UndoInfoStruct>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -8018,6 +8210,12 @@
    "reason": "no-preceding-CC-or-90"
   },
   {
+   "addr": "0x7642B0",
+   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
+   "name": "VectorClass<WaypointClass>::Slot5",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
    "addr": "0x764460",
    "tu": "match/core/vector_waypointpathclass_methods.cpp",
    "name": "VectorClass<WaypointPathClass*>::operator==",
@@ -8051,6 +8249,12 @@
    "addr": "0x76A360",
    "tu": "match/core/vector_animationpalette_methods.cpp",
    "name": "DynamicVectorClass<WorldDominationTour::Map::AnimationPalette*>::FindItemIndex",
+   "reason": "no-preceding-CC-or-90"
+  },
+  {
+   "addr": "0x76A570",
+   "tu": "match/core/vector_small_struct_slot_methods.cpp",
+   "name": "VectorClass<WorldDominationTour::Centroid>::Slot5",
    "reason": "no-preceding-CC-or-90"
   },
   {

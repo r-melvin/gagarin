@@ -22,6 +22,7 @@ public:
                              const signed char* zshape, unsigned short tint);
     const T* table; // +0x04
     unsigned short mask; // +0x08
+    RLEBlitTransLucent75(const T* t, unsigned short m) : table(t), mask(m) {}
 };
 
 typedef RLEBlitTransLucent75<unsigned short> RLEBlitTransLucent75_us;
@@ -45,6 +46,7 @@ public:
                              const signed char* zshape, unsigned short tint);
     const T* table; // +0x04
     unsigned short mask; // +0x08
+    RLEBlitTransLucent75ZRead(const T* t, unsigned short m) : table(t), mask(m) {}
 };
 
 typedef RLEBlitTransLucent75ZRead<unsigned short> RLEBlitTransLucent75ZRead_us;
@@ -68,6 +70,7 @@ public:
                              const signed char* zshape, unsigned short tint);
     const T* table; // +0x04
     unsigned short mask; // +0x08
+    RLEBlitTransLucent75ZReadWarp(const T* t, unsigned short m) : table(t), mask(m) {}
 };
 
 typedef RLEBlitTransLucent75ZReadWarp<unsigned short> RLEBlitTransLucent75ZReadWarp_us;
@@ -91,6 +94,7 @@ public:
                              const signed char* zshape, unsigned short tint);
     const T* table; // +0x04
     unsigned short mask; // +0x08
+    RLEBlitTransLucent75ZReadWrite(const T* t, unsigned short m) : table(t), mask(m) {}
 };
 
 typedef RLEBlitTransLucent75ZReadWrite<unsigned short> RLEBlitTransLucent75ZReadWrite_us;

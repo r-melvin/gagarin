@@ -18,6 +18,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat;       // +0x04, 4-byte pointer
     unsigned short mask; // +0x08, 16-bit mask
+    BlitTransLucent75(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 typedef BlitTransLucent75<unsigned short> BlitTransLucent75US_;
 GG_STATIC_ASSERT(sizeof(BlitTransLucent75US_) == 0x0C);
@@ -33,6 +34,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat;       // +0x04, 4-byte pointer
     unsigned short mask; // +0x08, 16-bit mask
+    BlitTransLucent75ZRead(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 typedef BlitTransLucent75ZRead<unsigned short> BlitTransLucent75ZReadUS_;
 GG_STATIC_ASSERT(sizeof(BlitTransLucent75ZReadUS_) == 0x0C);
@@ -48,6 +50,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat;       // +0x04, 4-byte pointer
     unsigned short mask; // +0x08, 16-bit mask
+    BlitTransLucent75ZReadWarp(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 typedef BlitTransLucent75ZReadWarp<unsigned short> BlitTransLucent75ZReadWarpUS_;
 GG_STATIC_ASSERT(sizeof(BlitTransLucent75ZReadWarpUS_) == 0x0C);
@@ -63,6 +66,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat;       // +0x04, 4-byte pointer
     unsigned short mask; // +0x08, 16-bit mask
+    BlitTransLucent75ZReadWrite(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 typedef BlitTransLucent75ZReadWrite<unsigned short> BlitTransLucent75ZReadWriteUS_;
 GG_STATIC_ASSERT(sizeof(BlitTransLucent75ZReadWriteUS_) == 0x0C);

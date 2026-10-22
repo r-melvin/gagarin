@@ -21,6 +21,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat; // +0x04, 4-byte pointer access confirmed by retail
     unsigned short mask; // +0x08, 16-bit access confirmed by retail
+    BlitTransLucent25(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(BlitTransLucent25<unsigned short>) == 0x0C);
 typedef BlitTransLucent25<unsigned short> BlitTransLucent25US_;
@@ -38,6 +39,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat; // +0x04, 4-byte pointer access confirmed by retail
     unsigned short mask; // +0x08, 16-bit access confirmed by retail
+    BlitTransLucent25ZRead(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(BlitTransLucent25ZRead<unsigned short>) == 0x0C);
 typedef BlitTransLucent25ZRead<unsigned short> BlitTransLucent25ZReadUS_;
@@ -55,6 +57,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat; // +0x04, 4-byte pointer access confirmed by retail
     unsigned short mask; // +0x08, 16-bit access confirmed by retail
+    BlitTransLucent25ZReadWarp(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(BlitTransLucent25ZReadWarp<unsigned short>) == 0x0C);
 typedef BlitTransLucent25ZReadWarp<unsigned short> BlitTransLucent25ZReadWarpUS_;
@@ -72,6 +75,7 @@ public:
     virtual void BlitMoveTint(void*, const void*, int, int, unsigned short*, unsigned short*, int, unsigned short);
     const T* xlat; // +0x04, 4-byte pointer access confirmed by retail
     unsigned short mask; // +0x08, 16-bit access confirmed by retail
+    BlitTransLucent25ZReadWrite(const T* t, unsigned short m) : xlat(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(BlitTransLucent25ZReadWrite<unsigned short>) == 0x0C);
 typedef BlitTransLucent25ZReadWrite<unsigned short> BlitTransLucent25ZReadWriteUS_;

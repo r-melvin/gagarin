@@ -31,6 +31,7 @@ public:
     virtual void RLEBlitTint(void*, const void*, int, int, int, unsigned short*, unsigned short*, int, int, const signed char*, unsigned short);
     const T* palette; // +4
     unsigned short mask; // +8
+    RLEBlitTransLucent25(const T* t, unsigned short m) : palette(t), mask(m) {}
 };
 
 // This non-alpha layout is backed by +4 palette / +8 mask accesses in the
@@ -45,6 +46,7 @@ public:
     virtual void RLEBlitTint(void*, const void*, int, int, int, unsigned short*, unsigned short*, int, int, const signed char*, unsigned short);
     const T* palette; // +4
     unsigned short mask; // +8
+    RLEBlitTransLucent25ZRead(const T* t, unsigned short m) : palette(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(RLEBlitTransLucent25ZRead<unsigned short>) == 0x0C);
 GG_STATIC_ASSERT(offsetof(RLEBlitTransLucent25ZRead<unsigned short>, palette) == 4);
@@ -56,6 +58,7 @@ public:
     virtual void RLEBlitTint(void*, const void*, int, int, int, unsigned short*, unsigned short*, int, int, const signed char*, unsigned short);
     const T* palette; // +4
     unsigned short mask; // +8
+    RLEBlitTransLucent25ZReadWarp(const T* t, unsigned short m) : palette(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(RLEBlitTransLucent25ZReadWarp<unsigned short>) == 0x0C);
 GG_STATIC_ASSERT(offsetof(RLEBlitTransLucent25ZReadWarp<unsigned short>, palette) == 4);
@@ -67,6 +70,7 @@ public:
     virtual void RLEBlitTint(void*, const void*, int, int, int, unsigned short*, unsigned short*, int, int, const signed char*, unsigned short);
     const T* palette; // +4
     unsigned short mask; // +8
+    RLEBlitTransLucent25ZReadWrite(const T* t, unsigned short m) : palette(t), mask(m) {}
 };
 GG_STATIC_ASSERT(sizeof(RLEBlitTransLucent25ZReadWrite<unsigned short>) == 0x0C);
 GG_STATIC_ASSERT(offsetof(RLEBlitTransLucent25ZReadWrite<unsigned short>, palette) == 4);
