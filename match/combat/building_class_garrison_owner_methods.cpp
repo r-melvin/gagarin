@@ -16,19 +16,18 @@
 // hands it to the first occupant's owner. Both transitions refresh the
 // occupant animations first.
 //
-// PARTIAL (98.0%, 96/98 instructions; the multiset is identical, so the
+// MATCHED (100%; it sat at 98.0%, 96/98 instructions, with the multiset identical, so the
 // residual is scheduling only). The lever that mattered was declaration
 // order: the Civilian house pointer has to be zeroed BEFORE the side lookup
 // runs, because retail issues `XOR EBX,EBX` ahead of `CALL 0x6A46D0`.
 // Declaring it after the lookup puts the zero behind the call: 95.9% versus
-// 98.0%. The two remaining instructions are the `MOV EDX,0x2000` of the
-// __fastcall sound call, which retail issues between the two argument pushes
-// and cl issues after both. Seven spellings of that call were measured in one
-// compile — the sound index bound to a local, the volume bound to a const
-// float local, the panning bound to a const int local, the volume written as
-// `(float)1.0`, the controller bound to a local, the controller left to a
-// default argument, and the rules pointer cached first — and all seven score
-// 98.0%.
+// 98.0%. The last two instructions were the `MOV EDX,0x2000` of the
+// __fastcall sound call, which retail issues between the two argument pushes.
+// cl evaluates arguments right to left by declared position, so that order
+// means the panning is declared after the volume: PlayGlobal(index, volume,
+// panning, controller). The volume, a float, still goes on the stack and the
+// panning still reaches EDX, so the ABI is unchanged and 0x750920 itself
+// compiles to the same bytes under either order.
 void BuildingClass_00458200::UpdateGarrisonOwner()
 {
     if (Type->unknown_634 != -1) {
@@ -52,7 +51,7 @@ void BuildingClass_00458200::UpdateGarrisonOwner()
     if ((this->*Vtbl->GetOccupantCount)() == 0 && Owner != civilian) {
         if (Owner->IsControlledByCurrentPlayer()) {
             VocClass_00458200::PlayGlobal(RulesInstance_00458200->unknown_1C0,
-                                          0x2000, 1.0f, 0);
+                                          1.0f, 0x2000, 0);
             CellStruct_00458200 here;
             if (RadarEventClass_00458200::Create(
                     0xF, *(this->*Vtbl->GetMapCoords)(&here))) {

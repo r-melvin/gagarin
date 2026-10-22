@@ -935,7 +935,7 @@
   "len": "0xbe",
   "name": "TriggerClass::ResetTimers",
   "status": "partial",
-  "pct": 95.6
+  "pct": 73.5
  },
  {
   "tu": "match/ai/trigger_type_class_flags_methods.cpp",
@@ -1610,8 +1610,8 @@
   "sym": "?UpdateGarrisonOwner@BuildingClass_00458200@@QAEXXZ",
   "len": "0x12d",
   "name": "BuildingClass::UpdateGarrisonOwner",
-  "status": "partial",
-  "pct": 98.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/combat/building_class_go_online_methods.cpp",
@@ -1700,8 +1700,8 @@
   "sym": "?UnloadBunker@Building_004593A0@@QAEXXZ",
   "len": "0xd0",
   "name": "BuildingClass::UnloadBunker",
-  "status": "partial",
-  "pct": 95.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/combat/building_class_voxel_barrel_methods.cpp",
@@ -28159,8 +28159,8 @@
   "sym": "?MixFileClass_Bootstrap@@YI_NXZ",
   "len": "0x2B4",
   "name": "MixFileClass::Bootstrap",
-  "status": "partial",
-  "pct": 97.4
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/platform/mix_file_class.cpp",
@@ -58755,7 +58755,7 @@
   "len": "0x4D3",
   "name": "SidebarClass::vf_34",
   "status": "partial",
-  "pct": 95.7
+  "pct": 98.1
  },
  {
   "tu": "match/ui/input_controls/sidebar_class_tooltip.cpp",
@@ -59807,8 +59807,8 @@
   "sym": "?Remove@?$HashTable_006249A0@HH@@QAE_NABHAAH@Z",
   "len": "0x23F",
   "name": "?Remove@?$HashTable_006249A0@HH@@QAE_NABHAAH@Z",
-  "status": "partial",
-  "pct": 99.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/hash_table_remove_methods.cpp",
@@ -59817,7 +59817,7 @@
   "len": "0x25F",
   "name": "?Remove@?$HashTable_006249A0@UCellKey_00625090@@D@@QAE_NABUCellKey_00625090@@AAD@Z",
   "status": "partial",
-  "pct": 20.3
+  "pct": 21.1
  },
  {
   "tu": "match/core/entry_list_copy_methods.cpp",
@@ -60176,8 +60176,8 @@
   "sym": "?FUN_00757120@@YAXPAUVoxelSpanParams@@@Z",
   "len": "0x235",
   "name": "FUN_00757120",
-  "status": "partial",
-  "pct": 98.8
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/voxel_model_span_methods.cpp",
@@ -67148,7 +67148,7 @@
  {
   "tu": "match/core/mission_class_slots.cpp",
   "addr": "0x5B3A50",
-  "sym": "?vf_69@ObjectClass@@UAEXHH@Z",
+  "sym": "?vf_69@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_69",
   "status": "matched",
@@ -67247,7 +67247,7 @@
  {
   "tu": "match/core/object_class_slots_5f3e30.cpp",
   "addr": "0x5F42F0",
-  "sym": "?vf_56@ObjectClass@@UAEXH@Z",
+  "sym": "?vf_56@ObjectClass@@UAEXPAX@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_56",
   "status": "matched",
@@ -67256,7 +67256,7 @@
  {
   "tu": "match/core/object_class_slots_5f3e30.cpp",
   "addr": "0x5F4300",
-  "sym": "?vf_57@ObjectClass@@UAEXH@Z",
+  "sym": "?vf_57@ObjectClass@@UAEXPAX@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_57",
   "status": "matched",
@@ -68912,7 +68912,7 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F65D0",
-  "sym": "?vf_70@ObjectClass@@UAEXHH@Z",
+  "sym": "?vf_70@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x15",
   "name": "ObjectClass::vf_70",
   "status": "matched",
@@ -73102,5 +73102,23 @@
   "name": "WorldDominationTour::CampaignProperties::DeletingDtor",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/object_class_slots_5f4520.cpp",
+  "addr": "0x5F4B10",
+  "sym": "?vf_65@ObjectClass@@UAE_NPAURectangleStruct@@_NH@Z",
+  "len": "0x1ff",
+  "name": "ObjectClass::vf_65",
+  "status": "partial",
+  "pct": 1.2
+ },
+ {
+  "tu": "match/core/object_class_damage_5f5390.cpp",
+  "addr": "0x5F5390",
+  "sym": "?vf_91@ObjectClass@@UAEHPAHHPAX1_N21@Z",
+  "len": "0x4bd",
+  "name": "ObjectClass::vf_91",
+  "status": "partial",
+  "pct": 76.1
  }
 ]

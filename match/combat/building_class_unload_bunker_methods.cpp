@@ -12,20 +12,11 @@
 // slot +0x544 gets 1.0, the two back-links are cleared and the building goes
 // through its +0x274 virtual with 3.
 //
-// PARTIAL (95.6%, 65/68; mnemonic multiset identical). Retail's frame is one
-// 12-byte coordinate buffer: the adjusted copy lives in EBX/EBP with only its
-// Z spilled, into the dead buffer's own third slot. VC6 gives the adjusted
-// copy its own 12 bytes (frame 0x18), so the three frame-size instructions
-// differ. Copying the struct from the returned pointer and adjusting in place
-// (88.2%), three int locals (95.6%) and a constructor temporary built at the
-// call (34.8%) do not collapse the frame.
-//
-// TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply here.
-// Retail's callee-saved pushes sit exactly where ours do (prologue EBX, EBP,
-// ESI, EDI on both sides), the
-// number of epilogues agrees, and the compiled block order already matches,
-// so there are no merged return blocks to split. The residual is register
-// naming downstream of that, not a prologue hoist.
+// The returned-coordinate buffer is scoped to the block that reads it. Retail's
+// frame is that one 12-byte buffer: the adjusted copy lives in EBX/EBP and its
+// Z is spilled into the dead buffer's third slot, which VC6 only does once the
+// buffer's scope has closed. With the buffer and the adjusted copy in one scope
+// the frame is 0x18 (95.6%).
 void Building_004593A0::UnloadBunker()
 {
     Unit_004593A0* unit = BunkerLinkedItem;
@@ -34,12 +25,14 @@ void Building_004593A0::UnloadBunker()
             FUN_007DC720(0x80004003);
         LOCO_CALL0_004593A0(unit->Locomotor, 0x58);
 
-        Coord_004593A0 buf;
-        Coord_004593A0* here = (this->*this->Vptr->GetCoords)(&buf);
         Coord_004593A0 coords;
-        coords.X = here->X - 0x80;
-        coords.Y = here->Y + 0x80;
-        coords.Z = here->Z;
+        {
+            Coord_004593A0 buf;
+            Coord_004593A0* here = (this->*this->Vptr->GetCoords)(&buf);
+            coords.X = here->X - 0x80;
+            coords.Y = here->Y + 0x80;
+            coords.Z = here->Z;
+        }
 
         if (unit->Locomotor == 0)
             FUN_007DC720(0x80004003);

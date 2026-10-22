@@ -15,14 +15,15 @@
 // Slot 34: repositions every sidebar gadget for the current layout (including the
 // 2-column cameo grid) and re-registers all tooltips.
 //
-// PARTIAL (95.7%, 309/323). Multiset delta: retail has `push` 1, `add` 1 that cl has as
-// `xor` 1, `lea` 1. Differences: (1) the vertical extent `Y + Height` loads in the other
-// operand order; (2) retail pushes the `bottom` argument before testing the side flag and
-// branches (`JE ... PUSH 0`), cl evaluates the ternary branch-free; (3) the row-count
-// subtraction order (retail subtracts the margin before the strip top). Variants tried:
+// PARTIAL (98.1%, 318/323, multiset identical). The side-flag placement is two calls
+// under if/else (retail pushes `bottom`, then branches to `PUSH 0` or the sum); a ternary
+// argument compiled branch-free. Remaining: (1) the vertical extent `Y + Height` loads in
+// the other operand order; (2) the row-count subtraction order and the strip top's
+// register (retail subtracts the margin before the strip top, in EBX). Variants tried:
 // the tooltip store orders (hill-climbed per block), the strip loop as pointer and int
 // index, the cameo column increment in the loop header and body, the row count as five
-// expression and temporary forms, the side flag as ternary / if-else / preset local.
+// expression and temporary forms, the side flag as ternary / preset local, the row count reassociated five ways, the margin
+// as a ternary (95.7%).
 // FUNCTION: GAMEMD 0x6ABD30
 void SidebarClass::vf_34()
 {
@@ -37,9 +38,11 @@ void SidebarClass::vf_34()
     ExtraButton_00B07E58.SetPosition(SidebarRect_00886F90.X + 0x10, TacticalRect_00886FA0.Y);
     ExtraButton_00B07E58.MarkRedraw();
     int bottom = ExtraGadget_00B04A10.Y + ExtraGadget_00B04A10.Height;
-    ExtraButton_00B07E58.SetPosition(
-        SidebarSideFlag_00A8EB7C ? TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width : 0,
-        bottom);
+    if (SidebarSideFlag_00A8EB7C) {
+        ExtraButton_00B07E58.SetPosition(TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width, bottom);
+    } else {
+        ExtraButton_00B07E58.SetPosition(0, bottom);
+    }
     ExtraButton_00B07E58.SetDimension(
         (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_7C)(),
         (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_80)() - bottom);

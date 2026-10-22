@@ -271,3 +271,65 @@ RectangleStruct ObjectClass::vf_75()
     rect.Y = rect.Y - height / 2 + point.Y;
     return rect;
 }
+
+// GLOBAL: GAMEMD 0xB73550 -- the main window.
+extern void* DAT_00B73550;
+
+// The overlap of two rectangles, or an empty rectangle when they do not meet.
+static inline RectangleStruct Intersect(RectangleStruct r, const RectangleStruct& b)
+{
+    RectangleStruct result = { 0, 0, 0, 0 };
+    if (b.Width > 0 && b.Height > 0 && r.Width > 0 && r.Height > 0) {
+        if (r.X < b.X) {
+            r.Width += r.X - b.X;
+            r.X = b.X;
+        }
+        if (r.Width >= 1) {
+            if (r.Y < b.Y) {
+                r.Height += r.Y - b.Y;
+                r.Y = b.Y;
+            }
+            if (r.Height >= 1) {
+                if (r.X + r.Width > b.X + b.Width) {
+                    r.Width = b.X - r.X + b.Width;
+                }
+                if (r.Width >= 1) {
+                    if (r.Y + r.Height > b.Y + b.Height) {
+                        r.Height = b.Y + b.Height - r.Y;
+                    }
+                    if (r.Height >= 1) {
+                        result = r;
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x5F4B10
+// PARTIAL 1.2% (28.5% aligned): retail keeps the clip rectangle's copy on the
+// stack and the result in EAX/ECX/EDX/ESI in a 0x20 frame, pushing EBX/EBP/EDI
+// only after the early exits; cl zeroes EBX up front and uses a 0x28 frame.
+// Tried two separate early-exit tests (0.6%), Intersect over a const& copy
+// (0.6%) and a zeroed result rectangle (1.2%, kept).
+bool ObjectClass::vf_65(RectangleStruct* a1, bool a2, int a3)
+{
+    if (!DAT_00A8ED6B && DAT_00B73550 != NULL && ((!a2 && !NeedsRedraw) || InLimbo)) {
+        return false;
+    }
+    NeedsRedraw = false;
+    Point2D point;
+    if (!DAT_00887324->CoordsToClient(&vf_43(), &point) && vf_11() != 0x18) {
+        return false;
+    }
+    *a1 = Intersect(DAT_00886FA0, *a1);
+    if (a1->X > DAT_00886FA0.X) {
+        point.X += DAT_00886FA0.X - a1->X;
+    }
+    if (a1->Y > DAT_00886FA0.Y) {
+        point.Y += DAT_00886FA0.Y - a1->Y;
+    }
+    vf_69(&point, a1);
+    return true;
+}

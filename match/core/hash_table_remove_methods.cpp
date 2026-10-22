@@ -14,7 +14,8 @@ bool HashTable_006249A0<KEY, VALUE>::Remove(const KEY& key, VALUE& value)
 {
     if (this->Count == 0) return false;
 
-    float load = (float)(this->Count - 1) / this->BucketCount;
+    float load = (float)(this->Count - 1);
+    load /= this->BucketCount;
     int hash = this->Hash(&key);
     unsigned idx = ((1 << this->BitWidth) - 1) & hash;
     Node* node = this->Buckets[idx];

@@ -49,11 +49,10 @@ Node_00402AF0* __fastcall FUN_00402AF0(Owner_00402AF0* owner)
         return 0;
     }
 
-    int one = 1;
-    owner->Flags0C = owner->Flags0C | one;
+    owner->Flags0C |= 1;
     FUN_00407420(DAT_00815E98, node);
     if (owner->Flags08 & 2) {
-        DAT_0087DE28 = one;
+        DAT_0087DE28 = 1;
     }
     return node;
 }

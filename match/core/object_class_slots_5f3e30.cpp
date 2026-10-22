@@ -217,12 +217,12 @@ bool ObjectClass::vf_40()
 }
 
 // FUNCTION: GAMEMD 0x5F42F0
-void ObjectClass::vf_56(int a1)
+void ObjectClass::vf_56(void* source)
 {
 }
 
 // FUNCTION: GAMEMD 0x5F4300
-void ObjectClass::vf_57(int a1)
+void ObjectClass::vf_57(void* house)
 {
 }
 

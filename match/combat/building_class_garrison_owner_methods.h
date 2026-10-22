@@ -159,7 +159,7 @@ int __fastcall FindSideIndex_00458200(const char* name);
 struct VocClass_00458200
 {
     // FUNCTION: GAMEMD 0x750920 (decl; reloc) — VocClass::PlayGlobal.
-    static void __fastcall PlayGlobal(int index, int panning, float volume,
+    static void __fastcall PlayGlobal(int index, float volume, int panning,
                                       void* controller = 0);
 };
 

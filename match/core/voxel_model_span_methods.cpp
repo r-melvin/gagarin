@@ -319,8 +319,7 @@ void __cdecl FUN_00756f80(VoxelSpanParams *params)
 // FUNCTION: GAMEMD 0x757120
 void __cdecl FUN_00757120(VoxelSpanParams *params)
 {
-	DAT_00b45590[0].X = 0;
-	DAT_00b45590[0].Y = 0;
+	DAT_00b45590[0].Y = DAT_00b45590[0].X = 0;
 	for (unsigned int i = 1; i < params->Size[2]; i++) {
 		DAT_00b45590[i].X = DAT_00b45590[i - 1].X + params->StepZ[0];
 		DAT_00b45590[i].Y = DAT_00b45590[i - 1].Y + params->StepZ[1];

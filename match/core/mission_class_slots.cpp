@@ -435,6 +435,6 @@ bool MissionClass::vf_127()
 }
 
 // FUNCTION: GAMEMD 0x5B3A50 -- ObjectClass slot 69, emitted in this block.
-void ObjectClass::vf_69(int a1, int a2)
+void ObjectClass::vf_69(Point2D* point, RectangleStruct* clip)
 {
 }

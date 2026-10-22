@@ -10,10 +10,8 @@
 //                                                        ECX=name, DL=forceCache)
 //
 // Match (period MSVC6 cl 12.00.ours vs retail, reloc-normalised):
-//   0x5301A0 Bootstrap  98.2%  (residual: 4 instrs — the ScanFile vtable load
-//            uses a stack reload vs retail's ctor-return EAX reuse, and the
-//            `mov al,1` success tail is scheduled after the pops not before;
-//            both are register-scheduling deltas, phrasing/flag-invariant.)
+//   0x5301A0 Bootstrap  100%  (the probe is a temporary: the Is_Available
+//            call goes through the constructor's returned `this`.)
 //   0x5B40B0 Retrieve   89.6% (mnemonic multiset identical; residual is a pure
 //            ESI/EDI naming swap: retail keeps the CRC in EDI and the fresh
 //            node in ESI, cl 8804 the other way round, 15 instructions.)
@@ -60,31 +58,19 @@ struct Mix_0069E430
 // then the fixed set RA2MD / RA2 / CACHEMD / CACHE / LOCALMD / LOCAL, caching
 // the CACHE* archives. Restores the file-search mode on success.
 //
-// PARTIAL (96.5%, 219/227; multiset differs by one MOV against one LEA), up
-// from 89.4%. Two independent levers moved it:
+// Exact. Three levers, all structural:
 //
-//   * The scratch name buffer is `char name[64]`, not `char name[32]`, and the
-//     stack probe is 0x24 bytes (`ScanFile::_body[0x20]`). Retail's frame is
-//     `SUB ESP,0x68`; with the four callee-saved pushes live it addresses the
-//     probe as `[ESP+0x14]` and the buffer as `[ESP+0x38]`, i.e. in-frame +0x04
-//     and +0x28. That makes the probe 0x24 bytes and the buffer +0x28..+0x68,
-//     exactly 0x40 — the declared sizes are recoverable arithmetic, not a
-//     guess. Getting the total right fixed the frame instruction and all six
-//     `ADD ESP,0x68` epilogues at once: 32 bytes scores 89.4%, 48 bytes 93.0%,
-//     64 bytes 96.5% and 68 bytes 93.0%.
+//   * The scratch name buffer is `char name[64]`, and the stack probe is 0x24
+//     bytes (`ScanFile::_body[0x20]`). Retail's frame is `SUB ESP,0x68`; with
+//     the four callee-saved pushes live it addresses the probe as `[ESP+0x14]`
+//     and the buffer as `[ESP+0x38]`, i.e. in-frame +0x04 and +0x28, so the
+//     buffer runs +0x28..+0x68, exactly 0x40.
 //   * The append is spelled as the free `DynamicVectorClass_Mix_AddItem(&v, x)`
-//     rather than `v.AddItem(x)`, which is worth the inlined grow path's
-//     `ADD ECX,EAX; PUSH ECX` against cl's `ADD EAX,ECX; PUSH EAX`.
-//
-// The eight residual instructions are two spots. Retail reuses the ScanFile
-// constructor's returned `this` as the Is_Available receiver
-// (`MOV EDX,[EAX]; MOV ECX,EAX`) where cl re-takes the object's address
-// (`LEA ECX,[ESP+0x18]`); calling `probe.Is_Available(0)` without the FileBase
-// cast drops an instruction and scores 11.9%, and modelling the constructor as
-// a `this`-returning `Init` over a raw buffer adds one and scores 13.6%. And
-// the success epilogue materialises `MOV AL,0x1` before the four pops where cl
-// puts it between `POP EBP` and `POP EBX`; naming the result in a local ahead
-// of the two trailing calls leaves it unchanged.
+//     rather than `v.AddItem(x)` (the inlined grow path's register order).
+//   * The probe is a temporary, `ScanFile(name).Is_Available(0)`, and 0x65CA00
+//     is its destructor: retail calls Is_Available through the constructor's
+//     returned `this` (`MOV EDX,[EAX]; MOV ECX,EAX`) and destroys the
+//     temporary at the end of the full expression.
 // ---------------------------------------------------------------------------
 bool MixFileClass_Bootstrap()
 {
@@ -96,9 +82,7 @@ bool MixFileClass_Bootstrap()
         char name[64];
         sprintf(name, "EXPANDMD%02d.MIX", i);
 
-        ScanFile probe(name);
-        char avail = ((FileBase*)&probe)->Is_Available(0);
-        probe.Close();
+        char avail = ScanFile(name).Is_Available(0);
         if (avail)
         {
             MixFileClass* mix = new MixFileClass(name);

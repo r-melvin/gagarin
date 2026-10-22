@@ -31,6 +31,7 @@ struct CellStruct;
 struct TechnoTypeClass;
 struct CellClass;
 struct RectangleStruct;   // geometry2d.h
+struct Point2D;           // geometry2d.h
 
 // --- shared instance-side leaf components -----------------------------------
 // Self-guarded so a downstream layer in the same chain can reuse them.
@@ -149,8 +150,8 @@ public:
     virtual bool vf_53();                                      // 53  0x5F4D30
     virtual bool vf_54(const CoordStruct& coord, int a2);       // 54  0x5F4EC0
     virtual void vf_55(bool removed);                          // 55  0x5F5280
-    virtual void vf_56(int a1);                                // 56  0x5F42F0: bare RET 4
-    virtual void vf_57(int a1);                                // 57  0x5F4300: bare RET 4
+    virtual void vf_56(void* source);                          // 56  0x5F42F0: bare RET 4; vf_91 passes the attacker
+    virtual void vf_57(void* house);                           // 57  0x5F4300: bare RET 4; vf_91 passes the house
     virtual bool vf_58(const CoordStruct& coord);              // 58  0x5F5940
     virtual void vf_59();                                      // 59  0x5F4160
     virtual void vf_60(CoordStruct* coord);                    // 60  0x5F60A0
@@ -158,12 +159,12 @@ public:
     virtual void vf_62();                                      // 62  0x5F65F0
     virtual void vf_63();                                      // 63  0x5F4310: bare RET
     virtual int vf_64(int a1, int a2);                         // 64  0x5F4320: returns 0
-    virtual bool vf_65(int a1, int a2, int a3);                // 65  0x5F4B10
+    virtual bool vf_65(RectangleStruct* rect, bool force, int a3); // 65  0x5F4B10
     virtual void* vf_66(int a1);                               // 66  0x5F5B90
     virtual void vf_67(int a1, int a2);                        // 67  0x426440: bare RET 8
     virtual void vf_68(int a1, int a2);                        // 68  0x426450: bare RET 8
-    virtual void vf_69(int a1, int a2);                        // 69  0x5B3A50: bare RET 8
-    virtual void vf_70(int a1, int a2);                        // 70  0x5F65D0
+    virtual void vf_69(Point2D* point, RectangleStruct* clip); // 69  0x5B3A50: bare RET 8; vf_65 passes (&point, rect)
+    virtual void vf_70(Point2D* point, RectangleStruct* clip); // 70  0x5F65D0: forwards to vf_69
     virtual void vf_71();                                      // 71  0x5F4330: bare RET
     virtual void vf_72(int a1, int a2);                        // 72  0x5F4340: bare RET 8
     virtual bool vf_73(int mode);                              // 73  0x5F5850

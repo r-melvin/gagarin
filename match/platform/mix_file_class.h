@@ -73,7 +73,7 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_Mix, CapacityIncrement) == 0x14);
 #endif
 
 // ---------------------------------------------------------------------------
-// A stack FileClass-derived scan probe (FUN_0065CA80 ctor / FUN_0065CA00 dtor;
+// A FileClass-derived scan probe (FUN_0065CA80 ctor / FUN_0065CA00 dtor;
 // virtual slot 5 = Is_Available(bool)). Only the shape needed by Bootstrap.
 // ---------------------------------------------------------------------------
 // FileClass virtual interface (only slots 0..5 needed; slot 5 = Is_Available).
@@ -90,8 +90,7 @@ struct FileBase
 struct ScanFile : FileBase
 {
     ScanFile(const char* name) throw();    // 0x65CA80  __thiscall ctor (returns this)
-    void          Close();                 // 0x65CA00  manual dtor (NON-virtual, no
-                                           //   automatic ~ScanFile => no /GX EH frame)
+    ~ScanFile();                           // 0x65CA00  non-virtual dtor
     char _body[0x20];                      // FileClass body — 0x20, so sizeof(ScanFile)
                                            //   is 0x24. Bootstrap's frame pins it: with
                                            //   four callee-saved pushes live, retail's
