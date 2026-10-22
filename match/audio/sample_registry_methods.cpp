@@ -55,7 +55,7 @@
 // finished-bit test at 0x40600A is byte-exact and the sole real delta is the
 // single retail-only `MOV ECX,EAX`; this is the banked 8447-vs-8804
 // "receiver parked in EAX" class. Best measured form kept at 34.0% (17/50).
-void __fastcall FUN_00405FD0(Handle_00405FD0* handle)
+void FUN_00405FD0(Handle_00405FD0* handle)
 {
     Voice_00405FD0* voice;
     Peer_00405FD0* peer;
@@ -98,7 +98,7 @@ void __fastcall FUN_00405FD0(Handle_00405FD0* handle)
 //
 // Leading '$' and '#' are stripped before the lookup. They are prefixes the
 // caller may pass through verbatim, not part of any sample's name.
-int __fastcall FUN_004064A0(Queue_004064A0* self, const char* name)
+int FUN_004064A0(Queue_004064A0* self, const char* name)
 {
     if (self->Count == 0x20) {
         return 0;

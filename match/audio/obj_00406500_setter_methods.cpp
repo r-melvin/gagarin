@@ -8,43 +8,43 @@
 #include "obj_00406500_setter_methods.h"
 
 // FUNCTION: GAMEMD 0x406520
-void __fastcall Obj_00406500::FUN_00406520(int value)
+void Obj_00406500::FUN_00406520(int value)
 {
     this->unknown_138 = value;
 }
 
 // FUNCTION: GAMEMD 0x406530
-void __fastcall Obj_00406500::FUN_00406530(int value)
+void Obj_00406500::FUN_00406530(int value)
 {
     this->unknown_13C = value;
 }
 
 // FUNCTION: GAMEMD 0x406540
-void __fastcall Obj_00406500::FUN_00406540(int value)
+void Obj_00406500::FUN_00406540(int value)
 {
     this->unknown_40 = value;
 }
 
 // FUNCTION: GAMEMD 0x4065C0
-void __fastcall Obj_00406500::FUN_004065C0(int value)
+void Obj_00406500::FUN_004065C0(int value)
 {
     this->unknown_14 = value;
 }
 
 // FUNCTION: GAMEMD 0x4065D0
-void __fastcall Obj_00406500::FUN_004065D0(int value)
+void Obj_00406500::FUN_004065D0(int value)
 {
     this->unknown_48 = value;
 }
 
 // FUNCTION: GAMEMD 0x4065E0
-void __fastcall Obj_00406500::FUN_004065E0(int value)
+void Obj_00406500::FUN_004065E0(int value)
 {
     this->unknown_50 = value;
 }
 
 // FUNCTION: GAMEMD 0x406640
-void __fastcall Obj_00406500::FUN_00406640(int value)
+void Obj_00406500::FUN_00406640(int value)
 {
     this->unknown_4C = value;
 }

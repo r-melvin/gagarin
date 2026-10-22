@@ -19,7 +19,7 @@
 // The descriptor is re-read after the detach call — retail loads `[ESI+0x24]`
 // again at 0x405AF5 — because the call could have replaced it. It is then held
 // across the whole second block, so that one is a local.
-int __fastcall FUN_00405AC0(Owner_00405AC0* self)
+int FUN_00405AC0(Owner_00405AC0* self)
 {
     Track_00405AC0* track = self->Track;
     void* handle = FUN_004047B0(track);

@@ -14,7 +14,7 @@ extern "C" int __cdecl gg_voc_stricmp(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x007514D0  (__fastcall, static)
 // Return the index of the Array entry whose audio-event name matches pName
 // (case-insensitive), or -1 when pName is null / no entry matches.
-int __fastcall VocClass::FindIndex(const char* pName)
+int VocClass::FindIndex(const char* pName)
 {
     if (pName)
     {

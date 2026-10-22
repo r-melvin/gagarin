@@ -66,7 +66,7 @@ static __inline int VoxFindIndex(const char* pName)
     return -1;
 }
 
-void __fastcall VoxClass::Play(const char* pName, int nUnk, int nUnk2)
+void VoxClass::Play(const char* pName, int nUnk, int nUnk2)
 {
     if (pName != 0)
         PlayIndex(VoxFindIndex(pName), nUnk, nUnk2);
@@ -80,7 +80,7 @@ void __fastcall VoxClass::Play(const char* pName, int nUnk, int nUnk2)
 // clear the global current-node pointer if it referenced this node, force the
 // backing audio event into the stopped state (State=2), then release the node.
 // ---------------------------------------------------------------------------
-void __fastcall VoxClass::SilenceIndex(int index)
+void VoxClass::SilenceIndex(int index)
 {
     if (index >= 0 && index < VoxArray.Count)
     {

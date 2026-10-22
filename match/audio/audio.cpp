@@ -35,7 +35,7 @@ extern void* g_AudioEnabled;
 // -1. Name lives at offset 0 of each 0x24-byte entry, so the entry pointer is
 // also the name pointer and `_strcmpi` serves directly as the comparator.
 // ---------------------------------------------------------------------------
-int __fastcall AudioIDXData::FindSampleIndex(const AudioIDXData* pThis, const char* pName)
+int AudioIDXData::FindSampleIndex(const AudioIDXData* pThis, const char* pName)
 {
     AudioIDXEntry* found = (AudioIDXEntry*)bsearch(
         pName, pThis->Samples, (size_t)pThis->SampleCount, sizeof(AudioIDXEntry),
@@ -71,7 +71,7 @@ void AudioIDXData::ClearCurrentSample()
 // stamp; if no explicit type was given it adopts the event's own; and back-links
 // the event to this controller.
 // ---------------------------------------------------------------------------
-void __fastcall AudioController::SetEvent(AudioController* pThis, void* event, VocClass* eventType)
+void AudioController::SetEvent(AudioController* pThis, void* event, VocClass* eventType)
 {
     if (pThis->AudioIndex == &AudioIDXData_Instance)
     {
@@ -133,7 +133,7 @@ VocClass* AudioController::GetEventType()
 // Read the type (VocClass*) directly out of a raw audio-event object. Not truly
 // a controller method; co-located with the controller's event helpers.
 // ---------------------------------------------------------------------------
-VocClass* __fastcall AudioController::GetEventType(void* event)
+VocClass* AudioController::GetEventType(void* event)
 {
     return *(VocClass**)((char*)event + 0x24);
 }

@@ -33,7 +33,7 @@
 // inline helper taking the object as a pointer parameter — the lever that
 // resolved 0x41D300, 0x6CB3A0 and 0x43B680 this pass — does not reach this
 // scheduler decision.
-void* __fastcall VoxClass::PlayAtPos(int index, CoordStruct* coords, int unk)
+void* VoxClass::PlayAtPos(int index, CoordStruct* coords, int unk)
 {
     if (index < 0)
         return 0;

@@ -16,6 +16,6 @@ typedef __int64 (__cdecl* AudioTimeFunc)(void);
 // GLOBAL: GAMEMD 0x0087E848
 extern AudioTimeFunc AudioTimeHook;
 
-__int64 __fastcall Unsorted_AudioGetTime();   // GAMEMD 0x4093B0
+__int64 Unsorted_AudioGetTime();   // GAMEMD 0x4093B0
 
 #endif  // GG_MATCH_AUDIO_AUDIO_TIME_METHODS_H

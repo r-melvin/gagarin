@@ -40,19 +40,19 @@ struct AudioController_00750920
 };
 
 // FUNCTION: GAMEMD 0x406310 (decl; reloc) -- the event a handle is playing.
-AudioEvent_00750920* __fastcall FUN_00406310(AudioHandle_00750920* handle);
+AudioEvent_00750920* FUN_00406310(AudioHandle_00750920* handle);
 // FUNCTION: GAMEMD 0x4052F0 (decl; reloc) -- stop a handle.
-void __fastcall FUN_004052F0(AudioHandle_00750920* handle);
+void FUN_004052F0(AudioHandle_00750920* handle);
 // FUNCTION: GAMEMD 0x405190 (decl; reloc) -- start a new handle for an event.
-AudioHandle_00750920* __fastcall FUN_00405190(AudioEvent_00750920* event);
+AudioHandle_00750920* FUN_00405190(AudioEvent_00750920* event);
 // FUNCTION: GAMEMD 0x4061D0 (decl; reloc) -- AdjustAudioEventVolume.
-void __fastcall FUN_004061D0(AudioHandle_00750920* handle, unsigned int volume);
+void FUN_004061D0(AudioHandle_00750920* handle, unsigned int volume);
 // FUNCTION: GAMEMD 0x406270 (decl; reloc) -- AdjustAudioEventPanning.
-void __fastcall FUN_00406270(AudioHandle_00750920* handle, unsigned int pan);
+void FUN_00406270(AudioHandle_00750920* handle, unsigned int pan);
 // FUNCTION: GAMEMD 0x4060F0 (decl; reloc) -- AudioController::SetEvent.
-void __fastcall FUN_004060F0(AudioController_00750920* controller,
-                             AudioHandle_00750920* handle,
-                             AudioEvent_00750920* event);
+void FUN_004060F0(AudioController_00750920* controller,
+                  AudioHandle_00750920* handle,
+                  AudioEvent_00750920* event);
 
 // GLOBAL: GAMEMD 0x8464AC -- VocClass::VoicesEnabled.
 extern char DAT_008464AC;
@@ -67,7 +67,7 @@ struct VocClass
     // between the volume push and the controller push (0x50C8C0, 0x458200),
     // which is cl's right-to-left order for this declaration. The volume
     // still travels on the stack, so the body compiles the same either way.
-    static AudioHandle_00750920* __fastcall PlayGlobal(
+    static AudioHandle_00750920* PlayGlobal(
         int index, float volume, unsigned int pan,
         AudioController_00750920* controller);
 };

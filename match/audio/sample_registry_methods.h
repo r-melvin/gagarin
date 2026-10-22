@@ -18,7 +18,7 @@ extern int DAT_0087E2A0;
 extern void* DAT_0087E294;
 
 // FUNCTION: GAMEMD 0x4015C0 — resolve a sample name to an index, or ~0.
-unsigned int __fastcall FUN_004015C0(void* table, const char* name);
+unsigned int FUN_004015C0(void* table, const char* name);
 // FUNCTION: GAMEMD 0x4068E0 — printf-style log sink.
 extern "C" void __cdecl FUN_004068E0(const char* format, ...);
 
@@ -59,9 +59,9 @@ struct Handle_00405FD0
 GG_STATIC_ASSERT(offsetof(Handle_00405FD0, Owner) == 0xC);
 
 // FUNCTION: GAMEMD 0x4026A0
-void __fastcall FUN_004026A0(Peer_00405FD0* peer);
+void FUN_004026A0(Peer_00405FD0* peer);
 // FUNCTION: GAMEMD 0x4026B0
-void __fastcall FUN_004026B0(Peer_00405FD0* peer);
+void FUN_004026B0(Peer_00405FD0* peer);
 
 // The queue 0x4064A0 appends to: at most 0x20 sample indices, with the count
 // immediately after the array (`CMP [EDI+0x134],0x20` bounds it).
@@ -77,8 +77,8 @@ GG_STATIC_ASSERT(offsetof(Queue_004064A0, Samples) == 0xB4);
 GG_STATIC_ASSERT(offsetof(Queue_004064A0, Count) == 0x134);
 
 // FUNCTION: GAMEMD 0x405FD0
-void __fastcall FUN_00405FD0(Handle_00405FD0* handle);
+void FUN_00405FD0(Handle_00405FD0* handle);
 // FUNCTION: GAMEMD 0x4064A0
-int __fastcall FUN_004064A0(Queue_004064A0* self, const char* name);
+int FUN_004064A0(Queue_004064A0* self, const char* name);
 
 #endif  // GG_MATCH_AUDIO_SAMPLE_REGISTRY_METHODS_H

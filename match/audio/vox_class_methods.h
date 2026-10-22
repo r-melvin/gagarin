@@ -30,9 +30,9 @@ GG_STATIC_ASSERT(offsetof(VoxNode, Event) == 0x0C);
 
 struct VoxClass
 {
-    static void __fastcall Play(const char* pName, int nUnk, int nUnk2);
-    static void __fastcall SilenceIndex(int index);
-    static void __fastcall PlayIndex(int index, int nUnk, int nUnk2);
+    static void Play(const char* pName, int nUnk, int nUnk2);
+    static void SilenceIndex(int index);
+    static void PlayIndex(int index, int nUnk, int nUnk2);
     VoxNode* GetActiveVoice();
 
     // The entry address is passed to _strcmpi as a string pointer, proving

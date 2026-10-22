@@ -26,7 +26,7 @@
 // load was removed as match steering. (The positional score is 0.0% because
 // the one missing instruction shifts every later one.)
 // ---------------------------------------------------------------------------
-void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan)
+void AdjustAudioEventPanning(void* event, unsigned int pan)
 {
     AudioEventTag* ev = (AudioEventTag*)event;
     int type = ev->Type;

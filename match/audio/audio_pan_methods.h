@@ -37,10 +37,10 @@ GG_STATIC_ASSERT(offsetof(AudioEventTag, Channel) == 0x108);
 
 // The two per-channel pan setters (ECX = &event->Channel, EDX = clamped pan).
 // Declared only — bodies live elsewhere; cl emits a tail-call jump (reloc).
-void __fastcall FUN_00407150(void* channel, unsigned int pan);  // GAMEMD 0x407150
-void __fastcall FUN_00407170(void* channel, unsigned int pan);  // GAMEMD 0x407170
+void FUN_00407150(void* channel, unsigned int pan);  // GAMEMD 0x407150
+void FUN_00407170(void* channel, unsigned int pan);  // GAMEMD 0x407170
 
 // Clamp `pan` to [0, 0x4000] and route it to the type-appropriate pan setter.
-void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan);   // GAMEMD 0x406270
+void AdjustAudioEventPanning(void* event, unsigned int pan);   // GAMEMD 0x406270
 
 #endif  // GG_MATCH_AUDIO_AUDIO_PAN_METHODS_H

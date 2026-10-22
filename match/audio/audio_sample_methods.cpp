@@ -18,7 +18,7 @@
 // "compressed" flag (0x8) is set the format/depth are forced (1, 2). Returns the
 // passed-in buffer.
 // ---------------------------------------------------------------------------
-AudioSampleData* __fastcall AudioIDXData::GetSampleInformation(
+AudioSampleData* AudioIDXData::GetSampleInformation(
     int index, AudioSampleData* pBuffer) const
 {
     const AudioIDXEntry* entry = &this->Samples[index];

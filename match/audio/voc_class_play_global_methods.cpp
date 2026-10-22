@@ -13,7 +13,7 @@
 // different event is stopped so a fresh handle can be started. Volume is a
 // 0..1 float scaled to the 0..0x4000 fixed range. The controller, if any, is
 // re-bound to whatever handle results, and that handle is returned.
-AudioHandle_00750920* __fastcall VocClass::PlayGlobal(
+AudioHandle_00750920* VocClass::PlayGlobal(
     int index, float volume, unsigned int pan,
     AudioController_00750920* controller)
 {

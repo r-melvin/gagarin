@@ -42,7 +42,7 @@ extern "C" unsigned __int64 __stdcall gg_aulldiv(unsigned __int64 a,
                                                  unsigned __int64 b);
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
-void __fastcall FUN_00431B80(void* self);
+void FUN_00431B80(void* self);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass
 extern char VT_007E1668;   // VTABLE: GAMEMD 0x7E1668 — CDFileClass
@@ -92,10 +92,10 @@ GG_STATIC_ASSERT(sizeof(Audio_007207F0) == 0x20);
 // FUNCTION: GAMEMD 0x408610 (decl; reloc) — read the sample header from the
 // open file into the reader, __fastcall: the file in ECX, the reader in EDX
 // and the length out-pointer pushed.
-int __fastcall FUN_00408610(File_007207F0* file, Audio_007207F0* audio, int* length);
+int FUN_00408610(File_007207F0* file, Audio_007207F0* audio, int* length);
 // FUNCTION: GAMEMD 0x408560 (decl; reloc) — the sample's duration in
 // milliseconds as a 64-bit value, __fastcall.
-unsigned __int64 __fastcall FUN_00408560(Audio_007207F0* audio, int length);
+unsigned __int64 FUN_00408560(Audio_007207F0* audio, int length);
 
 // ThemeControl — one registered score.
 struct ThemeControl_007207F0

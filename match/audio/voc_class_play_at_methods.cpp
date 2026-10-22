@@ -20,7 +20,7 @@
 // (handle) and EDI (event) together ahead of the index test and keeps the
 // coordinates in EBX; with the event declared first the coordinates take EDI
 // and the event EBX (63.9%, pure register naming).
-AudioHandle_007509E0* __fastcall VocClass::PlayAt(
+AudioHandle_007509E0* VocClass::PlayAt(
     int index, CoordStruct* coords, AudioController_007509E0* controller)
 {
     if (DAT_008464AC == 0)

@@ -72,7 +72,7 @@ struct AudioIDXData
 
     // static so that `this` lands in ECX and pName in EDX (the retail __fastcall
     // calling convention for this leaf), exactly as the disasm shows.
-    static int __fastcall FindSampleIndex(const AudioIDXData* pThis, const char* pName);  // GAMEMD 0x4015C0
+    static int FindSampleIndex(const AudioIDXData* pThis, const char* pName);  // GAMEMD 0x4015C0
     void ClearCurrentSample();                                                            // GAMEMD 0x401910 __thiscall
 
     AudioIDXEntry* Samples;             // +0x00
@@ -100,10 +100,10 @@ GG_STATIC_ASSERT(offsetof(AudioIDXData, CurrentSampleFile)== 0x110);
 // ---------------------------------------------------------------------------
 struct AudioController
 {
-    static void __fastcall SetEvent(AudioController* pThis, void* event, VocClass* eventType);  // GAMEMD 0x4060F0
+    static void SetEvent(AudioController* pThis, void* event, VocClass* eventType);  // GAMEMD 0x4060F0
     void*      GetEvent();                                          // GAMEMD 0x406130 __thiscall
     VocClass*  GetEventType();                                      // GAMEMD 0x406170 __thiscall
-    static VocClass* __fastcall GetEventType(void* event);         // GAMEMD 0x406310 __fastcall
+    static VocClass* GetEventType(void* event);         // GAMEMD 0x406310 __fastcall
 
     void*          Event;       // +0x00
     unsigned int   Stamp;       // +0x04

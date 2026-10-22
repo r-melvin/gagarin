@@ -34,10 +34,10 @@ extern void* DAT_00AA0468;
 
 // FUNCTION: GAMEMD 0x409320 (decl; reloc) — bytes pending in the ring
 // (`[ECX+0x34] - [ECX+0x38]`).
-int  __fastcall FUN_00409320(void* ring);
+int  FUN_00409320(void* ring);
 // FUNCTION: GAMEMD 0x409030 (decl; reloc) — drain `count` bytes of the ring
 // into the stream.
-int  __fastcall FUN_00409030(void* ring, void* stream, unsigned count, void* unused);
+int  FUN_00409030(void* ring, void* stream, unsigned count, void* unused);
 // LIBRARY: GAMEMD 0x7CB19C (decl; reloc) — CRT fflush.
 int  __cdecl   FUN_007CB19C(void* stream);
 

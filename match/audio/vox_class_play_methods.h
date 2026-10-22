@@ -65,7 +65,7 @@ GG_STATIC_ASSERT(offsetof(VoxPlayNode, At_30) == 0x30);
 
 // FUNCTION: GAMEMD 0x4072D0 (decl; reloc) -- re-arm a link: Prev = Next =
 // self, Owner = 0. Single-argument __fastcall is byte-identical to __thiscall.
-void __fastcall FUN_004072D0(ListNode* node);
+void FUN_004072D0(ListNode* node);
 
 // GLOBAL: GAMEMD 0xB1D3A4 -- pool of free VoxPlayNode blocks (pointer global).
 extern Obj_00407520* DAT_00B1D3A4;
@@ -80,7 +80,7 @@ struct VocClass
 {
     // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- start the sample for `index`
     // at `coords` through `handle`; returns the play token.
-    static void* __fastcall PlayAt(int index, CoordStruct* coords, Obj_00405BE0* handle);
+    static void* PlayAt(int index, CoordStruct* coords, Obj_00405BE0* handle);
 };
 
 // The audio-event object whose state word is forced to 2 on teardown (the same
@@ -167,7 +167,7 @@ struct VoxClass
     }
 
     // FUNCTION: GAMEMD 0x750E20
-    static void* __fastcall PlayAtPos(int index, CoordStruct* coords, int unk);
+    static void* PlayAtPos(int index, CoordStruct* coords, int unk);
     // FUNCTION: GAMEMD 0x7531A0
     static void DeleteAll();
 

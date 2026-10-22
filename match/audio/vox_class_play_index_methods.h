@@ -75,15 +75,15 @@ extern int DAT_00B1D4D0;
 extern int DAT_00B1D4D4;
 
 // FUNCTION: GAMEMD 0x407450 (decl; reloc) — release a pending node.
-void __fastcall FUN_00407450(VoxNode_00752480* node);
+void FUN_00407450(VoxNode_00752480* node);
 // FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
 // FUNCTION: GAMEMD 0x752370 (decl; reloc) — reset the speech queue.
 void __cdecl FUN_00752370();
 // FUNCTION: GAMEMD 0x752680 (decl; reloc) — the entry's live node, if any.
-VoxNode_00752480* __fastcall FUN_00752680(VoxEntry_00752480* entry);
+VoxNode_00752480* FUN_00752680(VoxEntry_00752480* entry);
 // FUNCTION: GAMEMD 0x752590 (decl; reloc) — start an entry.
-void __fastcall FUN_00752590(VoxEntry_00752480* entry, int priority, int volume);
+void FUN_00752590(VoxEntry_00752480* entry, int priority, int volume);
 // FUNCTION: GAMEMD 0x752760 (decl; reloc) — pump the speech queue.
 void __cdecl FUN_00752760();
 
@@ -95,7 +95,7 @@ struct VoxClass
 {
     // FUNCTION: GAMEMD 0x752480 — VoxClass::PlayIndex (static __fastcall: the
     // index arrives in ECX, the priority in EDX and the volume on the stack).
-    static void __fastcall PlayIndex(int index, int priority, int volume);
+    static void PlayIndex(int index, int priority, int volume);
 };
 
 #endif  // GG_MATCH_AUDIO_VOX_CLASS_PLAY_INDEX_METHODS_H

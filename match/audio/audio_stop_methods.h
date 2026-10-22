@@ -32,7 +32,7 @@ extern char DAT_0087E294[];
 struct Voice_00405D40;
 
 // FUNCTION: GAMEMD 0x401F90 (decl; reloc) — release one voice sub-object.
-void __fastcall FUN_00401F90(void* sub);
+void FUN_00401F90(void* sub);
 
 struct Peer_00405D40
 {

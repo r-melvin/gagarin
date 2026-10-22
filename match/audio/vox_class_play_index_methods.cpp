@@ -12,7 +12,7 @@
 // default. A top-priority line first empties the pending queue and stops
 // whatever is playing, and the entry is started unless its live node
 // already runs at the same priority.
-void __fastcall VoxClass::PlayIndex(int index, int priority, int volume)
+void VoxClass::PlayIndex(int index, int priority, int volume)
 {
     if (DAT_00B1D4CC != 0 && index >= 0 && index < DAT_00B1D4B0
         && DAT_00B1D3D8 == 0) {

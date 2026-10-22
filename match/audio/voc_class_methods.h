@@ -45,7 +45,7 @@ extern DynamicVectorClassLayout VocClass_Array;
 class VocClass
 {
 public:
-    static int __fastcall FindIndex(const char* pName);  // GAMEMD 0x007514D0
+    static int FindIndex(const char* pName);  // GAMEMD 0x007514D0
 };
 
 #endif  // GG_MATCH_AUDIO_VOC_CLASS_METHODS_H

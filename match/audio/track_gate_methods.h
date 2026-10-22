@@ -47,11 +47,11 @@ struct Owner_00405AC0
 GG_STATIC_ASSERT(offsetof(Owner_00405AC0, Track) == 0xC0);
 
 // FUNCTION: GAMEMD 0x4047B0
-void* __fastcall FUN_004047B0(Track_00405AC0* track);
+void* FUN_004047B0(Track_00405AC0* track);
 // FUNCTION: GAMEMD 0x402790
-void __fastcall FUN_00402790(Owner_00405AC0* owner, void* handle);
+void FUN_00402790(Owner_00405AC0* owner, void* handle);
 
 // FUNCTION: GAMEMD 0x405AC0
-int __fastcall FUN_00405AC0(Owner_00405AC0* self);
+int FUN_00405AC0(Owner_00405AC0* self);
 
 #endif  // GG_MATCH_AUDIO_TRACK_GATE_METHODS_H
