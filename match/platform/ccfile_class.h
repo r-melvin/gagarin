@@ -78,6 +78,10 @@ public:
     virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x65CB30 (matched)
     virtual void CDCheck(unsigned long code, bool b, const char* f); // GAMEMD 0x65CA70 (matched)
 
+    // Slots 14/15 retain RawFile implementations in CDFile table 0x7E1668.
+    virtual unsigned long GetFileTime(); // GAMEMD 0x65D1F0
+    virtual bool SetFileTime(unsigned long fileTime); // GAMEMD 0x65D240
+
     FileAccessMode FileAccess;   // +0x08
     int   FilePointer;           // +0x0C
     int   FileSize;              // +0x10
@@ -102,6 +106,12 @@ public:
     virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x431F50 (matched)
     virtual int  GetFileSize();                                   // GAMEMD 0x4325A0 (matched)
     virtual void Close();                                         // GAMEMD 0x4325C0 (decl; base call)
+
+    // Overrides confirmed from CDFile table 0x7E1668, slots 6/9/10/12.
+    virtual bool HasHandle(); // GAMEMD 0x431F30
+    virtual int ReadBytes(void* pBuffer, int nBytes); // GAMEMD 0x4322A0
+    virtual int Seek(int offset, int mode); // GAMEMD 0x4324B0
+    virtual int WriteBytes(void* pBuffer, int nBytes); // GAMEMD 0x432050
 
     bool unknown_bool_24;   // +0x24
     bool unknown_bool_25;   // +0x25
@@ -135,6 +145,9 @@ public:
     virtual ~CDFileClass() {}
     virtual const char* SetFileName(const char* pFileName); // GAMEMD 0x47AE10 (decl; base call)
     virtual bool Open(FileAccessMode access);               // GAMEMD 0x47AAB0 (matched)
+
+    // Slot 8 of table 0x7E1668, distinct from BufferIOFileClass::OpenEx.
+    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x47AF10
 
     bool IsDisabled;        // +0x54
 private:
@@ -171,10 +184,62 @@ public:
     virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x401980 (matched)
     virtual void Close();                                         // GAMEMD 0x473CE0 (matched)
 
+    // Overrides confirmed slot-for-slot from table 0x7E16B0.
+    virtual bool HasHandle(); // GAMEMD 0x473CD0, slot 6
+    virtual int ReadBytes(void* pBuffer, int nBytes); // GAMEMD 0x473B10, slot 9
+    virtual int Seek(int offset, int mode); // GAMEMD 0x473BA0, slot 10
+    virtual int GetFileSize(); // GAMEMD 0x473C00, slot 11
+    virtual int WriteBytes(void* pBuffer, int nBytes); // GAMEMD 0x473AE0, slot 12
+    virtual unsigned long GetFileTime(); // GAMEMD 0x473E50, slot 14
+    virtual bool SetFileTime(unsigned long fileTime); // GAMEMD 0x473F00, slot 15
+    virtual void CDCheck(unsigned long code, bool b, const char* f); // GAMEMD 0x473AB0, slot 16
+
     MemoryBuffer Buffer;      // +0x58
     unsigned int Position;    // +0x64
     unsigned int Availability;// +0x68
 };
+
+// Explicit 17-slot prefix read from tables 0x7E16B0 and 0x7E1668.
+// Concrete inherited targets are checked by verify_vtable; overrides replace
+// these slots and add no new slots.
+struct FileClassVtableSlots
+{
+    void* unknown_00;
+    void* unknown_04;
+    void* unknown_08;
+    void* unknown_0C;
+    void* unknown_10;
+    void* unknown_14;
+    void* unknown_18;
+    void* unknown_1C;
+    void* unknown_20;
+    void* unknown_24;
+    void* unknown_28;
+    void* unknown_2C;
+    void* unknown_30;
+    void* unknown_34;
+    void* unknown_38;
+    void* unknown_3C;
+    void* unknown_40;
+};
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_14) == 0x14);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_2C) == 0x2C);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_34) == 0x34);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_38) == 0x38);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(FileClassVtableSlots, unknown_40) == 0x40);
+GG_STATIC_ASSERT(sizeof(FileClassVtableSlots) == 0x44);
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(RawFileClass, FileName)            == 0x18);

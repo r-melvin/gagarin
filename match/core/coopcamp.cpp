@@ -29,7 +29,7 @@
 #include "../_layout/ini_class.h"
 
 // VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
-extern "C" void* GG_VTABLE_LISTOFINISECTION;
+// The canonical declaration is shared with its typed table definition.
 
 // Bodies owned elsewhere (0x40E320, 0x52ACE0); repeated inline here so /Ob2
 // expands them into the derived constructor as retail does.
@@ -234,12 +234,10 @@ unsigned char Obj_0049D0F0::FUN_0049D0F0(Arg1_0049D0F0* a1, Arg2_0049D0F0* a2)
     return 0;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x49E8E0
-template<> List<INIClass::INISection*>::List()
-{
-    Vtable = &GG_VTABLE_LISTOFINISECTION;
-}
+// TEMPLATE: GAMEMD 0x49E8E0
+// ??0?$List@PAUINISection@INIClass@@@@QAE@XZ
+// VC6 cannot instantiate a constructor alone; only its visible body is emitted.
+template class List<INIClass::INISection*>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0049E950

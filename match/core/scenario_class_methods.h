@@ -13,17 +13,14 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#include "../_layout/cell.h"   // CellStruct — a packed map cell coordinate { short X; short Y }
-#include "../_layout/object_class.h"   // CoordStruct
+#include "../_layout/cell.h"
+#include "../_layout/object_class.h"
 #include "frame_counter.h"
+#include "../_layout/elapsed_timer.h"
+#include "../_rt/gg_istream.h"
 
 // ---- iterator singleton + cell, used only by UpdateCellLighting ----
-// CellClass — only the lighting-recalc entry (0x484680) is referenced.
-class CellClass
-{
-public:
-    void RecalcAttributes_484680();   // GAMEMD 0x484680  __thiscall
-};
+#include "../_layout/cell_class.h"
 
 // The global map/radar singleton at 0x87F7E8. UpdateCellLighting drives its
 // spiral cell iterator (begin @0x578350, next @0x578290).
@@ -41,6 +38,14 @@ struct MapInstanceClass
     void FUN_0057B790(CellStruct* cell);
     // FUNCTION: GAMEMD 0x56BEC0 (decl; reloc)
     bool FUN_0056BEC0(CellStruct cell, int value);
+    // FUNCTION: GAMEMD 0x5657a0 (decl; reloc)
+    // ?FUN_005657A0@MapInstanceClass@@QAEPAVCellClass@@PBUCellStruct@@@Z
+    CellClass* FUN_005657A0(const CellStruct* cell);
+    void FUN_005BDA80(int a, int b); // GAMEMD 0x5BDA80, __thiscall
+    void FUN_004F4480(); // GAMEMD 0x4F4480, __thiscall
+    void FUN_00655B20(); // GAMEMD 0x655B20, __thiscall
+    void FUN_004F42F0(int value); // GAMEMD 0x4F42F0, __thiscall
+    void FUN_006938C0(); // GAMEMD 0x6938C0, __thiscall
     void       IteratorBegin_578350();   // GAMEMD 0x578350  __thiscall
     CellClass* IteratorNext_578290();    // GAMEMD 0x578290  __thiscall
 };
@@ -50,6 +55,32 @@ extern MapInstanceClass MapInstance;
 
 // GLOBAL: GAMEMD 0x00B05458  the "undefined" waypoint sentinel cell.
 extern CellStruct WaypointUndefined;
+
+// STRING: GAMEMD 0x0083D868
+// "Toggle display mode to %d x %d\n"
+extern const char STR_0083D868[];
+// STRING: GAMEMD 0x0083D924
+// "Toggle display mode back to shell res\n"
+extern const char STR_0083D924[];
+// STRING: GAMEMD 0x0083D824
+// "VariableNames"
+extern const char STR_0083D824[];
+// STRING: GAMEMD 0x00817F70
+// ","
+extern const char STR_00817F70[];
+// STRING: GAMEMD 0x00817F6C
+// "%d"
+extern const char STR_00817F6C[];
+// STRING: GAMEMD 0x0083DE1C
+// "%s,%d"
+extern const char STR_0083DE1C[];
+// STRING: GAMEMD 0x0082DB0C
+// "Waypoints"
+extern const char STR_0082DB0C[];
+// STRING: GAMEMD 0x00889F64
+// ""
+extern const char STR_00889F64[];
+
 
 // The scenario's mission timer at +0x11E8 (a frame timer; the middle dword is
 // not initialised by the constructor taking a duration).
@@ -96,41 +127,100 @@ struct ScenarioTimer
     }
 };
 
+
+struct ScenarioRecord
+{
+    char unknown_00[40];
+    unsigned char unknown_28;
+};
+GG_STATIC_ASSERT(sizeof(ScenarioRecord) == 41);
+GG_STATIC_ASSERT(offsetof(ScenarioRecord, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(ScenarioRecord, unknown_28) == 40);
+
+class INIClass;
+
 struct ScenarioClass
 {
+    void FUN_00689310(Gg_IStream* stream);
+    bool FUN_0053A100(); // GAMEMD 0x53A100
     // ---- matched methods (ascending by retail address) ----
     static void UpdateCellLighting();        // GAMEMD 0x4AE4C0  (free/static)
     CellStruct GetWaypointCoords(int idx);   // GAMEMD 0x68BCC0  __thiscall
-    CoordStruct FUN_0068BD00(int idx);       // GAMEMD 0x68BD00  __thiscall
-    bool FUN_0053A100();                     // GAMEMD 0x53A100  __thiscall
     bool IsDefinedWaypoint(int idx);         // GAMEMD 0x68BD80  __thiscall
-    void FUN_00689670(int, int);             // GAMEMD 0x689670  __thiscall (decl)
-    void FUN_00689910(int, int);             // GAMEMD 0x689910  __thiscall (decl)
+
+    unsigned char FUN_00689670(unsigned int index, unsigned char value);
+    unsigned char FUN_00689910(unsigned int index, unsigned char value);
+    int FUN_00689820(const char* text);
+    bool FUN_00689790(const char* text, unsigned char* value);
+    int FUN_00689AC0(const char* text);
+    bool FUN_00689A30(const char* text, unsigned char* value);
+    unsigned char FUN_006896C0(const char* text, unsigned char value);
+    unsigned char FUN_00689960(const char* text, unsigned char value);
+    void FUN_0068BDC0(INIClass* ini);
+    void FUN_0068BE90(INIClass* ini);
+    CoordStruct FUN_0068BD00(int index);
+    bool FUN_00689880(INIClass* ini);
+    bool FUN_00689B20(INIClass* ini);
+    bool FUN_00689C60(INIClass* ini);
+    void FUN_00686700(const char* text);
+    bool FUN_00689760(int index, unsigned char* value);
+    bool FUN_00689A00(int index, unsigned char* value);
+    int FUN_00689CF0();
+    int FUN_00689D10();
+    CellClass* FUN_0068BCE0(int index);
+    CellClass* FUN_0068BF70(int index);
+    void FUN_0068BD60();
+    const char* FUN_0068BF90();
+    void FUN_0068BF30(int index);
+    void FUN_0068BF50(int index, CellStruct value);
 
     // ---- members touched by the matched methods ----
-    char       _base[0x60C];          // 0x000  scenario header — P2
-    int        Difficulty;            // 0x60C  read by TAction.cpp 0x6E2AF0
-    char       _base2[0x632 - 0x610]; // 0x610
+    char unknown_0000[0x60C];
+    int Difficulty;
+    char unknown_0610[4];
+    ScenarioElapsedTimer unknown_0614;
+    ScenarioElapsedTimer unknown_0620;
+    int unknown_062C;
+    unsigned char unknown_0630;
+    char unknown_0631;
     CellStruct Waypoints[702];        // 0x632  valid range [0..701]
-    char       _after_waypoints[0x11E8 - 0x632 - 702 * 4];
-    ScenarioTimer Timer_11E8;         // 0x11E8 read by TAction.cpp 0x6E13A0
-    char       _pad_11F4[0x34A5 - 0x11F4];
-    bool       unknown_34A5;          // 0x34A5
-    bool       unknown_34A6;          // 0x34A6
-    bool       unknown_34A7;          // 0x34A7
-    bool       unknown_34A8;          // 0x34A8
-    char       _pad_34A9[0x3528 - 0x34A9];
-    int        unknown_3528;          // 0x3528
-    char       _pad_352C[4];
-    int        unknown_3530;          // 0x3530
-    int        unknown_3534;          // 0x3534
-    int        unknown_3538;          // 0x3538
-    int        unknown_353C;          // 0x353C
+    char unknown_112A[0x11E8 - 0x112A];
+    ScenarioTimer Timer_11E8;
+    char unknown_11F4[0x1254 - 0x11F4];
+    int unknown_1254;
+    int unknown_1258;
+    char unknown_125C[260];
+    char unknown_1360[0x1C88 - 0x1360];
+    ScenarioRecord unknown_1C88[50];
+    ScenarioRecord unknown_248A[100];
+    char unknown_348E[0x34A5 - 0x348E];
+    bool unknown_34A5, unknown_34A6, unknown_34A7, unknown_34A8;
+    char unknown_34A9;
+    bool unknown_34AA;
+    char unknown_34AB[0x34CC - 0x34AB];
+    int unknown_34CC;
+    char unknown_34D0[8];
+    int* unknown_34D8;
+    char unknown_34DC[8];
+    int unknown_34E4;
+    char unknown_34E8[12];
+    int* unknown_34F4;
+    char unknown_34F8[8];
+    int unknown_3500;
+    char unknown_3504[12];
+    int* unknown_3510;
+    char unknown_3514[8];
+    int unknown_351C;
+    char unknown_3520[8];
+    int unknown_3528;
+    char unknown_352C[4];
+    int unknown_3530, unknown_3534, unknown_3538, unknown_353C;
+    char unknown_3540[0x35A2 - 0x3540];
+    unsigned char unknown_35A2;
 };
 
 #if GG_TARGET_ABI_32
 GG_STATIC_ASSERT(offsetof(ScenarioClass, Difficulty) == 0x60C);
-GG_STATIC_ASSERT(offsetof(ScenarioClass, Waypoints) == 0x632);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, Timer_11E8) == 0x11E8);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A5) == 0x34A5);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A8) == 0x34A8);
@@ -139,6 +229,28 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3530) == 0x3530);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3534) == 0x3534);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3538) == 0x3538);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_353C) == 0x353C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A6) == 0x34A6);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A7) == 0x34A7);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0614) == 0x614);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0620) == 0x620);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0630) == 0x630);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_062C) == 0x62C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, Waypoints) == 0x632);
+
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1254) == 0x1254);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1258) == 0x1258);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_125C) == 0x125C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C88) == 0x1C88);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_248A) == 0x248A);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AA) == 0x34AA);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A2) == 0x35A2);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D8) == 0x34D8);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34E4) == 0x34E4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34F4) == 0x34F4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3500) == 0x3500);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3510) == 0x3510);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_351C) == 0x351C);
 #endif
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_METHODS_H

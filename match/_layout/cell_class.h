@@ -41,6 +41,8 @@ class TagClass;
 class CellClass : public AbstractClass
 {
 public:
+    void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
+
     // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
     // bodies are not reconstructed here. They make CellClass a complete type.
     // FUNCTION: GAMEMD 0x485200 (decl; slot 3)

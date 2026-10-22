@@ -17,7 +17,6 @@ template<> void* List<INIClass::INISection*>::DeletingDestructor(unsigned int fl
     return this;
 }
 
-typedef void* (List<INIClass::INISection*>::*INISectionListDeletingSlot)(unsigned int);
 // VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
 INISectionListDeletingSlot GG_VTABLE_LISTOFINISECTION =
     &List<INIClass::INISection*>::DeletingDestructor;

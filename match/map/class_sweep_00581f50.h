@@ -43,6 +43,7 @@ GG_STATIC_ASSERT(offsetof(ClassSweepPrefix_00581F50, callbacks) +
 GG_STATIC_ASSERT(sizeof(ClassSweepPrefix_00581F50) == 0xD4);
 
 struct GlobalSweep_00581F50 {
+    void FUN_0042AC00(void* value); // GAMEMD 0x42AC00, __thiscall
     // FUNCTION: GAMEMD 0x42C1C0 (decl; reloc), no stack arguments.
     void FUN_0042C1C0();
 };

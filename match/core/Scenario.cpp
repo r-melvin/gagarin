@@ -23,16 +23,195 @@
 // translation units already declared as callees but nothing defined.
 
 #include "scenario_class_methods.h"
+#include "vector_class_operations.h"
+#include "../_layout/ini_class.h"
+#include "../_layout/cd_callback.h"
+#include "../_layout/global_0081c1d0.h"
+#include "../platform/ccini_class_methods.h"
+#include "../platform/ccfile_class.h"
+#include "../map/class_sweep_00581f50.h"
+#include "frame_counter.h"
+#include "../audio/theme_class_methods.h"
+#include "../ui/tooltip_manager_shared.h"
+#include "../combat/evade_class_do_methods.h"
+#include "spin_wait_methods.h"
+#include "../network/transport/conn_types.h"
+#include "../audio/vox_class_methods.h"
+#include "campaign_class.h"
+#include "../_layout/house_type_class.h"
 
 #include "scenario_class_start_points_methods.h"
 
 #include "trivial_tu201_methods.h"
 
+#include "../ui/input_controls/mouse_ww_mouse_class.h"
+#include "../platform/input_manager_class_methods.h"
+
 #include <windows.h>
 #include <stddef.h>
+#include <string.h>
 #include "../_rt/gg_static_assert.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
+extern "C" int __cdecl strcmp(const char*, const char*);
+
+// LIBRARY: GAMEMD 0x7c91d0
+// _strncpy
+extern "C" char* __cdecl strncpy(char*, const char*, unsigned int);
+// FUNCTION: GAMEMD 0x6e57f0 (decl; reloc)
+// @FUN_006E57F0@4
+extern "C" void __fastcall FUN_006E57F0(unsigned int);
+// FUNCTION: GAMEMD 0x6e5820 (decl; reloc)
+// @FUN_006E5820@4
+extern "C" void __fastcall FUN_006E5820(unsigned int);
+
+// GLOBAL: GAMEMD 0x00886FB8
+extern int DAT_00886FB8;
+// GLOBAL: GAMEMD 0x00886FBC
+extern int DAT_00886FBC;
+// GLOBAL: GAMEMD 0x00A8EB84
+extern int DAT_00A8EB84;
+// GLOBAL: GAMEMD 0x00A8EB88
+extern int DAT_00A8EB88;
+// GLOBAL: GAMEMD 0x00A8EB8C
+extern int DAT_00A8EB8C;
+// GLOBAL: GAMEMD 0x00A8EB90
+extern int DAT_00A8EB90;
+// FUNCTION: GAMEMD 0x4068e0 (decl; reloc)
+// _FUN_004068E0
+extern "C" int __cdecl FUN_004068E0(const char*, ...);
+// FUNCTION: GAMEMD 0x560bf0 (decl; reloc)
+// @FUN_00560BF0@8
+extern "C" void __fastcall FUN_00560BF0(int, int);
+
+// GLOBAL: GAMEMD 0x00A8B230
+extern ScenarioClass* ScenarioInstance;
+// GLOBAL: GAMEMD 0x00A8ED9C
+extern unsigned char DAT_00A8ED9C;
+// GLOBAL: GAMEMD 0x00B07784
+extern int DAT_00B07784;
+
+// GLOBAL: GAMEMD 0x00B054CC
+extern unsigned char DAT_00B054CC;
+// FUNCTION: GAMEMD 0x406f40 (decl; reloc)
+// _FUN_00406F40
+extern "C" void __cdecl FUN_00406F40();
+
+// GLOBAL: GAMEMD 0x00A8B238
+extern int DAT_00A8B238;
+// FUNCTION: GAMEMD 0x406f00 (decl; reloc)
+// _FUN_00406F00
+extern "C" void __cdecl FUN_00406F00();
+
+extern "C" int __cdecl atoi(const char*);
+extern "C" char* __cdecl strtok(char*, const char*);
+extern "C" char* __cdecl strcpy(char*, const char*);
+// GLOBAL: GAMEMD 0x007F0E48
+extern const char* DAT_007F0E48;
+
+// GLOBAL: GAMEMD 0x007F0E60
+extern const char* DAT_007F0E60;
+// GLOBAL: GAMEMD 0x00B054BC
+extern int DAT_00B054BC;
+
+// FUNCTION: GAMEMD 0x763610 (decl; reloc)
+// @FUN_00763610@4
+extern "C" const char* __fastcall FUN_00763610(int index);
+
+void __fastcall FUN_00465450(); // GAMEMD 0x00465450
+void __fastcall FUN_007236D0(); // GAMEMD 0x007236D0
+void __fastcall FUN_0053AB50(); // GAMEMD 0x0053AB50
+void __fastcall FUN_004261D0(); // GAMEMD 0x004261D0
+void __fastcall FUN_00734210(); // GAMEMD 0x00734210
+void __fastcall FUN_00660C50(); // GAMEMD 0x00660C50
+void __fastcall FUN_0074D450(int value); // GAMEMD 0x0074D450
+void __fastcall FUN_0071DCA0(int value); // GAMEMD 0x0071DCA0
+void __fastcall FUN_006B5490(int value); // GAMEMD 0x006B5490
+void __fastcall FUN_00734270(ObjectClass* value); // GAMEMD 0x734270
+// GLOBAL: GAMEMD 0x00B0EA80
+extern CDTimerClass DAT_00B0EA80;
+// GLOBAL: GAMEMD 0x0087F8D4
+extern char DAT_0087F8D4;
+// GLOBAL: GAMEMD 0x00B73550
+extern HWND DAT_00B73550;
+
+// Inline countdown expansion at 0x68517E; no separate entry is claimed.
+inline int FUN_00685120_TimeLeft(const CDTimerClass& timer)
+{
+    int left = timer.TimeLeft;
+    if (timer.StartTime != -1) {
+        int elapsed = CurrentFrame - timer.StartTime;
+        left = elapsed < left ? left - elapsed : 0;
+    }
+    return left;
+}
+
+void __fastcall FUN_0072DDB0(); // GAMEMD 0x0072DDB0
+void __fastcall FUN_005BF450(); // GAMEMD 0x005BF450
+void __fastcall FUN_00406E80(); // GAMEMD 0x00406E80
+void __fastcall FUN_00750FA0(); // GAMEMD 0x00750FA0
+void __fastcall FUN_00752CA0(); // GAMEMD 0x00752CA0
+void __fastcall FUN_0048D080(); // GAMEMD 0x0048D080
+void __fastcall FUN_007529A0(bool enabled); // GAMEMD 0x7529A0
+bool __fastcall FUN_00683AB0(const char* filename, bool flag, int value); // GAMEMD 0x683AB0
+// GLOBAL: GAMEMD 0x00A8ED5C
+extern bool DAT_00A8ED5C;
+// GLOBAL: GAMEMD 0x00A8E378
+extern bool DAT_00A8E378;
+// GLOBAL: GAMEMD 0x00887368
+extern ToolTipManager* DAT_00887368;
+// GLOBAL: GAMEMD 0x00A83D10
+extern ThemeClass DAT_00A83D10;
+// GLOBAL: GAMEMD 0x008A38E0
+extern EvadeClass DAT_008A38E0;
+// GLOBAL: GAMEMD 0x00A8EB80
+extern bool DAT_00A8EB80;
+
+void __fastcall FUN_00407070(void* value); // GAMEMD 0x407070
+void __fastcall FUN_00407150(Queue_004070B0* value, int flags); // GAMEMD 0x407150
+bool __fastcall FUN_007529E0(); // GAMEMD 0x7529E0
+// GLOBAL: GAMEMD 0x0087E758
+extern Queue_004070B0* DAT_0087E758;
+// GLOBAL: GAMEMD 0x0088730C
+extern MouseSurfaceView* DAT_0088730C;
+// GLOBAL: GAMEMD 0x00A8E9A0
+extern unsigned char DAT_00A8E9A0;
+// GLOBAL: GAMEMD 0x0083DB34
+extern const char STR_0083DB34[];
+
+// GLOBAL: GAMEMD 0x00A83C9C
+extern HouseTypeClass** DAT_00A83C9C;
+
+// FUNCTION: GAMEMD 0x4E6150 (decl; reloc)
+// @FUN_004E6150@16
+extern "C" void __fastcall FUN_004E6150(int*, char*, char*, int);
+// FUNCTION: GAMEMD 0x5CAF70 (decl; reloc)
+// ?FUN_005CAF70@@YIIPAI@Z
+unsigned int __fastcall FUN_005CAF70(unsigned int* high);
+// GLOBAL: GAMEMD 0x007F0E50
+extern const double DAT_007F0E50;
+// GLOBAL: GAMEMD 0x007E51F8
+extern const double DAT_007E51F8;
+// GLOBAL: GAMEMD 0x007EF918
+extern const double DAT_007EF918;
+// GLOBAL: GAMEMD 0x007F0E58
+extern const double DAT_007F0E58;
+
+// STRING: GAMEMD 0x0083DDD4
+// "Scenario Save: ElapsedTimer = %ld\n"
+extern const char STR_0083DDD4[];
+
+// GLOBAL: GAMEMD 0x00A8ED84
+extern int DAT_00A8ED84;
+// FUNCTION: GAMEMD 0x686B20 (decl; reloc)
+// ?FUN_00686B20@@YI_NPAVCCINIClass@@_N@Z
+bool __fastcall FUN_00686B20(CCINIClass* ini, bool flag);
+// STRING: GAMEMD 0x0083DB6C
+// "Read_Scenario_INI - Filename is %s\n"
+extern const char STR_0083DB6C[];
+// STRING: GAMEMD 0x0083DB50
+// "Scenario ini load failed!\n"
+extern const char STR_0083DB50[];
 
 // A two-short cell value copied as one dword.
 struct Cell_0050DEF0
@@ -356,6 +535,7 @@ struct Type_006A46D0
 extern "C" Type_006A46D0** DAT_008B4124;
 
 #include "../renderer/color_scheme_find_methods.h"
+#include "../renderer/convert_class_create_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -409,6 +589,426 @@ void __cdecl FUN_006832B0()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x684060
+void __fastcall FUN_00684060(int duration)
+{
+    if (duration) {
+        ScenarioInstance->unknown_0620 = ScenarioElapsedTimer(duration * 60);
+        if (ScenarioInstance->unknown_0630) return;
+        ScenarioInstance->unknown_0630 = 1;
+    }
+    if (!ScenarioInstance->unknown_062C) {
+        FUN_00406F00();
+        if (DAT_00A8B238 == 0 || DAT_00A8B238 == 5) {
+            ScenarioInstance->unknown_0614.Pause();
+        }
+        DAT_00B054CC = ScenarioInstance->unknown_35A2;
+        if (!DAT_00B054CC) {
+            MapInstance.FUN_006938C0();
+            if (!WWMouseClassInstance->GetHideCount()) WWMouseClassInstance->vf_3();
+            ScenarioInstance->unknown_35A2 = 1;
+            DAT_00A8ED9C = 1;
+            DAT_0087F770->DoSomething();
+            DAT_00B07784 = 0;
+        }
+    }
+    ++ScenarioInstance->unknown_062C;
+}
+
+// FUNCTION: GAMEMD 0x684180
+void __cdecl FUN_00684180()
+{
+    if (ScenarioInstance->unknown_062C) {
+        --ScenarioInstance->unknown_062C;
+        if (ScenarioInstance->unknown_062C == 0) {
+            if (!DAT_00B054CC) {
+                if (ScenarioInstance->unknown_35A2 == 1) {
+                    while (WWMouseClassInstance->GetHideCount()) {
+                        WWMouseClassInstance->vf_4();
+                    }
+                }
+                ScenarioInstance->unknown_35A2 = 0;
+                DAT_00A8ED9C = 0;
+                DAT_0087F770->DoSomething();
+                DAT_00B07784 = 0;
+            }
+            ScenarioInstance->unknown_0614.Resume();
+            FUN_00406F40();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x684240
+void __cdecl FUN_00684240()
+{
+    MapInstance.FUN_006938C0();
+    if (!WWMouseClassInstance->GetHideCount()) WWMouseClassInstance->vf_3();
+    ScenarioInstance->unknown_35A2 = 1;
+    DAT_00A8ED9C = 1;
+    DAT_0087F770->DoSomething();
+    DAT_00B07784 = 0;
+}
+
+// FUNCTION: GAMEMD 0x684290
+void __cdecl FUN_00684290()
+{
+    if (ScenarioInstance->unknown_35A2 == 1 && WWMouseClassInstance->GetHideCount()) {
+        do { WWMouseClassInstance->vf_4(); }
+        while (WWMouseClassInstance->GetHideCount());
+    }
+    ScenarioInstance->unknown_35A2 = 0;
+    DAT_00A8ED9C = 0;
+    DAT_0087F770->DoSomething();
+    DAT_00B07784 = 0;
+}
+
+// FUNCTION: GAMEMD 0x6842f0
+void __fastcall FUN_006842F0(bool enabled)
+{
+    if (enabled) {
+        if (DAT_00886FB8 != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
+            FUN_004068E0(STR_0083D868, DAT_00A8EB84, DAT_00A8EB88);
+            FUN_00560BF0(DAT_00A8EB84, DAT_00A8EB88);
+        }
+    } else if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+        FUN_004068E0(STR_0083D924);
+        FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+}
+
+// FUNCTION: GAMEMD 0x685120
+void __fastcall FUN_00685120()
+{
+    FUN_00465450();
+    FUN_007236D0();
+    FUN_0074D450(ScenarioInstance->unknown_1258);
+    FUN_0071DCA0(ScenarioInstance->unknown_1258);
+    FUN_006B5490(ScenarioInstance->unknown_1258);
+    MapInstance.FUN_00655B20();
+    if (DAT_00B0EA80.StartTime != -1) {
+        DAT_00B0EA80.TimeLeft = FUN_00685120_TimeLeft(DAT_00B0EA80);
+    }
+    DAT_00B0EA80.StartTime = CurrentFrame;
+    DAT_0087E8B8.FUN_0042AC00(&DAT_0087F8D4);
+    FUN_0053AB50();
+    FUN_004261D0();
+    MapInstance.FUN_004F42F0(2);
+    InvalidateRect(DAT_00B73550, 0, false);
+    FUN_00734210();
+    FUN_00734270(0);
+    FUN_00660C50();
+}
+
+// FUNCTION: GAMEMD 0x6863E0
+void __fastcall FUN_006863E0()
+{
+    FUN_0072DDB0();
+    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+        FUN_004068E0(STR_0083D924);
+        FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+    DAT_00A8ED5C = false;
+    DAT_00A8E378 = false;
+    if (DAT_00887368) DAT_00887368->SetState(false);
+    ScenarioInstance->unknown_0614.Pause();
+    FUN_005BF450();
+    ScenarioElapsedTimer timer;
+    timer = ScenarioElapsedTimer(60);
+    DAT_00A83D10.Stop(true);
+    FUN_00406E80();
+    FUN_00750FA0();
+    FUN_007529A0(true);
+    FUN_00752CA0();
+    MapInstance.FUN_005BDA80(0, 0);
+    DAT_0087F770->DoSomething();
+    FUN_00683AB0(ScenarioInstance->unknown_125C, false, ScenarioInstance->unknown_34CC);
+    DAT_008A38E0.Do();
+    while (timer.GetTimeLeft() > 0) FUN_0048D080();
+    DAT_0087F770->DoSomething();
+    if (DAT_00887368) DAT_00887368->SetState(DAT_00A8EB80);
+    MapInstance.FUN_004F4480();
+}
+
+// FUNCTION: GAMEMD 0x686570
+void __fastcall FUN_00686570()
+{
+    DAT_00A8ED5C = false;
+    DAT_00A8E378 = false;
+    ScenarioInstance->unknown_0614.Pause();
+    ScenarioInstance->unknown_1254 = 1;
+    FUN_005BF450();
+    DAT_0087F770->DoSomething();
+    WWMouseClassInstance->DrawCachedOnto(DAT_0088730C, false);
+    WWMouseClassInstance->vf_5();
+    MapInstance.FUN_005BDA80(0, 0);
+    DAT_00A83D10.Stop(true);
+    FUN_00407070(DAT_0087E758);
+    VoxClass::Play(STR_0083DB34, 2, -1);
+    FUN_004070B0(DAT_0087E758);
+    int deadline = ConnTimer.GetValue() + 300;
+    while (FUN_007529E0()) {
+        if (deadline <= ConnTimer.GetValue()) break;
+        FUN_0048D080();
+    }
+    FUN_007529A0(true);
+    FUN_00752CA0();
+    FUN_00406E80();
+    FUN_00750FA0();
+    FUN_00407150(DAT_0087E758, 0x4000);
+    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+        FUN_004068E0(STR_0083D924);
+        FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+    DAT_00A8E9A0 = 0;
+}
+
+// FUNCTION: GAMEMD 0x686700
+void ScenarioClass::FUN_00686700(const char* text)
+{
+    if (text) {
+        strncpy(unknown_125C, text, 260);
+        unknown_125C[259] = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x686730
+bool __fastcall FUN_00686730(const char* filename)
+{
+    if (!CD().FUN_004790E0(g_FileSearchMode)) return false;
+    DAT_00A8ED84 = 0;
+    CCINIClass ini;
+    CCFileClass file(filename);
+    FUN_004068E0(STR_0083DB6C, filename);
+    if (!ini.ReadCCFile(&file, true, false)) {
+        FUN_004068E0(STR_0083DB50);
+        return false;
+    }
+    strcpy(ScenarioInstance->unknown_125C, filename);
+    return FUN_00686B20(&ini, false);
+}
+
+// FUNCTION: GAMEMD 0x689310
+void ScenarioClass::FUN_00689310(Gg_IStream* const stream)
+{
+    int count;
+    FUN_004068E0(STR_0083DDD4, unknown_0614);
+    bool paused = unknown_0614.unknown_00 == -1;
+    if (!paused) unknown_0614.Pause();
+    stream->Write(this, 0x3740, 0);
+    count = unknown_34E4;
+    stream->Write(&count, 4, 0);
+    for (int i = 0; i < count; ++i) stream->Write(&unknown_34D8[i], 4, 0);
+    count = unknown_3500;
+    stream->Write(&count, 4, 0);
+    for (i = 0; i < count; ++i) stream->Write(&unknown_34F4[i], 4, 0);
+    count = unknown_351C;
+    stream->Write(&count, 4, 0);
+    for (i = 0; i < count; ++i) stream->Write(&unknown_3510[i], 4, 0);
+    if (!paused) unknown_0614.Resume();
+}
+
+// FUNCTION: GAMEMD 0x689670
+unsigned char ScenarioClass::FUN_00689670(unsigned int index, unsigned char value)
+{
+    if (index < 50) {
+        unsigned char previous = unknown_1C88[index].unknown_28;
+        if (previous != value) {
+            unknown_1C88[index].unknown_28 = value;
+            unknown_34AA = true;
+            FUN_006E57F0(index);
+        }
+        return previous;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6896C0
+unsigned char ScenarioClass::FUN_006896C0(const char* text, unsigned char value)
+{
+    unsigned int index = -1;
+    for (int i = 0; i < 50; ++i) {
+        if (strcmp(text, unknown_1C88[i].unknown_00) == 0) { index = i; break; }
+    }
+    if (index != -1) {
+        if (index < 50) {
+            unsigned char previous = unknown_1C88[index].unknown_28;
+            if (previous != value) {
+                unknown_1C88[index].unknown_28 = value;
+                unknown_34AA = true;
+                FUN_006E57F0(index);
+            }
+            return previous;
+        }
+        return 0;
+    }
+    return 1;
+}
+
+// FUNCTION: GAMEMD 0x689760
+bool ScenarioClass::FUN_00689760(int index, unsigned char* value)
+{
+    if (index < 0 || index >= 50) return false;
+    *value = unknown_1C88[index].unknown_28;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x689790
+bool ScenarioClass::FUN_00689790(const char* text, unsigned char* value)
+{
+    int index = -1;
+    for (int i = 0; i < 50; ++i) {
+        if (strcmp(text, unknown_1C88[i].unknown_00) == 0) { index = i; break; }
+    }
+    if (index != -1 && index >= 0 && index < 50) {
+        *value = unknown_1C88[index].unknown_28;
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x689820
+int ScenarioClass::FUN_00689820(const char* text)
+{
+    for (int i = 0; i < 50; ++i) {
+        if (strcmp(text, unknown_1C88[i].unknown_00) == 0) return i;
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x689880
+bool ScenarioClass::FUN_00689880(INIClass* ini)
+{
+    int count = ini->GetKeyCount(STR_0083D824) < 50 ? ini->GetKeyCount(STR_0083D824) : 50;
+    for (int i = 0; i < count; ++i) {
+        const char* key = ini->GetKeyName(STR_0083D824, i);
+        int index = atoi(key);
+        ini->FUN_00528A10(STR_0083D824, key, 0, unknown_1C88[index].unknown_00, 40);
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x689910
+unsigned char ScenarioClass::FUN_00689910(unsigned int index, unsigned char value)
+{
+    if (index < 100) {
+        unsigned char previous = unknown_248A[index].unknown_28;
+        if (previous != value) {
+            unknown_248A[index].unknown_28 = value;
+            unknown_34AA = true;
+            FUN_006E5820(index);
+        }
+        return previous;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x689960
+unsigned char ScenarioClass::FUN_00689960(const char* text, unsigned char value)
+{
+    unsigned int index = -1;
+    for (int i = 0; i < 100; ++i) {
+        if (strcmp(text, unknown_248A[i].unknown_00) == 0) { index = i; break; }
+    }
+    if (index != -1) {
+        if (index < 100) {
+            unsigned char previous = unknown_248A[index].unknown_28;
+            if (previous != value) {
+                unknown_248A[index].unknown_28 = value;
+                unknown_34AA = true;
+                FUN_006E5820(index);
+            }
+            return previous;
+        }
+        return 0;
+    }
+    return 1;
+}
+
+// FUNCTION: GAMEMD 0x689A00
+bool ScenarioClass::FUN_00689A00(int index, unsigned char* value)
+{
+    if (index < 0 || index >= 100) return false;
+    *value = unknown_248A[index].unknown_28;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x689A30
+bool ScenarioClass::FUN_00689A30(const char* text, unsigned char* value)
+{
+    int index = -1;
+    for (int i = 0; i < 100; ++i) {
+        if (strcmp(text, unknown_248A[i].unknown_00) == 0) { index = i; break; }
+    }
+    if (index != -1 && index >= 0 && index < 100) {
+        *value = unknown_248A[index].unknown_28;
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x689AC0
+int ScenarioClass::FUN_00689AC0(const char* text)
+{
+    for (int i = 0; i < 100; ++i) {
+        if (strcmp(text, unknown_248A[i].unknown_00) == 0) return i;
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x689B20
+bool ScenarioClass::FUN_00689B20(INIClass* ini)
+{
+    for (int i = 0; i < 100; ++i) unknown_248A[i].unknown_00[0] = 0;
+    int count = ini->GetKeyCount(STR_0083D824) < 100 ? ini->GetKeyCount(STR_0083D824) : 100;
+    for (int entry = 0; entry < count; ++entry) {
+        const char* key = ini->GetKeyName(STR_0083D824, entry);
+        int index = atoi(key);
+        char buffer[128];
+        ini->FUN_00528A10(STR_0083D824, key, 0, buffer, 128);
+        char* token = strtok(buffer, STR_00817F70);
+        strcpy(unknown_248A[index].unknown_00, token);
+        token = strtok(0, STR_00817F70);
+        if (token) unknown_248A[index].unknown_28 = atoi(token) != 0;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x689C60
+bool ScenarioClass::FUN_00689C60(INIClass* ini)
+{
+    ini->Clear(DAT_007F0E48, 0);
+    for (int i = 0; i < 100; ++i) {
+        if (unknown_248A[i].unknown_00[0]) {
+            char key[12];
+            char value[128];
+            wsprintfA(key, STR_00817F6C, i);
+            wsprintfA(value, STR_0083DE1C, unknown_248A[i].unknown_00,
+                       unknown_248A[i].unknown_28 != 0);
+            ini->WriteString(DAT_007F0E48, key, value);
+        }
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x689CF0
+int ScenarioClass::FUN_00689CF0()
+{
+    int count = 0;
+    for (int i = 0; i < 100; ++i) {
+        if (unknown_248A[i].unknown_00[0]) ++count;
+    }
+    return count;
+}
+
+// FUNCTION: GAMEMD 0x689D10
+int ScenarioClass::FUN_00689D10()
+{
+    for (int i = 0; i < 100; ++i) {
+        if (!unknown_248A[i].unknown_00[0]) return i;
+    }
+    return -1;
+}
+
 // FUNCTION: GAMEMD 0x689D30
 //
 // Read the scenario header's start position, map size and starting-point
@@ -465,6 +1065,23 @@ bool Scenario_00689D30::ReadStartPoints(CCINI_00689D30* ini)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+
+// FUNCTION: GAMEMD 0x68B8A0
+int __fastcall FUN_0068B8A0(int value)
+{
+    int frequency = 0;
+    int code;
+    char flag;
+    FUN_004E6150(&code, &flag, 0, 0);
+    if (code > 5) value = int(value * DAT_007F0E50);
+    unsigned int high;
+    unsigned int low = FUN_005CAF70(&high);
+    if (low || high) {
+        frequency = int((double(high) * DAT_007E51F8 + double(low)) * DAT_007EF918);
+    }
+    return int(value * DAT_007F0E58 / frequency);
+}
+
 // FUNCTION: GAMEMD 0x0068BCB0
 int FUN_0068BCB0(Obj_0068BCB0* self)
 {
@@ -482,6 +1099,27 @@ CellStruct ScenarioClass::GetWaypointCoords(int idx)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x68BCE0
+CellClass* ScenarioClass::FUN_0068BCE0(int index)
+{
+    return MapInstance.FUN_005657A0(&Waypoints[index]);
+}
+
+// FUNCTION: GAMEMD 0x68BD00
+CoordStruct ScenarioClass::FUN_0068BD00(int index)
+{
+    CellClass* cell = MapInstance.FUN_005657A0(&Waypoints[index]);
+    CoordStruct result = cell->vf_18();
+    if (cell->Flags & 0x500) result.Z += DAT_00B054BC;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x68BD60
+void ScenarioClass::FUN_0068BD60()
+{
+    for (int i = 0; i < 702; ++i) Waypoints[i] = WaypointUndefined;
+}
+
 // FUNCTION: GAMEMD 0x68BD80  (__thiscall)
 // True iff waypoint `idx` is in range [0..701] and its stored cell differs from
 // the sentinel "undefined" cell. The first mismatching coordinate short-circuits
@@ -498,6 +1136,90 @@ bool ScenarioClass::IsDefinedWaypoint(int idx)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+
+
+// FUNCTION: GAMEMD 0x68BDC0
+void ScenarioClass::FUN_0068BDC0(INIClass* ini)
+{
+    for (int i = 0; i < 702; ++i) {
+        char key[20];
+        wsprintfA(key, STR_00817F6C, i);
+        int value = ini->FUN_005276D0(STR_0082DB0C, key, 0);
+        if (!value) Waypoints[i] = WaypointUndefined;
+        else {
+            CellStruct cell;
+            cell.X = value % 1000;
+            cell.Y = value / 1000;
+            Waypoints[i] = cell;
+        }
+        if (i < 702 && i >= 0 &&
+            (Waypoints[i].X != WaypointUndefined.X || Waypoints[i].Y != WaypointUndefined.Y)) {
+            MapInstance.FUN_005657A0(&Waypoints[i])->Flags |= 4;
+        }
+    }
+
+}
+
+// FUNCTION: GAMEMD 0x68BE90
+void ScenarioClass::FUN_0068BE90(INIClass* ini)
+{
+    ini->Clear(DAT_007F0E60, 0);
+    for (int i = 0; i < 702; ++i) {
+        if (Waypoints[i].X != WaypointUndefined.X || Waypoints[i].Y != WaypointUndefined.Y) {
+            char key[32];
+            wsprintfA(key, STR_00817F6C, i);
+            ini->WriteInteger(DAT_007F0E60, key, Waypoints[i].Y * 1000 + Waypoints[i].X, 0);
+        }
+    }
+
+}
+
+// FUNCTION: GAMEMD 0x68BF30
+void ScenarioClass::FUN_0068BF30(int index)
+{
+    Waypoints[index] = WaypointUndefined;
+}
+
+// FUNCTION: GAMEMD 0x68BF50
+void ScenarioClass::FUN_0068BF50(int index, CellStruct value)
+{
+    Waypoints[index] = value;
+}
+
+// FUNCTION: GAMEMD 0x68BF70
+CellClass* ScenarioClass::FUN_0068BF70(int index)
+{
+    return MapInstance.FUN_005657A0(&Waypoints[index]);
+}
+
+// FUNCTION: GAMEMD 0x68BF90
+const char* ScenarioClass::FUN_0068BF90()
+{
+    int i = 0;
+    for (CellStruct* cell = Waypoints; i < 702; ++i, ++cell) {
+        if (!(i < 702 && i >= 0 &&
+            (cell->X != WaypointUndefined.X || cell->Y != WaypointUndefined.Y))) {
+            return FUN_00763610(i);
+        }
+    }
+    return STR_00889F64;
+}
+
+// FUNCTION: GAMEMD 0x68BFE0
+int __fastcall FUN_0068BFE0()
+{
+    int result = 0;
+    if (!DAT_00A8B238) {
+        int index = ScenarioInstance->unknown_34CC;
+        if (index != -1) result = CampaignArray.Items[index]->idxCD;
+    } else {
+        int index = Players_00A8DA78[0]->unknown_4B;
+        if (index == -3) index = 0;
+        result = DAT_00A83C9C[index]->SideIndex;
+    }
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x0068C030
 // Entry `index` of the sixteen at +0x1180, or -1 out of range.
 int Obj_0068C030::FUN_0068C030(int index) const
@@ -509,6 +1231,156 @@ int Obj_0068C030::FUN_0068C030(int index) const
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x68c2b0
+// VectorClass<Cell>::operator=
+template<> VectorClass<Cell>& VectorClass<Cell>::operator=(const VectorClass<Cell>& other)
+{
+    if (this != &other) {
+        Clear();
+        Capacity = other.Capacity;
+        if (Capacity) {
+            Items = new Cell[Capacity];
+            if (Items) {
+                IsAllocated = true;
+                for (int i = 0; i < Capacity; ++i) Items[i] = other.Items[i];
+            }
+        } else {
+            Items = 0;
+            IsAllocated = false;
+        }
+    }
+    return *this;
+}
+
+// LIBRARY: GAMEMD 0x7D5408
+// ?FUN_007D5408@@YAPADPBD@Z
+char* __cdecl FUN_007D5408(const char* name);
+// GLOBAL: GAMEMD 0x0083E1AC
+// Byte table passed to 0x68C3B0; the observed prefix contains 0x01 bytes.
+extern const unsigned char DAT_0083E1AC[];
+// GLOBAL: GAMEMD 0x00887308
+extern void* DAT_00887308;
+// FUNCTION: GAMEMD 0x68C3B0 (decl; reloc)
+// ?FUN_0068C3B0@@YIPAXPBXPAUPaletteClass@@1PAX2HHHHPBE@Z
+void* __fastcall FUN_0068C3B0(const void* hsv, PaletteClass* pal1, PaletteClass* pal2,
+                            void* palette, void* surface, int shade,
+                            int a, int b, int c, const unsigned char* table);
+
+struct ScenarioHSVRecord
+{
+    unsigned char unknown_00, unknown_01, unknown_02;
+    ColorStruct_0072ADE0 FUN_00517440(); // GAMEMD 0x517440, aggregate return
+};
+GG_STATIC_ASSERT(offsetof(ScenarioHSVRecord, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(ScenarioHSVRecord, unknown_01) == 1);
+GG_STATIC_ASSERT(offsetof(ScenarioHSVRecord, unknown_02) == 2);
+GG_STATIC_ASSERT(sizeof(ScenarioHSVRecord) == 3);
+
+// LIBRARY: GAMEMD 0x4CACB0
+// _FUN_004CACB0
+extern "C" double __cdecl FUN_004CACB0(double);
+// LIBRARY: GAMEMD 0x4CAD00
+// _FUN_004CAD00
+extern "C" double __cdecl FUN_004CAD00(double);
+// GLOBAL: GAMEMD 0x007F0E98
+extern const double DAT_007F0E98;
+// GLOBAL: GAMEMD 0x007F0E90
+extern const double DAT_007F0E90;
+// GLOBAL: GAMEMD 0x007F0E88
+extern const double DAT_007F0E88;
+// GLOBAL: GAMEMD 0x007F0E80
+extern const double DAT_007F0E80;
+
+// Allocation size and nine stack arguments observed at 0x68C4AD/0x68C4E2.
+struct ScenarioConvert_00555DA0
+{
+    char unknown_000[0x1B4];
+    ScenarioConvert_00555DA0* FUN_00555DA0(void* palette, PaletteClass* second,
+        void* surface, int a, int b, int c, int zero,
+        const unsigned char* table, int shade); // GAMEMD 0x555DA0
+};
+GG_STATIC_ASSERT(sizeof(ScenarioConvert_00555DA0) == 0x1B4);
+
+// FUNCTION: GAMEMD 0x68C3B0
+void* __fastcall FUN_0068C3B0(const void* hsv, PaletteClass* pal1, PaletteClass* pal2,
+    void* palette, void* surface, int shade, int a, int b, int c,
+    const unsigned char* table)
+{
+    int hue = static_cast<const unsigned char*>(hsv)[0];
+    int saturationByte = static_cast<const unsigned char*>(hsv)[1];
+    int valueByte = static_cast<const unsigned char*>(hsv)[2];
+    // Receiver is the complete 768-byte palette region; assignment copies it.
+    static_cast<PaletteClass*>(palette)->FUN_006260D0(pal1);
+    double saturation = saturationByte;
+    double value = valueByte;
+    for (int i = 0; i < 16; ++i) {
+        double angle = i * DAT_007F0E98 + DAT_007F0E90;
+        double other = i * DAT_007F0E88 + DAT_007F0E80;
+        if (!i) angle = 0.19634954084936207;
+        ScenarioHSVRecord color;
+        color.unknown_01 = (unsigned char)(int)(FUN_004CACB0(other) * saturation);
+        color.unknown_02 = (unsigned char)(int)(FUN_004CAD00(angle) * value);
+        color.unknown_00 = hue;
+        ColorStruct_0072ADE0 rgb = color.FUN_00517440();
+        memcpy(static_cast<unsigned char*>(palette) + ((i + 16) % 256) * 3, &rgb, 3);
+    }
+    ScenarioConvert_00555DA0* result = static_cast<ScenarioConvert_00555DA0*>(FUN_007C8E17(sizeof(ScenarioConvert_00555DA0)));
+    if (result) return result->FUN_00555DA0(palette, pal2, surface, a, b, c, 0, table, shade);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x68C500
+ConvertClass* __fastcall FUN_0068C500(const ScenarioHSVRecord* hsv,
+    const PaletteClass* source, ColorStruct_0072ADE0* second,
+    void* surface, PaletteClass* destination)
+{
+    double saturation = hsv->unknown_01;
+    int hue = hsv->unknown_00;
+    double value = hsv->unknown_02;
+    PaletteClass palette = *source;
+    for (int i = 0; i < 16; ++i) {
+        double angle = i * DAT_007F0E98 + DAT_007F0E90;
+        double other = i * DAT_007F0E88 + DAT_007F0E80;
+        if (!i) angle = 0.19634954084936207;
+        ScenarioHSVRecord color;
+        color.unknown_01 = (unsigned char)(int)(FUN_004CACB0(other) * saturation);
+        color.unknown_02 = (unsigned char)(int)(FUN_004CAD00(angle) * value);
+        color.unknown_00 = hue;
+        ColorStruct_0072ADE0 rgb = color.FUN_00517440();
+        memcpy(&palette.unknown_000[((i + 16) % 256) * 3], &rgb, 3);
+    }
+    if (destination) destination->FUN_006260D0(&palette);
+    ConvertClass* result = (ConvertClass*)FUN_007C8E17(sizeof(ConvertClass));
+    if (result) return result->FUN_0048E740((ColorStruct_0072ADE0*)palette.unknown_000, second, surface, 1, 0);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x68C710
+ColorScheme::ColorScheme(const char* name, HSVClass* hsv, PaletteClass* pal1,
+                         PaletteClass* pal2, int shade, bool flag) throw()
+{
+    Name = FUN_007D5408(name);
+    memcpy(unknown_308, hsv, 3);
+    unknown_30C = 0;
+    unknown_310 = shade;
+    unknown_314[0] = 16;
+    unknown_314[1] = 15;
+    unknown_314[2] = 25;
+    unknown_314[3] = 24;
+    unknown_314[4] = 22;
+    unknown_314[5] = 16;
+    unknown_314[6] = 19;
+    unknown_314[7] = 16;
+    unknown_314[8] = 16;
+    unknown_314[9] = 21;
+    unknown_30C = FUN_0068C3B0(unknown_308, pal1, pal2, unknown_004,
+                               DAT_00887308, shade, 1000, 1000, 1000, DAT_0083E1AC);
+    if (flag) {
+        ColorSchemeArray.AddItem(this);
+        unknown_000 = ColorSchemeArray.Count;
+    }
+}
+
 // FUNCTION: GAMEMD 0x68C9C0  ColorScheme::FindByName (__fastcall, static)
 // Return the index of the scheme matching this name and shade, creating it
 // first if it does not exist. The create path does not return the new object —
@@ -529,8 +1401,8 @@ int ColorScheme::FindByName(const char* name, HSVClass* hsv,
     {
         for (int i = 0; i < ColorSchemeArray.Count; i++)
         {
-            if (_stricmp(name, ((ColorScheme**)ColorSchemeArray.Items)[i]->Name) == 0
-             && ((ColorScheme**)ColorSchemeArray.Items)[i]->unknown_310 == shade)
+            if (_stricmp(name, ColorSchemeArray.Items[i]->Name) == 0
+             && ColorSchemeArray.Items[i]->unknown_310 == shade)
             {
                 return i;
             }

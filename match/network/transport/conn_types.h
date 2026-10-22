@@ -345,13 +345,16 @@ struct NetPlayerClass
 {
     unsigned short  Name[0x14];         // +0x00 name-input view; capacity modeled
     IPXAddressClass Address;            // +0x28
-    char            _pad34[0x6B - 0x34];
+    char            unknown_34[0x4B - 0x34];
+    int             unknown_4B;
+    char            unknown_4F[0x6B - 0x4F];
     int             unknown_6B;         // +0x6B (unaligned; siege team 1/2, stamped by 0x5CA680)
     int             Id;                 // +0x6F (unaligned; indexes the player tables)
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Name) == 0x00);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Address) == 0x28);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_4B) == 0x4B);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_6B) == 0x6B);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Id) == 0x6F);
 
