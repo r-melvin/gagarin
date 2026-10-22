@@ -167,7 +167,7 @@ GG_STATIC_ASSERT(sizeof(Matrix3D_004CF610) == 0x30);
 
 // FUNCTION: GAMEMD 0x7559B0 (decl; reloc) — copies VoxelRampMatrices[index]
 // (0xB45188, 0x30-byte stride) out through the hidden pointer.
-Matrix3D_004CF610 __fastcall FUN_007559B0_M(int index);
+Matrix3D_004CF610 FUN_007559B0_M(int index);
 
 // FlyLocomotionClass seen through its locomotor interface at object +0x04.
 // Packed to four, because the interface pointer sits four into the object, so

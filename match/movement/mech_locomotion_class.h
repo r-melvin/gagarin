@@ -433,7 +433,7 @@ inline MechCellLayoutView* MechCellAt(const MechCoord& c) {
 inline void MechUnmarkAt(MechFootLayoutView* f, const MechCoord& c) { f->vf_0F4(&c); }
 
 // FUNCTION: GAMEMD 0x6D2120 (decl; reloc), address-scoped integer helper.
-int __fastcall LocoHeightScale(int value);
+int LocoHeightScale(int value);
 // GLOBAL: GAMEMD 0xABEE10
 extern LocoCoord DAT_00ABEE10;
 // GLOBAL: GAMEMD 0xABEE50

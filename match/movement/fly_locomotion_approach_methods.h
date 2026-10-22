@@ -123,7 +123,7 @@ struct Holder_004CE680
 GG_STATIC_ASSERT(sizeof(Holder_004CE680) == 4);
 
 // FUNCTION: GAMEMD 0x4D0430 (decl; reloc) — release whatever the holder holds.
-void __fastcall FUN_004D0430(Holder_004CE680* self);
+void FUN_004D0430(Holder_004CE680* self);
 
 // The locomotor's client object. Declaration order matters - see gg_vslot.h.
 struct FootVtbl_004CE680;

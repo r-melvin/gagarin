@@ -55,7 +55,7 @@ extern "C" int DAT_008A07D0;
 // FUNCTION: GAMEMD 0x755A40 (decl; reloc) - slope transition matrix: hidden
 // result pointer in ECX, the previous slope in EDX, then the new slope and the
 // blend fraction on the stack.
-LocoMatrix3D __fastcall FUN_00755A40(int from, int to, double fraction);
+LocoMatrix3D FUN_00755A40(int from, int to, double fraction);
 
 // VTABLE: GAMEMD 0x7E7F7C (primary), 0x7E7EB0 (ILocomotion), 0x7E7E8C (IPiggyback)
 class DriveLocomotionClass : public LocomotionClass, public IPiggyback

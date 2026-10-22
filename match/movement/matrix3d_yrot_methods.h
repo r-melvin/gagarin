@@ -46,7 +46,7 @@ GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x00);
 // Retail callee at 0x5AFB80 — Matrix3D x Vector3D affine apply. NOT matched
 // here; declared so cl emits a (reloc-normalised) call. __fastcall: ret in
 // ECX, mat in EDX, vec on the stack; returns the ret pointer.
-Vector3D* __fastcall MatrixApply(Vector3D* ret, const Matrix3D* mat, const Vector3D* vec);
+Vector3D* MatrixApply(Vector3D* ret, const Matrix3D* mat, const Vector3D* vec);
 
 // Inlined into GetYRotation: builds the transformed point in place.
 inline Vector3D Matrix3D::operator*(const Vector3D& point) const

@@ -173,9 +173,9 @@ extern int GG_BridgeRise;
 extern int GG_LevelHeight;
 
 // FUNCTION: GAMEMD 0x005B20F0
-int __fastcall FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
-                              CoordStruct const* target, Dir16 const* turnRate,
-                              char holdCourse, char isMissile, char isFast,
-                              char freezePitch);
+int FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
+                   CoordStruct const* target, Dir16 const* turnRate,
+                   char holdCourse, char isMissile, char isFast,
+                   char freezePitch);
 
 #endif  // GG_MATCH_MOVEMENT_FLIGHT_PATH_STEP_METHODS_H

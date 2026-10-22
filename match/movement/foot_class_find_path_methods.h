@@ -29,7 +29,7 @@ GG_STATIC_ASSERT(sizeof(Cell_004CBBA0) == 4);
 // FUNCTION: GAMEMD 0x429780 (decl; reloc) — walk `count` path directions from
 // `from` and return the cell reached. __fastcall: hidden return in ECX, `from`
 // in EDX, the rest on the stack.
-Cell_004CBBA0 __fastcall FUN_00429780(Cell_004CBBA0* from, int count, int* dirs);
+Cell_004CBBA0 FUN_00429780(Cell_004CBBA0* from, int count, int* dirs);
 
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct PathVtbl;

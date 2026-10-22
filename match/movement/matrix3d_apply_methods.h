@@ -30,7 +30,7 @@ struct Matrix3DRows
 };
 GG_STATIC_ASSERT(sizeof(Matrix3DRows) == 0x30);
 
-Vector3D* __fastcall Matrix3D_MatrixApply(Vector3D* out, Matrix3DRows* matrix,
-                                          Vector3D* vector);   // GAMEMD 0x5AFB80
+Vector3D* Matrix3D_MatrixApply(Vector3D* out, Matrix3DRows* matrix,
+                               Vector3D* vector);   // GAMEMD 0x5AFB80
 
 #endif  // GG_MATCH_MOVEMENT_MATRIX3D_APPLY_METHODS_H

@@ -194,7 +194,7 @@ extern TeleportListedView** DAT_00A8ED44;
 extern int DAT_00A8ED50;
 
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- __fastcall (a sound, where, one int).
-void __fastcall FUN_007509E0(int sound, const LocoCoord& where, int a);
+void FUN_007509E0(int sound, const LocoCoord& where, int a);
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- the square root of a double.
 double __cdecl FUN_004CAC40(double value);
 

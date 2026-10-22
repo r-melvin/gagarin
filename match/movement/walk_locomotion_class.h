@@ -428,7 +428,7 @@ inline WalkCellView* WalkCellAt(const WalkCoord& c)
 }
 
 // FUNCTION: GAMEMD 0x6D2120 (decl; reloc), address-scoped integer helper.
-int __fastcall LocoHeightScale(int value);
+int LocoHeightScale(int value);
 
 // VTABLE: GAMEMD 0x7F6AC4
 // VTABLE: GAMEMD 0x7F69F8

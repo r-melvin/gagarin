@@ -152,8 +152,8 @@ extern Registry_00887888 Registry_00887888_Instance;
 // VocClass::PlayAt — static, __fastcall: ECX = sound index, EDX = coordinate,
 // the third argument (0 here) pushed.
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc)
-int __fastcall VocClass_PlayAt_004CF950(int index, Coord_004CF950* coords,
-                                        int controller);
+int VocClass_PlayAt_004CF950(int index, Coord_004CF950* coords,
+                             int controller);
 
 // FlyLocomotionClass through its own `this`.
 struct FlyLocoTakeOff

@@ -63,10 +63,10 @@
 // outstanding toolchain follow-up), and re-measure. If the FILD round trip is the backend difference
 // it looks like, that alone realigns the stream and the remaining work is the
 // two copy blocks.
-int __fastcall FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
-                              CoordStruct const* target, Dir16 const* turnRate,
-                              char holdCourse, char isMissile, char isFast,
-                              char freezePitch)
+int FlightPathStep(CoordStruct* coord, VelocityClass* velocity,
+                   CoordStruct const* target, Dir16 const* turnRate,
+                   char holdCourse, char isMissile, char isFast,
+                   char freezePitch)
 {
     if (target->X == GG_UnsetCoord.X && target->Y == GG_UnsetCoord.Y &&
         target->Z == GG_UnsetCoord.Z) {

@@ -18,14 +18,14 @@ static inline NeighborCell_0057CBE0* LookupCell_00580B20(NeighborCoord_0057CBE0*
 }
 
 // FUNCTION: GAMEMD 0x580B20
-int __fastcall FUN_00580B20(NeighborCoord_0057CBE0* cell)
+int FUN_00580B20(NeighborCoord_0057CBE0* cell)
 {
     int type = LookupCell_00580B20(cell)->At_44;
     return type >= 0x4A && type <= 0x65;
 }
 
 // FUNCTION: GAMEMD 0x580B70
-int __fastcall FUN_00580B70(NeighborCoord_0057CBE0* cell)
+int FUN_00580B70(NeighborCoord_0057CBE0* cell)
 {
     int type = LookupCell_00580B20(cell)->At_44;
     return type >= 0xCD && type <= 0xE8;

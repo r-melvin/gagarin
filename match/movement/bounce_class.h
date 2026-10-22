@@ -44,7 +44,7 @@ struct Quaternion
 struct Matrix3D
 {
     // GAMEMD 0x646980  Matrix3D::FromQuaternion (__fastcall; declared, reloc)
-    static Matrix3D* __fastcall FromQuaternion(Matrix3D* mat, const Quaternion* q);
+    static Matrix3D* FromQuaternion(Matrix3D* mat, const Quaternion* q);
 
     float Data[12];  // +0x00 .. +0x2F
 };

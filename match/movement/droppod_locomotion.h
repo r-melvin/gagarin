@@ -52,20 +52,20 @@ extern "C" double __cdecl FUN_004CAD50(double angle);
 
 // FUNCTION: GAMEMD 0x489280 (decl; reloc) - area damage (RET 0x10): where in ECX,
 // damage in EDX, then source, warhead, two flags.
-void __fastcall DropPod_DamageArea(LocoCoord* where, int damage, DropPodFootView* source,
-                                   int warhead, int flagA, int flagB);
+void DropPod_DamageArea(LocoCoord* where, int damage, DropPodFootView* source,
+                        int warhead, int flagA, int flagB);
 // FUNCTION: GAMEMD 0x48A4F0 (decl; reloc) - picks the impact anim (RET 8).
-void* __fastcall DropPod_SelectDamageAnim(int damage, int warhead,
+void* DropPod_SelectDamageAnim(int damage, int warhead,
                                                       int a, LocoCoord* where);
 // FUNCTION: GAMEMD 0x48ACE0 (decl; reloc) - returns the constant -15 (RET 0xC).
 int __stdcall DropPod_ZAdjust(LocoCoord where);
 
 // FUNCTION: GAMEMD 0x49F420 (decl; reloc) - random coordinate near a coordinate
 // (hidden result pointer in ECX, source in EDX, RET 8).
-LocoCoord __fastcall DropPod_RandomCoordsNear(const LocoCoord& coord, int distance, bool center);
+LocoCoord DropPod_RandomCoordsNear(const LocoCoord& coord, int distance, bool center);
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) - sample playback ABI view (index in ECX,
 // coordinate in EDX, final zero/controller argument on stack).
-void __fastcall DropPod_PlaySample(int sample, LocoCoord* where, int zero);
+void DropPod_PlaySample(int sample, LocoCoord* where, int zero);
 
 // VTABLE: GAMEMD 0x7E8344 (primary), 0x7E8278 (ILocomotion), 0x7E8254 (IPiggyback)
 class DropPodLocomotionClass : public LocomotionClass, public IPiggyback

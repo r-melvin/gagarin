@@ -16,7 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // FUNCTION: GAMEMD 0x731BF0 (decl; reloc) — is the expansion's rule set active.
-bool __fastcall FUN_00731BF0();
+bool FUN_00731BF0();
 
 // The secondary COM base, reached at -0xC from the object below.
 struct ComBase_00719EE0
@@ -36,7 +36,7 @@ struct Owner_00719EE0
 GG_STATIC_ASSERT(offsetof(Owner_00719EE0, Pending) == 0x30);
 
 // FUNCTION: GAMEMD 0x70F0B0
-int __fastcall FUN_0070F0B0(int kind, int unusedInRegister, int unusedOnStack);
+int FUN_0070F0B0(int kind, int unusedInRegister, int unusedOnStack);
 
 // FUNCTION: GAMEMD 0x719EE0
 long __stdcall FUN_00719EE0(Owner_00719EE0* self, void** out);

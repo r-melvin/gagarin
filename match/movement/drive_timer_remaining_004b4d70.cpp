@@ -19,7 +19,7 @@ GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
 
 // FUNCTION: GAMEMD 0x004B4D70
-int __fastcall FUN_004B4D70(CDTimerClass* timer)
+int FUN_004B4D70(CDTimerClass* timer)
 {
     int startTime = timer->StartTime;
     int timeLeft = timer->TimeLeft;

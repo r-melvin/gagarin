@@ -40,8 +40,8 @@
 // GetYRotation 58.3%->8.0%, MatrixApply 72.1%->72.1%, FromAxis 85.9%->3.3%,
 // FromQuaternion 19.8%->1.1% and DistanceFrom3D 92.9%->67.9%. Retail's x87
 // code in this family is *not* /Op code; do not re-test the flag here.
-Vector3D* __fastcall Matrix3D_MatrixApply(Vector3D* out, Matrix3DRows* matrix,
-                                          Vector3D* vector)
+Vector3D* Matrix3D_MatrixApply(Vector3D* out, Matrix3DRows* matrix,
+                               Vector3D* vector)
 {
     Vector3D result;
 

@@ -692,9 +692,9 @@ struct HoverMatrixView : LocoMatrix3D
     void RotateY(float angle);
 };
 GG_STATIC_ASSERT(sizeof(HoverMatrixView) == 0x30);
-HoverMatrixView __fastcall HoverSlopeMatrix(int index); // FUNCTION: GAMEMD 0x7559B0 (decl; reloc)
-HoverMatrixView __fastcall HoverMatrixMultiply(const LocoMatrix3D& left, const LocoMatrix3D& right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
-HoverMatrixView __fastcall HoverMatrixMultiply(const LocoMatrix3D* left, const LocoMatrix3D* right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
+HoverMatrixView HoverSlopeMatrix(int index); // FUNCTION: GAMEMD 0x7559B0 (decl; reloc)
+HoverMatrixView HoverMatrixMultiply(const LocoMatrix3D& left, const LocoMatrix3D& right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
+HoverMatrixView HoverMatrixMultiply(const LocoMatrix3D* left, const LocoMatrix3D* right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
 double __cdecl HoverSqrt(double value); // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
 double __cdecl HoverSin(double angle); // FUNCTION: GAMEMD 0x4CACB0 (decl; reloc)
 double __cdecl HoverCos(double angle); // FUNCTION: GAMEMD 0x4CAD00 (decl; reloc)

@@ -80,7 +80,7 @@ struct Holder_004CF830
 GG_STATIC_ASSERT(sizeof(Holder_004CF830) == 4);
 
 // FUNCTION: GAMEMD 0x4D0430 (decl; reloc) — release whatever the holder holds.
-void __fastcall FUN_004D0430(Holder_004CF830* self);
+void FUN_004D0430(Holder_004CF830* self);
 
 // The client's type object; only the ground-hugging gate byte is read.
 struct FootType_004CF830

@@ -39,7 +39,7 @@ struct LocoFacing
 GG_STATIC_ASSERT(sizeof(LocoFacing) == 0x18);
 
 // Single-argument __fastcall slot call: ECX = the object, nothing in EDX.
-typedef int (__fastcall *LocoFootSlot)(FootClass*);
+typedef int (*LocoFootSlot)(FootClass*);
 
 struct LocoFootVtbl
 {
@@ -94,10 +94,10 @@ extern int DAT_00ABCD3C;
 
 // FUNCTION: GAMEMD 0x6D20E0 (decl; reloc) - `__fastcall int (int)`, ECX argument,
 // float arithmetic and a `_ftol` return (ShadowPoint's Y).
-int __fastcall FUN_006D20E0(int value);
+int FUN_006D20E0(int value);
 
 // FUNCTION: GAMEMD 0x7559B0 (decl; reloc) - slope-index matrix lookup. A
 // non-POD hidden return pointer arrives in ECX and the slope index in EDX.
-LocoMatrix3D __fastcall FUN_007559B0(int index);
+LocoMatrix3D FUN_007559B0(int index);
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_LOCO_FOOT_H

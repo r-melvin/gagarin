@@ -18,9 +18,9 @@
 // FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new.
 extern "C" void* __cdecl gg_operator_new(unsigned int size);
 // FUNCTION: GAMEMD 0x47C520 (decl; reloc) — the cell's occupying building.
-void* __fastcall FUN_0047C520(void* cell);
+void* FUN_0047C520(void* cell);
 // FUNCTION: GAMEMD 0x472140 (decl; reloc) — release the target's buffer.
-void __fastcall FUN_00472140(void* buffer);
+void FUN_00472140(void* buffer);
 // The display object this drainer owns (+0x5D4).
 struct Display_0070FD70
 {

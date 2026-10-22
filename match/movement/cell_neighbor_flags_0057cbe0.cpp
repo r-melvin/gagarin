@@ -19,7 +19,7 @@ static inline NeighborCell_0057CBE0* LookupNeighbor(const NeighborCoord_0057CBE0
     return &NeighborFallback;
 }
 // FUNCTION: GAMEMD 0x57CAB0
-int __fastcall FUN_0057CAB0(NeighborCoord_0057CBE0* cell)
+int FUN_0057CAB0(NeighborCoord_0057CBE0* cell)
 {
     NeighborCoord_0057CBE0 left = {(short)(cell->X - 1), cell->Y};
     int leftType = LookupNeighbor(&left)->At_44;
@@ -37,7 +37,7 @@ int __fastcall FUN_0057CAB0(NeighborCoord_0057CBE0* cell)
     return flags;
 }
 // FUNCTION: GAMEMD 0x57CBE0
-unsigned char __fastcall FUN_0057CBE0(NeighborCoord_0057CBE0* cell)
+unsigned char FUN_0057CBE0(NeighborCoord_0057CBE0* cell)
 {
     NeighborCoord_0057CBE0 above = {cell->X, (short)(cell->Y - 1)};
     int aboveType = LookupNeighbor(&above)->At_44;

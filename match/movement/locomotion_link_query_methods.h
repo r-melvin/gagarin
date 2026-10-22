@@ -17,7 +17,7 @@
 #include "../_rt/gg_vslot.h"
 
 // FUNCTION: GAMEMD 0x472140 (decl; reloc) — release the waypoint buffer.
-void __fastcall FUN_00472140(void* buffer);
+void FUN_00472140(void* buffer);
 
 // The type object: only the byte at +0xD97 is read here.
 struct LocoType_00710600
