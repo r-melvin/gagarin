@@ -40,5 +40,5 @@ GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCharPtrDynamicVector, CapacityIncrement) == 0x14);

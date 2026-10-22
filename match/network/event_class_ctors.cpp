@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check |
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check |
 //             private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 at 0x4C65A0,
 //   0x4C65E0, 0x4C6650, 0x4C66C0, 0x4C6720, 0x4C6780, 0x4C6800, 0x4C6860,
@@ -26,14 +26,14 @@
 
 #include "event_class_ctors.h"
 
-// FUNCTION: GAMEMD 0x4C65A0  EventClass::EventClass(int, SpecialClass)
+// FUNCTION: GAMEMD 0x4C65A0  EventClass::EventClass(int, SpecialPayload)
 // GLOBAL: GAMEMD 0xA8ED84
 // SPECIAL — the per-house options block. It is the only constructor besides
 // MEGAMISSION with no log call, and the prologue says so before the body does:
 // no callee-saved push at all, `this` simply copied into EAX. The four-byte
 // payload arrives in one argument slot and is stored with one dword move,
 // which is the whole-struct assignment.
-EventClass::EventClass(int houseIndex, SpecialClass special)
+EventClass::EventClass(int houseIndex, SpecialPayload special)
 {
     if (houseIndex >= 0) {
         HouseIndex = (char)houseIndex;
@@ -55,13 +55,13 @@ EventClass::EventClass(int houseIndex, SpecialClass special)
 // TargetClass by value costs two argument dwords, so `RET 0x10` for what reads
 // as three parameters, and the copy is the familiar `LEA EDX,[ESI+0x7];
 // MOV [EDX],EAX; MOV [EDX+0x4],CL` dword-plus-byte pair.
-EventClass::EventClass(int houseIndex, int eventType, TargetClass whom)
+EventClass::EventClass(int houseIndex, int eventType, TargetClass target)
 {
     FUN_004068E0(STR_00820BF0, EventNames_0082091C[eventType & 0xFF]);
     if (houseIndex >= 0) {
         HouseIndex = (char)houseIndex;
         Type = (unsigned char)eventType;
-        Data.Target.Whom = whom;
+        Data.Target.Whom = target;
         Frame = CurrentFrame;
     } else {
         HouseIndex = -1;
@@ -402,7 +402,7 @@ EventClass::EventClass(int houseIndex, IPXAddressClass* address, char playerId)
 {
     if (houseIndex >= 0) {
         HouseIndex = (char)houseIndex;
-        Type = EVENT_ADDRESS_CHANGE;
+        Type = EVENT_ADDRESSCHANGE;
         unsigned char node[6];
         address->GetAddress((unsigned char*)&houseIndex, node);
         Data.AddressChange.Address = *(unsigned int*)node;

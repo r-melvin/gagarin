@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, CapacityIncrement) == 0x14);

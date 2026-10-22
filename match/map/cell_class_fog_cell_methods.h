@@ -72,7 +72,7 @@ struct FogVec_00486A70
     FogVecVtbl_00486A70* Vptr;            // +0x00
     FogVecBase_00486A70  Base;            // +0x04
     int                  Count;           // +0x10
-    int                  GrowthStep;      // +0x14
+    int                  CapacityIncrement;      // +0x14
 
     // The constructor body, expanded by hand: under /GX a real `new T` wraps
     // the allocation in an exception frame with an unwind funclet that retail
@@ -84,14 +84,14 @@ struct FogVec_00486A70
         this->Base.IsInitialized = 1;
         this->Base.IsAllocated   = 0;
         this->Vptr       = (FogVecVtbl_00486A70*)0x7E44F4;
-        this->GrowthStep = 10;
+        this->CapacityIncrement = 10;
         this->Count      = 0;
         return this;
     }
 };
 GG_STATIC_ASSERT(offsetof(FogVec_00486A70, Base)       == 0x04);
 GG_STATIC_ASSERT(offsetof(FogVec_00486A70, Count)      == 0x10);
-GG_STATIC_ASSERT(offsetof(FogVec_00486A70, GrowthStep) == 0x14);
+GG_STATIC_ASSERT(offsetof(FogVec_00486A70, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(FogVec_00486A70)               == 0x18);
 
 typedef void (FogVec_00486A70::*Fn00_00486A70)(int freeFlag);

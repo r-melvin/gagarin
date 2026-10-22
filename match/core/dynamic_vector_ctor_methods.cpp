@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x42F670.
 
 #include "dynamic_vector_ctor_methods.h"
@@ -24,6 +24,6 @@ DynamicVectorClass_0042F670::DynamicVectorClass_0042F670(
         unsigned int size, const Elem_0042F670* array)
     : VectorClass_0042F670(size, array)
 {
-    GrowthStep = 10;
-    ActiveCount = 0;
+    CapacityIncrement = 10;
+    Count = 0;
 }

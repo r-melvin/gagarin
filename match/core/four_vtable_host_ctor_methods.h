@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x43B680. The two embedded vectors sit at +0x66C and
 //   +0x684 and have their base constructor inlined, so their four base stores
-//   appear literally (Vector, VectorMax, IsValid, IsAllocated) followed by the
-//   derived vptr, GrowthStep and ActiveCount. Field names follow RA1's
-//   VectorClass/DynamicVectorClass (structure reference only).
+//   appear literally (Vector, Capacity, IsValid, IsAllocated) followed by the
+//   derived vptr, CapacityIncrement and Count. Field names are the project's YRpp-cross-checked vector names; the offsets
+//   are the binary's.
 #ifndef GG_MATCH_CORE_FOUR_VTABLE_HOST_CTOR_METHODS_H
 #define GG_MATCH_CORE_FOUR_VTABLE_HOST_CTOR_METHODS_H
 
@@ -28,12 +28,12 @@ struct Vec_0043B680
 {
     const void* Vptr;        // +0x0000
     const void* Vector;      // +0x0004
-    int   VectorMax;         // +0x0008
+    int   Capacity;         // +0x0008
     char  IsValid;           // +0x000C
     char  IsAllocated;       // +0x000D
     char  _pad00E[2];        // +0x000E
-    int   ActiveCount;       // +0x0010
-    int   GrowthStep;        // +0x0014
+    int   Count;       // +0x0010
+    int   CapacityIncrement;        // +0x0014
 };
 GG_STATIC_ASSERT(sizeof(Vec_0043B680) == 0x18);
 

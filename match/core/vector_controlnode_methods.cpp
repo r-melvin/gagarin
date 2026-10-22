@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgControlnodeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(ControlNode*) == 4);

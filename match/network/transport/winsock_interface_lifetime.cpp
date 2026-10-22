@@ -11,7 +11,7 @@
 WinsockInterfaceClass::WinsockInterfaceClass()
 {
     Socket = -1;
-    ListenSocket = -1;
+    unknown_3F070 = -1;
     WinsockInitialised = false;
     for (int i = 0; i < 128; i++)
     {
@@ -32,7 +32,7 @@ WinsockInterfaceClass::WinsockInterfaceClass()
     StaticInBufferPos = 0;
     StaticOutBufferPos = 0;
     unknown_04 = 0x240;
-    Debug_Printf("WinsockInterface constructed\n");
+    FUN_004068E0("WinsockInterface constructed\n");
 }
 
 // FUNCTION: GAMEMD 0x7B1AB0
@@ -47,7 +47,7 @@ void WinsockInterfaceClass::ShutdownWinsock()
     if (WinsockInitialised)
     {
         StopListening();
-        CloseSockets();
+        vf_1();
         WSACleanup();
         WinsockInitialised = false;
     }

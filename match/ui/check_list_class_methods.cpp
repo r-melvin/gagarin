@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bodies ascending by retail address; bytes diffed against the user's
 //   retail gamemd.exe v1.001.
 #include "check_list_class_methods.h"
@@ -20,7 +20,7 @@ void CheckListClass::Dtor()
 {
     this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
-    while (this->List.ActiveCount != 0) {
+    while (this->List.Count != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
 
         this->ListClass_RemoveItem(0);
@@ -85,13 +85,13 @@ int CheckListClass::Action(unsigned flags, void* key, int extra)
         if (flags & 1) {
             int sel = this->SelectedIndex;
             CheckItemClass* cur = (CheckItemClass*)this->ListClass_GetItem(sel);
-            bool want = !(cur != 0 ? cur->IsChecked : false);
+            bool want = !(cur != 0 ? cur->IsTicked : false);
             int selAgain = this->SelectedIndex;
             CheckItemClass* item =
                 (CheckItemClass*)this->ListClass_GetItem(selAgain);
 
-            if (item != 0 && item->IsChecked != want) {
-                item->IsChecked = want;
+            if (item != 0 && item->IsTicked != want) {
+                item->IsTicked = want;
                 (this->*this->Vfptr->At_48)();
             }
         }
@@ -106,7 +106,7 @@ CheckListClass* CheckListClass::ScalarDeletingDtor(unsigned char flags)
 {
     this->Vfptr = (CheckListVtbl*)VT_007E4F84;
 
-    while (this->List.ActiveCount != 0) {
+    while (this->List.Count != 0) {
         CheckItemClass* item = (CheckItemClass*)this->ListClass_GetItem(0);
 
         this->ListClass_RemoveItem(0);

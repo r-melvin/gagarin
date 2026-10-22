@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x412870.
 
 #include "vector_array_init_methods.h"
@@ -25,19 +25,19 @@ void FUN_00412870()
     do {
         entry->BaseCtor(zero, (const void*)zero);
         entry->Vptr = (Vtbl_00412870*)VTBL_007E17AC;
-        entry->GrowthStep = 10;
-        entry->ActiveCount = zero;
+        entry->CapacityIncrement = 10;
+        entry->Count = zero;
         entry++;
         remaining--;
     } while (remaining != 0);
 
     DAT_00889E08.Vector = (const void*)zero;
-    DAT_00889E08.VectorMax = zero;
+    DAT_00889E08.Capacity = zero;
     DAT_00889E08.IsValid = 1;
     DAT_00889E08.IsAllocated = (char)zero;
     DAT_00889E08.Vptr = (Vtbl_00412870*)VTBL_007E17AC;
-    DAT_00889E08.GrowthStep = 10;
-    DAT_00889E08.ActiveCount = zero;
+    DAT_00889E08.CapacityIncrement = 10;
+    DAT_00889E08.Count = zero;
 
     FUN_007C978A(FUN_004128F0_atexit);
 }
@@ -64,14 +64,14 @@ void __cdecl FUN_004128F0()
     Vec_00412870* entry = DAT_00887888;
     int remaining = 0x190;
     do {
-        int capacity = entry->VectorMax;
+        int capacity = entry->Capacity;
         (entry->*entry->Vptr->At_0C)();
         (entry->*entry->Vptr->At_08)(capacity, zero);
         entry++;
         remaining--;
     } while (remaining != 0);
 
-    int capacity = DAT_00889E08.VectorMax;
+    int capacity = DAT_00889E08.Capacity;
     (DAT_00889E08.*DAT_00889E08.Vptr->At_0C)();
     (DAT_00889E08.*DAT_00889E08.Vptr->At_08)(capacity, zero);
 
@@ -83,7 +83,7 @@ void __cdecl FUN_004128F0()
         DAT_00889E08.Vector = (const void*)zero;
     }
     DAT_00889E08.IsAllocated = (char)zero;
-    DAT_00889E08.VectorMax = zero;
+    DAT_00889E08.Capacity = zero;
 
     Vec_00412870* cursor = &DAT_00889E08;
     int left = 0x190;
@@ -96,6 +96,6 @@ void __cdecl FUN_004128F0()
         }
         left--;
         cursor->IsAllocated = (char)zero;
-        cursor->VectorMax = zero;
+        cursor->Capacity = zero;
     } while (left != 0);
 }

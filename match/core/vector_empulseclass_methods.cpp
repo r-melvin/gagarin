@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEMPulseClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(EMPulseClass*) == 4);

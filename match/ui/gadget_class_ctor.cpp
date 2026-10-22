@@ -9,7 +9,7 @@
 // FUNCTION: GAMEMD 0x4E12F0
 GadgetClass::GadgetClass(int x, int y, int width, int height,
                          unsigned int flags, char sticky)
-    : X(x), Y(y), Width(width), Height(height), IsToRepaint(0),
+    : X(x), Y(y), Width(width), Height(height), RedrawPending(0),
       IsSticky(sticky), IsDisabled(0), Flags(flags)
 {
     Next = 0;

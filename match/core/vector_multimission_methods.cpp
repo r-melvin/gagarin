@@ -66,7 +66,7 @@ GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const MultiMission*) == 4);

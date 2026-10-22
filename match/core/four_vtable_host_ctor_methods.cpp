@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x43B680.
 
 #include "four_vtable_host_ctor_methods.h"
@@ -36,17 +36,17 @@
 //
 // The vectors' base constructors are inlined here, not called: their four base
 // stores appear literally in initialiser-list order and only then the derived
-// vptr, GrowthStep and ActiveCount. Compare 0x412870, where the array entries
+// vptr, CapacityIncrement and Count. Compare 0x412870, where the array entries
 // call the base and only the trailing instance has it inlined.
 static inline void InitVec_0043B680(Vec_0043B680* vec, int zero, int one, int ten)
 {
     vec->Vector = (const void*)zero;
-    vec->VectorMax = zero;
+    vec->Capacity = zero;
     vec->IsValid = (char)one;
     vec->IsAllocated = (char)zero;
     vec->Vptr = VTBL_007E43C8;
-    vec->GrowthStep = ten;
-    vec->ActiveCount = zero;
+    vec->CapacityIncrement = ten;
+    vec->Count = zero;
 }
 
 Host_0043B680* Host_0043B680::Ctor(int arg)

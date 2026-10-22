@@ -6,7 +6,7 @@
 //   (___CxxFrameHandler, a .text$x funclet and an .xdata$x entry) that retail
 //   does not have. Retail's 0x628ED0 and 0x628B00 are a bare loop, so the
 //   retail build compiled this translation unit without /GX.
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 at 0x6285A0,
 //   0x628A70, 0x628B00, 0x628D10, 0x628D80, 0x628DF0 and 0x628ED0.
 
@@ -20,7 +20,7 @@
 // at 0x628A70; the stride constant `ADD EBX,0x3` is the element size.
 int TripleDynVector::ID(TripleEntry const& object) const
 {
-    for (int index = 0; index < ActiveCount; index++) {
+    for (int index = 0; index < Count; index++) {
         if (Vector[index] == object) return index;
     }
     return -1;
@@ -36,7 +36,7 @@ int ScratchVector::ID(ScratchEntry const& object) const
 {
     if (!IsValid) return 0;
 
-    for (int index = 0; index < VectorMax; index++) {
+    for (int index = 0; index < Capacity; index++) {
         ScratchEntry const* item = &Vector[index];
         if (*item == object) return index;
     }
@@ -52,8 +52,8 @@ int ScratchVector::ID(ScratchEntry const& object) const
 ScratchDynVector::ScratchDynVector(unsigned int size, ScratchEntry const* array)
     : ScratchVectorInline(size, array)
 {
-    GrowthStep = 10;
-    ActiveCount = 0;
+    CapacityIncrement = 10;
+    Count = 0;
 }
 
 // FUNCTION: GAMEMD 0x628D10
@@ -67,14 +67,14 @@ ScratchDynVector::ScratchDynVector(unsigned int size, ScratchEntry const* array)
 // copies the name buffer and the caller copies the value word at +0x100.
 bool ScratchDynVector::Add(ScratchEntry const& object)
 {
-    if (ActiveCount < VectorMax
-        || ((IsAllocated || VectorMax == 0)
-            && GrowthStep > 0
-            && Resize(VectorMax + GrowthStep, 0))) {
+    if (Count < Capacity
+        || ((IsAllocated || Capacity == 0)
+            && CapacityIncrement > 0
+            && Resize(Capacity + CapacityIncrement, 0))) {
 
-        int index = ActiveCount;
+        int index = Count;
 
-        ActiveCount = index + 1;
+        Count = index + 1;
         Vector[index] = object;
 
         return true;
@@ -89,7 +89,7 @@ bool ScratchDynVector::Add(ScratchEntry const& object)
 // 0x104-byte stride and the entry comparison.
 int ScratchDynVector::ID(ScratchEntry const& object) const
 {
-    for (int index = 0; index < ActiveCount; index++) {
+    for (int index = 0; index < Count; index++) {
         ScratchEntry const* item = &Vector[index];
         if (*item == object) return index;
     }
@@ -104,7 +104,7 @@ int ScratchDynVector::ID(ScratchEntry const& object) const
 // stores from a zeroed register followed by `ADD EAX,0x3`. A failed allocation
 // still marks the vector as owning its storage.
 TripleVector::TripleVector(unsigned int size, TripleEntry const* array)
-    : Vector(0), VectorMax(size), IsValid(true), IsAllocated(false)
+    : Vector(0), Capacity(size), IsValid(true), IsAllocated(false)
 {
     if (size) {
         if (array) {
@@ -122,7 +122,7 @@ TripleVector::TripleVector(unsigned int size, TripleEntry const* array)
 // is out of line and the array-new loop keeps its call. The allocation size is
 // `n * 65 * 4`, spelled by retail as `SHL 6; ADD; SHL 2`.
 ScratchVector::ScratchVector(unsigned int size, ScratchEntry const* array)
-    : Vector(0), VectorMax(size), IsValid(true), IsAllocated(false)
+    : Vector(0), Capacity(size), IsValid(true), IsAllocated(false)
 {
     if (size) {
         if (array) {

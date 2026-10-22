@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, Capacity) == 0x
 GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgIsometricTileTypeClassDynamicVector, CapacityIncrement) == 0x14);

@@ -9,13 +9,13 @@
 // Source helper expanded into each retail loop; no standalone entry is claimed.
 static inline void DeleteAddresses(DynamicVectorClass<unsigned char*>& addresses)
 {
-    while (addresses.ActiveCount != 0)
+    while (addresses.Count != 0)
     {
         operator delete(addresses.Items[0]);
-        if (addresses.ActiveCount > 0)
+        if (addresses.Count > 0)
         {
-            addresses.ActiveCount--;
-            for (int i = 0; i < addresses.ActiveCount; i++)
+            addresses.Count--;
+            for (int i = 0; i < addresses.Count; i++)
                 addresses.Items[i] = addresses.Items[i + 1];
         }
     }

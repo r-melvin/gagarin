@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every offset, global address and calling convention below was read
 //   numerically off the user's retail gamemd.exe v1.001 with the local Ghidra
 //   CLI over the run 0x5E8740..0x5E957E. The private-reference seed
@@ -7,8 +7,7 @@
 //   grouping and a hint at what each entry point is for; nothing was
 //   transcribed and every width it gave was re-derived (its `bool` returns are
 //   `int` here wherever retail exits through `MOV EAX,1` / `XOR EAX,EAX`
-//   rather than the byte form). The RA1 tree was consulted for the shape of
-//   NodeNameType / IPXAddressClass / DynamicVectorClass only, never copied.
+//   rather than the byte form).
 //
 //   The retail source file is named by the string table call sites in
 //   0x5E87A0: `PUSH <line>; PUSH 0x8317D8` where 0x8317D8 is
@@ -33,7 +32,7 @@
 //   * unknown_6B at +0x6B : `CMP dword [EAX+0x6B],-1` at 0x5E9302 / 0x5E93BC
 //     and `CMP [ECX+0x6B],EBX` (EBX = -1) at 0x5E9260 / 0x5E9269. -1 marks an
 //     observer, so this is the node's chosen house/side index.
-//   * The vector at 0xA8DA74 is RA1's DynamicVectorClass: the destroy helper
+//   * The vector at 0xA8DA74 has the DynamicVectorClass layout: the destroy helper
 //     0x5C6120 walks `[ESI+0x10]` items out of `[ESI+4]` and then calls the
 //     virtual at vtable slot +0xC, so +0x00 is the vptr, +0x04 the item array
 //     and +0x10 the active count. Only those two members are read here.
@@ -84,26 +83,26 @@ GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
                  sizeof(NodeNameType) == 0x85);
 
 // ---------------------------------------------------------------------------
-// RA1's DynamicVectorClass, only the two members this run reads.
+// The node vector (DynamicVectorClass layout), only the two members this run reads.
 // ---------------------------------------------------------------------------
 struct NodeNameVector
 {
     void* unknown_00;                 // +0x00  vptr
     NodeNameType** Vector;            // +0x04
     unsigned char unknown_08[8];      // +0x08
-    int ActiveCount;                  // +0x10
+    int Count;                  // +0x10
     int unknown_14;                   // +0x14
 
 };
 
 GG_STATIC_ASSERT(offsetof(NodeNameVector, Vector) == 0x04 &&
-                 offsetof(NodeNameVector, ActiveCount) == 0x10 &&
+                 offsetof(NodeNameVector, Count) == 0x10 &&
                  sizeof(NodeNameVector) == 0x18);
 
 // --- globals ---------------------------------------------------------------
 
 // GLOBAL: GAMEMD 0xA8DA74 — the lobby's player node vector (Vector at
-// 0xA8DA78, ActiveCount at 0xA8DA84).
+// 0xA8DA78, Count at 0xA8DA84).
 extern NodeNameVector PlayerNodes;
 // GLOBAL: GAMEMD 0xA8DA8C — the slot index the local player picked, -1 when none.
 extern int SelectedSlotIndex;

@@ -118,7 +118,7 @@ struct OccupantVec_004585C0
     char                      IsAllocated;      // +0x000D
     char                      _pad00E[2];       // +0x000E
     int                       Count;            // +0x0010
-    int                       GrowthStep;       // +0x0014
+    int                       CapacityIncrement;       // +0x0014
 };
 GG_STATIC_ASSERT(offsetof(OccupantVec_004585C0, Items)    == 0x04);
 GG_STATIC_ASSERT(offsetof(OccupantVec_004585C0, Capacity) == 0x08);

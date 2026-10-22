@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check |
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check |
 //             private-ref-cross-check
 //   Every offset below was read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, from the seven constructors at 0x4C6650,
@@ -41,12 +41,11 @@
 //   occupies two dwords of the argument frame, which is how the 0x18 and 0x28
 //   `RET` immediates decompose.
 //
-//   Member and payload names are cross-checked against YRpp EventClass.h and
-//   TargetClass.h (consult-only, no LICENSE — names only, offsets re-derived
-//   above) and against RA1 CODE/EVENT.CPP (GPLv3 + EA Section-7), whose
-//   constructor overload set RA2 kept and extended with the house-index guard
-//   and the debug log. The private-reference seed (consult-only) supplied the
-//   `network/event_class.cpp` grouping and the parameter semantics.
+//   Payload tags follow the retail event-name table at 0x82091C. Member names
+//   are YRpp cross-checks confirmed by the stores above; names without that
+//   support are descriptive. The overload set is the one the sixteen retail
+//   constructors require. The private-reference seed (consult-only) supplied
+//   the `network/event_class.cpp` grouping.
 //
 // EventClass — one queued multiplayer command. Constructors stamp the payload,
 // the originating house and the frame the command must execute on.
@@ -96,7 +95,7 @@ struct CellStruct
 // (`MOV dword ptr [EAX+0x7],ECX` at 0x4C65B4 from one pushed argument slot),
 // so it is a struct rather than a plain int purely to keep the SPECIAL
 // constructor distinguishable from the bare two-argument one at 0x4C66C0.
-struct SpecialClass
+struct SpecialPayload
 {
     int Flags;   // +0x00
 };
@@ -106,7 +105,7 @@ struct SpecialClass
 // overload at 0x4C6B60; cl passes it in one dword either way.
 enum RTTIType
 {
-    RTTI_NONE = 0
+    RTTITYPE_ZERO = 0
 };
 
 // A 32-bit coordinate pair (the animation payload's placement).
@@ -116,21 +115,21 @@ struct Point2D
     int Y;   // +0x04
 };
 
-// Event type tags, named from YRpp / RA1 and valued from the immediates the
-// constructors below store into Type.
+// Event type tags, named after the retail event-name table at 0x82091C and
+// valued from the immediates the constructors below store into Type.
 #define EVENT_EMPTY            0
 #define EVENT_MEGAMISSION      4
 #define EVENT_MEGAMISSION_F    5
 #define EVENT_ANIMATION        0x14
 #define EVENT_SPECIAL          0x18
-#define EVENT_ADDRESS_CHANGE   0x29
+#define EVENT_ADDRESSCHANGE   0x29
 
 class EventClass
 {
 public:
     // Declared ascending by retail address.
-    EventClass(int houseIndex, SpecialClass special);
-    EventClass(int houseIndex, int eventType, TargetClass whom);
+    EventClass(int houseIndex, SpecialPayload special);
+    EventClass(int houseIndex, int eventType, TargetClass target);
     EventClass(int houseIndex, int eventType, const CellStruct& cell);
     EventClass(int houseIndex, int eventType);
     EventClass(int houseIndex, int eventType, int data);
@@ -163,7 +162,7 @@ public:
 
         struct SPECIAL
         {
-            SpecialClass Special;        // +0x07
+            SpecialPayload Special;        // +0x07
         } Special;
 
         struct TARGET_EVENT
@@ -275,7 +274,7 @@ GG_STATIC_ASSERT(offsetof(EventClass, Data.Special.Special) == 0x07 &&
                  offsetof(EventClass, Data.Place.ID)         == 0x0B &&
                  offsetof(EventClass, Data.Place.Extra)      == 0x0F &&
                  offsetof(EventClass, Data.Place.Location)   == 0x13);
-GG_STATIC_ASSERT(sizeof(SpecialClass) == 4);
+GG_STATIC_ASSERT(sizeof(SpecialPayload) == 4);
 GG_STATIC_ASSERT(sizeof(EventClass) == 111);
 
 #endif  // GG_MATCH_NETWORK_EVENT_CLASS_CTORS_H

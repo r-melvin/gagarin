@@ -102,15 +102,15 @@ int ListClass::AddItem(wchar_t const* text)
     if (text != 0) {
         List.AddItem(text);
         (this->*Vfptr->At_48)();
-        if (List.ActiveCount > LineCount) {
+        if (List.Count > LineCount) {
             (this->*Vfptr->At_8C)();
         }
         if (IsScrollActive) {
             SliderShim* scroller = (SliderShim*)&Scroller;
-            (scroller->*scroller->Vfptr->At_88)(List.ActiveCount);
+            (scroller->*scroller->Vfptr->At_88)(List.Count);
         }
     }
-    return List.ActiveCount - 1;
+    return List.Count - 1;
 }
 
 // FUNCTION: GAMEMD 0x557730
@@ -121,29 +121,29 @@ int ListClass::AddItem(wchar_t const* text)
 // inlined DynamicVectorClass::Delete's own guard).
 //
 // The removal is the vector's inline by-index Delete, and every count read
-// goes through the inline Count() accessor. Retail's repeated `CMP EAX,ECX`
+// goes through the inline GetCount() accessor. Retail's repeated `CMP EAX,ECX`
 // (0x55773A/0x557742) is the inlined Delete re-testing the bound, and its
 // count reload at 0x5577C3 follows from the accessor; reading the field
 // directly lets cl reuse flags and registers (8.2%, and 70.5% with Delete
 // alone).
 void ListClass::RemoveItem(int index)
 {
-    if ((unsigned)index < (unsigned)List.Count()) {
+    if ((unsigned)index < (unsigned)List.GetCount()) {
         List.Delete(index);
-        if (List.Count() <= LineCount) {
+        if (List.GetCount() <= LineCount) {
             (this->*Vfptr->At_B0)();
         }
         if (IsScrollActive) {
             SliderShim* scroller = (SliderShim*)&Scroller;
-            (scroller->*scroller->Vfptr->At_88)(List.Count());
+            (scroller->*scroller->Vfptr->At_88)(List.GetCount());
         }
-        if (SelectedIndex >= List.Count()) {
+        if (SelectedIndex >= List.GetCount()) {
             SelectedIndex--;
             if (SelectedIndex < 0) {
                 SelectedIndex = 0;
             }
         }
-        if (CurrentTopIndex >= List.Count()) {
+        if (CurrentTopIndex >= List.GetCount()) {
             CurrentTopIndex--;
             if (CurrentTopIndex < 0) {
                 CurrentTopIndex = 0;
@@ -197,7 +197,7 @@ void ListClass::RemoveItem(wchar_t const* text)
 //         int top = *(volatile int*)&CurrentTopIndex;
 //         int row = (mouseY - Y - 1) / LineHeight + top;
 //         SelectedIndex = row;
-//         int last = *(volatile int*)&List.ActiveCount - 1;
+//         int last = *(volatile int*)&List.Count - 1;
 //         if (row >= last) { row = last; }
 //         SelectedIndex = row;
 //         if (row == -1) { SelectedIndex = 0; }
@@ -361,10 +361,10 @@ void ListClass::Step(int minus)
 // returns null) and returns the raw vector slot.
 wchar_t const* ListClass::GetItem(int index)
 {
-    if (List.ActiveCount == 0) {
+    if (List.Count == 0) {
         return 0;
     }
-    int last = List.ActiveCount - 1;
+    int last = List.Count - 1;
     if (index >= last) {
         index = last;
     }
@@ -376,7 +376,7 @@ wchar_t const* ListClass::GetItem(int index)
 // scrolled past the end of a shrunk list.
 wchar_t const* ListClass::GetCurrentItem()
 {
-    if (List.ActiveCount <= SelectedIndex) {
+    if (List.Count <= SelectedIndex) {
         return 0;
     }
     return List.Items[SelectedIndex];
@@ -384,11 +384,11 @@ wchar_t const* ListClass::GetCurrentItem()
 
 // FUNCTION: GAMEMD 0x557B70
 // ListClass::SetViewIndex. Clamps the requested top row to
-// [0, ActiveCount-LineCount] and, on a real change, marks for redraw and
+// [0, Count-LineCount] and, on a real change, marks for redraw and
 // pushes the new top row to a live Scroller.
 int ListClass::SetViewIndex(int index)
 {
-    int span = List.ActiveCount - LineCount;
+    int span = List.Count - LineCount;
     int clamped = (span < 0) - 1;
     clamped &= span;
     if (index < 0) {
@@ -441,7 +441,7 @@ int ListClass::EnableScrollBar()
         (down->*down->Vfptr->At_48)();
         (scroller->*scroller->Vfptr->At_48)();
         SliderShim* slider = (SliderShim*)&Scroller;
-        (slider->*slider->Vfptr->At_88)(List.ActiveCount);
+        (slider->*slider->Vfptr->At_88)(List.Count);
         (slider->*slider->Vfptr->At_A8)(LineCount);
         (slider->*slider->Vfptr->At_8C)(CurrentTopIndex);
         return 1;

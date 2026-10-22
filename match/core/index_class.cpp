@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check |
-//             private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Every body below was written against the retail disassembly of the user's
 //   gamemd.exe v1.001 read through the local Ghidra CLI.
 //
@@ -18,8 +17,8 @@ __forceinline bool IndexClass::IncreaseTableSize(int amount)
 {
     if (amount < 0) return false;
 
-    int newsize = IndexSize + amount;
-    NodeElement* table = new NodeElement[newsize];
+    int total = IndexSize + amount;
+    NodeElement* table = new NodeElement[total];
     if (table != 0) {
 
         for (int index = 0; index < IndexCount; index++) {

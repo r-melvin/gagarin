@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgHwndDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(HWND__*) == 4);

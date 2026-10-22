@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x42FC40 and 0x42FCB0.
 
 #include "vector_class_ctor_methods.h"
 
-// Placement new over caller-supplied storage. RA1's VectorClass constructs the
-// elements in place with `new((void*)array) T[size]`, and retail keeps the
+// Placement new over caller-supplied storage. The constructor builds the
+// elements in place with `new((void*)array) T[size]`; retail keeps the
 // array-new counter preamble (`DEC EDI; MOV [ESP+0xC],EDI`) in that arm too:
 // the element constructor is empty, so only the preamble survives. VC6 resolves
 // the placement array form through this single-object signature; a
@@ -27,7 +27,7 @@ WideVectorClass_0042FC40* WideVectorClass_0042FC40::Ctor(
         unsigned int size, const Wide_0042FC40* array)
 {
     this->Vector = 0;
-    this->VectorMax = size;
+    this->Capacity = size;
     this->IsValid = 1;
     this->IsAllocated = 0;
     this->Vptr = VTBL_007E38F0;
@@ -56,7 +56,7 @@ NarrowVectorClass_0042FCB0* NarrowVectorClass_0042FCB0::Ctor(
         unsigned int size, const Narrow_0042FCB0* array)
 {
     this->Vector = 0;
-    this->VectorMax = size;
+    this->Capacity = size;
     this->IsValid = 1;
     this->IsAllocated = 0;
     this->Vptr = VTBL_007E38D0;

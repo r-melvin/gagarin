@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 #include <string.h>
 #include "conn_types.h"
@@ -23,23 +23,23 @@
 // STRING: GAMEMD 0x81D4AC
 
 // FUNCTION: GAMEMD 0x48BE60
-ConnectionClass::ConnectionClass(int numsend, int numreceive, int maxlen,
-                                 unsigned short magicnum, int retry_delta,
-                                 int max_retries, int timeout, int extralen)
+ConnectionClass::ConnectionClass(int sendSlots, int receiveSlots, int maxlen,
+                                 unsigned short magic, int retryDelay,
+                                 int retryLimit, int timeout, int extraLength)
 {
     MaxPacketLen = maxlen + 0xE;
-    MagicNumber = magicnum;
-    RetryDelta = retry_delta;
-    MaxRetries = max_retries;
+    unknown_24 = magic;
+    RetryDelta = retryDelay;
+    MaxRetries = retryLimit;
     Timeout = timeout;
-    PacketBuf = (CommHeaderType*)new char[MaxPacketLen];
-    Queue = new CommBufferClass(numsend, numreceive, MaxPacketLen, extralen);
+    unknown_20 = (ConnPacketHeader*)new char[MaxPacketLen];
+    Queue = new CommBufferClass(sendSlots, receiveSlots, MaxPacketLen, extraLength);
 }
 
 // FUNCTION: GAMEMD 0x48BEE0
 ConnectionClass::~ConnectionClass()
 {
-    delete PacketBuf;
+    delete unknown_20;
     if (Queue) {
         delete Queue;
     }
@@ -63,29 +63,29 @@ void ConnectionClass::Init()
 }
 
 // FUNCTION: GAMEMD 0x48BF40
-int ConnectionClass::Send_Packet(void* buf, int buflen, int ack_required,
+int ConnectionClass::vf_2(void* buf, int buflen, int needsAck,
                                  unsigned char extra)
 {
-    PacketBuf->MagicNumber = MagicNumber;
-    if (ack_required) {
-        PacketBuf->Code = 0;
-        PacketBuf->PacketID = NumSendAck;
-        Debug_Printf("NumSendAck = %d\n", NumSendAck);
+    unknown_20->unknown_00 = unknown_24;
+    if (needsAck) {
+        unknown_20->Code = 0;
+        unknown_20->unknown_04 = NumSendAck;
+        FUN_004068E0("NumSendAck = %d\n", NumSendAck);
     } else {
-        PacketBuf->Code = 1;
-        PacketBuf->PacketID = unknown_3C;
+        unknown_20->Code = 1;
+        unknown_20->unknown_04 = unknown_3C;
     }
     if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0) {
-        PacketBuf->unknown_03 = extra;
+        unknown_20->unknown_03 = extra;
     }
     if (MaxPacketLen < buflen) {
-        Debug_Printf("MaxPacketLen = %d\n", MaxPacketLen);
-        Debug_Printf("buflen = %d\n", buflen);
+        FUN_004068E0("MaxPacketLen = %d\n", MaxPacketLen);
+        FUN_004068E0("buflen = %d\n", buflen);
         return 0;
     }
-    memcpy(PacketBuf + 1, buf, buflen);
-    if (Queue->FUN_0048B410(PacketBuf, buflen + 0xE, 0, 0, 0)) {
-        if (ack_required) {
+    memcpy(unknown_20 + 1, buf, buflen);
+    if (Queue->FUN_0048B410(unknown_20, buflen + 0xE, 0, 0, 0)) {
+        if (needsAck) {
             NumSendAck++;
         } else {
             unknown_3C++;
@@ -96,18 +96,18 @@ int ConnectionClass::Send_Packet(void* buf, int buflen, int ack_required,
 }
 
 // FUNCTION: GAMEMD 0x48C040
-int ConnectionClass::Receive_Packet(CommHeaderType* packet, int buflen)
+int ConnectionClass::Receive_Packet(ConnPacketHeader* packet, int buflen)
 {
-    if (packet->MagicNumber != MagicNumber) {
+    if (packet->unknown_00 != unknown_24) {
         unknown_18++;
         return 0;
     }
     if (packet->Code == 2) {
-        Debug_Printf("Received ACK for packet %d\n", packet->PacketID);
-        for (int i = 0; i < Queue->SendCount; i++) {
+        FUN_004068E0("Received ACK for packet %d\n", packet->unknown_04);
+        for (int i = 0; i < Queue->unknown_28; i++) {
             CommSendEntry* entry = Queue->FUN_0048B720(i);
-            if (entry && packet->PacketID == ((CommHeaderType*)entry->unknown_14)->PacketID
-                && ((CommHeaderType*)entry->unknown_14)->Code == 0) {
+            if (entry && packet->unknown_04 == ((ConnPacketHeader*)entry->unknown_14)->unknown_04
+                && ((ConnPacketHeader*)entry->unknown_14)->Code == 0) {
                 entry->Flags |= 2;
                 break;
             }
@@ -115,97 +115,97 @@ int ConnectionClass::Receive_Packet(CommHeaderType* packet, int buflen)
         return 1;
     }
     if (packet->Code == 1) {
-        if (Queue->unknown_08 - Queue->ReceiveCount <= 1) {
+        if (Queue->unknown_08 - Queue->unknown_38 <= 1) {
             unknown_14++;
-            Debug_Printf("Error - ConnectClass::Receive_Packet Queue full on PACKET_DATA_NOACK\n");
+            FUN_004068E0("Error - ConnectClass::Receive_Packet Queue full on PACKET_DATA_NOACK\n");
             return 0;
         }
         if (!Queue->FUN_0048B750(packet, buflen, 0, 0)) {
-            Debug_Printf("Error - unable to queue incoming packet. %s %s\n",
+            FUN_004068E0("Error - unable to queue incoming packet. %s %s\n",
                          "D:\\ra2mdpost\\Connect.CPP", 332);
             unknown_14++;
             return 0;
         }
         unknown_34++;
-        unknown_0C = packet->PacketID - unknown_34 + 1;
-        if (packet->PacketID) {
-            unknown_10 = 100 - (unknown_34 * 100) / (packet->PacketID + 1);
+        unknown_0C = packet->unknown_04 - unknown_34 + 1;
+        if (packet->unknown_04) {
+            unknown_10 = 100 - (unknown_34 * 100) / (packet->unknown_04 + 1);
         }
         return 1;
     }
     if (packet->Code == 0) {
-        if (packet->PacketID > unknown_44 || unknown_44 == -1) {
-            for (int i = 0; i < Queue->ReceiveCount; i++) {
+        if (packet->unknown_04 > unknown_44 || unknown_44 == -1) {
+            for (int i = 0; i < Queue->unknown_38; i++) {
                 CommReceiveEntry* entry = Queue->FUN_0048B9E0(i);
-                if (entry && ((CommHeaderType*)entry->unknown_0C)->Code == 0
-                    && ((CommHeaderType*)entry->unknown_0C)->PacketID == packet->PacketID) {
+                if (entry && ((ConnPacketHeader*)entry->unknown_0C)->Code == 0
+                    && ((ConnPacketHeader*)entry->unknown_0C)->unknown_04 == packet->unknown_04) {
                     goto send_ack;
                 }
             }
-            if (Queue->unknown_08 - Queue->ReceiveCount <= 1
-                && packet->PacketID != unknown_44 + 1) {
-                Debug_Printf("Error - ConnectClass::Receive_Packet Queue full on PACKET_DATA_ACK\n");
+            if (Queue->unknown_08 - Queue->unknown_38 <= 1
+                && packet->unknown_04 != unknown_44 + 1) {
+                FUN_004068E0("Error - ConnectClass::Receive_Packet Queue full on PACKET_DATA_ACK\n");
                 return 0;
             }
             if (!Queue->FUN_0048B750(packet, buflen, 0, 0)) {
-                Debug_Printf("Error - ConnectClass::Receive_Packet Queue->Queue_Receive error\n");
+                FUN_004068E0("Error - ConnectClass::Receive_Packet Queue->Queue_Receive error\n");
                 return 0;
             }
             unknown_38++;
-            if (packet->PacketID == unknown_44 + 1) {
-                unsigned long id = packet->PacketID;
+            if (packet->unknown_04 == unknown_44 + 1) {
+                unsigned long id = packet->unknown_04;
                 bool again;
                 do {
                     again = false;
                     unknown_44 = id;
                     int i = 0;
-                    if (Queue->ReceiveCount > 0) {
+                    if (Queue->unknown_38 > 0) {
                         do {
                             CommReceiveEntry* entry = Queue->FUN_0048B9E0(i);
                             if (entry) {
-                                CommHeaderType* h = (CommHeaderType*)entry->unknown_0C;
-                                if (h->Code == 0 && h->PacketID == unknown_44 + 1) {
-                                    id = h->PacketID;
+                                ConnPacketHeader* h = (ConnPacketHeader*)entry->unknown_0C;
+                                if (h->Code == 0 && h->unknown_04 == unknown_44 + 1) {
+                                    id = h->unknown_04;
                                     again = true;
                                     break;
                                 }
                             }
                             i++;
-                        } while (i < Queue->ReceiveCount);
+                        } while (i < Queue->unknown_38);
                     }
                 } while (again);
             }
         }
 send_ack:
-        CommHeaderType ack;
+        ConnPacketHeader ack;
         ack.Code = 2;
-        ack.PacketID = packet->PacketID;
-        ack.MagicNumber = MagicNumber;
+        ack.unknown_04 = packet->unknown_04;
+        ack.unknown_00 = unknown_24;
         if (Flag_00A8DBA0) {
             ack.unknown_03 = packet->unknown_03;
         } else {
             ack.unknown_03 = 0;
         }
-        Debug_Printf("Sending ACK for packet %d to be forwarded to %02x\n",
-                     packet->PacketID, ack.unknown_03);
-        Send_To(&ack, 0xE, 0, 0, this == GlobalConnection_00A8EA0C, 0);
+        FUN_004068E0("Sending ACK for packet %d to be forwarded to %02x\n",
+                     packet->unknown_04, ack.unknown_03);
+        vf_9(&ack, 0xE, 0, 0, this == GlobalConnection_00A8EA0C, 0);
         return 1;
     }
-    Debug_Printf("Error - ConnectClass::Receive_Packet did not understand packet->Code\n");
+    FUN_004068E0("Error - ConnectClass::Receive_Packet did not understand packet->Code\n");
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x48C320
-int ConnectionClass::Get_Packet(void* buf, int* buflen)
+int ConnectionClass::vf_4(void* buf, int* buflen)
 {
     CommReceiveEntry* entry;
     int len;
-    for (int i = 0; i < Queue->ReceiveCount; i++) {
+    for (int i = 0; i < Queue->unknown_38; i++) {
         entry = Queue->FUN_0048B9E0(i);
         if (entry && !(entry->Flags & 2)) {
-            CommHeaderType* h = (CommHeaderType*)entry->unknown_0C;
-            if (h->Code == 0 && h->PacketID == unknown_48 + 1) {
-                unknown_48 = h->PacketID;
+            ConnPacketHeader* h = (ConnPacketHeader*)entry->unknown_0C;
+            if (h->Code == 0 && h->unknown_04 == unknown_48 + 1) {
+                unknown_48 = h->unknown_04;
                 goto found;
             }
             if (h->Code == 1) {
@@ -227,7 +227,7 @@ found:
 // FUNCTION: GAMEMD 0x48C3B0
 int ConnectionClass::Service()
 {
-    if (Service_Send_Queue() && Service_Receive_Queue()) {
+    if (Service_Send_Queue() && vf_8()) {
         return 1;
     }
     return 0;
@@ -240,10 +240,10 @@ int ConnectionClass::Service_Send_Queue()
     int i;
     CommSendEntry* entry;
 
-    for (i = 0; i < Queue->SendCount; i++) {
+    for (i = 0; i < Queue->unknown_28; i++) {
         entry = Queue->FUN_0048B720(i);
         if (entry->Flags & 2) {
-            if (((CommHeaderType*)entry->unknown_14)->Code == 0) {
+            if (((ConnPacketHeader*)entry->unknown_14)->Code == 0) {
                 unsigned int now = ConnTimer.GetValue();
                 Queue->FUN_0048BA10(now - entry->unknown_04);
             }
@@ -252,19 +252,19 @@ int ConnectionClass::Service_Send_Queue()
         }
     }
 
-    int count = Queue->SendCount;
+    int count = Queue->unknown_28;
     for (i = 0; i < count; i++) {
         entry = Queue->FUN_0048B720(i);
         if (!(entry->Flags & 2)) {
             unsigned int now = ConnTimer.GetValue();
             if (now - entry->unknown_08 > RetryDelta) {
-                Send_To(entry->unknown_14, entry->unknown_10, entry->unknown_1C,
+                vf_9(entry->unknown_14, entry->unknown_10, entry->unknown_1C,
                         entry->unknown_18, this == GlobalConnection_00A8EA0C,
                         entry->unknown_20);
                 entry->unknown_08 = now;
                 if (entry->unknown_0C == 0) {
                     entry->unknown_04 = now;
-                    if (((CommHeaderType*)entry->unknown_14)->Code == 1) {
+                    if (((ConnPacketHeader*)entry->unknown_14)->Code == 1) {
                         entry->Flags |= 2;
                     }
                 } else {
@@ -284,26 +284,26 @@ int ConnectionClass::Service_Send_Queue()
     }
 
     if (failed) {
-        Debug_Printf("ConnectionClass::Service_Send_Queue bad connection\n");
+        FUN_004068E0("ConnectionClass::Service_Send_Queue bad connection\n");
         return 0;
     }
     return 1;
 }
 
 // FUNCTION: GAMEMD 0x48C590
-int ConnectionClass::Remove_Failed_Packets()
+int ConnectionClass::vf_6()
 {
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x48C5A0
-int ConnectionClass::Service_Receive_Queue()
+int ConnectionClass::vf_8()
 {
-    for (int i = 0; i < Queue->ReceiveCount; i++) {
+    for (int i = 0; i < Queue->unknown_38; i++) {
         CommReceiveEntry* entry = Queue->FUN_0048B9E0(i);
         if (entry->Flags & 2) {
-            CommHeaderType* h = (CommHeaderType*)entry->unknown_0C;
-            if (h->Code == 1 || h->PacketID < unknown_44) {
+            ConnPacketHeader* h = (ConnPacketHeader*)entry->unknown_0C;
+            if (h->Code == 1 || h->unknown_04 < unknown_44) {
                 Queue->FUN_0048B890(0, 0, i, 0, 0);
                 i--;
             }

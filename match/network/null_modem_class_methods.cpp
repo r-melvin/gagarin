@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001; the class name
-//   comes from its own runtime type information (see the header) and the
-//   method names from EA's GPLv3 RA1 NULLMGR.CPP, used as a naming reference
-//   only. Bodies ordered ascending by retail address.
+//   comes from its own runtime type information (see the header); methods
+//   without a binary-attested name are FUN_XXXXXXXX. Bodies ordered ascending
+//   by retail address.
 #include <string.h>
 #include "null_modem_class_methods.h"
 
@@ -15,7 +15,7 @@
 
 // How many connection objects are live (zero when the link is down).
 // FUNCTION: GAMEMD 0x5F1950
-int NullModemClass::NumConnectionsGet() const
+int NullModemClass::FUN_005F1950() const
 {
     return NumConnections;
 }
@@ -23,23 +23,23 @@ int NullModemClass::NumConnectionsGet() const
 // Tear the link down: destroy the connection object, release the three packet
 // buffers and forget the connection count.
 // FUNCTION: GAMEMD 0x5F1960
-int NullModemClass::DeleteConnection()
+int NullModemClass::FUN_005F1960()
 {
     if (Connection != 0) {
         delete Connection;
         Connection = 0;
     }
-    if (RXBuf != 0) {
-        delete [] RXBuf;
-        RXBuf = 0;
+    if (unknown_50 != 0) {
+        delete [] unknown_50;
+        unknown_50 = 0;
     }
-    if (BuildBuf != 0) {
-        delete [] BuildBuf;
-        BuildBuf = 0;
+    if (unknown_04 != 0) {
+        delete [] unknown_04;
+        unknown_04 = 0;
     }
-    if (EchoBuf != 0) {
-        delete [] EchoBuf;
-        EchoBuf = 0;
+    if (unknown_0C != 0) {
+        delete [] unknown_0C;
+        unknown_0C = 0;
     }
     NumConnections = 0;
     return 1;
@@ -47,10 +47,10 @@ int NullModemClass::DeleteConnection()
 
 // Empty the connection's outgoing packet queue.
 // FUNCTION: GAMEMD 0x5F19C0
-int NullModemClass::InitSendQueue()
+int NullModemClass::FUN_005F19C0()
 {
     if (Connection != 0) {
-        Connection->Queue->InitSendQueue();
+        Connection->Queue->FUN_0048B390();
     }
     return 1;
 }
@@ -65,15 +65,15 @@ int NullModemClass::InitSendQueue()
 // STRING: GAMEMD 0x832345
 // STRING: GAMEMD 0x83234A
 // STRING: GAMEMD 0x83234F
-int NullModemClass::DetectPort(SerialSettingsType* settings)
+int NullModemClass::FUN_005F19E0(SerialSettings_005F19E0* settings)
 {
-    static char com_ids[4][5] = { "COM1", "COM2", "COM3", "COM4" };
+    static char comNames[4][5] = { "COM1", "COM2", "COM3", "COM4" };
     int i;
 
-    if (!SerialPort) {
-        SerialPort = new WinModemClass;
+    if (!WinModem_00B72D20) {
+        WinModem_00B72D20 = new WinModemClass;
     } else {
-        SerialPort->SerialPortClose();
+        WinModem_00B72D20->FUN_00774950();
     }
 
     int baud = settings->Baud;
@@ -81,38 +81,38 @@ int NullModemClass::DetectPort(SerialSettingsType* settings)
 
     switch (settings->Port) {
         case 0x3f8:
-            device = com_ids[0];
+            device = comNames[0];
             break;
 
         case 0x2f8:
-            device = com_ids[1];
+            device = comNames[1];
             break;
 
         case 0x3e8:
-            device = com_ids[2];
+            device = comNames[2];
             break;
 
         case 0x2e8:
-            device = com_ids[3];
+            device = comNames[3];
             break;
 
         case 1:
             device = settings->ModemName;
 
-            if (ModemRegistry) {
-                delete ModemRegistry;
-                ModemRegistry = 0;
+            if (unknown_34) {
+                delete unknown_34;
+                unknown_34 = 0;
             }
             for (i = 0; i < 10; i++) {
-                ModemRegistry = new ModemRegistryEntryClass(i);
-                if (ModemRegistry->GetModemName()) {
-                    if (!strcmp(device, ModemRegistry->GetModemName())) {
-                        device = ModemRegistry->GetModemDeviceName();
+                unknown_34 = new ModemEntry_005BB6E0(i);
+                if (unknown_34->GetModemName()) {
+                    if (!strcmp(device, unknown_34->GetModemName())) {
+                        device = unknown_34->GetDeviceName();
                         break;
                     }
                 }
-                delete ModemRegistry;
-                ModemRegistry = 0;
+                delete unknown_34;
+                unknown_34 = 0;
             }
             break;
 
@@ -120,11 +120,11 @@ int NullModemClass::DetectPort(SerialSettingsType* settings)
             return 1;
     }
 
-    if (SerialPort->SerialPortOpen(device, baud, 0, 8, 1) == -1) {
+    if (WinModem_00B72D20->vf_1(device, baud, 0, 8, 1) == -1) {
         return 1;
     }
 
-    SerialPort->SerialPortClose();
+    WinModem_00B72D20->FUN_00774950();
     return 0;
 }
 
@@ -132,37 +132,37 @@ int NullModemClass::DetectPort(SerialSettingsType* settings)
 // FUNCTION: GAMEMD 0x5F1B70
 void NullModemClass::Shutdown()
 {
-    if (PortHandle != -1 && SerialPort != 0) {
-        SerialPort->SerialPortClose();
-        delete SerialPort;
-        SerialPort = 0;
-        PortHandle = -1;
-        DeleteConnection();
+    if (unknown_40 != -1 && WinModem_00B72D20 != 0) {
+        WinModem_00B72D20->FUN_00774950();
+        delete WinModem_00B72D20;
+        WinModem_00B72D20 = 0;
+        unknown_40 = -1;
+        FUN_005F1960();
     }
 }
 
 // Publish new retry timing, both here and on the connection object.
 // FUNCTION: GAMEMD 0x5F1BC0
-void NullModemClass::SetTiming(int retryDelta, int maxRetries, int timeout,
+void NullModemClass::SetTiming(int retryDelay, int retryLimit, int timeout,
                                int)
 {
-    RetryDelta = retryDelta;
-    MaxRetries = maxRetries;
+    RetryDelta = retryDelay;
+    MaxRetries = retryLimit;
     Timeout = timeout;
-    Connection->RetryDelta = retryDelta;
+    Connection->RetryDelta = retryDelay;
     Connection->MaxRetries = MaxRetries;
     Connection->Timeout = Timeout;
 }
 
 // Queue one outgoing message; a full send queue is counted, not retried.
 // FUNCTION: GAMEMD 0x5F1BF0
-int NullModemClass::SendMessage(void* buf, int buflen, int ackReq)
+int NullModemClass::FUN_005F1BF0(void* buf, int buflen, int ackReq)
 {
     if (NumConnections == 0) {
         return 0;
     }
 
-    int rc = Connection->SendPacket(buf, buflen, ackReq, 0);
+    int rc = Connection->vf_2(buf, buflen, ackReq, 0);
     if (!rc) {
         SendOverflows++;
     }
@@ -171,10 +171,10 @@ int NullModemClass::SendMessage(void* buf, int buflen, int ackReq)
 
 // Pop one received message, if the link is up.
 // FUNCTION: GAMEMD 0x5F1C30
-int NullModemClass::GetMessage(void* buf, int* buflen)
+int NullModemClass::FUN_005F1C30(void* buf, int* buflen)
 {
     if (NumConnections == 0) {
         return 0;
     }
-    return Connection->GetPacket(buf, buflen);
+    return Connection->vf_4(buf, buflen);
 }

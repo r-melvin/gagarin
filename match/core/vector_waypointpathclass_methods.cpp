@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, Items) == 0x04)
 GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgWaypointPathClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(WaypointPathClass*) == 4);

@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, Items) == 0x04
 GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgShadowcontrolclassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(ShadowControlClass*) == 4);

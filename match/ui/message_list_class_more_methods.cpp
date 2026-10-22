@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   FUNCTION: GAMEMD 0x5D4AD0  MessageListClass::SetWidth   (__thiscall)
-//   LIBRARY:  GAMEMD 0x4068E0  Debug_Printf (variadic; release stub)
+//   LIBRARY:  GAMEMD 0x4068E0  FUN_004068E0 (variadic; release stub)
 //   STRING:   GAMEMD 0x8306A8  "MessageListClass"
 //
 // Bytes reconfirmed from the local Ghidra disassembly of retail gamemd.exe.
@@ -9,7 +9,7 @@
 
 // Release-build debug printf (0x4068E0 is a bare RET stub). cdecl/variadic so
 // the call pushes exactly { format, value }. Reloc-normalised.
-extern "C" int __cdecl Debug_Printf(const char* fmt, ...);
+extern "C" int __cdecl FUN_004068E0(const char* fmt, ...);
 
 // FUNCTION: GAMEMD 0x5D4AD0  (__thiscall)
 // Apply a new width (less an 8px margin) to the list and every gadget: store on
@@ -19,7 +19,7 @@ void MessageListClass::SetWidth(int width)
 {
     width -= 8;
     Width = width;
-    Debug_Printf("MessageListClass", width);
+    FUN_004068E0("MessageListClass", width);
 
     TextLabelClass* node = MessageList;
     while (node)

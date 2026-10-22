@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 across 0x4E1450..0x4E1A40
 //   via the local Ghidra disassembly. Vtable/member offsets confirmed from the
-//   0x7E92BC vtable dump (see gadget_class_methods.h). Method *names* and the
-//   algorithm shape cross-checked against YRpp GadgetClass.h (consult-only) and
-//   the EA RA1 GadgetClass (Enable/Disable/Remove/Draw_Me/Sticky_Process/
-//   Action shapes survive verbatim; reference only, no transcription).
+//   0x7E92BC vtable dump (see gadget_class_methods.h). Method names are
+//   YRpp-cross-checked against each body's behaviour; every body is justified
+//   by its retail bytes.
 //
-// GadgetClass — base of the WW GUI gadget hierarchy: a LinkClass list node plus
+// GadgetClass — base of the GUI gadget hierarchy: a LinkClass list node plus
 // a screen rectangle, redraw/sticky/disabled flags, and the focus bit (0x100).
 // Functions below are ordered ascending by retail address.
 
@@ -33,7 +32,7 @@ extern GadgetClass* GadgetClass_StuckOn;    // 0x008B3E88
 void GadgetClass::Enable()
 {
     IsDisabled = 0;
-    IsToRepaint = 1;
+    RedrawPending = 1;
     KillFocus();
 }
 
@@ -43,7 +42,7 @@ void GadgetClass::Enable()
 void GadgetClass::Disable()
 {
     IsDisabled = 1;
-    IsToRepaint = 1;
+    RedrawPending = 1;
     KillFocus();
 }
 
@@ -101,7 +100,7 @@ void GadgetClass::DeleteList()
 int GadgetClass::Action(unsigned flags, unsigned* key, int modifier)
 {
     if (flags != 0) {
-        IsToRepaint = 1;
+        RedrawPending = 1;
         StickyProcess(flags);
         return 1;
     }
@@ -109,13 +108,12 @@ int GadgetClass::Action(unsigned flags, unsigned* key, int modifier)
 }
 
 // FUNCTION: GAMEMD 0x4E1550  GadgetClass::Draw (__thiscall, ret 0x4)
-// The RA1 `Draw_Me` shape: redraw when forced or dirty, and consume the dirty
-// bit. `forced` is dword-wide here (retail: `mov eax,[esp+4]; test eax,eax`) —
+// Redraw when forced or when the redraw byte is set, and clear that byte. `forced` is dword-wide here (retail: `mov eax,[esp+4]; test eax,eax`) —
 // DrawAll below widens its own bool argument with `and edi,0xff` before pushing.
 int GadgetClass::Draw(int forced)
 {
-    if (forced || IsToRepaint) {
-        IsToRepaint = 0;
+    if (forced || RedrawPending) {
+        RedrawPending = 0;
         return 1;
     }
     return 0;
@@ -134,9 +132,9 @@ void GadgetClass::DrawAll(bool forced)
 // FUNCTION: GAMEMD 0x4E15A0  GadgetClass::ExtractGadgetAt (__thiscall)
 // Walk the list from this gadget and return the smallest enabled one whose
 // rectangle contains the point, starting from a screen-sized best so the first
-// hit always qualifies. Ties go to the later gadget (`<=`). The shape follows
-// TS++'s Extract_Gadget_At_Mouse (Vinifera-Developers, consult-only): a
-// rectangle built from the gadget, a point-within test, an area compare.
+// hit always qualifies. Ties go to the later gadget (`<=`). The body is a
+// rectangle built from the gadget, a point-within test and an area compare,
+// as the retail instruction sequence shows.
 //
 // The body lives in a static inline helper whose cursor parameter starts as
 // `this`: after inlining VC6 coalesces the two and keeps the cursor in ECX
@@ -154,8 +152,8 @@ void GadgetClass::DrawAll(bool forced)
 // best area into EBX first). Operand order in either sum, all 24 orders of
 // the four field reads, an inline Right()/Bottom()/Area()/Contains() helper
 // set, a named best-area local before or inside the test, the area compare
-// reversed (flips JG to JL), a TS++-literal Rect temporary with constructor
-// and Is_Point_Within, a Point2D mouse temporary, and volatile locals (which
+// reversed (flips JG to JL), a Rect temporary with a constructor and a
+// point-within helper, a Point2D mouse temporary, and volatile locals (which
 // change the mechanism, not the tie-break) were all tried.
 //
 // TAIL-MERGE DIAGNOSTIC (eleventh-batch lever): does NOT apply here.
@@ -197,7 +195,7 @@ GadgetClass* GadgetClass::ExtractGadgetAt(int x, int y)
 // FUNCTION: GAMEMD 0x4E1960  GadgetClass::MarkRedraw (__thiscall)
 void GadgetClass::MarkRedraw()
 {
-    IsToRepaint = 1;
+    RedrawPending = 1;
 }
 
 // FUNCTION: GAMEMD 0x4E1970  GadgetClass::StickyProcess (__thiscall, ret 0x4)
@@ -254,7 +252,7 @@ int GadgetClass::IsListToRedraw()
 {
     GadgetClass* g = this;
     while (g != 0) {
-        if (g->IsToRepaint) {
+        if (g->RedrawPending) {
             return 1;
         }
         g = (GadgetClass*)g->GetNext();

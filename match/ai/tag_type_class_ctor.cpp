@@ -71,7 +71,7 @@ TagTypeClass::TagTypeClass(const char* id) : AbstractTypeClass(id)
             destination[i] = name[i];
     }
 
-    unknown_98 = TagTypes.ActiveCount;
+    unknown_98 = TagTypes.Count;
     TagTypeCtorAdd(reinterpret_cast<TagTypeCtorVector*>(&TagTypes), this);
     TagTypeCtorAdd(reinterpret_cast<TagTypeCtorVector*>(&DAT_00B0F670), this);
 }

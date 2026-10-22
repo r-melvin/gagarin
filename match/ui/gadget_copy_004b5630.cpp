@@ -7,7 +7,7 @@ GadgetCopyWideView_004B5630* GadgetCopyWideView_004B5630::FUN_004B5630(GadgetCop
 {
     FUN_00556600((GadgetCopyBaseView_004B5600*)source);
     X = source->X; Y = source->Y; Width = source->Width; Height = source->Height;
-    IsToRepaint = source->IsToRepaint; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
+    RedrawPending = source->RedrawPending; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
     Flags = source->Flags;
     unknown_24 = source->unknown_24; unknown_28 = source->unknown_28;
     unknown_2C = source->unknown_2C; unknown_2D = source->unknown_2D;
@@ -26,7 +26,7 @@ GadgetCopyOtherView_004B56E0* GadgetCopyOtherView_004B56E0::FUN_004B56E0(GadgetC
 {
     FUN_00556600((GadgetCopyBaseView_004B5600*)source);
     X = source->X; Y = source->Y; Width = source->Width; Height = source->Height;
-    IsToRepaint = source->IsToRepaint; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
+    RedrawPending = source->RedrawPending; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
     Flags = source->Flags;
     unknown_24 = source->unknown_24; unknown_28 = source->unknown_28;
     unknown_2C = source->unknown_2C; unknown_2D = source->unknown_2D; unknown_2E = source->unknown_2E;
@@ -42,7 +42,7 @@ GadgetCopySmallView_004B5780* GadgetCopySmallView_004B5780::FUN_004B5780(GadgetC
 {
     FUN_00556600((GadgetCopyBaseView_004B5600*)source);
     X = source->X; Y = source->Y; Width = source->Width; Height = source->Height;
-    IsToRepaint = source->IsToRepaint; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
+    RedrawPending = source->RedrawPending; IsSticky = source->IsSticky; IsDisabled = source->IsDisabled;
     Flags = source->Flags;
     return this;
 }

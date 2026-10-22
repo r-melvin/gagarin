@@ -36,7 +36,7 @@ struct VectorBase
     unsigned char IsValid;       // +0x000C
     unsigned char IsAllocated;   // +0x000D
     char          _pad0E[0x2];
-    int           ActiveCount;   // +0x0010
+    int           Count;   // +0x0010
 
     // VectorClass::Resize, the inlined inner half of the retail function.
     // Kept inline in the header so the remaining address-scoped views share one body: the
@@ -47,7 +47,7 @@ GG_STATIC_ASSERT(offsetof(VectorBase, Vector) == 0x04);
 GG_STATIC_ASSERT(offsetof(VectorBase, Length) == 0x08);
 GG_STATIC_ASSERT(offsetof(VectorBase, IsValid) == 0x0C);
 GG_STATIC_ASSERT(offsetof(VectorBase, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(VectorBase, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(VectorBase, Count) == 0x10);
 
 // The retail body is DynamicVectorClass::Resize with VectorClass::Resize
 // inlined into it. Writing it as the two nested functions - the inner one

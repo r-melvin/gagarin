@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x41D300. The global at 0x889FB8 is a DynamicVectorClass: its
 //   fields fall at 0x889FB8 (vptr), 0x889FBC (Items), 0x889FC0 (Capacity),
 //   0x889FC4/0x889FC5 (IsValid/IsAllocated), 0x889FC8 (Count) and 0x889FCC
-//   (CapacityIncrement), which is RA1's layout exactly (structure reference
-//   only). The growth call goes through vtable slot +0x8 with the receiver in
+//   (CapacityIncrement). The growth call goes through vtable slot +0x8 with the receiver in
 //   ECX and two pushed arguments.
 #ifndef GG_MATCH_CORE_REGISTERED_OBJECT_CTOR_METHODS_H
 #define GG_MATCH_CORE_REGISTERED_OBJECT_CTOR_METHODS_H

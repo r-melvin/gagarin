@@ -1,11 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 //   Every body below was written against the retail disassembly of the user's
-//   gamemd.exe v1.001 read through the local Ghidra CLI. EA's GPLv3 RA1 release
-//   (CODE/RNDSTRAW.CPP, CODE/SHA.H) supplied function and member NAMES and the
-//   algorithm's shape only; nothing is transcribed from it.
+//   gamemd.exe v1.001 read through the local Ghidra CLI.
 //
-// RandomStraw - the whole retail translation unit, bodies ascending by address.
+// RandomStraw - the retail address run 0x6616B0-0x661CA9, bodies ascending by address.
 
 #include "random_straw.h"
 
@@ -13,16 +11,16 @@
 // The shapes retail expands at every use site.
 // ---------------------------------------------------------------------------
 
-// The SHA-1 engine's constructor. Retail's store order - the IsCached byte,
-// then Length, then PartialCount, then the five chaining seeds - is the
+// The SHA-1 engine's constructor. Retail's store order - the unknown_00 byte,
+// then Length, then PendingCount, then the five chaining seeds - is the
 // initialiser list followed by the body, so it is written that way.
-__forceinline SHAEngine::SHAEngine() : IsCached(false), Length(0), PartialCount(0)
+__forceinline Sha1State::Sha1State() : unknown_00(false), Length(0), PendingCount(0)
 {
-    Acc[0] = GG_SHA_SA;
-    Acc[1] = GG_SHA_SB;
-    Acc[2] = GG_SHA_SC;
-    Acc[3] = GG_SHA_SD;
-    Acc[4] = GG_SHA_SE;
+    Chain[0] = GG_SHA_SA;
+    Chain[1] = GG_SHA_SB;
+    Chain[2] = GG_SHA_SC;
+    Chain[3] = GG_SHA_SD;
+    Chain[4] = GG_SHA_SE;
 }
 
 // Clear the object back to its post-construction state, so no seed material is
@@ -30,17 +28,17 @@ __forceinline SHAEngine::SHAEngine() : IsCached(false), Length(0), PartialCount(
 // is where retail's `REP STOSD` of 0x40 dwords comes from.
 __forceinline void RandomStraw::ResetInline()
 {
-    SeedBits = 0;
+    BitsSeeded = 0;
     Current = 0;
     memset(Random, '\0', sizeof(Random));
 }
 
 // Hash the seed pool over itself twenty bytes at a time, so every seed bit ends
-// up influencing every other one. `tocopy` is an unsigned comparison because
+// up influencing every other one. `count` is an unsigned comparison because
 // both arms are sizeof expressions, which is what makes 0x661BDD a `JBE`.
-__forceinline void RandomStraw::ScrambleSeedInline()
+__forceinline void RandomStraw::ScrambleInline()
 {
-    SHAEngine sha;
+    Sha1State sha;
 
     for (int index = 0; index < sizeof(Random); index++) {
         char digest[20];
@@ -48,8 +46,8 @@ __forceinline void RandomStraw::ScrambleSeedInline()
         sha.Hash(&Random[0], sizeof(Random));
         sha.Result(digest);
 
-        int tocopy = sizeof(digest) < (sizeof(Random) - index) ? sizeof(digest) : (sizeof(Random) - index);
-        FUN_007CA090(((char*)&Random[0]) + index, digest, tocopy);
+        int count = sizeof(digest) < (sizeof(Random) - index) ? sizeof(digest) : (sizeof(Random) - index);
+        FUN_007CA090(((char*)&Random[0]) + index, digest, count);
     }
 }
 
@@ -57,18 +55,18 @@ __forceinline void RandomStraw::ScrambleSeedInline()
 // eight wrapped into the pool's length, which is the `CDQ; AND EDX,7; SAR 3;
 // AND EAX,0xFF` run at 0x66177C. The bit is only formed inside the guarded arm,
 // which is where retail sinks it too.
-__forceinline void RandomStraw::SeedBitInline(int seed)
+__forceinline void RandomStraw::AddBitInline(int seed)
 {
-    char* ptr = ((char*)&Random[0]) + ((SeedBits / 8) % sizeof(Random));
+    char* ptr = ((char*)&Random[0]) + ((BitsSeeded / 8) % sizeof(Random));
 
     if (seed & 0x01) {
-        char frac = (char)(1 << (SeedBits & (8 - 1)));
-        *ptr ^= frac;
+        char bit = (char)(1 << (BitsSeeded & (8 - 1)));
+        *ptr ^= bit;
     }
-    SeedBits++;
+    BitsSeeded++;
 
-    if (SeedBits == (sizeof(Random) * 8)) {
-        ScrambleSeedInline();
+    if (BitsSeeded == (sizeof(Random) * 8)) {
+        ScrambleInline();
     }
 }
 
@@ -87,10 +85,10 @@ RandomStraw* RandomStraw::Construct()
     ChainFrom = 0;
     Vtable = &GG_VTABLE_STRAW;
 
-    SeedBits = 0;
+    BitsSeeded = 0;
     Current = 0;
 
-    RandomClass* gen = &Random[0];
+    Generator_0065C890* gen = &Random[0];
     for (int index = 0; index < 32; index++) {
         gen->Construct(0, 0);
         gen++;
@@ -122,58 +120,58 @@ void RandomStraw::Reset()
 // rather than left as the unsigned sizeof product, which is what makes the
 // compare at 0x661759 a signed `JGE`.
 // FUNCTION: GAMEMD 0x661750
-int RandomStraw::Seed_Bits_Needed() const
+int RandomStraw::FUN_00661750() const
 {
     const int total = sizeof(Random) * 8;
-    if (SeedBits < total) {
-        return total - SeedBits;
+    if (BitsSeeded < total) {
+        return total - BitsSeeded;
     }
     return 0;
 }
 
 // The out-of-line copy of the single-bit seed step.
 // FUNCTION: GAMEMD 0x661770
-void RandomStraw::Seed_Bit(int seed)
+void RandomStraw::FUN_00661770(int seed)
 {
-    SeedBitInline(seed);
+    AddBitInline(seed);
 }
 
 // Feed eight bits, lowest first. The shift is an eight-bit `SAR` on the
 // parameter's own stack home because the parameter really is a char.
 // FUNCTION: GAMEMD 0x661850
-void RandomStraw::Seed_Byte(char seed)
+void RandomStraw::FUN_00661850(char seed)
 {
     for (int index = 0; index < 8; index++) {
-        SeedBitInline(seed);
+        AddBitInline(seed);
         seed >>= 1;
     }
 }
 
 // Feed sixteen bits, lowest first.
 // FUNCTION: GAMEMD 0x661960
-void RandomStraw::Seed_Short(short seed)
+void RandomStraw::FUN_00661960(short seed)
 {
     for (int index = 0; index < (sizeof(seed) * 8); index++) {
-        SeedBitInline(seed);
+        AddBitInline(seed);
         seed >>= 1;
     }
 }
 
 // Feed a full thirty-two bits, lowest first.
 // FUNCTION: GAMEMD 0x661A60
-void RandomStraw::Seed_Long(long seed)
+void RandomStraw::FUN_00661A60(long seed)
 {
     for (int index = 0; index < (sizeof(seed) * 8); index++) {
-        SeedBitInline(seed);
+        AddBitInline(seed);
         seed >>= 1;
     }
 }
 
 // The out-of-line copy of the SHA-1 pool scramble.
 // FUNCTION: GAMEMD 0x661B70
-void RandomStraw::Scramble_Seed()
+void RandomStraw::FUN_00661B70()
 {
-    ScrambleSeedInline();
+    ScrambleInline();
 }
 
 // Serve random bytes. A null buffer or a non-positive length is handed back to

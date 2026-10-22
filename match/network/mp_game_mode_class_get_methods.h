@@ -4,7 +4,7 @@
 //   Ghidra CLI at 0x5D5F30: a VC6 function-local static guard (`TEST byte
 //   [0xABFD70],1`, `OR CL,1`) wrapping a DynamicVectorClass at 0xABFDA0
 //   (vptr 0xABFDA0 = 0x7EED20, Items 0xABFDA4, Capacity 0xABFDA8, IsValid
-//   0xABFDAC, IsAllocated 0xABFDAD, Count 0xABFDB0, GrowthStep 0xABFDB4 =
+//   0xABFDAC, IsAllocated 0xABFDAD, Count 0xABFDB0, CapacityIncrement 0xABFDB4 =
 //   10), constructed through the VectorClass base ctor CALL 0x5D89F0 with
 //   (0, 0) pushed and registered with atexit CALL 0x7C978A for the teardown
 //   0x5D5B20 (which restores the base vtable 0x7EED40 and frees Items through
@@ -48,7 +48,7 @@ GG_STATIC_ASSERT(offsetof(MultiplayerGameMode_005D5F30, At_28) == 0x28);
 // instance of the canonical template constructor.
 typedef DynamicVectorClass<MultiplayerGameMode_005D5F30*> ModeVector_005D5F30;
 GG_STATIC_ASSERT(sizeof(ModeVector_005D5F30) == 0x18);
-GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(ModeVector_005D5F30, CapacityIncrement) == 0x14);
 
 // FUNCTION: GAMEMD 0x5D5F30 — MultiplayerGameMode::Get (static).

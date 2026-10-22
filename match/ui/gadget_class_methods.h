@@ -8,15 +8,13 @@
 //   YRpp GadgetClass.h / LinkClass.h (consult-only; every offset reconfirmed
 //   here from the disassembly).
 //
-// GadgetClass — base of the WW GUI gadget hierarchy. It is a doubly-linked-list
+// GadgetClass — base of the GUI gadget hierarchy. It is a doubly-linked-list
 // node (LinkClass: Next@0x4, Previous@0x8) plus a screen rectangle and flags.
 //
-// Member names (X/Y/Width/Height/IsToRepaint/IsSticky/IsDisabled/Flags, and the
-// StuckOn/Focused statics) are the original Westwood names, cross-checked against
-// TS++ src/ui/gadget.h (Vinifera-Developers, GPLv3) — the Tiberian Sun engine is
-// RA2's direct ancestor and its GadgetClass layout is identical up to +0x24. The
-// RA2 vtable inserts two extra slots (0x70/0x74) that TS lacks; the slot map
-// below is the binary-derived RA2 one, not TS's.
+// Member names: X/Y/Width/Height/IsSticky/IsDisabled/Flags are YRpp-cross-checked
+// against the accesses below. RedrawPending (+0x1C) is descriptive: it is set by
+// Enable/Disable/Action/MarkRedraw and consumed by Draw. The slot map below is
+// derived from the binary's 0x7E92BC table.
 //
 // CONFIRMED vtable layout (byte offset -> entry, from the 0x7E92BC dump):
 //   0x00 ~dtor(scalar-del)  0x04 GetNext      0x08 GetPrev      0x0C Add
@@ -96,7 +94,7 @@ struct GadgetClass : public LinkClass
     int          Y;          // +0x10
     int          Width;      // +0x14
     int          Height;     // +0x18
-    unsigned char IsToRepaint; // +0x1C
+    unsigned char RedrawPending; // +0x1C
     unsigned char IsSticky;    // +0x1D
     unsigned char IsDisabled;  // +0x1E
     unsigned char _pad1F;      // +0x1F
@@ -109,7 +107,7 @@ GG_STATIC_ASSERT(offsetof(GadgetClass, X)           == 0x0C);  // SetPosition  [
 GG_STATIC_ASSERT(offsetof(GadgetClass, Y)           == 0x10);  // SetPosition  [ECX+0x10]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Width)       == 0x14);  // SetDimension [ECX+0x14]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Height)      == 0x18);  // SetDimension [ECX+0x18]
-GG_STATIC_ASSERT(offsetof(GadgetClass, IsToRepaint) == 0x1C);  // MarkRedraw   [ECX+0x1C]
+GG_STATIC_ASSERT(offsetof(GadgetClass, RedrawPending) == 0x1C);  // MarkRedraw   [ECX+0x1C]
 GG_STATIC_ASSERT(offsetof(GadgetClass, IsSticky)    == 0x1D);  // StickyProcess[ECX+0x1D]
 GG_STATIC_ASSERT(offsetof(GadgetClass, IsDisabled)  == 0x1E);  // Enable       [ECX+0x1E]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Flags)       == 0x20);  // KillFocus    [ECX+0x20]

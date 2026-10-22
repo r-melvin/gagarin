@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at 0x552490.
 
 #include "straws_get_methods.h"
@@ -30,7 +30,7 @@
 // null and length guards split into two separate `if`s (3.6% — cl then
 // duplicates the whole `return 0` tail); a `char* dest` local copy of the
 // parameter advanced instead of the parameter itself (3.8%, a third reload);
-// a `char*` parameter with `destbuf += len` (4.6%, byte-identical output to
+// a `char*` parameter with `dest += len` (4.6%, byte-identical output to
 // this form); and `slen <= 0` for the guard, which does free EBX of the
 // constant but then deletes retail's duplicated loop-head `TEST EBX,EBX`
 // and still leaves the destination in EAX, so it is strictly further away.
@@ -42,11 +42,11 @@
 // same two epilogues with the same asymmetry, so nothing is merged that retail
 // leaves split. This function's residual is far larger than a colouring
 // exchange (4.6%, heavy block-order divergence) and needs its own pass.
-int Straw_00552490::Get(void* destbuf, int slen)
+int Straw_00552490::Get(void* dest, int slen)
 {
     int total = 0;
 
-    if (destbuf == 0 || slen < 1) {
+    if (dest == 0 || slen < 1) {
         return 0;
     }
 
@@ -56,13 +56,13 @@ int Straw_00552490::Get(void* destbuf, int slen)
 
             char* source;
             if (this->Control == 1) {
-                source = (this->Buffer + this->BlockHeader.UncompCount) - this->Counter;
+                source = (this->Buffer + this->Header.UnpackedSize) - this->Counter;
             } else {
-                source = (this->Buffer2 + this->BlockHeader.CompCount) - this->Counter + 4;
+                source = (this->Buffer2 + this->Header.PackedSize) - this->Counter + 4;
             }
 
-            memmove(destbuf, source, len);
-            destbuf = (char*)destbuf + len;
+            memmove(dest, source, len);
+            dest = (char*)dest + len;
             slen -= len;
             total += len;
             this->Counter -= len;
@@ -73,31 +73,31 @@ int Straw_00552490::Get(void* destbuf, int slen)
         }
 
         if (this->Control == 1) {
-            if (this->Get_006C98E0(&this->BlockHeader, 4) != 4) {
+            if (this->Get_006C98E0(&this->Header, 4) != 4) {
                 break;
             }
 
             char* ptr = (this->SafetyMargin + this->BlockSize
-                         - this->BlockHeader.CompCount) + this->Buffer;
-            if (this->Get_006C98E0(ptr, this->BlockHeader.CompCount)
-                != this->BlockHeader.CompCount) {
+                         - this->Header.PackedSize) + this->Buffer;
+            if (this->Get_006C98E0(ptr, this->Header.PackedSize)
+                != this->Header.PackedSize) {
                 break;
             }
 
             FUN_00551C60(ptr, this->Buffer, 0);
-            this->Counter = this->BlockHeader.UncompCount;
+            this->Counter = this->Header.UnpackedSize;
         } else {
-            this->BlockHeader.UncompCount =
+            this->Header.UnpackedSize =
                 (unsigned short)this->Get_006C98E0(this->Buffer, this->BlockSize);
-            if (this->BlockHeader.UncompCount == 0) {
+            if (this->Header.UnpackedSize == 0) {
                 break;
             }
 
-            this->BlockHeader.CompCount =
+            this->Header.PackedSize =
                 (unsigned short)FUN_00551E50(this->Buffer, this->Buffer2 + 4,
-                                             this->BlockHeader.UncompCount);
-            memmove(this->Buffer2, &this->BlockHeader, 4);
-            this->Counter = this->BlockHeader.CompCount + 4;
+                                             this->Header.UnpackedSize);
+            memmove(this->Buffer2, &this->Header, 4);
+            this->Counter = this->Header.PackedSize + 4;
         }
     }
 

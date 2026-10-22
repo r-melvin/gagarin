@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTeamTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(TeamTypeClass*) == 4);

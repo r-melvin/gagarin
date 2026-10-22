@@ -25,11 +25,11 @@ IPXManagerClass::~IPXManagerClass()
         delete MulticastChannel;
         MulticastChannel = 0;
     }
-    for (int i = 0; i < NumConn; ++i) {
+    for (int i = 0; i < ConnectionCount; ++i) {
         delete Connection[i];
         Connection[i] = 0;
     }
-    NumConn = 0;
+    ConnectionCount = 0;
 }
 
 // SYNTHETIC: GAMEMD 0x5430E0

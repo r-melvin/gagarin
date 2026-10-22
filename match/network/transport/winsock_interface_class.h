@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Base COL at 0x80EAF8 points to TypeDescriptor 0x84D8D0, whose name is
 //   .?AVWinsockInterfaceClass@@. Base vtable address point 0x7F79BC has 23
 //   slots, read directly from pinned retail PE.
@@ -23,7 +23,7 @@
 
 // Only imports/globals reached by StartListening and the two buffer drains.
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) -- log sink used on socket errors.
-extern "C" int __cdecl Debug_Printf(const char* format, ...);
+extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete target used by the buffer drains;
 // the vector object also has an _gg_free relocation to this address.
 // GLOBAL: GAMEMD 0x00B73550 -- window passed to WSAAsyncSelect.
@@ -38,7 +38,7 @@ void __fastcall FUN_0064DE80(unsigned long* crc, unsigned long value);
 // The retail SendPacket/Broadcast methods inline this vector AddItem behavior.
 template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)
 {
-    if (v.ActiveCount >= v.Capacity)
+    if (v.Count >= v.Capacity)
     {
         if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0)
         {
@@ -48,7 +48,7 @@ template<class T> inline bool WinsockAddItem(DynamicVectorClass<T>& v, T item)
         else
             return false;
     }
-    int index = v.ActiveCount++;
+    int index = v.Count++;
     v.Items[index] = item;
     return true;
 }
@@ -110,7 +110,7 @@ public:
     // SYNTHETIC: GAMEMD 0x7B2780 (decl; reloc) -- scalar deleting destructor, slot 0 target.
     virtual ~WinsockInterfaceClass();
     // FUNCTION: GAMEMD 0x7B1B80 (decl; reloc) -- base slot 1 target.
-    virtual void CloseSockets();
+    virtual void vf_1();
     // FUNCTION: GAMEMD 0x7B22E0 (decl; reloc) -- base slot 2 target.
     virtual int GetPacket(void* packet, int* packetLen, void* address,
                           unsigned int* addressLen, unsigned short* unknown1A);
@@ -129,7 +129,7 @@ public:
     // FUNCTION: GAMEMD 0x7B1C50 (decl; reloc) -- base slot 8 target.
     virtual void StopListening();
     // FUNCTION: GAMEMD 0x7B25E0 (decl; reloc) -- base slot 9 target.
-    virtual void ClearSocketError(SOCKET socket);
+    virtual void vf_9(SOCKET socket);
     // FUNCTION: GAMEMD 0x7B2630 (decl; reloc) -- base slot 10 target.
     virtual bool SetSocketBuffers(SOCKET socket);
     // FUNCTION: GAMEMD 0x7B1720 (decl; reloc) -- base slot 11 target.
@@ -144,7 +144,7 @@ public:
     // FUNCTION: GAMEMD 0x7B2760 (decl; reloc) -- base slot 15 target.
     virtual bool Init(int socketNumber);
     // FUNCTION: GAMEMD 0x7B2770 (decl; reloc) -- base slot 16 target.
-    virtual int MessageHandler(HWND window, unsigned int message,
+    virtual int vf_16(HWND window, unsigned int message,
                                unsigned int wParam, long lParam);
     // FUNCTION: GAMEMD 0x7B26D0 (decl; reloc) -- base slot 17 target.
     virtual bool GetHostName(char* name, int nameLen);
@@ -185,7 +185,7 @@ public:
     bool WinsockInitialised;                       // +0x3F068
     unsigned char unknown_3F069[3];                // +0x3F069
     SOCKET Socket;                                 // +0x3F06C
-    SOCKET ListenSocket;                           // +0x3F070
+    SOCKET unknown_3F070;                           // +0x3F070
     unsigned long ReceiveCrc;                      // +0x3F074
     unsigned char ReceiveBuffer[0x280 - 4];        // +0x3F078
     unsigned char unknown_3F2F4[4];                // +0x3F2F4
@@ -211,7 +211,7 @@ GG_STATIC_ASSERT(offsetof(WinsockBufferType, Payload) == 0x20);
 GG_STATIC_ASSERT(sizeof(WinsockBufferType*) == 4);
 GG_STATIC_ASSERT(sizeof(WinsockBufferVector) == 0x18);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(WinsockBufferVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(WinsockBufferVector, CapacityIncrement) == 0x14);
@@ -231,7 +231,7 @@ GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticInBuffersInUse) == 0x3F05
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticOutBuffersInUse) == 0x3F060);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, StaticAltOutBuffersInUse) == 0x3F064);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, Socket) == 0x3F06C);
-GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, ListenSocket) == 0x3F070);
+GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, unknown_3F070) == 0x3F070);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, ReceiveBuffer) == 0x3F078);
 GG_STATIC_ASSERT(offsetof(WinsockInterfaceClass, unknown_3F2F8) == 0x3F2F8);
 GG_STATIC_ASSERT(sizeof(WinsockInterfaceClass) == 0x3F2FC);

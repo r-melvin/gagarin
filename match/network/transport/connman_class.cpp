@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob1
 #include <string.h>
 #include "connman_class.h"
@@ -99,14 +99,14 @@ void IPXManagerClass::SetTiming(int retrydelta, int maxretries, int timeout, boo
     this->MaxRetries = maxretries;
     this->Timeout    = timeout;
 
-    Debug_Printf("IPX Manager: RetryDelta = %d\n", retrydelta);
-    Debug_Printf("MaxAhead is %d\n", MaxAhead);
+    FUN_004068E0("IPX Manager: RetryDelta = %d\n", retrydelta);
+    FUN_004068E0("MaxAhead is %d\n", MaxAhead);
 
     if (setglobal) {
-        this->SetGlobalTiming(this->RetryDelta, this->MaxRetries, this->Timeout);
+        this->vf_14(this->RetryDelta, this->MaxRetries, this->Timeout);
     }
 
-    for (int i = 0; i < this->NumConn; ++i) {
+    for (int i = 0; i < this->ConnectionCount; ++i) {
         this->Connection[i]->RetryDelta = this->RetryDelta;
         this->Connection[i]->MaxRetries = this->MaxRetries;
         this->Connection[i]->Timeout    = this->Timeout;
@@ -120,7 +120,7 @@ void IPXManagerClass::SetTiming(int retrydelta, int maxretries, int timeout, boo
 }
 
 // FUNCTION: GAMEMD 0x540D10
-void IPXManagerClass::SetGlobalTiming(int retrydelta, int maxretries, int timeout)
+void IPXManagerClass::vf_14(int retrydelta, int maxretries, int timeout)
 {
     if (GlobalChannel != 0) {
         GlobalChannel->RetryDelta = retrydelta;
@@ -165,24 +165,24 @@ void IPXManagerClass::SetRouterTiming(int retrydelta, int maxretries, int timeou
 }
 
 // FUNCTION: GAMEMD 0x540F90
-int IPXManagerClass::NumConnections()
+int IPXManagerClass::vf_4()
 {
-    return NumConn;
+    return ConnectionCount;
 }
 
 // FUNCTION: GAMEMD 0x540FA0
-int IPXManagerClass::ConnectionId(int index)
+int IPXManagerClass::vf_5(int index)
 {
-    if (index >= 0 && index < NumConn) {
+    if (index >= 0 && index < ConnectionCount) {
         return Connection[index]->ID;
     }
     return -1;
 }
 
 // FUNCTION: GAMEMD 0x541040
-int IPXManagerClass::ConnectionIndex(int id)
+int IPXManagerClass::vf_6(int id)
 {
-    for (int i = 0; i < NumConn; ++i) {
+    for (int i = 0; i < ConnectionCount; ++i) {
         if (Connection[i]->ID == id) {
             return i;
         }
@@ -193,7 +193,7 @@ int IPXManagerClass::ConnectionIndex(int id)
 // FUNCTION: GAMEMD 0x541070
 int IPXManagerClass::ConnectionIndexOf(ConnectionClass* conn)
 {
-    for (int i = 0; i < NumConn; ++i) {
+    for (int i = 0; i < ConnectionCount; ++i) {
         if (Connection[i] == conn) {
             return i;
         }
@@ -208,36 +208,36 @@ int IPXManagerClass::ConnectionIndexOf(ConnectionClass* conn)
 }
 
 // FUNCTION: GAMEMD 0x5414C0
-int IPXManagerClass::SendPacket(void* buf, int buflen, int ack_required, int id)
+int IPXManagerClass::vf_2(void* buf, int buflen, int needsAck, int id)
 {
-    if (Installed && Active && NumConn) {
+    if (unknown_04 && Active && ConnectionCount) {
         if (id == -1) {
             if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0) {
                 CommBufferClass* queue = MulticastChannel->Queue;
-                if (queue->SendCount < queue->unknown_04) {
-                    return MulticastChannel->Send_Packet(buf, buflen, ack_required, 0xff);
+                if (queue->unknown_28 < queue->unknown_04) {
+                    return MulticastChannel->vf_2(buf, buflen, needsAck, 0xff);
                 }
             } else {
                 int i;
-                for (i = 0; i < NumConn; ++i) {
+                for (i = 0; i < ConnectionCount; ++i) {
                     CommBufferClass* queue = Connection[i]->Queue;
-                    if (queue->SendCount == queue->unknown_04) {
+                    if (queue->unknown_28 == queue->unknown_04) {
                         ++unknown_A0;
                         return 0;
                     }
                 }
-                for (i = 0; i < NumConn; ++i) {
-                    Connection[i]->Send_Packet(buf, buflen, ack_required, 0);
+                for (i = 0; i < ConnectionCount; ++i) {
+                    Connection[i]->vf_2(buf, buflen, needsAck, 0);
                 }
                 return 1;
             }
         } else {
-            int index = ConnectionIndex(id);
+            int index = vf_6(id);
             if (index != -1) {
                 ConnectionClass* conn = Connection[index];
                 CommBufferClass* queue = conn->Queue;
-                if (queue->SendCount != queue->unknown_04) {
-                    conn->Send_Packet(buf, buflen, ack_required, 0);
+                if (queue->unknown_28 != queue->unknown_04) {
+                    conn->vf_2(buf, buflen, needsAck, 0);
                     return 1;
                 }
             }
@@ -248,16 +248,16 @@ int IPXManagerClass::SendPacket(void* buf, int buflen, int ack_required, int id)
 }
 
 // FUNCTION: GAMEMD 0x5415F0
-int IPXManagerClass::ReceivePacket(void* buf, int* buflen, int* id)
+int IPXManagerClass::vf_3(void* buf, int* buflen, int* id)
 {
-    if (Installed && Active && NumConn != 0) {
-        if (CurConnection >= NumConn) {
+    if (unknown_04 && Active && ConnectionCount != 0) {
+        if (CurConnection >= ConnectionCount) {
             CurConnection = 0;
         }
-        for (int i = 0; i < NumConn; ++i) {
-            int received = Connection[CurConnection]->Get_Packet(buf, buflen);
+        for (int i = 0; i < ConnectionCount; ++i) {
+            int received = Connection[CurConnection]->vf_4(buf, buflen);
             int connid = Connection[CurConnection]->ID;
-            if (++CurConnection >= NumConn) {
+            if (++CurConnection >= ConnectionCount) {
                 CurConnection = 0;
             }
             if (received) {
@@ -307,12 +307,12 @@ int IPXManagerClass::Service()
             addr = *(IPXAddressClass*)from;
             CurrentPacket = &packet;
 
-            if (packet.Magic == GlobalChannel->MagicNumber) {
+            if (packet.Magic == GlobalChannel->unknown_24) {
                 if (FUN_00541680(&packet, &packet, size, &from, port)) {
                     continue;
                 }
-                if (!GlobalChannel->Receive_Packet_From((CommHeaderType*)&packet, size, &addr, port)) {
-                    Debug_Printf("GlobalChannel recive buffer overflow %d\n", ++unknown_A4);
+                if (!GlobalChannel->vf_12((ConnPacketHeader*)&packet, size, &addr, port)) {
+                    FUN_004068E0("GlobalChannel recive buffer overflow %d\n", ++unknown_A4);
                     break;
                 }
                 if (Session_00A8B238.GameMode != 4 || !Flag_00A8E2C8) {
@@ -326,7 +326,7 @@ int IPXManagerClass::Service()
                 if (PlayerCount_00A8DA84 == 0) {
                     continue;
                 }
-                Debug_Printf("NAT Alert - port number fiddling detected!\n");
+                FUN_004068E0("NAT Alert - port number fiddling detected!\n");
                 if (size < 0x10 || packet.Code == 2 || size < 0x3f) {
                     continue;
                 }
@@ -347,26 +347,26 @@ int IPXManagerClass::Service()
                 }
                 {
                     unsigned short oldport = Ports_00A8E2B2[i];
-                    Debug_Printf("Player %s is having his port translated to %d\n", name, port);
+                    FUN_004068E0("Player %s is having his port translated to %d\n", name, port);
                     Ports_00A8E2B2[i] = port;
                     IdMap_00B052D0.FUN_00664400(Players_00A8DA78[i]->Id, port);
-                    GlobalChannel->Remove_Packets_From(&addr, oldport);
-                    GlobalChannel->Remove_Packets_From(&addr, Players_00A8DA78[i]->Address.Port);
+                    GlobalChannel->vf_16(&addr, oldport);
+                    GlobalChannel->vf_16(&addr, Players_00A8DA78[i]->Address.Port);
                     Players_00A8DA78[i]->Address = addr;
                     Players_00A8DA78[i]->Address.FUN_0053F200(port);
                     IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->Id, &Players_00A8DA78[i]->Address);
                     SlotPlayers_00A8DA90[Session_00A8B238.FUN_0069BC60(i)]->Address = addr;
                     SlotPlayers_00A8DA90[Session_00A8B238.FUN_0069BC60(i)]->Address.FUN_0053F200(port);
                 }
-                for (j = 0; j < NumConn; ++j) {
+                for (j = 0; j < ConnectionCount; ++j) {
                     if (FUN_007C8D20(NarrowName_007350C0(Connection[j]->Name), name) == 0) {
                         Connection[j]->Address = addr;
                         Connection[j]->Address.FUN_0053F200(port);
-                        Debug_Printf("Set address for connection %d to %s\n", j, Connection[j]->Address.FUN_0053F0E0(0));
+                        FUN_004068E0("Set address for connection %d to %s\n", j, Connection[j]->Address.FUN_0053F0E0(0));
                         break;
                     }
                 }
-                if (Flag_00A8D60E || NumConn == 0) {
+                if (Flag_00A8D60E || ConnectionCount == 0) {
                     continue;
                 }
                 if (HouseCount_00A80238 <= Players_00A8DA78[i]->Id) {
@@ -375,7 +375,7 @@ int IPXManagerClass::Service()
                 if (!Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->Id])) {
                     continue;
                 }
-                Debug_Printf("Frame %d, Router apparently changed address from %s to %s\n",
+                FUN_004068E0("Frame %d, Router apparently changed address from %s to %s\n",
                              Frame_00A8ED84, MulticastChannel->Address.FUN_0053F0E0(0), addr.FUN_0053F0E0(0));
                 MulticastChannel->Address = addr;
                 MulticastChannel->Address.FUN_0053F200(port);
@@ -384,47 +384,47 @@ int IPXManagerClass::Service()
                 Address_00A8DBA4 = addr;
                 Address_00A8DBA4.FUN_0053F200(port);
                 *(unsigned short*)&Port_00A8DBBC = port;
-            } else if (packet.Magic == RouterChannel->MagicNumber) {
+            } else if (packet.Magic == RouterChannel->unknown_24) {
                 if (!Flag_00A8DBA0) {
                     continue;
                 }
-                if (!RouterChannel->Receive_Packet_From((CommHeaderType*)&packet, size, &addr, 0)) {
-                    Debug_Printf("RouterChannel recive buffer overflow %d\n", ++unknown_A4);
+                if (!RouterChannel->vf_12((ConnPacketHeader*)&packet, size, &addr, 0)) {
+                    FUN_004068E0("RouterChannel recive buffer overflow %d\n", ++unknown_A4);
                     break;
                 }
-            } else if (packet.Magic == MagicNumber) {
+            } else if (packet.Magic == unknown_20) {
                 if (FUN_00541680(&packet, &packet, size, &from, port)) {
                     continue;
                 }
                 if (Flag_00A8DBA0 && packet.Flag == 0xff) {
                     if (packet.Code == 2) {
-                        MulticastChannel->Receive_Packet((CommHeaderType*)&packet, size);
-                    } else if (NumConn > 0) {
+                        MulticastChannel->Receive_Packet((ConnPacketHeader*)&packet, size);
+                    } else if (ConnectionCount > 0) {
                         switch (packet.Code) {
                         case 0:
-                            Debug_Printf("Adding DATA_ACK packet %d from %s ; %d to multicast queue\n",
+                            FUN_004068E0("Adding DATA_ACK packet %d from %s ; %d to multicast queue\n",
                                          packet.Id, addr.FUN_0053F0E0(0), port);
                             break;
                         case 1:
-                            Debug_Printf("Adding DATA_NOACK packet %d from %s ; %d to multicast queue\n",
+                            FUN_004068E0("Adding DATA_NOACK packet %d from %s ; %d to multicast queue\n",
                                          packet.Id, addr.FUN_0053F0E0(0), port);
                             break;
                         case 2:
-                            Debug_Printf("Adding ACK packet %d from %s ; %d to multicast queue\n",
+                            FUN_004068E0("Adding ACK packet %d from %s ; %d to multicast queue\n",
                                          packet.Id, addr.FUN_0053F0E0(0), port);
                             break;
                         default:
-                            Debug_Printf("Adding ??? packet %d from %s ; %d to multicast queue\n",
+                            FUN_004068E0("Adding ??? packet %d from %s ; %d to multicast queue\n",
                                          packet.Id, addr.FUN_0053F0E0(0), port);
                             break;
                         }
-                        if (!Connection[0]->Receive_Packet((CommHeaderType*)&packet, size)) {
+                        if (!Connection[0]->Receive_Packet((ConnPacketHeader*)&packet, size)) {
                             size = 0;
-                            Debug_Printf("Receive buffer overflow %d\n", ++unknown_A4);
+                            FUN_004068E0("Receive buffer overflow %d\n", ++unknown_A4);
                         }
                     }
                 } else {
-                    for (j = 0; j < NumConn; ++j) {
+                    for (j = 0; j < ConnectionCount; ++j) {
                         if (Flag_00A8DBA0 && IdMap_00B052D0.FUN_00663D60(Connection[j]->ID) == packet.Flag) {
                             goto found_connection;
                         }
@@ -438,8 +438,8 @@ int IPXManagerClass::Service()
                         for (i = 1; i < PlayerCount_00A8DA84; ++i) {
                             if (Players_00A8DA78[i]->Id == id) {
                                 Players_00A8DA78[i]->Address = addr;
-                                if (ConnectionIndex(id) != -1) {
-                                    Connection[ConnectionIndex(id)]->Address = addr;
+                                if (vf_6(id) != -1) {
+                                    Connection[vf_6(id)]->Address = addr;
                                 }
                                 break;
                             }
@@ -447,16 +447,16 @@ int IPXManagerClass::Service()
                     }
                     continue;
                 found_connection:
-                    if (!Connection[j]->Receive_Packet((CommHeaderType*)&packet, size)) {
+                    if (!Connection[j]->Receive_Packet((ConnPacketHeader*)&packet, size)) {
                         size = 0;
-                        Debug_Printf("Reecive buffer overflow %d\n", ++unknown_A4);
+                        FUN_004068E0("Reecive buffer overflow %d\n", ++unknown_A4);
                     }
                 }
                 if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0 && addr.FUN_0053EF60(&MulticastChannel->Address)) {
                     for (i = 1; i < PlayerCount_00A8DA84; ++i) {
                         if (Players_00A8DA78[i]->Address.FUN_0053EF30(&MulticastChannel->Address)
                             && Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->Id])) {
-                            Debug_Printf("Frame %d, Router apparently changed address from %s to %s\n",
+                            FUN_004068E0("Frame %d, Router apparently changed address from %s to %s\n",
                                          Frame_00A8ED84, MulticastChannel->Address.FUN_0053F0E0(0), addr.FUN_0053F0E0(0));
                             Players_00A8DA78[i]->Address = addr;
                             MulticastChannel->Address = addr;
@@ -473,14 +473,14 @@ int IPXManagerClass::Service()
 
     if (GlobalChannel && Interface_00887628) {
         if (!GlobalChannel->Service()) {
-            GlobalChannel->Remove_Failed_Packets();
+            GlobalChannel->vf_6();
             ok = 0;
         }
     }
     if (Flag_00A8DBA0) {
         if (RouterChannel) {
             if (!RouterChannel->Service()) {
-                RouterChannel->Remove_Failed_Packets();
+                RouterChannel->vf_6();
                 ok = 0;
             }
             if (!Flag_00A8E2D0) {
@@ -491,17 +491,17 @@ int IPXManagerClass::Service()
     if (Flag_00A8DBA0) {
         if (MulticastChannel) {
             if (!MulticastChannel->Service()) {
-                Debug_Printf("Multicast channel has gone bad\n");
+                FUN_004068E0("Multicast channel has gone bad\n");
                 ok = 0;
             }
         }
     }
-    if (Interface_00887628 && NumConn > 0) {
-        for (i = 0; i < NumConn; ++i) {
+    if (Interface_00887628 && ConnectionCount > 0) {
+        for (i = 0; i < ConnectionCount; ++i) {
             if (!Connection[i]->Service()) {
                 ok = 0;
                 FailedId = Connection[i]->ID;
-                Debug_Printf("Error - Connection %d has gone bad\n", FailedId);
+                FUN_004068E0("Error - Connection %d has gone bad\n", FailedId);
             }
         }
     }
@@ -512,54 +512,54 @@ int IPXManagerClass::Service()
 }
 
 // FUNCTION: GAMEMD 0x5422D0
-int IPXManagerClass::GlobalNumSend()
+int IPXManagerClass::vf_7()
 {
-    if (Installed && Active) {
-        return GlobalChannel->Queue->SendCount;
+    if (unknown_04 && Active) {
+        return GlobalChannel->Queue->unknown_28;
     }
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x5422F0
-int IPXManagerClass::GlobalNumReceive()
+int IPXManagerClass::vf_8()
 {
-    if (Installed && Active) {
-        return GlobalChannel->Queue->ReceiveCount;
+    if (unknown_04 && Active) {
+        return GlobalChannel->Queue->unknown_38;
     }
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x542310
-int IPXManagerClass::RouterNumSend()
+int IPXManagerClass::vf_20()
 {
-    if (Installed && Active && RouterChannel) {
-        return RouterChannel->Queue->SendCount;
+    if (unknown_04 && Active && RouterChannel) {
+        return RouterChannel->Queue->unknown_28;
     }
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x542330
-int IPXManagerClass::RouterNumReceive()
+int IPXManagerClass::vf_21()
 {
-    if (Installed && Active && RouterChannel) {
-        return RouterChannel->Queue->ReceiveCount;
+    if (unknown_04 && Active && RouterChannel) {
+        return RouterChannel->Queue->unknown_38;
     }
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x542350
-int IPXManagerClass::NumSend(int id)
+int IPXManagerClass::vf_9(int id)
 {
-    if (Installed && Active && NumConn) {
+    if (unknown_04 && Active && ConnectionCount) {
         if (id != -1) {
-            int index = ConnectionIndex(id);
+            int index = vf_6(id);
             if (index != -1) {
-                return Connection[index]->Queue->SendCount;
+                return Connection[index]->Queue->unknown_28;
             }
         } else {
             int most = 0;
-            for (int i = 0; i < NumConn; ++i) {
-                int n = Connection[i]->Queue->SendCount;
+            for (int i = 0; i < ConnectionCount; ++i) {
+                int n = Connection[i]->Queue->unknown_28;
                 if (n > most) {
                     most = n;
                 }
@@ -571,18 +571,18 @@ int IPXManagerClass::NumSend(int id)
 }
 
 // FUNCTION: GAMEMD 0x5423C0
-int IPXManagerClass::NumReceive(int id)
+int IPXManagerClass::vf_10(int id)
 {
-    if (Installed && Active && NumConn) {
+    if (unknown_04 && Active && ConnectionCount) {
         if (id != -1) {
-            int index = ConnectionIndex(id);
+            int index = vf_6(id);
             if (index != -1) {
-                return Connection[index]->Queue->ReceiveCount;
+                return Connection[index]->Queue->unknown_38;
             }
         } else {
             int most = 0;
-            for (int i = 0; i < NumConn; ++i) {
-                int n = Connection[i]->Queue->ReceiveCount;
+            for (int i = 0; i < ConnectionCount; ++i) {
+                int n = Connection[i]->Queue->unknown_38;
                 if (n > most) {
                     most = n;
                 }
@@ -598,8 +598,8 @@ int IPXManagerClass::ResponseTime()
 {
     unsigned int maxv = 0;
 
-    for (int i = 0; i < this->NumConn; ++i) {
-        unsigned int v = this->Connection[i]->Queue->GetResponseTime();
+    for (int i = 0; i < this->ConnectionCount; ++i) {
+        unsigned int v = this->Connection[i]->Queue->FUN_0048BA80();
         if (v > maxv) {
             maxv = v;
         }
@@ -607,7 +607,7 @@ int IPXManagerClass::ResponseTime()
 
     unsigned int result;
     if (this->MulticastChannel == 0 ||
-        (result = this->MulticastChannel->Queue->GetResponseTime()) <= maxv) {
+        (result = this->MulticastChannel->Queue->FUN_0048BA80()) <= maxv) {
         result = maxv;
     }
     return (int)result;
@@ -616,13 +616,13 @@ int IPXManagerClass::ResponseTime()
 // FUNCTION: GAMEMD 0x5424A0
 int IPXManagerClass::ResponseTimeOf(int index)
 {
-    return Connection[index]->Queue->GetResponseTime();
+    return Connection[index]->Queue->FUN_0048BA80();
 }
 
 // FUNCTION: GAMEMD 0x542520
 void IPXManagerClass::UpdateStats()
 {
-    for (int i = 0; i < NumConn; ++i) {
+    for (int i = 0; i < ConnectionCount; ++i) {
         void* player = PlayerTable_00A8022C[Connection[i]->ID];
         if (player != 0 && player != PlayerSkipped_00A83D4C) {
             ConnStat* stat = &ConnStats_00A8B574[i];
@@ -630,9 +630,9 @@ void IPXManagerClass::UpdateStats()
                 WideToNarrow_00735090(stat->Name, Connection[i]->Name, -1);
                 stat->Address = Connection[i]->Address;
             }
-            int peak = (Connection[i]->Queue->GetPeakResponseTime() * 1000) / 60;
+            int peak = (Connection[i]->Queue->FUN_0048BA90() * 1000) / 60;
             stat->PeakMs = (stat->PeakMs > peak) ? stat->PeakMs : peak;
-            int avg = (Connection[i]->Queue->GetResponseTime() * 1000) / 60;
+            int avg = (Connection[i]->Queue->FUN_0048BA80() * 1000) / 60;
             stat->AvgMs = (avg > stat->AvgMs) ? avg : stat->AvgMs;
             stat->unknown_44 = Connection[i]->unknown_08;
             stat->unknown_48 = Connection[i]->unknown_0C;
@@ -642,29 +642,29 @@ void IPXManagerClass::UpdateStats()
 }
 
 // FUNCTION: GAMEMD 0x542EC0
-void IPXManagerClass::ResetResponseTime(bool a1)
+void IPXManagerClass::vf_11(bool a1)
 {
-    for (int i = 0; i < NumConn; ++i) {
-        Connection[i]->Queue->ResetResponseTime(a1);
+    for (int i = 0; i < ConnectionCount; ++i) {
+        Connection[i]->Queue->FUN_0048BAA0(a1);
     }
     if (GlobalChannel) {
-        GlobalChannel->Queue->ResetResponseTime(true);
+        GlobalChannel->Queue->FUN_0048BAA0(true);
     }
     if (RouterChannel) {
-        RouterChannel->Queue->ResetResponseTime(true);
+        RouterChannel->Queue->FUN_0048BAA0(true);
     }
     if (MulticastChannel) {
-        MulticastChannel->Queue->ResetResponseTime(true);
+        MulticastChannel->Queue->FUN_0048BAA0(true);
     }
 }
 
 // FUNCTION: GAMEMD 0x542FE0
-void IPXManagerClass::ConfigureDebug(int index, int a2, int a3, int a4, int a5, int a6)
+void IPXManagerClass::vf_15(int index, int a2, int a3, int a4, int a5, int a6)
 {
     if (index == -1) {
-        GlobalChannel->Queue->ConfigureDebug(a2, a3, a4, a5, a6);
+        GlobalChannel->Queue->FUN_0048BAD0(a2, a3, a4, a5, a6);
     } else if (Connection[index] != 0) {
-        Connection[index]->Queue->ConfigureDebug(a2, a3, a4, a5, a6);
+        Connection[index]->Queue->FUN_0048BAD0(a2, a3, a4, a5, a6);
     }
 }
 

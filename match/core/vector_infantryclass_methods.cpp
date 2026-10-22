@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgInfantryClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(InfantryClass*) == 4);

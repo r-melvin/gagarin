@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, Items) == 0x04)
 GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgFoggedObjectClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(FoggedObjectClass*) == 4);

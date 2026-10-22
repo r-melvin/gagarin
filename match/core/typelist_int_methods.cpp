@@ -21,5 +21,5 @@ GG_STATIC_ASSERT(offsetof(GgTypeListInt, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTypeListInt, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTypeListInt, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTypeListInt, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTypeListInt, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTypeListInt, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTypeListInt, CapacityIncrement) == 0x14);

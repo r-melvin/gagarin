@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7ED90C -- TypeList<const BuildingTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgBuildingTypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const BuildingTypeClass*) == 4);

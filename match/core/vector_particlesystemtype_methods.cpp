@@ -77,7 +77,7 @@ GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, Items) == 0x04
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7F4F9C -- TypeList<const ParticleSystemTypeClass*>.
@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgParticleSystemTypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const ParticleSystemTypeClass*) == 4);

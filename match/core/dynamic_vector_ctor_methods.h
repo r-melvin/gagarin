@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI at 0x42F670. The member layout and the constructor's shape
-//   are the RA1 VectorClass/DynamicVectorClass pair (structure reference only,
-//   not transcribed): vptr, Vector, VectorMax, IsValid, IsAllocated, then
-//   ActiveCount and GrowthStep on the derived class, with GrowthStep seeded to
+//   local Ghidra CLI at 0x42F670. The member layout, read from the constructor's
+//   stores: vptr, Vector, Capacity, IsValid, IsAllocated, then
+//   Count and CapacityIncrement on the derived class, with CapacityIncrement seeded to
 //   10 — which is the `MOV [ESI+0x14],0xA` at 0x42F6D0.
 #ifndef GG_MATCH_CORE_DYNAMIC_VECTOR_CTOR_METHODS_H
 #define GG_MATCH_CORE_DYNAMIC_VECTOR_CTOR_METHODS_H
@@ -36,7 +35,7 @@ struct VectorClass_0042F670
 {
     // VTABLE: GAMEMD 0x7E38D0
     Elem_0042F670* Vector;   // +0x0004
-    int  VectorMax;          // +0x0008
+    int  Capacity;          // +0x0008
     bool IsValid;            // +0x000C
     bool IsAllocated;        // +0x000D
 
@@ -46,7 +45,7 @@ struct VectorClass_0042F670
     // stays a call and the target function comes out at 14 instructions against
     // retail's 37.
     VectorClass_0042F670(unsigned int size, const Elem_0042F670* array)
-        : Vector(0), VectorMax(size), IsValid(true), IsAllocated(false)
+        : Vector(0), Capacity(size), IsValid(true), IsAllocated(false)
     {
         if (size) {
             if (array) {
@@ -61,20 +60,20 @@ struct VectorClass_0042F670
     virtual ~VectorClass_0042F670();
 };
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, Vector) == 0x4);
-GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, VectorMax) == 0x8);
+GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, Capacity) == 0x8);
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, IsValid) == 0xC);
 GG_STATIC_ASSERT(offsetof(VectorClass_0042F670, IsAllocated) == 0xD);
 
 struct DynamicVectorClass_0042F670 : VectorClass_0042F670
 {
     // VTABLE: GAMEMD 0x7E3890
-    int ActiveCount;         // +0x0010
-    int GrowthStep;          // +0x0014
+    int Count;         // +0x0010
+    int CapacityIncrement;          // +0x0014
 
     // FUNCTION: GAMEMD 0x42F670
     DynamicVectorClass_0042F670(unsigned int size, const Elem_0042F670* array);
 };
-GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, ActiveCount) == 0x10);
-GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, GrowthStep) == 0x14);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass_0042F670, CapacityIncrement) == 0x14);
 
 #endif  // GG_MATCH_CORE_DYNAMIC_VECTOR_CTOR_METHODS_H

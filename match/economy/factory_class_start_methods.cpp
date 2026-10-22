@@ -9,10 +9,10 @@
 // if the queue is empty, if something is already being built, or if the factory
 // is gated and not suspended. The unlink is the inline
 // DynamicVectorClass::Delete(0): its bound test, the decrement and the shift
-// loop that re-reads ActiveCount as its bound are all retail's.
+// loop that re-reads Count as its bound are all retail's.
 void FactoryClass::StartProduction()
 {
-    if (QueuedObjects.Count() == 0)
+    if (QueuedObjects.GetCount() == 0)
         return;
 
     if (Object != 0)

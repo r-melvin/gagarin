@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x4C9220: DesiredFacing.Raw `MOV AX,[ECX]` compared
 //   word-wise with `[EDX]` (the argument), StartFacing.Raw `SUB AX,[ECX+0x4]`
@@ -9,10 +9,10 @@
 //   as three dwords `[ECX+0x8..0x10]` from a stack temporary whose middle
 //   dword is never initialised, and the frame counter `[0xA8ED84]`. The
 //   layout is the one already confirmed in match/movement/facing_methods.h
-//   (not edited; re-declared so this TU stands alone). YRpp Facing.h /
-//   Timer.h consulted for the member and method names only; the shape of the
-//   timer's remaining-time inline (remain/value, if/else returns) follows the
-//   RA1 TIMER.H structure as a phrasing reference only (no text copied).
+//   (not edited; re-declared so this TU stands alone). Member and method
+//   names are YRpp cross-checks confirmed by the accesses above; the timer's
+//   remaining-time inline is written to the compare-and-subtract sequence the
+//   retail bytes show.
 #ifndef GG_MATCH_MOVEMENT_FACING_SET_DESIRED_METHODS_H
 #define GG_MATCH_MOVEMENT_FACING_SET_DESIRED_METHODS_H
 

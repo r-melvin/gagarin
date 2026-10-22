@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTriggerClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(TriggerClass*) == 4);

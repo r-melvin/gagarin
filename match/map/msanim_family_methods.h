@@ -602,13 +602,13 @@ public:
     virtual int  IndexOf(MSAnim* const& item);   // slot 4
 
     MSAnim** Vector;       // +0x04
-    int      VectorMax;    // +0x08
+    int      Capacity;    // +0x08
     bool     IsValid;      // +0x0C
     bool     IsAllocated;  // +0x0D
-    int      ActiveCount;  // +0x10
+    int      Count;  // +0x10
 };
 GG_STATIC_ASSERT(offsetof(MSAnimVector, Vector) == 0x04
-              && offsetof(MSAnimVector, ActiveCount) == 0x10);
+              && offsetof(MSAnimVector, Count) == 0x10);
 
 // MSShapeAnim owns a decoded shape buffer at +0x1C and a "we allocated it"
 // flag at +0x3C; 0x5CEB83 loads the pointer, 0x5CEB90 tests the flag, and the

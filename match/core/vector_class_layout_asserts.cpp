@@ -28,7 +28,7 @@ GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorInt, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(GgDynamicVectorInt) == 0x18);
 GG_STATIC_ASSERT(offsetof(GgVectorToolTipPointer, Items) == 0x04);
@@ -42,7 +42,7 @@ GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgDynamicVectorToolTipPointer, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(GgDynamicVectorToolTipPointer) == 0x18);
 

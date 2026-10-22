@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgLineTrailDynamicVector, CapacityIncrement) == 0x14);

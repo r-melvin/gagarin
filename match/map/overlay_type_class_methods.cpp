@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check |
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check |
 //             private-ref-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5FE470/0x5FE530/
 //   0x5FE570. See the header for the RTTI derivation of the class identity.

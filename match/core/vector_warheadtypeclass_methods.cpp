@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgWarheadTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(WarheadTypeClass*) == 4);

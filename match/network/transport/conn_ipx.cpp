@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob1
 #include "conn_types.h"
 #include "winsock_interface_class.h"
@@ -10,10 +10,10 @@
 // Tag_IPXConnClass>, 0x53F850 len 0x24); integrator retires the old row.
 
 // FUNCTION: GAMEMD 0x53F430
-IPXConnClass::IPXConnClass(int numsend, int numreceive, int maxlen,
-                           unsigned short magicnum, IPXAddressClass* address,
-                           int id, wchar_t* name, int extralen)
-    : ConnectionClass(numsend, numreceive, maxlen, magicnum, 2, -1, 0x3C, extralen)
+IPXConnClass::IPXConnClass(int sendSlots, int receiveSlots, int maxlen,
+                           unsigned short magic, IPXAddressClass* address,
+                           int id, wchar_t* name, int extraLength)
+    : ConnectionClass(sendSlots, receiveSlots, maxlen, magic, 2, -1, 0x3C, extraLength)
 {
     if (address) {
         Address = *address;
@@ -22,7 +22,7 @@ IPXConnClass::IPXConnClass(int numsend, int numreceive, int maxlen,
     wcscpy(Name, name);
     NodeAddressType node;
     NetworkNumberType net;
-    Address.Get_Address(net, node);
+    Address.FUN_0053EDA0(net, node);
     unknown_58 = node;
     unknown_60 = 0;
 }
@@ -34,10 +34,10 @@ void IPXConnClass::Init()
 }
 
 // FUNCTION: GAMEMD 0x53F5D0
-int IPXConnClass::Send_To(void* buf, int buflen, void* extrabuf, int extralen,
+int IPXConnClass::vf_9(void* buf, int buflen, void* extra, int extraLength,
                           bool is_global, unsigned short unknown_6)
 {
-    return Send_To_Address(buf, buflen, &Address, 0, is_global, 0);
+    return vf_10(buf, buflen, &Address, 0, is_global, 0);
 }
 
 // FUNCTION: GAMEMD 0x53F650
@@ -48,7 +48,7 @@ int IPXConnClass::Send_To(void* buf, int buflen, void* extrabuf, int extralen,
 // the header dword through a separate `LEA` of hdr+8. That LEA is the shape of an
 // intrinsic 4-byte memset; it is not reproduced here because the field's type
 // (array or dword) has no independent evidence yet.
-int IPXConnClass::Send_To_Address(void* buf, int buflen, IPXAddressClass* address,
+int IPXConnClass::vf_10(void* buf, int buflen, IPXAddressClass* address,
                                   unsigned long* network, bool is_global,
                                   unsigned short unknown_6)
 {
@@ -57,19 +57,19 @@ int IPXConnClass::Send_To_Address(void* buf, int buflen, IPXAddressClass* addres
     if (network) {
         NodeAddressType node;
         NetworkNumberType net;
-        address->Get_Address(net, node);
+        address->FUN_0053EDA0(net, node);
         net.Number = *network;
-        local.Set_Address(net, node, 0);
+        local.FUN_0053ED20(net, node, 0);
     }
 
     unsigned short port = 0;
-    CommHeaderType* hdr;
+    ConnPacketHeader* hdr;
     if (is_global || !Flag_00A8DBA0) {
-        hdr = (CommHeaderType*)buf;
+        hdr = (ConnPacketHeader*)buf;
         hdr->unknown_0C = 0;
         hdr->unknown_08 = 0;
     } else {
-        hdr = (CommHeaderType*)buf;
+        hdr = (ConnPacketHeader*)buf;
         if (hdr->unknown_03 == 0) {
             unsigned char id = IdMap_00B052D0.FUN_00663D60(ID);
             if (!id) {
@@ -101,8 +101,8 @@ int IPXConnClass::Send_To_Address(void* buf, int buflen, IPXAddressClass* addres
                 if ((unsigned short)Port_00A8DBBC) {
                     port = Port_00A8DBBC;
                 }
-            } else if (idx < Manager_00A8E9C0.IPXManagerClass::NumConnections()) {
-                port = Session_00A8B238.FUN_0069BC20(Manager_00A8E9C0.IPXManagerClass::ConnectionId(idx));
+            } else if (idx < Manager_00A8E9C0.IPXManagerClass::vf_4()) {
+                port = Session_00A8B238.FUN_0069BC20(Manager_00A8E9C0.IPXManagerClass::vf_5(idx));
             }
         }
     }

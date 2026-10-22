@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bodies ascending by retail address; bytes diffed against the user's
 //   retail gamemd.exe v1.001.
 #include "color_list_class_methods.h"
@@ -19,7 +19,7 @@ void ColorListClass::Dtor()
 
 // FUNCTION: GAMEMD 0x488850
 // ColorListClass::Add_Item. Appends the entry's colour to the parallel colour
-// vector (growing it by GrowthStep when it is full and owns its block) and
+// vector (growing it by CapacityIncrement when it is full and owns its block) and
 // then hands the text to the base list.
 void ColorListClass::AddItem(wchar_t const* text, int color)
 {

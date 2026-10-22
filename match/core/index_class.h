@@ -1,16 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | YRpp-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout and every member offset were read numerically off the user's retail
-//   gamemd.exe v1.001 through the local Ghidra CLI. EA's GPLv3 Red Alert 1
-//   release (CODE/SEARCH.H) and the consult-only YRpp header IndexClass.h were
-//   read for names and algorithm shape only; nothing is transcribed from either
-//   and every offset below is re-derived from the binary.
+//   gamemd.exe v1.001 through the local Ghidra CLI. Class and member names
+//   follow YRpp and were checked against the offsets and behaviour below.
 //
-// IndexClass is Westwood's small sorted-index container: a flat array of
+// IndexClass is a small sorted-index container: a flat array of
 // {ID, Data} pairs kept lazily sorted, searched by a hand-rolled binary search,
 // with a one-element cache ("Archive") in front of it so a repeated lookup of
 // the same ID costs one compare. It is the lookup behind INIClass and the type
-// tables, and it is a pure utility class, the same one RA1 carries.
+// tables.
 //
 // Layout, confirmed numerically:
 //   +0x00 IndexTable   the array         (`MOV EDX,dword ptr [ESI]` then

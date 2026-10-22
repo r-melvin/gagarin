@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTActionClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(TActionClass*) == 4);

@@ -15,16 +15,16 @@ bool WinsockInterfaceClass::StartListening()
 {
     if (WSAAsyncSelect(Socket, DAT_00B73550, MessageForSocket(-1), 3) == -1)
     {
-        Debug_Printf("Async select failed on primary socket - error code %d.\n",
+        FUN_004068E0("Async select failed on primary socket - error code %d.\n",
                      WSAGetLastError());
         return false;
     }
 
-    if (ListenSocket != -1)
+    if (unknown_3F070 != -1)
     {
-        if (WSAAsyncSelect(ListenSocket, DAT_00B73550, MessageForSocket(ListenSocket), 3) == -1)
+        if (WSAAsyncSelect(unknown_3F070, DAT_00B73550, MessageForSocket(unknown_3F070), 3) == -1)
         {
-            Debug_Printf("Async select failed on alternate socket - error code %d.\n",
+            FUN_004068E0("Async select failed on alternate socket - error code %d.\n",
                          WSAGetLastError());
             return false;
         }

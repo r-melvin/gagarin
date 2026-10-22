@@ -5860,7 +5860,7 @@
   {
    "addr": "0x542EC0",
    "tu": "match/network/transport/connman_class.cpp",
-   "name": "IPXManagerClass::ResetResponseTime",
+   "name": "IPXManagerClass::vf_11",
    "reason": "no-preceding-CC-or-90"
   },
   {
@@ -6160,7 +6160,7 @@
   {
    "addr": "0x5F1BF0",
    "tu": "match/network/null_modem_class_methods.cpp",
-   "name": "?SendMessage@NullModemClass@@QAEHPAXHH@Z",
+   "name": "?FUN_005F1BF0@NullModemClass@@QAEHPAXHH@Z",
    "reason": "no-preceding-CC-or-90"
   },
   {

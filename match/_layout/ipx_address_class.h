@@ -41,12 +41,12 @@ public:
     void GetAddress(unsigned char* network, unsigned char* node);
 
     // FUNCTION: GAMEMD 0x53EDA0 (decl; reloc) — transport reference call view.
-    void Get_Address(NetworkNumberType& network, NodeAddressType& node);
+    void FUN_0053EDA0(NetworkNumberType& network, NodeAddressType& node);
     // FUNCTION: GAMEMD 0x53ED20 (decl; reloc) — transport reference call view.
-    void Set_Address(NetworkNumberType& network, NodeAddressType& node,
+    void FUN_0053ED20(NetworkNumberType& network, NodeAddressType& node,
                      unsigned short port);
     // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — existing pointer-compare API.
-    bool Is_Address(const IPXAddressClass* other) const;
+    bool FUN_0053EE70(const IPXAddressClass* other) const;
     // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — transport reference call view.
     bool Equals_EE70(IPXAddressClass& other);
     // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — transport pointer call view.
@@ -62,8 +62,6 @@ public:
     // FUNCTION: GAMEMD 0x53F0E0 (decl; reloc).
     char* FUN_0053F0E0(int a1);
     // FUNCTION: GAMEMD 0x53F200 (decl; reloc).
-    void Set_Port(unsigned short port);
-    // FUNCTION: GAMEMD 0x53F200 (decl; reloc) — raw transport call view.
     void FUN_0053F200(unsigned short port);
 
     union {

@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSmudgeClassDynamicVector, CapacityIncrement) == 0x14);

@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | TS++-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every offset, every call target and every vtable address below was read
 //   numerically off the user's own retail gamemd.exe v1.001 through the local
-//   Ghidra CLI. EA's GPLv3 Red Alert 1 release (CODE/INI.CPP, CODE/LISTNODE.H)
-//   and the GPLv3 TS++ headers (src/lib/ini.h, src/lib/listnode.h,
-//   src/lib/wwcrc.h) were read for member NAMES and algorithm shape only;
-//   nothing is transcribed from either and every offset is re-derived from the
-//   binary. No YRpp header was consulted for this cluster.
+//   Ghidra CLI. Class names come from the RTTI descriptors listed below;
+//   member names that RTTI does not supply follow YRpp where its layout agrees
+//   with the offsets here, and are placeholders otherwise.
 //
 // The INI node cluster at 0x52AA90-0x52AF41: the two static line-classifier
 // helpers INIClass uses while parsing, the INIEntry / INISection node

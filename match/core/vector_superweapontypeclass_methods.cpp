@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, Items) == 0x
 GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSuperWeaponTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(SuperWeaponTypeClass*) == 4);

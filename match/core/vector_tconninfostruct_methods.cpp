@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgtConnInfoStructDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(tConnInfoStruct*) == 4);

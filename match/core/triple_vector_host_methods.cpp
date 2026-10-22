@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x42F1E0.
 
 #include "triple_vector_host_methods.h"
@@ -21,21 +21,21 @@ Host_0042F1E0* Host_0042F1E0::CtorFull()
     WideVector_0042F1E0* wide = &this->Wide;
     wide->BaseCtor(zero, (const void*)zero);
     wide->Vptr = VTBL_007E38B0;
-    wide->GrowthStep = 10;
-    wide->ActiveCount = zero;
+    wide->CapacityIncrement = 10;
+    wide->Count = zero;
 
     NarrowVector_0042F1E0* first = &this->First;
     this->Wide._pad018 = zero;
     first->BaseCtor(zero, (const void*)zero);
     first->Vptr = VTBL_007E3890;
-    first->GrowthStep = 10;
-    first->ActiveCount = zero;
+    first->CapacityIncrement = 10;
+    first->Count = zero;
 
     NarrowVector_0042F1E0* second = &this->Second;
     second->BaseCtor(zero, (const void*)zero);
     second->Vptr = VTBL_007E3890;
-    second->GrowthStep = 10;
-    second->ActiveCount = zero;
+    second->CapacityIncrement = 10;
+    second->Count = zero;
 
     this->At_50 = (unsigned short)zero;
     this->At_52 = (unsigned short)zero;
@@ -69,20 +69,20 @@ Host_0042F1E0* Host_0042F1E0::Ctor(int)
     WideVector_0042F1E0* wide = &this->Wide;
     wide->BaseCtor(0, 0);
     wide->Vptr = VTBL_007E38B0;
-    wide->GrowthStep = 10;
-    wide->ActiveCount = 0;
+    wide->CapacityIncrement = 10;
+    wide->Count = 0;
 
     NarrowVector_0042F1E0* first = &this->First;
     first->BaseCtor(0, 0);
     first->Vptr = VTBL_007E3890;
-    first->GrowthStep = 10;
-    first->ActiveCount = 0;
+    first->CapacityIncrement = 10;
+    first->Count = 0;
 
     NarrowVector_0042F1E0* second = &this->Second;
     second->BaseCtor(0, 0);
     second->Vptr = VTBL_007E3890;
-    second->GrowthStep = 10;
-    second->ActiveCount = 0;
+    second->CapacityIncrement = 10;
+    second->Count = 0;
 
     this->Vptr = VTBL_007E3880;
     return this;

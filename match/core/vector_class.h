@@ -65,19 +65,19 @@ public:
     virtual void Clear();
     virtual int FindItemIndex(const T& item) const;
     virtual int Slot5(T* elementAddress) const;
-    int Count() const { return ActiveCount; }
+    int GetCount() const { return Count; }
     // Inline by-index removal (vector_class_operations.h).
     bool Delete(int index);
     // Defined in vector_class_operations.h when the element type is complete.
     bool RemoveItem(const T& item);
     // Inline append (vector_class_operations.h).
     bool AddItem(const T& item);
-    int ActiveCount;       // +0x10
+    int Count;       // +0x10
     int CapacityIncrement; // +0x14
 };
 
 template<class T> void DynamicVectorClass<T>::Clear() {
-    ActiveCount = 0;
+    Count = 0;
     if (this->Items != 0 && this->IsAllocated) {
         gg_free(this->Items);
         this->Items = 0;

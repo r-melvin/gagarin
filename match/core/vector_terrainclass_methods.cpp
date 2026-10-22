@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTerrainClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(TerrainClass*) == 4);

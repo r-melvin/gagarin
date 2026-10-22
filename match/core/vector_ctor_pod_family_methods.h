@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout and element sizes read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI (representative 0x477BE0).
-//   RA1's VectorClass is a naming/structure reference only.
+//   The class names come from the retail RTTI descriptors.
 //
 // A 48-member family of VectorClass<T> two-argument constructors over
 // *trivial* element types: 74 bytes each, identical apart from the vtable
@@ -32,14 +32,14 @@ GG_STATIC_ASSERT(sizeof(PodElem8) == 8);
     {                                                                         \
         const void* Vptr;        /* +0x0000 */                                \
         ELEM* Vector;            /* +0x0004 */                                \
-        int   VectorMax;         /* +0x0008 */                                \
+        int   Capacity;         /* +0x0008 */                                \
         char  IsValid;           /* +0x000C */                                \
         char  IsAllocated;       /* +0x000D */                                \
         NAME* Ctor(unsigned int size, ELEM* array);                           \
     };                                                                        \
     GG_STATIC_ASSERT(offsetof(NAME, Vptr) == 0x0);                            \
     GG_STATIC_ASSERT(offsetof(NAME, Vector) == 0x4);                          \
-    GG_STATIC_ASSERT(offsetof(NAME, VectorMax) == 0x8);                       \
+    GG_STATIC_ASSERT(offsetof(NAME, Capacity) == 0x8);                       \
     GG_STATIC_ASSERT(offsetof(NAME, IsValid) == 0xC);                         \
     GG_STATIC_ASSERT(offsetof(NAME, IsAllocated) == 0xD);                     \
     GG_STATIC_ASSERT(sizeof(NAME) == 0x10)
@@ -49,7 +49,7 @@ GG_STATIC_ASSERT(sizeof(PodElem8) == 8);
     NAME* NAME::Ctor(unsigned int size, ELEM* array)                          \
     {                                                                         \
         this->Vector = 0;                                                     \
-        this->VectorMax = size;                                               \
+        this->Capacity = size;                                               \
         this->IsValid = 1;                                                    \
         this->IsAllocated = 0;                                                \
         this->Vptr = (const void*)VTBL;                                       \

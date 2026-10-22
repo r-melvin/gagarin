@@ -56,5 +56,5 @@ GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgCaptureManagerDynamicVector, CapacityIncrement) == 0x14);

@@ -560,7 +560,7 @@
     {
       "address": "0x0065C340",
       "source": "match/core/ram_file_class.cpp",
-      "symbol": "?Open@RAMFileClass@@UAEHPBDH@Z",
+      "symbol": "?OpenEx@RAMFileClass@@UAEHPBDH@Z",
       "old_size": 11,
       "corrected_size": 13,
       "reason": "ret_imm16_truncation",

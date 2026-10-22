@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgOverlayTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(OverlayTypeClass*) == 4);

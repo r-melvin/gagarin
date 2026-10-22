@@ -94,8 +94,8 @@ tests pass. There are zero annotation issues across 5,426 body addresses.
 The latest batch reworks `VectorClass` and `DynamicVectorClass` toward their
 original class structure. One constructor, `VectorClass(int, T*)` with both
 arguments defaulted, replaces the default/capacity pair and constructs caller
-storage in place. The count field is now `ActiveCount`, read through an inline
-`Count()` accessor, and by-index `Delete` and by-value `RemoveItem` are inline
+storage in place. The count field is `Count`, read through an inline
+`GetCount()` accessor, and by-index `Delete` and by-value `RemoveItem` are inline
 members. The four pair-vector constructors are now explicit instantiations of
 that constructor rather than a macro, and stay exact. Three functions now
 match, each passing raw bytes and strict relocation checks:

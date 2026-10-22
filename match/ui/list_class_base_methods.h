@@ -64,7 +64,7 @@
 //                          destructor / Enable/DisableScrollBar
 //   +0x34  List            TextDynVector; `MOV [ESI+0x34],0x7ed1fc` (its own
 //                          dtor-installed vtable) plus +0x38/+0x3C/+0x41/+0x44
-//                          (Vector/VectorMax/IsAllocated/ActiveCount) read
+//                          (Vector/Capacity/IsAllocated/Count) read
 //                          throughout every body here
 //   +0x4C  LineHeight      `IDIV [ESI+0x4c]` in Action
 //   +0x50  LineCount       `CMP [ESI+0x50]` in AddItem/RemoveItem/SetViewIndex
@@ -304,7 +304,7 @@ typedef int  (SliderShim::*SL_BoolIntFn)(int);
 struct SliderVtbl
 {
     char         _pad00[0x88];
-    SL_VoidIntFn At_88;   // SetXxx(ActiveCount)     -- called from AddItem/EnableScrollBar/RemoveItem
+    SL_VoidIntFn At_88;   // SetXxx(Count)     -- called from AddItem/EnableScrollBar/RemoveItem
     SL_VoidIntFn At_8C;   // SetXxx(CurrentTopIndex) -- called from SetViewIndex/EnableScrollBar
     SL_IntVoidFn At_90;   // GetXxx()                -- called from Bump/Step
     char         _pad94[0xA8 - 0x94];

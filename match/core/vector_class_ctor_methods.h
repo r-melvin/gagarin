@@ -1,11 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x42FCB0 and 0x42FC40. The two differ only in element size —
 //   0x42FCB0 scales by 4 (`LEA EAX,[EDI*4]`) and 0x42FC40 by 0x10
 //   (`MOV EAX,EDI; SHL EAX,4`, since LEA cannot scale by sixteen) — and in their
-//   vtables, 0x7E38D0 against 0x7E38F0. Layout is RA1's VectorClass (structure
-//   reference only). See re_findings §19 for the family.
+//   vtables, 0x7E38D0 against 0x7E38F0. Layout is the VectorClass one asserted below. See re_findings §19 for the family.
 #ifndef GG_MATCH_CORE_VECTOR_CLASS_CTOR_METHODS_H
 #define GG_MATCH_CORE_VECTOR_CLASS_CTOR_METHODS_H
 
@@ -38,7 +37,7 @@ struct NarrowVectorClass_0042FCB0
 {
     const void* Vptr;             // +0x0000
     Narrow_0042FCB0* Vector;      // +0x0004
-    int  VectorMax;               // +0x0008
+    int  Capacity;               // +0x0008
     char IsValid;                 // +0x000C
     char IsAllocated;             // +0x000D
 
@@ -52,7 +51,7 @@ struct WideVectorClass_0042FC40
 {
     const void* Vptr;             // +0x0000
     Wide_0042FC40* Vector;        // +0x0004
-    int  VectorMax;               // +0x0008
+    int  Capacity;               // +0x0008
     char IsValid;                 // +0x000C
     char IsAllocated;             // +0x000D
 

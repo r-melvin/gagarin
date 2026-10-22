@@ -22,8 +22,8 @@
 bool VectorResize::FUN_0040CE50(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -35,8 +35,8 @@ bool VectorResize::FUN_0040CE50(int newsize, void** array)
 bool VectorResize::FUN_0042D780(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }

@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgEboltDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(EBolt*) == 4);

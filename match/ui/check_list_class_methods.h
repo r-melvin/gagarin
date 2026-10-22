@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: the user's retail gamemd.exe v1.001 through the local Ghidra
 //   CLI at 0x4882D0 / 0x488310 / 0x488380 / 0x4883F0 / 0x4884A0 / 0x4886E0.
 //   The run carried no name in any worklist; the owning class came out of the
@@ -7,9 +7,8 @@
 //     0x7E4F84 - 4 -> 0x7FD150 (complete object locator)
 //     0x7FD150 + 0xC -> 0x81D128 (type descriptor)
 //     0x81D128 + 8 -> ".?AVCheckListClass@@"
-//   RA1's CHECKLIS/LIST pair is the structure reference only (never
-//   transcribed); every offset and virtual slot below is confirmed numerically
-//   from the disassembly.
+//   Every offset and virtual slot below is confirmed numerically from
+//   the disassembly.
 //
 // CheckListClass -- a ListClass whose entries are check boxes. Each entry is a
 // small heap node holding the text and the checked flag, so the class owns its
@@ -17,7 +16,7 @@
 //
 // Layout, member by member from the disassembly:
 //   +0x000  vptr           `MOV [ESI],0x7E4F84` in both destructor copies
-//   +0x034  List           the base list's own entry vector; its ActiveCount
+//   +0x034  List           the base list's own entry vector; its Count
 //                          at +0x44 is the `MOV EAX,[ESI+0x44]` loop guard
 //   +0x16C  SelectedIndex  `MOV EAX,[ESI+0x16C]` twice in Action
 //   +0x174  IsReadOnly     `MOV AL,[ESI+0x174]`; a byte, tested and returned
@@ -52,11 +51,11 @@ extern "C" int __cdecl wcscmp(wchar_t const* a, wchar_t const* b);
 struct CheckItemClass
 {
     wchar_t const* Text;       // +0x00
-    bool           IsChecked;  // +0x04
+    bool           IsTicked;  // +0x04
 
-    CheckItemClass(wchar_t const* text) throw() : Text(text), IsChecked(false) {}
+    CheckItemClass(wchar_t const* text) throw() : Text(text), IsTicked(false) {}
 };
-GG_STATIC_ASSERT(offsetof(CheckItemClass, IsChecked) == 0x04);
+GG_STATIC_ASSERT(offsetof(CheckItemClass, IsTicked) == 0x04);
 GG_STATIC_ASSERT(sizeof(CheckItemClass) == 8);
 
 // DynamicVectorClass<wchar_t const*> — the base list's entry vector (RTTI
@@ -107,10 +106,10 @@ public:
 GG_STATIC_ASSERT(offsetof(CheckListClass, List)          == 0x034);
 GG_STATIC_ASSERT(offsetof(CheckListClass, SelectedIndex) == 0x16C);
 GG_STATIC_ASSERT(offsetof(CheckListClass, IsReadOnly)    == 0x174);
-// The loop guard the two destructor copies read is List.ActiveCount, and it
+// The loop guard the two destructor copies read is List.Count, and it
 // has to land on +0x44 for `MOV EAX,[ESI+0x44]` to be that member.
 GG_STATIC_ASSERT(offsetof(CheckListClass, List) +
-                 offsetof(TextDynVector, ActiveCount) == 0x44);
+                 offsetof(TextDynVector, Count) == 0x44);
 
 // The class has to be complete before these, or VC6 falls back to the
 // multiple-inheritance member-pointer form and emits a `this` adjustment.

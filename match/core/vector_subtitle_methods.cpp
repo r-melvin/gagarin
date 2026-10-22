@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgSubtitleDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(SubTitle*) == 4);

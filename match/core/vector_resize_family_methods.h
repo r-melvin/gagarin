@@ -11,7 +11,7 @@
 //   member accesses: Vector `[ESI+4]`, Length `[ESI+8]`, the re-entrancy flag
 //   `[ESI+0xC]` (cleared around the allocation, set again after it), the
 //   ownership flag `[ESI+0xD]` (`MOV AL,byte ptr [ESI+0xD]` before the free,
-//   then written from `SETZ AL`), and ActiveCount `[ESI+0x10]` (clamped at
+//   then written from `SETZ AL`), and Count `[ESI+0x10]` (clamped at
 //   the tail). The element size is four: `LEA EAX,[EBP*0x4]` feeds operator
 //   new and `MOV [EDI+EAX*0x4-4]` is the copy store.
 //
@@ -29,7 +29,7 @@ GG_STATIC_ASSERT(offsetof(VectorBase, Vector)      == 0x04);
 GG_STATIC_ASSERT(offsetof(VectorBase, Length)      == 0x08);
 GG_STATIC_ASSERT(offsetof(VectorBase, IsValid)     == 0x0C);
 GG_STATIC_ASSERT(offsetof(VectorBase, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(VectorBase, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(VectorBase, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(VectorBase) == 0x14);
 
 struct VectorResizeFamily : VectorBase

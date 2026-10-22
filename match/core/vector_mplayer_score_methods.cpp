@@ -67,7 +67,7 @@ GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(MPlayerScoreType*) == 4);

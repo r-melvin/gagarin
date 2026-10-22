@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | TS++-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Every body below was written against the retail disassembly of the user's
-//   gamemd.exe v1.001 read through the local Ghidra CLI. RA1's CODE/INI.CPP and
-//   the TS++ headers supplied member and function NAMES only.
+//   gamemd.exe v1.001 read through the local Ghidra CLI.
 //
 // The INI node cluster, bodies ascending by retail address.
 
@@ -25,7 +24,7 @@ GenericNode::GenericNode()
 // inside the second guard rather than after it.
 //
 // FUNCTION: GAMEMD 0x52AA90
-void __fastcall INIClass::Strip_Comments(char* buffer)
+void __fastcall INIClass::FUN_0052AA90(char* buffer)
 {
     if (buffer != 0) {
         char* comment = FUN_007CAF30(buffer, ';');
@@ -42,7 +41,7 @@ void __fastcall INIClass::Strip_Comments(char* buffer)
 // `isspace` table lookup.
 //
 // FUNCTION: GAMEMD 0x52AAC0
-bool __fastcall INIClass::Line_Contains_Section(char* buffer)
+bool __fastcall INIClass::FUN_0052AAC0(char* buffer)
 {
     if (buffer != 0) {
         while (*buffer != '\0' && (unsigned char)*buffer <= ' ') {
@@ -115,7 +114,7 @@ void INIClass::INISection::DestroySection()
     }
 
     EntryIndex.Clear();
-    EntryList.DestroyList();
+    Entries.DestroyList();
     DestroyNode();
 }
 

@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 //   Layouts, slots and globals read numerically off the user's retail
 //   gamemd.exe v1.001 via the local Ghidra CLI: ConnectionClass RTTI
 //   .?AVConnectionClass@@ (type descriptor 0x81D2A0, vtable 0x7E51B4),
 //   IPXConnClass (0x828190, vtable 0x7EC0CC), IPXGlobalConnClass (vtable
 //   0x7EC10C), and every member offset touched by the 30 functions in
-//   conn_connection.cpp / conn_ipx.cpp / conn_ipx_global.cpp. Names follow the
-//   Westwood RA1 CONNECT/IPXCONN/IPXGCONN idiom where the binary's behaviour
-//   agrees (naming and structure reference only, no transcription); every
-//   unproven member stays unknown_XX / FUN_XXXXXXXX.
+//   conn_connection.cpp / conn_ipx.cpp / conn_ipx_global.cpp. Receive_Packet
+//   and Service_Send_Queue are named by the binary's own debug strings, as are
+//   MaxPacketLen, NumSendAck and RetryDelta; unattested virtuals are vf_<slot>
+//   and every other unproven member stays unknown_XX / FUN_XXXXXXXX.
 //
 // Shared declarations for the connection hierarchy (conn_*): ConnectionClass,
 // IPXConnClass, IPXGlobalConnClass plus minimal models of the callee classes
@@ -23,7 +23,7 @@
 
 // Release-build debug printf: 0x4068E0 is a bare RET stub, cdecl/variadic.
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
-extern "C" int __cdecl Debug_Printf(const char* fmt, ...);
+extern "C" int __cdecl FUN_004068E0(const char* fmt, ...);
 
 // ---------------------------------------------------------------------------
 // Callee models (other owners; declared only).
@@ -83,18 +83,18 @@ public:
     // SYNTHETIC: GAMEMD 0x48BB00 (decl; reloc) -- slot-0 deleting wrapper.
     virtual ~CommBufferClass();                     // +0x00 (slot 0)
 
-    int          unknown_04;                        // +0x04 compared with SendCount by IPXManagerClass::SendPacket
+    int          unknown_04;                        // +0x04 compared with unknown_28 by IPXManagerClass::vf_2
     int          unknown_08;                        // +0x08
     char         _pad0C[0x28 - 0x0C];
-    int          SendCount;                         // +0x28
+    int          unknown_28;                         // +0x28
     int          unknown_2C;                        // +0x2C
     char         _pad30[0x38 - 0x30];
-    int          ReceiveCount;                      // +0x38
+    int          unknown_38;                      // +0x38
     unsigned int unknown_3C;                        // +0x3C
     char         _pad40[0x58 - 0x40];
 
     // FUNCTION: GAMEMD 0x48B0E0 (decl; reloc)
-    CommBufferClass(int numsend, int numreceive, int maxlen, int extralen);
+    CommBufferClass(int sendSlots, int receiveSlots, int maxlen, int extraLength);
 
     // FUNCTION: GAMEMD 0x48B2A0 (decl; reloc)
     void Init();
@@ -113,13 +113,13 @@ public:
     // FUNCTION: GAMEMD 0x48BA10 (decl; reloc)
     void FUN_0048BA10(int a1);
     // FUNCTION: GAMEMD 0x48BA80 (decl; reloc)
-    unsigned long GetResponseTime();
+    unsigned long FUN_0048BA80();
     // FUNCTION: GAMEMD 0x48BA90 (decl; reloc)
-    int GetPeakResponseTime();
+    int FUN_0048BA90();
     // FUNCTION: GAMEMD 0x48BAA0 (decl; reloc)
-    void ResetResponseTime(bool a1);
+    void FUN_0048BAA0(bool a1);
     // FUNCTION: GAMEMD 0x48BAD0 (decl; reloc)
-    void ConfigureDebug(int a1, int a2, int a3, int a4, int a5);
+    void FUN_0048BAD0(int a1, int a2, int a3, int a4, int a5);
 };
 
 // The timer pair behind the global at 0x887338 (StartTime / clock object /
@@ -177,49 +177,49 @@ extern ConnectionClass* GlobalConnection_00A8EA0C;
 // Packet header: 0xE bytes (offsets +0x0 magic, +0x2 code, +0x3 byte, +0x4 id,
 // +0x8 dword, +0xC word); data follows at +0xE, so the struct is packed.
 #pragma pack(push, 1)
-struct CommHeaderType
+struct ConnPacketHeader
 {
-    unsigned short MagicNumber;   // +0x00
+    unsigned short unknown_00;   // +0x00
     unsigned char  Code;          // +0x02 0 = data (ack), 1 = data (no ack), 2 = ack
     unsigned char  unknown_03;    // +0x03
-    unsigned long  PacketID;      // +0x04
+    unsigned long  unknown_04;      // +0x04
     unsigned long  unknown_08;    // +0x08
     unsigned short unknown_0C;    // +0x0C
 };
 #pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(CommHeaderType, MagicNumber) == 0);
-GG_STATIC_ASSERT(sizeof(CommHeaderType) == 0xE);
-GG_STATIC_ASSERT(offsetof(CommHeaderType, Code) == 0x2);
-GG_STATIC_ASSERT(offsetof(CommHeaderType, unknown_03) == 0x3);
-GG_STATIC_ASSERT(offsetof(CommHeaderType, PacketID) == 0x4);
-GG_STATIC_ASSERT(offsetof(CommHeaderType, unknown_08) == 0x8);
-GG_STATIC_ASSERT(offsetof(CommHeaderType, unknown_0C) == 0xC);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, unknown_00) == 0);
+GG_STATIC_ASSERT(sizeof(ConnPacketHeader) == 0xE);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, Code) == 0x2);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, unknown_03) == 0x3);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, unknown_08) == 0x8);
+GG_STATIC_ASSERT(offsetof(ConnPacketHeader, unknown_0C) == 0xC);
 
 // Global-connection packet header: the 0xE-byte header plus a word at +0xE.
 #pragma pack(push, 1)
-struct CommGlobalHeaderType
+struct ConnGlobalPacketHeader
 {
-    unsigned short MagicNumber;   // +0x00
+    unsigned short unknown_00;   // +0x00
     unsigned char  Code;          // +0x02
     unsigned char  unknown_03;    // +0x03
-    unsigned long  PacketID;      // +0x04
+    unsigned long  unknown_04;      // +0x04
     unsigned long  unknown_08;    // +0x08
     unsigned short unknown_0C;    // +0x0C
     unsigned short unknown_0E;    // +0x0E
 };
 #pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, MagicNumber) == 0x0);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, Code) == 0x2);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, unknown_03) == 0x3);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, PacketID) == 0x4);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, unknown_08) == 0x8);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, unknown_0C) == 0xC);
-GG_STATIC_ASSERT(sizeof(CommGlobalHeaderType) == 0x10);
-GG_STATIC_ASSERT(offsetof(CommGlobalHeaderType, unknown_0E) == 0xE);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, Code) == 0x2);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_03) == 0x3);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_08) == 0x8);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_0C) == 0xC);
+GG_STATIC_ASSERT(sizeof(ConnGlobalPacketHeader) == 0x10);
+GG_STATIC_ASSERT(offsetof(ConnGlobalPacketHeader, unknown_0E) == 0xE);
 
 // ---------------------------------------------------------------------------
 // ConnectionClass (RTTI .?AVConnectionClass@@, vtable 0x7E51B4, 10 slots).
-// Packet header (0xE bytes, retail "CommHeaderType"): word magic +0x0, byte
+// Packet header (0xE bytes, ConnPacketHeader): word magic +0x0, byte
 // code +0x2 (0 data-needs-ack, 1 data-no-ack, 2 ack), byte +0x3, dword id +0x4.
 // The constructor at 0x48BE60 and ordinary destructor at 0x48BEE0 are
 // separately verified expansion rows. One ordinary destructor definition is
@@ -229,21 +229,21 @@ class ConnectionClass
 {
 public:
     // FUNCTION: GAMEMD 0x48BE60 (decl; reloc)
-    ConnectionClass(int numsend, int numreceive, int maxlen,
-                    unsigned short magicnum, int retry_delta, int max_retries,
-                    int timeout, int extralen);
+    ConnectionClass(int sendSlots, int receiveSlots, int maxlen,
+                    unsigned short magic, int retryDelay, int retryLimit,
+                    int timeout, int extraLength);
     // FUNCTION: GAMEMD 0x48BEE0 (decl; reloc) -- ordinary destructor.
     virtual ~ConnectionClass();                                // slot 0  0x48C650
     virtual void Init();                                       // slot 1  0x48BF10
-    virtual int Send_Packet(void* buf, int buflen, int ack_required,
+    virtual int vf_2(void* buf, int buflen, int needsAck,
                             unsigned char extra);              // slot 2  0x48BF40
-    virtual int Receive_Packet(CommHeaderType* packet, int buflen); // slot 3  0x48C040
-    virtual int Get_Packet(void* buf, int* buflen);            // slot 4  0x48C320
+    virtual int Receive_Packet(ConnPacketHeader* packet, int buflen); // slot 3  0x48C040
+    virtual int vf_4(void* buf, int* buflen);            // slot 4  0x48C320
     virtual int Service();                                     // slot 5  0x48C3B0
-    virtual int Remove_Failed_Packets();                       // slot 6  0x48C590 (name provisional)
+    virtual int vf_6();                       // slot 6  0x48C590
     virtual int Service_Send_Queue();                          // slot 7  0x48C3E0
-    virtual int Service_Receive_Queue();                       // slot 8  0x48C5A0
-    virtual int Send_To(void* buf, int buflen, void* extrabuf, int extralen,
+    virtual int vf_8();                       // slot 8  0x48C5A0
+    virtual int vf_9(void* buf, int buflen, void* extra, int extraLength,
                         bool is_global, unsigned short unknown_6) = 0; // slot 9
 
     CommBufferClass* Queue;                // +0x04
@@ -253,8 +253,8 @@ public:
     int              unknown_14;           // +0x14
     int              unknown_18;           // +0x18
     int              MaxPacketLen;         // +0x1C
-    CommHeaderType*  PacketBuf;            // +0x20
-    unsigned short   MagicNumber;          // +0x24
+    ConnPacketHeader*  unknown_20;            // +0x20
+    unsigned short   unknown_24;          // +0x24
     unsigned short   unknown_26;           // +0x26 (padding)
     unsigned int     RetryDelta;           // +0x28
     unsigned int     MaxRetries;           // +0x2C
@@ -276,8 +276,8 @@ GG_STATIC_ASSERT(offsetof(ConnectionClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, MaxPacketLen) == 0x1C);
-GG_STATIC_ASSERT(offsetof(ConnectionClass, PacketBuf) == 0x20);
-GG_STATIC_ASSERT(offsetof(ConnectionClass, MagicNumber) == 0x24);
+GG_STATIC_ASSERT(offsetof(ConnectionClass, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(ConnectionClass, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, RetryDelta) == 0x28);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, MaxRetries) == 0x2C);
 GG_STATIC_ASSERT(offsetof(ConnectionClass, Timeout) == 0x30);
@@ -292,9 +292,9 @@ GG_STATIC_ASSERT(sizeof(ConnectionClass) == 0x4C);
 GG_STATIC_ASSERT(sizeof(CommBufferClass) == 0x58);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_08) == 0x08);
-GG_STATIC_ASSERT(offsetof(CommBufferClass, SendCount) == 0x28);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_2C) == 0x2C);
-GG_STATIC_ASSERT(offsetof(CommBufferClass, ReceiveCount) == 0x38);
+GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_38) == 0x38);
 GG_STATIC_ASSERT(offsetof(CommBufferClass, unknown_3C) == 0x3C);
 
 // FUNCTION: GAMEMD 0x53F830 (decl; reloc)
@@ -311,14 +311,14 @@ extern "C" wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 class IPXConnClass : public ConnectionClass
 {
 public:
-    IPXConnClass(int numsend, int numreceive, int maxlen, unsigned short magicnum,
+    IPXConnClass(int sendSlots, int receiveSlots, int maxlen, unsigned short magic,
                  IPXAddressClass* address, int id, wchar_t* name,
-                 int extralen);                                // 0x53F430
+                 int extraLength);                                // 0x53F430
     virtual ~IPXConnClass() {}                                 // slot 0  0x53F850
     virtual void Init();                                       // slot 1  0x53F4E0
-    virtual int Send_To(void* buf, int buflen, void* extrabuf, int extralen,
+    virtual int vf_9(void* buf, int buflen, void* extra, int extraLength,
                         bool is_global, unsigned short unknown_6); // slot 9  0x53F5D0
-    virtual int Send_To_Address(void* buf, int buflen, IPXAddressClass* address,
+    virtual int vf_10(void* buf, int buflen, IPXAddressClass* address,
                                 unsigned long* network, bool is_global,
                                 unsigned short unknown_6);     // slot 10 0x53F650
 
@@ -397,36 +397,36 @@ extern int PlayerCount_00A8DA84;
 class IPXGlobalConnClass : public IPXConnClass
 {
 public:
-    IPXGlobalConnClass(int numsend, int numreceive, int maxlen,
-                       unsigned short unknown_b8, unsigned short magicnum); // 0x53FA90
+    IPXGlobalConnClass(int sendSlots, int receiveSlots, int maxlen,
+                       unsigned short unknown_b8, unsigned short magic); // 0x53FA90
     virtual ~IPXGlobalConnClass();                                 // slot 0  0x540670
-    virtual int Send_Packet(void* buf, int buflen, int ack_required,
+    virtual int vf_2(void* buf, int buflen, int needsAck,
                             unsigned char extra);                  // slot 2  0x540610
-    virtual int Receive_Packet(CommHeaderType* packet, int buflen); // slot 3  0x540630
-    virtual int Get_Packet(void* buf, int* buflen);                // slot 4  0x540650
-    virtual int Remove_Failed_Packets();                           // slot 6  0x5402D0
-    virtual int Service_Receive_Queue();                           // slot 8  0x5400D0
-    virtual int Send_To(void* buf, int buflen, void* extrabuf, int extralen,
+    virtual int Receive_Packet(ConnPacketHeader* packet, int buflen); // slot 3  0x540630
+    virtual int vf_4(void* buf, int* buflen);                // slot 4  0x540650
+    virtual int vf_6();                           // slot 6  0x5402D0
+    virtual int vf_8();                           // slot 8  0x5400D0
+    virtual int vf_9(void* buf, int buflen, void* extra, int extraLength,
                         bool is_global, unsigned short unknown_6); // slot 9  0x540050
-    virtual int Send_To_Address(void* buf, int buflen, IPXAddressClass* address,
+    virtual int vf_10(void* buf, int buflen, IPXAddressClass* address,
                                 unsigned long* network, bool is_global,
                                 unsigned short unknown_6);         // slot 10 0x5403F0
-    virtual int Send_Packet_To(void* buf, int buflen, IPXAddressClass* address,
-                               int ack_required, int unknown_5, int packet_id); // slot 11 0x53FBD0
-    virtual int Receive_Packet_From(CommHeaderType* packet, int buflen,
+    virtual int vf_11(void* buf, int buflen, IPXAddressClass* address,
+                               int needsAck, int unknown_5, int packet_id); // slot 11 0x53FBD0
+    virtual int vf_12(ConnPacketHeader* packet, int buflen,
                                     IPXAddressClass* address,
                                     unsigned short port);          // slot 12 0x53FCB0
-    virtual int Get_Packet_From(void* buf, int* buflen, IPXAddressClass* address,
+    virtual int vf_13(void* buf, int* buflen, IPXAddressClass* address,
                                 unsigned short* port);             // slot 13 0x53FF10
-    virtual int Get_Packet_At(int index, void* buf, int* buflen,
+    virtual int vf_14(int index, void* buf, int* buflen,
                               IPXAddressClass* address, unsigned short* port,
                               unsigned long* packet_id);           // slot 14 0x53FFA0
-    virtual void Mark_Received(int index);                         // slot 15 0x540030
-    virtual int Remove_Packets_From(IPXAddressClass* address,
+    virtual void vf_15(int index);                         // slot 15 0x540030
+    virtual int vf_16(IPXAddressClass* address,
                                     unsigned short port);          // slot 16 0x540340
-    virtual void Strip_Old_Packets(unsigned int age);              // slot 17 0x540110
+    virtual void vf_17(unsigned int age);              // slot 17 0x540110
 
-    CommGlobalHeaderType* GlobalHeader() { return (CommGlobalHeaderType*)PacketBuf; }
+    ConnGlobalPacketHeader* GlobalHeader() { return (ConnGlobalPacketHeader*)unknown_20; }
 
     unsigned short  unknown_B8;         // +0xB8
     unsigned long   unknown_BA;         // +0xBA

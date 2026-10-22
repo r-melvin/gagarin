@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Offsets read numerically off the user's retail gamemd.exe v1.001 via the
 //   local Ghidra CLI at 0x42F1E0: the three embedded vectors sit at +0x4, +0x20
 //   and +0x38, so the first is 0x1C bytes and the other two 0x18. Each is
 //   constructed by a call to its VectorClass base (0x42FC40 for the first,
 //   0x42FCB0 for the other two — the element sizes differ, 0x10 against 4) and
-//   then finished inline with the DynamicVectorClass vptr, GrowthStep = 10 and
-//   ActiveCount = 0. Field names follow RA1's VectorClass/DynamicVectorClass
-//   (structure reference only).
+//   then finished inline with the DynamicVectorClass vptr, CapacityIncrement = 10 and
+//   Count = 0. Field names are the project's YRpp-cross-checked vector names; the offsets
+//   are the binary's.
 #ifndef GG_MATCH_CORE_TRIPLE_VECTOR_HOST_METHODS_H
 #define GG_MATCH_CORE_TRIPLE_VECTOR_HOST_METHODS_H
 
@@ -30,30 +30,30 @@ struct WideVector_0042F1E0
 {
     const void* Vptr;        // +0x0000
     void* Vector;            // +0x0004
-    int   VectorMax;         // +0x0008
+    int   Capacity;         // +0x0008
     char  IsValid;           // +0x000C
     char  IsAllocated;       // +0x000D
     char  _pad00E[2];        // +0x000E
-    int   ActiveCount;       // +0x0010
-    int   GrowthStep;        // +0x0014
+    int   Count;       // +0x0010
+    int   CapacityIncrement;        // +0x0014
     int   _pad018;           // +0x0018
 
     // FUNCTION: GAMEMD 0x42FC40 — VectorClass base, 0x10-byte element.
     void BaseCtor(unsigned int size, const void* array);
 };
 GG_STATIC_ASSERT(sizeof(WideVector_0042F1E0) == 0x1C);
-GG_STATIC_ASSERT(offsetof(WideVector_0042F1E0, GrowthStep) == 0x14);
+GG_STATIC_ASSERT(offsetof(WideVector_0042F1E0, CapacityIncrement) == 0x14);
 
 struct NarrowVector_0042F1E0
 {
     const void* Vptr;        // +0x0000
     void* Vector;            // +0x0004
-    int   VectorMax;         // +0x0008
+    int   Capacity;         // +0x0008
     char  IsValid;           // +0x000C
     char  IsAllocated;       // +0x000D
     char  _pad00E[2];        // +0x000E
-    int   ActiveCount;       // +0x0010
-    int   GrowthStep;        // +0x0014
+    int   Count;       // +0x0010
+    int   CapacityIncrement;        // +0x0014
 
     // FUNCTION: GAMEMD 0x42FCB0 — VectorClass base, 4-byte element.
     void BaseCtor(unsigned int size, const void* array);

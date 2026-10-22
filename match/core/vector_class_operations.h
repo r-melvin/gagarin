@@ -36,7 +36,7 @@ template<class T> DynamicVectorClass<T>::DynamicVectorClass(int capacity, T* pMe
     : VectorClass<T>(capacity, pMem)
 {
     this->CapacityIncrement = 10;
-    this->ActiveCount = 0;
+    this->Count = 0;
 }
 
 // The base copy/assignment path is expanded into DynamicVectorClass<int>'s
@@ -70,7 +70,7 @@ template<class T> inline VectorClass<T>& VectorClass<T>::operator=(const VectorC
 }
 
 template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const DynamicVectorClass<T>& other)
-    : VectorClass<T>(other), ActiveCount(other.ActiveCount), CapacityIncrement(other.CapacityIncrement)
+    : VectorClass<T>(other), Count(other.Count), CapacityIncrement(other.CapacityIncrement)
 {
 }
 
@@ -80,9 +80,9 @@ template<class T> inline DynamicVectorClass<T>::DynamicVectorClass(const Dynamic
 template<class T>
 inline bool DynamicVectorClass<T>::Delete(int index)
 {
-    if (index < ActiveCount) {
-        ActiveCount--;
-        for (int i = index; i < ActiveCount; i++)
+    if (index < Count) {
+        Count--;
+        for (int i = index; i < Count; i++)
             this->Items[i] = this->Items[i + 1];
         return true;
     }
@@ -91,12 +91,12 @@ inline bool DynamicVectorClass<T>::Delete(int index)
 
 // Append, inline: expanded in ListClass::AddItem (0x5576A0). Growth by
 // CapacityIncrement happens only when the vector owns its block or has none.
-// The new index is taken before the store, so ActiveCount is loaded ahead of
+// The new index is taken before the store, so Count is loaded ahead of
 // Items, which is retail's order.
 template<class T>
 inline bool DynamicVectorClass<T>::AddItem(const T& item)
 {
-    if (ActiveCount >= this->Capacity) {
+    if (Count >= this->Capacity) {
         if ((this->IsAllocated || this->Capacity == 0) && CapacityIncrement > 0) {
             if (!this->SetCapacity(this->Capacity + CapacityIncrement, 0))
                 return false;
@@ -104,8 +104,8 @@ inline bool DynamicVectorClass<T>::AddItem(const T& item)
             return false;
         }
     }
-    int index = ActiveCount;
-    ActiveCount = index + 1;
+    int index = Count;
+    Count = index + 1;
     this->Items[index] = item;
     return true;
 }
@@ -154,7 +154,7 @@ template<class T> T VectorClass<T>::Slot6(int index) const
 
 template<class T> int DynamicVectorClass<T>::FindItemIndex(const T& item) const
 {
-    for (int i = 0; i < this->ActiveCount; ++i) {
+    for (int i = 0; i < this->Count; ++i) {
         if (this->Items[i] == item) return i;
     }
     return -1;
@@ -207,8 +207,8 @@ template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
 
 template<class T> bool DynamicVectorClass<T>::SetCapacity(int capacity, T* pMem) {
     if (VectorClass<T>::SetCapacity(capacity, pMem)) {
-        if (this->Capacity < this->ActiveCount)
-            this->ActiveCount = this->Capacity;
+        if (this->Capacity < this->Count)
+            this->Count = this->Capacity;
         return true;
     }
     return false;

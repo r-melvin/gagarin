@@ -860,7 +860,7 @@ bool MSPCXAnim::Update(int context, MSRect* out)
 
                 int skip = Owner->IndexOf(this);
 
-                for (int i = 0; i < Owner->ActiveCount; ++i) {
+                for (int i = 0; i < Owner->Count; ++i) {
                     if (i != skip) {
                         Owner->Vector[i]->Draw(context, &mine);
                     }

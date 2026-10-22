@@ -63,7 +63,7 @@ void CellClass::FogCell()
                 FogVec_00486A70* fogged =
                     raw ? ((FogVec_00486A70*)raw)->Construct() : 0;
                 (fogged->*fogged->Vptr->At_08)(1, 0);
-                fogged->GrowthStep = 1;
+                fogged->CapacityIncrement = 1;
 
                 cell->Flags |= 0x400000;
 

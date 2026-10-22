@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
 //   Ghidra CLI at 0x4109C0. The three globals it touches — 0xA8E968, 0xA8E96C
 //   and 0xA8E978 — are 0x0, 0x4 and 0x10 into one vector object, so they are
-//   modelled as its vptr, Items and Count. The removal is RA1's
-//   DynamicVectorClass::Delete (structure reference only).
+//   modelled as its vptr, Items and Count. The removal is an
+//   inlined by-index delete: count guard, shift loop, decrement.
 #ifndef GG_MATCH_CORE_DEREGISTERING_DTOR_METHODS_H
 #define GG_MATCH_CORE_DEREGISTERING_DTOR_METHODS_H
 
@@ -34,7 +34,7 @@ GG_STATIC_ASSERT(offsetof(Registry_004109C0, Items) == 0x4);
 GG_STATIC_ASSERT(offsetof(Registry_004109C0, Count) == 0x10);
 
 // Slot +0x10 takes the *address* of the caller's pointer (`LEA EAX,[ESP+4]` then
-// `PUSH EAX`), which is RA1's `ID(T const &)` overload with T = Obj*.
+// `PUSH EAX`), so the lookup takes a `T const&` with T = Obj*.
 typedef int (Registry_004109C0::*FnID_004109C0)(Obj_004109C0* const* item);
 
 struct RegistryVtbl_004109C0

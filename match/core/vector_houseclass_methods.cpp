@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgHouseClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(HouseClass*) == 4);

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 // Frozen M1 recovery, reconfirmed against pinned retail entry spans and
-// winsock.rows.tsv; RA1 supplied naming idiom only, no transcription.
+// winsock.rows.tsv. Unattested virtuals are named vf_<slot>.
 // The selected methods are the unclaimed ordinary WinsockInterfaceClass base
 // entries only; StartListening and both buffer-drain methods remain in their
 // existing TUs. No constructor, destructor, or ShutdownWinsock body is here.
@@ -61,18 +61,18 @@ void WinsockInterfaceClass::Slot20(int value)
     unknown_3F2F8 = value;
 }
 
-// FUNCTION: GAMEMD 0x7B1B80  WinsockInterfaceClass::CloseSockets (slot 1)
-void WinsockInterfaceClass::CloseSockets()
+// FUNCTION: GAMEMD 0x7B1B80  WinsockInterfaceClass::vf_1 (slot 1)
+void WinsockInterfaceClass::vf_1()
 {
     if (Socket != -1)
     {
         closesocket(Socket);
         Socket = -1;
     }
-    if (ListenSocket != -1)
+    if (unknown_3F070 != -1)
     {
-        closesocket(ListenSocket);
-        ListenSocket = -1;
+        closesocket(unknown_3F070);
+        unknown_3F070 = -1;
     }
 }
 
@@ -81,8 +81,8 @@ void WinsockInterfaceClass::StopListening()
 {
     if (Socket != -1 && DAT_00B73550)
         WSAAsyncSelect(Socket, DAT_00B73550, 0, 0);
-    if (ListenSocket != -1 && DAT_00B73550)
-        WSAAsyncSelect(ListenSocket, DAT_00B73550, 0, 0);
+    if (unknown_3F070 != -1 && DAT_00B73550)
+        WSAAsyncSelect(unknown_3F070, DAT_00B73550, 0, 0);
 }
 
 // FUNCTION: GAMEMD 0x7B1FD0  WinsockInterfaceClass::ComputePacketCrc (slot 21)
@@ -116,7 +116,7 @@ bool WinsockInterfaceClass::VerifyPacketCrc(WinsockBufferType* packet)
 
         if (crc == packet->Crc)
             return true;
-        Debug_Printf("Error in Winsock packet CRC\n");
+        FUN_004068E0("Error in Winsock packet CRC\n");
     }
     return false;
 }
@@ -126,7 +126,7 @@ int WinsockInterfaceClass::GetPacket(void* packet, int* packetLen, void* address
                                      unsigned int* addressLen, unsigned short* unknown1A)
 {
     DAT_0087F770->FUN_0054F000();
-    if (InBuffers.ActiveCount == 0)
+    if (InBuffers.Count == 0)
         return 0;
 
     WinsockBufferType* buffer = InBuffers.Items[0];
@@ -139,10 +139,10 @@ int WinsockInterfaceClass::GetPacket(void* packet, int* packetLen, void* address
     *unknown1A = buffer->unknown_1A;
     *packetLen = buffer->BufferLen;
 
-    if (InBuffers.ActiveCount > 0)
+    if (InBuffers.Count > 0)
     {
-        InBuffers.ActiveCount--;
-        for (int i = 0; i < InBuffers.ActiveCount; i++)
+        InBuffers.Count--;
+        for (int i = 0; i < InBuffers.Count; i++)
             InBuffers.Items[i] = InBuffers.Items[i + 1];
     }
 
@@ -174,7 +174,7 @@ void WinsockInterfaceClass::SendPacket(void* packet, int packetLen, void* addres
     if (alternate)
     {
         WinsockAddItem(AltOutBuffers, buffer);
-        socket = ListenSocket;
+        socket = unknown_3F070;
     }
     else
     {
@@ -198,7 +198,7 @@ void WinsockInterfaceClass::Broadcast(void* packet, int packetLen, bool alternat
     if (alternate)
     {
         WinsockAddItem(AltOutBuffers, buffer);
-        socket = ListenSocket;
+        socket = unknown_3F070;
     }
     else
     {
@@ -209,8 +209,8 @@ void WinsockInterfaceClass::Broadcast(void* packet, int packetLen, bool alternat
     DAT_0087F770->FUN_0054F000();
 }
 
-// FUNCTION: GAMEMD 0x7B25E0  WinsockInterfaceClass::ClearSocketError (slot 9)
-void WinsockInterfaceClass::ClearSocketError(SOCKET socket)
+// FUNCTION: GAMEMD 0x7B25E0  WinsockInterfaceClass::vf_9 (slot 9)
+void WinsockInterfaceClass::vf_9(SOCKET socket)
 {
     int error;
     int length = 4;
@@ -226,16 +226,16 @@ bool WinsockInterfaceClass::SetSocketBuffers(SOCKET socket)
         socket = Socket;
 
     if (setsockopt(socket, SOL_SOCKET, SO_RCVBUF, (const char*)&DAT_0084DDA0, 4) == -1)
-        Debug_Printf("Failed to set socket option SO_RCVBUF - error code %d.\n",
+        FUN_004068E0("Failed to set socket option SO_RCVBUF - error code %d.\n",
                      WSAGetLastError());
     else
-        Debug_Printf("Socket option SO_RCVBUF set OK\n");
+        FUN_004068E0("Socket option SO_RCVBUF set OK\n");
 
     if (setsockopt(socket, SOL_SOCKET, SO_SNDBUF, (const char*)&DAT_0084DD9C, 4) == -1)
-        Debug_Printf("Failed to set socket option SO_SNDBUF - error code %d.\n",
+        FUN_004068E0("Failed to set socket option SO_SNDBUF - error code %d.\n",
                      WSAGetLastError());
     else
-        Debug_Printf("Socket option SO_SNDBUF set OK\n");
+        FUN_004068E0("Socket option SO_SNDBUF set OK\n");
     return true;
 }
 
@@ -244,11 +244,11 @@ bool WinsockInterfaceClass::GetHostName(char* name, int nameLen)
 {
     if (gethostname(name, nameLen) == -1)
     {
-        Debug_Printf("Error - WinsockInterface Unable to get host name. Error code %d\n",
+        FUN_004068E0("Error - WinsockInterface Unable to get host name. Error code %d\n",
                      WSAGetLastError());
         return false;
     }
-    Debug_Printf("WinsockInterface Host name is %s\n", name);
+    FUN_004068E0("WinsockInterface Host name is %s\n", name);
     return true;
 }
 
@@ -270,8 +270,8 @@ bool WinsockInterfaceClass::Init(int)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x7B2770  WinsockInterfaceClass::MessageHandler (base; slot 16)
-int WinsockInterfaceClass::MessageHandler(HWND, unsigned int, unsigned int, long)
+// FUNCTION: GAMEMD 0x7B2770  WinsockInterfaceClass::vf_16 (base; slot 16)
+int WinsockInterfaceClass::vf_16(HWND, unsigned int, unsigned int, long)
 {
     return 1;
 }

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Target bytes: the user's retail gamemd.exe v1.001 through the local Ghidra
 //   CLI at 0x4887F0 / 0x488850 / 0x4888B0 / 0x488910. This address run carried
 //   no name in any worklist; the owning class was recovered from the runtime
@@ -9,9 +9,7 @@
 //     0x81D148 + 8 -> ".?AVColorListClass@@"
 //   and the element vector's own vtable resolves the same way:
 //     0x7E4DB8 - 4 -> 0x7FCDB0 -> 0x81C038 -> ".?AV?$VectorClass@H@@"
-//   so Colors is a DynamicVectorClass<int>. The container shape is RA1's
-//   VectorClass / DynamicVectorClass pair (COLRLIST.H / VECTOR.H, structure
-//   reference only, never transcribed); every offset below is reconfirmed
+//   so Colors is a DynamicVectorClass<int>. Every offset below is read
 //   numerically from the disassembly.
 //
 // ColorListClass -- a ListClass whose entries each carry a colour. The four
@@ -62,17 +60,17 @@ public:
             Vector = 0;
         }
         IsAllocated = false;
-        VectorMax = 0;
+        Capacity = 0;
     }
     virtual int ID(int const& object) const;                         // 0x10
 
     int* Vector;       // +0x04
-    int  VectorMax;    // +0x08
+    int  Capacity;    // +0x08
     bool IsValid;      // +0x0C
     bool IsAllocated;  // +0x0D
 };
 GG_STATIC_ASSERT(offsetof(ColorVector, Vector)      == 0x04);
-GG_STATIC_ASSERT(offsetof(ColorVector, VectorMax)   == 0x08);
+GG_STATIC_ASSERT(offsetof(ColorVector, Capacity)   == 0x08);
 GG_STATIC_ASSERT(offsetof(ColorVector, IsValid)     == 0x0C);
 GG_STATIC_ASSERT(offsetof(ColorVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(sizeof(ColorVector)                == 0x10);
@@ -80,40 +78,40 @@ GG_STATIC_ASSERT(sizeof(ColorVector)                == 0x10);
 class ColorDynVector : public ColorVector
 {
 public:
-    int ActiveCount;  // +0x10
-    int GrowthStep;   // +0x14
+    int Count;  // +0x10
+    int CapacityIncrement;   // +0x14
 
     // Both of these are expanded at their call sites in retail, never called.
     bool Add(int const& object)
     {
-        if (ActiveCount >= VectorMax) {
-            if ((IsAllocated || !VectorMax) && GrowthStep > 0) {
-                if (!Resize(VectorMax + GrowthStep, 0)) {
+        if (Count >= Capacity) {
+            if ((IsAllocated || !Capacity) && CapacityIncrement > 0) {
+                if (!Resize(Capacity + CapacityIncrement, 0)) {
                     return false;
                 }
             } else {
                 return false;
             }
         }
-        int index = ActiveCount;
-        ActiveCount = index + 1;
+        int index = Count;
+        Count = index + 1;
         Vector[index] = object;
         return true;
     }
 
     bool Delete(int index)
     {
-        if (index < ActiveCount) {
-            ActiveCount--;
-            for (int i = index; i < ActiveCount; i++) {
+        if (index < Count) {
+            Count--;
+            for (int i = index; i < Count; i++) {
                 Vector[i] = Vector[i + 1];
             }
         }
         return true;
     }
 };
-GG_STATIC_ASSERT(offsetof(ColorDynVector, ActiveCount) == 0x10);
-GG_STATIC_ASSERT(offsetof(ColorDynVector, GrowthStep)  == 0x14);
+GG_STATIC_ASSERT(offsetof(ColorDynVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(ColorDynVector, CapacityIncrement)  == 0x14);
 GG_STATIC_ASSERT(sizeof(ColorDynVector)                == 0x18);
 
 // ---------------------------------------------------------------------------

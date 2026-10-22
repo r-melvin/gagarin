@@ -2126,54 +2126,54 @@
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661750",
-  "sym": "?Seed_Bits_Needed@RandomStraw@@QBEHXZ",
+  "sym": "?FUN_00661750@RandomStraw@@QBEHXZ",
   "len": "0x16",
-  "name": "Seed_Bits_Needed",
+  "name": "FUN_00661750",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661770",
-  "sym": "?Seed_Bit@RandomStraw@@QAEXH@Z",
+  "sym": "?FUN_00661770@RandomStraw@@QAEXH@Z",
   "len": "0xdb",
-  "name": "Seed_Bit",
+  "name": "FUN_00661770",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661850",
-  "sym": "?Seed_Byte@RandomStraw@@QAEXD@Z",
+  "sym": "?FUN_00661850@RandomStraw@@QAEXD@Z",
   "len": "0x103",
-  "name": "Seed_Byte",
+  "name": "FUN_00661850",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661960",
-  "sym": "?Seed_Short@RandomStraw@@QAEXF@Z",
+  "sym": "?FUN_00661960@RandomStraw@@QAEXF@Z",
   "len": "0xfb",
-  "name": "Seed_Short",
+  "name": "FUN_00661960",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661A60",
-  "sym": "?Seed_Long@RandomStraw@@QAEXJ@Z",
+  "sym": "?FUN_00661A60@RandomStraw@@QAEXJ@Z",
   "len": "0x103",
-  "name": "Seed_Long",
+  "name": "FUN_00661A60",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x661B70",
-  "sym": "?Scramble_Seed@RandomStraw@@QAEXXZ",
+  "sym": "?FUN_00661B70@RandomStraw@@QAEXXZ",
   "len": "0x97",
-  "name": "Scramble_Seed",
+  "name": "FUN_00661B70",
   "status": "matched",
   "pct": 100
  },
@@ -9905,45 +9905,45 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C2E0",
-  "sym": "?Create@RAMFileClass@@UAEHXZ",
+  "sym": "?CreateFile@RAMFileClass@@UAEHXZ",
   "len": "0x1e",
-  "name": "Create",
+  "name": "CreateFile",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C300",
-  "sym": "?Delete@RAMFileClass@@UAEHXZ",
+  "sym": "?DeleteFile@RAMFileClass@@UAEHXZ",
   "len": "0x1e",
-  "name": "Delete",
+  "name": "DeleteFile",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C320",
-  "sym": "?Is_Available@RAMFileClass@@UAE_NH@Z",
+  "sym": "?Exists@RAMFileClass@@UAE_NH@Z",
   "len": "0x5",
-  "name": "Is_Available",
+  "name": "Exists",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C330",
-  "sym": "?Is_Open@RAMFileClass@@UBE_NXZ",
+  "sym": "?HasHandle@RAMFileClass@@UBE_NXZ",
   "len": "0x4",
-  "name": "Is_Open",
+  "name": "HasHandle",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C340",
-  "sym": "?Open@RAMFileClass@@UAEHPBDH@Z",
+  "sym": "?OpenEx@RAMFileClass@@UAEHPBDH@Z",
   "len": "0xd",
-  "name": "Open",
+  "name": "OpenEx",
   "status": "matched",
   "pct": 100
  },
@@ -9959,9 +9959,9 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C3A0",
-  "sym": "?Read@RAMFileClass@@UAEJPAXJ@Z",
+  "sym": "?ReadBytes@RAMFileClass@@UAEJPAXJ@Z",
   "len": "0x7e",
-  "name": "Read",
+  "name": "ReadBytes",
   "status": "matched",
   "pct": 100
  },
@@ -9977,18 +9977,18 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C4A0",
-  "sym": "?Size@RAMFileClass@@UAEJXZ",
+  "sym": "?GetFileSize@RAMFileClass@@UAEJXZ",
   "len": "0x4",
-  "name": "Size",
+  "name": "GetFileSize",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C4B0",
-  "sym": "?Write@RAMFileClass@@UAEJPBXJ@Z",
+  "sym": "?WriteBytes@RAMFileClass@@UAEJPBXJ@Z",
   "len": "0x8d",
-  "name": "Write",
+  "name": "WriteBytes",
   "status": "matched",
   "pct": 100
  },
@@ -10004,45 +10004,45 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C550",
-  "sym": "?File_Name@RAMFileClass@@UBEPBDXZ",
+  "sym": "?GetFileName@RAMFileClass@@UBEPBDXZ",
   "len": "0x6",
-  "name": "File_Name",
+  "name": "GetFileName",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C560",
-  "sym": "?Set_Name@RAMFileClass@@UAEPBDPBD@Z",
+  "sym": "?SetFileName@RAMFileClass@@UAEPBDPBD@Z",
   "len": "0x8",
-  "name": "Set_Name",
+  "name": "SetFileName",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C570",
-  "sym": "?Get_Date_Time@RAMFileClass@@UAEKXZ",
+  "sym": "?GetFileTime@RAMFileClass@@UAEKXZ",
   "len": "0x3",
-  "name": "Get_Date_Time",
+  "name": "GetFileTime",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C580",
-  "sym": "?Set_Date_Time@RAMFileClass@@UAE_NK@Z",
+  "sym": "?SetFileTime@RAMFileClass@@UAE_NK@Z",
   "len": "0x5",
-  "name": "Set_Date_Time",
+  "name": "SetFileTime",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C590",
-  "sym": "?Error@RAMFileClass@@UAEXHHPBD@Z",
+  "sym": "?CDCheck@RAMFileClass@@UAEXHHPBD@Z",
   "len": "0x3",
-  "name": "Error",
+  "name": "CDCheck",
   "status": "matched",
   "pct": 100
  },
@@ -10058,18 +10058,18 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C5F0",
-  "sym": "?Get_Date_Time@FileClass@@UAEKXZ",
+  "sym": "?GetFileTime@FileClass@@UAEKXZ",
   "len": "0x3",
-  "name": "Get_Date_Time",
+  "name": "GetFileTime",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C600",
-  "sym": "?Set_Date_Time@FileClass@@UAE_NK@Z",
+  "sym": "?SetFileTime@FileClass@@UAE_NK@Z",
   "len": "0x5",
-  "name": "Set_Date_Time",
+  "name": "SetFileTime",
   "status": "matched",
   "pct": 100
  },
@@ -26249,9 +26249,9 @@
  {
   "tu": "match/network/event_class_ctors.cpp",
   "addr": "0x4C65A0",
-  "sym": "??0EventClass@@QAE@HUSpecialClass@@@Z",
+  "sym": "??0EventClass@@QAE@HUSpecialPayload@@@Z",
   "len": "0x36",
-  "name": "EventClass::EventClass(int,SpecialClass)",
+  "name": "EventClass::EventClass(int,SpecialPayload)",
   "status": "matched",
   "pct": 100
  },
@@ -26566,36 +26566,36 @@
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F1950",
-  "sym": "?NumConnectionsGet@NullModemClass@@QBEHXZ",
+  "sym": "?FUN_005F1950@NullModemClass@@QBEHXZ",
   "len": "0x4",
-  "name": "?NumConnectionsGet@NullModemClass@@QBEHX",
+  "name": "?FUN_005F1950@NullModemClass@@QBEHX",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F1960",
-  "sym": "?DeleteConnection@NullModemClass@@QAEHXZ",
+  "sym": "?FUN_005F1960@NullModemClass@@QAEHXZ",
   "len": "0x5A",
-  "name": "?DeleteConnection@NullModemClass@@QAEHXZ",
+  "name": "?FUN_005F1960@NullModemClass@@QAEHXZ",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F19C0",
-  "sym": "?InitSendQueue@NullModemClass@@QAEHXZ",
+  "sym": "?FUN_005F19C0@NullModemClass@@QAEHXZ",
   "len": "0x15",
-  "name": "?InitSendQueue@NullModemClass@@QAEHXZ",
+  "name": "?FUN_005F19C0@NullModemClass@@QAEHXZ",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F19E0",
-  "sym": "?DetectPort@NullModemClass@@QAEHPAUSerialSettingsType@@@Z",
+  "sym": "?FUN_005F19E0@NullModemClass@@QAEHPAUSerialSettings_005F19E0@@@Z",
   "len": "0x184",
-  "name": "?DetectPort@NullModemClass@@QAEHPAUSeria",
+  "name": "?FUN_005F19E0@NullModemClass@@QAEHPAUSeria",
   "status": "matched",
   "pct": 100
  },
@@ -26620,18 +26620,18 @@
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F1BF0",
-  "sym": "?SendMessage@NullModemClass@@QAEHPAXHH@Z",
+  "sym": "?FUN_005F1BF0@NullModemClass@@QAEHPAXHH@Z",
   "len": "0x34",
-  "name": "?SendMessage@NullModemClass@@QAEHPAXHH@Z",
+  "name": "?FUN_005F1BF0@NullModemClass@@QAEHPAXHH@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/null_modem_class_methods.cpp",
   "addr": "0x5F1C30",
-  "sym": "?GetMessage@NullModemClass@@QAEHPAXPAH@Z",
+  "sym": "?FUN_005F1C30@NullModemClass@@QAEHPAXPAH@Z",
   "len": "0x21",
-  "name": "?GetMessage@NullModemClass@@QAEHPAXPAH@Z",
+  "name": "?FUN_005F1C30@NullModemClass@@QAEHPAXPAH@Z",
   "status": "matched",
   "pct": 100
  },
@@ -27952,18 +27952,18 @@
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AA90",
-  "sym": "?Strip_Comments@INIClass@@SIXPAD@Z",
+  "sym": "?FUN_0052AA90@INIClass@@SIXPAD@Z",
   "len": "0x22",
-  "name": "INIClass::Strip_Comments",
+  "name": "INIClass::FUN_0052AA90",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/platform/ini_class_node_methods.cpp",
   "addr": "0x52AAC0",
-  "sym": "?Line_Contains_Section@INIClass@@SI_NPAD@Z",
+  "sym": "?FUN_0052AAC0@INIClass@@SI_NPAD@Z",
   "len": "0x30",
-  "name": "INIClass::Line_Contains_Section",
+  "name": "INIClass::FUN_0052AAC0",
   "status": "matched",
   "pct": 100
  },
@@ -45708,9 +45708,9 @@
  {
   "tu": "match/network/transport/conn_connection.cpp",
   "addr": "0x48BF40",
-  "sym": "?Send_Packet@ConnectionClass@@UAEHPAXHHE@Z",
+  "sym": "?vf_2@ConnectionClass@@UAEHPAXHHE@Z",
   "len": "0xF2",
-  "name": "ConnectionClass::Send_Packet",
+  "name": "ConnectionClass::vf_2",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45718,7 +45718,7 @@
  {
   "tu": "match/network/transport/conn_connection.cpp",
   "addr": "0x48C040",
-  "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUCommHeaderType@@H@Z",
+  "sym": "?Receive_Packet@ConnectionClass@@UAEHPAUConnPacketHeader@@H@Z",
   "len": "0x2D5",
   "name": "ConnectionClass::Receive_Packet",
   "status": "partial",
@@ -45729,9 +45729,9 @@
  {
   "tu": "match/network/transport/conn_connection.cpp",
   "addr": "0x48C320",
-  "sym": "?Get_Packet@ConnectionClass@@UAEHPAXPAH@Z",
+  "sym": "?vf_4@ConnectionClass@@UAEHPAXPAH@Z",
   "len": "0x90",
-  "name": "ConnectionClass::Get_Packet",
+  "name": "ConnectionClass::vf_4",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45759,9 +45759,9 @@
  {
   "tu": "match/network/transport/conn_connection.cpp",
   "addr": "0x48C590",
-  "sym": "?Remove_Failed_Packets@ConnectionClass@@UAEHXZ",
+  "sym": "?vf_6@ConnectionClass@@UAEHXZ",
   "len": "0x3",
-  "name": "ConnectionClass::Remove_Failed_Packets",
+  "name": "ConnectionClass::vf_6",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45769,9 +45769,9 @@
  {
   "tu": "match/network/transport/conn_connection.cpp",
   "addr": "0x48C5A0",
-  "sym": "?Service_Receive_Queue@ConnectionClass@@UAEHXZ",
+  "sym": "?vf_8@ConnectionClass@@UAEHXZ",
   "len": "0x51",
-  "name": "ConnectionClass::Service_Receive_Queue",
+  "name": "ConnectionClass::vf_8",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45809,9 +45809,9 @@
  {
   "tu": "match/network/transport/conn_ipx.cpp",
   "addr": "0x53F5D0",
-  "sym": "?Send_To@IPXConnClass@@UAEHPAXH0H_NG@Z",
+  "sym": "?vf_9@IPXConnClass@@UAEHPAXH0H_NG@Z",
   "len": "0x1F",
-  "name": "IPXConnClass::Send_To",
+  "name": "IPXConnClass::vf_9",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45819,9 +45819,9 @@
  {
   "tu": "match/network/transport/conn_ipx.cpp",
   "addr": "0x53F650",
-  "sym": "?Send_To_Address@IPXConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
+  "sym": "?vf_10@IPXConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
   "len": "0x1D4",
-  "name": "IPXConnClass::Send_To_Address",
+  "name": "IPXConnClass::vf_10",
   "status": "partial",
   "pct": 57.9,
   "pct_metric": "instruction-position",
@@ -45840,9 +45840,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x53FBD0",
-  "sym": "?Send_Packet_To@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@HHH@Z",
+  "sym": "?vf_11@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@HHH@Z",
   "len": "0xD2",
-  "name": "IPXGlobalConnClass::Send_Packet_To",
+  "name": "IPXGlobalConnClass::vf_11",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45850,9 +45850,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x53FCB0",
-  "sym": "?Receive_Packet_From@IPXGlobalConnClass@@UAEHPAUCommHeaderType@@HPAVIPXAddressClass@@G@Z",
+  "sym": "?vf_12@IPXGlobalConnClass@@UAEHPAUConnPacketHeader@@HPAVIPXAddressClass@@G@Z",
   "len": "0x257",
-  "name": "IPXGlobalConnClass::Receive_Packet_From",
+  "name": "IPXGlobalConnClass::vf_12",
   "status": "partial",
   "pct": 5.4,
   "pct_metric": "instruction-position",
@@ -45861,9 +45861,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x53FF10",
-  "sym": "?Get_Packet_From@IPXGlobalConnClass@@UAEHPAXPAHPAVIPXAddressClass@@PAG@Z",
+  "sym": "?vf_13@IPXGlobalConnClass@@UAEHPAXPAHPAVIPXAddressClass@@PAG@Z",
   "len": "0x82",
-  "name": "IPXGlobalConnClass::Get_Packet_From",
+  "name": "IPXGlobalConnClass::vf_13",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45871,9 +45871,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x53FFA0",
-  "sym": "?Get_Packet_At@IPXGlobalConnClass@@UAEHHPAXPAHPAVIPXAddressClass@@PAGPAK@Z",
+  "sym": "?vf_14@IPXGlobalConnClass@@UAEHHPAXPAHPAVIPXAddressClass@@PAGPAK@Z",
   "len": "0x89",
-  "name": "IPXGlobalConnClass::Get_Packet_At",
+  "name": "IPXGlobalConnClass::vf_14",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45881,9 +45881,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540030",
-  "sym": "?Mark_Received@IPXGlobalConnClass@@UAEXH@Z",
+  "sym": "?vf_15@IPXGlobalConnClass@@UAEXH@Z",
   "len": "0x18",
-  "name": "IPXGlobalConnClass::Mark_Received",
+  "name": "IPXGlobalConnClass::vf_15",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45891,9 +45891,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540050",
-  "sym": "?Send_To@IPXGlobalConnClass@@UAEHPAXH0H_NG@Z",
+  "sym": "?vf_9@IPXGlobalConnClass@@UAEHPAXH0H_NG@Z",
   "len": "0x7F",
-  "name": "IPXGlobalConnClass::Send_To",
+  "name": "IPXGlobalConnClass::vf_9",
   "status": "partial",
   "pct": 36.2,
   "pct_metric": "instruction-position",
@@ -45902,9 +45902,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x5400D0",
-  "sym": "?Service_Receive_Queue@IPXGlobalConnClass@@UAEHXZ",
+  "sym": "?vf_8@IPXGlobalConnClass@@UAEHXZ",
   "len": "0x3E",
-  "name": "IPXGlobalConnClass::Service_Receive_Queue",
+  "name": "IPXGlobalConnClass::vf_8",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45912,9 +45912,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540110",
-  "sym": "?Strip_Old_Packets@IPXGlobalConnClass@@UAEXI@Z",
+  "sym": "?vf_17@IPXGlobalConnClass@@UAEXI@Z",
   "len": "0x194",
-  "name": "IPXGlobalConnClass::Strip_Old_Packets",
+  "name": "IPXGlobalConnClass::vf_17",
   "status": "partial",
   "pct": 98.5,
   "pct_metric": "instruction-position",
@@ -45923,9 +45923,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x5402D0",
-  "sym": "?Remove_Failed_Packets@IPXGlobalConnClass@@UAEHXZ",
+  "sym": "?vf_6@IPXGlobalConnClass@@UAEHXZ",
   "len": "0x70",
-  "name": "IPXGlobalConnClass::Remove_Failed_Packets",
+  "name": "IPXGlobalConnClass::vf_6",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45933,9 +45933,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540340",
-  "sym": "?Remove_Packets_From@IPXGlobalConnClass@@UAEHPAVIPXAddressClass@@G@Z",
+  "sym": "?vf_16@IPXGlobalConnClass@@UAEHPAVIPXAddressClass@@G@Z",
   "len": "0xAC",
-  "name": "IPXGlobalConnClass::Remove_Packets_From",
+  "name": "IPXGlobalConnClass::vf_16",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45943,9 +45943,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x5403F0",
-  "sym": "?Send_To_Address@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
+  "sym": "?vf_10@IPXGlobalConnClass@@UAEHPAXHPAVIPXAddressClass@@PAK_NG@Z",
   "len": "0x213",
-  "name": "IPXGlobalConnClass::Send_To_Address",
+  "name": "IPXGlobalConnClass::vf_10",
   "status": "partial",
   "pct": 1.3,
   "pct_metric": "instruction-position",
@@ -45954,9 +45954,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540610",
-  "sym": "?Send_Packet@IPXGlobalConnClass@@UAEHPAXHHE@Z",
+  "sym": "?vf_2@IPXGlobalConnClass@@UAEHPAXHHE@Z",
   "len": "0x1C",
-  "name": "IPXGlobalConnClass::Send_Packet",
+  "name": "IPXGlobalConnClass::vf_2",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45964,7 +45964,7 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540630",
-  "sym": "?Receive_Packet@IPXGlobalConnClass@@UAEHPAUCommHeaderType@@H@Z",
+  "sym": "?Receive_Packet@IPXGlobalConnClass@@UAEHPAUConnPacketHeader@@H@Z",
   "len": "0x12",
   "name": "IPXGlobalConnClass::Receive_Packet",
   "status": "matched",
@@ -45974,9 +45974,9 @@
  {
   "tu": "match/network/transport/conn_ipx_global.cpp",
   "addr": "0x540650",
-  "sym": "?Get_Packet@IPXGlobalConnClass@@UAEHPAXPAH@Z",
+  "sym": "?vf_4@IPXGlobalConnClass@@UAEHPAXPAH@Z",
   "len": "0x12",
-  "name": "IPXGlobalConnClass::Get_Packet",
+  "name": "IPXGlobalConnClass::vf_4",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -45994,9 +45994,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x540D10",
-  "sym": "?SetGlobalTiming@IPXManagerClass@@UAEXHHH@Z",
+  "sym": "?vf_14@IPXManagerClass@@UAEXHHH@Z",
   "len": "0x25",
-  "name": "IPXManagerClass::SetGlobalTiming",
+  "name": "IPXManagerClass::vf_14",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46034,9 +46034,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x540F90",
-  "sym": "?NumConnections@IPXManagerClass@@UAEHXZ",
+  "sym": "?vf_4@IPXManagerClass@@UAEHXZ",
   "len": "0x4",
-  "name": "IPXManagerClass::NumConnections",
+  "name": "IPXManagerClass::vf_4",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46044,9 +46044,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x540FA0",
-  "sym": "?ConnectionId@IPXManagerClass@@UAEHH@Z",
+  "sym": "?vf_5@IPXManagerClass@@UAEHH@Z",
   "len": "0x1D",
-  "name": "IPXManagerClass::ConnectionId",
+  "name": "IPXManagerClass::vf_5",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46054,9 +46054,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x541040",
-  "sym": "?ConnectionIndex@IPXManagerClass@@UAEHH@Z",
+  "sym": "?vf_6@IPXManagerClass@@UAEHH@Z",
   "len": "0x29",
-  "name": "IPXManagerClass::ConnectionIndex",
+  "name": "IPXManagerClass::vf_6",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46074,9 +46074,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x5414C0",
-  "sym": "?SendPacket@IPXManagerClass@@UAEHPAXHHH@Z",
+  "sym": "?vf_2@IPXManagerClass@@UAEHPAXHHH@Z",
   "len": "0x125",
-  "name": "IPXManagerClass::SendPacket",
+  "name": "IPXManagerClass::vf_2",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46084,9 +46084,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x5415F0",
-  "sym": "?ReceivePacket@IPXManagerClass@@UAEHPAXPAH1@Z",
+  "sym": "?vf_3@IPXManagerClass@@UAEHPAXPAH1@Z",
   "len": "0x8E",
-  "name": "IPXManagerClass::ReceivePacket",
+  "name": "IPXManagerClass::vf_3",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46105,9 +46105,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x5422D0",
-  "sym": "?GlobalNumSend@IPXManagerClass@@UAEHXZ",
+  "sym": "?vf_7@IPXManagerClass@@UAEHXZ",
   "len": "0x1B",
-  "name": "IPXManagerClass::GlobalNumSend",
+  "name": "IPXManagerClass::vf_7",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46115,9 +46115,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x5422F0",
-  "sym": "?GlobalNumReceive@IPXManagerClass@@UAEHXZ",
+  "sym": "?vf_8@IPXManagerClass@@UAEHXZ",
   "len": "0x1B",
-  "name": "IPXManagerClass::GlobalNumReceive",
+  "name": "IPXManagerClass::vf_8",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46125,9 +46125,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542310",
-  "sym": "?RouterNumSend@IPXManagerClass@@UAEHXZ",
+  "sym": "?vf_20@IPXManagerClass@@UAEHXZ",
   "len": "0x1F",
-  "name": "IPXManagerClass::RouterNumSend",
+  "name": "IPXManagerClass::vf_20",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46135,9 +46135,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542330",
-  "sym": "?RouterNumReceive@IPXManagerClass@@UAEHXZ",
+  "sym": "?vf_21@IPXManagerClass@@UAEHXZ",
   "len": "0x1F",
-  "name": "IPXManagerClass::RouterNumReceive",
+  "name": "IPXManagerClass::vf_21",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46145,9 +46145,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542350",
-  "sym": "?NumSend@IPXManagerClass@@UAEHH@Z",
+  "sym": "?vf_9@IPXManagerClass@@UAEHH@Z",
   "len": "0x65",
-  "name": "IPXManagerClass::NumSend",
+  "name": "IPXManagerClass::vf_9",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46155,9 +46155,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x5423C0",
-  "sym": "?NumReceive@IPXManagerClass@@UAEHH@Z",
+  "sym": "?vf_10@IPXManagerClass@@UAEHH@Z",
   "len": "0x65",
-  "name": "IPXManagerClass::NumReceive",
+  "name": "IPXManagerClass::vf_10",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46185,9 +46185,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542EC0",
-  "sym": "?ResetResponseTime@IPXManagerClass@@UAEX_N@Z",
+  "sym": "?vf_11@IPXManagerClass@@UAEX_N@Z",
   "len": "0x66",
-  "name": "IPXManagerClass::ResetResponseTime",
+  "name": "IPXManagerClass::vf_11",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46195,9 +46195,9 @@
  {
   "tu": "match/network/transport/connman_class.cpp",
   "addr": "0x542FE0",
-  "sym": "?ConfigureDebug@IPXManagerClass@@UAEXHHHHHH@Z",
+  "sym": "?vf_15@IPXManagerClass@@UAEXHHHHHH@Z",
   "len": "0x5C",
-  "name": "IPXManagerClass::ConfigureDebug",
+  "name": "IPXManagerClass::vf_15",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46265,9 +46265,9 @@
  {
   "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
   "addr": "0x7B1B80",
-  "sym": "?CloseSockets@WinsockInterfaceClass@@UAEXXZ",
+  "sym": "?vf_1@WinsockInterfaceClass@@UAEXXZ",
   "len": "0x3b",
-  "name": "WinsockInterfaceClass::CloseSockets",
+  "name": "WinsockInterfaceClass::vf_1",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46335,9 +46335,9 @@
  {
   "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
   "addr": "0x7B25E0",
-  "sym": "?ClearSocketError@WinsockInterfaceClass@@UAEXI@Z",
+  "sym": "?vf_9@WinsockInterfaceClass@@UAEXI@Z",
   "len": "0x4f",
-  "name": "WinsockInterfaceClass::ClearSocketError",
+  "name": "WinsockInterfaceClass::vf_9",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46395,9 +46395,9 @@
  {
   "tu": "match/network/transport/winsock_interface_ordinary_methods.cpp",
   "addr": "0x7B2770",
-  "sym": "?MessageHandler@WinsockInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
+  "sym": "?vf_16@WinsockInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
   "len": "0x8",
-  "name": "WinsockInterfaceClass::MessageHandler",
+  "name": "WinsockInterfaceClass::vf_16",
   "status": "matched",
   "pct": 100.0,
   "pct_metric": "relocation-normalized-bytes"
@@ -46414,9 +46414,9 @@
  {
   "tu": "match/network/transport/ipx_interface_class_methods.cpp",
   "addr": "0x7B13D0",
-  "sym": "?MessageHandler@IPXInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
+  "sym": "?vf_16@IPXInterfaceClass@@UAEHPAUHWND__@@IIJ@Z",
   "len": "0x350",
-  "name": "IPXInterfaceClass::MessageHandler",
+  "name": "IPXInterfaceClass::vf_16",
   "status": "matched",
   "pct": 100
  },

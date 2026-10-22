@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgWinsockbufferDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(WinsockInterfaceClass::WinsockBufferType*) == 4);

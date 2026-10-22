@@ -53,5 +53,5 @@ GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgPlanningNodeClassDynamicVector, CapacityIncrement) == 0x14);

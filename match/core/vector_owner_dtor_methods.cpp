@@ -15,7 +15,7 @@
 // VectorClass<NeuronClass*> vtable and free the buffer only if it is owned.
 BrainClass::~BrainClass()
 {
-    int count = Neurons.Count();
+    int count = Neurons.GetCount();
     for (int i = 0; i < count; i++) {
         delete Neurons.Items[i];
         Neurons.Items[i] = 0;

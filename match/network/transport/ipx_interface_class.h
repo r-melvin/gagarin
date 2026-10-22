@@ -14,7 +14,7 @@
 #include <wsipx.h>
 #include "../../_rt/gg_static_assert.h"
 
-// Stack address layout used by IPX Init/MessageHandler. Retail uses a 16-byte
+// Stack address layout used by IPX Init/vf_16. Retail uses a 16-byte
 // SOCKADDR length for bind and a 14-byte SOCKADDR_IPX length for data calls.
 GG_STATIC_ASSERT(sizeof(SOCKADDR) == 0x10);
 GG_STATIC_ASSERT(sizeof(SOCKADDR_IPX) == 0x0E);
@@ -65,7 +65,7 @@ public:
     // FUNCTION: GAMEMD 0x7B10C0 (decl; reloc) -- retail slot 15.
     virtual bool Init(int socketNumber);
     // FUNCTION: GAMEMD 0x7B13D0 (decl; reloc) -- retail slot 16.
-    virtual int MessageHandler(HWND window, unsigned int message,
+    virtual int vf_16(HWND window, unsigned int message,
                                unsigned int wParam, long lParam);
 
     // FUNCTION: GAMEMD 0x7B0DD0 (decl; reloc) -- excluded capped query body.

@@ -1,16 +1,15 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout, element width and both vtable constants read numerically off the
 //   user's retail gamemd.exe v1.001 via the local Ghidra CLI (representative
-//   0x477DB0). RA1's VectorClass/DynamicVectorClass are a naming/structure
-//   reference only.
+//   0x477DB0). The class names come from the retail RTTI descriptors.
 //
 // A 19-member family of DynamicVectorClass<T>(size, array) constructors over
 // 4-byte element types: 93 bytes each. The body is the already-matched
 // VectorClass<T> two-argument constructor (see vector_ctor_pod_family_methods)
 // with the derived class's own vtable seated over the base's afterwards and
 // the two DynamicVectorClass members initialised — CapacityIncrement to 10 and
-// ActiveCount to 0, in that order.
+// Count to 0, in that order.
 //
 // The only per-instance variation is the pair of vtable constants: the base
 // VectorClass vtable stored during the inlined base construction, and the
@@ -35,20 +34,20 @@ GG_STATIC_ASSERT(sizeof(DynPodElem4) == 4);
     {                                                                         \
         const void*  Vptr;              /* +0x0000 */                         \
         DynPodElem4* Vector;            /* +0x0004 */                         \
-        int          VectorMax;         /* +0x0008 */                         \
+        int          Capacity;         /* +0x0008 */                         \
         char         IsValid;           /* +0x000C */                         \
         char         IsAllocated;       /* +0x000D */                         \
         char         unknown_0E[2];     /* +0x000E tail padding */            \
-        int          ActiveCount;       /* +0x0010 */                         \
+        int          Count;       /* +0x0010 */                         \
         int          CapacityIncrement; /* +0x0014 */                         \
         NAME* Ctor(unsigned int size, DynPodElem4* array);                     \
     };                                                                        \
     GG_STATIC_ASSERT(offsetof(NAME, Vptr) == 0x0);                            \
     GG_STATIC_ASSERT(offsetof(NAME, Vector) == 0x4);                          \
-    GG_STATIC_ASSERT(offsetof(NAME, VectorMax) == 0x8);                       \
+    GG_STATIC_ASSERT(offsetof(NAME, Capacity) == 0x8);                       \
     GG_STATIC_ASSERT(offsetof(NAME, IsValid) == 0xC);                         \
     GG_STATIC_ASSERT(offsetof(NAME, IsAllocated) == 0xD);                     \
-    GG_STATIC_ASSERT(offsetof(NAME, ActiveCount) == 0x10);                    \
+    GG_STATIC_ASSERT(offsetof(NAME, Count) == 0x10);                    \
     GG_STATIC_ASSERT(offsetof(NAME, CapacityIncrement) == 0x14);              \
     GG_STATIC_ASSERT(sizeof(NAME) == 0x18)
 
@@ -58,7 +57,7 @@ GG_STATIC_ASSERT(sizeof(DynPodElem4) == 4);
     NAME* NAME::Ctor(unsigned int size, DynPodElem4* array)                    \
     {                                                                         \
         this->Vector = 0;                                                     \
-        this->VectorMax = size;                                               \
+        this->Capacity = size;                                               \
         this->IsValid = 1;                                                    \
         this->IsAllocated = 0;                                                \
         this->Vptr = (const void*)BASEVT;                                     \
@@ -72,7 +71,7 @@ GG_STATIC_ASSERT(sizeof(DynPodElem4) == 4);
         }                                                                     \
         this->Vptr = (const void*)DERIVEDVT;                                  \
         this->CapacityIncrement = 10;                                         \
-        this->ActiveCount = 0;                                                \
+        this->Count = 0;                                                \
         return this;                                                          \
     }
 

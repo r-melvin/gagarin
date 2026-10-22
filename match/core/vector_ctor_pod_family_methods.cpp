@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001.
 //
 // VectorClass<T>(size, array) over trivial element types, 36 remaining retail

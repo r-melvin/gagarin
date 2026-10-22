@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Every offset, element stride, virtual slot and growth constant below is
 //   read numerically off the user's retail gamemd.exe v1.001 with the local
 //   Ghidra CLI at 0x6285A0, 0x628A70, 0x628B00, 0x628D10, 0x628D80, 0x628DF0
-//   and 0x628ED0. The container shape is RA1's VectorClass/DynamicVectorClass
-//   pair (structure reference only, never transcribed). The private-reference seed
+//   and 0x628ED0. The container is a VectorClass/DynamicVectorClass pair (RTTI-named vector
+//   classes; offsets as read here). The private-reference seed
 //   (consult-only, no LICENSE) names this address run the "scratch buffer
 //   array"; it supplied intent only, no layout, no convention and no bytes.
 //
@@ -23,13 +23,13 @@
 //   +0x00  vptr              `MOV [EDI],<vtable>`; `MOV EDX,[ESI]` +
 //                            `CALL [EDX+8]` in Add
 //   +0x04  Vector            `MOV ECX,[ESI+4]` then indexed by the stride
-//   +0x08  VectorMax         loop bound in the VectorClass search; compared
+//   +0x08  Capacity         loop bound in the VectorClass search; compared
 //                            against the count in Add; added to the step
 //   +0x0C  IsValid   (byte)  `MOV AL,[ESI+0xC]` guard at 0x628A70
 //   +0x0D  IsAllocated(byte) `MOV AL,[ESI+0xD]`; set to 1 on the owning arm
-//   +0x10  ActiveCount       loop bound in the DynamicVectorClass search;
+//   +0x10  Count       loop bound in the DynamicVectorClass search;
 //                            post-incremented by `LEA ECX,[EAX+1]` in Add
-//   +0x14  GrowthStep        `MOV [EDI+0x14],0xA` seeds it to ten; `JLE` on
+//   +0x14  CapacityIncrement        `MOV [EDI+0x14],0xA` seeds it to ten; `JLE` on
 //                            it, so it is signed
 //
 // Virtual slot order (the only slot these functions reach is +0x08):
@@ -123,7 +123,7 @@ public:
     virtual int  ID(ScratchEntry const& object) const;                     // 0x10
 
     ScratchEntry* Vector;       // +0x04
-    int           VectorMax;    // +0x08
+    int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
 
@@ -131,7 +131,7 @@ public:
     ScratchVector(unsigned int size, ScratchEntry const* array);
 };
 GG_STATIC_ASSERT(offsetof(ScratchVector, Vector) == 0x04);
-GG_STATIC_ASSERT(offsetof(ScratchVector, VectorMax) == 0x08);
+GG_STATIC_ASSERT(offsetof(ScratchVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(ScratchVector, IsValid) == 0x0C);
 GG_STATIC_ASSERT(offsetof(ScratchVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(sizeof(ScratchVector) == 0x10);
@@ -150,12 +150,12 @@ public:
     virtual int  ID(ScratchEntry const& object) const;
 
     ScratchEntry* Vector;       // +0x04
-    int           VectorMax;    // +0x08
+    int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
 
     ScratchVectorInline(unsigned int size, ScratchEntry const* array)
-        : Vector(0), VectorMax(size), IsValid(true), IsAllocated(false)
+        : Vector(0), Capacity(size), IsValid(true), IsAllocated(false)
     {
         if (size) {
             if (array) {
@@ -176,8 +176,8 @@ class ScratchDynVector : public ScratchVectorInline
 {
 public:
     // VTABLE: GAMEMD 0x7EF770
-    int ActiveCount;  // +0x10
-    int GrowthStep;   // +0x14
+    int Count;  // +0x10
+    int CapacityIncrement;   // +0x14
 
     // FUNCTION: GAMEMD 0x628B00
     ScratchDynVector(unsigned int size, ScratchEntry const* array);
@@ -186,8 +186,8 @@ public:
     // FUNCTION: GAMEMD 0x628D80
     int  ID(ScratchEntry const& object) const;
 };
-GG_STATIC_ASSERT(offsetof(ScratchDynVector, ActiveCount) == 0x10);
-GG_STATIC_ASSERT(offsetof(ScratchDynVector, GrowthStep) == 0x14);
+GG_STATIC_ASSERT(offsetof(ScratchDynVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(ScratchDynVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(ScratchDynVector) == 0x18);
 
 // ---------------------------------------------------------------------------
@@ -205,7 +205,7 @@ public:
     virtual int  ID(TripleEntry const& object) const;                     // 0x10
 
     TripleEntry* Vector;       // +0x04
-    int          VectorMax;    // +0x08
+    int          Capacity;    // +0x08
     bool         IsValid;      // +0x0C
     bool         IsAllocated;  // +0x0D
 
@@ -213,20 +213,20 @@ public:
     TripleVector(unsigned int size, TripleEntry const* array);
 };
 GG_STATIC_ASSERT(offsetof(TripleVector, Vector) == 0x04);
-GG_STATIC_ASSERT(offsetof(TripleVector, VectorMax) == 0x08);
+GG_STATIC_ASSERT(offsetof(TripleVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(TripleVector, IsValid) == 0x0C);
 GG_STATIC_ASSERT(offsetof(TripleVector, IsAllocated) == 0x0D);
 
 class TripleDynVector : public TripleVector
 {
 public:
-    int ActiveCount;  // +0x10
-    int GrowthStep;   // +0x14
+    int Count;  // +0x10
+    int CapacityIncrement;   // +0x14
 
     // FUNCTION: GAMEMD 0x6285A0
     int ID(TripleEntry const& object) const;
 };
-GG_STATIC_ASSERT(offsetof(TripleDynVector, ActiveCount) == 0x10);
-GG_STATIC_ASSERT(offsetof(TripleDynVector, GrowthStep) == 0x14);
+GG_STATIC_ASSERT(offsetof(TripleDynVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(TripleDynVector, CapacityIncrement) == 0x14);
 
 #endif  // GG_MATCH_COMBAT_SCRATCH_BUFFER_VECTOR_METHODS_H

@@ -12,7 +12,7 @@ GG_STATIC_ASSERT(offsetof(TagTypeRegistry, Items) == 4);
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, Capacity) == 8);
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, IsInitialized) == 0xC);
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, IsAllocated) == 0xD);
-GG_STATIC_ASSERT(offsetof(TagTypeRegistry, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(TagTypeRegistry, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(TagTypeRegistry, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(TagTypeRegistry) == 0x18);
 // GLOBAL: GAMEMD 0xB0E780

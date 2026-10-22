@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4109C0.
 
 #include "deregistering_dtor_methods.h"
@@ -11,8 +11,7 @@
 //
 // The lookup takes the address of a local copy of `this` rather than `this`
 // itself — retail allocates a dword with `PUSH ECX`, stores `this` into it and
-// passes its address. That is what RA1's `ID(T const &)` looks like once T is a
-// pointer type.
+// passes its address. That is a lookup taking `T const&` with T a pointer type.
 //
 // The removal has two comparisons against the count, one before the decrement and
 // one after, because the guard and the shift loop's own pre-test are separate.

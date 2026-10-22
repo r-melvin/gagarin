@@ -53,12 +53,12 @@ MapStageList::~MapStageList() throw()
 // full 640x400 screen. Each of the three sweeps frees its elements one by one
 // and then asks the vector itself to drop its block, and each walks a signed
 // index against the live count reloaded every turn -- retail's `JL` on a
-// reloaded `ActiveCount` is a plain indexed `for`, not a pointer walk.
+// reloaded `Count` is a plain indexed `for`, not a pointer walk.
 void MapStageList::ClearAll()
 {
     int i;
 
-    for (i = 0; i < Titles.ActiveCount; ++i) {
+    for (i = 0; i < Titles.Count; ++i) {
         StringClass* title = Titles.Vector[i];
 
         if (title != 0) {
@@ -74,7 +74,7 @@ void MapStageList::ClearAll()
     BoundsW = 640;
     BoundsH = 400;
 
-    for (i = 0; i < Strings.ActiveCount; ++i) {
+    for (i = 0; i < Strings.Count; ++i) {
         StringClass* text = Strings.Vector[i];
 
         if (text != 0) {
@@ -85,7 +85,7 @@ void MapStageList::ClearAll()
 
     Strings.Clear();
 
-    for (i = 0; i < Stages.ActiveCount; ++i) {
+    for (i = 0; i < Stages.Count; ++i) {
         MapStage* stage = Stages.Vector[i];
 
         if (stage != 0) {
@@ -105,7 +105,7 @@ void MapStageList::ClearAll()
 MapStage* MapStageList::FindByName(StringClass* key)
 {
     if (key->At(0) != 0) {
-        for (int i = 0; i < Stages.ActiveCount; ++i) {
+        for (int i = 0; i < Stages.Count; ++i) {
             StringClass wanted;
             wanted.CopyFrom(key);
             wanted.MakeLower();
@@ -135,7 +135,7 @@ MapStage* MapStageList::FindByName(StringClass* key)
 MapStage* MapStageList::FindByTitle(StringClass* key)
 {
     if (key->At(0) != 0) {
-        for (int i = 0; i < Stages.ActiveCount; ++i) {
+        for (int i = 0; i < Stages.Count; ++i) {
             StringClass wanted;
             wanted.CopyFrom(key);
             wanted.MakeLower();
@@ -165,7 +165,7 @@ MapStage* MapStageList::FindByTitle(StringClass* key)
 // and the bound is the signed live count.
 MapStage* MapStageList::GetAt(unsigned short index)
 {
-    if (Stages.ActiveCount <= index) {
+    if (Stages.Count <= index) {
         return 0;
     }
 
@@ -191,7 +191,7 @@ StringClass* MapStageList::FindTitle(StringClass* key)
     if (SessionExists()) {
         int i;
 
-    for (i = 0; i < Titles.ActiveCount; ++i) {
+    for (i = 0; i < Titles.Count; ++i) {
             StringClass* line = Titles.Vector[i];
 
             StringClass stored;

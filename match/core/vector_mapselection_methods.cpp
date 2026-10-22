@@ -58,5 +58,5 @@ GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, unknown_0E) == 0x0E);
-GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMapSelectionDynamicVector, CapacityIncrement) == 0x14);

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 at 0x4CB580,
 //   0x4CB5E0, 0x4CB640, 0x4CB6A0, 0x4CB700, 0x4CB760, 0x4CB7C0, 0x4CB830 and
 //   0x4CB890 via the local Ghidra disassembly. Layout confirmed numerically in
@@ -31,7 +31,7 @@
 FieldClass::FieldClass(char* id, char data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_CHAR;
+    DataType = FIELD_TYPE_01;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -45,7 +45,7 @@ FieldClass::FieldClass(char* id, char data)
 FieldClass::FieldClass(char* id, unsigned char data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_UNSIGNED_CHAR;
+    DataType = FIELD_TYPE_02;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -59,7 +59,7 @@ FieldClass::FieldClass(char* id, unsigned char data)
 FieldClass::FieldClass(char* id, short data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_SHORT;
+    DataType = FIELD_TYPE_03;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -71,7 +71,7 @@ FieldClass::FieldClass(char* id, short data)
 FieldClass::FieldClass(char* id, unsigned short data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_UNSIGNED_SHORT;
+    DataType = FIELD_TYPE_04;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -83,7 +83,7 @@ FieldClass::FieldClass(char* id, unsigned short data)
 FieldClass::FieldClass(char* id, long data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_LONG;
+    DataType = FIELD_TYPE_05;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -95,7 +95,7 @@ FieldClass::FieldClass(char* id, long data)
 FieldClass::FieldClass(char* id, unsigned long data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_UNSIGNED_LONG;
+    DataType = FIELD_TYPE_06;
     Size = sizeof(data);
     Data = new char[Size];
     memcpy(Data, &data, Size);
@@ -110,7 +110,7 @@ FieldClass::FieldClass(char* id, unsigned long data)
 FieldClass::FieldClass(char* id, char* data)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_STRING;
+    DataType = FIELD_TYPE_07;
     Size = (unsigned short)(strlen(data) + 1);
     Data = new char[Size];
     memcpy(Data, data, Size);
@@ -125,7 +125,7 @@ FieldClass::FieldClass(char* id, char* data)
 FieldClass::FieldClass(char* id, void* data, int length)
 {
     strncpy(ID, id, sizeof(ID));
-    DataType = FIELD_TYPE_CHUNK;
+    DataType = FIELD_TYPE_14;
     Size = (unsigned short)length;
     Data = new char[Size];
     memcpy(Data, data, Size);

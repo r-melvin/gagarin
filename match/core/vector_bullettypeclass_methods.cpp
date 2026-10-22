@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgBullettypeclassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(BulletTypeClass*) == 4);

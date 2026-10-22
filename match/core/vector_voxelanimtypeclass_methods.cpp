@@ -61,7 +61,7 @@ GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, Items) == 0x04
 GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgVoxelAnimTypeClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(VoxelAnimTypeClass*) == 4);

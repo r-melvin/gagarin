@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgVoxClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(VoxClass*) == 4);

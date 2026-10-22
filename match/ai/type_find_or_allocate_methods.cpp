@@ -19,7 +19,7 @@ TagTypeClass* __fastcall TagTypeClass::FindOrAllocate(const char* id)
 {
     if (_strcmpi("<none>", id) != 0 && _strcmpi("none", id) != 0)
     {
-        for (int i = 0; i < TagTypes.ActiveCount; ++i)
+        for (int i = 0; i < TagTypes.Count; ++i)
         {
             if (_strcmpi(TagTypes.Items[i]->ID, id) == 0)
                 return TagTypes.Items[i];

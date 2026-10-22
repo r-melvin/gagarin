@@ -19,8 +19,8 @@
 bool VectorResizeFamily::FUN_4E9840(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -32,8 +32,8 @@ bool VectorResizeFamily::FUN_4E9840(int newsize, void** array)
 bool VectorResizeFamily::FUN_5AD010(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -46,8 +46,8 @@ bool VectorResizeFamily::FUN_5AD010(int newsize, void** array)
 bool VectorResizeFamily::FUN_5D8730(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -59,8 +59,8 @@ bool VectorResizeFamily::FUN_5D8730(int newsize, void** array)
 bool VectorResizeFamily::FUN_69C890(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -72,8 +72,8 @@ bool VectorResizeFamily::FUN_69C890(int newsize, void** array)
 bool VectorResizeFamily::FUN_6B15F0(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }
@@ -85,8 +85,8 @@ bool VectorResizeFamily::FUN_6B15F0(int newsize, void** array)
 bool VectorResizeFamily::FUN_6B8400(int newsize, void** array)
 {
     if (ResizeBase(newsize, array)) {
-        if (Length < ActiveCount) {
-            ActiveCount = Length;
+        if (Length < Count) {
+            Count = Length;
         }
         return true;
     }

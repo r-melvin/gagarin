@@ -62,7 +62,7 @@ GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, Items) == 0x
 GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgVeinholeMonsterClassDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(VeinholeMonsterClass*) == 4);

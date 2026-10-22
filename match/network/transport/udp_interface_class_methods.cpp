@@ -43,13 +43,13 @@
 // FUNCTION: GAMEMD 0x7B2F90  UDPInterfaceClass::ClearBroadcastAddresses (slot 12)
 void UDPInterfaceClass::ClearBroadcastAddresses()
 {
-    while (BroadcastAddresses.ActiveCount != 0)
+    while (BroadcastAddresses.Count != 0)
     {
         operator delete(BroadcastAddresses.Items[0]);
-        if (BroadcastAddresses.ActiveCount > 0)
+        if (BroadcastAddresses.Count > 0)
         {
-            BroadcastAddresses.ActiveCount--;
-            for (int i = 0; i < BroadcastAddresses.ActiveCount; i++)
+            BroadcastAddresses.Count--;
+            for (int i = 0; i < BroadcastAddresses.Count; i++)
                 BroadcastAddresses.Items[i] = BroadcastAddresses.Items[i + 1];
         }
     }
@@ -67,7 +67,7 @@ void UDPInterfaceClass::AddBroadcastAddress(const char* dottedAddress, unsigned 
     address[3] = (unsigned char)d;
     if (port == 0)
         port = DAT_00841F30;
-    BroadcastPorts[BroadcastAddresses.ActiveCount] = port;
+    BroadcastPorts[BroadcastAddresses.Count] = port;
     WinsockAddItem(BroadcastAddresses, address);
 }
 
@@ -79,7 +79,7 @@ bool UDPInterfaceClass::OpenPrimarySocket(unsigned short port)
         closesocket(Socket);
         Socket = -1;
     }
-    Debug_Printf("About to open primary UDP socket\n");
+    FUN_004068E0("About to open primary UDP socket\n");
     Socket = socket(AF_INET, SOCK_DGRAM, 0);
     if (Socket == -1)
         return false;
@@ -98,18 +98,18 @@ bool UDPInterfaceClass::OpenPrimarySocket(unsigned short port)
         address.sin_port = htons(DAT_00841F30);
     }
     address.sin_addr.s_addr = htonl(0);
-    Debug_Printf("About to bind the UDP socket to port %d\n", port);
+    FUN_004068E0("About to bind the UDP socket to port %d\n", port);
     if (bind(Socket, (SOCKADDR*)&address, sizeof(address)) == -1)
     {
-        Debug_Printf("Bind failed with error code %d\n", WSAGetLastError());
-        CloseSockets();
+        FUN_004068E0("Bind failed with error code %d\n", WSAGetLastError());
+        vf_1();
         return false;
     }
     linger.l_onoff = 0;
     linger.l_linger = 0;
     setsockopt(Socket, SOL_SOCKET, SO_LINGER, (char*)&linger, 4);
     WinsockInterfaceClass::SetSocketBuffers(-1);
-    Debug_Printf("Primary UDP Socket init complete\n");
+    FUN_004068E0("Primary UDP Socket init complete\n");
     return true;
 }
 
@@ -125,21 +125,21 @@ bool UDPInterfaceClass::OpenSpareSocket(unsigned short port)
             return false;
     }
 
-    Debug_Printf("About to open spare UDP socket\n");
+    FUN_004068E0("About to open spare UDP socket\n");
     SOCKET spare = socket(AF_INET, SOCK_DGRAM, 0);
     if (spare == -1)
         return false;
-    Debug_Printf("Got spare socket %d\n", spare);
+    FUN_004068E0("Got spare socket %d\n", spare);
 
     SOCKADDR_IN address;
     address.sin_family = AF_INET;
     address.sin_port = htons(port);
     address.sin_addr.s_addr = htonl(0);
-    Debug_Printf("About to bind the UDP socket to port %d\n", port);
+    FUN_004068E0("About to bind the UDP socket to port %d\n", port);
     if (bind(spare, (SOCKADDR*)&address, sizeof(address)) == -1)
     {
         closesocket(spare);
-        Debug_Printf("Failed to bind spare socket to port %d\n", port);
+        FUN_004068E0("Failed to bind spare socket to port %d\n", port);
         return false;
     }
 
@@ -147,7 +147,7 @@ bool UDPInterfaceClass::OpenSpareSocket(unsigned short port)
     SpareSockets[SpareSocketCount] = spare;
     SpareSocketCount++;
     WinsockInterfaceClass::SetSocketBuffers(spare);
-    Debug_Printf("Spare UDP Socket init complete\n");
+    FUN_004068E0("Spare UDP Socket init complete\n");
     return true;
 }
 
@@ -161,7 +161,7 @@ void UDPInterfaceClass::CloseSpareSocket(unsigned short port)
     {
         if (SparePorts[i] == port)
         {
-            Debug_Printf("Closing spare socket %d\n", SpareSockets[i]);
+            FUN_004068E0("Closing spare socket %d\n", SpareSockets[i]);
             closesocket(SpareSockets[i]);
             if (SpareSockets[i] == CurrentSpareSocket)
                 CurrentSpareSocket = -1;
@@ -216,22 +216,22 @@ bool UDPInterfaceClass::Init(int)
     }
 
     OpenPrimarySocket(DAT_00841F30);
-    Debug_Printf("About to query the host name\n");
+    FUN_004068E0("About to query the host name\n");
     if (gethostname(hostName, 0x80) != 0)
-        Debug_Printf("Host name is '%s'\n", hostName);
+        FUN_004068E0("Host name is '%s'\n", hostName);
 
-    Debug_Printf("About to call gethostbyname\n");
+    FUN_004068E0("About to call gethostbyname\n");
     HOSTENT* host = gethostbyname(hostName);
     if (host == 0)
-        Debug_Printf("gethostbyname failed! Error code %d\n", WSAGetLastError());
+        FUN_004068E0("gethostbyname failed! Error code %d\n", WSAGetLastError());
 
-    while (LocalAddresses.ActiveCount != 0)
+    while (LocalAddresses.Count != 0)
     {
         operator delete(LocalAddresses.Items[0]);
-        if (LocalAddresses.ActiveCount > 0)
+        if (LocalAddresses.Count > 0)
         {
-            LocalAddresses.ActiveCount--;
-            for (int i = 0; i < LocalAddresses.ActiveCount; i++)
+            LocalAddresses.Count--;
+            for (int i = 0; i < LocalAddresses.Count; i++)
                 LocalAddresses.Items[i] = LocalAddresses.Items[i + 1];
         }
     }
@@ -241,16 +241,16 @@ bool UDPInterfaceClass::Init(int)
     {
         unsigned long ip = *(unsigned long*)*list;
         list++;
-        Debug_Printf("Found local address: %d.%d.%d.%d\n", ip & 0xFF, (ip >> 8) & 0xFF,
+        FUN_004068E0("Found local address: %d.%d.%d.%d\n", ip & 0xFF, (ip >> 8) & 0xFF,
                      (ip >> 16) & 0xFF, ip >> 24);
         unsigned long* copy = (unsigned long*)operator new(4);
         *copy = ip;
         WinsockAddItem(LocalAddresses, (unsigned char*)copy);
     }
 
-    Debug_Printf("About to open alternate UDP socket\n");
-    ListenSocket = socket(AF_INET, SOCK_DGRAM, 0);
-    if (ListenSocket == -1)
+    FUN_004068E0("About to open alternate UDP socket\n");
+    unknown_3F070 = socket(AF_INET, SOCK_DGRAM, 0);
+    if (unknown_3F070 == -1)
         return false;
 
     SOCKADDR_IN address;
@@ -258,17 +258,17 @@ bool UDPInterfaceClass::Init(int)
     address.sin_family = AF_INET;
     address.sin_port = htons(DAT_00841F38);
     address.sin_addr.s_addr = htonl(0);
-    Debug_Printf("About to bind the UDP socket\n");
-    if (bind(ListenSocket, (SOCKADDR*)&address, sizeof(address)) == -1)
+    FUN_004068E0("About to bind the UDP socket\n");
+    if (bind(unknown_3F070, (SOCKADDR*)&address, sizeof(address)) == -1)
     {
-        CloseSockets();
+        vf_1();
         return false;
     }
     linger.l_onoff = 0;
     linger.l_linger = 0;
-    setsockopt(ListenSocket, SOL_SOCKET, SO_LINGER, (char*)&linger, 4);
-    WinsockInterfaceClass::SetSocketBuffers(ListenSocket);
-    Debug_Printf("Alternate UDP Socket init complete\n");
+    setsockopt(unknown_3F070, SOL_SOCKET, SO_LINGER, (char*)&linger, 4);
+    WinsockInterfaceClass::SetSocketBuffers(unknown_3F070);
+    FUN_004068E0("Alternate UDP Socket init complete\n");
     return true;
 }
 
@@ -288,7 +288,7 @@ void UDPInterfaceClass::SendPacket(void* packet, int packetLen, void* address,
 void UDPInterfaceClass::Broadcast(void* packet, int packetLen, bool alternate)
 {
     int i = 0;
-    if (BroadcastAddresses.ActiveCount > 0)
+    if (BroadcastAddresses.Count > 0)
     {
         unsigned short* port = BroadcastPorts;
         do
@@ -306,7 +306,7 @@ void UDPInterfaceClass::Broadcast(void* packet, int packetLen, bool alternate)
             if (alternate)
             {
                 WinsockAddItem(AltOutBuffers, buffer);
-                socket = ListenSocket;
+                socket = unknown_3F070;
             }
             else
             {
@@ -317,7 +317,7 @@ void UDPInterfaceClass::Broadcast(void* packet, int packetLen, bool alternate)
             FUN_005D4D50();
             i++;
             port++;
-        } while (i < BroadcastAddresses.ActiveCount);
+        } while (i < BroadcastAddresses.Count);
     }
 }
 
@@ -331,7 +331,7 @@ bool UDPInterfaceClass::StartListening()
         {
             if (WSAAsyncSelect(SpareSockets[i], DAT_00B73550, MessageForSocket(-1), 3) == -1)
             {
-                Debug_Printf("Async select failed on spare socket.\n");
+                FUN_004068E0("Async select failed on spare socket.\n");
                 return false;
             }
         }
@@ -357,7 +357,7 @@ void UDPInterfaceClass::MarkAddressUnreachable(unsigned char* address, unsigned 
             if (port == UnreachablePorts[i] && *(unsigned long*)address == UnreachableAddresses[i])
                 return;
         }
-        Debug_Printf("Marking address %d.%d.%d.%d ; %d as unreachable\n", address[0], address[1],
+        FUN_004068E0("Marking address %d.%d.%d.%d ; %d as unreachable\n", address[0], address[1],
                      address[2], address[3], port);
         UnreachableAddresses[UnreachableCount] = *(unsigned long*)address;
         UnreachablePorts[UnreachableCount] = port;
@@ -370,7 +370,7 @@ void UDPInterfaceClass::CloseAllSpareSockets()
 {
     for (int i = 0; i < SpareSocketCount; i++)
     {
-        Debug_Printf("Closing spare socket %d\n", SpareSockets[i]);
+        FUN_004068E0("Closing spare socket %d\n", SpareSockets[i]);
         WSAAsyncSelect(SpareSockets[i], DAT_00B73550, 0, 0);
         closesocket(SpareSockets[i]);
     }
@@ -389,13 +389,13 @@ unsigned int UDPInterfaceClass::MessageForSocket(int socket)
 {
     if (socket == Socket || socket == -1)
         return 0x474;
-    return socket == ListenSocket ? 0x475 : 0;
+    return socket == unknown_3F070 ? 0x475 : 0;
 }
 
 // FUNCTION: GAMEMD 0x7B4140  UDPInterfaceClass::GetNumLocalAddresses (slot 18)
 int UDPInterfaceClass::GetNumLocalAddresses()
 {
-    return LocalAddresses.ActiveCount;
+    return LocalAddresses.Count;
 }
 
 // FUNCTION: GAMEMD 0x7B4150  UDPInterfaceClass::GetLocalAddress (slot 19)

@@ -38,11 +38,11 @@
 //
 //   +0x00  vptr                     `MOV [ESI],0x7EEAB4` at 0x5CEEC0
 //   +0x04  MapStage** Vector        `MOV EAX,[EDI+4]` then `[EAX+ESI*4]`
-//   +0x08  int VectorMax            `MOV [ESI+8],EBX` at 0x5CEEDE
+//   +0x08  int Capacity            `MOV [ESI+8],EBX` at 0x5CEEDE
 //   +0x0C  bool IsValid
 //   +0x0D  bool IsAllocated         `CMP BL,[ESI+0xD]` at 0x5CEECA
-//   +0x10  int ActiveCount          `MOV EAX,[EDI+0x10]` at 0x5CF6C7
-//   +0x14  int GrowthStep           `MOV [ESI+0x14],0xA` at 0x5CEDF0
+//   +0x10  int Count          `MOV EAX,[EDI+0x10]` at 0x5CF6C7
+//   +0x14  int CapacityIncrement           `MOV [ESI+0x14],0xA` at 0x5CEDF0
 //   +0x18  int  BoundsX             zeroed at 0x5CF629
 //   +0x1C  int  BoundsY             zeroed at 0x5CF630
 //   +0x20  int  BoundsW             set to 0x280 at 0x5CF637
@@ -176,11 +176,11 @@ public:
     virtual int  Add(MapStage* const& stage);
 
     MapStage** Vector;       // +0x04
-    int        VectorMax;    // +0x08
+    int        Capacity;    // +0x08
     bool       IsValid;      // +0x0C
     bool       IsAllocated;  // +0x0D
-    int        ActiveCount;  // +0x10
-    int        GrowthStep;   // +0x14
+    int        Count;  // +0x10
+    int        CapacityIncrement;   // +0x14
 
     // The empty setup, expanded into the container's build-up at
     // 0x5CEDDB..0x5CEDF9 and its two siblings. The seat sits between the flag
@@ -190,12 +190,12 @@ public:
     __forceinline void Init()
     {
         Vector = 0;
-        VectorMax = 0;
+        Capacity = 0;
         IsValid = true;
         IsAllocated = false;
         ((VectorVptrSeatA*)this)->VectorVptrSeatA::~VectorVptrSeatA();
-        GrowthStep = 10;
-        ActiveCount = 0;
+        CapacityIncrement = 10;
+        Count = 0;
     }
 
     __forceinline ~MapStageVector() throw()
@@ -206,16 +206,16 @@ public:
         }
 
         IsAllocated = false;
-        VectorMax = 0;
+        Capacity = 0;
     }
 };
 GG_STATIC_ASSERT(sizeof(MapStageVector) == 0x18
               && offsetof(MapStageVector, Vector) == 0x04
-              && offsetof(MapStageVector, VectorMax) == 0x08
+              && offsetof(MapStageVector, Capacity) == 0x08
               && offsetof(MapStageVector, IsValid) == 0x0C
               && offsetof(MapStageVector, IsAllocated) == 0x0D
-              && offsetof(MapStageVector, ActiveCount) == 0x10
-              && offsetof(MapStageVector, GrowthStep) == 0x14);
+              && offsetof(MapStageVector, Count) == 0x10
+              && offsetof(MapStageVector, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7EEAD4 — VectorClass<MSAnimEntry*>, the vector at +0x2C
 class MSAnimEntryVector
@@ -227,11 +227,11 @@ public:
     virtual void Clear();
 
     StringClass** Vector;       // +0x04
-    int           VectorMax;    // +0x08
+    int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
-    int           ActiveCount;  // +0x10
-    int           GrowthStep;   // +0x14
+    int           Count;  // +0x10
+    int           CapacityIncrement;   // +0x14
 
     // The empty setup, expanded into the container's build-up at
     // 0x5CEDDB..0x5CEDF9 and its two siblings. The seat sits between the flag
@@ -241,12 +241,12 @@ public:
     __forceinline void Init()
     {
         Vector = 0;
-        VectorMax = 0;
+        Capacity = 0;
         IsValid = true;
         IsAllocated = false;
         ((VectorVptrSeatB*)this)->VectorVptrSeatB::~VectorVptrSeatB();
-        GrowthStep = 10;
-        ActiveCount = 0;
+        CapacityIncrement = 10;
+        Count = 0;
     }
 
     __forceinline ~MSAnimEntryVector() throw()
@@ -257,7 +257,7 @@ public:
         }
 
         IsAllocated = false;
-        VectorMax = 0;
+        Capacity = 0;
     }
 };
 GG_STATIC_ASSERT(sizeof(MSAnimEntryVector) == 0x18);
@@ -272,11 +272,11 @@ public:
     virtual void Clear();
 
     StringClass** Vector;       // +0x04
-    int           VectorMax;    // +0x08
+    int           Capacity;    // +0x08
     bool          IsValid;      // +0x0C
     bool          IsAllocated;  // +0x0D
-    int           ActiveCount;  // +0x10
-    int           GrowthStep;   // +0x14
+    int           Count;  // +0x10
+    int           CapacityIncrement;   // +0x14
 
     // The empty setup, expanded into the container's build-up at
     // 0x5CEDDB..0x5CEDF9 and its two siblings. The seat sits between the flag
@@ -286,12 +286,12 @@ public:
     __forceinline void Init()
     {
         Vector = 0;
-        VectorMax = 0;
+        Capacity = 0;
         IsValid = true;
         IsAllocated = false;
         ((VectorVptrSeatC*)this)->VectorVptrSeatC::~VectorVptrSeatC();
-        GrowthStep = 10;
-        ActiveCount = 0;
+        CapacityIncrement = 10;
+        Count = 0;
     }
 
     __forceinline ~MSSfxEntryVector() throw()
@@ -302,7 +302,7 @@ public:
         }
 
         IsAllocated = false;
-        VectorMax = 0;
+        Capacity = 0;
     }
 };
 GG_STATIC_ASSERT(sizeof(MSSfxEntryVector) == 0x18);
@@ -312,7 +312,7 @@ class MapStageList
 public:
     MapStageVector Stages;      // +0x00 (the object's own vector base)
     // The four bounds fields are `volatile` for one reason and it is a
-    // codegen one: without it cl hoists the next loop's `ActiveCount` load
+    // codegen one: without it cl hoists the next loop's `Count` load
     // above these four stores, where retail issues the stores first and the
     // load after (0x5CF629..0x5CF655). cl reorders a load across stores it can
     // prove do not alias, and every one of these is a member of the same

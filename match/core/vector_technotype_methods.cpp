@@ -71,7 +71,7 @@ GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTechnoDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7E4E18 -- TypeList<TechnoTypeClass*>.
@@ -81,7 +81,7 @@ GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTechnoTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(TechnoTypeClass*) == 4);

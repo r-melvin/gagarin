@@ -63,18 +63,18 @@ struct INIClass::INISection : public Node<INIClass::INISection*>
 {
     char*         Section;      // +0x0C
     // RTTI table 0x7EB744; explicit inherited vptr view is retained.
-    List<INIEntry*> EntryList;    // +0x10
+    List<INIEntry*> Entries;    // +0x10
     IndexClassRaw EntryIndex;   // +0x2C
     INIComment*   Comments;     // +0x40
 
-    INIEntry* FirstEntry() const { return (INIEntry*)EntryList.First(); }
+    INIEntry* FirstEntry() const { return (INIEntry*)Entries.First(); }
 
     // FUNCTION: GAMEMD 0x52AB80
     void DestroySection();
 };
 
 GG_STATIC_ASSERT(offsetof(INIClass::INISection, Section)    == 0x0C &&
-                 offsetof(INIClass::INISection, EntryList)  == 0x10 &&
+                 offsetof(INIClass::INISection, Entries)  == 0x10 &&
                  offsetof(INIClass::INISection, EntryIndex) == 0x2C &&
                  offsetof(INIClass::INISection, Comments)   == 0x40 &&
                  sizeof(INIClass::INISection) == 0x44);

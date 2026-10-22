@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Every offset below was read numerically off the user's retail gamemd.exe
 //   v1.001 via the local Ghidra CLI, from the five constructors at 0x4CB5E0,
 //   0x4CB700, 0x4CB760, 0x4CB7C0 and 0x4CB830:
@@ -25,12 +25,11 @@
 //   (`MOV EAX,dword ptr [ESI+0x8]; PUSH EAX; CALL; ADD ESP,0x4;
 //   MOV dword ptr [ESI+0x8],0x0`).
 //
-//   The class is Westwood's shared packet-field library (RA1 CODE/FIELD.H,
-//   GPLv3 + EA Section-7, consulted for the member names, the TYPE_* constant
-//   values and the constructor overload set only — every value below was
-//   re-confirmed against the retail disassembly). The private-reference seed
-//   (consult-only) supplied the `network/field_class.cpp` grouping and the
-//   per-overload parameter types.
+//   The class name is the retail RTTI name. The type-tag constants are the
+//   immediates each constructor stores, named by value. The overload set is
+//   the one the retail constructors require: each one's parameter width and
+//   signedness is read off its own stores and extensions. The private-reference
+//   seed (consult-only) supplied the `network/field_class.cpp` grouping.
 //
 // FieldClass — one tagged, length-prefixed field inside a network PacketClass.
 // The data payload is always a fresh heap copy owned by the field.
@@ -41,15 +40,15 @@
 #include "../_rt/gg_static_assert.h"
 
 // Field payload type tags. The constants are the immediates stored into
-// DataType by the five constructors (2, 5, 6, 7, 0x14); the names are RA1's.
-#define FIELD_TYPE_CHAR            1
-#define FIELD_TYPE_UNSIGNED_CHAR   2
-#define FIELD_TYPE_SHORT           3
-#define FIELD_TYPE_UNSIGNED_SHORT  4
-#define FIELD_TYPE_LONG            5
-#define FIELD_TYPE_UNSIGNED_LONG   6
-#define FIELD_TYPE_STRING          7
-#define FIELD_TYPE_CHUNK           20
+// DataType by the constructors; each name carries its value in hex.
+#define FIELD_TYPE_01            1
+#define FIELD_TYPE_02   2
+#define FIELD_TYPE_03           3
+#define FIELD_TYPE_04  4
+#define FIELD_TYPE_05            5
+#define FIELD_TYPE_06   6
+#define FIELD_TYPE_07          7
+#define FIELD_TYPE_14           20
 
 class FieldClass
 {

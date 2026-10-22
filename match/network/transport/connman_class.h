@@ -1,12 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Layout, offsets, RTTI and vtable slots read from the user's retail
 //   gamemd.exe v1.001 through the local Ghidra CLI (member-access disassembly
 //   of every function in connman_class.cpp, RTTI locators 0x8049B8 and
-//   0x804988, vtables 0x7EC1D4 and 0x7EC16C). Method names follow the EA RA1
-//   ConnManClass/IPXManagerClass naming idiom (names and structure only, no
-//   transcription) and are marked "behavioural" where the binary alone does
-//   not name the role.
+//   0x804988, vtables 0x7EC1D4 and 0x7EC16C). Service, SetTiming,
+//   ResponseTime, Connection, CurConnection and the timing members are
+//   YRpp-cross-checked names confirmed by these bodies; GlobalChannel and
+//   RouterChannel are named by the binary's debug strings. Unattested slots
+//   are vf_<slot>; names marked "behavioural" describe what the body does.
 //
 // Network transport, hierarchy "connman": ConnManClass -> IPXManagerClass.
 //
@@ -62,20 +63,20 @@ public:
     // SYNTHETIC: GAMEMD 0x543100 -- compiler-generated scalar deleting entry.
     virtual ~ConnManClass() {}                                             // slot 0
     virtual int  Service() = 0;                                            // slot 1
-    virtual int  SendPacket(void* buf, int buflen, int ack_required, int id) = 0;         // slot 2
-    virtual int  ReceivePacket(void* buf, int* buflen, int* id) = 0;             // slot 3
-    virtual int  NumConnections() = 0;                                     // slot 4
-    virtual int  ConnectionId(int index) = 0;                              // slot 5
-    virtual int  ConnectionIndex(int id) = 0;                              // slot 6
-    virtual int  GlobalNumSend() = 0;                                      // slot 7
-    virtual int  GlobalNumReceive() = 0;                                   // slot 8
-    virtual int  NumSend(int id) = 0;                                      // slot 9
-    virtual int  NumReceive(int id) = 0;                                   // slot 10
-    virtual void ResetResponseTime(bool a1) = 0;                           // slot 11
+    virtual int  vf_2(void* buf, int buflen, int needsAck, int id) = 0;         // slot 2
+    virtual int  vf_3(void* buf, int* buflen, int* id) = 0;             // slot 3
+    virtual int  vf_4() = 0;                                     // slot 4
+    virtual int  vf_5(int index) = 0;                              // slot 5
+    virtual int  vf_6(int id) = 0;                              // slot 6
+    virtual int  vf_7() = 0;                                      // slot 7
+    virtual int  vf_8() = 0;                                   // slot 8
+    virtual int  vf_9(int id) = 0;                                      // slot 9
+    virtual int  vf_10(int id) = 0;                                   // slot 10
+    virtual void vf_11(bool a1) = 0;                           // slot 11
     virtual int  ResponseTime() = 0;                                       // slot 12
     virtual void SetTiming(int retrydelta, int maxretries, int timeout, bool setglobal) = 0; // slot 13
-    virtual void SetGlobalTiming(int retrydelta, int maxretries, int timeout) = 0;           // slot 14
-    virtual void ConfigureDebug(int index, int a2, int a3, int a4, int a5, int a6) = 0;      // slot 15
+    virtual void vf_14(int retrydelta, int maxretries, int timeout) = 0;           // slot 14
+    virtual void vf_15(int index, int a2, int a3, int a4, int a5, int a6) = 0;      // slot 15
 };
 
 // ---------------------------------------------------------------------------
@@ -92,26 +93,26 @@ public:
     // SYNTHETIC: GAMEMD 0x5430E0 (decl; reloc) -- scalar deleting entry.
     virtual ~IPXManagerClass();                                            // slot 0
     virtual int  Service();                                                // slot 1
-    virtual int  SendPacket(void* buf, int buflen, int ack_required, int id);             // slot 2
-    virtual int  ReceivePacket(void* buf, int* buflen, int* id);                 // slot 3
-    virtual int  NumConnections();                                         // slot 4
-    virtual int  ConnectionId(int index);                                  // slot 5
-    virtual int  ConnectionIndex(int id);                                  // slot 6
-    virtual int  GlobalNumSend();                                          // slot 7
-    virtual int  GlobalNumReceive();                                       // slot 8
-    virtual int  NumSend(int id);                                          // slot 9
-    virtual int  NumReceive(int id);                                       // slot 10
-    virtual void ResetResponseTime(bool a1);                               // slot 11
+    virtual int  vf_2(void* buf, int buflen, int needsAck, int id);             // slot 2
+    virtual int  vf_3(void* buf, int* buflen, int* id);                 // slot 3
+    virtual int  vf_4();                                         // slot 4
+    virtual int  vf_5(int index);                                  // slot 5
+    virtual int  vf_6(int id);                                  // slot 6
+    virtual int  vf_7();                                          // slot 7
+    virtual int  vf_8();                                       // slot 8
+    virtual int  vf_9(int id);                                          // slot 9
+    virtual int  vf_10(int id);                                       // slot 10
+    virtual void vf_11(bool a1);                               // slot 11
     virtual int  ResponseTime();                                           // slot 12
     virtual void SetTiming(int retrydelta, int maxretries, int timeout, bool setglobal); // slot 13
-    virtual void SetGlobalTiming(int retrydelta, int maxretries, int timeout);           // slot 14
-    virtual void ConfigureDebug(int index, int a2, int a3, int a4, int a5, int a6);      // slot 15
+    virtual void vf_14(int retrydelta, int maxretries, int timeout);           // slot 14
+    virtual void vf_15(int index, int a2, int a3, int a4, int a5, int a6);      // slot 15
     virtual void SaveGlobalTiming();                                       // slot 16 (behavioural)
     virtual void RestoreGlobalTiming();                                    // slot 17 (behavioural)
     virtual void SetRouterTiming(int retrydelta, int maxretries, int timeout);          // slot 18 (behavioural; sets the router and multicast channels)
     virtual int  ConnectionIndexOf(ConnectionClass* conn);                 // slot 19 (behavioural)
-    virtual int  RouterNumSend();                                         // slot 20
-    virtual int  RouterNumReceive();                                      // slot 21
+    virtual int  vf_20();                                         // slot 20
+    virtual int  vf_21();                                      // slot 21
     virtual int  ResponseTimeOf(int index);                                // slot 22 (behavioural)
     virtual void UpdateStats();                                            // slot 23 (behavioural)
     virtual void Slot24(int a1, int a2);                                   // slot 24 (empty body 0x543040)
@@ -126,7 +127,7 @@ public:
     bool FUN_00541680(IPXPacket* header, IPXPacket* packet, unsigned int size,
                       void* from, unsigned short port);
 
-    unsigned char    Installed;               // +0x04 (ctor stores the interface-open result)
+    unsigned char    unknown_04;               // +0x04 (ctor stores the interface-open result)
     unsigned char    Active;                  // +0x05
     char             unknown_06[0x08 - 0x06];
     int              unknown_08;              // +0x08 ctor a1 (global channel max length)
@@ -135,11 +136,11 @@ public:
     int              unknown_14;              // +0x14 ctor a4
     int              unknown_18;              // +0x18 ctor a1 (router channel max length)
     int              unknown_1C;              // +0x1C ctor a4 (router channel send count)
-    unsigned short   MagicNumber;             // +0x20
+    unsigned short   unknown_20;             // +0x20
     unsigned short   unknown_22;              // +0x22 ctor a5, byte-swapped
     int              unknown_24;              // +0x24
     IPXConnClass*    Connection[7];           // +0x28
-    int              NumConn;                 // +0x44
+    int              ConnectionCount;                 // +0x44
     IPXGlobalConnClass* GlobalChannel;        // +0x48
     IPXGlobalConnClass* RouterChannel;        // +0x4C (vslot 12 / 16 calls exist only on IPXGlobalConnClass)
     IPXConnClass*    MulticastChannel;        // +0x50
@@ -158,7 +159,7 @@ public:
     int              FailedId;                // +0xA8
 };
 
-GG_STATIC_ASSERT(offsetof(IPXManagerClass, Installed)       == 0x04);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_04)       == 0x04);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, Active)          == 0x05);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_08)      == 0x08);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_0C)      == 0x0C);
@@ -166,11 +167,11 @@ GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_10)      == 0x10);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_14)      == 0x14);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_18)      == 0x18);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_1C)      == 0x1C);
-GG_STATIC_ASSERT(offsetof(IPXManagerClass, MagicNumber)     == 0x20);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_20)     == 0x20);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_22)      == 0x22);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, unknown_24)      == 0x24);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, Connection)      == 0x28);
-GG_STATIC_ASSERT(offsetof(IPXManagerClass, NumConn)         == 0x44);
+GG_STATIC_ASSERT(offsetof(IPXManagerClass, ConnectionCount)         == 0x44);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, GlobalChannel)   == 0x48);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, RouterChannel)  == 0x4C);
 GG_STATIC_ASSERT(offsetof(IPXManagerClass, MulticastChannel)       == 0x50);

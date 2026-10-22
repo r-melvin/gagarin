@@ -74,7 +74,7 @@ GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 // VTABLE: GAMEMD 0x7F0CFC -- TypeList<const TerrainTypeClass*>.
@@ -84,7 +84,7 @@ GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, Capacity) == 0x08);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, IsInitialized) == 0x0C);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, ActiveCount) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgTerrainTypeTypeList, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const TerrainTypeClass*) == 4);

@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | EA-GPL-RA1-reference | private-ref-cross-check
+// Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Every body below was written against the retail disassembly of the user's
-//   gamemd.exe v1.001 read through the local Ghidra CLI. EA's GPLv3 Red Alert 1
-//   release (CODE/RAMFILE.CPP) is a consult-only shape reference for this
-//   utility class; nothing is transcribed from it. The private-reference seed row
-//   core/raw_file_class.cpp named the cluster and nothing else.
+//   gamemd.exe v1.001 read through the local Ghidra CLI. The private-reference
+//   seed row core/raw_file_class.cpp named the cluster and nothing else.
 //
 // RAMFileClass — the FileClass interface implemented over a memory block.
 // Bodies are ordered ascending by retail address.
@@ -24,7 +22,7 @@ RAMFileClass::RAMFileClass(void* buffer, int len) :
     Length(len),
     Offset(0),
     Access(GG_FILE_READ),
-    IsOpen(false),
+    Opened(false),
     IsAllocated(false)
 {
     if (buffer == 0 && len > 0) {
@@ -41,7 +39,7 @@ RAMFileClass::RAMFileClass(void* buffer, int len) :
 // FUNCTION: GAMEMD 0x65C2A0
 RAMFileClass::~RAMFileClass() throw()
 {
-    IsOpen = false;
+    Opened = false;
     if (IsAllocated) {
         FUN_007C8B3D(Buffer);
         Buffer = 0;
@@ -52,9 +50,9 @@ RAMFileClass::~RAMFileClass() throw()
 // "Creating" a RAM file just declares its contents empty, which is only
 // allowed while the file is closed.
 // FUNCTION: GAMEMD 0x65C2E0
-int RAMFileClass::Create()
+int RAMFileClass::CreateFile()
 {
-    if (!Is_Open()) {
+    if (!HasHandle()) {
         Length = 0;
         return true;
     }
@@ -64,9 +62,9 @@ int RAMFileClass::Create()
 // Deleting is the same operation as creating for a buffer-backed file: the
 // contents are forgotten. Retail emits the identical body.
 // FUNCTION: GAMEMD 0x65C300
-int RAMFileClass::Delete()
+int RAMFileClass::DeleteFile()
 {
-    if (!Is_Open()) {
+    if (!HasHandle()) {
         Length = 0;
         return true;
     }
@@ -76,21 +74,21 @@ int RAMFileClass::Delete()
 // A RAM file is always present. The exit is `MOV AL,1`, so the result is one
 // byte wide.
 // FUNCTION: GAMEMD 0x65C320
-bool RAMFileClass::Is_Available(int)
+bool RAMFileClass::Exists(int)
 {
     return true;
 }
 
 // FUNCTION: GAMEMD 0x65C330
-bool RAMFileClass::Is_Open() const
+bool RAMFileClass::HasHandle() const
 {
-    return IsOpen;
+    return Opened;
 }
 
 // The file has no name, so the name is ignored and this forwards to the
 // one-argument Open through the vtable.
 // FUNCTION: GAMEMD 0x65C340
-int RAMFileClass::Open(const char*, int rights)
+int RAMFileClass::OpenEx(const char*, int rights)
 {
     return Open(rights);
 }
@@ -101,13 +99,13 @@ int RAMFileClass::Open(const char*, int rights)
 // FUNCTION: GAMEMD 0x65C350
 int RAMFileClass::Open(int rights)
 {
-    if (Buffer == 0 || Is_Open()) {
+    if (Buffer == 0 || HasHandle()) {
         return false;
     }
 
     Offset = 0;
     Access = rights;
-    IsOpen = true;
+    Opened = true;
 
     switch (rights) {
         default:
@@ -122,38 +120,38 @@ int RAMFileClass::Open(int rights)
             break;
     }
 
-    return Is_Open();
+    return HasHandle();
 }
 
 // Copies out of the block, clamped to whatever contents remain. A closed file
 // is opened for the duration of the call and closed again afterwards, which is
 // what the EBX flag carries; an open file must have been opened for reading.
 // FUNCTION: GAMEMD 0x65C3A0
-long RAMFileClass::Read(void* buffer, long size)
+long RAMFileClass::ReadBytes(void* buffer, long size)
 {
     if (Buffer == 0 || buffer == 0 || size == 0) {
         return 0;
     }
 
-    bool hasopened = false;
-    if (!Is_Open()) {
+    bool openedHere = false;
+    if (!HasHandle()) {
         Open(GG_FILE_READ);
-        hasopened = true;
+        openedHere = true;
     } else {
         if ((Access & GG_FILE_READ) == 0) {
             return 0;
         }
     }
 
-    int tocopy = (size < (Length - Offset)) ? size : (Length - Offset);
-    FUN_007CA090(buffer, &Buffer[Offset], tocopy);
-    Offset += tocopy;
+    int count = (size < (Length - Offset)) ? size : (Length - Offset);
+    FUN_007CA090(buffer, &Buffer[Offset], count);
+    Offset += count;
 
-    if (hasopened) {
+    if (openedHere) {
         Close();
     }
 
-    return tocopy;
+    return count;
 }
 
 // Moves the read/write position. The ceiling is the written length when
@@ -163,13 +161,13 @@ long RAMFileClass::Read(void* buffer, long size)
 // FUNCTION: GAMEMD 0x65C420
 long RAMFileClass::Seek(long pos, int dir)
 {
-    if (Buffer == 0 || !Is_Open()) {
+    if (Buffer == 0 || !HasHandle()) {
         return Offset;
     }
 
-    int maxoffset = Length;
+    int limit = Length;
     if ((Access & GG_FILE_WRITE) != 0) {
-        maxoffset = MaxLength;
+        limit = MaxLength;
     }
 
     switch (dir) {
@@ -182,12 +180,12 @@ long RAMFileClass::Seek(long pos, int dir)
             break;
 
         case GG_SEEK_END:
-            Offset = maxoffset + pos;
+            Offset = limit + pos;
             break;
     }
 
     if (Offset < 0) Offset = 0;
-    if (Offset > maxoffset) Offset = maxoffset;
+    if (Offset > limit) Offset = limit;
 
     if (Offset > Length) {
         Length = Offset;
@@ -197,7 +195,7 @@ long RAMFileClass::Seek(long pos, int dir)
 }
 
 // FUNCTION: GAMEMD 0x65C4A0
-long RAMFileClass::Size()
+long RAMFileClass::GetFileSize()
 {
     return Length;
 }
@@ -206,49 +204,49 @@ long RAMFileClass::Size()
 // file is opened for write and closed again, an open one must carry the write
 // bit, and a write past the recorded length extends it.
 // FUNCTION: GAMEMD 0x65C4B0
-long RAMFileClass::Write(const void* buffer, long size)
+long RAMFileClass::WriteBytes(const void* buffer, long size)
 {
     if (Buffer == 0 || buffer == 0 || size == 0) {
         return 0;
     }
 
-    bool hasopened = false;
-    if (!Is_Open()) {
+    bool openedHere = false;
+    if (!HasHandle()) {
         Open(GG_FILE_WRITE);
-        hasopened = true;
+        openedHere = true;
     } else {
         if ((Access & GG_FILE_WRITE) == 0) {
             return 0;
         }
     }
 
-    int maxwrite = MaxLength - Offset;
-    int towrite = (size < maxwrite) ? size : maxwrite;
-    FUN_007CA090(&Buffer[Offset], buffer, towrite);
-    Offset += towrite;
+    int room = MaxLength - Offset;
+    int count = (size < room) ? size : room;
+    FUN_007CA090(&Buffer[Offset], buffer, count);
+    Offset += count;
 
     if (Offset > Length) {
         Length = Offset;
     }
 
-    if (hasopened) {
+    if (openedHere) {
         Close();
     }
 
-    return towrite;
+    return count;
 }
 
 // Closing a RAM file only records that it is closed.
 // FUNCTION: GAMEMD 0x65C540
 void RAMFileClass::Close()
 {
-    IsOpen = false;
+    Opened = false;
 }
 
 // The block has no filename, so a fixed placeholder is reported.
 // STRING: GAMEMD 0x83963C
 // FUNCTION: GAMEMD 0x65C550
-const char* RAMFileClass::File_Name() const
+const char* RAMFileClass::GetFileName() const
 {
     return "UNKNOWN";
 }
@@ -256,14 +254,14 @@ const char* RAMFileClass::File_Name() const
 // Renaming is meaningless here; the current (fixed) name is returned through
 // the vtable, which is retail's `MOV EAX,[ECX]; CALL dword ptr [EAX+4]`.
 // FUNCTION: GAMEMD 0x65C560
-const char* RAMFileClass::Set_Name(const char*)
+const char* RAMFileClass::SetFileName(const char*)
 {
-    return File_Name();
+    return GetFileName();
 }
 
 // A memory block has no timestamp.
 // FUNCTION: GAMEMD 0x65C570
-unsigned long RAMFileClass::Get_Date_Time()
+unsigned long RAMFileClass::GetFileTime()
 {
     return 0;
 }
@@ -271,7 +269,7 @@ unsigned long RAMFileClass::Get_Date_Time()
 // Setting the timestamp trivially succeeds. `MOV AL,1` on the exit is what
 // makes this one byte wide where the base returns the same width.
 // FUNCTION: GAMEMD 0x65C580
-bool RAMFileClass::Set_Date_Time(unsigned long)
+bool RAMFileClass::SetFileTime(unsigned long)
 {
     return true;
 }
@@ -279,7 +277,7 @@ bool RAMFileClass::Set_Date_Time(unsigned long)
 // There is no error condition a RAM file can report. Three arguments of stack
 // are still taken, which is retail's bare `RET 0xC`.
 // FUNCTION: GAMEMD 0x65C590
-void RAMFileClass::Error(int, int, const char*)
+void RAMFileClass::CDCheck(int, int, const char*)
 {
 }
 
@@ -294,7 +292,7 @@ void* RAMFileClass::DeletingDtor(unsigned int flags)
 {
     *(void**)this = (void*)&GG_VTABLE_RAMFILECLASS_7F0874;
 
-    IsOpen = false;
+    Opened = false;
     if (IsAllocated) {
         FUN_007C8B3D(Buffer);
         Buffer = 0;
@@ -312,7 +310,7 @@ void* RAMFileClass::DeletingDtor(unsigned int flags)
 
 // The base's default timestamp getter: no date is known.
 // FUNCTION: GAMEMD 0x65C5F0
-unsigned long FileClass::Get_Date_Time()
+unsigned long FileClass::GetFileTime()
 {
     return 0;
 }
@@ -320,7 +318,7 @@ unsigned long FileClass::Get_Date_Time()
 // The base's default timestamp setter fails. `XOR AL,AL` is the byte-wide
 // false that separates it from the derived override's `MOV AL,1`.
 // FUNCTION: GAMEMD 0x65C600
-bool FileClass::Set_Date_Time(unsigned long)
+bool FileClass::SetFileTime(unsigned long)
 {
     return false;
 }

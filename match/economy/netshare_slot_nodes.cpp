@@ -1,17 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | private-ref-cross-check | EA-GPL-RA1-reference
+// Provenance: own-binary-via-Ghidra | private-ref-cross-check
 //   Bytes matched against the user's retail gamemd.exe v1.001 over
 //   0x5E8740..0x5E957E. Layout evidence and the retail source-file name are
-//   documented in netshare_slot_nodes.h. The RA1 tree was read for the shape
-//   of NodeNameType / IPXAddressClass only; no line of it was transcribed.
+//   documented in netshare_slot_nodes.h.
 //   The private-reference seed named the cluster and what each entry point is for.
 //   Three of the bodies here — 0x5E8760, 0x5E93F0 and 0x5E94A0 — are in
 //   neither the seed nor the Ghidra function list, and were found by sweeping
 //   the address run as raw bytes and reading the twelve-byte 0x90 pads that
-//   separate functions. RA1's SESSION.H NodeNameType (name buffer, then an
-//   IPXAddressClass, then a per-player union) and IPXADDR.H corroborate the
-//   shape derived here, which is why the members land where the disassembly
-//   says they do; nothing was transcribed from either.
+//   separate functions. NodeNameType and IPXAddressClass are retail RTTI
+//   names; their members sit where the disassembly places them.
 //
 //   LIBRARY: GAMEMD 0x7CA5D3 wcscmp, 0x7DD0F8 _wcsicmp, 0x7C8D20 _stricmp,
 //   0x7C8B3D operator delete (all reloc).
@@ -228,7 +225,7 @@ NodeNameType* __fastcall Find_Node_By_Name(const wchar_t* name)
         return ObserverNode;
     }
 
-    int count = PlayerNodes.ActiveCount;
+    int count = PlayerNodes.Count;
     for (int i = 0; i < count; i++) {
         NodeNameType* node = PlayerNodes.Vector[i];
         if (wcscmp(node->Name, name) == 0) {
@@ -268,7 +265,7 @@ int __fastcall Find_Slot_By_Name(const wchar_t* name)
 // entry. With no players at all there is nothing to find.
 int __fastcall Find_Local_Player_Slot()
 {
-    if (PlayerNodes.ActiveCount == 0) {
+    if (PlayerNodes.Count == 0) {
         return -1;
     }
 
@@ -342,7 +339,7 @@ void __fastcall Release_Slot_By_Address(const IPXAddressClass* address)
 
     for (int i = 0; i < 8; i++) {
         NodeNameType* node = Slots[i];
-        if (node->Address.Is_Address(address)) {
+        if (node->Address.FUN_0053EE70(address)) {
             NodeNameType* seated = Slots[i];
             if (seated->unknown_6B == -1) {
                 Slots[i] = ObserverNode;

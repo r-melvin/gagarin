@@ -93,7 +93,7 @@ bool IPXInterfaceClass::Init(int socketNumber)
         return false;
 
     SocketNumber = socketNumber;
-    Debug_Printf("IPX Socket number is %04x\n", socketNumber);
+    FUN_004068E0("IPX Socket number is %04x\n", socketNumber);
 
     SOCKADDR_IPX address;
     address.sa_family = AF_IPX;
@@ -101,23 +101,23 @@ bool IPXInterfaceClass::Init(int socketNumber)
     memset(address.sa_nodenum, 0xFF, sizeof(address.sa_nodenum));
     address.sa_socket = htons((unsigned short)socketNumber);
 
-    Debug_Printf("About to create an IPX socket\n");
+    FUN_004068E0("About to create an IPX socket\n");
     Socket = socket(AF_IPX, SOCK_DGRAM, NSPROTO_IPX);
     if (Socket == -1)
     {
-        Debug_Printf("Failed to create IPX socket - error code %d.\n", WSAGetLastError());
+        FUN_004068E0("Failed to create IPX socket - error code %d.\n", WSAGetLastError());
         closesocket(Socket);
         return false;
     }
-    Debug_Printf("IPX Socket created OK\n");
+    FUN_004068E0("IPX Socket created OK\n");
 
     if (!FUN_007B0DD0(unknown_3F2F8, &address))
     {
-        Debug_Printf("IPX Error - failed to get the net card address\n");
+        FUN_004068E0("IPX Error - failed to get the net card address\n");
         closesocket(Socket);
         return false;
     }
-    Debug_Printf("IPX net card address is %02x %02x %02x %02x : %02x %02x %02x %02x %02x %02x\n",
+    FUN_004068E0("IPX net card address is %02x %02x %02x %02x : %02x %02x %02x %02x %02x %02x\n",
                  (unsigned char)address.sa_netnum[0], (unsigned char)address.sa_netnum[1],
                  (unsigned char)address.sa_netnum[2], (unsigned char)address.sa_netnum[3],
                  (unsigned char)address.sa_nodenum[0], (unsigned char)address.sa_nodenum[1],
@@ -125,45 +125,45 @@ bool IPXInterfaceClass::Init(int socketNumber)
                  (unsigned char)address.sa_nodenum[4], (unsigned char)address.sa_nodenum[5]);
     memcpy(LocalNode, address.sa_nodenum, sizeof(address.sa_nodenum));
 
-    Debug_Printf("About to bind IPX Socket\n");
+    FUN_004068E0("About to bind IPX Socket\n");
     if (bind(Socket, (SOCKADDR*)&address, sizeof(SOCKADDR)) == -1)
     {
-        Debug_Printf("IPX socket bind failed with error code %d.\n", WSAGetLastError());
+        FUN_004068E0("IPX socket bind failed with error code %d.\n", WSAGetLastError());
         closesocket(Socket);
         return false;
     }
-    Debug_Printf("IPX Socket bound OK\n");
+    FUN_004068E0("IPX Socket bound OK\n");
 
     int broadcast = 1;
     int packetType = 4;
-    Debug_Printf("About to set IPX socket option SO_BROADCAST\n");
+    FUN_004068E0("About to set IPX socket option SO_BROADCAST\n");
     if (setsockopt(Socket, SOL_SOCKET, SO_BROADCAST, (char*)&broadcast, 4) == -1)
-        Debug_Printf("Failed to set IPX socket option SO_BROADCAST - error code %d.\n",
+        FUN_004068E0("Failed to set IPX socket option SO_BROADCAST - error code %d.\n",
                      WSAGetLastError());
     else
-        Debug_Printf("IPX socket option SO_BROADCAST set OK\n");
+        FUN_004068E0("IPX socket option SO_BROADCAST set OK\n");
 
-    Debug_Printf("About to set IPX socket option IPX_PTYPE\n");
+    FUN_004068E0("About to set IPX socket option IPX_PTYPE\n");
     if (setsockopt(Socket, NSPROTO_IPX, 0x4000, (char*)&packetType, 4) == -1)
-        Debug_Printf("Failed to set IPX protocol option IPX_PTYPE - error code %d.\n",
+        FUN_004068E0("Failed to set IPX protocol option IPX_PTYPE - error code %d.\n",
                      WSAGetLastError());
     else
-        Debug_Printf("IPX socket option IPX_PTYPE set OK\n");
+        FUN_004068E0("IPX socket option IPX_PTYPE set OK\n");
 
-    Debug_Printf("About to set IPX socket option IPX_FILTERTYPE\n");
+    FUN_004068E0("About to set IPX socket option IPX_FILTERTYPE\n");
     if (setsockopt(Socket, NSPROTO_IPX, 0x4001, (char*)&packetType, 4) == -1)
-        Debug_Printf("Failed to set IPX protocol option IPX_FILTERTYPE - error code %d.\n",
+        FUN_004068E0("Failed to set IPX protocol option IPX_FILTERTYPE - error code %d.\n",
                      WSAGetLastError());
     else
-        Debug_Printf("IPX socket option IPX_FILTERTYPE set OK\n");
+        FUN_004068E0("IPX socket option IPX_FILTERTYPE set OK\n");
 
     WinsockInterfaceClass::SetSocketBuffers(-1);
-    Debug_Printf("IPX Socket init complete\n");
+    FUN_004068E0("IPX Socket init complete\n");
     return true;
 }
 
-// FUNCTION: GAMEMD 0x7B13D0  IPXInterfaceClass::MessageHandler (slot 16)
-int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, long lParam)
+// FUNCTION: GAMEMD 0x7B13D0  IPXInterfaceClass::vf_16 (slot 16)
+int IPXInterfaceClass::vf_16(HWND, unsigned int message, unsigned int, long lParam)
 {
     if (message != 0x473)
         return 1;
@@ -178,10 +178,10 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
     case FD_WRITE:
         if (HIWORD(lParam) != 0)
         {
-            ClearSocketError(Socket);
+            vf_9(Socket);
             return 0;
         }
-        while (OutBuffers.ActiveCount != 0)
+        while (OutBuffers.Count != 0)
         {
             WinsockBufferType* buffer = OutBuffers.Items[0];
             address.sa_family = AF_IPX;
@@ -201,14 +201,14 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
                        (SOCKADDR*)&address, sizeof(SOCKADDR_IPX)) == -1 &&
                 WSAGetLastError() != WSAEWOULDBLOCK)
             {
-                ClearSocketError(Socket);
+                vf_9(Socket);
                 return 0;
             }
 
-            if (OutBuffers.ActiveCount > 0)
+            if (OutBuffers.Count > 0)
             {
-                OutBuffers.ActiveCount--;
-                for (int i = 0; i < OutBuffers.ActiveCount; i++)
+                OutBuffers.Count--;
+                for (int i = 0; i < OutBuffers.Count; i++)
                     OutBuffers.Items[i] = OutBuffers.Items[i + 1];
             }
             if (buffer->IsAllocated)
@@ -224,7 +224,7 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
     case FD_READ:
         if (HIWORD(lParam) != 0)
         {
-            ClearSocketError(Socket);
+            vf_9(Socket);
             return 0;
         }
         addressLength = sizeof(SOCKADDR_IPX);
@@ -234,7 +234,7 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
         {
             if (WSAGetLastError() == WSAEWOULDBLOCK)
                 return 0;
-            ClearSocketError(Socket);
+            vf_9(Socket);
             return 0;
         }
         if (received == 0)
@@ -256,7 +256,7 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
         memcpy(buffer->Payload, ReceiveBuffer, received - 4);
         if (!VerifyPacketCrc(buffer))
         {
-            Debug_Printf("Throwing away malformed packet\n");
+            FUN_004068E0("Throwing away malformed packet\n");
             if (!DAT_00B7801C)
                 DAT_00B7801C = 1;
             if (buffer->IsAllocated)
@@ -268,7 +268,7 @@ int IPXInterfaceClass::MessageHandler(HWND, unsigned int message, unsigned int, 
             }
             return 0;
         }
-        ((IPXAddressClass*)buffer)->Set_Address(*(NetworkNumberType*)&network,
+        ((IPXAddressClass*)buffer)->FUN_0053ED20(*(NetworkNumberType*)&network,
                                               *(NodeAddressType*)node, 0);
         WinsockAddItem(InBuffers, buffer);
         return 0;
