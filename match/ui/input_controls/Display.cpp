@@ -1219,6 +1219,9 @@ void DisplayClass::vf_45(const Point2D* where)
 }
 
 // FUNCTION: GAMEMD 0x4AC380
+// PARTIAL (95.1%): only the frame size differs (retail SUB ESP,0x10, ours 8);
+// the drag delta as a Point2D local closed the store order. Tried: copying the
+// whole view rect (79.4%), `pt` at function scope (95.1%).
 void DisplayClass::vf_47(const Point2D* where)
 {
     if (unknown_11CF && !WaypointMode && !BeaconMode)
@@ -1247,9 +1250,10 @@ void DisplayClass::vf_47(const Point2D* where)
     else if (unknown_11D0)
     {
         Point2D* start = &DragStart;
-        int dx = where->X - start->X;
-        int dy = where->Y - start->Y;
-        if ((int)FUN_004CAC40((double)dx * dx + (double)dy * dy) > 4)
+        Point2D d;
+        d.X = where->X - start->X;
+        d.Y = where->Y - start->Y;
+        if ((int)FUN_004CAC40((double)d.X * d.X + (double)d.Y * d.Y) > 4)
         {
             unknown_11CF = true;
             unknown_11D0 = false;

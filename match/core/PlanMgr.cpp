@@ -832,8 +832,11 @@ int PlanningNodeClass::FUN_00634CC0(TechnoClass* techno)
         EventClass event = *(member == -1 ? 0 : before->Members.Items[member])->Event;
         int count = Branches.Count;
         if (count) {
-            CoordStruct tmp;
-            CoordStruct at = *FUN_00633BC0(&tmp, event);
+            CoordStruct at;
+            {
+                CoordStruct tmp;
+                at = *FUN_00633BC0(&tmp, event);
+            }
             int i = 0;
             if (count > 0) {
                 do {
@@ -1872,8 +1875,11 @@ void FUN_0063B090()
 // The coordinate an order points at, taken from `object` when the order names none.
 CoordStruct* FUN_0063CA80(CoordStruct* out, const EventClass& event, TargetAbstract* object)
 {
-    CoordStruct tmp;
-    CoordStruct coord = *FUN_00633BC0(&tmp, event);
+    CoordStruct coord;
+    {
+        CoordStruct tmp;
+        coord = *FUN_00633BC0(&tmp, event);
+    }
     if (coord.X == -1 && coord.Y == -1 && coord.Z == -1 && object) {
         coord = object->vf_22();
     }

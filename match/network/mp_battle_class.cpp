@@ -2,6 +2,12 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against the user's retail gamemd.exe v1.001 (Ghidra CLI
 //   disassembly from each entry) at 0x5C0DD0..0x5C1087.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+//
+// /Ob2 measured on this TU (all five rows scored under default, /Ob1, /Ob2 and
+// /Op): only /Ob2 moves anything, and it moves FUN_005C1030 from 67.6% (index
+// and allocation in swapped registers, same instructions) to retail's exact
+// register assignment; the other four rows are byte-identical either way.
 #include "mp_battle_class.h"
 
 // FUNCTION: GAMEMD 0x7B7DD0 (decl; reloc)
@@ -31,9 +37,8 @@ MultiplayerBattleTeam::MultiplayerBattleTeam(const Obj_007B66D0& name, int index
 }
 
 // FUNCTION: GAMEMD 0x5C1030
-// PARTIAL (67.6%): instruction multiset identical; retail keeps the index in
-// EDI and the block in ESI, cl swaps them. Tried: direct return, a named
-// local, an unsigned index.
+// Exact only under the TU's /Ob2: the default flags give the same instructions
+// with the index and the new block in swapped registers (EDI/ESI).
 MultiplayerTeam* FUN_005C1030(int index)
 {
     return new MultiplayerBattleTeam(FUN_007B7DD0(index), index);

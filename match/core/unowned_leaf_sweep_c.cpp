@@ -73,8 +73,9 @@ void FUN_006CFDB0(int count)
     DAT_00B0CB54 = count;
     int value = DAT_00B0FC6C->unknown_0 - DAT_00B0FC68->unknown_8 * count;
     int limit = DAT_00B0FC60->unknown_8 + DAT_00B0FC60->unknown_0;
-    DAT_00B0CC2C = value;
-    if (value <= limit) {
+    if (value > limit) {
+        DAT_00B0CC2C = value;
+    } else {
         DAT_00B0CC2C = limit;
     }
 }
@@ -434,5 +435,6 @@ bool FUN_0077D970()
     if (DAT_00A8B238 != 4) {
         return false;
     }
-    return DAT_00B76B30.unknown_8;
+    bool flag = DAT_00B76B30.unknown_8;
+    return flag;
 }

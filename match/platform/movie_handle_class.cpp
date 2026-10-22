@@ -29,7 +29,7 @@ struct Surface_005BF850
     virtual int  vt_70();
     virtual int  vt_74(int a);
     virtual void vt_78(); virtual void vt_7C();
-    virtual int  vt_80(int x, int y);
+    virtual int  vt_80(Point2D at);
 };
 
 // GLOBAL: GAMEMD 0xABF3F4 -- the VQ state block being shown, or null.
@@ -74,9 +74,11 @@ void FUN_004F4780(bool a, void* surface, int b);
 void FUN_005BFF60(Obj_005C01A0* data, bool a, int b, int c);
 
 // FUNCTION: GAMEMD 0x5BF850
-// PARTIAL (84.4%): load order around the second call differs (retail reads
-// the rectangle's Y and the player before X). Tried: nested calls (37.8%
-// with the origin as two ints, 15.6%), split statements (best).
+// PARTIAL (86.7%): slot 0x80 takes the rectangle's top-left as a by-value
+// point, like slot 0x5C (same two pushes as two ints; 84.4% written that way).
+// Remaining: retail loads the surface vptr after the two rectangle fields and
+// the player; VC6 loads it first. Tried: nested calls (37.8% with the origin
+// as two ints, 15.6%), split statements, a held state-block pointer (84.4%).
 int FUN_005BF850()
 {
     Surface_005BF850* surface = (Surface_005BF850*)DAT_00ABF3F4->unknown_08;
@@ -85,7 +87,10 @@ int FUN_005BF850()
     origin.Y = 0;
     int result = surface->vt_5C(origin);
     Obj_00759510* player = DAT_00ABF3F4->Player;
-    int offset = surface->vt_80(DAT_00ABF3F4->unknown_24.X, DAT_00ABF3F4->unknown_24.Y);
+    Point2D at;
+    at.X = DAT_00ABF3F4->unknown_24.X;
+    at.Y = DAT_00ABF3F4->unknown_24.Y;
+    int offset = surface->vt_80(at);
     offset = surface->vt_74(offset);
     int pitch = surface->vt_70();
     player->FUN_00759EB0(0, offset / pitch);

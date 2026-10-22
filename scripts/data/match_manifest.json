@@ -11135,8 +11135,8 @@
   "sym": "?FUN_00408930@Cursor_00408930@@QAEXXZ",
   "len": "0x38",
   "name": "FUN_00408930",
-  "status": "partial",
-  "pct": 90.9
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/small_misc33_methods.cpp",
@@ -22782,8 +22782,8 @@
   "sym": "?DestroyAllBuildings@HouseClass@@QAEXXZ",
   "len": "0x8f",
   "name": "HouseClass::DestroyAllBuildings",
-  "status": "partial",
-  "pct": 93.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/house_class_destroy_all_methods.cpp",
@@ -29358,8 +29358,8 @@
   "len": "0xf0",
   "name": "ListClass::Action",
   "status": "partial",
-  "pct": 93.5,
-  "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; load order of Y/CurrentTopIndex and the List.Count reload in the hit-test differ."
+  "pct": 96.8,
+  "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; one store differs: retail writes SelectedIndex before loading List.Count for the clamp."
  },
  {
   "tu": "match/ui/list_class_base_methods.cpp",
@@ -49476,8 +49476,8 @@
   "sym": "?vf_13@BuildingBView@@UAEXPAVBuildingBCrcView@@@Z",
   "len": "0x23b",
   "name": "BuildingClass::vf_13",
-  "status": "partial",
-  "pct": 93.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/house_building/building_b_part3.cpp",
@@ -49503,8 +49503,8 @@
   "sym": "?vf_212@BuildingBView@@UAE_NXZ",
   "len": "0xf4",
   "name": "BuildingClass::vf_212",
-  "status": "partial",
-  "pct": 84.2
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/house_building/building_b_part3.cpp",
@@ -57802,7 +57802,7 @@
   "len": "0x167",
   "name": "DisplayClass::vf_47",
   "status": "partial",
-  "pct": 93.1
+  "pct": 95.1
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
@@ -60501,8 +60501,8 @@
   "sym": "?FUN_007bee20@@YIHPAUMovieHandle_007BD470@@PAUMovieConfig_007BD470@@PAUMovieDrawState_007BD470@@PAUMovieFrame_007BD470@@I@Z",
   "len": "0x1B4",
   "name": "FUN_007bee20",
-  "status": "partial",
-  "pct": 86.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/movie_stream_methods.cpp",
@@ -61320,8 +61320,8 @@
   "sym": "?FUN_006CFDB0@@YIXH@Z",
   "len": "0x39",
   "name": "FUN_006CFDB0",
-  "status": "partial",
-  "pct": 88.9
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/unowned_leaf_sweep_c.cpp",
@@ -61590,8 +61590,8 @@
   "sym": "?FUN_0077D970@@YI_NXZ",
   "len": "0x17",
   "name": "FUN_0077D970",
-  "status": "partial",
-  "pct": 87.5
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/wide_string_class.cpp",
@@ -69805,7 +69805,7 @@
   "len": "0x5d",
   "name": "FUN_005BF850",
   "status": "partial",
-  "pct": 84.4
+  "pct": 86.7
  },
  {
   "tu": "match/platform/movie_handle_class.cpp",
@@ -70389,8 +70389,8 @@
   "sym": "?FUN_005C1030@@YIPAVMultiplayerTeam@@H@Z",
   "len": "0x58",
   "name": "FUN_005C1030",
-  "status": "partial",
-  "pct": 67.6
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/MPCoop.cpp",
@@ -73443,8 +73443,8 @@
   "sym": "??0DriveLocomotionClass@@QAE@XZ",
   "len": "0x9a",
   "name": "DriveLocomotionClass::DriveLocomotionClass",
-  "status": "partial",
-  "pct": 93.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
@@ -73524,8 +73524,8 @@
   "sym": "?FUN_004AFB00@DriveLocomotionClass@@QAEXH@Z",
   "len": "0x3a",
   "name": "DriveLocomotionClass::FUN_004AFB00",
-  "status": "partial",
-  "pct": 50.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
@@ -73533,8 +73533,8 @@
   "sym": "?ForceNewSlope@DriveLocomotionClass@@UAGXH@Z",
   "len": "0x35",
   "name": "DriveLocomotionClass::ForceNewSlope",
-  "status": "partial",
-  "pct": 38.9
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",
@@ -89217,8 +89217,8 @@
   "sym": "?FUN_00793710@@YIGHHHH@Z",
   "len": "0x9e",
   "name": "FUN_00793710",
-  "status": "partial",
-  "pct": 84.1,
+  "status": "matched",
+  "pct": 100,
   "note": "Aligned 91.3%: retail keeps two epilogues for the final range clamp."
  },
  {
@@ -90517,8 +90517,8 @@
   "sym": "?FUN_00634CC0@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x146",
   "name": "PlanningNodeClass::FUN_00634CC0",
-  "status": "partial",
-  "pct": 92.3
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/PlanMgr.cpp",
@@ -90922,8 +90922,8 @@
   "sym": "?FUN_0063CA80@@YIPAUCoordStruct@@PAU1@ABVEventClass@@PAVTargetAbstract@@@Z",
   "len": "0x57",
   "name": "FUN_63CA80",
-  "status": "partial",
-  "pct": 88.9
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/economy/netshare.cpp",
@@ -91184,7 +91184,7 @@
   "len": "0xba",
   "name": "FUN_005E95E0",
   "status": "partial",
-  "pct": 86.7
+  "pct": 90.0
  },
  {
   "tu": "match/economy/netshare.cpp",

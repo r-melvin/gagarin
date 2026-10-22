@@ -1721,15 +1721,16 @@ inline BuildingBCellView* BuildingBMapView::GetCellAtCoord(HBCoord coord)
     HBCell cell = BuildingBCellOf(coord);
     return Func_5657A0(&cell);
 }
+// The elapsed branch returns directly; folding it back into `left` swaps the
+// start and elapsed registers at 0x454260 and 0x4555D0.
 inline int BuildingBTimer::GetTimeLeft() const
 {
     int left = TimeLeft;
     if (StartTime != -1) {
         int elapsed = BuildingBFrame - StartTime;
         if (elapsed < left)
-            left = left - elapsed;
-        else
-            left = 0;
+            return left - elapsed;
+        return 0;
     }
     return left;
 }

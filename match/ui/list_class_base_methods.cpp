@@ -177,12 +177,14 @@ void ListClass::RemoveItem(wchar_t const* text)
 // Keyboard bit. Every path falls through to ControlClass::Action, each with its
 // own EDI/ESI/EBX epilogue (four separate `ret 0xc` tails).
 //
-// PARTIAL, 93.5% (87/93, multiset identical). The residual is load order in
-// the hit-test: retail loads Y then CurrentTopIndex ahead of the subtraction
-// and re-reads List.Count for the clamp; cl orders those loads differently.
-// Other natural spellings: the row computed straight into SelectedIndex
-// (80.6%), the key test as a switch with a ternary clamp (53.8%), and the
-// summands swapped or the mouse call inlined (both 93.5%).
+// PARTIAL, 96.8% (90/93, multiset identical). Storing the computed row into
+// SelectedIndex first and reading it back for the clamp puts the Y and
+// CurrentTopIndex loads in retail order. The residual is one store: retail
+// writes SelectedIndex before loading List.Count for the clamp, cl after.
+// Other natural spellings: the clamp done directly on SelectedIndex (80.6%),
+// List.Count - 1 hoisted into a local (91.4%), the key test as a switch with a
+// ternary clamp (53.8%), and the summands swapped or the mouse call inlined
+// (both 93.5% on the earlier row-local form).
 unsigned ListClass::Action(unsigned flags, unsigned* key, int extra)
 {
     if (flags & 4) {
@@ -203,11 +205,10 @@ unsigned ListClass::Action(unsigned flags, unsigned* key, int extra)
     } else {
         MouseShim* mouse = DAT_00887640;
         int mouseY = (mouse->*mouse->Vfptr->At_30)();
-        int row = (mouseY - Y - 1) / LineHeight + CurrentTopIndex;
-        SelectedIndex = row;
-        int last = List.Count - 1;
-        if (row >= last) {
-            row = last;
+        SelectedIndex = (mouseY - Y - 1) / LineHeight + CurrentTopIndex;
+        int row = SelectedIndex;
+        if (row >= List.Count - 1) {
+            row = List.Count - 1;
         }
         SelectedIndex = row;
         if (row == -1) {

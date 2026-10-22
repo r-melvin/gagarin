@@ -1046,7 +1046,9 @@ unsigned short FUN_00793710(int base, int offset, int unused, int spread)
     FUN_004068E0("Get_Port_Blitz_Port_Number - send port = %d, mangled_port = %d, port_spread = %d, port = %d\n",
                  base, offset, spread, port);
     unsigned short narrow = (unsigned short)port;
-    if (narrow < 0x400) return 0x400;
+    if (narrow < 0x400) {
+        narrow = 0x400;
+    }
     return narrow;
 }
 

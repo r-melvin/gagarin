@@ -78,18 +78,9 @@ void HouseClass::DestroyAll()
 // the four failing conditions all land on the increment exactly as retail has
 // them.
 //
-// SCHEDULING DELTA (status partial, 93.0% - 53/57). Every instruction retail
-// emits is present, in the same count and the same total length; four of them
-// are ordered differently. Retail reads Health, stores it to the stack slot,
-// then loads TemporalTargetingMe and tests it. Our compiler hoists
-// the TemporalTargetingMe load ahead of the Health store. Three materially
-// different phrasings produce the identical ordering - the member read
-// inline, the pointer held in a local per the held-pointer rule, and the damage
-// slot forced into memory early via an address-taken `int* const` - so there is
-// no source form here that reproduces retail's schedule. Same signature as the
-// documented HouseClass::Cheer delta. The cause is NOT the toolchain: our
-// objects already stamp @comp.id 0x000b20ff, i.e. build 8447, retail's exact
-// backend. It is unexplained.
+// The damage slot is declared once at function scope. Declared inside the
+// destroy branch, VC6 hoists the TemporalTargetingMe load ahead of the Health
+// store (93.0%); at function scope the store comes first, as in retail.
 //
 // `lastDestroyed` is the guard that keeps that from looping forever. If the
 // receiveDamage call does not actually remove the object, the next pass would
@@ -99,6 +90,7 @@ void HouseClass::DestroyAllBuildings()
 {
     int i = 0;
     TechnoClass* lastDestroyed = 0;
+    int damage;
 
     while (i < TechnoArray.Count) {
         TechnoClass* techno = TechnoArray.Items[i];
@@ -108,7 +100,7 @@ void HouseClass::DestroyAllBuildings()
             && !techno->InLimbo
             && techno != lastDestroyed) {
 
-            int damage = techno->Health;
+            damage = techno->Health;
 
             if (techno->TemporalTargetingMe) {
                 techno->TemporalTargetingMe->JustLetGo();

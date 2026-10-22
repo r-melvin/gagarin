@@ -5,8 +5,7 @@
 #include "small_misc32_methods.h"
 
 // Use direct member stores; no receiver aliases. Flags is volatile only by its
-// declaration (shared with the stream threads; see the header). PARTIAL
-// (90.9%).
+// declaration (shared with the stream threads; see the header).
 
 // FUNCTION: GAMEMD 0x408930
 // Rewind the cursor onto its source. The flag clear at the end is written once
@@ -21,11 +20,10 @@ void Cursor_00408930::FUN_00408930()
 
     if (source != 0) {
         unknown_04 = source->Entries[Channel].First;
-        unknown_08 = 0;
     } else {
         unknown_04 = 0;
-        unknown_08 = 0;
     }
+    unknown_08 = 0;
 
     Flags &= ~1;
 }

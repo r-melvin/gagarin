@@ -70,10 +70,11 @@ struct RateTimer : public CDTimerClass
     int Rate;
 
     RateTimer() {}
+    // Start before Rate: retail 0x4AF540 stores TimeLeft/StartTime, then Rate.
     RateTimer(int rate)
     {
-        this->Rate = rate;
         this->CDTimerClass::Start(rate);
+        this->Rate = rate;
     }
 };
 

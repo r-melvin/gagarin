@@ -694,11 +694,7 @@ int FUN_007bee20(MovieHandle_007BD470* h, MovieConfig_007BD470* config, MovieDra
         if (h->unknown_150 & 0x100) {
             loopEnd = h->unknown_140;
         }
-        for (;;) {
-            int hold = config->unknown_40 & 4;
-            if (!((!hold && frame > loopEnd) || (hold && last == h->unknown_128 && !looped))) {
-                break;
-            }
+        while ((!(config->unknown_40 & 4) && frame > loopEnd) || ((config->unknown_40 & 4) && last == h->unknown_128 && !looped)) {
             int left = h->unknown_128 - loopEnd - 1;
             FUN_007c3950(h, left * 60 / rate);
             frame = FUN_007c3960(h) * rate / 60;
@@ -714,8 +710,8 @@ int FUN_007bee20(MovieHandle_007BD470* h, MovieConfig_007BD470* config, MovieDra
             if (!(h->unknown_E8.unknown_2 & 1) || !(config->unknown_44 & 1)) {
                 FUN_007c3950(h, back * 60 / rate);
             }
-            h->unknown_150 |= 0x800;
             frame = last;
+            h->unknown_150 |= 0x800;
         } else {
             h->unknown_150 &= ~0x800;
         }
@@ -725,9 +721,8 @@ int FUN_007bee20(MovieHandle_007BD470* h, MovieConfig_007BD470* config, MovieDra
             frame = loopEnd;
         }
         if (h->unknown_138 != -1) {
-            int start = h->unknown_13C;
+            h->unknown_128 = h->unknown_13C;
             h->unknown_13C = -1;
-            h->unknown_128 = start;
             h->unknown_12C = h->unknown_138;
             h->unknown_138 = -1;
         }

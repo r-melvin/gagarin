@@ -14,10 +14,10 @@
 // is what makes 0 the transparent index and everything else an offset into a
 // palette that starts at 'A'.
 //
-// PARTIAL (86.0%, 37/43) — identical multiset. Two register/scheduling deltas:
-// retail stores the global before pushing the first call's arguments where VC6
-// stores it after, and the inner load swaps the SIB base and index roles
-// (`[EDX+ECX]` against `[ECX+EDX]`) — the cheap addressing class in section 4.8.
+// PARTIAL (95.3%, 41/43) — identical multiset. One register delta remains: the
+// inner load and store swap the SIB base and index roles (`[EDX+ECX]` against
+// `[ECX+EDX]`) — the cheap addressing class in section 4.8. The global-store
+// ordering delta recorded earlier no longer shows in the current build.
 //
 // Eleven further spellings were measured this pass and every one holds at
 // 86.0% or drops. For the global store: the surface bound to a local with the

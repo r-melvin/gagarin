@@ -1922,8 +1922,10 @@ bool FUN_005E9580()
 }
 
 // FUNCTION: GAMEMD 0x5E95E0
-// PARTIAL: best 86.7% (52 of 60 instructions). The same register-hoisting
-// difference as 0x5E9580, plus the operand order of the limit minimum.
+// PARTIAL: best 90.0% (54 of 60 instructions). The same register-hoisting
+// difference as 0x5E9580. The limit minimum is written as `limit >=
+// SessionPlayerLimit` (retail's `CMP map,session; JL` order; the earlier
+// `SessionPlayerLimit <= limit` spelling gave 86.7%).
 //
 // Is the channel over capacity? The limit is the smaller of the map's and the
 // session's player limits; the count is the players less one when an observer
@@ -1931,7 +1933,7 @@ bool FUN_005E9580()
 bool FUN_005E95E0()
 {
     int limit = MapPlayerLimit;
-    if (SessionPlayerLimit <= limit) {
+    if (limit >= SessionPlayerLimit) {
         limit = SessionPlayerLimit;
     }
     int count = PlayerNodes.Count;
