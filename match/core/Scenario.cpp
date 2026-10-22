@@ -45,6 +45,11 @@
 #include "../_layout/audio_0048d080.h"
 #include "../platform/input_manager_class_methods.h"
 #include "../network/win_modem_class.h"
+#include "../_layout/swizzle_manager_class.h"
+
+// GLOBAL: GAMEMD 0x00B0C110
+extern SwizzleManagerClass DAT_00B0C110;
+extern const char STR_0083DDF8[]; // STRING: GAMEMD 0x0083DDF8 (decl)
 
 // GLOBAL: GAMEMD 0x00B72D20
 extern WinModemClass* WinModem_00B72D20;
@@ -992,6 +997,46 @@ void ScenarioClass::FUN_00689310(Gg_IStream* const stream)
     stream->Write(&count, 4, 0);
     for (i = 0; i < count; ++i) stream->Write(&unknown_350C.Items[i], 4, 0);
     if (!paused) unknown_0614.Resume();
+}
+
+// FUNCTION: GAMEMD 0x689470
+void ScenarioClass::FUN_00689470(Gg_IStream* const stream)
+{
+    unknown_0614.Pause();
+    stream->Read(this, 0x3740, 0);
+    new(this) ScenarioClass(AbstractNoInit());
+    new(&unknown_34D4) TypeList<TechnoTypeClass*>;
+    int count;
+    stream->Read(&count, 4, 0);
+    for (int i = 0; i < count; ++i) {
+        TechnoTypeClass* item;
+        stream->Read(&item, 4, 0);
+        unknown_34D4.AddItem(item);
+    }
+    new(&unknown_34F0) TypeList<int>;
+    stream->Read(&count, 4, 0);
+    for (i = 0; i < count; ++i) {
+        int item;
+        stream->Read(&item, 4, 0);
+        unknown_34F0.AddItem(item);
+    }
+    new(&unknown_350C) TypeList<int>;
+    stream->Read(&count, 4, 0);
+    for (i = 0; i < count; ++i) {
+        int item;
+        stream->Read(&item, 4, 0);
+        unknown_350C.AddItem(item);
+    }
+    for (i = 0; i < unknown_34D4.Count; ++i) {
+        // Canonical vf_4 still spells its pointer-sized argument as int.
+        // 0x6895E4..0x6895ED passes this exact element address on the stack.
+        DAT_00B0C110.SwizzleManagerClass::vf_4((int)&unknown_34D4.Items[i]);
+    }
+    if (unknown_11F8.unknown_00[0])
+        unknown_11F4 = FUN_00734E60(unknown_11F8.unknown_00, false, STR_0083D838, 0x19D0);
+    else unknown_11F4 = EmptyName_00887734;
+    unknown_0614.Resume();
+    FUN_004068E0(STR_0083DDF8, unknown_0614);
 }
 
 // FUNCTION: GAMEMD 0x689670

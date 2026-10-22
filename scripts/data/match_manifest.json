@@ -92616,5 +92616,14 @@
   "name": "?FUN_00684370@@YI_NXZ",
   "status": "partial",
   "pct": 72.2
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x689470",
+  "sym": "?FUN_00689470@ScenarioClass@@QAEXPAUGg_IStream@@@Z",
+  "len": "0x1ff",
+  "name": "ScenarioClass::FUN_00689470",
+  "status": "partial",
+  "pct": 2.0
  }
 ]

@@ -166,6 +166,7 @@ struct ScenarioClass
     void FUN_006B8AE0(); // GAMEMD 0x6B8AE0
     void FUN_0068AD70(CCINIClass* ini, bool flag); // GAMEMD 0x68AD70
     void FUN_00689310(Gg_IStream* stream);
+    void FUN_00689470(Gg_IStream* stream); // FUNCTION: GAMEMD 0x689470 (decl)
     bool FUN_0053A100(); // GAMEMD 0x53A100
     // ---- matched methods (ascending by retail address) ----
     static void UpdateCellLighting();        // GAMEMD 0x4AE4C0  (free/static)
