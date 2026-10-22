@@ -636,6 +636,20 @@ int Obj_00697020::FUN_00697020(int a1)
     return a1;
 }
 
+// GLOBAL: GAMEMD 0x83ED14
+extern signed char DAT_0083ED14[9];
+GG_STATIC_ASSERT(sizeof(DAT_0083ED14) == 9);
+
+// FUNCTION: GAMEMD 0x69A310
+unsigned int __stdcall FUN_0069A310(unsigned int index)
+{
+    if (index == 0xFFFFFFFEU)
+        index = 8;
+    if (index < 9)
+        return DAT_0083ED14[index];
+    return index;
+}
+
 // FUNCTION: GAMEMD 0x69B720
 // Branching.
 int Obj_0069B720::FUN_0069B720()

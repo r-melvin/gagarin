@@ -92797,5 +92797,14 @@
   "name": "?FUN_0069BCC0@@YGHPBD@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69A310",
+  "sym": "?FUN_0069A310@@YGII@Z",
+  "len": "0x27",
+  "name": "?FUN_0069A310@@YGII@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
