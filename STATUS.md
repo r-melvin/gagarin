@@ -1,5 +1,40 @@
 # Project status
 
+As of **2026-10-22**, the verified snapshot reports **5,111 matched function
+rows**, **231 partial rows**, **5,342 manifest rows**, **1,069 manifest
+translation units**, and **1,079 tracked C++ files**. Whole-repository regression
+verification, compile/layout checks, the project object build and 139 tooling
+tests pass. There are zero annotation issues across 5,375 body addresses.
+
+The latest batch integrates native `HoverLocomotionClass` methods and a shared
+cell-direction pair declaration. It adds 18 exact function rows and retains five
+frozen partials; the deleting destructor moves from the generic family to native
+compiler output. A timer initializer also moves from partial to matched. The
+19 exact Hover rows and three timer/adjacent-cell checks pass raw and strict
+verification across 80 relocation fields. Fourteen unaffected prior sections
+preserve their bytes and relocation tuples; the five new partial sections retain
+their normalized bytes and relocation layouts. The Hover CLSID matches retail.
+
+The 50-slot ILocomotion table passes directly. The ten-slot primary table passes
+under a recorded weak-default assumption for its deleting-destructor slot;
+final-link selection remains unproved. `MSPrintAnim::Update` remains partial
+pending its nine-slot table reconstruction. Mech integration is under review.
+
+The 5,111 matches represent 25.9% of 19,753 listed functions. Matched body
+lengths total **379,427 bytes**, or 10.0% of 3,797,269 listed function bytes.
+The padding heuristic misses 314 matched entries. The diagnostic link reports
+**4,184 unique unresolved symbols**, **6,723 reference lines**, and zero
+duplicate definitions. Engine link closure remains unfinished.
+
+## Historical integration archive
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: named-global relocation audit
+
 As of **2026-10-22**, the verified snapshot reports **5,092 matched function
 rows**, **227 partial rows**, **5,319 manifest rows**, **1,068 manifest
 translation units**, and **1,078 tracked C++ files**. Whole-repository regression
@@ -25,13 +60,6 @@ lengths total **377,609 bytes**, or 9.9% of 3,797,269 listed function bytes.
 The padding heuristic misses 314 matched entries. The diagnostic link reports
 **4,140 unique unresolved symbols**, **6,670 reference lines**, and zero
 duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-The integration records below are historical batch snapshots archived on
-2026-10-21. Their batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: native locomotion base methods
 

@@ -9156,11 +9156,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/multi_vtable_dtor_family_methods.cpp",
+  "tu": "match/movement/hover_locomotion_class.cpp",
   "addr": "0x5172C0",
-  "sym": "?FUN_005172C0@@YIPAUMultiVtableObject@@PAU1@HD@Z",
-  "len": "0x2b",
-  "name": "FUN_005172C0",
+  "sym": "??_GHoverLocomotionClass@@UAEPAXI@Z",
+  "len": "0x2B",
+  "name": "HoverLocomotionClass::scalarDeletingDestructor",
   "status": "matched",
   "pct": 100
  },
@@ -13085,8 +13085,8 @@
   "sym": "?FUN_004010C0@@YIXPAUObj_00401000@@0@Z",
   "len": "0xa4",
   "name": "FUN_004010C0",
-  "status": "partial",
-  "pct": 62.1
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/core/triple_vector_host_methods.cpp",
@@ -48021,5 +48021,212 @@
   "name": "LocomotionClass::ApparentSpeed",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x513C20",
+  "sym": "??0HoverLocomotionClass@@QAE@XZ",
+  "len": "0x83",
+  "name": "HoverLocomotionClass::HoverLocomotionClass",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x513CB0",
+  "sym": "?LinkToObject@HoverLocomotionClass@@UAGJPAUFootClass@@@Z",
+  "len": "0x4D",
+  "name": "HoverLocomotionClass::LinkToObject",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x513F40",
+  "sym": "?DrawMatrix@HoverLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "len": "0x353",
+  "name": "HoverLocomotionClass::DrawMatrix",
+  "status": "partial",
+  "pct": 78.6
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x5142A0",
+  "sym": "?ShadowMatrix@HoverLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "len": "0x67",
+  "name": "HoverLocomotionClass::ShadowMatrix",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514310",
+  "sym": "?Process@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x911",
+  "name": "HoverLocomotionClass::Process",
+  "status": "partial",
+  "pct": 14.5
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514C30",
+  "sym": "?IsMoving@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x4B",
+  "name": "HoverLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514C80",
+  "sym": "?IsMovingNow@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x2E",
+  "name": "HoverLocomotionClass::IsMovingNow",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514CB0",
+  "sym": "?Destination@HoverLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x5C",
+  "name": "HoverLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514D10",
+  "sym": "?HeadToCoord@HoverLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x71",
+  "name": "HoverLocomotionClass::HeadToCoord",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x514D90",
+  "sym": "?MoveTo@HoverLocomotionClass@@UAGXULocoCoord@@@Z",
+  "len": "0x1DA",
+  "name": "HoverLocomotionClass::MoveTo",
+  "status": "partial",
+  "pct": 53.5
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516320",
+  "sym": "?StopMoving@HoverLocomotionClass@@UAGXXZ",
+  "len": "0x4D",
+  "name": "HoverLocomotionClass::StopMoving",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516370",
+  "sym": "?DoTurn@HoverLocomotionClass@@UAGXK@Z",
+  "len": "0x22",
+  "name": "HoverLocomotionClass::DoTurn",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516BF0",
+  "sym": "?PowerOff@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x78",
+  "name": "HoverLocomotionClass::PowerOff",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516C70",
+  "sym": "?IsPowered@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x2A",
+  "name": "HoverLocomotionClass::IsPowered",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516CA0",
+  "sym": "?IsIonSensitive@HoverLocomotionClass@@UAG_NXZ",
+  "len": "0x168",
+  "name": "HoverLocomotionClass::IsIonSensitive",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516E10",
+  "sym": "?Push@HoverLocomotionClass@@UAG_NK@Z",
+  "len": "0x1AE",
+  "name": "HoverLocomotionClass::Push",
+  "status": "partial",
+  "pct": 89.1
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x516FC0",
+  "sym": "?Shove@HoverLocomotionClass@@UAG_NK@Z",
+  "len": "0x5D",
+  "name": "HoverLocomotionClass::Shove",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x517070",
+  "sym": "?GetClassID@HoverLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x38",
+  "name": "HoverLocomotionClass::GetClassID",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x5170B0",
+  "sym": "?Load@HoverLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x44",
+  "name": "HoverLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x517100",
+  "sym": "?InWhichLayer@HoverLocomotionClass@@UAGHXZ",
+  "len": "0x8",
+  "name": "HoverLocomotionClass::InWhichLayer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x5171C0",
+  "sym": "?MarkAllOccupationBits@HoverLocomotionClass@@UAGXH@Z",
+  "len": "0x46",
+  "name": "HoverLocomotionClass::MarkAllOccupationBits",
+  "status": "partial",
+  "pct": 84.0
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x517210",
+  "sym": "?IsMovingHere@HoverLocomotionClass@@UAG_NULocoCoord@@@Z",
+  "len": "0x99",
+  "name": "HoverLocomotionClass::IsMovingHere",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/hover_locomotion_class.cpp",
+  "addr": "0x5172B0",
+  "sym": "?Size@HoverLocomotionClass@@UAEHXZ",
+  "len": "0x6",
+  "name": "HoverLocomotionClass::Size",
+  "status": "matched",
+  "pct": 100
  }
 ]

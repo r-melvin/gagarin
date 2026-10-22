@@ -31,17 +31,12 @@ void __fastcall FUN_00401000(Obj_00401000* self)
 // 0x4010F4), and the third is an additive offset around 0x2000 rather than a
 // product at all.
 //
-// PARTIAL (62.1%, 36/58). One instruction of delta, and it is an insertion
-// rather than a difference: everything up to the `JNS` at 0x40116C is exact,
-// then VC6 folds the two `LEA ECX,[ESI+0x50]` uses inside the negative branch
-// into a single `ADD ESI,0x50`, because ESI is dead after that block. Retail
-// recomputes the LEA at each use. Only that one block is affected — the high
-// clamp and the shared tail each use the address once, so VC6 leaves their
-// LEAs alone, which is what makes the fold profitable there and nowhere else.
-// Four phrasings produce it identically (address inline, address hoisted into
-// a local, the zero written through the offset variable, and the address
-// spelled off a different member), so the choice is not reachable from source.
-// See section 4.8, "callee-saved base bias".
+// EXACT (100%, 57/57). The third timer's three outcomes are written as an
+// if / else-if / else chain that each pass a different level to the setter,
+// with one shared Update call after the chain. Written as an early `return`
+// in the negative arm, VC6 folded the two `LEA ECX,[ESI+0x50]` uses of that
+// arm into one `ADD ESI,0x50`; as a chain, every use recomputes the LEA, as
+// retail does.
 //
 // The third block's zero test is on the *offset*, not the sum: when the other
 // object's whole part is exactly 0x2000 the timer is left alone and only reset.
@@ -65,13 +60,11 @@ void __fastcall FUN_004010C0(Obj_00401000* self, Obj_00401000* other)
         offset += self->Third.Value >> 16;
         if ((int)offset < 0) {
             FUN_00407150(&self->Third, 0);
-            FUN_004071C0(&self->Third);
-            return;
+        } else if (offset > 0x4000) {
+            FUN_00407150(&self->Third, 0x4000);
+        } else {
+            FUN_00407150(&self->Third, (int)offset);
         }
-        if (offset > 0x4000) {
-            offset = 0x4000;
-        }
-        FUN_00407150(&self->Third, (int)offset);
     }
     FUN_004071C0(&self->Third);
 }

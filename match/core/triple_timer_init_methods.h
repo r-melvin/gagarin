@@ -44,6 +44,7 @@ struct Obj_00401000
     Timer_00401000 Second;   // +0x0028
     Timer_00401000 Third;    // +0x0050
 };
+GG_STATIC_ASSERT(offsetof(Obj_00401000, First) == 0);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Second) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Third) == 0x50);
 
