@@ -29,8 +29,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
-struct TunnelLocomotionClass : LocomotionLayoutView_0055A6C0
+class TunnelLocomotionClass : public LocomotionLayoutView_0055A6C0
 {
+public:
     int          unknown_18;      // +0x18 ctor `MOV [ESI+0x18],EAX` @0x00728A0D
                                   //       (=0). Read by ILocomotion::Is_Moving
                                   //       0x00728A50 - `MOV ECX,[EAX+0x14]`

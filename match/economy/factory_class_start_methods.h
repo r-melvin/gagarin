@@ -16,8 +16,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
 
-struct HouseClass
+class HouseClass
 {
+public:
     // 0x4FA350 — __thiscall taking the result of the queued item's Slot_2C.
     void ProductionStarted(int result);
 };
@@ -25,8 +26,9 @@ struct HouseClass
 // The queued blueprint. Two vtable slots are dispatched; because Slot_2C takes
 // stack arguments it must be a real virtual rather than the tree's
 // __fastcall-fn-pointer shortcut (methodology §4.6).
-struct TechnoTypeClass
+class TechnoTypeClass
 {
+public:
 #include "factory_class_start_slots.inc"
 
     char          _padAfterVtbl[0xCCE - 4];  // +0x0004
@@ -34,8 +36,9 @@ struct TechnoTypeClass
 };
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_CCE) == 0xCCE);
 
-struct FactoryClass
+class FactoryClass
 {
+public:
     char              _pad00[0x38];          // +0x0000
     int               unknown_38;            // +0x0038  gates the IsSuspended check
     char              _pad3C[0x40 - 0x3C];   // +0x003C

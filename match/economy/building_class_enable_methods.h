@@ -36,8 +36,9 @@ GG_STATIC_ASSERT(sizeof(BuildingAnimRecord) == 0x44);
 // 21 animations.
 #define BUILDING_ANIM_COUNT 21
 
-struct BuildingTypeClass
+class BuildingTypeClass
 {
+public:
     char               _pad0000[0xF4C];                  // +0x0000
     BuildingAnimRecord Anims[BUILDING_ANIM_COUNT];       // +0x0F4C
     char               _pad14E0[0x16BE - (0xF4C + BUILDING_ANIM_COUNT * 0x44)];
@@ -46,9 +47,10 @@ struct BuildingTypeClass
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Anims)        == 0xF4C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, unknown_16BE) == 0x16BE);
 
-struct AnimClass;
-struct LightSourceClass
+class AnimClass;
+class LightSourceClass
 {
+public:
     void Activate(unsigned long zero);   // GAMEMD 0x554A60 __thiscall (declared; reloc)
 };
 
@@ -56,8 +58,9 @@ struct LightSourceClass
 // Descriptive name; the binary attests no name for this address.
 void __fastcall AnimClass_Enable(AnimClass* anim);
 
-struct BuildingClass
+class BuildingClass
 {
+public:
     char               _pad0000[0x520];                  // +0x0000
     BuildingTypeClass* Type;                             // +0x0520
     char               _pad0524[0x55C - 0x524];          // +0x0524

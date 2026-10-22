@@ -66,11 +66,12 @@ GG_STATIC_ASSERT(offsetof(RateTimer, Rate) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RateTimer)         == 0x10);
 #endif
 
-struct BuildingTypeClass;
-struct HouseClass;
+class BuildingTypeClass;
+class HouseClass;
 
-struct BuildingClass : TechnoClass
+class BuildingClass : public TechnoClass
 {
+public:
     // FUNCTION: GAMEMD 0x43B740 (decl; reloc) -- (type, owner), RET 8; allocated
     // with PUSH 0x720 / operator new (e.g. 0x5CAB4B).
     BuildingClass(BuildingTypeClass* type, HouseClass* owner);

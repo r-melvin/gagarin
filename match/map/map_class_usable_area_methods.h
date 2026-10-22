@@ -32,8 +32,9 @@ GG_STATIC_ASSERT(offsetof(Cell_00578540, Level)      == 0x11B);
 GG_STATIC_ASSERT(offsetof(Cell_00578540, SlopeIndex) == 0x11C);
 
 // MapClass — MapRect {X,Y,Width,Height} @0xEC and VisibleRect @0xFC.
-struct MapClass
+class MapClass
 {
+public:
     char _pad000[0xEC];      // +0x0000
     int  MapRectX;           // +0x00EC
     int  MapRectY;           // +0x00F0

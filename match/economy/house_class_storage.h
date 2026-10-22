@@ -36,8 +36,9 @@ GG_STATIC_ASSERT(offsetof(BaseNodeClass, Attempts) == 0xC);
 // (RET 0x4 cleans the single stack arg). No members of BaseClass are touched,
 // so it is modelled empty.
 // ---------------------------------------------------------------------------
-struct BaseClass
+class BaseClass
 {
+public:
     int FailedToPlaceNode(BaseNodeClass* Node);   // GAMEMD 0x42F380 __thiscall
 };
 
@@ -47,8 +48,9 @@ struct BaseClass
 // `FIDIV dword[ESI+0x310]` => int TotalStorage. Balance (int@0x30C) sits
 // between them per YRpp; modelled for spacing. Base padded to 0x2FC (P2).
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char         _pad0[0x2FC];   // AbstractClass + HouseClass head (+0x00..)
     StorageClass OwnedTiberium;  // +0x2FC
     int          Balance;        // +0x30C

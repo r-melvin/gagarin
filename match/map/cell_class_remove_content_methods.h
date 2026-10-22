@@ -48,8 +48,9 @@ struct CellStruct_0047EA90
 GG_STATIC_ASSERT(sizeof(CellStruct_0047EA90) == 4);
 
 // CellClass — only the members RemoveContent touches.
-struct CellClass
+class CellClass
 {
+public:
     char                _pad00[0x24];      // +0x00  AbstractClass base
     CellStruct_0047EA90 MapCoords;         // +0x24
     char                _pad28[0xE4 - 0x28];// +0x28

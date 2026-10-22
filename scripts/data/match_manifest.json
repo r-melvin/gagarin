@@ -2,7 +2,7 @@
  {
   "tu": "match/ai/ai_trigger_charged_methods.cpp",
   "addr": "0x41F0D0",
-  "sym": "?IronCurtainCharged@AITriggerTypeClass@@QBE_NPAUHouseClass@@0@Z",
+  "sym": "?IronCurtainCharged@AITriggerTypeClass@@QBE_NPAVHouseClass@@0@Z",
   "len": "0xab",
   "name": "AITriggerTypeClass::IronCurtainCharged",
   "status": "matched",
@@ -11,7 +11,7 @@
  {
   "tu": "match/ai/ai_trigger_charged_methods.cpp",
   "addr": "0x41F180",
-  "sym": "?ChronoSphereCharged@AITriggerTypeClass@@QBE_NPAUHouseClass@@0@Z",
+  "sym": "?ChronoSphereCharged@AITriggerTypeClass@@QBE_NPAVHouseClass@@0@Z",
   "len": "0xab",
   "name": "AITriggerTypeClass::ChronoSphereCharged",
   "status": "matched",
@@ -139,7 +139,7 @@
  {
   "tu": "match/ai/foot_class_recruit_methods.cpp",
   "addr": "0x4DA230",
-  "sym": "?CanBeRecruited@FootClass@@QAE_NPAUHouseClass@@@Z",
+  "sym": "?CanBeRecruited@FootClass@@QAE_NPAVHouseClass@@@Z",
   "len": "0x67",
   "name": "FootClass::CanBeRecruited",
   "status": "matched",
@@ -193,7 +193,7 @@
  {
   "tu": "match/ai/house_class_lookup_methods.cpp",
   "addr": "0x510ED0",
-  "sym": "?FindByPlayerAt@HouseClass@@SIPAU1@H@Z",
+  "sym": "?FindByPlayerAt@HouseClass@@SIPAV1@H@Z",
   "len": "0x82",
   "name": "HouseClass::FindByPlayerAt",
   "status": "matched",
@@ -247,7 +247,7 @@
  {
   "tu": "match/ai/house_class_psi_warn_methods.cpp",
   "addr": "0x43B5E0",
-  "sym": "?PsiWarn@HouseClass@@QAIPAUAnimClass@@PAUCellClass@@PAUBulletClass@@PBD@Z",
+  "sym": "?PsiWarn@HouseClass@@QAIPAVAnimClass@@PAVCellClass@@PAVBulletClass@@PBD@Z",
   "len": "0x93",
   "name": "HouseClass::PsiWarn",
   "status": "matched",
@@ -373,7 +373,7 @@
  {
   "tu": "match/ai/script_type_class.cpp",
   "addr": "0x691C00",
-  "sym": "?FindOrAllocate@ScriptTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@ScriptTypeClass@@SIPAV1@PBD@Z",
   "len": "0x142",
   "name": "FindOrAllocate",
   "status": "matched",
@@ -652,7 +652,7 @@
  {
   "tu": "match/ai/team_type_class_create_methods.cpp",
   "addr": "0x6F09C0",
-  "sym": "?CreateTeam@TeamTypeClass@@QAEPAUTeamClass@@PAUHouseClass@@@Z",
+  "sym": "?CreateTeam@TeamTypeClass@@QAEPAVTeamClass@@PAVHouseClass@@@Z",
   "len": "0xAE",
   "name": "TeamTypeClass::CreateTeam",
   "status": "matched",
@@ -679,7 +679,7 @@
  {
   "tu": "match/ai/team_type_class_house_methods.cpp",
   "addr": "0x6F2070",
-  "sym": "?GetHouse@TeamTypeClass@@QBEPAUHouseClass@@XZ",
+  "sym": "?GetHouse@TeamTypeClass@@QBEPAVHouseClass@@XZ",
   "len": "0x2C",
   "name": "GetHouse",
   "status": "matched",
@@ -697,7 +697,7 @@
  {
   "tu": "match/ai/team_type_class_instance_methods.cpp",
   "addr": "0x6F1F70",
-  "sym": "?FindFirstInstance@TeamTypeClass@@QBEPAUTeamClass@@XZ",
+  "sym": "?FindFirstInstance@TeamTypeClass@@QBEPAVTeamClass@@XZ",
   "len": "0x28",
   "name": "FindFirstInstance",
   "status": "matched",
@@ -1562,7 +1562,7 @@
  {
   "tu": "match/combat/bomb_list_class_pointer_methods.cpp",
   "addr": "0x439150",
-  "sym": "?PointerGotInvalid@BombListClass@@QAEXPAUAbstractClass@@@Z",
+  "sym": "?PointerGotInvalid@BombListClass@@QAEXPAVAbstractClass@@@Z",
   "len": "0x68",
   "name": "BombListClass::PointerGotInvalid",
   "status": "matched",
@@ -2102,7 +2102,7 @@
  {
   "tu": "match/combat/random_straw.cpp",
   "addr": "0x6616B0",
-  "sym": "?Construct@RandomStraw@@QAEPAU1@XZ",
+  "sym": "?Construct@RandomStraw@@QAEPAV1@XZ",
   "len": "0x50",
   "name": "Construct",
   "status": "matched",
@@ -2381,7 +2381,7 @@
  {
   "tu": "match/combat/spawn_manager_class_reset_methods.cpp",
   "addr": "0x6B7C60",
-  "sym": "?UnlinkPointer@SpawnManager_006B7BB0@@QAEXPAUAbstractClass@@@Z",
+  "sym": "?UnlinkPointer@SpawnManager_006B7BB0@@QAEXPAVAbstractClass@@@Z",
   "len": "0xce",
   "name": "SpawnManagerClass::UnlinkPointer",
   "status": "matched",
@@ -2516,7 +2516,7 @@
  {
   "tu": "match/combat/super_weapon_type_class_methods.cpp",
   "addr": "0x6CEEB0",
-  "sym": "?FindFirstOfAction@SuperWeaponTypeClass@@SIPAU1@H@Z",
+  "sym": "?FindFirstOfAction@SuperWeaponTypeClass@@SIPAV1@H@Z",
   "len": "0x36",
   "name": "FindFirstOfAction",
   "status": "matched",
@@ -2707,7 +2707,7 @@
  {
   "tu": "match/combat/veinhole_monster_class_methods.cpp",
   "addr": "0x74CD60",
-  "sym": "?GetVeinholeMonsterFrom@VeinholeMonsterClass@@SIPAU1@PAUCellStruct@@@Z",
+  "sym": "?GetVeinholeMonsterFrom@VeinholeMonsterClass@@SIPAV1@PAUCellStruct@@@Z",
   "len": "0x48",
   "name": "GetVeinholeMonsterFrom",
   "status": "matched",
@@ -2716,7 +2716,7 @@
  {
   "tu": "match/combat/veinhole_monster_class_methods.cpp",
   "addr": "0x74CDB0",
-  "sym": "?GetVeinholeMonsterAt@VeinholeMonsterClass@@SIPAU1@PAUCellStruct@@@Z",
+  "sym": "?GetVeinholeMonsterAt@VeinholeMonsterClass@@SIPAV1@PAUCellStruct@@@Z",
   "len": "0x3B",
   "name": "GetVeinholeMonsterAt",
   "status": "matched",
@@ -2770,7 +2770,7 @@
  {
   "tu": "match/combat/weapon_type_class.cpp",
   "addr": "0x772FA0",
-  "sym": "?FindOrAllocate@WeaponTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@WeaponTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
   "name": "FindOrAllocate",
   "status": "matched",
@@ -8846,7 +8846,7 @@
  {
   "tu": "match/core/link_class_addhead_addtail.cpp",
   "addr": "0x5566D0",
-  "sym": "?AddHead@LinkClass@@UAEPAU1@AAU1@@Z",
+  "sym": "?AddHead@LinkClass@@UAEPAV1@AAV1@@Z",
   "len": "0x24",
   "name": "AddHead",
   "status": "matched",
@@ -8855,7 +8855,7 @@
  {
   "tu": "match/core/link_class_addhead_addtail.cpp",
   "addr": "0x556700",
-  "sym": "?AddTail@LinkClass@@UAEPAU1@AAU1@@Z",
+  "sym": "?AddTail@LinkClass@@UAEPAV1@AAV1@@Z",
   "len": "0x29",
   "name": "AddTail",
   "status": "matched",
@@ -8873,7 +8873,7 @@
  {
   "tu": "match/core/link_class_methods.cpp",
   "addr": "0x556640",
-  "sym": "?HeadOfList@LinkClass@@UAEPAU1@XZ",
+  "sym": "?HeadOfList@LinkClass@@UAEPAV1@XZ",
   "len": "0x21",
   "name": "LinkClass::HeadOfList",
   "status": "matched",
@@ -8882,7 +8882,7 @@
  {
   "tu": "match/core/link_class_methods.cpp",
   "addr": "0x556670",
-  "sym": "?TailOfList@LinkClass@@UAEPAU1@XZ",
+  "sym": "?TailOfList@LinkClass@@UAEPAV1@XZ",
   "len": "0x21",
   "name": "LinkClass::TailOfList",
   "status": "matched",
@@ -8891,7 +8891,7 @@
  {
   "tu": "match/core/link_class_methods.cpp",
   "addr": "0x5566A0",
-  "sym": "?Add@LinkClass@@UAEPAU1@AAU1@@Z",
+  "sym": "?Add@LinkClass@@UAEPAV1@AAV1@@Z",
   "len": "0x2A",
   "name": "LinkClass::Add",
   "status": "matched",
@@ -8900,7 +8900,7 @@
  {
   "tu": "match/core/link_class_remove_methods.cpp",
   "addr": "0x556730",
-  "sym": "?Remove@LinkClass@@UAEPAU1@XZ",
+  "sym": "?Remove@LinkClass@@UAEPAV1@XZ",
   "len": "0x54",
   "name": "Remove",
   "status": "matched",
@@ -8990,7 +8990,7 @@
  {
   "tu": "match/core/logic_class_pointer_methods.cpp",
   "addr": "0x55B880",
-  "sym": "?PointerGotInvalid@LogicClass@@QAEXPAUAbstractClass@@_N@Z",
+  "sym": "?PointerGotInvalid@LogicClass@@QAEXPAVAbstractClass@@_N@Z",
   "len": "0x61",
   "name": "LogicClass::PointerGotInvalid",
   "status": "matched",
@@ -13365,7 +13365,7 @@
  {
   "tu": "match/core/type_class_findoralloc_methods.cpp",
   "addr": "0x428B80",
-  "sym": "?FindOrAllocate@AnimTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@AnimTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
   "name": "AnimTypeClass::FindOrAllocate",
   "status": "matched",
@@ -13392,7 +13392,7 @@
  {
   "tu": "match/core/type_class_findoralloc_methods.cpp",
   "addr": "0x75E3B0",
-  "sym": "?FindOrAllocate@WarheadTypeClass@@SIPAU1@PBD@Z",
+  "sym": "?FindOrAllocate@WarheadTypeClass@@SIPAV1@PBD@Z",
   "len": "0x83",
   "name": "WarheadTypeClass::FindOrAllocate",
   "status": "matched",
@@ -22581,7 +22581,7 @@
  {
   "tu": "match/economy/factory_class_methods.cpp",
   "addr": "0x4CA6B0",
-  "sym": "?IsQueued@FactoryClass@@QBE_NPAUTechnoTypeClass@@@Z",
+  "sym": "?IsQueued@FactoryClass@@QBE_NPAVTechnoTypeClass@@@Z",
   "len": "0x29",
   "name": "IsQueued",
   "status": "matched",
@@ -22608,7 +22608,7 @@
  {
   "tu": "match/economy/factory_class_queue_methods.cpp",
   "addr": "0x4CA620",
-  "sym": "?RemoveOneFromQueue@FactoryClass@@QAE_NPBUTechnoTypeClass@@@Z",
+  "sym": "?RemoveOneFromQueue@FactoryClass@@QAE_NPBVTechnoTypeClass@@@Z",
   "len": "0x43",
   "name": "RemoveOneFromQueue",
   "status": "matched",
@@ -22617,7 +22617,7 @@
  {
   "tu": "match/economy/factory_class_queue_methods.cpp",
   "addr": "0x4CA670",
-  "sym": "?CountTotal@FactoryClass@@QBEHPBUTechnoTypeClass@@@Z",
+  "sym": "?CountTotal@FactoryClass@@QBEHPBVTechnoTypeClass@@@Z",
   "len": "0x40",
   "name": "CountTotal",
   "status": "matched",
@@ -22698,7 +22698,7 @@
  {
   "tu": "match/economy/house_class_accessor_methods.cpp",
   "addr": "0x50E1B0",
-  "sym": "?GainedPoweredCenter@HouseClass@@QAE_NPAUTechnoTypeClass@@@Z",
+  "sym": "?GainedPoweredCenter@HouseClass@@QAE_NPAVTechnoTypeClass@@@Z",
   "len": "0x10",
   "name": "GainedPoweredCenter",
   "status": "matched",
@@ -22842,7 +22842,7 @@
  {
   "tu": "match/economy/house_class_flag_methods.cpp",
   "addr": "0x4FC060",
-  "sym": "?PickedUpFlag@HouseClass@@QAEDPAUUnitClass@@K@Z",
+  "sym": "?PickedUpFlag@HouseClass@@QAEDPAVUnitClass@@K@Z",
   "len": "0x4E",
   "name": "PickedUpFlag",
   "status": "matched",
@@ -22851,7 +22851,7 @@
  {
   "tu": "match/economy/house_class_lookup_methods.cpp",
   "addr": "0x502D30",
-  "sym": "?FindByCountryIndex@HouseClass@@SIPAU1@H@Z",
+  "sym": "?FindByCountryIndex@HouseClass@@SIPAV1@H@Z",
   "len": "0x30",
   "name": "FindByCountryIndex",
   "status": "matched",
@@ -22905,7 +22905,7 @@
  {
   "tu": "match/economy/house_class_misc_methods.cpp",
   "addr": "0x504740",
-  "sym": "?EnsurePlanningPathExists@HouseClass@@QAEPAUWaypointPathClass@@H@Z",
+  "sym": "?EnsurePlanningPathExists@HouseClass@@QAEPAVWaypointPathClass@@H@Z",
   "len": "0x43",
   "name": "EnsurePlanningPathExists",
   "status": "matched",
@@ -23625,7 +23625,7 @@
  {
   "tu": "match/map/cell_class_occupier_methods.cpp",
   "addr": "0x47EBA0",
-  "sym": "?GetUnit@CellClass@@QBEPAUUnitClass@@_N@Z",
+  "sym": "?GetUnit@CellClass@@QBEPAVUnitClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetUnit",
   "status": "matched",
@@ -23634,7 +23634,7 @@
  {
   "tu": "match/map/cell_class_occupier_methods.cpp",
   "addr": "0x47EBF0",
-  "sym": "?GetAircraft@CellClass@@QBEPAUAircraftClass@@_N@Z",
+  "sym": "?GetAircraft@CellClass@@QBEPAVAircraftClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetAircraft",
   "status": "matched",
@@ -23643,7 +23643,7 @@
  {
   "tu": "match/map/cell_class_occupier_methods.cpp",
   "addr": "0x47EC40",
-  "sym": "?GetInfantry@CellClass@@QBEPAUInfantryClass@@_N@Z",
+  "sym": "?GetInfantry@CellClass@@QBEPAVInfantryClass@@_N@Z",
   "len": "0x43",
   "name": "CellClass::GetInfantry",
   "status": "matched",
@@ -23670,7 +23670,7 @@
  {
   "tu": "match/map/cell_class_query_methods.cpp",
   "addr": "0x47C520",
-  "sym": "?GetBuilding@CellClass@@QBEPAUBuildingClass@@XZ",
+  "sym": "?GetBuilding@CellClass@@QBEPAVBuildingClass@@XZ",
   "len": "0x2F",
   "name": "GetBuilding",
   "status": "matched",
@@ -23805,7 +23805,7 @@
  {
   "tu": "match/map/cell_class_shroud_methods.cpp",
   "addr": "0x481810",
-  "sym": "?GetNeighbourCell@CellClass@@QBEPAU1@H@Z",
+  "sym": "?GetNeighbourCell@CellClass@@QBEPAV1@H@Z",
   "len": "0x56",
   "name": "GetNeighbourCell",
   "status": "matched",
@@ -24228,7 +24228,7 @@
  {
   "tu": "match/map/map_class_target_methods.cpp",
   "addr": "0x565730",
-  "sym": "?GetTargetCell@MapClass@@QAEPAUCellClass@@AAUPoint2D@@@Z",
+  "sym": "?GetTargetCell@MapClass@@QAEPAVCellClass@@AAUPoint2D@@@Z",
   "len": "0x68",
   "name": "GetTargetCell",
   "status": "matched",
@@ -24237,7 +24237,7 @@
  {
   "tu": "match/map/map_class_threat_methods.cpp",
   "addr": "0x56BCD0",
-  "sym": "?GetThreatPosed@MapClass@@QBEHABUCellStruct@@PAUHouseClass@@@Z",
+  "sym": "?GetThreatPosed@MapClass@@QBEHABUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x6d",
   "name": "GetThreatPosed",
   "status": "matched",
@@ -25238,7 +25238,7 @@
  {
   "tu": "match/movement/fly_locomotion_com_methods.cpp",
   "addr": "0x4CFCC0",
-  "sym": "?FlyLocomotionLoad_004CFCC0@@YGJPAUFlyLocomotionClass@@PAX@Z",
+  "sym": "?FlyLocomotionLoad_004CFCC0@@YGJPAVFlyLocomotionClass@@PAX@Z",
   "len": "0x29",
   "name": "?FlyLocomotionLoad_004CFCC0@@YGJPAUFlyLo",
   "status": "matched",
@@ -25589,7 +25589,7 @@
  {
   "tu": "match/movement/loco_base.cpp",
   "addr": "0x55A710",
-  "sym": "?LinkToObject@LocomotionClass@@UAGJPAUFootClass@@@Z",
+  "sym": "?LinkToObject@LocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x13",
   "name": "LinkToObject",
   "status": "matched",
@@ -27671,7 +27671,7 @@
  {
   "tu": "match/platform/ccini_class_techno_type_methods.cpp",
   "addr": "0x476EB0",
-  "sym": "?GetTechnoType@CCINIClass@@QAEPAUTechnoTypeClass@@PBD0@Z",
+  "sym": "?GetTechnoType@CCINIClass@@QAEPAVTechnoTypeClass@@PBD0@Z",
   "len": "0xBA",
   "name": "CCINIClass::GetTechnoType",
   "status": "matched",
@@ -28346,7 +28346,7 @@
  {
   "tu": "match/renderer/convert_class_create_methods.cpp",
   "addr": "0x72ADE0",
-  "sym": "?CreateFromFile@ConvertClass@@SIXPBDAAPAUColorStruct_0072ADE0@@AAPAU1@@Z",
+  "sym": "?CreateFromFile@ConvertClass@@SIXPBDAAPAUColorStruct_0072ADE0@@AAPAV1@@Z",
   "len": "0x12F",
   "name": "ConvertClass::CreateFromFile",
   "status": "partial",
@@ -28832,7 +28832,7 @@
  {
   "tu": "match/renderer/techno_class_drawer_methods.cpp",
   "addr": "0x705D70",
-  "sym": "?GetDrawer@Techno_00705D70@@QAEPAULightConvertClass@@XZ",
+  "sym": "?GetDrawer@Techno_00705D70@@QAEPAVLightConvertClass@@XZ",
   "len": "0x8a",
   "name": "TechnoClass::GetDrawer",
   "status": "matched",
@@ -28877,7 +28877,7 @@
  {
   "tu": "match/ui/bit_text_print_methods.cpp",
   "addr": "0x434B90",
-  "sym": "?FUN_00434B90@@YGHPAUBitFont@@PAUSurface@@PBGHHHH@Z",
+  "sym": "?FUN_00434B90@@YGHPAVBitFont@@PAVSurface@@PBGHHHH@Z",
   "len": "0x58",
   "name": "FUN_00434B90",
   "status": "matched",
@@ -29147,7 +29147,7 @@
  {
   "tu": "match/ui/gadget_class_methods.cpp",
   "addr": "0x4E1480",
-  "sym": "?Remove@GadgetClass@@UAEPAULinkClass@@XZ",
+  "sym": "?Remove@GadgetClass@@UAEPAVLinkClass@@XZ",
   "len": "0x11",
   "name": "Remove",
   "status": "matched",
@@ -29156,7 +29156,7 @@
  {
   "tu": "match/ui/gadget_class_methods.cpp",
   "addr": "0x4E14A0",
-  "sym": "?GetNext@GadgetClass@@UAEPAULinkClass@@XZ",
+  "sym": "?GetNext@GadgetClass@@UAEPAVLinkClass@@XZ",
   "len": "0x5",
   "name": "GetNext",
   "status": "matched",
@@ -29165,7 +29165,7 @@
  {
   "tu": "match/ui/gadget_class_methods.cpp",
   "addr": "0x4E14B0",
-  "sym": "?GetPrev@GadgetClass@@UAEPAULinkClass@@XZ",
+  "sym": "?GetPrev@GadgetClass@@UAEPAVLinkClass@@XZ",
   "len": "0x5",
   "name": "GetPrev",
   "status": "matched",
@@ -29210,7 +29210,7 @@
  {
   "tu": "match/ui/gadget_class_methods.cpp",
   "addr": "0x4E15A0",
-  "sym": "?ExtractGadgetAt@GadgetClass@@QAEPAU1@HH@Z",
+  "sym": "?ExtractGadgetAt@GadgetClass@@QAEPAV1@HH@Z",
   "len": "0x94",
   "name": "GadgetClass::ExtractGadgetAt",
   "status": "partial",
@@ -29427,7 +29427,7 @@
  {
   "tu": "match/ui/list_class_base_methods.cpp",
   "addr": "0x557E10",
-  "sym": "?Add@ListClass@@QAEPAULinkClass@@AAU2@@Z",
+  "sym": "?Add@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
   "len": "0x46",
   "name": "ListClass::Add",
   "status": "matched",
@@ -29436,7 +29436,7 @@
  {
   "tu": "match/ui/list_class_base_methods.cpp",
   "addr": "0x557E60",
-  "sym": "?AddHead@ListClass@@QAEPAULinkClass@@AAU2@@Z",
+  "sym": "?AddHead@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
   "len": "0x46",
   "name": "ListClass::AddHead",
   "status": "matched",
@@ -29445,7 +29445,7 @@
  {
   "tu": "match/ui/list_class_base_methods.cpp",
   "addr": "0x557EB0",
-  "sym": "?AddTail@ListClass@@QAEPAULinkClass@@AAU2@@Z",
+  "sym": "?AddTail@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
   "len": "0x4b",
   "name": "ListClass::AddTail",
   "status": "matched",
@@ -29454,7 +29454,7 @@
  {
   "tu": "match/ui/list_class_base_methods.cpp",
   "addr": "0x557F00",
-  "sym": "?Remove@ListClass@@QAEPAULinkClass@@XZ",
+  "sym": "?Remove@ListClass@@QAEPAVLinkClass@@XZ",
   "len": "0x3a",
   "name": "ListClass::Remove",
   "status": "matched",
@@ -29706,7 +29706,7 @@
  {
   "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x6D09C0",
-  "sym": "?SetToolTip@ShapeButtonClass@@SIXPAU1@PBD@Z",
+  "sym": "?SetToolTip@ShapeButtonClass@@SIXPAV1@PBD@Z",
   "len": "0x53",
   "name": "SetToolTip",
   "status": "matched",
@@ -29751,7 +29751,7 @@
  {
   "tu": "match/ui/shape_button_class.cpp",
   "addr": "0x6CFD40",
-  "sym": "?GetButton@ShapeButtonClass@@SIPAU1@H@Z",
+  "sym": "?GetButton@ShapeButtonClass@@SIPAV1@H@Z",
   "len": "0x1f",
   "name": "GetButton",
   "status": "matched",
@@ -30084,7 +30084,7 @@
  {
   "tu": "match/ui/ui_list_node_methods.cpp",
   "addr": "0x5B4630",
-  "sym": "?ScalarDeletingDtor@MixFileClass@@QAEPAU1@D@Z",
+  "sym": "?ScalarDeletingDtor@MixFileClass@@QAEPAV1@D@Z",
   "len": "0xAF",
   "name": "MixFileClass::ScalarDeletingDtor",
   "status": "matched",
@@ -30723,7 +30723,7 @@
  {
   "tu": "match/ui/bit_font_entries_00434b10.cpp",
   "addr": "0x434B40",
-  "sym": "?FUN_00434B40@@YGHPAUBitFont_00434B40@@PAUSurface@@HHH@Z",
+  "sym": "?FUN_00434B40@@YGHPAUBitFont_00434B40@@PAVSurface@@HHH@Z",
   "len": "0x50",
   "name": "FUN_00434B40",
   "status": "partial",
@@ -30732,7 +30732,7 @@
  {
   "tu": "match/ui/bit_font_entries_00434b10.cpp",
   "addr": "0x434BF0",
-  "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAUSurface@@HHHH@Z",
+  "sym": "?FUN_00434BF0@@YGHPAUBitFont_00434B40@@PAVSurface@@HHHH@Z",
   "len": "0xe0",
   "name": "FUN_00434BF0",
   "status": "partial",
@@ -31929,7 +31929,7 @@
  {
   "tu": "match/ui/control_class.cpp",
   "addr": "0x48e600",
-  "sym": "?SetPeer@ControlClass@@UAEXPAUGadgetClass@@@Z",
+  "sym": "?SetPeer@ControlClass@@UAEXPAVGadgetClass@@@Z",
   "len": "0xa",
   "name": "ControlClass::SetPeer",
   "status": "matched",
@@ -48213,7 +48213,7 @@
  {
   "tu": "match/movement/hover_locomotion_class.cpp",
   "addr": "0x513CB0",
-  "sym": "?LinkToObject@HoverLocomotionClass@@UAGJPAUFootClass@@@Z",
+  "sym": "?LinkToObject@HoverLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x4D",
   "name": "HoverLocomotionClass::LinkToObject",
   "status": "matched",
@@ -48754,7 +48754,7 @@
  {
   "tu": "match/movement/droppod_locomotion.cpp",
   "addr": "0x4B63B0",
-  "sym": "?BeginPiggyback@DropPodLocomotionClass@@UAGJPAVILocomotion@@@Z",
+  "sym": "?BeginPiggyback@DropPodLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
   "name": "DropPodLocomotionClass::BeginPiggyback",
   "status": "matched",
@@ -48763,7 +48763,7 @@
  {
   "tu": "match/movement/droppod_locomotion.cpp",
   "addr": "0x4B6400",
-  "sym": "?EndPiggyback@DropPodLocomotionClass@@UAGJPAPAVILocomotion@@@Z",
+  "sym": "?EndPiggyback@DropPodLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
   "name": "DropPodLocomotionClass::EndPiggyback",
   "status": "matched",
@@ -57978,7 +57978,7 @@
  {
   "tu": "match/ui/input_controls/lists_gadget.cpp",
   "addr": "0x4E1920",
-  "sym": "?ExtractGadget@GadgetClass@@UAEPAU1@I@Z",
+  "sym": "?ExtractGadget@GadgetClass@@UAEPAV1@I@Z",
   "len": "0x36",
   "name": "GadgetClass::ExtractGadget",
   "status": "matched",
@@ -58320,7 +58320,7 @@
  {
   "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557B10",
-  "sym": "?PeerToPeer@ListClass@@UAEXIPAIPAUGadgetClass@@@Z",
+  "sym": "?PeerToPeer@ListClass@@UAEXIPAIPAVGadgetClass@@@Z",
   "len": "0x59",
   "name": "ListClass::PeerToPeer",
   "status": "matched",
@@ -58851,7 +58851,7 @@
  {
   "tu": "match/ui/input_controls/controls_slider.cpp",
   "addr": "0x6B2160",
-  "sym": "?PeerToPeer@SliderClass@@UAEXIPAIPAUGadgetClass@@@Z",
+  "sym": "?PeerToPeer@SliderClass@@UAEXIPAIPAVGadgetClass@@@Z",
   "len": "0x39",
   "name": "SliderClass::PeerToPeer",
   "status": "matched",
@@ -66735,7 +66735,7 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x4264C0",
-  "sym": "?vf_107@ObjectClass@@UAEHPAUCellClass@@HHHH@Z",
+  "sym": "?vf_107@ObjectClass@@UAEHPAVCellClass@@HHHH@Z",
   "len": "0x5",
   "name": "ObjectClass::vf_107",
   "status": "matched",
@@ -66798,7 +66798,7 @@
  {
   "tu": "match/core/object_mission_slots_4e0130.cpp",
   "addr": "0x4E0130",
-  "sym": "?vf_34@ObjectClass@@UAEPAUObjectTypeClass@@XZ",
+  "sym": "?vf_34@ObjectClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x3",
   "name": "ObjectClass::vf_34",
   "status": "matched",
@@ -68616,7 +68616,7 @@
  {
   "tu": "match/core/abstract_index_cast_sweep.cpp",
   "addr": "0x6E7C20",
-  "sym": "?FUN_006E7C20@AbstractIdOwner@@QAEPAUCellClass@@XZ",
+  "sym": "?FUN_006E7C20@AbstractIdOwner@@QAEPAVCellClass@@XZ",
   "len": "0x45",
   "name": "AbstractIdOwner::FUN_006E7C20",
   "status": "matched",
@@ -68940,7 +68940,7 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F6960",
-  "sym": "?vf_111@ObjectClass@@UAEPAUCellClass@@XZ",
+  "sym": "?vf_111@ObjectClass@@UAEPAVCellClass@@XZ",
   "len": "0x57",
   "name": "ObjectClass::vf_111",
   "status": "matched",
@@ -68985,7 +68985,7 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F6BC0",
-  "sym": "?vf_33@ObjectClass@@UAEPAUTechnoTypeClass@@XZ",
+  "sym": "?vf_33@ObjectClass@@UAEPAVTechnoTypeClass@@XZ",
   "len": "0x3",
   "name": "ObjectClass::vf_33",
   "status": "matched",
@@ -69150,7 +69150,7 @@
  {
   "tu": "match/ai/ai_trigger_type_class_body.cpp",
   "addr": "0x41FD30",
-  "sym": "?FUN_0041FD30@AITriggerTypeClass@@QAEXPAUTechnoTypeClass@@@Z",
+  "sym": "?FUN_0041FD30@AITriggerTypeClass@@QAEXPAVTechnoTypeClass@@@Z",
   "len": "0xd",
   "name": "AITriggerTypeClass::FUN_0041FD30",
   "status": "matched",
@@ -70917,7 +70917,7 @@
  {
   "tu": "match/network/mp_siege.cpp",
   "addr": "0x5CAAC0",
-  "sym": "?SpawnBaseUnits@MultiplayerSiege@@UAE_NPAUHouseClass@@H@Z",
+  "sym": "?SpawnBaseUnits@MultiplayerSiege@@UAE_NPAVHouseClass@@H@Z",
   "len": "0x104",
   "name": "MultiplayerSiege::vf_50",
   "status": "partial",
@@ -71169,7 +71169,7 @@
  {
   "tu": "match/network/multiplayer_game_mode_virtuals.cpp",
   "addr": "0x5D70F0",
-  "sym": "?vf_51@MultiplayerGameMode@@UAE_NPAUHouseClass@@PAH@Z",
+  "sym": "?vf_51@MultiplayerGameMode@@UAE_NPAVHouseClass@@PAH@Z",
   "len": "0x3ab",
   "name": "MultiplayerGameMode::vt_entry_CC",
   "status": "partial",
@@ -71358,7 +71358,7 @@
  {
   "tu": "match/movement/teleport_locomotion.cpp",
   "addr": "0x719E90",
-  "sym": "?BeginPiggyback@TeleportLocomotionClass@@UAGJPAVILocomotion@@@Z",
+  "sym": "?BeginPiggyback@TeleportLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
   "name": "TeleportLocomotionClass::BeginPiggyback",
   "status": "matched",
@@ -73476,7 +73476,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AF8E0",
-  "sym": "?BeginPiggyback@DriveLocomotionClass@@UAGJPAVILocomotion@@@Z",
+  "sym": "?BeginPiggyback@DriveLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
   "name": "DriveLocomotionClass::BeginPiggyback",
   "status": "matched",
@@ -73485,7 +73485,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AF930",
-  "sym": "?EndPiggyback@DriveLocomotionClass@@UAGJPAPAVILocomotion@@@Z",
+  "sym": "?EndPiggyback@DriveLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
   "name": "DriveLocomotionClass::EndPiggyback",
   "status": "matched",
@@ -74142,7 +74142,7 @@
  {
   "tu": "match/core/techno_class_slots_6f32d0.cpp",
   "addr": "0x6F4960",
-  "sym": "?vf_102@TechnoClass@@UAE_NPAUHouseClass@@@Z",
+  "sym": "?vf_102@TechnoClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0xdf",
   "name": "TechnoClass::vf_102",
   "status": "partial",

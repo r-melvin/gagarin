@@ -84,8 +84,9 @@ GG_STATIC_ASSERT(sizeof(Guid_004CFC80) == 16);
 extern const Guid_004CFC80 CLSID_FlyLocomotion_007E9A80;
 
 // FlyLocomotionClass seen through its own `this` (the __thiscall members).
-struct FlyLocomotionClass
+class FlyLocomotionClass
 {
+public:
     void* PersistVptr;          // +0x0000
     void* LocomotorVptr;        // +0x0004
     char  _pad008[0x4];         // +0x0008

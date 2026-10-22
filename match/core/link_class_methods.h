@@ -23,8 +23,9 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
-struct LinkClass
+class LinkClass
 {
+public:
     // Inline: a derived constructor (GadgetClass, 0x4E12F0) stores both
     // pointers as zero before its own members.
     LinkClass() : Next(0), Previous(0) {}

@@ -70,8 +70,9 @@ GG_STATIC_ASSERT(offsetof(ShapeHeader, Height) == 0x04);
 // (box, colour), +0x70 (no arguments), +0x78 (returns a rectangle through the hidden return pointer) and +0x7C
 // (no arguments). The lists copy declared +0x14 as returning void; no caller reads the result, the controls
 // copy's int is kept.
-struct Surface
+class Surface
 {
+public:
     virtual void vf_00();
     virtual void vf_04();
     virtual void vf_08();
@@ -113,8 +114,9 @@ extern Surface* DAT_00887300;
 // The window-manager mouse singleton at [0x887640]. Slots read here: +0x0C and +0x10 (hide and show the cursor,
 // no arguments; LoadOptions 0x559D60), +0x20 (takes a rectangle by value and pops it itself), +0x24 (no
 // arguments), +0x28 (the hide count; LoadOptions), +0x2C and +0x30 (return the pointer X and Y).
-struct Mouse
+class Mouse
 {
+public:
     virtual void vf_00();
     virtual void vf_04();
     virtual void vf_08();

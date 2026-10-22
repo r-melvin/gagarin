@@ -20,8 +20,9 @@
 // SuperWeaponTypeClass — only the three members read by ShouldFlashTab:
 //   UseChargeDrain @0xE5 (mov dl,[eax+0xE5]),
 //   FlashSidebarTabFrames @0xE8 (mov eax,[eax+0xE8]).
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char          _pad0[0xE5];             // +0x00
     unsigned char UseChargeDrain;          // +0xE5
     char          _padE6[0xE8 - 0xE6];     // +0xE6
@@ -33,8 +34,9 @@ GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, FlashSidebarTabFrames) == 0xE8);
 // SuperClass : AbstractClass. Members touched by ShouldFlashTab:
 //   Type @0x28, IsReady @0x6F, IsSuspended @0x70, ReadyFrame @0x74,
 //   ChargeDrainState @0x7C.
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x28];         // +0x00  AbstractClass + CustomChargeTime
     SuperWeaponTypeClass* Type;                // +0x28
     char                  _pad2[0x6F - 0x2C];  // +0x2C

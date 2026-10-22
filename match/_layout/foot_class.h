@@ -33,8 +33,9 @@
 #include "cell.h"            // CellStruct, Cell
 
 // FootClass  (0x520..0x6BF, sizeof = 0x6C0)
-struct FootClass : TechnoClass
+class FootClass : public TechnoClass
 {
+public:
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)
     CellStruct      WaypointCell;                     // +0x528 (4)

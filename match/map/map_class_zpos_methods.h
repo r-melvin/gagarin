@@ -25,8 +25,9 @@ GG_STATIC_ASSERT(sizeof(Point2D) == 8);
 
 struct CoordStruct { int X; int Y; int Z; };
 
-struct CellClass
+class CellClass
 {
+public:
     char       _pad00[0x24];   // +0x0000
     CellStruct MapCoords;      // +0x0024
 
@@ -43,8 +44,9 @@ extern CellClass   SpareCell;
 // Map cell pitch: the index is `cellY * 512 + cellX` (`SHL ECX,9`).
 #define MAP_CELL_PITCH 512
 
-struct MapClass
+class MapClass
 {
+public:
     int GetZPos(CoordStruct* coords);   // GAMEMD 0x578080 __thiscall
 };
 

@@ -50,8 +50,9 @@ struct Map_00486E70
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_00486E70 DAT_0087F7E8;
 
-struct CellClass
+class CellClass
 {
+public:
     char       _pad000[0x24];   // +0x0000
     CellStruct MapCoords;       // +0x0024
 

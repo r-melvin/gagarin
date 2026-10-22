@@ -16,10 +16,11 @@
 #include "../_rt/gg_static_assert.h"
 
 class TechnoClass;
-struct FootClass;
+class FootClass;
 
-struct TeamClass
+class TeamClass
 {
+public:
     void LiberateMember(FootClass* foot, int idx, unsigned char count);  // GAMEMD 0x6EA870
 };
 
@@ -41,8 +42,9 @@ GG_STATIC_ASSERT(offsetof(PassengersClass, NumPassengers) == 0x04);
 // (`PUSH EBP; MOV ECX,ESI; CALL [EAX+0xE0]`), which is __thiscall, whereas an
 // __fastcall stand-in would put the second argument in EDX. Declaring the full
 // slot run up to +0xF8 is what gets the convention and the index both right.
-struct FootClass
+class FootClass
 {
+public:
     virtual void v00() = 0;                   // vtable +0x00
     virtual void v04() = 0;                   // vtable +0x04
     virtual void v08() = 0;                   // vtable +0x08

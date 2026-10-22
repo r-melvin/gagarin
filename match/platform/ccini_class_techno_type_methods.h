@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoTypeClass;   // opaque, handled by pointer only
+class TechnoTypeClass;   // opaque, handled by pointer only
 
 // The four type arrays (DynamicVectorClass::Items of the per-kind type lists).
 // GLOBAL: GAMEMD 0xA8E34C -- AircraftTypeClass array items.
@@ -38,8 +38,9 @@ int __fastcall FUN_0045E7B0(const char* name);
 
 // No member of the INI object is touched here; only the calling convention
 // and the forwarded reader matter, so the body stays opaque.
-struct CCINIClass
+class CCINIClass
 {
+public:
     // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- INIClass::ReadString.
     int ReadString(const char* section, const char* key, const char* def,
                    char* buffer, int size);

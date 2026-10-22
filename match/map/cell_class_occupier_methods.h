@@ -24,9 +24,9 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject) == 0x30);
 
 // Opaque returns: codegen returns the matched occupier pointer in EAX; the
 // concrete leaf type only documents intent and never alters the bytes.
-struct UnitClass;
-struct AircraftClass;
-struct InfantryClass;
+class UnitClass;
+class AircraftClass;
+class InfantryClass;
 
 // GLOBAL: GAMEMD 0x00A8E9A0  the byte the queries test before touching the cell
 // occupier list (MOV AL,[0x00A8E9A0]; TEST AL,AL). Reloc-normalised.
@@ -41,8 +41,9 @@ typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the queries dereference; the unknown base is padded to 0xE4.
-struct CellClass
+class CellClass
 {
+public:
     char         _pad00[0xE4];   // +0x00  AbstractClass base + cell bookkeeping
     ObjectClass* FirstObject;    // +0xE4  ground occupier list head
     ObjectClass* AltObject;      // +0xE8  on-bridge occupier list head

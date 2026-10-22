@@ -36,8 +36,9 @@ struct Gg_IStream
                                        unsigned long* pcbWritten) = 0;        // +0x10
 };
 
-struct LayerClass
+class LayerClass
 {
+public:
     void* _vtable;   // +0x00
     void* Items;     // +0x04
     int   Capacity;  // +0x08

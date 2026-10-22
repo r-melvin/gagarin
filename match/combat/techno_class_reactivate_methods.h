@@ -37,7 +37,7 @@ GG_STATIC_ASSERT(offsetof(ReactType, ActivateSound) == 0x5A8);
 // ILocomotion — reached as `PUSH p; MOV ECX,[p]; CALL [ECX+0x58]`: the receiver
 // goes on the stack, the __stdcall COM virtual convention. Slot +0x58 is the
 // locomotor's power-on entry.
-class ILocomotion;
+struct ILocomotion;
 typedef long (__stdcall* LocoSlot0)(ILocomotion*);
 #define LOCO_CALL0(p, slot) \
     ((*(LocoSlot0*)(*(char**)(p) + (slot)))(p))

@@ -47,7 +47,7 @@ extern BitFont_00434B10* DAT_0089C4D0;
 // VTABLE: GAMEMD 0x007E3A80 — BitText vtable; initialized at 0x434AD5.
 extern char VT_007E3A80;
 
-struct Surface;
+class Surface;
 struct BitFont_00434B40
 {
     char unknown_000[0x2C];

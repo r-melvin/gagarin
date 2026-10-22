@@ -23,8 +23,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 struct CoordStruct { int X; int Y; int Z; };
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-struct CellClass
+class CellClass
 {
+public:
     char       _pad000[0x24];           // +0x0000
     CellStruct MapCoords;               // +0x0024
     char       _pad028[0x12C - 0x28];   // +0x0028
@@ -43,8 +44,9 @@ extern CellClass** Cells_00586360;
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (MapCoords at 0xABDC74).
 extern CellClass   InvalidCell_00586360;
 
-struct MapClass
+class MapClass
 {
+public:
     // FUNCTION: GAMEMD 0x586360 — MapClass::IsLocationShrouded.
     bool IsLocationShrouded(CoordStruct const& coords) const;
 };

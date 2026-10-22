@@ -61,8 +61,9 @@ GG_STATIC_ASSERT(sizeof(SortedTreeNode) == 0x0C);
 // 0x5B3F6C, the ownership byte +0x12 at 0x5B3F73 (`CMP byte ptr [ESI+0x12],BL`,
 // a byte, cleared with the same zero), and +0x20 at 0x5B3F84. Everything in
 // between is untouched here and stays a named gap.
-struct MixFileClass
+class MixFileClass
 {
+public:
     char*     Vptr;            // +0x00
     GenericNode* Prev;            // +0x04
     GenericNode* Next;            // +0x08

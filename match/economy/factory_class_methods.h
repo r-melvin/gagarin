@@ -15,15 +15,16 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoTypeClass;
+class TechnoTypeClass;
 class TechnoClass;
-struct HouseClass;
+class HouseClass;
 
 // StageClass (YRpp): Value@0x00, HasChanged@0x04, CDTimerClass
 // Timer@0x08 (0xC bytes), Rate@0x14, Step@0x18 => sizeof 0x1C. Only Value is
 // read here (GetProgress / IsDone load [this+0x24] == Production.Value).
-struct StageClass
+class StageClass
 {
+public:
     int  Value;          // +0x00
     bool HasChanged;     // +0x04
     char _timer[0xC];    // +0x08  CDTimerClass Timer
@@ -44,8 +45,9 @@ struct Obj_004CA6B0
     int               CapacityIncrement;  // +0x14
 };
 
-struct FactoryClass
+class FactoryClass
 {
+public:
     char         _abstract_base[0x24];  // +0x00  AbstractClass (vtable + members)
     StageClass   Production;            // +0x24  progress timer; .Value == 0x36 when done
     Obj_004CA6B0 QueuedObjects; // +0x40

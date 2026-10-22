@@ -16,8 +16,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct HouseClass
+class HouseClass
 {
+public:
     char _pad000[0x30];    // +0x0000
     int  ArrayIndex;       // +0x0030
 };
@@ -40,8 +41,9 @@ extern BeaconManagerClass BeaconManager;
 // mode is entered (the same call the other mode setters make).
 void ModeEntered();
 
-struct MapClass
+class MapClass
 {
+public:
 #include "map_class_mode_slots.inc"
 
     char _padVtbl[0x11A8 - 4];   // +0x0004  (vptr occupies +0x0000)

@@ -18,8 +18,9 @@
 // BulletTypeClass — local partial model. SpawnDelay @0x2E4 is the base
 // spawn delay; SetScaledSpawnDelay (0x46C840, matched in bullet_type_class.cpp)
 // stores the per-bullet scaled copy at 0x2E8.
-struct BulletTypeClass
+class BulletTypeClass
 {
+public:
     char _pad000[0x2E4];      // +0x0000
     int  SpawnDelay;          // +0x02E4
     int  ScaledSpawnDelay;    // +0x02E8
@@ -33,8 +34,9 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, ScaledSpawnDelay) == 0x2E8);
 GG_STATIC_ASSERT(sizeof(BulletTypeClass) == 0x2F8);
 
 // BulletClass : ObjectClass (0xAC) — only Type is reached here.
-struct BulletClass
+class BulletClass
 {
+public:
     char             _pad000[0xAC];   // +0x0000  ObjectClass base
     BulletTypeClass* Type;            // +0x00AC
 

@@ -73,8 +73,9 @@ inline bool Layer_004A9770::Delete(ObjectClass* object)
 // GLOBAL: GAMEMD 0x8A0360 -- the draw-layer array (five layers).
 extern Layer_004A9770 DAT_008A0360[5];
 
-struct DisplayClass
+class DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x4A9770
     void Remove(ObjectClass* object);
 };

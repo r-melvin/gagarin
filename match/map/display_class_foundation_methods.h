@@ -46,8 +46,9 @@ inline CellStruct operator+(CellStruct const& a, CellStruct const& b)
 extern CellStruct DAT_008A03F8;
 
 // Only the flags dword at +0x12C is touched here.
-struct CellClass
+class CellClass
 {
+public:
     char _pad000[0x12C];   // +0x0000
     int  Flags;            // +0x012C  bit 1 = foundation-marked
 };
@@ -55,8 +56,9 @@ GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x12C);
 
 // DisplayClass (MapClass base included); only CurrentFoundationData at
 // +0x117C and the two inherited cell queries are used.
-struct DisplayClass
+class DisplayClass
 {
+public:
     char              _pad000[0x117C];        // +0x0000
     CellStruct const* CurrentFoundationData;  // +0x117C
 

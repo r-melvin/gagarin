@@ -38,8 +38,9 @@ extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 // BombClass — AbstractClass spine (sizeof 0x24) plus the bomb's own fields.
 // Only the two this method reads are modelled; the rest are P2.
 // ---------------------------------------------------------------------------
-struct BombClass
+class BombClass
 {
+public:
     char _pad00[0x30];      // +0x0000  AbstractClass 0x24, then Owner/OwnerHouse/Target
     int  DeathBomb;         // +0x0030  BOOL
     int  PlantingFrame;     // +0x0034

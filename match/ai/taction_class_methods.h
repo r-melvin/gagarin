@@ -18,8 +18,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct TActionClass
+class TActionClass
 {
+public:
     // GAMEMD 0x6E3EE0 — returns a flag bitfield for a given action id.
     // The retail single-arg form is register-passed (ECX) with a plain ret:
     // model it as __fastcall so cl emits the `add ecx,-0xe` / jump-table form.

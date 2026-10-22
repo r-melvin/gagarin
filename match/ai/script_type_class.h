@@ -64,8 +64,9 @@ struct IScriptType
 // ArrayIndex/IsGlobal/ActionsCount.  The AbstractTypeClass base ctor (0x410800)
 // is declared as a body-less member so cl emits a __thiscall call to it.
 // ---------------------------------------------------------------------------
-struct ScriptTypeClass
+class ScriptTypeClass
 {
+public:
     void* vt0;                 // +0x00  primary vtable (IPersistStream+...)
     void* vt1;                 // +0x04  IRTTITypeInfo
     void* vt2;                 // +0x08  INoticeSink

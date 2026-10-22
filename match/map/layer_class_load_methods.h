@@ -45,8 +45,9 @@ extern Swizzle_00551B90 DAT_00B0C110;
 
 // LayerClass, a DynamicVectorClass<ObjectClass*>. Slot +0x08 is
 // Resize(newCapacity, array).
-struct LayerClass
+class LayerClass
 {
+public:
     virtual void vt_000();
     virtual void vt_004();
     virtual bool Resize(int newCapacity, void* array);   // +0x0008

@@ -11,8 +11,9 @@
 #ifndef GG_MATCH_UI_SIDEBAR_CLASS_METHODS_H
 #define GG_MATCH_UI_SIDEBAR_CLASS_METHODS_H
 
-struct SidebarClass
+class SidebarClass
 {
+public:
     // GAMEMD 0x6ABC60. Distinct classifier; the original name is unconfirmed.
     // Shares the fastcall ABI, but not the body, of GetObjectTabIdx below.
     static int __fastcall FUN_006ABC60(int abs, int idxType, int unused);

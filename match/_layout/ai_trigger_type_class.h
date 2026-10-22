@@ -23,11 +23,11 @@
 #include "../core/vector_class.h"
 
 class AITriggerTypeClass;
-struct TechnoTypeClass;
+class TechnoTypeClass;
 class TeamTypeClass;
 class CCINIClass;
 struct AITriggerHouse;
-struct HouseClass;
+class HouseClass;
 
 // The condition block at +0xE4. 0x41EC90 compares a count against Number
 // with the operator in ComparatorOperand (0..5).

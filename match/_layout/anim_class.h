@@ -35,7 +35,7 @@
 #include "object_class.h"     // ObjectClass spine + CoordStruct + AudioController
 #include "techno_class.h"     // StageClass
 
-struct AnimTypeClass;
+class AnimTypeClass;
 
 // BounceClass — the projectile-bounce physics block embedded in AnimClass at
 // 0x128. Size 0x50, proven by closure: the ctor takes EDI = this+0x128, stores
@@ -46,15 +46,17 @@ struct AnimTypeClass;
 // block goes in as opaque storage rather than as named members.
 #ifndef GG_MATCH_LAYOUT_BOUNCECLASS_DEFINED
 #define GG_MATCH_LAYOUT_BOUNCECLASS_DEFINED
-struct BounceClass
+class BounceClass
 {
+public:
     unsigned char unknown_00[0x50];   // +0x00 .. 0x4F
 };
 GG_STATIC_ASSERT(sizeof(BounceClass) == 0x50);
 #endif
 
-struct AnimClass : ObjectClass
+class AnimClass : public ObjectClass
 {
+public:
     // FUNCTION: GAMEMD 0x421EA0 (declaration; constructor, RET 0x1C)
     AnimClass(AnimTypeClass* type, const CoordStruct& coord, int loopDelay, int loopCount,
               unsigned int flags, int forceZ, bool reverse);

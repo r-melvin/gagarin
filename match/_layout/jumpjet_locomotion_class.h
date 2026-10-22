@@ -39,8 +39,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
-struct JumpjetLocomotionClass : LocomotionPiggybackBase
+class JumpjetLocomotionClass : public LocomotionPiggybackBase
 {
+public:
     int         TurnRate;         // +0x1C <- TechnoTypeClass::JumpjetTurnRate
                                   //       (type+0xD70, read @0x0054AD49, stored
                                   //       `MOV [EBP+0x18],ECX` @0x0054AD4F).

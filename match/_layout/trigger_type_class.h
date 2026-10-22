@@ -9,7 +9,7 @@
 #include <stddef.h>
 #include "abstract_type_class.h"
 #include "vector_class.h"
-struct HouseTypeClass;
+class HouseTypeClass;
 struct CCINI_007275D0;
 struct CCINI_00727880;
 

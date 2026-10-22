@@ -72,8 +72,9 @@ struct Map_0074E930
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance.
 extern Map_0074E930 MapInstance;
 
-struct VeinholeMonsterClass
+class VeinholeMonsterClass
 {
+public:
     char       _pad000[0xF8];      // +0x0000
     CellStruct Cell;               // +0x00F8
     char       _padFC[4];          // +0x00FC

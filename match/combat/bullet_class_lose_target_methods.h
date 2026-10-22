@@ -76,8 +76,9 @@ extern int DAT_00A8E7AC;
 extern CellStruct DAT_0089DDF0;
 
 // BulletClass : ObjectClass — only Target is reached here.
-struct BulletClass
+class BulletClass
 {
+public:
     char           _pad000[0x10C];   // +0x0000
     Abs_00468430*  Target;           // +0x010C
 

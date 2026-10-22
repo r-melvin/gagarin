@@ -11,8 +11,9 @@
 // BitFont — constructed from a font filename. Direct __thiscall at a fixed
 // address, declared without a body so cl emits a reloc-normalised direct call.
 // 0x44 bytes, the size retail passes to operator new at 0x434AD3.
-struct BitFont
+class BitFont
 {
+public:
     BitFont(const char* filename) throw();   // GAMEMD 0x433880
     char _pad[0x44];
 };
@@ -28,8 +29,9 @@ extern BitFont* TheGameFont;
 // match/core/small_misc44_methods.cpp (RTTI-confirmed against this same
 // vtable's complete object locator) — this stand-in stays deliberately
 // un-annotated for 0x435560 to avoid a double claim on one address.
-struct BitText
+class BitText
 {
+public:
     virtual ~BitText();
 
     // FUNCTION: GAMEMD 0x434AD0

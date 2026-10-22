@@ -143,8 +143,9 @@ struct TipPrinter_00478E30
 extern TipPrinter_00478E30* PrinterInstance_0089C4B8;
 
 // RTTI (COL 0x80E560): CCToolTip derives from ToolTipManager at offset 0.
-struct CCToolTip : public ToolTipManager
+class CCToolTip : public ToolTipManager
 {
+public:
     // VTABLE: GAMEMD 0x7F74C4
     unsigned char OnSidebar;     // +0x260
     // (+0x261..0x267: not touched by this module)

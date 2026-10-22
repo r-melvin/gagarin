@@ -50,8 +50,9 @@ void __cdecl GameDeallocate(void* ptr);
 // (index 8): GetClassID@0x0C, Save@0x18, dtor-thunk@0x20 (0x00410470). Eight
 // preceding virtual slots reproduce that index; the class is never instantiated
 // here, so no vtable/bodies are emitted.
-struct VeinholeMonsterClass
+class VeinholeMonsterClass
 {
+public:
     virtual long vf_00();  // vtable +0x00
     virtual long vf_04();  // vtable +0x04
     virtual long vf_08();  // vtable +0x08

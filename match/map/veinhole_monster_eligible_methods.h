@@ -59,8 +59,9 @@ extern Map_0074D670 MapInstance_0074D670;
 // is recovered here; the struct exists so the routine is spelled as the static
 // member it is rather than as a free function, and so the next address on this
 // class has somewhere to attach.
-struct VeinholeMonsterClass
+class VeinholeMonsterClass
 {
+public:
     // FUNCTION: GAMEMD 0x74D670 — IsCellEligibleForVeinHole. A *static*
     // member: the cell it inspects arrives in ECX, but the cell is the
     // argument, not the receiver — the routine belongs to the monster class,

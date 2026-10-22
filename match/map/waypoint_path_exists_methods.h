@@ -47,8 +47,9 @@ inline CellStruct Coord2Cell(CoordStruct const* coord)
     return cell;
 }
 
-struct WaypointPathClass
+class WaypointPathClass
 {
+public:
     char         _pad000[0x24];   // +0x0000
     int          FoundIndex;      // +0x0024  written on a hit
     void*        VectorVtbl;      // +0x0028  DynamicVectorClass<CoordStruct> vptr

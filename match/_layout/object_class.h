@@ -23,14 +23,14 @@
 #include "abstract_class.h"
 
 class TagClass;
-struct HouseClass;
-struct AnimClass;
-struct ObjectTypeClass;
+class HouseClass;
+class AnimClass;
+class ObjectTypeClass;
 // Returned by value from slots 110 and 112 (defined by the TUs that need it;
 // several unguarded definitions exist across the tree).
 struct CellStruct;
-struct TechnoTypeClass;
-struct CellClass;
+class TechnoTypeClass;
+class CellClass;
 struct RectangleStruct;   // geometry2d.h
 struct Point2D;           // geometry2d.h
 

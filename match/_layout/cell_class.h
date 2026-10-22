@@ -38,8 +38,9 @@
 
 class TagClass;
 
-struct CellClass : AbstractClass
+class CellClass : public AbstractClass
 {
+public:
     // FUNCTION: GAMEMD 0x485250
     void ReplaceTag(TagClass* tag);
 

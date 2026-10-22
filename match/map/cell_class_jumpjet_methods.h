@@ -42,8 +42,9 @@ void __fastcall Jumpjet_OccupyCell(ObjectClass* object, CellStruct coords);
 // its jumpjet occupant.
 extern CellStruct JumpjetClearCoords;
 
-struct CellClass
+class CellClass
 {
+public:
     char         _pad00[0x24];          // +0x0000
     CellStruct   MapCoords;             // +0x0024
     char         _pad28[0xE0 - 0x28];   // +0x0028

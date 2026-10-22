@@ -145,16 +145,18 @@ inline Dir16 VelocityClass::PitchFromComponents() const
     return result;
 }
 
-struct CellClass
+class CellClass
 {
+public:
     char unknown_00[0x140];  // +0x000
     unsigned int Flags;      // +0x140
 };
 
 GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
 
-struct MapClass
+class MapClass
 {
+public:
     // CALLEE: GAMEMD 0x00578080
     int GetZPos(CoordStruct const* where) const;
     // CALLEE: GAMEMD 0x00565730

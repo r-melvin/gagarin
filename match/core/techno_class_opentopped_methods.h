@@ -18,8 +18,9 @@ class TechnoClass;
 // class hierarchy, but retail reaches it with a *direct* CALL because the
 // receiver is the concrete `Instance` object rather than a pointer, so it is
 // declared non-virtual here to reproduce that.
-struct LogicClass
+class LogicClass
 {
+public:
     bool AddObject(TechnoClass* object, bool sorted);   // GAMEMD 0x55BAA0 (declared; reloc)
 };
 

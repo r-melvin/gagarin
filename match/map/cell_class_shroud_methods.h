@@ -50,13 +50,14 @@ struct CoordStruct
     int Z;  // +0x08
 };
 
-struct CellClass;
+class CellClass;
 
 // MapClass singleton — only the two helpers GetNeighbourCell / IsShrouded
 // forward to, declared (no body) so cl emits relocatable __thiscall calls.
 // The retail singleton object lives at the fixed address 0x87F7E8.
-struct MapClass
+class MapClass
 {
+public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;        // 0x5657A0
     bool       IsLocationShrouded(CoordStruct const& coords) const; // 0x586360
 };
@@ -65,8 +66,9 @@ struct MapClass
 // Referenced by absolute address so cl emits the same displacement retail does.
 #define AdjacentCell (reinterpret_cast<CellStruct const*>(0x89F688))
 
-struct CellClass
+class CellClass
 {
+public:
     char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
     CellStruct MapCoords;                    // +0x24
     char       _pad28[0x12C - 0x28];         // +0x28

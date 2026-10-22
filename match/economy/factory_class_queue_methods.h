@@ -22,7 +22,7 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
-struct TechnoTypeClass;
+class TechnoTypeClass;
 
 // ---------------------------------------------------------------------------
 // TechnoClass -- only the vtable shape CountTotal reaches.  GetTechnoType is a
@@ -96,8 +96,9 @@ GG_STATIC_ASSERT(sizeof(QueuedVectorClass)          == 0x18);
 // + StageClass Production) occupies 0x00..0x40; QueuedObjects @0x40, the
 // in-production Object pointer @0x58.
 // ---------------------------------------------------------------------------
-struct FactoryClass
+class FactoryClass
 {
+public:
     char              _base[0x40];     // +0x00  AbstractClass + Production
     QueuedVectorClass QueuedObjects;   // +0x40
     TechnoClass*      Object;          // +0x58

@@ -35,8 +35,9 @@
 //   +0xEEC ExtraPowerDrain   (added when the instance has the extra-drain flag)
 // (ExtraPowerBonus sits between them at +0xEE8; not touched here.)
 // ---------------------------------------------------------------------------
-struct BuildingTypeClass
+class BuildingTypeClass
 {
+public:
     char _pad_0000[0xEE4];               // +0x0000  (full layout is P2)
     int  PowerDrain;                     // +0x0EE4
     int  ExtraPowerBonus;                // +0x0EE8
@@ -60,8 +61,9 @@ GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ExtraPowerDrain) == 0xEEC);
 // ---------------------------------------------------------------------------
 struct BuildingVtbl;
 
-struct BuildingClass
+class BuildingClass
 {
+public:
     int  GetPowerDrain() const;          // GAMEMD 0x44E880 __thiscall
 
     BuildingVtbl*      Vfptr;                            // +0x0000

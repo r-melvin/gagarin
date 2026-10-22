@@ -15,8 +15,9 @@
 
 // SuperWeaponTypeClass — only RechargeTime @0xB0 is touched here
 // (GetRechargeTime: mov eax,[Type]; mov eax,[eax+0xB0]).
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char _pad0[0xB0];        // +0x00
     int  RechargeTime;       // +0xB0
     char _padB4[0xE5 - 0xB4];// +0xB4
@@ -27,8 +28,9 @@ GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, UseChargeDrain) == 0xE5);
 
 // SuperClass : AbstractClass.  AbstractClass occupies [0x00..0x23] (the first
 // SuperClass member, CustomChargeTime, sits at 0x24 in the retail disasm).
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x24];        // +0x00  AbstractClass
     int                   CustomChargeTime;   // +0x24  -1 == "use Type default"
     SuperWeaponTypeClass* Type;               // +0x28

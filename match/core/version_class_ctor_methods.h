@@ -20,8 +20,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct VersionClass
+class VersionClass
 {
+public:
     // VTABLE: GAMEMD 0x7EA57C
     virtual ~VersionClass() {}
 

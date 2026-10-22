@@ -17,8 +17,8 @@
 // the decomp. Pointers become real 4-byte pointers to opaque forward decls;
 // the TypeList<T> (DynamicVectorClass + trailing dword, 0x1C) and the Locomotor
 // _GUID (0x10) are modelled here as exact-size byte blocks.
-struct AnimTypeClass;        // opaque (4-byte ptr target)
-struct ParticleTypeClass;    // opaque (4-byte ptr target)
+class AnimTypeClass;        // opaque (4-byte ptr target)
+class ParticleTypeClass;    // opaque (4-byte ptr target)
 
 // TypeList<T> — DynamicVectorClass(0x18) + trailing dword; size = 0x1C.
 struct RawBlock1C
@@ -35,8 +35,9 @@ struct RawBlock10
 GG_STATIC_ASSERT(sizeof(RawBlock10) == 0x10);
 
 // WarheadTypeClass  (0x98..0x1CF, sizeof = 0x1D0)
-struct WarheadTypeClass : AbstractTypeClass
+class WarheadTypeClass : public AbstractTypeClass
 {
+public:
     double            Deform;              // +0x98
     double            Verses[0xB];         // +0xA0  (0xA0..0xF7)
     double            ProneDamage;         // +0xF8

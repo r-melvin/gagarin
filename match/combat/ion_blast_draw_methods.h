@@ -33,8 +33,9 @@ GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
 // Surface — only the zero-argument slot at +0x74 is reached (GetPitch).
 struct Vtbl_Surface;
 
-struct Surface
+class Surface
 {
+public:
     Vtbl_Surface* Vtbl;       // +0x0000
 };
 

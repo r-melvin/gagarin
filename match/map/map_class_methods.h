@@ -16,8 +16,9 @@
 // as static members so the mangled names carry the MapClass scope.
 struct CoordStruct;
 
-struct MapClass
+class MapClass
 {
+public:
     static void __fastcall UnselectAll();
     static int  __fastcall GetLandTypeFromName(const char* name);  // LandType (enum=int)
 

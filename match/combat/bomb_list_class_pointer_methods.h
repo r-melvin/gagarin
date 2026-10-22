@@ -16,11 +16,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct AbstractClass;
+class AbstractClass;
 
 // BombClass — only the target back-pointer is needed (`CMP [EAX+0x24],EDI`).
-struct BombClass
+class BombClass
 {
+public:
     char           _pad00[0x24];   // +0x0000
     AbstractClass* Target;         // +0x0024
 };

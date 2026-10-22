@@ -17,7 +17,7 @@
 #include "terrain_objects/overlay_type_class.h"
 #include "../_rt/gg_vslot.h"
 
-struct CellClass;
+class CellClass;
 
 // GLOBAL: GAMEMD 0xA83D84 — OverlayTypeClass::Array.Items.
 // Declared by the canonical overlay-type header.
@@ -69,8 +69,9 @@ extern Building_0047D210** DAT_00A8EB44;
 // GLOBAL: GAMEMD 0xA8EB50 — BuildingClass::Array.Count.
 extern int DAT_00A8EB50;
 
-struct CellClass
+class CellClass
 {
+public:
     char _pad000[0x44];       // +0x0000
     int  OverlayTypeIndex;    // +0x0044
     char _pad048[0x8];        // +0x0048

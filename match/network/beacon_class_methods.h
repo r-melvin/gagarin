@@ -18,8 +18,9 @@
 // HouseClass — only the bits VisibleToPlayer touches are modelled here. Both
 // IsAlliedWith overloads are the retail callees at 0x4F9A10 / 0x4F9A50 (declared
 // without bodies so cl emits a normalised call reloc).
-struct HouseClass
+class HouseClass
 {
+public:
     bool IsAlliedWith(int idxHouse) const;          // GAMEMD 0x4F9A10 __thiscall
     bool IsAlliedWith(const HouseClass* pHouse) const; // GAMEMD 0x4F9A50 __thiscall
 

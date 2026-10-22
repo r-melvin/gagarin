@@ -119,8 +119,9 @@ typedef INIClass::INISection INISection;
 // address run. The binary clears a 0x0C sub-object at +0x0C before calling the
 // Straw base routine; original member ownership is not established here.
 // ---------------------------------------------------------------------------
-struct CacheStraw
+class CacheStraw
 {
+public:
     char unknown_00[0x0C];
     MemoryBuffer Buffer; // +0x0C, passed to MemoryBuffer::Clear by the deleting entry
 

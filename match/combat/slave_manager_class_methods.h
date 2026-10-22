@@ -26,7 +26,7 @@
 // `this` in ECX, so the touched slot is modelled as a true virtual at vtable
 // index 244 (244 * 4 == 0x3D0). 244 filler virtuals precede it; none are ever
 // defined or instantiated — `slave->GuardSlot()` just emits the indirect call.
-struct SlaveManagerClass;
+class SlaveManagerClass;
 struct SlaveObject {
     virtual void _v0();
     virtual void _v1();
@@ -310,8 +310,9 @@ GG_STATIC_ASSERT(offsetof(SlaveControl, RespawnTimer) == 0x08);
 GG_STATIC_ASSERT(offsetof(SlaveControl, Slave) == 0x00);
 GG_STATIC_ASSERT(offsetof(SlaveControl, State) == 0x04);
 
-struct SlaveManagerClass
+class SlaveManagerClass
 {
+public:
     char               _base[0x30];     // +0x00  AbstractClass + Owner..SlaveCount
     int                RegenRate;       // +0x30  respawn delay handed to the node timer
     int                ReloadRate;      // +0x34

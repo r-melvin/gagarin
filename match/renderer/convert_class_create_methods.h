@@ -70,8 +70,9 @@ GG_STATIC_ASSERT(sizeof(ColorStruct_0072ADE0) == 3);
 // GLOBAL: GAMEMD 0x887310 — the surface the convert is built against.
 extern void* DAT_00887310;
 
-struct ConvertClass
+class ConvertClass
 {
+public:
     char _pad000[0x188];
 
     // FUNCTION: GAMEMD 0x48E740 (decl; reloc) — the constructor, spelled as an

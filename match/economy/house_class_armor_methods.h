@@ -53,8 +53,9 @@ GG_STATIC_ASSERT(offsetof(HouseArmorRecord, Mult_110) == 0x110);
 // GLOBAL: GAMEMD 0x007E2AC8 — the default multiplier constant.
 extern float DefaultArmorMultiplier;
 
-struct HouseClass
+class HouseClass
 {
+public:
     char              _pad00[0x34];   // +0x0000
     HouseArmorRecord* Armor;          // +0x0034
 

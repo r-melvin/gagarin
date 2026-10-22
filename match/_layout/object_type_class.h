@@ -31,8 +31,9 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
 // VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)
-struct ObjectTypeClass : AbstractTypeClass
+class ObjectTypeClass : public AbstractTypeClass
 {
+public:
     // Slots 5, 25 and 27-39 (retail table 0x7EF2D8). Placeholder names; the
     // signatures are read off the bodies (argument bytes popped, return shape).
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x5F9720

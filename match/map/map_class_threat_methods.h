@@ -23,16 +23,18 @@ struct CellStruct
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Minimal CellClass view: only MapCoords @0x24 is touched.
-struct CellClass
+class CellClass
 {
+public:
     char       _pad0[0x24];   // +0x00
     CellStruct MapCoords;     // +0x24
 };
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 
 // Minimal HouseClass view: only the 130x130 threat grid @0x59F0 is touched.
-struct HouseClass
+class HouseClass
 {
+public:
     char         _pad0[0x59f0];                  // +0x0000
     unsigned int ThreatPosedEstimates[130][130]; // +0x59F0
 };
@@ -41,8 +43,9 @@ GG_STATIC_ASSERT(offsetof(HouseClass, ThreatPosedEstimates) == 0x59f0);
 // Minimal MapClass view: GetThreatPosed touches no instance members (it reads
 // the global cell-array pointer and InvalidCell), so the struct is empty apart
 // from carrying the method scope for the mangled name.
-struct MapClass
+class MapClass
 {
+public:
     int GetThreatPosed(const CellStruct& cell, HouseClass* pHouse) const;  // 0x56BCD0
 };
 

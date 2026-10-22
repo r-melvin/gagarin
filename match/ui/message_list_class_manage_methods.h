@@ -55,8 +55,9 @@ extern TimerStruct_005D4430 MessageTimer;
 // A displayed message (TextLabelClass : GadgetClass : LinkClass). Slot 0 is
 // the scalar deleting destructor, slot 1 returns the next gadget and slot 9
 // (+0x24) unlinks the gadget from its list and returns the new head.
-struct TextLabelClass
+class TextLabelClass
 {
+public:
     virtual ~TextLabelClass();                 // +0x00
     virtual TextLabelClass* GetNext();         // +0x04
     virtual void Slot_08();                    // +0x08

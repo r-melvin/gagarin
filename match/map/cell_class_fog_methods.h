@@ -24,18 +24,20 @@ struct CellStruct
 };
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct CellClass;
+class CellClass;
 
 // MapClass singleton — only GetCellAt is forwarded to here, declared (no body)
 // so cl emits a relocatable __thiscall call. The retail singleton object lives
 // at the fixed address 0x87F7E8.
-struct MapClass
+class MapClass
 {
+public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;  // 0x5657A0
 };
 
-struct CellClass
+class CellClass
 {
+public:
     char        _base[0x24];                 // +0x00  AbstractClass (vtable + base)
     CellStruct  MapCoords;                    // +0x24
     char        _pad28[0x11B - 0x28];         // +0x28

@@ -22,8 +22,9 @@ struct CellStruct
 
 // ---- iterator singleton + cell, used only by UpdateCellLighting ----
 // CellClass — only the lighting-recalc entry (0x484680) is referenced.
-struct CellClass
+class CellClass
 {
+public:
     void RecalcAttributes_484680();   // GAMEMD 0x484680  __thiscall
 };
 

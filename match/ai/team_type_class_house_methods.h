@@ -20,8 +20,8 @@
 #include "../_layout/abstract_type_class.h"
 #include "../_layout/vector_class.h"
 
-struct HouseClass;       // opaque — only ever held/returned as a pointer
-struct TeamTypeClass;    // forward (TeamClass::Type points back to it)
+class HouseClass;       // opaque — only ever held/returned as a pointer
+class TeamTypeClass;    // forward (TeamClass::Type points back to it)
 
 // ---------------------------------------------------------------------------
 // GetHouse fallback callees (GAMEMD).  When the team has no cached Owner it
@@ -42,8 +42,9 @@ HouseClass* __fastcall FindHouseByCountryIndex(int idxHouse); // GAMEMD 0x510ED0
 // (vtable+0x20), and the vptr@0 + Type@0x24 placement matches the retail object.
 // Never instantiated, so no vtable/RTTI is emitted for it.
 // ---------------------------------------------------------------------------
-struct TeamClass
+class TeamClass
 {
+public:
     virtual void vf00() = 0;   // vtable+0x00
     virtual void vf04() = 0;   // vtable+0x04
     virtual void vf08() = 0;   // vtable+0x08
@@ -66,8 +67,9 @@ GG_STATIC_ASSERT(offsetof(TeamClass, Type) == 0x24);
 // The full layout is P2; only Owner@0xC4 and idxHouse@0xC8 are pinned here.
 // ProcessTaskForce is the per-element callee fired by ProcessAllTaskforces.
 // ---------------------------------------------------------------------------
-struct TeamTypeClass : AbstractTypeClass
+class TeamTypeClass : public AbstractTypeClass
 {
+public:
     char        _pad_98[0xC4 - 0x98];   // +0x98..0xC3 (P2)
     HouseClass* Owner;                  // +0xC4
     int         idxHouse;               // +0xC8

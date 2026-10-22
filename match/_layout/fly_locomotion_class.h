@@ -108,8 +108,9 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 // ---------------------------------------------------------------------------
 // FlyLocomotionClass (sizeof = 0x60).
 // ---------------------------------------------------------------------------
-struct FlyLocomotionClass : LocomotionLayoutView_0055A6C0
+class FlyLocomotionClass : public LocomotionLayoutView_0055A6C0
 {
+public:
     char        AirportBound;     // +0x18 ctor `MOV BYTE [ESI+0x18],AL` @0x004CC9AD (=0);
                                   //       read as a byte @0x004CD9F5, @0x004CE99A, @0x004CE9B5
     char        unknown_19[3];    // +0x19 alignment; no access at any width

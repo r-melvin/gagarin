@@ -24,7 +24,7 @@ struct Scenario_00510ED0
 // GLOBAL: GAMEMD 0xA8B230 — ScenarioClass::Instance.
 extern Scenario_00510ED0* ScenarioInstance;
 
-struct HouseClass;
+class HouseClass;
 
 // HouseClass::Array head (DynamicVectorClass<HouseClass*> @0xA80228):
 // Items @+0x04 (0xA8022C), Count @+0x10 (0xA80238).
@@ -44,8 +44,9 @@ GG_STATIC_ASSERT(sizeof(HouseArray_00510ED0) == 0x18);
 // GLOBAL: GAMEMD 0xA80228 — HouseClass::Array.
 extern HouseArray_00510ED0 HouseArray;
 
-struct HouseClass
+class HouseClass
 {
+public:
     // FUNCTION: GAMEMD 0x510ED0
     static HouseClass* __fastcall FindByPlayerAt(int at);
 };

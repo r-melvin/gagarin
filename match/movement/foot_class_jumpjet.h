@@ -12,8 +12,9 @@
 
 // Minimal CellClass model: only the Jumpjet occupant pointer at +0xE0 is
 // touched (disasm: `MOV EAX,[EAX+0xE0]`).  GetCell() returns one of these.
-struct CellClass
+class CellClass
 {
+public:
     char    _pad_0xE0[0xE0];   // +0x000
     void*   Jumpjet;           // +0x0E0  FootClass* occupying this cell
 };

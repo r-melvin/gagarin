@@ -16,8 +16,9 @@ class TechnoClass;
 
 // TechnoTypeClass — two flags are consulted, both keeping placeholder names:
 // the bytes fix their offsets but not their meaning.
-struct TechnoTypeClass
+class TechnoTypeClass
 {
+public:
     char _pad000[0xD35];   // +0x0000
     bool unknown_D35;      // +0x0D35  (MOV CL,[EAX+0xD35])
     char _padD36[0xD6A - 0xD36];

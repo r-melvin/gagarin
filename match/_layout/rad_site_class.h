@@ -26,8 +26,9 @@ struct TintStruct { unsigned char unknown_00[0xC]; };
 GG_STATIC_ASSERT(sizeof(TintStruct) == 0xC);
 #endif
 
-struct RadSiteClass : AbstractClass
+class RadSiteClass : public AbstractClass
 {
+public:
     void*        LightSource;         // +0x24 LightSourceClass*; ctor @0x0065B1EA
     CDTimerClass RadLevelTimer;       // +0x28 ctor StartTime=[0x00A8ED84] @0x0065B1F3, TimeLeft @0x0065B1F6
     CDTimerClass RadLightTimer;       // +0x34 ctor StartTime=[0x00A8ED84] @0x0065B202, TimeLeft @0x0065B1FF

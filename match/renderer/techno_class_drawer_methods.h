@@ -21,7 +21,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/techno_class.h"   // TechnoClass (Owner @0x21C)
 
-struct LightConvertClass;
+class LightConvertClass;
 
 // ColorScheme view: only the per-house remap drawer touched here.
 struct ColorScheme_00705D70

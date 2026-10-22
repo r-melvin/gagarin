@@ -10,8 +10,9 @@
 #include "control_class.h"
 
 // VTABLE: GAMEMD 0x7E8118
-struct ToggleClass : ControlClass
+class ToggleClass : public ControlClass
 {
+public:
     // The inherited virtual destructor is implicit; retail calls Gadget destruction.
     virtual int Action(unsigned flags, unsigned* key, int modifier); // slot 31, 0x723EC0
 

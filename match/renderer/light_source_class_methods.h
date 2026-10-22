@@ -13,8 +13,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct LightSourceClass
+class LightSourceClass
 {
+public:
     void Activate(unsigned long dwZero);    // GAMEMD 0x554A60 __thiscall
     void Deactivate(unsigned long dwZero);  // GAMEMD 0x554A80 __thiscall
 

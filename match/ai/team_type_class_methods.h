@@ -57,8 +57,9 @@ extern CellStruct       DefaultWaypointCell;             // GAMEMD 0xB0E9C8
 // ---------------------------------------------------------------------------
 // TeamTypeClass  (AbstractTypeClass + the touched members; full layout = P2)
 // ---------------------------------------------------------------------------
-struct TeamTypeClass : AbstractTypeClass
+class TeamTypeClass : public AbstractTypeClass
 {
+public:
     int             ArrayIndex;          // +0x98
     int             Group;               // +0x9C
     char            _pad_A0[0xD4 - 0xA0];// +0xA0..0xD3 (P2)

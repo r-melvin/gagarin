@@ -11,8 +11,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct AnimTypeClass;
-struct WeaponTypeClass;
+class AnimTypeClass;
+class WeaponTypeClass;
 
 struct RulesClass
 {

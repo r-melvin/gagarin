@@ -23,8 +23,9 @@
 // AbstractTypeClass base = 0x98; FixedString<25> ParentCountry @0x98 + 3 align,
 // int ArrayIndex @0xB4, int ArrayIndex2 @0xB8 (YRpp).
 // ---------------------------------------------------------------------------
-struct HouseTypeClass
+class HouseTypeClass
 {
+public:
     char _pad_base[0xB8];          // AbstractTypeClass + ParentCountry/ArrayIndex (P2)
     int  ArrayIndex2;              // +0xB8
 };
@@ -36,8 +37,9 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 //   IsHumanPlayer    @0x1EC (bool;  `MOV AL,[ECX+0x1EC]` in 0x50B6F0)
 //   IsInPlayerControl@0x1ED (bool;  `MOV AL,[ECX+0x1ED]` in 0x50B6F0)
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char            _pad_0x00[0x34];          // AbstractClass + ArrayIndex (P2)
     HouseTypeClass* Type;                     // +0x34
     char            _pad_0x38[0x1EC - 0x38];  // P2

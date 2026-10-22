@@ -30,8 +30,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
 
-struct AircraftClass : FootClass
+class AircraftClass : public FootClass
 {
+public:
     void*         FlyControlVfptr;         // +0x6C0  second-base vptr; ctor: MOV [ESI+0x6C0],0x7E2250
                                            //         @0x00413DA2; RTTI COL base-offset 0x6C0 confirms it
     void*         Type;                    // +0x6C4  AircraftTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x00413D3A

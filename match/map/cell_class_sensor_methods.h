@@ -48,8 +48,9 @@ extern unsigned char CellOccupiersValid;
 // (ECX = this, no stack arguments) with no extra register traffic.
 typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
 
-struct CellClass
+class CellClass
 {
+public:
     char           _pad00[0x7C];               // +0x00   AbstractClass base + cell bookkeeping
     unsigned short SensorsOfHouses[24];        // +0x7C
     unsigned short DisguiseSensorsOfHouses[24];// +0xAC

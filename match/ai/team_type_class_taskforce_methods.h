@@ -51,8 +51,9 @@ GG_STATIC_ASSERT(offsetof(TaskForce_006F1FA0, Entries) + offsetof(TaskForceEntry
 int __fastcall FUN_005889F0(int value, int running);
 
 // TeamTypeClass (partial) — only the members ProcessTaskForce touches.
-struct TeamTypeClass
+class TeamTypeClass
 {
+public:
     char _pad000[0xE4];               // +0x0000
     TaskForce_006F1FA0* TaskForce;    // +0x00E4
     char _pad0E8[0x4];                // +0x00E8

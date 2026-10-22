@@ -31,8 +31,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Minimal CellClass view: only MapCoords @0x24 is touched (written into
 // InvalidCell on the fallback path).
-struct CellClass
+class CellClass
 {
+public:
     char       _pad0[0x24];   // +0x00
     CellStruct MapCoords;     // +0x24
 };
@@ -43,8 +44,9 @@ GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
 #define InvalidCell (*reinterpret_cast<CellClass*>(0x00ABDC50))
 
 // Minimal MapClass view: only the two members GetTargetCell touches.
-struct MapClass
+class MapClass
 {
+public:
     char        _pad0[0x13c];  // +0x000 (GScreenClass base etc.)
     CellClass** Cells;         // +0x13c  flat cell-pointer array
     int         TotalCells;    // +0x140  number of cells in the array

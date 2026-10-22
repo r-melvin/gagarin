@@ -17,8 +17,9 @@
 // The Win32 serial-port wrapper the port detector and the shutdown path share
 // through the global at 0xB72D20. Declared `struct` because the existing
 // consumers' decorated names already spell it that way.
-struct WinModemClass
+class WinModemClass
 {
+public:
     virtual ~WinModemClass();   // slot 0
     // VTABLE slot 1 — open the named device; -1 is the invalid handle.
     virtual int vf_1(char* device, int baud, int parity,

@@ -19,8 +19,9 @@
 // facts the matched methods need are modelled:
 //   * vtable slot 1 (+0x04) = GadgetClass::GetNext  -> `mov edx,[this]; call [edx+4]`
 //   * GadgetClass::Y @ +0x10 (LinkClass base 0x0C: vptr/Next/Prev, then X@0x0C,Y@0x10)
-struct TextLabelClass
+class TextLabelClass
 {
+public:
     virtual ~TextLabelClass();             // slot 0 (destructor)
     virtual TextLabelClass* GetNext();     // slot 1 (+0x04) — walked here
     char _link_pad[0x10 - 0x04];           // LinkClass tail + GadgetClass::X (0x04..0x0F)

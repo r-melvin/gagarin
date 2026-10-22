@@ -22,8 +22,9 @@ typedef unsigned long DWORD;
 // MOV EAX,[EDX+0xB8] — the value handed to the carrier as its owner/colour
 // index. Full AbstractTypeClass-derived layout is P2.
 // ---------------------------------------------------------------------------
-struct HouseTypeClass
+class HouseTypeClass
 {
+public:
     char _layout_pad_P2[0xB8];   // +0x0000
     int  ColorSchemeIndex_B8;    // +0x00B8  (MOV EAX,[EDX+0xB8])
 };
@@ -36,8 +37,9 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ColorSchemeIndex_B8) == 0xB8);
 // Confirmed from 0x4FC060: MOV AL,[EDI+0x81]; TEST AL,AL (limbo guard), and
 // MOV ECX,EDI / CALL 0x740DF0 with one pushed int argument.
 // ---------------------------------------------------------------------------
-struct UnitClass
+class UnitClass
 {
+public:
     char          _layout_pad_P2[0x81];   // +0x0000
     unsigned char InLimbo;                // +0x0081  (bool; ObjectClass::InLimbo)
 
@@ -54,8 +56,9 @@ GG_STATIC_ASSERT(offsetof(UnitClass, InLimbo) == 0x81);
 //   Type        @0x34    HouseTypeClass*  (MOV EDX,[ESI+0x34])
 //   FlagHolder  @0x53DC  UnitClass*       (MOV/[ESI+0x53DC] read & write)
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char            _pad0[0x34];                  // +0x0000
     HouseTypeClass* Type;                         // +0x0034
     char            _pad1[0x53DC - (0x34 + 4)];   // +0x0038

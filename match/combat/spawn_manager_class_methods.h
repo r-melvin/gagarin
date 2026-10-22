@@ -34,8 +34,9 @@ GG_STATIC_ASSERT(offsetof(SpawnControl, Status) == 0x04);
 //   SpawnedNodes is a DynamicVectorClass<SpawnControl*> embedded at +0x38; its
 //   Items pointer lands at +0x3C (vector vptr @+0x38, Items @+0x3C) and its
 //   Count at +0x48 (vector base +0x10). Target @+0x68, NewTarget @+0x6C.
-struct SpawnManagerClass
+class SpawnManagerClass
 {
+public:
     void SetTarget(AbstractClass* pTarget);   // GAMEMD 0x6B7B90 __thiscall
     int  CountAliveSpawns() const;            // GAMEMD 0x6B7D30 __thiscall
     int  CountDockedSpawns() const;           // GAMEMD 0x6B7D50 __thiscall

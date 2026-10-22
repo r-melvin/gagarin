@@ -90,7 +90,7 @@ struct Obj_4AEBF0 { void* FUN_4AEBF0(unsigned int flags); };  // FUNCTION: GAMEM
 // vtable 0x7E81A4 (this function's own address at slot 0, the usual
 // self-referential deleting-destructor slot) -> complete object locator
 // @0x7E81A0 -> type descriptor 0x820280 -> name `.?AVEditClass@@`.
-struct EditClass { void* ScalarDeletingDestructor(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57D0
+class EditClass { public: void* ScalarDeletingDestructor(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B57D0
 struct Obj_4B5810 { void* FUN_4B5810(unsigned int flags); };  // FUNCTION: GAMEMD 0x4B5810
 struct Obj_4D2910 { void* FUN_4D2910(unsigned int flags); };  // FUNCTION: GAMEMD 0x4D2910
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from

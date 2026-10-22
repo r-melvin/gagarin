@@ -69,8 +69,9 @@ void* __fastcall LoadVeinholeSHP(const char* name, char fileType);
 
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
-struct VeinholeMonsterClass
+class VeinholeMonsterClass
 {
+public:
     static VeinholeMonsterClass* __fastcall GetVeinholeMonsterFrom(CellStruct* pCell);
     static VeinholeMonsterClass* __fastcall GetVeinholeMonsterAt(CellStruct* pCell);
     static void __fastcall LoadVeinholeArt(int idxTheatre);

@@ -19,8 +19,9 @@
 // layout (its own members past 0x520) is P2; IsBeingDrained touches only the
 // inherited pointer, so BuildingClass is modelled here as a bare TechnoClass
 // derivative carrying just the one matched accessor.
-struct BuildingClass : TechnoClass
+class BuildingClass : public TechnoClass
 {
+public:
     bool IsBeingDrained() const;   // GAMEMD 0x70FEC0 __thiscall
 };
 

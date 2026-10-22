@@ -30,8 +30,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 #endif  // GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 
 // MapClass (partial) — only the members the two matched methods touch.
-struct MapClass
+class MapClass
 {
+public:
     char pad_00[0x0C];
     int  Bitfield;                 // +0x0C  (default 2)
     char pad_10[0xF4 - 0x10];

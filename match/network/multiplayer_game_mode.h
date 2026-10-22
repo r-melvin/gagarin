@@ -41,7 +41,7 @@
 #include "../_layout/cell.h"
 #include "multiplayer_team.h"
 
-struct HouseClass;
+class HouseClass;
 class CCINIClass;
 struct MPTeam;
 

@@ -27,8 +27,9 @@
 //   * Flag2A5  @0x2A5  — `MOV DL,[ECX+0x2A5]` in AllowedThreats.
 //   * Field2DC @0x2DC  — `MOV ECX,[EAX+0x2DC]; TEST; JNZ` gate in CalculateSpeed.
 // ---------------------------------------------------------------------------
-struct BulletTypeClass
+class BulletTypeClass
 {
+public:
     char          _pad0[0x295];          // +0x000
     unsigned char Flag295;               // +0x295
     char          _pad1[0x2A4 - 0x296];  // +0x296
@@ -54,8 +55,9 @@ class WarheadTypeClass;  // Warhead member is only stored as a pointer here.
 //   Speed      @0xA8  — `MOV [ESI+0xA8],EAX` (CalculateSpeed writes the result).
 //   Range      @0xB4  — `MOV ECX,[ESI+0xB4]` (CalculateSpeed, passed to 0x48AB90).
 // ---------------------------------------------------------------------------
-struct WeaponTypeClass : AbstractTypeClass
+class WeaponTypeClass : public AbstractTypeClass
 {
+public:
     // STATIC: GAMEMD 0x772FA0  (__fastcall)
     static WeaponTypeClass* __fastcall FindOrAllocate(const char* id);
     // FUNCTION: GAMEMD 0x7729F0  (__thiscall)

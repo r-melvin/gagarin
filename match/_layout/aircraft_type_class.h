@@ -26,8 +26,9 @@
 // VTABLE: GAMEMD 0x7E284C (IRTTITypeInfo side, +0x04)
 // VTABLE: GAMEMD 0x7E2844 (INoticeSink side, +0x08)
 // VTABLE: GAMEMD 0x7E283C (INoticeSource side, +0x0C)
-struct AircraftTypeClass : TechnoTypeClass
+class AircraftTypeClass : public TechnoTypeClass
 {
+public:
     // FUNCTION: GAMEMD 0x41C8B0 (declaration; constructor)
     AircraftTypeClass(const char* id);
     // FUNCTION: GAMEMD 0x41C9F0 (declaration; no-initialisation constructor)

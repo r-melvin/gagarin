@@ -89,8 +89,9 @@ extern MapStatic_00577AB0 MapInstance;
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct MapVtbl_00577AB0;
 
-struct MapClass
+class MapClass
 {
+public:
     MapVtbl_00577AB0* Vtbl;        // +0x0000
     char _pad004[0xF4 - 0x4];      // +0x0004
     int  At_F4;                    // +0x00F4  cell count the iterator walks

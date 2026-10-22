@@ -48,8 +48,9 @@ struct SubzoneRecord_00586990
 };
 GG_STATIC_ASSERT(sizeof(SubzoneRecord_00586990) == 10);
 
-struct CellClass
+class CellClass
 {
+public:
     char       _pad000[0x24];   // +0x0000
     CellStruct MapCoords;       // +0x0024
 

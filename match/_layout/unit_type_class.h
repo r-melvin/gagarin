@@ -23,8 +23,9 @@
 // ---------------------------------------------------------------------------
 // UnitTypeClass  (0xDF8..0xE77, sizeof = 0xE78)
 // ---------------------------------------------------------------------------
-struct UnitTypeClass : TechnoTypeClass
+class UnitTypeClass : public TechnoTypeClass
 {
+public:
     int          ArrayIndex;               // +0xDF8
     int          MovementRestrictedTo;     // +0xDFC (LandType enum)
     CoordStruct  HalfDamageSmokeLocation;  // +0xE00 (0xC)

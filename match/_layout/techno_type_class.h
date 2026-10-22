@@ -73,21 +73,22 @@ GG_STATIC_ASSERT(sizeof(TurretControl) == 0x10);
 
 // Opaque forward decls for the truncation-site pointer members (4 bytes each).
 struct SHPStruct;
-struct BuildingTypeClass;
-struct UnitTypeClass;
-struct InfantryTypeClass;
-struct AircraftTypeClass;
-struct AnimTypeClass;
-struct VoxelAnimTypeClass;
-struct ParticleSystemTypeClass;
-struct WeaponTypeClass;
+class BuildingTypeClass;
+class UnitTypeClass;
+class InfantryTypeClass;
+class AircraftTypeClass;
+class AnimTypeClass;
+class VoxelAnimTypeClass;
+class ParticleSystemTypeClass;
+class WeaponTypeClass;
 struct ColorScheme;
 
 // ---------------------------------------------------------------------------
 // TechnoTypeClass  (0x294..0xDF7, sizeof = 0xDF8)
 // ---------------------------------------------------------------------------
-struct TechnoTypeClass : ObjectTypeClass
+class TechnoTypeClass : public ObjectTypeClass
 {
+public:
     // FUNCTION: GAMEMD 0x710AF0 (declaration; constructor) -- RET 8.
     TechnoTypeClass(const char* id, int speedType);
     // FUNCTION: GAMEMD 0x711840 (declaration; no-initialisation constructor)

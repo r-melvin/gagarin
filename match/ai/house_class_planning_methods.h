@@ -20,8 +20,9 @@ struct WaypointClass;   // opaque here — only compared by pointer identity
 // (its Count @0x38) and the total size 0x40.  Ctor/accessor are body-less so
 // cl emits reloc-normalised direct CALLs; the ctor is throw() so `new` gets
 // no EH-cleanup funclet (retail has none).
-struct WaypointPathClass
+class WaypointPathClass
 {
+public:
     // FUNCTION: GAMEMD 0x763810 (decl; reloc)
     explicit WaypointPathClass(int index) throw();
 
@@ -35,8 +36,9 @@ struct WaypointPathClass
 GG_STATIC_ASSERT(offsetof(WaypointPathClass, WaypointCount) == 0x38);
 GG_STATIC_ASSERT(sizeof(WaypointPathClass) == 0x40);
 
-struct HouseClass
+class HouseClass
 {
+public:
     char               _pad000[0x210];     // +0x0000
     WaypointPathClass* PlanningPaths[12];  // +0x0210
 

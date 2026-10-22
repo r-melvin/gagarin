@@ -14,7 +14,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct MixFileClass;
+class MixFileClass;
 
 // ---------------------------------------------------------------------------
 // DynamicVectorClass<MixFileClass*>  (YRpp layout/vtable order,
@@ -104,8 +104,9 @@ struct ScanFile : FileBase
 // MixFileClass minimal model. sizeof == 0x28 so `new MixFileClass(...)` emits
 // operator new(0x28) exactly as retail (PUSH 0x28; CALL ??2@YAPAXI@Z). The ctor
 // (FUN_005B3C20) takes (name, "") — the empty-string second arg is 0x886980.
-struct MixFileClass
+class MixFileClass
 {
+public:
     // throw() => no /GX delete-on-ctor-throw EH frame, matching the retail
     // codegen (plain `new(0x28); if(p) ctor`, no fs:0 SEH prologue).
     MixFileClass(const char* name, const char* tag = "") throw();  // 0x5B3C20 __thiscall

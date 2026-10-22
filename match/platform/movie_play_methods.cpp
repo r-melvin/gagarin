@@ -27,8 +27,9 @@ struct Mouse_005BED40
 // GLOBAL: GAMEMD 0x887640
 extern Mouse_005BED40* DAT_00887640;
 
-struct GScreenClass
+class GScreenClass
 {
+public:
     void FlagToRedraw(int which);       // GAMEMD 0x4F42F0 (decl; reloc)
 };
 // GLOBAL: GAMEMD 0x87F7E8

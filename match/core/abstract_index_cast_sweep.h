@@ -93,7 +93,7 @@ GG_STATIC_ASSERT(offsetof(IndexNode, Data) == 0x4);
 GG_STATIC_ASSERT(sizeof(IndexNode) == 0x8);
 
 class AbstractClass;
-struct CellClass;
+class CellClass;
 struct CellStruct;
 struct CoordStruct;
 

@@ -67,8 +67,9 @@ GG_STATIC_ASSERT(offsetof(SpawnControl, Status) == 0x04);
 // SpawnManagerClass : AbstractClass. SpawnedNodes is a DynamicVectorClass<
 // SpawnControl*> embedded at +0x38: its Items pointer lands at +0x3C and its
 // Count at +0x48. Only those two are touched here.
-struct SpawnManagerClass
+class SpawnManagerClass
 {
+public:
     int CountLaunchingSpawns() const;        // GAMEMD 0x6B7D80 __thiscall
 
     char            _base[0x3C];             // +0x00  AbstractClass + leading members + vector head

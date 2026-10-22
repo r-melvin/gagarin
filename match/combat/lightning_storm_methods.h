@@ -17,8 +17,9 @@
 // meaning. It sits one byte below SpySatActive @0x577A (see
 // match/economy/house_class_accessor_methods.h), so it is in the same
 // lightning/radar flag cluster.
-struct HouseClass
+class HouseClass
 {
+public:
     char _pad00[0x5779];   // +0x0000
     bool unknown_5779;     // +0x5779
 };

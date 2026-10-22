@@ -54,8 +54,9 @@ GG_STATIC_ASSERT(offsetof(WaypointVector, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(WaypointVector)          == 0x18);
 
 // WaypointPathClass : AbstractClass (COM base 0x00..0x23).
-struct WaypointPathClass : AbstractClass
+class WaypointPathClass : public AbstractClass
 {
+public:
     WaypointClass* GetWaypoint(int idx) const;                     // 0x763980
     WaypointClass* GetWaypointAfter(WaypointClass* pWaypoint) const;// 0x763BA0
 

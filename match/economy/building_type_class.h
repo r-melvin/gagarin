@@ -15,7 +15,7 @@
 #include <stddef.h>  // offsetof
 #include "../_rt/gg_static_assert.h"
 
-struct UnitTypeClass;  // BuildingTypeClass::UndeploysInto target
+class UnitTypeClass;  // BuildingTypeClass::UndeploysInto target
 struct SHPStruct;      // BuildingTypeClass::Buildup image
 
 // ---------------------------------------------------------------------------
@@ -29,8 +29,9 @@ struct SHPStruct;      // BuildingTypeClass::Buildup image
 //   +0x1570 Bib            bool            (MOV AL,[ECX+0x1570] @0x45ECA8 GetFoundationHeight)
 //   +0x1762 FreeBuildup    bool            (MOV AL,[ESI+0x1762] @0x465AF3 ClearBuildUp)
 // ---------------------------------------------------------------------------
-struct BuildingTypeClass
+class BuildingTypeClass
 {
+public:
     void           ClearBuildUp();                       // GAMEMD 0x465AF0 __thiscall
     bool           IsVehicle() const;                    // GAMEMD 0x465D40 __thiscall
     // YRpp declares these `short`; retail codegen loads the full dword and

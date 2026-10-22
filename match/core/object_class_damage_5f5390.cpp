@@ -11,8 +11,9 @@
 #include "../_layout/tag_class.h"
 #include "../_layout/building_class.h"
 
-struct MapClass
+class MapClass
 {
+public:
     // FUNCTION: GAMEMD 0x489180 (declaration) -- the damage after armour and distance.
     static int __fastcall FUN_00489180(int damage, void* warhead, int armor, int distance);
 };

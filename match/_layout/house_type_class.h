@@ -29,8 +29,9 @@ struct TypeListData
 GG_STATIC_ASSERT(sizeof(TypeListData) == 0x1C);
 
 // HouseTypeClass  (0x98..0x1AF, sizeof = 0x1B0)
-struct HouseTypeClass : AbstractTypeClass
+class HouseTypeClass : public AbstractTypeClass
 {
+public:
     char          ParentCountry[0x19];     // +0x98  FixedString<25>
     unsigned char align_B1[3];             // +0xB1
     int           ArrayIndex;              // +0xB4

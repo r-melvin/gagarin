@@ -25,8 +25,9 @@ struct CellStruct
     short Y;
 };
 
-struct RadSiteClass
+class RadSiteClass
 {
+public:
     void SetBaseCell(CellStruct* pCell);  // GAMEMD 0x65B4C0 __thiscall
     void SetSpread(int nCells);           // GAMEMD 0x65B4D0 __thiscall
     void SetRadLevel(int nRadLevel);      // GAMEMD 0x65B4F0 __thiscall

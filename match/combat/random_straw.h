@@ -158,8 +158,9 @@ GG_STATIC_ASSERT(sizeof(Sha1State) == 0x74);
 //                    0x661C33.
 // Size 0x14 + 32*8 = 0x114.
 // ---------------------------------------------------------------------------
-struct RandomStraw
+class RandomStraw
 {
+public:
     void*        Vtable;      // +0x0000
     RandomStraw* ChainTo;     // +0x0004
     RandomStraw* ChainFrom;   // +0x0008

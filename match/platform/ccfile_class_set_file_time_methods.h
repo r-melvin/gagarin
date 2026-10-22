@@ -71,8 +71,9 @@ GG_STATIC_ASSERT(sizeof(MemoryBuffer_00473F00) == 0x0C);
 // Declaration order matters -- see match/_rt/gg_vslot.h.
 struct Vtbl_00473F00;
 
-struct CCFileClass
+class CCFileClass
 {
+public:
     Vtbl_00473F00*        Vtbl;          // +0x0000
     char                  _pad004[0x54]; // +0x0004
     MemoryBuffer_00473F00 Buffer;        // +0x0058

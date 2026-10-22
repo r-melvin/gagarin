@@ -47,8 +47,9 @@ struct NullModemQueueClass
 // order so the indirect calls land on the right displacements: slot 0 is the
 // scalar deleting destructor VC6 puts there, slot 2 sends a packet and slot 4
 // pops one. The intervening slots are stand-ins and are never called here.
-struct NullModemConnClass
+class NullModemConnClass
 {
+public:
     virtual ~NullModemConnClass();                                   // slot 0
     virtual int Slot1();                                             // slot 1
     // VTABLE slot 2 — send one packet; zero means the send queue was full.
@@ -115,8 +116,9 @@ extern WinModemClass* WinModem_00B72D20;
 // NullModemClass itself. The base's virtuals are not modelled here (no body in
 // this translation unit constructs the object), so slot zero is carried as a
 // plain vtable-pointer member and every offset below is the retail one.
-struct NullModemClass
+class NullModemClass
 {
+public:
     void*  Vptr;                     // +0x0000
     char*  unknown_04;                 // +0x0004
     int    unknown_08;                   // +0x0008

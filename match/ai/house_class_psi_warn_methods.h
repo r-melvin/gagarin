@@ -24,14 +24,15 @@ struct CoordStruct
 };
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-struct AnimTypeClass;   // opaque — only ever passed through
-struct BulletClass;     // opaque
-struct HouseClass;
+class AnimTypeClass;   // opaque — only ever passed through
+class BulletClass;     // opaque
+class HouseClass;
 
 // The warn target: only its vtable+0x48 GetCoords (by-value CoordStruct
 // return, hence the hidden out-pointer push) is used.  Never instantiated.
-struct CellClass
+class CellClass
 {
+public:
     virtual void vf00() = 0;   // vtable+0x00
     virtual void vf04() = 0;   // vtable+0x04
     virtual void vf08() = 0;   // vtable+0x08
@@ -54,8 +55,9 @@ struct CellClass
 };
 
 // AnimClass — sizeof 0x1C8; ctor + two setters are body-less (reloc CALLs).
-struct AnimClass
+class AnimClass
 {
+public:
     // FUNCTION: GAMEMD 0x421EA0 (decl; reloc)
     AnimClass(AnimTypeClass* type, const CoordStruct& coords, int loopDelay,
               int loopCount, unsigned int flags, int forceZAdjust,
@@ -79,8 +81,9 @@ int __fastcall AnimType_FindIndex(const char* name);
 // GLOBAL: GAMEMD 0x8B4150 — AnimTypeClass::Array.
 extern DynamicVectorClassLayout AnimTypeArray;
 
-struct HouseClass
+class HouseClass
 {
+public:
     // FUNCTION: GAMEMD 0x43B5E0
     AnimClass* __fastcall PsiWarn(CellClass* target, BulletClass* bullet,
                                   const char* animName);

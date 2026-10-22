@@ -74,7 +74,7 @@ struct LocoMatrix3D
 GG_STATIC_ASSERT(offsetof(LocoMatrix3D, Row) == 0x00);
 GG_STATIC_ASSERT(sizeof(LocoMatrix3D) == 0x30);
 
-struct FootClass;   // linked object; any layout view is scoped by its owning TU
+class FootClass;   // linked object; any layout view is scoped by its owning TU
 
 // ---------------------------------------------------------------------------
 // GUIDs. Each value below was read from the retail image; the pairing with the
@@ -111,7 +111,7 @@ extern "C" const IID IID_IPiggyback;
 // primary table, i.e. QI/AddRef/Release, get an adjustor). So a plain C++
 // override reproduces retail; never hand-model the `this` shift.
 // ---------------------------------------------------------------------------
-class __declspec(novtable) ILocomotion : public IUnknown
+struct __declspec(novtable) ILocomotion : public IUnknown
 {
 public:
     // Slot 3 +0x0C. Stores the object into LinkedTo then Owner; returns S_OK.
@@ -215,7 +215,7 @@ public:
 // VTABLE: GAMEMD 0x7E8254 — IPiggyback interface prefix (8 entries). The
 // DropPod table and the five other piggyback tables expose the same five
 // methods after IUnknown's three slots.
-class __declspec(novtable) IPiggyback : public IUnknown
+struct __declspec(novtable) IPiggyback : public IUnknown
 {
 public:
     virtual HRESULT __stdcall BeginPiggyback(ILocomotion* locomotion) = 0;

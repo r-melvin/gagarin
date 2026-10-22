@@ -32,8 +32,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
 
-struct UnitClass : FootClass
+class UnitClass : public FootClass
 {
+public:
     int           CurrentFiringFrame;   // +0x6C0  ctor: MOV [ESI+0x6C0],EDI(-1) @0x007353E0
     void*         Type;                 // +0x6C4  UnitTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x007353E6
     void*         FollowerCar;          // +0x6C8  UnitClass*;     ctor: MOV [ESI+0x6C8],EBX(0) @0x007353EC

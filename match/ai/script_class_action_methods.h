@@ -49,8 +49,9 @@ GG_STATIC_ASSERT(offsetof(ScriptTypeClass_Min, ScriptActions) == 0xA4);
 // ScriptClass — the per-team running AI script instance (mission cursor over a
 // ScriptTypeClass's ScriptActions list).
 // ---------------------------------------------------------------------------
-struct ScriptClass
+class ScriptClass
 {
+public:
     // Declared ascending by retail address (reccmp/isle TU discipline).
     ScriptActionNode* GetCurrentAction(ScriptActionNode* buffer) const;  // GAMEMD 0x691500 __thiscall
     ScriptActionNode* GetNextAction(ScriptActionNode* buffer) const;     // GAMEMD 0x691540 __thiscall

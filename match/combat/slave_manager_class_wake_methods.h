@@ -97,8 +97,9 @@ struct TechnoVtbl_006B1020
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_006B1020, At_1BC) == 0x1BC);
 GG_STATIC_ASSERT(offsetof(TechnoVtbl_006B1020, At_338) == 0x338);
 
-struct SlaveManagerClass
+class SlaveManagerClass
 {
+public:
     char               _base[0x24];          // +0x0000  AbstractClass
     Techno_006B1020*   Owner;                // +0x0024
     char               _pad028[0x5C - 0x28]; // +0x0028

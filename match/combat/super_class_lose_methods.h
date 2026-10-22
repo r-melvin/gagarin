@@ -13,14 +13,15 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class_operations.h"
 
-struct SuperClass;
+class SuperClass;
 
 // GLOBAL: GAMEMD 0x00A83D50
 // DynamicVectorClass<SuperClass*>: vptr +0x00, Items +0x04, Count +0x10.
 extern DynamicVectorClass<SuperClass*> ShowTimers;
 
-struct SuperClass
+class SuperClass
 {
+public:
     char _pad00[0x6D];   // +0x0000
     bool IsPresent;      // +0x006D
     char _pad6E;         // +0x006E

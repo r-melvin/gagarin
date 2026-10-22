@@ -21,8 +21,9 @@
 // +0xE08 dword IS the value IsBuildCat5 returns.
 char* __fastcall ObjTypeFindFromCat(int abstractID, int idx);   // GAMEMD 0x48DCD0
 
-struct ObjectTypeClass
+class ObjectTypeClass
 {
+public:
     // FUNCTION: GAMEMD 0x5004E0  ObjectTypeClass::IsBuildCat5 (static __fastcall)
     static int __fastcall IsBuildCat5(int abstractID, int idx);
 };

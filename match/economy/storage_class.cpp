@@ -26,7 +26,7 @@
 // offset asserted below is confirmed numerically from the 0x6C9600 disassembly.
 // ---------------------------------------------------------------------------
 
-struct TiberiumClass;
+class TiberiumClass;
 
 // VectorClass<TiberiumClass*> head: vtable at +0, Items at +4 (confirmed by
 // `MOV EDI,[0xB0F4EC]` == &Array.Items, Array @0xB0F4E8). YRpp.
@@ -47,8 +47,9 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TiberiumPtr, Items) == 0x04);
 
 // TiberiumClass: only Value @0xB8 is needed here. FILD dword[EAX+0xB8] in
 // 0x6C9600 loads it as an int; YRpp names it `Value`.
-struct TiberiumClass
+class TiberiumClass
 {
+public:
     char _layout_pad_P2[0xB8];     // full AbstractTypeClass-derived layout = P2
     int  Value;                    // +0xB8
 };

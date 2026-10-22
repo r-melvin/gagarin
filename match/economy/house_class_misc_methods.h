@@ -26,8 +26,9 @@
 // a one-int constructor at 0x763810. Only the size + ctor signature matter for
 // the EnsurePlanningPathExists `new` pattern; full layout is P2.
 // ---------------------------------------------------------------------------
-struct WaypointPathClass
+class WaypointPathClass
 {
+public:
     explicit WaypointPathClass(int index) throw();  // GAMEMD 0x763810 __thiscall (declared; reloc)
                                                     // throw(): retail `new` has no EH-cleanup funclet
     char _layout_pad_P2[0x40];               // sizeof = 0x40
@@ -60,8 +61,9 @@ extern RulesShim* RulesGlobalPtr;
 //   EndFrame_298  @0x298  int    (CMP [ECX+0x298],-1)
 //   OwnedWeed     @0x314  Storage(LEA ESI,[ECX+0x314])
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char               _pad0[0x1F7];                  // +0x0000
     bool               IsWinner;                      // +0x01F7
     bool               IsLoser;                       // +0x01F8

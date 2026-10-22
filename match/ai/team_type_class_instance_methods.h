@@ -19,7 +19,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct TeamTypeClass;   // pointer-identity key only (no members touched)
+class TeamTypeClass;   // pointer-identity key only (no members touched)
 
 // ---------------------------------------------------------------------------
 // TeamClass — minimal model.  Both methods compare team->Type (@+0x24) against
@@ -28,8 +28,9 @@ struct TeamTypeClass;   // pointer-identity key only (no members touched)
 // first member past the 0x24-byte AbstractClass base (CMP [ECX+0x24],EDI /
 // CMP [EAX+0x24],ECX).  Flash is body-less so cl emits a reloc-normalised call.
 // ---------------------------------------------------------------------------
-struct TeamClass
+class TeamClass
 {
+public:
     char           _pad_00[0x24];   // AbstractClass base (P2)
     TeamTypeClass* Type;            // +0x24
 
@@ -45,8 +46,9 @@ GG_STATIC_ASSERT(offsetof(TeamClass, Type) == 0x24);
 // team_type_class_methods.h.  No member of TeamTypeClass is touched, so no
 // layout is modelled in this TU.
 // ---------------------------------------------------------------------------
-struct TeamTypeClass
+class TeamTypeClass
 {
+public:
     void       FlashAllInstances(int duration);   // GAMEMD 0x6F1F30
     TeamClass* FindFirstInstance() const;         // GAMEMD 0x6F1F70
 };

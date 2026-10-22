@@ -32,8 +32,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 // relocatable call (the differ reloc-normalises them); they are matched in
 // their own TUs, not here.
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char _base[0x30];   // +0x00
     int  ArrayIndex;    // +0x30
 
@@ -55,8 +56,9 @@ struct RegionLookupClass
     int CoordsToRegion(CellStruct const* coords);
 };
 
-struct CellClass
+class CellClass
 {
+public:
     char       _base[0x24];   // +0x00  AbstractClass (vtable + base)
     CellStruct MapCoords;     // +0x24  read by UpdateThreat
 

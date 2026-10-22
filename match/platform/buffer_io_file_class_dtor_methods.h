@@ -33,8 +33,9 @@ struct RawFileClassBase
 // virtual here.
 // ---------------------------------------------------------------------------
 // VTABLE: GAMEMD 0x7E3A2C  BufferIOFileClass
-struct BufferIOFileClass
+class BufferIOFileClass
 {
+public:
     virtual ~BufferIOFileClass();
 
     // FUNCTION: GAMEMD 0x431D90 — the same reset without the vtable install or

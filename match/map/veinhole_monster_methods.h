@@ -37,7 +37,7 @@ extern Rules_0074EF00* RulesInstance;
 // VeinholeMonsterClass*. Only Items @+0x04 (0xB1D294) and Count @+0x10
 // (0xB1D2A0) are touched here.
 // ---------------------------------------------------------------------------
-struct VeinholeMonsterClass;
+class VeinholeMonsterClass;
 
 struct VeinholeArray_0074CDF0
 {
@@ -69,8 +69,9 @@ GG_STATIC_ASSERT(offsetof(Queue_0074CDF0, Count) == 0x00);
 // deleting destructor @+0x20 (index 8) and Update @+0x5C (index 23). No
 // constructor is defined here, so no vtable is emitted.
 // ---------------------------------------------------------------------------
-struct VeinholeMonsterClass
+class VeinholeMonsterClass
 {
+public:
     virtual long vf_00();   // +0x00  IUnknown
     virtual long vf_04();   // +0x04
     virtual long vf_08();   // +0x08

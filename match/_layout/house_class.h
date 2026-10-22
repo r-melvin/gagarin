@@ -67,8 +67,9 @@ GG_STATIC_ASSERT(sizeof(UnitTrackerClass) == 0x808);
 // (ctor LEA ECX sites 0x004F5AAB..0x004F5B2E).
 #ifndef GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
 #define GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
-struct CounterClass
+class CounterClass
 {
+public:
     unsigned char unknown_00[0x14];
     // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
     int FUN_0049FB60() const;
@@ -88,7 +89,7 @@ GG_STATIC_ASSERT(sizeof(DropshipStruct) == 0x2C);
 // confirmed member RecheckPower @0x5778).
 #ifndef GG_MATCH_LAYOUT_BASECLASS_DEFINED
 #define GG_MATCH_LAYOUT_BASECLASS_DEFINED
-struct BaseClass { unsigned char unknown_00[0x78]; };
+class BaseClass { public: unsigned char unknown_00[0x78]; };
 GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);
 #endif
 
@@ -101,10 +102,11 @@ struct ZoneInfoStruct { unsigned char unknown_00[0xC]; };
 GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 #endif
 
-struct BuildingTypeClass;
+class BuildingTypeClass;
 
-struct HouseClass : AbstractClass
+class HouseClass : public AbstractClass
 {
+public:
     // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
     bool IsControlledByCurrentPlayer() const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc)

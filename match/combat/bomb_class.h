@@ -37,8 +37,9 @@ struct AudioController
     char _storage[0x18];
 };
 
-struct BombClass
+class BombClass
 {
+public:
     void Disarm();                      // GAMEMD 0x4389B0 __thiscall
     int  IsDeathBomb() const;           // GAMEMD 0x4389F0 __thiscall
     bool TimeToExplode() const;         // GAMEMD 0x438A70 __thiscall

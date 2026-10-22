@@ -37,8 +37,9 @@ extern "C" int __cdecl _stricmp(const char* a, const char* b);
 // ---------------------------------------------------------------------------
 // AnimTypeClass — GAMEMD 0x428B80, sizeof 0x378, ctor GAMEMD 0x427530
 // ---------------------------------------------------------------------------
-struct AnimTypeClass
+class AnimTypeClass
 {
+public:
     char _pad00[0x24];              // +0x0000  AbstractClass prefix
     char ID[0x378 - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
 
@@ -57,8 +58,9 @@ extern DynamicVectorClassLayout AnimTypeClassArray;
 // ---------------------------------------------------------------------------
 // WarheadTypeClass — GAMEMD 0x75E3B0, sizeof 0x1D0, ctor GAMEMD 0x75CEC0
 // ---------------------------------------------------------------------------
-struct WarheadTypeClass
+class WarheadTypeClass
 {
+public:
     char _pad00[0x24];              // +0x0000  AbstractClass prefix
     char ID[0x1D0 - 0x24];         // +0x0024  AbstractTypeClass::ID onwards
 

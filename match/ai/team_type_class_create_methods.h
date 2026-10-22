@@ -18,15 +18,16 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct HouseClass;
-struct TeamTypeClass;
+class HouseClass;
+class TeamTypeClass;
 
 // TeamClass — only its size (0xA0, the operator-new argument) and the
 // constructor are needed. The constructor is declared as a member returning
 // `this` so the call is a plain `MOV ECX,EAX; CALL` after the null test,
 // without the EH frame a real `new T(...)` would register under /GX.
-struct TeamClass
+class TeamClass
 {
+public:
     char _pad000[0xA0];   // +0x0000
 
     // FUNCTION: GAMEMD 0x6E8A90 (decl; reloc) — TeamClass::TeamClass.
@@ -35,15 +36,17 @@ struct TeamClass
 GG_STATIC_ASSERT(sizeof(TeamClass) == 0xA0);
 
 // HouseClass — opaque but for the one member call used here.
-struct HouseClass
+class HouseClass
 {
+public:
     // FUNCTION: GAMEMD 0x5095D0 (decl; reloc) — how many live teams of this
     // type the house already fields.
     int FUN_005095D0(TeamTypeClass* type);
 };
 
-struct TeamTypeClass
+class TeamTypeClass
 {
+public:
     char        _pad000[0x64];   // +0x0000
     char        Name[0x31];      // +0x0064
     char        _pad095[0x23];   // +0x0095

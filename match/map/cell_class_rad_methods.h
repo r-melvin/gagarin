@@ -38,8 +38,9 @@ struct CoordStruct
     int Z;  // +0x08
 };
 
-struct CellClass
+class CellClass
 {
+public:
     char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
     CellStruct MapCoords;                    // +0x24  read by GetCellCoords
     char       _pad28[0xF0 - 0x28];          // +0x28

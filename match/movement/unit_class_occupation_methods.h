@@ -36,8 +36,9 @@ GG_STATIC_ASSERT(offsetof(OccCellClass, Flags)              == 0x140);
 // MapClass singleton — the two retail helpers the (un)mark methods forward to,
 // declared (no body) so cl emits relocatable __thiscall calls. The retail
 // singleton object lives at the fixed address 0x0087F7E8.
-struct MapClass
+class MapClass
 {
+public:
     OccCellClass* GetTargetCell(CoordStruct const& crd) const;     // 0x565730
     int           GetCellFloorHeight(CoordStruct const& crd) const; // 0x578080
 };
@@ -76,8 +77,9 @@ struct DoorTimer
 
 // UnitClass : FootClass — only the UnitClass-specific Type pointer is new; every
 // other touched member is reached through the FootClass / TechnoClass base.
-struct UnitClass : FootClass
+class UnitClass : public FootClass
 {
+public:
     int   CurrentFiringFrame;   // +0x6C0
     void* Type;                 // +0x6C4  (UnitTypeClass*)
 

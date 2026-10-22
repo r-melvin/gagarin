@@ -251,8 +251,9 @@ GG_STATIC_ASSERT(sizeof(ToolTipVectorVtableLayout) == 0x1C);
 
 struct tagMSG;
 
-struct ToolTipManager
+class ToolTipManager
 {
+public:
     // VTABLE: GAMEMD 0x7F57AC (primary ToolTipManager address point)
     // FUNCTION: GAMEMD 0x7240B0 — regular destructor (unlisted entry).
     virtual ~ToolTipManager(); // slot 0: 0x724C10 deleting dtor

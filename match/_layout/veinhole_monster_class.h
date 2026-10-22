@@ -32,8 +32,9 @@ struct VeinholeLogic { unsigned char unknown_00[0x1C]; };
 GG_STATIC_ASSERT(sizeof(VeinholeLogic) == 0x1C);
 #endif
 
-struct VeinholeMonsterClass : ObjectClass
+class VeinholeMonsterClass : public ObjectClass
 {
+public:
     VeinholeLogic GrowthLogic;                 // +0xAC (0x1C) see note
     int           CurrentState;                // +0xC8 ctor @0x0074C5F9
     int           NextState;                   // +0xCC ctor @0x0074C5FF

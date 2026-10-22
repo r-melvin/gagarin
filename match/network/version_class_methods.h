@@ -49,8 +49,9 @@ GG_STATIC_ASSERT(offsetof(VersionProtocolType, Protocol) == 0x04);
 // InitClipping (`MOV EAX,0x20000`) and returned by MinVersion / MaxVersion.
 #define VERSION_CLASS_VERSION 0x20000
 
-struct VersionClass
+class VersionClass
 {
+public:
     char         _layout_pad_P2[0x3C];  // vtable + version fields = P2
     unsigned int MinClipVer;            // +0x3C
     unsigned int MaxClipVer;            // +0x40

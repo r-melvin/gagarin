@@ -38,16 +38,18 @@ gg_wchar* __fastcall FUN_00734E60(const char* label, int flags,
                                  const char* file, int line);
 
 // SuperWeaponTypeClass — only UseChargeDrain @0xE5 is read here.
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char _pad000[0xE5];       // +0x0000
     bool UseChargeDrain;      // +0x00E5
 };
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, UseChargeDrain) == 0xE5);
 
 // SuperClass : AbstractClass — a per-house superweapon instance.
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x28];         // +0x0000  AbstractClass + CustomChargeTime
     SuperWeaponTypeClass* Type;                // +0x0028
     char                  _pad2C[0x6F - 0x2C]; // +0x002C

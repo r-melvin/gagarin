@@ -39,8 +39,9 @@ GG_STATIC_ASSERT(sizeof(StripClass) == 0xF94);
 // SidebarClass  (only the base padding + the members RepaintSidebar touches).
 // The 0x1544 base prefix (PowerClass and earlier StripClass members) is opaque.
 // ---------------------------------------------------------------------------
-struct SidebarClass
+class SidebarClass
 {
+public:
     char          _base[0x1544];           // 0x0000 .. 0x1543  (PowerClass base)
     StripClass    Tabs[4];                 // 0x1544 .. 0x5393  (4 * 0xF94)
     int           unknown_5394;            // 0x5394

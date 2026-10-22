@@ -24,7 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-struct AbstractClass;
+class AbstractClass;
 
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"

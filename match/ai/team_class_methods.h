@@ -13,7 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct AbstractClass;
+class AbstractClass;
 
 // ---------------------------------------------------------------------------
 // FootClass — minimal model. ScanLimit walks the team-member singly linked
@@ -37,8 +37,9 @@ struct AbstractClass;
     virtual void p##_8(); virtual void p##_9(); virtual void p##_a(); virtual void p##_b(); \
     virtual void p##_c(); virtual void p##_d(); virtual void p##_e(); virtual void p##_f();
 
-struct FootClass
+class FootClass
 {
+public:
     // ---- vtable padding: slots 0..241 -----------------------------------
     GG_VPAD16(s00) GG_VPAD16(s01) GG_VPAD16(s02) GG_VPAD16(s03) GG_VPAD16(s04)
     GG_VPAD16(s05) GG_VPAD16(s06) GG_VPAD16(s07) GG_VPAD16(s08) GG_VPAD16(s09)
@@ -68,8 +69,9 @@ GG_STATIC_ASSERT(offsetof(FootClass, IsScanLimited)  == 0x688);
 // TeamClass: ScanLimit never dereferences this's vtable, and the real vptr
 // space is already inside the 0x54 pad.)
 // ---------------------------------------------------------------------------
-struct TeamClass
+class TeamClass
 {
+public:
     char            _pad_0[0x54];        // AbstractClass base + earlier members (P2)
     FootClass*      FirstUnit;           // +0x54
 

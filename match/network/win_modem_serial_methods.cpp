@@ -127,8 +127,9 @@ GG_STATIC_ASSERT(offsetof(Countdown_00774B30, Delay) == 0x08);
 
 typedef int (*AbortFn_unknown_68)();
 
-struct WinModemClass
+class WinModemClass
 {
+public:
     virtual ~WinModemClass();                                         // 0x775610
     virtual HANDLE FUN_00774410(char* device, int baud, int parity,
                                     int wordLength, int stopBits);    // 0x774410

@@ -41,8 +41,9 @@ GG_STATIC_ASSERT(offsetof(BitFontInternalData, Bitmaps)     == 0x1C);
 //   +0x0C pGraphBuffer   (UnLock MOV [ESI+0xC], 0)
 //   +0x10 PitchDiv2      (UnLock MOV [ESI+0x10], 0)
 // ---------------------------------------------------------------------------
-struct BitFont
+class BitFont
 {
+public:
     unsigned char* GetCharacterBitmap(wchar_t wch);  // GAMEMD 0x4346C0
     int            UnLock(Surface* pSurface);        // GAMEMD 0x434990
 

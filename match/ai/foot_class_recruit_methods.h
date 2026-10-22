@@ -15,8 +15,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct HouseClass;
-struct FootClass;
+class HouseClass;
+class FootClass;
 
 // Recruitability predicate on the AbstractType, at 0x005B36E0 — __fastcall with
 // the type in ECX (`MOV ECX,EAX; CALL rel32`). Descriptive name; the address
@@ -28,8 +28,9 @@ bool __fastcall IsRecruitableRTTI(int rtti);
 typedef int (__fastcall* WhatAmIFunc)(FootClass*);
 #define FOOT_WHAT_AM_I(o) ((*(WhatAmIFunc*)(*(char**)(o) + 0x184))(o))
 
-struct FootClass
+class FootClass
 {
+public:
     char          _pad000[0x81];            // +0x0000
     bool          InLimbo;                  // +0x0081  ObjectClass
     char          _pad082[0x21C - 0x82];    // +0x0082

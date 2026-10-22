@@ -124,7 +124,7 @@ struct RTTIVtbl_00486A70
 GG_STATIC_ASSERT(offsetof(RTTIVtbl_00486A70, WhatAmI) == 0xC);
 
 struct ObjVtbl_00486A70;
-struct CellClass;
+class CellClass;
 
 struct Obj_00486A70
 {
@@ -163,8 +163,9 @@ GG_STATIC_ASSERT(offsetof(ObjVtbl_00486A70, At_150)       == 0x150);
 GG_STATIC_ASSERT(offsetof(ObjVtbl_00486A70, GetMapCoords) == 0x1B8);
 
 // ---------------------------------------------------------------------------
-struct CellClass
+class CellClass
 {
+public:
     char              _pad000[0x24];            // +0x0000
     CellStruct        MapCoords;                // +0x0024
     FogVec_00486A70*  FoggedObjects;            // +0x0028

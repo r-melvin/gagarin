@@ -19,8 +19,9 @@
 #include "surface_class.h"
 
 // BitFont (partial) — only the members Lock touches.
-struct BitFont
+class BitFont
 {
+public:
     char        _pad000[0xC];    // +0x0000
     void*       pGraphBuffer;    // +0x000C  locked surface base
     int         PitchDiv2;       // +0x0010  surface stride in 16-bit words

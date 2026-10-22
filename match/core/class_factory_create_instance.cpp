@@ -18,6 +18,7 @@
 #include "../_layout/abstract_class.h"
 #include "../movement/loco_base.h"
 #include "../_layout/side_class.h"
+#include "../_layout/wave_class.h"
 
 template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFIID riid, void** ppv)
 {
@@ -58,18 +59,6 @@ public:
     virtual void vf_13();
     virtual ~CStreamClass();
     unsigned char unknown_[0x2C - sizeof(IPersistStream)];
-};
-// FUNCTION: GAMEMD 0x0075EBE0 (decl; reloc) -- WaveClass default constructor.
-class WaveClass : public AbstractClass
-{
-public:
-    WaveClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x240 - sizeof(AbstractClass)];
 };
 // FUNCTION: GAMEMD 0x0071DA80 (decl; reloc) -- TerrainTypeClass default constructor.
 class TerrainTypeClass : public AbstractClass

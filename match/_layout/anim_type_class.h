@@ -19,7 +19,7 @@
 
 // Opaque type targets — modelled as real 4-byte pointers (decomp shows
 // undefined4 truncation at these member-write sites).
-struct WarheadTypeClass;
+class WarheadTypeClass;
 class OverlayTypeClass;
 
 // RandomStruct — ranged-random pair (min/max ints), size = 8. Modelled
@@ -32,8 +32,9 @@ struct RandomStruct
 GG_STATIC_ASSERT(sizeof(RandomStruct) == 8);
 
 // AnimTypeClass  (0x294..0x377, sizeof = 0x378)
-struct AnimTypeClass : ObjectTypeClass
+class AnimTypeClass : public ObjectTypeClass
 {
+public:
     int           ArrayIndex;              // +0x294
     int           MiddleFrameIndex;        // +0x298
     int           MiddleFrameWidth;        // +0x29C

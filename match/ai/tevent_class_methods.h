@@ -18,7 +18,7 @@
 #include "../_rt/gg_static_assert.h"
 #include <string.h>
 #include "../_layout/abstract_class.h"
-struct HouseClass;
+class HouseClass;
 class ObjectClass;
 struct CDTimer_00726400;
 
@@ -62,8 +62,9 @@ struct TEventName
 };
 GG_STATIC_ASSERT(sizeof(TEventName) == 25);
 
-struct TEventClass : public AbstractClass
+class TEventClass : public AbstractClass
 {
+public:
     // FUNCTION: GAMEMD 0x71F4E0
     void LoadFromINI();
     bool GetStateA() const;   // GAMEMD 0x71F950 __thiscall

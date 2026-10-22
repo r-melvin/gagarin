@@ -27,8 +27,9 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 #endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
 
 // CellClass (partial) — only the members PickInfantrySublocation reads.
-struct CellClass
+class CellClass
 {
+public:
     char _pad000[0x11B];            // +0x0000
     char Level;                     // +0x011B  signed (MOVSX)
     char _pad11C[0x140 - 0x11C];    // +0x011C
@@ -47,8 +48,9 @@ extern int DAT_008A0740;
 
 // MapClass (partial) — no members are touched; only the singleton's address
 // and one method matter here.
-struct MapClass
+class MapClass
 {
+public:
     // FUNCTION: GAMEMD 0x565730 (decl; reloc) — the cell under a coordinate.
     CellClass* GetCellAt(const CoordStruct& coords);
 

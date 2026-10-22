@@ -22,7 +22,7 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject) == 0x30);
 
 // Opaque returns: codegen returns the matched occupier pointer in EAX; the
 // concrete leaf type only documents intent and never alters the bytes.
-struct BuildingClass;
+class BuildingClass;
 class TerrainClass;
 struct TunnelClass;
 
@@ -48,8 +48,9 @@ typedef int (__fastcall* WhatAmIFunc)(const ObjectClass*);
 
 // CellClass — a single map cell. This TU models only the two occupier-list
 // heads the three queries dereference; the unknown base is padded to 0xE4.
-struct CellClass
+class CellClass
 {
+public:
     char         _pad00[0xE4];        // +0x00  AbstractClass base + cell bookkeeping
     ObjectClass* FirstObject;         // +0xE4  ground occupier list head
     ObjectClass* AltObject;           // +0xE8  on-bridge occupier list head

@@ -18,8 +18,9 @@
 struct SHPStruct;
 
 // VTABLE: GAMEMD 0x7E8088
-struct ShapeButtonClass : ToggleClass
+class ShapeButtonClass : public ToggleClass
 {
+public:
     // Retail slot 0 reaches deleting destructor 0x4B57F0, which calls 0x69DDC0.
     // FUNCTION: GAMEMD 0x69DDC0 (decl)
     virtual ~ShapeButtonClass();

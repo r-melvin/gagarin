@@ -18,8 +18,9 @@ struct TintStruct
     int Red, Green, Blue;
 };
 
-struct LightSourceClass
+class LightSourceClass
 {
+public:
     void ChangeLevels(int nIntensity, TintStruct Tint, unsigned long mode);
 
     // Internal recompute helper @0x554AF0, shared with Activate/Deactivate.

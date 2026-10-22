@@ -27,8 +27,9 @@ struct SequenceStruct;
 // ---------------------------------------------------------------------------
 // InfantryTypeClass  (0xDF8..0xECF, sizeof = 0xED0)
 // ---------------------------------------------------------------------------
-struct InfantryTypeClass : TechnoTypeClass
+class InfantryTypeClass : public TechnoTypeClass
 {
+public:
     int             ArrayIndex;          // +0xDF8
     int             Pip;                 // +0xDFC (PipIndex enum)
     int             OccupyPip;           // +0xE00 (PipIndex enum)

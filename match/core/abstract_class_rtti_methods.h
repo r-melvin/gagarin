@@ -31,8 +31,9 @@ extern RTTINameEntry RTTINames[RTTI_NAME_COUNT];
 // is recovered here; the struct exists so the routine is spelled as the static
 // member it is rather than as a free function, and so the next address on this
 // class has somewhere to attach.
-struct AbstractClass
+class AbstractClass
 {
+public:
     // Human-readable name for an AbstractType discriminant.
     // (static __fastcall: the discriminant arrives in ECX.)
     static const char* __fastcall GetRTTIName(int rtti);   // GAMEMD 0x40DCB0

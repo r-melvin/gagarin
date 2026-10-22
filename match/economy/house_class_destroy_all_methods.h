@@ -29,12 +29,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct HouseClass;
-struct WarheadTypeClass;
+class HouseClass;
+class WarheadTypeClass;
 class ObjectClass;
 class TemporalClass;
-struct TechnoTypeClass;
-struct CaptureManagerClass;
+class TechnoTypeClass;
+class CaptureManagerClass;
 
 // AbstractType::Building, per YRpp; retail compares the
 // whatAmI result against 6 at 0x4FC7BE.
@@ -174,8 +174,9 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledBy) == 0x2C0);
 
 // TechnoTypeClass — only the naval flag is read, at 0x4FC86B
 // (`MOV CL,byte ptr [EAX+0xcce]` on the pointer slot 0x84 returned).
-struct TechnoTypeClass
+class TechnoTypeClass
 {
+public:
     char          _pad000[0xCCE];   // +0x0000
     unsigned char Naval;            // +0x0CCE
 };
@@ -186,8 +187,9 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xCCE);
 // bind 0x472330, so it keeps its placeholder name; what it does
 // is "is this techno one of mine", which is what lets DestroyAll spare a unit
 // that its original owner has since mind-controlled away.
-struct CaptureManagerClass
+class CaptureManagerClass
 {
+public:
     bool FUN_00472330(TechnoClass* techno);   // GAMEMD 0x472330
 };
 
@@ -225,8 +227,9 @@ GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0
 
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     // Declared ascending by retail address.
     // FUNCTION: GAMEMD 0x4FC6D0
     void DestroyAll();

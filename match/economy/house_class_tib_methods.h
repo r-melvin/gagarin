@@ -55,8 +55,9 @@ enum BuildCat
 // (FixedString ParentCountry, the 7 doubles, the Armor/Cost/
 // Speed/Buildtime float blocks) collapse to padding (full layout = P2).
 // ---------------------------------------------------------------------------
-struct HouseTypeClass
+class HouseTypeClass
 {
+public:
     char  _pad0[0x148];   // AbstractTypeClass head + multiplier blocks
     float IncomeMult;     // +0x148
 };
@@ -66,8 +67,9 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, IncomeMult) == 0x148);
 // TiberiumClass (partial) — only Value @0xB8 is touched (`FILD dword[EDX+0xB8]`
 // loads it as an int). Same member StorageClass::GetTotalValue uses.
 // ---------------------------------------------------------------------------
-struct TiberiumClass
+class TiberiumClass
 {
+public:
     char _pad0[0xB8];   // AbstractTypeClass-derived head = P2
     int  Value;         // +0xB8
 };
@@ -98,8 +100,9 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClass_TiberiumPtr, Items) == 0x04);
 // 0x53AC follows PowerOutput/PowerDrain (0x53A4/0x53A8) per the matched
 // house_class_power layout; the nine Primary_ pointers are contiguous.
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char            _pad00[0x34];
     HouseTypeClass* Type;                  // +0x34
     char            _pad38[0x30C - 0x38];

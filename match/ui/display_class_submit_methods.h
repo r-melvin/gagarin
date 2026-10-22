@@ -15,8 +15,9 @@
 
 // LayerClass — the per-draw-layer object list. Layout-compatible with
 // DynamicVectorClass (sizeof 0x18); only the insert entry point is needed.
-struct LayerClass
+class LayerClass
 {
+public:
     void* _vtable;            // +0x00
     void* Items;              // +0x04
     int   Capacity;           // +0x08
@@ -37,8 +38,9 @@ extern LayerClass DisplayLayers[];
 typedef int (__fastcall* InWhichLayerFunc)(ObjectClass*);
 #define OBJ_IN_WHICH_LAYER(obj) ((*(InWhichLayerFunc*)(*(char**)(obj) + 0x78))(obj))
 
-struct DisplayClass
+class DisplayClass
 {
+public:
     void Submit(ObjectClass* object);   // GAMEMD 0x4A9720 (matched)
     void Remove(ObjectClass* object);   // GAMEMD 0x4A9770 (declared; reloc)
 };

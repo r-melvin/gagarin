@@ -24,8 +24,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
 
-struct InfantryClass : FootClass
+class InfantryClass : public FootClass
 {
+public:
     void*         Type;                 // +0x6C0  InfantryTypeClass*; ctor: MOV [ESI+0x6C0],ECX(=pType) @0x00517A6E
     int           SequenceAnim;         // +0x6C4  Sequence enum; ctor: MOV [ESI+0x6C4],0xFFFFFFFF @0x00517A64
     CDTimerClass  unknown_Timer_6C8;    // +0x6C8  (0xC) ctor: StartTime MOV [ESI+0x6C8],EDX(=[0x00A8ED84], the

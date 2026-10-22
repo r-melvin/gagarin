@@ -43,8 +43,9 @@ Info_00433880* __fastcall FUN_00433990(Key_00433880* key);
 // type descriptor 0x818B68, name string `.?AVBitFont@@`. This TU's minimal
 // view of BitFont carries only the fields this constructor touches, matching
 // the sibling minimal views in bit_text_ctor_methods.h / bit_text_print_methods.h.
-struct BitFont
+class BitFont
 {
+public:
     const void* Vptr;        // +0x0000
     Info_00433880* Info;     // +0x0004
     int  At_08;              // +0x0008

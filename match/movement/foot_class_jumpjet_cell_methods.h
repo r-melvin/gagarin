@@ -15,20 +15,22 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct FootClass;
+class FootClass;
 
 struct CellStruct { short X; short Y; };
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct CellClass
+class CellClass
 {
+public:
     char       _pad00[0xE0];   // +0x0000
     FootClass* Jumpjet;        // +0x00E0
 };
 GG_STATIC_ASSERT(offsetof(CellClass, Jumpjet) == 0xE0);
 
-struct MapClass
+class MapClass
 {
+public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;   // GAMEMD 0x5657A0
 };
 
@@ -38,8 +40,9 @@ extern MapClass   MapInstance;
 // GLOBAL: GAMEMD 0x008B3D88 — the "no cell" CellStruct sentinel.
 extern CellStruct NoCell;
 
-struct FootClass
+class FootClass
 {
+public:
     char       _pad000[0x564];   // +0x0000
     CellStruct JumpjetCoords;    // +0x0564
 

@@ -58,16 +58,18 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
 
 // SuperWeaponTypeClass — only the Type enum @0xB4 is compared here
 // (1 == IronCurtain, 3 == ChronoSphere).
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char _pad000[0xB4];      // +0x0000
     int  Type;               // +0x00B4
 };
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Type) == 0xB4);
 
 // SuperClass : AbstractClass — a per-house superweapon instance.
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x28];         // +0x0000  AbstractClass + CustomChargeTime
     SuperWeaponTypeClass* Type;                // +0x0028
     char                  _pad02C[4];          // +0x002C
@@ -83,8 +85,9 @@ GG_STATIC_ASSERT(offsetof(SuperClass, RechargeTimer) == 0x30);
 GG_STATIC_ASSERT(offsetof(SuperClass, IsPresent)     == 0x6D);
 
 // HouseClass — only the Supers vector is touched (Items @0x258, Count @0x264).
-struct HouseClass
+class HouseClass
 {
+public:
     char         _pad000[0x258];   // +0x0000
     SuperClass** SupersItems;      // +0x0258
     char         _pad25C[0x8];     // +0x025C

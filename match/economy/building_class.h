@@ -23,8 +23,9 @@ struct SWSlotsClass
 {
     int IsActive_49FAE0(int swType);     // GAMEMD 0x49FAE0 __thiscall (declared; reloc)
 };
-struct HouseClass
+class HouseClass
 {
+public:
     char         _pad_0000[0x5550];      // +0x0000  (full layout is P2)
     SWSlotsClass SWSlots;                // +0x5550
 };
@@ -46,8 +47,9 @@ GG_STATIC_ASSERT(offsetof(HouseClass, SWSlots) == 0x5550);
 //   +0x119 UnderTemporal (bool)   +0x11A Paused (bool)
 //   +0x11B Unpaused (bool)        +0x11C PausedAnimFrame (int)
 // ---------------------------------------------------------------------------
-struct AnimClass
+class AnimClass
 {
+public:
     // Slots 0..7 of the COM/IPersistStream + abstract base; modelled as pure
     // padding virtuals purely so VtblSlot8 lands at vtable offset 0x20.
     virtual void VtblSlot0() = 0; virtual void VtblSlot1() = 0;
@@ -78,8 +80,9 @@ GG_STATIC_ASSERT(offsetof(AnimClass, PausedAnimFrame) == 0x11C);
 //   +0x16B7 NonTraversable flag (IsTraversable), +0x16F0 FirstSWIdx,
 //   +0x16F4 SecondSWIdx.
 // ---------------------------------------------------------------------------
-struct BuildingTypeClass
+class BuildingTypeClass
 {
+public:
     char          _pad_0000[0x16B7];     // +0x0000
     unsigned char NonTraversable;        // +0x16B7
     char          _pad_16B8[0x16F0 - 0x16B8];
@@ -118,8 +121,9 @@ extern SWChainNode** g_SWArray;
 // ---------------------------------------------------------------------------
 // BuildingClass — padded to each touched offset. Full layout is P2.
 // ---------------------------------------------------------------------------
-struct BuildingClass
+class BuildingClass
 {
+public:
     void DestroyNthAnim(int slot);       // GAMEMD 0x451E40 __thiscall
     void DisableTemporal();              // GAMEMD 0x4521C0 __thiscall
     void EnableTemporal();               // GAMEMD 0x452210 __thiscall

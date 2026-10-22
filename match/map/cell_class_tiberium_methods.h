@@ -21,8 +21,9 @@
 // TiberiumClass — only the Value field at +0xB8 is touched (read by
 // GetContainedTiberiumValue: mov eax,[edx+0xb8]). The binary places Value at
 // 0xB8 regardless of YRpp's nominal double-packing, so pad to it directly.
-struct TiberiumClass
+class TiberiumClass
 {
+public:
     char _pad[0xB8];   // +0x00  AbstractTypeClass base + leading int/double props
     int  Value;        // +0xB8
 };
@@ -45,8 +46,9 @@ enum CellFlags
     CellFlags_None = 0
 };
 
-struct CellClass
+class CellClass
 {
+public:
     char       _base[0x44];                  // +0x000  AbstractClass + leading props
     int        OverlayTypeIndex;             // +0x044
     char       _pad48[0x11E - 0x48];         // +0x048

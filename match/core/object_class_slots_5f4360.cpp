@@ -24,8 +24,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 #include "flight_level.h"
 
 // The map object at 0x87F7E8 (only the entry points used here).
-struct DisplayClass
+class DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x4F42F0 (declaration) -- flag a redraw.
     void FlagToRedraw(int which);
     // FUNCTION: GAMEMD 0x4AEB10 (declaration) -- the object under focus.
@@ -33,8 +34,9 @@ struct DisplayClass
     // FUNCTION: GAMEMD 0x4AEB30 (declaration) -- set the object under focus.
     void FUN_004AEB30(ObjectClass* object);
 };
-struct MapClass : DisplayClass
+class MapClass : public DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
     CellClass* FUN_00565730(const CoordStruct* coord);
     // FUNCTION: GAMEMD 0x5657A0 (declaration) -- the cell at a cell position.

@@ -62,8 +62,9 @@ extern int DAT_00884CF8;
 // Declaration order matters — see match/_rt/gg_vslot.h.
 struct Vtbl_006A6A00;
 
-struct SidebarClass
+class SidebarClass
 {
+public:
     Vtbl_006A6A00* Vtbl;             // +0x0000
     char _pad004[0x1544 - 4];        // +0x0004
     Strip_006A6A00 Tabs[4];          // +0x1544

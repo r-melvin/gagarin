@@ -18,8 +18,9 @@
 
 // The house driving this machine; the mode is refused when its counter at
 // +0x2F0 is not positive.
-struct HouseClass
+class HouseClass
 {
+public:
     char _pad000[0x2F0];   // +0x0000
     int  unknown_2F0;      // +0x02F0
 };
@@ -31,8 +32,9 @@ extern HouseClass* CurrentPlayer;
 // GAMEMD 0x0048DC90 — the no-argument notify run after a mode is entered.
 void ModeEntered();
 
-struct MapClass
+class MapClass
 {
+public:
 #include "map_class_mode_slots.inc"
 
     char _padVtbl[0x11A8 - 4];   // +0x0004  (vptr occupies +0x0000)

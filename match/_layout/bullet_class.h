@@ -74,8 +74,9 @@ GG_STATIC_ASSERT(offsetof(BulletVelocity, Z) == 0x10);
 GG_STATIC_ASSERT(sizeof(BulletVelocity)      == 0x18);
 #endif
 
-struct BulletClass : ObjectClass
+class BulletClass : public ObjectClass
 {
+public:
     void*          Type;                // +0xAC BulletTypeClass*; ctor @0x00466391
     void*          Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
     unsigned char  unknown_B4;          // +0xB4 ctor MOV byte [ESI+0xB4],BL @0x0046639D

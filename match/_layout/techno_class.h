@@ -46,8 +46,9 @@ GG_STATIC_ASSERT(sizeof(FlashData) == 8);
 // Rate/Step; embeds a CDTimerClass.
 #ifndef GG_MATCH_LAYOUT_STAGECLASS_DEFINED
 #define GG_MATCH_LAYOUT_STAGECLASS_DEFINED
-struct StageClass
+class StageClass
 {
+public:
     int           Value;        // +0x00
     unsigned char HasChanged;   // +0x04  (bool)
     unsigned char _pad_05[3];   // +0x05
@@ -186,7 +187,7 @@ GG_STATIC_ASSERT(sizeof(RecoilData)                   == 0x20);
 class PlanningTokenClass;
 struct WeaponStruct;
 struct CellStruct;
-struct HouseClass;
+class HouseClass;
 
 // TechnoClass  (0xF0..0x51F, sizeof = 0x520)
 // Retail RTTI 0x817B58 establishes the class key; public access preserves this ABI view.

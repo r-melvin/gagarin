@@ -24,8 +24,9 @@
 // constructors 0x6429A0 / 0x6429E0 / 0x642A30 store it at +0x00; slot 0 is
 // 0x643E80 (`MOV EAX,[ESP+4]; MOV [ECX+4],EAX; RET 4`), called directly three
 // times from 0x684620 with ECX = 0xAC4F58.
-struct ProgressScreenClass
+class ProgressScreenClass
 {
+public:
     virtual void Slot0(int value);  // slot 0, 0x643E80: stores +0x04
 
     void SetSide(int idx);        // GAMEMD 0x642B10 __thiscall

@@ -29,7 +29,7 @@ struct DeactType
 };
 GG_STATIC_ASSERT(offsetof(DeactType, DeactivateSound) == 0x5AC);
 
-class ILocomotion;
+struct ILocomotion;
 typedef long (__stdcall* LocoSlot0_0070FC90)(ILocomotion*);
 #define LOCO_CALL0_DEACT(p, slot) \
     ((*(LocoSlot0_0070FC90*)(*(char**)(p) + (slot)))(p))

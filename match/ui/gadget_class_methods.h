@@ -41,8 +41,9 @@
 // *non-tail* call (`call; pop esi; ret`), which a free-function stand-in would
 // have been tail-jumped into instead.
 // VTABLE: GAMEMD 0x7E92BC
-struct GadgetClass : public LinkClass
+class GadgetClass : public LinkClass
 {
+public:
     // FUNCTION: GAMEMD 0x4E12F0 (decl; constructor)
     GadgetClass(int x, int y, int width, int height, unsigned int flags, char sticky);
 

@@ -41,8 +41,9 @@ struct Gg_BY_HANDLE_FILE_INFORMATION
 GG_STATIC_ASSERT(offsetof(Gg_BY_HANDLE_FILE_INFORMATION, ftCreationTime) == 0x04);
 GG_STATIC_ASSERT(sizeof(Gg_BY_HANDLE_FILE_INFORMATION) == 0x34);
 
-struct RawFileClass
+class RawFileClass
 {
+public:
     char  _pad00[0x14];   // +0x0000
     void* Handle;         // +0x0014  INVALID_HANDLE_VALUE (-1) means closed
 

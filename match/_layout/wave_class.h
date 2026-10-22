@@ -19,6 +19,8 @@
 class WaveClass : public ObjectClass
 {
 public:
+    // FUNCTION: GAMEMD 0x75EBE0 (decl; reloc) -- default constructor, called by the class factory at 0x6BF0CF.
+    WaveClass();
     virtual HRESULT __stdcall GetClassID(CLSID *pClassID);      // 3  0x75F840: override (SDK declaration)
     virtual long __stdcall Load(struct IStream *);              // 5  0x75F650: override of ObjectClass
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);// 6  0x75F7D0: override (declaration from the base header)
@@ -28,7 +30,7 @@ public:
     virtual int vf_12();                                        // 12  0x75F880: override (declaration from the base header)
     virtual void vf_23();                                       // 23  0x760F50: override of ObjectClass
     virtual int vf_30();                                        // 30  0x75F890: override of ObjectClass
-    virtual struct ObjectTypeClass * vf_34();                   // 34  0x75F8A0: override of ObjectClass
+    virtual class ObjectTypeClass * vf_34();                   // 34  0x75F8A0: override of ObjectClass
     virtual bool vf_53();                                       // 53  0x75F980: override of ObjectClass
     virtual bool vf_54(struct CoordStruct const &, int);        // 54  0x75F8B0: override of ObjectClass
     virtual void vf_69(int, int);                               // 69  0x75F9F0: override of ObjectClass

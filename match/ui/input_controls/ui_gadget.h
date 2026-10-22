@@ -32,7 +32,7 @@
 // LIBRARY: GAMEMD 0x7C8B3D operator delete
 void __cdecl operator delete(void* block);
 
-struct GadgetClass;
+class GadgetClass;
 // GLOBAL: GAMEMD 0x8B3E88 -- the gadget that captured the mouse.
 extern GadgetClass* GadgetClass_StuckOn;
 // GLOBAL: GAMEMD 0x8B3E8C -- the list head the last Input call ran for.
@@ -43,8 +43,9 @@ extern GadgetClass* GadgetClass_Focused;
 extern GadgetClass* GadgetClass_Hovered;
 
 // VTABLE: GAMEMD 0x007E92BC
-struct GadgetClass : public LinkClass
+class GadgetClass : public LinkClass
 {
+public:
     GadgetClass(int x, int y, int width, int height, unsigned flags, char sticky);   // 0x4E12F0
     // 0x4E1A60 is the compiler's scalar deleting destructor with this body expanded in it (lists_gadget.cpp); the
     // out-of-line copy lives at 0x4E1390, which the derived destructors call.
@@ -101,8 +102,9 @@ GG_STATIC_ASSERT(offsetof(GadgetClass, Flags) == 0x20);
 GG_STATIC_ASSERT(sizeof(GadgetClass) == 0x24);   // ControlClass::ID is the next member at +0x24
 
 // VTABLE: GAMEMD 0x007E528C
-struct ControlClass : public GadgetClass
+class ControlClass : public GadgetClass
 {
+public:
     ControlClass(int id, int x, int y, int w, int h, unsigned flags, char sticky);   // 0x48E520
 
     virtual unsigned GetID();                                                // 0x44  0x48E610
@@ -118,8 +120,9 @@ GG_STATIC_ASSERT(offsetof(ControlClass, Peer) == 0x28);
 GG_STATIC_ASSERT(sizeof(ControlClass) == 0x2C);   // the Toggle/Gauge/List/Edit members start at +0x2C
 
 // VTABLE: GAMEMD 0x007E8118
-struct ToggleClass : public ControlClass
+class ToggleClass : public ControlClass
 {
+public:
     ToggleClass(int id, int x, int y, int width, int height);   // 0x723E60: Control(id, x, y, w, h, 5, 1)
 
     virtual int Action(unsigned flags, unsigned* key, int modifier);   // 0x7C  0x723EC0
@@ -138,8 +141,9 @@ GG_STATIC_ASSERT(offsetof(ToggleClass, unknown_30) == 0x30);
 GG_STATIC_ASSERT(sizeof(ToggleClass) == 0x34);   // ShapeButton/TextButton members start at +0x34
 
 // VTABLE: GAMEMD 0x007E8088
-struct ShapeButtonClass : public ToggleClass
+class ShapeButtonClass : public ToggleClass
 {
+public:
     // 0x69DD30: Toggle(id, x, y, w, h), clears +0x34..+0x4C, +0x50 = [0x87F6C4], +0x55 = the last argument,
     // +0x58 = the shape; the size comes from the shape header unless w/h are given.
     ShapeButtonClass(int id, void const* shape, int x, int y, int w, int h, int translucent);
@@ -181,8 +185,9 @@ GG_STATIC_ASSERT(offsetof(ShapeButtonClass, IsShapeLoaded) == 0x5C);
 GG_STATIC_ASSERT(sizeof(ShapeButtonClass) == 0x60);
 
 // VTABLE: GAMEMD 0x007F55DC
-struct TextButtonClass : public ToggleClass
+class TextButtonClass : public ToggleClass
 {
+public:
     virtual int  Draw(int forced);                            // 0x6C  0x71FFE0
     virtual void SetText(const wchar_t* text, bool resize);   // 0x88  0x720020 (new slot 34)
     virtual void SetPrintFlags(int flags);                    // 0x8C  0x720200
@@ -201,8 +206,9 @@ GG_STATIC_ASSERT(offsetof(TextButtonClass, Text) == 0x38);
 GG_STATIC_ASSERT(offsetof(TextButtonClass, unknown_3C) == 0x3C);
 
 // VTABLE: GAMEMD 0x007E9384
-struct GaugeClass : public ControlClass
+class GaugeClass : public ControlClass
 {
+public:
     GaugeClass(int id, int x, int y, int w, int h);   // 0x4E2500: Control(id, x, y, w, h, 7, 1)
 
     virtual int  Draw(int forced);                                      // 0x6C  0x4E2690
@@ -238,8 +244,9 @@ GG_STATIC_ASSERT(offsetof(GaugeClass, Value) == 0x34);
 GG_STATIC_ASSERT(offsetof(GaugeClass, unknown_38) == 0x38);
 
 // VTABLE: GAMEMD 0x007E9430
-struct TriColorGaugeClass : public GaugeClass
+class TriColorGaugeClass : public GaugeClass
 {
+public:
     virtual int Draw(int forced);             // 0x6C  0x4E2B50
     virtual int vf_42(int limit);       // 0xA8  0x4E2AF0 (new slot 42)
     virtual int vf_43(int limit);    // 0xAC  0x4E2B20
@@ -251,8 +258,9 @@ GG_STATIC_ASSERT(offsetof(TriColorGaugeClass, unknown_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(TriColorGaugeClass, unknown_40) == 0x40);
 
 // VTABLE: GAMEMD 0x007ED21C
-struct SliderClass : public GaugeClass
+class SliderClass : public GaugeClass
 {
+public:
     // 0x6B1B20: Gauge(id, x, y, w, h); +0x44 = (last argument != 0); when it is clear the plus and minus
     // ShapeButtons are allocated (0x60 bytes each) into +0x3C/+0x40 and peered to the slider.
     SliderClass(int id, int x, int y, int w, int h, int belt);
@@ -301,8 +309,9 @@ typedef DynamicVectorClass<wchar_t const*> TextDynVector;
 GG_STATIC_ASSERT(sizeof(TextDynVector) == 0x18);   // List +0x34, LineHeight +0x4C
 
 // VTABLE: GAMEMD 0x007ED10C
-struct ListClass : public ControlClass
+class ListClass : public ControlClass
 {
+public:
     ListClass(int id, int x, int y, int w, int h, unsigned textFlags, void const* upShape,
               void const* downShape);                           // 0x557230
     // 0x558060 is the compiler's scalar deleting destructor with this body expanded in it (the out-of-line copy
@@ -383,8 +392,9 @@ struct CheckItemClass
 GG_STATIC_ASSERT(offsetof(CheckItemClass, IsChecked) == 0x04);
 
 // VTABLE: GAMEMD 0x007E4F84 (declared for the call views; not emitted by this module)
-struct CheckListClass : public ListClass
+class CheckListClass : public ListClass
 {
+public:
     virtual ~CheckListClass();                                            // 0x00  0x4886E0
     virtual int        Action(unsigned flags, unsigned* key, int modifier);  // 0x7C  0x4884A0
     virtual int        AddItem(wchar_t const* text);                      // 0x88  0x488310
@@ -438,8 +448,9 @@ GG_STATIC_ASSERT(offsetof(ColorDynVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(sizeof(ColorDynVector) == 0x18);   // Style +0x18C after Colors +0x174
 
 // VTABLE: GAMEMD 0x007E5054
-struct ColorListClass : public ListClass
+class ColorListClass : public ListClass
 {
+public:
     ColorListClass(int id, int x, int y, int w, int h, unsigned textFlags, void const* upShape,
                    void const* downShape);                                // 0x488760
     // FUNCTION: GAMEMD 0x488F00 (compiler-emitted scalar deleting destructor; destroys Colors, then ListClass)
@@ -464,8 +475,9 @@ GG_STATIC_ASSERT(offsetof(ColorListClass, Style) == 0x18C);
 GG_STATIC_ASSERT(offsetof(ColorListClass, SelectColor) == 0x190);
 
 // VTABLE: GAMEMD 0x007E81A4 (declared for the call views; not emitted by this module)
-struct EditClass : public ControlClass
+class EditClass : public ControlClass
 {
+public:
     // 0x4C2FC0: Control(id, x, y, w, h, 1, 0), +0x2C = textFlags without bit 8, +0x30 flags, +0x34 text,
     // +0x38 size - 1, +0x3C wcslen(text), +0x40 GetColorScheme().
     EditClass(int id, wchar_t* text, int size, unsigned textFlags, int x, int y, int w, int h,
@@ -497,8 +509,9 @@ GG_STATIC_ASSERT(offsetof(EditClass, SchemeIndex) == 0x40);
 GG_STATIC_ASSERT(offsetof(EditClass, IsReadOnly) == 0x44);
 
 // VTABLE: GAMEMD 0x007E7FCC
-struct DropListClass : public EditClass
+class DropListClass : public EditClass
 {
+public:
     DropListClass(int id, wchar_t* text, int size, unsigned textFlags, int x, int y, int w, int listHeight,
                   void const* upShape, ShapeHeader const* dropShape);       // 0x4B4E10
     // FUNCTION: GAMEMD 0x4B55F0 (compiler-emitted scalar deleting destructor; destroys unknown_B0, unknown_50, EditClass)
@@ -543,8 +556,9 @@ struct ControlsBuffer : MemoryBuffer
 GG_STATIC_ASSERT(sizeof(ControlsBuffer) == 0x0C);
 
 // VTABLE: GAMEMD 0x7F3EA0
-struct StaticButtonClass : public GadgetClass
+class StaticButtonClass : public GadgetClass
 {
+public:
     // Not claimed: the constructor is only declared here because defining it makes the compiler emit the vtable
     // and the scalar deleting destructor (slot 0, 0x6C6880), which inlines the destructor below. Retail
     // 0x6C6540 (Gadget(x, y, w, h, 0, 0), +0x24 MemoryBuffer(0, 0), +0x30 = 0, +0x34 = flags, then SetText) /
@@ -569,8 +583,9 @@ GG_STATIC_ASSERT(offsetof(StaticButtonClass, Text) == 0x30);
 GG_STATIC_ASSERT(offsetof(StaticButtonClass, unknown_34) == 0x34);
 
 // VTABLE: GAMEMD 0x7F5B44
-struct TextLabelClass : public GadgetClass
+class TextLabelClass : public GadgetClass
 {
+public:
     virtual int  Draw(int forced);                      // 0x6C  0x72A4A0
     virtual void SetText(const wchar_t* text);          // 0x84  0x72A660 (new slot 33)
 

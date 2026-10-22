@@ -36,8 +36,9 @@ int __fastcall OverlayTypeIndexToTiberium(int idxOverlay);
 
 // TiberiumClass — only the AbstractTypeClass UIName pointer at +0x60 is needed
 // (GetUIName loads [EDX+0x60] from the array element). Full layout is P2.
-struct TiberiumClass
+class TiberiumClass
 {
+public:
     char           _pad00[0x60];   // +0x00  AbstractTypeClass prefix
     const wchar_t* UIName;         // +0x60
 };
@@ -59,8 +60,9 @@ GG_STATIC_ASSERT(offsetof(RulesRadShim, RadLevelMax) == 0x180C);
 // GLOBAL: GAMEMD 0x008871E0 — pointer to the active RulesClass instance.
 extern RulesRadShim* RulesGlobalPtr;
 
-struct CellClass
+class CellClass
 {
+public:
     char       _base[0x24];                 // +0x00  AbstractClass (vtable + base)
     CellStruct MapCoords;                    // +0x24  written by SetMapCoords
     char       _pad28[0x44 - 0x28];          // +0x28

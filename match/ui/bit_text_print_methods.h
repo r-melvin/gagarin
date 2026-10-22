@@ -18,13 +18,14 @@
 #ifndef GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 #define GG_MATCH_UI_BIT_TEXT_PRINT_METHODS_H
 
-struct Surface;
+class Surface;
 
 // BitFont — the four methods this draw path drives. All are direct (non-virtual)
 // __thiscall calls at fixed addresses, so they are declared without bodies and
 // the compiler emits reloc-normalised direct calls.
-struct BitFont
+class BitFont
 {
+public:
     void FUN_004348F0(Surface* surface);                        // GAMEMD 0x4348F0
     void FUN_00434110(int value);                               // GAMEMD 0x434110
     int  FUN_00434500(const unsigned short* text, int a, int b,

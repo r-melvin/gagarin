@@ -26,16 +26,18 @@ GG_STATIC_ASSERT(offsetof(DynamicVectorClassLayout, Count) == 0x10);
 // non-virtual Sort. The base vtable pointer is modelled as plain data by the
 // vector spine, so a virtual dispatch on `this` is issued via the minimal
 // abstract interface below (real-virtual => exact __thiscall with a stack arg).
-struct LayerClass : DynamicVectorClassLayout
+class LayerClass : public DynamicVectorClassLayout
 {
+public:
     void Sort();
     // FUNCTION: GAMEMD 0x5519B0 (decl; reloc) — LayerClass::AddObject, called
     // directly (class-qualified) by LogicClass::AddObject.
     bool AddObject(ObjectClass* pObject, bool sorted);
 };
 
-struct LogicClass : LayerClass
+class LogicClass : public LayerClass
 {
+public:
     bool AddObject(ObjectClass* pObject, bool sorted);
     void RemoveObject(ObjectClass* pObject);
 };

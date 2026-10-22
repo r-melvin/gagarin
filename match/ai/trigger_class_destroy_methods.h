@@ -47,8 +47,9 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex) == 0xB4);
 class TriggerClass;  // fwd (Execute's pTrigger arg)
 
 // TActionClass — singly-linked action node. NextAction @0x28; Execute @0x6DD8B0.
-struct TActionClass
+class TActionClass
 {
+public:
     char          _pad0[0x28];   // +0x000  AbstractClass base + ArrayIndex (P2)
     TActionClass* NextAction;    // +0x028
 

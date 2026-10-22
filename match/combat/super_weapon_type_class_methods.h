@@ -25,8 +25,9 @@
 // Only Action @0xBC is touched by FindFirstOfAction:
 //   `CMP dword ptr [EBX+0xBC], ECX` — Action compared to the ECX argument.
 // ---------------------------------------------------------------------------
-struct SuperWeaponTypeClass : AbstractTypeClass
+class SuperWeaponTypeClass : public AbstractTypeClass
 {
+public:
     // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
     static SuperWeaponTypeClass* __fastcall FindFirstOfAction(int action);
 

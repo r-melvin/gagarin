@@ -37,8 +37,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
 
-struct ShipLocomotionClass : LocomotionPiggybackBase
+class ShipLocomotionClass : public LocomotionPiggybackBase
 {
+public:
     int         unknown_1C;       // +0x1C ctor `MOV [ESI+0x1c],EAX` @0x0069EC5D
                                   //       (=0); the ramp/slope pair with 0x20 -
                                   //       not distinguished by any reader, so

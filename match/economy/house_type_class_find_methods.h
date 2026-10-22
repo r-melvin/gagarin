@@ -19,8 +19,9 @@
 // and called, never reimplemented.
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
-struct HouseTypeClass : AbstractTypeClass
+class HouseTypeClass : public AbstractTypeClass
 {
+public:
     char _pad98[0xB8 - 0x98];   // +0x0098
     int  ArrayIndex2;           // +0x00B8  second copy of the array index (ArrayIndex is +0xB4, returned by slot 16 0x512730); returned on a hit
 

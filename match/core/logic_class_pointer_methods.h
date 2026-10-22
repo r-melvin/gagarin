@@ -12,7 +12,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct AbstractClass;
+class AbstractClass;
 
 // The only AbstractType this list holds (`CMP EAX,0x2C`).
 #define ABS_LOGIC_MEMBER 0x2C
@@ -25,8 +25,9 @@ typedef int (__fastcall* WhatAmIFunc)(AbstractClass*);
 // GLOBAL: GAMEMD 0x008B40C8 — the logic list.
 extern DynamicVectorClassLayout LogicArray;
 
-struct LogicClass
+class LogicClass
 {
+public:
     void PointerGotInvalid(AbstractClass* invalid, bool removed);   // GAMEMD 0x55B880
 };
 

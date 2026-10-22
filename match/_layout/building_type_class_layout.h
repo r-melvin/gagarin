@@ -59,13 +59,14 @@ GG_STATIC_ASSERT(sizeof(BuildingAnimStruct) == 0x44);
 //  forward-declared by techno_type_class.h; re-declared here is harmless.)
 struct CellStruct;
 class OverlayTypeClass;
-struct IsometricTileTypeClass;
+class IsometricTileTypeClass;
 
 // ---------------------------------------------------------------------------
 // BuildingTypeClass  (0xDF8..0x1797, sizeof = 0x1798)
 // ---------------------------------------------------------------------------
-struct BuildingTypeClass : TechnoTypeClass
+class BuildingTypeClass : public TechnoTypeClass
 {
+public:
     int               ArrayIndex;                  // +0xDF8
     CellStruct*       FoundationData;              // +0xDFC
     SHPStruct*        Buildup;                     // +0xE00

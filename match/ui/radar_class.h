@@ -62,8 +62,9 @@ GG_STATIC_ASSERT(offsetof(RadarTrackNode, Cell) == 0x24);
 
 // RadarClass — modelled as a flat byte image (no C++ vtable of our own: the
 // retail vtable already lives at offset 0 and is covered by the leading pad).
-struct RadarClass
+class RadarClass
 {
+public:
     // ---- matched methods (ascending by retail address) ----
     void CreateEmptyMap(const RectangleStruct& mapRect, bool reuse,
                         char nLevel, bool bUnk2);          // GAMEMD 0x653F50 __thiscall

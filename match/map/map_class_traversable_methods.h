@@ -88,8 +88,9 @@ GG_STATIC_ASSERT(offsetof(CellClass_00578AD0, FirstObject) == 0xE4);
 // GLOBAL: GAMEMD 0xABDC50 — MapClass::InvalidCell (its MapCoords is 0xABDC74).
 extern CellClass_00578AD0 InvalidCell;
 
-struct MapClass
+class MapClass
 {
+public:
     char                 _pad000[0x13C];   // +0x0000
     CellClass_00578AD0** Cells;            // +0x013C
 

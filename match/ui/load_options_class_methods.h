@@ -28,8 +28,9 @@ enum LoadOptionsMode
 // slot bodies never touch `this`; each takes its arguments from the first stack
 // slots (RET 4 / RET 8), i.e. __thiscall with an unused ECX. DeleteMission
 // (0x559EB0) is slot 3: the same body as the former static __stdcall view.
-struct LoadOptionsClass
+class LoadOptionsClass
 {
+public:
     virtual ~LoadOptionsClass();                                           // slot 0, 0x55A0D0 (scalar deleting)
     virtual bool Slot1(const char* fileName);                              // slot 1, 0x559D60
     virtual bool Slot2(const char* fileName, const wchar_t* description);  // slot 2, 0x559E40

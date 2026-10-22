@@ -143,8 +143,9 @@ extern Singleton_00435560* DAT_0089C4D0;   // GLOBAL: GAMEMD 0x89C4D0
 // locator @0x7E3A7C -> type descriptor 0x818B80 -> `.?AVBitText@@`) - only the
 // vtable-pointer field this destructor touches. Sibling minimal view in
 // bit_text_ctor_methods.h models the constructor + a stand-in dtor.
-struct BitText
+class BitText
 {
+public:
     char* Vtable;   // +0x0000
 
     // FUNCTION: GAMEMD 0x435560

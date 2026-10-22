@@ -54,8 +54,9 @@ GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft)    == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     double GetPowerPercentage() const;          // GAMEMD 0x4FCE30 __thiscall
     void   CreatePowerOutage(int duration);     // GAMEMD 0x50BC90 __thiscall
     void   CreateRadarOutage(int duration);     // GAMEMD 0x50BCD0 __thiscall

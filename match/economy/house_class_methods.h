@@ -22,8 +22,9 @@
 // (`MOV byte ptr [ECX+0x1fb], 1`): the HasThreatNode flag lives at +0x1FB.
 // IonSensitivesShouldBeOffline (0x53A130) touches no member (returns false).
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     void AcquiredThreatNode();                       // GAMEMD 0x509130 __thiscall
     bool IonSensitivesShouldBeOffline() const;       // GAMEMD 0x53A130 __thiscall
 

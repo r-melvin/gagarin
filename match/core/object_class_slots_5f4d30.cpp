@@ -7,15 +7,17 @@
 #include "../_layout/cell_class.h"
 #include "../_layout/anim_class.h"
 
-struct DisplayClass
+class DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x4A9770 (declaration) -- take an object off the map.
     void FUN_004A9770(ObjectClass* object);
     // FUNCTION: GAMEMD 0x4A9720 (declaration) -- put an object on the map.
     void FUN_004A9720(ObjectClass* object);
 };
-struct MapClass : DisplayClass
+class MapClass : public DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
     CellClass* FUN_00565730(const CoordStruct* coord);
     // FUNCTION: GAMEMD 0x56D230 (declaration) -- the movement zone of a cell.

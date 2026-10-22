@@ -27,23 +27,26 @@ GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_BC4) == 0xBC4);
 GG_STATIC_ASSERT(offsetof(ObjectRulesView, unknown_FA8) == 0xFA8);
 
 // The map cell (read-only here).
-struct CellClass
+class CellClass
 {
+public:
     char unknown_000[0xEC];
     int  unknown_EC;                 // +0xEC  2 for the cells a flaming guy splashes in
 };
 struct Point2D;
 
 // The map object at 0x87F7E8 (only the entry points used here).
-struct DisplayClass
+class DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x4A9720 (declaration)
     void Submit(ObjectClass* object);
     // FUNCTION: GAMEMD 0x4A9770 (declaration)
     void Remove(ObjectClass* object);
 };
-struct MapClass : DisplayClass
+class MapClass : public DisplayClass
 {
+public:
     // FUNCTION: GAMEMD 0x565730 (declaration) -- the cell under a coordinate.
     CellClass* FUN_00565730(const CoordStruct* coord);
 };

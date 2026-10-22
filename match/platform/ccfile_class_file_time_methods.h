@@ -58,8 +58,9 @@ GG_STATIC_ASSERT(sizeof(Buffer_00473E50) == 0xC);
 struct Vtbl_00473E50;
 
 // CCFileClass — a file that may live inside a MIX archive.
-struct CCFileClass
+class CCFileClass
 {
+public:
     Vtbl_00473E50*  Vtbl;       // +0x0000
     char            _pad004[0x58 - 0x04];
     Buffer_00473E50 Buffer;     // +0x0058

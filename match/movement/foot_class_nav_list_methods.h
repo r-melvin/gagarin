@@ -22,7 +22,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/foot_class.h"   // FootClass: Destination @0x5A4, NavQueue @0x5AC, unknown_bool_6B1
 
-struct AbstractClass;
+class AbstractClass;
 
 // DynamicVectorClass<AbstractClass*> as retail reads it at the AddItem site:
 // slot +0x08 is Resize(newCapacity, array), the allocation flag is the byte

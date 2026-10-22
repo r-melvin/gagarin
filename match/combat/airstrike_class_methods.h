@@ -19,8 +19,8 @@
 
 class ObjectClass;
 class TechnoClass;
-struct FootClass;
-struct AircraftTypeClass;
+class FootClass;
+class AircraftTypeClass;
 
 // VTABLE: GAMEMD 0x7E29A8 (IPersistStream side)
 // VTABLE: GAMEMD 0x7E298C (IRTTITypeInfo side, +0x04)

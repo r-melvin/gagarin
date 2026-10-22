@@ -30,8 +30,9 @@ GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // SuperWeaponTypeClass — the PostClick flag @0xEE and the index of the
 // superweapon it hands over to @0xF0.
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char _pad000[0xEE];      // +0x0000
     bool PostClick;          // +0x00EE
     char _pad0EF[1];         // +0x00EF
@@ -41,8 +42,9 @@ GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PostClick)      == 0xEE);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, PostClickIndex) == 0xF0);
 
 // SuperClass : AbstractClass — a per-house superweapon instance.
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x28];         // +0x0000
     SuperWeaponTypeClass* Type;                // +0x0028
     char                  _pad02C[0x62 - 0x2C];// +0x002C
@@ -58,8 +60,9 @@ struct SuperClass
 GG_STATIC_ASSERT(offsetof(SuperClass, Type)            == 0x28);
 GG_STATIC_ASSERT(offsetof(SuperClass, ChronoMapCoords) == 0x62);
 
-struct HouseClass
+class HouseClass
 {
+public:
     char         _pad000[0x258];   // +0x0000
     SuperClass** SupersItems;      // +0x0258
 

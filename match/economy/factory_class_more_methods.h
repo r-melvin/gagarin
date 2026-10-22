@@ -78,8 +78,9 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 // Suspend resets the production timer: Rate first, then a CDTimerClass(0)
 // temporary copied into Timer.
 // ---------------------------------------------------------------------------
-struct StageClass
+class StageClass
 {
+public:
     int          Value;       // +0x00
     bool         HasChanged;  // +0x04
     CDTimerClass Timer;       // +0x08
@@ -103,8 +104,9 @@ GG_STATIC_ASSERT(sizeof(StageClass) == 0x1C);
 // ---------------------------------------------------------------------------
 // FactoryClass : AbstractClass (0x24)  (sizeof = 0x74)
 // ---------------------------------------------------------------------------
-struct FactoryClass
+class FactoryClass
 {
+public:
     char         _abstract_base[0x24];  // +0x00  AbstractClass (vtable + members)
     StageClass   Production;            // +0x24  progress timer
     char         _queued[0x18];         // +0x40  DynamicVectorClass QueuedObjects

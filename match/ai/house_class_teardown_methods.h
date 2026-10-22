@@ -17,8 +17,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct HouseClass;
-struct HouseTypeClass;   // opaque — compared by pointer identity only
+class HouseClass;
+class HouseTypeClass;   // opaque — compared by pointer identity only
 
 // Each of the three classes below is modelled with just enough virtuals to put
 // the virtual destructor at vtable+0x20 (slot 8), so `delete p` reproduces the
@@ -63,8 +63,9 @@ struct HouseTriggerDeleteCallView
 };
 GG_STATIC_ASSERT(offsetof(HouseTriggerDeleteCallView, Type) == 0x24);
 
-struct HouseClass
+class HouseClass
 {
+public:
     virtual void vf00() = 0;   // vtable+0x00
     virtual void vf04() = 0;   // vtable+0x04
     virtual void vf08() = 0;   // vtable+0x08

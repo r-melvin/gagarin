@@ -48,8 +48,9 @@ extern Rules_00489180* RulesInstance;
 
 // Minimal MapClass view: GetTotalDamage is static (no instance members), so
 // the struct only carries the method scope for the mangled name.
-struct MapClass
+class MapClass
 {
+public:
     // FUNCTION: GAMEMD 0x489180
     static int __fastcall GetTotalDamage(int damage, WarheadType_00489180* warhead,
                                          int armor, int distance);

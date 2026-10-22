@@ -18,8 +18,9 @@
 // Message gadget node (GadgetClass : LinkClass). SetWidth needs:
 //   * vtable slot 1 (+0x04) = GadgetClass::GetNext -> `mov edx,[this]; call [edx+4]`
 //   * Width @ +0x38, written for every node (`mov [eax+0x38], esi`).
-struct TextLabelClass
+class TextLabelClass
 {
+public:
     virtual ~TextLabelClass();             // slot 0 (destructor)
     virtual TextLabelClass* GetNext();     // slot 1 (+0x04) — walked here
     char _gap04[0x38 - 0x04];              // LinkClass tail + GadgetClass fields

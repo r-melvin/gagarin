@@ -24,10 +24,10 @@
 // Unsorted::CurrentFrame — global frame counter @0x00A8ED84.
 #include "../core/frame_counter.h"
 
-struct SlaveManagerClass;
+class SlaveManagerClass;
 struct SlaveManagerHandle;
 struct SlaveObject;
-struct HouseClass;
+class HouseClass;
 
 // ---------------------------------------------------------------------------
 // TechnoClass — the slave miner / master. Only two things are touched:
@@ -64,8 +64,9 @@ public:
 // InfantryTypeClass — the slave type. CreateSlave calls its object factory at
 // primary vtable index 35 -> 0x8C (takes the spawn coords, returns the slave).
 // ---------------------------------------------------------------------------
-struct InfantryTypeClass
+class InfantryTypeClass
 {
+public:
     virtual void _itv0();
     virtual void _itv1();
     virtual void _itv2();
@@ -411,8 +412,9 @@ GG_STATIC_ASSERT(offsetof(SlaveControl, RespawnTimer) == 0x08);
 // SlaveManagerClass — modelled non-polymorphically (COM base [0x00..0x24) is
 // P2). Only the members the three methods touch are named + asserted.
 // ---------------------------------------------------------------------------
-struct SlaveManagerClass
+class SlaveManagerClass
 {
+public:
     char               _base[0x24];     // +0x00  COM vptrs + Array/RegenRate (P2)
     TechnoClass*       Owner;           // +0x24
     InfantryTypeClass* SlaveType;       // +0x28

@@ -8,8 +8,9 @@
 #include "control_class_vtable_layout.h"
 
 // VTABLE: GAMEMD 0x7E528C
-struct ControlClass : GadgetClass
+class ControlClass : public GadgetClass
 {
+public:
     // The inherited virtual destructor is implicit; retail calls Gadget destruction.
     virtual unsigned int GetID();                         // slot 17, 0x48E610
     virtual int Draw(int forced);                         // slot 27, 0x48E620

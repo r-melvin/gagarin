@@ -16,8 +16,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct HouseClass;
-struct TechnoTypeClass;
+class HouseClass;
+class TechnoTypeClass;
 
 // ---------------------------------------------------------------------------
 // RulesClass shim — only the two self-heal step amounts are needed here.
@@ -73,8 +73,9 @@ extern int SessionGameMode;
 //   Balance             @0x030C  int   (ADD [ECX+0x30C]   @0x4F9950)
 //   SpySatActive        @0x577A  bool  (MOV AL,[ECX+0x577A] @0x50BD10)
 // ---------------------------------------------------------------------------
-struct HouseClass
+class HouseClass
 {
+public:
     char _pad0[0x164];                        // +0x0000
     int  InfantrySelfHeal;                    // +0x0164
     int  UnitsSelfHeal;                       // +0x0168

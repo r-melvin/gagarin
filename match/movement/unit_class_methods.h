@@ -20,8 +20,9 @@
 // UnitClass — self-propelled ground vehicle. Derives FootClass at offset 0 and
 // adds its own block from 0x6C0. Only the members the matched methods touch are
 // modelled; the rest of the UnitClass span is P2.
-struct UnitClass : FootClass
+class UnitClass : public FootClass
 {
+public:
     int     CurrentFiringFrame;   // +0x6C0
     void*   Type;                 // +0x6C4  (UnitTypeClass*)
     void*   FollowerCar;          // +0x6C8  (UnitClass*)

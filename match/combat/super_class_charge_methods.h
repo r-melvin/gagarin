@@ -101,8 +101,9 @@ GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);
 
 // SuperWeaponTypeClass — only RechargeTime @0xB0 and ManualControl @0xF5 are
 // touched here.
-struct SuperWeaponTypeClass
+class SuperWeaponTypeClass
 {
+public:
     char _pad0[0xB0];          // +0x00
     int  RechargeTime;         // +0xB0
     char _padB4[0xE5 - 0xB4];  // +0xB4
@@ -116,7 +117,7 @@ GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, RechargeTime)  == 0xB0);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, ManualControl) == 0xF5);
 
 // SuperClass : AbstractClass — a per-house superweapon instance.
-struct SuperClass;
+class SuperClass;
 
 // The preclick animation; only the byte at +0x195 is cleared.
 struct PreclickAnim_006CB830
@@ -156,8 +157,9 @@ struct SuperVector_006CB830
 // GLOBAL: GAMEMD 0xB0F5B8 — the supers with a preclick animation pending.
 extern SuperVector_006CB830 DAT_00B0F5B8;
 
-struct SuperClass
+class SuperClass
 {
+public:
     char                  _base[0x24];        // +0x00  AbstractClass
     int                   CustomChargeTime;   // +0x24  -1 == "use Type default"
     SuperWeaponTypeClass* Type;               // +0x28
