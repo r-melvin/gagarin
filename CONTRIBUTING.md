@@ -45,7 +45,13 @@ REA/Ghidra is still used for analysis and entry-point evidence. Address-labelled
 `DAT_XXXXXXXX` operands are checked against their named address plus the COFF
 relocation addend; a mismatch is a hard failure that instruction-diff fallback
 cannot override. This guard covers those named globals, not every relocation;
-use `verify_relocations.py` for complete explicit target binding.
+use `verify_relocations.py` for complete explicit target binding. It reads
+`scripts/data/symbol_bindings.json` (symbol -> retail VA for callees and
+globals without an exact row; `<tu>::<symbol>` keys bind TU-local statics) by
+default; `--symbol-map` overrides it and `--no-bindings` ignores it. Add a
+binding only when the retail relocation target confirms it. `$L` switch labels
+are checked by their position after the function and string/float literals by
+their retail bytes, so neither is listed.
 
 To compile every tracked C++ translation unit into a persistent,
 path-preserving object tree, run:
