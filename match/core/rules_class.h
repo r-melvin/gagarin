@@ -16,7 +16,10 @@ class WeaponTypeClass;
 
 struct RulesClass
 {
-    char unknown_00[0x04C];
+    int unknown_000; // 0x6850FB -> fastcall55AF40
+    int unknown_004;
+    int unknown_008; // 0x685108 -> fastcall55AF50
+    char unknown_00C[0x04C - 0x00C];
     AnimTypeClass* LandAnim; // +0x04C
     char unknown_050[0x108 - 0x050];
     AnimTypeClass** TouchdownAnims; // +0x108
@@ -68,9 +71,17 @@ struct RulesClass
     double ConditionRed;
     char unknown_1710[0x1804 - 0x1710];
     int RadDurationMultiple;
+    char unknown_1808[0x186C - 0x1808];
+    int unknown_186C; // random upper bound minus one0x68508F
+    AnimTypeClass* unknown_1870; // 0x6850D9 -> AnimClass constructor0x421EA0
 };
 
 GG_STATIC_ASSERT(offsetof(RulesClass, BunkerSound) == 0x244);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_000) == 0x000);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_008) == 0x008);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_186C) == 0x186C);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1870) == 0x1870);
+
 GG_STATIC_ASSERT(offsetof(RulesClass, At_54C) == 0x54C);
 GG_STATIC_ASSERT(offsetof(RulesClass, LandAnim) == 0x04C);
 GG_STATIC_ASSERT(offsetof(RulesClass, TouchdownAnims) == 0x108);

@@ -67,13 +67,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, IncomeMult) == 0x148);
 // TiberiumClass (partial) — only Value @0xB8 is touched (`FILD dword[EDX+0xB8]`
 // loads it as an int). Same member StorageClass::GetTotalValue uses.
 // ---------------------------------------------------------------------------
-class TiberiumClass
-{
-public:
-    char _pad0[0xB8];   // AbstractTypeClass-derived head = P2
-    int  Value;         // +0xB8
-};
-GG_STATIC_ASSERT(offsetof(TiberiumClass, Value) == 0xB8);
+#include "../_layout/tiberium_class.h"
 
 // VectorClass<TiberiumClass*> head: vtable @0, Items @4. The engine global
 // TiberiumClass::Array sits at 0xB0F4E8, so `MOV ECX,[0xB0F4EC]` == &Array.Items.

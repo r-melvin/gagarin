@@ -40,6 +40,7 @@
 #include "../audio/vox_class_methods.h"
 #include "campaign_class.h"
 #include "../_layout/house_type_class.h"
+#include "../_layout/house_class.h"
 #include "rules_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/audio_0048d080.h"
@@ -53,7 +54,21 @@
 #include "../combat/kamikaze_class_methods.h"
 #include "../combat/particles/system_class.h"
 #include "small_misc35_methods.h"
+#include "../_layout/tag_class.h"
+#include "../_layout/trigger_type_class.h"
+#include "../_layout/tiberium_class.h"
+#include "../_layout/anim_class.h"
+#include "leftover_trivial_leaf_sweep.h"
 
+extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
+extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
+extern int HouseClass_ArrayCount; // GLOBAL: GAMEMD 0x00A80238
+extern TiberiumClass** TiberiumArrayItems; // GLOBAL: GAMEMD 0x00B0F4EC
+extern ParticleCoord DAT_00B05488; // GLOBAL: GAMEMD 0x00B05488
+extern const char STR_0083DA90[]; // STRING: GAMEMD 0x0083DA90 (decl)
+int __fastcall FUN_00644630(const char* id); // GAMEMD 0x644630; ECX=id, no stack args
+void __fastcall FUN_0075F020(); // GAMEMD 0x75F020
+HouseClass* __fastcall FUN_00502D30(int index); // GAMEMD 0x502D30
 extern Tactical* TacticalInstance; // GLOBAL: GAMEMD 0x00887324
 extern ParticleSystemClass* DAT_00A8ED78; // GLOBAL: GAMEMD 0x00A8ED78
 extern AircraftTrackerClass AircraftTracker; // GLOBAL: GAMEMD 0x00887888
@@ -727,7 +742,7 @@ ScenarioClass::ScenarioClass()
         unknown_248A[i].unknown_00[0] = 0;
         FUN_00689910(i, 0);
     }
-    memset(unknown_348E, 0, 16);
+    memset(&unknown_348E, 0, 16);
 }
 
 // FUNCTION: GAMEMD 0x683560
@@ -901,6 +916,89 @@ void __fastcall FUN_00685120()
     FUN_00734210();
     FUN_00734270(0);
     FUN_00660C50();
+}
+
+// FUNCTION: GAMEMD 0x684C30
+void __fastcall FUN_00684C30()
+{
+    ++DAT_00A8E7AC;
+    for (int i = 0; i < DAT_00A8EB40.Count; ++i) DAT_00A8EB40.Items[i]->vf_312();
+    MapInstance.FUN_004F42F0(2);
+    if (!DAT_00A8ED6B) {
+        MapInstance.FUN_006D04F0(1);
+        if (Session_00A8B238.GameMode == 0) {
+            CellStruct cell = ScenarioInstance->Waypoints[DAT_008A38E0.CarryOverGlobals[0] ?
+                ScenarioInstance->unknown_0210 : ScenarioInstance->unknown_020C];
+            ScenarioInstance->unknown_349A = cell;
+            ScenarioInstance->unknown_3496 = ScenarioInstance->unknown_349A;
+            ScenarioInstance->unknown_3492 = ScenarioInstance->unknown_3496;
+            ScenarioInstance->unknown_348E = ScenarioInstance->unknown_3492;
+            CoordStruct coord;
+            coord.X = cell.X * 256 + 128;
+            coord.Y = cell.Y * 256 + 128;
+            coord.Z = 0;
+            coord.Z = MapInstance.FUN_00578080(&coord);
+            MapInstance.FUN_00653F70(&coord);
+        }
+    }
+    for (i = 0; i < TagTypes.Count; ++i) {
+        TagTypeClass* type = TagTypes.Items[i];
+        if (type->GetFlags() & 4) DAT_008B41A8.AddItem(TagClass::GetInstance(type));
+        if (type->GetFlags() & 0x10) DAT_008B40C8.AddItem(TagClass::GetInstance(type));
+        if (type->GetFlags() & 8) {
+            TagClass* tag = TagClass::GetInstance(type);
+            HouseClass* house = FUN_00502D30(tag->Type->FirstTrigger->House->ArrayIndex2);
+            if (house) {
+                // Native 0x684E67 selects this vector at House+0x38.
+                reinterpret_cast<DynamicVectorClass<TagClass*>*>(&house->RelatedTags)->AddItem(tag);
+            }
+        }
+    }
+    --DAT_00A8E7AC;
+    for (i = 0; i < TagTypes.Count; ++i) {
+        TagTypeClass* type = TagTypes.Items[i];
+        if (type->HasAllowWinAction())
+            ++FUN_00502D30(type->FirstTrigger->House->ArrayIndex)->AllowWinBlocks;
+    }
+    if (ScenarioInstance->unknown_34B2) {
+        for (i = 0; i < HouseClass_ArrayCount; ++i) {
+            HouseClass* house = HouseClass_ArrayItems[i];
+            if (house) {
+                // Retail 0x684F2A/0x684F45 dispatches through IHouse at +0x24.
+                int remaining = static_cast<IHouse*>(house)->vf_06();
+                TiberiumClass* type = TiberiumArrayItems[0];
+                while (remaining > type->Value && static_cast<IHouse*>(house)->vf_07() > 0) {
+                    house->GiveTiberium(1.0f, 0);
+                    remaining -= type->Value;
+                }
+            }
+        }
+    }
+    MapInstance.FUN_004ADCD0(1, 0);
+    FUN_0075F020();
+    MapInstance.IteratorBegin_578350();
+    CellClass* cell;
+    while ((cell = MapInstance.IteratorNext_578290()) != 0) cell->FUN_0047D2B0(-1);
+    MapInstance.FUN_0056D6E0();
+    MapInstance.FUN_0056C510();
+    MapInstance.FUN_00581F50();
+    MapInstance.FUN_00586BF0();
+    if (!DAT_00A8ED78) {
+        ParticleCoord coord(0xA80, 0xA80, 0);
+        int index = FUN_00644630(STR_0083DA90);
+        DAT_00A8ED78 = new ParticleSystemClass(
+            ((ParticleSystemTypeClass**)DAT_00A83D68.Items)[index], coord, 0, 0, DAT_00B05488, 0);
+    }
+    if (RulesInstance->unknown_1870) {
+        MapInstance.IteratorBegin_578350();
+        while ((cell = MapInstance.IteratorNext_578290()) != 0) {
+            if (cell->FUN_00485020() &&
+                ScenarioInstance->unknown_0218.RandomRanged(0, RulesInstance->unknown_186C - 1) == 0)
+                new AnimClass(RulesInstance->unknown_1870, cell->vf_18(), 0, 1, 0x600, 0, false);
+        }
+    }
+    FUN_0055AF40(RulesInstance->unknown_000);
+    FUN_0055AF50(RulesInstance->unknown_008);
 }
 
 // FUNCTION: GAMEMD 0x6851F0

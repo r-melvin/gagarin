@@ -92824,5 +92824,14 @@
   "name": "?FUN_006851F0@@YIXXZ",
   "status": "partial",
   "pct": 69.5
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x684C30",
+  "sym": "?FUN_00684C30@@YIXXZ",
+  "len": "0x4E7",
+  "name": "?FUN_00684C30@@YIXXZ",
+  "status": "partial",
+  "pct": 18.4
  }
 ]

@@ -41,6 +41,8 @@ class TagClass;
 class CellClass : public AbstractClass
 {
 public:
+    int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX
+    void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall
 
     // Retail vtable 0x7E4EEC overrides these five slots of AbstractClass; the
