@@ -14,9 +14,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-// FUNCTION: GAMEMD 0x7C8B3D (reloc) -- the retail allocator used by the bodies.
-// LIBRARY: GAMEMD 0x7C8B3D — CRT free.
-extern "C" void __cdecl gg_free(void*);
 
 // VectorClass<T> has seven 4-byte slots. In VectorClass<int>, the raw
 // address point 0x7E4DB8 puts Clear at +0x0C; the ToolTip base address point
@@ -46,14 +43,18 @@ public:
     unsigned char unknown_0E[2]; // +0x0E
 };
 
+// Storage is released with delete[]. In the inlined destructors of 0x7680C0
+// a pointer-element vector calls operator delete (0x7C8B3D) directly, while a
+// vector of virtual-destructor elements calls slot 0 with flag 3 (the vector
+// deleting destructor); delete[] yields both forms.
 template<class T> VectorClass<T>::~VectorClass() {
-    if (Items != 0 && IsAllocated) { gg_free(Items); Items = 0; }
+    if (Items != 0 && IsAllocated) { delete[] Items; Items = 0; }
     IsAllocated = false;
     Capacity = 0;
 }
 
 template<class T> void VectorClass<T>::Clear() {
-    if (Items != 0 && IsAllocated) { gg_free(Items); Items = 0; }
+    if (Items != 0 && IsAllocated) { delete[] Items; Items = 0; }
     IsAllocated = false;
     Capacity = 0;
 }
@@ -83,7 +84,7 @@ public:
 template<class T> void DynamicVectorClass<T>::Clear() {
     Count = 0;
     if (this->Items != 0 && this->IsAllocated) {
-        gg_free(this->Items);
+        delete[] this->Items;
         this->Items = 0;
     }
     this->IsAllocated = false;

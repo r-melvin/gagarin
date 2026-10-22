@@ -191,7 +191,7 @@ template<class T> bool VectorClass<T>::SetCapacity(int capacity, T* pMem) {
             for (int i = 0; i < copyCount; ++i)
                 newItems[i] = this->Items[i];
             if (this->IsAllocated) {
-                gg_free(this->Items);
+                delete[] this->Items;
                 this->Items = 0;
             }
         }

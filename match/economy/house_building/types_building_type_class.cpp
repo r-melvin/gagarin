@@ -5,6 +5,9 @@
 
 #include "types_building_shared.h"
 
+// LIBRARY: GAMEMD 0x7C8B3D - CRT free.
+extern "C" void __cdecl gg_free(void*);
+
 // GLOBAL: GAMEMD 0x7E95C0 - CLSID of BuildingTypeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_BuildingType =
     { 0xAE8B33DB, 0x061C, 0x11D2, { 0xAC, 0xA4, 0x00, 0x60, 0x08, 0x05, 0x5B, 0xB5 } };
