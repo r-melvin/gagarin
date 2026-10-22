@@ -11,16 +11,6 @@
 #include "same_object_test_sweep.h"
 
 
-// FUNCTION: GAMEMD 0x55F6C0
-bool HandleHolder::FUN_0055F6C0(void** other)
-{
-    if (this->Held != 0 && *this->Held == *other) {
-        return true;
-    }
-
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x746EA0
 bool HandleHolder::FUN_00746EA0(void** other)
 {

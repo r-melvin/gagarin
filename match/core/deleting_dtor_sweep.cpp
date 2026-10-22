@@ -230,17 +230,6 @@ void* Obj_588BF0::FUN_588BF0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x5AC270
-void* Obj_5AC270::FUN_5AC270(unsigned int flags)
-{
-    FUN_00558790(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x5B4610
 void* Obj_5B4610::FUN_5B4610(unsigned int flags)
@@ -254,17 +243,6 @@ void* Obj_5B4610::FUN_5B4610(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x5BB560
-void* Obj_5BB560::FUN_5BB560(unsigned int flags)
-{
-    FUN_006406F0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x5C10D0
 void* Obj_5C10D0::FUN_5C10D0(unsigned int flags)
@@ -278,29 +256,6 @@ void* Obj_5C10D0::FUN_5C10D0(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x5C4F10
-void* Obj_5C4F10::FUN_5C4F10(unsigned int flags)
-{
-    FUN_005C1640(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x5C94D0
-void* Obj_5C94D0::FUN_5C94D0(unsigned int flags)
-{
-    FUN_005D8C80(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x5D2700
 void* Obj_5D2700::FUN_5D2700(unsigned int flags)

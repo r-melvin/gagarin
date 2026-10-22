@@ -79,25 +79,6 @@ template class VectorClass<Point2D>;
 template class DynamicVectorClass<Point2D>;
 
 template<class T> struct TRect { T X; T Y; T Width; T Height; TRect() {} bool operator==(const TRect<T>& o) const { return X==o.X && Y==o.Y && Width==o.Width && Height==o.Height; } bool operator!=(const TRect<T>& o) const { return !(*this==o); } };
-// FUNCTION: GAMEMD 0x005ACCC0
-// VectorClass<TRect<int>>::operator==
-// FUNCTION: GAMEMD 0x005ACD30
-// VectorClass<TRect<int>>::SetCapacity
-// FUNCTION: GAMEMD 0x005ACE50
-// VectorClass<TRect<int>>::FindItemIndex
-// FUNCTION: GAMEMD 0x005ACEB0
-// VectorClass<TRect<int>>::Slot5
-// FUNCTION: GAMEMD 0x005AC570
-// VectorClass<TRect<int>>::Slot6
-// FUNCTION: GAMEMD 0x005ACED0
-// DynamicVectorClass<TRect<int>>::SetCapacity
-// FUNCTION: GAMEMD 0x005ACFC0
-// DynamicVectorClass<TRect<int>>::FindItemIndex
-// FUNCTION: GAMEMD 0x005AC550
-// DynamicVectorClass<TRect<int>>::Slot5
-// VTABLE: GAMEMD 0x007ED970 -- VectorClass<TRect<int>>.
-// VTABLE: GAMEMD 0x007ED99C -- DynamicVectorClass<TRect<int>>.
-template class VectorClass<TRect<int> >;
 template class DynamicVectorClass<TRect<int> >;
 
 struct DirtyAreaStruct { int unknown_00; int unknown_04; int unknown_08; int unknown_0C; unsigned char unknown_10; DirtyAreaStruct() : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C(0), unknown_10(0) {} DirtyAreaStruct(const DirtyAreaStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C), unknown_10(o.unknown_10) {} bool operator==(const DirtyAreaStruct& o) const { return unknown_10==o.unknown_10 && unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08 && unknown_0C==o.unknown_0C; } bool operator!=(const DirtyAreaStruct& o) const { return !(*this==o); } };

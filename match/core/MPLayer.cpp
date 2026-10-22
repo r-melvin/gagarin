@@ -1,5 +1,10 @@
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+//   Original translation unit MPLayer.CPP. The name is the source-file string at 0x82e134
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5c60da inside this object's
+//   code range (0x5c5e90-0x5c91ef). Functions are in ascending retail address order.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+//
 //   Multi-word unsigned integer helpers (little-endian 32-bit word arrays).
 
 #include <ctype.h>
@@ -185,6 +190,64 @@ void __fastcall HalfWordsMulAdd(unsigned short* dst, const unsigned short* src, 
     *dst += (unsigned short)carry;
 }
 
+// Modulus state set up by FUN_005c7ec0.
+// GLOBAL: GAMEMD 0x00abf59c
+extern int DAT_00abf59c;
+// GLOBAL: GAMEMD 0x00abf5a0
+extern unsigned short DAT_00abf5a0;
+// GLOBAL: GAMEMD 0x00abf5a4
+extern unsigned int DAT_00abf5a4[4];
+// GLOBAL: GAMEMD 0x00abf5b4
+extern unsigned int DAT_00abf5b4[64];
+// GLOBAL: GAMEMD 0x00abf6b4
+extern unsigned short DAT_00abf6b4;
+// GLOBAL: GAMEMD 0x00abf6b8
+extern int DAT_00abf6b8;
+// GLOBAL: GAMEMD 0x00abf6bc
+extern unsigned int DAT_00abf6bc[130];
+// GLOBAL: GAMEMD 0x00abf8c4
+extern int DAT_00abf8c4;
+// GLOBAL: GAMEMD 0x00abf8c8
+extern unsigned int DAT_00abf8c8[4];
+
+// Ascending table of the 3511 odd primes below 2^15; also the Fermat bases.
+// GLOBAL: GAMEMD 0x0082e174
+extern unsigned short DAT_0082e174[3511];
+
+// Byte source used by FUN_005c8e40; only slot 2 (fill buffer) is called here.
+class ByteSource_005C8980 {
+public:
+    virtual void Slot0();
+    virtual void Slot1();
+    virtual void Fill(void* buffer, int length);
+};
+
+// Remainder of a (n words) by a 16-bit divisor; quotient into q. Defined
+// elsewhere; declared for the call below.
+unsigned short __fastcall FUN_005c71e0(unsigned int* q, unsigned int* a, unsigned short d, int n);
+
+inline const unsigned short* FindTablePrime(unsigned short key)
+{
+    const unsigned short* base = DAT_0082e174;
+    const unsigned short* found = 0;
+    int count = 3511;
+    while (count > 0) {
+        int mid = count / 2;
+        const unsigned short* e = &base[mid];
+        if (*e > key) {
+            count = mid;
+        } else if (*e == key) {
+            found = e;
+            break;
+        } else {
+            base = e + 1;
+            count -= mid + 1;
+        }
+    }
+    return found;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6660
 // Shifts the n-word value at p right by shift bits, in place.
 void __fastcall FUN_005c6660(unsigned int* p, int shift, int n)
@@ -230,6 +293,7 @@ void __fastcall FUN_005c6660(unsigned int* p, int shift, int n)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c67a0
 // Shifts the n-word value at p left by shift bits, in place.
 void __fastcall FUN_005c67a0(unsigned int* p, int shift, int n)
@@ -275,6 +339,7 @@ void __fastcall FUN_005c67a0(unsigned int* p, int shift, int n)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6bc0
 // r = a * b over n words (shift-and-add). Always returns 0.
 int __fastcall FUN_005c6bc0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
@@ -312,6 +377,7 @@ int __fastcall FUN_005c6bc0(unsigned int* r, unsigned int* a, unsigned int* b, i
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6fe0
 // Signed r = a * b over n words: multiplies magnitudes and fixes the sign.
 int __fastcall FUN_005c6fe0(unsigned int* r, unsigned int* a, unsigned int* b, int n)
@@ -342,6 +408,7 @@ int __fastcall FUN_005c6fe0(unsigned int* r, unsigned int* a, unsigned int* b, i
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7310
 // rem = a % d, quot = a / d over n words (shift-and-subtract).
 // Returns -1 when d is zero, else 0.
@@ -384,6 +451,7 @@ int __fastcall FUN_005c7310(unsigned int* rem, unsigned int* quot, unsigned int*
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7740
 // inv = a^-1 mod m over n words (extended Euclid with three rotating rows).
 void __fastcall FUN_005c7740(unsigned int* inv, unsigned int* a, unsigned int* m, int n)
@@ -411,6 +479,7 @@ void __fastcall FUN_005c7740(unsigned int* inv, unsigned int* a, unsigned int* m
     WordsCopy(inv, v[k], n);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7990
 // q = 2^(2*bits(d)-1) / d style reciprocal over n words (shift-and-subtract
 // starting from the top bit of d). Returns -1 when d is zero, else 0.
@@ -447,6 +516,7 @@ int __fastcall FUN_005c7990(unsigned int* q, unsigned int* d, int n)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7ba0
 // Parses text into r (n words). A trailing H/O/B selects base 16/8/2,
 // otherwise base 10; a leading '-' negates; ',' separators are skipped.
@@ -506,26 +576,7 @@ void __fastcall FUN_005c7ba0(const char* s, unsigned int* r, int n)
     }
 }
 
-// Modulus state set up by FUN_005c7ec0.
-// GLOBAL: GAMEMD 0x00abf59c
-extern int DAT_00abf59c;
-// GLOBAL: GAMEMD 0x00abf5a0
-extern unsigned short DAT_00abf5a0;
-// GLOBAL: GAMEMD 0x00abf5a4
-extern unsigned int DAT_00abf5a4[4];
-// GLOBAL: GAMEMD 0x00abf5b4
-extern unsigned int DAT_00abf5b4[64];
-// GLOBAL: GAMEMD 0x00abf6b4
-extern unsigned short DAT_00abf6b4;
-// GLOBAL: GAMEMD 0x00abf6b8
-extern int DAT_00abf6b8;
-// GLOBAL: GAMEMD 0x00abf6bc
-extern unsigned int DAT_00abf6bc[130];
-// GLOBAL: GAMEMD 0x00abf8c4
-extern int DAT_00abf8c4;
-// GLOBAL: GAMEMD 0x00abf8c8
-extern unsigned int DAT_00abf8c8[4];
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c7ec0
 // Installs mod (n words) as the current modulus and precomputes a
 // normalised two-word reciprocal of its top bits. Returns 0.
@@ -550,6 +601,7 @@ int __fastcall FUN_005c7ec0(unsigned int* mod, int n)
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c80a0
 // r = (a * b) mod the installed modulus, n words. Schoolbook 16-bit
 // multiply into the scratch buffer, then quotient-estimate reduction using
@@ -599,6 +651,7 @@ int __fastcall FUN_005c80a0(unsigned int* r, unsigned int* a, unsigned int* b, i
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c8500
 // r = base^exp mod mod, n words (left-to-right square and multiply).
 // Returns 0, or -1..-5 for 0^0, zero modulus, base >= mod, exp >= mod and a
@@ -670,10 +723,7 @@ int __fastcall FUN_005c8500(unsigned int* r, unsigned int* base, unsigned int* e
     return 0;
 }
 
-// Ascending table of the 3511 odd primes below 2^15; also the Fermat bases.
-// GLOBAL: GAMEMD 0x0082e174
-extern unsigned short DAT_0082e174[3511];
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c8980
 // Fermat probable-prime test of p (n words) against the first count small
 // prime bases.
@@ -694,14 +744,7 @@ bool __fastcall FUN_005c8980(unsigned int* p, unsigned int count, int n)
     return true;
 }
 
-// Byte source used by FUN_005c8e40; only slot 2 (fill buffer) is called here.
-class ByteSource_005C8980 {
-public:
-    virtual void Slot0();
-    virtual void Slot1();
-    virtual void Fill(void* buffer, int length);
-};
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c8e40
 // r = random value in [lo, hi] (n words), drawn by rejection sampling from
 // the byte source.
@@ -723,31 +766,7 @@ void __fastcall FUN_005c8e40(unsigned int* r, ByteSource_005C8980* src, unsigned
     WordsAddWithCarry(r, r, lo, false, n);
 }
 
-// Remainder of a (n words) by a 16-bit divisor; quotient into q. Defined
-// elsewhere; declared for the call below.
-unsigned short __fastcall FUN_005c71e0(unsigned int* q, unsigned int* a, unsigned short d, int n);
-
-inline const unsigned short* FindTablePrime(unsigned short key)
-{
-    const unsigned short* base = DAT_0082e174;
-    const unsigned short* found = 0;
-    int count = 3511;
-    while (count > 0) {
-        int mid = count / 2;
-        const unsigned short* e = &base[mid];
-        if (*e > key) {
-            count = mid;
-        } else if (*e == key) {
-            found = e;
-            break;
-        } else {
-            base = e + 1;
-            count -= mid + 1;
-        }
-    }
-    return found;
-}
-
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c9020
 // Primality test of p (n words): table lookup for small values, trial
 // division by the prime table, then two Fermat rounds.

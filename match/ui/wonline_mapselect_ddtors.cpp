@@ -95,15 +95,6 @@ public:
 GG_STATIC_ASSERT(offsetof(MapSelect, Stages) == 0x50);
 GG_STATIC_ASSERT(offsetof(MapSelect, Member_C8) == 0xC8);
 
-// FUNCTION: GAMEMD 0x5AE5A0
-void* MapSelect::DeletingDtor(unsigned int flags)
-{
-    this->~MapSelect();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x7AC5D0
 void* WonlineStringDialogControl::DeletingDtor(unsigned int flags)

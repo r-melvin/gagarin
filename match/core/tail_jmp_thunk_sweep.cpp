@@ -18,11 +18,6 @@ void __fastcall FUN_004DE620(void* self)
     FUN_005F6B90(self);
 }
 
-// FUNCTION: GAMEMD 0x5BBED0
-void __fastcall FUN_005BBED0(void* self)
-{
-    FUN_005BBEE0(self);
-}
 
 // FUNCTION: GAMEMD 0x5D0580
 void __fastcall FUN_005D0580(void* self)

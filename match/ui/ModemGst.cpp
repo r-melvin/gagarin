@@ -1,9 +1,55 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
-//   Bytes matched against retail gamemd.exe v1.001 at 0x5B59B0 and 0x5B9450.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+//   Original translation unit ModemGst.cpp. The name is the source-file string at 0x82c534
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5b4f73 inside this object's
+//   code range (0x5b47c0-0x5b75ef). Functions are in ascending retail address order.
 
 #include "wol_scenario_color_methods.h"
+
+// Globals written by this TU's static initialisers (placeholder names; no
+// canonical header declares them yet).
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0x7E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x7EDF58
+extern const double DAT_007EDF58;
+// GLOBAL: GAMEMD 0xABF030
+extern double DAT_00ABF030;
+// GLOBAL: GAMEMD 0xABF068
+extern double DAT_00ABF068;
+// GLOBAL: GAMEMD 0xABF070
+extern int DAT_00ABF070;
+// GLOBAL: GAMEMD 0xABF074
+extern int DAT_00ABF074;
+// GLOBAL: GAMEMD 0xABF078
+extern int DAT_00ABF078;
+// GLOBAL: GAMEMD 0xABF080
+extern double DAT_00ABF080;
+
+// FUNCTION: GAMEMD 0x5B47F0
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005B47F0()
+{
+    DAT_00ABF080 = DAT_00ABF030 / DAT_007EDF58;
+}
+
+// FUNCTION: GAMEMD 0x5B4810
+// Static-initialiser shape: stores a floating-point expression of globals.
+void __cdecl FUN_005B4810()
+{
+    DAT_00ABF068 = DAT_007E1718 / DAT_00ABF080;
+}
+
+// FUNCTION: GAMEMD 0x5B4990
+// Static-initialiser shape: stores constants to adjacent globals.
+void __cdecl FUN_005B4990()
+{
+    DAT_00ABF078 = 0;
+    DAT_00ABF070 = 0x80;
+    DAT_00ABF074 = 0x80;
+}
 
 // FUNCTION: GAMEMD 0x5B59B0
 //
@@ -30,26 +76,6 @@ void WolScenarioColorDlgClass::FUN_005B59B0()
         if (selection > 7) selection = 0;
         SendMessageA(control, GG_CB_SETCURSEL, selection, 0);
     }
-    PlayerColor = selection;
-    this->OptionsChanged = true;
-    this->unknown_08 = true;
-    unsigned color = (selection >= 0 && selection < 8) ? DAT_008316A8[selection] : DefaultSchemeColor;
-    SendMessageA(control, GG_CBM_SETCOLOR, 0, color);
-}
-
-// FUNCTION: GAMEMD 0x5B9450
-//
-// The colour combo's selection changed. The tail is the same publish-and-repaint
-// run as the reconcile above, without the advance-past-our-own-colour step.
-//
-// EXACT (47/47 instructions); same spelling as FUN_005B59B0.
-void WolScenarioColorDlgClass::OnColorSelChanged()
-{
-    HWND_ dialog = this->Dialog;
-    HWND_ control = GetDlgItem(dialog, 0x405);
-    if (control == 0) return;
-    int selection = SendMessageA(control, GG_CB_GETCURSEL, 0, 0);
-    if (selection == -1) return;
     PlayerColor = selection;
     this->OptionsChanged = true;
     this->unknown_08 = true;

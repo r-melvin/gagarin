@@ -5018,7 +5018,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC270",
   "sym": "?FUN_5AC270@Obj_5AC270@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5036,7 +5036,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5BB560",
   "sym": "?FUN_5BB560@Obj_5BB560@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5054,7 +5054,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C4F10",
   "sym": "?FUN_5C4F10@Obj_5C4F10@@QAEPAXI@Z",
   "len": "0x1e",
@@ -5063,7 +5063,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C94D0",
   "sym": "?FUN_5C94D0@Obj_5C94D0@@QAEPAXI@Z",
   "len": "0x1e",
@@ -7008,7 +7008,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x0058b7d0",
   "sym": "?FUN_0058B7D0@@YIHXZ",
   "len": "0x6",
@@ -9663,7 +9663,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pair_vector_grow_sweep.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD930",
   "sym": "?Grow_5AD930@GrowPairVector@@QAE_NH@Z",
   "len": "0x86",
@@ -10338,7 +10338,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/same_object_test_sweep.cpp",
+  "tu": "match/core/MainLoop.cpp",
   "addr": "0x55F6C0",
   "sym": "?FUN_0055F6C0@HandleHolder@@QAE_NPAPAX@Z",
   "len": "0x1b",
@@ -12697,7 +12697,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/tail_jmp_thunk_sweep.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5BBED0",
   "sym": "?FUN_005BBED0@@YIXPAX@Z",
   "len": "0x5",
@@ -20977,7 +20977,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_resize_family_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD010",
   "sym": "?FUN_5AD010@VectorResizeFamily@@QAE_NHPAPAX@Z",
   "len": "0xb0",
@@ -24804,7 +24804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9920",
   "sym": "??0TileLink@@QAE@ABULinkCell@@H@Z",
   "len": "0x14",
@@ -24813,7 +24813,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9940",
   "sym": "??0TileLinkStandin@@QAE@XZ",
   "len": "0x15",
@@ -24822,7 +24822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9960",
   "sym": "??0TileLink@@QAE@ABU0@@Z",
   "len": "0x13",
@@ -24831,7 +24831,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9980",
   "sym": "??0TileLinkStep@@QAE@HABULinkCell@@H0H@Z",
   "len": "0x2B",
@@ -24840,7 +24840,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A99B0",
   "sym": "??0TileLinkStep@@QAE@XZ",
   "len": "0x3D",
@@ -24849,7 +24849,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9A20",
   "sym": "??0TileLinkList@@QAE@ABUTileLink@@@Z",
   "len": "0x4B",
@@ -24858,7 +24858,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9A70",
   "sym": "??0TileLinkList@@QAE@ABUTileLink@@0@Z",
   "len": "0x67",
@@ -24867,7 +24867,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9AE0",
   "sym": "??0TileLinkList@@QAE@ABUTileLink@@00@Z",
   "len": "0x79",
@@ -24876,7 +24876,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9B60",
   "sym": "??0TileLinkList@@QAE@ABUTileLink@@000@Z",
   "len": "0x8B",
@@ -24885,7 +24885,7 @@
   "pct": 100
  },
  {
-  "tu": "match/map/tile_link_table_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9C00",
   "sym": "??1TileLinkList@@QAE@XZ",
   "len": "0x18",
@@ -25803,7 +25803,7 @@
   "pct": 72.1
  },
  {
-  "tu": "match/movement/matrix3d_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE860",
   "sym": "?MakeIdentity@Matrix3D@@QAEXXZ",
   "len": "0x2B",
@@ -30109,7 +30109,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_color_methods.cpp",
+  "tu": "match/ui/ModemGst.cpp",
   "addr": "0x5B59B0",
   "sym": "?FUN_005B59B0@WolScenarioColorDlgClass@@QAEXXZ",
   "len": "0x93",
@@ -30118,7 +30118,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_color_methods.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9450",
   "sym": "?OnColorSelChanged@WolScenarioColorDlgClass@@QAEXXZ",
   "len": "0x70",
@@ -30127,7 +30127,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9650",
   "sym": "?OnUnitCountChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x30",
@@ -30136,7 +30136,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9680",
   "sym": "?OnTechLevelChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x30",
@@ -30145,7 +30145,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B96B0",
   "sym": "?OnMoneyChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x30",
@@ -30154,7 +30154,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B96E0",
   "sym": "?OnAIPlayersChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x30",
@@ -30163,7 +30163,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9710",
   "sym": "?OnGameSpeedChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x38",
@@ -30172,7 +30172,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9750",
   "sym": "?OnAIDifficultyChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x30",
@@ -30181,7 +30181,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9780",
   "sym": "?OnMCVRedeployChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30190,7 +30190,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B97C0",
   "sym": "?OnBasesChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x6A",
@@ -30199,7 +30199,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9830",
   "sym": "?OnCratesChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30208,7 +30208,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9870",
   "sym": "?OnFogOfWarChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30217,7 +30217,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B98B0",
   "sym": "?OnBridgeDestructionChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30226,7 +30226,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B98F0",
   "sym": "?OnHarvesterTruceChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30235,7 +30235,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9930",
   "sym": "?OnShortGameChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x70",
@@ -30244,7 +30244,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B99A0",
   "sym": "?OnSWAllowedChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30253,7 +30253,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B99E0",
   "sym": "?OnShortGameChangedAlt@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -30262,7 +30262,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wol_scenario_option_handlers.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5B9A20",
   "sym": "?OnMultiEngineerChanged@WolScenarioSetupClass@@QAEXXZ",
   "len": "0x37",
@@ -50659,7 +50659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/zero_init_ctor_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9BF0",
   "sym": "??0PairHolder_005A9BF0@@QAE@XZ",
   "len": "0x10",
@@ -53089,7 +53089,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_double_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC620",
   "sym": "?Slot5@?$DynamicVectorClass@N@@UBEHPAN@Z",
   "len": "0x1B",
@@ -53107,7 +53107,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_double_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD270",
   "sym": "?Slot5@?$VectorClass@N@@UBEHPAN@Z",
   "len": "0x1B",
@@ -53116,7 +53116,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/wonline_mapselect_ddtors.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE5A0",
   "sym": "?DeletingDtor@MapSelect@@UAEPAXI@Z",
   "len": "0x33",
@@ -58399,7 +58399,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x559D60",
   "sym": "?Slot1@LoadOptionsClass@@UAE_NPBD@Z",
   "len": "0xD1",
@@ -58408,7 +58408,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x559E40",
   "sym": "?Slot2@LoadOptionsClass@@UAE_NPBDPBG@Z",
   "len": "0x69",
@@ -58417,7 +58417,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x559ED0",
   "sym": "?Slot4@LoadOptionsClass@@UAE_NPAUMenusSaveListInfo@@PAVFileEntryClass@@@Z",
   "len": "0x17B",
@@ -58426,7 +58426,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x55A050",
   "sym": "?Slot5@LoadOptionsClass@@UAEPBGXZ",
   "len": "0x17",
@@ -58435,7 +58435,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x55A070",
   "sym": "?Slot6@LoadOptionsClass@@UAEPBGXZ",
   "len": "0x17",
@@ -58444,7 +58444,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x55A090",
   "sym": "?Slot7@LoadOptionsClass@@UAEPBGXZ",
   "len": "0x17",
@@ -58453,7 +58453,7 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/menus_load_options.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x55A0B0",
   "sym": "?Slot8@LoadOptionsClass@@UAEPBGXZ",
   "len": "0x17",
@@ -59587,7 +59587,7 @@
   "pct": 78.0
  },
  {
-  "tu": "match/map/cell_rect_check_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A7250",
   "sym": "?FUN_005A7250@@YI_NPBURect_005A7250@@_N1@Z",
   "len": "0x1E6",
@@ -59605,7 +59605,7 @@
   "pct": 95.8
  },
  {
-  "tu": "match/core/registry_value_search_methods.cpp",
+  "tu": "match/ui/ModemHst.cpp",
   "addr": "0x5BB580",
   "sym": "?FUN_005bb580@@YIPAUHKEY__@@PAU1@PBD1@Z",
   "len": "0x159",
@@ -59614,7 +59614,7 @@
   "pct": 17.4
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6660",
   "sym": "?FUN_005c6660@@YIXPAIHH@Z",
   "len": "0x132",
@@ -59623,7 +59623,7 @@
   "pct": 10.5
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C67A0",
   "sym": "?FUN_005c67a0@@YIXPAIHH@Z",
   "len": "0x132",
@@ -59632,7 +59632,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6BC0",
   "sym": "?FUN_005c6bc0@@YIHPAI00H@Z",
   "len": "0x1CD",
@@ -59641,7 +59641,7 @@
   "pct": 61.0
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6FE0",
   "sym": "?FUN_005c6fe0@@YIHPAI00H@Z",
   "len": "0x1FB",
@@ -59650,7 +59650,7 @@
   "pct": 4.6
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C7310",
   "sym": "?FUN_005c7310@@YIHPAI000H@Z",
   "len": "0x210",
@@ -59659,7 +59659,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C7740",
   "sym": "?FUN_005c7740@@YIXPAI00H@Z",
   "len": "0x249",
@@ -59668,7 +59668,7 @@
   "pct": 62.5
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C7990",
   "sym": "?FUN_005c7990@@YIHPAI0H@Z",
   "len": "0x206",
@@ -59677,7 +59677,7 @@
   "pct": 48.4
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C7BA0",
   "sym": "?FUN_005c7ba0@@YIXPBDPAIH@Z",
   "len": "0x1CE",
@@ -59686,7 +59686,7 @@
   "pct": 58.9
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C7EC0",
   "sym": "?FUN_005c7ec0@@YIHPAIH@Z",
   "len": "0x1DB",
@@ -59695,7 +59695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C80A0",
   "sym": "?FUN_005c80a0@@YIHPAI00H@Z",
   "len": "0x311",
@@ -59704,7 +59704,7 @@
   "pct": 2.1
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C8500",
   "sym": "?FUN_005c8500@@YIHPAI000H@Z",
   "len": "0x36F",
@@ -59713,7 +59713,7 @@
   "pct": 27.6
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C8980",
   "sym": "?FUN_005c8980@@YI_NPAIIH@Z",
   "len": "0x130",
@@ -59722,7 +59722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C8E40",
   "sym": "?FUN_005c8e40@@YIXPAIPAVByteSource_005C8980@@00H@Z",
   "len": "0x1D7",
@@ -59731,7 +59731,7 @@
   "pct": 27.5
  },
  {
-  "tu": "match/core/mp_word_arith_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C9020",
   "sym": "?FUN_005c9020@@YI_NPAIH@Z",
   "len": "0x1AB",
@@ -70393,7 +70393,7 @@
   "pct": 67.6
  },
  {
-  "tu": "match/core/header_init_005c1120.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1120",
   "sym": "_$E1",
   "len": "0x13",
@@ -70402,7 +70402,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_005c1120.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1140",
   "sym": "_$E4",
   "len": "0x13",
@@ -70411,7 +70411,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_005c1120.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C12C0",
   "sym": "_$E7",
   "len": "0x1a",
@@ -70420,7 +70420,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1470",
   "sym": "??0MPCooperative@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
   "len": "0x1cf",
@@ -70429,7 +70429,7 @@
   "pct": 56.6
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1640",
   "sym": "??1MPCooperative@@UAE@XZ",
   "len": "0x163",
@@ -70438,7 +70438,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1980",
   "sym": "?FUN_005C1980@@YIHXZ",
   "len": "0x8e",
@@ -70447,7 +70447,7 @@
   "pct": 11.9
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C21D0",
   "sym": "?FUN_005C21D0@MPCooperative@@QAEXPAUHWND__@@_N@Z",
   "len": "0x1d5",
@@ -70456,7 +70456,7 @@
   "pct": 3.4
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C23B0",
   "sym": "?FUN_005C23B0@MPCooperative@@QAEXPAUHWND__@@H@Z",
   "len": "0x14f",
@@ -70465,7 +70465,7 @@
   "pct": 98.3
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C2500",
   "sym": "?FUN_005C2500@MPCooperative@@QAEXPAUHWND__@@@Z",
   "len": "0x13d",
@@ -70474,7 +70474,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C26D0",
   "sym": "?FUN_005C26D0@@YIXXZ",
   "len": "0x3b",
@@ -70483,7 +70483,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C2D00",
   "sym": "?FUN_005C2D00@MPCooperative@@QAEXHPAUDynamicVectorClassLayout@@PA_N@Z",
   "len": "0xd2",
@@ -70492,7 +70492,7 @@
   "pct": 56.0
  },
  {
-  "tu": "match/network/mp_coop_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C3EC0",
   "sym": "?FUN_005C3EC0@MPCooperative@@QAE_NXZ",
   "len": "0x6f",
@@ -70645,7 +70645,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_005c9220.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C9220",
   "sym": "_$E1",
   "len": "0x13",
@@ -70654,7 +70654,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_005c9220.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C9240",
   "sym": "_$E4",
   "len": "0x13",
@@ -70663,7 +70663,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/header_init_005c9220.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C93C0",
   "sym": "_$E7",
   "len": "0x1a",
@@ -70672,7 +70672,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_observer_megawealth_methods.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C93E0",
   "sym": "??0Megawealth@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
   "len": "0x34",
@@ -70681,7 +70681,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_observer_megawealth_methods.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C9420",
   "sym": "??1Megawealth@@UAE@XZ",
   "len": "0xb",
@@ -70690,7 +70690,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_observer_megawealth_methods.cpp",
+  "tu": "match/core/MPObserver.cpp",
   "addr": "0x5C9430",
   "sym": "?vf_35@Megawealth@@UAE_NXZ",
   "len": "0xf",
@@ -76721,7 +76721,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC550",
   "sym": "?Slot5@?$DynamicVectorClass@U?$TRect@H@@@@UBEHPAU?$TRect@H@@@Z",
   "len": "0x20",
@@ -76730,7 +76730,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC570",
   "sym": "?Slot6@?$VectorClass@U?$TRect@H@@@@UBE?AU?$TRect@H@@H@Z",
   "len": "0x30",
@@ -76739,7 +76739,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC640",
   "sym": "?Slot6@?$VectorClass@N@@UBENH@Z",
   "len": "0x10",
@@ -76748,7 +76748,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACCC0",
   "sym": "??8?$VectorClass@U?$TRect@H@@@@UBE_NABV0@@Z",
   "len": "0x70",
@@ -76757,7 +76757,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACD30",
   "sym": "?SetCapacity@?$VectorClass@U?$TRect@H@@@@UAE_NHPAU?$TRect@H@@@Z",
   "len": "0xf0",
@@ -76766,7 +76766,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACE50",
   "sym": "?FindItemIndex@?$VectorClass@U?$TRect@H@@@@UBEHABU?$TRect@H@@@Z",
   "len": "0x60",
@@ -76775,7 +76775,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACEB0",
   "sym": "?Slot5@?$VectorClass@U?$TRect@H@@@@UBEHPAU?$TRect@H@@@Z",
   "len": "0x20",
@@ -76784,7 +76784,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACED0",
   "sym": "?SetCapacity@?$DynamicVectorClass@U?$TRect@H@@@@UAE_NHPAU?$TRect@H@@@Z",
   "len": "0xf0",
@@ -76793,7 +76793,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5ACFC0",
   "sym": "?FindItemIndex@?$DynamicVectorClass@U?$TRect@H@@@@UBEHABU?$TRect@H@@@Z",
   "len": "0x50",
@@ -76802,7 +76802,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD0F0",
   "sym": "??8?$VectorClass@N@@UBE_NABV0@@Z",
   "len": "0x40",
@@ -76811,7 +76811,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD130",
   "sym": "?SetCapacity@?$VectorClass@N@@UAE_NHPAN@Z",
   "len": "0xc0",
@@ -76820,7 +76820,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD220",
   "sym": "?FindItemIndex@?$VectorClass@N@@UBEHABN@Z",
   "len": "0x50",
@@ -76829,7 +76829,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD290",
   "sym": "?SetCapacity@?$DynamicVectorClass@N@@UAE_NHPAN@Z",
   "len": "0xc0",
@@ -76838,7 +76838,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vector_scalar_slot_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD350",
   "sym": "?FindItemIndex@?$DynamicVectorClass@N@@UBEHABN@Z",
   "len": "0x40",
@@ -76847,7 +76847,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/global_leaf_helper_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AD9C0",
   "sym": "?FUN_005AD9C0@@YAHPBX0@Z",
   "len": "0x22",
@@ -81833,7 +81833,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu125_methods.cpp",
+  "tu": "match/core/MainLoop.cpp",
   "addr": "0x55CC00",
   "sym": "?FUN_0055CC00@@YAXXZ",
   "len": "0x8",
@@ -81842,7 +81842,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu125_methods.cpp",
+  "tu": "match/core/MainLoop.cpp",
   "addr": "0x55CC10",
   "sym": "?FUN_0055CC10@@YAXXZ",
   "len": "0x8",
@@ -81851,7 +81851,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu125_methods.cpp",
+  "tu": "match/core/MainLoop.cpp",
   "addr": "0x55E410",
   "sym": "?FUN_0055E410@@YAXXZ",
   "len": "0x1",
@@ -81860,7 +81860,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu126_methods.cpp",
+  "tu": "match/core/MainOpt.cpp",
   "addr": "0x55F970",
   "sym": "?FUN_0055F970@@YAXXZ",
   "len": "0xa",
@@ -81914,7 +81914,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B760",
   "sym": "?FUN_0058B760@@YIXHH@Z",
   "len": "0xa",
@@ -81923,7 +81923,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B770",
   "sym": "?FUN_0058B770@@YAXXZ",
   "len": "0xd",
@@ -81932,7 +81932,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B7B0",
   "sym": "?FUN_0058B7B0@@YAXXZ",
   "len": "0x1",
@@ -81941,7 +81941,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B7C0",
   "sym": "?FUN_0058B7C0@@YAXXZ",
   "len": "0x1",
@@ -81950,7 +81950,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B7E0",
   "sym": "?FUN_0058B7E0@@YAHXZ",
   "len": "0x6",
@@ -81959,7 +81959,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B7F0",
   "sym": "?FUN_0058B7F0@@YAHXZ",
   "len": "0x6",
@@ -81968,7 +81968,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B800",
   "sym": "?FUN_0058B800@@YAHXZ",
   "len": "0x6",
@@ -81977,7 +81977,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58B810",
   "sym": "?FUN_0058B810@@YAHXZ",
   "len": "0x6",
@@ -81986,7 +81986,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58BCD0",
   "sym": "?FUN_0058BCD0@@YIHH@Z",
   "len": "0x18",
@@ -81995,7 +81995,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58BD20",
   "sym": "?FUN_0058BD20@@YIHH@Z",
   "len": "0x13",
@@ -82004,7 +82004,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58BD40",
   "sym": "?FUN_0058BD40@@YIHH@Z",
   "len": "0x13",
@@ -82013,7 +82013,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x58BD60",
   "sym": "?FUN_0058BD60@@YIHH@Z",
   "len": "0x13",
@@ -82022,7 +82022,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x597D40",
   "sym": "?FUN_00597D40@Obj_00597D40@@QAEXXZ",
   "len": "0x5",
@@ -82031,7 +82031,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x597F80",
   "sym": "?FUN_00597F80@Obj_00597F80@@QAEXXZ",
   "len": "0x17",
@@ -82040,7 +82040,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x597FA0",
   "sym": "?FUN_00597FA0@Obj_00597FA0@@QAEXXZ",
   "len": "0x17",
@@ -82049,7 +82049,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x597FC0",
   "sym": "?FUN_00597FC0@Obj_00597FC0@@QAEXXZ",
   "len": "0x17",
@@ -82058,7 +82058,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x597FE0",
   "sym": "?FUN_00597FE0@Obj_00597FE0@@QAEXXZ",
   "len": "0x17",
@@ -82067,7 +82067,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu130_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5A9C20",
   "sym": "?FUN_005A9C20@@YIXPAUObj_005A9C20@@H@Z",
   "len": "0x11",
@@ -82076,7 +82076,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu131_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE4F0",
   "sym": "?FUN_005AE4F0@@YGHH@Z",
   "len": "0x5",
@@ -82085,7 +82085,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu131_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE570",
   "sym": "?FUN_005AE570@@YGXH@Z",
   "len": "0x3",
@@ -82094,7 +82094,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu131_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE580",
   "sym": "?FUN_005AE580@@YGXH@Z",
   "len": "0x3",
@@ -82103,7 +82103,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/trivial_tu131_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE590",
   "sym": "?FUN_005AE590@Obj_005AE590@@QAEXH@Z",
   "len": "0x3",
@@ -82157,7 +82157,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C1CB0",
   "sym": "?FUN_005C1CB0@Obj_005C1CB0@@QAEXXZ",
   "len": "0x8",
@@ -82166,7 +82166,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C36F0",
   "sym": "?FUN_005C36F0@Obj_005C36F0@@QAEXXZ",
   "len": "0x5",
@@ -82175,7 +82175,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C3700",
   "sym": "?FUN_005C3700@Obj_005C3700@@QBE_NXZ",
   "len": "0x3",
@@ -82184,7 +82184,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C42C0",
   "sym": "?FUN_005C42C0@Obj_005C42C0@@QBEHXZ",
   "len": "0x6",
@@ -82193,7 +82193,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C4EE0",
   "sym": "?FUN_005C4EE0@Obj_005C4EE0@@QBE_NXZ",
   "len": "0x3",
@@ -82202,7 +82202,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C4EF0",
   "sym": "?FUN_005C4EF0@Obj_005C4EF0@@QBE_NXZ",
   "len": "0x3",
@@ -82211,7 +82211,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu144_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C4F00",
   "sym": "?FUN_005C4F00@Obj_005C4F00@@QBE_NXZ",
   "len": "0x3",
@@ -86869,6 +86869,195 @@
   "sym": "?FUN_00552A20@@YAXXZ",
   "len": "0x1a",
   "name": "FUN_00552A20",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LoadDlg.cpp",
+  "addr": "0x558580",
+  "sym": "?FUN_00558580@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_00558580",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LoadDlg.cpp",
+  "addr": "0x5585A0",
+  "sym": "?FUN_005585A0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005585A0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/LoadDlg.cpp",
+  "addr": "0x558720",
+  "sym": "?FUN_00558720@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_00558720",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainLoop.cpp",
+  "addr": "0x55CA30",
+  "sym": "?FUN_0055CA30@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0055CA30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainLoop.cpp",
+  "addr": "0x55CA50",
+  "sym": "?FUN_0055CA50@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0055CA50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainLoop.cpp",
+  "addr": "0x55CBD0",
+  "sym": "?FUN_0055CBD0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0055CBD0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainOpt.cpp",
+  "addr": "0x55F7B0",
+  "sym": "?FUN_0055F7B0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0055F7B0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainOpt.cpp",
+  "addr": "0x55F7D0",
+  "sym": "?FUN_0055F7D0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0055F7D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MainOpt.cpp",
+  "addr": "0x55F950",
+  "sym": "?FUN_0055F950@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0055F950",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58B560",
+  "sym": "?FUN_0058B560@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0058B560",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58B580",
+  "sym": "?FUN_0058B580@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_0058B580",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58B700",
+  "sym": "?FUN_0058B700@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_0058B700",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/MapSel.cpp",
+  "addr": "0x5ADB50",
+  "sym": "?FUN_005ADB50@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005ADB50",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/MapSel.cpp",
+  "addr": "0x5ADB70",
+  "sym": "?FUN_005ADB70@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005ADB70",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/MapSel.cpp",
+  "addr": "0x5ADCF0",
+  "sym": "?FUN_005ADCF0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005ADCF0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B47F0",
+  "sym": "?FUN_005B47F0@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005B47F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B4810",
+  "sym": "?FUN_005B4810@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005B4810",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemGst.cpp",
+  "addr": "0x5B4990",
+  "sym": "?FUN_005B4990@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005B4990",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemHst.cpp",
+  "addr": "0x5B7620",
+  "sym": "?FUN_005B7620@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005B7620",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemHst.cpp",
+  "addr": "0x5B7640",
+  "sym": "?FUN_005B7640@@YAXXZ",
+  "len": "0x13",
+  "name": "FUN_005B7640",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/ui/ModemHst.cpp",
+  "addr": "0x5B77C0",
+  "sym": "?FUN_005B77C0@@YAXXZ",
+  "len": "0x1a",
+  "name": "FUN_005B77C0",
   "status": "matched",
   "pct": 100
  }

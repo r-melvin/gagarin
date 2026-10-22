@@ -1,12 +1,40 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-//   Bytes matched against retail gamemd.exe v1.001, in the retail block of
+//   Original translation unit MPCoop.cpp. The name is the source-file string at 0x82dc4c
+//   in retail gamemd.exe v1.001, passed by the assert at 0x5c2272 inside this object's
+//   code range (0x5c10f0-0x5c5aef). Functions are in ascending retail address order.
+//   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
+//   them with the canonical class re-mangles their symbols, so that is left to
+//   a separate rename-only change.
+//
+// The remaining address-scoped scalar deleting destructors of the 30-byte family,
+// by retail address. Each runs its class's real destructor, then frees the
+// object when bit 0 of the flag argument is set, and returns `this`.
+//
+// The header initialiser group at 0x5C1120, 0x5C1140 and 0x5C12C0
+// (header_init_shapes.h): two derived doubles and a {128, 128, 0} coordinate,
+// in __xc order. The divisor at 0x7EE268 reads 60.0 (ghidra memory read).
+//
 //   MPCoop.cpp (0x5C10F0..0x5C5AEF).
 
+#include "deleting_dtor_sweep.h"
+#include "../network/transport/winsock_interface_class.h"
+#include "../_layout/pipe.h"
+#include "../_layout/straw.h"
+
+#include "header_init_shapes.h"
+
+// GLOBAL: GAMEMD 0xABF420
+extern double DAT_00ABF420;
+// GLOBAL: GAMEMD 0x7EE268
+const double DAT_007EE268 = 60.0;
+
+#include "trivial_tu144_methods.h"
+
 #include <windows.h>
-#include "mp_cooperative.h"
-#include "../core/vector_class_operations.h"
-#include "mp_game_mode_class_methods.h"
+#include "../network/mp_cooperative.h"
+#include "vector_class_operations.h"
+#include "../network/mp_game_mode_class_methods.h"
 #include "../economy/house_class_accessor_methods.h"
 
 #include <string.h>
@@ -28,18 +56,23 @@ GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists) == 0x10);
 
 // FUNCTION: GAMEMD 0x49D9F0 (decl; reloc) -- look a name up; an index or -1.
 int __fastcall FUN_0049D9F0(const char* name);
+
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
 wchar_t* __fastcall StringTable_LoadString(const char* label, int* out,
                                            const char* file, int line);
+
 // STRING: GAMEMD 0x82DC78 -- "GUI:Random".
 extern const char STR_0082DC78[];
 // STRING: GAMEMD 0x82DC4C -- this module's __FILE__ ("D:\\ra2mdpost\\MPCoop.cpp").
 extern const char STR_0082DC4C[];
+
 // FUNCTION: GAMEMD 0x5EBC00 (decl; reloc) -- __fastcall (dialog, mode).
 void __fastcall FUN_005EBC00(HWND dialog, int mode);
+
 // FUNCTION: GAMEMD 0x5E8760 (decl; reloc) -- the caller tests AL, so the
 // result is a bool here (the matched body is typed int in netshare_slot_nodes).
 bool __fastcall FUN_005E8760();
+
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 // STRING: GAMEMD 0x82DC64 -- "NAME:COOPDESC%d%d".
@@ -49,10 +82,13 @@ extern LPARAM DAT_00A8EB68;
 
 // FUNCTION: GAMEMD 0x4E37D0 (decl; reloc) -- the control id for slot `index`.
 int __fastcall FUN_004E37D0(int index);
+
 // FUNCTION: GAMEMD 0x4E3F70 (decl; reloc) -- __fastcall (dialog, id) + one stack word.
 void __fastcall FUN_004E3F70(HWND dialog, int id, int value);
+
 // FUNCTION: GAMEMD 0x5E26C0 (decl; reloc) -- a dialog handle, or null.
 HWND __fastcall FUN_005E26C0();
+
 // GLOBAL: GAMEMD 0xA8BB0C -- the session's player limit.
 extern int DAT_00A8BB0C;
 // GLOBAL: GAMEMD 0xA8DA90 -- the eight lobby slots.
@@ -93,6 +129,18 @@ extern int DAT_00A8B254;
 
 // GLOBAL: GAMEMD 0xABF460 -- eight per-entry values (`MOV ECX,8; REP STOSD`).
 int DAT_00ABF460[8];
+
+// SYNTHETIC: GAMEMD 0x5C1120
+// GLOBAL: GAMEMD 0xABF490
+double DAT_00ABF490 = DAT_00ABF420 / DAT_007EE268;
+
+// SYNTHETIC: GAMEMD 0x5C1140
+// GLOBAL: GAMEMD 0xABF458
+double DAT_00ABF458 = 1.0 / DAT_00ABF490;
+
+// SYNTHETIC: GAMEMD 0x5C12C0
+// GLOBAL: GAMEMD 0xABF480
+HeaderCoordInit DAT_00ABF480(128, 128, 0);
 
 // FUNCTION: GAMEMD 0x5C1470
 // The base gets `false` for its fifth argument. Then empty the campaign list
@@ -183,6 +231,13 @@ int FUN_005C1980()
         }
     }
     return found;
+}
+
+// FUNCTION: GAMEMD 0x5C1CB0
+// Stores its argument in a member. Vtable slot 9 of MPCooperative (RTTI).
+void Obj_005C1CB0::FUN_005C1CB0()
+{
+    unknown_340 = 1;
 }
 
 // FUNCTION: GAMEMD 0x5C21D0
@@ -406,6 +461,20 @@ void MPCooperative::FUN_005C2D00(int house, DynamicVectorClassLayout* spots, boo
     MPCoopScenario_00A8B230->StartHouse[spot] = house;
 }
 
+// FUNCTION: GAMEMD 0x5C36F0
+// Tail-forwards to another function. Vtable slot 35 of MPCooperative (RTTI).
+void Obj_005C36F0::FUN_005C36F0()
+{
+    FUN_005D7570();
+}
+
+// FUNCTION: GAMEMD 0x5C3700
+// Returns a constant boolean. Vtable slot 15 of MPCooperative (RTTI).
+bool Obj_005C3700::FUN_005C3700() const
+{
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x5C3EC0
 // Replace the helper at +0x40 with a fresh one, run its 0x49CAF0(0), and with
 // exactly two entries in the game-mode array hand both to 0x49B760. True when
@@ -423,4 +492,49 @@ bool MPCooperative::FUN_005C3EC0()
                                  ((void**)MPGameModeArray.Items)[1]);
     }
     return unknown_40 ? true : false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C42C0
+// Returns a constant. Vtable slot 38 of MPCooperative (RTTI).
+int Obj_005C42C0::FUN_005C42C0() const
+{
+    return 2;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C4EE0
+// Returns a constant boolean. Vtable slot 1 of MPCooperative (RTTI).
+bool Obj_005C4EE0::FUN_005C4EE0() const
+{
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C4EF0
+// Returns a constant boolean. Vtable slot 2 of MPCooperative (RTTI).
+bool Obj_005C4EF0::FUN_005C4EF0() const
+{
+    return true;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C4F00
+// Returns a constant boolean. Vtable slot 47 of MPCooperative (RTTI).
+bool Obj_005C4F00::FUN_005C4F00() const
+{
+    return false;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C4F10
+void* Obj_5C4F10::FUN_5C4F10(unsigned int flags)
+{
+    FUN_005C1640(this);
+
+    if (flags & 1) {
+        FUN_007C8B3D(this);
+    }
+
+    return this;
 }

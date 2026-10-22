@@ -51,36 +51,6 @@ fail:
 }
 
 
-// FUNCTION: GAMEMD 0x5AD930
-bool GrowPairVector::Grow_5AD930(int extra)
-{
-    GrowPair* grown;
-    int total;
-    int i;
-
-    if (extra < 0) goto fail;
-
-    total = Capacity + extra;
-    grown = new GrowPair[total];
-    if (grown == 0) goto fail;
-
-    for (i = 0; i < Count; i++) {
-        int off = i * 8;
-        GrowPair* src = (GrowPair*)((char*)Items + off);
-        *(GrowPair*)((char*)grown + off) = *src;
-    }
-
-    delete[] Items;
-
-    Items    = grown;
-    Capacity = Capacity + extra;
-    Cached   = 0;
-    return true;
-
-fail:
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x6525A0
 bool GrowPairVector::Grow_6525A0(int extra)
 {

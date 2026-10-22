@@ -44,12 +44,6 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(Triple_00769480, unknown_08) == 0x08);
 
-// FUNCTION: GAMEMD 0x5A9BF0
-PairHolder_005A9BF0::PairHolder_005A9BF0() :
-    unknown_00(0),
-    unknown_04(0)
-{
-}
 
 // FUNCTION: GAMEMD 0x7636F0
 Triple_007636F0::Triple_007636F0() :
