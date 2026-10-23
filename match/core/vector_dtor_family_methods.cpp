@@ -203,8 +203,13 @@ struct tagCONNECTDATA;
 template class VectorClass<SubzoneConnectionStruct>;
 
 // FUNCTION: GAMEMD 0x00477AC0
+// TypeList<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007E4E58)
 // FUNCTION: GAMEMD 0x004786D0
+// VectorClass<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007E4E38)
 // FUNCTION: GAMEMD 0x00645B10
+// DynamicVectorClass<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007F022C)
+//   Three distinct retail functions with the same relocated bytes, one per class vtable; the model
+//   below is VectorClass<RGBClass>.
 // VectorClass<RGBClass> -- reseats retail vtable 0x007E4E38; locator 0x007FCF90 -> type descriptor 0x0081C198
 //   `.?AV?$VectorClass@VRGBClass@@@@`.
 template class VectorClass<RGBClass>;
