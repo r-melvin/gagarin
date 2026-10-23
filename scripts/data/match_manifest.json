@@ -96353,5 +96353,50 @@
   "name": "?Remove@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAE_NABVString_007B4620@@AAUValue_007AE8E0@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x786270",
+  "sym": "?FUN_00786270@@YI_NXZ",
+  "len": "0x116",
+  "name": "?FUN_00786270@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x786390",
+  "sym": "?FUN_00786390@@YIHXZ",
+  "len": "0x12c",
+  "name": "?FUN_00786390@@YIHXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x786EF0",
+  "sym": "?FUN_00786EF0@@YI_NXZ",
+  "len": "0xf6",
+  "name": "?FUN_00786EF0@@YI_NXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x796FC0",
+  "sym": "?FUN_00796FC0@@YIXXZ",
+  "len": "0x10e",
+  "name": "?FUN_00796FC0@@YIXXZ",
+  "status": "partial",
+  "pct": 97.4
+ },
+ {
+  "tu": "match/core/wonline.cpp",
+  "addr": "0x7A0F40",
+  "sym": "?FUN_007A0F40@@YIXXZ",
+  "len": "0x116",
+  "name": "?FUN_007A0F40@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -68,11 +68,15 @@ struct NodeNameType
 {
     wchar_t Name[20];                 // +0x00
     IPXAddressClass Address;          // +0x28
-    unsigned char unknown_34[0x37];   // +0x34
+    unsigned char unknown_34[0x17];   // +0x34
+    int unknown_4B;                   // +0x4B  set to 1 by 0x796FC0
+    unsigned char unknown_4F[0x04];   // +0x4F
+    int unknown_53;                   // +0x53  set to 2 by 0x796FC0
+    unsigned char unknown_57[0x14];   // +0x57
     int unknown_6B;                   // +0x6B  (-1 == observer)
     unsigned char unknown_6F[0x08];   // +0x6F
     int unknown_77;                   // +0x77  tested against 1 at 0x5EA905 and 0x5EA3A5, cleared at 0x5E98DD
-    unsigned char unknown_7B[0x04];   // +0x7B
+    int unknown_7B;                   // +0x7B  set to -1 by 0x796FC0
     int unknown_7F;                   // +0x7F  stored by 0x5E3A36 (0 = no map, 2 = map transfer)
     unsigned char unknown_83[0x02];   // +0x83
 
@@ -100,7 +104,10 @@ struct NodeNameType
 
 GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
                  offsetof(NodeNameType, unknown_34) == 0x34 &&
+                 offsetof(NodeNameType, unknown_4B) == 0x4B &&
+                 offsetof(NodeNameType, unknown_53) == 0x53 &&
                  offsetof(NodeNameType, unknown_6B) == 0x6B &&
+                 offsetof(NodeNameType, unknown_7B) == 0x7B &&
                  offsetof(NodeNameType, unknown_77) == 0x77 &&
                  offsetof(NodeNameType, unknown_7F) == 0x7F &&
                  sizeof(NodeNameType) == 0x85);

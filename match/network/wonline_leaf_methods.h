@@ -45,6 +45,8 @@ struct Vtbl_00AC116C
     long (__stdcall* At_68)(Obj_00AC116C* self, int a, int b);       // +0x68
     char unknown_6C[0x10];
     long (__stdcall* At_7C)(Obj_00AC116C* self, int a);              // +0x7C
+    char unknown_80[0x0C];
+    long (__stdcall* At_8C)(Obj_00AC116C* self, unsigned long value); // +0x8C  given the SKU by 0x786270
 };
 
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_24) == 0x24);
@@ -58,6 +60,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_3C) == 0x3C);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_54) == 0x54);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_68) == 0x68);
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_7C) == 0x7C);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_8C) == 0x8C);
 
 struct Obj_00AC116C
 {
@@ -66,6 +69,30 @@ struct Obj_00AC116C
 
 // GLOBAL: GAMEMD 0xAC116C
 extern Obj_00AC116C* DAT_00AC116C;
+
+// The second COM-style object, at 0xAC1170; same calling shape.
+struct Obj_00AC1170;
+
+struct Vtbl_00AC1170
+{
+    char unknown_00[0x20];
+    // +0x20: given a record's +0x18 value and an out int (the ping) by 0x7A0F40.
+    long (__stdcall* At_20)(Obj_00AC1170* self, int value, int* out);
+    char unknown_24[0x08];
+    // +0x2C: given a host name, a port and 3 by 0x786270.
+    long (__stdcall* At_2C)(Obj_00AC1170* self, const char* host, int port, int a);
+};
+
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_2C) == 0x2C);
+
+struct Obj_00AC1170
+{
+    Vtbl_00AC1170* Vtbl;   // +0x00
+};
+
+// GLOBAL: GAMEMD 0xAC1170
+extern Obj_00AC1170* DAT_00AC1170;
 
 // GLOBAL: GAMEMD 0x84D690 -- a record: a dword (0x47) then the string "WOL:AddBuddyQuery".
 extern char DAT_0084D690[];
@@ -257,7 +284,7 @@ extern int DAT_00B77E48;
 void __cdecl FUN_005E2700(int id, const wchar_t* format, ...);
 
 // FUNCTION: GAMEMD 0x5E2CD0 (decl; reloc)
-void FUN_005E2CD0(const wchar_t* text, int a, void* proc, char b);
+int FUN_005E2CD0(const wchar_t* text, int a, void* proc, bool b);
 
 // FUNCTION: GAMEMD 0x735120 (decl; reloc)
 const wchar_t* FUN_00735120(const char* text);

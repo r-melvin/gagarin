@@ -81,11 +81,14 @@ GG_STATIC_ASSERT(sizeof(WideString_007B66C0) == 4);
 // The 0x6C-byte record of the table at 0xB77900 (count) / 0xB77908 (items).
 struct Entry_00B77908
 {
-    char unknown_00[0x24];   // +0x00
+    char unknown_00[0x18];   // +0x00
+    int unknown_18;          // +0x18 -- passed to slot +0x20 of the object at 0xAC1170 by 0x7A0F40
+    char unknown_1C[0x08];   // +0x1C
     char unknown_24[0x0A];   // +0x24 -- name compared with strcmp
     char unknown_2E[0x3E];   // +0x2E -- second name compared with strcmp
 };
 GG_STATIC_ASSERT(sizeof(Entry_00B77908) == 0x6C);
+GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(Entry_00B77908, unknown_2E) == 0x2E);
 

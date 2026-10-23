@@ -76,6 +76,13 @@
 // ordinary virtual holding the deleting wrapper, as FileClass does in
 // match/core/ram_file_class.h, because nothing is constructed in this file.
 
+// The node layout (netshare_slot_nodes.h) names a global LocalHandle (0xA8B380);
+// <windows.h> declares a Win32 function of that name, which this unit never
+// calls, so it is renamed for the duration of the include (as netshare_win.h does).
+#define LocalHandle LocalHandle_Win32
+#include <windows.h>
+#undef LocalHandle
+#include "../economy/netshare_slot_nodes.h"
 #include "base_ctor_vtable_seat_sweep.h"
 
 #include <stddef.h>
@@ -1219,6 +1226,91 @@ void __cdecl FUN_00785360()
     FUN_00783C80(0, 0);
 }
 
+// GLOBAL: GAMEMD 0xB77E50 -- the SKU read from the registry; also formatted into the support links.
+extern int DAT_00B77E50;
+// GLOBAL: GAMEMD 0x8313B0 -- the game's registry key path under HKEY_LOCAL_MACHINE.
+extern const char DAT_008313B0[];
+// GLOBAL: GAMEMD 0xB73B34 -- a host name.
+extern char DAT_00B73B34[];
+// GLOBAL: GAMEMD 0xB76B0C -- that host's port.
+extern int DAT_00B76B0C;
+
+// Reads one DWORD value of a key under HKEY_LOCAL_MACHINE into `value`, which
+// is left alone when the key or the value is missing. Expanded inline in
+// 0x786270 and 0x786390.
+static inline void ReadMachineDword(const char* keyPath, const char* name, DWORD* value)
+{
+    char path[256];
+    HKEY key;
+    DWORD type;
+    DWORD size;
+
+    if (keyPath != NULL && strlen(keyPath) != 0) {
+        strcpy(path, keyPath);
+        if (RegOpenKeyExA(HKEY_LOCAL_MACHINE, path, 0, KEY_READ, &key) == ERROR_SUCCESS) {
+            size = sizeof(DWORD);
+            RegQueryValueExA(key, name, NULL, &type, (LPBYTE)value, &size);
+            RegCloseKey(key);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x786270
+// Reads the SKU value of the game's registry key, keeps its low byte and hands
+// it to the first COM object, then hands the host and port to the second.
+bool FUN_00786270()
+{
+    DWORD sku = 0;
+    ReadMachineDword(DAT_008313B0, "SKU", &sku);
+
+    DAT_00B77E50 = sku & 0xFF;
+    if (DAT_00AC116C != NULL) {
+        DAT_00AC116C->Vtbl->At_8C(DAT_00AC116C, sku);
+    }
+    if (DAT_00AC1170 != NULL) {
+        FUN_004068E0("Get_WDT_State_Silent: WDTHost is %s, port is %d\n", DAT_00B73B34, DAT_00B76B0C);
+        DAT_00AC1170->Vtbl->At_2C(DAT_00AC1170, DAT_00B73B34, DAT_00B76B0C, 3);
+        return true;
+    }
+    return false;
+}
+
+// GLOBAL: GAMEMD 0xB77E75 -- set once the session below has been brought up.
+extern bool DAT_00B77E75;
+// GLOBAL: GAMEMD 0xB77DC0
+extern bool DAT_00B77DC0;
+// GLOBAL: GAMEMD 0x84A234 -- 0x2900 plus the SKU's low byte.
+extern int DAT_0084A234;
+// FUNCTION: GAMEMD 0x780110 (decl; reloc)
+void FUN_00780110();
+// FUNCTION: GAMEMD 0x785370 (decl; reloc) -- given the module handle.
+int FUN_00785370(void* instance);
+
+// FUNCTION: GAMEMD 0x786390
+// One-time bring-up: builds the lobby slot nodes, resets the lobby, reads the
+// SKU from the registry, creates the eighteen events and continues in 0x785370.
+int FUN_00786390()
+{
+    if (DAT_00B77E75) return 1;
+
+    DAT_00B77E75 = true;
+    Build_Slot_Nodes();
+    Clear_Lobby_Flags();
+    Reset_Lobby();
+
+    DWORD sku = 0;
+    ReadMachineDword(DAT_008313B0, "SKU", &sku);
+    sku &= 0xFF;
+    DAT_00B77E50 = sku;
+    DAT_0084A234 = sku + 0x2900;
+    FUN_00780110();
+    DAT_00B77DC0 = true;
+    for (int i = 0; i < 18; i++) {
+        DAT_00B73684[i] = CreateEventA(NULL, FALSE, FALSE, NULL);
+    }
+    return FUN_00785370(DAT_00B732F0);
+}
+
 // FUNCTION: GAMEMD 0x786D90
 bool FUN_00786D90()
 {
@@ -1248,6 +1340,67 @@ int FUN_00786E70(String_007B4620* name)
         }
     }
     return -1;
+}
+
+// GLOBAL: GAMEMD 0xB77DF8 -- the last error code of the online session.
+extern unsigned int DAT_00B77DF8;
+// GLOBAL: GAMEMD 0xB77AD0 -- the wide message text shown for that error.
+extern wchar_t DAT_00B77AD0[];
+// GLOBAL: GAMEMD 0x84B448 -- support-link format for code 0x80040076 (serialdup_%d).
+extern const char DAT_0084B448[];
+// GLOBAL: GAMEMD 0x84B484 -- support-link format for code 0x80040075 (serialbanned_%d).
+extern const char DAT_0084B484[];
+// GLOBAL: GAMEMD 0x84B4C4 -- support-link format for code 0x80040074 (disabled_%d).
+extern const char DAT_0084B4C4[];
+// GLOBAL: GAMEMD 0x84B500 -- support-link format for code 0x80040072 (banned_%d).
+extern const char DAT_0084B500[];
+// GLOBAL: GAMEMD 0x84B538 -- support-link format for code 0x80040078 (skuserialmismatch_%d).
+extern const char DAT_0084B538[];
+// GLOBAL: GAMEMD 0x84B57C -- support-link format for code 0x80040077 (serialunknown_%d).
+extern const char DAT_0084B57C[];
+// FUNCTION: GAMEMD 0x77DC90 (decl; reloc) -- opens a link (network/wonline.cpp).
+void FUN_0077DC90(const char* url, int flag);
+
+// FUNCTION: GAMEMD 0x786EF0
+// Shows the stored error text. For the six serial/account error codes the box
+// offers a support link, opened when the user answers 6 (IDYES).
+bool FUN_00786EF0()
+{
+    char url[0x104];
+    bool linked = false;
+
+    if (DAT_00B77DF8 == 0x80040077 || DAT_00B77DF8 == 0x80040078
+        || DAT_00B77DF8 == 0x80040072 || DAT_00B77DF8 == 0x80040074
+        || DAT_00B77DF8 == 0x80040075 || DAT_00B77DF8 == 0x80040076) {
+        linked = true;
+        if (FUN_005E2CD0(DAT_00B77AD0, 4, (void*)FUN_0077D710, 0) == 6) {
+            int account = DAT_00B77E50;
+            switch (DAT_00B77DF8) {
+            case 0x80040077:
+                sprintf(url, DAT_0084B57C, account);
+                break;
+            case 0x80040078:
+                sprintf(url, DAT_0084B538, account);
+                break;
+            case 0x80040072:
+                sprintf(url, DAT_0084B500, account);
+                break;
+            case 0x80040074:
+                sprintf(url, DAT_0084B4C4, account);
+                break;
+            case 0x80040075:
+                sprintf(url, DAT_0084B484, account);
+                break;
+            case 0x80040076:
+                sprintf(url, DAT_0084B448, account);
+                break;
+            }
+            FUN_0077DC90(url, 1);
+        }
+    } else {
+        FUN_005E2CD0(DAT_00B77AD0, 0, (void*)FUN_0077D710, 0);
+    }
+    return linked;
 }
 
 // FUNCTION: GAMEMD 0x788710
@@ -1707,6 +1860,45 @@ int FUN_00796B30()
     return result;
 }
 
+#include "vector_class.h"
+#include "vector_class_operations.h"
+
+// GLOBAL: GAMEMD 0xA8DA74 -- the lobby's node vector (DynamicVectorClass<NodeNameType*>, vtable 0x7EE370).
+extern DynamicVectorClass<NodeNameType*> DAT_00A8DA74;
+// GLOBAL: GAMEMD 0xA8B54C
+extern int DAT_00A8B54C;
+// GLOBAL: GAMEMD 0xB7790C -- an int per node, indexed by 0xA8B54C.
+extern int DAT_00B7790C[];
+// GLOBAL: GAMEMD 0xA8BB1C -- a copy of the last address (12 bytes).
+extern IPXAddressClass DAT_00A8BB1C;
+
+// FUNCTION: GAMEMD 0x796FC0
+// Builds a node named "PotatoToo" with the fixed address 0A:02:50:FA:00:00 and
+// appends it to the node vector at 0xA8DA74.
+void FUN_00796FC0()
+{
+    NodeNameType* node = new NodeNameType;
+    FUN_00735060(node->Name, "PotatoToo", -1);
+    node->unknown_7B = -1;
+    node->unknown_4B = 1;
+    node->unknown_53 = 2;
+
+    NetworkNumberType network;
+    NodeAddressType address;
+    network.Number = 0;
+    address.Node[5] = 0;
+    address.Node[4] = 0;
+    address.Node[3] = 0xFA;
+    address.Node[2] = 0x50;
+    address.Node[1] = 2;
+    address.Node[0] = 0x0A;
+    node->Address.FUN_0053ED20(network, address, 0);
+
+    DAT_00A8DA74.AddItem(node);
+    DAT_00B7790C[DAT_00A8B54C++] = 100;
+    DAT_00A8BB1C = node->Address;
+}
+
 // FUNCTION: GAMEMD 0x7975E0
 void FUN_007975E0()
 {
@@ -1928,6 +2120,42 @@ void FUN_007A0EA0(const char* name, int ping)
             }
         }
     }
+}
+
+// GLOBAL: GAMEMD 0xB77E28
+extern int DAT_00B77E28;
+// FUNCTION: GAMEMD 0x5E3720 (decl; reloc) -- sends a text request (netshare.cpp).
+void FUN_005E3720(const char* text);
+
+// FUNCTION: GAMEMD 0x7A0F40
+// Builds "P<count>" followed by ",<name>,<ping>" for every record of the table
+// at 0xB77908, recording each ping on the way, then sends the list.
+void FUN_007A0F40()
+{
+    int count = DAT_00B77900.count;
+    int ping;
+    Entry_00B77908 entry;
+    char list[256];
+    char item[128];
+
+    memset(&entry, 0, sizeof(entry));
+    list[0] = 'P';
+    list[1] = (char)('0' + count);
+    list[2] = '\0';
+
+    if (DAT_00B77E28 != 0) return;
+
+    for (int i = 0; i < count; i++) {
+        if (i >= 0 && i < DAT_00B77900.count) {
+            entry = DAT_00B77900.data[i];
+        }
+        DAT_00AC1170->Vtbl->At_20(DAT_00AC1170, entry.unknown_18, &ping);
+        sprintf(item, ",%s,%d", entry.unknown_24, ping);
+        strcat(list, item);
+        FUN_007A0EA0(entry.unknown_24, ping);
+    }
+    FUN_004068E0("Sending pings for users: %s\n", list);
+    FUN_005E3720(list);
 }
 
 // FUNCTION: GAMEMD 0x7A2110
