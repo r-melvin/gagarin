@@ -88,6 +88,143 @@
 
 #include <string.h>
 
+
+// Retail PAVMapRegionClass RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+// Retail PAU_WIN32_FIND_DATAA RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+#include "vector_class_operations.h"
+
+class MapRegionClass;
+
+// VTABLE: GAMEMD 0x7ED878 -- VectorClass<MapRegionClass*>.
+template class VectorClass<MapRegionClass*>;
+typedef VectorClass<MapRegionClass*> GgMapregionclassVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMapregionclassVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7ED858 -- DynamicVectorClass<MapRegionClass*>.
+template class DynamicVectorClass<MapRegionClass*>;
+typedef DynamicVectorClass<MapRegionClass*> GgMapregionclassDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMapregionclassDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(MapRegionClass*) == 4);
+
+#include "vector_class_operations.h"
+
+struct _WIN32_FIND_DATAA;
+
+// VTABLE: GAMEMD 0x7ED92C -- VectorClass<_WIN32_FIND_DATAA*>.
+template class VectorClass<_WIN32_FIND_DATAA*>;
+typedef VectorClass<_WIN32_FIND_DATAA*> GgWin32FindDataaVectorClass;
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7ED94C -- DynamicVectorClass<_WIN32_FIND_DATAA*>.
+template class DynamicVectorClass<_WIN32_FIND_DATAA*>;
+typedef DynamicVectorClass<_WIN32_FIND_DATAA*> GgWin32FindDataaDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgWin32FindDataaDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(_WIN32_FIND_DATAA*) == 4);
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5AC3A0
+// DynamicVectorClass<MapRegionClass*>::Clear
+
+// FUNCTION: GAMEMD 0x5AC3D0
+// DynamicVectorClass<MapRegionClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x5AC3F0
+// VectorClass<MapRegionClass*>::Slot6
+
+// FUNCTION: GAMEMD 0x5AC6A0
+// VectorClass<MapRegionClass*>::operator==
+
+// FUNCTION: GAMEMD 0x5AC6E0
+// VectorClass<MapRegionClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5AC790
+// VectorClass<MapRegionClass*>::Clear
+
+// FUNCTION: GAMEMD 0x5AC7C0
+// VectorClass<MapRegionClass*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5AC800
+// VectorClass<MapRegionClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x5AC820
+// DynamicVectorClass<MapRegionClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5AC8D0
+// DynamicVectorClass<MapRegionClass*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5AD390
+// VectorClass<MapRegionClass*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5AD3E0
+// DynamicVectorClass<MapRegionClass*>::scalar deleting destructor
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5AC4C0
+// DynamicVectorClass<_WIN32_FIND_DATAA*>::Clear
+
+// FUNCTION: GAMEMD 0x5AC4F0
+// DynamicVectorClass<_WIN32_FIND_DATAA*>::Slot5
+
+// FUNCTION: GAMEMD 0x5AC510
+// VectorClass<_WIN32_FIND_DATAA*>::Slot6
+
+// FUNCTION: GAMEMD 0x5ACA60
+// VectorClass<_WIN32_FIND_DATAA*>::operator==
+
+// FUNCTION: GAMEMD 0x5ACAA0
+// VectorClass<_WIN32_FIND_DATAA*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5ACB50
+// VectorClass<_WIN32_FIND_DATAA*>::Clear
+
+// FUNCTION: GAMEMD 0x5ACB80
+// VectorClass<_WIN32_FIND_DATAA*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5ACBC0
+// VectorClass<_WIN32_FIND_DATAA*>::Slot5
+
+// FUNCTION: GAMEMD 0x5ACBE0
+// DynamicVectorClass<_WIN32_FIND_DATAA*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5ACC90
+// DynamicVectorClass<_WIN32_FIND_DATAA*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5AD430
+// VectorClass<_WIN32_FIND_DATAA*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5AD480
+// DynamicVectorClass<_WIN32_FIND_DATAA*>::scalar deleting destructor
+
 // FUNCTION: GAMEMD 0x005AD9F0
 // vtable constant: 0x7ED92C
 GG_VECTOR_CTOR_POD_BODY(VectorClass_005AD9F0, PodElem4, 0x7ED92C)

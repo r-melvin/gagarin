@@ -71,18 +71,6 @@ char FUN_0055CBF0()
 }
 
 
-// FUNCTION: GAMEMD 0x005C61D0
-const unsigned short* FUN_005C61D0()
-{
-    return (const unsigned short*)&DAT_0082E174;
-}
-
-// FUNCTION: GAMEMD 0x005C61E0
-int FUN_005C61E0()
-{
-    return (int)&DAT_00000DB7;
-}
-
 // FUNCTION: GAMEMD 0x00637AA0
 char FUN_00637AA0()
 {
@@ -323,29 +311,6 @@ int FUN_0072F510()
     return DAT_00B0FBF8;
 }
 
-// FUNCTION: GAMEMD 0x00731CB0
-int FUN_00731CB0()
-{
-    return (int)&DAT_00000047;
-}
-
-// FUNCTION: GAMEMD 0x00731CC0
-int FUN_00731CC0()
-{
-    return (int)&DAT_00000016;
-}
-
-// FUNCTION: GAMEMD 0x007342A0
-int FUN_007342A0()
-{
-    return DAT_00B0FE5C;
-}
-
-// FUNCTION: GAMEMD 0x007342B0
-int FUN_007342B0()
-{
-    return DAT_00B0FE60;
-}
 
 // FUNCTION: GAMEMD 0x00734FD0
 int FUN_00734FD0()
@@ -359,11 +324,6 @@ int FUN_00753C70()
     return (int)&DAT_00B2D928;
 }
 
-// FUNCTION: GAMEMD 0x0076BFB0
-int FUN_0076BFB0()
-{
-    return (int)&DAT_00000001;
-}
 
 // FUNCTION: GAMEMD 0x00775B10
 int FUN_00775B10()

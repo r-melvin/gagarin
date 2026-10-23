@@ -72,6 +72,38 @@ extern int DAT_00A8EE68;
 // GLOBAL: GAMEMD 0xA8EE70
 extern double DAT_00A8EE70;
 
+
+// Retail PAVGraphicMenuItem RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+#include "vector_class_operations.h"
+
+class GraphicMenuItem;
+
+// VTABLE: GAMEMD 0x7EA624 -- VectorClass<GraphicMenuItem*>.
+template class VectorClass<GraphicMenuItem*>;
+typedef VectorClass<GraphicMenuItem*> GgGraphicMenuItemVectorClass;
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EA604 -- DynamicVectorClass<GraphicMenuItem*>.
+template class DynamicVectorClass<GraphicMenuItem*>;
+typedef DynamicVectorClass<GraphicMenuItem*> GgGraphicMenuItemDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(GraphicMenuItem*) == 4);
+
 // FUNCTION: GAMEMD 0x4F0F20
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_004F0F20()
@@ -113,6 +145,43 @@ void* Obj_4F2830::FUN_4F2830(unsigned int flags)
 
     return this;
 }
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4F2850
+// DynamicVectorClass<GraphicMenuItem*>::Clear
+
+// FUNCTION: GAMEMD 0x4F2880
+// DynamicVectorClass<GraphicMenuItem*>::Slot5
+
+// FUNCTION: GAMEMD 0x4F28A0
+// VectorClass<GraphicMenuItem*>::Slot6
+
+// FUNCTION: GAMEMD 0x4F28E0
+// VectorClass<GraphicMenuItem*>::operator==
+
+// FUNCTION: GAMEMD 0x4F2920
+// VectorClass<GraphicMenuItem*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x4F29D0
+// VectorClass<GraphicMenuItem*>::Clear
+
+// FUNCTION: GAMEMD 0x4F2A00
+// VectorClass<GraphicMenuItem*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x4F2A40
+// VectorClass<GraphicMenuItem*>::Slot5
+
+// FUNCTION: GAMEMD 0x4F2A60
+// DynamicVectorClass<GraphicMenuItem*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x4F2B10
+// DynamicVectorClass<GraphicMenuItem*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x4F2B60
+// VectorClass<GraphicMenuItem*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x4F2BB0
+// DynamicVectorClass<GraphicMenuItem*>::scalar deleting destructor
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004F28B0

@@ -294,15 +294,6 @@ struct Vector_005C6120
     void FUN_005C6120();
 };
 
-// FUNCTION: GAMEMD 0x005C6120
-// Free every pointer held, then slot 3.
-void Vector_005C6120::FUN_005C6120()
-{
-    for (int i = 0; i < unknown_10; i++) {
-        operator delete(unknown_4[i]);
-    }
-    vf_3();
-}
 
 struct Obj_005F9710
 {

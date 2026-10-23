@@ -247,6 +247,421 @@ inline const unsigned short* FindTablePrime(unsigned short key)
     return found;
 }
 
+
+//   block of MPLayer.CPP (its __FILE__ string 0x82E134).
+
+//   Every displacement, constant, table bound and callee below was read off
+//   the user's retail gamemd.exe v1.001 with the local Ghidra CLI at the
+//   address in each annotation. None of the owning classes is bound by RTTI or
+//   a binary string here, so all keep placeholder names. The two imports are
+//   named by the PE import table (GetAsyncKeyState 0x7E13E0, SendMessageA
+//   0x7E14A4).
+//
+// Small leaves (64 bytes or less) between 0x500000 and 0x6B0000 that other
+// translation units already declared as callees but nothing defined.
+
+//   block of MPLayer.CPP (its __FILE__ string 0x82E134 is the one passed to
+//   the string-table loads below).
+
+#include "global_getter_family_methods.h"
+
+#include "../network/mp_game_mode_leaf_classes.h"
+
+#include <windows.h>
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+extern "C" int __cdecl _stricmp(const char* a, const char* b);
+
+// A two-short cell value copied as one dword.
+struct Cell_0050DEF0
+{
+    short X;
+    short Y;
+
+    Cell_0050DEF0() {}
+    bool operator==(const Cell_0050DEF0& other) const
+    {
+        return X == other.X && Y == other.Y;
+    }
+};
+GG_STATIC_ASSERT(sizeof(Cell_0050DEF0) == 4);
+
+// GLOBAL: GAMEMD 0x008B40F8
+extern "C" int DAT_008B40F8;
+// GLOBAL: GAMEMD 0x00A8EF98
+extern "C" Cell_0050DEF0 DAT_00A8EF98;
+// GLOBAL: GAMEMD 0x00A9FAB0
+extern "C" int DAT_00A9FAB0;
+// GLOBAL: GAMEMD 0x00AA0444
+extern "C" int DAT_00AA0444;
+// GLOBAL: GAMEMD 0x00AA0168 (256 key-state words)
+extern "C" short DAT_00AA0168[256];
+// GLOBAL: GAMEMD 0x00B45B68
+extern "C" int DAT_00B45B68;
+// GLOBAL: GAMEMD 0x008B4130
+extern "C" int DAT_008B4130;
+
+// ---------------------------------------------------------------------------
+
+struct Team_005095D0
+{
+    char Pad_00[0x24];
+    int unknown_24;
+    char Pad_28[4];
+    void* unknown_2C;
+};
+GG_STATIC_ASSERT(offsetof(Team_005095D0, unknown_2C) == 0x2C);
+
+// GLOBAL: GAMEMD 0x008B40EC
+extern "C" Team_005095D0** DAT_008B40EC;
+
+struct Obj_005095D0
+{
+    int FUN_005095D0(int kind);
+};
+
+
+struct Obj_0050DA10
+{
+    char Pad_00[0x5490];
+    Cell_0050DEF0 unknown_5490;
+    Cell_0050DEF0 unknown_5494;
+    char Pad_5498[0x54F0 - 0x5498];
+    Cell_0050DEF0 unknown_54F0;
+    Cell_0050DEF0 unknown_54F4;
+    Cell_0050DEF0 unknown_54F8;
+    int unknown_54FC;
+    char Pad_5500[0x577C - 0x5500];
+    int unknown_577C;
+
+    void FUN_0050DA10();
+    void FUN_0050DA50();
+    int FUN_0050DA80() const;
+    Cell_0050DEF0 FUN_0050DEF0() const;
+    void FUN_0050DFF0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_5490) == 0x5490);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54F0) == 0x54F0);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_54FC) == 0x54FC);
+GG_STATIC_ASSERT(offsetof(Obj_0050DA10, unknown_577C) == 0x577C);
+
+struct Obj_0053ECB0
+{
+    unsigned char unknown_0[10];
+
+    Obj_0053ECB0();
+};
+
+struct Triple_0053EDA0
+{
+    short unknown_0;
+    short unknown_2;
+    short unknown_4;
+};
+GG_STATIC_ASSERT(sizeof(Triple_0053EDA0) == 6);
+
+struct Obj_0053EDA0
+{
+    int unknown_0;
+    Triple_0053EDA0 unknown_4;
+
+    void FUN_0053EDA0(int* first, Triple_0053EDA0* rest) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0053EDA0, unknown_4) == 4);
+
+struct Obj_005402B0
+{
+    void FUN_005402B0(int value);
+};
+
+struct Obj_00542FC0
+{
+    char Pad_00[0x48];
+    Obj_005402B0* unknown_48;
+
+    void FUN_00542FC0(int value);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00542FC0, unknown_48) == 0x48);
+
+struct Entry_005657A0
+{
+    char Pad_00[0x24];
+    Cell_0050DEF0 unknown_24;
+};
+
+// GLOBAL: GAMEMD 0x00ABDC50
+extern "C" Entry_005657A0 DAT_00ABDC50;
+
+struct Obj_005657A0
+{
+    char Pad_00[0x13C];
+    Entry_005657A0** unknown_13C;
+
+    Entry_005657A0* FUN_005657A0(const Cell_0050DEF0& cell) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_005657A0, unknown_13C) == 0x13C);
+
+struct Obj_005B3700
+{
+    int unknown_0;
+    char unknown_4;
+    char unknown_5;
+    char unknown_6;
+    char unknown_7;
+    char unknown_8;
+    char unknown_9;
+    char Pad_0A[6];
+    double unknown_10;
+    double unknown_18;
+
+    Obj_005B3700();
+};
+GG_STATIC_ASSERT(offsetof(Obj_005B3700, unknown_10) == 0x10);
+
+struct Slot_005B3A00
+{
+    char Bytes[0x20];
+};
+
+// GLOBAL: GAMEMD 0x00A8E3A8 (32-byte records)
+extern "C" Slot_005B3A00 DAT_00A8E3A8[];
+
+struct Obj_005B3A00
+{
+    char Pad_00[0xAC];
+    int unknown_AC;
+};
+GG_STATIC_ASSERT(offsetof(Obj_005B3A00, unknown_AC) == 0xAC);
+
+struct Iface_005BF500
+{
+    virtual void vf_0() = 0;
+    virtual void vf_1() = 0;
+    virtual void vf_2() = 0;
+    virtual void vf_3(int value) = 0;
+};
+
+// GLOBAL: GAMEMD 0x00B45B5C
+extern "C" Iface_005BF500** DAT_00B45B5C;
+
+struct Vector_005C6120
+{
+    virtual void vf_0() = 0;
+    virtual void vf_1() = 0;
+    virtual void vf_2() = 0;
+    virtual void vf_3() = 0;
+
+    void** unknown_4;
+    int Pad_08;
+    int Pad_0C;
+    int unknown_10;
+
+    void FUN_005C6120();
+};
+
+struct Obj_005F9710
+{
+    char unknown_0;
+    char unknown_1;
+};
+
+struct Quad_00645C30
+{
+    int unknown_0;
+    int unknown_4;
+    int unknown_8;
+    int unknown_C;
+
+    Quad_00645C30(int a, int b, int c, int d);
+};
+
+struct Record_00656580
+{
+    char Bytes[0x18];
+};
+
+struct Key_00656580
+{
+    char Pad_00[0xEF0];
+    int unknown_EF0;
+};
+GG_STATIC_ASSERT(offsetof(Key_00656580, unknown_EF0) == 0xEF0);
+
+struct Obj_00656580
+{
+    Record_00656580 unknown_0[1];
+
+    Record_00656580* FUN_00656580(const Key_00656580* key);
+};
+
+
+struct Obj_0065AD30
+{
+    char Pad_00[0xE4];
+    int* unknown_E4;
+
+    int FUN_0065AD30(int index) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0065AD30, unknown_E4) == 0xE4);
+
+struct Pair_0065C890
+{
+    int unknown_0;
+    int unknown_4;
+
+    Pair_0065C890(int a, int b);
+};
+
+struct Obj_0068BCB0
+{
+    char Pad_00[0x214];
+    int unknown_214;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0068BCB0, unknown_214) == 0x214);
+
+
+struct Obj_0068C030
+{
+    char Pad_00[0x1180];
+    int unknown_1180[16];
+
+    int FUN_0068C030(int index) const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0068C030, unknown_1180) == 0x1180);
+
+
+struct Owner_006915D0
+{
+    char Pad_00[0xA0];
+    unsigned int unknown_A0;
+};
+GG_STATIC_ASSERT(offsetof(Owner_006915D0, unknown_A0) == 0xA0);
+
+struct Cursor_006915D0
+{
+    char Pad_00[0x24];
+    Owner_006915D0* unknown_24;
+    char Pad_28[4];
+    unsigned int unknown_2C;
+};
+GG_STATIC_ASSERT(offsetof(Cursor_006915D0, unknown_2C) == 0x2C);
+
+#pragma pack(push, 1)
+struct Obj_00696F10
+{
+    char Pad_00[0x4B];
+    int unknown_4B;
+    int unknown_4F;
+    int unknown_53;
+    int unknown_57;
+    int unknown_5B;
+    int unknown_5F;
+    int unknown_63;
+    int unknown_67;
+
+    int FUN_00696F10() const;
+    int FUN_00696F20() const;
+    int FUN_00696F50() const;
+    int FUN_00696F70() const;
+};
+#pragma pack(pop)
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
+GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
+
+
+struct Obj_0069B540
+{
+    char Pad_00[0x24];
+    int unknown_24;
+    char Pad_28[0x4C - 0x28];
+    int unknown_4C[8];
+    int unknown_6C[8];
+};
+GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_6C) == 0x6C);
+
+
+struct Obj_0069BBE0
+{
+    char Pad_00[0x30D8];
+    char unknown_30D8;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0069BBE0, unknown_30D8) == 0x30D8);
+
+
+struct Type_006A46D0
+{
+    char Pad_00[0x24];
+    char unknown_24[1];
+};
+
+// GLOBAL: GAMEMD 0x008B4124
+extern "C" Type_006A46D0** DAT_008B4124;
+
+#include <stddef.h>
+#include "../_layout/dialog_005d3490.h"
+
+// STRING: GAMEMD 0x825FB0 -- "TXT_OK".
+extern const char STR_00825FB0[];
+// STRING: GAMEMD 0x825FD0 -- "TXT_CANCEL".
+extern const char STR_00825FD0[];
+// STRING: GAMEMD 0x82E134 -- this module's __FILE__ ("D:\\ra2mdpost\\MPLayer.CPP").
+extern const char STR_0082E134[];
+
+// Declaration: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
+wchar_t* StringTable_LoadString(const char* label, int* out,
+                                const char* file, int line);
+
+// FUNCTION: GAMEMD 0x5C60D0
+// Ask an OK / Cancel question; true when the first button (OK) was chosen.
+bool FUN_005C60D0(const wchar_t* message)
+{
+    Dialog_005D3490 dialog;
+    return dialog.FUN_005D3490(message,
+                               StringTable_LoadString(STR_00825FB0, 0, STR_0082E134, 0x6C),
+                               StringTable_LoadString(STR_00825FD0, 0, STR_0082E134, 0x6C),
+                               0, 0) == 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x005C6120
+// Free every pointer held, then slot 3.
+void Vector_005C6120::FUN_005C6120()
+{
+    for (int i = 0; i < unknown_10; i++) {
+        operator delete(unknown_4[i]);
+    }
+    vf_3();
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C6150
+MultiplayerManBattle::MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
+    : MultiplayerGameMode(a, b, c, d, e, f)
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C6190
+MultiplayerManBattle::~MultiplayerManBattle()
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x005C61D0
+const unsigned short* FUN_005C61D0()
+{
+    return (const unsigned short*)&DAT_0082E174;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x005C61E0
+int FUN_005C61E0()
+{
+    return (int)&DAT_00000DB7;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005c6660
 // Shifts the n-word value at p right by shift bits, in place.

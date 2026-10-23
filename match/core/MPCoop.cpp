@@ -55,8 +55,218 @@ struct Rec_0049E3B0
 GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Names) == 0x0C);
 GG_STATIC_ASSERT(offsetof(Rec_0049E3B0, Lists) == 0x10);
 
+
+// Retail PAUMPlayerScoreType RTTI identifies mutable struct pointers and
+// DynamicVectorClass -> VectorClass at offset zero. Complete entry-origin
+// spans establish the bound methods; no GX emits the full deleting bodies.
+// No TypeList or dynamic capacity constructor is claimed. Original TU
+// boundaries, final link and complete object sizes remain unestablished.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+// Retail PAVCoopCampaignClass RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+// Retail PAUNodeNameType RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+#include "vector_class_operations.h"
+struct MPlayerScoreType;
+
+// VTABLE: GAMEMD 0x7EE3D0 -- VectorClass<MPlayerScoreType*>.
+template class VectorClass<MPlayerScoreType*>;
+typedef VectorClass<MPlayerScoreType*> GgMPlayerScoreVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EE3F0 -- DynamicVectorClass<MPlayerScoreType*>.
+template class DynamicVectorClass<MPlayerScoreType*>;
+typedef DynamicVectorClass<MPlayerScoreType*> GgMPlayerScoreDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMPlayerScoreDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(MPlayerScoreType*) == 4);
+
+#include "vector_class_operations.h"
+
+class CoopCampaignClass;
+
+// VTABLE: GAMEMD 0x7EE3B0 -- VectorClass<CoopCampaignClass*>.
+template class VectorClass<CoopCampaignClass*>;
+typedef VectorClass<CoopCampaignClass*> GgCoopCampaignClassVectorClass;
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EE350 -- DynamicVectorClass<CoopCampaignClass*>.
+template class DynamicVectorClass<CoopCampaignClass*>;
+typedef DynamicVectorClass<CoopCampaignClass*> GgCoopCampaignClassDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgCoopCampaignClassDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(CoopCampaignClass*) == 4);
+
+#include "vector_class_operations.h"
+
+struct NodeNameType;
+
+// VTABLE: GAMEMD 0x7EE390 -- VectorClass<NodeNameType*>.
+template class VectorClass<NodeNameType*>;
+typedef VectorClass<NodeNameType*> GgNodenametypeVectorClass;
+GG_STATIC_ASSERT(offsetof(GgNodenametypeVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EE370 -- DynamicVectorClass<NodeNameType*>.
+template class DynamicVectorClass<NodeNameType*>;
+typedef DynamicVectorClass<NodeNameType*> GgNodenametypeDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgNodenametypeDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(NodeNameType*) == 4);
+
 // FUNCTION: GAMEMD 0x49D9F0 (decl; reloc) -- look a name up; an index or -1.
 int FUN_0049D9F0(const char* name);
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C4F30
+// DynamicVectorClass<MPlayerScoreType*>::copy constructor
+
+// SYNTHETIC: GAMEMD 0x5C4FC0
+// DynamicVectorClass<MPlayerScoreType*>::scalar deleting destructor
+
+// FUNCTION: GAMEMD 0x5C5010
+// DynamicVectorClass<MPlayerScoreType*>::Clear
+
+// FUNCTION: GAMEMD 0x5C5040
+// DynamicVectorClass<MPlayerScoreType*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C5060
+// VectorClass<MPlayerScoreType*>::Slot6
+
+// FUNCTION: GAMEMD 0x5C5130
+// VectorClass<MPlayerScoreType*>::operator==
+
+// FUNCTION: GAMEMD 0x5C5170
+// VectorClass<MPlayerScoreType*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C5220
+// VectorClass<MPlayerScoreType*>::Clear
+
+// FUNCTION: GAMEMD 0x5C5250
+// VectorClass<MPlayerScoreType*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5C5290
+// VectorClass<MPlayerScoreType*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C52B0
+// DynamicVectorClass<MPlayerScoreType*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C5360
+// DynamicVectorClass<MPlayerScoreType*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5C5850
+// VectorClass<MPlayerScoreType*>::scalar deleting destructor
+
+// FUNCTION: GAMEMD 0x5C59E0
+// VectorClass<MPlayerScoreType*>::capacity constructor
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C5070
+// DynamicVectorClass<NodeNameType*>::Clear
+
+// FUNCTION: GAMEMD 0x5C50A0
+// DynamicVectorClass<NodeNameType*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C50C0
+// VectorClass<NodeNameType*>::Slot6
+
+// FUNCTION: GAMEMD 0x5C5390
+// VectorClass<NodeNameType*>::operator==
+
+// FUNCTION: GAMEMD 0x5C53D0
+// VectorClass<NodeNameType*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C5480
+// VectorClass<NodeNameType*>::Clear
+
+// FUNCTION: GAMEMD 0x5C54B0
+// VectorClass<NodeNameType*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5C54F0
+// VectorClass<NodeNameType*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C5510
+// DynamicVectorClass<NodeNameType*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C55C0
+// DynamicVectorClass<NodeNameType*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5C58A0
+// VectorClass<NodeNameType*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5C58F0
+// DynamicVectorClass<NodeNameType*>::scalar deleting destructor
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5C50D0
+// DynamicVectorClass<CoopCampaignClass*>::Clear
+
+// FUNCTION: GAMEMD 0x5C5100
+// DynamicVectorClass<CoopCampaignClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C5120
+// VectorClass<CoopCampaignClass*>::Slot6
+
+// FUNCTION: GAMEMD 0x5C55F0
+// VectorClass<CoopCampaignClass*>::operator==
+
+// FUNCTION: GAMEMD 0x5C5630
+// VectorClass<CoopCampaignClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C56E0
+// VectorClass<CoopCampaignClass*>::Clear
+
+// FUNCTION: GAMEMD 0x5C5710
+// VectorClass<CoopCampaignClass*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5C5750
+// VectorClass<CoopCampaignClass*>::Slot5
+
+// FUNCTION: GAMEMD 0x5C5770
+// DynamicVectorClass<CoopCampaignClass*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5C5820
+// DynamicVectorClass<CoopCampaignClass*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5C5940
+// VectorClass<CoopCampaignClass*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5C5990
+// DynamicVectorClass<CoopCampaignClass*>::scalar deleting destructor
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- StringTable::LoadString.
 wchar_t* StringTable_LoadString(const char* label, int* out,

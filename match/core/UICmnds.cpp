@@ -96,6 +96,18 @@ extern const char DAT_00845660[] = "MSG:Veteran";
 // STRING: GAMEMD 0x0084566C
 extern const char DAT_0084566C[] = "MSG:Elite";
 
+
+//   0x732D00 via the local Ghidra disassembly.
+//
+// Global query leaves, ordered ascending by retail address.
+
+#include "global_getter_family_methods.h"
+
+#include "../platform/system_query_methods.h"
+
+// Win32 import reached through the IAT (`CALL dword ptr [0x007E1530]`).
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
+
 // FUNCTION: GAMEMD 0x7307B0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007307B0()
@@ -567,6 +579,18 @@ bool __cdecl FUN_00731BF0()
     return true;
 }
 
+// FUNCTION: GAMEMD 0x00731CB0
+int FUN_00731CB0()
+{
+    return (int)&DAT_00000047;
+}
+
+// FUNCTION: GAMEMD 0x00731CC0
+int FUN_00731CC0()
+{
+    return (int)&DAT_00000016;
+}
+
 // FUNCTION: GAMEMD 0x731CF0
 // Stores to a global.
 void __cdecl FUN_00731CF0()
@@ -939,6 +963,12 @@ void __cdecl FUN_00732CC0()
             Map_0087F7E8.GScreenClass::FlagToRedraw(1);
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x732D00  Unsorted::IsTypeSelecting (__fastcall)
+bool Unsorted_IsTypeSelecting()
+{
+    return IsTypeSelectingFlag;
 }
 
 // FUNCTION: GAMEMD 0x732D10
@@ -1369,6 +1399,20 @@ void TechnoClass::ClearSidebarTabObject()
         SidebarTabObjectB = NULL;
         return;
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x007342A0
+int FUN_007342A0()
+{
+    return DAT_00B0FE5C;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x007342B0
+int FUN_007342B0()
+{
+    return DAT_00B0FE60;
 }
 
 // FUNCTION: GAMEMD 0x7342C0

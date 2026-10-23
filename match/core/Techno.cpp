@@ -402,6 +402,67 @@ static inline CellStruct CoordToCell(const CoordStruct& coord)
     return cell;
 }
 
+
+// TechnoClass bodies for primary-table (0x7F4960) slots 25, 186, 180 and 102
+// (0x6F32D0..0x6F4A3E). Slot numbers come from the RTTI-located table; names
+// are placeholders (techno_class.h).
+
+// Translation unit: BuildingClass::IsBeingDrained.
+
+//   member offsets derived directly from the disassembly.
+
+
+#include "../_layout/techno_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/tag_class.h"
+
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8E7AC
+extern int DAT_00A8E7AC;
+// GLOBAL: GAMEMD 0xB0EA50
+extern CellStruct DAT_00B0EA50;
+
+#include "techno_class_kill_passengers_methods.h"
+
+// The null-safe FootClass cast retail inlined at the loop's back edge: null
+// stays null, anything without the AbstractClass foot bit (+0x14, mask 4)
+// becomes null, so the walk stops at the first non-foot link. Written as a
+// ternary the `object != 0` test lands as `CMP EAX,ECX; JZ ret` and the flag
+// test as `TEST byte ptr [EAX+0x14],DL` (0x7104E0..0x7104E7).
+static __inline FootClass* foot_cast_007104C0(void* object)
+{
+    return (object != 0 && ((AbstractClass*)object)->Flags.IsFoot)
+               ? (FootClass*)object
+               : 0;
+}
+
+#include "../combat/techno_class_ability_methods.h"
+
+#include "../combat/techno_class_deactivate_methods.h"
+
+#include "../combat/techno_class_reactivate_methods.h"
+
+#include "../combat/techno_class_update_methods.h"
+
+#include "../economy/building_class_drain.h"
+
+#include "../_layout/foot_class.h"
+
+#ifndef NULL
+#define NULL 0
+#endif
+
+#include "../_layout/unit_class.h"
+
+#include "../renderer/techno_class_drawer_methods.h"
+
+// GLOBAL: GAMEMD 0xA83D4C
+House_00705D70* DAT_00A83D4C;
+// GLOBAL: GAMEMD 0xB054D0
+ColorSchemeVec_00705D70 DAT_00B054D0;
+
 // FUNCTION: GAMEMD 0x6F28D0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_006F28D0()
@@ -423,6 +484,66 @@ void __cdecl FUN_006F2A70()
     DAT_00B0EB20 = 0;
     DAT_00B0EB18 = 0x80;
     DAT_00B0EB1C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x6F32D0
+// Alive, out of limbo, in the playfield, not of kind 6, discovered by the
+// current player, of a selectable type, and owned by the current player.
+bool TechnoClass::vf_25()
+{
+    return Health > 0 && !InLimbo && IsInPlayfield && vf_11() != 6
+        && DiscoveredByCurrentPlayer && vf_33()->Selectable
+        && Owner->IsControlledByCurrentPlayer();
+}
+
+// FUNCTION: GAMEMD 0x6F3820
+// -1, 0 or 1 for another techno, by this type's NavalTargeting mode and the
+// other type's Underwater, SpeedType and two other flags. -1 when the other
+// object is missing or not a techno.
+int TechnoClass::vf_186(TechnoClass* other)
+{
+    if (other == 0 || !other->Flags.IsTechno) {
+        return -1;
+    }
+    bool underwater = other->vf_33()->Underwater;
+    bool flag_D97 = other->vf_33()->bools_D94[0xD97 - 0xD94];
+    bool speed3 = other->vf_33()->SpeedType == 3;
+    bool unnatural = other->vf_33()->Unnatural;
+
+    switch (vf_33()->NavalTargeting) {
+    case 0:
+        if (underwater && other->CloakState != 0) {
+            return -1;
+        }
+        break;
+    case 1:
+        return underwater != 0;
+    case 2:
+        return underwater ? 0 : -1;
+    case 3:
+        if (flag_D97 || unnatural) {
+            return 1;
+        }
+        break;
+    case 4:
+        if (!speed3 && !flag_D97) {
+            return 1;
+        }
+        break;
+    case 5:
+        return 0;
+    case 6:
+        return -1;
+    case 7:
+        return 0;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6F3950
+int TechnoClass::vf_180()
+{
+    return vf_33()->Crewed != 0;
 }
 
 // FUNCTION: GAMEMD 0x6F3970
@@ -496,6 +617,45 @@ int Techno_006F3970::CombatDamage(int which)
         total += (this->*Vptr->GetWeapon)(which)->Type->At_98;
     }
     return total;
+}
+
+// FUNCTION: GAMEMD 0x6F4960
+// Mark this object discovered by a house. Returns false when it already was
+// or the base refuses; a computer house's discovery can switch a mission 14
+// object to mission 15, and the current player's fires tag event 4 and flags
+// the owner's power and radar for a recheck.
+bool TechnoClass::vf_102(HouseClass* house)
+{
+    if (house == CurrentPlayer) {
+        if (DiscoveredByCurrentPlayer) {
+            return false;
+        }
+    } else {
+        if (DiscoveredByComputer) {
+            return false;
+        }
+        DiscoveredByComputer = true;
+    }
+    if (!ObjectClass::vf_102(house)) {
+        return false;
+    }
+    if (!house->IsControlledByHuman() && vf_97() == 14) {
+        vf_122(15, false);
+    }
+    if (house == CurrentPlayer) {
+        DiscoveredByCurrentPlayer = true;
+        Owner->RecheckPower = true;
+        Owner->RecheckRadar = true;
+        if (!IsOwnedByCurrentPlayer) {
+            if (!DAT_00A8E7AC && AttachedTag) {
+                AttachedTag->FUN_006E53A0(4, this, DAT_00B0EA50, false, 0);
+            }
+            Owner->DiscoveredByPlayer = true;
+        }
+    } else {
+        DiscoveredByComputer = true;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x6F4A40
@@ -775,6 +935,67 @@ void FUN_00705D60(void* self)
     FUN_006385C0(self);
 }
 
+// FUNCTION: GAMEMD 0x705D70
+//
+// Which house-colour remap table draws this object. A type with its own
+// Palette= list supplies one ColorScheme per house, indexed by the owner's
+// colour-scheme index. Otherwise the global ColorScheme array is used — for the
+// owner, unless the local player cannot see through a disguise and the object
+// is disguised as some house, in which case that house's colours are drawn.
+// The disguise house is fetched twice rather than cached, as retail does.
+LightConvertClass* Techno_00705D70::GetDrawer()
+{
+    TechnoType_00705D70* type = (this->*(*(Vtbl_00705D70**)this)->At_084)();
+    int index = ((House_00705D70*)this->Owner)->ColorSchemeIndex;
+
+    if (type->Palette != 0) {
+        return (*type->Palette)[index]->LightConvert;
+    }
+
+    if (!(this->*(*(Vtbl_00705D70**)this)->At_440)(DAT_00A83D4C)) {
+        if ((this->*(*(Vtbl_00705D70**)this)->At_0D0)(1) != 0) {
+            return DAT_00B054D0[(this->*(*(Vtbl_00705D70**)this)->At_0D0)(1)->ColorSchemeIndex]->LightConvert;
+        }
+    }
+
+    return DAT_00B054D0[index]->LightConvert;
+}
+
+// FUNCTION: GAMEMD 0x707CB0  TechnoClass::KillPassengers (__thiscall, ret 0x4)
+// Empty a transport by killing everything inside it. Each passenger is first
+// released from its team, then unlinked, then recursively emptied itself — a
+// transport carrying a transport unwinds all the way down — before being
+// destroyed through its own two virtuals.
+//
+// The empty check is hoisted out and the body is a do/while: retail tests
+// FirstPassenger (+0x118, the list head) once up front and again at the bottom
+// of the loop, with the loop head at the GetFirstPassenger call rather than at
+// the test.
+void TechnoClass::KillPassengers(TechnoClass* source)
+{
+    if (Passengers.FirstPassenger == 0)
+        return;
+
+    do
+    {
+        FootClass* first = Passengers.GetFirstPassenger();
+        if (first->Team != 0)
+            first->Team->LiberateMember(first, -1, 0);
+
+        FootClass* passenger = Passengers.RemoveFirstPassenger();
+        if (passenger != 0)
+        {
+            // Retail passes the passenger itself here, not `source`
+            // (`PUSH ESI; MOV ECX,ESI; CALL 0x707CB0`); only the outer
+            // virtual at +0xE0 receives the original killer.
+            passenger->KillPassengers(passenger);
+            passenger->vf_56(source);
+            passenger->vf_62();
+        }
+    }
+    while (Passengers.FirstPassenger != 0);
+}
+
 // FUNCTION: GAMEMD 0x708D70
 DirStruct TechnoClass::vf_194()
 {
@@ -959,6 +1180,32 @@ void TechnoClass::vf_294()
 void FUN_0070CCF0(int a1, int a2)
 {
     FUN_006562D0(DAT_0087F7E8, a2, a1 + 0x208);
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x70D0D0
+//
+// Does this object currently enjoy the given veteran/elite ability? Nothing
+// below veteran rank has any. A veteran has the ability when its type grants it
+// at the veteran tier; an elite has it when the type grants it at either tier
+// (elite is a superset). The type is fetched through the GetTechnoType virtual
+// only once a rank test has passed.
+bool Techno_0070D0D0::HasAbility(int ability)
+{
+    VeterancyStruct* vet = &this->Veterancy;
+
+    if (FUN_0074FF90(vet) || FUN_00750010(vet)) {
+        TechnoType_0070D0D0* type = (this->*(*(Vtbl_0070D0D0**)this)->At_084)();
+
+        if (FUN_0074FF90(vet) && type->VeteranAbilities[ability]) {
+            return true;
+        }
+        if (FUN_00750010(vet)
+            && (type->VeteranAbilities[ability] || type->EliteAbilities[ability])) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x70D150
@@ -1276,6 +1523,51 @@ void RecoilData::Fire()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x70ED10
+//
+// One frame of turret/barrel recoil. While a recoil is in progress the travel
+// accumulates by the per-frame step and the frame countdown ticks; when it
+// expires the state machine advances Compressing(1) -> Holding(2) ->
+// Recovering(3) -> Inactive(0). Entering Holding zeroes the step and loads the
+// hold count (a hold of <= 1 frame drops straight into Recovering); entering
+// Recovering loads the recover count (clamped to at least 1) and sets the step
+// to walk the full travel back over that many frames.
+void RecoilData_0070ED10::Update()
+{
+    unsigned int state = this->State;
+
+    if (state != 0) {
+        this->TravelSoFar = this->TravelPerFrame + this->TravelSoFar;
+        this->TravelFramesLeft = this->TravelFramesLeft - 1;
+
+        if (this->TravelFramesLeft <= 0) {
+            switch (state) {
+            case 1:
+                this->State = 2;
+                this->TravelFramesLeft = this->Turret.HoldFrames;
+                this->TravelPerFrame = 0.0f;
+                if (this->TravelFramesLeft > 1) {
+                    break;
+                }
+                // fall through
+            case 2:
+                this->State = 3;
+                this->TravelFramesLeft = this->Turret.RecoverFrames;
+                if (this->TravelFramesLeft < 1) {
+                    this->TravelFramesLeft = 1;
+                }
+                this->TravelPerFrame = -((float)this->Turret.Travel / (float)this->TravelFramesLeft);
+                break;
+            case 3:
+                this->State = 0;
+                this->TravelSoFar = 0.0f;
+                break;
+            }
+        }
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70EFD0  (__thiscall)
 // Is an EMP still holding this object down? `SETG` is the signed test, so the
 // remaining-lock counter is a signed int.
@@ -1461,6 +1753,95 @@ void TechnoClass::CancelAndGoIdle()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// The redraw is ObjectClass primary slot 73 (vtable offset 0x124), called with 2.
+// FUNCTION: GAMEMD 0x70FBD0  (__thiscall)
+// Retail loads the raw bool byte straight into AL with no 0/1 normalisation, so
+// read it as a bool lvalue (`mov al,[ecx+0x1c8]; ret`), not via the unsigned-char
+// member (which would force a `test`/`setne`).
+bool UnitClass::IsDeactivated() const
+{
+    return *(const bool*)&Deactivated;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x70FBE0
+//
+// Reset through the +0x3D0 virtual first. If this object is a FootClass
+// (AbstractFlags bit 2), power its locomotor back on through the COM slot at
+// +0x58 — the null check and E_POINTER report are the smart-pointer dereference
+// inlined. Then, if it was deactivated and its type names an ActivateSound,
+// play that sound at the object's own location; finally clear Deactivated.
+//
+// Two phrasings matter. The Deactivated test and the sound-index test are one
+// `&&` condition: split into nested `if`s VC6 loads the GetTechnoType() vtable
+// pointer into EAX where retail has EDX (and shifts the coordinate-copy
+// registers with it) — a pure register-naming diff at 76.5%. And the vtable
+// pointer is re-read at every virtual call rather than held in a local;
+// GetTechnoType() is called twice (once to test, once to fetch), as retail does.
+// These casts express the binary's zero-offset AbstractClass/ObjectClass views.
+// The shared spine models public inheritance; these casts do not establish
+// any additional hierarchy.
+void TechnoReactivate::Reactivate()
+{
+    (this->*(*(ReactVtbl**)this)->At_3D0)();
+
+    if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
+    {
+        FootClass* foot = (FootClass*)this;
+        if (foot->Locomotor == 0)
+            FUN_007DC720(0x80004003);
+        LOCO_CALL0((ILocomotion*)foot->Locomotor, 0x58);
+    }
+
+    if (this->Deactivated
+        && (this->*(*(ReactVtbl**)this)->GetTechnoType)()->ActivateSound != -1)
+    {
+        CoordStruct crd = ((ObjectClass*)(void*)this)->Location;
+        VocClass_PlayAt((this->*(*(ReactVtbl**)this)->GetTechnoType)()->ActivateSound, &crd, 0);
+    }
+
+    this->Deactivated = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x70FC90
+//
+// Power the object down. When the +0x418 flag is set and the probe agrees,
+// an object sitting on this cell that is the probe's own answer means there
+// is nothing to do. Otherwise go through the +0x3D0 and +0x150 virtuals, cut a
+// FootClass's locomotor through its COM slot +0x5C (smart-pointer null check
+// and E_POINTER inlined), play the type's deactivate sound at the object's
+// location if it was not already off, and set Deactivated.
+void TechnoDeactivate::Deactivate()
+{
+    if (this->IsTether && this->FUN_0065AD30(0)) {
+        TechnoDeactivate* occupant = (this->*(*(DeactVtbl**)this)->GetCell)()->FUN_0047C520();
+        if (occupant == (TechnoDeactivate*)this->FUN_0065AD30(0))
+            return;
+    }
+
+    (this->*(*(DeactVtbl**)this)->At_3D0)();
+    (this->*(*(DeactVtbl**)this)->At_150)();
+
+    if (this != 0 && (((AbstractClass*)(void*)this)->Flags.IsFoot))
+    {
+        FootClass* foot = (FootClass*)this;
+        if (foot->Locomotor == 0)
+            FUN_007DC720(0x80004003);
+        LOCO_CALL0_DEACT((ILocomotion*)foot->Locomotor, 0x5C);
+    }
+
+    if (!this->Deactivated
+        && (this->*(*(DeactVtbl**)this)->GetTechnoType)()->DeactivateSound != -1)
+    {
+        CoordStruct crd = ((ObjectClass*)(void*)this)->Location;
+        VocClass_PlayAt((this->*(*(DeactVtbl**)this)->GetTechnoType)()->DeactivateSound, &crd, 0);
+    }
+
+    this->Deactivated = 1;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x70FD70
 //
 // Begin draining the given target: link the two objects together, mark the
@@ -1527,6 +1908,23 @@ void Obj_0070FE40::FUN_0070FE40(int a1)
 bool LocoObject_0070FEB0::IsDraining() const
 {
     return this->DrainingWhom != 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x70FEC0  (__thiscall)
+//
+// Retail body (len 0xE):
+//   MOV  EDX,[ECX+0x1d0]   ; DrainingMe
+//   XOR  EAX,EAX
+//   TEST EDX,EDX
+//   SETNZ AL
+//   RET
+//
+// i.e. `return DrainingMe != 0;` — boolean of a pointer null test, which cl
+// lowers to the xor/test/setnz tail above.
+bool BuildingClass::IsBeingDrained() const
+{
+    return this->DrainingMe != 0;
 }
 
 // FUNCTION: GAMEMD 0x70FED0
@@ -1609,6 +2007,50 @@ void LocoObject_0070FEB0::FreeWaypointBuffer()
 {
     if (this->WaypointBuffer != 0) {
         FUN_00472140(this->WaypointBuffer);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x7104C0  TechnoClass::MarkPassengersAsExited (__thiscall)
+// Walk the cargo chain clearing the open-topped flag, stopping at the first
+// link that is not a foot-class object (the +0x14 flag word, mask 4). The chain
+// is the shared object list, so the type test is what bounds it.
+//
+// The loop is a top-tested `while (passenger != 0)` whose body guards the
+// store with its own `if (passenger != 0)` and advances through the checked
+// cast. Retail keeps the body's guard (`CMP EAX,ECX; JZ 0x7104DD`) even
+// though the cast has just proved it; VC6 keeps it too once the advance is
+// the ternary cast above — the earlier do/while spellings with the null test
+// in the loop condition let the optimiser delete it (33.3%).
+void TechnoClass::MarkPassengersAsExited()
+{
+    FootClass* passenger = Passengers.GetFirstPassenger();
+    while (passenger != 0)
+    {
+        if (passenger != 0)
+            passenger->InOpenToppedTransport = false;
+        passenger = foot_cast_007104C0(passenger->NextObject);
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x7104F0  (__thiscall)
+// Snap every passenger's Location to the transport's own Location. Walks the
+// passenger linked list (first via Passengers.GetFirstPassenger, thereafter via
+// NextObject) while each node carries AbstractFlags bit 0x4.
+//   CALL 0x473450 ; copy this->Location -> stack coord ; CALL [vtbl+0x1B4] per node
+void FootClass::UpdatePassengerCoords()
+{
+    ObjectClass* p = this->Passengers.GetFirstPassenger();
+    CoordStruct crd = this->Location;
+    if (p != NULL)
+    {
+        do
+        {
+            p->vf_109(crd);
+            p = (ObjectClass*)p->NextObject;
+        }
+        while (p != NULL && p->Flags.IsFoot);
     }
 }
 

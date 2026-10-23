@@ -2534,7 +2534,7 @@
   "note": "44/53 instruction positions; final 32-bit pair copy recovered. Not byte-exact; matching search capped."
  },
  {
-  "tu": "match/combat/techno_class_ability_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70D0D0",
   "sym": "?HasAbility@Techno_0070D0D0@@QAE_NH@Z",
   "len": "0x80",
@@ -2561,7 +2561,7 @@
   "pct": 24.4
  },
  {
-  "tu": "match/combat/techno_class_deactivate_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FC90",
   "sym": "?Deactivate@TechnoDeactivate@@QAEXXZ",
   "len": "0xdf",
@@ -2624,7 +2624,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_reactivate_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FBE0",
   "sym": "?Reactivate@TechnoReactivate@@QAEXXZ",
   "len": "0xa6",
@@ -2642,7 +2642,7 @@
   "pct": 100
  },
  {
-  "tu": "match/combat/techno_class_update_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70ED10",
   "sym": "?Update@RecoilData_0070ED10@@QAEXXZ",
   "len": "0x68",
@@ -5901,7 +5901,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x50E830",
   "sym": "??0?$DynamicVectorClass@PBVTeamTypeClass@@@@QAE@ABV0@@Z",
   "len": "0x88",
@@ -5955,7 +5955,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C4F30",
   "sym": "??0?$DynamicVectorClass@PAUMPlayerScoreType@@@@QAE@ABV0@@Z",
   "len": "0x88",
@@ -7017,7 +7017,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x005c61d0",
   "sym": "?FUN_005C61D0@@YIPBGXZ",
   "len": "0x6",
@@ -7026,7 +7026,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x005c61e0",
   "sym": "?FUN_005C61E0@@YIHXZ",
   "len": "0x6",
@@ -7395,7 +7395,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x00731cb0",
   "sym": "?FUN_00731CB0@@YIHXZ",
   "len": "0x6",
@@ -7404,7 +7404,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x00731cc0",
   "sym": "?FUN_00731CC0@@YIHXZ",
   "len": "0x6",
@@ -7413,7 +7413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x007342a0",
   "sym": "?FUN_007342A0@@YIHXZ",
   "len": "0x6",
@@ -7422,7 +7422,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x007342b0",
   "sym": "?FUN_007342B0@@YIHXZ",
   "len": "0x6",
@@ -7449,7 +7449,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/global_getter_family_methods.cpp",
+  "tu": "match/network/WDTProps.cpp",
   "addr": "0x0076bfb0",
   "sym": "?FUN_0076BFB0@@YIHXZ",
   "len": "0x6",
@@ -12859,7 +12859,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_kill_passengers_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x707CB0",
   "sym": "?KillPassengers@TechnoClass@@QAEXPAV1@@Z",
   "len": "0x70",
@@ -12868,7 +12868,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_kill_passengers_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7104C0",
   "sym": "?MarkPassengersAsExited@TechnoClass@@QAEXXZ",
   "len": "0x2A",
@@ -13795,7 +13795,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004b9be0",
   "sym": "?Clear@?$DynamicVectorClass@PAUButtonFadeEffect@@@@UAEXXZ",
   "len": "0x2a",
@@ -13804,7 +13804,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004b9c40",
   "sym": "?Clear@?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UAEXXZ",
   "len": "0x2a",
@@ -13822,7 +13822,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "addr": "0x004c49a0",
   "sym": "?Clear@?$DynamicVectorClass@PAVEgoClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14245,7 +14245,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x004f2850",
   "sym": "?Clear@?$DynamicVectorClass@PAVGraphicMenuItem@@@@UAEXXZ",
   "len": "0x2a",
@@ -14299,7 +14299,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x0050e6a0",
   "sym": "?Clear@?$DynamicVectorClass@PBVTeamTypeClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14362,7 +14362,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x0053c4c0",
   "sym": "?Clear@?$DynamicVectorClass@PBVAnimClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14452,7 +14452,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x0055a150",
   "sym": "?Clear@?$DynamicVectorClass@PAVFileEntryClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14506,7 +14506,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005ac3a0",
   "sym": "?Clear@?$DynamicVectorClass@PAVMapRegionClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14515,7 +14515,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005ac4c0",
   "sym": "?Clear@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UAEXXZ",
   "len": "0x2a",
@@ -14560,7 +14560,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c5010",
   "sym": "?Clear@?$DynamicVectorClass@PAUMPlayerScoreType@@@@UAEXXZ",
   "len": "0x2a",
@@ -14569,7 +14569,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c5070",
   "sym": "?Clear@?$DynamicVectorClass@PAUNodeNameType@@@@UAEXXZ",
   "len": "0x2a",
@@ -14578,7 +14578,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c50d0",
   "sym": "?Clear@?$DynamicVectorClass@PAVCoopCampaignClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -14596,7 +14596,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0610",
   "sym": "?Clear@?$DynamicVectorClass@PAVMSTextEntry@@@@UAEXXZ",
   "len": "0x2a",
@@ -14695,7 +14695,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x005eebb0",
   "sym": "?Clear@?$DynamicVectorClass@PBVMultiMission@@@@UAEXXZ",
   "len": "0x2a",
@@ -14722,7 +14722,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "addr": "0x00627d20",
   "sym": "?Clear@?$DynamicVectorClass@PAVColorScheme@@@@UAEXXZ",
   "len": "0x2a",
@@ -14893,7 +14893,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "addr": "0x0069c600",
   "sym": "?Clear@?$DynamicVectorClass@PAUGlobalPacketType@@@@UAEXXZ",
   "len": "0x2a",
@@ -15001,7 +15001,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "addr": "0x006e47f0",
   "sym": "?Clear@?$DynamicVectorClass@PAVTActionClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15118,7 +15118,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x007ac970",
   "sym": "?Clear@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAEXXZ",
   "len": "0x2a",
@@ -15451,7 +15451,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C59E0",
   "sym": "??0?$VectorClass@PAUMPlayerScoreType@@@@QAE@HPAPAUMPlayerScoreType@@@Z",
   "len": "0x4a",
@@ -15496,7 +15496,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x5EF0B0",
   "sym": "??0?$VectorClass@PBVMultiMission@@@@QAE@HPAPBVMultiMission@@@Z",
   "len": "0x4a",
@@ -15856,7 +15856,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004BA1B0",
   "sym": "??_G?$VectorClass@PAUButtonFadeEffect@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15865,7 +15865,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004BA200",
   "sym": "??_G?$DynamicVectorClass@PAUButtonFadeEffect@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15874,7 +15874,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004BA250",
   "sym": "??_G?$VectorClass@PAUCrossDissolveEffect@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15883,7 +15883,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004BA2A0",
   "sym": "??_G?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15910,7 +15910,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "addr": "0x004C4C60",
   "sym": "??_G?$VectorClass@PAVEgoClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -15919,7 +15919,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "addr": "0x004C4CB0",
   "sym": "??_G?$DynamicVectorClass@PAVEgoClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16765,7 +16765,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x004F2B60",
   "sym": "??_G?$VectorClass@PAVGraphicMenuItem@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16774,7 +16774,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x004F2BB0",
   "sym": "??_G?$DynamicVectorClass@PAVGraphicMenuItem@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16783,7 +16783,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x0050E7E0",
   "sym": "??_G?$TypeList@PBVTeamTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16792,7 +16792,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x0050E8C0",
   "sym": "??_G?$DynamicVectorClass@PBVTeamTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -16891,7 +16891,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x00510310",
   "sym": "??_G?$VectorClass@PBVTeamTypeClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17044,7 +17044,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x0053C780",
   "sym": "??_G?$VectorClass@PBVAnimClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17053,7 +17053,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x0053C7D0",
   "sym": "??_G?$DynamicVectorClass@PBVAnimClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17224,7 +17224,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x0055A410",
   "sym": "??_G?$VectorClass@PAVFileEntryClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17233,7 +17233,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x0055A460",
   "sym": "??_G?$DynamicVectorClass@PAVFileEntryClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17314,7 +17314,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005AD390",
   "sym": "??_G?$VectorClass@PAVMapRegionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17323,7 +17323,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005AD3E0",
   "sym": "??_G?$DynamicVectorClass@PAVMapRegionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17332,7 +17332,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005AD430",
   "sym": "??_G?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17341,7 +17341,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005AD480",
   "sym": "??_G?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17413,7 +17413,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C4FC0",
   "sym": "??_G?$DynamicVectorClass@PAUMPlayerScoreType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17422,7 +17422,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C5850",
   "sym": "??_G?$VectorClass@PAUMPlayerScoreType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17431,7 +17431,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C58A0",
   "sym": "??_G?$VectorClass@PAUNodeNameType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17440,7 +17440,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C58F0",
   "sym": "??_G?$DynamicVectorClass@PAUNodeNameType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17449,7 +17449,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C5940",
   "sym": "??_G?$VectorClass@PAVCoopCampaignClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17458,7 +17458,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005C5990",
   "sym": "??_G?$DynamicVectorClass@PAVCoopCampaignClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17485,7 +17485,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D1760",
   "sym": "??_G?$VectorClass@PAVMSTextEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17494,7 +17494,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005D17B0",
   "sym": "??_G?$DynamicVectorClass@PAVMSTextEntry@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17683,7 +17683,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x005EEEC0",
   "sym": "??_G?$VectorClass@PBVMultiMission@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17692,7 +17692,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x005EEF10",
   "sym": "??_G?$DynamicVectorClass@PBVMultiMission@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17737,7 +17737,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "addr": "0x006285F0",
   "sym": "??_G?$VectorClass@PAVColorScheme@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17746,7 +17746,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "addr": "0x00628640",
   "sym": "??_G?$DynamicVectorClass@PAVColorScheme@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18097,7 +18097,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "addr": "0x0069D630",
   "sym": "??_G?$VectorClass@PAUGlobalPacketType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18106,7 +18106,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "addr": "0x0069D680",
   "sym": "??_G?$DynamicVectorClass@PAUGlobalPacketType@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18313,7 +18313,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "addr": "0x006E4AB0",
   "sym": "??_G?$VectorClass@PAVTActionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18322,7 +18322,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "addr": "0x006E4B00",
   "sym": "??_G?$DynamicVectorClass@PAVTActionClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18565,7 +18565,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x007AD370",
   "sym": "??_G?$VectorClass@PAUtConnInfoStruct@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -18574,7 +18574,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x007AD3C0",
   "sym": "??_G?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -19186,7 +19186,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004b9d90",
   "sym": "?Clear@?$VectorClass@PAUButtonFadeEffect@@@@UAEXXZ",
   "len": "0x27",
@@ -19195,7 +19195,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "addr": "0x004b9ff0",
   "sym": "?Clear@?$VectorClass@PAUCrossDissolveEffect@@@@UAEXXZ",
   "len": "0x27",
@@ -19213,7 +19213,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "addr": "0x004c4af0",
   "sym": "?Clear@?$VectorClass@PAVEgoClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19645,7 +19645,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x004f29d0",
   "sym": "?Clear@?$VectorClass@PAVGraphicMenuItem@@@@UAEXXZ",
   "len": "0x27",
@@ -19699,7 +19699,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "addr": "0x0050f830",
   "sym": "?Clear@?$VectorClass@PBVTeamTypeClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19762,7 +19762,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "addr": "0x0053c610",
   "sym": "?Clear@?$VectorClass@PBVAnimClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19852,7 +19852,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "addr": "0x0055a2a0",
   "sym": "?Clear@?$VectorClass@PAVFileEntryClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19906,7 +19906,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005ac790",
   "sym": "?Clear@?$VectorClass@PAVMapRegionClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19915,7 +19915,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x005acb50",
   "sym": "?Clear@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UAEXXZ",
   "len": "0x27",
@@ -19951,7 +19951,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c5220",
   "sym": "?Clear@?$VectorClass@PAUMPlayerScoreType@@@@UAEXXZ",
   "len": "0x27",
@@ -19960,7 +19960,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c5480",
   "sym": "?Clear@?$VectorClass@PAUNodeNameType@@@@UAEXXZ",
   "len": "0x27",
@@ -19969,7 +19969,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x005c56e0",
   "sym": "?Clear@?$VectorClass@PAVCoopCampaignClass@@@@UAEXXZ",
   "len": "0x27",
@@ -19987,7 +19987,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x005d0bd0",
   "sym": "?Clear@?$VectorClass@PAVMSTextEntry@@@@UAEXXZ",
   "len": "0x27",
@@ -20086,7 +20086,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "addr": "0x005eed00",
   "sym": "?Clear@?$VectorClass@PBVMultiMission@@@@UAEXXZ",
   "len": "0x27",
@@ -20113,7 +20113,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "addr": "0x00627f00",
   "sym": "?Clear@?$VectorClass@PAVColorScheme@@@@UAEXXZ",
   "len": "0x27",
@@ -20284,7 +20284,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "addr": "0x0069d090",
   "sym": "?Clear@?$VectorClass@PAUGlobalPacketType@@@@UAEXXZ",
   "len": "0x27",
@@ -20392,7 +20392,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "addr": "0x006e4940",
   "sym": "?Clear@?$VectorClass@PAVTActionClass@@@@UAEXXZ",
   "len": "0x27",
@@ -20518,7 +20518,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "addr": "0x007ad180",
   "sym": "?Clear@?$VectorClass@PAUtConnInfoStruct@@@@UAEXXZ",
   "len": "0x27",
@@ -20923,7 +20923,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "addr": "0x4F2A60",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVGraphicMenuItem@@@@UAE_NHPAPAVGraphicMenuItem@@@Z",
   "len": "0xb0",
@@ -20968,7 +20968,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "addr": "0x5AC820",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMapRegionClass@@@@UAE_NHPAPAVMapRegionClass@@@Z",
   "len": "0xb0",
@@ -20995,7 +20995,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "addr": "0x5C5510",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUNodeNameType@@@@UAE_NHPAPAUNodeNameType@@@Z",
   "len": "0xb0",
@@ -21004,7 +21004,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0C60",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVMSTextEntry@@@@UAE_NHPAPAVMSTextEntry@@@Z",
   "len": "0xb0",
@@ -21031,7 +21031,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "addr": "0x627F90",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVColorScheme@@@@UAE_NHPAPAVColorScheme@@@Z",
   "len": "0xb0",
@@ -22453,7 +22453,7 @@
   "pct": 100
  },
  {
-  "tu": "match/economy/building_class_drain.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FEC0",
   "sym": "?IsBeingDrained@BuildingClass@@QBE_NXZ",
   "len": "0xE",
@@ -25515,7 +25515,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/foot_class_more_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x7104F0",
   "sym": "?UpdatePassengerCoords@FootClass@@QAEXXZ",
   "len": "0x54",
@@ -25839,7 +25839,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/matrix3d_more_methods.cpp",
+  "tu": "match/movement/MapSel.cpp",
   "addr": "0x5AE890",
   "sym": "?Translate@Matrix3D@@QAEXMMM@Z",
   "len": "0x5f",
@@ -26055,7 +26055,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/unit_class_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x70FBD0",
   "sym": "?IsDeactivated@UnitClass@@QBE_NXZ",
   "len": "0x7",
@@ -26064,7 +26064,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x740DF0",
   "sym": "?FlagAttach@UnitClass@@QAE_NH@Z",
   "len": "0x2C",
@@ -26073,7 +26073,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/unit_class_methods.cpp",
+  "tu": "match/movement/Unit.cpp",
   "addr": "0x740E20",
   "sym": "?FlagRemove@UnitClass@@QAE_NXZ",
   "len": "0x23",
@@ -28254,7 +28254,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/system_query_methods.cpp",
+  "tu": "match/core/UICmnds.cpp",
   "addr": "0x732D00",
   "sym": "?Unsorted_IsTypeSelecting@@YI_NXZ",
   "len": "0x6",
@@ -28830,7 +28830,7 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/techno_class_drawer_methods.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x705D70",
   "sym": "?GetDrawer@Techno_00705D70@@QAEPAVLightConvertClass@@XZ",
   "len": "0x8a",
@@ -32868,7 +32868,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PBVTeamTypeClass@@@@UBEHPAPBVTeamTypeClass@@@Z",
   "name": "DynamicVectorClass<const TeamTypeClass*>::Slot5"
  },
@@ -32877,7 +32877,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?Slot6@?$VectorClass@PBVTeamTypeClass@@@@UBEPBVTeamTypeClass@@H@Z",
   "name": "VectorClass<const TeamTypeClass*>::Slot6"
  },
@@ -32886,7 +32886,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "??8?$VectorClass@PBVTeamTypeClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<const TeamTypeClass*>::operator=="
  },
@@ -32895,7 +32895,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?SetCapacity@?$VectorClass@PBVTeamTypeClass@@@@UAE_NHPAPBVTeamTypeClass@@@Z",
   "name": "VectorClass<const TeamTypeClass*>::SetCapacity"
  },
@@ -32904,7 +32904,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PBVTeamTypeClass@@@@UBEHABQBVTeamTypeClass@@@Z",
   "name": "VectorClass<const TeamTypeClass*>::FindItemIndex"
  },
@@ -32913,7 +32913,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?Slot5@?$VectorClass@PBVTeamTypeClass@@@@UBEHPAPBVTeamTypeClass@@@Z",
   "name": "VectorClass<const TeamTypeClass*>::Slot5"
  },
@@ -32922,7 +32922,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PBVTeamTypeClass@@@@UAE_NHPAPBVTeamTypeClass@@@Z",
   "name": "DynamicVectorClass<const TeamTypeClass*>::SetCapacity"
  },
@@ -32931,7 +32931,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_teamtype_methods.cpp",
+  "tu": "match/core/House.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVTeamTypeClass@@@@UBEHABQBVTeamTypeClass@@@Z",
   "name": "DynamicVectorClass<const TeamTypeClass*>::FindItemIndex"
  },
@@ -32940,7 +32940,7 @@
   "len": "0x1B",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUMPlayerScoreType@@@@UBEHPAPAUMPlayerScoreType@@@Z",
   "name": "DynamicVectorClass<MPlayerScoreType*>::Slot5"
  },
@@ -32949,7 +32949,7 @@
   "len": "0x0D",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot6@?$VectorClass@PAUMPlayerScoreType@@@@UBEPAUMPlayerScoreType@@H@Z",
   "name": "VectorClass<MPlayerScoreType*>::Slot6"
  },
@@ -32958,7 +32958,7 @@
   "len": "0x3E",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "??8?$VectorClass@PAUMPlayerScoreType@@@@UBE_NABV0@@Z",
   "name": "VectorClass<MPlayerScoreType*>::operator=="
  },
@@ -32967,7 +32967,7 @@
   "len": "0xAE",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUMPlayerScoreType@@@@UAE_NHPAPAUMPlayerScoreType@@@Z",
   "name": "VectorClass<MPlayerScoreType*>::SetCapacity"
  },
@@ -32976,7 +32976,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUMPlayerScoreType@@@@UBEHABQAUMPlayerScoreType@@@Z",
   "name": "VectorClass<MPlayerScoreType*>::FindItemIndex"
  },
@@ -32985,7 +32985,7 @@
   "len": "0x1B",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$VectorClass@PAUMPlayerScoreType@@@@UBEHPAPAUMPlayerScoreType@@@Z",
   "name": "VectorClass<MPlayerScoreType*>::Slot5"
  },
@@ -32994,7 +32994,7 @@
   "len": "0xB0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUMPlayerScoreType@@@@UAE_NHPAPAUMPlayerScoreType@@@Z",
   "name": "DynamicVectorClass<MPlayerScoreType*>::SetCapacity"
  },
@@ -33003,7 +33003,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mplayer_score_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUMPlayerScoreType@@@@UBEHABQAUMPlayerScoreType@@@Z",
   "name": "DynamicVectorClass<MPlayerScoreType*>::FindItemIndex"
  },
@@ -33075,7 +33075,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PBVAnimClass@@@@UBEHPAPBVAnimClass@@@Z",
   "name": "DynamicVectorClass<const AnimClass*>::Slot5"
  },
@@ -33084,7 +33084,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?Slot6@?$VectorClass@PBVAnimClass@@@@UBEPBVAnimClass@@H@Z",
   "name": "VectorClass<const AnimClass*>::Slot6"
  },
@@ -33093,7 +33093,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "??8?$VectorClass@PBVAnimClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<const AnimClass*>::operator=="
  },
@@ -33102,7 +33102,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?SetCapacity@?$VectorClass@PBVAnimClass@@@@UAE_NHPAPBVAnimClass@@@Z",
   "name": "VectorClass<const AnimClass*>::SetCapacity"
  },
@@ -33111,7 +33111,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PBVAnimClass@@@@UBEHABQBVAnimClass@@@Z",
   "name": "VectorClass<const AnimClass*>::FindItemIndex"
  },
@@ -33120,7 +33120,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?Slot5@?$VectorClass@PBVAnimClass@@@@UBEHPAPBVAnimClass@@@Z",
   "name": "VectorClass<const AnimClass*>::Slot5"
  },
@@ -33129,7 +33129,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PBVAnimClass@@@@UAE_NHPAPBVAnimClass@@@Z",
   "name": "DynamicVectorClass<const AnimClass*>::SetCapacity"
  },
@@ -33138,7 +33138,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_animclass_methods.cpp",
+  "tu": "match/core/Ion.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVAnimClass@@@@UBEHABQBVAnimClass@@@Z",
   "name": "DynamicVectorClass<const AnimClass*>::FindItemIndex"
  },
@@ -33147,7 +33147,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PBVMultiMission@@@@UBEHPAPBVMultiMission@@@Z",
   "name": "DynamicVectorClass<const MultiMission*>::Slot5"
  },
@@ -33156,7 +33156,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?Slot6@?$VectorClass@PBVMultiMission@@@@UBEPBVMultiMission@@H@Z",
   "name": "VectorClass<const MultiMission*>::Slot6"
  },
@@ -33165,7 +33165,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "??8?$VectorClass@PBVMultiMission@@@@UBE_NABV0@@Z",
   "name": "VectorClass<const MultiMission*>::operator=="
  },
@@ -33174,7 +33174,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?SetCapacity@?$VectorClass@PBVMultiMission@@@@UAE_NHPAPBVMultiMission@@@Z",
   "name": "VectorClass<const MultiMission*>::SetCapacity"
  },
@@ -33183,7 +33183,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PBVMultiMission@@@@UBEHABQBVMultiMission@@@Z",
   "name": "VectorClass<const MultiMission*>::FindItemIndex"
  },
@@ -33192,7 +33192,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?Slot5@?$VectorClass@PBVMultiMission@@@@UBEHPAPBVMultiMission@@@Z",
   "name": "VectorClass<const MultiMission*>::Slot5"
  },
@@ -33201,7 +33201,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PBVMultiMission@@@@UAE_NHPAPBVMultiMission@@@Z",
   "name": "DynamicVectorClass<const MultiMission*>::SetCapacity"
  },
@@ -33210,7 +33210,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_multimission_methods.cpp",
+  "tu": "match/economy/netshare.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PBVMultiMission@@@@UBEHABQBVMultiMission@@@Z",
   "name": "DynamicVectorClass<const MultiMission*>::FindItemIndex"
  },
@@ -35586,7 +35586,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVEgoClass@@@@UBEHPAPAVEgoClass@@@Z",
   "name": "DynamicVectorClass<EgoClass*>::Slot5"
  },
@@ -35595,7 +35595,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?Slot6@?$VectorClass@PAVEgoClass@@@@UBEPAVEgoClass@@H@Z",
   "name": "VectorClass<EgoClass*>::Slot6"
  },
@@ -35604,7 +35604,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "??8?$VectorClass@PAVEgoClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<EgoClass*>::operator=="
  },
@@ -35613,7 +35613,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVEgoClass@@@@UAE_NHPAPAVEgoClass@@@Z",
   "name": "VectorClass<EgoClass*>::SetCapacity"
  },
@@ -35622,7 +35622,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVEgoClass@@@@UBEHABQAVEgoClass@@@Z",
   "name": "VectorClass<EgoClass*>::FindItemIndex"
  },
@@ -35631,7 +35631,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?Slot5@?$VectorClass@PAVEgoClass@@@@UBEHPAPAVEgoClass@@@Z",
   "name": "VectorClass<EgoClass*>::Slot5"
  },
@@ -35640,7 +35640,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVEgoClass@@@@UAE_NHPAPAVEgoClass@@@Z",
   "name": "DynamicVectorClass<EgoClass*>::SetCapacity"
  },
@@ -35649,7 +35649,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_egoclass_methods.cpp",
+  "tu": "match/core/Egos.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVEgoClass@@@@UBEHABQAVEgoClass@@@Z",
   "name": "DynamicVectorClass<EgoClass*>::FindItemIndex"
  },
@@ -35802,7 +35802,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMSTextEntry@@@@UBEHPAPAVMSTextEntry@@@Z",
   "name": "DynamicVectorClass<MSTextEntry*>::Slot5"
  },
@@ -35811,7 +35811,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot6@?$VectorClass@PAVMSTextEntry@@@@UBEPAVMSTextEntry@@H@Z",
   "name": "VectorClass<MSTextEntry*>::Slot6"
  },
@@ -35820,7 +35820,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "??8?$VectorClass@PAVMSTextEntry@@@@UBE_NABV0@@Z",
   "name": "VectorClass<MSTextEntry*>::operator=="
  },
@@ -35829,7 +35829,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVMSTextEntry@@@@UAE_NHPAPAVMSTextEntry@@@Z",
   "name": "VectorClass<MSTextEntry*>::SetCapacity"
  },
@@ -35838,7 +35838,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVMSTextEntry@@@@UBEHABQAVMSTextEntry@@@Z",
   "name": "VectorClass<MSTextEntry*>::FindItemIndex"
  },
@@ -35847,7 +35847,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?Slot5@?$VectorClass@PAVMSTextEntry@@@@UBEHPAPAVMSTextEntry@@@Z",
   "name": "VectorClass<MSTextEntry*>::Slot5"
  },
@@ -35856,7 +35856,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mstextentry_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMSTextEntry@@@@UBEHABQAVMSTextEntry@@@Z",
   "name": "DynamicVectorClass<MSTextEntry*>::FindItemIndex"
  },
@@ -36162,7 +36162,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVFileEntryClass@@@@UBEHPAPAVFileEntryClass@@@Z",
   "name": "DynamicVectorClass<FileEntryClass*>::Slot5"
  },
@@ -36171,7 +36171,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?Slot6@?$VectorClass@PAVFileEntryClass@@@@UBEPAVFileEntryClass@@H@Z",
   "name": "VectorClass<FileEntryClass*>::Slot6"
  },
@@ -36180,7 +36180,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "??8?$VectorClass@PAVFileEntryClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<FileEntryClass*>::operator=="
  },
@@ -36189,7 +36189,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVFileEntryClass@@@@UAE_NHPAPAVFileEntryClass@@@Z",
   "name": "VectorClass<FileEntryClass*>::SetCapacity"
  },
@@ -36198,7 +36198,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVFileEntryClass@@@@UBEHABQAVFileEntryClass@@@Z",
   "name": "VectorClass<FileEntryClass*>::FindItemIndex"
  },
@@ -36207,7 +36207,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?Slot5@?$VectorClass@PAVFileEntryClass@@@@UBEHPAPAVFileEntryClass@@@Z",
   "name": "VectorClass<FileEntryClass*>::Slot5"
  },
@@ -36216,7 +36216,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVFileEntryClass@@@@UAE_NHPAPAVFileEntryClass@@@Z",
   "name": "DynamicVectorClass<FileEntryClass*>::SetCapacity"
  },
@@ -36225,7 +36225,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_fileentryclass_methods.cpp",
+  "tu": "match/core/LoadDlg.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVFileEntryClass@@@@UBEHABQAVFileEntryClass@@@Z",
   "name": "DynamicVectorClass<FileEntryClass*>::FindItemIndex"
  },
@@ -36378,7 +36378,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVColorScheme@@@@UBEHPAPAVColorScheme@@@Z",
   "name": "DynamicVectorClass<ColorScheme*>::Slot5"
  },
@@ -36387,7 +36387,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?Slot6@?$VectorClass@PAVColorScheme@@@@UBEPAVColorScheme@@H@Z",
   "name": "VectorClass<ColorScheme*>::Slot6"
  },
@@ -36396,7 +36396,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "??8?$VectorClass@PAVColorScheme@@@@UBE_NABV0@@Z",
   "name": "VectorClass<ColorScheme*>::operator=="
  },
@@ -36405,7 +36405,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVColorScheme@@@@UAE_NHPAPAVColorScheme@@@Z",
   "name": "VectorClass<ColorScheme*>::SetCapacity"
  },
@@ -36414,7 +36414,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVColorScheme@@@@UBEHABQAVColorScheme@@@Z",
   "name": "VectorClass<ColorScheme*>::FindItemIndex"
  },
@@ -36423,7 +36423,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?Slot5@?$VectorClass@PAVColorScheme@@@@UBEHPAPAVColorScheme@@@Z",
   "name": "VectorClass<ColorScheme*>::Slot5"
  },
@@ -36432,7 +36432,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_colorscheme_methods.cpp",
+  "tu": "match/core/ownrdraw.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVColorScheme@@@@UBEHABQAVColorScheme@@@Z",
   "name": "DynamicVectorClass<ColorScheme*>::FindItemIndex"
  },
@@ -36441,7 +36441,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVCoopCampaignClass@@@@UBEHPAPAVCoopCampaignClass@@@Z",
   "name": "DynamicVectorClass<CoopCampaignClass*>::Slot5"
  },
@@ -36450,7 +36450,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot6@?$VectorClass@PAVCoopCampaignClass@@@@UBEPAVCoopCampaignClass@@H@Z",
   "name": "VectorClass<CoopCampaignClass*>::Slot6"
  },
@@ -36459,7 +36459,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "??8?$VectorClass@PAVCoopCampaignClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<CoopCampaignClass*>::operator=="
  },
@@ -36468,7 +36468,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVCoopCampaignClass@@@@UAE_NHPAPAVCoopCampaignClass@@@Z",
   "name": "VectorClass<CoopCampaignClass*>::SetCapacity"
  },
@@ -36477,7 +36477,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVCoopCampaignClass@@@@UBEHABQAVCoopCampaignClass@@@Z",
   "name": "VectorClass<CoopCampaignClass*>::FindItemIndex"
  },
@@ -36486,7 +36486,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$VectorClass@PAVCoopCampaignClass@@@@UBEHPAPAVCoopCampaignClass@@@Z",
   "name": "VectorClass<CoopCampaignClass*>::Slot5"
  },
@@ -36495,7 +36495,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVCoopCampaignClass@@@@UAE_NHPAPAVCoopCampaignClass@@@Z",
   "name": "DynamicVectorClass<CoopCampaignClass*>::SetCapacity"
  },
@@ -36504,7 +36504,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_coopcampaignclass_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVCoopCampaignClass@@@@UBEHABQAVCoopCampaignClass@@@Z",
   "name": "DynamicVectorClass<CoopCampaignClass*>::FindItemIndex"
  },
@@ -36657,7 +36657,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVGraphicMenuItem@@@@UBEHPAPAVGraphicMenuItem@@@Z",
   "name": "DynamicVectorClass<GraphicMenuItem*>::Slot5"
  },
@@ -36666,7 +36666,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?Slot6@?$VectorClass@PAVGraphicMenuItem@@@@UBEPAVGraphicMenuItem@@H@Z",
   "name": "VectorClass<GraphicMenuItem*>::Slot6"
  },
@@ -36675,7 +36675,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "??8?$VectorClass@PAVGraphicMenuItem@@@@UBE_NABV0@@Z",
   "name": "VectorClass<GraphicMenuItem*>::operator=="
  },
@@ -36684,7 +36684,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVGraphicMenuItem@@@@UAE_NHPAPAVGraphicMenuItem@@@Z",
   "name": "VectorClass<GraphicMenuItem*>::SetCapacity"
  },
@@ -36693,7 +36693,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVGraphicMenuItem@@@@UBEHABQAVGraphicMenuItem@@@Z",
   "name": "VectorClass<GraphicMenuItem*>::FindItemIndex"
  },
@@ -36702,7 +36702,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?Slot5@?$VectorClass@PAVGraphicMenuItem@@@@UBEHPAPAVGraphicMenuItem@@@Z",
   "name": "VectorClass<GraphicMenuItem*>::Slot5"
  },
@@ -36711,7 +36711,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_graphicmenuitem_methods.cpp",
+  "tu": "match/core/GOptions.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVGraphicMenuItem@@@@UBEHABQAVGraphicMenuItem@@@Z",
   "name": "DynamicVectorClass<GraphicMenuItem*>::FindItemIndex"
  },
@@ -36882,7 +36882,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVTActionClass@@@@UBEHPAPAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::Slot5"
  },
@@ -36891,7 +36891,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?Slot6@?$VectorClass@PAVTActionClass@@@@UBEPAVTActionClass@@H@Z",
   "name": "VectorClass<TActionClass*>::Slot6"
  },
@@ -36900,7 +36900,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "??8?$VectorClass@PAVTActionClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<TActionClass*>::operator=="
  },
@@ -36909,7 +36909,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVTActionClass@@@@UAE_NHPAPAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::SetCapacity"
  },
@@ -36918,7 +36918,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVTActionClass@@@@UBEHABQAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::FindItemIndex"
  },
@@ -36927,7 +36927,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?Slot5@?$VectorClass@PAVTActionClass@@@@UBEHPAPAVTActionClass@@@Z",
   "name": "VectorClass<TActionClass*>::Slot5"
  },
@@ -36936,7 +36936,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAVTActionClass@@@@UAE_NHPAPAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::SetCapacity"
  },
@@ -36945,7 +36945,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tactionclass_methods.cpp",
+  "tu": "match/core/TAction.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVTActionClass@@@@UBEHABQAVTActionClass@@@Z",
   "name": "DynamicVectorClass<TActionClass*>::FindItemIndex"
  },
@@ -37530,7 +37530,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UBEHPAPAUtConnInfoStruct@@@Z",
   "name": "DynamicVectorClass<tConnInfoStruct*>::Slot5"
  },
@@ -37539,7 +37539,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?Slot6@?$VectorClass@PAUtConnInfoStruct@@@@UBEPAUtConnInfoStruct@@H@Z",
   "name": "VectorClass<tConnInfoStruct*>::Slot6"
  },
@@ -37548,7 +37548,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "??8?$VectorClass@PAUtConnInfoStruct@@@@UBE_NABV0@@Z",
   "name": "VectorClass<tConnInfoStruct*>::operator=="
  },
@@ -37557,7 +37557,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUtConnInfoStruct@@@@UAE_NHPAPAUtConnInfoStruct@@@Z",
   "name": "VectorClass<tConnInfoStruct*>::SetCapacity"
  },
@@ -37566,7 +37566,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUtConnInfoStruct@@@@UBEHABQAUtConnInfoStruct@@@Z",
   "name": "VectorClass<tConnInfoStruct*>::FindItemIndex"
  },
@@ -37575,7 +37575,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?Slot5@?$VectorClass@PAUtConnInfoStruct@@@@UBEHPAPAUtConnInfoStruct@@@Z",
   "name": "VectorClass<tConnInfoStruct*>::Slot5"
  },
@@ -37584,7 +37584,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAE_NHPAPAUtConnInfoStruct@@@Z",
   "name": "DynamicVectorClass<tConnInfoStruct*>::SetCapacity"
  },
@@ -37593,7 +37593,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_tconninfostruct_methods.cpp",
+  "tu": "match/core/wonline.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UBEHABQAUtConnInfoStruct@@@Z",
   "name": "DynamicVectorClass<tConnInfoStruct*>::FindItemIndex"
  },
@@ -37890,7 +37890,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
   "name": "DynamicVectorClass<MapRegionClass*>::Slot5"
  },
@@ -37899,7 +37899,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot6@?$VectorClass@PAVMapRegionClass@@@@UBEPAVMapRegionClass@@H@Z",
   "name": "VectorClass<MapRegionClass*>::Slot6"
  },
@@ -37908,7 +37908,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "??8?$VectorClass@PAVMapRegionClass@@@@UBE_NABV0@@Z",
   "name": "VectorClass<MapRegionClass*>::operator=="
  },
@@ -37917,7 +37917,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAVMapRegionClass@@@@UAE_NHPAPAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::SetCapacity"
  },
@@ -37926,7 +37926,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::FindItemIndex"
  },
@@ -37935,7 +37935,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot5@?$VectorClass@PAVMapRegionClass@@@@UBEHPAPAVMapRegionClass@@@Z",
   "name": "VectorClass<MapRegionClass*>::Slot5"
  },
@@ -37944,7 +37944,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_mapregionclass_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAVMapRegionClass@@@@UBEHABQAVMapRegionClass@@@Z",
   "name": "DynamicVectorClass<MapRegionClass*>::FindItemIndex"
  },
@@ -38025,7 +38025,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUButtonFadeEffect@@@@UBEHPAPAUButtonFadeEffect@@@Z",
   "name": "DynamicVectorClass<ButtonFadeEffect*>::Slot5"
  },
@@ -38034,7 +38034,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot6@?$VectorClass@PAUButtonFadeEffect@@@@UBEPAUButtonFadeEffect@@H@Z",
   "name": "VectorClass<ButtonFadeEffect*>::Slot6"
  },
@@ -38043,7 +38043,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "??8?$VectorClass@PAUButtonFadeEffect@@@@UBE_NABV0@@Z",
   "name": "VectorClass<ButtonFadeEffect*>::operator=="
  },
@@ -38052,7 +38052,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUButtonFadeEffect@@@@UAE_NHPAPAUButtonFadeEffect@@@Z",
   "name": "VectorClass<ButtonFadeEffect*>::SetCapacity"
  },
@@ -38061,7 +38061,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUButtonFadeEffect@@@@UBEHABQAUButtonFadeEffect@@@Z",
   "name": "VectorClass<ButtonFadeEffect*>::FindItemIndex"
  },
@@ -38070,7 +38070,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot5@?$VectorClass@PAUButtonFadeEffect@@@@UBEHPAPAUButtonFadeEffect@@@Z",
   "name": "VectorClass<ButtonFadeEffect*>::Slot5"
  },
@@ -38079,7 +38079,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUButtonFadeEffect@@@@UAE_NHPAPAUButtonFadeEffect@@@Z",
   "name": "DynamicVectorClass<ButtonFadeEffect*>::SetCapacity"
  },
@@ -38088,7 +38088,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_buttonfadeeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUButtonFadeEffect@@@@UBEHABQAUButtonFadeEffect@@@Z",
   "name": "DynamicVectorClass<ButtonFadeEffect*>::FindItemIndex"
  },
@@ -38097,7 +38097,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UBEHPAPAUCrossDissolveEffect@@@Z",
   "name": "DynamicVectorClass<CrossDissolveEffect*>::Slot5"
  },
@@ -38106,7 +38106,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot6@?$VectorClass@PAUCrossDissolveEffect@@@@UBEPAUCrossDissolveEffect@@H@Z",
   "name": "VectorClass<CrossDissolveEffect*>::Slot6"
  },
@@ -38115,7 +38115,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "??8?$VectorClass@PAUCrossDissolveEffect@@@@UBE_NABV0@@Z",
   "name": "VectorClass<CrossDissolveEffect*>::operator=="
  },
@@ -38124,7 +38124,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUCrossDissolveEffect@@@@UAE_NHPAPAUCrossDissolveEffect@@@Z",
   "name": "VectorClass<CrossDissolveEffect*>::SetCapacity"
  },
@@ -38133,7 +38133,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUCrossDissolveEffect@@@@UBEHABQAUCrossDissolveEffect@@@Z",
   "name": "VectorClass<CrossDissolveEffect*>::FindItemIndex"
  },
@@ -38142,7 +38142,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?Slot5@?$VectorClass@PAUCrossDissolveEffect@@@@UBEHPAPAUCrossDissolveEffect@@@Z",
   "name": "VectorClass<CrossDissolveEffect*>::Slot5"
  },
@@ -38151,7 +38151,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UAE_NHPAPAUCrossDissolveEffect@@@Z",
   "name": "DynamicVectorClass<CrossDissolveEffect*>::SetCapacity"
  },
@@ -38160,7 +38160,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_crossdissolveeffect_methods.cpp",
+  "tu": "match/core/Dropship.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUCrossDissolveEffect@@@@UBEHABQAUCrossDissolveEffect@@@Z",
   "name": "DynamicVectorClass<CrossDissolveEffect*>::FindItemIndex"
  },
@@ -38529,7 +38529,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUGlobalPacketType@@@@UBEHPAPAUGlobalPacketType@@@Z",
   "name": "DynamicVectorClass<GlobalPacketType*>::Slot5"
  },
@@ -38538,7 +38538,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?Slot6@?$VectorClass@PAUGlobalPacketType@@@@UBEPAUGlobalPacketType@@H@Z",
   "name": "VectorClass<GlobalPacketType*>::Slot6"
  },
@@ -38547,7 +38547,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "??8?$VectorClass@PAUGlobalPacketType@@@@UBE_NABV0@@Z",
   "name": "VectorClass<GlobalPacketType*>::operator=="
  },
@@ -38556,7 +38556,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUGlobalPacketType@@@@UAE_NHPAPAUGlobalPacketType@@@Z",
   "name": "VectorClass<GlobalPacketType*>::SetCapacity"
  },
@@ -38565,7 +38565,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUGlobalPacketType@@@@UBEHABQAUGlobalPacketType@@@Z",
   "name": "VectorClass<GlobalPacketType*>::FindItemIndex"
  },
@@ -38574,7 +38574,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?Slot5@?$VectorClass@PAUGlobalPacketType@@@@UBEHPAPAUGlobalPacketType@@@Z",
   "name": "VectorClass<GlobalPacketType*>::Slot5"
  },
@@ -38583,7 +38583,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUGlobalPacketType@@@@UAE_NHPAPAUGlobalPacketType@@@Z",
   "name": "DynamicVectorClass<GlobalPacketType*>::SetCapacity"
  },
@@ -38592,7 +38592,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_globalpackettype_methods.cpp",
+  "tu": "match/core/Session.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUGlobalPacketType@@@@UBEHABQAUGlobalPacketType@@@Z",
   "name": "DynamicVectorClass<GlobalPacketType*>::FindItemIndex"
  },
@@ -38682,7 +38682,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUNodeNameType@@@@UBEHPAPAUNodeNameType@@@Z",
   "name": "DynamicVectorClass<NodeNameType*>::Slot5"
  },
@@ -38691,7 +38691,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot6@?$VectorClass@PAUNodeNameType@@@@UBEPAUNodeNameType@@H@Z",
   "name": "VectorClass<NodeNameType*>::Slot6"
  },
@@ -38700,7 +38700,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "??8?$VectorClass@PAUNodeNameType@@@@UBE_NABV0@@Z",
   "name": "VectorClass<NodeNameType*>::operator=="
  },
@@ -38709,7 +38709,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAUNodeNameType@@@@UAE_NHPAPAUNodeNameType@@@Z",
   "name": "VectorClass<NodeNameType*>::SetCapacity"
  },
@@ -38718,7 +38718,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAUNodeNameType@@@@UBEHABQAUNodeNameType@@@Z",
   "name": "VectorClass<NodeNameType*>::FindItemIndex"
  },
@@ -38727,7 +38727,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?Slot5@?$VectorClass@PAUNodeNameType@@@@UBEHPAPAUNodeNameType@@@Z",
   "name": "VectorClass<NodeNameType*>::Slot5"
  },
@@ -38736,7 +38736,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_nodenametype_methods.cpp",
+  "tu": "match/core/MPCoop.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUNodeNameType@@@@UBEHABQAUNodeNameType@@@Z",
   "name": "DynamicVectorClass<NodeNameType*>::FindItemIndex"
  },
@@ -39096,7 +39096,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::Slot5"
  },
@@ -39105,7 +39105,7 @@
   "len": "0xd",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot6@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEPAU_WIN32_FIND_DATAA@@H@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::Slot6"
  },
@@ -39114,7 +39114,7 @@
   "len": "0x3e",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "??8?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBE_NABV0@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::operator=="
  },
@@ -39123,7 +39123,7 @@
   "len": "0xae",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?SetCapacity@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UAE_NHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::SetCapacity"
  },
@@ -39132,7 +39132,7 @@
   "len": "0x33",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?FindItemIndex@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHABQAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::FindItemIndex"
  },
@@ -39141,7 +39141,7 @@
   "len": "0x1b",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?Slot5@?$VectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "VectorClass<_WIN32_FIND_DATAA*>::Slot5"
  },
@@ -39150,7 +39150,7 @@
   "len": "0xb0",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UAE_NHPAPAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::SetCapacity"
  },
@@ -39159,7 +39159,7 @@
   "len": "0x26",
   "status": "matched",
   "pct": 100,
-  "tu": "match/core/vector_win32_find_dataa_methods.cpp",
+  "tu": "match/core/MapGen.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAU_WIN32_FIND_DATAA@@@@UBEHABQAU_WIN32_FIND_DATAA@@@Z",
   "name": "DynamicVectorClass<_WIN32_FIND_DATAA*>::FindItemIndex"
  },
@@ -53125,7 +53125,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_point2d_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D05D0",
   "sym": "?Slot5@?$DynamicVectorClass@UPoint2D@@@@UBEHPAUPoint2D@@@Z",
   "len": "0x1B",
@@ -53134,7 +53134,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_point2d_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D05F0",
   "sym": "?Slot6@?$VectorClass@UPoint2D@@@@UBE?AUPoint2D@@H@Z",
   "len": "0x1C",
@@ -53143,7 +53143,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_point2d_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D07F0",
   "sym": "??8?$VectorClass@UPoint2D@@@@UBE_NABV0@@Z",
   "len": "0x52",
@@ -53152,7 +53152,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_point2d_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D0950",
   "sym": "?FindItemIndex@?$VectorClass@UPoint2D@@@@UBEHABUPoint2D@@@Z",
   "len": "0x46",
@@ -53161,7 +53161,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_point2d_slot_methods.cpp",
+  "tu": "match/core/MSChoice.cpp",
   "addr": "0x5D09A0",
   "sym": "?Slot5@?$VectorClass@UPoint2D@@@@UBEHPAUPoint2D@@@Z",
   "len": "0x1B",
@@ -61090,7 +61090,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6120",
   "sym": "?FUN_005C6120@Vector_005C6120@@QAEXXZ",
   "len": "0x2e",
@@ -70618,7 +70618,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_layer_confirm_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C60D0",
   "sym": "?FUN_005C60D0@@YI_NPBG@Z",
   "len": "0x4a",
@@ -70627,7 +70627,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_layer_man_battle_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6150",
   "sym": "??0MultiplayerManBattle@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
   "len": "0x34",
@@ -70636,7 +70636,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/mp_layer_man_battle_methods.cpp",
+  "tu": "match/core/MPLayer.cpp",
   "addr": "0x5C6190",
   "sym": "??1MultiplayerManBattle@@UAE@XZ",
   "len": "0xb",
@@ -74113,7 +74113,7 @@
   "pct": 25.7
  },
  {
-  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F32D0",
   "sym": "?vf_25@TechnoClass@@UAE_NXZ",
   "len": "0x5c",
@@ -74122,7 +74122,7 @@
   "pct": 63.6
  },
  {
-  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F3820",
   "sym": "?vf_186@TechnoClass@@UAEHPAV1@@Z",
   "len": "0x101",
@@ -74131,7 +74131,7 @@
   "pct": 13.7
  },
  {
-  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F3950",
   "sym": "?vf_180@TechnoClass@@UAEHXZ",
   "len": "0x18",
@@ -74140,7 +74140,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/techno_class_slots_6f32d0.cpp",
+  "tu": "match/core/Techno.cpp",
   "addr": "0x6F4960",
   "sym": "?vf_102@TechnoClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0xdf",

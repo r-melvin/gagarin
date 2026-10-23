@@ -34,22 +34,3 @@ AbstractClass* FootClass::vf_241(unsigned int threat, CoordStruct* pCoord,
     return result;
 }
 
-// FUNCTION: GAMEMD 0x7104F0  (__thiscall)
-// Snap every passenger's Location to the transport's own Location. Walks the
-// passenger linked list (first via Passengers.GetFirstPassenger, thereafter via
-// NextObject) while each node carries AbstractFlags bit 0x4.
-//   CALL 0x473450 ; copy this->Location -> stack coord ; CALL [vtbl+0x1B4] per node
-void FootClass::UpdatePassengerCoords()
-{
-    ObjectClass* p = this->Passengers.GetFirstPassenger();
-    CoordStruct crd = this->Location;
-    if (p != NULL)
-    {
-        do
-        {
-            p->vf_109(crd);
-            p = (ObjectClass*)p->NextObject;
-        }
-        while (p != NULL && p->Flags.IsFoot);
-    }
-}

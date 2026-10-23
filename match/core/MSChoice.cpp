@@ -304,6 +304,52 @@ GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, CapacityIncrement) == 0x14)
 
 #include "../map/map_stage_list_methods.h"
 
+
+// Retail PAVMSTextEntry RTTI establishes the pointer element type and zero-offset
+// DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
+// establish the bound methods. GX emits a short derived deleting wrapper;
+// no GX reproduces its full retail body. No TypeList or constructor is bound;
+// original TU boundaries, final link and complete object sizes are unknown.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+// Retail RTTI type descriptors name VectorClass<Point2D> and
+// DynamicVectorClass<Point2D>; each address below is the vtable slot body
+// of that specialization (slot owner read from the retail vtables). The
+// element compare in operator== and FindItemIndex is Point2D's member-wise
+// equality from geometry2d.h.
+
+#include "vector_class_operations.h"
+
+class MSTextEntry;
+
+// VTABLE: GAMEMD 0x7EEB94 -- VectorClass<MSTextEntry*>.
+template class VectorClass<MSTextEntry*>;
+typedef VectorClass<MSTextEntry*> GgMSTextEntryVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EEB34 -- DynamicVectorClass<MSTextEntry*>.
+template class DynamicVectorClass<MSTextEntry*>;
+typedef DynamicVectorClass<MSTextEntry*> GgMSTextEntryDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMSTextEntryDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(MSTextEntry*) == 4);
+
+#include "vector_class_operations.h"
+#include "../_layout/geometry2d.h"
+
+template class DynamicVectorClass<Point2D>;
+
+GG_STATIC_ASSERT(sizeof(VectorClass<Point2D>) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Point2D>) == 0x18);
+
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5CEDD0
 // Build an empty container. The three vectors and the name string are built
@@ -516,6 +562,54 @@ void FUN_005D0580(void* self)
 void FUN_005D0590()
 {
 }
+
+// TEMPLATE: GAMEMD 0x5D05D0
+// DynamicVectorClass<Point2D>::Slot5 (slot 5)
+// TEMPLATE: GAMEMD 0x5D05F0
+// VectorClass<Point2D>::Slot6 (slot 6)
+// TEMPLATE: GAMEMD 0x5D07F0
+// VectorClass<Point2D>::operator== (slot 1)
+// TEMPLATE: GAMEMD 0x5D0950
+// VectorClass<Point2D>::FindItemIndex (slot 4)
+// TEMPLATE: GAMEMD 0x5D09A0
+// VectorClass<Point2D>::Slot5 (slot 5)
+template class VectorClass<Point2D>;
+
+// FUNCTION: GAMEMD 0x5D0610
+// DynamicVectorClass<MSTextEntry*>::Clear
+
+// FUNCTION: GAMEMD 0x5D0640
+// DynamicVectorClass<MSTextEntry*>::Slot5
+
+// FUNCTION: GAMEMD 0x5D0660
+// VectorClass<MSTextEntry*>::Slot6
+
+// FUNCTION: GAMEMD 0x5D0AE0
+// VectorClass<MSTextEntry*>::operator==
+
+// FUNCTION: GAMEMD 0x5D0B20
+// VectorClass<MSTextEntry*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5D0BD0
+// VectorClass<MSTextEntry*>::Clear
+
+// FUNCTION: GAMEMD 0x5D0C00
+// VectorClass<MSTextEntry*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5D0C40
+// VectorClass<MSTextEntry*>::Slot5
+
+// FUNCTION: GAMEMD 0x5D0C60
+// DynamicVectorClass<MSTextEntry*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5D0D10
+// DynamicVectorClass<MSTextEntry*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5D1760
+// VectorClass<MSTextEntry*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5D17B0
+// DynamicVectorClass<MSTextEntry*>::scalar deleting destructor
 
 // FUNCTION: GAMEMD 0x5D0670
 // DynamicVectorClass<MapSelection*>::Clear

@@ -57,6 +57,10 @@ extern int DAT_00B1D0A8;
 // GLOBAL: GAMEMD 0xB1D0B0
 extern double DAT_00B1D0B0;
 
+
+
+#include "../_layout/unit_class.h"
+
 // FUNCTION: GAMEMD 0x7351B0
 // Static-initialiser shape: stores a floating-point expression of globals.
 void __cdecl FUN_007351B0()
@@ -84,6 +88,33 @@ void __cdecl FUN_00735350()
 // Empty function.
 void __cdecl FUN_007393B0()
 {
+}
+
+// FUNCTION: GAMEMD 0x740DF0  (__thiscall)
+// Bind this unit to a house's flag (capture-the-flag). Only succeeds when a real
+// house is given and no flag is already attached; then redraw and report true.
+bool UnitClass::FlagAttach(int houseIndex)
+{
+    if (houseIndex != -1 && FlagHouseIndex == -1)
+    {
+        FlagHouseIndex = houseIndex;
+        vf_73(2);
+        return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x740E20  (__thiscall)
+// Detach the flag this unit was carrying, if any; redraw and report true.
+bool UnitClass::FlagRemove()
+{
+    if (FlagHouseIndex != -1)
+    {
+        FlagHouseIndex = -1;
+        vf_73(2);
+        return true;
+    }
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x740E50

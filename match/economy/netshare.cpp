@@ -93,6 +93,79 @@ extern int DAT_00A80238;
 // GLOBAL: GAMEMD 0xAC029C -- the 1 KiB scratch line for the list-box append.
 extern wchar_t DAT_00AC029C[512];
 
+
+// Raw PBVMultiMission RTTI identifies const pointer elements and the
+// DynamicVectorClass -> VectorClass zero-offset base chain.
+// Complete entry-origin spans establish all bound methods. GX emits shorter
+// derived deleting wrappers; no GX reproduces the retail 0x49-byte bodies.
+// Only the listed constructor is claimed; no TypeList specialization is bound.
+// Original TU boundaries,
+// final link and complete object sizes remain unestablished.
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
+
+#include "../core/vector_class_operations.h"
+class MultiMission;
+
+// VTABLE: GAMEMD 0x7EEF50 -- VectorClass<const MultiMission*>.
+template class VectorClass<const MultiMission*>;
+typedef VectorClass<const MultiMission*> GgMultiMissionVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMultiMissionVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionVectorClass, IsAllocated) == 0x0D);
+
+// VTABLE: GAMEMD 0x7EEF70 -- DynamicVectorClass<const MultiMission*>.
+template class DynamicVectorClass<const MultiMission*>;
+typedef DynamicVectorClass<const MultiMission*> GgMultiMissionDynamicVectorClass;
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(GgMultiMissionDynamicVectorClass, CapacityIncrement) == 0x14);
+
+GG_STATIC_ASSERT(sizeof(const MultiMission*) == 4);
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5EEBB0
+// DynamicVectorClass<const MultiMission*>::Clear
+
+// FUNCTION: GAMEMD 0x5EEBE0
+// DynamicVectorClass<const MultiMission*>::Slot5
+
+// FUNCTION: GAMEMD 0x5EEC00
+// VectorClass<const MultiMission*>::Slot6
+
+// FUNCTION: GAMEMD 0x5EEC10
+// VectorClass<const MultiMission*>::operator==
+
+// FUNCTION: GAMEMD 0x5EEC50
+// VectorClass<const MultiMission*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5EED00
+// VectorClass<const MultiMission*>::Clear
+
+// FUNCTION: GAMEMD 0x5EED30
+// VectorClass<const MultiMission*>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x5EED70
+// VectorClass<const MultiMission*>::Slot5
+
+// FUNCTION: GAMEMD 0x5EED90
+// DynamicVectorClass<const MultiMission*>::SetCapacity
+
+// FUNCTION: GAMEMD 0x5EEE90
+// DynamicVectorClass<const MultiMission*>::FindItemIndex
+
+// SYNTHETIC: GAMEMD 0x5EEEC0
+// VectorClass<const MultiMission*>::scalar deleting destructor
+
+// SYNTHETIC: GAMEMD 0x5EEF10
+// DynamicVectorClass<const MultiMission*>::scalar deleting destructor
+
+// FUNCTION: GAMEMD 0x5EF0B0
+// VectorClass<const MultiMission*>::capacity constructor
+
 // FUNCTION: GAMEMD 0x623F60 (decl; reloc) -- __fastcall: read list item
 // `index` of the list box into the string.
 void FUN_00623F60(HWND window, int index, Obj_007B66D0* out);

@@ -22,8 +22,3 @@ int Timer_GetTime()
     return timeGetTime() >> 4;
 }
 
-// FUNCTION: GAMEMD 0x732D00  Unsorted::IsTypeSelecting (__fastcall)
-bool Unsorted_IsTypeSelecting()
-{
-    return IsTypeSelectingFlag;
-}

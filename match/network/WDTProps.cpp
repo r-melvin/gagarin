@@ -13,6 +13,9 @@
 
 using WorldDominationTour::CampaignProperties;
 
+
+#include "../core/global_getter_family_methods.h"
+
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall string-table lookup.
 wchar_t* StringTable_LoadString(const char* label, int* out,
                                 const char* file, int line);
@@ -98,6 +101,13 @@ int CampaignProperties::FUN_0076BFA0() const
         return State->unknown_18;
     }
     return 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x0076BFB0
+int FUN_0076BFB0()
+{
+    return (int)&DAT_00000001;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
