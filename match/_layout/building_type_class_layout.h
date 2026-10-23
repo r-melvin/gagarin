@@ -29,17 +29,7 @@
 // Local component structs (sizes proven by the oracle doc).
 // ---------------------------------------------------------------------------
 
-// Point2D — pixel/cell 2-space coordinate (size = 8). Same guard as geometry2d.h
-// so both headers can be included by one translation unit.
-#ifndef GG_MATCH_LAYOUT_POINT2D_DEFINED
-#define GG_MATCH_LAYOUT_POINT2D_DEFINED
-struct Point2D
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-};
-#endif
-GG_STATIC_ASSERT(sizeof(Point2D) == 8);
+#include "geometry2d.h"
 
 // BuildingAnimFrameStruct — 3-int building-anim frame descriptor (size = 0xC).
 struct BuildingAnimFrameStruct
@@ -252,5 +242,7 @@ GG_STATIC_ASSERT(offsetof(BuildingTypeClass, NumberOfDocks)     == 0x1780);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, DockingOffsets)    == 0x1784);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, align_1794)        == 0x1794);
 GG_STATIC_ASSERT(sizeof(BuildingTypeClass)                      == 0x1798);
+
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildCat) == 0xE08);
 
 #endif  // GG_MATCH_LAYOUT_BUILDING_TYPE_CLASS_H

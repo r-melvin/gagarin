@@ -44,6 +44,9 @@ public:
     virtual HRESULT __stdcall Save(IStream* stream, BOOL clear); // slot6 0x744600
     virtual int vf_11(); // slot11 0x746E20
     virtual int vf_12(); // slot12 0x746DD0
+    // FUNCTION: GAMEMD 0x00746D90 (decl; reloc)
+    // UnitClass::FUN_00746D90
+    int FUN_00746D90();
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.

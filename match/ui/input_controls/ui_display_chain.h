@@ -291,6 +291,8 @@ GG_STATIC_ASSERT(sizeof(GScreenClass) == 0x10);
 // ---- MapClass ----------------------------------------------------------------------------------------------------
 
 // VTABLE: GAMEMD 0x7ED404 (30 slots)
+class CellClass;
+struct CoordStruct;
 class MapClass : public GScreenClass
 {
 public:
@@ -299,6 +301,9 @@ public:
     // FUNCTION: GAMEMD 0x565190 (decl; reloc) -- no-init MapClass constructor, called by DisplayClass 0x6AC840.
     MapClass(const Obj_005BDF70& noInit);
 
+    // FUNCTION: GAMEMD 0x00565730 (decl; reloc)
+    CellClass* FUN_00565730(const CoordStruct& coord);
+public:
     virtual void vf_03();                    // 3   0x5656D0
     // The scalar deleting destructor is 0x588BF0; the destructor body is not modelled.
     virtual ~MapClass();                     // 4   0x588BF0 (??_G)

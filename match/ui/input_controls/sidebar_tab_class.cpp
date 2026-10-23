@@ -229,8 +229,8 @@ extern int CommandIndexG_00B0CB38;
 // GLOBAL: GAMEMD 0xB0CC20 / 0xB0CD28 -- first and last command of the numbered range.
 extern int CommandRangeFirst_00B0CC20;
 extern int CommandRangeLast_00B0CD28;
-// FUNCTION: GAMEMD 0x731AF0, 0x731A30, 0x730F30, 0x730AF0, 0x730D60, 0x730EA0, 0x732950
-// (decl; reloc) -- command handlers taking no arguments.
+// FUNCTION: GAMEMD 0x731AF0 (decl; reloc)
+// Command handlers; signatures are reconciled in their original TU.
 void FUN_00731AF0();
 void FUN_00731A30();
 void FUN_00730F30();

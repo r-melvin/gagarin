@@ -28,6 +28,9 @@
 class InfantryClass : public FootClass
 {
 public:
+    // FUNCTION: GAMEMD 0x005224E0 (decl; reloc)
+    // InfantryClass::FUN_005224E0
+    bool FUN_005224E0();
     // IPersist::GetClassID (slot 3), 0x523300: copies InfantryClass's CLSID 0x7E9680.
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 

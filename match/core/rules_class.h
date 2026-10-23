@@ -23,7 +23,9 @@ struct RulesClass
     int unknown_008; // 0x685108 -> fastcall55AF50
     char unknown_00C[0x04C - 0x00C];
     AnimTypeClass* LandAnim; // +0x04C
-    char unknown_050[0x108 - 0x050];
+    char unknown_050[0x8C - 0x050];
+    int unknown_08C;
+    char unknown_090[0x108 - 0x090];
     AnimTypeClass** TouchdownAnims; // +0x108
     char unknown_10C[0x1D4 - 0x10C];
     int unknown_1D4;    // +0x1D4 sound played on entering planning mode
@@ -37,14 +39,20 @@ struct RulesClass
     AnimTypeClass* SpawnAnim; // +0x354
     char unknown_358[0x54C - 0x358];
     int At_54C;
-    char unknown_550[0x5A4 - 0x550];
+    char unknown_550[0x580 - 0x550];
+    int unknown_580;
+    char unknown_584[0x5A4 - 0x584];
     WeaponTypeClass* Weapon; // +0x5A4
     int unknown_5A8;
     int MinFall; // +0x5AC
     double Angle; // +0x5B0
     char unknown_5B8[0x700 - 0x5B8];
     int unknown_700;    // +0x700 sound played when planning guard areas are refused
-    char unknown_704[0x788 - 0x704];
+    char unknown_704[0x724 - 0x704];
+    int unknown_724;
+    int unknown_728;
+    int unknown_72C;
+    char unknown_730[0x788 - 0x730];
     int unknown_788;
     int unknown_78C;
     char unknown_790[0x7A8 - 0x790];
@@ -70,7 +78,11 @@ struct RulesClass
     int unknown_E04;
     char unknown_E08[0x0FA8 - 0xE08];
     int unknown_FA8;
-    char unknown_FAC[0x1700 - 0xFAC];
+    char unknown_FAC[0x14B5 - 0xFAC];
+    bool unknown_14B5;
+    char unknown_14B6[5];
+    bool unknown_14BB;
+    char unknown_14BC[0x1700 - 0x14BC];
     double ConditionYellow;
     double ConditionRed;
     char unknown_1710[0x1804 - 0x1710];
@@ -117,5 +129,13 @@ GG_STATIC_ASSERT(offsetof(RulesClass, RadDurationMultiple) == 0x1804);
 
 // GLOBAL: GAMEMD 0x008871E0 — active RulesClass pointer.
 extern RulesClass* RulesInstance;
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_08C) == 0x08C);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_580) == 0x580);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_724) == 0x724);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_728) == 0x728);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_72C) == 0x72C);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B5) == 0x14B5);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BB) == 0x14BB);
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_H

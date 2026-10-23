@@ -85,6 +85,9 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 class ObjectClass : public AbstractClass
 {
 public:
+    // FUNCTION: GAMEMD 0x005F3E50 (decl; reloc)
+    // ObjectClass::FUN_005F3E50
+    bool FUN_005F3E50(const char* text);
     // FUNCTION: GAMEMD 0x5F3900 (declaration; native base constructor)
     ObjectClass();
     // FUNCTION: GAMEMD 0x5F3B80 (declaration; destructor)

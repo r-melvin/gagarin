@@ -68,6 +68,9 @@ GG_STATIC_ASSERT(sizeof(PassengersClass)                   == 8);
 #define GG_MATCH_LAYOUT_VETERANCYSTRUCT_DEFINED
 struct VeterancyStruct
 {
+    // FUNCTION: GAMEMD 0x00750030 (decl; reloc)
+    // VeterancyStruct::FUN_00750030
+    int FUN_00750030() const;
     float Veterancy;   // +0x00
     // FUNCTION: GAMEMD 0x750010 (decl; reloc) -- ECX receiver, no stack arguments.
     bool FUN_00750010();
