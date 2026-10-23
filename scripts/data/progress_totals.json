@@ -2,9 +2,9 @@
  "_meta": {
   "source": "user-owned retail gamemd.exe v1.001",
   "sha256": "1cdd1180e49024fbda8ad568caac2e86e856063ff67ab38f62b7d2c7bb84298c",
-  "method": "ghidra function list --limit 25000 over the local Ghidra project; entry points inside .text; includes CRT/third-party code",
-  "code_bytes_method": "Sum of the reported size fields in the Ghidra function list; not the PE .text section size or a unique-byte coverage count."
+  "method": "entry points inside .text from scripts/data/function_extents.json (the link-milestone census: 19,778 entries, 15 interior leads dropped); includes CRT, COMSUPP, LZO and import-thunk entries",
+  "code_bytes_method": "Sum of the CFG-closed extent lengths in scripts/data/function_extents.json (padding and gaps between entries excluded); not the PE .text section size or a unique-byte coverage count."
  },
- "functions": 19753,
- "code_bytes": 3797269
+ "functions": 19778,
+ "code_bytes": 3878653
 }
