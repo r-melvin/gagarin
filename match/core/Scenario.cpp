@@ -135,6 +135,11 @@ bool __fastcall FUN_005DB680(); // FUNCTION: GAMEMD 0x5DB680 (decl)
 int __fastcall FUN_005ADD10(ScenarioClass* scenario); // FUNCTION: GAMEMD 0x5ADD10 (decl)
 int __fastcall FUN_005ADE20(ScenarioClass* scenario, const char* filename); // FUNCTION: GAMEMD 0x5ADE20 (decl)
 
+extern const char STR_0083DB24[]; // STRING: GAMEMD 0x83DB24
+extern const char STR_00829F14[]; // STRING: GAMEMD 0x829F14
+extern const char STR_00829F1C[]; // STRING: GAMEMD 0x829F1C
+extern const char STR_008262F0[]; // STRING: GAMEMD 0x8262F0
+
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
 extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
 extern int HouseClass_ArrayCount; // GLOBAL: GAMEMD 0x00A80238
@@ -1541,6 +1546,136 @@ void __fastcall FUN_00685670()
     MapInstance.FUN_004F4480();
     FUN_004A3C30(&DAT_00885780, 7, FUN_0048D080);
 }
+
+// FUNCTION: GAMEMD 0x685DC0
+void __fastcall FUN_00685DC0()
+{
+    if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5 && !(DAT_00A8D5F8 & 2)) {
+        FUN_00648350();
+        FUN_0055CF10();
+    }
+    DAT_00A8ED5C = false;
+    DAT_00A8E378 = false;
+    ScenarioInstance->unknown_0614.Pause();
+    FUN_005BF450();
+    WWMouseClassInstance->DrawCachedOnto(DAT_0088730C, false);
+    WWMouseClassInstance->vf_5();
+    MapInstance.FUN_005BDA80(0, 0);
+    WWMouseClassInstance->vf_3();
+    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+        FUN_004068E0(STR_0083D924);
+        FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+    FUN_00407070(DAT_0087E758);
+    FUN_004070B0(DAT_0087E758);
+    int deadline = ConnTimer.GetValue() + 300;
+    while (FUN_007529E0()) {
+        if (deadline <= ConnTimer.GetValue()) break;
+        FUN_0048D080();
+    }
+    FUN_007529A0(true);
+    FUN_00752CA0();
+    FUN_00406E80();
+    FUN_00750FA0();
+    FUN_00407150(DAT_0087E758, 0x4000);
+    bool resume = false;
+    if (Session_00A8B238.GameMode != 0) {
+        if (!(DAT_00A8D5F8 & 2)) {
+            ++DAT_00A8D57C;
+            if (Session_00A8B238.GameMode == 4)
+                FUN_0078ABF0(true, FUN_00734E60(STR_0083DB0C, 0, STR_0083D838, 0x9BC));
+            if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2())
+                FUN_0052FEC0(0, 1);
+            else {
+                DAT_00A8D610 = 0;
+                Obj_005C9700 score;
+                score.FUN_005C9720();
+            }
+            if (DAT_00A8B23C) resume = DAT_00A8B23C->vf_42();
+            ++DAT_00A8D588;
+            if (DAT_00A8D588 > 3) DAT_00A8D588 = 3;
+            if (resume) {
+                DAT_00A8B23C->vf_43();
+                FUN_0078ABF0(false, DAT_00887734);
+            }
+        }
+        if (!resume) {
+            DAT_00A8D610 = 0;
+            if (DAT_00A8B23C) DAT_00A8B23C->vf_41(0);
+            DAT_00A8E9A0 = false;
+            FUN_0078ABF0(false, DAT_00887734);
+            return;
+        }
+    }
+    FUN_005BF260(ScenarioInstance->unknown_1440, -1, 1, 1, 1);
+    FUN_0052FEC0(0, 1);
+    bool proceed = resume;
+    if (Session_00A8B238.GameMode == 0 && !(DAT_00A8D5F8 & 2)) {
+        Dialog_005D3490 dialog;
+        if (dialog.FUN_005D3490(
+            FUN_00734E60(STR_0083DB24, 0, STR_0083D838, 0x9FF),
+            FUN_00734E60(STR_00829F14, 0, STR_0083D838, 0x9FF),
+            FUN_00734E60(STR_00829F1C, 0, STR_0083D838, 0x9FF), 0, 0) == 0)
+            proceed = true;
+    }
+    if (!proceed) {
+        DAT_00A8E9A0 = false;
+        return;
+    }
+    if (Session_00A8B238.GameMode == 4)
+        FUN_0078ABF0(true, FUN_00734E60(STR_008262F0, 0, STR_0083D838, 0xA06));
+    if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2()) {
+        if (Session_00A8B238.GameMode == 3) {
+            Interface_00887628->vf_1();
+            delete Interface_00887628;
+            Interface_00887628 = 0;
+            Interface_00887628 = new IPXInterfaceClass;
+        }
+        Interface_00887628->StartupWinsock();
+        int saved = DAT_00A8B274;
+        char settings[4][32];
+        memcpy(settings[0], DAT_00A8DA90, 32);
+        memcpy(settings[1], DAT_00A8B2BC, 32);
+        memcpy(settings[2], DAT_00A8B29C, 32);
+        memcpy(settings[3], DAT_00A8B27C, 32);
+        if (!FUN_005DB680()) {
+            delete Interface_00887628;
+            Interface_00887628 = 0;
+            DAT_00A8E9A0 = false;
+            goto cleanupNotice;
+        }
+        DAT_00A8B274 = saved;
+        memcpy(DAT_00A8B27C, settings[3], 32);
+        memcpy(DAT_00A8B29C, settings[2], 32);
+        memcpy(DAT_00A8B2BC, settings[1], 32);
+        memcpy(DAT_00A8DA90, settings[0], 32);
+        DAT_0087F770->DoSomething();
+    }
+    FUN_00683AB0(ScenarioInstance->unknown_125C, true, ScenarioInstance->unknown_34CC);
+    if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2()) {
+        Session_00A8B238.FUN_00697B70();
+        if (Session_00A8B238.GameMode == 3) {
+            unsigned long delay;
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 15) delay = 15;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.SetTiming(delay, -1, 600, true);
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 60) delay = 60;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.vf_14(delay, -1, 600);
+        } else if (Session_00A8B238.GameMode == 4 && !DAT_00A8B570) {
+            unsigned long delay;
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 60) delay = 60;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.SetTiming(delay, -1, 600, true);
+        }
+    }
+    DAT_008A38E0.Do();
+    if (DAT_00887368) DAT_00887368->SetState(DAT_00A8EB80);
+    MapInstance.FUN_004F4480();
+cleanupNotice:
+    if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(false, DAT_00887734);
+}
+
 
 // FUNCTION: GAMEMD 0x6863E0
 void __fastcall FUN_006863E0()
