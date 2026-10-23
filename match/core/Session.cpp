@@ -1282,6 +1282,139 @@ int __stdcall FUN_0069BD00(int slot)
     return 0;
 }
 
+#include "../_layout/node_name_type.h"
+// Declaration: GAMEMD 0x7350C0 -- existing wide-name conversion, ECX input.
+char* Narrow_007350C0(const wchar_t* text);
+#include "../network/wonline.h"
+#include "../network/transport/udp_interface_class.h"
+GG_STATIC_ASSERT(offsetof(NodeNameType, Name) == 0);
+GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28);
+GG_STATIC_ASSERT(offsetof(NodeNameType, unknown_53) == 0x53);
+// Declaration: STRING GAMEMD 0x83F840
+extern const char STR_0083F840[];
+// Declaration: STRING GAMEMD 0x83F81C
+extern const char STR_0083F81C[];
+// Declaration: STRING GAMEMD 0x83F7F0
+extern const char STR_0083F7F0[];
+// Declaration: STRING GAMEMD 0x83F7A0
+extern const char STR_0083F7A0[];
+// Declaration: STRING GAMEMD 0x83F784
+extern const char STR_0083F784[];
+// Declaration: STRING GAMEMD 0x83F760
+extern const char STR_0083F760[];
+// Declaration: STRING GAMEMD 0x83F734
+extern const char STR_0083F734[];
+
+// FUNCTION: GAMEMD 0x69BD60
+void SessionClass::FUN_0069BD60()
+{
+    DynamicVectorClass<NodeNameType*> ordered;
+    unsigned int adjustment = 1;
+    FUN_004068E0(STR_0083F840);
+    if (unknown_283C.Count < 2)
+        return;
+    int nameCount = 0;
+    memset(unknown_2E28, 0, sizeof(unknown_2E28));
+    unknown_3018 = 1;
+    for (int i = 0; i < unknown_283C.Count; ++i) {
+        int slot = FUN_0069BC60(i);
+        if (slot >= 0 && slot < 8) {
+            unknown_283C.Items[i]->Address.FUN_0053F200((unsigned short)unknown_2FF8[slot]);
+            const char* name = unknown_283C.Items[i]->FUN_007350C0();
+            const char* address = unknown_283C.Items[i]->Address.FUN_0053F0E0(0);
+            FUN_004068E0(STR_0083F81C, name, address);
+        }
+    }
+    bool used[8] = { false, false, false, false, false, false, false, false };
+    for (int pass = 0; pass < unknown_283C.Count; ++pass) {
+        int smallest = 0x7FFFFFFF;
+        int smallestValue = 0x7FFFFFFF;
+        for (int candidate = 0; candidate < unknown_283C.Count; ++candidate) {
+            if (!used[candidate] && unknown_283C.Items[candidate]->unknown_53 < smallestValue) {
+                smallest = candidate;
+                smallestValue = unknown_283C.Items[candidate]->unknown_53;
+            }
+        }
+        if (smallest == 0x7FFFFFFF)
+            break;
+        used[smallest] = true;
+        // Retail local vector RTTI is NodeNameType*. The existing Session
+        // pointer declaration uses the older NetPlayerClass record view.
+        ordered.AddItem(reinterpret_cast<NodeNameType*>(unknown_283C.Items[smallest]));
+        if (ordered.Count == unknown_283C.Count)
+            break;
+    }
+    memset(used, 0, sizeof(used));
+    for (int first = 0; first < ordered.Count; ++first) {
+        if (!used[first]) {
+            IPXAddressClass address = ordered.Items[first]->Address;
+            for (int second = 0; second < ordered.Count; ++second) {
+                if (second != first && !used[second] && address.Equals_EF30(ordered.Items[second]->Address)) {
+                    const char* firstName = Narrow_007350C0(ordered.Items[first]->Name);
+                    int firstSlot = FUN_0069BCC0(firstName);
+                    const char* secondName = Narrow_007350C0(ordered.Items[second]->Name);
+                    int secondSlot = FUN_0069BCC0(secondName);
+                    if (unknown_2FF8[firstSlot] == unknown_2FF8[secondSlot]) {
+                        unsigned short offset = (unsigned short)adjustment++;
+                        ordered.Items[second]->Address.FUN_0053F200((unsigned short)(unknown_2FF8[firstSlot] + offset));
+                        used[second] = true;
+                        FUN_004068E0(STR_0083F7F0, (unsigned int)offset, Narrow_007350C0(ordered.Items[second]->Name));
+                    } else {
+                        FUN_004068E0(STR_0083F7A0);
+                    }
+                    const char* name = Narrow_007350C0(ordered.Items[first]->Name);
+                    const char* localName = DAT_00B73E40.FUN_007B5400();
+                    if (_stricmp(name, localName) == 0)
+                        strcpy(unknown_2E28[nameCount++], Narrow_007350C0(ordered.Items[second]->Name));
+                    name = Narrow_007350C0(ordered.Items[second]->Name);
+                    localName = DAT_00B73E40.FUN_007B5400();
+                    if (_stricmp(name, localName) == 0)
+                        strcpy(unknown_2E28[nameCount++], Narrow_007350C0(ordered.Items[first]->Name));
+                }
+            }
+        }
+    }
+    if (unknown_301C != 0) {
+        FUN_004068E0(STR_0083F784, unknown_301C);
+        Players_00A8DA78[0]->Address.FUN_0053F200((unsigned short)unknown_301C);
+        int slot = FUN_0069BC60(0);
+        unknown_2858[slot]->Address.FUN_0053F200((unsigned short)unknown_301C);
+    }
+    for (int player = 0; player < unknown_283C.Count; ++player) {
+        unknown_307A[player] = unknown_283C.Items[player]->Address.Port;
+        if (unknown_307A[player] == 0)
+            unknown_307A[player] = 1234;
+    }
+    IPXAddressClass firstAddress = unknown_283C.Items[0]->Address;
+    NodeAddressType firstNode;
+    firstAddress.FUN_0053EDC0(&firstNode);
+    for (int other = 1; other < unknown_283C.Count; ++other) {
+        if (firstAddress.Equals_EF30(unknown_283C.Items[other]->Address)) {
+            FUN_004068E0(STR_0083F760, unknown_283C.Items[other]->FUN_007350C0());
+            for (int candidate = 0; candidate < 8; ++candidate) {
+                const char* otherName = unknown_283C.Items[other]->FUN_007350C0();
+                const char* candidateName = unknown_2858[candidate]->FUN_007350C0();
+                if (_stricmp(otherName, candidateName) == 0) {
+                    NodeAddressType node;
+                    unknown_2994[candidate].FUN_0053EDC0(&node);
+                    unknown_283C.Items[other]->Address.FUN_0053ED20(
+                        0, &node, unknown_283C.Items[other]->Address.Port);
+                    const char* name = unknown_283C.Items[other]->FUN_007350C0();
+                    const char* address = unknown_283C.Items[other]->Address.FUN_0053F0E0(0);
+                    FUN_004068E0(STR_0083F734, name, address);
+                }
+            }
+        }
+    }
+    if (Interface_00887628) {
+        // UDP creation52F456 -> ctor7B2DB0 seats table7F7A6C at7B2E2D.
+        // Native69C444/69C457 use UDP-only slots28/23; base slot7 follows.
+        static_cast<UDPInterfaceClass*>(Interface_00887628)->CloseAllSpareSockets();
+        static_cast<UDPInterfaceClass*>(Interface_00887628)->OpenPrimarySocket(unknown_307A[0]);
+        Interface_00887628->StartListening();
+    }
+}
+
 // TEMPLATE: GAMEMD 0x69C4F0
 // VectorClass<DiskID>::Slot6 (slot 6)
 // TEMPLATE: GAMEMD 0x69C710

@@ -8,6 +8,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class.h"
+#include "ipx_address_class.h"
 
 class MultiplayerGameMode;
 struct NetPlayerClass;
@@ -49,9 +50,19 @@ struct SessionClass
     char unknown_300[0x283C - 0x300];
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
     DynamicVectorClass<NetPlayerClass*> unknown_283C;
-    char unknown_2854[0x2968 - 0x2854];
+    char unknown_2854[4];
+    NetPlayerClass* unknown_2858[8]; // native69C290/69C362
+    char unknown_2878[0x2968 - 0x2878];
     unsigned char unknown_2968; // native697DD2 byte store
-    char unknown_2969[0x3020 - 0x2969];
+    char unknown_2969[0x2994 - 0x2969];
+    IPXAddressClass unknown_2994[8]; // native69C362/69C40A: stride0xC
+    char unknown_29F4[0x2E28 - 0x29F4];
+    char unknown_2E28[8][0x24]; // zero288bytes69BDBA; string record stride0x24
+    char unknown_2F48[0x2FF8 - 0x2F48];
+    int unknown_2FF8[8]; // native69C095, scale4
+    unsigned char unknown_3018;
+    char unknown_3019[3];
+    int unknown_301C;
     // UTF16 storage region before3074; logical string capacity unconfirmed.
     wchar_t unknown_3020[0x54 / 2]; // 0x697EAB passes its address to_wcsicmp
     int unknown_3074; // 0x697E8E, -1 sentinel
@@ -88,6 +99,8 @@ struct SessionClass
     void FUN_0069AE90(int delay);
     // Declaration: GAMEMD 0x69BC60 (decl; reloc) -- slot index argument, EAX result, RET4.
     int FUN_0069BC60(int index);
+    // Declaration: GAMEMD 0x69BD60 -- ECX receiver, noargs, RET.
+    void FUN_0069BD60();
 };
 GG_STATIC_ASSERT(offsetof(SessionClass, GameMode) == 0);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_307A) == 0x307A);
@@ -141,4 +154,11 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_188) == 0x188);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_160) == 0x160);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_17C) == 0x17C);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_180) == 0x180);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2858) == 0x2858);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2994) == 0x2994);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2E28) == 0x2E28);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2FF8) == 0x2FF8);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3018) == 0x3018);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_301C) == 0x301C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2E28) == 0x120);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

@@ -97101,5 +97101,14 @@
   "name": "SessionClass::FUN_0069BC60",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69BD60",
+  "sym": "?FUN_0069BD60@SessionClass@@QAEXXZ",
+  "len": "0x735",
+  "name": "SessionClass::FUN_0069BD60",
+  "status": "partial",
+  "pct": 3.5
  }
 ]
