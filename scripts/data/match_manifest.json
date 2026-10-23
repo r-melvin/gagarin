@@ -64440,11 +64440,11 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x634510",
-  "sym": "?FUN_00634510@@YIPAUPlanningRect@@PAU1@HUPoint2D@@@Z",
+  "sym": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HUPoint2D@@@Z",
   "len": "0x35",
-  "name": "FUN_00634510",
+  "name": "?FUN_00634510@@YIPAURectangleStruct@@PAU1@HUPoint2D@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -64458,11 +64458,11 @@
  {
   "tu": "match/ai/planning_manager.cpp",
   "addr": "0x6345A0",
-  "sym": "?FUN_006345A0@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "sym": "?FUN_006345A0@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x83",
   "name": "PlanningNodeClass::FUN_006345A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/planning_manager.cpp",
@@ -90586,11 +90586,11 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x6357D0",
-  "sym": "?FUN_006357D0@@YIXPAUPlanningRect@@H@Z",
+  "sym": "?FUN_006357D0@@YIXPAURectangleStruct@@H@Z",
   "len": "0x51",
-  "name": "FUN_6357D0",
+  "name": "?FUN_006357D0@@YIXPAURectangleStruct@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/PlanMgr.cpp",
@@ -90604,7 +90604,7 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x635DF0",
-  "sym": "?FUN_00635DF0@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "sym": "?FUN_00635DF0@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x91",
   "name": "PlanningNodeClass::FUN_00635DF0",
   "status": "partial",
@@ -90613,7 +90613,7 @@
  {
   "tu": "match/core/PlanMgr.cpp",
   "addr": "0x635E90",
-  "sym": "?FUN_00635E90@PlanningNodeClass@@QAE?AUPlanningRect@@XZ",
+  "sym": "?FUN_00635E90@PlanningNodeClass@@QAE?AURectangleStruct@@XZ",
   "len": "0x90",
   "name": "PlanningNodeClass::FUN_00635E90",
   "status": "partial",
@@ -96488,5 +96488,50 @@
   "name": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
   "status": "partial",
   "pct": 93.6
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x635560",
+  "sym": "?FUN_00635560@PlanningNodeClass@@QAEXI@Z",
+  "len": "0x119",
+  "name": "PlanningNodeClass::FUN_00635560",
+  "status": "partial",
+  "pct": 44.2
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x638E60",
+  "sym": "?FUN_00638E60@@YIXXZ",
+  "len": "0x126",
+  "name": "?FUN_00638E60@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x639E30",
+  "sym": "?FUN_00639E30@@YI_NPAVPlanningTokenClass@@0@Z",
+  "len": "0x123",
+  "name": "?FUN_00639E30@@YI_NPAVPlanningTokenClass@@0@Z",
+  "status": "partial",
+  "pct": 25.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63D0F0",
+  "sym": "?FUN_0063D0F0@@YIIPAVTechnoClass@@@Z",
+  "len": "0x120",
+  "name": "?FUN_0063D0F0@@YIIPAVTechnoClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/PlanMgr.cpp",
+  "addr": "0x63D2D0",
+  "sym": "?FUN_0063D2D0@@YIIPAVPlanningNodeClass@@@Z",
+  "len": "0x127",
+  "name": "?FUN_0063D2D0@@YIIPAVPlanningNodeClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

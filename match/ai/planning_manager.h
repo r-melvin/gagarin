@@ -18,6 +18,7 @@
 #include "../core/vector_class_operations.h"
 #include "../network/event_class_ctors.h"
 #include "../_layout/techno_class.h"
+#include "../_layout/geometry2d.h"
 
 class PlanningTokenClass;
 
@@ -34,13 +35,6 @@ public:
     virtual CoordStruct vf_22();   // +0x58
 };
 
-struct PlanningRect
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int W;   // +0x08
-    int H;   // +0x0C
-};
 
 // One unit on a node: allocated 0x10 bytes (0x633FA6: PUSH 0x10; CALL new).
 class PlanningMemberClass
@@ -115,7 +109,7 @@ public:
     Point2D* FUN_00634400(Point2D* out);
     int FUN_00634470(int x, int y);
     bool FUN_00634550(int x, int y, int z);
-    PlanningRect FUN_006345A0();
+    RectangleStruct FUN_006345A0();
     bool FUN_00634630();
     void FUN_00634680();
     PlanningMemberClass* FUN_006346B0(TechnoClass* techno);
@@ -147,8 +141,11 @@ public:
     void FUN_00635210();
     void FUN_006352D0();
     void FUN_00635310();
-    PlanningRect FUN_00635DF0();
-    PlanningRect FUN_00635E90();
+    void FUN_00635560(unsigned int color);
+    // FUNCTION: GAMEMD 0x63AC70 (decl; reloc) -- ECX is the node; the body reads only the selection list.
+    int FUN_0063AC70();
+    RectangleStruct FUN_00635DF0();
+    RectangleStruct FUN_00635E90();
     void FUN_006378B0();
     void FUN_00637D00();
     int FUN_00634CC0(TechnoClass* techno);

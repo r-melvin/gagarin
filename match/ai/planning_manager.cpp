@@ -82,9 +82,9 @@ struct PlanningCoordInit : CoordStruct
 {
     PlanningCoordInit(int x, int y, int z) { X = x; Y = y; Z = z; }
 };
-struct PlanningRectInit : PlanningRect
+struct PlanningRectInit : RectangleStruct
 {
-    PlanningRectInit(int x, int y, int w, int h) { X = x; Y = y; W = w; H = h; }
+    PlanningRectInit(int x, int y, int w, int h) { X = x; Y = y; Width = w; Height = h; }
 };
 // SYNTHETIC: GAMEMD 0x633570
 // GLOBAL: GAMEMD 0xAC4BE4
@@ -505,7 +505,7 @@ Point2D* PlanningNodeClass::FUN_00634400(Point2D* out)
     return FUN_006339E0(out, PlanningCoordOf(*Members.Items[0]->Event));
 }
 
-PlanningRect* FUN_00634510(PlanningRect* out, int size, Point2D center);
+RectangleStruct* FUN_00634510(RectangleStruct* out, int size, Point2D center);
 
 // FUNCTION: GAMEMD 0x634470
 // Whether the view point (x, y) falls on this node's marker.
@@ -517,28 +517,28 @@ int PlanningNodeClass::FUN_00634470(int x, int y)
     CoordStruct tmp;
     CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
     Point2D point;
-    PlanningRect rect;
-    PlanningRect bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
+    RectangleStruct rect;
+    RectangleStruct bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
     bounds.X -= 4;
     bounds.Y -= 4;
-    bounds.W += 8;
-    bounds.H += 8;
-    return x >= bounds.X && x < bounds.X + bounds.W && y >= bounds.Y && y < bounds.Y + bounds.H;
+    bounds.Width += 8;
+    bounds.Height += 8;
+    return x >= bounds.X && x < bounds.X + bounds.Width && y >= bounds.Y && y < bounds.Y + bounds.Height;
 }
 
 // FUNCTION: GAMEMD 0x634510
 // A size-by-size rectangle centred on (x, y).
-PlanningRect* FUN_00634510(PlanningRect* out, int size, Point2D center)
+RectangleStruct* FUN_00634510(RectangleStruct* out, int size, Point2D center)
 {
     int half = -(size / 2);
     Point2D corner = center;
     corner.X += half;
     corner.Y += half;
-    PlanningRect rect;
+    RectangleStruct rect;
     rect.X = corner.X;
     rect.Y = corner.Y;
-    rect.W = size;
-    rect.H = size;
+    rect.Width = size;
+    rect.Height = size;
     *out = rect;
     return out;
 }
@@ -551,13 +551,13 @@ bool PlanningNodeClass::FUN_00634550(int x, int y, int z)
 }
 
 // FUNCTION: GAMEMD 0x6345A0
-PlanningRect PlanningNodeClass::FUN_006345A0()
+RectangleStruct PlanningNodeClass::FUN_006345A0()
 {
     CoordStruct tmp;
     CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
     Point2D point;
     FUN_006339E0(&point, coord);
-    PlanningRect rect;
+    RectangleStruct rect;
     return *FUN_00634510(&rect, 8, point);
 }
 

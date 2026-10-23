@@ -462,6 +462,8 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include "../ai/planning_manager.h"
 #include "../_layout/house_class.h"
 #include "../_layout/object_type_class.h"
+#include "../renderer/dsurface_class.h"
+#include "../ui/input_controls/mouse_ww_mouse_class.h"
 
 // The tactical view (pointer global 0x887324), as in planning_manager.cpp.
 struct PlanningTacticalView
@@ -487,7 +489,7 @@ inline CoordStruct PlanningCoordOf(const EventClass& event)
 Point2D* FUN_006339E0(Point2D* out, const CoordStruct& coord);
 
 // FUNCTION: GAMEMD 0x634510 (decl; reloc) -- a size-by-size rectangle centred on a point.
-PlanningRect* FUN_00634510(PlanningRect* out, int size, Point2D center);
+RectangleStruct* FUN_00634510(RectangleStruct* out, int size, Point2D center);
 
 // GLOBAL: GAMEMD 0xAC4CF4 / 0xAC4CF5 -- planning-mode flags.
 extern bool DAT_00AC4CF4;
@@ -560,36 +562,36 @@ extern const char STR_00836B20[];
 extern const char STR_00836B48[];
 
 // A size-by-size rectangle centred on a point (0x634510, expanded where it is not called).
-inline PlanningRect* PlanningRectAround(PlanningRect* out, int size, Point2D center)
+inline RectangleStruct* PlanningRectAround(RectangleStruct* out, int size, Point2D center)
 {
     int half = -(size / 2);
     Point2D corner = center;
     corner.X += half;
     corner.Y += half;
-    PlanningRect rect;
+    RectangleStruct rect;
     rect.X = corner.X;
     rect.Y = corner.Y;
-    rect.W = size;
-    rect.H = size;
+    rect.Width = size;
+    rect.Height = size;
     *out = rect;
     return out;
 }
 
 // 0x6357D0 expanded where it is not called.
-inline void PlanningRectInflate(PlanningRect* rect, int amount)
+inline void PlanningRectInflate(RectangleStruct* rect, int amount)
 {
     int twice = amount + amount;
-    if (twice < 0 && (twice >= rect->W || twice >= rect->H)) {
+    if (twice < 0 && (twice >= rect->Width || twice >= rect->Height)) {
         rect->X = 0;
         rect->Y = 0;
-        rect->W = 0;
-        rect->H = 0;
+        rect->Width = 0;
+        rect->Height = 0;
         return;
     }
     rect->X -= amount;
     rect->Y -= amount;
-    rect->W += twice;
-    rect->H += twice;
+    rect->Width += twice;
+    rect->Height += twice;
 }
 
 // 0x638C40 expanded where it is not called.
@@ -998,25 +1000,53 @@ void PlanningNodeClass::FUN_00635310()
     }
 }
 
+// FUNCTION: GAMEMD 0x72AD20 (decl; reloc) -- the tactical view's screen rectangle (written to `out`).
+RectangleStruct* FUN_0072AD20(RectangleStruct* out);
+// GLOBAL: GAMEMD 0x88731C -- the composite surface.
+extern DSurface* DAT_0088731C;
+
+// FUNCTION: GAMEMD 0x635560
+// PARTIAL: best 44.2%. Retail keeps the 0x634510 result pointer in ESI and
+// writes the +4 inflate straight into the box; this build copies first.
+// Tried: explicit field writes (40.2%), copy then inflate (40.4%).
+// Draw the node's marker: a box around the first member's target, drawn three
+// times, each one pixel further in.
+void PlanningNodeClass::FUN_00635560(unsigned int color)
+{
+    RectangleStruct clip;
+    {
+        RectangleStruct tmp;
+        clip = *FUN_0072AD20(&tmp);
+    }
+    Point2D center;
+    RectangleStruct around;
+    RectangleStruct box = *FUN_00634510(&around, 8, *FUN_006339E0(&center, PlanningCoordOf(*Members.Items[0]->Event)));
+    PlanningRectInflate(&box, 4);
+    for (int i = 0; i < 3; i++) {
+        DAT_0088731C->DrawRectEx(&clip, &box, color);
+        PlanningRectInflate(&box, -1);
+    }
+}
+
 // FUNCTION: GAMEMD 0x6357D0 (defined below)
-void FUN_006357D0(PlanningRect* rect, int amount);
+void FUN_006357D0(RectangleStruct* rect, int amount);
 
 // FUNCTION: GAMEMD 0x6357D0
 // Grow the rectangle by `amount` on every side; shrinking past its size empties it.
-void FUN_006357D0(PlanningRect* rect, int amount)
+void FUN_006357D0(RectangleStruct* rect, int amount)
 {
     int twice = amount + amount;
-    if (twice < 0 && (twice >= rect->W || twice >= rect->H)) {
+    if (twice < 0 && (twice >= rect->Width || twice >= rect->Height)) {
         rect->X = 0;
         rect->Y = 0;
-        rect->W = 0;
-        rect->H = 0;
+        rect->Width = 0;
+        rect->Height = 0;
         return;
     }
     rect->X -= amount;
     rect->Y -= amount;
-    rect->W += twice;
-    rect->H += twice;
+    rect->Width += twice;
+    rect->Height += twice;
 }
 
 // FUNCTION: GAMEMD 0x635DB0
@@ -1034,7 +1064,7 @@ void PlanningNodeClass::FUN_00635DB0(bool arg)
 
 // FUNCTION: GAMEMD 0x635DF0
 // The marker rectangle of the first member's order, grown by 4 (6339E0/634510 expanded).
-PlanningRect PlanningNodeClass::FUN_00635DF0()
+RectangleStruct PlanningNodeClass::FUN_00635DF0()
 {
     CoordStruct tmp;
     CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
@@ -1043,35 +1073,35 @@ PlanningRect PlanningNodeClass::FUN_00635DF0()
     point.X += DAT_00886FA0.X;
     point.Y += DAT_00886FA0.Y;
     int size = 8;
-    PlanningRect rect;
+    RectangleStruct rect;
     rect.X = point.X - size / 2;
     rect.Y = point.Y - size / 2;
-    rect.W = size;
-    rect.H = size;
+    rect.Width = size;
+    rect.Height = size;
     rect.X -= 4;
     rect.Y -= 4;
-    rect.W += 8;
-    rect.H += 8;
+    rect.Width += 8;
+    rect.Height += 8;
     return rect;
 }
 
 // FUNCTION: GAMEMD 0x635E90
 // The same rectangle grown by 4 twice (6339E0/634510 called).
-PlanningRect PlanningNodeClass::FUN_00635E90()
+RectangleStruct PlanningNodeClass::FUN_00635E90()
 {
     CoordStruct tmp;
     CoordStruct coord = *FUN_00633BC0(&tmp, *Members.Items[0]->Event);
     Point2D point;
-    PlanningRect rect;
-    PlanningRect bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
+    RectangleStruct rect;
+    RectangleStruct bounds = *FUN_00634510(&rect, 8, *FUN_006339E0(&point, coord));
     bounds.X -= 4;
     bounds.Y -= 4;
-    bounds.W += 8;
-    bounds.H += 8;
+    bounds.Width += 8;
+    bounds.Height += 8;
     bounds.X -= 4;
     bounds.Y -= 4;
-    bounds.W += 8;
-    bounds.H += 8;
+    bounds.Width += 8;
+    bounds.Height += 8;
     return bounds;
 }
 
@@ -1709,6 +1739,50 @@ void FUN_00638E20()
     PlanningLists::DAT_00AC4C18.Clear();
 }
 
+// GLOBAL: GAMEMD 0xAC4C3C -- the node under the cursor that cannot be made current.
+extern PlanningNodeClass* DAT_00AC4C3C;
+
+// FUNCTION: GAMEMD 0x638E60
+// Track the node under the mouse: the first listed node whose marker box holds
+// the cursor becomes current when it is the player's own and may be picked;
+// otherwise it is only remembered at 0xAC4C3C.
+void FUN_00638E60()
+{
+    if (DAT_00AC4CB0) {
+        return;
+    }
+    int x = WWMouseClassInstance->vf_11();
+    int y = WWMouseClassInstance->vf_12();
+    PlanningNodeClass* hit;
+    int count = PlanningLists::DAT_00AC4C18.Count;
+    for (int i = 0; i < count; i++) {
+        hit = PlanningLists::DAT_00AC4C18.Items[i];
+        Point2D center;
+        RectangleStruct tmp;
+        RectangleStruct box = *FUN_00634510(&tmp, 8, *hit->FUN_00634400(&center));
+        FUN_006357D0(&box, 4);
+        if (x >= box.X && x < box.X + box.Width && y >= box.Y && y < box.Y + box.Height) {
+            goto found;
+        }
+    }
+    hit = 0;
+found:
+    if (hit != DAT_00AC4CCC) {
+        DAT_00AC4C3C = 0;
+        if (hit != 0
+            && (hit->Members.Items[0]->Owner->Owner != DAT_00A83D4C
+                || (DAT_00AC4C38 != 0 && DAT_00AC4C38 != hit)
+                || hit->FUN_0063AC70() != -1)) {
+            DAT_00AC4C3C = hit;
+            hit = 0;
+        }
+        DAT_00AC4CCC = hit;
+        if (hit) {
+            hit->FUN_00634B20();
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x639470
 // The node on the list whose first order points at `coord`.
 PlanningNodeClass* FUN_00639470(CoordStruct coord)
@@ -1727,6 +1801,43 @@ PlanningNodeClass* FUN_00639470(CoordStruct coord)
         } while (i < count);
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x639E30
+// PARTIAL: 25.0%, same instruction multiset; retail keeps `first` in ECX and
+// spills the second count, this build moves `first` to EDX. Tried: ternary
+// counts (25.7%, two extra jumps), nested returns (21.6%, SETE).
+// Whether two tokens' plans meet: true when neither has any nodes, false when
+// only one has; otherwise each token's last node must list the other token's
+// unit as a member.
+bool FUN_00639E30(PlanningTokenClass* first, PlanningTokenClass* second)
+{
+    if (first == 0 && second == 0) {
+        return true;
+    }
+    int firstCount = 0;
+    if (first) {
+        firstCount = first->Nodes.Count;
+    }
+    int secondCount = 0;
+    if (second) {
+        secondCount = second->Nodes.Count;
+    }
+    if (firstCount == 0 && secondCount == 0) {
+        return true;
+    }
+    if (firstCount == 0 || secondCount == 0) {
+        return false;
+    }
+    PlanningNodeClass* firstLast = first->NodeAt(firstCount - 1);
+    PlanningNodeClass* secondLast = second->NodeAt(secondCount - 1);
+    if (firstLast->MemberIndex(second->Owner) == -1) {
+        return false;
+    }
+    if (secondLast->MemberIndex(first->Owner) == -1) {
+        return false;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x639F60
@@ -1892,6 +2003,44 @@ CoordStruct* FUN_0063CA80(CoordStruct* out, const EventClass& event, TargetAbstr
     return out;
 }
 
+// GLOBAL: GAMEMD 0xA83CD9 -- the colour a planning marker is drawn in normally.
+extern ColorStruct DAT_00A83CD9;
+// GLOBAL: GAMEMD 0xA80220 -- white (0xFF, 0xFF, 0xFF), the colour of a selected or current-node member.
+extern ColorStruct DAT_00A80220;
+
+// The native pixel colour a planning marker for `techno` is drawn in: the
+// highlight colour when the unit belongs to the current node (or, with no
+// current node, when it is selected), otherwise the normal colour. Retail
+// keeps it out of line at 0x63D0F0 and expands it in 0x63D2D0.
+inline unsigned int PlanningMarkerColor(TechnoClass* techno)
+{
+    unsigned int color = PackPixel(DAT_00A83CD9);
+    if (techno) {
+        unsigned int highlight = PackPixel(DAT_00A80220);
+        if (DAT_00AC4BF0) {
+            if (DAT_00AC4BF0->MemberIndex(techno) != -1) {
+                return highlight;
+            }
+        } else if (techno->IsSelected) {
+            color = highlight;
+        }
+    }
+    return color;
+}
+
+// FUNCTION: GAMEMD 0x63D0F0
+unsigned int FUN_0063D0F0(TechnoClass* techno)
+{
+    return PlanningMarkerColor(techno);
+}
+
+// FUNCTION: GAMEMD 0x63D2D0
+// The marker colour of a node's first member.
+unsigned int FUN_0063D2D0(PlanningNodeClass* node)
+{
+    return PlanningMarkerColor(node->Members.Items[0]->Owner);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x63D500
 // Branching.
@@ -1938,21 +2087,14 @@ int FUN_0063D540(Obj_0063D540* a1, int a2)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x63DAD0
 //
-// MATCHED (100.0%, 26/26). The final combination is `(blue | green) | red`,
-// but retail's LOAD/SHIFT instruction sequences run green first, then blue,
-// then red -- the source order `blue; green; red;` (matching the textual
-// left-to-right of the OR chain) has cl 8804 schedule the green and blue
-// instruction groups swapped (confirmed via the object's relocation table,
-// not the operand text: the first `mov cl,[global]` after the swap resolves
-// to DAT_008A0DE4, green's, even though blue's OR still combines correctly).
-// Declaring green before blue -- with the final `blue | green | red`
-// expression left unchanged -- reproduces retail's instruction order exactly.
+// Pack a raw 8-bit-per-channel {R,G,B} triple into the display's native pixel
+// format: each channel is shifted right into a byte, then left into place.
 unsigned int PackPixel_0063DAD0(const unsigned char* rgb)
 {
-    unsigned int green = (rgb[1] >> DAT_008A0DE4) << DAT_008A0DE0;
-    unsigned int blue  = (rgb[2] >> DAT_008A0DDC) << DAT_008A0DD8;
-    unsigned int red   = (rgb[0] >> DAT_008A0DD4) << DAT_008A0DD0;
-    return blue | green | red;
+    unsigned char red = rgb[0] >> DAT_008A0DD4;
+    unsigned char green = rgb[1] >> DAT_008A0DE4;
+    unsigned char blue = rgb[2] >> DAT_008A0DDC;
+    return (red << DAT_008A0DD0) | (green << DAT_008A0DE0) | (blue << DAT_008A0DD8);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
