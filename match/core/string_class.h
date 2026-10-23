@@ -25,6 +25,8 @@ public:
     char* unknown_00;
     // Declaration: GAMEMD 0x7B4620
     Wstring();
+    // Declaration: GAMEMD 0x7B4630
+    Wstring(const char* text);
     // Declaration: GAMEMD 0x7B4690
     Wstring(const Wstring& other);
     // Declaration: GAMEMD 0x7B46F0

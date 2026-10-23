@@ -98308,5 +98308,14 @@
   "name": "Obj_0069E430::Obj_0069E430",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B4630",
+  "sym": "??0Wstring@@QAE@PBD@Z",
+  "len": "0x5e",
+  "name": "Wstring narrow constructor",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

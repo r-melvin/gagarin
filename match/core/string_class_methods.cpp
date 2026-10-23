@@ -10,6 +10,17 @@ Wstring::Wstring() : unknown_00(0)
 {
 }
 
+// FUNCTION: GAMEMD 0x7B4630
+Wstring::Wstring(const char* text)
+{
+    unknown_00 = 0;
+    unknown_00 = new char[text ? strlen(text) + 1 : 1];
+    unknown_00[0] = 0;
+    if (text) {
+        strcpy(unknown_00, text);
+    }
+}
+
 // FUNCTION: GAMEMD 0x7B4690
 Obj_007B4620::Obj_007B4620(const Obj_007B4620& other)
 {
