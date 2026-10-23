@@ -65,9 +65,9 @@ int LCWPipe::FUN_00631D10(int first, int slen)
                 int len = (slen < BlockHeader.CompCount - Counter)
                               ? slen : BlockHeader.CompCount - Counter;
                 memmove(Buffer + Counter, (const char*)first, len);
-                Counter += len;
                 slen -= len;
                 first += len;
+                Counter += len;
                 if (Counter == BlockHeader.CompCount) {
                     FUN_00551C60(Buffer, Buffer2, 0);
                     total += Pipe::FUN_00631D10((int)Buffer2, BlockHeader.UncompCount);

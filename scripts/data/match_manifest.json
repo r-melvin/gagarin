@@ -41118,12 +41118,12 @@
  },
  {
   "tu": "match/core/lcw_pipe.cpp",
-  "addr": "0x5520a0",
+  "addr": "0x5520A0",
   "sym": "?FUN_00631D10@LCWPipe@@UAEHHH@Z",
   "len": "0x227",
   "name": "LCWPipe::FUN_00631D10",
-  "status": "partial",
-  "pct": 99.0
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/lcw_pipe.cpp",
