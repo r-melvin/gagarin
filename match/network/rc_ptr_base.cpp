@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   rc_ptr_base (RTTI `.?AVrc_ptr_base@@`, vtable 0x7F094C), read off the
 //   user's retail gamemd.exe v1.001. The constructor seats the table, so this
 //   unit also emits the table and its scalar deleting destructor 0x65D4D0.

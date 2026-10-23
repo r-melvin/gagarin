@@ -7,7 +7,7 @@
 // retail RTTI names: ".?AVMSFrameAnim@@" (vtable 0x7F7104, base MSAnim),
 // ".?AVMap@WorldDominationTour@@" (0x7F7134, base ReferenceCounted) and
 // ".?AV?$rc_ptr@VMap@WorldDominationTour@@@@" (0x7F712C).
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

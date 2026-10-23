@@ -107,6 +107,8 @@ don't work on the same function.
    redundant pointer aliases, casts used only to steer codegen); see
    [AGENTS.md](AGENTS.md) for the one admissible `volatile`, on declarations
    of data proven shared with another thread or callback.
+   The default flags are `/nologo /c /O2 /Gr /DNDEBUG /Gy /MT` (set in `scripts/vc6/vc6cl.sh`);
+   a `// VC6FLAGS:` line replaces the whole set, so it must keep `/MT`.
 4. For the last few register or ordering mismatches, try the permuter:
    `scripts/permuter/new_run.sh <addr> <C-name> <native-symbol> /tmp/run <length>`.
    The fifth argument is the full validated retail span in hex. Before searching,

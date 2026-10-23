@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   /Ob2: the scalar deleting destructor 0x4105A0 carries the destructor body
 //   (the four vptr stores) inline, while 0x4101F0 also exists out of line and
 //   is called by derived destructors (0x4109C0). Plain /O2 calls 0x4101F0.

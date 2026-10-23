@@ -5,7 +5,7 @@
 // already in connman_class.cpp: the unit's header-global initialisers, the
 // constructor, Init and the non-virtual connection helpers, in retail address
 // order. IPXManagerClass is declared in connman_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <string.h>
 #include "connman_class.h"

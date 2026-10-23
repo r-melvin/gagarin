@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob1
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob1 /MT
 #include <string.h>
 #include "connman_class.h"
 #include "winsock_interface_class.h"

@@ -7,7 +7,7 @@
 //   reads TagTypeClass::FirstTrigger at +0xA0 and TriggerTypeClass::NextTrigger
 //   at +0xA8, allocates 0x48 bytes, and invokes the native TriggerClass ctor at
 //   0x725FA0 before prepending each trigger to FirstTrigger.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   The retail span has no C++ exception cleanup. /GX adds a cleanup funclet
 //   around trigger construction; the no-GX source build matches the full span.
 

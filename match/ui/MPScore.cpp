@@ -3,7 +3,7 @@
 //   Original translation unit MPScore.cpp. The name is the source-file string at 0x82fe24
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5c982a inside this object's
 //   code range (0x5c9510-0x5ca41f). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //
 // The TemporalClass block of retail .text (0x71A1F0..0x71B233): three of the
 // unit's run-time initialisers, the constructors and destructor, Load, the

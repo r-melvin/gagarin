@@ -6,7 +6,7 @@
 // small event-bit and flag accessors and the primary-table slots 5, 8, 10,
 // 11, 12 and 13 (vtable 0x7F5858). Functions are in retail address order;
 // TriggerClass itself is declared in _layout/trigger_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the scalar deleting destructor 0x726950 expands the destructor and
 //   the destructor expands the vector RemoveItem bodies in place.
 

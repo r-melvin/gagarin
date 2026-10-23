@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only)
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // No /GX: no retail body of this class has an exception frame.
 //
 // ParticleSystemTypeClass (cluster "system" of the particle module). Layout and tables are in

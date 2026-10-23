@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x40: | YRpp-cross-check | behaviour-confirmed-name
 // a depth-tested, alpha-shaded 16-bit line. Read from 0x4BDF00's entry disassembly. The Z buffer

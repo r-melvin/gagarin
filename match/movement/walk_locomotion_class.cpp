@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //
 // WalkLocomotionClass (layout, tables and evidence in walk_locomotion_class.h).
 // The COM bodies (Load, Save, QueryInterface, PiggybackCLSID) have the same

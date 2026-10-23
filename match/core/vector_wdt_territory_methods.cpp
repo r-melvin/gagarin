@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //
 // VectorClass / DynamicVectorClass over rc_ptr<WorldDominationTour::Territory>
 // (RTTI vtables 0x7F7184 and 0x7F7164) and VectorClass over

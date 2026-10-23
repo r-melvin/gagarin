@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface (RTTI .?AVDSurface@@, vtable 0x7E85D4) slot +0x34 at 0x4BFD30: | YRpp-cross-check
 // a Bresenham line on a 16-bit surface that is depth-tested against the Z buffer (global 0x887644) and

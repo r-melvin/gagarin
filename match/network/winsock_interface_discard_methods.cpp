@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "winsock_interface_discard_methods.h"
 
 // FUNCTION: GAMEMD 0x7B1CA0  WinsockInterfaceClass::DiscardInBuffers (slot 5)

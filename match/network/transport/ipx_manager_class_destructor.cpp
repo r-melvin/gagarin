@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "connman_class.h"
 // FUNCTION: GAMEMD 0x53F5B0 (decl; reloc)
 // This caller supplies no arguments and discards the result; name and return

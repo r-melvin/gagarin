@@ -6,7 +6,7 @@
 // per-frame expiry sweep, the cell-flag clear and the primary-table slots 5,
 // 8, 11, 12 and 13, in retail address order. EMPulseClass is declared in
 // _layout/empulse_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <new.h>
 #include "../_layout/empulse_class.h"

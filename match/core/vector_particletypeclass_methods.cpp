@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Paired flag probes: /GX emits only 0x20 bytes for the dynamic deleting
 // entry; no-GX matches its full 0x49-byte span. The other 11 match both.
 // Retail RTTI TypeDescriptors 0x00823C88 and 0x00823CC0 identify

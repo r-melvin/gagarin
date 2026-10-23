@@ -6,7 +6,7 @@
 //   empty. Retail's loop pushes (0x754900, 4, 0xC, record) and calls the vector
 //   constructor iterator 0x4068F0 once per record (ESI += 0x48, EDI = 0x40).
 //   No name is attested for the array or its types; placeholders only.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

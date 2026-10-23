@@ -6,7 +6,7 @@
 // primary-table slots 5, 8, 11, 12, 13, 16, 25, 31, 32, 40 and 41, plus
 // ObjectTypeClass slot 39 which the unit emits, in retail address order.
 // AircraftTypeClass is declared in _layout/aircraft_type_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <new.h>
 #include "../_layout/aircraft_type_class.h"

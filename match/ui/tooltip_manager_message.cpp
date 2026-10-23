@@ -6,7 +6,7 @@
 // helpers themselves. The rest of the class is in tooltip_manager.cpp, whose
 // bodies (Remove in particular) only match without /Ob2. Bodies ascending by
 // retail address.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 #include "tooltip_manager_shared.h"
 
 // USER32 KillTimer, reached through the IAT slot at 0x7e148c (reloc-normalised).

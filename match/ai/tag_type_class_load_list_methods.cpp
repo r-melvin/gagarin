@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x6E5ED0.
 
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Native construction under GX adds exception cleanup absent from retail.
 #include "tag_type_class_load_list_methods.h"
 

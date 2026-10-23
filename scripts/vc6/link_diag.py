@@ -38,11 +38,9 @@ TOOL_LIBS = ["LIBCMT.LIB", "COMSUPP.LIB", "LIBCPMT.LIB"]
 IMPORT_LIBS = ["KERNEL32.LIB", "USER32.LIB", "GDI32.LIB", "ADVAPI32.LIB", "SHELL32.LIB",
                "OLE32.LIB", "OLEAUT32.LIB", "WINMM.LIB", "WSOCK32.LIB", "DDRAW.LIB",
                "DSOUND.LIB", "VERSION.LIB", "COMCTL32.LIB", "IMM32.LIB"]
-# /OPT:NOREF keeps every reference visible. /NODEFAULTLIB:LIBC: the project
-# objects are compiled without /MT and so request LIBC, while retail links
-# LIBCMT (see the M0 notes in the packet README).
+# /OPT:NOREF keeps every reference visible.
 LINK_FLAGS = ["/NOLOGO", "/FORCE", "/SUBSYSTEM:WINDOWS", "/FIXED", "/BASE:0x400000",
-              "/INCREMENTAL:NO", "/OPT:NOREF", "/NODEFAULTLIB:LIBC", "/MACHINE:IX86"]
+              "/INCREMENTAL:NO", "/OPT:NOREF", "/MACHINE:IX86"]
 # Retail code range of the statically linked CRT and COMSUPP block. A
 # placeholder FUN_<addr> inside it names a toolchain-library function.
 CRT_CODE = (0x7C8A8E, 0x7E1000)

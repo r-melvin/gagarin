@@ -3,7 +3,7 @@
 //   Original translation unit MPSiegeTeam.cpp. The name is the source-file string at 0x82fff4
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5cae16 inside this object's
 //   code range (0x5cac20-0x5cb18f). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //
 // The MPSiegeTeam.cpp block of retail .text (0x5CAC20..0x5CB18F; the unit's
 // own path at 0x82FFF4 names it): three of the unit's run-time initialisers

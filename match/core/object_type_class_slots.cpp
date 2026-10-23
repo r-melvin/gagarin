@@ -5,7 +5,7 @@
 // order. 0x428E40 sits in the address range of the AnimTypeClass unit, the
 // others in the ObjectTypeClass unit (0x5F75B0..). ObjectTypeClass is declared
 // in _layout/object_type_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 
 #include "../_layout/object_type_class.h"
 #include "../_layout/cell.h"

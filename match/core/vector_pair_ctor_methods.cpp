@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass over HashObject<unsigned int, unsigned int> and
 // Point2D (both 8-byte elements with a user-declared default constructor, so the element array is
 // built by the array-new counter loop). The bodies are the DynamicVectorClass constructors taking a

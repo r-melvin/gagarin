@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass<HashObject<HashString, SchemeNode*>> (0x104-byte elements: a 0x100-byte
 // string buffer and a pointer). Element ctor 0x4F4C20, copy ctor 0x4F4C70, assignment 0x4F4CB0 and the fastcall comparisons
 // 0x4F4D80/0x4F4D90 are out-of-line bodies bound by symbol map.

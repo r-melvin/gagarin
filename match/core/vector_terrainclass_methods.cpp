@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail PAVTerrainClass RTTI establishes the pointer element type and zero-offset
 // DynamicVectorClass -> VectorClass base chain. Complete entry-origin spans
 // establish the bound methods. GX emits a short derived deleting wrapper;

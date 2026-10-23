@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-pinned-PE and RTTI.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // The ordinary destructor at 0x7BA590 matches with /GX omitted; /GX adds
 // exception-handler setup. All three entry spans below match using this set.
 #include "../_layout/file_straw.h"

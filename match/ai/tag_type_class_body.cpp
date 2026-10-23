@@ -6,7 +6,7 @@
 // initialisers, the destructor, the trigger-list helpers and the primary-table
 // slots 5, 10, 11, 12, 13 and 16, in retail address order. TagTypeClass is
 // declared in _layout/tag_type_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the destructor expands the registry RemoveItem bodies in place.
 
 #include <new.h>

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface::unknown_38 (slot +0x38, 0x4BBCA0): a clipped, Z-buffer tested | YRpp-cross-check
 // line draw on 16-bit surfaces that brightens the destination pixels by `brightness`/256. Read from the retail

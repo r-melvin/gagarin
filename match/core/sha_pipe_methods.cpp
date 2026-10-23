@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Entry-origin 0x69E9B0 (0x26) and 0x69E9E0 (0x10), verified against the
 // pinned retail image. Original helper types/names/return types are unknown.
 // No constructor, destructor or native SHAPipe table is instantiated here.

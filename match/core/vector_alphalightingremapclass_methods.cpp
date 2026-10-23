@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x8181B8 and 0x8181F8 identify
 // VectorClass<AlphaLightingRemapClass*> and DynamicVectorClass<AlphaLightingRemapClass*>; the latter's
 // CHD names the former as its zero-offset base.

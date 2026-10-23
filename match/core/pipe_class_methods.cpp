@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Pipe is identified by TD 0x81BF80 (.?AVPipe@@), primary table 0x7E6218,
 // and the five raw slot targets documented in _layout/pipe.h. Complete
 // entry-origin spans were checked with focused REA evidence:

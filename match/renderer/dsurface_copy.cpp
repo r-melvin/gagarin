@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface::CopyFrom (slot +0x0C, RTTI .?AVDSurface@@, vtable | YRpp-cross-check
 // 0x7E85D4): the DirectDraw hardware blit with both clip rectangles. Retail inlines two copies of the

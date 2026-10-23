@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x81B5E8 and 0x81B620 identify
 // VectorClass<CaptureManagerClass*> and DynamicVectorClass<CaptureManagerClass*>;
 // the latter's CHD gives the former as a zero-offset base. Complete entry-origin

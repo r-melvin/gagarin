@@ -3,7 +3,7 @@
 // are checked against pinned gamemd.exe v1.001. This TU contains only the
 // explicit unsigned-short RLE leaf method specializations below. It does not
 // claim constructors, deleting destructors, alpha-pool ownership or vtable emission.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include "r_lucent75.h"
 
 // TEMPLATE: GAMEMD 0x497B80

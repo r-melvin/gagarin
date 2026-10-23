@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: GPL-3.0-or-later */
 /* Provenance: vendored-third-party (LZO 1.00, GPL-2.0-or-later, third_party/lzo/) + own-binary-via-Ghidra */
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /D__LZO_ENTRY= /U_M_IX86 /Dlzo_moff_t=lzo_ptrdiff_t /Dlzo_cmoff_t=lzo_ptrdiff_t /I../../../third_party/lzo/lzo-1.00/include
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /D__LZO_ENTRY= /U_M_IX86 /Dlzo_moff_t=lzo_ptrdiff_t /Dlzo_cmoff_t=lzo_ptrdiff_t /I../../../third_party/lzo/lzo-1.00/include
 //   Build wrapper for the vendored LZO 1.00 LZO1X-1 sources. The sources are
 //   included unmodified; every configuration difference from upstream is a
 //   flag on the line above (see third_party/lzo/MODIFICATIONS):

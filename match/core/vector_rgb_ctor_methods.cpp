@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass over RGBClass (3-byte elements, user-declared
 // default constructor that zeroes the three bytes). The body is the DynamicVectorClass constructor
 // taking a capacity and optional storage, with the VectorClass constructor expanded inline.

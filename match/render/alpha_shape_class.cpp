@@ -5,7 +5,7 @@
 // run-time initialisers, the constructors and destructor, the expiry sweep
 // and the primary-table slots 5, 8, 10, 11, 12 and 13, in retail address
 // order. AlphaShapeClass is declared in _layout/alpha_shape_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the scalar deleting destructor 0x421730 expands the destructor.
 
 #include <new.h>

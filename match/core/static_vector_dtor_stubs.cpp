@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //
 // File-scope DynamicVectorClass<T> objects whose exit-time destructors were
 // emitted as stand-alone stubs: each stub restores the VectorClass<T> vtable,

@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // No /GX: no retail body of this class has an exception frame (the _com_ptr_t
 // conversions at 0x4B62C0 / 0x4B64E0 are compiled with their throw paths as
 // plain calls to _com_issue_error).

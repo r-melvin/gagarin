@@ -6,7 +6,7 @@
 // generated run-time initialiser (and, for objects with destructors, the
 // cleanup callback it registers through atexit 0x7C978A), in retail __xc order
 // (0x8131C4..0x813320). The unit's other globals are not defined here yet.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <objbase.h>
 #include "../_rt/gg_static_assert.h"

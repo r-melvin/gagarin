@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x829AF0 and 0x829B28 identify
 // VectorClass<LightSourceClass*> and DynamicVectorClass<LightSourceClass*>; the latter's
 // CHD names the former as its zero-offset base.

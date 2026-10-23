@@ -7,7 +7,7 @@
 // identity are in blitter.h and blit_plain.h. This TU makes no table/G-body
 // emission claim.
 // Paired /GX and no-/GX probes match all eight bodies and relocation fields.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 #include <string.h>
 #include "blit_plain.h"
 

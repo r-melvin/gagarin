@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 // Entry-origin retail spans establish pool initialization, field widths,
 // virtual cleanup dispatch and vector destruction. /Ob2 preserves the retail
 // inline copies while the ordinary functions each have one out-of-line definition.

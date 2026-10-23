@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI names VectorClass/DynamicVectorClass over tagCONNECTDATA, FoggedObjectClass::DrawRecord,
 // DiskID and WorldDominationTour::Centroid. Layouts are binary-confirmed placeholders.
 #include "vector_class_operations.h"

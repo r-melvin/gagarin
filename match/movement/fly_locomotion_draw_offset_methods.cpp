@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   Measured: the holder is a scope object whose destructor is the release,
 //   and under /GX cl wraps the scope in an unwind frame retail has
 //   no trace of (0% against a body that is otherwise instruction-for-

@@ -8,7 +8,7 @@
 // _layout/script_type_class.h.
 // LIBRARY: GAMEMD 0x7C8EF4 -- sprintf; GAMEMD 0x7C8D20 -- _strcmpi;
 // GAMEMD 0x7C8B3D -- operator delete.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the constructors and destructors expand the registry vector bodies.
 
 #include <new.h>

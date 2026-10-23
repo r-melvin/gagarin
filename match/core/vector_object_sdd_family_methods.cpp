@@ -9,7 +9,7 @@
 //   two CALL displacements to the CRT free; everything else is identical, so
 //   the body is written once as a macro. Ordered ascending by retail address.
 //
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   This TU must be compiled WITHOUT /GX, which is now the project default
 //   as well. With /GX on, cl declines to inline the vector destructor iterator and
 //   emits an out-of-line call instead; with it off it inlines retail's exact

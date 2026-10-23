@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Retail RTTI TypeDescriptors 0x00822FD0 and 0x00823000 identify
 // VectorClass<TubeClass*> and DynamicVectorClass<TubeClass*>; COLs 0x00800F20
 // and 0x00800EF0 point at them, and the dynamic hierarchy (CHD 0x00800EE0,

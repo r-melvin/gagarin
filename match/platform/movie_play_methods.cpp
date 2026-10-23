@@ -4,7 +4,7 @@
 //   disassembly from each entry) in the retail block 0x5BED20..0x5BF5BF: the
 //   movie playback entry points. Play_Movie is named by its own debug string
 //   at 0x82D9B4 ("Play_Movie() as Bink!\n"); everything else is a placeholder.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // /Ob2: the two sound/pause helpers 0x5BF530 and 0x5BF580 are called from
 // other units yet expanded inside 0x5BF180 and 0x5BF450, and 0x5BF2B0 is
 // expanded inside 0x5BF390: out-of-line bodies inlined automatically.

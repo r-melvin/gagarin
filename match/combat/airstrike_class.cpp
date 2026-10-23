@@ -6,7 +6,7 @@
 // destructor, two small state helpers and the primary-table slots 5, 8, 11, 12
 // and 23, in retail address order. AirstrikeClass is declared in
 // airstrike_class_methods.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <new.h>
 #include "airstrike_class_methods.h"

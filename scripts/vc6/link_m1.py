@@ -49,10 +49,8 @@ def library_order(bink):
 # references every ordered entry so the layout survives /OPT:REF. /OPT:NOICF:
 # retail keeps identical bodies at separate addresses (one destructor body
 # sits at three), and folding would merge the equal-sized 0xCC stubs.
-# /NODEFAULTLIB:LIBC: the objects request LIBC (no /MT) while retail links
-# LIBCMT; see crt_flag_check.py for the /MT proposal.
 LINK_FLAGS = ["/NOLOGO", "/SUBSYSTEM:WINDOWS", "/FIXED", "/BASE:0x400000", "/INCREMENTAL:NO",
-              "/OPT:REF", "/OPT:NOICF", "/NODEFAULTLIB:LIBC", "/MACHINE:IX86"]
+              "/OPT:REF", "/OPT:NOICF", "/MACHINE:IX86"]
 MAX_ROUNDS = 4
 
 

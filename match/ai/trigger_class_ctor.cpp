@@ -6,7 +6,7 @@
 // appends this pointer to the vector-shaped regions at 0xB0F670, 0xB0F708 and
 // 0xA8EAE8; and reads the trigger-type bytes +0x9C..+0x9F and scenario mode
 // +0x60C. The addresses and offsets below are taken from those instructions.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // /GX adds exception-cleanup code around ResetTimers/vector append calls that
 // is absent from retail. The scenario mode is read through the global at
 // each test rather than through a local: with a local, cl threads the failed

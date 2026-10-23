@@ -7,7 +7,7 @@
 // condition tests, the scenario list reader, the INI slots 25 and 26, the
 // pointer setters and the size/kind slots, in retail address order.
 // AITriggerTypeClass is declared in _layout/ai_trigger_type_class.h.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 //   /Ob2: the scalar deleting destructor 0x41FFF0 expands the destructor.
 
 #include <new.h>

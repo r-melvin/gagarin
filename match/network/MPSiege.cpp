@@ -3,7 +3,7 @@
 //   Original translation unit MPSiege.cpp. The name is the source-file string at 0x82ff2c
 //   in retail gamemd.exe v1.001, passed by the assert at 0x5ca726 inside this object's
 //   code range (0x5ca420-0x5cac1f). Functions are in ascending retail address order.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 //   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.

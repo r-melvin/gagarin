@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Frozen milestone flag set: /O2 /DNDEBUG /Gy without /GX.
 // Provenance: own-binary-via-Ghidra. DSurface slot +0x90 (0x4BF750, DSurface-only): a clipped line on a 16-bit
 // surface whose colour is blended between two 3-byte colours; the blend factor ping-pongs in [0,1] by a step.

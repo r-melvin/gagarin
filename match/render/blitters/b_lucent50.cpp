@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra; frozen milestone-2 b-lucent50 method bodies.
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Method-only source subset for the eight BlitTransLucent50 leaves, unsigned short only.
 // The 32 methods are in ascending retail-address order. This source does not claim
 // constructors, deleting destructors, vtables, or alpha-pool ownership.

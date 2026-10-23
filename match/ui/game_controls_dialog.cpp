@@ -6,7 +6,7 @@
 // apply 0x4E1DE0, dialog procedure 0x4E1FE0), a command handler 0x4E23C0 and
 // the unit's last initialiser 0x4E2440, in retail address order. The string
 // 0x82280C ("GameControls: GameSpeed = %d, ...") names the dialog.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 
 #include <windows.h>
 #include "game_options_class_methods.h"

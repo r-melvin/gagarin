@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | RTTI
 // Entry-origin retail destructor spans confirm the two address-release loops,
 // shared shutdown/base destructor calls, and vector-member destruction.
-// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /Ob2 /DNDEBUG /Gy /MT
 #include <new>
 #include "udp_interface_class.h"
 

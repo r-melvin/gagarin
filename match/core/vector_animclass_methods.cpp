@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 // Raw PBVAnimClass RTTI identifies const pointer elements and the
 // DynamicVectorClass -> VectorClass zero-offset base chain.
 // Complete entry-origin spans establish all bound methods. GX emits shorter

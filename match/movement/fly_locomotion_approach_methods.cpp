@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
 //   Measured, exactly as in fly_locomotion_draw_offset_methods.cpp: the
 //   queried interface is held by a scope object whose destructor is the
 //   release, and under /GX cl wraps the scope in an unwind frame
