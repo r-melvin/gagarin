@@ -51,8 +51,8 @@ public:
     virtual int  DeleteFile();                                     // slot 4  (+0x10)
     virtual bool Exists(bool writeShared);                         // slot 5  (+0x14)
     virtual bool HasHandle();                                      // slot 6  (+0x18)
-    virtual bool Open(FileAccessMode access);                      // slot 7  (+0x1C)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a);  // slot 8  (+0x20)
+    virtual int Open(FileAccessMode access);                      // slot 7  (+0x1C)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a);  // slot 8  (+0x20)
     virtual int  ReadBytes(void* pBuffer, int nBytes);             // slot 9  (+0x24)
     virtual int  Seek(int offset, int mode);                       // slot 10 (+0x28)
     virtual int  GetFileSize();                                    // slot 11 (+0x2C)
@@ -98,7 +98,7 @@ class BufferIOFileClass : public RawFileClass
 {
 public:
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x431E80 (decl; reloc)
-    virtual bool Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; reloc)
+    virtual int Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; reloc)
     virtual void Close();                                         // GAMEMD 0x4325C0 (decl; reloc)
 
     bool unknown_bool_24;   // +0x24
@@ -129,7 +129,7 @@ public:
 class CDFileClass : public BufferIOFileClass
 {
 public:
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x47AF10 (matched here)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x47AF10 (matched here)
 
     bool IsDisabled;        // +0x54
 private:

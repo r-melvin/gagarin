@@ -31,34 +31,3 @@ void FUN_00428DE0(Obj_00428DE0* self)
     }
 }
 
-// FUNCTION: GAMEMD 0x432610
-void* Obj_00432610::FUN_00432610(char flags)
-{
-    void* block = Block;
-
-    Vtable = &VT_007E3A2C;
-
-    if (block) {
-        if (Owned) {
-            FUN_007C8B3D(block);
-
-            Owned = 0;
-        }
-
-        Block = 0;
-    }
-
-    field_34 = 0;
-    field_25 = 0;
-    field_27 = 0;
-    field_28 = 0;
-    field_29 = 0;
-
-    FUN_0065CA00(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}

@@ -702,6 +702,7 @@ void Obj_00407F80::FUN_00407A90()
     delete unknown_7C;
     FUN_007C8B3D(this);
 }
+// The shared file Open interface returns int; this routine remains partial.
 // FUNCTION: GAMEMD 0x407B60
 int __fastcall Obj_00407F80::FUN_00407B60(const char* name, int mode)
 {

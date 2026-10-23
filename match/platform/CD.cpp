@@ -801,7 +801,7 @@ bool __stdcall CDDriveControl::FUN_0047a6f0(CDDriveControl* self, HANDLE device,
 // buffered-IO base. This cannot become a tail jump:
 // the callee is __thiscall and pops its own argument, so the caller still owes
 // its own RET 4.
-bool CDFileClass::Open(FileAccessMode access)
+int CDFileClass::Open(FileAccessMode access)
 {
     return BufferIOFileClass::Open(access);
 }

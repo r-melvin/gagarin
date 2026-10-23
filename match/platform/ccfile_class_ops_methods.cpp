@@ -28,7 +28,7 @@
 // and the request is read-only (access != write/2), the name is set virtually so
 // a derived override can intercept; otherwise the buffered-file name is set
 // directly. Either way the open forwards to BufferIOFileClass::Open.
-bool CDFileClass::OpenEx(const char* pFileName, FileAccessMode access)
+int CDFileClass::OpenEx(const char* pFileName, FileAccessMode access)
 {
     this->BufferIOFileClass::Close();
     if (pFileName == 0) {

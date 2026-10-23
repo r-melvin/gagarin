@@ -11,17 +11,4 @@
 
 #include "ccfile_class_close2_methods.h"
 
-// FUNCTION: GAMEMD 0x65CCA0  (__thiscall)
-// RawFileClass::Close — when the file holds an OS handle, close it; on a
-// CloseHandle failure forward GetLastError() + the file name to CDCheck. The
-// handle field is then poisoned to -1 regardless of the close result.
-void RawFileClass::Close()
-{
-    if (this->HasHandle()) {
-        BOOL result = CloseHandle(this->Handle);
-        if (result == 0) {
-            this->CDCheck(GetLastError(), result, this->FileName);
-        }
-        this->Handle = (HANDLE)-1;
-    }
-}
+// The canonical RawFile close body is in ccfile_class_open_methods.cpp.

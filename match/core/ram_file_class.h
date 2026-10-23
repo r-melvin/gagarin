@@ -28,9 +28,7 @@
 //   6  0x65C330 HasHandle              15  0x65C580 SetFileTime
 //   7  0x65C350 Open(rights)         16  0x65C590 Error
 //   8  0x65C340 Open(name, rights)
-// Slot 7 is the one-argument Open and slot 8 forwards to it through slot 7
-// (`CALL dword ptr [EAX+0x1C]`), which is MSVC's reverse ordering of an
-// overload set: the two Opens are declared name-first below and land that way.
+// Slots7/8 are Open/OpenEx;65C340 calls slot7 at+1C.
 //
 // Return widths are taken off the exit instructions, not off any signature:
 // Create/Delete/Open leave a dword (`MOV EAX,1` / `XOR EAX,EAX`), while
@@ -64,55 +62,7 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 extern "C" void  __cdecl FUN_007C8B3D(void* block);
 extern "C" void* __cdecl FUN_007CA090(void* dest, const void* src, unsigned int count);
 
-// The two vtables, declared as bare external symbols so the hand-written
-// deleting destructor can seat them itself. cl 8804 never expands an explicit
-// `p->~T()` call, so the destructor retail has inlined into that thunk cannot
-// be reached through the destructor; storing the vptr directly emits the same
-// `MOV dword ptr [ESI],<reloc>` and the differ normalises the relocation.
-// VTABLE: GAMEMD 0x7F0874   RAMFileClass
-// VTABLE: GAMEMD 0x7F08BC   FileClass
-extern "C" char GG_VTABLE_RAMFILECLASS_7F0874;
-extern "C" char GG_VTABLE_FILECLASS_7F08BC;
-
-// The abstract file interface. It carries one byte at +4: the RAMFileClass
-// constructor stores DL (zero) there ahead of every derived member store, which is the base constructor
-// inlined, so the byte belongs to the base and is zero-initialised.
-class FileClass
-{
-public:
-    // Both are defined in-class: retail has no standalone body for either, so
-    // they exist only to be inlined into the derived constructor and destructor.
-    FileClass() : unknown_04(0) {}
-    ~FileClass() throw() {}
-
-    // Slot 0 of both vtables is the scalar deleting destructor. It is modelled
-    // as an ordinary virtual holding the hand-written thunk rather than as a
-    // `virtual ~FileClass()`: cl 8804 always calls the destructor out of line
-    // from its own `??_G`, where retail has it expanded, and a non-virtual
-    // destructor is one cl will expand. The slot is occupied either way, so
-    // every `CALL dword ptr [EAX+n]` below keeps retail's index.
-    // FUNCTION: GAMEMD 0x65C610
-    virtual void* DeletingDtor(unsigned int flags);
-
-    virtual const char* GetFileName() const = 0;
-    virtual const char* SetFileName(const char* filename) = 0;
-    virtual int CreateFile() = 0;
-    virtual int DeleteFile() = 0;
-    virtual bool Exists(int forced) = 0;
-    virtual bool HasHandle() const = 0;
-    virtual int Open(int rights) = 0;
-    virtual int OpenEx(const char* filename, int rights) = 0;
-    virtual long ReadBytes(void* buffer, long size) = 0;
-    virtual long Seek(long pos, int dir) = 0;
-    virtual long GetFileSize() = 0;
-    virtual long WriteBytes(const void* buffer, long size) = 0;
-    virtual void Close() = 0;
-    virtual unsigned long GetFileTime();
-    virtual bool SetFileTime(unsigned long datetime);
-    virtual void CDCheck(int error, int retry, const char* filename) = 0;
-
-    unsigned char unknown_04;   // +0x04  zeroed by the base constructor
-};
+#include "../platform/ccfile_class.h"
 
 class RAMFileClass : public FileClass
 {
@@ -122,23 +72,22 @@ public:
     // FUNCTION: GAMEMD 0x65C2A0
     ~RAMFileClass() throw();
 
-    virtual void* DeletingDtor(unsigned int flags);
     virtual const char* GetFileName() const;
     virtual const char* SetFileName(const char* filename);
     virtual int CreateFile();
     virtual int DeleteFile();
-    virtual bool Exists(int forced);
-    virtual bool HasHandle() const;
-    virtual int Open(int rights);
-    virtual int OpenEx(const char* filename, int rights);
-    virtual long ReadBytes(void* buffer, long size);
-    virtual long Seek(long pos, int dir);
-    virtual long GetFileSize();
-    virtual long WriteBytes(const void* buffer, long size);
+    virtual bool Exists(bool forced);
+    virtual bool HasHandle();
+    virtual int Open(FileAccessMode rights);
+    virtual int OpenEx(const char* filename, FileAccessMode rights);
+    virtual int ReadBytes(void* buffer, int size);
+    virtual int Seek(int pos, int dir);
+    virtual int GetFileSize();
+    virtual int WriteBytes(void* buffer, int size);
     virtual void Close();
     virtual unsigned long GetFileTime();
     virtual bool SetFileTime(unsigned long datetime);
-    virtual void CDCheck(int error, int retry, const char* filename);
+    virtual void CDCheck(unsigned long error, bool retry, const char* filename);
 
     char* Buffer;         // +0x08  the block the "file" lives in
     int   MaxLength;      // +0x0C  capacity of that block
@@ -154,7 +103,7 @@ public:
 // [ESI+0x14], one to [ESI+0x18] and zero bytes to [ESI+0x1C] and [ESI+0x1D];
 // HasHandle is `MOV AL,byte ptr [ECX+0x1C]`; Size is `MOV EAX,[ECX+0x10]`; Seek
 // reads MaxLength from [ESI+0xC]; the destructor tests [ESI+0x1D].
-GG_STATIC_ASSERT(offsetof(FileClass, unknown_04) == 0x04 &&
+GG_STATIC_ASSERT(offsetof(FileClass, SkipCDCheck) == 0x04 &&
                  sizeof(FileClass) == 0x08);
 GG_STATIC_ASSERT(offsetof(RAMFileClass, Buffer) == 0x08 &&
                  offsetof(RAMFileClass, MaxLength) == 0x0C &&

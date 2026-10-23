@@ -1,3 +1,5 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
+// Expand real BufferIO teardown in the native deleting destructor.
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x431B80.
@@ -15,21 +17,20 @@
 // tested inside the non-null branch rather than alongside it.
 BufferIOFileClass::~BufferIOFileClass()
 {
-    if (Buffer) {
-        if (IsAllocated) {
-            FUN_007C8B3D(Buffer);
-            IsAllocated = 0;
+    if (unknown_30) {
+        if (unknown_bool_24) {
+            FUN_007C8B3D(unknown_30);
+            unknown_bool_24 = 0;
         }
-        Buffer = 0;
+        unknown_30 = 0;
     }
 
-    BufferSize = 0;
-    unknown_25 = 0;
-    unknown_27 = 0;
-    unknown_28 = 0;
-    unknown_29 = 0;
+    unknown_34 = 0;
+    unknown_bool_25 = 0;
+    unknown_bool_27 = 0;
+    unknown_bool_28 = 0;
+    unknown_bool_29 = 0;
 
-    ((RawFileClassBase*)this)->FUN_0065CA00();
 }
 
 // FUNCTION: GAMEMD 0x431D90
@@ -38,17 +39,20 @@ BufferIOFileClass::~BufferIOFileClass()
 // on the layout - which is the cross-check that makes both trustworthy.
 void BufferIOFileClass::FUN_00431D90()
 {
-    if (Buffer) {
-        if (IsAllocated) {
-            FUN_007C8B3D(Buffer);
-            IsAllocated = 0;
+    if (unknown_30) {
+        if (unknown_bool_24) {
+            FUN_007C8B3D(unknown_30);
+            unknown_bool_24 = 0;
         }
-        Buffer = 0;
+        unknown_30 = 0;
     }
 
-    BufferSize = 0;
-    unknown_25 = 0;
-    unknown_27 = 0;
-    unknown_28 = 0;
-    unknown_29 = 0;
+    unknown_34 = 0;
+    unknown_bool_25 = 0;
+    unknown_bool_27 = 0;
+    unknown_bool_28 = 0;
+    unknown_bool_29 = 0;
 }
+
+// SYNTHETIC: GAMEMD 0x432610
+// BufferIOFileClass scalar deleting destructor is compiler-generated.

@@ -24,6 +24,13 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/memory_buffer.h"
+// Keep Win32 generic API macros from renaming the virtual members.
+#ifdef CreateFile
+#undef CreateFile
+#endif
+#ifdef DeleteFile
+#undef DeleteFile
+#endif
 
 // FileAccessMode is an unsigned-int flag enum in YRpp; modelled as a 4-byte
 // scalar here (the only property the matched code uses is its 32-bit width).
@@ -35,35 +42,40 @@ typedef unsigned int FileAccessMode;
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// FileClass — abstract base. Virtuals declared in exact retail vtable order so
+// FileClass — abstract base. Native tables7F08BC/7F0904 pin17slots.
+// Open/OpenEx return a full int (RawFile65CB6A XOR EAX,EAX).
+// Runtime pure slots share4C9150; no runtime body is recovered here.
+// Virtuals declared in exact retail vtable order so
 // SetFileName lands at slot +0x08 and Open at slot +0x1C. Only the slots the
 // matched code dispatches through are load-bearing; the rest pin their indices.
 // ---------------------------------------------------------------------------
 class FileClass
 {
 public:
-    virtual ~FileClass();                                          // slot 0  (+0x00)
-    virtual const char* GetFileName() const;                       // slot 1  (+0x04)
-    virtual const char* SetFileName(const char* pFileName);        // slot 2  (+0x08)
-    virtual int  CreateFile();                                     // slot 3  (+0x0C)
-    virtual int  DeleteFile();                                     // slot 4  (+0x10)
-    virtual bool Exists(bool writeShared);                         // slot 5  (+0x14)
-    virtual bool HasHandle();                                      // slot 6  (+0x18)
-    virtual bool Open(FileAccessMode access);                      // slot 7  (+0x1C)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a);  // slot 8  (+0x20)
-    virtual int  ReadBytes(void* pBuffer, int nBytes);            // slot 9  (+0x24)
-    virtual int  Seek(int offset, int mode);                       // slot 10 (+0x28)
-    virtual int  GetFileSize();                                    // slot 11 (+0x2C)
-    virtual int  WriteBytes(void* pBuffer, int nBytes);           // slot 12 (+0x30)
-    virtual void Close();                                          // slot 13 (+0x34)
+    FileClass() : SkipCDCheck(false) {}
+    virtual ~FileClass() {}                                          // slot 0  (+0x00)
+    virtual const char* GetFileName() const = 0;                       // slot 1  (+0x04)
+    virtual const char* SetFileName(const char* pFileName) = 0;        // slot 2  (+0x08)
+    virtual int  CreateFile() = 0;                                     // slot 3  (+0x0C)
+    virtual int  DeleteFile() = 0;                                     // slot 4  (+0x10)
+    virtual bool Exists(bool writeShared) = 0;                         // slot 5  (+0x14)
+    virtual bool HasHandle() = 0;                                      // slot 6  (+0x18)
+    virtual int Open(FileAccessMode access) = 0;                      // slot 7  (+0x1C)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a) = 0;  // slot 8  (+0x20)
+    virtual int  ReadBytes(void* pBuffer, int nBytes) = 0;            // slot 9  (+0x24)
+    virtual int  Seek(int offset, int mode) = 0;                       // slot 10 (+0x28)
+    virtual int  GetFileSize() = 0;                                    // slot 11 (+0x2C)
+    virtual int  WriteBytes(void* pBuffer, int nBytes) = 0;           // slot 12 (+0x30)
+    virtual void Close() = 0;                                          // slot 13 (+0x34)
     virtual unsigned long GetFileTime();                           // slot 14
     virtual bool SetFileTime(unsigned long fileTime);             // slot 15
-    virtual void CDCheck(unsigned long code, bool b, const char* f);// slot 16
+    virtual void CDCheck(unsigned long code, bool b, const char* f) = 0;// slot 16
 
     bool SkipCDCheck;     // +0x04
 private:
     char padding_5[3];    // +0x05
 };
+
 
 // ---------------------------------------------------------------------------
 // RawFileClass — a real file in the game directory.
@@ -75,10 +87,19 @@ public:
     virtual ~RawFileClass(); // GAMEMD 0x65CA00
 
     virtual const char* GetFileName() const;   // GAMEMD 0x401940 (matched here)
+    virtual const char* SetFileName(const char* name); // 0x65CAC0
+    virtual int CreateFile(); // 0x65D150
+    virtual int DeleteFile(); // 0x65D190
+    virtual int Open(FileAccessMode access); // 0x65CB50
+    virtual int ReadBytes(void* buffer, int size); // 0x65CCE0
+    virtual int Seek(int offset, int mode); // 0x65CF00
+    virtual int WriteBytes(void* buffer, int size); // 0x65CDD0
+    virtual void Close(); // 0x65CCA0
+    void Bias(int offset, int length); // 0x65D2B0
     virtual bool Exists(bool writeShared);      // GAMEMD 0x65CBF0 (decl; base call)
     virtual int  GetFileSize();                 // GAMEMD 0x65D0D0 (decl; base call)
     virtual bool HasHandle();                   // GAMEMD 0x65D420 (matched)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x65CB30 (matched)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x65CB30 (matched)
     virtual void CDCheck(unsigned long code, bool b, const char* f); // GAMEMD 0x65CA70 (matched)
 
     // Slots 14/15 retain RawFile implementations in CDFile table 0x7E1668.
@@ -103,10 +124,13 @@ private:
 class BufferIOFileClass : public RawFileClass
 {
 public:
+    virtual const char* SetFileName(const char* name); // 0x431E80, slot2
+
+    void FUN_00431D90(); // 0x431D90, release/reset the buffer
     virtual ~BufferIOFileClass();                                 // GAMEMD 0x431B80 (decl; reloc)
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x431F10 (matched)
-    virtual bool Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; base call)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x431F50 (matched)
+    virtual int Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; base call)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x431F50 (matched)
     virtual int  GetFileSize();                                   // GAMEMD 0x4325A0 (matched)
     virtual void Close();                                         // GAMEMD 0x4325C0 (decl; base call)
 
@@ -126,7 +150,7 @@ private:
     char padding_2A[2];     // +0x2A
 public:
     unsigned int unknown_2C;   // +0x2C
-    unsigned int unknown_30;   // +0x30
+    void* unknown_30;          // +0x30 owned or borrowed buffer
     unsigned int unknown_34;   // +0x34
     unsigned int unknown_38;   // +0x38
     unsigned int unknown_3C;   // +0x3C
@@ -147,10 +171,10 @@ public:
     // Inline and empty: retail seats vtable 0x7E1668 before ~BufferIOFileClass.
     virtual ~CDFileClass() {}
     virtual const char* SetFileName(const char* pFileName); // GAMEMD 0x47AE10 (decl; base call)
-    virtual bool Open(FileAccessMode access);               // GAMEMD 0x47AAB0 (matched)
+    virtual int Open(FileAccessMode access);               // GAMEMD 0x47AAB0 (matched)
 
     // Slot 8 of table 0x7E1668, distinct from BufferIOFileClass::OpenEx.
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x47AF10
+    virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x47AF10
 
     bool IsDisabled;        // +0x54
 private:
@@ -183,8 +207,8 @@ public:
 
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x473C50 (matched)
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x473FC0 (matched)
-    virtual bool Open(FileAccessMode access);                     // GAMEMD 0x473D10 (decl)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x401980 (matched)
+    virtual int Open(FileAccessMode access);                     // GAMEMD 0x473D10 (decl)
+    virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x401980 (matched)
     virtual void Close();                                         // GAMEMD 0x473CE0 (matched)
 
     // Overrides confirmed slot-for-slot from table 0x7E16B0.
@@ -253,6 +277,37 @@ GG_STATIC_ASSERT(offsetof(CCFileClass, Buffer)              == 0x58);
 GG_STATIC_ASSERT(offsetof(CCFileClass, Position)            == 0x64);
 GG_STATIC_ASSERT(offsetof(CCFileClass, Availability)        == 0x68);
 GG_STATIC_ASSERT(offsetof(RawFileClass, Handle)             == 0x14);
+GG_STATIC_ASSERT(sizeof(FileClass) == 8);
+GG_STATIC_ASSERT(offsetof(FileClass, SkipCDCheck) == 4);
+GG_STATIC_ASSERT(sizeof(((FileClass*)0)->SkipCDCheck) == 1);
+GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
+GG_STATIC_ASSERT(sizeof(BufferIOFileClass) == 0x54);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_24) == 0x24);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_27) == 0x27);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_34) == 0x34);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_30) == 4);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_34) == 4);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_24) == 1);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_25) == 1);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_27) == 1);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_28) == 1);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_29) == 1);
+GG_STATIC_ASSERT(offsetof(RawFileClass, FileAccess) == 8);
+GG_STATIC_ASSERT(offsetof(RawFileClass, FilePointer) == 0xC);
+GG_STATIC_ASSERT(offsetof(RawFileClass, FileSize) == 0x10);
+GG_STATIC_ASSERT(offsetof(RawFileClass, unknown_short_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(RawFileClass, unknown_short_1E) == 0x1E);
+GG_STATIC_ASSERT(offsetof(RawFileClass, FileNameAllocated) == 0x20);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->FileAccess) == 4);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->FilePointer) == 4);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->FileSize) == 4);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->Handle) == 4);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->FileName) == 4);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->unknown_short_1C) == 2);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->unknown_short_1E) == 2);
+GG_STATIC_ASSERT(sizeof(((RawFileClass*)0)->FileNameAllocated) == 1);
 #endif
 
 #endif  // GG_MATCH_PLATFORM_CCFILE_CLASS_H

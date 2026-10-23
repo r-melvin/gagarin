@@ -46,7 +46,7 @@ const char* RawFileClass::GetFileName() const
 // CCFileClass::OpenEx — set the name then open. Both dispatched virtually:
 //   this->SetFileName(name)   -> CALL [vtable+0x08]
 //   return this->Open(access) -> CALL [vtable+0x1C]
-bool CCFileClass::OpenEx(const char* pFileName, FileAccessMode access)
+int CCFileClass::OpenEx(const char* pFileName, FileAccessMode access)
 {
     this->SetFileName(pFileName);
     return this->Open(access);
@@ -69,7 +69,7 @@ bool BufferIOFileClass::Exists(bool writeShared)
 // FUNCTION: GAMEMD 0x431F50  (__thiscall)
 // BufferIOFileClass::OpenEx — set the name virtually, then open via the
 // class-qualified (non-virtual, direct CALL) BufferIOFileClass::Open.
-bool BufferIOFileClass::OpenEx(const char* pFileName, FileAccessMode access)
+int BufferIOFileClass::OpenEx(const char* pFileName, FileAccessMode access)
 {
     this->SetFileName(pFileName);
     return this->BufferIOFileClass::Open(access);

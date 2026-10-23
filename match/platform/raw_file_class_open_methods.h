@@ -29,51 +29,6 @@ extern "C" __declspec(dllimport) void* __stdcall CreateFileA(
     void* securityAttributes, unsigned long creationDisposition,
     unsigned long flagsAndAttributes, void* templateFile);
 
-// FileClass — abstract base, virtuals in retail vtable order so Seek lands at
-// +0x28, Close at +0x34 and CDCheck at +0x40.
-class FileClass
-{
-public:
-    virtual ~FileClass();                                          // slot 0  (+0x00)
-    virtual const char* GetFileName() const;                       // slot 1  (+0x04)
-    virtual const char* SetFileName(const char* pFileName);        // slot 2  (+0x08)
-    virtual int  CreateFile();                                     // slot 3  (+0x0C)
-    virtual int  DeleteFile();                                     // slot 4  (+0x10)
-    virtual bool Exists(bool writeShared);                         // slot 5  (+0x14)
-    virtual bool HasHandle();                                      // slot 6  (+0x18)
-    virtual int  Open(FileAccessMode access);                      // slot 7  (+0x1C)
-    virtual bool OpenEx(const char* pFileName, FileAccessMode a);  // slot 8  (+0x20)
-    virtual int  ReadBytes(void* pBuffer, int nBytes);             // slot 9  (+0x24)
-    virtual int  Seek(int offset, int mode);                       // slot 10 (+0x28)
-    virtual int  GetFileSize();                                    // slot 11 (+0x2C)
-    virtual int  WriteBytes(void* pBuffer, int nBytes);            // slot 12 (+0x30)
-    virtual void Close();                                          // slot 13 (+0x34)
-    virtual unsigned long GetFileTime();                           // slot 14 (+0x38)
-    virtual bool SetFileTime(unsigned long fileTime);              // slot 15 (+0x3C)
-    virtual void CDCheck(unsigned long code, bool b, const char* f);// slot 16 (+0x40)
-
-    bool SkipCDCheck;     // +0x04
-private:
-    char padding_5[3];    // +0x05
-};
-
-// RawFileClass — a real file on disk.
-class RawFileClass : public FileClass
-{
-public:
-    // FUNCTION: GAMEMD 0x65CB50
-    virtual int  Open(FileAccessMode access);
-
-    FileAccessMode FileAccess;   // +0x08
-    int   FilePointer;           // +0x0C
-    int   FileSize;              // +0x10
-    void* Handle;                // +0x14
-    const char* FileName;        // +0x18
-};
-GG_STATIC_ASSERT(offsetof(RawFileClass, FileAccess)  == 0x08);
-GG_STATIC_ASSERT(offsetof(RawFileClass, FilePointer) == 0x0C);
-GG_STATIC_ASSERT(offsetof(RawFileClass, FileSize)    == 0x10);
-GG_STATIC_ASSERT(offsetof(RawFileClass, Handle)      == 0x14);
-GG_STATIC_ASSERT(offsetof(RawFileClass, FileName)    == 0x18);
+#include "ccfile_class.h"
 
 #endif  // GG_MATCH_PLATFORM_RAW_FILE_CLASS_OPEN_METHODS_H

@@ -1,3 +1,5 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
+// Native deleting destructors expand both real destructors; all rows gated.
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Every body below was written against the retail disassembly of the user's
@@ -30,15 +32,11 @@ RAMFileClass::RAMFileClass(void* buffer, int len) :
     }
 }
 
-// Closes the pseudo-file and releases the block if this object allocated it.
-// The close is spelled as the flag store rather than as a Close() call: cl 8804
-// devirtualises the call inside the destructor but will not inline a body it
-// has not yet seen, and Close is defined further down the file in retail's
-// address order, so the call survives. Retail has only the store.
+// Close the pseudo-file and release the block when this object owns it.
 // FUNCTION: GAMEMD 0x65C2A0
 RAMFileClass::~RAMFileClass() throw()
 {
-    Opened = false;
+    Close();
     if (IsAllocated) {
         FUN_007C8B3D(Buffer);
         Buffer = 0;
@@ -73,13 +71,13 @@ int RAMFileClass::DeleteFile()
 // A RAM file is always present. The exit is `MOV AL,1`, so the result is one
 // byte wide.
 // FUNCTION: GAMEMD 0x65C320
-bool RAMFileClass::Exists(int)
+bool RAMFileClass::Exists(bool)
 {
     return true;
 }
 
 // FUNCTION: GAMEMD 0x65C330
-bool RAMFileClass::HasHandle() const
+bool RAMFileClass::HasHandle()
 {
     return Opened;
 }
@@ -87,7 +85,7 @@ bool RAMFileClass::HasHandle() const
 // The file has no name, so the name is ignored and this forwards to the
 // one-argument Open through the vtable.
 // FUNCTION: GAMEMD 0x65C340
-int RAMFileClass::OpenEx(const char*, int rights)
+int RAMFileClass::OpenEx(const char*, FileAccessMode rights)
 {
     return Open(rights);
 }
@@ -96,7 +94,7 @@ int RAMFileClass::OpenEx(const char*, int rights)
 // the block was holding. The result is the freshly set open flag read back
 // through the vtable, which is where retail's `AND EAX,0xFF` comes from.
 // FUNCTION: GAMEMD 0x65C350
-int RAMFileClass::Open(int rights)
+int RAMFileClass::Open(FileAccessMode rights)
 {
     if (Buffer == 0 || HasHandle()) {
         return false;
@@ -126,7 +124,7 @@ int RAMFileClass::Open(int rights)
 // is opened for the duration of the call and closed again afterwards, which is
 // what the EBX flag carries; an open file must have been opened for reading.
 // FUNCTION: GAMEMD 0x65C3A0
-long RAMFileClass::ReadBytes(void* buffer, long size)
+int RAMFileClass::ReadBytes(void* buffer, int size)
 {
     if (Buffer == 0 || buffer == 0 || size == 0) {
         return 0;
@@ -158,7 +156,7 @@ long RAMFileClass::ReadBytes(void* buffer, long size)
 // access mode; the position is then clamped into range and may extend the
 // recorded length.
 // FUNCTION: GAMEMD 0x65C420
-long RAMFileClass::Seek(long pos, int dir)
+int RAMFileClass::Seek(int pos, int dir)
 {
     if (Buffer == 0 || !HasHandle()) {
         return Offset;
@@ -194,7 +192,7 @@ long RAMFileClass::Seek(long pos, int dir)
 }
 
 // FUNCTION: GAMEMD 0x65C4A0
-long RAMFileClass::GetFileSize()
+int RAMFileClass::GetFileSize()
 {
     return Length;
 }
@@ -203,7 +201,7 @@ long RAMFileClass::GetFileSize()
 // file is opened for write and closed again, an open one must carry the write
 // bit, and a write past the recorded length extends it.
 // FUNCTION: GAMEMD 0x65C4B0
-long RAMFileClass::WriteBytes(const void* buffer, long size)
+int RAMFileClass::WriteBytes(void* buffer, int size)
 {
     if (Buffer == 0 || buffer == 0 || size == 0) {
         return 0;
@@ -276,36 +274,12 @@ bool RAMFileClass::SetFileTime(unsigned long)
 // There is no error condition a RAM file can report. Three arguments of stack
 // are still taken, which is retail's bare `RET 0xC`.
 // FUNCTION: GAMEMD 0x65C590
-void RAMFileClass::CDCheck(int, int, const char*)
+void RAMFileClass::CDCheck(unsigned long, bool, const char*)
 {
 }
 
-// The scalar deleting destructor for RAMFileClass, hand-written because retail
-// has the whole destructor expanded into the thunk: both vtable seats, the
-// owned-block release and the conditional free of the object itself are one
-// body. The two seats are written as direct vptr stores because cl 8804 never
-// expands an explicit destructor call; the destructor's own out-of-line body at
-// 0x65C2A0 above is the same code.
-// FUNCTION: GAMEMD 0x65C5A0
-void* RAMFileClass::DeletingDtor(unsigned int flags)
-{
-    *(void**)this = (void*)&GG_VTABLE_RAMFILECLASS_7F0874;
-
-    Opened = false;
-    if (IsAllocated) {
-        FUN_007C8B3D(Buffer);
-        Buffer = 0;
-        IsAllocated = false;
-    }
-
-    *(void**)this = (void*)&GG_VTABLE_FILECLASS_7F08BC;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x65C5A0
+// RAMFileClass scalar deleting destructor is compiler-generated.
 
 // The base's default timestamp getter: no date is known.
 // FUNCTION: GAMEMD 0x65C5F0
@@ -322,16 +296,5 @@ bool FileClass::SetFileTime(unsigned long)
     return false;
 }
 
-// The scalar deleting destructor for the abstract base: seat the base vtable,
-// then free the object if asked.
-// FUNCTION: GAMEMD 0x65C610
-void* FileClass::DeletingDtor(unsigned int flags)
-{
-    this->FileClass::~FileClass();
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
+// SYNTHETIC: GAMEMD 0x65C610
+// FileClass scalar deleting destructor is compiler-generated.

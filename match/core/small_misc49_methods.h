@@ -63,38 +63,4 @@ GG_STATIC_ASSERT(offsetof(Obj_00428DE0, Loaded) == 0x35F);
 void FUN_00428DE0(Obj_00428DE0* self);
 
 // ---------------------------------------------------------------------------
-// 0x432610 — deleting destructor.
-//
-// The block at +0x30 is only freed when the ownership byte at +0x24 says it is
-// ours; the pointer itself is cleared whenever it was set, ownership or not.
-// Everything after that - the +0x34 word, four more bytes, and the 0x65CA00
-// teardown - runs unconditionally.
-// ---------------------------------------------------------------------------
-extern char VT_007E3A2C;   // VTABLE: GAMEMD 0x7E3A2C
-
-// FUNCTION: GAMEMD 0x65CA00 — the base teardown, __fastcall.
-void FUN_0065CA00(void* self);
-
-struct Obj_00432610
-{
-    char* Vtable;      // +0x0000
-    char  _pad004[0x24 - 0x04];
-    char  Owned;       // +0x0024
-    char  field_25;    // +0x0025
-    char  _pad026[0x1];
-    char  field_27;    // +0x0027
-    char  field_28;    // +0x0028
-    char  field_29;    // +0x0029
-    char  _pad02A[0x30 - 0x2A];
-    void* Block;       // +0x0030
-    int   field_34;    // +0x0034
-
-    // FUNCTION: GAMEMD 0x432610
-    void* FUN_00432610(char flags);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00432610, Owned) == 0x24);
-GG_STATIC_ASSERT(offsetof(Obj_00432610, field_29) == 0x29);
-GG_STATIC_ASSERT(offsetof(Obj_00432610, Block) == 0x30);
-GG_STATIC_ASSERT(offsetof(Obj_00432610, field_34) == 0x34);
-
 #endif  // GG_MATCH_CORE_SMALL_MISC49_METHODS_H
