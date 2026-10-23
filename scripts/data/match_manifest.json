@@ -98260,9 +98260,9 @@
   "addr": "0x69AC30",
   "sym": "?FUN_0069AC30@MultiMission@@QAE_NH@Z",
   "len": "0x8e",
-  "name": "MultiMission::FUN_0069AC30",
+  "name": "MultiMission disk check",
   "status": "partial",
-  "pct": 50.0
+  "pct": 75.9
  },
  {
   "tu": "match/_rt/purecall_override.cpp",

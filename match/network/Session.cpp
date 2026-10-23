@@ -1309,16 +1309,10 @@ bool MultiMission::FUN_0069AC30(int value)
     if (value == -2) {
         return RawFileClass(unknown_058).Exists(false);
     }
-    int index;
-    for (index = 0; index < unknown_188.GetCount(); ++index) {
-        if (unknown_188[index] == -1)
-            return true;
-    }
-    for (index = 0; index < unknown_188.GetCount(); ++index) {
-        if (unknown_188[index] == value)
-            return true;
-    }
-    return false;
+    // Use the counted-vector implementation directly: native has no virtual search call.
+    if (unknown_188.DynamicVectorClass<DiskID>::FindItemIndex(static_cast<DiskID>(-1)) != -1)
+        return true;
+    return unknown_188.DynamicVectorClass<DiskID>::FindItemIndex(static_cast<DiskID>(value)) != -1;
 }
 
 // FUNCTION: GAMEMD 0x69ACD0
