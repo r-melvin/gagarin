@@ -369,6 +369,8 @@ extern WinsockInterfaceClass* Interface_00887628;
 // 0x663D60 maps a connection id to a byte.
 struct NetIdMapRef
 {
+    // FUNCTION: GAMEMD 0x664610 (decl; 0x684B0A)
+    void FUN_00664610(int timeout, int flag);
     // Declaration: GAMEMD 0x663B40 -- ECX receiver, no arguments, RET.
     void FUN_00663B40();
     // Declaration: GAMEMD 0x663DB0 -- pointer stack argument, boolAL, RET4.

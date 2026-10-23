@@ -96624,5 +96624,14 @@
   "name": "VectorClass<Wstring>::VectorClass",
   "status": "partial",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x684620",
+  "sym": "?FUN_00684620@@YI_NPBD@Z",
+  "len": "0x60D",
+  "name": "?FUN_00684620@@YI_NPBD@Z",
+  "status": "partial",
+  "pct": 31.5
  }
 ]

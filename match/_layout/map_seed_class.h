@@ -16,6 +16,11 @@
 class MapSeedClass : public LoadOptionsClass
 {
 public:
+    // External ABI at the +0 MapSeedClass prefix of global0xABDFD8.
+    // 0x58B740 calls0x595740, whose first base constructor is0x595680.
+    // The complete derived global's identity and extent remain unclaimed.
+    bool FUN_00597A10(const char* filename); // FUNCTION: GAMEMD 0x597A10 (decl; RET4)
+    void FUN_00598960(int value, void* window); // FUNCTION: GAMEMD 0x598960 (decl; RET8)
     // 0  0x5AC270: deleting destructor; no destructor of its own is attested (calls the base destructor 0x558790 directly)
     virtual bool Slot1(char const *);                           // 1  0x597A30: override of LoadOptionsClass
     virtual bool Slot2(char const *, unsigned short const *);   // 2  0x597760: override of LoadOptionsClass

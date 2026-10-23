@@ -440,6 +440,7 @@ public:
     // FUNCTION: GAMEMD 0x50D2D0 (decl; reloc)
     void FUN_0050D2D0(HouseClass* other);
     // FUNCTION: GAMEMD 0x50D6D0 (decl; reloc) -- takes a cell by value.
+    void FUN_0050D610(); // FUNCTION: GAMEMD 0x50D610 (decl; primary RET at0x50D6C1)
     void FUN_0050D6D0(CellStruct cell);
     // FUNCTION: GAMEMD 0x50DA00 (decl; reloc) -- takes a cell by value.
     void FUN_0050DA00(CellStruct cell);

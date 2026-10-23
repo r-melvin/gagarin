@@ -65,6 +65,49 @@
 #include "trivial_tu207_methods.h"
 #include "../ui/game_options_class_methods.h"
 
+#include "../_layout/load_progress_mgr.h"
+#include "../_layout/dialog_005d3490.h"
+#include "../network/transport/winsock_interface_class.h"
+#include "../ui/message_list_class_methods.h"
+#include "../_layout/map_seed_class.h"
+extern char DAT_00ABDFD8[]; // GLOBAL: GAMEMD 0xABDFD8
+
+
+// Each operand below is read from entry0x684620 primary assembly.
+struct PaletteClass;
+LoadProgressMgr* __fastcall FUN_00552A40(); // FUNCTION: GAMEMD 0x552A40 (decl)
+void __fastcall FUN_00552AA0(); // FUNCTION: GAMEMD 0x552AA0 (decl; RET, no incoming args read)
+void __fastcall FUN_004A3C30(PaletteClass* palette, int duration, void (__fastcall* callback)()); // FUNCTION: GAMEMD 0x4A3C30 (decl)
+int __fastcall FUN_0072B380(); // FUNCTION: GAMEMD 0x72B380 (decl)
+int __cdecl sprintf(char* out, const char* format, ...); // LIBRARY: GAMEMD 0x7C8EF4
+int __cdecl swprintf(wchar_t* out, const wchar_t* format, ...); // LIBRARY: GAMEMD 0x7CA564
+bool __fastcall FUN_00686730(const char* filename); // FUNCTION: GAMEMD 0x686730 (decl)
+void __fastcall FUN_00686890(bool flag); // FUNCTION: GAMEMD 0x686890 (decl)
+void __fastcall FUN_00684C30(); // FUNCTION: GAMEMD 0x684C30 (decl)
+extern int DAT_00B779C4; // GLOBAL: GAMEMD 0xB779C4
+extern int DAT_00B779D4; // GLOBAL: GAMEMD 0xB779D4
+extern unsigned short Ports_00A8E2B2[]; // GLOBAL: GAMEMD 0xA8E2B2
+extern bool DAT_00A8B8C1; // GLOBAL: GAMEMD 0xA8B8C1
+extern bool DAT_00A8B8C2; // GLOBAL: GAMEMD 0xA8B8C2
+extern XYWHStruct DAT_00886FA0; // GLOBAL: GAMEMD 0x886FA0
+extern MessageListClass ScenarioMessageList_00A8BC60; // GLOBAL: GAMEMD 0xA8BC60
+extern PaletteClass DAT_00885780; // GLOBAL: GAMEMD 0x885780
+extern const char STR_0083DA88[]; // STRING: GAMEMD 0x83DA88
+extern const char STR_0083DA70[]; // STRING: GAMEMD 0x83DA70
+extern const char STR_0083DA58[]; // STRING: GAMEMD 0x83DA58
+extern const char STR_0083DA4C[]; // STRING: GAMEMD 0x83DA4C
+extern const char STR_0083DA40[]; // STRING: GAMEMD 0x83DA40
+extern const char STR_0083DA30[]; // STRING: GAMEMD 0x83DA30
+extern const char STR_0083DA08[]; // STRING: GAMEMD 0x83DA08
+extern const char STR_0083D9FC[]; // STRING: GAMEMD 0x83D9FC
+extern const char STR_0083D9DC[]; // STRING: GAMEMD 0x83D9DC
+extern const char STR_0083D9B4[]; // STRING: GAMEMD 0x83D9B4
+extern const char STR_00825FB0[]; // STRING: GAMEMD 0x825FB0
+extern const char STR_00831AF0[]; // STRING: GAMEMD 0x831AF0
+GG_STATIC_ASSERT(offsetof(Point2D, X) == 0);
+GG_STATIC_ASSERT(offsetof(Point2D, Y) == 4);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, SideIndex) == 0xBC);
+
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
 extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
 extern int HouseClass_ArrayCount; // GLOBAL: GAMEMD 0x00A80238
@@ -1004,6 +1047,124 @@ bool __fastcall FUN_00684370()
             Session_00A8B238.FUN_0069AE90(ScenarioInstance->unknown_34BD ? 200 : 100);
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x684620
+bool __fastcall FUN_00684620(const char* filename)
+{
+    char scenario[260];
+    strcpy(scenario, filename);
+    CurrentFrame = 0;
+    ScenarioInstance->unknown_3598 = true;
+    ++DAT_00A8E7AC;
+    ScenarioInstance->unknown_34BD = _stricmp(scenario + strlen(scenario) - 4, STR_0083DA88) == 0;
+    FUN_004068E0(ScenarioInstance->unknown_34BD ? STR_0083DA70 : STR_0083DA58);
+    LoadProgressMgr* manager = 0;
+    if (!DAT_00A8ED6B) {
+        int players = 1;
+        if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5)
+            players = PlayerCount_00A8DA84;
+        DAT_00AC4F58.FUN_00642A60(100.0, players, 0);
+        wchar_t caption[132];
+        const wchar_t* captionText = 0;
+        if (Session_00A8B238.GameMode == 4 && DAT_00B779C4) {
+            swprintf(caption, FUN_00734E60(STR_0083DA4C, 0, STR_0083D838, 0x4AF), DAT_00B779D4);
+            captionText = caption;
+        }
+        manager = FUN_00552A40();
+        manager->FUN_00552B10();
+        DAT_00AC4F58.FUN_00643E80(manager);
+        int side = 0;
+        if (Session_00A8B238.GameMode == 0) {
+            if (ScenarioInstance->unknown_34CC != -1)
+                side = CampaignArray.Items[ScenarioInstance->unknown_34CC]->idxCD;
+        } else {
+            int country = Players_00A8DA78[0]->unknown_4B;
+            if (country == -3) country = 0;
+            side = DAT_00A83C9C[country]->SideIndex;
+        }
+        ScenarioInstance->unknown_34B8 = side;
+        DAT_00AC4F58.FUN_00642B10(side);
+        FUN_00552A40()->FUN_00552CC0();
+        if (Session_00A8B238.GameMode == 0)
+            DAT_00AC4F58.FUN_00642C20(STR_0083DA40, 0, FUN_0072B380());
+        else
+            DAT_00AC4F58.FUN_00642C20(STR_0083DA30, 0, 0);
+        Point2D position;
+        Point2D* point = manager->FUN_00552BE0(&position);
+        bool multiplayer = Session_00A8B238.GameMode != 0;
+        DAT_00AC4F58.FUN_00642C80(point->X, point->Y, captionText, multiplayer, multiplayer);
+        DAT_00AC4F58.FUN_00642DF0(manager->FUN_00552C90());
+        if (Interface_00887628 && Session_00A8B238.GameMode == 4 && PlayerCount_00A8DA84 > 1) {
+            FUN_004068E0(STR_0083DA08);
+            Interface_00887628->ClearBroadcastAddresses();
+            // Literal bytes at0x82E108, followed by sixteen zero bytes.
+            char dotted[32] = "xxx.xxx.xxx.xxx";
+            for (int i = 1; i < PlayerCount_00A8DA84; ++i) {
+                unsigned char network[4], node[6];
+                Players_00A8DA78[i]->Address.GetAddress(network, node);
+                sprintf(dotted, STR_0083D9FC, node[0], node[1], node[2], node[3]);
+                FUN_004068E0(STR_0083D9DC, dotted);
+                Interface_00887628->AddBroadcastAddress(dotted, Ports_00A8E2B2[i]);
+            }
+        }
+    }
+    bool read;
+    if (ScenarioInstance->unknown_34BD) {
+        // Binary0x58B740 ->0x595740 ->0x595680 establishes MapSeedClass at+0;
+        // this cast asserts only that known prefix, not the full global layout.
+        read = reinterpret_cast<MapSeedClass*>(DAT_00ABDFD8)->FUN_00597A10(scenario);
+        if (read) {
+            reinterpret_cast<MapSeedClass*>(DAT_00ABDFD8)->FUN_00598960(0, 0);
+            FUN_00686890(true);
+        }
+        strcpy(ScenarioInstance->unknown_125C, scenario);
+    } else read = FUN_00686730(scenario);
+    if (!RulesInstance->unknown_14AE) MapInstance.FUN_00577F30(0);
+    if (!read) {
+        FUN_004068E0(STR_0083D9B4, scenario);
+        FUN_004A3C30(&DAT_00885780, 7, FUN_0048D080);
+        Dialog_005D3490 dialog;
+        dialog.FUN_005D3490(FUN_00734E60(STR_00831AF0, 0, STR_0083D838, 0x50D),
+            FUN_00734E60(STR_00825FB0, 0, STR_0083D838, 0x50D), 0, 0, 0);
+        --DAT_00A8E7AC;
+        ScenarioInstance->unknown_3598 = false;
+        if (manager) {
+            DAT_00AC4F58.FUN_00643E80(0);
+            FUN_00552AA0();
+        }
+        return false;
+    }
+    // Reuse existing MessageListClass view for global0xA8BC60.
+    ScenarioMessageList_00A8BC60.Init(DAT_00886FA0.X + 3, DAT_00886FA0.Y, 6, 0x62, 0xE,
+        -1, -1, false, 0x14, 0x62, DAT_00886FA0.Width - 6);
+    FUN_00684C30();
+    if (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) {
+        Session_00A8B238.FUN_0069AE90(99);
+        if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0)
+            IdMap_00B052D0.FUN_00664610(15000, 1);
+    }
+    Session_00A8B238.FUN_0069AE90(ScenarioInstance->unknown_34BD ? 200 : 100);
+    DAT_00A8B8C1 = false;
+    DAT_00A8B8C2 = false;
+    bool ready = FUN_00684370();
+    if (Session_00A8B238.GameMode == 4) Session_00A8B238.FUN_0069B170();
+    --DAT_00A8E7AC;
+    if (!DAT_00A8ED6B && ready) {
+        FUN_0048D080();
+        while (DAT_00AC4F58.FUN_006433D0() < 1.0)
+            for (int i = 0; i < PlayerCount_00A8DA84; ++i)
+                DAT_00AC4F58.FUN_00643C50(i, 100.0, -1, -1);
+    }
+    ScenarioInstance->unknown_3598 = false;
+    DAT_00AC4F58.FUN_00642AD0();
+    if (manager) {
+        DAT_00AC4F58.FUN_00643E80(0);
+        manager->FUN_00554370();
+    }
+    for (int i = HouseClass_ArrayCount - 1; i >= 0; --i)
+        HouseClass_ArrayItems[i]->FUN_0050D610();
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x684C30

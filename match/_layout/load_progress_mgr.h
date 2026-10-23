@@ -13,9 +13,16 @@
 #include "../_rt/gg_static_assert.h"
 #include "abstract_interfaces.h"
 
+struct Point2D;
+
 class LoadProgressMgr : public INoticeSink
 {
 public:
+    void FUN_00552B10(); // FUNCTION: GAMEMD 0x552B10 (decl; 0x684760)
+    Point2D* FUN_00552BE0(Point2D* out); // FUNCTION: GAMEMD 0x552BE0 (decl; 0x68481E)
+    int FUN_00552C90(); // FUNCTION: GAMEMD 0x552C90 (decl; 0x684836)
+    void FUN_00552CC0(); // FUNCTION: GAMEMD 0x552CC0 (decl; 0x6847D5)
+    void FUN_00554370(); // FUNCTION: GAMEMD 0x554370 (decl; 0x684C00)
     virtual bool Notice(int id, int arg);                       // 0  0x554400: override (declaration from the base header)
     int unknown_04;  // +0x4 store at 0x552ADA
     int unknown_08;  // +0x8 store at 0x552ADD

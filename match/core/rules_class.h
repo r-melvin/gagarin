@@ -84,7 +84,9 @@ struct RulesClass
     int unknown_1494;
     char unknown_1498[8];
     int unknown_14A0;
-    char unknown_14A4[0x14B1 - 0x14A4];
+    char unknown_14A4[0x14AE - 0x14A4];
+    bool unknown_14AE; // byte test0x6849D6
+    char unknown_14AF[0x14B1 - 0x14AF];
     bool unknown_14B1;
     char unknown_14B2[3];
     bool unknown_14B5;
@@ -147,6 +149,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_580) == 0x580);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_724) == 0x724);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_728) == 0x728);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_72C) == 0x72C);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14AE) == 0x14AE);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B5) == 0x14B5);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BB) == 0x14BB);
 

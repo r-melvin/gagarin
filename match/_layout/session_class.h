@@ -75,6 +75,7 @@ struct SessionClass
     // Declaration: GAMEMD 0x69B760 -- ECX Session, value and bool stackargs, RET8.
     void FUN_0069B760(int value, bool randomize);
     void FUN_0069B8C0();
+    void FUN_0069B170(); // FUNCTION: GAMEMD 0x69B170 (decl; 0x684B53)
     void FUN_0069BBF0(int index);
     unsigned short FUN_0069BC20(int id);
     // Declaration: GAMEMD 0x697E70 (decl; reloc) -- AL result, stack pointer, RET4.

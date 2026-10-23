@@ -27,9 +27,12 @@
 // The global map/radar singleton at 0x87F7E8. UpdateCellLighting drives its
 // spiral cell iterator (begin @0x578350, next @0x578290).
 class CCINIClass;
+class HouseClass;
 
 struct MapInstanceClass
 {
+    // FUNCTION: GAMEMD 0x577F30 (decl; 0x6849E7, null house argument).
+    void FUN_00577F30(HouseClass* house);
     // FUNCTION: GAMEMD 0x6D0F00 (decl; reloc)
     void FUN_006D0F00();
     // FUNCTION: GAMEMD 0x6AC5F0 (decl; reloc)
@@ -258,7 +261,9 @@ struct ScenarioClass
     bool unknown_34AA;
     char unknown_34AB[0x34B2 - 0x34AB];
     bool unknown_34B2; // byte load/test0x684F02
-    char unknown_34B3[0x34BD - 0x34B3];
+    char unknown_34B3[0x34B8 - 0x34B3];
+    int unknown_34B8; // store0x6847C3
+    char unknown_34BC;
     bool unknown_34BD;
     char unknown_34BE[2];
     ScenarioTimer unknown_34C0;
@@ -350,6 +355,7 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3496) == 0x3496);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_349A) == 0x349A);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B2) == 0x34B2);
 
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B8) == 0x34B8);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34BD) == 0x34BD);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34C0) == 0x34C0);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D4) == 0x34D4);
