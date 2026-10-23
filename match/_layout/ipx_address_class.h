@@ -45,6 +45,11 @@ public:
     // FUNCTION: GAMEMD 0x53ED20 (decl; reloc) — transport reference call view.
     void FUN_0053ED20(NetworkNumberType& network, NodeAddressType& node,
                      unsigned short port);
+    // Declaration: GAMEMD 0x53ED20 -- native69C3C6 passes network=null.
+    // Network is read only when global828140==1 (53ED3A..53ED45);
+    // node always supplies six bytes (53ED28..53ED31); RET0xC.
+    void FUN_0053ED20(const NetworkNumberType* network, const NodeAddressType* node,
+                     unsigned short port);
     // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — existing pointer-compare API.
     bool FUN_0053EE70(const IPXAddressClass* other) const;
     // FUNCTION: GAMEMD 0x53EE70 (decl; reloc) — transport reference call view.
