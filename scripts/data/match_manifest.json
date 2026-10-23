@@ -94912,5 +94912,482 @@
   "name": "SidebarCameo::SidebarCameo()",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x406B10",
+  "sym": "?FUN_00406B10@@YIHH@Z",
+  "len": "0x222",
+  "name": "FUN_00406B10",
+  "status": "partial",
+  "pct": 6.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x406D40",
+  "sym": "?FUN_00406D40@@YIXXZ",
+  "len": "0x91",
+  "name": "FUN_00406D40",
+  "status": "partial",
+  "pct": 82.9
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x406DE0",
+  "sym": "?FUN_00406DE0@@YIHXZ",
+  "len": "0x7a",
+  "name": "FUN_00406DE0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x406F70",
+  "sym": "?FUN_00406F70@@YIXXZ",
+  "len": "0x81",
+  "name": "FUN_00406F70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407160",
+  "sym": "?FUN_00407160@Obj_00407060@@QAEXXZ",
+  "len": "0x7",
+  "name": "FUN_00407160",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4071C0",
+  "sym": "?FUN_004071C0@@YIHPAUTimer_00401000@@@Z",
+  "len": "0xe5",
+  "name": "FUN_004071C0",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407330",
+  "sym": "?FUN_00407330@Node_004072E0@@QAIXPAU1@@Z",
+  "len": "0x42",
+  "name": "FUN_00407330",
+  "status": "partial",
+  "pct": 21.9
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407380",
+  "sym": "?FUN_00407380@Node_004072E0@@QAIXPAU1@@Z",
+  "len": "0x23",
+  "name": "FUN_00407380",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407400",
+  "sym": "?FUN_00407400@ListNode@@QAIPAU1@H@Z",
+  "len": "0x18",
+  "name": "FUN_00407400",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407490",
+  "sym": "?FUN_00407490@ListNode@@QAEPAU1@XZ",
+  "len": "0x11",
+  "name": "FUN_00407490",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4074B0",
+  "sym": "?FUN_004074B0@ListNode@@QAEPAU1@XZ",
+  "len": "0x13",
+  "name": "FUN_004074B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407540",
+  "sym": "?FUN_00407540@Obj_00407520@@QBEHXZ",
+  "len": "0x10",
+  "name": "FUN_00407540",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407550",
+  "sym": "?FUN_00407550@@YIHXZ",
+  "len": "0x12e",
+  "name": "FUN_00407550",
+  "status": "partial",
+  "pct": 88.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407680",
+  "sym": "?FUN_00407680@@YGKPAX@Z",
+  "len": "0xfe",
+  "name": "FUN_00407680",
+  "status": "partial",
+  "pct": 45.1
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407780",
+  "sym": "?FUN_00407780@@YIXXZ",
+  "len": "0xda",
+  "name": "FUN_00407780",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407860",
+  "sym": "?FUN_00407860@Pool_00402860@@QAEPAUObj_00407F80@@_K@Z",
+  "len": "0x15b",
+  "name": "FUN_00407860",
+  "status": "partial",
+  "pct": 8.3
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407A30",
+  "sym": "?FUN_00407A30@@YIHPAX@Z",
+  "len": "0x2e",
+  "name": "FUN_00407A30",
+  "status": "partial",
+  "pct": 78.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407A60",
+  "sym": "?FUN_00407A60@@YIHPAX@Z",
+  "len": "0x2e",
+  "name": "FUN_00407A60",
+  "status": "partial",
+  "pct": 78.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407A90",
+  "sym": "?FUN_00407A90@Obj_00407F80@@QAEXXZ",
+  "len": "0xaa",
+  "name": "FUN_00407A90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407B60",
+  "sym": "?FUN_00407B60@Obj_00407F80@@QAIHPBDH@Z",
+  "len": "0x3d5",
+  "name": "FUN_00407B60",
+  "status": "partial",
+  "pct": 31.7
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x407F90",
+  "sym": "?FUN_00407F90@Obj_00407F80@@QAEHXZ",
+  "len": "0x1c",
+  "name": "FUN_00407F90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408150",
+  "sym": "?FUN_00408150@@YIXXZ",
+  "len": "0x48",
+  "name": "FUN_00408150",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4082F0",
+  "sym": "?FUN_004082F0@@YIXXZ",
+  "len": "0x97",
+  "name": "FUN_004082F0",
+  "status": "partial",
+  "pct": 26.5
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408610",
+  "sym": "?FUN_00408610@@YIHPAVFileClass@@PAUAudioSampleData@@PAI@Z",
+  "len": "0x1db",
+  "name": "FUN_00408610",
+  "status": "partial",
+  "pct": 3.9
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408840",
+  "sym": "?FUN_00408840@Obj_00408D00@@QAEXXZ",
+  "len": "0xe4",
+  "name": "FUN_00408840",
+  "status": "partial",
+  "pct": 2.2
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408970",
+  "sym": "?FUN_00408970@Obj_00408D00@@QAEXXZ",
+  "len": "0xf2",
+  "name": "FUN_00408970",
+  "status": "partial",
+  "pct": 1.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408A70",
+  "sym": "?FUN_00408A70@Obj_00408D00@@QAEXXZ",
+  "len": "0x9f",
+  "name": "FUN_00408A70",
+  "status": "partial",
+  "pct": 52.2
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408B40",
+  "sym": "?FUN_00408B40@Obj_00408D00@@QAIHHHH@Z",
+  "len": "0xeb",
+  "name": "FUN_00408B40",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408C30",
+  "sym": "?FUN_00408C30@Obj_00408D00@@QAIPAUCursor_00408930@@H@Z",
+  "len": "0xfe",
+  "name": "FUN_00408C30",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408D60",
+  "sym": "?FUN_00408D60@Obj_00408D00@@QBEHXZ",
+  "len": "0x12",
+  "name": "FUN_00408D60",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408E50",
+  "sym": "?FUN_00408E50@Aligned_00408D80@@QAEPAU1@XZ",
+  "len": "0x15",
+  "name": "FUN_00408E50",
+  "status": "partial",
+  "pct": 50.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408EE0",
+  "sym": "?FUN_00408EE0@Cursor_00408930@@QAIHPAXI@Z",
+  "len": "0x98",
+  "name": "FUN_00408EE0",
+  "status": "partial",
+  "pct": 25.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x408F80",
+  "sym": "?FUN_00408F80@Cursor_00408930@@QAIHPAVFileClass@@HPAH@Z",
+  "len": "0xae",
+  "name": "FUN_00408F80",
+  "status": "partial",
+  "pct": 28.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409030",
+  "sym": "?FUN_00409030@Cursor_00408930@@QAIHPAXHPAH@Z",
+  "len": "0xbb",
+  "name": "FUN_00409030",
+  "status": "partial",
+  "pct": 42.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409100",
+  "sym": "?FUN_00409100@Cursor_00408930@@QAEHXZ",
+  "len": "0xbc",
+  "name": "FUN_00409100",
+  "status": "partial",
+  "pct": 0.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4091C0",
+  "sym": "?FUN_004091C0@Cursor_00408930@@QAIHH@Z",
+  "len": "0xed",
+  "name": "FUN_004091C0",
+  "status": "partial",
+  "pct": 1.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4092B0",
+  "sym": "?FUN_004092B0@Cursor_00408930@@QAEHXZ",
+  "len": "0x33",
+  "name": "FUN_004092B0",
+  "status": "partial",
+  "pct": 63.2
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409340",
+  "sym": "?FUN_00409340@Cursor_00408930@@QAEPAXXZ",
+  "len": "0x15",
+  "name": "FUN_00409340",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409470",
+  "sym": "?FUN_00409470@Pool_00402860@@QAEHXZ",
+  "len": "0x136",
+  "name": "FUN_00409470",
+  "status": "partial",
+  "pct": 70.5
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x4095B0",
+  "sym": "?FUN_004095B0@@YGKPAX@Z",
+  "len": "0x2c5",
+  "name": "FUN_004095B0",
+  "status": "partial",
+  "pct": 18.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409880",
+  "sym": "?FUN_00409880@@YIHPAUAux_0040A6D0@@I@Z",
+  "len": "0x3ba",
+  "name": "FUN_00409880",
+  "status": "partial",
+  "pct": 6.1
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409C40",
+  "sym": "?FUN_00409C40@@YIXPAUAux_0040A6D0@@@Z",
+  "len": "0x14a",
+  "name": "FUN_00409C40",
+  "status": "partial",
+  "pct": 73.3
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x409DE0",
+  "sym": "?FUN_00409DE0@@YIHPAX0PAHPBX1@Z",
+  "len": "0x1f9",
+  "name": "FUN_00409DE0",
+  "status": "partial",
+  "pct": 6.8
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A090",
+  "sym": "?FUN_0040A090@Pool_00402860@@QAEHXZ",
+  "len": "0x174",
+  "name": "FUN_0040A090",
+  "status": "partial",
+  "pct": 13.1
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A210",
+  "sym": "?FUN_0040A210@@YIXXZ",
+  "len": "0x45",
+  "name": "FUN_0040A210",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A2D0",
+  "sym": "?FUN_0040A2D0@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x6e",
+  "name": "FUN_0040A2D0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A340",
+  "sym": "?FUN_0040A340@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x2ca",
+  "name": "FUN_0040A340",
+  "status": "partial",
+  "pct": 14.7
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A650",
+  "sym": "?FUN_0040A650@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x16",
+  "name": "FUN_0040A650",
+  "status": "partial",
+  "pct": 77.8
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A670",
+  "sym": "?FUN_0040A670@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x24",
+  "name": "FUN_0040A670",
+  "status": "partial",
+  "pct": 86.7
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A6A0",
+  "sym": "?FUN_0040A6A0@Voice_0040A6D0@@QAEHXZ",
+  "len": "0x2a",
+  "name": "FUN_0040A6A0",
+  "status": "partial",
+  "pct": 89.5
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40A9A0",
+  "sym": "?FUN_0040A9A0@@YIXPAX@Z",
+  "len": "0xc4",
+  "name": "FUN_0040A9A0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40AA70",
+  "sym": "?FUN_0040AA70@@YIHPAUAux_0040A6D0@@@Z",
+  "len": "0x25e",
+  "name": "FUN_0040AA70",
+  "status": "partial",
+  "pct": 3.6
+ },
+ {
+  "tu": "match/core/module_tu002.cpp",
+  "addr": "0x40ACD0",
+  "sym": "?FUN_0040ACD0@@YIFIPAUState_0040ACD0@@@Z",
+  "len": "0x8e",
+  "name": "FUN_0040ACD0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -22,6 +22,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../core/triple_timer_init_methods.h"
+#include "../core/tail_call_methods.h"
 
 // GLOBAL: GAMEMD 0x87E2A0 — nonzero once the audio subsystem is up.
 extern int DAT_0087E2A0;
@@ -36,23 +38,38 @@ void FUN_00401F90(void* sub);
 
 struct Peer_00405D40
 {
-    char _pad000[0x90];       // +0x0000
+    char _pad000[0x10];
+    Timer_00401000 unknown_10;
+    char unknown_38[0x90 - 0x38];       // +0x0000
     int  At_90;               // +0x0090
-    char _pad094[0x98 - 0x94];
+    int At_94;
     int  At_98;               // +0x0098
     int  At_9C;               // +0x009C
-    char _pad0A0[0xB4 - 0xA0];
+    char _pad0A0[0xB0 - 0xA0];
+    int (__fastcall* unknown_B0)(void*);
     int  At_B4;               // +0x00B4
-    int  At_B8;               // +0x00B8
-    int  At_BC;               // +0x00BC
+    int (__fastcall* At_B8)(void*);               // +0x00B8
+    int (__fastcall* At_BC)(void*);               // +0x00BC
     Voice_00405D40* Voice;    // +0x00C0
+    char unknown_C4[0x1A8 - 0xC4];
+    unsigned __int64 unknown_1A8;
+    unsigned __int64 unknown_1B0;
+    // FUNCTION: GAMEMD 0x402790 (decl; reloc)
+    void __fastcall FUN_00402790(Obj_00408500b*);
+    // FUNCTION: GAMEMD 0x402720 (decl; reloc)
+    int FUN_00402720();
 
     // FUNCTION: GAMEMD 0x4025B0 (decl; reloc) — __thiscall forwarder.
     void FUN_004025B0();
     // FUNCTION: GAMEMD 0x4026F0 (decl; reloc) — __thiscall forwarder.
     void FUN_004026F0();
 };
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_1A8) == 0x1A8);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_1B0) == 0x1B0);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_90) == 0x90);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_94) == 0x94);
+GG_STATIC_ASSERT(offsetof(Peer_00405D40, unknown_B0) == 0xB0);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_98) == 0x98);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_9C) == 0x9C);
 GG_STATIC_ASSERT(offsetof(Peer_00405D40, At_B4) == 0xB4);

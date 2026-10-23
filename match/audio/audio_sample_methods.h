@@ -24,6 +24,15 @@
 // ---------------------------------------------------------------------------
 struct AudioSampleData
 {
+    // FUNCTION: GAMEMD 0x4085A0 (decl; reloc)
+    // AudioSampleData::FUN_004085A0
+    void FUN_004085A0();
+    // FUNCTION: GAMEMD 0x4085B0 (decl; reloc)
+    // AudioSampleData::FUN_004085B0
+    void FUN_004085B0();
+    // FUNCTION: GAMEMD 0x408540 (decl; reloc)
+    // AudioSampleData::FUN_00408540
+    int FUN_00408540(__int64 interval) const;
     unsigned int Data;            // +0x00
     unsigned int Format;          // +0x04
     unsigned int SampleRate;      // +0x08

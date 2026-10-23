@@ -28,10 +28,17 @@ struct DirectSoundResourceVtbl_00409FF0
 {
     char unknown_00[8];
     unsigned long (__stdcall* Release)(DirectSoundResource_00409FF0*);
+    int (__stdcall* CreateBuffer)(DirectSoundResource_00409FF0*, const void*, SoundBuffer_0040A7B0**, void*);
+    int (__stdcall* GetCaps)(DirectSoundResource_00409FF0*, void*);
+    void* unknown_14;
+    int (__stdcall* SetCooperativeLevel)(DirectSoundResource_00409FF0*, HWND, unsigned);
 };
 struct DirectSoundResource_00409FF0 { DirectSoundResourceVtbl_00409FF0* Vptr; };
 GG_STATIC_ASSERT(offsetof(DirectSoundResource_00409FF0, Vptr) == 0);
 GG_STATIC_ASSERT(offsetof(DirectSoundResourceVtbl_00409FF0, Release) == 8);
+GG_STATIC_ASSERT(offsetof(DirectSoundResourceVtbl_00409FF0, CreateBuffer) == 0xC);
+GG_STATIC_ASSERT(offsetof(DirectSoundResourceVtbl_00409FF0, GetCaps) == 0x10);
+GG_STATIC_ASSERT(offsetof(DirectSoundResourceVtbl_00409FF0, SetCooperativeLevel) == 0x18);
 
 // GLOBAL: GAMEMD 0x87E89C
 extern DirectSoundResource_00409FF0* DAT_0087E89C;
@@ -39,13 +46,30 @@ extern DirectSoundResource_00409FF0* DAT_0087E89C;
 extern int DAT_0087E898;
 // GLOBAL: GAMEMD 0x87E878
 extern int DAT_0087E878;  // reference count; main thread only (0x409470, 0x409FF0)
+struct Pool_00402860;
+struct BackendState_004095B0
+{
+    // Thread4095B0 created409511 reads stop at4095C8/409848;
+    // owner409FF0 writes stop at40A034. Completion is written4095C1/409855/409868,
+    // read by owner40A03E/40A047. The declarations alone are volatile.
+    volatile int unknown_00;
+    int unknown_04;
+    volatile int unknown_08;
+    int unknown_0C;
+    unsigned unknown_10;
+    unsigned unknown_14;
+    int unknown_18;
+    int unknown_1C;
+    Pool_00402860* unknown_20;
+};
+GG_STATIC_ASSERT(offsetof(BackendState_004095B0, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(BackendState_004095B0, unknown_08) == 8);
+GG_STATIC_ASSERT(offsetof(BackendState_004095B0, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(BackendState_004095B0, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(BackendState_004095B0, unknown_20) == 0x20);
+GG_STATIC_ASSERT(sizeof(BackendState_004095B0) == 0x24);
 // GLOBAL: GAMEMD 0x87E850
-extern int DAT_0087E850;
-// GLOBAL: GAMEMD 0x87E858
-// Volatile with binary evidence: 0x409470 starts FUN_004095B0 with
-// CreateThread(lpParameter = 0x87E850), and that thread procedure writes this
-// field (param+8) on exit; 0x40A047 spins on it from the main thread.
-extern volatile int DAT_0087E858;
+extern BackendState_004095B0 DAT_0087E850;
 // GLOBAL: GAMEMD 0x87E86C
 extern HANDLE DAT_0087E86C;
 

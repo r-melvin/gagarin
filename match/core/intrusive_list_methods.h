@@ -18,6 +18,12 @@
 // its own links to itself, which is the circular-list unlink.
 struct ListNode
 {
+    // FUNCTION: GAMEMD 0x407400
+    ListNode* __fastcall FUN_00407400(int index);
+    // FUNCTION: GAMEMD 0x407490
+    ListNode* FUN_00407490();
+    // FUNCTION: GAMEMD 0x4074B0
+    ListNode* FUN_004074B0();
     ListNode* Prev;    // +0x0000
     ListNode* Next;    // +0x0004
     ListNode* Owner;   // +0x0008
@@ -54,6 +60,8 @@ GG_STATIC_ASSERT(offsetof(ListNode, Owner) == 0x8);
 // link is stored in the eight bytes preceding the payload.
 struct Obj_00407520
 {
+    // FUNCTION: GAMEMD 0x407540
+    int FUN_00407540() const;
     ListNode* First;   // +0x0000
 
     // FUNCTION: GAMEMD 0x407520

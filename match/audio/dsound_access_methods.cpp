@@ -20,9 +20,9 @@ void __cdecl FUN_00409FF0()
             DAT_0087E878 = 0;
         }
         if (DAT_0087E878 == 0) {
-            DAT_0087E850 = 1;
+            DAT_0087E850.unknown_00 = 1;
             // Retail repeatedly reloads the flag while waiting for the worker.
-            while (!DAT_0087E858) {
+            while (!DAT_0087E850.unknown_08) {
             }
             WaitForSingleObject(DAT_0087E86C, 5000);
             CloseHandle(DAT_0087E86C);

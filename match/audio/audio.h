@@ -61,6 +61,9 @@ struct AudioSampleData;
 
 struct AudioIDXData
 {
+    // FUNCTION: GAMEMD 0x401580 (decl; reloc)
+    // AudioIDXData::FUN_00401580
+    void FUN_00401580();
     // FUNCTION: GAMEMD 0x401640 — GetSampleInformation, a member rather than a
     // free function taking the record: retail puts the record in ECX, the
     // index in EDX and the buffer on the stack with `RET 4`, which is

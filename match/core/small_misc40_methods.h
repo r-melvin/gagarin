@@ -20,6 +20,14 @@
 // ---------------------------------------------------------------------------
 struct Obj_00403820
 {
+    // FUNCTION: GAMEMD 0x403870 (decl; reloc)
+    void FUN_00403870(__int64 value);
+    // FUNCTION: GAMEMD 0x4038A0 (decl; reloc)
+    void FUN_004038A0(__int64 value);
+    // FUNCTION: GAMEMD 0x4038C0 (decl; reloc)
+    void FUN_004038C0(__int64 value);
+    // FUNCTION: GAMEMD 0x403920 (decl; reloc)
+    void FUN_00403920(__int64 value);
     int field_00, field_04, field_08, field_0C;
     int field_10, field_14, field_18, field_1C;
     int field_20, field_24, field_28, field_2C;

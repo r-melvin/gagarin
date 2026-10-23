@@ -25,10 +25,17 @@ struct Timer_00401000
         unsigned int  Flags32;  // +0x0000
     };
     unsigned int Value;       // +0x0004  16.16 fixed point
-    unsigned char Flags2;     // +0x0008  second flag byte, tested at 0x404158
-    char _pad009[0x1F];       // +0x0009
+    union { unsigned char Flags2; unsigned Target; }; // +0x08
+    int unknown_0C;
+    unsigned __int64 unknown_10;
+    __int64 unknown_18;
+    char unknown_20[8];
 };
 GG_STATIC_ASSERT(offsetof(Timer_00401000, Value) == 0x4);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, Target) == 8);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_0C) == 0xC);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_10) == 0x10);
+GG_STATIC_ASSERT(offsetof(Timer_00401000, unknown_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(Timer_00401000) == 0x28);
 
 // FUNCTION: GAMEMD 0x407100 — arm, __fastcall with the period in EDX.
@@ -49,7 +56,7 @@ GG_STATIC_ASSERT(offsetof(Obj_00401000, Second) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00401000, Third) == 0x50);
 
 // FUNCTION: GAMEMD 0x4071C0 — reset, __thiscall (ECX only, no argument).
-void FUN_004071C0(Timer_00401000* timer);
+int FUN_004071C0(Timer_00401000* timer);
 
 // FUNCTION: GAMEMD 0x401000
 void FUN_00401000(Obj_00401000* self);

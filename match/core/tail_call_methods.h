@@ -63,12 +63,13 @@ struct Obj_00408000b
 };
 GG_STATIC_ASSERT(offsetof(Obj_00408000b, unknown_14) == 0x14);
 
+struct AudioSampleData;
 struct Obj_00408500b
 {
     int  unknown_00;   // +0x0000
     int  unknown_04;   // +0x0004
     char _pad08[0x14 - 0x08];
-    int  unknown_14;   // +0x0014
+    AudioSampleData* unknown_14;   // +0x0014
     int  unknown_18;   // +0x0018
 
     // FUNCTION: GAMEMD 0x408520

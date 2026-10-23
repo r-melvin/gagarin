@@ -17,6 +17,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "intrusive_list_methods.h"
 
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 extern "C" void  __cdecl FUN_007C8B3D(void* block);
@@ -25,15 +26,27 @@ extern "C" void* __cdecl memset(void* destination, int value, unsigned int count
 // FUNCTION: GAMEMD 0x4072D0 — initialises the descriptor's link block.
 void FUN_004072D0(void* descriptor);
 
+struct Entry8b { int First; int Second; };
+
 struct Aligned_00408D80
 {
-    char  _pad000[0x10];
+    ListNode Links;
+    int unknown_0C;
     void* Raw;       // +0x0010
     int   Shift;     // +0x0014
     int   Aligned;   // +0x0018
     int   Size;      // +0x001C
-    char  _pad020[0x3C - 0x20];
+    Entry8b Entries[2];
+    void* unknown_30;
+    int unknown_34;
+    int unknown_38;
+    // FUNCTION: GAMEMD 0x408E50
+    Aligned_00408D80* FUN_00408E50();
 };
+GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Links) == 0);
+GG_STATIC_ASSERT(offsetof(Aligned_00408D80, unknown_30) == 0x30);
+GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Entries) == 0x20);
+GG_STATIC_ASSERT(offsetof(Aligned_00408D80, unknown_34) == 0x34);
 GG_STATIC_ASSERT(sizeof(Aligned_00408D80) == 0x3C);
 GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Raw) == 0x10);
 GG_STATIC_ASSERT(offsetof(Aligned_00408D80, Size) == 0x1C);

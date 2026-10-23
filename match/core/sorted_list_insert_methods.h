@@ -14,6 +14,10 @@
 // `CMP ESI,EBX` at 0x4072F3 tests.
 struct Node_004072E0
 {
+    // FUNCTION: GAMEMD 0x407330
+    void __fastcall FUN_00407330(Node_004072E0* node);
+    // FUNCTION: GAMEMD 0x407380
+    void __fastcall FUN_00407380(Node_004072E0* other);
     Node_004072E0* Next;   // +0x0000
     Node_004072E0* Prev;   // +0x0004
     // volatile: the stream thread 0x407680 (CreateThread @0x407610) walks the

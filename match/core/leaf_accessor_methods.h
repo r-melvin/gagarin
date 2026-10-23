@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "small_misc32_methods.h"
 
 // RulesClass singleton pointer @0x8871E0; only the field at +0x44 is read here.
 struct RulesData
@@ -30,7 +31,8 @@ extern RulesData* GameRules;   // GLOBAL: GAMEMD 0x8871E0
 
 // GLOBAL: GAMEMD 0x87E728 / 0x87E89C — two singleton pointers returned raw.
 extern void* DAT_0087E728;
-extern void* DAT_0087E89C;
+struct DirectSoundResource_00409FF0;
+extern DirectSoundResource_00409FF0* DAT_0087E89C;
 
 struct Obj_00402000
 {
@@ -90,22 +92,49 @@ GG_STATIC_ASSERT(offsetof(Obj_00408600, unknown_14) == 0x14);
 
 struct Obj_00408D00
 {
-    char _pad000[0x14 - 0x0];
-    int  unknown_14;   // +0x0014
-    char _pad018[0x4C - 0x18];
-    int  unknown_4C;   // +0x004C
-    // volatile: +0x50 is +0x38 of the channel at +0x18 (see 0x408C30), which
-    // the stream thread 0x53E070 (CreateThread @0x53DF2A) advances in 0x409100
-    // (store @0x409127, via 0x409030 @0x53E11A); it reads this body @0x53E108.
-    volatile int unknown_50;   // +0x0050
+    int unknown_00;
+    ListNode unknown_04;
+    unsigned unknown_10;
+    unsigned unknown_14;
+    Cursor_00408930 Channels[2];
+    int unknown_98;
+    char unknown_9C[8];
+    // FUNCTION: GAMEMD 0x408840
+    // Obj_00408D00::FUN_00408840
+    void FUN_00408840();
+    // FUNCTION: GAMEMD 0x408970
+    // Obj_00408D00::FUN_00408970
+    void FUN_00408970();
+    // FUNCTION: GAMEMD 0x408A70
+    // Obj_00408D00::FUN_00408A70
+    void FUN_00408A70();
+    // FUNCTION: GAMEMD 0x408B10 (decl; reloc)
+    void __fastcall FUN_00408B10(Aligned_00408D80* block);
+    // FUNCTION: GAMEMD 0x408B40
+    // Obj_00408D00::FUN_00408B40
+    int __fastcall FUN_00408B40(int count, int size, int shift);
+    // FUNCTION: GAMEMD 0x408C30
+    // Obj_00408D00::FUN_00408C30
+    Cursor_00408930* __fastcall FUN_00408C30(int channel);
     // FUNCTION: GAMEMD 0x408D40
+    // Obj_00408D00::FUN_00408D40
     int FUN_00408D40();
     // FUNCTION: GAMEMD 0x408D50
+    // Obj_00408D00::FUN_00408D50
     int FUN_00408D50() const;
+    // FUNCTION: GAMEMD 0x408D60
+    // Obj_00408D00::FUN_00408D60
+    int FUN_00408D60() const;
 };
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_4C) == 0x4C);
-GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_50) == 0x50);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, Channels) == 0x18);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, Channels) + offsetof(Cursor_00408930, unknown_34) == 0x4C);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, Channels) + offsetof(Cursor_00408930, unknown_38) == 0x50);
+GG_STATIC_ASSERT(offsetof(Obj_00408D00, unknown_98) == 0x98);
+GG_STATIC_ASSERT(sizeof(Obj_00408D00) == 0xA4);
 
 struct Obj_00409300
 {

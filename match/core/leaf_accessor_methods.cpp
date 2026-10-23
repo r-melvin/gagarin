@@ -75,8 +75,8 @@ void Obj_00408600::FUN_00408600()
 // FUNCTION: GAMEMD 0x408D40
 int Obj_00408D00::FUN_00408D40()
 {
-    int value = unknown_4C;
-    return value - unknown_50;
+    int value = Channels[0].unknown_34;
+    return value - Channels[0].unknown_38;
 }
 
 // FUNCTION: GAMEMD 0x408D50

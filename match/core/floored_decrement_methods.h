@@ -33,6 +33,9 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "intrusive_list_methods.h"
+#include "../audio/audio_sample_methods.h"
+#include "triple_timer_init_methods.h"
+#include "small_misc40_methods.h"
 
 // GLOBAL: GAMEMD 0x87E81C — the gate; 0x87E810 is the list header itself.
 extern int      DAT_0087E81C;
@@ -89,14 +92,43 @@ void FUN_004028B0(Member_00402860* self);
 
 // The owner also carries its capacity right after the attachment count, which
 // the two spawn entry points below compare against.
+struct Obj_00407F80;
 struct Pool_00402860
 {
-    char             _pad000[0xF0];
+    // FUNCTION: GAMEMD 0x407860
+    Obj_00407F80* FUN_00407860(unsigned __int64 interval);
+    char unknown_00[0x18];
+    int unknown_18;
+    char unknown_1C[0x44 - 0x1C];
+    AudioSampleData unknown_44;
+    int unknown_64;
+    Obj_00401000 unknown_68;
+    char unknown_E0[0x10];
     int              Attached;   // +0x00F0
     int              Capacity;   // +0x00F4
     char             Link[0x104 - 0xF8];   // +0x00F8
     volatile int     Pending;    // +0x0104  (volatile: see Owner_00402860)
+    int unknown_108;
+    void (__fastcall* unknown_10C)(Pool_00402860*);
+    char unknown_110[0x170 - 0x110];
+    Obj_00403820 unknown_170;
+    char unknown_1C8[0x10];
+    int unknown_1D8;
+    int unknown_1DC;
+    int unknown_1E0;
+    // FUNCTION: GAMEMD 0x409470
+    int FUN_00409470();
+    // FUNCTION: GAMEMD 0x40A090
+    int FUN_0040A090();
 };
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_44) == 0x44);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_68) == 0x68);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_10C) == 0x10C);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_170) == 0x170);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_1D8) == 0x1D8);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_1DC) == 0x1DC);
+GG_STATIC_ASSERT(offsetof(Pool_00402860, unknown_1E0) == 0x1E0);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Capacity) == 0xF4);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Link) == 0xF8);
 GG_STATIC_ASSERT(offsetof(Pool_00402860, Pending) == 0x104);
