@@ -29,110 +29,108 @@
 //   nonetheless cited from SHIP's own instructions, and the four interface
 //   accessors used as readers are Ship's own overrides, not Drive's.
 //
-//   INTERFACE-RELATIVE READS are marked "(if+N)"; object offset = N+4.
+//   The class is declared with its real bases (LocomotionClass, IPiggyback) so
+//   that VC6 lays out the three tables and generates the ILocomotion (+4) and
+//   IPiggyback (+0x18) adjustor thunks itself. The overridden slots, read from
+//   the three tables against LocomotionClass's 0x7EAEC0 / 0x7EADF4, are the
+//   same slot set DriveLocomotionClass overrides (movement/drive_locomotion.h).
+//   +0x50 is a double: StopMoving 0x69F510 reads and writes it with
+//   `FLD/FSTP double ptr [EDI+0x4c]` (if+0x4C).
 #ifndef GG_MATCH_LAYOUT_SHIP_LOCOMOTION_CLASS_H
 #define GG_MATCH_LAYOUT_SHIP_LOCOMOTION_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "locomotion_class.h"
+#include "../movement/loco_base.h"
+#include "../movement/loco_com.h"
+#include "../ui/transition_timer_methods.h"
 
-class ShipLocomotionClass : public LocomotionPiggybackBase
+// Tables 0x7F2E58 (primary), 0x7F2D8C (ILocomotion), 0x7F2D68 (IPiggyback);
+// not claimed while slot bodies such as IsMoving 0x69F290 are unmatched.
+class ShipLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
-    int         unknown_1C;       // +0x1C ctor `MOV [ESI+0x1c],EAX` @0x0069EC5D
-                                  //       (=0); the ramp/slope pair with 0x20 -
-                                  //       not distinguished by any reader, so
-                                  //       neither is named
-    int         unknown_20;       // +0x20 ctor @0x0069EC60 (=0)
+    // FUNCTION: GAMEMD 0x69EC50 (declaration)
+    ShipLocomotionClass();
+    // No-init constructor (Load re-runs it through placement new).
+    ShipLocomotionClass(int) : LocomotionClass(0), SlopeTimer() {}
+    // Primary slot 8 holds the scalar deleting destructor 0x6A42B0; the
+    // destructor body is 0x69ECF0.
+    virtual ~ShipLocomotionClass();
 
-    RateTimer   SlopeTimer;       // +0x24 (0x10) StartTime @0x0069EC6C from the
-                                  //       frame counter 0x00A8ED84; clock slot
-                                  //       0x28 never written; TimeLeft 0x2C
-                                  //       @0x0069EC69 (=0); Rate 0x30
-                                  //       @0x0069EC6F (=0). The RateTimer shape
-                                  //       at this offset is proven in the
-                                  //       identical Drive body by Draw_Matrix
-                                  //       0x004AFF60 (see
-                                  //       drive_locomotion_class.h).
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x69EE30
+    virtual ULONG   __stdcall AddRef();                                   // 0x6A4260
+    virtual ULONG   __stdcall Release();                                  // 0x6A4270
 
-    CoordStruct Destination;      // +0x34 ctor `LEA EDX,[ESI+0x34]` @0x0069EC5A
-                                  //       then X @0x0069EC78, Y @0x0069EC80,
-                                  //       Z @0x0069EC89 from the file-scope
-                                  //       globals 0x00B077F8 / 0x00B077FC /
-                                  //       0x00B07800. CONFIRMED BY READER:
-                                  //       Ship's ILocomotion::Destination
-                                  //       0x0069F3A0 copies 0x34 (if+0x30)
-                                  //       @0x0069F3AA, 0x38 @0x0069F3AD and
-                                  //       0x3C @0x0069F3B0 out.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 0x6A3E60
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 0x69EE90
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 0x69EF10
+    virtual int Size();                                                   // 0x6A42A0
 
-    CoordStruct HeadToCoord;      // +0x40 ctor `LEA EDX,[ESI+0x40]` @0x0069EC92
-                                  //       then @0x0069EC95, @0x0069EC9E,
-                                  //       @0x0069ECAD. CONFIRMED BY READER:
-                                  //       Ship's Head_To_Coord 0x0069F3D0 reads
-                                  //       0x40 (if+0x3c) @0x0069F3DC and 0x44
-                                  //       @0x0069F3E3 against the same globals.
+    virtual bool __stdcall IsMoving();                                    // 4  0x69F290
+    virtual LocoCoord __stdcall Destination();                            // 5  0x69F3A0
+    virtual LocoCoord __stdcall HeadToCoord();                            // 6  0x69F3D0
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);         // 9  0x69F670
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10 0x69FB20
+    virtual int __stdcall ZAdjust();                                      // 14 0x6A3EA0
+    virtual int __stdcall ZGradient();                                    // 15 0x6A3EB0
+    virtual bool __stdcall Process();                                     // 16 0x69FC10
+    virtual void __stdcall MoveTo(LocoCoord to);                          // 17 0x69F450
+    virtual void __stdcall StopMoving();                                  // 18 0x69F510
+    virtual void __stdcall DoTurn(unsigned long dir);                     // 19 0x6A05C0
+    virtual void __stdcall Unlimbo();                                     // 20 0x69FBE0
+    virtual void __stdcall ForceTrack(int track, LocoCoord coord);        // 28 0x6A0310
+    virtual int __stdcall InWhichLayer();                                 // 29 0x6A3E50
+    virtual void __stdcall ForceNewSlope(int ramp);                       // 31 0x69F250
+    virtual bool __stdcall IsMovingNow();                                 // 32 0x69F330
+    virtual void __stdcall MarkAllOccupationBits(int mark);               // 39 0x6A3F00
+    virtual bool __stdcall IsMovingHere(LocoCoord to);                    // 40 0x6A3F50
+    virtual bool __stdcall WillJumpTracks();                              // 41 0x6A4130
+    virtual void __stdcall Lock();                                        // 45 0x6A4210
+    virtual void __stdcall Unlock();                                      // 46 0x6A4220
+    virtual int __stdcall GetTrackNumber();                               // 47 0x6A4230
+    virtual int __stdcall GetTrackIndex();                                // 48 0x6A4240
+    virtual int __stdcall GetSpeedAccum();                                // 49 0x6A4250
 
-    int         SpeedAccum;       // +0x4C ctor @0x0069ECAA (=0). CONFIRMED BY
-                                  //       READER: Ship's ILocomotion slot 49
-                                  //       0x006A4250 is `MOV EAX,[EAX+0x48]`
-                                  //       @0x006A4254.
-    int         unknown_50;       // +0x50 ctor @0x0069ECA7 (=0)
-    int         unknown_54;       // +0x54 ctor @0x0069ECB3 (=0). Two dwords the
-                                  //       ctor zeroes; no reader at any width,
-                                  //       so not the double YRpp guesses.
+    virtual HRESULT __stdcall BeginPiggyback(ILocomotion* loco);          // 3  0x69EFF0
+    virtual HRESULT __stdcall EndPiggyback(ILocomotion** out);            // 4  0x69F040
+    virtual bool __stdcall IsOkToEnd();                                   // 5  0x69F080
+    virtual HRESULT __stdcall PiggybackCLSID(CLSID* out);                 // 6  0x69ED20
+    virtual bool __stdcall IsPiggybacking();                              // 7  0x6A4280
 
-    int         TrackNumber;      // +0x58 ctor @0x0069ECB6 (= -1). CONFIRMED BY
-                                  //       READER: Ship's ILocomotion slot 47
-                                  //       0x006A4230 is `MOV EAX,[EAX+0x54]`
-                                  //       @0x006A4234.
-    int         TrackIndex;       // +0x5C ctor @0x0069ECB9 (= -1). CONFIRMED BY
-                                  //       READER: Ship's slot 48 0x006A4240 is
-                                  //       `MOV EAX,[EAX+0x58]` @0x006A4244.
-
-    char        unknown_60;       // +0x60 ctor @0x0069ECBC (=0); the
-                                  //       short-track flag in the identical
-                                  //       Drive body, but Ship's own
-                                  //       Will_Jump_Tracks was not read, so it
-                                  //       is not named here
-    char        unknown_61;       // +0x61 ctor @0x0069ECBF (=0)
-    char        unknown_62;       // +0x62 ctor @0x0069ECC2 (=0)
-    char        unknown_63;       // +0x63 ctor @0x0069ECC5 (=0)
-    char        unknown_64;       // +0x64 ctor @0x0069ECC8 (=0)
-    char        UnLocked;         // +0x65 ctor @0x0069ECCB (= 1). CONFIRMED BY
-                                  //       READER: Ship's ILocomotion slot 45
-                                  //       Lock 0x006A4210 writes
-                                  //       `MOV BYTE PTR [EAX+0x61],0`
-                                  //       @0x006A4214 and slot 46 Unlock
-                                  //       0x006A4220 writes 1 @0x006A4224.
-    char        unknown_66[2];    // +0x66 alignment; never written, never read
-
-    void*       Piggybackee;      // +0x68 ILocomotion*; ctor @0x0069ECCF (=0).
-                                  //       CONFIRMED BY READER: the destructor
-                                  //       0x0069ECF0 loads it @0x0069ED07 and
-                                  //       Releases it through its own vtable,
-                                  //       exactly as Drive's does.
-    int         unknown_6C;       // +0x6C untouched tail to sizeof
+    // +0x18 is the IPiggyback vptr.
+    int            unknown_1C;    // +0x1C ctor `MOV [ESI+0x1c],EAX` @0x0069EC5D
+    int            unknown_20;    // +0x20 ctor @0x0069EC60 (=0)
+    RateTimer      SlopeTimer;    // +0x24 StartTime @0x0069EC6C from the frame counter
+    LocoCoord      DestCoord;     // +0x34 ctor `LEA EDX,[ESI+0x34]` @0x0069EC5A
+    LocoCoord      HeadTo;        // +0x40 ctor `LEA EDX,[ESI+0x40]` @0x0069EC92
+    int            SpeedAccum;    // +0x4C ctor @0x0069ECAA (=0); slot 49 getter
+    double         unknown_50;    // +0x50 ctor @0x0069ECA7 / @0x0069ECB3 (=0)
+    int            TrackNumber;   // +0x58 ctor @0x0069ECB6 (= -1)
+    int            TrackIndex;    // +0x5C ctor @0x0069ECB9 (= -1)
+    bool           unknown_60;    // +0x60 ctor @0x0069ECBC (=0)
+    bool           unknown_61;    // +0x61 ctor @0x0069ECBF (=0)
+    bool           unknown_62;    // +0x62 ctor @0x0069ECC2 (=0)
+    bool           unknown_63;    // +0x63 ctor @0x0069ECC5 (=0)
+    bool           unknown_64;    // +0x64 ctor @0x0069ECC8 (=0)
+    bool           UnLocked;      // +0x65 ctor @0x0069ECCB (= 1)
+    ILocomotionPtr Piggybackee;   // +0x68 ctor @0x0069ECCF (=0)
+    int            unknown_6C;    // +0x6C untouched tail to sizeof
 };
 
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_1C)  == 0x1C);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_20)  == 0x20);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, SlopeTimer)  == 0x24);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, Destination) == 0x34);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, HeadToCoord) == 0x40);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, SpeedAccum)  == 0x4C);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_50)  == 0x50);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_54)  == 0x54);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, TrackNumber) == 0x58);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, TrackIndex)  == 0x5C);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_60)  == 0x60);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_61)  == 0x61);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_62)  == 0x62);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_63)  == 0x63);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_64)  == 0x64);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, UnLocked)    == 0x65);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, Piggybackee) == 0x68);
-GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_6C)  == 0x6C);
-GG_STATIC_ASSERT(sizeof(ShipLocomotionClass)                == 0x70);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_1C)    == 0x1C);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_20)    == 0x20);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, SlopeTimer)    == 0x24);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, DestCoord)     == 0x34);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, HeadTo)        == 0x40);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, SpeedAccum)    == 0x4C);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_50)    == 0x50);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, TrackNumber)   == 0x58);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, TrackIndex)    == 0x5C);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_60)    == 0x60);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, UnLocked)      == 0x65);
+GG_STATIC_ASSERT((size_t)&reinterpret_cast<const char&>(((ShipLocomotionClass*)0)->Piggybackee) == 0x68);
+GG_STATIC_ASSERT(offsetof(ShipLocomotionClass, unknown_6C)    == 0x6C);
+GG_STATIC_ASSERT(sizeof(ShipLocomotionClass)                  == 0x70);
 
 #endif  // GG_MATCH_LAYOUT_SHIP_LOCOMOTION_CLASS_H

@@ -109,36 +109,7 @@ template<class T> class DynamicVectorClass;
 
 #include <ocidl.h>   // IConnectionPointContainer (VC98 SDK, LIBRARY)
 
-// COM interfaces HouseClass implements. RTTI names both `.?AU` structs with a
-// single IUnknown base. Slot names are placeholders; argument counts come from
-// RET n of each slot's target (IHouse table 0x7EA834: slots 3-9 and 13-14 RET 4,
-// 10-12 RET 8; IPublicHouse table 0x7EA80C: slots 3-4 adjust to IHouse 3-4,
-// 5-7 RET 8, 8 RET 4). Return types are not recovered.
-struct IHouse : public IUnknown
-{
-    virtual HRESULT __stdcall vf_03() = 0;                     // 3
-    virtual HRESULT __stdcall vf_04() = 0;                     // 4
-    virtual HRESULT __stdcall vf_05() = 0;                     // 5
-    virtual HRESULT __stdcall vf_06() = 0;                     // 6
-    virtual HRESULT __stdcall vf_07() = 0;                     // 7
-    virtual HRESULT __stdcall vf_08() = 0;                     // 8
-    virtual HRESULT __stdcall vf_09() = 0;                     // 9
-    virtual HRESULT __stdcall vf_10(int a1) = 0;               // 10
-    virtual HRESULT __stdcall vf_11(int a1) = 0;               // 11
-    virtual HRESULT __stdcall vf_12(int a1) = 0;               // 12
-    virtual HRESULT __stdcall vf_13() = 0;                     // 13
-    virtual HRESULT __stdcall vf_14() = 0;                     // 14
-};
-
-struct IPublicHouse : public IUnknown
-{
-    virtual HRESULT __stdcall vf_03() = 0;                     // 3 (same target as IHouse 3)
-    virtual HRESULT __stdcall vf_04() = 0;                     // 4 (same target as IHouse 4)
-    virtual HRESULT __stdcall vf_05(int a1) = 0;               // 5
-    virtual HRESULT __stdcall vf_06(int a1) = 0;               // 6
-    virtual HRESULT __stdcall vf_07(int a1) = 0;               // 7
-    virtual HRESULT __stdcall vf_08() = 0;                     // 8
-};
+#include "house_interfaces.h"   // IHouse, IPublicHouse
 
 // Bases per retail CHD (COL 0x802A28): IHouse mdisp 0x24, IPublicHouse 0x28,
 // IConnectionPointContainer 0x2C.

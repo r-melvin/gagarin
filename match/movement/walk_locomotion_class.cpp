@@ -257,3 +257,10 @@ int WalkLocomotionClass::Size()
 
 // FUNCTION: GAMEMD 0x75CBE0
 // Scalar deleting destructor, compiler output around the inline destructor.
+
+// SYNTHETIC: GAMEMD 0x75CC30 -- compiler-generated ILocomotion QI adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x75CC40 -- compiler-generated ILocomotion AddRef adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x75CC50 -- compiler-generated ILocomotion Release adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x75CC60 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x75CC70 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x75CC80 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).

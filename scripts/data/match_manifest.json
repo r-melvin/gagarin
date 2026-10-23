@@ -59418,11 +59418,11 @@
  {
   "tu": "match/core/cstream_read_methods.cpp",
   "addr": "0x4A2B60",
-  "sym": "?Read@CStreamClass@@QAGJPAXJPAK@Z",
+  "sym": "?Read@CStreamClass@@UAGJPAXKPAK@Z",
   "len": "0x168",
   "name": "CStreamClass::Read",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/ddraw_set_mode_methods.cpp",
@@ -96651,5 +96651,437 @@
   "name": "?FUN_00685DC0@@YIXXZ",
   "status": "partial",
   "pct": 32.6
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A2820",
+  "sym": "??0CStreamClass@@QAE@XZ",
+  "len": "0x56",
+  "name": "CStreamClass::CStreamClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A2930",
+  "sym": "?AddRef@CStreamClass@@UAGKXZ",
+  "len": "0x1e",
+  "name": "CStreamClass::AddRef",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A2950",
+  "sym": "?Release@CStreamClass@@UAGKXZ",
+  "len": "0x37",
+  "name": "CStreamClass::Release",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A2990",
+  "sym": "?QueryInterface@CStreamClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x87",
+  "name": "CStreamClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A3220",
+  "sym": "?QueryInterface@CStreamClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "CStreamClass::QueryInterface (ILinkStream adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A3230",
+  "sym": "?AddRef@CStreamClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "CStreamClass::AddRef (ILinkStream adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/cstream_read_methods.cpp",
+  "addr": "0x4A3240",
+  "sym": "?Release@CStreamClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "CStreamClass::Release (ILinkStream adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4D90",
+  "sym": "?QueryInterface@DriveLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4DA0",
+  "sym": "?AddRef@DriveLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4DB0",
+  "sym": "?Release@DriveLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4DC0",
+  "sym": "?QueryInterface@DriveLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4DD0",
+  "sym": "?AddRef@DriveLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/drive_locomotion.cpp",
+  "addr": "0x4B4DE0",
+  "sym": "?Release@DriveLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "DriveLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54B750",
+  "sym": "?Load@JumpjetLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x88",
+  "name": "JumpjetLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DA00",
+  "sym": "?BeginPiggyback@JumpjetLocomotionClass@@UAGJPAUILocomotion@@@Z",
+  "len": "0x43",
+  "name": "JumpjetLocomotionClass::BeginPiggyback",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DB50",
+  "sym": "?PiggybackCLSID@JumpjetLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x10b",
+  "name": "JumpjetLocomotionClass::PiggybackCLSID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DC60",
+  "sym": "?QueryInterface@JumpjetLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5d",
+  "name": "JumpjetLocomotionClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DFA0",
+  "sym": "??_GJumpjetLocomotionClass@@UAEPAXI@Z",
+  "len": "0x44",
+  "name": "JumpjetLocomotionClass::scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DFF0",
+  "sym": "?QueryInterface@JumpjetLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54E000",
+  "sym": "?AddRef@JumpjetLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54E010",
+  "sym": "?Release@JumpjetLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54E020",
+  "sym": "?QueryInterface@JumpjetLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54E030",
+  "sym": "?AddRef@JumpjetLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54E040",
+  "sym": "?Release@JumpjetLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "JumpjetLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69EC50",
+  "sym": "??0ShipLocomotionClass@@QAE@XZ",
+  "len": "0x9a",
+  "name": "ShipLocomotionClass::ShipLocomotionClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69ED20",
+  "sym": "?PiggybackCLSID@ShipLocomotionClass@@UAGJPAU_GUID@@@Z",
+  "len": "0x10b",
+  "name": "ShipLocomotionClass::PiggybackCLSID",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69EE30",
+  "sym": "?QueryInterface@ShipLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
+  "len": "0x5d",
+  "name": "ShipLocomotionClass::QueryInterface",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69EE90",
+  "sym": "?Load@ShipLocomotionClass@@UAGJPAUIStream@@@Z",
+  "len": "0x7f",
+  "name": "ShipLocomotionClass::Load",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69EFF0",
+  "sym": "?BeginPiggyback@ShipLocomotionClass@@UAGJPAUILocomotion@@@Z",
+  "len": "0x43",
+  "name": "ShipLocomotionClass::BeginPiggyback",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F040",
+  "sym": "?EndPiggyback@ShipLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
+  "len": "0x31",
+  "name": "ShipLocomotionClass::EndPiggyback",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4300",
+  "sym": "?QueryInterface@ShipLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4310",
+  "sym": "?AddRef@ShipLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4320",
+  "sym": "?Release@ShipLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4330",
+  "sym": "?QueryInterface@ShipLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4340",
+  "sym": "?AddRef@ShipLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4350",
+  "sym": "?Release@ShipLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "ShipLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A160",
+  "sym": "?QueryInterface@TeleportLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A170",
+  "sym": "?AddRef@TeleportLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A180",
+  "sym": "?Release@TeleportLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A190",
+  "sym": "?QueryInterface@TeleportLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A1A0",
+  "sym": "?AddRef@TeleportLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/teleport_locomotion.cpp",
+  "addr": "0x71A1B0",
+  "sym": "?Release@TeleportLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "TeleportLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC30",
+  "sym": "?QueryInterface@WalkLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::QueryInterface (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC40",
+  "sym": "?AddRef@WalkLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::AddRef (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC50",
+  "sym": "?Release@WalkLocomotionClass@@W3AGKXZ",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::Release (ILocomotion adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC60",
+  "sym": "?QueryInterface@WalkLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::QueryInterface (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC70",
+  "sym": "?AddRef@WalkLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::AddRef (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/walk_locomotion_class.cpp",
+  "addr": "0x75CC80",
+  "sym": "?Release@WalkLocomotionClass@@WBI@AGKXZ",
+  "len": "0xa",
+  "name": "WalkLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

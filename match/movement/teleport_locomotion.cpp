@@ -808,3 +808,10 @@ int TeleportLocomotionClass::Size()
 // FUNCTION: GAMEMD 0x71A130
 // The scalar deleting destructor (synthetic): the inline destructor releases
 // Piggybackee and chains ~LocomotionClass 0x55A6F0.
+
+// SYNTHETIC: GAMEMD 0x71A160 -- compiler-generated ILocomotion QI adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x71A170 -- compiler-generated ILocomotion AddRef adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x71A180 -- compiler-generated ILocomotion Release adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x71A190 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x71A1A0 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x71A1B0 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).

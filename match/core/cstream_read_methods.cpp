@@ -1,79 +1,70 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
 //
-// CStreamClass (COM stream wrapper, vtable 0x7E5DAC): the block-decompressing
-// Read in slot 3. Each block on the underlying stream is an 8-byte header
-// (compressed size, decompressed size) followed by the compressed bytes,
-// which are expanded into the output buffer through the fastcall
-// decompressor at 0x55C0E0.
+// CStreamClass (layout and tables in _layout/cstream_class.h): the
+// constructor, the IUnknown bodies and the block-decompressing Read in slot 3.
+// Each block on the underlying stream is an 8-byte header (compressed size,
+// decompressed size) followed by the compressed bytes, which are expanded into
+// the output buffer through the fastcall decompressor at 0x55C0E0. Defining
+// the constructor makes VC6 emit both tables here, and with them the
+// ILinkStream-side (+4) IUnknown adjustor thunks.
 
-#include <stddef.h>
-#include <string.h>
-#include "../_rt/gg_static_assert.h"
+#include "../_layout/cstream_class.h"
 
-typedef unsigned long ULONG;
-
-extern void __stdcall _com_issue_error(long hr);   // retail 0x7DC720, not matched
+// GLOBAL: GAMEMD 0xABCD3C - live COM-object counter.
+extern int DAT_00ABCD3C;
 
 // FUNCTION placeholder: retail 0x55C0E0, fastcall block decompressor.
 int FUN_0055c0e0(void const* src, unsigned src_len, void* dst,
                  unsigned* dst_len, void* work);
 
-struct IStreamView
+// FUNCTION: GAMEMD 0x4A2820
+CStreamClass::CStreamClass()
+    : RefCount(0), Reading(false), Writing(false), Remaining(0),
+      OutBuffer(new char[0x10000]), InBuffer(new char[0x10000]),
+      unknown_20(new char[0x10000])
 {
-    virtual long __stdcall QueryInterface(void const* iid, void** out) = 0;
-    virtual ULONG __stdcall AddRef() = 0;
-    virtual ULONG __stdcall Release() = 0;
-    virtual long __stdcall Read(void* pv, ULONG cb, ULONG* read) = 0;
-};
+    Header.CompressedSize = 0xFFFF;
+}
 
-// _com_ptr_t<IStream>::operator-> shape.
-struct IStreamViewPtr
+// FUNCTION: GAMEMD 0x4A2930
+ULONG __stdcall CStreamClass::AddRef()
 {
-    IStreamView* m_pInterface;
-    IStreamView* operator->() const
-    {
-        if (m_pInterface == 0)
-        {
-            _com_issue_error(0x80004003);   // E_POINTER
-        }
-        return m_pInterface;
-    }
-};
+    ++DAT_00ABCD3C;
+    return InterlockedIncrement(&RefCount);
+}
 
-struct CStreamBlockHeader
+// FUNCTION: GAMEMD 0x4A2950
+ULONG __stdcall CStreamClass::Release()
 {
-    int CompressedSize;     // +0x0
-    int UncompressedSize;   // +0x4
-};
+    --DAT_00ABCD3C;
+    LONG count = InterlockedDecrement(&RefCount);
+    if (count == 0)
+        delete this;
+    return count;
+}
 
-class CStreamClass
+// FUNCTION: GAMEMD 0x4A2990
+HRESULT __stdcall CStreamClass::QueryInterface(REFIID riid, void** ppv)
 {
-public:
-    long __stdcall Read(void* pv, long cb, ULONG* read);
-
-    void*              vftable;      // +0x00
-    int                unknown_04;   // +0x04
-    IStreamViewPtr     Stream;       // +0x08
-    int                unknown_0C;   // +0x0C
-    bool               Reading;      // +0x10
-    bool               Writing;      // +0x11
-    char               unknown_12[2];
-    int                Remaining;    // +0x14
-    char*              OutBuffer;    // +0x18
-    char*              InBuffer;     // +0x1C
-    int                unknown_20;   // +0x20
-    CStreamBlockHeader Header;       // +0x24
-};
-GG_STATIC_ASSERT(offsetof(CStreamClass, Stream) == 0x08);
-GG_STATIC_ASSERT(offsetof(CStreamClass, Reading) == 0x10);
-GG_STATIC_ASSERT(offsetof(CStreamClass, Writing) == 0x11);
-GG_STATIC_ASSERT(offsetof(CStreamClass, Remaining) == 0x14);
-GG_STATIC_ASSERT(offsetof(CStreamClass, OutBuffer) == 0x18);
-GG_STATIC_ASSERT(offsetof(CStreamClass, InBuffer) == 0x1C);
-GG_STATIC_ASSERT(offsetof(CStreamClass, Header) == 0x24);
+    if (ppv == 0)
+        return E_POINTER;
+    *ppv = 0;
+    if (riid == IID_IUnknown)
+        *ppv = static_cast<IStream*>(this);
+    if (riid == IID_IStream)
+        *ppv = static_cast<IStream*>(this);
+    if (riid == IID_ILinkStream)
+        *ppv = static_cast<ILinkStream*>(this);
+    if (*ppv == 0)
+        return E_NOINTERFACE;
+    AddRef();
+    return S_OK;
+}
 
 // FUNCTION: GAMEMD 0x4A2B60
-long __stdcall CStreamClass::Read(void* pv, long cb, ULONG* read)
+HRESULT __stdcall CStreamClass::Read(void* pv, ULONG cb, ULONG* read)
 {
     long left = cb;
     if (pv == 0)
@@ -84,7 +75,7 @@ long __stdcall CStreamClass::Read(void* pv, long cb, ULONG* read)
     {
         return 0x80070057;   // E_INVALIDARG
     }
-    if (Stream.m_pInterface == 0)
+    if (Stream == 0)
     {
         return 0x80004005;   // E_FAIL
     }
@@ -144,3 +135,7 @@ long __stdcall CStreamClass::Read(void* pv, long cb, ULONG* read)
     }
     return 0;
 }
+
+// SYNTHETIC: GAMEMD 0x4A3220 -- compiler-generated ILinkStream QI adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x4A3230 -- compiler-generated ILinkStream AddRef adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x4A3240 -- compiler-generated ILinkStream Release adjustor thunk (this -= 0x4).

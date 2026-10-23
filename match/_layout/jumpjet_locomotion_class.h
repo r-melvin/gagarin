@@ -38,10 +38,55 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "locomotion_class.h"
+#include "../movement/loco_base.h"
+#include "../movement/loco_com.h"
 
-class JumpjetLocomotionClass : public LocomotionPiggybackBase
+// Declared with its real bases (LocomotionClass, IPiggyback) so VC6 lays out the
+// three tables and generates the ILocomotion (+4) and IPiggyback (+0x18)
+// adjustor thunks itself. Overridden slots read from the three tables against
+// LocomotionClass's 0x7EAEC0 / 0x7EADF4.
+// Tables 0x7ECE34 (primary), 0x7ECD68 (ILocomotion), 0x7ECD44 (IPiggyback);
+// not claimed while slot bodies such as LinkToObject 0x54AD30 are unmatched.
+class JumpjetLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
+    // FUNCTION: GAMEMD 0x54AC40 (declaration)
+    JumpjetLocomotionClass();
+    // No-init constructor (Load 0x54B750 re-runs it through placement new: it
+    // stores only Piggybackee and the three vptrs).
+    JumpjetLocomotionClass(int) : LocomotionClass(0) {}
+    // Primary slot 8: inline, so the deleting wrapper 0x54DFA0 carries the body
+    // (releases Piggybackee, then ~LocomotionClass 0x55A6F0).
+    virtual ~JumpjetLocomotionClass() {}
+
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x54DC60
+    virtual ULONG   __stdcall AddRef();                                   // 0x54DF50
+    virtual ULONG   __stdcall Release();                                  // 0x54DF60
+
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                // 0x54B710
+    virtual HRESULT __stdcall Load(IStream* pStm);                        // 0x54B750
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);      // 0x54B7E0
+    virtual int Size();                                                   // 0x54DF90
+
+    virtual HRESULT __stdcall LinkToObject(FootClass* object);            // 3  0x54AD30
+    virtual bool __stdcall IsMoving();                                    // 4  0x54AE50
+    virtual LocoCoord __stdcall Destination();                            // 5  0x54AE60
+    virtual LocoCoord __stdcall HeadToCoord();                            // 6  0x54D9B0
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);         // 9  0x54DCC0
+    virtual bool __stdcall Process();                                     // 16 0x54AEC0
+    virtual void __stdcall MoveTo(LocoCoord to);                          // 17 0x54B1C0
+    virtual void __stdcall StopMoving();                                  // 18 0x54B4D0
+    virtual void __stdcall DoTurn(unsigned long dir);                     // 19 0x54B6E0
+    virtual int __stdcall InWhichLayer();                                 // 29 0x54B8D0
+    virtual bool __stdcall IsMovingNow();                                 // 32 0x54D0D0
+    virtual void __stdcall MarkAllOccupationBits(int mark);               // 39 0x54D930
+
+    virtual HRESULT __stdcall BeginPiggyback(ILocomotion* loco);          // 3  0x54DA00
+    virtual HRESULT __stdcall EndPiggyback(ILocomotion** out);            // 4  0x54DA50
+    virtual bool __stdcall IsOkToEnd();                                   // 5  0x54DB00
+    virtual HRESULT __stdcall PiggybackCLSID(CLSID* out);                 // 6  0x54DB50
+    virtual bool __stdcall IsPiggybacking();                              // 7  0x54DF70
+
     int         TurnRate;         // +0x1C <- TechnoTypeClass::JumpjetTurnRate
                                   //       (type+0xD70, read @0x0054AD49, stored
                                   //       `MOV [EBP+0x18],ECX` @0x0054AD4F).
@@ -79,7 +124,7 @@ public:
     char        unknown_3D[3];    // +0x3D alignment behind the bool at 0x3C; no
                                   //       access at any width
 
-    CoordStruct Destination;      // +0x40 ctor `LEA EAX,[ESI+0x40]` @0x0054AC51
+    LocoCoord   DestCoord;        // +0x40 ctor `LEA EAX,[ESI+0x40]` @0x0054AC51
                                   //       then X @0x0054AC59, Y @0x0054AC61,
                                   //       Z @0x0054AC70 from the file-scope
                                   //       globals 0x00ABC5A8 / 0x00ABC5AC /
@@ -140,7 +185,7 @@ public:
     char        unknown_91;       // +0x91 ctor @0x0054ACAB (=0)
     char        unknown_92[2];    // +0x92 alignment; no access at any width
 
-    void*       Piggybackee;      // +0x94 ILocomotion*; ctor @0x0054ACB5 (=0).
+    ILocomotionPtr Piggybackee;   // +0x94 ILocomotion*; ctor @0x0054ACB5 (=0).
                                   //       Last member; 0x94+4 = sizeof.
 };
 
@@ -153,7 +198,7 @@ GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, Accel)            == 0x30);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, Wobbles)          == 0x34);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_38)       == 0x38);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, NoWobbles)        == 0x3C);
-GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, Destination)      == 0x40);
+GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, DestCoord)        == 0x40);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_4C)       == 0x4C);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_50)       == 0x50);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, LocomotionFacing) == 0x54);
@@ -166,7 +211,7 @@ GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_88)       == 0x88);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_8C)       == 0x8C);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_90)       == 0x90);
 GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, unknown_91)       == 0x91);
-GG_STATIC_ASSERT(offsetof(JumpjetLocomotionClass, Piggybackee)      == 0x94);
+GG_STATIC_ASSERT((size_t)&reinterpret_cast<const char&>(((JumpjetLocomotionClass*)0)->Piggybackee) == 0x94);
 GG_STATIC_ASSERT(sizeof(JumpjetLocomotionClass)                     == 0x98);
 
 #endif  // GG_MATCH_LAYOUT_JUMPJET_LOCOMOTION_CLASS_H

@@ -555,3 +555,10 @@ int DriveLocomotionClass::Size()
 }
 
 // SYNTHETIC: GAMEMD 0x4B4D00 -- compiler-generated scalar deleting destructor.
+
+// SYNTHETIC: GAMEMD 0x4B4D90 -- compiler-generated ILocomotion QI adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x4B4DA0 -- compiler-generated ILocomotion AddRef adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x4B4DB0 -- compiler-generated ILocomotion Release adjustor thunk (this -= 0x4).
+// SYNTHETIC: GAMEMD 0x4B4DC0 -- compiler-generated IPiggyback QI adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x4B4DD0 -- compiler-generated IPiggyback AddRef adjustor thunk (this -= 0x18).
+// SYNTHETIC: GAMEMD 0x4B4DE0 -- compiler-generated IPiggyback Release adjustor thunk (this -= 0x18).
