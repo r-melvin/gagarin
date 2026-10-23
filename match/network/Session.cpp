@@ -1156,6 +1156,87 @@ int Obj_0069ACC0::FUN_0069ACC0() const
     return unknown_18C->unknown_00;
 }
 
+#include "../_layout/house_class.h"
+#include "../core/scenario_class_methods.h"
+#include "../core/vector_class_operations.h"
+// GLOBAL: GAMEMD 0xA8B230
+extern ScenarioClass* ScenarioInstance;
+// Declaration: GLOBAL GAMEMD 0xA80228 -- existing house-vector owner.
+extern DynamicVectorClass<HouseClass*> HouseArray_00A80228;
+// Declaration: GLOBAL GAMEMD 0xB77A04 -- logical buffer bounds unproven.
+extern char DAT_00B77A04[];
+// Declaration: GLOBAL GAMEMD 0xB76568 -- logical buffer bounds unproven.
+extern char DAT_00B76568[];
+// Declaration: STRING GAMEMD 0x83F6B8
+extern const char STR_0083F6B8[];
+// Declaration: STRING GAMEMD 0x83F6A8
+extern const char STR_0083F6A8[];
+// Declaration: STRING GAMEMD 0x817F70 -- comma, primary bytes confirmed.
+extern const char STR_00817F70[];
+// Declaration: FUNCTION GAMEMD 0x4068E0
+extern "C" int __cdecl FUN_004068E0(const char*, ...);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) + (0x688 - 0x300) == 0x688);
+GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
+GG_STATIC_ASSERT(offsetof(HouseClass, IsHumanPlayer) == 0x1EC);
+GG_STATIC_ASSERT(offsetof(HouseClass, PlainName) == 0x15FF4);
+// FUNCTION: GAMEMD 0x69B170
+void SessionClass::FUN_0069B170()
+{
+    unknown_300[0x688 - 0x300] = 0;
+    if (GameMode != 4) return;
+    ScenarioInstance->unknown_0000 &= ~0x400U;
+    FUN_004068E0(STR_0083F6B8, DAT_00B77A04);
+    FUN_004068E0(STR_0083F6A8, DAT_00B76568);
+    if (strlen(DAT_00B77A04) == 0) return;
+    if (strlen(DAT_00B76568) == 0) return;
+
+    DynamicVectorClass<HouseClass*> first;
+    DynamicVectorClass<HouseClass*> second;
+    // Native compares lengths unsigned and selects the SECOND on a tie.
+    const char* longest = strlen(DAT_00B77A04) > strlen(DAT_00B76568)
+        ? DAT_00B77A04 : DAT_00B76568;
+    char* buffer = new char[strlen(longest) + 32];
+    strcpy(buffer, DAT_00B77A04);
+    char* token = strtok(buffer, STR_00817F70);
+    while (token != 0 && *token != 0) {
+        for (int index = 0; index < HouseArray_00A80228.Count; ++index) {
+            HouseClass* house = HouseArray_00A80228.Items[index];
+            if (house->IsHumanPlayer && _stricmp(house->PlainName, token) == 0)
+                first.AddItem(house);
+        }
+        token = strtok(0, STR_00817F70);
+    }
+    strcpy(buffer, DAT_00B76568);
+    token = strtok(buffer, STR_00817F70);
+    while (token != 0 && *token != 0) {
+        for (int index = 0; index < HouseArray_00A80228.Count; ++index) {
+            HouseClass* house = HouseArray_00A80228.Items[index];
+            if (house->IsHumanPlayer && _stricmp(house->PlainName, token) == 0)
+                second.AddItem(house);
+        }
+        token = strtok(0, STR_00817F70);
+    }
+    if (first.Count > 1) {
+        for (int index = 0; index < first.Count; ++index) {
+            for (int other = 0; other < first.Count; ++other) {
+                if (first.Items[index]->ArrayIndex != first.Items[other]->ArrayIndex)
+                    first.Items[index]->FUN_004F9B70(first.Items[other], false);
+            }
+        }
+    }
+    if (second.Count > 1) {
+        for (int index = 0; index < second.Count; ++index) {
+            for (int other = 0; other < second.Count; ++other) {
+                if (second.Items[index]->ArrayIndex != second.Items[other]->ArrayIndex)
+                    second.Items[index]->FUN_004F9B70(second.Items[other], false);
+            }
+        }
+    }
+    delete[] buffer;
+    unknown_300[0x688 - 0x300] = 1;
+    ScenarioInstance->unknown_0000 |= 0x400U;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x69ADE0
 // Stores its argument in a member; pops its stack arguments.
@@ -1836,6 +1917,10 @@ bool VectorResizeFamily::FUN_69C890(int newsize, void** array)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69D870
+// VectorClass<HouseClass*>::VectorClass(int, HouseClass**)
+template class VectorClass<HouseClass*>;
+
 // FUNCTION: GAMEMD 0x69D8C0
 void ShaEngineView_0069D8C0::FUN_0069D8C0(const void*& data, long& length)
 {

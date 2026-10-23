@@ -293,6 +293,7 @@
  "??_7?$DynamicVectorClass@PAUWinsockBufferType@WinsockInterfaceClass@@@@6B@": "0x007F7A1C",
  "??_7?$DynamicVectorClass@PAV?$DynamicVectorClass@PAD@@@@6B@": "0x007E5BE4",
  "??_7?$DynamicVectorClass@PAVEventClass@@@@6B@": "0x007EFE04",
+ "??_7?$DynamicVectorClass@PAVHouseClass@@@@6B@": "0x007E9EE4",
  "??_7?$DynamicVectorClass@PAVPlanningBranchClass@@@@6B@": "0x007EFEC4",
  "??_7?$DynamicVectorClass@PAVPlanningMemberClass@@@@6B@": "0x007EFEE4",
  "??_7?$DynamicVectorClass@PAVPlanningNodeClass@@@@6B@": "0x007EFE44",

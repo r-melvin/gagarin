@@ -15541,13 +15541,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_ctor_pod_family_methods.cpp",
+  "tu": "match/network/Session.cpp",
   "addr": "0x69D870",
-  "sym": "?Ctor@VectorClass_0069D870@@QAEPAU1@IPAUPodElem4@@@Z",
+  "sym": "??0?$VectorClass@PAVHouseClass@@@@QAE@HPAPAVHouseClass@@@Z",
   "len": "0x4a",
-  "name": "VectorClass_0069D870::Ctor",
+  "name": "VectorClass<HouseClass*>::VectorClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_ctor_pod_family_methods.cpp",
@@ -98245,5 +98245,14 @@
   "name": "Mouse scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69B170",
+  "sym": "?FUN_0069B170@SessionClass@@QAEXXZ",
+  "len": "0x3c6",
+  "name": "SessionClass::FUN_0069B170",
+  "status": "partial",
+  "pct": 8.4
  }
 ]
