@@ -11,37 +11,10 @@
 extern "C" int __cdecl strcmpi(const char* a, const char* b);
 
 extern const char* const DAT_00836EE0[5];
-// FUNCTION: GAMEMD 0x00644850
-int FUN_00644850(const char* name)
-{
-    for (int i = 0; i < 5; ++i) {
-        if (strcmpi(name, DAT_00836EE0[i]) == 0)
-            return i;
-    }
-    return -1;
-}
 
 extern const char* const DAT_008370BC[5];
-// FUNCTION: GAMEMD 0x006458D0
-int FUN_006458D0(const char* name)
-{
-    for (int i = 0; i < 5; ++i) {
-        if (strcmpi(name, DAT_008370BC[i]) == 0)
-            return i;
-    }
-    return -1;
-}
 
 extern const char* const DAT_007F0248[12];
-// FUNCTION: GAMEMD 0x00645B60
-int FUN_00645B60(const char* name)
-{
-    for (int i = 0; i < 12; ++i) {
-        if (strcmpi(name, DAT_007F0248[i]) == 0)
-            return i;
-    }
-    return 0;
-}
 
 extern const char* const DAT_008449F8[3];
 // FUNCTION: GAMEMD 0x00727190

@@ -72,8 +72,3 @@ int Obj_00719E20::FUN_00719E20(void*)
 struct Obj_0075C7E0 {
     int FUN_0075C7E0(void*);
 };
-// FUNCTION: GAMEMD 0x0075C7E0
-int Obj_0075C7E0::FUN_0075C7E0(void*)
-{
-    return 2;
-}

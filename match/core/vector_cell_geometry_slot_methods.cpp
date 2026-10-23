@@ -53,16 +53,6 @@ template class VectorClass<BaseNodeClass>;
 template class DynamicVectorClass<BaseNodeClass>;
 
 template<class T> struct TPoint3D { T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
-// FUNCTION: GAMEMD 0x00465E10
-// VectorClass<TPoint3D<int>>::operator==
-// FUNCTION: GAMEMD 0x00465E70
-// VectorClass<TPoint3D<int>>::SetCapacity
-// FUNCTION: GAMEMD 0x00465F80
-// VectorClass<TPoint3D<int>>::FindItemIndex
-// FUNCTION: GAMEMD 0x00465FD0
-// VectorClass<TPoint3D<int>>::Slot5
-// FUNCTION: GAMEMD 0x00465DE0
-// VectorClass<TPoint3D<int>>::Slot6
 // VTABLE: GAMEMD 0x007E4638 -- VectorClass<TPoint3D<int>>.
 template class VectorClass<TPoint3D<int> >;
 

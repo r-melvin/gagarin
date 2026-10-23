@@ -19,17 +19,6 @@ struct Obj_006B5440 {
 };
 extern DynamicVectorClass<Obj_006B5440*> DAT_00A8EC18;
 
-// FUNCTION: GAMEMD 0x006B5440
-int Obj_006B5440::FUN_006B5440(const char* name)
-{
-    if (name != 0) {
-        for (int i = 0; i < DAT_00A8EC18.Count; ++i) {
-            if (FUN_007C8D20(DAT_00A8EC18.Items[i]->ID, name) == 0)
-                return i;
-        }
-    }
-    return -1;
-}
 
 struct Obj_006CEE60 {
     unsigned char unknown_00[0x24];

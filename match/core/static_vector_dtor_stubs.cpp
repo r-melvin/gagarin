@@ -142,20 +142,12 @@ DynamicVectorClass<WeaponTypeClass*> DAT_00887568;
 DynamicVectorClass<AirstrikeClass*> DAT_00889FB8;
 
 // GLOBAL: GAMEMD 0x0088A0F0
-// SYNTHETIC: GAMEMD 0x00420920 -- exit-time destructor stub of DAT_0088A0F0
-DynamicVectorClass<AlphaShapeClass*> DAT_0088A0F0;
 
 // GLOBAL: GAMEMD 0x0089E0F0
-// SYNTHETIC: GAMEMD 0x00471790 -- exit-time destructor stub of DAT_0089E0F0
-DynamicVectorClass<CaptureManagerClass*> DAT_0089E0F0;
 
 // GLOBAL: GAMEMD 0x008A0208
-// SYNTHETIC: GAMEMD 0x004A6CB0 -- exit-time destructor stub of DAT_008A0208
-DynamicVectorClass<DiskLaserClass*> DAT_008A0208;
 
 // GLOBAL: GAMEMD 0x008A0E88
-// SYNTHETIC: GAMEMD 0x004C1DD0 -- exit-time destructor stub of DAT_008A0E88
-DynamicVectorClass<EBolt*> DAT_008A0E88;
 
 // GLOBAL: GAMEMD 0x008A3770
 // SYNTHETIC: GAMEMD 0x004C3C50 -- exit-time destructor stub of DAT_008A3770
@@ -370,8 +362,6 @@ DynamicVectorClass<TagClass*> DAT_008B41A8;
 DynamicVectorClass<TagClass*> DAT_008B40C8;
 
 // GLOBAL: GAMEMD 0x00ABCA10
-// SYNTHETIC: GAMEMD 0x00554680 -- exit-time destructor stub of DAT_00ABCA10
-DynamicVectorClass<LightSourceClass*> DAT_00ABCA10;
 
 // GLOBAL: GAMEMD 0x00ABCB78
 // SYNTHETIC: GAMEMD 0x005569E0 -- exit-time destructor stub of DAT_00ABCB78
@@ -390,8 +380,6 @@ DynamicVectorClass<HWND__*> DAT_00ABFC90;
 DynamicVectorClass<SpotLightClass*> DAT_00AC1678;
 
 // GLOBAL: GAMEMD 0x00AC4910
-// SYNTHETIC: GAMEMD 0x006291D0 -- exit-time destructor stub of DAT_00AC4910
-DynamicVectorClass<ParasiteClass*> DAT_00AC4910;
 
 // GLOBAL: GAMEMD 0x00B04A60
 // SYNTHETIC: GAMEMD 0x006590D0 -- exit-time destructor stub of DAT_00B04A60
@@ -410,8 +398,6 @@ DynamicVectorClass<ColorScheme*> DAT_00B054D0;
 DynamicVectorClass<SlaveManagerClass*> DAT_00B0B5F0;
 
 // GLOBAL: GAMEMD 0x00B0B880
-// SYNTHETIC: GAMEMD 0x006B6C50 -- exit-time destructor stub of DAT_00B0B880
-DynamicVectorClass<SpawnManagerClass*> DAT_00B0B880;
 
 // GLOBAL: GAMEMD 0x00B0BC88
 // SYNTHETIC: GAMEMD 0x006BB2A0 -- exit-time destructor stub of DAT_00B0BC88
@@ -426,8 +412,6 @@ DynamicVectorClass<TActionClass*> DAT_00B0E658;
 DynamicVectorClass<TagClass*> DAT_00B0E720;
 
 // GLOBAL: GAMEMD 0x00B0EC60
-// SYNTHETIC: GAMEMD 0x0071A410 -- exit-time destructor stub of DAT_00B0EC60
-DynamicVectorClass<TemporalClass*> DAT_00B0EC60;
 
 // GLOBAL: GAMEMD 0x00B0F1A0
 // SYNTHETIC: GAMEMD 0x0071E660 -- exit-time destructor stub of DAT_00B0F1A0

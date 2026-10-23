@@ -19,22 +19,3 @@ char* Obj_0041CB20::FUN_0041CB20(int arg)
     return 0;
 }
 
-// FUNCTION: GAMEMD 0x459840
-// The first non-zero of three sub-object counters, falling back to the owner's
-// own field. All four returns share one epilogue.
-int Obj_00459840::FUN_00459840() const
-{
-    if (unknown_520->atEA4) {
-        return unknown_520->atEA4;
-    }
-
-    if (unknown_520->atEA8) {
-        return unknown_520->atEA8;
-    }
-
-    if (unknown_520->atEAC) {
-        return unknown_520->atEAC;
-    }
-
-    return unknown_6F4;
-}

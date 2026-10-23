@@ -62,22 +62,5 @@ class BuildingTypeClass;
 template class DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*> >;
 
 class AITriggerTypeClass; 
-// FUNCTION: GAMEMD 0x006F2290
-// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::operator==
-// FUNCTION: GAMEMD 0x006F2440
-// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x006F2490
-// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::Slot5
-// FUNCTION: GAMEMD 0x006F2210
-// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::Slot6
-// FUNCTION: GAMEMD 0x006F2640
-// DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::FindItemIndex
-// FUNCTION: GAMEMD 0x006F21F0
-// DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::Slot5
-// FUNCTION: GAMEMD 0x006F22F0
-// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::SetCapacity
-// FUNCTION: GAMEMD 0x006F25E0
-// DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::AddItem
-template class VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
 template class DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
 

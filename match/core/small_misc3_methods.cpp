@@ -50,14 +50,3 @@ void Obj_00432C00::FUN_00433020()
     }
 }
 
-// FUNCTION: GAMEMD 0x45A050
-// Report a missing pointer, then hand it back regardless - the caller sees
-// null and the report is advisory.
-void* Obj_0045A000::FUN_0045A050()
-{
-    if (Ptr == 0) {
-        FUN_007DC720(0x80004003);
-    }
-
-    return Ptr;
-}

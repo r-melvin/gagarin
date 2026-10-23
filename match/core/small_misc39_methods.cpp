@@ -49,17 +49,6 @@ void* FUN_004074D0(int count, int elementSize)
     return block;
 }
 
-// FUNCTION: GAMEMD 0x4589C0
-int Obj_004589C0::FUN_004589C0()
-{
-    int total = (int)Storage.GetTotalAmount();
-
-    if (total == 0) {
-        return total;
-    }
-
-    return ((int)Storage.GetTotalAmount() * 4) / Settings->Divisor;
-}
 
 // FUNCTION: GAMEMD 0x4349B0
 int Obj_004349B0::FUN_004349B0(unsigned short index)

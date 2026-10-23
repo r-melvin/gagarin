@@ -36,8 +36,6 @@ struct StaticVectorHolder_00B04DA8 {
     // GLOBAL: GAMEMD 0x00B04DA8
     static DynamicVectorClass<RadarEventClass*> DAT_00B04DA8;
 };
-// SYNTHETIC: GAMEMD 0x0065F9F0 -- exit-time destructor stub of DAT_00B04DA8, guard byte 0x00B04D28 bit 0
-DynamicVectorClass<RadarEventClass*> StaticVectorHolder_00B04DA8::DAT_00B04DA8;
 
 struct StaticVectorHolder_00B0CDE8 {
     // GLOBAL: GAMEMD 0x00B0CDE8

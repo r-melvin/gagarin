@@ -68,25 +68,3 @@ void FUN_0044FE60(Ini_0044FE60* ini)
     }
 }
 
-// FUNCTION: GAMEMD 0x45E520
-// PARTIAL, 78.9% (15/19). Plain stores: cl lifts the `field_1790 = 1` byte
-// store ahead of the three zero stores; retail emits it after them.
-Obj_0045E520* Obj_0045E520::FUN_0045E520(int value)
-{
-    FUN_00711840(value);
-
-    field_E00  = 0;
-    field_1788 = 0;
-    field_178C = 0;
-    field_1790 = 1;
-    field_1791 = 0;
-
-    Secondary = &VT_007E4638;
-
-    vt0 = &VT_007E4570;
-    vt1 = &VT_007E4554;
-    vt2 = &VT_007E454C;
-    vt3 = &VT_007E4544;
-
-    return this;
-}

@@ -71,23 +71,6 @@ int FUN_00645BA0(int index)
     return DAT_007F0248[index];
 }
 
-// FUNCTION: GAMEMD 0x00660AD0
-int FUN_00660AD0(const int* index)
-{
-    return DAT_007F0998[*index].f04;
-}
-
-// FUNCTION: GAMEMD 0x00660AE0
-int FUN_00660AE0(const int* index)
-{
-    return DAT_007F0998[*index].f08;
-}
-
-// FUNCTION: GAMEMD 0x00660AF0
-int FUN_00660AF0(const int* index)
-{
-    return DAT_007F0998[*index].f00;
-}
 
 // FUNCTION: GAMEMD 0x006CFD30
 int FUN_006CFD30(int index)

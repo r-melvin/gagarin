@@ -4,60 +4,6 @@
 
 #include "small_misc25_methods.h"
 
-// FUNCTION: GAMEMD 0x45ADD0
-// An index at or past the count fails; removing the last element succeeds with
-// no copying at all, since the count drop alone is enough.
-//
-// The slide is written with the increment *after* the move. Retail's loop reads
-// `INC EAX; MOV ESI,[EDX+EAX*4]; MOV [EDX+EAX*4-4],ESI`, which looks like a
-// pre-incremented `Items[i-1] = Items[i]` - but writing it that way makes VC6
-// compute the store address with a separate LEA. Written post-incremented the
-// compiler performs that induction rewrite itself and lands on retail's form.
-// Four phrasings tried; only this one closes it.
-bool Vector_0045ADD0::FUN_0045ADD0(int index)
-{
-    int count = Count;
-
-    if (index < count) {
-        count--;
-        Count = count;
-
-        if (index < count) {
-            do {
-                Items[index] = Items[index + 1];
-
-                index++;
-            } while (index < Count);
-        }
-
-        return true;
-    }
-
-    return false;
-}
-
-// FUNCTION: GAMEMD 0x45AE10
-bool Vector_0045ADD0::FUN_0045AE10(int index)
-{
-    int count = Count;
-
-    if (index < count) {
-        count--;
-        Count = count;
-
-        if (index < count) {
-            do {
-                Items[index] = Items[index + 1];
-
-                index++;
-            } while (index < Count);
-        }
-
-        return true;
-    }
-
-    return false;
-}
 
 // PEEPHOLE DELTA (status partial, 13.3% - 2/15). Retail emits
 // `DEC EAX; TEST EAX,EAX; MOV [mem],EAX; JGE` - a redundant TEST before the

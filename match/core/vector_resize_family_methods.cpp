@@ -42,15 +42,3 @@ bool VectorResizeFamily::FUN_6B15F0(int newsize, void** array)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x6B8400
-bool VectorResizeFamily::FUN_6B8400(int newsize, void** array)
-{
-    if (ResizeBase(newsize, array)) {
-        if (Length < Count) {
-            Count = Length;
-        }
-        return true;
-    }
-
-    return false;
-}

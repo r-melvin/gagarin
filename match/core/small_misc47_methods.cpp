@@ -30,18 +30,3 @@ int FUN_00412610(const char* text)
     return value;
 }
 
-// FUNCTION: GAMEMD 0x41D7E0
-bool Obj_0041D7E0::FUN_0041D7E0(int candidate)
-{
-    int delay = FUN_00750010(Subject + 0x150) ? DelayB : DelayA;
-
-    if (!Suppressed) {
-        if (Start + delay <= CurrentFrame) {
-            return true;
-        }
-    }
-
-    bool changed = candidate != Target;
-
-    return changed;
-}

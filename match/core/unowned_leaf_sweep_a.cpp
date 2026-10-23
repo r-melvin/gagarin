@@ -227,14 +227,6 @@ struct Pair_004C1B50
     int unknown_4;
 };
 
-// FUNCTION: GAMEMD 0x004C1B50
-// Euclidean length of the pair through 0x4CAC40, truncated.
-int FUN_004C1B50(const Pair_004C1B50* self)
-{
-    double y = self->unknown_4;
-    double x = self->unknown_0;
-    return (int)FUN_004CAC40(x * x + y * y);
-}
 
 struct Obj_004C91C0
 {

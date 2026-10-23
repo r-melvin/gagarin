@@ -35,30 +35,3 @@ int FUN_00427CB0(const char* name)
     return -1;
 }
 
-// FUNCTION: GAMEMD 0x45E760
-int FUN_0045E760(const char* name)
-{
-    if (name != 0) {
-        for (int i = 0; i < DAT_00A83C78; i++) {
-            if (FUN_007C8D20(DAT_00A83C6C[i] + 0x64, name) == 0) {
-                return i;
-            }
-        }
-    }
-
-    return -1;
-}
-
-// FUNCTION: GAMEMD 0x45E7B0
-int FUN_0045E7B0(const char* name)
-{
-    if (name != 0) {
-        for (int i = 0; i < DAT_00A83C78; i++) {
-            if (FUN_007C8D20(DAT_00A83C6C[i] + 0x24, name) == 0) {
-                return i;
-            }
-        }
-    }
-
-    return -1;
-}

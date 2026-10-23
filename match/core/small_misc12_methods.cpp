@@ -45,13 +45,3 @@ void Obj_00437FD0::FUN_00437FD0(int a, int b)
     IFACE_CALL2(Ptr, 0xC, b, a);
 }
 
-// FUNCTION: GAMEMD 0x45A130
-Obj_0045A130* Obj_0045A130::FUN_0045A130(const Pair2ib* pair, int third, int fourth)
-{
-    a = pair->x;
-    b = pair->y;
-    c = third;
-    d = fourth;
-
-    return this;
-}

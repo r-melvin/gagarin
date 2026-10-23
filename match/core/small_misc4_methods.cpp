@@ -44,20 +44,3 @@ void Obj_004085E0::FUN_004085E0(int a, int b)
     unknown_14 = 0;
 }
 
-// BLOCK-ORDER DELTA (status partial, 41.7% - 5/12). Retail branches *into* the
-// call (`JNZ` to a block placed after an earlier `POP ESI; RET`), so the
-// function carries two epilogues with the call block out of line. We emit one
-// epilogue and the call inline, which is what VC6 does for a plain `if` and for
-// the inverted early-return form alike. Both were tried.
-// Lift pass (2026-09-18): re-tried `if (!FUN_00465D40(...)) return;` and an
-// explicit `goto notify;` layout that spells retail's block order literally -
-// both 41.7% with a byte-identical stream. cl 8804 always cross-jumps the two
-// two-instruction `POP ESI; RET` epilogues into one; retail (8447) keeps both.
-// Recording as an 8447-vs-8804 cross-jump difference, not chased further.
-// FUNCTION: GAMEMD 0x459C00
-void BuildingClass_00459C00::FUN_00459C00()
-{
-    if (FUN_00465D40(unknown_520)) {
-        FUN_006FC030(this);
-    }
-}

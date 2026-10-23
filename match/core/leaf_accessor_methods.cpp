@@ -118,11 +118,6 @@ void Obj_00425200::FUN_00425270()
     unknown_19E = 0;
 }
 
-// FUNCTION: GAMEMD 0x465D70
-int Obj_00465D00::FUN_00465D70() const
-{
-    return unknown_EDC;
-}
 
 // FUNCTION: GAMEMD 0x46B260
 void Obj_0046B200::FUN_0046B260(int value)

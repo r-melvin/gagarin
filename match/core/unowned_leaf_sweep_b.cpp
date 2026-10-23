@@ -328,14 +328,6 @@ struct Quad_00645C30
     Quad_00645C30(int a, int b, int c, int d);
 };
 
-// FUNCTION: GAMEMD 0x00645C30
-Quad_00645C30::Quad_00645C30(int a, int b, int c, int d)
-{
-    unknown_0 = a;
-    unknown_4 = b;
-    unknown_8 = c;
-    unknown_C = d;
-}
 
 struct Record_00656580
 {

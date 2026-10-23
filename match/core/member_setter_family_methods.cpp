@@ -13,14 +13,6 @@ void Setter_00487C70::FUN_00487C70(int value)
 }
 
 
-// FUNCTION: GAMEMD 0x006301F0
-//
-// Store the argument into the member at +0xEC.
-void Setter_00487C70::FUN_006301F0(int value)
-{
-    *(int*)(Bytes + 0xEC) = value;
-}
-
 // FUNCTION: GAMEMD 0x00681110
 //
 // Store the argument into the member at +0x188.

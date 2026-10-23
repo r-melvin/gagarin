@@ -109,26 +109,3 @@ bool FUN_00413CD0(Obj_00413CD0* self)
     return allowed;
 }
 
-// FUNCTION: GAMEMD 0x452170
-void Obj_00452170::FUN_00452170(int value)
-{
-    int stamp = value;
-
-    if (value == 15 && vt_068(0, 0) == 5) {
-        stamp = 0x10;
-    }
-
-    Slot_00452170** slot = Slots;
-    int             n    = 0x15;
-
-    do {
-        Slot_00452170* item = *slot;
-
-        if (item) {
-            item->Stamp = (char)stamp;
-        }
-
-        slot++;
-        n--;
-    } while (n != 0);
-}

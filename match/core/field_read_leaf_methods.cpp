@@ -65,13 +65,6 @@ int* FUN_0046C4D0(unsigned int index)
 
 extern Rec_0046C4D0** DAT_00A83D9C;
 extern unsigned int DAT_00A83DA8;
-// FUNCTION: GAMEMD 0x006454C0
-int* FUN_006454C0(unsigned int index)
-{
-    if (index < DAT_00A83DA8)
-        return &DAT_00A83D9C[index]->unknown_24;
-    return 0;
-}
 
 extern Rec_0046C4D0** DAT_00A8EB2C;
 extern unsigned int DAT_00A8EB38;

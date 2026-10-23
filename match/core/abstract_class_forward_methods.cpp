@@ -63,11 +63,6 @@ void AirstrikeClass::vf_13(Obj_004A1D30* crc)
     AbstractClass::vf_13(crc);
 }
 
-// FUNCTION: GAMEMD 0x004A7B80
-void DiskLaserClass::vf_13(Obj_004A1D30* crc)
-{
-    AbstractClass::vf_13(crc);
-}
 
 // FUNCTION: GAMEMD 0x00555070
 void LightSourceClass::vf_13(Obj_004A1D30* crc)

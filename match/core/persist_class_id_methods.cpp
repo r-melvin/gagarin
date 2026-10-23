@@ -384,14 +384,6 @@ HRESULT __stdcall AITriggerTypeClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-// FUNCTION: GAMEMD 0x00420D40
-HRESULT __stdcall AlphaShapeClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E99A0;
-    return S_OK;
-}
 
 // FUNCTION: GAMEMD 0x00426540
 HRESULT __stdcall AnimClass::GetClassID(CLSID* pClassID)
@@ -538,14 +530,6 @@ HRESULT __stdcall LightSourceClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
-// FUNCTION: GAMEMD 0x006296D0
-HRESULT __stdcall ParasiteClass::GetClassID(CLSID* pClassID)
-{
-    if (pClassID == 0)
-        return E_POINTER;
-    *pClassID = DAT_007E98A0;
-    return S_OK;
-}
 
 // FUNCTION: GAMEMD 0x0065B470
 HRESULT __stdcall RadSiteClass::GetClassID(CLSID* pClassID)

@@ -29,15 +29,3 @@ void __cdecl FUN_0041CAF0()
     DAT_00889F60 = FUN_005B40B0(DAT_00817FD8, 0);
 }
 
-// FUNCTION: GAMEMD 0x459F40
-// Hand back the object only if it is of the expected kind. Retail computes the
-// selection branchlessly (`SUB 6; NEG; SBB; NOT; AND`), which is what the
-// conditional expression produces here.
-Obj_00459F40* Obj_00459F40::FUN_00459F40()
-{
-    if (this == 0) {
-        return 0;
-    }
-
-    return (WHAT_AM_I(this) == 6) ? this : 0;
-}

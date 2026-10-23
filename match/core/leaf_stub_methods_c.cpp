@@ -72,14 +72,6 @@ struct Quad_0054A120 {
     Quad_0054A120(int a, int b, int c, int d);
 };
 GG_STATIC_ASSERT(sizeof(Quad_0054A120) == 0x10);
-// FUNCTION: GAMEMD 0x0054A120
-Quad_0054A120::Quad_0054A120(int a, int b, int c, int d)
-{
-    unknown_0 = a;
-    unknown_4 = b;
-    unknown_8 = c;
-    unknown_C = d;
-}
 
 // The index of an element pointer within a vector of 36-byte records.
 struct Obj_00589A30 {
@@ -105,11 +97,6 @@ struct Obj_00645D10 {
     float unknown_00[1];
     float FUN_00645D10(int index) const;
 };
-// FUNCTION: GAMEMD 0x00645D10
-float Obj_00645D10::FUN_00645D10(int index) const
-{
-    return unknown_00[index];
-}
 
 struct Obj_0065AD40 {
     unsigned char unknown_00[0xE4];

@@ -24,16 +24,3 @@ int FUN_0040DCE0(const char* name)
     return 0;
 }
 
-// FUNCTION: GAMEMD 0x45DD50
-//
-// The same scan over the smaller table. Written out rather than shared.
-int FUN_0045DD50(const char* name)
-{
-    for (int i = 0; i < 6; i++) {
-        if (FUN_007C8D20(DAT_00819288[i].Name, name) == 0) {
-            return DAT_00819288[i].Value;
-        }
-    }
-
-    return 0;
-}

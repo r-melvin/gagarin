@@ -36,11 +36,6 @@ void __stdcall FUN_00413490(int)
 {
 }
 
-// FUNCTION: GAMEMD 0x420120
-void* FUN_00420120(void* self)
-{
-    return self;
-}
 
 // FUNCTION: GAMEMD 0x426620
 Obj_00426600* Obj_00426600::FUN_00426620(int)
@@ -72,10 +67,3 @@ int Obj_00426600::FUN_00426630() const
     return duration;
 }
 
-// FUNCTION: GAMEMD 0x465D30
-// `XOR AL,AL` rather than `XOR EAX,EAX` — only the low byte is set, so the
-// return type is bool, not int.
-bool __cdecl FUN_00465D30()
-{
-    return false;
-}

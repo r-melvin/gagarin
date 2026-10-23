@@ -41,22 +41,6 @@ AnimTypeClass* AnimTypeClass::FindOrAllocate(const char* id)
     return new AnimTypeClass(id);
 }
 
-// FUNCTION: GAMEMD 0x71E2A0  TerrainTypeClass::FindOrAllocate (__fastcall)
-TerrainTypeClass* TerrainTypeClass::FindOrAllocate(const char* id)
-{
-    if (_stricmp("<none>", id) == 0)
-        return 0;
-
-    if (_stricmp("none", id) == 0)
-        return 0;
-
-    for (int i = 0; i < TerrainTypeClassArray.Count; i++) {
-        if (_stricmp(((TerrainTypeClass**)TerrainTypeClassArray.Items)[i]->ID, id) == 0)
-            return ((TerrainTypeClass**)TerrainTypeClassArray.Items)[i];
-    }
-
-    return new TerrainTypeClass(id);
-}
 
 // FUNCTION: GAMEMD 0x75E3B0  WarheadTypeClass::FindOrAllocate (__fastcall)
 WarheadTypeClass* WarheadTypeClass::FindOrAllocate(const char* id)

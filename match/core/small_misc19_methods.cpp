@@ -30,8 +30,3 @@ void Obj_00433C00::FUN_00433C00()
     FUN_007C8B3D(this);
 }
 
-// FUNCTION: GAMEMD 0x459F60
-int Triple3i::FUN_00459F60(const Triple3i* other) const
-{
-    return a == other->a && b == other->b && c == other->c;
-}
