@@ -1,19 +1,26 @@
 # Project status
 
-As of **2026-10-23** (tip `2a00ae5d`), the manifest holds **10,828 rows**:
-**10,175 matched** and **653 partial**, in 1,302 manifest translation units.
+As of **2026-10-23** (source tip `be306919`, with the central binding update), the manifest holds **10,836 rows**:
+**10,181 matched** and **655 partial**, in 1,302 manifest translation units.
 Every row's address is an entry in the extent census of **19,778 functions**,
-so 51.4% of listed functions are matched and 3.3% partial. Matched body lengths
-total **699,718 bytes**, 18.0% of the 3,878,653 listed function bytes. Counts
+so 51.5% of listed functions are matched and 3.3% partial. Matched body lengths
+total **701,976 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
 are per function, not executable completion.
 
-Strict check: raw bytes and strict relocation checks with the central symbol
-bindings, run over every matched row on objects built from the tip, fail on
-**74** of 10,175 rows (raw bytes pass on all 10,175; the 74 fail the strict relocation check). These failures predate this
-snapshot; the rows remain `matched` in the manifest because `verify_all.py`
-passes them, and they are open fidelity debt until the strict check passes.
+Strict check: all **10,181 matched rows pass raw and strict relocation checks**
+using the central symbol bindings and objects from the full build. The 74
+previous strict failures are resolved by binding their observed retail targets.
+This establishes relocation addresses; COM table closure and unresolved
+`SEARCH_LIBRARY` deleting-destructor selection remain separate fidelity work.
 
-Translation-unit migration: **114** files carry an original translation-unit
+Recent recovery adds the 872-byte Scenario checksum routine at `0x68B940`,
+five exact ownrdraw functions, and two capped partials. Tooltip globals now
+use a rectangle, surface pointer and text array; the existing initializer's
+changed COFF symbols and addends pass fresh raw and strict checks. Full gates
+compile all 1,310 translation units and 109 layout headers with no existing
+matched-function regressions.
+
+Translation-unit migration snapshot at `2a00ae5d`: **114** files carry an original translation-unit
 header. **72** have names attested by a source-file assert string in the
 binary and hold 2,869 rows (2,664 matched, 205 partial). **42** are
 binary-segmented units without an attested name, kept as placeholder-named
@@ -22,7 +29,7 @@ The remaining rows still live in working files.
 
 Link milestones (all diagnostic; no image here runs):
 
-| Milestone | State | Measurement at the tip |
+| Milestone | State | Measurement at `2a00ae5d` |
 | --- | --- | --- |
 | M0 diagnostic link | done | `link_diag.py` links 1,310 objects with `/FORCE`: 8,291 unresolved externals (4,253 function, 3,921 data, 93 vtable/RTTI, 24 CRT, 0 import), 0 duplicate definitions |
 | M1 address-faithful stub link | done | `link_m1.py` links without `/FORCE`, exit 0, 0 unresolved after 9,035 int3 stubs. `mapcheck.py`: 10,174 of 10,174 placed matched functions at their retail address; 19,249 of 19,251 ordered engine entries (3,885,223 of 3,885,895 bytes) at retail address; 4 local drift events from two matched objects larger than their retail slots. The library tail is not ordered (entry point -8,305 bytes from retail) |
@@ -33,8 +40,8 @@ Link milestones (all diagnostic; no image here runs):
 
 ![gagarin link milestones](.github/assets/link_progress.svg)
 
-Next steps: a runnable hybrid build (M2); clearing the strict-check
-failures; fitting the two oversized matched objects at 0x49F620 and 0x4A80D0
+Next steps: a runnable hybrid build (M2); resolving held COM table and destructor
+selection proofs; fitting the two oversized matched objects at 0x49F620 and 0x4A80D0
 into their retail slots; ordering the library tail; and continuing the
 translation-unit migration.
 

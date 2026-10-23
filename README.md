@@ -13,10 +13,11 @@ The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
 
-As of 2026-10-23, 10,175 of the 19,778 functions in the extent census are
-matched (51.4%) and 653 more are partial; matched bodies cover 699,718 of
-3,878,653 listed function bytes (18.0%). The address-faithful stub link (M1)
-resolves every external and places 10,174 matched functions at their retail
+As of 2026-10-23, 10,181 of the 19,778 functions in the extent census are
+matched (51.5%) and 655 more are partial; matched bodies cover 701,976 of
+3,878,653 listed function bytes (18.1%). Raw and strict relocation checks
+pass on every matched row. At the last link measurement, `2a00ae5d`, the
+address-faithful stub link (M1) resolved every external and placed 10,174 matched functions at their retail
 addresses; the remaining matched row shares its symbol with another address. The engine does not yet run from this build, and no whole-image
 identity is claimed.
 
