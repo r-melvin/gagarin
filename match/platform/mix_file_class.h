@@ -111,9 +111,13 @@ public:
     // codegen (plain `new(0x28); if(p) ctor`, no fs:0 SEH prologue).
     MixFileClass(const char* name, const char* tag = "") throw();  // 0x5B3C20 __thiscall
     virtual ~MixFileClass();                               // Node<> dtor slot 0
-    char _layout[0x24];                                    // full layout = P2
+    char unknown_04[8];
+    const char* FileName; // +0x0C, read by CCFile Open473D10
+    char unknown_10[0x18];
 };
 GG_STATIC_ASSERT(sizeof(MixFileClass) == 0x28);
+GG_STATIC_ASSERT(offsetof(MixFileClass, FileName) == 0x0C);
+GG_STATIC_ASSERT(sizeof(((MixFileClass*)0)->FileName) == 4);
 
 // ---------------------------------------------------------------------------
 // The stack CCFileClass probe used by Retrieve on a cache miss. Layout read

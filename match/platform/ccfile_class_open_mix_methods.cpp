@@ -12,47 +12,36 @@
 // the buffer sub-object) or names the archive on disk, which is opened in
 // its place and seeked to the entry.
 //
-// Load-bearing: the buffered probe, the position setter and the base open
-// are all direct __thiscall calls with their arguments pushed, not
-// __fastcall helpers — declaring them as members is what puts the zero in
-// EBX for every store and compare, keeps the mode parameter in its home
-// slot, and leaves the two fallback tails as separate copies. The buffer
-// setter is reached through a pointer local that retail null-tests first,
-// and the in-archive branch tests the open positively with its own
-// `return 0` after the body.
-int CCFile_00473D10::Open(unsigned int mode)
+int CCFileClass::Open(FileAccessMode mode)
 {
-    (this->*Vtbl->Close)();
+    Close();
 
-    if ((mode & 2) == 0 && !FUN_00431F10(0)) {
-        Mix_00473D10* mix = 0;
+    if ((mode & 2) == 0 && !BufferIOFileClass::Exists(false)) {
+        MixFileClass* mix = 0;
         void* data = 0;
         int size = 0;
         int offset = 0;
-        if (MixFileClass_Offset_00473D10((this->*Vtbl->GetFileName)(), &data,
+        if (MixFileClass_Offset(GetFileName(), &data,
                                          &mix, &offset, &size)) {
             if (data == 0 && mix != 0) {
-                if ((this->*Vtbl->At_20)(mix->FileName, 1)) {
-                    char* dup = gg_strdup((this->*Vtbl->GetFileName)());
+                if (OpenEx(mix->FileName, 1)) {
+                    char* dup = gg_strdup(GetFileName());
                     IsDisabled = 1;
-                    (this->*Vtbl->SetFileName)(dup);
+                    SetFileName(dup);
                     IsDisabled = 0;
-                    FUN_0065D2B0(0, -1);
-                    FUN_0065D2B0(offset, size);
-                    (this->*Vtbl->At_28)(0, 0);
+                    Bias(0, -1);
+                    Bias(offset, size);
+                    Seek(0, 0);
                     FUN_007C93E8(dup);
                     return 1;
                 }
                 return 0;
             }
-            Buffer_00473D10* buffer = &Buffer;
-            if (buffer != 0) {
-                buffer->FUN_0043AD00(data, size);
-            }
+            new (&Buffer) MemoryBuffer(data, size);
             Position = 0;
             return 1;
         }
-        return FUN_0047AAB0(mode);
+        return CDFileClass::Open(mode);
     }
-    return FUN_0047AAB0(mode);
+    return CDFileClass::Open(mode);
 }

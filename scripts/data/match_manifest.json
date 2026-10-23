@@ -27104,11 +27104,11 @@
  {
   "tu": "match/platform/ccfile_class_open_mix_methods.cpp",
   "addr": "0x473D10",
-  "sym": "?Open@CCFile_00473D10@@QAEHI@Z",
+  "sym": "?Open@CCFileClass@@UAEHI@Z",
   "len": "0x13e",
   "name": "CCFileClass::Open",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class_ops_methods.cpp",

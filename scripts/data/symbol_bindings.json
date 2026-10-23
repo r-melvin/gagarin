@@ -5637,6 +5637,7 @@
  "?MixCache@@YI_NPBDH@Z": "0x005B43E0",
  "?MixFileClass_Offset@@YI_NPBDPAPAX1PAH2@Z": "0x005B4430",
  "?MixFileClass_Offset@@YI_NPBDPAPAXPAPAUMix_00473E50@@PAH3@Z": "0x005B4430",
+ "?MixFileClass_Offset@@YI_NPBDPAPAXPAPAVMixFileClass@@PAH3@Z": "0x005B4430",
  "?MixFileClass_Offset@@YI_NPBDPAX1HPAH@Z": "0x005B4430",
  "?MixFileClass_Offset_00473D10@@YI_NPBDPAPAXPAPAUMix_00473D10@@PAH3@Z": "0x005B4430",
  "?ModeEntered@@YIXXZ": "0x0048DC90",

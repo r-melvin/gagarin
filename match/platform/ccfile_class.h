@@ -185,8 +185,9 @@ private:
 // the filename in ECX and four out-parameters (YRpp declares them as
 // references; retail is called here with five literal nulls, so they are
 // modelled as pointers). Declared without a body; relocation-normalised.
-bool MixFileClass_Offset(const char* filename, void** data,
-                         void** mixfile, int* offset, int* length);
+class MixFileClass;
+bool __fastcall MixFileClass_Offset(const char* filename, void** data,
+                         MixFileClass** mixfile, int* offset, int* length);
 
 // ---------------------------------------------------------------------------
 // CCFileClass — a file inside a MIX archive (the in-memory buffered case).
