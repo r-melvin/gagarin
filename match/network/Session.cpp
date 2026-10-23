@@ -547,7 +547,7 @@ extern "C" Type_006A46D0** DAT_008B4124;
 
 #include "../core/vector_class_operations.h"
 
-enum DiskID { DiskID_placeholder };
+#include "../core/disk_id.h"
 
 
 // Retail PAUGlobalPacketType RTTI establishes the pointer element type and zero-offset
@@ -1246,8 +1246,28 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 }
 
 // REA Evidence: ev_11ce794979f0e2980076f87c1eeffe96d530e6c29faed93d9a77c5cc87f93a03
+#include "../platform/ccfile_class.h"
+GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
+// FUNCTION: GAMEMD 0x69AC30
+bool MultiMission::FUN_0069AC30(int value)
+{
+    if (value == -2) {
+        return RawFileClass(unknown_058).Exists(false);
+    }
+    int index;
+    for (index = 0; index < unknown_188.GetCount(); ++index) {
+        if (unknown_188[index] == -1)
+            return true;
+    }
+    for (index = 0; index < unknown_188.GetCount(); ++index) {
+        if (unknown_188[index] == value)
+            return true;
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x69ACD0
-void Entry_00A8B8C8::FUN_0069ACD0(const wchar_t* source)
+void MultiMission::FUN_0069ACD0(const wchar_t* source)
 {
     if (source) {
         wcsncpy(unknown_000, source, 0x2C);
@@ -1258,7 +1278,7 @@ void Entry_00A8B8C8::FUN_0069ACD0(const wchar_t* source)
 }
 
 // FUNCTION: GAMEMD 0x69AD20
-void Entry_00A8B8C8::FUN_0069AD20(const char* source)
+void MultiMission::FUN_0069AD20(const char* source)
 {
     if (source) {
         strncpy(unknown_058, source, 0x104);
@@ -1269,7 +1289,7 @@ void Entry_00A8B8C8::FUN_0069AD20(const char* source)
 }
 
 // FUNCTION: GAMEMD 0x69AD80
-void Entry_00A8B8C8::FUN_0069AD80(const char* source)
+void MultiMission::FUN_0069AD80(const char* source)
 {
     if (source) {
         strncpy(unknown_15C, source, 0x20);
@@ -1280,7 +1300,7 @@ void Entry_00A8B8C8::FUN_0069AD80(const char* source)
 }
 
 // FUNCTION: GAMEMD 0x69ADF0
-bool Entry_00A8B8C8::FUN_0069ADF0()
+bool MultiMission::FUN_0069ADF0()
 {
     return _stricmp(unknown_058, STR_0082BC30) == 0;
 }

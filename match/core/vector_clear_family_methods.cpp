@@ -52,7 +52,7 @@ class CoopCampaignClass;
 struct CrossDissolveEffect;
 struct DamageGroup;
 struct DirtyAreaStruct;
-enum DiskID { DiskID_placeholder };
+#include "disk_id.h"
 class DiskLaserClass;
 template<class T0> class DynamicVectorClass;
 class EBolt;

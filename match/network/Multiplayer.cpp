@@ -206,7 +206,7 @@ extern Scenario_005D6790* ScenarioInstance_00A8B230;
 #include "session_entry.h"
 
 // GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
-extern DynamicVectorClass<Entry_00A8B8C8*> DAT_00A8B8C8;
+extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
 
 struct Session_005D6430
 {
@@ -579,7 +579,7 @@ int MultiplayerGameMode::vf_17()
 {
     int count = DAT_00A8B8C8.Count;
     for (int i = 0; i < count; i++) {
-        Entry_00A8B8C8* entry = DAT_00A8B8C8.Items[i];
+        MultiMission* entry = DAT_00A8B8C8.Items[i];
         bool ok;
         if (entry->FUN_0069ADF0()) {
             ok = vf_15();
