@@ -78,9 +78,21 @@ struct RulesClass
     int unknown_E04;
     char unknown_E08[0x0FA8 - 0xE08];
     int unknown_FA8;
-    char unknown_FAC[0x14B5 - 0xFAC];
+    char unknown_FAC[0x1484 - 0xFAC];
+    int unknown_1484; // native697F74 default Credits
+    char unknown_1488[0x1494 - 0x1488];
+    int unknown_1494;
+    char unknown_1498[8];
+    int unknown_14A0;
+    char unknown_14A4[0x14B1 - 0x14A4];
+    bool unknown_14B1;
+    char unknown_14B2[3];
     bool unknown_14B5;
-    char unknown_14B6[5];
+    bool unknown_14B6;
+    char unknown_14B7;
+    bool unknown_14B8;
+    bool unknown_14B9;
+    bool unknown_14BA;
     bool unknown_14BB;
     char unknown_14BC[0x1700 - 0x14BC];
     double ConditionYellow;
@@ -138,4 +150,12 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_72C) == 0x72C);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B5) == 0x14B5);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BB) == 0x14BB);
 
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1484) == 0x1484);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1494) == 0x1494);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14A0) == 0x14A0);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B1) == 0x14B1);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B6) == 0x14B6);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B8) == 0x14B8);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14B9) == 0x14B9);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BA) == 0x14BA);
 #endif  // GG_MATCH_CORE_RULES_CLASS_H

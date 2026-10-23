@@ -96533,5 +96533,96 @@
   "name": "?FUN_0063D2D0@@YIIPAVPlanningNodeClass@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x697B70",
+  "sym": "?FUN_00697B70@SessionClass@@QAEHXZ",
+  "len": "0x2FE",
+  "name": "SessionClass::FUN_00697B70",
+  "status": "partial",
+  "pct": 74.1
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x697E70",
+  "sym": "?FUN_00697E70@SessionClass@@QAE_NPAX@Z",
+  "len": "0xA0",
+  "name": "SessionClass::FUN_00697E70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x697F10",
+  "sym": "?FUN_00697F10@SessionProfile_00697F10@@QAEXPAVCCINIClass@@PBDHH@Z",
+  "len": "0x1AE",
+  "name": "SessionProfile_00697F10::FUN_00697F10",
+  "status": "partial",
+  "pct": 54.5
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69B600",
+  "sym": "?FUN_0069B600@SessionClass@@QAE_NH@Z",
+  "len": "0x67",
+  "name": "SessionClass::FUN_0069B600",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69B690",
+  "sym": "?FUN_0069B690@SessionClass@@QAEHXZ",
+  "len": "0x6F",
+  "name": "SessionClass::FUN_0069B690",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69B760",
+  "sym": "?FUN_0069B760@SessionClass@@QAEXH_N@Z",
+  "len": "0x7C",
+  "name": "SessionClass::FUN_0069B760",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69B8C0",
+  "sym": "?FUN_0069B8C0@SessionClass@@QAEXXZ",
+  "len": "0x1EE",
+  "name": "SessionClass::FUN_0069B8C0",
+  "status": "partial",
+  "pct": 4.9,
+  "note": "Partial4.9 under binary-supported /Ob2. Retail caller stops inlining earlier; diagnostic inline-depth pragmas are not permitted in source. Earlier default-flags96.3 is superseded by the exact69B690 flag evidence."
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69C9C0",
+  "sym": "?SetCapacity@?$VectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z",
+  "len": "0x140",
+  "name": "VectorClass<Wstring>::SetCapacity",
+  "status": "partial",
+  "pct": 48.5
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69CBC0",
+  "sym": "?SetCapacity@?$DynamicVectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z",
+  "len": "0x139",
+  "name": "DynamicVectorClass<Wstring>::SetCapacity",
+  "status": "partial",
+  "pct": 38.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69D7C0",
+  "sym": "??0?$VectorClass@UWstring@@@@QAE@HPAUWstring@@@Z",
+  "len": "0xAC",
+  "name": "VectorClass<Wstring>::VectorClass",
+  "status": "partial",
+  "pct": 100.0
  }
 ]

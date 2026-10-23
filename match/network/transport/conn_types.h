@@ -336,9 +336,15 @@ struct NetPlayerClass
     IPXAddressClass Address;            // +0x28
     char            unknown_34[0x4B - 0x34];
     int             unknown_4B;
-    char            unknown_4F[0x6B - 0x4F];
+    int             unknown_4F; // 0x69B8F5/0x69B90D
+    int             unknown_53; // 0x69B946/0x69B96F
+    int             unknown_57; // 0x69B93D/0x69B943
+    char            unknown_5B[0x6B - 0x5B];
     int             unknown_6B;         // +0x6B (unaligned; siege team 1/2, stamped by 0x5CA680)
     int             Id;                 // +0x6F (unaligned; indexes the player tables)
+    int             unknown_73; // native697D2D store
+    char            unknown_77[4];
+    int             unknown_7B; // native697C73/697CB9 loads
     // FUNCTION: GAMEMD 0x7350C0 (decl; reloc), ECX player at 0x684565.
     const char* FUN_007350C0();
 };
@@ -346,8 +352,13 @@ struct NetPlayerClass
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Name) == 0x00);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Address) == 0x28);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_4B) == 0x4B);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_4F) == 0x4F);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_53) == 0x53);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_57) == 0x57);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_6B) == 0x6B);
 GG_STATIC_ASSERT(offsetof(NetPlayerClass, Id) == 0x6F);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_73) == 0x73);
+GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_7B) == 0x7B);
 
 // GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass, owned by
 // the winsock hierarchy; include winsock_interface_class.h to call through it).
@@ -358,6 +369,12 @@ extern WinsockInterfaceClass* Interface_00887628;
 // 0x663D60 maps a connection id to a byte.
 struct NetIdMapRef
 {
+    // Declaration: GAMEMD 0x663B40 -- ECX receiver, no arguments, RET.
+    void FUN_00663B40();
+    // Declaration: GAMEMD 0x663DB0 -- pointer stack argument, boolAL, RET4.
+    bool FUN_00663DB0(const unsigned char* address);
+    // Declaration: GAMEMD 0x6639D0 -- result0/1, caller697E2A testsAL, RET.
+    bool FUN_006639D0();
     // FUNCTION: GAMEMD 0x663D60 (decl; reloc)
     unsigned char FUN_00663D60(int id);
     // FUNCTION: GAMEMD 0x6640E0 (decl; reloc)

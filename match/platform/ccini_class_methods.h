@@ -26,6 +26,8 @@ class CCINIClass : public INIClass
 {
 public:
     CCINIClass() : DigestValid(false) {}
+    // Declaration: GAMEMD 0x477440 -- five stackargs, RET14hex.
+    void FUN_00477440(const char* section, const char* key, int* first, int* second, int* third);
     // FUNCTION: GAMEMD 0x4741F0 (decl; reloc) -- RET 0xC.
     int ReadCCFile(FileClass* file, bool withDigest, bool flag);
     int FUN_004757D0(const char* section, const char* key, int fallback); // GAMEMD 0x4757D0

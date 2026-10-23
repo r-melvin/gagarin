@@ -1,3 +1,5 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2
+// /Ob2 bisection matches 0x69B690; all affected old matches must remain exact.
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | behaviour-confirmed-name | YRpp-cross-check
 //   Original translation unit Session.CPP. The name is the source-file string at 0x83eeb8
@@ -640,9 +642,186 @@ int Obj_00697020::FUN_00697020(int a1)
     return a1;
 }
 
+#include "../_layout/session_class.h"
+#include "../_layout/house_class.h"
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* HouseClass_CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8022C
+extern HouseClass** HouseClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA80238
+extern int HouseClass_ArrayCount;
+// LIBRARY: GAMEMD 0x7DD0F8
+extern "C" int __cdecl _wcsicmp(const wchar_t*, const wchar_t*);
+GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
+GG_STATIC_ASSERT(offsetof(HouseClass, IsHumanPlayer) == 0x1EC);
+GG_STATIC_ASSERT(offsetof(HouseClass, Defeated) == 0x1F5);
+GG_STATIC_ASSERT(offsetof(HouseClass, UIName) == 0x1602A);
+
+#include "../network/transport/connman_class.h"
+// GLOBAL: GAMEMD 0xA8E284
+extern int DAT_00A8E284[8];
+// Declaration: STRING GAMEMD 0x83EF7C
+extern const char STR_0083EF7C[];
+// Declaration: STRING GAMEMD 0x83EF60
+extern const char STR_0083EF60[];
+// Declaration: STRING GAMEMD 0x83EF44
+extern const char STR_0083EF44[];
+// Declaration: STRING GAMEMD 0x83EF24
+extern const char STR_0083EF24[];
+// Declaration: STRING GAMEMD 0x83EF08
+extern const char STR_0083EF08[];
+// Declaration: STRING GAMEMD 0x81C5F0
+extern const char STR_0081C5F0[];
+// Declaration: STRING GAMEMD 0x81C5E8
+extern const char STR_0081C5E8[];
+GG_STATIC_ASSERT(offsetof(HouseClass, IPAddress) == 0x200);
+GG_STATIC_ASSERT(offsetof(HouseClass, TournamentTeamID) == 0x204);
+GG_STATIC_ASSERT(offsetof(HouseClass, LostConnection) == 0x208);
+
+// FUNCTION: GAMEMD 0x697B70
+int SessionClass::FUN_00697B70()
+{
+    NetworkNumberType network;
+    NodeAddressType node;
+    FUN_004068E0(STR_0083EF7C);
+    if (Session_00A8B238.GameMode != 3 && Session_00A8B238.GameMode != 4)
+        return 0;
+    for (int i = 0; i < unknown_283C.Count; ++i) {
+        FUN_004068E0(STR_0083EF60, i, unknown_283C.Items[i], unknown_283C.Items[i]->Id);
+        // Native name pointer is player+0, UTF16 consumed by _wcsicmp.
+        if (_wcsicmp(reinterpret_cast<const wchar_t*>(unknown_283C.Items[i]->Name),
+            HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->UIName) != 0)
+            return 0;
+        if (_wcsicmp(reinterpret_cast<const wchar_t*>(unknown_283C.Items[i]->Name), unknown_3020) == 0) {
+            unknown_3074 = unknown_283C.Items[i]->Id;
+            Players_00A8DA78[i]->Address.FUN_0053EDA0(network, node);
+            Address_00A8DBA4.FUN_0053ED20(network, node, 0);
+            Manager_00A8E9C0.FUN_00543050(&Address_00A8DBA4);
+        }
+        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->TournamentTeamID = unknown_283C.Items[i]->unknown_7B;
+        Players_00A8DA78[i]->Address.FUN_0053EDA0(network, node);
+        int address = 0;
+        for (int j = 0; j < 4; ++j)
+            address = (address << 8) | node.Node[j];
+        FUN_004068E0(STR_0083EF44, unknown_283C.Items[i]->Id, address, unknown_283C.Items[i]->unknown_7B);
+        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->IPAddress = address;
+        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->LostConnection = 0;
+        if (i > 0) {
+            Manager_00A8E9C0.FUN_00540DC0(unknown_283C.Items[i]->Id,
+                reinterpret_cast<wchar_t*>(unknown_283C.Items[i]->Name), &unknown_283C.Items[i]->Address);
+            unknown_283C.Items[i]->unknown_73 = -1;
+        }
+    }
+    for (int timerIndex = 0; timerIndex < 8; ++timerIndex)
+        DAT_00A8E284[timerIndex] = ConnTimer.GetValue();
+    if (GameMode == 4 && unknown_3090) {
+        NetworkNumberType zeroNetwork = { 0 };
+        NodeAddressType zeroNode = { 0, 0, 0, 0, 0, 0 };
+        Address_00A8DBB0.FUN_0053ED20(zeroNetwork, zeroNode, 0);
+        unknown_2968 = 1;
+        unknown_308C = 0;
+        unknown_309C = 20;
+        unknown_3094 = -1;
+        Manager_00A8E9C0.FUN_00540E70();
+        IdMap_00B052D0.FUN_00663B40();
+        if (Session_00A8B238.FUN_00697E70(0)) {
+            if (IdMap_00B052D0.FUN_00663DB0(0)) {
+                if (!IdMap_00B052D0.FUN_006639D0())
+                    Flag_00A8DBA0 = false;
+            } else {
+                Flag_00A8DBA0 = false;
+            }
+        }
+    } else {
+        Flag_00A8DBA0 = false;
+    }
+    FUN_004068E0(STR_0083EF24, Flag_00A8DBA0 ? STR_0081C5F0 : STR_0081C5E8);
+    FUN_004068E0(STR_0083EF08);
+    return 1;
+}
+
+// FUNCTION: GAMEMD 0x697E70
+bool SessionClass::FUN_00697E70(void* house)
+{
+    // Existing public declaration accepts opaque House pointers from legacy
+    // callers. Native697E99/697EB1/697EE1/697EEB prove this layout boundary.
+    if (house == 0)
+        house = HouseClass_CurrentPlayer;
+    HouseClass* selected = static_cast<HouseClass*>(house);
+    if (Session_00A8B238.GameMode == 4 && selected != 0) {
+        if (unknown_3074 != -1)
+            return selected->ArrayIndex == unknown_3074;
+        if (_wcsicmp(selected->UIName, unknown_3020) == 0)
+            return true;
+    }
+    for (int i = 0; i < HouseClass_ArrayCount; ++i) {
+        HouseClass* entry = HouseClass_ArrayItems[i];
+        if (entry->IsHumanPlayer && !entry->Defeated)
+            return selected == entry ? true : false;
+    }
+    return false;
+}
+
 // GLOBAL: GAMEMD 0x83ED14
 extern signed char DAT_0083ED14[9];
 GG_STATIC_ASSERT(sizeof(DAT_0083ED14) == 9);
+
+#include "rules_class.h"
+#include "../platform/ccini_class_methods.h"
+#include "../network/multiplayer_game_mode.h"
+// Declaration: GAMEMD 0x5D5E10 -- no incoming arguments, pointerEAX, RET.
+MultiplayerGameMode* FUN_005D5E10();
+// LIBRARY: GAMEMD 0x7C8EF4
+extern "C" int __cdecl sprintf(char*, const char*, ...);
+// Declaration: STRING GAMEMD 0x83EFD0
+extern const char STR_0083EFD0[];
+// Declaration: STRING GAMEMD 0x83EFC4
+extern const char STR_0083EFC4[];
+// Declaration: STRING GAMEMD 0x8332E8
+extern const char STR_008332E8[];
+// Declaration: STRING GAMEMD 0x824E38
+extern const char STR_00824E38[];
+// Declaration: STRING GAMEMD 0x83D06C
+extern const char STR_0083D06C[];
+// Declaration: STRING GAMEMD 0x83CFA8
+extern const char STR_0083CFA8[];
+// Declaration: STRING GAMEMD 0x83CF94
+extern const char STR_0083CF94[];
+// Declaration: STRING GAMEMD 0x83CF84
+extern const char STR_0083CF84[];
+// Declaration: STRING GAMEMD 0x83EFB8
+extern const char STR_0083EFB8[];
+// Declaration: STRING GAMEMD 0x83EFA8
+extern const char STR_0083EFA8[];
+// Declaration: STRING GAMEMD 0x83EF9C
+extern const char STR_0083EF9C[];
+
+// FUNCTION: GAMEMD 0x697F10
+void SessionProfile_00697F10::FUN_00697F10(CCINIClass* ini, const char* section, int fallback, int firstFallback)
+{
+    ini->Reset();
+    unknown_00 = ini->FUN_005276D0(section, STR_0083EFD0, FUN_005D5E10()->unknown_28);
+    unknown_04 = ini->FUN_005276D0(section, STR_0083EFC4, 0);
+    unknown_08 = ini->FUN_005276D0(section, STR_008332E8, RulesInstance->unknown_14A0);
+    unknown_0C = ini->FUN_005276D0(section, STR_00824E38, RulesInstance->unknown_1484);
+    unknown_10 = ini->FUN_005276D0(section, STR_0083D06C, RulesInstance->unknown_1494);
+    unknown_14 = ini->FUN_005295F0(section, STR_0083CFA8, RulesInstance->unknown_14B6);
+    unknown_15 = ini->FUN_005295F0(section, STR_0083CF94, RulesInstance->unknown_14B9);
+    unknown_16 = ini->FUN_005295F0(section, STR_0083CF84, RulesInstance->unknown_14BA);
+    unknown_17 = ini->FUN_005295F0(section, STR_0083EFB8, RulesInstance->unknown_14B8);
+    unknown_18 = ini->FUN_005295F0(section, STR_0083EFA8, RulesInstance->unknown_14B1);
+    for (int slot = 1; slot < 8; ++slot) {
+        char key[16];
+        sprintf(key, STR_0083EF9C, slot);
+        int first = slot == 1 ? firstFallback : fallback;
+        int second = -2;
+        int third = -2;
+        ini->FUN_00477440(section, key, &first, &second, &third);
+        unknown_1C[slot][0] = first;
+        unknown_1C[slot][1] = second;
+        unknown_1C[slot][2] = third;
+    }
+}
 
 // FUNCTION: GAMEMD 0x69A310
 unsigned int __stdcall FUN_0069A310(unsigned int index)
@@ -667,7 +846,20 @@ int Obj_0069B720::FUN_0069B720()
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-struct Wstring { char* unknown_00; Wstring(); Wstring(const Wstring& o); ~Wstring(); bool operator==(const Wstring& o) const; bool operator!=(const Wstring& o) const; };
+// 0x69C9F3/0x69CA21 write array cookies for four-byte elements.
+// 0x69CA81 calls the nontrivial assignment at 0x7B4940.
+struct Wstring {
+    char* unknown_00;
+    Wstring();
+    Wstring(const Wstring& o);
+    ~Wstring();
+    bool operator==(const Wstring& o) const;
+    bool operator!=(const Wstring& o) const;
+    // Declaration: GAMEMD 0x7B4940
+    Wstring& operator=(const Wstring& o);
+};
+GG_STATIC_ASSERT(sizeof(Wstring) == 4);
+GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
 
 template class DynamicVectorClass<Wstring>;
 
@@ -830,6 +1022,145 @@ void __stdcall FUN_0069B8B0(int a1, int a2)
 {
 }
 
+
+#include "../network/multiplayer_game_mode.h"
+#include "../network/transport/conn_types.h"
+// Declaration: GAMEMD 0x4068E0
+extern "C" int __cdecl FUN_004068E0(const char*, ...);
+// GLOBAL: GAMEMD 0x83F710 -- external string address
+extern const char STR_0083F710[];
+// GLOBAL: GAMEMD 0x83F6E8 -- external string address
+extern const char STR_0083F6E8[];
+// GLOBAL: GAMEMD 0x83F6C8 -- external string address
+extern const char STR_0083F6C8[];
+
+// FUNCTION: GAMEMD 0x69B600
+bool SessionClass::FUN_0069B600(int value)
+{
+    if (value == -2)
+        return false;
+    for (int i = 0; i < unknown_283C.Count; ++i) {
+        NetPlayerClass* player = unknown_283C.Items[i];
+        int current = player->unknown_57 == -2 && player->unknown_53 == -1
+            ? -2 : player->unknown_53;
+        if (current == value)
+            return true;
+    }
+    for (int j = 0; j < 8; ++j) {
+        if (unknown_84[j] == value)
+            return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x69B690
+// Every RET preserves the generated candidate in EAX. Original source
+// return spelling is unknown; expose the observed register result.
+int SessionClass::FUN_0069B690()
+{
+    int value;
+    do {
+        value = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
+    } while (FUN_0069B600(value));
+    return value;
+}
+
+// FUNCTION: GAMEMD 0x69B760
+void SessionClass::FUN_0069B760(int value, bool randomize)
+{
+    if (value == -2) {
+        if (randomize) {
+            unknown_184 = DAT_00A8B230->unknown_0218.RandomRanged(0, 9);
+            unknown_188 = -2;
+        } else {
+            unknown_184 = 0;
+            unknown_188 = -2;
+        }
+    } else {
+        unknown_184 = value;
+        unknown_188 = -1;
+    }
+    unknown_174 = unknown_184;
+    unknown_178 = unknown_188;
+}
+
+// FUNCTION: GAMEMD 0x69B8C0
+void SessionClass::FUN_0069B8C0()
+{
+    FUN_004068E0(STR_0083F710);
+    int count = PlayerCount_00A8DA84;
+    for (int i = 0; i < count; ++i) {
+        NetPlayerClass* player = Players_00A8DA78[i];
+        if (player->unknown_4F == -3 || player->unknown_4B == -3) {
+            player->unknown_4B = -3;
+            player->unknown_4F = -1;
+            player->unknown_53 = 8;
+            player->unknown_57 = -1;
+        } else {
+            if (player->unknown_4F == -2) {
+                player->unknown_4F = -1;
+                if (unknown_04)
+                    player->unknown_4B = unknown_04->vf_27();
+                else
+                    player->unknown_4B = DAT_00A8B230->unknown_0218.RandomRanged(0, 9);
+            }
+            if (player->unknown_57 == -2) {
+                player->unknown_57 = -1;
+                player->unknown_53 = -1;
+                int value;
+                do {
+                    value = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
+                } while (Session_00A8B238.FUN_0069B600(value));
+                player->unknown_53 = value;
+            }
+        }
+        if (i == 0)
+            Session_00A8B238.unknown_15C = player->unknown_53;
+        FUN_004068E0(STR_0083F6E8, i, player->FUN_007350C0(),
+            player->unknown_4F == -2 ? -2 : player->unknown_4B,
+            player->unknown_57 == -2 ? -2 : player->unknown_53);
+    }
+    for (int slot = 0; slot < 8; ++slot) {
+        if (Session_00A8B238.unknown_64[slot] == -2) {
+            if (unknown_04)
+                Session_00A8B238.unknown_64[slot] = unknown_04->vf_28();
+            else
+                Session_00A8B238.unknown_64[slot] =
+                    DAT_00A8B230->unknown_0218.RandomRanged(0, 9);
+        }
+        if (Session_00A8B238.unknown_84[slot] == -2) {
+            int value;
+            bool used;
+            do {
+                value = DAT_00A8B230->unknown_0218.RandomRanged(0, 7);
+                used = false;
+                if (value != -2) {
+                    for (int i = 0; i < PlayerCount_00A8DA84; ++i) {
+                        NetPlayerClass* player = Players_00A8DA78[i];
+                        int current = player->unknown_57 == -2 &&
+                            player->unknown_53 == -1 ? -2 : player->unknown_53;
+                        if (current == value) {
+                            used = true;
+                            break;
+                        }
+                    }
+                    if (!used) {
+                        for (int i = 0; i < 8; ++i) {
+                            if (Session_00A8B238.unknown_84[i] == value) {
+                                used = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            } while (used);
+            Session_00A8B238.unknown_84[slot] = value;
+        }
+        FUN_004068E0(STR_0083F6C8, slot, Session_00A8B238.unknown_64[slot],
+            Session_00A8B238.unknown_84[slot]);
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x69BAB0
 //
@@ -849,7 +1180,7 @@ void SessionClass::Resume()
         if (this->GameMode == 0) {
             DAT_00A8EB60 = 2;
         }
-        if (DAT_00A8B230->At_35A2 == 0) {
+        if (DAT_00A8B230->unknown_35A2 == 0) {
             FUN_00684240();
             DAT_00B07784 = CurrentFrame + 3;
         }
@@ -937,6 +1268,8 @@ template class VectorClass<DiskID>;
 // VectorClass<Wstring>::scalar deleting destructor
 // FUNCTION: GAMEMD 0x0069C970
 // VectorClass<Wstring>::operator==
+// TEMPLATE: GAMEMD 0x69C9C0
+// VectorClass<Wstring>::SetCapacity (slot 2).
 // FUNCTION: GAMEMD 0x0069CB00
 // VectorClass<Wstring>::Clear
 // FUNCTION: GAMEMD 0x0069CB50
@@ -953,6 +1286,10 @@ template class VectorClass<DiskID>;
 // DynamicVectorClass<Wstring>::FindItemIndex
 // FUNCTION: GAMEMD 0x0069C560
 // DynamicVectorClass<Wstring>::Slot5
+// TEMPLATE: GAMEMD 0x69CBC0
+// DynamicVectorClass<Wstring>::SetCapacity (slot 2).
+// TEMPLATE: GAMEMD 0x69D7C0
+// VectorClass<Wstring>::VectorClass(int, Wstring*)
 template class VectorClass<Wstring>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

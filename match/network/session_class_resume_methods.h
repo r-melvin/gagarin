@@ -30,15 +30,10 @@ extern int DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xB07784 — a frame deadline re-armed at CurrentFrame + 3.
 extern int DAT_00B07784;
 
-// The provider hung off 0xA8B230; only its byte at +0x35A2 is read here.
-struct Provider_0069BAB0
-{
-    char _pad0000[0x35A2];   // +0x0000
-    char At_35A2;            // +0x35A2
-};
-GG_STATIC_ASSERT(offsetof(Provider_0069BAB0, At_35A2) == 0x35A2);
+// Canonical Scenario layout: 0x69BAB0 reads its byte at +0x35A2.
+#include "../core/scenario_class_methods.h"
 // GLOBAL: GAMEMD 0xA8B230
-extern Provider_0069BAB0* DAT_00A8B230;
+extern ScenarioClass* DAT_00A8B230;
 
 // FUNCTION: GAMEMD 0x684240 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00684240(void);
