@@ -28,7 +28,7 @@
 // STRING: GAMEMD 0x889F64  ""
 extern const char STR_00889F64[];
 
-// FUNCTION: GAMEMD 0x7C8D20 (decl; reloc) — the CRT case-insensitive string
+// LIBRARY: GAMEMD 0x7C8D20 (decl; reloc) — the CRT case-insensitive string
 // compare. Declared under its placeholder rather than as `stricmp` so cl
 // cannot substitute an intrinsic for the out-of-line call retail makes.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);

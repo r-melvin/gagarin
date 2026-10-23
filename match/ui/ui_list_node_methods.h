@@ -15,9 +15,9 @@
 #include "../_layout/generic_list.h"
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — the CRT free.
 extern "C" void __cdecl gg_free(void* block);
-// FUNCTION: GAMEMD 0x7C93E8 (decl; reloc) — the other free (the pool release
+// LIBRARY: GAMEMD 0x7C93E8 (decl; reloc) — the other free (the pool release
 // already modelled in match/core/small_misc46_methods.h).
 extern "C" void __cdecl FUN_007C93E8(void* block);
 

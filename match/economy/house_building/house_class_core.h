@@ -252,7 +252,7 @@ public:
 };
 
 // The CRT's RTTI cast helper (VC6 __RTDynamicCast), declared by hand with the type descriptors spelled out.
-// FUNCTION: GAMEMD 0x7CAAE4 (LIBRARY)
+// LIBRARY: GAMEMD 0x7CAAE4 (LIBRARY)
 extern "C" void* __cdecl HouseRtDynamicCast(void* object, long vfDelta, void* srcType, void* dstType, int isReference);
 // GLOBAL: GAMEMD 0x8177C8   .?AVAbstractClass@@
 extern char HouseTypeDesc_AbstractClass[];

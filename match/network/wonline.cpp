@@ -262,7 +262,7 @@ bool FUN_0077D2E0(Obj_0077D2A0* flags, void* object)
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
 const wchar_t* FUN_00734E60(const char* label, int* out, const char* file, int line);
-// FUNCTION: GAMEMD 0x7DDE80 (decl; reloc)
+// LIBRARY: GAMEMD 0x7DDE80 (decl; reloc)
 int __cdecl FUN_007DDE80(void* target, const wchar_t* text, int length);
 
 // STRING: GAMEMD 0x84A430

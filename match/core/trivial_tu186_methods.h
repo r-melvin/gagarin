@@ -19,7 +19,7 @@ extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA8E9C0
 extern Gbl_00A8E9C0 DAT_00A8E9C0;
 
-// FUNCTION: GAMEMD 0x7C8B3D (declaration)
+// LIBRARY: GAMEMD 0x7C8B3D (declaration)
 void __cdecl FUN_007C8B3D(int);
 
 struct Gbl_00A8E9C0

@@ -44,7 +44,7 @@ void FUN_005958E0(void*, int);
 void FUN_005A9C40(Obj_005A9C20*, int);
 // FUNCTION: GAMEMD 0x734E60 (declaration)
 void FUN_00734E60(void*, int, void*, int);
-// FUNCTION: GAMEMD 0x7C978A (declaration)
+// LIBRARY: GAMEMD 0x7C978A (declaration)
 void __cdecl FUN_007C978A(int);
 
 struct Gbl_00ABE890

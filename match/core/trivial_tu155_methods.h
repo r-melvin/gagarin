@@ -11,7 +11,7 @@
 
 struct Obj_005D5850;
 
-// FUNCTION: GAMEMD 0x7C93E8 (declaration)
+// LIBRARY: GAMEMD 0x7C93E8 (declaration)
 void __cdecl FUN_007C93E8(int);
 // Import timeEndPeriod from WINMM.dll (IAT slot 0x7E152C)
 extern "C" __declspec(dllimport) void __stdcall timeEndPeriod(int);

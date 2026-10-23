@@ -87,7 +87,7 @@ GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
 extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
 void IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
 
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — CCFileClass::ReadWholeFile.

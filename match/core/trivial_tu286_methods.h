@@ -25,7 +25,7 @@ extern char DAT_00B73590[];
 void FUN_007B4630(void*, int, void*);
 // FUNCTION: GAMEMD 0x7B46F0 (declaration)
 void FUN_007B46F0(void*, int);
-// FUNCTION: GAMEMD 0x7C978A (declaration)
+// LIBRARY: GAMEMD 0x7C978A (declaration)
 void __cdecl FUN_007C978A(int);
 
 struct Obj_0077A760

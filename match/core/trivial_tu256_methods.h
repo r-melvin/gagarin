@@ -110,7 +110,7 @@ extern int DAT_00A8EC08;
 // GLOBAL: GAMEMD 0x00A8EC0C
 extern int DAT_00A8EC0C;
 
-// FUNCTION: GAMEMD 0x007DDCD6 (decl; reloc)
+// LIBRARY: GAMEMD 0x007DDCD6 (decl; reloc)
 void __cdecl FUN_007DDCD6(wchar_t* text);
 
 // GLOBAL: GAMEMD 0x0089C3B0

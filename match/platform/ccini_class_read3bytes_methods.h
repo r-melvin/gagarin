@@ -17,9 +17,9 @@
 #include "../_rt/gg_static_assert.h"
 
 // CRT sprintf / sscanf, __cdecl variadic; the caller pops the arguments.
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc)
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc)
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
-// FUNCTION: GAMEMD 0x7CA530 (decl; reloc)
+// LIBRARY: GAMEMD 0x7CA530 (decl; reloc)
 extern "C" int __cdecl sscanf(const char* buffer, const char* format, ...);
 
 // ColorStruct — packed RGB triple (size 3). The user-declared constructors

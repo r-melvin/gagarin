@@ -465,7 +465,7 @@ DisplayCmdActionInfo* FUN_006CEEB0(int action);
 extern char TypeDesc_ObjectTypeClass_00817F78[];
 // GLOBAL: GAMEMD 0x817F98 -- .?AVTechnoTypeClass@@
 extern char TypeDesc_TechnoTypeClass_00817F98[];
-// FUNCTION: GAMEMD 0x7CAAE4 (LIBRARY) -- __RTDynamicCast
+// LIBRARY: GAMEMD 0x7CAAE4 (LIBRARY) -- __RTDynamicCast
 extern "C" void* __cdecl FUN_007CAAE4(void* object, long vfDelta, void* srcType, void* dstType, int isReference);
 
 // The technotype fields the placement test reads.

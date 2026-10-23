@@ -82,7 +82,7 @@ extern DynVecVtbl_004CFE80 VecVtable_007E192C;
 // VTABLE: GAMEMD 0x7E4F64 — the growing vector's vtable.
 extern DynVecVtbl_004CFE80 DynVecVtable_007E4F64;
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — the array deallocator.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — the array deallocator.
 void __cdecl FUN_007C8B3D(void* block);
 
 inline DynVec_004CFE80::DynVec_004CFE80(int capacity,

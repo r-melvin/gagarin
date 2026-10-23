@@ -41,8 +41,25 @@
 //   elsewhere, and they are classified by the callees (free 0x7C93E8 and
 //   _nh_malloc 0x7C9442). The _pow body begins at 0x7C8FC9; the entry points
 //   0x7C8FD2 and 0x7C91A5 in the listing are inside it.
+//
+//   Further LIBCMT members that matched code calls, named by behaviour in the binary
+//   (the bodies are not reconstructed): __ftol 0x7C5F00 (x87 control-word swap around
+//   FISTP); _atexit 0x7C978A (wraps the onexit registration, returns 0 or -1); _atoi
+//   0x7C9BFD (forwards to the long parser); _strtok 0x7C9CC2 (32-byte delimiter bitmap,
+//   per-thread save pointer); _atof 0x7C9D66; _memmove 0x7CA090 (overlap-aware copy);
+//   _wcslen 0x7CA405; _wcsncpy 0x7CA422 (zero-pads the tail); _wcscpy 0x7CA489; _sscanf
+//   0x7CA530 (string stream flags 0x49 into the scanner); _swprintf 0x7CA564 (string
+//   stream flags 0x42, two NUL bytes); _time 0x7CA67F; ___RTDynamicCast 0x7CAAE4 (SEH
+//   frame, null test, then the complete-object search); _vsprintf 0x7CB7BA; _wcstol
+//   0x7CB9B8 (the wide parser with the signed flag 0); _strdup 0x7D5408 (strlen, malloc,
+//   copy); and the wide-string members __wcsicmp 0x7DD0F8, __wcsupr 0x7DDCD6 and
+//   __wcsnicmp 0x7DDE80, which take the CRT lock when a locale is set.
 #ifndef GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 #define GG_MATCH_RT_LIBRARY_FUNCTIONS_H
+
+// Compiler float-to-integer helper (x87 control-word save, FISTP, restore).
+// LIBRARY: GAMEMD 0x7c5f00
+// __ftol
 
 // Linker import thunks (JMP through the import address table), 0x7c8962-0x7c8a3a.
 // LIBRARY: GAMEMD 0x7c8962
@@ -259,8 +276,53 @@
 // LIBRARY: GAMEMD 0x7c9430
 // _malloc
 
+// LIBRARY: GAMEMD 0x7c978a
+// _atexit
+
+// LIBRARY: GAMEMD 0x7c9bfd
+// _atoi
+
+// LIBRARY: GAMEMD 0x7c9cc2
+// _strtok
+
+// LIBRARY: GAMEMD 0x7c9d66
+// _atof
+
+// LIBRARY: GAMEMD 0x7ca090
+// _memmove
+
+// LIBRARY: GAMEMD 0x7ca405
+// _wcslen
+
+// LIBRARY: GAMEMD 0x7ca422
+// _wcsncpy
+
+// LIBRARY: GAMEMD 0x7ca489
+// _wcscpy
+
+// LIBRARY: GAMEMD 0x7ca530
+// _sscanf
+
+// LIBRARY: GAMEMD 0x7ca564
+// _swprintf
+
 // LIBRARY: GAMEMD 0x7ca5d3
 // _wcscmp
+
+// LIBRARY: GAMEMD 0x7ca67f
+// _time
+
+// LIBRARY: GAMEMD 0x7caae4
+// ___RTDynamicCast
+
+// LIBRARY: GAMEMD 0x7cb7ba
+// _vsprintf
+
+// LIBRARY: GAMEMD 0x7cb9b8
+// _wcstol
+
+// LIBRARY: GAMEMD 0x7d5408
+// _strdup
 
 // CRT strchr fragment.
 // LIBRARY: GAMEMD 0x7caf20
@@ -478,5 +540,15 @@
 
 // LIBRARY: GAMEMD 0x7dcfbe
 // OLEAUT32!ordinal 8
+
+// Wide-string CRT after the import thunks (LIBCMT, locale-aware).
+// LIBRARY: GAMEMD 0x7dd0f8
+// __wcsicmp
+
+// LIBRARY: GAMEMD 0x7ddcd6
+// __wcsupr
+
+// LIBRARY: GAMEMD 0x7dde80
+// __wcsnicmp
 
 #endif  // GG_MATCH_RT_LIBRARY_FUNCTIONS_H

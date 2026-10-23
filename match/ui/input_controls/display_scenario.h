@@ -124,7 +124,7 @@ extern wchar_t DisplayScText_008A0630[];
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- __fastcall(label ECX, index-out EDX, file, line), RET 8.
 const wchar_t* FUN_00734E60(const char* label, int* index, const char* file, int line);
-// FUNCTION: GAMEMD 0x7CA564 (decl; reloc) -- LIBRARY _swprintf.
+// LIBRARY: GAMEMD 0x7CA564 (decl; reloc) -- LIBRARY _swprintf.
 extern "C" int __cdecl _swprintf(wchar_t* buffer, const wchar_t* format, ...);
 
 // ---- 0x4ACE70 evidence -----------------------------------------------------------------------------------------

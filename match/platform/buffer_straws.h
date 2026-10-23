@@ -25,7 +25,7 @@
 #include "../_layout/straw.h"
 #include "../_layout/memory_buffer.h"
 
-// FUNCTION: GAMEMD 0x7CA090 (decl; reloc) -- CRT memmove.
+// LIBRARY: GAMEMD 0x7CA090 (decl; reloc) -- CRT memmove.
 extern "C" void* __cdecl memmove(void* destination, const void* source, unsigned int count);
 
 class BlockHashView

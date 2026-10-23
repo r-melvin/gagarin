@@ -48,8 +48,8 @@ int CampaignClass::FindIndex(const char* name)
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x410800 (decl; reloc) — AbstractTypeClass base constructor.
-// FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — wcscpy (CRT).
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (CRT).
+// LIBRARY: GAMEMD 0x7CA489 (decl; reloc) — wcscpy (CRT).
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new (CRT).
 // ---------------------------------------------------------------------------
 extern "C" wchar_t* __cdecl wcscpy(wchar_t* dest, const wchar_t* src);
 

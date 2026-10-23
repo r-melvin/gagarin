@@ -13,7 +13,7 @@ struct Obj_005D5820;
 
 // FUNCTION: GAMEMD 0x407000 (declaration)
 int __cdecl FUN_00407000();
-// FUNCTION: GAMEMD 0x7D5408 (declaration)
+// LIBRARY: GAMEMD 0x7D5408 (declaration)
 int __cdecl FUN_007D5408(int);
 
 struct Obj_005D5820

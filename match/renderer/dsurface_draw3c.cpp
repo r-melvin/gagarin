@@ -9,7 +9,7 @@
 #include "../render/blitters/r_shared_zwrap.h"
 #include "../render/blitters/b_shared_alpha.h"
 
-// FUNCTION: GAMEMD 0x7C8FB0 (decl; reloc) (LIBRARY: _CIpow, x87 register ABI), 0x7C5F00 (LIBRARY: _ftol).
+// LIBRARY: GAMEMD 0x7C8FB0 (decl; reloc) (LIBRARY: _CIpow, x87 register ABI), 0x7C5F00 (LIBRARY: _ftol).
 double __cdecl pow(double, double);
 
 // Address view of the data read through 0x887644; +0x14 holds the Surface whose Lock gives pixel addresses

@@ -16,7 +16,7 @@ struct Obj_006CA7B0;
 
 // FUNCTION: GAMEMD 0x6C9960 (declaration)
 void FUN_006C9960(int, int, Obj_006CA7B0*);
-// FUNCTION: GAMEMD 0x7C8B3D (declaration)
+// LIBRARY: GAMEMD 0x7C8B3D (declaration)
 void __cdecl FUN_007C8B3D(int);
 
 struct Obj_006C9930

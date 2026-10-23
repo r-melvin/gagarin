@@ -24,11 +24,11 @@ extern const char STR_00889F64[];
 // STRING: GAMEMD 0x817F70  ","
 extern const char STR_00817F70[];
 
-// FUNCTION: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
+// LIBRARY: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
-// FUNCTION: GAMEMD 0x7C9BFD (decl; reloc) — the CRT text-to-int.
+// LIBRARY: GAMEMD 0x7C9BFD (decl; reloc) — the CRT text-to-int.
 extern "C" int __cdecl FUN_007C9BFD(const char* text);
-// FUNCTION: GAMEMD 0x7C9D66 (decl; reloc) — the CRT text-to-double; the
+// LIBRARY: GAMEMD 0x7C9D66 (decl; reloc) — the CRT text-to-double; the
 // result arrives on the x87 stack and is stored straight out as a float.
 extern "C" double __cdecl FUN_007C9D66(const char* text);
 

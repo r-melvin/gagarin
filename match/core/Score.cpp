@@ -253,7 +253,7 @@ struct Obj_00690EF0;
 
 // FUNCTION: GAMEMD 0x407000 (decl; reloc)
 int __cdecl FUN_00407000();
-// FUNCTION: GAMEMD 0x7D5408 (decl; reloc)
+// LIBRARY: GAMEMD 0x7D5408 (decl; reloc)
 int __cdecl FUN_007D5408(int);
 
 struct Obj_00690EF0

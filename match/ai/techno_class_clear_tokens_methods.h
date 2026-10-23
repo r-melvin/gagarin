@@ -26,7 +26,7 @@
 #include "../_rt/gg_vslot.h"
 #include "../_layout/house_class.h"
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
 // delete); __cdecl, one pointer argument, caller pops.
 void __cdecl GameDelete_006386E0(void* block);
 

@@ -205,7 +205,7 @@ template <class T> inline int TypesFindIndexHoisted(const DynamicVectorClass<T>&
 // GLOBAL: GAMEMD 0x889F64 - the shared empty string the readers use as their text default.
 extern const char TypesEmptyText[];
 
-// FUNCTION: GAMEMD 0x7C9CC2 (LIBRARY) - strtok
+// LIBRARY: GAMEMD 0x7C9CC2 (LIBRARY) - strtok
 // The three finders the veteran lists use; the name arrives in ECX (__fastcall shape).
 // FUNCTION: GAMEMD 0x524CB0 (read-only here)
 class InfantryTypeClass;

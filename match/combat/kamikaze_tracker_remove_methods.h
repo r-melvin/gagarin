@@ -47,7 +47,7 @@ struct Map_0054E590
 // GLOBAL: GAMEMD 0x87F7E8 — MapClass::Instance (an object, not a pointer).
 extern Map_0054E590 DAT_0087F7E8;
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — game memory free (cdecl).
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — game memory free (cdecl).
 void __cdecl GameDelete_0054E590(void* block);
 
 // Declaration order matters — see match/_rt/gg_vslot.h.

@@ -254,7 +254,7 @@ void __cdecl FUN_006DCF40()
 
 struct Obj_006E4790;
 
-// FUNCTION: GAMEMD 0x7C91D0 (decl; reloc)
+// LIBRARY: GAMEMD 0x7C91D0 (decl; reloc)
 void __cdecl FUN_007C91D0(Obj_006E4790*, int, int);
 
 struct Obj_006E4790

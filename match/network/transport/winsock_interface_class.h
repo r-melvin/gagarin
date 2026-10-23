@@ -28,8 +28,8 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 // the vector object also has an _gg_free relocation to this address.
 // GLOBAL: GAMEMD 0x00B73550 -- window passed to WSAAsyncSelect.
 extern HWND DAT_00B73550;
-// FUNCTION: GAMEMD 0x7C89BC (decl; reloc) -- imported WSAAsyncSelect target.
-// FUNCTION: GAMEMD 0x7C897A (decl; reloc) -- imported WSAGetLastError target.
+// LIBRARY: GAMEMD 0x7C89BC (decl; reloc) -- imported WSAAsyncSelect target.
+// LIBRARY: GAMEMD 0x7C897A (decl; reloc) -- imported WSAGetLastError target.
 
 // Additional ordinary-base dependencies used by the isolated selected methods.
 // FUNCTION: GAMEMD 0x64DE80 (decl; reloc) -- one checksum update.

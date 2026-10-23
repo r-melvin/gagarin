@@ -22,7 +22,7 @@
 #include "../_rt/gg_vslot.h"
 
 // CRT sprintf, __cdecl variadic; the caller pops the arguments.
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc)
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc)
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);
 
 // STRING: GAMEMD 0x817F6C — "%d".

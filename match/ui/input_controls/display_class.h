@@ -147,7 +147,7 @@ GG_STATIC_ASSERT(sizeof(DisplayABuffer) == 0x30);
 // GLOBAL: GAMEMD 0x87E8A4
 extern DisplayABuffer* DisplayABuffer_0087E8A4;
 
-// FUNCTION: GAMEMD 0x7C8B3D / 0x7C8E17 are the CRT operator delete / new, reached through new and delete.
+// LIBRARY: GAMEMD 0x7C8B3D / 0x7C8E17 are the CRT operator delete / new, reached through new and delete.
 
 // The map object at 0x87F7E8 is Map_0087F7E8 (ui_display_chain.h).
 

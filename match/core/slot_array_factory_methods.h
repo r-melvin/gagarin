@@ -43,7 +43,7 @@ GG_STATIC_ASSERT(offsetof(Owner_004087F0, Slots) == 0x18);
 GG_STATIC_ASSERT(offsetof(Owner_004087F0, field_98) == 0x98);
 GG_STATIC_ASSERT(sizeof(Owner_004087F0) == 0xA4);
 
-// FUNCTION: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
+// LIBRARY: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x4072C0 — initialise the embedded sub-object.
 void FUN_004072C0(void* embedded);

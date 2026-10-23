@@ -22,7 +22,7 @@
 // with the force flag in DL.
 void* FUN_005B40B0(const char* name, unsigned char force);
 
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — the allocator (operator new,
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — the allocator (operator new,
 // __cdecl; caller pops).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 

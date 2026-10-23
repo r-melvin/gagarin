@@ -11,7 +11,7 @@
 
 struct Obj_007B6280;
 
-// FUNCTION: GAMEMD 0x7C9BFD (declaration)
+// LIBRARY: GAMEMD 0x7C9BFD (declaration)
 int __cdecl FUN_007C9BFD(int);
 
 struct Obj_007B6280

@@ -18,7 +18,7 @@
 extern "C" unsigned int __cdecl wcslen(const wchar_t* s);
 // CRT memcpy — the /Oi intrinsic here (retail's inlined REP MOVSD/MOVSB).
 extern "C" void* __cdecl memcpy(void* destination, const void* source, unsigned int count);
-// FUNCTION: GAMEMD 0x7CA090 (decl; reloc) — CRT memmove (the static CRT's
+// LIBRARY: GAMEMD 0x7CA090 (decl; reloc) — CRT memmove (the static CRT's
 // memcpy/memmove share one body; retail calls it out of line here while the
 // fixed-shape copy above it is the /Oi intrinsic).
 extern "C" void* __cdecl memmove(void* destination, const void* source, unsigned int count);

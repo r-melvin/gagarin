@@ -18,7 +18,7 @@ extern int DAT_00B7816C;
 
 // FUNCTION: GAMEMD 0x7BA090 (declaration)
 void FUN_007BA090(int, int);
-// FUNCTION: GAMEMD 0x7CB9B8 (declaration)
+// LIBRARY: GAMEMD 0x7CB9B8 (declaration)
 void __cdecl FUN_007CB9B8(int, int, int);
 
 struct Obj_007B7D80

@@ -40,13 +40,13 @@ typedef unsigned short wchar_t;
 extern "C" {
 // LIBRARY: GAMEMD 0x7CA405 (decl; reloc) — wcslen.
 unsigned int __cdecl wcslen(const wchar_t* s);
-// FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — wcscpy.
+// LIBRARY: GAMEMD 0x7CA489 (decl; reloc) — wcscpy.
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
-// FUNCTION: GAMEMD 0x7CA422 (decl; reloc) — wcsncpy.
+// LIBRARY: GAMEMD 0x7CA422 (decl; reloc) — wcsncpy.
 wchar_t* __cdecl wcsncpy(wchar_t* dst, const wchar_t* src, unsigned int n);
 // LIBRARY: GAMEMD 0x7CA45F (decl; reloc) — wcscat.
 wchar_t* __cdecl wcscat(wchar_t* dst, const wchar_t* src);
-// FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) — wcscmp.
+// LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) — wcscmp.
 int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
 // LIBRARY: GAMEMD 0x7CAFF4 (decl; reloc) — CRT tolower.
 //   The callee is the narrow CRT tolower (LIBCMT tolower.obj), not towlower:

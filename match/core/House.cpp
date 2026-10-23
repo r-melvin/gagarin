@@ -543,7 +543,7 @@ extern unsigned char HouseMainObject;
 // FUNCTION: GAMEMD 0x429360 (decl; reloc) - queries an interface of a global object.
 void __stdcall HouseQueryObjectInterface(void* object, const IID* riid, void** result);
 
-// FUNCTION: GAMEMD 0x7DC720 (decl; reloc; LIBRARY, comsupp) - throws the COM error
+// LIBRARY: GAMEMD 0x7DC720 (decl; reloc; LIBRARY, comsupp) - throws the COM error
 void __stdcall HouseComIssueError(long hr);
 
 // GLOBAL: GAMEMD 0xA80228 - HouseClass::Array (Items at +0x04 = 0xA8022C, Count at +0x10 = 0xA80238).

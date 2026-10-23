@@ -72,7 +72,7 @@ bool        FUN_00510F60(int idxHouse);
 HouseClass* FindHouseByCountryIndex(int idxHouse);
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc) — printf-style log sink.
 extern "C" void __cdecl FUN_004068E0(const char* format, ...);
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new (CRT).
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new (CRT).
 void* __cdecl operator new(unsigned int size);
 
 // GLOBAL: GAMEMD 0xA8E7AC — nonzero while the scenario is being set up.

@@ -32,7 +32,7 @@ GG_STATIC_ASSERT(sizeof(ToolTipEntry_007248C0) == 8);
 // GLOBAL: GAMEMD 0xB78820 — the tool tip returned when the key is absent.
 extern ToolTipData_007248C0* DAT_00B78820;
 
-// FUNCTION: GAMEMD 0x7C8B48 (decl; reloc) — CRT qsort.
+// LIBRARY: GAMEMD 0x7C8B48 (decl; reloc) — CRT qsort.
 extern "C" void __cdecl gg_qsort(void* base, unsigned int count, unsigned int size,
                                  int (__cdecl* compare)(const void*, const void*));
 // FUNCTION: GAMEMD 0x725040 (decl; reloc) — the key comparison.

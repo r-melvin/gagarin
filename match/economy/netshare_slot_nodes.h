@@ -52,11 +52,11 @@
 #include "../_layout/ipx_address_class.h"
 
 extern "C" {
-// FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) — CRT wcscmp.
+// LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) — CRT wcscmp.
 int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
 // LIBRARY: GAMEMD 0x7DD0F8 (decl; reloc) — CRT _wcsicmp.
 int __cdecl _wcsicmp(const wchar_t* a, const wchar_t* b);
-// FUNCTION: GAMEMD 0x7C8D20 (decl; reloc) — CRT _stricmp.
+// LIBRARY: GAMEMD 0x7C8D20 (decl; reloc) — CRT _stricmp.
 int __cdecl _stricmp(const char* a, const char* b);
 }
 
@@ -218,7 +218,7 @@ extern char ObserverLabel[];
 // calls in 0x5E87A0).
 wchar_t* Fetch_String_00734E60(const char* label, int flag,
                                const char* file, int line);
-// FUNCTION: GAMEMD 0x7CA489 (decl; reloc) — CRT wcscpy.
+// LIBRARY: GAMEMD 0x7CA489 (decl; reloc) — CRT wcscpy.
 wchar_t* __cdecl wcscpy(wchar_t* dst, const wchar_t* src);
 
 // FUNCTION: GAMEMD 0x5E87A0 — declared inside this C-linkage block on

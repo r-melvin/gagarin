@@ -60,7 +60,7 @@ extern int DAT_00ABC9BC;
 
 // FUNCTION: GAMEMD 0x554370 (decl; reloc)
 void FUN_00554370(int, int);
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc)
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc)
 void __cdecl FUN_007C8B3D(int);
 
 

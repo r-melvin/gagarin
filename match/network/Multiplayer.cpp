@@ -260,7 +260,7 @@ static bool DAT_00ABFDD5;
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt(double).
 extern "C" double __cdecl FUN_004CAC40(double value);
 
-// FUNCTION: GAMEMD 0x7CA5D3 (decl; reloc) -- CRT wcscmp.
+// LIBRARY: GAMEMD 0x7CA5D3 (decl; reloc) -- CRT wcscmp.
 extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);
 
 // --- Views for slot +0xCC (0x5D70F0) -------------------------------------
@@ -336,7 +336,7 @@ struct Vtbl_Techno_005D70F0
 GG_STATIC_ASSERT(offsetof(Vtbl_Techno_005D70F0, vt_20) == 0x20);
 GG_STATIC_ASSERT(offsetof(Vtbl_Techno_005D70F0, vt_1F0) == 0x1F0);
 
-// FUNCTION: GAMEMD 0x7CAAE4 (decl; reloc) -- the CRT's __RTDynamicCast.
+// LIBRARY: GAMEMD 0x7CAAE4 (decl; reloc) -- the CRT's __RTDynamicCast.
 extern "C" void* __cdecl FUN_007CAAE4(void* object, long vfDelta, void* srcType,
                                       void* dstType, int isReference);
 

@@ -217,9 +217,9 @@ int FUN_00523C90(const char* name);
 // FUNCTION: GAMEMD 0x747370 (decl; reloc) — second registry: name -> index.
 int FUN_00747370(const char* name);
 
-// FUNCTION: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
+// LIBRARY: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
-// FUNCTION: GAMEMD 0x7C9BFD (decl; reloc) — the CRT decimal parser.
+// LIBRARY: GAMEMD 0x7C9BFD (decl; reloc) — the CRT decimal parser.
 extern "C" int __cdecl FUN_007C9BFD(const char* text);
 // FUNCTION: GAMEMD 0x751590 (decl; reloc) — armour index -> armour name.
 const char* FUN_00751590(int index);

@@ -16,7 +16,7 @@ extern unsigned char DAT_00ABF2DC;
 
 // FUNCTION: GAMEMD 0x69E500 (declaration)
 void FUN_0069E500(int, int);
-// FUNCTION: GAMEMD 0x7C8B3D (declaration)
+// LIBRARY: GAMEMD 0x7C8B3D (declaration)
 void __cdecl FUN_007C8B3D(int);
 
 

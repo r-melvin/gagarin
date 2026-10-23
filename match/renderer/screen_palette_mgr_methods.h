@@ -45,7 +45,7 @@
 // Callees (declarations only; the diff harness normalises the relocations).
 // ---------------------------------------------------------------------------
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — operator delete / free, __cdecl.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — operator delete / free, __cdecl.
 extern "C" void __cdecl FUN_007C8B3D(void* block);
 
 // FUNCTION: GAMEMD 0x69E500 (decl; reloc) — the non-virtual destructor of the

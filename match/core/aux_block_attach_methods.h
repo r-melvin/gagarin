@@ -11,7 +11,7 @@
 
 struct Host_0040A260;
 
-// FUNCTION: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
+// LIBRARY: GAMEMD 0x7C8E17 — the allocator (malloc thunk, __cdecl).
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x402800 — store a 32-byte block if it differs.
 int FUN_00402800(Host_0040A260* host, const int* incoming);

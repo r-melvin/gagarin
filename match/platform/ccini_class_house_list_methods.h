@@ -25,7 +25,7 @@ extern const char STR_00889F64[];
 // STRING: GAMEMD 0x817F70  ","
 extern const char STR_00817F70[];
 
-// FUNCTION: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter, under
+// LIBRARY: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter, under
 // its placeholder name so cl cannot substitute anything for the call.
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
 

@@ -8,7 +8,7 @@
 // method and global names are descriptive; no size is asserted.
 #include <stdarg.h>
 
-// FUNCTION: GAMEMD 0x7CB7BA (decl; reloc) -- CRT vsprintf.
+// LIBRARY: GAMEMD 0x7CB7BA (decl; reloc) -- CRT vsprintf.
 extern "C" int __cdecl vsprintf(char* buffer, const char* format, va_list args);
 
 class MessageLog_005BD0D0

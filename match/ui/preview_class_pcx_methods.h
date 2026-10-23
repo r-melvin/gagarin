@@ -90,7 +90,7 @@ GG_STATIC_ASSERT(offsetof(Vtbl_00641DB0, At_018) == 0x18);
 GG_STATIC_ASSERT(offsetof(Vtbl_00641DB0, At_07C) == 0x7C);
 GG_STATIC_ASSERT(offsetof(Vtbl_00641DB0, At_080) == 0x80);
 
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 
 // FUNCTION: GAMEMD 0x630310 (decl; reloc) — Read_PCX_File(file, palette,

@@ -88,7 +88,7 @@ extern bool DAT_00ABCA84;
 // GLOBAL: GAMEMD 0x829AE8
 extern unsigned int DAT_00829AE8;
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- operator delete.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) -- operator delete.
 void __cdecl operator delete(void* p);
 // FUNCTION: GAMEMD 0x544FF0 (decl; reloc)
 bool FUN_00544FF0(int value, bool flag);

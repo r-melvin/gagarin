@@ -6,7 +6,7 @@
 // The parameters keep the canonical Pipe int ABI view (pointer, count).
 #include "pk_blow_pipes.h"
 
-// FUNCTION: GAMEMD 0x7CA090 (decl; reloc) -- CRT memmove.
+// LIBRARY: GAMEMD 0x7CA090 (decl; reloc) -- CRT memmove.
 extern "C" void* __cdecl memmove(void* destination, const void* source, unsigned int count);
 
 // FUNCTION: GAMEMD 0x4380A0

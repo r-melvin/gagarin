@@ -1796,7 +1796,7 @@ extern BA4House** DAT_00A8022C;
 extern int DAT_00A8B238;
 extern BA4Session* DAT_00A8B230;
 extern int DAT_0089C848;
-// FUNCTION: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
+// LIBRARY: GAMEMD 0x7C8D20 (LIBRARY: _stricmp) / 0x7C91D0 (LIBRARY: strncpy)
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 extern "C" char* __cdecl strncpy(char* dest, const char* src, unsigned int count);
 extern int DAT_00A8ED84;
@@ -1807,7 +1807,7 @@ extern const double DAT_007E27F8;
 extern const double DAT_007E1718;
 // FUNCTION: GAMEMD 0x4CAC40 (read-only here)
 double __cdecl FUN_004CAC40(double a);
-// FUNCTION: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (LIBRARY: _ftol)
+// LIBRARY: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (LIBRARY: _ftol)
 extern "C" int __cdecl abs(int);
 #pragma intrinsic(abs)
 

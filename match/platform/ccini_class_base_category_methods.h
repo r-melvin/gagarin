@@ -65,9 +65,9 @@ GG_STATIC_ASSERT(offsetof(CategoryTypeVector, Items) == 0x04 &&
 // GLOBAL: GAMEMD 0xA83C68 — the category registry whose Items live at 0xA83C6C.
 extern CategoryTypeVector DAT_00A83C68;
 
-// FUNCTION: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
+// LIBRARY: GAMEMD 0x7C9CC2 (decl; reloc) — the CRT token splitter.
 extern "C" char* __cdecl FUN_007C9CC2(char* text, const char* delimiters);
-// FUNCTION: GAMEMD 0x7C8D20 (decl; reloc) — the CRT case-insensitive compare.
+// LIBRARY: GAMEMD 0x7C8D20 (decl; reloc) — the CRT case-insensitive compare.
 extern "C" int __cdecl FUN_007C8D20(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x45E7B0 (decl; reloc) — category name -> bit number.
 int FUN_0045E7B0(const char* name);

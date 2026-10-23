@@ -15,7 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new.
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new.
 extern "C" void* __cdecl gg_operator_new(unsigned int size);
 // FUNCTION: GAMEMD 0x47C520 (decl; reloc) — the cell's occupying building.
 void* FUN_0047C520(void* cell);

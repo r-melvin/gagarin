@@ -35,7 +35,7 @@ GG_STATIC_ASSERT(offsetof(Coord_00471FF0, Y) == 0x04);
 GG_STATIC_ASSERT(offsetof(Coord_00471FF0, Z) == 0x08);
 GG_STATIC_ASSERT(sizeof(Coord_00471FF0) == 0x0C);
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) -- YR game-heap free (operator
 // delete); __cdecl, one pointer argument, caller pops.
 void __cdecl GameDelete_00471FF0(void* block);
 

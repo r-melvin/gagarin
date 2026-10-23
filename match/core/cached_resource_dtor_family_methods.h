@@ -22,7 +22,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x007C8B3D (decl; reloc) — CRT free.
+// LIBRARY: GAMEMD 0x007C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
 
 // The refcounted resource registry. Release() drops one reference on the

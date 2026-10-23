@@ -30,9 +30,9 @@
 
 // FUNCTION: GAMEMD 0x431B80 (decl; reloc) — the base destructor.
 void FUN_00431B80(void* self);
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — operator delete / free, __cdecl.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — operator delete / free, __cdecl.
 extern "C" void  __cdecl FUN_007C8B3D(void* block);
 
 extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0 — CCFileClass

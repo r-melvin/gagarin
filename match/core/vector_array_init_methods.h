@@ -59,7 +59,7 @@ extern Vec_00412870 DAT_00889E08;
 
 extern "C" void __cdecl FUN_007C8B3D(void* block);   // GAMEMD 0x7C8B3D
 
-// FUNCTION: GAMEMD 0x7C978A — atexit.
+// LIBRARY: GAMEMD 0x7C978A — atexit.
 extern "C" int __cdecl FUN_007C978A(void (__cdecl* fn)());
 // FUNCTION: GAMEMD 0x4128F0 — the matching teardown, registered by 0x412870 and
 // defined in the same TU.

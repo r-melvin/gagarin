@@ -27,7 +27,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
+// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // FUNCTION: GAMEMD 0x4CAD00 (decl; reloc) — the in-image CRT cos.
 extern "C" double __cdecl FUN_004CAD00(double x);

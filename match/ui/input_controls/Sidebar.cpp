@@ -245,7 +245,7 @@ void* SelectCheckPlacement(void* object);
 // FUNCTION: GAMEMD 0x48DC90 (decl; reloc) -- MapClass::UnselectAll.
 void SelectUnselectAll();
 
-// FUNCTION: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (_ftol).
+// LIBRARY: GAMEMD 0x7C5F00 is the compiler's float-to-int helper (_ftol).
 extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime(void);
 
 // GLOBAL: GAMEMD 0xA83D4C -- HouseClass::CurrentPlayer.

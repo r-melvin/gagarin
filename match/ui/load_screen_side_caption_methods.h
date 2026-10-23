@@ -25,7 +25,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
 extern "C" void __cdecl gg_free_0642AE0(void* block);
 
 // FUNCTION: GAMEMD 0x68CA50 (decl; reloc) -- find a gadget by caption text

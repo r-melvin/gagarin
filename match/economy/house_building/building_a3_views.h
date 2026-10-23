@@ -32,7 +32,7 @@ class BuildingA3View;
 class ParticleSystemTypeClass;
 class BA3AnimTypeView;
 
-// FUNCTION: GAMEMD 0x7DC720 (read-only here) - raises a COM error (HRESULT on the stack).
+// LIBRARY: GAMEMD 0x7DC720 (read-only here) - raises a COM error (HRESULT on the stack).
 void __stdcall FUN_007DC720(long hr);
 
 // Eight bytes passed by value (a double of the original, copied dword-wise).

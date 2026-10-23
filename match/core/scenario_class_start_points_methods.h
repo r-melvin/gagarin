@@ -37,7 +37,7 @@ struct CCINI_00689D30
                                const Cell_00689D30& defaultValue);
 };
 
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc) — CRT sprintf.
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) — CRT sprintf.
 extern "C" int __cdecl gg_sprintf(char* buffer, const char* format, ...);
 
 // STRING: GAMEMD 0x83DE68 — "Header".

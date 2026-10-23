@@ -237,7 +237,7 @@ bool Obj_00769510::FUN_00769510(const Obj_00769510* other) const
 }
 
 // The character at an index of a wide string, or zero past its end.
-// FUNCTION: GAMEMD 0x7CA405 (decl; reloc) -- wcslen.
+// LIBRARY: GAMEMD 0x7CA405 (decl; reloc) -- wcslen.
 unsigned int __cdecl FUN_007CA405(const unsigned short* text);
 struct Obj_007B7150 {
     unsigned short* unknown_00;

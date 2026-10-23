@@ -24,7 +24,7 @@
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 
-// FUNCTION: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
+// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) — CRT free.
 extern "C" void __cdecl gg_free(void* block);
 
 // The vtables of LCWStraw (0x7ECF44), LZOPipe (0x7ED37C) and LZOStraw

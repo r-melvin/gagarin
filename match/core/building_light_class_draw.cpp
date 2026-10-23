@@ -13,7 +13,7 @@
 #include "../ui/tactical_class_coords_to_client_methods.h"
 #include "../ui/tactical_class_position_methods.h"
 
-// FUNCTION: GAMEMD 0x7C5F00 (decl; reloc) -- __ftol.
+// LIBRARY: GAMEMD 0x7C5F00 (decl; reloc) -- __ftol.
 // FUNCTION: GAMEMD 0x4CAD80 (decl; reloc) -- the double-to-double math helper
 // applied to the distance ratio.
 extern "C" double __cdecl FUN_004CAD80(double ratio);

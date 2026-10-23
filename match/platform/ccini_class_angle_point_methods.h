@@ -26,11 +26,11 @@ extern const char STR_00817F6C[];
 // STRING: GAMEMD 0x81C000  "%d,%d"
 extern const char STR_0081C000[];
 
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc) — the CRT formatter.
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) — the CRT formatter.
 extern "C" int __cdecl FUN_007C8EF4(char* buffer, const char* format, ...);
-// FUNCTION: GAMEMD 0x7CA530 (decl; reloc) — the CRT scanner.
+// LIBRARY: GAMEMD 0x7CA530 (decl; reloc) — the CRT scanner.
 extern "C" int __cdecl FUN_007CA530(const char* text, const char* format, ...);
-// FUNCTION: GAMEMD 0x7C9BFD (decl; reloc) — the CRT text-to-int.
+// LIBRARY: GAMEMD 0x7C9BFD (decl; reloc) — the CRT text-to-int.
 extern "C" int __cdecl FUN_007C9BFD(const char* text);
 
 // A packed pair of 16-bit coordinates, four bytes wide: the 0x474740

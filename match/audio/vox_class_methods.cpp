@@ -17,7 +17,7 @@
 //   FUNCTION: GAMEMD 0x752480   VoxClass::PlayIndex     (reloc callee)
 //   FUNCTION: GAMEMD 0x752680   VoxClass::GetActiveVoice(reloc callee)
 //   FUNCTION: GAMEMD 0x407450   VoxNode::Detach         (reloc callee)
-//   FUNCTION: GAMEMD 0x7C8B3D   release voice node      (reloc callee, cdecl)
+//   LIBRARY: GAMEMD 0x7C8B3D   release voice node      (reloc callee, cdecl)
 
 #include "vox_class_methods.h"
 

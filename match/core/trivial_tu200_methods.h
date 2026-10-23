@@ -21,9 +21,9 @@ struct Obj_00681220;
 struct Obj_00681260;
 struct Obj_006812A0;
 
-// FUNCTION: GAMEMD 0x7C91D0 (declaration)
+// LIBRARY: GAMEMD 0x7C91D0 (declaration)
 void __cdecl FUN_007C91D0(void*, int, int);
-// FUNCTION: GAMEMD 0x7CA422 (declaration)
+// LIBRARY: GAMEMD 0x7CA422 (declaration)
 void __cdecl FUN_007CA422(void*, int, int);
 
 struct Arg1_00681220

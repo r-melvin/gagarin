@@ -19,7 +19,7 @@ extern char DAT_0089DFE0[];
 // GLOBAL: GAMEMD 0x89E020
 extern int DAT_0089E020;
 
-// FUNCTION: GAMEMD 0x7C8B48 (declaration)
+// LIBRARY: GAMEMD 0x7C8B48 (declaration)
 void __cdecl FUN_007C8B48(void*, int, int, int);
 
 struct Obj_0046D350

@@ -32,7 +32,7 @@
 #include "../_rt/gg_static_assert.h"
 
 extern "C" {
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc) — CRT sprintf.
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) — CRT sprintf.
 int __cdecl sprintf(char* buffer, const char* format, ...);
 // FUNCTION: GAMEMD (inlined intrinsic) — CRT strcat, which /O2 expands to the
 // REPNZ SCASB / REP MOVSD pair retail has at 0x5EABC2.

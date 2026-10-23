@@ -32,7 +32,7 @@ extern const char STR_00817F70[];
 // STRING: GAMEMD 0x8189B0  "%d,%d,%d"
 extern const char STR_008189B0[];
 
-// FUNCTION: GAMEMD 0x7C8EF4 (decl; reloc) — the CRT formatter, under its
+// LIBRARY: GAMEMD 0x7C8EF4 (decl; reloc) — the CRT formatter, under its
 // placeholder name so cl emits the ordinary call retail has.
 extern "C" int __cdecl FUN_007C8EF4(char* buffer, const char* format, ...);
 
