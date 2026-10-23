@@ -47,10 +47,11 @@ public:
 // a pointer-element vector calls operator delete (0x7C8B3D) directly, while a
 // vector of virtual-destructor elements calls slot 0 with flag 3 (the vector
 // deleting destructor); delete[] yields both forms.
+// The destructor releases through Clear, bound statically: where the inliner
+// stops (0x594700) the expansion is the VectorClass<Cell> vptr store 0x7E38D0
+// followed by a direct call to that table's slot-3 Clear, 0x42F7C0.
 template<class T> VectorClass<T>::~VectorClass() {
-    if (Items != 0 && IsAllocated) { delete[] Items; Items = 0; }
-    IsAllocated = false;
-    Capacity = 0;
+    Clear();
 }
 
 template<class T> void VectorClass<T>::Clear() {

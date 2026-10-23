@@ -50377,7 +50377,7 @@
   "len": "0x915",
   "name": "HouseTypeClass::ReadINI",
   "status": "partial",
-  "pct": 57.7
+  "pct": 54.4
  },
  {
   "tu": "match/economy/house_building/types_house_type_class.cpp",
@@ -96412,10 +96412,10 @@
   "tu": "match/core/MapGen.cpp",
   "addr": "0x58E5D0",
   "sym": "?FUN_0058E5D0@MapRegionClass@@QAEPAV?$DynamicVectorClass@VCell@@@@XZ",
-  "len": "0x161",
+  "len": "0x158",
   "name": "MapRegionClass::FUN_0058E5D0",
   "status": "partial",
-  "pct": 3.9
+  "pct": 23.1
  },
  {
   "tu": "match/core/MapGen.cpp",

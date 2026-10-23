@@ -623,32 +623,33 @@ void MapRegionClass::FUN_0058D5A0(char a1)
 // none) is appended once to a new list that grows by half the +0x0C count.
 DynamicVectorClass<Cell>* MapRegionClass::FUN_0058E5D0()
 {
-    DynamicVectorClass<Cell>* border = new DynamicVectorClass<Cell>;
+    DynamicVectorClass<Cell>* list = new DynamicVectorClass<Cell>;
     int step = unknown_0C / 2;
     if (step < 10)
         step = 10;
-    border->CapacityIncrement = step;
+    list->CapacityIncrement = step;
     for (int i = unknown_28.Count - 1; i >= 0; i--) {
         Cell cell = unknown_28.Items[i];
-        for (int dir = 0; dir < 8; dir++) {
-            const CellStruct& offset = DAT_0089F688[dir & 7];
+        for (int f = 0; f < 8; f++) {
             CellStruct adj;
-            adj.X = offset.X + cell.X;
-            adj.Y = offset.Y + cell.Y;
-            if (Inline_005942F0(adj)) {
+            adj.X = (short)(DAT_0089F688[f & 7].X + cell.X);
+            adj.Y = (short)(DAT_0089F688[f & 7].Y + cell.Y);
+            int x = adj.X;
+            int y = adj.Y;
+            if (x + y > DAT_00ABED04 && x - y < DAT_00ABED04 && y - x < DAT_00ABED04 && x + y <= DAT_00ABED08) {
                 int owner;
                 if (DAT_00ABED10 == 0)
                     owner = -1;
                 else
-                    owner = DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_38;
+                    owner = DAT_00ABED10[y * DAT_0089C2DC + x].unknown_38;
                 if (owner != unknown_08) {
-                    border->AddItem(cell);
+                    list->AddItem(cell);
                     break;
                 }
             }
         }
     }
-    return border;
+    return list;
 }
 
 // FUNCTION: GAMEMD 0x5904B0
