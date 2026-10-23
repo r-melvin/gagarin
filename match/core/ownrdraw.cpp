@@ -1370,12 +1370,19 @@ int FUN_006033F0(int nKey, GG_HWND hCtl)
           category == 0x114 || category == 0xE6 || category == 0xF3 ||
           category == 0xF4 || category == 0x2BC || category == 0x10E ||
           category == 0x108 || category == 0xBC6 || category == 0xBC7)
-         && nCtlID == 0x71C)
-        || (category == 0x94 && (nCtlID == 0x6EA || nCtlID == 0x6EC || nCtlID == 0x6EB))
-        || ((category == 0x103 || category == 0xBC7) && nCtlID == 0x72B))
+         && nCtlID == 0x71C))
     {
         return 0x64;
     }
+
+    if (category == 0x94 && (nCtlID == 0x6EA || nCtlID == 0x6EC || nCtlID == 0x6EB))
+        return 0x64;
+
+    if (category == 0x103 && nCtlID == 0x72B)
+        return 0x64;
+
+    if (category == 0xBC7 && nCtlID == 0x72B)
+        return 0x64;
 
     if (category == 0xC4 && nCtlID == 0x7A9)
         return 0x32;

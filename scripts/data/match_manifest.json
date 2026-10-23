@@ -88465,8 +88465,8 @@
   "sym": "?FUN_006033F0@@YIHHPAX@Z",
   "len": "0x1fc",
   "name": "FUN_006033F0",
-  "status": "partial",
-  "pct": 79.2
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/core/ownrdraw.cpp",
