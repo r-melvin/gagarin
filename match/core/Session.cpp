@@ -1242,6 +1242,19 @@ GG_STATIC_ASSERT(sizeof(SlotPlayers_00A8DA90) == 0x20);
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
 extern const char* NarrowName_007350C0(const unsigned short* name);
 
+// FUNCTION: GAMEMD 0x69BC60
+int SessionClass::FUN_0069BC60(int index)
+{
+    for (int slot = 0; slot < 8; ++slot) {
+        NetPlayerClass* selected = SlotPlayers_00A8DA90[slot];
+        const char* playerName = NarrowName_007350C0(Players_00A8DA78[index]->Name);
+        const char* slotName = NarrowName_007350C0(selected->Name);
+        if (_stricmp(playerName, slotName) == 0)
+            return slot;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x69BCC0
 // RET4 and a single stack argument; ECX is unused on entry. No incoming
 // references survive in current analysis, so retain an address-scoped ABI model.
