@@ -12,18 +12,9 @@
 #include "../_layout/crc_00476d80.h"
 #include "../_layout/obj_0069e430.h"
 
-// Cached-file index node (operator new(0x10)): left/right/key(crc)/value.
-// Key @+0x8, Value @+0xC confirmed from the walk: `node[2]==crc && node[3]!=0`
-// (CMP [EAX+0x8] / [EDX+... ]) and key<crc => node[1] (right @+0x4) else *node
-// (left @+0x0).
-struct IdxNode { IdxNode* Left; IdxNode* Right; int Key; void* Value; };
-GG_STATIC_ASSERT(offsetof(IdxNode, Left) == 0);
-GG_STATIC_ASSERT(offsetof(IdxNode, Right) == 4);
-GG_STATIC_ASSERT(offsetof(IdxNode, Key)   == 0x08);
-GG_STATIC_ASSERT(offsetof(IdxNode, Value) == 0x0C);
-GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
-extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
-void IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
+#include "../_layout/sorted_tree_node.h"
+
+extern SortedTreeNode* g_FileCacheRoot; // GLOBAL: GAMEMD 0x00ABF00C
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x5B40B0   MixFileClass::Retrieve  (__fastcall static)
@@ -45,8 +36,8 @@ void* MixFileClass_Retrieve(char* name, bool force)
     eng.CRC = 0; eng.Staging = 0; eng.Index = 0;
     int crc = eng.FUN_004A1DE0(buf, strlen(buf));
 
-    IdxNode* found = 0;
-    IdxNode* node  = g_FileCacheRoot;
+    SortedTreeNode* found = 0;
+    SortedTreeNode* node  = g_FileCacheRoot;
     while (node)
     {
         if (node->Key == crc && node->Value != 0)
@@ -54,8 +45,8 @@ void* MixFileClass_Retrieve(char* name, bool force)
             found = node;
             break;
         }
-        if (node->Key < crc) node = node->Right;
-        else                 node = node->Left;
+        if (node->Key < crc) node = node->High;
+        else                 node = node->Low;
     }
     if (found)
         return found->Value;
@@ -65,18 +56,18 @@ void* MixFileClass_Retrieve(char* name, bool force)
     if (!file.Exists(false))
         return 0;
 
-    IdxNode* fresh = new IdxNode;
+    SortedTreeNode* fresh = new SortedTreeNode;
     fresh->Key = crc;
-    IdxNode* p = g_FileCacheRoot;
+    SortedTreeNode* p = g_FileCacheRoot;
     if (p == 0)
     {
         g_FileCacheRoot = fresh;
-        fresh->Left = 0;
-        fresh->Right = 0;
+        fresh->Low = 0;
+        fresh->High = 0;
     }
     else
     {
-        IdxInsert(fresh, p->Key < crc ? &p->Right : &p->Left);
+        fresh->SortedTreeInsert(p->Key < crc ? &p->High : &p->Low);
     }
 
     void* value;

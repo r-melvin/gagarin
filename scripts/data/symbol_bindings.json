@@ -6489,6 +6489,7 @@
  "?g_AudioEnabled@@3PAXA": "0x0087E2A0",
  "?g_CACHE@@3PAVMixFileClass@@A": "0x00884E4C",
  "?g_CACHEMD@@3PAVMixFileClass@@A": "0x00884E48",
+ "?g_FileCacheRoot@@3PAUSortedTreeNode@@A": "0x00ABF00C",
  "?g_FileSearchMode@@3HA": "0x0081C1D0",
  "?g_LOCAL@@3PAVMixFileClass@@A": "0x00884E54",
  "?g_LOCALMD@@3PAVMixFileClass@@A": "0x00884E50",

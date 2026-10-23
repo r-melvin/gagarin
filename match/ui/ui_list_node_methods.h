@@ -23,31 +23,7 @@ extern "C" void __cdecl FUN_007C93E8(void* block);
 
 // VTABLE: GAMEMD 0x7EDF50 — MixFileClass.
 extern char VT_007EDF50;
-// ---------------------------------------------------------------------------
-// The sorted binary tree (0x5B3FF0, 0x5B4080).
-//
-// Offsets confirmed numerically at 0x5B3FFF/0x5B4004 (`LEA EDX,[EAX + 0x4]` for
-// one child and `MOV EDX,EAX` for the other, so the children sit at +0x00 and
-// +0x04) and at 0x5B3FFA (`MOV EDX,dword ptr [EAX + 0x8]`, the ordering key).
-struct SortedTreeNode
-{
-    SortedTreeNode* Low;   // +0x00
-    SortedTreeNode* High;  // +0x04
-    int             Key;   // +0x08
-
-    // Members, not free functions taking the node: retail keeps the node in
-    // ECX and 0x5B3FF0's slot pointer arrives in EDX, which is `__fastcall` on
-    // a member (this in ECX, the first explicit argument in EDX, nothing
-    // cleaned); a __thiscall member would push the slot and return `RET 4`.
-    // FUNCTION: GAMEMD 0x5B3FF0
-    void __fastcall SortedTreeInsert(SortedTreeNode** slot);
-    // FUNCTION: GAMEMD 0x5B4080
-    void SortedTreeFree();
-};
-GG_STATIC_ASSERT(offsetof(SortedTreeNode, Low) == 0x00);
-GG_STATIC_ASSERT(offsetof(SortedTreeNode, High) == 0x04);
-GG_STATIC_ASSERT(offsetof(SortedTreeNode, Key) == 0x08);
-GG_STATIC_ASSERT(sizeof(SortedTreeNode) == 0x0C);
+#include "../_layout/sorted_tree_node.h"
 
 // ---------------------------------------------------------------------------
 // GenericNode and its primitives use the shared binary-confirmed layout.
