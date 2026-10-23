@@ -12,7 +12,7 @@
 #include "game_mode_options.h"
 
 class MultiplayerGameMode;
-struct NetPlayerClass;
+#include "node_name_type.h"
 class CCINIClass;
 
 // Embedded records: native69844B/698464/69847D; stride0x7C.
@@ -62,9 +62,9 @@ struct SessionClass
     bool unknown_1FC1;
     char unknown_1FC2[0x283C - 0x1FC2];
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
-    DynamicVectorClass<NetPlayerClass*> unknown_283C;
+    DynamicVectorClass<NodeNameType*> unknown_283C;
     char unknown_2854[4];
-    NetPlayerClass* unknown_2858[8]; // native69C290/69C362
+    NodeNameType* unknown_2858[8]; // native69C290/69C362
     char unknown_2878[0x292C - 0x2878];
     // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
     DynamicVectorClass<const unsigned short*> unknown_292C;
@@ -149,11 +149,11 @@ GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18.unknown_6C) == 0x20);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_15C) == 0x15C);
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C) == 0x283C);
-GG_STATIC_ASSERT(sizeof(DynamicVectorClass<NetPlayerClass*>) == 0x18);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<NodeNameType*>) == 0x18);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C)
-    + offsetof(DynamicVectorClass<NetPlayerClass*>, Items) == 0x2840);
+    + offsetof(DynamicVectorClass<NodeNameType*>, Items) == 0x2840);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C)
-    + offsetof(DynamicVectorClass<NetPlayerClass*>, Count) == 0x284C);
+    + offsetof(DynamicVectorClass<NodeNameType*>, Count) == 0x284C);
 GG_STATIC_ASSERT(sizeof(wchar_t) == 2);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3020) == 0x3020);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3074) == 0x3074);

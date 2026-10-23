@@ -67,7 +67,7 @@ void __cdecl FUN_0053F5B0();
 wchar_t* FUN_00735120(const char* text);
 
 // GLOBAL: GAMEMD 0xA8DA74 -- the player vector (Items 0xA8DA78, Count 0xA8DA84).
-extern DynamicVectorClass<NetPlayerClass*> Players_00A8DA74;
+extern DynamicVectorClass<NodeNameType*> Players_00A8DA74;
 
 // LIBRARY: GAMEMD 0x7DD0F8 _wcsicmp
 extern "C" int __cdecl _wcsicmp(const wchar_t* a, const wchar_t* b);
@@ -334,11 +334,11 @@ int IPXManagerClass::FUN_005410F0(void* buf, int buflen, int needsAck, IPXAddres
 // test `> 0`, a while loop, the address declared at the top (5.6%).
 int IPXManagerClass::FUN_00541170(void* buf, int buflen, int needsAck, int id)
 {
-    if (Players_00A8DA74.Count && Players_00A8DA74[0]->Id == id) {
+    if (Players_00A8DA74.Count && Players_00A8DA74[0]->unknown_6F == id) {
         return 0;
     }
     for (int i = 1; i < Players_00A8DA74.Count; ++i) {
-        if (Players_00A8DA74[i]->Id == id) {
+        if (Players_00A8DA74[i]->unknown_6F == id) {
             IPXAddressClass address = Players_00A8DA74[i]->Address;
             return FUN_005410F0(buf, buflen, needsAck, &address, Ports_00A8E2B2[i], 0);
         }

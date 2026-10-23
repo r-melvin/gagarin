@@ -29,7 +29,7 @@ extern int Frame_00A8ED84;
 // GLOBAL: GAMEMD 0xA80238
 extern int HouseCount_00A80238;
 // GLOBAL: GAMEMD 0xA8DA90 -- eight slot player pointers.
-extern NetPlayerClass* SlotPlayers_00A8DA90[8];
+extern NodeNameType* SlotPlayers_00A8DA90[8];
 // GLOBAL: GAMEMD 0xA8E2B2 -- per-player port words.
 extern unsigned short Ports_00A8E2B2[];
 // GLOBAL: GAMEMD 0xA8BB1C -- last router address copy (0xA8DBA4 / 0xA8DBBC: conn_types.h).
@@ -328,12 +328,12 @@ int IPXManagerClass::Service()
                     unsigned short oldport = Ports_00A8E2B2[i];
                     FUN_004068E0("Player %s is having his port translated to %d\n", name, port);
                     Ports_00A8E2B2[i] = port;
-                    IdMap_00B052D0.FUN_00664400(Players_00A8DA78[i]->Id, port);
+                    IdMap_00B052D0.FUN_00664400(Players_00A8DA78[i]->unknown_6F, port);
                     GlobalChannel->vf_16(&addr, oldport);
                     GlobalChannel->vf_16(&addr, Players_00A8DA78[i]->Address.Port);
                     Players_00A8DA78[i]->Address = addr;
                     Players_00A8DA78[i]->Address.FUN_0053F200(port);
-                    IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->Id, &Players_00A8DA78[i]->Address);
+                    IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->unknown_6F, &Players_00A8DA78[i]->Address);
                     SlotPlayers_00A8DA90[Session_00A8B238.FUN_0069BC60(i)]->Address = addr;
                     SlotPlayers_00A8DA90[Session_00A8B238.FUN_0069BC60(i)]->Address.FUN_0053F200(port);
                 }
@@ -348,10 +348,10 @@ int IPXManagerClass::Service()
                 if (Flag_00A8D60E || ConnectionCount == 0) {
                     continue;
                 }
-                if (HouseCount_00A80238 <= Players_00A8DA78[i]->Id) {
+                if (HouseCount_00A80238 <= Players_00A8DA78[i]->unknown_6F) {
                     continue;
                 }
-                if (!Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->Id])) {
+                if (!Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->unknown_6F])) {
                     continue;
                 }
                 FUN_004068E0("Frame %d, Router apparently changed address from %s to %s\n",
@@ -415,7 +415,7 @@ int IPXManagerClass::Service()
                         && !Flag_00A8DBA0 && size > 0xf && packet.Code == 1 && packet.Kind == 0x19) {
                         int id = (signed char)packet.Type;
                         for (i = 1; i < PlayerCount_00A8DA84; ++i) {
-                            if (Players_00A8DA78[i]->Id == id) {
+                            if (Players_00A8DA78[i]->unknown_6F == id) {
                                 Players_00A8DA78[i]->Address = addr;
                                 if (vf_6(id) != -1) {
                                     Connection[vf_6(id)]->Address = addr;
@@ -434,14 +434,14 @@ int IPXManagerClass::Service()
                 if (Session_00A8B238.GameMode == 4 && Flag_00A8DBA0 && addr.FUN_0053EF60(&MulticastChannel->Address)) {
                     for (i = 1; i < PlayerCount_00A8DA84; ++i) {
                         if (Players_00A8DA78[i]->Address.FUN_0053EF30(&MulticastChannel->Address)
-                            && Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->Id])) {
+                            && Session_00A8B238.FUN_00697E70(PlayerTable_00A8022C[Players_00A8DA78[i]->unknown_6F])) {
                             FUN_004068E0("Frame %d, Router apparently changed address from %s to %s\n",
                                          Frame_00A8ED84, MulticastChannel->Address.FUN_0053F0E0(0), addr.FUN_0053F0E0(0));
                             Players_00A8DA78[i]->Address = addr;
                             MulticastChannel->Address = addr;
                             Address_00A8BB1C = addr;
                             Address_00A8DBA4 = addr;
-                            IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->Id, &addr);
+                            IdMap_00B052D0.FUN_00664240(Players_00A8DA78[i]->unknown_6F, &addr);
                         }
                     }
                 }

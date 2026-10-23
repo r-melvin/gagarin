@@ -18,11 +18,13 @@ struct NodeNameType
     IPXAddressClass Address;          // +0x28
     unsigned char unknown_34[0x17];   // +0x34
     int unknown_4B;                   // +0x4B  set to 1 by 0x796FC0
-    unsigned char unknown_4F[0x04];   // +0x4F
+    int unknown_4F;                   // +0x4F, native696FA0/696FA9
     int unknown_53;                   // +0x53  set to 2 by 0x796FC0
-    unsigned char unknown_57[0x14];   // +0x57
+    int unknown_57;                   // +0x57, native696FD0/696FD9
+    unsigned char unknown_5B[0x10];
     int unknown_6B;                   // +0x6B  (-1 == observer)
-    unsigned char unknown_6F[0x08];   // +0x6F
+    int unknown_6F;                   // +0x6F, native697BBA/697BD9
+    int unknown_73;                   // +0x73, native697D2D
     int unknown_77;                   // +0x77  tested against 1 at 0x5EA905 and 0x5EA3A5, cleared at 0x5E98DD
     int unknown_7B;                   // +0x7B  set to -1 by 0x796FC0
     int unknown_7F;                   // +0x7F  stored by 0x5E3A36 (0 = no map, 2 = map transfer)
@@ -50,6 +52,9 @@ struct NodeNameType
 };
 #pragma pack(pop)
 
+// Declaration: GAMEMD 0x7350C0 -- ECX is a UTF16 input pointer, not a player receiver.
+const char* __fastcall NarrowName_007350C0(const unsigned short* name);
+
 GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
                  offsetof(NodeNameType, unknown_34) == 0x34 &&
                  offsetof(NodeNameType, unknown_4B) == 0x4B &&
@@ -59,4 +64,12 @@ GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
                  offsetof(NodeNameType, unknown_77) == 0x77 &&
                  offsetof(NodeNameType, unknown_7F) == 0x7F &&
                  sizeof(NodeNameType) == 0x85);
+GG_STATIC_ASSERT(offsetof(NodeNameType, unknown_4F) == 0x4F);
+GG_STATIC_ASSERT(sizeof(((NodeNameType*)0)->unknown_4F) == 4);
+GG_STATIC_ASSERT(offsetof(NodeNameType, unknown_57) == 0x57);
+GG_STATIC_ASSERT(sizeof(((NodeNameType*)0)->unknown_57) == 4);
+GG_STATIC_ASSERT(offsetof(NodeNameType, unknown_6F) == 0x6F);
+GG_STATIC_ASSERT(sizeof(((NodeNameType*)0)->unknown_6F) == 4);
+GG_STATIC_ASSERT(offsetof(NodeNameType, unknown_73) == 0x73);
+GG_STATIC_ASSERT(sizeof(((NodeNameType*)0)->unknown_73) == 4);
 #endif

@@ -1531,7 +1531,7 @@ void FUN_0064A7B0(HWND dialog)
             rect.right - rect.left, rect.bottom - rect.top };
         int index;
         if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) index = 0;
-        else index = Manager_00A8E9C0.IPXManagerClass::vf_6(Players_00A8DA78[i]->Id);
+        else index = Manager_00A8E9C0.IPXManagerClass::vf_6(Players_00A8DA78[i]->unknown_6F);
         unsigned delay = i ? DAT_00AFA418 - DAT_00AFA278[index].unknown_0C : 0;
         ColorStruct color = { 0, 200, 0 };
         if (delay > 240) {
@@ -1571,7 +1571,7 @@ void FUN_0064A7B0(HWND dialog)
 void FUN_0064AAE0(HWND dialog, int player)
 {
     if (player < 0 || player >= PlayerCount_00A8DA84) return;
-    FUN_004068E0(STR_00837A00, player, Players_00A8DA78[player], Players_00A8DA78[0]->Id);
+    FUN_004068E0(STR_00837A00, player, Players_00A8DA78[player], Players_00A8DA78[0]->unknown_6F);
     HWND list = GetDlgItem(dialog, 0x651);
     if (!player || (DAT_00A8B238 == 4 && DAT_00B779C4)) {
         if (!player)
@@ -1589,14 +1589,14 @@ void FUN_0064AAE0(HWND dialog, int player)
     QueuePacket_0064AAE0 packet;
     packet.unknown_00 = 0x1C;
     strncpy(packet.unknown_04, FUN_007350C0(Players_00A8DA78[0]->Name), 20);
-    packet.unknown_33 = Players_00A8DA78[0]->Id;
-    packet.unknown_2F = Players_00A8DA78[player]->Id;
+    packet.unknown_33 = Players_00A8DA78[0]->unknown_6F;
+    packet.unknown_2F = Players_00A8DA78[player]->unknown_6F;
     for (int i = 1; i < PlayerCount_00A8DA84; ++i) {
         FUN_004068E0(STR_008379B8, Players_00A8DA78[i]);
         Manager_00A8E9C0.FUN_005410F0(&packet, sizeof(packet), 1,
             &Players_00A8DA78[i]->Address, 0, 0);
     }
-    FUN_0064AD10(Players_00A8DA78[0]->Id, Players_00A8DA78[player]->Id);
+    FUN_0064AD10(Players_00A8DA78[0]->unknown_6F, Players_00A8DA78[player]->unknown_6F);
 }
 
 // FUNCTION: GAMEMD 0x64AD10
@@ -3485,7 +3485,7 @@ void FUN_00650A90(int index)
         if (h >= DAT_00A80238) continue;
         player.unknown_00[0] = 0;
         for (int p = 0; p < PlayerCount_00A8DA84; ++p)
-            if (Players_00A8DA78[p]->Id == h)
+            if (Players_00A8DA78[p]->unknown_6F == h)
                 strncpy(player.unknown_00, FUN_007350C0(Players_00A8DA78[p]->Name), 20);
         HouseClass* house = DAT_00A8022C[h];
         if (!player.unknown_00[0] &&

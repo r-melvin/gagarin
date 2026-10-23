@@ -1063,10 +1063,10 @@ bool __fastcall FUN_00684370()
             int source = 1;
             for (int index = 1; index < PlayerCount_00A8DA84; ++index, ++source) {
                 if (DAT_00AC4F58.FUN_00643E90(source) < 0.999) {
-                    const char* first = Players_00A8DA78[index]->FUN_007350C0();
-                    const char* second = Players_00A8DA78[index]->FUN_007350C0();
+                    const char* first = NarrowName_007350C0(Players_00A8DA78[index]->Name);
+                    const char* second = NarrowName_007350C0(Players_00A8DA78[index]->Name);
                     FUN_004068E0(STR_0083D94C, first, second);
-                    int id = Players_00A8DA78[index]->Id;
+                    int id = Players_00A8DA78[index]->unknown_6F;
                     FUN_005DA750(id, 1);
                     if (Session_00A8B238.FUN_00697E70(HouseClass_ArrayItems[id])) {
                         DAT_00A8E2AC = -1;

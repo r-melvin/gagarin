@@ -20,6 +20,7 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../_layout/ipx_address_class.h"
+#include "../../_layout/node_name_type.h"
 
 // Release-build debug printf: 0x4068E0 is a bare RET stub, cdecl/variadic.
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
@@ -328,38 +329,7 @@ GG_STATIC_ASSERT(sizeof(IPXConnClass) == 0xB8);
 // ---------------------------------------------------------------------------
 // Globals and callee objects reached by IPXConnClass / IPXGlobalConnClass.
 // ---------------------------------------------------------------------------
-// A player record: the IPXAddressClass sits at +0x28.
-#pragma pack(push, 1)
-struct NetPlayerClass
-{
-    unsigned short  Name[0x14];         // +0x00 name-input view; capacity modeled
-    IPXAddressClass Address;            // +0x28
-    char            unknown_34[0x4B - 0x34];
-    int             unknown_4B;
-    int             unknown_4F; // 0x69B8F5/0x69B90D
-    int             unknown_53; // 0x69B946/0x69B96F
-    int             unknown_57; // 0x69B93D/0x69B943
-    char            unknown_5B[0x6B - 0x5B];
-    int             unknown_6B;         // +0x6B (unaligned; siege team 1/2, stamped by 0x5CA680)
-    int             Id;                 // +0x6F (unaligned; indexes the player tables)
-    int             unknown_73; // native697D2D store
-    char            unknown_77[4];
-    int             unknown_7B; // native697C73/697CB9 loads
-    // FUNCTION: GAMEMD 0x7350C0 (decl; reloc), ECX player at 0x684565.
-    const char* FUN_007350C0();
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, Name) == 0x00);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, Address) == 0x28);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_4B) == 0x4B);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_4F) == 0x4F);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_53) == 0x53);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_57) == 0x57);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_6B) == 0x6B);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, Id) == 0x6F);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_73) == 0x73);
-GG_STATIC_ASSERT(offsetof(NetPlayerClass, unknown_7B) == 0x7B);
-
+// Player records use the shared RTTI-attested NodeNameType owner.
 // GLOBAL: GAMEMD 0x887628 -- the packet interface (WinsockInterfaceClass, owned by
 // the winsock hierarchy; include winsock_interface_class.h to call through it).
 class WinsockInterfaceClass;
@@ -406,7 +376,7 @@ extern int Port_00841F3C;
 // GLOBAL: GAMEMD 0xA8DBBC -- dword whose low word is a port.
 extern int Port_00A8DBBC;
 // GLOBAL: GAMEMD 0xA8DA78 -- player pointer array data.
-extern NetPlayerClass** Players_00A8DA78;
+extern NodeNameType** Players_00A8DA78;
 // GLOBAL: GAMEMD 0xA8DA84 -- player count.
 extern int PlayerCount_00A8DA84;
 

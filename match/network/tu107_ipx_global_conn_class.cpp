@@ -375,7 +375,7 @@ int IPXGlobalConnClass::vf_10(void* buf, int buflen,
             int player_id = -1;
             for (int i = 0; i < PlayerCount_00A8DA84; i++) {
                 if (Players_00A8DA78[i]->Address.Equals_EE70(copy)) {
-                    player_id = Players_00A8DA78[i]->Id;
+                    player_id = Players_00A8DA78[i]->unknown_6F;
                     break;
                 }
             }

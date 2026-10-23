@@ -206,7 +206,7 @@ bool MultiplayerSiege::vf_33(bool unknown)
         return false;
     }
 
-    int index = Players_00A8DA78[i]->Id;
+    int index = Players_00A8DA78[i]->unknown_6F;
     if (index < 0 || index >= DAT_00A80228.Count) {
         return false;
     }
@@ -261,7 +261,7 @@ bool MultiplayerSiege::SpawnBaseUnits(HouseClass* house, int unknown)
 {
     int i;
     for (i = 0; i < PlayerCount_00A8DA84; i++) {
-        if (Players_00A8DA78[i]->Id == house->ArrayIndex) {
+        if (Players_00A8DA78[i]->unknown_6F == house->ArrayIndex) {
             break;
         }
     }

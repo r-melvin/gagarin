@@ -825,28 +825,28 @@ int SessionClass::FUN_00697B70()
     if (Session_00A8B238.GameMode != 3 && Session_00A8B238.GameMode != 4)
         return 0;
     for (int i = 0; i < unknown_283C.Count; ++i) {
-        FUN_004068E0(STR_0083EF60, i, unknown_283C.Items[i], unknown_283C.Items[i]->Id);
+        FUN_004068E0(STR_0083EF60, i, unknown_283C.Items[i], unknown_283C.Items[i]->unknown_6F);
         // Native name pointer is player+0, UTF16 consumed by _wcsicmp.
         if (_wcsicmp(reinterpret_cast<const wchar_t*>(unknown_283C.Items[i]->Name),
-            HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->UIName) != 0)
+            HouseClass_ArrayItems[unknown_283C.Items[i]->unknown_6F]->UIName) != 0)
             return 0;
         if (_wcsicmp(reinterpret_cast<const wchar_t*>(unknown_283C.Items[i]->Name), unknown_3020) == 0) {
-            unknown_3074 = unknown_283C.Items[i]->Id;
+            unknown_3074 = unknown_283C.Items[i]->unknown_6F;
             Players_00A8DA78[i]->Address.FUN_0053EDA0(network, node);
             Address_00A8DBA4.FUN_0053ED20(network, node, 0);
             Manager_00A8E9C0.FUN_00543050(&Address_00A8DBA4);
         }
-        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->TournamentTeamID = unknown_283C.Items[i]->unknown_7B;
+        HouseClass_ArrayItems[unknown_283C.Items[i]->unknown_6F]->TournamentTeamID = unknown_283C.Items[i]->unknown_7B;
         Players_00A8DA78[i]->Address.FUN_0053EDA0(network, node);
         int address = 0;
         for (int j = 0; j < 4; ++j)
             address = (address << 8) | node.Node[j];
-        FUN_004068E0(STR_0083EF44, unknown_283C.Items[i]->Id, address, unknown_283C.Items[i]->unknown_7B);
-        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->IPAddress = address;
-        HouseClass_ArrayItems[unknown_283C.Items[i]->Id]->LostConnection = 0;
+        FUN_004068E0(STR_0083EF44, unknown_283C.Items[i]->unknown_6F, address, unknown_283C.Items[i]->unknown_7B);
+        HouseClass_ArrayItems[unknown_283C.Items[i]->unknown_6F]->IPAddress = address;
+        HouseClass_ArrayItems[unknown_283C.Items[i]->unknown_6F]->LostConnection = 0;
         if (i > 0) {
-            Manager_00A8E9C0.FUN_00540DC0(unknown_283C.Items[i]->Id,
-                reinterpret_cast<wchar_t*>(unknown_283C.Items[i]->Name), &unknown_283C.Items[i]->Address);
+            Manager_00A8E9C0.FUN_00540DC0(unknown_283C.Items[i]->unknown_6F,
+                unknown_283C.Items[i]->Name, &unknown_283C.Items[i]->Address);
             unknown_283C.Items[i]->unknown_73 = -1;
         }
     }
@@ -1643,7 +1643,7 @@ bool SessionClass::FUN_0069B600(int value)
     if (value == -2)
         return false;
     for (int i = 0; i < unknown_283C.Count; ++i) {
-        NetPlayerClass* player = unknown_283C.Items[i];
+        NodeNameType* player = unknown_283C.Items[i];
         int current = player->unknown_57 == -2 && player->unknown_53 == -1
             ? -2 : player->unknown_53;
         if (current == value)
@@ -1718,7 +1718,7 @@ void SessionClass::FUN_0069B8C0()
     FUN_004068E0(STR_0083F710);
     int count = PlayerCount_00A8DA84;
     for (int i = 0; i < count; ++i) {
-        NetPlayerClass* player = Players_00A8DA78[i];
+        NodeNameType* player = Players_00A8DA78[i];
         if (player->unknown_4F == -3 || player->unknown_4B == -3) {
             player->unknown_4B = -3;
             player->unknown_4F = -1;
@@ -1744,7 +1744,7 @@ void SessionClass::FUN_0069B8C0()
         }
         if (i == 0)
             Session_00A8B238.unknown_15C = player->unknown_53;
-        FUN_004068E0(STR_0083F6E8, i, player->FUN_007350C0(),
+        FUN_004068E0(STR_0083F6E8, i, NarrowName_007350C0(player->Name),
             player->unknown_4F == -2 ? -2 : player->unknown_4B,
             player->unknown_57 == -2 ? -2 : player->unknown_53);
     }
@@ -1764,7 +1764,7 @@ void SessionClass::FUN_0069B8C0()
                 used = false;
                 if (value != -2) {
                     for (int i = 0; i < PlayerCount_00A8DA84; ++i) {
-                        NetPlayerClass* player = Players_00A8DA78[i];
+                        NodeNameType* player = Players_00A8DA78[i];
                         int current = player->unknown_57 == -2 &&
                             player->unknown_53 == -1 ? -2 : player->unknown_53;
                         if (current == value) {
@@ -1865,14 +1865,14 @@ void SessionClass::FUN_0069BBF0(int index)
 unsigned short SessionClass::FUN_0069BC20(int id)
 {
     for (int index = 0; index < PlayerCount_00A8DA84; ++index) {
-        if (Players_00A8DA78[index]->Id == id)
+        if (Players_00A8DA78[index]->unknown_6F == id)
             return unknown_307A[index];
     }
     return 0;
 }
 
 // GLOBAL: GAMEMD 0xA8DA90
-extern NetPlayerClass* SlotPlayers_00A8DA90[8];
+extern NodeNameType* SlotPlayers_00A8DA90[8];
 GG_STATIC_ASSERT(sizeof(SlotPlayers_00A8DA90) == 0x20);
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x69C600
@@ -1918,7 +1918,7 @@ extern const char* NarrowName_007350C0(const unsigned short* name);
 int SessionClass::FUN_0069BC60(int index)
 {
     for (int slot = 0; slot < 8; ++slot) {
-        NetPlayerClass* selected = SlotPlayers_00A8DA90[slot];
+        NodeNameType* selected = SlotPlayers_00A8DA90[slot];
         const char* playerName = NarrowName_007350C0(Players_00A8DA78[index]->Name);
         const char* slotName = NarrowName_007350C0(selected->Name);
         if (_stricmp(playerName, slotName) == 0)
@@ -1945,7 +1945,7 @@ int __stdcall FUN_0069BCC0(const char* name)
 int __stdcall FUN_0069BD00(int slot)
 {
     for (int index = 0; index < PlayerCount_00A8DA84; ++index) {
-        NetPlayerClass* selected = SlotPlayers_00A8DA90[slot];
+        NodeNameType* selected = SlotPlayers_00A8DA90[slot];
         const char* playerName = NarrowName_007350C0(Players_00A8DA78[index]->Name);
         const char* slotName = NarrowName_007350C0(selected->Name);
         if (_stricmp(playerName, slotName) == 0)
@@ -1977,7 +1977,7 @@ extern const char STR_0083F760[];
 // Declaration: STRING GAMEMD 0x83F734
 extern const char STR_0083F734[];
 
-// FUNCTION: GAMEMD 0x69BD60
+// FUNCTION: GAMEMD 0x0069BD60
 void SessionClass::FUN_0069BD60()
 {
     DynamicVectorClass<NodeNameType*> ordered;
@@ -1992,7 +1992,7 @@ void SessionClass::FUN_0069BD60()
         int slot = FUN_0069BC60(i);
         if (slot >= 0 && slot < 8) {
             unknown_283C.Items[i]->Address.FUN_0053F200((unsigned short)unknown_2FF8[slot]);
-            const char* name = unknown_283C.Items[i]->FUN_007350C0();
+            const char* name = NarrowName_007350C0(unknown_283C.Items[i]->Name);
             const char* address = unknown_283C.Items[i]->Address.FUN_0053F0E0(0);
             FUN_004068E0(STR_0083F81C, name, address);
         }
@@ -2010,9 +2010,7 @@ void SessionClass::FUN_0069BD60()
         if (smallest == 0x7FFFFFFF)
             break;
         used[smallest] = true;
-        // Retail local vector RTTI is NodeNameType*. The existing Session
-        // pointer declaration uses the older NetPlayerClass record view.
-        ordered.AddItem(reinterpret_cast<NodeNameType*>(unknown_283C.Items[smallest]));
+        ordered.AddItem(unknown_283C.Items[smallest]);
         if (ordered.Count == unknown_283C.Count)
             break;
     }
@@ -2062,16 +2060,16 @@ void SessionClass::FUN_0069BD60()
     firstAddress.FUN_0053EDC0(&firstNode);
     for (int other = 1; other < unknown_283C.Count; ++other) {
         if (firstAddress.Equals_EF30(unknown_283C.Items[other]->Address)) {
-            FUN_004068E0(STR_0083F760, unknown_283C.Items[other]->FUN_007350C0());
+            FUN_004068E0(STR_0083F760, NarrowName_007350C0(unknown_283C.Items[other]->Name));
             for (int candidate = 0; candidate < 8; ++candidate) {
-                const char* otherName = unknown_283C.Items[other]->FUN_007350C0();
-                const char* candidateName = unknown_2858[candidate]->FUN_007350C0();
+                const char* otherName = NarrowName_007350C0(unknown_283C.Items[other]->Name);
+                const char* candidateName = NarrowName_007350C0(unknown_2858[candidate]->Name);
                 if (_stricmp(otherName, candidateName) == 0) {
                     NodeAddressType node;
                     unknown_2994[candidate].FUN_0053EDC0(&node);
                     unknown_283C.Items[other]->Address.FUN_0053ED20(
                         0, &node, unknown_283C.Items[other]->Address.Port);
-                    const char* name = unknown_283C.Items[other]->FUN_007350C0();
+                    const char* name = NarrowName_007350C0(unknown_283C.Items[other]->Name);
                     const char* address = unknown_283C.Items[other]->Address.FUN_0053F0E0(0);
                     FUN_004068E0(STR_0083F734, name, address);
                 }
