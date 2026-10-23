@@ -6,15 +6,8 @@
 //   Each marker is followed by the library symbol name, in the by-name form
 //   reccmp reads for LIBRARY markers. Evidence per group:
 //
-//   LZO1X-1 (third-party compression library, GPL v2 or later), the three
-//   functions at 0x55BB90-0x55C2A9, called by the LZOPipe/LZOStraw members
-//   0x55C350 and 0x55C5E0. The compressor 0x55BB90 and its static helper
-//   0x55BC00 are byte-identical (raw match 100%) to LZO 1.00 lzo1x_1.c built
-//   by VC6 at /O2 /Gr with signed match offsets. The decompressor 0x55C0E0 is
-//   classified on structural evidence only: it sits in the same contiguous
-//   library block and is the LZO1X decoder (same opcode classes, distances
-//   and end marker), but no available LZO release reproduces its bytes
-//   (best normalised-instruction similarity 0.80 against 1.00).
+//   LZO1X-1 (0x55BB90-0x55C2A9) is vendored, not listed here: its markers
+//   are in match/lib/lzo/lzo1x.c, which builds third_party/lzo/.
 //
 //   COMSUPP.LIB (the VC6 compiler COM support library), 11 functions at
 //   0x7DC720-0x7DCE60: each body is a unique relocation-wildcarded match of
@@ -50,17 +43,6 @@
 //   0x7C8FD2 and 0x7C91A5 in the listing are inside it.
 #ifndef GG_MATCH_RT_LIBRARY_FUNCTIONS_H
 #define GG_MATCH_RT_LIBRARY_FUNCTIONS_H
-
-// LZO1X-1 (LZO 1.00 lineage).
-// LIBRARY: GAMEMD 0x55bb90
-// lzo1x_1_compress
-
-// LIBRARY: GAMEMD 0x55bc00
-// do_compress
-
-// Structural classification only; not byte-matched (see above).
-// LIBRARY: GAMEMD 0x55c0e0
-// lzo1x_decompress
 
 // Linker import thunks (JMP through the import address table), 0x7c8962-0x7c8a3a.
 // LIBRARY: GAMEMD 0x7c8962

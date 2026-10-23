@@ -125,7 +125,7 @@ def build_inventory(root: Path) -> tuple[dict[str, Any], int]:
             str(DEFAULT_WRAPPER),
         )
     )
-    tracked_cpp = sorted(path for path in tracked_paths if path.endswith(".cpp"))
+    tracked_cpp = sorted(path for path in tracked_paths if path.endswith((".cpp", ".c")))
     manifest_text = read_tracked_text(root, str(DEFAULT_MANIFEST), tracked_paths)
     wrapper_text = read_tracked_text(root, str(DEFAULT_WRAPPER), tracked_paths)
     try:

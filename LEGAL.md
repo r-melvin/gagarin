@@ -48,6 +48,24 @@ comments, data or names.
 Every source and header file carries a provenance header naming where its facts
 came from (see [CONTRIBUTING.md](CONTRIBUTING.md) for the tags).
 
+## Vendored third-party code
+
+Third-party code that the retail executable links statically may be vendored
+when its licence is compatible with GPLv3 (a GPL-2.0-or-later grant, for
+example). It lives under `third_party/<name>/` as an unmodified copy of the
+upstream release, with the upstream licence text and copyright notices kept,
+its origin and archive checksum recorded, and every change (including build
+configuration) described in a `MODIFICATIONS` file beside it. It keeps its own
+licence; gagarin's files that build it are GPLv3. This is the only exception
+to "statically linked library code is out of scope" (AGENTS.md). Microsoft
+toolchain libraries are never vendored.
+
+Vendored components:
+
+| path | component | upstream licence | origin |
+| --- | --- | --- | --- |
+| `third_party/lzo/lzo-1.00/` | LZO 1.00 (Markus F.X.J. Oberhumer), LZO1X-1 compressor and decompressor sources only | GPL-2.0-or-later, used under GPLv3 | Hobbes OS/2 archive `LZO_1-00.zip`, sha256 `142b4197…6890`; no author-published checksum survives |
+
 ## Phobos and its YRpp submodule
 
 Reviewed on 2026-10-21: Phobos commit

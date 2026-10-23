@@ -29,9 +29,23 @@ dependencies still have to be accounted for in the complete build and image
 comparison; excluding their source recovery does not exclude their bytes from
 the final target.
 
+The one exception is vendored third-party code: an unmodified upstream release
+whose licence is compatible with the project licence may be placed under
+`third_party/<name>/` and built into the image. Vendored code keeps its own
+licence and notices, records any configuration change in a `MODIFICATIONS`
+file there, and is listed in [LEGAL.md](LEGAL.md). It is not recovered source
+and needs no provenance header of its own; the `match/` file that builds it
+carries one. Microsoft toolchain libraries (CRT, COMSUPP, LIBCPMT, import
+libraries) are never vendored: they are fetched with the toolchain and linked.
+
 Do not claim a byte-identical executable until a reproducible integrated build
 has produced one and the complete file equals the pinned retail image, without
-relocation normalization or other byte masking. Per-function checks, successful
+relocation normalization or other byte masking. The image compared is the unsigned
+image: the pinned file without its Authenticode signature (the attribute
+certificate table appended after the last section, which the security data
+directory points to), with that directory entry and the PE checksum as the
+unsigned file has them. The signature is added after linking by the
+publisher and no build produces it; this is the single documented exclusion. Per-function checks, successful
 compilation and a successful link do not establish whole-image identity.
 
 For annotated functions, the oracle is the per-function match percentage against

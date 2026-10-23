@@ -26,7 +26,7 @@ while IFS= read -r tu; do
     echo "  FAIL $tu"; grep -iE "error|fatal" "$tmp/log" | grep -v libEGL | head -3
     fail=1
   fi
-done < <(find match -name '*.cpp' | sort)
+done < <(find match -name '*.cpp' -o -name '*.c' | sort)
 
 # 2. Every P2 layout header (compile-check its asserts via a throwaway includer).
 for h in match/_layout/*.h; do

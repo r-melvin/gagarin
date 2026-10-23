@@ -1,0 +1,34 @@
+Vendored: LZO 1.00 (13 Jul 1997), the LZO real-time data compression library
+by Markus F.X.J. Oberhumer. Licence: GNU GPL version 2 or (at your option)
+any later version; see lzo-1.00/COPYING and the notice at the top of each
+source file. gagarin uses it under GPL version 3 (the "or later" grant).
+
+Origin
+  Archive: LZO_1-00.zip from the Hobbes OS/2 archive
+  (https://www.hobbesgram.org/download/os2/dev-4/libraries-3/archivers/LZO_1-00.zip)
+  sha256 142b4197d6ca3ed1fc7b031bcad344c7479f9e762e1dcf51f1c37a026a036890
+  The author no longer publishes LZO 1.00 and no author-published checksum
+  survives, so the hash above identifies the copy used, not its authenticity.
+  Its contents are consistent with the release: GPL v2 COPYING, NEWS headed
+  "Changes in 1.00 (13 Jul 1997)", LZO.lsm "Version: 1.00", lzoconf.h
+  LZO_VERSION 0x1000 "Jul 13 1997".
+
+What is here
+  A subset of the release, files copied byte for byte with no edits:
+    COPYING README AUTHORS NEWS LZO.lsm
+    include/lzoconf.h include/lzo1x.h
+    src/lzo1x_1.c src/lzo1x_d1.c src/config1x.h src/lzo_conf.h
+    src/lzo_util.h src/lzo_dict.h src/lzo_ptr.h
+    src/lzo1x_c.ch src/lzo1x_d.ch src/lzo1_d.ch
+  Only the files these two sources include are kept; the rest of the
+  release (other algorithms, minilzo, examples, build scripts) is omitted.
+
+Modifications (gagarin, 2026)
+  No source file is changed. The build configuration differs from the
+  upstream defaults, set only by compiler flags in match/lib/lzo/lzo1x.c:
+    /Gr /D__LZO_ENTRY=          public entry points use __fastcall
+    /U_M_IX86                   no i386 unaligned-access paths
+    /Dlzo_moff_t=lzo_ptrdiff_t  signed match offsets (selects the #else branch
+    /Dlzo_cmoff_t=lzo_ptrdiff_t of the lzo_moff_t switch in src/lzo_conf.h)
+  and match/lib/lzo/lzo1x.c compiles lzo1x_1.c and lzo1x_d1.c as one
+  translation unit.

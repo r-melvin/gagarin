@@ -95938,5 +95938,33 @@
   "name": "FUN_00734250",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/lib/lzo/lzo1x.c",
+  "addr": "0x55BB90",
+  "sym": "@lzo1x_1_compress@20",
+  "len": "0x67",
+  "name": "lzo1x_1_compress",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/lib/lzo/lzo1x.c",
+  "addr": "0x55BC00",
+  "sym": "@do_compress@20",
+  "len": "0x4d5",
+  "name": "do_compress",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/lib/lzo/lzo1x.c",
+  "addr": "0x55C0E0",
+  "sym": "@lzo1x_decompress@20",
+  "len": "0x1c9",
+  "name": "lzo1x_decompress",
+  "status": "partial",
+  "pct": 5.3,
+  "note": "LZO 1.00 lzo1x_d1.c decoder; retail decoder source version (1.01/1.02?) not found"
  }
 ]

@@ -1,0 +1,28 @@
+============================================================================
+LZO -- a real-time data compression library
+============================================================================
+
+Please read the file doc/LZO.TXT for an introduction to LZO.
+See the file doc/LZO.FAQ for various tidbits of information.
+
+See the file NEWS for a list of major changes in the current release.
+
+See the file INSTALL for compilation and installation instructions.
+
+
+Directory overview:
+-------------------
+  acconfig      Autoconf configuration files (UNIX specific)
+  b             various support files for DOS, Windows 95/NT, OS/2, ...
+  doc           some documentation
+  examples      example applications
+  include       public header files
+  minilzo       a tiny standalone version for easy inclusion in your project
+  src           library source
+  tests         more or less exotic test programs
+  util          some utility scripts
+
+
+Markus F.X.J. Oberhumer
+http://www.infosys.tuwien.ac.at/Staff/lux/marco/lzo.html
+

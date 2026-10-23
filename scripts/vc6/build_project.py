@@ -28,8 +28,8 @@ def sha256(path):
 
 def input_hashes(root):
     inputs = {}
-    for name in git_tracked_paths(root, "match"):
-        if Path(name).suffix not in (".cpp", ".h"):
+    for name in git_tracked_paths(root, "match", "third_party"):
+        if Path(name).suffix not in (".cpp", ".c", ".h", ".ch"):
             continue
         path = root / name
         if path.is_symlink():

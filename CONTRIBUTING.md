@@ -143,6 +143,7 @@ Tags:
 | `Phobos-GPL3:<path>@<commit>` | Phobos's own material, with upstream path and full commit; import requires the provenance and applicable-terms review in [LEGAL.md](LEGAL.md), and retail facts still need binary confirmation |
 | `private-ref-cross-check` | location suggested by the author's unpublished notes, reconfirmed in the binary |
 | `original` | written from scratch (helpers, shims) |
+| `vendored-third-party` | a `match/` file that builds vendored upstream code from `third_party/` (see the vendored-code section of [LEGAL.md](LEGAL.md)); the vendored files keep their own notices |
 
 Annotate everything with reccmp markers and order functions by ascending
 address within the file:
