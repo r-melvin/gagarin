@@ -8,6 +8,7 @@
 #define GG_MATCH_LAYOUT_INI_CLASS_H
 #include "generic_list.h"
 #include "index_class_layout.h"
+class Wstring;
 // VTABLE: GAMEMD 0x7EA5F4 -- INIClass, one deleting slot.
 class INIClass
 {
@@ -25,6 +26,13 @@ public:
     bool Clear(const char* section, const char* key);
     // FUNCTION: GAMEMD 0x526810
     INISection* GetSection(const char* section);
+    // Inline native test at 0x69A4B3..0x69A505; the existing standalone
+    // implementation is bound at0x679F40. The derived entry remains intact.
+    bool Exists(const char* section, const char* key)
+    {
+        if (key == 0) return GetSection(section) != 0;
+        return GetEntry(section, key) != 0;
+    }
     // FUNCTION: GAMEMD 0x526960
     int GetKeyCount(const char* section);
     // FUNCTION: GAMEMD 0x526B00
@@ -41,6 +49,11 @@ public:
     bool WriteString(const char* section, const char* key, const char* value);
     // FUNCTION: GAMEMD 0x528A10 (decl; reloc) -- read a string into a buffer, RET 0x14.
     int FUN_00528A10(const char* section, const char* key, const char* fallback, char* buffer, int size);
+    // Declaration: GAMEMD 0x528C00 -- four stack pointers, RET10, signed length in EAX.
+    int FUN_00528C00(const Wstring* section, const Wstring* key,
+                     const Wstring* fallback, Wstring* output);
+    // Declaration: GAMEMD 0x529160 -- four stack arguments, RET10; UTF16 output.
+    int FUN_00529160(const char* section, const char* key, wchar_t* output, int size);
     // FUNCTION: GAMEMD 0x529560
     bool WriteBool(const char* section, const char* key, bool value);
     // FUNCTION: GAMEMD 0x5295F0 (decl; reloc) -- read a bool, RET 0xC.

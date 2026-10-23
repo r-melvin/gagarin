@@ -129,6 +129,7 @@ void __fastcall FUN_007535D0(); // 0x7535D0
 void __fastcall FUN_00752CA0(); // 0x752CA0
 #include "session_entry.h"
 #include "../platform/buffer_straws.h"
+#include <stdlib.h>
 #include <wchar.h>
 #include <string.h>
 // Declaration at 0x734E60; body belongs to the string-table translation unit.
@@ -1355,6 +1356,93 @@ void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
     // digestStream, digestIni, basicStream, basicIni, file. No explicit dtors.
     delete[] front;
     delete[] back;
+}
+
+extern const char STR_0081B1A4[]; // STRING: GAMEMD 0x0081B1A4 (decl; reloc)
+extern const char STR_0081B1D4[]; // STRING: GAMEMD 0x0081B1D4 (decl; reloc)
+extern const char STR_0082DF18[]; // STRING: GAMEMD 0x0082DF18 (decl; reloc)
+extern const char STR_0083F608[]; // STRING: GAMEMD 0x0083F608 (decl; reloc)
+extern const char STR_0083F648[]; // STRING: GAMEMD 0x0083F648 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x69A3B0
+MultiMission::MultiMission(INIClass* ini, const char* section)
+    : unknown_188(), unknown_1A4()
+{
+    unknown_000[0] = 0;
+    unknown_058[0x103] = 0; // Native leaves filename[0] and remainder untouched.
+    strcpy(unknown_15C, STR_0083F3E4);
+    unknown_17C = true;
+    unknown_180 = 2;
+    unknown_184 = 4;
+    unknown_188.Clear();
+    if (!section) return;
+    strcpy(unknown_058, section);
+    strcat(unknown_058, STR_0082DF18);
+    if (ini->Exists(section, STR_0083F648)) {
+        char description[0x2C];
+        ini->FUN_00528A10(section, STR_0083F648, STR_00889F64, description, 0x2C);
+        FUN_00735060(unknown_000, description, -1);
+    } else {
+        ini->FUN_00529160(section, STR_0081B1A4, unknown_000, 0x2C);
+    }
+    unknown_180 = ini->FUN_005276D0(section, STR_0083F3FC, unknown_180);
+    unknown_184 = ini->FUN_005276D0(section, STR_0083F3F0, unknown_184);
+    char disks[128];
+    {
+        if (ini->FUN_00528A10(section, STR_0081B1D4, STR_00889F64, disks, 128) != 0) {
+            char* token = strtok(disks, STR_00817F70);
+            while (token != 0 && *token != 0) {
+                unknown_188.AddItem(static_cast<DiskID>(atoi(token)));
+                token = strtok(0, STR_00817F70);
+            }
+        }
+    }
+    Wstring list;
+    bool haveModes;
+    {
+        // Preserve construction fallback,key,section; destruction in reverse
+        // before testing the result. Do not merge argument temporaries.
+        Wstring fallback(STR_00889F64);
+        Wstring key(STR_0083EFD0);
+        Wstring sectionText(section);
+        haveModes = ini->FUN_00528C00(&sectionText, &key, &fallback, &list) > 0;
+    }
+    if (haveModes) {
+        Wstring token;
+        int cursor = list.FUN_007B5F10(0, STR_00817F70, &token);
+        while (cursor != -1) {
+            {
+                Wstring leftTrim(STR_00830A14);
+                token.FUN_007B51D0(&leftTrim);
+            }
+            {
+                Wstring rightTrim(STR_00830A14);
+                token.FUN_007B5230(&rightTrim);
+            }
+            unknown_1A4.AddItem(token);
+            cursor = list.FUN_007B5F10(cursor, STR_00817F70, &token);
+        }
+    }
+    {
+        CCFileClass file(unknown_058);
+        if (!file.Exists(false)) {
+            FUN_004068E0(STR_0083F608, unknown_058);
+        } else if (file.Open(1)) {
+            file.Seek(-100, 2);
+            char footer[128];
+            memset(footer, 0, sizeof(footer)); // Native clears32 full dwords, then reads100.
+            file.ReadBytes(footer, 100);
+            file.Close();
+            if (strstr(footer, STR_0083F440)) {
+                CCINIClass digestIni;
+                BufferStraw digestStream(footer, 100);
+                digestIni.FUN_00474320(&digestStream, false, false);
+                digestIni.FUN_00528A10(STR_0081BFE0, STR_00831898, 0, footer, 128);
+                FUN_0069AD80(footer);
+            }
+        }
+    }
+    // Natural teardown: inner straw then INI, then file, then list.
 }
 
 // FUNCTION: GAMEMD 0x69A980

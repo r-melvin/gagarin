@@ -98344,5 +98344,14 @@
   "name": "Session map metadata",
   "status": "partial",
   "pct": 9.2
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69A3B0",
+  "sym": "??0MultiMission@@QAE@PAVINIClass@@PBD@Z",
+  "len": "0x5cb",
+  "name": "MultiMission INI constructor",
+  "status": "partial",
+  "pct": 91.4
  }
 ]

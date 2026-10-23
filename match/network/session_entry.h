@@ -15,6 +15,7 @@
 #include "../core/type_list.h"
 #include "../core/string_class.h"
 class Obj_007B4620;
+class INIClass;
 class MultiMission
 {
 public:
@@ -27,6 +28,8 @@ public:
     int unknown_184;
     TypeList<DiskID> unknown_188;
     DynamicVectorClass<Wstring> unknown_1A4;
+    // Declaration: GAMEMD 0x69A3B0 -- INI receiver and section, RET8.
+    MultiMission(INIClass* ini, const char* section);
     // Declaration: GAMEMD 0x69A980
     MultiMission(const char* filename, const wchar_t* description,
                  const char* digest, bool flag, const char* modeList,
