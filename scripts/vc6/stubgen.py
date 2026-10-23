@@ -18,6 +18,9 @@ Outputs, in OUT:
   objects/...      copies of project objects in which definitions that belong
                    to a stubbed address (partial rows, bound non-row helpers)
                    are renamed out of the way (references keep the old name).
+                   Explicit same-address aliases of matched providers are
+                   coalesced only after all COMDAT definitions have identical
+                   code and resolved relocation targets.
   order.txt        /ORDER file: the engine .text entries in retail order.
   plan.json        what was placed where, for mapcheck.py and the report.
 
@@ -34,6 +37,7 @@ import sys
 from pathlib import Path
 
 import coffgen
+from coff_equivalence import plan_folds
 
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "scripts/data"
@@ -223,6 +227,13 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
             used.add(sym)
             break
 
+    # Model explicit same-address COMDAT sharing only after full code and
+    # relocation equivalence to an existing matched provider is established.
+    fold_providers = {va: (name, hx(row['len'])) for va, name in provider.items()
+                      for row in by_addr[va] if row['status'] == 'matched' and row['sym'] == name}
+    fold_rename, folded, fold_rejected = plan_folds(fold_providers, defined_in, bindings)
+    folded_names = {row['symbol'] for row in folded}
+
     # Every name bound to an address that no matched row provides belongs to
     # the stub at that address; project definitions of it are renamed away.
     names_at = {}
@@ -298,7 +309,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     counts = {"aliases": 0, "code_bound_unordered": 0, "code_unbound": 0, "data_bound": 0, "data_unbound": 0}
     unbound = {"function": [], "data": []}
     renamed_away = {n for m in rename.values() for n in m}
-    still_defined = set(defined_in) - renamed_away
+    still_defined = set(defined_in) - renamed_away - folded_names
     # A second name for an address that something already defines (a matched
     # function under another view's name, a global the project defines under
     # its own name) becomes a weak alias of that definition.
@@ -306,7 +317,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     for name in sorted(still_defined):
         if name in bindings:
             defined_at.setdefault(bindings[name][0], name)
-    remaining = sorted((referenced | renamed_away) - still_defined - library_names - stub_names)
+    remaining = sorted((referenced | renamed_away | folded_names) - still_defined - library_names - stub_names)
     for sym in remaining:
         va = bindings.get(sym, (None,))[0]
         sec = section_of(va) if va is not None else None
@@ -339,6 +350,9 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     tail_sections = 0
     for path in objects:
         data, changed = path.read_bytes(), False
+        if path in fold_rename:
+            data, _ = coffgen.rename_symbols(data, fold_rename[path], retarget_weak_defaults=True)
+            changed = True
         if path in rename:
             data, k = coffgen.rename_symbols(data, rename[path])
             renamed_total += k
@@ -379,6 +393,8 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
         "renamed_objects": len(rename),
         "project_code_sections_moved_to_tail": tail_sections,
         "binding_conflicts": conflicts,
+        "collocated_comdats": folded,
+        "collocated_comdats_rejected": fold_rejected,
         "matched_rows_without_definition": missing_matched,
         "matched_symbol_at_several_addresses": reused,
         "static_functions_promoted": len(promoted),

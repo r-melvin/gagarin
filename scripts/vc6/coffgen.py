@@ -153,7 +153,7 @@ def read_symbols(data):
     return out
 
 
-def rename_symbols(data, mapping, retarget=True, statics=False):
+def rename_symbols(data, mapping, retarget=True, statics=False, retarget_weak_defaults=False):
     """Return (object bytes, count) with symbol definitions renamed per
     mapping {old: new}.
 
@@ -162,6 +162,8 @@ def rename_symbols(data, mapping, retarget=True, statics=False):
     symbol is retargeted to it, so the object's own references still resolve
     to whatever else defines the old name (a stub at the retail address).
     retarget=False renames the symbol and its references together.
+    retarget_weak_defaults=True also redirects weak-external fallback indices
+    to the replacement undefined external when retarget=True.
     statics=True renames static (file-local) definitions too and makes them
     external, so LINK can place them through /ORDER (it ignores statics).
     """
@@ -184,7 +186,8 @@ def rename_symbols(data, mapping, retarget=True, statics=False):
     retargets = {}
     added = bytearray()
     renamed = 0
-    for idx, name, _, section, scl, _ in read_symbols(bytes(data)):
+    symbol_rows = read_symbols(bytes(data))
+    for idx, name, _, section, scl, _ in symbol_rows:
         if name not in mapping or section <= 0:
             continue
         if not (scl == CLASS_EXTERNAL or (statics and scl == CLASS_STATIC)):
@@ -198,6 +201,13 @@ def rename_symbols(data, mapping, retarget=True, statics=False):
             retargets[idx] = nsyms + len(retargets)
             sym_type = struct.unpack_from("<H", data, off + 14)[0]
             added += field(name.encode("latin-1")) + struct.pack("<IhHBB", 0, 0, sym_type, CLASS_EXTERNAL, 0)
+    if retarget_weak_defaults:
+        for idx, _, _, _, scl, naux in symbol_rows:
+            if scl == CLASS_WEAK_EXTERNAL and naux:
+                off = symptr + 18 * (idx + 1)
+                target = struct.unpack_from("<I", data, off)[0]
+                if target in retargets:
+                    struct.pack_into("<I", data, off, retargets[target])
     for i in range(nsec):
         off = 20 + 40 * i
         relptr = struct.unpack_from("<I", data, off + 24)[0]
