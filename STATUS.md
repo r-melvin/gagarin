@@ -1,13 +1,13 @@
 # Project status
 
-As of **2026-10-23** (source tip `be306919`, with the central binding update), the manifest holds **10,836 rows**:
-**10,181 matched** and **655 partial**, in 1,302 manifest translation units.
+As of **2026-10-23** (source tip `71b0b9f3`), the manifest holds **10,877 rows**:
+**10,191 matched** and **686 partial**, in 1,302 manifest translation units.
 Every row's address is an entry in the extent census of **19,778 functions**,
-so 51.5% of listed functions are matched and 3.3% partial. Matched body lengths
-total **701,976 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
+so 51.5% of listed functions are matched and 3.5% partial. Matched body lengths
+total **702,992 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
 are per function, not executable completion.
 
-Strict check: all **10,181 matched rows pass raw and strict relocation checks**
+Strict check: all **10,191 matched rows pass raw and strict relocation checks**
 using the central symbol bindings and objects from the full build. The 74
 previous strict failures are resolved by binding their observed retail targets.
 This establishes relocation addresses; COM table closure and unresolved
@@ -17,8 +17,12 @@ Recent recovery adds the 872-byte Scenario checksum routine at `0x68B940`,
 five exact ownrdraw functions, and two capped partials. Tooltip globals now
 use a rectangle, surface pointer and text array; the existing initializer's
 changed COFF symbols and addends pass fresh raw and strict checks. Full gates
-compile all 1,310 translation units and 109 layout headers with no existing
+compile all 1,310 translation units and 114 layout headers with no existing
 matched-function regressions.
+
+The frozen Queue draft is integrated: 41 new functions (10 matched and 31
+partial), seven preserved exact symbol updates, and an extracted shared draw-layer
+declaration. All 31 partial percentages are unchanged after the migration rebase.
 
 Translation-unit migration snapshot at `2a00ae5d`: **114** files carry an original translation-unit
 header. **72** have names attested by a source-file assert string in the
