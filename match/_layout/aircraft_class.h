@@ -29,12 +29,23 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
+#include "com_interfaces.h"   // IFlyControl
 
-class AircraftClass : public FootClass
+class AircraftClass : public FootClass, public IFlyControl
 {
 public:
-    void*         FlyControlVfptr;         // +0x6C0  second-base vptr; ctor: MOV [ESI+0x6C0],0x7E2250
-                                           //         @0x00413DA2; RTTI COL base-offset 0x6C0 confirms it
+    // +0x6C0: IFlyControl vptr; ctor: MOV [ESI+0x6C0],0x7E2250 @0x00413DA2;
+    //   RTTI COL base-offset 0x6C0 confirms it.
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);   // 0x414290
+    virtual ULONG __stdcall AddRef();                                     // 0x4142F0
+    virtual ULONG __stdcall Release();                                    // 0x414300
+    // IFlyControl overrides (table 0x7E2250 slots 3-8).
+    virtual int __stdcall vf_03();   // 0x41B6A0
+    virtual int __stdcall vf_04();   // 0x41B760
+    virtual int __stdcall vf_05();   // 0x41B7D0
+    virtual int __stdcall vf_06();   // 0x41B7F0
+    virtual int __stdcall vf_07();   // 0x41B840
+    virtual int __stdcall vf_08();   // 0x41B860
     void*         Type;                    // +0x6C4  AircraftTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x00413D3A
     unsigned char ShouldLoseAmmo;          // +0x6C8  ctor: MOV byte [ESI+0x6C8],0 @0x00413D40
     unsigned char HasPassengers;           // +0x6C9  ctor: MOV byte [ESI+0x6C9],0 @0x00413D47
@@ -50,7 +61,6 @@ public:
     unsigned char align_6D6[2];            // +0x6D6  (closes the object at 0x6D8)
 };
 
-GG_STATIC_ASSERT(offsetof(AircraftClass, FlyControlVfptr)          == 0x6C0);
 GG_STATIC_ASSERT(offsetof(AircraftClass, Type)                     == 0x6C4);
 GG_STATIC_ASSERT(offsetof(AircraftClass, ShouldLoseAmmo)           == 0x6C8);
 GG_STATIC_ASSERT(offsetof(AircraftClass, HasPassengers)            == 0x6C9);
