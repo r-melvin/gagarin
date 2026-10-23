@@ -55,7 +55,43 @@ GG_STATIC_ASSERT(sizeof(unsigned short*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<unsigned short* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<unsigned short* >) == 0x18);
 
-#include "../core/trivial_tu110_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_0054A140;
+struct Obj_0054A150;
+struct Obj_0054A160;
+
+struct Obj_0054A140
+{
+    // FUNCTION: GAMEMD 0x54A140
+    int FUN_0054A140() const;
+};
+
+struct Obj_0054A150
+{
+    // FUNCTION: GAMEMD 0x54A150
+    int FUN_0054A150() const;
+};
+
+struct Obj_0054A160
+{
+    char unknown_00[0x294];
+    int unknown_294;   // +0x0294
+    // FUNCTION: GAMEMD 0x54A160
+    int FUN_0054A160() const;
+};
+GG_STATIC_ASSERT(offsetof(Obj_0054A160, unknown_294) == 0x294);
+
+
+void __cdecl FUN_00544DF0();
+bool __cdecl FUN_00544FF0();
+void __cdecl FUN_00547CE0();
+
 
 #include "../core/deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"

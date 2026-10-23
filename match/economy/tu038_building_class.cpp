@@ -244,7 +244,17 @@ static inline CellStruct CellOfCoord(const CoordStruct& c)
 
 #include "../core/small_misc25_methods.h"
 
-#include "../core/trivial_tu038_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+
+void __cdecl FUN_004503E0();
+void __cdecl FUN_00456970();
+
 
 #include "building_class_enable_methods.h"
 

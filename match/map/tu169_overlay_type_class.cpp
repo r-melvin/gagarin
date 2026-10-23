@@ -29,7 +29,16 @@ extern "C" const CLSID CLSID_OverlayType =
 
 #include "overlay_type_class_methods.h"
 
-#include "trivial_tu169_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+
+void __cdecl FUN_005FE520();
+
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

@@ -86,7 +86,23 @@
 // GLOBAL: GAMEMD 0x8B3C58 — the engine's unset cell.
 // GLOBAL: GAMEMD 0x887888 — the list a cell-less client is registered with.
 
-#include "trivial_tu084_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_004D0390;
+
+struct Obj_004D0390
+{
+    // FUNCTION: GAMEMD 0x4D0390
+    int FUN_004D0390() const;
+};
+
+
+
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

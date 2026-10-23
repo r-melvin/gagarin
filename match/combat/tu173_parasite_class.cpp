@@ -66,7 +66,42 @@ GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgParasiteClassDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../core/trivial_tu173_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_00629710;
+struct Obj_0062AF50;
+struct Obj_0062AF60;
+
+struct Obj_00629710
+{
+    char unknown_00[0x4C];
+    int unknown_4C;   // +0x004C
+    int unknown_50;   // +0x0050
+    // FUNCTION: GAMEMD 0x629710
+    void FUN_00629710();
+};
+GG_STATIC_ASSERT(offsetof(Obj_00629710, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(offsetof(Obj_00629710, unknown_50) == 0x50);
+
+struct Obj_0062AF50
+{
+    // FUNCTION: GAMEMD 0x62AF50
+    int FUN_0062AF50() const;
+};
+
+struct Obj_0062AF60
+{
+    // FUNCTION: GAMEMD 0x62AF60
+    int FUN_0062AF60() const;
+};
+
+
+
 
 #include "parasite_class_grapple_methods.h"
 

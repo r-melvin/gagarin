@@ -15,7 +15,16 @@
 extern "C" const CLSID CLSID_Smudge =
     { 0x0E272DC5, 0x9C0F, 0x11D1, { 0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
-#include "trivial_tu216_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+
+void __stdcall FUN_006B4C70(int a1);
+
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

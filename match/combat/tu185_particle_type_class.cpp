@@ -170,7 +170,31 @@ extern const char* const DAT_008449F8[3];
 #include "particles/particle_system_type_class.h"
 #include "particles/particle_type_class.h"
 
-#include "trivial_tu185_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_00645C50;
+
+struct Obj_00645C50
+{
+    int unknown_00;   // +0x0000
+    int unknown_04;   // +0x0004
+    int unknown_08;   // +0x0008
+    int unknown_0C;   // +0x000C
+    // FUNCTION: GAMEMD 0x645C50
+    void FUN_00645C50(int a1, int a2, int a3, int a4);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_08) == 0x8);
+GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_0C) == 0xC);
+
+
+
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

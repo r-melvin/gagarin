@@ -86,7 +86,19 @@ GG_STATIC_ASSERT(sizeof(WinsockInterfaceClass::WinsockBufferType*) == 4);
 
 #include "../core/global_getter_family_methods.h"
 
-#include "trivial_tu291_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+// GLOBAL: GAMEMD 0xB780A0
+extern int DAT_00B780A0;
+
+
+void FUN_007B2720(int a1);
+
 
 #include "winsock_discard_methods.h"
 

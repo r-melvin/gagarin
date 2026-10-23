@@ -83,7 +83,30 @@ GG_STATIC_ASSERT(sizeof(LightSourceClass::PendingCellClass*) == 4);
 GG_STATIC_ASSERT(sizeof(VectorClass<LightSourceClass::PendingCellClass* >) == 0x10);
 GG_STATIC_ASSERT(sizeof(DynamicVectorClass<LightSourceClass::PendingCellClass* >) == 0x18);
 
-#include "../core/trivial_tu118_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_00555130;
+struct Obj_00555140;
+
+struct Obj_00555130
+{
+    // FUNCTION: GAMEMD 0x555130
+    int FUN_00555130() const;
+};
+
+struct Obj_00555140
+{
+    // FUNCTION: GAMEMD 0x555140
+    int FUN_00555140() const;
+};
+
+
+
 
 #include "../core/scenario_class_lighting_methods.h"
 

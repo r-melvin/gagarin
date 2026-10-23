@@ -32,7 +32,19 @@ inline MapObjCell OverlayCellAdd(const OverlayStaticCell& a, const MapObjCell& b
 extern "C" const CLSID CLSID_Overlay =
     { 0x0E272DC7, 0x9C0F, 0x11D1, { 0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
-#include "trivial_tu168_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+
+void __cdecl FUN_005FD230();
+void __cdecl FUN_005FD240();
+void __cdecl FUN_005FD250();
+void __cdecl FUN_005FD260();
+
 
 #include "overlay_class_tiberium_type_methods.h"
 

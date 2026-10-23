@@ -160,7 +160,38 @@ GG_STATIC_ASSERT(offsetof(HSVTriple, Hue) == 0);
 GG_STATIC_ASSERT(offsetof(HSVTriple, Saturation) == 1);
 GG_STATIC_ASSERT(offsetof(HSVTriple, Value) == 2);
 
-#include "trivial_tu098_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Arg1_00517560;
+struct Obj_00517560;
+
+struct Arg1_00517560
+{
+    bool unknown_00;   // +0x0000
+    bool unknown_01;   // +0x0001
+    bool unknown_02;   // +0x0002
+};
+GG_STATIC_ASSERT(offsetof(Arg1_00517560, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Arg1_00517560, unknown_01) == 0x1);
+GG_STATIC_ASSERT(offsetof(Arg1_00517560, unknown_02) == 0x2);
+
+struct Obj_00517560
+{
+    bool unknown_00;   // +0x0000
+    bool unknown_01;   // +0x0001
+    bool unknown_02;   // +0x0002
+    // FUNCTION: GAMEMD 0x517560
+    int FUN_00517560(Arg1_00517560* a1);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00517560, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_00517560, unknown_01) == 0x1);
+GG_STATIC_ASSERT(offsetof(Obj_00517560, unknown_02) == 0x2);
+
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

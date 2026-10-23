@@ -200,7 +200,29 @@ struct Item_0065FD50 {
     ~Item_0065FD50() { Item_0065FD50* self = this; DAT_00B04DA8.RemoveItem(self); }
 };
 
-#include "../core/trivial_tu196_methods.h"
+//   Each entry point disassembled individually from the user's retail
+//   gamemd.exe v1.001 via the local Ghidra CLI; every name is a placeholder
+//   (FUN_/DAT_/unknown_) derived from an address or offset in that binary.
+
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
+struct Obj_0065FB60;
+
+// GLOBAL: GAMEMD 0x87F7E8
+extern char DAT_0087F7E8[];
+
+// FUNCTION: GAMEMD 0x6562D0 (decl; reloc)
+void FUN_006562D0(void*, int, Obj_0065FB60*);
+
+struct Obj_0065FB60
+{
+};
+
+
+void __cdecl FUN_0065FA60();
+void FUN_0065FB60(Obj_0065FB60* a1, int a2);
+
 
 #include "../_rt/gg_static_assert.h"
 #include <stddef.h>
