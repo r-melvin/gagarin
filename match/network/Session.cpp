@@ -775,6 +775,26 @@ GG_STATIC_ASSERT(offsetof(HouseClass, IPAddress) == 0x200);
 GG_STATIC_ASSERT(offsetof(HouseClass, TournamentTeamID) == 0x204);
 GG_STATIC_ASSERT(offsetof(HouseClass, LostConnection) == 0x208);
 
+// FUNCTION: GAMEMD 0x697050
+SessionProfile_00697F10::SessionProfile_00697F10()
+{
+    unknown_00 = 0;
+    unknown_04 = 0;
+    unknown_08 = 1;
+    unknown_0C = 10000;
+    unknown_10 = 10;
+    unknown_14 = true;
+    unknown_15 = true;
+    unknown_16 = true;
+    unknown_17 = true;
+    unknown_18 = true;
+    for (int index = 0; index < 8; ++index) {
+        unknown_1C[index][0] = 0;
+        unknown_1C[index][1] = 0;
+        unknown_1C[index][2] = 0;
+    }
+}
+
 // FUNCTION: GAMEMD 0x697B70
 int SessionClass::FUN_00697B70()
 {

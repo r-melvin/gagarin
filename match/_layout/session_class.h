@@ -18,6 +18,8 @@ class CCINIClass;
 // No original type name is attested; numeric placeholder retained.
 struct SessionProfile_00697F10
 {
+    // Declaration: GAMEMD 0x697050 -- no arguments; EAX returns this.
+    SessionProfile_00697F10();
     int unknown_00, unknown_04, unknown_08, unknown_0C, unknown_10;
     bool unknown_14, unknown_15, unknown_16, unknown_17, unknown_18;
     char unknown_19[3];
