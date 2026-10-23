@@ -58,6 +58,9 @@
 #include "../_layout/trigger_type_class.h"
 #include "../_layout/tiberium_class.h"
 #include "../_layout/anim_class.h"
+#include "../_layout/unit_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/infantry_type_class.h"
 #include "leftover_trivial_leaf_sweep.h"
 
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
@@ -69,6 +72,19 @@ extern const char STR_0083DA90[]; // STRING: GAMEMD 0x0083DA90 (decl)
 int __fastcall FUN_00644630(const char* id); // GAMEMD 0x644630; ECX=id, no stack args
 void __fastcall FUN_0075F020(); // GAMEMD 0x75F020
 HouseClass* __fastcall FUN_00502D30(int index); // GAMEMD 0x502D30
+extern DynamicVectorClass<UnitTypeClass*> DAT_00A83CE0; // GLOBAL: GAMEMD 0x00A83CE0
+extern DynamicVectorClass<InfantryTypeClass*> DAT_00A8E348; // GLOBAL: GAMEMD 0x00A8E348
+extern char DAT_00A8B258; // GLOBAL: GAMEMD 0x00A8B258
+extern int DAT_00A8B270; // GLOBAL: GAMEMD 0x00A8B270
+extern const char STR_0083DDA8[]; // STRING: GAMEMD 0x0083DDA8
+extern const char STR_0083DD94[]; // STRING: GAMEMD 0x0083DD94
+extern const char STR_0083DD70[]; // STRING: GAMEMD 0x0083DD70
+extern const char STR_0083DD50[]; // STRING: GAMEMD 0x0083DD50
+extern const char STR_00830990[]; // STRING: GAMEMD 0x00830990
+int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int distance); // GAMEMD 0x688ED0
+TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
+void __fastcall FUN_007500B0(int value); // GAMEMD 0x7500B0
+double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40
 extern Tactical* TacticalInstance; // GLOBAL: GAMEMD 0x00887324
 extern ParticleSystemClass* DAT_00A8ED78; // GLOBAL: GAMEMD 0x00A8ED78
 extern AircraftTrackerClass AircraftTracker; // GLOBAL: GAMEMD 0x00887888
@@ -725,8 +741,8 @@ ScenarioClass::ScenarioClass()
     FUN_006B8AE0();
     unknown_1254 = 1;
     unknown_34CC = -1;
-    unknown_0000[4] = 0;
-    unknown_0000[0x108] = 0;
+    unknown_0004[0] = 0;
+    unknown_0004[0x104] = 0;
     for (int i = 0; i < 702; ++i) Waypoints[i] = WaypointUndefined;
     wcscpy(unknown_1360, EmptyName_00887734);
     wcscpy(unknown_13DA, EmptyName_00887734);
@@ -1214,7 +1230,7 @@ void __fastcall FUN_00687CE0(const char* filename, bool flag)
 }
 
 // FUNCTION: GAMEMD 0x688380
-DynamicVectorClass<Cell> __fastcall FUN_00688380()
+DynamicVectorClass<Cell> __fastcall FUN_00688380(bool)
 {
     DynamicVectorClass<Cell> points(0, 0);
     int defined = 0;
@@ -1256,6 +1272,199 @@ DynamicVectorClass<Cell> __fastcall FUN_00688380()
         }
     }
     return points;
+}
+
+// FUNCTION: GAMEMD 0x6886B0
+void __fastcall FUN_006886B0(bool value)
+{
+    DynamicVectorClass<TechnoClass*> created(0, 0);
+    int number = DAT_00A8B270;
+    if (DAT_00A8B258) --number;
+    // Retail 0x688709..0x68871D passes the whole Randomizer by value.
+    FUN_004068E0(STR_0083DDA8, number, ScenarioInstance->unknown_0218);
+    FUN_004068E0(STR_0083DD94, ScenarioInstance->unknown_0214);
+    int cost = 0;
+    int types = 0;
+    for (int i = 0; i < DAT_00A83CE0.Count; ++i) {
+        UnitTypeClass* type = DAT_00A83CE0.Items[i];
+        if (type->AllowedToStartInMultiplayer && RulesInstance->unknown_B20.FindItemIndex(type) < 0) {
+            cost += type->vf_43();
+            ++types;
+        }
+    }
+    for (i = 0; i < DAT_00A8E348.Count; ++i) {
+        InfantryTypeClass* type = DAT_00A8E348.Items[i];
+        if (type->AllowedToStartInMultiplayer) {
+            cost += type->vf_43();
+            ++types;
+        }
+    }
+    int budget = cost / types * number;
+    DynamicVectorClass<Cell> starts = FUN_00688380(value);
+    bool used[16] = { false };
+    int assigned = 0;
+    for (i = 0; i < HouseClass_ArrayCount; ++i) {
+        HouseClass* house = HouseClass_ArrayItems[i];
+        if (house->Type->MultiplayPassive) continue;
+        FUN_004068E0(STR_0083DD70, i, house->Type->ID);
+        DynamicVectorClass<UnitTypeClass*> units(0, 0);
+        DynamicVectorClass<InfantryTypeClass*> infantry(0, 0);
+        unsigned int owner = 1 << house->Type->ArrayIndex;
+        for (int j = 0; j < DAT_00A83CE0.Count; ++j) {
+            UnitTypeClass* type = DAT_00A83CE0.Items[j];
+            if (type->AllowedToStartInMultiplayer && type->TechLevel <= house->TechLevel &&
+                (type->OwnerFlags & owner) && RulesInstance->unknown_B20.FindItemIndex(type) < 0)
+                units.AddItem(type);
+        }
+        for (j = 0; j < DAT_00A8E348.Count; ++j) {
+            InfantryTypeClass* type = DAT_00A8E348.Items[j];
+            if (type->AllowedToStartInMultiplayer && type->TechLevel <= house->TechLevel &&
+                (type->OwnerFlags & owner)) infantry.AddItem(type);
+        }
+        Cell start;
+        if (assigned == 0) {
+            int index = ScenarioInstance->unknown_0218.RandomRanged(0, starts.Count - 1);
+            used[index] = true;
+            assigned = 1;
+            start = starts.Items[index];
+        } else {
+            int distances[26] = { 0 };
+            for (j = 0; j < starts.Count; ++j) {
+                if (!used[j]) {
+                    for (int k = 0; k < starts.Count; ++k) {
+                        if (used[k]) {
+                            double dy = (short)(starts.Items[j].Y - starts.Items[k].Y);
+                            double dx = (short)(starts.Items[j].X - starts.Items[k].X);
+                            distances[j] += (short)FUN_004CAC40(dy * dy + dx * dx);
+                        }
+                    }
+                }
+            }
+            int index = 0;
+            int farthest = 0;
+            for (j = 0; j < starts.Count; ++j) {
+                if (distances[j] > farthest || farthest == 0) {
+                    farthest = distances[j];
+                    index = j;
+                }
+            }
+            ++assigned;
+            used[index] = true;
+            start = starts.Items[index];
+        }
+        house->FUN_0050E000(start);
+        if (DAT_00A8B258) {
+            ObjectClass* unit = new UnitClass(house->FUN_00505310(RulesInstance->unknown_B20), house);
+            CoordStruct coord = { start.X * 256 + 128, start.Y * 256 + 128, 0 };
+            if (!unit->vf_54(coord, 0) && !FUN_00688ED0(unit, &start, 1)) {
+                delete unit;
+            } else if (unit) {
+                house->OurFlagCarrier = 0;
+                house->OurFlagCoords = WaypointUndefined;
+                if (ScenarioInstance->unknown_0000 & 0x10) house->FUN_004FC060(unit, true);
+            }
+        }
+        created.Clear();
+        int spent = 0;
+        while (spent < budget) {
+            TechnoTypeClass* type = 0;
+            if (spent < budget * 2 / 3 && units.Count > 0)
+                type = units.Items[ScenarioInstance->unknown_0218.RandomRanged(0, units.Count - 1)];
+            else if (infantry.Count > 0)
+                type = infantry.Items[ScenarioInstance->unknown_0218.RandomRanged(0, infantry.Count - 1)];
+            // Slot35 returns the offset-zero ObjectClass of the constructed object.
+            ObjectClass* object = static_cast<ObjectClass*>(type->vf_35(house));
+            TechnoClass* techno = FUN_0040DD70(object);
+            if (!FUN_00688ED0(object, &start, 4)) {
+                delete object;
+            } else {
+                FUN_004068E0(STR_0083DD50, house->Type->ID, type->ID);
+                spent += type->vf_43();
+                created.AddItem(techno);
+                if (ScenarioInstance->unknown_0000 & 0x200) FUN_007500B0(1);
+                techno->vf_124(house->FUN_0050B730() ? 5 : 11);
+            }
+        }
+    }
+    FUN_004068E0(STR_00830990, ScenarioInstance->unknown_0218.RandomRanged(0, 0xFFFF));
+}
+
+// FUNCTION: GAMEMD 0x688ED0
+int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int distance)
+{
+    if (MapInstance.FUN_00578460(cell, 1)) {
+        Point2D offset = { 0, 0 };
+        ObjectClass* occupied = MapInstance.FUN_005657A0(cell)->FindTechnoNearestTo(&offset, false, 0);
+        if (!occupied || (occupied->vf_11() == 15 && object->vf_11() == 15)) {
+            CoordStruct height = { cell->X * 256 + 128, cell->Y * 256 + 128, 0 };
+            int z = MapInstance.FUN_00578080(&height);
+            CoordStruct where = { cell->X * 256 + 128, cell->Y * 256 + 128, z };
+            if (object->vf_54(where, 0)) return 1;
+        }
+    }
+    while (distance < 32) {
+        int direction = ScenarioInstance->unknown_0218.RandomRanged(0, 7);
+        for (int pass = 0; pass < 2; ++pass) {
+            for (int attempt = 0; attempt < 8; ++attempt) {
+                int x = cell->X;
+                int y = cell->Y;
+                int maxX = DAT_0087F90C - 1 + DAT_0087F914;
+                int maxY = DAT_0087F910 - 1 + DAT_0087F918;
+                switch (direction) {
+                case 0: y -= distance; break;
+                case 1: x += distance; y -= distance; break;
+                case 2: x += distance; break;
+                case 3: x += distance; y += distance; break;
+                case 4: y += distance; break;
+                case 5: x -= distance; y += distance; break;
+                case 6: x -= distance; break;
+                case 7: x -= distance; y -= distance; break;
+                }
+                if (x > maxX) x = maxX;
+                if (x < DAT_0087F90C) x = DAT_0087F90C;
+                if (y > maxY) y = maxY;
+                if (y < DAT_0087F910) y = DAT_0087F910;
+                CellStruct candidate = { (short)x, (short)y };
+                if (pass > 0) {
+                    int delta = ScenarioInstance->unknown_0218.RandomRanged(0, 1);
+                    if (ScenarioInstance->unknown_0218.RandomRanged(0, 99) < 50) {
+                        x = candidate.X + delta;
+                        if (x > maxX) x = maxX;
+                    } else {
+                        x = candidate.X - delta;
+                        if (x < DAT_0087F90C) x = DAT_0087F90C;
+                    }
+                    delta = ScenarioInstance->unknown_0218.RandomRanged(0, 1);
+                    if (ScenarioInstance->unknown_0218.RandomRanged(0, 99) < 50) {
+                        y = candidate.Y + delta;
+                        if (y > maxY) y = maxY;
+                    } else {
+                        y = candidate.Y - delta;
+                        if (y < DAT_0087F910) y = DAT_0087F910;
+                    }
+                    candidate.X = (short)x;
+                    candidate.Y = (short)y;
+                }
+                bool same = candidate.X == cell->X && candidate.Y == cell->Y;
+                if (MapInstance.FUN_00578460(&candidate, 1) && !same) {
+                    Point2D offset = { 0, 0 };
+                    ObjectClass* occupied = MapInstance.FUN_005657A0(&candidate)->FindTechnoNearestTo(&offset, false, 0);
+                    if (!occupied || (occupied->vf_11() == 15 && object->vf_11() == 15)) {
+                        CoordStruct height;
+                        height.FUN_0041C230(candidate.X * 256 + 128, candidate.Y * 256 + 128, 0);
+                        int z = MapInstance.FUN_00578080(&height);
+                        CoordStruct where;
+                        where.FUN_0041C230(candidate.X * 256 + 128, candidate.Y * 256 + 128, z);
+                        if (object->vf_54(where, 0)) return 1;
+                    }
+                }
+                ++direction;
+                if (direction > 7) direction = 0;
+            }
+        }
+        ++distance;
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x689310

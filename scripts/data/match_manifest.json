@@ -92629,9 +92629,9 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x688380",
-  "sym": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@XZ",
-  "len": "0x32d",
-  "name": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@XZ",
+  "sym": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@_N@Z",
+  "len": "0x32D",
+  "name": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@_N@Z",
   "status": "partial",
   "pct": 6.8
  },
@@ -92833,5 +92833,23 @@
   "name": "?FUN_00684C30@@YIXXZ",
   "status": "partial",
   "pct": 18.4
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x6886B0",
+  "sym": "?FUN_006886B0@@YIX_N@Z",
+  "len": "0x81C",
+  "name": "?FUN_006886B0@@YIX_N@Z",
+  "status": "partial",
+  "pct": 7.8
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x688ED0",
+  "sym": "?FUN_00688ED0@@YIHPAVObjectClass@@PBUCellStruct@@H@Z",
+  "len": "0x438",
+  "name": "?FUN_00688ED0@@YIHPAVObjectClass@@PBUCellStruct@@H@Z",
+  "status": "partial",
+  "pct": 13.5
  }
 ]

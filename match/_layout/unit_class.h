@@ -32,9 +32,18 @@
 #include "../_rt/gg_static_assert.h"
 #include "foot_class.h"
 
+class UnitTypeClass;
+class HouseClass;
+
 class UnitClass : public FootClass
 {
 public:
+    UnitClass(UnitTypeClass* type, HouseClass* owner); // GAMEMD 0x7353C0
+    virtual ~UnitClass(); // external; retail scalar-deleting slot8=0x746E80
+    virtual HRESULT __stdcall GetClassID(CLSID* id); // slot3 0x746DE0
+    virtual HRESULT __stdcall Save(IStream* stream, BOOL clear); // slot6 0x744600
+    virtual int vf_11(); // slot11 0x746E20
+    virtual int vf_12(); // slot12 0x746DD0
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.

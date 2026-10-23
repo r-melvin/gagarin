@@ -104,6 +104,8 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 
 class BuildingTypeClass;
 class HouseTypeClass;
+class UnitTypeClass;
+template<class T> class DynamicVectorClass;
 
 #include <ocidl.h>   // IConnectionPointContainer (VC98 SDK, LIBRARY)
 
@@ -419,6 +421,8 @@ public:
     // FUNCTION: GAMEMD 0x50E000 (decl; reloc) -- takes one cell by value, RET 4.
     void FUN_0050E000(Cell cell);
     // FUNCTION: GAMEMD 0x4F9A50 (decl; reloc) -- is the other house an ally (one stack argument).
+    UnitTypeClass* FUN_00505310(const DynamicVectorClass<UnitTypeClass*>& types); // GAMEMD 0x505310
+    void FUN_004FC060(ObjectClass* object, bool value); // GAMEMD 0x4FC060
     float GiveTiberium(float amount, int type); // GAMEMD 0x4F9610
     bool IsAlliedWith(const HouseClass* house) const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
@@ -441,6 +445,7 @@ public:
     void FUN_0050DFE0(CellStruct cell);
 };
 
+GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex)                 == 0x30);
 GG_STATIC_ASSERT(offsetof(HouseClass, Type)                       == 0x34);
 GG_STATIC_ASSERT(offsetof(HouseClass, RelatedTags)                == 0x38);

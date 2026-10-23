@@ -111,7 +111,7 @@ public:
     // Slots 42-47, introduced by TechnoTypeClass (48 slots in all; retail table 0x7F4ED8).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual void vf_42(int a1, int a2);                            // 42 0x716150
-    virtual void vf_43();                                          // 43 0x711EB0
+    virtual int vf_43(); // 43 0x711EB0; EAX summed at caller0x688793
     virtual void vf_44();                                          // 44 0x7120D0
     virtual void vf_45();                                          // 45 0x712120
     virtual void vf_46(int a1, int a2);                            // 46 0x711F60
@@ -415,6 +415,9 @@ public:
 };
 
 // --- Representative offset asserts (spanning the struct) + final sizeof ------
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TechLevel) == 0x634); // 0x6886B0 accesses
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OwnerFlags) == 0x6CC); // 0x6886B0 accesses
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, AllowedToStartInMultiplayer) == 0x6D5); // 0x6886B0 accesses
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, WalkRate)          == 0x294);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VeteranAbilities)  == 0x29C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpecialThreatValue)== 0x2C0);

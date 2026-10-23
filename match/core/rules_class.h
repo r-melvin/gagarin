@@ -10,9 +10,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vector_class.h"
 
 class AnimTypeClass;
 class WeaponTypeClass;
+class UnitTypeClass;
 
 struct RulesClass
 {
@@ -47,7 +49,9 @@ struct RulesClass
     int unknown_78C;
     char unknown_790[0x7A8 - 0x790];
     int unknown_7A8;
-    char unknown_7AC[0xD04 - 0x7AC];
+    char unknown_7AC[0xB20 - 0x7AC];
+    DynamicVectorClass<UnitTypeClass*> unknown_B20; // constructor-type list0x688B55
+    char unknown_B38[0xD04 - 0xB38];
     // Three pointer collections selected at 0x68C164..0x68C1A5.
     void** unknown_D04;
     char unknown_D08[8];
@@ -76,6 +80,7 @@ struct RulesClass
     AnimTypeClass* unknown_1870; // 0x6850D9 -> AnimClass constructor0x421EA0
 };
 
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_B20) == 0xB20);
 GG_STATIC_ASSERT(offsetof(RulesClass, BunkerSound) == 0x244);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_000) == 0x000);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_008) == 0x008);

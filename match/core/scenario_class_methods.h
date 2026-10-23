@@ -57,6 +57,7 @@ struct MapInstanceClass
     void FUN_004F42F0(int value); // GAMEMD 0x4F42F0, __thiscall
     void FUN_00565B00(); // GAMEMD 0x565B00
     void FUN_005BDF50(); // GAMEMD 0x5BDF50
+    bool FUN_00578460(const CellStruct* cell, int flag); // GAMEMD 0x578460
     void FUN_006D04F0(int value); // GAMEMD 0x6D04F0
     void FUN_00653F70(CoordStruct* where); // GAMEMD 0x653F70
     void FUN_004ADCD0(int first, int second); // GAMEMD 0x4ADCD0
@@ -214,7 +215,8 @@ struct ScenarioClass
     void FUN_0068BF50(int index, CellStruct value);
 
     // ---- members touched by the matched methods ----
-    char unknown_0000[0x20C];
+    unsigned int unknown_0000; // bit tests0x688BF8/0x688D51
+    char unknown_0004[0x20C - 4];
     int unknown_020C; // 0x684CB1 waypoint selector
     int unknown_0210; // 0x684CA9 alternate waypoint selector
     int unknown_0214;
@@ -328,6 +330,7 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_13BA) == 0x13BA);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_13DA) == 0x13DA);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1450) == 0x1450);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C50) == 0x1C50);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0000) == 0);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_348E) == 0x348E);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_020C) == 0x020C);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0210) == 0x0210);
