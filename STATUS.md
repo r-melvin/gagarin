@@ -1,17 +1,17 @@
 # Project status
 
-As of **2026-10-23** (source tip `67025f7a`), the manifest holds **10,880 rows**:
-**10,193 matched** and **687 partial**, in 1,302 manifest translation units.
+As of **2026-10-23** (source tip `5761942b`), the manifest holds **10,890 rows**:
+**10,204 matched** and **686 partial**, in 1,302 manifest translation units.
 Every row's address is an entry in the extent census of **19,778 functions**,
-so 51.5% of listed functions are matched and 3.5% partial. Matched body lengths
-total **703,039 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
+so 51.6% of listed functions are matched and 3.5% partial. Matched body lengths
+total **704,282 bytes**, 18.2% of the 3,878,653 listed function bytes. Counts
 are per function, not executable completion.
 
-Strict check: all **10,193 matched rows pass raw and strict relocation checks**
+Strict check: all **10,204 matched rows pass raw and strict relocation checks**
 using the central symbol bindings and objects from the full build. The 74
 previous strict failures are resolved by binding their observed retail targets.
-This establishes relocation addresses; COM table closure and unresolved
-`SEARCH_LIBRARY` deleting-destructor selection remain separate fidelity work.
+This establishes relocation addresses; COM table closure, other unresolved
+`SEARCH_LIBRARY` selections and linked RTTI metadata remain separate fidelity work.
 
 Recent recovery adds the 872-byte Scenario checksum routine at `0x68B940`,
 five exact ownrdraw functions, and two capped partials. Tooltip globals now
@@ -29,6 +29,19 @@ and `0x69B670`, and an 84.3% initialization partial at `0x697AD0`. The canonical
 TypeList now includes observed storage at `+0x18`, with size `0x1C`; Scenario's
 three compensating gaps are removed without shifting later members. The explicit
 base-only copy constructor is retained. All affected partial scores are unchanged.
+
+Further Session recovery includes four entry leaves, the profile and settings
+writers, profile construction, and localized-label loading. Both ShapeButton
+constructors are exact; its declaration is shared with input controls and the
+old Toggle deleting-destructor wrapper is replaced by compiler-emitted code.
+Actual diagnostic-link checks prove all 35 ShapeButton and 34 Toggle table slots.
+
+Retail RTTI corrects Wstring's class tag. Its null constructor and destructor
+now have the owning class as their source owner, and 13 vector-template rows
+use the corrected class-tagged symbols. Constructor `0x69D7C0` is promoted after
+raw, strict and actual-link checks of both seven-slot vector tables. The two
+SetCapacity partials retain their scores. Legacy manual-lifetime string callers
+and full RTTI/COL metadata recovery remain unfinished.
 
 Translation-unit migration snapshot at `2a00ae5d`: **114** files carry an original translation-unit
 header. **72** have names attested by a source-file assert string in the
