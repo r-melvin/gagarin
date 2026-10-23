@@ -205,7 +205,7 @@ public:
     // each stack instance (0x537BC0). The body clears Position, releases the
     // buffer through 0x43AE50, and ~CDFileClass then seats vtable 0x7E1668
     // and calls ~BufferIOFileClass (0x431B80).
-    ~CCFileClass() { Position = 0; Buffer.Clear(); }
+    ~CCFileClass() { Position = 0; }
 
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x473C50 (matched)
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x473FC0 (matched)

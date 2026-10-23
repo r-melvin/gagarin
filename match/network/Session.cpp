@@ -128,6 +128,7 @@ void __fastcall FUN_00750FA0(); // 0x750FA0
 void __fastcall FUN_007535D0(); // 0x7535D0
 void __fastcall FUN_00752CA0(); // 0x752CA0
 #include "session_entry.h"
+#include "../platform/buffer_straws.h"
 #include <wchar.h>
 #include <string.h>
 // Declaration at 0x734E60; body belongs to the string-table translation unit.
@@ -580,6 +581,8 @@ GG_STATIC_ASSERT(offsetof(GgGlobalpackettypeDynamicVectorClass, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgGlobalpackettypeDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(GlobalPacketType*) == 4);
+
+// SYNTHETIC: GAMEMD 0x4AEC30 -- emitted BufferStraw scalar deleting destructor.
 
 // FUNCTION: GAMEMD 0x69C4D0
 // DynamicVectorClass<DiskID>::Slot5 (also slot 5 of the TypeList<DiskID> table)
@@ -1249,6 +1252,110 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 #include "../platform/ccfile_class.h"
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 extern const char STR_00830A14[]; // STRING: GAMEMD 0x830A14 (decl; reloc)
+
+extern const char STR_00817854[]; // STRING: GAMEMD 0x00817854 (decl; reloc)
+extern const char STR_0081BFE0[]; // STRING: GAMEMD 0x0081BFE0 (decl; reloc)
+extern const char STR_00829284[]; // STRING: GAMEMD 0x00829284 (decl; reloc)
+extern const char STR_0082BF9C[]; // STRING: GAMEMD 0x0082BF9C (decl; reloc)
+extern const char STR_00831898[]; // STRING: GAMEMD 0x00831898 (decl; reloc)
+extern const char STR_0083DC5C[]; // STRING: GAMEMD 0x0083DC5C (decl; reloc)
+extern const char STR_0083F3A8[]; // STRING: GAMEMD 0x0083F3A8 (decl; reloc)
+extern const char STR_0083F3BC[]; // STRING: GAMEMD 0x0083F3BC (decl; reloc)
+extern const char STR_0083F3F0[]; // STRING: GAMEMD 0x0083F3F0 (decl; reloc)
+extern const char STR_0083F3FC[]; // STRING: GAMEMD 0x0083F3FC (decl; reloc)
+extern const char STR_0083F408[]; // STRING: GAMEMD 0x0083F408 (decl; reloc)
+extern const char STR_0083F440[]; // STRING: GAMEMD 0x0083F440 (decl; reloc)
+extern const char STR_0083F44C[]; // STRING: GAMEMD 0x0083F44C (decl; reloc)
+extern const char STR_0083F484[]; // STRING: GAMEMD 0x0083F484 (decl; reloc)
+extern const char STR_0083F488[]; // STRING: GAMEMD 0x0083F488 (decl; reloc)
+extern const char STR_00889F64[]; // STRING: GAMEMD 0x00889F64 (decl; reloc)
+void __fastcall FUN_00735060(wchar_t* out, const char* text, int length);
+
+// FUNCTION: GAMEMD 0x6994F0
+void __fastcall FUN_006994F0(const char* filename, wchar_t* description,
+                            char* digest, char* modes, bool* official,
+                            int* minimum, int* maximum)
+{
+    CCFileClass file(filename);
+    if (!file.Exists(false) || !file.Open(1)) return;
+    char* front = 0;
+    char* end = 0;
+    bool foundBasic = false;
+    int percent;
+    for (percent = 5; percent <= 100; percent += 5) {
+        // Native signed32 multiplication happens BEFORE division by100.
+        int length = file.GetFileSize() * percent / 100;
+        if (front) delete[] front;
+        front = new char[length + 1];
+        if (!front) return;
+        file.Seek(0, 0);
+        file.ReadBytes(front, length);
+        front[length] = 0;
+        char* begin = strstr(front, STR_0083F488); // [Basic]
+        if (begin) {
+            end = strstr(begin + 5, STR_0083F484); // raw marker is newline+'['
+            // Both successful strstr results lie in the same allocation.
+            // Keep a normal null check; any extra instruction is a future
+            // partial-match delta, not a reason for pointer/integer steering.
+            if (end != 0 && end > begin) {
+                end[1] = 0; // overwrite '[', retain preceding newline
+                FUN_004068E0(STR_0083F44C, percent);
+                foundBasic = true;
+                break;
+            }
+        }
+    }
+    if (!foundBasic) {
+        delete[] front;
+        return;
+    }
+    char* back = 0;
+    bool foundDigest = false;
+    for (percent = 1; percent <= 100; ++percent) {
+        int length = file.GetFileSize() * percent / 100;
+        if (back) delete[] back;
+        back = new char[length + 1];
+        // Native null suffix allocation returns without releasing front.
+        // Raw ownership deliberately preserves that behavior; no RAII fix.
+        if (!back) return;
+        file.Seek(-length, 2);
+        file.ReadBytes(back, length);
+        back[length] = 0;
+        if (strstr(back, STR_0083F440)) { // [Digest]
+            FUN_004068E0(STR_0083F408, percent);
+            foundDigest = true;
+            break;
+        }
+    }
+    if (!foundDigest) {
+        delete[] front;
+        delete[] back;
+        return;
+    }
+    CCINIClass basicIni;
+    // Front stream starts at allocation beginning, not at '[Basic]'. Its
+    // length excludes the newline at end, despite end[1] being the terminator.
+    BufferStraw basicStream(front, end - front);
+    basicIni.FUN_00474320(&basicStream, false, false);
+    CCINIClass digestIni;
+    BufferStraw digestStream(back, strlen(back) + 1);
+    digestIni.FUN_00474320(&digestStream, false, false);
+    *minimum = basicIni.FUN_005276D0(STR_0082BF9C, STR_0083F3FC, *minimum);
+    *maximum = basicIni.FUN_005276D0(STR_0082BF9C, STR_0083F3F0, *maximum);
+    basicIni.FUN_00528A10(STR_0082BF9C, STR_0083EFD0, STR_00889F64, modes, 0x100);
+    char name[64];
+    basicIni.FUN_00528A10(STR_0082BF9C, STR_00817854, STR_00829284, name, 0x40);
+    FUN_00735060(description, name, -1);
+    digestIni.FUN_00528A10(STR_0081BFE0, STR_00831898, STR_0083F3E4, digest, 0x20);
+    bool isOfficial = basicIni.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
+    *official = isOfficial;
+    FUN_004068E0(STR_0083F3BC, filename, *minimum, *maximum, isOfficial, name);
+    FUN_004068E0(STR_0083F3A8, modes);
+    // Deliberately before borrowed straw/INI destructors. Native order then:
+    // digestStream, digestIni, basicStream, basicIni, file. No explicit dtors.
+    delete[] front;
+    delete[] back;
+}
 
 // FUNCTION: GAMEMD 0x69A980
 MultiMission::MultiMission(const char* filename, const wchar_t* description,

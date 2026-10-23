@@ -17,6 +17,7 @@
 
 
 class FileClass;
+class Straw;
 
 // VTABLE: GAMEMD 0x7E1AF4
 //   sizeof 0x58: `PUSH 0x58; CALL operator new` before the inline
@@ -32,6 +33,8 @@ public:
     void FUN_00477440(const char* section, const char* key, int* first, int* second, int* third);
     // FUNCTION: GAMEMD 0x4741F0 (decl; reloc) -- RET 0xC.
     int ReadCCFile(FileClass* file, bool withDigest, bool flag);
+    // Declaration: GAMEMD 0x474320 -- three stack arguments, RET0C.
+    int FUN_00474320(Straw* straw, bool withDigest, bool flag);
     int FUN_004757D0(const char* section, const char* key, int fallback); // GAMEMD 0x4757D0
     int WriteCCFile(FileClass* file, bool withDigest); // GAMEMD 0x474430
     // FUNCTION: GAMEMD 0x679F40  CCINIClass::Exists         (__thiscall)

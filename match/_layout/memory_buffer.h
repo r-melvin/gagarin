@@ -19,9 +19,11 @@ public:
     MemoryBuffer(void* pBuffer, int size) throw();
     // FUNCTION: GAMEMD 0x43ADC0
     MemoryBuffer(int size) throw();
+    // Declaration: GAMEMD 0x43AE50 -- member/temporary cleanup at 0x699906/0x6C689C.
+    ~MemoryBuffer() throw();
     // FUNCTION: GAMEMD 0x43AE10 -- releases owned storage, then borrows the source.
     MemoryBuffer& operator=(const MemoryBuffer& other);
-    // FUNCTION: GAMEMD 0x43AE50 -- explicit cleanup; destructor identity unproven.
+    // FUNCTION: GAMEMD 0x43AE50 -- the same cleanup entry, also used to reset live storage.
     void Clear() throw();
 
     void* Buffer;        // +0x00
@@ -33,6 +35,9 @@ private:
 GG_STATIC_ASSERT(offsetof(MemoryBuffer, Buffer)    == 0x00);
 GG_STATIC_ASSERT(offsetof(MemoryBuffer, Size)      == 0x04);
 GG_STATIC_ASSERT(offsetof(MemoryBuffer, Allocated) == 0x08);
+GG_STATIC_ASSERT(sizeof(((MemoryBuffer*)0)->Buffer) == 4);
+GG_STATIC_ASSERT(sizeof(((MemoryBuffer*)0)->Size) == 4);
+GG_STATIC_ASSERT(sizeof(((MemoryBuffer*)0)->Allocated) == 1);
 GG_STATIC_ASSERT(sizeof(MemoryBuffer)               == 0x0C);
 
 #endif

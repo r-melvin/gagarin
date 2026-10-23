@@ -92,14 +92,19 @@ GG_STATIC_ASSERT(offsetof(BufferPipe, Index)  == 0x18);
 class BufferStraw : public Straw
 {
 public:
+    // Inlined at 0x6996EA..0x699720 and 0x69977F..0x6997B5.
+    BufferStraw(void* data, int size) : Buffer(data, size), Index(0) {}
     // FUNCTION: GAMEMD 0x7BA4D0
     virtual int FUN_006C98E0(int first, int second);   // slot 2
 
     MemoryBuffer Buffer;  // +0x0C
     int          Index;   // +0x18
 };
+GG_STATIC_ASSERT(sizeof(BufferStraw) == 0x1C);
 GG_STATIC_ASSERT(offsetof(BufferStraw, Buffer) == 0x0C);
+GG_STATIC_ASSERT(sizeof(((BufferStraw*)0)->Buffer) == 0x0C);
 GG_STATIC_ASSERT(offsetof(BufferStraw, Index)  == 0x18);
+GG_STATIC_ASSERT(sizeof(((BufferStraw*)0)->Index) == 4);
 // VTABLE: GAMEMD 0x7E61E0 -- [0x4AEC30, 0x6C9890, 0x7BA4D0]
 
 #endif // GG_MATCH_PLATFORM_BUFFER_STRAWS_H

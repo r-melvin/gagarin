@@ -54,7 +54,7 @@ void StaticButtonClass::SetText(const wchar_t* text, bool resize)
         Font* font = FUN_004A60D0(unknown_34);
         Width = font->TextWidth(Text, 0);
         Height = font->Height;
-        Background = ControlsBuffer(0, 0);
+        Background = MemoryBuffer(0, 0);
     }
 }
 
@@ -63,7 +63,7 @@ void StaticButtonClass::vf_34()
 {
     if (!Background.Buffer) {
         if (Width > 0 && Height > 0) {
-            new (&Background) ControlsBuffer(DAT_00887314->GetBytesPerPixel() * Height * Width);
+            new (&Background) MemoryBuffer(DAT_00887314->GetBytesPerPixel() * Height * Width);
             if (Background.Buffer) {
                 Rect area(X, Y, Width, Height);
                 FUN_004371D0(DAT_00887314, &area, &Background);

@@ -502,17 +502,8 @@ GG_STATIC_ASSERT(offsetof(DropListClass, unknown_4C) == 0x4C);
 GG_STATIC_ASSERT(offsetof(DropListClass, unknown_50) == 0x50);
 GG_STATIC_ASSERT(offsetof(DropListClass, unknown_B0) == 0xB0);
 
-// MemoryBuffer with the destructor the binary shows: StaticButton's destructor (0x6C6880) runs 0x43AE50 on its
-// member, and SetText (0x6C6680) runs it on a temporary right after the assignment, so the cleanup behaves as the
-// destructor of the type. The three members are the existing out-of-line entries of MemoryBuffer, bound by address
-// (0x43AD00, 0x43ADC0 and 0x43AE50); nothing is defined here.
-struct ControlsBuffer : MemoryBuffer
-{
-    ControlsBuffer(void* buffer, int size);   // 0x43AD00
-    ControlsBuffer(int size);                 // 0x43ADC0
-    ~ControlsBuffer();                        // 0x43AE50
-};
-GG_STATIC_ASSERT(sizeof(ControlsBuffer) == 0x0C);
+// StaticButton member/temporary cleanup at 0x6C689C and 0x6C6724 uses
+// the shared MemoryBuffer destructor entry at 0x43AE50.
 
 // VTABLE: GAMEMD 0x7F3EA0
 class StaticButtonClass : public GadgetClass
@@ -533,7 +524,7 @@ public:
     virtual void vf_34();                             // 0x88  0x6C6740
     virtual void DrawText(const wchar_t* text);                // 0x8C  0x6C67F0
 
-    ControlsBuffer Background;  // +0x24  the screen region saved behind the text
+    MemoryBuffer Background;  // +0x24  the screen region saved behind the text
     wchar_t*       Text;        // +0x30
     int            unknown_34;  // +0x34
 };

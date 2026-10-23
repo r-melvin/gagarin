@@ -98326,5 +98326,23 @@
   "name": "MultiMission constructor",
   "status": "partial",
   "pct": 5.9
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x4AEC30",
+  "sym": "??_GBufferStraw@@UAEPAXI@Z",
+  "len": "0x28",
+  "name": "BufferStraw scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x6994F0",
+  "sym": "?FUN_006994F0@@YIXPBDPAGPAD2PA_NPAH4@Z",
+  "len": "0x48d",
+  "name": "Session map metadata",
+  "status": "partial",
+  "pct": 9.2
  }
 ]
