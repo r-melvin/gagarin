@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra
+// Provenance: own-binary-via-Ghidra | own-binary-via-REA
 // Shared Session receiver extracted from its existing Resume declaration.
 // GameMode0: 0x69BAB0; word table307A: 0x69BBF0/0x69BC20;
 // InGameFrameActive30D8: 0x69BAB0. Untouched ranges remain opaque.
@@ -12,6 +12,8 @@
 #include "game_mode_options.h"
 
 class MultiplayerGameMode;
+class MultiMission;
+struct _iobuf;
 #include "node_name_type.h"
 class CCINIClass;
 
@@ -39,7 +41,7 @@ struct SessionClass
     char unknown_08[0x18 - 8];
     GameModeOptionsClass_Opt unknown_18; // native receiver 0xA8B250
     unsigned long unknown_144; // native 0x697B41 stores the mixed DWORD
-    char unknown_148[0x15C - 0x148];
+    char unknown_148[0x15C - 0x148]; // string storage; logical capacity unknown
     int unknown_15C; // globalA8B394, 0x69B98E
     int unknown_160;
     char unknown_164[0x174 - 0x164];
@@ -52,7 +54,20 @@ struct SessionClass
     SessionProfile_00697F10 unknown_18C;
     SessionProfile_00697F10 unknown_208;
     SessionProfile_00697F10 unknown_284;
-    char unknown_300[0x1ED8 - 0x300];
+    int unknown_300; // native698F19 DWORD
+    char unknown_304[0x314 - 0x304];
+    int unknown_314; // native698D02 live player count
+    int unknown_318; // native698E27 DWORD
+    char unknown_31C[0x680 - 0x31C];
+    int unknown_680; // native698E39 DWORD
+    char unknown_684[4];
+    unsigned char unknown_688; // native69B17D/69B4D4 stores0/1
+    char unknown_689[0x690 - 0x689];
+    DynamicVectorClass<MultiMission*> unknown_690; // nativeItemsA8B8CC
+    // String starts6A8; storage through next known field, logical capacity unknown.
+    char unknown_6A8[0x8E4 - 0x6A8];
+    IPXAddressClass unknown_8E4; // native698DBB receiverA8BB1C
+    char unknown_8F0[0x1ED8 - 0x8F0];
     // ReadBool results stored by 0x698387/3B8/3C3/3E4; constructor
     // 0x6974A3/4AA/4B1/4BA initializes each to true. Written by 0x699450.
     bool unknown_1ED8;
@@ -127,6 +142,8 @@ struct SessionClass
     bool FUN_00697E70(void* house);
     // Declaration: GAMEMD 0x69AE70 -- receiver-relative string at +0x6A8.
     bool FUN_0069AE70();
+    // Declaration: GAMEMD 0x698CB0 -- FILE output, AL result, RET4.
+    bool FUN_00698CB0(_iobuf* output);
     // Declaration: GAMEMD 0x69AE90 (decl; reloc) -- progress argument, RET4.
     void FUN_0069AE90(int progress);
     // Declaration: GAMEMD 0x69BC60 (decl; reloc) -- slot index argument, EAX result, RET4.
@@ -195,7 +212,7 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_301C) == 0x301C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2E28) == 0x120);
 // 0x69AE70 adds 0x6A8 to its receiver; string capacity remains unknown.
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) == 0x300);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) + 0x3A8 == 0x6A8);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_6A8) == 0x6A8);
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_144) == 0x144);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_144) == 4);
@@ -219,4 +236,28 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18) == 0x12C);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28F8) == 0x28F8);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28F8) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) == 0x300);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_300) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_314) == 0x314);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_314) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_318) == 0x318);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_318) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_680) == 0x680);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_680) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_688) == 0x688);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_688) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690) == 0x690);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_690) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8E4) == 0x8E4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_8E4) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_148) == 0x148);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_148) == 0x14);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_15C) == 0x15C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_15C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_174) == 0x174);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_174) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_17C) == 0x17C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_17C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690) + offsetof(DynamicVectorClass<MultiMission*>, Items) == 0x694);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

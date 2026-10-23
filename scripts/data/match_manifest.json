@@ -98362,5 +98362,14 @@
   "name": "SessionClass::FUN_0069AE90",
   "status": "partial",
   "pct": 25.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x698CB0",
+  "sym": "?FUN_00698CB0@SessionClass@@QAE_NPAU_iobuf@@@Z",
+  "len": "0x2d8",
+  "name": "SessionClass::FUN_00698CB0",
+  "status": "partial",
+  "pct": 27.5
  }
 ]

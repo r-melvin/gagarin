@@ -961,6 +961,96 @@ void SessionProfile_00697F10::FUN_00697F10(CCINIClass* ini, const char* section,
     }
 }
 
+extern const char STR_0083F368[]; // STRING: GAMEMD 0x0083F368 (decl; reloc)
+extern const char STR_0083F358[]; // STRING: GAMEMD 0x0083F358 (decl; reloc)
+extern const char STR_0083F348[]; // STRING: GAMEMD 0x0083F348 (decl; reloc)
+extern const char STR_0083F334[]; // STRING: GAMEMD 0x0083F334 (decl; reloc)
+extern const char STR_0083F32C[]; // STRING: GAMEMD 0x0083F32C (decl; reloc)
+extern const char STR_008318B8[]; // STRING: GAMEMD 0x008318B8 (decl; reloc)
+extern const char STR_0083F328[]; // STRING: GAMEMD 0x0083F328 (decl; reloc)
+extern const char STR_0083F31C[]; // STRING: GAMEMD 0x0083F31C (decl; reloc)
+extern const char STR_0083F318[]; // STRING: GAMEMD 0x0083F318 (decl; reloc)
+extern const char STR_0083F308[]; // STRING: GAMEMD 0x0083F308 (decl; reloc)
+extern const char STR_0083F2F8[]; // STRING: GAMEMD 0x0083F2F8 (decl; reloc)
+extern const char STR_0083F2E8[]; // STRING: GAMEMD 0x0083F2E8 (decl; reloc)
+extern const char STR_0083F2D8[]; // STRING: GAMEMD 0x0083F2D8 (decl; reloc)
+extern const char STR_0083F2CC[]; // STRING: GAMEMD 0x0083F2CC (decl; reloc)
+extern const char STR_0083F2B8[]; // STRING: GAMEMD 0x0083F2B8 (decl; reloc)
+extern const char STR_0083F2A4[]; // STRING: GAMEMD 0x0083F2A4 (decl; reloc)
+extern const char STR_0083F28C[]; // STRING: GAMEMD 0x0083F28C (decl; reloc)
+extern const char STR_0083F26C[]; // STRING: GAMEMD 0x0083F26C (decl; reloc)
+extern const char STR_0083F254[]; // STRING: GAMEMD 0x0083F254 (decl; reloc)
+extern const char STR_0083F23C[]; // STRING: GAMEMD 0x0083F23C (decl; reloc)
+extern const char STR_0083F224[]; // STRING: GAMEMD 0x0083F224 (decl; reloc)
+extern const char STR_0083F20C[]; // STRING: GAMEMD 0x0083F20C (decl; reloc)
+extern const char STR_0083F1F0[]; // STRING: GAMEMD 0x0083F1F0 (decl; reloc)
+extern const char STR_0083F1E0[]; // STRING: GAMEMD 0x0083F1E0 (decl; reloc)
+extern const char STR_0083F1D4[]; // STRING: GAMEMD 0x0083F1D4 (decl; reloc)
+extern const char STR_0083F1C0[]; // STRING: GAMEMD 0x0083F1C0 (decl; reloc)
+extern const char STR_0083F1AC[]; // STRING: GAMEMD 0x0083F1AC (decl; reloc)
+extern "C" int __cdecl fprintf(FILE*, const char*, ...); // LIBRARY: GAMEMD 0x7CA7D8 (decl; VC6 CRT)
+// FUNCTION: GAMEMD 0x698CB0
+bool SessionClass::FUN_00698CB0(FILE* output)
+{
+    int selected = Session_00A8B238.unknown_18.unknown_04;
+    if (selected < 0) {
+        fprintf(output, STR_0083F368);
+        Session_00A8B238.unknown_18.unknown_04 = 0;
+        selected = 0;
+    }
+    // Native passes the mission-record pointer itself with a narrow %s.
+    // Preserve that exact address; do not substitute its filename or a wide
+    // conversion. The format/type anomaly is recorded as primary evidence.
+    fprintf(output, STR_0083F358,
+        Session_00A8B238.unknown_690.Items[selected]);
+    fprintf(output, STR_0083F348, unknown_148);
+    unsigned char network[4];
+    unsigned char node[6];
+    unsigned int part;
+    for (int index = 0; index < unknown_314; ++index) {
+        Session_00A8B238.unknown_283C.Items[index]->Address.GetAddress(network, node);
+        fprintf(output, STR_0083F334, index);
+        for (part = 0; part < 4; ++part)
+            fprintf(output, STR_0083F32C, network[part]);
+        fprintf(output, STR_008318B8);
+        for (part = 0; part < 6; ++part)
+            fprintf(output, STR_0083F32C, node[part]);
+        fprintf(output, STR_0083F328);
+    }
+    fprintf(output, STR_0083F328);
+    Session_00A8B238.unknown_8E4.GetAddress(network, node);
+    fprintf(output, STR_0083F31C);
+    for (part = 0; part < 4; ++part)
+        fprintf(output, STR_0083F32C, network[part]);
+    fprintf(output, STR_008318B8);
+    for (part = 0; part < 6; ++part)
+        fprintf(output, STR_0083F32C, node[part]);
+    fprintf(output, STR_0083F318);
+    fprintf(output, STR_0083F308, unknown_318);
+    fprintf(output, STR_0083F2F8, unknown_680);
+    fprintf(output, STR_0083F2E8, unknown_17C);
+    fprintf(output, STR_0083F2D8, unknown_15C);
+    fprintf(output, STR_0083F2CC, unknown_174);
+    fprintf(output, STR_0083F2B8, unknown_314);
+    fprintf(output, STR_0083F2A4, unknown_18.Bases);
+    fprintf(output, STR_0083F28C, unknown_18.Money);
+    fprintf(output, STR_0083F26C, unknown_18.BridgeDestruction);
+    fprintf(output, STR_0083F254, unknown_18.Crates);
+    fprintf(output, STR_0083F23C, unknown_18.unknown_1D);
+    fprintf(output, STR_0083F224, unknown_18.UnitCount);
+    fprintf(output, STR_0083F20C, unknown_18.AIPlayers);
+    fprintf(output, STR_0083F1F0, unknown_18.AIDifficulty);
+    fprintf(output, STR_0083F1E0, unknown_300);
+    int mode = Session_00A8B238.GameMode;
+    if (mode == 3)
+        fprintf(output, STR_0083F1D4);
+    else if (mode == 4)
+        fprintf(output, STR_0083F1C0);
+    else
+        fprintf(output, STR_0083F1AC);
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x698F90
 void SessionProfile_00697F10::FUN_00698F90(CCINIClass* ini, const char* section)
 {
@@ -1179,14 +1269,14 @@ extern const char STR_0083F6A8[];
 extern const char STR_00817F70[];
 // Declaration: FUNCTION GAMEMD 0x4068E0
 extern "C" int __cdecl FUN_004068E0(const char*, ...);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) + (0x688 - 0x300) == 0x688);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_688) == 0x688);
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex) == 0x30);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsHumanPlayer) == 0x1EC);
 GG_STATIC_ASSERT(offsetof(HouseClass, PlainName) == 0x15FF4);
 // FUNCTION: GAMEMD 0x69B170
 void SessionClass::FUN_0069B170()
 {
-    unknown_300[0x688 - 0x300] = 0;
+    unknown_688 = 0;
     if (GameMode != 4) return;
     ScenarioInstance->unknown_0000 &= ~0x400U;
     FUN_004068E0(STR_0083F6B8, DAT_00B77A04);
@@ -1237,7 +1327,7 @@ void SessionClass::FUN_0069B170()
         }
     }
     delete[] buffer;
-    unknown_300[0x688 - 0x300] = 1;
+    unknown_688 = 1;
     ScenarioInstance->unknown_0000 |= 0x400U;
 }
 
@@ -1552,7 +1642,7 @@ bool MultiMission::FUN_0069ADF0()
 // FUNCTION: GAMEMD 0x69AE70
 bool SessionClass::FUN_0069AE70()
 {
-    return _stricmp(&unknown_300[0x3A8],
+    return _stricmp(unknown_6A8,
         // STRING: GAMEMD 0x0082BC30
         "RandMap.Sed") == 0;
 }

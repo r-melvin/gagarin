@@ -24,7 +24,8 @@ struct GameModeOptionsClass_Opt
     char  unknown_15[3];     // +0x15  alignment before the int at +0x18
     int   GameSpeed;         // +0x18
     bool  MultiEngineer;     // +0x1C
-    char  unknown_1D[3];     // +0x1D  alignment before the int at +0x20
+    unsigned char unknown_1D; // native698EDA byte atSession35
+    char unknown_1E[2];
     int   UnitCount;         // +0x20
     int   AIPlayers;         // +0x24
     int   AIDifficulty;      // +0x28
@@ -76,4 +77,12 @@ GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_6C) == 0x20);
 GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_D1) == 0xD1);
 GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_D1) == 0x5B);
 GG_STATIC_ASSERT(sizeof(GameModeOptionsClass_Opt) == 0x12C);
+GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, unknown_1D) == 0x1D);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->unknown_1D) == 1);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->Bases) == 1);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->Money) == 4);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->BridgeDestruction) == 1);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->Crates) == 1);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->UnitCount) == 4);
+GG_STATIC_ASSERT(sizeof(((GameModeOptionsClass_Opt*)0)->AIDifficulty) == 4);
 #endif
