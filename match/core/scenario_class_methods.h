@@ -31,6 +31,10 @@ class HouseClass;
 
 struct MapInstanceClass
 {
+    // Declaration: GAMEMD 0x56BD40
+    void FUN_0056BD40();
+    // Declaration: GAMEMD 0x4AC4F0
+    void FUN_004AC4F0();
     // FUNCTION: GAMEMD 0x577F30 (decl; 0x6849E7, null house argument).
     void FUN_00577F30(HouseClass* house);
     // FUNCTION: GAMEMD 0x6D0F00 (decl; reloc)

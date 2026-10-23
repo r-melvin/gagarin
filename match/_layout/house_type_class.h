@@ -83,6 +83,7 @@ public:
     unsigned char padding_1A9[7];          // +0x1A9  (pad to sizeof 0x1B0)
 };
 
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, WallOwner) == 0x1A7);
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, MultiplayPassive) == 0x1A6); // 0x6886B0 accesses
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ParentCountry)     == 0x98);
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex)        == 0xB4);

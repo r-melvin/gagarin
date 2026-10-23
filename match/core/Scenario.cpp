@@ -874,6 +874,17 @@ ScenarioClass::ScenarioClass(const AbstractNoInit& noInit)
         unknown_11F4 = EmptyName_00887734;
 }
 
+
+// Declaration: GAMEMD 0x6886B0
+void __fastcall FUN_006886B0(bool value);
+// Declaration: GAMEMD 0x68C050
+void __fastcall FUN_0068C050();
+extern bool DAT_00A8B261; // GLOBAL: GAMEMD 0xA8B261
+extern int DAT_00A8B54C; // GLOBAL: GAMEMD 0xA8B54C
+extern unsigned int DAT_00A8D108; // GLOBAL: GAMEMD 0xA8D108
+extern unsigned int DAT_00A8D10C; // GLOBAL: GAMEMD 0xA8D10C
+extern const char STR_00817318[]; // STRING: GAMEMD 0x817318
+
 // FUNCTION: GAMEMD 0x683AB0
 bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
 {
@@ -1763,6 +1774,68 @@ bool __fastcall FUN_00686730(const char* filename)
     }
     strcpy(ScenarioInstance->unknown_125C, filename);
     return FUN_00686B20(&ini, false);
+}
+
+// FUNCTION: GAMEMD 0x686890
+void __fastcall FUN_00686890(bool value)
+{
+    if (PlayerCount_00A8DA84 + DAT_00A8B274 < RulesInstance->unknown_14D0 && !DAT_00A8ED6B) {
+        for (int index = 0; index < HouseClass_ArrayCount; ++index) {
+            HouseClass* house = HouseClass_ArrayItems[index];
+            if (!house->IsHumanPlayer && !house->Type->MultiplayPassive && DAT_00A8B274 < 1)
+                house->FUN_004FB920();
+        }
+    }
+    FUN_0048D080();
+    if (!DAT_00A8ED6B) {
+        int saved = DAT_00A8E7AC;
+        DAT_00A8E7AC = 0;
+        if (DAT_00A8B23C) {
+            DAT_00A8B23C->vf_33(value);
+            DAT_00A8B23C->FUN_005D6D80();
+        } else {
+            FUN_006886B0(value);
+        }
+        DAT_00A8E7AC = saved;
+    }
+    Session_00A8B238.FUN_0069AE90(93);
+    FUN_0048D080();
+    if (DAT_00A8B261) {
+        int count = RulesInstance->unknown_1470;
+        if (count <= DAT_00A8B54C) count = DAT_00A8B54C;
+        if (RulesInstance->unknown_1474 <= count) count = RulesInstance->unknown_1474;
+        for (; count > 0; --count) MapInstance.FUN_0056BD40();
+    }
+    FUN_0048D080();
+    MapInstance.FUN_004AC4F0();
+    HouseClass* neutral = HouseClass::FindByCountryIndex(HouseTypeClass::FindIndexOfName(STR_00817318));
+    for (int index = 0; index < HouseClass_ArrayCount; ++index) {
+        HouseClass_ArrayItems[index]->Base.unknown_74 = HouseClass_ArrayItems[index];
+        HouseClass* house = HouseClass_ArrayItems[index];
+        if (!house->IsHumanPlayer && !house->Type->MultiplayPassive) {
+            house->Unknown_Timer_5640 = CDTimerClass(RulesInstance->unknown_1178[house->AIDifficulty]);
+            // 0x686A33..3C dereferences the known-live House then uses its
+            // IHouse subobject at +0x24; reference conversion preserves that ABI.
+            int money = static_cast<IHouse&>(*HouseClass_ArrayItems[index]).vf_06();
+            house = HouseClass_ArrayItems[index];
+            house->FUN_004F9950((int)(money * (RulesInstance->unknown_1308[house->AIDifficulty] * 0.01)));
+        }
+        if (HouseClass_ArrayItems[index]->Type->MultiplayPassive)
+            HouseClass_ArrayItems[index]->Type->WallOwner = false;
+        else
+            HouseClass_ArrayItems[index]->Type->WallOwner = true;
+        if (HouseClass_ArrayItems[index] != neutral) {
+            HouseClass_ArrayItems[index]->FUN_004F9B70(neutral, false);
+            neutral->FUN_004F9B70(HouseClass_ArrayItems[index], false);
+        }
+    }
+    if (DAT_00A8B23C) {
+        DAT_00A8B23C->vf_34();
+        DAT_00A8B23C->vf_35();
+    }
+    FUN_0068C050();
+    DAT_00A8D108 = 0x01010101;
+    DAT_00A8D10C = 0x01010101;
 }
 
 // FUNCTION: GAMEMD 0x687CE0

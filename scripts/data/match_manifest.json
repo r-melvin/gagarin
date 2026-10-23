@@ -97641,5 +97641,14 @@
   "name": "dynamic initializer (DAT_00B78078)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x686890",
+  "sym": "?FUN_00686890@@YIX_N@Z",
+  "len": "0x288",
+  "name": "?FUN_00686890@@YIX_N@Z",
+  "status": "partial",
+  "pct": 52.0
  }
 ]

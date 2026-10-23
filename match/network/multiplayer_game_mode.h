@@ -54,6 +54,8 @@ typedef DynamicVectorClass<void*> MPGameModeArgVector;
 class MultiplayerGameMode
 {
 public:
+    // Declaration: GAMEMD 0x5D6D80
+    void FUN_005D6D80();
     // FUNCTION: GAMEMD 0x5D5B60 (decl; reloc) -- six stacked arguments, RET 0x18.
     MultiplayerGameMode(const Obj_007B66D0& name, const Obj_007B66D0& description,
                         const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,

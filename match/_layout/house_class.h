@@ -89,7 +89,12 @@ GG_STATIC_ASSERT(sizeof(DropshipStruct) == 0x2C);
 // confirmed member RecheckPower @0x5778).
 #ifndef GG_MATCH_LAYOUT_BASECLASS_DEFINED
 #define GG_MATCH_LAYOUT_BASECLASS_DEFINED
-class BaseClass { public: unsigned char unknown_00[0x78]; };
+class BaseClass {
+public:
+    unsigned char unknown_00[0x74];
+    HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
+};
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);
 #endif
 
@@ -116,6 +121,8 @@ template<class T> class DynamicVectorClass;
 class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
+    // Declaration: GAMEMD 0x4FB920
+    void FUN_004FB920();
     // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- first house whose type has this country index; ECX carries it.
     static HouseClass* FindByCountryIndex(int country);
     // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
@@ -500,6 +507,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, CurrentDropshipIndex)       == 0x56F4);
 GG_STATIC_ASSERT(offsetof(HouseClass, Color)                      == 0x56F9);
 GG_STATIC_ASSERT(offsetof(HouseClass, LaserColor)                 == 0x56FC);
 GG_STATIC_ASSERT(offsetof(HouseClass, Base)                       == 0x5700);
+GG_STATIC_ASSERT(offsetof(HouseClass, Base) + offsetof(BaseClass, unknown_74) == 0x5774);
 GG_STATIC_ASSERT(offsetof(HouseClass, RecheckPower)               == 0x5778);
 GG_STATIC_ASSERT(offsetof(HouseClass, Edge)                       == 0x577C);
 GG_STATIC_ASSERT(offsetof(HouseClass, EMPTarget)                  == 0x5780);

@@ -78,7 +78,14 @@ struct RulesClass
     int unknown_E04;
     char unknown_E08[0x0FA8 - 0xE08];
     int unknown_FA8;
-    char unknown_FAC[0x1484 - 0xFAC];
+    char unknown_FAC[0x1178 - 0xFAC];
+    int* unknown_1178; // 0x686A17/0x686A23 indexes by House AIDifficulty
+    char unknown_117C[0x1308 - 0x117C];
+    int* unknown_1308; // 0x686A52/0x686A5E
+    char unknown_130C[0x1470 - 0x130C];
+    int unknown_1470;
+    int unknown_1474;
+    char unknown_1478[0x1484 - 0x1478];
     int unknown_1484; // native697F74 default Credits
     char unknown_1488[0x1494 - 0x1488];
     int unknown_1494;
@@ -96,7 +103,9 @@ struct RulesClass
     bool unknown_14B9;
     bool unknown_14BA;
     bool unknown_14BB;
-    char unknown_14BC[0x1700 - 0x14BC];
+    char unknown_14BC[0x14D0 - 0x14BC];
+    int unknown_14D0;
+    char unknown_14D4[0x1700 - 0x14D4];
     double ConditionYellow;
     double ConditionRed;
     char unknown_1710[0x1804 - 0x1710];
@@ -140,6 +149,16 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_FA8) == 0x0FA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionYellow) == 0x1700);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionRed) == 0x1708);
 GG_STATIC_ASSERT(offsetof(RulesClass, RadDurationMultiple) == 0x1804);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1178) == 0x1178);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1308) == 0x1308);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1470) == 0x1470);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1474) == 0x1474);
+
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14D0) == 0x14D0);
 
 // GLOBAL: GAMEMD 0x008871E0 — active RulesClass pointer.
 extern RulesClass* RulesInstance;
