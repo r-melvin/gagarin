@@ -1,13 +1,13 @@
 # Project status
 
-As of **2026-10-23** (source tip `71b0b9f3`), the manifest holds **10,877 rows**:
-**10,191 matched** and **686 partial**, in 1,302 manifest translation units.
+As of **2026-10-23** (source tip `67025f7a`), the manifest holds **10,880 rows**:
+**10,193 matched** and **687 partial**, in 1,302 manifest translation units.
 Every row's address is an entry in the extent census of **19,778 functions**,
 so 51.5% of listed functions are matched and 3.5% partial. Matched body lengths
-total **702,992 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
+total **703,039 bytes**, 18.1% of the 3,878,653 listed function bytes. Counts
 are per function, not executable completion.
 
-Strict check: all **10,191 matched rows pass raw and strict relocation checks**
+Strict check: all **10,193 matched rows pass raw and strict relocation checks**
 using the central symbol bindings and objects from the full build. The 74
 previous strict failures are resolved by binding their observed retail targets.
 This establishes relocation addresses; COM table closure and unresolved
@@ -23,6 +23,12 @@ matched-function regressions.
 The frozen Queue draft is integrated: 41 new functions (10 matched and 31
 partial), seven preserved exact symbol updates, and an extracted shared draw-layer
 declaration. All 31 partial percentages are unchanged after the migration rebase.
+
+Three preserved Session drafts are integrated: exact functions at `0x69AE70`
+and `0x69B670`, and an 84.3% initialization partial at `0x697AD0`. The canonical
+TypeList now includes observed storage at `+0x18`, with size `0x1C`; Scenario's
+three compensating gaps are removed without shifting later members. The explicit
+base-only copy constructor is retained. All affected partial scores are unchanged.
 
 Translation-unit migration snapshot at `2a00ae5d`: **114** files carry an original translation-unit
 header. **72** have names attested by a source-file assert string in the
