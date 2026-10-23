@@ -8936,7 +8936,7 @@
  {
   "tu": "match/core/list_holder_methods.cpp",
   "addr": "0x4035B0",
-  "sym": "?FUN_004035B0@@YIXPAXPAPAUListNode@@@Z",
+  "sym": "?FUN_004035B0@@YIPAUListNode@@PAXPAPAU1@@Z",
   "len": "0x12",
   "name": "FUN_004035B0",
   "status": "matched",

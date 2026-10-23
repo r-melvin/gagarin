@@ -36,9 +36,11 @@ ListNode* Holder_004031F0::FUN_004031F0()
 }
 
 // FUNCTION: GAMEMD 0x4035B0
-void FUN_004035B0(void* owner, ListNode** out)
+ListNode* FUN_004035B0(void* owner, ListNode** out)
 {
-    *out = ((ListNode*)((char*)owner + 0xF8))->FUN_004073C0();
+    ListNode* node = ((ListNode*)((char*)owner + 0xF8))->FUN_004073C0();
+    *out = node;
+    return node;
 }
 
 // FUNCTION: GAMEMD 0x4035D0
