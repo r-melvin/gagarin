@@ -122,21 +122,48 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
     return modes;
 }
 
+// SYNTHETIC: GAMEMD 0x5D5B20 -- exit-time destructor stub of the function-local static above
 #include "mp_game_mode_class_methods.h"
 
 #include "mp_game_mode_class_spawn_methods.h"
 
 #include "multiplayer_game_mode.h"
 
-class MultiplayerBattle;
-class MultiplayerManBattle;
-class MultiplayerSiege;
-class UnholyAlliance;
-class FreeForAll;
-class MPCooperative;
+#include "mp_battle_class.h"
+#include "mp_game_mode_leaf_classes.h"
+#include "free_for_all.h"
+#include "mp_cooperative.h"
+
+// RTTI ".?AVUnholyAlliance@@" (table 0x7EE814); only its constructor
+// (0x5CB3A0) is referenced here.
+class UnholyAlliance : public MultiplayerGameMode
+{
+public:
+    UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+};
 
 // MultiplayerGameMode::InitializerBase and Initializer<T> are declared in the
 // canonical class (multiplayer_game_mode.h).
+
+// Slot 1 of each Initializer<Mode> table (0x7EEEBC, 0x7EEEB0, 0x7EEEA4,
+// 0x7EEE98, 0x7EEE8C): operator new(0x40) and the mode constructor.
+// FUNCTION: GAMEMD 0x5D8170
+// Initializer<MultiplayerBattle>::vf_1
+// FUNCTION: GAMEMD 0x5D81B0
+// Initializer<MultiplayerManBattle>::vf_1
+// FUNCTION: GAMEMD 0x5D81F0
+// Initializer<MultiplayerSiege>::vf_1
+// FUNCTION: GAMEMD 0x5D8230
+// Initializer<UnholyAlliance>::vf_1
+// FUNCTION: GAMEMD 0x5D8270
+// Initializer<FreeForAll>::vf_1
+template <class T>
+MultiplayerGameMode* MultiplayerGameMode::Initializer<T>::vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
+                                                               const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                                               bool unknown_5, int unknown_6)
+{
+    return new T(name, description, unknown_3, unknown_4, unknown_5, unknown_6);
+}
 
 template class MultiplayerGameMode::Initializer<MultiplayerManBattle>;
 template class MultiplayerGameMode::Initializer<MultiplayerSiege>;

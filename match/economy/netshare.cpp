@@ -806,6 +806,24 @@ void __cdecl FUN_005E2600()
     DAT_00AC114C = 0x80;
 }
 
+#include "../core/string_class.h"
+
+// Key hash of a narrow string object: seeded with the length, then for each
+// character adds the signed character value and its index and rotates the
+// accumulator left by eight bits (__fastcall, string object in ECX).
+// FUNCTION: GAMEMD 0x7B5400 (decl; reloc) -- character data of the string object.
+extern const signed char* FUN_007B5400(const Obj_007B4620* self);
+// FUNCTION: GAMEMD 0x005E2620
+unsigned int FUN_005E2620(const Obj_007B4620* key)
+{
+    unsigned int hash = key->Length();
+    for (unsigned int i = 0; i < (unsigned int)key->Length(); ++i) {
+        hash += FUN_007B5400(key)[i] + i;
+        hash = (hash << 8) ^ (hash >> 24);
+    }
+    return hash;
+}
+
 // FUNCTION: GAMEMD 0x5E2670
 //
 // Hash a wide string: seed with its length, then fold each character plus its

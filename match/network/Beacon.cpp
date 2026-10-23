@@ -141,26 +141,37 @@ bool BeaconClass::VisibleToPlayer() const
     return false;
 }
 
-// FUNCTION: GAMEMD 0x430980  (__thiscall)
-// Free every live beacon pointer and zero the count. Skips entirely when no
-// beacons are allocated.
-void BeaconManagerClass::Reset()
+// Free every live beacon pointer and zero the count; skipped entirely when no
+// beacons are allocated. Expanded into both the destructor and Reset.
+static __forceinline void ReleaseBeacons(BeaconManagerClass* manager)
 {
-    if (AllocatedCount != 0)
+    if (manager->AllocatedCount != 0)
     {
         for (int i = 0; i < 8; ++i)
         {
             for (int j = 0; j < 3; ++j)
             {
-                if (Beacons[i][j] != 0)
+                if (manager->Beacons[i][j] != 0)
                 {
-                    GameDelete(Beacons[i][j]);
-                    Beacons[i][j] = 0;
+                    GameDelete(manager->Beacons[i][j]);
+                    manager->Beacons[i][j] = 0;
                 }
             }
         }
-        AllocatedCount = 0;
+        manager->AllocatedCount = 0;
     }
+}
+
+// FUNCTION: GAMEMD 0x430930
+BeaconManagerClass::~BeaconManagerClass()
+{
+    ReleaseBeacons(this);
+}
+
+// FUNCTION: GAMEMD 0x430980  (__thiscall)
+void BeaconManagerClass::Reset()
+{
+    ReleaseBeacons(this);
 }
 
 // FUNCTION: GAMEMD 0x4309D0  BeaconManagerClass::LoadArt

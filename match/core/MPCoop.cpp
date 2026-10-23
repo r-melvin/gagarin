@@ -17,6 +17,7 @@
 //
 //   MPCoop.cpp (0x5C10F0..0x5C5AEF).
 
+#include "vector_ctor_pod_family_methods.h"
 #include "deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
@@ -72,6 +73,10 @@ void FUN_005EBC00(HWND dialog, int mode);
 // FUNCTION: GAMEMD 0x5E8760 (decl; reloc) -- the caller tests AL, so the
 // result is a bool here (the matched body is typed int in netshare_slot_nodes).
 bool FUN_005E8760();
+
+// FUNCTION: GAMEMD 0x005C5A80
+// vtable constant: 0x7EE3B0
+GG_VECTOR_CTOR_POD_BODY(VectorClass_005C5A80, PodElem4, 0x7EE3B0)
 
 // LIBRARY: GAMEMD 0x7C8EF4 -- CRT sprintf.
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);

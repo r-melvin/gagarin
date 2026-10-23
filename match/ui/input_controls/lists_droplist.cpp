@@ -42,6 +42,20 @@ void DropListClass::Zap()
     LinkClass::Zap();
 }
 
+// FUNCTION: GAMEMD 0x4B4FF0
+// DropListClass slot (+0xA0): forwards to the embedded list's slot (+0x9C).
+void DropListClass::Slot40()
+{
+    unknown_B0.GetCurrentItem();
+}
+
+// FUNCTION: GAMEMD 0x4B5010
+// DropListClass slot (+0xA4): forwards to the embedded list's slot (+0x98).
+void DropListClass::Slot41()
+{
+    unknown_B0.GetSelectedIndex();
+}
+
 // FUNCTION: GAMEMD 0x4B5530
 // DropListClass::SelectItem slot (+0xA8): selects the entry whose text equals `text` (case-insensitive).
 void DropListClass::SelectItem(wchar_t const* text)

@@ -8,6 +8,7 @@
 // VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy
 
 #include "../_layout/object_type_class.h"
+#include "../_layout/cell.h"
 
 // GLOBAL: GAMEMD 0xAC1474 -- this unit's copy of a header height constant.
 extern int DAT_00AC1474;
@@ -50,4 +51,30 @@ int ObjectTypeClass::vf_34()
 int ObjectTypeClass::vf_38()
 {
     return 0;
+}
+
+// Function-local static of slot 36: two cells, (0, 0) and (0x7FFF, 0x7FFF), built through temporaries; the
+// empty destructor is registered with atexit (retail 0x5F76A0 is a lone RET).
+struct Range_005F7640 {
+    CellStruct unknown_00;
+    CellStruct unknown_04;
+    Range_005F7640()
+    {
+        CellStruct low;
+        low.X = 0;
+        low.Y = 0;
+        unknown_00 = low;
+        CellStruct high;
+        high.X = 0x7FFF;
+        high.Y = 0x7FFF;
+        unknown_04 = high;
+    }
+    ~Range_005F7640() {}
+};
+
+// FUNCTION: GAMEMD 0x5F7640
+void* ObjectTypeClass::vf_36(int a1)
+{
+    static Range_005F7640 range;
+    return &range;
 }

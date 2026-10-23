@@ -78,6 +78,7 @@
 //
 // The theater tile-link table's element, step and slot constructors. Bodies are
 
+#include "vector_ctor_pod_family_methods.h"
 #include "deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
@@ -86,6 +87,10 @@
 #include "global_getter_family_methods.h"
 
 #include <string.h>
+
+// FUNCTION: GAMEMD 0x005AD9F0
+// vtable constant: 0x7ED92C
+GG_VECTOR_CTOR_POD_BODY(VectorClass_005AD9F0, PodElem4, 0x7ED92C)
 
 // LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
 extern "C" void __cdecl gg_free(void*);
@@ -922,6 +927,18 @@ void Obj_0059C580::FUN_005A1E10()
     }
 }
 
+// 0x4CAC40: x87 helper taking one double and returning one (callee only).
+double __cdecl FUN_004CAC40(double value);
+extern const double DAT_007ED7C0;
+// FUNCTION: GAMEMD 0x5A2ED0
+double __stdcall FUN_005A2ED0(const CellStruct* a1, const CellStruct* a2)
+{
+    int dx = a1->X - a2->X;
+    int dy = a1->Y - a2->Y;
+    double distance = FUN_004CAC40((double)(dx * dx + dy * dy));
+    return (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * DAT_007ED7C0 * 2.3283064370807974e-10 + distance;
+}
+
 // FUNCTION: GAMEMD 0x5A3A60
 void FUN_005A3A60()
 {
@@ -933,6 +950,26 @@ void FUN_005A3A60()
         r->unknown_28 = DAT_007ED7F0;
         r->unknown_20 = DAT_007ED7F8;
     }
+}
+
+extern const double DAT_007ED800;
+// FUNCTION: GAMEMD 0x5A4AE0
+double __stdcall FUN_005A4AE0(const CellStruct* a1, const CellStruct* a2)
+{
+    int dx = a1->X - a2->X;
+    int dy = a1->Y - a2->Y;
+    double distance = FUN_004CAC40((double)(dx * dx + dy * dy));
+    return (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * DAT_007ED800 * 2.3283064370807974e-10 + distance;
+}
+
+extern const double DAT_007ED808;
+// FUNCTION: GAMEMD 0x5A4FA0
+double __stdcall FUN_005A4FA0(const CellStruct* a1, const CellStruct* a2)
+{
+    int dx = a1->X - a2->X;
+    int dy = a1->Y - a2->Y;
+    double distance = FUN_004CAC40((double)(dx * dx + dy * dy));
+    return (double)(unsigned int)DAT_00ABE890.FUN_0065C780() * DAT_007ED808 * 2.3283064370807974e-10 + distance;
 }
 
 // FUNCTION: GAMEMD 0x5A6BA0
@@ -1146,6 +1183,41 @@ void* Obj_5AC270::FUN_5AC270(unsigned int flags)
         FUN_007C8B3D(this);
     }
 
+    return this;
+}
+
+// A growable array of dwords, assigned from another (slot 3 releases the old storage).
+struct Vec_005AC430 {
+    virtual void vf_00(); virtual void vf_01(); virtual void vf_02();
+    virtual void Clear();
+    int* unknown_04;
+    int unknown_08;
+    bool unknown_0C;
+    bool unknown_0D;
+    int unknown_10;
+    int unknown_14;
+    Vec_005AC430* FUN_005AC430(const Vec_005AC430& other);
+};
+// FUNCTION: GAMEMD 0x005AC430
+Vec_005AC430* Vec_005AC430::FUN_005AC430(const Vec_005AC430& other)
+{
+    if (this != &other) {
+        Clear();
+        unknown_08 = other.unknown_08;
+        if (unknown_08 != 0) {
+            unknown_04 = new int[unknown_08];
+            if (unknown_04 != 0) {
+                unknown_0D = true;
+                for (int i = 0; i < unknown_08; ++i)
+                    unknown_04[i] = other.unknown_04[i];
+            }
+        } else {
+            unknown_04 = 0;
+            unknown_0D = false;
+        }
+    }
+    unknown_10 = other.unknown_10;
+    unknown_14 = other.unknown_14;
     return this;
 }
 

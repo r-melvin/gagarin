@@ -80,6 +80,7 @@ public:
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
+#include <stdlib.h>
 #include "../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7E1718
@@ -182,6 +183,50 @@ void FUN_0046D480(Obj_0046D480* a1, int a2)
 unsigned char Obj_0046D490::FUN_0046D490() const
 {
     return unknown_89E000;
+}
+
+struct Entry_0046DC50
+{
+    char unknown_00[0x60];
+    int unknown_60;           // +0x60  the score the table is ordered by
+    char unknown_64[0x0C];
+};
+GG_STATIC_ASSERT(offsetof(Entry_0046DC50, unknown_60) == 0x60);
+GG_STATIC_ASSERT(sizeof(Entry_0046DC50) == 0x70);
+
+// Score ordering comparator for qsort (defined after its user).
+int __cdecl FUN_0046DC90(const void* a, const void* b);
+
+// GLOBAL: GAMEMD 0xA8D1FC
+extern Entry_0046DC50 DAT_00A8D1FC[];
+// GLOBAL: GAMEMD 0x89DF80
+extern Entry_0046DC50* DAT_0089DF80[];
+
+// FUNCTION: GAMEMD 0x46DC50
+//
+// Point the sort table at the filled score entries and order them.
+void __cdecl FUN_0046DC50()
+{
+    int count = DAT_00A8D580;
+    for (int i = 0; i < count; i++) {
+        DAT_0089DF80[i] = &DAT_00A8D1FC[i];
+    }
+    if (count > 1) {
+        qsort(DAT_0089DF80, count, sizeof(Entry_0046DC50*), FUN_0046DC90);
+    }
+}
+
+// FUNCTION: GAMEMD 0x46DC90
+//
+// qsort comparison: higher score first.
+int __cdecl FUN_0046DC90(const void* a, const void* b)
+{
+    const Entry_0046DC50* first = *(Entry_0046DC50* const*)a;
+    const Entry_0046DC50* second = *(Entry_0046DC50* const*)b;
+    if (first->unknown_60 == second->unknown_60) {
+        return 0;
+    }
+    return first->unknown_60 > second->unknown_60 ? -1 : 1;
 }
 
 // FUNCTION: GAMEMD 0x46F810
@@ -336,6 +381,21 @@ Obj_00470C00* Obj_00470C00::FUN_00470C00()
 void Obj_00470C30::FUN_00470C30()
 {
     unknown_00 = 0x7E4AB8;
+}
+
+// IAT 0x7E14A4: USER32!SendMessageA.
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(HWND_ hWnd, unsigned uMsg, unsigned wParam, long lParam);
+// 0x7CA564: the CRT swprintf (cdecl, varargs).
+extern "C" int __cdecl swprintf(wchar_t* pszBuffer, const wchar_t* pszFormat, ...);
+
+// Formats a number as text and posts it to a dialog control (custom message 0x4B2).
+// FUNCTION: GAMEMD 0x00470C40
+void FUN_00470C40(HWND_ dialog, int controlId, int value)
+{
+    wchar_t text[32];
+    swprintf(text, L"%d", value);
+    HWND_ item = GetDlgItem(dialog, controlId);
+    SendMessageA(item, 0x4B2, 0, (long)text);
 }
 
 // FUNCTION: GAMEMD 0x470C90

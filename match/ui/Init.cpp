@@ -2748,6 +2748,201 @@ void* DeleteCommandClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// LIBRARY: GAMEMD 0x7C8B3D -- CRT free.
+extern "C" void __cdecl FUN_007C8B3D(void* block);
+// LIBRARY: GAMEMD 0x7C8B48 -- CRT qsort.
+extern "C" void __cdecl FUN_007C8B48(void* base, unsigned int num, unsigned int width,
+                                     int (__cdecl* compare)(const void*, const void*));
+
+// The third retail instantiation of the {ID, Data} index (see Ini.cpp for the
+// first two): same layout and bodies, its own comparator (0x48BC20, declared
+// here only so the sort call is a relocatable reference).
+class IndexClassC
+{
+public:
+    struct NodeElement
+    {
+        int   ID;
+        void* Data;
+        NodeElement() throw() {}
+        static void* operator new[](unsigned int size) { return FUN_007C8E17(size); }
+    };
+
+    // FUNCTION: GAMEMD 0x5387D0
+    bool AddIndex(const int& id, void* const& data);
+    // FUNCTION: GAMEMD 0x5388A0
+    bool RemoveIndex(const int& id);
+    // FUNCTION: GAMEMD 0x538980
+    bool IsPresent(const int& id) const;
+
+    // FUNCTION: GAMEMD 0x48BC20 (decl; reloc)
+    static int __cdecl Comparator(const void* ptr1, const void* ptr2);
+
+    __forceinline bool IncreaseTableSize(int amount);
+    __forceinline NodeElement* SearchForNode(const int& id) const;
+    __forceinline bool IsPresentImpl(const int& id) const;
+
+    NodeElement* IndexTable;   // +0x00
+    int          IndexCount;   // +0x04
+    int          IndexSize;    // +0x08
+    bool         IsSorted;     // +0x0C
+    NodeElement* Archive;      // +0x10
+};
+GG_STATIC_ASSERT(offsetof(IndexClassC, Archive) == 0x10 && sizeof(IndexClassC) == 0x14);
+
+__forceinline bool IndexClassC::IncreaseTableSize(int amount)
+{
+    if (amount < 0) return false;
+
+    int total = IndexSize + amount;
+    NodeElement* table = new NodeElement[total];
+    if (table != 0) {
+
+        for (int index = 0; index < IndexCount; index++) {
+            table[index] = IndexTable[index];
+        }
+
+        FUN_007C8B3D(IndexTable);
+        IndexTable = table;
+        IndexSize += amount;
+        Archive = 0;
+
+        return true;
+    }
+
+    return false;
+}
+
+__forceinline IndexClassC::NodeElement* IndexClassC::SearchForNode(const int& id) const
+{
+    if (!IsSorted) {
+        FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
+        ((IndexClassC*)this)->Archive = 0;
+        ((IndexClassC*)this)->IsSorted = true;
+    }
+
+    int num = IndexCount;
+    int key = id;
+    NodeElement* base = IndexTable;
+
+    while (num > 0) {
+        int half = num / 2;
+        NodeElement* mid = &base[half];
+
+        if (mid->ID > key) {
+            num = half;
+        } else {
+            if (mid->ID == key) {
+                return mid;
+            }
+            base = mid + 1;
+            num += -1 - half;
+        }
+    }
+
+    return 0;
+}
+
+__forceinline bool IndexClassC::IsPresentImpl(const int& id) const
+{
+    if (IndexCount == 0) {
+        return false;
+    }
+
+    if (Archive != 0 && Archive->ID == id) {
+        return true;
+    }
+
+    NodeElement* nodeptr = SearchForNode(id);
+
+    if (nodeptr != 0) {
+        ((IndexClassC*)this)->Archive = nodeptr;
+        return true;
+    }
+
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x5387D0
+bool IndexClassC::AddIndex(const int& id, void* const& data)
+{
+    if (IndexCount + 1 > IndexSize) {
+        if (!IncreaseTableSize(IndexSize == 0 ? 10 : IndexSize)) {
+            return false;
+        }
+    }
+
+    IndexTable[IndexCount].ID = id;
+    IndexTable[IndexCount].Data = data;
+    IndexCount++;
+    IsSorted = false;
+
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x5388A0
+bool IndexClassC::RemoveIndex(const int& id)
+{
+    NodeElement* nodeptr = 0;
+
+    if (IndexCount != 0) {
+        if (!IsSorted) {
+            FUN_007C8B48(IndexTable, IndexCount, sizeof(NodeElement), &Comparator);
+            Archive = 0;
+            IsSorted = true;
+        }
+
+        int num = IndexCount;
+        NodeElement elem;
+        elem.ID = id;
+        NodeElement* base = IndexTable;
+
+        while (num > 0) {
+            int half = num / 2;
+            NodeElement* mid = &base[half];
+
+            if (elem.ID < mid->ID) {
+                num = half;
+            } else {
+                if (mid->ID == elem.ID) {
+                    nodeptr = mid;
+                    break;
+                }
+                base = mid + 1;
+                num += -1 - half;
+            }
+        }
+
+        if (nodeptr != 0) {
+            int found_index = nodeptr - IndexTable;
+
+            if (found_index != -1) {
+
+                for (int index = found_index + 1; index < IndexCount; index++) {
+                    IndexTable[index - 1] = IndexTable[index];
+                }
+
+                IndexCount--;
+                NodeElement zero;
+                zero.ID = 0;
+                zero.Data = 0;
+                IndexTable[IndexCount] = zero;
+                Archive = 0;
+
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x538980
+bool IndexClassC::IsPresent(const int& id) const
+{
+    return IsPresentImpl(id);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x538B80
 bool GrowPairVector::Grow_538B80(int extra)

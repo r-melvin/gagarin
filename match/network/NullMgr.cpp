@@ -423,6 +423,42 @@ int NullModemClass::FUN_005F1C30(void* buf, int* buflen)
     return Connection->vf_4(buf, buflen);
 }
 
+struct Inner_005F1EA0 {
+    unsigned char unknown_00[0x28];
+    int unknown_28;
+    unsigned char unknown_2C[0xC];
+    int unknown_38;
+};
+GG_STATIC_ASSERT(offsetof(Inner_005F1EA0, unknown_28) == 0x28);
+GG_STATIC_ASSERT(offsetof(Inner_005F1EA0, unknown_38) == 0x38);
+struct Link_005F1EA0 {
+    int unknown_00;
+    Inner_005F1EA0* unknown_04;
+};
+GG_STATIC_ASSERT(offsetof(Link_005F1EA0, unknown_04) == 0x4);
+
+struct Obj_005F1EA0 {
+    unsigned char unknown_00[0x38];
+    Link_005F1EA0* unknown_38;
+    int FUN_005F1EA0();
+    int FUN_005F1EC0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_005F1EA0, unknown_38) == 0x38);
+// FUNCTION: GAMEMD 0x005F1EA0
+int Obj_005F1EA0::FUN_005F1EA0()
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_28;
+    return 0;
+}
+// FUNCTION: GAMEMD 0x005F1EC0
+int Obj_005F1EA0::FUN_005F1EC0()
+{
+    if (unknown_38)
+        return unknown_38->unknown_04->unknown_38;
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x005f3170
 // Hangs up the modem: probes it with "AT" (twice, toggling the line between),

@@ -38,7 +38,7 @@ struct WaypointClass { int unknown_00; int unknown_04; int unknown_08; WaypointC
 template class VectorClass<WaypointClass>;
 template class DynamicVectorClass<WaypointClass>;
 
-class CellClass; template<class C> struct DiscreteDistributionClass { template<class P> struct DistributionObject { P Object; int Weight; DistributionObject() : Object(0) {} ~DistributionObject() {} DistributionObject(const DistributionObject<P>& o) : Object(o.Object), Weight(o.Weight) {} bool operator==(const DistributionObject<P>& o) const { return Object==o.Object && Weight==o.Weight; } bool operator!=(const DistributionObject<P>& o) const { return !(*this==o); } }; };
+class CellClass; template<class C> struct DiscreteDistributionClass { template<class P> struct DistributionObject { P Object; int Weight; DistributionObject() : Weight(0) {} ~DistributionObject() {} DistributionObject(const DistributionObject<P>& o) : Object(o.Object), Weight(o.Weight) {} bool operator==(const DistributionObject<P>& o) const { return Object==o.Object && Weight==o.Weight; } bool operator!=(const DistributionObject<P>& o) const { return !(*this==o); } }; };
 // FUNCTION: GAMEMD 0x004E07E0
 // VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::operator==
 // FUNCTION: GAMEMD 0x004E0990
@@ -51,6 +51,10 @@ class CellClass; template<class C> struct DiscreteDistributionClass { template<c
 // DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::FindItemIndex
 // FUNCTION: GAMEMD 0x004E0AF0
 // DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::Slot5
+// FUNCTION: GAMEMD 0x004E0840
+// VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::SetCapacity
+// FUNCTION: GAMEMD 0x004E0C40
+// DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*>>::AddItem
 template class VectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 template class DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 
@@ -70,6 +74,10 @@ class AITriggerTypeClass;
 // DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::FindItemIndex
 // FUNCTION: GAMEMD 0x006F21F0
 // DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::Slot5
+// FUNCTION: GAMEMD 0x006F22F0
+// VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::SetCapacity
+// FUNCTION: GAMEMD 0x006F25E0
+// DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*>>::AddItem
 template class VectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
 template class DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>::DistributionObject<AITriggerTypeClass*> >;
 

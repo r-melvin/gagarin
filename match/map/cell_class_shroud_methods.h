@@ -60,6 +60,7 @@ class MapClass
 public:
     CellClass* GetCellAt(CellStruct const& mapCoords) const;        // 0x5657A0
     bool       IsLocationShrouded(CoordStruct const& coords) const; // 0x586360
+    bool       FUN_005865E0(CoordStruct const& coords) const;       // 0x5865E0
 };
 
 // AdjacentCell[FacingType] — the static {dX,dY} step table at 0x89F688.
@@ -89,6 +90,8 @@ public:
     void ReduceShroudCounter();
     // 0x487950
     bool IsShrouded() const;
+    // 0x4879B0
+    bool FUN_004879B0() const;
 };
 
 GG_STATIC_ASSERT(offsetof(CellClass, MapCoords)     == 0x24);

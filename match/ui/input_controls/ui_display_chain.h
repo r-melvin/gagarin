@@ -705,10 +705,10 @@ public:
     void FUN_006A5ED0();
     // FUNCTION: GAMEMD 0x6A60E0 (decl; partial) -- RET 4.
     void FUN_006A60E0(int tab);
-    // FUNCTION: GAMEMD 0x6A6220 (decl; partial)
-    bool FUN_006A6220(unsigned int value);
-    // FUNCTION: GAMEMD 0x6A6290 (decl; partial)
-    bool FUN_006A6290(unsigned int value);
+    // FUNCTION: GAMEMD 0x6A6220 (decl) -- set (1), clear (anything else) or flip (-1) the byte at +0x5515; RET 4.
+    unsigned char FUN_006A6220(int mode);
+    // FUNCTION: GAMEMD 0x6A6290 (decl) -- the same body on the byte at +0x5514; RET 4.
+    unsigned char FUN_006A6290(int mode);
     // FUNCTION: GAMEMD 0x6A6610 (decl; reloc) -- rebuild the strip contents.
     void FUN_006A6610();
     // FUNCTION: GAMEMD 0x6A70E0 (decl; reloc) -- RET 4.

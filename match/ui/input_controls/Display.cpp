@@ -1656,6 +1656,14 @@ void DisplayClass::vf_34()
     }
 }
 
+struct HWND__;
+extern "C" __declspec(dllimport) long __stdcall DefWindowProcA(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam);
+// FUNCTION: GAMEMD 0x004AE6D0
+long __stdcall FUN_004AE6D0(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam)
+{
+    return DefWindowProcA(hwnd, msg, wparam, lparam);
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4AE6F0
 long DisplayClass::vf_30(IStream* stream)

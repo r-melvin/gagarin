@@ -182,6 +182,20 @@ void* Obj_6CE220::FUN_6CE220(unsigned int flags)
     return this;
 }
 
+// Take a reference on the held interface, if there is one.
+struct Obj_006CE270 {
+    IUnknown* unknown_00;
+    void FUN_006CE270();
+};
+GG_STATIC_ASSERT(offsetof(Obj_006CE270, unknown_00) == 0x00);
+// FUNCTION: GAMEMD 0x006CE270
+void Obj_006CE270::FUN_006CE270()
+{
+    if (unknown_00 != 0) {
+        unknown_00->AddRef();
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006CE2D0
 //

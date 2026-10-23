@@ -99,3 +99,23 @@ bool CellClass::IsShrouded() const
     crd.Z = z;
     return MapInstance->IsLocationShrouded(crd);
 }
+
+// FUNCTION: GAMEMD 0x4879B0  (__thiscall)
+//   The same cell-centre coordinate as IsShrouded, handed to the map's other
+//   location test (0x5865E0).
+bool CellClass::FUN_004879B0() const
+{
+    union { CellStruct mc; Point2D pt; } u;
+    u.mc = this->MapCoords;
+    int x = u.mc.X * 256 + 128;
+    int y = u.mc.Y * 256 + 128;
+    u.pt.X = 128;
+    u.pt.Y = 128;
+    int z = this->GetFloorHeight(u.pt);
+
+    CoordStruct crd;
+    crd.X = x;
+    crd.Y = y;
+    crd.Z = z;
+    return MapInstance->FUN_005865E0(crd);
+}

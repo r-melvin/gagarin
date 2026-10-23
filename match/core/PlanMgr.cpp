@@ -81,6 +81,7 @@
 // of that specialization (slot owner read from the retail vtables).
 // Pointer/scalar/enum element: no element layout is claimed.
 
+#include "vector_ctor_pod_family_methods.h"
 #include "../ai/techno_class_clear_tokens_methods.h"
 
 #include "../ai/techno_class_planning_node_helpers.h"
@@ -353,6 +354,10 @@ struct tagCONNECTDATA;
 
 #include "vector_class_operations.h"
 class EventClass;
+
+// FUNCTION: GAMEMD 0x0063EFB0
+// vtable constant: 0x7EFE64
+GG_VECTOR_CTOR_POD_BODY(VectorClass_0063EFB0, PodElem4, 0x7EFE64)
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 

@@ -586,6 +586,16 @@ struct Obj_00656E50
 GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14AC) == 0x14AC);
 GG_STATIC_ASSERT(offsetof(Obj_00656E50, unknown_14B0) == 0x14B0);
 
+struct Obj_00653F90 {
+    void FUN_00578460(int, int);
+    void FUN_00653F90(int a);
+};
+// FUNCTION: GAMEMD 0x00653F90
+void Obj_00653F90::FUN_00653F90(int a)
+{
+    FUN_00578460(a, 1);
+}
+
 // FUNCTION: GAMEMD 0x656E50
 // Branching.
 int Obj_00656E50::FUN_00656E50()

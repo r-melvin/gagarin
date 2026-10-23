@@ -39,6 +39,11 @@ public:
 //   HouseTypeClass::FindOrAllocate          @0x512680
 //   BuildingTypeClass::FindOrAllocate       @0x4653C0
 int HouseType_FindOrAllocate(const char* pID);
+int WarheadType_FindOrAllocate(const char* pID);       // GAMEMD 0x75E3B0
+int SuperWeaponType_FindOrAllocate(const char* pID);   // GAMEMD 0x6CEEF0
+int TerrainType_FindOrAllocate(const char* pID);       // GAMEMD 0x71E2A0
+int SmudgeType_FindOrAllocate(const char* pID);        // GAMEMD 0x6B5910
+int OverlayType_FindOrAllocate(const char* pID);       // GAMEMD 0x5FEC70
 int BuildingType_FindOrAllocate(const char* pID);
 int AnimType_FindOrAllocate(const char* pID);
 int VoxelAnimType_FindOrAllocate(const char* pID);
@@ -51,15 +56,24 @@ int ParticleSystemType_FindOrAllocate(const char* pID);
 // `MOV EAX,[0x7F0Cxx]`; the strings behind them are "Countries" (0x839E28) and
 // "BuildingTypes" (0x839DDC).
 extern char* CountriesSection;      // GLOBAL: GAMEMD 0x7F0CAC
+extern char* SuperWeaponTypesSection;  // GLOBAL: GAMEMD 0x7F0CBC
 extern char* BuildingTypesSection;  // GLOBAL: GAMEMD 0x7F0CC0
+extern char* TerrainTypesSection;   // GLOBAL: GAMEMD 0x7F0CC4
+extern char* SmudgeTypesSection;    // GLOBAL: GAMEMD 0x7F0CCC
+extern char* OverlayTypesSection;   // GLOBAL: GAMEMD 0x7F0CD0
 
 struct RulesClass
 {
     // Declared ascending by retail address.
     bool Read_Countries(CCINIClass* pINI);        // GAMEMD 0x6722F0 __thiscall
+    bool Read_SuperWeaponTypes(CCINIClass* pINI); // GAMEMD 0x6725F0 __thiscall
     bool Read_BuildingTypes(CCINIClass* pINI);    // GAMEMD 0x672660 __thiscall
+    bool Read_TerrainTypes(CCINIClass* pINI);     // GAMEMD 0x6726D0 __thiscall
+    bool Read_SmudgeTypes(CCINIClass* pINI);      // GAMEMD 0x6727D0 __thiscall
+    bool Read_OverlayTypes(CCINIClass* pINI);     // GAMEMD 0x672840 __thiscall
     bool Read_Animations(CCINIClass* pINI);       // GAMEMD 0x6728B0 __thiscall
     bool Read_VoxelAnims(CCINIClass* pINI);       // GAMEMD 0x672920 __thiscall
+    bool Read_Warheads(CCINIClass* pINI);         // GAMEMD 0x672990 __thiscall
     bool Read_Particles(CCINIClass* pINI);        // GAMEMD 0x672A00 __thiscall
     bool Read_ParticleSystems(CCINIClass* pINI);  // GAMEMD 0x672A70 __thiscall
 };

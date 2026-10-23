@@ -77,6 +77,13 @@ GG_STATIC_ASSERT(offsetof(Vec_004787E0, Items) == 0x4 &&
                  offsetof(Vec_004787E0, IsAllocated) == 0xD &&
                  sizeof(Vec_004787E0) == 0x10);
 
+GG_VECASSIGN_DECL(004B5830);
+GG_STATIC_ASSERT(offsetof(Vec_004B5830, Items) == 0x4 &&
+                 offsetof(Vec_004B5830, Capacity) == 0x8 &&
+                 offsetof(Vec_004B5830, IsInitialized) == 0xC &&
+                 offsetof(Vec_004B5830, IsAllocated) == 0xD &&
+                 sizeof(Vec_004B5830) == 0x10);
+
 GG_VECASSIGN_DECL(00512BD0);
 GG_STATIC_ASSERT(offsetof(Vec_00512BD0, Items) == 0x4 &&
                  offsetof(Vec_00512BD0, Capacity) == 0x8 &&

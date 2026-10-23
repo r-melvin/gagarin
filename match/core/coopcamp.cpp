@@ -258,6 +258,22 @@ template class VectorClass<char*>;
 // FUNCTION: GAMEMD 0x0049E9B0
 // FUNCTION: GAMEMD 0x0049E9E0
 // FUNCTION: GAMEMD 0x0049EA00
+struct Obj_0049EA10 {
+    int unknown_00;
+    int unknown_04;
+    int unknown_08;
+    unsigned char unknown_0C;
+    int unknown_10;
+    Obj_0049EA10();
+};
+GG_STATIC_ASSERT(offsetof(Obj_0049EA10, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(Obj_0049EA10, unknown_10) == 0x10);
+// FUNCTION: GAMEMD 0x0049EA10
+Obj_0049EA10::Obj_0049EA10()
+    : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C(0), unknown_10(0)
+{
+}
+
 // FUNCTION: GAMEMD 0x0049EB50
 // FUNCTION: GAMEMD 0x0049EB90
 // FUNCTION: GAMEMD 0x0049EC40

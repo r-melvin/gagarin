@@ -435,6 +435,8 @@ public:
     void FUN_0050C8C0();
     // FUNCTION: GAMEMD 0x50D290 (decl; reloc)
     void FUN_0050D290(HouseClass* other);
+    // FUNCTION: GAMEMD 0x50D2D0 (decl; reloc)
+    void FUN_0050D2D0(HouseClass* other);
     // FUNCTION: GAMEMD 0x50D6D0 (decl; reloc) -- takes a cell by value.
     void FUN_0050D6D0(CellStruct cell);
     // FUNCTION: GAMEMD 0x50DA00 (decl; reloc) -- takes a cell by value.

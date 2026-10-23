@@ -175,6 +175,12 @@ HRESULT __stdcall AircraftTypeClass::Load(IStream* pStm)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x41CF80
+CoordStruct ObjectTypeClass::vf_27(const CoordStruct& coord)
+{
+    return coord;
+}
+
 // FUNCTION: GAMEMD 0x41CFA0
 void* ObjectTypeClass::vf_39()
 {

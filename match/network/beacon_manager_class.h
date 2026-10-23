@@ -29,6 +29,7 @@ class BeaconManagerClass
 {
 public:
     // Declared ascending by retail address (reccmp/isle TU discipline).
+    ~BeaconManagerClass();                     // GAMEMD 0x430930 __thiscall
     void Reset();                              // GAMEMD 0x430980 __thiscall
     bool CanPlaceBeacon(int houseId);          // GAMEMD 0x430F30 __thiscall
     void DeleteAllBeacons(int houseId);        // GAMEMD 0x431410 __thiscall

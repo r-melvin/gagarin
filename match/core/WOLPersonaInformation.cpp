@@ -88,6 +88,26 @@ void FUN_00778700(int a1, int a2)
     FUN_007B46F0(DAT_00B73590, a2);
 }
 
+int FUN_007B5440(int);
+int FUN_007B7140(int);
+int FUN_007350C0(int);
+int FUN_00735120(int);
+
+struct Obj_00779650 {
+    void FUN_007B7600(int);
+    void FUN_007B5A40(int);
+};
+// FUNCTION: GAMEMD 0x00779650
+void __fastcall FUN_00779650(int a, Obj_00779650* target)
+{
+    target->FUN_007B7600(FUN_00735120(FUN_007B5440(a)));
+}
+// FUNCTION: GAMEMD 0x00779670
+void __fastcall FUN_00779670(int a, Obj_00779650* target)
+{
+    target->FUN_007B5A40(FUN_007350C0(FUN_007B7140(a)));
+}
+
 // FUNCTION: GAMEMD 0x77A760
 // Branching.
 unsigned char Obj_0077A760::FUN_0077A760(unsigned char a1)

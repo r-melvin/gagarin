@@ -121,6 +121,10 @@ public:
     public:
         InitializerBase() {}
         virtual ~InitializerBase() {}
+        // Slot 1: allocates and constructs one mode from the six stacked arguments.
+        virtual MultiplayerGameMode* vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
+                                          const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                          bool unknown_5, int unknown_6) = 0;
     };
 
     template <class T>
@@ -128,6 +132,9 @@ public:
     {
     public:
         Initializer() {}
+        virtual MultiplayerGameMode* vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
+                                          const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                          bool unknown_5, int unknown_6);
     };
 
     // FUNCTION: GAMEMD 0x5D6620 (decl; reloc) -- non-virtual; RET 4, returns an MPTeam.

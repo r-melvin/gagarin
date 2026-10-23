@@ -19,6 +19,27 @@ struct Obj_007667E0
 
 using WorldDominationTour::Conflict;
 
+typedef rc_ptr<Conflict> ConflictPtr;
+
+// FUNCTION: GAMEMD 0x7656B0
+// DynamicVectorClass<rc_ptr<Conflict> >::Slot5
+// FUNCTION: GAMEMD 0x7656D0
+// VectorClass<rc_ptr<Conflict> >::Slot6
+// FUNCTION: GAMEMD 0x7657F0
+// VectorClass<rc_ptr<Conflict> >::operator==
+// FUNCTION: GAMEMD 0x765990
+// VectorClass<rc_ptr<Conflict> >::FindItemIndex
+// FUNCTION: GAMEMD 0x7659D0
+// VectorClass<rc_ptr<Conflict> >::Slot5
+// FUNCTION: GAMEMD 0x765B10
+// DynamicVectorClass<rc_ptr<Conflict> >::FindItemIndex
+// FUNCTION: GAMEMD 0x765BB0
+// rc_ptr<Conflict>: the deleting destructor the compiler emits for it.
+// FUNCTION: GAMEMD 0x765C90
+// VectorClass<rc_ptr<Conflict> >::VectorClass
+template class VectorClass<ConflictPtr>;
+template class DynamicVectorClass<ConflictPtr>;
+
 // FUNCTION: GAMEMD 0x765F60
 // Wraps a new Conflict over the territory; the result is the hidden first
 // argument.
@@ -56,6 +77,8 @@ int FUN_007667F0(const Obj_007667E0* object)
 
 typedef rc_ptr<WorldDominationTour::GameOption> GameOptionPtr;
 
+// FUNCTION: GAMEMD 0x766830
+// DynamicVectorClass<rc_ptr<GameOption> >::Slot5
 // FUNCTION: GAMEMD 0x766850
 // VectorClass<rc_ptr<GameOption> >::Slot6
 // FUNCTION: GAMEMD 0x766BC0
@@ -64,6 +87,8 @@ typedef rc_ptr<WorldDominationTour::GameOption> GameOptionPtr;
 // VectorClass<rc_ptr<GameOption> >::SetCapacity
 // FUNCTION: GAMEMD 0x766D60
 // VectorClass<rc_ptr<GameOption> >::FindItemIndex
+// FUNCTION: GAMEMD 0x766DA0
+// VectorClass<rc_ptr<GameOption> >::Slot5
 template class VectorClass<GameOptionPtr>;
 // FUNCTION: GAMEMD 0x766A80
 // ValueGameOption<unsigned char>::vf_0C

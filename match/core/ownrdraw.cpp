@@ -1462,6 +1462,28 @@ int __stdcall FUN_0060A180(GG_HWND hWnd, int unused)
     return 1;
 }
 
+// FUNCTION: GAMEMD 0x60A250  FUN_0060A250
+int __stdcall FUN_0060A250(GG_HWND hWnd, int unused)
+{
+    GG_HWND hParent = GetParent(hWnd);
+
+    if ((GetWindowLongA(hWnd, -16) & 0xB) == 0xB)
+    {
+        MapValue_00602B90* value = Inline_Probe((int)hWnd);
+
+        if (value && value->Field68 == 0)
+        {
+            if (FUN_00609730(hParent, hWnd))
+            {
+                if (IsWindowVisible(hWnd))
+                    DAT_00AC4894++;
+            }
+        }
+    }
+
+    return 1;
+}
+
 // FUNCTION: GAMEMD 0x60A300  FUN_0060A300 (__fastcall)
 bool FUN_0060A300(GG_HWND hWnd)
 {
@@ -1624,6 +1646,14 @@ void FUN_0060D430()
 // FUNCTION: GAMEMD 0x0060D440
 void FUN_0060D440()
 {
+}
+
+struct HWND__;
+extern "C" __declspec(dllimport) long __stdcall DefWindowProcA(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam);
+// FUNCTION: GAMEMD 0x0060D520
+long __stdcall FUN_0060D520(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam)
+{
+    return DefWindowProcA(hwnd, msg, wparam, lparam);
 }
 
 // FUNCTION: GAMEMD 0x6107E0  Obj_006107E0::Obj_006107E0 (__thiscall)
@@ -2074,6 +2104,36 @@ bool Obj_006253B0::FUN_006253B0()
     return true;
 }
 
+// Shrink step of a plain-old-data array holder (count at +0x00, capacity at
+// +0x04, heap block at +0x08): refused while the count exceeds a third of the
+// capacity; otherwise the capacity is halved (floor of ten) and the live
+// elements are copied into a block of the new size.
+struct Obj_00625440 {
+    int count;     // +0x00
+    int capacity;  // +0x04
+    int* data;     // +0x08
+    bool FUN_00625440();
+};
+GG_STATIC_ASSERT(offsetof(Obj_00625440, data) == 0x08);
+// FUNCTION: GAMEMD 0x00625440
+bool Obj_00625440::FUN_00625440()
+{
+    if (count * 3 > capacity)
+        return false;
+    int newCapacity = capacity / 2;
+    if (newCapacity < 10)
+        newCapacity = 10;
+    if (newCapacity >= capacity)
+        return false;
+    int* block = new int[newCapacity];
+    if (data != 0)
+        memcpy(block, data, count * sizeof(int));
+    gg_free(data);
+    data = block;
+    capacity = newCapacity;
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6255F0
 EntryRecord_006255F0::EntryRecord_006255F0(const EntryRecord_006255F0& other) :
@@ -2105,6 +2165,129 @@ bool Obj_00625990::FUN_00625990()
     capacity = newCapacity;
     data = block;
     return true;
+}
+
+struct Node_00625D60 {
+    char unknown_00[4];
+    int unknown_04;
+    unsigned char* unknown_08;
+    Node_00625D60* unknown_0C;
+};
+GG_STATIC_ASSERT(offsetof(Node_00625D60, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(Node_00625D60, unknown_0C) == 0x0C);
+struct Obj_00625D60 {
+    int unknown_00;
+    Node_00625D60* unknown_04;
+    Node_00625D60* Find(const char* key)
+    {
+        for (Node_00625D60* node = unknown_04; node != 0; node = node->unknown_0C) {
+            if (strncmp(key, node->unknown_00, 4) == 0)
+                return node;
+        }
+        return 0;
+    }
+    bool FUN_00625D60(const char* key, unsigned char* out);
+    bool FUN_00625DB0(const char* key, unsigned char* out);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00625D60, unknown_04) == 0x04);
+// FUNCTION: GAMEMD 0x00625D60
+bool Obj_00625D60::FUN_00625D60(const char* key, unsigned char* out)
+{
+    Node_00625D60* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
+}
+
+// FUNCTION: GAMEMD 0x00625DB0
+bool Obj_00625D60::FUN_00625DB0(const char* key, unsigned char* out)
+{
+    Node_00625D60* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
+}
+
+struct Node_00625E00 {
+    char unknown_00[4];
+    int unknown_04;
+    unsigned short* unknown_08;
+    Node_00625E00* unknown_0C;
+};
+GG_STATIC_ASSERT(offsetof(Node_00625E00, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(Node_00625E00, unknown_0C) == 0x0C);
+struct Obj_00625E00 {
+    int unknown_00;
+    Node_00625E00* unknown_04;
+    Node_00625E00* Find(const char* key)
+    {
+        for (Node_00625E00* node = unknown_04; node != 0; node = node->unknown_0C) {
+            if (strncmp(key, node->unknown_00, 4) == 0)
+                return node;
+        }
+        return 0;
+    }
+    bool FUN_00625E00(const char* key, unsigned short* out);
+    bool FUN_00625E50(const char* key, unsigned short* out);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00625E00, unknown_04) == 0x04);
+// FUNCTION: GAMEMD 0x00625E00
+bool Obj_00625E00::FUN_00625E00(const char* key, unsigned short* out)
+{
+    Node_00625E00* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
+}
+
+// FUNCTION: GAMEMD 0x00625E50
+bool Obj_00625E00::FUN_00625E50(const char* key, unsigned short* out)
+{
+    Node_00625E00* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
+}
+
+struct Node_00625EA0 {
+    char unknown_00[4];
+    int unknown_04;
+    unsigned int* unknown_08;
+    Node_00625EA0* unknown_0C;
+};
+GG_STATIC_ASSERT(offsetof(Node_00625EA0, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(Node_00625EA0, unknown_0C) == 0x0C);
+struct Obj_00625EA0 {
+    int unknown_00;
+    Node_00625EA0* unknown_04;
+    Node_00625EA0* Find(const char* key)
+    {
+        for (Node_00625EA0* node = unknown_04; node != 0; node = node->unknown_0C) {
+            if (strncmp(key, node->unknown_00, 4) == 0)
+                return node;
+        }
+        return 0;
+    }
+    bool FUN_00625EA0(const char* key, unsigned int* out);
+    bool FUN_00625F60(const char* key, unsigned int* out);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00625EA0, unknown_04) == 0x04);
+// FUNCTION: GAMEMD 0x00625EA0
+bool Obj_00625EA0::FUN_00625EA0(const char* key, unsigned int* out)
+{
+    Node_00625EA0* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
+}
+
+// FUNCTION: GAMEMD 0x00625F60
+bool Obj_00625EA0::FUN_00625F60(const char* key, unsigned int* out)
+{
+    Node_00625EA0* node = Find(key);
+    if (node != 0)
+        *out = *node->unknown_08;
+    return node ? true : false;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2182,6 +2365,12 @@ void Obj_00626250::FUN_006262F0(DynamicVectorClass<Obj_0068C8D0*>* pUnknown)
     unknown_100 = pUnknown;
 }
 
+// FUNCTION: GAMEMD 0x626370  Obj_00626250::FUN_00626370 (__thiscall)
+void Obj_00626250::FUN_00626370()
+{
+    Inline_Release();
+}
+
 // FUNCTION: GAMEMD 0x626660  FUN_00626660
 int FUN_00626660(const char* pszName)
 {
@@ -2222,6 +2411,8 @@ void FUN_00626FF0()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x006281F0
 // VectorClass<HSVClass>::operator==
+// FUNCTION: GAMEMD 0x00628240
+// DynamicVectorClass<HSVClass>::DynamicVectorClass
 // FUNCTION: GAMEMD 0x006282E0
 // VectorClass<HSVClass>::SetCapacity
 // FUNCTION: GAMEMD 0x00628410

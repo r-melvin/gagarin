@@ -60,3 +60,21 @@ Obj_006C8E70* Obj_006C8E70::FUN_006C8E70()
 {
     return this;
 }
+
+typedef void* GG_HWND;
+// IAT 0x7E14A4: USER32!SendMessageA.
+extern "C" __declspec(dllimport) long __stdcall SendMessageA(GG_HWND hWnd, unsigned uMsg, unsigned wParam, long lParam);
+// IAT 0x7E14A8: USER32!GetDlgItem.
+extern "C" __declspec(dllimport) GG_HWND __stdcall GetDlgItem(GG_HWND hDlg, int nID);
+// 0x7CA564: the CRT swprintf (cdecl, varargs).
+extern "C" int __cdecl swprintf(wchar_t* pszBuffer, const wchar_t* pszFormat, ...);
+
+// Formats a number as text and posts it to a dialog control (custom message 0x4B2).
+// FUNCTION: GAMEMD 0x006C8FA0
+void FUN_006C8FA0(GG_HWND dialog, int controlId, int value)
+{
+    wchar_t text[32];
+    swprintf(text, L"%d", value);
+    GG_HWND item = GetDlgItem(dialog, controlId);
+    SendMessageA(item, 0x4B2, 0, (long)text);
+}

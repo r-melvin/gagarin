@@ -376,6 +376,29 @@ bool TActionClass::FUN_006E03B0(HouseClass* house, ObjectClass* object, TriggerC
     return true;
 }
 
+struct Target_00A83D4C {
+    void FUN_004FC9E0(int);
+    void FUN_004FCBD0(int);
+};
+extern Target_00A83D4C* DAT_00A83D4C;
+
+struct Obj_006E0440 {
+    bool FUN_006E0440(int, int, int, int);
+    bool FUN_006E0460(int, int, int, int);
+};
+// FUNCTION: GAMEMD 0x006E0440
+bool Obj_006E0440::FUN_006E0440(int, int, int, int)
+{
+    DAT_00A83D4C->FUN_004FC9E0(1);
+    return true;
+}
+// FUNCTION: GAMEMD 0x006E0460
+bool Obj_006E0440::FUN_006E0460(int, int, int, int)
+{
+    DAT_00A83D4C->FUN_004FCBD0(1);
+    return true;
+}
+
 // FUNCTION: GAMEMD 0x6E0790
 bool TActionClass::FUN_006E0790(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
 {
@@ -455,6 +478,17 @@ bool TActionClass::FUN_006E0CA0(HouseClass* house, ObjectClass* object, TriggerC
         return false;
     }
     house->FUN_0050D290(target);
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x6E0D00
+bool TActionClass::FUN_006E0D00(HouseClass* house, ObjectClass* object, TriggerClass* trigger, CellStruct* cell)
+{
+    HouseClass* target = FindActionHouse(trigger, unknown_90);
+    if (target == 0) {
+        return false;
+    }
+    house->FUN_0050D2D0(target);
     return true;
 }
 
@@ -676,6 +710,28 @@ unsigned char Obj_006E1FD0::FUN_006E1FD0(int a1, int a2, int a3, int a4)
 // Returns a constant boolean; pops its stack arguments.
 bool __stdcall FUN_006E21D0(int a1, int a2, int a3, int a4)
 {
+    return true;
+}
+
+struct Obj_006E26C0 {
+    void FUN_00684290();
+    bool FUN_006E26C0(int, int, int, int);
+};
+// FUNCTION: GAMEMD 0x006E26C0
+bool Obj_006E26C0::FUN_006E26C0(int, int, int, int)
+{
+    FUN_00684290();
+    return true;
+}
+
+struct Obj_006E2850 {
+    void FUN_007315A0();
+    bool FUN_006E2850(int, int, int, int);
+};
+// FUNCTION: GAMEMD 0x006E2850
+bool Obj_006E2850::FUN_006E2850(int, int, int, int)
+{
+    FUN_007315A0();
     return true;
 }
 
@@ -1299,6 +1355,62 @@ bool TActionClass::FUN_006E4150(HouseClass* house, ObjectClass* object, TriggerC
     int index = FindNamedIndex(unknown_54);
     if (index < DAT_00A8EB10 && index >= 0) {
         MapInstance.FUN_006AC5F0(DAT_00A8EB04[index], unknown_90);
+        return true;
+    }
+    return false;
+}
+
+struct Elem_006E4360 {
+    void FUN_006CC290();
+};
+struct Rec_006E4360 {
+    unsigned char unknown_00[0x258];
+    Elem_006E4360** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E4360, unknown_264) == 0x264);
+struct Obj_006E4360 {
+    unsigned char unknown_00[0x90];
+    int unknown_90;
+    bool FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4);
+};
+GG_STATIC_ASSERT(offsetof(Obj_006E4360, unknown_90) == 0x90);
+// FUNCTION: GAMEMD 0x006E4360
+bool Obj_006E4360::FUN_006E4360(Rec_006E4360* a1, int a2, int a3, int a4)
+{
+    if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
+        a1->unknown_258[unknown_90]->FUN_006CC290();
+        return true;
+    }
+    return false;
+}
+
+struct Elem_006E43A0 {
+    void FUN_006CE0B0();
+};
+struct Rec_006E43A0 {
+    unsigned char unknown_00[0x258];
+    Elem_006E43A0** unknown_258;
+    int unknown_25C;
+    int unknown_260;
+    int unknown_264;
+};
+GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_258) == 0x258);
+GG_STATIC_ASSERT(offsetof(Rec_006E43A0, unknown_264) == 0x264);
+struct Obj_006E43A0 {
+    unsigned char unknown_00[0x90];
+    int unknown_90;
+    bool FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4);
+};
+GG_STATIC_ASSERT(offsetof(Obj_006E43A0, unknown_90) == 0x90);
+// FUNCTION: GAMEMD 0x006E43A0
+bool Obj_006E43A0::FUN_006E43A0(Rec_006E43A0* a1, int a2, int a3, int a4)
+{
+    if (a1 && unknown_90 >= 0 && unknown_90 <= a1->unknown_264) {
+        a1->unknown_258[unknown_90]->FUN_006CE0B0();
         return true;
     }
     return false;

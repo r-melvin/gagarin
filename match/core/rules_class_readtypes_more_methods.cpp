@@ -52,6 +52,22 @@ bool RulesClass::Read_Countries(CCINIClass* pINI)
     return count > 0;
 }
 
+// FUNCTION: GAMEMD 0x6725F0  RulesClass::Read_SuperWeaponTypes  (__thiscall)
+bool RulesClass::Read_SuperWeaponTypes(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(SuperWeaponTypesSection);
+    char buffer[0x20];
+    for (int i = 0; i < count; ++i)
+    {
+        if (pINI->ReadString(SuperWeaponTypesSection, pINI->GetKeyName(SuperWeaponTypesSection, i),
+                             "", buffer, 0x20) != 0)
+        {
+            SuperWeaponType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
 // FUNCTION: GAMEMD 0x672660  RulesClass::Read_BuildingTypes  (__thiscall)
 bool RulesClass::Read_BuildingTypes(CCINIClass* pINI)
 {
@@ -63,6 +79,54 @@ bool RulesClass::Read_BuildingTypes(CCINIClass* pINI)
                              "", buffer, 0x20) != 0)
         {
             BuildingType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
+// FUNCTION: GAMEMD 0x6726D0  RulesClass::Read_TerrainTypes  (__thiscall)
+bool RulesClass::Read_TerrainTypes(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(TerrainTypesSection);
+    char buffer[0x20];
+    for (int i = 0; i < count; ++i)
+    {
+        if (pINI->ReadString(TerrainTypesSection, pINI->GetKeyName(TerrainTypesSection, i),
+                             "", buffer, 0x20) != 0)
+        {
+            TerrainType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
+// FUNCTION: GAMEMD 0x6727D0  RulesClass::Read_SmudgeTypes  (__thiscall)
+bool RulesClass::Read_SmudgeTypes(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(SmudgeTypesSection);
+    char buffer[0x20];
+    for (int i = 0; i < count; ++i)
+    {
+        if (pINI->ReadString(SmudgeTypesSection, pINI->GetKeyName(SmudgeTypesSection, i),
+                             "", buffer, 0x20) != 0)
+        {
+            SmudgeType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
+// FUNCTION: GAMEMD 0x672840  RulesClass::Read_OverlayTypes  (__thiscall)
+bool RulesClass::Read_OverlayTypes(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(OverlayTypesSection);
+    char buffer[0x20];
+    for (int i = 0; i < count; ++i)
+    {
+        if (pINI->ReadString(OverlayTypesSection, pINI->GetKeyName(OverlayTypesSection, i),
+                             "", buffer, 0x20) != 0)
+        {
+            OverlayType_FindOrAllocate(buffer);
         }
     }
     return count > 0;
@@ -95,6 +159,22 @@ bool RulesClass::Read_VoxelAnims(CCINIClass* pINI)
                              "", buffer, 0x20) != 0)
         {
             VoxelAnimType_FindOrAllocate(buffer);
+        }
+    }
+    return count > 0;
+}
+
+// FUNCTION: GAMEMD 0x672990  RulesClass::Read_Warheads  (__thiscall)
+bool RulesClass::Read_Warheads(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount("Warheads");
+    char buffer[0x20];
+    for (int i = 0; i < count; ++i)
+    {
+        if (pINI->ReadString("Warheads", pINI->GetKeyName("Warheads", i),
+                             "", buffer, 0x20) != 0)
+        {
+            WarheadType_FindOrAllocate(buffer);
         }
     }
     return count > 0;

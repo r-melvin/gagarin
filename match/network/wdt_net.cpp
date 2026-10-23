@@ -80,6 +80,9 @@ unsigned char WDTState::FUN_0076B090() const
     return unknown_48;
 }
 
+// FUNCTION: GAMEMD 0x76B740
+// DynamicVectorClass<rc_ptr<WDTTerritory>>::Slot5
+
 // FUNCTION: GAMEMD 0x76B760
 // VectorClass<rc_ptr<WDTTerritory>>::Slot6
 
@@ -100,6 +103,9 @@ template class rc_ptr<WDTTerritory>;
 
 // FUNCTION: GAMEMD 0x76BA10
 // VectorClass<rc_ptr<WDTTerritory>>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x76BA50
+// VectorClass<rc_ptr<WDTTerritory>>::Slot5
 
 // FUNCTION: GAMEMD 0x76BA70
 // DynamicVectorClass<rc_ptr<WDTTerritory>>::SetCapacity. PARTIAL, as 0x76B8C0.

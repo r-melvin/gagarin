@@ -489,6 +489,18 @@ bool __stdcall DriveLocomotionClass::WillJumpTracks()
     return false;
 }
 
+// FUNCTION: GAMEMD 0x4B4BE0
+void __stdcall DriveLocomotionClass::Lock()
+{
+    UnLocked = false;
+}
+
+// FUNCTION: GAMEMD 0x4B4BF0
+void __stdcall DriveLocomotionClass::Unlock()
+{
+    UnLocked = true;
+}
+
 // FUNCTION: GAMEMD 0x4B4C00
 int __stdcall DriveLocomotionClass::GetTrackNumber()
 {

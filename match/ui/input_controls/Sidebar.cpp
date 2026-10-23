@@ -37,6 +37,7 @@
 // SidebarClass::StripClass::SelectClass and SidebarClass::SBGadgetClass slots
 // (layout and evidence: sidebar_select_class.h).
 
+#include "../../core/vector_class_operations.h"
 #include "../../core/deleting_dtor_sweep.h"
 #include "../../network/transport/winsock_interface_class.h"
 #include "../../_layout/pipe.h"
@@ -751,39 +752,53 @@ void SidebarClass::FUN_006A60E0(int tab)
 }
 
 // FUNCTION: GAMEMD 0x6A6220
-bool SidebarClass::FUN_006A6220(unsigned int value)
+unsigned char SidebarClass::FUN_006A6220(int mode)
 {
     unsigned char previous = At_5515;
-    if (value == 0xFFFFFFFFu) {
-        value = previous == 0;
+    if (mode == -1) {
+        mode = !previous;
     }
-    At_5515 = value == 1 ? 1 : 0;
+    switch (mode) {
+    case 1:
+        At_5515 = 1;
+        break;
+    default:
+        At_5515 = 0;
+        break;
+    }
     if (previous != At_5515) {
         FlagToRedraw(0);
         At_53A6 = 1;
-        if (At_5515 == 0) {
-            vf_18(0, false);
+        if (!At_5515) {
+            vf_18(0, 0);
         }
     }
-    return previous != 0;
+    return previous;
 }
 
 // FUNCTION: GAMEMD 0x6A6290
-bool SidebarClass::FUN_006A6290(unsigned int value)
+unsigned char SidebarClass::FUN_006A6290(int mode)
 {
     unsigned char previous = At_5514;
-    if (value == 0xFFFFFFFFu) {
-        value = previous == 0;
+    if (mode == -1) {
+        mode = !previous;
     }
-    At_5514 = value == 1 ? 1 : 0;
+    switch (mode) {
+    case 1:
+        At_5514 = 1;
+        break;
+    default:
+        At_5514 = 0;
+        break;
+    }
     if (previous != At_5514) {
         FlagToRedraw(0);
         At_53A6 = 1;
-        if (At_5514 == 0) {
-            vf_18(0, false);
+        if (!At_5514) {
+            vf_18(0, 0);
         }
     }
-    return previous != 0;
+    return previous;
 }
 
 // Slot 16: draws the sidebar: backdrop shapes, the buttons, the open/close animation
@@ -1674,3 +1689,12 @@ SidebarCameo* __fastcall FUN_006AC870(SidebarCameo* cameo)
     cameo->unknown_18.Word = 1;
     return cameo;
 }
+
+// The capacity constructor of a growable vector over an 8-byte plain element
+// (no element constructor, so the allocation has no counter header); the
+// explicit instantiation also emits the other members, which are not claimed.
+struct Elem_006AC8D0 { int unknown_00; int unknown_04; Elem_006AC8D0() {} bool operator==(const Elem_006AC8D0& o) const { return unknown_00 == o.unknown_00 && unknown_04 == o.unknown_04; } bool operator!=(const Elem_006AC8D0& o) const { return !(*this == o); } };
+
+// FUNCTION: GAMEMD 0x006AC8D0
+// DynamicVectorClass<Elem_006AC8D0>::DynamicVectorClass
+template class DynamicVectorClass<Elem_006AC8D0>;

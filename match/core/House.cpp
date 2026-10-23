@@ -444,7 +444,7 @@ struct WaypointClass { int unknown_00; int unknown_04; int unknown_08; WaypointC
 
 template class DynamicVectorClass<WaypointClass>;
 
-class CellClass; template<class C> struct DiscreteDistributionClass { template<class P> struct DistributionObject { P Object; int Weight; DistributionObject() : Object(0) {} ~DistributionObject() {} DistributionObject(const DistributionObject<P>& o) : Object(o.Object), Weight(o.Weight) {} bool operator==(const DistributionObject<P>& o) const { return Object==o.Object && Weight==o.Weight; } bool operator!=(const DistributionObject<P>& o) const { return !(*this==o); } }; };
+class CellClass; template<class C> struct DiscreteDistributionClass { template<class P> struct DistributionObject { P Object; int Weight; DistributionObject() : Weight(0) {} ~DistributionObject() {} DistributionObject(const DistributionObject<P>& o) : Object(o.Object), Weight(o.Weight) {} bool operator==(const DistributionObject<P>& o) const { return Object==o.Object && Weight==o.Weight; } bool operator!=(const DistributionObject<P>& o) const { return !(*this==o); } }; };
 
 template class DynamicVectorClass<DiscreteDistributionClass<CellClass>::DistributionObject<CellClass*> >;
 
@@ -2470,10 +2470,14 @@ template class VectorClass<bool>;
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0050FC00
 // VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::operator==
+// FUNCTION: GAMEMD 0x0050FC60
+// VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::SetCapacity
 // FUNCTION: GAMEMD 0x0050FDB0
 // VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::FindItemIndex
 // FUNCTION: GAMEMD 0x0050FE00
 // VectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::Slot5
+// FUNCTION: GAMEMD 0x0050FF50
+// DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::AddItem
 // FUNCTION: GAMEMD 0x0050FFB0
 // DynamicVectorClass<DiscreteDistributionClass<BuildingTypeClass>::DistributionObject<BuildingTypeClass*>>::FindItemIndex
 // FUNCTION: GAMEMD 0x0050E7A0
@@ -2573,3 +2577,6 @@ int __cdecl BasePlanningCellContainer::Comparator(const void* a, const void* b)
         return 0;
     return (wa < wb) ? -1 : 1;
 }
+
+// FUNCTION: GAMEMD 0x00510970
+// Constructor (capacity, optional storage) of the vector of BuildingTypeClass distribution objects.

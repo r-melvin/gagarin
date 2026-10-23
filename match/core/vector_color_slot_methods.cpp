@@ -22,6 +22,8 @@ struct RGBClass { unsigned char R; unsigned char G; unsigned char B; RGBClass() 
 // DynamicVectorClass<RGBClass>::SetCapacity
 // FUNCTION: GAMEMD 0x004785F0
 // DynamicVectorClass<RGBClass>::FindItemIndex
+// FUNCTION: GAMEMD 0x00478850
+// VectorClass<RGBClass>::VectorClass
 // FUNCTION: GAMEMD 0x00477930
 // DynamicVectorClass<RGBClass>::Slot5
 // VTABLE: GAMEMD 0x007E4E38 -- VectorClass<RGBClass>.

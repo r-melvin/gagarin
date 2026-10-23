@@ -743,6 +743,31 @@ void Obj_005247C0::FUN_005247C0()
     FUN_00711E90();
 }
 
+// Clamp of the third component of a three-integer record to a lower bound taken
+// from a global object that is queried with the record (global at 0x87F7E8,
+// query 0x578080). The record is returned through the hidden pointer (RET 8).
+struct Triple_005247D0 {
+    int unknown_00;
+    int unknown_04;
+    int unknown_08;
+};
+struct Query_00578080 {
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- __thiscall, one pointer argument.
+    int FUN_00578080(Triple_005247D0* value);
+};
+extern Query_00578080 DAT_0087F7E8;
+struct Obj_005247D0 {
+    Triple_005247D0 FUN_005247D0(const Triple_005247D0* value);
+};
+// FUNCTION: GAMEMD 0x005247D0
+Triple_005247D0 Obj_005247D0::FUN_005247D0(const Triple_005247D0* value)
+{
+    Triple_005247D0 local = *value;
+    if (local.unknown_08 < DAT_0087F7E8.FUN_00578080(&local))
+        local.unknown_08 = DAT_0087F7E8.FUN_00578080(&local);
+    return local;
+}
+
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x00524C70
 HRESULT __stdcall InfantryTypeClass::GetClassID(CLSID* pClassID)
@@ -782,6 +807,41 @@ int Obj_00524D60::FUN_00524D60() const
 // Returns its receiver.
 Obj_00524EC0* Obj_00524EC0::FUN_00524EC0()
 {
+    return this;
+}
+
+// A growable array of dwords, assigned from another (slot 3 releases the old storage).
+struct Vec_00524F20 {
+    virtual void vf_00(); virtual void vf_01(); virtual void vf_02();
+    virtual void Clear();
+    int* unknown_04;
+    int unknown_08;
+    bool unknown_0C;
+    bool unknown_0D;
+    int unknown_10;
+    int unknown_14;
+    Vec_00524F20* FUN_00524F20(const Vec_00524F20& other);
+};
+// FUNCTION: GAMEMD 0x00524F20
+Vec_00524F20* Vec_00524F20::FUN_00524F20(const Vec_00524F20& other)
+{
+    if (this != &other) {
+        Clear();
+        unknown_08 = other.unknown_08;
+        if (unknown_08 != 0) {
+            unknown_04 = new int[unknown_08];
+            if (unknown_04 != 0) {
+                unknown_0D = true;
+                for (int i = 0; i < unknown_08; ++i)
+                    unknown_04[i] = other.unknown_04[i];
+            }
+        } else {
+            unknown_04 = 0;
+            unknown_0D = false;
+        }
+    }
+    unknown_10 = other.unknown_10;
+    unknown_14 = other.unknown_14;
     return this;
 }
 
@@ -1076,6 +1136,19 @@ bool INIClass::WriteInteger(const char* pSection, const char* pKey, int value, i
     return WriteString(pSection, pKey, buffer);
 }
 
+int FUN_007B5440(int);
+int FUN_007B7140(int);
+
+struct Obj_005289E0 {
+    void FUN_00528660(int, int, int);
+    void FUN_005289E0(int a, int b, int c);
+};
+// FUNCTION: GAMEMD 0x005289E0
+void Obj_005289E0::FUN_005289E0(int a, int b, int c)
+{
+    FUN_00528660(FUN_007B5440(a), FUN_007B5440(b), FUN_007B5440(c));
+}
+
 // FUNCTION: GAMEMD 0x528E00
 //
 // Write a Unicode string as a comma-separated list of hexadecimal code units.
@@ -1120,6 +1193,16 @@ bool CCINI_00528E00::WriteUnicodeString(const char* section, const char* key,
     }
 
     return result;
+}
+
+struct Obj_00528ED0 {
+    void FUN_00528E00(int, int, int);
+    void FUN_00528ED0(int a, int b, int c);
+};
+// FUNCTION: GAMEMD 0x00528ED0
+void Obj_00528ED0::FUN_00528ED0(int a, int b, int c)
+{
+    FUN_00528E00(FUN_007B5440(a), FUN_007B5440(b), FUN_007B7140(c));
 }
 
 // ---------------------------------------------------------------------------

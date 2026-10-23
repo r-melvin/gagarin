@@ -541,6 +541,17 @@ void FUN_0077C370()
     gg_free(block);
 }
 
+extern CountedStringArray DAT_00B765F8;
+// FUNCTION: GAMEMD 0x0077C5A0
+void FUN_0077C5A0()
+{
+    for (int i = 0; i < DAT_00B765F8.count; ++i)
+        FUN_007B46F0(DAT_00B765F8.data + i * 4);
+    void* block = DAT_00B765F8.data;
+    DAT_00B765F8.count = 0;
+    gg_free(block);
+}
+
 // FUNCTION: GAMEMD 0x0077C600
 void FUN_0077C600()
 {
@@ -548,6 +559,17 @@ void FUN_0077C600()
         FUN_007B46F0(DAT_00B73BD8.data + i * 4);
     void* block = DAT_00B73BD8.data;
     DAT_00B73BD8.count = 0;
+    gg_free(block);
+}
+
+extern CountedStringArray DAT_00B736F8;
+// FUNCTION: GAMEMD 0x0077C660
+void FUN_0077C660()
+{
+    for (int i = 0; i < DAT_00B736F8.count; ++i)
+        FUN_007B46F0(DAT_00B736F8.data + i * 4);
+    void* block = DAT_00B736F8.data;
+    DAT_00B736F8.count = 0;
     gg_free(block);
 }
 
@@ -1278,6 +1300,30 @@ void FUN_007A2830(String_007B4620* name)
     }
 }
 
+// A critical-section holder: count cleared, section initialised, then the
+// vtable seated by the derived class. Two such holders differ only in vtable.
+struct LockBase_007A2FC0 {
+    int unknown_04;
+    CRITICAL_SECTION unknown_08;
+    LockBase_007A2FC0() : unknown_04(0) { InitializeCriticalSection(&unknown_08); }
+};
+struct Obj_007A2FC0 : LockBase_007A2FC0 {
+    virtual void vf_00();
+    Obj_007A2FC0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_007A2FC0, unknown_08) == 0x08);
+// FUNCTION: GAMEMD 0x007A2FC0
+Obj_007A2FC0::Obj_007A2FC0() {}
+
+// The same holder in a second class (its own vtable).
+struct Obj_007A41A0 : LockBase_007A2FC0 {
+    virtual void vf_00();
+    Obj_007A41A0();
+};
+GG_STATIC_ASSERT(offsetof(Obj_007A41A0, unknown_08) == 0x08);
+// FUNCTION: GAMEMD 0x007A41A0
+Obj_007A41A0::Obj_007A41A0() {}
+
 // FUNCTION: GAMEMD 0x7A30D0
 // Slot 5 of CNetUtilEventSink (RTTI); string 0x84A9E0 attests the callback name.
 long __stdcall FUN_007A30D0(void* self, int result)
@@ -1583,6 +1629,36 @@ int HashTableIndex::FUN_007AE5B0(const void* key)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE5D0
 template struct GrowList<GrowListHandle>;
+
+// Shrink step of a plain-old-data array holder (count at +0x00, capacity at
+// +0x04, heap block at +0x08): refused while the count exceeds a third of the
+// capacity; otherwise the capacity is halved (floor of ten) and the live
+// elements are copied into a block of the new size.
+struct Obj_007AE730 {
+    int count;     // +0x00
+    int capacity;  // +0x04
+    int* data;     // +0x08
+    bool FUN_007AE730();
+};
+GG_STATIC_ASSERT(offsetof(Obj_007AE730, data) == 0x08);
+// FUNCTION: GAMEMD 0x007AE730
+bool Obj_007AE730::FUN_007AE730()
+{
+    if (count * 3 > capacity)
+        return false;
+    int newCapacity = capacity / 2;
+    if (newCapacity < 10)
+        newCapacity = 10;
+    if (newCapacity >= capacity)
+        return false;
+    int* block = new int[newCapacity];
+    if (data != 0)
+        memcpy(block, data, count * sizeof(int));
+    gg_free(data);
+    data = block;
+    capacity = newCapacity;
+    return true;
+}
 
 // FUNCTION: GAMEMD 0x7AE7C0
 bool Table_007AE180::FUN_007AE7C0(const String_007B4620& key, Value_007AE180** out)

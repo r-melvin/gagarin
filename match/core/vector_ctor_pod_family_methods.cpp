@@ -14,6 +14,10 @@
 // below are ordered ascending by retail address.
 #include "vector_ctor_pod_family_methods.h"
 
+// FUNCTION: GAMEMD 0x0045AE50
+// vtable constant: 0x7E4468
+GG_VECTOR_CTOR_POD_BODY(VectorClass_0045AE50, PodElem4, 0x7E4468)
+
 // FUNCTION: GAMEMD 0x488080
 // vtable constant: 0x7E4514
 GG_VECTOR_CTOR_POD_BODY(VectorClass_00488080, PodElem4, 0x7E4514)
@@ -117,6 +121,10 @@ GG_VECTOR_CTOR_POD_BODY(VectorClass_005D89A0, PodElem4, 0x7EA344)
 // FUNCTION: GAMEMD 0x5D89F0
 // vtable constant: 0x7EED40
 GG_VECTOR_CTOR_POD_BODY(VectorClass_005D89F0, PodElem4, 0x7EED40)
+
+// FUNCTION: GAMEMD 0x006302A0
+// vtable constant: 0x7E9D84
+GG_VECTOR_CTOR_POD_BODY(VectorClass_006302A0, PodElem4, 0x7E9D84)
 
 // FUNCTION: GAMEMD 0x69D770
 // vtable constant: 0x7F1274

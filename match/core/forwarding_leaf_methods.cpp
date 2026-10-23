@@ -1,0 +1,75 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Provenance: own-binary-via-Ghidra
+//
+// Small forwarding bodies that repeat at two or more retail addresses. Each
+// address is compiled and checked on its own; the copies differ in the callee
+// or the table. Owners that are not modelled elsewhere are placeholders
+// `Obj_<ADDR>` declaring only the callees the body uses, which are named by
+// address.
+
+const char* FUN_0048E030(unsigned int index);
+const char* FUN_0048E090(unsigned int index);
+
+struct Obj_00477020 {
+    void FUN_00528660(int, int, const char*);
+    void FUN_00477020(int a, int b, unsigned int c);
+};
+// FUNCTION: GAMEMD 0x00477020
+void Obj_00477020::FUN_00477020(int a, int b, unsigned int c)
+{
+    FUN_00528660(a, b, FUN_0048E030(c));
+}
+
+struct Obj_004770B0 {
+    void FUN_00528660(int, int, const char*);
+    void FUN_004770B0(int a, int b, unsigned int c);
+};
+// FUNCTION: GAMEMD 0x004770B0
+void Obj_004770B0::FUN_004770B0(int a, int b, unsigned int c)
+{
+    FUN_00528660(a, b, FUN_0048E090(c));
+}
+
+struct Obj_005175E0 {
+    bool FUN_005175D0();
+    bool FUN_005175E0();
+};
+// FUNCTION: GAMEMD 0x005175E0
+bool Obj_005175E0::FUN_005175E0()
+{
+    return !FUN_005175D0();
+}
+
+struct Rec_00549B50 {
+    int unknown_00;
+    int unknown_04;
+    int unknown_08;
+};
+struct Obj_00549B50 {
+    Rec_00549B50 FUN_00549B50(const Rec_00549B50& in);
+};
+// FUNCTION: GAMEMD 0x00549B50
+Rec_00549B50 Obj_00549B50::FUN_00549B50(const Rec_00549B50& in)
+{
+    return in;
+}
+
+struct Obj_006EA4F0 {
+    void FUN_006EA500(int, int);
+    void FUN_006EA4F0(int a);
+};
+// FUNCTION: GAMEMD 0x006EA4F0
+void Obj_006EA4F0::FUN_006EA4F0(int a)
+{
+    FUN_006EA500(a, 1);
+}
+
+struct Obj_007719C0 {
+    bool FUN_007529E0();
+    bool FUN_007719C0();
+};
+// FUNCTION: GAMEMD 0x007719C0
+bool Obj_007719C0::FUN_007719C0()
+{
+    return !FUN_007529E0();
+}

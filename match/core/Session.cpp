@@ -476,6 +476,10 @@ extern "C" Type_006A46D0** DAT_008B4124;
 
 enum DiskID { DiskID_placeholder };
 
+// FUNCTION: GAMEMD 0x69C4D0
+// DynamicVectorClass<DiskID>::Slot5 (also slot 5 of the TypeList<DiskID> table)
+// FUNCTION: GAMEMD 0x69C940
+// DynamicVectorClass<DiskID>::FindItemIndex
 template class DynamicVectorClass<DiskID>;
 
 GG_STATIC_ASSERT(sizeof(DiskID) == 4);

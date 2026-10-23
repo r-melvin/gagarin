@@ -321,6 +321,31 @@ void WolScenarioSetupClass::OnMultiEngineerChanged()
     }
 }
 
+// Prints a coloured line into the dialog's text control (id 0x53F): the line is
+// "[name] text" built into a 256-wide-character buffer, and the colour is looked
+// up by index in the table of eight colours at 0x8316A8 (the default scheme
+// colour when the index is out of range).
+extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
+// FUNCTION: GAMEMD 0x5E2820 (decl; reloc) -- appends a coloured line to a text control.
+void FUN_005E2820(int color, const wchar_t* text, HWND_ window);
+struct Obj_005BAA80 {
+    HWND_ unknown_00;
+    void FUN_005BAA80(const wchar_t* name, int index, const wchar_t* text);
+};
+// FUNCTION: GAMEMD 0x005BAA80
+void Obj_005BAA80::FUN_005BAA80(const wchar_t* name, int index, const wchar_t* text)
+{
+    wchar_t line[256];
+    if (text != 0) {
+        HWND_ control = GetDlgItem(unknown_00, 0x53F);
+        if (control != 0) {
+            int color = (index >= 0 && index < 8) ? DAT_008316A8[index] : DefaultSchemeColor;
+            swprintf(line, L"[%s] %s", name, text);
+            FUN_005E2820(color, line, control);
+        }
+    }
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5BB560
 void* Obj_5BB560::FUN_5BB560(unsigned int flags)

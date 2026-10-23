@@ -265,6 +265,8 @@ struct Obj_00626250
     void FUN_00626290();
     // FUNCTION: GAMEMD 0x6262F0 (__thiscall)
     void FUN_006262F0(DynamicVectorClass<Obj_0068C8D0*>* pUnknown);
+    // FUNCTION: GAMEMD 0x626370
+    void FUN_00626370();
     // The release body shared by 0x626290 and 0x6262F0, expanded inline in both.
     __forceinline void Inline_Release();
 };

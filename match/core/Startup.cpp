@@ -1274,6 +1274,44 @@ void YRDDraw::DisposeOfStuff()
 // TEMPLATE: GAMEMD 0x6BED80
 // DynamicVectorClass<unsigned long>::Slot5 (slot 5)
 // TEMPLATE: GAMEMD 0x6BEDA0
+// GLOBAL: GAMEMD 0x817BC0 - IID_IUnknown; also the held interface's IID here.
+extern const IID DAT_00817BC0;
+
+// A holder of one IUnknown pointer (same shape as the one at 0x41C250).
+struct ComPtr_006BEDB0
+{
+    IUnknown* Interface;   // +0x0000
+
+    HRESULT CreateInstance(const CLSID& rclsid, IUnknown* outer, DWORD context);
+};
+GG_STATIC_ASSERT(offsetof(ComPtr_006BEDB0, Interface) == 0);
+
+// FUNCTION: GAMEMD 0x6BEDB0
+// Releases the held interface, then creates a new object. Out-of-process
+// contexts (0x14) create as IUnknown, OleRun it, then query the held IID.
+HRESULT ComPtr_006BEDB0::CreateInstance(const CLSID& rclsid, IUnknown* outer, DWORD context)
+{
+    HRESULT hr;
+    if (Interface != 0) {
+        Interface->Release();
+    }
+    if (context & 0x14) {
+        IUnknown* unknown;
+        hr = CoCreateInstance(rclsid, outer, context, DAT_00817BC0, (void**)&unknown);
+        if (hr < 0) {
+            return hr;
+        }
+        hr = OleRun(unknown);
+        if (hr >= 0) {
+            hr = unknown->QueryInterface(DAT_00817BC0, (void**)&Interface);
+        }
+        unknown->Release();
+    } else {
+        hr = CoCreateInstance(rclsid, outer, context, DAT_00817BC0, (void**)&Interface);
+    }
+    return hr;
+}
+
 // VectorClass<unsigned long>::Slot6 (slot 6)
 // TEMPLATE: GAMEMD 0x6C61D0
 // VectorClass<unsigned long>::operator== (slot 1)

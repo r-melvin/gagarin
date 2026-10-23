@@ -700,3 +700,35 @@ void* Obj_523350::FUN_523350(unsigned int flags)
 
     return this;
 }
+
+struct Obj_00523370 {
+    IUnknown* unknown_00;
+    Obj_00523370* FUN_00523370(IUnknown* p);
+    Obj_00523370* FUN_005233A0(IUnknown* p);
+};
+// FUNCTION: GAMEMD 0x00523370
+Obj_00523370* Obj_00523370::FUN_00523370(IUnknown* p)
+{
+    IUnknown* old = unknown_00;
+    if (old != p) {
+        unknown_00 = p;
+        if (p)
+            p->AddRef();
+        if (old)
+            old->Release();
+    }
+    return this;
+}
+// FUNCTION: GAMEMD 0x005233A0
+Obj_00523370* Obj_00523370::FUN_005233A0(IUnknown* p)
+{
+    IUnknown* old = unknown_00;
+    if (old != p) {
+        unknown_00 = p;
+        if (p)
+            p->AddRef();
+        if (old)
+            old->Release();
+    }
+    return this;
+}

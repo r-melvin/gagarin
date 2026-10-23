@@ -32,6 +32,9 @@ GG_STATIC_ASSERT(sizeof(WorldDominationTour::Centroid) == 0x0C);
 
 typedef rc_ptr<WorldDominationTour::Territory> TerritoryPtr;
 
+// FUNCTION: GAMEMD 0x769C80
+// DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>::Slot5
+
 // FUNCTION: GAMEMD 0x769CA0
 // VectorClass<rc_ptr<WorldDominationTour::Territory>>::Slot6 (shared by both tables)
 
@@ -51,6 +54,9 @@ typedef rc_ptr<WorldDominationTour::Territory> TerritoryPtr;
 
 // FUNCTION: GAMEMD 0x769F80
 // VectorClass<rc_ptr<WorldDominationTour::Territory>>::FindItemIndex
+
+// FUNCTION: GAMEMD 0x769FC0
+// VectorClass<rc_ptr<WorldDominationTour::Territory>>::Slot5
 
 // FUNCTION: GAMEMD 0x769FE0
 // DynamicVectorClass<rc_ptr<WorldDominationTour::Territory>>::SetCapacity

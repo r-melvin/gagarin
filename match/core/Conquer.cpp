@@ -429,6 +429,15 @@ int FUN_0048DB80(const char* name)
     return -1;
 }
 
+extern "C" const char DAT_00817F64[];
+// FUNCTION: GAMEMD 0x0048DBC0
+const char* FUN_0048DBC0(unsigned int index)
+{
+    if (index < 5)
+        return DAT_007E1B60[index];
+    return DAT_00817F64;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x48DBE0   Theater::FindIndex   (__fastcall)
@@ -560,5 +569,41 @@ const char* FUN_0048DFD0(unsigned int value)
     if (value < 12) {
         return DAT_0081DA28[value];
     }
+    return DAT_00817474;
+}
+
+// Index of a name in an eight-entry string table at 0x81DA58; NULL or unknown => -1.
+extern const char* const DAT_0081DA58[8];
+// FUNCTION: GAMEMD 0x0048DFF0
+int FUN_0048DFF0(const char* name)
+{
+    if (name != 0) {
+        for (int i = 0; i < 8; ++i) {
+            if (strcmpi(DAT_0081DA58[i], name) == 0)
+                return i;
+        }
+    }
+    return -1;
+}
+
+// Index of a name in a five-entry string table at 0x81DA78; NULL or unknown => -1.
+extern const char* const DAT_0081DA78[5];
+// FUNCTION: GAMEMD 0x0048E050
+int FUN_0048E050(const char* name)
+{
+    if (name != 0) {
+        for (int i = 0; i < 5; ++i) {
+            if (strcmpi(DAT_0081DA78[i], name) == 0)
+                return i;
+        }
+    }
+    return -1;
+}
+
+// FUNCTION: GAMEMD 0x0048E090
+const char* FUN_0048E090(unsigned int index)
+{
+    if (index < 5)
+        return DAT_0081DA78[index];
     return DAT_00817474;
 }

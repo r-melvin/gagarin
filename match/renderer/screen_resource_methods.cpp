@@ -34,8 +34,16 @@ extern const char* DAT_00844BC8;
 extern const char* DAT_00844BCC;
 // GLOBAL: GAMEMD 0x844BD0
 extern const char* DAT_00844BD0;
+// GLOBAL: GAMEMD 0x844BE0
+extern const char* DAT_00844BE0;
 // GLOBAL: GAMEMD 0x844BE4
 extern const char* DAT_00844BE4;
+// GLOBAL: GAMEMD 0x844D50
+extern const char* DAT_00844D50;
+// GLOBAL: GAMEMD 0x844D58
+extern const char* DAT_00844D58;
+// GLOBAL: GAMEMD 0x844D60
+extern const char* DAT_00844D60;
 // GLOBAL: GAMEMD 0x844BE8
 extern const char* DAT_00844BE8;
 // GLOBAL: GAMEMD 0x844BEC
@@ -2287,4 +2295,14 @@ void FUN_0072D960()
         DAT_00B0FBB0.Convert->vf_0(1);
         DAT_00B0FBB0.Convert = 0;
     }
+}
+
+// FUNCTION: GAMEMD 0x72DBC0
+// Load the four palette sets of the fourth full-screen menu.
+void FUN_0072DBC0()
+{
+    ConvertClass_CreateFromFile(DAT_00844BE0, DAT_00B0FBBC.Palette, DAT_00B0FBBC.Convert);
+    ConvertClass_CreateFromFile(DAT_00844D50, DAT_00B0FCB0.Palette, DAT_00B0FCB0.Convert);
+    ConvertClass_CreateFromFile(DAT_00844D58, DAT_00B0FCB8.Palette, DAT_00B0FCB8.Convert);
+    ConvertClass_CreateFromFile(DAT_00844D60, DAT_00B0FCC0.Palette, DAT_00B0FCC0.Convert);
 }
