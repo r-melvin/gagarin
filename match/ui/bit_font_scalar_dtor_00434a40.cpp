@@ -12,16 +12,16 @@
 extern "C" void __cdecl FUN_007C93E8(void* block);
 
 // FUNCTION: GAMEMD 0x434A40
+// PARTIAL: retail also re-seats the vtable (0x7E3A78) before freeing; that store
+// belongs to a real BitFont class destructor, which this view does not model.
 void* BitFontScalarDtorView_00434A40::ScalarDeletingDestructor(unsigned int flags)
 {
-    BitFontScalarDtorView_00434A40* self = this;
-    void* cachedPixels = self->unknown_08;
-    self->unknown_00 = (void*)0x7E3A78;
+    void* cachedPixels = unknown_08;
     if (cachedPixels != 0) {
         FUN_007C93E8(cachedPixels);
     }
 
-    BitFontPayload_00434A40* payload = self->unknown_04;
+    BitFontPayload_00434A40* payload = unknown_04;
     if (payload != 0) {
         if (payload->unknown_18 != 0) {
             ::operator delete(payload->unknown_18);
@@ -33,7 +33,7 @@ void* BitFontScalarDtorView_00434A40::ScalarDeletingDestructor(unsigned int flag
     }
 
     if ((flags & 1) != 0) {
-        ::operator delete(self);
+        ::operator delete(this);
     }
-    return self;
+    return this;
 }

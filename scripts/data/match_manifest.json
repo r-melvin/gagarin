@@ -31005,8 +31005,8 @@
   "sym": "?ScalarDeletingDestructor@BitFontScalarDtorView_00434A40@@QAEPAXI@Z",
   "len": "0x62",
   "name": "BitFont::ScalarDeletingDestructor",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 7.9
  },
  {
   "tu": "match/movement/drive_locomotion.cpp",

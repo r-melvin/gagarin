@@ -6,16 +6,6 @@
 //   Obj_/Gbl_ views below are per-function placeholder receivers. Replacing
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
-//
-// The remaining address-scoped scalar deleting destructors of the 30-byte family,
-// by retail address. Each runs its class's real destructor, then frees the
-// object when bit 0 of the flag argument is set, and returns `this`.
-//
-// Retail IPersist::GetClassID (slot 3 of each class's primary vtable) copies a
-// 16-byte CLSID global to the caller and returns E_POINTER for a null pointer.
-// The owning class of each address is read from the RTTI-named vtable that holds
-// it in slot 3. Each class is declared here only as far as this one virtual
-// (no layout is claimed); the bodies move into the canonical class once it exists.
 
 #include "deleting_dtor_sweep.h"
 #include "../network/transport/winsock_interface_class.h"
