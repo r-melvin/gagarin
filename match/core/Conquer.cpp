@@ -375,7 +375,7 @@ void __cdecl Unsorted_CallBack()
         return;
     }
 
-    DAT_00A8EA70.FUN_005F1C60();
+    DAT_00A8EA70.NullModemClass::Service();
     if (DAT_00A8B230->At_3598) {
         Message_0048D080 message;
         int flag;

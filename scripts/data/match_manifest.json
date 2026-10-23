@@ -98353,5 +98353,14 @@
   "name": "MultiMission INI constructor",
   "status": "partial",
   "pct": 91.4
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69AE90",
+  "sym": "?FUN_0069AE90@SessionClass@@QAEXH@Z",
+  "len": "0x2c9",
+  "name": "SessionClass::FUN_0069AE90",
+  "status": "partial",
+  "pct": 25.0
  }
 ]

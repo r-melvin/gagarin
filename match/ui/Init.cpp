@@ -206,26 +206,7 @@ DisplayCmdObject* FUN_007342B0();
 const wchar_t* FUN_00735120(const char* text);
 
 // ---- Taunt support (0x536350) ----
-// The taunt packet: 0x1C7 bytes sent (PUSH 0x1C7), command 0x1D at +0, the
-// sender's name copied to +4, then byte, packed-nibble and two dword fields at
-// odd offsets (+0x2F, +0x30, +0x31, +0x35).
-#pragma pack(push, 1)
-struct CommandTauntPacket
-{
-    int Command;                         // +0x00
-    char Name[0x2B];                     // +0x04
-    bool unknown_2F;                     // +0x2F
-    unsigned char Taunt : 4;             // +0x30 low nibble
-    unsigned char Colour : 4;            // +0x30 high nibble
-    int unknown_31;                      // +0x31
-    int unknown_35;                      // +0x35
-    char unknown_39[0x1C7 - 0x39];       // +0x39
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(CommandTauntPacket, unknown_2F) == 0x2F);
-GG_STATIC_ASSERT(offsetof(CommandTauntPacket, unknown_31) == 0x31);
-GG_STATIC_ASSERT(offsetof(CommandTauntPacket, unknown_35) == 0x35);
-GG_STATIC_ASSERT(sizeof(CommandTauntPacket) == 0x1C7);
+#include "../network/command_packet_layouts.h"
 
 // A session node (the list at 0xA8DA78): name source, colour byte +0x4B and
 // the address block at +0x28.

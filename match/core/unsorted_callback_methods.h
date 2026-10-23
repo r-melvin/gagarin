@@ -18,40 +18,10 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// One message popped off the queue: only the kind, the sender byte and the
-// payload int are read, and the payload sits one byte into the sender word,
-// so the record is packed.
-#pragma pack(push, 1)
-struct Message_0048D080
-{
-    int  Kind;                 // +0x0000
-    char _pad004[0x18 - 0x04]; // +0x0004
-    union
-    {
-        int SenderWord;        // +0x0018  low byte is the sender
-        struct
-        {
-            char Sender;       // +0x0018
-            int  Payload;      // +0x0019  unaligned
-        } Packed;
-    };
-    char _pad01D[0xFC - 0x1D]; // +0x001D
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(Message_0048D080, SenderWord) == 0x18);
-GG_STATIC_ASSERT(sizeof(Message_0048D080) == 0xFC);
+#include "../network/command_packet_layouts.h"
 
-// The message queue.
-struct Queue_0048D080
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x5F1C60 (decl; reloc) — refill the queue.
-    void FUN_005F1C60();
-    // FUNCTION: GAMEMD 0x5F1C30 (decl; reloc) — pop one message.
-    int FUN_005F1C30(Message_0048D080* message, int* flag);
-};
-// GLOBAL: GAMEMD 0xA8EA70 — the queue.
-extern Queue_0048D080 DAT_00A8EA70;
+// The serial receiver uses the canonical NullModemClass owner.
+#include "../network/null_modem_class_methods.h"
 
 // Existing receiver shared with the Scenario loading wait.
 #include "../_layout/audio_0048d080.h"

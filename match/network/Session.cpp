@@ -1557,6 +1557,86 @@ bool SessionClass::FUN_0069AE70()
         "RandMap.Sed") == 0;
 }
 
+#include <windows.h>
+#include "../_layout/audio_0048d080.h"
+#include "../_layout/elapsed_timer.h"
+#include "../platform/input_manager_class_methods.h"
+#include "null_modem_class_methods.h"
+#include "command_packet_layouts.h"
+// Declaration: GAMEMD 0x48D080 -- no arguments, cdecl shared pump.
+void __cdecl Unsorted_CallBack();
+extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
+extern const char STR_0083F674[]; // STRING: GAMEMD 0x83F674 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x69AE90
+void SessionClass::FUN_0069AE90(int progress)
+{
+    if (DAT_00A8ED6B) return;
+    int adjusted = progress;
+    if (ScenarioInstance->unknown_34BD) adjusted /= 2;
+    double requested = adjusted;
+    if (DAT_00AC4F58.FUN_00643E90(0) * 100.0 < requested)
+        DAT_00AC4F58.FUN_00643C50(0, requested, -1, -1);
+    if (unknown_283C.Count == 1) return;
+
+    // Canonical timer constructor calls GameClockClass::GetTime on its
+    // empty embedded clock; do not replace with a free clock function.
+    ScenarioElapsedTimer timer(240);
+    switch (GameMode) {
+    case 1:
+    case 2: {
+        Payload_0069B08C packet;
+        memset(&packet, 0, sizeof(packet));
+        packet.unknown_00 = 0x6C;
+        packet.unknown_19 = DAT_00AC4F58.FUN_00643E90(0) * 100.0;
+        packet.unknown_18 = Session_00A8B238.unknown_28F8;
+        DAT_00A8EA70.FUN_005F1BF0(&packet, 250, 0);
+        DAT_00A8EA70.NullModemClass::Service();
+        while (DAT_00A8EA70.FUN_005F1EA0() > 5) {
+            if (timer.GetTimeLeft() <= 0) break;
+            Sleep(20);
+            DAT_0087F770->FUN_0054F000();
+            DAT_00A8EA70.NullModemClass::Service();
+        }
+        break;
+    }
+    case 3:
+    case 4: {
+        Payload_0069AF45 packet;
+        memset(&packet, 0, sizeof(packet));
+        packet.unknown_00 = 15;
+        packet.unknown_2F = DAT_00AC4F58.FUN_00643E90(0) * 100.0;
+        // This is the GLOBAL Session vector, not necessarily this receiver's
+        // vector. Its first element is dereferenced without count/null guard.
+        strcpy(packet.unknown_04,
+               NarrowName_007350C0(Session_00A8B238.unknown_283C.Items[0]->Name));
+        if (packet.unknown_2F < 99.95) {
+            Manager_00A8E9C0.FUN_005410F0(&packet, 51, 0, 0, 0, 0);
+        } else {
+            for (int index = 1; index < Session_00A8B238.unknown_283C.Count; ++index) {
+                FUN_004068E0(STR_0083F674);
+                // Pointer/global array reload occurs after logging callback.
+                Manager_00A8E9C0.FUN_00541260(&packet, 51, 1,
+                    Session_00A8B238.unknown_283C.Items[index]->Name);
+            }
+        }
+        Unsorted_CallBack();
+        while (Manager_00A8E9C0.IPXManagerClass::vf_7() > 5) {
+            if (timer.GetTimeLeft() <= 0) break;
+            Sleep(20);
+            FUN_005D4D50();
+            Unsorted_CallBack();
+        }
+        break;
+    }
+    default:
+        break;
+    }
+    // Exactly one terminal pump after any mode switch path, including invalid
+    // modes. Early A8ED6B/Count==1 guards return before timer and terminal pump.
+    Unsorted_CallBack();
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0069B540
 void GameModeOptionsClass_Opt::Clear()

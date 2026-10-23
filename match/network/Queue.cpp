@@ -369,24 +369,8 @@ extern const char STR_00837864[];
 // Declaration: GAMEMD 0x837828 -- string reference
 extern const char STR_00837828[];
 
-// 0x64ABDF/0x64AC0D/0x64AC1F, followed by the 455-byte send0x64AC4D.
-// ev_f0992f314e4faa58347216093b1b6eb19b21c8184a79afb69519601a1e420b09.
-#pragma pack(push, 1)
-struct QueuePacket_0064AAE0
-{
-    int unknown_00;
-    char unknown_04[20];
-    char unknown_18[0x2F - 0x18];
-    int unknown_2F;
-    int unknown_33;
-    char unknown_37[0x1C7 - 0x37];
-};
-#pragma pack(pop)
-GG_STATIC_ASSERT(offsetof(QueuePacket_0064AAE0, unknown_00) == 0);
-GG_STATIC_ASSERT(offsetof(QueuePacket_0064AAE0, unknown_04) == 4);
-GG_STATIC_ASSERT(offsetof(QueuePacket_0064AAE0, unknown_2F) == 0x2F);
-GG_STATIC_ASSERT(offsetof(QueuePacket_0064AAE0, unknown_33) == 0x33);
-GG_STATIC_ASSERT(sizeof(QueuePacket_0064AAE0) == 0x1C7);
+#include "command_packet_layouts.h"
+
 // GLOBAL: GAMEMD 0xB779C4
 extern int DAT_00B779C4;
 // GLOBAL: GAMEMD 0xA8BB40

@@ -168,6 +168,8 @@ public:
     void Shutdown();
     // FUNCTION: GAMEMD 0x5F1BF0
     int FUN_005F1BF0(void* buf, int buflen, int ackReq);
+    // Declaration: GAMEMD 0x5F1EA0 -- ECX owner, no stack arguments.
+    int FUN_005F1EA0();
     // FUNCTION: GAMEMD 0x5F1C30
     int FUN_005F1C30(void* buf, int* buflen);
 };

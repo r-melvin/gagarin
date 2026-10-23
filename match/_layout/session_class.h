@@ -65,7 +65,9 @@ struct SessionClass
     DynamicVectorClass<NodeNameType*> unknown_283C;
     char unknown_2854[4];
     NodeNameType* unknown_2858[8]; // native69C290/69C362
-    char unknown_2878[0x292C - 0x2878];
+    char unknown_2878[0x28F8 - 0x2878];
+    unsigned char unknown_28F8; // sender byte read at69B0CF fromA8DB30
+    char unknown_28F9[0x292C - 0x28F9];
     // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
     DynamicVectorClass<const unsigned short*> unknown_292C;
     char unknown_2944[0x2968 - 0x2944];
@@ -126,7 +128,7 @@ struct SessionClass
     // Declaration: GAMEMD 0x69AE70 -- receiver-relative string at +0x6A8.
     bool FUN_0069AE70();
     // Declaration: GAMEMD 0x69AE90 (decl; reloc) -- progress argument, RET4.
-    void FUN_0069AE90(int delay);
+    void FUN_0069AE90(int progress);
     // Declaration: GAMEMD 0x69BC60 (decl; reloc) -- slot index argument, EAX result, RET4.
     int FUN_0069BC60(int index);
     // Declaration: GAMEMD 0x69BD60 -- ECX receiver, noargs, RET.
@@ -215,4 +217,6 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C) == 0x292C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_292C) == 0x18);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18) == 0x12C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28F8) == 0x28F8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28F8) == 1);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H
