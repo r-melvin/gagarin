@@ -1,0 +1,60 @@
+{
+ "m0": {
+  "by_kind": {
+   "crt": 24,
+   "data": 3921,
+   "function": 4253,
+   "import": 0,
+   "vtable": 93
+  },
+  "duplicate_definitions": 0,
+  "objects": 1310,
+  "unresolved": 8291
+ },
+ "m1": {
+  "bytes_at_retail_address": 3885223,
+  "drift_events": 4,
+  "duplicates": 0,
+  "entries_at_retail_address": 19249,
+  "entry_point_delta": -8305,
+  "link_exit_code": 0,
+  "matched_at_retail_address": 10174,
+  "matched_functions": 10174,
+  "ordered_bytes": 3885895,
+  "ordered_entries": 19251,
+  "stubs_placed": 9035,
+  "unresolved_after_stubs": 0
+ },
+ "milestones": [
+  {
+   "id": "M0",
+   "name": "Diagnostic link",
+   "state": "done"
+  },
+  {
+   "id": "M1",
+   "name": "Address-faithful stub link",
+   "state": "done"
+  },
+  {
+   "id": "M2",
+   "name": "Hybrid runnable build",
+   "state": "next"
+  },
+  {
+   "id": "M3",
+   "name": "Matched objects swap in",
+   "state": "todo"
+  },
+  {
+   "id": "M4",
+   "name": "Pure-source playable",
+   "state": "todo"
+  },
+  {
+   "id": "M5",
+   "name": "Unsigned image identical",
+   "state": "todo"
+  }
+ ]
+}

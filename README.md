@@ -13,7 +13,16 @@ The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
 
+As of 2026-10-23, 10,175 of the 19,778 functions in the extent census are
+matched (51.4%) and 653 more are partial; matched bodies cover 699,718 of
+3,878,653 listed function bytes (18.0%). The address-faithful stub link (M1)
+resolves every external and places 10,174 matched functions at their retail
+addresses; the remaining matched row shares its symbol with another address. The engine does not yet run from this build, and no whole-image
+identity is claimed.
+
 ![gagarin matching progress](.github/assets/progress.svg)
+
+![gagarin link milestones](.github/assets/link_progress.svg)
 
 ## Get started
 
@@ -27,12 +36,19 @@ scripts/vc6/fetch_toolchain.sh
 scripts/vc6/compile_all.sh
 GAMEMD_BINARY="/path/to/gamemd.exe" python3 scripts/vc6/verify_all.py
 python3 scripts/vc6/build_project.py --jobs 8
+python3 scripts/vc6/link_diag.py --objdir build-vc6/project
+python3 scripts/vc6/link_m1.py --objdir build-vc6/project
 ```
 
 `compile_all.sh` is the binary-free compile gate. `verify_all.py` checks the
 manifest's fully matched functions against the pinned retail binary and
 compile-checks documented partial rows. `build_project.py` compiles tracked
-C++ files into path-preserving VC6 objects; it does not link the engine. See
+C++ files into path-preserving VC6 objects. Two link probes run on those
+objects: `link_diag.py` (M0) links everything with `/FORCE` and counts the
+unresolved externals, and `link_m1.py` (M1) links the objects with int3 stubs
+in retail order, then `mapcheck.py` checks each matched function's linked
+address. Neither image runs. `scripts/orchestration/link_svg.py --refresh`
+updates the link figures from their output. See
 [CONTRIBUTING.md](CONTRIBUTING.md)
 for setup, the per-function matching workflow and file conventions; [AGENTS.md](AGENTS.md)
 defines the evidence and engineering rules; [LEGAL.md](LEGAL.md) defines the

@@ -1,5 +1,53 @@
 # Project status
 
+As of **2026-10-23** (tip `2a00ae5d`), the manifest holds **10,828 rows**:
+**10,175 matched** and **653 partial**, in 1,302 manifest translation units.
+Every row's address is an entry in the extent census of **19,778 functions**,
+so 51.4% of listed functions are matched and 3.3% partial. Matched body lengths
+total **699,718 bytes**, 18.0% of the 3,878,653 listed function bytes. Counts
+are per function, not executable completion.
+
+Strict check: raw bytes and strict relocation checks with the central symbol
+bindings, run over every matched row on objects built from the tip, fail on
+**74** of 10,175 rows (raw bytes pass on all 10,175; the 74 fail the strict relocation check). These failures predate this
+snapshot; the rows remain `matched` in the manifest because `verify_all.py`
+passes them, and they are open fidelity debt until the strict check passes.
+
+Translation-unit migration: **114** files carry an original translation-unit
+header. **72** have names attested by a source-file assert string in the
+binary and hold 2,869 rows (2,664 matched, 205 partial). **42** are
+binary-segmented units without an attested name, kept as placeholder-named
+`tuNNN_<class>.cpp` files, and hold 1,141 rows (1,032 matched, 109 partial).
+The remaining rows still live in working files.
+
+Link milestones (all diagnostic; no image here runs):
+
+| Milestone | State | Measurement at the tip |
+| --- | --- | --- |
+| M0 diagnostic link | done | `link_diag.py` links 1,310 objects with `/FORCE`: 8,291 unresolved externals (4,253 function, 3,921 data, 93 vtable/RTTI, 24 CRT, 0 import), 0 duplicate definitions |
+| M1 address-faithful stub link | done | `link_m1.py` links without `/FORCE`, exit 0, 0 unresolved after 9,035 int3 stubs. `mapcheck.py`: 10,174 of 10,174 placed matched functions at their retail address; 19,249 of 19,251 ordered engine entries (3,885,223 of 3,885,895 bytes) at retail address; 4 local drift events from two matched objects larger than their retail slots. The library tail is not ordered (entry point -8,305 bytes from retail) |
+| M2 hybrid runnable build | next | not started |
+| M3 matched objects swap in | not started | |
+| M4 pure-source playable | not started | |
+| M5 unsigned-image identity | not started | the complete unsigned image (the pinned file without its Authenticode signature, as defined in AGENTS.md) equals retail byte for byte |
+
+![gagarin link milestones](.github/assets/link_progress.svg)
+
+Next steps: a runnable hybrid build (M2); clearing the strict-check
+failures; fitting the two oversized matched objects at 0x49F620 and 0x4A80D0
+into their retail slots; ordering the library tail; and continuing the
+translation-unit migration.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: trivial-function generator
+
 As of **2026-10-22**, the verified snapshot reports **9,090 matched function
 rows**, **492 partial rows**, **9,582 manifest rows**, **1,560 manifest
 translation units**, and **1,568 tracked C++ files**. Whole-repository regression
@@ -17,14 +65,6 @@ bytes**, or 16.1% of 3,797,269 listed function bytes. The padding heuristic
 misses 603 matched entries. The last diagnostic link, taken before the second
 cleanup batch, reported **4,186 unique unresolved symbols**, **6,731 reference
 lines**, and zero duplicate definitions. Engine link closure remains unfinished.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: one source per duplicate family
 
@@ -3694,7 +3734,7 @@ structure has been recovered.
 | Reproducible compilation and matching | Gates are available for recovered translation units through [compile_all.sh](scripts/vc6/compile_all.sh) and [verify_all.py](scripts/vc6/verify_all.py). | Keep compilation passing and preserve existing matches through every structural change. |
 | Shared classes and inheritance | Partial. [LinkClass](match/core/link_class_methods.h), [GadgetClass](match/ui/gadget_class_methods.h), [StorageClass](match/economy/storage_class.h) and the [vector templates](match/core/vector_class.h) have shared declarations; address-scoped views still coexist, for example [gadget copy views](match/ui/gadget_copy_004b5630.h). | Consolidate related methods and confirmed layouts into common class definitions, with verified bases, members and virtual slots. |
 | Source and subsystem organization | Source is grouped under `match/`; consolidation into class-owned headers and implementations is ongoing. Original file/module boundaries have not been audited repository-wide. | Use recovered names, RTTI, call relationships and source-path evidence where available; record uncertainty instead of inventing original filenames or ownership. |
-| Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py); the engine has not been linked. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
+| Integrated project build | A tracked-source object build exists in [build_project.py](scripts/vc6/build_project.py). The M0 diagnostic link and the M1 address-faithful stub link complete (see the top of this file); no runnable engine build exists yet. The existing compile gate also compiles translation units separately. | Resolve remaining project dependencies, establish an integrated engine link, and account for library dependencies. |
 | Whole-image identity | Not established. Current gates do not produce or compare a complete `gamemd.exe`. | No byte-identical executable is promised; retain per-function verification as the matching standard. |
 | Engine reconstruction and fidelity | In progress; verified function totals are below. There is no audited class-completion percentage yet. | Recover the in-scope engine functions and dependencies, consolidate their source, and verify the integrated project while retaining per-function fidelity. |
 
