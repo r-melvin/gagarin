@@ -32,6 +32,8 @@ GG_STATIC_ASSERT(sizeof(TypeListData) == 0x1C);
 class HouseTypeClass : public AbstractTypeClass
 {
 public:
+    // FUNCTION: GAMEMD 0x5117D0 (decl; reloc) -- name to index, -1 when absent; ECX carries the name.
+    static int FindIndexOfName(const char* name);
     char          ParentCountry[0x19];     // +0x98  FixedString<25>
     unsigned char align_B1[3];             // +0xB1
     int           ArrayIndex;              // +0xB4

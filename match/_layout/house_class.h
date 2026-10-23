@@ -145,6 +145,8 @@ struct IPublicHouse : public IUnknown
 class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
+    // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- first house whose type has this country index; ECX carries it.
+    static HouseClass* FindByCountryIndex(int country);
     // FUNCTION: GAMEMD 0x4F9790 (decl; reloc) -- one stack argument.
     void FUN_004F9790(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x4F9950 (decl; reloc) -- one stack argument.

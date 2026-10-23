@@ -27,7 +27,7 @@ GG_STATIC_ASSERT(sizeof(Pair_8) == 0x8);
 // Element of the 0x50-byte record array at DAT_00ABED10 (count = DAT_0089C2DC squared).
 struct Rec_50
 {
-    CellStruct unknown_00;
+    Cell unknown_00;   // returned whole (one dword copy) by 0x58C5A0
     unsigned char unknown_04[0x1C];
     double unknown_20;
     double unknown_28;
@@ -59,35 +59,9 @@ struct Rec_0058C800Ret
 };
 GG_STATIC_ASSERT(offsetof(Rec_0058C800Ret, unknown_1A) == 0x1A);
 
-// Local view of CellClass (RTTI-attested class; MapCoords at +0x24): only the members this file touches.
-class CellClass
-{
-public:
-    unsigned char unknown_00[0x24];
-    CellStruct unknown_24;
-    unsigned char unknown_28[0x10];
-    int unknown_38;
-    unsigned char unknown_3C[0xDE];
-    unsigned char unknown_11A;
-    signed char unknown_11B;
 
-    // FUNCTION: GAMEMD 0x481810 (declaration)
-    CellClass* FUN_00481810(int a1);
-    // FUNCTION: GAMEMD 0x4863D0 (declaration)
-    bool FUN_004863D0();
-    // FUNCTION: GAMEMD 0x486380 (declaration)
-    bool FUN_00486380();
-    // FUNCTION: GAMEMD 0x4865B0 (declaration)
-    bool FUN_004865B0();
-    // FUNCTION: GAMEMD 0x4865D0 (declaration)
-    char FUN_004865D0();
-    // FUNCTION: GAMEMD 0x58C800 (declaration)
-    Rec_0058C800Ret* FUN_0058C800();
-};
-GG_STATIC_ASSERT(offsetof(CellClass, unknown_24) == 0x24);
-GG_STATIC_ASSERT(offsetof(CellClass, unknown_38) == 0x38);
-GG_STATIC_ASSERT(offsetof(CellClass, unknown_11A) == 0x11A);
-GG_STATIC_ASSERT(offsetof(CellClass, unknown_11B) == 0x11B);
+// RTTI-attested class; the canonical layout (_layout/cell_class.h) is included by MapGen.cpp.
+class CellClass;
 
 // Four ints: x, y, width, height.
 struct Rect_4i
@@ -98,6 +72,13 @@ struct Rect_4i
     int unknown_0C;
 };
 GG_STATIC_ASSERT(sizeof(Rect_4i) == 0x10);
+// Member-wise equality, as compared inline at 0x59B940.
+inline bool operator==(const Rect_4i& a, const Rect_4i& b)
+{
+    return a.unknown_00 == b.unknown_00 && a.unknown_04 == b.unknown_04 && a.unknown_08 == b.unknown_08 &&
+           a.unknown_0C == b.unknown_0C;
+}
+inline bool operator!=(const Rect_4i& a, const Rect_4i& b) { return !(a == b); }
 
 // The map object at 0x87F7E8 (immediate ECX at every call): only the entry points called from here.
 struct Cell_005A7250;
@@ -121,6 +102,8 @@ struct Gbl_0087F7E8
     void FUN_00654650();
     // FUNCTION: GAMEMD 0x5657A0 (declaration)
     CellClass* FUN_005657A0(CellStruct const* a1);
+    // FUNCTION: GAMEMD 0x56D230 (declaration) -- the zone of a cell for a movement zone.
+    int FUN_0056D230(const CellStruct& cell, int movementZone, bool isBridge);
     // The same entry point 0x5657A0 as the 0x5A7250 TU spelled it (by reference, its own cell view).
     Cell_005A7250* GetCell(const CellStruct_005A7250& cell);
 };
@@ -172,6 +155,8 @@ public:
     void FUN_0058C320(CellStruct* a1);
     // FUNCTION: GAMEMD 0x58C3B0
     void FUN_0058C3B0(CellStruct* a1);
+    // FUNCTION: GAMEMD 0x58E5D0
+    DynamicVectorClass<Cell>* FUN_0058E5D0();
     // FUNCTION: GAMEMD 0x594010
     bool FUN_00594010(Rect_4i* a1, int a2);
     // FUNCTION: GAMEMD 0x5942F0
@@ -339,6 +324,16 @@ inline bool Inline_005942F0(CellStruct c)
     return y + x > DAT_00ABED04 && x - y < DAT_00ABED04 && y - x < DAT_00ABED04 && y + x <= DAT_00ABED08;
 }
 
+// Region lookup by id (+0x08); out of line at 0x5943E0 and expanded in 0x594190 (placeholder name).
+inline MapRegionClass* Inline_005943E0(int id)
+{
+    for (int i = 0; i < DAT_00ABDF90.Count; i++) {
+        if (DAT_00ABDF90.Items[i]->unknown_08 == id)
+            return DAT_00ABDF90.Items[i];
+    }
+    return 0;
+}
+
 // Inline helper expanded in 0x58C320 (placeholder name): a draw in [0, last].
 inline unsigned int Inline_0058C320(unsigned int last)
 {
@@ -366,14 +361,144 @@ bool FUN_0058BCF0(int a1);
 bool FUN_0058BD80(int a1, int a2);
 // FUNCTION: GAMEMD 0x58C100
 void FUN_0058C100();
+// FUNCTION: GAMEMD 0x58C5A0
+Cell FUN_0058C5A0(int zone, int kind);
 // FUNCTION: GAMEMD 0x58CE90
 void FUN_0058CE90();
+// The random-map generator object at 0xABDFD8. Its constructor 0x595740
+// (called from the static initialiser 0x58B740; atexit teardown 0x58B760 ->
+// 0x5958E0) first runs the MapSeedClass constructor 0x595680 on +0 without
+// replacing the vtable pointer, then initialises the members below. The
+// 0x1C-byte blocks are vector objects whose constructors are 0x477DB0 /
+// 0x477BE0 (table 0x7E4DD8) and 0x5AC900 / 0x5105A0 (table 0x7ED90C); their
+// element types are not identified, so they stay opaque here. The object's
+// end is not yet bounded past +0x310.
+class Gbl_00ABDFD8 : public MapSeedClass
+{
+public:
+    int unknown_178;                    // +0x178  ctor 0
+    int unknown_17C;                    // +0x17C  ctor 0
+    int unknown_180;                    // +0x180  ctor 0
+    int unknown_184;                    // +0x184  ctor 0
+    unsigned char unknown_188[0x1C];    // +0x188  vector (0x477DB0, table 0x7E4DD8)
+    unsigned char unknown_1A4[0x1C];    // +0x1A4  vector (0x477DB0)
+    unsigned char unknown_1C0[0x1C];    // +0x1C0  vector (0x477DB0)
+    unsigned char unknown_1DC[0x1C];    // +0x1DC  vector (0x477DB0)
+    unsigned char unknown_1F8[0x1C];    // +0x1F8  dynamic vector (0x477BE0, growth 10)
+    unsigned char unknown_214[0x1C];    // +0x214  vector (0x477DB0)
+    unsigned char unknown_230[0x1C];    // +0x230  vector (0x477DB0)
+    unsigned char unknown_24C[0x1C];    // +0x24C  vector (0x477DB0)
+    unsigned char unknown_268[0x1C];    // +0x268  dynamic vector (0x477BE0, growth 10)
+    unsigned char unknown_284[0x1C];    // +0x284  vector (0x477DB0)
+    unsigned char unknown_2A0[0x1C];    // +0x2A0  vector (0x477DB0)
+    int unknown_2BC;                    // +0x2BC  ctor 0x9C4
+    int unknown_2C0;                    // +0x2C0  ctor 0x157C
+    unsigned char unknown_2C4[0x1C];    // +0x2C4  vector (0x5AC900, table 0x7ED90C)
+    unsigned char unknown_2E0[0x1C];    // +0x2E0  dynamic vector (0x5105A0, growth 10)
+    int unknown_2FC;                    // +0x2FC  ctor 0x1F4
+    bool unknown_300;                   // +0x300  ctor 1
+    int unknown_304;                    // +0x304  ctor 0
+    int unknown_308;                    // +0x308
+    int unknown_30C;                    // +0x30C  ctor 4
+    bool unknown_310;                   // +0x310  ctor 0
+
+    // FUNCTION: GAMEMD 0x5981F0 (declaration)
+    void FUN_005981F0();
+};
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_178) == 0x178);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_188) == 0x188);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_2A0) == 0x2A0);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_2BC) == 0x2BC);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_2C4) == 0x2C4);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_2FC) == 0x2FC);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_300) == 0x300);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_304) == 0x304);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_30C) == 0x30C);
+GG_STATIC_ASSERT(offsetof(Gbl_00ABDFD8, unknown_310) == 0x310);
+// GLOBAL: GAMEMD 0xABDFD8
+extern Gbl_00ABDFD8 DAT_00ABDFD8;
+
+// Callback run each pass of the 0x595BC0 dialog loop (CALL ESI, no arguments).
+typedef void (*Callback_00595BC0)();
+// Owned object at 0xABE150, deleted through its virtual deleting destructor (slot 0).
+class Obj_00ABE150
+{
+public:
+    virtual ~Obj_00ABE150();
+};
+class SeatNull_006406E0;
+class FileClass;
+// GLOBAL: GAMEMD 0x82AF14 -- callback slot; 0x48D1D0 is its resting value.
+extern Callback_00595BC0 DAT_0082AF14;
+// GLOBAL: GAMEMD 0xABDFEC
+extern Callback_00595BC0 DAT_00ABDFEC;
+// GLOBAL: GAMEMD 0xABE150
+extern Obj_00ABE150* DAT_00ABE150;
+// GLOBAL: GAMEMD 0xABE154 -- the preview whose first dword is its surface.
+extern SeatNull_006406E0* DAT_00ABE154;
+// GLOBAL: GAMEMD 0x885780 -- the palette written with the preview.
+extern char DAT_00885780[];
+// FUNCTION: GAMEMD 0x596300 (declaration) -- the dialog procedure of 0x595BC0.
+int __stdcall FUN_00596300(void* window, unsigned int message, unsigned int wparam, long lparam);
+// FUNCTION: GAMEMD 0x622650 (declaration) -- UI::BeginDialog (its header's globals clash with this TU's).
+void* UI_BeginDialog(unsigned short id, int (__stdcall* proc)(void*, unsigned int, unsigned int, long), int param);
+// FUNCTION: GAMEMD 0x622720 (declaration) -- UI::EndDialog.
+void UI_EndDialog(void* window);
+// FUNCTION: GAMEMD 0x532100 (declaration) -- __fastcall, one byte flag.
+void FUN_00532100(bool flag);
+// FUNCTION: GAMEMD 0x7B05C0 (declaration) -- write a surface to a PCX file:
+// file in ECX, surface in EDX, palette pushed.
+int FUN_007B05C0(FileClass* file, void* surface, void* palette);
+class BuildingTypeClass;
+// GLOBAL: GAMEMD 0xA83C6C -- BuildingTypeClass::Array items.
+extern BuildingTypeClass** DAT_00A83C6C;
+// FUNCTION: GAMEMD 0x45E7B0 (declaration) -- building type name to index.
+int FUN_0045E7B0(const char* name);
+// GLOBAL: GAMEMD 0x7ED6D8 -- 5.0
+extern const double DAT_007ED6D8;
+// GLOBAL: GAMEMD 0x7ED6E0 -- 15.0
+extern const double DAT_007ED6E0;
+// GLOBAL: GAMEMD 0x82AF18 -- one bit per neighbour of a 3x3 block (centre 0).
+extern int DAT_0082AF18[9];
+// FUNCTION: GAMEMD 0x5A1E50 (declaration) -- area in ECX, value in EDX, two stack arguments.
+bool FUN_005A1E50(Rect_4i* area, int a2, int a3, int a4);
+
+// Receiver of 0x590970 and 0x590FD0 (ECX); only +0x08 is read here.
+class Obj_00590970
+{
+public:
+    unsigned char unknown_00[8];
+    int unknown_08;
+
+    // FUNCTION: GAMEMD 0x590FD0
+    int FUN_00590FD0(CellStruct* cell, bool* ok, int a3, float a4);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00590970, unknown_08) == 0x8);
+
+// FUNCTION: GAMEMD 0x4CAC40 (declaration) -- the square root of a double.
+double __cdecl FUN_004CAC40(double value);
+// FUNCTION: GAMEMD 0x59B940
+float __stdcall FUN_0059B940(CellStruct* a1, CellStruct* a2, Rect_4i* area, CellStruct* a4, float a5, float a6);
+// FUNCTION: GAMEMD 0x5904B0
+bool __stdcall FUN_005904B0(Rect_4i* area);
+// FUNCTION: GAMEMD 0x595BC0
+int FUN_00595BC0(Callback_00595BC0 callback);
+// FUNCTION: GAMEMD 0x5A6C10
+void FUN_005A6C10(int a1, CellStruct* a2, int a3, int a4);
+// FUNCTION: GAMEMD 0x5A7E90
+void FUN_005A7E90(int a1, CellStruct* a2);
 // FUNCTION: GAMEMD 0x5A7FA0
 void FUN_005A7FA0(int a1, CellStruct* a2, char a3);
 // FUNCTION: GAMEMD 0x58D010
 void FUN_0058D010(char a1);
 // FUNCTION: GAMEMD 0x5943E0
 MapRegionClass* FUN_005943E0(int a1);
+// FUNCTION: GAMEMD 0x594420 (declaration) -- grows a region from `cell`.
+void FUN_00594420(CellClass* cell, int a2, int a3);
+// FUNCTION: GAMEMD 0x594700
+void FUN_00594700(int a1, int a2);
+// FUNCTION: GAMEMD 0x594190
+void __stdcall FUN_00594190(Rect_4i* area, int id);
 // FUNCTION: GAMEMD 0x599530
 void FUN_00599530(Obj_0059C580* a1);
 // FUNCTION: GAMEMD 0x59C530

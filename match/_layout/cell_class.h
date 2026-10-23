@@ -75,6 +75,14 @@ public:
     // The adjacent cell in direction `facing` (0-7, offsets at 0x89F688);
     // __thiscall, RET 4.
     CellClass* FUN_00481810(unsigned int facing);
+    // FUNCTION: GAMEMD 0x486380 (decl; reloc)
+    bool FUN_00486380();
+    // FUNCTION: GAMEMD 0x4863D0 (decl; reloc)
+    bool FUN_004863D0();
+    // FUNCTION: GAMEMD 0x4865B0 (decl; reloc)
+    bool FUN_004865B0();
+    // FUNCTION: GAMEMD 0x4865D0 (decl; reloc)
+    char FUN_004865D0();
     // FUNCTION: GAMEMD 0x486750 (decl; reloc)
     // True when IsoTileTypeIndex lies in [0xAA0E28, 0xAA0E28 + 0x10) and that
     // global is not -1.
@@ -82,6 +90,8 @@ public:
     // FUNCTION: GAMEMD 0x486770 (decl; reloc)
     // As 0x486750, against the global at 0xABAD1C.
     bool FUN_00486770();
+    // FUNCTION: GAMEMD 0x58C800 (decl; reloc) -- record for this cell (MapGen).
+    struct Rec_0058C800Ret* FUN_0058C800();
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
     void*           FoggedObjects;           // +0x28 ctor @0x0047BC05 (=0)

@@ -39,9 +39,11 @@ struct SubTileImage
     unsigned     unknown_bits : 2;  // +0x24 bits 0-1
     unsigned     ConnectFlag : 1;   // +0x24 bit 2
     unsigned     unknown_hi : 29;   // +0x24 bits 3-31
-    char         _pad_028[0x2A - 0x28];
+    signed char  unknown_28;        // +0x28 height level (added to a base, less 4, at 0x5A6C10)
+    char         _pad_029[0x2A - 0x29];
     signed char  MorphType;         // +0x2A
 };
+GG_STATIC_ASSERT(offsetof(SubTileImage, unknown_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(SubTileImage, MorphType) == 0x2A);
 
 // The header at the front of a loaded tile set: the two dimensions, then the
@@ -69,7 +71,9 @@ public:
     IsoTileTypeVtbl* Vfptr;                    // +0x000
     char             _pad_004[0x0A4 - 0x004];
     TileImageHeader* unknown_A4;                 // +0x0A4
-    char             _pad_0A8[0x2E4 - 0x0A8];
+    char             _pad_0A8[0x294 - 0x0A8];
+    int              unknown_294;              // +0x294 copied into CellClass +0x38 at 0x5A6C10
+    char             _pad_298[0x2E4 - 0x298];
     int              unknown_2E4;              // +0x2E4 sub-tile columns (loop bound in 0x5A7E90 / 0x5A7FA0)
     int              unknown_2E8;              // +0x2E8 sub-tile rows
     char             _pad_2EC[0x2F4 - 0x2EC];
@@ -77,6 +81,7 @@ public:
 };
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, Vfptr)            == 0x000);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_A4)         == 0x0A4);
+GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_294)        == 0x294);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E4)        == 0x2E4);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, unknown_2E8)        == 0x2E8);
 GG_STATIC_ASSERT(offsetof(IsometricTileTypeClass, TileDataLoadable) == 0x2F4);

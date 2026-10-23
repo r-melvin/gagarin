@@ -88329,9 +88329,9 @@
   "addr": "0x59BAB0",
   "sym": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
   "len": "0x10c",
-  "name": "FUN_0059BAB0",
+  "name": "?FUN_0059BAB0@@YG_NPAUCellStruct@@PAURect_4i@@DNN@Z",
   "status": "partial",
-  "pct": 74.2
+  "pct": 83.9
  },
  {
   "tu": "match/core/MapGen.cpp",
@@ -96398,5 +96398,95 @@
   "name": "?FUN_007A0F40@@YIXXZ",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58C5A0",
+  "sym": "?FUN_0058C5A0@@YI?AVCell@@HH@Z",
+  "len": "0x115",
+  "name": "?FUN_0058C5A0@@YI?AVCell@@HH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x58E5D0",
+  "sym": "?FUN_0058E5D0@MapRegionClass@@QAEPAV?$DynamicVectorClass@VCell@@@@XZ",
+  "len": "0x161",
+  "name": "MapRegionClass::FUN_0058E5D0",
+  "status": "partial",
+  "pct": 3.9
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5904B0",
+  "sym": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
+  "len": "0x114",
+  "name": "?FUN_005904B0@@YG_NPAURect_4i@@@Z",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x590FD0",
+  "sym": "?FUN_00590FD0@Obj_00590970@@QAEHPAUCellStruct@@PA_NHM@Z",
+  "len": "0x117",
+  "name": "Obj_00590970::FUN_00590FD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x594190",
+  "sym": "?FUN_00594190@@YGXPAURect_4i@@H@Z",
+  "len": "0x157",
+  "name": "?FUN_00594190@@YGXPAURect_4i@@H@Z",
+  "status": "partial",
+  "pct": 12.4
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x594700",
+  "sym": "?FUN_00594700@@YIXHH@Z",
+  "len": "0x16f",
+  "name": "?FUN_00594700@@YIXHH@Z",
+  "status": "partial",
+  "pct": 2.1
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x595BC0",
+  "sym": "?FUN_00595BC0@@YIHP6IXXZ@Z",
+  "len": "0x113",
+  "name": "?FUN_00595BC0@@YIHP6IXXZ@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x59B940",
+  "sym": "?FUN_0059B940@@YGMPAUCellStruct@@0PAURect_4i@@0MM@Z",
+  "len": "0x164",
+  "name": "?FUN_0059B940@@YGMPAUCellStruct@@0PAURect_4i@@0MM@Z",
+  "status": "partial",
+  "pct": 2.3
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A6C10",
+  "sym": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
+  "len": "0x166",
+  "name": "?FUN_005A6C10@@YIXHPAUCellStruct@@HH@Z",
+  "status": "partial",
+  "pct": 95.0
+ },
+ {
+  "tu": "match/core/MapGen.cpp",
+  "addr": "0x5A7E90",
+  "sym": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
+  "len": "0x103",
+  "name": "?FUN_005A7E90@@YIXHPAUCellStruct@@@Z",
+  "status": "partial",
+  "pct": 93.6
  }
 ]

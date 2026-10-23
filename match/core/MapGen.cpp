@@ -108,6 +108,12 @@ extern void* DAT_00B77F60;
 
 #include "vector_class_operations.h"
 #include "MapGen.h"
+#include <windows.h>
+#include "trivial_tu055_methods.h"
+#include "../ui/ui_focus_methods.h"
+#include "../ui/ui_updated_methods.h"
+#include "../platform/ccfile_class.h"
+#include "vtable_seating_ctor_family_methods.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
@@ -125,6 +131,10 @@ template class DynamicVectorClass<BaseNodeClass>;
 template<class T> struct TPoint3D { T X; T Y; T Z; TPoint3D() {} bool operator==(const TPoint3D<T>& o) const { return X==o.X && Y==o.Y && Z==o.Z; } bool operator!=(const TPoint3D<T>& o) const { return !(*this==o); } };
 
 #include "../_layout/geometry2d.h"
+#include "../_layout/building_class.h"
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/cell_class.h"
 
 template class DynamicVectorClass<Point2D>;
 
@@ -324,7 +334,7 @@ void __cdecl FUN_0058B700()
 // Tail-calls a method on a global object.
 void FUN_0058B760(int a1, int a2)
 {
-    FUN_005958E0(DAT_00ABDFD8, a2);
+    FUN_005958E0(&DAT_00ABDFD8, a2);
 }
 
 // FUNCTION: GAMEMD 0x58B770
@@ -446,7 +456,7 @@ bool FUN_0058BD80(int a1, int a2)
 // FUNCTION: GAMEMD 0x58BF70
 MapRegionClass::MapRegionClass(CellStruct a1)
     : unknown_00(0), unknown_04(0), unknown_08(DAT_00ABED14), unknown_0C(0),
-      unknown_10(DAT_0087F7E8.FUN_005657A0(&a1)->unknown_11B),
+      unknown_10(DAT_0087F7E8.FUN_005657A0(&a1)->Level),
       unknown_14(DAT_0087F7E8.FUN_005657A0(&a1)->FUN_004865D0()),
       unknown_16(a1), unknown_1A(0), unknown_1B(1), unknown_1C(0), unknown_20(0), unknown_24(0),
       unknown_28(0, 0), unknown_40(0), unknown_44(0), unknown_48(0), unknown_4C(0)
@@ -527,6 +537,37 @@ void MapRegionClass::FUN_0058C3B0(CellStruct* a1)
     *a1 = z;
 }
 
+// FUNCTION: GAMEMD 0x58C5A0
+// Draw random records of the 0xABED10 table into its first slot until one
+// names a non-origin cell in `zone` that passes 0x486380 and, unless `kind`
+// is -1, carries that kind at +0x38. Gives up with the origin after 100 draws.
+Cell FUN_0058C5A0(int zone, int kind)
+{
+    Rec_50* rec = DAT_00ABED10;
+    int count = DAT_0089C2DC * DAT_0089C2DC;
+    int tries = 0;
+    for (;;) {
+        *rec = DAT_00ABED10[Inline_0058C320(count - 1)];
+        tries++;
+        if (tries >= 100) {
+            return Cell(0, 0);
+        }
+        CellClass* cell = DAT_0087F7E8.FUN_005657A0(&rec->unknown_00);
+        if (rec->unknown_00.X == 0 && rec->unknown_00.Y == 0) {
+            continue;
+        }
+        if (DAT_0087F7E8.FUN_0056D230(cell->MapCoords, 0, false) != zone) {
+            continue;
+        }
+        if (!cell->FUN_00486380()) {
+            continue;
+        }
+        if (kind == -1 || rec->unknown_38 == kind) {
+            return rec->unknown_00;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x58CE90
 void FUN_0058CE90()
 {
@@ -565,15 +606,116 @@ void MapRegionClass::FUN_0058D5A0(char a1)
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         int id;
         if (DAT_00ABED10 == 0)
             id = -1;
         else
             id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
         if (id == unknown_08)
-            it->unknown_11B += a1;
+            it->Level += a1;
     }
+}
+
+// FUNCTION: GAMEMD 0x58E5D0
+// Collect this region's border cells: walking the cell list from the back,
+// every cell with an in-diamond neighbour owned by another region (or by
+// none) is appended once to a new list that grows by half the +0x0C count.
+DynamicVectorClass<Cell>* MapRegionClass::FUN_0058E5D0()
+{
+    DynamicVectorClass<Cell>* border = new DynamicVectorClass<Cell>;
+    int step = unknown_0C / 2;
+    if (step < 10)
+        step = 10;
+    border->CapacityIncrement = step;
+    for (int i = unknown_28.Count - 1; i >= 0; i--) {
+        Cell cell = unknown_28.Items[i];
+        for (int dir = 0; dir < 8; dir++) {
+            const CellStruct& offset = DAT_0089F688[dir & 7];
+            CellStruct adj;
+            adj.X = offset.X + cell.X;
+            adj.Y = offset.Y + cell.Y;
+            if (Inline_005942F0(adj)) {
+                int owner;
+                if (DAT_00ABED10 == 0)
+                    owner = -1;
+                else
+                    owner = DAT_00ABED10[adj.Y * DAT_0089C2DC + adj.X].unknown_38;
+                if (owner != unknown_08) {
+                    border->AddItem(cell);
+                    break;
+                }
+            }
+        }
+    }
+    return border;
+}
+
+// FUNCTION: GAMEMD 0x5904B0
+// Find the first cell of `area` (inclusive bounds) with no overlay, passing
+// 0x486380 and holding no object, and unlimbo a neutral "CABHUT" building at
+// its centre. True when one was placed.
+bool __stdcall FUN_005904B0(Rect_4i* area)
+{
+    for (int y = area->unknown_04; y < area->unknown_04 + area->unknown_0C + 1; y++) {
+        for (int x = area->unknown_00; x < area->unknown_00 + area->unknown_08 + 1; x++) {
+            CellStruct c;
+            c.X = x;
+            c.Y = y;
+            CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+            if (cell->OverlayTypeIndex == -1 && cell->FUN_00486380() && cell->FirstObject == 0) {
+                HouseClass* owner = HouseClass::FindByCountryIndex(HouseTypeClass::FindIndexOfName("Neutral"));
+                int type = FUN_0045E7B0("CABHUT");
+                BuildingClass* hut = new BuildingClass(DAT_00A83C6C[type], owner);
+                CoordStruct coord;
+                coord.X = cell->MapCoords.X * 256 + 128;
+                coord.Y = cell->MapCoords.Y * 256 + 128;
+                coord.Z = 0;
+                hut->vf_54(coord, 0);
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x590FD0
+// Test the 5x5 block centred on `cell` with 0x5A1E50 at a threshold scaled
+// from `a4`; on failure clear `*ok` and return 0. Otherwise test each of the
+// eight surrounding 5x5 blocks and return the 0x82AF18 bits of those that pass.
+int Obj_00590970::FUN_00590FD0(CellStruct* cell, bool* ok, int a3, float a4)
+{
+    int threshold = (int)((1.0f - a4) * (DAT_007ED6E0 - DAT_007ED6D8) + DAT_007ED6D8);
+    CellStruct corner;
+    corner.X = cell->X - 2;
+    corner.Y = cell->Y - 2;
+    int x = corner.X;
+    int y = corner.Y;
+    Rect_4i area;
+    area.unknown_00 = x;
+    area.unknown_04 = y;
+    area.unknown_08 = 5;
+    area.unknown_0C = 5;
+    if (!FUN_005A1E50(&area, unknown_08, a3, threshold)) {
+        *ok = false;
+        return 0;
+    }
+    int mask = 0;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (i == 1 && j == 1) {
+                continue;
+            }
+            area.unknown_00 = x + (j - 1) * 5;
+            area.unknown_04 = y + (i - 1) * 5;
+            area.unknown_08 = 5;
+            area.unknown_0C = 5;
+            if (FUN_005A1E50(&area, unknown_08, a3, threshold)) {
+                mask |= DAT_0082AF18[i * 3 + j];
+            }
+        }
+    }
+    return mask;
 }
 
 // FUNCTION: GAMEMD 0x594010
@@ -615,6 +757,27 @@ bool MapRegionClass::FUN_00594010(Rect_4i* a1, int a2)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x594190
+// Give every in-diamond cell of `area` to region `id`: record the owner in the
+// 0x50-byte cell records and copy the region's +0x10 byte into the cell.
+void __stdcall FUN_00594190(Rect_4i* area, int id)
+{
+    for (int y = area->unknown_04; y < area->unknown_0C + area->unknown_04; y++) {
+        for (int x = area->unknown_00; x < area->unknown_08 + area->unknown_00; x++) {
+            CellStruct c;
+            c.X = (short)x;
+            c.Y = (short)y;
+            if (Inline_005942F0(c)) {
+                if (DAT_00ABED10 != 0)
+                    DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38 = id;
+                CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+                MapRegionClass* region = Inline_005943E0(id);
+                cell->Level = (char)region->unknown_10;
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x5942F0
 void MapRegionClass::FUN_005942F0(Rect_4i* a1)
 {
@@ -626,7 +789,7 @@ void MapRegionClass::FUN_005942F0(Rect_4i* a1)
             if (Inline_005942F0(c)) {
                 if (DAT_00ABED10 != 0)
                     DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38 = unknown_08;
-                DAT_0087F7E8.FUN_005657A0(&c)->unknown_11B = (char)unknown_10;
+                DAT_0087F7E8.FUN_005657A0(&c)->Level = (char)unknown_10;
             }
         }
     }
@@ -635,17 +798,84 @@ void MapRegionClass::FUN_005942F0(Rect_4i* a1)
 // FUNCTION: GAMEMD 0x5943E0
 MapRegionClass* FUN_005943E0(int a1)
 {
-    for (int i = 0; i < DAT_00ABDF90.Count; i++) {
-        if (DAT_00ABDF90.Items[i]->unknown_08 == a1)
-            return DAT_00ABDF90.Items[i];
+    return Inline_005943E0(a1);
+}
+
+// FUNCTION: GAMEMD 0x594700
+// Rebuild the regions: clear both owner words of every cell record, delete
+// every region, then grow a new region from each free in-diamond cell whose
+// +0x4C word is clear and whose zone for movement zone `a1` is `a2`.
+void FUN_00594700(int a1, int a2)
+{
+    if (DAT_00ABED10 != 0) {
+        int n = DAT_0089C2DC * DAT_0089C2DC;
+        for (int i = 0; i < n; i++) {
+            DAT_00ABED10[i].unknown_38 = -1;
+            DAT_00ABED10[i].unknown_3C = -1;
+        }
     }
-    return 0;
+    for (int i = DAT_00ABDF90.Count - 1; i >= 0; i--) {
+        MapRegionClass* p = DAT_00ABDF90.Items[i];
+        if (p)
+            delete p;
+    }
+    DAT_00ABED14 = 0;
+    DAT_0087F7E8.FUN_00578350();
+    CellClass* it;
+    while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
+        if (Inline_005942F0(it->MapCoords) &&
+            DAT_00ABED10[it->MapCoords.Y * DAT_0089C2DC + it->MapCoords.X].unknown_38 == -1 &&
+            it->Passability == 0 && DAT_0087F7E8.FUN_0056D230(it->MapCoords, a1, false) == a2)
+            FUN_00594420(it, a1, a2);
+    }
 }
 
 // FUNCTION: GAMEMD 0x595710
 void MapSeedClass::FUN_00595710()
 {
     FUN_007CA489(&unknown_78, FUN_00734E60(DAT_0082BA2C, 0, DAT_0082BA48, 0xF5E));
+}
+
+// FUNCTION: GAMEMD 0x595BC0
+// Run the random-map progress dialog (resource 0x105) until its procedure
+// stores a result or the UI loop reports an update, calling `callback` each
+// pass. The callback is published at 0x82AF14 and 0xABDFEC for the duration.
+// Afterwards the preview at 0xABE154 is written to "RandMap.img" (when it
+// holds a surface) and released, and the object at 0xABE150 is deleted.
+int FUN_00595BC0(Callback_00595BC0 callback)
+{
+    int result = 0;
+    DAT_00ABDFD8.FUN_005981F0();
+    HWND window = (HWND)UI_BeginDialog(0x105, FUN_00596300, 0);
+    if (window != 0) {
+        DAT_0082AF14 = callback;
+        DAT_00ABDFEC = callback;
+        SetWindowLongA(window, DWL_USER, (LONG)&result);
+        SendMessageA(window, 0x4A9, 0, 1);
+        UI_FocusOnWindow(window);
+        while (result == 0 && UI::Updated() != true) {
+            if (callback != 0) {
+                callback();
+            }
+            FUN_00532100(false);
+        }
+        UI_EndDialog(window);
+    }
+    DAT_0082AF14 = (Callback_00595BC0)FUN_0048D1D0;
+    DAT_00ABDFEC = 0;
+    if (DAT_00ABE154 != 0) {
+        if (DAT_00ABE154->unknown_00 != 0) {
+            RawFileClass file("RandMap.img");
+            FUN_007B05C0(&file, (void*)DAT_00ABE154->unknown_00, DAT_00885780);
+        }
+        delete DAT_00ABE154;
+        DAT_00ABE154 = 0;
+    }
+    if (DAT_00ABE150 != 0) {
+        delete DAT_00ABE150;
+        DAT_00ABE150 = 0;
+    }
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x597260
@@ -787,17 +1017,45 @@ void FUN_0059B6D0()
             for (int i = 0; i < 8; i += 2) {
                 CellClass* n = it->FUN_00481810(i);
                 if (n->FUN_00486380())
-                    n->unknown_38 = DAT_00AA0E18;
+                    n->IsoTileTypeIndex = DAT_00AA0E18;
             }
         }
     }
 }
 
+// FUNCTION: GAMEMD 0x59B940
+// When `area` is the whole map rectangle (0xABE2F0) this is the plain
+// distance from a1 to a2. Otherwise a2 and a4 are compared along the two
+// diagonals (half sums and half differences): the result weighs those
+// components by a5 and a6 over their length and scales by the larger axis
+// distance between a1 and a2 (0 when a2 and a4 share both diagonals).
+float __stdcall FUN_0059B940(CellStruct* a1, CellStruct* a2, Rect_4i* area, CellStruct* a4, float a5, float a6)
+{
+    if (*area != DAT_00ABE2F0) {
+        int across = abs(((a2->X - a2->Y) >> 1) - ((a4->X - a4->Y) >> 1));
+        int along = abs(((a2->X + a2->Y) >> 1) - ((a4->X + a4->Y) >> 1));
+        if (across == 0 && along == 0) {
+            return 0.0f;
+        }
+        double length = FUN_004CAC40(along * along + across * across);
+        double share = across / length;
+        int dx = abs(a1->X - a2->X);
+        int dy = abs(a1->Y - a2->Y);
+        int steps = dx > dy ? dx : dy;
+        return (a5 * share + a6 * (along / length)) * steps;
+    }
+    int dy = a1->Y - a2->Y;
+    int dx = a1->X - a2->X;
+    return FUN_004CAC40(dy * dy + dx * dx);
+}
+
 // FUNCTION: GAMEMD 0x59BAB0
+// True when `a1` lies in `a2`: inside the ellipse inscribed in the rectangle
+// (axis weights `a4`/`a5`) when `a3` is set, else inside the rectangle itself.
+// The rectangle at 0xABE2F0 always passes.
 bool __stdcall FUN_0059BAB0(CellStruct* a1, Rect_4i* a2, char a3, double a4, double a5)
 {
-    if (a2->unknown_00 == DAT_00ABE2F0.unknown_00 && a2->unknown_04 == DAT_00ABE2F0.unknown_04 &&
-        a2->unknown_08 == DAT_00ABE2F0.unknown_08 && a2->unknown_0C == DAT_00ABE2F0.unknown_0C)
+    if (*a2 == DAT_00ABE2F0)
         return true;
     if (a3) {
         double dx = (double)(a1->X - a2->unknown_00 * 2 - a1->Y - 1 + DAT_0087F8DC) * 0.5 -
@@ -807,8 +1065,10 @@ bool __stdcall FUN_0059BAB0(CellStruct* a1, Rect_4i* a2, char a3, double a4, dou
         if (dx * dx * a4 + dy * dy * a5 < 1.0)
             return true;
     } else {
-        if (a1->X >= a2->unknown_00 && a1->X < a2->unknown_08 + a2->unknown_00 &&
-            a1->Y >= a2->unknown_04 && a1->Y < a2->unknown_0C + a2->unknown_04)
+        int x = a1->X;
+        int y = a1->Y;
+        if (x >= a2->unknown_00 && x < a2->unknown_08 + a2->unknown_00 && y >= a2->unknown_04 &&
+            y < a2->unknown_0C + a2->unknown_04)
             return true;
     }
     return false;
@@ -820,9 +1080,9 @@ void FUN_0059C530()
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        if (it->unknown_38 >= DAT_00ABAD28 && it->unknown_38 < DAT_00ABAD28 + 0x2A) {
-            it->unknown_38 = 0;
-            it->unknown_11A = 0;
+        if (it->IsoTileTypeIndex >= DAT_00ABAD28 && it->IsoTileTypeIndex < DAT_00ABAD28 + 0x2A) {
+            it->IsoTileTypeIndex = 0;
+            it->Height = 0;
         }
     }
 }
@@ -837,9 +1097,9 @@ bool __stdcall FUN_0059C800(int a1)
         if (DAT_00ABED10 == 0)
             id = -1;
         else
-            id = DAT_00ABED10[it->unknown_24.Y * DAT_0089C2DC + it->unknown_24.X].unknown_38;
-        if (id == a1 && (it->unknown_38 == 0 || it->unknown_38 == 0xFFFF))
-            it->unknown_38 = DAT_00AA0E18;
+            id = DAT_00ABED10[it->MapCoords.Y * DAT_0089C2DC + it->MapCoords.X].unknown_38;
+        if (id == a1 && (it->IsoTileTypeIndex == 0 || it->IsoTileTypeIndex == 0xFFFF))
+            it->IsoTileTypeIndex = DAT_00AA0E18;
     }
     return true;
 }
@@ -859,14 +1119,14 @@ void __stdcall FUN_0059E640(int a1, char a2)
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         int id;
         if (DAT_00ABED10 == 0)
             id = -1;
         else
             id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
         if (id == a1)
-            it->unknown_11B = a2;
+            it->Level = a2;
     }
 }
 
@@ -876,14 +1136,14 @@ void __stdcall FUN_0059E6C0(int a1, char a2)
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         int id;
         if (DAT_00ABED10 == 0)
             id = -1;
         else
             id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
         if (id == a1)
-            it->unknown_11B += a2;
+            it->Level += a2;
     }
 }
 
@@ -893,7 +1153,7 @@ void FUN_005A1270()
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_3C = 0;
     }
 }
@@ -904,14 +1164,14 @@ void __stdcall FUN_005A12D0(char a1, int a2)
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         int id;
         if (DAT_00ABED10 == 0)
             id = -1;
         else
             id = DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38;
         if (id != a2)
-            it->unknown_11B += a1;
+            it->Level += a1;
     }
 }
 
@@ -945,7 +1205,7 @@ void FUN_005A3A60()
     DAT_0087F7E8.FUN_00578350();
     CellClass* it;
     while ((it = DAT_0087F7E8.FUN_00578290()) != 0) {
-        CellStruct c = it->unknown_24;
+        CellStruct c = it->MapCoords;
         Rec_50* r = &DAT_00ABED10[c.Y * DAT_0089C2DC + c.X];
         r->unknown_28 = DAT_007ED7F0;
         r->unknown_20 = DAT_007ED7F8;
@@ -994,6 +1254,38 @@ bool FUN_005A6BA0(CellStruct* a1)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5A6C10
+// Stamp tile `a1` at `a2`: every on-map sub-tile cell with image data takes the
+// tile index, its sub-tile number as height, the sub-tile slope and (unless
+// `a4` is -1) a level of `a4` plus the sub-tile's own less four; the cell
+// record then belongs to region `a3`.
+void FUN_005A6C10(int a1, CellStruct* a2, int a3, int a4)
+{
+    IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
+    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    if (d != 0) {
+        for (int y = 0; y < t->unknown_2E8; y++) {
+            for (int x = 0; x < t->unknown_2E4; x++) {
+                CellStruct c = Cell(a2->X + x, a2->Y + y);
+                if (Inline_005942F0(c)) {
+                    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+                    int index = t->unknown_2E4 * y + x;
+                    SubTileImage* sub = d->SubTiles[index];
+                    if (sub != 0) {
+                        cell->IsoTileTypeIndex = t->unknown_294;
+                        cell->Height = (char)index;
+                        if (a4 != -1)
+                            cell->Level = sub->unknown_28 + a4 - 4;
+                        cell->SlopeIndex = sub->MorphType;
+                        if (DAT_00ABED10 != 0)
+                            DAT_00ABED10[c.Y * DAT_0089C2DC + c.X].unknown_38 = a3;
+                    }
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x5A7250
 // True when all four corners lie on the map and every cell of the rectangle
 // passes: cells of the first kind need `allow_first`, of the second kind
@@ -1026,6 +1318,30 @@ bool FUN_005A7250(const Rect_005A7250* rect, bool allow_first, bool allow_second
         }
     }
     return true;
+}
+
+// FUNCTION: GAMEMD 0x5A7E90
+// For each sub-tile cell of tile `a1` placed at `a2` that lies on the map,
+// fetch the cell; where the tile has image data, reset its +0x38 word to
+// 0xFFFF and clear the +0x11A byte.
+void FUN_005A7E90(int a1, CellStruct* a2)
+{
+    IsometricTileTypeClass* t = DAT_00A8ED2C[a1];
+    TileImageHeader* d = (t->*t->Vfptr->At_9C)();
+    if (d != 0) {
+        for (int y = 0; y < t->unknown_2E8; y++) {
+            for (int x = 0; x < t->unknown_2E4; x++) {
+                CellStruct c = Cell(a2->X + x, a2->Y + y);
+                if (Inline_005942F0(c)) {
+                    CellClass* cell = DAT_0087F7E8.FUN_005657A0(&c);
+                    if (d->SubTiles[t->unknown_2E4 * y + x] != 0) {
+                        cell->IsoTileTypeIndex = 0xFFFF;
+                        cell->Height = 0;
+                    }
+                }
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x5A7FA0
