@@ -117,6 +117,7 @@ extern const char* const DAT_0083ED04[4];
 #include "../ui/shape_button_class.h"
 // GLOBAL: GAMEMD 0x87F6C4
 extern ColorConvert* DAT_0087F6C4;
+#include <objidl.h>
 #include "session_entry.h"
 #include <wchar.h>
 #include <string.h>
@@ -518,17 +519,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_4B) == 0x4B);
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_53) == 0x53);
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_57) == 0x57);
 GG_STATIC_ASSERT(offsetof(Obj_00696F10, unknown_67) == 0x67);
-
-struct Obj_0069B540
-{
-    char Pad_00[0x24];
-    int unknown_24;
-    char Pad_28[0x4C - 0x28];
-    int unknown_4C[8];
-    int unknown_6C[8];
-};
-GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_4C) == 0x4C);
-GG_STATIC_ASSERT(offsetof(Obj_0069B540, unknown_6C) == 0x6C);
 
 struct Obj_0069BBE0
 {
@@ -1215,16 +1205,44 @@ bool SessionClass::FUN_0069AE70()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x0069B540
-void FUN_0069B540(Obj_0069B540* self)
+void GameModeOptionsClass_Opt::Clear()
 {
-    self->unknown_24 = 0;
+    AIPlayers = 0;
     for (int i = 0; i < 8; i++) {
-        self->unknown_4C[i] = -1;
-        self->unknown_6C[i] = -1;
+        unknown_4C[i] = -1;
+        unknown_6C[i] = -1;
     }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69B560
+bool GameModeOptionsClass_Opt::FUN_0069B560(IStream* stream)
+{
+    if (stream) {
+        unsigned long length = 300;
+        if (stream->Write(&length, 4, 0) >= 0 &&
+            stream->Write(this, length, 0) >= 0)
+            return true;
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x69B5B0
+bool GameModeOptionsClass_Opt::FUN_0069B5B0(IStream* stream)
+{
+    if (stream) {
+        unsigned long length;
+        if (stream->Read(&length, 4, 0) >= 0 && length == 300) {
+            HRESULT result = stream->Read(this, 300, 0);
+            // Native writes the sentinel even when the second Read fails.
+            unknown_04 = -1;
+            if (result >= 0)
+                return true;
+        }
+    }
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x69B700
 // Branching.
 int Obj_0069B700::FUN_0069B700()
@@ -1278,7 +1296,7 @@ bool SessionClass::FUN_0069B600(int value)
             return true;
     }
     for (int j = 0; j < 8; ++j) {
-        if (unknown_84[j] == value)
+        if (unknown_18.unknown_6C[j] == value)
             return true;
     }
     return false;
@@ -1377,14 +1395,14 @@ void SessionClass::FUN_0069B8C0()
             player->unknown_57 == -2 ? -2 : player->unknown_53);
     }
     for (int slot = 0; slot < 8; ++slot) {
-        if (Session_00A8B238.unknown_64[slot] == -2) {
+        if (Session_00A8B238.unknown_18.unknown_4C[slot] == -2) {
             if (unknown_04)
-                Session_00A8B238.unknown_64[slot] = unknown_04->vf_28();
+                Session_00A8B238.unknown_18.unknown_4C[slot] = unknown_04->vf_28();
             else
-                Session_00A8B238.unknown_64[slot] =
+                Session_00A8B238.unknown_18.unknown_4C[slot] =
                     DAT_00A8B230->unknown_0218.RandomRanged(0, 9);
         }
-        if (Session_00A8B238.unknown_84[slot] == -2) {
+        if (Session_00A8B238.unknown_18.unknown_6C[slot] == -2) {
             int value;
             bool used;
             do {
@@ -1402,7 +1420,7 @@ void SessionClass::FUN_0069B8C0()
                     }
                     if (!used) {
                         for (int i = 0; i < 8; ++i) {
-                            if (Session_00A8B238.unknown_84[i] == value) {
+                            if (Session_00A8B238.unknown_18.unknown_6C[i] == value) {
                                 used = true;
                                 break;
                             }
@@ -1410,10 +1428,10 @@ void SessionClass::FUN_0069B8C0()
                     }
                 }
             } while (used);
-            Session_00A8B238.unknown_84[slot] = value;
+            Session_00A8B238.unknown_18.unknown_6C[slot] = value;
         }
-        FUN_004068E0(STR_0083F6C8, slot, Session_00A8B238.unknown_64[slot],
-            Session_00A8B238.unknown_84[slot]);
+        FUN_004068E0(STR_0083F6C8, slot, Session_00A8B238.unknown_18.unknown_4C[slot],
+            Session_00A8B238.unknown_18.unknown_6C[slot]);
     }
 }
 

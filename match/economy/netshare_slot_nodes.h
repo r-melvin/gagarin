@@ -136,17 +136,7 @@ extern bool DirtyFlagD;
 extern short CounterA;
 extern short CounterB;
 
-// GLOBAL: GAMEMD 0xA8B250 — a lobby list the full reset empties.
-struct LobbyList_005E8B60
-{
-    // FUNCTION: GAMEMD 0x69B540 (decl; reloc) — __thiscall, no arguments; clears +0x24
-    // and the two eight-entry tables at +0x4C and +0x6C.
-    void Clear();
-
-    int unknown_00;   // +0x00 the identifier of the selected game mode (netshare 0x5E2F80 and others)
-};
-GG_STATIC_ASSERT(offsetof(LobbyList_005E8B60, unknown_00) == 0x0);
-extern LobbyList_005E8B60 DAT_00A8B250;
+#include "../_layout/game_mode_options.h"
 
 extern "C" {
 // GLOBAL: GAMEMD 0x8317D8 — "D:\\ra2mdpost\\netshare.cpp", the retail source

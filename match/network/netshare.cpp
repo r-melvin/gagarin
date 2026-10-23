@@ -733,9 +733,8 @@ int FUN_004E4170(HWND dialog, int control, int fallback);
 // FUNCTION: GAMEMD 0x4E4E20 (decl; reloc) -- __fastcall: the house control's value, RET 4.
 int FUN_004E4E20(HWND dialog, int control, int fallback);
 
-// GLOBAL: GAMEMD 0xA8B250 -- the identifier of the selected game mode (read as an int here;
-// netshare_slot_nodes.h names the same address as a list object).
-extern int SelectedMode_00A8B250;
+// The selected mode is GameModeOptions.unknown_00 in the shared layout.
+
 // GLOBAL: GAMEMD 0xA8B254 -- the selected map's list index.
 extern int DAT_00A8B254;
 // GLOBAL: GAMEMD 0xA8B268, 0xA8B25C, 0xA8B270
@@ -1276,7 +1275,7 @@ void FUN_005E2F60(HWND dialog)
 // If no game mode matches the selected identifier, fall back to the default.
 void FUN_005E2F80()
 {
-    if (MultiplayerGameMode_Get(DAT_00A8B250.unknown_00) == 0) {
+    if (MultiplayerGameMode_Get(GameModeOptions.unknown_00) == 0) {
         FUN_005D5E10();
     }
 }
@@ -1720,7 +1719,7 @@ void Reset_Lobby()
     }
 
     SelectedSlotIndex = -1;
-    DAT_00A8B250.Clear();
+    GameModeOptions.Clear();
     CounterA = 0;
     CounterB = 0;
 }
@@ -2627,7 +2626,7 @@ void FUN_005ED270(HWND dialog, int control, int kind)
 // 7 + 3 * i) and the option bytes at +0x14..+0x18.
 void FUN_005ED400(HWND dialog, int* snapshot)
 {
-    snapshot[0] = SelectedMode_00A8B250;
+    snapshot[0] = GameModeOptions.unknown_00;
     snapshot[1] = DAT_00A8B254;
     for (int i = 1; i < 8; i++) {
         int control = Slot_Control_Id(i);

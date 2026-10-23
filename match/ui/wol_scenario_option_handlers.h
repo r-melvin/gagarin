@@ -72,48 +72,7 @@ extern "C" __declspec(dllimport) long __stdcall SendDlgItemMessageA(HWND_ dlg,
 //
 // The 0x14/0x64-wide holes are never referenced by this family; they carry the
 // build-off-ally flag and the per-slot AI arrays and are left as named gaps.
-struct GameModeOptionsClass_Opt
-{
-    int   unknown_00;        // +0x00  (MP mode index)
-    int   unknown_04;        // +0x04  (scenario index)
-    bool  Bases;             // +0x08
-    char  unknown_09[3];     // +0x09  alignment before the int at +0x0C
-    int   Money;             // +0x0C
-    bool  BridgeDestruction; // +0x10
-    bool  Crates;            // +0x11
-    bool  ShortGame;         // +0x12
-    bool  SWAllowed;         // +0x13
-    bool  unknown_14;        // +0x14  (build-off-ally)
-    char  unknown_15[3];     // +0x15  alignment before the int at +0x18
-    int   GameSpeed;         // +0x18
-    bool  MultiEngineer;     // +0x1C
-    char  unknown_1D[3];     // +0x1D  alignment before the int at +0x20
-    int   UnitCount;         // +0x20
-    int   AIPlayers;         // +0x24
-    int   AIDifficulty;      // +0x28
-    char  unknown_2C[0xA0];  // +0x2C  per-slot AI arrays, untouched here
-    bool  unknown_CC;        // +0xCC  (allies-allowed)
-    bool  HarvesterTruce;    // +0xCD
-    bool  unknown_CE;        // +0xCE  (capture the flag)
-    bool  FogOfWar;          // +0xCF
-    bool  MCVRedeploy;       // +0xD0
-};
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, Bases) == 0x08);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, Money) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, BridgeDestruction) == 0x10);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, Crates) == 0x11);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, ShortGame) == 0x12);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, SWAllowed) == 0x13);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, GameSpeed) == 0x18);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, MultiEngineer) == 0x1C);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, UnitCount) == 0x20);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, AIPlayers) == 0x24);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, AIDifficulty) == 0x28);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, HarvesterTruce) == 0xCD);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, FogOfWar) == 0xCF);
-GG_STATIC_ASSERT(offsetof(GameModeOptionsClass_Opt, MCVRedeploy) == 0xD0);
-
-extern GameModeOptionsClass_Opt GameModeOptions;
+#include "../_layout/game_mode_options.h"
 
 // GLOBAL: GAMEMD 0x822CF4 — the scenario tech level, a standalone int outside
 // the option block (0x5B9680 `MOV [0x822cf4],EAX`).

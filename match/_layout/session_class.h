@@ -9,6 +9,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class.h"
 #include "ipx_address_class.h"
+#include "game_mode_options.h"
 
 class MultiplayerGameMode;
 struct NetPlayerClass;
@@ -35,10 +36,8 @@ struct SessionClass
 {
     int  GameMode;              // +0x0000
     MultiplayerGameMode* unknown_04; // 0x69B910, virtual slots27/28
-    char unknown_08[0x64 - 8];
-    int unknown_64[8]; // globalA8B29C, 0x69B9D6..0x69BAA0
-    int unknown_84[8]; // 0x69BA5E..0x69BA74, eight DWORDs
-    char unknown_A4[0x144 - 0xA4];
+    char unknown_08[0x18 - 8];
+    GameModeOptionsClass_Opt unknown_18; // native receiver 0xA8B250
     unsigned long unknown_144; // native 0x697B41 stores the mixed DWORD
     char unknown_148[0x15C - 0x148];
     int unknown_15C; // globalA8B394, 0x69B98E
@@ -141,10 +140,10 @@ extern SessionClass Session_00A8B238;
 
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_04) == 4);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_64) == 0x64);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_64) == 0x20);
-GG_STATIC_ASSERT(offsetof(SessionClass, unknown_84) == 0x84);
-GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_84) == 0x20);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18.unknown_4C) == 0x64);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18.unknown_4C) == 0x20);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18.unknown_6C) == 0x84);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18.unknown_6C) == 0x20);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_15C) == 0x15C);
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C) == 0x283C);
@@ -212,4 +211,6 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Count) == 0x293C);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.CapacityIncrement) == 0x2940);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C) == 0x292C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_292C) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_18) == 0x12C);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

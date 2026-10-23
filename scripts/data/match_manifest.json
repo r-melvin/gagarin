@@ -61272,11 +61272,11 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69B540",
-  "sym": "?FUN_0069B540@@YIXPAUObj_0069B540@@@Z",
+  "sym": "?Clear@GameModeOptionsClass_Opt@@QAEXXZ",
   "len": "0x1e",
-  "name": "FUN_0069B540",
+  "name": "GameModeOptionsClass_Opt::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Session.cpp",
@@ -98198,6 +98198,24 @@
   "sym": "??0ShapeButtonClass@@QAE@HPBXHHHHH@Z",
   "len": "0x86",
   "name": "ShapeButtonClass::ShapeButtonClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69B560",
+  "sym": "?FUN_0069B560@GameModeOptionsClass_Opt@@QAE_NPAUIStream@@@Z",
+  "len": "0x47",
+  "name": "GameModeOptionsClass_Opt::FUN_0069B560",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69B5B0",
+  "sym": "?FUN_0069B5B0@GameModeOptionsClass_Opt@@QAE_NPAUIStream@@@Z",
+  "len": "0x50",
+  "name": "GameModeOptionsClass_Opt::FUN_0069B5B0",
   "status": "matched",
   "pct": 100.0
  }
