@@ -23,12 +23,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct CoordStruct
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-    int Z;                    // +0x0008
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 

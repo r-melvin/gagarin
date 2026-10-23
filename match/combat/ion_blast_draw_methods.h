@@ -21,13 +21,7 @@
 // Point2D carries a (trivial) user constructor so VC6 returns it through a
 // hidden result pointer rather than in EDX:EAX, which is the retail convention
 // for the 0x53D8E0 helper (`LEA ECX,[ESP+0xC]` before the call, `[EAX]` after).
-struct Point2D
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-
-    Point2D() {}
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
 
 // Surface — only the zero-argument slot at +0x74 is reached (GetPitch).

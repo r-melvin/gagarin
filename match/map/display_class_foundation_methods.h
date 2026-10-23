@@ -24,23 +24,12 @@
 #endif
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // The retail sum is two 16-bit adds into a fresh pair (`ADD DX,[EBP]` /
 // `ADD AX,[EBP+2]`), built in one slot and then copied into the local that
-// is passed on — a by-value operator+ inlined.
-inline CellStruct operator+(CellStruct const& a, CellStruct const& b)
-{
-    CellStruct r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    return r;
-}
+// is passed on: CellStruct::operator+ (_layout/cell.h) inlined.
 
 // GLOBAL: GAMEMD 0x8A03F8 — the "no cell" sentinel pair MarkFoundation refuses.
 extern CellStruct DAT_008A03F8;

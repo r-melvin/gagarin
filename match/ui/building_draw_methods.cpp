@@ -83,7 +83,7 @@ void BuildingClass::vf_70(Point2D* point, RectangleStruct* clip)
                      DAT_0087F7E8.FUN_005657A0(cell)->unknown_10A, 0, 0, 0, 0, 0, 0);
     }
 
-    Point2D lowerOrigin = { point->X, origin.Y - stripBottom };
+    Point2D lowerOrigin(point->X, origin.Y - stripBottom);
     rect = *clip;
     rect.Y += stripBottom;
     rect.Height = shape->unknown_04;

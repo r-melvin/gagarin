@@ -16,11 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // 2D short cell coordinate (sizeof == 4): the dword at [this+0x24].
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Vector2D<int> — the sub-cell coordinate passed by const-ref to GetFloorHeight.
@@ -31,12 +27,7 @@ struct Point2D
 };
 
 // Vector3D<int> — the world-coordinate out buffer filled by GetCellCoords.
-struct CoordStruct
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-    int Z;  // +0x08
-};
+#include "../_layout/coord_struct.h"
 
 class CellClass
 {

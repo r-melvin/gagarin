@@ -17,11 +17,7 @@
 
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes.
 // GetVeinholeMonsterFrom reads pCell->X @[ecx] and pCell->Y @[ecx+2].
-struct CellStruct
-{
-    short X;
-    short Y;
-};
+#include "../_layout/cell.h"
 
 // Theater - per-theater data table, a 6-entry array of 0x70-byte records at
 // GAMEMD 0x007E1B78 (YRpp). LoadVeinholeArt only touches the

@@ -24,14 +24,7 @@ class ObjectClass;   // only ever a pointer here
 
 // CellStruct (two shorts). FireActions takes it by value; TActionClass::Execute
 // takes it by const-ref (so the by-value copy's address is forwarded).
-#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-struct CellStruct
-{
-    short X;
-    short Y;
-};
-#endif
+#include "../_layout/cell.h"
 
 
 // HouseClass::FindByCountryIndex — static __fastcall (arg in ECX) @0x502D30.

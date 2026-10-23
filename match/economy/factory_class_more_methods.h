@@ -37,10 +37,6 @@ public:
 // FrameTimer — empty clock policy whose value is Unsorted::CurrentFrame. As a
 // member it occupies a 1-byte slot (4 after alignment) inside CDTimerClass.
 // ---------------------------------------------------------------------------
-struct FrameTimer
-{
-    operator int() const { return CurrentFrame; }
-};
 
 // ---------------------------------------------------------------------------
 // CDTimerClass = TimerStruct<FrameTimer>  (sizeof = 0x0C)
@@ -52,18 +48,7 @@ struct FrameTimer
 // that uninitialised slot is carried through verbatim — exactly the
 // MOV [ECX+0x30],<garbage> store the retail disasm shows.
 // ---------------------------------------------------------------------------
-struct CDTimerClass
-{
-    int        StartTime;
-    FrameTimer CurrentTime;
-    int        TimeLeft;
-
-    CDTimerClass(int duration)
-    {
-        this->StartTime = this->CurrentTime;
-        this->TimeLeft = duration;
-    }
-};
+#include "../_layout/frame_timer.h"
 
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);

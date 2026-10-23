@@ -32,26 +32,7 @@
 // jumps to (`CMP ESI,-1; JZ`), and the expired arm returns its zero through
 // an out-of-line `MOV dword [ESP+0x10],0; JMP` at 0x41F171 / 0x41F221.  The
 // `left = 0` assignment form emits three separate stores instead.
-struct CDTimerClass
-{
-    int StartTime;      // +0x00  (-1 == paused)
-    int CurrentTime;    // +0x04
-    int TimeLeft;       // +0x08
-
-    int GetTimeLeft() const
-    {
-        int left = this->TimeLeft;
-        if (this->StartTime != -1) {
-            int passed = CurrentFrame - this->StartTime;
-            if (passed < left) {
-                left = left - passed;
-            } else {
-                return 0;
-            }
-        }
-        return left;
-    }
-};
+#include "../_layout/frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime) == 0x00);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft)  == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0x0C);

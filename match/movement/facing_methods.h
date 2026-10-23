@@ -38,27 +38,7 @@ struct DirStruct
 // value is the global CurrentFrame; as a member it occupies a 4-byte slot, so
 // TimeLeft lands at +0x08 (confirmed by YRpp's static_assert and the disasm
 // reading StartTime@+0x0 / TimeLeft@+0x8 relative to RotationTimer@0x8).
-struct CDTimerClass
-{
-    int StartTime;   // +0x00
-    int CurrentTime; // +0x04  (empty FrameTimer slot; not read directly)
-    int TimeLeft;    // +0x08
-
-    // Inlined into the predicates as: load TimeLeft; if StartTime!=-1 then
-    // passed = CurrentFrame - StartTime; if passed >= TimeLeft return 0 else
-    // return TimeLeft - passed.
-    int GetTimeLeft() const
-    {
-        int start = StartTime;
-        int total = TimeLeft;
-        if (start == -1)
-            return total;
-        int passed = CurrentFrame - start;
-        if (passed >= total)
-            return 0;
-        return total - passed;
-    }
-};
+#include "../_layout/frame_timer.h"
 
 struct FacingClass
 {

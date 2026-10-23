@@ -92,14 +92,7 @@ struct TargetClass
 };
 
 // Map cell coordinates as they travel inside an event payload.
-#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-#endif
+#include "../_layout/cell.h"
 
 // The per-house special-options bitfield block. It travels as a single dword
 // (`MOV dword ptr [EAX+0x7],ECX` at 0x4C65B4 from one pushed argument slot),
@@ -119,14 +112,7 @@ enum RTTIType
 };
 
 // A 32-bit coordinate pair (the animation payload's placement).
-#ifndef GG_MATCH_LAYOUT_POINT2D_DEFINED
-#define GG_MATCH_LAYOUT_POINT2D_DEFINED
-struct Point2D
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-};
-#endif
+#include "../_layout/geometry2d.h"
 
 // Event type tags, named after the retail event-name table at 0x82091C and
 // valued from the immediates the constructors below store into Type.
@@ -214,7 +200,8 @@ public:
         {
             int     AnimID;              // +0x07
             int     HouseID;             // +0x0B
-            Point2D Location;            // +0x0F
+            int     LocationX;           // +0x0F
+            int     LocationY;           // +0x13
         } Animation;
 
         struct MEGAMISSION
@@ -266,7 +253,8 @@ GG_STATIC_ASSERT(offsetof(EventClass, Data.SellCell.Location)      == 0x07 &&
                  offsetof(EventClass, Data.Archive.Whom2)          == 0x0C &&
                  offsetof(EventClass, Data.Animation.AnimID)       == 0x07 &&
                  offsetof(EventClass, Data.Animation.HouseID)      == 0x0B &&
-                 offsetof(EventClass, Data.Animation.Location)     == 0x0F);
+                 offsetof(EventClass, Data.Animation.LocationX)    == 0x0F &&
+                 offsetof(EventClass, Data.Animation.LocationY)    == 0x13);
 GG_STATIC_ASSERT(offsetof(EventClass, Data.MegaMission.Whom)            == 0x07 &&
                  offsetof(EventClass, Data.MegaMission.Mission)         == 0x0C &&
                  offsetof(EventClass, Data.MegaMission.Target)          == 0x0E &&

@@ -66,12 +66,11 @@ template<class T> struct TPoint3D { T X; T Y; T Z; TPoint3D() {} bool operator==
 // VTABLE: GAMEMD 0x007E4638 -- VectorClass<TPoint3D<int>>.
 template class VectorClass<TPoint3D<int> >;
 
-struct Point2D { int X; int Y; Point2D() {} bool operator==(const Point2D& o) const { return X==o.X && Y==o.Y; } bool operator!=(const Point2D& o) const { return !(*this==o); } };
+#include "../_layout/geometry2d.h"
 template class DynamicVectorClass<Point2D>;
 
-template<class T> struct TRect { T X; T Y; T Width; T Height; TRect() {} bool operator==(const TRect<T>& o) const { return X==o.X && Y==o.Y && Width==o.Width && Height==o.Height; } bool operator!=(const TRect<T>& o) const { return !(*this==o); } };
 template class DynamicVectorClass<TRect<int> >;
 
-struct DirtyAreaStruct { int unknown_00; int unknown_04; int unknown_08; int unknown_0C; unsigned char unknown_10; DirtyAreaStruct() : unknown_00(0), unknown_04(0), unknown_08(0), unknown_0C(0), unknown_10(0) {} DirtyAreaStruct(const DirtyAreaStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C), unknown_10(o.unknown_10) {} bool operator==(const DirtyAreaStruct& o) const { return unknown_10==o.unknown_10 && unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08 && unknown_0C==o.unknown_0C; } bool operator!=(const DirtyAreaStruct& o) const { return !(*this==o); } };
+#include "../_layout/dirty_area.h"
 template class DynamicVectorClass<DirtyAreaStruct>;
 

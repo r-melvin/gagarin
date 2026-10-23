@@ -388,13 +388,7 @@ struct SlaveManagerHandle
 // The (int) ctor mirrors Start(duration): StartTime <- CurrentFrame, TimeLeft
 // <- duration; CurrentTime is left untouched (read uninitialised on copy).
 // ---------------------------------------------------------------------------
-struct CDTimerClass
-{
-    int StartTime;        // +0x00
-    int CurrentTime;      // +0x04  (FrameTimer storage)
-    int TimeLeft;         // +0x08
-    CDTimerClass(int duration) { this->StartTime = CurrentFrame; this->TimeLeft = duration; }
-};
+#include "../_layout/frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 
 // One entry in the SlaveNodes vector.

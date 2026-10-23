@@ -16,21 +16,12 @@
 #include "../_rt/gg_static_assert.h"
 
 // 3D lepton coordinate; only X and Y are read here, the stride pins Z.
-struct CoordStruct
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-    int Z;  // +0x08
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2. The 16-bit compares in
 // the loop come from comparing two of these.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 inline bool operator==(CellStruct const& a, CellStruct const& b)

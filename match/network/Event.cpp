@@ -224,7 +224,8 @@ EventClass::EventClass(int houseIndex, int animId, void* house,
         Type = EVENT_ANIMATION;
         Data.Animation.AnimID = animId;
         Data.Animation.HouseID = (int)house;
-        Data.Animation.Location = coord;
+        Data.Animation.LocationX = coord.X;
+        Data.Animation.LocationY = coord.Y;
         Frame = CurrentFrame;
     } else {
         HouseIndex = -1;

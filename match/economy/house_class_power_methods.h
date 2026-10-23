@@ -35,18 +35,7 @@
 // a freshly-constructed timer into a member is a plain 12-byte (POD) copy that
 // drags the uninitialised middle dword along, so model it as a flat struct.
 // ---------------------------------------------------------------------------
-struct CDTimerClass
-{
-    int StartTime;    // +0x0
-    int CurrentTime;  // +0x4  (empty FrameTimer clock placeholder)
-    int TimeLeft;     // +0x8
-
-    CDTimerClass(int duration)
-    {
-        this->StartTime = CurrentFrame;
-        this->TimeLeft = duration;
-    }
-};
+#include "../_layout/frame_timer.h"
 
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime)   == 0x0);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, CurrentTime) == 0x4);

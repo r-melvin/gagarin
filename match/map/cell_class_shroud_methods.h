@@ -20,19 +20,7 @@
 // 2D short cell coordinate (sizeof == 4): the dword at [this+0x24].
 // Vector2D<short>::operator+ returns a temporary by value — GetNeighbourCell
 // passes MapCoords+AdjacentCell as that prvalue, so model the operator.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-
-    CellStruct operator+(CellStruct const& a) const
-    {
-        CellStruct ret;
-        ret.X = X + a.X;
-        ret.Y = Y + a.Y;
-        return ret;
-    }
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Vector2D<int> — the sub-cell coordinate passed by const-ref to GetFloorHeight.
@@ -43,12 +31,7 @@ struct Point2D
 };
 
 // Vector3D<int> — the world coordinate handed to MapClass::IsLocationShrouded.
-struct CoordStruct
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-    int Z;  // +0x08
-};
+#include "../_layout/coord_struct.h"
 
 class CellClass;
 

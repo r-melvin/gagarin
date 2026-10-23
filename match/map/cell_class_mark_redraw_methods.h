@@ -22,7 +22,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct CellStruct { short X; short Y; };
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "../_layout/geometry2d.h"

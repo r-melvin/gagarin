@@ -20,14 +20,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 
-// Component-wise 16-bit sum built in one slot and copied (`ADD CX,[..]` / `ADD DX,[..]` into a fresh pair).
-inline CellStruct operator+(CellStruct const& a, CellStruct const& b)
-{
-    CellStruct r;
-    r.X = a.X + b.X;
-    r.Y = a.Y + b.Y;
-    return r;
-}
+// Component-wise 16-bit sums use CellStruct::operator+ (_layout/cell.h).
 
 // GLOBAL: GAMEMD 0x89F688 -- per-direction step table (eight cell offsets, 4 bytes each).
 extern CellStruct DisplayStep_0089F688[8];

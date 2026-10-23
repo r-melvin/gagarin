@@ -92,16 +92,8 @@
 
 // CoordStruct - lepton 3-space coordinate (sizeof = 0xC). Self-guarded so this
 // header composes with techno_type_class.h / bounce_class.h.
-#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+#include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
-#endif
 
 #include "locomotion_class.h"
 

@@ -17,11 +17,7 @@
 #include "../_rt/gg_vslot.h"
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // CellClass — only the flag word this method tests is modelled.

@@ -19,24 +19,13 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-struct CoordStruct
-{
-    int X;   // +0x0
-    int Y;   // +0x4
-    int Z;   // +0x8
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // CellStruct — a packed map cell coordinate. The user-declared constructor
 // makes VC6 return it through a hidden pointer, which is the temporary retail
 // builds at [ESP+8] before copying it into the named local at [ESP+4].
-struct CellStruct
-{
-    short X;   // +0x0
-    short Y;   // +0x2
-
-    CellStruct() { }
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 
 // Declaration order matters — see match/_rt/gg_vslot.h.

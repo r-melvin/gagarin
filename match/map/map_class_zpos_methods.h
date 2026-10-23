@@ -15,15 +15,15 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct CellStruct { short X; short Y; };
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // The sub-cell offset handed to GetFloorHeight — two ints in an 8-byte stack
 // temporary (`SUB ESP,0x8`, then `LEA EDX,[ESP+4]`).
-struct Point2D { int X; int Y; };
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 8);
 
-struct CoordStruct { int X; int Y; int Z; };
+#include "../_layout/coord_struct.h"
 
 class CellClass
 {

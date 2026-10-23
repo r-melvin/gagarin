@@ -23,10 +23,6 @@ class TechnoClass;
 
 // FrameTimer — empty clock policy whose value is CurrentFrame; occupies a
 // 1-byte (4 after alignment) slot inside CDTimerClass.
-struct FrameTimer
-{
-    operator int() const { return CurrentFrame; }
-};
 
 // CDTimerClass = TimerStruct<FrameTimer>  (sizeof = 0x0C)
 //   +0x00 int        StartTime
@@ -35,18 +31,7 @@ struct FrameTimer
 // The int ctor leaves CurrentTime uninitialised; copying the temporary into
 // Production.Timer carries that slot through verbatim, which is the
 // `MOV ESI,[ESP+0xC]; MOV [EDI+4],ESI` pair in the retail bytes.
-struct CDTimerClass
-{
-    int        StartTime;     // +0x00
-    FrameTimer CurrentTime;   // +0x04
-    int        TimeLeft;      // +0x08
-
-    CDTimerClass(int duration)
-    {
-        this->StartTime = this->CurrentTime;
-        this->TimeLeft = duration;
-    }
-};
+#include "../_layout/frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 

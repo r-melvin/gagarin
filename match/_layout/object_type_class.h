@@ -18,16 +18,8 @@
 #include "components.h"
 
 // CoordStruct — absolute 3D lepton coordinate (3 ints, sizeof = 0xC).
-#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+#include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
-#endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
 
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
 // VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)

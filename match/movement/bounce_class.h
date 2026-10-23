@@ -15,12 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // Engine integer world coordinate (3x int32). Filled by GetCoords.
-struct CoordStruct
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-    int Z;  // +0x08
-};
+#include "../_layout/coord_struct.h"
 
 // Sub-cell precision position/velocity component triple (3x float32).
 struct Vector3D_float

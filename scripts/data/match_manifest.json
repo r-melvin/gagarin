@@ -57748,7 +57748,7 @@
   "len": "0x276",
   "name": "DisplayClass::vf_38",
   "status": "partial",
-  "pct": 44.6
+  "pct": 52.5
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
@@ -92170,7 +92170,7 @@
  {
   "tu": "match/core/Tactical.cpp",
   "addr": "0x6D5F60",
-  "sym": "?FUN_006D5F60@Tactical@@QAEXPBU?$TRect@H@@@Z",
+  "sym": "?FUN_006D5F60@Tactical@@QAEXPBV?$TRect@H@@@Z",
   "len": "0x9d",
   "name": "Tactical::FUN_006D5F60",
   "status": "partial",

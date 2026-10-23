@@ -19,11 +19,7 @@
 
 // 2D short cell coordinate (sizeof == 4): UpdateThreat copies it as a single
 // dword (mov eax,[ecx+0x24]; mov [esp+..],eax) and passes its address on.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // ---------------------------------------------------------------------------

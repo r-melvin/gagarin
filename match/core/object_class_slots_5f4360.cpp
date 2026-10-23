@@ -7,15 +7,8 @@
 #include "../_layout/object_class.h"
 
 // CellStruct — 2D short cell coordinate (sizeof = 4). Self-guarded for reuse.
-#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
-#endif  // GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 
 #include "../_layout/object_type_class.h"
 #include "../_layout/tag_class.h"

@@ -17,11 +17,7 @@
 
 // 2D short cell coordinate (sizeof == 4): the dword at [this+0x24]. CleanFog
 // copies it to a stack local and ++'s X then Y each iteration (inc word [esp+N]).
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 class CellClass;

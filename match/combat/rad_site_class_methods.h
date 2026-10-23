@@ -19,11 +19,7 @@
 
 // CellStruct - map cell coordinate (short X, short Y); 4 bytes. SetBaseCell
 // copies it as a single dword (mov edx,[eax]; mov [ecx+0x40],edx).
-struct CellStruct
-{
-    short X;
-    short Y;
-};
+#include "../_layout/cell.h"
 
 class RadSiteClass
 {

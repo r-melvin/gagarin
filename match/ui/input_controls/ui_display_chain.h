@@ -46,15 +46,8 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Point2D>) == 0x18);
 // GLOBAL: GAMEMD 0xA8ED84 -- current frame read by the StripClass and cameo constructors.
 extern int CurrentFrame_00A8ED84;
 
-#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 // A packed map cell (two 16-bit coordinates).
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-#endif
+#include "../../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 #include "../../_layout/components.h"

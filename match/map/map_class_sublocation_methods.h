@@ -15,16 +15,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
-#endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
 
 // CellClass (partial) — only the members PickInfantrySublocation reads.
 class CellClass

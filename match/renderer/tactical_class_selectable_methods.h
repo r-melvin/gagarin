@@ -13,11 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Point2D
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
 
 // One queued selectable: the object and its screen-space point.

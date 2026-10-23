@@ -31,7 +31,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-struct CellStruct { short X; short Y; };
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 struct Scenario_00486A70

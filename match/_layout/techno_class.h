@@ -79,15 +79,8 @@ GG_STATIC_ASSERT(sizeof(VeterancyStruct) == 4);
 #endif
 
 // Point2D — 2D integer point (sizeof = 8).
-#ifndef GG_MATCH_LAYOUT_POINT2D_DEFINED
-#define GG_MATCH_LAYOUT_POINT2D_DEFINED
-struct Point2D
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-};
+#include "geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 8);
-#endif
 
 struct SHPStruct;
 struct RectangleStruct;

@@ -24,11 +24,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // 2D short cell coordinate (sizeof == 4).
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Displace a cell coordinate; returned by value so the caller binds a

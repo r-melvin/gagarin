@@ -99,7 +99,7 @@ inline void DrawSidebarShape(int shape, int frame, int y, SidebarAreaRect* bound
     Point2D position;
     position.X = 0;
     position.Y = y;
-    Point2D offset = {0, 0};
+    Point2D offset(0, 0);
     SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, SideShapes_00B0B468[shape], frame,
                      &position, bounds, 0x400, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
 }

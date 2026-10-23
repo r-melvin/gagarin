@@ -37,7 +37,7 @@ GG_STATIC_ASSERT(offsetof(Pair_006D9F80, unknown_04) == 4);
 GG_STATIC_ASSERT(sizeof(Pair_006D9F80) == 8);
 class Cell;
 class ObjectClass;
-template<class T> struct TRect;
+template<class T> class TRect;
 // VTABLE: GAMEMD 0x007F4348
 // VTABLE: GAMEMD 0x007F432C
 // VTABLE: GAMEMD 0x007F4324

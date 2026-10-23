@@ -12,21 +12,12 @@
 #include "../_rt/gg_static_assert.h"
 
 // 3D world coordinate (leptons). IsWithinUsableArea reads X@0 and Y@4 as ints.
-struct CoordStruct
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-    int Z;  // +0x08
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 0x04);
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Inlined coord->cell conversion (CellClass::Coord2Cell in YRpp): signed /256

@@ -127,22 +127,8 @@ struct Gbl_0087F7E8
 
 typedef DynamicVectorClass<Cell> Vec_Cell;
 
-// Element type of the RTTI-named VectorClass<TRect<int>> (vtable 0x7ED970): four ints.
-template<class T> class TRect
-{
-public:
-    T unknown_00;
-    T unknown_04;
-    T unknown_08;
-    T unknown_0C;
-    TRect() {}
-    bool operator==(const TRect<T>& o) const
-    {
-        return unknown_00 == o.unknown_00 && unknown_04 == o.unknown_04 && unknown_08 == o.unknown_08 &&
-               unknown_0C == o.unknown_0C;
-    }
-    bool operator!=(const TRect<T>& o) const { return !(*this == o); }
-};
+// Element type of the RTTI-named VectorClass<TRect<int>> (vtable 0x7ED970).
+#include "../_layout/geometry2d.h"
 
 // Polymorphic object owned through MapRegionClass::unknown_00 (deleted through its scalar deleting destructor, slot 0).
 class Obj_MapRegionOwned

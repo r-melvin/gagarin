@@ -39,33 +39,9 @@ struct TechnoIdleVtbl;
 
 // CDTimerClass — the engine's countdown timer (sizeof 0xC). StartTime == -1
 // means "stopped", and the remaining time is then simply the stored duration.
-#ifndef GG_MATCH_CDTIMERCLASS_IDLE_DEFINED
-#define GG_MATCH_CDTIMERCLASS_IDLE_DEFINED
-struct CDTimerClass
-{
-    int StartTime;    // +0x00
-    int unknown_04;   // +0x04
-    int TimeLeft;     // +0x08
-
-    // Retail keeps the stored duration in a register from the first load and
-    // returns straight out of the running arm, so the accessor reads TimeLeft
-    // once into a local and has a return per arm (0x7099E0, 0x70F7E0).
-    int GetTimeLeft() const
-    {
-        int timeLeft = this->TimeLeft;
-        if (this->StartTime != -1) {
-            int elapsed = CurrentFrame - this->StartTime;
-            if (elapsed < timeLeft) {
-                return timeLeft - elapsed;
-            }
-            return 0;
-        }
-        return timeLeft;
-    }
-};
+#include "../_layout/frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0x0C);
-#endif
 
 // TemporalClass: the canonical class (its Target at +0x28 and 0x71ABC0).
 #include "../_layout/temporal_class.h"

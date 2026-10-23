@@ -27,7 +27,7 @@ inline void MouseClass::ApplyCursorRow(int index, bool flag)
         y = DAT_00ABF294->Height / 2;
     if (row.unknown_18 == MouseHotFar)
         y = DAT_00ABF294->Height;
-    Point2D hot = { x, y };
+    Point2D hot(x, y);
     WWMouseClassInstance->SetCursor(&hot, DAT_00ABF294, CursorFrame + start);
 }
 

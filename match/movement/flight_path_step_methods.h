@@ -87,17 +87,7 @@ GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x00 &&
                  offsetof(CoordStruct, Z) == 0x08 &&
                  sizeof(CoordStruct) == 0x0C);
 
-struct Point2D
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-
-    Point2D(int x, int y) : X(x), Y(y) {}
-    // CALLEE: GAMEMD 0x00487F20
-    Point2D operator-(Point2D const& other) const;
-    // CALLEE: GAMEMD 0x004C1B50
-    int Length() const;
-};
+#include "../_layout/geometry2d.h"
 
 GG_STATIC_ASSERT(offsetof(Point2D, X) == 0x00 &&
                  offsetof(Point2D, Y) == 0x04 &&

@@ -19,15 +19,8 @@
 
 // CellStruct — packed cell coordinate (two signed shorts). Self-guarded so
 // other map TUs can reuse it.
-#ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
-#endif  // GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 
 // MapClass (partial) — only the members the two matched methods touch.
 class MapClass

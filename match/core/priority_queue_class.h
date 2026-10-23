@@ -18,11 +18,7 @@
 // 16-bit signed short. Confirmed from 0x42B1C0: MOVSX EDX,word[ECX+0x2] (Y) and
 // MOVSX ECX,word[ECX] (X) read X@0 / Y@2 as sign-extended shorts.
 // ---------------------------------------------------------------------------
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 0x02);
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x04);

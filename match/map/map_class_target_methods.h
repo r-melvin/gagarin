@@ -13,20 +13,12 @@
 #include "../_rt/gg_static_assert.h"
 
 // 2D integer point (leptons): location.X@0, location.Y@4 read as ints.
-struct Point2D
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-};
+#include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(offsetof(Point2D, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(Point2D, Y) == 0x04);
 
 // 2D short cell coordinate (sizeof == 4): X@0, Y@2.
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Minimal CellClass view: only MapCoords @0x24 is touched (written into

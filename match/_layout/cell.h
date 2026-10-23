@@ -16,6 +16,14 @@ struct CellStruct
 {
     short X;   // +0x00
     short Y;   // +0x02
+
+    CellStruct operator+(CellStruct const& a) const
+    {
+        CellStruct ret;
+        ret.X = X + a.X;
+        ret.Y = Y + a.Y;
+        return ret;
+    }
 };
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);

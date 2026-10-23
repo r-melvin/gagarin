@@ -35,19 +35,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct RectangleStruct
-{
-    int X;        // +0x00
-    int Y;        // +0x04
-    int Width;    // +0x08
-    int Height;   // +0x0C
-};
 
-struct Point2D
-{
-    int X;        // +0x00
-    int Y;        // +0x04
-};
+#include "../_layout/geometry2d.h"
 
 // Draw surface: slot +0x08 is a rectangle copy, slot +0x30 a line draw.
 class Surface_0068FFE0

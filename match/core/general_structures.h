@@ -14,11 +14,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // Vector2D<short> — cell coordinate pair (used as BasePlanningCell::Position).
-struct CellStruct
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
+#include "../_layout/cell.h"
 
 // BasePlanningCell (sizeof = 0x08). In AddCapacity the copy loop moves each
 // element as two dwords ([EDX] -> Weight, [EDX+4] -> Position), confirming the

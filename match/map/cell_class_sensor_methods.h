@@ -28,11 +28,7 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, NextObject) == 0x30);
 
 // Two 16-bit components packed in one dword; retail copies the pair with a
 // single 32-bit move, which is why the halves go through a temporary.
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // GLOBAL: GAMEMD 0x0089F688 — the per-direction {dX,dY} step table.

@@ -31,13 +31,7 @@
 // CellStruct — a packed map cell coordinate. The user-declared constructor
 // makes VC6 return it through a hidden pointer, which is how the slot-0x338
 // result comes back (out-buffer pushed, its address returned in EAX).
-struct CellStruct
-{
-    short X;   // +0x0
-    short Y;   // +0x2
-
-    CellStruct() { }
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 0x4);
 
 // GLOBAL: GAMEMD 0xB0B5B8 — the "no cell" sentinel the found cell is compared to.

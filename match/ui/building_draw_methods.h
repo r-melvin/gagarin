@@ -20,12 +20,7 @@
 // Cell coordinate. The user-declared constructor is what makes VC6 return it
 // through a hidden pointer, as slot 110 (0x41BEA0, RET 4) does; other
 // translation units define the same four bytes the same way.
-struct CellStruct
-{
-    CellStruct() {}
-    short X;
-    short Y;
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // Shape file header; only the 16-bit fields these bodies read are named.

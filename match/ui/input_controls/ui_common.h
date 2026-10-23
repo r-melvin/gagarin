@@ -32,14 +32,7 @@ struct Rect
 GG_STATIC_ASSERT(sizeof(Rect) == 0x10);
 
 // A point; returned by the print routines through a hidden pointer, so it has a user-declared constructor.
-struct Point2D
-{
-    int X;  // +0x00
-    int Y;  // +0x04
-
-    Point2D() {}
-    Point2D(int x, int y) : X(x), Y(y) {}
-};
+#include "../../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
 
 // A rectangle given as left, top, right and bottom edges (the surface outline slot +0x58 takes one).

@@ -31,7 +31,7 @@ CoordStruct CellClass::GetCoords() const
 {
     int x = MapCoords.X * 256 + 128;
     int y = MapCoords.Y * 256 + 128;
-    Point2D center = { x, y };
+    Point2D center(x, y);
     int z = GetFloorHeight(center);
     CoordStruct result = { x, y, z };
     return result;

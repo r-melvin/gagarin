@@ -21,11 +21,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct CellStruct
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 // SuperWeaponTypeClass — the PostClick flag @0xEE and the index of the

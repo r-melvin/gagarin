@@ -52,33 +52,17 @@
 
 // CoordStruct - lepton 3-space coordinate (sizeof = 0xC). Self-guarded so this
 // header composes with techno_class.h / fly_locomotion_class.h / bounce_class.h.
-#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+#include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
-#endif
 
 // CDTimerClass = TimerStruct<FrameTimer> (sizeof = 0xC). Definition identical to
 // match/_layout/mission_class.h. Its signature in a locomotor constructor is
 // unmistakable and recurs six times in this family: StartTime <- the global
 // frame counter at 0x00A8ED84, the middle dword NEVER written (it is the empty
 // FrameTimer clock slot), TimeLeft <- 0.
-#ifndef GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
-#define GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
-struct CDTimerClass
-{
-    int StartTime;    // +0x00
-    int unknown_04;   // +0x04  (FrameTimer clock slot)
-    int TimeLeft;     // +0x08
-};
+#include "frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
-#endif
 
 // RateTimer = CDTimerClass + Rate (sizeof = 0x10). Definition identical to
 // match/_layout/building_class.h. Proven to be the shape at

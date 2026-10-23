@@ -472,7 +472,7 @@ void TabClass::vf_16(bool forced)
         origin.X = 0;
         origin.Y = 0;
         SidebarAreaRect scratch;
-        Point2D offset = {0, 0};
+        Point2D offset(0, 0);
         SidebarDrawShape(SidebarSurface_00887300, ConvertA_0087F6CC, BarShapeBackdrop_00B0FB08, 0,
                          &origin, (SidebarSurface_00887300->*SidebarSurface_00887300->Vtbl->At_78)(&scratch),
                          0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
@@ -487,7 +487,7 @@ void TabClass::vf_16(bool forced)
             position.Y = BarArea_00B0FC58->Y;
             SidebarAreaRect bounds = clip;
             bounds.Width = BarArea_00B0FC58->Width;
-            Point2D offset = {0, 0};
+            Point2D offset(0, 0);
             SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeTop_00B0FA3C, 0,
                              &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
             if (At_5544) {
@@ -501,7 +501,7 @@ void TabClass::vf_16(bool forced)
                 position.X = SlotArea_00B0FC68->X;
                 position.Y = BarArea_00B0FC58->Y;
                 for (int slot = 0; slot < SlotCount_00B0F9E4; ++slot) {
-                    Point2D offset = {0, 0};
+                    Point2D offset(0, 0);
                     SidebarDrawShape(CurrentSurface_00887314, ConvertA_0087F6CC, BarShapeSlot_00B0FAA8, 0,
                                      &position, &bounds, 0, 0, 0, 0, 0x3E8, 0, 0, 0, offset);
                     position.X = position.X + SlotArea_00B0FC68->Width;

@@ -34,10 +34,6 @@
 // FrameTimer — empty clock policy whose value is Unsorted::CurrentFrame. As a
 // member it occupies a 1-byte slot (4 after alignment) inside CDTimerClass.
 // ---------------------------------------------------------------------------
-struct FrameTimer
-{
-    operator int() const { return CurrentFrame; }
-};
 
 // ---------------------------------------------------------------------------
 // CDTimerClass = TimerStruct<FrameTimer>  (sizeof = 0x0C)
@@ -45,40 +41,7 @@ struct FrameTimer
 //   +0x04 FrameTimer CurrentTime   (1 byte + 3 pad)
 //   +0x08 int        TimeLeft
 // ---------------------------------------------------------------------------
-struct CDTimerClass
-{
-    int        StartTime;
-    FrameTimer CurrentTime;
-    int        TimeLeft;
-
-    // GetTimeLeft: frames remaining (clamped to 0), or TimeLeft verbatim when
-    // the timer is unstamped (StartTime == -1). Inlined into every accessor.
-    // The shape is load-bearing: TimeLeft is read first (it is the value that
-    // flows out, so cl keeps it in EAX and loads Unsorted::CurrentFrame into
-    // ECX/EDX with the 6-byte `8B 0D` form), the in-range case returns early
-    // (its continuation gets its own copy in the callers), and the clamp
-    // joins the unstamped path through the trailing `return left`.
-    int GetTimeLeft() const
-    {
-        int left  = this->TimeLeft;
-        int start = this->StartTime;
-        if (start != -1) {
-            int elapsed = CurrentFrame - start;
-            if (elapsed < left)
-                return left - elapsed;
-            left = 0;
-        }
-        return left;
-    }
-
-    // SetTimeLeft: the plain store, as an inline. Update stores through this
-    // rather than assigning the member directly so that cl does not hoist the
-    // following State2 byte load above the TimeLeft dword store.
-    void SetTimeLeft(int value)
-    {
-        this->TimeLeft = value;
-    }
-};
+#include "../_layout/frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 
 // ---------------------------------------------------------------------------

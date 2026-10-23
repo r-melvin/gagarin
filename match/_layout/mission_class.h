@@ -22,17 +22,9 @@
 // CDTimerClass — count-down frame timer (sizeof = 0xC). StartTime @0x00,
 // CurrentTime/accumulator @0x04 (FrameTimer clock, not stored by the ctor),
 // TimeLeft @0x08. Self-guarded for reuse by downstream layers.
-#ifndef GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
-#define GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
-struct CDTimerClass
-{
-    int StartTime;    // +0x00
-    int unknown_04;   // +0x04  (FrameTimer clock slot)
-    int TimeLeft;     // +0x08
-};
+#include "frame_timer.h"
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
-#endif  // GG_MATCH_LAYOUT_CDTIMERCLASS_DEFINED
 
 // MissionClass  (0xAC..0xD3, sizeof = 0xD4)
 // Retail RTTI 0x817B18 establishes the class key; public access preserves this ABI view.

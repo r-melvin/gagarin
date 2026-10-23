@@ -16,12 +16,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
 
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 class AnimTypeClass;   // opaque — only ever passed through

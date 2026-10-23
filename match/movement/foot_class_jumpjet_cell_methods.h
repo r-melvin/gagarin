@@ -17,7 +17,7 @@
 
 class FootClass;
 
-struct CellStruct { short X; short Y; };
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
 class CellClass

@@ -1393,7 +1393,7 @@ void __fastcall FUN_006886B0(bool value)
 int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int distance)
 {
     if (MapInstance.FUN_00578460(cell, 1)) {
-        Point2D offset = { 0, 0 };
+        Point2D offset(0, 0);
         ObjectClass* occupied = MapInstance.FUN_005657A0(cell)->FindTechnoNearestTo(&offset, false, 0);
         if (!occupied || (occupied->vf_11() == 15 && object->vf_11() == 15)) {
             CoordStruct height = { cell->X * 256 + 128, cell->Y * 256 + 128, 0 };
@@ -1447,7 +1447,7 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int dis
                 }
                 bool same = candidate.X == cell->X && candidate.Y == cell->Y;
                 if (MapInstance.FUN_00578460(&candidate, 1) && !same) {
-                    Point2D offset = { 0, 0 };
+                    Point2D offset(0, 0);
                     ObjectClass* occupied = MapInstance.FUN_005657A0(&candidate)->FindTechnoNearestTo(&offset, false, 0);
                     if (!occupied || (occupied->vf_11() == 15 && object->vf_11() == 15)) {
                         CoordStruct height;

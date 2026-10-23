@@ -17,10 +17,10 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct CellStruct { short X; short Y; };
+#include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-struct CoordStruct { int X; int Y; int Z; };
+#include "../_layout/coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 class CellClass

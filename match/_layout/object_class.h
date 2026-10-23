@@ -38,25 +38,8 @@ struct Point2D;           // geometry2d.h
 // Self-guarded so a downstream layer in the same chain can reuse them.
 
 // CoordStruct — absolute 3D lepton coordinate (3 ints, sizeof = 0xC).
-#ifndef GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
-struct CoordStruct
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-
-    // FUNCTION: GAMEMD 0x41C230 (decl; reloc) -- builds the coordinate in place
-    // and returns it (__thiscall, RET 0xC).
-    CoordStruct* FUN_0041C230(int x, int y, int z);
-    // FUNCTION: GAMEMD 0x41C380 (decl; reloc) -- the length of the vector.
-    int FUN_0041C380();
-    // FUNCTION: GAMEMD 0x437160 (decl; reloc) -- writes this minus `rhs` into
-    // `out` and returns it (__thiscall, RET 8).
-    CoordStruct* FUN_00437160(CoordStruct* out, const CoordStruct* rhs);
-};
+#include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
-#endif  // GG_MATCH_LAYOUT_COORDSTRUCT_DEFINED
 
 // AudioController — the "mofo" audio-event controller (sizeof = 0x14). Size
 // proven by the two back-to-back ctor calls FUN_0x00405BE0(this+0x3C) and
