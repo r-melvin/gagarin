@@ -98110,5 +98110,41 @@
   "name": "SessionClass::FUN_0069B670",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69ACD0",
+  "sym": "?FUN_0069ACD0@Entry_00A8B8C8@@QAEXPBG@Z",
+  "len": "0x45",
+  "name": "Entry_00A8B8C8::FUN_0069ACD0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69AD20",
+  "sym": "?FUN_0069AD20@Entry_00A8B8C8@@QAEXPBD@Z",
+  "len": "0x53",
+  "name": "Entry_00A8B8C8::FUN_0069AD20",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69AD80",
+  "sym": "?FUN_0069AD80@Entry_00A8B8C8@@QAEXPBD@Z",
+  "len": "0x56",
+  "name": "Entry_00A8B8C8::FUN_0069AD80",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69ADF0",
+  "sym": "?FUN_0069ADF0@Entry_00A8B8C8@@QAE_NXZ",
+  "len": "0x17",
+  "name": "Entry_00A8B8C8::FUN_0069ADF0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

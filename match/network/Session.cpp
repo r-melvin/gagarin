@@ -63,6 +63,22 @@
 // Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
 // The element copy ctor 0x7B4690 (fastcall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
+#include "session_entry.h"
+#include <wchar.h>
+#include <string.h>
+// Declaration at 0x734E60; body belongs to the string-table translation unit.
+extern wchar_t* __fastcall FUN_00734E60(const char*, int, const char*, int);
+// GLOBAL: GAMEMD 0x83F4B8
+extern const char STR_0083F4B8[];
+// GLOBAL: GAMEMD 0x83EEB8
+extern const char STR_0083EEB8[];
+// GLOBAL: GAMEMD 0x83F658
+extern const char STR_0083F658[];
+// GLOBAL: GAMEMD 0x83F3E4
+extern const char STR_0083F3E4[];
+// GLOBAL: GAMEMD 0x82BC30
+extern const char STR_0082BC30[];
+
 #include "../core/empty_function_family_methods.h"
 
 #include <stddef.h>
@@ -1044,6 +1060,45 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 }
 
 // REA Evidence: ev_11ce794979f0e2980076f87c1eeffe96d530e6c29faed93d9a77c5cc87f93a03
+// FUNCTION: GAMEMD 0x69ACD0
+void Entry_00A8B8C8::FUN_0069ACD0(const wchar_t* source)
+{
+    if (source) {
+        wcsncpy(unknown_000, source, 0x2C);
+        unknown_000[0x2B] = 0;
+    } else {
+        wcscpy(unknown_000, FUN_00734E60(STR_0083F4B8, 0, STR_0083EEB8, 0xB1D));
+    }
+}
+
+// FUNCTION: GAMEMD 0x69AD20
+void Entry_00A8B8C8::FUN_0069AD20(const char* source)
+{
+    if (source) {
+        strncpy(unknown_058, source, 0x104);
+        unknown_058[0x103] = 0;
+    } else {
+        strcpy(unknown_058, STR_0083F658);
+    }
+}
+
+// FUNCTION: GAMEMD 0x69AD80
+void Entry_00A8B8C8::FUN_0069AD80(const char* source)
+{
+    if (source) {
+        strncpy(unknown_15C, source, 0x20);
+        unknown_15C[0x1F] = 0;
+    } else {
+        strcpy(unknown_15C, STR_0083F3E4);
+    }
+}
+
+// FUNCTION: GAMEMD 0x69ADF0
+bool Entry_00A8B8C8::FUN_0069ADF0()
+{
+    return _stricmp(unknown_058, STR_0082BC30) == 0;
+}
+
 // FUNCTION: GAMEMD 0x69AE70
 bool SessionClass::FUN_0069AE70()
 {

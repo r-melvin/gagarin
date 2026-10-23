@@ -203,18 +203,7 @@ GG_STATIC_ASSERT(offsetof(Scenario_005D6790, unknown_1180) == 0x1180);
 // GLOBAL: GAMEMD 0xA8B230 -- ScenarioClass::Instance.
 extern Scenario_005D6790* ScenarioInstance_00A8B230;
 
-// One entry of the list at 0xA8B8C8.
-struct Entry_00A8B8C8
-{
-    char _pad000[0x17C];
-    bool unknown_17C;              // +0x17C
-
-    // FUNCTION: GAMEMD 0x69ADF0 (decl; reloc) -- name at +0x58 is "RandMap_Sed".
-    bool FUN_0069ADF0();
-    // FUNCTION: GAMEMD 0x69AE10 (decl; reloc)
-    bool FUN_0069AE10(Obj_007B4620* mode);
-};
-GG_STATIC_ASSERT(offsetof(Entry_00A8B8C8, unknown_17C) == 0x17C);
+#include "session_entry.h"
 
 // GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
 extern DynamicVectorClass<Entry_00A8B8C8*> DAT_00A8B8C8;
