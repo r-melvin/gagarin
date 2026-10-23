@@ -22,17 +22,7 @@ extern char VT_007E4D78;
 // torn down by the out-of-line destructor.
 typedef SHAPipeLayout SHA_00476D80;
 
-// The CRC engine: running CRC, staging word, staging index.
-struct CRC_00476D80
-{
-    int CRC;       // +0x0000
-    int Staging;   // +0x0004
-    int Index;     // +0x0008
-
-    // FUNCTION: GAMEMD 0x4A1DE0 (decl; reloc) — feed a block, return the CRC.
-    int FUN_004A1DE0(const void* data, int length);
-};
-GG_STATIC_ASSERT(sizeof(CRC_00476D80) == 0x0C);
+#include "../_layout/crc_00476d80.h"
 
 struct CCINI_00476D80
 {

@@ -28167,10 +28167,10 @@
   "tu": "match/platform/mix_file_class.cpp",
   "addr": "0x5B40B0",
   "sym": "?MixFileClass_Retrieve@@YIPAXPAD_N@Z",
-  "len": "0x1B3",
+  "len": "0x1b3",
   "name": "MixFileClass::Retrieve",
   "status": "partial",
-  "pct": 89.6
+  "pct": 62.1
  },
  {
   "tu": "match/platform/raw_file_class_open_methods.cpp",
@@ -98297,6 +98297,15 @@
   "sym": "??_GRawFileClass@@UAEPAXI@Z",
   "len": "0x7c",
   "name": "RawFileClass scalar deleting destructor",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/obj_0069e430.cpp",
+  "addr": "0x69E430",
+  "sym": "??0Obj_0069E430@@QAE@PBD@Z",
+  "len": "0xc8",
+  "name": "Obj_0069E430::Obj_0069E430",
   "status": "matched",
   "pct": 100.0
  }

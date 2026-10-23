@@ -52,6 +52,7 @@ typedef unsigned int FileAccessMode;
 class FileClass
 {
 public:
+    void* ReadWholeFile(); // 0x4A3890, non-virtual whole-file allocation/read
     FileClass() : SkipCDCheck(false) {}
     virtual ~FileClass() {}                                          // slot 0  (+0x00)
     virtual const char* GetFileName() const = 0;                       // slot 1  (+0x04)

@@ -30,13 +30,6 @@
 //
 //                                                        ECX=name, DL=forceCache)
 //
-// Match (period MSVC6 cl 12.00.ours vs retail, reloc-normalised):
-//   0x5301A0 Bootstrap  100%  (the probe is a temporary: the Is_Available
-//            call goes through the constructor's returned `this`.)
-//   0x5B40B0 Retrieve   89.6% (mnemonic multiset identical; residual is a pure
-//            ESI/EDI naming swap: retail keeps the CRC in EDI and the fresh
-//            node in ESI, cl 8804 the other way round, 15 instructions.)
-//
 //   Read off retail gamemd.exe v1.001 at 0x538D40 (no arguments, plain RET):
 //   the source palette pointer in the dword at 0xA8F918 read three bytes per
 //   colour, the 256x256 byte table at 0xA8F91C filled row by row (row pointer
@@ -69,37 +62,9 @@
 #include <stdio.h>   // sprintf
 #include <string.h>  // strcpy, _strlwr, strstr
 
-// ---- external retail callees (declared; the harness reloc-normalises calls) --
-struct CRCEngine
-{
-    int a, b, c;
-    int Compute(const char* buf, int len);   // FUN_004A1DE0 __thiscall
-};
-
-// Cached-file index node (operator new(0x10)): left/right/key(crc)/value.
-// Key @+0x8, Value @+0xC confirmed from the walk: `node[2]==crc && node[3]!=0`
-// (CMP [EAX+0x8] / [EDX+... ]) and key<crc => node[1] (right @+0x4) else *node
-// (left @+0x0).
-struct IdxNode { IdxNode* Left; IdxNode* Right; int Key; void* Value; };
-GG_STATIC_ASSERT(offsetof(IdxNode, Key)   == 0x08);
-GG_STATIC_ASSERT(offsetof(IdxNode, Value) == 0x0C);
-GG_STATIC_ASSERT(sizeof(IdxNode) == 0x10);   // operator new(0x10)
-extern IdxNode* g_FileCacheRoot;             // GLOBAL: GAMEMD 0x00ABF00C
-void IdxInsert(IdxNode* node, IdxNode** parentSlot);  // FUN_005B3FF0
-
-// LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new (__cdecl; caller pops).
+// LIBRARY: GAMEMD 0x007C8E17
+// FUN_007C8E17
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
-
-// FUNCTION: GAMEMD 0x4A3890 (decl; reloc) — CCFileClass::ReadWholeFile.
-void* MakeCachedFile(CCFile_005B40B0* f);
-
-// The 0x24-byte object built on a forced / .SHP miss; its constructor is a
-// __thiscall taking the name (`PUSH EBP; MOV ECX,EAX; CALL 0x69E430`).
-struct Mix_0069E430
-{
-    // FUNCTION: GAMEMD 0x69E430 (decl; reloc) — constructor from a name.
-    void* FUN_0069E430(char* name);
-};
 
 // GLOBAL: GAMEMD 0xA8F918
 extern unsigned char* DAT_00A8F918;
@@ -516,14 +481,14 @@ void Obj_0052F610::FUN_0052F610()
 // Exact. Three levers, all structural:
 //
 //   * The scratch name buffer is `char name[64]`, and the stack probe is 0x24
-//     bytes (`ScanFile::_body[0x20]`). Retail's frame is `SUB ESP,0x68`; with
+//     bytes (`sizeof(RawFileClass) == 0x24`). Retail's frame is `SUB ESP,0x68`; with
 //     the four callee-saved pushes live it addresses the probe as `[ESP+0x14]`
 //     and the buffer as `[ESP+0x38]`, i.e. in-frame +0x04 and +0x28, so the
 //     buffer runs +0x28..+0x68, exactly 0x40.
 //   * The append is spelled as the free `DynamicVectorClass_Mix_AddItem(&v, x)`
 //     rather than `v.AddItem(x)` (the inlined grow path's register order).
-//   * The probe is a temporary, `ScanFile(name).Is_Available(0)`, and 0x65CA00
-//     is its destructor: retail calls Is_Available through the constructor's
+//   * The probe is a temporary, `RawFileClass(name).Exists(false)`, and 0x65CA00
+//     is its destructor: retail calls Exists through the constructor's
 //     returned `this` (`MOV EDX,[EAX]; MOV ECX,EAX`) and destroys the
 //     temporary at the end of the full expression.
 // ---------------------------------------------------------------------------
@@ -537,7 +502,7 @@ bool MixFileClass_Bootstrap()
         char name[64];
         sprintf(name, "EXPANDMD%02d.MIX", i);
 
-        char avail = ScanFile(name).Is_Available(0);
+        char avail = RawFileClass(name).Exists(false);
         if (avail)
         {
             MixFileClass* mix = new MixFileClass(name);
