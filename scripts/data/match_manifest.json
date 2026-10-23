@@ -9744,13 +9744,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pointer_release_family_methods.cpp",
-  "addr": "0x007b46f0",
-  "sym": "?FUN_00007B46F0@@YIXPAUHolder_007B46F0@@@Z",
-  "len": "0x1a",
-  "name": "FUN_00007B46F0",
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B46F0",
+  "sym": "??1Wstring@@QAE@XZ",
+  "len": "0x1A",
+  "name": "Wstring::~Wstring",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/pointer_release_family_methods.cpp",
@@ -22237,13 +22237,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4620",
-  "sym": "??0SeatNull_007B4620@@QAE@XZ",
+  "sym": "??0Wstring@@QAE@XZ",
   "len": "0x9",
-  "name": "SeatNull_007B4620::ctor",
+  "name": "Wstring::Wstring",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
@@ -77398,7 +77398,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69C500",
-  "sym": "?Clear@?$DynamicVectorClass@UWstring@@@@UAEXXZ",
+  "sym": "?Clear@?$DynamicVectorClass@VWstring@@@@UAEXXZ",
   "len": "0x53",
   "name": "DynamicVectorClass<Wstring>::Clear",
   "status": "matched",
@@ -77407,7 +77407,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69C560",
-  "sym": "?Slot5@?$DynamicVectorClass@UWstring@@@@UBEHPAUWstring@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VWstring@@@@UBEHPAVWstring@@@Z",
   "len": "0x1b",
   "name": "DynamicVectorClass<Wstring>::Slot5",
   "status": "matched",
@@ -77416,7 +77416,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69C580",
-  "sym": "?Slot6@?$VectorClass@UWstring@@@@UBE?AUWstring@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VWstring@@@@UBE?AVWstring@@H@Z",
   "len": "0x1d",
   "name": "VectorClass<Wstring>::Slot6",
   "status": "matched",
@@ -77425,7 +77425,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69C970",
-  "sym": "??8?$VectorClass@UWstring@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VWstring@@@@UBE_NABV0@@Z",
   "len": "0x4c",
   "name": "VectorClass<Wstring>::operator==",
   "status": "matched",
@@ -77434,7 +77434,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69CB00",
-  "sym": "?Clear@?$VectorClass@UWstring@@@@UAEXXZ",
+  "sym": "?Clear@?$VectorClass@VWstring@@@@UAEXXZ",
   "len": "0x50",
   "name": "VectorClass<Wstring>::Clear",
   "status": "matched",
@@ -77443,7 +77443,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69CB50",
-  "sym": "?FindItemIndex@?$VectorClass@UWstring@@@@UBEHABUWstring@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VWstring@@@@UBEHABVWstring@@@Z",
   "len": "0x4a",
   "name": "VectorClass<Wstring>::FindItemIndex",
   "status": "matched",
@@ -77452,7 +77452,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69CBA0",
-  "sym": "?Slot5@?$VectorClass@UWstring@@@@UBEHPAUWstring@@@Z",
+  "sym": "?Slot5@?$VectorClass@VWstring@@@@UBEHPAVWstring@@@Z",
   "len": "0x1b",
   "name": "VectorClass<Wstring>::Slot5",
   "status": "matched",
@@ -77461,7 +77461,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69CD00",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@UWstring@@@@UBEHABUWstring@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VWstring@@@@UBEHABVWstring@@@Z",
   "len": "0x3b",
   "name": "DynamicVectorClass<Wstring>::FindItemIndex",
   "status": "matched",
@@ -77470,7 +77470,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69D4B0",
-  "sym": "??_G?$VectorClass@UWstring@@@@UAEPAXI@Z",
+  "sym": "??_G?$VectorClass@VWstring@@@@UAEPAXI@Z",
   "len": "0x6f",
   "name": "VectorClass<Wstring>::scalar deleting destructor",
   "status": "matched",
@@ -77479,7 +77479,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69D520",
-  "sym": "??_G?$DynamicVectorClass@UWstring@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VWstring@@@@UAEPAXI@Z",
   "len": "0x6f",
   "name": "DynamicVectorClass<Wstring>::scalar deleting destructor",
   "status": "matched",
@@ -96602,7 +96602,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69C9C0",
-  "sym": "?SetCapacity@?$VectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VWstring@@@@UAE_NHPAVWstring@@@Z",
   "len": "0x140",
   "name": "VectorClass<Wstring>::SetCapacity",
   "status": "partial",
@@ -96611,7 +96611,7 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69CBC0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@UWstring@@@@UAE_NHPAUWstring@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VWstring@@@@UAE_NHPAVWstring@@@Z",
   "len": "0x139",
   "name": "DynamicVectorClass<Wstring>::SetCapacity",
   "status": "partial",
@@ -96620,10 +96620,10 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x69D7C0",
-  "sym": "??0?$VectorClass@UWstring@@@@QAE@HPAUWstring@@@Z",
+  "sym": "??0?$VectorClass@VWstring@@@@QAE@HPAVWstring@@@Z",
   "len": "0xAC",
   "name": "VectorClass<Wstring>::VectorClass",
-  "status": "partial",
+  "status": "matched",
   "pct": 100.0
  },
  {

@@ -15,6 +15,30 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+// Retail TD 0x83F5D8 names the element of table 0x7F12B4 as class Wstring.
+// Move the existing Session owner here; its four-byte layout and real
+// construction/destruction declarations are unchanged. The manual-lifetime
+// legacy receiver below still requires caller-by-caller conversion.
+class Wstring
+{
+public:
+    char* unknown_00;
+    // Declaration: GAMEMD 0x7B4620
+    Wstring();
+    // Declaration: GAMEMD 0x7B4690
+    Wstring(const Wstring& other);
+    // Declaration: GAMEMD 0x7B46F0
+    ~Wstring();
+    // Declaration: GAMEMD 0x7B4780
+    bool operator==(const Wstring& other) const;
+    // Declaration: GAMEMD 0x7B4860
+    bool operator!=(const Wstring& other) const;
+    // Declaration: GAMEMD 0x7B4940
+    Wstring& operator=(const Wstring& other);
+};
+GG_STATIC_ASSERT(sizeof(Wstring) == 4);
+GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
+
 class Obj_007B4620
 {
 public:

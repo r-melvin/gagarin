@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Read numerically off the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI at 0x7B46F0 and its three duplicates: release the block held
-//   at +0 and forget it. All four are byte-identical apart from the call
+//   Ghidra CLI at 0x7B5340 and the remaining duplicate helpers: release the block held
+//   at +0 and forget it. The helpers are byte-identical apart from the call
 //   relocation, which resolves to the CRT free in every one.
 //
 // Reviewed in the batch forty-one pass
@@ -11,7 +11,9 @@
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in
 // EDX — but `Holder_007B46F0` is not one recovered class: it is four separate releases spread from 0x7B46F0 to 0x7B7040, modelled against one
 // shared layout because the extraction proved the layout identical, not
-// because they are one type. Declaring them members of a single struct would
+// because they are one type. The recovered 0x7B46F0 Wstring destructor now
+// lives in string_class_methods.cpp. Declaring the remaining helpers members
+// of a single struct would
 // assert a class identity the evidence does not establish, which batch
 // forty-one explicitly rules out. Each receiver's true class is undetermined.
 #ifndef GG_MATCH_CORE_POINTER_RELEASE_FAMILY_METHODS_H
@@ -29,8 +31,6 @@ struct Holder_007B46F0
 };
 GG_STATIC_ASSERT(offsetof(Holder_007B46F0, Block) == 0x0);
 
-// FUNCTION: GAMEMD 0x007B46F0
-void FUN_00007B46F0(Holder_007B46F0* self);
 // FUNCTION: GAMEMD 0x007B5340
 void FUN_00007B5340(Holder_007B46F0* self);
 // FUNCTION: GAMEMD 0x007B6760

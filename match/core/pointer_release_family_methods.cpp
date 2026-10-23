@@ -3,17 +3,6 @@
 
 #include "pointer_release_family_methods.h"
 
-// FUNCTION: GAMEMD 0x007B46F0
-//
-// Release the held block and forget it.
-void FUN_00007B46F0(Holder_007B46F0* self)
-{
-    if (self->Block != 0) {
-        gg_free(self->Block);
-    }
-    self->Block = 0;
-}
-
 // FUNCTION: GAMEMD 0x007B5340
 //
 // Release the held block and forget it.

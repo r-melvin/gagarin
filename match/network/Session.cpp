@@ -1015,18 +1015,7 @@ int Obj_0069B720::FUN_0069B720()
 
 // 0x69C9F3/0x69CA21 write array cookies for four-byte elements.
 // 0x69CA81 calls the nontrivial assignment at 0x7B4940.
-struct Wstring {
-    char* unknown_00;
-    Wstring();
-    Wstring(const Wstring& o);
-    ~Wstring();
-    bool operator==(const Wstring& o) const;
-    bool operator!=(const Wstring& o) const;
-    // Declaration: GAMEMD 0x7B4940
-    Wstring& operator=(const Wstring& o);
-};
-GG_STATIC_ASSERT(sizeof(Wstring) == 4);
-GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
+#include "../core/string_class.h"
 
 template class DynamicVectorClass<Wstring>;
 

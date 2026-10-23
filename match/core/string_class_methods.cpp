@@ -5,6 +5,11 @@
 #include <string.h>
 #include "string_class.h"
 
+// FUNCTION: GAMEMD 0x7B4620
+Wstring::Wstring() : unknown_00(0)
+{
+}
+
 // FUNCTION: GAMEMD 0x7B4690
 Obj_007B4620::Obj_007B4620(const Obj_007B4620& other)
 {
@@ -13,6 +18,15 @@ Obj_007B4620::Obj_007B4620(const Obj_007B4620& other)
         Str = new char[strlen(other.Str) + 1];
         strcpy(Str, other.Str);
     }
+}
+
+// FUNCTION: GAMEMD 0x7B46F0
+Wstring::~Wstring()
+{
+    if (unknown_00 != 0) {
+        delete[] unknown_00;
+    }
+    unknown_00 = 0;
 }
 
 // FUNCTION: GAMEMD 0x7B4780
