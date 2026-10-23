@@ -140,49 +140,8 @@ GG_STATIC_ASSERT(offsetof(ToggleClass, IsOn) == 0x2D);
 GG_STATIC_ASSERT(offsetof(ToggleClass, unknown_30) == 0x30);
 GG_STATIC_ASSERT(sizeof(ToggleClass) == 0x34);   // ShapeButton/TextButton members start at +0x34
 
-// VTABLE: GAMEMD 0x007E8088
-class ShapeButtonClass : public ToggleClass
-{
-public:
-    // 0x69DD30: Toggle(id, x, y, w, h), clears +0x34..+0x4C, +0x50 = [0x87F6C4], +0x55 = the last argument,
-    // +0x58 = the shape; the size comes from the shape header unless w/h are given.
-    ShapeButtonClass(int id, void const* shape, int x, int y, int w, int h, int translucent);
-    virtual ~ShapeButtonClass();                                               // 0x00  0x69DDC0 body
-    virtual int  Draw(int forced);                                             // 0x6C  0x69DEB0
-    virtual void vf_34(ShapeHeader* shape, int width, int height);          // 0x88  0x69DE00 (new slot 34)
-
-    bool           IsToFlash;           // +0x34
-    char           unknown_35[3];
-    int            FlashDelay;          // +0x38
-    int            FlashCounter;        // +0x3C
-    unsigned char  HasFrames;           // +0x40  picks between the pressed and the latched frame
-    unsigned char  unknown_41[3];
-    int            OffsetX;             // +0x44  added to X for the shape position
-    int            OffsetY;             // +0x48
-    unsigned char  UsesSidebarSurface;  // +0x4C
-    unsigned char  unknown_4D[3];
-    ColorConvert*  Convert;             // +0x50  second argument of the shape blitter
-    unsigned char  unknown_54;            // +0x54  set to 1 by Draw
-    unsigned char  unknown_55;       // +0x55  selects flag 0x800
-    unsigned char  unknown_56[2];
-    ShapeHeader*   ShapeData;           // +0x58
-    bool           IsShapeLoaded;       // +0x5C
-    char           unknown_5D[3];
-};
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, IsToFlash) == 0x34);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, FlashDelay) == 0x38);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, HasFrames) == 0x40);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, OffsetX) == 0x44);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, OffsetY) == 0x48);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, UsesSidebarSurface) == 0x4C);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, Convert) == 0x50);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_54) == 0x54);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, unknown_55) == 0x55);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, ShapeData) == 0x58);
-GG_STATIC_ASSERT(offsetof(ShapeButtonClass, IsShapeLoaded) == 0x5C);
-// 0x60: operator new(0x60) before each 0x69DD30 call in the Slider constructor (0x6B1B6B, 0x6B1BA6), and the
-// ListClass members at +0x58/+0xB8 are 0x60 apart.
-GG_STATIC_ASSERT(sizeof(ShapeButtonClass) == 0x60);
+// The ShapeButton declaration is shared with the standalone method owner.
+#include "../shape_button_class.h"
 
 // VTABLE: GAMEMD 0x007F55DC
 class TextButtonClass : public ToggleClass

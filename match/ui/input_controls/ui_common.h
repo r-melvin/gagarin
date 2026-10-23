@@ -48,16 +48,7 @@ struct Box
 };
 GG_STATIC_ASSERT(sizeof(Box) == 0x10);
 
-// The leading words of a loaded shape file: a zero word, then width and height (ShapeButton 0x69DD83 and the
-// drop list constructor 0x4B4E10 read +0x02 and +0x04).
-struct ShapeHeader
-{
-    short unknown_00;  // +0x00
-    short Width;       // +0x02
-    short Height;      // +0x04
-};
-GG_STATIC_ASSERT(offsetof(ShapeHeader, Width) == 0x02);
-GG_STATIC_ASSERT(offsetof(ShapeHeader, Height) == 0x04);
+#include "../shape_header.h"
 
 // The surface behind [0x887314] (and [0x887300]). Slots read in this module: +0x14 (rectangle, colour), +0x58
 // (box, colour), +0x70 (no arguments), +0x78 (returns a rectangle through the hidden return pointer) and +0x7C

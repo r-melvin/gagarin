@@ -513,3 +513,6 @@ extern "C" int __cdecl CompareToolTipTableEntries(const void* a, const void* b)
         return -1;
     return 1;
 }
+
+// SYNTHETIC: GAMEMD 0x4B5810
+// ToggleClass scalar deleting destructor, emitted by its existing constructor.

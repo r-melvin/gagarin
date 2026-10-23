@@ -13,21 +13,31 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+// The input-controls hierarchy supplies its already-defined ToggleClass here.
+// Other consumers use the existing standalone base declaration.
+#ifndef GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 #include "toggle_class_methods.h"
+#endif
+#include "shape_header.h"
 
-struct SHPStruct;
+struct ColorConvert;
 
 // VTABLE: GAMEMD 0x7E8088
 class ShapeButtonClass : public ToggleClass
 {
 public:
+    // Declaration: GAMEMD 0x69DCF0
+    ShapeButtonClass();
+    // Declaration: GAMEMD 0x69DD30; opaque shape pointer retained from callers.
+    ShapeButtonClass(int id, const void* shape, int x, int y,
+                     int width, int height, int flags);
     // Retail slot 0 reaches deleting destructor 0x4B57F0, which calls 0x69DDC0.
     // FUNCTION: GAMEMD 0x69DDC0 (decl)
     virtual ~ShapeButtonClass();
     // FUNCTION: GAMEMD 0x69DEB0 (decl; slot 27 / +0x6C)
     virtual int Draw(int forced);
     // FUNCTION: GAMEMD 0x69DE00 (decl; slot 34 / +0x88, first ShapeButton slot)
-    virtual void vf_34(SHPStruct* shape, int width, int height);
+    virtual void vf_34(ShapeHeader* shape, int width, int height);
 
     // Recovered method declarations follow ascending retail function address.
     void ClearShape();                                                   // 0x69DE70
@@ -51,11 +61,11 @@ public:
     int OffsetY;                    // +0x48, Draw: added to Y
     unsigned char UsesSidebarSurface; // +0x4C, Draw: [0x887300] instead of [0x887314]
     unsigned char unknown_4D[3];
-    void* Convert;                  // +0x50, ctor stores [0x87F6C4]; 2nd argument of the 0x4AED70 blitter
+    ColorConvert* Convert;                  // +0x50, ctor stores [0x87F6C4]; 2nd argument of the 0x4AED70 blitter
     unsigned char unknown_54;       // +0x54, Draw sets 1
     unsigned char unknown_55;       // +0x55, ctor's last argument; Draw selects flag 0x800
     unsigned char unknown_56[2];
-    SHPStruct* ShapeData;           // +0x58, ClearShape
+    ShapeHeader* ShapeData;           // +0x58, ClearShape
     bool IsShapeLoaded;             // +0x5C, ClearShape / SetLoadedStatus
     char unknown_5D[3];
 };

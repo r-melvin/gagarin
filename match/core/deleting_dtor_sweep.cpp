@@ -108,18 +108,6 @@ void* EditClass::ScalarDeletingDestructor(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x4B5810
-void* Obj_4B5810::FUN_4B5810(unsigned int flags)
-{
-    FUN_004E1390(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x4D2910
 void* Obj_4D2910::FUN_4D2910(unsigned int flags)
 {

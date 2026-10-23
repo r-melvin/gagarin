@@ -4856,13 +4856,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/ui/ToolTip.cpp",
   "addr": "0x4B5810",
-  "sym": "?FUN_4B5810@Obj_4B5810@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "FUN_004b5810",
+  "sym": "??_GToggleClass@@UAEPAXI@Z",
+  "len": "0x1E",
+  "name": "ToggleClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -98180,6 +98180,24 @@
   "sym": "?FUN_006977C0@SessionClass@@QAEXXZ",
   "len": "0x76",
   "name": "SessionClass::FUN_006977C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69DCF0",
+  "sym": "??0ShapeButtonClass@@QAE@XZ",
+  "len": "0x3E",
+  "name": "ShapeButtonClass::ShapeButtonClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69DD30",
+  "sym": "??0ShapeButtonClass@@QAE@HPBXHHHHH@Z",
+  "len": "0x86",
+  "name": "ShapeButtonClass::ShapeButtonClass",
   "status": "matched",
   "pct": 100.0
  }

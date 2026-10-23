@@ -114,6 +114,9 @@ GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 extern "C" wchar_t* __cdecl _wcsdup(const wchar_t*);
 // GLOBAL: GAMEMD 0x83ED04 -- four label pointers.
 extern const char* const DAT_0083ED04[4];
+#include "../ui/shape_button_class.h"
+// GLOBAL: GAMEMD 0x87F6C4
+extern ColorConvert* DAT_0087F6C4;
 #include "session_entry.h"
 #include <wchar.h>
 #include <string.h>
@@ -1843,4 +1846,39 @@ void SHAState_0069DB30::FUN_0069DB30(const void* source, ShaState_0069DB30& acc)
     acc.Long[2] += work.Long[2];
     acc.Long[3] += work.Long[3];
     acc.Long[4] += work.Long[4];
+}
+
+// FUNCTION: GAMEMD 0x69DCF0
+ShapeButtonClass::ShapeButtonClass()
+    : ToggleClass(0, 0, 0, 0, 0),
+      IsToFlash(false), FlashDelay(0), FlashCounter(0), HasFrames(0),
+      OffsetX(0), OffsetY(0), UsesSidebarSurface(0), Convert(DAT_0087F6C4),
+      unknown_55(0), IsShapeLoaded(false)
+{
+    // Native leaves ShapeData+58, unknown54 and every padding byte untouched.
+}
+
+// FUNCTION: GAMEMD 0x69DD30
+ShapeButtonClass::ShapeButtonClass(int id, const void* shape, int x, int y,
+                                   int width, int height, int flags)
+    : ToggleClass(id, x, y, 0, 0),
+      IsToFlash(false), FlashDelay(0), HasFrames(0),
+      OffsetX(0), OffsetY(0), UsesSidebarSurface(0), Convert(DAT_0087F6C4),
+      unknown_55(flags), IsShapeLoaded(false)
+{
+    // FlashCounter+3C deliberately omitted: parameterized native never writes
+    // it. ShapeData assigned in body after generated most-derived vptr store.
+    // Native 0x69DD7E stores this opaque argument as the shape pointer;
+    // 0x69DD83/8A read its signed words at +2/+4. Recover that format here.
+    ShapeData = const_cast<ShapeHeader*>(static_cast<const ShapeHeader*>(shape));
+    if (ShapeData) {
+        // Native MOVSX from signed16-bit fields+2/+4, not unsigned dimensions.
+        Width = ShapeData->Width;
+        Height = ShapeData->Height;
+    } else {
+        Width = 0;
+        Height = 0;
+    }
+    if (width != 0) Width = width;
+    if (height != 0) Height = height;
 }
