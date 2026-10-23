@@ -2,8 +2,10 @@
 // Provenance: own-binary-via-Ghidra
 // TypeList<int> RTTI and vtable at 0x7E4DD8 establish the primary chain
 // TypeList<int> : DynamicVectorClass<int> : VectorClass<int>, offset zero.
-// Copy body 0x4777B0 and deleting body 0x477990 touch only the inherited
-// prefix. No complete TypeList size or extra-member absence is established.
+// Copy body 0x4777B0 and deleting body 0x477990 touch the inherited prefix.
+// By-value readers 0x4764F0/0x475D70 consume a 0x1C-byte default argument
+// (RET 0x28 with hidden result, section and key). Assignment at
+// 0x68A3F8/0x68A3FF copies the trailing four bytes; constructors leave them untouched.
 #ifndef GG_MATCH_CORE_TYPE_LIST_H
 #define GG_MATCH_CORE_TYPE_LIST_H
 #include "vector_class.h"
@@ -14,5 +16,17 @@ public:
     // Default-constructor stores are verified in the int and pointer TUs.
     TypeList() : DynamicVectorClass<T>() {}
     TypeList(const TypeList<T>& other) : DynamicVectorClass<T>(other) {}
+    unsigned char unknown_18[4]; // observed storage, no scalar meaning or initialization claim
 };
+#if GG_TARGET_ABI_32
+class TechnoTypeClass;
+typedef TypeList<int> TypeListIntLayoutCheck;
+typedef TypeList<TechnoTypeClass*> TypeListTechnoLayoutCheck;
+// Complete each specialization before offsetof for the VC6 parser.
+GG_STATIC_ASSERT(sizeof(TypeListIntLayoutCheck) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TypeListIntLayoutCheck, unknown_18) == 0x18);
+GG_STATIC_ASSERT(sizeof(((TypeListIntLayoutCheck*)0)->unknown_18) == 4);
+GG_STATIC_ASSERT(sizeof(TypeListTechnoLayoutCheck) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TypeListTechnoLayoutCheck, unknown_18) == 0x18);
+#endif
 #endif

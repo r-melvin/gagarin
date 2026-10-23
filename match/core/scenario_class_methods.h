@@ -289,11 +289,8 @@ struct ScenarioClass
     int unknown_34CC;
     int unknown_34D0;
     TypeList<TechnoTypeClass*> unknown_34D4;
-    char unknown_34EC[4];
     TypeList<int> unknown_34F0;
-    char unknown_3508[4];
     TypeList<int> unknown_350C;
-    char unknown_3524[4];
     int unknown_3528;
     int unknown_352C;
     int unknown_3530, unknown_3534, unknown_3538, unknown_353C;
