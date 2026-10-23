@@ -15,6 +15,7 @@ struct Obj_006C8E70
 {
     // FUNCTION: GAMEMD 0x6C8E70
     Obj_006C8E70* FUN_006C8E70();
+    void FUN_006C8E80(); // FUNCTION: GAMEMD 0x6C8E80 (decl; noarg RET, receiver unused)
 };
 
 

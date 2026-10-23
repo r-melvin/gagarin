@@ -244,9 +244,11 @@ struct ScenarioClass
     char unknown_13BA[0x13DA - 0x13BA];
     wchar_t unknown_13DA[(0x1438 - 0x13DA) / 2];
     int unknown_1438;
-    char unknown_143C[8];
+    int unknown_143C;
+    int unknown_1440;
     int unknown_1444;
-    char unknown_1448[8];
+    int unknown_1448;
+    int unknown_144C;
     wchar_t unknown_1450[(0x1C50 - 0x1450) / 2];
     char unknown_1C50[0x20];
     int unknown_1C70;
@@ -364,5 +366,18 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_350C) == 0x350C);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3598) == 0x3598);
 GG_STATIC_ASSERT(sizeof(Randomizer) == 0x3F4);
 #endif
+
+
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0004) == 4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0004) + 0x104 == 0x108);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_143C) == 0x143C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1440) == 0x1440);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1448) == 0x1448);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_144C) == 0x144C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AB) + 1 == 0x34AC);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AB) + 3 == 0x34AE);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AB) + 4 == 0x34AF);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AB) + 5 == 0x34B0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C88) + sizeof(ScenarioRecord) + offsetof(ScenarioRecord, unknown_28) == 0x1CD9);
 
 #endif  // GG_MATCH_CORE_SCENARIO_CLASS_METHODS_H

@@ -22,6 +22,7 @@
 // Small leaves (64 bytes or less) between 0x500000 and 0x6B0000 that other
 // translation units already declared as callees but nothing defined.
 
+#include "../_layout/mp_score_runner.h"
 #include "scenario_class_methods.h"
 #include "vtable_seating_ctor_family_methods.h"
 #include "vector_class_operations.h"
@@ -107,6 +108,32 @@ extern const char STR_00831AF0[]; // STRING: GAMEMD 0x831AF0
 GG_STATIC_ASSERT(offsetof(Point2D, X) == 0);
 GG_STATIC_ASSERT(offsetof(Point2D, Y) == 4);
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, SideIndex) == 0xBC);
+
+
+#include "../network/multiplayer_game_mode.h"
+#include "../network/transport/ipx_interface_class.h"
+#include "../network/transport/connman_class.h"
+#include "../platform/copy_protection_methods.h"
+#include "trivial_tu223_methods.h"
+extern MultiplayerGameMode* DAT_00A8B23C; // GLOBAL: GAMEMD 0xA8B23C
+extern unsigned char DAT_00A8D5F8; // GLOBAL: GAMEMD 0xA8D5F8
+extern int DAT_00A8D57C; // GLOBAL: GAMEMD 0xA8D57C
+extern int DAT_00A8D588; // GLOBAL: GAMEMD 0xA8D588
+extern unsigned short DAT_00A8D610; // GLOBAL: GAMEMD 0xA8D610
+extern int DAT_00A8B570; // GLOBAL: GAMEMD 0xA8B570
+extern unsigned int DAT_00A8DA90[8]; // GLOBAL: GAMEMD 0xA8DA90
+extern unsigned int DAT_00A8B2BC[8]; // GLOBAL: GAMEMD 0xA8B2BC
+extern unsigned int DAT_00A8B29C[8]; // GLOBAL: GAMEMD 0xA8B29C
+extern unsigned int DAT_00A8B27C[8]; // GLOBAL: GAMEMD 0xA8B27C
+extern const wchar_t DAT_00887734[]; // GLOBAL: GAMEMD 0x887734
+extern const char STR_0083DB0C[]; // STRING: GAMEMD 0x83DB0C
+void __fastcall FUN_00648350(); // FUNCTION: GAMEMD 0x648350 (decl)
+void __fastcall FUN_0055CF10(); // FUNCTION: GAMEMD 0x55CF10 (decl)
+void __fastcall FUN_0052FEC0(void*, unsigned char); // FUNCTION: GAMEMD 0x52FEC0 (decl)
+void __fastcall FUN_004C3E30(); // FUNCTION: GAMEMD 0x4C3E30 (decl)
+bool __fastcall FUN_005DB680(); // FUNCTION: GAMEMD 0x5DB680 (decl)
+int __fastcall FUN_005ADD10(ScenarioClass* scenario); // FUNCTION: GAMEMD 0x5ADD10 (decl)
+int __fastcall FUN_005ADE20(ScenarioClass* scenario, const char* filename); // FUNCTION: GAMEMD 0x5ADE20 (decl)
 
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
 extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
@@ -1356,6 +1383,163 @@ void __fastcall FUN_006851F0()
     FUN_00734270(0);
     FUN_00660C50();
     ScenarioInstance->unknown_0214 = 1000000;
+}
+
+// FUNCTION: GAMEMD 0x685670
+void __fastcall FUN_00685670()
+{
+    if (Session_00A8B238.GameMode != 0 && Session_00A8B238.GameMode != 5 && !(DAT_00A8D5F8 & 2)) {
+        FUN_00648350();
+        FUN_0055CF10();
+    }
+    DAT_00A8ED5C = false;
+    DAT_00A8E378 = false;
+    ScenarioInstance->unknown_0614.Pause();
+    FUN_005BF450();
+    WWMouseClassInstance->DrawCachedOnto(DAT_0088730C, false);
+    WWMouseClassInstance->vf_5();
+    MapInstance.FUN_005BDA80(0, 0);
+    WWMouseClassInstance->vf_3();
+    FUN_00407070(DAT_0087E758);
+    FUN_004070B0(DAT_0087E758);
+    int deadline = ConnTimer.GetValue() + 300;
+    while (FUN_007529E0()) {
+        if (deadline <= ConnTimer.GetValue()) break;
+        FUN_0048D080();
+    }
+    FUN_007529A0(true);
+    FUN_00752CA0();
+    FUN_00406E80();
+    FUN_00750FA0();
+    FUN_00407150(DAT_0087E758, 0x4000);
+    if (DAT_00886FB8 != DAT_00A8EB8C && DAT_00886FBC != DAT_00A8EB90) {
+        FUN_004068E0(STR_0083D924);
+        FUN_00560BF0(DAT_00A8EB8C, DAT_00A8EB90);
+    }
+    if (Session_00A8B238.GameMode != 0) {
+        bool resume = false;
+        if (!(DAT_00A8D5F8 & 2)) {
+            ++DAT_00A8D57C;
+            if (Session_00A8B238.GameMode == 4)
+                FUN_0078ABF0(true, FUN_00734E60(STR_0083DB0C, 0, STR_0083D838, 0x7E8));
+            if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2())
+                FUN_0052FEC0(0, 1);
+            else {
+                DAT_00A8D610 = 0;
+                Obj_005C9700 score;
+                score.FUN_005C9720();
+            }
+            if (DAT_00A8B23C) resume = DAT_00A8B23C->vf_42();
+            ++DAT_00A8D588;
+            if (DAT_00A8D588 > 3) DAT_00A8D588 = 3;
+            if (resume) {
+                DAT_00A8B23C->vf_43();
+                FUN_0078ABF0(false, DAT_00887734);
+            }
+        }
+        if (!resume) {
+            DAT_00A8D610 = 0;
+            if (DAT_00A8B23C) DAT_00A8B23C->vf_41(1);
+            DAT_00A8E9A0 = false;
+            FUN_0078ABF0(false, DAT_00887734);
+            return;
+        }
+    }
+    FUN_005BF260(ScenarioInstance->unknown_143C, -1, 1, 1, 1);
+    if (!(DAT_00A8D5F8 & 2)) {
+        DAT_0087F770->DoSomething();
+        if (!ScenarioInstance->unknown_34AB[3]) {
+            Obj_006C8E70 score;
+            score.FUN_006C8E70()->FUN_006C8E80();
+        }
+        if (ScenarioInstance->unknown_1448 != -1)
+            FUN_005BF260(ScenarioInstance->unknown_1448, -1, 1, 1, 1);
+        if (ScenarioInstance->unknown_144C != -1)
+            FUN_005BF260(ScenarioInstance->unknown_144C, -1, 1, 1, 1);
+        if (!CopyProtection::CheckProtectedData() || ScenarioInstance->unknown_34AB[4]) {
+            DAT_00A8E9A0 = false;
+            WWMouseClassInstance->vf_4();
+            return;
+        }
+        if (ScenarioInstance->unknown_34AB[1]) {
+            if (ScenarioInstance->unknown_34CC != -1)
+                FUN_005BF260(CampaignArray.Items[ScenarioInstance->unknown_34CC]->FinalMovie, -1, 1, 1, 1);
+            FUN_004C3E30();
+            DAT_00A8E9A0 = false;
+            WWMouseClassInstance->vf_4();
+            return;
+        }
+        if (!(DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2())) {
+            if (!ScenarioInstance->unknown_34AB[5]) {
+                WWMouseClassInstance->vf_4();
+                FUN_005ADD10(ScenarioInstance);
+                WWMouseClassInstance->vf_3();
+            } else {
+                if (ScenarioInstance->unknown_1C88[1].unknown_28)
+                    FUN_005ADE20(ScenarioInstance, ScenarioInstance->unknown_0004 + 0x104);
+                else
+                    FUN_005ADE20(ScenarioInstance, ScenarioInstance->unknown_0004);
+            }
+        }
+        DAT_0087F770->DoSomething();
+    }
+    WWMouseClassInstance->vf_4();
+    DAT_008A38E0.FUN_004C6180();
+    ++ScenarioInstance->unknown_1254;
+    if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2()) {
+        if (Session_00A8B238.GameMode == 3) {
+            Interface_00887628->vf_1();
+            delete Interface_00887628;
+            Interface_00887628 = 0;
+            Interface_00887628 = new IPXInterfaceClass;
+        }
+        Interface_00887628->StartupWinsock();
+        int saved = DAT_00A8B274;
+        char settings[4][32];
+        memcpy(settings[0], DAT_00A8DA90, 32);
+        memcpy(settings[1], DAT_00A8B2BC, 32);
+        memcpy(settings[2], DAT_00A8B29C, 32);
+        memcpy(settings[3], DAT_00A8B27C, 32);
+        if (!FUN_005DB680()) {
+            delete Interface_00887628;
+            Interface_00887628 = 0;
+            DAT_00A8E9A0 = false;
+            return;
+        }
+        DAT_00A8B274 = saved;
+        memcpy(DAT_00A8B27C, settings[3], 32);
+        memcpy(DAT_00A8B29C, settings[2], 32);
+        memcpy(DAT_00A8B2BC, settings[1], 32);
+        memcpy(DAT_00A8DA90, settings[0], 32);
+        DAT_0087F770->DoSomething();
+    }
+    DAT_00A8E9A0 = CopyProtection::CheckProtectedData();
+    if (!DAT_00A8E9A0) {
+        WWMouseClassInstance->vf_4();
+        return;
+    }
+    while (!FUN_00683AB0(ScenarioInstance->unknown_125C, true, ScenarioInstance->unknown_34CC)) {}
+    if (DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2()) {
+        Session_00A8B238.FUN_00697B70();
+        if (Session_00A8B238.GameMode == 3) {
+            unsigned long delay;
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 15) delay = 15;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.SetTiming(delay, -1, 600, true);
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 60) delay = 60;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.vf_14(delay, -1, 600);
+        } else if (Session_00A8B238.GameMode == 4 && !DAT_00A8B570) {
+            unsigned long delay;
+            if (Manager_00A8E9C0.FUN_005424C0() + 2 < 60) delay = 60;
+            else delay = Manager_00A8E9C0.FUN_005424C0() + 2;
+            Manager_00A8E9C0.SetTiming(delay, -1, 600, true);
+        }
+    }
+    DAT_008A38E0.Do();
+    if (DAT_00887368) DAT_00887368->SetState(DAT_00A8EB80);
+    MapInstance.FUN_004F4480();
+    FUN_004A3C30(&DAT_00885780, 7, FUN_0048D080);
 }
 
 // FUNCTION: GAMEMD 0x6863E0

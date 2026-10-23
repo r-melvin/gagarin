@@ -100,6 +100,7 @@ struct EvadeClass
 
     // FUNCTION: GAMEMD 0x4C6210  EvadeClass::Do (__thiscall)
     void Do();
+    void FUN_004C6180(); // FUNCTION: GAMEMD 0x4C6180 (decl;0x685A9F)
 };
 GG_STATIC_ASSERT(offsetof(EvadeClass, CarryOverMoney)      == 0x34);
 GG_STATIC_ASSERT(offsetof(EvadeClass, CarryOverTimer)      == 0x38);

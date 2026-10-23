@@ -64,13 +64,7 @@ extern int DAT_00ABF9F8;
 
 // The score screen object: a single stack byte at its call sites (0x685884,
 // 0x685FCE), constructed and then run.
-struct Obj_005C9700
-{
-    // FUNCTION: GAMEMD 0x5C9700 (declaration)
-    Obj_005C9700();
-    // FUNCTION: GAMEMD 0x5C9720 (declaration)
-    void FUN_005C9720();
-};
+#include "../_layout/mp_score_runner.h"
 
 // FUNCTION: GAMEMD 0x5C97B0 (declaration)
 void FUN_005C97B0(wchar_t* buffer, int seconds);
