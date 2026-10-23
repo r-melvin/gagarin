@@ -92713,8 +92713,8 @@
   "sym": "?FUN_006A8180@@YGHI@Z",
   "len": "0x25",
   "name": "FUN_006A8180",
-  "status": "partial",
-  "pct": 30.0
+  "status": "matched",
+  "pct": 100
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",

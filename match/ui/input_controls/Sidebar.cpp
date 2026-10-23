@@ -50,6 +50,7 @@
 #include "sidebar_class_layout.h"
 #include "../shape_button_class.h"
 #include "../../platform/ccini_class_small_readers_methods.h"
+#include "../../combat/super_weapon_type_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
 extern unsigned char DAT_00A8D5F8;
@@ -1156,9 +1157,8 @@ int __stdcall FUN_006A8160(int a1)
 // FUNCTION: GAMEMD 0x6A8180
 int __stdcall FUN_006A8180(unsigned int index)
 {
-    if (index < (unsigned int)DAT_00A8E340) {
-        // The retail instruction reads the dword at +0xB8 from this table entry.
-        return *(int*)((char*)DAT_00A8E334[index] + 0xB8);
+    if (index < (unsigned int)SuperWeaponTypeClass_Array.Count) {
+        return SuperWeaponTypeClass_Array.Items[index]->unknown_B8;
     }
     return 0;
 }

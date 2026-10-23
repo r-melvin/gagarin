@@ -31,12 +31,14 @@ public:
     // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
     static SuperWeaponTypeClass* FindFirstOfAction(int action);
 
-    char _pad_98[0xBC - 0x98];   // +0x98  ArrayIndex..SidebarImage (P2)
+    char _pad_98[0xB8 - 0x98];   // +0x98  ArrayIndex..Type (P2)
+    int  unknown_B8;             // +0xB8; read by SidebarClass::FUN_006A8180
     int  Action;                 // +0xBC
     // remaining Rules fields (P2)
 };
 
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Action) == 0xBC);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_B8) == 0xB8);
 
 // VectorClass head for SuperWeaponTypeClass::Array (DynamicVectorClass of
 // pointers). Array @0xA8E330  =>  &Items == 0xA8E334, &Count == 0xA8E340 (both
