@@ -1084,6 +1084,24 @@ void SessionClass::FUN_0069B760(int value, bool randomize)
     unknown_178 = unknown_188;
 }
 
+// FUNCTION: GAMEMD 0x69B7E0
+void SessionClass::FUN_0069B7E0(int value, bool randomize)
+{
+    if (value == -2) {
+        if (randomize) {
+            unknown_17C = FUN_0069B690();
+        } else {
+            unknown_17C = 0;
+        }
+        unknown_180 = -2;
+    } else {
+        unknown_17C = value;
+        unknown_180 = -1;
+    }
+    unknown_15C = unknown_17C;
+    unknown_160 = unknown_180;
+}
+
 // FUNCTION: GAMEMD 0x69B8C0
 void SessionClass::FUN_0069B8C0()
 {

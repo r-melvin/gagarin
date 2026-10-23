@@ -97083,5 +97083,14 @@
   "name": "WalkLocomotionClass::Release (IPiggyback adjustor)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/Session.cpp",
+  "addr": "0x69B7E0",
+  "sym": "?FUN_0069B7E0@SessionClass@@QAEXH_N@Z",
+  "len": "0xCD",
+  "name": "SessionClass::FUN_0069B7E0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

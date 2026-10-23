@@ -35,10 +35,12 @@ struct SessionClass
     int unknown_84[8]; // 0x69BA5E..0x69BA74, eight DWORDs
     char unknown_A4[0x15C - 0xA4];
     int unknown_15C; // globalA8B394, 0x69B98E
-    char unknown_160[0x174 - 0x160];
+    int unknown_160;
+    char unknown_164[0x174 - 0x164];
     int unknown_174;
     int unknown_178;
-    char unknown_17C[8];
+    int unknown_17C;
+    int unknown_180;
     int unknown_184;
     int unknown_188;
     SessionProfile_00697F10 unknown_18C;
@@ -74,6 +76,8 @@ struct SessionClass
     int FUN_0069B690();
     // Declaration: GAMEMD 0x69B760 -- ECX Session, value and bool stackargs, RET8.
     void FUN_0069B760(int value, bool randomize);
+    // Declaration: GAMEMD 0x69B7E0 -- ECX Session, two stackargs, RET8.
+    void FUN_0069B7E0(int value, bool randomize);
     void FUN_0069B8C0();
     void FUN_0069B170(); // FUNCTION: GAMEMD 0x69B170 (decl; 0x684B53)
     void FUN_0069BBF0(int index);
@@ -134,4 +138,7 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_174) == 0x174);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_178) == 0x178);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_184) == 0x184);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_188) == 0x188);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_160) == 0x160);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_17C) == 0x17C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_180) == 0x180);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H
