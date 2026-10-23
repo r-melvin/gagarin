@@ -238,9 +238,9 @@ void FUN_007447A0(Obj_007447A0* a1, int a2)
 // (`&&` chains) rather than early returns, which is what makes retail jump
 // forward to a single MOV AL,1 block while the false returns stay inline.
 // The flag word is unsigned so the level bit comes out with SHR.
-bool Unit_00746000::AStarAttempt(const Cell_00746000* from, const Cell_00746000* to)
+bool UnitClass::AStarAttempt(const CellStruct* from, const CellStruct* to)
 {
-    if ((this->*Vptr->GetHeight)() >= 0
+    if (this->vf_114() >= 0
         && MapInstance_00746000.FUN_0056D100(from, to, 0, 0, 0, 0)) {
         if (from->X == to->X && from->Y == to->Y) {
             return false;

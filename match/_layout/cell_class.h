@@ -38,10 +38,16 @@
 
 class TagClass;
 
+class BuildingClass;
+class BuildingTypeClass;
+class HouseClass;
+
 class CellClass : public AbstractClass
 {
 public:
     ObjectClass* FindTechnoNearestTo(Point2D* offset, bool alt, ObjectClass* exclude); // GAMEMD 0x47C3D0
+    BuildingClass* GetBuilding() const; // GAMEMD 0x47C520; BuildingClass 0x458A00 compares it with `this`
+    bool FUN_0047C620(int speedType, BuildingTypeClass* type, HouseClass* owner); // GAMEMD 0x47C620 (RET 0xC); BuildingClass 0x449440
     int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall

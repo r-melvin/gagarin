@@ -5,6 +5,7 @@
 
 #include <new.h>
 #include "building_b_views.h"
+#include "../../_layout/building_class.h"
 
 // FUNCTION: GAMEMD 0x4565E0
 void BuildingBView::vf_294()
@@ -97,9 +98,9 @@ void BuildingBView::vf_82(int a)
 }
 
 // FUNCTION: GAMEMD 0x456F80
-int BuildingBView::vf_281(int a)
+int BuildingClass::vf_281(int a)
 {
-    if ((unknown_F0 & 2) == 2) {
+    if ((DurationRemaining & 2) == 2) {
         if (a > 0x5DC)
             return a - 0x1F4;
         return a + 0x1F4;
@@ -155,9 +156,9 @@ bool BuildingBView::vf_201(int* flag)
 }
 
 // FUNCTION: GAMEMD 0x457620
-bool BuildingBView::vf_32()
+bool BuildingClass::vf_32()
 {
-    return Type->Func_465D40();
+    return Type->FUN_00465D40();
 }
 
 // FUNCTION: GAMEMD 0x4576F0
@@ -267,7 +268,7 @@ void BuildingBView::vf_85(int a, int b, int c)
 }
 
 // FUNCTION: GAMEMD 0x4581F0
-int BuildingBView::vf_258()
+int BuildingClass::vf_258()
 {
     return Occupants.Count;
 }

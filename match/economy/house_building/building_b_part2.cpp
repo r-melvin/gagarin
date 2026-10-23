@@ -5,6 +5,17 @@
 
 #include <new.h>
 #include "building_b_views.h"
+#include "../../_layout/building_class.h"
+#include "../../_layout/cell_class.h"
+
+// The cell containing a world coordinate (leptons / 256, per axis).
+static inline CellStruct CellOfCoord(const CoordStruct& c)
+{
+    CellStruct r;
+    r.X = c.X / 256;
+    r.Y = c.Y / 256;
+    return r;
+}
 
 // FUNCTION: GAMEMD 0x453A70
 // The shared tail (vf_43 plus the pixel offset) sits inside the first block in retail and is entered by a
@@ -57,18 +68,18 @@ tail:
 }
 
 // FUNCTION: GAMEMD 0x453D60
-void BuildingBView::vf_60(HBCoord* coord)
+void BuildingClass::vf_60(CoordStruct* coord)
 {
-    HBCell cell = BuildingBCellOf(*coord);
-    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->Flags;
+    CellStruct cell = CellOfCoord(*coord);
+    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->OccupationFlags;
     flags |= 0x80;
 }
 
 // FUNCTION: GAMEMD 0x453DC0
-void BuildingBView::vf_61(HBCoord* coord)
+void BuildingClass::vf_61(CoordStruct* coord)
 {
-    HBCell cell = BuildingBCellOf(*coord);
-    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->Flags;
+    CellStruct cell = CellOfCoord(*coord);
+    unsigned int& flags = BuildingBMap.Func_5657A0(&cell)->OccupationFlags;
     flags &= ~0x80u;
 }
 
@@ -157,7 +168,7 @@ HRESULT __stdcall BuildingBView::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // FUNCTION: GAMEMD 0x454250
-bool BuildingBView::vf_128()
+bool BuildingClass::vf_128()
 {
     return IsReadyToCommence ? true : false;
 }

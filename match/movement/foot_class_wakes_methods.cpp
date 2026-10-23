@@ -51,11 +51,11 @@
 // drops to 28.0%; the kept form is still the inline-terms one at 31.2%.
 // Delta 1 (the unmergeable address-taken frame slot) is the banked
 // 8447-vs-8804 class and dominates the positional score.
-void Foot_00629E90::CreateWakes(int x, int y, int z)
+void FootClass::CreateWakes(int x, int y, int z)
 {
-    DirStruct_00629E90 tmp;
-    short* facing = this->Facing.GetCurrent(&tmp);
-    double angle = -((double)(facing[0] - 0x3FFF) * DAT_007E2810);
+    DirStruct tmp;
+    DirStruct* facing = this->PrimaryFacing.FUN_004C93D0(&tmp);
+    double angle = -((double)((short)facing->Raw - 0x3FFF) * DAT_007E2810);
     double c = FUN_004CAD00(angle);
     double s = FUN_004CACB0(angle);
 

@@ -37,12 +37,5 @@ struct NavVector
 };
 
 // No-data host for the two methods; layout identical to FootClass.
-struct FootMovement : FootClass
-{
-    // FUNCTION: GAMEMD 0x4DA1C0  FootClass::ClearNavigationList (__thiscall)
-    void ClearNavigationList();
-    // FUNCTION: GAMEMD 0x4DF0D0  FootClass::AbortMotion         (__thiscall)
-    void AbortMotion();
-};
 
 #endif  // GG_MATCH_MOVEMENT_FOOT_CLASS_METHODS_H

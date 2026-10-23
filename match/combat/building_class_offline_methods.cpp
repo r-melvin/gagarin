@@ -12,17 +12,17 @@
 // two blackout-activated bytes and its tech-tree-recheck byte are raised, the
 // building's animations and light are disabled, the local player hears the
 // EVA line, and any factory queue the building served is re-evaluated.
-void BuildingClass_00452360::GoOffline()
+void BuildingClass::GoOffline()
 {
     if (!this->HasPower)
         return;
 
-    Type_00452360* type = this->Type;
-    if (type->PowerDrain > 0 || type->Powered) {
+    BuildingTypeClass* type = this->Type;
+    if (type->PowerDrain > 0 || type->bools_1570[0x1573 - 0x1570]) {
         this->HasPower = 0;
         this->NeedsRedraw = 1;
-        this->Owner->PowerBlackoutWasActivated = 1;
-        this->Owner->RadarBlackoutWasActivated = 1;
+        this->Owner->RecheckPower = 1;
+        this->Owner->RecheckRadar = 1;
         this->Owner->RecheckTechTree = 1;
         this->DisableStuff();
         if (this->Owner->IsControlledByCurrentPlayer())

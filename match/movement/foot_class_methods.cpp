@@ -14,7 +14,7 @@
 // Empty the pending movement-destination queue: tail-call NavQueue.Clear()
 // (virtual slot +0x0C), forwarding `this+0x5AC` as the vector's `this`.
 //   MOV EAX,[ECX+0x5AC] ; ADD ECX,0x5AC ; JMP [EAX+0x0C]
-void FootMovement::ClearNavigationList()
+void FootClass::ClearNavigationList()
 {
     ((NavVector*)&this->NavQueue)->Clear();
 }
@@ -22,7 +22,7 @@ void FootMovement::ClearNavigationList()
 // FUNCTION: GAMEMD 0x4DF0D0  (__thiscall)
 // Abort the current motion: drop the immediate source and destination cells.
 //   XOR EAX,EAX ; MOV [ECX+0x5A0],EAX ; MOV [ECX+0x5A4],EAX ; RET
-void FootMovement::AbortMotion()
+void FootClass::AbortMotion()
 {
     this->unknown_5A0 = 0;
     this->Destination = 0;

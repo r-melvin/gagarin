@@ -17,6 +17,7 @@
 #include "house_building_layout.h"
 #include "../../audio/voc_class_play_global_methods.h"
 #include "house_building_views.h"
+#include "../../_layout/cell_class.h"
 #include "house_building_views.h"
 #include "house_building_views.h"
 
@@ -153,6 +154,8 @@ extern const char s_EVA_PrimaryBuildingSelected_00818F28[];
 void FUN_00752700(const char* name, int a, int b);
 // FUNCTION: GAMEMD 0x7509E0 (read-only here) - plays a sound at a position.
 void FUN_007509E0(int sound, HBCoord* where, void* unused);
+// FUNCTION: GAMEMD 0x7509E0 (read-only here) - the same call with the canonical coordinate.
+void FUN_007509E0(int sound, CoordStruct* where, void* unused);
 // FUNCTION: GAMEMD 0x750D40 (read-only here) - stops/plays the sound of an audio controller at a position.
 void FUN_00750D40(HBCoord* where, struct BAAudioView* audio);
 
@@ -441,6 +444,8 @@ struct BAMapView
 {
     // FUNCTION: GAMEMD 0x5657A0 (read-only here)
     BACellView* FUN_005657A0(HBCell* cell);
+    // FUNCTION: GAMEMD 0x5657A0 (read-only here) - the same call with canonical types.
+    CellClass* FUN_005657A0(CellStruct* cell);
     // FUNCTION: GAMEMD 0x6A6300 (read-only here)
     void FUN_006A6300(int kind, int index);
     // FUNCTION: GAMEMD 0x586360 (read-only here)
@@ -1163,14 +1168,10 @@ public:
     unsigned char unknown_6E9;   // +0x06E9
     char _pad_06EA[0x2A];   // +0x06EA
     int unknown_714;   // +0x0714
-    // Slot 18/19/42 bodies: the retail slots take a hidden out pointer and return it; the bodies are written as
-    // by-value returns (see building_a_methods_1.cpp), which is what reproduces their register use.
-    // FUNCTION: GAMEMD 0x447AC0 - body of slot 18
-    HBCoord FUN_00447AC0();
+    // Slot 42 body: the retail slot takes a hidden out pointer and returns it; written as a by-value
+    // return (see building_a_methods_3.cpp). Slots 18 and 19 are now BuildingClass::vf_18/vf_19.
     // FUNCTION: GAMEMD 0x447B20 - body of slot 42
     HBCoord FUN_00447B20(BAObjView* target);
-    // FUNCTION: GAMEMD 0x447E90 - body of slot 19
-    HBCoord FUN_00447E90(BAObjView* arg);
     // FUNCTION: GAMEMD 0x443860 (read-only here)
     void FUN_00443860(HBCell* cell, int flag);
     // FUNCTION: GAMEMD 0x5F6C80 (read-only here)

@@ -20,7 +20,7 @@ void TeamClass::ScanLimit()
 
     for (FootClass* member = this->FirstUnit; member; member = member->NextTeamMember)
     {
-        member->ScanLimitCallback(0);
+        member->vf_242(0);
         member->IsScanLimited = 1;
     }
 }

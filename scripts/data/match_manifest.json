@@ -121,7 +121,7 @@
  {
   "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x44F5C0",
-  "sym": "?vf_40@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_40@BuildingClass@@UAE_NXZ",
   "len": "0x77",
   "name": "BuildingClass::vf_40",
   "status": "matched",
@@ -1571,20 +1571,20 @@
  {
   "tu": "match/combat/building_class_clear_bunker_methods.cpp",
   "addr": "0x459470",
-  "sym": "?ClearBunker@Building_00459470@@QAEXXZ",
+  "sym": "?ClearBunker@BuildingClass@@QAEXXZ",
   "len": "0x141",
   "name": "BuildingClass::ClearBunker",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/building_class_disable_methods.cpp",
   "addr": "0x452480",
-  "sym": "?DisableStuff@Building_00452480@@QAEXXZ",
+  "sym": "?DisableStuff@BuildingClass@@QAEXXZ",
   "len": "0xbe",
   "name": "BuildingClass::DisableStuff",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/building_class_fire_laser_methods.cpp",
@@ -1625,11 +1625,11 @@
  {
   "tu": "match/combat/building_class_impassable_rows_methods.cpp",
   "addr": "0x458A00",
-  "sym": "?IsCellImpassable@BuildingClass_00458A00@@QAE_NPAUCellClass_00458A00@@@Z",
+  "sym": "?IsCellImpassable@BuildingClass@@QAE_NPAVCellClass@@@Z",
   "len": "0x79",
   "name": "BuildingClass::IsCellImpassable",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/building_class_info_tip_methods.cpp",
@@ -1652,11 +1652,11 @@
  {
   "tu": "match/combat/building_class_occupant_anims_methods.cpp",
   "addr": "0x458330",
-  "sym": "?UpdateOccupantAnims@BuildingClass_00458330@@QAEXXZ",
+  "sym": "?UpdateOccupantAnims@BuildingClass@@QAEXXZ",
   "len": "0x290",
   "name": "BuildingClass::UpdateOccupantAnims",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/building_class_occupy_methods.cpp",
@@ -1670,11 +1670,11 @@
  {
   "tu": "match/combat/building_class_offline_methods.cpp",
   "addr": "0x452360",
-  "sym": "?GoOffline@BuildingClass_00452360@@QAEXXZ",
+  "sym": "?GoOffline@BuildingClass@@QAEXXZ",
   "len": "0xaa",
   "name": "BuildingClass::GoOffline",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/building_class_radial_methods.cpp",
@@ -1832,7 +1832,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x445F00",
-  "sym": "?vf_241@BuildingAView@@UAEXIHH@Z",
+  "sym": "?vf_241@BuildingClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
   "len": "0x72",
   "name": "BuildingClass::vf_241",
   "status": "matched",
@@ -10808,9 +10808,9 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x449410",
-  "sym": "?vf_46@BuildingAView@@UAEHXZ",
+  "sym": "?GetYSort@BuildingClass@@UBEHXZ",
   "len": "0x2e",
-  "name": "BuildingClass::vf_46",
+  "name": "BuildingClass::GetYSort",
   "status": "matched",
   "pct": 100.0
  },
@@ -11177,8 +11177,8 @@
  },
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
-  "addr": "0x43e900",
-  "sym": "?vf_187@BuildingAView@@UAEHXZ",
+  "addr": "0x43E900",
+  "sym": "?vf_187@BuildingClass@@UAEHXZ",
   "len": "0x34",
   "name": "BuildingClass::vf_187",
   "status": "matched",
@@ -11295,7 +11295,7 @@
  {
   "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x452630",
-  "sym": "?vf_37@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_37@BuildingClass@@UAE_NXZ",
   "len": "0x3d",
   "name": "BuildingClass::vf_37",
   "status": "matched",
@@ -11627,8 +11627,8 @@
  },
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
-  "addr": "0x458e00",
-  "sym": "?vf_257@BuildingBView@@UAEHXZ",
+  "addr": "0x458E00",
+  "sym": "?vf_257@BuildingClass@@UAEHXZ",
   "len": "0x4a",
   "name": "BuildingClass::vf_257",
   "status": "matched",
@@ -11663,17 +11663,17 @@
  },
  {
   "tu": "match/economy/house_building/building_b_part3.cpp",
-  "addr": "0x455d50",
-  "sym": "?vf_288@BuildingBView@@UAEXPAX0@Z",
+  "addr": "0x455D50",
+  "sym": "?SetDestination@BuildingClass@@UAEXPAVAbstractClass@@_N@Z",
   "len": "0x47",
-  "name": "BuildingClass::vf_288",
+  "name": "BuildingClass::SetDestination",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/economy/house_building/building_b_part3.cpp",
-  "addr": "0x455da0",
-  "sym": "?vf_161@BuildingBView@@UAE_NXZ",
+  "addr": "0x455DA0",
+  "sym": "?vf_161@BuildingClass@@UAE_NXZ",
   "len": "0x30",
   "name": "BuildingClass::vf_161",
   "status": "matched",
@@ -11717,8 +11717,8 @@
  },
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
-  "addr": "0x44eb10",
-  "sym": "?vf_195@BuildingAView@@UAEHXZ",
+  "addr": "0x44EB10",
+  "sym": "?vf_195@BuildingClass@@UAEHXZ",
   "len": "0x4c",
   "name": "BuildingClass::vf_195",
   "status": "matched",
@@ -11942,10 +11942,10 @@
  },
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
-  "addr": "0x447ac0",
-  "sym": "?FUN_00447AC0@BuildingAView@@QAE?AUHBCoord@@XZ",
+  "addr": "0x447AC0",
+  "sym": "?vf_18@BuildingClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x54",
-  "name": "BuildingClass::FUN_00447AC0",
+  "name": "BuildingClass::vf_18",
   "status": "matched",
   "pct": 100.0
  },
@@ -22482,20 +22482,20 @@
  {
   "tu": "match/economy/building_class_power_methods.cpp",
   "addr": "0x44E880",
-  "sym": "?GetPowerDrain@BuildingClass@@QBEHXZ",
+  "sym": "?GetPowerDrain@BuildingClass@@QAEHXZ",
   "len": "0x62",
-  "name": "GetPowerDrain",
+  "name": "BuildingClass::GetPowerDrain",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/building_class_power_output_methods.cpp",
   "addr": "0x44E7B0",
-  "sym": "?GetPowerOutput@Building_0044E7B0@@QBEHXZ",
+  "sym": "?GetPowerOutput@BuildingClass@@QAEHXZ",
   "len": "0xc9",
   "name": "BuildingClass::GetPowerOutput",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/building_type_class.cpp",
@@ -25463,11 +25463,11 @@
  {
   "tu": "match/movement/foot_class_find_path_methods.cpp",
   "addr": "0x4CBBA0",
-  "sym": "?FindPath@FootPath@@QAEPAXPAUCell_004CBBA0@@PAHHHHH@Z",
+  "sym": "?FindPath@FootClass@@QAEPAXPAVCell@@PAHHHHH@Z",
   "len": "0x9e",
   "name": "FootClass::FindPath",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_jumpjet.cpp",
@@ -25490,38 +25490,38 @@
  {
   "tu": "match/movement/foot_class_methods.cpp",
   "addr": "0x4DA1C0",
-  "sym": "?ClearNavigationList@FootMovement@@QAEXXZ",
+  "sym": "?ClearNavigationList@FootClass@@QAEXXZ",
   "len": "0xF",
-  "name": "ClearNavigationList",
+  "name": "FootClass::ClearNavigationList",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_methods.cpp",
   "addr": "0x4DF0D0",
-  "sym": "?AbortMotion@FootMovement@@QAEXXZ",
+  "sym": "?AbortMotion@FootClass@@QAEXXZ",
   "len": "0xF",
-  "name": "AbortMotion",
+  "name": "FootClass::AbortMotion",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_more_methods.cpp",
   "addr": "0x4D9920",
-  "sym": "?GreatestThreat@FootMore@@QAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
+  "sym": "?vf_241@FootClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z",
   "len": "0x3f",
-  "name": "GreatestThreat",
+  "name": "FootClass::vf_241",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_more_methods.cpp",
   "addr": "0x7104F0",
-  "sym": "?UpdatePassengerCoords@FootMore@@QAEXXZ",
+  "sym": "?UpdatePassengerCoords@FootClass@@QAEXXZ",
   "len": "0x54",
-  "name": "UpdatePassengerCoords",
+  "name": "FootClass::UpdatePassengerCoords",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_move_to_tiberium_methods.cpp",
@@ -25535,20 +25535,20 @@
  {
   "tu": "match/movement/foot_class_move_to_weed_methods.cpp",
   "addr": "0x4DDB90",
-  "sym": "?MoveToWeed@FootWeed@@QAE_NH@Z",
+  "sym": "?MoveToWeed@FootClass@@QAE_NH@Z",
   "len": "0xae",
   "name": "FootClass::MoveToWeed",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_nav_list_methods.cpp",
   "addr": "0x4DA0E0",
-  "sym": "?QueueNavigationList@FootNav@@QAEXPAVAbstractClass@@@Z",
+  "sym": "?QueueNavigationList@FootClass@@QAEXPAVAbstractClass@@@Z",
   "len": "0xd2",
   "name": "FootClass::QueueNavigationList",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/foot_class_passenger_methods.cpp",
@@ -25562,7 +25562,7 @@
  {
   "tu": "match/movement/foot_class_wakes_methods.cpp",
   "addr": "0x629E90",
-  "sym": "?CreateWakes@Foot_00629E90@@QAEXHHH@Z",
+  "sym": "?CreateWakes@FootClass@@QAEXHHH@Z",
   "len": "0x139",
   "name": "FootClass::CreateWakes",
   "status": "partial",
@@ -26048,11 +26048,11 @@
  {
   "tu": "match/movement/Unit.cpp",
   "addr": "0x746000",
-  "sym": "?AStarAttempt@Unit_00746000@@QAE_NPBUCell_00746000@@0@Z",
+  "sym": "?AStarAttempt@UnitClass@@QAE_NPBUCellStruct@@0@Z",
   "len": "0xfe",
   "name": "UnitClass::AStarAttempt",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/unit_class_methods.cpp",
@@ -49053,7 +49053,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x445E50",
-  "sym": "?vf_170@BuildingAView@@UAE?AUHBDir@@XZ",
+  "sym": "?vf_170@BuildingClass@@UAE?AUDirStruct@@XZ",
   "len": "0xab",
   "name": "BuildingClass::vf_170",
   "status": "matched",
@@ -49073,7 +49073,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_2.cpp",
   "addr": "0x446FF0",
-  "sym": "?vf_103@BuildingAView@@UAEXH@Z",
+  "sym": "?vf_103@BuildingClass@@UAEXH@Z",
   "len": "0x117",
   "name": "BuildingClass::vf_103",
   "status": "matched",
@@ -49118,7 +49118,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x447E00",
-  "sym": "?vf_310@BuildingAView@@UAEHPAVBAObjView@@@Z",
+  "sym": "?vf_310@BuildingClass@@UAEHPAVAbstractClass@@@Z",
   "len": "0x8a",
   "name": "BuildingClass::vf_310",
   "status": "partial",
@@ -49127,9 +49127,9 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x447E90",
-  "sym": "?FUN_00447E90@BuildingAView@@QAE?AUHBCoord@@PAVBAObjView@@@Z",
+  "sym": "?vf_19@BuildingClass@@UAE?AUCoordStruct@@PAVAbstractClass@@@Z",
   "len": "0x79",
-  "name": "BuildingClass::FUN_00447E90",
+  "name": "BuildingClass::vf_19",
   "status": "matched",
   "pct": 100.0
  },
@@ -49163,7 +49163,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x449440",
-  "sym": "?vf_107@BuildingAView@@UAEHPAUBAOccupierView@@HHHH@Z",
+  "sym": "?vf_107@BuildingClass@@UAEHPAVCellClass@@HHHH@Z",
   "len": "0x75",
   "name": "BuildingClass::vf_107",
   "status": "matched",
@@ -49172,7 +49172,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x4494C0",
-  "sym": "?vf_38@BuildingAView@@UAE_NXZ",
+  "sym": "?vf_38@BuildingClass@@UAE_NXZ",
   "len": "0x7a",
   "name": "BuildingClass::vf_38",
   "status": "matched",
@@ -49190,7 +49190,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x449A40",
-  "sym": "?vf_136@BuildingAView@@UAEXXZ",
+  "sym": "?vf_136@BuildingClass@@UAEHXZ",
   "len": "0x8",
   "name": "BuildingClass::vf_136",
   "status": "matched",
@@ -49226,7 +49226,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44B760",
-  "sym": "?vf_133@BuildingAView@@UAEXXZ",
+  "sym": "?vf_133@BuildingClass@@UAEHXZ",
   "len": "0x5",
   "name": "BuildingClass::vf_133",
   "status": "matched",
@@ -49235,7 +49235,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44B770",
-  "sym": "?vf_137@BuildingAView@@UAEXXZ",
+  "sym": "?vf_137@BuildingClass@@UAEHXZ",
   "len": "0x5",
   "name": "BuildingClass::vf_137",
   "status": "matched",
@@ -49264,7 +49264,7 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44D5D0",
-  "sym": "?vf_102@BuildingAView@@UAE_NPAVBAHouseView@@@Z",
+  "sym": "?vf_102@BuildingClass@@UAE_NPAVHouseClass@@@Z",
   "len": "0xce",
   "name": "BuildingClass::vf_102",
   "status": "matched",
@@ -49273,16 +49273,16 @@
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44D6A0",
-  "sym": "?vf_289@BuildingAView@@UAE_N_NH@Z",
+  "sym": "?EnterIdleMode@BuildingClass@@UAE_N_N0@Z",
   "len": "0x5d",
-  "name": "BuildingClass::vf_289",
+  "name": "BuildingClass::EnterIdleMode",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/economy/house_building/building_a_methods_1.cpp",
   "addr": "0x44D700",
-  "sym": "?vf_174@BuildingAView@@UAEHXZ",
+  "sym": "?vf_174@BuildingClass@@UAEHXZ",
   "len": "0x5c",
   "name": "BuildingClass::vf_174",
   "status": "matched",
@@ -49392,7 +49392,7 @@
  {
   "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x452250",
-  "sym": "?vf_321@BuildingBView@@UAEHXZ",
+  "sym": "?vf_321@BuildingClass@@UAEHXZ",
   "len": "0x3",
   "name": "BuildingClass::vf_321",
   "status": "matched",
@@ -49410,7 +49410,7 @@
  {
   "tu": "match/economy/house_building/building_b_part1.cpp",
   "addr": "0x4527D0",
-  "sym": "?vf_255@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_255@BuildingClass@@UAE_NXZ",
   "len": "0x4d",
   "name": "BuildingClass::vf_255",
   "status": "matched",
@@ -49428,7 +49428,7 @@
  {
   "tu": "match/economy/house_building/building_b_part2.cpp",
   "addr": "0x453D60",
-  "sym": "?vf_60@BuildingBView@@UAEXPAUHBCoord@@@Z",
+  "sym": "?vf_60@BuildingClass@@UAEXPAUCoordStruct@@@Z",
   "len": "0x55",
   "name": "BuildingClass::vf_60",
   "status": "matched",
@@ -49437,7 +49437,7 @@
  {
   "tu": "match/economy/house_building/building_b_part2.cpp",
   "addr": "0x453DC0",
-  "sym": "?vf_61@BuildingBView@@UAEXPAUHBCoord@@@Z",
+  "sym": "?vf_61@BuildingClass@@UAEXPAUCoordStruct@@@Z",
   "len": "0x55",
   "name": "BuildingClass::vf_61",
   "status": "matched",
@@ -49464,7 +49464,7 @@
  {
   "tu": "match/economy/house_building/building_b_part2.cpp",
   "addr": "0x454250",
-  "sym": "?vf_128@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_128@BuildingClass@@UAE_NXZ",
   "len": "0xc",
   "name": "BuildingClass::vf_128",
   "status": "matched",
@@ -49590,7 +49590,7 @@
  {
   "tu": "match/economy/house_building/building_b_part4.cpp",
   "addr": "0x456F80",
-  "sym": "?vf_281@BuildingBView@@UAEHH@Z",
+  "sym": "?vf_281@BuildingClass@@UAEHH@Z",
   "len": "0x28",
   "name": "BuildingClass::vf_281",
   "status": "matched",
@@ -49608,7 +49608,7 @@
  {
   "tu": "match/economy/house_building/building_b_part4.cpp",
   "addr": "0x457620",
-  "sym": "?vf_32@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_32@BuildingClass@@UAE_NXZ",
   "len": "0xb",
   "name": "BuildingClass::vf_32",
   "status": "matched",
@@ -49653,7 +49653,7 @@
  {
   "tu": "match/economy/house_building/building_b_part4.cpp",
   "addr": "0x4581F0",
-  "sym": "?vf_258@BuildingBView@@UAEHXZ",
+  "sym": "?vf_258@BuildingClass@@UAEHXZ",
   "len": "0x7",
   "name": "BuildingClass::vf_258",
   "status": "matched",
@@ -49671,7 +49671,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x458DD0",
-  "sym": "?vf_256@BuildingBView@@UAE_NXZ",
+  "sym": "?vf_256@BuildingClass@@UAE_NXZ",
   "len": "0x2f",
   "name": "BuildingClass::vf_256",
   "status": "matched",
@@ -49680,7 +49680,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459870",
-  "sym": "?vf_181@BuildingBView@@UAEHXZ",
+  "sym": "?vf_181@BuildingClass@@UAEHXZ",
   "len": "0xd",
   "name": "BuildingClass::vf_181",
   "status": "matched",
@@ -49689,7 +49689,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459880",
-  "sym": "?vf_182@BuildingBView@@UAEHXZ",
+  "sym": "?vf_182@BuildingClass@@UAEHXZ",
   "len": "0xd",
   "name": "BuildingClass::vf_182",
   "status": "matched",
@@ -49698,7 +49698,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459890",
-  "sym": "?vf_183@BuildingBView@@UAEHXZ",
+  "sym": "?vf_183@BuildingClass@@UAEHXZ",
   "len": "0xd",
   "name": "BuildingClass::vf_183",
   "status": "matched",
@@ -49716,7 +49716,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459C20",
-  "sym": "?vf_219@BuildingBView@@UAEXXZ",
+  "sym": "?vf_219@BuildingClass@@UAEXXZ",
   "len": "0x7f",
   "name": "BuildingClass::vf_219",
   "status": "matched",
@@ -49725,7 +49725,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459E70",
-  "sym": "?vf_12@BuildingBView@@UAEHXZ",
+  "sym": "?vf_12@BuildingClass@@UAEHXZ",
   "len": "0x6",
   "name": "BuildingClass::vf_12",
   "status": "matched",
@@ -49734,7 +49734,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459E80",
-  "sym": "?GetClassID@BuildingBView@@UAGJPAU_GUID@@@Z",
+  "sym": "?GetClassID@BuildingClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
   "name": "BuildingClass::GetClassID",
   "status": "matched",
@@ -49743,7 +49743,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459EC0",
-  "sym": "?vf_11@BuildingBView@@UAEHXZ",
+  "sym": "?vf_11@BuildingClass@@UAEHXZ",
   "len": "0x6",
   "name": "BuildingClass::vf_11",
   "status": "matched",
@@ -49752,7 +49752,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459ED0",
-  "sym": "?vf_36@BuildingBView@@UAEHXZ",
+  "sym": "?vf_36@BuildingClass@@UAEPBGXZ",
   "len": "0xa",
   "name": "BuildingClass::vf_36",
   "status": "matched",
@@ -49761,7 +49761,7 @@
  {
   "tu": "match/economy/house_building/building_b_part5.cpp",
   "addr": "0x459EE0",
-  "sym": "?vf_34@BuildingBView@@UAEPAVBuildingBTypeView@@XZ",
+  "sym": "?vf_34@BuildingClass@@UAEPAVObjectTypeClass@@XZ",
   "len": "0x7",
   "name": "BuildingClass::vf_34",
   "status": "matched",
@@ -66465,11 +66465,11 @@
  {
   "tu": "match/core/abstract_class_slots.cpp",
   "addr": "0x4104F0",
-  "sym": "?vf_19@AbstractClass@@UAE?AUCoordStruct@@H@Z",
+  "sym": "?vf_19@AbstractClass@@UAE?AUCoordStruct@@PAV1@@Z",
   "len": "0x2d",
   "name": "AbstractClass::vf_19",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/abstract_class_slots.cpp",
@@ -68967,11 +68967,11 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F6A70",
-  "sym": "?vf_47@ObjectClass@@UAE_NH@Z",
+  "sym": "?vf_47@ObjectClass@@UAE_NPAVAbstractClass@@@Z",
   "len": "0xe0",
   "name": "ObjectClass::vf_47",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
@@ -69021,11 +69021,11 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F6C80",
-  "sym": "?vf_42@ObjectClass@@UAE?AUCoordStruct@@H@Z",
+  "sym": "?vf_42@ObjectClass@@UAE?AUCoordStruct@@PAVAbstractClass@@@Z",
   "len": "0x2d",
   "name": "ObjectClass::vf_42",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/ai_trigger_type_class_body.cpp",
@@ -89569,7 +89569,7 @@
  {
   "tu": "match/core/Techno.cpp",
   "addr": "0x70AD50",
-  "sym": "?vf_191@TechnoClass@@UAE?AUCellStruct@@HH@Z",
+  "sym": "?vf_191@TechnoClass@@UAE?AUCellStruct@@PAVAbstractClass@@H@Z",
   "len": "0x4e",
   "name": "TechnoClass::vf_191",
   "status": "matched",

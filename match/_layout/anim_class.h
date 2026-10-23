@@ -70,6 +70,9 @@ public:
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual void vf_122();                                         // 122 0x423930
     virtual void vf_123();                                         // 123 0x425510
+    // FUNCTION: GAMEMD 0x425260 (decl; reloc) -- no stack arguments; BuildingClass 0x452480
+    // calls it on each Powered building animation when the building powers down.
+    void FUN_00425260();
 
     // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
     //   ctor stores @0x00421EB8..0x00421EDB.

@@ -539,10 +539,6 @@ class TunnelLocomotionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class UnitClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class UnitTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);

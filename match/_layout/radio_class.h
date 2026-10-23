@@ -28,6 +28,7 @@ class RadioClass : public MissionClass
 public:
     // Radio-link queries/mutators (defined in core/radio_class_methods.cpp).
     // Non-virtual; declaring them here does not change the layout.
+    TechnoClass* FUN_0065AD30(int index);               // GAMEMD 0x65AD30: RadioLinks item `index` (RET 4)
     bool ContainsLink(const TechnoClass* pLink) const;  // GAMEMD 0x65AD50
     int  FindLinkIndex(const TechnoClass* pLink) const;  // GAMEMD 0x65AD90
     bool HasFreeLink() const;                            // GAMEMD 0x65ADC0

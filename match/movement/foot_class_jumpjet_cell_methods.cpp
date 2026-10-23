@@ -17,7 +17,7 @@ void FootClass::Jumpjet_OccupyCell(CellStruct coords)
     // computes `LEA ESI,[EDI+0x564]` once and reaches the Y member as
     // `[ESI+2]`, passes ESI to GetCellAt and stores through it. Going through
     // the member directly emits `[EDI+0x566]` for the Y compare instead.
-    CellStruct& current = JumpjetCoords;
+    CellStruct& current = CurrentJumpjetMapCoords;
 
     if (current.X != NoCell.X || current.Y != NoCell.Y)
     {

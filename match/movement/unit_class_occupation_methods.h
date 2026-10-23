@@ -16,7 +16,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/foot_class.h"   // FootClass spine + CoordStruct + Point2D + TransitionTimer + CellStruct
+#include "../_layout/unit_class.h"   // canonical UnitClass (FootClass spine, CoordStruct, CellStruct)
 #include "loco_interfaces.h"
 
 // CellClass — only the two occupation bitfields + the cell Flags dword that the
@@ -74,24 +74,5 @@ struct DoorTimer
 {
     void Start(double value);   // 0x4A51F0
 };
-
-// UnitClass : FootClass — only the UnitClass-specific Type pointer is new; every
-// other touched member is reached through the FootClass / TechnoClass base.
-class UnitClass : public FootClass
-{
-public:
-    int   CurrentFiringFrame;   // +0x6C0
-    void* Type;                 // +0x6C4  (UnitTypeClass*)
-
-    // FUNCTION: GAMEMD 0x740E80  UnitClass::APCOpenDoor             (__thiscall)
-    void APCOpenDoor();
-    // FUNCTION: GAMEMD 0x7441B0  UnitClass::MarkAllOccupationBits   (__thiscall)
-    void MarkAllOccupationBits(CoordStruct const& coords);
-    // FUNCTION: GAMEMD 0x744210  UnitClass::UnmarkAllOccupationBits (__thiscall)
-    void UnmarkAllOccupationBits(CoordStruct const& coords);
-};
-
-GG_STATIC_ASSERT(offsetof(UnitClass, CurrentFiringFrame) == 0x6C0);
-GG_STATIC_ASSERT(offsetof(UnitClass, Type)               == 0x6C4);
 
 #endif  // GG_MATCH_MOVEMENT_UNIT_CLASS_OCCUPATION_METHODS_H

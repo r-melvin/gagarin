@@ -34,7 +34,7 @@
 //     cast, an inline `Exceeds(a, b)` helper, an `int limit` temporary,
 //     swapping the comparison round, copying the coordinate struct by value
 //     and moving the local's declaration all stay at 86.7% or worse.
-bool BuildingClass_00458A00::IsCellImpassable(CellClass_00458A00* cell)
+bool BuildingClass::IsCellImpassable(CellClass* cell)
 {
     if (cell->GetBuilding() != this) {
         return false;
@@ -42,13 +42,12 @@ bool BuildingClass_00458A00::IsCellImpassable(CellClass_00458A00* cell)
     if (Type->NumberImpassableRows == -1) {
         return true;
     }
-    if (Type->Bunker && BunkerLinkedItem != 0) {
+    if (Type->bools_16A4[0x16AB - 0x16A4] && BunkerLinkedItem != 0) {
         return true;
     }
 
     int cellX = cell->MapCoords.X;
-    CellStruct_00458A00 here;
-    int edge = (this->*this->Vtbl->GetMapCoords)(&here)->X;
+    int edge = vf_110().X;
     if (Type->NumberImpassableRows + edge > cellX) {
         return true;
     }

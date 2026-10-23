@@ -593,7 +593,7 @@ CellClass* ObjectClass::vf_113()
 // true when off a bridge but more than three flight levels below Location over
 // a bridge cell, false when on a bridge but more than three flight levels
 // above it, otherwise the current OnBridge.
-bool ObjectClass::vf_47(int a1)
+bool ObjectClass::vf_47(AbstractClass* a1)
 {
     bool onBridge = OnBridge;
     CoordStruct coord = vf_19(a1);
@@ -647,7 +647,7 @@ bool ObjectClass::vf_79()
 }
 
 // FUNCTION: GAMEMD 0x5F6C80
-CoordStruct ObjectClass::vf_42(int a1)
+CoordStruct ObjectClass::vf_42(AbstractClass* a1)
 {
     return vf_18();
 }

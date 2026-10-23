@@ -14,19 +14,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-class FootClass;
-
-#include "../_layout/cell.h"
-GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
-
-class CellClass
-{
-public:
-    char       _pad00[0xE0];   // +0x0000
-    FootClass* Jumpjet;        // +0x00E0
-};
-GG_STATIC_ASSERT(offsetof(CellClass, Jumpjet) == 0xE0);
+#include "../_layout/foot_class.h"   // FootClass::CurrentJumpjetMapCoords @0x564, CellStruct
+#include "../_layout/cell_class.h"   // CellClass::Jumpjet @0xE0
 
 class MapClass
 {
@@ -39,15 +28,5 @@ public:
 extern MapClass   MapInstance;
 // GLOBAL: GAMEMD 0x008B3D88 — the "no cell" CellStruct sentinel.
 extern CellStruct NoCell;
-
-class FootClass
-{
-public:
-    char       _pad000[0x564];   // +0x0000
-    CellStruct JumpjetCoords;    // +0x0564
-
-    void Jumpjet_OccupyCell(CellStruct coords);   // GAMEMD 0x4E00B0
-};
-GG_STATIC_ASSERT(offsetof(FootClass, JumpjetCoords) == 0x564);
 
 #endif  // GG_MATCH_MOVEMENT_FOOT_CLASS_JUMPJET_CELL_METHODS_H

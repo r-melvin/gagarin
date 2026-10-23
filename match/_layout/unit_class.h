@@ -38,7 +38,9 @@ class HouseClass;
 class UnitClass : public FootClass
 {
 public:
-    UnitClass(UnitTypeClass* type, HouseClass* owner); // GAMEMD 0x7353C0
+    // GAMEMD 0x7353C0. TClassFactory<UnitClass>::CreateInstance constructs with
+    // (0, 0): PUSH 0; PUSH 0; MOV ECX,EAX; CALL 0x7353C0 @0x6C344D..0x6C3453.
+    UnitClass(UnitTypeClass* type = 0, HouseClass* owner = 0);
     virtual ~UnitClass(); // external; retail scalar-deleting slot8=0x746E80
     virtual HRESULT __stdcall GetClassID(CLSID* id); // slot3 0x746DE0
     virtual HRESULT __stdcall Save(IStream* stream, BOOL clear); // slot6 0x744600
@@ -47,6 +49,21 @@ public:
     // FUNCTION: GAMEMD 0x00746D90 (decl; reloc)
     // UnitClass::FUN_00746D90
     int FUN_00746D90();
+    // GAMEMD 0x70FBD0 (decl; body in movement/unit_class_methods.cpp)
+    bool IsDeactivated() const;
+    // GAMEMD 0x740DF0 (decl). Sets FlagHouseIndex @0x6CC when it is -1, then
+    // calls primary slot 0x124/4 with 2 and returns true; only caller HouseClass::PickedUpFlag 0x4FC060.
+    bool FlagAttach(int houseIndex);
+    // GAMEMD 0x740E20 (decl)
+    bool FlagRemove();
+    // GAMEMD 0x740E80 (decl; body in movement/Unit.cpp)
+    void APCOpenDoor();
+    // GAMEMD 0x7441B0 (decl)
+    void MarkAllOccupationBits(CoordStruct const& coords);
+    // GAMEMD 0x744210 (decl)
+    void UnmarkAllOccupationBits(CoordStruct const& coords);
+    // GAMEMD 0x746000 (RET 8): whether a hop between two cells goes to the A* search.
+    bool AStarAttempt(const CellStruct* from, const CellStruct* to);
     // Slots 341-343, introduced by UnitClass (344 slots in all; retail table 0x7F5C70).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     // Each pops 0x20 or 0x24 bytes, so some of those words are by-value structures.

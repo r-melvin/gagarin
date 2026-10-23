@@ -20,7 +20,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
-#include "../_layout/foot_class.h"   // FootClass: Destination @0x5A4, NavQueue @0x5AC, unknown_bool_6B1
+#include "../_layout/foot_class.h"
+#include "../_layout/building_class.h"   // the radio link tested as a building   // FootClass: Destination @0x5A4, NavQueue @0x5AC, unknown_bool_6B1
 
 class AbstractClass;
 
@@ -64,60 +65,5 @@ GG_STATIC_ASSERT(offsetof(NavVector_004DA0E0, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(NavVector_004DA0E0, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(NavVector_004DA0E0) == 0x18);
 GG_STATIC_ASSERT(sizeof(NavVector_004DA0E0) == sizeof(DynamicVectorClassLayout));
-
-// The building type of the radio link: only the byte at +0x16BD is read.
-struct BuildingType_004DA0E0
-{
-    char _pad0000[0x16BD];    // +0x0000
-    char At_16BD;             // +0x16BD
-};
-GG_STATIC_ASSERT(offsetof(BuildingType_004DA0E0, At_16BD) == 0x16BD);
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct LinkVtbl_004DA0E0;
-
-// The radio link (a BuildingClass when WhatAmI says 6): Type @0x520.
-struct Link_004DA0E0
-{
-    LinkVtbl_004DA0E0*      Vtbl;       // +0x0000
-    char                    _pad004[0x520 - 4];
-    BuildingType_004DA0E0*  Type;       // +0x0520
-};
-GG_STATIC_ASSERT(offsetof(Link_004DA0E0, Type) == 0x520);
-
-typedef int (Link_004DA0E0::*Fn02C_004DA0E0)();
-
-struct LinkVtbl_004DA0E0
-{
-    char           _pad000[0x2C];    // +0x0000
-    Fn02C_004DA0E0 WhatAmI;          // +0x002C
-};
-GG_STATIC_ASSERT(offsetof(LinkVtbl_004DA0E0, WhatAmI) == 0x2C);
-
-struct NavVtbl_004DA0E0;
-
-// No-data host over the committed FootClass spine; layout identical.
-struct FootNav : FootClass
-{
-    // FUNCTION: GAMEMD 0x65AD30 (decl; reloc) — n-th radio link.
-    Link_004DA0E0* FUN_0065AD30(int index);
-
-    // FUNCTION: GAMEMD 0x4DA0E0
-    void QueueNavigationList(AbstractClass* target);
-};
-GG_STATIC_ASSERT(sizeof(FootNav) == sizeof(FootClass));
-
-typedef int  (IPersistStream::*Fn184_004DA0E0)();
-typedef bool (IPersistStream::*Fn484_004DA0E0)(int initial, int unused);
-
-struct NavVtbl_004DA0E0
-{
-    char           _pad000[0x184];             // +0x0000
-    Fn184_004DA0E0 GetCurrentMission;          // +0x0184
-    char           _pad188[0x484 - 0x188];     // +0x0188
-    Fn484_004DA0E0 EnterIdleMode;              // +0x0484
-};
-GG_STATIC_ASSERT(offsetof(NavVtbl_004DA0E0, GetCurrentMission) == 0x184);
-GG_STATIC_ASSERT(offsetof(NavVtbl_004DA0E0, EnterIdleMode) == 0x484);
 
 #endif  // GG_MATCH_MOVEMENT_FOOT_CLASS_NAV_LIST_METHODS_H

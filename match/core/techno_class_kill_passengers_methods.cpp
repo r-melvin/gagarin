@@ -11,11 +11,12 @@
 // destroyed through its own two virtuals.
 //
 // The empty check is hoisted out and the body is a do/while: retail tests
-// NumPassengers once up front and again at the bottom of the loop, with the
-// loop head at the GetFirstPassenger call rather than at the test.
+// FirstPassenger (+0x118, the list head) once up front and again at the bottom
+// of the loop, with the loop head at the GetFirstPassenger call rather than at
+// the test.
 void TechnoClass::KillPassengers(TechnoClass* source)
 {
-    if (Passengers.NumPassengers == 0)
+    if (Passengers.FirstPassenger == 0)
         return;
 
     do
@@ -30,12 +31,12 @@ void TechnoClass::KillPassengers(TechnoClass* source)
             // Retail passes the passenger itself here, not `source`
             // (`PUSH ESI; MOV ECX,ESI; CALL 0x707CB0`); only the outer
             // virtual at +0xE0 receives the original killer.
-            ((TechnoClass*)passenger)->KillPassengers((TechnoClass*)passenger);
-            passenger->Slot_E0(source);
-            passenger->Slot_F8();
+            passenger->KillPassengers(passenger);
+            passenger->vf_56(source);
+            passenger->vf_62();
         }
     }
-    while (Passengers.NumPassengers != 0);
+    while (Passengers.FirstPassenger != 0);
 }
 
 // The null-safe FootClass cast retail inlined at the loop's back edge: null
@@ -45,7 +46,7 @@ void TechnoClass::KillPassengers(TechnoClass* source)
 // test as `TEST byte ptr [EAX+0x14],DL` (0x7104E0..0x7104E7).
 static __inline FootClass* foot_cast_007104C0(void* object)
 {
-    return (object != 0 && (((FootClass*)object)->unknown_14 & 4) != 0)
+    return (object != 0 && ((AbstractClass*)object)->Flags.IsFoot)
                ? (FootClass*)object
                : 0;
 }

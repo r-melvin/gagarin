@@ -12,7 +12,7 @@
 // inlined DynamicVectorClass::AddItem. With no destination and the object in
 // mission 5, it is kicked into idle unless its first radio link is a building
 // whose type byte at +0x16BD is set.
-void FootNav::QueueNavigationList(AbstractClass* target)
+void FootClass::QueueNavigationList(AbstractClass* target)
 {
     if (target == 0) {
         return;
@@ -27,13 +27,12 @@ void FootNav::QueueNavigationList(AbstractClass* target)
         ((NavVector_004DA0E0*)&this->NavQueue)->AddItem(target);
     }
 
-    if (this->Destination == 0
-        && (this->*(*(NavVtbl_004DA0E0**)this)->GetCurrentMission)() == 5) {
-        Link_004DA0E0* link = this->FUN_0065AD30(0);
+    if (this->Destination == 0 && this->vf_97() == 5) {
+        TechnoClass* link = this->FUN_0065AD30(0);
         if (link == 0
-            || (link->*link->Vtbl->WhatAmI)() != 6
-            || link->Type->At_16BD == 0) {
-            (this->*(*(NavVtbl_004DA0E0**)this)->EnterIdleMode)(0, 1);
+            || link->vf_11() != 6
+            || ((BuildingClass*)link)->Type->bools_16A4[0x16BD - 0x16A4] == 0) {
+            this->EnterIdleMode(0, 1);
         }
     }
 }

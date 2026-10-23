@@ -54,8 +54,15 @@ GG_STATIC_ASSERT(sizeof(StageClass)          == 0x1C);
 // anchor: NumPassengers @0, FirstPassenger @4.
 #ifndef GG_MATCH_LAYOUT_PASSENGERSCLASS_DEFINED
 #define GG_MATCH_LAYOUT_PASSENGERSCLASS_DEFINED
+class FootClass;
 struct PassengersClass
 {
+    FootClass* RemoveFirstPassenger();                // GAMEMD 0x473430
+    FootClass* GetFirstPassenger();                   // GAMEMD 0x473450: returns FirstPassenger
+    int        GetTotalSize() const;                  // GAMEMD 0x473460
+    void       RemovePassenger(FootClass* passenger); // GAMEMD 0x4734B0
+    int        IndexOf(FootClass* candidate) const;   // GAMEMD 0x473500
+
     int   NumPassengers;     // +0x00
     void* FirstPassenger;    // +0x04  FootClass*
 };
@@ -241,6 +248,8 @@ public:
     // FUNCTION: GAMEMD 0x707CB0 (decl; reloc) -- kill the passengers (one
     // stack argument, the killer).
     void KillPassengers(TechnoClass* killer);
+    void MarkPassengersAsExited();   // GAMEMD 0x7104C0
+    void SetArchiveTarget(AbstractClass* target); // GAMEMD 0x70C610 (matched in core/techno_class_setters.cpp)
     // FUNCTION: GAMEMD 0x705E00 (decl; reloc) -- draws one shape at a screen
     // point inside a clip rectangle; sixteen stack arguments (RET 0x40).
     void FUN_00705E00(SHPStruct* shape, int frame, Point2D* point, RectangleStruct* clip,
@@ -250,6 +259,7 @@ public:
     // Overrides of base slots (primary table 0x7F4960, 309 slots).
     virtual void vf_9();                                           // 9   0x6F3F40
     virtual bool vf_25();                                          // 25  0x6F32D0
+    virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
     virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
@@ -294,7 +304,7 @@ public:
     virtual int vf_188();                                          // 188 0x459DA0
     virtual CellStruct vf_189();                                   // 189 0x459DB0
     virtual void vf_190(int a1);                                   // 190 0x459DC0
-    virtual CellStruct vf_191(int a1, int a2);                        // 191 0x70AD50
+    virtual CellStruct vf_191(AbstractClass* target, int a2);         // 191 0x70AD50: forwards its first argument to slot 42
     virtual int vf_192(int a1, int a2);                            // 192 0x6F3D60
     virtual int vf_193(int a1, int a2);                            // 193 0x708C10
     virtual DirStruct vf_194();                                       // 194 0x708D70
@@ -344,7 +354,7 @@ public:
     virtual int vf_238();                                          // 238 0x4C9150
     virtual int vf_239(int a1, int a2);                            // 239 0x6FC090
     virtual bool vf_240(int a1, int a2, int a3);                   // 240 0x6FC0B0
-    virtual int vf_241(int a1, int a2, int a3);                    // 241 0x6F8DF0
+    virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x6F8DF0; FootClass 0x4D9920 tests the threat bits and the result pointer
     virtual void vf_242(int a1);                                   // 242 0x6FCDB0
     virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
     virtual void CancelAndGoIdle();                                // 244 0x70F850
@@ -460,7 +470,7 @@ public:
     Point2D            RadarPosition;            // +0x208 (8)
     unsigned int       DisplayProductionTo;      // +0x210 (IndexBitfield<HouseClass*>)
     int                Group;                    // +0x214 (ctor = -1)
-    void*              ArchiveTarget;            // +0x218 AbstractClass*
+    AbstractClass*     ArchiveTarget;            // +0x218 (BuildingClass 0x459C20 calls its slot 11)
     HouseClass*        Owner;                    // +0x21C (ctor = param_1)
     int                CloakState;               // +0x220 (CloakState enum)
     StageClass         CloakProgress;            // +0x224 (0x1C)
@@ -509,7 +519,7 @@ public:
     void*              SlaveManager;             // +0x2D8 SlaveManagerClass*
     void*              SlaveOwner;               // +0x2DC TechnoClass*
     void*              OriginallyOwnedByHouse;   // +0x2E0 HouseClass*
-    void*              BunkerLinkedItem;         // +0x2E4 TechnoClass*
+    TechnoClass*       BunkerLinkedItem;         // +0x2E4 (0x459470 clears the partner's own +0x2E4 link)
     float              PitchAngle;               // +0x2E8
     CDTimerClass       RearmTimer;               // +0x2EC (0xC)
     int                ChargeTurretDelay;        // +0x2F8

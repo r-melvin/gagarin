@@ -6,16 +6,22 @@
 //   or FUN_<addr>: no original name is confirmed for them.
 
 #include "building_a_views.h"
+#include "../../_layout/building_class.h"
+#include "../../_layout/house_class.h"
+#include "../../_layout/tactical.h"
+
+// FUNCTION: GAMEMD 0x772A90 (decl; reloc) - WeaponTypeClass::AllowedThreats, the weapon type in ECX.
+unsigned int FUN_00772A90(WeaponTypeClass* weapon);
 
 // FUNCTION: GAMEMD 0x43E900
-int BuildingAView::vf_187()
+int BuildingClass::vf_187()
 {
-    int value = -FUN_006D20E0(vf_116());
+    int value = -Tactical::AdjustForZ(FUN_005F5F30());
 
-    BATypeView* type = Type;
+    BuildingTypeClass* type = Type;
 
-    if (type->unknown_16C5) {
-        return type->unknown_11E8 + value;
+    if (type->bools_16A4[0x16C5 - 0x16A4]) {
+        return type->BuildingAnim[9].ZAdjust + value;
     }
 
     return value;
@@ -44,47 +50,50 @@ void BuildingAView::vf_242(BAObjView* target)
     FUN_006FCDB0(target);
 }
 
+// The 16-bit direction from `to` towards `from`; inlined at its call sites.
+static inline DirStruct DirectionTo(const CoordStruct& to, const CoordStruct& from)
+{
+    int bx = to.X;
+    int ax = from.X;
+    DirStruct d;
+    d.Raw = (short)((FUN_004CAE30((double)to.Y - from.Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
+    return d;
+}
+
 // FUNCTION: GAMEMD 0x445E50
 //
 // The facing towards the target (or the current facing without one). The two X differences are kept in
 // integer temporaries of their own (the frame is 0x20 bytes only with them), the angle callee takes the
 // Y difference first and the X difference second, and the result is a 16-bit direction.
-HBDir BuildingAView::vf_170()
+DirStruct BuildingClass::vf_170()
 {
     if (!vf_255() && Target) {
-        HBCoord a, b;
-        HBCoord* pa = Target->vf_18(&a);
-        HBCoord* pb = vf_18(&b);
-        int bx = pb->X;
-        int ax = pa->X;
-        HBDir d;
-        d.Raw = (short)((FUN_004CAE30((double)pb->Y - pa->Y, (double)ax - bx) - DAT_007E2820) * DAT_007E2818);
-        return d;
+        return DirectionTo(vf_18(), Target->vf_18());
     }
-    return Facing.FUN_004C93D0();
+    return PrimaryFacing.FUN_004C93D0();
 }
 
 // FUNCTION: GAMEMD 0x445F00
-void BuildingAView::vf_241(unsigned int flags, int b, int c)
+AbstractClass* BuildingClass::vf_241(unsigned int threat, CoordStruct* coord, bool a3)
 {
-    if (vf_254(0)->First != 0) {
-        flags |= FUN_00772A90(vf_254(0)->First);
+    if (vf_254(0)->WeaponType != 0) {
+        threat |= FUN_00772A90(vf_254(0)->WeaponType);
     }
-    if (vf_254(1)->First != 0) {
-        flags |= FUN_00772A90(vf_254(1)->First);
+    if (vf_254(1)->WeaponType != 0) {
+        threat |= FUN_00772A90(vf_254(1)->WeaponType);
     }
-    FUN_006F8DF0(flags | 1, b, c);
+    return TechnoClass::vf_241(threat | 1, coord, a3);
 }
 
 // FUNCTION: GAMEMD 0x447AC0
-HBCoord BuildingAView::FUN_00447AC0()
+CoordStruct BuildingClass::vf_18()
 {
-    int height = Type->FUN_0045ECA0(0) * 128 - 128;
-    int width = Type->FUN_0045EC90() * 128 - 128;
+    int height = Type->GetFoundationHeight(false) * 128 - 128;
+    int width = Type->GetFoundationWidth() * 128 - 128;
 
-    HBCoord c = Location;
+    CoordStruct c = Location;
 
-    HBCoord temp;
+    CoordStruct temp;
     temp.X = width + c.X;
     temp.Y = height + c.Y;
     temp.Z = c.Z;
@@ -97,63 +106,65 @@ inline double BASquare(int v)
     return (double)v * v;
 }
 
+// The straight-line distance between two coordinates; inlined at its call sites.
+static inline int Distance(const CoordStruct& b, const CoordStruct& a)
+{
+    return (int)FUN_004CAC40(BASquare(b.X - a.X) + BASquare(b.Y - a.Y) + BASquare(b.Z - a.Z));
+}
+
 // FUNCTION: GAMEMD 0x447E00
 //
 // The straight-line distance to a target. CAPPED at 75.9% (instruction multiset identical): retail keeps
 // the Y difference alone in a stack slot, converts it first and has a 0x24-byte frame; the variants tried
 // (named differences, doubles, the inline square helper in three operand orders) all give 0x20.
-int BuildingAView::vf_310(BAObjView* target)
+int BuildingClass::vf_310(AbstractClass* target)
 {
-    HBCoord a, b;
-    HBCoord* pa = target->vf_18(&a);
-    HBCoord* pb = vf_42(&b, target);
-    return (int)FUN_004CAC40(BASquare(pb->X - pa->X) + BASquare(pb->Y - pa->Y) + BASquare(pb->Z - pa->Z));
+    return Distance(vf_42(target), target->vf_18());
 }
 
 // FUNCTION: GAMEMD 0x447E90
-HBCoord BuildingAView::FUN_00447E90(BAObjView* arg)
+CoordStruct BuildingClass::vf_19(AbstractClass* arg)
 {
-    HBCoord tmp;
-    if (Type->unknown_16CB) {
-        return *vf_42(&tmp, arg);
+    if (Type->bools_16A4[0x16CB - 0x16A4]) {
+        return vf_42(arg);
     }
-    if (!Type->unknown_16A9 && !Type->unknown_16AB) {
-        return *vf_18(&tmp);
+    if (!Type->bools_16A4[0x16A9 - 0x16A4] && !Type->bools_16A4[0x16AB - 0x16A4]) {
+        return vf_18();
     }
-    return *vf_42(&tmp, arg);
+    return vf_42(arg);
 }
 
 // FUNCTION: GAMEMD 0x449410
-int BuildingAView::vf_46()
+int BuildingClass::GetYSort() const
 {
-    int base = FUN_005F6BD0();
+    int base = ObjectClass::GetYSort();
 
-    BATypeView* flags = Type;
+    BuildingTypeClass* flags = Type;
 
-    return base + ((flags->unknown_16C5 ? 0x20 : 0) - (flags->unknown_16B7 ? 0x10 : 0));
+    return base + ((flags->bools_16A4[0x16C5 - 0x16A4] ? 0x20 : 0) - (flags->bools_16A4[0x16B7 - 0x16A4] ? 0x10 : 0));
 }
 
 // FUNCTION: GAMEMD 0x449440
-int BuildingAView::vf_107(BAOccupierView* occ, int a2, int a3, int a4, int a5)
+int BuildingClass::vf_107(CellClass* target, int a2, int a3, int a4, int a5)
 {
-    HBCell cell = occ->Cell;
-    BATypeView* type = Type;
-    if (type->unknown_408 != 0 && unknown_74) {
-        return DAT_0087F7E8.FUN_005657A0(&cell)->FUN_0047C620(type->unknown_67C, type, Owner) ? 0 : 7;
+    CellStruct cell = target->MapCoords;
+    BuildingTypeClass* type = Type;
+    if (type->UndeploysInto != 0 && IsOnMap) {
+        return DAT_0087F7E8.FUN_005657A0(&cell)->FUN_0047C620(type->SpeedType, type, Owner) ? 0 : 7;
     }
     return type->vf_42(&cell, Owner) ? 0 : 7;
 }
 
 // FUNCTION: GAMEMD 0x4494C0
-bool BuildingAView::vf_38()
+bool BuildingClass::vf_38()
 {
-    if (!FUN_0070FEC0() && !Type->unknown_1579) {
-        if (unknown_6E9 && BState != 0) {
+    if (!IsBeingDrained() && !Type->bools_1570[0x1579 - 0x1570]) {
+        if (HasBuildUp && BState != 0) {
             if (vf_97() != 0x13 && vf_97() != 0x12) {
                 return true;
             }
         }
-        if (Type->unknown_16C0 && !Owner->unknown_1FA) {
+        if (Type->bools_16A4[0x16C0 - 0x16A4] && !Owner->FirestormActive) {
             return true;
         }
     }
@@ -161,35 +172,35 @@ bool BuildingAView::vf_38()
 }
 
 // FUNCTION: GAMEMD 0x449A40
-void BuildingAView::vf_136()
+int BuildingClass::vf_136()
 {
-    vf_135();
+    return vf_135();
 }
 
 // FUNCTION: GAMEMD 0x44B760
-void BuildingAView::vf_133()
+int BuildingClass::vf_133()
 {
-    FUN_005B2E50();
+    return MissionClass::vf_133();
 }
 
 // FUNCTION: GAMEMD 0x44B770
-void BuildingAView::vf_137()
+int BuildingClass::vf_137()
 {
-    FUN_005B2E90();
+    return MissionClass::vf_137();
 }
 
 // FUNCTION: GAMEMD 0x44D5D0
-bool BuildingAView::vf_102(BAHouseView* house)
+bool BuildingClass::vf_102(HouseClass* house)
 {
-    if (FUN_006F4960(house)) {
+    if (TechnoClass::vf_102(house)) {
         if (!DAT_00A8E7AC) {
-            Owner->unknown_26C = Type->unknown_DF8;
-            Owner->unknown_246 = 1;
+            Owner->LastBuiltBuildingType = Type->ArrayIndex;
+            Owner->IsBuiltSomething = 1;
         }
-        Owner->unknown_1FC = 1;
-        if (!FUN_0065AE30() && Owner->FUN_0050B730() && vf_97() != 0x12 && unknown_B4 != 0x12) {
+        Owner->RecheckTechTree = 1;
+        if (!HasAnyLink() && Owner->IsControlledByHuman() && vf_97() != 0x12 && QueuedMission != 0x12) {
             vf_311(0);
-        } else if (!FUN_0065AE30() && !Owner->FUN_0050B730() && house == Owner && vf_97() != 0x12) {
+        } else if (!HasAnyLink() && !Owner->IsControlledByHuman() && house == Owner && vf_97() != 0x12) {
             vf_311(0);
         }
         return true;
@@ -198,10 +209,10 @@ bool BuildingAView::vf_102(BAHouseView* house)
 }
 
 // FUNCTION: GAMEMD 0x44D6A0
-bool BuildingAView::vf_289(bool flag, int unused)
+bool BuildingClass::EnterIdleMode(bool initial, bool a2)
 {
     int mission;
-    if (flag && !DAT_00A8E7AC && !DAT_00A8ED6B) {
+    if (initial && !DAT_00A8E7AC && !DAT_00A8ED6B) {
         FUN_00447780(0);
         mission = 0x12;
     } else {
@@ -213,18 +224,18 @@ bool BuildingAView::vf_289(bool flag, int unused)
 }
 
 // FUNCTION: GAMEMD 0x44D700
-int BuildingAView::vf_174()
+int BuildingClass::vf_174()
 {
-    BATypeView* type = Type;
-    switch (type->unknown_3D4) {
+    BuildingTypeClass* type = Type;
+    switch (type->PipScale) {
     case 2:
-        if (type->unknown_16BC) {
-            double d = Owner->FUN_004F9750();
+        if (type->bools_16A4[0x16BC - 0x16A4]) {
+            double d = Owner->GetWeedStoragePercentage();
             return (int)(type->vf_29() * d);
         }
         return 0;
     default:
-        return FUN_00708C30();
+        return TechnoClass::vf_174();
     }
 }
 
@@ -262,10 +273,10 @@ HBDir* BuildingAView::vf_194(HBDir* out)
 }
 
 // FUNCTION: GAMEMD 0x44EB10
-int BuildingAView::vf_195()
+int BuildingClass::vf_195()
 {
-    if (!unknown_6E3 && DAT_00A8B230->Counter.FUN_0065C7E0(0, 0x63) < 0x19 && Type->unknown_EB8 == 7) {
+    if (!HasBeenCaptured && DAT_00A8B230->Counter.FUN_0065C7E0(0, 0x63) < 0x19 && Type->Factory == 7) {
         return RulesInstance->unknown_F70;
     }
-    return FUN_00707D20();
+    return TechnoClass::vf_195();
 }

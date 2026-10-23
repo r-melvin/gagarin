@@ -4,6 +4,15 @@
 
 #include "foot_class_find_path_methods.h"
 
+// Coordinate to cell (256 leptons per cell); inlined at the call site.
+static inline Cell CellOfCoord(const CoordStruct& coord)
+{
+    Cell cell;
+    cell.X = (short)(coord.X / 256);
+    cell.Y = (short)(coord.Y / 256);
+    return cell;
+}
+
 // FUNCTION: GAMEMD 0x4CBBA0
 //
 // Ask the A* pathfinder for a route from this object's current cell to `dest`.
@@ -11,23 +20,13 @@
 // units, then advanced along the first `dirCount` entries of PathDirections by
 // the walker at 0x429780; a null `buffer` returns 0 before the walk. The third
 // and fourth arguments are not read.
-void* FootPath::FindPath(Cell_004CBBA0* dest, int* buffer, int unused1, int unused2,
-                         int dirCount, int mode)
+void* FootClass::FindPath(Cell* dest, int* buffer, int unused1, int unused2,
+                          int dirCount, int mode)
 {
-    CoordStruct   crd;
-    CoordStruct*  p = (this->*(*(PathVtbl**)this)->GetCoords)(&crd, 0);
-    Cell_004CBBA0 r;
-
-    r.X = (short)(p->X / 256);
-    r.Y = (short)(p->Y / 256);
-
-    Cell_004CBBA0 cell = r;
-
+    Cell cell = CellOfCoord(this->vf_19(0));
     if (buffer == 0) {
         return 0;
     }
-
     cell = FUN_00429780(&cell, dirCount, this->PathDirections);
-
     return DAT_0087E8B8.FindPath(&cell, dest, this, buffer, -1, -1, mode);
 }

@@ -13,54 +13,23 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
+#include "../_layout/unit_class.h"
+#include "../_layout/cell_class.h"
 
-struct Cell_00746000
-{
-    short X;   // +0x0000
-    short Y;   // +0x0002
-};
-GG_STATIC_ASSERT(sizeof(Cell_00746000) == 0x4);
 
-// CellClass — only the flag word is read.
-struct CellClass_00746000
-{
-    char _pad000[0x140];   // +0x0000
-    unsigned int Flags;    // +0x0140  bit 8 = alternate (bridge) level
-};
-GG_STATIC_ASSERT(offsetof(CellClass_00746000, Flags) == 0x140);
 
-struct Vtbl_00746000;
-
-// UnitClass — only the vtable is touched.
-struct Unit_00746000
-{
-    Vtbl_00746000* Vptr;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x746000 — UnitClass::AStarAttempt.
-    bool AStarAttempt(const Cell_00746000* from, const Cell_00746000* to);
-};
-
-typedef int (Unit_00746000::*Fn1C8_00746000)();
-
-struct Vtbl_00746000
-{
-    char            _pad000[0x1C8];   // +0x0000
-    Fn1C8_00746000  GetHeight;        // +0x01C8
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_00746000, GetHeight) == 0x1C8);
 
 // MapClass — the three map queries the attempt goes through.
 struct Map_00746000
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x56D100 (decl; reloc) — path pre-check between two cells.
-    bool FUN_0056D100(const Cell_00746000* from, const Cell_00746000* to,
+    bool FUN_0056D100(const CellStruct* from, const CellStruct* to,
                       int a, char b, char c, char d);
     // FUNCTION: GAMEMD 0x578460 (decl; reloc) — MapClass::IsWithinUsableArea(CellStruct const&, bool).
-    bool IsWithinUsableArea(const Cell_00746000* cell, bool checkLevel);
+    bool IsWithinUsableArea(const CellStruct* cell, bool checkLevel);
     // FUNCTION: GAMEMD 0x5657A0 (decl; reloc) — MapClass::GetCellAt.
-    CellClass_00746000* GetCellAt(const Cell_00746000* cell);
+    CellClass* GetCellAt(const CellStruct* cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_00746000 MapInstance_00746000;
@@ -70,8 +39,8 @@ struct AStar_00746000
 {
     char opaque[4];
     // FUNCTION: GAMEMD 0x42D170 (decl; reloc) — AStarClass::AttemptPath.
-    int AttemptPath(const Cell_00746000* from, const Cell_00746000* to,
-                    Unit_00746000* foot, bool fromAlt, bool toAlt, int zone);
+    int AttemptPath(const CellStruct* from, const CellStruct* to,
+                    FootClass* foot, bool fromAlt, bool toAlt, int zone);
 };
 // GLOBAL: GAMEMD 0x87E8B8 — AStarClass::Instance.
 extern AStar_00746000 DAT_0087E8B8;

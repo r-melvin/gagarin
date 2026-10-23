@@ -13,11 +13,11 @@
 // and each fitted upgrade's own PowerBonus is added when the building is
 // upgraded at all. A positive total is finally scaled by the health ratio;
 // anything else, or an unpowered building, reports zero.
-int Building_0044E7B0::GetPowerOutput() const
+int BuildingClass::GetPowerOutput()
 {
     int output = this->Type->PowerBonus;
 
-    if ((this->*static_cast<Vtbl_0044E7B0*>(PrimaryVTable())->IsBeingWarpedOut)())
+    if (this->vf_117())
         return 0;
 
     if (this->HasExtraPowerBonus)
@@ -31,10 +31,10 @@ int Building_0044E7B0::GetPowerOutput() const
     // count EAX (93.8%). Splitting the count test into its own nested `if`
     // with the count bound first and the bonus re-read second is what makes
     // the bonus the destination operand.
-    BuildingType_0044E7B0* type = this->Type;
-    if ((type->At_16AE || type->At_16AF) && type->ExtraPowerBonus > 0)
+    BuildingTypeClass* type = this->Type;
+    if ((type->bools_16A4[0x16AE - 0x16A4] || type->bools_16A4[0x16AF - 0x16A4]) && type->ExtraPowerBonus > 0)
     {
-        int n = this->NumPassengers;
+        int n = this->Passengers.NumPassengers;
         if (n > 0)
         {
             int b = type->ExtraPowerBonus;

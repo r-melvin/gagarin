@@ -12,6 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/unit_class.h"   // the flag carrier: InLimbo @0x81, FlagAttach 0x740DF0
 
 typedef unsigned long DWORD;
 
@@ -29,25 +30,6 @@ public:
     int  ColorSchemeIndex_B8;    // +0x00B8  (MOV EAX,[EDX+0xB8])
 };
 GG_STATIC_ASSERT(offsetof(HouseTypeClass, ColorSchemeIndex_B8) == 0xB8);
-
-// ---------------------------------------------------------------------------
-// UnitClass shim — the flag carrier. Only InLimbo @0x81 (the not-on-map guard)
-// and the owner-index setter @0x740DF0 are touched here.
-//
-// Confirmed from 0x4FC060: MOV AL,[EDI+0x81]; TEST AL,AL (limbo guard), and
-// MOV ECX,EDI / CALL 0x740DF0 with one pushed int argument.
-// ---------------------------------------------------------------------------
-class UnitClass
-{
-public:
-    char          _layout_pad_P2[0x81];   // +0x0000
-    unsigned char InLimbo;                // +0x0081  (bool; ObjectClass::InLimbo)
-
-    // Retail callee we are NOT matching — declared (no body) so cl emits a
-    // __thiscall + a normalised reloc. Sets the carrier's owner/colour index.
-    void SetOwnerIndex_740DF0(int index);  // GAMEMD 0x740DF0 __thiscall (reloc)
-};
-GG_STATIC_ASSERT(offsetof(UnitClass, InLimbo) == 0x81);
 
 // ---------------------------------------------------------------------------
 // HouseClass — only the members PickedUpFlag touches are modelled; the full

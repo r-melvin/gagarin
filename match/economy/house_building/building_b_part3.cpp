@@ -5,6 +5,7 @@
 
 #include <new.h>
 #include "building_b_views.h"
+#include "../../_layout/building_class.h"
 
 // FUNCTION: GAMEMD 0x4544A0
 // Both arms compute one flag and share a single `return 3` / `return 5` pair,
@@ -408,21 +409,21 @@ HBRect* BuildingBView::vf_75(HBRect* out)
 }
 
 // FUNCTION: GAMEMD 0x455D50
-void BuildingBView::vf_288(void* first, void* second)
+void BuildingClass::SetDestination(AbstractClass* target, bool a2)
 {
     if (CurrentMission == 0x13)
         return;
-    if (vf_161() || Type->unknown_16B9)
-        Func_70C610(first);
-    Func_709A30(first, second);
+    if (vf_161() || Type->bools_16A4[0x16B9 - 0x16A4])
+        SetArchiveTarget(target);
+    TechnoClass::SetDestination(target, a2);
 }
 
 // FUNCTION: GAMEMD 0x455DA0
-bool BuildingBView::vf_161()
+bool BuildingClass::vf_161()
 {
-    BuildingBTypeView* type = Type;
-    int mode = type->unknown_EB8;
-    if (mode != 0x28 && mode != 0x10 && !type->unknown_16AC && !type->unknown_16A9)
+    BuildingTypeClass* type = Type;
+    int mode = type->Factory;
+    if (mode != 0x28 && mode != 0x10 && !type->bools_16A4[0x16AC - 0x16A4] && !type->bools_16A4[0x16A9 - 0x16A4])
         return false;
     return true;
 }

@@ -134,12 +134,12 @@ public:
     virtual bool vf_39();                                      // 39  0x5F42D0: returns false
     virtual bool vf_40();                                      // 40  0x5F42E0: returns false
     virtual CoordStruct vf_41();                               // 41  0x41BDD0: returns vf_18()
-    virtual CoordStruct vf_42(int a1);                         // 42  0x5F6C80
+    virtual CoordStruct vf_42(AbstractClass* target);          // 42  0x5F6C80; BuildingClass 0x447E00 passes the object whose slot 18 it reads
     virtual CoordStruct vf_43();                               // 43  0x41BE00: returns vf_18()
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4); // 44  0x4263D0: vf_18() raised by 50
     virtual CoordStruct vf_45(int a1);                         // 45  0x41BE30: returns vf_18()
     virtual int GetYSort() const;                              // 46  0x5F6BD0
-    virtual bool vf_47(int a1);                                // 47  0x5F6A70
+    virtual bool vf_47(AbstractClass* target);                 // 47  0x5F6A70: forwards its argument to slot 19
     virtual bool vf_48();                                      // 48  0x426410: returns true
     virtual bool vf_49();                                      // 49  0x426420: returns false
     virtual bool vf_50(HouseClass* house);                     // 50  0x426430: returns false

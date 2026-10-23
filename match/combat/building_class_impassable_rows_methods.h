@@ -25,65 +25,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
-
-// 2D short cell coordinate (sizeof == 4): X@0, Y@2.
-struct CellStruct_00458A00
-{
-    short X;  // +0x00
-    short Y;  // +0x02
-};
-GG_STATIC_ASSERT(sizeof(CellStruct_00458A00) == 4);
-
-struct BuildingClass_00458A00;
-
-// CellClass — its own map coordinate and the building-content lookup.
-struct CellClass_00458A00
-{
-    char                _pad000[0x24];   // +0x0000  AbstractClass
-    CellStruct_00458A00 MapCoords;       // +0x0024
-
-    // FUNCTION: GAMEMD 0x47C520 (decl; reloc) — CellClass::GetBuilding.
-    BuildingClass_00458A00* GetBuilding() const;
-};
-GG_STATIC_ASSERT(offsetof(CellClass_00458A00, MapCoords) == 0x24);
-
-// BuildingTypeClass — only the two members this predicate reads.
-struct BuildingType_00458A00
-{
-    char _pad000[0x1620];                 // +0x0000
-    int  NumberImpassableRows;            // +0x1620
-    char _pad1624[0x16AB - 0x1624];       // +0x1624
-    char Bunker;                          // +0x16AB
-};
-GG_STATIC_ASSERT(offsetof(BuildingType_00458A00, NumberImpassableRows) == 0x1620);
-GG_STATIC_ASSERT(offsetof(BuildingType_00458A00, Bunker)               == 0x16AB);
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct Vtbl_00458A00;
-
-struct BuildingClass_00458A00
-{
-    Vtbl_00458A00*          Vtbl;              // +0x0000
-    char                    _pad004[0x2E0];    // +0x0004
-    BuildingClass_00458A00* BunkerLinkedItem;  // +0x02E4
-    char                    _pad2E8[0x238];    // +0x02E8
-    BuildingType_00458A00*  Type;              // +0x0520
-
-    // FUNCTION: GAMEMD 0x458A00
-    bool IsCellImpassable(CellClass_00458A00* cell);
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458A00, BunkerLinkedItem) == 0x2E4);
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458A00, Type)             == 0x520);
-
-typedef CellStruct_00458A00* (BuildingClass_00458A00::*Fn1B8_00458A00)(
-    CellStruct_00458A00* out);
-
-struct Vtbl_00458A00
-{
-    char            _pad000[0x1B8];   // +0x0000
-    Fn1B8_00458A00  GetMapCoords;     // +0x01B8
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_00458A00, GetMapCoords) == 0x1B8);
+#include "../_layout/building_class.h"
+#include "../_layout/cell_class.h"
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_IMPASSABLE_ROWS_METHODS_H

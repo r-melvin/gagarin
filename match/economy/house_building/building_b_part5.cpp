@@ -5,6 +5,16 @@
 
 #include <new.h>
 #include "building_b_views.h"
+#include "../../_layout/building_class.h"
+#include "../../_layout/cell_class.h"
+
+// The cell behind an abstract pointer, or null when it is something else (WhatAmI 0xB).
+static inline CellClass* AsCell(AbstractClass* object)
+{
+    if (object == 0)
+        return 0;
+    return object->vf_11() == 0xB ? (CellClass*)object : 0;
+}
 
 // The local list of cleared objects: a DynamicVectorClass with a growth step of ten.
 class BuildingBClearedList : public BuildingBVector<BuildingBObjectView>
@@ -83,36 +93,36 @@ bool BuildingBView::vf_171()
 }
 
 // FUNCTION: GAMEMD 0x458DD0
-bool BuildingBView::vf_256()
+bool BuildingClass::vf_256()
 {
-    return Type->unknown_157B && Type->unknown_157C && vf_258() > 0;
+    return Type->bools_1570[0x157B - 0x1570] && Type->bools_1570[0x157C - 0x1570] && vf_258() > 0;
 }
 
 // FUNCTION: GAMEMD 0x458E00
-int BuildingBView::vf_257()
+int BuildingClass::vf_257()
 {
-    int limit = Type->Func_45ECA0(0);
-    if (Type->Func_45EC90() < limit)
-        return Type->Func_45EC90() / 2;
-    return Type->Func_45ECA0(0) / 2;
+    int limit = Type->GetFoundationHeight(false);
+    if (Type->GetFoundationWidth() < limit)
+        return Type->GetFoundationWidth() / 2;
+    return Type->GetFoundationHeight(false) / 2;
 }
 
 // FUNCTION: GAMEMD 0x459870
-int BuildingBView::vf_181()
+int BuildingClass::vf_181()
 {
-    return Type->unknown_1524;
+    return Type->AntiAirValue;
 }
 
 // FUNCTION: GAMEMD 0x459880
-int BuildingBView::vf_182()
+int BuildingClass::vf_182()
 {
-    return Type->unknown_1528;
+    return Type->AntiArmorValue;
 }
 
 // FUNCTION: GAMEMD 0x459890
-int BuildingBView::vf_183()
+int BuildingClass::vf_183()
 {
-    return Type->unknown_152C;
+    return Type->AntiInfantryValue;
 }
 
 // FUNCTION: GAMEMD 0x459900
@@ -162,15 +172,15 @@ void BuildingBView::vf_282()
 }
 
 // FUNCTION: GAMEMD 0x459C20
-void BuildingBView::vf_219()
+void BuildingClass::vf_219()
 {
-    if (unknown_218 && unknown_218->vf_11() == 0xB) {
-        if (BuildingBCastAbstract(unknown_218)->unknown_EC == 5 && Type->unknown_5ED && Type->unknown_5EC && Type->unknown_57C != -1) {
-            vf_213(Type->unknown_57C);
+    if (ArchiveTarget && ArchiveTarget->vf_11() == 0xB) {
+        if (AsCell(ArchiveTarget)->LandType == 5 && Type->ResourceDestination && Type->ResourceGatherer && Type->VoiceHarvest != -1) {
+            vf_213(Type->VoiceHarvest);
             return;
         }
     }
-    Func_708E00();
+    TechnoClass::vf_219();
 }
 
 // GLOBAL: GAMEMD 0x7E96A0 - CLSID of BuildingClass (16 bytes read from the image).
@@ -178,13 +188,13 @@ extern "C" const CLSID CLSID_Building =
     { 0x0E272DC6, 0x9C0F, 0x11D1, { 0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
 // FUNCTION: GAMEMD 0x459E70
-int BuildingBView::vf_12()
+int BuildingClass::vf_12()
 {
     return 0x720;
 }
 
 // FUNCTION: GAMEMD 0x459E80
-HRESULT __stdcall BuildingBView::GetClassID(CLSID* pClassID)
+HRESULT __stdcall BuildingClass::GetClassID(CLSID* pClassID)
 {
     if (pClassID == 0)
         return E_POINTER;
@@ -193,19 +203,19 @@ HRESULT __stdcall BuildingBView::GetClassID(CLSID* pClassID)
 }
 
 // FUNCTION: GAMEMD 0x459EC0
-int BuildingBView::vf_11()
+int BuildingClass::vf_11()
 {
     return 6;
 }
 
 // FUNCTION: GAMEMD 0x459ED0
-int BuildingBView::vf_36()
+const wchar_t* BuildingClass::vf_36()
 {
-    return Type->unknown_60;
+    return Type->UIName;
 }
 
 // FUNCTION: GAMEMD 0x459EE0
-BuildingBTypeView* BuildingBView::vf_34()
+ObjectTypeClass* BuildingClass::vf_34()
 {
     return Type;
 }

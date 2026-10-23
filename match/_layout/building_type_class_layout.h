@@ -40,12 +40,27 @@ struct BuildingAnimFrameStruct
 };
 GG_STATIC_ASSERT(sizeof(BuildingAnimFrameStruct) == 0xC);
 
-// BuildingAnimStruct — per-slot building animation record (size = 0x44).
-// Internal members not member-resolved in the oracle; exact-size byte block.
+// BuildingAnimStruct — per-slot building animation record (size = 0x44). Member
+// names are the art INI key suffixes the type reader stores into each field
+// (<Prefix>, <Prefix>Damaged, <Prefix>Garrisoned, <Prefix>X ... <Prefix>PoweredSpecial).
 struct BuildingAnimStruct
 {
-    unsigned char _raw[0x44];
+    char Anim[0x10];         // +0x00
+    char Damaged[0x10];      // +0x10
+    char Garrisoned[0x10];   // +0x20
+    int  X;                  // +0x30
+    int  Y;                  // +0x34
+    int  ZAdjust;            // +0x38
+    int  YSort;              // +0x3C
+    bool Powered;            // +0x40
+    bool PoweredLight;       // +0x41
+    bool PoweredEffect;      // +0x42
+    bool PoweredSpecial;     // +0x43
 };
+GG_STATIC_ASSERT(offsetof(BuildingAnimStruct, Damaged)    == 0x10);
+GG_STATIC_ASSERT(offsetof(BuildingAnimStruct, Garrisoned) == 0x20);
+GG_STATIC_ASSERT(offsetof(BuildingAnimStruct, X)          == 0x30);
+GG_STATIC_ASSERT(offsetof(BuildingAnimStruct, Powered)    == 0x40);
 GG_STATIC_ASSERT(sizeof(BuildingAnimStruct) == 0x44);
 
 // Opaque forward decls for the truncation-site pointer members (4 bytes each).
@@ -65,6 +80,8 @@ public:
     int GetFoundationWidth() const;
     // FUNCTION: GAMEMD 0x45ECA0 (decl; reloc) -- one stack argument (RET 4)
     int GetFoundationHeight(bool includeBib) const;
+    // FUNCTION: GAMEMD 0x465D40 (decl; reloc) -- no stack arguments, result in AL; BuildingClass slot 32 (0x457620) returns it.
+    bool FUN_00465D40();
 
     int               ArrayIndex;                  // +0xDF8
     CellStruct*       FoundationData;              // +0xDFC

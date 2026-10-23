@@ -13,24 +13,23 @@
 // marker has to sit on the DECLARATION in the header as well as on the
 // definition: with it on the definition alone cl still leaves the fifth copy
 // out of line (78.8% versus 100.0%).
-__forceinline void BuildingClass_00458330::PlayNthAnim(int slot, int effectDelay)
+static __forceinline void PlayNthAnim(BuildingClass* self, int slot, int effectDelay)
 {
-    if (Anims[slot] != 0) {
-        int damaged = GetHealthPercentage()
+    if (self->Anims[slot] != 0) {
+        int damaged = self->GetHealthPercentage()
                       <= RulesInstance->ConditionYellow;
-        bool garrisoned = (this->*static_cast<Vtbl_00458330*>(
-            PrimaryVTable())->GetOccupantCount)() > 0;
+        bool garrisoned = self->vf_258() > 0;
 
         const char* animName;
         if ((char)damaged) {
-            animName = Type->BuildingAnim[slot].Damaged;
+            animName = self->Type->BuildingAnim[slot].Damaged;
         } else if (garrisoned) {
-            animName = Type->BuildingAnim[slot].Garrisoned;
+            animName = self->Type->BuildingAnim[slot].Garrisoned;
         } else {
-            animName = Type->BuildingAnim[slot].Anim;
+            animName = self->Type->BuildingAnim[slot].Anim;
         }
         if (animName && *animName) {
-            PlayAnim(animName, slot, damaged, garrisoned, effectDelay);
+            self->PlayAnim(animName, slot, damaged, garrisoned, effectDelay);
         }
     }
 }
@@ -68,11 +67,11 @@ __forceinline void BuildingClass_00458330::PlayNthAnim(int slot, int effectDelay
 //     flags declared in the other order (4.6%), the helper written as a macro
 //     and as a free `__forceinline` function taking the building — only the
 //     `(char)` test reaches 100.0%.
-void BuildingClass_00458330::UpdateOccupantAnims()
+void BuildingClass::UpdateOccupantAnims()
 {
-    PlayNthAnim(ANIM_SLOT_IDLE_00458330, 0);
-    PlayNthAnim(ANIM_SLOT_ACTIVE_00458330, 0);
-    PlayNthAnim(ANIM_SLOT_ACTIVE_TWO_00458330, 0);
-    PlayNthAnim(ANIM_SLOT_ACTIVE_THREE_00458330, 0);
-    PlayNthAnim(ANIM_SLOT_ACTIVE_FOUR_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_IDLE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_TWO_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_THREE_00458330, 0);
+    PlayNthAnim(this, ANIM_SLOT_ACTIVE_FOUR_00458330, 0);
 }

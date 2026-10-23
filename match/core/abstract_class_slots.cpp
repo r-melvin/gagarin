@@ -66,7 +66,7 @@ CoordStruct AbstractClass::vf_18()
 }
 
 // FUNCTION: GAMEMD 0x4104F0
-CoordStruct AbstractClass::vf_19(int a1)
+CoordStruct AbstractClass::vf_19(AbstractClass* a1)
 {
     return vf_18();
 }

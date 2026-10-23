@@ -23,7 +23,7 @@ bool FootClass::CanBeRecruited(HouseClass* house)
     if (Team != 0)
         return false;
 
-    if (!IsRecruitableRTTI(FOOT_WHAT_AM_I(this)))
+    if (!IsRecruitableRTTI(vf_97()))
         return false;
 
     // The temporary is load-bearing: `return RecruitableA != 0;` makes VC6

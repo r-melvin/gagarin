@@ -5,6 +5,8 @@
 //   building_a_views.h. Method names are slot labels (vf_N = primary-table byte offset / 4).
 
 #include "building_a_views.h"
+#include "../../_layout/building_class.h"
+#include "../../_layout/house_class.h"
 
 // FUNCTION: GAMEMD 0x43ED40
 //
@@ -146,44 +148,44 @@ void BuildingAView::vf_312()
 }
 
 // FUNCTION: GAMEMD 0x446FF0
-void BuildingAView::vf_103(int mode)
+void BuildingClass::vf_103(int mode)
 {
     switch (mode) {
     case -1:
-        unknown_6E8 = unknown_6E8 == 0;
+        IsBeingRepaired = IsBeingRepaired == 0;
         break;
     case 0:
-        if (!unknown_6E8) {
+        if (!IsBeingRepaired) {
             return;
         }
-        unknown_6E8 = 0;
+        IsBeingRepaired = 0;
         break;
     case 1:
-        if (unknown_6E8) {
+        if (IsBeingRepaired) {
             return;
         }
-        unknown_6E8 = 1;
+        IsBeingRepaired = 1;
         break;
     }
     int sound;
-    if (unknown_6E8) {
-        if (unknown_6C == Type->unknown_A0) {
+    if (IsBeingRepaired) {
+        if (Health == Type->Strength) {
             sound = RulesInstance->unknown_700;
         } else {
             sound = RulesInstance->unknown_70C;
-            if (Owner->FUN_0050B6F0()) {
+            if (Owner->IsControlledByCurrentPlayer()) {
                 vf_82(7);
             }
-            unknown_6DE = 1;
-            if (Owner->FUN_0050B6F0()) {
+            NeedsRepairs = 1;
+            if (Owner->IsControlledByCurrentPlayer()) {
                 FUN_00752700(s_EVA_Repairing_00818F18, -1, -1);
             }
         }
     } else {
         sound = RulesInstance->unknown_70C;
     }
-    if (Owner->FUN_0050B6F0()) {
-        HBCoord where = Location;
+    if (Owner->IsControlledByCurrentPlayer()) {
+        CoordStruct where = Location;
         FUN_007509E0(sound, &where, 0);
     }
 }

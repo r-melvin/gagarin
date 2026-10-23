@@ -7,7 +7,7 @@
 // reccmp annotations:
 //   FUNCTION: GAMEMD 0x4FC060   HouseClass::PickedUpFlag       (__thiscall)
 //   FUNCTION: GAMEMD 0x4FBE40   HouseClass::UpdateFlagCoords   (callee, reloc)
-//   FUNCTION: GAMEMD 0x740DF0   UnitClass::SetOwnerIndex_740DF0(callee, reloc)
+//   FUNCTION: GAMEMD 0x740DF0   UnitClass::FlagAttach (callee, reloc)
 
 #include "house_class_flag_methods.h"
 
@@ -31,7 +31,7 @@ char HouseClass::PickedUpFlag(UnitClass* Who, DWORD dwUnk)
     }
 
     this->UpdateFlagCoords(this->FlagHolder, dwUnk);
-    Who->SetOwnerIndex_740DF0(this->Type->ColorSchemeIndex_B8);
+    Who->FlagAttach(this->Type->ColorSchemeIndex_B8);
     this->FlagHolder = Who;
     return 1;
 }

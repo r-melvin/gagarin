@@ -10,7 +10,7 @@
 //   FUNCTION: GAMEMD 0x4525F0  BuildingClass::IsTraversable     (__thiscall)
 //   FUNCTION: GAMEMD 0x457630  BuildingClass::FirstActiveSWIdx  (__thiscall)
 //   FUNCTION: GAMEMD 0x457690  BuildingClass::SecondActiveSWIdx (__thiscall)
-//   FUNCTION: GAMEMD 0x4A51B0  BuildingTraverseHelper::Check    (referenced; reloc)
+//   FUNCTION: GAMEMD 0x4A51B0  TransitionTimer::FUN_004A51B0 (referenced; reloc)
 //   FUNCTION: GAMEMD 0x49FAE0  HouseSWSlots::IsActive           (referenced; reloc)
 //   GLOBAL:   GAMEMD 0x00A83CBC g_SWArray (SWTypeClass** array Items)
 
@@ -31,7 +31,7 @@ void BuildingClass::DestroyNthAnim(int slot)
             if (anim)
             {
                 *p = 0;
-                anim->VtblSlot8(1);
+                delete anim;
             }
             ++p;
         }
@@ -42,7 +42,7 @@ void BuildingClass::DestroyNthAnim(int slot)
         if (anim)
         {
             this->Anims[slot] = 0;
-            anim->VtblSlot8(1);
+            delete anim;
         }
     }
 }
@@ -52,14 +52,14 @@ void BuildingClass::DestroyNthAnim(int slot)
 // each anim's current frame in PausedAnimFrame and freeze it.
 void BuildingClass::DisableTemporal()
 {
-    this->BeingTemporal = 0;
+    this->HasPower = 0;
     AnimClass** p = &this->Anims[0];
     for (int i = 0x15; i != 0; --i)
     {
         AnimClass* anim = *p;
         if (anim)
         {
-            int saved = anim->AnimationValue;
+            int saved = anim->Value;
             anim->Paused = 1;
             anim->Unpaused = 0;
             anim->PausedAnimFrame = saved;
@@ -73,7 +73,7 @@ void BuildingClass::DisableTemporal()
 // Resume the building anims when the temporal weapon releases us.
 void BuildingClass::EnableTemporal()
 {
-    this->BeingTemporal = 1;
+    this->HasPower = 1;
     AnimClass** p = &this->Anims[0];
     for (int i = 0x15; i != 0; --i)
     {
@@ -94,16 +94,11 @@ void BuildingClass::EnableTemporal()
 // a passable cell qualify. WhatAmI is the virtual at vtable slot 0x184.
 bool BuildingClass::IsTraversable()
 {
-    if (!this->Type->NonTraversable)
+    if (!this->Type->bools_16A4[0x16B7 - 0x16A4])
         return true;
 
-    // Indirect __thiscall through vtable slot 0x184 (a zero-arg virtual whose
-    // result is compared to 0x18). A __fastcall fn-pointer passes `this` in ECX
-    // with no stack args, reproducing the thiscall sequence exactly under VC6
-    // (which lacks a usable explicit __thiscall keyword).
-    typedef int (* VtblSlot184Fn)(BuildingClass*);
-    int kind = (*(VtblSlot184Fn*)(*(char**)this + 0x184))(this);
-    if (kind == 0x18 && this->TraverseHelper.Check_4A51B0())
+    int kind = this->vf_97();
+    if (kind == 0x18 && this->UnloadTimer.FUN_004A51B0())
         return true;
 
     return false;
@@ -114,7 +109,7 @@ bool BuildingClass::IsTraversable()
 // for the owning house; returns the raw type index (-1 sentinel) otherwise.
 int BuildingClass::FirstActiveSWIdx()
 {
-    int idx = this->Type->FirstSWIdx;
+    int idx = this->Type->SuperWeapon;
     if (idx != -1)
     {
         SWChainNode* node = g_SWArray[idx];
@@ -122,14 +117,14 @@ int BuildingClass::FirstActiveSWIdx()
         if (sw && !this->Owner->SWSlots.IsActive_49FAE0(sw->field_DF8))
             return -1;
     }
-    return this->Type->FirstSWIdx;
+    return this->Type->SuperWeapon;
 }
 
 // FUNCTION: GAMEMD 0x457690  (__thiscall)
 // As FirstActiveSWIdx, for the building's second hosted super-weapon.
 int BuildingClass::SecondActiveSWIdx()
 {
-    int idx = this->Type->SecondSWIdx;
+    int idx = this->Type->SuperWeapon2;
     if (idx != -1)
     {
         SWChainNode* node = g_SWArray[idx];
@@ -137,5 +132,5 @@ int BuildingClass::SecondActiveSWIdx()
         if (sw && !this->Owner->SWSlots.IsActive_49FAE0(sw->field_DF8))
             return -1;
     }
-    return this->Type->SecondSWIdx;
+    return this->Type->SuperWeapon2;
 }

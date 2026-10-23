@@ -871,7 +871,7 @@ void Obj_00709A20::FUN_00709A20(int a1)
 }
 
 // FUNCTION: GAMEMD 0x70AD50
-CellStruct TechnoClass::vf_191(int a1, int a2)
+CellStruct TechnoClass::vf_191(AbstractClass* a1, int a2)
 {
     return CoordToCell(this->vf_42(a1));
 }

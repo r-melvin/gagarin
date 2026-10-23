@@ -55,9 +55,9 @@
 // every local lives in a register, and no instruction in the body is outside
 // what cl 12.00 generates from a C expression. Retail was compiled from
 // ordinary C++ here, so the body below is C++.
-int BuildingClass::GetPowerDrain() const
+int BuildingClass::GetPowerDrain()
 {
-    if ((this->*this->Vfptr->At_1D4)() || !this->HasPower) {
+    if (this->vf_117() || !this->HasPower) {
         return 0;
     }
 

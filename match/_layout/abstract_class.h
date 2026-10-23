@@ -98,7 +98,7 @@ public:
     virtual int vf_16();                                  // 16  0x4104B0: returns 0
     virtual bool vf_17();                                 // 17  0x410440: returns true
     virtual CoordStruct vf_18();                          // 18  0x4104C0: a coordinate by value
-    virtual CoordStruct vf_19(int a1);                    // 19  0x4104F0: returns vf_18()
+    virtual CoordStruct vf_19(AbstractClass* target);     // 19  0x4104F0: returns vf_18(); BuildingClass 0x447E90 hands its argument to slot 42
     virtual bool IsOnFloor() const;                       // 20  0x410520: returns false
     virtual bool IsInAir() const;                         // 21  0x410530: returns false
     virtual CoordStruct vf_22();                          // 22  0x410540: returns vf_18()

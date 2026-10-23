@@ -13,22 +13,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_layout/techno_class.h"   // TechnoClass spine: DrainingMe @0x1D0
-
-// DrainingMe is a TechnoClass-base member (+0x1D0). The full BuildingClass
-// layout (its own members past 0x520) is P2; IsBeingDrained touches only the
-// inherited pointer, so BuildingClass is modelled here as a bare TechnoClass
-// derivative carrying just the one matched accessor.
-class BuildingClass : public TechnoClass
-{
-public:
-    bool IsBeingDrained() const;   // GAMEMD 0x70FEC0 __thiscall
-};
-
-// Re-confirm the single inherited offset this TU depends on (read from the
-// disasm above). Pointer-width-sensitive => guarded to the 32-bit match ABI.
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(TechnoClass, DrainingMe) == 0x1D0);
-#endif
+#include "../_layout/building_class.h"   // BuildingClass; TechnoClass::DrainingMe @0x1D0
 
 #endif  // GG_MATCH_ECONOMY_BUILDING_CLASS_DRAIN_H

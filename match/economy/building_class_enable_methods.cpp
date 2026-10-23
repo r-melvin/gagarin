@@ -13,17 +13,17 @@
 // disassembly reads 0x594 rather than 21.
 void BuildingClass::EnableStuff()
 {
-    unknown_6EA = true;
+    StuffEnabled = true;
 
     if (LightSource != 0)
         LightSource->Activate(0);
 
-    if (Type->unknown_16BE)
+    if (Type->bools_16A4[0x16BE - 0x16A4])
         CreateEndPost(false);
 
-    for (int i = 0; i < BUILDING_ANIM_COUNT; i++)
+    for (int i = 0; i < 0x15; i++)
     {
-        if (Type->Anims[i].unknown_40 && Anims[i] != 0)
+        if (Type->BuildingAnim[i].Powered && Anims[i] != 0)
             AnimClass_Enable(Anims[i]);
     }
 }
@@ -37,17 +37,17 @@ void BuildingClass::EnableStuff()
 // null checks in MarkPassengersAsExited and MessageListClass::RemoveEdit.
 void BuildingClass::ToggleDamagedAnims(bool damaged)
 {
-    if (IsDamagedAnims == damaged)
+    if (IsDamaged == damaged)
         return;
 
-    IsDamagedAnims = damaged;
+    IsDamaged = damaged;
 
-    for (int i = 0; i < BUILDING_ANIM_COUNT; i++)
+    for (int i = 0; i < 0x15; i++)
     {
         if (Anims[i] != 0)
         {
-            const char* name = damaged ? Type->Anims[i].NameDamaged
-                                       : Type->Anims[i].NameNormal;
+            const char* name = damaged ? Type->BuildingAnim[i].Damaged
+                                       : Type->BuildingAnim[i].Anim;
 
             if (name != 0 && *name != 0)
                 PlayAnim(name, i, damaged, 0, 0);

@@ -32,6 +32,8 @@
 
 #include "cell.h"            // CellStruct, Cell
 
+class TeamClass;
+
 // FootClass  (0x520..0x6BF, sizeof = 0x6C0)
 class FootClass : public TechnoClass
 {
@@ -40,7 +42,7 @@ public:
     // Names are placeholders; argument counts come from RET n, return types are not recovered. Slots 323 and 324
     // pop 0x40 and 0x28 bytes, so some of those words are by-value structures.
     virtual void vf_309(int a1);                                   // 309 0x4DE750
-    virtual void vf_310(int a1);                                   // 310 0x4DE760
+    virtual void vf_310(FootClass* passenger);                     // 310 0x4DE760; 0x4DE742 passes the FootClass* that 0x473430 returned
     virtual void vf_311();                                         // 311 0x4DC790
     virtual void vf_312();                                         // 312 0x4DBFD0
     virtual void vf_313();                                         // 313 0x41C060
@@ -77,6 +79,29 @@ public:
     // (ObjectClass::vf_107 returns 0). Rings run from `firstRadius` up to but
     // not including `endRadius`. Hidden result pointer first, RET 0x14.
     Cell FUN_004CBC40(CellStruct* from, CellStruct* center, int firstRadius, int endRadius);
+    // GAMEMD 0x4DE710: takes the first passenger off Passengers @0x114 (0x473430) and calls
+    // slot 310 with it when the type byte @0x805 is set and no passengers remain.
+    FootClass* RemoveFirstPassenger();
+    // GAMEMD 0x4E00B0 (RET 4): moves the jumpjet cell reservation to `coords`.
+    void Jumpjet_OccupyCell(CellStruct coords);
+    // GAMEMD 0x4DA230 (RET 4): owner, limbo, team, slot-97 kind (0x5B36E0) and RecruitableA tests.
+    bool CanBeRecruited(HouseClass* house);
+    // GAMEMD 0x4DA0E0 (RET 4): appends `target` to NavQueue @0x5AC.
+    void QueueNavigationList(AbstractClass* target);
+    // GAMEMD 0x4DA1C0: NavQueue.Clear() (vector slot 3).
+    void ClearNavigationList();
+    // GAMEMD 0x4DF0D0: zeroes unknown_5A0 and Destination.
+    void AbortMotion();
+    // GAMEMD 0x4DD890: a weed cell within `radius`, or the 0x8B3D88 sentinel; result through a hidden pointer.
+    Cell FindWeedCell(int radius);
+    // GAMEMD 0x4DDB90 (RET 4)
+    bool MoveToWeed(int radius);
+    // GAMEMD 0x4CBBA0 (RET 0x18): A* route from this object's cell to `dest`.
+    void* FindPath(Cell* dest, int* buffer, int unused1, int unused2, int dirCount, int mode);
+    // GAMEMD 0x7104F0: moves every passenger to this object's Location (slot 109).
+    void UpdatePassengerCoords();
+    // GAMEMD 0x629E90 (RET 0xC): three wake animations around (x, y, z).
+    void CreateWakes(int x, int y, int z);
 
     int             PlanningPathIdx;                  // +0x520 (ctor = -1)
     CellStruct      WaypointNearbyAccessibleCellDelta;// +0x524 (4)
@@ -109,8 +134,8 @@ public:
     unsigned char   unknown_5D0;                       // +0x5D0
     unsigned char   HaveAttackMoveTarget;              // +0x5D1 (bool)
     unsigned char   align_5D2[2];                      // +0x5D2
-    void*           Team;                              // +0x5D4 TeamClass*
-    void*           NextTeamMember;                    // +0x5D8 FootClass*
+    TeamClass*      Team;                              // +0x5D4 (0x707CB0 calls TeamClass 0x6EA870 on it)
+    FootClass*      NextTeamMember;                    // +0x5D8 (TeamClass::ScanLimit 0x6EC3A0 walks it)
     unsigned int    unknown_5DC;                       // +0x5DC
     int             PathDirections[24];                // +0x5E0 (0x60; [0] ctor = -1)
     CDTimerClass    PathDelayTimer;                    // +0x640 (0xC)
@@ -161,6 +186,7 @@ public:
     virtual bool vf_53();                                          // 53  0x4DB260
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200
+    virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
 };
 
 GG_STATIC_ASSERT(offsetof(FootClass, PlanningPathIdx)            == 0x520);

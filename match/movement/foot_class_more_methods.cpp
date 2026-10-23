@@ -8,7 +8,11 @@
 //   FUNCTION: GAMEMD 0x4D9920  FootClass::GreatestThreat        (__thiscall)
 //   FUNCTION: GAMEMD 0x7104F0  FootClass::UpdatePassengerCoords (__thiscall)
 
-#include "foot_class_more_methods.h"
+#include "../_layout/foot_class.h"
+
+#ifndef NULL
+#define NULL 0
+#endif
 
 // FUNCTION: GAMEMD 0x4D9920  (__thiscall)
 // Scan-limited override of TechnoClass::GreatestThreat: when IsScanLimited, force
@@ -16,13 +20,13 @@
 // finds no target while scan-limited, clear the scan-limit flag and return the
 // (null) result.
 //   MOV AL,[ESI+0x688] ; (IsScanLimited ? AND AL,0xFD ; OR AL,1) ; CALL 0x6F8DF0
-AbstractClass* FootMore::GreatestThreat(unsigned int threat, CoordStruct* pCoord,
-                                        bool onlyTargetHouseEnemy)
+AbstractClass* FootClass::vf_241(unsigned int threat, CoordStruct* pCoord,
+                                bool onlyTargetHouseEnemy)
 {
     if (this->IsScanLimited)
         threat = threat & 0xFFFFFFFD | 1;
 
-    AbstractClass* result = this->GreatestThreatBase(threat, pCoord, onlyTargetHouseEnemy);
+    AbstractClass* result = TechnoClass::vf_241(threat, pCoord, onlyTargetHouseEnemy);
 
     if (this->IsScanLimited && result == NULL)
         this->IsScanLimited = false;
@@ -35,22 +39,17 @@ AbstractClass* FootMore::GreatestThreat(unsigned int threat, CoordStruct* pCoord
 // passenger linked list (first via Passengers.GetFirstPassenger, thereafter via
 // NextObject) while each node carries AbstractFlags bit 0x4.
 //   CALL 0x473450 ; copy this->Location -> stack coord ; CALL [vtbl+0x1B4] per node
-void FootMore::UpdatePassengerCoords()
+void FootClass::UpdatePassengerCoords()
 {
-    void* p = ((PassengersHost*)&this->Passengers)->GetFirstPassenger();
-
-    // Read Location through the zero-offset ObjectClass view. This cast does
-    // not imply private inheritance. The struct copy forms the Location base
-    // pointer once, mirroring `add EDI,0x9C`.
-    CoordStruct crd = ((ObjectClass*)(void*)this)->Location;
-
+    ObjectClass* p = this->Passengers.GetFirstPassenger();
+    CoordStruct crd = this->Location;
     if (p != NULL)
     {
         do
         {
-            ((PassengerObj*)p)->SetLocation(&crd);
-            p = ((ObjectClass*)p)->NextObject;
+            p->vf_109(crd);
+            p = (ObjectClass*)p->NextObject;
         }
-        while (p != NULL && ((AbstractClass*)p)->Flags.IsFoot);
+        while (p != NULL && p->Flags.IsFoot);
     }
 }

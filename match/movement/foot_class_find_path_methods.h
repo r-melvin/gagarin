@@ -12,44 +12,12 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
 #include "../_layout/foot_class.h"   // FootClass: PathDirections @0x5E0; CoordStruct
-
-// A 2D cell coordinate with a user-declared constructor: that is what makes
-// VC6 return it through a hidden pointer (a POD of this size would come back in
-// EAX), which is how retail's walker at 0x429780 hands it back.
-struct Cell_004CBBA0
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-    Cell_004CBBA0() {}
-};
-GG_STATIC_ASSERT(sizeof(Cell_004CBBA0) == 4);
 
 // FUNCTION: GAMEMD 0x429780 (decl; reloc) — walk `count` path directions from
 // `from` and return the cell reached. __fastcall: hidden return in ECX, `from`
 // in EDX, the rest on the stack.
-Cell_004CBBA0 FUN_00429780(Cell_004CBBA0* from, int count, int* dirs);
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct PathVtbl;
-
-// No-data host over the committed FootClass spine; layout identical.
-struct FootPath : FootClass
-{
-    // FUNCTION: GAMEMD 0x4CBBA0
-    void* FindPath(Cell_004CBBA0* dest, int* buffer, int unused1, int unused2,
-                   int dirCount, int mode);
-};
-
-typedef CoordStruct* (IPersistStream::*Fn04C_Path)(CoordStruct* out, int ctx);
-
-struct PathVtbl
-{
-    char       _pad000[0x4C];    // +0x0000
-    Fn04C_Path GetCoords;        // +0x004C
-};
-GG_STATIC_ASSERT(offsetof(PathVtbl, GetCoords) == 0x4C);
+Cell FUN_00429780(Cell* from, int count, int* dirs);
 
 // AStarClass — opaque; only its FindPath is called on the global instance.
 struct AStar_004CBBA0
@@ -57,7 +25,7 @@ struct AStar_004CBBA0
     char opaque[4];
 
     // FUNCTION: GAMEMD 0x42C900 (decl; reloc) — AStarClass::FindPath.
-    void* FindPath(Cell_004CBBA0* start, Cell_004CBBA0* end, FootPath* foot,
+    void* FindPath(Cell* start, Cell* end, FootClass* foot,
                    int* dirs, int maxSteps, int movementZone, int mode);
 };
 // GLOBAL: GAMEMD 0x87E8B8 — AStarClass::Instance.

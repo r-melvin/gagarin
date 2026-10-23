@@ -124,6 +124,11 @@ public:
     void FUN_004F9950(int unknownStackArg0);
     // FUNCTION: GAMEMD 0x4FCE30 (decl; reloc)
     double FUN_004FCE30();
+    // FUNCTION: GAMEMD 0x4F9750 (decl; reloc) -- matched in economy/house_class_misc_methods.cpp.
+    double GetWeedStoragePercentage();
+    // FUNCTION: GAMEMD 0x509140 (decl; reloc) -- (factory kind, naval, category), RET 0xC;
+    // BuildingClass 0x452360 passes Type->Factory, Type->Naval, 0.
+    void Update_FactoriesQueues(int factoryOf, bool isNaval, int buildCat);
     // FUNCTION: GAMEMD 0x50B6F0 (decl; reloc)
     bool IsControlledByCurrentPlayer() const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc)

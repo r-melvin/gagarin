@@ -43,6 +43,7 @@
 #include "../movement/loco_base.h"
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
+#include "../_layout/unit_class.h"
 #include "../_layout/i_link_stream.h"
 
 template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFIID riid, void** ppv)
@@ -651,19 +652,6 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     unsigned char unknown_[0x2A4 - sizeof(AbstractClass)];
-};
-
-// FUNCTION: GAMEMD 0x007353C0 (decl; reloc) -- UnitClass default constructor.
-class UnitClass : public AbstractClass
-{
-public:
-    UnitClass(int unknown_arg0 = 0, int unknown_arg1 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x8E8 - sizeof(AbstractClass)];
 };
 
 // FUNCTION: GAMEMD 0x0043B740 (decl; reloc) -- BuildingClass default constructor.

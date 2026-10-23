@@ -84,6 +84,8 @@ class VoxelAnimTypeClass;
 class ParticleSystemTypeClass;
 class WeaponTypeClass;
 struct ColorScheme;
+class HouseClass;
+struct CellStruct;
 
 // ---------------------------------------------------------------------------
 // TechnoTypeClass  (0x294..0xDF7, sizeof = 0xDF8)
@@ -110,7 +112,7 @@ public:
     virtual bool vf_41();                                                 // 41
     // Slots 42-47, introduced by TechnoTypeClass (48 slots in all; retail table 0x7F4ED8).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
-    virtual void vf_42(int a1, int a2);                            // 42 0x716150
+    virtual bool vf_42(CellStruct* cell, HouseClass* owner);       // 42 0x716150; BuildingClass 0x449440 passes the cell and its owner, tests AL
     virtual int vf_43(); // 43 0x711EB0; EAX summed at caller0x688793
     virtual void vf_44();                                          // 44 0x7120D0
     virtual void vf_45();                                          // 45 0x712120

@@ -5,16 +5,18 @@
 
 #include <new.h>
 #include "building_b_views.h"
+#include "../../_layout/building_class.h"
+#include "../../_layout/house_class.h"
 
 // FUNCTION: GAMEMD 0x44F5C0
-bool BuildingBView::vf_40()
+bool BuildingClass::vf_40()
 {
     if (EMPLockRemaining > 0)
         return false;
     if (vf_161())
         return true;
-    if (Type->unknown_16B9) {
-        if (!Owner->Func_50B730())
+    if (Type->bools_16A4[0x16B9 - 0x16A4]) {
+        if (!Owner->IsControlledByHuman())
             goto refuse;
         if (BuildingBGlobal_00A8B238 == 0)
             goto refuse;
@@ -26,7 +28,7 @@ refuse:
         return false;
     }
 allow:
-    return Type->unknown_408 != 0;
+    return Type->UndeploysInto != 0;
 }
 
 // FUNCTION: GAMEMD 0x44F640
@@ -93,21 +95,21 @@ int BuildingBView::vf_27()
 }
 
 // FUNCTION: GAMEMD 0x452250
-int BuildingBView::vf_321()
+int BuildingClass::vf_321()
 {
     return 0;
 }
 
 // FUNCTION: GAMEMD 0x452630
-bool BuildingBView::vf_37()
+bool BuildingClass::vf_37()
 {
     if (Health == 0)
         return false;
-    if (!Type->unknown_157A)
+    if (!Type->bools_1570[0x157A - 0x1570])
         return false;
     if (vf_32())
         return false;
-    return Func_701140();
+    return TechnoClass::vf_37();
 }
 
 // FUNCTION: GAMEMD 0x4526F0
@@ -138,13 +140,13 @@ void BuildingBView::vf_254(int a)
 }
 
 // FUNCTION: GAMEMD 0x4527D0
-bool BuildingBView::vf_255()
+bool BuildingClass::vf_255()
 {
-    if (Type->unknown_CA1)
+    if (Type->bools_C8C[0xCA1 - 0xC8C])
         return true;
     if (UpgradeLevel) {
         for (int i = 0; i < UpgradeLevel; i++) {
-            if (Upgrades[i] && Upgrades[i]->unknown_CA1)
+            if (Upgrades[i] && Upgrades[i]->bools_C8C[0xCA1 - 0xC8C])
                 return true;
         }
     }

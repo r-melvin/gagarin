@@ -15,8 +15,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
-#include "../_layout/object_class.h"
+#include "../_layout/building_class.h"
 #include "../core/rules_class.h"
 
 typedef CoordStruct Coord_00459470;
@@ -27,62 +26,5 @@ struct AudioController_00459470;
 // FUNCTION: GAMEMD 0x7509E0 (decl; reloc) -- VocClass::PlayAt.
 AudioHandle_00459470* VocClass_PlayAt_00459470(
     int index, Coord_00459470* coords, AudioController_00459470* controller);
-
-// One 0x44-byte per-animation record in BuildingTypeClass; only the two name
-// buffers are touched here.
-struct AnimRecord_00459470
-{
-    char NameNormal[0x10];       // +0x00
-    char NameDamaged[0x10];      // +0x10
-    char _pad20[0x44 - 0x20];    // +0x20
-};
-GG_STATIC_ASSERT(offsetof(AnimRecord_00459470, NameDamaged) == 0x10);
-GG_STATIC_ASSERT(sizeof(AnimRecord_00459470) == 0x44);
-
-struct BuildingType_00459470
-{
-    char                _pad0000[0xF4C];     // +0x0000
-    AnimRecord_00459470 Anims[21];           // +0x0F4C
-};
-GG_STATIC_ASSERT(offsetof(BuildingType_00459470, Anims) == 0xF4C);
-
-struct Vtbl_00459470;
-
-// Sparse BuildingClass view using the confirmed ObjectClass prefix; this does
-// not assert the intervening direct-base hierarchy.
-struct Building_00459470 : ObjectClass
-{
-    char                    unknown_AC[0x2E4 - 0xAC];   // +0x00AC
-    Building_00459470*      BunkerLinkedItem;            // +0x02E4
-    char                    _pad02E8[0x520 - 0x2E8];     // +0x02E8
-    BuildingType_00459470*  Type;                        // +0x0520
-    char                    _pad0524[0x718 - 0x524];     // +0x0524
-    int                     unknown_718;                 // +0x0718
-
-    // FUNCTION: GAMEMD 0x451890 (decl; reloc) -- the per-animation worker.
-    void PlayAnim(const char* name, int index, int damaged, int a4, int a5);
-    // FUNCTION: GAMEMD 0x451E40 (decl; reloc) -- BuildingClass::DestroyNthAnim.
-    void DestroyNthAnim(int slot);
-    // FUNCTION: GAMEMD 0x459470 -- BuildingClass::ClearBunker.
-    void ClearBunker();
-};
-GG_STATIC_ASSERT(offsetof(Building_00459470, Health)                 == 0x6C);
-GG_STATIC_ASSERT(offsetof(Building_00459470, Location)               == 0x9C);
-GG_STATIC_ASSERT(offsetof(Building_00459470, BunkerLinkedItem) == 0x2E4);
-GG_STATIC_ASSERT(offsetof(Building_00459470, Type)             == 0x520);
-GG_STATIC_ASSERT(offsetof(Building_00459470, unknown_718)      == 0x718);
-
-typedef void (IPersistStream::*Fn1E8_00459470)(int mission, int immediate);
-typedef void (IPersistStream::*Fn274_00459470)(int mode);
-
-struct Vtbl_00459470
-{
-    char _pad000[0x1E8];                 // +0x0000
-    Fn1E8_00459470 At_1E8;               // +0x01E8
-    char _pad1EC[0x274 - 0x1EC];         // +0x01EC
-    Fn274_00459470 At_274;               // +0x0274
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_00459470, At_1E8) == 0x1E8);
-GG_STATIC_ASSERT(offsetof(Vtbl_00459470, At_274) == 0x274);
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_CLEAR_BUNKER_METHODS_H

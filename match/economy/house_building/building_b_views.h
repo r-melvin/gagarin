@@ -20,6 +20,7 @@
 #ifndef GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_B_VIEWS_H
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_BUILDING_B_VIEWS_H
 
+#include "../../_layout/cell_class.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "house_building_layout.h"
@@ -617,6 +618,8 @@ public:
     void Func_655740(BuildingBView* building, int x, int y);
     void Func_6562D0(HBPoint2D* point);
     BuildingBCellView* Func_5657A0(HBCell* cell);
+    // The same call (0x5657A0) with the canonical cell types.
+    CellClass* Func_5657A0(CellStruct* cell);
     BuildingBCellView* GetCellAtCoord(HBCoord coord);
     char unknown_00[0x1];   // +0x0
 };

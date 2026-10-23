@@ -11,28 +11,24 @@
 // charged gap generator is collapsed through the virtual, the sensor-style
 // flag on the type gets its off call, and every enabled per-slot animation is
 // halted.
-void Building_00452480::DisableStuff()
+void BuildingClass::DisableStuff()
 {
-    At_6EA = 0;
+    StuffEnabled = 0;
     if (LightSource != 0)
         LightSource->FUN_00554A80(0);
-
-    BuildingType_00452480* type = Type;
-    if (type->CloakGenerator) {
-        At_6EB = -1;
+    BuildingTypeClass* type = Type;
+    if (type->bools_16A4[0x16C7 - 0x16A4]) {
+        HasCloakingData = -1;
         if (CloakRadius == 0)
             CloakRadius = type->CloakRadiusInCells;
         NeedsRedraw = 1;
     }
-
-    if (type->GapGenerator && At_269)
-        (this->*this->Vptr->At_418)();
-
-    if (Type->At_16BE)
-        FUN_004533A0(0);
-
-    for (int i = 0; i < 21; ++i) {
-        if (Type->Anims[i].Enabled && Anims[i])
+    if (type->GapGenerator && GeneratingGap)
+        vf_262();
+    if (Type->bools_16A4[0x16BE - 0x16A4])
+        CreateEndPost(0);
+    for (int i = 0; i < 0x15; ++i) {
+        if (Type->BuildingAnim[i].Powered && Anims[i])
             Anims[i]->FUN_00425260();
     }
 }

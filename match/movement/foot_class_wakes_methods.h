@@ -26,6 +26,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/foot_class.h"   // FootClass::PrimaryFacing @0x388
 
 // LIBRARY: GAMEMD 0x7C8E17 (decl; reloc) — operator new, __cdecl.
 extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
@@ -45,21 +46,6 @@ struct CoordStruct_00629E90
 };
 GG_STATIC_ASSERT(offsetof(CoordStruct_00629E90, Z) == 0x8);
 GG_STATIC_ASSERT(sizeof(CoordStruct_00629E90) == 0xC);
-
-// The word the facing helper writes out; only its first member is read.
-struct DirStruct_00629E90
-{
-    short Value;   // +0x0000
-    short _pad002;
-};
-GG_STATIC_ASSERT(sizeof(DirStruct_00629E90) == 4);
-
-// The FootClass facing sub-object at +0x388.
-struct Facing_00629E90
-{
-    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) — current facing into `out`.
-    short* GetCurrent(DirStruct_00629E90* out);
-};
 
 // The scenario randomizer; only the ranged draw is called.
 struct Random_00629E90
@@ -108,15 +94,5 @@ struct AnimClass_00629E90
                                      char reverse);
 };
 GG_STATIC_ASSERT(sizeof(AnimClass_00629E90) == 0x1C8);
-
-struct Foot_00629E90
-{
-    char            _pad000[0x388];   // +0x0000
-    Facing_00629E90 Facing;           // +0x0388
-
-    // FUNCTION: GAMEMD 0x629E90
-    void CreateWakes(int x, int y, int z);
-};
-GG_STATIC_ASSERT(offsetof(Foot_00629E90, Facing) == 0x388);
 
 #endif  // GG_MATCH_MOVEMENT_FOOT_CLASS_WAKES_METHODS_H

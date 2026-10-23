@@ -8,6 +8,7 @@
 #include <objidl.h>
 #include "../_layout/side_class.h"
 #include "../_layout/wave_class.h"
+#include "../_layout/unit_class.h"
 
 // GLOBAL: GAMEMD 0x007E9660 -- CLSID of AircraftClass.
 extern const CLSID DAT_007E9660;
@@ -311,10 +312,6 @@ public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
 class TunnelLocomotionClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class UnitClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };

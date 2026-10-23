@@ -7,16 +7,17 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x4DE710  FootClass::RemoveFirstPassenger (__thiscall)
 
-#include "foot_class_passenger_methods.h"
+#include "../_layout/foot_class.h"
+#include "../_layout/techno_type_class.h"
 
 // FUNCTION: GAMEMD 0x4DE710  (__thiscall)
-// Pop the head of the transport cargo list. If the transport type is OpenTopped
-// and the list just emptied, run the late FootClass virtual (+0x4D8) on the
-// removed passenger. Returns the removed passenger.
+// Pop the head of the transport cargo list. If the type byte @0x805 is set
+// and the list just emptied, run FootClass slot 310 (+0x4D8) on the removed
+// passenger. Returns the removed passenger.
 FootClass* FootClass::RemoveFirstPassenger()
 {
     FootClass* removed = this->Passengers.RemoveFirstPassenger();
-    if (this->GetTechnoType()->OpenTopped && this->Passengers.NumPassengers == 0)
-        this->OnLastPassengerLeft(removed);
+    if (this->vf_33()->Gunner && this->Passengers.NumPassengers == 0)
+        this->vf_310(removed);
     return removed;
 }

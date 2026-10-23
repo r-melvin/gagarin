@@ -72,6 +72,8 @@ class FactoryClass;
 class HouseClass;
 
 class InfantryClass;
+class LightSourceClass;
+class CellClass;
 
 class BuildingClass : public TechnoClass
 {
@@ -108,6 +110,45 @@ public:
     void FUN_00442D90(int unknownStackArg0);
 
 
+    // Primary-table (0x7E3EBC) overrides matched in economy/house_building/building_a_methods_*.cpp.
+    virtual bool vf_32();                                               // 32  0x457620
+    virtual ObjectTypeClass* vf_34();                                   // 34  0x459EE0: the type
+    virtual bool vf_37();                                               // 37  0x452630
+    virtual bool vf_40();                                               // 40  0x44F5C0
+    virtual void vf_60(CoordStruct* coord);                             // 60  0x453D60: sets cell flag 0x80
+    virtual void vf_61(CoordStruct* coord);                             // 61  0x453DC0: clears it
+    virtual const wchar_t* vf_36();                                     // 36  0x459ED0: the type's UIName
+    virtual CoordStruct vf_18();                                        // 18  0x447AC0
+    virtual CoordStruct vf_19(AbstractClass* target);                   // 19  0x447E90
+    virtual void vf_103(int mode);                                      // 103 0x446FF0: toggles IsBeingRepaired
+    virtual int vf_107(CellClass* cell, int a2, int a3, int a4, int a5); // 107 0x449440
+    virtual bool vf_161();                                              // 161 0x455DA0
+    virtual DirStruct vf_170();                                         // 170 0x445E50
+    virtual int GetYSort() const;                                       // 46  0x449410
+    virtual bool vf_38();                                               // 38  0x4494C0
+    virtual bool vf_102(HouseClass* house);                             // 102 0x44D5D0
+    virtual bool vf_128();                                              // 128 0x454250: IsReadyToCommence
+    virtual int vf_133();                                               // 133 0x44B760
+    virtual int vf_136();                                               // 136 0x449A40
+    virtual int vf_137();                                               // 137 0x44B770
+    virtual int vf_174();                                               // 174 0x44D700
+    virtual int vf_181();                                               // 181 0x459870: AntiAirValue
+    virtual int vf_182();                                               // 182 0x459880: AntiArmorValue
+    virtual int vf_183();                                               // 183 0x459890: AntiInfantryValue
+    virtual int vf_187();                                               // 187 0x43E900
+    virtual int vf_195();                                               // 195 0x44EB10
+    virtual void vf_219();                                              // 219 0x459C20
+    virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x445F00
+    virtual bool vf_255();                                              // 255 0x4527D0
+    virtual bool vf_256();                                              // 256 0x458DD0
+    virtual int vf_257();                                               // 257 0x458E00
+    virtual int vf_258();                                               // 258 0x4581F0: Occupants.Count
+    virtual int vf_281(int a);                                          // 281 0x456F80
+    virtual void SetDestination(AbstractClass* target, bool a2);        // 288 0x455D50
+    virtual bool EnterIdleMode(bool initial, bool a2);                  // 289 0x44D6A0
+    // GAMEMD 0x447780 (decl; reloc) -- one stack argument; 0x44D6A0 passes 0 or 1.
+    void FUN_00447780(int a1);
+
     // More primary-table (0x7E3EBC) overrides of ObjectClass slots.
     virtual bool vf_65(RectangleStruct* rect, bool force, int a3);      // 65 0x43CEA0
     virtual void vf_69(Point2D* point, RectangleStruct* clip);          // 69 0x43D290 (draws the building)
@@ -115,19 +156,40 @@ public:
     // Slots 309-321, introduced by BuildingClass (322 slots in all; retail table 0x7E3EBC).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual void vf_309(int a1, int a2, int a3);                   // 309 0x44EFB0
-    virtual void vf_310(int a1);                                   // 310 0x447E00
+    virtual int vf_310(AbstractClass* target);                     // 310 0x447E00: distance to `target` (its slot 18, our slot 42)
     virtual void vf_311(int a1);                                   // 311 0x445F80
     virtual void vf_312();                                         // 312 0x4456D0
     virtual void vf_313(Point2D* point, RectangleStruct* clip);    // 313 0x43DA80
-    virtual void vf_314(int a1, int a2);                           // 314 0x43ED40
+    virtual DirStruct vf_314(AbstractClass* target);               // 314 0x43ED40 (0x44D7D0 returns its result for the target)
     virtual void vf_315(int a1, int a2, int a3, int a4);           // 315 0x4415F0
     virtual void vf_316();                                         // 316 0x448160
     virtual void vf_317(int a1);                                   // 317 0x455820
     virtual void vf_318(int a1);                                   // 318 0x4556D0
     virtual void vf_319(int a1);                                   // 319 0x455A80
     virtual void vf_320(int a1);                                   // 320 0x455980
-    virtual void vf_321();                                         // 321 0x452250
+    virtual int vf_321();                                          // 321 0x452250: returns 0
 
+
+    // Methods matched in economy/building_class.cpp. 0x4521C0 clears HasPower @0x660 and
+    // pauses every Anims[] entry; 0x452210 sets it and resumes them.
+    void DestroyNthAnim(int slot);       // GAMEMD 0x451E40
+    void DisableTemporal();              // GAMEMD 0x4521C0
+    void EnableTemporal();               // GAMEMD 0x452210
+    bool IsTraversable();                // GAMEMD 0x4525F0
+    int  FirstActiveSWIdx();             // GAMEMD 0x457630
+    int  SecondActiveSWIdx();            // GAMEMD 0x457690
+    void ToggleDamagedAnims(bool damaged); // GAMEMD 0x451EE0
+    void EnableStuff();                  // GAMEMD 0x452410: sets StuffEnabled @0x6EA
+    void PlayAnim(const char* name, int index, char damaged, bool garrisoned, int effectDelay); // GAMEMD 0x451890 (RET 0x14); `damaged` is one byte: 0x451EE0 pushes its bool argument as is, 0x459470 and 0x458330 push a 0/1 int with no normalisation
+    void CreateEndPost(bool arg);        // GAMEMD 0x4533A0
+    int  GetPowerDrain();                // GAMEMD 0x44E880 (calls the non-const slot 117)
+    bool IsBeingDrained() const;         // GAMEMD 0x70FEC0: DrainingMe @0x1D0 != 0
+    void DisableStuff();                 // GAMEMD 0x452480: clears StuffEnabled @0x6EA
+    void ClearBunker();                  // GAMEMD 0x459470
+    void GoOffline();                    // GAMEMD 0x452360
+    int  GetPowerOutput();               // GAMEMD 0x44E7B0 (calls the non-const slot 117)
+    bool IsCellImpassable(CellClass* cell); // GAMEMD 0x458A00
+    void UpdateOccupantAnims();          // GAMEMD 0x458330
 
     // FUNCTION: GAMEMD 0x43EF90 (decl; reloc) -- no stack arguments, result in EAX.
     int FUN_0043EF90();
@@ -157,14 +219,14 @@ public:
                                           //   REP STOSD @0x0043BA72..0x0043BA7D
     unsigned char  RequiresDamageFires;   // +0x5E8 ctor MOV byte [ESI+0x5E8],BL @0x0043B7B3
     unsigned char  align_5E9[3];          // +0x5E9
-    void*          Upgrades[0x3];         // +0x5EC ctor @0x0043BA22/0x0043BA2A/0x0043BA30; walked by
+    BuildingTypeClass* Upgrades[0x3];     // +0x5EC (0x44E880 adds each one's PowerDrain @0xEE4) ctor @0x0043BA22/0x0043BA2A/0x0043BA30; walked by
                                           //   LEA EDI,[ESI+0x5EC] @0x0045270A
     int            FiringSWType;          // +0x5F8 ctor @0x0043B7B9
     unsigned int   unknown_5FC;           // +0x5FC ctor @0x0043B7BF
     void*          Spotlight;             // +0x600 BuildingLightClass*; ctor @0x0043B7C5
     RateTimer      GateTimer;             // +0x604 (0x10) ctor StartTime @0x0043B7D7, TimeLeft @0x0043B7D1,
                                           //   Rate @0x0043B7DD
-    void*          LightSource;           // +0x614 LightSourceClass*; ctor @0x0043B7E3
+    LightSourceClass* LightSource;        // +0x614 ctor @0x0043B7E3
     unsigned int   LaserFenceFrame;       // +0x618 ctor @0x0043B7E9
     unsigned int   FirestormWallFrame;    // +0x61C ctor @0x0043B7EF
     StageClass     RepairProgress;        // +0x620 (0x1C) ctor @0x0043B7F5..0x0043B819 (Step = 1)
@@ -219,7 +281,7 @@ public:
     unsigned char  align_6FB;             // +0x6FB
     int            unknown_int_6FC;       // +0x6FC ctor @0x0043B9CD
     short          unknown_short_700;     // +0x700 ctor MOV word [ESI+0x700],0x3E8 @0x0043B9D3
-    unsigned char  UpgradeLevel;          // +0x702 ctor @0x0043B9DC
+    char           UpgradeLevel;          // +0x702 ctor @0x0043B9DC; signed (0x4527D0 loads it with MOVSX)
     signed char    GateStage;             // +0x703 ctor @0x0043B9E2
     int            PrismStage;            // +0x704 ctor @0x0043B9E8
     CoordStruct    PrismTargetCoords;     // +0x708 (0xC) ctor LEA EDX,[ESI+0x708] @0x0043BA1C

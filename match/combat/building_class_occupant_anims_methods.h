@@ -29,11 +29,9 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../_rt/gg_vslot.h"
-#include "../_layout/object_class.h"
+#include "../_layout/building_class.h"
 #include "../core/rules_class.h"
 
-#define ANIM_COUNT_00458330 21
 
 // BuildingAnimSlot, as far as this method uses it.
 #define ANIM_SLOT_ACTIVE_00458330       3
@@ -41,62 +39,5 @@
 #define ANIM_SLOT_ACTIVE_THREE_00458330 5
 #define ANIM_SLOT_ACTIVE_FOUR_00458330  6
 #define ANIM_SLOT_IDLE_00458330         0x12
-
-// One per-slot animation record of the type; 0x44 bytes, three 0x10-byte
-// names first.
-struct AnimRecord_00458330
-{
-    char Anim[0x10];        // +0x0000
-    char Damaged[0x10];     // +0x0010
-    char Garrisoned[0x10];  // +0x0020
-    char _pad30[0x14];      // +0x0030
-};
-GG_STATIC_ASSERT(offsetof(AnimRecord_00458330, Damaged)    == 0x10 &&
-                 offsetof(AnimRecord_00458330, Garrisoned) == 0x20 &&
-                 sizeof(AnimRecord_00458330)               == 0x44);
-
-struct BuildingType_00458330
-{
-    char                _pad0000[0xF4C];                      // +0x0000
-    AnimRecord_00458330 BuildingAnim[ANIM_COUNT_00458330];    // +0x0F4C
-};
-GG_STATIC_ASSERT(offsetof(BuildingType_00458330, BuildingAnim) == 0xF4C);
-
-struct Anim_00458330;
-
-// Declaration order matters — see match/_rt/gg_vslot.h.
-struct Vtbl_00458330;
-
-// Sparse BuildingClass view using the confirmed ObjectClass prefix; this does
-// not assert the intervening direct-base hierarchy.
-struct BuildingClass_00458330 : ObjectClass
-{
-    char                    unknown_AC[0x520 - 0xAC];          // +0x00AC
-    BuildingType_00458330*  Type;                              // +0x0520
-    char                    _pad0524[0x55C - 0x524];           // +0x0524
-    Anim_00458330*          Anims[ANIM_COUNT_00458330];        // +0x055C
-
-    // FUNCTION: GAMEMD 0x451890 (decl; reloc) — BuildingClass::PlayAnim.
-    void PlayAnim(const char* animName, int slot, int damaged, bool garrisoned,
-                  int effectDelay);
-
-    __forceinline void PlayNthAnim(int slot, int effectDelay);
-
-
-    // FUNCTION: GAMEMD 0x458330
-    void UpdateOccupantAnims();
-};
-GG_STATIC_ASSERT(offsetof(BuildingClass_00458330, Health) == 0x6C &&
-                 offsetof(BuildingClass_00458330, Type)  == 0x520 &&
-                 offsetof(BuildingClass_00458330, Anims) == 0x55C);
-
-typedef int (IPersistStream::*Fn408_00458330)();
-
-struct Vtbl_00458330
-{
-    char            _pad0000[0x408];   // +0x0000
-    Fn408_00458330  GetOccupantCount;  // +0x0408
-};
-GG_STATIC_ASSERT(offsetof(Vtbl_00458330, GetOccupantCount) == 0x408);
 
 #endif  // GG_MATCH_COMBAT_BUILDING_CLASS_OCCUPANT_ANIMS_METHODS_H

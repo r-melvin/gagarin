@@ -11,7 +11,7 @@
 // name one, the two "bunker cleared" animations play in their healthy or
 // damaged spelling according to the building's health ratio, and then both
 // back-links are cleared and the building is sent through its mission slot.
-void Building_00459470::ClearBunker()
+void BuildingClass::ClearBunker()
 {
     DestroyNthAnim(10);
     DestroyNthAnim(11);
@@ -30,12 +30,12 @@ void Building_00459470::ClearBunker()
         if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
         {
             damaged = 1;
-            name = Type->Anims[12].NameDamaged;
+            name = Type->BuildingAnim[12].Damaged;
         }
         else
         {
             damaged = 0;
-            name = Type->Anims[12].NameNormal;
+            name = Type->BuildingAnim[12].Anim;
         }
 
         if (name != 0 && *name != 0)
@@ -44,23 +44,21 @@ void Building_00459470::ClearBunker()
         if (GetHealthPercentage() <= RulesInstance->ConditionYellow)
         {
             damaged = 1;
-            name = Type->Anims[13].NameDamaged;
+            name = Type->BuildingAnim[13].Damaged;
         }
         else
         {
             damaged = 0;
-            name = Type->Anims[13].NameNormal;
+            name = Type->BuildingAnim[13].Anim;
         }
 
         if (name != 0 && *name != 0)
             PlayAnim(name, 13, damaged, 0, 0);
 
-        (this->*static_cast<Vtbl_00459470*>(
-            PrimaryVTable())->At_274)(3);
+        vf_157(3);
         BunkerLinkedItem->BunkerLinkedItem = 0;
         BunkerLinkedItem = 0;
-        unknown_718 = 0;
-        (this->*static_cast<Vtbl_00459470*>(
-            PrimaryVTable())->At_1E8)(5, 0);
+        TankBunkerState = 0;
+        vf_122(5, 0);
     }
 }
