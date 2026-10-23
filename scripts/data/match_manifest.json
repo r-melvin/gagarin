@@ -98371,5 +98371,14 @@
   "name": "SessionClass::FUN_00698CB0",
   "status": "partial",
   "pct": 27.5
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x699980",
+  "sym": "?FUN_00699980@SessionClass@@QAEXXZ",
+  "len": "0x86b",
+  "name": "SessionClass::FUN_00699980",
+  "status": "partial",
+  "pct": 2.4
  }
 ]

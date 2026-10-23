@@ -1454,6 +1454,155 @@ extern const char STR_0082DF18[]; // STRING: GAMEMD 0x0082DF18 (decl; reloc)
 extern const char STR_0083F608[]; // STRING: GAMEMD 0x0083F608 (decl; reloc)
 extern const char STR_0083F648[]; // STRING: GAMEMD 0x0083F648 (decl; reloc)
 
+#include "../platform/mix_file_class.h"
+extern const wchar_t STR_0082083C[]; // STRING: GAMEMD 0x0082083C (decl; reloc)
+extern const char STR_0083F490[]; // STRING: GAMEMD 0x0083F490 (decl; reloc)
+extern const char STR_0083F498[]; // STRING: GAMEMD 0x0083F498 (decl; reloc)
+extern const wchar_t STR_0083F4CC[]; // STRING: GAMEMD 0x0083F4CC (decl; reloc)
+extern const wchar_t STR_0083F4DC[]; // STRING: GAMEMD 0x0083F4DC (decl; reloc)
+extern const char STR_0083F4F0[]; // STRING: GAMEMD 0x0083F4F0 (decl; reloc)
+extern const char STR_0083F4F4[]; // STRING: GAMEMD 0x0083F4F4 (decl; reloc)
+extern const char STR_0083F504[]; // STRING: GAMEMD 0x0083F504 (decl; reloc)
+extern const char STR_0083F50C[]; // STRING: GAMEMD 0x0083F50C (decl; reloc)
+extern const char STR_0083F514[]; // STRING: GAMEMD 0x0083F514 (decl; reloc)
+extern const char STR_0083F520[]; // STRING: GAMEMD 0x0083F520 (decl; reloc)
+extern const char STR_00886980[]; // STRING: GAMEMD 0x00886980 (decl; reloc)
+
+GG_STATIC_ASSERT(offsetof(WIN32_FIND_DATAA, dwFileAttributes) == 0);
+GG_STATIC_ASSERT(sizeof(((WIN32_FIND_DATAA*)0)->dwFileAttributes) == 4);
+GG_STATIC_ASSERT(offsetof(WIN32_FIND_DATAA, cFileName) == 0x2C);
+GG_STATIC_ASSERT(offsetof(WIN32_FIND_DATAA, cAlternateFileName) == 0x130);
+GG_STATIC_ASSERT(sizeof(((WIN32_FIND_DATAA*)0)->cFileName) == 260);
+GG_STATIC_ASSERT(sizeof(((WIN32_FIND_DATAA*)0)->cAlternateFileName) == 14);
+GG_STATIC_ASSERT(sizeof(WIN32_FIND_DATAA) == 0x140);
+
+// FUNCTION: GAMEMD 0x699980
+void SessionClass::FUN_00699980()
+{
+    INIClass ini; // Native base vptr7EA5F4, NOT CCINIClass7E1AF4.
+    unknown_690.Clear(); // Does not delete pointees; preserve separate cleanup.
+    CCFileClass file(STR_0083F520);
+    char section[64];
+    char digest[32];
+    wchar_t display[44];
+    WIN32_FIND_DATAA found;
+    wchar_t players[64];
+    wchar_t description[64];
+    char filename[256];
+    char modes[256];
+    if (file.Exists(false)) {
+        ini.FUN_00525A10(&file, false);
+        int count = ini.GetKeyCount(STR_0083F514);
+        for (int index = 0; index < count; ++index) {
+            if (ini.FUN_00528A10(STR_0083F514, ini.GetKeyName(STR_0083F514, index), STR_00889F64, section, 64) != 0) {
+                MultiMission* mission = new MultiMission(&ini, section);
+                unknown_690.AddItem(mission); // Native appends null on allocation failure.
+            }
+        }
+    }
+    ini.Clear(0, 0);
+    file.Close();
+    HANDLE search = FindFirstFileA(STR_0083F50C, &found);
+    if (search != INVALID_HANDLE_VALUE) {
+        do {
+            if ((found.dwFileAttributes & 0x116) == 0) {
+                const char* name = found.cAlternateFileName;
+                if (strlen(name) == 0) name = found.cFileName;
+                if (_stricmp(name, STR_0083F520) != 0) {
+                    file.SetFileName(name);
+                    ini.FUN_00525A10(&file, false); // No Exists test in PKT path.
+                    int count = ini.GetKeyCount(STR_0083F514);
+                    for (int index = 0; index < count; ++index) {
+                        if (ini.FUN_00528A10(STR_0083F514, ini.GetKeyName(STR_0083F514, index), STR_00889F64, section, 64) != 0) {
+                            MultiMission* mission = new MultiMission(&ini, section);
+                            unknown_690.AddItem(mission); // Null appends retained.
+                        }
+                    }
+                }
+            }
+        } while (FindNextFileA(search, &found));
+        FindClose(search);
+    }
+    ini.Clear(0, 0);
+    file.Close();
+
+    search = FindFirstFileA(STR_0083F504, &found);
+    int savedSearchMode = g_FileSearchMode;
+    SetFileSearchMode(-2); // Called even if no YRO handle exists.
+    if (search != INVALID_HANDLE_VALUE) {
+        do {
+            if ((found.dwFileAttributes & 0x116) == 0) {
+                const char* name = found.cAlternateFileName;
+                if (strlen(name) == 0) name = found.cFileName;
+                if (_stricmp(name, STR_0083F4F4) != 0) {
+                    MixFileClass* mix = new MixFileClass(name, STR_00886980);
+                    if (mix) {
+                        DAT_00884DC0.AddItem(mix); // Mount retained even if append fails.
+                        int length = strlen(name);
+                        strncpy(filename, name, length - 3);
+                        filename[length - 3] = 0;
+                        strcat(filename, STR_0083F4F0);
+                        filename[length] = 0;
+                        file.SetFileName(filename);
+                        if (file.Exists(false)) {
+                            ini.FUN_00525A10(&file, false);
+                            int count = ini.GetKeyCount(STR_0083F514);
+                            for (int index = 0; index < count; ++index) {
+                                if (ini.FUN_00528A10(STR_0083F514, ini.GetKeyName(STR_0083F514, index), STR_00889F64, section, 64) != 0) {
+                                    MultiMission* mission = new MultiMission(&ini, section);
+                                    if (mission) { // YRO differs: no null append.
+                                        if (mission->unknown_180 != mission->unknown_184)
+                                            swprintf(players, STR_0083F4DC, 0x28, mission->unknown_180,
+                                                     mission->unknown_184, 0x29);
+                                        else
+                                            swprintf(players, STR_0083F4CC, 0x28, mission->unknown_180, 0x29);
+                                        int length = wcslen(mission->unknown_000);
+                                        wcscpy(display, mission->unknown_000);
+                                        wcsncat(display, STR_0082083C, 44 - length);
+                                        ++length;
+                                        wcsncat(display, players, 44 - length);
+                                        mission->FUN_0069ACD0(display);
+                                        unknown_690.AddItem(mission);
+                                    }
+                                }
+                            }
+                            ini.Clear(0, 0); // Only after Exists/read branch, even zero keys.
+                        } else {
+                            FUN_004068E0(STR_0083F498);
+                        }
+                    }
+                }
+            }
+        } while (FindNextFileA(search, &found));
+    }
+    SetFileSearchMode(savedSearchMode);
+    if (search != INVALID_HANDLE_VALUE) FindClose(search);
+    ini.Clear(0, 0);
+    file.Close();
+
+    search = FindFirstFileA(STR_0083F490, &found);
+    if (search != INVALID_HANDLE_VALUE) {
+        do {
+            if ((found.dwFileAttributes & 0x116) == 0) {
+                const char* name = found.cAlternateFileName;
+                if (strlen(name) == 0) name = found.cFileName;
+                ini.FUN_00528A10(STR_0082BF9C, STR_00817854, STR_00829284, section, 64);
+                ini.FUN_00528A10(STR_0081BFE0, STR_00831898, STR_0083F3E4, digest, 32);
+                FUN_00735060(description, section, -1);
+                bool official = ini.FUN_005295F0(STR_0082BF9C, STR_0083DC5C, false);
+                int minimum = 2;
+                int maximum = 4;
+                FUN_006994F0(name, description, digest, modes, &official, &minimum, &maximum);
+                MultiMission* mission = new MultiMission(name, description, digest, official,
+                                                         modes, minimum, maximum);
+                unknown_690.AddItem(mission); // YRM also appends null on failure.
+            }
+        } while (FindNextFileA(search, &found));
+        FindClose(search);
+    }
+    // Natural file destructor followed by base INIClass destructor.
+}
+
 // FUNCTION: GAMEMD 0x69A3B0
 MultiMission::MultiMission(INIClass* ini, const char* section)
     : unknown_188(), unknown_1A4()

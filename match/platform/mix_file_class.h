@@ -14,6 +14,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "ccfile_class.h"
+#include "../core/vector_class.h"
 
 class MixFileClass;
 
@@ -106,6 +107,8 @@ void Log_4a4ac0(const char* fmt, ...);
 // ---------------------------------------------------------------------------
 // Globals (absolute addresses reloc-normalised by the harness).
 // ---------------------------------------------------------------------------
+// Canonical mounted-vector definition lives in static_vector_dtor_stubs.cpp.
+extern DynamicVectorClass<MixFileClass*> DAT_00884DC0; // GLOBAL: GAMEMD 0x884DC0 (decl; reloc)
 extern DynamicVectorClass_Mix MixArray;          // GLOBAL: GAMEMD 0x884D90
 #include "../_layout/global_0081c1d0.h"
 

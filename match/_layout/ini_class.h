@@ -9,6 +9,7 @@
 #include "generic_list.h"
 #include "index_class_layout.h"
 class Wstring;
+class FileClass;
 // VTABLE: GAMEMD 0x7EA5F4 -- INIClass, one deleting slot.
 class INIClass
 {
@@ -22,6 +23,8 @@ public:
     INIClass() : unknown_04(0), unknown_08(0), unknown_3C(0) {}
     // FUNCTION: GAMEMD 0x5256F0
     virtual ~INIClass();
+    // Declaration: GAMEMD 0x525A10 -- file and full DWORD options, RET8; EAX ABI view.
+    int FUN_00525A10(FileClass* file, unsigned long options);
     // FUNCTION: GAMEMD 0x5257C0
     bool Clear(const char* section, const char* key);
     // FUNCTION: GAMEMD 0x526810
