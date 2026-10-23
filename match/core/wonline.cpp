@@ -311,6 +311,7 @@ GG_STATIC_ASSERT(offsetof(Obj_007AF000, data) == 0x08);
 class Member_7B46F0
 {
 public:
+    Member_7B46F0();    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc)
     ~Member_7B46F0();
     void* Data;
 };
@@ -327,6 +328,7 @@ namespace OwnerDraw {
 class DialogControl
 {
 public:
+    DialogControl();    // FUNCTION: GAMEMD 0x624110 (decl; reloc)
     ~DialogControl();   // 0x624130
     virtual void* DeletingDtor(unsigned int flags);
     int unknown_04;     // +0x04
@@ -350,6 +352,7 @@ public:
 class WonlineStringDialogControl : public SimpleWonlineDialogControl
 {
 public:
+    WonlineStringDialogControl();
     ~WonlineStringDialogControl() {}
     virtual void* DeletingDtor(unsigned int flags);
     Member_7B46F0 String;   // +0x0C
@@ -490,6 +493,146 @@ static inline void ThemeUpdate_0077D7A0(bool start)
 
 // Chain link at +0x110 (a 0x10C-byte value after the key word).
 GG_REHASH_NODE(007AEC00, 110);
+
+#include <new.h>
+// ---- declarations used by the bodies below ----
+#include "../_layout/elapsed_timer.h"
+#include <mbstring.h>
+#include "../platform/ccini_class_methods.h"
+#include "../platform/ccfile_class.h"
+
+// LIBRARY: GAMEMD 0x7C8E17 -- operator new (decl; reloc)
+extern int DAT_00B77EA8;
+
+// Callbacks and helpers of the dialog runner below.
+BOOL CALLBACK FUN_00796B90(HWND window, UINT message, WPARAM wparam, LPARAM lparam);   // FUNCTION: GAMEMD 0x796B90 (decl; reloc)
+BOOL CALLBACK FUN_007A29E0(HWND window, UINT message, WPARAM wparam, LPARAM lparam);   // FUNCTION: GAMEMD 0x7A29E0 (decl; reloc)
+// FUNCTION: GAMEMD 0x6241F0 (decl; reloc) -- runs the modal dialog `id` with `proc`.
+int FUN_006241F0(int id, BOOL (CALLBACK* proc)(HWND, UINT, WPARAM, LPARAM), OwnerDraw::DialogControl* control);
+// FUNCTION: GAMEMD 0x779940 (decl; reloc)
+bool FUN_00779940();
+// FUNCTION: GAMEMD 0x79C520 (decl; reloc)
+bool FUN_0079C520(String_007B4620* name);
+extern String_007B4620 DAT_00B76AC4;
+extern char DAT_00B77DC2;
+// FUNCTION: GAMEMD 0x780A90 (decl; reloc)
+WideString_007B66C0 FUN_00780A90(const Entry_00B77908* entry);
+// FUNCTION: GAMEMD 0x77D4C0 (decl; reloc)
+bool FUN_0077D4C0(Entry_00B77908* entry);
+// FUNCTION: GAMEMD 0x7B7ED0 (decl; reloc) -- the wide text of a narrow string.
+WideString_007B66C0 FUN_007B7ED0(const String_007B4620& text);
+extern char DAT_00A8B380[];
+extern int DAT_00B779C0;
+extern int DAT_00B779DC;
+extern int DAT_007EEF34;
+// STRING: GAMEMD 0x84B224
+static const wchar_t DAT_0084B224[] = L"%hs %s";
+
+// The picture cache at 0xAC4848.
+struct PCXCache_00AC4848
+{
+    // FUNCTION: GAMEMD 0x6BA140 (decl; reloc)
+    void* GetSurface(const char* filename, void* palette);
+};
+extern PCXCache_00AC4848 DAT_00AC4848;
+
+extern int DAT_00A8B238;
+extern int DAT_00B76B24;
+extern unsigned int DAT_00B76B30;
+extern int DAT_00A8B274;
+extern char DAT_00A8B31C;
+extern char DAT_00A8B262;
+extern char DAT_00A8B258;
+
+extern char DAT_00B76B44[];
+
+int FUN_00788180();   // FUNCTION: GAMEMD 0x788180 (decl; reloc)
+void FUN_00781480();  // FUNCTION: GAMEMD 0x781480 (decl; reloc)
+// FUNCTION: GAMEMD 0x788800 (decl; reloc) -- RET 4: the wide text is a by-value argument.
+int FUN_00788800(GrowListRecord10C* record, const String_007B4620& key, WideString_007B66C0 text);
+extern int DAT_007EEF38;
+// STRING: GAMEMD 0x84AFB0
+static const wchar_t DAT_0084AFB0[] = L"[%hs] : %s";
+// STRING: GAMEMD 0x84AFC8
+static const wchar_t DAT_0084AFC8[] = L"%hs : %s";
+extern int DAT_007EEF2C;
+extern int DAT_007EEF30;
+extern int DAT_007EEF3C;
+
+extern CCINIClass DAT_008870C0;
+extern int DAT_00B76234;
+extern int DAT_00B779F0;
+extern int DAT_00B779BC;
+extern int DAT_00B7690C;
+extern int DAT_00B77784;
+extern bool DAT_00B76AF0;
+extern bool DAT_00B73AD0;
+void FUN_005EE1B0();   // FUNCTION: GAMEMD 0x5EE1B0 (decl; reloc)
+bool FUN_0079BC80();   // FUNCTION: GAMEMD 0x79BC80 (decl; reloc)
+// FUNCTION: GAMEMD 0x7B54B0 (decl; reloc) -- the length of a string, unsigned.
+unsigned int FUN_007B54B0(const String_007B4620* text);
+void FUN_005EE190();   // FUNCTION: GAMEMD 0x5EE190 (decl; reloc)
+
+// Shared pieces of the dialog procedures.
+int FUN_00622B50(HWND window, UINT message, WPARAM wparam, LPARAM lparam);   // FUNCTION: GAMEMD 0x622B50 (decl; reloc)
+void FUN_006213A0(LPARAM drawItem);   // FUNCTION: GAMEMD 0x6213A0 (decl; reloc)
+void FUN_00621E90(HWND window);       // FUNCTION: GAMEMD 0x621E90 (decl; reloc)
+void FUN_00607FD0(HWND window);       // FUNCTION: GAMEMD 0x607FD0 (decl; reloc)
+
+struct Obj_00AC1174;
+struct Vtbl_00AC1174
+{
+    char unknown_00[0x10];
+    long (__stdcall* At_10)(Obj_00AC1174* self);   // +0x10
+};
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC1174, At_10) == 0x10);
+struct Obj_00AC1174
+{
+    Vtbl_00AC1174* Vtbl;   // +0x00
+};
+extern Obj_00AC1174* DAT_00AC1174;
+void FUN_00779830(bool value);                   // FUNCTION: GAMEMD 0x779830 (decl; reloc)
+void FUN_00779C90(String_007B4620* name);        // FUNCTION: GAMEMD 0x779C90 (decl; reloc)
+class DialogOwner_0079AE00
+{
+public:
+    virtual void vf_0();
+    virtual void vf_1(HWND window, int code);   // slot 1 (+0x04)
+};
+void FUN_005E2AC0();   // FUNCTION: GAMEMD 0x5E2AC0 (decl; reloc)
+// FUNCTION: GAMEMD 0x7B7F90 (decl; reloc) -- the narrow text of a wide string.
+String_007B4620 FUN_007B7F90(const WideString_007B66C0& text);
+
+// Connection-state table: the pair of player slots of each connection, and the state
+// each side holds.
+struct SlotPair_00A8DC4C
+{
+    int First;    // +0x00
+    int Second;   // +0x04
+};
+struct StatePair_00A8DE4C
+{
+    int FirstState;    // +0x00
+    int SecondState;   // +0x04
+};
+extern int DAT_00A8E04C;
+extern SlotPair_00A8DC4C DAT_00A8DC4C[];
+extern StatePair_00A8DE4C DAT_00A8DE4C[];
+
+// FUNCTION: GAMEMD 0x735060 (decl; reloc) -- converts `text` to wide characters into `out`.
+void FUN_00735060(wchar_t* out, const char* text, int length);
+extern int DAT_007EEF28;
+// STRING: GAMEMD 0x83F328
+static const char DAT_0083F328[] = "\n";
+// STRING: GAMEMD 0x830174
+static const wchar_t DAT_00830174[] = L"\n";
+void FUN_00608440(HWND window);          // FUNCTION: GAMEMD 0x608440 (decl; reloc)
+void FUN_00773E90(const char* label);    // FUNCTION: GAMEMD 0x773E90 (decl; reloc)
+extern UINT DAT_0084A248;
+// LIBRARY: GAMEMD 0x007C93E8 -- CRT free (caller cleanup).
+extern "C" void __cdecl FUN_007C93E8(void* block);
+
+void FUN_007A16B0(const char* text, bool flag);   // FUNCTION: GAMEMD 0x7A16B0 (decl; reloc)
 
 // FUNCTION: GAMEMD 0x0077B920
 void FUN_0077B920()
@@ -698,6 +841,40 @@ void FUN_0077D200(Obj_0077D200* a1, int a2)
     FUN_0077F900(a1, a2);
 }
 
+// FUNCTION: GAMEMD 0x77DED0
+// Loads the online options from the game's INI file.
+void FUN_0077DED0()
+{
+    DAT_00B76234 = DAT_008870C0.FUN_005276D0("WOnline", "AllowPage", 1);
+    DAT_00B779F0 = DAT_008870C0.FUN_005276D0("WOnline", "AllowFind", 1);
+    DAT_00B779BC = DAT_008870C0.FUN_005276D0("WOnline", "LangFilter", 1);
+    DAT_00B7690C = DAT_008870C0.FUN_005276D0("WOnline", "LobMusic", 1);
+    DAT_00B77784 = DAT_008870C0.FUN_005276D0("WOnline", "ShowAll", 1);
+    DAT_00B779DC = DAT_008870C0.FUN_005276D0("WOnline", "DisplayAsian", 1);
+    DAT_00B779C0 = DAT_008870C0.FUN_005276D0("WOnline", "DisplayLatin", 1);
+    DAT_00B76AF0 = DAT_008870C0.FUN_005295F0("WOnline", "DisplayBuddies", false);
+    DAT_00B73AD0 = DAT_008870C0.FUN_005295F0("WOnline", "DisplayClan", false);
+    FUN_005EE190();
+}
+
+// FUNCTION: GAMEMD 0x77DFD0
+// Saves the online options to the game's INI file.
+void FUN_0077DFD0()
+{
+    RawFileClass file("RA2MD.INI");
+    DAT_008870C0.WriteInteger("WOnline", "AllowPage", DAT_00B76234, 0);
+    DAT_008870C0.WriteInteger("WOnline", "AllowFind", DAT_00B779F0, 0);
+    DAT_008870C0.WriteInteger("WOnline", "LangFilter", DAT_00B779BC, 0);
+    DAT_008870C0.WriteInteger("WOnline", "LobMusic", DAT_00B7690C, 0);
+    DAT_008870C0.WriteInteger("WOnline", "ShowAll", DAT_00B77784, 0);
+    DAT_008870C0.WriteInteger("WOnline", "DisplayAsian", DAT_00B779DC, 0);
+    DAT_008870C0.WriteInteger("WOnline", "DisplayLatin", DAT_00B779C0, 0);
+    DAT_008870C0.WriteBool("WOnline", "DisplayBuddies", DAT_00B76AF0);
+    DAT_008870C0.WriteBool("WOnline", "DisplayClan", DAT_00B73AD0);
+    DAT_008870C0.WriteCCFile(&file, false);
+    FUN_005EE1B0();
+}
+
 // FUNCTION: GAMEMD 0x77E110
 void FUN_0077E110()
 {
@@ -708,6 +885,73 @@ void FUN_0077E110()
     FUN_005EE350(0);
     bool start = DAT_00B7690C != 0;
     ThemeUpdate_0077D7A0(start);
+}
+
+// STRING: GAMEMD 0x817F70
+static const char DAT_00817F70[] = ",";
+
+// FUNCTION: GAMEMD 0x77E820
+// Splits `text` at commas into five numbers and a name.
+String_007B4620& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, String_007B4620* name)
+{
+    char* token = strtok(text, DAT_00817F70);
+    *a = token ? atol(token) : 0;
+    token = strtok(NULL, DAT_00817F70);
+    *b = token ? atol(token) : 0;
+    token = strtok(NULL, DAT_00817F70);
+    *c = token ? atol(token) : 0;
+    token = strtok(NULL, DAT_00817F70);
+    *d = token ? atol(token) : 0;
+    token = strtok(NULL, DAT_00817F70);
+    *e = token ? atol(token) : 0;
+    return *name = strtok(NULL, DAT_00817F70);
+}
+
+// A map list entry: the description text, then the map name at +0x58.
+struct MapEntry_00A8B8CC
+{
+    wchar_t Description[0x2C];   // +0x00
+    char Name[1];                // +0x58
+};
+GG_STATIC_ASSERT(offsetof(MapEntry_00A8B8CC, Name) == 0x58);
+extern MapEntry_00A8B8CC** DAT_00A8B8CC;
+extern int DAT_00A8B8D8;
+// STRING: GAMEMD 0x82BC30
+static const char DAT_0082BC30[] = "RandMap.Sed";
+extern wchar_t DAT_00887734[];
+
+// FUNCTION: GAMEMD 0x780D90
+// The description of a map by name.
+WideString_007B66C0 FUN_00780D90(String_007B4620* name)
+{
+    if (_stricmp(name->FUN_007B5440(), DAT_0082BC30) == 0) {
+        return WideString_007B66C0(FUN_00734E60("TXT_RANDOM_MAP_DESCRIPTION", NULL, DAT_0084A430, 0xB9A));
+    }
+    for (int i = 0; i < DAT_00A8B8D8; i++) {
+        MapEntry_00A8B8CC* entry = DAT_00A8B8CC[i];
+        if (_stricmp(name->FUN_007B5440(), entry->Name) == 0) {
+            return WideString_007B66C0(entry->Description);
+        }
+    }
+    return WideString_007B66C0(DAT_00887734);
+}
+
+// FUNCTION: GAMEMD 0x781090
+// Text for the list entry `index` of the lobby list box; the result is returned through
+// the hidden return pointer (ECX under /Gr).
+WideString_007B66C0 FUN_00781090(HWND list, int index)
+{
+    if (index == -1) {
+        return WideString_007B66C0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEA));
+    }
+    int record = SendMessageA(list, 0x199, index, 0);
+    if (record >= 0 && record < DAT_00B77900.count) {
+        Entry_00B77908 entry;
+        memset(&entry, 0, sizeof(entry));
+        entry = DAT_00B77900.data[record];
+        return FUN_00780A90(&entry);
+    }
+    return WideString_007B66C0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEF));
 }
 
 // FUNCTION: GAMEMD 0x781380
@@ -808,6 +1052,25 @@ int __cdecl FUN_007830C0(const Item_007830C0* a, const Item_007830C0* b)
     return _stricmp(first.unknown_24, second.unknown_24);
 }
 
+// FUNCTION: GAMEMD 0x7831A0
+// Orders by flag (zero sorts last), then by key (larger first), then by the records'
+// names, case-insensitively.
+int __cdecl FUN_007831A0(const Item_007830C0* a, const Item_007830C0* b)
+{
+    if (a->Flag != b->Flag) return a->Flag ? -1 : 1;
+
+    if (a->Key > b->Key) return -1;
+    if (a->Key < b->Key) return 1;
+
+    Entry_00B77908 first;
+    Entry_00B77908 second;
+    memset(&first, 0, sizeof(first));
+    memset(&second, 0, sizeof(second));
+    if (a->Index >= 0 && a->Index < DAT_00B77900.count) first = DAT_00B77900.data[a->Index];
+    if (b->Index >= 0 && b->Index < DAT_00B77900.count) second = DAT_00B77900.data[b->Index];
+    return _stricmp(first.unknown_24, second.unknown_24);
+}
+
 // FUNCTION: GAMEMD 0x783520
 // Case-insensitive name order; an empty name sorts last.
 int __cdecl FUN_00783520(const char* a, const char* b)
@@ -892,6 +1155,63 @@ int __cdecl FUN_007836E0(const Item_007835C0* a, const Item_007835C0* b)
     return _stricmp(first.unknown_24, second.unknown_24);
 }
 
+// FUNCTION: GAMEMD 0x783A90
+// The digit picture for 0..9.
+void* FUN_00783A90(int digit)
+{
+    switch (digit) {
+    case 0: return DAT_00AC4848.GetSurface("number0.pcx", NULL);
+    case 1: return DAT_00AC4848.GetSurface("number1.pcx", NULL);
+    case 2: return DAT_00AC4848.GetSurface("number2.pcx", NULL);
+    case 3: return DAT_00AC4848.GetSurface("number3.pcx", NULL);
+    case 4: return DAT_00AC4848.GetSurface("number4.pcx", NULL);
+    case 5: return DAT_00AC4848.GetSurface("number5.pcx", NULL);
+    case 6: return DAT_00AC4848.GetSurface("number6.pcx", NULL);
+    case 7: return DAT_00AC4848.GetSurface("number7.pcx", NULL);
+    case 8: return DAT_00AC4848.GetSurface("number8.pcx", NULL);
+    case 9: return DAT_00AC4848.GetSurface("number9.pcx", NULL);
+    }
+    return NULL;
+}
+
+// The record whose rank picture is chosen: only the points at +0x0C are read.
+struct RankHolder_00783B80
+{
+    int unknown_00;
+    int unknown_04;
+    int unknown_08;
+    unsigned int Points;   // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(RankHolder_00783B80, Points) == 0x0C);
+
+// FUNCTION: GAMEMD 0x783B80
+// The rank picture for a points total.
+void* FUN_00783B80(RankHolder_00783B80* holder)
+{
+    if (holder == NULL)
+        return NULL;
+    unsigned int points = holder->Points;
+    if (points > 2000)
+        return DAT_00AC4848.GetSurface("comchief.pcx", NULL);
+    if (points > 1500)
+        return DAT_00AC4848.GetSurface("stargen.pcx", NULL);
+    if (points > 1000)
+        return DAT_00AC4848.GetSurface("general.pcx", NULL);
+    if (points > 500)
+        return DAT_00AC4848.GetSurface("briggenr.pcx", NULL);
+    if (points > 250)
+        return DAT_00AC4848.GetSurface("colonel.pcx", NULL);
+    if (points > 150)
+        return DAT_00AC4848.GetSurface("major.pcx", NULL);
+    if (points > 80)
+        return DAT_00AC4848.GetSurface("lieutena.pcx", NULL);
+    if (points > 60)
+        return DAT_00AC4848.GetSurface("sergeant.pcx", NULL);
+    if (points > 31)
+        return DAT_00AC4848.GetSurface("corporal.pcx", NULL);
+    return DAT_00AC4848.GetSurface("private.pcx", NULL);
+}
+
 // FUNCTION: GAMEMD 0x785360
 // Tail-calls a method on a global object.
 void __cdecl FUN_00785360()
@@ -930,11 +1250,130 @@ int FUN_00786E70(String_007B4620* name)
     return -1;
 }
 
+// FUNCTION: GAMEMD 0x788710
+// Leaves the current channel, waits for the leave to finish and refocuses the chat box.
+bool FUN_00788710(int mode, int flag)
+{
+    if (DAT_00B77DD0 != 0) {
+        FUN_004068E0("Leave_Channel, channel %s type %d\n", DAT_00B76B44, DAT_00B76B10[0]);
+        DAT_00AC116C->Vtbl->At_24(DAT_00AC116C);
+        {
+            WideString_007B66C0 text(FUN_00734E60("WOL:LeavingChannel", NULL, DAT_0084A430, 0x29D0));
+            FUN_00792BE0(mode, &text, flag);
+        }
+        for (int i = 0; DAT_00B77DD0 != 0 && i < 150; i++) {
+            Sleep(100);
+            FUN_0077F900();
+        }
+        HWND dialog = FUN_00775940(0xC4);
+        if (dialog != NULL) {
+            DAT_00B77DC8 &= ~0x40u;
+            if (DAT_00B77DC8 == 0) {
+                FUN_007757E0(dialog, 0);
+            }
+        }
+        HWND parent = (HWND)FUN_00775B10();
+        HWND control = GetDlgItem(parent, 0x540);
+        if (control != NULL) {
+            SetFocus(control);
+        }
+    }
+    return DAT_00B77DD0 == 0;
+}
+
+// STRING: GAMEMD 0x84B698
+static const char DAT_0084B698[] = "zotclot9";
+
+// FUNCTION: GAMEMD 0x788A30
+int FUN_00788A30()
+{
+    int index = FUN_00788180();
+    if (index != -1) {
+        GrowListRecord10C record;
+        if (index >= 0 && index < DAT_00B73E10.count) {
+            record = ((GrowListRecord10C*)DAT_00B73E10.data)[index];
+        }
+        int failed;
+        {
+            String_007B4620 key(DAT_0084B698);
+            failed = FUN_00788800(&record, key, FUN_00734E60("TXT_JOINLOB", NULL, DAT_0084A430, 0x2A01));
+        }
+        if (failed == 0) {
+            HWND dialog = FUN_00775940(0x113);
+            if (dialog != NULL) {
+                SetFocus(GetDlgItem(dialog, 0x540));
+            }
+            FUN_00781480();
+            return index;
+        }
+    }
+    FUN_00781480();
+    return -1;
+}
+
+// STRING: GAMEMD 0x8318B8
+static const char DAT_008318B8[] = ":";
+
+// FUNCTION: GAMEMD 0x789630
+// The text of a record after its first ':' (the whole text when there is none).
+String_007B4620 FUN_00789630(const char* record)
+{
+    String_007B4620 text(record + 0x18);
+    String_007B4620 rest;
+    int colon = text.FUN_007B5F10(0, DAT_008318B8, &rest);
+    if (colon >= 0) {
+        text.FUN_007B5020(0, colon + 1);
+    }
+    return text;
+}
+
 // FUNCTION: GAMEMD 0x78ABF0
 void FUN_0078ABF0(char flag, const wchar_t* text)
 {
     DAT_00B77E40 = flag;
     DAT_00B76230.FUN_007B7600(text);
+}
+
+// FUNCTION: GAMEMD 0x78DA30
+BOOL CALLBACK FUN_0078DA30(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    if (message == 0x110 && lparam != 0) {
+        SetWindowLongA(window, 8, ((int*)lparam)[1]);
+    }
+    int handled = FUN_00622B50(window, message, wparam, lparam);
+    if (handled != 0)
+        return handled;
+    switch (message) {
+    case 0x2B:
+        FUN_006213A0(lparam);
+        return 1;
+    case 0xF:
+        FUN_00621E90(window);
+        FUN_00607FD0(window);
+        ValidateRect(window, NULL);
+        return 0;
+    case 0x5F5:
+        FUN_005E2CD0(FUN_00734E60("TXT_DOWNLOAD_FAILED", NULL, DAT_0084A430, 0x3959), 0, (void*)FUN_0077D710, 0);
+        DAT_00AC1174->Vtbl->At_10(DAT_00AC1174);
+        FUN_007757E0(window, 2);
+        return 1;
+    case 0x5F4:
+        FUN_007757E0(window, 1);
+        return 1;
+    case 0x111:
+        switch (wparam & 0xFFFF) {
+        case 2:
+            DAT_00AC1174->Vtbl->At_10(DAT_00AC1174);
+            FUN_007757E0(window, 2);
+            break;
+        default:
+            return 0;
+        }
+    case 0x14:
+    case 0x110:
+        return 1;
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x78F6B0
@@ -950,6 +1389,34 @@ int FUN_0078F6B0(int id)
     return id == 0x75B ? 7 : -1;
 }
 
+// FUNCTION: GAMEMD 0x78F720
+// Locks the host controls of the lobby dialog.
+void FUN_0078F720(HWND dialog)
+{
+    if (DAT_00A8B238 != 4)
+        return;
+    bool hostLocked;
+    if (DAT_00B76B24 != 0)
+        hostLocked = true;
+    else
+        hostLocked = ((DAT_00B76B30 >> 8) & 1) != 0;
+    if (hostLocked) {
+        EnableWindow(GetDlgItem(dialog, 0x552), 0);
+        EnableWindow(GetDlgItem(dialog, 0x553), 0);
+        EnableWindow(GetDlgItem(dialog, 0x597), 0);
+        DAT_00A8B274 = 0;
+        DAT_00A8B31C = 0;
+        HWND check = GetDlgItem(dialog, 0x54E);
+        SendMessageA(check, 0xF1, 1, 0);
+        EnableWindow(check, 0);
+        HWND other = GetDlgItem(dialog, 0x54B);
+        SendMessageA(other, 0xF1, 1, 0);
+        EnableWindow(other, 0);
+        DAT_00A8B262 = 1;
+        DAT_00A8B258 = 1;
+    }
+}
+
 // FUNCTION: GAMEMD 0x791AA0
 void FUN_00791AA0(void* window)
 {
@@ -962,6 +1429,54 @@ void FUN_00791AA0(void* window)
             FUN_007757E0(window, 2);
         }
     }
+}
+
+// FUNCTION: GAMEMD 0x792CF0
+BOOL CALLBACK FUN_00792CF0(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    switch (message) {
+    case 0x110:
+        return 0;
+    case 2:
+        KillTimer(window, 0x45);
+        return 0;
+    case 0x2B:
+        FUN_006213A0(lparam);
+    case 0x14:
+        return 1;
+    case 0xF:
+        FUN_00621E90(window);
+        FUN_00607FD0(window);
+        ValidateRect(window, NULL);
+        return 0;
+    case 0x111:
+        switch (wparam & 0xFFFF) {
+        case 0x58D:
+            SetEvent(DAT_00B73684[0]);
+            FUN_007757E0(window, 1);
+            return 0;
+        case 0x58E:
+            FUN_00773E90("NetStatus");
+            return 0;
+        }
+        break;
+    case 0x113:
+        if (wparam == 0x45) {
+            ShowWindow(window, 5);
+            KillTimer(window, 0x45);
+        }
+        return 0;
+    case 0x497: {
+        SendMessageA(window, 0x4A9, 0, 1);
+        SetTimer(window, 0x45, DAT_0084A248, NULL);
+        FUN_00608440(window);
+        HWND item = GetDlgItem(window, 0x7A9);
+        PostMessageA(item, 0x4D5, 0, 0);
+        PostMessageA(item, 0x4D3, 0, 0);
+        return 0;
+    }
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x792E90
@@ -1074,6 +1589,33 @@ unsigned short FUN_00793710(int base, int offset, int unused, int spread)
     return narrow;
 }
 
+// FUNCTION: GAMEMD 0x793930
+// Records the connection state between two named players.
+void FUN_00793930(const char* from, const char* to, int state)
+{
+    int fromSlot = -1;
+    int toSlot = -1;
+    FUN_004068E0("Registering connection state from %s to %s. conn_state = %d\n", from, to, state);
+    for (int i = 0; i < 8; i++) {
+        if (_stricmp(FUN_007350C0(DAT_00A8DA90[i]), from) == 0) {
+            fromSlot = i;
+        }
+        if (_stricmp(FUN_007350C0(DAT_00A8DA90[i]), to) == 0) {
+            toSlot = i;
+        }
+    }
+    for (int j = 0; j < DAT_00A8E04C; j++) {
+        if (DAT_00A8DC4C[j].First == fromSlot && DAT_00A8DC4C[j].Second == toSlot) {
+            DAT_00A8DE4C[j].FirstState = state;
+            return;
+        }
+        if (DAT_00A8DC4C[j].First == toSlot && DAT_00A8DC4C[j].Second == fromSlot) {
+            DAT_00A8DE4C[j].SecondState = state;
+            return;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x793A10
 void FUN_00793A10(const char* name, int port)
 {
@@ -1082,6 +1624,26 @@ void FUN_00793A10(const char* name, int port)
         if (_stricmp(FUN_007350C0(DAT_00A8DA90[i]), name) == 0) {
             DAT_00A8E050[i] = (short)port;
             return;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x793A70
+// Sends the code string to the user of that name.
+void FUN_00793A70(const char* name, unsigned short code)
+{
+    Entry_00B77908* entry = NULL;
+    for (int i = 0; i < DAT_00B77900.count; i++) {
+        if (i >= 0 && i < DAT_00B77900.count) {
+            entry = &DAT_00B77900.data[i];
+        }
+        if (_stricmp(name, entry->unknown_24) == 0) {
+            char text[0x100];
+            text[0] = 'Z';
+            text[1] = '4';
+            sprintf(&text[2], "%d", code);
+            FUN_004068E0("Sending string %s to user %s\n", text, name);
+            DAT_00AC116C->Vtbl->At_38(DAT_00AC116C, entry, text);
         }
     }
 }
@@ -1103,10 +1665,46 @@ void FUN_00793B30(int digit, const char* text)
     DAT_00AC116C->Vtbl->At_3C(DAT_00AC116C, buffer);
 }
 
+// One global holding eight receivers, eight timers and the running count (0xA8E1A4
+// + 0x20 = 0xA8E1C4, + 0x60 = 0xA8E224). The receiver is filed under the count and a
+// timer armed with 0x4B0 ticks is stored beside it.
+struct Registry_00A8E1A4
+{
+    void* Owners[8];                  // +0x00
+    ScenarioElapsedTimer Timers[8];   // +0x20
+    int Count;                        // +0x80
+};
+GG_STATIC_ASSERT(offsetof(Registry_00A8E1A4, Timers) == 0x20);
+GG_STATIC_ASSERT(offsetof(Registry_00A8E1A4, Count) == 0x80);
+extern Registry_00A8E1A4 DAT_00A8E1A4;
+
+struct Obj_00793CD0
+{
+    void FUN_00793CD0();
+};
+
+// FUNCTION: GAMEMD 0x793CD0
+void Obj_00793CD0::FUN_00793CD0()
+{
+    DAT_00A8E1A4.Owners[DAT_00A8E1A4.Count] = this;
+    DAT_00A8E1A4.Timers[DAT_00A8E1A4.Count] = ScenarioElapsedTimer(0x4B0);
+    DAT_00A8E1A4.Count++;
+}
+
 // FUNCTION: GAMEMD 0x796B20
 // Empty function.
 void __cdecl FUN_00796B20()
 {
+}
+
+// FUNCTION: GAMEMD 0x796B30
+int FUN_00796B30()
+{
+    SimpleWonlineDialogControl control;
+    int result = FUN_006241F0(0xFE, FUN_00796B90, &control);
+    if (result < 0)
+        return 0;
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x7975E0
@@ -1120,6 +1718,15 @@ void FUN_007975E0()
     int mode = 0x2300;
     if (DAT_00A8B244 != 3) mode = 0x2900;
     FUN_00797640(mode);
+}
+
+// FUNCTION: GAMEMD 0x7982A0
+void __stdcall FUN_007982A0(int count, int unused, Member_7B46F0* items)
+{
+    for (int i = 0; i < count; i++) {
+        items[i].~Member_7B46F0();
+    }
+    gg_free(items);
 }
 
 // FUNCTION: GAMEMD 0x7982D0
@@ -1169,6 +1776,44 @@ void FUN_00799D10()
     }
 }
 
+// FUNCTION: GAMEMD 0x79AE00
+BOOL CALLBACK FUN_0079AE00(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    if (message == 0x110 && lparam != 0) {
+        SetWindowLongA(window, 8, ((int*)lparam)[1]);
+    }
+    int handled = FUN_00622B50(window, message, wparam, lparam);
+    if (handled != 0)
+        return handled;
+    DialogOwner_0079AE00* owner = (DialogOwner_0079AE00*)GetWindowLongA(window, 8);
+    switch (message) {
+    case 0x14:
+        return 1;
+    case 0xF:
+        FUN_00621E90(window);
+        FUN_00607FD0(window);
+        ValidateRect(window, NULL);
+        return 1;
+    case 0x2B:
+        FUN_006213A0(lparam);
+        return 1;
+    case 0x111:
+        switch (wparam & 0xFFFF) {
+        case 1:
+            FUN_00779C90(&DAT_00B73E40);
+            owner->vf_1(window, 1);
+            return 0;
+        case 2:
+            bool checked = IsDlgButtonChecked(window, 0x6F9) == 1;
+            FUN_00779830(!checked);
+            owner->vf_1(window, 2);
+            return 0;
+        }
+        break;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x79BE70
 void FUN_0079BE70()
 {
@@ -1190,6 +1835,38 @@ bool FUN_0079BED0()
     int* value = FindValue_0079BED0(DAT_00B76990, DAT_00B76E24);
     if (value == NULL) return false;
     return *value < 0 || *value > 2;
+}
+
+// A 0x10C-byte record whose name sits at +0x34.
+struct Record_0079F0A0
+{
+    int unknown_00[13];       // +0x00
+    char Name[0xD8];          // +0x34
+};
+GG_STATIC_ASSERT(sizeof(Record_0079F0A0) == 0x10C);
+
+struct Vec_0079F0A0
+{
+    int count;                // +0x00
+    int unknown_04;           // +0x04
+    Record_0079F0A0* data;    // +0x08
+};
+
+// FUNCTION: GAMEMD 0x79F0A0
+// Finds the record named like `name`, copying it to `out`; clears `out` when none.
+bool FUN_0079F0A0(String_007B4620* name, Vec_0079F0A0* list, Record_0079F0A0* out)
+{
+    memset(out, 0, sizeof(*out));
+    for (int i = 0; i < list->count; i++) {
+        if (i >= 0 && i < list->count) {
+            *out = list->data[i];
+        }
+        if (_stricmp(out->Name, name->FUN_007B5440()) == 0) {
+            return true;
+        }
+    }
+    memset(out, 0, sizeof(*out));
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x79FC10
@@ -1253,6 +1930,52 @@ void FUN_007A0EA0(const char* name, int ping)
     }
 }
 
+// FUNCTION: GAMEMD 0x7A2110
+BOOL CALLBACK FUN_007A2110(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    switch (message) {
+    case 0x14:
+        return 1;
+    case 0xF:
+        FUN_00621E90(window);
+        FUN_00607FD0(window);
+        ValidateRect(window, NULL);
+        return 1;
+    case 2:
+        KillTimer(window, 0);
+        return 0;
+    case 0x2B:
+        FUN_006213A0(lparam);
+        return 1;
+    case 0x497:
+        SetTimer(window, 0, 2000, NULL);
+        return 0;
+    case 0x113:
+        if (wparam == 0) {
+            FUN_005E2AC0();
+        }
+        return 0;
+    case 0x111:
+        switch (wparam & 0xFFFF) {
+        case 0x709:
+            DAT_00AC116C->Vtbl->At_2C(DAT_00AC116C, "start 4439,0,0,10000,10,1,1,1,3,Match,1,0,MP18S3.MAP,Match:xyzkerble,7,4,mshag,4,1,");
+            return 0;
+        case 0x708:
+            DAT_00AC116C->Vtbl->At_2C(DAT_00AC116C, "start 4439,0,0,10000,10,1,1,1,3,Match,1,0,MP18S3.MAP,Match:mshag,4,1,xyzkerble,7,4");
+            return 0;
+        case 0x5C0:
+            if (DAT_00B73A20 == 0xB) {
+                FUN_007757E0(window, 0);
+            } else {
+                SetEvent(DAT_00B73684[0]);
+            }
+            return 0;
+        }
+        break;
+    }
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x7A2730
 void FUN_007A2730()
 {
@@ -1277,6 +2000,14 @@ void FUN_007A2750()
     }
 }
 
+// FUNCTION: GAMEMD 0x7A27D0
+void FUN_007A27D0()
+{
+    HWND parent = (HWND)FUN_00775B10();
+    HWND control = GetDlgItem(parent, 0x59F);
+    SendMessageA(control, 0x4DC, 0, 0);
+}
+
 // FUNCTION: GAMEMD 0x7A2800
 void FUN_007A2800(int a, int b, int c)
 {
@@ -1297,6 +2028,16 @@ void FUN_007A2830(String_007B4620* name)
             DAT_00AC116C->Vtbl->At_54(DAT_00AC116C, &record);
             return;
         }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7A2970
+void FUN_007A2970()
+{
+    DAT_00B77DC1 = 0;
+    if (!DAT_00B77DC2 && FUN_00779940() && FUN_0079C520(&DAT_00B76AC4)) {
+        SimpleWonlineDialogControl control;
+        FUN_006241F0(0x122, FUN_007A29E0, &control);
     }
 }
 
@@ -1386,6 +2127,37 @@ long __stdcall FUN_007A40F0(void* self, int a, int b, int c, int d)
     return 0;
 }
 
+// STRING: GAMEMD 0x8240B4
+static const wchar_t DAT_008240B4[] = L"%s";
+
+// FUNCTION: GAMEMD 0x7A5240
+int __stdcall FUN_007A5240(void* unused, int a1, int a2)
+{
+    if (!DAT_00B77DC1) {
+        wchar_t text[0x200];
+        swprintf(text, DAT_008240B4, FUN_00734E60("TXT_SERVER_ERROR", NULL, DAT_0084A430, 0x1617));
+        FUN_005E2700(-1, text);
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7A55F0
+// Prints a message line by line.
+int __stdcall FUN_007A55F0(void* unused, int slot, const char* message)
+{
+    if (slot < 0)
+        return 0;
+    char* copy = (char*)_mbsdup((const unsigned char*)message);
+    for (char* line = strtok(copy, DAT_0083F328); line != NULL; line = strtok(NULL, DAT_0083F328)) {
+        wchar_t text[0x400];
+        FUN_00735060(text, line, -1);
+        FUN_005E2700(DAT_007EEF28, text);
+    }
+    FUN_007C93E8(copy);
+    FUN_005E2700(DAT_007EEF28, DAT_00830174);
+    return 0;
+}
+
 // FUNCTION: GAMEMD 0x7A70E0
 // Slot 11 of CChatEventSink (RTTI); string 0x84AD84 attests the callback name.
 long __stdcall FUN_007A70E0(void* self, long result, int unused, int value)
@@ -1395,6 +2167,194 @@ long __stdcall FUN_007A70E0(void* self, long result, int unused, int value)
         return 0;
     }
     FUN_00785740(value);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7A8DA0
+int __stdcall FUN_007A8DA0(void* unused, int slot, int unused2, Entry_00B77908* entry, const char* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        if (IsOnlineMode()) {
+            if (entry->unknown_00[0] & 1) {
+                FUN_007A16B0(text, false);
+            }
+        } else {
+            bool shown;
+            {
+                String_007B4620 name(text);
+                if (entry == NULL) {
+                    shown = false;
+                } else if (entry->unknown_00[0] & 1) {
+                    shown = true;
+                } else if (FUN_00775940(0xC2)) {
+                    shown = true;
+                } else if (FUN_00775940(0xC9)) {
+                    shown = true;
+                } else {
+                    shown = DAT_00B779C0 != 0;
+                }
+            }
+            if (shown && FUN_0077D4C0(entry)) {
+                WideString_007B66C0 wide = FUN_007B7ED0(text);
+                int channel = DAT_007EEF2C;
+                if (entry->unknown_00[0] & 1)
+                    channel = DAT_007EEF3C;
+                if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+                    FUN_005E2700(channel, DAT_0084AFB0, entry->unknown_24, wide.FUN_007B7100());
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7A8FC0
+int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const char* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        if (IsOnlineMode()) {
+            if (entry->unknown_00[0] & 1) {
+                FUN_007A16B0(text, true);
+            } else {
+                FUN_004068E0("Received message from non-channel owner %s: %s\n", entry->unknown_24, text);
+            }
+        } else {
+            bool shown;
+            {
+                String_007B4620 name(text);
+                if (entry == NULL) {
+                    shown = false;
+                } else if (entry->unknown_00[0] & 1) {
+                    shown = true;
+                } else if (FUN_00775940(0xC2)) {
+                    shown = true;
+                } else if (FUN_00775940(0xC9)) {
+                    shown = true;
+                } else {
+                    shown = DAT_00B779C0 != 0;
+                }
+            }
+            if (shown && FUN_0077D4C0(entry)) {
+                WideString_007B66C0 wide = FUN_007B7ED0(text);
+                int channel = DAT_007EEF30;
+                if (entry->unknown_00[0] & 1)
+                    channel = DAT_007EEF3C;
+                if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+                    FUN_005E2700(channel, DAT_0084AFC8, entry->unknown_24, wide.FUN_007B7100());
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7AAFB0
+int __stdcall FUN_007AAFB0(void* unused, int slot, Entry_00B77908* entry, const char* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        bool shown;
+        {
+            String_007B4620 name(text);
+            if (entry == NULL) {
+                shown = false;
+            } else if (entry->unknown_00[0] & 1) {
+                shown = true;
+            } else if (FUN_00775940(0xC2)) {
+                shown = true;
+            } else if (FUN_00775940(0xC9)) {
+                shown = true;
+            } else {
+                shown = DAT_00B779C0 != 0;
+            }
+        }
+        if (shown && FUN_0077D4C0(entry)) {
+            WideString_007B66C0 wide = FUN_007B7ED0(text);
+            if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+                FUN_005E2700(DAT_007EEF34, DAT_0084B224, entry->unknown_24, wide.FUN_007B7100());
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7AB0A0
+int __stdcall FUN_007AB0A0(void* unused, int slot, Entry_00B77908* entry, const wchar_t* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        bool shown;
+        {
+            WideString_007B66C0 name(text);
+            if (entry == NULL) {
+                shown = false;
+            } else if (entry->unknown_00[0] & 1) {
+                shown = true;
+            } else if (FUN_00775940(0xC2)) {
+                shown = true;
+            } else if (FUN_00775940(0xC9)) {
+                shown = true;
+            } else {
+                shown = (name.FUN_007B7D90() ? DAT_00B779C0 : DAT_00B779DC) != 0;
+            }
+        }
+        if (shown && FUN_0077D4C0(entry) && _stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+            FUN_005E2700(DAT_007EEF34, DAT_0084B224, entry->unknown_24, text);
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7AB170
+int __stdcall FUN_007AB170(void* unused, int slot, int unused2, Entry_00B77908* entry, const char* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        bool shown;
+        {
+            String_007B4620 name(text);
+            if (entry == NULL) {
+                shown = false;
+            } else if (entry->unknown_00[0] & 1) {
+                shown = true;
+            } else if (FUN_00775940(0xC2)) {
+                shown = true;
+            } else if (FUN_00775940(0xC9)) {
+                shown = true;
+            } else {
+                shown = DAT_00B779C0 != 0;
+            }
+        }
+        if (shown && FUN_0077D4C0(entry)) {
+            WideString_007B66C0 wide = FUN_007B7ED0(text);
+            if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+                FUN_005E2700(DAT_007EEF38, DAT_0084B224, entry->unknown_24, wide.FUN_007B7100());
+            }
+        }
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7AB260
+int __stdcall FUN_007AB260(void* unused, int slot, int unused2, Entry_00B77908* entry, const wchar_t* text)
+{
+    if (!DAT_00B77DC1 && slot >= 0) {
+        bool shown;
+        {
+            WideString_007B66C0 name(text);
+            if (entry == NULL) {
+                shown = false;
+            } else if (entry->unknown_00[0] & 1) {
+                shown = true;
+            } else if (FUN_00775940(0xC2)) {
+                shown = true;
+            } else if (FUN_00775940(0xC9)) {
+                shown = true;
+            } else {
+                shown = (name.FUN_007B7D90() ? DAT_00B779C0 : DAT_00B779DC) != 0;
+            }
+        }
+        if (shown && FUN_0077D4C0(entry) && _stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
+            FUN_005E2700(DAT_007EEF38, DAT_0084B224, entry->unknown_24, text);
+        }
+    }
     return 0;
 }
 
@@ -1490,6 +2450,11 @@ void* WonlineStringDialogControl::DeletingDtor(unsigned int flags)
     return this;
 }
 
+// FUNCTION: GAMEMD 0x7AC610
+WonlineStringDialogControl::WonlineStringDialogControl()
+{
+}
+
 // FUNCTION: GAMEMD 0x7AC630
 void* CreateGameDialogControl::DeletingDtor(unsigned int flags)
 {
@@ -1519,6 +2484,34 @@ void FUN_007ACBD0(ConstStoreObject* self)
     self->Head = 0;
 }
 
+// Files a copy of the key and value under the key's hash and doubles the table when
+// the load passes the grow threshold at +0x28.
+template<class KEY, class VALUE>
+bool HashTable_006249A0<KEY, VALUE>::Insert(const KEY& key, const VALUE& value)
+{
+    Node* node = new Node;
+    node->Key = key;
+    node->Value = value;
+    node->Next = NULL;
+
+    int hash = this->Hash(&key);
+    unsigned index = ((1 << this->BitWidth) - 1) & hash;
+    Node* head = this->Buckets[index];
+    this->Buckets[index] = node;
+    if (head != NULL) {
+        node->Next = head;
+    }
+    this->Count++;
+
+    if ((float)this->Count / this->BucketCount >= this->unknown_28 && this->IsFixed != 1) {
+        Grow();
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7ACBE0
+template struct HashTable_006249A0<String_007B4620, int>;
+
 // FUNCTION: GAMEMD 0x7ACD30
 void Obj_007ACD30::FUN_007ACD30()
 {
@@ -1527,6 +2520,36 @@ void Obj_007ACD30::FUN_007ACD30()
     }
     Count = 0;
 }
+
+#pragma warning(disable : 4661)
+// Frees every node, empties the buckets and shrinks the table to its floor.
+template<class KEY, class VALUE>
+void HashTable_006249A0<KEY, VALUE>::Clear()
+{
+    for (unsigned i = 0; i < this->BucketCount; i++) {
+        Node* node = this->Buckets[i];
+        while (node != NULL) {
+            Node* doomed = node;
+            node = node->Next;
+            delete doomed;
+        }
+        this->Buckets[i] = NULL;
+    }
+    this->Count = 0;
+
+    for (;;) {
+        unsigned minimum = this->MinBuckets;
+        if (this->BucketCount <= minimum || this->IsFixed)
+            break;
+        Shrink();
+    }
+}
+
+// FUNCTION: GAMEMD 0x7ACE60
+template struct HashTable_006249A0<String_007B4620, int>;
+
+// FUNCTION: GAMEMD 0x7ACF70
+template struct HashTable_006249A0<String_007B4620, Value_007AE8E0>;
 
 // FUNCTION: GAMEMD 0x7AD2F0
 void* Obj_7AD2F0::FUN_7AD2F0(unsigned int flags)
@@ -1576,6 +2599,43 @@ void* Obj_7AD350::FUN_7AD350(unsigned int flags)
     return this;
 }
 
+// FUNCTION: GAMEMD 0x7AD480
+int __stdcall FUN_007AD480(void* unused, unsigned int done, unsigned int total, int unused2, int seconds)
+{
+    wchar_t text[200];
+    text[0] = 0;
+    SendDlgItemMessageA((HWND)FUN_00775B10(), 0x5C6, 0x402, done * 100 / total, 0);
+    if (seconds > 0) {
+        swprintf(text, FUN_00734E60("TXT_BYTES_W_TIME", NULL, DAT_0084A430, 0x142F), done, total, seconds);
+    } else {
+        swprintf(text, FUN_00734E60("TXT_BYTES_WO_TIME", NULL, DAT_0084A430, 0x1434), done, total);
+    }
+    if (time(0) - DAT_00B77EA8 != 0) {
+        HWND control = GetDlgItem((HWND)FUN_00775B10(), 0x5C8);
+        SendMessageA(control, 0x4B2, 0, (LPARAM)text);
+        DAT_00B77EA8 = time(0);
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x7AD580
+int __stdcall FUN_007AD580(void* unused, int state)
+{
+    wchar_t text[200];
+    text[0] = 0;
+    switch (state) {
+    case 2:
+        swprintf(text, FUN_00734E60("TXT_CONNECTING", NULL, DAT_0084A430, 0x1447));
+        break;
+    case 4:
+        swprintf(text, FUN_00734E60("TXT_FINDING_PATCH", NULL, DAT_0084A430, 0x144B));
+        break;
+    }
+    HWND control = GetDlgItem((HWND)FUN_00775B10(), 0x5C8);
+    SendMessageA(control, 0x4B2, 0, (LPARAM)text);
+    return 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AD610
 // Returns zero; pops its stack arguments. Vtable slot 6 of ATL::CComObject<CDownloadEventSink> (RTTI).
@@ -1587,6 +2647,54 @@ int Obj_007AD610::FUN_007AD610(int a1) const
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AD790
 template struct GrowList<GrowListRecord10C>;
+
+// Growth step and shrink step of a record array (count at +0x00, capacity at +0x04,
+// heap block at +0x08) whose elements are 0x6C bytes.
+struct Obj_007AD9D0 {
+    int count;      // +0x00
+    int capacity;   // +0x04
+    GrowListRecord6C* data;   // +0x08
+    bool FUN_007AD9D0();
+    bool FUN_007ADA70();
+};
+GG_STATIC_ASSERT(offsetof(Obj_007AD9D0, data) == 0x08);
+
+// FUNCTION: GAMEMD 0x7AD9D0
+bool Obj_007AD9D0::FUN_007AD9D0()
+{
+    if (count < capacity)
+        return false;
+    int newCapacity = count * 2;
+    if (newCapacity < 10)
+        newCapacity = 10;
+    GrowListRecord6C* block = new GrowListRecord6C[newCapacity];
+    memset(block, 0, newCapacity * sizeof(GrowListRecord6C));
+    if (data != 0)
+        memcpy(block, data, count * sizeof(GrowListRecord6C));
+    gg_free(data);
+    capacity = newCapacity;
+    data = block;
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x7ADA70
+bool Obj_007AD9D0::FUN_007ADA70()
+{
+    if (count * 3 > capacity)
+        return false;
+    int newCapacity = capacity / 2;
+    if (newCapacity < 10)
+        newCapacity = 10;
+    if (newCapacity >= capacity)
+        return false;
+    GrowListRecord6C* block = new GrowListRecord6C[newCapacity];
+    if (data != 0)
+        memcpy(block, data, count * sizeof(GrowListRecord6C));
+    gg_free(data);
+    data = block;
+    capacity = newCapacity;
+    return true;
+}
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7ADB00
@@ -1616,6 +2724,54 @@ bool Table_007AE180::FUN_007AE180(const String_007B4620& key, Value_007AE180** o
 {
     return FindNode_007AE180(this, key, out);
 }
+
+// Unlinks the entry for `key`, copying its value out, and halves the table when the
+// load falls to the shrink threshold (same body as the instantiations in
+// hash_table_remove_methods.cpp).
+template<class KEY, class VALUE>
+bool HashTable_006249A0<KEY, VALUE>::Remove(const KEY& key, VALUE& value)
+{
+    if (this->Count == 0) return false;
+
+    float load = (float)(this->Count - 1);
+    load /= this->BucketCount;
+    int hash = this->Hash(&key);
+    unsigned idx = ((1 << this->BitWidth) - 1) & hash;
+    Node* node = this->Buckets[idx];
+    if (node == NULL) return false;
+
+    if (node->Key == key) {
+        value = node->Value;
+        Node* next = this->Buckets[idx]->Next;
+        delete this->Buckets[idx];
+        this->Buckets[idx] = next;
+        this->Count--;
+        if (load <= this->ShrinkRatio) {
+            Shrink();
+        }
+        return true;
+    }
+
+    bool found = false;
+    for (Node* cur = node->Next; cur != NULL; cur = cur->Next) {
+        if (cur->Key == key) {
+            value = cur->Value;
+            node->Next = cur->Next;
+            this->Count--;
+            delete cur;
+            found = true;
+            break;
+        }
+        node = cur;
+    }
+    if (load <= this->ShrinkRatio) {
+        Shrink();
+    }
+    return found;
+}
+
+// FUNCTION: GAMEMD 0x7AE1F0
+template struct HashTable_006249A0<String_007B4620, int>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE5B0
@@ -1671,6 +2827,9 @@ bool Table_007AE8E0::FUN_007AE8E0(const String_007B4620& key, Value_007AE8E0** o
 {
     return FindNode_007AE180(this, key, out);
 }
+
+// FUNCTION: GAMEMD 0x7AE950
+template struct HashTable_006249A0<String_007B4620, Value_007AE8E0>;
 
 // FUNCTION: GAMEMD 0x007AEC00
 // Halves the table, chain link at +0x110.

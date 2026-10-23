@@ -34,7 +34,10 @@ struct Vtbl_00AC116C
 {
     char unknown_00[0x24];
     long (__stdcall* At_24)(Obj_00AC116C* self);                     // +0x24
-    char unknown_28[0x14];
+    char unknown_28[4];
+    long (__stdcall* At_2C)(Obj_00AC116C* self, const char* text);   // +0x2C
+    char unknown_30[8];
+    long (__stdcall* At_38)(Obj_00AC116C* self, Entry_00B77908* entry, const char* text);   // +0x38
     long (__stdcall* At_3C)(Obj_00AC116C* self, const char* text);   // +0x3C
     char unknown_40[0x14];
     long (__stdcall* At_54)(Obj_00AC116C* self, void* record);       // +0x54
@@ -45,6 +48,10 @@ struct Vtbl_00AC116C
 };
 
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_24) == 0x24);
+
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_2C) == 0x2C);
+
+GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_38) == 0x38);
 
 GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_3C) == 0x3C);
 

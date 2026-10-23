@@ -38,6 +38,12 @@ public:
     const char* FUN_007B5440();
     // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc)
     void FUN_007B5B30();
+    // FUNCTION: GAMEMD 0x7B5F10 (decl; reloc)
+    int FUN_007B5F10(int index, const char* separators, String_007B4620* out);
+    // FUNCTION: GAMEMD 0x7B5020 (decl; reloc)
+    void FUN_007B5020(int start, int count);
+    // FUNCTION: GAMEMD 0x7B4690 (decl; reloc)
+    String_007B4620(const String_007B4620& other);
 
     char* unknown_00;   // +0x00
 };
@@ -63,6 +69,10 @@ public:
     ~WideString_007B66C0();
     // FUNCTION: GAMEMD 0x7B7600 (decl; reloc)
     void FUN_007B7600(const wchar_t* text);
+    // FUNCTION: GAMEMD 0x7B7100 (decl; reloc)
+    const wchar_t* FUN_007B7100();
+    // FUNCTION: GAMEMD 0x7B7D90 (decl; reloc)
+    bool FUN_007B7D90();
 
     void* unknown_00;   // +0x00
 };

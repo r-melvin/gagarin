@@ -83,12 +83,51 @@ struct HashTable_006249A0
         }
     }
 
+    inline void Grow()
+    {
+        unsigned count = this->BucketCount;
+        Node** old = this->Buckets;
+        Node** fresh;
+
+        this->BucketCount = count * 2;
+        this->BitWidth = this->BitWidth + 1;
+        fresh = new Node*[this->BucketCount];
+        this->Buckets = fresh;
+        memset(fresh, 0, this->BucketCount * 4);
+
+        if ((int)count > 0) {
+            Node** p = old;
+            unsigned n = count;
+
+            do {
+                Node* node = *p;
+
+                while (node != 0) {
+                    int hash = this->Hash(&node->Key);
+                    unsigned idx = ((1 << this->BitWidth) - 1) & hash;
+                    Node* head = this->Buckets[idx];
+                    this->Buckets[idx] = node;
+                    Node* next = node->Next;
+                    node->Next = head;
+                    node = next;
+                }
+
+                p++;
+                n--;
+            } while (n != 0);
+        }
+
+        delete[] old;
+    }
+
     // Defined per using TU; an explicit instantiation emits only the members
     // whose definitions it can see.
     HashTable_006249A0();
     bool Find(const KEY& key, VALUE*& pValue);
     bool Remove(const KEY& key, VALUE& value);
     bool PopFirst(KEY& key, VALUE& value);
+    void Clear();
+    bool Insert(const KEY& key, const VALUE& value);
     ~HashTable_006249A0();
 };
 
