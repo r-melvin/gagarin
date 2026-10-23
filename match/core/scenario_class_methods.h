@@ -154,6 +154,9 @@ struct ScenarioTimer
     }
 };
 
+GG_STATIC_ASSERT(offsetof(ScenarioTimer, StartTime) == 0);
+GG_STATIC_ASSERT(offsetof(ScenarioTimer, TimeLeft) == 8);
+GG_STATIC_ASSERT(sizeof(ScenarioTimer) == 12);
 
 struct ScenarioRecord
 {
@@ -190,6 +193,8 @@ struct ScenarioClass
     void FUN_00689310(Gg_IStream* stream);
     void FUN_00689470(Gg_IStream* stream); // FUNCTION: GAMEMD 0x689470 (decl)
     bool FUN_0053A100(); // GAMEMD 0x53A100
+    // Declaration: GAMEMD 0x68B940
+    void FUN_0068B940(Obj_004A1D30* crc);
     // ---- matched methods (ascending by retail address) ----
     static void UpdateCellLighting();        // GAMEMD 0x4AE4C0  (free/static)
     CellStruct GetWaypointCoords(int idx);   // GAMEMD 0x68BCC0  __thiscall
@@ -229,7 +234,7 @@ struct ScenarioClass
     int unknown_0214;
     Randomizer unknown_0218;
     int Difficulty;
-    char unknown_0610[4];
+    int unknown_0610;
     ScenarioElapsedTimer unknown_0614;
     ScenarioElapsedTimer unknown_0620;
     int unknown_062C;
@@ -246,7 +251,8 @@ struct ScenarioClass
     char unknown_125C[260];
     wchar_t unknown_1360[(0x13BA - 0x1360) / 2];
     char unknown_13BA[0x13DA - 0x13BA];
-    wchar_t unknown_13DA[(0x1438 - 0x13DA) / 2];
+    wchar_t unknown_13DA[(0x1434 - 0x13DA) / 2];
+    int unknown_1434;
     int unknown_1438;
     int unknown_143C;
     int unknown_1440;
@@ -256,20 +262,27 @@ struct ScenarioClass
     wchar_t unknown_1450[(0x1C50 - 0x1450) / 2];
     char unknown_1C50[0x20];
     int unknown_1C70;
-    char unknown_1C74[0x14];
+    int unknown_1C74;
+    double unknown_1C78;
+    int unknown_1C80;
+    int unknown_1C84;
     ScenarioRecord unknown_1C88[50];
     ScenarioRecord unknown_248A[100];
     // 0x684CBE..0x684D03 copies the packed waypoint through four cells.
     CellStruct unknown_348E, unknown_3492, unknown_3496, unknown_349A;
-    char unknown_349E[0x34A5 - 0x349E];
+    char unknown_349E[2];
+    int unknown_34A0;
+    bool unknown_34A4;
     bool unknown_34A5, unknown_34A6, unknown_34A7, unknown_34A8;
     char unknown_34A9;
     bool unknown_34AA;
-    char unknown_34AB[0x34B2 - 0x34AB];
+    bool unknown_34AB, unknown_34AC, unknown_34AD, unknown_34AE;
+    bool unknown_34AF, unknown_34B0, unknown_34B1;
     bool unknown_34B2; // byte load/test0x684F02
-    char unknown_34B3[0x34B8 - 0x34B3];
+    bool unknown_34B3, unknown_34B4;
+    char unknown_34B5[3];
     int unknown_34B8; // store0x6847C3
-    char unknown_34BC;
+    bool unknown_34BC;
     bool unknown_34BD;
     char unknown_34BE[2];
     ScenarioTimer unknown_34C0;
@@ -282,9 +295,11 @@ struct ScenarioClass
     TypeList<int> unknown_350C;
     char unknown_3524[4];
     int unknown_3528;
-    char unknown_352C[4];
+    int unknown_352C;
     int unknown_3530, unknown_3534, unknown_3538, unknown_353C;
-    char unknown_3540[0x3598 - 0x3540];
+    int unknown_3540, unknown_3544, unknown_3548, unknown_354C;
+    int unknown_3550, unknown_3554, unknown_3558, unknown_355C;
+    char unknown_3560[0x3598 - 0x3560];
     bool unknown_3598;
     char unknown_3599[0x35A2 - 0x3599];
     unsigned char unknown_35A2;
@@ -300,6 +315,33 @@ struct ScenarioClass
 };
 
 #if GG_TARGET_ABI_32
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0610) == 0x0610);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1434) == 0x1434);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C74) == 0x1C74);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C78) == 0x1C78);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C80) == 0x1C80);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C84) == 0x1C84);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A0) == 0x34A0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34A4) == 0x34A4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AC) == 0x34AC);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AD) == 0x34AD);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AE) == 0x34AE);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34AF) == 0x34AF);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B0) == 0x34B0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B1) == 0x34B1);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B3) == 0x34B3);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34B4) == 0x34B4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34BC) == 0x34BC);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_352C) == 0x352C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3540) == 0x3540);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3544) == 0x3544);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3548) == 0x3548);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_354C) == 0x354C);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3550) == 0x3550);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3554) == 0x3554);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_3558) == 0x3558);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_355C) == 0x355C);
+
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0214) == 0x214);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A4) == 0x35A4);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A8) == 0x35A8);

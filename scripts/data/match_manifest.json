@@ -97650,5 +97650,14 @@
   "name": "?FUN_00686890@@YIX_N@Z",
   "status": "partial",
   "pct": 52.0
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x68B940",
+  "sym": "?FUN_0068B940@ScenarioClass@@QAEXPAUObj_004A1D30@@@Z",
+  "len": "0x368",
+  "name": "ScenarioClass::FUN_0068B940",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

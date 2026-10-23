@@ -24,6 +24,7 @@
 
 #include "../_layout/mp_score_runner.h"
 #include "scenario_class_methods.h"
+#include "../_layout/obj_004a1d30.h"
 #include "vtable_seating_ctor_family_methods.h"
 #include "vector_class_operations.h"
 #include "../_layout/ini_class.h"
@@ -1464,7 +1465,7 @@ void __fastcall FUN_00685670()
     FUN_005BF260(ScenarioInstance->unknown_143C, -1, 1, 1, 1);
     if (!(DAT_00A8D5F8 & 2)) {
         DAT_0087F770->DoSomething();
-        if (!ScenarioInstance->unknown_34AB[3]) {
+        if (!ScenarioInstance->unknown_34AE) {
             Obj_006C8E70 score;
             score.FUN_006C8E70()->FUN_006C8E80();
         }
@@ -1472,12 +1473,12 @@ void __fastcall FUN_00685670()
             FUN_005BF260(ScenarioInstance->unknown_1448, -1, 1, 1, 1);
         if (ScenarioInstance->unknown_144C != -1)
             FUN_005BF260(ScenarioInstance->unknown_144C, -1, 1, 1, 1);
-        if (!CopyProtection::CheckProtectedData() || ScenarioInstance->unknown_34AB[4]) {
+        if (!CopyProtection::CheckProtectedData() || ScenarioInstance->unknown_34AF) {
             DAT_00A8E9A0 = false;
             WWMouseClassInstance->vf_4();
             return;
         }
-        if (ScenarioInstance->unknown_34AB[1]) {
+        if (ScenarioInstance->unknown_34AC) {
             if (ScenarioInstance->unknown_34CC != -1)
                 FUN_005BF260(CampaignArray.Items[ScenarioInstance->unknown_34CC]->FinalMovie, -1, 1, 1, 1);
             FUN_004C3E30();
@@ -1486,7 +1487,7 @@ void __fastcall FUN_00685670()
             return;
         }
         if (!(DAT_00A8B23C && (Session_00A8B238.GameMode == 3 || Session_00A8B238.GameMode == 4) && DAT_00A8B23C->vf_2())) {
-            if (!ScenarioInstance->unknown_34AB[5]) {
+            if (!ScenarioInstance->unknown_34B0) {
                 WWMouseClassInstance->vf_4();
                 FUN_005ADD10(ScenarioInstance);
                 WWMouseClassInstance->vf_3();
@@ -2457,6 +2458,61 @@ int FUN_0068BCB0(Obj_0068BCB0* self)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x68B940
+void ScenarioClass::FUN_0068B940(Obj_004A1D30* crc)
+{
+    crc->FUN_004A1DB0(unknown_13BA);
+    crc->FUN_004A1D50(unknown_1434);
+    crc->FUN_004A1D50(unknown_1438);
+    crc->FUN_004A1D50(unknown_143C);
+    crc->FUN_004A1D50(unknown_1440);
+    crc->FUN_004A1D50(unknown_1444);
+    crc->FUN_004A1D50(unknown_1448);
+    crc->FUN_004A1D50(unknown_144C);
+    crc->FUN_004A1D50(unknown_1C74);
+    crc->FUN_004A1D50(unknown_1C84);
+    crc->FUN_004A1D50(unknown_1C70);
+    crc->FUN_004A1D90(unknown_1C78);
+    crc->FUN_004A1CA0(unknown_34BC);
+    crc->FUN_004A1CA0(unknown_34AD);
+    crc->FUN_004A1D50(unknown_1C80 / 100);
+    crc->FUN_004A1D50(unknown_34A0);
+    crc->FUN_004A1CA0(unknown_34AC);
+    crc->FUN_004A1D50(unknown_34CC);
+    crc->FUN_004A1CA0(unknown_34AE);
+    crc->FUN_004A1CA0(unknown_34AF);
+    crc->FUN_004A1CA0(unknown_34B0);
+    crc->FUN_004A1CA0(unknown_34B2);
+    crc->FUN_004A1CA0(unknown_34B4);
+    crc->FUN_004A1CA0(unknown_34B1);
+    crc->FUN_004A1D50(unknown_1C84);
+    crc->FUN_004A1D50(unknown_34D0);
+    crc->FUN_004A1D50(Timer_11E8.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_1218.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_1224.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_1230.GetTimeLeft());
+    crc->FUN_004A1D50(unknown_123C.GetTimeLeft());
+    int elapsed = unknown_0614.unknown_08;
+    if (unknown_0614.unknown_00 != -1)
+        elapsed += unknown_0614.unknown_04.GetTime() - unknown_0614.unknown_00;
+    crc->FUN_004A1D50(elapsed);
+    crc->FUN_004A1D50(Difficulty);
+    crc->FUN_004A1D50(unknown_0610);
+    crc->FUN_004A1D50(unknown_1258);
+    crc->FUN_004A1D50(unknown_3540);
+    crc->FUN_004A1D50(unknown_3544);
+    crc->FUN_004A1CA0(unknown_34A4);
+    crc->FUN_004A1D50(unknown_3548);
+    crc->FUN_004A1D50(unknown_354C);
+    crc->FUN_004A1D50(unknown_3550);
+    crc->FUN_004A1D50(unknown_3554);
+    crc->FUN_004A1D50(unknown_3558);
+    crc->FUN_004A1D50(unknown_355C);
+    crc->FUN_004A1D50(unknown_3528);
+    crc->FUN_004A1D50(unknown_352C);
+    crc->FUN_004A1D50(unknown_3530);
+}
+
 // FUNCTION: GAMEMD 0x68BCC0  ScenarioClass::GetWaypointCoords (__thiscall, ret 0x8)
 // Returns the 4-byte CellStruct by value, so retail's RET 0x8 covers the hidden
 // return-buffer pointer plus the index. No bounds check — callers are expected
