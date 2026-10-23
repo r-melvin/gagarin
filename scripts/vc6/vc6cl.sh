@@ -81,4 +81,7 @@ else
   FLAGS="$DEFAULT_FLAGS"
 fi
 
-exec wine "$VC98/Bin/CL.EXE" $FLAGS "$@"
+# VC6_EXTRA_FLAGS is appended to whichever set was chosen (default, per-TU or
+# VC6_FLAGS). It exists for whole-tree flag experiments such as the /ML vs /MT
+# check (scripts/vc6/crt_flag_check.py); it is never set in a normal build.
+exec wine "$VC98/Bin/CL.EXE" $FLAGS ${VC6_EXTRA_FLAGS:-} "$@"

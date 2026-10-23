@@ -6,7 +6,7 @@ libraries and report what is still missing.
 
 Links the objects indexed by build_project.py with the VC6 LINK.EXE, the
 toolchain LIBCMT/COMSUPP/LIBCPMT and import libraries, and a binkw32.lib built
-from scripts/vc6/binkw32.def. /FORCE lets the link complete with unresolved
+from scripts/vc6/binkw32.def by implib.py. /FORCE lets the link complete with unresolved
 externals and duplicate definitions; the output image is a diagnostic
 by-product and is NOT an engine build (no layout, no retail addresses).
 
@@ -29,6 +29,7 @@ import struct
 import subprocess
 import sys
 
+import implib
 from verify_vtable import parse_coff, VerifyError
 
 
@@ -137,10 +138,7 @@ def classify(sym, text, library_names, objects=()):
 
 def build_bink_lib(vc6, env, out):
     lib = out / "binkw32.lib"
-    subprocess.run(["wine", str(vc6 / "VC98/Bin/LIB.EXE"), "/NOLOGO",
-                    "/DEF:" + wine_path(ROOT / "scripts/vc6/binkw32.def"), "/MACHINE:IX86",
-                    "/OUT:" + wine_path(lib)], env=env, check=True,
-                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    implib.build_from_def(ROOT / "scripts/vc6/binkw32.def", lib)
     return lib
 
 

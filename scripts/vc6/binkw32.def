@@ -1,24 +1,23 @@
 ; SPDX-License-Identifier: GPL-3.0-or-later
 ; Provenance: own-binary-via-Ghidra (retail import directory, binkw32.dll block at IAT 0x7E1590)
 ; Import names and __stdcall argument sizes of the 13 binkw32.dll imports. This
-; is an interface description only; no Bink SDK material. link_diag.py builds
-; binkw32.lib from it with the toolchain LIB /DEF.
-; Known delta: LIB /DEF records these with the "no prefix" import-name type, so
-; the import name comes out as "BinkOpen@8" where retail imports "_BinkOpen@8".
-; Harmless for the diagnostic link; an address-faithful link needs an import
-; library with exact names (see the M1 design).
+; is an interface description only; no Bink SDK material. Each name is both the
+; linker symbol (the __stdcall decoration of BinkOpen etc.) and the exact import
+; name retail uses; scripts/vc6/implib.py builds binkw32.lib from this file with
+; the plain NAME import type. (Do not feed it to LIB /DEF: LIB records the
+; "no prefix" type and would import "BinkOpen@8".)
 LIBRARY binkw32
 EXPORTS
-  BinkClose@4
-  BinkCopyToBuffer@28
-  BinkDDSurfaceType@4
-  BinkDoFrame@4
-  BinkGetError@0
-  BinkGoto@12
-  BinkNextFrame@4
-  BinkOpen@8
-  BinkOpenDirectSound@4
-  BinkPause@8
-  BinkSetSoundSystem@8
-  BinkSetVolume@8
-  BinkWait@4
+  _BinkClose@4
+  _BinkCopyToBuffer@28
+  _BinkDDSurfaceType@4
+  _BinkDoFrame@4
+  _BinkGetError@0
+  _BinkGoto@12
+  _BinkNextFrame@4
+  _BinkOpen@8
+  _BinkOpenDirectSound@4
+  _BinkPause@8
+  _BinkSetSoundSystem@8
+  _BinkSetVolume@8
+  _BinkWait@4
