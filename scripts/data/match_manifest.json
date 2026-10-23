@@ -98083,5 +98083,32 @@
   "name": "?FUN_006523A0@@YIXXZ",
   "status": "partial",
   "pct": 34.5
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x697AD0",
+  "sym": "?FUN_00697AD0@SessionClass@@QAEXXZ",
+  "len": "0x85",
+  "name": "SessionClass::FUN_00697AD0",
+  "status": "partial",
+  "pct": 84.3
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69AE70",
+  "sym": "?FUN_0069AE70@SessionClass@@QAE_NXZ",
+  "len": "0x1a",
+  "name": "SessionClass::FUN_0069AE70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69B670",
+  "sym": "?FUN_0069B670@SessionClass@@QAEHXZ",
+  "len": "0x15",
+  "name": "SessionClass::FUN_0069B670",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -34,7 +34,9 @@ struct SessionClass
     char unknown_08[0x64 - 8];
     int unknown_64[8]; // globalA8B29C, 0x69B9D6..0x69BAA0
     int unknown_84[8]; // 0x69BA5E..0x69BA74, eight DWORDs
-    char unknown_A4[0x15C - 0xA4];
+    char unknown_A4[0x144 - 0xA4];
+    unsigned long unknown_144; // native 0x697B41 stores the mixed DWORD
+    char unknown_148[0x15C - 0x148];
     int unknown_15C; // globalA8B394, 0x69B98E
     int unknown_160;
     char unknown_164[0x174 - 0x164];
@@ -80,10 +82,16 @@ struct SessionClass
 
     // Declaration: GAMEMD 0x69BAB0 (decl; reloc)
     void Resume();
+    // Declaration: GAMEMD 0x697AD0 -- ECX Session, no stack arguments.
+    void FUN_00697AD0();
+    // Declaration: GAMEMD 0x699980 -- Session receiver at 0x697AD7.
+    void FUN_00699980();
     // Declaration: GAMEMD 0x697B70 -- EAX result, ECX receiver, RET.
     int FUN_00697B70();
     // Declaration: GAMEMD 0x69B600 -- boolAL, one int argument, RET4.
     bool FUN_0069B600(int value);
+    // Declaration: GAMEMD 0x69B670 -- EAX result, no stack arguments.
+    int FUN_0069B670();
     int FUN_0069B690();
     // Declaration: GAMEMD 0x69B760 -- ECX Session, value and bool stackargs, RET8.
     void FUN_0069B760(int value, bool randomize);
@@ -95,6 +103,8 @@ struct SessionClass
     unsigned short FUN_0069BC20(int id);
     // Declaration: GAMEMD 0x697E70 (decl; reloc) -- AL result, stack pointer, RET4.
     bool FUN_00697E70(void* house);
+    // Declaration: GAMEMD 0x69AE70 -- receiver-relative string at +0x6A8.
+    bool FUN_0069AE70();
     // Declaration: GAMEMD 0x69AE90 (decl; reloc) -- progress argument, RET4.
     void FUN_0069AE90(int delay);
     // Declaration: GAMEMD 0x69BC60 (decl; reloc) -- slot index argument, EAX result, RET4.
@@ -161,4 +171,11 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2FF8) == 0x2FF8);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3018) == 0x3018);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_301C) == 0x301C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2E28) == 0x120);
+// 0x69AE70 adds 0x6A8 to its receiver; string capacity remains unknown.
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) == 0x300);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) + 0x3A8 == 0x6A8);
+
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_144) == 0x144);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_144) == 4);
+
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

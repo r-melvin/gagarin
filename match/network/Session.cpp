@@ -143,6 +143,8 @@ GG_STATIC_ASSERT(offsetof(ShaEngineView_0069D8C0, Partial) == 0x34);
 #include "../core/trivial_tu207_methods.h"
 
 #include <windows.h>
+#include <mmsystem.h>
+#include <stdlib.h>
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -986,6 +988,35 @@ int Obj_00696F10::FUN_00696F70() const
     return unknown_63;
 }
 
+// Declaration: GAMEMD 0x48DD50 -- no arguments, EAX result.
+unsigned long __fastcall FUN_0048DD50();
+// Declaration: GAMEMD 0x64DE80 -- accumulator in ECX, value in EDX.
+void __fastcall FUN_0064DE80(unsigned long* accumulator, unsigned long value);
+// Declaration: GAMEMD 0x4068E0 -- variadic cdecl logging entry.
+extern "C" int __cdecl FUN_004068E0(const char*, ...);
+// LIBRARY: GAMEMD 0x007CBC11
+// getenv
+
+// REA Evidence: ev_a1006eb97fea3a6f2a5255ae22ee61b5f974f50509498da97e6176ca3dc2c67a
+// FUNCTION: GAMEMD 0x697AD0
+void SessionClass::FUN_00697AD0()
+{
+    FUN_00699980();
+    unsigned long value = timeGetTime();
+    FUN_0064DE80(&value, FUN_0048DD50());
+    const char* path = getenv(
+        // STRING: GAMEMD 0x0083EF00
+        "PATH");
+    if (path) {
+        for (unsigned int index = 0; index < strlen(path); ++index)
+            FUN_0064DE80(&value, path[index]);
+    }
+    unknown_144 = value;
+    FUN_004068E0(
+        // STRING: GAMEMD 0x0083EED4
+        "Session one time init. UniqueID is %08x\n", value);
+}
+
 // FUNCTION: GAMEMD 0x697B60
 // Empty function.
 void __cdecl FUN_00697B60()
@@ -1010,6 +1041,15 @@ int Obj_0069ACC0::FUN_0069ACC0() const
 void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 {
     unknown_17C = a1;
+}
+
+// REA Evidence: ev_11ce794979f0e2980076f87c1eeffe96d530e6c29faed93d9a77c5cc87f93a03
+// FUNCTION: GAMEMD 0x69AE70
+bool SessionClass::FUN_0069AE70()
+{
+    return _stricmp(&unknown_300[0x3A8],
+        // STRING: GAMEMD 0x0082BC30
+        "RandMap.Sed") == 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -1057,8 +1097,6 @@ void __stdcall FUN_0069B8B0(int a1, int a2)
 
 #include "multiplayer_game_mode.h"
 #include "transport/conn_types.h"
-// Declaration: GAMEMD 0x4068E0
-extern "C" int __cdecl FUN_004068E0(const char*, ...);
 // GLOBAL: GAMEMD 0x83F710 -- external string address
 extern const char STR_0083F710[];
 // GLOBAL: GAMEMD 0x83F6E8 -- external string address
@@ -1083,6 +1121,13 @@ bool SessionClass::FUN_0069B600(int value)
             return true;
     }
     return false;
+}
+
+// REA Evidence: ev_767d44addc745194b26db1d3bd971e00440ac71dcacab4ecb0cfc03e7770823f
+// FUNCTION: GAMEMD 0x69B670
+int SessionClass::FUN_0069B670()
+{
+    return DAT_00A8B230->unknown_0218.RandomRanged(0, 9);
 }
 
 // FUNCTION: GAMEMD 0x69B690
