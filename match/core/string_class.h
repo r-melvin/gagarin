@@ -27,6 +27,14 @@ public:
     Wstring();
     // Declaration: GAMEMD 0x7B4630
     Wstring(const char* text);
+    // Declaration: GAMEMD 0x7B54B0
+    int Length() const;
+    // Declaration: GAMEMD 0x7B5F10
+    int FUN_007B5F10(int cursor, const char* delimiters, Wstring* token);
+    // Declaration: GAMEMD 0x7B51D0
+    void FUN_007B51D0(const Wstring* trim);
+    // Declaration: GAMEMD 0x7B5230
+    void FUN_007B5230(const Wstring* trim);
     // Declaration: GAMEMD 0x7B4690
     Wstring(const Wstring& other);
     // Declaration: GAMEMD 0x7B46F0

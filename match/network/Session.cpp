@@ -1248,6 +1248,61 @@ void Obj_0069ADE0::FUN_0069ADE0(unsigned char a1)
 // REA Evidence: ev_11ce794979f0e2980076f87c1eeffe96d530e6c29faed93d9a77c5cc87f93a03
 #include "../platform/ccfile_class.h"
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
+extern const char STR_00830A14[]; // STRING: GAMEMD 0x830A14 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x69A980
+MultiMission::MultiMission(const char* filename, const wchar_t* description,
+                           const char* digest, bool flag, const char* modeList,
+                           int value180, int value184)
+    : unknown_188(), unknown_1A4()
+{
+    if (filename) {
+        strncpy(unknown_058, filename, 0x104);
+        unknown_058[0x103] = 0;
+    } else {
+        strcpy(unknown_058, STR_0083F658);
+    }
+    if (description) {
+        wcsncpy(unknown_000, description, 0x2C);
+        unknown_000[0x2B] = 0;
+    } else {
+        wcscpy(unknown_000, FUN_00734E60(STR_0083F4B8, 0, STR_0083EEB8, 0xB1D));
+    }
+    if (digest) {
+        strncpy(unknown_15C, digest, 0x20);
+        unknown_15C[0x1F] = 0;
+    } else {
+        strcpy(unknown_15C, STR_0083F3E4);
+    }
+    unknown_180 = value180;
+    unknown_17C = flag;
+    unknown_184 = value184;
+    unknown_188.Clear();
+    unknown_188.AddItem(static_cast<DiskID>(-2));
+
+    if (modeList) {
+        Wstring list(modeList);
+        if (list.Length() != 0) {
+            Wstring token;
+            int cursor = list.FUN_007B5F10(0, STR_00817F70, &token);
+            while (cursor != -1) {
+                // Two separate natural RAII lifetimes. Native destroys left
+                // trim argument BEFORE constructing the right trim argument.
+                {
+                    Wstring leftTrim(STR_00830A14);
+                    token.FUN_007B51D0(&leftTrim);
+                }
+                {
+                    Wstring rightTrim(STR_00830A14);
+                    token.FUN_007B5230(&rightTrim);
+                }
+                unknown_1A4.AddItem(token);
+                cursor = list.FUN_007B5F10(cursor, STR_00817F70, &token);
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x69AC30
 bool MultiMission::FUN_0069AC30(int value)
 {

@@ -6,7 +6,7 @@
 // the last element. Constructor0x69A980 seats TypeList<DiskID> at188
 // and DynamicVectorClass<Wstring> at1A4. Caller5E865D allocates1BC.
 // TypeList tail+18 is storage, not a new field meaning or initialization claim.
-// No constructor body is claimed here.
+// Constructor0x69A980 uses the two canonical vector members and owning strings.
 #ifndef GG_MATCH_NETWORK_SESSION_ENTRY_H
 #define GG_MATCH_NETWORK_SESSION_ENTRY_H
 #include <stddef.h>
@@ -27,6 +27,10 @@ public:
     int unknown_184;
     TypeList<DiskID> unknown_188;
     DynamicVectorClass<Wstring> unknown_1A4;
+    // Declaration: GAMEMD 0x69A980
+    MultiMission(const char* filename, const wchar_t* description,
+                 const char* digest, bool flag, const char* modeList,
+                 int value180, int value184);
     // Declaration at 0x69AC30
     bool FUN_0069AC30(int value);
     // Declaration at 0x69ACD0

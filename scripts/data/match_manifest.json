@@ -98317,5 +98317,14 @@
   "name": "Wstring narrow constructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69A980",
+  "sym": "??0MultiMission@@QAE@PBDPBG0_N0HH@Z",
+  "len": "0x2a9",
+  "name": "MultiMission constructor",
+  "status": "partial",
+  "pct": 5.9
  }
 ]
