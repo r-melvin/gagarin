@@ -98146,5 +98146,23 @@
   "name": "Entry_00A8B8C8::FUN_0069ADF0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x698F90",
+  "sym": "?FUN_00698F90@SessionProfile_00697F10@@QAEXPAVCCINIClass@@PBD@Z",
+  "len": "0x10a",
+  "name": "SessionProfile_00697F10::FUN_00698F90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x699450",
+  "sym": "?FUN_00699450@SessionClass@@QAEXXZ",
+  "len": "0x9f",
+  "name": "SessionClass::FUN_00699450",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

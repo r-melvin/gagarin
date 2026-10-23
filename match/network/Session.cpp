@@ -63,6 +63,53 @@
 // Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
 // The element copy ctor 0x7B4690 (fastcall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
+#include "../_layout/session_class.h"
+#include "../platform/ccini_class_methods.h"
+#include "../platform/ccfile_class.h"
+#include <stdio.h>
+// GLOBAL: GAMEMD 0x83EFD0
+extern const char STR_0083EFD0[];
+// GLOBAL: GAMEMD 0x83EFC4
+extern const char STR_0083EFC4[];
+// GLOBAL: GAMEMD 0x8332E8
+extern const char STR_008332E8[];
+// GLOBAL: GAMEMD 0x824E38
+extern const char STR_00824E38[];
+// GLOBAL: GAMEMD 0x83D06C
+extern const char STR_0083D06C[];
+// GLOBAL: GAMEMD 0x83CFA8
+extern const char STR_0083CFA8[];
+// GLOBAL: GAMEMD 0x83CF94
+extern const char STR_0083CF94[];
+// GLOBAL: GAMEMD 0x83CF84
+extern const char STR_0083CF84[];
+// GLOBAL: GAMEMD 0x83EFB8
+extern const char STR_0083EFB8[];
+// GLOBAL: GAMEMD 0x83EFA8
+extern const char STR_0083EFA8[];
+// GLOBAL: GAMEMD 0x83EF9C
+extern const char STR_0083EF9C[];
+
+// GLOBAL: GAMEMD 0x8870C0 (declaration; existing owner)
+extern CCINIClass DAT_008870C0;
+// STRING declarations by retail address; no new literal storage in this draft.
+// GLOBAL: GAMEMD 0x826444
+extern const char STR_00826444[]; // RA2MD.INI, raw-string binding pending
+// GLOBAL: GAMEMD 0x82642C
+extern const char STR_0082642C[]; // MultiPlayer
+// GLOBAL: GAMEMD 0x83F13C
+extern const char STR_0083F13C[]; // WOLTaunts
+// GLOBAL: GAMEMD 0x83F130
+extern const char STR_0083F130[]; // LANTaunts
+// GLOBAL: GAMEMD 0x83F120
+extern const char STR_0083F120[]; // WOLScrollText
+// GLOBAL: GAMEMD 0x83F110
+extern const char STR_0083F110[]; // LANScrollText
+
+// Native byte loads at 0x699464/47F/49A/4B5 pin these four accesses.
+GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
+
+
 #include "session_entry.h"
 #include <wchar.h>
 #include <string.h>
@@ -871,6 +918,38 @@ void SessionProfile_00697F10::FUN_00697F10(CCINIClass* ini, const char* section,
         unknown_1C[slot][1] = second;
         unknown_1C[slot][2] = third;
     }
+}
+
+// FUNCTION: GAMEMD 0x698F90
+void SessionProfile_00697F10::FUN_00698F90(CCINIClass* ini, const char* section)
+{
+    ini->WriteInteger(section, STR_0083EFD0, unknown_00, 0);
+    ini->WriteInteger(section, STR_0083EFC4, unknown_04, 0);
+    ini->WriteInteger(section, STR_008332E8, unknown_08, 0);
+    ini->WriteInteger(section, STR_00824E38, unknown_0C, 0);
+    ini->WriteInteger(section, STR_0083D06C, unknown_10, 0);
+    ini->WriteBool(section, STR_0083CFA8, unknown_14);
+    ini->WriteBool(section, STR_0083CF94, unknown_15);
+    ini->WriteBool(section, STR_0083CF84, unknown_16);
+    ini->WriteBool(section, STR_0083EFB8, unknown_17);
+    ini->WriteBool(section, STR_0083EFA8, unknown_18);
+    char key[16];
+    for (int slot = 1; slot < 8; ++slot) {
+        sprintf(key, STR_0083EF9C, slot);
+        ini->FUN_00477510(section, key, unknown_1C[slot][0],
+                         unknown_1C[slot][1], unknown_1C[slot][2]);
+    }
+}
+
+// FUNCTION: GAMEMD 0x699450
+void SessionClass::FUN_00699450()
+{
+    RawFileClass file(STR_00826444);
+    DAT_008870C0.WriteBool(STR_0082642C, STR_0083F13C, unknown_1ED9);
+    DAT_008870C0.WriteBool(STR_0082642C, STR_0083F130, unknown_1ED8);
+    DAT_008870C0.WriteBool(STR_0082642C, STR_0083F120, unknown_1FC1);
+    DAT_008870C0.WriteBool(STR_0082642C, STR_0083F110, unknown_1FC0);
+    DAT_008870C0.WriteCCFile(&file, false);
 }
 
 // FUNCTION: GAMEMD 0x69A310

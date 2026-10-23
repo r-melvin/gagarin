@@ -24,6 +24,8 @@ struct SessionProfile_00697F10
     int unknown_1C[8][3]; // nativeusesindices1..7; slot0 remains unobserved
     // Declaration: GAMEMD 0x697F10 -- ECX receiver, fourargs, RET10hex.
     void FUN_00697F10(CCINIClass* ini, const char* section, int fallback, int firstFallback);
+    // Declaration: GAMEMD 0x698F90 -- ECX profile, section and INI, RET8.
+    void FUN_00698F90(CCINIClass* ini, const char* section);
 };
 
 
@@ -49,7 +51,15 @@ struct SessionClass
     SessionProfile_00697F10 unknown_18C;
     SessionProfile_00697F10 unknown_208;
     SessionProfile_00697F10 unknown_284;
-    char unknown_300[0x283C - 0x300];
+    char unknown_300[0x1ED8 - 0x300];
+    // ReadBool results stored by 0x698387/3B8/3C3/3E4; constructor
+    // 0x6974A3/4AA/4B1/4BA initializes each to true. Written by 0x699450.
+    bool unknown_1ED8;
+    bool unknown_1ED9;
+    char unknown_1EDA[0x1FC0 - 0x1EDA];
+    bool unknown_1FC0;
+    bool unknown_1FC1;
+    char unknown_1FC2[0x283C - 0x1FC2];
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
     DynamicVectorClass<NetPlayerClass*> unknown_283C;
     char unknown_2854[4];
@@ -86,6 +96,8 @@ struct SessionClass
     void FUN_00697AD0();
     // Declaration: GAMEMD 0x699980 -- Session receiver at 0x697AD7.
     void FUN_00699980();
+    // Declaration: GAMEMD 0x699450 -- ECX Session, no stack arguments.
+    void FUN_00699450();
     // Declaration: GAMEMD 0x697B70 -- EAX result, ECX receiver, RET.
     int FUN_00697B70();
     // Declaration: GAMEMD 0x69B600 -- boolAL, one int argument, RET4.
@@ -178,4 +190,12 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_300) + 0x3A8 == 0x6A8);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_144) == 0x144);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_144) == 4);
 
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1ED8) == 0x1ED8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1ED8) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1ED9) == 0x1ED9);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1ED9) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1FC0) == 0x1FC0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1FC0) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1FC1) == 0x1FC1);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1FC1) == 1);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H
