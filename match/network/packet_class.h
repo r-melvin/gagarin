@@ -41,4 +41,23 @@ GG_STATIC_ASSERT(offsetof(FieldClass, Next)     == 0x0C);
 GG_STATIC_ASSERT(sizeof(FieldClass)             == 0x10);
 #endif
 
+// Winsock ntohs, reached through the thunk at 0x7C8974.
+extern "C" unsigned short __stdcall ntohs(unsigned short netshort);
+
+// PacketClass -- a received packet: its total size and ID in host order and
+// the singly linked list of its fields, newest first. Offsets from the parse
+// constructor at 0x625AF0 (`MOV [EDI],AX`, `MOV [EDI+2],AX`, `MOV [EDI+4],0`).
+class PacketClass
+{
+public:
+    PacketClass(char* pBuffer);   // GAMEMD 0x625AF0 __thiscall
+
+    unsigned short Size;          // +0x00
+    unsigned short ID;            // +0x02
+    FieldClass*    Head;          // +0x04
+};
+
+GG_STATIC_ASSERT(offsetof(PacketClass, ID)   == 0x02);
+GG_STATIC_ASSERT(offsetof(PacketClass, Head) == 0x04);
+
 #endif  // GG_MATCH_NETWORK_PACKET_CLASS_H

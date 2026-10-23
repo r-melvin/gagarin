@@ -12,6 +12,11 @@
 
 #include "../renderer/bit_font.h"
 
+struct Obj_00434CD0;
+
+// GLOBAL: GAMEMD 0x89C4B8 -- the text printer every caller of 0x434CD0 uses.
+extern Obj_00434CD0* DAT_0089C4B8;
+
 struct Obj_00434CD0
 {
     // FUNCTION: GAMEMD 0x434CD0
@@ -25,5 +30,6 @@ struct Obj_00434CD0
                       int x, int y, int maxWidth, int maxHeight, int alignment,
                       int fadeStart, int fadeLength);
 };
+
 
 #endif  // GG_MATCH_UI_BIT_FONT_PRINT_METHODS_H

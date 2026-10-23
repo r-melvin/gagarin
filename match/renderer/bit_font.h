@@ -41,9 +41,25 @@ GG_STATIC_ASSERT(offsetof(BitFontInternalData, Bitmaps)     == 0x1C);
 //   +0x0C pGraphBuffer   (UnLock MOV [ESI+0xC], 0)
 //   +0x10 PitchDiv2      (UnLock MOV [ESI+0x10], 0)
 // ---------------------------------------------------------------------------
+// The clip rectangle 0x433CA0 copies into +0x30..+0x3C: edges, not extents
+// (0x621040 takes the width as right - left).
+struct BitFontBounds
+{
+    int Left;     // +0x00
+    int Top;      // +0x04
+    int Right;    // +0x08
+    int Bottom;   // +0x0C
+};
+GG_STATIC_ASSERT(sizeof(BitFontBounds) == 0x10);
+
 class BitFont
 {
 public:
+    short         FUN_00433C70(short color);          // GAMEMD 0x433C70: swaps +0x24, returns the old
+    unsigned char FUN_00433C90(unsigned char value);  // GAMEMD 0x433C90: swaps +0x41, returns the old
+    void          FUN_00433CA0(const BitFontBounds* bounds);  // GAMEMD 0x433CA0: +0x30..+0x3C, 0 clears
+    void          FUN_00433CF0(const unsigned short* text, int* width, int* height,
+                               int wrapWidth);         // GAMEMD 0x433CF0: measure text
     unsigned char* GetCharacterBitmap(wchar_t wch);  // GAMEMD 0x4346C0
     int            UnLock(Surface* pSurface);        // GAMEMD 0x434990
 

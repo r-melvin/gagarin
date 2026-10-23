@@ -93,11 +93,37 @@ struct VecB_00626C60 : VecBaseB_00626C60
 GG_STATIC_ASSERT(offsetof(VecB_00626C60, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(VecB_00626C60) == 0x18);
 
+// The palette name key: 0x100 bytes of upper-cased text.
+struct PaletteKey_00626C60
+{
+    char Name[0x100];                 // +0x0000
+
+    // FUNCTION: GAMEMD 0x4F4C30 (decl; reloc) -- copy the text in and upper-case it.
+    PaletteKey_00626C60* FUN_004F4C30(const char* text);
+    // FUNCTION: GAMEMD 0x4F4CE0 (decl; reloc) -- true when both keys hold the same text.
+    bool FUN_004F4CE0(const PaletteKey_00626C60* other);
+};
+GG_STATIC_ASSERT(sizeof(PaletteKey_00626C60) == 0x100);
+
+struct Obj_00626250;
+struct Obj_0068C8D0;
+template<class T> class DynamicVectorClass;
+
+// One table entry: the key and the palette it names (0x104 bytes; 0x627A10
+// strides the bucket with `SUB EBX,0x104` and takes the value at +0x100).
+struct PaletteEntry_00626C60
+{
+    PaletteKey_00626C60 Key;          // +0x0000
+    Obj_00626250*       Value;        // +0x0100
+};
+GG_STATIC_ASSERT(offsetof(PaletteEntry_00626C60, Value) == 0x100);
+GG_STATIC_ASSERT(sizeof(PaletteEntry_00626C60) == 0x104);
+
 // One hash bucket: a DynamicVectorClass of entries (0x18 bytes).
 struct Bucket_00626C60
 {
     void* Vtbl;                       // +0x0000
-    void* Entries;                    // +0x0004
+    PaletteEntry_00626C60* Entries;   // +0x0004
     int   Capacity;                   // +0x0008
     char  IsInitialized;              // +0x000C
     char  IsAllocated;                // +0x000D
@@ -122,6 +148,23 @@ struct Table_00626C60
     int              At_0C;           // +0x000C
 
     Table_00626C60(HashFn_00626C60 hash, int numBuckets) throw();
+
+    // The lookup 0x627A10 expands inline: hash to a bucket, then scan its
+    // entries from the last one down. Answers the value slot, or null.
+    Obj_00626250** Find(const PaletteKey_00626C60& key)
+    {
+        Bucket_00626C60& bucket = Buckets[Hash((void*)&key) % NumBuckets];
+
+        for (int i = bucket.Count - 1; i >= 0; i--)
+        {
+            PaletteEntry_00626C60& entry = bucket.Entries[i];
+
+            if (entry.Key.FUN_004F4CE0(&key))
+                return &entry.Value;
+        }
+
+        return 0;
+    }
 };
 GG_STATIC_ASSERT(offsetof(Table_00626C60, Hash) == 0x04);
 GG_STATIC_ASSERT(offsetof(Table_00626C60, NumBuckets) == 0x08);
@@ -139,6 +182,10 @@ struct Owner_00626C60
     Owner_00626C60() throw();
     // FUNCTION: GAMEMD 0x6272A0 (decl; reloc) -- the out-of-line destructor.
     ~Owner_00626C60();
+    // FUNCTION: GAMEMD 0x627590 (decl; reloc) -- builds the scheme list for a palette name.
+    DynamicVectorClass<Obj_0068C8D0*>* FUN_00627590(const char* pszName);
+    // FUNCTION: GAMEMD 0x627A10
+    void FUN_00627A10(const char* pszName);
 };
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, VecA) == 0x4);
 GG_STATIC_ASSERT(offsetof(Owner_00626C60, Table) == 0xC);

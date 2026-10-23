@@ -68,7 +68,8 @@ struct MapValue_00602B90
     int  FieldDC;         // +0x00DC
     int  FieldE0;         // +0x00E0
     int  FieldE4;         // +0x00E4
-    char _pad0E8[0x200 - 0xE8];
+    unsigned FieldE8;     // +0x00E8  owner-draw item state (0x6213A0)
+    char _pad0EC[0x200 - 0xEC];
 };
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field10) == 0x10);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, Field14) == 0x14);
@@ -89,6 +90,7 @@ GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldD8) == 0xD8);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldDC) == 0xDC);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldE0) == 0xE0);
 GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldE4) == 0xE4);
+GG_STATIC_ASSERT(offsetof(MapValue_00602B90, FieldE8) == 0xE8);
 GG_STATIC_ASSERT(sizeof(MapValue_00602B90) == 0x200);
 
 // One hash-table node: key, value, then the chain pointer at +0x204.

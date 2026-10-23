@@ -95541,7 +95541,8 @@
   "len": "0x31",
   "name": "?FUN_006107A0@@YIXXZ",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100.0,
+  "note": "Tooltip globals refined to rectangle, surface pointer and text storage; relocation symbols/addends change while retail targets and raw instructions remain exact."
  },
  {
   "tu": "match/ui/ownrdraw.cpp",
@@ -97657,6 +97658,60 @@
   "sym": "?FUN_0068B940@ScenarioClass@@QAEXPAUObj_004A1D30@@@Z",
   "len": "0x368",
   "name": "ScenarioClass::FUN_0068B940",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x60AF50",
+  "sym": "?FUN_0060AF50@@YIXPAXPAURectangleStruct@@@Z",
+  "len": "0xad",
+  "name": "?FUN_0060AF50@@YIXPAXPAURectangleStruct@@@Z",
+  "status": "partial",
+  "pct": 47.9
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x610810",
+  "sym": "?FUN_00610810@@YIXPAURectangleStruct@@PBGH@Z",
+  "len": "0x132",
+  "name": "?FUN_00610810@@YIXPAURectangleStruct@@PBGH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x621040",
+  "sym": "?FUN_00621040@@YIHPAVSurface@@PBGPAUBitFontBounds@@PAVBitFont@@KHHHHH@Z",
+  "len": "0x110",
+  "name": "?FUN_00621040@@YIHPAVSurface@@PBGPAUBitFontBounds@@PAVBitFont@@KHHHHH@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x6213A0",
+  "sym": "?FUN_006213A0@@YIXPAUDrawItem_006213A0@@@Z",
+  "len": "0x10a",
+  "name": "?FUN_006213A0@@YIXPAUDrawItem_006213A0@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x625AF0",
+  "sym": "??0PacketClass@@QAE@PAD@Z",
+  "len": "0x10e",
+  "name": "??0PacketClass@@QAE@PAD@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/ownrdraw.cpp",
+  "addr": "0x627A10",
+  "sym": "?FUN_00627A10@Owner_00626C60@@QAEXPBD@Z",
+  "len": "0x110",
+  "name": "Owner_00626C60::FUN_00627A10",
   "status": "matched",
   "pct": 100.0
  }

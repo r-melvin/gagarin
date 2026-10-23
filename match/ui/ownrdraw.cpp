@@ -644,6 +644,8 @@ extern double DAT_00AC48A0;
 // C4661: the members this TU does not define stay declarations on purpose.
 #pragma warning(disable : 4661)
 #include "ownrdraw.h"
+#include "../network/packet_class.h"
+#include "../ui/bit_font_print_methods.h"
 #include "../_layout/rules_class.h"
 #include "../core/hash_table_rehash_sweep.h"
 #include "../core/global_getter_family_methods.h"
@@ -1921,6 +1923,35 @@ int __stdcall FUN_0060AA60(GG_HWND hWnd, int unused)
     return 1;
 }
 
+// GLOBAL: GAMEMD 0x7F5BE4 / 0x7F5BF0 -- the 800 x 600 layout the dialogs are
+// designed for (entries of the width and height tables at 0x7F5BE0/0x7F5BEC).
+extern int DAT_007F5BE4;
+extern int DAT_007F5BF0;
+
+// The margin that centres an 800 x 600 layout in a larger parent, or zero when
+// the session flag says the layout fills the parent.
+__forceinline static int Inline_CentreMargin(bool bFills, int nExtent, int nDesign)
+{
+    return bFills ? 0 : ((nExtent - nDesign) / 2 < 0 ? 0 : (nExtent - nDesign) / 2);
+}
+
+// FUNCTION: GAMEMD 0x60AF50  FUN_0060AF50 (__fastcall)
+// Moves a control to its design rectangle, shifted by the centring margins
+// of its parent, and repaints it.
+void FUN_0060AF50(GG_HWND hWnd, RectangleStruct* pRect)
+{
+    GG_HWND hParent = GetParent(hWnd);
+    bool bFills = DAT_00A8B238_Session.FUN_0069BBE0();
+    GG_RECT rcParent;
+    GetWindowRect(hParent, &rcParent);
+
+    int nMarginX = Inline_CentreMargin(bFills, rcParent.right - rcParent.left, DAT_007F5BE4);
+    int nMarginY = Inline_CentreMargin(bFills, rcParent.bottom - rcParent.top, DAT_007F5BF0);
+
+    MoveWindow(hWnd, pRect->X + nMarginX, pRect->Y + nMarginY, pRect->Width, pRect->Height, 0);
+    InvalidateRect(hWnd, 0, 0);
+}
+
 // FUNCTION: GAMEMD 0x60B740  FUN_0060B740
 void FUN_0060B740(GG_HWND hWnd)
 {
@@ -2173,27 +2204,18 @@ long __stdcall FUN_0060D520(HWND__* hwnd, unsigned int msg, unsigned int wparam,
     return DefWindowProcA(hwnd, msg, wparam, lparam);
 }
 
-// GLOBAL: GAMEMD 0xAC1CB8..0xAC1CC8 and 0xAC1DCC..0xAC1DD4 (dwords), 0xAC1CCC (word).
-extern int DAT_00AC1CB8;
-extern int DAT_00AC1CBC;
-extern int DAT_00AC1CC0;
-extern int DAT_00AC1CC4;
-extern int DAT_00AC1CC8;
-extern short DAT_00AC1CCC;
-extern int DAT_00AC1DCC;
-extern int DAT_00AC1DD0;
-extern int DAT_00AC1DD4;
+// The tooltip globals 0xAC1CB8..0xAC1DD4 are declared in ownrdraw.h.
 
 // FUNCTION: GAMEMD 0x6107A0  FUN_006107A0
 // Static-initialiser shape: clears a run of globals.
 void FUN_006107A0()
 {
-    DAT_00AC1CB8 = 0;
-    DAT_00AC1CBC = 0;
-    DAT_00AC1CC0 = 0;
-    DAT_00AC1CC4 = 0;
+    DAT_00AC1CB8.X = 0;
+    DAT_00AC1CB8.Y = 0;
+    DAT_00AC1CB8.Width = 0;
+    DAT_00AC1CB8.Height = 0;
     DAT_00AC1CC8 = 0;
-    DAT_00AC1CCC = 0;
+    DAT_00AC1CCC[0] = 0;
     DAT_00AC1DCC = 0;
     DAT_00AC1DD0 = 0;
     DAT_00AC1DD4 = 0;
@@ -2213,12 +2235,129 @@ Obj_006107E0::Obj_006107E0()
     unknown_11C = 0;
 }
 
+// FUNCTION: GAMEMD 0x610810  FUN_00610810 (__fastcall)
+// Raises a tooltip: takes down the one already up (putting its background
+// back once), then records the rectangle, the text (the "GUI:ToolTip" string
+// unless the caller gives one) and the time, and draws it through 0x610950.
+void FUN_00610810(RectangleStruct* pRect, const wchar_t* pText, int nValue)
+{
+    if (DAT_00AC1DCC != 0)
+    {
+        if (DAT_00AC1DD0 != 1 && DAT_00AC1CC8 != 0)
+        {
+            RectangleStruct rcScreen = DAT_00AC1CB8;
+            RectangleStruct rcSaved;
+            rcSaved.X = 0;
+            rcSaved.Y = 0;
+            rcSaved.Width = DAT_00AC1CB8.Width;
+            rcSaved.Height = DAT_00AC1CB8.Height;
+            DAT_00887308->CopyFromPart(&rcScreen, DAT_00AC1CC8, &rcSaved, false, true);
+            DAT_00AC1DD0 = 1;
+        }
+
+        if (DAT_00AC1CC8 != 0)
+            delete DAT_00AC1CC8;
+
+        DAT_00AC1CC8 = 0;
+        DAT_00AC1DCC = 0;
+        DAT_00AC1DD0 = 0;
+    }
+
+    DAT_00AC48D8 = time(0);
+    swprintf(DAT_00AC1CCC, FUN_00734E60(
+        // STRING: GAMEMD 0x00835868
+        "GUI:ToolTip", 0,
+        // STRING: GAMEMD 0x00833730
+        "D:\\ra2mdpost\\ownrdraw.cpp", 0x1D21));
+
+    if (pText != 0)
+        wcscpy(DAT_00AC1CCC, pText);
+
+    DAT_00AC1CB8 = *pRect;
+    DAT_00AC1DCC = 1;
+    DAT_00AC1DD4 = nValue;
+    FUN_00610950(true);
+}
+
 // FUNCTION: GAMEMD 0x00612910
 void FUN_00612910()
 {
     void* block = DAT_00AC1DE0.data;
     DAT_00AC1DE0.count = 0;
     gg_free(block);
+}
+
+// FUNCTION: GAMEMD 0x621040  FUN_00621040 (__fastcall)
+// Prints text into a rectangle with the given font. The colour arrives as
+// a Win32 COLORREF (0x00BBGGRR) and is packed to the display's pixel format with the shift
+// globals at 0x8A0DD0..0x8A0DE4. Flag 4 centres the text vertically.
+int FUN_00621040(Surface* pSurface, const unsigned short* pText, BitFontBounds* pBounds,
+                 BitFont* pFont, unsigned long nColor, int nFlags, int nUnused1,
+                 int nUnused2, int nFadeStart, int nFadeLength)
+{
+    unsigned char red = (unsigned char)nColor;
+    unsigned char green = (unsigned char)((unsigned short)nColor >> 8);
+    unsigned char blue = (unsigned char)(nColor >> 16);
+    unsigned nPixel = ((green >> DAT_008A0DE4) << DAT_008A0DE0)
+                    | ((blue >> DAT_008A0DDC) << DAT_008A0DD8)
+                    | ((red >> DAT_008A0DD4) << DAT_008A0DD0);
+
+    int x = pBounds->Left;
+    int y = pBounds->Top;
+    int nWidth = pBounds->Right - x;
+    int nHeight = pBounds->Bottom - y;
+
+    if (nFlags & 4)
+    {
+        int nTextWidth;
+        int nTextHeight;
+        pFont->FUN_00433CF0(pText, &nTextWidth, &nTextHeight, nWidth);
+        y += (nHeight - nTextHeight) / 2;
+    }
+
+    pFont->FUN_00433C90(1);
+    pFont->FUN_00433CA0(pBounds);
+    pFont->FUN_00433C70((short)nPixel);
+    DAT_0089C4B8->FUN_00434CD0(pFont, pSurface, pText, x, y, nWidth, nHeight, nFlags,
+                               nFadeStart, nFadeLength);
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6213A0  FUN_006213A0 (__fastcall)
+// Owner-draw notice for a button (type 4): records the item state in the
+// control's entry (+0xE8) and repaints the item rectangle.
+void FUN_006213A0(DrawItem_006213A0* pItem)
+{
+    if (DAT_00887308 != 0 && DAT_00887310 != 0)
+    {
+        GG_RECT rcWindow;
+        FUN_00775690(pItem->hwndItem, &rcWindow);
+        GG_RECT rcClient;
+        GetClientRect(pItem->hwndItem, &rcClient);
+
+        if (GetWindowLongA(pItem->hwndItem, -16) & 0x800000)
+        {
+            int nBorderX = GetSystemMetrics(5);
+            int nBorderY = GetSystemMetrics(6);
+            rcWindow.left += nBorderX;
+            rcWindow.right -= nBorderX;
+            rcWindow.top += nBorderY;
+            rcWindow.bottom -= nBorderY;
+        }
+
+        if (pItem->CtlType == 4)
+        {
+            GG_HWND hWnd = pItem->hwndItem;
+            MapValue_00602B90* pValue = Inline_Probe((int)hWnd);
+
+            if (pValue != 0)
+            {
+                pValue->FieldE8 = pItem->itemState;
+                InvalidateRect(hWnd, &pItem->rcItem, 0);
+                UpdateWindow(hWnd);
+            }
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x621D30
@@ -3148,6 +3287,42 @@ bool Obj_00625EA0::FUN_00625F60(const char* key, unsigned int* out)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x625AF0  PacketClass::PacketClass (__thiscall)
+// Parses a received packet: the size and ID words, then each field's 8-byte
+// header and payload, payloads padded to a 4-byte boundary. Fields are pushed
+// on the front of the list and converted to host order as they are read.
+PacketClass::PacketClass(char* pBuffer)
+{
+    Size = *(unsigned short*)pBuffer;
+    pBuffer += 2;
+    Size = ntohs(Size);
+    ID = *(unsigned short*)pBuffer;
+    pBuffer += 2;
+    ID = ntohs(ID);
+    Head = 0;
+
+    int nRemaining = Size - 4;
+
+    while (nRemaining > 0)
+    {
+        FieldClass* pField = new FieldClass;
+        memcpy(pField, pBuffer, 8);
+        pBuffer += 8;
+
+        int nDataSize = ntohs(pField->Size);
+        pField->Data = new char[nDataSize];
+        memcpy(pField->Data, pBuffer, nDataSize);
+
+        int nPad = -(ntohs(pField->Size) & 3) & 3;
+        pBuffer += nDataSize + nPad;
+        nRemaining -= 8 + nPad + nDataSize;
+
+        pField->NetToHost();
+        pField->Next = Head;
+        Head = pField;
+    }
+}
+
 // FUNCTION: GAMEMD 0x626070
 ColorTable_00626070::ColorTable_00626070(const ColorTable_00626070& other)
 {
@@ -3263,6 +3438,19 @@ void FUN_00626FF0()
         delete DAT_00AC48F0;
         DAT_00AC48F0 = 0;
     }
+}
+
+// FUNCTION: GAMEMD 0x627A10  Owner_00626C60::FUN_00627A10 (__thiscall)
+// Rebuilds the scheme list of the named palette: frees the old list and its
+// entries and installs the one 0x627590 builds.
+void Owner_00626C60::FUN_00627A10(const char* pszName)
+{
+    PaletteKey_00626C60 key;
+    key.FUN_004F4C30(pszName);
+    Obj_00626250* pPalette = *Table->Find(key);
+    DynamicVectorClass<Obj_0068C8D0*>* pSchemes = FUN_00627590(pszName);
+    pPalette->Inline_Release();
+    pPalette->unknown_100 = pSchemes;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

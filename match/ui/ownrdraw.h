@@ -25,6 +25,8 @@
 #include "dialog_type_lookup_predicates.h"
 #include "dialog_control_group_lookup.h"
 #include "control_id_predicate_methods.h"
+#include "../platform/window_moving_methods.h"
+#include "../renderer/surface_class.h"
 
 // IAT 0x7E14A4: USER32!SendMessageA.
 extern "C" __declspec(dllimport) long __stdcall SendMessageA(GG_HWND hWnd,
@@ -72,6 +74,68 @@ extern "C" __declspec(dllimport) int __stdcall IsWindowVisible(GG_HWND hWnd);
 extern "C" __declspec(dllimport) int __stdcall InvalidateRect(GG_HWND hWnd,
                                                               const void* lpRect,
                                                               int bErase);
+
+// IAT 0x7E14C4: USER32!GetClientRect.
+extern "C" __declspec(dllimport) int __stdcall GetClientRect(GG_HWND hWnd, GG_RECT* lpRect);
+
+// FUNCTION: GAMEMD 0x775690 (decl; reloc) -- __fastcall: a control's rectangle.
+void FUN_00775690(GG_HWND window, GG_RECT* rect);
+
+// The owner-draw notice a parent receives with WM_DRAWITEM (fields at the
+// displacements 0x6213A0 reads: type +0x00, state +0x10, window +0x14,
+// rectangle +0x1C).
+struct DrawItem_006213A0
+{
+    unsigned CtlType;     // +0x0000
+    unsigned CtlID;       // +0x0004
+    unsigned itemID;      // +0x0008
+    unsigned itemAction;  // +0x000C
+    unsigned itemState;   // +0x0010
+    GG_HWND  hwndItem;    // +0x0014
+    void*    hDC;         // +0x0018
+    GG_RECT  rcItem;      // +0x001C
+    unsigned itemData;    // +0x002C
+};
+GG_STATIC_ASSERT(offsetof(DrawItem_006213A0, CtlType) == 0x00);
+GG_STATIC_ASSERT(sizeof(DrawItem_006213A0) == 0x30);
+GG_STATIC_ASSERT(offsetof(DrawItem_006213A0, itemState) == 0x10);
+GG_STATIC_ASSERT(offsetof(DrawItem_006213A0, hwndItem) == 0x14);
+GG_STATIC_ASSERT(offsetof(DrawItem_006213A0, rcItem) == 0x1C);
+
+// GLOBAL: GAMEMD 0x887308 / 0x887310 -- two of the display surfaces; owner
+// drawing only runs once both exist. 0x610810 restores the tooltip background
+// through 0x887308's slot +0x08.
+extern Surface* DAT_00887308;
+extern void* DAT_00887310;
+
+// Tooltip state used by 0x610810 (placeholders; layout from the stores).
+// GLOBAL: GAMEMD 0xAC1CB8 -- the tooltip rectangle.
+extern RectangleStruct DAT_00AC1CB8;
+// GLOBAL: GAMEMD 0xAC1CC8 -- the saved background under the tooltip.
+extern Surface* DAT_00AC1CC8;
+// GLOBAL: GAMEMD 0xAC1CCC -- the tooltip text (0x100 bytes up to 0xAC1DCC).
+extern wchar_t DAT_00AC1CCC[0x80];
+// GLOBAL: GAMEMD 0xAC1DCC -- nonzero while a tooltip is up.
+extern int DAT_00AC1DCC;
+// GLOBAL: GAMEMD 0xAC1DD0 -- 1 once the background has been put back.
+extern int DAT_00AC1DD0;
+// GLOBAL: GAMEMD 0xAC1DD4 -- the caller's third argument to 0x610810.
+extern int DAT_00AC1DD4;
+// GLOBAL: GAMEMD 0xAC48D8 -- time the tooltip was raised.
+extern long DAT_00AC48D8;
+
+// LIBRARY: GAMEMD 0x007CA67F
+// time
+extern "C" long __cdecl time(long* pTimer);
+// LIBRARY: GAMEMD 0x007CA489
+// wcscpy
+extern "C" wchar_t* __cdecl wcscpy(wchar_t* pDest, const wchar_t* pSource);
+// FUNCTION: GAMEMD 0x734E60 (decl; reloc) -- the string-table fetch (__fastcall,
+// label and flags in registers, source file and line on the stack).
+wchar_t* FUN_00734E60(const char* pszLabel, int nFlags, const char* pszFile, int nLine);
+// FUNCTION: GAMEMD 0x610950 (decl; reloc) -- __fastcall, flag in CL.
+void FUN_00610950(bool bFlag);
+
 
 // GLOBAL: GAMEMD 0xAC1CAC
 extern int DAT_00AC1CAC;
