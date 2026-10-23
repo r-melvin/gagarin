@@ -98173,5 +98173,14 @@
   "name": "SessionProfile_00697F10::SessionProfile_00697F10",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x6977C0",
+  "sym": "?FUN_006977C0@SessionClass@@QAEXXZ",
+  "len": "0x76",
+  "name": "SessionClass::FUN_006977C0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

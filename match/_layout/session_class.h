@@ -66,7 +66,10 @@ struct SessionClass
     DynamicVectorClass<NetPlayerClass*> unknown_283C;
     char unknown_2854[4];
     NetPlayerClass* unknown_2858[8]; // native69C290/69C362
-    char unknown_2878[0x2968 - 0x2878];
+    char unknown_2878[0x292C - 0x2878];
+    // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
+    DynamicVectorClass<const unsigned short*> unknown_292C;
+    char unknown_2944[0x2968 - 0x2944];
     unsigned char unknown_2968; // native697DD2 byte store
     char unknown_2969[0x2994 - 0x2969];
     IPXAddressClass unknown_2994[8]; // native69C362/69C40A: stride0xC
@@ -94,6 +97,8 @@ struct SessionClass
 
     // Declaration: GAMEMD 0x69BAB0 (decl; reloc)
     void Resume();
+    // Declaration: GAMEMD 0x6977C0 -- no arguments, ECX Session.
+    void FUN_006977C0();
     // Declaration: GAMEMD 0x697AD0 -- ECX Session, no stack arguments.
     void FUN_00697AD0();
     // Declaration: GAMEMD 0x699980 -- Session receiver at 0x697AD7.
@@ -200,4 +205,11 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1FC0) == 0x1FC0);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1FC0) == 1);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1FC1) == 0x1FC1);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1FC1) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Items) == 0x2930);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Capacity) == 0x2934);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.IsAllocated) == 0x2939);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Count) == 0x293C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.CapacityIncrement) == 0x2940);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C) == 0x292C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_292C) == 0x18);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

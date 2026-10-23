@@ -110,6 +110,10 @@ extern const char STR_0083F110[]; // LANScrollText
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 
 
+// LIBRARY: GAMEMD 0x7DDE13 -- CRT _wcsdup
+extern "C" wchar_t* __cdecl _wcsdup(const wchar_t*);
+// GLOBAL: GAMEMD 0x83ED04 -- four label pointers.
+extern const char* const DAT_0083ED04[4];
 #include "session_entry.h"
 #include <wchar.h>
 #include <string.h>
@@ -792,6 +796,17 @@ SessionProfile_00697F10::SessionProfile_00697F10()
         unknown_1C[index][0] = 0;
         unknown_1C[index][1] = 0;
         unknown_1C[index][2] = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x6977C0
+void SessionClass::FUN_006977C0()
+{
+    for (int index = 0; index < 4; ++index) {
+        const unsigned short* text = _wcsdup(
+            FUN_00734E60(DAT_0083ED04[index], 0, STR_0083EEB8, 0x251));
+        // Native ignores append failure and does not free a failed append.
+        unknown_292C.AddItem(text);
     }
 }
 
