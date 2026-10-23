@@ -359,6 +359,37 @@ void __cdecl FUN_006A4BF0()
     DAT_00B0B38C = 0x80;
 }
 
+// REA Evidence: ev_2ae381b14ec2843cc91bb4231572d98ff6eb01c68dc88b2d17c3a381358b4d14
+// CFG-closed retail span [0x6A4E60, 0x6A4F11), 0xB1 bytes. TabClass constructor 0x6CFE20
+// calls this with its original ECX receiver before initializing the TabClass subobject.
+// FUNCTION: GAMEMD 0x6A4E60
+SidebarClass::SidebarClass()
+{
+    unknown_539C = 0;
+    At_53A0 = 0;
+    unknown_53A4 = false;
+    At_53A5 = false;
+    At_53A6 = true;
+    unknown_53A8[0] = 0;
+    At_5514 = 0;
+    At_5515 = 0;
+
+    unsigned char local;
+    for (int i = 0; i < 4; ++i) {
+        Strips[i].FUN_006A80A0(&local);
+    }
+}
+
+// REA Evidence: ev_1dd5458f92702204515ba913680947a6074d3d7212c547bcbcf63868c928ef9d
+// CFG-closed retail span [0x6A4F20, 0x6A4FF0), 0xD0 bytes; the RET 4 ends at 0x6A4FED.
+// Constructor calls the tagged DisplayClass initializer, three canonical vector forms,
+// two canonical elapsed timers, Obj_00405B00::FUN_00405BE0, and four StripClass elements.
+// FUNCTION: GAMEMD 0x6A4F20
+SidebarClass::SidebarClass(const Obj_005BDF70& noInit)
+    : PowerClass(noInit)
+{
+}
+
 // FUNCTION: GAMEMD 0x6A4FF0
 void __stdcall FUN_006A4FF0(int)
 {
@@ -1668,6 +1699,25 @@ void* Obj_6AC7A0::FUN_6AC7A0(unsigned int flags)
 
     return this;
 }
+
+// REA Evidence: ev_5aa6e42dac161c3cab96320d4b05f5004758d3f4436f42d8ed931b3b6df535fc
+// CFG-closed retail span [0x6AC7C0, 0x6AC7E1), 0x21 bytes; 10 instructions, RET at 0x6AC7E0.
+// Writes +0x14=0, +0x18 low byte=0, +0x1C=CurrentFrame, +0x24=0, +0x28=0, +0x2C=1;
+// bytes +0x00..+0x13 and +0x20..+0x23 are untouched.
+// FUNCTION: GAMEMD 0x6AC7C0
+SidebarCameo::SidebarCameo()
+{
+    unknown_14 = 0;
+    unknown_18.Bytes.Low = 0;
+    unknown_1C = CurrentFrame_00A8ED84;
+    unknown_24 = 0;
+    unknown_28 = 0;
+    unknown_2C = 1;
+}
+
+// SYNTHETIC: GAMEMD 0x6AC7F0
+// The compiler-emitted scalar deleting destructor follows the ordinary constructor
+// in this original translation unit; its bytes are checked against retail.
 
 // FUNCTION: GAMEMD 0x6AC840
 DisplayClass::DisplayClass(const Obj_005BDF70& noInit)

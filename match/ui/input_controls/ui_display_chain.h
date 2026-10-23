@@ -34,8 +34,17 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../../_layout/geometry2d.h"
+#include "../../core/dynamic_vector_ctor_methods.h"
+#include "../../core/vector_class_operations.h"
+#include "../../core/small_misc2_methods.h"
+#include "../../_layout/elapsed_timer.h"
+
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Point2D>) == 0x18);
 
 // ---- shared value types ------------------------------------------------------------------------------------------
+
+// GLOBAL: GAMEMD 0xA8ED84 -- current frame read by the StripClass and cameo constructors.
+extern int CurrentFrame_00A8ED84;
 
 #ifndef GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
 #define GG_MATCH_LAYOUT_CELLSTRUCT_DEFINED
@@ -490,6 +499,14 @@ GG_STATIC_ASSERT(sizeof(DisplayClass) == 0x11E4);
 class RadarClass : public DisplayClass
 {
 public:
+    // FUNCTION: GAMEMD 0x652960 (decl; reloc) -- ordinary constructor.
+    RadarClass();
+    // FUNCTION: GAMEMD 0x6A4F20 (decl; partial) -- tagged load constructor, RET 4.
+    RadarClass(const Obj_005BDF70& noInit)
+        : DisplayClass(noInit), unknown_1224(0, 0), unknown_125C(0, 0), unknown_1500(0)
+    {
+        unknown_14C0.FUN_00405BE0();
+    }
     // FUNCTION: GAMEMD 0x652C00 (decl; reloc) -- the RadarClass destructor body (called by every derived ??_G).
     virtual ~RadarClass();                               // 4   0x6587A0 (??_G)
     virtual void vf_05();                                // 5   0x652CF0
@@ -514,9 +531,24 @@ public:
     // FUNCTION: GAMEMD 0x652E50 (decl; reloc) -- RET 4.
     void FUN_00652E50(bool on);
 
-    // +0x11E4..+0x150B: members not touched by the module (the constructor stores from +0x11E8).
-    char unknown_11E4[0x150C - 0x11E4];   // +0x11E4
+    // Retail constructor 0x6A4F20: vector members at +0x1224/+0x125C/+0x1278,
+    // followed by the timer at +0x1500. Other bytes remain unclassified.
+    char unknown_11E4[0x1224 - 0x11E4];
+    DynamicVectorClass_0042F670 unknown_1224;
+    char unknown_123C[0x125C - 0x123C];
+    DynamicVectorClass<Point2D> unknown_125C;
+    char unknown_1274[0x1278 - 0x1274];
+    DynamicVectorClass<Point2D> unknown_1278[0x16];
+    char unknown_1488[0x14C0 - 0x1488];
+    Obj_00405B00 unknown_14C0;
+    char unknown_14D0[0x1500 - 0x14D0];
+    ScenarioElapsedTimer unknown_1500;
 };
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1224) == 0x1224);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_125C) == 0x125C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1278) == 0x1278);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14C0) == 0x14C0);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1500) == 0x1500);
 GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);
 
 // ---- PowerClass --------------------------------------------------------------------------------------------------
@@ -525,6 +557,13 @@ GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);
 class PowerClass : public RadarClass
 {
 public:
+    // FUNCTION: GAMEMD 0x63F6B0 (decl; reloc) -- ordinary constructor.
+    PowerClass();
+    // FUNCTION: GAMEMD 0x6A4F20 (decl; partial) -- tagged load constructor, RET 4.
+    PowerClass(const Obj_005BDF70& noInit)
+        : RadarClass(noInit), unknown_1520(0)
+    {
+    }
     virtual void vf_05();                                // 5   0x63F7B0
     virtual void vf_07();                                // 7   0x63F730
     virtual void vf_10(int* key, Point2D* where);        // 10  0x63FEA0
@@ -535,9 +574,12 @@ public:
     virtual void vf_53();                                // 53  0x63F7C0
 
     // +0x150C..+0x1543: the constructor 0x63F6B0 stores +0x150C (byte) through +0x1540; none is touched here.
-    char unknown_150C[0x1544 - 0x150C];   // +0x150C
+    char unknown_150C[0x1520 - 0x150C];
+    ScenarioElapsedTimer unknown_1520;
+    char unknown_152C[0x1544 - 0x152C];
 };
 // SidebarClass's constructor writes its first member (the first strip) at +0x1544.
+GG_STATIC_ASSERT(offsetof(PowerClass, unknown_1520) == 0x1520);
 GG_STATIC_ASSERT(sizeof(PowerClass) == 0x1544);
 
 // ---- SidebarClass ------------------------------------------------------------------------------------------------
@@ -558,6 +600,8 @@ GG_STATIC_ASSERT(sizeof(SidebarCameoUnknown18) == 4);
 // retail passes its address to the vector-destructor helper (0x40AFD0).
 struct SidebarCameo
 {
+    // FUNCTION: GAMEMD 0x6AC7C0 (decl; partial) -- array element initializer, RET 4.
+    SidebarCameo();
     int   unknown_00;                     // +0x00 (cleared by StripClass initializer)
     unsigned char unknown_04[4];           // +0x04 (initializer writes the first byte; strip reset clears the dword)
     int   unknown_08;                     // +0x08
@@ -577,6 +621,7 @@ struct SidebarCameo
 GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, Pointer) == 0x0C);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(SidebarCameo, unknown_18) == 0x18);
@@ -595,6 +640,9 @@ GG_STATIC_ASSERT(sizeof(SidebarCameo) == 0x34);
 // modelled with the implicit destructor that the three matched destructors need.
 struct StripTimer
 {
+    StripTimer() {}
+    StripTimer(int startFrame, int timeLeft)
+        : StartFrame(startFrame), TimeLeft(timeLeft) {}
     int StartFrame;                       // +0x00
     int unknown_04;                       // +0x04
     int TimeLeft;                         // +0x08
@@ -606,6 +654,12 @@ GG_STATIC_ASSERT(offsetof(StripTimer, TimeLeft) == 0x08);
 // StripClass: one build column. sizeof 0xF94 (stride of the strip array); origin +0x1544, see the file header.
 struct StripClass
 {
+    StripClass()
+        : unknown_00(0), unknown_04(false), Timer(CurrentFrame_00A8ED84, 0),
+          unknown_14(0), unknown_18(1)
+    {
+    }
+
     int  unknown_00;                      // +0x0000 (zeroed by the constructor)
     bool unknown_04;                      // +0x0004 (zeroed by the constructor)
     char unknown_05[3];                   // +0x0005
@@ -676,6 +730,8 @@ class SidebarClass : public PowerClass
 {
 public:
     SidebarClass();
+    // FUNCTION: GAMEMD 0x6A4F20 (decl; partial) -- tagged load constructor, RET 4.
+    SidebarClass(const Obj_005BDF70& noInit);
 
     virtual void vf_05();                                // 5   0x6A5000 (one-time init)
     virtual void vf_07();                                // 7   0x6A5030
@@ -742,8 +798,10 @@ public:
 GG_STATIC_ASSERT(offsetof(SidebarClass, Strips) == 0x1544);
 GG_STATIC_ASSERT(offsetof(SidebarClass, unknown_539C) == 0x539C);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A0) == 0x53A0);
+GG_STATIC_ASSERT(offsetof(SidebarClass, unknown_53A4) == 0x53A4);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A5) == 0x53A5);
 GG_STATIC_ASSERT(offsetof(SidebarClass, At_53A6) == 0x53A6);
+GG_STATIC_ASSERT(offsetof(SidebarClass, unknown_53A8) == 0x53A8);
 GG_STATIC_ASSERT(offsetof(SidebarClass, Houses) == 0x53AC);
 GG_STATIC_ASSERT(offsetof(SidebarClass, Totals) == 0x53CC);
 GG_STATIC_ASSERT(offsetof(SidebarClass, Values) == 0x53EC);

@@ -9,6 +9,7 @@
 #define GG_MATCH_CORE_DYNAMIC_VECTOR_CTOR_METHODS_H
 
 #include <stddef.h>
+#include <new.h>
 #include "../_rt/gg_static_assert.h"
 
 // A 4-byte element with a user-declared default constructor. The declaration is
@@ -21,7 +22,6 @@
 // caller-supplied-storage arm as well as the allocating one.
 void* __cdecl operator new(size_t);
 void* __cdecl operator new[](size_t);
-inline void* operator new(size_t, void* where) { return where; }
 inline void* operator new[](size_t, void* where) { return where; }
 
 struct Elem_0042F670
