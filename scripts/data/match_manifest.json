@@ -68958,7 +68958,7 @@
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
   "addr": "0x5F6A10",
-  "sym": "?vf_113@ObjectClass@@UAEXXZ",
+  "sym": "?vf_113@ObjectClass@@UAEPAVCellClass@@XZ",
   "len": "0x53",
   "name": "ObjectClass::vf_113",
   "status": "matched",

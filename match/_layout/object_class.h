@@ -219,7 +219,7 @@ public:
     virtual CellStruct vf_110();                               // 110 0x41BEA0: the cell under Location
     virtual CellClass* vf_111();                               // 111 0x5F6960
     virtual CellStruct vf_112();                               // 112 0x5F69C0
-    virtual void vf_113();                                     // 113 0x5F6A10
+    virtual CellClass* vf_113();                                     // 113 0x5F6A10
     virtual int vf_114();                                      // 114 0x5F5F40
     virtual void vf_115(int height);                           // 115 0x5F5FA0
     virtual int FUN_005F5F30() const;                          // 116 0x5F5F30

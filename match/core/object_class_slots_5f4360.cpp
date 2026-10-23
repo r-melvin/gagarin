@@ -589,10 +589,10 @@ CellStruct ObjectClass::vf_112()
 }
 
 // FUNCTION: GAMEMD 0x5F6A10
-void ObjectClass::vf_113()
+CellClass* ObjectClass::vf_113()
 {
     CellStruct cell = CoordCell(vf_19(0));
-    DAT_0087F7E8.FUN_005657A0(&cell);
+    return DAT_0087F7E8.FUN_005657A0(&cell);
 }
 
 // FUNCTION: GAMEMD 0x5F6A70

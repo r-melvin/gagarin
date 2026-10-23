@@ -303,8 +303,8 @@ public:
     virtual int vf_193(int a1, int a2);                            // 193 0x708C10
     virtual DirStruct vf_194();                                       // 194 0x708D70
     virtual int vf_195();                                          // 195 0x707D20
-    virtual int vf_196();                                          // 196 0x700D10
-    virtual void vf_197();                                         // 197 0x700D50
+    virtual bool vf_196();                                          // 196 0x700D10
+    virtual bool vf_197();                                         // 197 0x700D50
     virtual int vf_198(int a1);                                    // 198 0x6FCFA0
     virtual int vf_199(int a1);                                    // 199 0x707E60
     virtual bool vf_200();                                         // 200 0x459DD0
@@ -328,8 +328,8 @@ public:
     virtual int vf_218();                                          // 218 0x708FC0
     virtual void vf_219();                                         // 219 0x708E00
     virtual int vf_220(int a1);                                    // 220 0x7090A0
-    virtual void vf_221(int a1);                                   // 221 0x6FFE00
-    virtual int vf_222(int a1, int a2, int a3, int a4);            // 222 0x6FFBE0
+    virtual bool vf_221(int a1);                                   // 221 0x6FFE00
+    virtual bool vf_222(int a1, AbstractClass* a2, void* a3, void* a4);            // 222 0x6FFBE0
     virtual bool IsUnderEMP();                                     // 223 0x70EFD0
     virtual bool vf_224();                                         // 224 0x459E40
     virtual bool vf_225();                                         // 225 0x41BF80
