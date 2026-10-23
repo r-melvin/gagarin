@@ -19,10 +19,16 @@ struct RulesClass
     // FUNCTION: GAMEMD 0x66D3A0
     bool Read_Colors(CCINIClass* pINI);
 
-    char               _pad0000[0xFA8];             // +0x0000
+    char               _pad0000[0x1A0];             // +0x0000
+    int                unknown_1A0;                 // +0x01A0 (voc index read by 0x608260)
+    char               _pad01A4[0x6C4 - 0x1A4];     // +0x01A4
+    int                unknown_6C4;                 // +0x06C4 (read by 0x6023F0)
+    char               _pad06C8[0xFA8 - 0x6C8];     // +0x06C8
     WarheadTypeClass*  C4Warhead;                   // +0x0FA8
     char               _pad0FAC[0x18C0 - 0xFAC];    // +0x0FAC
 };
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1A0)  == 0x1A0);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
 GG_STATIC_ASSERT(sizeof(RulesClass)              == 0x18C0);
 

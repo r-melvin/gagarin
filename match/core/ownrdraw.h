@@ -35,6 +35,13 @@ extern "C" __declspec(dllimport) long __stdcall SendMessageA(GG_HWND hWnd,
 extern "C" __declspec(dllimport) GG_HWND __stdcall GetDlgItem(GG_HWND hDlg, int nID);
 // IAT 0x7E146C: USER32!UpdateWindow.
 extern "C" __declspec(dllimport) int __stdcall UpdateWindow(GG_HWND hWnd);
+// IAT 0x7E14DC: USER32!GetClassNameA.
+extern "C" __declspec(dllimport) int __stdcall GetClassNameA(GG_HWND hWnd, char* lpClassName,
+                                                             int nMaxCount);
+// IAT 0x7E14E8: USER32!IsWindowEnabled.
+extern "C" __declspec(dllimport) int __stdcall IsWindowEnabled(GG_HWND hWnd);
+// IAT 0x7E14A0: USER32!EnableWindow.
+extern "C" __declspec(dllimport) int __stdcall EnableWindow(GG_HWND hWnd, int bEnable);
 // IAT 0x7E14EC: USER32!GetParent.
 extern "C" __declspec(dllimport) GG_HWND __stdcall GetParent(GG_HWND hWnd);
 // IAT 0x7E14E4: USER32!EnumChildWindows.
@@ -92,6 +99,8 @@ int FUN_00603E10(GG_HWND hWnd, unsigned short nLow, unsigned short nHigh);
 void FUN_00603E40(int nKey, int nValue);
 // FUNCTION: GAMEMD 0x606740 (__fastcall)
 void FUN_00606740(int nKey, bool bValue);
+// FUNCTION: GAMEMD 0x6071E0 (decl; reloc) -- body not yet recovered.
+void FUN_006071E0(GG_HWND hWnd, bool bFlag);
 // FUNCTION: GAMEMD 0x608380 (__fastcall)
 void FUN_00608380(int nKey);
 // FUNCTION: GAMEMD 0x6083E0 (__fastcall)
@@ -118,7 +127,7 @@ bool FUN_00609CF0(GG_HWND hParent, GG_HWND hWnd);
 bool FUN_0060A100(int nKey, GG_HWND hCtl);
 // FUNCTION: GAMEMD 0x60A180 (__stdcall)
 int __stdcall FUN_0060A180(GG_HWND hWnd, int unused);
-// FUNCTION: GAMEMD 0x60A250 (decl; reloc) -- enumeration callback, body not yet recovered.
+// FUNCTION: GAMEMD 0x60A250 (__stdcall)
 int __stdcall FUN_0060A250(GG_HWND hWnd, long lParam);
 // FUNCTION: GAMEMD 0x60A300 (__fastcall)
 bool FUN_0060A300(GG_HWND hWnd);
@@ -195,16 +204,49 @@ struct Obj_00623420
     wchar_t*           Text;              // +0x0028
     char               unknown_2C[0x34 - 0x2C];
     TextNode_00623420* TextList;          // +0x0034
+    char               unknown_38[0x3C - 0x38];
+    Obj_007B66D0*      unknown_3C;        // +0x003C
+    int                unknown_40;        // +0x0040
+    char               unknown_44[0x5C - 0x44];
+    int                unknown_5C;        // +0x005C
+    char               unknown_60[0x64 - 0x60];
+    int                unknown_64;        // +0x0064
+    int                unknown_68;        // +0x0068
+    char               unknown_6C[0x90 - 0x6C];
+    int                unknown_90;        // +0x0090
+    char               unknown_94[0x200 - 0x94];
 
+    // FUNCTION: GAMEMD 0x623340 (__thiscall)
+    Obj_00623420();
+    // FUNCTION: GAMEMD 0x6233A0 (__thiscall)
+    ~Obj_00623420();
     // FUNCTION: GAMEMD 0x623420 (__thiscall)
     void FUN_00623420(int nChars);
     // FUNCTION: GAMEMD 0x623460 (__thiscall)
     void FUN_00623460(TextNode_00623420* pNode);
+    // FUNCTION: GAMEMD 0x6234B0 (__thiscall)
+    void FUN_006234B0(const TextNode_00623420* pSource);
     // FUNCTION: GAMEMD 0x623560 (__thiscall)
     void FUN_00623560(const wchar_t* pszText);
     // FUNCTION: GAMEMD 0x6235B0 (__thiscall)
     void FUN_006235B0(const char* pszText);
+    // FUNCTION: GAMEMD 0x623610 (__thiscall)
+    Obj_00623420* FUN_00623610(const Obj_00623420& other);
+    // FUNCTION: GAMEMD 0x623730 (__thiscall)
+    Obj_00623420* FUN_00623730(const Obj_00623420& other);
+
+    // Out-of-line bodies above share these expansions.
+    inline void Inline_Unlink(TextNode_00623420* pNode);
+    inline void Inline_SetText(const wchar_t* pszText);
+    inline void Inline_AddCopy(const TextNode_00623420* pSource);
 };
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_40) == 0x40);
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_5C) == 0x5C);
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_64) == 0x64);
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_68) == 0x68);
+GG_STATIC_ASSERT(offsetof(Obj_00623420, unknown_90) == 0x90);
+GG_STATIC_ASSERT(sizeof(Obj_00623420) == 0x200);
 GG_STATIC_ASSERT(offsetof(Obj_00623420, Text) == 0x28);
 GG_STATIC_ASSERT(offsetof(Obj_00623420, TextList) == 0x34);
 // FUNCTION: GAMEMD 0x623E00 (__fastcall)

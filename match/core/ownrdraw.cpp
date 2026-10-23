@@ -575,6 +575,12 @@ extern double DAT_00AC48A0;
 // C4661: the members this TU does not define stay declarations on purpose.
 #pragma warning(disable : 4661)
 #include "ownrdraw.h"
+#include "../_layout/rules_class.h"
+#include "hash_table_rehash_sweep.h"
+#include "global_getter_family_methods.h"
+#include "trivial_tu181_methods.h"
+#pragma intrinsic(strcmp)
+#include "../audio/voc_class_play_global_methods.h"
 
 // The probe every function here opens with, expanded inline. Same shape as
 // the one proven at 0x602B90: the inner `n ? &n->Value : 0` guard is the first
@@ -601,6 +607,8 @@ __forceinline static MapValue_00602B90* Inline_Probe(int nKey)
 
 // GLOBAL: GAMEMD 0xAC4894 -- counter the enumeration callback at 0x60A250 bumps.
 extern int DAT_00AC4894;
+// GLOBAL: GAMEMD 0xAC48B4 -- count of live Hook_006223C0 objects.
+extern int DAT_00AC48B4;
 
 template struct HashTable_006249A0<int, MapValue_00602B90>;
 template struct HashTable_006249A0<int, int>;
@@ -654,6 +662,59 @@ void __cdecl FUN_00600510()
 void FUN_00600550(int a1, int a2)
 {
     FUN_006B9530(DAT_00AC4848, a2);
+}
+
+// GLOBAL: GAMEMD 0xAC1DF0, 0xAC4604, 0xAC4624, 0xAC1890, 0xAC18A4, 0xAC1CB0,
+//   0xAC4618, 0xAC184C, 0xAC4628, 0xAC4880, 0xAC1DD8, 0xAC1B98, 0xAC1B94,
+//   0xAC1CB4, 0xAC1AF8, 0xAC1CA8, 0xAC4620, 0xAC4898, 0xAC4608, 0xAC48B0,
+//   0xAC1B90 -- the dialog colour and metric words stored by 0x600560.
+extern int DAT_00AC1DF0;
+extern int DAT_00AC4604;
+extern int DAT_00AC4624;
+extern int DAT_00AC1890;
+extern int DAT_00AC18A4;
+extern int DAT_00AC1CB0;
+extern int DAT_00AC4618;
+extern int DAT_00AC184C;
+extern int DAT_00AC4628;
+extern int DAT_00AC4880;
+extern int DAT_00AC1DD8;
+extern int DAT_00AC1B98;
+extern int DAT_00AC1B94;
+extern int DAT_00AC1CB4;
+extern int DAT_00AC1AF8;
+extern int DAT_00AC1CA8;
+extern int DAT_00AC4620;
+extern int DAT_00AC4898;
+extern int DAT_00AC4608;
+extern int DAT_00AC48B0;
+extern int DAT_00AC1B90;
+
+// FUNCTION: GAMEMD 0x600560
+// Static-initialiser shape: stores constants to a run of globals.
+void FUN_00600560()
+{
+    DAT_00AC1DF0 = 1;
+    DAT_00AC4604 = 0xFF;
+    DAT_00AC4624 = 0xFF;
+    DAT_00AC1890 = 0x7F;
+    DAT_00AC18A4 = 0xFFFF;
+    DAT_00AC1CB0 = 0xEEEEEE;
+    DAT_00AC4618 = 0x9F9F;
+    DAT_00AC184C = 0xFFFFFF;
+    DAT_00AC4628 = 0x808080;
+    DAT_00AC4880 = 0x626262;
+    DAT_00AC1DD8 = 0x929292;
+    DAT_00AC1B98 = 0xC5BEA7;
+    DAT_00AC1B94 = 0x807A68;
+    DAT_00AC1CB4 = 0x9F;
+    DAT_00AC1AF8 = 0x8F8F8F;
+    DAT_00AC1CA8 = 0x9F;
+    DAT_00AC4620 = 0x646464;
+    DAT_00AC4898 = 0x60;
+    DAT_00AC4608 = 0xAAAA;
+    DAT_00AC48B0 = 0x221B0B;
+    DAT_00AC1B90 = 0x443716;
 }
 
 // FUNCTION: GAMEMD 0x600660
@@ -1085,6 +1146,19 @@ int FUN_00601D20(int nKey, GG_HWND hCtl)
 // is `MOV EAX,1`, so the value is narrowed at the call site, not at the
 // definition. Same variant list as 0x600CA0 above.
 //
+// FUNCTION: GAMEMD 0x6023F0  FUN_006023F0 (__fastcall)
+int FUN_006023F0(int nKey, GG_HWND hCtl)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+
+    if ((category == 0x103 || category == 0xBC7) && nCtlID == 0x6F4)
+        return Rules->unknown_6C4;
+
+    return -1;
+}
+
 // FUNCTION: GAMEMD 0x602490  FUN_00602490 (__fastcall)
 // The predicate of the family, and the one that answers a byte: its exits
 // are MOV AL,1 / XOR AL,AL, where the three siblings above load EAX. Its
@@ -1200,6 +1274,43 @@ bool FUN_00602D70(int nKey, GG_HWND hCtl)
     return false;
 }
 
+// FUNCTION: GAMEMD 0x602DD0  FUN_00602DD0
+bool FUN_00602DD0(int nKey, GG_HWND hCtl)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+
+    if ((category == 0x94 || category == 0xD8 || category == 0xF5 ||
+          category == 0xE2 || category == 0xD5 || category == 0x101 ||
+          category == 0x129 || category == 0xD7 || category == 0xBB ||
+          category == 0x100 || category == 0xD6 || category == 0x125 ||
+          category == 0x122 || category == 0x112 || category == 0xE7 ||
+          category == 0x116 || category == 0x11D || category == 0x11C ||
+          category == 0xFE || category == 0x10F || category == 0x117 ||
+          category == 0x114 || category == 0xE6 || category == 0xF3 ||
+          category == 0xF4 || category == 0x2BC || category == 0x10E ||
+          category == 0x108 || category == 0xBC6 || category == 0xBC7)
+        && nCtlID == 0x71C)
+    {
+        return true;
+    }
+
+    if (category == 0x94 && (nCtlID == 0x6EA || nCtlID == 0x6EC || nCtlID == 0x6EB))
+        return true;
+
+    if (category == 0x103 && nCtlID == 0x72B)
+        return true;
+
+    if (category == 0xBC7 && nCtlID == 0x72B)
+        return true;
+
+    if (category == 0xC4 && nCtlID == 0x7A9)
+        return true;
+
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x602FE0  FUN_00602FE0
 int FUN_00602FE0(int nKey, GG_HWND hCtl)
 {
@@ -1208,6 +1319,38 @@ int FUN_00602FE0(int nKey, GG_HWND hCtl)
     int nCtlID = GetDlgCtrlID(hCtl);
 
     return 0xC;
+}
+
+// FUNCTION: GAMEMD 0x603040  FUN_00603040
+int FUN_00603040(int nKey, GG_HWND hCtl)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+
+    if ((category == 0x94 || category == 0xD8 || category == 0xF5 ||
+          category == 0xE2 || category == 0xD5 || category == 0x101 ||
+          category == 0x129 || category == 0xD7 || category == 0xBB ||
+          category == 0x100 || category == 0xD6 || category == 0x125 ||
+          category == 0x122 || category == 0x112 || category == 0xE7 ||
+          category == 0x116 || category == 0x11D || category == 0x11C ||
+          category == 0xFE || category == 0x10F || category == 0x117 ||
+          category == 0x114 || category == 0xE6 || category == 0xF3 ||
+          category == 0xF4 || category == 0x2BC || category == 0x10E ||
+          category == 0x108 || category == 0xBC6 || category == 0xBC7)
+        && nCtlID == 0x71C)
+    {
+        return 0x25;
+    }
+
+    if ((category == 0xBC || category == 0xBD || category == 0xC2 ||
+         category == 0xC9 || category == 0x102 || category == 0xBC6)
+        && (nCtlID == 0x6EC || nCtlID == 0x5A8))
+    {
+        return 0xE;
+    }
+
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x6033F0  FUN_006033F0
@@ -1240,12 +1383,124 @@ int FUN_006033F0(int nKey, GG_HWND hCtl)
     return 0;
 }
 
+// FUNCTION: GAMEMD 0x6035F0  FUN_006035F0
+int FUN_006035F0(int nKey, GG_HWND hCtl)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+    int result = FUN_0072E280();
+
+    if ((category == 0x94 || category == 0xD8 || category == 0xF5 ||
+         category == 0xE2 || category == 0xD5 || category == 0x101 ||
+         category == 0x129 || category == 0xD7 || category == 0xBB ||
+         category == 0x100 || category == 0xD6 || category == 0x125 ||
+         category == 0x122 || category == 0x112 || category == 0xE7 ||
+         category == 0x116 || category == 0x11D || category == 0x11C ||
+         category == 0xFE || category == 0x10F || category == 0x117 ||
+         category == 0x114 || category == 0xE6 || category == 0xF3 ||
+         category == 0xF4 || category == 0x2BC || category == 0x10E ||
+         category == 0x108 || category == 0xBC6 || category == 0xBC7)
+        && nCtlID == 0x71C)
+    {
+        result = FUN_0072E2A0();
+    }
+
+    if (category == 0x94)
+    {
+        if (nCtlID == 0x6EA)
+            return FUN_0072DAC0();
+
+        if (nCtlID == 0x6EC)
+            return FUN_0072DAD0();
+
+        return result;
+    }
+
+    if (category == 0x103)
+    {
+        if (nCtlID == 0x72B)
+            return FUN_0072D450();
+
+        return result;
+    }
+
+    if (category == 0xBC7)
+    {
+        if (nCtlID == 0x72B)
+            return FUN_0072D450();
+
+        return result;
+    }
+
+    if (category == 0xC4 && nCtlID == 0x7A9)
+        return FUN_0072CC80();
+
+    return result;
+}
+
 // FUNCTION: GAMEMD 0x603810  FUN_00603810
 int FUN_00603810(int nKey, GG_HWND hCtl)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     int category = value ? value->Field6C : 0;
     int nCtlID = GetDlgCtrlID(hCtl);
+
+    return 0;
+}
+
+// GLOBAL: GAMEMD 0x833674
+extern void* DAT_00833674;
+// GLOBAL: GAMEMD 0xB0FB48, 0xB0FB10, 0xB0FB30, 0xB0FAD0
+extern int DAT_00B0FB48;
+extern int DAT_00B0FB10;
+extern int DAT_00B0FB30;
+extern int DAT_00B0FAD0;
+
+// FUNCTION: GAMEMD 0x603870  FUN_00603870
+int FUN_00603870(int nKey, GG_HWND hCtl, void* pArg)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    int category = value ? value->Field6C : 0;
+    int nCtlID = GetDlgCtrlID(hCtl);
+
+    if ((category == 0x94 || category == 0xD8 || category == 0xF5 ||
+         category == 0xE2 || category == 0xD5 || category == 0x101 ||
+         category == 0x129 || category == 0xD7 || category == 0xBB ||
+         category == 0x100 || category == 0xD6 || category == 0x125 ||
+         category == 0x122 || category == 0x112 || category == 0xE7 ||
+         category == 0x116 || category == 0x11D || category == 0x11C ||
+         category == 0xFE || category == 0x10F || category == 0x117 ||
+         category == 0x114 || category == 0xE6 || category == 0xF3 ||
+         category == 0xF4 || category == 0x2BC || category == 0x10E ||
+         category == 0x108 || category == 0xBC6 || category == 0xBC7)
+        && nCtlID == 0x71C)
+    {
+        return FUN_004A38D0(DAT_00833674, pArg);
+    }
+
+    if (category == 0x94)
+    {
+        if (nCtlID == 0x6EA)
+            return DAT_00B0FB48;
+
+        if (nCtlID == 0x6EC)
+            return DAT_00B0FB10;
+    }
+    else if (category == 0x103)
+    {
+        if (nCtlID == 0x72B)
+            return DAT_00B0FB30;
+    }
+    else if (category == 0xBC7)
+    {
+        if (nCtlID == 0x72B)
+            return DAT_00B0FB30;
+    }
+    else if (category == 0xC4 && nCtlID == 0x7A9)
+    {
+        return DAT_00B0FAD0;
+    }
 
     return 0;
 }
@@ -1289,6 +1544,40 @@ void FUN_00603E40(int nKey, int nValue)
         value->FieldC0 = nValue;
 }
 
+// The three-word record the 0x4E9 control message fills in: two input words,
+// then the wide string it answers with.
+struct Query_00603F00
+{
+    int           unknown_00;   // +0x00
+    int           unknown_04;   // +0x04
+    Obj_007B66D0  unknown_08;   // +0x08
+};
+GG_STATIC_ASSERT(offsetof(Query_00603F00, unknown_08) == 0x08);
+GG_STATIC_ASSERT(sizeof(Query_00603F00) == 0x0C);
+
+// FUNCTION: GAMEMD 0x603F00
+// Asks the control for a wide string with message 0x4E9; the answer comes back
+// by value through the hidden result pointer (ECX).
+Obj_007B66D0 FUN_00603F00(GG_HWND hWnd, int a1, int a2)
+{
+    Query_00603F00 query;
+    query.unknown_00 = a1;
+    query.unknown_04 = a2;
+    SendMessageA(hWnd, 0x4E9, 0, (long)&query);
+    return query.unknown_08;
+}
+
+// FUNCTION: GAMEMD 0x603F60
+// The same query with the second word fixed at -1.
+Obj_007B66D0 FUN_00603F60(GG_HWND hWnd, int a1)
+{
+    Query_00603F00 query;
+    query.unknown_00 = a1;
+    query.unknown_04 = -1;
+    SendMessageA(hWnd, 0x4E9, 0, (long)&query);
+    return query.unknown_08;
+}
+
 // FUNCTION: GAMEMD 0x606740  FUN_00606740 (__fastcall)
 void FUN_00606740(int nKey, bool bValue)
 {
@@ -1297,11 +1586,65 @@ void FUN_00606740(int nKey, bool bValue)
         value->FieldBC = bValue;
 }
 
+// FUNCTION: GAMEMD 0x6067A0  FUN_006067A0 (__fastcall)
+bool FUN_006067A0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+    return value ? value->FieldBC : false;
+}
+
 // FUNCTION: GAMEMD 0x6071D0
 // Calls other functions.
 void FUN_006071D0(GG_HWND hWnd)
 {
     EnumChildWindows(hWnd, FUN_00606800, 0);
+}
+
+// FUNCTION: GAMEMD 0x607FD0  FUN_00607FD0 (__fastcall)
+void FUN_00607FD0(GG_HWND hWnd)
+{
+    MapValue_00602B90* value = Inline_Probe((int)hWnd);
+
+    if (value && value->FieldBE)
+    {
+        GG_HWND hItem = GetDlgItem(hWnd, 0x71A);
+
+        if (hItem)
+            SendMessageA(hItem, 0x4E2, 0, 0);
+
+        FUN_006071E0(hWnd, false);
+        value->FieldBE = false;
+    }
+}
+
+// FUNCTION: GAMEMD 0x608260  FUN_00608260 (__fastcall)
+bool FUN_00608260(GG_HWND hWnd)
+{
+    if (DAT_00A8B238_Session.FUN_0069BBE0())
+        return false;
+
+    MapValue_00602B90* value = Inline_Probe((int)hWnd);
+
+    if (!value)
+        return false;
+
+    bool bArmed = value->FieldBD && value->FieldB0 == 1;
+    bool bVisible = IsWindowVisible(hWnd) != 0;
+
+    if (!bArmed || !bVisible)
+        return false;
+
+    VocClass::PlayGlobal(Rules->unknown_1A0, 1.0f, 0x2000, 0);
+
+    bool bEnabled = IsWindowEnabled(hWnd) != 0;
+
+    EnableWindow(hWnd, 0);
+    EnumChildWindows(hWnd, FUN_00606800, 1);
+    FUN_006071E0(hWnd, true);
+    EnumChildWindows(hWnd, FUN_00606800, 0);
+    EnableWindow(hWnd, bEnabled);
+    InvalidateRect(hWnd, 0, 0);
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x608380  FUN_00608380 (__fastcall)
@@ -1549,11 +1892,55 @@ int FUN_0060C4E0(int nKey)
     return value ? value->Field74 : 0;
 }
 
+// FUNCTION: GAMEMD 0x60C7D0  FUN_0060C7D0 (__fastcall)
+bool FUN_0060C7D0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0x10D || category == 0xD9 || category == 0xF0 ||
+        category == 0xCE || category == 0x120 || category == 0x121 ||
+        category == 0x115 || category == 0xD3 || category == 0xCF ||
+        category == 0x11F || category == 0xC3 || category == 0x11B ||
+        category == 0xE1 || category == 0x11E || category == 0xC4 ||
+        category == 0x130 || category == 0xD0 || category == 0xFC ||
+        category == 0x126)
+    {
+        value->FieldB0 = 2;
+        return true;
+    }
+
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x60C8D0  FUN_0060C8D0 (__fastcall)
 bool FUN_0060C8D0(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD6 : false;
+}
+
+// FUNCTION: GAMEMD 0x60C930  FUN_0060C930 (__fastcall)
+bool FUN_0060C930(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0xBC || category == 0xBD || category == 0x102 ||
+        category == 0xC2 || category == 0xC9 || category == 0xBC6)
+    {
+        return value->FieldD6 = true;
+    }
+
+    return value->FieldD6 = false;
 }
 
 // FUNCTION: GAMEMD 0x60C9D0  FUN_0060C9D0 (__fastcall)
@@ -1579,6 +1966,26 @@ bool FUN_0060CA90(int nKey)
     return value ? value->FieldD5 : false;
 }
 
+// FUNCTION: GAMEMD 0x60CAF0  FUN_0060CAF0 (__fastcall)
+bool FUN_0060CAF0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0xBC || category == 0xBD || category == 0x102 ||
+        category == 0xC2 || category == 0xC9 || category == 0xBC6 ||
+        category == 0x105 || category == 0x6B || category == 0x113)
+    {
+        return value->FieldD5 = true;
+    }
+
+    return value->FieldD5 = false;
+}
+
 // FUNCTION: GAMEMD 0x60CBA0  FUN_0060CBA0 (__fastcall)
 void FUN_0060CBA0(int nKey)
 {
@@ -1602,11 +2009,45 @@ bool FUN_0060CC60(int nKey)
     return value ? value->FieldD7 : false;
 }
 
+// FUNCTION: GAMEMD 0x60CCC0  FUN_0060CCC0 (__fastcall)
+bool FUN_0060CCC0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0x103 || category == 0xBC7)
+        return value->FieldD7 = true;
+
+    return value->FieldD7 = false;
+}
+
 // FUNCTION: GAMEMD 0x60CD50  FUN_0060CD50 (__fastcall)
 bool FUN_0060CD50(int nKey)
 {
     MapValue_00602B90* value = Inline_Probe(nKey);
     return value ? value->FieldD8 : false;
+}
+
+// FUNCTION: GAMEMD 0x60CDB0  FUN_0060CDB0 (__fastcall)
+bool FUN_0060CDB0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (!value)
+        return false;
+
+    int category = value->Field6C;
+
+    if (category == 0x108 || category == 0xBC6)
+    {
+        return value->FieldD8 = true;
+    }
+
+    return value->FieldD8 = false;
 }
 
 // FUNCTION: GAMEMD 0x60CE40  FUN_0060CE40 (__fastcall)
@@ -1654,6 +2095,32 @@ extern "C" __declspec(dllimport) long __stdcall DefWindowProcA(HWND__* hwnd, uns
 long __stdcall FUN_0060D520(HWND__* hwnd, unsigned int msg, unsigned int wparam, long lparam)
 {
     return DefWindowProcA(hwnd, msg, wparam, lparam);
+}
+
+// GLOBAL: GAMEMD 0xAC1CB8..0xAC1CC8 and 0xAC1DCC..0xAC1DD4 (dwords), 0xAC1CCC (word).
+extern int DAT_00AC1CB8;
+extern int DAT_00AC1CBC;
+extern int DAT_00AC1CC0;
+extern int DAT_00AC1CC4;
+extern int DAT_00AC1CC8;
+extern short DAT_00AC1CCC;
+extern int DAT_00AC1DCC;
+extern int DAT_00AC1DD0;
+extern int DAT_00AC1DD4;
+
+// FUNCTION: GAMEMD 0x6107A0  FUN_006107A0
+// Static-initialiser shape: clears a run of globals.
+void FUN_006107A0()
+{
+    DAT_00AC1CB8 = 0;
+    DAT_00AC1CBC = 0;
+    DAT_00AC1CC0 = 0;
+    DAT_00AC1CC4 = 0;
+    DAT_00AC1CC8 = 0;
+    DAT_00AC1CCC = 0;
+    DAT_00AC1DCC = 0;
+    DAT_00AC1DD0 = 0;
+    DAT_00AC1DD4 = 0;
 }
 
 // FUNCTION: GAMEMD 0x6107E0  Obj_006107E0::Obj_006107E0 (__thiscall)
@@ -1710,6 +2177,26 @@ void FUN_00621d30(Rect_00621D30* rect, void* dest)
     }
 }
 
+// The object a dialog entry owns at +0x10; only its virtual deleting
+// destructor is used here.
+struct Hook_006223C0
+{
+    virtual ~Hook_006223C0();
+};
+
+// FUNCTION: GAMEMD 0x6223C0  FUN_006223C0 (__fastcall)
+void FUN_006223C0(int nKey)
+{
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (value && value->Field10)
+    {
+        delete value->Field10;
+        value->Field10 = 0;
+        DAT_00AC48B4--;
+    }
+}
+
 // FUNCTION: GAMEMD 0x622800  UI::FocusOnWindow (__fastcall)
 void UI_FocusOnWindow(HWND hWnd)
 {
@@ -1745,6 +2232,99 @@ void FUN_00623310(GG_HWND hDlg, long lParam)
     GG_HWND hItem = GetDlgItem(hDlg, 0x5B0);
     SendMessageA(hItem, 0x4B2, 0, lParam);
     UpdateWindow(hDlg);
+}
+
+
+// The list unlink that 0x623460 performs, expanded inline.
+inline void Obj_00623420::Inline_Unlink(TextNode_00623420* pNode)
+{
+    TextNode_00623420* prev = 0;
+    TextNode_00623420* cur = TextList;
+
+    for (; cur != 0; cur = cur->Next)
+    {
+        if (pNode == cur)
+            break;
+
+        prev = cur;
+    }
+
+    if (cur != 0)
+    {
+        if (prev != 0)
+        {
+            prev->Next = cur->Next;
+            delete cur;
+        }
+        else
+        {
+            TextList = cur->Next;
+            delete cur;
+        }
+    }
+}
+
+// The text replacement that 0x623560 performs, expanded inline.
+inline void Obj_00623420::Inline_SetText(const wchar_t* pszText)
+{
+    if (Text != 0)
+    {
+        delete Text;
+        Text = 0;
+    }
+
+    if (pszText != 0 && *pszText != 0)
+    {
+        Text = new wchar_t[wcslen(pszText) + 1];
+        wcscpy(Text, pszText);
+    }
+}
+
+// Prepend a copy of one source node to the list: the allocation of 0x623420,
+// then the two words and the text copied across.
+inline void Obj_00623420::Inline_AddCopy(const TextNode_00623420* pSource)
+{
+    TextNode_00623420* node =
+        (TextNode_00623420*)operator new(wcslen(pSource->Text) * 2 + 0x12);
+
+    if (node)
+    {
+        node->Text = node->Buffer;
+        node->Next = TextList;
+        node->unknown_04 = 0;
+        TextList = node;
+    }
+
+    node->unknown_0C = pSource->unknown_0C;
+    node->unknown_04 = pSource->unknown_04;
+    wcscpy(node->Text, pSource->Text);
+}
+
+// FUNCTION: GAMEMD 0x623340  Obj_00623420::Obj_00623420 (__thiscall)
+Obj_00623420::Obj_00623420()
+{
+    memset(this, 0, sizeof(Obj_00623420));
+    unknown_68 = 0xB;
+    unknown_64 = DAT_0089C4D0;
+    unknown_3C = new Obj_007B66D0();
+    unknown_40 = 0;
+    unknown_5C = 0;
+    unknown_90 = -1;
+}
+
+// FUNCTION: GAMEMD 0x6233A0  Obj_00623420::~Obj_00623420 (__thiscall)
+Obj_00623420::~Obj_00623420()
+{
+    if (Text != 0)
+    {
+        delete Text;
+        Text = 0;
+    }
+
+    while (TextList != 0)
+        Inline_Unlink(TextList);
+
+    delete unknown_3C;
 }
 
 // FUNCTION: GAMEMD 0x623420  Obj_00623420::FUN_00623420 (__thiscall)
@@ -1790,6 +2370,16 @@ void Obj_00623420::FUN_00623460(TextNode_00623420* pNode)
     }
 }
 
+// FUNCTION: GAMEMD 0x6234B0  Obj_00623420::FUN_006234B0 (__thiscall)
+void Obj_00623420::FUN_006234B0(const TextNode_00623420* pSource)
+{
+    while (TextList != 0)
+        Inline_Unlink(TextList);
+
+    for (; pSource != 0; pSource = pSource->Next)
+        Inline_AddCopy(pSource);
+}
+
 // FUNCTION: GAMEMD 0x623560  Obj_00623420::FUN_00623560 (__thiscall)
 void Obj_00623420::FUN_00623560(const wchar_t* pszText)
 {
@@ -1821,6 +2411,88 @@ void Obj_00623420::FUN_006235B0(const char* pszText)
         Text = new wchar_t[strlen(pszText) + 1];
         swprintf(Text, L"%hs", pszText);
     }
+}
+
+// FUNCTION: GAMEMD 0x623610  Obj_00623420::FUN_00623610 (__thiscall)
+Obj_00623420* Obj_00623420::FUN_00623610(const Obj_00623420& other)
+{
+    TextNode_00623420* pList = TextList;
+    wchar_t* pText = Text;
+    Obj_007B66D0* pHeld = unknown_3C;
+
+    if (this == &other)
+        return this;
+
+    memcpy(this, &other, sizeof(Obj_00623420));
+    Text = pText;
+    unknown_3C = pHeld;
+    TextList = pList;
+
+    const wchar_t* pszSource = other.Text;
+    Inline_SetText(pszSource);
+
+    const TextNode_00623420* pSource = other.TextList;
+
+    while (TextList != 0)
+        Inline_Unlink(TextList);
+
+    for (; pSource != 0; pSource = pSource->Next)
+        Inline_AddCopy(pSource);
+
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x623730  Obj_00623420::FUN_00623730 (__thiscall)
+Obj_00623420* Obj_00623420::FUN_00623730(const Obj_00623420& other)
+{
+    TextNode_00623420* pList = TextList;
+    wchar_t* pText = Text;
+    Obj_007B66D0* pHeld = unknown_3C;
+
+    memcpy(this, &other, sizeof(Obj_00623420));
+    unknown_3C = pHeld;
+    Text = pText;
+    TextList = pList;
+
+    const wchar_t* pszSource = other.Text;
+    Inline_SetText(pszSource);
+
+    const TextNode_00623420* pSource = other.TextList;
+
+    while (TextList != 0)
+        Inline_Unlink(TextList);
+
+    for (; pSource != 0; pSource = pSource->Next)
+        Inline_AddCopy(pSource);
+
+    return this;
+}
+
+// FUNCTION: GAMEMD 0x622B50 (decl; reloc) -- the shared dialog message handler.
+int FUN_00622B50(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam);
+
+// FUNCTION: GAMEMD 0x623DA0  FUN_00623DA0
+// Dialog procedure: after the shared handler declines the message, a click on
+// control 0x5C0 or 0x5C1 stores that id in the result slot kept in the
+// window's user data.
+int __stdcall FUN_00623DA0(GG_HWND hWnd, unsigned int uMsg, unsigned int wParam, long lParam)
+{
+    int nHandled = FUN_00622B50(hWnd, uMsg, wParam, lParam);
+
+    if (nHandled != 0)
+        return nHandled;
+
+    int* pResult = (int*)GetWindowLongA(hWnd, 8);
+
+    if (uMsg == 0x111)
+    {
+        int nId = wParam & 0xFFFF;
+
+        if (nId >= 0x5C0 && nId <= 0x5C1)
+            *pResult = nId;
+    }
+
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x623E00  FUN_00623E00
@@ -1961,12 +2633,38 @@ void __stdcall FUN_006240A0(int nKey, int unused)
         value->FieldD4 = true;
 }
 
+// A dialog-control object (+0x04 word, +0x08 byte). Placeholder view of the record.
+struct Obj_00624110
+{
+    void*         unknown_00;   // +0x00 vtable pointer
+    int           unknown_04;   // +0x04
+    unsigned char unknown_08;   // +0x08
+
+    // FUNCTION: GAMEMD 0x624140 (__thiscall)
+    void FUN_00624140(int nKey, int nValue);
+};
+GG_STATIC_ASSERT(offsetof(Obj_00624110, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(Obj_00624110, unknown_08) == 0x08);
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x624130
 // VTABLE: GAMEMD 0x7EF720
 void FUN_00624130(ConstStoreObject* self)
 {
     self->Head = VTABLE_007EF720;
+}
+
+// FUNCTION: GAMEMD 0x624140  Obj_00624110::FUN_00624140 (__thiscall)
+void Obj_00624110::FUN_00624140(int nKey, int nValue)
+{
+    unknown_04 = nValue;
+
+    MapValue_00602B90* value = Inline_Probe(nKey);
+
+    if (value)
+        value->FieldD4 = true;
+
+    unknown_08 = true;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -2067,6 +2765,15 @@ int HashTableIndex::FUN_00624C80(const void* key)
     return ((1 << this->BitWidth) - 1) & hash;
 }
 
+// The dialog hash table's node: the chain link sits at +0x204 (the end of the
+// 0x200-byte MapValue behind the key).
+GG_REHASH_NODE(00624FC0, 204);
+
+// FUNCTION: GAMEMD 0x624FC0
+// Doubles the dialog hash table, chain link at +0x204. The halving member the
+// instantiation also emits is the table's other direction, matched at 0x625830.
+template struct HashTable<Node_00624FC0>;
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x625070
 int HashTableIndex::FUN_00625070(const void* key)
@@ -2134,6 +2841,49 @@ bool Obj_00625440::FUN_00625440()
     return true;
 }
 
+// Growable array of 0x14-byte elements: count, capacity, storage.
+struct Vector20_006254D0
+{
+    int   Count;       // +0x00
+    int   Capacity;    // +0x04
+    char* Items;       // +0x08
+
+    // FUNCTION: GAMEMD 0x6254D0 (__thiscall)
+    bool FUN_006254D0();
+    // FUNCTION: GAMEMD 0x625A20 (__thiscall)
+    bool FUN_00625A20();
+};
+GG_STATIC_ASSERT(offsetof(Vector20_006254D0, Capacity) == 0x04);
+GG_STATIC_ASSERT(offsetof(Vector20_006254D0, Items) == 0x08);
+GG_STATIC_ASSERT(sizeof(Vector20_006254D0) == 0x0C);
+
+// FUNCTION: GAMEMD 0x6254D0  Vector20_006254D0::FUN_006254D0 (__thiscall)
+// Halves the storage (never below ten elements) when the count has fallen
+// to a third of the capacity.
+bool Vector20_006254D0::FUN_006254D0()
+{
+    if (Count * 3 > Capacity)
+        return false;
+
+    int nNew = Capacity / 2;
+
+    if (nNew < 10)
+        nNew = 10;
+
+    if (nNew >= Capacity)
+        return false;
+
+    char* pNew = new char[nNew * 20];
+
+    if (Items)
+        memcpy(pNew, Items, Count * 20);
+
+    delete Items;
+    Items = pNew;
+    Capacity = nNew;
+    return true;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6255F0
 EntryRecord_006255F0::EntryRecord_006255F0(const EntryRecord_006255F0& other) :
@@ -2164,6 +2914,37 @@ bool Obj_00625990::FUN_00625990()
     gg_free(data);
     capacity = newCapacity;
     data = block;
+    return true;
+}
+
+GG_REHASH_NODE(00625830, 204);
+
+// FUNCTION: GAMEMD 0x625830
+// Halves the dialog hash table, chain link at +0x204.
+template struct HashTable<Node_00625830>;
+
+// FUNCTION: GAMEMD 0x625A20  Vector20_006254D0::FUN_00625A20 (__thiscall)
+// Doubles the storage (at least ten elements) once the count reaches the
+// capacity; the new storage is zeroed before the old contents are copied in.
+bool Vector20_006254D0::FUN_00625A20()
+{
+    if (Count < Capacity)
+        return false;
+
+    int nNew = Count * 2;
+
+    if (nNew < 10)
+        nNew = 10;
+
+    char* pNew = new char[nNew * 20];
+    memset(pNew, 0, nNew * 20);
+
+    if (Items)
+        memcpy(pNew, Items, Count * 20);
+
+    delete Items;
+    Capacity = nNew;
+    Items = pNew;
     return true;
 }
 
