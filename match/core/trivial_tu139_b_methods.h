@@ -25,16 +25,7 @@ int FUN_005BD5C0(Obj_005BD570*, int, int);
 // Import ShowWindow from USER32.dll (IAT slot 0x7E1498)
 extern "C" __declspec(dllimport) void __stdcall ShowWindow(int, int);
 
-struct Obj_005BCC40
-{
-    char unknown_00[0x271C];
-    int unknown_271C;   // +0x271C
-    int unknown_2720;   // +0x2720
-    // FUNCTION: GAMEMD 0x5BCC40
-    void FUN_005BCC40(int a1, int a2);
-};
-GG_STATIC_ASSERT(offsetof(Obj_005BCC40, unknown_271C) == 0x271C);
-GG_STATIC_ASSERT(offsetof(Obj_005BCC40, unknown_2720) == 0x2720);
+#include "../_layout/obj_005bcc40.h"
 
 struct Obj_005BCC60
 {

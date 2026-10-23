@@ -43,6 +43,8 @@ struct MessageListClass
     // FUNCTION: GAMEMD 0x005D3BA0 (decl; reloc)
     // MessageListClass::FUN_005D3BA0
     TextLabelClass* FUN_005D3BA0(const wchar_t*, int, const wchar_t*, int, unsigned int, int, bool);
+    // Declaration: GAMEMD 0x5D3FC0 -- four stack arguments64A693.
+    int FUN_005D3FC0(const wchar_t*, int, const wchar_t*, int);
     wchar_t* GetEditBuffer() const;        // GAMEMD 0x5D4400 __thiscall
     int      NumMessages() const;          // GAMEMD 0x5D4AA0 __thiscall
     void     ComputeY();                   // GAMEMD 0x5D4BF0 __thiscall

@@ -24,6 +24,8 @@ struct ScenarioElapsedTimer
     }
     // 0x683560 preserves the timer at +0x614 while constructing +0x620.
     explicit ScenarioElapsedTimer(const AbstractNoInit&) {}
+    // Declaration: GAMEMD 0x4F1B20 -- caller648D08, clock6C8C40.
+    int FUN_004F1B20();
     int GetTimeLeft()
     {
         int left = unknown_08;

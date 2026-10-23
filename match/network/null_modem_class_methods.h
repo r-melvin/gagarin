@@ -34,6 +34,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "win_modem_class.h"
+#include "transport/connman_class.h"
 
 // The connection's packet queue. Only the queue reset at 0x48B390 is reached
 // from this translation unit, as a direct (non-virtual) call.
@@ -113,13 +114,31 @@ GG_STATIC_ASSERT(offsetof(SerialSettings_005F19E0, Port) == 0x0 &&
 // GLOBAL: GAMEMD 0xB72D20 — the one shared WinModemClass instance.
 extern WinModemClass* WinModem_00B72D20;
 
-// NullModemClass itself. The base's virtuals are not modelled here (no body in
-// this translation unit constructs the object), so slot zero is carried as a
-// plain vtable-pointer member and every offset below is the retail one.
-class NullModemClass
+// RTTI: COL8073B0/CHD8073A0 proves ConnManClass at offset0.
+// ev_05a1717de609b2762dade452be4adf4b19ca03738c4b8a9c9448c90288aa46ba;
+// ev_cdf89b66192ca72a3586b91a9bb61b0ac34ba6347011b95490426280282b722f.
+// VTABLE: GAMEMD 0x7EEFDC
+class NullModemClass : public ConnManClass
 {
 public:
-    void*  Vptr;                     // +0x0000
+    // Declaration: GAMEMD 0x5F1650 -- ordinary destructor
+    // Declaration: GAMEMD 0x5F3650 -- scalar deleting destructor
+    virtual ~NullModemClass();                                           // slot0
+    virtual int Service();                                               // slot1,5F1C60
+    virtual int vf_2(void*, int, int, int);                                // slot2,5F3560
+    virtual int vf_3(void*, int*, int*);                                   // slot3,5F35A0
+    virtual int vf_4();                                                   // slot4,5F1950
+    virtual int vf_5(int);                                                // slot5,5F3520
+    virtual int vf_6(int);                                                // slot6,5F3530
+    virtual int vf_7();                                                   // slot7,5F35D0
+    virtual int vf_8();                                                   // slot8,5F35F0
+    virtual int vf_9(int);                                                // slot9,5F3610
+    virtual int vf_10(int);                                               // slot10,5F3630
+    virtual void vf_11(bool);                                             // slot11,5F1F00
+    virtual int ResponseTime();                                          // slot12,5F1EE0
+    virtual void SetTiming(int, int, int, bool);                           // slot13,5F1BC0
+    virtual void vf_14(int, int, int);                                    // slot14,5F3540
+    virtual void vf_15(int, int, int, int, int, int);                       // slot15,5F1F70
     char*  unknown_04;                 // +0x0004
     int    unknown_08;                   // +0x0008
     char*  unknown_0C;                  // +0x000C
@@ -139,8 +158,6 @@ public:
     int    Timeout;                  // +0x0064
     int    SendOverflows;            // +0x0068
 
-    // FUNCTION: GAMEMD 0x5F1950
-    int FUN_005F1950() const;
     // FUNCTION: GAMEMD 0x5F1960
     int FUN_005F1960();
     // FUNCTION: GAMEMD 0x5F19C0
@@ -149,13 +166,12 @@ public:
     int FUN_005F19E0(SerialSettings_005F19E0* settings);
     // FUNCTION: GAMEMD 0x5F1B70
     void Shutdown();
-    // FUNCTION: GAMEMD 0x5F1BC0
-    void SetTiming(int retryDelay, int retryLimit, int timeout, int unused);
     // FUNCTION: GAMEMD 0x5F1BF0
     int FUN_005F1BF0(void* buf, int buflen, int ackReq);
     // FUNCTION: GAMEMD 0x5F1C30
     int FUN_005F1C30(void* buf, int* buflen);
 };
+GG_STATIC_ASSERT(offsetof(NullModemClass, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(NullModemClass, unknown_04) == 0x04 &&
                  offsetof(NullModemClass, unknown_0C) == 0x0C &&
                  offsetof(NullModemClass, unknown_34) == 0x34 &&
@@ -169,5 +185,8 @@ GG_STATIC_ASSERT(offsetof(NullModemClass, unknown_40) == 0x40 &&
                  offsetof(NullModemClass, MaxRetries) == 0x60 &&
                  offsetof(NullModemClass, Timeout) == 0x64 &&
                  offsetof(NullModemClass, SendOverflows) == 0x68);
+
+// GLOBAL: GAMEMD 0xA8EA70
+extern NullModemClass DAT_00A8EA70;
 
 #endif  // GG_MATCH_NETWORK_NULL_MODEM_CLASS_METHODS_H

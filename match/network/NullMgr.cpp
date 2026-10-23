@@ -30,8 +30,7 @@
 #include <string.h>
 #include "null_modem_class_methods.h"
 
-// Debug trace (cdecl, one string argument).
-extern "C" void __cdecl FUN_004068E0(const char* format, ...);
+// Debug trace uses the shared cdecl declaration from conn_types.h.
 
 // The connection constructor (0x5EF100, `PUSH 0x54` allocation) and its port
 // attach (0x5EF170), both direct thiscalls.
@@ -259,7 +258,7 @@ int NullModemInitView::Init(int port, int unused, char* modemName, int baud,
 
 // How many connection objects are live (zero when the link is down).
 // FUNCTION: GAMEMD 0x5F1950
-int NullModemClass::FUN_005F1950() const
+int NullModemClass::vf_4()
 {
     return NumConnections;
 }
@@ -388,7 +387,7 @@ void NullModemClass::Shutdown()
 // Publish new retry timing, both here and on the connection object.
 // FUNCTION: GAMEMD 0x5F1BC0
 void NullModemClass::SetTiming(int retryDelay, int retryLimit, int timeout,
-                               int)
+                               bool)
 {
     RetryDelta = retryDelay;
     MaxRetries = retryLimit;

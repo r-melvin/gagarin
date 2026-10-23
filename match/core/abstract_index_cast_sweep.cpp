@@ -24,6 +24,7 @@
 //   out-of-line helper behind a jump).
 
 #include "abstract_index_cast_sweep.h"
+#include "../network/event_class_ctors.h"
 #include "../_layout/abstract_class.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/object_class.h"
@@ -100,7 +101,7 @@ AbstractIdOwner::AbstractIdOwner(const CoordStruct& coord)
 void* AbstractIdOwner::AsAbstractTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AbstractTypeClass, 0);
     }
@@ -112,7 +113,7 @@ void* AbstractIdOwner::AsAbstractTypeClass()
 void* AbstractIdOwner::AsTagClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TagClass, 0);
     }
@@ -124,7 +125,7 @@ void* AbstractIdOwner::AsTagClass()
 void* AbstractIdOwner::AsTagTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TagTypeClass, 0);
     }
@@ -150,10 +151,10 @@ AbstractClass* AbstractIdOwner::FUN_006E6E20()
 }
 
 // FUNCTION: GAMEMD 0x6E6F20
-void* AbstractIdOwner::FUN_006E6F20()
+void* TargetClass::FUN_006E6F20()
 {
-    if (Rtti == 0x34) {
-        return FUN_0040DD70(*AbstractIndex.Fetch(this));
+    if (RTTI == 0x34) {
+        return FUN_0040DD70(*AbstractIndex.Fetch(ID));
     }
     return 0;
 }
@@ -162,7 +163,7 @@ void* AbstractIdOwner::FUN_006E6F20()
 void* AbstractIdOwner::AsObjectClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_ObjectClass, 0);
     }
@@ -174,7 +175,7 @@ void* AbstractIdOwner::AsObjectClass()
 void* AbstractIdOwner::AsFootClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_FootClass, 0);
     }
@@ -186,7 +187,7 @@ void* AbstractIdOwner::AsFootClass()
 void* AbstractIdOwner::AsTriggerClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TriggerClass, 0);
     }
@@ -198,7 +199,7 @@ void* AbstractIdOwner::AsTriggerClass()
 void* AbstractIdOwner::AsHouseClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_HouseClass, 0);
     }
@@ -210,7 +211,7 @@ void* AbstractIdOwner::AsHouseClass()
 void* AbstractIdOwner::AsTechnoTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TechnoTypeClass, 0);
     }
@@ -222,7 +223,7 @@ void* AbstractIdOwner::AsTechnoTypeClass()
 void* AbstractIdOwner::AsTriggerTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TriggerTypeClass, 0);
     }
@@ -234,7 +235,7 @@ void* AbstractIdOwner::AsTriggerTypeClass()
 void* AbstractIdOwner::AsTeamTypeClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TeamTypeClass, 0);
     }
@@ -246,7 +247,7 @@ void* AbstractIdOwner::AsTeamTypeClass()
 void* AbstractIdOwner::AsTerrainClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TerrainClass, 0);
     }
@@ -258,7 +259,7 @@ void* AbstractIdOwner::AsTerrainClass()
 void* AbstractIdOwner::AsBulletClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_BulletClass, 0);
     }
@@ -270,7 +271,7 @@ void* AbstractIdOwner::AsBulletClass()
 void* AbstractIdOwner::AsAnimClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AnimClass, 0);
     }
@@ -282,7 +283,7 @@ void* AbstractIdOwner::AsAnimClass()
 void* AbstractIdOwner::AsTeamClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_TeamClass, 0);
     }
@@ -294,7 +295,7 @@ void* AbstractIdOwner::AsTeamClass()
 void* AbstractIdOwner::AsInfantryClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_InfantryClass, 0);
     }
@@ -306,7 +307,7 @@ void* AbstractIdOwner::AsInfantryClass()
 void* AbstractIdOwner::AsUnitClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_UnitClass, 0);
     }
@@ -318,7 +319,7 @@ void* AbstractIdOwner::AsUnitClass()
 void* AbstractIdOwner::AsBuildingClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_BuildingClass, 0);
     }
@@ -330,7 +331,7 @@ void* AbstractIdOwner::AsBuildingClass()
 void* AbstractIdOwner::AsAircraftClass()
 {
     if (Rtti == 0x34) {
-        return FUN_007CAAE4(*AbstractIndex.Fetch(this), 0,
+        return FUN_007CAAE4(*AbstractIndex.Fetch(ID), 0,
                             TypeDesc_AbstractClass,
                             TypeDesc_AircraftClass, 0);
     }
@@ -339,9 +340,9 @@ void* AbstractIdOwner::AsAircraftClass()
 }
 
 // FUNCTION: GAMEMD 0x6E7C20
-CellClass* AbstractIdOwner::FUN_006E7C20()
+CellClass* TargetClass::FUN_006E7C20()
 {
-    if (Rtti == 0x0B) {
+    if (RTTI == 0x0B) {
         CellStruct cell;
         cell.X = (short)(ID % 1000);
         cell.Y = (short)(ID / 1000);

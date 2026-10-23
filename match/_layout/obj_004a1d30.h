@@ -7,8 +7,22 @@
 #ifndef GG_MATCH_LAYOUT_OBJ_004A1D30_H
 #define GG_MATCH_LAYOUT_OBJ_004A1D30_H
 
+#include <stddef.h>
+#include "../_rt/gg_static_assert.h"
+
 struct Obj_004A1D30
 {
+    // Queue64F2B7 allocates12 bytes;64F2C5/64F2C7/64F2CA zero these.
+    // Every following checksum block copies all12 bytes into varargs.
+    // Primary ev_b9e977dcbc3a2f14122106db50ca84661b69c9019f8f456a37e077b1c1f868ad.
+    int unknown_00;
+    int unknown_04;
+    int unknown_08;
+
+    // Inline construction shape is corroborated by64F2C1/C3 null test and
+    //64F2C5/C7/CA zero stores. Original constructor source spelling is unknown.
+    Obj_004A1D30() : unknown_00(0), unknown_04(0), unknown_08(0) {}
+
     // FUNCTION: GAMEMD 0x4A1CA0 (decl; reloc) -- add one byte.
     void FUN_004A1CA0(bool value);
     // FUNCTION: GAMEMD 0x4A1D30 (decl; reloc) -- add one word.
@@ -21,4 +35,8 @@ struct Obj_004A1D30
     void FUN_004A1DB0(const char* text);
 };
 
+GG_STATIC_ASSERT(offsetof(Obj_004A1D30, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(Obj_004A1D30, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(Obj_004A1D30, unknown_08) == 8);
+GG_STATIC_ASSERT(sizeof(Obj_004A1D30) == 12);
 #endif  // GG_MATCH_LAYOUT_OBJ_004A1D30_H

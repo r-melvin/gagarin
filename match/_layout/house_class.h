@@ -121,6 +121,9 @@ template<class T> class DynamicVectorClass;
 class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
+    // Declaration: GAMEMD 0x501640 -- ECX house at 0x64CA0D.
+    void AllyAIHouses();
+
     // Declaration: GAMEMD 0x4FB920
     void FUN_004FB920();
     // FUNCTION: GAMEMD 0x502D30 (decl; reloc) -- first house whose type has this country index; ECX carries it.
@@ -537,5 +540,10 @@ GG_STATIC_ASSERT(sizeof(HouseClass)                               == 0x160B8);
 // VTABLE: GAMEMD 0x007EA834  HouseClass::(+0x24)   (COL base 0x24)
 // VTABLE: GAMEMD 0x007EA80C  HouseClass::(+0x28)   (COL base 0x28)
 // VTABLE: GAMEMD 0x007EA7F4  HouseClass::(+0x2C)   (COL base 0x2C)
+
+// Queue 0x64E250/0x64E25D/0x64E264 field accesses.
+GG_STATIC_ASSERT(offsetof(HouseClass, MapIsClear) == 0x241);
+GG_STATIC_ASSERT(offsetof(HouseClass, StartingPoint) == 0x16058);
+GG_STATIC_ASSERT(offsetof(HouseClass, StartingAllies) == 0x1605C);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H

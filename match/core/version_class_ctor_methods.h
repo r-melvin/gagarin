@@ -40,6 +40,8 @@ public:
 
     // FUNCTION: GAMEMD 0x74F730
     VersionClass();
+    // Declaration: GAMEMD 0x74FAE0 -- returns this+0xC; RET0.
+    char* FUN_0074FAE0();
 };
 GG_STATIC_ASSERT(offsetof(VersionClass, Version)      == 0x04);
 GG_STATIC_ASSERT(offsetof(VersionClass, MajorVersion) == 0x08);

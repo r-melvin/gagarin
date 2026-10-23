@@ -58,29 +58,8 @@ extern IPXAddressClass Address_00A8BB1C;
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
 extern const char* NarrowName_007350C0(const unsigned short* name);
 
-// One row of the per-connection statistics table at 0xA8B574 (stride 0x68).
-struct ConnStat
-{
-    char            Name[0x40];     // +0x00 name-output view; capacity modeled
-    int             PeakMs;         // +0x40
-    int             unknown_44;     // +0x44
-    int             unknown_48;     // +0x48
-    int             unknown_4C;     // +0x4C
-    int             AvgMs;          // +0x50
-    char            unknown_54[0x5C - 0x54];
-    IPXAddressClass Address;        // +0x5C
-};
-GG_STATIC_ASSERT(offsetof(ConnStat, Name) == 0x00);
-GG_STATIC_ASSERT(offsetof(ConnStat, PeakMs)  == 0x40);
-GG_STATIC_ASSERT(offsetof(ConnStat, unknown_44) == 0x44);
-GG_STATIC_ASSERT(offsetof(ConnStat, unknown_48) == 0x48);
-GG_STATIC_ASSERT(offsetof(ConnStat, unknown_4C) == 0x4C);
-GG_STATIC_ASSERT(offsetof(ConnStat, AvgMs)   == 0x50);
-GG_STATIC_ASSERT(offsetof(ConnStat, Address) == 0x5C);
-GG_STATIC_ASSERT(sizeof(ConnStat)            == 0x68);
+#include "../../_layout/conn_stat.h"
 
-// GLOBAL: GAMEMD 0xA8B574 -- per-connection statistics rows.
-extern ConnStat ConnStats_00A8B574[];
 // GLOBAL: GAMEMD 0xA8022C -- table of per-player objects indexed by connection id.
 extern void** PlayerTable_00A8022C;
 // GLOBAL: GAMEMD 0xA83D4C -- one distinguished entry skipped by the statistics pass.

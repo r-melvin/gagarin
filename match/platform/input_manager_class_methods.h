@@ -24,6 +24,9 @@ struct InputManagerClass
 
     // FUNCTION: GAMEMD 0x54F000 (decl; reloc) — ABI view; original name unknown.
     unsigned short FUN_0054F000();
+    // FUNCTION: GAMEMD 0x54F050 (decl; reloc)
+    // InputManagerClass::FUN_0054F050
+    unsigned short FUN_0054F050();
 
     // FUNCTION: GAMEMD 0x54F5C0 (decl; reloc) — key-state query.
     bool IsKeyPressed(int key) const;

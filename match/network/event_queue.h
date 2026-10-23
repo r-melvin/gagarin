@@ -21,6 +21,10 @@ struct EventQueue
     EventClass    List[N];      // +0x0C
     unsigned long Time[N];      // +0x0C + N * 0x6F
 
+    // FUNCTION: GAMEMD 0x652540 (decl; reloc)
+    // EventQueue<128>::FUN_00652540
+    int FUN_00652540();
+
     EventQueue()
     {
         Count = 0;

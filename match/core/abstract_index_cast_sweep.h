@@ -110,8 +110,6 @@ struct AbstractIdOwner
     AbstractIdOwner(const CellStruct& cell);       // FUNCTION: GAMEMD 0x6E6B20
     AbstractIdOwner(const CoordStruct& coord);     // FUNCTION: GAMEMD 0x6E6B70
     AbstractClass* FUN_006E6E20();                  // FUNCTION: GAMEMD 0x6E6E20
-    void* FUN_006E6F20();                          // FUNCTION: GAMEMD 0x6E6F20
-    CellClass* FUN_006E7C20();                      // FUNCTION: GAMEMD 0x6E7C20
 
     void* AsAbstractTypeClass();         // FUNCTION: GAMEMD 0x6E6BB0
     void* AsTagClass();                  // FUNCTION: GAMEMD 0x6E6C80
@@ -147,7 +145,7 @@ struct AbstractIndexTable
     IndexNode* Archive;       // +0x0010   0xB0E850
 
     IndexNode* SearchSorted(const int* key);
-    void**     Fetch(const AbstractIdOwner* owner);
+    void**     Fetch(const int& id);
     // The second spelling of the lookup (0x6E6E20): presence test first, the
     // binary search out of line in 0x523440.
     IndexNode* SearchForNode(const int& id);
@@ -205,7 +203,7 @@ inline IndexNode* AbstractIndexTable::SearchSorted(const int* key)
     return 0;
 }
 
-inline void** AbstractIndexTable::Fetch(const AbstractIdOwner* owner)
+inline void** AbstractIndexTable::Fetch(const int& id)
 {
     IndexNode* node;
 
@@ -215,7 +213,7 @@ inline void** AbstractIndexTable::Fetch(const AbstractIdOwner* owner)
 
     node = Archive;
 
-    if (node != 0 && node->ID == owner->ID) {
+    if (node != 0 && node->ID == id) {
         goto found;
     }
 
@@ -225,7 +223,7 @@ inline void** AbstractIndexTable::Fetch(const AbstractIdOwner* owner)
         IsSorted = true;
     }
 
-    node = SearchSorted(&owner->ID);
+    node = SearchSorted(&id);
 
     if (node != 0) {
         goto store;

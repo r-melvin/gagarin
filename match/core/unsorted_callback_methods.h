@@ -98,25 +98,7 @@ extern int DAT_00B77DCC;
 // GLOBAL: GAMEMD 0x89E9B0 — the tick the guard last ran at.
 extern int DAT_0089E9B0;
 
-// The two COM objects the guard pokes; each call pushes the receiver.
-struct ComVtbl_0048D080;
-struct Com_0048D080
-{
-    ComVtbl_0048D080* Vptr;   // +0x0000
-};
-struct ComVtbl_0048D080
-{
-    char  _pad000[0x0C];                                   // +0x0000
-    void (__stdcall* At_0C)(Com_0048D080* self);           // +0x000C
-    char  _pad010[0x1C - 0x10];                            // +0x0010
-    void (__stdcall* At_1C)(Com_0048D080* self);           // +0x001C
-};
-GG_STATIC_ASSERT(offsetof(ComVtbl_0048D080, At_0C) == 0x0C);
-GG_STATIC_ASSERT(offsetof(ComVtbl_0048D080, At_1C) == 0x1C);
-// GLOBAL: GAMEMD 0xAC116C — the first guarded device.
-extern Com_0048D080* DAT_00AC116C;
-// GLOBAL: GAMEMD 0xAC1170 — the second guarded device.
-extern Com_0048D080* DAT_00AC1170;
+#include "../_layout/com_0048d080.h"
 
 // FUNCTION: GAMEMD 0x406F70 (decl; reloc) — service the audio engine.
 void __cdecl FUN_00406F70();

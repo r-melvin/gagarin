@@ -369,6 +369,14 @@ extern WinsockInterfaceClass* Interface_00887628;
 // 0x663D60 maps a connection id to a byte.
 struct NetIdMapRef
 {
+    // Declaration: GAMEMD 0x6643E0 -- entry+1, used as byte string652452.
+    const char* FUN_006643E0(int index);
+    // Declaration: GAMEMD 0x6642A0 -- static12-byte IPXAddress returned.
+    IPXAddressClass* FUN_006642A0(const char* name);
+    // Declaration: GAMEMD 0x664390 -- AX-only result, upperEAX unspecified.
+    unsigned short FUN_00664390(const char* name);
+
+
     // FUNCTION: GAMEMD 0x664610 (decl; 0x684B0A)
     void FUN_00664610(int timeout, int flag);
     // Declaration: GAMEMD 0x663B40 -- ECX receiver, no arguments, RET.

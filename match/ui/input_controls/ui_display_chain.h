@@ -316,6 +316,12 @@ public:
     // (by reference and by pointer, same ABI) until the module CellClass views are consolidated.
     DisplayCell* GetCellAt_005657A0(CellStruct const& cell);
     DisplayScCellObject* FUN_005657A0(const CellStruct* cell);
+    // FUNCTION: GAMEMD 0x56D230 (decl; reloc) -- Queue0x64D427/64D51B,
+    // coordinate pointer, MovementZone, bridge flag; RET12.
+    int FUN_0056D230(const CellStruct& cell, int movementZone, bool bridge);
+    // FUNCTION: GAMEMD 0x578460 (decl; reloc) -- Queue0x64D4E9,
+    // coordinate pointer and boundary flag; RET8.
+    bool FUN_00578460(const CellStruct& cell, bool checkLevel);
     // FUNCTION: GAMEMD 0x5657E0 (decl; reloc) -- RET 4.
     bool FUN_005657E0(const CellStruct& cell);
     // FUNCTION: GAMEMD 0x577F30 (decl; reloc) -- RET 4; takes a house (null at 0x5C9430).

@@ -34,15 +34,6 @@ struct Map_00746000
 // GLOBAL: GAMEMD 0x87F7E8 — the map instance.
 extern Map_00746000 MapInstance_00746000;
 
-// AStarClass — only AttemptPath on the global instance.
-struct AStar_00746000
-{
-    char opaque[4];
-    // FUNCTION: GAMEMD 0x42D170 (decl; reloc) — AStarClass::AttemptPath.
-    int AttemptPath(const CellStruct* from, const CellStruct* to,
-                    FootClass* foot, bool fromAlt, bool toAlt, int zone);
-};
-// GLOBAL: GAMEMD 0x87E8B8 — AStarClass::Instance.
-extern AStar_00746000 DAT_0087E8B8;
+#include "../_layout/astar_00746000.h"
 
 #endif  // GG_MATCH_MOVEMENT_UNIT_CLASS_ASTAR_ATTEMPT_METHODS_H

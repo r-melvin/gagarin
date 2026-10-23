@@ -26600,11 +26600,11 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1950",
-  "sym": "?FUN_005F1950@NullModemClass@@QBEHXZ",
+  "sym": "?vf_4@NullModemClass@@UAEHXZ",
   "len": "0x4",
-  "name": "?FUN_005F1950@NullModemClass@@QBEHX",
+  "name": "NullModemClass::vf_4",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/NullMgr.cpp",
@@ -26645,11 +26645,11 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1BC0",
-  "sym": "?SetTiming@NullModemClass@@QAEXHHHH@Z",
+  "sym": "?SetTiming@NullModemClass@@UAEXHHH_N@Z",
   "len": "0x30",
   "name": "?SetTiming@NullModemClass@@QAEXHHHH@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/NullMgr.cpp",
@@ -68607,20 +68607,20 @@
  {
   "tu": "match/core/abstract_index_cast_sweep.cpp",
   "addr": "0x6E6F20",
-  "sym": "?FUN_006E6F20@AbstractIdOwner@@QAEPAXXZ",
+  "sym": "?FUN_006E6F20@TargetClass@@QAEPAXXZ",
   "len": "0xC4",
-  "name": "AbstractIdOwner::FUN_006E6F20",
+  "name": "TargetClass::FUN_006E6F20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/abstract_index_cast_sweep.cpp",
   "addr": "0x6E7C20",
-  "sym": "?FUN_006E7C20@AbstractIdOwner@@QAEPAVCellClass@@XZ",
+  "sym": "?FUN_006E7C20@TargetClass@@QAEPAVCellClass@@XZ",
   "len": "0x45",
-  "name": "AbstractIdOwner::FUN_006E7C20",
+  "name": "TargetClass::FUN_006E7C20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_5f4360.cpp",
@@ -83059,20 +83059,20 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646CE0",
-  "sym": "?FUN_00646CE0@Obj_00646CE0@@QAEXXZ",
+  "sym": "??1Obj_00646CE0@@QAE@XZ",
   "len": "0x12",
-  "name": "Obj_00646CE0::FUN_00646CE0",
+  "name": "Obj_00646CE0::~Obj_00646CE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646D00",
-  "sym": "?FUN_00646D00@Obj_00646D00@@QAEPAU1@XZ",
+  "sym": "??0Obj_00646D00@@QAE@XZ",
   "len": "0x1a",
-  "name": "Obj_00646D00::FUN_00646D00",
+  "name": "Obj_00646D00::Obj_00646D00",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
@@ -83104,11 +83104,11 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x652540",
-  "sym": "?FUN_00652540@Obj_00652540@@QAEHXZ",
+  "sym": "?FUN_00652540@?$EventQueue@$0IA@@@QAEHXZ",
   "len": "0x16",
-  "name": "Obj_00652540::FUN_00652540",
+  "name": "EventQueue<128>::FUN_00652540",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Radar.cpp",
@@ -97714,5 +97714,374 @@
   "name": "Owner_00626C60::FUN_00627A10",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646C90",
+  "sym": "??0Obj_00646CE0@@QAE@XZ",
+  "len": "0x45",
+  "name": "FUN_00646C90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646D20",
+  "sym": "_$E6",
+  "len": "0x28",
+  "name": "_$E6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646D70",
+  "sym": "?FUN_00646D70@@YIXXZ",
+  "len": "0x14",
+  "name": "FUN_00646D70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646DC0",
+  "sym": "_$E9",
+  "len": "0x28",
+  "name": "_$E9",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646DF0",
+  "sym": "?FUN_00646DF0@@YIXH@Z",
+  "len": "0x15",
+  "name": "FUN_00646DF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646E10",
+  "sym": "_$E14",
+  "len": "0x4e",
+  "name": "_$E14",
+  "status": "partial",
+  "pct": 92.6
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646E60",
+  "sym": "_$E12",
+  "len": "0x2b",
+  "name": "_$E12",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646E90",
+  "sym": "?FUN_00646E90@@YI_NHABUTargetClass@@U1@0@Z",
+  "len": "0xd2",
+  "name": "FUN_00646E90",
+  "status": "partial",
+  "pct": 44.6
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x646F70",
+  "sym": "?FUN_00646F70@@YI_NHABUTargetClass@@U1@0HH@Z",
+  "len": "0xcf",
+  "name": "FUN_00646F70",
+  "status": "partial",
+  "pct": 55.6
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x647040",
+  "sym": "?FUN_00647040@@YI_NXZ",
+  "len": "0xa2",
+  "name": "FUN_00647040",
+  "status": "partial",
+  "pct": 66.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x6470F0",
+  "sym": "?FUN_006470F0@@YI_NXZ",
+  "len": "0xa2",
+  "name": "FUN_006470F0",
+  "status": "partial",
+  "pct": 66.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x6471A0",
+  "sym": "?FUN_006471A0@@YI_NXZ",
+  "len": "0xba",
+  "name": "FUN_006471A0",
+  "status": "partial",
+  "pct": 34.5
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x647260",
+  "sym": "?FUN_00647260@@YIXXZ",
+  "len": "0x375",
+  "name": "FUN_00647260",
+  "status": "partial",
+  "pct": 3.2
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x648350",
+  "sym": "?FUN_00648350@@YIXXZ",
+  "len": "0x395",
+  "name": "?FUN_00648350@@YIXXZ",
+  "status": "partial",
+  "pct": 4.9
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x649CA0",
+  "sym": "?FUN_00649CA0@@YIHPAVConnManClass@@PADHHG@Z",
+  "len": "0x35c",
+  "name": "?FUN_00649CA0@@YIHPAVConnManClass@@PADHHG@Z",
+  "status": "partial",
+  "pct": 0.8
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64A000",
+  "sym": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "len": "0xb2",
+  "name": "?FUN_0064A000@@YIXPAVConnManClass@@G@Z",
+  "status": "partial",
+  "pct": 86.2
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64A0C0",
+  "sym": "?FUN_0064A0C0@@YIHPAVConnManClass@@PADHIPAUObj_00646D00@@PAUGameTimerClass@@@Z",
+  "len": "0x561",
+  "name": "?FUN_0064A0C0@@YIHPAVConnManClass@@PADHIPAUObj_00646D00@@PAUGameTimerClass@@@Z",
+  "status": "partial",
+  "pct": 3.9
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64A630",
+  "sym": "?FUN_0064A630@@YIHPADH@Z",
+  "len": "0x17d",
+  "name": "?FUN_0064A630@@YIHPADH@Z",
+  "status": "partial",
+  "pct": 3.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64A7B0",
+  "sym": "?FUN_0064A7B0@@YIXPAUHWND__@@@Z",
+  "len": "0x2e5",
+  "name": "?FUN_0064A7B0@@YIXPAUHWND__@@@Z",
+  "status": "partial",
+  "pct": 1.8
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64AAE0",
+  "sym": "?FUN_0064AAE0@@YIXPAUHWND__@@H@Z",
+  "len": "0x1a6",
+  "name": "?FUN_0064AAE0@@YIXPAUHWND__@@H@Z",
+  "status": "partial",
+  "pct": 4.3
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64AD10",
+  "sym": "?FUN_0064AD10@@YIXHH@Z",
+  "len": "0x11d",
+  "name": "?FUN_0064AD10@@YIXHH@Z",
+  "status": "partial",
+  "pct": 22.6
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64AE50",
+  "sym": "?FUN_0064AE50@@YGJPAUHWND__@@IIJ@Z",
+  "len": "0x395",
+  "name": "?FUN_0064AE50@@YGJPAUHWND__@@IIJ@Z",
+  "status": "partial",
+  "pct": 1.3
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64B240",
+  "sym": "?FUN_0064B240@@YIXPAVConnManClass@@HPAUObj_00646D00@@E@Z",
+  "len": "0x1cd",
+  "name": "?FUN_0064B240@@YIXPAVConnManClass@@HPAUObj_00646D00@@E@Z",
+  "status": "partial",
+  "pct": 2.1
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64B410",
+  "sym": "?FUN_0064B410@@YIHPAVConnManClass@@PAUObj_00646D00@@@Z",
+  "len": "0xbb",
+  "name": "?FUN_0064B410@@YIHPAVConnManClass@@PAUObj_00646D00@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64B4D0",
+  "sym": "?FUN_0064B4D0@@YI_NPAEPAHPADPBD_N@Z",
+  "len": "0x18d",
+  "name": "?FUN_0064B4D0@@YI_NPAEPAHPADPBD_N@Z",
+  "status": "partial",
+  "pct": 78.6
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64B660",
+  "sym": "?FUN_0064B660@@YIHPADHHHHPAH@Z",
+  "len": "0x768",
+  "name": "?FUN_0064B660@@YIHPADHHHHPAH@Z",
+  "status": "partial",
+  "pct": 3.7
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64BDD0",
+  "sym": "?FUN_0064BDD0@@YIHPADI@Z",
+  "len": "0x5af",
+  "name": "?FUN_0064BDD0@@YIHPADI@Z",
+  "status": "partial",
+  "pct": 2.4
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64C380",
+  "sym": "?FUN_0064C380@@YIHHHPAVConnManClass@@PBUScenarioTimer@@PAUObj_00646D00@@@Z",
+  "len": "0x9aa",
+  "name": "?FUN_0064C380@@YIHHHPAVConnManClass@@PBUScenarioTimer@@PAUObj_00646D00@@@Z",
+  "status": "partial",
+  "pct": 1.4
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64CD30",
+  "sym": "?FUN_0064CD30@@YIXHHHEPBUTargetClass@@@Z",
+  "len": "0x6a",
+  "name": "?FUN_0064CD30@@YIXHHHEPBUTargetClass@@@Z",
+  "status": "partial",
+  "pct": 13.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64CDA0",
+  "sym": "?FUN_0064CDA0@@YIXHH@Z",
+  "len": "0xbe8",
+  "name": "?FUN_0064CDA0@@YIXHH@Z",
+  "status": "partial",
+  "pct": 1.8
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64D990",
+  "sym": "?FUN_0064D990@@YIXH@Z",
+  "len": "0x49",
+  "name": "?FUN_0064D990@@YIXH@Z",
+  "status": "partial",
+  "pct": 31.8
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64D9E0",
+  "sym": "?FUN_0064D9E0@@YIXXZ",
+  "len": "0xcd",
+  "name": "?FUN_0064D9E0@@YIXXZ",
+  "status": "partial",
+  "pct": 13.4
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64DAB0",
+  "sym": "?FUN_0064DAB0@@YIXXZ",
+  "len": "0x3cd",
+  "name": "?FUN_0064DAB0@@YIXXZ",
+  "status": "partial",
+  "pct": 11.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x64DEA0",
+  "sym": "?FUN_0064DEA0@@YIXPAVEventClass@@@Z",
+  "len": "0x2bea",
+  "name": "?FUN_0064DEA0@@YIXPAVEventClass@@@Z",
+  "status": "partial",
+  "pct": 7.1
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x650A90",
+  "sym": "?FUN_00650A90@@YIXH@Z",
+  "len": "0xc59",
+  "name": "?FUN_00650A90@@YIXH@Z",
+  "status": "partial",
+  "pct": 2.9
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x6516F0",
+  "sym": "?FUN_006516F0@@YIXHPAVEventClass@@@Z",
+  "len": "0x971",
+  "name": "?FUN_006516F0@@YIXHPAVEventClass@@@Z",
+  "status": "partial",
+  "pct": 17.9
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x652070",
+  "sym": "?FUN_00652070@@YIXPBVEventClass@@@Z",
+  "len": "0x81",
+  "name": "?FUN_00652070@@YIXPBVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x652110",
+  "sym": "?FUN_00652110@@YIXPBUObj_00646D00@@H@Z",
+  "len": "0xae",
+  "name": "?FUN_00652110@@YIXPBUObj_00646D00@@H@Z",
+  "status": "partial",
+  "pct": 30.4
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x6521C0",
+  "sym": "?FUN_006521C0@@YI_NVEventClass@@@Z",
+  "len": "0x6f",
+  "name": "?FUN_006521C0@@YI_NVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x652230",
+  "sym": "?FUN_00652230@@YIXPAVEventClass@@@Z",
+  "len": "0x164",
+  "name": "?FUN_00652230@@YIXPAVEventClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Queue.cpp",
+  "addr": "0x6523A0",
+  "sym": "?FUN_006523A0@@YIXXZ",
+  "len": "0x19d",
+  "name": "?FUN_006523A0@@YIXXZ",
+  "status": "partial",
+  "pct": 34.5
  }
 ]

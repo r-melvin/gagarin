@@ -74,13 +74,20 @@ extern const char STR_00820C1C[];
 // (the callers clean with `ADD ESP,4` / `ADD ESP,8`).
 extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
+#include "../_layout/geometry2d.h"
+
 #pragma pack(push, 1)
 
 // A network-portable object reference: a heap/cell id plus its RTTI tag.
 class TargetAbstract;   // the resolved object; typed by the TU that calls through it
 
+class CellClass;
 struct TargetClass
 {
+    // Declaration: GAMEMD 0x6E6F20
+    void* FUN_006E6F20();
+    // Declaration: GAMEMD 0x6E7C20
+    CellClass* FUN_006E7C20();
     // FUNCTION: GAMEMD 0x6E6E20 (decl; reloc) -- the object this target names, or null.
     TargetAbstract* FUN_006E6E20() const;
     // FUNCTION: GAMEMD 0x6E6AB0 (decl; reloc) -- fill ID/RTTI from the object a target names (ECX = this,
@@ -112,7 +119,7 @@ enum RTTIType
 };
 
 // A 32-bit coordinate pair (the animation payload's placement).
-#include "../_layout/geometry2d.h"
+
 
 // Event type tags, named after the retail event-name table at 0x82091C and
 // valued from the immediates the constructors below store into Type.
@@ -153,14 +160,31 @@ public:
     EventClass(int houseIndex, int eventType, RTTIType rtti, int id);
     EventClass(int houseIndex, IPXAddressClass* address, char playerId);
 
+    // Declaration: GAMEMD 0x4C6CB0 -- caller64C911.
+    void FUN_004C6CB0();
     unsigned char Type;         // +0x00
-    bool          IsExecuted;   // +0x01
+    unsigned char IsExecuted;   // +0x01
     char          HouseIndex;   // +0x02
     unsigned int  Frame;        // +0x03
 
     union
     {
         char DataBuffer[104];
+
+        // 0x649DDC and 0x649EE4..0x649F14: pointer+7, byte count+B.
+        struct PAYLOAD_1F
+        {
+            void* unknown_07;
+            unsigned int unknown_0B;
+        } Payload_1F;
+
+        // 0x64A076/0x64A08B/0x64A084: +7 dword,+B word,+D byte.
+        struct PAYLOAD_19
+        {
+            int unknown_07;
+            unsigned short unknown_0B;
+            unsigned char unknown_0D;
+        } Payload_19;
 
         struct SPECIAL
         {
@@ -279,6 +303,11 @@ GG_STATIC_ASSERT(offsetof(EventClass, Data.Special.Special) == 0x07 &&
                  offsetof(EventClass, Data.Place.Extra)      == 0x0F &&
                  offsetof(EventClass, Data.Place.Location)   == 0x13);
 GG_STATIC_ASSERT(sizeof(SpecialPayload) == 4);
+GG_STATIC_ASSERT(offsetof(EventClass, Data.Payload_19.unknown_07) == 7);
+GG_STATIC_ASSERT(offsetof(EventClass, Data.Payload_19.unknown_0B) == 0xB);
+GG_STATIC_ASSERT(offsetof(EventClass, Data.Payload_19.unknown_0D) == 0xD);
+GG_STATIC_ASSERT(offsetof(EventClass, Data.Payload_1F.unknown_07) == 7);
+GG_STATIC_ASSERT(offsetof(EventClass, Data.Payload_1F.unknown_0B) == 0xB);
 GG_STATIC_ASSERT(sizeof(EventClass) == 111);
 
 #endif  // GG_MATCH_NETWORK_EVENT_CLASS_CTORS_H
