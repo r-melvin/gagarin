@@ -28,10 +28,10 @@ static inline int BarrelFacingIndex_00458810(const DirStruct_00458810* dir)
 // The facing index helper takes the returned direction object. A named float
 // pitch temporary preserves retail's floating-point instruction order before
 // the pitch-pivot translations. Read the scale after those translations.
-Matrix3D_00458810* BuildingClass_00458810::GetVoxelBarrelOffsetMatrix(
-    Matrix3D_00458810& ret)
+Matrix3D* BuildingClass_00458810::GetVoxelBarrelOffsetMatrix(
+    Matrix3D& ret)
 {
-    Matrix3D_00458810 mtx;
+    Matrix3D mtx;
     mtx.MakeIdentity();
     mtx.TranslateX((float)Type->VoxelBarrelOffsetToBuildingPivotPoint.X);
     mtx.TranslateY((float)Type->VoxelBarrelOffsetToBuildingPivotPoint.Y);

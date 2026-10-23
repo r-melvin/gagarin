@@ -21,6 +21,7 @@
 #include <stddef.h>
 #include <objidl.h>        // IUnknown, IPersist, IPersistStream, IStream (VC98 SDK, LIBRARY)
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/matrix3d.h"
 
 // ---------------------------------------------------------------------------
 // Value types that appear in interface signatures.
@@ -55,24 +56,6 @@ struct LocoPoint2D
 GG_STATIC_ASSERT(offsetof(LocoPoint2D, X) == 0x00);
 GG_STATIC_ASSERT(offsetof(LocoPoint2D, Y) == 0x04);
 GG_STATIC_ASSERT(sizeof(LocoPoint2D) == 0x8);
-
-// 3 rows x 4 floats (sizeof 0x30, proven by the 12-dword `REP MOVSD` copies in
-// 0x55A730 / 0x55A7D0). The user-declared constructor makes the type non-POD,
-// which is what makes VC6 hand the return slot over as a hidden pointer the
-// way retail does (also needed for the __fastcall slope lookup 0x7559B0).
-struct LocoMatrix3D
-{
-    float Row[3][4];   // +0x00
-
-    LocoMatrix3D() {}
-
-    // FUNCTION: GAMEMD 0x5AE860 (decl; reloc) - identity (__thiscall).
-    void MakeIdentity();
-    // FUNCTION: GAMEMD 0x5AF1A0 (decl; reloc) - rotate about Z (__thiscall).
-    void RotateZ(float angle);
-};
-GG_STATIC_ASSERT(offsetof(LocoMatrix3D, Row) == 0x00);
-GG_STATIC_ASSERT(sizeof(LocoMatrix3D) == 0x30);
 
 class FootClass;   // linked object; any layout view is scoped by its owning TU
 
@@ -127,9 +110,9 @@ public:
     // Slot 8 +0x20. Base: true.
     virtual bool __stdcall IsToHaveShadow() = 0;
     // Slot 9 +0x24. Hidden return pointer, then the voxel index key pointer.
-    virtual LocoMatrix3D __stdcall DrawMatrix(unsigned int* key) = 0;
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key) = 0;
     // Slot 10 +0x28. Same shape as DrawMatrix.
-    virtual LocoMatrix3D __stdcall ShadowMatrix(unsigned int* key) = 0;
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key) = 0;
     // Slot 11 +0x2C. Returns a 2D point by value (hidden pointer, RET 8).
     virtual LocoPoint2D __stdcall DrawPoint() = 0;
     // Slot 12 +0x30. Returns a 2D point by value (hidden pointer, RET 8).

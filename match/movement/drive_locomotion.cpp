@@ -148,9 +148,9 @@ double DriveLocomotionClass::FUN_004AFAA0()
 }
 
 // FUNCTION: GAMEMD 0x4AF9B0
-LocoMatrix3D DriveLocomotionClass::FUN_004AF9B0()
+Matrix3D DriveLocomotionClass::FUN_004AF9B0()
 {
-    LocoMatrix3D matrix;
+    Matrix3D matrix;
     matrix.MakeIdentity();
     if (FUN_004AFAA0() < 1.0) {
         matrix = FUN_00755A40(unknown_20, unknown_1C, FUN_004AFAA0());
@@ -267,7 +267,7 @@ int DriveLocomotionClass::FUN_004AFED0()
 }
 
 // FUNCTION: GAMEMD 0x4B0410
-LocoMatrix3D __stdcall DriveLocomotionClass::ShadowMatrix(unsigned int* key)
+Matrix3D __stdcall DriveLocomotionClass::ShadowMatrix(unsigned int* key)
 {
     if (!FUN_004AFED0() && key)
         *key = (unsigned int)-1;

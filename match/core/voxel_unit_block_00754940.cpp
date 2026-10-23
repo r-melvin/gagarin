@@ -9,7 +9,7 @@
 
 #include "../core/header_tuning_globals.h"
 #include "../renderer/matrix3d_rotate_methods.h"
-#include "../movement/matrix3d_apply_methods.h"
+#include "../_layout/matrix3d.h"
 #include "voxel_section_source.h"
 
 // ---- run-time initialised copies of the shared tuning globals --------------
@@ -30,8 +30,9 @@ double DAT_00B450A0 = 1.0 / DAT_00B45180;
 TuningCoordInit DAT_00B450A8(128, 128, 0);
 
 // Globals whose constructors are empty: retail keeps each initialiser as a
-// lone RET in __xc (entries 0x8156CC, 0x8156D0, 0x8156DC..0x8156E8). Their
-// storage is not identified; placeholder names after the initialiser.
+// lone RET in __xc (entries 0x8156CC, 0x8156D0, 0x8156DC..0x8156E8). The
+// storage of the first four is not identified; placeholder names after the
+// initialiser.
 struct VoxelEmptyInit
 {
     VoxelEmptyInit() {}
@@ -44,19 +45,20 @@ VoxelEmptyInit unknown_00754B30;
 VoxelEmptyInit unknown_00754BA0;
 // SYNTHETIC: GAMEMD 0x754BB0
 VoxelEmptyInit unknown_00754BB0;
+// The light-direction vectors below are Vector3D, whose constructor is empty,
+// so each also leaves a lone RET initialiser. They take the last two of the
+// six empty slots; which two of the six is not distinguishable in the bytes.
 // SYNTHETIC: GAMEMD 0x754BC0
-VoxelEmptyInit unknown_00754BC0;
+// GLOBAL: GAMEMD 0x887470
+Vector3D DAT_00887470;
 // SYNTHETIC: GAMEMD 0x754BD0
-VoxelEmptyInit unknown_00754BD0;
+// GLOBAL: GAMEMD 0x887420
+Vector3D DAT_00887420;
 
 // ---- 0x754C00: the light direction ------------------------------------------
 
 // GLOBAL: GAMEMD 0x88746C
 float DAT_0088746C;
-// GLOBAL: GAMEMD 0x887470
-Vector3D DAT_00887470;
-// GLOBAL: GAMEMD 0x887420
-Vector3D DAT_00887420;
 
 // A vector built in place from three components.
 struct VoxelVector : Vector3D
@@ -79,8 +81,7 @@ void __stdcall FUN_00754C00(float angle)
     v.Y = -0.707106f;
     v.Z = 0.0f;
     Vector3D r;
-    // Matrix3DRows is matrix3d_apply_methods.h's view of the same 3x4 rows.
-    DAT_00887470 = *Matrix3D_MatrixApply(&r, (Matrix3DRows*)&m, &v);
+    DAT_00887470 = *Matrix3D::MatrixApply(&r, &m, &v);
     DAT_00887420 = VoxelVector(DAT_00887470.X * -6.0f, 0.0f, 0.0f);
 }
 

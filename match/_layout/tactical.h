@@ -15,9 +15,6 @@ GG_STATIC_ASSERT(offsetof(Point2D_006D2280, Y) == 4);
 GG_STATIC_ASSERT(offsetof(Coord_006D2280, X) == 0);
 GG_STATIC_ASSERT(offsetof(Coord_006D2280, Y) == 4);
 GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 8);
-GG_STATIC_ASSERT(offsetof(Vector3D_006D2280, X) == 0);
-GG_STATIC_ASSERT(offsetof(Vector3D_006D2280, Y) == 4);
-GG_STATIC_ASSERT(offsetof(Vector3D_006D2280, Z) == 8);
 
 // External call target GAMEMD 0x00731D00: ECX supplies the value.
 void FUN_00731D00(int value);
@@ -112,8 +109,8 @@ public:
     int unknown_DA0;
     ScenarioElapsedTimer unknown_DA4;
     int unknown_DB0;
-    Matrix3D_006D2280 unknown_DB4;
-    Matrix3D_006D2280 unknown_DE4;
+    Matrix3D unknown_DB4;
+    Matrix3D unknown_DE4;
     char unknown_E14[4];
 };
 GG_STATIC_ASSERT(offsetof(Tactical, unknown_24) == 0x24);

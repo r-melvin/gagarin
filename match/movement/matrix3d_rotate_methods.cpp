@@ -7,7 +7,7 @@
 //   FUNCTION: GAMEMD 0x5AF000  Matrix3D::RotateX (__thiscall)
 //   FUNCTION: GAMEMD 0x5AF120  Matrix3D::RotateY (__thiscall)
 
-#include "matrix3d_rotate_methods.h"
+#include "../_layout/matrix3d.h"
 
 // FUNCTION: GAMEMD 0x5AF000  (__thiscall)
 // In-place rotation about the local X axis given pre-computed Sin/Cos, and the

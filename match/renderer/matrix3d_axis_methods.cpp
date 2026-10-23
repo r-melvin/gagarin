@@ -6,9 +6,9 @@
 
 // Scale each component; the divisor is taken by value so its last use is the
 // third division (retail's `FDIVR` consumes it there).
-static inline Vector3 Divide(const Vector3& a, double d)
+static inline Vector3D Divide(const Vector3D& a, double d)
 {
-    return Vector3(a.X / d, a.Y / d, a.Z / d);
+    return Vector3D(a.X / d, a.Y / d, a.Z / d);
 }
 
 // FUNCTION: GAMEMD 0x646480
@@ -27,7 +27,7 @@ static inline Vector3 Divide(const Vector3& a, double d)
 // immediately before `CALL cos` and addresses the stores as
 // [ESP+0x30/0x34/0x38]. Variants tried, all giving the same stream: the
 // three product statements plus `q.W = cos(half)` (kept); a four-float
-// constructor in the return; a Vector3 temporary plus a (Vector3, float)
+// constructor in the return; a Vector3D temporary plus a (Vector3D, float)
 // constructor (also moves the division temporaries); cos into a double
 // local first; the products through an inline helper taking the sine by
 // value (the trick that fixed the division block); `s * n.X` operand order
@@ -44,11 +44,11 @@ static inline Vector3 Divide(const Vector3& a, double d)
 // GetYRotation 58.3%->8.0%, MatrixApply 72.1%->72.1%, FromAxis 85.9%->3.3%,
 // FromQuaternion 19.8%->1.1% and DistanceFrom3D 92.9%->67.9%. Retail's x87
 // code in this family is *not* /Op code; do not re-test the flag here.
-Quaternion Matrix3D::FromAxis(const Vector3& axis, float angle)
+Quaternion Matrix3D::FromAxis(const Vector3D& axis, float angle)
 {
-    Vector3 v = axis;
+    Vector3D v = axis;
     double len = FUN_004CAC40(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
-    Vector3 n;
+    Vector3D n;
     if (len != 0.0) {
         n = Divide(v, len);
     } else {

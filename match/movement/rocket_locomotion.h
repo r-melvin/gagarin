@@ -70,7 +70,7 @@ public:
     // ILocomotion table overrides; slot numbers are relative to AP 0x7F0B1C.
     virtual bool __stdcall IsMoving();                          // slot 4, 0x661F50
     virtual LocoCoord __stdcall Destination();                  // slot 5, hidden return, 0x661FB0
-    virtual LocoMatrix3D __stdcall DrawMatrix(unsigned int* key); // slot 9, 0x663470
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key); // slot 9, 0x663470
     virtual bool __stdcall Process();                           // slot 16, partial, 0x6622C0
     virtual void __stdcall MoveTo(LocoCoord to);                // slot 17, partial, 0x6632E0
     virtual void __stdcall StopMoving();                        // slot 18, 0x6633C0

@@ -8,7 +8,7 @@
 //   FUNCTION: GAMEMD 0x5AEA10  Matrix3D::Scale     (__thiscall)
 //   FUNCTION: GAMEMD 0x5AEB20  Matrix3D::ScaleZ    (__thiscall)
 
-#include "matrix3d_more_methods.h"
+#include "../_layout/matrix3d.h"
 
 // FUNCTION: GAMEMD 0x5AE890  (__thiscall)
 // Combined translate, fully unrolled x87. Per row the retail add order is

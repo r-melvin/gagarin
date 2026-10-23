@@ -9,7 +9,7 @@
 //   FUNCTION: GAMEMD 0x5AE9B0  Matrix3D::TranslateY   (__thiscall)
 //   FUNCTION: GAMEMD 0x5AE9E0  Matrix3D::TranslateZ   (__thiscall)
 
-#include "matrix3d_methods.h"
+#include "../_layout/matrix3d.h"
 
 
 // FUNCTION: GAMEMD 0x5AE980  (__thiscall)

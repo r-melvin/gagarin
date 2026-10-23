@@ -39,6 +39,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
+#include "../_layout/matrix3d.h"
 
 // A binary-angle direction. The user-declared constructor is what makes VC6
 // return it through a hidden pointer (a POD of this size would come back in
@@ -143,31 +144,9 @@ struct FootVtbl_004CF610
 GG_STATIC_ASSERT(offsetof(FootVtbl_004CF610, At_84) == 0x84 &&
                  offsetof(FootVtbl_004CF610, At_1C8) == 0x1C8);
 
-// Matrix3D — 3 rows x 4 floats, flat at offset 0 (sizeof 0x30).
-struct Matrix3D_004CF610
-{
-    float Row[3][4];   // +0x00
-
-    // User-declared so the type is non-POD: that is what makes VC6 pass the
-    // hidden return pointer like a first argument (ECX for the __fastcall
-    // ramp lookup, the slot after `this` for the __stdcall method) instead of
-    // pushing it, and hand it back in EAX.
-    Matrix3D_004CF610() {}
-
-    // FUNCTION: GAMEMD 0x5AE860 (decl; reloc) — Matrix3D::MakeIdentity.
-    void MakeIdentity();
-    // FUNCTION: GAMEMD 0x5AEF60 (decl; reloc) — Matrix3D::RotateX(float).
-    void RotateX(float angle);
-    // FUNCTION: GAMEMD 0x5AF080 (decl; reloc) — Matrix3D::RotateY(float).
-    void RotateY(float angle);
-    // FUNCTION: GAMEMD 0x5AF1A0 (decl; reloc) — Matrix3D::RotateZ(float).
-    void RotateZ(float angle);
-};
-GG_STATIC_ASSERT(sizeof(Matrix3D_004CF610) == 0x30);
-
 // FUNCTION: GAMEMD 0x7559B0 (decl; reloc) — copies VoxelRampMatrices[index]
 // (0xB45188, 0x30-byte stride) out through the hidden pointer.
-Matrix3D_004CF610 FUN_007559B0_M(int index);
+Matrix3D FUN_007559B0_M(int index);
 
 // FlyLocomotionClass seen through its locomotor interface at object +0x04.
 // Packed to four, because the interface pointer sits four into the object, so
@@ -182,9 +161,9 @@ struct FlyLocoMatrix
     double         Height;                 // +0x0044  (object +0x48)
 
     // FUNCTION: GAMEMD 0x4CF610
-    Matrix3D_004CF610 __stdcall Draw_Matrix(int* key);
+    Matrix3D __stdcall Draw_Matrix(int* key);
     // FUNCTION: GAMEMD 0x4CFB00
-    Matrix3D_004CF610 __stdcall Shadow_Matrix(unsigned int* key);
+    Matrix3D __stdcall Shadow_Matrix(unsigned int* key);
 };
 #pragma pack(pop)
 GG_STATIC_ASSERT(offsetof(FlyLocoMatrix, LinkedTo) == 0x08 &&

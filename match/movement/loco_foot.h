@@ -98,6 +98,6 @@ int FUN_006D20E0(int value);
 
 // FUNCTION: GAMEMD 0x7559B0 (decl; reloc) - slope-index matrix lookup. A
 // non-POD hidden return pointer arrives in ECX and the slope index in EDX.
-LocoMatrix3D FUN_007559B0(int index);
+Matrix3D FUN_007559B0(int index);
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_LOCO_FOOT_H

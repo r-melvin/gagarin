@@ -65,13 +65,13 @@ HRESULT __stdcall HoverLocomotionClass::LinkToObject(FootClass* object)
 }
 
 // FUNCTION: GAMEMD 0x513F40
-LocoMatrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
+Matrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
 {
     if (fabs(HoverFoot(LinkedTo)->AngleSideways) < 0.005 && fabs(HoverFoot(LinkedTo)->AngleForwards) < 0.005) {
         if (!IsPowered()) {
             LocoCoord location = HoverFoot(LinkedTo)->Location;
             int slope = HoverMap().GetCellAt(&location)->SlopeIndex;
-            LocoMatrix3D m = HoverSlopeMatrix(slope);
+            Matrix3D m = HoverSlopeMatrix(slope);
             m.RotateZ((float)(((int)((((HoverFoot(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                               * -0.19634954084936207));
             if (key != 0 && *key != 0xFFFFFFFF) {
@@ -113,7 +113,7 @@ LocoMatrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
 }
 
 // FUNCTION: GAMEMD 0x5142A0
-LocoMatrix3D __stdcall HoverLocomotionClass::ShadowMatrix(unsigned int* key)
+Matrix3D __stdcall HoverLocomotionClass::ShadowMatrix(unsigned int* key)
 {
     HoverFootView* foot = HoverFoot(LinkedTo);
     if (!(fabs(foot->AngleSideways) < 0.005 && fabs(foot->AngleForwards) < 0.005)) {

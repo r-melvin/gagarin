@@ -2,7 +2,7 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5AFB80.
 
-#include "matrix3d_apply_methods.h"
+#include "../_layout/matrix3d.h"
 
 // x87 TERM ORDER IS NOT SOURCE-CONTROLLED. Retail evaluates rows 1 and 2 as
 // (m0*X + m2*Z) + m1*Y and row 0 as (m2*Z + m1*Y) + m0*X - three orders that
@@ -40,8 +40,8 @@
 // GetYRotation 58.3%->8.0%, MatrixApply 72.1%->72.1%, FromAxis 85.9%->3.3%,
 // FromQuaternion 19.8%->1.1% and DistanceFrom3D 92.9%->67.9%. Retail's x87
 // code in this family is *not* /Op code; do not re-test the flag here.
-Vector3D* Matrix3D_MatrixApply(Vector3D* out, Matrix3DRows* matrix,
-                               Vector3D* vector)
+Vector3D* Matrix3D::MatrixApply(Vector3D* out, const Matrix3D* matrix,
+                                const Vector3D* vector)
 {
     Vector3D result;
 

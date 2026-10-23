@@ -12,33 +12,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/vector3d.h"
+#include "../_layout/matrix3d.h"
 
 #include "../_layout/geometry2d.h"
 GG_STATIC_ASSERT(sizeof(Point2D) == 0x8);
-
-struct Vector3D
-{
-    float X;                  // +0x0000
-    float Y;                  // +0x0004
-    float Z;                  // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Vector3D) == 0xC);
-GG_STATIC_ASSERT(offsetof(Vector3D, Y) == 0x4);
-GG_STATIC_ASSERT(offsetof(Vector3D, Z) == 0x8);
-
-// 3x4 row-major float affine transform (see match/movement/matrix3d_methods.h;
-// redefined locally so this TU stays standalone and can carry the apply
-// helper's declaration).
-struct Matrix3D
-{
-    float Row[3][4];          // +0x0000
-
-    // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) — result = mat * vec, with the
-    // result pointer in ECX, the matrix in EDX and the vector on the stack.
-    static Vector3D* MatrixApply(Vector3D* ret, const Matrix3D* mat,
-                                 const Vector3D* vec);
-};
-GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);
 
 class Tactical
 {

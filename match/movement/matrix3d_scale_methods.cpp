@@ -7,7 +7,7 @@
 //   FUNCTION: GAMEMD 0x5AEAD0  Matrix3D::ScaleX (__thiscall)
 //   FUNCTION: GAMEMD 0x5AEAF0  Matrix3D::ScaleY (__thiscall)
 
-#include "matrix3d_scale_methods.h"
+#include "../_layout/matrix3d.h"
 
 // FUNCTION: GAMEMD 0x5AEAD0  (__thiscall)
 // Scale the local X axis: multiply column 0 of every row by x in place.

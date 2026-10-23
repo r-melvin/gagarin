@@ -29,7 +29,7 @@
 
 // ---------------------------------------------------------------------------
 // Hover-specific values and views are scoped in hover_locomotion_support.h;
-// LocoCoord and LocoMatrix3D are the canonical shared value declarations.
+// LocoCoord and Matrix3D are the canonical shared value declarations.
 // ---------------------------------------------------------------------------
 
 // A world coordinate with the retail helpers that take it as `this`.
@@ -111,8 +111,8 @@ public:
     virtual bool __stdcall IsMoving();                                    // 4   0x514C30
     virtual LocoCoord __stdcall Destination();                            // 5   0x514CB0
     virtual LocoCoord __stdcall HeadToCoord();                            // 6   0x514D10
-    virtual LocoMatrix3D __stdcall DrawMatrix(unsigned int* key);         // 9   0x513F40
-    virtual LocoMatrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10  0x5142A0
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);         // 9   0x513F40
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10  0x5142A0
     virtual bool __stdcall Process();                                     // 16  0x514310
     virtual void __stdcall MoveTo(LocoCoord to);                          // 17  0x514D90
     virtual void __stdcall StopMoving();                                  // 18  0x516320

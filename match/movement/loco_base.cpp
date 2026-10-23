@@ -44,9 +44,9 @@ HRESULT __stdcall LocomotionClass::LinkToObject(FootClass* object)
 // steps and re-based so that facing 8 is zero. When a voxel index key is given
 // (and is not the "none" marker) the 32-step facing is folded into its low five
 // bits.
-LocoMatrix3D __stdcall LocomotionClass::DrawMatrix(unsigned int* key)
+Matrix3D __stdcall LocomotionClass::DrawMatrix(unsigned int* key)
 {
-    LocoMatrix3D m;
+    Matrix3D m;
     m.MakeIdentity();
 
     m.RotateZ((float)(((int)((((reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
@@ -62,11 +62,11 @@ LocoMatrix3D __stdcall LocomotionClass::DrawMatrix(unsigned int* key)
 
 // FUNCTION: GAMEMD 0x55A7D0
 // migrated from match/movement/locomotion_class_shadow_matrix_methods.cpp; integrator retires the old row
-LocoMatrix3D __stdcall LocomotionClass::ShadowMatrix(unsigned int* key)
+Matrix3D __stdcall LocomotionClass::ShadowMatrix(unsigned int* key)
 {
     LocoCoord coord = reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->Location;
     int slope = DAT_0087F7E8.GetCellAt(coord)->SlopeIndex;
-    LocoMatrix3D m = FUN_007559B0(slope);
+    Matrix3D m = FUN_007559B0(slope);
 
     m.RotateZ((float)(((int)((((reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                       * gg_locomotion_facing_step));

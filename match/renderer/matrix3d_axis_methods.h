@@ -11,12 +11,15 @@
 //   `CALL 0x4CAD00` (cos), and the four result floats copied out with four
 //   dword moves to `[EAX]..[EAX+0xC]`. Names from the YRpp method map
 //  : Matrix3D::FromAxis; the result layout is the
-//   Quaternion {X, Y, Z, W} of match/renderer/matrix3d_quaternion_methods.h.
+//   Quaternion {X, Y, Z, W} of match/_layout/quaternion.h.
 #ifndef GG_MATCH_RENDERER_MATRIX3D_AXIS_METHODS_H
 #define GG_MATCH_RENDERER_MATRIX3D_AXIS_METHODS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/vector3d.h"
+#include "../_layout/quaternion.h"
+#include "../_layout/matrix3d.h"
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- sqrt(double).
 extern "C" double __cdecl FUN_004CAC40(double v);
@@ -24,40 +27,5 @@ extern "C" double __cdecl FUN_004CAC40(double v);
 extern "C" double __cdecl FUN_004CACB0(double angle);
 // FUNCTION: GAMEMD 0x4CAD00 (decl; reloc) -- table cos(double).
 extern "C" double __cdecl FUN_004CAD00(double angle);
-
-struct Vector3
-{
-    float X;   // +0x00
-    float Y;   // +0x04
-    float Z;   // +0x08
-
-    Vector3() {}
-    Vector3(float x, float y, float z) { X = x; Y = y; Z = z; }
-};
-GG_STATIC_ASSERT(offsetof(Vector3, Z) == 0x8);
-GG_STATIC_ASSERT(sizeof(Vector3) == 0xC);
-
-// Quaternion {X, Y, Z, W}. The user-declared constructor is what makes VC6
-// return it through the hidden pointer instead of EDX:EAX.
-struct Quaternion
-{
-    float X;   // +0x00
-    float Y;   // +0x04
-    float Z;   // +0x08
-    float W;   // +0x0C
-
-    Quaternion() {}
-};
-GG_STATIC_ASSERT(offsetof(Quaternion, W) == 0xC);
-GG_STATIC_ASSERT(sizeof(Quaternion) == 0x10);
-
-struct Matrix3D
-{
-    float Row[3][4];   // +0x0000
-
-    // FUNCTION: GAMEMD 0x646480  Matrix3D::FromAxis (static __fastcall)
-    static Quaternion FromAxis(const Vector3& axis, float angle);
-};
-GG_STATIC_ASSERT(sizeof(Matrix3D) == 0x30);
 
 #endif  // GG_MATCH_RENDERER_MATRIX3D_AXIS_METHODS_H

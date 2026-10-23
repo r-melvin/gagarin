@@ -1706,11 +1706,11 @@
  {
   "tu": "match/combat/building_class_voxel_barrel_methods.cpp",
   "addr": "0x458810",
-  "sym": "?GetVoxelBarrelOffsetMatrix@BuildingClass_00458810@@QAEPAUMatrix3D_00458810@@AAU2@@Z",
+  "sym": "?GetVoxelBarrelOffsetMatrix@BuildingClass_00458810@@QAEPAUMatrix3D@@AAU2@@Z",
   "len": "0x1b0",
   "name": "BuildingClass::GetVoxelBarrelOffsetMatrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/bullet_class_lose_target_methods.cpp",
@@ -25382,20 +25382,20 @@
  {
   "tu": "match/movement/fly_locomotion_matrix_methods.cpp",
   "addr": "0x4CF610",
-  "sym": "?Draw_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D_004CF610@@PAH@Z",
+  "sym": "?Draw_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D@@PAH@Z",
   "len": "0x212",
   "name": "FlyLocomotionClass::Draw_Matrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/fly_locomotion_matrix_methods.cpp",
   "addr": "0x4CFB00",
-  "sym": "?Shadow_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D_004CF610@@PAI@Z",
+  "sym": "?Shadow_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D@@PAI@Z",
   "len": "0x109",
   "name": "FlyLocomotionClass::Shadow_Matrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/fly_locomotion_move_to_methods.cpp",
@@ -25580,11 +25580,11 @@
  {
   "tu": "match/movement/loco_base.cpp",
   "addr": "0x55A730",
-  "sym": "?DrawMatrix@LocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?DrawMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x9f",
   "name": "LocomotionClass::Draw_Matrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/loco_base.cpp",
@@ -25706,11 +25706,11 @@
  {
   "tu": "match/movement/loco_base.cpp",
   "addr": "0x55A7D0",
-  "sym": "?ShadowMatrix@LocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?ShadowMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xf0",
   "name": "LocomotionClass::Shadow_Matrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/Techno.cpp",
@@ -25796,7 +25796,7 @@
  {
   "tu": "match/movement/matrix3d_apply_methods.cpp",
   "addr": "0x5AFB80",
-  "sym": "?Matrix3D_MatrixApply@@YIPAUVector3D@@PAU1@PAUMatrix3DRows@@0@Z",
+  "sym": "?MatrixApply@Matrix3D@@SIPAUVector3D@@PAU2@PBU1@PBU2@@Z",
   "len": "0x78",
   "name": "Matrix3D::MatrixApply",
   "status": "partial",
@@ -28490,7 +28490,7 @@
  {
   "tu": "match/renderer/matrix3d_axis_methods.cpp",
   "addr": "0x646480",
-  "sym": "?FromAxis@Matrix3D@@SI?AUQuaternion@@ABUVector3@@M@Z",
+  "sym": "?FromAxis@Matrix3D@@SI?AUQuaternion@@ABUVector3D@@M@Z",
   "len": "0x10A",
   "name": "Matrix3D::FromAxis",
   "status": "partial",
@@ -48222,7 +48222,7 @@
  {
   "tu": "match/movement/hover_locomotion_class.cpp",
   "addr": "0x513F40",
-  "sym": "?DrawMatrix@HoverLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?DrawMatrix@HoverLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x353",
   "name": "HoverLocomotionClass::DrawMatrix",
   "status": "partial",
@@ -48231,11 +48231,11 @@
  {
   "tu": "match/movement/hover_locomotion_class.cpp",
   "addr": "0x5142A0",
-  "sym": "?ShadowMatrix@HoverLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?ShadowMatrix@HoverLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x67",
   "name": "HoverLocomotionClass::ShadowMatrix",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/hover_locomotion_class.cpp",
@@ -48646,7 +48646,7 @@
  {
   "tu": "match/movement/rocket_locomotion.cpp",
   "addr": "0x663470",
-  "sym": "?DrawMatrix@RocketLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?DrawMatrix@RocketLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x134",
   "name": "RocketLocomotionClass::DrawMatrix",
   "status": "matched",
@@ -59598,7 +59598,7 @@
  {
   "tu": "match/renderer/quaternion_matrix_methods.cpp",
   "addr": "0x5AF710",
-  "sym": "?FUN_005AF710@Matrix3D@@QAEXABUVector3@@0M@Z",
+  "sym": "?FUN_005AF710@Matrix3D@@QAEXABUVector3D@@0M@Z",
   "len": "0x26D",
   "name": "Matrix3D::FUN_005AF710",
   "status": "partial",
@@ -60129,11 +60129,11 @@
  {
   "tu": "match/core/voxel_draw_bounds_methods.cpp",
   "addr": "0x7540F0",
-  "sym": "?FUN_007540f0@@YIXPAUVoxelSectionSource@@HHPAUMatrix3DRows@@@Z",
+  "sym": "?FUN_007540f0@@YIXPAUVoxelSectionSource@@HHPAUMatrix3D@@@Z",
   "len": "0x1F7",
   "name": "FUN_007540f0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/voxel_model_span_methods.cpp",
@@ -73503,7 +73503,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4AF9B0",
-  "sym": "?FUN_004AF9B0@DriveLocomotionClass@@QAE?AULocoMatrix3D@@XZ",
+  "sym": "?FUN_004AF9B0@DriveLocomotionClass@@QAE?AUMatrix3D@@XZ",
   "len": "0xe3",
   "name": "DriveLocomotionClass::FUN_004AF9B0",
   "status": "partial",
@@ -73602,7 +73602,7 @@
  {
   "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B0410",
-  "sym": "?ShadowMatrix@DriveLocomotionClass@@UAG?AULocoMatrix3D@@PAI@Z",
+  "sym": "?ShadowMatrix@DriveLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xb2",
   "name": "DriveLocomotionClass::ShadowMatrix",
   "status": "partial",

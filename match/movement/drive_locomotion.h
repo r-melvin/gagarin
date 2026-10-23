@@ -55,7 +55,7 @@ extern "C" int DAT_008A07D0;
 // FUNCTION: GAMEMD 0x755A40 (decl; reloc) - slope transition matrix: hidden
 // result pointer in ECX, the previous slope in EDX, then the new slope and the
 // blend fraction on the stack.
-LocoMatrix3D FUN_00755A40(int from, int to, double fraction);
+Matrix3D FUN_00755A40(int from, int to, double fraction);
 
 // VTABLE: GAMEMD 0x7E7F7C (primary), 0x7E7EB0 (ILocomotion), 0x7E7E8C (IPiggyback)
 class DriveLocomotionClass : public LocomotionClass, public IPiggyback
@@ -84,8 +84,8 @@ public:
     virtual bool __stdcall IsMoving();                                    // 4  0x4AFB80
     virtual LocoCoord __stdcall Destination();                            // 5  0x4AFC90
     virtual LocoCoord __stdcall HeadToCoord();                            // 6  0x4AFCC0
-    virtual LocoMatrix3D __stdcall DrawMatrix(unsigned int* key);         // 9  0x4AFF60
-    virtual LocoMatrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10 0x4B0410
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);         // 9  0x4AFF60
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10 0x4B0410
     virtual int __stdcall ZAdjust();                                      // 14 0x4B4870
     virtual int __stdcall ZGradient();                                    // 15 0x4B4880
     virtual bool __stdcall Process();                                     // 16 0x4B0500
@@ -114,7 +114,7 @@ public:
     virtual bool __stdcall IsPiggybacking();                              // 7  0x4B4CD0
 
     // ---- non-virtual helpers (__thiscall, complete-object this) -------------
-    LocoMatrix3D FUN_004AF9B0();                                          // 0x4AF9B0
+    Matrix3D FUN_004AF9B0();                                          // 0x4AF9B0
     double FUN_004AFAA0();                                                // 0x4AFAA0
     void FUN_004AFB00(int ramp);                                          // 0x4AFB00
     int FUN_004AFED0();                                                  // 0x4AFED0

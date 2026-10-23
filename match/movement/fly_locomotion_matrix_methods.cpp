@@ -17,9 +17,9 @@
 // pitched and rolled by its type's own angles. The voxel index key collects
 // the facing and, on each tilt arm, the bit that names it.
 // FUNCTION: GAMEMD 0x4CF610
-Matrix3D_004CF610 __stdcall FlyLocoMatrix::Draw_Matrix(int* key)
+Matrix3D __stdcall FlyLocoMatrix::Draw_Matrix(int* key)
 {
-    Matrix3D_004CF610 m;
+    Matrix3D m;
     m.MakeIdentity();
 
     if (key != 0) {
@@ -79,14 +79,14 @@ done:
 // client's secondary facing. The key folds the slope and the facing into its
 // low eleven bits.
 // FUNCTION: GAMEMD 0x4CFB00
-Matrix3D_004CF610 __stdcall FlyLocoMatrix::Shadow_Matrix(unsigned int* key)
+Matrix3D __stdcall FlyLocoMatrix::Shadow_Matrix(unsigned int* key)
 {
     Coord_004CF610 coord = this->LinkedTo->Location;
     int slope = MapInstance_004CF610.GetCellAt(coord)->SlopeIndex;
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->IsFlatOnGround != 0) {
         slope = 0;
     }
-    Matrix3D_004CF610 m = FUN_007559B0_M(slope);
+    Matrix3D m = FUN_007559B0_M(slope);
 
     m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                       * gg_locomotion_facing_step));

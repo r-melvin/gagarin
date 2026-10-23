@@ -12,7 +12,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../movement/matrix3d_apply_methods.h"
+#include "../_layout/matrix3d.h"
 
 struct VoxelSectionBounds
 {

@@ -80,8 +80,8 @@ public:
     virtual LocoCoord __stdcall HeadToCoord();                           // 6   0x55ACA0
     virtual int __stdcall CanEnterCell(int cell);                         // 7   0x55ABF0
     virtual bool __stdcall IsToHaveShadow();                              // 8   0x55ABE0
-    virtual LocoMatrix3D __stdcall DrawMatrix(unsigned int* key);         // 9   0x55A730
-    virtual LocoMatrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10  0x55A7D0
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);         // 9   0x55A730
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);       // 10  0x55A7D0
     virtual LocoPoint2D __stdcall DrawPoint();                           // 11  0x55ABD0
     virtual LocoPoint2D __stdcall ShadowPoint();                         // 12  0x55A8C0
     virtual int __stdcall VisualCharacter(int unused);                    // 13  0x55ABC0

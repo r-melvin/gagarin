@@ -41,8 +41,6 @@ CoordStruct* BounceClass::GetCoords(CoordStruct* pBuffer) const
 // caller's buffer, and return the buffer pointer.
 Matrix3D* BounceClass::GetDrawingMatrix(Matrix3D* pBuffer) const
 {
-    Matrix3D buffer;
-    Matrix3D* p = Matrix3D::FromQuaternion(&buffer, &this->CurrentAngle);
-    *pBuffer = *p;
+    *pBuffer = Matrix3D::FromQuaternion(this->CurrentAngle);
     return pBuffer;
 }

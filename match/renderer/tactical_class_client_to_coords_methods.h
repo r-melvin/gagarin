@@ -18,6 +18,8 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/vector3d.h"
+#include "../_layout/matrix3d.h"
 
 struct Point2D_006D2280
 {
@@ -35,35 +37,6 @@ struct Coord_006D2280
 GG_STATIC_ASSERT(sizeof(Coord_006D2280) == 0xC);
 GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 0x8);
 
-struct Vector3D_006D2280
-{
-    float X;                  // +0x0000
-    float Y;                  // +0x0004
-    float Z;                  // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Vector3D_006D2280) == 0xC);
-
-// 3x4 row-major float affine transform.
-struct Matrix3D_006D2280
-{
-    float Row[3][4];
-
-    void FUN_005AE860(); // 0x5AE860; identity matrix
-    void FUN_005AEF60(float value); // 0x5AEF60; RET4
-    void FUN_005AF1A0(float value); // 0x5AF1A0; RET4
-    void FUN_005AEA10(float value); // 0x5AEA10; RET4          // +0x0000
-
-    // FUNCTION: GAMEMD 0x5AFB80 (decl; reloc) — result = mat * vec, with the
-    // result pointer in ECX, the matrix in EDX and the vector on the stack.
-    static Vector3D_006D2280* MatrixApply(Vector3D_006D2280* ret,
-                                          const Matrix3D_006D2280* mat,
-                                          const Vector3D_006D2280* vec);
-};
-GG_STATIC_ASSERT(sizeof(Matrix3D_006D2280) == 0x30);
-GG_STATIC_ASSERT(offsetof(Matrix3D_006D2280, Row) == 0);
-GG_STATIC_ASSERT(sizeof(((Matrix3D_006D2280*)0)->Row[0]) == 0x10);
-GG_STATIC_ASSERT(sizeof(((Matrix3D_006D2280*)0)->Row[0][0]) == 4);
-
 // GLOBAL: GAMEMD 0xB0CE08 — the "no coordinate" CoordStruct returned for a
 // client point outside the view.
 extern Coord_006D2280 DAT_00B0CE08;
@@ -79,7 +52,7 @@ struct Tactical_006D2280
     char     _pad000[0xB0];              // +0x0000
     Point2D_006D2280 Offset_B0;          // +0x00B0  view offset (X, Y), read as one struct
     char     _padB8[0xDE4 - 0xB8];       // +0x00B8
-    Matrix3D_006D2280 IsoTransformMatrix; // +0x0DE4
+    Matrix3D IsoTransformMatrix; // +0x0DE4
 
     // FUNCTION: GAMEMD 0x6D2280 — Tactical::ClientToCoords.
     Coord_006D2280* ClientToCoords(Coord_006D2280* pDest,

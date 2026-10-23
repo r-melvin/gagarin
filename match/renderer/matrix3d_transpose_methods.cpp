@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5AFC20. Name from
 //   YRpp.
 
-#include "matrix3d_transpose_methods.h"
+#include "../_layout/matrix3d.h"
 
 // FUNCTION: GAMEMD 0x5AFC20
 //

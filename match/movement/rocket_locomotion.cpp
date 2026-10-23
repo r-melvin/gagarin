@@ -374,9 +374,9 @@ int __stdcall RocketLocomotionClass::InWhichLayer()
 }
 
 // FUNCTION: GAMEMD 0x663470
-LocoMatrix3D __stdcall RocketLocomotionClass::DrawMatrix(unsigned int* key)
+Matrix3D __stdcall RocketLocomotionClass::DrawMatrix(unsigned int* key)
 {
-    RocketMatrix m;
+    Matrix3D m;
     m.MakeIdentity();
 
     m.RotateZ((float)(((int)((((((RocketFootView*)LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)

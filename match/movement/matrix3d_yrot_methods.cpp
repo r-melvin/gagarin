@@ -7,7 +7,7 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x5AF410  Matrix3D::GetYRotation (__thiscall)
 
-#include "matrix3d_yrot_methods.h"
+#include "../_layout/matrix3d.h"
 
 #include <math.h>
 

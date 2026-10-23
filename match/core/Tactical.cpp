@@ -561,10 +561,10 @@ Tactical::Tactical()
     memset(unknown_E4, 0, sizeof unknown_E4);
     unknown_24[0] = 0;
     unknown_A4 = -1;
-    unknown_DB4.FUN_005AE860();
-    unknown_DB4.FUN_005AEF60((float)DAT_00B0CD88);
-    unknown_DB4.FUN_005AF1A0((float)DAT_00B0CE98);
-    unknown_DB4.FUN_005AEA10((float)(60.0f / DAT_00B0CD78));
+    unknown_DB4.MakeIdentity();
+    unknown_DB4.RotateX((float)DAT_00B0CD88);
+    unknown_DB4.RotateZ((float)DAT_00B0CE98);
+    unknown_DB4.Scale((float)(60.0f / DAT_00B0CD78));
     unknown_DE4.Row[0][0] = 4.26669979095459f;
     unknown_DE4.Row[0][1] = 8.53339958190918f;
     unknown_DE4.Row[0][2] = 0.0f;
@@ -689,7 +689,7 @@ Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
                                                   const Point2D_006D2280* pClient)
 {
     if (pClient->X < DAT_00B0CE30 && pClient->Y < DAT_00B0CE34 + DAT_00B0CE2C) {
-        Vector3D_006D2280 v;
+        Vector3D v;
         {
             Point2D_006D2280 pt;
             Point2D_006D2280 off = this->Offset_B0;
@@ -700,8 +700,8 @@ Coord_006D2280* Tactical_006D2280::ClientToCoords(Coord_006D2280* pDest,
             v.Z = 0.0f;
         }
         {
-            Vector3D_006D2280 r;
-            v = *Matrix3D_006D2280::MatrixApply(&r, &this->IsoTransformMatrix, &v);
+            Vector3D r;
+            v = *Matrix3D::MatrixApply(&r, &this->IsoTransformMatrix, &v);
         }
 
         Coord_006D2280 c;
@@ -721,13 +721,13 @@ Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
                                        const Point2D_006D2280* point)
 {
     if (point->X < DAT_00B0CE30 && point->Y < DAT_00B0CE34) {
-        Vector3D_006D2280 vector;
+        Vector3D vector;
         vector.X = (float)point->X;
         vector.Y = (float)point->Y;
         vector.Z = 0.0f;
         {
-            Vector3D_006D2280 transformed;
-            vector = *Matrix3D_006D2280::MatrixApply(&transformed, &unknown_DE4, &vector);
+            Vector3D transformed;
+            vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
         }
         Coord_006D2280 coordinate;
         coordinate.X = (int)vector.X;
@@ -973,12 +973,12 @@ void Tactical::FUN_006D8B30()
     unknown_B0 = center;
     unknown_B0.unknown_00 = center.unknown_00 - DAT_00B0CE30 / 2;
     unknown_B0.unknown_04 = center.unknown_04 - DAT_00B0CE34 / 2;
-    Vector3D_006D2280 vector;
+    Vector3D vector;
     vector.X = (float)(unknown_B0.unknown_00 - 60);
     vector.Y = (float)(unknown_B0.unknown_04 - 30);
     vector.Z = 0.0f;
-    Vector3D_006D2280 transformed;
-    vector = *Matrix3D_006D2280::MatrixApply(&transformed, &unknown_DE4, &vector);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
     int x = (int)vector.X;
     int y = (int)vector.Y;
     unknown_D80 = x / 256;

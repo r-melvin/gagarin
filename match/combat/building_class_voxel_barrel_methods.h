@@ -28,34 +28,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// A 3x4 row-major affine transform: 0xC dwords, per the REP MOVSD count.
-// Every operation below is an out-of-line __thiscall in the retail image.
-struct Matrix3D_00458810
-{
-    float Row[3][4];   // +0x0000
-
-    // FUNCTION: GAMEMD 0x5AE860 (decl; reloc) — Matrix3D::MakeIdentity.
-    void MakeIdentity();
-    // FUNCTION: GAMEMD 0x5AE980 (decl; reloc) — Matrix3D::TranslateX.
-    void TranslateX(float x);
-    // FUNCTION: GAMEMD 0x5AE9B0 (decl; reloc) — Matrix3D::TranslateY.
-    void TranslateY(float y);
-    // FUNCTION: GAMEMD 0x5AE9E0 (decl; reloc) — Matrix3D::TranslateZ.
-    void TranslateZ(float z);
-    // FUNCTION: GAMEMD 0x5AEAD0 (decl; reloc) — Matrix3D::ScaleX.
-    void ScaleX(float factor);
-    // FUNCTION: GAMEMD 0x5AEAF0 (decl; reloc) — Matrix3D::ScaleY.
-    void ScaleY(float factor);
-    // FUNCTION: GAMEMD 0x5AEB20 (decl; reloc) — Matrix3D::ScaleZ.
-    void ScaleZ(float factor);
-    // FUNCTION: GAMEMD 0x5AF080 (decl; reloc) — Matrix3D::RotateY.
-    void RotateY(float theta);
-    // FUNCTION: GAMEMD 0x5AF1A0 (decl; reloc) — Matrix3D::RotateZ.
-    void RotateZ(float theta);
-};
-GG_STATIC_ASSERT(offsetof(Matrix3D_00458810, Row) == 0);
-GG_STATIC_ASSERT(sizeof(Matrix3D_00458810) == 0x30);
+#include "../_layout/matrix3d.h"
 
 // A 16-bit binary angle, read here as a dword.
 struct DirStruct_00458810
@@ -112,7 +85,7 @@ struct BuildingClass_00458810
     BuildingType_00458810* Type;              // +0x0520
 
     // FUNCTION: GAMEMD 0x458810
-    Matrix3D_00458810* GetVoxelBarrelOffsetMatrix(Matrix3D_00458810& ret);
+    Matrix3D* GetVoxelBarrelOffsetMatrix(Matrix3D& ret);
 };
 GG_STATIC_ASSERT(offsetof(BuildingClass_00458810, BarrelFacing)  == 0x370 &&
                  offsetof(BuildingClass_00458810, PrimaryFacing) == 0x388 &&

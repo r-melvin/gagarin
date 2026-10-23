@@ -10,7 +10,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-#include "../movement/matrix3d_apply_methods.h"
+#include "../_layout/matrix3d.h"
 #include "voxel_section_source.h"
 
 struct BoundsFloat3
@@ -44,7 +44,7 @@ extern BoundsFloat3 DAT_00b2d948;
 extern VoxelDrawEntry DAT_00b2d958[];
 
 // FUNCTION: GAMEMD 0x7540f0
-void FUN_007540f0(VoxelSectionSource *source, int section, int frame, Matrix3DRows *matrix)
+void FUN_007540f0(VoxelSectionSource *source, int section, int frame, Matrix3D *matrix)
 {
 	VoxelSectionBounds *bounds = source->FUN_007564b0(section, frame);
 	VoxelDrawEntry &entry = DAT_00b2d958[DAT_00b2d820];
@@ -56,7 +56,7 @@ void FUN_007540f0(VoxelSectionSource *source, int section, int frame, Matrix3DRo
 
 	for (int i = 0; i < 8; i++) {
 		Vector3D tmp;
-		entry.Corners[i] = *Matrix3D_MatrixApply(&tmp, matrix, &bounds->Corners[i]);
+		entry.Corners[i] = *Matrix3D::MatrixApply(&tmp, matrix, &bounds->Corners[i]);
 		entry.Corners[i].Y = -entry.Corners[i].Y;
 		if (entry.Corners[i].X < entry.Min.X) {
 			entry.Min.X = entry.Corners[i].X;

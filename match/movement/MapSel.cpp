@@ -23,7 +23,7 @@
 // ordinary virtual holding the deleting wrapper, as FileClass does in
 // match/core/ram_file_class.h, because nothing is constructed in this file.
 
-#include "matrix3d_methods.h"
+#include "../_layout/matrix3d.h"
 
 #include "trivial_tu131_methods.h"
 
