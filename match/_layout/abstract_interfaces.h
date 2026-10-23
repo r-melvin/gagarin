@@ -22,17 +22,7 @@ struct __declspec(novtable) IRTTITypeInfo : public IUnknown
 };
 GG_STATIC_ASSERT(sizeof(IRTTITypeInfo) == 4);
 
-#ifndef GG_MATCH_LAYOUT_INOTICESINK_DEFINED
-#define GG_MATCH_LAYOUT_INOTICESINK_DEFINED
-// VTABLE: GAMEMD 0x7E1FBC (1 slot, _purecall). Slot 0 overrides return false
-// with RET 8 (0x410580).
-class INoticeSink
-{
-public:
-    virtual bool Notice(int id, int arg) = 0;            // 0
-};
-GG_STATIC_ASSERT(sizeof(INoticeSink) == 4);
-#endif
+#include "notice_sink.h"
 
 // VTABLE: GAMEMD 0x7E1FB4 (1 slot, _purecall). Slot 0 overrides are a bare
 // RET 4 (0x410590).

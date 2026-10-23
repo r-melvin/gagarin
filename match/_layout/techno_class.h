@@ -209,6 +209,9 @@ class HouseClass;
 class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
 public:
+    // FUNCTION: GAMEMD 0x734270 (decl; reloc)
+    // TechnoClass::ClearSidebarTabObject
+    void ClearSidebarTabObject();
     // FUNCTION: GAMEMD 0x6F9E50 (decl; reloc)
     void FUN_006F9E50();
     // FUNCTION: GAMEMD 0x70DDC0 (decl; reloc)

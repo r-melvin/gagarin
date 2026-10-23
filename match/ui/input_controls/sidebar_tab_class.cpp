@@ -241,8 +241,8 @@ void FUN_00732950();
 // FUNCTION: GAMEMD 0x731A50 / 0x731A70 (decl; reloc) -- toggle handlers, flag in CL.
 void FUN_00731A50(bool flag);
 void FUN_00731A70(bool flag);
-// FUNCTION: GAMEMD 0x730A10 / 0x730990 / 0x731060 / 0x7313A0 / 0x7311C0 / 0x7310D0
-// (decl; reloc) -- numbered command handlers, index in ECX.
+// FUNCTION: GAMEMD 0x730A10 (decl; reloc)
+// Numbered command handlers, index in ECX.
 int FUN_00730A10(int index);
 bool FUN_00730990(int index);
 void FUN_00731060(int index);

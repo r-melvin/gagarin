@@ -48,14 +48,7 @@ struct CellStruct
 #endif
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// A 3-byte colour (DisplayClass +0x11CC, the 256-entry ring at 0x885180).
-struct ColorStruct
-{
-    unsigned char R;   // +0x00
-    unsigned char G;   // +0x01
-    unsigned char B;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
+#include "../../_layout/components.h"
 
 // The 16-byte interface id GScreenClass::QueryInterface compares (IID layout).
 struct DisplayGuid { char Bytes[16]; };
@@ -771,13 +764,7 @@ GG_STATIC_ASSERT(sizeof(SidebarClass) == 0x5518);
 
 // ---- TabClass ----------------------------------------------------------------------------------------------------
 
-// VTABLE: GAMEMD 0x7E1FBC (1 slot) -- stored first by the TabClass constructor, then replaced by 0x7EDFAC.
-class INoticeSink
-{
-public:
-    virtual bool Notice(int id, int arg) = 0;            // 0
-};
-GG_STATIC_ASSERT(sizeof(INoticeSink) == 4);
+#include "../../_layout/notice_sink.h"
 
 // The sub-object at TabClass +0x551C (constructed by 0x4A2350).
 struct TabNoticeData
