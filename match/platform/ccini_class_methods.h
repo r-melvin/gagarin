@@ -28,6 +28,7 @@ public:
     CCINIClass() : DigestValid(false) {}
     // FUNCTION: GAMEMD 0x4741F0 (decl; reloc) -- RET 0xC.
     int ReadCCFile(FileClass* file, bool withDigest, bool flag);
+    int FUN_004757D0(const char* section, const char* key, int fallback); // GAMEMD 0x4757D0
     int WriteCCFile(FileClass* file, bool withDigest); // GAMEMD 0x474430
     // FUNCTION: GAMEMD 0x679F40  CCINIClass::Exists         (__thiscall)
     bool Exists(const char* pSection, const char* pKey);

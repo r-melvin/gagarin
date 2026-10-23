@@ -21,6 +21,7 @@ struct Obj_0069ACC0
     Obj_0069ACC0_18C* unknown_18C;   // +0x018C
     // FUNCTION: GAMEMD 0x69ACC0
     int FUN_0069ACC0() const;
+    bool FUN_0069AC30(int value); // GAMEMD 0x69AC30; one stack argument at0x683BB6
 };
 GG_STATIC_ASSERT(offsetof(Obj_0069ACC0, unknown_18C) == 0x18C);
 

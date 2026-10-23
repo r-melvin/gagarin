@@ -95966,5 +95966,14 @@
   "status": "partial",
   "pct": 5.3,
   "note": "LZO 1.00 lzo1x_d1.c decoder; retail decoder source version (1.01/1.02?) not found"
+ },
+ {
+  "tu": "match/core/Scenario.cpp",
+  "addr": "0x683AB0",
+  "sym": "?FUN_00683AB0@@YI_NPBD_NH@Z",
+  "len": "0x3F3",
+  "name": "?FUN_00683AB0@@YI_NPBD_NH@Z",
+  "status": "partial",
+  "pct": 43.8
  }
 ]

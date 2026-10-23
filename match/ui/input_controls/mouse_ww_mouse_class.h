@@ -43,7 +43,7 @@ public:
     virtual void vf_03() = 0;
     virtual void vf_04() = 0;
     virtual void vf_05() = 0;
-    virtual void vf_06() = 0;
+    virtual bool vf_06(unsigned int color) = 0; // +18 Fill, native0x683E10; renderer7BBAB0
     virtual void vf_07() = 0;
     virtual void vf_08() = 0;
     virtual void vf_09() = 0;

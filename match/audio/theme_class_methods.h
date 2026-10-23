@@ -80,6 +80,7 @@ struct ThemeClass
     const wchar_t* GetUIName(unsigned int index) const;  // GAMEMD 0x7209B0
     int            GetLength(unsigned int index) const;   // GAMEMD 0x720E50
     const char*    GetID(int index) const;                // GAMEMD 0x721270
+    void FUN_00720BB0(int index); // GAMEMD 0x720BB0; caller0x683D19
     void           QueueSong(int index);                  // GAMEMD 0x720B20
     void           Stop(bool fade);                       // GAMEMD 0x720EA0
     bool           FUN_00720FD0();                        // GAMEMD 0x720FD0

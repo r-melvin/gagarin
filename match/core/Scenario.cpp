@@ -62,6 +62,8 @@
 #include "../_layout/unit_type_class.h"
 #include "../_layout/infantry_type_class.h"
 #include "leftover_trivial_leaf_sweep.h"
+#include "trivial_tu207_methods.h"
+#include "../ui/game_options_class_methods.h"
 
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
 extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
@@ -85,6 +87,30 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int dis
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 void __fastcall FUN_007500B0(int value); // GAMEMD 0x7500B0
 double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40
+extern unsigned char DAT_00A8ED5D; // GLOBAL: GAMEMD 0x00A8ED5D
+extern char DAT_00A83E48[]; // GLOBAL: GAMEMD 0x00A83E48
+extern int DAT_00A8B254; // GLOBAL: GAMEMD 0x00A8B254
+extern Obj_0069ACC0** DAT_00A8B8CC; // GLOBAL: GAMEMD 0x00A8B8CC
+extern char** DAT_00ABF394; // GLOBAL: GAMEMD 0x00ABF394
+extern int DAT_00A8DAB4; // GLOBAL: GAMEMD 0x00A8DAB4
+extern GameOptionsClass DAT_00A8EB60; // GLOBAL: GAMEMD 0x00A8EB60
+void __fastcall FUN_004790B0(int value); // GAMEMD 0x4790B0
+int __fastcall FUN_004790A0(int value); // GAMEMD 0x4790A0
+void __cdecl FUN_004B6C30(); // GAMEMD 0x4B6C30; external ABI-only declaration
+void __fastcall FUN_005BF260(int movie, int unused, int a, int b, int c); // GAMEMD 0x5BF260
+bool __fastcall FUN_00684620(const char* filename); // GAMEMD 0x684620
+void __fastcall FUN_004F4780(bool value, void* surface, int unused); // GAMEMD 0x4F4780
+void __fastcall FUN_0072DEF0(); // GAMEMD 0x72DEF0
+void __fastcall FUN_007781A0(); // GAMEMD 0x7781A0
+void __fastcall FUN_0078ABF0(char flag, const wchar_t* text); // GAMEMD 0x78ABF0
+extern const char STR_0083D8C4[]; // STRING: GAMEMD 0x0083D8C4
+extern const char STR_0083D8B0[]; // STRING: GAMEMD 0x0083D8B0
+extern const char STR_0083D890[]; // STRING: GAMEMD 0x0083D890
+extern const char STR_0083D888[]; // STRING: GAMEMD 0x0083D888
+extern const char STR_0083D8A8[]; // STRING: GAMEMD 0x0083D8A8
+extern const char STR_0082BF9C[]; // STRING: GAMEMD 0x0082BF9C
+extern const char STR_008241C0[]; // STRING: GAMEMD 0x008241C0
+extern const char STR_0082C1BC[]; // STRING: GAMEMD 0x0082C1BC
 extern Tactical* TacticalInstance; // GLOBAL: GAMEMD 0x00887324
 extern ParticleSystemClass* DAT_00A8ED78; // GLOBAL: GAMEMD 0x00A8ED78
 extern AircraftTrackerClass AircraftTracker; // GLOBAL: GAMEMD 0x00887888
@@ -773,6 +799,75 @@ ScenarioClass::ScenarioClass(const AbstractNoInit& noInit)
         unknown_11F4 = EmptyName_00887734;
 }
 
+// FUNCTION: GAMEMD 0x683AB0
+bool __fastcall FUN_00683AB0(const char* filename, bool flag, int index)
+{
+    if ((!filename || strlen(filename) == 0) && index != -1) {
+        if (DAT_00A8ED5D == 1) filename = DAT_00A83E48;
+        else filename = CampaignArray.Items[index]->Scenario;
+    }
+    ScenarioInstance->unknown_34CC = index;
+    FUN_004068E0(STR_0083D8C4, filename);
+    FUN_004068E0(STR_0083D8B0, PlayerCount_00A8DA84);
+    strcpy(ScenarioInstance->unknown_125C, filename);
+    _strupr(ScenarioInstance->unknown_125C);
+    FUN_004790B0(-1);
+    if (Session_00A8B238.GameMode == 0) {
+        if (ScenarioInstance->unknown_34CC != -1)
+            FUN_004790B0(CampaignArray.Items[ScenarioInstance->unknown_34CC]->idxCD);
+    } else if (DAT_00A8B254 != -1) {
+        Obj_0069ACC0* entry = DAT_00A8B8CC[DAT_00A8B254];
+        if (!entry->FUN_0069AC30(FUN_004790A0(60))) FUN_004790B0(entry->FUN_0069ACC0());
+    }
+    ++DAT_00A8DAB4;
+    if (CD().FUN_004790E0(g_FileSearchMode)) {
+        --DAT_00A8DAB4;
+        WWMouseClassInstance->vf_3();
+        {
+            CCINIClass ini;
+            CCFileClass file(filename);
+            if (ini.ReadCCFile(&file, true, false)) {
+                int movie = ini.FUN_004757D0(STR_0082BF9C, STR_008241C0, -1);
+                if (movie == -1) movie = ini.FUN_004757D0(STR_0082BF9C, STR_0083D8A8, -1);
+                if (movie != -1) {
+                    DAT_00A83D10.Stop(false);
+                    FUN_005BF260(movie, -1, 1, 1, 1);
+                }
+            }
+        }
+        FUN_004068E0(STR_0083D890, filename);
+        DAT_00A83D10.FUN_00720BB0(DAT_00A83D10.FindIndex(STR_0082C1BC));
+        if (!FUN_00684620(filename)) {
+            WWMouseClassInstance->vf_4();
+            if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);
+            return false;
+        }
+        char movie[28];
+        if (ScenarioInstance->unknown_1438 != -1)
+            wsprintfA(movie, STR_0083D888, DAT_00ABF394[ScenarioInstance->unknown_1438]);
+        if (ScenarioInstance->unknown_34D0 > 0) FUN_004B6C30();
+        if (flag) FUN_005BF260(ScenarioInstance->unknown_1444, -1, 1, 1, 1);
+        if (DAT_00886FB8 != DAT_00A8EB84 || DAT_00886FBC != DAT_00A8EB88) {
+            FUN_004068E0(STR_0083D868, DAT_00A8EB84, DAT_00A8EB88);
+            FUN_00560BF0(DAT_00A8EB84, DAT_00A8EB88);
+        }
+        FUN_0072DEF0();
+        DAT_00A8EB60.FUN_005FB160();
+        DAT_0088730C->vf_06(0);
+        FUN_004F4780(true, DAT_0088730C, 0);
+        ScenarioInstance->unknown_0614.Resume();
+        if (ScenarioInstance->unknown_1C70 == -1) DAT_00A83D10.Stop(true);
+        else DAT_00A83D10.QueueSong(ScenarioInstance->unknown_1C70);
+        FUN_007781A0();
+        DAT_00A8ED5C = true;
+        DAT_00A8E378 = true;
+        if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);
+        return true;
+    }
+    if (Session_00A8B238.GameMode == 4) FUN_0078ABF0(0, EmptyName_00887734);
+    return false;
+}
+
 // FUNCTION: GAMEMD 0x684060
 void __fastcall FUN_00684060(int duration)
 {
@@ -911,29 +1006,6 @@ bool __fastcall FUN_00684370()
     }
 }
 
-// FUNCTION: GAMEMD 0x685120
-void __fastcall FUN_00685120()
-{
-    FUN_00465450();
-    FUN_007236D0();
-    FUN_0074D450(ScenarioInstance->unknown_1258);
-    FUN_0071DCA0(ScenarioInstance->unknown_1258);
-    FUN_006B5490(ScenarioInstance->unknown_1258);
-    MapInstance.FUN_00655B20();
-    if (DAT_00B0EA80.StartTime != -1) {
-        DAT_00B0EA80.TimeLeft = FUN_00685120_TimeLeft(DAT_00B0EA80);
-    }
-    DAT_00B0EA80.StartTime = CurrentFrame;
-    DAT_0087E8B8.FUN_0042AC00(&DAT_0087F8D4);
-    FUN_0053AB50();
-    FUN_004261D0();
-    MapInstance.FUN_004F42F0(2);
-    InvalidateRect(DAT_00B73550, 0, false);
-    FUN_00734210();
-    FUN_00734270(0);
-    FUN_00660C50();
-}
-
 // FUNCTION: GAMEMD 0x684C30
 void __fastcall FUN_00684C30()
 {
@@ -1015,6 +1087,29 @@ void __fastcall FUN_00684C30()
     }
     FUN_0055AF40(RulesInstance->unknown_000);
     FUN_0055AF50(RulesInstance->unknown_008);
+}
+
+// FUNCTION: GAMEMD 0x685120
+void __fastcall FUN_00685120()
+{
+    FUN_00465450();
+    FUN_007236D0();
+    FUN_0074D450(ScenarioInstance->unknown_1258);
+    FUN_0071DCA0(ScenarioInstance->unknown_1258);
+    FUN_006B5490(ScenarioInstance->unknown_1258);
+    MapInstance.FUN_00655B20();
+    if (DAT_00B0EA80.StartTime != -1) {
+        DAT_00B0EA80.TimeLeft = FUN_00685120_TimeLeft(DAT_00B0EA80);
+    }
+    DAT_00B0EA80.StartTime = CurrentFrame;
+    DAT_0087E8B8.FUN_0042AC00(&DAT_0087F8D4);
+    FUN_0053AB50();
+    FUN_004261D0();
+    MapInstance.FUN_004F42F0(2);
+    InvalidateRect(DAT_00B73550, 0, false);
+    FUN_00734210();
+    FUN_00734270(0);
+    FUN_00660C50();
 }
 
 // FUNCTION: GAMEMD 0x6851F0

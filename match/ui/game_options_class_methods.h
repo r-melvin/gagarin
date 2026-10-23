@@ -31,6 +31,7 @@ struct GameOptionsClass
 
     // FUNCTION: GAMEMD 0x5FA350 (decl; reloc)
     GameOptionsClass();
+    void FUN_005FB160(); // GAMEMD 0x5FB160; caller0x683E02
     int GetAnimSpeed(int rate);   // GAMEMD 0x5FB2E0 __thiscall
     // FUNCTION: GAMEMD 0x5FAD10 (decl; reloc)
     void FUN_005FAD10();

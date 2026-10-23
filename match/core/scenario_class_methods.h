@@ -239,9 +239,15 @@ struct ScenarioClass
     char unknown_125C[260];
     wchar_t unknown_1360[(0x13BA - 0x1360) / 2];
     char unknown_13BA[0x13DA - 0x13BA];
-    wchar_t unknown_13DA[(0x1450 - 0x13DA) / 2];
+    wchar_t unknown_13DA[(0x1438 - 0x13DA) / 2];
+    int unknown_1438;
+    char unknown_143C[8];
+    int unknown_1444;
+    char unknown_1448[8];
     wchar_t unknown_1450[(0x1C50 - 0x1450) / 2];
-    char unknown_1C50[0x38];
+    char unknown_1C50[0x20];
+    int unknown_1C70;
+    char unknown_1C74[0x14];
     ScenarioRecord unknown_1C88[50];
     ScenarioRecord unknown_248A[100];
     // 0x684CBE..0x684D03 copies the packed waypoint through four cells.
@@ -257,7 +263,7 @@ struct ScenarioClass
     char unknown_34BE[2];
     ScenarioTimer unknown_34C0;
     int unknown_34CC;
-    char unknown_34D0[4];
+    int unknown_34D0;
     TypeList<TechnoTypeClass*> unknown_34D4;
     char unknown_34EC[4];
     TypeList<int> unknown_34F0;
@@ -331,6 +337,11 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_13DA) == 0x13DA);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1450) == 0x1450);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C50) == 0x1C50);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0000) == 0);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1438) == 0x1438); // 0x683AB0 access
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1444) == 0x1444); // 0x683AB0 access
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1C70) == 0x1C70); // 0x683AB0 access
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34D0) == 0x34D0); // 0x683AB0 access
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_348E) == 0x348E);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_020C) == 0x020C);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0210) == 0x0210);
