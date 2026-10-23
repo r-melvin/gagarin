@@ -97110,5 +97110,14 @@
   "name": "SessionClass::FUN_0069BD60",
   "status": "partial",
   "pct": 3.5
+ },
+ {
+  "tu": "match/core/Tactical.cpp",
+  "addr": "0x6DA560",
+  "sym": "?vf_10@Tactical@@UAEXPAX_N@Z",
+  "len": "0x52",
+  "name": "Tactical::vf_10",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

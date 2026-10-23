@@ -1139,6 +1139,26 @@ void __stdcall FUN_006DA370(int a1)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 #include "../_layout/object_class.h"
 
+#include "../ui/input_controls/display_command.h"
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedType) == 0x1194);
+GG_STATIC_ASSERT(offsetof(DisplayClass, SavedField) == 0x1198);
+
+// FUNCTION: GAMEMD 0x6DA560
+void Tactical::vf_10(void* target, bool removed)
+{
+    for (int index = 0; index < 500; ++index) {
+        if (DAT_00B0CEC8[index].unknown_00 == target)
+            DAT_00B0CEC8[index].unknown_00 = 0;
+    }
+    if (target == Map_0087F7E8.SavedPending) {
+        DisplayCmdMap_0087F7E8.FUN_004A8D50(0);
+        Map_0087F7E8.SavedPending = 0;
+        Map_0087F7E8.SavedType = 0;
+        Map_0087F7E8.SavedField = -1;
+    }
+}
+
 // GLOBAL: GAMEMD 0xA8ECBC
 extern ObjectClass** DAT_00A8ECBC;
 // GLOBAL: GAMEMD 0xA8ECC8
