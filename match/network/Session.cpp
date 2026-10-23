@@ -118,6 +118,15 @@ extern const char* const DAT_0083ED04[4];
 // GLOBAL: GAMEMD 0x87F6C4
 extern ColorConvert* DAT_0087F6C4;
 #include <objidl.h>
+#include "../ui/tooltip_manager_shared.h"
+// GLOBAL: GAMEMD 0x887368
+extern ToolTipManager* ToolTipManager_Instance;
+// Declarations: zero-argument helpers called by native 0x69BB40.
+void __fastcall FUN_005BF450(); // 0x5BF450
+void __cdecl FUN_00406E80(); // 0x406E80
+void __fastcall FUN_00750FA0(); // 0x750FA0
+void __fastcall FUN_007535D0(); // 0x7535D0
+void __fastcall FUN_00752CA0(); // 0x752CA0
 #include "session_entry.h"
 #include <wchar.h>
 #include <string.h>
@@ -1449,23 +1458,48 @@ void SessionClass::Resume()
         this->InGameFrameActive = 1;
 
         if (DAT_0083ED20 == -1) {
-            DAT_0083ED20 = DAT_00A8EB60;
+            DAT_0083ED20 = DAT_00A8EB60.GameSpeed;
         }
         if (this->GameMode == 0) {
-            DAT_00A8EB60 = 2;
+            DAT_00A8EB60.GameSpeed = 2;
         }
         if (DAT_00A8B230->unknown_35A2 == 0) {
             FUN_00684240();
             DAT_00B07784 = CurrentFrame + 3;
         }
-        if (!(DAT_00887640->*DAT_00887640->Vtbl->At_1C)()) {
-            (DAT_00887640->*DAT_00887640->Vtbl->At_18)();
+        if (!WWMouseClassInstance->IsCaptured()) {
+            WWMouseClassInstance->CaptureMouse();
         }
         DAT_0087E758->FUN_00407150(0x4000);
     }
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x69BB40
+void SessionClass::FUN_0069BB40()
+{
+    if (InGameFrameActive == 0)
+        return;
+    InGameFrameActive = 0;
+    if (DAT_0083ED20 != -1) {
+        DAT_00A8EB60.GameSpeed = DAT_0083ED20;
+        DAT_0083ED20 = -1;
+    }
+    FUN_00532130();
+    FUN_005BF450();
+    FUN_00406E80();
+    FUN_00750FA0();
+    FUN_007535D0();
+    FUN_00752CA0();
+    DAT_0087E758->FUN_00407150(0x4000);
+    if (ToolTipManager_Instance)
+        ToolTipManager_Instance->SetState(false);
+    if (WWMouseClassInstance->IsCaptured())
+        WWMouseClassInstance->vf_5();
+    WWMouseClassInstance->vf_3();
+    DAT_00B07784 = 0;
+}
+
 // FUNCTION: GAMEMD 0x0069BBE0
 char FUN_0069BBE0(Obj_0069BBE0* self)
 {

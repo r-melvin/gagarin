@@ -18,7 +18,6 @@
 
 #include "../../core/trivial_tu293_methods.h"
 
-#include "../../core/trivial_tu294_methods.h"
 
 #include "../../platform/buffer_straws.h"
 
@@ -85,6 +84,27 @@ void FUN_007B84D0(int a1, int a2)
         {
             FUN_007BA090(DAT_00B78164, a2);
         }
+    }
+}
+
+// FUNCTION: GAMEMD 0x7B88D0
+WWMouseClass::~WWMouseClass()
+{
+    LockMouse();
+    if (DAT_00B78164 == this)
+        DAT_00B78164 = 0;
+    UnlockMouse();
+    if (Under) {
+        delete Under;
+        Under = 0;
+    }
+    if (Cache1) {
+        delete Cache1;
+        Cache1 = 0;
+    }
+    if (Cache2) {
+        delete Cache2;
+        Cache2 = 0;
     }
 }
 
@@ -270,7 +290,7 @@ void WWMouseClass::vf_8(int, int, int, int)
 
 // FUNCTION: GAMEMD 0x7B9D80
 // Tail-calls a virtual method of its receiver. Vtable slot 9 of WWMouseClass (RTTI).
-void Obj_007B9D80::FUN_007B9D80()
+void WWMouseClass::vf_9()
 {
     vf_4();
 }
@@ -289,6 +309,9 @@ void WWMouseClass::ConvertCoords(int* x, int* y)
     if (*y >= Bounds.Height)
         *y = Bounds.Height - 1;
 }
+
+// SYNTHETIC: GAMEMD 0x7BA300
+// Mouse scalar deleting destructor.
 
 // FUNCTION: GAMEMD 0x7BA320
 bool WWMouseClass::IsMouseHidden()
@@ -330,6 +353,9 @@ void WWMouseClass::vf_14(int x, int y)
     ReportedPosition.X = x;
     ReportedPosition.Y = y;
 }
+
+// SYNTHETIC: GAMEMD 0x7BA3A0
+// WWMouseClass scalar deleting destructor.
 
 // FUNCTION: GAMEMD 0x7BA3C0
 int BufferPipe::FUN_00631D10(int first, int second)

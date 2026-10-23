@@ -37,6 +37,7 @@ struct GameOptionsClass
     void FUN_005FAD10();
 };
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, GameSpeed) == 0x00);
+GG_STATIC_ASSERT(sizeof(((GameOptionsClass*)0)->GameSpeed) == 4);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_04) == 0x04);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_10) == 0x10);
 GG_STATIC_ASSERT(offsetof(GameOptionsClass, unknown_18) == 0x18);

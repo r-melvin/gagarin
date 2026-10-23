@@ -465,15 +465,3 @@ void* Obj_7B1790::FUN_7B1790(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x7BA3A0
-void* Obj_7BA3A0::FUN_7BA3A0(unsigned int flags)
-{
-    FUN_007B88D0(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-

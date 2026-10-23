@@ -121,7 +121,7 @@ class WWMouseClass : public Mouse
 {
 public:
     // ---- virtual slots (complete-object order) ----------------------------------------------
-    virtual ~WWMouseClass();                                                     // 0  0x7BA3A0 (not scored here)
+    virtual ~WWMouseClass(); // slot0: body0x7B88D0, deleting wrapper0x7BA3A0
     virtual void SetCursor(const Point2D* hotspot, MouseShapeView* shape, int frame);      // 1  0x7B8A00
     virtual bool IsMouseHidden();                                                // 2  0x7BA320
     virtual void vf_3();                                                    // 3  0x7B9930
@@ -130,7 +130,7 @@ public:
     virtual void CaptureMouse();                                                 // 6  0x7B9A60
     virtual bool IsCaptured();                                                   // 7  0x7BA330
     virtual void vf_8(int a, int b, int c, int d);               // 8  0x7B9D70
-    virtual void vf_9();                                         // 9  0x7B9D80 (not scored here)
+    virtual void vf_9();                                         // 9  0x7B9D80
     virtual int GetHideCount();                                                  // 10 0x7B89F0
     virtual int vf_11();                                                     // 11 0x7BA340
     virtual int vf_12();                                                     // 12 0x7BA350
@@ -189,6 +189,9 @@ GG_STATIC_ASSERT(offsetof(WWMouseClass, Cache2) == 0x6C);
 GG_STATIC_ASSERT(offsetof(WWMouseClass, Cache2Rect) == 0x70);
 GG_STATIC_ASSERT(offsetof(WWMouseClass, unknown_80) == 0x80);
 GG_STATIC_ASSERT(offsetof(WWMouseClass, unknown_94) == 0x94);
+GG_STATIC_ASSERT(sizeof(((WWMouseClass*)0)->Under) == 4);
+GG_STATIC_ASSERT(sizeof(((WWMouseClass*)0)->Cache1) == 4);
+GG_STATIC_ASSERT(sizeof(((WWMouseClass*)0)->Cache2) == 4);
 // sizeof from the allocation: `PUSH 0x98; CALL 0x7C8E17` at 0x560D41.
 GG_STATIC_ASSERT(sizeof(WWMouseClass) == 0x98);
 

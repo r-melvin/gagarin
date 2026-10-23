@@ -27,16 +27,7 @@ void __cdecl FUN_0040A940b();
 // unsigned (`JNC`), so a negative index takes the out-of-range path too.
 const char* FUN_00473960(unsigned int index);
 
-struct Obj_00407100
-{
-    int  Flags;        // +0x0000
-    char _pad04[0x4];
-    int  unknown_08;   // +0x0008
-
-    // FUNCTION: GAMEMD 0x407150
-    void __fastcall FUN_00407150(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_00407100, unknown_08) == 0x8);
+#include "flag_object_00407100.h"
 
 struct Obj_004072D0
 {

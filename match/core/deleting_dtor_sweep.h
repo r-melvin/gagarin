@@ -77,7 +77,6 @@ void FUN_0076AFC0(void* self);   // GAMEMD 0x76AFC0
 void FUN_0076C6E0(void* self);   // GAMEMD 0x76C6E0
 void FUN_007B46F0(void* self);   // GAMEMD 0x7B46F0
 void FUN_007B6760(void* self);   // GAMEMD 0x7B6760
-void FUN_007B88D0(void* self);   // GAMEMD 0x7B88D0
 
 struct Obj_477750 { void* FUN_477750(unsigned int flags); };  // FUNCTION: GAMEMD 0x477750
 struct Obj_487E80 { void* FUN_487E80(unsigned int flags); };  // FUNCTION: GAMEMD 0x487E80
@@ -154,6 +153,5 @@ struct Obj_7AD330 { void* FUN_7AD330(unsigned int flags); };  // FUNCTION: GAMEM
 struct Obj_7AD350 { void* FUN_7AD350(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AD350
 struct Obj_7AED20 { void* FUN_7AED20(unsigned int flags); };  // FUNCTION: GAMEMD 0x7AED20
 struct Obj_7B1790 { void* FUN_7B1790(unsigned int flags); };  // FUNCTION: GAMEMD 0x7B1790
-struct Obj_7BA3A0 { void* FUN_7BA3A0(unsigned int flags); };  // FUNCTION: GAMEMD 0x7BA3A0
 
 #endif  // GG_MATCH_CORE_DELETING_DTOR_SWEEP_H

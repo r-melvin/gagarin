@@ -12,12 +12,13 @@
 struct Obj_007B7D80;
 
 // GLOBAL: GAMEMD 0xB78164
-extern int DAT_00B78164;
+class WWMouseClass;
+extern WWMouseClass* DAT_00B78164;
 // GLOBAL: GAMEMD 0xB7816C
 extern int DAT_00B7816C;
 
 // FUNCTION: GAMEMD 0x7BA090 (declaration)
-void FUN_007BA090(int, int);
+void FUN_007BA090(WWMouseClass*, int);
 // LIBRARY: GAMEMD 0x7CB9B8 (declaration)
 void __cdecl FUN_007CB9B8(int, int, int);
 

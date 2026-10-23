@@ -24,7 +24,8 @@ extern char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0x83ED20 — the game speed saved across a pause (-1 = none).
 extern int DAT_0083ED20;
 // GLOBAL: GAMEMD 0xA8EB60 — GameOptionsClass::Instance; first dword is the speed.
-extern int DAT_00A8EB60;
+#include "../ui/game_options_class_methods.h"
+extern GameOptionsClass DAT_00A8EB60;
 // GLOBAL: GAMEMD 0xA8ED84 — Unsorted::CurrentFrame.
 #include "../core/frame_counter.h"
 // GLOBAL: GAMEMD 0xB07784 — a frame deadline re-armed at CurrentFrame + 3.
@@ -38,36 +39,10 @@ extern ScenarioClass* DAT_00A8B230;
 // FUNCTION: GAMEMD 0x684240 (decl; reloc) — no arguments, no cleanup.
 void __cdecl FUN_00684240(void);
 
-// WWMouseClass (YRpp name): two zero-argument __thiscall slots, 6 and 7.
-struct MouseVtbl_0069BAB0;
-struct Mouse_0069BAB0
-{
-    MouseVtbl_0069BAB0* Vtbl;   // +0x0000
-};
-typedef void (Mouse_0069BAB0::*FnMouse18_0069BAB0)();
-typedef bool (Mouse_0069BAB0::*FnMouse1C_0069BAB0)();
-struct MouseVtbl_0069BAB0
-{
-    char _pad00[0x18];             // +0x0000
-    FnMouse18_0069BAB0 At_18;      // +0x0018  CaptureMouse
-    FnMouse1C_0069BAB0 At_1C;      // +0x001C  IsCaptured
-};
-GG_STATIC_ASSERT(offsetof(MouseVtbl_0069BAB0, At_18) == 0x18);
-GG_STATIC_ASSERT(offsetof(MouseVtbl_0069BAB0, At_1C) == 0x1C);
-// GLOBAL: GAMEMD 0x887640 — WWMouseClass::Instance.
-extern Mouse_0069BAB0* DAT_00887640;
-
-// The object 0x407150 is called on (see match/core/small_misc2_methods.h,
-// Obj_00407100); redeclared locally so this TU stands alone.
-struct Obj_0087E758
-{
-    int Flags;   // +0x0000
-
-    // FUNCTION: GAMEMD 0x407150 (decl; reloc) — __fastcall: this=ECX, value=EDX.
-    void __fastcall FUN_00407150(int value);
-};
+#include "../ui/input_controls/mouse_ww_mouse_class.h"
+#include "../core/flag_object_00407100.h"
 // GLOBAL: GAMEMD 0x87E758
-extern Obj_0087E758* DAT_0087E758;
+extern Obj_00407100* DAT_0087E758;
 
 #include "../_layout/session_class.h"
 

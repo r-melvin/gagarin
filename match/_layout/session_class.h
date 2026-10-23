@@ -96,6 +96,8 @@ struct SessionClass
 
     // Declaration: GAMEMD 0x69BAB0 (decl; reloc)
     void Resume();
+    // Declaration: GAMEMD 0x69BB40
+    void FUN_0069BB40();
     // Declaration: GAMEMD 0x6977C0 -- no arguments, ECX Session.
     void FUN_006977C0();
     // Declaration: GAMEMD 0x697AD0 -- ECX Session, no stack arguments.

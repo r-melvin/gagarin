@@ -5423,13 +5423,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7BA3A0",
-  "sym": "?FUN_7BA3A0@Obj_7BA3A0@@QAEPAXI@Z",
-  "len": "0x1e",
-  "name": "FUN_007ba3a0",
+  "sym": "??_GWWMouseClass@@UAEPAXI@Z",
+  "len": "0x1E",
+  "name": "WWMouseClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/abstract_type_class_dtor.cpp",
@@ -86371,11 +86371,11 @@
  {
   "tu": "match/ui/input_controls/wwmous.cpp",
   "addr": "0x7B9D80",
-  "sym": "?FUN_007B9D80@Obj_007B9D80@@QAEXXZ",
+  "sym": "?vf_9@WWMouseClass@@UAEXXZ",
   "len": "0x5",
-  "name": "Obj_007B9D80::FUN_007B9D80",
+  "name": "WWMouseClass::vf_9",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/trivial_tu296_methods.cpp",
@@ -98216,6 +98216,33 @@
   "sym": "?FUN_0069B5B0@GameModeOptionsClass_Opt@@QAE_NPAUIStream@@@Z",
   "len": "0x50",
   "name": "GameModeOptionsClass_Opt::FUN_0069B5B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69BB40",
+  "sym": "?FUN_0069BB40@SessionClass@@QAEXXZ",
+  "len": "0x9d",
+  "name": "SessionClass::FUN_0069BB40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/wwmous.cpp",
+  "addr": "0x7B88D0",
+  "sym": "??1WWMouseClass@@UAE@XZ",
+  "len": "0x90",
+  "name": "WWMouseClass::~WWMouseClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/wwmous.cpp",
+  "addr": "0x7BA300",
+  "sym": "??_GMouse@@UAEPAXI@Z",
+  "len": "0x20",
+  "name": "Mouse scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  }
