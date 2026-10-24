@@ -7,4 +7,6 @@
 #include "../_layout/geometry2d.h"
 // Declaration: GAMEMD 0x4D1890 -- free /Gr function, ECX rectangle, no stack arguments.
 void FUN_004D1890(const RectangleStruct* rectangle);
+// Declaration: GAMEMD 0x420F40 -- /Gr ECX point, EDX clip, plain RET.
+void FUN_00420F40(const Point2D* point, const RectangleStruct* clip);
 #endif

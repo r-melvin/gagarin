@@ -959,7 +959,7 @@ void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
     }
     if (unknown_E0 > 0 && !fullScreen) {
         for (int index = 0; index < unknown_E0; ++index) {
-            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            CellClass* cell = unknown_E4[index];
             CoordStruct temporary;
             CoordStruct coordinate = *cell->GetCellCoords(&temporary);
             coordinate.Z = 0;
@@ -968,7 +968,7 @@ void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
             Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
                              projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
             if (DAT_00B73550 != 0) {
-                CellClass* currentCell = static_cast<CellClass*>(unknown_E4[index]);
+                CellClass* currentCell = unknown_E4[index];
                 currentCell->FUN_00480180(&location, clip);
             }
         }
@@ -989,9 +989,8 @@ void Tactical::FUN_006D2DE0(const RectangleStruct* first,
     }
     if (unknown_E0 > 0 && !fullScreen) {
         for (int index = 0; index < unknown_E0; ++index) {
-            // Existing opaque canonical array; sibling native CellClass
-            // methods corroborate+24 MapCoords. Writer identity still needed.
-            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
             int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
             int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
             CoordStruct coordinate;
@@ -1011,7 +1010,7 @@ void Tactical::FUN_006D2DE0(const RectangleStruct* first,
                                                        &view, 0, 0);
             if (clipped.Width > 0 && clipped.Height > 0) {
                 CellStruct cellCoordinate =
-                    static_cast<CellClass*>(unknown_E4[index])->MapCoords;
+                    unknown_E4[index]->MapCoords;
                 FUN_006D7F20(&cellCoordinate, &view);
             }
         }
@@ -1048,9 +1047,8 @@ void Tactical::FUN_006D3040(const RectangleStruct* first,
     }
     if (unknown_E0 > 0 && !fullScreen) {
         for (int index = 0; index < unknown_E0; ++index) {
-            // Existing opaque canonical array; sibling native CellClass
-            // methods corroborate+24 MapCoords. Writer identity still needed.
-            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
             int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
             int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
             CoordStruct coordinate;
@@ -1106,9 +1104,8 @@ void Tactical::FUN_006D3290(const RectangleStruct* first,
     }
     if (unknown_E0 > 0 && !fullScreen) {
         for (int index = 0; index < unknown_E0; ++index) {
-            // Existing opaque canonical array; sibling native CellClass
-            // methods corroborate+24 MapCoords. Writer identity still needed.
-            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
             int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
             int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
             CoordStruct coordinate = { x, y, 0 };
@@ -1154,9 +1151,8 @@ void Tactical::FUN_006D3470(const RectangleStruct* first,
     }
     if (!fullScreen) {
         for (int index = 0; index < unknown_E0; ++index) {
-            // Existing opaque canonical array; sibling native CellClass
-            // methods corroborate+24 MapCoords. Writer identity still needed.
-            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            // The writer6DA949 stores CellClass pointers; MapCoords is at+24.
+            CellClass* cell = unknown_E4[index];
             int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
             int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
             CoordStruct coordinate;
@@ -1186,6 +1182,59 @@ void Tactical::FUN_006D3470(const RectangleStruct* first,
             view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
             if (view.Width > 0 && view.Height > 0)
                 FUN_004D1890(&view);
+        }
+    }
+}
+
+#include "../../renderer/drawing.h"
+
+// FUNCTION: GAMEMD 0x6D3660
+void Tactical::FUN_006D3660(const RectangleStruct* first,
+                           const RectangleStruct* second,
+                           const RectangleStruct* clip, bool fullScreen)
+{
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            CellClass* cell = unknown_E4[index];
+            CoordStruct temporary;
+            CoordStruct coordinate = *cell->GetCellCoords(&temporary);
+            coordinate.Z = 0;
+            Point2D temporaryPoint;
+            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
+                             projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
+            if (DAT_00B73550 != 0) {
+                // Native reloads array entry after480A30/projection callbacks.
+                CellClass* currentCell = unknown_E4[index];
+                currentCell->FUN_004801F0(&location, clip);
+            }
+            // ECX=&location,EDX=clip; call occurs whether or not B73550 is on.
+            FUN_00420F40(&location, clip);
+        }
+    }
+    if (fullScreen)
+        FUN_006D71E0(&Viewport_00886FA0);
+    // Native reads dimensions even in full mode, then tests fullScreen.
+    if (first->Width > 0 && first->Height > 0 && !fullScreen)
+        FUN_006D71E0(first);
+    if (second->Width > 0 && second->Height > 0 && !fullScreen)
+        FUN_006D71E0(second);
+
+    // Forward scan with live count, including full mode. Items base reloaded
+    // after intersection, and after render callbacks, rather than snapshotted.
+    for (int index = 0; index < DAT_00B0CE78.Count; ++index) {
+        RectangleStruct view;
+        view.X = DAT_00B0CE78.Items[index].Rect.X + Viewport_00886FA0.X;
+        view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+        view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+        view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+        RectangleStruct temporary;
+        RectangleStruct clipped = *FUN_00421B60(&temporary, &view, clip, 0, 0);
+        if (DAT_00B0CE78.Items[index].unknown_10 != 0) {
+            // No positive-size test: native invokes both calls even if the
+            // intersection is empty.411330 consumes a16-byte byvalue XYWH.
+            ABuffer_0087E8A4->FUN_00411330(clipped);
+            FUN_006D71E0(&clipped);
         }
     }
 }
@@ -1625,6 +1674,42 @@ HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
 
 #include <new.h>
 #include "../../_layout/swizzle_manager_class.h"
+// GLOBAL: GAMEMD 0x87F7F4 (declaration)
+extern int DAT_0087F7F4;
+
+// FUNCTION: GAMEMD 0x6DA7D0
+void Tactical::FUN_006DA7D0(CellClass* cell)
+{
+    if (DAT_0087F7F4 != 0 || cell->unknown_5C == CurrentFrame ||
+        (!(cell->AltFlags & 8) && !cell->VisibilityChanged))
+        return;
+    cell->unknown_5C = CurrentFrame;
+    CoordStruct coordinate;
+    cell->GetCellCoords(&coordinate);
+    Point2D projected;
+    projected.X = coordinate.X * 60 / 2;
+    projected.Y = coordinate.X * 30 / 2;
+    projected.X += coordinate.Y * -60 / 2;
+    projected.Y += coordinate.Y * 30 / 2;
+    // Native both AltFlags8/10 branches have identical XY projection and
+    // explicitly pass zero to AdjustForZ; do not substitute coordinate.Z.
+    int screenX = projected.X / 256;
+    int screenY = projected.Y / 256 - AdjustForZ(0);
+    screenX -= unknown_B0.unknown_00;
+    screenY -= unknown_B0.unknown_04;
+    if (screenX >= Viewport_00886FA0.X - 30 && screenY >= -30 &&
+        screenX <= Viewport_00886FA0.Width + Viewport_00886FA0.X + 30 &&
+        screenY <= Viewport_00886FA0.Height + Viewport_00886FA0.Y + 15) {
+        if (unknown_E0 < 799) {
+            unknown_E4[unknown_E0] = cell;
+            ++unknown_E0;
+        }
+        // Native clears/sets these even when the queue is full.
+        cell->VisibilityChanged = 0;
+        unknown_D7D = true;
+    }
+}
+
 // GLOBAL: GAMEMD 0xB0C110
 extern SwizzleManagerClass DAT_00B0C110;
 

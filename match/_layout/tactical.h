@@ -21,6 +21,7 @@ void FUN_00731D00(int value);
 
 #include "pair_006d9f80.h"
 class Cell;
+class CellClass;
 struct CellStruct;
 class ObjectClass;
 template<class T> class TRect;
@@ -44,6 +45,10 @@ public:
     void FUN_006D3290(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D3470(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D6D10(const RectangleStruct* rectangle);
+    // Declarations: native6D3660 RET16,6DA7D0 RET4,6D71E0 RET4.
+    void FUN_006D3660(const RectangleStruct* first, const RectangleStruct* second, const RectangleStruct* clip, bool fullScreen);
+    void FUN_006DA7D0(CellClass* cell);
+    void FUN_006D71E0(const RectangleStruct* rectangle);
     Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20
@@ -97,7 +102,8 @@ public:
     float unknown_D8;
     float unknown_DC;
     int unknown_E0;
-    void* unknown_E4[800];
+    // 6DA949 stores the original cell argument;6D369B consumes it as CellClass.
+    CellClass* unknown_E4[800];
     Pair_006D9F80 unknown_D64;
     Pair_006D9F80 unknown_D6C;
     Pair_006D9F80 unknown_D74;

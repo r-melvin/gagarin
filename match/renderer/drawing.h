@@ -75,6 +75,8 @@ public:
 // ---------------------------------------------------------------------------
 struct ABuffer
 {
+    // Declaration: GAMEMD 0x411330 -- rectangle16 bytes by value, RET16.
+    void FUN_00411330(RectangleStruct rectangle);
     void  ReleaseSurface();                                  // GAMEMD 0x410E50
     bool  Fill(unsigned short Color);                        // GAMEMD 0x4112D0
     bool  FillRect(unsigned short Color, RectangleStruct Rect); // GAMEMD 0x411310
@@ -99,6 +101,11 @@ GG_STATIC_ASSERT(offsetof(ABuffer, Height)         == 0x2C);
 GG_STATIC_ASSERT(offsetof(ABuffer, Surface)    == 0x14);  // pointer-width-sensitive
 GG_STATIC_ASSERT(offsetof(ABuffer, BufferTail) == 0x1C);
 #endif
+
+// GLOBAL: GAMEMD 0x87E8A4 (declaration; existing storage)
+// Display4A8AD7 constructs with410CE0, then stores the result at4A8ADC.
+extern ABuffer* ABuffer_0087E8A4;
+GG_STATIC_ASSERT(sizeof(ABuffer) == 0x30);
 
 // ---------------------------------------------------------------------------
 // Drawing — static colour helper. RGB_To_Int packs (r,g,b) into the surface's

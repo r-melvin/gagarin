@@ -98587,5 +98587,23 @@
   "name": "Tactical::FUN_006D3470",
   "status": "partial",
   "pct": 8.8
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D3660",
+  "sym": "?FUN_006D3660@Tactical@@QAEXPBURectangleStruct@@00_N@Z",
+  "len": "0x210",
+  "name": "Tactical::FUN_006D3660",
+  "status": "partial",
+  "pct": 3.1
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DA7D0",
+  "sym": "?FUN_006DA7D0@Tactical@@QAEXPAVCellClass@@@Z",
+  "len": "0x1a8",
+  "name": "Tactical::FUN_006DA7D0",
+  "status": "partial",
+  "pct": 9.5
  }
 ]
