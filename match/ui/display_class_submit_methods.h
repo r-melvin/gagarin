@@ -13,30 +13,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/object_class.h"
 
-// LayerClass — the per-draw-layer object list. Layout-compatible with
-// DynamicVectorClass (sizeof 0x18); only the insert entry point is needed.
-class LayerClass
-{
-public:
-    void* _vtable;            // +0x00
-    void* Items;              // +0x04
-    int   Capacity;           // +0x08
-    int   IsAllocated;        // +0x0C
-    int   Count;              // +0x10
-    int   CapacityIncrement;  // +0x14
-
-    bool AddItem(ObjectClass* object, bool sorted);  // GAMEMD 0x5519B0 (declared; reloc)
-};
-GG_STATIC_ASSERT(sizeof(LayerClass) == 0x18);
-
-// GLOBAL: GAMEMD 0x008A0360 — the draw-layer array.
-extern LayerClass DisplayLayers[];
-
-// InWhichLayer() — ObjectClass virtual at primary-vtable slot +0x78, dispatched
-// through the same __fastcall-fn-pointer idiom the rest of the tree uses so VC6
-// reproduces `MOV EAX,[ESI]; MOV ECX,ESI; CALL [EAX+0x78]`.
-typedef int (* InWhichLayerFunc)(ObjectClass*);
-#define OBJ_IN_WHICH_LAYER(obj) ((*(InWhichLayerFunc*)(*(char**)(obj) + 0x78))(obj))
+#include "../_layout/layer_class.h"
 
 class DisplayClass
 {

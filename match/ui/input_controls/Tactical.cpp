@@ -1232,6 +1232,53 @@ void Tactical::FUN_006D3660(const RectangleStruct* first,
     }
 }
 
+// FUNCTION: GAMEMD 0x6D3870
+void Tactical::FUN_006D3870(const RectangleStruct* first, const RectangleStruct* second,
+                          bool fullScreen)
+{
+    for (int index = 0; index < unknown_E0; ++index) {
+        CellClass* cell = unknown_E4[index];
+        int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+        int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+        CoordStruct coordinate;
+        coordinate.FUN_0041C230(x, y, 0);
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        RectangleStruct view;
+        view.X = projected.X - unknown_B0.unknown_00 - 30;
+        view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+        view.Width = 60;
+        view.Height = 30;
+        RectangleStruct clip = view;
+        FUN_006D9920(true, &view, &clip);
+    }
+    // Native captures count once, then reloads the array base after callbacks.
+    int dirtyCount = DAT_00B0CE78.Count;
+    if (dirtyCount != 0) {
+        for (int dirtyIndex = dirtyCount - 1; dirtyIndex >= 0; --dirtyIndex) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[dirtyIndex].Rect.X;
+            view.Y = DAT_00B0CE78.Items[dirtyIndex].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[dirtyIndex].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[dirtyIndex].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0) {
+                RectangleStruct clip = view;
+                FUN_006D9920(true, &view, &clip);
+            }
+        }
+    }
+    if (fullScreen) {
+        FUN_006D9920(true, &Viewport_00886FA0, &Viewport_00886FA0);
+        return;
+    }
+    if (first->Width > 0 && first->Height > 0)
+        FUN_006D9920(true, first, first);
+    if (second->Width > 0 && second->Height > 0)
+        FUN_006D9920(true, second, second);
+}
+
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
@@ -1485,6 +1532,37 @@ void FUN_006D8C60(ObjectClass* object, int argument)
         // The canonical virtual slots currently use opaque32-bit arguments.
         object->vf_67((int)&point, argument);
         object->vf_68((int)&point, argument);
+    }
+}
+
+#include "../../_layout/building_class.h"
+#include "../../_layout/layer_class.h"
+
+// FUNCTION: GAMEMD 0x6D9920
+void Tactical::FUN_006D9920(bool force, const RectangleStruct* view, const RectangleStruct* clip)
+{
+    RectangleStruct temporary;
+    RectangleStruct bounds = *FUN_00421B60(&temporary, view, clip, 0, 0);
+    for (int index = 0; index < DisplayLayers[2].Count; ++index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() != 6)
+            continue;
+        BuildingClass* building = static_cast<BuildingClass*>(object);
+        if (building->IsFogged && !DAT_00A8ED6B)
+            continue;
+        int originX = Viewport_00886FA0.X;
+        int originY = Viewport_00886FA0.Y;
+        RectangleStruct objectBounds = object->vf_75();
+        objectBounds.X += originX;
+        objectBounds.Y += originY;
+        if (objectBounds.X >= bounds.X + bounds.Width ||
+            objectBounds.Y >= bounds.Y + bounds.Height ||
+            objectBounds.X + objectBounds.Width <= bounds.X ||
+            objectBounds.Y + objectBounds.Height <= bounds.Y)
+            continue;
+        RectangleStruct originalClip = *clip;
+        object->vf_65(&originalClip, force, 0);
+        object->NeedsRedraw = false;
     }
 }
 

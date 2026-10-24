@@ -21,6 +21,13 @@ public:
     virtual void vf_9();    // 9  0x40CC10: bare RET
 };
 
+// GLOBAL: GAMEMD 0x8A0360 -- draw-layer array; native5519B0 callers use24-byte stride.
+// 55DBC3 passes its third element (8A0390) to551A30;6D9920 reads that element.
+extern LayerClass DisplayLayers[];
+GG_STATIC_ASSERT(sizeof(LayerClass) == 0x18);
+GG_STATIC_ASSERT(offsetof(LayerClass, Items) == 4);
+GG_STATIC_ASSERT(offsetof(LayerClass, Count) == 0x10);
+
 // LogicClass : LayerClass, RTTI ".?AVLogicClass@@" on the 11-slot table
 // 0x7E18FC; it overrides slot 7 and adds slot 10 (not modelled here).
 // VTABLE: GAMEMD 0x7E18FC

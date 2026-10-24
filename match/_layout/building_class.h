@@ -362,4 +362,5 @@ GG_STATIC_ASSERT(sizeof(BuildingClass)                        == 0x720);
 // VTABLE: GAMEMD 0x007E3E98  BuildingClass::(+0x08)   (COL base 8)
 // VTABLE: GAMEMD 0x007E3E90  BuildingClass::(+0x0C)   (COL base 12)
 
+GG_STATIC_ASSERT(offsetof(BuildingClass, IsFogged) == 0x6E7);
 #endif  // GG_MATCH_LAYOUT_BUILDING_CLASS_H

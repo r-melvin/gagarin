@@ -16,10 +16,10 @@ void DisplayClass::Submit(ObjectClass* object)
     if (object->LastLayer != -1)
         Remove(object);
 
-    int layer = OBJ_IN_WHICH_LAYER(object);
+    int layer = object->vf_30();
     if (layer == -1)
         return;
 
-    if (DisplayLayers[layer].AddItem(object, layer == 2))
+    if (DisplayLayers[layer].AddObject(object, layer == 2))
         object->LastLayer = layer;
 }

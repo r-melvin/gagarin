@@ -992,6 +992,7 @@
  "?AddInt@ParticleCrcView@@QAEXH@Z": "0x004A1D50",
  "?AddInt@TypesCrcView@@QAEXH@Z": "0x004A1D50",
  "?AddItem@LayerClass@@QAE_NPAVObjectClass@@_N@Z": "0x005519B0",
+ "?AddObject@LayerClass@@UAE_NPAVObjectClass@@_N@Z": "0x005519B0",
  "?AddObject@LogicClass@@QAE_NPAVTechnoClass@@_N@Z": "0x0055BAA0",
  "?AddRef@AbstractClass@@UAGKXZ": "0x00410300",
  "?AddThreat@CellClass@@QAEXPAVHouseClass@@H@Z": "0x00481870",
