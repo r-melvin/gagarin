@@ -17,17 +17,6 @@ void Obj_00407100b::FUN_004071A0(unsigned int v, unsigned int divisor, int extra
     unknown_14 = extra;
 }
 
-// FUNCTION: GAMEMD 0x437F10
-Pair2i Pair2i::FUN_00437F10(const Pair2i* other) const
-{
-    Pair2i result;
-
-    result.x = other->x + x;
-    result.y = other->y + y;
-
-    return result;
-}
-
 // FUNCTION: GAMEMD 0x41A590
 void AircraftClass_0041A590::FUN_0041A590(int, int, int)
 {
@@ -48,6 +37,15 @@ char* Obj_0042EB20::FUN_0042EB20(int key)
     }
 
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x437F10
+Point2D Point2D::operator+(const Point2D& other) const
+{
+    Point2D result;
+    result.X = other.X + X;
+    result.Y = other.Y + Y;
+    return result;
 }
 
 // FUNCTION: GAMEMD 0x45DD20

@@ -46,6 +46,8 @@ public:
     void FUN_006D5030(bool flag); // RET4
     void FUN_006D7840(const RectangleStruct* first, const RectangleStruct* second); // RET8
     void FUN_006D8DB0(bool flag); // RET4
+    void FUN_006DB210(); // 0x6DB210, RET0
+    void FUN_006DB620(); // 0x6DB620, RET0
     void FUN_006DBE20();
     void FUN_006DA180();
     void FUN_006D4E20(const unsigned short* text);

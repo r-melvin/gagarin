@@ -20,17 +20,7 @@ struct Obj_00407100b
 };
 GG_STATIC_ASSERT(offsetof(Obj_00407100b, unknown_14) == 0x14);
 
-// A two-int value type. `operator+` returns by value, so the caller passes a
-// hidden destination pointer first and the other operand second — RET 8 with
-// the destination handed back in EAX.
-struct Pair2i
-{
-    int x;   // +0x0000
-    int y;   // +0x0004
-
-    // FUNCTION: GAMEMD 0x437F10
-    Pair2i FUN_00437F10(const Pair2i* other) const;
-};
+#include "../_layout/geometry2d.h"
 
 // CLASS IDENTITY (whole-image RTTI sweep; renamed from
 // the raw `Obj_` placeholder). AircraftClass's own vtable is 0x7E22A4.

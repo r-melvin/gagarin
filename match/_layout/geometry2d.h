@@ -30,6 +30,8 @@ struct Point2D
 
     // CALLEE: GAMEMD 0x006DC4C0; mutates both coordinates, returns this in EAX.
     Point2D& operator-=(Point2D const& other);
+    // CALLEE: GAMEMD 0x00437F10 -- component sums, hidden result + operand, RET8.
+    Point2D operator+(Point2D const& other) const;
     // CALLEE: GAMEMD 0x00487F20
     Point2D operator-(Point2D const& other) const;
     // CALLEE: GAMEMD 0x004C1B50

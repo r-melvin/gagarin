@@ -196,7 +196,7 @@ extern HouseClass* CurrentPlayer; // GLOBAL: GAMEMD 0x00A83D4C
 extern DynamicVectorClass<AbstractTypeClass*> DAT_00A8E968; // GLOBAL: GAMEMD 0x00A8E968
 class IsometricTileTypeClass;
 extern DynamicVectorClass<IsometricTileTypeClass*> DAT_00A8ED28; // GLOBAL: GAMEMD 0x00A8ED28
-extern DynamicVectorClass<ObjectClass*> DAT_00A8E360; // GLOBAL: GAMEMD 0x00A8E360
+#include "../_layout/current_objects.h"
 class TagClass;
 extern DynamicVectorClass<TagClass*> DAT_008B41A8; // GLOBAL: GAMEMD 0x008B41A8
 extern DynamicVectorClass<TagClass*> DAT_008B40C8; // GLOBAL: GAMEMD 0x008B40C8

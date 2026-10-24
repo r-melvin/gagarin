@@ -3832,6 +3832,155 @@ void Tactical::FUN_006DAD60(bool argument)
     memcpy(palette, savedPalette, sizeof savedPalette);
 }
 
+// FUNCTION: GAMEMD 0x6DB210
+void Tactical::FUN_006DB210()
+{
+    MapInstance.IteratorBegin_578350();
+    CellClass* cell = MapInstance.IteratorNext_578290();
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int yellow = ((255 >> pixel.loss1) << pixel.pos1) |
+                          ((255 >> pixel.loss0) << pixel.pos0) |
+                          ((0 >> pixel.loss2) << pixel.pos2);
+    unsigned int magenta = ((255 >> pixel.loss2) << pixel.pos2) |
+                           ((0 >> pixel.loss1) << pixel.pos1) |
+                           ((255 >> pixel.loss0) << pixel.pos0);
+    unsigned int cyan = ((0 >> pixel.loss0) << pixel.pos0) |
+                        ((255 >> pixel.loss2) << pixel.pos2) |
+                        ((255 >> pixel.loss1) << pixel.pos1);
+
+    while (cell) {
+        ObjectClass* first = static_cast<ObjectClass*>(cell->FirstObject);
+        if (first) {
+            CoordStruct cellCoordinate;
+            CoordStruct firstCell = *cell->GetCellCoords(&cellCoordinate);
+            Point2D cellPoint = CoordsToScreen(&firstCell);
+            cellPoint.X -= unknown_B0.unknown_00;
+            cellPoint.Y -= unknown_B0.unknown_04;
+
+            CoordStruct firstCoordinate = first->vf_18();
+            Point2D objectPoint = CoordsToScreen(&firstCoordinate);
+            objectPoint.X -= unknown_B0.unknown_00;
+            objectPoint.Y -= unknown_B0.unknown_04;
+            RectangleStruct dot = { cellPoint.X - 1, cellPoint.Y - 1, 3, 3 };
+            DAT_00887314->FillRectEx(&Viewport_00886FA0, &dot, yellow);
+            DAT_00887314->DrawLineEx(&Viewport_00886FA0, &cellPoint,
+                                     &objectPoint, yellow);
+        }
+
+        ObjectClass* alternate = static_cast<ObjectClass*>(cell->AltObject);
+        if (alternate) {
+            CoordStruct cellCoordinate;
+            CoordStruct firstCell = *cell->GetCellCoords(&cellCoordinate);
+            Point2D cellPoint = CoordsToScreen(&firstCell);
+            cellPoint.X -= unknown_B0.unknown_00;
+            cellPoint.Y -= unknown_B0.unknown_04 + 60;
+
+            CoordStruct alternateCoordinate = alternate->vf_18();
+            Point2D objectPoint = CoordsToScreen(&alternateCoordinate);
+            Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
+            objectPoint -= scroll;
+            RectangleStruct dot = { cellPoint.X - 1, cellPoint.Y - 1, 3, 3 };
+            DAT_00887314->FillRectEx(&Viewport_00886FA0, &dot, cyan);
+            DAT_00887314->DrawLineEx(&Viewport_00886FA0, &cellPoint,
+                                     &objectPoint, cyan);
+        }
+        cell = MapInstance.IteratorNext_578290();
+    }
+
+    for (int index = DAT_00A8E360.Count - 1; index >= 0; --index) {
+        ObjectClass* object = DAT_00A8E360.Items[index];
+        if (!object->NextObject) continue;
+
+        CoordStruct coordinate = object->vf_18();
+        Point2D objectPoint = CoordsToScreen(&coordinate);
+        Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
+        objectPoint -= scroll;
+
+        // Native reloads NextObject after the first virtual coordinate callback.
+        CoordStruct nextCoordinate = static_cast<ObjectClass*>(object->NextObject)->vf_18();
+        Point2D nextPoint;
+        FUN_006D2140(&nextCoordinate, &nextPoint);
+        DAT_00887314->DrawLineEx(&Viewport_00886FA0, &objectPoint,
+                                 &nextPoint, magenta);
+    }
+}
+
+// FUNCTION: GAMEMD 0x6DB620
+void Tactical::FUN_006DB620()
+{
+    MapInstance.IteratorBegin_578350();
+    CellClass* cell = MapInstance.IteratorNext_578290();
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int color = ((0 >> pixel.loss2) << pixel.pos2) |
+                         ((255 >> pixel.loss1) << pixel.pos1) |
+                         ((255 >> pixel.loss0) << pixel.pos0);
+
+    while (cell) {
+        RectangleStruct cellBounds = cell->FUN_0047FF80();
+        RectangleStruct temporary;
+        RectangleStruct visible = *FUN_00421B60(&temporary, &cellBounds,
+                                                 &Viewport_00886FA0, 0, 0);
+        if (visible.Width > 0 && visible.Height > 0) {
+            CoordStruct cellCoordinate;
+            CoordStruct coordinate = *cell->GetCellCoords(&cellCoordinate);
+            Point2D point = CoordsToScreen(&coordinate);
+            point.X -= unknown_B0.unknown_00 + 2;
+            point.Y = point.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y - 2;
+            RectangleStruct dot = { point.X, point.Y, 4, 4 };
+
+            if (cell->OccupationBits & 0x04) {
+                Point2D offset(10, 0);
+                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0x10) {
+                Point2D offset(0, 6);
+                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0x08) {
+                Point2D offset(-10, 0);
+                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->OccupationBits & 0xE0)
+                DAT_00887314->FillRect(&dot, color);
+
+            if (cell->AltOccupationBits & 0x04) {
+                Point2D offset(10, -60);
+                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0x10) {
+                Point2D offset(0, -66);
+                Point2D shifted = Point2D(dot.X, dot.Y) + offset;
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0x08) {
+                Point2D shifted(dot.X - 10, dot.Y - 60);
+                RectangleStruct storage;
+                RectangleStruct marker = *storage.FromPointSize(&shifted, dot.Width, dot.Height);
+                DAT_00887314->FillRect(&marker, color);
+            }
+            if (cell->AltOccupationBits & 0xE0) {
+                RectangleStruct marker = { dot.X, dot.Y - 60, dot.Width, dot.Height };
+                DAT_00887314->FillRect(&marker, color);
+            }
+        }
+        cell = MapInstance.IteratorNext_578290();
+    }
+}
+
 // FUNCTION: GAMEMD 0x6DBB60
 bool Tactical::vf_24(const CoordStruct* first, const CoordStruct* second,
                      unsigned int color, bool mode)

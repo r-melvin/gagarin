@@ -12258,9 +12258,9 @@
  {
   "tu": "match/core/small_misc9_methods.cpp",
   "addr": "0x437F10",
-  "sym": "?FUN_00437F10@Pair2i@@QBE?AU1@PBU1@@Z",
+  "sym": "??HPoint2D@@QBE?AU0@ABU0@@Z",
   "len": "0x20",
-  "name": "FUN_00437F10",
+  "name": "Point2D::operator+",
   "status": "matched",
   "pct": 100.0
  },
@@ -98938,5 +98938,23 @@
   "name": "Tactical::vf_24",
   "status": "partial",
   "pct": 3.4
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DB210",
+  "sym": "?FUN_006DB210@Tactical@@QAEXXZ",
+  "len": "0x40c",
+  "name": "Tactical::FUN_006DB210",
+  "status": "partial",
+  "pct": 2.2
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DB620",
+  "sym": "?FUN_006DB620@Tactical@@QAEXXZ",
+  "len": "0x534",
+  "name": "Tactical::FUN_006DB620",
+  "status": "partial",
+  "pct": 1.2
  }
 ]
