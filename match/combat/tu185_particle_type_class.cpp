@@ -105,7 +105,7 @@ extern "C" const CLSID CLSID_ParticleType =
 template <class T> ParticleVector<T>::~ParticleVector()
 {
     if (Items != 0 && IsAllocated) {
-        free(Items);
+        ::operator delete(Items);
         Items = 0;
     }
     IsAllocated = false;

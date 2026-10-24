@@ -1,5 +1,6 @@
 #include "../_layout/ini_class.h"
 #include <stdio.h>
+#include <new.h>
 #include <wchar.h>
 #include <string.h>
 // SPDX-License-Identifier: GPL-3.0-or-later
@@ -116,7 +117,7 @@ __forceinline bool IndexClass::IncreaseTableSize(int amount)
             table[index] = IndexTable[index];
         }
 
-        FUN_007C8B3D(IndexTable);
+        ::operator delete(IndexTable);
         IndexTable = table;
         IndexSize += amount;
         Archive = 0;
@@ -1188,7 +1189,7 @@ bool INIClass::FUN_00528E00(const char* section, const char* key,
                 string++;
             }
             result = this->WriteString(section, key, buffer);
-            FUN_007C8B3D(buffer);
+            ::operator delete(buffer);
         }
     }
 
@@ -1332,7 +1333,7 @@ void* Obj_52AE00::FUN_52AE00(unsigned int flags)
     FUN_0052AB80(this);
 
     if (flags & 1) {
-        FUN_007C8B3D(this);
+        ::operator delete(this);
     }
 
     return this;
@@ -1344,7 +1345,7 @@ void* Obj_52AEA0::FUN_52AEA0(unsigned int flags)
     ((Straw*)this)->Straw::~Straw();
 
     if (flags & 1) {
-        FUN_007C8B3D(this);
+        ::operator delete(this);
     }
 
     return this;
@@ -1356,7 +1357,7 @@ void* Obj_52AEE0::FUN_52AEE0(unsigned int flags)
     ((Pipe*)this)->Pipe::~Pipe();
 
     if (flags & 1) {
-        FUN_007C8B3D(this);
+        ::operator delete(this);
     }
 
     return this;

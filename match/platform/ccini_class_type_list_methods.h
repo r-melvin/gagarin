@@ -9,7 +9,7 @@
 //   gamemd.exe v1.001. Its Items pointer sits at +0x04 and its Count at
 //   +0x10 (the 0x475B70 writer's registry proves the twelve-byte gap), the
 //   allocation flag is the byte at +0x0D that the inlined destructor tests
-//   before calling the C library free at 0x7C8B3D, and the by-value
+//   before calling operator delete at 0x7C8B3D, and the by-value
 //   parameters occupy 0x1C bytes rather than 0x18, which is the trailing
 //   dword YRpp's TypeList<T> carries as `unknown_18` (the
 //   member name only, no text copied). The two vtable constants the
@@ -22,6 +22,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <new.h>
 #include "../_rt/gg_static_assert.h"
 
 // STRING: GAMEMD 0x889F64  ""
@@ -157,7 +158,7 @@ struct TypeListInt
         _vtable = DAT_007E4DB8;
 
         if (Items != 0 && IsAllocated) {
-            free(Items);
+            ::operator delete(Items);
             Items = 0;
         }
 

@@ -7352,7 +7352,7 @@
  "_fgetc": "0x007CB80B",
  "_fopen": "0x007CA845",
  "_fprintf": "0x007CA7D8",
- "_free": "0x007C8B3D",
+ "_free": "0x007C93E8",
  "_gamemd_free": "0x007C8B3D",
  "_gamemd_sqrt": "0x004CAC40",
  "_gamemd_tablescale": "0x004CADE0",
