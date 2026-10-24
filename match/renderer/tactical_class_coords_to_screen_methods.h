@@ -13,32 +13,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Point2D_006D1F10
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-};
-GG_STATIC_ASSERT(sizeof(Point2D_006D1F10) == 0x8);
-
-struct Coord_006D1F10
-{
-    int X;                    // +0x0000
-    int Y;                    // +0x0004
-    int Z;                    // +0x0008
-};
-GG_STATIC_ASSERT(sizeof(Coord_006D1F10) == 0xC);
-GG_STATIC_ASSERT(offsetof(Coord_006D1F10, Z) == 0x8);
+#include "../_layout/geometry2d.h"
+#include "../_layout/coord_struct.h"
+#include "../_layout/tactical.h"
 
 // GLOBAL: GAMEMD 0xB0CD48 — the height-to-pixel scale (runtime-initialised
 // double; zero in the image).
 extern double DAT_00B0CD48;
-
-struct Tactical_006D1F10
-{
-    // FUNCTION: GAMEMD 0x6D1F10 — Tactical::CoordsToScreen. `this` is
-    // unused; the coordinate is projected to the raw iso pixel position.
-    Point2D_006D1F10* CoordsToScreen(Point2D_006D1F10* pDest,
-                                     const Coord_006D1F10* pCoord);
-};
 
 #endif  // GG_MATCH_RENDERER_TACTICAL_CLASS_COORDS_TO_SCREEN_METHODS_H

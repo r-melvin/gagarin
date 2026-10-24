@@ -20,7 +20,7 @@ bool XSurface::FillRectEx(RectangleStruct* clip, RectangleStruct* rect, unsigned
     Point2D origin;
     origin.X = clip->X + rect->X;
     origin.Y = rect->Y + clip->Y;
-    RectBuilder built;
+    RectangleStruct built;
     RectangleStruct target = *built.FromPointSize(&origin, rect->Width, rect->Height);
 
     RectangleStruct tmp2;

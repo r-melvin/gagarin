@@ -206,10 +206,7 @@ class CampaignClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class CellClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
+#include "../../_layout/cell_class.h"
 class DiskLaserClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -424,9 +421,9 @@ template class DynamicVectorClass<DirtyAreaStruct>;
 // move ahead of the first LEA (9.7%). The struct returned by value is what
 // produces the dead X spill into the temporary's first slot, which Z later
 // reuses for its FILD.
-static inline Point2D_006D1F10 IsoProject(const int* p)
+static inline Point2D IsoProject(const int* p)
 {
-    Point2D_006D1F10 r;
+    Point2D r;
     r.X = p[0] * 60 / 2;
     r.Y = p[0] * 30 / 2;
     r.X += p[1] * -60 / 2;
@@ -610,14 +607,14 @@ Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
 // subtracted from Y. Z is read off pCoord only when the lift is computed, which
 // keeps pCoord in EBX across the projection and lets Z take over EBX after it.
 // The result is stored to pDest as one Point2D and pDest comes back in EAX.
-Point2D_006D1F10* Tactical_006D1F10::CoordsToScreen(Point2D_006D1F10* pDest,
-                                                     const Coord_006D1F10* pCoord)
+Point2D* Tactical::CoordsToScreen(Point2D* pDest,
+                                                     const CoordStruct* pCoord)
 {
     int xy[2];
     xy[0] = pCoord->X;
     xy[1] = pCoord->Y;
 
-    Point2D_006D1F10 r = IsoProject(xy);
+    Point2D r = IsoProject(xy);
     r.X /= 256;
     r.Y /= 256;
     r.Y -= AdjustForZ(pCoord->Z);
@@ -907,6 +904,77 @@ void __stdcall FUN_006D2B50(int a1, int a2)
 extern "C" unsigned short* __cdecl FUN_007CA489(unsigned short* destination,
                                               const unsigned short* source);
 
+#include "../../_layout/tactical_viewport.h"
+#include "../../_layout/cell_class.h"
+#include "../../renderer/zbuffer_class_methods.h"
+extern void* DAT_00B73550; // GLOBAL: GAMEMD 0xB73550 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x6D2B60
+void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
+                           const RectangleStruct* clip)
+{
+    if (!fullScreen) {
+        int count = DAT_00B0CE78.Count;
+        if (count != 0) {
+            for (int index = count - 1; index >= 0; --index) {
+                RectangleStruct moved;
+                moved.X = DAT_00B0CE78.Items[index].Rect.X;
+                moved.Y = DAT_00B0CE78.Items[index].Rect.Y;
+                moved.Width = DAT_00B0CE78.Items[index].Rect.Width;
+                moved.Height = DAT_00B0CE78.Items[index].Rect.Height;
+                moved.X += dx;
+                moved.Y += dy;
+
+                // Both Point2D values contain the same viewport-origin read.
+                // Native calls487F20 rather than substituting a constant zero.
+                Point2D viewportOrigin(Viewport_00886FA0.X, Viewport_00886FA0.Y);
+                Point2D windowOrigin = viewportOrigin;
+                int width = Viewport_00886FA0.Width;
+                int height = Viewport_00886FA0.Height;
+                Point2D relative = windowOrigin - viewportOrigin;
+                RectangleStruct builder;
+                RectangleStruct bounds = *builder.FromPointSize(&relative, width, height);
+                RectangleStruct temporary;
+                moved = *FUN_00421B60(&temporary, &bounds, &moved, 0, 0);
+
+                // Reload Items after callbacks. Write only first16bytes;
+                // existing dirty flag+10 and padding are left untouched here.
+                DAT_00B0CE78.Items[index].Rect.X = moved.X;
+                DAT_00B0CE78.Items[index].Rect.Y = moved.Y;
+                DAT_00B0CE78.Items[index].Rect.Width = moved.Width;
+                DAT_00B0CE78.Items[index].Rect.Height = moved.Height;
+                if (moved.Width <= 0 || moved.Height <= 0) {
+                    if (index < DAT_00B0CE78.Count) {
+                        --DAT_00B0CE78.Count;
+                        // Native REP5DWORD copies the complete20-byte record,
+                        // including flag/padding; emitted assignment needs QA.
+                        for (int next = index; next < DAT_00B0CE78.Count; ++next)
+                            DAT_00B0CE78.Items[next] = DAT_00B0CE78.Items[next + 1];
+                    }
+                } else {
+                    ZBuffer_00887644->FUN_007BCFB0(moved);
+                }
+            }
+        }
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            CoordStruct temporary;
+            CoordStruct coordinate = *cell->GetCellCoords(&temporary);
+            coordinate.Z = 0;
+            Point2D temporaryPoint;
+            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
+                             projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
+            if (DAT_00B73550 != 0) {
+                CellClass* currentCell = static_cast<CellClass*>(unknown_E4[index]);
+                currentCell->FUN_00480180(&location, clip);
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
@@ -1149,7 +1217,7 @@ void FUN_006D8C60(ObjectClass* object, int argument)
 {
     CoordStruct coordinate = object->vf_18();
     int xy[2] = { coordinate.X, coordinate.Y };
-    Point2D_006D1F10 projected = IsoProject(xy);
+    Point2D projected = IsoProject(xy);
     Pair_006D9F80 point(projected.X / 256,
                         projected.Y / 256 - AdjustForZ(coordinate.Z));
     point.unknown_00 -= DAT_00887324->unknown_B0.unknown_00;

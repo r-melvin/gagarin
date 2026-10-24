@@ -42,7 +42,11 @@ GG_STATIC_ASSERT(sizeof(Point2D) == 0x08);
 // establishes the layout, not the original source type spelling.
 #ifndef GG_MATCH_LAYOUT_RECTANGLESTRUCT_DEFINED
 #define GG_MATCH_LAYOUT_RECTANGLESTRUCT_DEFINED
-struct RectangleStruct { int X; int Y; int Width; int Height; };
+struct RectangleStruct {
+    int X; int Y; int Width; int Height;
+    // Declaration: GAMEMD 0x45A130 -- ECX result, point/width/height stacked.
+    RectangleStruct* FromPointSize(const Point2D* point, int width, int height);
+};
 #endif
 typedef RectangleStruct XYWHStruct;
 GG_STATIC_ASSERT(offsetof(XYWHStruct, X) == 0x00);

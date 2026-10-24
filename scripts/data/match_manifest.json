@@ -10628,9 +10628,9 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x45A130",
-  "sym": "?FUN_0045A130@Obj_0045A130@@QAEPAU1@PBUPair2ib@@HH@Z",
+  "sym": "?FromPointSize@RectangleStruct@@QAEPAU1@PBUPoint2D@@HH@Z",
   "len": "0x21",
-  "name": "FUN_0045A130",
+  "name": "RectangleStruct::FromPointSize",
   "status": "matched",
   "pct": 100.0
  },
@@ -28787,11 +28787,11 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1F10",
-  "sym": "?CoordsToScreen@Tactical_006D1F10@@QAEPAUPoint2D_006D1F10@@PAU2@PBUCoord_006D1F10@@@Z",
+  "sym": "?CoordsToScreen@Tactical@@QAEPAUPoint2D@@PAU2@PBUCoordStruct@@@Z",
   "len": "0xc8",
   "name": "Tactical::CoordsToScreen",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/tactical_class_matrix_methods.cpp",
@@ -60669,11 +60669,11 @@
  {
   "tu": "match/core/unowned_leaf_sweep_a.cpp",
   "addr": "0x487F20",
-  "sym": "?FUN_00487F20@Pair_00487F20@@QBE?AU1@ABU1@@Z",
+  "sym": "??GPoint2D@@QBE?AU0@ABU0@@Z",
   "len": "0x20",
-  "name": "Pair_00487F20::FUN_00487F20",
+  "name": "Point2D::operator-",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_a.cpp",
@@ -98542,5 +98542,14 @@
   "name": "VectorClass<DirtyAreaStruct>::Slot6",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D2B60",
+  "sym": "?FUN_006D2B60@Tactical@@QAEX_NHHPBURectangleStruct@@@Z",
+  "len": "0x272",
+  "name": "Tactical::FUN_006D2B60",
+  "status": "partial",
+  "pct": 4.4
  }
 ]

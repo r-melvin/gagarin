@@ -92,22 +92,13 @@ int Obj_004870B0::FUN_004870B0(int bit) const
     return (unknown_78 & (1 << bit)) != 0;
 }
 
-struct Pair_00487F20
-{
-    int unknown_0;
-    int unknown_4;
-
-    Pair_00487F20() {}
-    Pair_00487F20(int a, int b) : unknown_0(a), unknown_4(b) {}
-    Pair_00487F20 FUN_00487F20(const Pair_00487F20& other) const;
-};
-GG_STATIC_ASSERT(sizeof(Pair_00487F20) == 8);
+#include "../_layout/geometry2d.h"
 
 // FUNCTION: GAMEMD 0x00487F20
 // Member-wise difference, returned through the hidden buffer.
-Pair_00487F20 Pair_00487F20::FUN_00487F20(const Pair_00487F20& other) const
+Point2D Point2D::operator-(const Point2D& other) const
 {
-    return Pair_00487F20(unknown_0 - other.unknown_0, unknown_4 - other.unknown_4);
+    return Point2D(X - other.X, Y - other.Y);
 }
 
 // FUNCTION: GAMEMD 0x0048AB90

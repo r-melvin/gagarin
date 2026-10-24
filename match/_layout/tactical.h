@@ -24,6 +24,7 @@ class Cell;
 class ObjectClass;
 template<class T> class TRect;
 struct RectangleStruct;
+struct Point2D;
 // VTABLE: GAMEMD 0x007F4348
 // VTABLE: GAMEMD 0x007F432C
 // VTABLE: GAMEMD 0x007F4324
@@ -31,6 +32,7 @@ struct RectangleStruct;
 class Tactical : public AbstractClass
 {
 public:
+    Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20
     Tactical(const AbstractNoInit& noInit); // 0x6D1E30
@@ -44,6 +46,7 @@ public:
     virtual void vf_23(); // slot23,0x6D2540
     virtual bool vf_24(const CoordStruct* first, const CoordStruct* second,
                        unsigned int color, int mode); // slot24,0x6DBB60,RET16
+    void FUN_006D2B60(bool fullScreen, int dx, int dy, const RectangleStruct* clip); // 0x6D2B60, RET0x10
     void FUN_006D2790(RectangleStruct requested, bool flag); // 0x6D2790, RET0x14
     bool FUN_006D8AE0(const Cell* cell) const;
     Coord_006D2280* FUN_006D2360(Coord_006D2280* out, const Point2D_006D2280* point);

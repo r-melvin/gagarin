@@ -33,13 +33,6 @@ RectangleStruct* RectIntersect(RectangleStruct* result,
                                const RectangleStruct* b, int* adjustX,
                                int* adjustY);
 
-// FUNCTION: GAMEMD 0x45A130 (decl; reloc) (decl; reloc). thiscall rectangle builder:
-// ECX = destination, stack = (const Point2D*, width, height), RET 0xC.
-struct RectBuilder : public RectangleStruct
-{
-    RectangleStruct* FromPointSize(const Point2D* origin, int width, int height);
-};
-
 // FUNCTION: GAMEMD 0x437F30 (decl; reloc) (decl; reloc). thiscall copy of a Point2D into the
 // stack result: ECX = source, stack = destination, RET 4, returns destination.
 struct PointCopier : public Point2D

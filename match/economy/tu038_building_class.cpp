@@ -3508,12 +3508,12 @@ template class VectorClass<Reestablish*>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x45A130
-Obj_0045A130* Obj_0045A130::FUN_0045A130(const Pair2ib* pair, int third, int fourth)
+RectangleStruct* RectangleStruct::FromPointSize(const Point2D* pair, int third, int fourth)
 {
-    a = pair->x;
-    b = pair->y;
-    c = third;
-    d = fourth;
+    X = pair->X;
+    Y = pair->Y;
+    Width = third;
+    Height = fourth;
 
     return this;
 }

@@ -52,14 +52,7 @@ struct Obj_00408500d
 };
 GG_STATIC_ASSERT(offsetof(Obj_00408500d, Total) == 0x4);
 
-struct Pair2ib { int x; int y; };
-struct Obj_0045A130
-{
-    int a, b, c, d;   // +0x0000 .. +0x000C
 
-    // FUNCTION: GAMEMD 0x45A130
-    Obj_0045A130* FUN_0045A130(const Pair2ib* pair, int third, int fourth);
-};
 
 struct Obj_00437FD0
 {
