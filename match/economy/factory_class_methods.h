@@ -19,18 +19,7 @@ class TechnoTypeClass;
 class TechnoClass;
 class HouseClass;
 
-// StageClass (YRpp): Value@0x00, HasChanged@0x04, CDTimerClass
-// Timer@0x08 (0xC bytes), Rate@0x14, Step@0x18 => sizeof 0x1C. Only Value is
-// read here (GetProgress / IsDone load [this+0x24] == Production.Value).
-class StageClass
-{
-public:
-    int  Value;          // +0x00
-    bool HasChanged;     // +0x04
-    char _timer[0xC];    // +0x08  CDTimerClass Timer
-    int  Rate;           // +0x14
-    int  Step;           // +0x18
-};
+#include "../_layout/stage_class.h"
 
 // DynamicVectorClass<TechnoTypeClass*> head: vtable@0, Items@4, Capacity@8,
 // IsAllocated@0xC, Count@0x10, CapacityIncrement@0x14 => sizeof 0x18.

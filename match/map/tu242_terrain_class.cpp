@@ -309,7 +309,9 @@ void TerrainClass::vf_95()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71C730
-// CAPPED at 31.5% (124 of 124 instructions; retail-only: 1 `fxch`, 1 `je`; cl-only: 1 `mov`, 1 `jne`).
+// Prior timer interface capped at 31.5% (124 of 124 instructions).
+// Shared CDTimerClass query now inlines: partial 3.2% (124 native,126 compiled).
+// Historical comparison residual: retail-only 1 `fxch`,1 `je`; compiled-only 1 `mov`,1 `jne`.
 // Retail compares the scaled roll with the probability as `FXCH; FCOMPP; TEST AH,1; JE`, cl as
 // `FCOMPP; TEST AH,0x41; JNE`; the one-instruction shift costs the positional score for the rest of the
 // body (every later instruction lines up). Variants tried: roll * K < p (kept), p > roll * K,
@@ -324,10 +326,10 @@ void TerrainClass::Update()
             SetRate(Type->AnimationRate);
         }
     }
-    if (Timer.TimeLeft() == 0 && Rate != 0) {
+    if (Timer.GetTimeLeft() == 0 && Rate != 0) {
         HasChanged = true;
         Value += Step;
-        Timer = TerrainTimerView(Rate);
+        Timer = CDTimerClass(Rate);
         if (TimeToDie) {
             if (Value == ((MapObjShapeView*)Type->vf_39())->FrameCount - 1) {
                 UnInit();

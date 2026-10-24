@@ -41,7 +41,7 @@ inline bool Factory_004C9EA0::Suspend(bool manual)
     if (!this->IsSuspended) {
         this->IsManual = manual;
         this->IsSuspended = true;
-        this->Production.Start(0);
+        this->Production.SetRate(0);
         return true;
     }
     return false;
@@ -62,7 +62,7 @@ bool Factory_004C9EA0::Unsuspend(bool manual)
         && !(obj && this->Production.Value == 54)
         && !(this->SpecialItem != -1 && this->Production.Value == 54)) {
         this->IsSuspended = false;
-        this->Production.Start(this->GetBuildTimeFrames());
+        this->Production.SetRate(this->GetBuildTimeFrames());
         int cost = this->CostPerTick();
         IHouse_004C9EA0* house = &this->Owner->IHouse;
         if ((*house->Vtbl->Available_Money)(house) >= cost) {

@@ -9,7 +9,7 @@
 // partial view of terrain_common_views.h and, second, StageClass (RTTI member displacement 0xAC).
 //
 //   +0x00..+0xAB  MapObjClassView (terrain_common_views.h)
-//   +0xAC..+0xC7  StageClass (TerrainStageView below): Value, HasChanged, Timer, Rate, Step
+//   +0xAC..+0xC7  StageClass (stage_class.h): Value, HasChanged, Timer, Rate, Step
 //   +0xC8  Type          (TerrainTypeClass*)  ctor argument 1; swizzled by Load
 //   +0xCC  IsBurning     (bool)               ctor 0
 //   +0xCD  TimeToDie     (bool)               ctor 0
@@ -24,47 +24,11 @@
 #include "terrain_shared.h"
 #include "terrain_type_class.h"
 
-// StageClass (RTTI base at +0xAC): a staged frame counter, 0x1C bytes. Its inline constructor and the
-// timer restart are expanded in the bodies below; the no-init constructor leaves it alone.
-struct TerrainTimerView
-{
-    int StartTime;   // +0x00  (the frame counter when started; -1 = stopped)
-    int unknown_04;  // +0x04
-    int DelayTime;   // +0x08
-
-    // The no-init construction leaves the timer untouched.
-    TerrainTimerView() {}
-    // The restart of the timer with a delay (inline).
-    TerrainTimerView(int delay) : StartTime(TerrainFrame), DelayTime(delay) {}
-    // FUNCTION: GAMEMD 0x426630 (decl; reloc) - the frames left (0 when expired or stopped).
-    int TimeLeft();
-};
-GG_STATIC_ASSERT(sizeof(TerrainTimerView) == 0xC);
-
-struct TerrainStageView
-{
-    int              Value;        // +0x00
-    bool             HasChanged;   // +0x04
-    TerrainTimerView Timer;        // +0x08
-    int              Rate;         // +0x14
-    int              Step;         // +0x18
-
-    TerrainStageView() : Value(0), HasChanged(false), Timer(0), Rate(0), Step(1) {}
-    TerrainStageView(const MapObjNoInit&) {}
-    // StageClass::SetRate, inline: the rate and a timer restarted with it.
-    void SetRate(int rate)
-    {
-        Timer = TerrainTimerView(rate);
-        Rate = rate;
-    }
-};
-GG_STATIC_ASSERT(offsetof(TerrainStageView, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(TerrainStageView, Rate) == 0x14);
-GG_STATIC_ASSERT(offsetof(TerrainStageView, Step) == 0x18);
-GG_STATIC_ASSERT(sizeof(TerrainStageView) == 0x1C);
+#include "../../_layout/stage_class.h"
+#include "../../_layout/abstract_class.h"
 
 // VTABLE: GAMEMD 0x7F522C (IPersistStream side) and GAMEMD 0x7F5200 / 0x7F5224 / 0x7F521C
-class TerrainClass : public MapObjClassView, public TerrainStageView
+class TerrainClass : public MapObjClassView, public StageClass
 {
 public:
     // FUNCTION: GAMEMD 0x71BB90 - the placing constructor (type, map cell).
@@ -73,7 +37,7 @@ public:
     TerrainClass();
     // No-init constructor: Load re-runs it through placement new to restore
     // the vptrs without touching members.
-    TerrainClass(const MapObjNoInit& noInit) : MapObjClassView(noInit), TerrainStageView(noInit) {}
+    TerrainClass(const MapObjNoInit& noInit) : MapObjClassView(noInit), StageClass(AbstractNoInit()) {}
 
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x71D310

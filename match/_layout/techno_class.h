@@ -31,24 +31,7 @@
 // them. CDTimerClass / CoordStruct / AudioController come from the included
 // chain (mission_class.h / object_class.h).
 
-// StageClass — staged frame timer (sizeof = 0x1C). Value/HasChanged/Timer/
-// Rate/Step; embeds a CDTimerClass.
-#ifndef GG_MATCH_LAYOUT_STAGECLASS_DEFINED
-#define GG_MATCH_LAYOUT_STAGECLASS_DEFINED
-class StageClass
-{
-public:
-    int           Value;        // +0x00
-    unsigned char HasChanged;   // +0x04  (bool)
-    unsigned char _pad_05[3];   // +0x05
-    CDTimerClass  Timer;        // +0x08  (0xC)
-    int           Rate;         // +0x14
-    int           Step;         // +0x18
-};
-GG_STATIC_ASSERT(offsetof(StageClass, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(StageClass, Rate)  == 0x14);
-GG_STATIC_ASSERT(sizeof(StageClass)          == 0x1C);
-#endif
+#include "stage_class.h"
 
 // PassengersClass — transport occupant list head (sizeof = 8). Confirmed
 // anchor: NumPassengers @0, FirstPassenger @4.

@@ -20,7 +20,7 @@ bool FactoryClass::CompletedProduction()
         this->IsSuspended = true;
         this->IsDifferent = true;
         this->Production.Value = 0;
-        this->Production.Start(0);
+        this->Production.SetRate(0);
         return true;
     }
 
@@ -29,7 +29,7 @@ bool FactoryClass::CompletedProduction()
         this->IsSuspended = true;
         this->IsDifferent = true;
         this->Production.Value = 0;
-        this->Production.Start(0);
+        this->Production.SetRate(0);
         return true;
     }
 

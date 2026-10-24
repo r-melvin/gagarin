@@ -54,37 +54,7 @@ GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 
 // ---------------------------------------------------------------------------
-// StageClass (YRpp)  (sizeof = 0x1C)
-//   +0x00 int          Value
-//   +0x04 bool         HasChanged
-//   +0x08 CDTimerClass Timer
-//   +0x14 int          Rate
-//   +0x18 int          Step
-// Suspend resets the production timer: Rate first, then a CDTimerClass(0)
-// temporary copied into Timer.
-// ---------------------------------------------------------------------------
-class StageClass
-{
-public:
-    int          Value;       // +0x00
-    bool         HasChanged;  // +0x04
-    CDTimerClass Timer;       // +0x08
-    int          Rate;        // +0x14
-    int          Step;        // +0x18
-
-    void Start(int rate)
-    {
-        // Source orders the Timer copy before Rate so cl schedules the retail
-        // pattern: hold &Timer in ESI, write Rate via this (ECX) between the
-        // LEA and the timer stores. (cl re-emits the Rate store first.)
-        this->Timer = CDTimerClass(rate);
-        this->Rate = rate;
-    }
-};
-
-GG_STATIC_ASSERT(offsetof(StageClass, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(StageClass, Rate) == 0x14);
-GG_STATIC_ASSERT(sizeof(StageClass) == 0x1C);
+#include "../_layout/stage_class.h"
 
 // ---------------------------------------------------------------------------
 // FactoryClass : AbstractClass (0x24)  (sizeof = 0x74)

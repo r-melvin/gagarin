@@ -23,7 +23,7 @@ bool FactoryClass::Suspend(bool manual)
     if (!this->IsSuspended) {
         this->IsManual = manual;
         this->IsSuspended = true;
-        this->Production.Start(0);
+        this->Production.SetRate(0);
         return true;
     }
     return false;

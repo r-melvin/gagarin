@@ -15,7 +15,7 @@
 // infantry 1, unit 2, aircraft 6). The object itself is deleted with the
 // scenario-init counter raised around the delete.
 //
-// The stage reset goes through the inlined StageClass::Start (timer temporary,
+// The stage reset goes through the inlined StageClass::SetRate (timer temporary,
 // then Rate); written as plain member stores VC6 interleaves the following
 // Value / flag stores into the timer copy.
 bool Factory_004C9FF0::AbandonProduction()
@@ -31,7 +31,7 @@ bool Factory_004C9FF0::AbandonProduction()
             this->SpecialItem = -1;
         }
 
-        this->Production.Start(0);
+        this->Production.SetRate(0);
         this->Production.Value = 0;
         this->IsSuspended = true;
         this->IsDifferent = true;

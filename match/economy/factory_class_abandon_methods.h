@@ -119,52 +119,13 @@ struct Techno_004C9FF0
 };
 GG_STATIC_ASSERT(offsetof(Techno_004C9FF0, Owner) == 0x21C);
 
-// FrameTimer — empty clock policy whose value is CurrentFrame; occupies the
-// never-written middle dword of the timer.
-struct FrameTimer_004C9FF0
-{
-    operator int() const { return CurrentFrame; }
-};
-
-// CDTimerClass<FrameTimer> (0xC bytes).
-struct CDTimer_004C9FF0
-{
-    int                 StartTime;       // +0x0000
-    FrameTimer_004C9FF0 CurrentTime;     // +0x0004
-    int                 TimeLeft;        // +0x0008
-
-    CDTimer_004C9FF0(int duration)
-    {
-        this->StartTime = this->CurrentTime;
-        this->TimeLeft = duration;
-    }
-};
-GG_STATIC_ASSERT(sizeof(CDTimer_004C9FF0) == 0xC);
-
-// StageClass (0x1C bytes): Value, HasChanged, Timer, Rate, Step.
-struct Stage_004C9FF0
-{
-    int              Value;              // +0x0000
-    bool             HasChanged;         // +0x0004
-    CDTimer_004C9FF0 Timer;              // +0x0008
-    int              Rate;               // +0x0014
-    int              Step;               // +0x0018
-
-    void Start(int rate)
-    {
-        this->Timer = CDTimer_004C9FF0(rate);
-        this->Rate = rate;
-    }
-};
-GG_STATIC_ASSERT(offsetof(Stage_004C9FF0, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(Stage_004C9FF0, Rate) == 0x14);
-GG_STATIC_ASSERT(sizeof(Stage_004C9FF0) == 0x1C);
+#include "../_layout/stage_class.h"
 
 // FactoryClass : AbstractClass (0x24), 0x74 bytes.
 struct Factory_004C9FF0
 {
     char              _pad000[0x24];     // +0x0000  AbstractClass
-    Stage_004C9FF0    Production;        // +0x0024
+    StageClass       Production;        // +0x0024
     char              _pad040[0x18];     // +0x0040  DynamicVectorClass QueuedObjects
     Techno_004C9FF0*  Object;            // +0x0058
     bool              unknown_5C;          // +0x005C

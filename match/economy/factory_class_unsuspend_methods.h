@@ -50,54 +50,13 @@ struct House_004C9EA0
 };
 GG_STATIC_ASSERT(offsetof(House_004C9EA0, IHouse) == 0x24);
 
-// FrameTimer — empty clock policy whose value is CurrentFrame; occupies the
-// never-written middle dword of the timer.
-struct FrameTimer_004C9EA0
-{
-    operator int() const { return CurrentFrame; }
-};
-
-// CDTimerClass<FrameTimer> (0xC bytes): StartTime, CurrentTime (uninitialised
-// by the ctor and copied through as the `[ESP+0xC]` garbage load), TimeLeft.
-struct CDTimer_004C9EA0
-{
-    int                 StartTime;        // +0x0000
-    FrameTimer_004C9EA0 CurrentTime;      // +0x0004
-    int                 TimeLeft;         // +0x0008
-
-    CDTimer_004C9EA0(int duration)
-    {
-        this->StartTime = this->CurrentTime;
-        this->TimeLeft = duration;
-    }
-};
-GG_STATIC_ASSERT(offsetof(CDTimer_004C9EA0, TimeLeft) == 0x8);
-GG_STATIC_ASSERT(sizeof(CDTimer_004C9EA0) == 0xC);
-
-// StageClass (0x1C bytes): Value, HasChanged, Timer, Rate, Step.
-struct Stage_004C9EA0
-{
-    int              Value;               // +0x0000
-    bool             HasChanged;          // +0x0004
-    CDTimer_004C9EA0 Timer;               // +0x0008
-    int              Rate;                // +0x0014
-    int              Step;                // +0x0018
-
-    void Start(int rate)
-    {
-        this->Timer = CDTimer_004C9EA0(rate);
-        this->Rate = rate;
-    }
-};
-GG_STATIC_ASSERT(offsetof(Stage_004C9EA0, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(Stage_004C9EA0, Rate) == 0x14);
-GG_STATIC_ASSERT(sizeof(Stage_004C9EA0) == 0x1C);
+#include "../_layout/stage_class.h"
 
 // FactoryClass : AbstractClass (0x24), 0x74 bytes.
 struct Factory_004C9EA0
 {
     char             _pad000[0x24];       // +0x0000  AbstractClass
-    Stage_004C9EA0   Production;          // +0x0024
+    StageClass      Production;          // +0x0024
     char             _pad040[0x18];       // +0x0040  DynamicVectorClass QueuedObjects
     Techno_004C9EA0* Object;              // +0x0058
     char             _pad05C[4];          // +0x005C  OnHold / IsDifferent

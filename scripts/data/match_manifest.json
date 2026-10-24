@@ -47056,7 +47056,7 @@
   "len": "0x1ac",
   "name": "TerrainClass::Update",
   "status": "partial",
-  "pct": 31.5
+  "pct": 3.2
  },
  {
   "tu": "match/map/tu242_terrain_class.cpp",

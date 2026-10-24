@@ -35,25 +35,7 @@ class TechnoClass;
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 
-// StageClass  (sizeof = 0x1C)
-class StageClass
-{
-public:
-    int          Value;       // +0x00
-    bool         HasChanged;  // +0x04
-    CDTimerClass Timer;       // +0x08
-    int          Rate;        // +0x14
-    int          Step;        // +0x18
-
-    void Start(int rate)
-    {
-        this->Timer = CDTimerClass(rate);
-        this->Rate = rate;
-    }
-};
-GG_STATIC_ASSERT(offsetof(StageClass, Timer) == 0x08);
-GG_STATIC_ASSERT(offsetof(StageClass, Rate) == 0x14);
-GG_STATIC_ASSERT(sizeof(StageClass) == 0x1C);
+#include "../_layout/stage_class.h"
 
 // FactoryClass : AbstractClass (0x24)  (sizeof = 0x74)
 class FactoryClass
