@@ -254,7 +254,6 @@ extern SidebarHouse* SelectPlayer_00A83D4C;
 extern SidebarRules* SelectRules_008871E0;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x8809A0 / 0x88099A..0x88099C -- placement state.
 #include "../../_layout/placement_object.h"
-extern int PlacementAux_00880990;
 extern int PlacementIndex_00880994;
 extern int PendingSuper_008809A0;
 extern unsigned char PlacementFlagA_0088099A;
@@ -1219,7 +1218,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                     if (factory != 0) {
                         if (PlacementObject_0088098C != 0 && SelectCheckPlacement(PlacementObject_0088098C) != 0) {
                             PlacementObject_0088098C = 0;
-                            PlacementAux_00880990 = 0;
+                            PlacementType_00880990 = 0;
                             PlacementIndex_00880994 = -1;
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                         }
@@ -1391,7 +1390,7 @@ int SidebarSelectClass::Action(unsigned flags, unsigned* key, int modifier)
                             event.ConstructSpecial(SelectPlayer_00A83D4C->ArrayIndex, 0x12, super->Type->At_98, &cell)->Queue();
                         } else {
                             PlacementObject_0088098C = 0;
-                            PlacementAux_00880990 = 0;
+                            PlacementType_00880990 = 0;
                             PlacementIndex_00880994 = -1;
                             Map_0087F7E8.SetActiveFoundation_004A8BF0(0);
                             Map_0087F7E8.SetRepairMode_004AC8C0(0);

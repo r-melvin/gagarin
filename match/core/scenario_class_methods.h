@@ -31,6 +31,10 @@ class HouseClass;
 
 struct MapInstanceClass
 {
+    // Declaration: GAMEMD 0x4A94F0, hidden CellStruct result + foundation, RET8
+    CellStruct FUN_004A94F0(const CellStruct* foundation) const;
+    // Declaration: GAMEMD 0x568300, one cell pointer, AL result, RET4
+    bool FUN_00568300(const CellStruct* cell) const;
     // Declaration: GAMEMD 0x56BD40
     void FUN_0056BD40();
     // Declaration: GAMEMD 0x4AC4F0

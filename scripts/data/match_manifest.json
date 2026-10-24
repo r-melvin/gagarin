@@ -98731,5 +98731,14 @@
   "name": "Point2D subtraction assignment",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D5030",
+  "sym": "?FUN_006D5030@Tactical@@QAEX_N@Z",
+  "len": "0x6f5",
+  "name": "Tactical::FUN_006D5030",
+  "status": "partial",
+  "pct": 0.5
  }
 ]

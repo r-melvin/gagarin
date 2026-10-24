@@ -1831,6 +1831,154 @@ extern ShapeHeader* DisplayPlaceShape_008A03FC;
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
 
+#include "../../_layout/building_class.h"
+#include "../../_layout/placement_object.h"
+#include "../../map/terrain_objects/overlay_type_class.h"
+#include "mouse_ww_mouse_class.h"
+// GLOBAL: GAMEMD 0x88097C (declaration)
+extern ObjectTypeClass* DAT_0088097C;
+// GLOBAL: GAMEMD 0x880964 (declaration)
+extern CellStruct* DAT_00880964;
+// GLOBAL: GAMEMD 0x880974 (declaration)
+extern CellStruct* DAT_00880974;
+// GLOBAL: GAMEMD 0x88095C (declaration)
+extern CellStruct DAT_0088095C;
+// GLOBAL: GAMEMD 0x880960 (declaration)
+extern CellStruct DAT_00880960;
+// Distinct native component addresses; no enclosing pair identity inferred.
+// GLOBAL: GAMEMD 0x88096A (declaration)
+extern short DAT_0088096A;
+// GLOBAL: GAMEMD 0x88096C (declaration)
+extern short DAT_0088096C;
+// GLOBAL: GAMEMD 0x88096E (declaration)
+extern short DAT_0088096E;
+// GLOBAL: GAMEMD 0x880970 (declaration)
+extern short DAT_00880970;
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16B7 - 0x16A4) == 0x16B7);
+GG_STATIC_ASSERT(offsetof(OverlayTypeClass, Wall) == 0x2A8);
+
+// FUNCTION: GAMEMD 0x6D5030
+void Tactical::FUN_006D5030(bool argument)
+{
+    CellStruct begin;
+    begin.X = 0;
+    begin.Y = 0;
+    if (PlacementType_00880990) {
+        Point2D temporary;
+        Point2D mouse = *WWMouseClassInstance->vf_13(&temporary);
+        if (mouse.X < Viewport_00886FA0.X ||
+            mouse.X >= Viewport_00886FA0.X + Viewport_00886FA0.Width ||
+            mouse.Y < Viewport_00886FA0.Y ||
+            mouse.Y >= Viewport_00886FA0.Y + Viewport_00886FA0.Height)
+            return;
+        CellStruct end;
+        int kind = PlacementType_00880990->vf_11();
+        if (kind == 7 && static_cast<BuildingTypeClass*>(PlacementType_00880990)->bools_16A4[0x16B7 - 0x16A4]) {
+            end.X = 3;
+            end.Y = 3;
+            begin.X = -1;
+            begin.Y = -1;
+        } else {
+            end = MapInstance.FUN_004A94F0(DAT_00880964);
+        }
+        bool all = true;
+        for (int x = begin.X; x < end.X; ++x) {
+            for (int y = begin.Y; y < end.Y; ++y) {
+                CellStruct offset;
+                offset.X = x;
+                offset.Y = y;
+                CellStruct coordinate = offset + DAT_0088095C + DAT_00880960;
+                CoordStruct center;
+                center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                    (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                CoordStruct copiedCenter = center;
+                Point2D position = CoordsToScreen(&copiedCenter);
+                position.X -= unknown_B0.unknown_00;
+                position.Y -= unknown_B0.unknown_04;
+                position.X -= 30;
+                if (MapInstance.FUN_00568300(&coordinate)) {
+                    // Always call even after all becomes false; skipped illegal
+                    // cells do not change this sticky accumulated result.
+                    bool result = MapInstance.FUN_005657A0(&coordinate)->FUN_0047EC90(
+                        &position, &Viewport_00886FA0, argument);
+                    all = result && all;
+                }
+            }
+        }
+        kind = PlacementType_00880990->vf_11();
+        if (DAT_00A8ED6B && PlacementObject_0088098C) {
+            CellStruct coordinate = begin + DAT_0088095C + DAT_00880960;
+            CoordStruct center;
+            center.X = coordinate.X * 256 + 128;
+            center.Y = coordinate.Y * 256 + 128;
+            center.Z = 0;
+            if (kind == 7) {
+                CoordStruct aligned;
+                aligned.FUN_0041C230(center.X / 256 * 256,
+                                     center.Y / 256 * 256, 0);
+                center = aligned;
+            }
+            center.Z = MapInstance.FUN_00578080(&center);
+            PlacementObject_0088098C->vf_109(center);
+            Point2D position = CoordsToScreen(&center);
+            position.X -= unknown_B0.unknown_00;
+            position.Y -= unknown_B0.unknown_04;
+            if (kind != 18)
+                PlacementObject_0088098C->vf_70(&position, &Viewport_00886FA0);
+        }
+        if (all && PlacementObject_0088098C && PlacementObject_0088098C->vf_11() == 6) {
+            BuildingClass* building = static_cast<BuildingClass*>(PlacementObject_0088098C);
+            BuildingTypeClass* type = building->Type;
+            if (type->bools_16A4[0x16BE - 0x16A4]) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D5730(argument, coordinate);
+            } else if (type->bools_16A4[0x16C0 - 0x16A4]) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D59D0(argument, coordinate);
+            } else if (type->ToOverlay && type->ToOverlay->Wall) {
+                Cell origin(begin.X, begin.Y);
+                CellStruct coordinate = origin + DAT_0088095C + DAT_00880960;
+                FUN_006D5C50(argument, coordinate);
+            }
+        }
+    }
+    if (!DAT_00A8ED6B && DAT_0088097C) {
+        CellStruct end;
+        int kind = DAT_0088097C->vf_11();
+        if (kind == 7 && static_cast<BuildingTypeClass*>(DAT_0088097C)->bools_16A4[0x16B7 - 0x16A4]) {
+            end.X = 3;
+            end.Y = 3;
+            begin.X = -1;
+            begin.Y = -1;
+        } else {
+            end = MapInstance.FUN_004A94F0(DAT_00880974);
+        }
+        for (int x = begin.X; x < end.X; ++x) {
+            for (int y = begin.Y; y < end.Y; ++y) {
+                CellStruct coordinate;
+                // Native second-pass coordinates differ from the first pair's
+                // global component addresses; retain their exact bindings.
+                coordinate.X = x + DAT_0088096A;
+                coordinate.X += DAT_0088096E;
+                coordinate.Y = y + DAT_0088096C;
+                coordinate.Y += DAT_00880970;
+                int worldX = (coordinate.X * 256 + 128) / 256 * 256;
+                int worldY = (coordinate.Y * 256 + 128) / 256 * 256;
+                int rawX = worldX * 60 / 2 + worldY * -60 / 2;
+                int rawY = worldX * 30 / 2 + worldY * 30 / 2;
+                Point2D position(rawX / 256 - unknown_B0.unknown_00 - 30,
+                                 rawY / 256 - unknown_B0.unknown_04);
+                if (MapInstance.FUN_00568300(&coordinate))
+                    MapInstance.FUN_005657A0(&coordinate)->FUN_0047EC90(
+                        &position, &Viewport_00886FA0, argument);
+            }
+        }
+    }
+}
+
+
 // FUNCTION: GAMEMD 0x6D5730
 void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
 {
