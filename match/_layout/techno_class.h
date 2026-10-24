@@ -119,39 +119,7 @@ GG_STATIC_ASSERT(offsetof(TransitionTimer, Rate2)       == 0x14);
 GG_STATIC_ASSERT(sizeof(TransitionTimer)                == 0x20);
 #endif
 
-// DirStruct — 16-bit binary heading + 16-bit pad (sizeof = 4).
-#ifndef GG_MATCH_LAYOUT_DIRSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_DIRSTRUCT_DEFINED
-struct DirStruct
-{
-    unsigned short Raw;       // +0x00
-    unsigned short Padding;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(DirStruct) == 4);
-#endif
-
-// FacingClass — desired/current heading + rotation timer (sizeof = 0x18). Ctors
-// FUN_0x004C91E0 / FUN_0x004C91C0.
-#ifndef GG_MATCH_LAYOUT_FACINGCLASS_DEFINED
-#define GG_MATCH_LAYOUT_FACINGCLASS_DEFINED
-struct FacingClass
-{
-    DirStruct    DesiredFacing;   // +0x00
-    DirStruct    StartFacing;     // +0x04
-    CDTimerClass RotationTimer;   // +0x08  (0xC)
-    DirStruct    ROT;             // +0x14
-
-    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) -- the current heading, by value.
-    DirStruct FUN_004C93D0() const;
-    // FUNCTION: GAMEMD 0x4C93D0 (decl; reloc) -- the same function reached
-    // with a hidden result pointer: stores the heading into `out` and returns it.
-    DirStruct* FUN_004C93D0(DirStruct* out);
-    // FUNCTION: GAMEMD 0x4C9480 (decl; reloc) -- is the facing still turning.
-    bool FUN_004C9480() const;
-};
-GG_STATIC_ASSERT(offsetof(FacingClass, RotationTimer) == 0x08);
-GG_STATIC_ASSERT(sizeof(FacingClass)                  == 0x18);
-#endif
+#include "facing_class.h"
 
 // TurretControl — recoil travel parameters (sizeof = 0x10).
 #ifndef GG_MATCH_LAYOUT_TURRETCONTROL_DEFINED

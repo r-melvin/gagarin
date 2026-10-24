@@ -80,39 +80,7 @@ GG_STATIC_ASSERT(offsetof(RateTimer, Rate) == 0x0C);
 GG_STATIC_ASSERT(sizeof(RateTimer)         == 0x10);
 #endif
 
-// DirStruct / FacingClass - definitions identical to match/_layout/techno_class.h
-// and match/movement/facing_methods.h. FacingClass is embedded by value in
-// HoverLocomotionClass (+0x30) and JumpjetLocomotionClass (+0x54); both call its
-// constructor 0x004C91E0 through a LEA of that offset, and the Jumpjet
-// Link_To_Object 0x0054AD30 additionally builds one on the stack and copies it
-// in with `MOV ECX,0x6; REP MOVSD` @0x0054AE08..0x0054AE13 - six dwords, which
-// is an independent proof that sizeof(FacingClass) is 0x18.
-#ifndef GG_MATCH_LAYOUT_DIRSTRUCT_DEFINED
-#define GG_MATCH_LAYOUT_DIRSTRUCT_DEFINED
-struct DirStruct
-{
-    unsigned short Raw;       // +0x00
-    unsigned short Padding;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(DirStruct) == 4);
-#endif
-
-#ifndef GG_MATCH_LAYOUT_FACINGCLASS_DEFINED
-#define GG_MATCH_LAYOUT_FACINGCLASS_DEFINED
-struct FacingClass
-{
-    DirStruct    DesiredFacing;   // +0x00  ctor `MOV [EAX],CX`      @0x004C91E4
-    DirStruct    StartFacing;     // +0x04  ctor `MOV [EAX+0x4],CX`  @0x004C91E7
-    CDTimerClass RotationTimer;   // +0x08  ctor StartTime @0x004C91F4 (= the
-                                  //        frame counter 0x00A8ED84), TimeLeft
-                                  //        @0x004C91F1
-    DirStruct    ROT;             // +0x14  ctor @0x004C91F7 then @0x004C920D
-                                  //        from the clamped int argument
-};
-GG_STATIC_ASSERT(offsetof(FacingClass, RotationTimer) == 0x08);
-GG_STATIC_ASSERT(offsetof(FacingClass, ROT)           == 0x14);
-GG_STATIC_ASSERT(sizeof(FacingClass)                  == 0x18);
-#endif
+#include "facing_class.h"
 
 // ---------------------------------------------------------------------------
 // LocomotionClass - the shared COM spine (sizeof = 0x18).
