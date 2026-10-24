@@ -11,16 +11,26 @@
 #include <stdlib.h>
 #include "terrain_objects/terrain_class.h"
 #include "terrain_objects/overlay_type_class.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../_layout/rectangle_operations.h"
+#include "../_layout/tactical.h"
+#include "../_layout/tactical_viewport.h"
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
 
-// Slot 110 (the cell the object stands on) is read by value as `*vf_110(MapObjCell().Address())`: the
-// returned cell is copied out of a compiler temporary, as in the original (see terrain_common_views.h).
+// ObjectClass slot 110 returns CellStruct by value (0x41BEA0). The native
+// Terrain callers use the compiler return temporary. Foreign map/animation/shape
+// APIs below still declare legacy records: ABI casts preserve the original
+// buffer or complete-object address. Object RTTI places ObjectClass at offset 0;
+// coordinate/cell/rectangle field offsets and sizes are asserted in the shared headers.
 
 // GLOBAL: GAMEMD 0x7E9740 - CLSID of TerrainClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_Terrain =
     { 0x0E272DCE, 0x9C0F, 0x11D1, { 0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
 // The anim spawn point: the object's coordinate raised by 0x50 leptons.
-static inline MapObjCoord TerrainRaised(const MapObjCoord& coord)
+static inline MapObjCoord TerrainRaised(const CoordStruct& coord)
 {
     return MapObjCoord(coord.X, coord.Y, coord.Z + 0x50);
 }
@@ -48,25 +58,26 @@ double DAT_00B0ED30 = DAT_007E1718 / DAT_00B0ED48;
 // callee-saved pushes, frame 0x2C); cl keeps `result` in EBX (three pushes, frame 0x34), so every
 // instruction after the prologue is named or placed differently. Variants tried: the plain form kept here,
 // a hand-split operator new + placement new with the first copy in a named local, flat early-return guards.
-int TerrainClass::vf_91(int* damage, int distance, MapObjWarheadView* warhead, void* source, bool a5, bool a6,
+int TerrainClass::vf_91(int* damage, int distance, void* warhead, void* source, bool a5, bool a6,
                         void* house)
 {
     int result = 0;
     if (warhead == 0)
         return result;
-    if (warhead->unknown_147 && !Type->unknown_233) {
-        result = MapObjClassView::vf_91(damage, distance, warhead, source, a5, a6, house);
+    if (static_cast<MapObjWarheadView*>(warhead)->unknown_147 && !Type->unknown_233) {
+        result = ObjectClass::vf_91(damage, distance, warhead, source, a5, a6, house);
         if (result == 5)
             return result;
         if (result == 4) {
             if (Type->SpawnsTiberium) {
                 new MapObjAnimView(
                     TerrainPickAnimType(100, MapObjRules->unknown_FA8,
-                                        MapObjMap.GetCellAtCoord(CurrentLocation())->unknown_EC,
-                                        CurrentLocation()),
-                    CurrentLocation(), 0, 1, 0x2600, TerrainFunc_48ACE0(CurrentLocation()), 0);
-                TerrainFunc_489280(CurrentLocation(), 100, 0, MapObjRules->unknown_FA8, 1, 0);
-                ((MapObjCellRef*)vf_110(MapObjCell().Address()))->Func_489270();
+                                        MapObjMap.GetCellAtCoord(MapObjCoord(Location.X, Location.Y, Location.Z))->unknown_EC,
+                                        MapObjCoord(Location.X, Location.Y, Location.Z)),
+                    MapObjCoord(Location.X, Location.Y, Location.Z), 0, 1, 0x2600, TerrainFunc_48ACE0(MapObjCoord(Location.X, Location.Y, Location.Z)), 0);
+                TerrainFunc_489280(MapObjCoord(Location.X, Location.Y, Location.Z), 100, 0, MapObjRules->unknown_FA8, 1, 0);
+                CellStruct cell = vf_110();
+                reinterpret_cast<MapObjCellRef*>(&cell)->Func_489270();
             } else if (IsBurning) {
                 TerrainFunc_422B80(this);
             } else if (!TimeToDie) {
@@ -74,9 +85,9 @@ int TerrainClass::vf_91(int* damage, int distance, MapObjWarheadView* warhead, v
                 SetRate(2);
                 Value = 0;
             }
-            MapObjTactical->Func_6D2790(vf_75(), 0);
+            DAT_00887324->FUN_006D2790(vf_75(), false);
             vf_55(1);
-            UnInit();
+            vf_62();
         }
     }
     return result;
@@ -87,16 +98,16 @@ int TerrainClass::vf_91(int* damage, int distance, MapObjWarheadView* warhead, v
 TerrainClass::TerrainClass(TerrainTypeClass* type, const MapObjCell* cell)
     : Type(type), IsBurning(false), TimeToDie(false), unknown_D0(0), unknown_D4(0), ScreenPos(0, 0)
 {
-    MapObjRttiBase::Create_ID();
-    unknown_6C = Type->unknown_A0;
+    AbstractClass::vf_rtti_5();
+    Health = Type->unknown_A0;
     if (cell->X != TerrainEmptyCellValue.X || cell->Y != TerrainEmptyCellValue.Y) {
-        MapObjCoord coord((cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0);
-        if (!Unlimbo(&coord, 0))
-            MapObjClassView::UnInit();
+        CoordStruct coord = { (cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0 };
+        if (!vf_54(coord, 0))
+            ObjectClass::vf_62();
     }
     SetRate(0);
     TerrainArray.AddItem(this);
-    int id = Fetch_ID();
+    int id = vf_rtti_4();
     TerrainAbstractIndex.AddIndexInline(id, this);
 }
 
@@ -106,7 +117,7 @@ TerrainClass::TerrainClass()
     : Type(0), IsBurning(false), TimeToDie(false), unknown_D0(0), unknown_D4(0), ScreenPos(0, 0)
 {
     TerrainArray.AddItem(this);
-    int id = Fetch_ID();
+    int id = vf_rtti_4();
     TerrainAbstractIndex.AddIndexInline(id, this);
 }
 
@@ -118,21 +129,22 @@ TerrainClass::TerrainClass()
 // register naming of the
 // ScreenPos + Offset sum (retail: tactical pointer in EAX, reused for Offset.Y; cl: EDX plus EDI). Variants
 // tried: free and member operator+, swapped operand order, int locals, a named sum temporary, `+=`.
-bool TerrainClass::Mark(int arg)
+bool TerrainClass::vf_73(int arg)
 {
-    if (MapObjClassView::Mark(arg)) {
-        MapObjCell cell = *vf_110(MapObjCell().Address());
+    if (ObjectClass::vf_73(arg)) {
+        CellStruct cell = vf_110();
         switch (arg) {
         case 0:
-            MapObjMap.Func_5687F0(&cell, this);
+            MapObjMap.Func_5687F0(reinterpret_cast<const MapObjCell*>(&cell), reinterpret_cast<MapObjClassView*>(this));
             break;
         case 1:
         case 3: {
-            MapObjMap.Func_5683C0(&cell, this);
-            MapObjTactical->CoordsToClient(vf_43(), &ScreenPos);
-            MapObjPoint off = MapObjTactical->Offset;
-            MapObjPoint cur = ScreenPos;
-            ScreenPos = MapObjPoint(cur.X + off.X, cur.Y + off.Y);
+            MapObjMap.Func_5683C0(reinterpret_cast<const MapObjCell*>(&cell), reinterpret_cast<MapObjClassView*>(this));
+            CoordStruct coordinate = vf_43();
+            DAT_00887324->FUN_006D2140(&coordinate, &ScreenPos);
+            Point2D off(DAT_00887324->unknown_B0.unknown_00, DAT_00887324->unknown_B0.unknown_04);
+            Point2D cur = ScreenPos;
+            ScreenPos = Point2D(cur.X + off.X, cur.Y + off.Y);
             break;
         }
         }
@@ -143,7 +155,7 @@ bool TerrainClass::Mark(int arg)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71C070
-void TerrainClass::vf_61(MapObjCoord* where)
+void TerrainClass::vf_61(CoordStruct* where)
 {
     int bits = MapObjScenario->TheaterIndex != 1 ? Type->TemperateOccupationBits : Type->SnowOccupationBits;
     MapObjCell cell = MapObjCoordToCell(*where);
@@ -158,7 +170,7 @@ void TerrainClass::vf_61(MapObjCoord* where)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71C110
-void TerrainClass::vf_60(MapObjCoord* where)
+void TerrainClass::vf_60(CoordStruct* where)
 {
     int bits = MapObjScenario->TheaterIndex != 1 ? Type->TemperateOccupationBits : Type->SnowOccupationBits;
     MapObjCell cell = MapObjCoordToCell(*where);
@@ -178,21 +190,21 @@ void TerrainClass::vf_60(MapObjCoord* where)
 // zero arguments from them. Remaining: retail subtracts 0x10 from the point with `SUB` where cl folds
 // an `ADD -16` (tried `point -= `, a by-value operator- and a copy-then-subtract operator: all worse),
 // and retail selects the draw flags with a branch where cl if-converts (ternary and if/else alike).
-void TerrainClass::vf_69(MapObjPoint* where, MapObjRect* clip)
+void TerrainClass::vf_69(Point2D* where, RectangleStruct* clip)
 {
-    MapObjCell cell = *vf_110(MapObjCell().Address());
-    MapObjCellView* cellView = MapObjMap.GetCellAt(cell);
-    MapObjShapeView* image = (MapObjShapeView*)GetImage();
+    CellStruct cell = vf_110();
+    MapObjCellView* cellView = MapObjMap.GetCellAt(MapObjCell(cell.X, cell.Y));
+    MapObjShapeView* image = (MapObjShapeView*)vf_27();
     if (image != 0) {
         int frame = 0;
         if (Type->IsAnimated)
             frame = Value;
         else if (TimeToDie)
             frame = Value + TimeToDie;
-        else if (unknown_6C < 2)
+        else if (Health < 2)
             frame = 1;
-        MapObjPoint point = *where;
-        int z = -MapObjHeightScale(vf_116());
+        MapObjPoint point(where->X, where->Y);
+        int z = -MapObjHeightScale(FUN_005F5F30());
         if (cellView->Convert == 0)
             cellView->Func_483E30(0, 0x10000, 0, 1000, 1000, 1000);
         void* context;
@@ -206,11 +218,11 @@ void TerrainClass::vf_69(MapObjPoint* where, MapObjRect* clip)
             tint = cellView->Light;
         }
         int flags = (Type->IsAnimated || TimeToDie) ? 0x2E00 : 0x4E00;
-        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, flags, 0, z - 12, 2, tint, 0, 0,
+        MapObjDrawShape(MapObjSurface, context, image, frame, &point, reinterpret_cast<MapObjRect*>(clip), flags, 0, z - 12, 2, tint, 0, 0,
                          0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             clip, flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
+                             reinterpret_cast<MapObjRect*>(clip), flags | 1, 0, z - 3, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 
@@ -219,17 +231,17 @@ void TerrainClass::vf_69(MapObjPoint* where, MapObjRect* clip)
 // PARTIAL 74.8% (multiset: retail-only `sub`, cl-only `add`). By-value offset as in vf_69, and
 // `frame` defaults to 0 before the TimeToDie test (retail has no else arm). Remaining: the same
 // Y adjustment as vf_69, and the scheduling of the second call's frame sum.
-void TerrainClass::vf_70(MapObjPoint* where, MapObjRect* clip)
+void TerrainClass::vf_70(Point2D* where, RectangleStruct* clip)
 {
-    MapObjCell cell = *vf_110(MapObjCell().Address());
-    MapObjCellView* cellView = MapObjMap.GetCellAt(cell);
-    MapObjShapeView* image = (MapObjShapeView*)GetImage();
+    CellStruct cell = vf_110();
+    MapObjCellView* cellView = MapObjMap.GetCellAt(MapObjCell(cell.X, cell.Y));
+    MapObjShapeView* image = (MapObjShapeView*)vf_27();
     if (image != 0) {
         int frame = 0;
         if (TimeToDie)
             frame = Value + TimeToDie;
-        MapObjPoint point = *where;
-        int z = -MapObjHeightScale(vf_116());
+        MapObjPoint point(where->X, where->Y);
+        int z = -MapObjHeightScale(FUN_005F5F30());
         if (cellView->Convert == 0)
             cellView->Func_483E30(0, 0x10000, 0, 1000, 1000, 1000);
         void* context;
@@ -242,10 +254,10 @@ void TerrainClass::vf_70(MapObjPoint* where, MapObjRect* clip)
             context = cellView->Convert;
             tint = cellView->Light;
         }
-        MapObjDrawShape(MapObjSurface, context, image, frame, &point, clip, 0xE00, 0, z - 4, 2, tint, 0, 0, 0, MapObjPoint(0, 0));
+        MapObjDrawShape(MapObjSurface, context, image, frame, &point, reinterpret_cast<MapObjRect*>(clip), 0xE00, 0, z - 4, 2, tint, 0, 0, 0, MapObjPoint(0, 0));
         if (TerrainShadowsEnabled)
             MapObjDrawShape(MapObjSurface, cellView->Convert, image, frame + image->FrameCount / 2, &point,
-                             clip, 0x601, 0, z - 2, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
+                             reinterpret_cast<MapObjRect*>(clip), 0x601, 0, z - 2, 0, 1000, 0, 0, 0, MapObjPoint(0, 0));
     }
 }
 
@@ -254,10 +266,10 @@ void TerrainClass::vf_70(MapObjPoint* where, MapObjRect* clip)
 // CAPPED at 94.5% (multiset identical). Retail lays the `return 7` epilogue before the `return 0` one;
 // cl emits them in the other order. Variants tried: while loop (kept), for(;;) with the end test first,
 // a result variable with break.
-int TerrainClass::vf_107(MapObjOccupierView* who, int a2, int a3, int a4, int a5)
+int TerrainClass::vf_107(CellClass* who, int a2, int a3, int a4, int a5)
 {
-    MapObjCell* list = vf_66(0);
-    MapObjCell origin = who->Cell;
+    MapObjCell* list = static_cast<MapObjCell*>(vf_66(0));
+    MapObjCell origin(who->MapCoords.X, who->MapCoords.Y);
     while (!(list->X == 0x7FFF && list->Y == 0x7FFF)) {
         if (Type->WaterBound) {
             MapObjCell cell = *list++ + origin;
@@ -280,9 +292,9 @@ bool TerrainClass::vf_94()
         return false;
     int roll = MapObjScenario->Random.Random();
     MapObjAnimView* anim = new MapObjAnimView(
-        MapObjRules->unknown_B94[roll & 1], TerrainRaised(GetCoords()), 0, 0xFF, 0x600, 0, 0);
+        MapObjRules->unknown_B94[roll & 1], TerrainRaised(vf_18()), 0, 0xFF, 0x600, 0, 0);
     if (anim != 0)
-        anim->Func_424B50(this);
+        anim->Func_424B50(reinterpret_cast<MapObjClassView*>(this));
     anim->unknown_100 -= 0x14;
     IsBurning = true;
     return true;
@@ -295,9 +307,9 @@ void TerrainClass::vf_95()
     if (IsBurning) {
         bool dying = TimeToDie;
         IsBurning = false;
-        if (!dying && unknown_6C == 0) {
+        if (!dying && Health == 0) {
             vf_55(1);
-            Mark(2);
+            vf_73(2);
             if (!TimeToDie) {
                 TimeToDie = true;
                 SetRate(2);
@@ -310,15 +322,15 @@ void TerrainClass::vf_95()
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71C730
 // Prior timer interface capped at 31.5% (124 of 124 instructions).
-// Shared CDTimerClass query now inlines: partial 3.2% (124 native,126 compiled).
+// Shared CDTimerClass query now inlines; the manifest records the current structural score.
 // Historical comparison residual: retail-only 1 `fxch`,1 `je`; compiled-only 1 `mov`,1 `jne`.
 // Retail compares the scaled roll with the probability as `FXCH; FCOMPP; TEST AH,1; JE`, cl as
 // `FCOMPP; TEST AH,0x41; JNE`; the one-instruction shift costs the positional score for the rest of the
 // body (every later instruction lines up). Variants tried: roll * K < p (kept), p > roll * K,
 // !(roll * K >= p), a named double.
-void TerrainClass::Update()
+void TerrainClass::vf_23()
 {
-    MapObjClassView::Update();
+    ObjectClass::vf_23();
     if (Type->IsAnimated && Rate == 0) {
         int roll = abs(MapObjScenario->Random.Random()) % 1000000;
         if (roll * TerrainMillionth < Type->AnimationProbability) {
@@ -332,7 +344,7 @@ void TerrainClass::Update()
         Timer = CDTimerClass(Rate);
         if (TimeToDie) {
             if (Value == ((MapObjShapeView*)Type->vf_39())->FrameCount - 1) {
-                UnInit();
+                vf_62();
                 return;
             }
         }
@@ -340,7 +352,7 @@ void TerrainClass::Update()
             if (Value == ((MapObjShapeView*)Type->vf_39())->FrameCount / 2) {
                 Value = 0;
                 SetRate(0);
-                MapObjMap.GetCellAtCoord(CurrentLocation())->Func_483780(true);
+                MapObjMap.GetCellAtCoord(MapObjCoord(Location.X, Location.Y, Location.Z))->Func_483780(true);
             }
         }
     } else {
@@ -356,23 +368,23 @@ void TerrainClass::Update()
 // buffer (cl drops the self copy); by-value hidden-return vf_110 (kept, +8.6%).
 bool TerrainClass::vf_53()
 {
-    if (!unknown_81) {
-        MapObjCell cell = *vf_110(MapObjCell().Address());
+    if (!InLimbo) {
+        CellStruct cell = vf_110();
         for (int i = 0; i < 8; i++) {
-            MapObjCell neighbour = cell + MapObjFacingStep[i & 7];
+            MapObjCell neighbour((short)(cell.X + MapObjFacingStep[i & 7].X), (short)(cell.Y + MapObjFacingStep[i & 7].Y));
             MapObjCellView* nc = MapObjMap.GetCellAt(neighbour);
             nc->unknown_122 = nc->unknown_122 - 1;
         }
-        unsigned int& flags = MapObjMap.GetCellAtCoord(CurrentLocation())->Flags;
+        unsigned int& flags = MapObjMap.GetCellAtCoord(MapObjCoord(Location.X, Location.Y, Location.Z))->Flags;
         flags &= ~0x40u;
     }
-    MapObjCell cell2 = *vf_110(MapObjCell().Address());
-    bool result = MapObjClassView::vf_53();
-    MapObjMap.GetCellAt(cell2)->Func_47D2B0(-1);
+    CellStruct cell2 = vf_110();
+    bool result = ObjectClass::vf_53();
+    MapObjMap.GetCellAt(MapObjCell(cell2.X, cell2.Y))->Func_47D2B0(-1);
     if (!MapObjMarkGate) {
-        MapObjMap.Func_56D460(&cell2);
-        MapObjMap.Func_584550(&cell2);
-        MapObjMap.Func_6551C0(&cell2);
+        MapObjMap.Func_56D460(reinterpret_cast<const MapObjCell*>(&cell2));
+        MapObjMap.Func_584550(reinterpret_cast<const MapObjCell*>(&cell2));
+        MapObjMap.Func_6551C0(reinterpret_cast<const MapObjCell*>(&cell2));
     }
     return result;
 }
@@ -383,26 +395,29 @@ bool TerrainClass::vf_53()
 // is scoped to its own block so its slot is shared with the vf_75 temporary. The residual is register naming
 // of the world rectangle (clip origin loaded in EBX/EBP in retail). Variants tried: separate rectangles (kept), one shared temporary, a work variable assigned
 // from the by-value vf_75, scalar left/top/width/height locals.
-bool TerrainClass::vf_65(MapObjRect* rect, bool force, int unused)
+bool TerrainClass::vf_65(RectangleStruct* rect, bool force, int unused)
 {
     if (!MapObjMarkGateFlag && TerrainFlag_B73550) {
-        if (!((force || unknown_80) && unknown_74 && !unknown_81))
+        if (!((force || NeedsRedraw) && IsOnMap && !InLimbo))
             return false;
     }
-    unknown_80 = 0;
+    NeedsRedraw = 0;
     {
-        MapObjRect clipped;
-        *rect = *TerrainIntersect(&clipped, rect, &MapObjClipRect, 0, 0);
+        RectangleStruct clipped;
+        *rect = *FUN_00421B60(&clipped, rect, &Viewport_00886FA0, 0, 0);
     }
-    MapObjRect world = MapObjRectShifted(vf_75(), MapObjClipRect.X, MapObjClipRect.Y);
+    RectangleStruct world = vf_75();
+    world.X += Viewport_00886FA0.X;
+    world.Y += Viewport_00886FA0.Y;
     if (rect->X < world.X + world.Width && rect->Y < world.Y + world.Height && rect->X + rect->Width > world.X &&
         rect->Y + rect->Height > world.Y) {
-        MapObjPoint point;
-        MapObjTactical->CoordsToClient(vf_43(), &point);
-        if (rect->X > MapObjClipRect.X)
-            point.X += MapObjClipRect.X - rect->X;
-        if (rect->Y > MapObjClipRect.Y)
-            point.Y += MapObjClipRect.Y - rect->Y;
+        Point2D point;
+        CoordStruct coordinate = vf_43();
+        DAT_00887324->FUN_006D2140(&coordinate, &point);
+        if (rect->X > Viewport_00886FA0.X)
+            point.X += Viewport_00886FA0.X - rect->X;
+        if (rect->Y > Viewport_00886FA0.Y)
+            point.Y += Viewport_00886FA0.Y - rect->Y;
         vf_69(&point, rect);
         return true;
     }
@@ -419,11 +434,11 @@ bool TerrainClass::vf_65(MapObjRect* rect, bool force, int unused)
 // stores, dropping single stores (probe only), a zeroed-node struct assignment.
 HRESULT __stdcall TerrainClass::Load(IStream* pStm)
 {
-    TerrainAbstractIndex.RemoveIndex(Fetch_ID());
-    HRESULT hr = MapObjClassView::Load(pStm);
+    TerrainAbstractIndex.RemoveIndex(vf_rtti_4());
+    HRESULT hr = ObjectClass::Load(pStm);
     if (hr >= 0) {
-        new (this) TerrainClass(MapObjNoInit());
-        int id = Fetch_ID();
+        new (this) TerrainClass(AbstractNoInit());
+        int id = vf_rtti_4();
         TerrainAbstractIndex.AddIndexOutOfLine(id, this);
         MapObjSwizzle.Swizzle((void**)&Type);
     }
@@ -434,27 +449,27 @@ HRESULT __stdcall TerrainClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x71CF30
 HRESULT __stdcall TerrainClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    return MapObjClassView::Save(pStm, fClearDirty);
+    return AbstractClass::Save(pStm, fClearDirty);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71CF50
-void TerrainClass::ComputeCRC(MapObjCrcView& crc)
+void TerrainClass::vf_13(Obj_004A1D30* crc)
 {
-    MapObjClassView::ComputeCRC(crc);
-    crc.AddInt(Type->WhatAmI());
-    crc.AddInt(Type->Fetch_ID());
-    crc.AddBool(IsBurning);
-    crc.AddBool(TimeToDie);
-    crc.AddInt(unknown_D0);
-    crc.AddInt(unknown_D4);
+    ObjectClass::vf_13(crc);
+    crc->FUN_004A1D50(Type->WhatAmI());
+    crc->FUN_004A1D50(Type->Fetch_ID());
+    crc->FUN_004A1CA0(IsBurning);
+    crc->FUN_004A1CA0(TimeToDie);
+    crc->FUN_004A1D50(unknown_D0);
+    crc->FUN_004A1D50(unknown_D4);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71CFD0
-void TerrainClass::PointerExpired(void* ptr, bool removed)
+void TerrainClass::vf_10(void* ptr, bool removed)
 {
-    MapObjClassView::PointerExpired(ptr, removed);
+    ObjectClass::vf_10(ptr, removed);
     if (Type == ptr)
         Type = 0;
 }
@@ -464,22 +479,23 @@ void TerrainClass::PointerExpired(void* ptr, bool removed)
 // CAPPED at 91.1% (multiset identical). The ScreenPos + Offset sum is held in EBX/EDI in retail
 // (position first, offset second) and in EAX/ECX here, and retail pushes the next lookup's arguments
 // before the stores. Variants tried: operator+ free, member (kept), int locals.
-bool TerrainClass::Unlimbo(const MapObjCoord* where, int facing)
+bool TerrainClass::vf_54(const CoordStruct& where, int facing)
 {
-    if (MapObjClassView::Unlimbo(where, facing)) {
-        int cx = where->X / 256;
-        int cy = where->Y / 256;
+    if (ObjectClass::vf_54(where, facing)) {
+        int cx = where.X / 256;
+        int cy = where.Y / 256;
         for (int i = 0; i < 8; i++) {
             MapObjCell neighbour = MapObjCellShifted(MapObjFacingStep[i & 7], cx, cy);
             MapObjCellView* nc = MapObjMap.GetCellAt(neighbour);
             nc->unknown_122 = nc->unknown_122 + 1;
         }
-        MapObjTactical->CoordsToClient(vf_43(), &ScreenPos);
-        ScreenPos = ScreenPos + MapObjTactical->Offset;
-        if (MapObjMap.GetCellAtCoord(*where)->OverlayTypeIndex != -1) {
-            if (OverlayTypeItems[MapObjMap.GetCellAtCoord(*where)->OverlayTypeIndex]->Tiberium) {
-                MapObjMap.GetCellAtCoord(*where)->OverlayTypeIndex = -1;
-                MapObjMap.GetCellAtCoord(*where)->OverlayFrame = 0;
+        CoordStruct coordinate = vf_43();
+            DAT_00887324->FUN_006D2140(&coordinate, &ScreenPos);
+        ScreenPos = ScreenPos + Point2D(DAT_00887324->unknown_B0.unknown_00, DAT_00887324->unknown_B0.unknown_04);
+        if (MapObjMap.GetCellAtCoord(reinterpret_cast<const MapObjCoord&>(where))->OverlayTypeIndex != -1) {
+            if (OverlayTypeItems[MapObjMap.GetCellAtCoord(reinterpret_cast<const MapObjCoord&>(where))->OverlayTypeIndex]->Tiberium) {
+                MapObjMap.GetCellAtCoord(reinterpret_cast<const MapObjCoord&>(where))->OverlayTypeIndex = -1;
+                MapObjMap.GetCellAtCoord(reinterpret_cast<const MapObjCoord&>(where))->OverlayFrame = 0;
             }
         }
         return true;
@@ -489,9 +505,11 @@ bool TerrainClass::Unlimbo(const MapObjCoord* where, int facing)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71D150
-MapObjTypeClassView* TerrainClass::GetType()
+ObjectTypeClass* TerrainClass::vf_34()
 {
-    return Type;
+    // Native 0x71D150 returns [this+0xC8] unchanged. TerrainType RTTI
+    // (CHD 0x80C488, BCD 0x7FB520) places ObjectTypeClass at offset zero.
+    return reinterpret_cast<ObjectTypeClass*>(Type);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -502,14 +520,14 @@ MapObjTypeClassView* TerrainClass::GetType()
 // ESI where cl uses EDI/EBX, and loads the offsets before the screen position. Variants tried: struct copies
 // of the two bounds, a rectangle temporary for the union, scalar locals (kept), a MapObjPoint offset
 // from operator-.
-MapObjRect TerrainClass::vf_75()
+RectangleStruct TerrainClass::vf_75()
 {
-    MapObjPoint offset = MapObjTactical->Offset;
+    Point2D offset(DAT_00887324->unknown_B0.unknown_00, DAT_00887324->unknown_B0.unknown_04);
     int dx = ScreenPos.X - offset.X;
     int dy = ScreenPos.Y - offset.Y;
-    MapObjShapeView* image = (MapObjShapeView*)MapObjClassView::GetImage();
+    MapObjShapeView* image = (MapObjShapeView*)ObjectClass::vf_27();
     if (image == 0)
-        return TerrainEmptyRect;
+        { RectangleStruct empty = { TerrainEmptyRect.X, TerrainEmptyRect.Y, TerrainEmptyRect.Width, TerrainEmptyRect.Height }; return empty; }
     MapObjRect t1;
     MapObjRect* b1 = image->GetBounds(&t1, 0);
     int x1 = b1->X;
@@ -555,7 +573,7 @@ MapObjRect TerrainClass::vf_75()
         w = w2;
         h = h2;
     }
-    MapObjRect result;
+    RectangleStruct result;
     result.X = x - imageWidth / 2 + dx;
     result.Y = y - imageHeight / 2 + dy;
     result.Width = w;
@@ -565,14 +583,14 @@ MapObjRect TerrainClass::vf_75()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71D2F0
-int TerrainClass::Size()
+int TerrainClass::vf_12()
 {
     return 0xE0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71D300
-int TerrainClass::WhatAmI()
+int TerrainClass::vf_11()
 {
     return 0x24;
 }

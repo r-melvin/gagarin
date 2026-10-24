@@ -37,6 +37,9 @@ struct MapObjCoord
     MapObjCoord() {}
     MapObjCoord(int x, int y, int z) : X(x), Y(y), Z(z) {}
 };
+GG_STATIC_ASSERT(offsetof(MapObjCoord, X) == 0);
+GG_STATIC_ASSERT(offsetof(MapObjCoord, Y) == 4);
+GG_STATIC_ASSERT(offsetof(MapObjCoord, Z) == 8);
 GG_STATIC_ASSERT(sizeof(MapObjCoord) == 0xC);
 
 // Map cell coordinate pair: two 16-bit halves (read as `MOVSX word [p]` / `MOVSX word [p+2]`). The user
@@ -54,6 +57,8 @@ struct MapObjCell
     // that receives a hidden-pointer return, with the lifetime a by-value return would give it.
     MapObjCell* Address() { return this; }
 };
+GG_STATIC_ASSERT(offsetof(MapObjCell, X) == 0);
+GG_STATIC_ASSERT(offsetof(MapObjCell, Y) == 2);
 GG_STATIC_ASSERT(sizeof(MapObjCell) == 4);
 
 // A screen position (x, y).
@@ -67,6 +72,8 @@ struct MapObjPoint
     MapObjPoint operator+(const MapObjPoint& b) const { return MapObjPoint(X + b.X, Y + b.Y); }
     MapObjPoint operator-(const MapObjPoint& b) const { return MapObjPoint(X - b.X, Y - b.Y); }
 };
+GG_STATIC_ASSERT(offsetof(MapObjPoint, X) == 0);
+GG_STATIC_ASSERT(offsetof(MapObjPoint, Y) == 4);
 GG_STATIC_ASSERT(sizeof(MapObjPoint) == 8);
 
 // Clip rectangle handed to the draw slots (x, y, width, height).
@@ -77,6 +84,10 @@ struct MapObjRect
     int Width;    // +0x08
     int Height;   // +0x0C
 };
+GG_STATIC_ASSERT(offsetof(MapObjRect, X) == 0);
+GG_STATIC_ASSERT(offsetof(MapObjRect, Y) == 4);
+GG_STATIC_ASSERT(offsetof(MapObjRect, Width) == 8);
+GG_STATIC_ASSERT(offsetof(MapObjRect, Height) == 0xC);
 GG_STATIC_ASSERT(sizeof(MapObjRect) == 0x10);
 
 // A 24-bit colour (three bytes, no padding; copied as a word plus a byte).
@@ -111,7 +122,8 @@ inline MapObjCell MapObjCellShifted(const MapObjCell& a, int x, int y)
 
 // The map cell a lepton coordinate lies in (inline in retail: two signed divisions by 256 into a
 // temporary).
-inline MapObjCell MapObjCoordToCell(const MapObjCoord& coord)
+template<class Coordinate>
+inline MapObjCell MapObjCoordToCell(const Coordinate& coord)
 {
     MapObjCell r;
     r.X = (short)(coord.X / 256);
