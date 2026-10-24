@@ -40,6 +40,10 @@ public:
     // Declarations: native6D3040 RET12 and renderer6D7C00 RET8.
     void FUN_006D3040(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D7C00(const RectangleStruct* rectangle, const RectangleStruct* clip);
+    // Declarations: native dispatchers6D3290/6D3470 RET12; helper6D6D10 RET4.
+    void FUN_006D3290(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
+    void FUN_006D3470(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
+    void FUN_006D6D10(const RectangleStruct* rectangle);
     Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20

@@ -1090,6 +1090,106 @@ void Tactical::FUN_006D3040(const RectangleStruct* first,
     }
 }
 
+#include "../../renderer/rectangle_dispatch.h"
+
+// FUNCTION: GAMEMD 0x6D3290
+void Tactical::FUN_006D3290(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_006D6D10(&Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_006D6D10(first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_006D6D10(second);
+    }
+    if (unknown_E0 > 0 && !fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // Existing opaque canonical array; sibling native CellClass
+            // methods corroborate+24 MapCoords. Writer identity still needed.
+            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate = { x, y, 0 };
+            Point2D temporaryPoint;
+            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            FUN_006D6D10(&view);
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_006D6D10(&view);
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D3470
+void Tactical::FUN_006D3470(const RectangleStruct* first,
+                           const RectangleStruct* second, bool fullScreen)
+{
+    if (fullScreen) {
+        FUN_004D1890(&Viewport_00886FA0);
+    } else {
+        if (first->Width > 0 && first->Height > 0)
+            FUN_004D1890(first);
+        if (second->Width > 0 && second->Height > 0)
+            FUN_004D1890(second);
+    }
+    if (!fullScreen) {
+        for (int index = 0; index < unknown_E0; ++index) {
+            // Existing opaque canonical array; sibling native CellClass
+            // methods corroborate+24 MapCoords. Writer identity still needed.
+            CellClass* cell = static_cast<CellClass*>(unknown_E4[index]);
+            int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+            int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+            CoordStruct coordinate;
+            coordinate.FUN_0041C230(x, y, 0);
+            CoordStruct copiedCoordinate = coordinate;
+            Point2D projected;
+            CoordsToScreen(&projected, &copiedCoordinate);
+            RectangleStruct view;
+            view.X = projected.X - unknown_B0.unknown_00 - 30;
+            view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+            view.Width = 60;
+            view.Height = 30;
+            FUN_004D1890(&view);
+        }
+    }
+    // Count is captured once; array base and viewport Y reload after every
+    // callback. No erasure, flag filter or clear occurs in these two functions.
+    int count = DAT_00B0CE78.Count;
+    if (count != 0) {
+        for (int index = count - 1; index >= 0; --index) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[index].Rect.X;
+            view.Y = DAT_00B0CE78.Items[index].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[index].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[index].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0)
+                FUN_004D1890(&view);
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
