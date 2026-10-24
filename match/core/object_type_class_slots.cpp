@@ -19,6 +19,12 @@ int ObjectTypeClass::vf_28()
     return -1;
 }
 
+// FUNCTION: GAMEMD 0x5F7320
+ObjectTypeClass::ObjectTypeClass(const AbstractNoInit& noInit)
+    : AbstractTypeClass(noInit), Image(0), MainVoxel(noInit), TurretVoxel(noInit), BarrelVoxel(noInit)
+{
+}
+
 // FUNCTION: GAMEMD 0x5F75B0
 int ObjectTypeClass::vf_29()
 {
@@ -78,3 +84,6 @@ void* ObjectTypeClass::vf_36(int a1)
     static Range_005F7640 range;
     return &range;
 }
+
+// SYNTHETIC: GAMEMD 0x5F9AE0
+// Compiler-generated scalar deleting destructor for ObjectTypeClass.

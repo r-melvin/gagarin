@@ -93,6 +93,9 @@ struct CellStruct;
 class TechnoTypeClass : public ObjectTypeClass
 {
 public:
+    // Declaration: GAMEMD 0x7170A0, COM slot7; also AircraftType7E2868 slot7.
+    virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* size);
+
     // FUNCTION: GAMEMD 0x710AF0 (declaration; constructor) -- RET 8.
     TechnoTypeClass(const char* id, int speedType);
     // FUNCTION: GAMEMD 0x711840 (declaration; no-initialisation constructor)

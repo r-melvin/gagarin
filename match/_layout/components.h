@@ -17,8 +17,13 @@
 
 // VoxelStruct — a voxel model + its HVA animation (two 32-bit pointers).
 // Pointer members modelled as real pointers (decomp shows undefined4 truncation).
+struct AbstractNoInit;
 struct VoxelStruct
 {
+    // ObjectType no-init5F7340/56: default array entries are two zero pointers;
+    // its three individual voxel members use the explicit no-init path.
+    VoxelStruct() : unknown_00(0), HVAData(0) {}
+    VoxelStruct(const AbstractNoInit&) {}
     void* unknown_00;   // +0x00  (MotLib / VoxLib model ptr)
     void* HVAData;     // +0x04  (HVA animation ptr)
 };
@@ -43,6 +48,8 @@ GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
 // modelled as real pointers (decomp shows truncation at IndexTable/Archive).
 struct IndexClass
 {
+    // ObjectType no-init5F7361..5F73D3: four empty cache records.
+    IndexClass() : IndexTable(0), IndexCount(0), IndexSize(0), IsSorted(0), Archive(0) {}
     void*         IndexTable;   // +0x00  (NodeElement array on the heap)
     int           IndexCount;   // +0x04
     int           IndexSize;    // +0x08

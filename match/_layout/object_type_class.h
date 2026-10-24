@@ -23,9 +23,20 @@ GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
 // VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)
+// VTABLE: GAMEMD 0x7EF2BC (IRTTITypeInfo side)
+// VTABLE: GAMEMD 0x7EF2B4 (INoticeSink side)
+// VTABLE: GAMEMD 0x7EF2AC (INoticeSource side)
 class ObjectTypeClass : public AbstractTypeClass
 {
 public:
+    // Declaration: GAMEMD 0x5F7090, named construction, RET4.
+    ObjectTypeClass(const char* id);
+    // FUNCTION: GAMEMD 0x5F7320 (no-init construction with native component defaults)
+    ObjectTypeClass(const AbstractNoInit& noInit);
+    // Declaration: GAMEMD 0x5F7400; primary slot8 is generated deleting5F9AE0.
+    virtual ~ObjectTypeClass();
+    virtual HRESULT __stdcall Save(IStream* stream, BOOL clearDirty); // slot6,5F9950
+    virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* size); // slot7,5F9970
     // Slots 5, 25 and 27-39 (retail table 0x7EF2D8). Placeholder names; the
     // signatures are read off the bodies (argument bytes popped, return shape).
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x5F9720
@@ -43,6 +54,8 @@ public:
     virtual void* vf_37(bool a1, bool a2, bool a3, void* house);          // 37  0x5F7900
     virtual int vf_38();                                                  // 38  0x5F7630
     virtual void* vf_39();                                                // 39  0x41CFA0
+    // FUNCTION: GAMEMD 0x5004E0 (existing static member, native category lookup).
+    static int IsBuildCat5(int abstractID, int idx);
     // FUNCTION: GAMEMD 0x5F8110 (decl; reloc)
     void FUN_005F8110();
     // FUNCTION: GAMEMD 0x5F9070 (decl; reloc)

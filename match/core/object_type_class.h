@@ -6,8 +6,8 @@
 //   below are reconfirmed numerically from the disassembly.
 //
 // ObjectTypeClass — base type-class for every in-world object type. Only the
-// pieces touched by the methods modelled in this TU are declared; the full
-// AbstractTypeClass-derived layout is P2 work.
+// static category lookup is declared on the canonical AbstractTypeClass-derived
+// ObjectTypeClass; no separate class declaration is needed here.
 #ifndef GG_MATCH_CORE_OBJECT_TYPE_CLASS_H
 #define GG_MATCH_CORE_OBJECT_TYPE_CLASS_H
 
@@ -21,11 +21,6 @@
 // +0xE08 dword IS the value IsBuildCat5 returns.
 char* ObjTypeFindFromCat(int abstractID, int idx);   // GAMEMD 0x48DCD0
 
-class ObjectTypeClass
-{
-public:
-    // FUNCTION: GAMEMD 0x5004E0  ObjectTypeClass::IsBuildCat5 (static __fastcall)
-    static int IsBuildCat5(int abstractID, int idx);
-};
+#include "../_layout/object_type_class.h"
 
 #endif  // GG_MATCH_CORE_OBJECT_TYPE_CLASS_H
