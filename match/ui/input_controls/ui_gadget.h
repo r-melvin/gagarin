@@ -401,8 +401,39 @@ struct ColorDynVector : public Obj_007E4DB8
     int unknown_14;   // +0x14
 
     int& operator[](int index) { return Vector[index]; }
+
+    // Expanded by ColorListClass 0x488850 and 0x4888B0/0x488910.
+    bool Add(const int& object)
+    {
+        if (ActiveCount >= VectorMax) {
+            if ((IsAllocated || !VectorMax) && unknown_14 > 0) {
+                if (!Resize(VectorMax + unknown_14, 0))
+                    return false;
+            } else {
+                return false;
+            }
+        }
+        int index = ActiveCount;
+        ActiveCount = index + 1;
+        Vector[index] = object;
+        return true;
+    }
+    bool Delete(int index)
+    {
+        if (index < ActiveCount) {
+            ActiveCount--;
+            for (int i = index; i < ActiveCount; ++i)
+                Vector[i] = Vector[i + 1];
+        }
+        return true;
+    }
 };
+GG_STATIC_ASSERT(offsetof(ColorDynVector, unknown_14) == 0x14);
 GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, Vector) == 0x04);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, VectorMax) == 0x08);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, IsValid) == 0x0C);
+GG_STATIC_ASSERT(offsetof(Obj_007E4DB8, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(sizeof(Obj_007E4DB8) == 0x10);
 GG_STATIC_ASSERT(offsetof(ColorDynVector, ActiveCount) == 0x10);
 GG_STATIC_ASSERT(sizeof(ColorDynVector) == 0x18);   // Style +0x18C after Colors +0x174
 
@@ -412,12 +443,8 @@ class ColorListClass : public ListClass
 public:
     ColorListClass(int id, int x, int y, int w, int h, unsigned textFlags, void const* upShape,
                    void const* downShape);                                // 0x488760
-    // FUNCTION: GAMEMD 0x488F00 (compiler-emitted scalar deleting destructor; destroys Colors, then ListClass)
-    virtual ~ColorListClass()                                             // 0x00  0x488F00
-    {
-        Colors.Clear();
-        SelectColor = 0;
-    }
+    // CALLEE: GAMEMD 0x4887F0 -- ordinary destructor; deleting entry 0x488F00 is emitted by its owning TU.
+    virtual ~ColorListClass(); // ordinary 0x4887F0; deleting slot 0x488F00
     virtual int        AddItem(wchar_t const* text);                      // 0x88  0x488EE0
     virtual void       RemoveItem(wchar_t const* text);                   // 0xAC  0x4888B0
     virtual void       RemoveItem(int index);                             // 0xA8  0x488910

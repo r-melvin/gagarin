@@ -28938,40 +28938,40 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/color_list_class_methods.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x4887F0",
-  "sym": "?Dtor@ColorListClass@@QAEXXZ",
+  "sym": "??1ColorListClass@@UAE@XZ",
   "len": "0x53",
-  "name": "ColorListClass::Dtor",
+  "name": "ColorListClass::~ColorListClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/color_list_class_methods.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488850",
-  "sym": "?AddItem@ColorListClass@@QAEXPBGH@Z",
+  "sym": "?AddItem@ColorListClass@@UAEHPBGH@Z",
   "len": "0x60",
   "name": "ColorListClass::AddItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/color_list_class_methods.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x4888B0",
-  "sym": "?RemoveItem@ColorListClass@@QAEXPBG@Z",
+  "sym": "?RemoveItem@ColorListClass@@UAEXPBG@Z",
   "len": "0x53",
   "name": "ColorListClass::RemoveItem(text)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/color_list_class_methods.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488910",
-  "sym": "?RemoveItem@ColorListClass@@QAEXH@Z",
+  "sym": "?RemoveItem@ColorListClass@@UAEXH@Z",
   "len": "0x47",
   "name": "ColorListClass::RemoveItem(index)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ownrdraw.cpp",
@@ -57609,49 +57609,49 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488760",
   "sym": "??0ColorListClass@@QAE@HHHHHIPBX0@Z",
   "len": "0x83",
   "name": "ColorListClass::ColorListClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488960",
   "sym": "?SetStyle@ColorListClass@@UAEXHH@Z",
   "len": "0x17",
   "name": "ColorListClass::SetStyle",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488980",
   "sym": "?DrawItem@ColorListClass@@UAEXHHHHH@Z",
   "len": "0x554",
   "name": "ColorListClass::DrawItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488EE0",
   "sym": "?AddItem@ColorListClass@@UAEHPBG@Z",
   "len": "0x12",
   "name": "ColorListClass::AddItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/lists_colorlist.cpp",
+  "tu": "match/ui/tu052_color_list_class.cpp",
   "addr": "0x488F00",
   "sym": "??_GColorListClass@@UAEPAXI@Z",
   "len": "0x67",
   "name": "ColorListClass::`scalar deleting destructor'",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
