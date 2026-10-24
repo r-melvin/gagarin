@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit TU070 of retail gamemd.exe v1.001; its source-file name is
+//   not attested by the binary, so the file keeps a placeholder name. Code range 0x4b58a0-0x4b679f,
+//   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
+//   ownership, neighbouring object bounds). Functions are in ascending retail address order.
+//
 // No /GX: no retail body of this class has an exception frame (the _com_ptr_t
 // conversions at 0x4B62C0 / 0x4B64E0 are compiled with their throw paths as
 // plain calls to _com_issue_error).
@@ -25,7 +29,12 @@
 //   out-of-line empty destructor here matches 0x4B5B00 but shrinks the deleting
 //   wrapper 0x4B66F0 from 0x41 to 0x20 bytes, so this source keeps the inline
 //   form and claims only the wrapper.
-
+//
+//   Provenance note: own-binary-via-Ghidra (gamemd.exe v1.001 entry-origin stores and exact target addresses).
+//
+//   Provenance note: own-binary-via-Ghidra (gamemd.exe v1.001 entry-bounded x87 loads, calls and stores).
+//
+//   Provenance note: own-binary-via-Ghidra (gamemd.exe v1.001 entry-origin x87 loads and stores).
 #include <new.h>
 #include "droppod_locomotion.h"
 
@@ -36,18 +45,143 @@ extern "C" const CLSID CLSID_DropPodLocomotion =
 // LIBRARY: OLE32!OleLoadFromStream / OleSaveToStream, IAT 0x7E15F8 / 0x7E15F4
 // (declared by <ole2.h>).
 
+#include "../core/coordinate_storage_008a0820.h"
+// GLOBAL: GAMEMD 0x008A0800
+extern "C" unsigned short DAT_008A0800;
+// GLOBAL: GAMEMD 0x008A0802
+extern "C" unsigned short DAT_008A0802;
+// GLOBAL: GAMEMD 0x008A0850
+extern "C" unsigned int DAT_008A0850;
+// GLOBAL: GAMEMD 0x008A0848
+extern "C" unsigned int DAT_008A0848;
+// GLOBAL: GAMEMD 0x008A084C
+extern "C" unsigned int DAT_008A084C;
+// GLOBAL: GAMEMD 0x008A07F0
+extern "C" unsigned int DAT_008A07F0;
+// GLOBAL: GAMEMD 0x008A07F4
+extern "C" unsigned int DAT_008A07F4;
+// GLOBAL: GAMEMD 0x008A07F8
+extern "C" unsigned int DAT_008A07F8;
+// GLOBAL: GAMEMD 0x008A07FC
+extern "C" unsigned int DAT_008A07FC;
+
+#include <math.h>
+#pragma intrinsic(pow)
+// LIBRARY: GAMEMD 0x007C8FB0 — VC6 x87 pow intrinsic runtime.
+// Literal pool: retail 0x7E1708 = 2.0, 0x7E1710 = 256.0.
+
+// CALLEE: GAMEMD 0x004CAC40 (decl; reloc) — binary-verified one-double cdecl helper.
+extern double __cdecl FUN_004CAC40(double value);
+
+// GLOBAL: GAMEMD 0x007E8240
+extern const double DAT_007E8240;
+// GLOBAL: GAMEMD 0x008A0808
+extern double DAT_008A0808;
+// GLOBAL: GAMEMD 0x008A0858
+extern double DAT_008A0858;
+// GLOBAL: GAMEMD 0x007E1718
+extern const double DAT_007E1718;
+// GLOBAL: GAMEMD 0x008A0840
+extern double DAT_008A0840;
+
+// GLOBAL: GAMEMD 0x007E8248
+extern "C" const double DAT_007E8248;
+// GLOBAL: GAMEMD 0x007E1720
+extern "C" const double DAT_007E1720;
+// GLOBAL: GAMEMD 0x008A0838
+extern "C" double DAT_008A0838;
+// GLOBAL: GAMEMD 0x007E1728
+extern "C" const double DAT_007E1728;
+// GLOBAL: GAMEMD 0x008A0810
+extern "C" double DAT_008A0810;
+// GLOBAL: GAMEMD 0x007E1730
+extern "C" const double DAT_007E1730;
+// GLOBAL: GAMEMD 0x008A07E8
+extern "C" double DAT_008A07E8;
+
+// FUNCTION: GAMEMD 0x004B58A0
+extern "C" void __stdcall FUN_004B58A0()
+{
+    DAT_008A0808 = FUN_004CAC40(2.0 * pow(256.0, 2.0));
+}
+
+// FUNCTION: GAMEMD 0x004B58D0
+extern "C" void __stdcall FUN_004B58D0()
+{
+    DAT_008A0858 = DAT_008A0808 / DAT_007E8240;
+}
+
+// FUNCTION: GAMEMD 0x004B58F0
+extern "C" void __stdcall FUN_004B58F0()
+{
+    DAT_008A0840 = DAT_007E1718 / DAT_008A0858;
+}
+
+// FUNCTION: GAMEMD 0x004B5910
+extern "C" void FUN_004B5910()
+{
+    DAT_008A0838 = DAT_007E1720 * DAT_007E8248;
+}
+
+// FUNCTION: GAMEMD 0x004B5930
+extern "C" void FUN_004B5930()
+{
+    DAT_008A0810 = DAT_007E1728 * DAT_007E8248;
+}
+
+// FUNCTION: GAMEMD 0x004B5950
+extern "C" void FUN_004B5950()
+{
+    DAT_008A07E8 = DAT_007E1730 * DAT_007E8248;
+}
+
+// FUNCTION: GAMEMD 0x004B5A40
+extern "C" void FUN_004B5A40()
+{
+    DAT_008A0800 = 0;
+    DAT_008A0802 = 0;
+}
+
+// FUNCTION: GAMEMD 0x004B5A50
+extern "C" void FUN_004B5A50()
+{
+    DAT_008A0820.X = 0;
+    DAT_008A0820.Y = 0;
+    DAT_008A0820.Z = 0;
+}
+
+// FUNCTION: GAMEMD 0x004B5A70
+extern "C" void FUN_004B5A70()
+{
+    DAT_008A0850 = 0;
+    DAT_008A0848 = 0x80;
+    DAT_008A084C = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x004B5A90
+extern "C" void FUN_004B5A90()
+{
+    DAT_008A07F0 = 0;
+    DAT_008A07F4 = 0;
+    DAT_008A07F8 = 0;
+    DAT_008A07FC = 0;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B5AB0
 DropPodLocomotionClass::DropPodLocomotionClass()
     : unknown_1C(false), DestCoord(DAT_008A0820), Piggybackee(0)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B5B30
 bool __stdcall DropPodLocomotionClass::IsMoving()
 {
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B5B40
 // migrated from match/movement/drop_pod_interface_004b5b30.cpp; integrator retires the old row
 LocoCoord __stdcall DropPodLocomotionClass::Destination()
@@ -59,6 +193,7 @@ LocoCoord __stdcall DropPodLocomotionClass::Destination()
     return c;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B5B70
 // PARTIAL: diff_retail 2.3% over the requested 0x4C9-byte span; the emitted
 // section is 0x4C0 bytes, so this is not a full-span match. Retail holds the
@@ -123,6 +258,7 @@ bool __stdcall DropPodLocomotionClass::Process()
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6040
 // PARTIAL: diff_retail 27.1%. Retail copies `to` through EBX, saved and restored
 // around the IsWithinUsableArea call, which shifts every later stack offset by 4.
@@ -153,6 +289,7 @@ void __stdcall DropPodLocomotionClass::MoveTo(LocoCoord to)
     }
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6200
 // migrated from match/movement/drop_pod_interface_004b5b30.cpp; integrator retires the old row
 HRESULT __stdcall DropPodLocomotionClass::GetClassID(CLSID* pClassID)
@@ -163,6 +300,7 @@ HRESULT __stdcall DropPodLocomotionClass::GetClassID(CLSID* pClassID)
     return S_OK;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6240
 // migrated from match/movement/drop_pod_interface_004b5b30.cpp; integrator retires the old row
 HRESULT __stdcall DropPodLocomotionClass::Load(IStream* pStm)
@@ -178,6 +316,7 @@ HRESULT __stdcall DropPodLocomotionClass::Load(IStream* pStm)
     return hr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B62C0
 HRESULT __stdcall DropPodLocomotionClass::Save(IStream* pStm, BOOL fClearDirty)
 {
@@ -197,12 +336,14 @@ HRESULT __stdcall DropPodLocomotionClass::Save(IStream* pStm, BOOL fClearDirty)
     return hr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B63A0
 // migrated from match/movement/drop_pod_interface_004b5b30.cpp; integrator retires the old row
 void __stdcall DropPodLocomotionClass::StopMoving()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B63B0
 HRESULT __stdcall DropPodLocomotionClass::BeginPiggyback(ILocomotion* loco)
 {
@@ -215,6 +356,7 @@ HRESULT __stdcall DropPodLocomotionClass::BeginPiggyback(ILocomotion* loco)
     return E_FAIL;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6400
 HRESULT __stdcall DropPodLocomotionClass::EndPiggyback(ILocomotion** out)
 {
@@ -228,6 +370,7 @@ HRESULT __stdcall DropPodLocomotionClass::EndPiggyback(ILocomotion** out)
     return S_FALSE;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6440
 bool __stdcall DropPodLocomotionClass::IsOkToEnd()
 {
@@ -236,6 +379,7 @@ bool __stdcall DropPodLocomotionClass::IsOkToEnd()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6470
 HRESULT __stdcall DropPodLocomotionClass::QueryInterface(REFIID riid, void** ppv)
 {
@@ -251,12 +395,14 @@ HRESULT __stdcall DropPodLocomotionClass::QueryInterface(REFIID riid, void** ppv
     return hr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B64D0
 int __stdcall DropPodLocomotionClass::InWhichLayer()
 {
     return 3;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B64E0
 HRESULT __stdcall DropPodLocomotionClass::PiggybackCLSID(CLSID* out)
 {
@@ -274,12 +420,14 @@ HRESULT __stdcall DropPodLocomotionClass::PiggybackCLSID(CLSID* out)
     return persist->GetClassID(out);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B65F0
 int __stdcall DropPodLocomotionClass::DrawingCode()
 {
     return unknown_1C != 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B6620
 // FUNCTION: GAMEMD 0x4B6630
 // FUNCTION: GAMEMD 0x4B6640
@@ -297,23 +445,32 @@ ULONG __stdcall DropPodLocomotionClass::AddRef()
     return LocomotionClass::AddRef();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B66B0
 ULONG __stdcall DropPodLocomotionClass::Release()
 {
     return LocomotionClass::Release();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B66C0
 bool __stdcall DropPodLocomotionClass::IsPiggybacking()
 {
     return Piggybackee != 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4B66E0
 int DropPodLocomotionClass::Size()
 {
     return sizeof(DropPodLocomotionClass);
 }
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// DropPodLocomotionClass::~DropPodLocomotionClass (body 0x4B5B00, scored
+// elsewhere; see above) and the scalar deleting destructor 0x4B66F0 are compiler output
+// from the inline empty virtual destructor in the header: vptr stores, Piggybackee release,
+// LocomotionClass body 0x55A6F0, `operator delete` when bit 0 of the flag is set.
 
 // SYNTHETIC: GAMEMD 0x4B66F0 -- compiler-generated scalar deleting wrapper.
 // SYNTHETIC: GAMEMD 0x4B6740 -- compiler-generated ILocomotion QI adjustor thunk.
@@ -322,8 +479,3 @@ int DropPodLocomotionClass::Size()
 // SYNTHETIC: GAMEMD 0x4B6770 -- compiler-generated IPiggyback QI adjustor thunk.
 // SYNTHETIC: GAMEMD 0x4B6780 -- compiler-generated IPiggyback AddRef adjustor thunk.
 // SYNTHETIC: GAMEMD 0x4B6790 -- compiler-generated IPiggyback Release adjustor thunk.
-
-// DropPodLocomotionClass::~DropPodLocomotionClass (body 0x4B5B00, scored
-// elsewhere; see above) and the scalar deleting destructor 0x4B66F0 are compiler output
-// from the inline empty virtual destructor in the header: vptr stores, Piggybackee release,
-// LocomotionClass body 0x55A6F0, `operator delete` when bit 0 of the flag is set.

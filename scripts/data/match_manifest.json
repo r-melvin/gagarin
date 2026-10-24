@@ -31693,58 +31693,58 @@
   "pct": 100
  },
  {
-  "tu": "match/core/math_004b58a0.cpp",
-  "addr": "0x004B58A0",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B58A0",
   "sym": "_FUN_004B58A0@0",
   "len": "0x28",
-  "name": "FUN_004B58A0",
+  "name": "_FUN_004B58A0@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/math_004b58a0.cpp",
-  "addr": "0x004B58D0",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B58D0",
   "sym": "_FUN_004B58D0@0",
   "len": "0x13",
-  "name": "FUN_004B58D0",
+  "name": "_FUN_004B58D0@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/math_004b58a0.cpp",
-  "addr": "0x004B58F0",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B58F0",
   "sym": "_FUN_004B58F0@0",
   "len": "0x13",
-  "name": "FUN_004B58F0",
+  "name": "_FUN_004B58F0@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/math_004b5910.cpp",
-  "addr": "0x004B5910",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5910",
   "sym": "@FUN_004B5910@0",
   "len": "0x13",
-  "name": "FUN_004B5910",
+  "name": "@FUN_004B5910@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/math_004b5910.cpp",
-  "addr": "0x004B5930",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5930",
   "sym": "@FUN_004B5930@0",
   "len": "0x13",
-  "name": "FUN_004B5930",
+  "name": "@FUN_004B5930@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/math_004b5910.cpp",
-  "addr": "0x004B5950",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5950",
   "sym": "@FUN_004B5950@0",
   "len": "0x13",
-  "name": "FUN_004B5950",
+  "name": "@FUN_004B5950@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/angle_math_004b59b0.cpp",
@@ -31765,40 +31765,40 @@
   "pct": 100
  },
  {
-  "tu": "match/core/angle_globals_004b5a40.cpp",
-  "addr": "0x004B5A40",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5A40",
   "sym": "@FUN_004B5A40@0",
   "len": "0x0F",
-  "name": "FUN_004B5A40",
+  "name": "@FUN_004B5A40@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/angle_globals_004b5a40.cpp",
-  "addr": "0x004B5A50",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5A50",
   "sym": "@FUN_004B5A50@0",
   "len": "0x12",
-  "name": "FUN_004B5A50",
+  "name": "@FUN_004B5A50@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/angle_globals_004b5a40.cpp",
-  "addr": "0x004B5A70",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5A70",
   "sym": "@FUN_004B5A70@0",
   "len": "0x1A",
-  "name": "FUN_004B5A70",
+  "name": "@FUN_004B5A70@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/angle_globals_004b5a40.cpp",
-  "addr": "0x004B5A90",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
+  "addr": "0x4B5A90",
   "sym": "@FUN_004B5A90@0",
   "len": "0x17",
-  "name": "FUN_004B5A90",
+  "name": "@FUN_004B5A90@0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/persisted_pair_vectors_004391c0.cpp",
@@ -48671,34 +48671,34 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5AB0",
   "sym": "??0DropPodLocomotionClass@@QAE@XZ",
   "len": "0x45",
   "name": "DropPodLocomotionClass::DropPodLocomotionClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B30",
   "sym": "?IsMoving@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x5",
   "name": "DropPodLocomotionClass::IsMoving",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B40",
   "sym": "?Destination@DropPodLocomotionClass@@UAG?AULocoCoord@@XZ",
   "len": "0x24",
   "name": "DropPodLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B5B70",
   "sym": "?Process@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x4c9",
@@ -48707,7 +48707,7 @@
   "pct": 2.3
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6040",
   "sym": "?MoveTo@DropPodLocomotionClass@@UAGXULocoCoord@@@Z",
   "len": "0x1b8",
@@ -48716,202 +48716,202 @@
   "pct": 27.1
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6200",
   "sym": "?GetClassID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",
   "name": "DropPodLocomotionClass::GetClassID",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6240",
   "sym": "?Load@DropPodLocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7f",
   "name": "DropPodLocomotionClass::Load",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B62C0",
   "sym": "?Save@DropPodLocomotionClass@@UAGJPAUIStream@@H@Z",
   "len": "0xda",
   "name": "DropPodLocomotionClass::Save",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B63A0",
   "sym": "?StopMoving@DropPodLocomotionClass@@UAGXXZ",
   "len": "0x3",
   "name": "DropPodLocomotionClass::StopMoving",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B63B0",
   "sym": "?BeginPiggyback@DropPodLocomotionClass@@UAGJPAUILocomotion@@@Z",
   "len": "0x43",
   "name": "DropPodLocomotionClass::BeginPiggyback",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6400",
   "sym": "?EndPiggyback@DropPodLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
   "len": "0x31",
   "name": "DropPodLocomotionClass::EndPiggyback",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6440",
   "sym": "?IsOkToEnd@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x26",
   "name": "DropPodLocomotionClass::IsOkToEnd",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6470",
   "sym": "?QueryInterface@DropPodLocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x5d",
   "name": "DropPodLocomotionClass::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B64D0",
   "sym": "?InWhichLayer@DropPodLocomotionClass@@UAGHXZ",
   "len": "0x8",
   "name": "DropPodLocomotionClass::InWhichLayer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B64E0",
   "sym": "?PiggybackCLSID@DropPodLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x10b",
   "name": "DropPodLocomotionClass::PiggybackCLSID",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B65F0",
   "sym": "?DrawingCode@DropPodLocomotionClass@@UAGHXZ",
   "len": "0x11",
   "name": "DropPodLocomotionClass::DrawingCode",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66A0",
   "sym": "?AddRef@DropPodLocomotionClass@@UAGKXZ",
   "len": "0xd",
   "name": "DropPodLocomotionClass::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66B0",
   "sym": "?Release@DropPodLocomotionClass@@UAGKXZ",
   "len": "0xd",
   "name": "DropPodLocomotionClass::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66C0",
   "sym": "?IsPiggybacking@DropPodLocomotionClass@@UAG_NXZ",
   "len": "0x11",
   "name": "DropPodLocomotionClass::IsPiggybacking",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66E0",
   "sym": "?Size@DropPodLocomotionClass@@UAEHXZ",
   "len": "0x6",
   "name": "DropPodLocomotionClass::Size",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B66F0",
   "sym": "??_GDropPodLocomotionClass@@UAEPAXI@Z",
   "len": "0x41",
   "name": "DropPodLocomotionClass::scalarDeletingDestructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6740",
   "sym": "?QueryInterface@DropPodLocomotionClass@@W3AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
   "name": "DropPodLocomotionClass::QueryInterface (ILocomotion adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6750",
   "sym": "?AddRef@DropPodLocomotionClass@@W3AGKXZ",
   "len": "0xa",
   "name": "DropPodLocomotionClass::AddRef (ILocomotion adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6760",
   "sym": "?Release@DropPodLocomotionClass@@W3AGKXZ",
   "len": "0xa",
   "name": "DropPodLocomotionClass::Release (ILocomotion adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6770",
   "sym": "?QueryInterface@DropPodLocomotionClass@@WBI@AGJABU_GUID@@PAPAX@Z",
   "len": "0xa",
   "name": "DropPodLocomotionClass::QueryInterface (IPiggyback adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6780",
   "sym": "?AddRef@DropPodLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
   "name": "DropPodLocomotionClass::AddRef (IPiggyback adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6790",
   "sym": "?Release@DropPodLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
   "name": "DropPodLocomotionClass::Release (IPiggyback adjustor)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_building/building_a2_radio.cpp",
@@ -73789,76 +73789,76 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6620",
   "sym": "?MarkAllOccupationBits@LocomotionClass@@UAGXH@Z",
   "len": "0x3",
   "name": "LocomotionClass::MarkAllOccupationBits",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6630",
   "sym": "?IsMovingHere@LocomotionClass@@UAG_NULocoCoord@@@Z",
   "len": "0x5",
   "name": "LocomotionClass::IsMovingHere",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6640",
   "sym": "?WillJumpTracks@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
   "name": "LocomotionClass::WillJumpTracks",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6650",
   "sym": "?Lock@LocomotionClass@@UAGXXZ",
   "len": "0x3",
   "name": "LocomotionClass::Lock",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6660",
   "sym": "?Unlock@LocomotionClass@@UAGXXZ",
   "len": "0x3",
   "name": "LocomotionClass::Unlock",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6670",
   "sym": "?GetTrackNumber@LocomotionClass@@UAGHXZ",
   "len": "0x6",
   "name": "LocomotionClass::GetTrackNumber",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6680",
   "sym": "?GetTrackIndex@LocomotionClass@@UAGHXZ",
   "len": "0x6",
   "name": "LocomotionClass::GetTrackIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/droppod_locomotion.cpp",
+  "tu": "match/movement/tu070_drop_pod_locomotion_class.cpp",
   "addr": "0x4B6690",
   "sym": "?GetSpeedAccum@LocomotionClass@@UAGHXZ",
   "len": "0x6",
   "name": "LocomotionClass::GetSpeedAccum",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/techno_class_slot_4e0150.cpp",
