@@ -6,9 +6,9 @@
 //   allocation sites 0x6BF23C and 0x71E2F6 (`PUSH 0x2BC; CALL 0x7C8E17`, two sites, both agreeing).
 //
 // TerrainTypeClass: the rules-INI template of a tree / rock / terrain feature ([TerrainTypes]
-// sections). Derives the ObjectTypeClass-shaped partial view of terrain_common_views.h.
+// sections). Derives the canonical ObjectTypeClass at native offset zero.
 //
-//   +0x00..+0x293  MapObjTypeClassView (AbstractClass / AbstractTypeClass / ObjectTypeClass members;
+//   +0x00..+0x293  ObjectTypeClass (AbstractClass / AbstractTypeClass / ObjectTypeClass members;
 //                  the type name is at +0x24, passed as the INI section by the reader)
 //   +0x294 ArrayIndex        (int)    ctor: -1, then the index of this type in TerrainTypeClass::Array
 //   +0x298 Foundation        (int)    ctor 0; the art INI's foundation index
@@ -25,16 +25,21 @@
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "terrain_shared.h"
+#include "../../_layout/object_type_class.h"
+#include "../../_layout/cell.h"
 
-// VTABLE: GAMEMD 0x7F5458 (IPersistStream side) and GAMEMD 0x7F543C / 0x7F5434 / 0x7F542C
-class TerrainTypeClass : public MapObjTypeClassView
+// VTABLE: GAMEMD 0x7F5458
+// VTABLE: GAMEMD 0x7F543C
+// VTABLE: GAMEMD 0x7F5434
+// VTABLE: GAMEMD 0x7F542C
+class TerrainTypeClass : public ObjectTypeClass
 {
 public:
     // FUNCTION: GAMEMD 0x71DA80 - the named constructor.
-    TerrainTypeClass(const char* id) throw();
-    // No-init constructor: Load re-runs it through placement new to restore
-    // the vptrs without touching members.
-    TerrainTypeClass(const MapObjNoInit& noInit) : MapObjTypeClassView(noInit) {}
+    TerrainTypeClass(const char* id = 0) throw();
+    // Load restores derived vptrs and leaves derived fields untouched. The base
+    // retains its native no-init defaults for Image, charger arrays and caches.
+    TerrainTypeClass(const AbstractNoInit& noInit) : ObjectTypeClass(noInit) {}
 
     // ---- primary table (IPersistStream side) overrides ---------------------------------------
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);                  // 3   0x71E260
@@ -52,20 +57,20 @@ public:
         TerrainTypeArray.RemoveItem(this);
     }
     static TerrainTypeClass* FindOrAllocate(const char* id); // existing row 0x71E2A0
-    virtual int WhatAmI();                                                  // 11  0x71E330
-    virtual int Size();                                                     // 12  0x71E340
-    virtual void ComputeCRC(MapObjCrcView& crc);                           // 13  0x71E140
+    virtual int vf_11();                                                  // 11  0x71E330
+    virtual int vf_12();                                                     // 12  0x71E340
+    virtual void vf_13(Obj_004A1D30* crc);                           // 13  0x71E140
     virtual int vf_16();                                                    // 16  0x71E350
-    virtual bool ReadINI(MapObjIniView* ini);                              // 25  0x71DEA0
-    virtual MapObjCoord* vf_27(MapObjCoord* out, const MapObjCoord* coord);   // 27  0x71E0D0
-    virtual bool vf_32(const MapObjCell* cell, MapObjHouseView* house);                     // 32  0x71DDD0
-    virtual void* vf_35(MapObjHouseView* house);                                       // 35  0x71DE10
-    virtual MapObjCell* vf_36(int arg);                                    // 36  0x71DE40
+    virtual bool vf_25(CCINIClass* ini);                              // 25  0x71DEA0
+    virtual CoordStruct vf_27(const CoordStruct& coord);   // 27  0x71E0D0
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house);                     // 32  0x71DDD0
+    virtual void* vf_35(void* house);                                       // 35  0x71DE10
+    virtual void* vf_36(int arg);                                    // 36  0x71DE40
 
     // ---- members (complete-object offsets) ---------------------------------------------------
     int            ArrayIndex;                 // +0x294
     int            Foundation;                 // +0x298
-    MapObjColor   RadarColor;                 // +0x29C
+    ColorStruct   RadarColor;                 // +0x29C
     char           unknown_29F;                // +0x29F
     int            AnimationRate;              // +0x2A0
     float          AnimationProbability;       // +0x2A4

@@ -125,7 +125,7 @@ bool AircraftTypeClass::vf_41()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x41CBE0
-bool AircraftTypeClass::vf_32(int a1, int a2)
+bool AircraftTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {
     return false;
 }

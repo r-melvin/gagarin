@@ -16,7 +16,7 @@
 // The element of the function-local static offset tables (the user-declared destructor is what makes
 // VC6 register an atexit stub, a bare RET, for each static). It derives from the cell so that
 // OverlayTypeClass::vf_36 can return it through the shared slot (MapObjCell*), as TerrainTypeClass does
-// with its own static-cell element (TerrainStaticCell).
+// with its own static-cell element.
 //
 // The atexit stubs are compiler output named by a per-translation-unit counter (`_$E2`, `_$E3`, ...):
 // overlay_class.cpp emits `_$E2.._$E5` (the four static tables of OverlayClass::Mark, retail

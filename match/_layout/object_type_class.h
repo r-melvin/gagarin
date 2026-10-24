@@ -21,6 +21,8 @@
 #include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
+struct CellStruct;
+
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
 // VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)
 // VTABLE: GAMEMD 0x7EF2BC (IRTTITypeInfo side)
@@ -46,7 +48,7 @@ public:
     virtual int vf_29();                                                  // 29  0x5F75B0
     virtual CoordStruct vf_30();                                          // 30  0x5F75C0
     virtual CoordStruct vf_31();                                          // 31  0x5F75E0
-    virtual bool vf_32(int a1, int a2) = 0;                               // 32  pure (__purecall 0x4C9150)
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house) = 0;                               // 32  pure (__purecall 0x4C9150)
     virtual int vf_33(int a1);                                            // 33  0x5F7610
     virtual int vf_34();                                                  // 34  0x5F7620
     virtual void* vf_35(void* house) = 0;                                 // 35  pure (__purecall 0x4C9150; creates an object)
@@ -118,6 +120,13 @@ GG_STATIC_ASSERT(offsetof(ObjectTypeClass, ChargerBarrels)         == 0x158);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, MaxDimension)           == 0x1EC);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, ImageFile)              == 0x1F8);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, AlphaImageFile)         == 0x213);
+// TerrainType constructor71DB18..71DB30 and71DEA0 reader use these inherited bytes.
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, RadarInvisible) == 0x22F);
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Selectable) == 0x230);
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, LegalTarget) == 0x231);
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Insignificant) == 0x232);
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Immune) == 0x233);
+GG_STATIC_ASSERT(offsetof(ObjectTypeClass, IsLogic) == 0x234);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Theater)                == 0x22C);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, LineTrailColor)         == 0x23B);
 GG_STATIC_ASSERT(offsetof(ObjectTypeClass, LineTrailColorDecrement)== 0x240);

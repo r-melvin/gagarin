@@ -46962,7 +46962,7 @@
  {
   "tu": "match/map/tu242_terrain_class.cpp",
   "addr": "0x71BB90",
-  "sym": "??0TerrainClass@@QAE@PAVTerrainTypeClass@@PBUMapObjCell@@@Z",
+  "sym": "??0TerrainClass@@QAE@PAVTerrainTypeClass@@PBUCellStruct@@@Z",
   "len": "0x251",
   "name": "TerrainClass::TerrainClass",
   "status": "matched",
@@ -47178,7 +47178,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DDD0",
-  "sym": "?vf_32@TerrainTypeClass@@UAE_NPBUMapObjCell@@PAUMapObjHouseView@@@Z",
+  "sym": "?vf_32@TerrainTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x31",
   "name": "TerrainTypeClass::vf_32",
   "status": "matched",
@@ -47187,7 +47187,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DE10",
-  "sym": "?vf_35@TerrainTypeClass@@UAEPAXPAUMapObjHouseView@@@Z",
+  "sym": "?vf_35@TerrainTypeClass@@UAEPAXPAX@Z",
   "len": "0x2b",
   "name": "TerrainTypeClass::vf_35",
   "status": "matched",
@@ -47196,7 +47196,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DE40",
-  "sym": "?vf_36@TerrainTypeClass@@UAEPAUMapObjCell@@H@Z",
+  "sym": "?vf_36@TerrainTypeClass@@UAEPAXH@Z",
   "len": "0x4f",
   "name": "TerrainTypeClass::vf_36",
   "status": "matched",
@@ -47205,7 +47205,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DEA0",
-  "sym": "?ReadINI@TerrainTypeClass@@UAE_NPAVMapObjIniView@@@Z",
+  "sym": "?vf_25@TerrainTypeClass@@UAE_NPAVCCINIClass@@@Z",
   "len": "0x221",
   "name": "TerrainTypeClass::ReadINI",
   "status": "matched",
@@ -47214,7 +47214,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71E0D0",
-  "sym": "?vf_27@TerrainTypeClass@@UAEPAUMapObjCoord@@PAU2@PBU2@@Z",
+  "sym": "?vf_27@TerrainTypeClass@@UAE?AUCoordStruct@@ABU2@@Z",
   "len": "0x61",
   "name": "TerrainTypeClass::vf_27",
   "status": "matched",
@@ -47223,7 +47223,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71E140",
-  "sym": "?ComputeCRC@TerrainTypeClass@@UAEXAAVMapObjCrcView@@@Z",
+  "sym": "?vf_13@TerrainTypeClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x83",
   "name": "TerrainTypeClass::ComputeCRC",
   "status": "matched",
@@ -47259,7 +47259,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71E330",
-  "sym": "?WhatAmI@TerrainTypeClass@@UAEHXZ",
+  "sym": "?vf_11@TerrainTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "TerrainTypeClass::WhatAmI",
   "status": "matched",
@@ -47268,7 +47268,7 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71E340",
-  "sym": "?Size@TerrainTypeClass@@UAEHXZ",
+  "sym": "?vf_12@TerrainTypeClass@@UAEHXZ",
   "len": "0x6",
   "name": "TerrainTypeClass::Size",
   "status": "matched",
@@ -67383,11 +67383,11 @@
  {
   "tu": "match/economy/tu020_aircraft_type_class.cpp",
   "addr": "0x41CBE0",
-  "sym": "?vf_32@AircraftTypeClass@@UAE_NHH@Z",
+  "sym": "?vf_32@AircraftTypeClass@@UAE_NPBUCellStruct@@PAVHouseClass@@@Z",
   "len": "0x5",
   "name": "AircraftTypeClass::vf_32",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu020_aircraft_type_class.cpp",
@@ -84751,11 +84751,11 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71DE90",
-  "sym": "?FUN_0071DE90@@YAXXZ",
+  "sym": "_$E9",
   "len": "0x1",
-  "name": "FUN_0071DE90",
+  "name": "_$E9",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu244_methods.cpp",

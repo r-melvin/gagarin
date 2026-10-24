@@ -32,6 +32,12 @@
 #include <stdlib.h>
 #include "terrain_objects/terrain_type_class.h"
 #include "terrain_objects/terrain_class.h"
+#include "../_layout/obj_004a1d30.h"
+#include "../platform/ccini_class_methods.h"
+#include "../ui/shape_header.h"
+#include "../core/scenario_class_methods.h"
+// GLOBAL: GAMEMD 0x887180
+extern CCINIClass DAT_00887180;
 
 // GLOBAL: GAMEMD 0x7E95E0 - CLSID of TerrainTypeClass (16 bytes read from the image).
 extern "C" const CLSID CLSID_TerrainType =
@@ -47,7 +53,7 @@ extern "C" const CLSID CLSID_TerrainType =
 #include "../_rt/gg_static_assert.h"
 
 
-void __cdecl FUN_0071DE90();
+
 
 
 // Globals read by this TU's static initialisers (placeholder names).
@@ -72,26 +78,26 @@ double DAT_00B0EDB8 = DAT_007E1718 / DAT_00B0F140;
 // constructor uses (AddItemEarlyOut: Capacity held in a local across the growth tests, the
 // element stored through an index local), not the `T* slot = &Items[Count++]` shape.
 TerrainTypeClass::TerrainTypeClass(const char* id) throw()
-    : MapObjTypeClassView(id), ArrayIndex(-1), Foundation(0), RadarColor(0, 0, 0), AnimationRate(0),
+    : ObjectTypeClass(id), ArrayIndex(-1), Foundation(0), RadarColor(0, 0, 0), AnimationRate(0),
       AnimationProbability(0),
       TemperateOccupationBits(7), SnowOccupationBits(7), WaterBound(false), SpawnsTiberium(false),
       IsFlammable(false), IsAnimated(false), IsVeinhole(false), FoundationCells(0)
 {
-    MapObjRttiBase::Create_ID();
-    unknown_230 = false;
-    unknown_234 = true;
-    unknown_22F = true;
-    unknown_231 = false;
-    unknown_232 = true;
+    AbstractClass::vf_rtti_5();
+    Selectable = false;
+    IsLogic = true;
+    RadarInvisible = true;
+    LegalTarget = false;
+    Insignificant = true;
     TerrainTypeArray.AddItemEarlyOut(this);
     ArrayIndex = TerrainTypeArray.FindIndex(this);
-    unknown_A0 = -1;
-    unknown_9C = 6;
+    Strength = -1;
+    Armor = 6;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DDD0
-bool TerrainTypeClass::vf_32(const MapObjCell* cell, MapObjHouseView* house)
+bool TerrainTypeClass::vf_32(const CellStruct* cell, HouseClass* house)
 {
     if (new TerrainClass(this, cell))
         return true;
@@ -100,7 +106,7 @@ bool TerrainTypeClass::vf_32(const MapObjCell* cell, MapObjHouseView* house)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DE10
-void* TerrainTypeClass::vf_35(MapObjHouseView* house)
+void* TerrainTypeClass::vf_35(void* house)
 {
     return new TerrainClass(this, &TerrainDefaultCell);
 }
@@ -109,56 +115,51 @@ void* TerrainTypeClass::vf_35(MapObjHouseView* house)
 // FUNCTION: GAMEMD 0x71DE40
 // The empty cell list: a function-local static {0x7FFF, 0x7FFF} (guard bit in 0xB0ED60, object at
 // 0xB0ED78); its atexit stub is the bare RET at 0x71DE90 (compiler output, outside this partition). The
-// static is initialised from a converting temporary (TerrainStaticCell from a MapObjCell): that is what
-// builds the two-word stack temporary after the guard test and copies it as one dword, as retail does.
-MapObjCell* TerrainTypeClass::vf_36(int arg)
+// The shared Cell value initializes through its two-word temporary and copies the four-byte result.
+void* TerrainTypeClass::vf_36(int arg)
 {
     if (FoundationCells == 0) {
-        static TerrainStaticCell invalidCell = MapObjCell(0x7FFF, 0x7FFF);
+        static Cell invalidCell = Cell(0x7FFF, 0x7FFF);
         return &invalidCell;
     }
     return FoundationCells;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x71DE90
-// Empty function.
-void __cdecl FUN_0071DE90()
-{
-}
+// SYNTHETIC: GAMEMD 0x71DE90
+// Compiler cleanup for vf_36's canonical Cell sentinel.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71DEA0
-bool TerrainTypeClass::ReadINI(MapObjIniView* ini)
+bool TerrainTypeClass::vf_25(CCINIClass* ini)
 {
-    ini->ClearCache();
-    if (MapObjTypeClassView::ReadINI(ini)) {
-        if (unknown_A0 == -1)
-            unknown_A0 = MapObjRules->unknown_1144;
-        IsVeinhole = ini->ReadBool(ID, "IsVeinhole", IsVeinhole);
+    ini->Reset();
+    if (ObjectTypeClass::vf_25(ini)) {
+        if (Strength == -1)
+            Strength = MapObjRules->unknown_1144;
+        IsVeinhole = ini->FUN_005295F0(ID, "IsVeinhole", IsVeinhole);
         if (IsVeinhole) {
-            unknown_234 = false;
-            unknown_231 = true;
+            IsLogic = false;
+            LegalTarget = true;
         }
-        WaterBound = ini->ReadBool(ID, "WaterBound", WaterBound);
-        SpawnsTiberium = ini->ReadBool(ID, "SpawnsTiberium", SpawnsTiberium);
-        IsFlammable = ini->ReadBool(ID, "IsFlammable", IsFlammable);
-        Foundation = MapObjArtIni.ReadFoundation(ImageFile, "Foundation", Foundation);
+        WaterBound = ini->FUN_005295F0(ID, "WaterBound", WaterBound);
+        SpawnsTiberium = ini->FUN_005295F0(ID, "SpawnsTiberium", SpawnsTiberium);
+        IsFlammable = ini->FUN_005295F0(ID, "IsFlammable", IsFlammable);
+        Foundation = DAT_00887180.ReadFoundation(ImageFile, "Foundation", Foundation);
         FoundationCells = TerrainFoundationTable[Foundation];
         if (!Theater) {
             char path[0x200];
             _makepath(path, 0, 0, ImageFile, ".SHP");
             Image = MapObjLoadShape(path, false);
         }
-        MapObjShapeView* shape = (MapObjShapeView*)vf_39();
+        ShapeHeader* shape = static_cast<ShapeHeader*>(vf_39());
         if (shape != 0)
             RadarColor = shape->GetRadarColor(0);
-        RadarColor = ini->ReadColor(ID, "RadarColor", RadarColor);
-        IsAnimated = ini->ReadBool(ID, "IsAnimated", IsAnimated);
-        AnimationRate = ini->ReadInt(ID, "AnimationRate", AnimationRate);
-        AnimationProbability = (float)ini->ReadDouble(ID, "AnimationProbability", AnimationProbability);
-        TemperateOccupationBits = ini->ReadInt(ID, "TemperateOccupationBits", TemperateOccupationBits);
-        SnowOccupationBits = ini->ReadInt(ID, "SnowOccupationBits", SnowOccupationBits);
+        RadarColor = ini->Read3Bytes(ID, "RadarColor", RadarColor);
+        IsAnimated = ini->FUN_005295F0(ID, "IsAnimated", IsAnimated);
+        AnimationRate = ini->FUN_005276D0(ID, "AnimationRate", AnimationRate);
+        AnimationProbability = (float)ini->FUN_005283D0(ID, "AnimationProbability", AnimationProbability);
+        TemperateOccupationBits = ini->FUN_005276D0(ID, "TemperateOccupationBits", TemperateOccupationBits);
+        SnowOccupationBits = ini->FUN_005276D0(ID, "SnowOccupationBits", SnowOccupationBits);
         return true;
     }
     return false;
@@ -166,38 +167,37 @@ bool TerrainTypeClass::ReadINI(MapObjIniView* ini)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71E0D0
-MapObjCoord* TerrainTypeClass::vf_27(MapObjCoord* out, const MapObjCoord* coord)
+CoordStruct TerrainTypeClass::vf_27(const CoordStruct& coord)
 {
-    MapObjCoord c = *coord;
-    c.Z = c.Z >= MapObjMap.GetHeight(&c) ? c.Z : MapObjMap.GetHeight(&c);
-    *out = c;
-    return out;
+    CoordStruct c = coord;
+    c.Z = c.Z >= MapInstance.FUN_00578080(&c) ? c.Z : MapInstance.FUN_00578080(&c);
+    return c;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71E140
-void TerrainTypeClass::ComputeCRC(MapObjCrcView& crc)
+void TerrainTypeClass::vf_13(Obj_004A1D30* crc)
 {
-    MapObjTypeClassView::ComputeCRC(crc);
-    crc.AddInt(ArrayIndex);
-    crc.AddBool(WaterBound);
-    crc.AddBool(SpawnsTiberium);
-    crc.AddBool(IsFlammable);
-    crc.AddInt(Foundation);
-    crc.AddBool(IsAnimated);
-    crc.AddInt(AnimationRate);
-    crc.AddFloat(AnimationProbability);
+    AbstractTypeClass::vf_13(crc);
+    crc->FUN_004A1D50(ArrayIndex);
+    crc->FUN_004A1CA0(WaterBound);
+    crc->FUN_004A1CA0(SpawnsTiberium);
+    crc->FUN_004A1CA0(IsFlammable);
+    crc->FUN_004A1D50(Foundation);
+    crc->FUN_004A1CA0(IsAnimated);
+    crc->FUN_004A1D50(AnimationRate);
+    crc->FUN_004A1D70(AnimationProbability);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71E1D0
 HRESULT __stdcall TerrainTypeClass::Load(IStream* pStm)
 {
-    HRESULT hr = MapObjTypeClassView::Load(pStm);
+    HRESULT hr = ObjectTypeClass::Load(pStm);
     if (hr >= 0) {
-        new (this) TerrainTypeClass(MapObjNoInit());
-        LoadFixup();
-        PostLoad();
+        new (this) TerrainTypeClass(AbstractNoInit());
+        FUN_005F8110();
+        FUN_005F9070();
         FoundationCells = TerrainFoundationTable[Foundation];
         hr = 0;
     }
@@ -208,7 +208,7 @@ HRESULT __stdcall TerrainTypeClass::Load(IStream* pStm)
 // FUNCTION: GAMEMD 0x71E240
 HRESULT __stdcall TerrainTypeClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT hr = MapObjTypeClassView::Save(pStm, fClearDirty);
+    HRESULT hr = ObjectTypeClass::Save(pStm, fClearDirty);
     if (hr >= 0)
         hr = 0;
     return hr;
@@ -244,14 +244,14 @@ TerrainTypeClass* TerrainTypeClass::FindOrAllocate(const char* id)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71E330
-int TerrainTypeClass::WhatAmI()
+int TerrainTypeClass::vf_11()
 {
     return 0x25;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71E340
-int TerrainTypeClass::Size()
+int TerrainTypeClass::vf_12()
 {
     return 0x2BC;
 }

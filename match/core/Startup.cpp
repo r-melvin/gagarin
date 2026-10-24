@@ -93,31 +93,7 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(CStreamClass) == 0x2C);
 
-// FUNCTION: GAMEMD 0x0071DA80 (decl; reloc) -- TerrainTypeClass default constructor.
-class TerrainTypeClass : public AbstractClass
-{
-public:
-    TerrainTypeClass(int unknown_arg0 = 0);
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x2BC - sizeof(AbstractClass)];
-};
-
-// FUNCTION: GAMEMD 0x0071BDF0 (decl; reloc) -- TerrainClass default constructor.
-class TerrainClass : public AbstractClass
-{
-public:
-    TerrainClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0xE0 - sizeof(AbstractClass)];
-};
+#include "../map/terrain_objects/terrain_class.h"
 
 // FUNCTION: GAMEMD 0x006CE5B0 (decl; reloc) -- SuperWeaponTypeClass default constructor.
 class SuperWeaponTypeClass : public AbstractClass

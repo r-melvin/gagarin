@@ -18,6 +18,7 @@
 
 class FileClass;
 class Straw;
+struct ColorStruct;
 
 // VTABLE: GAMEMD 0x7E1AF4
 //   sizeof 0x58: `PUSH 0x58; CALL operator new` before the inline
@@ -43,6 +44,11 @@ public:
     bool FUN_00475610(const char* section, const char* key, int value);
     // FUNCTION: GAMEMD 0x679F40  CCINIClass::Exists         (__thiscall)
     bool Exists(const char* pSection, const char* pKey);
+
+    // FUNCTION: GAMEMD 0x474DA0 (decl; reloc) -- foundation enumeration, RET0C.
+    int ReadFoundation(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x474B50 (decl; reloc) -- hidden RGB result, default by reference.
+    ColorStruct Read3Bytes(const char* section, const char* key, const ColorStruct& fallback);
 
     bool          DigestValid;     // +0x40
     unsigned char Digest[0x14];    // +0x41

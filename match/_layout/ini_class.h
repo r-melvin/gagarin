@@ -46,6 +46,8 @@ public:
     const char* GetKeyName(const char* section, int index);
     // FUNCTION: GAMEMD 0x5276D0 (decl; reloc) -- read an integer, RET 0xC.
     int FUN_005276D0(const char* section, const char* key, int fallback);
+    // FUNCTION: GAMEMD 0x5283D0 (decl; reloc) -- section/key and double fallback, RET16.
+    double FUN_005283D0(const char* section, const char* key, double fallback);
     // FUNCTION: GAMEMD 0x5275C0
     bool WriteInteger(const char* section, const char* key, int value, int format);
     // FUNCTION: GAMEMD 0x528660

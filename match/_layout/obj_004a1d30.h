@@ -29,6 +29,8 @@ struct Obj_004A1D30
     void FUN_004A1D30(unsigned short value);
     // FUNCTION: GAMEMD 0x4A1D50 (decl; reloc) -- add one dword.
     void FUN_004A1D50(int value);
+    // FUNCTION: GAMEMD 0x4A1D70 (decl; reloc) -- consumes the original four float bytes, RET4.
+    void FUN_004A1D70(float value);
     // FUNCTION: GAMEMD 0x4A1D90 (decl; reloc) -- add one double (RET 8).
     void FUN_004A1D90(double value);
     // FUNCTION: GAMEMD 0x4A1DB0 (decl; reloc) -- add a NUL-terminated string.

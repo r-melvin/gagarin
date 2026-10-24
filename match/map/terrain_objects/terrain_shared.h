@@ -12,17 +12,10 @@
 #include "terrain_common_types.h"
 #include "terrain_common_vectors.h"
 #include "terrain_common_views.h"
+#include "../../_layout/cell.h"
 #include "../../core/frame_counter.h"
 #include "../../core/abstract_index_cast_sweep.h"
 #include "../../_layout/vector_class.h"
-
-// A cell whose destructor registers an atexit stub where it is a function-local static (the empty cell
-// list returned by TerrainTypeClass::vf_36).
-struct TerrainStaticCell : public MapObjCell
-{
-    TerrainStaticCell(const MapObjCell& cell) : MapObjCell(cell) {}
-    ~TerrainStaticCell() {}
-};
 
 // The candidate view at 0xA8ED84 aliases the canonical frame-counter symbol.
 #define TerrainFrame CurrentFrame
@@ -140,7 +133,7 @@ inline void TerrainIndexView::AddIndexInline(const int& id, void* const& data)
 }
 
 // GLOBAL: GAMEMD 0xB0ED7C - the cell handed to a terrain object created unplaced.
-extern MapObjCell TerrainDefaultCell;
+extern CellStruct TerrainDefaultCell;
 
 // GLOBAL: GAMEMD 0xB0EDC0 - the foundation cell lists, 0x28 bytes (ten cells) per entry.
 extern MapObjCell TerrainFoundationTable[][10];

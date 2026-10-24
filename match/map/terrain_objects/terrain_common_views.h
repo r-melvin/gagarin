@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check (names only) | behaviour-confirmed-name
 //   Partial views of the retail base classes shared by the whole terrain-objects module, each declared
-//   once: ObjectClass (MapObjClassView, the base of OverlayClass, SmudgeClass and TerrainClass),
-//   ObjectTypeClass (MapObjTypeClassView, the base of OverlayTypeClass, SmudgeTypeClass and
-//   TerrainTypeClass), the three secondary interface bases, the CRC engine, the INI reader, the
+//   once: ObjectClass (MapObjClassView, retained by OverlayClass and SmudgeClass),
+//   ObjectTypeClass (MapObjTypeClassView, retained by OverlayTypeClass and SmudgeTypeClass),
+//   the secondary interfaces, CRC engine and INI reader. TerrainClass and TerrainTypeClass
+//   now use canonical ObjectClass and ObjectTypeClass bases. Foreign APIs below still use views.
 //   pointer-swizzle manager, and the map / cell / tactical / rules / scenario / anim / shape objects the
 //   bodies read, together with the retail globals and out-of-partition functions bound by address.
 //   Everything was read from the retail gamemd.exe v1.001:
@@ -352,7 +353,8 @@ GG_STATIC_ASSERT(offsetof(MapObjClassView, Location) == 0x9C);
 GG_STATIC_ASSERT(offsetof(MapObjClassView, unknown_A8) == 0xA8);
 GG_STATIC_ASSERT(sizeof(MapObjClassView) == 0xAC);
 
-// ObjectTypeClass-shaped base of OverlayTypeClass, SmudgeTypeClass and TerrainTypeClass (sizeof 0x294).
+// ObjectTypeClass-shaped legacy base of OverlayTypeClass and SmudgeTypeClass (sizeof 0x294).
+// TerrainTypeClass now derives canonical ObjectTypeClass; foreign APIs can still expose this prefix.
 // Slot numbers are the retail primary-table indices (tables 0x7EF600 / 0x7F3528 with 41 slots and
 // 0x7F5458 with 40: slots 0..39 are the ObjectTypeClass part, Overlay and Smudge add slot 40 themselves).
 // VTABLE: GAMEMD 0x7EF600 / 0x7F3528 / 0x7F5458 (IPersistStream side), GAMEMD 0x7EF5E4 / 0x7F350C /

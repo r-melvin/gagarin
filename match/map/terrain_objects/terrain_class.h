@@ -35,7 +35,7 @@ class TerrainClass : public ObjectClass, public StageClass
 {
 public:
     // FUNCTION: GAMEMD 0x71BB90 - the placing constructor (type, map cell).
-    TerrainClass(TerrainTypeClass* type, const MapObjCell* cell);
+    TerrainClass(TerrainTypeClass* type, const CellStruct* cell);
     // FUNCTION: GAMEMD 0x71BDF0 - the default constructor (the allocation at 0x6BF3BC).
     TerrainClass();
     // No-init constructor: Load re-runs it through placement new to restore

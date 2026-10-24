@@ -64,7 +64,7 @@ int TerrainClass::vf_91(int* damage, int distance, void* warhead, void* source, 
     int result = 0;
     if (warhead == 0)
         return result;
-    if (static_cast<MapObjWarheadView*>(warhead)->unknown_147 && !Type->unknown_233) {
+    if (static_cast<MapObjWarheadView*>(warhead)->unknown_147 && !Type->Immune) {
         result = ObjectClass::vf_91(damage, distance, warhead, source, a5, a6, house);
         if (result == 5)
             return result;
@@ -95,11 +95,11 @@ int TerrainClass::vf_91(int* damage, int distance, void* warhead, void* source, 
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x71BB90
-TerrainClass::TerrainClass(TerrainTypeClass* type, const MapObjCell* cell)
+TerrainClass::TerrainClass(TerrainTypeClass* type, const CellStruct* cell)
     : Type(type), IsBurning(false), TimeToDie(false), unknown_D0(0), unknown_D4(0), ScreenPos(0, 0)
 {
     AbstractClass::vf_rtti_5();
-    Health = Type->unknown_A0;
+    Health = Type->Strength;
     if (cell->X != TerrainEmptyCellValue.X || cell->Y != TerrainEmptyCellValue.Y) {
         CoordStruct coord = { (cell->X << 8) + 0x80, (cell->Y << 8) + 0x80, 0 };
         if (!vf_54(coord, 0))
@@ -288,7 +288,7 @@ int TerrainClass::vf_107(CellClass* who, int a2, int a3, int a4, int a5)
 // FUNCTION: GAMEMD 0x71C5B0
 bool TerrainClass::vf_94()
 {
-    if (TimeToDie || IsBurning || Type->unknown_9C != 6 || Type->SpawnsTiberium)
+    if (TimeToDie || IsBurning || Type->Armor != 6 || Type->SpawnsTiberium)
         return false;
     int roll = MapObjScenario->Random.Random();
     MapObjAnimView* anim = new MapObjAnimView(
@@ -457,8 +457,8 @@ HRESULT __stdcall TerrainClass::Save(IStream* pStm, BOOL fClearDirty)
 void TerrainClass::vf_13(Obj_004A1D30* crc)
 {
     ObjectClass::vf_13(crc);
-    crc->FUN_004A1D50(Type->WhatAmI());
-    crc->FUN_004A1D50(Type->Fetch_ID());
+    crc->FUN_004A1D50(Type->vf_11());
+    crc->FUN_004A1D50(Type->vf_rtti_4());
     crc->FUN_004A1CA0(IsBurning);
     crc->FUN_004A1CA0(TimeToDie);
     crc->FUN_004A1D50(unknown_D0);
@@ -507,9 +507,7 @@ bool TerrainClass::vf_54(const CoordStruct& where, int facing)
 // FUNCTION: GAMEMD 0x71D150
 ObjectTypeClass* TerrainClass::vf_34()
 {
-    // Native 0x71D150 returns [this+0xC8] unchanged. TerrainType RTTI
-    // (CHD 0x80C488, BCD 0x7FB520) places ObjectTypeClass at offset zero.
-    return reinterpret_cast<ObjectTypeClass*>(Type);
+    return Type;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
