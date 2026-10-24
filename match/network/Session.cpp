@@ -1010,6 +1010,278 @@ extern const char STR_0083F1D4[]; // STRING: GAMEMD 0x0083F1D4 (decl; reloc)
 extern const char STR_0083F1C0[]; // STRING: GAMEMD 0x0083F1C0 (decl; reloc)
 extern const char STR_0083F1AC[]; // STRING: GAMEMD 0x0083F1AC (decl; reloc)
 extern "C" int __cdecl fprintf(FILE*, const char*, ...); // LIBRARY: GAMEMD 0x7CA7D8 (decl; VC6 CRT)
+#include "../_layout/rules_class.h"
+#include "../core/randomizer.h"
+#include "../core/trivial_tu158_methods.h"
+#include "mp_game_mode_class_get_methods.h"
+#include "../ui/input_controls/ui_display_chain.h"
+#include <stdlib.h>
+#include <string.h>
+#include <wchar.h>
+// GLOBAL: GAMEMD 0xB07788
+extern bool DAT_00B07788;
+// GLOBAL: GAMEMD 0xABFED8
+extern int DAT_00ABFED8;
+// GLOBAL: GAMEMD 0xB057E0
+extern CellStruct DAT_00B057E0;
+// Declaration: GAMEMD 0x735090 -- ECX narrow output, EDX wide input, RET4.
+void __fastcall FUN_00735090(char* output, const wchar_t* input, int maximum);
+extern const char STR_008173F8[]; // STRING: GAMEMD 0x008173F8 (decl; reloc)
+extern const char STR_008189B0[]; // STRING: GAMEMD 0x008189B0 (decl; reloc)
+extern const char STR_0081C000[]; // STRING: GAMEMD 0x0081C000 (decl; reloc)
+extern const char STR_00824314[]; // STRING: GAMEMD 0x00824314 (decl; reloc)
+extern const char STR_00825BD4[]; // STRING: GAMEMD 0x00825BD4 (decl; reloc)
+extern const char STR_00826420[]; // STRING: GAMEMD 0x00826420 (decl; reloc)
+extern const char STR_00826438[]; // STRING: GAMEMD 0x00826438 (decl; reloc)
+extern const char STR_0082A2D4[]; // STRING: GAMEMD 0x0082A2D4 (decl; reloc)
+extern const char STR_0082A2E8[]; // STRING: GAMEMD 0x0082A2E8 (decl; reloc)
+extern const char STR_0082BFAC[]; // STRING: GAMEMD 0x0082BFAC (decl; reloc)
+extern const char STR_00832630[]; // STRING: GAMEMD 0x00832630 (decl; reloc)
+extern const char STR_0083676C[]; // STRING: GAMEMD 0x0083676C (decl; reloc)
+extern const char STR_0083ED5C[]; // STRING: GAMEMD 0x0083ED5C (decl; reloc)
+extern const char STR_0083EFDC[]; // STRING: GAMEMD 0x0083EFDC (decl; reloc)
+extern const char STR_0083EFE8[]; // STRING: GAMEMD 0x0083EFE8 (decl; reloc)
+extern const char STR_0083EFEC[]; // STRING: GAMEMD 0x0083EFEC (decl; reloc)
+extern const char STR_0083EFF4[]; // STRING: GAMEMD 0x0083EFF4 (decl; reloc)
+extern const char STR_0083EFFC[]; // STRING: GAMEMD 0x0083EFFC (decl; reloc)
+extern const char STR_0083F004[]; // STRING: GAMEMD 0x0083F004 (decl; reloc)
+extern const char STR_0083F010[]; // STRING: GAMEMD 0x0083F010 (decl; reloc)
+extern const char STR_0083F018[]; // STRING: GAMEMD 0x0083F018 (decl; reloc)
+extern const char STR_0083F024[]; // STRING: GAMEMD 0x0083F024 (decl; reloc)
+extern const char STR_0083F02C[]; // STRING: GAMEMD 0x0083F02C (decl; reloc)
+extern const char STR_0083F038[]; // STRING: GAMEMD 0x0083F038 (decl; reloc)
+extern const char STR_0083F040[]; // STRING: GAMEMD 0x0083F040 (decl; reloc)
+extern const char STR_0083F048[]; // STRING: GAMEMD 0x0083F048 (decl; reloc)
+extern const char STR_0083F184[]; // STRING: GAMEMD 0x0083F184 (decl; reloc)
+extern const char STR_0083F19C[]; // STRING: GAMEMD 0x0083F19C (decl; reloc)
+void __fastcall FUN_00735060(wchar_t* output, const char* input, int maximum);
+
+extern const char* DAT_0083ECFC[];
+extern const char STR_00817334[]; // STRING: GAMEMD 0x00817334 (decl; reloc)
+extern const char STR_008173F8[]; // STRING: GAMEMD 0x008173F8 (decl; reloc)
+extern const char STR_008189B0[]; // STRING: GAMEMD 0x008189B0 (decl; reloc)
+extern const char STR_0081B138[]; // STRING: GAMEMD 0x0081B138 (decl; reloc)
+extern const char STR_0081C000[]; // STRING: GAMEMD 0x0081C000 (decl; reloc)
+extern const char STR_00824314[]; // STRING: GAMEMD 0x00824314 (decl; reloc)
+extern const char STR_00825BD4[]; // STRING: GAMEMD 0x00825BD4 (decl; reloc)
+extern const char STR_00826420[]; // STRING: GAMEMD 0x00826420 (decl; reloc)
+extern const char STR_0082642C[]; // STRING: GAMEMD 0x0082642C (decl; reloc)
+extern const char STR_00826438[]; // STRING: GAMEMD 0x00826438 (decl; reloc)
+extern const char STR_00826444[]; // STRING: GAMEMD 0x00826444 (decl; reloc)
+extern const char STR_0082A2D4[]; // STRING: GAMEMD 0x0082A2D4 (decl; reloc)
+extern const char STR_0082A2E8[]; // STRING: GAMEMD 0x0082A2E8 (decl; reloc)
+extern const char STR_0082BFAC[]; // STRING: GAMEMD 0x0082BFAC (decl; reloc)
+extern const char STR_00832630[]; // STRING: GAMEMD 0x00832630 (decl; reloc)
+extern const char STR_0083676C[]; // STRING: GAMEMD 0x0083676C (decl; reloc)
+extern const char STR_0083ED5C[]; // STRING: GAMEMD 0x0083ED5C (decl; reloc)
+extern const char STR_0083EEB8[]; // STRING: GAMEMD 0x0083EEB8 (decl; reloc)
+extern const char STR_0083EFD0[]; // STRING: GAMEMD 0x0083EFD0 (decl; reloc)
+extern const char STR_0083EFDC[]; // STRING: GAMEMD 0x0083EFDC (decl; reloc)
+extern const char STR_0083EFE8[]; // STRING: GAMEMD 0x0083EFE8 (decl; reloc)
+extern const char STR_0083EFEC[]; // STRING: GAMEMD 0x0083EFEC (decl; reloc)
+extern const char STR_0083EFF4[]; // STRING: GAMEMD 0x0083EFF4 (decl; reloc)
+extern const char STR_0083EFFC[]; // STRING: GAMEMD 0x0083EFFC (decl; reloc)
+extern const char STR_0083F004[]; // STRING: GAMEMD 0x0083F004 (decl; reloc)
+extern const char STR_0083F010[]; // STRING: GAMEMD 0x0083F010 (decl; reloc)
+extern const char STR_0083F018[]; // STRING: GAMEMD 0x0083F018 (decl; reloc)
+extern const char STR_0083F024[]; // STRING: GAMEMD 0x0083F024 (decl; reloc)
+extern const char STR_0083F02C[]; // STRING: GAMEMD 0x0083F02C (decl; reloc)
+extern const char STR_0083F038[]; // STRING: GAMEMD 0x0083F038 (decl; reloc)
+extern const char STR_0083F040[]; // STRING: GAMEMD 0x0083F040 (decl; reloc)
+extern const char STR_0083F048[]; // STRING: GAMEMD 0x0083F048 (decl; reloc)
+extern const char STR_0083F050[]; // STRING: GAMEMD 0x0083F050 (decl; reloc)
+extern const char STR_0083F05C[]; // STRING: GAMEMD 0x0083F05C (decl; reloc)
+extern const char STR_0083F068[]; // STRING: GAMEMD 0x0083F068 (decl; reloc)
+extern const char STR_0083F078[]; // STRING: GAMEMD 0x0083F078 (decl; reloc)
+extern const char STR_0083F08C[]; // STRING: GAMEMD 0x0083F08C (decl; reloc)
+extern const char STR_0083F09C[]; // STRING: GAMEMD 0x0083F09C (decl; reloc)
+extern const char STR_0083F0A8[]; // STRING: GAMEMD 0x0083F0A8 (decl; reloc)
+extern const char STR_0083F0B8[]; // STRING: GAMEMD 0x0083F0B8 (decl; reloc)
+extern const char STR_0083F0C4[]; // STRING: GAMEMD 0x0083F0C4 (decl; reloc)
+extern const char STR_0083F0CC[]; // STRING: GAMEMD 0x0083F0CC (decl; reloc)
+extern const char STR_0083F0D0[]; // STRING: GAMEMD 0x0083F0D0 (decl; reloc)
+extern const char STR_0083F0D8[]; // STRING: GAMEMD 0x0083F0D8 (decl; reloc)
+extern const char STR_0083F0E8[]; // STRING: GAMEMD 0x0083F0E8 (decl; reloc)
+extern const char STR_0083F0F4[]; // STRING: GAMEMD 0x0083F0F4 (decl; reloc)
+extern const char STR_0083F100[]; // STRING: GAMEMD 0x0083F100 (decl; reloc)
+extern const char STR_0083F104[]; // STRING: GAMEMD 0x0083F104 (decl; reloc)
+extern const char STR_0083F110[]; // STRING: GAMEMD 0x0083F110 (decl; reloc)
+extern const char STR_0083F120[]; // STRING: GAMEMD 0x0083F120 (decl; reloc)
+extern const char STR_0083F130[]; // STRING: GAMEMD 0x0083F130 (decl; reloc)
+extern const char STR_0083F13C[]; // STRING: GAMEMD 0x0083F13C (decl; reloc)
+extern const char STR_0083F148[]; // STRING: GAMEMD 0x0083F148 (decl; reloc)
+extern const char STR_0083F150[]; // STRING: GAMEMD 0x0083F150 (decl; reloc)
+extern const char STR_0083F158[]; // STRING: GAMEMD 0x0083F158 (decl; reloc)
+extern const char STR_0083F160[]; // STRING: GAMEMD 0x0083F160 (decl; reloc)
+extern const char STR_0083F170[]; // STRING: GAMEMD 0x0083F170 (decl; reloc)
+extern const char STR_0083F184[]; // STRING: GAMEMD 0x0083F184 (decl; reloc)
+extern const char STR_0083F190[]; // STRING: GAMEMD 0x0083F190 (decl; reloc)
+extern const char STR_0083F19C[]; // STRING: GAMEMD 0x0083F19C (decl; reloc)
+extern const char STR_00889F64[]; // STRING: GAMEMD 0x00889F64 (decl; reloc)
+// FUNCTION: GAMEMD 0x6980C0
+void SessionClass::FUN_006980C0()
+{
+    Rules->Read_Countries(DAT_00887048);
+    for (int stringIndex = 0; stringIndex < unknown_2914.Count; ++stringIndex)
+        delete[] unknown_2914.Items[stringIndex];
+    unknown_2914.Clear();
+    for (int entryIndex = 0; entryIndex < unknown_28FC.Count; ++entryIndex) {
+        PhoneEntryClass* entry = unknown_28FC.Items[entryIndex];
+        if (entry) delete entry;
+    }
+    unknown_28FC.Clear();
+    // Native4739F0 is CCFileClass, not RawFileClass65CA80. No Exists/Open.
+    CCFileClass file(STR_00826444);
+    if (!DAT_00B07788) {
+        unknown_2FF0 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_00826438, 1250);
+        unknown_2FF4 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F19C, 0);
+        int fallback = DAT_00886B88.RandomRanged(0, 0x8000) + 0x1000;
+        DAT_00ABFED8 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_00826420, fallback);
+        DAT_00B07788 = true;
+        DAT_00ABFEC8.FUN_005D93D0();
+    }
+    Session_00A8B238.unknown_2F48 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0082A2E8, false);
+    Session_00A8B238.unknown_301C = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0082A2D4, 0);
+    char buffer[1024];
+    buffer[0] = 0;
+    unknown_2884 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F190, -1);
+    unknown_30D0 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F184, 0);
+    unknown_308 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0083F170, unknown_308);
+    unknown_30C = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F160, -1);
+    wchar_t handle[20];
+    DAT_008870C0.FUN_00528F00(STR_0082642C, STR_0083F158,
+        FUN_00734E60(STR_0083676C, 0, STR_0083EEB8, 0x4EE), handle, 20);
+    FUN_00735090(unknown_148, handle, -1);
+    unknown_17C = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0081B138, unknown_17C);
+    unknown_180 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F150, unknown_180);
+    unknown_184 = DAT_008870C0.FUN_00475540(STR_0082642C, STR_00817334, unknown_184);
+    unknown_188 = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083F148, unknown_188);
+    unknown_1ED9 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0083F13C, unknown_1ED9);
+    unknown_1ED8 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0083F130, unknown_1ED8);
+    unknown_1FC1 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0083F120, unknown_1FC1);
+    unknown_1FC0 = DAT_008870C0.FUN_005295F0(STR_0082642C, STR_0083F110, unknown_1FC0);
+    unknown_174 = unknown_184;
+    if (unknown_184 == -2) unknown_174 = 0;
+    unknown_178 = unknown_188;
+    int mode = DAT_008870C0.FUN_005276D0(STR_0082642C, STR_0083EFD0, 1);
+    unknown_04 = MultiplayerGameMode_Get(mode);
+    if (!unknown_04) unknown_04 = FUN_005D5E10();
+    unknown_18C.FUN_00697F10(&DAT_008870C0, STR_0083F104, 1, 6);
+    unknown_208.FUN_00697F10(&DAT_008870C0, STR_0083F100, 2, 2);
+    unknown_284.FUN_00697F10(&DAT_008870C0, STR_0083F0F4, 2, 2);
+
+    DAT_008870C0.FUN_00528A10(STR_0083F0D8, STR_0083F0E8, buffer, unknown_28B8, 0x3F);
+    if (strcmp(unknown_28B8, buffer) == 0) unknown_28B8[0] = 0;
+    unknown_2888 = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F0D0, 0);
+    unknown_288C = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F0CC, -1);
+    unknown_2890 = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F0C4, -1);
+    unknown_28A0 = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F0B8, 0);
+    unknown_28A4 = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F0A8, 0);
+    DAT_008870C0.FUN_00528A10(STR_0083F0D8, STR_0083F09C, STR_0083ED5C, buffer, 2);
+    int method;
+    for (method = 0; method < 2; ++method) {
+        if (_stricmp(buffer, DAT_0083ECFC[method]) == 0) {
+            unknown_2894 = method;
+            break;
+        }
+    }
+    if (method == 2) unknown_2894 = 0;
+    unknown_2898 = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F08C, -1);
+    unknown_289C = DAT_008870C0.FUN_005276D0(STR_0083F0D8, STR_0083F078, 3);
+    DAT_008870C0.FUN_00528A10(STR_0083F0D8, STR_0083F068, STR_00889F64, unknown_28A8, 16);
+    if (unknown_288C == 0 || unknown_2890 == 0) {
+        unknown_2888 = 0;
+        unknown_288C = -1;
+        unknown_2890 = -1;
+    }
+    int initCount = DAT_008870C0.GetKeyCount(STR_0083F05C);
+    for (int initIndex = 0; initIndex < initCount; ++initIndex) {
+        char* text = new char[41];
+        if (text) {
+            text[0] = 0;
+            const char* key = DAT_008870C0.GetKeyName(STR_0083F05C, initIndex);
+            DAT_008870C0.FUN_00528A10(STR_0083F05C, key, 0, text, 41);
+            _strupr(text);
+            unknown_2914.AddItem(text); // Native leaks allocation on append failure.
+        }
+    }
+    unknown_2898 = initCount != 0 ? 0 : -1; // Overrides previously read INI value.
+    int phoneCount = DAT_008870C0.GetKeyCount(STR_0083F050);
+    for (int phoneIndex = 0; phoneIndex < phoneCount; ++phoneIndex) {
+        PhoneEntryClass* entry = new PhoneEntryClass; // Native allocatesB0, no ctor.
+        // Native does NOT test allocation before dereferencing; do not add guard.
+        const char* key = DAT_008870C0.GetKeyName(STR_0083F050, phoneIndex);
+        DAT_008870C0.FUN_00528A10(STR_0083F050, key, 0, buffer, 1024);
+        char* token = strtok(buffer, STR_00832630);
+        if (token) {
+            FUN_00735060(entry->unknown_70, token, -1);
+            _wcsupr(entry->unknown_70);
+        } else entry->unknown_70[0] = 0;
+        token = strtok(0, STR_00832630);
+        if (token) {
+            strcpy(entry->unknown_9A, token);
+            _strupr(entry->unknown_9A);
+        } else entry->unknown_9A[0] = 0;
+        token = strtok(0, STR_00832630);
+        if (token) sscanf(token, STR_00825BD4, &entry->unknown_00);
+        else entry->unknown_00 = 0;
+        token = strtok(0, STR_00832630);
+        entry->unknown_04 = token ? atoi(token) : -1;
+        token = strtok(0, STR_00832630);
+        entry->unknown_08 = token ? atoi(token) : -1;
+        token = strtok(0, STR_00832630);
+        entry->unknown_18 = token ? atoi(token) : -1;
+        token = strtok(0, STR_00832630);
+        entry->unknown_1C = token ? atoi(token) : 0;
+        token = strtok(0, STR_00832630);
+        if (!token) entry->unknown_0C = 0;
+        else {
+            strcpy(buffer, token);
+            for (method = 0; method < 2; ++method) {
+                if (_stricmp(buffer, DAT_0083ECFC[method]) == 0) {
+                    entry->unknown_0C = method;
+                    break;
+                }
+            }
+            if (method == 2) entry->unknown_0C = 0;
+        }
+        token = strtok(0, STR_00832630);
+        entry->unknown_10 = token ? atoi(token) : -1;
+        token = strtok(0, STR_00832630);
+        entry->unknown_14 = token ? atoi(token) : 3;
+        token = strtok(0, STR_00832630);
+        if (token) strcpy(entry->unknown_20, token);
+        else entry->unknown_20[0] = 0;
+        unknown_28FC.AddItem(entry); // Failure leaks entry, as native.
+    }
+    if ((Session_00A8B238.unknown_23C0 & 2) != 0) {
+        unknown_30AC = DAT_008870C0.FUN_005276D0(STR_0083F040, STR_0083F048, 0x7FFFFFFF);
+        DAT_008870C0.FUN_00528A10(STR_0083F040, STR_00824314, STR_0083F038, buffer, 80);
+        if (_stricmp(buffer, STR_0083F02C) == 0) unknown_30B0 = 2;
+        else if (_stricmp(buffer, STR_0083F024) == 0) unknown_30B0 = 4;
+        else if (_stricmp(buffer, STR_0083F018) == 0) unknown_30B0 = 6;
+        else if (_stricmp(buffer, STR_0083F010) == 0) unknown_30B0 = 8;
+        else if (_stricmp(buffer, STR_0083F004) == 0) unknown_30B0 = 15;
+        else if (_stricmp(buffer, STR_0083EFFC) == 0) unknown_30B0 = 1;
+        else unknown_30B0 = 0;
+        DAT_008870C0.FUN_00528A10(STR_0083F040, STR_0083EFF4, STR_0082BFAC, buffer, 80);
+        int x, y, z; // Native first parse results are locals, not Session coords.
+        sscanf(buffer, STR_008189B0, &x, &y, &z);
+        int target = DAT_008870C0.FUN_005276D0(STR_0083F040, STR_0083EFEC, -1);
+        unknown_30C8 = target >> 24;
+        unknown_30C4 = target & 0x00FFFFFF;
+        DAT_008870C0.FUN_00528A10(STR_0083F040, STR_008173F8, STR_0083EFE8, buffer, 80);
+        sscanf(buffer, STR_0081C000, &x, &y); // Reuses prior parse slots.
+        CellStruct cell;
+        cell.X = x;
+        cell.Y = y;
+        if (cell.X != DAT_00B057E0.X || cell.Y != DAT_00B057E0.Y)
+            unknown_30CC = Map_0087F7E8.FUN_005657A0(&cell);
+        unknown_30D4 = DAT_008870C0.FUN_005276D0(STR_0083F040, STR_0083EFDC, 0x7FFFFFFF);
+    }
+    // Natural CCFile destructor runs only now, after all reads/allocations.
+}
+
 // FUNCTION: GAMEMD 0x698CB0
 bool SessionClass::FUN_00698CB0(FILE* output)
 {

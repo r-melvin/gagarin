@@ -281,7 +281,7 @@ void BuildingClass::vf_23()
                 C4AppliedBy = 0;
             } else {
                 int damage = Health;
-                vf_91(&damage, 0, (void*)RulesInstance->unknown_FA8, C4AppliedBy, true, false, 0);
+                vf_91(&damage, 0, RulesInstance->C4Warhead, C4AppliedBy, true, false, 0);
             }
             if (!IsAlive)
                 return;

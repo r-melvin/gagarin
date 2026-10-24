@@ -55,6 +55,8 @@ public:
     // Declaration: GAMEMD 0x528C00 -- four stack pointers, RET10, signed length in EAX.
     int FUN_00528C00(const Wstring* section, const Wstring* key,
                      const Wstring* fallback, Wstring* output);
+    // Declaration: GAMEMD 0x528F00 -- full EAX length, five arguments, RET14.
+    unsigned int FUN_00528F00(const char* section, const char* key, const wchar_t* fallback, wchar_t* output, int maximum);
     // Declaration: GAMEMD 0x529160 -- four stack arguments, RET10; UTF16 output.
     int FUN_00529160(const char* section, const char* key, wchar_t* output, int size);
     // Declaration: GAMEMD 0x528E00 -- boolAL, three arguments, RET0C.

@@ -84,8 +84,8 @@ bool __stdcall DropPodLocomotionClass::Process()
         AddRef();
         EndPiggyback(&foot->Locomotor);
         if (!foot->vf_0D8(&loc, 0)) {
-            DropPod_DamageArea(&loc, 100, foot, RulesInstance->unknown_FA8, 1, 0);
-            new DropPodAnimAllocationView(DropPod_SelectDamageAnim(100, RulesInstance->unknown_FA8, 0, &loc), &loc, 0, 1, 0x2600, DropPod_ZAdjust(loc), false);
+            DropPod_DamageArea(&loc, 100, foot, RulesInstance->C4Warhead, 1, 0);
+            new DropPodAnimAllocationView(DropPod_SelectDamageAnim(100, RulesInstance->C4Warhead, 0, &loc), &loc, 0, 1, 0x2600, DropPod_ZAdjust(loc), false);
             Release();
             return true;
         }
@@ -115,8 +115,8 @@ bool __stdcall DropPodLocomotionClass::Process()
                 LocoCoord pos;
                 pos = DropPod_RandomCoordsNear(DestCoord, 0x55, false);
                 DropPod_PlaySample(weapon->Reports.Items[DAT_00886B88.Random() % weapon->Reports.Count], &pos, 0);
-                DropPod_DamageArea(&pos, weapon->Damage << 1, foot, (int)weapon->Warhead, 1, 0);
-                new DropPodAnimAllocationView(DropPod_SelectDamageAnim(weapon->Damage << 1, (int)weapon->Warhead, 0, &pos), &pos, 0, 1, 0x2600, DropPod_ZAdjust(pos), false);
+                DropPod_DamageArea(&pos, weapon->Damage << 1, foot, weapon->Warhead, 1, 0);
+                new DropPodAnimAllocationView(DropPod_SelectDamageAnim(weapon->Damage << 1, weapon->Warhead, 0, &pos), &pos, 0, 1, 0x2600, DropPod_ZAdjust(pos), false);
             }
         }
     }

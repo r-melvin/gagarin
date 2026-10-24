@@ -53,9 +53,9 @@ extern "C" double __cdecl FUN_004CAD50(double angle);
 // FUNCTION: GAMEMD 0x489280 (decl; reloc) - area damage (RET 0x10): where in ECX,
 // damage in EDX, then source, warhead, two flags.
 void DropPod_DamageArea(LocoCoord* where, int damage, DropPodFootView* source,
-                        int warhead, int flagA, int flagB);
+                        WarheadTypeClass* warhead, int flagA, int flagB);
 // FUNCTION: GAMEMD 0x48A4F0 (decl; reloc) - picks the impact anim (RET 8).
-void* DropPod_SelectDamageAnim(int damage, int warhead,
+void* DropPod_SelectDamageAnim(int damage, WarheadTypeClass* warhead,
                                                       int a, LocoCoord* where);
 // FUNCTION: GAMEMD 0x48ACE0 (decl; reloc) - returns the constant -15 (RET 0xC).
 int __stdcall DropPod_ZAdjust(LocoCoord where);

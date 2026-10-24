@@ -27248,11 +27248,11 @@
  {
   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475540",
-  "sym": "?ReadHouseType@CCINI_004753F0@@QAEHPBD0H@Z",
+  "sym": "?FUN_00475540@CCINIClass@@QAEHPBD0H@Z",
   "len": "0xc9",
-  "name": "ReadHouseType",
+  "name": "Canonical house type reader",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
@@ -98434,5 +98434,23 @@
   "name": "Network settings reader",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/platform/Ini.cpp",
+  "addr": "0x528F00",
+  "sym": "?FUN_00528F00@INIClass@@QAEIPBD0PBGPAGH@Z",
+  "len": "0x25d",
+  "name": "INI Unicode reader",
+  "status": "partial",
+  "pct": 0.5
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x6980C0",
+  "sym": "?FUN_006980C0@SessionClass@@QAEXXZ",
+  "len": "0xbe7",
+  "name": "Session initializer",
+  "status": "partial",
+  "pct": 51.4
  }
 ]

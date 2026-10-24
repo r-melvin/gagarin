@@ -37,6 +37,8 @@ public:
     int FUN_00474320(Straw* straw, bool withDigest, bool flag);
     int FUN_004757D0(const char* section, const char* key, int fallback); // GAMEMD 0x4757D0
     int WriteCCFile(FileClass* file, bool withDigest); // GAMEMD 0x474430
+    // Declaration: GAMEMD 0x475540 -- EAX result, three arguments, RET0C.
+    int FUN_00475540(const char* section, const char* key, int fallback);
     // Declaration: GAMEMD 0x475610 -- three arguments, RET0C.
     bool FUN_00475610(const char* section, const char* key, int value);
     // FUNCTION: GAMEMD 0x679F40  CCINIClass::Exists         (__thiscall)

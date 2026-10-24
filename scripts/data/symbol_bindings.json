@@ -3785,6 +3785,8 @@
  "?DrawLineEx@XSurface@@UAE_NPAURectangleStruct@@PAUPoint2D@@1I@Z": "0x007BA610",
  "?DrawRadar@Beacon_00431700@@QAEXPAUSurface_00431700@@URect_00431700@@H@Z": "0x00430650",
  "?DriveTrackEntries_007E7B28@@3PAUDriveTrackEntry@@A": "0x007E7B28",
+ "?DropPod_DamageArea@@YIXPAULocoCoord@@HPAUDropPodFootView@@PAVWarheadTypeClass@@HH@Z": "0x00489280",
+ "?DropPod_SelectDamageAnim@@YIPAXHPAVWarheadTypeClass@@HPAULocoCoord@@@Z": "0x0048A4F0",
  "?Dtor@ShapeBtnObj@@QAEXXZ": "0x0069DDC0",
  "?Dtor@SliderObj@@QAEXXZ": "0x006B1D00",
  "?EasyAINode@@3PAUNodeNameType@@A": "0x00AC11A4",

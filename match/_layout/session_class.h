@@ -20,6 +20,7 @@ class MultiMission;
 struct _iobuf;
 #include "node_name_type.h"
 class CCINIClass;
+struct DisplayScCellObject;
 
 // Embedded records: native69844B/698464/69847D; stride0x7C.
 // No original type name is attested; numeric placeholder retained.
@@ -92,7 +93,8 @@ struct SessionClass
     bool unknown_1FC1;
     char unknown_1FC2[0x2354 - 0x1FC2];
     CCFileClass unknown_2354;
-    char unknown_23C0[0x280C - 0x23C0];
+    int unknown_23C0;
+    char unknown_23C4[0x280C - 0x23C4];
     DynamicVectorClass<NodeNameType*> unknown_280C;
     DynamicVectorClass<NodeNameType*> unknown_2824;
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
@@ -123,7 +125,10 @@ struct SessionClass
     IPXAddressClass unknown_2994[8]; // native69C362/69C40A: stride0xC
     char unknown_29F4[0x2E28 - 0x29F4];
     char unknown_2E28[8][0x24]; // zero288bytes69BDBA; string record stride0x24
-    char unknown_2F48[0x2FF8 - 0x2F48];
+    bool unknown_2F48;
+    char unknown_2F49[0x2FF0 - 0x2F49];
+    int unknown_2FF0;
+    int unknown_2FF4;
     int unknown_2FF8[8]; // native69C095, scale4
     unsigned char unknown_3018;
     char unknown_3019[3];
@@ -140,7 +145,16 @@ struct SessionClass
     int unknown_3094; // native697DE9
     char unknown_3098[4];
     int unknown_309C; // native697DDF
-    char unknown_30A0[0x30D8 - 0x30A0];
+    char unknown_30A0[0x30AC - 0x30A0];
+    int unknown_30AC;
+    int unknown_30B0;
+    char unknown_30B4[0x30C4 - 0x30B4];
+    int unknown_30C4;
+    unsigned char unknown_30C8;
+    char unknown_30C9[3];
+    DisplayScCellObject* unknown_30CC; // existing MapClass lookup result view
+    int unknown_30D0;
+    int unknown_30D4;
     char InGameFrameActive;     // +0x30D8
 
     // Declaration: GAMEMD 0x69BAB0 (decl; reloc)
@@ -157,6 +171,8 @@ struct SessionClass
     void FUN_00699450();
     // Declaration: GAMEMD 0x6990A0 -- ECX receiver, no arguments, RET.
     void FUN_006990A0();
+    // Declaration: GAMEMD 0x6980C0 -- ECX receiver, no arguments, RET.
+    void FUN_006980C0();
     // Declaration: GAMEMD 0x697B70 -- EAX result, ECX receiver, RET.
     int FUN_00697B70();
     // Declaration: GAMEMD 0x69B600 -- boolAL, one int argument, RET4.
@@ -365,4 +381,26 @@ GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28B8) == 0x40);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC.Count) == 0x290C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28FC.Count) == 4);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23C0) == 0x23C0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23C0) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2F48) == 0x2F48);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2F48) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2FF0) == 0x2FF0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2FF0) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2FF4) == 0x2FF4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2FF4) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30AC) == 0x30AC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30AC) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30B0) == 0x30B0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B0) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30C4) == 0x30C4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30C4) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30C8) == 0x30C8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30C8) == 1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30CC) == 0x30CC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30CC) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30D0) == 0x30D0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30D0) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30D4) == 0x30D4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30D4) == 4);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

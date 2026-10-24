@@ -1,4 +1,7 @@
 #include "../_layout/ini_class.h"
+#include <stdio.h>
+#include <wchar.h>
+#include <string.h>
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Original translation unit Ini.CPP. The name is the source-file string at 0x825bdc
@@ -1200,6 +1203,30 @@ struct Obj_00528ED0 {
 void Obj_00528ED0::FUN_00528ED0(int a, int b, int c)
 {
     FUN_00528E00(FUN_007B5440(a), FUN_007B5440(b), FUN_007B7140(c));
+}
+
+// FUNCTION: GAMEMD 0x528F00
+unsigned int INIClass::FUN_00528F00(const char* section, const char* key,
+    const wchar_t* fallback, wchar_t* output, int maximum)
+{
+    char buffer[0x5000];
+    if (!FUN_00528A10(section, key, 0, buffer, sizeof(buffer))) {
+        wcsncpy(output, fallback, maximum);
+        return wcslen(output);
+    }
+
+    char* token = strtok(buffer, STR_00817F70);
+    wchar_t* cursor = output;
+    while (token != 0 && maximum != 0) {
+        unsigned int code;
+        sscanf(token, "%x", &code); // STRING: GAMEMD 0x825BD4
+        // Native stores only DX; sscanf failure is deliberately unchecked.
+        *cursor++ = (wchar_t)code;
+        token = strtok(0, STR_00817F70);
+        --maximum;
+    }
+    *cursor = 0;
+    return wcslen(output);
 }
 
 // ---------------------------------------------------------------------------

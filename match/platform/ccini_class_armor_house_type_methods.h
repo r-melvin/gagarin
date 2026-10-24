@@ -103,8 +103,6 @@ public:
     int  ReadLandType(const char* section, const char* key, int defaultValue);
     // FUNCTION: GAMEMD 0x475510
     bool WriteLandType(const char* section, const char* key, int value);
-    // FUNCTION: GAMEMD 0x475540
-    int  ReadHouseType(const char* section, const char* key, int defaultValue);
 };
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_ARMOR_HOUSE_TYPE_METHODS_H

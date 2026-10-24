@@ -87,12 +87,12 @@ bool CCINI_004753F0::WriteLandType(const char* section, const char* key, int val
 // then the registered house types by name, and finally registration of a
 // name never seen before, whose index is recovered by looking the new
 // record's pointer back up in the registry.
-int CCINI_004753F0::ReadHouseType(const char* section, const char* key,
+int CCINIClass::FUN_00475540(const char* section, const char* key,
                                   int defaultValue)
 {
     char buffer[128];
 
-    if (ReadString(section, key, STR_00889F64, buffer, sizeof(buffer))) {
+    if (FUN_00528A10(section, key, STR_00889F64, buffer, sizeof(buffer))) {
         int code = FUN_00510FB0(buffer);
 
         if (FUN_00510F60(code)) {
