@@ -14,7 +14,7 @@
 class FreeForAll : public MultiplayerGameMode
 {
 public:
-    FreeForAll(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+    FreeForAll(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
     virtual ~FreeForAll();
     virtual bool vf_4();
     virtual bool vf_5(Obj_007B66D0& a);

@@ -162,41 +162,4 @@ void Obj_0043A670::FUN_0043A6B0(int first, int second)
     field_20 = second;
 }
 
-// FUNCTION: GAMEMD 0x473A30
-//
-// The CCFileClass(const char*) constructor (0x4739F0, in
-// match/platform/ccfile_class.cpp) with the argument routed through 0x7B5440
-// first.
-// +0x68 is written twice - once with the other field initialisers and again
-// after the mapping call - and retail keeps both.
-//
-// MATCHED 100% (19/19). The historic 63.2% residual was two misplaced
-// instructions: retail loads the argument into ECX *before* the three field
-// stores and puts the second +0x68 write *after* the result is pushed, and we
-// did the opposite in both cases. The cause was the two `*(volatile int*)&`
-// casts on the +0x68 writes. They were added on the assumption that cl would
-// otherwise treat the first write as dead; it does not - the intervening
-// `FUN_007B5440` call may alias the member, so both stores survive as plain
-// assignments - and the volatile lvalues were what pinned the ECX load and the
-// second store on the wrong side of their neighbours. Deleting both qualifiers
-// is worth 63.2% -> 100%; nothing else in the body changed. Under the old
-// spelling, hoisting the argument into a named local and marking the other two
-// initialisers volatile as well both left it at 63.2%.
-Obj_004739F0* Obj_004739F0::FUN_00473A30(int value)
-{
-    FUN_0047AA30(this);
-    Member.FUN_0043AD00(0, 0);
 
-    Reset64 = 0;
-    Vtable  = &VT_007E16B0;
-
-    Reset68 = 0;
-
-    int mapped = FUN_007B5440(value);
-
-    Reset68 = 0;
-
-    FUN_0047AE10(mapped);
-
-    return this;
-}

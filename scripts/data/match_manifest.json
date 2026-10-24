@@ -9008,11 +9008,11 @@
  {
   "tu": "match/core/member_or_default_sweep.cpp",
   "addr": "0x7B5440",
-  "sym": "?FUN_007B5440@@YIPAXPAUDefaultingHolder@@@Z",
+  "sym": "?FUN_007B5440@Wstring@@QBEPBDXZ",
   "len": "0xc",
-  "name": "FUN_007b5440",
+  "name": "Wstring::FUN_007B5440",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/member_or_default_sweep.cpp",
@@ -11311,13 +11311,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc38_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473A30",
-  "sym": "?FUN_00473A30@Obj_004739F0@@QAEPAU1@H@Z",
+  "sym": "??0CCFileClass@@QAE@ABVWstring@@@Z",
   "len": "0x46",
-  "name": "Obj_004739F0::FUN_00473A30",
+  "name": "CCFileClass::CCFileClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/small_misc39_methods.cpp",
@@ -50859,11 +50859,11 @@
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4690",
-  "sym": "??0Obj_007B4620@@QAE@ABV0@@Z",
+  "sym": "??0Wstring@@QAE@ABV0@@Z",
   "len": "0x52",
-  "name": "Obj_007B4620::Obj_007B4620",
+  "name": "Wstring::Wstring",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/string_class_methods.cpp",
@@ -70134,11 +70134,11 @@
  {
   "tu": "match/network/mp_battle_class.cpp",
   "addr": "0x5C0DD0",
-  "sym": "??0MultiplayerBattle@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0MultiplayerBattle@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x34",
   "name": "MultiplayerBattle::MultiplayerBattle",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/mp_battle_class.cpp",
@@ -70422,7 +70422,7 @@
  {
   "tu": "match/network/MPCoop.cpp",
   "addr": "0x5C1470",
-  "sym": "??0MPCooperative@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0MPCooperative@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x1cf",
   "name": "MPCooperative::MPCooperative",
   "status": "partial",
@@ -70530,11 +70530,11 @@
  {
   "tu": "match/network/tu145_free_for_all.cpp",
   "addr": "0x5C5CE0",
-  "sym": "??0FreeForAll@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0FreeForAll@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x34",
   "name": "FreeForAll::FreeForAll",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/tu145_free_for_all.cpp",
@@ -70629,11 +70629,11 @@
  {
   "tu": "match/network/MPLayer.cpp",
   "addr": "0x5C6150",
-  "sym": "??0MultiplayerManBattle@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0MultiplayerManBattle@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x34",
   "name": "MultiplayerManBattle::MultiplayerManBattle",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/MPLayer.cpp",
@@ -70674,11 +70674,11 @@
  {
   "tu": "match/network/MPObserver.cpp",
   "addr": "0x5C93E0",
-  "sym": "??0Megawealth@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0Megawealth@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x34",
   "name": "Megawealth::Megawealth",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/MPObserver.cpp",
@@ -70836,11 +70836,11 @@
  {
   "tu": "match/network/MPSiege.cpp",
   "addr": "0x5CA630",
-  "sym": "??0MultiplayerSiege@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0MultiplayerSiege@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x34",
   "name": "MultiplayerSiege::MultiplayerSiege",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/MPSiege.cpp",
@@ -70998,11 +70998,11 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D5B60",
-  "sym": "??0MultiplayerGameMode@@QAE@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "??0MultiplayerGameMode@@QAE@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x1c0",
   "name": "MultiplayerGameMode::MultiplayerGameMode",
   "status": "partial",
-  "pct": 64.4
+  "pct": 8.9
  },
  {
   "tu": "match/network/Multiplayer.cpp",
@@ -93566,7 +93566,7 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8170",
-  "sym": "?vf_1@?$Initializer@VMultiplayerBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "?vf_1@?$Initializer@VMultiplayerBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x3b",
   "name": "Initializer<MultiplayerBattle>::vf_1",
   "status": "matched",
@@ -93575,7 +93575,7 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D81B0",
-  "sym": "?vf_1@?$Initializer@VMultiplayerManBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "?vf_1@?$Initializer@VMultiplayerManBattle@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x3b",
   "name": "Initializer<MultiplayerManBattle>::vf_1",
   "status": "matched",
@@ -93584,7 +93584,7 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D81F0",
-  "sym": "?vf_1@?$Initializer@VMultiplayerSiege@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "?vf_1@?$Initializer@VMultiplayerSiege@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x3b",
   "name": "Initializer<MultiplayerSiege>::vf_1",
   "status": "matched",
@@ -93593,7 +93593,7 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8230",
-  "sym": "?vf_1@?$Initializer@VUnholyAlliance@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "?vf_1@?$Initializer@VUnholyAlliance@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x3b",
   "name": "Initializer<UnholyAlliance>::vf_1",
   "status": "matched",
@@ -93602,7 +93602,7 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D8270",
-  "sym": "?vf_1@?$Initializer@VFreeForAll@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVObj_007B4620@@1_NH@Z",
+  "sym": "?vf_1@?$Initializer@VFreeForAll@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
   "len": "0x3b",
   "name": "Initializer<FreeForAll>::vf_1",
   "status": "matched",
@@ -98468,6 +98468,24 @@
   "sym": "?FUN_007B4710@Wstring@@QBE_NPBD@Z",
   "len": "0x63",
   "name": "Wstring::FUN_007B4710",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Multiplayer.cpp",
+  "addr": "0x5D82B0",
+  "sym": "?vf_1@?$Initializer@VMPCooperative@@@MultiplayerGameMode@@UAEPAV2@ABVObj_007B66D0@@0ABVWstring@@1_NH@Z",
+  "len": "0x3e",
+  "name": "Initializer<MPCooperative>::vf_1",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69AE10",
+  "sym": "?FUN_0069AE10@MultiMission@@QAE_NPAVWstring@@@Z",
+  "len": "0x5d",
+  "name": "MultiMission::FUN_0069AE10",
   "status": "matched",
   "pct": 100.0
  }

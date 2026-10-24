@@ -25,6 +25,7 @@
 //   FUNCTION: GAMEMD 0x43AD00   MemoryBuffer::MemoryBuffer (callee; reloc)
 
 #include "ccfile_class.h"
+#include "../core/string_class.h"
 
 // Standard placement new: returns the placement pointer unchanged. Used by
 // CCFileClass::Close to re-construct its MemoryBuffer in place (which is how
@@ -94,6 +95,15 @@ CCFileClass::CCFileClass(const char* pFileName) :
 {
     Availability = 0;
     CDFileClass::SetFileName(pFileName);
+}
+
+// FUNCTION: GAMEMD 0x473A30
+CCFileClass::CCFileClass(const Wstring& name) : Buffer(0, 0), Position(0)
+{
+    Availability = 0;
+    const char* filename = name.FUN_007B5440();
+    Availability = 0;
+    CDFileClass::SetFileName(filename);
 }
 
 // FUNCTION: GAMEMD 0x473A80

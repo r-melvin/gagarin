@@ -3,7 +3,7 @@
 //   Every entry point and default-object address below was read off the user's
 //   own retail gamemd.exe v1.001 with the local Ghidra CLI.
 //
-// Four twelve-byte "the member, or the fallback singleton" accessors.
+// Four twelve-byte accessors; 0x7B5440 now has its canonical Wstring owner.
 //
 // `MOV EAX,[ECX]; TEST EAX,EAX; JNZ +5; MOV EAX,<global>; RET`. The object's
 // first dword holds a pointer that may be null; when it is, the accessor hands
@@ -14,15 +14,11 @@
 // <global>; return p;` cl lays the constant load ahead of the test and the
 // bytes diverge from the first instruction.
 //
-// Reviewed in the batch forty-one pass
-// (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
-// functions. Converting would cost nothing in bytes — a member spelled
-// `__fastcall` keeps the receiver in ECX and the first explicit argument in
-// EDX — but `DefaultingHolder` is not one recovered class: it is four separate accessors in two widely separated pairs (0x7B54xx and 0x7B71xx), modelled against one
-// shared layout because the extraction proved the layout identical, not
-// because they are one type. Declaring them members of a single struct would
-// assert a class identity the evidence does not establish, which batch
-// forty-one explicitly rules out. Each receiver's true class is undetermined.
+// 0x7B5440 is the narrow Wstring getter: native CCFile construction at
+// 0x473A5C calls it on its string argument, supplied from mode member +0x2C
+// at 0x5D5C2D..0x5D5C35; that member is copied by 0x7B4690 and released
+// by 0x7B46F0. The other three receivers retain their placeholder model.
+// No common class identity is claimed for those remaining accessors.
 #ifndef GG_MATCH_CORE_MEMBER_OR_DEFAULT_SWEEP_H
 #define GG_MATCH_CORE_MEMBER_OR_DEFAULT_SWEEP_H
 
@@ -41,7 +37,6 @@ struct DefaultingHolder
 GG_STATIC_ASSERT(offsetof(DefaultingHolder, Object) == 0x0);
 
 void* FUN_007B5400(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5400
-void* FUN_007B5440(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5440
 void* FUN_007B7100(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7100
 void* FUN_007B7140(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7140
 

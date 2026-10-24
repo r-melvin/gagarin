@@ -14,7 +14,7 @@
 class MultiplayerManBattle : public MultiplayerGameMode
 {
 public:
-    MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+    MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
     virtual ~MultiplayerManBattle();
 };
 GG_STATIC_ASSERT(sizeof(MultiplayerManBattle) == sizeof(MultiplayerGameMode));
@@ -23,7 +23,7 @@ GG_STATIC_ASSERT(sizeof(MultiplayerManBattle) == sizeof(MultiplayerGameMode));
 class Megawealth : public MultiplayerGameMode
 {
 public:
-    Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+    Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
     virtual ~Megawealth();
     virtual bool vf_35();
 };

@@ -368,7 +368,7 @@ HeaderCoordInit DAT_00ABF480(128, 128, 0);
 // shifting the rest. Declaring the instantiation `extern template` reaches
 // 91.8% but also un-inlines the destructor's vector teardown (0x5C1640 drops
 // to 41.3%), so it is not kept; the decision is cl's inliner, not the source.
-MPCooperative::MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
+MPCooperative::MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)
     : MultiplayerGameMode(a, b, c, d, false, f)
 {
     unknown_40 = 0;

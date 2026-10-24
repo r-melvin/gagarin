@@ -637,7 +637,7 @@ void Vector_005C6120::FUN_005C6120()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5C6150
-MultiplayerManBattle::MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
+MultiplayerManBattle::MultiplayerManBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)
     : MultiplayerGameMode(a, b, c, d, e, f)
 {
 }

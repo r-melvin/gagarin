@@ -45,7 +45,7 @@ double DAT_00ABF930 = 1.0 / DAT_00ABF948;
 HeaderCoordInit DAT_00ABF938(128, 128, 0);
 
 // FUNCTION: GAMEMD 0x5C93E0
-Megawealth::Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
+Megawealth::Megawealth(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)
     : MultiplayerGameMode(a, b, c, d, e, f)
 {
 }

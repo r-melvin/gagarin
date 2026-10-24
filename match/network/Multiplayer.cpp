@@ -139,7 +139,7 @@ static inline ModeVector_005D5F30& Modes_005D5F30()
 class UnholyAlliance : public MultiplayerGameMode
 {
 public:
-    UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+    UnholyAlliance(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
 };
 
 // MultiplayerGameMode::InitializerBase and Initializer<T> are declared in the
@@ -157,9 +157,11 @@ public:
 // Initializer<UnholyAlliance>::vf_1
 // FUNCTION: GAMEMD 0x5D8270
 // Initializer<FreeForAll>::vf_1
+// FUNCTION: GAMEMD 0x5D82B0
+// Initializer<MPCooperative>::vf_1
 template <class T>
 MultiplayerGameMode* MultiplayerGameMode::Initializer<T>::vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                                                               const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                                               const Wstring& unknown_3, const Wstring& unknown_4,
                                                                bool unknown_5, int unknown_6)
 {
     return new T(name, description, unknown_3, unknown_4, unknown_5, unknown_6);
@@ -426,8 +428,8 @@ void __cdecl FUN_005D5A80()
 // (63.0) and a bool local (64.4).
 MultiplayerGameMode::MultiplayerGameMode(const Obj_007B66D0& name,
                                          const Obj_007B66D0& description,
-                                         const Obj_007B4620& unknown_3,
-                                         const Obj_007B4620& unknown_4,
+                                         const Wstring& unknown_3,
+                                         const Wstring& unknown_4,
                                          bool unknown_5, int unknown_6)
     : unknown_20(name),
       unknown_24(description),
@@ -1002,8 +1004,9 @@ void Obj_005D7CD0::FUN_005D7CD0()
 // The out-of-line copy 0x5D5D20, which the leaf destructors call, is
 // therefore not emitted here and stays a declaration.
 // The count is read through GetCount(): read directly, cl 8804 hoists the
-// load above the vptr store. Obj_007B4620 declares no destructor, so the two
-// copies are released through Destruct (0x7B46F0) in member order.
+// load above the vptr store. Native 0x5D7F63..0x5D7F7E releases the two
+// Wstring members in reverse declaration order before the wide strings;
+// automatic member destruction supplies these calls.
 inline MultiplayerGameMode::~MultiplayerGameMode()
 {
     for (int i = 0; i < Teams.GetCount(); i++) {
@@ -1015,8 +1018,6 @@ inline MultiplayerGameMode::~MultiplayerGameMode()
     if (unknown_38 != 0) {
         delete unknown_38;
     }
-    unknown_30.Destruct();
-    unknown_2C.Destruct();
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

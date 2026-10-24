@@ -61,7 +61,7 @@
 // These views remain verified under /O2 /DNDEBUG /Gy /GX.
 //
 // Retail RTTI names VectorClass<Wstring> and DynamicVectorClass<Wstring> (4-byte string-handle elements).
-// The element copy ctor 0x7B4690 (fastcall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
+// The element copy ctor 0x7B4690 (__thiscall), dtor 0x7B46F0, operator== 0x7B4780 and operator!= are out-of-line bodies bound by symbol map.
 
 #include "../_layout/session_class.h"
 #include "../platform/ccini_class_methods.h"
@@ -2349,6 +2349,22 @@ bool SessionClass::FUN_0069AE70()
     return _stricmp(unknown_6A8,
         // STRING: GAMEMD 0x0082BC30
         "RandMap.Sed") == 0;
+}
+
+extern const char STR_0083F668[]; // STRING: GAMEMD 0x83F668 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x69AE10
+bool MultiMission::FUN_0069AE10(Wstring* mode)
+{
+    if (unknown_1A4.Count == 0) {
+        return mode->FUN_007B4710(STR_0083F668);
+    }
+    for (int index = 0; index < unknown_1A4.Count; ++index) {
+        if (*mode == unknown_1A4.Items[index]) {
+            return true;
+        }
+    }
+    return false;
 }
 
 #include <windows.h>

@@ -14,7 +14,6 @@
 #include "../core/disk_id.h"
 #include "../core/type_list.h"
 #include "../core/string_class.h"
-class Obj_007B4620;
 class INIClass;
 class MultiMission
 {
@@ -45,7 +44,7 @@ public:
     // Declaration at 0x69ADF0
     bool FUN_0069ADF0();
     // Declaration at 0x69AE10 (declaration)
-    bool FUN_0069AE10(Obj_007B4620* mode);
+    bool FUN_0069AE10(Wstring* mode);
 };
 GG_STATIC_ASSERT(offsetof(MultiMission, unknown_000) == 0);
 GG_STATIC_ASSERT(sizeof(((MultiMission*)0)->unknown_000) == 0x58);
@@ -63,6 +62,10 @@ GG_STATIC_ASSERT(offsetof(MultiMission, unknown_188) == 0x188);
 GG_STATIC_ASSERT(offsetof(MultiMission, unknown_188) + offsetof(MultiMissionDiskList, Items) == 0x18C);
 GG_STATIC_ASSERT(offsetof(MultiMission, unknown_188) + offsetof(MultiMissionDiskList, Count) == 0x198);
 GG_STATIC_ASSERT(offsetof(MultiMission, unknown_1A4) == 0x1A4);
+typedef DynamicVectorClass<Wstring> MultiMissionModeList;
+GG_STATIC_ASSERT(offsetof(MultiMission, unknown_1A4) + offsetof(MultiMissionModeList, Items) == 0x1A8);
+GG_STATIC_ASSERT(offsetof(MultiMission, unknown_1A4) + offsetof(MultiMissionModeList, Count) == 0x1B4);
+GG_STATIC_ASSERT(sizeof(((MultiMissionModeList*)0)->Count) == 4);
 GG_STATIC_ASSERT(sizeof(MultiMission) == 0x1BC);
 GG_STATIC_ASSERT(sizeof(((MultiMission*)0)->unknown_180) == 4);
 GG_STATIC_ASSERT(sizeof(((MultiMission*)0)->unknown_184) == 4);

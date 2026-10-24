@@ -35,6 +35,7 @@
 // FileAccessMode is an unsigned-int flag enum in YRpp; modelled as a 4-byte
 // scalar here (the only property the matched code uses is its 32-bit width).
 class Obj_007B4620;
+class Wstring;
 typedef unsigned int FileAccessMode;
 
 // ---------------------------------------------------------------------------
@@ -203,6 +204,8 @@ public:
     // FUNCTION: GAMEMD 0x473A30 (decl; reloc) -- the name from a Obj_007B4620
     // (0x7B5440 on the argument), RET 4.
     CCFileClass(const Obj_007B4620& name);
+    // Declaration: GAMEMD 0x473A30 -- canonical narrow-string owner.
+    CCFileClass(const Wstring& name);
     // Inline: retail expands it in the deleting destructor 0x4019A0 and at
     // each stack instance (0x537BC0). The body clears Position, releases the
     // buffer through 0x43AE50, and ~CDFileClass then seats vtable 0x7E1668

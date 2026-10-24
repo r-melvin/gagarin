@@ -5,6 +5,7 @@
 // The four defaulting accessors, ordered ascending by retail address.
 
 #include "member_or_default_sweep.h"
+#include "string_class.h"
 
 // FUNCTION: GAMEMD 0x7B5400
 // GLOBAL: GAMEMD 0x889F64
@@ -19,12 +20,11 @@ void* FUN_007B5400(DefaultingHolder* self)
 
 // FUNCTION: GAMEMD 0x7B5440
 // GLOBAL: GAMEMD 0x889F64
-void* FUN_007B5440(DefaultingHolder* self)
+const char* Wstring::FUN_007B5440() const
 {
-    if (self->Object != 0) {
-        return self->Object;
+    if (unknown_00 != 0) {
+        return unknown_00;
     }
-
     return GLOBAL_00889F64;
 }
 

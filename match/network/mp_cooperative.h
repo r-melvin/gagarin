@@ -75,7 +75,7 @@ extern MPCoopScenario* MPCoopScenario_00A8B230;
 class MPCooperative : public MultiplayerGameMode
 {
 public:
-    MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f);
+    MPCooperative(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f);
     virtual ~MPCooperative();
 
     void FUN_005C21D0(struct HWND__* dialog, bool show);

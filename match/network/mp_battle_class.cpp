@@ -14,7 +14,7 @@
 Obj_007B66D0 FUN_007B7DD0(int index);
 
 // FUNCTION: GAMEMD 0x5C0DD0
-MultiplayerBattle::MultiplayerBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Obj_007B4620& c, const Obj_007B4620& d, bool e, int f)
+MultiplayerBattle::MultiplayerBattle(const Obj_007B66D0& a, const Obj_007B66D0& b, const Wstring& c, const Wstring& d, bool e, int f)
     : MultiplayerGameMode(a, b, c, d, e, f)
 {
 }

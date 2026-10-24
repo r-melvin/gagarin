@@ -81,7 +81,7 @@ TuningCoordInit DAT_00ABFA60(128, 128, 0);
 
 // FUNCTION: GAMEMD 0x5CA630
 MultiplayerSiege::MultiplayerSiege(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                                   const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                   const Wstring& unknown_3, const Wstring& unknown_4,
                                    bool unknown_5, int unknown_6)
     : MultiplayerGameMode(name, description, unknown_3, unknown_4, unknown_5, unknown_6)
 {

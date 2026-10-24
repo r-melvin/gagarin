@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Obj_007B4620 bodies, ascending by retail address. The class and the
+// Canonical Wstring and remaining legacy bodies, ascending by retail address. The class and the
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
@@ -22,12 +22,12 @@ Wstring::Wstring(const char* text)
 }
 
 // FUNCTION: GAMEMD 0x7B4690
-Obj_007B4620::Obj_007B4620(const Obj_007B4620& other)
+Wstring::Wstring(const Wstring& other)
 {
-    Str = 0;
-    if (other.Str != 0) {
-        Str = new char[strlen(other.Str) + 1];
-        strcpy(Str, other.Str);
+    unknown_00 = 0;
+    if (other.unknown_00 != 0) {
+        unknown_00 = new char[strlen(other.unknown_00) + 1];
+        strcpy(unknown_00, other.unknown_00);
     }
 }
 

@@ -16,7 +16,7 @@
 //   0x5D5D20: sizeof 0x40 (every concrete mode is allocated with PUSH 0x40).
 //   +0x04 byte (0); +0x08 the team vector (vptr 0x7EEE34, CapacityIncrement
 //   10); +0x20/+0x24 Obj_007B66D0 copies of arguments 1 and 2 (0x7B6720,
-//   released by 0x7B6760); +0x28 argument 6; +0x2C/+0x30 Obj_007B4620 copies
+//   released by 0x7B6760); +0x28 argument 6; +0x2C/+0x30 Wstring copies
 //   of arguments 3 and 4 (0x7B4690, released by 0x7B46F0); +0x34 the byte
 //   argument 5; +0x38 the CCINIClass the constructor allocates (PUSH 0x58,
 //   vptr 0x7E1AF4) and loads from the file named by +0x2C; +0x3C..+0x3F the
@@ -58,7 +58,7 @@ public:
     void FUN_005D6D80();
     // FUNCTION: GAMEMD 0x5D5B60 (decl; reloc) -- six stacked arguments, RET 0x18.
     MultiplayerGameMode(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                        const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                        const Wstring& unknown_3, const Wstring& unknown_4,
                         bool unknown_5, int unknown_6);
     // FUNCTION: GAMEMD 0x5D5D20 (decl; reloc) -- slot 0 through ??_G 0x5D7F20.
     virtual ~MultiplayerGameMode();
@@ -125,7 +125,7 @@ public:
         virtual ~InitializerBase() {}
         // Slot 1: allocates and constructs one mode from the six stacked arguments.
         virtual MultiplayerGameMode* vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                                          const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                          const Wstring& unknown_3, const Wstring& unknown_4,
                                           bool unknown_5, int unknown_6) = 0;
     };
 
@@ -135,7 +135,7 @@ public:
     public:
         Initializer() {}
         virtual MultiplayerGameMode* vf_1(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                                          const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                                          const Wstring& unknown_3, const Wstring& unknown_4,
                                           bool unknown_5, int unknown_6);
     };
 
@@ -147,8 +147,8 @@ public:
     Obj_007B66D0 unknown_20;                       // +0x20
     Obj_007B66D0 unknown_24;                       // +0x24
     int   unknown_28;                                 // +0x28  the identifier Get() compares
-    Obj_007B4620 unknown_2C;                           // +0x2C  the INI file name
-    Obj_007B4620 unknown_30;                           // +0x30
+    Wstring unknown_2C;                           // +0x2C  the INI file name
+    Wstring unknown_30;                           // +0x30
     bool  unknown_34;                                 // +0x34  returned by slot 15
     CCINIClass* unknown_38;                           // +0x38  owned
     bool  AlliesAllowed;                              // +0x3C
@@ -175,7 +175,7 @@ class MultiplayerSiege : public MultiplayerGameMode
 public:
     // FUNCTION: GAMEMD 0x5CA630 (declaration)
     MultiplayerSiege(const Obj_007B66D0& name, const Obj_007B66D0& description,
-                     const Obj_007B4620& unknown_3, const Obj_007B4620& unknown_4,
+                     const Wstring& unknown_3, const Wstring& unknown_4,
                      bool unknown_5, int unknown_6);
     // FUNCTION: GAMEMD 0x5CA670 (declaration; slot 0 through ??_G 0x5CABD0)
     virtual ~MultiplayerSiege();
@@ -190,4 +190,6 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(MultiplayerSiege) == 0x40);
 
+GG_STATIC_ASSERT(sizeof(((MultiplayerGameMode*)0)->unknown_2C) == 4);
+GG_STATIC_ASSERT(sizeof(((MultiplayerGameMode*)0)->unknown_30) == 4);
 #endif  // GG_MATCH_NETWORK_MULTIPLAYER_GAME_MODE_H

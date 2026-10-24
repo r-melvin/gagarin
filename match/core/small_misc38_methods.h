@@ -151,46 +151,4 @@ void FUN_0043A670(Obj_0043A670* self);
 // __thiscall member rather than the sibling's __fastcall free function.
 
 
-// ---------------------------------------------------------------------------
-// 0x473A30 — a CCFileClass constructor (vtable 0x7E16B0): base, then the
-// member at +0x58, then three fields and the vtable, then one more initialiser
-// that takes the mapped argument. Its sibling 0x4739F0 is the real
-// CCFileClass(const char*) in match/platform/ccfile_class.cpp.
-// ---------------------------------------------------------------------------
-extern char VT_007E16B0;   // VTABLE: GAMEMD 0x7E16B0
-
-// FUNCTION: GAMEMD 0x47AA30 — the base constructor.
-void FUN_0047AA30(void* self);
-// The +0x58 member's constructor takes both arguments on the stack (retail
-// pushes two zeroes), so it is a __thiscall member rather than a __fastcall
-// free function - the free form would put the second argument in EDX.
-struct Member_004739F0
-{
-    char _pad000[0x64 - 0x58];
-
-    // FUNCTION: GAMEMD 0x43AD00
-    void FUN_0043AD00(int a, int b);
-};
-
-// FUNCTION: GAMEMD 0x7B5440 — maps the argument, __fastcall (retail leaves it
-// in ECX from `MOV ECX,[ESP+8]` and pushes nothing).
-int FUN_007B5440(int value);
-
-struct Obj_004739F0
-{
-    char* Vtable;   // +0x0000
-    char  _pad004[0x58 - 0x04];
-    Member_004739F0 Member;      // +0x0058
-    int   Reset64;  // +0x0064
-    int   Reset68;  // +0x0068
-
-    // FUNCTION: GAMEMD 0x47AE10
-    void FUN_0047AE10(int value);
-
-    // FUNCTION: GAMEMD 0x473A30
-    Obj_004739F0* FUN_00473A30(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_004739F0, Reset64) == 0x64);
-GG_STATIC_ASSERT(offsetof(Obj_004739F0, Reset68) == 0x68);
-
 #endif  // GG_MATCH_CORE_SMALL_MISC38_METHODS_H
