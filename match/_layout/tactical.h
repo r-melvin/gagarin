@@ -37,6 +37,9 @@ public:
     void FUN_006D2DE0(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D7560(const RectangleStruct* rectangle, const RectangleStruct* clip);
     void FUN_006D7F20(const CellStruct* coordinate, const RectangleStruct* clip);
+    // Declarations: native6D3040 RET12 and renderer6D7C00 RET8.
+    void FUN_006D3040(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
+    void FUN_006D7C00(const RectangleStruct* rectangle, const RectangleStruct* clip);
     Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20

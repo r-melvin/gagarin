@@ -4853,6 +4853,7 @@
  "?FUN_006D6190@DisplayCmdTactical@@QAEPAUPoint2D@@PAU2@@Z": "0x006D6190",
  "?FUN_006D6590@DisplayCmdTactical@@QAEPAUCellStruct@@PAU2@PBUPoint2D@@@Z": "0x006D6590",
  "?FUN_006D7560@Tactical@@QAEXPBURectangleStruct@@0@Z": "0x006D7560",
+ "?FUN_006D7C00@Tactical@@QAEXPBURectangleStruct@@0@Z": "0x006D7C00",
  "?FUN_006D7F20@Tactical@@QAEXPBUCellStruct@@PBURectangleStruct@@@Z": "0x006D7F20",
  "?FUN_006D8530@DisplayTactical@@QAEXHH@Z": "0x006D8530",
  "?FUN_006D8700@DisplayProjector@@QAEHPBUCellStruct@@H@Z": "0x006D8700",
