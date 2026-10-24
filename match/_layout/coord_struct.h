@@ -21,6 +21,9 @@ struct CoordStruct
     CoordStruct* FUN_0041C230(int x, int y, int z);
     // FUNCTION: GAMEMD 0x41C380 (decl; reloc) -- the length of the vector.
     int FUN_0041C380();
+    // FUNCTION: GAMEMD 0x437090 -- three-component writer, EAX=this, RET12.
+    // Raw ABI spelling preserves aggregate return behavior in existing users.
+    CoordStruct* FUN_00437090(int x, int y, int z);
     // FUNCTION: GAMEMD 0x437160 (decl; reloc) -- writes this minus `rhs` into
     // `out` and returns it (__thiscall, RET 8).
     CoordStruct* FUN_00437160(CoordStruct* out, const CoordStruct* rhs);

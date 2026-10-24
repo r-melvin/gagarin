@@ -55,6 +55,7 @@ public:
     void FUN_006D3040(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     // First stack argument is unused; its original type is unproved (RET8).
     void FUN_006D8260(void* unused, const RectangleStruct* rectangle);
+    int FUN_006D8700(const CellStruct* coordinate, int layer); // RET8; layer low byte
     void FUN_006D7C00(const RectangleStruct* rectangle, const RectangleStruct* clip);
     // Declarations: native dispatchers6D3290/6D3470 RET12; helper6D6D10 RET4.
     void FUN_006D3290(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);

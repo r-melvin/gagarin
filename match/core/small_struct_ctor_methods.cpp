@@ -6,6 +6,7 @@
 // retail address.
 
 #include "small_struct_ctor_methods.h"
+#include "../_layout/coord_struct.h"
 
 // Both writers: retail interleaves load-store-load-store, which is what the
 // volatile declarations give (the stream threads read these words; see the
@@ -64,11 +65,12 @@ Obj_004355B0::Obj_004355B0(unsigned char a, unsigned char b, unsigned char c)
 }
 
 // FUNCTION: GAMEMD 0x437090
-Obj_00437000::Obj_00437000(int a, int b, int c)
+CoordStruct* CoordStruct::FUN_00437090(int a, int b, int c)
 {
-    unknown_00 = a;
-    unknown_04 = b;
-    unknown_08 = c;
+    X = a;
+    Y = b;
+    Z = c;
+    return this;
 }
 
 // FUNCTION: GAMEMD 0x43A0B0

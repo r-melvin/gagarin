@@ -7,7 +7,6 @@
 #include "../core/vector_class_operations.h"
 #include "../_layout/layer_class.h"
 #include "../core/rules_class.h"
-#include "small_struct_ctor_methods.h"
 #include "../renderer/quaternion_matrix_methods.h"
 
 // GLOBAL: GAMEMD 0x89C510 -- a CoordStruct used as the initial value of both light positions.
@@ -42,22 +41,24 @@ BuildingLightClass::BuildingLightClass(BuildingClass* sourceBuilding)
     DirStruct heading;
     double angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
                  * DAT_007E2810;
-    Obj_00437000 first((int)(FUN_004CAD00(angle) * zOffset + location.Y),
+    CoordStruct first;
+    first.FUN_00437090((int)(FUN_004CAD00(angle) * zOffset + location.Y),
                        (int)(location.X - FUN_004CACB0(angle) * zOffset), location.Z);
     CoordStruct coordinate;
-    coordinate.X = first.unknown_00;
-    coordinate.Y = first.unknown_04;
-    coordinate.Z = first.unknown_08;
+    coordinate.X = first.X;
+    coordinate.Y = first.Y;
+    coordinate.Z = first.Z;
     unknown_C4 = coordinate;
 
     int drawOffset = -RulesInstance->unknown_788;
     angle = (double)((short)sourceBuilding->PrimaryFacing.FUN_004C93D0(&heading)->Raw - 0x3FFF)
           * DAT_007E2810;
-    Obj_00437000 second((int)(FUN_004CAD00(angle) * drawOffset + location.Y),
+    CoordStruct second;
+    second.FUN_00437090((int)(FUN_004CAD00(angle) * drawOffset + location.Y),
                         (int)(location.X - FUN_004CACB0(angle) * drawOffset), location.Z);
-    unknown_B8.X = second.unknown_00;
-    unknown_B8.Y = second.unknown_04;
-    unknown_B8.Z = second.unknown_08;
+    unknown_B8.X = second.X;
+    unknown_B8.Y = second.Y;
+    unknown_B8.Z = second.Z;
 
     vf_109(coordinate);
 

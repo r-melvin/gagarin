@@ -7,11 +7,9 @@
 //
 // Small value-type constructors and paired field writers.
 //
-// Three of these (0x41C230, 0x437090, 0x43A0B0) are byte-identical three-int
-// constructors on three different types. They are written out longhand rather
-// than shared or macro-generated - the family rule in the methodology exists
-// because sibling functions that looked interchangeable have already been
-// caught diverging.
+// Entries41C230,437090 and43A0B0 have identical three-DWORD stores.
+// Entry437090 now uses the shared CoordStruct raw writer interface; the
+// remaining address-scoped receiver declarations retain provisional types.
 //
 // Argument widths come off the loads, not the RET: a `short` parameter still
 // occupies four bytes of stack, so `MOV DX,[ESP+4]` with `RET 4` is one short
@@ -93,12 +91,6 @@ struct Obj_0041C200
     int unknown_00, unknown_04, unknown_08;
     // FUNCTION: GAMEMD 0x41C230
     Obj_0041C200(int a, int b, int c);
-};
-struct Obj_00437000
-{
-    int unknown_00, unknown_04, unknown_08;
-    // FUNCTION: GAMEMD 0x437090
-    Obj_00437000(int a, int b, int c);
 };
 struct Obj_0043A000
 {

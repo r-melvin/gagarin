@@ -12339,9 +12339,9 @@
  {
   "tu": "match/core/small_struct_ctor_methods.cpp",
   "addr": "0x437090",
-  "sym": "??0Obj_00437000@@QAE@HHH@Z",
+  "sym": "?FUN_00437090@CoordStruct@@QAEPAU1@HHH@Z",
   "len": "0x19",
-  "name": "Obj_00437000::ctor",
+  "name": "CoordStruct::FUN_00437090",
   "status": "matched",
   "pct": 100.0
  },
@@ -88040,8 +88040,8 @@
   "len": "0x330",
   "name": "BuildingLightClass::BuildingLightClass",
   "status": "partial",
-  "pct": 10.4,
-  "note": "Aligned diff_retail pct. Multiset 231 vs 221 instructions: retail stores the four vptrs after the member stores (compiler emits them first), uses FIADD where the compiled code widens through FLD/FADD, and indexes the list search differently. Retail virtual call to slot 109 and the base ObjectClass ctor 0x5F3900 are reproduced."
+  "pct": 14.7,
+  "note": "Canonical CoordStruct writer at437090 replaces placeholder receiver; partial14.7,231native222compiled instructions. Retail FIADD/member-vptr ordering and list-search differences remain."
  },
  {
   "tu": "match/core/building_light_class_draw.cpp",
@@ -98848,5 +98848,14 @@
   "name": "Tactical::FUN_006D7F20",
   "status": "partial",
   "pct": 2.4
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D8700",
+  "sym": "?FUN_006D8700@Tactical@@QAEHPBUCellStruct@@H@Z",
+  "len": "0x3dd",
+  "name": "Tactical::FUN_006D8700",
+  "status": "partial",
+  "pct": 25.5
  }
 ]

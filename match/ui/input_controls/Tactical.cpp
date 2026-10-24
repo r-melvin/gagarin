@@ -3005,6 +3005,64 @@ GG_STATIC_ASSERT(offsetof(Cell, X) == 0);
 GG_STATIC_ASSERT(offsetof(Cell, Y) == 2);
 GG_STATIC_ASSERT(sizeof(Cell) == 4);
 
+// GLOBAL: GAMEMD 0x7F4194
+extern const signed char DAT_007F4194[256];
+
+// Native receives `this` in ECX but does not read it. Two stack arguments,
+// RET8. The existing display owner declares an int return; caller 4801F0
+// consumes the low byte. The lookup path explicitly sign-extends a byte.
+// FUNCTION: GAMEMD 0x6D8700
+int Tactical::FUN_006D8700(const CellStruct* coordinate, int layer)
+{
+    CellClass* center = MapInstance.FUN_005657A0(coordinate);
+    int absent = -1;
+    unsigned int mask = 0;
+    Cell neighbor;
+    // Native tests the low byte of the stack argument at6D8718.
+    if (static_cast<unsigned char>(layer)) {
+        if ((center->Flags & 3) == 0) absent = -2;
+        if ((center->Flags & 2) == 0) return absent;
+
+        neighbor = Cell(coordinate->X - 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x40;
+        neighbor = Cell(coordinate->X, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x80;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x01;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x20;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x02;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x10;
+        neighbor = Cell(coordinate->X, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x08;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->Flags & 2)) mask |= 0x04;
+    } else {
+        if ((center->AltFlags & 0x18) == 0) absent = -2;
+        if ((center->AltFlags & 8) == 0) return absent;
+
+        neighbor = Cell(coordinate->X - 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x40;
+        neighbor = Cell(coordinate->X, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x80;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y - 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x01;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x20;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x02;
+        neighbor = Cell(coordinate->X - 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x10;
+        neighbor = Cell(coordinate->X, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x08;
+        neighbor = Cell(coordinate->X + 1, coordinate->Y + 1);
+        if (!(MapInstance.FUN_005657A0(&neighbor)->AltFlags & 8)) mask |= 0x04;
+    }
+    return DAT_007F4194[mask];
+}
+
 // FUNCTION: GAMEMD 0x6D8AE0
 bool Tactical::FUN_006D8AE0(const Cell* cell) const
 {
