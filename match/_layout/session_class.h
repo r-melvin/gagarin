@@ -63,7 +63,11 @@ struct SessionClass
     SessionProfile_00697F10 unknown_208;
     SessionProfile_00697F10 unknown_284;
     int unknown_300; // native698F19 DWORD
-    char unknown_304[0x314 - 0x304];
+    char unknown_304[4];
+    bool unknown_308;
+    char unknown_309[3];
+    int unknown_30C;
+    char unknown_310[4];
     int unknown_314; // native698D02 live player count
     int unknown_318; // native698E27 DWORD
     char unknown_31C[0x680 - 0x31C];
@@ -95,7 +99,18 @@ struct SessionClass
     DynamicVectorClass<NodeNameType*> unknown_283C;
     char unknown_2854[4];
     NodeNameType* unknown_2858[8]; // native69C290/69C362
-    char unknown_2878[0x28F8 - 0x2878];
+    char unknown_2878[0x2884 - 0x2878];
+    int unknown_2884;
+    int unknown_2888;
+    int unknown_288C;
+    int unknown_2890;
+    int unknown_2894;
+    int unknown_2898;
+    int unknown_289C;
+    int unknown_28A0;
+    int unknown_28A4;
+    char unknown_28A8[0x10]; // storage extent; logical capacity unknown
+    char unknown_28B8[0x40]; // storage extent; logical capacity unknown
     unsigned char unknown_28F8; // sender byte read at69B0CF fromA8DB30
     char unknown_28F9[3];
     DynamicVectorClass<PhoneEntryClass*> unknown_28FC;
@@ -140,6 +155,8 @@ struct SessionClass
     void FUN_00699980();
     // Declaration: GAMEMD 0x699450 -- ECX Session, no stack arguments.
     void FUN_00699450();
+    // Declaration: GAMEMD 0x6990A0 -- ECX receiver, no arguments, RET.
+    void FUN_006990A0();
     // Declaration: GAMEMD 0x697B70 -- EAX result, ECX receiver, RET.
     int FUN_00697B70();
     // Declaration: GAMEMD 0x69B600 -- boolAL, one int argument, RET4.
@@ -319,4 +336,33 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.IsAllocated) == 0x2939);
 
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914.Count) == 0x2924);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2914.Count) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_308) == 0x308);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_308) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30C) == 0x30C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2884) == 0x2884);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2884) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2888) == 0x2888);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2888) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_288C) == 0x288C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_288C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2890) == 0x2890);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2890) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2894) == 0x2894);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2894) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2898) == 0x2898);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2898) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_289C) == 0x289C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_289C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28A0) == 0x28A0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28A0) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28A4) == 0x28A4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28A4) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28A8) == 0x28A8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28A8) == 0x10);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28B8) == 0x28B8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28B8) == 0x40);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC.Count) == 0x290C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28FC.Count) == 4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_04) == 4);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

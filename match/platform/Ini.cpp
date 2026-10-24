@@ -1,3 +1,4 @@
+#include "../_layout/ini_class.h"
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | private-ref-cross-check
 //   Original translation unit Ini.CPP. The name is the source-file string at 0x825bdc
@@ -1166,7 +1167,7 @@ void Obj_005289E0::FUN_005289E0(int a, int b, int c)
 // the false result (`MOV [EBP],BL`, 88 5D 00), which is the same bytes
 // minus one and shifts every later jump target. The loop is a `while` with
 // `string++` as its last statement.
-bool CCINI_00528E00::WriteUnicodeString(const char* section, const char* key,
+bool INIClass::FUN_00528E00(const char* section, const char* key,
                                         const wchar_t* string)
 {
     bool result = false;

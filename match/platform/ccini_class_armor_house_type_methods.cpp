@@ -4,6 +4,7 @@
 //   0x4754B0, 0x475510, 0x475540 and 0x475610.
 
 #include "ccini_class_armor_house_type_methods.h"
+#include "ccini_class_methods.h"
 
 // Find a house-type record's index in the registry. Retail inlined this and
 // held the record pointer in the return register across the search, which
@@ -118,7 +119,7 @@ int CCINI_004753F0::ReadHouseType(const char* section, const char* key,
 // overwritten by whichever arm applies; the two "<random>" arms are spelled
 // separately because retail emits the copy twice, which a disjunction would
 // have folded into one block.
-bool CCINI_004753F0::WriteHouseType(const char* section, const char* key, int value)
+bool CCINIClass::FUN_00475610(const char* section, const char* key, int value)
 {
     char name[128];
 

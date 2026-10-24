@@ -1093,6 +1093,96 @@ void SessionProfile_00697F10::FUN_00698F90(CCINIClass* ini, const char* section)
     }
 }
 
+extern const char STR_00817334[]; // STRING: GAMEMD 0x00817334 (decl; reloc)
+extern const char STR_0081898C[]; // STRING: GAMEMD 0x0081898C (decl; reloc)
+extern const char STR_0081B138[]; // STRING: GAMEMD 0x0081B138 (decl; reloc)
+extern const char STR_0083F050[]; // STRING: GAMEMD 0x0083F050 (decl; reloc)
+extern const char STR_0083F05C[]; // STRING: GAMEMD 0x0083F05C (decl; reloc)
+extern const char STR_0083F068[]; // STRING: GAMEMD 0x0083F068 (decl; reloc)
+extern const char STR_0083F078[]; // STRING: GAMEMD 0x0083F078 (decl; reloc)
+extern const char STR_0083F08C[]; // STRING: GAMEMD 0x0083F08C (decl; reloc)
+extern const char STR_0083F09C[]; // STRING: GAMEMD 0x0083F09C (decl; reloc)
+extern const char STR_0083F0A8[]; // STRING: GAMEMD 0x0083F0A8 (decl; reloc)
+extern const char STR_0083F0B8[]; // STRING: GAMEMD 0x0083F0B8 (decl; reloc)
+extern const char STR_0083F0C4[]; // STRING: GAMEMD 0x0083F0C4 (decl; reloc)
+extern const char STR_0083F0CC[]; // STRING: GAMEMD 0x0083F0CC (decl; reloc)
+extern const char STR_0083F0D0[]; // STRING: GAMEMD 0x0083F0D0 (decl; reloc)
+extern const char STR_0083F0D8[]; // STRING: GAMEMD 0x0083F0D8 (decl; reloc)
+extern const char STR_0083F0E8[]; // STRING: GAMEMD 0x0083F0E8 (decl; reloc)
+extern const char STR_0083F0F4[]; // STRING: GAMEMD 0x0083F0F4 (decl; reloc)
+extern const char STR_0083F100[]; // STRING: GAMEMD 0x0083F100 (decl; reloc)
+extern const char STR_0083F104[]; // STRING: GAMEMD 0x0083F104 (decl; reloc)
+extern const char STR_0083F148[]; // STRING: GAMEMD 0x0083F148 (decl; reloc)
+extern const char STR_0083F150[]; // STRING: GAMEMD 0x0083F150 (decl; reloc)
+extern const char STR_0083F158[]; // STRING: GAMEMD 0x0083F158 (decl; reloc)
+extern const char STR_0083F160[]; // STRING: GAMEMD 0x0083F160 (decl; reloc)
+extern const char STR_0083F170[]; // STRING: GAMEMD 0x0083F170 (decl; reloc)
+extern const char STR_0083F190[]; // STRING: GAMEMD 0x0083F190 (decl; reloc)
+extern const char STR_0083F384[]; // STRING: GAMEMD 0x0083F384 (decl; reloc)
+// GLOBAL: GAMEMD 0x83ECFC
+extern const char* DAT_0083ECFC[];
+// Declaration: GAMEMD 0x735120 -- fastcall ECX narrow input, EAX wide result.
+extern "C" wchar_t* __fastcall Widen_00735120(const char* text);
+
+// FUNCTION: GAMEMD 0x6990A0
+void SessionClass::FUN_006990A0()
+{
+    RawFileClass file(STR_00826444);
+    DAT_008870C0.WriteInteger(STR_0082642C, STR_0083F190, unknown_2884, 0);
+    DAT_008870C0.WriteBool(STR_0082642C, STR_0083F170, unknown_308);
+    DAT_008870C0.WriteInteger(STR_0082642C, STR_0083F160, unknown_30C, 0);
+    DAT_008870C0.FUN_00528E00(STR_0082642C, STR_0083F158,
+                              Widen_00735120(unknown_148));
+    DAT_008870C0.WriteInteger(STR_0082642C, STR_0081B138, unknown_17C, 0);
+    DAT_008870C0.WriteInteger(STR_0082642C, STR_0083F150, unknown_180, 0);
+    DAT_008870C0.FUN_00475610(STR_0082642C, STR_00817334, unknown_184);
+    DAT_008870C0.WriteInteger(STR_0082642C, STR_0083F148, unknown_188, 0);
+    if (unknown_04)
+        DAT_008870C0.WriteInteger(STR_0082642C, STR_0083EFD0, unknown_04->unknown_28, 0);
+    else
+        DAT_008870C0.WriteInteger(STR_0082642C, STR_0083EFD0, 0, 0);
+    unknown_18C.FUN_00698F90(&DAT_008870C0, STR_0083F104);
+    unknown_208.FUN_00698F90(&DAT_008870C0, STR_0083F100);
+    unknown_284.FUN_00698F90(&DAT_008870C0, STR_0083F0F4);
+
+    DAT_008870C0.Clear(STR_0083F0D8, 0);
+    DAT_008870C0.WriteString(STR_0083F0D8, STR_0083F068, unknown_28A8);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F078, unknown_289C, 0);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F08C, unknown_2898, 0);
+    DAT_008870C0.WriteString(STR_0083F0D8, STR_0083F09C, DAT_0083ECFC[unknown_2894]);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F0C4, unknown_2890, 0);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F0CC, unknown_288C, 0);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F0D0, unknown_2888, 1);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F0B8, unknown_28A0, 0);
+    DAT_008870C0.WriteInteger(STR_0083F0D8, STR_0083F0A8, unknown_28A4, 0);
+    DAT_008870C0.WriteString(STR_0083F0D8, STR_0083F0E8, unknown_28B8);
+
+    DAT_008870C0.Clear(STR_0083F05C, 0);
+    char key[12];
+    for (int index = 0; index < unknown_2914.Count; ++index) {
+        wsprintfA(key, STR_0081898C, index);
+        // Items reload after the formatting callback, Count after WriteString.
+        DAT_008870C0.WriteString(STR_0083F05C, key, unknown_2914.Items[index]);
+    }
+    DAT_008870C0.Clear(STR_0083F050, 0);
+    // Snapshot count once, reverse scan. Pointer reloaded each iteration,
+    // then held across the two formatting calls as native EAX snapshot.
+    for (int phoneIndex = unknown_28FC.Count - 1; phoneIndex >= 0; --phoneIndex) {
+        PhoneEntryClass* entry = unknown_28FC.Items[phoneIndex];
+        char line[128];
+        wsprintfA(line, STR_0083F384,
+                  entry->unknown_70, entry->unknown_9A,
+                  entry->unknown_00, entry->unknown_04, entry->unknown_08,
+                  entry->unknown_18, entry->unknown_1C,
+                  DAT_0083ECFC[entry->unknown_0C], entry->unknown_10,
+                  entry->unknown_14, entry->unknown_20);
+        wsprintfA(key, STR_0081898C, phoneIndex);
+        DAT_008870C0.WriteString(STR_0083F050, key, line);
+    }
+    DAT_008870C0.WriteCCFile(&file, false);
+    // Natural RawFileClass destructor65CA00 follows; no explicit close/new INI.
+}
+
 // FUNCTION: GAMEMD 0x699450
 void SessionClass::FUN_00699450()
 {

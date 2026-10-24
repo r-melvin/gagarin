@@ -32,14 +32,6 @@ extern "C" unsigned int __cdecl strlen(const char* s);
 // STRING: GAMEMD 0x817F70  ","
 extern const char STR_00817F70[];
 
-struct CCINI_00528E00
-{
-    // FUNCTION: GAMEMD 0x528660 (decl; reloc) — INIClass::WriteString.
-    bool WriteString(const char* section, const char* key, const char* value);
 
-    // FUNCTION: GAMEMD 0x528E00 — CCINIClass::WriteUnicodeString.
-    bool WriteUnicodeString(const char* section, const char* key,
-                            const wchar_t* string);
-};
 
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_UNICODE_METHODS_H

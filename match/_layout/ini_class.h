@@ -57,6 +57,8 @@ public:
                      const Wstring* fallback, Wstring* output);
     // Declaration: GAMEMD 0x529160 -- four stack arguments, RET10; UTF16 output.
     int FUN_00529160(const char* section, const char* key, wchar_t* output, int size);
+    // Declaration: GAMEMD 0x528E00 -- boolAL, three arguments, RET0C.
+    bool FUN_00528E00(const char* section, const char* key, const wchar_t* value);
     // FUNCTION: GAMEMD 0x529560
     bool WriteBool(const char* section, const char* key, bool value);
     // FUNCTION: GAMEMD 0x5295F0 (decl; reloc) -- read a bool, RET 0xC.

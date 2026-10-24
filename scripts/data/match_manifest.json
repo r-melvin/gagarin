@@ -27257,11 +27257,11 @@
  {
   "tu": "match/platform/ccini_class_armor_house_type_methods.cpp",
   "addr": "0x475610",
-  "sym": "?WriteHouseType@CCINI_004753F0@@QAE_NPBD0H@Z",
+  "sym": "?FUN_00475610@CCINIClass@@QAE_NPBD0H@Z",
   "len": "0xdb",
-  "name": "WriteHouseType",
+  "name": "Canonical existing house writer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_base_category_methods.cpp",
@@ -27842,11 +27842,11 @@
  {
   "tu": "match/platform/Ini.cpp",
   "addr": "0x528E00",
-  "sym": "?WriteUnicodeString@CCINI_00528E00@@QAE_NPBD0PBG@Z",
+  "sym": "?FUN_00528E00@INIClass@@QAE_NPBD0PBG@Z",
   "len": "0xc7",
-  "name": "CCINIClass::WriteUnicodeString",
+  "name": "Canonical existing Unicode writer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -98416,5 +98416,14 @@
   "name": "Session cleanup",
   "status": "partial",
   "pct": 0.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x6990A0",
+  "sym": "?FUN_006990A0@SessionClass@@QAEXXZ",
+  "len": "0x3a8",
+  "name": "Session settings writer",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
