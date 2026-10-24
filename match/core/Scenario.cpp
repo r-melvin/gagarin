@@ -159,7 +159,7 @@ extern const char STR_0083DD94[]; // STRING: GAMEMD 0x0083DD94
 extern const char STR_0083DD70[]; // STRING: GAMEMD 0x0083DD70
 extern const char STR_0083DD50[]; // STRING: GAMEMD 0x0083DD50
 extern const char STR_00830990[]; // STRING: GAMEMD 0x00830990
-int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int distance); // GAMEMD 0x688ED0
+#include "../map/object_placement.h"
 TechnoClass* __fastcall FUN_0040DD70(ObjectClass* object); // GAMEMD 0x40DD70; checked type filter
 void __fastcall FUN_007500B0(int value); // GAMEMD 0x7500B0
 double __cdecl FUN_004CAC40(double value); // GAMEMD 0x4CAC40
@@ -2005,7 +2005,7 @@ void __fastcall FUN_006886B0(bool value)
         if (DAT_00A8B258) {
             ObjectClass* unit = new UnitClass(house->FUN_00505310(RulesInstance->unknown_B20), house);
             CoordStruct coord = { start.X * 256 + 128, start.Y * 256 + 128, 0 };
-            if (!unit->vf_54(coord, 0) && !FUN_00688ED0(unit, &start, 1)) {
+            if (!unit->vf_54(coord, 0) && !FUN_00688ED0(unit, start, 1)) {
                 delete unit;
             } else if (unit) {
                 house->OurFlagCarrier = 0;
@@ -2024,7 +2024,7 @@ void __fastcall FUN_006886B0(bool value)
             // Slot35 returns the offset-zero ObjectClass of the constructed object.
             ObjectClass* object = static_cast<ObjectClass*>(type->vf_35(house));
             TechnoClass* techno = FUN_0040DD70(object);
-            if (!FUN_00688ED0(object, &start, 4)) {
+            if (!FUN_00688ED0(object, start, 4)) {
                 delete object;
             } else {
                 FUN_004068E0(STR_0083DD50, house->Type->ID, type->ID);
@@ -2039,15 +2039,15 @@ void __fastcall FUN_006886B0(bool value)
 }
 
 // FUNCTION: GAMEMD 0x688ED0
-int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int distance)
+int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct& cell, int distance)
 {
-    if (MapInstance.FUN_00578460(cell, 1)) {
+    if (MapInstance.FUN_00578460(&cell, 1)) {
         Point2D offset(0, 0);
-        ObjectClass* occupied = MapInstance.FUN_005657A0(cell)->FindTechnoNearestTo(&offset, false, 0);
+        ObjectClass* occupied = MapInstance.FUN_005657A0(&cell)->FindTechnoNearestTo(&offset, false, 0);
         if (!occupied || (occupied->vf_11() == 15 && object->vf_11() == 15)) {
-            CoordStruct height = { cell->X * 256 + 128, cell->Y * 256 + 128, 0 };
+            CoordStruct height = { cell.X * 256 + 128, cell.Y * 256 + 128, 0 };
             int z = MapInstance.FUN_00578080(&height);
-            CoordStruct where = { cell->X * 256 + 128, cell->Y * 256 + 128, z };
+            CoordStruct where = { cell.X * 256 + 128, cell.Y * 256 + 128, z };
             if (object->vf_54(where, 0)) return 1;
         }
     }
@@ -2055,8 +2055,8 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int dis
         int direction = ScenarioInstance->unknown_0218.RandomRanged(0, 7);
         for (int pass = 0; pass < 2; ++pass) {
             for (int attempt = 0; attempt < 8; ++attempt) {
-                int x = cell->X;
-                int y = cell->Y;
+                int x = cell.X;
+                int y = cell.Y;
                 int maxX = DAT_0087F90C - 1 + DAT_0087F914;
                 int maxY = DAT_0087F910 - 1 + DAT_0087F918;
                 switch (direction) {
@@ -2094,7 +2094,7 @@ int __fastcall FUN_00688ED0(ObjectClass* object, const CellStruct* cell, int dis
                     candidate.X = (short)x;
                     candidate.Y = (short)y;
                 }
-                bool same = candidate.X == cell->X && candidate.Y == cell->Y;
+                bool same = candidate.X == cell.X && candidate.Y == cell.Y;
                 if (MapInstance.FUN_00578460(&candidate, 1) && !same) {
                     Point2D offset(0, 0);
                     ObjectClass* occupied = MapInstance.FUN_005657A0(&candidate)->FindTechnoNearestTo(&offset, false, 0);

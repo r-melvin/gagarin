@@ -8747,11 +8747,11 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7570",
-  "sym": "?FUN_005D7570@@YA_NXZ",
+  "sym": "?vf_35@MultiplayerGameMode@@UAE_NXZ",
   "len": "0x3",
-  "name": "FUN_005D7570",
+  "name": "MultiplayerGameMode::vf_35",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/ownrdraw.cpp",
@@ -26573,11 +26573,11 @@
  {
   "tu": "match/network/Multiplayer.cpp",
   "addr": "0x5D7030",
-  "sym": "?SpawnBaseUnits@MultiplayerGameMode_005D7030@@QAE_NPAUHouse_005D7030@@K@Z",
+  "sym": "?SpawnBaseUnits@MultiplayerGameMode@@UAE_NPAVHouseClass@@H@Z",
   "len": "0xb5",
   "name": "MultiplayerGameMode::SpawnBaseUnits",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Multiplayer.cpp",
@@ -92846,11 +92846,11 @@
  {
   "tu": "match/core/Scenario.cpp",
   "addr": "0x688ED0",
-  "sym": "?FUN_00688ED0@@YIHPAVObjectClass@@PBUCellStruct@@H@Z",
-  "len": "0x438",
-  "name": "?FUN_00688ED0@@YIHPAVObjectClass@@PBUCellStruct@@H@Z",
+  "sym": "?FUN_00688ED0@@YIHPAVObjectClass@@ABUCellStruct@@H@Z",
+  "len": "0x415",
+  "name": "FUN_00688ED0",
   "status": "partial",
-  "pct": 13.5
+  "pct": 13.8
  },
  {
   "tu": "match/core/global_reset_leaf_methods.cpp",
