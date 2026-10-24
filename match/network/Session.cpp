@@ -148,6 +148,7 @@ extern const char STR_0082BC30[];
 #include "../core/empty_function_family_methods.h"
 
 #include <stddef.h>
+#include "../_layout/phone_entry_class.h"
 #include "../_rt/gg_static_assert.h"
 
 struct ShaState_0069DB30
@@ -1621,6 +1622,28 @@ void SessionClass::FUN_00699980()
         FindClose(search);
     }
     // Natural file destructor followed by base INIClass destructor.
+}
+
+// FUNCTION: GAMEMD 0x69A1F0
+void SessionClass::FUN_0069A1F0()
+{
+    for (int missionIndex = 0; missionIndex < unknown_690.Count; ++missionIndex) {
+        MultiMission* mission = unknown_690.Items[missionIndex];
+        if (mission != 0)
+            delete mission;
+    }
+    unknown_690.Clear();
+
+    for (int stringIndex = 0; stringIndex < unknown_2914.Count; ++stringIndex)
+        delete[] unknown_2914.Items[stringIndex];
+    unknown_2914.Clear();
+
+    for (int phoneIndex = 0; phoneIndex < unknown_28FC.Count; ++phoneIndex) {
+        PhoneEntryClass* entry = unknown_28FC.Items[phoneIndex];
+        if (entry != 0)
+            delete entry;
+    }
+    unknown_28FC.Clear();
 }
 
 // FUNCTION: GAMEMD 0x69A3B0

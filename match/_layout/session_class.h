@@ -42,6 +42,8 @@ struct SessionClass
 {
     // Declaration: GAMEMD 0x697840 -- ECX receiver, no arguments, RET.
     ~SessionClass();
+    // Declaration: GAMEMD 0x69A1F0 -- ECX receiver, no arguments, RET.
+    void FUN_0069A1F0();
     int  GameMode;              // +0x0000
     MultiplayerGameMode* unknown_04; // 0x69B910, virtual slots27/28
     char unknown_08[0x18 - 8];

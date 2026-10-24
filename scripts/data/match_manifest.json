@@ -98407,5 +98407,14 @@
   "name": "SessionClass destructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x69A1F0",
+  "sym": "?FUN_0069A1F0@SessionClass@@QAEXXZ",
+  "len": "0x103",
+  "name": "Session cleanup",
+  "status": "partial",
+  "pct": 0.0
  }
 ]
