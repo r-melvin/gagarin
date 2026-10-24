@@ -606,9 +606,9 @@ Pair_006D9F80* Pair_006D9F80::FUN_006D1EB0(int x, int y)
 // the 60x30 projection and a signed divide by 256, then the height lift is
 // subtracted from Y. Z is read off pCoord only when the lift is computed, which
 // keeps pCoord in EBX across the projection and lets Z take over EBX after it.
-// The result is stored to pDest as one Point2D and pDest comes back in EAX.
-Point2D* Tactical::CoordsToScreen(Point2D* pDest,
-                                                     const CoordStruct* pCoord)
+// Point2D returns through the MSVC6 hidden stack result pointer; EAX returns
+// that pointer. The value-return form preserves the exact200-byte body.
+Point2D Tactical::CoordsToScreen(const CoordStruct* pCoord)
 {
     int xy[2];
     xy[0] = pCoord->X;
@@ -619,8 +619,7 @@ Point2D* Tactical::CoordsToScreen(Point2D* pDest,
     r.Y /= 256;
     r.Y -= AdjustForZ(pCoord->Z);
 
-    *pDest = r;
-    return pDest;
+    return r;
 }
 
 // FUNCTION: GAMEMD 0x6D20E0  Tactical::AdjustForZ (__fastcall)
@@ -963,8 +962,7 @@ void Tactical::FUN_006D2B60(bool fullScreen, int dx, int dy,
             CoordStruct temporary;
             CoordStruct coordinate = *cell->GetCellCoords(&temporary);
             coordinate.Z = 0;
-            Point2D temporaryPoint;
-            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            Point2D projected = CoordsToScreen(&coordinate);
             Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
                              projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
             if (DAT_00B73550 != 0) {
@@ -996,8 +994,7 @@ void Tactical::FUN_006D2DE0(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D temporaryPoint;
-            Point2D projected = *CoordsToScreen(&temporaryPoint, &copiedCoordinate);
+            Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1054,8 +1051,7 @@ void Tactical::FUN_006D3040(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D temporaryPoint;
-            Point2D projected = *CoordsToScreen(&temporaryPoint, &copiedCoordinate);
+            Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1109,8 +1105,7 @@ void Tactical::FUN_006D3290(const RectangleStruct* first,
             int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
             int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
             CoordStruct coordinate = { x, y, 0 };
-            Point2D temporaryPoint;
-            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            Point2D projected = CoordsToScreen(&coordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1158,8 +1153,7 @@ void Tactical::FUN_006D3470(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D projected;
-            CoordsToScreen(&projected, &copiedCoordinate);
+            Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1199,8 +1193,7 @@ void Tactical::FUN_006D3660(const RectangleStruct* first,
             CoordStruct temporary;
             CoordStruct coordinate = *cell->GetCellCoords(&temporary);
             coordinate.Z = 0;
-            Point2D temporaryPoint;
-            Point2D projected = *CoordsToScreen(&temporaryPoint, &coordinate);
+            Point2D projected = CoordsToScreen(&coordinate);
             Point2D location(projected.X - unknown_B0.unknown_00 - 30 + Viewport_00886FA0.X,
                              projected.Y - unknown_B0.unknown_04 - 15 + Viewport_00886FA0.Y);
             if (DAT_00B73550 != 0) {

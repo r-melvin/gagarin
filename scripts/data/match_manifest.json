@@ -28787,7 +28787,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D1F10",
-  "sym": "?CoordsToScreen@Tactical@@QAEPAUPoint2D@@PAU2@PBUCoordStruct@@@Z",
+  "sym": "?CoordsToScreen@Tactical@@QAE?AUPoint2D@@PBUCoordStruct@@@Z",
   "len": "0xc8",
   "name": "Tactical::CoordsToScreen",
   "status": "matched",

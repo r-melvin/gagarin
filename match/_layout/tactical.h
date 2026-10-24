@@ -49,7 +49,7 @@ public:
     void FUN_006D3660(const RectangleStruct* first, const RectangleStruct* second, const RectangleStruct* clip, bool fullScreen);
     void FUN_006DA7D0(CellClass* cell);
     void FUN_006D71E0(const RectangleStruct* rectangle);
-    Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
+    Point2D CoordsToScreen(const CoordStruct* coordinate); // 0x6D1F10, hidden result + coordinate, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20
     Tactical(const AbstractNoInit& noInit); // 0x6D1E30
