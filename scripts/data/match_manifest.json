@@ -97593,20 +97593,20 @@
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71D3C0",
-  "sym": "_$E2",
+  "sym": "_$E3",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0F140)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",
   "addr": "0x71D3E0",
-  "sym": "_$E5",
+  "sym": "_$E6",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0EDB8)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/tu291_winsock_interface_class.cpp",
