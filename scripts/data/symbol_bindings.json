@@ -4153,6 +4153,7 @@
  "?FUN_0047FF80@CellClass@@QAE?AURectangleStruct@@XZ": "0x0047FF80",
  "?FUN_00480180@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z": "0x00480180",
  "?FUN_004801F0@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z": "0x004801F0",
+ "?FUN_004802A0@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@@Z": "0x004802A0",
  "?FUN_00480350@CellClass@@QAEXPBUPoint2D@@PBURectangleStruct@@H@Z": "0x00480350",
  "?FUN_004810A0@@YIHPAUCoordStruct@@@Z": "0x004810A0",
  "?FUN_00481670@TeleportCellView@@QAEXPBULocoCoord@@HHD@Z": "0x00481670",

@@ -48,6 +48,8 @@ class CellClass : public AbstractClass
 public:
     // Declarations: hidden RectangleStruct output, RET4; cell receiver in ECX.
     RectangleStruct FUN_0047FF80(); // 0x47FF80, hidden result, RET4
+    // Declaration: GAMEMD 0x4802A0; read-only point/clip, receiver ECX, RET8.
+    void FUN_004802A0(const Point2D* point, const RectangleStruct* clip);
     void FUN_00480350(const Point2D* point, const RectangleStruct* clip, int mode); // 0x480350, RET12
     bool FUN_00487950(); // 0x487950, AL result, no stack arguments
     RectangleStruct FUN_0047FB90(); // 0x47FB90

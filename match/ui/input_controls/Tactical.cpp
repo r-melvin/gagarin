@@ -2784,6 +2784,67 @@ void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
     DAT_00887314->Unlock();
 }
 
+// Entry-origin retail disassembly: 619 bytes through 6D84CA. REA's current
+// catalog lacks this procedure; no decompiler output is used for this body.
+// The first four-byte stack slot is unused. Its original type is unresolved;
+// void* below is an ABI-sized placeholder pending caller/interface evidence.
+// FUNCTION: GAMEMD 0x6D8260
+void Tactical::FUN_006D8260(void* unused, const RectangleStruct* rectangle)
+{
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CoordStruct coordinate;
+    coordinate.X = worldX;
+    coordinate.Y = worldY;
+    coordinate.Z = 0;
+    if (coordinate.Y < 0) {
+        coordinate.X -= coordinate.Y;
+        coordinate.Y = 0;
+    }
+    if (coordinate.X < 0) {
+        coordinate.Y -= coordinate.X;
+        coordinate.X = 0;
+    }
+    CellClass* target = MapInstance.FUN_00565730(&coordinate);
+    CellStruct base = target->MapCoords;
+    base.X -= 2;
+    base.Y += 3;
+    int rows = rectangle->Height / 15 + 20;
+    int columns = rectangle->Width / 60 + 7;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
+        CellStruct cellCoordinate;
+        cellCoordinate.X = base.X + offset.X;
+        cellCoordinate.Y = base.Y + offset.Y;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&cellCoordinate)) {
+                CoordStruct center;
+                center.X = (cellCoordinate.X * 256 + 128) / 256 * 256;
+                center.Y = (cellCoordinate.Y * 256 + 128) / 256 * 256;
+                center.Z = 0;
+                Point2D position = CoordsToScreen(&center);
+                Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+                position -= origin;
+                position.X -= 30;
+                // Native pushes these two pointers before calling GetCell;
+                // GetCell consumes only its own coordinate argument (RET4),
+                // leaving both pointers for the following Cell call (RET8).
+                MapInstance.FUN_005657A0(&cellCoordinate)->FUN_004802A0(
+                    &position, rectangle);
+            }
+            ++cellCoordinate.X;
+            --cellCoordinate.Y;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D8530
 void Tactical::FUN_006D8530(int direction, int distance)
 {
