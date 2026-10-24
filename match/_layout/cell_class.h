@@ -46,6 +46,7 @@ class CellClass : public AbstractClass
 {
 public:
     ObjectClass* FindTechnoNearestTo(Point2D* offset, bool alt, ObjectClass* exclude); // GAMEMD 0x47C3D0
+    ObjectClass* FUN_0047C550(bool alternate); // 0x47C550, returns list object with type24, RET4
     BuildingClass* GetBuilding() const; // GAMEMD 0x47C520; BuildingClass 0x458A00 compares it with `this`
     bool FUN_0047C620(int speedType, BuildingTypeClass* type, HouseClass* owner); // GAMEMD 0x47C620 (RET 0xC); BuildingClass 0x449440
     int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX

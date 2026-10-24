@@ -1820,6 +1820,72 @@ void Tactical::FUN_006D4E20(const unsigned short* text)
 }
 
 
+#include "../../_layout/building_class.h"
+#include "../../_layout/placement_object.h"
+// GLOBAL: GAMEMD 0x89F688 (declaration; native6D576D)
+extern CellStruct DAT_0089F688[];
+// GLOBAL: GAMEMD 0x87F6C4 (declaration)
+extern ColorConvert* DAT_0087F6C4;
+// GLOBAL: GAMEMD 0x8A03FC (declaration)
+extern ShapeHeader* DisplayPlaceShape_008A03FC;
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, GuardRange) == 0x5B8);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16BE - 0x16A4) == 0x16BE);
+
+// FUNCTION: GAMEMD 0x6D5730
+void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
+{
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        // Caller6D53E7..6D544B checks placement slot11 == 6.
+        BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        int range = placement->Type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        // Native keeps this entry address and reloads it after draw callbacks.
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        BuildingClass* building = 0;
+        while (count < range) {
+            current.X += step.X;
+            current.Y += step.Y;
+            building = MapInstance.FUN_005657A0(&current)->GetBuilding();
+            if (building)
+                break; // ANY building ends this scan, even an unsuitable one.
+            CellClass* cell = MapInstance.FUN_005657A0(&current);
+            if (cell->FUN_0047C550(0) || cell->SlopeIndex > 0 || cell->Passability != 0)
+                break;
+            ++count;
+        }
+        if (!building || !building->Type->bools_16A4[0x16BE - 0x16A4] ||
+            !building->Owner->IsControlledByCurrentPlayer() || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw;
+        draw.X = origin.X + step.X;
+        draw.Y = origin.Y + step.Y;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            CoordStruct center;
+            center.X = (draw.X * 256 + 128) / 256 * 256;
+            center.Y = (draw.Y * 256 + 128) / 256 * 256;
+            center.Z = 0;
+            Point2D projected = CoordsToScreen(&center);
+            Point2D marker(projected.X - unknown_B0.unknown_00,
+                           projected.Y - unknown_B0.unknown_04 + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw.X += step.X;
+            draw.Y += step.Y;
+        }
+    }
+}
+
+
 // FUNCTION: GAMEMD 0x6D5F60
 void Tactical::FUN_006D5F60(const TRect<int>* bounds)
 {

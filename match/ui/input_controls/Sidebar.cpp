@@ -253,7 +253,7 @@ extern SidebarHouse* SelectPlayer_00A83D4C;
 // GLOBAL: GAMEMD 0x8871E0 -- RulesClass::Instance.
 extern SidebarRules* SelectRules_008871E0;
 // GLOBAL: GAMEMD 0x88098C / 0x880990 / 0x880994 / 0x8809A0 / 0x88099A..0x88099C -- placement state.
-extern void* PlacementObject_0088098C;
+#include "../../_layout/placement_object.h"
 extern int PlacementAux_00880990;
 extern int PlacementIndex_00880994;
 extern int PendingSuper_008809A0;
