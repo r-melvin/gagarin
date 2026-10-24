@@ -12,17 +12,17 @@
   "unresolved": 8291
  },
  "m1": {
-  "bytes_at_retail_address": 3885223,
+  "bytes_at_retail_address": 3884823,
   "drift_events": 4,
   "duplicates": 0,
-  "entries_at_retail_address": 19249,
-  "entry_point_delta": -8305,
+  "entries_at_retail_address": 19250,
+  "entry_point_delta": -8044,
   "link_exit_code": 0,
-  "matched_at_retail_address": 10174,
-  "matched_functions": 10174,
-  "ordered_bytes": 3885895,
-  "ordered_entries": 19251,
-  "stubs_placed": 9035,
+  "matched_at_retail_address": 10234,
+  "matched_functions": 10234,
+  "ordered_bytes": 3885495,
+  "ordered_entries": 19252,
+  "stubs_placed": 8975,
   "unresolved_after_stubs": 0
  },
  "milestones": [
@@ -56,5 +56,9 @@
    "name": "Unsigned image identical",
    "state": "todo"
   }
- ]
+ ],
+ "snapshots": {
+  "m0": "2a00ae5d (historical; not remeasured)",
+  "m1": "cc54c42d"
+ }
 }

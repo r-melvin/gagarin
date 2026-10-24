@@ -13,13 +13,14 @@ The current project status, verified progress, consolidation record, coverage
 caveats and remaining gates are in [STATUS.md](STATUS.md). The target image is
 identified by SHA-256 in [reccmp-project.yml](reccmp-project.yml).
 
-As of 2026-10-23, 10,204 of the 19,778 functions in the extent census are
-matched (51.6%) and 686 more are partial; matched bodies cover 704,282 of
-3,878,653 listed function bytes (18.2%). Raw and strict relocation checks
-pass on every matched row. At the historical link snapshot `2a00ae5d`, the
-address-faithful stub link (M1) resolved every external and placed 10,174 matched functions at their retail
-addresses; the remaining matched row shares its symbol with another address. The engine does not yet run from this build, and no whole-image
-identity is claimed.
+At source snapshot `cc54c42d` (2026-10-24), 10,235 of the 19,778 functions in
+the extent census are matched (51.7%) and 743 more are partial. Matched bodies
+cover 708,870 of 3,878,653 listed function bytes (18.3%). The full regression
+check re-proves every matched row; changed exact functions also pass explicit
+relocation checks. The address-faithful stub link (M1) resolves every external
+and places all 10,234 distinct matched entries at their retail addresses.
+It remains a layout probe with stub bodies and an unordered library tail.
+The engine does not yet run from this build, and no whole-image identity is claimed.
 
 ![gagarin matching progress](.github/assets/progress.svg)
 

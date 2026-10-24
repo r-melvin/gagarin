@@ -1,5 +1,73 @@
 # Project status
 
+At source snapshot **`cc54c42d` (2026-10-24)**, the manifest holds
+**10,978 rows: 10,235 matched and 743 partial**, in 1,261 manifest translation
+units. The extent census contains **19,778 functions** and 3,878,653 function
+bytes. Matched rows represent 51.7% of the census and **708,870 bytes (18.3%)**;
+partials represent 3.8%. These are function measurements, not executable completion.
+
+The full gate compiles **1,270 tracked translation units**, checks **133 layout
+headers**, re-proves all 10,235 matched rows and compile-checks all 743 partials,
+with no matched-function regressions. Affected exact functions also pass explicit
+relocation checks. Earlier strict-check repairs are recorded in the historical
+snapshots below; final link selection, RTTI data and whole-image layout require
+separate evidence.
+
+Recent restructuring consolidates the ColorList and List receivers onto their
+real UI hierarchy, and shares the Cell coordinate and BaseNode declarations.
+Eight vector destructor/Clear stand-ins now use genuine compiler-generated
+methods. The redundant Cell assignment specialization is retired onto the
+existing exact generic provider. Existing exact bodies are preserved; an
+incidental Scenario partial improves from 6.8% to 7.9% through ordinary template
+inlining. Canonical owner work remains unfinished elsewhere.
+
+Initializer verification now distinguishes a matching inner helper from the
+actual callback registered in the CRT table. Of the 60 generated float claims
+in the historical initializer subset, **18 are direct native-matching CRT roots**;
+42 still sit behind compiler jump wrappers. That subset also retains 176 manual
+initializer claims and 354 unclaimed entries. These counts do not cover every
+initializer in the image. Native table ordering is incomplete where source
+entries are still missing; matching a component does not establish whole-table
+identity.
+
+The current source build still needs further original-TU ownership and boundary
+reconciliation, canonical class and interface adoption, global/layout/allocator
+repairs, and initializer reconstruction. Unsupported original source filenames
+remain placeholders. Held work keeps its existing exact functions: the
+SpawnManager initializer flag trial, for example, is not adopted because it
+regresses an exact method.
+
+Link milestones (diagnostic images do not run):
+
+| Milestone | State | Measurement |
+| --- | --- | --- |
+| M0 diagnostic link | historical | At `2a00ae5d`: 1,310 objects, 8,291 unresolved externals and 0 duplicate definitions, using `/FORCE` |
+| M1 address-faithful stub link | verified at `cc54c42d` | Exit 0 without `/FORCE`, 0 unresolved after 8,975 placed int3 stubs, 0 duplicate definitions; all 10,234 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M2 hybrid runnable build | next | not started |
+| M3 matched objects swap in | not started | |
+| M4 pure-source playable | not started | |
+| M5 unsigned-image identity | not started | the complete unsigned image, as defined in AGENTS.md, equals retail byte for byte |
+
+![gagarin link milestones](.github/assets/link_progress.svg)
+
+Native pointer values alone do not prove source-body selection. For example,
+the List and ColorList tables include two existing diagnostic-stub slots;
+49 of 51 and 51 of 53 slots respectively use real native source providers.
+The ordinary M1 link also discards two unused dynamic-vector tables. A separate
+link that retains the four actual Cell/BaseNode tables verifies their 28 target
+pointers and genuine destructor selection; this is not a runtime or full-image
+identity check. RTTI emitted by the reconstructed build remains separate work.
+
+## Historical integration archive
+
+
+The integration records below are historical batch snapshots. Their
+batch-specific counts describe earlier states and are
+superseded by the current totals above. They are retained as evidence of the
+sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
+
+## Historical snapshot: source and link state at 5761942b
+
 As of **2026-10-23** (source tip `5761942b`), the manifest holds **10,890 rows**:
 **10,204 matched** and **686 partial**, in 1,302 manifest translation units.
 Every row's address is an entry in the extent census of **19,778 functions**,
@@ -67,14 +135,6 @@ Next steps: a runnable hybrid build (M2); resolving held COM table and destructo
 selection proofs; fitting the two oversized matched objects at 0x49F620 and 0x4A80D0
 into their retail slots; ordering the library tail; and continuing the
 translation-unit migration.
-
-## Historical integration archive
-
-
-The integration records below are historical batch snapshots. Their
-batch-specific counts describe earlier states and are
-superseded by the current totals above. They are retained as evidence of the
-sequence and scope of completed work, with each batch's recorded caveats. Later fidelity audits can invalidate an earlier reported match; the archived literal correction is one such example.
 
 ## Historical snapshot: trivial-function generator
 
