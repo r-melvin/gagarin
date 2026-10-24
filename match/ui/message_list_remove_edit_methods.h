@@ -19,46 +19,5 @@
 void MessageListLock();     // GAMEMD 0x7781A0 (declared; reloc)
 void MessageListUnlock();   // GAMEMD 0x778170 (declared; reloc)
 
-// A displayed message. Slot 0 is the scalar-deleting destructor and slot +0x04
-// returns the next message, so the walk is a virtual call rather than a field
-// dereference.
-struct MessageEntry
-{
-    virtual ~MessageEntry();          // +0x00
-    virtual MessageEntry* GetNext();  // +0x04
-
-    char _pad04[0x10 - 4];   // +0x04  (vptr occupies +0x00)
-    int  Y;                  // +0x10
-};
-GG_STATIC_ASSERT(offsetof(MessageEntry, Y) == 0x10);
-
-// The edit line, destroyed through its own virtual destructor.
-struct EditLabelClass
-{
-    virtual ~EditLabelClass();   // +0x00
-};
-
-struct MessageListClass
-{
-    MessageEntry*   FirstMessage;      // +0x00
-    char            _pad04[0x08 - 4];  // +0x04
-    int             ListOrigin;        // +0x08
-    int             RedrawCounter;     // +0x0C
-    char            _pad10[0x14 - 0x10];
-    int             LineHeight;        // +0x14
-    char            _pad18[0x19 - 0x18];
-    bool            IsEditing;         // +0x19
-    bool            NeedsRedraw;       // +0x1A
-    char            _pad1B[0x24 - 0x1B];
-    EditLabelClass* EditLabel;         // +0x24
-
-    void RemoveEdit();                 // GAMEMD 0x5D4390
-};
-GG_STATIC_ASSERT(offsetof(MessageListClass, ListOrigin)    == 0x08);
-GG_STATIC_ASSERT(offsetof(MessageListClass, RedrawCounter) == 0x0C);
-GG_STATIC_ASSERT(offsetof(MessageListClass, LineHeight)    == 0x14);
-GG_STATIC_ASSERT(offsetof(MessageListClass, IsEditing)     == 0x19);
-GG_STATIC_ASSERT(offsetof(MessageListClass, NeedsRedraw)   == 0x1A);
-GG_STATIC_ASSERT(offsetof(MessageListClass, EditLabel)     == 0x24);
-
-#endif  // GG_MATCH_UI_MESSAGE_LIST_REMOVE_EDIT_METHODS_H
+#include "message_list_class_methods.h"
+#endif

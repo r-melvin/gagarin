@@ -29544,7 +29544,7 @@
  {
   "tu": "match/ui/message_list_class_init_methods.cpp",
   "addr": "0x5D3A60",
-  "sym": "?Init@MessageList_005D3A60@@QAEXHHHHHHH_NHHH@Z",
+  "sym": "?Init@MessageListClass@@QAEXHHHHHHH_NHHH@Z",
   "len": "0x132",
   "name": "MessageListClass::Init",
   "status": "matched",
@@ -98380,5 +98380,23 @@
   "name": "SessionClass::FUN_00699980",
   "status": "partial",
   "pct": 2.4
+ },
+ {
+  "tu": "match/ui/message_list_class_methods.cpp",
+  "addr": "0x5D39D0",
+  "sym": "??0MessageListClass@@QAE@XZ",
+  "len": "0x6e",
+  "name": "MessageListClass::MessageListClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/message_list_class_methods.cpp",
+  "addr": "0x5D3A40",
+  "sym": "??1MessageListClass@@QAE@XZ",
+  "len": "0x1f",
+  "name": "MessageListClass::~MessageListClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

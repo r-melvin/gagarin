@@ -3,6 +3,9 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5D3A60.
 
 #include "message_list_class_init_methods.h"
+#include "input_controls/ui_gadget.h"
+extern const char STR_00830680[]; // STRING: GAMEMD 0x830680 (decl; reloc)
+extern "C" int __cdecl FUN_004068E0(const char*, ...); // Declaration: GAMEMD 0x4068E0
 
 // FUNCTION: GAMEMD 0x5D3A60
 //
@@ -14,7 +17,7 @@
 // follows the message origin when either edit coordinate is -1) and the
 // overflow window, clamped so that it ends inside the character limit and
 // starts before its end. The fifth argument (height) is ignored.
-void MessageList_005D3A60::Init(int x, int y, int maxMessages, int maxChars,
+void MessageListClass::Init(int x, int y, int maxMessages, int maxChars,
                                 int height, int editX, int editY,
                                 bool enableOverflow, int overflowStart,
                                 int overflowEnd, int width)
@@ -22,9 +25,9 @@ void MessageList_005D3A60::Init(int x, int y, int maxMessages, int maxChars,
     this->Width = width - 8;
     FUN_004068E0(STR_00830680, this->Width);
 
-    Label_005D3A60* label = this->MessageList;
+    TextLabelClass* label = this->MessageList;
     while (label != 0) {
-        this->MessageList = label->Remove();
+        this->MessageList = static_cast<TextLabelClass*>(label->Remove());
         delete label;
         label = this->MessageList;
     }
@@ -42,8 +45,8 @@ void MessageList_005D3A60::Init(int x, int y, int maxMessages, int maxChars,
     }
 
     this->MessageList = 0;
-    this->unknown_04 = x;
-    this->unknown_08 = y;
+    this->MessagePos_X = x;
+    this->MessagePos_Y = y;
     this->MaxMessageCount = maxMessages;
     if (maxMessages > 14) {
         this->MaxMessageCount = 14;

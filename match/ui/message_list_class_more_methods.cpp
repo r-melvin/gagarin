@@ -6,6 +6,8 @@
 //
 // Bytes reconfirmed from the local Ghidra disassembly of retail gamemd.exe.
 #include "message_list_class_more_methods.h"
+#include "input_controls/ui_gadget.h"
+GG_STATIC_ASSERT(sizeof(((TextLabelClass*)0)->MaxWidth) == 4);
 
 // Release-build debug printf (0x4068E0 is a bare RET stub). cdecl/variadic so
 // the call pushes exactly { format, value }. Reloc-normalised.
@@ -24,10 +26,10 @@ void MessageListClass::SetWidth(int width)
     TextLabelClass* node = MessageList;
     while (node)
     {
-        node->Width = width;
-        node = node->GetNext();
+        node->MaxWidth = width;
+        node = static_cast<TextLabelClass*>(node->GetNext());
     }
 
     if (IsEdit)
-        EditLabel->Width = width;
+        EditLabel->MaxWidth = width;
 }

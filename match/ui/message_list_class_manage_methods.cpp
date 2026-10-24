@@ -3,6 +3,10 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x5D4430.
 
 #include "message_list_class_manage_methods.h"
+#include "input_controls/ui_gadget.h"
+GG_STATIC_ASSERT(offsetof(TextLabelClass, unknown_24) == 0x24);
+GG_STATIC_ASSERT(sizeof(((TextLabelClass*)0)->unknown_24) == 4);
+GG_STATIC_ASSERT(sizeof(((TextLabelClass*)0)->Text) == 4);
 
 // FUNCTION: GAMEMD 0x5D4430
 //
@@ -26,9 +30,9 @@ int MessageListClass::Manage()
     TextLabelClass* label = this->MessageList;
     if (label != 0) {
         do {
-            if (label->At_24 != 0 && MessageTimer.GetValue() > label->At_24) {
-                TextLabelClass* next = label->GetNext();
-                this->MessageList = label->Remove();
+            if (label->unknown_24 != 0 && MessageTimer.GetValue() > label->unknown_24) {
+                TextLabelClass* next = static_cast<TextLabelClass*>(label->GetNext());
+                this->MessageList = static_cast<TextLabelClass*>(label->Remove());
                 for (int i = 0; i < 14; i++) {
                     if (label->Text == this->MessageBuffers[i]) {
                         this->BufferAvail[i] = 1;
@@ -38,7 +42,7 @@ int MessageListClass::Manage()
                 changed = 1;
                 label = next;
             } else {
-                label = label->GetNext();
+                label = static_cast<TextLabelClass*>(label->GetNext());
             }
         } while (label != 0);
 
@@ -52,7 +56,7 @@ int MessageListClass::Manage()
             TextLabelClass* p = this->MessageList;
             while (p != 0) {
                 p->Y = y;
-                p = p->GetNext();
+                p = static_cast<TextLabelClass*>(p->GetNext());
                 y += this->Height;
             }
         }
