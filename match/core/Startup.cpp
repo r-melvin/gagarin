@@ -64,34 +64,7 @@ template<class T> HRESULT TClassFactory<T>::CreateInstance(IUnknown* outer, REFI
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-// FUNCTION: GAMEMD 0x004A2820 (decl; reloc) -- CStreamClass default constructor.
-// RTTI (CHD at COL 0x7FF9B8): IStream at +0, ILinkStream at +4. Primary vtable
-// 0x7E5DAC has the 14 IStream slots plus the destructor (slot 14); the
-// ILinkStream vtable 0x7E5D94 has 5.
-class CStreamClass : public IStream, public ILinkStream
-{
-public:
-    CStreamClass();
-    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-    virtual HRESULT __stdcall Read(void* pv, ULONG cb, ULONG* pcbRead);
-    virtual HRESULT __stdcall Write(const void* pv, ULONG cb, ULONG* pcbWritten);
-    virtual HRESULT __stdcall Seek(LARGE_INTEGER dlibMove, DWORD dwOrigin, ULARGE_INTEGER* plibNewPosition);
-    virtual HRESULT __stdcall SetSize(ULARGE_INTEGER libNewSize);
-    virtual HRESULT __stdcall CopyTo(IStream* pstm, ULARGE_INTEGER cb, ULARGE_INTEGER* pcbRead, ULARGE_INTEGER* pcbWritten);
-    virtual HRESULT __stdcall Commit(DWORD grfCommitFlags);
-    virtual HRESULT __stdcall Revert();
-    virtual HRESULT __stdcall LockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType);
-    virtual HRESULT __stdcall UnlockRegion(ULARGE_INTEGER libOffset, ULARGE_INTEGER cb, DWORD dwLockType);
-    virtual HRESULT __stdcall Stat(STATSTG* pstatstg, DWORD grfStatFlag);
-    virtual HRESULT __stdcall Clone(IStream** ppstm);
-    virtual void vf_3();
-    virtual void vf_4();
-    virtual ~CStreamClass();
-    unsigned char unknown_[0x2C - 8];
-};
-GG_STATIC_ASSERT(sizeof(CStreamClass) == 0x2C);
+#include "../_layout/cstream_class.h"
 
 #include "../map/terrain_objects/terrain_class.h"
 
@@ -121,18 +94,7 @@ public:
     unsigned char unknown_[0x80 - sizeof(AbstractClass)];
 };
 
-// FUNCTION: GAMEMD 0x006D1C20 (decl; reloc) -- Tactical default constructor.
-class Tactical : public AbstractClass
-{
-public:
-    Tactical();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0xE18 - sizeof(AbstractClass)];
-};
+#include "../_layout/tactical.h"
 
 // FUNCTION: GAMEMD 0x0047BBF0 (decl; reloc) -- CellClass default constructor.
 class CellClass : public AbstractClass
@@ -147,18 +109,7 @@ public:
     unsigned char unknown_[0x148 - sizeof(AbstractClass)];
 };
 
-// FUNCTION: GAMEMD 0x004C5370 (decl; reloc) -- EMPulseClass default constructor.
-class EMPulseClass : public AbstractClass
-{
-public:
-    EMPulseClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x34 - sizeof(AbstractClass)];
-};
+#include "../_layout/empulse_class.h"
 
 // FUNCTION: GAMEMD 0x00554830 (decl; reloc) -- LightSourceClass default constructor.
 class LightSourceClass : public AbstractClass
