@@ -55,11 +55,15 @@ struct TileImageHeader
     char          _pad_008[0x10 - 0x08];
     SubTileImage* SubTiles[1];  // +0x10
 };
+GG_STATIC_ASSERT(offsetof(TileImageHeader, Width) == 0x00);
+GG_STATIC_ASSERT(offsetof(TileImageHeader, Height) == 0x04);
 GG_STATIC_ASSERT(offsetof(TileImageHeader, SubTiles) == 0x10);
 
 class IsometricTileTypeClass
 {
 public:
+    struct TileInsertType; // nested pointer type attested by TU110 vector RTTI
+
     // Declared ascending by retail address (reccmp/isle TU discipline).
     TileImageHeader* GetTileData();          // GAMEMD 0x544CB0  slot +0x9C
     int              GetMorphType(int idx);   // GAMEMD 0x5471B0

@@ -164,7 +164,7 @@ public:
     signed char     Height;                  // +0x11A ctor @0x0047BD04
     signed char     Level;                   // +0x11B ctor @0x0047BD0A
     unsigned char   SlopeIndex;              // +0x11C ctor @0x0047BD10
-    unsigned char   unknown_11D;             // +0x11D ctor @0x0047BD16
+    signed char     unknown_11D;             // +0x11D; CMP/JLE6D807C, MOVSX6D809E
     unsigned char   OverlayData;             // +0x11E ctor @0x0047BD1C
     unsigned char   SmudgeData;              // +0x11F ctor @0x0047BD22
     signed char     Visibility;              // +0x120 ctor MOV byte [ESI+0x120],AL(=0xFE) @0x0047BD28

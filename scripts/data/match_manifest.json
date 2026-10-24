@@ -23938,31 +23938,31 @@
   "pct": 55.6
  },
  {
-  "tu": "match/map/iso_tile_type_class_tile_data_methods.cpp",
+  "tu": "match/map/tu110_isometric_tile_type_class.cpp",
   "addr": "0x544CB0",
   "sym": "?GetTileData@IsometricTileTypeClass@@QAEPAUTileImageHeader@@XZ",
   "len": "0x26",
   "name": "IsometricTileTypeClass::GetTileData",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/iso_tile_type_class_tile_data_methods.cpp",
+  "tu": "match/map/tu110_isometric_tile_type_class.cpp",
   "addr": "0x5471B0",
   "sym": "?GetMorphType@IsometricTileTypeClass@@QAEHH@Z",
   "len": "0x31",
   "name": "IsometricTileTypeClass::GetMorphType",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/map/iso_tile_type_class_tile_data_methods.cpp",
+  "tu": "match/map/tu110_isometric_tile_type_class.cpp",
   "addr": "0x5471F0",
   "sym": "?GetConnectFlag@IsometricTileTypeClass@@QAE_NH@Z",
   "len": "0x36",
   "name": "IsometricTileTypeClass::GetConnectFlag",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/map_class_add_object_methods.cpp",
@@ -98839,5 +98839,14 @@
   "name": "Tactical::FUN_006D8260",
   "status": "partial",
   "pct": 18.8
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D7F20",
+  "sym": "?FUN_006D7F20@Tactical@@QAEXPBUCellStruct@@PBURectangleStruct@@@Z",
+  "len": "0x338",
+  "name": "Tactical::FUN_006D7F20",
+  "status": "partial",
+  "pct": 2.4
  }
 ]

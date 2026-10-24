@@ -36,10 +36,7 @@
 
 #include "../core/vector_class_operations.h"
 
-class IsometricTileTypeClass {
-public:
-    struct TileInsertType;
-};
+#include "iso_tile_type_class_tile_data_methods.h"
 
 template class DynamicVectorClass<IsometricTileTypeClass::TileInsertType*>;
 
@@ -308,6 +305,23 @@ double DAT_00ABC2C0 = DAT_00AA1070 / DAT_007EC440;
 // GLOBAL: GAMEMD 0xABC1F0
 double DAT_00ABC1F0 = DAT_007E1718 / DAT_00ABC2C0;
 
+// FUNCTION: GAMEMD 0x544CB0  (__thiscall)
+// The loaded tile-set header, loading it on first use. Retail reads the member
+// once up front and again only inside the loading arm, so the source keeps the
+// first read in a local and refreshes it after the load rather than re-reading
+// the member on the way out.
+TileImageHeader* IsometricTileTypeClass::GetTileData()
+{
+    TileImageHeader* data = this->unknown_A4;
+
+    if (data == 0 && this->TileDataLoadable) {
+        this->LoadTileData();
+        data = this->unknown_A4;
+    }
+    return data;
+}
+
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x544DF0
 // Empty function.
@@ -320,6 +334,53 @@ void __cdecl FUN_00544DF0()
 // Returns a constant boolean.
 bool __cdecl FUN_00544FF0()
 {
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x5471B0  (__thiscall)
+// Convention read off the binary, not assumed: the argument arrives as
+// `MOV EAX,[ESP+0x8]` and the exit is `RET 4`, which is a stack-passed
+// argument and a callee-cleaned frame — a plain __thiscall member. Spelled
+// __fastcall (the argument in EDX) the body scores 4.3%.
+// The morph/slope byte of one sub-tile. The index wraps on the sub-tile count,
+// which is the header's two dimensions multiplied.
+//
+// The exit is `MOVSX EAX, byte ptr [ECX+0x2a]`, so the stored byte is signed
+// and the return is int.
+int IsometricTileTypeClass::GetMorphType(int idx)
+{
+    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+
+    if (data != 0) {
+        SubTileImage* tile = data->SubTiles[idx % (data->Height * data->Width)];
+        if (tile != 0) {
+            return tile->MorphType;
+        }
+    }
+    return 0;
+}
+
+
+// FUNCTION: GAMEMD 0x5471F0  (__thiscall)
+// Bit 2 of the sub-tile's flag word: the connect/ramp flag the LAT draw uses to
+// pick a transition variant.
+//
+// The out-of-range fall-back is not `return subtile / cellCount;`: both
+// failure paths in the binary jump to 0x00547221, which is `XOR AL,AL; RET 4`.
+// A quotient there would be a Ghidra artefact — EAX happens to hold the IDIV quotient at that label, so the
+// decompiler attributed it as the returned value. The zeroing of AL alone (not
+// EAX) is also what fixes the return width here as bool, against the int of
+// its sibling at 0x5471B0.
+bool IsometricTileTypeClass::GetConnectFlag(int idx)
+{
+    TileImageHeader* data = (this->*this->Vfptr->At_9C)();
+
+    if (data != 0) {
+        SubTileImage* tile = data->SubTiles[idx % (data->Height * data->Width)];
+        if (tile != 0) {
+            return tile->ConnectFlag;
+        }
+    }
     return false;
 }
 

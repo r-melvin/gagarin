@@ -236,10 +236,6 @@ class IsometricTileClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class IsometricTileTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class JumpjetLocomotionClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -445,6 +441,7 @@ extern double AdjustForZ_Factor;   // GLOBAL: GAMEMD 0xB0CD48
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
+#include "../../map/iso_tile_type_class_tile_data_methods.h"
 #include "../../_rt/gg_static_assert.h"
 
 // GLOBAL: GAMEMD 0x7E1718
@@ -2782,6 +2779,102 @@ void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
     }
     // Receiver is reloaded from the global, rather than the original lock owner.
     DAT_00887314->Unlock();
+}
+
+// GLOBAL: GAMEMD 0xA8ED2C
+extern IsometricTileTypeClass** DAT_00A8ED2C;
+
+// FUNCTION: GAMEMD 0x6D7F20
+void Tactical::FUN_006D7F20(const CellStruct* coordinate,
+                           const RectangleStruct* unused)
+{
+    CellClass* cell = MapInstance.FUN_005657A0(coordinate);
+    CoordStruct center;
+    center.X = (coordinate->X * 256 + 128) / 256 * 256;
+    center.Y = (coordinate->Y * 256 + 128) / 256 * 256;
+    center.Z = 0;
+    Point2D projected = CoordsToScreen(&center);
+    Point2D position(projected.X - unknown_B0.unknown_00,
+                     projected.Y - unknown_B0.unknown_04);
+    if (cell->Level < 2) {
+        position.X -= 30;
+        cell->FUN_00480350(&position, &Viewport_00886FA0, 0);
+    }
+    // The coordinate pointer is reread after projection and optional drawing.
+    int baseX = coordinate->X;
+    int baseY = coordinate->Y;
+    for (int level = 0; level < 24; level += 2, ++baseX, ++baseY) {
+        for (int direction = 0; direction < 3; ++direction) {
+            int x = baseX + (direction + 1) / 2;
+            int y = baseY - direction / 2 + 1;
+            CellStruct legalCoordinate;
+            legalCoordinate.X = x;
+            legalCoordinate.Y = y;
+            if (!MapInstance.FUN_00568300(&legalCoordinate))
+                continue;
+            CellStruct lookupCoordinate;
+            lookupCoordinate.X = x;
+            lookupCoordinate.Y = y;
+            CellClass* neighbor = MapInstance.FUN_005657A0(&lookupCoordinate);
+            int neighborLevel = neighbor->Level;
+            bool draw;
+            if (direction == 1)
+                draw = neighborLevel > level && neighborLevel < level + 4;
+            else
+                draw = neighborLevel == level + 1;
+            // Native CMP/JLE at6D807C and MOVSX at6D809E prove signed +11D.
+            if (neighbor->unknown_11D > 0 && !draw) {
+                int difference = neighborLevel - level;
+                if (direction == 1) {
+                    if (difference + 1 <= 0 &&
+                        neighbor->unknown_11D + difference + 1 > 0)
+                        draw = true;
+                } else {
+                    if (difference < 0 && neighbor->unknown_11D + difference >= 0)
+                        draw = true;
+                }
+            }
+            if (neighborLevel == level && !draw) {
+                // Native MOVZX here, despite signed Height declaration.
+                unsigned char height = neighbor->Height;
+                int tileIndex = neighbor->IsoTileTypeIndex;
+                if (tileIndex == 0xFFFF || tileIndex == 0xFF)
+                    continue;
+                IsometricTileTypeClass* tile = DAT_00A8ED2C[tileIndex];
+                if (!tile)
+                    continue;
+                TileImageHeader* image = (tile->*tile->Vfptr->At_9C)();
+                if (!image)
+                    continue;
+                int index = height;
+                int last = image->Width * image->Height - 1;
+                if (index >= last)
+                    index = last;
+                SubTileImage* subTile = image->SubTiles[index];
+                if (!subTile || !(subTile->unknown_bits & 1))
+                    continue;
+            } else if (!draw) {
+                continue;
+            }
+            // x/y remain full integers above; the native draw path explicitly
+            // sign-extends their low shorts before constructing the center.
+            CellStruct drawCoordinate;
+            drawCoordinate.X = x;
+            drawCoordinate.Y = y;
+            CoordStruct drawCenter;
+            drawCenter.X = (drawCoordinate.X * 256 + 128) / 256 * 256;
+            drawCenter.Y = (drawCoordinate.Y * 256 + 128) / 256 * 256;
+            drawCenter.Z = 0;
+            Pair_006D9F80 rawTemporary;
+            Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(drawCenter.X, drawCenter.Y);
+            int screenX = raw.unknown_00 / 256;
+            int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(0);
+            Point2D drawPosition(screenX - unknown_B0.unknown_00 - 30,
+                                 screenY - unknown_B0.unknown_04);
+            MapInstance.FUN_005657A0(&drawCoordinate)->FUN_00480350(
+                &drawPosition, &Viewport_00886FA0, 0);
+        }
+    }
 }
 
 // Entry-origin retail disassembly: 619 bytes through 6D84CA. REA's current

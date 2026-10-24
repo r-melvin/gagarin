@@ -2513,6 +2513,7 @@
  "?DAT_00A8ED28@@3V?$DynamicVectorClass@PAVIsometricTileTypeClass@@@@A": "0x00A8ED28",
  "?DAT_00A8ED28@@3V?$MapObjDynVector@PAVMapObjTypeClassView@@@@A": "0x00A8ED28",
  "?DAT_00A8ED2C@@3PAHA": "0x00A8ED2C",
+ "?DAT_00A8ED2C@@3PAPAVIsometricTileTypeClass@@A": "0x00A8ED2C",
  "?DAT_00A8ED38@@3HA": "0x00A8ED38",
  "?DAT_00A8ED40@@3V?$DynamicVectorClass@PAVBulletClass@@@@A": "0x00A8ED40",
  "?DAT_00A8ED5C@@3_NA": "0x00A8ED5C",
