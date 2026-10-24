@@ -58851,34 +58851,34 @@
   "pct": 100
  },
  {
-  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "tu": "match/ui/tu221_static_button_class.cpp",
   "addr": "0x6C6640",
   "sym": "?Draw@StaticButtonClass@@UAEHH@Z",
   "len": "0x38",
   "name": "StaticButtonClass::Draw",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "tu": "match/ui/tu221_static_button_class.cpp",
   "addr": "0x6C6680",
   "sym": "?SetText@StaticButtonClass@@UAEXPBG_N@Z",
   "len": "0xB1",
   "name": "StaticButtonClass::SetText",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "tu": "match/ui/tu221_static_button_class.cpp",
   "addr": "0x6C6740",
   "sym": "?vf_34@StaticButtonClass@@UAEXXZ",
   "len": "0xA6",
   "name": "StaticButtonClass::vf_34",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/input_controls/controls_static_button.cpp",
+  "tu": "match/ui/tu221_static_button_class.cpp",
   "addr": "0x6C67F0",
   "sym": "?DrawText@StaticButtonClass@@UAEXPBG@Z",
   "len": "0x89",
