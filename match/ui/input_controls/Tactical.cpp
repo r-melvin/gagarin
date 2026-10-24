@@ -1647,6 +1647,75 @@ void Tactical::FUN_006D9920(bool force, const RectangleStruct* view, const Recta
     }
 }
 
+#include "../../_layout/building_array.h"
+
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1700) + sizeof(bool) == 0x1701);
+
+// FUNCTION: GAMEMD 0x6D9B50
+bool Tactical::FUN_006D9B50(RectangleStruct viewport)
+{
+    const int left = unknown_B0.unknown_00 + viewport.X;
+    const int top = unknown_B0.unknown_04 + viewport.Y;
+    const int right = unknown_B0.unknown_00 + viewport.Width + viewport.X;
+    const int bottom = unknown_B0.unknown_04 + viewport.Height + viewport.Y;
+    for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+        BuildingClass* building = DAT_00A8EB40.Items[index];
+        // Native byte tests at 0x6D9BAB/+0x90,0x6D9BB9/+0x80,0x6D9BC7/+0x74.
+        // The canonical ObjectClass header already asserts all three offsets.
+        if (building->IsAlive && building->NeedsRedraw && building->IsOnMap) {
+            CoordStruct coordinate = building->vf_43();
+            Point2D projected;
+            projected.X = coordinate.X * 60 / 2;
+            projected.Y = coordinate.X * 30 / 2;
+            projected.X += coordinate.Y * -60 / 2;
+            projected.Y += coordinate.Y * 30 / 2;
+            const int screenX = projected.X / 256;
+            const int screenY = projected.Y / 256 - AdjustForZ(coordinate.Z);
+            if (screenX >= left && screenX <= right && screenY >= top && screenY <= bottom)
+                return true;
+        }
+    }
+    return false;
+}
+
+// FUNCTION: GAMEMD 0x6D9CE0
+void Tactical::FUN_006D9CE0(int x, int y, int width, int height)
+{
+    int left = unknown_B0.unknown_00 + x;
+    int top = unknown_B0.unknown_04 + y;
+    int right = unknown_B0.unknown_00 + width + x;
+    int bottom = unknown_B0.unknown_04 + height + y;
+    for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+        BuildingClass* building = DAT_00A8EB40.Items[index];
+        if (building->IsAlive && building->IsOnMap && !building->Type->bools_1700[1]) {
+            // Native reads Location directly; do not replace with vf43.
+            CoordStruct coordinate = building->Location;
+            Point2D projected;
+            projected.X = coordinate.X * 60 / 2;
+            projected.Y = coordinate.X * 30 / 2;
+            projected.X += coordinate.Y * -60 / 2;
+            projected.Y += coordinate.Y * 30 / 2;
+            int screenX = projected.X / 256;
+            int screenY = projected.Y / 256 - AdjustForZ(coordinate.Z);
+            if (screenX >= left && screenX <= right && screenY >= top && screenY <= bottom) {
+                int clientX = screenX - unknown_B0.unknown_00;
+                int clientY = screenY - unknown_B0.unknown_04;
+                if (unknown_DB0 != 500 && clientX >= -32 && clientX <= Viewport_00886FA0.Width + 32 &&
+                    clientY >= -32 && clientY <= Viewport_00886FA0.Height + 32) {
+                    DAT_00B0CEC8[unknown_DB0].unknown_00 = building;
+                    int originX = unknown_B0.unknown_00;
+                    int originY = unknown_B0.unknown_04;
+                    // Native6D9EA4 captures one index for both coordinate stores.
+                    int recordIndex = unknown_DB0;
+                    DAT_00B0CEC8[recordIndex].unknown_04 = originX + clientX;
+                    DAT_00B0CEC8[recordIndex].unknown_08 = originY + clientY;
+                    ++unknown_DB0;
+                }
+            }
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D9F80
 void Tactical::FUN_006D9F80(const Pair_006D9F80* value)
 {

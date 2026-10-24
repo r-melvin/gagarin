@@ -142,7 +142,7 @@ extern const char STR_00829F1C[]; // STRING: GAMEMD 0x829F1C
 extern const char STR_008262F0[]; // STRING: GAMEMD 0x8262F0
 
 extern int DAT_00A8E7AC; // GLOBAL: GAMEMD 0x00A8E7AC
-extern DynamicVectorClass<BuildingClass*> DAT_00A8EB40; // GLOBAL: GAMEMD 0x00A8EB40
+#include "../_layout/building_array.h"
 extern int HouseClass_ArrayCount; // GLOBAL: GAMEMD 0x00A80238
 extern TiberiumClass** TiberiumArrayItems; // GLOBAL: GAMEMD 0x00B0F4EC
 extern ParticleCoord DAT_00B05488; // GLOBAL: GAMEMD 0x00B05488
