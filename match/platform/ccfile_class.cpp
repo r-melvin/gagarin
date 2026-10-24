@@ -96,6 +96,12 @@ CCFileClass::CCFileClass(const char* pFileName) :
     CDFileClass::SetFileName(pFileName);
 }
 
+// FUNCTION: GAMEMD 0x473A80
+CCFileClass::CCFileClass() : Buffer(0, 0), Position(0)
+{
+    Availability = 0;
+}
+
 // FUNCTION: GAMEMD 0x473CE0  (__thiscall)
 // CCFileClass::Close — drop the in-memory buffer, reset Position, close the
 // underlying buffered file.

@@ -196,6 +196,8 @@ bool __fastcall MixFileClass_Offset(const char* filename, void** data,
 class CCFileClass : public CDFileClass
 {
 public:
+    // Declaration: GAMEMD 0x473A80 -- no arguments, ECX receiver, RET.
+    CCFileClass();
     // FUNCTION: GAMEMD 0x4739F0
     CCFileClass(const char* pFileName);
     // FUNCTION: GAMEMD 0x473A30 (decl; reloc) -- the name from a Obj_007B4620

@@ -9,6 +9,8 @@
 #include "../_rt/gg_static_assert.h"
 #include "../core/vector_class.h"
 #include "ipx_address_class.h"
+#include "session_record.h"
+#include "elapsed_timer.h"
 #include "game_mode_options.h"
 #include "../platform/ccfile_class.h"
 #include "../ui/message_list_class_methods.h"
@@ -41,13 +43,16 @@ struct SessionProfile_00697F10
 
 struct SessionClass
 {
+    // Declaration: GAMEMD 0x6970A0 -- ECX receiver, no arguments, RET.
+    SessionClass();
     // Declaration: GAMEMD 0x697840 -- ECX receiver, no arguments, RET.
     ~SessionClass();
     // Declaration: GAMEMD 0x69A1F0 -- ECX receiver, no arguments, RET.
     void FUN_0069A1F0();
     int  GameMode;              // +0x0000
     MultiplayerGameMode* unknown_04; // 0x69B910, virtual slots27/28
-    char unknown_08[0x18 - 8];
+    char unknown_08[4];
+    int unknown_0C, unknown_10, unknown_14;
     GameModeOptionsClass_Opt unknown_18; // native receiver 0xA8B250
     unsigned long unknown_144; // native 0x697B41 stores the mixed DWORD
     char unknown_148[0x15C - 0x148]; // string storage; logical capacity unknown
@@ -64,44 +69,71 @@ struct SessionClass
     SessionProfile_00697F10 unknown_208;
     SessionProfile_00697F10 unknown_284;
     int unknown_300; // native698F19 DWORD
-    char unknown_304[4];
+    int unknown_304;
     bool unknown_308;
     char unknown_309[3];
     int unknown_30C;
-    char unknown_310[4];
+    int unknown_310;
     int unknown_314; // native698D02 live player count
     int unknown_318; // native698E27 DWORD
-    char unknown_31C[0x680 - 0x31C];
+    int unknown_31C;
+    char unknown_320[0x330 - 0x320];
+    int unknown_330, unknown_334, unknown_338;
+    SessionRecord_0000033C unknown_33C[8];
+    bool unknown_67C, unknown_67D;
+    char unknown_67E[2];
     int unknown_680; // native698E39 DWORD
-    char unknown_684[4];
+    int unknown_684;
     unsigned char unknown_688; // native69B17D/69B4D4 stores0/1
-    char unknown_689[0x690 - 0x689];
+    bool unknown_689, unknown_68A;
+    char unknown_68B[5];
     DynamicVectorClass<MultiMission*> unknown_690; // nativeItemsA8B8CC
     // String starts6A8; storage through next known field, logical capacity unknown.
-    char unknown_6A8[0x8E4 - 0x6A8];
+    char unknown_6A8[0x8CC - 0x6A8];
+    int unknown_8CC;
+    bool unknown_8D0;
+    char unknown_8D1[3];
+    int unknown_8D4;
+    char unknown_8D8[0x8E4 - 0x8D8];
     IPXAddressClass unknown_8E4; // native698DBB receiverA8BB1C
     DynamicVectorClass<GlobalPacketType*> unknown_8F0;
-    char unknown_908[0xA28 - 0x908];
+    int unknown_908[8];
+    int unknown_928[0x40];
     MessageListClass unknown_A28;
-    char unknown_1EC4[0x1ED8 - 0x1EC4];
+    IPXAddressClass unknown_1EC4;
+    char unknown_1ED0[8];
     // ReadBool results stored by 0x698387/3B8/3C3/3E4; constructor
     // 0x6974A3/4AA/4B1/4BA initializes each to true. Written by 0x699450.
     bool unknown_1ED8;
     bool unknown_1ED9;
-    char unknown_1EDA[0x1FC0 - 0x1EDA];
+    unsigned short unknown_1EDA;
+    char unknown_1EDC[0x1FBC - 0x1EDC];
+    unsigned int unknown_1FBC;
     bool unknown_1FC0;
     bool unknown_1FC1;
     char unknown_1FC2[0x2354 - 0x1FC2];
     CCFileClass unknown_2354;
     int unknown_23C0;
-    char unknown_23C4[0x280C - 0x23C4];
+    int unknown_23C4;
+    IPXAddressClass unknown_23C8;
+    bool unknown_23D4, unknown_23D5, unknown_23D6;
+    char unknown_23D7;
+    unsigned short unknown_23D8;
+    char unknown_23DA[0x25CC - 0x23DA];
+    IPXAddressClass unknown_25CC;
+    unsigned short unknown_25D8;
+    char unknown_25DA[0x2808 - 0x25DA];
+    int unknown_2808;
     DynamicVectorClass<NodeNameType*> unknown_280C;
     DynamicVectorClass<NodeNameType*> unknown_2824;
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
     DynamicVectorClass<NodeNameType*> unknown_283C;
     char unknown_2854[4];
     NodeNameType* unknown_2858[8]; // native69C290/69C362
-    char unknown_2878[0x2884 - 0x2878];
+    bool unknown_2878;
+    char unknown_2879[3];
+    int unknown_287C;
+    unsigned int unknown_2880;
     int unknown_2884;
     int unknown_2888;
     int unknown_288C;
@@ -119,14 +151,21 @@ struct SessionClass
     DynamicVectorClass<char*> unknown_2914;
     // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
     DynamicVectorClass<const unsigned short*> unknown_292C;
-    char unknown_2944[0x2968 - 0x2944];
+    char unknown_2944[0x2964 - 0x2944];
+    int unknown_2964;
     unsigned char unknown_2968; // native697DD2 byte store
-    char unknown_2969[0x2994 - 0x2969];
+    char unknown_2969[3];
+    IPXAddressClass unknown_296C, unknown_2978;
+    unsigned short unknown_2984;
+    char unknown_2986[2];
+    IPXAddressClass unknown_2988;
     IPXAddressClass unknown_2994[8]; // native69C362/69C40A: stride0xC
     char unknown_29F4[0x2E28 - 0x29F4];
     char unknown_2E28[8][0x24]; // zero288bytes69BDBA; string record stride0x24
     bool unknown_2F48;
-    char unknown_2F49[0x2FF0 - 0x2F49];
+    char unknown_2F49[0x2F8C - 0x2F49];
+    ScenarioElapsedTimer unknown_2F8C[8];
+    char unknown_2FEC[4];
     int unknown_2FF0;
     int unknown_2FF4;
     int unknown_2FF8[8]; // native69C095, scale4
@@ -134,7 +173,9 @@ struct SessionClass
     char unknown_3019[3];
     int unknown_301C;
     // UTF16 storage region before3074; logical string capacity unconfirmed.
-    wchar_t unknown_3020[0x54 / 2]; // 0x697EAB passes its address to_wcsicmp
+    wchar_t unknown_3020[0x4C / 2]; // 0x697EAB passes its address to_wcsicmp
+    unsigned short unknown_306C, unknown_306E, unknown_3070;
+    char unknown_3072[2];
     int unknown_3074; // 0x697E8E, -1 sentinel
     char unknown_3078[2];
     unsigned short unknown_307A[8]; // 0x69BBF0: LEA [ECX+EDX*2+0x307A], limit7
@@ -145,10 +186,11 @@ struct SessionClass
     int unknown_3094; // native697DE9
     char unknown_3098[4];
     int unknown_309C; // native697DDF
-    char unknown_30A0[0x30AC - 0x30A0];
+    int unknown_30A0, unknown_30A4, unknown_30A8;
     int unknown_30AC;
     int unknown_30B0;
-    char unknown_30B4[0x30C4 - 0x30B4];
+    int unknown_30B4;
+    unsigned int unknown_30B8, unknown_30BC, unknown_30C0;
     int unknown_30C4;
     unsigned char unknown_30C8;
     char unknown_30C9[3];
@@ -403,4 +445,109 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30D0) == 0x30D0);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30D0) == 4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30D4) == 0x30D4);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30D4) == 4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_0C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_10) == 0x10);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_10) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_14) == 0x14);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_14) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_304) == 0x304);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_304) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_310) == 0x310);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_310) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_31C) == 0x31C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_31C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_330) == 0x330);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_330) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_334) == 0x334);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_334) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_338) == 0x338);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_338) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_684) == 0x684);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_684) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8CC) == 0x8CC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_8CC) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8D4) == 0x8D4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_8D4) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1FBC) == 0x1FBC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1FBC) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23C4) == 0x23C4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23C4) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2808) == 0x2808);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2808) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_287C) == 0x287C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_287C) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2880) == 0x2880);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2880) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2964) == 0x2964);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2964) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2984) == 0x2984);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2984) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30A0) == 0x30A0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30A0) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30A4) == 0x30A4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30A4) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30A8) == 0x30A8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30A8) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30B4) == 0x30B4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B4) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30B8) == 0x30B8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30B8) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30BC) == 0x30BC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30BC) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_30C0) == 0x30C0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_30C0) == 0x4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_67C) == 0x67C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_67C) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_67D) == 0x67D);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_67D) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_689) == 0x689);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_689) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_68A) == 0x68A);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_68A) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8D0) == 0x8D0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_8D0) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23D4) == 0x23D4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23D4) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23D5) == 0x23D5);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23D5) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23D6) == 0x23D6);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23D6) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2878) == 0x2878);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2878) == 0x1);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1EDA) == 0x1EDA);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1EDA) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23D8) == 0x23D8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23D8) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_25D8) == 0x25D8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_25D8) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_306C) == 0x306C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_306C) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_306E) == 0x306E);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_306E) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_3070) == 0x3070);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_3070) == 0x2);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_1EC4) == 0x1EC4);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_1EC4) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_23C8) == 0x23C8);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_23C8) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_25CC) == 0x25CC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_25CC) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_296C) == 0x296C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_296C) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2978) == 0x2978);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2978) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2988) == 0x2988);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2988) == 0xC);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_33C) == 0x33C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_33C) == 0x340);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_908) == 0x908);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_908) == 0x20);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_928) == 0x928);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_928) == 0x100);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2F8C) == 0x2F8C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2F8C) == 0x60);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_33C) + offsetof(SessionRecord_0000033C, unknown_5C) == 0x398);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_33C) + 7 * sizeof(SessionRecord_0000033C) + offsetof(SessionRecord_0000033C, unknown_5C) == 0x670);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2F8C) + 7 * sizeof(ScenarioElapsedTimer) == 0x2FE0);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H

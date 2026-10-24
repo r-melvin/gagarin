@@ -10761,11 +10761,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/small_misc17_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473A80",
-  "sym": "?FUN_00473A80@Obj_00473A80@@QAEPAU1@XZ",
+  "sym": "??0CCFileClass@@QAE@XZ",
   "len": "0x2c",
-  "name": "FUN_00473A80",
+  "name": "CCFile default constructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -98452,5 +98452,14 @@
   "name": "Session initializer",
   "status": "partial",
   "pct": 51.4
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x6970A0",
+  "sym": "??0SessionClass@@QAE@XZ",
+  "len": "0x716",
+  "name": "Session constructor",
+  "status": "partial",
+  "pct": 87.9
  }
 ]

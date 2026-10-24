@@ -806,6 +806,156 @@ SessionProfile_00697F10::SessionProfile_00697F10()
     }
 }
 
+// GLOBAL: GAMEMD 0xB73E44 -- observed written/read extent only.
+extern unsigned int DAT_00B73E44[0x800];
+// GLOBAL: GAMEMD 0xB76338 -- observed written/read extent only.
+extern unsigned int DAT_00B76338[0x40];
+// GLOBAL: GAMEMD 0xB07740 -- observed written/read extent only.
+extern unsigned int DAT_00B07740;
+// GLOBAL: GAMEMD 0xB07744 -- observed written/read extent only.
+extern unsigned int DAT_00B07744;
+// GLOBAL: GAMEMD 0xB07748 -- observed written/read extent only.
+extern unsigned int DAT_00B07748;
+extern const char STR_0083EEAC[]; // STRING: GAMEMD 0x83EEAC (decl; reloc)
+extern const char STR_00889F64[]; // STRING: GAMEMD 0x889F64 (decl; reloc)
+
+// FUNCTION: GAMEMD 0x6970A0
+SessionClass::SessionClass()
+    : unknown_04(0) // Declared before profile/record members: native early store.
+{
+    int index;
+    unknown_30C8 = 0;
+    GameMode = 0;
+    unknown_14 = 2;
+    unknown_18.unknown_04 = 0;
+    unknown_18.Bases = true;
+    unknown_18.Money = 0;
+    unknown_18.BridgeDestruction = false;
+    unknown_18.Crates = false;
+    unknown_18.unknown_1D = false;
+    unknown_18.UnitCount = 0;
+    unknown_18.ShortGame = false;
+    unknown_18.SWAllowed = false;
+    unknown_18.unknown_14 = false;
+    unknown_18.GameSpeed = 0;
+    unknown_18.MultiEngineer = false;
+    unknown_18.unknown_CC = false;
+    unknown_18.HarvesterTruce = false;
+    unknown_18.unknown_CE = false;
+    unknown_18.FogOfWar = false;
+    unknown_18.MCVRedeploy = false;
+    unknown_18.AIDifficulty = 1;
+    unknown_144 = 0;
+    unknown_148[0] = 0;
+    unknown_174 = 0;
+    unknown_178 = -1;
+    unknown_15C = 2;
+    unknown_160 = -1;
+    unknown_184 = unknown_174;
+    unknown_188 = unknown_178;
+    unknown_17C = unknown_15C;
+    unknown_180 = unknown_160;
+    unknown_1ED9 = true;
+    unknown_1ED8 = true;
+    unknown_1FC1 = true;
+    unknown_1FC0 = true;
+    for (index = 0; index < 8; ++index) unknown_307A[index] = 0;
+    unknown_3078[0] = 0;
+    unknown_306C = 0;
+    unknown_306E = 0;
+    unknown_3070 = 0;
+    unknown_2FF0 = 1250;
+    unknown_2FF4 = 0;
+    unknown_3018 = true;
+    unknown_2F48 = false;
+    unknown_301C = 0;
+    for (index = 0; index < 0x800; ++index) DAT_00B73E44[index] = 0;
+    for (index = 0; index < 0x40; ++index) DAT_00B76338[index] = 0;
+    unknown_300 = 0;
+    unknown_304 = 0;
+    unknown_30C = -1;
+    unknown_308 = false;
+    unknown_2968 = false;
+    unknown_3074 = -1;
+    // Exactly42 bytes, not the entire older54hex-byte opaque UTF16 region.
+    for (index = 0; index < 21; ++index) unknown_3020[index] = 0;
+    unknown_308C = 0;
+    unknown_3090 = true;
+    unknown_3094 = -1;
+    unknown_3098[0] = 0;
+    unknown_309C = 20;
+    unknown_30A0 = 0;
+    unknown_30A4 = 0;
+    unknown_30A8 = -1;
+    unknown_2984 = 0;
+    unknown_688 = false;
+    unknown_689 = false;
+    unknown_68A = false;
+    unknown_310 = 8;
+    unknown_318 = 15;
+    unknown_330 = 15;
+    unknown_314 = 0;
+    unknown_31C = 5;
+    // Exact native bulk range[33C,67C), after embedded address construction.
+    // No vptrs; physical array extent is proved. Not a whole-Session clear.
+    memset(unknown_33C, 0, sizeof unknown_33C);
+    unknown_334 = 0;
+    unknown_338 = 0;
+    unknown_67C = false;
+    unknown_67D = false;
+    unknown_680 = 0;
+    unknown_684 = 0;
+    unknown_1EDA = 0;
+    // Mask behavior only: owning bitfield/state model remains unresolved.
+    unknown_1FBC &= 0xFFFFFFFEu;
+    unknown_2354.SetFileName(STR_0083EEAC);
+    unknown_23C0 &= 0xFFFFFFF8u;
+    unknown_23C4 = 0;
+    unknown_23D4 = false;
+    unknown_23D5 = true;
+    unknown_23D6 = false;
+    unknown_23D8 = 0;
+    unknown_25D8 = 0;
+    unknown_287C = 0;
+    unknown_2964 = 1;
+    unknown_2808 = 558;
+    memset(unknown_908, 0, sizeof unknown_908);
+    memset(unknown_928, 0xFF, sizeof unknown_928);
+    unknown_2880 |= 1u;
+    unknown_2884 = 0;
+    unknown_2888 = 0x2F8;
+    unknown_288C = 3;
+    unknown_2890 = 9600;
+    unknown_2894 = 0;
+    unknown_2898 = -1;
+    unknown_289C = 0;
+    strcpy(unknown_28A8, STR_00889F64);
+    unknown_28F8 = 0;
+    unknown_30AC = 0x7FFFFFFF;
+    unknown_30B0 = 0;
+    unknown_30B4 = 0;
+    // Preserve three global reads, even though initial image values are zero.
+    unknown_30B8 = DAT_00B07740;
+    unknown_30BC = DAT_00B07744;
+    unknown_30C0 = DAT_00B07748;
+    unknown_30C8 = 0; // Second native write retained.
+    unknown_30CC = 0;
+    unknown_30D0 = 0;
+    unknown_30D4 = 0;
+    unknown_2878 = false;
+    unknown_18.AIPlayers = 0;
+    for (index = 0; index < 8; ++index) {
+        unknown_18.unknown_4C[index] = -1;
+        unknown_18.unknown_6C[index] = -1;
+    }
+    unknown_0C = 0;
+    unknown_10 = 0;
+    unknown_6A8[0] = 0;
+    unknown_8CC = 0;
+    unknown_8D0 = false;
+    unknown_8D4 = 0;
+}
+
 // FUNCTION: GAMEMD 0x6977C0
 void SessionClass::FUN_006977C0()
 {
