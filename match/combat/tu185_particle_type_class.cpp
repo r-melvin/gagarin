@@ -724,7 +724,6 @@ extern "C" Type_006A46D0** DAT_008B4124;
 
 #include "../core/vector_class_operations.h"
 
-struct RGBClass { unsigned char R; unsigned char G; unsigned char B; RGBClass() : R(0), G(0), B(0) {} bool operator==(const RGBClass& o) const { return R==o.R && G==o.G && B==o.B; } bool operator!=(const RGBClass& o) const { return !(*this==o); } };
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718
@@ -994,10 +993,7 @@ int ParticleTypeClass::vf_35(int a)
 // SYNTHETIC: GAMEMD 0x645950
 // Scalar deleting destructor emitted from the inline ParticleTypeClass destructor.
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x00645A70
-// Constructor (capacity, optional storage) of the vector of RGBClass colours.
-template class DynamicVectorClass<RGBClass>;
+// RGB vector providers are owned by vector_color_slot_methods.cpp.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x00645B60

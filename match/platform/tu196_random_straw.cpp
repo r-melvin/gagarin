@@ -278,18 +278,7 @@ GG_STATIC_ASSERT(offsetof(HSVClass, Hue) == 0);
 GG_STATIC_ASSERT(offsetof(HSVClass, Saturation) == 1);
 GG_STATIC_ASSERT(offsetof(HSVClass, Value) == 2);
 
-class RGBClass
-{
-public:
-    unsigned char Red;          // +0x00
-    unsigned char Green;        // +0x01
-    unsigned char Blue;         // +0x02
-
-    HSVClass FUN_006613A0() const;
-};
-GG_STATIC_ASSERT(offsetof(RGBClass, Red) == 0);
-GG_STATIC_ASSERT(offsetof(RGBClass, Green) == 1);
-GG_STATIC_ASSERT(offsetof(RGBClass, Blue) == 2);
+#include "../_layout/rgb_class.h"
 
 #include "../core/vector_class_operations.h"
 

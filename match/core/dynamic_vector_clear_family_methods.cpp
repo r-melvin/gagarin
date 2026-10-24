@@ -129,7 +129,6 @@ class PlanningMemberClass;
 class PlanningNodeClass;
 class PlanningTokenClass;
 class Point2D;
-class RGBClass;
 class RadBeam;
 class RadSiteClass;
 struct RadarTrackingStruct;
@@ -203,12 +202,7 @@ struct tagCONNECTDATA;
 
 // Legacy CountedVector<DiskID> remains an isolated stand-in; canonical layout assertions are in vector_class_layout_asserts.cpp.
 
-// FUNCTION: GAMEMD 0x00477900
-// DynamicVectorClass<RGBClass> -- vtable 0x007F022C slot 3; locator 0x00808328 -> type descriptor 0x0081C140
-//   `.?AV?$DynamicVectorClass@VRGBClass@@@@`.
-//   The same body also sits at that slot in TypeList<RGBClass> (0x007E4E58); DynamicVectorClass<RGBClass> is the
-//   base of those, so the slot is declared here (batch fifty-seven).
-template class DynamicVectorClass<RGBClass>;
+// RGB providers are owned by vector_color_slot_methods.cpp.
 
 // Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 

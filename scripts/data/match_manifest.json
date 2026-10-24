@@ -13714,7 +13714,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/dynamic_vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x00477900",
   "sym": "?Clear@?$DynamicVectorClass@VRGBClass@@@@UAEXXZ",
   "len": "0x2a",
@@ -15631,9 +15631,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x00477AC0",
-  "sym": "??_G?$VectorClass@VRGBClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$TypeList@VRGBClass@@@@UAEPAXI@Z",
   "len": "0x49",
   "name": "TypeList<RGBClass>::`scalar deleting destructor'",
   "status": "matched",
@@ -15667,7 +15667,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x004786D0",
   "sym": "??_G?$VectorClass@VRGBClass@@@@UAEPAXI@Z",
   "len": "0x49",
@@ -17890,9 +17890,9 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x00645B10",
-  "sym": "??_G?$VectorClass@VRGBClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VRGBClass@@@@UAEPAXI@Z",
   "len": "0x49",
   "name": "DynamicVectorClass<RGBClass>::`scalar deleting destructor'",
   "status": "matched",
@@ -19105,7 +19105,7 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_clear_family_methods.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x00478440",
   "sym": "?Clear@?$VectorClass@VRGBClass@@@@UAEXXZ",
   "len": "0x27",
@@ -75140,7 +75140,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x477930",
-  "sym": "?Slot5@?$DynamicVectorClass@URGBClass@@@@UBEHPAURGBClass@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VRGBClass@@@@UBEHPAVRGBClass@@@Z",
   "len": "0x23",
   "name": "DynamicVectorClass<RGBClass>::Slot5",
   "status": "matched",
@@ -75149,7 +75149,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x477960",
-  "sym": "?Slot6@?$VectorClass@URGBClass@@@@UBE?AURGBClass@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VRGBClass@@@@UBE?AVRGBClass@@H@Z",
   "len": "0x25",
   "name": "VectorClass<RGBClass>::Slot6",
   "status": "matched",
@@ -75158,7 +75158,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x4782E0",
-  "sym": "??8?$VectorClass@URGBClass@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VRGBClass@@@@UBE_NABV0@@Z",
   "len": "0x5e",
   "name": "VectorClass<RGBClass>::operator==",
   "status": "matched",
@@ -75167,7 +75167,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x478340",
-  "sym": "?SetCapacity@?$VectorClass@URGBClass@@@@UAE_NHPAURGBClass@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VRGBClass@@@@UAE_NHPAVRGBClass@@@Z",
   "len": "0xf2",
   "name": "VectorClass<RGBClass>::SetCapacity",
   "status": "matched",
@@ -75176,7 +75176,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x478470",
-  "sym": "?FindItemIndex@?$VectorClass@URGBClass@@@@UBEHABURGBClass@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VRGBClass@@@@UBEHABVRGBClass@@@Z",
   "len": "0x49",
   "name": "VectorClass<RGBClass>::FindItemIndex",
   "status": "matched",
@@ -75185,7 +75185,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x4784C0",
-  "sym": "?Slot5@?$VectorClass@URGBClass@@@@UBEHPAURGBClass@@@Z",
+  "sym": "?Slot5@?$VectorClass@VRGBClass@@@@UBEHPAVRGBClass@@@Z",
   "len": "0x23",
   "name": "VectorClass<RGBClass>::Slot5",
   "status": "matched",
@@ -75194,7 +75194,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x4784F0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@URGBClass@@@@UAE_NHPAURGBClass@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VRGBClass@@@@UAE_NHPAVRGBClass@@@Z",
   "len": "0xf8",
   "name": "DynamicVectorClass<RGBClass>::SetCapacity",
   "status": "matched",
@@ -75203,7 +75203,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x4785F0",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@URGBClass@@@@UBEHABURGBClass@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VRGBClass@@@@UBEHABVRGBClass@@@Z",
   "len": "0x3a",
   "name": "DynamicVectorClass<RGBClass>::FindItemIndex",
   "status": "matched",
@@ -93027,7 +93027,7 @@
  {
   "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x478850",
-  "sym": "??0?$VectorClass@URGBClass@@@@QAE@HPAURGBClass@@@Z",
+  "sym": "??0?$VectorClass@VRGBClass@@@@QAE@HPAVRGBClass@@@Z",
   "len": "0x88",
   "name": "VectorClass<RGBClass>::VectorClass",
   "status": "matched",
@@ -93781,9 +93781,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/combat/tu185_particle_type_class.cpp",
+  "tu": "match/core/vector_color_slot_methods.cpp",
   "addr": "0x645A70",
-  "sym": "??0?$DynamicVectorClass@URGBClass@@@@QAE@HPAURGBClass@@@Z",
+  "sym": "??0?$DynamicVectorClass@VRGBClass@@@@QAE@HPAVRGBClass@@@Z",
   "len": "0x94",
   "name": "DynamicVectorClass<RGBClass>::DynamicVectorClass<RGBClass>",
   "status": "matched",

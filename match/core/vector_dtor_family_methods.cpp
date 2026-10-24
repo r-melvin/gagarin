@@ -120,7 +120,6 @@ class PlanningMemberClass;
 class PlanningNodeClass;
 class PlanningTokenClass;
 class Point2D;
-class RGBClass;
 class RadBeam;
 class RadSiteClass;
 struct RadarTrackingStruct;
@@ -202,17 +201,7 @@ struct tagCONNECTDATA;
 //   pair_vector_ctor_family_methods.cpp.
 template class VectorClass<SubzoneConnectionStruct>;
 
-// FUNCTION: GAMEMD 0x00477AC0
-// TypeList<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007E4E58)
-// FUNCTION: GAMEMD 0x004786D0
-// VectorClass<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007E4E38)
-// FUNCTION: GAMEMD 0x00645B10
-// DynamicVectorClass<RGBClass>::`scalar deleting destructor' (slot 0 of 0x007F022C)
-//   Three distinct retail functions with the same relocated bytes, one per class vtable; the model
-//   below is VectorClass<RGBClass>.
-// VectorClass<RGBClass> -- reseats retail vtable 0x007E4E38; locator 0x007FCF90 -> type descriptor 0x0081C198
-//   `.?AV?$VectorClass@VRGBClass@@@@`.
-template class VectorClass<RGBClass>;
+// RGB providers are owned by vector_color_slot_methods.cpp.
 
 // FUNCTION: GAMEMD 0x00488030
 // FUNCTION: GAMEMD 0x004AEB50

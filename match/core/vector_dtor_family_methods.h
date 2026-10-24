@@ -28,8 +28,6 @@ extern "C" void __cdecl gg_free(void* block);
 // own complete object locator four bytes below it.
 // VTABLE: GAMEMD 0x007E4DB8 -- VectorClass<int>
 extern char VT_007E4DB8;
-// VTABLE: GAMEMD 0x007E4E38 -- VectorClass<RGBClass>
-extern char VT_007E4E38;
 // VTABLE: GAMEMD 0x007E192C -- VectorClass<ObjectClass*>
 extern char VT_007E192C;
 // VTABLE: GAMEMD 0x007E5C84 -- VectorClass<tagCONNECTDATA>

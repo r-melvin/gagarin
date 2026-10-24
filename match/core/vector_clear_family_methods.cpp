@@ -130,7 +130,6 @@ class PlanningMemberClass;
 class PlanningNodeClass;
 class PlanningTokenClass;
 class Point2D;
-class RGBClass;
 class RadBeam;
 class RadSiteClass;
 struct RadarTrackingStruct;
@@ -210,10 +209,7 @@ struct tagCONNECTDATA;
 //   `.?AV?$VectorClass@USubzoneConnectionStruct@@@@`.
 template class VectorClass<SubzoneConnectionStruct>;
 
-// FUNCTION: GAMEMD 0x00478440
-// VectorClass<RGBClass> -- vtable 0x007E4E38 slot 3; locator 0x007FCF90 -> type descriptor 0x0081C198
-//   `.?AV?$VectorClass@VRGBClass@@@@`.
-template class VectorClass<RGBClass>;
+// RGB providers are owned by vector_color_slot_methods.cpp.
 
 // Nested char-vector instantiation moved to vector_nested_char_methods.cpp.
 
