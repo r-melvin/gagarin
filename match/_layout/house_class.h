@@ -53,6 +53,8 @@ class WaypointClass;
 #include "foot_class.h"       // CellStruct
 #include "vector_class.h"     // DynamicVectorClass
 #include "components.h"       // ColorStruct
+#include "../core/vector_class.h"
+class BuildingClass;
 
 // --- opaque blocks whose SIZE is proven but whose fields are not named -------
 // Each size is proven by closure between two confirmed neighbours in the ctor.
@@ -158,7 +160,7 @@ public:
     HouseTypeClass* Type;                  // +0x34 ctor MOV [EBP+0x34],EAX(=arg) @0x004F54C2
     DynamicVectorClassLayout RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
     DynamicVectorClassLayout ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
-    DynamicVectorClassLayout Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
+    DynamicVectorClass<BuildingClass*> Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
     DynamicVectorClassLayout UnitRepairStations;          // +0x80  ctor LEA ESI @0x004F550B
     DynamicVectorClassLayout Grinders;                    // +0x98  ctor LEA ESI @0x004F5526
     DynamicVectorClassLayout Absorbers;                   // +0xB0  ctor LEA ESI @0x004F5541
@@ -442,6 +444,10 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(HouseClass, TechLevel) == 0x1D4); // 0x6886B0 accesses
+GG_STATIC_ASSERT(offsetof(HouseClass, Buildings) == 0x68);
+GG_STATIC_ASSERT(offsetof(HouseClass, Buildings.Items) == 0x6C);
+GG_STATIC_ASSERT(offsetof(HouseClass, Buildings.Count) == 0x78);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->Buildings) == 0x18);
 GG_STATIC_ASSERT(offsetof(HouseClass, ArrayIndex)                 == 0x30);
 GG_STATIC_ASSERT(offsetof(HouseClass, Type)                       == 0x34);
 GG_STATIC_ASSERT(offsetof(HouseClass, RelatedTags)                == 0x38);

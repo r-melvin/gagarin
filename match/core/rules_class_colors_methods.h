@@ -20,17 +20,7 @@
 #include "../_rt/gg_static_assert.h"
 
 // ColorStruct -- packed RGB triple (no padding; size = 3).
-struct ColorStruct
-{
-    unsigned char R;   // +0x00
-    unsigned char G;   // +0x01
-    unsigned char B;   // +0x02
-
-    ColorStruct() {}
-    // FUNCTION: GAMEMD 0x4355B0 -- the three-byte ctor, inlined here.
-    ColorStruct(unsigned char r, unsigned char g, unsigned char b)
-        : R(r), G(g), B(b) {}
-};
+#include "../_layout/color_struct.h"
 GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
 GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);
 

@@ -35,9 +35,14 @@ public:
     char _pad_98[0xB8 - 0x98];   // +0x98  ArrayIndex..Type (P2)
     int  unknown_B8;             // +0xB8; read by SidebarClass::FUN_006A8180
     int  Action;                 // +0xBC
+    char unknown_C0[0xF8 - 0xC0];
+    float unknown_F8; // 6DC1C6: floating range scale
+    int unknown_FC;   // 6DC2AC/6DC338/6DC38A: radial subdivision count
     // remaining Rules fields (P2)
 };
 
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_F8) == 0xF8);
+GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_FC) == 0xFC);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, Action) == 0xBC);
 GG_STATIC_ASSERT(offsetof(SuperWeaponTypeClass, unknown_B8) == 0xB8);
 

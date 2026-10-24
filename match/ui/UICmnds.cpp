@@ -413,7 +413,7 @@ void __cdecl FUN_007315A0()
     CoordStruct second = DAT_00B0FE10;
     bool found = false;
     for (int i = DAT_00A83D4C->Buildings.Count - 1; i >= 0; --i) {
-        BuildingClass* object = static_cast<BuildingClass**>(DAT_00A83D4C->Buildings.Items)[i];
+        BuildingClass* object = DAT_00A83D4C->Buildings.Items[i];
         if (object && !object->InLimbo) {
             if (object->Type->bools_16A4[0x15]) {
                 second = object->vf_18();

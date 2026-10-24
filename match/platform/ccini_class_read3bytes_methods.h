@@ -24,16 +24,7 @@ extern "C" int __cdecl sscanf(const char* buffer, const char* format, ...);
 
 // ColorStruct — packed RGB triple (size 3). The user-declared constructors
 // are what make VC6 hand it back through a hidden pointer.
-struct ColorStruct
-{
-    unsigned char R;   // +0x00
-    unsigned char G;   // +0x01
-    unsigned char B;   // +0x02
-
-    ColorStruct() {}
-    ColorStruct(unsigned char r, unsigned char g, unsigned char b)
-        : R(r), G(g), B(b) {}
-};
+#include "../_layout/color_struct.h"
 GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
 GG_STATIC_ASSERT(offsetof(ColorStruct, B) == 0x02);
 GG_STATIC_ASSERT(sizeof(ColorStruct) == 3);

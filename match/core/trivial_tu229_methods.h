@@ -56,9 +56,5 @@ void __cdecl FUN_006D8630();
 void __cdecl FUN_006DA350();
 // FUNCTION: GAMEMD 0x6DA370
 void __stdcall FUN_006DA370(int a1);
-// FUNCTION: GAMEMD 0x6DC400
-void __cdecl FUN_006DC400();
-// FUNCTION: GAMEMD 0x6DC410
-void __cdecl FUN_006DC410();
 
 #endif  // GG_MATCH_CORE_TRIVIAL_TU229_METHODS_H

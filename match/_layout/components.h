@@ -13,18 +13,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// ColorStruct — packed RGB triple (no padding; size = 3).
-struct ColorStruct
-{
-    unsigned char R;   // +0x00
-    unsigned char G;   // +0x01
-    unsigned char B;   // +0x02
-};
-
-GG_STATIC_ASSERT(offsetof(ColorStruct, R) == 0x00);
-GG_STATIC_ASSERT(offsetof(ColorStruct, G) == 0x01);
-GG_STATIC_ASSERT(offsetof(ColorStruct, B) == 0x02);
-GG_STATIC_ASSERT(sizeof(ColorStruct)      == 3);
+#include "color_struct.h"
 
 // VoxelStruct — a voxel model + its HVA animation (two 32-bit pointers).
 // Pointer members modelled as real pointers (decomp shows undefined4 truncation).

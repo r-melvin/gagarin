@@ -1517,7 +1517,7 @@ void FUN_0064A7B0(HWND dialog)
         if (DAT_00A8B238 == 1 || DAT_00A8B238 == 2) index = 0;
         else index = Manager_00A8E9C0.IPXManagerClass::vf_6(Players_00A8DA78[i]->unknown_6F);
         unsigned delay = i ? DAT_00AFA418 - DAT_00AFA278[index].unknown_0C : 0;
-        ColorStruct color = { 0, 200, 0 };
+        ColorStruct color(0, 200, 0);
         if (delay > 240) {
             color.R = 200;
             if (delay > 480) {

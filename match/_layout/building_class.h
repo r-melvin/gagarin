@@ -195,6 +195,8 @@ public:
     void UpdateOccupantAnims();          // GAMEMD 0x458330
 
     // FUNCTION: GAMEMD 0x43EF90 (decl; reloc) -- no stack arguments, result in EAX.
+    // Declaration: GAMEMD 0x4566B0, ECX receiver, EAX integer range.
+    int FUN_004566B0();
     int FUN_0043EF90();
     // FUNCTION: GAMEMD 0x65AD40 (decl; reloc) -- one stack argument (RET 4); the object being worked on.
     ObjectClass* FUN_0065AD40(int a1);

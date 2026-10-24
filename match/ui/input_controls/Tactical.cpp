@@ -4219,19 +4219,127 @@ HRESULT __stdcall Tactical::Load(IStream* stream)
     return 0;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6DC400
-// Empty function.
-void __cdecl FUN_006DC400()
+// GLOBAL: GAMEMD 0xA8EB7E
+extern unsigned char DAT_00A8EB7E;
+// GLOBAL: GAMEMD 0x8809A0
+extern int DAT_008809A0;
+// GLOBAL: GAMEMD 0x842950
+extern int DAT_00842950;
+// GLOBAL: GAMEMD 0x842954
+extern int DAT_00842954;
+// GLOBAL: GAMEMD 0xB0E648
+extern int DAT_00B0E648;
+// GLOBAL: GAMEMD 0xB0E64C
+extern int DAT_00B0E64C;
+// Declaration: GAMEMD 0x456980, CL/DL flags, coordinate/color values, RET28.
+void FUN_00456980(char first, char second, CoordStruct center, ColorStruct color,
+                  float range, char a6, char a7);
+// Declaration: GAMEMD 0x4CAC40, cdecl double input/result.
+double __cdecl FUN_004CAC40(double value);
+
+// FUNCTION: GAMEMD 0x6DBE20
+void Tactical::FUN_006DBE20()
 {
+    int selectedCount = DAT_00A8ECC8;
+    for (int index = 0; index < selectedCount; ++index) {
+        ObjectClass* object = DAT_00A8ECBC[index];
+        if (object->vf_34() && object->vf_34()->HasRadialIndicator)
+            object->vf_76(1);
+    }
+    if (!DAT_00A8EB7E) return;
+    ObjectClass* selected = PlacementObject_0088098C;
+    if (selected && selected->vf_11() == 6) {
+        BuildingClass* building = static_cast<BuildingClass*>(selected);
+        int range = building->FUN_004566B0();
+        if (range <= 0) return;
+        CellStruct cellPosition = DAT_0088095C;
+        CellClass* cell = MapInstance.FUN_005657A0(&cellPosition);
+        CoordStruct temporary;
+        CoordStruct center = *cell->GetCellCoords(&temporary);
+        // GLOBAL: GAMEMD 0xB0CE14
+        static ColorStruct DAT_00B0CE14(0, 0, 0);
+        DAT_00B0E648 += DAT_00842950 * 10;
+        if (DAT_00B0E648 >= 100) DAT_00842950 = -1;
+        else if (DAT_00B0E648 <= 0) DAT_00842950 = 1;
+        ColorStruct color = building->Owner->Color;
+        color.FUN_006612C0(DAT_00B0E648, DAT_00B0CE14);
+        // The second query, after the blend callback, supplies drawing AND distance bounds.
+        range = building->FUN_004566B0();
+        FUN_00456980(0, 1, center, color, (float)range, 0, 1);
+        int buildingCount = CurrentPlayer->Buildings.Count;
+        int minimum = 0x7FFFFFFF;
+        for (int candidateIndex = 0; candidateIndex < buildingCount; ++candidateIndex) {
+            BuildingClass* candidate = CurrentPlayer->Buildings.Items[candidateIndex];
+            if (!candidate || !candidate->IsAlive || candidate == building || candidate->Type != building->Type)
+                continue;
+            CellStruct target = DAT_0088095C;
+            CoordStruct coordinate = candidate->vf_18();
+            short x = (short)(coordinate.X / 256);
+            short y = (short)(coordinate.Y / 256);
+            short dx = (short)(target.X - x);
+            short dy = (short)(target.Y - y);
+            int distance = (short)(int)FUN_004CAC40((double)dx * dx + (double)dy * dy);
+            if (distance <= range * 2 && distance < minimum)
+                minimum = distance;
+        }
+        for (candidateIndex = 0; candidateIndex < buildingCount; ++candidateIndex) {
+            BuildingClass* candidate = CurrentPlayer->Buildings.Items[candidateIndex];
+            if (!candidate || !candidate->IsAlive || candidate == building || candidate->Type != building->Type)
+                continue;
+            CellStruct target = DAT_0088095C;
+            CoordStruct coordinate = candidate->vf_18();
+            short x = (short)(coordinate.X / 256);
+            short y = (short)(coordinate.Y / 256);
+            short dx = (short)(target.X - x);
+            short dy = (short)(target.Y - y);
+            int distance = (short)(int)FUN_004CAC40((double)dx * dx + (double)dy * dy);
+            if (distance == minimum) candidate->vf_76(0);
+        }
+        return;
+    }
+    if (DAT_008809A0 == -1) return;
+    SuperWeaponTypeClass* type = SuperWeaponTypeClass_Array.Items[DAT_008809A0];
+    float scale = type->unknown_F8;
+    if (!(scale > 0.0f)) return;
+    CellStruct cellPosition = DAT_0088095C;
+    CellClass* cell = MapInstance.FUN_005657A0(&cellPosition);
+    CoordStruct temporary;
+    CoordStruct center = *cell->GetCellCoords(&temporary);
+    center.X -= 126;
+    center.Y -= 126;
+    // GLOBAL: GAMEMD 0xB0CD70
+    static ColorStruct DAT_00B0CD70(0, 0, 0);
+    int direction = DAT_00842954;
+    int level = DAT_00B0E64C + direction * 10;
+    DAT_00B0E64C = level;
+    if (level >= 100) { direction = -1; DAT_00842954 = direction; }
+    else if (level <= 0) { direction = 1; DAT_00842954 = direction; }
+    ColorStruct baseColor = HouseClass_ArrayItems[CurrentPlayer->ArrayIndex]->Color;
+    ColorStruct color(0, 0, 0);
+    int count = type->unknown_FC;
+    if (count > 0) {
+        if ((float)count * scale < 0.0f) return;
+        int step = 0;
+        do {
+            color = baseColor;
+            level += direction * 10;
+            if (level >= 100) direction = -1;
+            else if (level <= 0) direction = 1;
+            color.FUN_006612C0(level, DAT_00B0CD70);
+            FUN_00456980(0, 1, center, color, (float)step / (float)type->unknown_FC, 0, 0);
+            ++step;
+            // Native TEST AH,0x41 repeats for less/equal OR unordered.
+        } while (!((float)step > (float)type->unknown_FC * scale));
+        return;
+    }
+    baseColor.FUN_006612C0(level, DAT_00B0CD70);
+    FUN_00456980(0, 1, center, baseColor, scale, 0, 1);
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x6DC410
-// Empty function.
-void __cdecl FUN_006DC410()
-{
-}
+// SYNTHETIC: GAMEMD 0x6DC400
+// Compiler cleanup for FUN_006DBE20's local static DAT_00B0CD70.
+// SYNTHETIC: GAMEMD 0x6DC410
+// Compiler cleanup for FUN_006DBE20's local static DAT_00B0CE14.
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x6DC430
