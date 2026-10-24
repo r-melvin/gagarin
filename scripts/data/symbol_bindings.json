@@ -4441,6 +4441,7 @@
  "?FUN_005652C0@@YIXPAX@Z": "0x005652C0",
  "?FUN_00565730@DriveMapView@@QAEPAUDriveCellView@@PBULocoCoord@@@Z": "0x00565730",
  "?FUN_00565730@MapClass@@QAEPAVCellClass@@PBUCoordStruct@@@Z": "0x00565730",
+ "?FUN_00565730@MapInstanceClass@@QAEPAVCellClass@@PBUPoint2D@@@Z": "0x00565730",
  "?FUN_00565730@TeleportMapView@@QAEPAUTeleportCellView@@ABULocoCoord@@@Z": "0x00565730",
  "?FUN_005657A0@BA2Map@@QAEPAVBA2CellObj@@PAUHBCell@@@Z": "0x005657A0",
  "?FUN_005657A0@BAMapView@@QAEPAVBACellView@@PAUHBCell@@@Z": "0x005657A0",

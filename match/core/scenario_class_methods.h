@@ -62,6 +62,8 @@ struct MapInstanceClass
     // FUNCTION: GAMEMD 0x5657a0 (decl; reloc)
     // ?FUN_005657A0@MapInstanceClass@@QAEPAVCellClass@@PBUCellStruct@@@Z
     CellClass* FUN_005657A0(const CellStruct* cell);
+    // Declaration: GAMEMD 0x565730, two-int world position, CellClass* result, RET4.
+    CellClass* FUN_00565730(const Point2D* location);
     void FUN_005BDA80(int a, int b); // GAMEMD 0x5BDA80, __thiscall
     void FUN_004F4480(); // GAMEMD 0x4F4480, __thiscall
     void FUN_00655B20(); // GAMEMD 0x655B20, __thiscall

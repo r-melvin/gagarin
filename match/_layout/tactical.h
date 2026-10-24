@@ -87,6 +87,9 @@ public:
     bool FUN_006D8AE0(const Cell* cell) const;
     Coord_006D2280* FUN_006D2360(Coord_006D2280* out, const Point2D_006D2280* point);
     Pair_006D9F80 FUN_006D6190() const;
+    // Hidden CellStruct result then input pointer; both entries RET8.
+    CellStruct FUN_006D6410(const CoordStruct* coordinate); // 0x6D6410
+    CellStruct FUN_006D6590(const Point2D* where); // 0x6D6590
     void FUN_006D4DB0(const unsigned short* text, int mode); // 0x6D4DB0
     void FUN_006D4E00(); // 0x6D4E00
     void FUN_006D5F60(const TRect<int>* bounds); // 0x6D5F60; RET4

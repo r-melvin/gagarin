@@ -2283,6 +2283,160 @@ void __stdcall FUN_006D6370(int x, int y, int* outX, int* outY)
     *outY = resultY;
 }
 
+// Cell picking: 6D6473/648E and6D6753/6760 read signed level and flags;
+// 6D6895/6899 read the cell coordinate pair before projection.
+GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
+GG_STATIC_ASSERT(offsetof(CellClass, Level) == 0x11B);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->Level) == 1);
+GG_STATIC_ASSERT(offsetof(CellClass, MapCoords) == 0x24);
+GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0);
+GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 2);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_B0) == 0xB0);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DE4) == 0xDE4);
+
+// FUNCTION: GAMEMD 0x6D6410
+CellStruct Tactical::FUN_006D6410(const CoordStruct* coordinate)
+{
+    CellStruct original;
+    original.X = coordinate->X / 256;
+    original.Y = coordinate->Y / 256;
+    bool originalFlag = (MapInstance.FUN_005657A0(&original)->Flags & 0x1000) != 0;
+    // Native performs the lookup twice; retain that call sequence.
+    int originalLevel = MapInstance.FUN_005657A0(&original)->Level;
+    int worldX = original.X * 256 + 128 + 1536;
+    int worldY = original.Y * 256 + 128 + 1536;
+    for (;;) {
+        worldX -= 8;
+        worldY -= 8;
+        CellStruct candidate;
+        candidate.X = worldX / 256;
+        candidate.Y = worldY / 256;
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        int levelDifference = cell->Level - originalLevel;
+        if (originalFlag)
+            levelDifference += ((cell->Flags >> 8) & 1) * 4;
+        // Native compares narrowed signed shorts, not full 32-bit quotients.
+        short adjustedX = (worldX - levelDifference * 128) / 256;
+        short adjustedY = (worldY - levelDifference * 128) / 256;
+        if (adjustedX <= original.X && adjustedY <= original.Y) {
+            return candidate;
+        }
+        if (candidate.X == original.X && candidate.Y == original.Y) {
+            return original;
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x6D6590
+CellStruct Tactical::FUN_006D6590(const Point2D* where)
+{
+    int x = where->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = where->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CellStruct initial;
+    initial.X = worldX / 256;
+    initial.Y = worldY / 256;
+    CoordStruct fraction;
+    fraction.X = worldX & 255;
+    fraction.Y = worldY & 255;
+    fraction.Z = 0;
+    CoordsToScreen(&fraction); // Native ignores the projected fractional point.
+
+    // Read the caller's point and globals again after the projection call.
+    int pointX = where->X - Viewport_00886FA0.X;
+    int pointY = where->Y - Viewport_00886FA0.Y;
+    int scanY = pointY + 180;
+    for (int step = 0; step < 180; ++step, --scanY) {
+        int screenX = unknown_B0.unknown_00 + pointX;
+        int screenY = unknown_B0.unknown_04 + scanY;
+        Vector3D sample(screenX, screenY, 0.0f);
+        Vector3D sampleResult;
+        sample = *Matrix3D::MatrixApply(&sampleResult, &unknown_DE4, &sample);
+        int sampleX = sample.X;
+        int sampleY = sample.Y;
+        CellStruct coordinate;
+        coordinate.X = sampleX / 256;
+        coordinate.Y = sampleY / 256;
+        CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+        int candidateY = scanY - cell->Level * 15;
+        if (cell->Flags & 0x100) {
+            CellClass* neighbor2 = cell->FUN_00481810(2);
+            CellClass* neighbor4 = cell->FUN_00481810(4);
+            bool edge0 = false;
+            if (cell->Flags & 0x800)
+                edge0 = !(cell->FUN_00481810(0)->Flags & 0x100);
+            bool edge6 = false;
+            if (!(cell->Flags & 0x800))
+                edge6 = !(cell->FUN_00481810(6)->Flags & 0x100);
+            // The orientation mask is sampled after both optional callbacks.
+            unsigned int orientation = cell->Flags & 0x800;
+            bool edge4 = orientation && !(neighbor4->Flags & 0x100);
+            bool edge2 = !orientation && !(neighbor2->Flags & 0x100);
+            bool levelEdge2 = false;
+            if (orientation) {
+                int difference = cell->Level - neighbor2->Level;
+                if (difference < 0)
+                    difference = -difference;
+                if (difference <= 1)
+                    levelEdge2 = !(neighbor2->Flags & 0x100);
+            }
+            bool levelEdge4 = false;
+            if (!orientation) {
+                int difference = cell->Level - neighbor4->Level;
+                if (difference < 0)
+                    difference = -difference;
+                if (difference <= 1)
+                    levelEdge4 = !(neighbor4->Flags & 0x100);
+            }
+            CoordStruct corner;
+            corner.X = cell->MapCoords.X * 256;
+            corner.Y = cell->MapCoords.Y * 256;
+            corner.Z = 0;
+            Point2D projected = CoordsToScreen(&corner);
+            int cornerX = projected.X - unknown_B0.unknown_00;
+            int cornerY = projected.Y - unknown_B0.unknown_04;
+            cornerY += (cell->Level * -30) / 2;
+            if (cornerY <= pointY) {
+                if (edge4 || levelEdge4) {
+                    coordinate.Y += 1;
+                    return coordinate;
+                }
+                if (edge2 || levelEdge2) {
+                    coordinate.X += 1;
+                    return coordinate;
+                }
+            }
+            if (!edge0 && !edge6) {
+                candidateY -= (cell->Flags & 0x100) ? 60 : 0;
+            } else {
+                int dx = pointX - cornerX;
+                int dy = pointY - cornerY;
+                if ((edge0 && dy - dx / 2 > 15) ||
+                    (edge6 && dx / 2 + dy > 15))
+                    candidateY -= (cell->Flags & 0x100) ? 60 : 0;
+            }
+        }
+        if (candidateY <= pointY) {
+            return coordinate;
+        }
+    }
+    return initial;
+}
+
+GG_STATIC_ASSERT(offsetof(CellClass, SlopeIndex) == 0x11C);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->SlopeIndex) == 1);
+
+// FUNCTION: GAMEMD 0x6D6AD0
+// Incoming register arguments are unused; one stack position pointer, RET4.
+int __stdcall FUN_006D6AD0(Point2D* location)
+{
+    return MapInstance.FUN_00565730(location)->SlopeIndex;
+}
+
 // FUNCTION: GAMEMD 0x6D8530
 void Tactical::FUN_006D8530(int direction, int distance)
 {
