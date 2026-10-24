@@ -97539,20 +97539,20 @@
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6E88B0",
-  "sym": "_$E1",
+  "sym": "_$E2",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E9A0)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/tu235_team_class.cpp",
   "addr": "0x6E88D0",
-  "sym": "_$E4",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00B0E988)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/tu236_team_type_class.cpp",
