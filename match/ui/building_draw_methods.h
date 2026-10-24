@@ -99,10 +99,7 @@ extern RectangleStruct DAT_00886FA0;
 // GLOBAL: GAMEMD 0x89DDBC
 extern int DAT_0089DDBC;
 
-// FUNCTION: GAMEMD 0x421B60 (decl; reloc) -- clips `a` against `b`, writes the
-// result to `out` and returns it; fastcall (out in ECX, a in EDX), RET 0xC.
-RectangleStruct* FUN_00421B60(RectangleStruct* out, RectangleStruct* a, RectangleStruct* b,
-                              int* adjustX, int* adjustY);
+#include "../_layout/rectangle_operations.h"
 // FUNCTION: GAMEMD 0x487950 (decl; reloc) -- the cell's shroud test, ECX = cell.
 bool FUN_00487950(MapCell_0043D290* cell);
 // FUNCTION: GAMEMD 0x4BBC90 (decl; reloc) -- no arguments.

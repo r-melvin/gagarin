@@ -799,6 +799,104 @@ void Tactical::vf_23()
     }
 }
 
+#include "../../_layout/rectangle_operations.h"
+extern DynamicVectorClass<DirtyAreaStruct> DAT_00B0CE78; // GLOBAL: GAMEMD 0xB0CE78 (decl; reloc)
+GG_STATIC_ASSERT(sizeof(RectangleStruct) == 16);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, X) == 0);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Y) == 4);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Width) == 8);
+GG_STATIC_ASSERT(offsetof(RectangleStruct, Height) == 12);
+GG_STATIC_ASSERT(sizeof(DirtyAreaStruct) == 20);
+GG_STATIC_ASSERT(offsetof(DirtyAreaStruct, Rect) == 0);
+GG_STATIC_ASSERT(offsetof(DirtyAreaStruct, unknown_10) == 16);
+typedef DynamicVectorClass<DirtyAreaStruct> TacticalDirtyVector;
+GG_STATIC_ASSERT(sizeof(TacticalDirtyVector) == 24);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Items) == 4);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Capacity) == 8);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, IsAllocated) == 13);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, Count) == 16);
+GG_STATIC_ASSERT(offsetof(TacticalDirtyVector, CapacityIncrement) == 20);
+
+
+// FUNCTION: GAMEMD 0x6D2790
+void Tactical::FUN_006D2790(RectangleStruct requested, bool flag)
+{
+    int best = -1;
+    int bestArea = 0x7FFFFFFF;
+    for (int index = 0; index < DAT_00B0CE78.Count; ++index) {
+        RectangleStruct current = { DAT_00B0CE78.Items[index].Rect.X,
+            DAT_00B0CE78.Items[index].Rect.Y, DAT_00B0CE78.Items[index].Rect.Width,
+            DAT_00B0CE78.Items[index].Rect.Height };
+        RectangleStruct temporary;
+        RectangleStruct overlap = *FUN_00421B60(&temporary, &current, &requested, 0, 0);
+        RectangleStruct united;
+        if (current.Width <= 0 || current.Height <= 0) {
+            united = requested;
+        } else if (requested.Width <= 0 || requested.Height <= 0) {
+            united = current;
+        } else {
+            united = current;
+            if (united.X > requested.X) {
+                united.Width += united.X - requested.X;
+                united.X = requested.X;
+            }
+            if (united.Y > requested.Y) {
+                united.Height += united.Y - requested.Y;
+                united.Y = requested.Y;
+            }
+            if (united.X + united.Width < requested.X + requested.Width)
+                united.Width = requested.Width - united.X + 1 + requested.X;
+            if (united.Y + united.Height < requested.Y + requested.Height)
+                united.Height = requested.Y - united.Y + 1 + requested.Height;
+        }
+        if (overlap.Width > 0 && overlap.Height > 0) {
+            if (overlap.X == requested.X && overlap.Y == requested.Y &&
+                overlap.Width == requested.Width && overlap.Height == requested.Height) {
+                if (!flag || DAT_00B0CE78.Items[index].unknown_10)
+                    return;
+            } else if (overlap.X == current.X && overlap.Y == current.Y &&
+                       overlap.Width == current.Width && overlap.Height == current.Height) {
+                if (flag || !DAT_00B0CE78.Items[index].unknown_10) {
+                    DAT_00B0CE78.Delete(index);
+                    --index;
+                }
+            } else {
+                int area = united.Width * united.Height;
+                if (area < requested.Width * requested.Height + current.Height * current.Width &&
+                    area < bestArea) {
+                    best = index;
+                    bestArea = area;
+                }
+            }
+        }
+    }
+    if (best != -1) {
+        // Native leaves a previously recorded best index unchanged when an
+        // earlier vector element is deleted. Preserve that observed behavior.
+        bool combinedFlag = flag || DAT_00B0CE78.Items[best].unknown_10;
+        RectangleStruct temporary;
+        DirtyAreaStruct merged;
+        RectangleStruct selected = { DAT_00B0CE78.Items[best].Rect.X,
+            DAT_00B0CE78.Items[best].Rect.Y, DAT_00B0CE78.Items[best].Rect.Width,
+            DAT_00B0CE78.Items[best].Rect.Height };
+        RectangleStruct result = *FUN_00487F40(&temporary, &requested, &selected);
+        merged.Rect.X = result.X;
+        merged.Rect.Y = result.Y;
+        merged.Rect.Width = result.Width;
+        merged.Rect.Height = result.Height;
+        merged.unknown_10 = combinedFlag;
+        DAT_00B0CE78.Items[best] = merged;
+        return;
+    }
+    DirtyAreaStruct appended;
+    appended.Rect.X = requested.X;
+    appended.Rect.Y = requested.Y;
+    appended.Rect.Width = requested.Width;
+    appended.Rect.Height = requested.Height;
+    appended.unknown_10 = flag;
+    DAT_00B0CE78.AddItem(appended);
+}
+
 // FUNCTION: GAMEMD 0x6D2B50
 // Empty function that pops its stack arguments.
 void __stdcall FUN_006D2B50(int a1, int a2)

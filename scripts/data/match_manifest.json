@@ -98506,5 +98506,32 @@
   "name": "?FUN_0075F5C0@@YIPAUPair_006D9F80@@PAU1@PBU1@1M@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/rectangle_operations.cpp",
+  "addr": "0x421B60",
+  "sym": "?FUN_00421B60@@YIPAURectangleStruct@@PAU1@PBU1@1PAH2@Z",
+  "len": "0x121",
+  "name": "?FUN_00421B60@@YIPAURectangleStruct@@PAU1@PBU1@1PAH2@Z",
+  "status": "partial",
+  "pct": 5.6
+ },
+ {
+  "tu": "match/core/rectangle_operations.cpp",
+  "addr": "0x487F40",
+  "sym": "?FUN_00487F40@@YIPAURectangleStruct@@PAU1@PBU1@1@Z",
+  "len": "0xf0",
+  "name": "?FUN_00487F40@@YIPAURectangleStruct@@PAU1@PBU1@1@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D2790",
+  "sym": "?FUN_006D2790@Tactical@@QAEXURectangleStruct@@_N@Z",
+  "len": "0x3b2",
+  "name": "Tactical::FUN_006D2790",
+  "status": "partial",
+  "pct": 2.1
  }
 ]
