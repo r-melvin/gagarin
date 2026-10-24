@@ -98425,5 +98425,14 @@
   "name": "Session settings writer",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu158_methods.cpp",
+  "addr": "0x5D93D0",
+  "sym": "?FUN_005D93D0@Obj_005D8FB0@@QAEXXZ",
+  "len": "0x37",
+  "name": "Network settings reader",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
