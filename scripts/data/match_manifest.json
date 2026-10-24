@@ -751,7 +751,7 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x634290",
-  "sym": "?FUN_00634290@Node_006386E0@@QAEHPAX@Z",
+  "sym": "?FUN_00634290@PlanningNodeClass@@QAEHPAVTechnoClass@@@Z",
   "len": "0x32",
   "name": "Node_006386E0::FUN_00634290",
   "status": "partial",
@@ -769,11 +769,11 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x6385C0",
-  "sym": "?TryNextPlanningTokenNode@Techno_006385C0@@QAE_NXZ",
+  "sym": "?TryNextPlanningTokenNode@TechnoClass@@QAE_NXZ",
   "len": "0x114",
   "name": "TechnoClass::TryNextPlanningTokenNode",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/tevent_class_attach_type_methods.cpp",
@@ -77183,7 +77183,7 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x638A20",
-  "sym": "?FUN_00638A20@@YIXPAUObj_00638A20@@@Z",
+  "sym": "?FUN_00638A20@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x58",
   "name": "FUN_00638A20",
   "status": "matched",
@@ -77192,7 +77192,7 @@
  {
   "tu": "match/ai/PlanMgr.cpp",
   "addr": "0x638DC0",
-  "sym": "?FUN_00638DC0@@YIXPAUObj_00638DC0@@@Z",
+  "sym": "?FUN_00638DC0@@YIXPAVPlanningNodeClass@@@Z",
   "len": "0x58",
   "name": "FUN_00638DC0",
   "status": "matched",

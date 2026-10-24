@@ -14,14 +14,10 @@
 
 #include "planning_manager.h"
 
-// The tactical view (pointer global 0x887324): world coordinate to view point.
-struct PlanningTactical
-{
-    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- RET 8.
-    void FUN_006D2140(const CoordStruct* coord, Point2D* out);
-};
+#include "../_layout/tactical.h"
+
 // GLOBAL: GAMEMD 0x887324
-extern PlanningTactical* DAT_00887324;
+extern Tactical* DAT_00887324;
 // GLOBAL: GAMEMD 0x886FA0 -- the view origin added to every converted point.
 extern Point2D DAT_00886FA0;
 

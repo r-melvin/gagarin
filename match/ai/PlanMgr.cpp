@@ -118,11 +118,9 @@ extern int DAT_00B780A0;
 struct Obj_005D4E70;
 extern DynamicVectorClass<Obj_005D4E70*> DAT_00ABFC90;
 
-struct Obj_00638A20;
-extern DynamicVectorClass<Obj_00638A20*> DAT_00AC4C18;
 
-struct Obj_00638DC0;
-extern DynamicVectorClass<Obj_00638DC0*> DAT_00AC4B30;
+
+
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -465,14 +463,10 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<PlanningTokenClass* >) == 0x18);
 #include "../renderer/dsurface_class.h"
 #include "../ui/input_controls/mouse_ww_mouse_class.h"
 
-// The tactical view (pointer global 0x887324), as in planning_manager.cpp.
-struct PlanningTacticalView
-{
-    // FUNCTION: GAMEMD 0x6D2140 (decl; reloc) -- RET 8.
-    void FUN_006D2140(const CoordStruct* coord, Point2D* out);
-};
+#include "../_layout/tactical.h"
+
 // GLOBAL: GAMEMD 0x887324
-extern PlanningTacticalView* DAT_00887324;
+extern Tactical* DAT_00887324;
 // GLOBAL: GAMEMD 0x886FA0 -- the view origin added to every converted point.
 extern Point2D DAT_00886FA0;
 
@@ -616,12 +610,12 @@ inline int PlanningMissionIsMove(int mission)
 
 // FUNCTION: GAMEMD 0x634290
 //
-// Node_006386E0::FUN_00634290 -- linear scan of this node's entry array for
+// PlanningNodeClass::FUN_00634290 -- linear scan of this node's member array for
 // the one whose owner word matches `owner`; returns its index, or -1 when the
 // node is empty or nothing matches. The search sits under `if (count > 0)`
 // (retail's `OR EAX,0xffffffff` seeds the -1 answer before the guard) rather
 // than folding the empty case into the loop test, so an empty node returns -1
-// without ever touching `Entries`.
+// without ever touching Members.Items.
 // PARTIAL (92.3%, 24/26): a `for` over the entries with a `break` on the first
 // owner match, written `count > i` as the loop test, gives retail's single
 // guarded loop with the walk as a raw entry-pointer increment, the `OR EAX,-1`
@@ -629,15 +623,15 @@ inline int PlanningMissionIsMove(int mission)
 // direction: retail has `CMP EDX,ESI; JL`, this has `CMP ESI,EDX; JG` (the
 // `i < count` spelling gives the retail compare but swaps the EDX/ESI roles,
 // 69.2%).
-int Node_006386E0::FUN_00634290(void* owner)
+int PlanningNodeClass::FUN_00634290(TechnoClass* owner)
 {
     int index = -1;
-    int count = this->At_010;
+    int count = this->Members.Count;
     int i = 0;
     if (count > 0) {
-        Entry_006386E0** entries = this->Entries;
+        PlanningMemberClass** entries = this->Members.Items;
         for (; count > i; i++, entries++) {
-            if (*(int*)*entries == (int)owner) {
+            if ((*entries)->Owner == owner) {
                 index = i;
                 break;
             }
@@ -1544,24 +1538,24 @@ void FUN_00637DD0(EventClass event)
 // stepping (+0x1C). The unit is queued mission 0x1C, the token builds the next
 // 0x6F-byte record, a heap copy of it (kind 4 forced to sub-kind 2) is
 // appended to the global record list, and the token is marked as stepping.
-bool Techno_006385C0::TryNextPlanningTokenNode()
+bool TechnoClass::TryNextPlanningTokenNode()
 {
-    Token_006385C0* token = this->FUN_00705D20();
+    PlanningTokenClass* token = this->FUN_00705D20();
     if (token
-        && token->NodeCount > 0
-        && (token->At_08C == -1 || token->At_08C > 0)
-        && !token->At_01C) {
-        (this->*this->Vtbl->QueueMission)(0x1C, 1);
+        && token->Nodes.Count > 0
+        && (token->unknown_8C == -1 || token->unknown_8C > 0)
+        && !token->unknown_1C) {
+        this->vf_122(0x1C, true);
 
-        Node_006385C0 rec = token->FUN_00636590();
-        Node_006385C0* copy = new Node_006385C0;
+        EventClass rec = token->FUN_00636590();
+        EventClass* copy = new EventClass;
         *copy = rec;
-        if (copy->At_000 == 4) {
-            copy->At_01D = 2;
+        if (copy->Type == 4) {
+            copy->Data.MegaMission.IsPlanningEvent = 2;
         }
-        DAT_00AC4B48.AddItem(copy);
+        PlanningListAdd(PlanningLists::DAT_00AC4B48, copy);
 
-        token->At_01C = 1;
+        token->unknown_1C = 1;
         return true;
     }
     return false;
@@ -1656,9 +1650,9 @@ void Techno_006386E0::ClearPlanningTokens(Record_006386E0* gate)
 }
 
 // FUNCTION: GAMEMD 0x00638A20
-void FUN_00638A20(Obj_00638A20* item)
+void FUN_00638A20(PlanningNodeClass* item)
 {
-    DynamicVectorClass<Obj_00638A20*>& v = DAT_00AC4C18;
+    DynamicVectorClass<PlanningNodeClass*>& v = PlanningLists::DAT_00AC4C18;
     if (v.Count >= v.Capacity) {
         if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0) {
             if (!v.SetCapacity(v.CapacityIncrement + v.Capacity, 0))
@@ -1718,9 +1712,9 @@ bool FUN_00638C70(TechnoClass* techno)
 }
 
 // FUNCTION: GAMEMD 0x00638DC0
-void FUN_00638DC0(Obj_00638DC0* item)
+void FUN_00638DC0(PlanningNodeClass* item)
 {
-    DynamicVectorClass<Obj_00638DC0*>& v = DAT_00AC4B30;
+    DynamicVectorClass<PlanningNodeClass*>& v = PlanningLists::DAT_00AC4B30;
     if (v.Count >= v.Capacity) {
         if ((v.IsAllocated || v.Capacity == 0) && v.CapacityIncrement > 0) {
             if (!v.SetCapacity(v.CapacityIncrement + v.Capacity, 0))

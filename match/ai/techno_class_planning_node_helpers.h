@@ -5,7 +5,9 @@
 //   are declared (but not defined) in
 //   match/ai/techno_class_clear_tokens_methods.h (read, not edited) as
 //   Node_006386E0::FUN_00634290 and FUN_00639F80; this TU
-//   supplies their bodies out of line so that header stays untouched.
+//   supplies the pending-count body. The member-search provider now uses
+//   canonical PlanningNodeClass; the legacy clear-token call declaration is
+//   retained while its deleting-call boundary remains held.
 //
 //   0x634290 walks Node_006386E0's own already-confirmed layout: the entry
 //   count at +0x10, the entry-pointer array at +0x04, one entry's owner word

@@ -56,6 +56,8 @@ public:
     int unknown_08;       // +0x08 index into the node's branches (-1 = none)
     bool unknown_0C;      // +0x0C
 };
+GG_STATIC_ASSERT(offsetof(PlanningMemberClass, Owner) == 0x00);
+GG_STATIC_ASSERT(sizeof(PlanningMemberClass) == 0x10);
 GG_STATIC_ASSERT(offsetof(PlanningMemberClass, Event) == 0x04);
 GG_STATIC_ASSERT(offsetof(PlanningMemberClass, unknown_08) == 0x08);
 GG_STATIC_ASSERT(offsetof(PlanningMemberClass, unknown_0C) == 0x0C);
@@ -190,6 +192,7 @@ public:
     int unknown_B0;                                      // +0xB0
     int unknown_B4;                                      // +0xB4
 };
+GG_STATIC_ASSERT(offsetof(PlanningNodeClass, Members) == 0x00);
 GG_STATIC_ASSERT(offsetof(PlanningNodeClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(PlanningNodeClass, unknown_1C) == 0x1C);
 GG_STATIC_ASSERT(offsetof(PlanningNodeClass, Branches) == 0x20);
@@ -203,6 +206,8 @@ class PlanningTokenClass
 public:
     // FUNCTION: GAMEMD 0x635F20 (defined in planning_node_methods.cpp)
     PlanningTokenClass(TechnoClass* owner);
+    // Declaration: GAMEMD 0x636590 -- hidden result pointer, packed EventClass.
+    EventClass FUN_00636590();
     int FUN_00636DC0();
     void FUN_00636E00(PlanningNodeClass* node);
     PlanningNodeClass* FUN_00636E60(int index);
@@ -253,6 +258,7 @@ public:
     bool unknown_98;                                 // +0x98
     bool unknown_99;                                 // +0x99
 };
+GG_STATIC_ASSERT(offsetof(PlanningTokenClass, Owner) == 0x00);
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, Nodes) == 0x04);
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_1C) == 0x1C);
 GG_STATIC_ASSERT(offsetof(PlanningTokenClass, unknown_1D) == 0x1D);
