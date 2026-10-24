@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit TU184 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x643eb0-0x6449ef,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
@@ -69,12 +70,16 @@ extern const double DAT_007F0068;
 // GLOBAL: GAMEMD 0xAC5028
 extern double DAT_00AC5028;
 
-// SYNTHETIC: GAMEMD 0x643EE0
-// GLOBAL: GAMEMD 0xAC5078
+// SYNTHETIC: GAMEMD 0x00643EE0
+// dynamic initializer for DAT_00AC5078
+
+// GLOBAL: GAMEMD 0x00AC5078
 double DAT_00AC5078 = DAT_00AC5028 / DAT_007F0068;
 
-// SYNTHETIC: GAMEMD 0x643F00
-// GLOBAL: GAMEMD 0xAC5060
+// SYNTHETIC: GAMEMD 0x00643F00
+// dynamic initializer for DAT_00AC5060
+
+// GLOBAL: GAMEMD 0x00AC5060
 double DAT_00AC5060 = DAT_007E1718 / DAT_00AC5078;
 
 // FUNCTION: GAMEMD 0x645430 (decl; reloc) - looks a ParticleType name up (ECX = name).
