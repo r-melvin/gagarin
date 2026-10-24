@@ -98398,5 +98398,14 @@
   "name": "MessageListClass::~MessageListClass",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/network/Session.cpp",
+  "addr": "0x697840",
+  "sym": "??1SessionClass@@QAE@XZ",
+  "len": "0x28f",
+  "name": "SessionClass destructor",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

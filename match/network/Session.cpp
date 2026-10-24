@@ -816,6 +816,26 @@ void SessionClass::FUN_006977C0()
     }
 }
 
+// Existing CRT entry declaration shared with CCFile and INI cleanup.
+// LIBRARY: GAMEMD 0x007C93E8
+extern "C" void __cdecl FUN_007C93E8(void* block);
+
+// FUNCTION: GAMEMD 0x697840
+SessionClass::~SessionClass()
+{
+    while (unknown_2914.Count != 0) {
+        delete[] unknown_2914.Items[0];
+        unknown_2914.Delete(0);
+    }
+    while (unknown_292C.Count != 0) {
+        // _wcsdup creates mutable allocated storage, retained by a const
+        // string-pointer vector. Remove that access qualifier only to release
+        // its owned allocation through CRT free, not to write string contents.
+        FUN_007C93E8(const_cast<unsigned short*>(unknown_292C.Items[0]));
+        unknown_292C.Delete(0);
+    }
+}
+
 // FUNCTION: GAMEMD 0x697B70
 int SessionClass::FUN_00697B70()
 {

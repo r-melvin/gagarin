@@ -10,6 +10,10 @@
 #include "../core/vector_class.h"
 #include "ipx_address_class.h"
 #include "game_mode_options.h"
+#include "../platform/ccfile_class.h"
+#include "../ui/message_list_class_methods.h"
+class PhoneEntryClass;
+struct GlobalPacketType;
 
 class MultiplayerGameMode;
 class MultiMission;
@@ -36,6 +40,8 @@ struct SessionProfile_00697F10
 
 struct SessionClass
 {
+    // Declaration: GAMEMD 0x697840 -- ECX receiver, no arguments, RET.
+    ~SessionClass();
     int  GameMode;              // +0x0000
     MultiplayerGameMode* unknown_04; // 0x69B910, virtual slots27/28
     char unknown_08[0x18 - 8];
@@ -67,7 +73,10 @@ struct SessionClass
     // String starts6A8; storage through next known field, logical capacity unknown.
     char unknown_6A8[0x8E4 - 0x6A8];
     IPXAddressClass unknown_8E4; // native698DBB receiverA8BB1C
-    char unknown_8F0[0x1ED8 - 0x8F0];
+    DynamicVectorClass<GlobalPacketType*> unknown_8F0;
+    char unknown_908[0xA28 - 0x908];
+    MessageListClass unknown_A28;
+    char unknown_1EC4[0x1ED8 - 0x1EC4];
     // ReadBool results stored by 0x698387/3B8/3C3/3E4; constructor
     // 0x6974A3/4AA/4B1/4BA initializes each to true. Written by 0x699450.
     bool unknown_1ED8;
@@ -75,14 +84,20 @@ struct SessionClass
     char unknown_1EDA[0x1FC0 - 0x1EDA];
     bool unknown_1FC0;
     bool unknown_1FC1;
-    char unknown_1FC2[0x283C - 0x1FC2];
+    char unknown_1FC2[0x2354 - 0x1FC2];
+    CCFileClass unknown_2354;
+    char unknown_23C0[0x280C - 0x23C0];
+    DynamicVectorClass<NodeNameType*> unknown_280C;
+    DynamicVectorClass<NodeNameType*> unknown_2824;
     // GlobalA8DA74 = SessionA8B238 +283C; native69B60C/69B618.
     DynamicVectorClass<NodeNameType*> unknown_283C;
     char unknown_2854[4];
     NodeNameType* unknown_2858[8]; // native69C290/69C362
     char unknown_2878[0x28F8 - 0x2878];
     unsigned char unknown_28F8; // sender byte read at69B0CF fromA8DB30
-    char unknown_28F9[0x292C - 0x28F9];
+    char unknown_28F9[3];
+    DynamicVectorClass<PhoneEntryClass*> unknown_28FC;
+    DynamicVectorClass<char*> unknown_2914;
     // Native 0x6977C3 receiver; RTTI table0x7ED1DC identifies the element type.
     DynamicVectorClass<const unsigned short*> unknown_292C;
     char unknown_2944[0x2968 - 0x2944];
@@ -260,4 +275,46 @@ GG_STATIC_ASSERT(offsetof(SessionClass, unknown_17C) == 0x17C);
 GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_17C) == 0x4);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_18) == 0x18);
 GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690) + offsetof(DynamicVectorClass<MultiMission*>, Items) == 0x694);
+// Native 0x697840 member teardown; vector identities independently read from RTTI.
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8F0) == 0x8F0);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_8F0) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_A28) == 0xA28);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_A28) == 0x149C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2354) == 0x2354);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2354) == 0x6C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_280C) == 0x280C);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_280C) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2824) == 0x2824);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2824) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC) == 0x28FC);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_28FC) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914) == 0x2914);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2914) == 0x18);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690.Items) == 0x694);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690.Capacity) == 0x698);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_690.IsAllocated) == 0x69D);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8F0.Items) == 0x8F4);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8F0.Capacity) == 0x8F8);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_8F0.IsAllocated) == 0x8FD);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_280C.Items) == 0x2810);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_280C.Capacity) == 0x2814);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_280C.IsAllocated) == 0x2819);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2824.Items) == 0x2828);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2824.Capacity) == 0x282C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2824.IsAllocated) == 0x2831);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C.Items) == 0x2840);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C.Capacity) == 0x2844);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_283C.IsAllocated) == 0x2849);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC.Items) == 0x2900);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC.Capacity) == 0x2904);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_28FC.IsAllocated) == 0x2909);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914.Items) == 0x2918);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914.Capacity) == 0x291C);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914.IsAllocated) == 0x2921);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Items) == 0x2930);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.Capacity) == 0x2934);
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_292C.IsAllocated) == 0x2939);
+
+GG_STATIC_ASSERT(offsetof(SessionClass, unknown_2914.Count) == 0x2924);
+GG_STATIC_ASSERT(sizeof(((SessionClass*)0)->unknown_2914.Count) == 4);
 #endif // GG_MATCH_LAYOUT_SESSION_CLASS_H
