@@ -21,6 +21,7 @@ void FUN_00731D00(int value);
 
 #include "pair_006d9f80.h"
 class Cell;
+struct CellStruct;
 class ObjectClass;
 template<class T> class TRect;
 struct RectangleStruct;
@@ -32,6 +33,10 @@ struct Point2D;
 class Tactical : public AbstractClass
 {
 public:
+    // Declarations: native 6D2DE0 RET12; render helpers6D7560/6D7F20 RET8.
+    void FUN_006D2DE0(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
+    void FUN_006D7560(const RectangleStruct* rectangle, const RectangleStruct* clip);
+    void FUN_006D7F20(const CellStruct* coordinate, const RectangleStruct* clip);
     Point2D* CoordsToScreen(Point2D* result, const CoordStruct* coordinate); // 0x6D1F10, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20
