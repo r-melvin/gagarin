@@ -5090,13 +5090,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/deleting_dtor_sweep.cpp",
+  "tu": "match/core/object_class_methods.cpp",
   "addr": "0x5F6DC0",
-  "sym": "?FUN_5F6DC0@Obj_5F6DC0@@QAEPAXI@Z",
+  "sym": "??_GObjectClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "FUN_005f6dc0",
+  "name": "ObjectClass scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -98956,5 +98956,14 @@
   "name": "Tactical::FUN_006DB620",
   "status": "partial",
   "pct": 1.2
+ },
+ {
+  "tu": "match/core/object_class_methods.cpp",
+  "addr": "0x5F3B50",
+  "sym": "??0ObjectClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2e",
+  "name": "ObjectClass::ObjectClass(no-init)",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

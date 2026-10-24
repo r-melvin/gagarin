@@ -36,6 +36,12 @@ GG_STATIC_ASSERT(offsetof(ObjectTypeClass, Strength) == 0xA0);
 GG_STATIC_ASSERT(offsetof(RulesClass, ConditionRed) == 0x1708);
 GG_STATIC_ASSERT(sizeof(ObjectHealthGetType) == 4);
 
+// FUNCTION: GAMEMD 0x5F3B50
+ObjectClass::ObjectClass(const AbstractNoInit& noInit)
+    : AbstractClass(noInit)
+{
+}
+
 // FUNCTION: GAMEMD 0x5F5B50
 bool ObjectClass::AttachTrigger(TagClass* tag)
 {
@@ -75,3 +81,5 @@ bool ObjectClass::IsRedHP() const
                <= RulesInstance->ConditionRed
            && this->Health > 0;
 }
+
+// SYNTHETIC: GAMEMD 0x5F6DC0 -- compiler-generated scalar deleting destructor.

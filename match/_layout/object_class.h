@@ -65,6 +65,10 @@ GG_STATIC_ASSERT(sizeof(AudioController)              == 0x14);
 #endif  // GG_MATCH_LAYOUT_AUDIOCONTROLLER_DEFINED
 
 // ObjectClass  (0x24..0xAB, sizeof = 0xAC)
+// VTABLE: GAMEMD 0x7EF060
+// VTABLE: GAMEMD 0x7EF044
+// VTABLE: GAMEMD 0x7EF03C
+// VTABLE: GAMEMD 0x7EF034
 class ObjectClass : public AbstractClass
 {
 public:
@@ -73,6 +77,8 @@ public:
     bool FUN_005F3E50(const char* text);
     // FUNCTION: GAMEMD 0x5F3900 (declaration; native base constructor)
     ObjectClass();
+    // FUNCTION: GAMEMD 0x5F3B50 -- restores class tables without member stores.
+    ObjectClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x5F3B80 (declaration; destructor)
     virtual ~ObjectClass();
     // FUNCTION: GAMEMD 0x5F5B50
