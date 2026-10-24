@@ -55,6 +55,9 @@ struct NodeNameType
 // Declaration: GAMEMD 0x7350C0 -- ECX is a UTF16 input pointer, not a player receiver.
 const char* __fastcall NarrowName_007350C0(const unsigned short* name);
 
+GG_STATIC_ASSERT(offsetof(NodeNameType, Name) == 0x00);
+GG_STATIC_ASSERT(sizeof(((NodeNameType*)0)->Name) == 0x28);
+
 GG_STATIC_ASSERT(offsetof(NodeNameType, Address) == 0x28 &&
                  offsetof(NodeNameType, unknown_34) == 0x34 &&
                  offsetof(NodeNameType, unknown_4B) == 0x4B &&

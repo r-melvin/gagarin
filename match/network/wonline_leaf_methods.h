@@ -8,6 +8,7 @@
 #define GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 
 #include "../ui/ui_window_contracts.h"
+#include "../economy/netshare_slot_nodes.h"
 #include <stddef.h>
 #include "wonline.h"
 #include "../core/hash_table_view.h"
@@ -192,6 +193,9 @@ struct Vec_00B77900
     Entry_00B77908* data;         // +0x08
 };
 extern Vec_00B77900 DAT_00B77900;
+GG_STATIC_ASSERT(offsetof(Vec_00B77900, count) == 0x00);
+GG_STATIC_ASSERT(offsetof(Vec_00B77900, data) == 0x08);
+GG_STATIC_ASSERT(sizeof(Vec_00B77900) == 0x0C);
 
 // GLOBAL: GAMEMD 0xB777B0
 extern Entry_00B77908 DAT_00B777B0;
@@ -277,7 +281,7 @@ extern int DAT_00B77E48;
 void __cdecl FUN_005E2700(int id, const wchar_t* format, ...);
 
 // FUNCTION: GAMEMD 0x5E2CD0 (decl; reloc)
-int FUN_005E2CD0(const wchar_t* text, int a, void* proc, bool b);
+int FUN_005E2CD0(const wchar_t* text, int a, DialogIdleProc_007759E0 proc, bool b);
 
 // FUNCTION: GAMEMD 0x735120 (decl; reloc)
 const wchar_t* FUN_00735120(const char* text);
@@ -303,22 +307,24 @@ extern String_007B4620 DAT_00B76E24;
 // GLOBAL: GAMEMD 0xB76990
 extern HashTable_006249A0<String_007B4620, int> DAT_00B76990;
 
-// FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
-const char* FUN_007350C0(void* player);
+
 
 
 
 // FUNCTION: GAMEMD 0x4E34A0 (decl; reloc)
 void FUN_004E34A0(void* object, int slot, int value);
 
-// FUNCTION: GAMEMD 0x5E93F0 (decl; reloc)
-bool FUN_005E93F0(void* player);
+
+
+// Declaration: GAMEMD 0x5E93F0 -- these native callers consume AL.
+// The separate netshare provider currently exposes an int result; both return
+// native 0/1, but the original cross-TU source return contract remains unknown.
+bool FUN_005E93F0(NodeNameType* node);
 
 // FUNCTION: GAMEMD 0x7A0EA0
 void FUN_007A0EA0(const char* name, int value);
 
-// GLOBAL: GAMEMD 0xA8DA90 -- the eight player slots.
-extern void* DAT_00A8DA90[8];
+
 
 // GLOBAL: GAMEMD 0xB76440
 extern int DAT_00B76440[8];
@@ -413,7 +419,7 @@ extern int DAT_00B736F4;
 
 
 // FUNCTION: GAMEMD 0x77D710 (decl; reloc)
-void __cdecl FUN_0077D710();
+bool __fastcall FUN_0077D710();
 
 // GLOBAL: GAMEMD 0xAC10C8
 extern int DAT_00AC10C8;

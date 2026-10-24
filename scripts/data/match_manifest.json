@@ -3056,13 +3056,13 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77D1D0",
   "sym": "?FUN_0077D1D0@@YIPAUCtorSeatObject@@PAU1@@Z",
   "len": "0x12",
   "name": "FUN_0077d1d0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/block_compare_store_methods.cpp",
@@ -4649,13 +4649,13 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACBD0",
   "sym": "?FUN_007ACBD0@@YIXPAUConstStoreObject@@@Z",
   "len": "0x7",
   "name": "FUN_007acbd0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Beacon.cpp",
@@ -5369,49 +5369,49 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD2F0",
   "sym": "?FUN_7AD2F0@Obj_7AD2F0@@QAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_007ad2f0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD310",
   "sym": "?FUN_7AD310@Obj_7AD310@@QAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_007ad310",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD330",
   "sym": "?FUN_7AD330@Obj_7AD330@@QAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_007ad330",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD350",
   "sym": "?FUN_7AD350@Obj_7AD350@@QAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_007ad350",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AED20",
   "sym": "?FUN_7AED20@Obj_7AED20@@QAEPAXI@Z",
   "len": "0x1e",
   "name": "FUN_007aed20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/deleting_dtor_sweep.cpp",
@@ -7692,31 +7692,31 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE0C0",
   "sym": "?FUN_007AE0C0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
   "name": "HashTableIndex::FUN_007AE0C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE5B0",
   "sym": "?FUN_007AE5B0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
   "name": "HashTableIndex::FUN_007AE5B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AECB0",
   "sym": "?FUN_007AECB0@HashTableIndex@@QAEHPBX@Z",
   "len": "0x1d",
   "name": "HashTableIndex::FUN_007AECB0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/hash_table_rehash_sweep.cpp",
@@ -10500,13 +10500,13 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77D1F0",
   "sym": "?FUN_0077D1F0@@YIXPAUSeatDtorObject@@@Z",
   "len": "0xb",
   "name": "FUN_0077d1f0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/slot_array_factory_methods.cpp",
@@ -15118,13 +15118,13 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
-  "addr": "0x007ac970",
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AC970",
   "sym": "?Clear@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAEXXZ",
   "len": "0x2a",
   "name": "DynamicVectorClass<tConnInfoStruct*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/tu291_winsock_interface_class.cpp",
@@ -18565,22 +18565,22 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
-  "addr": "0x007AD370",
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD370",
   "sym": "??_G?$VectorClass@PAUtConnInfoStruct@@@@UAEPAXI@Z",
   "len": "0x49",
   "name": "VectorClass<tConnInfoStruct*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
-  "addr": "0x007AD3C0",
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD3C0",
   "sym": "??_G?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAEPAXI@Z",
   "len": "0x49",
   "name": "DynamicVectorClass<tConnInfoStruct*>::scalar deleting destructor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/tu291_winsock_interface_class.cpp",
@@ -20518,13 +20518,13 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
-  "addr": "0x007ad180",
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD180",
   "sym": "?Clear@?$VectorClass@PAUtConnInfoStruct@@@@UAEXXZ",
   "len": "0x27",
   "name": "VectorClass<tConnInfoStruct*>::Clear",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/tu291_winsock_interface_class.cpp",
@@ -37525,76 +37525,76 @@
   "name": "DynamicVectorClass<WaypointPathClass*>::FindItemIndex"
  },
  {
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC9A0",
-  "len": "0x1b",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
   "sym": "?Slot5@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UBEHPAPAUtConnInfoStruct@@@Z",
-  "name": "DynamicVectorClass<tConnInfoStruct*>::Slot5"
- },
- {
-  "addr": "0x7AC9C0",
-  "len": "0xd",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
-  "sym": "?Slot6@?$VectorClass@PAUtConnInfoStruct@@@@UBEPAUtConnInfoStruct@@H@Z",
-  "name": "VectorClass<tConnInfoStruct*>::Slot6"
- },
- {
-  "addr": "0x7AD090",
-  "len": "0x3e",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
-  "sym": "??8?$VectorClass@PAUtConnInfoStruct@@@@UBE_NABV0@@Z",
-  "name": "VectorClass<tConnInfoStruct*>::operator=="
- },
- {
-  "addr": "0x7AD0D0",
-  "len": "0xae",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
-  "sym": "?SetCapacity@?$VectorClass@PAUtConnInfoStruct@@@@UAE_NHPAPAUtConnInfoStruct@@@Z",
-  "name": "VectorClass<tConnInfoStruct*>::SetCapacity"
- },
- {
-  "addr": "0x7AD1B0",
-  "len": "0x33",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
-  "sym": "?FindItemIndex@?$VectorClass@PAUtConnInfoStruct@@@@UBEHABQAUtConnInfoStruct@@@Z",
-  "name": "VectorClass<tConnInfoStruct*>::FindItemIndex"
- },
- {
-  "addr": "0x7AD1F0",
   "len": "0x1b",
+  "name": "DynamicVectorClass<tConnInfoStruct*>::Slot5",
   "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AC9C0",
+  "sym": "?Slot6@?$VectorClass@PAUtConnInfoStruct@@@@UBEPAUtConnInfoStruct@@H@Z",
+  "len": "0xd",
+  "name": "VectorClass<tConnInfoStruct*>::Slot6",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD090",
+  "sym": "??8?$VectorClass@PAUtConnInfoStruct@@@@UBE_NABV0@@Z",
+  "len": "0x3e",
+  "name": "VectorClass<tConnInfoStruct*>::operator==",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD0D0",
+  "sym": "?SetCapacity@?$VectorClass@PAUtConnInfoStruct@@@@UAE_NHPAPAUtConnInfoStruct@@@Z",
+  "len": "0xae",
+  "name": "VectorClass<tConnInfoStruct*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD1B0",
+  "sym": "?FindItemIndex@?$VectorClass@PAUtConnInfoStruct@@@@UBEHABQAUtConnInfoStruct@@@Z",
+  "len": "0x33",
+  "name": "VectorClass<tConnInfoStruct*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x7AD1F0",
   "sym": "?Slot5@?$VectorClass@PAUtConnInfoStruct@@@@UBEHPAPAUtConnInfoStruct@@@Z",
-  "name": "VectorClass<tConnInfoStruct*>::Slot5"
+  "len": "0x1b",
+  "name": "VectorClass<tConnInfoStruct*>::Slot5",
+  "status": "matched",
+  "pct": 100.0
  },
  {
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD210",
-  "len": "0xb0",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
   "sym": "?SetCapacity@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UAE_NHPAPAUtConnInfoStruct@@@Z",
-  "name": "DynamicVectorClass<tConnInfoStruct*>::SetCapacity"
+  "len": "0xb0",
+  "name": "DynamicVectorClass<tConnInfoStruct*>::SetCapacity",
+  "status": "matched",
+  "pct": 100.0
  },
  {
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD2C0",
-  "len": "0x26",
-  "status": "matched",
-  "pct": 100,
-  "tu": "match/network/wonline_part2.cpp",
   "sym": "?FindItemIndex@?$DynamicVectorClass@PAUtConnInfoStruct@@@@UBEHABQAUtConnInfoStruct@@@Z",
-  "name": "DynamicVectorClass<tConnInfoStruct*>::FindItemIndex"
+  "len": "0x26",
+  "name": "DynamicVectorClass<tConnInfoStruct*>::FindItemIndex",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "addr": "0x7B42F0",
@@ -57401,22 +57401,22 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC5D0",
   "sym": "?DeletingDtor@WonlineStringDialogControl@@UAEPAXI@Z",
   "len": "0x34",
   "name": "WonlineStringDialogControl::DeletingDtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC630",
   "sym": "?DeletingDtor@CreateGameDialogControl@@UAEPAXI@Z",
   "len": "0x34",
   "name": "CreateGameDialogControl::DeletingDtor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/render/blitters/blitter_ddtors.cpp",
@@ -60362,34 +60362,34 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACA00",
   "sym": "?Insert@?$GrowList@UGrowListRecord6C@@@@QAE_NABUGrowListRecord6C@@H@Z",
   "len": "0x186",
   "name": "?Insert@?$GrowList@UGrowListRecord6C@@@@QAE_NABUGrowListRecord6C@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD790",
   "sym": "?Insert@?$GrowList@UGrowListRecord10C@@@@QAE_NABUGrowListRecord10C@@H@Z",
   "len": "0x197",
   "name": "?Insert@?$GrowList@UGrowListRecord10C@@@@QAE_NABUGrowListRecord10C@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ADB00",
   "sym": "?Insert@?$GrowList@H@@QAE_NABHH@Z",
   "len": "0x15A",
   "name": "GrowList<H>::Insert",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ADCD0",
   "sym": "?Remove@?$ChainedHashTable@UHashKeyHandle@@UHashValue6C@@@@QAE_NABUHashKeyHandle@@PAUHashValue6C@@@Z",
   "len": "0x291",
@@ -60398,13 +60398,13 @@
   "pct": 30.2
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE5D0",
   "sym": "?Insert@?$GrowList@UGrowListHandle@@@@QAE_NABUGrowListHandle@@H@Z",
   "len": "0x15C",
   "name": "?Insert@?$GrowList@UGrowListHandle@@@@QAE_NABUGrowListHandle@@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/heap_string_concat_methods.cpp",
@@ -74407,11 +74407,11 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D710",
-  "sym": "?FUN_0077D710@@YIXXZ",
+  "sym": "?FUN_0077D710@@YI_NXZ",
   "len": "0x5",
   "name": "FUN_0077D710",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
@@ -79197,7 +79197,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B920",
   "sym": "?FUN_0077B920@@YIXXZ",
   "len": "0x17",
@@ -79206,7 +79206,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B960",
   "sym": "?FUN_0077B960@@YIXXZ",
   "len": "0x17",
@@ -79215,7 +79215,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B9A0",
   "sym": "?FUN_0077B9A0@@YIXXZ",
   "len": "0x17",
@@ -79224,7 +79224,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77B9E0",
   "sym": "?FUN_0077B9E0@@YIXXZ",
   "len": "0x17",
@@ -79233,7 +79233,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77BA20",
   "sym": "?FUN_0077BA20@@YIXXZ",
   "len": "0x17",
@@ -79242,7 +79242,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C370",
   "sym": "?FUN_0077C370@@YIXXZ",
   "len": "0x3e",
@@ -79251,7 +79251,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C600",
   "sym": "?FUN_0077C600@@YIXXZ",
   "len": "0x3e",
@@ -79260,7 +79260,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C720",
   "sym": "?FUN_0077C720@@YIXXZ",
   "len": "0x3e",
@@ -79269,7 +79269,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C780",
   "sym": "?FUN_0077C780@@YIXXZ",
   "len": "0x3e",
@@ -79278,7 +79278,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C7E0",
   "sym": "?FUN_0077C7E0@@YIXXZ",
   "len": "0x3e",
@@ -79287,7 +79287,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C840",
   "sym": "?FUN_0077C840@@YIXXZ",
   "len": "0x3e",
@@ -79296,7 +79296,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C8A0",
   "sym": "?FUN_0077C8A0@@YIXXZ",
   "len": "0x3e",
@@ -79305,7 +79305,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C900",
   "sym": "?FUN_0077C900@@YIXXZ",
   "len": "0x3e",
@@ -79314,7 +79314,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C960",
   "sym": "?FUN_0077C960@@YIXXZ",
   "len": "0x3e",
@@ -79323,7 +79323,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C9C0",
   "sym": "?FUN_0077C9C0@@YIXXZ",
   "len": "0x3e",
@@ -79332,7 +79332,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77CE70",
   "sym": "?FUN_0077CE70@@YIXXZ",
   "len": "0x3e",
@@ -79341,7 +79341,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77CED0",
   "sym": "?FUN_0077CED0@@YIXXZ",
   "len": "0x3e",
@@ -79350,7 +79350,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AEEC0",
   "sym": "?FUN_007AEEC0@Obj_007AEEC0@@QAE_NXZ",
   "len": "0x8f",
@@ -79359,7 +79359,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AF000",
   "sym": "?FUN_007AF000@Obj_007AF000@@QAE_NXZ",
   "len": "0x8f",
@@ -86091,112 +86091,112 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77D200",
   "sym": "?FUN_0077D200@@YIXPAUObj_0077D200@@H@Z",
   "len": "0x5",
   "name": "FUN_0077D200",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x785360",
   "sym": "?FUN_00785360@@YAXXZ",
   "len": "0x9",
   "name": "FUN_00785360",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x796B20",
   "sym": "?FUN_00796B20@@YAXXZ",
   "len": "0x1",
   "name": "FUN_00796B20",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB330",
   "sym": "?FUN_007AB330@Obj_007AB330@@QBEHHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AB330::FUN_007AB330",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB340",
   "sym": "?FUN_007AB340@Obj_007AB340@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AB340::FUN_007AB340",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4A0",
   "sym": "?FUN_007AC4A0@Obj_007AC4A0@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AC4A0::FUN_007AC4A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4B0",
   "sym": "?FUN_007AC4B0@Obj_007AC4B0@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AC4B0::FUN_007AC4B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4C0",
   "sym": "?FUN_007AC4C0@Obj_007AC4C0@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AC4C0::FUN_007AC4C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4D0",
   "sym": "?FUN_007AC4D0@Obj_007AC4D0@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AC4D0::FUN_007AC4D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4E0",
   "sym": "?FUN_007AC4E0@Obj_007AC4E0@@QBEHHHH@Z",
   "len": "0x5",
   "name": "Obj_007AC4E0::FUN_007AC4E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC4F0",
   "sym": "?FUN_007AC4F0@@YAXXZ",
   "len": "0x1",
   "name": "FUN_007AC4F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD610",
   "sym": "?FUN_007AD610@Obj_007AD610@@QBEHH@Z",
   "len": "0x5",
   "name": "Obj_007AD610::FUN_007AD610",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/WorldDom.cpp",
@@ -88965,7 +88965,7 @@
   "pct": 100
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77E110",
   "sym": "?FUN_0077E110@@YIXXZ",
   "len": "0xb8",
@@ -88975,25 +88975,25 @@
   "note": "Aligned 92.9%: retail materialises the bool argument of the inlined 0x77D7A0 body (setne/test)."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x781380",
   "sym": "?FUN_00781380@@YAHPBX0@Z",
   "len": "0x2c",
   "name": "FUN_00781380",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7813B0",
   "sym": "?FUN_007813B0@@YAHPBX0@Z",
   "len": "0x23",
   "name": "FUN_007813B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7813E0",
   "sym": "?FUN_007813E0@@YIXPAUObj_00781380@@_N@Z",
   "len": "0x95",
@@ -89003,61 +89003,61 @@
   "note": "Aligned 47.4%: retail spills the output pointer and steps a second cursor; frame is 4 bytes larger."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x781CC0",
   "sym": "?FUN_00781CC0@@YAHPBUObj_00781CC0@@0@Z",
   "len": "0x2d",
   "name": "FUN_00781CC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x781CF0",
   "sym": "?FUN_00781CF0@@YAHPBUObj_00781CC0@@0@Z",
   "len": "0x2d",
   "name": "FUN_00781CF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x783070",
   "sym": "?FUN_00783070@@YIXPAX@Z",
   "len": "0x48",
   "name": "FUN_00783070",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7830C0",
   "sym": "?FUN_007830C0@@YAHPBUItem_007830C0@@0@Z",
   "len": "0xdb",
   "name": "FUN_007830C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x783520",
   "sym": "?FUN_00783520@@YAHPBD0@Z",
   "len": "0x4f",
   "name": "FUN_00783520",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x783570",
   "sym": "?FUN_00783570@@YAHPBD0@Z",
   "len": "0x4f",
   "name": "FUN_00783570",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7835C0",
   "sym": "?FUN_007835C0@@YAHPBUItem_007835C0@@0@Z",
   "len": "0x11c",
@@ -89067,7 +89067,7 @@
   "note": "Aligned 59.8%: retail shares one epilogue for the name-result return; this build emits separate ones."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7836E0",
   "sym": "?FUN_007836E0@@YAHPBUItem_007835C0@@0@Z",
   "len": "0x11c",
@@ -89077,43 +89077,43 @@
   "note": "Aligned 59.8%: as 0x7835C0 with the name comparison reversed."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x786D90",
   "sym": "?FUN_00786D90@@YI_NXZ",
   "len": "0x30",
   "name": "FUN_00786D90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x786E70",
   "sym": "?FUN_00786E70@@YIHPAVString_007B4620@@@Z",
   "len": "0x75",
   "name": "FUN_00786E70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x78ABF0",
   "sym": "?FUN_0078ABF0@@YIXDPBG@Z",
   "len": "0x12",
   "name": "FUN_0078ABF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x78F6B0",
   "sym": "?FUN_0078F6B0@@YIHH@Z",
   "len": "0x69",
   "name": "FUN_0078F6B0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x791AA0",
   "sym": "?FUN_00791AA0@@YIXPAX@Z",
   "len": "0x66",
@@ -89123,134 +89123,134 @@
   "note": "Aligned 90.9%: retail pushes the callback arguments before the label lookup."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x792E90",
   "sym": "?FUN_00792E90@@YIXJ@Z",
   "len": "0x27",
   "name": "FUN_00792E90",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x792EC0",
   "sym": "?FUN_00792EC0@@YIXI@Z",
   "len": "0x4a",
   "name": "FUN_00792EC0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7930A0",
   "sym": "?FUN_007930A0@@YI_NXZ",
   "len": "0x72",
   "name": "FUN_007930A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793120",
   "sym": "?FUN_00793120@@YI_NPAVString_007B4620@@@Z",
   "len": "0x75",
   "name": "FUN_00793120",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7931A0",
   "sym": "?FUN_007931A0@@YIPAUEntry_00B77908@@XZ",
   "len": "0x4b",
   "name": "FUN_007931A0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7931F0",
   "sym": "?FUN_007931F0@@YIXH@Z",
   "len": "0x56",
   "name": "FUN_007931F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793250",
   "sym": "?FUN_00793250@@YIXXZ",
   "len": "0x2e",
   "name": "FUN_00793250",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793460",
   "sym": "?FUN_00793460@@YIXHH@Z",
   "len": "0x23",
   "name": "FUN_00793460",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793710",
   "sym": "?FUN_00793710@@YIGHHHH@Z",
   "len": "0x9e",
   "name": "FUN_00793710",
   "status": "matched",
-  "pct": 100,
+  "pct": 100.0,
   "note": "Aligned 91.3%: retail keeps two epilogues for the final range clamp."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793A10",
   "sym": "?FUN_00793A10@@YIXPBDH@Z",
   "len": "0x58",
   "name": "FUN_00793A10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793B30",
   "sym": "?FUN_00793B30@@YIXHPBD@Z",
   "len": "0x74",
   "name": "FUN_00793B30",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7975E0",
   "sym": "?FUN_007975E0@@YIXXZ",
   "len": "0x55",
   "name": "FUN_007975E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7982D0",
   "sym": "?FUN_007982D0@@YIKHK@Z",
   "len": "0x6f",
   "name": "FUN_007982D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x798340",
   "sym": "?FUN_00798340@@YIXXZ",
   "len": "0x20",
   "name": "FUN_00798340",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x799CD0",
   "sym": "?FUN_00799CD0@@YIXXZ",
   "len": "0x3e",
@@ -89260,25 +89260,25 @@
   "note": "Aligned 62.5%: retail zeroes the four scalars from EDX; this build uses EAX."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x799D10",
   "sym": "?FUN_00799D10@@YIXXZ",
   "len": "0x1c",
   "name": "FUN_00799D10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x79BE70",
   "sym": "?FUN_0079BE70@@YIXXZ",
   "len": "0x59",
   "name": "FUN_0079BE70",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x79BED0",
   "sym": "?FUN_0079BED0@@YI_NXZ",
   "len": "0x7a",
@@ -89288,70 +89288,70 @@
   "note": "Aligned 83%: retail keeps one false exit per path."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x79FC10",
   "sym": "?FUN_0079FC10@@YIXHHH@Z",
   "len": "0x27",
   "name": "FUN_0079FC10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A0DD0",
   "sym": "?FUN_007A0DD0@@YIXPAUEntry_00B77908@@@Z",
   "len": "0x76",
   "name": "FUN_007A0DD0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A0E50",
   "sym": "?FUN_007A0E50@@YIXXZ",
   "len": "0x42",
   "name": "FUN_007A0E50",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A0EA0",
   "sym": "?FUN_007A0EA0@@YIXPBDH@Z",
   "len": "0x9e",
   "name": "FUN_007A0EA0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2730",
   "sym": "?FUN_007A2730@@YIXXZ",
   "len": "0x15",
   "name": "FUN_007A2730",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2750",
   "sym": "?FUN_007A2750@@YIXXZ",
   "len": "0x72",
   "name": "FUN_007A2750",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2800",
   "sym": "?FUN_007A2800@@YIXHHH@Z",
   "len": "0x24",
   "name": "FUN_007A2800",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2830",
   "sym": "?FUN_007A2830@@YIXPAVString_007B4620@@@Z",
   "len": "0x7f",
@@ -89361,121 +89361,121 @@
   "note": "Aligned 92.5%: retail zeroes the first word of the local record before the loop."
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A30D0",
   "sym": "?FUN_007A30D0@@YGJPAXH@Z",
   "len": "0x27",
   "name": "FUN_007A30D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A4070",
   "sym": "?FUN_007A4070@@YGJPAXHHH@Z",
   "len": "0x79",
   "name": "FUN_007A4070",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A40F0",
   "sym": "?FUN_007A40F0@@YGJPAXHHHH@Z",
   "len": "0xa8",
   "name": "FUN_007A40F0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A70E0",
   "sym": "?FUN_007A70E0@@YGJPAXJHH@Z",
   "len": "0x28",
   "name": "FUN_007A70E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB350",
   "sym": "?FUN_007AB350@@YGJPAXHJ@Z",
   "len": "0x6c",
   "name": "FUN_007AB350",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB3C0",
   "sym": "?FUN_007AB3C0@@YGJPAXHPBDH@Z",
   "len": "0x76",
   "name": "FUN_007AB3C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC9D0",
   "sym": "?FUN_007AC9D0@Obj_007AC9D0@@QAE_NPAPAURecord_00B778E0@@H@Z",
   "len": "0x29",
   "name": "Obj_007AC9D0::FUN_007AC9D0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACD30",
   "sym": "?FUN_007ACD30@Obj_007ACD30@@QAEXXZ",
   "len": "0x26",
   "name": "Obj_007ACD30::FUN_007ACD30",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ADC60",
   "sym": "?FUN_007ADC60@Table_007ADC60@@QAE_NABVString_007B4620@@PAPAUEntry_00B77908@@@Z",
   "len": "0x6b",
   "name": "Table_007ADC60::FUN_007ADC60",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE180",
   "sym": "?FUN_007AE180@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
   "len": "0x6b",
   "name": "Table_007AE180::FUN_007AE180",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE7C0",
   "sym": "?FUN_007AE7C0@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
   "len": "0x6b",
   "name": "Table_007AE180::FUN_007AE7C0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE8E0",
   "sym": "?FUN_007AE8E0@Table_007AE8E0@@QAE_NABVString_007B4620@@PAPAUValue_007AE8E0@@@Z",
   "len": "0x6e",
   "name": "Table_007AE8E0::FUN_007AE8E0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AEC00",
   "sym": "?Shrink@?$HashTable@UNode_007AEC00@@@@QAEXXZ",
   "len": "0xae",
   "name": "HashTable<Node_007AEC00>::Shrink",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/Techno.cpp",
@@ -94555,7 +94555,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C5A0",
   "sym": "?FUN_0077C5A0@@YIXXZ",
   "len": "0x3e",
@@ -94564,7 +94564,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77C660",
   "sym": "?FUN_0077C660@@YIXXZ",
   "len": "0x3e",
@@ -94573,7 +94573,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2FC0",
   "sym": "??0Obj_007A2FC0@@QAE@XZ",
   "len": "0x1e",
@@ -94582,7 +94582,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A41A0",
   "sym": "??0Obj_007A41A0@@QAE@XZ",
   "len": "0x1e",
@@ -94591,7 +94591,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE730",
   "sym": "?FUN_007AE730@Obj_007AE730@@QAE_NXZ",
   "len": "0x86",
@@ -95961,7 +95961,7 @@
   "pct": 43.8
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77DED0",
   "sym": "?FUN_0077DED0@@YIXXZ",
   "len": "0xf8",
@@ -95970,7 +95970,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77DFD0",
   "sym": "?FUN_0077DFD0@@YIXXZ",
   "len": "0x132",
@@ -95979,7 +95979,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x77E820",
   "sym": "?FUN_0077E820@@YIAAVString_007B4620@@PADPAH1111PAV1@@Z",
   "len": "0xd9",
@@ -95988,7 +95988,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x780D90",
   "sym": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVString_007B4620@@@Z",
   "len": "0x9d",
@@ -95997,7 +95997,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x781090",
   "sym": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAXH@Z",
   "len": "0x99",
@@ -96006,7 +96006,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7831A0",
   "sym": "?FUN_007831A0@@YAHPBUItem_007830C0@@0@Z",
   "len": "0xd0",
@@ -96015,7 +96015,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x783A90",
   "sym": "?FUN_00783A90@@YIPAXH@Z",
   "len": "0xc7",
@@ -96024,7 +96024,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x783B80",
   "sym": "?FUN_00783B80@@YIPAXPAURankHolder_00783B80@@@Z",
   "len": "0xf5",
@@ -96033,7 +96033,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x788710",
   "sym": "?FUN_00788710@@YI_NHH@Z",
   "len": "0xed",
@@ -96042,7 +96042,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x788A30",
   "sym": "?FUN_00788A30@@YIHXZ",
   "len": "0xd0",
@@ -96051,7 +96051,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x789630",
   "sym": "?FUN_00789630@@YI?AVString_007B4620@@PBD@Z",
   "len": "0x67",
@@ -96060,7 +96060,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x78DA30",
   "sym": "?FUN_0078DA30@@YGHPAXIIJ@Z",
   "len": "0x132",
@@ -96069,7 +96069,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x78F720",
   "sym": "?FUN_0078F720@@YIXPAX@Z",
   "len": "0xc8",
@@ -96078,7 +96078,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x792CF0",
   "sym": "?FUN_00792CF0@@YGHPAXIIJ@Z",
   "len": "0x155",
@@ -96087,7 +96087,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793930",
   "sym": "?FUN_00793930@@YIXPBD0H@Z",
   "len": "0xdb",
@@ -96096,7 +96096,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793A70",
   "sym": "?FUN_00793A70@@YIXPBDG@Z",
   "len": "0xb2",
@@ -96105,7 +96105,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x793CD0",
   "sym": "?FUN_00793CD0@Obj_00793CD0@@QAEXXZ",
   "len": "0x48",
@@ -96114,7 +96114,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x796B30",
   "sym": "?FUN_00796B30@@YIHXZ",
   "len": "0x53",
@@ -96123,7 +96123,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7982A0",
   "sym": "?FUN_007982A0@@YGXHHPAVMember_7B46F0@@@Z",
   "len": "0x2d",
@@ -96132,7 +96132,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x79AE00",
   "sym": "?FUN_0079AE00@@YGHPAXIIJ@Z",
   "len": "0x104",
@@ -96141,7 +96141,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x79F0A0",
   "sym": "?FUN_0079F0A0@@YI_NPAVString_007B4620@@PAUVec_0079F0A0@@PAURecord_0079F0A0@@@Z",
   "len": "0x98",
@@ -96150,7 +96150,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2110",
   "sym": "?FUN_007A2110@@YGHPAXIIJ@Z",
   "len": "0x11f",
@@ -96159,7 +96159,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A27D0",
   "sym": "?FUN_007A27D0@@YIXXZ",
   "len": "0x22",
@@ -96168,7 +96168,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A2970",
   "sym": "?FUN_007A2970@@YIXXZ",
   "len": "0x64",
@@ -96177,7 +96177,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A5240",
   "sym": "?FUN_007A5240@@YGHPAXHH@Z",
   "len": "0x4f",
@@ -96186,7 +96186,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A55F0",
   "sym": "?FUN_007A55F0@@YGHPAXHPBD@Z",
   "len": "0x91",
@@ -96195,7 +96195,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A8DA0",
   "sym": "?FUN_007A8DA0@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
   "len": "0x129",
@@ -96204,7 +96204,7 @@
   "pct": 96.9
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A8FC0",
   "sym": "?FUN_007A8FC0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
   "len": "0x142",
@@ -96213,7 +96213,7 @@
   "pct": 97.2
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AAFB0",
   "sym": "?FUN_007AAFB0@@YGHPAXHPAUEntry_00B77908@@PBD@Z",
   "len": "0xe9",
@@ -96222,7 +96222,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB0A0",
   "sym": "?FUN_007AB0A0@@YGHPAXHPAUEntry_00B77908@@PBG@Z",
   "len": "0xc9",
@@ -96231,7 +96231,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB170",
   "sym": "?FUN_007AB170@@YGHPAXHHPAUEntry_00B77908@@PBD@Z",
   "len": "0xe9",
@@ -96240,7 +96240,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AB260",
   "sym": "?FUN_007AB260@@YGHPAXHHPAUEntry_00B77908@@PBG@Z",
   "len": "0xc9",
@@ -96249,7 +96249,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AC610",
   "sym": "??0WonlineStringDialogControl@@QAE@XZ",
   "len": "0x20",
@@ -96258,7 +96258,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACBE0",
   "sym": "?Insert@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@ABH@Z",
   "len": "0x141",
@@ -96267,7 +96267,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACE60",
   "sym": "?Clear@?$HashTable_006249A0@VString_007B4620@@H@@QAEXXZ",
   "len": "0x10b",
@@ -96276,7 +96276,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ACF70",
   "sym": "?Clear@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAEXXZ",
   "len": "0x114",
@@ -96285,7 +96285,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD480",
   "sym": "?FUN_007AD480@@YGHPAXIIHH@Z",
   "len": "0xf1",
@@ -96294,7 +96294,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD580",
   "sym": "?FUN_007AD580@@YGHPAXH@Z",
   "len": "0x8f",
@@ -96303,7 +96303,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AD9D0",
   "sym": "?FUN_007AD9D0@Obj_007AD9D0@@QAE_NXZ",
   "len": "0x94",
@@ -96312,7 +96312,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7ADA70",
   "sym": "?FUN_007ADA70@Obj_007AD9D0@@QAE_NXZ",
   "len": "0x8e",
@@ -96321,7 +96321,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE1F0",
   "sym": "?Remove@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@AAH@Z",
   "len": "0x268",
@@ -96330,7 +96330,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7AE950",
   "sym": "?Remove@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAE_NABVString_007B4620@@AAUValue_007AE8E0@@@Z",
   "len": "0x2ac",
@@ -96339,7 +96339,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x786270",
   "sym": "?FUN_00786270@@YI_NXZ",
   "len": "0x116",
@@ -96348,7 +96348,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x786390",
   "sym": "?FUN_00786390@@YIHXZ",
   "len": "0x12c",
@@ -96357,7 +96357,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x786EF0",
   "sym": "?FUN_00786EF0@@YI_NXZ",
   "len": "0xf6",
@@ -96366,7 +96366,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x796FC0",
   "sym": "?FUN_00796FC0@@YIXXZ",
   "len": "0x10e",
@@ -96375,7 +96375,7 @@
   "pct": 97.4
  },
  {
-  "tu": "match/network/wonline_part2.cpp",
+  "tu": "match/network/wonline.cpp",
   "addr": "0x7A0F40",
   "sym": "?FUN_007A0F40@@YIXXZ",
   "len": "0x116",
