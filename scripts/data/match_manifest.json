@@ -29316,149 +29316,148 @@
   "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557600",
-  "sym": "?Dtor@ListClass@@QAEXXZ",
+  "sym": "??1ListClass@@UAE@XZ",
   "len": "0x9f",
-  "name": "ListClass::Dtor",
+  "name": "ListClass::~ListClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x5576A0",
-  "sym": "?AddItem@ListClass@@QAEHPBG@Z",
+  "sym": "?AddItem@ListClass@@UAEHPBG@Z",
   "len": "0x8d",
   "name": "ListClass::AddItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557730",
-  "sym": "?RemoveItem@ListClass@@QAEXH@Z",
+  "sym": "?RemoveItem@ListClass@@UAEXH@Z",
   "len": "0xc4",
   "name": "ListClass::RemoveItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557800",
-  "sym": "?RemoveItem@ListClass@@QAEXPBG@Z",
+  "sym": "?RemoveItem@ListClass@@UAEXPBG@Z",
   "len": "0x2a",
   "name": "ListClass::RemoveItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557830",
-  "sym": "?Action@ListClass@@QAEIIPAIH@Z",
+  "sym": "?Action@ListClass@@UAEHIPAIH@Z",
   "len": "0xf0",
   "name": "ListClass::Action",
   "status": "partial",
-  "pct": 96.8,
-  "note": "Naked asm body replaced by C++ (user decision 2026-10-22). Multiset identical; one store differs: retail writes SelectedIndex before loading List.Count for the clamp."
+  "pct": 96.8
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557A20",
-  "sym": "?Bump@ListClass@@QAEXH@Z",
+  "sym": "?Bump@ListClass@@UAEXH@Z",
   "len": "0x44",
   "name": "ListClass::Bump",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557A70",
-  "sym": "?Step@ListClass@@QAEXH@Z",
+  "sym": "?Step@ListClass@@UAEXH@Z",
   "len": "0x44",
   "name": "ListClass::Step",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557AC0",
-  "sym": "?GetItem@ListClass@@QAEPBGH@Z",
+  "sym": "?GetItem@ListClass@@UAEPBGH@Z",
   "len": "0x1e",
   "name": "ListClass::GetItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557AE0",
-  "sym": "?GetCurrentItem@ListClass@@QAEPBGXZ",
+  "sym": "?GetCurrentItem@ListClass@@UAEPBGXZ",
   "len": "0x17",
   "name": "ListClass::GetCurrentItem",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557B70",
-  "sym": "?SetViewIndex@ListClass@@QAEHH@Z",
+  "sym": "?SetViewIndex@ListClass@@UAEHH@Z",
   "len": "0x6c",
   "name": "ListClass::SetViewIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557BE0",
-  "sym": "?EnableScrollBar@ListClass@@QAEHXZ",
+  "sym": "?EnableScrollBar@ListClass@@UAEHXZ",
   "len": "0xcb",
   "name": "ListClass::EnableScrollBar",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557CB0",
-  "sym": "?DisableScrollBar@ListClass@@QAEHXZ",
+  "sym": "?DisableScrollBar@ListClass@@UAEHXZ",
   "len": "0x55",
   "name": "ListClass::DisableScrollBar",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557E10",
-  "sym": "?Add@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
+  "sym": "?Add@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
   "len": "0x46",
   "name": "ListClass::Add",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557E60",
-  "sym": "?AddHead@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
+  "sym": "?AddHead@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
   "len": "0x46",
   "name": "ListClass::AddHead",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557EB0",
-  "sym": "?AddTail@ListClass@@QAEPAVLinkClass@@AAV2@@Z",
+  "sym": "?AddTail@ListClass@@UAEPAVLinkClass@@AAV2@@Z",
   "len": "0x4b",
   "name": "ListClass::AddTail",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/ui/list_class_base_methods.cpp",
+  "tu": "match/ui/input_controls/lists_list.cpp",
   "addr": "0x557F00",
-  "sym": "?Remove@ListClass@@QAEPAVLinkClass@@XZ",
+  "sym": "?Remove@ListClass@@UAEPAVLinkClass@@XZ",
   "len": "0x3a",
   "name": "ListClass::Remove",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/load_options_class_methods.cpp",

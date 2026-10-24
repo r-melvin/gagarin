@@ -275,7 +275,7 @@ public:
               void const* downShape);                           // 0x557230
     // 0x558060 is the compiler's scalar deleting destructor with this body expanded in it (the out-of-line copy
     // is 0x557600, which the derived destructors call).
-    virtual ~ListClass();                                       // 0x00  0x558060 (inline definition in lists_list.cpp)
+    virtual ~ListClass();                                       // 0x00  0x558060 (ordinary destructor defined in lists_list.cpp)
     virtual LinkClass* Add(LinkClass& object);                  // 0x0C  0x557E10
     virtual LinkClass* AddTail(LinkClass& object);              // 0x10  0x557EB0
     virtual LinkClass* AddHead(LinkClass& object);              // 0x14  0x557E60

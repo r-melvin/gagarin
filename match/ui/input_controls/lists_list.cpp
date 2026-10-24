@@ -4,6 +4,7 @@
 //   destructors, which stop inlining their bodies with it (0x4E1A60 100% -> 6.5%, 0x558060 and 0x488F00 -> 0%,
 //   0x4B55F0 -> 17.6%); every other function here scores identically with and without it.
 //   Lists cluster: ListClass vtable bodies at 0x4886B0 and 0x557570..0x558060 (ordered by address).
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 #include "lists_views.h"
 
 // LIBRARY: GAMEMD 0x7DD0F8 _wcsicmp
@@ -57,6 +58,102 @@ void ListClass::SetPosition(int x, int y)
     Scroller.Width = UpButton.Width > DownButton.Width ? UpButton.Width : DownButton.Width;
 }
 
+// FUNCTION: GAMEMD 0x00557600
+ListClass::~ListClass()
+{
+    if (IsScrollActive) {
+        DisableScrollBar();
+    }
+}
+
+// FUNCTION: GAMEMD 0x005576A0
+int ListClass::AddItem(wchar_t const* text)
+{
+    if (text != 0) {
+        List.AddItem(text);
+        MarkRedraw();
+        if (List.Count > LineCount) {
+            EnableScrollBar();
+        }
+        if (IsScrollActive) {
+            Scroller.vf_34(List.Count);
+        }
+    }
+    return List.Count - 1;
+}
+
+// FUNCTION: GAMEMD 0x00557730
+void ListClass::RemoveItem(int index)
+{
+    if ((unsigned)index < (unsigned)List.GetCount()) {
+        List.Delete(index);
+        if (List.GetCount() <= LineCount) {
+            DisableScrollBar();
+        }
+        if (IsScrollActive) {
+            Scroller.vf_34(List.GetCount());
+        }
+        if (SelectedIndex >= List.GetCount()) {
+            SelectedIndex--;
+            if (SelectedIndex < 0) {
+                SelectedIndex = 0;
+            }
+        }
+        if (CurrentTopIndex >= List.GetCount()) {
+            CurrentTopIndex--;
+            if (CurrentTopIndex < 0) {
+                CurrentTopIndex = 0;
+            }
+            if (IsScrollActive) {
+                Scroller.Step(1);
+            }
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x00557800
+void ListClass::RemoveItem(wchar_t const* text)
+{
+    if (text != 0) {
+        RemoveItem(List.FindItemIndex(text));
+    }
+}
+
+// FUNCTION: GAMEMD 0x00557830
+// PARTIAL 96.8%: retail stores SelectedIndex before loading the final count;
+// the compiler schedules that store after the load. Existing body bytes are preserved.
+int ListClass::Action(unsigned flags, unsigned* key, int extra)
+{
+    if (flags & 4) {
+        *key = 0;
+        ControlClass::Action(flags & ~4, key, 0);
+        return 1;
+    }
+    if (flags & 0x100) {
+        if (*key == 0x26) {
+            StepSelectedIndex(-1);
+            *key = 0;
+        } else if (*key == 0x28) {
+            StepSelectedIndex(1);
+            *key = 0;
+        } else {
+            flags &= ~0x100;
+        }
+    } else {
+        int mouseY = DAT_00887640->GetY();
+        SelectedIndex = (mouseY - Y - 1) / LineHeight + CurrentTopIndex;
+        int row = SelectedIndex;
+        if (row >= List.Count - 1) {
+            row = List.Count - 1;
+        }
+        SelectedIndex = row;
+        if (row == -1) {
+            SelectedIndex = 0;
+        }
+    }
+    return ControlClass::Action(flags, key, 0);
+}
+
 // FUNCTION: GAMEMD 0x557920
 // ListClass::Draw slot (+0x6C): when the gadget needs drawing, hides the mouse over the list, paints the frame,
 // draws each visible line and shows the mouse again.
@@ -77,6 +174,50 @@ int ListClass::Draw(int forced)
         return 1;
     }
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x00557A20
+void ListClass::Bump(int minus)
+{
+    if (IsScrollActive) {
+        if (Scroller.Step(minus)) {
+            CurrentTopIndex = Scroller.GetValue();
+            MarkRedraw();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x00557A70
+void ListClass::Step(int minus)
+{
+    if (IsScrollActive) {
+        if (Scroller.Step(minus)) {
+            CurrentTopIndex = Scroller.GetValue();
+            MarkRedraw();
+        }
+    }
+}
+
+// FUNCTION: GAMEMD 0x00557AC0
+wchar_t const* ListClass::GetItem(int index)
+{
+    if (List.Count == 0) {
+        return 0;
+    }
+    int last = List.Count - 1;
+    if (index >= last) {
+        index = last;
+    }
+    return List.Items[index];
+}
+
+// FUNCTION: GAMEMD 0x00557AE0
+wchar_t const* ListClass::GetCurrentItem()
+{
+    if (List.Count <= SelectedIndex) {
+        return 0;
+    }
+    return List.Items[SelectedIndex];
 }
 
 // FUNCTION: GAMEMD 0x557B00
@@ -103,6 +244,55 @@ void ListClass::PeerToPeer(unsigned flags, unsigned* key, GadgetClass* source)
         SetViewIndex(Scroller.GetValue());
     }
 }
+
+// FUNCTION: GAMEMD 0x00557B70
+int ListClass::SetViewIndex(int index)
+{
+    int span = List.Count - LineCount;
+    int clamped = (span < 0) - 1;
+    clamped &= span;
+    if (index < 0) {
+        index = 0;
+    } else if (index > clamped) {
+        index = clamped;
+    }
+    if (index != CurrentTopIndex) {
+        CurrentTopIndex = index;
+        MarkRedraw();
+        if (IsScrollActive) {
+            Scroller.SetValue(CurrentTopIndex);
+        }
+        return 1;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x00557BE0
+int ListClass::EnableScrollBar()
+{
+    if (!IsScrollActive) {
+        IsScrollActive = true;
+        MarkRedraw();
+        Width -= Scroller.Width;
+        UpButton.SetPeer(this);
+        DownButton.SetPeer(this);
+        Scroller.SetPeer(this);
+        UpButton.Add(*this);
+        DownButton.Add(*this);
+        Scroller.Add(*this);
+        UpButton.MarkRedraw();
+        DownButton.MarkRedraw();
+        Scroller.MarkRedraw();
+        Scroller.vf_34(List.Count);
+        Scroller.vf_42(LineCount);
+        Scroller.SetValue(CurrentTopIndex);
+        return 1;
+    }
+    return 0;
+}
+
+// SYNTHETIC: GAMEMD 0x00557CB0
+// ListClass::DisableScrollBar (ordinary inline definition in ui_gadget.h)
 
 // FUNCTION: GAMEMD 0x557D10
 // ListClass::vf_47 slot (+0xBC).
@@ -134,6 +324,51 @@ void ListClass::DrawItem(int index, int x, int y, int width, int selected)
     }
     FUN_004A6500(List[index], DAT_00887314, &DAT_00887314->GetRect(), &Point2D(x, y),
                  DAT_00B054D0[scheme], 0, flags, width, Tabs);
+}
+
+// FUNCTION: GAMEMD 0x00557E10
+LinkClass* ListClass::Add(LinkClass& object)
+{
+    if (IsScrollActive) {
+        Scroller.Add(object);
+        DownButton.Add(object);
+        UpButton.Add(object);
+    }
+    return LinkClass::Add(object);
+}
+
+// FUNCTION: GAMEMD 0x00557E60
+LinkClass* ListClass::AddHead(LinkClass& object)
+{
+    if (IsScrollActive) {
+        Scroller.AddHead(object);
+        DownButton.AddHead(object);
+        UpButton.AddHead(object);
+    }
+    return LinkClass::AddHead(object);
+}
+
+// FUNCTION: GAMEMD 0x00557EB0
+LinkClass* ListClass::AddTail(LinkClass& object)
+{
+    LinkClass::AddTail(object);
+    if (IsScrollActive) {
+        UpButton.AddTail(object);
+        DownButton.AddTail(object);
+        Scroller.AddTail(object);
+    }
+    return HeadOfList();
+}
+
+// FUNCTION: GAMEMD 0x00557F00
+LinkClass* ListClass::Remove()
+{
+    if (IsScrollActive) {
+        Scroller.Remove();
+        DownButton.Remove();
+        UpButton.Remove();
+    }
+    return GadgetClass::Remove();
 }
 
 // FUNCTION: GAMEMD 0x557F40
@@ -189,12 +424,5 @@ void ListClass::SetSelectedText(wchar_t const* text)
     }
 }
 
-// FUNCTION: GAMEMD 0x558060
-// ListClass scalar deleting destructor (slot 0): switches the scroll bar off if it is on, destroys the slider, the two
-// buttons and the text vector, and runs the GadgetClass destructor. Compiler-emitted from the inline destructor below.
-inline ListClass::~ListClass()
-{
-    if (IsScrollActive) {
-        DisableScrollBar();
-    }
-}
+// SYNTHETIC: GAMEMD 0x00558060
+// ListClass::scalar deleting destructor
