@@ -14,6 +14,8 @@
 #include "../_rt/gg_static_assert.h"
 
 class BeaconClass;
+class Surface;
+struct RectangleStruct;
 
 // ---------------------------------------------------------------------------
 // BeaconManagerClass
@@ -28,6 +30,7 @@ class BeaconClass;
 class BeaconManagerClass
 {
 public:
+    void Draw(Surface* surface, RectangleStruct bounds); // 0x430AC0, RET20
     // Declared ascending by retail address (reccmp/isle TU discipline).
     ~BeaconManagerClass();                     // GAMEMD 0x430930 __thiscall
     void Reset();                              // GAMEMD 0x430980 __thiscall

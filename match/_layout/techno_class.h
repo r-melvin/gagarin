@@ -212,6 +212,8 @@ class HouseClass;
 class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
 public:
+    bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
+    void FUN_004DC340(); // ECX receiver, RET; render6D478E
     // FUNCTION: GAMEMD 0x734270 (decl; reloc)
     // TechnoClass::ClearSidebarTabObject
     void ClearSidebarTabObject();

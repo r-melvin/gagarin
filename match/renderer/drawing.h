@@ -77,6 +77,7 @@ struct ABuffer
 {
     // Declaration: GAMEMD 0x411330 -- rectangle16 bytes by value, RET16.
     void FUN_00411330(RectangleStruct rectangle);
+    void FUN_00410ED0(int dx, int dy, unsigned short color); // RET12
     void  ReleaseSurface();                                  // GAMEMD 0x410E50
     bool  Fill(unsigned short Color);                        // GAMEMD 0x4112D0
     bool  FillRect(unsigned short Color, RectangleStruct Rect); // GAMEMD 0x411310

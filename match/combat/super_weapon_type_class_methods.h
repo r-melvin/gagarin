@@ -28,6 +28,7 @@
 class SuperWeaponTypeClass : public AbstractTypeClass
 {
 public:
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // existing slot3 body
     // STATIC: GAMEMD 0x6CEEB0  (__fastcall)
     static SuperWeaponTypeClass* FindFirstOfAction(int action);
 

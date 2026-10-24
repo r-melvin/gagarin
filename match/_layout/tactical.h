@@ -20,6 +20,7 @@ GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 8);
 void FUN_00731D00(int value);
 
 #include "pair_006d9f80.h"
+class Surface;
 class Cell;
 class CellClass;
 struct CellStruct;
@@ -34,6 +35,15 @@ struct Point2D;
 class Tactical : public AbstractClass
 {
 public:
+    void FUN_006D3D10(Surface* surface, bool full, int mode); // 0x6D3D10, RET12
+    void FUN_006DAD60(bool flag); // RET4
+    void FUN_006DA9D0(bool flag); // RET4
+    void FUN_006D5030(bool flag); // RET4
+    void FUN_006D7840(const RectangleStruct* first, const RectangleStruct* second); // RET8
+    void FUN_006D8DB0(bool flag); // RET4
+    void FUN_006DBE20();
+    void FUN_006DA180();
+    void FUN_006D4E20(const unsigned short* text);
     // Declarations: native 6D2DE0 RET12; render helpers6D7560/6D7F20 RET8.
     void FUN_006D2DE0(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D7560(const RectangleStruct* rectangle, const RectangleStruct* clip);

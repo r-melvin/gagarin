@@ -170,10 +170,7 @@ class AircraftTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class AirstrikeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
+#include "../../combat/airstrike_class_methods.h"
 class AITriggerTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -279,14 +276,8 @@ class SpawnManagerClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class SuperClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class SuperWeaponTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
+#include "../../_layout/super_class.h"
+#include "../../combat/super_weapon_type_class_methods.h"
 #include "../../_layout/tactical.h"
 class TActionClass {
 public:
@@ -1326,6 +1317,341 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
         FUN_006D97D0(true, second, second);
 }
 
+
+#include "../../_layout/house_class.h"
+#include "../../_layout/capture_manager_class.h"
+#include "../../_layout/super_class.h"
+#include "../../_layout/session_class.h"
+#include "../../combat/airstrike_class_methods.h"
+#include "../../combat/super_weapon_type_class_methods.h"
+#include "../../renderer/color_scheme_find_methods.h"
+#include "../../core/scenario_class_methods.h"
+#include "../../network/beacon_manager_class.h"
+#include <mmsystem.h>
+
+// GLOBAL: GAMEMD 0xB0CE28
+extern int DAT_00B0CE28;
+// GLOBAL: GAMEMD 0x887314
+extern Surface* DAT_00887314;
+// GLOBAL: GAMEMD 0x88731C
+extern Surface* DAT_0088731C;
+// GLOBAL: GAMEMD 0x8872FC
+extern Surface* DAT_008872FC;
+// GLOBAL: GAMEMD 0xB0E63C
+extern bool DAT_00B0E63C;
+// GLOBAL: GAMEMD 0xA8EC78
+extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
+// GLOBAL: GAMEMD 0xA83D50
+extern DynamicVectorClass<SuperClass*> DAT_00A83D50;
+// GLOBAL: GAMEMD 0x89C3B0
+extern BeaconManagerClass BeaconManagerInstance;
+// GLOBAL: GAMEMD 0xA8B230
+extern ScenarioClass* ScenarioInstance;
+// GLOBAL: GAMEMD 0xA83D4C
+extern HouseClass* CurrentPlayer;
+// GLOBAL: GAMEMD 0xA8022C
+extern HouseClass** HouseClass_ArrayItems;
+// GLOBAL: GAMEMD 0xA80238
+extern int HouseClass_ArrayCount;
+// GLOBAL: GAMEMD 0x843108
+extern bool DAT_00843108;
+// GLOBAL: GAMEMD 0x842900
+extern int DAT_00842900;
+// GLOBAL: GAMEMD 0x7ECE60
+extern const double DAT_007ECE60;
+// GLOBAL: GAMEMD 0x7F43B0
+extern const double DAT_007F43B0;
+// Declaration: STRING GAMEMD 0x842A50
+extern const char STR_00842A50[];
+// Declaration: STRING GAMEMD 0x842A64
+extern const char STR_00842A64[];
+// Declaration: GAMEMD 0x006D4B50 (decl; reloc)
+void FUN_006D4B50(int row, ColorScheme* color, int seconds, const wchar_t* label, unsigned int* blinkClock, unsigned char* blinkState);
+// Declaration: GAMEMD 0x00705860 (decl; reloc)
+void __stdcall FUN_00705860(CoordStruct start, CoordStruct end);
+// Declaration: GAMEMD 0x004CACB0 (decl; reloc)
+extern "C" double __cdecl FUN_004CACB0(double value);
+// Declaration: GAMEMD 0x004CAD00 (decl; reloc)
+extern "C" double __cdecl FUN_004CAD00(double value);
+// Declaration: GAMEMD 0x00734E60 (decl; reloc)
+const wchar_t* FUN_00734E60(const char*, int*, const char*, int);
+// Declaration: GAMEMD 0x0053D850 (decl; reloc)
+void FUN_0053D850();
+// Declaration: GAMEMD 0x005FFFA0 (decl; reloc)
+void FUN_005FFFA0();
+// Declaration: GAMEMD 0x00550240 (decl; reloc)
+void FUN_00550240();
+// Declaration: GAMEMD 0x004C2830 (decl; reloc)
+void FUN_004C2830();
+// Declaration: GAMEMD 0x00556D40 (decl; reloc)
+void FUN_00556D40();
+// Declaration: GAMEMD 0x006591B0 (decl; reloc)
+void FUN_006591B0();
+// Declaration: GAMEMD 0x00637AA0 (decl; reloc)
+char FUN_00637AA0();
+// Declaration: GAMEMD 0x0063B0A0 (decl; reloc)
+void FUN_0063B0A0();
+// Declaration: GAMEMD 0x0063B150 (decl; reloc)
+void FUN_0063B150();
+// Declaration: GAMEMD 0x0063B2F0 (decl; reloc)
+void FUN_0063B2F0();
+
+GG_STATIC_ASSERT(offsetof(TechnoClass, CaptureManager) == 0x2BC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Airstrike) == 0x294);
+GG_STATIC_ASSERT(offsetof(HouseClass, PowerBlackoutTimer) == 0x2A4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, IsSelected) == 0x83);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<TechnoClass*>) == 0x18);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TechnoClass*>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<TechnoClass*>, Count) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SuperClass*>) == 0x18);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<SuperClass*>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<SuperClass*>, Count) == 0x10);
+
+// FUNCTION: GAMEMD 0x6D3D10
+void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
+{
+    unknown_DB0 = 0;
+    // Native reserves/stores a complete16-byte rectangle argument, RET16.
+    bool buildingChanged = FUN_006D9B50(Viewport_00886FA0);
+    int dx = unknown_B8.unknown_00 - unknown_B0.unknown_00;
+    int dy = unknown_B8.unknown_04 - unknown_B0.unknown_04;
+    if (mode == 0) {
+        int absX = dx < 0 ? -dx : dx;
+        int absY = dy < 0 ? -dy : dy;
+        if (absX >= Viewport_00886FA0.Width || absY >= Viewport_00886FA0.Height) {
+            full = true;
+            DAT_00B0E63C = true;
+        } else {
+            DAT_00B0E63C = false;
+        }
+    } else if (DAT_00B0E63C) {
+        full = true;
+    }
+    if (full) { dx = 0; dy = 0; }
+
+    // These nested tests retain both distinct native early exits. D7C is
+    // not an unconditional redraw request when buildingChanged is false.
+    bool update = true;
+    if (!full && !buildingChanged) {
+        if (!unknown_D7C && DAT_00B0CE78.Count == 0 && !unknown_D7D &&
+            unknown_D64 == unknown_D6C) {
+            update = false;
+        } else if (!unknown_D7D && DAT_00B0CE78.Count == 0 && unknown_B0 == unknown_B8) {
+            update = false;
+        }
+    }
+    if (mode != 2 && update) {
+        int absX = dx < 0 ? -dx : dx;
+        int absY = dy < 0 ? -dy : dy;
+        RectangleStruct source = { DAT_00B0CE28 + (dx < 0 ? -dx : 0),
+                                   DAT_00B0CE2C + (dy < 0 ? -dy : 0),
+                                   DAT_00B0CE30 - absX, DAT_00B0CE34 - absY };
+        RectangleStruct destination = { DAT_00B0CE28 + (dx > 0 ? dx : 0),
+                                        DAT_00B0CE2C + (dy > 0 ? dy : 0),
+                                        source.Width, source.Height };
+        if (dx == 0 && dy == 0) {
+            if (full && (mode == 0 || mode == 3)) {
+                ZBuffer_00887644->Fill(0xFFFF);
+                ABuffer_0087E8A4->Fill(0x7F);
+            }
+        } else {
+            if (mode == 0 || mode == 3)
+                DAT_0088731C->CopyFromPart(&destination, DAT_008872FC, &source, false, true);
+            if (mode == 0 || mode == 3)
+                ZBuffer_00887644->FUN_007BCB50(-dx, -dy, 0xFFFF); // dependency: existing buffer owner
+            if (mode == 0 || mode == 3)
+                ABuffer_0087E8A4->FUN_00410ED0(-dx, -dy, 0x7F); // dependency: existing buffer owner
+            if (mode == 0 || mode == 3) {
+                Surface* previous = DAT_0088731C;
+                DAT_0088731C = DAT_008872FC;
+                DAT_008872FC = previous;
+                surface = DAT_0088731C;
+                DAT_00887314 = surface;
+            }
+        }
+        // Native mode0 returns here, before synchronizing B8/D6C below.
+        if (mode == 0) return;
+        if (!DAT_00A8ED6B) {
+            RectangleStruct expanded = { Viewport_00886FA0.X - 64, Viewport_00886FA0.Y - 64,
+                                         Viewport_00886FA0.Width + 128, Viewport_00886FA0.Height + 128 };
+            FUN_006D9A50(expanded); // same16-byte by-value rectangle proposal
+        }
+        Surface* previous = DAT_00887314;
+        DAT_00887314 = DAT_008872FC;
+        DAT_008872FC->Lock(Point2D(0, 0));
+        if (mode == 1 || mode == 3) {
+            bool right = unknown_B0.unknown_00 < unknown_B8.unknown_00;
+            bool left = unknown_B8.unknown_00 < unknown_B0.unknown_00;
+            bool down = unknown_B0.unknown_04 < unknown_B8.unknown_04;
+            bool up = unknown_B8.unknown_04 < unknown_B0.unknown_04;
+            RectangleStruct stripLeft = { Viewport_00886FA0.X, Viewport_00886FA0.Y, absX, Viewport_00886FA0.Height };
+            RectangleStruct stripRight = { Viewport_00886FA0.X - absX + Viewport_00886FA0.Width,
+                                           Viewport_00886FA0.Y, absX, Viewport_00886FA0.Height };
+            RectangleStruct clippedLeft, clippedRight;
+            FUN_00421B60(&clippedLeft, &stripLeft, &Viewport_00886FA0, 0, 0);
+            FUN_00421B60(&clippedRight, &stripRight, &Viewport_00886FA0, 0, 0);
+            int horizontalX = Viewport_00886FA0.X + (right ? absX : 0);
+            int horizontalWidth = Viewport_00886FA0.Width - ((right || left) ? absX : 0);
+            RectangleStruct stripTop = { horizontalX, Viewport_00886FA0.Y, horizontalWidth, absY };
+            RectangleStruct stripBottom = { horizontalX, Viewport_00886FA0.Y - absY + Viewport_00886FA0.Height,
+                                            horizontalWidth, absY };
+            RectangleStruct clippedTop, clippedBottom;
+            FUN_00421B60(&clippedTop, &stripTop, &Viewport_00886FA0, 0, 0);
+            FUN_00421B60(&clippedBottom, &stripBottom, &Viewport_00886FA0, 0, 0);
+            RectangleStruct overlap = { Viewport_00886FA0.X + (right ? absX : 0),
+                                        Viewport_00886FA0.Y + (down ? absY : 0),
+                                        Viewport_00886FA0.Width - absX, Viewport_00886FA0.Height - absY };
+            RectangleStruct horizontal = { 0, 0, 0, 0 };
+            RectangleStruct vertical = { 0, 0, 0, 0 };
+            if (right) horizontal = clippedLeft;
+            else if (left) horizontal = clippedRight;
+            if (down) vertical = clippedTop;
+            else if (up) vertical = clippedBottom;
+            // Native dispatch order6D4471..6D44F7.
+            FUN_006D2B60(full, dx, dy, &overlap);
+            FUN_006D3660(&horizontal, &vertical, &overlap, full);
+            FUN_006D2DE0(&horizontal, &vertical, full);
+            FUN_006D3470(&horizontal, &vertical, full);
+            FUN_006D3290(&horizontal, &vertical, full);
+            FUN_006D3AC0(&horizontal, &vertical, full);
+            FUN_006D3040(&horizontal, &vertical, full);
+            FUN_006D3870(&horizontal, &vertical, full);
+            // Native reverse removal decrementsCount and shifts remaining
+            //20-byte entries; do not replace this with an assumed Clear().
+            for (int index = DAT_00B0CE78.Count - 1; index >= 0; --index) {
+                if (index < DAT_00B0CE78.Count) {
+                    --DAT_00B0CE78.Count;
+                    for (int next = index; next < DAT_00B0CE78.Count; ++next)
+                        DAT_00B0CE78.Items[next] = DAT_00B0CE78.Items[next + 1];
+                }
+            }
+            DAT_00887314->Unlock();
+            DAT_00887314 = previous;
+            unknown_E0 = 0;
+        }
+        // Modes other than1/3 deliberately do not unlock/restore in native.
+    }
+
+    unknown_D6C = unknown_D64;
+    unknown_B8 = unknown_B0;
+    if (mode == 1 || mode == 3) {
+        DAT_00887314->CopyFromPart(&Viewport_00886FA0, DAT_008872FC, &Viewport_00886FA0, false, true);
+        if (mode == 1) return;
+    }
+    if (mode != 2 && mode != 3) return;
+    // 6D45F2..461A reloads XYWH after the virtual blit callback.
+    FUN_006D9CE0(Viewport_00886FA0.X, Viewport_00886FA0.Y, Viewport_00886FA0.Width, Viewport_00886FA0.Height);
+    surface->Lock(Point2D(0, 0));
+    Surface* previous = DAT_00887314;
+    DAT_00887314 = surface;
+    FUN_006DAD60(false);
+    FUN_006DA9D0(false);
+    FUN_006D5030(false);
+    FUN_0053D850();
+    FUN_006D8DB0(true);
+    FUN_005FFFA0();
+    FUN_00550240();
+    FUN_004C2830();
+    FUN_00556D40();
+    FUN_006591B0();
+    FUN_006DBE20();
+    // Native reserves XYWH16, then pushes Surface*: first parameter is Surface*.
+    BeaconManagerInstance.Draw(DAT_00887314, Viewport_00886FA0);
+    FUN_006DA180();
+    FUN_006DAD60(true);
+    FUN_006DA9D0(true);
+    FUN_006D5030(true);
+    bool special = FUN_00637AA0() != 0;
+    if (special) { FUN_0063B0A0(); FUN_0063B150(); }
+    const int count = DAT_00A8EC78.Count;
+    for (int index = 0; index < count; ++index) {
+        TechnoClass* techno = DAT_00A8EC78.Items[index];
+        if (techno->Owner->IsControlledByCurrentPlayer()) {
+            if (special) continue;
+            if (techno->IsSelected && DAT_00843108) techno->vf_270(0, 0);
+        } else {
+            // Address placeholders retain the observed ECX/AL and ECX/RET ABI;
+            // original source-level method names remain unrecovered.
+            if (techno->FUN_0043B150() && techno && techno->Flags.IsFoot && !techno->InLimbo)
+                techno->FUN_004DC340();
+            if (special) continue;
+        }
+        if (techno->Health != 0) {
+            CaptureManagerClass* manager = static_cast<CaptureManagerClass*>(techno->CaptureManager);
+            if (manager && manager->NeedsToDrawLinks())
+                static_cast<CaptureManagerClass*>(techno->CaptureManager)->DrawLinks();
+            if (techno->Health != 0 && techno->MindControlledBy) {
+                TechnoClass* controller = static_cast<TechnoClass*>(techno->MindControlledBy);
+                CaptureManagerClass* controllerManager = static_cast<CaptureManagerClass*>(controller->CaptureManager);
+                if (controllerManager && controllerManager->NeedsToDrawLinks())
+                    static_cast<CaptureManagerClass*>(static_cast<TechnoClass*>(techno->MindControlledBy)->CaptureManager)->DrawLinks();
+            }
+        }
+        AirstrikeClass* airstrike = static_cast<AirstrikeClass*>(techno->Airstrike);
+        if (airstrike && airstrike->unknown_4C == techno) {
+            // Native preserves Target across vf11 and timeGetTime callbacks.
+            ObjectClass* targetObject = airstrike->Target;
+            if (targetObject && targetObject->vf_11() == 6) {
+            unsigned int phaseBits = timeGetTime() >> (DAT_00842900 & 31);
+            CoordStruct target = targetObject->vf_18();
+            double phase = (double)phaseBits;
+            CoordStruct endpoint;
+            endpoint.Z = (int)(FUN_004CACB0(phase) * DAT_007ECE60 + target.Z);
+            endpoint.X = (int)(FUN_004CAD00(phase * DAT_007F43B0) * DAT_007ECE60 + target.X);
+            endpoint.Y = target.Y;
+            // Slot44 takes four DWORD arguments plus a hidden result.
+            // The endpoint is already built when its virtual callback runs.
+            FUN_00705860(techno->vf_44(0, 0, 0, 0), endpoint);
+            }
+        }
+    }
+    if (special) FUN_0063B2F0();
+    // 6D491F..492B passes the live GLOBAL address twice after overlay calls.
+    FUN_006D7840(&Viewport_00886FA0, &Viewport_00886FA0);
+    DAT_00887314 = previous;
+    surface->Unlock();
+
+    int row = 0;
+    if (ScenarioInstance->Timer_11E8.IsOn()) {
+        FUN_006D4B50(row, ColorSchemeArray.Items[CurrentPlayer->ColorSchemeIndex],
+                     ScenarioInstance->Timer_11E8.GetTimeLeft() / 15,
+                     ScenarioInstance->unknown_11F4, 0, 0);
+        ++row;
+    }
+    const int superCount = DAT_00A83D50.Count;
+    for (int superIndex = 0; superIndex < superCount; ++superIndex) {
+        SuperClass* super = DAT_00A83D50.Items[superIndex];
+        if (super->IsSuspended && Session_00A8B238.GameMode == 0 &&
+            super->RechargeTimer.GetTimeLeft() == super->GetRechargeTime())
+            continue;
+        // Native6D4A08 reloads Items after GetRechargeTime can alter globals.
+        super = DAT_00A83D50.Items[superIndex];
+        // Keep the native timer reread after GetRechargeTime's call.
+        FUN_006D4B50(row,
+                     ColorSchemeArray.Items[static_cast<HouseClass*>(super->Owner)->ColorSchemeIndex],
+                     super->RechargeTimer.GetTimeLeft() / 15,
+                     static_cast<SuperWeaponTypeClass*>(super->Type)->UIName,
+                     &super->BlinkTimer_Low, &super->BlinkState);
+        ++row;
+    }
+    const int houseCount = HouseClass_ArrayCount;
+    for (int houseIndex = 0; houseIndex < houseCount; ++houseIndex) {
+        HouseClass* house = HouseClass_ArrayItems[houseIndex];
+        int remaining = house->PowerBlackoutTimer.GetTimeLeft();
+        if (remaining > 0) {
+            // ECXstringID, EDX0, stackfile+line; label bytes not invented.
+            // 6D4AE1 captures the color ENTRY address before localization;
+            // 6D4B06 loads its value after the callback.
+            ColorScheme** colorEntry = &ColorSchemeArray.Items[house->ColorSchemeIndex];
+            const wchar_t* label = FUN_00734E60(STR_00842A50, 0, STR_00842A64, 0x1C4);
+            FUN_006D4B50(row, *colorEntry, remaining / 15, label, 0, 0);
+            ++row;
+        }
+    }
+    FUN_006D4E20(unknown_24);
+    unknown_D7C = 0;
+    unknown_D7D = false;
+}
 
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)

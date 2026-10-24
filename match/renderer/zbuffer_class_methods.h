@@ -19,6 +19,7 @@ struct ZBuffer
     int unknown_24;
     int unknown_28;
     int unknown_2C;
+    void FUN_007BCB50(int dx, int dy, unsigned short color); // RET12
     bool Fill(unsigned short color); // GAMEMD 0x7BCF50
     void ReleaseSurface(); // GAMEMD 0x7BCAE0
     // Declaration: GAMEMD 0x7BCFB0 -- four stacked DWORDs, RET0x10.
