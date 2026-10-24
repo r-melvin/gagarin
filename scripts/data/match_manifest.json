@@ -53350,13 +53350,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/empty_dtor_class_ddtors.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631F40",
-  "sym": "?DeletingDtor@PixelFXClass@@UAEPAXI@Z",
+  "sym": "??_GPixelFXClass@@UAEPAXI@Z",
   "len": "0x20",
-  "name": "PixelFXClass::DeletingDtor",
+  "name": "??_GPixelFXClass@@UAEPAXI@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
@@ -82715,40 +82715,40 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu177_methods.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631E10",
-  "sym": "?FUN_00631E10@@YIPAUObj_00631E10@@PAU1@H@Z",
+  "sym": "??0PixelFXClass@@QAE@XZ",
   "len": "0x14",
-  "name": "FUN_00631E10",
+  "name": "??0PixelFXClass@@QAE@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu177_b_methods.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631E30",
-  "sym": "?FUN_00631E30@@YIPAUObj_00631E30@@PAU1@HH@Z",
+  "sym": "??0PixelFXClass@@QAE@H@Z",
   "len": "0x19",
-  "name": "FUN_00631E30",
+  "name": "??0PixelFXClass@@QAE@H@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu177_methods.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631F10",
-  "sym": "?FUN_00631F10@Obj_00631F10@@QAEXHH@Z",
+  "sym": "?FUN_00631F10@PixelFXClass@@QAEXHH@Z",
   "len": "0x11",
-  "name": "Obj_00631F10::FUN_00631F10",
+  "name": "PixelFXClass::FUN_00631F10",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu177_methods.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631F30",
-  "sym": "?FUN_00631F30@Obj_00631F30@@QAEXXZ",
+  "sym": "??1PixelFXClass@@UAE@XZ",
   "len": "0x7",
-  "name": "Obj_00631F30::FUN_00631F30",
+  "name": "??1PixelFXClass@@UAE@XZ",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/PlanMgr.cpp",
@@ -91637,13 +91637,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu177_c_methods.cpp",
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
   "addr": "0x631EE0",
-  "sym": "?FUN_00631EE0@Obj_00631EE0@@QAEEH@Z",
+  "sym": "?FUN_00631EE0@PixelFXClass@@QAE_NH@Z",
   "len": "0x23",
-  "name": "Obj_00631EE0::FUN_00631EE0",
+  "name": "PixelFXClass::FUN_00631EE0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/combat/tu185_particle_type_class.cpp",
@@ -98794,5 +98794,41 @@
   "name": "Tactical::FUN_006D71E0",
   "status": "partial",
   "pct": 1.5
+ },
+ {
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
+  "addr": "0x631D40",
+  "sym": "?FUN_00631D40@PixelFXClass@@QAEXH@Z",
+  "len": "0xcd",
+  "name": "PixelFXClass::FUN_00631D40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/renderer/tu177_pixel_fx_class.cpp",
+  "addr": "0x631E50",
+  "sym": "?FUN_00631E50@PixelFXClass@@QAEXH@Z",
+  "len": "0x82",
+  "name": "PixelFXClass::FUN_00631E50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D7560",
+  "sym": "?FUN_006D7560@Tactical@@QAEXPBURectangleStruct@@0@Z",
+  "len": "0x2da",
+  "name": "Tactical::FUN_006D7560",
+  "status": "partial",
+  "pct": 3.2
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D7840",
+  "sym": "?FUN_006D7840@Tactical@@QAEXPBURectangleStruct@@0@Z",
+  "len": "0x3ba",
+  "name": "Tactical::FUN_006D7840",
+  "status": "partial",
+  "pct": 14.6
  }
 ]

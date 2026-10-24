@@ -2623,6 +2623,167 @@ void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
     FUN_00421350(rectangle);
 }
 
+#include "../../_layout/pixel_fx_class.h"
+#include "../../core/fps_counter_methods.h"
+// GLOBAL: GAMEMD 0xABCD44
+extern unsigned int FPSCounter_CurrentFrameRate;
+// GLOBAL: GAMEMD 0xA8EB78
+extern int dword_A8EB78;
+// GLOBAL: GAMEMD 0xB0E640
+extern unsigned int DAT_00B0E640;
+GG_STATIC_ASSERT(offsetof(CellClass, PixelFX) == 0xFC);
+GG_STATIC_ASSERT(offsetof(CellClass, AltFlags) == 0x12C);
+GG_STATIC_ASSERT(offsetof(CellClass, LandType) == 0xEC);
+GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, Lock) == 0x5C);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, Unlock) == 0x60);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, GetBytesPerPixel) == 0x70);
+GG_STATIC_ASSERT(offsetof(SurfaceVtableLayout, GetPitch) == 0x74);
+
+// FUNCTION: GAMEMD 0x6D7560
+void Tactical::FUN_006D7560(const RectangleStruct* rectangle,
+                           const RectangleStruct* clip)
+{
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    // Two float->integer conversions use CRT__ftol, X then Y. Do not call the
+    // library helper manually or replace truncation with a rounding function.
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CoordStruct coordinate;
+    coordinate.FUN_0041C230(worldX, worldY, 0);
+    CellStruct base;
+    base.X = coordinate.X / 256;
+    base.Y = coordinate.Y / 256;
+    base.X -= 2;
+    int rows = rectangle->Height / 15 + 17;
+    int columns = rectangle->Width / 60 + 4;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
+        CellStruct cellCoordinate;
+        cellCoordinate.X = base.X + offset.X;
+        cellCoordinate.Y = base.Y + offset.Y;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&cellCoordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&cellCoordinate);
+                RectangleStruct bounds = cell->FUN_0047FF80();
+                RectangleStruct temporary;
+                RectangleStruct intersection =
+                    *FUN_00421B60(&temporary, rectangle, &bounds, 0, 0);
+                // Native performs center construction and projection even
+                // when bounds/intersection are empty; predicate follows them.
+                int centerX = (cellCoordinate.X * 256 + 128) / 256 * 256;
+                int centerY = (cellCoordinate.Y * 256 + 128) / 256 * 256;
+                CoordStruct center;
+                center.FUN_0041C230(centerX, centerY, 0);
+                CoordStruct copiedCenter = center;
+                Point2D position;
+                FUN_006D2140(&copiedCenter, &position); // Native ignores bool result.
+                position.X -= 30;
+                if (bounds.Width > 0 && bounds.Height > 0 &&
+                    intersection.Width > 0 && intersection.Height > 0)
+                    cell->FUN_00480350(&position, clip, 0);
+            }
+            ++cellCoordinate.X;
+            --cellCoordinate.Y;
+        }
+    }
+}
+
+
+// FUNCTION: GAMEMD 0x6D7840
+void Tactical::FUN_006D7840(const RectangleStruct* rectangle,
+                           const RectangleStruct* clip)
+{
+    unsigned int minimumFrameRate = Detail::GetMinFrameRate();
+    if (FPSCounter_CurrentFrameRate < minimumFrameRate)
+        return;
+    if (DAT_00887314->GetBytesPerPixel() != 2)
+        return;
+    if (!dword_A8EB78)
+        return;
+    // 6D7863 requires two-byte pixels;6D7BB4 stores one WORD through this buffer.
+    unsigned char* pixels = static_cast<unsigned char*>(
+        DAT_00887314->Lock(Point2D(0, 0)));
+    if (!pixels)
+        return;
+    unsigned int now = timeGetTime();
+    unsigned int elapsed = now - DAT_00B0E640;
+    DAT_00B0E640 = now;
+    if (elapsed > 1000)
+        elapsed = 1000;
+    unsigned int pitch = DAT_00887314->GetPitch();
+    int x = rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X;
+    int y = rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y;
+    Vector3D vector(x, y, 0.0f);
+    Vector3D transformed;
+    vector = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &vector);
+    int worldX = vector.X;
+    int worldY = vector.Y;
+    CellStruct base;
+    base.X = worldX / 256;
+    base.Y = worldY / 256;
+    int rows = rectangle->Height / 15 + 17;
+    int columns = rectangle->Width / 60 + 4;
+    base.X -= 2;
+    for (int row = 0; row < rows; ++row) {
+        CellStruct offset;
+        offset.X = row / 2;
+        offset.Y = (row + 1) / 2;
+        CellStruct coordinate;
+        coordinate.X = base.X + offset.X;
+        coordinate.Y = base.Y + offset.Y;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                int value = cell->FUN_00485020();
+                if ((cell->AltFlags & 0x10) && !cell->FUN_00487950() &&
+                    (cell->LandType == 2 || value != 0) &&
+                    !cell->FirstObject && !(cell->Flags & 0x1000)) {
+                    PixelFXClass* effect = cell->PixelFX;
+                    bool enabled = value != 0;
+                    if (!effect) {
+                        effect = new PixelFXClass(enabled);
+                        cell->PixelFX = effect; // Null allocation also stored.
+                    } else if (effect->unknown_10 >= 0x2000) {
+                        effect->FUN_00631D40(enabled);
+                    }
+                    if (effect && effect->FUN_00631EE0(elapsed)) {
+                        RectangleStruct bounds = cell->FUN_0047FF80();
+                        int pixelX = bounds.X + bounds.Width / 2 + effect->unknown_30;
+                        int pixelY = bounds.Y + bounds.Height / 2 + effect->unknown_34;
+                        // Native uses four ordered comparisons, with live clip
+                        // reads after the bounds callback; no cached clip copy.
+                        if (pixelX >= clip->X && pixelX < clip->X + clip->Width &&
+                            pixelY >= clip->Y && pixelY < clip->Y + clip->Height) {
+                            effect->FUN_00631E50(elapsed);
+                            int color =
+                                ((effect->unknown_0C >> gg_b_translucent_pixel_format.loss2)
+                                    << gg_b_translucent_pixel_format.pos2) |
+                                ((effect->unknown_08 >> gg_b_translucent_pixel_format.loss1)
+                                    << gg_b_translucent_pixel_format.pos1) |
+                                ((effect->unknown_04 >> gg_b_translucent_pixel_format.loss0)
+                                    << gg_b_translucent_pixel_format.pos0);
+                            // Proven storage boundary: locked surface byte pitch,
+                            // two bytes per pixel checked above, native WORD store.
+                            *reinterpret_cast<unsigned short*>(pixels + pitch * pixelY + pixelX * 2) = color;
+                        }
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+    // Receiver is reloaded from the global, rather than the original lock owner.
+    DAT_00887314->Unlock();
+}
+
 // FUNCTION: GAMEMD 0x6D8530
 void Tactical::FUN_006D8530(int direction, int distance)
 {

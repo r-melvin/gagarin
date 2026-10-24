@@ -19,6 +19,7 @@
 // a compiler-generated `??_G`. The classes are opaque views; no member is
 // touched, so there is no layout to assert.
 
+
 // VTABLE: GAMEMD 0x7E35A8
 class Animate
 {
@@ -37,13 +38,6 @@ public:
 };
 }
 
-// VTABLE: GAMEMD 0x7EFDA4
-class PixelFXClass
-{
-public:
-    ~PixelFXClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
 
 // VTABLE: GAMEMD 0x7F0954
 class ReferenceCounted
@@ -90,16 +84,6 @@ void* VersionClass::DeletingDtor(unsigned int flags)
     return this;
 }
 
-
-// FUNCTION: GAMEMD 0x631F40 -- PixelFXClass scalar deleting destructor
-void* PixelFXClass::DeletingDtor(unsigned int flags)
-{
-    this->~PixelFXClass();
-    if (flags & 1) {
-        operator delete(this);
-    }
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x65D6A0 -- ReferenceCounted scalar deleting destructor
 void* ReferenceCounted::DeletingDtor(unsigned int flags)

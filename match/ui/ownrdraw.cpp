@@ -141,13 +141,6 @@ public:
 };
 }
 
-// VTABLE: GAMEMD 0x7EFDA4
-class PixelFXClass
-{
-public:
-    ~PixelFXClass() {}
-    virtual void* DeletingDtor(unsigned int flags);
-};
 
 // VTABLE: GAMEMD 0x7F0954
 class ReferenceCounted

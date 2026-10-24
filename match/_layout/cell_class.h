@@ -37,6 +37,7 @@
 #include "building_class.h"    // RectangleStruct
 
 class TagClass;
+class PixelFXClass;
 
 class BuildingClass;
 class BuildingTypeClass;
@@ -46,6 +47,9 @@ class CellClass : public AbstractClass
 {
 public:
     // Declarations: hidden RectangleStruct output, RET4; cell receiver in ECX.
+    RectangleStruct FUN_0047FF80(); // 0x47FF80, hidden result, RET4
+    void FUN_00480350(const Point2D* point, const RectangleStruct* clip, int mode); // 0x480350, RET12
+    bool FUN_00487950(); // 0x487950, AL result, no stack arguments
     RectangleStruct FUN_0047FB90(); // 0x47FB90
     RectangleStruct FUN_0047FDE0(); // 0x47FDE0
     // Declarations: point and clip pointers, RET8.
@@ -142,7 +146,7 @@ public:
     int             LandType;                // +0xEC ctor @0x0047BC93
     double          RadLevel;                // +0xF0 (8) ctor zeroes both halves @0x0047BC99/0x0047BCCF
     void*           RadSite;                 // +0xF8 RadSiteClass*; ctor @0x0047BCD5
-    void*           PixelFX;                 // +0xFC PixelFXClass*; ctor @0x0047BCDB
+    PixelFXClass*   PixelFX;                 // +0xFC PixelFXClass*; ctor @0x0047BCDB
     int             OccupyHeightsCoveringMe; // +0x100 ctor @0x0047BCE7
     unsigned int    Intensity;               // +0x104 ctor MOV [ESI+0x104],0x10000 @0x0047BCED
     unsigned short  Ambient;                 // +0x108 ctor MOV word [ESI+0x108],BX @0x0047BC69
