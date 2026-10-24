@@ -31,7 +31,6 @@
 extern char VTABLE_007E184C[];   // VTABLE: GAMEMD 0x7E184C
 extern char VTABLE_007E18DC[];   // VTABLE: GAMEMD 0x7E18DC
 extern char VTABLE_007E192C[];   // VTABLE: GAMEMD 0x7E192C
-extern char VTABLE_007E1A64[];   // VTABLE: GAMEMD 0x7E1A64
 extern char VTABLE_007E1B44[];   // VTABLE: GAMEMD 0x7E1B44
 extern char VTABLE_007E1E4C[];   // VTABLE: GAMEMD 0x7E1E4C
 extern char VTABLE_007E1EF4[];   // VTABLE: GAMEMD 0x7E1EF4
@@ -55,8 +54,6 @@ struct BufferHolderDtor : BufferHolder
     void* FUN_0040CB30(unsigned int flags);   // FUNCTION: GAMEMD 0x40CB30
     void* FUN_0040CC20(unsigned int flags);   // FUNCTION: GAMEMD 0x40CC20
     void* FUN_0040CF30(unsigned int flags);   // FUNCTION: GAMEMD 0x40CF30
-    void* FUN_0040D800(unsigned int flags);   // FUNCTION: GAMEMD 0x40D800
-    void* FUN_0040D850(unsigned int flags);   // FUNCTION: GAMEMD 0x40D850
     void* FUN_0040EAB0(unsigned int flags);   // FUNCTION: GAMEMD 0x40EAB0
     void* FUN_0040EB00(unsigned int flags);   // FUNCTION: GAMEMD 0x40EB00
     void* FUN_0040F180(unsigned int flags);   // FUNCTION: GAMEMD 0x40F180

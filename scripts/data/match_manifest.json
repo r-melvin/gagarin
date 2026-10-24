@@ -3200,20 +3200,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
   "addr": "0x40D800",
-  "sym": "?FUN_0040D800@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@PAVMixFileClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040D800",
+  "name": "VectorClass<MixFileClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
   "addr": "0x40D850",
-  "sym": "?FUN_0040D850@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@PAVMixFileClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0040D850",
+  "name": "DynamicVectorClass<MixFileClass*>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3677,20 +3677,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
   "addr": "0x40D540",
-  "sym": "?FUN_0040D540@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@PAVMixFileClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0040D540",
+  "name": "DynamicVectorClass<MixFileClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_mixfileclass_slot_methods.cpp",
   "addr": "0x40D690",
-  "sym": "?FUN_0040D690@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@PAVMixFileClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0040D690",
+  "name": "VectorClass<MixFileClass*>::Clear",
   "status": "matched",
   "pct": 100.0
  },

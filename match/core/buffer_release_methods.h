@@ -61,8 +61,6 @@ void FUN_0040C820(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40C820
 void FUN_0040C970(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40C970
 void FUN_0040CC70(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40CC70
 void FUN_0040CDC0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40CDC0
-void FUN_0040D540(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40D540
-void FUN_0040D690(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40D690
 void FUN_0040E7F0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40E7F0
 void FUN_0040E940(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40E940
 void FUN_0040EEC0(BufferHolder* obj);   // FUNCTION: GAMEMD 0x40EEC0

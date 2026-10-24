@@ -96,36 +96,6 @@ void FUN_0040CDC0(BufferHolder* obj)
     obj->Length = 0;
 }
 
-// FUNCTION: GAMEMD 0x40D540
-void FUN_0040D540(BufferHolder* obj)
-{
-    void* buffer = obj->Buffer;
-
-    obj->unknown_10 = 0;
-
-    if (buffer != 0 && obj->IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        obj->Buffer = 0;
-    }
-
-    obj->IsAllocated = 0;
-    obj->Length = 0;
-}
-
-// FUNCTION: GAMEMD 0x40D690
-void FUN_0040D690(BufferHolder* obj)
-{
-    void* buffer = obj->Buffer;
-
-    if (buffer != 0 && obj->IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        obj->Buffer = 0;
-    }
-
-    obj->IsAllocated = 0;
-    obj->Length = 0;
-}
-
 // FUNCTION: GAMEMD 0x40E7F0
 void FUN_0040E7F0(BufferHolder* obj)
 {
