@@ -40,6 +40,18 @@ Wstring::~Wstring()
     unknown_00 = 0;
 }
 
+// FUNCTION: GAMEMD 0x7B4710
+bool Wstring::FUN_007B4710(const char* text) const
+{
+    if (unknown_00 == 0 && text == 0) {
+        return true;
+    }
+    if (unknown_00 == 0 || text == 0) {
+        return false;
+    }
+    return strcmp(unknown_00, text) ? false : true;
+}
+
 // FUNCTION: GAMEMD 0x7B4780
 bool Obj_007B4620::operator==(const Obj_007B4620& other) const
 {

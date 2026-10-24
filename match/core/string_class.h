@@ -39,6 +39,8 @@ public:
     Wstring(const Wstring& other);
     // Declaration: GAMEMD 0x7B46F0
     ~Wstring();
+    // Declaration: GAMEMD 0x7B4710 -- null pointers compare equal.
+    bool FUN_007B4710(const char* text) const;
     // Declaration: GAMEMD 0x7B4780
     bool operator==(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4860

@@ -98461,5 +98461,14 @@
   "name": "Session constructor",
   "status": "partial",
   "pct": 87.9
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B4710",
+  "sym": "?FUN_007B4710@Wstring@@QBE_NPBD@Z",
+  "len": "0x63",
+  "name": "Wstring::FUN_007B4710",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
