@@ -21283,697 +21283,697 @@
   "pct": 100
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEE40",
   "sym": "??0?$TClassFactory@VCStreamClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<CStreamClass>::TClassFactory<CStreamClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEFC0",
   "sym": "??0?$TClassFactory@VWaveClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<WaveClass>::TClassFactory<WaveClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF140",
   "sym": "??0?$TClassFactory@VTerrainTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TerrainTypeClass>::TClassFactory<TerrainTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF2C0",
   "sym": "??0?$TClassFactory@VTerrainClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TerrainClass>::TClassFactory<TerrainClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF440",
   "sym": "??0?$TClassFactory@VSuperWeaponTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SuperWeaponTypeClass>::TClassFactory<SuperWeaponTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF5C0",
   "sym": "??0?$TClassFactory@VSuperClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SuperClass>::TClassFactory<SuperClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF740",
   "sym": "??0?$TClassFactory@VTactical@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<Tactical>::TClassFactory<Tactical>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF8C0",
   "sym": "??0?$TClassFactory@VCellClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<CellClass>::TClassFactory<CellClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFA40",
   "sym": "??0?$TClassFactory@VEMPulseClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<EMPulseClass>::TClassFactory<EMPulseClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFBC0",
   "sym": "??0?$TClassFactory@VLightSourceClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<LightSourceClass>::TClassFactory<LightSourceClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFD40",
   "sym": "??0?$TClassFactory@VSideClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SideClass>::TClassFactory<SideClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFEC0",
   "sym": "??0?$TClassFactory@VTiberiumClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TiberiumClass>::TClassFactory<TiberiumClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0040",
   "sym": "??0?$TClassFactory@VTubeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TubeClass>::TClassFactory<TubeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C01C0",
   "sym": "??0?$TClassFactory@VCampaignClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<CampaignClass>::TClassFactory<CampaignClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0340",
   "sym": "??0?$TClassFactory@VBuildingLightClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BuildingLightClass>::TClassFactory<BuildingLightClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C04C0",
   "sym": "??0?$TClassFactory@VWaypointPathClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<WaypointPathClass>::TClassFactory<WaypointPathClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0640",
   "sym": "??0?$TClassFactory@VTemporalClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TemporalClass>::TClassFactory<TemporalClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C07C0",
   "sym": "??0?$TClassFactory@VAirstrikeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AirstrikeClass>::TClassFactory<AirstrikeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0940",
   "sym": "??0?$TClassFactory@VSpawnManagerClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SpawnManagerClass>::TClassFactory<SpawnManagerClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0AC0",
   "sym": "??0?$TClassFactory@VSlaveManagerClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SlaveManagerClass>::TClassFactory<SlaveManagerClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0C40",
   "sym": "??0?$TClassFactory@VCaptureManagerClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<CaptureManagerClass>::TClassFactory<CaptureManagerClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0DC0",
   "sym": "??0?$TClassFactory@VDiskLaserClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<DiskLaserClass>::TClassFactory<DiskLaserClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0F40",
   "sym": "??0?$TClassFactory@VParasiteClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ParasiteClass>::TClassFactory<ParasiteClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C10C0",
   "sym": "??0?$TClassFactory@VBombClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BombClass>::TClassFactory<BombClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1240",
   "sym": "??0?$TClassFactory@VRadSiteClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<RadSiteClass>::TClassFactory<RadSiteClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C13C0",
   "sym": "??0?$TClassFactory@VTEventClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TEventClass>::TClassFactory<TEventClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1540",
   "sym": "??0?$TClassFactory@VVoxelAnimTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<VoxelAnimTypeClass>::TClassFactory<VoxelAnimTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C16C0",
   "sym": "??0?$TClassFactory@VVoxelAnimClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<VoxelAnimClass>::TClassFactory<VoxelAnimClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1840",
   "sym": "??0?$TClassFactory@VTActionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TActionClass>::TClassFactory<TActionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C19C0",
   "sym": "??0?$TClassFactory@VTriggerClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TriggerClass>::TClassFactory<TriggerClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1B40",
   "sym": "??0?$TClassFactory@VTriggerTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TriggerTypeClass>::TClassFactory<TriggerTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1CC0",
   "sym": "??0?$TClassFactory@VScriptClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ScriptClass>::TClassFactory<ScriptClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1E40",
   "sym": "??0?$TClassFactory@VScriptTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ScriptTypeClass>::TClassFactory<ScriptTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1FC0",
   "sym": "??0?$TClassFactory@VTagClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TagClass>::TClassFactory<TagClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2140",
   "sym": "??0?$TClassFactory@VTagTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TagTypeClass>::TClassFactory<TagTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C22C0",
   "sym": "??0?$TClassFactory@VTeamClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TeamClass>::TClassFactory<TeamClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2440",
   "sym": "??0?$TClassFactory@VTeamTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TeamTypeClass>::TClassFactory<TeamTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C25C0",
   "sym": "??0?$TClassFactory@VTaskForceClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TaskForceClass>::TClassFactory<TaskForceClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2740",
   "sym": "??0?$TClassFactory@VUnitTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<UnitTypeClass>::TClassFactory<UnitTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C28C0",
   "sym": "??0?$TClassFactory@VBuildingTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BuildingTypeClass>::TClassFactory<BuildingTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2A40",
   "sym": "??0?$TClassFactory@VAircraftTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AircraftTypeClass>::TClassFactory<AircraftTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2BC0",
   "sym": "??0?$TClassFactory@VInfantryTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<InfantryTypeClass>::TClassFactory<InfantryTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2D40",
   "sym": "??0?$TClassFactory@VBulletTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BulletTypeClass>::TClassFactory<BulletTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2EC0",
   "sym": "??0?$TClassFactory@VIsometricTileTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<IsometricTileTypeClass>::TClassFactory<IsometricTileTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3040",
   "sym": "??0?$TClassFactory@VOverlayTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<OverlayTypeClass>::TClassFactory<OverlayTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C31C0",
   "sym": "??0?$TClassFactory@VSmudgeTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<SmudgeTypeClass>::TClassFactory<SmudgeTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3340",
   "sym": "??0?$TClassFactory@VUnitClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<UnitClass>::TClassFactory<UnitClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C34C0",
   "sym": "??0?$TClassFactory@VBuildingClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BuildingClass>::TClassFactory<BuildingClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3640",
   "sym": "??0?$TClassFactory@VAircraftClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AircraftClass>::TClassFactory<AircraftClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C37C0",
   "sym": "??0?$TClassFactory@VInfantryClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<InfantryClass>::TClassFactory<InfantryClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3940",
   "sym": "??0?$TClassFactory@VAnimClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AnimClass>::TClassFactory<AnimClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3AC0",
   "sym": "??0?$TClassFactory@VAnimTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AnimTypeClass>::TClassFactory<AnimTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3C40",
   "sym": "??0?$TClassFactory@VHouseTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<HouseTypeClass>::TClassFactory<HouseTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3DC0",
   "sym": "??0?$TClassFactory@VHouseClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<HouseClass>::TClassFactory<HouseClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3F40",
   "sym": "??0?$TClassFactory@VDriveLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<DriveLocomotionClass>::TClassFactory<DriveLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C40C0",
   "sym": "??0?$TClassFactory@VJumpjetLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<JumpjetLocomotionClass>::TClassFactory<JumpjetLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4240",
   "sym": "??0?$TClassFactory@VHoverLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<HoverLocomotionClass>::TClassFactory<HoverLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C43C0",
   "sym": "??0?$TClassFactory@VRocketLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<RocketLocomotionClass>::TClassFactory<RocketLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4540",
   "sym": "??0?$TClassFactory@VTunnelLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TunnelLocomotionClass>::TClassFactory<TunnelLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C46C0",
   "sym": "??0?$TClassFactory@VWalkLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<WalkLocomotionClass>::TClassFactory<WalkLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4840",
   "sym": "??0?$TClassFactory@VDropPodLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<DropPodLocomotionClass>::TClassFactory<DropPodLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C49C0",
   "sym": "??0?$TClassFactory@VFlyLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<FlyLocomotionClass>::TClassFactory<FlyLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4B40",
   "sym": "??0?$TClassFactory@VTeleportLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<TeleportLocomotionClass>::TClassFactory<TeleportLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4CC0",
   "sym": "??0?$TClassFactory@VMechLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<MechLocomotionClass>::TClassFactory<MechLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4E40",
   "sym": "??0?$TClassFactory@VShipLocomotionClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ShipLocomotionClass>::TClassFactory<ShipLocomotionClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4FC0",
   "sym": "??0?$TClassFactory@VBulletClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<BulletClass>::TClassFactory<BulletClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5140",
   "sym": "??0?$TClassFactory@VFactoryClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<FactoryClass>::TClassFactory<FactoryClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C52C0",
   "sym": "??0?$TClassFactory@VWarheadTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<WarheadTypeClass>::TClassFactory<WarheadTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5440",
   "sym": "??0?$TClassFactory@VWeaponTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<WeaponTypeClass>::TClassFactory<WeaponTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C55C0",
   "sym": "??0?$TClassFactory@VParticleClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ParticleClass>::TClassFactory<ParticleClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5740",
   "sym": "??0?$TClassFactory@VParticleTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ParticleTypeClass>::TClassFactory<ParticleTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C58C0",
   "sym": "??0?$TClassFactory@VParticleSystemClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ParticleSystemClass>::TClassFactory<ParticleSystemClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5A40",
   "sym": "??0?$TClassFactory@VParticleSystemTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<ParticleSystemTypeClass>::TClassFactory<ParticleSystemTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5BC0",
   "sym": "??0?$TClassFactory@VAITriggerTypeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AITriggerTypeClass>::TClassFactory<AITriggerTypeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5D40",
   "sym": "??0?$TClassFactory@VNeuronClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<NeuronClass>::TClassFactory<NeuronClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5EC0",
   "sym": "??0?$TClassFactory@VFoggedObjectClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<FoggedObjectClass>::TClassFactory<FoggedObjectClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C6040",
   "sym": "??0?$TClassFactory@VAlphaShapeClass@@@@QAE@XZ",
   "len": "0x10",
   "name": "TClassFactory<AlphaShapeClass>::TClassFactory<AlphaShapeClass>",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_vtable_plain_dtor_family_methods.cpp",
@@ -54252,2776 +54252,2776 @@
   "pct": 100
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEE50",
   "sym": "?QueryInterface@?$TClassFactory@VCStreamClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<CStreamClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEEC0",
   "sym": "?AddRef@?$TClassFactory@VCStreamClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<CStreamClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEEE0",
   "sym": "?Release@?$TClassFactory@VCStreamClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<CStreamClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEF90",
   "sym": "?LockServer@?$TClassFactory@VCStreamClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<CStreamClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BEFD0",
   "sym": "?QueryInterface@?$TClassFactory@VWaveClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<WaveClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF040",
   "sym": "?AddRef@?$TClassFactory@VWaveClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<WaveClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF060",
   "sym": "?Release@?$TClassFactory@VWaveClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<WaveClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF110",
   "sym": "?LockServer@?$TClassFactory@VWaveClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<WaveClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF150",
   "sym": "?QueryInterface@?$TClassFactory@VTerrainTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TerrainTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF1C0",
   "sym": "?AddRef@?$TClassFactory@VTerrainTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TerrainTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF1E0",
   "sym": "?Release@?$TClassFactory@VTerrainTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TerrainTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF290",
   "sym": "?LockServer@?$TClassFactory@VTerrainTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TerrainTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF2D0",
   "sym": "?QueryInterface@?$TClassFactory@VTerrainClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TerrainClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF340",
   "sym": "?AddRef@?$TClassFactory@VTerrainClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TerrainClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF360",
   "sym": "?Release@?$TClassFactory@VTerrainClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TerrainClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF410",
   "sym": "?LockServer@?$TClassFactory@VTerrainClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TerrainClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF450",
   "sym": "?QueryInterface@?$TClassFactory@VSuperWeaponTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SuperWeaponTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF4C0",
   "sym": "?AddRef@?$TClassFactory@VSuperWeaponTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SuperWeaponTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF4E0",
   "sym": "?Release@?$TClassFactory@VSuperWeaponTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SuperWeaponTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF590",
   "sym": "?LockServer@?$TClassFactory@VSuperWeaponTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SuperWeaponTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF5D0",
   "sym": "?QueryInterface@?$TClassFactory@VSuperClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SuperClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF640",
   "sym": "?AddRef@?$TClassFactory@VSuperClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SuperClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF660",
   "sym": "?Release@?$TClassFactory@VSuperClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SuperClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF710",
   "sym": "?LockServer@?$TClassFactory@VSuperClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SuperClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF750",
   "sym": "?QueryInterface@?$TClassFactory@VTactical@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<Tactical>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF7C0",
   "sym": "?AddRef@?$TClassFactory@VTactical@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<Tactical>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF7E0",
   "sym": "?Release@?$TClassFactory@VTactical@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<Tactical>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF890",
   "sym": "?LockServer@?$TClassFactory@VTactical@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<Tactical>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF8D0",
   "sym": "?QueryInterface@?$TClassFactory@VCellClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<CellClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF940",
   "sym": "?AddRef@?$TClassFactory@VCellClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<CellClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BF960",
   "sym": "?Release@?$TClassFactory@VCellClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<CellClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFA10",
   "sym": "?LockServer@?$TClassFactory@VCellClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<CellClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFA50",
   "sym": "?QueryInterface@?$TClassFactory@VEMPulseClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<EMPulseClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFAC0",
   "sym": "?AddRef@?$TClassFactory@VEMPulseClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<EMPulseClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFAE0",
   "sym": "?Release@?$TClassFactory@VEMPulseClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<EMPulseClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFB90",
   "sym": "?LockServer@?$TClassFactory@VEMPulseClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<EMPulseClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFBD0",
   "sym": "?QueryInterface@?$TClassFactory@VLightSourceClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<LightSourceClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFC40",
   "sym": "?AddRef@?$TClassFactory@VLightSourceClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<LightSourceClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFC60",
   "sym": "?Release@?$TClassFactory@VLightSourceClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<LightSourceClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFD10",
   "sym": "?LockServer@?$TClassFactory@VLightSourceClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<LightSourceClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFD50",
   "sym": "?QueryInterface@?$TClassFactory@VSideClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SideClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFDC0",
   "sym": "?AddRef@?$TClassFactory@VSideClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SideClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFDE0",
   "sym": "?Release@?$TClassFactory@VSideClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SideClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFE90",
   "sym": "?LockServer@?$TClassFactory@VSideClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SideClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFED0",
   "sym": "?QueryInterface@?$TClassFactory@VTiberiumClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TiberiumClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFF40",
   "sym": "?AddRef@?$TClassFactory@VTiberiumClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TiberiumClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6BFF60",
   "sym": "?Release@?$TClassFactory@VTiberiumClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TiberiumClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0010",
   "sym": "?LockServer@?$TClassFactory@VTiberiumClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TiberiumClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0050",
   "sym": "?QueryInterface@?$TClassFactory@VTubeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TubeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C00C0",
   "sym": "?AddRef@?$TClassFactory@VTubeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TubeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C00E0",
   "sym": "?Release@?$TClassFactory@VTubeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TubeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0190",
   "sym": "?LockServer@?$TClassFactory@VTubeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TubeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C01D0",
   "sym": "?QueryInterface@?$TClassFactory@VCampaignClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<CampaignClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0240",
   "sym": "?AddRef@?$TClassFactory@VCampaignClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<CampaignClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0260",
   "sym": "?Release@?$TClassFactory@VCampaignClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<CampaignClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0310",
   "sym": "?LockServer@?$TClassFactory@VCampaignClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<CampaignClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0350",
   "sym": "?QueryInterface@?$TClassFactory@VBuildingLightClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BuildingLightClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C03C0",
   "sym": "?AddRef@?$TClassFactory@VBuildingLightClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BuildingLightClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C03E0",
   "sym": "?Release@?$TClassFactory@VBuildingLightClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BuildingLightClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0490",
   "sym": "?LockServer@?$TClassFactory@VBuildingLightClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BuildingLightClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C04D0",
   "sym": "?QueryInterface@?$TClassFactory@VWaypointPathClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<WaypointPathClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0540",
   "sym": "?AddRef@?$TClassFactory@VWaypointPathClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<WaypointPathClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0560",
   "sym": "?Release@?$TClassFactory@VWaypointPathClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<WaypointPathClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0610",
   "sym": "?LockServer@?$TClassFactory@VWaypointPathClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<WaypointPathClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0650",
   "sym": "?QueryInterface@?$TClassFactory@VTemporalClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TemporalClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C06C0",
   "sym": "?AddRef@?$TClassFactory@VTemporalClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TemporalClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C06E0",
   "sym": "?Release@?$TClassFactory@VTemporalClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TemporalClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0790",
   "sym": "?LockServer@?$TClassFactory@VTemporalClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TemporalClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C07D0",
   "sym": "?QueryInterface@?$TClassFactory@VAirstrikeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AirstrikeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0840",
   "sym": "?AddRef@?$TClassFactory@VAirstrikeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AirstrikeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0860",
   "sym": "?Release@?$TClassFactory@VAirstrikeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AirstrikeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0910",
   "sym": "?LockServer@?$TClassFactory@VAirstrikeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AirstrikeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0950",
   "sym": "?QueryInterface@?$TClassFactory@VSpawnManagerClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SpawnManagerClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C09C0",
   "sym": "?AddRef@?$TClassFactory@VSpawnManagerClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SpawnManagerClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C09E0",
   "sym": "?Release@?$TClassFactory@VSpawnManagerClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SpawnManagerClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0A90",
   "sym": "?LockServer@?$TClassFactory@VSpawnManagerClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SpawnManagerClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0AD0",
   "sym": "?QueryInterface@?$TClassFactory@VSlaveManagerClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SlaveManagerClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0B40",
   "sym": "?AddRef@?$TClassFactory@VSlaveManagerClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SlaveManagerClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0B60",
   "sym": "?Release@?$TClassFactory@VSlaveManagerClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SlaveManagerClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0C10",
   "sym": "?LockServer@?$TClassFactory@VSlaveManagerClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SlaveManagerClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0C50",
   "sym": "?QueryInterface@?$TClassFactory@VCaptureManagerClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<CaptureManagerClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0CC0",
   "sym": "?AddRef@?$TClassFactory@VCaptureManagerClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<CaptureManagerClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0CE0",
   "sym": "?Release@?$TClassFactory@VCaptureManagerClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<CaptureManagerClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0D90",
   "sym": "?LockServer@?$TClassFactory@VCaptureManagerClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<CaptureManagerClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0DD0",
   "sym": "?QueryInterface@?$TClassFactory@VDiskLaserClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<DiskLaserClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0E40",
   "sym": "?AddRef@?$TClassFactory@VDiskLaserClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<DiskLaserClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0E60",
   "sym": "?Release@?$TClassFactory@VDiskLaserClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<DiskLaserClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0F10",
   "sym": "?LockServer@?$TClassFactory@VDiskLaserClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<DiskLaserClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0F50",
   "sym": "?QueryInterface@?$TClassFactory@VParasiteClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ParasiteClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0FC0",
   "sym": "?AddRef@?$TClassFactory@VParasiteClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ParasiteClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C0FE0",
   "sym": "?Release@?$TClassFactory@VParasiteClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ParasiteClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1090",
   "sym": "?LockServer@?$TClassFactory@VParasiteClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ParasiteClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C10D0",
   "sym": "?QueryInterface@?$TClassFactory@VBombClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BombClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1140",
   "sym": "?AddRef@?$TClassFactory@VBombClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BombClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1160",
   "sym": "?Release@?$TClassFactory@VBombClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BombClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1210",
   "sym": "?LockServer@?$TClassFactory@VBombClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BombClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1250",
   "sym": "?QueryInterface@?$TClassFactory@VRadSiteClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<RadSiteClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C12C0",
   "sym": "?AddRef@?$TClassFactory@VRadSiteClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<RadSiteClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C12E0",
   "sym": "?Release@?$TClassFactory@VRadSiteClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<RadSiteClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1390",
   "sym": "?LockServer@?$TClassFactory@VRadSiteClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<RadSiteClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C13D0",
   "sym": "?QueryInterface@?$TClassFactory@VTEventClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TEventClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1440",
   "sym": "?AddRef@?$TClassFactory@VTEventClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TEventClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1460",
   "sym": "?Release@?$TClassFactory@VTEventClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TEventClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1510",
   "sym": "?LockServer@?$TClassFactory@VTEventClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TEventClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1550",
   "sym": "?QueryInterface@?$TClassFactory@VVoxelAnimTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<VoxelAnimTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C15C0",
   "sym": "?AddRef@?$TClassFactory@VVoxelAnimTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<VoxelAnimTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C15E0",
   "sym": "?Release@?$TClassFactory@VVoxelAnimTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<VoxelAnimTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1690",
   "sym": "?LockServer@?$TClassFactory@VVoxelAnimTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<VoxelAnimTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C16D0",
   "sym": "?QueryInterface@?$TClassFactory@VVoxelAnimClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<VoxelAnimClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1740",
   "sym": "?AddRef@?$TClassFactory@VVoxelAnimClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<VoxelAnimClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1760",
   "sym": "?Release@?$TClassFactory@VVoxelAnimClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<VoxelAnimClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1810",
   "sym": "?LockServer@?$TClassFactory@VVoxelAnimClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<VoxelAnimClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1850",
   "sym": "?QueryInterface@?$TClassFactory@VTActionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TActionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C18C0",
   "sym": "?AddRef@?$TClassFactory@VTActionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TActionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C18E0",
   "sym": "?Release@?$TClassFactory@VTActionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TActionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1990",
   "sym": "?LockServer@?$TClassFactory@VTActionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TActionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C19D0",
   "sym": "?QueryInterface@?$TClassFactory@VTriggerClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TriggerClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1A40",
   "sym": "?AddRef@?$TClassFactory@VTriggerClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TriggerClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1A60",
   "sym": "?Release@?$TClassFactory@VTriggerClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TriggerClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1B10",
   "sym": "?LockServer@?$TClassFactory@VTriggerClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TriggerClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1B50",
   "sym": "?QueryInterface@?$TClassFactory@VTriggerTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TriggerTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1BC0",
   "sym": "?AddRef@?$TClassFactory@VTriggerTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TriggerTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1BE0",
   "sym": "?Release@?$TClassFactory@VTriggerTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TriggerTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1C90",
   "sym": "?LockServer@?$TClassFactory@VTriggerTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TriggerTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1CD0",
   "sym": "?QueryInterface@?$TClassFactory@VScriptClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ScriptClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1D40",
   "sym": "?AddRef@?$TClassFactory@VScriptClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ScriptClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1D60",
   "sym": "?Release@?$TClassFactory@VScriptClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ScriptClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1E10",
   "sym": "?LockServer@?$TClassFactory@VScriptClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ScriptClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1E50",
   "sym": "?QueryInterface@?$TClassFactory@VScriptTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ScriptTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1EC0",
   "sym": "?AddRef@?$TClassFactory@VScriptTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ScriptTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1EE0",
   "sym": "?Release@?$TClassFactory@VScriptTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ScriptTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1F90",
   "sym": "?LockServer@?$TClassFactory@VScriptTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ScriptTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C1FD0",
   "sym": "?QueryInterface@?$TClassFactory@VTagClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TagClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2040",
   "sym": "?AddRef@?$TClassFactory@VTagClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TagClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2060",
   "sym": "?Release@?$TClassFactory@VTagClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TagClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2110",
   "sym": "?LockServer@?$TClassFactory@VTagClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TagClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2150",
   "sym": "?QueryInterface@?$TClassFactory@VTagTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TagTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C21C0",
   "sym": "?AddRef@?$TClassFactory@VTagTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TagTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C21E0",
   "sym": "?Release@?$TClassFactory@VTagTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TagTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2290",
   "sym": "?LockServer@?$TClassFactory@VTagTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TagTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C22D0",
   "sym": "?QueryInterface@?$TClassFactory@VTeamClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TeamClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2340",
   "sym": "?AddRef@?$TClassFactory@VTeamClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TeamClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2360",
   "sym": "?Release@?$TClassFactory@VTeamClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TeamClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2410",
   "sym": "?LockServer@?$TClassFactory@VTeamClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TeamClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2450",
   "sym": "?QueryInterface@?$TClassFactory@VTeamTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TeamTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C24C0",
   "sym": "?AddRef@?$TClassFactory@VTeamTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TeamTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C24E0",
   "sym": "?Release@?$TClassFactory@VTeamTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TeamTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2590",
   "sym": "?LockServer@?$TClassFactory@VTeamTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TeamTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C25D0",
   "sym": "?QueryInterface@?$TClassFactory@VTaskForceClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TaskForceClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2640",
   "sym": "?AddRef@?$TClassFactory@VTaskForceClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TaskForceClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2660",
   "sym": "?Release@?$TClassFactory@VTaskForceClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TaskForceClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2710",
   "sym": "?LockServer@?$TClassFactory@VTaskForceClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TaskForceClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2750",
   "sym": "?QueryInterface@?$TClassFactory@VUnitTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<UnitTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C27C0",
   "sym": "?AddRef@?$TClassFactory@VUnitTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<UnitTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C27E0",
   "sym": "?Release@?$TClassFactory@VUnitTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<UnitTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2890",
   "sym": "?LockServer@?$TClassFactory@VUnitTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<UnitTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C28D0",
   "sym": "?QueryInterface@?$TClassFactory@VBuildingTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BuildingTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2940",
   "sym": "?AddRef@?$TClassFactory@VBuildingTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BuildingTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2960",
   "sym": "?Release@?$TClassFactory@VBuildingTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BuildingTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2A10",
   "sym": "?LockServer@?$TClassFactory@VBuildingTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BuildingTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2A50",
   "sym": "?QueryInterface@?$TClassFactory@VAircraftTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AircraftTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2AC0",
   "sym": "?AddRef@?$TClassFactory@VAircraftTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AircraftTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2AE0",
   "sym": "?Release@?$TClassFactory@VAircraftTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AircraftTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2B90",
   "sym": "?LockServer@?$TClassFactory@VAircraftTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AircraftTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2BD0",
   "sym": "?QueryInterface@?$TClassFactory@VInfantryTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<InfantryTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2C40",
   "sym": "?AddRef@?$TClassFactory@VInfantryTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<InfantryTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2C60",
   "sym": "?Release@?$TClassFactory@VInfantryTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<InfantryTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2D10",
   "sym": "?LockServer@?$TClassFactory@VInfantryTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<InfantryTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2D50",
   "sym": "?QueryInterface@?$TClassFactory@VBulletTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BulletTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2DC0",
   "sym": "?AddRef@?$TClassFactory@VBulletTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BulletTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2DE0",
   "sym": "?Release@?$TClassFactory@VBulletTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BulletTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2E90",
   "sym": "?LockServer@?$TClassFactory@VBulletTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BulletTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2ED0",
   "sym": "?QueryInterface@?$TClassFactory@VIsometricTileTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<IsometricTileTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2F40",
   "sym": "?AddRef@?$TClassFactory@VIsometricTileTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<IsometricTileTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C2F60",
   "sym": "?Release@?$TClassFactory@VIsometricTileTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<IsometricTileTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3010",
   "sym": "?LockServer@?$TClassFactory@VIsometricTileTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<IsometricTileTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3050",
   "sym": "?QueryInterface@?$TClassFactory@VOverlayTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<OverlayTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C30C0",
   "sym": "?AddRef@?$TClassFactory@VOverlayTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<OverlayTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C30E0",
   "sym": "?Release@?$TClassFactory@VOverlayTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<OverlayTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3190",
   "sym": "?LockServer@?$TClassFactory@VOverlayTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<OverlayTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C31D0",
   "sym": "?QueryInterface@?$TClassFactory@VSmudgeTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<SmudgeTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3240",
   "sym": "?AddRef@?$TClassFactory@VSmudgeTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<SmudgeTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3260",
   "sym": "?Release@?$TClassFactory@VSmudgeTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<SmudgeTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3310",
   "sym": "?LockServer@?$TClassFactory@VSmudgeTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<SmudgeTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3350",
   "sym": "?QueryInterface@?$TClassFactory@VUnitClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<UnitClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C33C0",
   "sym": "?AddRef@?$TClassFactory@VUnitClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<UnitClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C33E0",
   "sym": "?Release@?$TClassFactory@VUnitClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<UnitClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3490",
   "sym": "?LockServer@?$TClassFactory@VUnitClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<UnitClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C34D0",
   "sym": "?QueryInterface@?$TClassFactory@VBuildingClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BuildingClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3540",
   "sym": "?AddRef@?$TClassFactory@VBuildingClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BuildingClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3560",
   "sym": "?Release@?$TClassFactory@VBuildingClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BuildingClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3610",
   "sym": "?LockServer@?$TClassFactory@VBuildingClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BuildingClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3650",
   "sym": "?QueryInterface@?$TClassFactory@VAircraftClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AircraftClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C36C0",
   "sym": "?AddRef@?$TClassFactory@VAircraftClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AircraftClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C36E0",
   "sym": "?Release@?$TClassFactory@VAircraftClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AircraftClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3790",
   "sym": "?LockServer@?$TClassFactory@VAircraftClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AircraftClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C37D0",
   "sym": "?QueryInterface@?$TClassFactory@VInfantryClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<InfantryClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3840",
   "sym": "?AddRef@?$TClassFactory@VInfantryClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<InfantryClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3860",
   "sym": "?Release@?$TClassFactory@VInfantryClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<InfantryClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3910",
   "sym": "?LockServer@?$TClassFactory@VInfantryClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<InfantryClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3950",
   "sym": "?QueryInterface@?$TClassFactory@VAnimClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AnimClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C39C0",
   "sym": "?AddRef@?$TClassFactory@VAnimClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AnimClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C39E0",
   "sym": "?Release@?$TClassFactory@VAnimClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AnimClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3A90",
   "sym": "?LockServer@?$TClassFactory@VAnimClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AnimClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3AD0",
   "sym": "?QueryInterface@?$TClassFactory@VAnimTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AnimTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3B40",
   "sym": "?AddRef@?$TClassFactory@VAnimTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AnimTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3B60",
   "sym": "?Release@?$TClassFactory@VAnimTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AnimTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3C10",
   "sym": "?LockServer@?$TClassFactory@VAnimTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AnimTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3C50",
   "sym": "?QueryInterface@?$TClassFactory@VHouseTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<HouseTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3CC0",
   "sym": "?AddRef@?$TClassFactory@VHouseTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<HouseTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3CE0",
   "sym": "?Release@?$TClassFactory@VHouseTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<HouseTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3D90",
   "sym": "?LockServer@?$TClassFactory@VHouseTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<HouseTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3DD0",
   "sym": "?QueryInterface@?$TClassFactory@VHouseClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<HouseClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3E40",
   "sym": "?AddRef@?$TClassFactory@VHouseClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<HouseClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3E60",
   "sym": "?Release@?$TClassFactory@VHouseClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<HouseClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3F10",
   "sym": "?LockServer@?$TClassFactory@VHouseClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<HouseClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3F50",
   "sym": "?QueryInterface@?$TClassFactory@VDriveLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<DriveLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3FC0",
   "sym": "?AddRef@?$TClassFactory@VDriveLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<DriveLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C3FE0",
   "sym": "?Release@?$TClassFactory@VDriveLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<DriveLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4090",
   "sym": "?LockServer@?$TClassFactory@VDriveLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<DriveLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C40D0",
   "sym": "?QueryInterface@?$TClassFactory@VJumpjetLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<JumpjetLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4140",
   "sym": "?AddRef@?$TClassFactory@VJumpjetLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<JumpjetLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4160",
   "sym": "?Release@?$TClassFactory@VJumpjetLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<JumpjetLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4210",
   "sym": "?LockServer@?$TClassFactory@VJumpjetLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<JumpjetLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4250",
   "sym": "?QueryInterface@?$TClassFactory@VHoverLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<HoverLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C42C0",
   "sym": "?AddRef@?$TClassFactory@VHoverLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<HoverLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C42E0",
   "sym": "?Release@?$TClassFactory@VHoverLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<HoverLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4390",
   "sym": "?LockServer@?$TClassFactory@VHoverLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<HoverLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C43D0",
   "sym": "?QueryInterface@?$TClassFactory@VRocketLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<RocketLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4440",
   "sym": "?AddRef@?$TClassFactory@VRocketLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<RocketLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4460",
   "sym": "?Release@?$TClassFactory@VRocketLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<RocketLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4510",
   "sym": "?LockServer@?$TClassFactory@VRocketLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<RocketLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4550",
   "sym": "?QueryInterface@?$TClassFactory@VTunnelLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TunnelLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C45C0",
   "sym": "?AddRef@?$TClassFactory@VTunnelLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TunnelLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C45E0",
   "sym": "?Release@?$TClassFactory@VTunnelLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TunnelLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4690",
   "sym": "?LockServer@?$TClassFactory@VTunnelLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TunnelLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C46D0",
   "sym": "?QueryInterface@?$TClassFactory@VWalkLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<WalkLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4740",
   "sym": "?AddRef@?$TClassFactory@VWalkLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<WalkLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4760",
   "sym": "?Release@?$TClassFactory@VWalkLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<WalkLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4810",
   "sym": "?LockServer@?$TClassFactory@VWalkLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<WalkLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4850",
   "sym": "?QueryInterface@?$TClassFactory@VDropPodLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<DropPodLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C48C0",
   "sym": "?AddRef@?$TClassFactory@VDropPodLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<DropPodLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C48E0",
   "sym": "?Release@?$TClassFactory@VDropPodLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<DropPodLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4990",
   "sym": "?LockServer@?$TClassFactory@VDropPodLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<DropPodLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C49D0",
   "sym": "?QueryInterface@?$TClassFactory@VFlyLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<FlyLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4A40",
   "sym": "?AddRef@?$TClassFactory@VFlyLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<FlyLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4A60",
   "sym": "?Release@?$TClassFactory@VFlyLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<FlyLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4B10",
   "sym": "?LockServer@?$TClassFactory@VFlyLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<FlyLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4B50",
   "sym": "?QueryInterface@?$TClassFactory@VTeleportLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<TeleportLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4BC0",
   "sym": "?AddRef@?$TClassFactory@VTeleportLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<TeleportLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4BE0",
   "sym": "?Release@?$TClassFactory@VTeleportLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<TeleportLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4C90",
   "sym": "?LockServer@?$TClassFactory@VTeleportLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<TeleportLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4CD0",
   "sym": "?QueryInterface@?$TClassFactory@VMechLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<MechLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4D40",
   "sym": "?AddRef@?$TClassFactory@VMechLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<MechLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4D60",
   "sym": "?Release@?$TClassFactory@VMechLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<MechLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4E10",
   "sym": "?LockServer@?$TClassFactory@VMechLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<MechLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4E50",
   "sym": "?QueryInterface@?$TClassFactory@VShipLocomotionClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ShipLocomotionClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4EC0",
   "sym": "?AddRef@?$TClassFactory@VShipLocomotionClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ShipLocomotionClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4EE0",
   "sym": "?Release@?$TClassFactory@VShipLocomotionClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ShipLocomotionClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4F90",
   "sym": "?LockServer@?$TClassFactory@VShipLocomotionClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ShipLocomotionClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C4FD0",
   "sym": "?QueryInterface@?$TClassFactory@VBulletClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<BulletClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5040",
   "sym": "?AddRef@?$TClassFactory@VBulletClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<BulletClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5060",
   "sym": "?Release@?$TClassFactory@VBulletClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<BulletClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5110",
   "sym": "?LockServer@?$TClassFactory@VBulletClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<BulletClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5150",
   "sym": "?QueryInterface@?$TClassFactory@VFactoryClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<FactoryClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C51C0",
   "sym": "?AddRef@?$TClassFactory@VFactoryClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<FactoryClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C51E0",
   "sym": "?Release@?$TClassFactory@VFactoryClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<FactoryClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5290",
   "sym": "?LockServer@?$TClassFactory@VFactoryClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<FactoryClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C52D0",
   "sym": "?QueryInterface@?$TClassFactory@VWarheadTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<WarheadTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5340",
   "sym": "?AddRef@?$TClassFactory@VWarheadTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<WarheadTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5360",
   "sym": "?Release@?$TClassFactory@VWarheadTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<WarheadTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5410",
   "sym": "?LockServer@?$TClassFactory@VWarheadTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<WarheadTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5450",
   "sym": "?QueryInterface@?$TClassFactory@VWeaponTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<WeaponTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C54C0",
   "sym": "?AddRef@?$TClassFactory@VWeaponTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<WeaponTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C54E0",
   "sym": "?Release@?$TClassFactory@VWeaponTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<WeaponTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5590",
   "sym": "?LockServer@?$TClassFactory@VWeaponTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<WeaponTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C55D0",
   "sym": "?QueryInterface@?$TClassFactory@VParticleClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ParticleClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5640",
   "sym": "?AddRef@?$TClassFactory@VParticleClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ParticleClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5660",
   "sym": "?Release@?$TClassFactory@VParticleClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ParticleClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5710",
   "sym": "?LockServer@?$TClassFactory@VParticleClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ParticleClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5750",
   "sym": "?QueryInterface@?$TClassFactory@VParticleTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ParticleTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C57C0",
   "sym": "?AddRef@?$TClassFactory@VParticleTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ParticleTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C57E0",
   "sym": "?Release@?$TClassFactory@VParticleTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ParticleTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5890",
   "sym": "?LockServer@?$TClassFactory@VParticleTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ParticleTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C58D0",
   "sym": "?QueryInterface@?$TClassFactory@VParticleSystemClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ParticleSystemClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5940",
   "sym": "?AddRef@?$TClassFactory@VParticleSystemClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ParticleSystemClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5960",
   "sym": "?Release@?$TClassFactory@VParticleSystemClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ParticleSystemClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5A10",
   "sym": "?LockServer@?$TClassFactory@VParticleSystemClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ParticleSystemClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5A50",
   "sym": "?QueryInterface@?$TClassFactory@VParticleSystemTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<ParticleSystemTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5AC0",
   "sym": "?AddRef@?$TClassFactory@VParticleSystemTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<ParticleSystemTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5AE0",
   "sym": "?Release@?$TClassFactory@VParticleSystemTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<ParticleSystemTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5B90",
   "sym": "?LockServer@?$TClassFactory@VParticleSystemTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<ParticleSystemTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5BD0",
   "sym": "?QueryInterface@?$TClassFactory@VAITriggerTypeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AITriggerTypeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5C40",
   "sym": "?AddRef@?$TClassFactory@VAITriggerTypeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AITriggerTypeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5C60",
   "sym": "?Release@?$TClassFactory@VAITriggerTypeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AITriggerTypeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5D10",
   "sym": "?LockServer@?$TClassFactory@VAITriggerTypeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AITriggerTypeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5D50",
   "sym": "?QueryInterface@?$TClassFactory@VNeuronClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<NeuronClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5DC0",
   "sym": "?AddRef@?$TClassFactory@VNeuronClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<NeuronClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5DE0",
   "sym": "?Release@?$TClassFactory@VNeuronClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<NeuronClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5E90",
   "sym": "?LockServer@?$TClassFactory@VNeuronClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<NeuronClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5ED0",
   "sym": "?QueryInterface@?$TClassFactory@VFoggedObjectClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<FoggedObjectClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5F40",
   "sym": "?AddRef@?$TClassFactory@VFoggedObjectClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<FoggedObjectClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C5F60",
   "sym": "?Release@?$TClassFactory@VFoggedObjectClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<FoggedObjectClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C6010",
   "sym": "?LockServer@?$TClassFactory@VFoggedObjectClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<FoggedObjectClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C6050",
   "sym": "?QueryInterface@?$TClassFactory@VAlphaShapeClass@@@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0x65",
   "name": "TClassFactory<AlphaShapeClass>::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C60C0",
   "sym": "?AddRef@?$TClassFactory@VAlphaShapeClass@@@@UAGKXZ",
   "len": "0x11",
   "name": "TClassFactory<AlphaShapeClass>::AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C60E0",
   "sym": "?Release@?$TClassFactory@VAlphaShapeClass@@@@UAGKXZ",
   "len": "0x26",
   "name": "TClassFactory<AlphaShapeClass>::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/class_factory.cpp",
+  "tu": "match/core/Startup.cpp",
   "addr": "0x6C6190",
   "sym": "?LockServer@?$TClassFactory@VAlphaShapeClass@@@@UAGJH@Z",
   "len": "0x21",
   "name": "TClassFactory<AlphaShapeClass>::LockServer",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/Startup.cpp",
