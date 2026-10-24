@@ -2,7 +2,6 @@
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes diffed against retail gamemd.exe v1.001 at 0x622650.
 
-#include <windows.h>
 #include "ui_begin_dialog_methods.h"
 
 // FUNCTION: GAMEMD 0x622650  UI::BeginDialog (__fastcall, ret 4)
@@ -21,7 +20,7 @@
 // zero-stores: `int i = DAT_00B72F50++` copies the index first (29.9%) and
 // `DAT_00B72F50 = i + 1` becomes an LEA (83.3%); only the standalone
 // increment INCs the already-consumed index register in place.
-void* UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param)
+HWND UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param)
 {
     void* tmpl = FUN_004A3B40(id, (const char*)5);
     if (tmpl == 0)
@@ -36,8 +35,8 @@ void* UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param)
     init.Id = id;
     init.Param = param;
 
-    void* hWnd = CreateDialogIndirectParamA((HINSTANCE)DAT_00B732F0, (LPCDLGTEMPLATEA)tmpl,
-                                            (HWND)DAT_00B73550, (DLGPROC)proc, (LPARAM)&init);
+    HWND hWnd = CreateDialogIndirectParamA(DAT_00B732F0, (LPCDLGTEMPLATEA)tmpl,
+                                            DAT_00B73550, (DLGPROC)proc, (LPARAM)&init);
     if (hWnd == 0) {
         DAT_00B72F50--;
         return 0;

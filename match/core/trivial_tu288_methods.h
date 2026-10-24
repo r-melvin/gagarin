@@ -19,8 +19,6 @@ struct Obj_007AC4D0;
 struct Obj_007AC4E0;
 struct Obj_007AD610;
 
-// FUNCTION: GAMEMD 0x77F900 (declaration)
-void FUN_0077F900(Obj_0077D200*, int);
 // FUNCTION: GAMEMD 0x783C80 (declaration)
 void FUN_00783C80(int, unsigned char);
 

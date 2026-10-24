@@ -224,8 +224,7 @@ int FUN_0077D240(String_007B4620* name)
     return -1;
 }
 
-// FUNCTION: GAMEMD 0x775940 (decl; reloc)
-int FUN_00775940(int id);
+
 // FUNCTION: GAMEMD 0x7B7D90 (decl; reloc)
 bool FUN_007B7D90(void* object);
 
@@ -329,8 +328,7 @@ bool FUN_0077D4C0(Entry_00B77908* entry)
     return false;
 }
 
-// FUNCTION: GAMEMD 0x77F900 (decl; reloc)
-void FUN_0077F900();
+
 
 // FUNCTION: GAMEMD 0x77D710
 void FUN_0077D710()
@@ -409,15 +407,14 @@ void FUN_0077D7A0(bool start)
     }
 }
 
-// FUNCTION: GAMEMD 0x5E26C0 (decl; reloc)
-void* FUN_005E26C0();
+
 
 
 // FUNCTION: GAMEMD 0x77D820
 bool FUN_0077D820()
 {
     UI::Updated();
-    void* window = FUN_005E26C0();
+    HWND window = FUN_005E26C0();
     if (window != NULL) {
         InvalidateRect(window, NULL, 1);
     }
@@ -426,8 +423,7 @@ bool FUN_0077D820()
 
 // FUNCTION: GAMEMD 0x78D120 (decl; reloc)
 int __stdcall FUN_0078D120(void* window, unsigned int message, unsigned int wparam, long lparam);
-// FUNCTION: GAMEMD 0x7759E0 (decl; reloc)
-void FUN_007759E0(void* window, bool (* idle)(), int unknown, bool flag1, bool flag2);
+
 
 // GLOBAL: GAMEMD 0xA8ED9C
 extern bool DAT_00A8ED9C;
@@ -448,11 +444,11 @@ extern GScreen_004F4480 GScreen_0087F7E8;
 //   pushes and selects EDX last, as retail does.
 void FUN_0077D840()
 {
-    void* window = UI_BeginDialog(0xCF, FUN_0078D120, 0);
+    HWND window = UI_BeginDialog(0xCF, FUN_0078D120, 0);
     DAT_00A8ED9C = true;
     DAT_0087F770->DoSomething();
     ShowWindow(window, 1);
-    void* parent = FUN_005E26C0();
+    HWND parent = FUN_005E26C0();
     if (parent != NULL)
         FUN_007759E0(window, FUN_0077D820, 0, true, true);
     else

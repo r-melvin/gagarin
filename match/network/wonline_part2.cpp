@@ -83,6 +83,9 @@
 // The node layout (netshare_slot_nodes.h) names a global LocalHandle (0xA8B380);
 // <windows.h> declares a Win32 function of that name, which this unit never
 // calls, so it is renamed for the duration of the include (as netshare_win.h does).
+#ifndef NO_STRICT
+#define NO_STRICT
+#endif
 #define LocalHandle LocalHandle_Win32
 #include <windows.h>
 #undef LocalHandle
@@ -917,7 +920,7 @@ void FUN_0077D1F0(SeatDtorObject* self)
 // Tail-forwards to another function. Vtable slot 4 of SimpleWonlineDialogControl (RTTI) and 2 derived vtable(s).
 void FUN_0077D200(Obj_0077D200* a1, int a2)
 {
-    FUN_0077F900(a1, a2);
+    FUN_0077F900();
 }
 
 // FUNCTION: GAMEMD 0x77DED0
@@ -1769,7 +1772,7 @@ void FUN_007931F0(int slot)
 // FUNCTION: GAMEMD 0x793250
 void FUN_00793250()
 {
-    HWND window = FUN_00775700(DAT_00B732F0, 0x130, DAT_00B73550, (void*)FUN_00793280, 0);
+    HWND window = FUN_00775700(DAT_00B732F0, 0x130, DAT_00B73550, FUN_00793280, 0);
     if (window != NULL) {
         FUN_00622820(window, 0x130);
     }
@@ -2081,11 +2084,11 @@ BOOL CALLBACK FUN_0079AE00(HWND window, UINT message, WPARAM wparam, LPARAM lpar
 // FUNCTION: GAMEMD 0x79BE70
 void FUN_0079BE70()
 {
-    HWND window = FUN_00775700(DAT_00B732F0, 0x11E, DAT_00B73550, (void*)FUN_0079DB50, 0);
+    HWND window = FUN_00775700(DAT_00B732F0, 0x11E, DAT_00B73550, FUN_0079DB50, 0);
     FUN_00622820(window, 0x11E);
     SendMessageA(window, 0x4A9, 0, 1);
     ShowWindow(window, 1);
-    FUN_007759E0(window, (void*)static_cast<void (__cdecl*)()>(FUN_0077F900), 0, 1, 1);
+    FUN_007759E0(window, FUN_0077F900, 0, true, true);
 }
 
 // FUNCTION: GAMEMD 0x79BED0
@@ -2150,9 +2153,9 @@ void FUN_007A0DD0(Entry_00B77908* entry)
     for (int i = 0; i < 8; i++) {
         if (DAT_00A8DA90[i] != NULL) {
             if (strcmp(FUN_007350C0(DAT_00A8DA90[i]), entry->unknown_24) == 0) {
-                void* object = FUN_005E26C0();
-                if (object != NULL) {
-                    FUN_004E34A0(object, i, -1);
+                HWND window = FUN_005E26C0();
+                if (window != NULL) {
+                    FUN_004E34A0(window, i, -1);
                 }
                 return;
             }
@@ -2174,7 +2177,7 @@ void FUN_007A0E50()
 
 // FUNCTION: GAMEMD 0x7A0EA0
 // Records the ping of the player whose name matches and files its quality
-// bucket with the object at 0x5E26C0.
+// bucket with the window returned by 0x5E26C0.
 void FUN_007A0EA0(const char* name, int ping)
 {
     FUN_004068E0("Got ping from gameoptions.  name = %s, ping = %d\n", name, ping);
@@ -2182,12 +2185,12 @@ void FUN_007A0EA0(const char* name, int ping)
         if (DAT_00A8DA90[i] != NULL) {
             if (strcmp(FUN_007350C0(DAT_00A8DA90[i]), name) == 0) {
                 DAT_00B76440[i] = ping;
-                void* object = FUN_005E26C0();
-                if (object != NULL) {
-                    if (ping < 0) FUN_004E34A0(object, i, -1);
-                    else if (ping < 300) FUN_004E34A0(object, i, 0);
-                    else if (ping < 500) FUN_004E34A0(object, i, 1);
-                    else FUN_004E34A0(object, i, 2);
+                HWND window = FUN_005E26C0();
+                if (window != NULL) {
+                    if (ping < 0) FUN_004E34A0(window, i, -1);
+                    else if (ping < 300) FUN_004E34A0(window, i, 0);
+                    else if (ping < 500) FUN_004E34A0(window, i, 1);
+                    else FUN_004E34A0(window, i, 2);
                 }
             }
         }

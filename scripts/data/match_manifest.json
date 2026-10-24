@@ -95999,7 +95999,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x781090",
-  "sym": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAUHWND__@@H@Z",
+  "sym": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAXH@Z",
   "len": "0x99",
   "name": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAUHWND__@@H@Z",
   "status": "matched",
@@ -96062,7 +96062,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x78DA30",
-  "sym": "?FUN_0078DA30@@YGHPAUHWND__@@IIJ@Z",
+  "sym": "?FUN_0078DA30@@YGHPAXIIJ@Z",
   "len": "0x132",
   "name": "?FUN_0078DA30@@YGHPAUHWND__@@IIJ@Z",
   "status": "matched",
@@ -96071,7 +96071,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x78F720",
-  "sym": "?FUN_0078F720@@YIXPAUHWND__@@@Z",
+  "sym": "?FUN_0078F720@@YIXPAX@Z",
   "len": "0xc8",
   "name": "?FUN_0078F720@@YIXPAUHWND__@@@Z",
   "status": "matched",
@@ -96080,7 +96080,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x792CF0",
-  "sym": "?FUN_00792CF0@@YGHPAUHWND__@@IIJ@Z",
+  "sym": "?FUN_00792CF0@@YGHPAXIIJ@Z",
   "len": "0x155",
   "name": "?FUN_00792CF0@@YGHPAUHWND__@@IIJ@Z",
   "status": "matched",
@@ -96134,7 +96134,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x79AE00",
-  "sym": "?FUN_0079AE00@@YGHPAUHWND__@@IIJ@Z",
+  "sym": "?FUN_0079AE00@@YGHPAXIIJ@Z",
   "len": "0x104",
   "name": "?FUN_0079AE00@@YGHPAUHWND__@@IIJ@Z",
   "status": "matched",
@@ -96152,7 +96152,7 @@
  {
   "tu": "match/network/wonline_part2.cpp",
   "addr": "0x7A2110",
-  "sym": "?FUN_007A2110@@YGHPAUHWND__@@IIJ@Z",
+  "sym": "?FUN_007A2110@@YGHPAXIIJ@Z",
   "len": "0x11f",
   "name": "?FUN_007A2110@@YGHPAUHWND__@@IIJ@Z",
   "status": "matched",

@@ -15,15 +15,7 @@
 #ifndef GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H
 #define GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-
-struct DialogEntry_00622650
-{
-    void* Window;   // +0x00
-    int   Id;       // +0x04
-};
-GG_STATIC_ASSERT(sizeof(DialogEntry_00622650) == 0x8);
+#include "ui_window_contracts.h"
 
 // The block handed to the dialog procedure as its LPARAM: the resource id
 // and the caller's extra parameter.
@@ -35,29 +27,14 @@ struct DialogInit_00622650
 GG_STATIC_ASSERT(offsetof(DialogInit_00622650, Param) == 0x4);
 GG_STATIC_ASSERT(sizeof(DialogInit_00622650) == 0x8);
 
-// GLOBAL: GAMEMD 0xB72D28 — the open-dialog stack.
-extern DialogEntry_00622650 DAT_00B72D28[];
-// GLOBAL: GAMEMD 0xB72F50 — how many dialogs are open.
-extern int DAT_00B72F50;
-// GLOBAL: GAMEMD 0xB72F44 — the current dialog window.
-extern void* DAT_00B72F44;
-// GLOBAL: GAMEMD 0xB72F48 — the current dialog id.
-extern int DAT_00B72F48;
-// GLOBAL: GAMEMD 0xB73550 — the main window.
-extern void* DAT_00B73550;
-// GLOBAL: GAMEMD 0xB732F0 — the module handle (hInstance).
-extern void* DAT_00B732F0;
-
 // FUNCTION: GAMEMD 0x4A3B40 (decl; reloc) — Unsorted::GetResource: find, load
 // and lock a resource by id and type.
 void* FUN_004A3B40(int id, const char* type);
 
 // FUNCTION: GAMEMD 0x5D4E70 (decl; reloc) — record the new dialog window.
-void FUN_005D4E70(void* hWnd);
-
-typedef int (__stdcall* DlgProc_00622650)(void*, unsigned int, unsigned int, long);
+void FUN_005D4E70(HWND hWnd);
 
 // FUNCTION: GAMEMD 0x622650 — UI::BeginDialog.
-void* UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param);
+HWND UI_BeginDialog(unsigned short id, DlgProc_00622650 proc, int param);
 
 #endif  // GG_MATCH_UI_UI_BEGIN_DIALOG_METHODS_H

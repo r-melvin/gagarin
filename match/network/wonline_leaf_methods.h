@@ -7,8 +7,7 @@
 #ifndef GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 #define GG_MATCH_NETWORK_WONLINE_LEAF_METHODS_H
 
-#define NO_STRICT
-#include <windows.h>
+#include "../ui/ui_window_contracts.h"
 #include <stddef.h>
 #include "wonline.h"
 #include "../core/hash_table_view.h"
@@ -21,8 +20,7 @@ void* FUN_00775B10();
 // FUNCTION: GAMEMD 0x7757E0 (decl; reloc)
 void FUN_007757E0(void* object, int flag);
 
-// FUNCTION: GAMEMD 0x775940 (decl; reloc)
-HWND FUN_00775940(int id);
+
 
 // FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
 
@@ -235,29 +233,24 @@ struct Table_007AE8E0 : public HashTable_006249A0<String_007B4620, Value_007AE8E
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
 const wchar_t* FUN_00734E60(const char* label, int* out, const char* file, int line);
 
-// FUNCTION: GAMEMD 0x775700 (decl; reloc)
-HWND FUN_00775700(void* context, int id, HWND parent, void* proc, int flags);
+
 
 // FUNCTION: GAMEMD 0x622820 (decl; reloc)
 void FUN_00622820(HWND window, int id);
 
-// FUNCTION: GAMEMD 0x7759E0 (decl; reloc)
-void FUN_007759E0(HWND window, void* proc, int a, int b, int c);
 
-// FUNCTION: GAMEMD 0x77F900 (decl; reloc)
-void __cdecl FUN_0077F900();
+
+
 
 // FUNCTION: GAMEMD 0x79DB50 (decl; reloc)
-void __cdecl FUN_0079DB50();
+int __stdcall FUN_0079DB50(HWND window, unsigned int message, unsigned int wparam, long lparam);
 
 // FUNCTION: GAMEMD 0x793280 (decl; reloc)
-void __cdecl FUN_00793280();
+int __stdcall FUN_00793280(HWND window, unsigned int message, unsigned int wparam, long lparam);
 
-// GLOBAL: GAMEMD 0xB73550 -- the main window.
-extern HWND DAT_00B73550;
 
-// GLOBAL: GAMEMD 0xB732F0
-extern void* DAT_00B732F0;
+
+
 
 // A record with a name (+0x04) and a flag word (+0x08), as ordered by the
 // callbacks below.
@@ -313,8 +306,7 @@ extern HashTable_006249A0<String_007B4620, int> DAT_00B76990;
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc)
 const char* FUN_007350C0(void* player);
 
-// FUNCTION: GAMEMD 0x5E26C0 (decl; reloc)
-void* FUN_005E26C0();
+
 
 // FUNCTION: GAMEMD 0x4E34A0 (decl; reloc)
 void FUN_004E34A0(void* object, int slot, int value);
