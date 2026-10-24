@@ -14,3 +14,15 @@ void ZBuffer::ReleaseSurface()
 {
     delete Buffer;
 }
+
+// FUNCTION: GAMEMD 0x7BCF50
+bool ZBuffer::Fill(unsigned short color)
+{
+    RectangleStruct rect;
+    rect.X = 0;
+    rect.Y = 0;
+    rect.Width = unknown_28;
+    rect.Height = unknown_2C;
+    return Buffer->FillRect(&rect, color);
+}
+

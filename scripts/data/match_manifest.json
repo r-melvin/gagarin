@@ -28398,13 +28398,13 @@
   "pct": 100
  },
  {
-  "tu": "match/renderer/drawing_more_methods.cpp",
+  "tu": "match/renderer/zbuffer_class_methods.cpp",
   "addr": "0x7BCF50",
-  "sym": "?Fill@AlphaBuffer@@QAE_NG@Z",
+  "sym": "?Fill@ZBuffer@@QAE_NG@Z",
   "len": "0x39",
-  "name": "AlphaBuffer::Fill",
+  "name": "ZBuffer::Fill",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/drawing_more_methods.cpp",

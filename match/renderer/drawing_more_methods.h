@@ -1,15 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check | behaviour-confirmed-name
-//   Layout + offsets derived from the user's retail gamemd.exe v1.001 via the
-//   local Ghidra CLI (member-access disassembly at 0x7BCF50 / 0x7BD130),
-//   cross-checked against YRpp (every offset/slot reconfirmed from the disasm).
-//
-//   These two methods are a second, non-folded copy in the retail image of the
-//   alpha-buffer wrapper already modelled in drawing.cpp (ABuffer::Fill @0x4112D0
-//   and ABuffer::GetBuffer @0x4114B0 are byte-for-byte identical to the targets).
-//   To keep this a self-contained TU with no duplicate symbols, the wrapper is
-//   modelled here as AlphaBuffer with its own AlphaSurface interface; only the
-//   members / vtable slots the two matched methods touch are typed.
+// Provenance: own-binary-via-REA
+// Legacy GetBuffer ABI retained at7BD130. Caller ownership is ZBuffer887644;
+// migration to canonical Surface::Lock(Point2D)/Unlock is held at65.2%.
+// Fill7BCF50 now belongs to zbuffer_class_methods.cpp after exact proof.
 #ifndef GG_MATCH_RENDERER_DRAWING_MORE_METHODS_H
 #define GG_MATCH_RENDERER_DRAWING_MORE_METHODS_H
 
@@ -61,8 +54,7 @@ public:
 };
 
 // ---------------------------------------------------------------------------
-// AlphaBuffer  (NOVTABLE — no own vtable; Bounds sits at +0x00). Members below
-// confirmed numerically from the two matched methods:
+// Legacy buffer view retained for the existing exact GetBuffer method:
 //   +0x10 BufferPosition  (GetBuffer MOV EAX,[ESI+0x10])
 //   +0x14 Surface         (Fill [ECX+0x14] / GetBuffer [ESI+0x14])
 //   +0x1C BufferTail      (GetBuffer MOV ECX,[ESI+0x1C])
@@ -72,7 +64,6 @@ public:
 // ---------------------------------------------------------------------------
 struct AlphaBuffer
 {
-    bool  Fill(unsigned short Color);       // GAMEMD 0x7BCF50
     void* GetBuffer(int X, int Y);          // GAMEMD 0x7BD130
 
     RectangleStruct Bounds;          // +0x00
