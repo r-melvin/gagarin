@@ -982,7 +982,7 @@ void Tactical::FUN_006D2DE0(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D projected = CoordsToScreen(&copiedCoordinate);
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1039,7 +1039,7 @@ void Tactical::FUN_006D3040(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D projected = CoordsToScreen(&copiedCoordinate);
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -1141,7 +1141,7 @@ void Tactical::FUN_006D3470(const RectangleStruct* first,
             CoordStruct coordinate;
             coordinate.FUN_0041C230(x, y, 0);
             CoordStruct copiedCoordinate = coordinate;
-            Point2D projected = CoordsToScreen(&copiedCoordinate);
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
             RectangleStruct view;
             view.X = projected.X - unknown_B0.unknown_00 - 30;
             view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
@@ -3644,6 +3644,86 @@ void Tactical::FUN_006DA7D0(CellClass* cell)
         unknown_D7D = true;
     }
 }
+
+#include "../../_layout/current_objects.h"
+#include "../../renderer/pixel_shift_view.h"
+// GLOBAL: GAMEMD 0xA83CD9
+extern ColorStruct DAT_00A83CD9;
+// GLOBAL: GAMEMD 0xB0CEB4
+extern int DAT_00B0CEB4;
+// GLOBAL: GAMEMD 0x842930
+extern unsigned char DAT_00842930[];
+
+// FUNCTION: GAMEMD 0x6DA9D0
+void Tactical::FUN_006DA9D0(bool argument)
+{
+    int phase = (0x7FFFFFFF - CurrentFrame) % 15;
+    unsigned int background =
+        ((DAT_00A83CD9.B >> gg_b_translucent_pixel_format.loss2)
+            << gg_b_translucent_pixel_format.pos2) |
+        ((DAT_00A83CD9.G >> gg_b_translucent_pixel_format.loss1)
+            << gg_b_translucent_pixel_format.pos1) |
+        ((DAT_00A83CD9.R >> gg_b_translucent_pixel_format.loss0)
+            << gg_b_translucent_pixel_format.pos0);
+    // Reverse traversal snapshots the initial count, reloads Items each entry.
+    for (int index = CurrentObjects.Count - 1; index >= 0; --index) {
+        ObjectClass* object = CurrentObjects.Items[index];
+        if (object->vf_11() != 6 || !object->IsAlive || !object->IsSelected)
+            continue;
+        // Primary459EC0 returns6; BuildingClass RTTI/table corroborates this boundary.
+        BuildingClass* building = static_cast<BuildingClass*>(object);
+        if (building->Owner != CurrentPlayer || !building->vf_161() ||
+            !building->ArchiveTarget)
+            continue;
+        CoordStruct coordinate = building->vf_18();
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        Point2D start(projected.X - unknown_B0.unknown_00 + Viewport_00886FA0.X,
+                      projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y);
+        // AbstractClass already owns the coordinate-returning slot18.
+        CoordStruct targetCoordinate = building->ArchiveTarget->vf_18();
+        CoordStruct ground = targetCoordinate;
+        ground.Z = MapInstance.FUN_00578080(&ground);
+        CellClass* cell = MapInstance.FUN_00565730(&ground);
+        if (cell->Flags & 0x100)
+            ground.Z += DAT_00B0CEB4;
+        Pair_006D9F80 rawTemporary;
+        Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(ground.X, ground.Y);
+        int endX = raw.unknown_00 / 256;
+        int endY = raw.unknown_04 / 256 - Tactical::AdjustForZ(ground.Z);
+        Point2D end(endX, endY);
+        Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+        end -= origin;
+        end.X += Viewport_00886FA0.X;
+        end.Y += Viewport_00886FA0.Y;
+        start.Y += 2;
+        end.Y += 2;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, background,
+                                    DAT_00842930, phase, argument);
+        // Owner and its color are read again after the first optional surface
+        // callback. ClipLine edits the SAME two endpoints used by later lines.
+        HouseClass* owner = building->Owner;
+        unsigned int color =
+            ((owner->Color.B >> gg_b_translucent_pixel_format.loss2)
+                << gg_b_translucent_pixel_format.pos2) |
+            ((owner->Color.G >> gg_b_translucent_pixel_format.loss1)
+                << gg_b_translucent_pixel_format.pos1) |
+            ((owner->Color.R >> gg_b_translucent_pixel_format.loss0)
+                << gg_b_translucent_pixel_format.pos0);
+        --start.Y;
+        --end.Y;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, color,
+                                    DAT_00842930, phase, argument);
+        --start.Y;
+        --end.Y;
+        if (ClipLine(&start, &end, &Viewport_00886FA0))
+            DAT_00887314->unknown_4C(&start, &end, color,
+                                    DAT_00842930, phase, argument);
+    }
+}
+
 
 // GLOBAL: GAMEMD 0xB0C110
 extern SwizzleManagerClass DAT_00B0C110;

@@ -15,7 +15,7 @@
 
 // ObjectClass::CurrentObjects @ 0x00A8ECB8.  Disasm touches Items (+0x04 =>
 // 0x00A8ECBC) and Count (+0x10 => 0x00A8ECC8).
-extern DynamicVectorClassLayout CurrentObjects;
+#include "../_layout/current_objects.h"
 
 // Case-insensitive string compare (retail __cdecl helper @ 0x007C8D20).
 extern "C" int __cdecl strcmpi(const char* a, const char* b);
@@ -30,8 +30,6 @@ void sub_431060(void* self);
 extern int DAT_0089C3B0;  // selection grid base @ 0x0089C3B0
 
 // __thiscall (ECX=this), no explicit args, vtable slot at +0x150 — the per-object
-// "remove from CurrentObjects" virtual driving the drain loop.
-typedef void (* UnselectFn)(void* self);
 
 
 // LandType name table @ 0x0081DA28 .. 0x0081DA58 (12 const char* entries:

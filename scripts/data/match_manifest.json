@@ -98902,5 +98902,14 @@
   "name": "Tactical::FUN_006DA5C0",
   "status": "partial",
   "pct": 3.3
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DA9D0",
+  "sym": "?FUN_006DA9D0@Tactical@@QAEX_N@Z",
+  "len": "0x38e",
+  "name": "Tactical::FUN_006DA9D0",
+  "status": "partial",
+  "pct": 3.0
  }
 ]
