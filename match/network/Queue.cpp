@@ -143,7 +143,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 // GLOBAL: GAMEMD 0xA8D58C
 extern CCFileClass DAT_00A8D58C;
 // GLOBAL: GAMEMD 0xA8D5F8
-extern unsigned char DAT_00A8D5F8;
+#include "../core/game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8E9A0
 extern unsigned char DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0xAC50F8

@@ -736,6 +736,69 @@ Coord_006D2280* Tactical::FUN_006D2360(Coord_006D2280* out,
     return out;
 }
 
+#include "../../_layout/rules_class.h"
+#include "../../core/frame_counter.h"
+#include "../../core/game_state_flags.h"
+extern unsigned char DAT_00A8ED6B; // GLOBAL: GAMEMD 0xA8ED6B (decl; reloc)
+// FUNCTION: GAMEMD 0x6D2540
+void Tactical::vf_23()
+{
+    if (DAT_00A8D5F8 & 2) return;
+    bool moved = false;
+    if (unknown_A8 != CurrentFrame) {
+        if (DAT_00A8ED5C &&
+            (unknown_D0.unknown_00 != DAT_00B0CE08.X ||
+             unknown_D0.unknown_04 != DAT_00B0CE08.Y) && unknown_D8 != 0.0f) {
+            unknown_DC += unknown_D8;
+            if (unknown_DC > 1.0) unknown_DC = 1.0f;
+            Pair_006D9F80 temporary;
+            Pair_006D9F80 next = *FUN_0075F5C0(&temporary, &unknown_C8,
+                                                   &unknown_D0, unknown_DC);
+            if (unknown_DC >= 1.0) {
+                unknown_D0 = Pair_006D9F80(0, 0);
+                unknown_C8 = Pair_006D9F80(0, 0);
+                unknown_D8 = 0.0f;
+                unknown_DC = 0.0f;
+            }
+            Pair_006D9F80 adjusted = next;
+            int x, y;
+            if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
+                x = adjusted.unknown_00;
+                y = adjusted.unknown_04;
+            } else {
+                x = next.unknown_00;
+                y = next.unknown_04;
+            }
+            unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
+            unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+            FUN_006D8B30();
+            unknown_D7D = true;
+            moved = true;
+        }
+        if (unknown_DA4.GetTimeLeft() == 0) {
+            unknown_DA4 = ScenarioElapsedTimer(Rules->unknown_050);
+            ++unknown_DA0;
+        }
+    }
+    unknown_A8 = CurrentFrame;
+    if (!(unknown_D74 == unknown_D64) && !moved) {
+        Pair_006D9F80 next = unknown_D74;
+        Pair_006D9F80 adjusted = next;
+        int x, y;
+        if (FUN_006D8640(&adjusted) && !DAT_00A8ED6B) {
+            x = adjusted.unknown_00;
+            y = adjusted.unknown_04;
+        } else {
+            x = next.unknown_00;
+            y = next.unknown_04;
+        }
+        unknown_D64.unknown_00 = unknown_D74.unknown_00 = x;
+        unknown_D64.unknown_04 = unknown_D74.unknown_04 = y;
+        FUN_006D8B30();
+        unknown_D7D = true;
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D2B50
 // Empty function that pops its stack arguments.
 void __stdcall FUN_006D2B50(int a1, int a2)
@@ -767,8 +830,6 @@ void Tactical::FUN_006D4E00()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// GLOBAL: GAMEMD 0xA8ED6B
-extern unsigned char DAT_00A8ED6B;
 
 // GLOBAL: GAMEMD 0xB0CE28
 extern int DAT_00B0CE28;

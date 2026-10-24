@@ -117,7 +117,7 @@ GG_STATIC_ASSERT(offsetof(HouseTypeClass, SideIndex) == 0xBC);
 #include "../platform/copy_protection_methods.h"
 #include "trivial_tu223_methods.h"
 extern MultiplayerGameMode* DAT_00A8B23C; // GLOBAL: GAMEMD 0xA8B23C
-extern unsigned char DAT_00A8D5F8; // GLOBAL: GAMEMD 0xA8D5F8
+#include "game_state_flags.h"
 extern int DAT_00A8D57C; // GLOBAL: GAMEMD 0xA8D57C
 extern int DAT_00A8D588; // GLOBAL: GAMEMD 0xA8D588
 extern unsigned short DAT_00A8D610; // GLOBAL: GAMEMD 0xA8D610
@@ -367,7 +367,6 @@ void __fastcall FUN_0048D080(); // GAMEMD 0x0048D080
 void __fastcall FUN_007529A0(bool enabled); // GAMEMD 0x7529A0
 bool __fastcall FUN_00683AB0(const char* filename, bool flag, int value); // GAMEMD 0x683AB0
 // GLOBAL: GAMEMD 0x00A8ED5C
-extern bool DAT_00A8ED5C;
 // GLOBAL: GAMEMD 0x00A8E378
 extern bool DAT_00A8E378;
 // GLOBAL: GAMEMD 0x00887368

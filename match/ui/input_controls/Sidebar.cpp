@@ -53,7 +53,7 @@
 #include "../../combat/super_weapon_type_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA8D5F8 -- bit 1 set while the game is in a restricted mode.
-extern unsigned char DAT_00A8D5F8;
+#include "../../core/game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8B238 -- session game mode.
 extern int GameMode_00A8B238;
 

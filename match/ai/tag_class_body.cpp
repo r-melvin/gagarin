@@ -47,7 +47,7 @@ TuningCoordInit DAT_00B0E760(128, 128, 0);
 // GLOBAL: GAMEMD 0xA8E9A0
 extern bool DAT_00A8E9A0;
 // GLOBAL: GAMEMD 0xA8ED5C
-extern bool DAT_00A8ED5C;
+#include "../core/game_state_flags.h"
 // GLOBAL: GAMEMD 0xA8ED6B
 extern bool DAT_00A8ED6B;
 // GLOBAL: GAMEMD 0xB0E700 -- the "no cell" value (defined in tag_class_array.cpp).

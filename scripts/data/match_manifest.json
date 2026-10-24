@@ -98488,5 +98488,23 @@
   "name": "MultiMission::FUN_0069AE10",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D2540",
+  "sym": "?vf_23@Tactical@@UAEXXZ",
+  "len": "0x24a",
+  "name": "Tactical::vf_23",
+  "status": "partial",
+  "pct": 60.4
+ },
+ {
+  "tu": "match/core/point_interpolation.cpp",
+  "addr": "0x75F5C0",
+  "sym": "?FUN_0075F5C0@@YIPAUPair_006D9F80@@PAU1@PBU1@1M@Z",
+  "len": "0x4c",
+  "name": "?FUN_0075F5C0@@YIPAUPair_006D9F80@@PAU1@PBU1@1M@Z",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

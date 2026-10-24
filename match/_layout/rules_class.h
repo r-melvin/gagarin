@@ -54,7 +54,8 @@ struct RulesClass
     int unknown_008; // 0x685108 -> fastcall55AF50
     char unknown_00C[0x04C - 0x00C];
     AnimTypeClass* LandAnim; // +0x04C
-    char unknown_050[0x8C - 0x050];
+    int unknown_050; // 0x6D26BE reads DWORD duration; 0x6D26E1 stores it to Tactical+DAC.
+    char unknown_054[0x8C - 0x054];
     int unknown_08C;
     char unknown_090[0x108 - 0x090];
     AnimTypeClass** TouchdownAnims; // +0x108
@@ -157,6 +158,8 @@ struct RulesClass
     char unknown_1874[0x18C0 - 0x1874];
 };
 
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_050) == 0x50);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_050) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_B20) == 0xB20);
 GG_STATIC_ASSERT(offsetof(RulesClass, BunkerSound) == 0x244);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_000) == 0x000);

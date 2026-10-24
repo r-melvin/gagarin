@@ -19,19 +19,7 @@ GG_STATIC_ASSERT(offsetof(Coord_006D2280, Z) == 8);
 // External call target GAMEMD 0x00731D00: ECX supplies the value.
 void FUN_00731D00(int value);
 
-struct Pair_006D9F80
-{
-    Pair_006D9F80() {}
-    Pair_006D9F80(int x, int y) : unknown_00(x), unknown_04(y) {}
-    bool operator==(const Pair_006D9F80& other) const
-    { return unknown_00 == other.unknown_00 && unknown_04 == other.unknown_04; }
-    Pair_006D9F80* FUN_006D1EB0(int x, int y); // 0x6D1EB0; ECX=result, RET 8
-    int unknown_00;
-    int unknown_04;
-};
-GG_STATIC_ASSERT(offsetof(Pair_006D9F80, unknown_00) == 0);
-GG_STATIC_ASSERT(offsetof(Pair_006D9F80, unknown_04) == 4);
-GG_STATIC_ASSERT(sizeof(Pair_006D9F80) == 8);
+#include "pair_006d9f80.h"
 class Cell;
 class ObjectClass;
 template<class T> class TRect;
@@ -153,6 +141,23 @@ GG_STATIC_ASSERT(offsetof(Tactical, unknown_D98) == 0xD98);
 GG_STATIC_ASSERT(offsetof(Tactical, unknown_D98.unknown_04) == 0xD9C);
 GG_STATIC_ASSERT(offsetof(Tactical, unknown_DE4) == 0xDE4);
 GG_STATIC_ASSERT(sizeof(Tactical) == 0xE18);
+
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_C8) + offsetof(Pair_006D9F80, unknown_04) == 0xCC);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_D0) + offsetof(Pair_006D9F80, unknown_04) == 0xD4);
+// Widths and nested timer offsets used by native update0x6D2540.
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_A8) == 4);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_C8) == 8);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_D0) == 8);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_D8) == 4);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_DC) == 4);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_D64) == 8);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_D74) == 8);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_D7D) == 1);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_DA0) == 4);
+GG_STATIC_ASSERT(sizeof(((Tactical*)0)->unknown_DA4) == 12);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DA4) + offsetof(ScenarioElapsedTimer, unknown_00) == 0xDA4);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DA4) + offsetof(ScenarioElapsedTimer, unknown_04) == 0xDA8);
+GG_STATIC_ASSERT(offsetof(Tactical, unknown_DA4) + offsetof(ScenarioElapsedTimer, unknown_08) == 0xDAC);
 
 // Slot layouts read at 0x7F4348 and 0x7F432C; actual emitted tables are
 // separately checked with verify_vtable.py. Pointers are four bytes.
