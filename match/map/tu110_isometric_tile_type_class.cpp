@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit TU110 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x543c60-0x54aa2f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
@@ -297,12 +298,16 @@ extern const double DAT_007EC440;
 // GLOBAL: GAMEMD 0xAA1070
 extern double DAT_00AA1070;
 
-// SYNTHETIC: GAMEMD 0x543C90
-// GLOBAL: GAMEMD 0xABC2C0
+// SYNTHETIC: GAMEMD 0x00543C90
+// dynamic initializer for DAT_00ABC2C0
+
+// GLOBAL: GAMEMD 0x00ABC2C0
 double DAT_00ABC2C0 = DAT_00AA1070 / DAT_007EC440;
 
-// SYNTHETIC: GAMEMD 0x543CB0
-// GLOBAL: GAMEMD 0xABC1F0
+// SYNTHETIC: GAMEMD 0x00543CB0
+// dynamic initializer for DAT_00ABC1F0
+
+// GLOBAL: GAMEMD 0x00ABC1F0
 double DAT_00ABC1F0 = DAT_007E1718 / DAT_00ABC2C0;
 
 // FUNCTION: GAMEMD 0x544CB0  (__thiscall)
