@@ -3832,6 +3832,39 @@ void Tactical::FUN_006DAD60(bool argument)
     memcpy(palette, savedPalette, sizeof savedPalette);
 }
 
+// FUNCTION: GAMEMD 0x6DBB60
+bool Tactical::vf_24(const CoordStruct* first, const CoordStruct* second,
+                     unsigned int color, bool mode)
+{
+    Pair_006D9F80 firstProjection;
+    firstProjection.FUN_006D1EB0(first->X, first->Y);
+    Point2D firstPoint;
+    firstPoint.X = firstProjection.unknown_00 / 256;
+    firstPoint.Y = firstProjection.unknown_04 / 256 - AdjustForZ(first->Z);
+    firstPoint.X -= unknown_B0.unknown_00;
+    firstPoint.Y -= unknown_B0.unknown_04;
+
+    Pair_006D9F80 secondProjection;
+    secondProjection.FUN_006D1EB0(second->X, second->Y);
+    Point2D secondPoint;
+    secondPoint.X = secondProjection.unknown_00 / 256;
+    secondPoint.Y = secondProjection.unknown_04 / 256 - AdjustForZ(second->Z);
+    secondPoint.X -= unknown_B0.unknown_00;
+    secondPoint.Y -= unknown_B0.unknown_04;
+
+    // Native reloads both endpoint heights after projection callbacks.
+    int secondZ = second->Z;
+    int secondBias = secondZ >= 728 ? 1 : 0;
+    int firstZ = first->Z;
+    int firstBias = firstZ >= 728 ? 1 : 0;
+    Surface* surface = DAT_00887314;
+    int secondDepth = 14 - (int)(secondZ * AdjustForZ_Factor + secondBias + 0.5);
+    int firstDepth = 14 - (int)(firstZ * AdjustForZ_Factor + firstBias + 0.5);
+    surface->unknown_34(&Viewport_00886FA0, &firstPoint, &secondPoint,
+                        color, firstDepth, secondDepth, mode);
+    return true; // Native ignores the Surface result and returnsAL1.
+}
+
 // GLOBAL: GAMEMD 0xB0C110
 extern SwizzleManagerClass DAT_00B0C110;
 

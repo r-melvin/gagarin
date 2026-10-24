@@ -98929,5 +98929,14 @@
   "name": "Tactical::FUN_006DAD60",
   "status": "partial",
   "pct": 3.5
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DBB60",
+  "sym": "?vf_24@Tactical@@UAE_NPBUCoordStruct@@0I_N@Z",
+  "len": "0x176",
+  "name": "Tactical::vf_24",
+  "status": "partial",
+  "pct": 3.4
  }
 ]

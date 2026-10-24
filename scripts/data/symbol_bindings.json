@@ -6699,6 +6699,7 @@
  "?vf_241@TechnoClass@@UAEPAVAbstractClass@@IPAUCoordStruct@@_N@Z": "0x006F8DF0",
  "?vf_243@TechnoClass@@UAEHHH@Z": "0x006FDD50",
  "?vf_24@Tactical@@UAE_NPBUCoordStruct@@0IH@Z": "0x006DBB60",
+ "?vf_24@Tactical@@UAE_NPBUCoordStruct@@0I_N@Z": "0x006DBB60",
  "?vf_25@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z": "0x00410A60",
  "?vf_25@TechnoTypeClass@@UAE_NPAVCCINIClass@@@Z": "0x00712170",
  "?vf_26@AbstractTypeClass@@UAE_NPAVCCINIClass@@@Z": "0x00410B90",

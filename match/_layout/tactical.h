@@ -87,7 +87,7 @@ public:
     virtual int vf_12(); // slot12,0x6DC460
     virtual void vf_23(); // slot23,0x6D2540
     virtual bool vf_24(const CoordStruct* first, const CoordStruct* second,
-                       unsigned int color, int mode); // slot24,0x6DBB60,RET16
+                       unsigned int color, bool mode); // slot24,0x6DBB60,RET16; Surface forwards low byte
     void FUN_006D2B60(bool fullScreen, int dx, int dy, const RectangleStruct* clip); // 0x6D2B60, RET0x10
     void FUN_006D2790(RectangleStruct requested, bool flag); // 0x6D2790, RET0x14
     bool FUN_006D8AE0(const Cell* cell) const;
