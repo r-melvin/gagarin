@@ -1653,6 +1653,86 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
     unknown_D7D = false;
 }
 
+#include "../../renderer/bit_font.h"
+#include "../../core/spin_wait_methods.h"
+// Declaration: GAMEMD 0x4A60D0; flags in ECX are unused by this retail getter.
+BitFont* FUN_004A60D0(int flags);
+// Declaration: GAMEMD 0x4A61C0; caller-cleaned hidden result then fixed args.
+Point2D __cdecl FUN_004A61C0(const unsigned short* text, Surface* surface,
+    RectangleStruct* clip, Point2D* position, ColorScheme* scheme,
+    int background, int flags, ...);
+// Declaration: LIBRARY GAMEMD 0x7CA564, CRT source out of scope
+extern "C" int __cdecl FUN_007CA564(unsigned short*, const unsigned short*, ...);
+// Declaration: STRING GAMEMD 0x842A80
+extern const unsigned short STR_00842A80[];
+// Declaration: STRING GAMEMD 0x842A94
+extern const unsigned short STR_00842A94[];
+// Declaration: STRING GAMEMD 0x842AB0
+extern const unsigned short STR_00842AB0[];
+// Declaration: STRING GAMEMD 0x842ACC
+extern const unsigned short STR_00842ACC[];
+// Declaration: STRING GAMEMD 0x842AD8
+extern const unsigned short STR_00842AD8[];
+
+// FUNCTION: GAMEMD 0x6D4B50
+void __fastcall FUN_006D4B50(int row, ColorScheme* scheme, int seconds,
+                            const unsigned short* label,
+                            unsigned int* blinkClock,
+                            unsigned char* blinkState)
+{
+    BitFont* font = FUN_004A60D0(0x4618);
+    int hours = (seconds / 60) / 60;
+    int minutes = (seconds / 60) % 60;
+    int remainder = seconds % 60;
+    unsigned short combined[256];
+    unsigned short labelText[256];
+    unsigned short timeText[256];
+    // All three formatting calls exist in each native branch, including the
+    // combined string that this function does not subsequently draw.
+    if (hours != 0) {
+        FUN_007CA564(combined, STR_00842AD8, label, hours, minutes, remainder);
+        FUN_007CA564(labelText, STR_00842ACC, label);
+        FUN_007CA564(timeText, STR_00842AB0, hours, minutes, remainder);
+    } else {
+        FUN_007CA564(combined, STR_00842A94, label, minutes, remainder);
+        FUN_007CA564(labelText, STR_00842ACC, label);
+        FUN_007CA564(timeText, STR_00842A80, minutes, remainder);
+    }
+    int timeWidth = 0;
+    font->FUN_00433CF0(timeText, &timeWidth, 0, Viewport_00886FA0.Width);
+    ColorScheme* timeScheme = scheme;
+    if (seconds == 0 && blinkClock != 0 && blinkState != 0) {
+        // Native compares high then low DWORD unsigned, and samples again
+        // when writing a deadline; do not reuse the first clock sample.
+        unsigned __int64 now = FUN_004093B0();
+        unsigned __int64 deadline = ((unsigned __int64)blinkClock[1] << 32) | blinkClock[0];
+        if (deadline <= now) {
+            deadline = FUN_004093B0() + 1000;
+            blinkClock[0] = (unsigned int)deadline;
+            blinkClock[1] = (unsigned int)(deadline >> 32);
+            *blinkState = (*blinkState == 0);
+        }
+        if (*blinkState != 0)
+            timeScheme = ColorSchemeArray.Items[5];
+    }
+    int rowNumber = row + 1;
+    Point2D labelPosition(Viewport_00886FA0.Width - timeWidth - 3,
+                          Viewport_00886FA0.Height - (font->unknown_1C + 2) * rowNumber);
+    // +78 is canonical GetRect(): only its hidden result is popped by the
+    // virtual call. Remaining stack arguments belong to the cdecl print.
+    RectangleStruct labelClip = DAT_0088731C->GetRect();
+    FUN_004A61C0(labelText, DAT_0088731C, &labelClip,
+                  &labelPosition, scheme, 0, 0x4618);
+
+    // Native rereads font line advance, viewport dimensions and surface
+    // after the first GetRect/print callbacks. Do not retain their values.
+    Point2D timePosition(Viewport_00886FA0.Width - 3,
+                         Viewport_00886FA0.Height - (font->unknown_1C + 2) * rowNumber);
+    RectangleStruct timeClip = DAT_0088731C->GetRect();
+    FUN_004A61C0(timeText, DAT_0088731C, &timeClip,
+                  &timePosition, timeScheme, 0, 0x4618);
+}
+
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
@@ -1677,6 +1757,68 @@ void Tactical::FUN_006D4E00()
 
 // GLOBAL: GAMEMD 0xB0CE28
 extern int DAT_00B0CE28;
+
+#include "../../ui/shape_header.h"
+#include "../../renderer/pixel_shift_view.h"
+struct ColorConvert;
+// GLOBAL: GAMEMD 0xA8F794 (declaration)
+extern ShapeHeader* DAT_00A8F794;
+// GLOBAL: GAMEMD 0xA8F798 (declaration)
+extern ColorConvert* DAT_00A8F798;
+// GLOBAL: GAMEMD 0x89C4D0 (declaration)
+extern BitFont* DAT_0089C4D0;
+// Declaration: LIBRARY GAMEMD 0x7CA405, CRT wcslen
+unsigned int __cdecl FUN_007CA405(const unsigned short* text);
+// Declaration: GAMEMD 0x434B90, seven stack words, RET28
+int __stdcall FUN_00434B90(BitFont* font, Surface* surface, const unsigned short* text,
+    int x, int y, int a, int b);
+// Declaration: GAMEMD 0x4AED70, ECXsurface/EDXconvert, RET56
+void FUN_004AED70(Surface* surface, ColorConvert* convert, ShapeHeader* shape,
+    int frame, Point2D* position, RectangleStruct* clip, int flags,
+    int a8, int a9, int a10, int a11, int a12, int a13, int a14, Point2D offset);
+
+// FUNCTION: GAMEMD 0x6D4E20
+void Tactical::FUN_006D4E20(const unsigned short* text)
+{
+    if (DAT_00A8ED6B) return;
+    if ((!text || !FUN_007CA405(text)) && unknown_A4 == -1) return;
+    if (!DAT_0088731C->unknown_84()) return;
+
+    int frame = unknown_A4;
+    if (frame != -1 && DAT_00A8F798 && DAT_00A8F794 &&
+        frame < DAT_00A8F794->Frames) {
+        Point2D centered((Viewport_00886FA0.Width - DAT_00A8F794->Width) / 2,
+                         (Viewport_00886FA0.Height - DAT_00A8F794->Height) / 2);
+        Point2D offset(0, 0);
+        FUN_004AED70(DAT_0088731C, DAT_00A8F798, DAT_00A8F794,
+                      frame, &centered, &Viewport_00886FA0,
+                      0, 0, 0, 0, 1000, 0, 0, 0, offset);
+        return;
+    }
+    if (!text || !FUN_007CA405(text)) return;
+
+    BitFont* font = DAT_0089C4D0;
+    int viewportX = Viewport_00886FA0.X;
+    int viewportY = Viewport_00886FA0.Y;
+    int viewportWidth = Viewport_00886FA0.Width;
+    int viewportHeight = Viewport_00886FA0.Height;
+    int textWidth;
+    int textHeight;
+    const BTranslucentPixelFormat& pixel = gg_b_translucent_pixel_format;
+    unsigned int white = ((255 >> pixel.loss2) << pixel.pos2) |
+                         ((255 >> pixel.loss1) << pixel.pos1) |
+                         ((255 >> pixel.loss0) << pixel.pos0);
+    font->FUN_00433CF0(text, &textWidth, &textHeight, viewportWidth);
+    BitFontBounds bounds = {viewportX, viewportY,
+                         viewportX + viewportWidth, viewportY + viewportHeight};
+    int x = viewportX + (viewportWidth - textWidth) / 2;
+    int y = viewportY + (viewportHeight - textHeight) / 2;
+    font->FUN_00433C90(1);
+    font->FUN_00433CA0(&bounds);
+    font->FUN_00433C70((unsigned short)white);
+    FUN_00434B90(font, DAT_0088731C, text, x, y, 0, 0);
+}
+
 
 // FUNCTION: GAMEMD 0x6D5F60
 void Tactical::FUN_006D5F60(const TRect<int>* bounds)

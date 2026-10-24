@@ -6910,12 +6910,12 @@
  },
  {
   "tu": "match/core/global_getter_family_methods.cpp",
-  "addr": "0x004a60d0",
-  "sym": "?FUN_004A60D0@@YIHXZ",
+  "addr": "0x4A60D0",
+  "sym": "?FUN_004A60D0@@YIPAVBitFont@@H@Z",
   "len": "0x6",
-  "name": "FUN_004A60D0",
+  "name": "Font selection getter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/renderer/tu072_d_surface.cpp",
@@ -98677,5 +98677,23 @@
   "name": "Tactical::FUN_006D3D10",
   "status": "partial",
   "pct": 3.3
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D4B50",
+  "sym": "?FUN_006D4B50@@YIXHPAUColorScheme@@HPBGPAIPAE@Z",
+  "len": "0x25f",
+  "name": "?FUN_006D4B50@@YIXHPAUColorScheme@@HPBGPAIPAE@Z",
+  "status": "partial",
+  "pct": 6.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D4E20",
+  "sym": "?FUN_006D4E20@Tactical@@QAEXPBG@Z",
+  "len": "0x202",
+  "name": "Tactical::FUN_006D4E20",
+  "status": "partial",
+  "pct": 53.5
  }
 ]

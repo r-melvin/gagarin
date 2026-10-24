@@ -50,6 +50,10 @@ struct BitFontBounds
     int Right;    // +0x08
     int Bottom;   // +0x0C
 };
+GG_STATIC_ASSERT(offsetof(BitFontBounds, Left) == 0);
+GG_STATIC_ASSERT(offsetof(BitFontBounds, Top) == 4);
+GG_STATIC_ASSERT(offsetof(BitFontBounds, Right) == 8);
+GG_STATIC_ASSERT(offsetof(BitFontBounds, Bottom) == 12);
 GG_STATIC_ASSERT(sizeof(BitFontBounds) == 0x10);
 
 class BitFont

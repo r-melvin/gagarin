@@ -5,7 +5,7 @@
 #include "global_getter_family_methods.h"
 
 // FUNCTION: GAMEMD 0x004A60D0
-int FUN_004A60D0()
+BitFont* FUN_004A60D0(int flags)
 {
     return DAT_0089C4D0;
 }

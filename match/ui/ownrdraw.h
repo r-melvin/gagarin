@@ -262,6 +262,7 @@ struct TextNode_00623420
 GG_STATIC_ASSERT(offsetof(TextNode_00623420, Text) == 0x08);
 GG_STATIC_ASSERT(offsetof(TextNode_00623420, Buffer) == 0x10);
 
+class BitFont;
 struct Obj_00623420
 {
     char               unknown_00[0x28];  // +0x0000
@@ -274,7 +275,7 @@ struct Obj_00623420
     char               unknown_44[0x5C - 0x44];
     int                unknown_5C;        // +0x005C
     char               unknown_60[0x64 - 0x60];
-    int                unknown_64;        // +0x0064
+    BitFont*           unknown_64;        // +0x0064, ctor623340 copies font89C4D0
     int                unknown_68;        // +0x0068
     char               unknown_6C[0x90 - 0x6C];
     int                unknown_90;        // +0x0090
