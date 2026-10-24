@@ -3110,6 +3110,191 @@ void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 
 #include "../../map/terrain_objects/terrain_class.h"
 
+#include "../../_layout/building_array.h"
+
+// GLOBAL: GAMEMD 0xA8B230
+extern ScenarioClass* DAT_00A8B230;
+
+// FUNCTION: GAMEMD 0x6D8DB0
+void Tactical::FUN_006D8DB0(bool argument)
+{
+    int width = Viewport_00886FA0.Width;
+    int originX = unknown_B0.unknown_00;
+    int height = Viewport_00886FA0.Height;
+    int originY = unknown_B0.unknown_04;
+    Vector3D first(originX + width / 2, originY - height, 0.0f);
+    Vector3D transformed;
+    first = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &first);
+    int left = first.X;
+    int top = first.Y;
+    Vector3D second(originX + width * 2, originY + height / 2, 0.0f);
+    second = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &second);
+    int right = second.X;
+    // Native third vector's Y is the original height, NOT second-vector Y.
+    Vector3D third(originX - width, height, 0.0f);
+    third = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &third);
+    int bottom = third.Y;
+    int extentX = (right - left) * 2;
+    int extentY = (bottom - top) * 2;
+
+    for (int layer = 0; layer < 5; ++layer) {
+        for (int index = 0; index < DisplayLayers[layer].Count; ++index) {
+            ObjectClass* object = DisplayLayers[layer].Items[index];
+            // Native stores this byte BEFORE its null test; do not add a guard.
+            object->IsVisible = false;
+            if (object && object->Flags.IsFoot) {
+                CoordStruct location = object->Location;
+                if (location.X < left || location.X >= left + extentX ||
+                    location.Y < top || location.Y >= top + extentY)
+                    continue;
+                object->vf_19(0); // Hidden coordinate result discarded, call retained.
+                if ((DAT_00A8B230->unknown_0000 & 0x1000) &&
+                    MapInstance.FUN_005865E0(&location))
+                    continue;
+                CoordStruct coordinate = object->vf_18();
+                Tactical* tactical = DAT_00887324;
+                Point2D position = tactical->CoordsToScreen(&coordinate);
+                position.X -= tactical->unknown_B0.unknown_00;
+                position.Y -= tactical->unknown_B0.unknown_04;
+                if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                    position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                    continue;
+                object->IsVisible = true;
+                object->vf_67(&position, &Viewport_00886FA0);
+                object->vf_65(&Viewport_00886FA0, argument, 0);
+            } else if (object && object->Flags.IsTechno) {
+                CoordStruct location = object->Location;
+                if (location.X < left || location.X >= left + extentX ||
+                    location.Y < top || location.Y >= top + extentY)
+                    continue;
+                object->IsVisible = true;
+                Point2D position;
+                CoordStruct coordinate = object->vf_18();
+                if (DAT_00887324->FUN_006D2140(&coordinate, &position)) {
+                    object->vf_67(&position, &Viewport_00886FA0);
+                    object->vf_68(&position, &Viewport_00886FA0);
+                }
+                object->vf_65(&Viewport_00886FA0, argument, 1);
+            } else {
+                int kind = object->vf_11();
+                if (kind == 4) {
+                    CoordStruct location = object->vf_18();
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    // Native kind4 and Type+0x374 identify the canonical Anim layout.
+                    AnimClass* animation = static_cast<AnimClass*>(object);
+                    object->IsVisible = true;
+                    if (!animation->IsBuildingAnim && animation->Type->ShouldFogRemove) {
+                        CoordStruct coordinate = object->vf_18();
+                        if (MapInstance.FUN_005865E0(&coordinate))
+                            continue;
+                    }
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                } else if (kind == 36) {
+                    // Native kind36; Terrain has the canonical ObjectClass base.
+                    TerrainClass* terrain = static_cast<TerrainClass*>(object);
+                    if (!terrain->Type->IsAnimated && !terrain->TimeToDie)
+                        continue;
+                    CoordStruct location = object->Location;
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    if (MapInstance.FUN_005865E0(&location))
+                        continue;
+                    object->IsVisible = true;
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                } else {
+                    CoordStruct location = object->Location;
+                    if (location.X < left || location.X >= left + extentX ||
+                        location.Y < top || location.Y >= top + extentY)
+                        continue;
+                    CoordStruct coordinate = object->vf_18();
+                    Tactical* tactical = DAT_00887324;
+                    Pair_006D9F80 rawTemporary;
+                    Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(coordinate.X, coordinate.Y);
+                    int screenX = raw.unknown_00 / 256;
+                    int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(coordinate.Z);
+                    Point2D position(screenX, screenY);
+                    Point2D origin(tactical->unknown_B0.unknown_00,
+                                   tactical->unknown_B0.unknown_04);
+                    position -= origin;
+                    if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                        position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                        continue;
+                    object->IsVisible = true;
+                    object->vf_67(&position, &Viewport_00886FA0);
+                    object->vf_65(&Viewport_00886FA0, argument, 0);
+                }
+            }
+        }
+        if (layer == 2) {
+            for (int index = 0; index < DAT_00A8EB40.Count; ++index) {
+                BuildingClass* building = DAT_00A8EB40.Items[index];
+                if (!building->IsOnMap || !building->IsVisible)
+                    continue;
+                CoordStruct coordinate = building->vf_43();
+                Tactical* tactical = DAT_00887324;
+                Pair_006D9F80 rawTemporary;
+                Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(coordinate.X, coordinate.Y);
+                int screenX = raw.unknown_00 / 256;
+                int screenY = raw.unknown_04 / 256 - Tactical::AdjustForZ(coordinate.Z);
+                Point2D position(screenX - tactical->unknown_B0.unknown_00,
+                                 screenY - tactical->unknown_B0.unknown_04);
+                if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                    position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                    continue;
+                // Four globals loaded into a rectangle snapshot. Native's
+                // CMP ECX,ECX makes 9550 dead; the copied Y makes 9563 dead.
+                int clipWidth = Viewport_00886FA0.Width;
+                int clipX = Viewport_00886FA0.X;
+                int clipY = Viewport_00886FA0.Y;
+                int clipHeight = Viewport_00886FA0.Height;
+                RectangleStruct clip = { clipX, clipY, clipWidth, clipHeight };
+                // Blocks9550/9563 cannot execute: their comparisons use
+                // the same value or its unchanged local copy. Omit those
+                // dead adjustments rather than inventing live clipping.
+                building->FUN_0043E7B0(&position, &clip);
+            }
+        }
+    }
+    for (layer = 0; layer < 5; ++layer) {
+        // Final pass snapshots Count once per layer; Items reloads each entry.
+        int count = DisplayLayers[layer].Count;
+        for (int index = 0; index < count; ++index) {
+            ObjectClass* object = DisplayLayers[layer].Items[index];
+            if (!object->IsVisible || !object || !object->Flags.IsTechno)
+                continue;
+            if (object->Flags.IsFoot) {
+                object->vf_19(0);
+                if (DAT_00B73550 && !DAT_00A8ED6B &&
+                    (DAT_00A8B230->unknown_0000 & 0x1000)) {
+                    CoordStruct location = object->Location;
+                    if (MapInstance.FUN_005865E0(&location))
+                        continue;
+                }
+            }
+            CoordStruct coordinate = object->vf_18();
+            // This final projection is inlined native integer math, not an
+            // extra helper call or a float conversion suggested by pseudocode.
+            int rawX = coordinate.X * 60 / 2 + coordinate.Y * -60 / 2;
+            int rawY = coordinate.X * 30 / 2 + coordinate.Y * 30 / 2;
+            int screenX = rawX / 256;
+            int screenY = rawY / 256;
+            int bias = coordinate.Z >= 728 ? 1 : 0;
+            int lift = coordinate.Z * DAT_00B0CD48 + bias + 0.5;
+            screenY -= lift;
+            Tactical* tactical = DAT_00887324;
+            Point2D position(screenX - tactical->unknown_B0.unknown_00,
+                             screenY - tactical->unknown_B0.unknown_04);
+            if (position.X < -360 || position.X > DAT_00B0CE30 + 360 ||
+                position.Y < -180 || position.Y > DAT_00B0CE34 + 180)
+                continue;
+            object->vf_68(&position, &Viewport_00886FA0);
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D97D0
 void Tactical::FUN_006D97D0(bool force, const RectangleStruct* view, const RectangleStruct* clip)
 {
@@ -3120,9 +3305,8 @@ void Tactical::FUN_006D97D0(bool force, const RectangleStruct* view, const Recta
         if (object->vf_11() != 0x24 || object->vf_17())
             continue;
         // Terrain table7F522C slot11 returns24; RTTI ObjectClass base is at0
-        // (COL80C3E0, base descriptor7FB3D0). Existing TerrainClass retains
-        // its legacy C++ base; this is a proven layout boundary for its fields.
-        TerrainClass* terrain = reinterpret_cast<TerrainClass*>(object);
+        // (COL80C3E0, base descriptor7FB3D0), now the actual C++ base.
+        TerrainClass* terrain = static_cast<TerrainClass*>(object);
         if (terrain->Type->IsAnimated || terrain->TimeToDie)
             continue;
         int originX = Viewport_00886FA0.X;

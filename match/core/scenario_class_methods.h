@@ -32,6 +32,9 @@ class HouseClass;
 class WaypointClass;
 struct MapInstanceClass
 {
+    // FUNCTION: GAMEMD 0x5865E0 (decl; reloc). Native returns AL=false, RET4;
+    // Tactical6D8FDA/6D965D passes a coordinate snapshot, ECX=87F7E8.
+    bool FUN_005865E0(const CoordStruct* coordinate);
     // Declaration: GAMEMD 0x4A94F0, hidden CellStruct result + foundation, RET8
     CellStruct FUN_004A94F0(const CellStruct* foundation) const;
     // Declaration: GAMEMD 0x568300, one cell pointer, AL result, RET4

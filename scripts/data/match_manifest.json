@@ -98965,5 +98965,14 @@
   "name": "ObjectClass::ObjectClass(no-init)",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D8DB0",
+  "sym": "?FUN_006D8DB0@Tactical@@QAEX_N@Z",
+  "len": "0xa18",
+  "name": "Tactical::FUN_006D8DB0",
+  "status": "partial",
+  "pct": 2.6
  }
 ]

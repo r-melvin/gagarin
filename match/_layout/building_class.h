@@ -92,6 +92,9 @@ public:
     // Non-virtual BuildingClass members called by vf_23; bodies not recovered here.
     // FUNCTION: GAMEMD 0x43C0D0 (decl; reloc)
     void FUN_0043C0D0();
+    // FUNCTION: GAMEMD 0x43E7B0 (decl; reloc)
+    // 6D9576..7A passes Point2D* and RectangleStruct*; callee forwards clip.
+    void FUN_0043E7B0(Point2D* position, RectangleStruct* clip);
     // FUNCTION: GAMEMD 0x4500F0 (decl; reloc)
     void FUN_004500F0();
     // FUNCTION: GAMEMD 0x4503F0 (decl; reloc)
