@@ -1886,6 +1886,144 @@ void Tactical::FUN_006D5730(unsigned char mode, CellStruct origin)
 }
 
 
+#include "../../map/terrain_objects/overlay_type_class.h"
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpeedType) == 0x67C);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ToOverlay) == 0xE54);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + (0x16C0 - 0x16A4) == 0x16C0);
+
+// FUNCTION: GAMEMD 0x6D59D0
+void Tactical::FUN_006D59D0(unsigned char mode, CellStruct origin)
+{
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        BuildingTypeClass* type = placement->Type;
+        int range = type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        bool found = false;
+        while (count < range) {
+            current.X += step.X;
+            current.Y += step.Y;
+            BuildingClass* building = MapInstance.FUN_005657A0(&current)->GetBuilding();
+            if (building && building->Type->bools_16A4[0x16C0 - 0x16A4] &&
+                building->Owner->IsControlledByCurrentPlayer()) {
+                found = true;
+                break;
+            }
+            // An unsuitable building follows the SAME placement test as an
+            // empty cell. Snapshot these arguments before the lookup callback.
+            HouseClass* owner = CurrentPlayer;
+            int speedType = type->SpeedType;
+            if (!MapInstance.FUN_005657A0(&current)->FUN_0047C620(
+                    speedType, type, owner))
+                break;
+            ++count;
+        }
+        if (!found || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw;
+        draw.X = origin.X + step.X;
+        draw.Y = origin.Y + step.Y;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            CoordStruct center;
+            center.X = (draw.X * 256 + 128) / 256 * 256;
+            center.Y = (draw.Y * 256 + 128) / 256 * 256;
+            center.Z = 0;
+            Point2D projected = CoordsToScreen(&center);
+            Point2D marker(projected.X - unknown_B0.unknown_00,
+                           projected.Y - unknown_B0.unknown_04 + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw.X += step.X;
+            draw.Y += step.Y;
+        }
+    }
+}
+
+// Evidence: ev_0ebcb310f10018926435614b8aef2acd369841ed3b5888280bf2d84e6a803cfc
+// FUNCTION: GAMEMD 0x6D5C50
+void Tactical::FUN_006D5C50(unsigned char mode, CellStruct origin)
+{
+    // Caller6D53E7 checks placement type6 before this family is dispatched.
+    BuildingClass* placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+    OverlayTypeClass* overlay = placement->Type->ToOverlay;
+    if (!overlay)
+        return;
+    for (int direction = 0; direction < 8; direction += 2) {
+        CellStruct current = origin;
+        int count = 0;
+        // Reload placement/type for EACH direction after earlier callbacks.
+        placement = static_cast<BuildingClass*>(PlacementObject_0088098C);
+        BuildingTypeClass* type = placement->Type;
+        int range = type->GuardRange >> 8;
+        if (range <= 0)
+            continue;
+        const CellStruct& step = DAT_0089F688[direction & 7];
+        bool found = false;
+        while (count < range) {
+            current.X += step.X;
+            current.Y += step.Y;
+            CellClass* cell = MapInstance.FUN_005657A0(&current);
+            int overlayIndex = cell->OverlayTypeIndex;
+            if (overlayIndex != -1 && overlayIndex == overlay->ArrayIndex) {
+                // Native repeats the lookup and reloads the house before the
+                // owner comparison, rather than reusing the earlier cell.
+                CellClass* ownedCell = MapInstance.FUN_005657A0(&current);
+                if (CurrentPlayer->ArrayIndex == ownedCell->WallOwnerIndex) {
+                    found = true;
+                    break;
+                }
+            }
+            // These arguments are read before the lookup call in native:
+            // preserve their snapshots across the cell lookup callback.
+            HouseClass* owner = CurrentPlayer;
+            int speedType = type->SpeedType;
+            if (!MapInstance.FUN_005657A0(&current)->FUN_0047C620(
+                    speedType, type, owner))
+                break;
+            ++count;
+        }
+        if (!found || count <= 0)
+            continue;
+        unsigned int flags = mode ? 0x10606 : 0x20606;
+        CellStruct draw;
+        draw.X = origin.X + step.X;
+        draw.Y = origin.Y + step.Y;
+        for (int index = 0; index < count; ++index) {
+            int firstLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int firstY = -1 - firstLevel * 15;
+            int secondLevel = MapInstance.FUN_005657A0(&draw)->Level;
+            int z = -2 - secondLevel * 15;
+            int worldX = (draw.X * 256 + 128) / 256 * 256;
+            int worldY = (draw.Y * 256 + 128) / 256 * 256;
+            Pair_006D9F80 temporary;
+            Pair_006D9F80 raw = *temporary.FUN_006D1EB0(worldX, worldY);
+            int x = raw.unknown_00 / 256;
+            int y = raw.unknown_04 / 256 - Tactical::AdjustForZ(0);
+            Point2D position(x, y);
+            Point2D viewport(unknown_B0.unknown_00, unknown_B0.unknown_04);
+            position -= viewport;
+            Point2D marker(position.X, position.Y + firstY);
+            FUN_004AED70(DAT_00887314, DAT_0087F6C4,
+                         DisplayPlaceShape_008A03FC, 0, &marker,
+                         &Viewport_00886FA0, flags, 0, z, 0, 1000,
+                         0, 0, 0, Point2D(0, 0));
+            draw.X += step.X;
+            draw.Y += step.Y;
+        }
+    }
+}
+
 // FUNCTION: GAMEMD 0x6D5F60
 void Tactical::FUN_006D5F60(const TRect<int>* bounds)
 {
@@ -2556,6 +2694,14 @@ int Obj_006DC460::FUN_006DC460() const
 
 GG_STATIC_ASSERT(offsetof(VectorClass<DirtyAreaStruct>, Items) == 4);
 GG_STATIC_ASSERT(sizeof(((VectorClass<DirtyAreaStruct>*)0)->Items) == 4);
+
+// FUNCTION: GAMEMD 0x6DC4C0
+Point2D& Point2D::operator-=(Point2D const& other)
+{
+    X -= other.X;
+    Y -= other.Y;
+    return *this;
+}
 
 // FUNCTION: GAMEMD 0x006DC510
 // DynamicVectorClass<DirtyAreaStruct>::Slot5

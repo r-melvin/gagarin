@@ -98704,5 +98704,32 @@
   "name": "Tactical::FUN_006D5730",
   "status": "partial",
   "pct": 10.8
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D59D0",
+  "sym": "?FUN_006D59D0@Tactical@@QAEXEUCellStruct@@@Z",
+  "len": "0x27d",
+  "name": "Tactical::FUN_006D59D0",
+  "status": "partial",
+  "pct": 2.9
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D5C50",
+  "sym": "?FUN_006D5C50@Tactical@@QAEXEUCellStruct@@@Z",
+  "len": "0x2dd",
+  "name": "Tactical::FUN_006D5C50",
+  "status": "partial",
+  "pct": 8.1
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DC4C0",
+  "sym": "??ZPoint2D@@QAEAAU0@ABU0@@Z",
+  "len": "0x1e",
+  "name": "Point2D subtraction assignment",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

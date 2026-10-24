@@ -35,6 +35,8 @@ struct Point2D;
 class Tactical : public AbstractClass
 {
 public:
+    void FUN_006D59D0(unsigned char mode, CellStruct origin); // 0x6D59D0, RET8
+    void FUN_006D5C50(unsigned char mode, CellStruct origin); // 0x6D5C50, RET8
     void FUN_006D5730(unsigned char mode, CellStruct origin); // 0x6D5730, RET8
     void FUN_006D3D10(Surface* surface, bool full, int mode); // 0x6D3D10, RET12
     void FUN_006DAD60(bool flag); // RET4
