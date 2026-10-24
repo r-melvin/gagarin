@@ -82,6 +82,7 @@ public:
     void FUN_006D8530(int direction, int distance); // 0x6D8530; RET8
     bool FUN_006D8640(Pair_006D9F80* point); // 0x6D8640; RET 4
     void FUN_006D8B30(); // 0x6D8B30
+    void FUN_006D9A50(RectangleStruct viewport); // 0x6D9A50, RET16
     bool FUN_006D9B50(RectangleStruct viewport); // RET16
     void FUN_006D9CE0(int x, int y, int width, int height); // RET16
     void FUN_006D9F80(const Pair_006D9F80* value);

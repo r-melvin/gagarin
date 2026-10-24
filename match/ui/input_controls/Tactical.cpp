@@ -1647,6 +1647,27 @@ void Tactical::FUN_006D9920(bool force, const RectangleStruct* view, const Recta
     }
 }
 
+// FUNCTION: GAMEMD 0x6D9A50
+void Tactical::FUN_006D9A50(RectangleStruct viewport)
+{
+    for (int index = 0; index < DisplayLayers[2].Count; ++index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() == 6 && object->NeedsRedraw) {
+            RectangleStruct bounds = object->vf_75();
+            int left = bounds.X + Viewport_00886FA0.X;
+            int top = bounds.Y + Viewport_00886FA0.Y;
+            if (viewport.X < left + bounds.Width &&
+                viewport.Y < top + bounds.Height &&
+                left < viewport.X + viewport.Width &&
+                top < viewport.Y + viewport.Height) {
+                // 6D9AF4..6D9B15 forwards the original bounds, untranslated.
+                FUN_006D2790(bounds, false);
+                object->NeedsRedraw = false;
+            }
+        }
+    }
+}
+
 #include "../../_layout/building_array.h"
 
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1700) + sizeof(bool) == 0x1701);

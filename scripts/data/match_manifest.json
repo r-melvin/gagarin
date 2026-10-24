@@ -98659,5 +98659,14 @@
   "name": "Tactical::FUN_006D9CE0",
   "status": "partial",
   "pct": 4.6
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D9A50",
+  "sym": "?FUN_006D9A50@Tactical@@QAEXURectangleStruct@@@Z",
+  "len": "0xf2",
+  "name": "Tactical::FUN_006D9A50",
+  "status": "partial",
+  "pct": 27.8
  }
 ]
