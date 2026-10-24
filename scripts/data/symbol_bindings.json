@@ -7479,8 +7479,11 @@
  "match/core/object_type_class_slots.cpp::_?range@?1??vf_36@ObjectTypeClass@@UAEPAXH@Z@4URange_005F7640@@A": "0x00AC1438",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S11": "0x0089DDD0",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S18": "0x0089ED10",
+ "match/core/static_vector_member_dtor_stubs_a.cpp::_$S19": "0x008A3818",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S25": "0x008A3818",
+ "match/core/static_vector_member_dtor_stubs_a.cpp::_$S26": "0x008B3CD5",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S32": "0x008B3CD5",
+ "match/core/static_vector_member_dtor_stubs_a.cpp::_$S33": "0x00A8EF60",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S39": "0x00A8EF60",
  "match/core/static_vector_member_dtor_stubs_a.cpp::_$S4": "0x0088A098",
  "match/core/static_vector_member_dtor_stubs_b.cpp::_$S11": "0x00AA0E2C",
@@ -7560,5 +7563,6 @@
  "match/ui/input_controls/Tactical.cpp::_?DAT_00B0CE14@?N@??FUN_006DBE20@Tactical@@QAEXXZ@4UColorStruct@@A": "0x00B0CE14",
  "match/ui/input_controls/Tactical.cpp::_?offsets@?1??FUN_006D8530@Tactical@@QAEXHH@Z@4PAUPair_006D9F80@@A": "0x00B0CE38",
  "match/ui/input_controls/Tactical.cpp::_?offsets@?1??FUN_006DA230@Tactical@@QAEHH@Z@4PAUPair_006D9F80@@A": "0x00B0CD98",
- "match/ui/input_controls/display_scroll.cpp::_DAT_007F1078": "0x007F1078"
+ "match/ui/input_controls/display_scroll.cpp::_DAT_007F1078": "0x007F1078",
+ "match/ui/tu056_control_class.cpp::_$S4": "0x0089ED10"
 }
