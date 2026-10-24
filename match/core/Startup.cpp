@@ -191,18 +191,7 @@ public:
     unsigned char unknown_[0x40 - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x0071A450 (decl; reloc) -- TemporalClass default constructor.
-class TemporalClass : public AbstractClass
-{
-public:
-    TemporalClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x50 - sizeof(AbstractClass)];
-};
+#include "../_layout/temporal_class.h"
 
 // CALLEE: GAMEMD 0x0041D300 (decl; reloc) -- AirstrikeClass default constructor.
 class AirstrikeClass : public AbstractClass
@@ -958,18 +947,7 @@ public:
     unsigned char unknown_[0x78 - sizeof(AbstractClass)];
 };
 
-// CALLEE: GAMEMD 0x00420AF0 (decl; reloc) -- AlphaShapeClass default constructor.
-class AlphaShapeClass : public AbstractClass
-{
-public:
-    AlphaShapeClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual int vf_11();
-    virtual int vf_12();
-    unsigned char unknown_[0x40 - sizeof(AbstractClass)];
-};
+#include "../_layout/alpha_shape_class.h"
 
 #include <windows.h>
 #include <objbase.h>
