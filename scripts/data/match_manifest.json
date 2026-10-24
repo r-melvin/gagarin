@@ -98767,5 +98767,32 @@
   "name": "?FUN_006D6AD0@@YGHPAUPoint2D@@@Z",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D6BB0",
+  "sym": "?FUN_006D6BB0@@YGPAVCellClass@@PBUCellStruct@@@Z",
+  "len": "0x151",
+  "name": "?FUN_006D6BB0@@YGPAVCellClass@@PBUCellStruct@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D6D10",
+  "sym": "?FUN_006D6D10@Tactical@@QAEXPBURectangleStruct@@@Z",
+  "len": "0x4d0",
+  "name": "Tactical::FUN_006D6D10",
+  "status": "partial",
+  "pct": 7.8
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D71E0",
+  "sym": "?FUN_006D71E0@Tactical@@QAEXPBURectangleStruct@@@Z",
+  "len": "0x37e",
+  "name": "Tactical::FUN_006D71E0",
+  "status": "partial",
+  "pct": 1.5
  }
 ]

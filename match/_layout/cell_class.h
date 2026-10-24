@@ -45,6 +45,12 @@ class HouseClass;
 class CellClass : public AbstractClass
 {
 public:
+    // Declarations: hidden RectangleStruct output, RET4; cell receiver in ECX.
+    RectangleStruct FUN_0047FB90(); // 0x47FB90
+    RectangleStruct FUN_0047FDE0(); // 0x47FDE0
+    // Declarations: point and clip pointers, RET8.
+    void FUN_0047F6A0(const Point2D* point, const RectangleStruct* clip); // 0x47F6A0
+    void FUN_0047F510(const Point2D* point, const RectangleStruct* clip); // 0x47F510
     bool FUN_0047EC90(Point2D* point, RectangleStruct* clip, bool mode); // RET12, AL result
     ObjectClass* FindTechnoNearestTo(Point2D* offset, bool alt, ObjectClass* exclude); // GAMEMD 0x47C3D0
     ObjectClass* FUN_0047C550(bool alternate); // 0x47C550, returns list object with type24, RET4

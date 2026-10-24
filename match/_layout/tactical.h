@@ -69,6 +69,7 @@ public:
     void FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D97D0(bool force, const RectangleStruct* view, const RectangleStruct* clip);
     Point2D CoordsToScreen(const CoordStruct* coordinate); // 0x6D1F10, hidden result + coordinate, RET8
+    bool FUN_006D2140(const CoordStruct* coordinate, Point2D* point); // 0x6D2140, AL result, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20
     Tactical(const AbstractNoInit& noInit); // 0x6D1E30

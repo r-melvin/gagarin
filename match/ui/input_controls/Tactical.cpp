@@ -2437,6 +2437,192 @@ int __stdcall FUN_006D6AD0(Point2D* location)
     return MapInstance.FUN_00565730(location)->SlopeIndex;
 }
 
+GG_STATIC_ASSERT(offsetof(CellClass, OverlayTypeIndex) == 0x44);
+GG_STATIC_ASSERT(offsetof(CellClass, Flags) == 0x140);
+GG_STATIC_ASSERT(sizeof(RectangleStruct) == 16);
+
+// FUNCTION: GAMEMD 0x6D6BB0
+CellClass* __stdcall FUN_006D6BB0(const CellStruct* original)
+{
+    int index;
+    Cell candidate = Cell(original->X + 2, original->Y);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && (cell->Flags & 0x800))
+            return cell;
+        ++candidate.Y;
+    }
+    candidate = Cell(original->X + 1, original->Y);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && (cell->Flags & 0x800))
+            return cell;
+        ++candidate.Y;
+    }
+    candidate = Cell(original->X, original->Y + 2);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && !(cell->Flags & 0x800))
+            return cell;
+        ++candidate.X;
+    }
+    candidate = Cell(original->X, original->Y + 1);
+    for (index = 0; index < 5; ++index) {
+        CellClass* cell = MapInstance.FUN_005657A0(&candidate);
+        if ((cell->Flags & 0x80) && cell->OverlayTypeIndex != 0 && !(cell->Flags & 0x800))
+            return cell;
+        ++candidate.X;
+    }
+    return 0;
+}
+
+// FUNCTION: GAMEMD 0x6D6D10
+void Tactical::FUN_006D6D10(const RectangleStruct* rectangle)
+{
+    // The input origin is transformed through Tactical's inverse matrix.
+    Vector3D screen((float)(rectangle->X + unknown_B0.unknown_00 - Viewport_00886FA0.X),
+                    (float)(rectangle->Y + unknown_B0.unknown_04 - Viewport_00886FA0.Y),
+                    0.0f);
+    Vector3D transformed;
+    screen = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &screen);
+    CoordStruct world;
+    world.X = (int)screen.X;
+    world.Y = (int)screen.Y;
+    world.Z = 0;
+    if (world.X < 0) world.X = 0;
+    if (world.Y < 0) world.Y = 0;
+    CellClass* origin = MapInstance.FUN_00565730(&world);
+    CellStruct base = origin->MapCoords;
+    base.X -= 4;
+    base.Y -= 2;
+
+    const int lastRow = rectangle->Height / 15 + 21;
+    const int columns = rectangle->Width / 60 + 4;
+    RectangleStruct clippedStorage;
+    RectangleStruct clipped = *FUN_00421B60(&clippedStorage, &Viewport_00886FA0,
+                                             rectangle, 0, 0);
+    int row;
+    for (row = lastRow; row >= 0; --row) {
+        CellStruct coordinate;
+        coordinate.X = base.X + row / 2;
+        coordinate.Y = base.Y + (row + 1) / 2;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                if (cell->OverlayTypeIndex != -1) {
+                    RectangleStruct bounds = cell->FUN_0047FB90();
+                    RectangleStruct intersection;
+                    intersection = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (intersection.Width > 0 && intersection.Height > 0) {
+                        CoordStruct center;
+                        center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                            (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                        CoordStruct copiedCenter = center;
+                        Point2D location = CoordsToScreen(&copiedCenter);
+                        location.X -= unknown_B0.unknown_00 + 30;
+                        location.Y -= unknown_B0.unknown_04;
+                        cell->FUN_0047F6A0(&location, &clipped);
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+
+    for (row = lastRow; row >= 0; --row) {
+        CellStruct coordinate;
+        coordinate.X = base.X + row / 2;
+        coordinate.Y = base.Y + (row + 1) / 2;
+        for (int column = 0; column < columns; ++column) {
+            if (MapInstance.FUN_00568300(&coordinate)) {
+                CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                if (cell->OverlayTypeIndex != -1) {
+                    RectangleStruct bounds = cell->FUN_0047FDE0();
+                    RectangleStruct intersection;
+                    intersection = *FUN_00421B60(&intersection, &clipped, &bounds, 0, 0);
+                    if (intersection.Width > 0 && intersection.Height > 0) {
+                        CoordStruct center;
+                        center.X = (coordinate.X * 256 + 128) / 256 * 256;
+                        center.Y = (coordinate.Y * 256 + 128) / 256 * 256;
+                        center.Z = 0;
+                        Point2D location;
+                        FUN_006D2140(&center, &location);
+                        location.X -= 30;
+                        cell->FUN_0047F510(&location, &clipped);
+                    }
+                }
+            }
+            ++coordinate.X;
+            --coordinate.Y;
+        }
+    }
+}
+
+// Callee 0x421350 takes the supplied rectangle in ECX; source identity held.
+// Declaration: GAMEMD 0x421350, rectangle in ECX, no stack arguments, RET
+void __fastcall FUN_00421350(const RectangleStruct* rectangle);
+
+// The caller supplies an XYWH rectangle (RET 4). Tactical is ECX.
+// FUNCTION: GAMEMD 0x6D71E0
+void Tactical::FUN_006D71E0(const RectangleStruct* rectangle)
+{
+    int screenX = unknown_B0.unknown_00 + rectangle->X - Viewport_00886FA0.X;
+    int screenY = unknown_B0.unknown_04 + rectangle->Y - Viewport_00886FA0.Y;
+    Vector3D screen((float)screenX, (float)screenY, 0.0f);
+    Vector3D transformed;
+    screen = *Matrix3D::MatrixApply(&transformed, &unknown_DE4, &screen);
+    CoordStruct world;
+    world.FUN_0041C230((int)screen.X, (int)screen.Y, 0);
+    if (world.X < 0) world.X = 0;
+    if (world.Y < 0) world.Y = 0;
+    CellClass* origin = MapInstance.FUN_00565730(&world);
+    CellStruct base = origin->MapCoords;
+    base.X -= 2;
+
+    const int rows = rectangle->Height / 15 + 17;
+    const int columns = rectangle->Width / 60 + 4;
+    if (DAT_00B73550 && rows > 0) {
+        for (int row = 0; row < rows; ++row) {
+            CellStruct coordinate;
+            coordinate.X = base.X + row / 2;
+            coordinate.Y = base.Y + (row + 1) / 2;
+            for (int column = 0; column < columns; ++column) {
+                if (MapInstance.FUN_00568300(&coordinate)) {
+                    // Native performs the map lookup even though this caller
+                    // does not use the returned cell until after projection.
+                    CellClass* cell = MapInstance.FUN_005657A0(&coordinate);
+                    CoordStruct center;
+                    center.FUN_0041C230((coordinate.X * 256 + 128) / 256 * 256,
+                                        (coordinate.Y * 256 + 128) / 256 * 256, 0);
+                    CoordStruct copiedCenter = center;
+                    Point2D position = CoordsToScreen(&copiedCenter);
+                    Point2D scroll(unknown_B0.unknown_00, unknown_B0.unknown_04);
+                    position -= scroll;
+                    position.X -= 30;
+                    RectangleStruct tile = {position.X,
+                                            position.Y + Viewport_00886FA0.Y,
+                                            60, 30};
+                    RectangleStruct firstStorage;
+                    RectangleStruct first = *FUN_00421B60(&firstStorage, &tile,
+                                                            rectangle, 0, 0);
+                    RectangleStruct viewportStorage;
+                    RectangleStruct clipped = *FUN_00421B60(&viewportStorage,
+                                          &Viewport_00886FA0, &first, 0, 0);
+                    if (clipped.Width > 0 && clipped.Height > 0) {
+                        Point2D absolute(Viewport_00886FA0.X + position.X,
+                                         Viewport_00886FA0.Y + position.Y);
+                        cell->FUN_004801F0(&absolute, &clipped);
+                    }
+                }
+                ++coordinate.X;
+                --coordinate.Y;
+            }
+        }
+    }
+    FUN_00421350(rectangle);
+}
+
 // FUNCTION: GAMEMD 0x6D8530
 void Tactical::FUN_006D8530(int direction, int distance)
 {

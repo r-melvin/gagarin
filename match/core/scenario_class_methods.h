@@ -64,6 +64,9 @@ struct MapInstanceClass
     CellClass* FUN_005657A0(const CellStruct* cell);
     // Declaration: GAMEMD 0x565730, two-int world position, CellClass* result, RET4.
     CellClass* FUN_00565730(const Point2D* location);
+    // Same native entry565730: callers6D6DCF/6D72A2 pass a12-byte coordinate;
+    // callee consumes only X/Y at0/4, never reads Z or writes the input.
+    CellClass* FUN_00565730(const CoordStruct* location);
     void FUN_005BDA80(int a, int b); // GAMEMD 0x5BDA80, __thiscall
     void FUN_004F4480(); // GAMEMD 0x4F4480, __thiscall
     void FUN_00655B20(); // GAMEMD 0x655B20, __thiscall
