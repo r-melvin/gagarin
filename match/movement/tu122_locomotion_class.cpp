@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra; behavioral names remain hypotheses where noted. | YRpp-cross-check
-// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT
+// Provenance: own-binary-via-Ghidra
+//   Original translation unit TU122 of retail gamemd.exe v1.001; its source-file name is
+//   not attested by the binary, so the file keeps a placeholder name. Code range 0x55a4d0-0x55ad4f,
+//   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
+//   ownership, neighbouring object bounds). Functions are in ascending retail address order.
+//
+//   Provenance note: own-binary-via-Ghidra; behavioral names remain hypotheses where noted.
 // No /GX: none of these bodies unwinds, and the deleting destructor needs no
 // handler; this candidate was compiled with and without /GX.
 //
@@ -10,8 +15,11 @@
 // and evidence are in loco_base.h / loco_interfaces.h and the adjacent candidate report.
 //
 // This candidate defines only the base method bodies listed in its row file.
-// Constructor/destructor expansion, vtables, thunks, and Save are intentionally
-// not owned here. Load has a qualified base body for derived stream loaders.
+// Constructor/destructor expansion, vtables and thunks remain in their shared
+// owners. Load has a qualified base body for derived stream loaders; Save is
+// consolidated below from its prior standalone source.
+//
+//   Class and slot identities follow the native tables recorded in the shared headers.
 
 #include "loco_base.h"
 #include "locomotion_load_support.h"
@@ -29,6 +37,9 @@ extern "C" const IID IID_ILocomotion =
 extern "C" const IID IID_IPiggyback =
     { 0x92FEA800, 0xA184, 0x11D1, { 0xB7, 0x0A, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1 } };
 
+#include "locomotion_class_save_methods.h"
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A710
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 HRESULT __stdcall LocomotionClass::LinkToObject(FootClass* object)
@@ -38,6 +49,7 @@ HRESULT __stdcall LocomotionClass::LinkToObject(FootClass* object)
     return S_OK;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A730
 // migrated from match/movement/locomotion_class_draw_matrix_methods.cpp; integrator retires the old row
 // Identity rotated about Z by the linked object's current facing, reduced to 32
@@ -60,6 +72,7 @@ Matrix3D __stdcall LocomotionClass::DrawMatrix(unsigned int* key)
     return m;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A7D0
 // migrated from match/movement/locomotion_class_shadow_matrix_methods.cpp; integrator retires the old row
 Matrix3D __stdcall LocomotionClass::ShadowMatrix(unsigned int* key)
@@ -79,12 +92,14 @@ Matrix3D __stdcall LocomotionClass::ShadowMatrix(unsigned int* key)
     return m;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A8C0
 LocoPoint2D __stdcall LocomotionClass::ShadowPoint()
 {
     return LocoPoint2D(0, FUN_006D20E0(reinterpret_cast<LocoFootView_0055A730*>(LinkedTo)->Vtbl->At_1C8(LinkedTo)));
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A8F0
 bool __stdcall LocomotionClass::PowerOn()
 {
@@ -92,6 +107,7 @@ bool __stdcall LocomotionClass::PowerOn()
     return IsPowered();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A910
 // The pointer local preserves retail's store-before-vptr-load instruction order.
 bool __stdcall LocomotionClass::PowerOff()
@@ -101,6 +117,7 @@ bool __stdcall LocomotionClass::PowerOff()
     return IsPowered();
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A930
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 bool __stdcall LocomotionClass::IsPowered()
@@ -108,6 +125,7 @@ bool __stdcall LocomotionClass::IsPowered()
     return Powered;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A940
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 bool __stdcall LocomotionClass::IsIonSensitive()
@@ -115,6 +133,7 @@ bool __stdcall LocomotionClass::IsIonSensitive()
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A950
 // migrated from match/movement/locomotion_class_methods.cpp; integrator retires the old row
 ULONG __stdcall LocomotionClass::AddRef()
@@ -123,6 +142,7 @@ ULONG __stdcall LocomotionClass::AddRef()
     return InterlockedIncrement(&RefCount);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A970
 // migrated from match/movement/locomotion_class_methods.cpp; integrator retires the old row
 ULONG __stdcall LocomotionClass::Release()
@@ -134,6 +154,7 @@ ULONG __stdcall LocomotionClass::Release()
     return count;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A9B0
 // Native class implementation replaces the former address-local free-function view.
 // All four interface ids are tested one after another (a later match overwrites
@@ -162,6 +183,39 @@ HRESULT __stdcall LocomotionClass::QueryInterface(REFIID riid, void** ppv)
     return S_OK;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x55AA60  (__stdcall)
+//
+// PARTIAL (67.5%): the instruction multiset agrees, but register assignment
+// and scheduling differ. Retail holds pStm in ESI and this in EDI; this build
+// swaps those registers. The shared done epilogue keeps the early null exit
+// and common cleanup shape. Earlier byte-exact/92.5% comments were not
+// reproduced by the second-look verification and have been removed.
+HRESULT __stdcall SaveView_0055AA60::Save(Gg_IStream* pStm, LONG fClearDirty)
+{
+    HRESULT hr;
+    void* self;
+    if (pStm == 0)
+    {
+        hr = (HRESULT)0x80004003;          // E_POINTER
+        goto done;
+    }
+
+    // Serialise the raw `this` pointer (4 bytes) as the load swizzle key.
+    self = this;
+    hr = pStm->Write(&self, 4, 0);
+    if (hr >= 0)
+    {
+        // Serialise the object body: Size() bytes starting at `this`.
+        hr = pStm->Write(this, this->Size(), 0);
+        if (hr >= 0 && fClearDirty)
+            *((char*)this + 0x11) = 0;     // clear dirty flag
+    }
+done:
+    return hr;
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AAC0
 HRESULT __stdcall LocomotionClass::Load(IStream* pStm)
 {
@@ -187,6 +241,7 @@ HRESULT __stdcall LocomotionClass::Load(IStream* pStm)
     return hr;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AB40
 // migrated from match/movement/locomotion_class_methods.cpp; integrator retires the old row
 HRESULT __stdcall LocomotionClass::GetSizeMax(ULARGE_INTEGER* pcbSize)
@@ -198,23 +253,27 @@ HRESULT __stdcall LocomotionClass::GetSizeMax(ULARGE_INTEGER* pcbSize)
     return S_OK;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AB70
 bool __stdcall LocomotionClass::Push(unsigned long)
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AB80
 bool __stdcall LocomotionClass::Shove(unsigned long)
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AB90
 void __stdcall LocomotionClass::TiltPitchAI()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABA0
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 int __stdcall LocomotionClass::ZAdjust()
@@ -222,6 +281,7 @@ int __stdcall LocomotionClass::ZAdjust()
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABB0
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 int __stdcall LocomotionClass::ZGradient()
@@ -229,66 +289,78 @@ int __stdcall LocomotionClass::ZGradient()
     return 2;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABC0
 int __stdcall LocomotionClass::VisualCharacter(int)
 {
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABD0
 LocoPoint2D __stdcall LocomotionClass::DrawPoint()
 {
     return LocoPoint2D(0, 0);
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABE0
 bool __stdcall LocomotionClass::IsToHaveShadow()
 {
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ABF0
 int __stdcall LocomotionClass::CanEnterCell(int)
 {
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC00
 void __stdcall LocomotionClass::ForceImmediateDestination(LocoCoord)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC10
 void __stdcall LocomotionClass::ForceTrack(int, LocoCoord)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC20
 void __stdcall LocomotionClass::Unlimbo()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC30
 void __stdcall LocomotionClass::DoTurn(unsigned long)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC40
 void __stdcall LocomotionClass::StopMoving()
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC50
 void __stdcall LocomotionClass::MoveTo(LocoCoord)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC60
 bool __stdcall LocomotionClass::Process()
 {
     return true;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AC70
 LocoCoord __stdcall LocomotionClass::Destination()
 {
@@ -296,6 +368,7 @@ LocoCoord __stdcall LocomotionClass::Destination()
     return coord;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ACA0
 LocoCoord __stdcall LocomotionClass::HeadToCoord()
 {
@@ -303,23 +376,27 @@ LocoCoord __stdcall LocomotionClass::HeadToCoord()
     return coord;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ACD0
 bool __stdcall LocomotionClass::IsMoving()
 {
     return false;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ACE0
 void __stdcall LocomotionClass::ForceNewSlope(int)
 {
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55ACF0
 int __stdcall LocomotionClass::DrawingCode()
 {
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AD00
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row
 int __stdcall LocomotionClass::CanFire()
@@ -327,6 +404,7 @@ int __stdcall LocomotionClass::CanFire()
     return 0;
 }
 
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55AD10
 int __stdcall LocomotionClass::ApparentSpeed()
 {

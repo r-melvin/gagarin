@@ -25578,7 +25578,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A730",
   "sym": "?DrawMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x9f",
@@ -25587,115 +25587,115 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A710",
   "sym": "?LinkToObject@LocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x13",
   "name": "LinkToObject",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A910",
   "sym": "?PowerOff@LocomotionClass@@UAG_NXZ",
   "len": "0x11",
   "name": "PowerOff",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A930",
   "sym": "?IsPowered@LocomotionClass@@UAG_NXZ",
   "len": "0xa",
   "name": "IsPowered",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A940",
   "sym": "?IsIonSensitive@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
   "name": "IsIonSensitive",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABA0",
   "sym": "?ZAdjust@LocomotionClass@@UAGHXZ",
   "len": "0x5",
   "name": "ZAdjust",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABB0",
   "sym": "?ZGradient@LocomotionClass@@UAGHXZ",
   "len": "0x8",
   "name": "ZGradient",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AD00",
   "sym": "?CanFire@LocomotionClass@@UAGHXZ",
   "len": "0x5",
   "name": "CanFire",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AAC0",
   "sym": "?Load@LocomotionClass@@UAGJPAUIStream@@@Z",
   "len": "0x7a",
   "name": "LocomotionClass::Load",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A950",
   "sym": "?AddRef@LocomotionClass@@UAGKXZ",
   "len": "0x1e",
   "name": "AddRef",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A970",
   "sym": "?Release@LocomotionClass@@UAGKXZ",
   "len": "0x37",
   "name": "Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AB40",
   "sym": "?GetSizeMax@LocomotionClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
   "len": "0x2d",
   "name": "GetSizeMax",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A9B0",
   "sym": "?QueryInterface@LocomotionClass@@UAGJABU_GUID@@PAPAX@Z",
   "len": "0xa4",
   "name": "LocomotionClass::QueryInterface",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/movement/locomotion_class_save_methods.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AA60",
   "sym": "?Save@SaveView_0055AA60@@UAGJPAUGg_IStream@@J@Z",
   "len": "0x57",
@@ -25704,7 +25704,7 @@
   "pct": 67.5
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A7D0",
   "sym": "?ShadowMatrix@LocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0xf0",
@@ -48004,7 +48004,7 @@
   "pct": 100
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A8C0",
   "sym": "?ShadowPoint@LocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x28",
@@ -48013,7 +48013,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55A8F0",
   "sym": "?PowerOn@LocomotionClass@@UAG_NXZ",
   "len": "0x11",
@@ -48022,7 +48022,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AB70",
   "sym": "?Push@LocomotionClass@@UAG_NK@Z",
   "len": "0x5",
@@ -48031,7 +48031,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AB80",
   "sym": "?Shove@LocomotionClass@@UAG_NK@Z",
   "len": "0x5",
@@ -48040,7 +48040,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AB90",
   "sym": "?TiltPitchAI@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -48049,7 +48049,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABC0",
   "sym": "?VisualCharacter@LocomotionClass@@UAGHH@Z",
   "len": "0x5",
@@ -48058,7 +48058,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABD0",
   "sym": "?DrawPoint@LocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x10",
@@ -48067,7 +48067,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABE0",
   "sym": "?IsToHaveShadow@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -48076,7 +48076,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ABF0",
   "sym": "?CanEnterCell@LocomotionClass@@UAGHH@Z",
   "len": "0x5",
@@ -48085,7 +48085,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC00",
   "sym": "?ForceImmediateDestination@LocomotionClass@@UAGXULocoCoord@@@Z",
   "len": "0x3",
@@ -48094,7 +48094,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC10",
   "sym": "?ForceTrack@LocomotionClass@@UAGXHULocoCoord@@@Z",
   "len": "0x3",
@@ -48103,7 +48103,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC20",
   "sym": "?Unlimbo@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -48112,7 +48112,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC30",
   "sym": "?DoTurn@LocomotionClass@@UAGXK@Z",
   "len": "0x3",
@@ -48121,7 +48121,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC40",
   "sym": "?StopMoving@LocomotionClass@@UAGXXZ",
   "len": "0x3",
@@ -48130,7 +48130,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC50",
   "sym": "?MoveTo@LocomotionClass@@UAGXULocoCoord@@@Z",
   "len": "0x3",
@@ -48139,7 +48139,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC60",
   "sym": "?Process@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -48148,7 +48148,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AC70",
   "sym": "?Destination@LocomotionClass@@UAG?AULocoCoord@@XZ",
   "len": "0x27",
@@ -48157,7 +48157,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ACA0",
   "sym": "?HeadToCoord@LocomotionClass@@UAG?AULocoCoord@@XZ",
   "len": "0x2c",
@@ -48166,7 +48166,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ACD0",
   "sym": "?IsMoving@LocomotionClass@@UAG_NXZ",
   "len": "0x5",
@@ -48175,7 +48175,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ACE0",
   "sym": "?ForceNewSlope@LocomotionClass@@UAGXH@Z",
   "len": "0x3",
@@ -48184,7 +48184,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55ACF0",
   "sym": "?DrawingCode@LocomotionClass@@UAGHXZ",
   "len": "0x5",
@@ -48193,7 +48193,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/movement/loco_base.cpp",
+  "tu": "match/movement/tu122_locomotion_class.cpp",
   "addr": "0x55AD10",
   "sym": "?ApparentSpeed@LocomotionClass@@UAGHXZ",
   "len": "0x12",
