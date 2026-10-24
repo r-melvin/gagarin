@@ -15,20 +15,7 @@
 #include "../_rt/gg_static_assert.h"
 #include "storage_class.h"   // StorageClass (0x10), GetTotalAmount @0x6C9650
 
-// ---------------------------------------------------------------------------
-// BaseNodeClass  — one queued base-build entry.
-// Confirmed from 0x42F380: `MOV ECX,[EAX+0xc]; INC ECX; MOV [EAX+0xc],ECX`
-// increments the dword at +0xC. YRpp names this member `Attempts`
-// (int BuildingTypeIndex@0; CellStruct MapCoords@4; bool Placed@8; int
-//  Attempts@0xC). Only the touched member is modelled (full layout is P2).
-// ---------------------------------------------------------------------------
-struct BaseNodeClass
-{
-    char _pad0[0xC];     // BuildingTypeIndex, MapCoords, Placed (+0x00..+0x0B)
-    int  Attempts;       // +0x0C
-};
-
-GG_STATIC_ASSERT(offsetof(BaseNodeClass, Attempts) == 0xC);
+#include "../_layout/base_node_class.h"
 
 // ---------------------------------------------------------------------------
 // BaseClass — holds a player's AI base. FailedToPlaceNode is a __thiscall

@@ -608,6 +608,7 @@
  "??_7?$VectorClass@V?$TRect@H@@@@6B@": "0x007ED970",
  "??_7?$VectorClass@V?$rc_ptr@VConflict@WorldDominationTour@@@@@@6B@": "0x007F6F7C",
  "??_7?$VectorClass@V?$rc_ptr@VTerritory@WorldDominationTour@@@@@@6B@": "0x007F7184",
+ "??_7?$VectorClass@VBaseNodeClass@@@@6B@": "0x007E38F0",
  "??_7?$VectorClass@VCell@@@@6B@": "0x007E38D0",
  "??_7?$VectorClass@VCentroid@WorldDominationTour@@@@6B@": "0x007F71E0",
  "??_7?$VectorClass@VHSVClass@@@@6B@": "0x007EF7F0",

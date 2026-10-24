@@ -3380,20 +3380,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F970",
-  "sym": "?FUN_0042F970@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VBaseNodeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042F970",
+  "name": "DynamicVectorClass<BaseNodeClass>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FB50",
-  "sym": "?FUN_0042FB50@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@VBaseNodeClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042FB50",
+  "name": "VectorClass<BaseNodeClass>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3857,11 +3857,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F3A0",
-  "sym": "?FUN_0042F3A0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@VBaseNodeClass@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0042F3A0",
+  "name": "DynamicVectorClass<BaseNodeClass>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -3884,11 +3884,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FAB0",
-  "sym": "?FUN_0042FAB0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@VBaseNodeClass@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0042FAB0",
+  "name": "VectorClass<BaseNodeClass>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -22995,11 +22995,11 @@
  {
   "tu": "match/economy/house_class_storage.cpp",
   "addr": "0x42F380",
-  "sym": "?FailedToPlaceNode@BaseClass@@QAEHPAUBaseNodeClass@@@Z",
+  "sym": "?FailedToPlaceNode@BaseClass@@QAEHPAVBaseNodeClass@@@Z",
   "len": "0x17",
   "name": "BaseClass::FailedToPlaceNode",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/house_class_storage.cpp",
@@ -74897,7 +74897,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F3D0",
-  "sym": "?Slot5@?$DynamicVectorClass@UBaseNodeClass@@@@UBEHPAUBaseNodeClass@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VBaseNodeClass@@@@UBEHPAVBaseNodeClass@@@Z",
   "len": "0x1b",
   "name": "DynamicVectorClass<BaseNodeClass>::Slot5",
   "status": "matched",
@@ -74906,7 +74906,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F3F0",
-  "sym": "?Slot6@?$VectorClass@UBaseNodeClass@@@@UBE?AUBaseNodeClass@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VBaseNodeClass@@@@UBE?AVBaseNodeClass@@H@Z",
   "len": "0x29",
   "name": "VectorClass<BaseNodeClass>::Slot6",
   "status": "matched",
@@ -74933,7 +74933,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F490",
-  "sym": "??8?$VectorClass@UBaseNodeClass@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VBaseNodeClass@@@@UBE_NABV0@@Z",
   "len": "0x5c",
   "name": "VectorClass<BaseNodeClass>::operator==",
   "status": "matched",
@@ -74942,7 +74942,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F4F0",
-  "sym": "?SetCapacity@?$DynamicVectorClass@UBaseNodeClass@@@@UAE_NHPAUBaseNodeClass@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VBaseNodeClass@@@@UAE_NHPAVBaseNodeClass@@@Z",
   "len": "0xeb",
   "name": "DynamicVectorClass<BaseNodeClass>::SetCapacity",
   "status": "matched",
@@ -74951,7 +74951,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F5E0",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@UBaseNodeClass@@@@UBEHABUBaseNodeClass@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VBaseNodeClass@@@@UBEHABVBaseNodeClass@@@Z",
   "len": "0x3e",
   "name": "DynamicVectorClass<BaseNodeClass>::FindItemIndex",
   "status": "matched",
@@ -75014,7 +75014,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F9C0",
-  "sym": "?SetCapacity@?$VectorClass@UBaseNodeClass@@@@UAE_NHPAUBaseNodeClass@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VBaseNodeClass@@@@UAE_NHPAVBaseNodeClass@@@Z",
   "len": "0xe2",
   "name": "VectorClass<BaseNodeClass>::SetCapacity",
   "status": "matched",
@@ -75023,7 +75023,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FAE0",
-  "sym": "?FindItemIndex@?$VectorClass@UBaseNodeClass@@@@UBEHABUBaseNodeClass@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VBaseNodeClass@@@@UBEHABVBaseNodeClass@@@Z",
   "len": "0x4d",
   "name": "VectorClass<BaseNodeClass>::FindItemIndex",
   "status": "matched",
@@ -75032,7 +75032,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FB30",
-  "sym": "?Slot5@?$VectorClass@UBaseNodeClass@@@@UBEHPAUBaseNodeClass@@@Z",
+  "sym": "?Slot5@?$VectorClass@VBaseNodeClass@@@@UBEHPAVBaseNodeClass@@@Z",
   "len": "0x1b",
   "name": "VectorClass<BaseNodeClass>::Slot5",
   "status": "matched",
@@ -92520,13 +92520,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/Scenario.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x68C2B0",
   "sym": "??4?$VectorClass@VCell@@@@QAEAAV0@ABV0@@Z",
   "len": "0x7c",
   "name": "??4?$VectorClass@VCell@@@@QAEAAV0@ABV0@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/Scenario.cpp",
@@ -92616,7 +92616,7 @@
   "len": "0x32D",
   "name": "?FUN_00688380@@YI?AV?$DynamicVectorClass@VCell@@@@_N@Z",
   "status": "partial",
-  "pct": 6.8
+  "pct": 7.9
  },
  {
   "tu": "match/ui/input_controls/Sidebar.cpp",

@@ -61,14 +61,14 @@ extern "C" const CLSID CLSID_BuildingType =
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
-struct Cell { short X; short Y; Cell() {} bool operator==(const Cell& o) const { return X==o.X && Y==o.Y; } bool operator!=(const Cell& o) const { return !(*this==o); } };
+#include "../_layout/cell.h"
 
 // VTABLE: GAMEMD 0x007E38D0 -- VectorClass<Cell>.
 // VTABLE: GAMEMD 0x007E3890 -- DynamicVectorClass<Cell>.
 template class VectorClass<Cell>;
 template class DynamicVectorClass<Cell>;
 
- struct BaseNodeClass { int unknown_00; Cell unknown_04; unsigned char unknown_08; int unknown_0C; BaseNodeClass() {} BaseNodeClass(const BaseNodeClass& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C) {} bool operator==(const BaseNodeClass& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04; } bool operator!=(const BaseNodeClass& o) const { return !(*this==o); } };
+#include "../_layout/base_node_class.h"
 
 // VTABLE: GAMEMD 0x007E38F0 -- VectorClass<BaseNodeClass>.
 // VTABLE: GAMEMD 0x007E38B0 -- DynamicVectorClass<BaseNodeClass>.

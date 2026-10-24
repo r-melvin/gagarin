@@ -10,6 +10,9 @@
 
 #include "../_layout/cell.h"
 
+// FUNCTION: GAMEMD 0x0042F3A0
+// DynamicVectorClass<BaseNodeClass>::Clear
+
 // FUNCTION: GAMEMD 0x0042F3D0
 // DynamicVectorClass<BaseNodeClass>::Slot5
 
@@ -55,8 +58,14 @@
 // FUNCTION: GAMEMD 0x0042F930
 // DynamicVectorClass<Cell>::FindItemIndex
 
+// SYNTHETIC: GAMEMD 0x0042F970
+// DynamicVectorClass<BaseNodeClass>::scalar deleting destructor
+
 // FUNCTION: GAMEMD 0x0042F9C0
 // VectorClass<BaseNodeClass>::SetCapacity
+
+// FUNCTION: GAMEMD 0x0042FAB0
+// VectorClass<BaseNodeClass>::Clear
 
 // FUNCTION: GAMEMD 0x0042FAE0
 // VectorClass<BaseNodeClass>::FindItemIndex
@@ -64,18 +73,46 @@
 // FUNCTION: GAMEMD 0x0042FB30
 // VectorClass<BaseNodeClass>::Slot5
 
+// SYNTHETIC: GAMEMD 0x0042FB50
+// VectorClass<BaseNodeClass>::scalar deleting destructor
+
 // SYNTHETIC: GAMEMD 0x0042FBA0
 // VectorClass<Cell>::scalar deleting destructor
 
 // SYNTHETIC: GAMEMD 0x0042FBF0
 // DynamicVectorClass<Cell>::scalar deleting destructor
 
+// FUNCTION: GAMEMD 0x0068C2B0
+// VectorClass<Cell>::operator=
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // VTABLE: GAMEMD 0x007E38D0 -- VectorClass<Cell>.
 // VTABLE: GAMEMD 0x007E3890 -- DynamicVectorClass<Cell>.
 template class VectorClass<Cell>;
 template class DynamicVectorClass<Cell>;
 
- struct BaseNodeClass { int unknown_00; Cell unknown_04; unsigned char unknown_08; int unknown_0C; BaseNodeClass() {} BaseNodeClass(const BaseNodeClass& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08), unknown_0C(o.unknown_0C) {} bool operator==(const BaseNodeClass& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04; } bool operator!=(const BaseNodeClass& o) const { return !(*this==o); } };
+#include "../_layout/base_node_class.h"
 // VTABLE: GAMEMD 0x007E38F0 -- VectorClass<BaseNodeClass>.
 // VTABLE: GAMEMD 0x007E38B0 -- DynamicVectorClass<BaseNodeClass>.
 template class VectorClass<BaseNodeClass>;
@@ -92,6 +129,10 @@ template class DynamicVectorClass<TRect<int> >;
 
 #include "../_layout/dirty_area.h"
 template class DynamicVectorClass<DirtyAreaStruct>;
+
+
+
+
 
 
 

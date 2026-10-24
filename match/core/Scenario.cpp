@@ -2653,27 +2653,6 @@ int Obj_0068C030::FUN_0068C030(int index) const
     return -1;
 }
 
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x68c2b0
-// VectorClass<Cell>::operator=
-template<> VectorClass<Cell>& VectorClass<Cell>::operator=(const VectorClass<Cell>& other)
-{
-    if (this != &other) {
-        Clear();
-        Capacity = other.Capacity;
-        if (Capacity) {
-            Items = new Cell[Capacity];
-            if (Items) {
-                IsAllocated = true;
-                for (int i = 0; i < Capacity; ++i) Items[i] = other.Items[i];
-            }
-        } else {
-            Items = 0;
-            IsAllocated = false;
-        }
-    }
-    return *this;
-}
 
 // LIBRARY: GAMEMD 0x7D5408
 // ?FUN_007D5408@@YAPADPBD@Z
