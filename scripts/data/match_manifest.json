@@ -83941,11 +83941,11 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6DA350",
-  "sym": "_$E4",
+  "sym": "_$E5",
   "len": "0x1",
   "name": "Tactical direction-check array cleanup",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -98623,5 +98623,23 @@
   "name": "Tactical::FUN_006D9920",
   "status": "partial",
   "pct": 36.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D3AC0",
+  "sym": "?FUN_006D3AC0@Tactical@@QAEXPBURectangleStruct@@0_N@Z",
+  "len": "0x246",
+  "name": "Tactical::FUN_006D3AC0",
+  "status": "partial",
+  "pct": 1.8
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6D97D0",
+  "sym": "?FUN_006D97D0@Tactical@@QAEX_NPBURectangleStruct@@1@Z",
+  "len": "0x13f",
+  "name": "Tactical::FUN_006D97D0",
+  "status": "partial",
+  "pct": 38.5
  }
 ]

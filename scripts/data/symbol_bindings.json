@@ -7411,6 +7411,7 @@
  "match/ui/game_controls_dialog.cpp::_DAT_007E9370": "0x007E9370",
  "match/ui/input_controls/Tactical.cpp::_?$S1@?1??FUN_006D8530@Tactical@@QAEXHH@Z@4EA": "0x00B0CDE0",
  "match/ui/input_controls/Tactical.cpp::_?$S3@?1??FUN_006DA230@Tactical@@QAEHH@Z@4EA": "0x00B0CE00",
+ "match/ui/input_controls/Tactical.cpp::_?$S4@?1??FUN_006DA230@Tactical@@QAEHH@Z@4EA": "0x00B0CE00",
  "match/ui/input_controls/Tactical.cpp::_?offsets@?1??FUN_006D8530@Tactical@@QAEXHH@Z@4PAUPair_006D9F80@@A": "0x00B0CE38",
  "match/ui/input_controls/Tactical.cpp::_?offsets@?1??FUN_006DA230@Tactical@@QAEHH@Z@4PAUPair_006D9F80@@A": "0x00B0CD98",
  "match/ui/input_controls/display_scroll.cpp::_DAT_007F1078": "0x007F1078"

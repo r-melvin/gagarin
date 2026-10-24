@@ -52,6 +52,9 @@ public:
     // Declarations: native6D3870 and6D9920 each RET12.
     void FUN_006D3870(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
     void FUN_006D9920(bool force, const RectangleStruct* view, const RectangleStruct* clip);
+    // Declarations: native6D3AC0 and6D97D0 each RET12.
+    void FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct* second, bool fullScreen);
+    void FUN_006D97D0(bool force, const RectangleStruct* view, const RectangleStruct* clip);
     Point2D CoordsToScreen(const CoordStruct* coordinate); // 0x6D1F10, hidden result + coordinate, RET8
     static int AdjustForZ(int Height); // 0x6D20E0; ECX height under /Gr
     Tactical(); // 0x6D1C20

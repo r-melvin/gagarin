@@ -1279,6 +1279,54 @@ void Tactical::FUN_006D3870(const RectangleStruct* first, const RectangleStruct*
         FUN_006D9920(true, second, second);
 }
 
+// FUNCTION: GAMEMD 0x6D3AC0
+void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct* second,
+                          bool fullScreen)
+{
+    for (int index = 0; index < unknown_E0; ++index) {
+        CellClass* cell = unknown_E4[index];
+        int x = (cell->MapCoords.X * 256 + 128) / 256 * 256;
+        int y = (cell->MapCoords.Y * 256 + 128) / 256 * 256;
+        CoordStruct coordinate;
+        coordinate.FUN_0041C230(x, y, 0);
+        CoordStruct copiedCoordinate = coordinate;
+        Point2D projected = CoordsToScreen(&copiedCoordinate);
+        RectangleStruct view;
+        view.X = projected.X - unknown_B0.unknown_00 - 30;
+        view.Y = projected.Y - unknown_B0.unknown_04 + Viewport_00886FA0.Y;
+        view.Width = 60;
+        view.Height = 30;
+        RectangleStruct clip = view;
+        FUN_006D97D0(true, &view, &clip);
+    }
+    // Native captures count once, then reloads the array base after callbacks.
+    int dirtyCount = DAT_00B0CE78.Count;
+    if (dirtyCount != 0) {
+        for (int dirtyIndex = dirtyCount - 1; dirtyIndex >= 0; --dirtyIndex) {
+            RectangleStruct view;
+            view.X = DAT_00B0CE78.Items[dirtyIndex].Rect.X;
+            view.Y = DAT_00B0CE78.Items[dirtyIndex].Rect.Y + Viewport_00886FA0.Y;
+            view.Width = DAT_00B0CE78.Items[dirtyIndex].Rect.Width;
+            view.Height = DAT_00B0CE78.Items[dirtyIndex].Rect.Height;
+            RectangleStruct temporary;
+            view = *FUN_00421B60(&temporary, &Viewport_00886FA0, &view, 0, 0);
+            if (view.Width > 0 && view.Height > 0) {
+                RectangleStruct clip = view;
+                FUN_006D97D0(true, &view, &clip);
+            }
+        }
+    }
+    if (fullScreen) {
+        FUN_006D97D0(true, &Viewport_00886FA0, &Viewport_00886FA0);
+        return;
+    }
+    if (first->Width > 0 && first->Height > 0)
+        FUN_006D97D0(true, first, first);
+    if (second->Width > 0 && second->Height > 0)
+        FUN_006D97D0(true, second, second);
+}
+
+
 // FUNCTION: GAMEMD 0x6D4DB0
 void Tactical::FUN_006D4DB0(const unsigned short* text, int mode)
 {
@@ -1537,6 +1585,39 @@ void FUN_006D8C60(ObjectClass* object, int argument)
 
 #include "../../_layout/building_class.h"
 #include "../../_layout/layer_class.h"
+
+#include "../../map/terrain_objects/terrain_class.h"
+
+// FUNCTION: GAMEMD 0x6D97D0
+void Tactical::FUN_006D97D0(bool force, const RectangleStruct* view, const RectangleStruct* clip)
+{
+    RectangleStruct temporary;
+    RectangleStruct bounds = *FUN_00421B60(&temporary, view, clip, 0, 0);
+    for (int index = DisplayLayers[2].Count - 1; index >= 0; --index) {
+        ObjectClass* object = DisplayLayers[2].Items[index];
+        if (object->vf_11() != 0x24 || object->vf_17())
+            continue;
+        // Terrain table7F522C slot11 returns24; RTTI ObjectClass base is at0
+        // (COL80C3E0, base descriptor7FB3D0). Existing TerrainClass retains
+        // its legacy C++ base; this is a proven layout boundary for its fields.
+        TerrainClass* terrain = reinterpret_cast<TerrainClass*>(object);
+        if (terrain->Type->IsAnimated || terrain->TimeToDie)
+            continue;
+        int originX = Viewport_00886FA0.X;
+        int originY = Viewport_00886FA0.Y;
+        RectangleStruct objectBounds = object->vf_75();
+        int left = objectBounds.X + originX;
+        int top = objectBounds.Y + originY;
+        if (left >= bounds.X + bounds.Width ||
+            top >= bounds.Y + bounds.Height ||
+            left + objectBounds.Width <= bounds.X ||
+            top + objectBounds.Height <= bounds.Y)
+            continue;
+        RectangleStruct originalClip = *clip;
+        object->vf_65(&originalClip, force, 0);
+        object->NeedsRedraw = false;
+    }
+}
 
 // FUNCTION: GAMEMD 0x6D9920
 void Tactical::FUN_006D9920(bool force, const RectangleStruct* view, const RectangleStruct* clip)
