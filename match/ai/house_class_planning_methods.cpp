@@ -22,7 +22,7 @@ bool HouseClass::GetPlanningWaypointProperties(WaypointClass* wpt, int* idxPath,
         if (this->PlanningPaths[i] == 0) {
             this->PlanningPaths[i] = new WaypointPathClass(i);
         }
-        for (int j = 0; j < this->PlanningPaths[i]->WaypointCount; j++) {
+        for (int j = 0; j < this->PlanningPaths[i]->Waypoints.Count; j++) {
             if (this->PlanningPaths[i]->GetWaypoint(j) == wpt) {
                 *idxPath = i;
                 *idxWP = (unsigned char)j;

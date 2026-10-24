@@ -16,54 +16,33 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_class.h"
 
-// WaypointClass — a single path node. The array stride is 0xC (the retail
-// element address math is `Items + idx*3*4`, i.e. sizeof == 12). Two signed
-// fixed-point cell coordinates + a trailing dword. Only the size is load-bearing
-// for the matched methods; the fields are modelled for faithfulness.
-struct WaypointClass
-{
-    int          X;        // +0x00
-    int          Y;        // +0x04
-    unsigned int unknown;  // +0x08
-};
-GG_STATIC_ASSERT(sizeof(WaypointClass) == 0xC);
-
-// DynamicVectorClass<WaypointClass> as embedded at WaypointPathClass+0x28.
-// Modelled with REAL virtuals so GetWaypointAfter's vtable dispatch
-// `call [vptr+0x14]` (the 6th virtual, GetItemIndex) reproduces byte-for-byte.
-// Virtual slot order matches retail VectorClass:
-//   0x00 ~dtor, 0x04 operator==, 0x08 SetCapacity, 0x0C Clear,
-//   0x10 FindItemIndex, 0x14 GetItemIndex.
-struct WaypointVector
-{
-    virtual ~WaypointVector();                                     // +0x00
-    virtual bool operator==(const WaypointVector& other) const;    // +0x04
-    virtual bool SetCapacity(int capacity, WaypointClass* pMem);   // +0x08
-    virtual void Clear();                                          // +0x0C
-    virtual int  FindItemIndex(const WaypointClass& item) const;   // +0x10
-    virtual int  GetItemIndex(const WaypointClass* pItem) const;   // +0x14
-
-    void* Items;             // +0x04  (T** base; vptr occupies +0x00)
-    int   Capacity;          // +0x08
-    int   IsAllocated;       // +0x0C  (bool + 3 pad; one 4-byte cell)
-    int   Count;             // +0x10
-    int   CapacityIncrement; // +0x14
-};
-GG_STATIC_ASSERT(offsetof(WaypointVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(WaypointVector, Count) == 0x10);
-GG_STATIC_ASSERT(sizeof(WaypointVector)          == 0x18);
+#include "../_layout/waypoint_class.h"
+#include "../core/vector_class.h"
 
 // WaypointPathClass : AbstractClass (COM base 0x00..0x23).
 class WaypointPathClass : public AbstractClass
 {
 public:
+    explicit WaypointPathClass(int index) throw(); // GAMEMD 0x763810, RET4
+    // Native primary table7F6E70 overrides; declarations only.
+    virtual HRESULT __stdcall GetClassID(CLSID* id); // slot3,763C30
+    virtual HRESULT __stdcall Load(IStream* stream); // slot5,763C70
+    virtual HRESULT __stdcall Save(IStream* stream, BOOL clearDirty); // slot6,763D90
+    virtual ~WaypointPathClass(); // slot8 deleting target763E20
+    virtual int vf_11(); // slot11,763E10
+    virtual int vf_12(); // slot12,763E00
+    virtual void vf_13(Obj_004A1D30* crc); // slot13,763C00
     WaypointClass* GetWaypoint(int idx) const;                     // 0x763980
     WaypointClass* GetWaypointAfter(WaypointClass* pWaypoint) const;// 0x763BA0
 
     int            CurrentWaypointIndex; // +0x24
-    WaypointVector Waypoints;            // +0x28
+    DynamicVectorClass<WaypointClass> Waypoints;            // +0x28
 };
 GG_STATIC_ASSERT(offsetof(WaypointPathClass, CurrentWaypointIndex) == 0x24);
 GG_STATIC_ASSERT(offsetof(WaypointPathClass, Waypoints)            == 0x28);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<WaypointClass>, Items) == 4);
+GG_STATIC_ASSERT(offsetof(DynamicVectorClass<WaypointClass>, Count) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<WaypointClass>) == 0x18);
+GG_STATIC_ASSERT(sizeof(WaypointPathClass) == 0x40);
 
 #endif  // GG_MATCH_MOVEMENT_WAYPOINT_PATH_CLASS_H

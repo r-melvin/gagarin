@@ -208,15 +208,9 @@ struct DisplayCmdVec3
 };
 GG_STATIC_ASSERT(sizeof(DisplayCmdVec3) == 0xC);
 
-// The object that owns the palette the highlight animation rewrites.
-struct DisplayCmdPalOwner
-{
-    char unknown_000[0x174];          // +0x000
-    unsigned short* Palette;          // +0x174
-};
-GG_STATIC_ASSERT(offsetof(DisplayCmdPalOwner, Palette) == 0x174);
-// GLOBAL: GAMEMD 0x87F6C8
-extern DisplayCmdPalOwner* DisplayCmdPalOwner_0087F6C8;
+#include "../../_layout/color_convert.h"
+// GLOBAL: GAMEMD 0x87F6C8 -- shared palette lookup prefix, WORD table writes in4AEA20.
+extern ColorConvert* DAT_0087F6C8;
 
 // HouseClass as the click handler sees it (pointer global 0xA83D4C).
 struct DisplayCmdHouse

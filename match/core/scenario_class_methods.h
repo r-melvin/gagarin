@@ -29,6 +29,7 @@
 class CCINIClass;
 class HouseClass;
 
+class WaypointClass;
 struct MapInstanceClass
 {
     // Declaration: GAMEMD 0x4A94F0, hidden CellStruct result + foundation, RET8
@@ -49,6 +50,8 @@ struct MapInstanceClass
     void FUN_006A7590(int index);
     // FUNCTION: GAMEMD 0x578080 (decl; reloc) -- the height at a coordinate.
     int FUN_00578080(CoordStruct* where);
+    // Declaration: GAMEMD 0x586360, reads original waypoint XYZ, AL result, RET4.
+    bool FUN_00586360(const WaypointClass* where);
     // FUNCTION: GAMEMD 0x57B790 (decl; reloc)
     void FUN_0057B790(CellStruct* cell);
     // FUNCTION: GAMEMD 0x56BEC0 (decl; reloc)

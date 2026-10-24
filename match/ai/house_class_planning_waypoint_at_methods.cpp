@@ -25,7 +25,7 @@ WaypointClass* HouseClass::GetPlanningWaypointAt(const CellStruct* cell)
         if (this->PlanningPaths[i] == 0) {
             this->PlanningPaths[i] = new WaypointPathClass(i);
         }
-        for (int j = 0; j < this->PlanningPaths[i]->WaypointCount; j++) {
+        for (int j = 0; j < this->PlanningPaths[i]->Waypoints.Count; j++) {
             WaypointClass* wp = this->PlanningPaths[i]->GetWaypoint(j);
             CellStruct c;
             c.X = (short)(wp->X / 256);

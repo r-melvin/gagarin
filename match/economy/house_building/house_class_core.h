@@ -11,6 +11,8 @@
 #ifndef GG_MATCH_ECONOMY_HOUSE_BUILDING_HOUSE_CLASS_CORE_H
 #define GG_MATCH_ECONOMY_HOUSE_BUILDING_HOUSE_CLASS_CORE_H
 
+class WaypointPathClass;
+class WaypointClass;
 #include <string.h>
 #include "house_views.h"
 #include "house_building_views.h"
@@ -678,7 +680,7 @@ public:
     bool          LostConnection;          // +0x208 ctor @0x004F5759
     unsigned char align_209[3];            // +0x209
     int    SelectedPathIndex;              // +0x20C ctor @0x004F575F
-    void*  PlanningPaths[12];              // +0x210 .. 0x23F ctor LEA EDI @0x004F643B (12 dwords = 0x30)
+    WaypointPathClass* PlanningPaths[12];              // +0x210 .. 0x23F ctor LEA EDI @0x004F643B (12 dwords = 0x30)
     signed char   Visionary;               // +0x240 ctor @0x004F5765
     bool          MapIsClear;              // +0x241 ctor @0x004F576B
     bool          IsTiberiumShort;         // +0x242 ctor @0x004F5771

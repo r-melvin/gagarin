@@ -229,20 +229,20 @@
  {
   "tu": "match/ai/house_class_planning_methods.cpp",
   "addr": "0x502460",
-  "sym": "?GetPlanningWaypointProperties@HouseClass@@QAE_NPAUWaypointClass@@PAHPAE@Z",
+  "sym": "?GetPlanningWaypointProperties@HouseClass@@QAE_NPAVWaypointClass@@PAHPAE@Z",
   "len": "0x86",
   "name": "HouseClass::GetPlanningWaypointProperties",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/house_class_planning_waypoint_at_methods.cpp",
   "addr": "0x5023B0",
-  "sym": "?GetPlanningWaypointAt@HouseClass@@QAEPAUWaypointClass@@PBUCellStruct@@@Z",
+  "sym": "?GetPlanningWaypointAt@HouseClass@@QAEPAVWaypointClass@@PBUCellStruct@@@Z",
   "len": "0xa3",
   "name": "HouseClass::GetPlanningWaypointAt",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/house_class_psi_warn_methods.cpp",
@@ -26121,20 +26121,20 @@
  {
   "tu": "match/movement/waypoint_path_class_methods.cpp",
   "addr": "0x763980",
-  "sym": "?GetWaypoint@WaypointPathClass@@QBEPAUWaypointClass@@H@Z",
+  "sym": "?GetWaypoint@WaypointPathClass@@QBEPAVWaypointClass@@H@Z",
   "len": "0x1e",
   "name": "GetWaypoint",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/waypoint_path_class_methods.cpp",
   "addr": "0x763BA0",
-  "sym": "?GetWaypointAfter@WaypointPathClass@@QBEPAUWaypointClass@@PAU2@@Z",
+  "sym": "?GetWaypointAfter@WaypointPathClass@@QBEPAVWaypointClass@@PAV2@@Z",
   "len": "0x3d",
   "name": "GetWaypointAfter",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/waypoint_queue_accessors.cpp",
@@ -79099,7 +79099,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x763F30",
-  "sym": "?Slot5@?$DynamicVectorClass@UWaypointClass@@@@UBEHPAUWaypointClass@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VWaypointClass@@@@UBEHPAVWaypointClass@@@Z",
   "len": "0x24",
   "name": "DynamicVectorClass<WaypointClass>::Slot5",
   "status": "matched",
@@ -79108,7 +79108,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x763F60",
-  "sym": "?Slot6@?$VectorClass@UWaypointClass@@@@UBE?AUWaypointClass@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VWaypointClass@@@@UBE?AVWaypointClass@@H@Z",
   "len": "0x28",
   "name": "VectorClass<WaypointClass>::Slot6",
   "status": "matched",
@@ -79117,7 +79117,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x7640B0",
-  "sym": "??8?$VectorClass@UWaypointClass@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VWaypointClass@@@@UBE_NABV0@@Z",
   "len": "0x5c",
   "name": "VectorClass<WaypointClass>::operator==",
   "status": "matched",
@@ -79126,7 +79126,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x764110",
-  "sym": "?SetCapacity@?$VectorClass@UWaypointClass@@@@UAE_NHPAUWaypointClass@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VWaypointClass@@@@UAE_NHPAVWaypointClass@@@Z",
   "len": "0x10e",
   "name": "VectorClass<WaypointClass>::SetCapacity",
   "status": "matched",
@@ -79135,7 +79135,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x764260",
-  "sym": "?FindItemIndex@?$VectorClass@UWaypointClass@@@@UBEHABUWaypointClass@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VWaypointClass@@@@UBEHABVWaypointClass@@@Z",
   "len": "0x50",
   "name": "VectorClass<WaypointClass>::FindItemIndex",
   "status": "matched",
@@ -79144,7 +79144,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x7642B0",
-  "sym": "?Slot5@?$VectorClass@UWaypointClass@@@@UBEHPAUWaypointClass@@@Z",
+  "sym": "?Slot5@?$VectorClass@VWaypointClass@@@@UBEHPAVWaypointClass@@@Z",
   "len": "0x24",
   "name": "VectorClass<WaypointClass>::Slot5",
   "status": "matched",
@@ -79153,7 +79153,7 @@
  {
   "tu": "match/core/vector_dtor_element_slot_methods.cpp",
   "addr": "0x764420",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@UWaypointClass@@@@UBEHABUWaypointClass@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VWaypointClass@@@@UBEHABVWaypointClass@@@Z",
   "len": "0x40",
   "name": "DynamicVectorClass<WaypointClass>::FindItemIndex",
   "status": "matched",
@@ -98911,5 +98911,23 @@
   "name": "Tactical::FUN_006DA9D0",
   "status": "partial",
   "pct": 3.0
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4AEA20",
+  "sym": "?FUN_004AEA20@@YGXH@Z",
+  "len": "0xa9",
+  "name": "?FUN_004AEA20@@YGXH@Z",
+  "status": "partial",
+  "pct": 3.6
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DAD60",
+  "sym": "?FUN_006DAD60@Tactical@@QAEX_N@Z",
+  "len": "0x4af",
+  "name": "Tactical::FUN_006DAD60",
+  "status": "partial",
+  "pct": 3.5
  }
 ]

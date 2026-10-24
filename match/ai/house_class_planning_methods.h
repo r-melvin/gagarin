@@ -10,32 +10,13 @@
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PLANNING_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_PLANNING_METHODS_H
 
+#include "../movement/waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct WaypointClass;   // opaque here — only compared by pointer identity
+class WaypointClass;   // opaque here — only compared by pointer identity
 
-// WaypointPathClass — a "planning mode" path.  Only the members this method
-// touches are pinned: the embedded DynamicVectorClass<WaypointClass> @0x28
-// (its Count @0x38) and the total size 0x40.  Ctor/accessor are body-less so
-// cl emits reloc-normalised direct CALLs; the ctor is throw() so `new` gets
-// no EH-cleanup funclet (retail has none).
-class WaypointPathClass
-{
-public:
-    // FUNCTION: GAMEMD 0x763810 (decl; reloc)
-    explicit WaypointPathClass(int index) throw();
-
-    // FUNCTION: GAMEMD 0x763980 (decl; reloc)
-    WaypointClass* GetWaypoint(int idx) const;
-
-    char _pad000[0x38];      // +0x0000  (AbstractClass base, index, vector head)
-    int  WaypointCount;      // +0x0038  (Waypoints.Count)
-    char _pad03C[0x4];       // +0x003C
-};
-GG_STATIC_ASSERT(offsetof(WaypointPathClass, WaypointCount) == 0x38);
-GG_STATIC_ASSERT(sizeof(WaypointPathClass) == 0x40);
-
+// Path and node types use their shared owners above.
 class HouseClass
 {
 public:

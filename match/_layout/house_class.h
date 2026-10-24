@@ -43,6 +43,8 @@
 #ifndef GG_MATCH_LAYOUT_HOUSE_CLASS_H
 #define GG_MATCH_LAYOUT_HOUSE_CLASS_H
 
+class WaypointPathClass;
+class WaypointClass;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
@@ -135,6 +137,9 @@ public:
     // FUNCTION: GAMEMD 0x4FCE30 (decl; reloc)
     double FUN_004FCE30();
     // FUNCTION: GAMEMD 0x4F9750 (decl; reloc) -- matched in economy/house_class_misc_methods.cpp.
+    WaypointPathClass* EnsurePlanningPathExists(int index); // 0x504740, RET4
+    WaypointClass* GetPlanningWaypointAt(const CellStruct* cell); // 0x5023B0
+    bool GetPlanningWaypointProperties(WaypointClass*, int*, unsigned char*); // 0x502460
     double GetWeedStoragePercentage();
     // FUNCTION: GAMEMD 0x509140 (decl; reloc) -- (factory kind, naval, category), RET 0xC;
     // BuildingClass 0x452360 passes Type->Factory, Type->Naval, 0.
@@ -209,7 +214,7 @@ public:
     unsigned char LostConnection;          // +0x208 ctor @0x004F5759
     unsigned char align_209[3];            // +0x209
     int    SelectedPathIndex;              // +0x20C ctor @0x004F575F
-    void*  PlanningPaths[12];              // +0x210 .. 0x23F ctor LEA EDI @0x004F643B (12 dwords = 0x30)
+    WaypointPathClass* PlanningPaths[12];              // +0x210 .. 0x23F ctor LEA EDI @0x004F643B (12 dwords = 0x30)
     signed char   Visionary;               // +0x240 ctor @0x004F5765
     unsigned char MapIsClear;              // +0x241 ctor @0x004F576B
     unsigned char IsTiberiumShort;         // +0x242 ctor @0x004F5771
@@ -459,6 +464,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, RecheckTechTree)            == 0x1FC);
 GG_STATIC_ASSERT(offsetof(HouseClass, IPAddress)                  == 0x200);
 GG_STATIC_ASSERT(offsetof(HouseClass, SelectedPathIndex)          == 0x20C);
 GG_STATIC_ASSERT(offsetof(HouseClass, PlanningPaths)              == 0x210);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->PlanningPaths) == 0x30);
 GG_STATIC_ASSERT(offsetof(HouseClass, Visionary)                  == 0x240);
 GG_STATIC_ASSERT(offsetof(HouseClass, IsToLook)                   == 0x24B);
 GG_STATIC_ASSERT(offsetof(HouseClass, IQLevel2)                   == 0x24C);

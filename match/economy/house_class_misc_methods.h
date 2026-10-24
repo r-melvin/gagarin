@@ -12,6 +12,7 @@
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_MISC_METHODS_H
 #define GG_MATCH_ECONOMY_HOUSE_CLASS_MISC_METHODS_H
 
+#include "../movement/waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "storage_class.h"
@@ -26,14 +27,6 @@
 // a one-int constructor at 0x763810. Only the size + ctor signature matter for
 // the EnsurePlanningPathExists `new` pattern; full layout is P2.
 // ---------------------------------------------------------------------------
-class WaypointPathClass
-{
-public:
-    explicit WaypointPathClass(int index) throw();  // GAMEMD 0x763810 __thiscall (declared; reloc)
-                                                    // throw(): retail `new` has no EH-cleanup funclet
-    char _layout_pad_P2[0x40];               // sizeof = 0x40
-};
-GG_STATIC_ASSERT(sizeof(WaypointPathClass) == 0x40);
 
 // ---------------------------------------------------------------------------
 // RulesClass shim — only the weed-storage capacity divisor @0x17D0 is needed.

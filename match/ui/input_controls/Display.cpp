@@ -41,7 +41,7 @@
 // starting `offset` entries into it.
 inline void DisplayCmdFillPalette(int offset)
 {
-    unsigned short* dest = DisplayCmdPalOwner_0087F6C8->Palette + 1;
+    unsigned short* dest = static_cast<unsigned short*>(DAT_0087F6C8->ColorTable) + 1;
     for (int i = 0; i < 8; i++)
     {
         ColorStruct c = DisplayCmdRing_00885180[(i + offset) % 256];
@@ -727,7 +727,7 @@ void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, i
 
     if (!SavedColor.R && !SavedColor.G && !SavedColor.B)
     {
-        unsigned short pixel = DisplayCmdPalOwner_0087F6C8->Palette[1];
+        unsigned short pixel = static_cast<unsigned short*>(DAT_0087F6C8->ColorTable)[1];
         ColorStruct c;
         c.R = (pixel >> DisplayCmdRedShiftLeft_008A0DD0) << DisplayCmdRedShiftRight_008A0DD4;
         c.G = (pixel >> DisplayCmdGreenShiftLeft_008A0DE0) << DisplayCmdGreenShiftRight_008A0DE4;
@@ -759,7 +759,7 @@ void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, i
         break;
     }
     default:
-        DisplayCmdPalOwner_0087F6C8->Palette[1] = DisplayCmdPack(SavedColor.R, SavedColor.G, SavedColor.B);
+        static_cast<unsigned short*>(DAT_0087F6C8->ColorTable)[1] = DisplayCmdPack(SavedColor.R, SavedColor.G, SavedColor.B);
         DisplayCmdFillPalette(0);
         if (!WaypointMode)
             DisplayCmdPlayer_00A83D4C->unknown_20C = -1;
@@ -1709,6 +1709,13 @@ long DisplayClass::vf_31(IStream* stream)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x4AEA20
+// ECX is unused; one stack index and RET4. Original member/free scope unproved.
+void __stdcall FUN_004AEA20(int index)
+{
+    DisplayCmdFillPalette(DisplayCmdHouseRingOffset(index));
+}
+
 // FUNCTION: GAMEMD 0x4AEAD0
 void DisplayClass::vf_35()
 {

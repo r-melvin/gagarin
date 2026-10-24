@@ -14,39 +14,14 @@
 #ifndef GG_MATCH_AI_HOUSE_CLASS_PLANNING_WAYPOINT_AT_METHODS_H
 #define GG_MATCH_AI_HOUSE_CLASS_PLANNING_WAYPOINT_AT_METHODS_H
 
+#include "../movement/waypoint_path_class_methods.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
 #include "../_layout/cell.h"
 GG_STATIC_ASSERT(sizeof(CellStruct) == 4);
 
-// WaypointClass — a path node: a leptons-space coordinate (stride 0xC).
-struct WaypointClass
-{
-    int X;   // +0x00
-    int Y;   // +0x04
-    int Z;   // +0x08
-};
-GG_STATIC_ASSERT(offsetof(WaypointClass, Y) == 0x04);
-GG_STATIC_ASSERT(sizeof(WaypointClass) == 0xC);
-
-// WaypointPathClass — only Waypoints.Count @0x38 and the size 0x40 matter.
-class WaypointPathClass
-{
-public:
-    // FUNCTION: GAMEMD 0x763810 (decl; reloc)
-    explicit WaypointPathClass(int index) throw();
-
-    // FUNCTION: GAMEMD 0x763980 (decl; reloc)
-    WaypointClass* GetWaypoint(int idx) const;
-
-    char _pad000[0x38];      // +0x0000
-    int  WaypointCount;      // +0x0038
-    char _pad03C[0x4];       // +0x003C
-};
-GG_STATIC_ASSERT(offsetof(WaypointPathClass, WaypointCount) == 0x38);
-GG_STATIC_ASSERT(sizeof(WaypointPathClass) == 0x40);
-
+// Path and node types use their shared owners above.
 class HouseClass
 {
 public:

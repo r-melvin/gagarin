@@ -15,7 +15,7 @@
 WaypointClass* WaypointPathClass::GetWaypoint(int idx) const
 {
     if (idx >= 0 && idx < Waypoints.Count)
-        return &((WaypointClass*)Waypoints.Items)[idx];
+        return &Waypoints.Items[idx];
     return 0;
 }
 
@@ -26,10 +26,10 @@ WaypointClass* WaypointPathClass::GetWaypoint(int idx) const
 // CurrentWaypointIndex. Returns null when the resulting index is out of range.
 WaypointClass* WaypointPathClass::GetWaypointAfter(WaypointClass* pWaypoint) const
 {
-    int index = Waypoints.GetItemIndex(pWaypoint) + 1;
+    int index = Waypoints.Slot5(pWaypoint) + 1;
     if (CurrentWaypointIndex != -1 && index == Waypoints.Count)
         index = CurrentWaypointIndex;
     if (index >= 0 && index < Waypoints.Count)
-        return &((WaypointClass*)Waypoints.Items)[index];
+        return &Waypoints.Items[index];
     return 0;
 }

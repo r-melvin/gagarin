@@ -32,7 +32,7 @@ struct ZoneCell { short X; short Y; ZoneCell() : X(0), Y(0) {} bool operator==(c
 template class VectorClass<ZoneConnectionClass>;
 template class DynamicVectorClass<ZoneConnectionClass>;
 
-struct WaypointClass { int unknown_00; int unknown_04; int unknown_08; WaypointClass(int a = 0, int b = 0, int c = 0) : unknown_00(a), unknown_04(b), unknown_08(c) {} ~WaypointClass() {} bool operator==(const WaypointClass& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const WaypointClass& o) const { return !(*this==o); } };
+#include "../_layout/waypoint_class.h"
 
 // VTABLE: GAMEMD 0x007F6EF4 -- VectorClass<WaypointClass>.
 template class VectorClass<WaypointClass>;

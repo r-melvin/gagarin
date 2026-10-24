@@ -355,10 +355,6 @@ class WarheadTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class WaypointPathClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
 class WeaponTypeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -3724,6 +3720,117 @@ void Tactical::FUN_006DA9D0(bool argument)
     }
 }
 
+
+#include "../../movement/waypoint_path_class_methods.h"
+#include <string.h>
+#include <wchar.h>
+// Declaration: GAMEMD 0x5BE970/5BE990, one stack word, RET4.
+int __stdcall FUN_005BE970(int index);
+int __stdcall FUN_005BE990(int index);
+// Declaration: GAMEMD 0x5B40B0, assetnameECX/flagDL, raw asset pointer.
+void* FUN_005B40B0(const char* name, bool flag);
+// Declaration: GAMEMD 0x4AEA20, one stack index, RET4; ECX unused.
+void __stdcall FUN_004AEA20(int index);
+// GLOBAL: GAMEMD 0xB0E644
+extern ShapeHeader* DAT_00B0E644;
+// GLOBAL: GAMEMD 0xB0CD80
+extern wchar_t DAT_00B0CD80[];
+struct ColorScheme;
+// GLOBAL: GAMEMD 0xB054D4
+extern ColorScheme** DAT_00B054D4;
+// GLOBAL: GAMEMD 0x842940
+extern unsigned char DAT_00842940[];
+// Declaration: GAMEMD 0x4A6010, resultECX/textEDX, RET28.
+void FUN_004A6010(Point2D* result, const wchar_t* text, Surface* surface,
+    RectangleStruct* clip, Point2D* position, ColorScheme* scheme,
+    int background, int flags, int extra);
+// STRING: GAMEMD 0x82604C -- "MOUSE.SHA"
+// STRING: GAMEMD 0x81B3D0 -- L"%d"
+
+// FUNCTION: GAMEMD 0x6DAD60
+void Tactical::FUN_006DAD60(bool argument)
+{
+    int phase = (0x7FFFFFFF - CurrentFrame) % 15;
+    int firstFrame = FUN_005BE970(60);
+    int frameCount = FUN_005BE990(60);
+    int frame = unknown_DA0 % frameCount + firstFrame;
+    if (DAT_00A8ED6B)
+        return;
+    unsigned short* palette = static_cast<unsigned short*>(DAT_0087F6C8->ColorTable) + 1;
+    unsigned short savedPalette[8];
+    memcpy(savedPalette, palette, sizeof savedPalette);
+    if (!DAT_00B0E644)
+        DAT_00B0E644 = static_cast<ShapeHeader*>(FUN_005B40B0("MOUSE.SHA", false));
+    int originY = Viewport_00886FA0.Y + 1;
+    int scheme = ScenarioInstance->unknown_1258 == 1 ? 12 : 14;
+    for (int pathIndex = 0; pathIndex < 12; ++pathIndex) {
+        CurrentPlayer->EnsurePlanningPathExists(pathIndex);
+        int count = CurrentPlayer->PlanningPaths[pathIndex]->Waypoints.Count;
+        if (count != 0)
+            FUN_004AEA20(pathIndex);
+        for (int index = 0; index < count; ++index) {
+            WaypointClass* waypoint =
+                CurrentPlayer->PlanningPaths[pathIndex]->GetWaypoint(index);
+            Pair_006D9F80 rawTemporary;
+            Pair_006D9F80 raw = *rawTemporary.FUN_006D1EB0(waypoint->X, waypoint->Y);
+            int x = raw.unknown_00 / 256;
+            int y = raw.unknown_04 / 256 - Tactical::AdjustForZ(waypoint->Z);
+            Point2D start(x, y);
+            Point2D origin(unknown_B0.unknown_00, unknown_B0.unknown_04);
+            start -= origin;
+            bool visible = false;
+            if (start.X >= -360 && start.X <= DAT_00B0CE30 + 360 &&
+                start.Y >= -180 && start.Y <= DAT_00B0CE34 + 180) {
+                // Native passes the original node's coordinate storage.
+                if (argument)
+                    visible = MapInstance.FUN_00586360(waypoint);
+                else
+                    visible = !MapInstance.FUN_00586360(waypoint);
+            }
+            start.Y += Viewport_00886FA0.Y;
+            if (visible) {
+                Point2D marker(start.X, start.Y - originY);
+                FUN_004AED70(DAT_00887314, DAT_0087F6C8,
+                             DAT_00B0E644, frame, &marker, &Viewport_00886FA0,
+                             0x600, 0, 0, 0, 1000, 0, 0, 0, Point2D(0, 0));
+                swprintf(DAT_00B0CD80, L"%d", index);
+                Point2D label(start.X - 1, start.Y - originY - 25);
+                Point2D textResult;
+                FUN_004A6010(&textResult, DAT_00B0CD80, DAT_00887314,
+                             &Viewport_00886FA0, &label, DAT_00B054D4[scheme],
+                             0, 0x109, 1);
+            }
+            // The current house and path pointer are loaded again AFTER all
+            // optional marker/text callbacks; preserve the original node pointer.
+            WaypointClass* next =
+                CurrentPlayer->PlanningPaths[pathIndex]->GetWaypointAfter(waypoint);
+            if (!next)
+                continue;
+            Pair_006D9F80 nextTemporary;
+            Pair_006D9F80 nextRaw = *nextTemporary.FUN_006D1EB0(next->X, next->Y);
+            int z = next->Z;
+            int endX = nextRaw.unknown_00 / 256;
+            int endY = nextRaw.unknown_04 / 256;
+            int bias = z >= 728 ? 1 : 0;
+            int lift = z * AdjustForZ_Factor + bias + 0.5;
+            endY -= lift;
+            Point2D end(endX - unknown_B0.unknown_00,
+                        endY - unknown_B0.unknown_04 + Viewport_00886FA0.Y);
+            if (!ClipLine(&start, &end, &Viewport_00886FA0))
+                continue;
+            bool selected = pathIndex == CurrentPlayer->SelectedPathIndex;
+            unsigned int color = DAT_0087F6C8->Lookup(3);
+            if (selected) {
+                phase = DAT_00887314->unknown_4C(&start, &end, color,
+                                                DAT_00842940, phase, argument);
+            } else {
+                DAT_00887314->unknown_50(&start, &end, color, argument);
+            }
+        }
+    }
+    // Restore the ORIGINAL saved palette pointer, not a reloaded global owner.
+    memcpy(palette, savedPalette, sizeof savedPalette);
+}
 
 // GLOBAL: GAMEMD 0xB0C110
 extern SwizzleManagerClass DAT_00B0C110;
