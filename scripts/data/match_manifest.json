@@ -97269,20 +97269,20 @@
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543150",
-  "sym": "_$E1",
+  "sym": "_$E2",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AA0728)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu109_isometric_tile_class.cpp",
   "addr": "0x543170",
-  "sym": "_$E4",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "dynamic initializer (DAT_00AA0710)",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu110_isometric_tile_type_class.cpp",

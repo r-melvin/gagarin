@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit TU109 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x543120-0x543c5f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
@@ -18,12 +19,16 @@ extern const double DAT_007EC218;
 // GLOBAL: GAMEMD 0xAA06D8
 extern double DAT_00AA06D8;
 
-// SYNTHETIC: GAMEMD 0x543150
-// GLOBAL: GAMEMD 0xAA0728
+// SYNTHETIC: GAMEMD 0x00543150
+// dynamic initializer for DAT_00AA0728
+
+// GLOBAL: GAMEMD 0x00AA0728
 double DAT_00AA0728 = DAT_00AA06D8 / DAT_007EC218;
 
-// SYNTHETIC: GAMEMD 0x543170
-// GLOBAL: GAMEMD 0xAA0710
+// SYNTHETIC: GAMEMD 0x00543170
+// dynamic initializer for DAT_00AA0710
+
+// GLOBAL: GAMEMD 0x00AA0710
 double DAT_00AA0710 = DAT_007E1718 / DAT_00AA0728;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
