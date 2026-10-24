@@ -159,8 +159,9 @@ public:
     virtual int vf_64(int a1, int a2);                         // 64  0x5F4320: returns 0
     virtual bool vf_65(RectangleStruct* rect, bool force, int a3); // 65  0x5F4B10
     virtual void* vf_66(int a1);                               // 66  0x5F5B90
-    virtual void vf_67(int a1, int a2);                        // 67  0x426440: bare RET 8
-    virtual void vf_68(int a1, int a2);                        // 68  0x426450: bare RET 8
+    // 6D9076/6D9134 push viewport and point addresses for slots67/68.
+    virtual void vf_67(Point2D* point, RectangleStruct* clip);                        // 67  0x426440: bare RET 8
+    virtual void vf_68(Point2D* point, RectangleStruct* clip);                        // 68  0x426450: bare RET 8
     virtual void vf_69(Point2D* point, RectangleStruct* clip); // 69  0x5B3A50: bare RET 8; vf_65 passes (&point, rect)
     virtual void vf_70(Point2D* point, RectangleStruct* clip); // 70  0x5F65D0: forwards to vf_69
     virtual void vf_71();                                      // 71  0x5F4330: bare RET

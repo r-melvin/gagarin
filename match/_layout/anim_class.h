@@ -76,7 +76,7 @@ public:
 
     // +0xAC StageClass base (0x1C): retail CHD (COL 0x7FBA60) lists it at mdisp 0xAC;
     //   ctor stores @0x00421EB8..0x00421EDB.
-    void*           Type;                  // +0xC8 AnimTypeClass*; ctor MOV [ESI+0xC8],ECX(=arg1) @0x00421EE5
+    AnimTypeClass*  Type;                  // +0xC8; ctor421EE5; getter425520;6D91E9/EF reads Type->ShouldFogRemove374
     void*           OwnerObject;           // +0xCC ObjectClass*; ctor @0x00421EEE
     unsigned int    unknown_D0;            // +0xD0 ctor @0x00421EF4
     void*           LightConvert;          // +0xD4 LightConvertClass*; ctor @0x00421EFA

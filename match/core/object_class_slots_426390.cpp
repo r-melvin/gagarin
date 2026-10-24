@@ -63,12 +63,12 @@ bool ObjectClass::vf_50(HouseClass* house)
 }
 
 // FUNCTION: GAMEMD 0x426440
-void ObjectClass::vf_67(int a1, int a2)
+void ObjectClass::vf_67(Point2D* point, RectangleStruct* clip)
 {
 }
 
 // FUNCTION: GAMEMD 0x426450
-void ObjectClass::vf_68(int a1, int a2)
+void ObjectClass::vf_68(Point2D* point, RectangleStruct* clip)
 {
 }
 

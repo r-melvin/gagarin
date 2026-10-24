@@ -66663,20 +66663,20 @@
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426440",
-  "sym": "?vf_67@ObjectClass@@UAEXHH@Z",
+  "sym": "?vf_67@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_67",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_426390.cpp",
   "addr": "0x426450",
-  "sym": "?vf_68@ObjectClass@@UAEXHH@Z",
+  "sym": "?vf_68@ObjectClass@@UAEXPAUPoint2D@@PAURectangleStruct@@@Z",
   "len": "0x3",
   "name": "ObjectClass::vf_68",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_slots_426390.cpp",
@@ -92197,7 +92197,7 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D8C60",
-  "sym": "?FUN_006D8C60@@YIXPAVObjectClass@@H@Z",
+  "sym": "?FUN_006D8C60@@YIXPAVObjectClass@@PAURectangleStruct@@@Z",
   "len": "0x149",
   "name": "FUN_006D8C60",
   "status": "partial",

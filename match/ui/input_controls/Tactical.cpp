@@ -179,14 +179,8 @@ class AlphaShapeClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
 };
-class AnimClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
-class AnimTypeClass {
-public:
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-};
+#include "../../_layout/anim_class.h"
+#include "../../_layout/anim_type_class.h"
 class NeuronClass {
 public:
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
@@ -3094,21 +3088,20 @@ void Tactical::FUN_006D8B30()
 #include "../../_layout/object_class.h"
 
 // FUNCTION: GAMEMD 0x6D8C60
-void FUN_006D8C60(ObjectClass* object, int argument)
+void FUN_006D8C60(ObjectClass* object, RectangleStruct* clip)
 {
     CoordStruct coordinate = object->vf_18();
     int xy[2] = { coordinate.X, coordinate.Y };
     Point2D projected = IsoProject(xy);
-    Pair_006D9F80 point(projected.X / 256,
+    Point2D point(projected.X / 256,
                         projected.Y / 256 - AdjustForZ(coordinate.Z));
-    point.unknown_00 -= DAT_00887324->unknown_B0.unknown_00;
-    point.unknown_04 -= DAT_00887324->unknown_B0.unknown_04;
-    if (point.unknown_00 >= -360 && point.unknown_00 <= DAT_00B0CE30 + 360 &&
-        point.unknown_04 >= -180 && point.unknown_04 <= DAT_00B0CE34 + 180) {
+    point.X -= DAT_00887324->unknown_B0.unknown_00;
+    point.Y -= DAT_00887324->unknown_B0.unknown_04;
+    if (point.X >= -360 && point.X <= DAT_00B0CE30 + 360 &&
+        point.Y >= -180 && point.Y <= DAT_00B0CE34 + 180) {
         // 0x6D8D86/0x6D8D97 pass the address of this two-int point.
-        // The canonical virtual slots currently use opaque32-bit arguments.
-        object->vf_67((int)&point, argument);
-        object->vf_68((int)&point, argument);
+        object->vf_67(&point, clip);
+        object->vf_68(&point, clip);
     }
 }
 
