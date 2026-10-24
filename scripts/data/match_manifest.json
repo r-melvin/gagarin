@@ -98533,5 +98533,14 @@
   "name": "Tactical::FUN_006D2790",
   "status": "partial",
   "pct": 2.1
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DC540",
+  "sym": "?Slot6@?$VectorClass@UDirtyAreaStruct@@@@UBE?AUDirtyAreaStruct@@H@Z",
+  "len": "0x38",
+  "name": "VectorClass<DirtyAreaStruct>::Slot6",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

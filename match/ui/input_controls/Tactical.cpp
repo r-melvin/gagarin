@@ -1410,6 +1410,13 @@ int Obj_006DC460::FUN_006DC460() const
 // SYNTHETIC: GAMEMD 0x006DC470
 // Tactical::scalar deleting destructor
 
+GG_STATIC_ASSERT(offsetof(VectorClass<DirtyAreaStruct>, Items) == 4);
+GG_STATIC_ASSERT(sizeof(((VectorClass<DirtyAreaStruct>*)0)->Items) == 4);
+
+// FUNCTION: GAMEMD 0x006DC510
+// DynamicVectorClass<DirtyAreaStruct>::Slot5
+// FUNCTION: GAMEMD 0x6DC540
+// VectorClass<DirtyAreaStruct>::Slot6
 // FUNCTION: GAMEMD 0x006DC5E0
 // VectorClass<DirtyAreaStruct>::operator==
 // FUNCTION: GAMEMD 0x006DC660
@@ -1420,6 +1427,4 @@ int Obj_006DC460::FUN_006DC460() const
 // VectorClass<DirtyAreaStruct>::Slot5
 // FUNCTION: GAMEMD 0x006DC970
 // DynamicVectorClass<DirtyAreaStruct>::FindItemIndex
-// FUNCTION: GAMEMD 0x006DC510
-// DynamicVectorClass<DirtyAreaStruct>::Slot5
 template class VectorClass<DirtyAreaStruct>;
