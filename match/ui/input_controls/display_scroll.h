@@ -18,8 +18,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "display_class.h"
 
-extern "C" __declspec(dllimport) void* __stdcall GetCapture(void);
-extern "C" __declspec(dllimport) int __stdcall ReleaseCapture(void);
+// GetCapture and ReleaseCapture use the SDK declarations from display_class.h.
 
 // GLOBAL: GAMEMD 0xB73550 -- the window handle the capture is compared with.
 extern void* DisplayCaptureWindow_00B73550;

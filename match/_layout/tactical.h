@@ -25,6 +25,8 @@ class Cell;
 class CellClass;
 struct CellStruct;
 class ObjectClass;
+// Raw callback ABI: one object in ECX, no stack args; source member/free identity unproved.
+typedef void (__fastcall *Callback_006DA5C0)(ObjectClass* object);
 template<class T> class TRect;
 struct RectangleStruct;
 struct Point2D;
@@ -112,11 +114,12 @@ public:
     int FUN_006DA230(int direction); // 0x6DA230; RET4
     int FUN_006DC420(); // 0x6DC420; no stack arguments
     ObjectClass* FUN_006DC430(int index); // 0x6DC430; RET 4
+    ObjectClass* FUN_006DA380(const Point2D* point); // RET4
     void FUN_006DA740(); // 0x6DA740
     bool FUN_006DA770(); // 0x6DA770
     int FUN_006DA080() const;
-    void FUN_006D9FF0(int mode);
-    void FUN_006DA5C0(const TRect<int>* rectangle, int mode); // 0x6DA5C0; RET 8
+    void FUN_006D9FF0(Callback_006DA5C0 callback);
+    void FUN_006DA5C0(const TRect<int>* rectangle, Callback_006DA5C0 callback); // 0x6DA5C0; RET 8
     unsigned short unknown_24[64];
     int unknown_A4;
     int unknown_A8;

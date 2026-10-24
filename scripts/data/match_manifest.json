@@ -92107,11 +92107,11 @@
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
   "addr": "0x6D9FF0",
-  "sym": "?FUN_006D9FF0@Tactical@@QAEXH@Z",
+  "sym": "?FUN_006D9FF0@Tactical@@QAEXP6IXPAVObjectClass@@@Z@Z",
   "len": "0x88",
-  "name": "FUN_006D9FF0",
+  "name": "Tactical::FUN_006D9FF0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/input_controls/Tactical.cpp",
@@ -98875,5 +98875,32 @@
   "name": "Tactical::FUN_006DA770",
   "status": "partial",
   "pct": 43.2
+ },
+ {
+  "tu": "match/ui/input_controls/Display.cpp",
+  "addr": "0x4AC2B0",
+  "sym": "?FUN_004AC2B0@@YIXPAVObjectClass@@@Z",
+  "len": "0x54",
+  "name": "?FUN_004AC2B0@@YIXPAVObjectClass@@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DA380",
+  "sym": "?FUN_006DA380@Tactical@@QAEPAVObjectClass@@PBUPoint2D@@@Z",
+  "len": "0x1d3",
+  "name": "Tactical::FUN_006DA380",
+  "status": "partial",
+  "pct": 5.6
+ },
+ {
+  "tu": "match/ui/input_controls/Tactical.cpp",
+  "addr": "0x6DA5C0",
+  "sym": "?FUN_006DA5C0@Tactical@@QAEXPBV?$TRect@H@@P6IXPAVObjectClass@@@Z@Z",
+  "len": "0x17c",
+  "name": "Tactical::FUN_006DA5C0",
+  "status": "partial",
+  "pct": 3.3
  }
 ]

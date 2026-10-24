@@ -21,6 +21,8 @@
 //
 // DisplayClass scenario/help-text entries (layout and evidence: display_scenario.h).
 
+#include "../../_layout/object_class.h"
+#include "../../_layout/house_class.h"
 #include "../../core/leftover_trivial_leaf_sweep.h"
 
 #include "../../map/map_class_next_object_methods.h"
@@ -1038,15 +1040,15 @@ void DisplayClass::vf_48(int, CellStruct* cell, DisplayCmdObject* target, int ac
     int proceed = 0;
     if (unknown_11CF)
     {
-        DisplayCmdTactical_00887324->unknown_D7D = true;
+        DAT_00887324->unknown_D7D = true;
         if (!DisplayCmdKeyboard_0087F770->FUN_0054F5C0(0x10))
         {
-            if (DisplayCmdTactical_00887324->FUN_006DA080())
+            if (DAT_00887324->FUN_006DA080())
                 UnselectAll_0048DC90();
             else
                 proceed = 1;
         }
-        DisplayCmdTactical_00887324->FUN_006D9FF0(&DisplayCmdObject::FUN_004AC2B0);
+        DAT_00887324->FUN_006D9FF0(&FUN_004AC2B0);
         FUN_0070D150();
         unknown_11CF = false;
         vf_18(0, a5);
@@ -1205,6 +1207,20 @@ process:
 done:
     unknown_11D0 = false;
     FUN_00731CF0();
+}
+
+// GLOBAL: GAMEMD 0x822CF2
+extern bool DAT_00822CF2;
+
+// FUNCTION: GAMEMD 0x4AC2B0
+// ECX-only callable; original member/free spelling remains unproved.
+void __fastcall FUN_004AC2B0(ObjectClass* object)
+{
+    HouseClass* owner = object->vf_15();
+    if (owner && owner->IsControlledByCurrentPlayer() &&
+        object->vf_78() && object->vf_79() && !object->InLimbo &&
+        object->vf_83())
+        DAT_00822CF2 = false;
 }
 
 // FUNCTION: GAMEMD 0x4AC310

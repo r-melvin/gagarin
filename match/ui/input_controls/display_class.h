@@ -10,6 +10,7 @@
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_CLASS_H
 #define GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_CLASS_H
 
+#include <windows.h>
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "display_gscreen.h"
@@ -103,8 +104,7 @@ RectangleStruct* FUN_0072AD20(RectangleStruct* out);
 double __cdecl FUN_004CAC40(double value);
 
 // GLOBAL: GAMEMD 0xB73554 -- a window handle, cleared by vf_34.
-extern void* DisplayWindow_00B73554;
-extern "C" __declspec(dllimport) int __stdcall CloseWindow(void* hwnd);
+extern HWND DisplayWindow_00B73554;
 
 // ---- objects of the view-dimension entry (0x4A8960) ---------------------------------------------------------
 

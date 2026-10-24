@@ -365,12 +365,11 @@ extern CaptureSurface* DAT_00887308;
 // GLOBAL: GAMEMD 0x887640
 extern CaptureMouse* DAT_00887640;
 // GLOBAL: GAMEMD 0xB73550 -- the main window.
-extern void* DAT_00B73550;
+extern HWND DAT_00B73550;
 // GLOBAL: GAMEMD 0x885780 -- the palette written with the capture.
 extern char DAT_00885780[];
 // User32 imports through IAT slots 0x7E14C4 and 0x7E14B8.
-extern "C" __declspec(dllimport) int __stdcall GetClientRect(void* window, LTRBStruct* rect);
-extern "C" __declspec(dllimport) int __stdcall ClientToScreen(void* window, Point2D* point);
+// GetClientRect and ClientToScreen use their SDK declarations.
 
 // FUNCTION: GAMEMD 0x7B05C0 (decl; reloc) -- write a surface to a PCX file;
 // __fastcall: file in ECX, surface in EDX, palette pushed.
@@ -2103,28 +2102,28 @@ const wchar_t* ScreenCaptureCommandClass::vf_4()
 // the first free SCRNnnnn.pcx.
 void ScreenCaptureCommandClass::vf_8(int key)
 {
-    LTRBStruct client;
+    RECT client;
     if (!GetClientRect(DAT_00B73550, &client)) {
         return;
     }
-    Point2D topLeft;
-    topLeft.X = client.Left;
-    topLeft.Y = client.Top;
+    POINT topLeft;
+    topLeft.x = client.left;
+    topLeft.y = client.top;
     if (!ClientToScreen(DAT_00B73550, &topLeft)) {
         return;
     }
-    Point2D bottomRight;
-    bottomRight.X = client.Right;
-    bottomRight.Y = client.Bottom;
+    POINT bottomRight;
+    bottomRight.x = client.right;
+    bottomRight.y = client.bottom;
     if (!ClientToScreen(DAT_00B73550, &bottomRight)) {
         return;
     }
 
     RectangleStruct source;
-    source.X = topLeft.X;
-    source.Y = topLeft.Y;
-    source.Width = client.Right + 1;
-    source.Height = client.Bottom + 1;
+    source.X = topLeft.x;
+    source.Y = topLeft.y;
+    source.Width = client.right + 1;
+    source.Height = client.bottom + 1;
     if (source.Width >= DAT_0088730C->GetWidth()) {
         source.Width = DAT_0088730C->GetWidth();
     }

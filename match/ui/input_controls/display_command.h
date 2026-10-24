@@ -131,8 +131,6 @@ public:
     bool unknown_660;                 // +0x660
     char unknown_661[0x6ED - 0x661];  // +0x661
     unsigned char unknown_6ED;        // +0x6ED
-    // FUNCTION: GAMEMD 0x4AC2B0 (decl; reloc) -- the per-object callback handed to the tactical view.
-    void FUN_004AC2B0();
     // FUNCTION: GAMEMD 0x452670 (decl; reloc)
     bool FUN_00452670(DisplayCmdPendType* type, DisplayCmdHouse* house);
 };
@@ -376,14 +374,11 @@ inline void DisplayCmdQueueEvent(const DisplayCmdEvent& event)
     }
 }
 
+// Retained only for Init view-command ABI users; callback clients use canonical Tactical.
 struct DisplayCmdTactical
 {
     char unknown_000[0xD7D];          // +0x000
     bool unknown_D7D;                 // +0xD7D
-    // FUNCTION: GAMEMD 0x6DA080 (decl; reloc)
-    int FUN_006DA080();
-    // FUNCTION: GAMEMD 0x6D9FF0 (decl; reloc)
-    void FUN_006D9FF0(void (DisplayCmdObject::*callback)());
     // FUNCTION: GAMEMD 0x6D6070 (decl; reloc) -- RET 4.
     void FUN_006D6070(const DisplayCmdVec3* where);
     // FUNCTION: GAMEMD 0x6D6190 (decl; reloc) -- fills and returns the 8-byte result; RET 4.
@@ -394,6 +389,12 @@ struct DisplayCmdTactical
 GG_STATIC_ASSERT(offsetof(DisplayCmdTactical, unknown_D7D) == 0xD7D);
 // GLOBAL: GAMEMD 0x887324 -- the tactical view.
 extern DisplayCmdTactical* DisplayCmdTactical_00887324;
+
+#include "../../_layout/tactical.h"
+// GLOBAL: GAMEMD 0x887324
+extern Tactical* DAT_00887324;
+// Declaration: GAMEMD 0x4AC2B0; raw ECX-only callback ABI.
+void __fastcall FUN_004AC2B0(ObjectClass* object);
 
 struct DisplayCmdKeyboard
 {

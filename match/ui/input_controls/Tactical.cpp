@@ -3295,7 +3295,7 @@ GG_STATIC_ASSERT(offsetof(Rect_006D9FF0, Height) == 12);
 GG_STATIC_ASSERT(sizeof(Rect_006D9FF0) == 16);
 
 // FUNCTION: GAMEMD 0x6D9FF0
-void Tactical::FUN_006D9FF0(int mode)
+void Tactical::FUN_006D9FF0(Callback_006DA5C0 callback)
 {
     if (!(unknown_D90 == Pair_006D9F80(0, 0))) {
         int left = unknown_D90.unknown_00;
@@ -3317,7 +3317,7 @@ void Tactical::FUN_006D9FF0(int mode)
         rectangle.Y = top;
         rectangle.Width = right - left + 1;
         rectangle.Height = bottom - top + 1;
-        FUN_006DA5C0(&rectangle, mode);
+        FUN_006DA5C0(&rectangle, callback);
         unknown_D90 = Pair_006D9F80(0, 0);
     }
 }
@@ -3440,6 +3440,65 @@ GG_STATIC_ASSERT(offsetof(DisplayClass, SavedPending) == 0x1190);
 GG_STATIC_ASSERT(offsetof(DisplayClass, SavedType) == 0x1194);
 GG_STATIC_ASSERT(offsetof(DisplayClass, SavedField) == 0x1198);
 
+#include "../../map/terrain_objects/terrain_type_class.h"
+// Declaration: GAMEMD 0x40DD20; same pointer returned for native kinds1/2/6/15.
+TechnoClass* FUN_0040DD20(ObjectClass* object);
+
+// FUNCTION: GAMEMD 0x6DA380
+ObjectClass* Tactical::FUN_006DA380(const Point2D* point)
+{
+    // Native snapshots these relative-to-Tactical coordinates before callbacks.
+    int pickX = unknown_B0.unknown_00 + point->X;
+    int pickY = unknown_B0.unknown_04 + point->Y;
+    ObjectClass* best = 0;
+    unsigned int bestDistance = 0xFFFFFFFF;
+    for (int index = 0; index < unknown_DB0; ++index) {
+        ObjectClass* object = DAT_00B0CEC8[index].unknown_00;
+        if (!object) continue;
+        TechnoClass* techno = FUN_0040DD20(object);
+        bool eligible = false;
+        if (techno) {
+            if (object->IsAlive && !techno->InLimbo) {
+                eligible = true;
+                if (!techno->IsOwnedByCurrentPlayer && techno->CloakState == 2) {
+                    // PUSH house index precedes vf18 hidden result. It remains
+                    // pending across vf18 and565730 as4870D0's stack argument.
+                    int houseIndex = CurrentPlayer->ArrayIndex;
+                    CoordStruct location = techno->vf_18();
+                    CellClass* cell = MapInstance.FUN_00565730(&location);
+                    if (!cell->FUN_004870D0(houseIndex)) eligible = false;
+                }
+            }
+        } else {
+            // Preserve all three virtual type queries, including the third
+            // after type's own vf11 callback. Native kind37 is RTTI TerrainTypeClass.
+            if (object->vf_34() != 0 && object->vf_34()->vf_11() == 37) {
+                eligible = reinterpret_cast<TerrainTypeClass*>(object->vf_34())->IsVeinhole;
+            }
+        }
+        if (eligible) {
+            int dx = DAT_00B0CEC8[index].unknown_04 - pickX;
+            int dy = DAT_00B0CEC8[index].unknown_08 - pickY;
+            // Both squares are native signed32-bit IMUL values, converted to
+            // x87 separately.7E1738 is primary double0.5.7C5F00 is CRT__ftol.
+            unsigned int distance = dx * dx + 0.5 * (dy * dy);
+            if (distance < bestDistance && distance < 200) {
+                bestDistance = distance;
+                best = object;
+            }
+        }
+    }
+    if (best) return best;
+
+    // Fallback rereads the caller's point and current viewport origin AFTER
+    // every scan callback, unlike pickX/pickY's entry snapshot above.
+    Point2D absolute(point->X + Viewport_00886FA0.X,
+                     point->Y + Viewport_00886FA0.Y);
+    CellStruct cellCoordinate = FUN_006D6590(&absolute);
+    CellClass* cell = MapInstance.FUN_005657A0(&cellCoordinate);
+    return static_cast<ObjectClass*>(cell->FirstObject);
+}
+
 // FUNCTION: GAMEMD 0x6DA560
 void Tactical::vf_10(void* target, bool removed)
 {
@@ -3453,6 +3512,57 @@ void Tactical::vf_10(void* target, bool removed)
         Map_0087F7E8.SavedType = 0;
         Map_0087F7E8.SavedField = -1;
     }
+}
+
+#include "../../platform/system_query_methods.h"
+// GLOBAL: GAMEMD 0x822CF2
+extern bool DAT_00822CF2;
+// Declaration: GAMEMD 0x7327D0; ID string in ECX.
+void FUN_007327D0(const char* text);
+
+// FUNCTION: GAMEMD 0x6DA5C0
+void Tactical::FUN_006DA5C0(const TRect<int>* rectangle,
+                           Callback_006DA5C0 callback)
+{
+    DAT_00822CF2 = true;
+    if (rectangle->Width > 0 && rectangle->Height > 0) {
+        // Re-read DB0 after each callback: the native loop is not bounded by
+        // an entry snapshot. Record pointer itself advances12 bytes each time.
+        for (int index = 0; index < unknown_DB0; ++index) {
+            ObjectClass* object = DAT_00B0CEC8[index].unknown_00;
+            if (!object || !object->IsAlive) continue;
+            int x = DAT_00B0CEC8[index].unknown_04 - unknown_B0.unknown_00;
+            int y = DAT_00B0CEC8[index].unknown_08 - unknown_B0.unknown_04;
+            if (x < rectangle->X || x >= rectangle->X + rectangle->Width ||
+                y < rectangle->Y || y >= rectangle->Y + rectangle->Height)
+                continue;
+
+            if (Unsorted_IsTypeSelecting()) {
+                // Native slot88 result+24 is AbstractTypeClass::ID. The
+                // object is nonnull but the returned type is not checked.
+                FUN_007327D0(object->vf_34()->ID);
+            } else if (callback) {
+                callback(object);
+            } else {
+                bool buildingAllowed = false;
+                if (object->vf_11() == 6) {
+                    // Kind6 branch proves the BuildingClass-specific Type
+                    // access at+520; Type->UndeploysInto is+408, not Owner.
+                    BuildingClass* building = static_cast<BuildingClass*>(object);
+                    if (building->Type->UndeploysInto != 0 &&
+                        building->Type->FUN_00465D40())
+                        buildingAllowed = true;
+                }
+                HouseClass* owner = object->vf_15();
+                if (owner && owner->IsControlledByCurrentPlayer() &&
+                    object->vf_78() &&
+                    (object->vf_11() != 6 || buildingAllowed) &&
+                    object->vf_83())
+                    DAT_00822CF2 = false;
+            }
+        }
+    }
+    DAT_00822CF2 = true;
 }
 
 // GLOBAL: GAMEMD 0xA8ECBC
