@@ -3398,20 +3398,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FBA0",
-  "sym": "?FUN_0042FBA0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$VectorClass@VCell@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042FBA0",
+  "name": "VectorClass<Cell>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_holder_dtor_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42FBF0",
-  "sym": "?FUN_0042FBF0@BufferHolderDtor@@QAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VCell@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "FUN_0042FBF0",
+  "name": "DynamicVectorClass<Cell>::scalar deleting destructor",
   "status": "matched",
   "pct": 100.0
  },
@@ -3866,20 +3866,20 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F420",
-  "sym": "?FUN_0042F420@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$DynamicVectorClass@VCell@@@@UAEXXZ",
   "len": "0x2a",
-  "name": "FUN_0042F420",
+  "name": "DynamicVectorClass<Cell>::Clear",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/buffer_release_methods.cpp",
+  "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F7C0",
-  "sym": "?FUN_0042F7C0@@YIXPAUBufferHolder@@@Z",
+  "sym": "?Clear@?$VectorClass@VCell@@@@UAEXXZ",
   "len": "0x27",
-  "name": "FUN_0042F7C0",
+  "name": "VectorClass<Cell>::Clear",
   "status": "matched",
   "pct": 100.0
  },
@@ -74915,7 +74915,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F450",
-  "sym": "?Slot5@?$DynamicVectorClass@UCell@@@@UBEHPAUCell@@@Z",
+  "sym": "?Slot5@?$DynamicVectorClass@VCell@@@@UBEHPAVCell@@@Z",
   "len": "0x1b",
   "name": "DynamicVectorClass<Cell>::Slot5",
   "status": "matched",
@@ -74924,7 +74924,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F470",
-  "sym": "?Slot6@?$VectorClass@UCell@@@@UBE?AUCell@@H@Z",
+  "sym": "?Slot6@?$VectorClass@VCell@@@@UBE?AVCell@@H@Z",
   "len": "0x13",
   "name": "VectorClass<Cell>::Slot6",
   "status": "matched",
@@ -74960,7 +74960,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F620",
-  "sym": "??8?$VectorClass@UCell@@@@UBE_NABV0@@Z",
+  "sym": "??8?$VectorClass@VCell@@@@UBE_NABV0@@Z",
   "len": "0x4f",
   "name": "VectorClass<Cell>::operator==",
   "status": "matched",
@@ -74969,7 +74969,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F6F0",
-  "sym": "?SetCapacity@?$VectorClass@UCell@@@@UAE_NHPAUCell@@@Z",
+  "sym": "?SetCapacity@?$VectorClass@VCell@@@@UAE_NHPAVCell@@@Z",
   "len": "0xc4",
   "name": "VectorClass<Cell>::SetCapacity",
   "status": "matched",
@@ -74978,7 +74978,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F7F0",
-  "sym": "?FindItemIndex@?$VectorClass@UCell@@@@UBEHABUCell@@@Z",
+  "sym": "?FindItemIndex@?$VectorClass@VCell@@@@UBEHABVCell@@@Z",
   "len": "0x45",
   "name": "VectorClass<Cell>::FindItemIndex",
   "status": "matched",
@@ -74987,7 +74987,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F840",
-  "sym": "?Slot5@?$VectorClass@UCell@@@@UBEHPAUCell@@@Z",
+  "sym": "?Slot5@?$VectorClass@VCell@@@@UBEHPAVCell@@@Z",
   "len": "0x1b",
   "name": "VectorClass<Cell>::Slot5",
   "status": "matched",
@@ -74996,7 +74996,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F860",
-  "sym": "?SetCapacity@?$DynamicVectorClass@UCell@@@@UAE_NHPAUCell@@@Z",
+  "sym": "?SetCapacity@?$DynamicVectorClass@VCell@@@@UAE_NHPAVCell@@@Z",
   "len": "0xca",
   "name": "DynamicVectorClass<Cell>::SetCapacity",
   "status": "matched",
@@ -75005,7 +75005,7 @@
  {
   "tu": "match/core/vector_cell_geometry_slot_methods.cpp",
   "addr": "0x42F930",
-  "sym": "?FindItemIndex@?$DynamicVectorClass@UCell@@@@UBEHABUCell@@@Z",
+  "sym": "?FindItemIndex@?$DynamicVectorClass@VCell@@@@UBEHABVCell@@@Z",
   "len": "0x36",
   "name": "DynamicVectorClass<Cell>::FindItemIndex",
   "status": "matched",

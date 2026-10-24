@@ -402,49 +402,7 @@ void* BufferHolderDtor::FUN_0042FB50(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x42FBA0
-void* BufferHolderDtor::FUN_0042FBA0(unsigned int flags)
-{
-    void* buffer = Buffer;
 
-    *(char**)this = VTABLE_007E38D0;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
-// FUNCTION: GAMEMD 0x42FBF0
-void* BufferHolderDtor::FUN_0042FBF0(unsigned int flags)
-{
-    void* buffer = Buffer;
-
-    *(char**)this = VTABLE_007E38D0;
-
-    if (buffer != 0 && IsAllocated != 0) {
-        FUN_007C8B3D(buffer);
-        Buffer = 0;
-    }
-
-    IsAllocated = 0;
-    Length = 0;
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
 
 // FUNCTION: GAMEMD 0x43ACB0
 void* BufferHolderDtor::FUN_0043ACB0(unsigned int flags)

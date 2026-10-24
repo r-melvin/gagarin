@@ -42,11 +42,13 @@ public:
     Cell() {}
     // Word stores for the coordinate pair at 0x688573/0x688588.
     Cell(short x, short y) { X = x; Y = y; }
-    // Element comparisons the VectorClass<Cell> table's bodies use (declared only).
-    bool operator==(const Cell& other) const;
-    bool operator!=(const Cell& other) const;
+    // The element comparison reads both signed-short coordinates (0x42F7F0/0x42F930).
+    bool operator==(const Cell& other) const { return X == other.X && Y == other.Y; }
+    bool operator!=(const Cell& other) const { return !(*this == other); }
 };
 GG_STATIC_ASSERT(sizeof(Cell) == 4);
+GG_STATIC_ASSERT(offsetof(Cell, X) == 0);
+GG_STATIC_ASSERT(offsetof(Cell, Y) == 2);
 #endif
 
 #endif  // GG_MATCH_LAYOUT_CELL_H
