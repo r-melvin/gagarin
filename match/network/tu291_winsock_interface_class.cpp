@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check | RTTI
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit TU291 of retail gamemd.exe v1.001; its source-file name is
 //   not attested by the binary, so the file keeps a placeholder name. Code range 0x7b17d0-0x7b2b9f,
 //   segmented from retail evidence (link-ordered static-initialiser table, RTTI class
@@ -138,12 +139,16 @@ static inline void DiscardQueue(WinsockInterfaceClass::WinsockBufferType**& item
 // STRING: GAMEMD 0x84DEA4 "Async select failed on primary socket - error code %d.\n"
 // STRING: GAMEMD 0x84DE68 "Async select failed on alternate socket - error code %d.\n"
 
-// SYNTHETIC: GAMEMD 0x7B1800
-// GLOBAL: GAMEMD 0xB78090
+// SYNTHETIC: GAMEMD 0x007B1800
+// dynamic initializer for DAT_00B78090
+
+// GLOBAL: GAMEMD 0x00B78090
 double DAT_00B78090 = DAT_00B78040 / DAT_007F79A8;
 
-// SYNTHETIC: GAMEMD 0x7B1820
-// GLOBAL: GAMEMD 0xB78078
+// SYNTHETIC: GAMEMD 0x007B1820
+// dynamic initializer for DAT_00B78078
+
+// GLOBAL: GAMEMD 0x00B78078
 double DAT_00B78078 = DAT_007E1718 / DAT_00B78090;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
