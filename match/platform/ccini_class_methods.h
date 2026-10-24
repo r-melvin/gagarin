@@ -48,4 +48,9 @@ public:
 GG_STATIC_ASSERT(offsetof(CCINIClass, DigestValid) == 0x40);
 GG_STATIC_ASSERT(sizeof(CCINIClass) == 0x58);
 
+// GLOBAL: GAMEMD 0x887048 -- native52D0FA selects a CCINIClass pointer.
+// Allocations52CDF1/52CF46: size58, vtable7E1AF4 (RTTI CCINIClass).
+extern CCINIClass* DAT_00887048;
+GG_STATIC_ASSERT(sizeof(DAT_00887048) == 4);
+
 #endif  // GG_MATCH_PLATFORM_CCINI_CLASS_METHODS_H

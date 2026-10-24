@@ -20,14 +20,8 @@
 //   GetKeyCount @0x526960  __thiscall(const char* section)               -> int
 //   GetKeyName  @0x526CC0  __thiscall(const char* section, int index)    -> char*
 //   ReadString  @0x528A10  __thiscall(sec, key, def, char* buf, int len) -> int
-class CCINIClass
-{
-public:
-    int         GetKeyCount(const char* pSection);
-    const char* GetKeyName(const char* pSection, int index);
-    int         ReadString(const char* pSection, const char* pKey,
-                           const char* pDefault, char* pBuffer, int size);
-};
+#include "../platform/ccini_class_methods.h"
+#include "../_layout/rules_class.h"
 
 // Per-type allocator callees (declared only). Each takes the freshly-read key
 // in ECX — retail compiles them as single-pointer __fastcall
@@ -50,7 +44,7 @@ int VoxelAnimType_FindOrAllocate(const char* pID);
 int ParticleType_FindOrAllocate(const char* pID);
 int ParticleSystemType_FindOrAllocate(const char* pID);
 
-// RulesClass: `this` is only forwarded, so no members or base are needed.
+// Canonical RulesClass and CCINIClass receivers are included above.
 // Section-name globals for the two parsers that load a `char*` rather than
 // pushing a literal. Each holds the pointer the retail code dereferences with
 // `MOV EAX,[0x7F0Cxx]`; the strings behind them are "Countries" (0x839E28) and
@@ -62,20 +56,6 @@ extern char* TerrainTypesSection;   // GLOBAL: GAMEMD 0x7F0CC4
 extern char* SmudgeTypesSection;    // GLOBAL: GAMEMD 0x7F0CCC
 extern char* OverlayTypesSection;   // GLOBAL: GAMEMD 0x7F0CD0
 
-struct RulesClass
-{
-    // Declared ascending by retail address.
-    bool Read_Countries(CCINIClass* pINI);        // GAMEMD 0x6722F0 __thiscall
-    bool Read_SuperWeaponTypes(CCINIClass* pINI); // GAMEMD 0x6725F0 __thiscall
-    bool Read_BuildingTypes(CCINIClass* pINI);    // GAMEMD 0x672660 __thiscall
-    bool Read_TerrainTypes(CCINIClass* pINI);     // GAMEMD 0x6726D0 __thiscall
-    bool Read_SmudgeTypes(CCINIClass* pINI);      // GAMEMD 0x6727D0 __thiscall
-    bool Read_OverlayTypes(CCINIClass* pINI);     // GAMEMD 0x672840 __thiscall
-    bool Read_Animations(CCINIClass* pINI);       // GAMEMD 0x6728B0 __thiscall
-    bool Read_VoxelAnims(CCINIClass* pINI);       // GAMEMD 0x672920 __thiscall
-    bool Read_Warheads(CCINIClass* pINI);         // GAMEMD 0x672990 __thiscall
-    bool Read_Particles(CCINIClass* pINI);        // GAMEMD 0x672A00 __thiscall
-    bool Read_ParticleSystems(CCINIClass* pINI);  // GAMEMD 0x672A70 __thiscall
-};
+
 
 #endif  // GG_MATCH_CORE_RULES_CLASS_READTYPES_MORE_METHODS_H

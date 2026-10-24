@@ -22,7 +22,7 @@ void FUN_00465CC0()
     while (i < DAT_00A83C78) {
         Entry_00465CC0* entry = DAT_00A83C6C[i];
         buffer[0] = 0;
-        DAT_00887048->ReadString(entry->Name, "ToTile", 0, buffer, 0x3C);
+        DAT_00887048->FUN_00528A10(entry->Name, "ToTile", 0, buffer, 0x3C);
 
         int tile = FUN_00544CE0(buffer);
         if (tile >= 0 && tile < DAT_00A8ED38) {

@@ -19,6 +19,31 @@ struct RulesClass
     // FUNCTION: GAMEMD 0x66D3A0
     bool Read_Colors(CCINIClass* pINI);
 
+
+    // Existing list readers: binary-confirmed section/allocator calls.
+    // Declaration: GAMEMD 0x6722F0 -- thiscall, one INI pointer, RET4.
+    bool Read_Countries(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x6725F0 -- thiscall, one INI pointer, RET4.
+    bool Read_SuperWeaponTypes(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672660 -- thiscall, one INI pointer, RET4.
+    bool Read_BuildingTypes(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x6726D0 -- thiscall, one INI pointer, RET4.
+    bool Read_TerrainTypes(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x6727D0 -- thiscall, one INI pointer, RET4.
+    bool Read_SmudgeTypes(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672840 -- thiscall, one INI pointer, RET4.
+    bool Read_OverlayTypes(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x6728B0 -- thiscall, one INI pointer, RET4.
+    bool Read_Animations(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672920 -- thiscall, one INI pointer, RET4.
+    bool Read_VoxelAnims(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672990 -- thiscall, one INI pointer, RET4.
+    bool Read_Warheads(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672A00 -- thiscall, one INI pointer, RET4.
+    bool Read_Particles(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672A70 -- thiscall, one INI pointer, RET4.
+    bool Read_ParticleSystems(CCINIClass* pINI);
+
     char               _pad0000[0x1A0];             // +0x0000
     int                unknown_1A0;                 // +0x01A0 (voc index read by 0x608260)
     char               unknown_01A4[0x6AC - 0x1A4];

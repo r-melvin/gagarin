@@ -20,16 +20,7 @@ struct Entry_00465CC0
 GG_STATIC_ASSERT(offsetof(Entry_00465CC0, Name) == 0x24);
 GG_STATIC_ASSERT(offsetof(Entry_00465CC0, ToTile) == 0xE58);
 
-struct Ini_00465CC0
-{
-    char opaque[4];
-
-    // FUNCTION: GAMEMD 0x528A10 — read a string value, or the default.
-    int ReadString(const char* section, const char* key, const char* fallback,
-                   char* buffer, int size);
-};
-// GLOBAL: GAMEMD 0x887048 — the INI being read.
-extern Ini_00465CC0* DAT_00887048;
+#include "../platform/ccini_class_methods.h"
 
 // GLOBAL: GAMEMD 0xA83C6C — the entry array.
 extern Entry_00465CC0** DAT_00A83C6C;

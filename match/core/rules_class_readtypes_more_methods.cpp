@@ -6,7 +6,7 @@
 // Shape (identical across all four, confirmed from the disasm):
 //   int n = pINI->GetKeyCount(Section);
 //   for (i = 0; i < n; ++i)
-//       if (pINI->ReadString(Section, pINI->GetKeyName(Section, i),
+//       if (pINI->FUN_00528A10(Section, pINI->GetKeyName(Section, i),
 //                            "", buffer, 0x20) != 0)
 //           <Type>_FindOrAllocate(buffer);
 //   return n > 0;
@@ -43,7 +43,7 @@ bool RulesClass::Read_Countries(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(CountriesSection, pINI->GetKeyName(CountriesSection, i),
+        if (pINI->FUN_00528A10(CountriesSection, pINI->GetKeyName(CountriesSection, i),
                              "", buffer, 0x20) != 0)
         {
             HouseType_FindOrAllocate(buffer);
@@ -59,7 +59,7 @@ bool RulesClass::Read_SuperWeaponTypes(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(SuperWeaponTypesSection, pINI->GetKeyName(SuperWeaponTypesSection, i),
+        if (pINI->FUN_00528A10(SuperWeaponTypesSection, pINI->GetKeyName(SuperWeaponTypesSection, i),
                              "", buffer, 0x20) != 0)
         {
             SuperWeaponType_FindOrAllocate(buffer);
@@ -75,7 +75,7 @@ bool RulesClass::Read_BuildingTypes(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(BuildingTypesSection, pINI->GetKeyName(BuildingTypesSection, i),
+        if (pINI->FUN_00528A10(BuildingTypesSection, pINI->GetKeyName(BuildingTypesSection, i),
                              "", buffer, 0x20) != 0)
         {
             BuildingType_FindOrAllocate(buffer);
@@ -91,7 +91,7 @@ bool RulesClass::Read_TerrainTypes(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(TerrainTypesSection, pINI->GetKeyName(TerrainTypesSection, i),
+        if (pINI->FUN_00528A10(TerrainTypesSection, pINI->GetKeyName(TerrainTypesSection, i),
                              "", buffer, 0x20) != 0)
         {
             TerrainType_FindOrAllocate(buffer);
@@ -107,7 +107,7 @@ bool RulesClass::Read_SmudgeTypes(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(SmudgeTypesSection, pINI->GetKeyName(SmudgeTypesSection, i),
+        if (pINI->FUN_00528A10(SmudgeTypesSection, pINI->GetKeyName(SmudgeTypesSection, i),
                              "", buffer, 0x20) != 0)
         {
             SmudgeType_FindOrAllocate(buffer);
@@ -123,7 +123,7 @@ bool RulesClass::Read_OverlayTypes(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString(OverlayTypesSection, pINI->GetKeyName(OverlayTypesSection, i),
+        if (pINI->FUN_00528A10(OverlayTypesSection, pINI->GetKeyName(OverlayTypesSection, i),
                              "", buffer, 0x20) != 0)
         {
             OverlayType_FindOrAllocate(buffer);
@@ -139,7 +139,7 @@ bool RulesClass::Read_Animations(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString("Animations", pINI->GetKeyName("Animations", i),
+        if (pINI->FUN_00528A10("Animations", pINI->GetKeyName("Animations", i),
                              "", buffer, 0x20) != 0)
         {
             AnimType_FindOrAllocate(buffer);
@@ -155,7 +155,7 @@ bool RulesClass::Read_VoxelAnims(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString("VoxelAnims", pINI->GetKeyName("VoxelAnims", i),
+        if (pINI->FUN_00528A10("VoxelAnims", pINI->GetKeyName("VoxelAnims", i),
                              "", buffer, 0x20) != 0)
         {
             VoxelAnimType_FindOrAllocate(buffer);
@@ -171,7 +171,7 @@ bool RulesClass::Read_Warheads(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString("Warheads", pINI->GetKeyName("Warheads", i),
+        if (pINI->FUN_00528A10("Warheads", pINI->GetKeyName("Warheads", i),
                              "", buffer, 0x20) != 0)
         {
             WarheadType_FindOrAllocate(buffer);
@@ -187,7 +187,7 @@ bool RulesClass::Read_Particles(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString("Particles", pINI->GetKeyName("Particles", i),
+        if (pINI->FUN_00528A10("Particles", pINI->GetKeyName("Particles", i),
                              "", buffer, 0x20) != 0)
         {
             ParticleType_FindOrAllocate(buffer);
@@ -203,7 +203,7 @@ bool RulesClass::Read_ParticleSystems(CCINIClass* pINI)
     char buffer[0x20];
     for (int i = 0; i < count; ++i)
     {
-        if (pINI->ReadString("ParticleSystems", pINI->GetKeyName("ParticleSystems", i),
+        if (pINI->FUN_00528A10("ParticleSystems", pINI->GetKeyName("ParticleSystems", i),
                              "", buffer, 0x20) != 0)
         {
             ParticleSystemType_FindOrAllocate(buffer);
