@@ -1757,7 +1757,7 @@ extern int DAT_00B0CE28;
 
 #include "../../ui/shape_header.h"
 #include "../../renderer/pixel_shift_view.h"
-struct ColorConvert;
+#include "../../_layout/color_convert.h"
 // GLOBAL: GAMEMD 0xA8F794 (declaration)
 extern ShapeHeader* DAT_00A8F794;
 // GLOBAL: GAMEMD 0xA8F798 (declaration)
@@ -3366,6 +3366,36 @@ void Tactical::FUN_006DA160()
     unknown_D98 = value;
 }
 
+// FUNCTION: GAMEMD 0x6DA180
+void Tactical::FUN_006DA180()
+{
+    if (unknown_D90.unknown_00 != 0 || unknown_D90.unknown_04 != 0) {
+        int left = unknown_D90.unknown_00;
+        int right = unknown_D98.unknown_00;
+        int top = unknown_D90.unknown_04;
+        int bottom = unknown_D98.unknown_04;
+        if (right < left) {
+            int temporary = left;
+            left = right;
+            right = temporary;
+        }
+        if (bottom < top) {
+            int temporary = top;
+            top = bottom;
+            bottom = temporary;
+        }
+        int width = right - left + 1;
+        int height = bottom - top + 1;
+        unsigned color = DAT_0087F6C4->Lookup(15);
+        RectangleStruct rectangle;
+        rectangle.X = left;
+        rectangle.Y = top;
+        rectangle.Width = width;
+        rectangle.Height = height;
+        DAT_00887314->DrawRectEx(&Viewport_00886FA0, &rectangle, color);
+    }
+}
+
 // GLOBAL: GAMEMD 0x84290C
 // Nine signed-offset lookup entries; retail indexes the middle at0x84291C.
 extern const int DAT_0084290C[9];
@@ -3451,6 +3481,26 @@ HRESULT __stdcall Tactical::GetClassID(CLSID* pClassID)
 #include "../../_layout/swizzle_manager_class.h"
 // GLOBAL: GAMEMD 0x87F7F4 (declaration)
 extern int DAT_0087F7F4;
+
+// FUNCTION: GAMEMD 0x6DA770
+bool Tactical::FUN_006DA770()
+{
+    if (DAT_00A8ECC8 == 1) {
+        ObjectClass* object = DAT_00A8ECBC[0];
+        if (object->vf_15() != 0) {
+            bool controlled;
+            if (Session_00A8B238.GameMode == 0)
+                controlled = object->vf_15()->IsInPlayerControl != 0;
+            else
+                controlled = object->vf_15()->IsControlledByCurrentPlayer();
+            if (!controlled) {
+                object->vf_84();
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
 // FUNCTION: GAMEMD 0x6DA7D0
 void Tactical::FUN_006DA7D0(CellClass* cell)
