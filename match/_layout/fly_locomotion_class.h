@@ -36,7 +36,7 @@
 //   Both vptrs are written by the constructor's last two stores:
 //     `MOV DWORD PTR [ESI],0x7E8AC0`     @0x004CCA0C   (base offset 0)
 //     `MOV DWORD PTR [ESI+0x4],0x7E89F4` @0x004CCA12   (base offset 4)
-//   The ILocomotion vtable 0x007E89F4 runs slots +0x00..+0x94 - 38 slots.
+//   The ILocomotion vtable 0x007E89F4 runs slots +0x00..+0xC4 - 50 slots.
 //
 //   AGREEMENT WITH THE MINE: all 24 constructor-mined offsets
 //   (0x00 0x04 0x18 0x1C 0x20 0x24 0x28 0x2C 0x30 0x34 0x38 0x40 0x44 0x48
@@ -95,19 +95,53 @@
 #include "coord_struct.h"
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
-#include "locomotion_class.h"
+#include "../movement/loco_base.h"
 
 // ---------------------------------------------------------------------------
 // FlyLocomotionClass (sizeof = 0x60).
 // ---------------------------------------------------------------------------
-class FlyLocomotionClass : public LocomotionLayoutView_0055A6C0
+// VTABLE: GAMEMD 0x7E8AC0 -- primary IPersistStream, 10 slots.
+// VTABLE: GAMEMD 0x7E89F4 -- secondary ILocomotion at +4, 50 slots.
+class FlyLocomotionClass : public LocomotionClass
 {
 public:
+    // Declaration: GAMEMD 0x4CC9A0 -- external default constructor.
+    FlyLocomotionClass();
+    // Inline no-init reconstruction observed in Load at 0x4CFCD8.
+    FlyLocomotionClass(int) : LocomotionClass(0) {}
+    // Scalar deleting provider 0x4D03A0 is annotated in the owning TU.
+    virtual ~FlyLocomotionClass() {}
+    virtual HRESULT __stdcall GetClassID(CLSID* classID); // primary 3, 4CFC80
+    virtual HRESULT __stdcall Load(IStream* stream);      // primary 5, 4CFCC0
+    virtual int Size();                                // primary 9, 4D0390
+    // Secondary ILocomotion overrides. Native stack-self is complete+4.
+    virtual HRESULT __stdcall LinkToObject(FootClass* object); // 3, 4CCA20
+    virtual bool __stdcall IsMoving();                         // 4, 4CCA90
+    virtual LocoCoord __stdcall Destination();                 // 5, 4CCAE0
+    virtual Matrix3D __stdcall DrawMatrix(unsigned int* key);  // 9, 4CF610
+    virtual Matrix3D __stdcall ShadowMatrix(unsigned int* key);// 10,4CFB00
+    virtual LocoPoint2D __stdcall DrawPoint();                 // 11,4CF830
+    virtual LocoPoint2D __stdcall ShadowPoint();               // 12,4CF940
+    virtual bool __stdcall Process();                         // 16,4CCB40
+    virtual void __stdcall MoveTo(LocoCoord to);               // 17,4CCC80
+    virtual void __stdcall StopMoving();                      // 18,4CCFD0
+    virtual void __stdcall DoTurn(unsigned long dir);          // 19,4CFC10
+    virtual bool __stdcall PowerOff();                        // 23,4CFD20
+    virtual bool __stdcall IsPowered();                       // 24,4CFD90
+    virtual bool __stdcall IsIonSensitive();                  // 25,4CFDA0
+    virtual int __stdcall InWhichLayer();                     // 29,4CFCF0
+    virtual bool __stdcall IsMovingNow();                     // 32,4CCAC0
+    virtual int __stdcall ApparentSpeed();                    // 33,4CFE20
+    virtual int __stdcall GetStatus();                        // 36,4CFE50
+    virtual void __stdcall AcquireHunterSeekerTarget();       // 37,4CFE80
+    // Declaration: GAMEMD 0x4CFC40 -- complete-object __thiscall helper.
+    char FUN_004CFC40() const;
+
     char        AirportBound;     // +0x18 ctor `MOV BYTE [ESI+0x18],AL` @0x004CC9AD (=0);
                                   //       read as a byte @0x004CD9F5, @0x004CE99A, @0x004CE9B5
     char        unknown_19[3];    // +0x19 alignment; no access at any width
 
-    CoordStruct Destination;      // +0x1C ctor `LEA ECX,[ESI+0x1C]` @0x004CC9AA then
+    CoordStruct Destination_;      // +0x1C ctor `LEA ECX,[ESI+0x1C]` @0x004CC9AA then
                                   //       X @0x004CC9B6, Y @0x004CC9BE, Z @0x004CC9C7,
                                   //       all three from the globals 0x008B3C78 /
                                   //       0x008B3C7C / 0x008B3C80. Confirmed as one
@@ -182,7 +216,7 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, AirportBound) == 0x18);
-GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, Destination)  == 0x1C);
+GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, Destination_)  == 0x1C);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, unknown_28)   == 0x28);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, HasMoveOrder) == 0x34);
 GG_STATIC_ASSERT(offsetof(FlyLocomotionClass, FlightLevel)  == 0x38);

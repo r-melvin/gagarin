@@ -752,18 +752,7 @@ public:
     unsigned char unknown_[0x30 - sizeof(LocomotionClass)];
 };
 
-// CALLEE: GAMEMD 0x004CC9A0 (decl; reloc) -- FlyLocomotionClass default constructor.
-class FlyLocomotionClass : public LocomotionClass
-{
-public:
-    FlyLocomotionClass();
-    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
-    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
-    virtual HRESULT __stdcall Load(IStream* pStm);
-    virtual int Size();
-    virtual int __stdcall InWhichLayer();
-    unsigned char unknown_[0x60 - sizeof(LocomotionClass)];
-};
+#include "../_layout/fly_locomotion_class.h"
 
 // CALLEE: GAMEMD 0x00718000 (decl; reloc) -- TeleportLocomotionClass default constructor.
 class TeleportLocomotionClass : public LocomotionClass

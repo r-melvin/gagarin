@@ -8,18 +8,10 @@
 //   from the CALL displacements. None of these classes is bound by YRpp,
 //   so all keep placeholder names built from their own addresses.
 //
-// Two destructor shapes for classes that carry more than one vtable, both
-// relaying to the same base destructor at 0x55A6F0:
-//
-//   COMREL  45 bytes: seat three vtables (+0x00, +0x04, +0x18), release the
-//           COM interface held at one member, then call the base destructor.
-//           `MOV ECX,[EAX]; PUSH EAX; CALL [ECX+8]` is an `__stdcall` COM
-//           virtual at slot 2 — IUnknown::Release. Four instantiations, varying
-//           in their three vtables and in where the interface pointer sits.
-//   SDD43   43 bytes: seat two vtables (+0x00, +0x04), call the base
-//           destructor, then free the object when the caller's deleting bit is
-//           set — the scalar-deleting destructor of the same kind of class.
-//           Three instantiations, varying only in their two vtables.
+// COM-release destructors seat three vtables, release the held interface,
+// then relay to the shared base destructor at 0x55A6F0. Fly's deleting
+// destructor is emitted by its canonical class in fly_locomotion_com_methods.
+// The release dispatch is IUnknown::Release, a stack-self COM call.
 //
 // Phrasing notes (two levers, both worth the whole family):
 //   * The destructors are declared `throw()`. That was measured under the
@@ -112,34 +104,6 @@ public:                                                                   \
 
 #define GG_COMREL_BODY(TAG) ComRel_##TAG::~ComRel_##TAG() throw() {}
 
-// SDD43. Only the two seated vtables reach the code, so only they are modelled;
-// the base destructor is taken as a __fastcall extern rather than a real base
-// so the deleting tail can be written directly.
-// FUNCTION: GAMEMD 0x55A6F0 (decl; reloc) — the same base destructor COMREL
-// relays to, reached here through a plain declaration.
-void PrimaryBaseDtor(void* self);
-
-struct MultiVtableObject
-{
-    char* Vptr00;                 /* +0x0000 */
-    char* Vptr04;                 /* +0x0004 */
-
-    MultiVtableObject* FUN_004D03A0(char flags);
-};
-GG_STATIC_ASSERT(offsetof(MultiVtableObject, Vptr04) == 0x4);
-
-#define GG_SDD43_BODY(TAG, VT0, VT4)                                      \
-MultiVtableObject* MultiVtableObject::FUN_##TAG(char flags)               \
-{                                                                         \
-    this->Vptr00 = &VT0;                                                  \
-    this->Vptr04 = &VT4;                                                  \
-    PrimaryBaseDtor(this);                                                \
-    if (flags & 1) {                                                      \
-        gg_free(this);                                                    \
-    }                                                                     \
-    return this;                                                          \
-}
-
 // VTABLE: GAMEMD 0x007E7F7C
 // VTABLE: GAMEMD 0x007E7EB0
 // VTABLE: GAMEMD 0x007E7E8C
@@ -161,11 +125,6 @@ GG_STATIC_ASSERT(offsetof(ComRel_004AF5E0, Holder) == 0x68 &&
                  offsetof(ComRel_004B5B00, Holder) == 0x2C &&
                  offsetof(ComRel_0069ECF0, Holder) == 0x68 &&
                  offsetof(ComRel_0075AB00, Holder) == 0x38);
-
-// VTABLE: GAMEMD 0x007E8AC0
-extern char VT_007E8AC0;
-// VTABLE: GAMEMD 0x007E89F4
-extern char VT_007E89F4;
 
 // Address -> class map for COMREL. A destructor cannot be redeclared at
 // namespace scope, so its reccmp `// FUNCTION:` annotations live on the bodies

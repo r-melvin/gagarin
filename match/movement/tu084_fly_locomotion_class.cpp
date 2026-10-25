@@ -42,6 +42,7 @@
 
 #include "fly_locomotion_leaf_methods.h"
 #include "loco_base.h"
+#include "../_layout/fly_locomotion_class.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E8AC0 — the persist vtable (base offset 0).
@@ -92,17 +93,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-struct Obj_004D0390;
-
-struct Obj_004D0390
-{
-    // FUNCTION: GAMEMD 0x4D0390
-    int FUN_004D0390() const;
-};
-
-
-
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718
@@ -656,7 +646,7 @@ int __stdcall FlyLocoDrawLayer_004CFE50(FlyLocoIface* self)
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4D0390
 // Returns a constant. Vtable slot 9 of FlyLocomotionClass (RTTI).
-int Obj_004D0390::FUN_004D0390() const
+int FlyLocomotionClass::Size()
 {
     return 0x60;
 }
