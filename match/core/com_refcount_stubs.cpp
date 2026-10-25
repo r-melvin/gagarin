@@ -31,15 +31,3 @@ int __stdcall FUN_004E8250(int)
 {
     return 1;
 }
-
-// FUNCTION: GAMEMD 0x6CF4B0 -- SwizzleManagerClass::AddRef (vtable slot 1)
-int __stdcall FUN_006CF4B0(int)
-{
-    return 1;
-}
-
-// FUNCTION: GAMEMD 0x6CF4C0 -- SwizzleManagerClass::Release (vtable slot 2)
-int __stdcall FUN_006CF4C0(int)
-{
-    return 1;
-}

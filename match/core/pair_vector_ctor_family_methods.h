@@ -27,6 +27,7 @@
 // byte. 0x6CF540 copies SwizzlePointerClass as two dwords with no LEA, which
 // is cl's implicit bitwise copy.
 #include "../_layout/anger_scout_struct.h"
+#include "../_layout/swizzle_pointer_class.h"
 
 struct SubzoneConnectionStruct {
     SubzoneConnectionStruct() : A(0), B(0) {}
@@ -35,14 +36,6 @@ struct SubzoneConnectionStruct {
     bool operator!=(const SubzoneConnectionStruct& o) const { return !(*this == o); }
     int A;   // +0x0
     char B;  // +0x4
-};
-class SwizzlePointerClass {
-public:
-    SwizzlePointerClass() : A(0), B(0) {}
-    bool operator==(const SwizzlePointerClass& o) const { return A == o.A; }
-    bool operator!=(const SwizzlePointerClass& o) const { return !(*this == o); }
-    int A;  // +0x0
-    int B;  // +0x4
 };
 GG_STATIC_ASSERT(sizeof(SubzoneConnectionStruct) == 8 && sizeof(SwizzlePointerClass) == 8);
 

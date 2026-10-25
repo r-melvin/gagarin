@@ -454,7 +454,6 @@ template class VectorClass<SpawnManagerClass*>;
 template class VectorClass<unsigned long>;
 
 // FUNCTION: GAMEMD 0x006CF850
-// FUNCTION: GAMEMD 0x006CF8A0
 // VectorClass<SwizzlePointerClass> -- reseats retail vtable 0x007F4154; locator 0x0080B7C8 -> type descriptor 0x00842758
 //   `.?AV?$VectorClass@VSwizzlePointerClass@@@@`.
 template class VectorClass<SwizzlePointerClass>;

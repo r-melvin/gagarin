@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 141 remaining 73-byte deleting-destructor bodies are bound here through
+// 140 remaining 73-byte deleting-destructor bodies are bound here through
 // 74 VectorClass<T> base-destruction views. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low

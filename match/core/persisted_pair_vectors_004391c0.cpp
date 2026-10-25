@@ -10,7 +10,7 @@
 #include "persisted_pair_vectors_004391c0.h"
 
 // DAT_00B0C110 is declared and binary-annotated by stream_persist_methods.h.
-// FUNCTION: GAMEMD 0x006CF240 (declaration; direct call relocation).
+// FUNCTION: GAMEMD 0x006CF240 (decl; reloc) -- external direct call.
 // Its __stdcall ABI and (registry, pointer-address) argument order are also
 // visible in the matched load paths at 0x438B40 and 0x439260.
 extern "C" long __stdcall FUN_006CF240(void* registry, void** pointer);

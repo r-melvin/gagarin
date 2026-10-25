@@ -18268,11 +18268,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/vector_dtor_family_methods.cpp",
+  "tu": "match/core/vector_pair_dynamic_slot5_slot_methods.cpp",
   "addr": "0x006CF8A0",
-  "sym": "??_G?$VectorClass@VSwizzlePointerClass@@@@UAEPAXI@Z",
+  "sym": "??_G?$DynamicVectorClass@VSwizzlePointerClass@@@@UAEPAXI@Z",
   "len": "0x49",
-  "name": "VectorClass<SwizzlePointerClass>::`scalar deleting destructor'",
+  "name": "DynamicVectorClass<SwizzlePointerClass>::scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },
@@ -57095,20 +57095,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/com_refcount_stubs.cpp",
+  "tu": "match/core/swizzle_manager_class.cpp",
   "addr": "0x6CF4B0",
-  "sym": "?FUN_006CF4B0@@YGHH@Z",
+  "sym": "?AddRef@SwizzleManagerClass@@UAGKXZ",
   "len": "0x8",
-  "name": "FUN_006CF4B0",
+  "name": "?AddRef@SwizzleManagerClass@@UAGKXZ",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/com_refcount_stubs.cpp",
+  "tu": "match/core/swizzle_manager_class.cpp",
   "addr": "0x6CF4C0",
-  "sym": "?FUN_006CF4C0@@YGHH@Z",
+  "sym": "?Release@SwizzleManagerClass@@UAGKXZ",
   "len": "0x8",
-  "name": "FUN_006CF4C0",
+  "name": "?Release@SwizzleManagerClass@@UAGKXZ",
   "status": "matched",
   "pct": 100
  },
@@ -99162,6 +99162,69 @@
   "sym": "_$E94",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B76230)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF1D0",
+  "sym": "??1SwizzleManagerClass@@QAE@XZ",
+  "len": "0x5e",
+  "name": "??1SwizzleManagerClass@@QAE@XZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF230",
+  "sym": "?vf_3@SwizzleManagerClass@@UAGJXZ",
+  "len": "0xe",
+  "name": "?vf_3@SwizzleManagerClass@@UAGJXZ",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF240",
+  "sym": "?vf_4@SwizzleManagerClass@@UAGJPAX@Z",
+  "len": "0x76",
+  "name": "?vf_4@SwizzleManagerClass@@UAGJPAX@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF410",
+  "sym": "?vf_9@SwizzleManagerClass@@UAGJPAI@Z",
+  "len": "0x1b",
+  "name": "?vf_9@SwizzleManagerClass@@UAGJPAI@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF490",
+  "sym": "?vf_5@SwizzleManagerClass@@UAGJPAXPAPAX@Z",
+  "len": "0x1f",
+  "name": "?vf_5@SwizzleManagerClass@@UAGJPAXPAPAX@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF4D0",
+  "sym": "?vf_7@SwizzleManagerClass@@UAGJHH@Z",
+  "len": "0x8",
+  "name": "?vf_7@SwizzleManagerClass@@UAGJHH@Z",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/swizzle_manager_class.cpp",
+  "addr": "0x6CF4E0",
+  "sym": "?vf_8@SwizzleManagerClass@@UAGJHHH@Z",
+  "len": "0x8",
+  "name": "?vf_8@SwizzleManagerClass@@UAGJHHH@Z",
   "status": "matched",
   "pct": 100
  }
