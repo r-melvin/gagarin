@@ -2164,9 +2164,8 @@ void ScenarioClass::FUN_00689470(Gg_IStream* const stream)
         unknown_350C.AddItem(item);
     }
     for (i = 0; i < unknown_34D4.Count; ++i) {
-        // Canonical vf_4 still spells its pointer-sized argument as int.
-        // 0x6895E4..0x6895ED passes this exact element address on the stack.
-        DAT_00B0C110.SwizzleManagerClass::vf_4((int)&unknown_34D4.Items[i]);
+        // 0x6895E4..0x6895ED passes this DWORD-slot address to 0x6CF240.
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_34D4.Items[i]);
     }
     if (unknown_11F8.unknown_00[0])
         unknown_11F4 = FUN_00734E60(unknown_11F8.unknown_00, false, STR_0083D838, 0x19D0);

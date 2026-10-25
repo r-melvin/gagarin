@@ -4196,10 +4196,8 @@ HRESULT __stdcall Tactical::Load(IStream* stream)
     new (this) Tactical(AbstractNoInit());
     unknown_DB0 = 0;
     for (int i = 0; i < unknown_E0; ++i) {
-        // 0x6DBD69 pushes the address of each four-byte pointer to6CF240.
-        // The canonical placeholder slot takes an opaque32-bit integer;
-        // this ABI conversion preserves that binary-proven pointer argument.
-        DAT_00B0C110.SwizzleManagerClass::vf_4((int)&unknown_E4[i]);
+        // 0x6DBD69 passes this four-byte pointer-field address to 0x6CF240.
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E4[i]);
     }
     Pair_006D9F80 point = unknown_D64;
     if (FUN_006D8640(&point) && !DAT_00A8ED6B) {

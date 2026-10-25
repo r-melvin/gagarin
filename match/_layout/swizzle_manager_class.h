@@ -4,7 +4,8 @@
 //   Bases in RTTI (declaration) order: ISwizzle +0x0.
 // VTABLE: GAMEMD 0x7F4108 (10 slots)
 //   Virtual slots are named vf_<slot>; the binary attests no names. Slots past IUnknown are __stdcall (each body reads `this` from the stack); argument counts come from RET n less `this`;
-//   return types are not recovered (void placeholder). Member offsets come from constructor stores only.
+//   Slot 4 returns HRESULT; other slots past IUnknown retain unrecovered void
+//   return placeholders. Member offsets come from constructor stores only.
 #ifndef GG_MATCH_LAYOUT_SWIZZLE_MANAGER_CLASS_H
 #define GG_MATCH_LAYOUT_SWIZZLE_MANAGER_CLASS_H
 
@@ -19,7 +20,11 @@ public:
     virtual ULONG __stdcall AddRef(void);                       // 1  0x6CF4B0: override (SDK declaration)
     virtual ULONG __stdcall Release(void);                      // 2  0x6CF4C0: override (SDK declaration)
     virtual void __stdcall vf_3();                              // 3  0x6CF230: RET 0x4, this on the stack
-    virtual void __stdcall vf_4(int a1);                        // 4  0x6CF240: RET 0x8, this on the stack
+    // Declaration: GAMEMD 0x6CF240 -- stack this and writable DWORD-slot address; RET 8.
+    // Null address returns E_POINTER; a zero DWORD returns S_OK immediately.
+    // A nonzero DWORD is queued with its address, then zeroed; failed queue
+    // growth also zeroes that DWORD and returns S_OK (0x6CF2A8..0x6CF2B5).
+    virtual HRESULT __stdcall vf_4(void* pointerFieldAddress);   // 4
     virtual void __stdcall vf_5(int a1, int a2);                // 5  0x6CF490: RET 0xC, this on the stack
     virtual void __stdcall vf_6(int a1, int a2);                // 6  0x6CF2C0: RET 0xC, this on the stack
     virtual void __stdcall vf_7(int a1, int a2);                // 7  0x6CF4D0: RET 0xC, this on the stack
