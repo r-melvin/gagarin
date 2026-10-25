@@ -7,6 +7,7 @@
 // Mission values 5, 19 and 28 are compared as numbers only.
 #include "../_layout/mission_class.h"
 #include "frame_counter.h"
+#include "mission_class_methods.h"
 #include "../_layout/obj_004a1d30.h"
 
 // Frames left on a count-down timer (-1 start = stopped). Descriptive local
@@ -426,6 +427,12 @@ void MissionClass::vf_13(Obj_004A1D30* crc)
     crc->FUN_004A1D50(MissionStatus);
     crc->FUN_004A1D50(Inline_005B3060(UpdateTimer));
     crc->FUN_004A1D50(CurrentMissionStartTime);
+}
+
+// FUNCTION: GAMEMD 0x5B3A00
+MissionControlClass* MissionClass::FUN_005B3A00()
+{
+    return &DAT_00A8E3A8[CurrentMission];
 }
 
 // FUNCTION: GAMEMD 0x5B3A10

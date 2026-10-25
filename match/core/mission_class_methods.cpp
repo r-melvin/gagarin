@@ -8,7 +8,7 @@
 //   FUNCTION: GAMEMD 0x5B36E0   MissionControlClass::IsRecruitableMission (__fastcall)
 //   FUNCTION: GAMEMD 0x5B3740   MissionControlClass::GetName              (__thiscall)
 //   FUNCTION: GAMEMD 0x5B3910   MissionControlClass::FindIndex            (__fastcall)
-//   GLOBAL:   GAMEMD 0xA8E3A8   MissionControlClass MissionControls[]
+//   GLOBAL:   GAMEMD 0xA8E3A8   MissionControlClass DAT_00A8E3A8[]
 //   GLOBAL:   GAMEMD 0x816CAC   const char* MissionControlNames[]
 //   GLOBAL:   GAMEMD 0x817474   "<none>" (the name of an unset mission)
 //   LIBRARY:  GAMEMD 0x7C8D20   _stricmp  (CRT; excluded from match target)
@@ -24,7 +24,6 @@
 #include "mission_class_methods.h"
 
 // Reloc-normalised externals (addresses confirmed from the disasm above).
-extern MissionControlClass MissionControls[];      // 0xA8E3A8
 extern const char*         MissionControlNames[];  // 0x816CAC
 int __cdecl MC_stricmp(const char* a, const char* b);  // 0x7C8D20
 
@@ -33,7 +32,21 @@ bool MissionControlClass::IsRecruitableMission(int mission)
 {
     if (mission == -1)
         return true;
-    return MissionControls[mission].Recruitable;
+    return DAT_00A8E3A8[mission].Recruitable;
+}
+
+// FUNCTION: GAMEMD 0x5B3700
+MissionControlClass::MissionControlClass()
+{
+    ArrayIndex = -1;
+    NoThreat = false;
+    Zombie = false;
+    Recruitable = true;
+    Paralyzed = false;
+    Retaliate = true;
+    Scatter = true;
+    Rate = 0.016;
+    AARate = 0.016;
 }
 
 // FUNCTION: GAMEMD 0x5B3740  MissionControlClass::GetName (__thiscall)

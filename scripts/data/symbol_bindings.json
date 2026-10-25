@@ -2438,6 +2438,7 @@
  "?DAT_00A8E360@@3V?$DynamicVectorClass@PAVObjectClass@@@@A": "0x00A8E360",
  "?DAT_00A8E378@@3_NA": "0x00A8E378",
  "?DAT_00A8E390@@3V?$DynamicVectorClass@PAVAircraftClass@@@@A": "0x00A8E390",
+ "?DAT_00A8E3A8@@3PAUMissionControlClass@@A": "0x00A8E3A8",
  "?DAT_00A8E3A8@@3PAUObj_005B3700@@A": "0x00A8E3A8",
  "?DAT_00A8E7AC@@3HA": "0x00A8E7AC",
  "?DAT_00A8E7B0@@3UStraw_00A8E7B0@@A": "0x00A8E7B0",

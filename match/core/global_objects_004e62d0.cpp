@@ -11,6 +11,7 @@
 #include <objbase.h>
 #include "../_rt/gg_static_assert.h"
 #include "header_tuning_globals.h"
+#include "mission_class_methods.h"
 #include "version_class_ctor_methods.h"
 #include "../combat/random_straw.h"
 #include "../ui/game_options_class_methods.h"
@@ -54,17 +55,9 @@ TiberianSunClassFactory DAT_00A8E8C8;
 
 // ---- an array of 32 records with an out-of-line constructor ----------------------------------------------------------
 
-struct Obj_005B3700
-{
-    // FUNCTION: GAMEMD 0x5B3700 (decl; reloc)
-    Obj_005B3700();
-    unsigned char unknown_00[0x20];
-};
-GG_STATIC_ASSERT(sizeof(Obj_005B3700) == 0x20);
-
 // SYNTHETIC: GAMEMD 0x4E7CF0
 // GLOBAL: GAMEMD 0xA8E3A8
-Obj_005B3700 DAT_00A8E3A8[32];
+MissionControlClass DAT_00A8E3A8[32];
 
 // ---- objects with destructors ----------------------------------------------------------------------------------------
 

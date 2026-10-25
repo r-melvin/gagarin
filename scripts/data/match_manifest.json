@@ -61046,22 +61046,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/mission_class_methods.cpp",
   "addr": "0x5B3700",
-  "sym": "??0Obj_005B3700@@QAE@XZ",
+  "sym": "??0MissionControlClass@@QAE@XZ",
   "len": "0x35",
-  "name": "Obj_005B3700::Obj_005B3700",
+  "name": "MissionControlClass::MissionControlClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/mission_class_slots.cpp",
   "addr": "0x5B3A00",
-  "sym": "?FUN_005B3A00@@YIPAUSlot_005B3A00@@PAUObj_005B3A00@@@Z",
+  "sym": "?FUN_005B3A00@MissionClass@@QAEPAUMissionControlClass@@XZ",
   "len": "0xf",
-  "name": "FUN_005B3A00",
+  "name": "MissionClass::FUN_005B3A00",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_b.cpp",

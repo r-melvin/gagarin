@@ -32,6 +32,9 @@ struct MissionControlClass
     double Rate;          // +0x10
     double AARate;        // +0x18
 
+    // Constructor at GAMEMD 0x5B3700; implemented in mission_class_methods.cpp.
+    MissionControlClass();
+
     // Declared ascending by retail address (reccmp/isle TU discipline).
     static bool IsRecruitableMission(int mission);  // GAMEMD 0x5B36E0
     const char*            GetName();                          // GAMEMD 0x5B3740
@@ -39,9 +42,20 @@ struct MissionControlClass
 };
 
 GG_STATIC_ASSERT(offsetof(MissionControlClass, ArrayIndex)  == 0x00);
+GG_STATIC_ASSERT(offsetof(MissionControlClass, NoThreat)    == 0x04);
+GG_STATIC_ASSERT(offsetof(MissionControlClass, Zombie)      == 0x05);
+GG_STATIC_ASSERT(offsetof(MissionControlClass, Paralyzed)   == 0x07);
+GG_STATIC_ASSERT(offsetof(MissionControlClass, Retaliate)   == 0x08);
+GG_STATIC_ASSERT(offsetof(MissionControlClass, Scatter)     == 0x09);
 GG_STATIC_ASSERT(offsetof(MissionControlClass, Recruitable) == 0x06);
 GG_STATIC_ASSERT(offsetof(MissionControlClass, Rate)        == 0x10);
 GG_STATIC_ASSERT(offsetof(MissionControlClass, AARate)      == 0x18);
 GG_STATIC_ASSERT(sizeof(MissionControlClass)                == 0x20);
+
+// GLOBAL: GAMEMD 0x00A8E3A8
+// 0x5B36E8/0x5B3A06 scale indices by 0x20; the native global constructor
+// 0x4E7CF0 constructs 32 records with the constructor at 0x5B3700.
+extern MissionControlClass DAT_00A8E3A8[32];
+GG_STATIC_ASSERT(sizeof(DAT_00A8E3A8) == 0x400);
 
 #endif  // GG_MATCH_CORE_MISSION_CLASS_METHODS_H

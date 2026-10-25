@@ -195,8 +195,6 @@ GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(Obj_00645C50, unknown_0C) == 0xC);
 
 
-
-
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -525,37 +523,6 @@ struct Obj_005657A0
 };
 GG_STATIC_ASSERT(offsetof(Obj_005657A0, unknown_13C) == 0x13C);
 
-struct Obj_005B3700
-{
-    int unknown_0;
-    char unknown_4;
-    char unknown_5;
-    char unknown_6;
-    char unknown_7;
-    char unknown_8;
-    char unknown_9;
-    char Pad_0A[6];
-    double unknown_10;
-    double unknown_18;
-
-    Obj_005B3700();
-};
-GG_STATIC_ASSERT(offsetof(Obj_005B3700, unknown_10) == 0x10);
-
-struct Slot_005B3A00
-{
-    char Bytes[0x20];
-};
-
-// GLOBAL: GAMEMD 0x00A8E3A8 (32-byte records)
-extern "C" Slot_005B3A00 DAT_00A8E3A8[];
-
-struct Obj_005B3A00
-{
-    char Pad_00[0xAC];
-    int unknown_AC;
-};
-GG_STATIC_ASSERT(offsetof(Obj_005B3A00, unknown_AC) == 0xAC);
 
 struct Iface_005BF500
 {

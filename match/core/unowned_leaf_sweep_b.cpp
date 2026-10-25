@@ -207,58 +207,6 @@ int __stdcall FUN_0056BC50(const Cell_0050DEF0* cell)
     return cell->X / 4 + (cell->Y / 4) * 130 + 0x83;
 }
 
-struct Obj_005B3700
-{
-    int unknown_0;
-    char unknown_4;
-    char unknown_5;
-    char unknown_6;
-    char unknown_7;
-    char unknown_8;
-    char unknown_9;
-    char Pad_0A[6];
-    double unknown_10;
-    double unknown_18;
-
-    Obj_005B3700();
-};
-GG_STATIC_ASSERT(offsetof(Obj_005B3700, unknown_10) == 0x10);
-
-// FUNCTION: GAMEMD 0x005B3700
-Obj_005B3700::Obj_005B3700()
-{
-    unknown_0 = -1;
-    unknown_4 = 0;
-    unknown_5 = 0;
-    unknown_6 = 1;
-    unknown_7 = 0;
-    unknown_8 = 1;
-    unknown_9 = 1;
-    unknown_10 = 0.016;
-    unknown_18 = 0.016;
-}
-
-struct Slot_005B3A00
-{
-    char Bytes[0x20];
-};
-
-// GLOBAL: GAMEMD 0x00A8E3A8 (32-byte records)
-extern "C" Slot_005B3A00 DAT_00A8E3A8[];
-
-struct Obj_005B3A00
-{
-    char Pad_00[0xAC];
-    int unknown_AC;
-};
-GG_STATIC_ASSERT(offsetof(Obj_005B3A00, unknown_AC) == 0xAC);
-
-// FUNCTION: GAMEMD 0x005B3A00
-Slot_005B3A00* FUN_005B3A00(Obj_005B3A00* self)
-{
-    return &DAT_00A8E3A8[self->unknown_AC];
-}
-
 struct Iface_005BF500
 {
     virtual void vf_0() = 0;

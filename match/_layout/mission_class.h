@@ -26,6 +26,8 @@
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x08);
 GG_STATIC_ASSERT(sizeof(CDTimerClass)             == 0xC);
 
+struct MissionControlClass;
+
 // MissionClass  (0xAC..0xD3, sizeof = 0xD4)
 // Retail RTTI 0x817B18 establishes the class key; public access preserves this ABI view.
 // VTABLE: GAMEMD 0x7EDCC0 (IPersistStream side)
@@ -82,6 +84,9 @@ public:
     virtual int vf_154();                                      // 154 0x5B2FA0: returns 450
     virtual int vf_155();                                      // 155 0x5B2FB0: returns 450
     virtual int vf_156();                                      // 156 0x5B2FC0: returns 450
+    // FUNCTION: GAMEMD 0x5B3A00 (decl; reloc)
+    MissionControlClass* FUN_005B3A00();
+
     int           CurrentMission;            // +0xAC  (Mission enum, ctor = -1)
     int           SuspendedMission;          // +0xB0  (Mission enum, ctor = -1)
     int           QueuedMission;             // +0xB4  (Mission enum, ctor = -1)
