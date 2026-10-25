@@ -4453,11 +4453,11 @@
  {
   "tu": "match/core/com_member_release_family_methods.cpp",
   "addr": "0x4D0430",
-  "sym": "?FUN_004D0430@@YIXPAUComOwner_004B4D50@@@Z",
+  "sym": "?Release@FlyDrawInterfaceHolder@@QAEXXZ",
   "len": "0xd",
-  "name": "FUN_004D0430",
+  "name": "FlyDrawInterfaceHolder::Release",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/com_member_release_family_methods.cpp",
@@ -25283,20 +25283,20 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF830",
-  "sym": "?GetDrawOffset@FlyLocoOffset@@QAG?AUPair_004CF830@@XZ",
+  "sym": "?DrawPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x106",
-  "name": "FlyLocomotionClass::Draw_Offset",
+  "name": "FlyLocomotionClass::DrawPoint",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCA20",
-  "sym": "?FlyLocoLinkTo_004CCA20@@YGJPAUFlyLocoIface@@PAUFoot_004CCA20@@@Z",
+  "sym": "?LinkToObject@FlyLocomotionClass@@UAGJPAVFootClass@@@Z",
   "len": "0x50",
-  "name": "FlyLocomotionClass::LinkTo",
+  "name": "FlyLocomotionClass::LinkToObject",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
@@ -25310,38 +25310,38 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCA90",
-  "sym": "?FlyLocoIsToHaveShadow_004CCA90@@YGHPAUFlyLocoIface@@@Z",
+  "sym": "?IsMoving@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x2e",
-  "name": "FlyLocomotionClass::IsToHaveShadow",
+  "name": "FlyLocomotionClass::IsMoving",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCAC0",
-  "sym": "?FlyLocoIsPowered_004CCAC0@@YGDPAUFlyLocoIface@@@Z",
+  "sym": "?IsMovingNow@FlyLocomotionClass@@UAG_NXZ",
   "len": "0x1e",
-  "name": "FlyLocomotionClass::Slot80",
+  "name": "FlyLocomotionClass::IsMovingNow",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CCAE0",
-  "sym": "?GetDestination@FlyLocoIface@@QAG?AUCoord_004CCAE0@@XZ",
+  "sym": "?Destination@FlyLocomotionClass@@UAG?AULocoCoord@@XZ",
   "len": "0x51",
   "name": "FlyLocomotionClass::Destination",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF940",
-  "sym": "?GetShadowOffset@FlyLocoIface@@QAG?AUPair_004CF940@@XZ",
+  "sym": "?ShadowPoint@FlyLocomotionClass@@UAG?AULocoPoint2D@@XZ",
   "len": "0x10",
-  "name": "FlyLocomotionClass::ShadowOffset",
+  "name": "FlyLocomotionClass::ShadowPoint",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
@@ -25364,20 +25364,20 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFE20",
-  "sym": "?FlyLocoScaledRate_004CFE20@@YGHPAUFlyLocoIface@@@Z",
+  "sym": "?ApparentSpeed@FlyLocomotionClass@@UAGHXZ",
   "len": "0x22",
-  "name": "FlyLocomotionClass::Slot84",
+  "name": "FlyLocomotionClass::ApparentSpeed",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CFE50",
-  "sym": "?FlyLocoDrawLayer_004CFE50@@YGHPAUFlyLocoIface@@@Z",
+  "sym": "?GetStatus@FlyLocomotionClass@@UAGHXZ",
   "len": "0x2f",
-  "name": "FlyLocomotionClass::DrawLayer",
+  "name": "FlyLocomotionClass::GetStatus",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
@@ -97197,20 +97197,20 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC7C0",
-  "sym": "_$E1",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_008B3CB0)",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CC7E0",
-  "sym": "_$E4",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "dynamic initializer (DAT_008B3C98)",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/economy/tu097_house_type_class.cpp",

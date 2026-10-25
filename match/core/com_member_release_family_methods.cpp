@@ -9,6 +9,7 @@
 //   entry point. Ordered ascending by retail address.
 
 #include "com_member_release_family_methods.h"
+#include "../movement/fly_locomotion_draw_offset_methods.h"
 
 // FUNCTION: GAMEMD 0x004B4D50
 GG_COM_MEMBER_RELEASE_BODY(004B4D50)
@@ -17,7 +18,13 @@ GG_COM_MEMBER_RELEASE_BODY(004B4D50)
 GG_COM_MEMBER_RELEASE_BODY(004B4D60)
 
 // FUNCTION: GAMEMD 0x004D0430
-GG_COM_MEMBER_RELEASE_BODY(004D0430)
+void FlyDrawInterfaceHolder::Release()
+{
+    IFlyControl* held = Held;
+    if (held != 0) {
+        held->Release();
+    }
+}
 
 // FUNCTION: GAMEMD 0x004E02C0
 GG_COM_MEMBER_RELEASE_BODY(004E02C0)

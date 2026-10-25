@@ -5542,6 +5542,7 @@
  "?HouseTypeDesc_TagClass@@3PADA": "0x008249E8",
  "?HouseType_FindIndexOfName_005051E0@@YIHPBD@Z": "0x005117D0",
  "?HouseType_FindOrAllocate@@YIHPBD@Z": "0x00512680",
+ "?IID_00822410@@3U_GUID@@B": "0x00822410",
  "?IID_GScreen_007EA6E8@@3UDisplayGuid@@B": "0x007EA6E8",
  "?IID_IHouse@@3U_GUID@@B": "0x007EA768",
  "?IID_IPersistStream_007F7C80@@3UGuid_0067FDF0@@B": "0x007F7C80",

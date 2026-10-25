@@ -10,6 +10,13 @@
 #include "../_layout/techno_type_class.h"
 #include <new.h>
 
+// GLOBAL: GAMEMD 0x822410
+// Native QueryInterface key; GUID field order reproduces its sixteen bytes.
+extern const IID IID_00822410 = {
+    0x820F501C, 0x4F39, 0x11D2,
+    {0x9B, 0x70, 0x00, 0x10, 0x4B, 0x97, 0x2F, 0xE8}
+};
+
 // SYNTHETIC: GAMEMD 0x4B4C50
 // LocomotionClass::IsReallyMovingNow
 

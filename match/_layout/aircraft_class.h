@@ -31,6 +31,8 @@
 #include "foot_class.h"
 #include "com_interfaces.h"   // IFlyControl
 
+class AircraftTypeClass;
+
 class AircraftClass : public FootClass, public IFlyControl
 {
 public:
@@ -46,7 +48,9 @@ public:
     virtual int __stdcall vf_06();   // 0x41B7F0
     virtual int __stdcall vf_07();   // 0x41B840
     virtual int __stdcall vf_08();   // 0x41B860
-    void*         Type;                    // +0x6C4  AircraftTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x00413D3A
+    // Native AircraftType virtual 0x41CB20 passes its this to ctor 0x413D20;
+    // 0x413D3A stores that argument at +0x6C4.
+    AircraftTypeClass* Type;                    // +0x6C4  AircraftTypeClass*; ctor: MOV [ESI+0x6C4],ECX(=pType) @0x00413D3A
     unsigned char ShouldLoseAmmo;          // +0x6C8  ctor: MOV byte [ESI+0x6C8],0 @0x00413D40
     unsigned char HasPassengers;           // +0x6C9  ctor: MOV byte [ESI+0x6C9],0 @0x00413D47
     unsigned char IsKamikaze;              // +0x6CA  ctor: MOV byte [ESI+0x6CA],0 @0x00413D4E

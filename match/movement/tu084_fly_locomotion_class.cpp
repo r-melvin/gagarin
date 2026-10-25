@@ -43,6 +43,15 @@
 #include "fly_locomotion_leaf_methods.h"
 #include "loco_base.h"
 #include "../_layout/fly_locomotion_class.h"
+#include "../_layout/foot_class.h"
+#include "../_layout/techno_type_class.h"
+#include "../_layout/com_interfaces.h"
+#include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
+
+// Native DrawPoint 0x4CF8CB tests type +0xC95.
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 9 == 0xC95);
+GG_STATIC_ASSERT(sizeof(IID) == 16);
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
 // VTABLE: GAMEMD 0x7E8AC0 — the persist vtable (base offset 0).
@@ -112,22 +121,18 @@ double DAT_008B3C98 = DAT_007E1718 / DAT_008B3CB0;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ILocomotion slot +0x0C — bind the locomotor to a client. The base does the
-// binding; this override then records whether the client is a ground-bound
-// building-like object whose type carries the gate byte.
+// binding; this override then records the aircraft type airport-bound flag.
 // FUNCTION: GAMEMD 0x4CCA20
-GgHRESULT __stdcall FlyLocoLinkTo_004CCA20(FlyLocoIface* self,
-                                           Foot_004CCA20* obj)
+HRESULT __stdcall FlyLocomotionClass::LinkToObject(FootClass* object)
 {
-    LocomotionClass* base = reinterpret_cast<LocomotionClass*>(
-        reinterpret_cast<char*>(self) - sizeof(void*));
-    GgHRESULT hr = base->LocomotionClass::LinkToObject(
-        reinterpret_cast<FootClass*>(obj));
+    HRESULT hr = LocomotionClass::LinkToObject(object);
     if (hr == 0) {
-        if (obj != 0 && (obj->*obj->Vtbl->At_2C)() == 2 &&
-            obj->Type->At_E0D != 0) {
-            self->IsOnBridge = 1;
+        // Native kind 2 gates the AircraftClass +0x6C4 type access (0x4CCA42).
+        if (object != 0 && object->vf_11() == 2 &&
+            static_cast<AircraftClass*>(object)->Type->AirportBound != 0) {
+            AirportBound = 1;
         } else {
-            self->IsOnBridge = 0;
+            AirportBound = 0;
         }
     }
     return hr;
@@ -146,23 +151,19 @@ void FlyLocoObject::Destroy()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// ILocomotion slot +0x10 — a flyer casts a shadow while it is elevating or
-// while its client still has altitude.
+// ILocomotion slot +0x10 — tests HasMoveOrder or the client float at +0x2E8.
 // FUNCTION: GAMEMD 0x4CCA90
-int __stdcall FlyLocoIsToHaveShadow_004CCA90(FlyLocoIface* self)
+bool __stdcall FlyLocomotionClass::IsMoving()
 {
-    if (self->HasMoveOrder == 0 && self->LinkedTo->Altitude <= 0.0f) {
-        return 0;
-    }
-    return 1;
+    return !(HasMoveOrder == 0 && LinkedTo->PitchAngle <= 0.0f);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// ILocomotion slot +0x80 — true whenever the locomotor is holding a height.
+// ILocomotion slot +0x80 — tests CurrentSpeed against zero.
 // FUNCTION: GAMEMD 0x4CCAC0
-char __stdcall FlyLocoIsPowered_004CCAC0(FlyLocoIface* self)
+bool __stdcall FlyLocomotionClass::IsMovingNow()
 {
-    if (self->Height == 0.0) {
+    if (CurrentSpeed == 0.0) {
         return 0;
     }
     return 1;
@@ -170,15 +171,15 @@ char __stdcall FlyLocoIsPowered_004CCAC0(FlyLocoIface* self)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ILocomotion slot +0x14 — where the flyer is headed: its own destination
-// while it is still aloft, and the engine's unset coordinate once it is not.
+// when IsMoving is true, and the engine's unset coordinate otherwise.
 // FUNCTION: GAMEMD 0x4CCAE0
-Coord_004CCAE0 __stdcall FlyLocoIface::GetDestination()
+LocoCoord __stdcall FlyLocomotionClass::Destination()
 {
-    Coord_004CCAE0 result;
-    if ((char)IsToHaveShadow()) {
-        result.X = Destination.X;
-        result.Y = Destination.Y;
-        result.Z = Destination.Z;
+    LocoCoord result;
+    if (IsMoving()) {
+        result.X = Destination_.X;
+        result.Y = Destination_.Y;
+        result.Z = Destination_.Z;
         return result;
     }
     result.X = UnsetCoord_008B3C78.X;
@@ -290,7 +291,7 @@ char FlyLocoApproach::Approach()
     if (aggregate != 0) {
         IFace_004CE680* got;
         long hr = aggregate->Vtbl->QueryInterface(aggregate, riid_00822410,
-                                                  (void**)&got);
+                                                 (void**)&got);
         if (hr < 0) {
             FUN_004D0430(&held);
             held.Held = 0;
@@ -422,23 +423,23 @@ done:
 // relative to the receiver read: after it, 100%; before it, 88.3%; with the
 // out-parameter hoisted to function scope ahead of it, 84.0%.
 // FUNCTION: GAMEMD 0x4CF830
-Pair_004CF830 __stdcall FlyLocoOffset::GetDrawOffset()
+LocoPoint2D __stdcall FlyLocomotionClass::DrawPoint()
 {
     int bob = 0;
-    Foot_004CF830* client = this->LinkedTo;
-    Holder_004CF830 held;
+    FootClass* client = this->LinkedTo;
+    FlyDrawInterfaceHolder held;
     held.Held = 0;
 
     if (client != 0) {
-        IFace_004CF830* got;
-        long hr = client->Vtbl->QueryInterface(client, riid_00822410,
-                                               (void**)&got);
+        IFlyControl* got;
+        long hr = client->QueryInterface(IID_00822410,
+                                              (void**)&got);
         if (hr < 0) {
-            FUN_004D0430(&held);
+            held.Release();
             held.Held = 0;
         } else {
-            IFace_004CF830* taken = got;
-            FUN_004D0430(&held);
+            IFlyControl* taken = got;
+            held.Release();
             held.Held = taken;
         }
         if (hr < 0 && hr != 0x80004002) {
@@ -448,30 +449,30 @@ Pair_004CF830 __stdcall FlyLocoOffset::GetDrawOffset()
 
     int clearance = 0;
     if (held.Held != 0) {
-        clearance = held.Held->Vtbl->GetGroundClearance(held.Held);
+        clearance = held.Held->vf_03();
     }
 
-    if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->IsFlatOnGround == 0 &&
+    if (this->LinkedTo->vf_33()->bools_C8C[9] == 0 &&
         this->IsLanding == 0 && this->IsTakingOff == 0 &&
-        (this->LinkedTo->*this->LinkedTo->Vtbl->At_1C8)() > clearance) {
+        this->LinkedTo->vf_114() > clearance) {
         bob = (int)(FUN_004CACB0((double)(CurrentFrame % 20)
                                  * 0.3141592653589793) * 1.5 + 0.5);
     }
 
-    Pair_004CF830 result;
-    result.A = 0;
-    result.B = bob;
+    LocoPoint2D result;
+    result.X = 0;
+    result.Y = bob;
     return result;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // ILocomotion slot +0x30 — a flyer contributes no voxel shadow offset.
 // FUNCTION: GAMEMD 0x4CF940
-Pair_004CF940 __stdcall FlyLocoIface::GetShadowOffset()
+LocoPoint2D __stdcall FlyLocomotionClass::ShadowPoint()
 {
-    Pair_004CF940 zero;
-    zero.A = 0;
-    zero.B = 0;
+    LocoPoint2D zero;
+    zero.X = 0;
+    zero.Y = 0;
     return zero;
 }
 
@@ -618,29 +619,27 @@ void FlyLocoObject::StartSpin()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// ILocomotion slot +0x84 — the client's own rate scaled by the locomotor's
-// held height, truncated to an integer.
+// ILocomotion slot +0x84 — type Speed scaled by CurrentSpeed and truncated.
 // FUNCTION: GAMEMD 0x4CFE20
-int __stdcall FlyLocoScaledRate_004CFE20(FlyLocoIface* self)
+int __stdcall FlyLocomotionClass::ApparentSpeed()
 {
-    Foot_004CCA20* linkedTo = self->LinkedTo;
-    Owner_004CFE20* owner = (linkedTo->*linkedTo->Vtbl->At_84)();
-    return (int)(owner->At_678 * self->Height);
+    TechnoTypeClass* type = LinkedTo->vf_33();
+    return (int)(type->Speed * CurrentSpeed);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// ILocomotion slot +0x90 — the draw layer: one while landing, zero while
-// taking off, and otherwise two or three according to the shadow.
+// ILocomotion slot +0x90 — one while landing, zero while taking off,
+// and otherwise two or three according to IsMoving.
 // FUNCTION: GAMEMD 0x4CFE50
-int __stdcall FlyLocoDrawLayer_004CFE50(FlyLocoIface* self)
+int __stdcall FlyLocomotionClass::GetStatus()
 {
-    if (self->IsLanding != 0) {
+    if (IsLanding != 0) {
         return 1;
     }
-    if (self->IsTakingOff != 0) {
+    if (IsTakingOff != 0) {
         return 0;
     }
-    return (char)self->IsToHaveShadow() ? 2 : 3;
+    return IsMoving() ? 2 : 3;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

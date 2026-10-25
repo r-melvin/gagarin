@@ -11,7 +11,9 @@
 //
 // Reviewed in the batch forty-one pass
 // (the free-`__fastcall`-with-a-receiver debt) and deliberately LEFT as free
-// functions. Converting would cost nothing in bytes — a member spelled
+// functions, except 0x4D0430 now owned by the Fly interface holder after
+// its caller protocol was audited. The remaining ten receivers stay
+// placeholders. Converting would cost nothing in bytes — a member spelled
 // `__fastcall` keeps the receiver in ECX and the first explicit argument in
 // EDX — but `ComOwner_004B4D50` is not one recovered class: it is eleven separate retail addresses spread from 0x4B4D50 to 0x7AC680, modelled against one
 // shared layout because the extraction proved the layout identical, not
@@ -51,8 +53,6 @@ void __fastcall FUN_##ADDR(ComOwner_004B4D50* self)                       \
 void FUN_004B4D50(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x004B4D60
 void FUN_004B4D60(ComOwner_004B4D50* self);
-// FUNCTION: GAMEMD 0x004D0430
-void FUN_004D0430(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x004E02C0
 void FUN_004E02C0(ComOwner_004B4D50* self);
 // FUNCTION: GAMEMD 0x0067FDD0
