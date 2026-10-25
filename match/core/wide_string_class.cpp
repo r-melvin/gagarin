@@ -4,6 +4,8 @@
 //   The layout, the `__thiscall` conventions, the CRT helper addresses and every
 //   constant below come from the retail disassembly.
 
+// VC6FLAGS: /nologo /c /O2 /Ob2 /Gr /DNDEBUG /Gy /MT
+
 #include "wide_string_class.h"
 
 // FUNCTION: GAMEMD 0x7B66C0
@@ -276,35 +278,13 @@ void Obj_007B66D0::FUN_007B76F0()
 
 // FUNCTION: GAMEMD 0x7B7740
 //
-// Build a lower-cased copy without touching this string. The contents are
-// duplicated into a bare block first, the ASCII upper-case range is folded in
-// place over that block through a walking cursor, the caller's object takes a
-// second copy and the working block is freed. The result object is returned,
-// which is how the caller's out-parameter reaches EAX.
-Obj_007B66D0* Obj_007B66D0::AsLower(Obj_007B66D0* out) const
+// Return an independently owned lower-case value. Native caller 0x77EBE5
+// supplies temporary result storage and destroys it at 0x77EC0E.
+Obj_007B66D0 Obj_007B66D0::AsLower() const
 {
-    wchar_t* work = 0;
-    if (Buffer != 0) {
-        work = (wchar_t*)::operator new((wcslen(Buffer) + 1) * sizeof(wchar_t));
-        wcscpy(work, Buffer);
-    }
-
-    unsigned int i = 0;
-    wchar_t* cursor = work;
-    for (; i < (work != 0 ? wcslen(work) : 0); ++i, ++cursor) {
-        wchar_t ch = *cursor;
-        if (ch >= L'A' && ch <= L'Z') {
-            *cursor = (wchar_t)tolower(ch);
-        }
-    }
-
-    out->Buffer = 0;
-    if (work != 0) {
-        out->Buffer = (wchar_t*)::operator new((wcslen(work) + 1) * sizeof(wchar_t));
-        wcscpy(out->Buffer, work);
-        ::operator delete(work);
-    }
-    return out;
+    Obj_007B66D0 work(*this);
+    work.FUN_007B76F0();
+    return work;
 }
 
 // FUNCTION: GAMEMD 0x7B77E0
@@ -324,28 +304,9 @@ void Obj_007B66D0::FUN_007B77E0()
 // FUNCTION: GAMEMD 0x7B7830
 //
 // The upper-casing mirror of AsLower over the ASCII lower-case range.
-Obj_007B66D0* Obj_007B66D0::AsUpper(Obj_007B66D0* out) const
+Obj_007B66D0 Obj_007B66D0::AsUpper() const
 {
-    wchar_t* work = 0;
-    if (Buffer != 0) {
-        work = (wchar_t*)::operator new((wcslen(Buffer) + 1) * sizeof(wchar_t));
-        wcscpy(work, Buffer);
-    }
-
-    unsigned int i = 0;
-    wchar_t* cursor = work;
-    for (; i < (work != 0 ? wcslen(work) : 0); ++i, ++cursor) {
-        wchar_t ch = *cursor;
-        if (ch >= L'a' && ch <= L'z') {
-            *cursor = (wchar_t)toupper(ch);
-        }
-    }
-
-    out->Buffer = 0;
-    if (work != 0) {
-        out->Buffer = (wchar_t*)::operator new((wcslen(work) + 1) * sizeof(wchar_t));
-        wcscpy(out->Buffer, work);
-        ::operator delete(work);
-    }
-    return out;
+    Obj_007B66D0 work(*this);
+    work.FUN_007B77E0();
+    return work;
 }

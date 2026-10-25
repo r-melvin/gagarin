@@ -22374,9 +22374,9 @@
  {
   "tu": "match/core/wide_string_class.cpp",
   "addr": "0x7B7740",
-  "sym": "?AsLower@Obj_007B66D0@@QBEPAV1@PAV1@@Z",
+  "sym": "?AsLower@Obj_007B66D0@@QBE?AV1@XZ",
   "len": "0x9e",
-  "name": "Obj_007B66D0::AsLower",
+  "name": "?AsLower@Obj_007B66D0@@QBE?AV1@XZ",
   "status": "matched",
   "pct": 100
  },
@@ -22392,9 +22392,9 @@
  {
   "tu": "match/core/wide_string_class.cpp",
   "addr": "0x7B7830",
-  "sym": "?AsUpper@Obj_007B66D0@@QBEPAV1@PAV1@@Z",
+  "sym": "?AsUpper@Obj_007B66D0@@QBE?AV1@XZ",
   "len": "0x9e",
-  "name": "Obj_007B66D0::AsUpper",
+  "name": "?AsUpper@Obj_007B66D0@@QBE?AV1@XZ",
   "status": "matched",
   "pct": 100
  },

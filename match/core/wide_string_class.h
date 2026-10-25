@@ -150,9 +150,9 @@ public:
     bool FUN_007B7660(wchar_t ch, unsigned int index);         // 0x7B7660
     short Set(int count, const wchar_t* src);                  // 0x7B7690
     void FUN_007B76F0();                                          // 0x7B76F0
-    Obj_007B66D0* AsLower(Obj_007B66D0* out) const;      // 0x7B7740
+    Obj_007B66D0 AsLower() const;      // 0x7B7740
     void FUN_007B77E0();                                          // 0x7B77E0
-    Obj_007B66D0* AsUpper(Obj_007B66D0* out) const;      // 0x7B7830
+    Obj_007B66D0 AsUpper() const;      // 0x7B7830
 };
 
 // Offsets confirmed numerically from the disassembly cited in the file header.
