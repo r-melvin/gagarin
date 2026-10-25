@@ -72097,7 +72097,7 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x7691E0",
-  "sym": "?FUN_007691E0@Map@WorldDominationTour@@QAEPAVWDTPalette@@ABVObj_007B4620@@@Z",
+  "sym": "?FUN_007691E0@Map@WorldDominationTour@@QAEPAVWDTPalette@@ABVWstring@@@Z",
   "len": "0xc4",
   "name": "WorldDominationTour::Map::FUN_007691E0",
   "status": "matched",
@@ -72106,7 +72106,7 @@
  {
   "tu": "match/network/wdt_map_unit.cpp",
   "addr": "0x7692B0",
-  "sym": "??0AnimationPalette@Map@WorldDominationTour@@QAE@ABVObj_007B4620@@PAVWDTPalette@@@Z",
+  "sym": "??0AnimationPalette@Map@WorldDominationTour@@QAE@ABVWstring@@PAVWDTPalette@@@Z",
   "len": "0x1a",
   "name": "WorldDominationTour::Map::AnimationPalette::AnimationPalette",
   "status": "matched",

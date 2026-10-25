@@ -131,21 +131,8 @@ MSRect MSFrameAnim::GetRect()
 // GLOBAL: GAMEMD 0x889F64 -- the shared empty string.
 extern const char DAT_00889F64[];
 
-// The map's name, the same one-pointer string as Obj_007B4620 seen through its
-// C-string constructor and its destructor: released as an ordinary member
-// destructor, which puts the call after the two vectors' teardown (0x7681C5),
-// not ahead of it.
-class MapString
-{
-public:
-    // FUNCTION: GAMEMD 0x7B4630 (decl; reloc) -- build from a C string.
-    MapString(const char* text);
-    // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) -- release the copy.
-    ~MapString();
-    char* Str;   // +0x00
-};
-GG_STATIC_ASSERT(sizeof(MapString) == 4);
-
+// Both owning name members use the native four-byte Wstring. The Map name
+// is destroyed after its vectors (native call7B46F0 at7681C5).
 // Polymorphic members the map owns: each is freed through slot 0 with 1
 // (`PUSH 1; CALL [EAX]`, 0x7680D5/0x7680E2/0x768161 and 0x7692DC).
 class WDTOwned
@@ -205,7 +192,7 @@ class WDTPalette : public WDTOwned
 };
 
 // FUNCTION: GAMEMD 0x5CB590 (decl; reloc) -- __fastcall, loads the named palette.
-WDTPalette* FUN_005CB590(const Obj_007B4620& name);
+WDTPalette* FUN_005CB590(const Wstring& name);
 
 // Screen surfaces released by the map's destructor.
 class WDTScreenSurface
@@ -236,17 +223,17 @@ public:
     // Named by the retail RTTI of its vector, "PAUAnimationPalette@Map@WorldDominationTour".
     struct AnimationPalette
     {
-        AnimationPalette(const Obj_007B4620& name, WDTPalette* palette);
+        AnimationPalette(const Wstring& name, WDTPalette* palette);
         ~AnimationPalette();
 
-        Obj_007B4620 Name;      // +0x00
+        Wstring Name;      // +0x00
         WDTPalette* Palette;   // +0x04
     };
 
     Map(int a, int b, int c);
     virtual ~Map();
 
-    WDTPalette* FUN_007691E0(const Obj_007B4620& name);
+    WDTPalette* FUN_007691E0(const Wstring& name);
     void FUN_007692F0(WDTMapView* view, WDTMapArg* arg);
     int FUN_00769330(const WDTPoint* point);
     void FUN_007693A0(WDTMapView* view, bool on);
@@ -261,7 +248,7 @@ public:
     WDTMember_1C* unknown_1C;                          // +0x1C
     int unknown_20;                                    // +0x20
     WDTSurface* unknown_24;                            // +0x24
-    MapString Name;                                    // +0x28
+    Wstring Name;                                    // +0x28
     DynamicVectorClass<rc_ptr<Territory> > Territories;  // +0x2C
     int unknown_44;                                    // +0x44
     int unknown_48;                                    // +0x48
@@ -290,6 +277,9 @@ GG_STATIC_ASSERT(offsetof(Map, unknown_74) == 0x74);
 GG_STATIC_ASSERT(offsetof(Map, unknown_78) == 0x78);
 GG_STATIC_ASSERT(offsetof(Map, Palettes) == 0xBC);
 GG_STATIC_ASSERT(sizeof(Map) == 0xD4);
+GG_STATIC_ASSERT(offsetof(Map::AnimationPalette, Name) == 0x00);
+GG_STATIC_ASSERT(offsetof(Map::AnimationPalette, Palette) == 0x04);
+GG_STATIC_ASSERT(sizeof(Map::AnimationPalette) == 0x08);
 
 }  // namespace WorldDominationTour
 
@@ -318,11 +308,8 @@ Map::Map(int a, int b, int c)
 }
 
 // FUNCTION: GAMEMD 0x7680C0
-// PARTIAL (81.6%). The territory list's inline ~VectorClass frees its block
-// with gg_free in match/core/vector_class.h; retail runs `delete[]` (slot 0
-// with 3, 0x7681B5). With `delete[] Items` in that destructor this body
-// measures 100% (header change held for the lander; it touches every
-// instantiation).
+// Native member teardown follows palette/surface releases. The existing
+// canonical vector destructors already preserve the complete native body.
 Map::~Map()
 {
     delete unknown_24;
@@ -338,7 +325,7 @@ Map::~Map()
 
 // FUNCTION: GAMEMD 0x7691E0
 // The palette registered under `name`, loaded and registered on first use.
-WDTPalette* Map::FUN_007691E0(const Obj_007B4620& name)
+WDTPalette* Map::FUN_007691E0(const Wstring& name)
 {
     for (int i = 0; i < Palettes.Count; i++) {
         if (Palettes.Items[i]->Name == name)
@@ -352,7 +339,7 @@ WDTPalette* Map::FUN_007691E0(const Obj_007B4620& name)
 }
 
 // FUNCTION: GAMEMD 0x7692B0
-Map::AnimationPalette::AnimationPalette(const Obj_007B4620& name, WDTPalette* palette)
+Map::AnimationPalette::AnimationPalette(const Wstring& name, WDTPalette* palette)
     : Name(name), Palette(palette)
 {
 }
@@ -361,7 +348,6 @@ Map::AnimationPalette::AnimationPalette(const Obj_007B4620& name, WDTPalette* pa
 Map::AnimationPalette::~AnimationPalette()
 {
     delete Palette;
-    Name.Destruct();
 }
 
 // FUNCTION: GAMEMD 0x7692F0
