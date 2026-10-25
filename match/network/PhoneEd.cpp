@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit PhoneEd.cpp. The name is the source-file string at 0x836778
 //   in retail gamemd.exe v1.001, passed by the assert at 0x630f61 inside this object's
 //   code range (0x6309a0-0x631c7f). Functions are in ascending retail address order.
@@ -26,19 +27,17 @@ extern int DAT_00AC4B18;
 // GLOBAL: GAMEMD 0xAC4B20
 extern double DAT_00AC4B20;
 
-// FUNCTION: GAMEMD 0x6309D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006309D0()
-{
-    DAT_00AC4B20 = DAT_00AC4AD0 / DAT_007EFD90;
-}
+// SYNTHETIC: GAMEMD 0x006309D0
+// dynamic initializer for DAT_00AC4B20
 
-// FUNCTION: GAMEMD 0x6309F0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006309F0()
-{
-    DAT_00AC4B08 = DAT_007E1718 / DAT_00AC4B20;
-}
+// GLOBAL: GAMEMD 0x00AC4B20
+double DAT_00AC4B20 = DAT_00AC4AD0 / DAT_007EFD90;
+
+// SYNTHETIC: GAMEMD 0x006309F0
+// dynamic initializer for DAT_00AC4B08
+
+// GLOBAL: GAMEMD 0x00AC4B08
+double DAT_00AC4B08 = DAT_007E1718 / DAT_00AC4B20;
 
 // FUNCTION: GAMEMD 0x630B70
 // Static-initialiser shape: stores constants to adjacent globals.

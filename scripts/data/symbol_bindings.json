@@ -7504,6 +7504,8 @@
  "match/network/Multiplayer.cpp::_?modes@?1??Modes_005D5F30@@YIAAV?$DynamicVectorClass@PAVMultiplayerGameMode@@@@XZ@4V2@A": "0x00ABFDA0",
  "match/network/NullMgr.cpp::_?comNames@?1??FUN_005F19E0@NullModemClass@@QAEHPAUSerialSettings_005F19E0@@@Z@4PAY04DA": "0x00832340",
  "match/network/NullMgr.cpp::_?com_ids@?1??Init@NullModemInitView@@QAEHHHPADHDHH@Z@4PAY04DA": "0x00832310",
+ "match/network/PhoneEd.cpp::_$E2": "0x006309D0",
+ "match/network/PhoneEd.cpp::_$E5": "0x006309F0",
  "match/network/netshare.cpp::?FUN_007B7ED0@@YI?AVObj_007B66D0@@ABVWstring@@@Z": "0x007B7ED0",
  "match/network/netshare.cpp::?FUN_007B7F90@@YI?AVWstring@@ABVObj_007B66D0@@@Z": "0x007B7F90",
  "match/network/tu108_ipx_manager_class.cpp::_DAT_007EC158": "0x007EC158",
