@@ -120,7 +120,9 @@ public:
     virtual void vf_44();                                          // 44 0x7120D0
     virtual void vf_45();                                          // 45 0x712120
     virtual void vf_46(int a1, int a2);                            // 46 0x711F60
-    virtual void vf_47();                                          // 47 0x717800
+    // Native717800 returns field618 or the fallback dword in EAX; Process4CCB81
+    // stores it whole and MoveTo4CCE6C adds it as an integer.
+    virtual int vf_47();                                           // 47 0x717800
 
     int             WalkRate;                       // +0x294
     int             IdleRate;                       // +0x298
@@ -462,6 +464,7 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SecondSpawnOffset) == 0xDB0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PaletteFile)       == 0xDD0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Palette)           == 0xDF0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_DF4)         == 0xDF4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, FlightLevel) == 0x618);
 GG_STATIC_ASSERT(sizeof(TechnoTypeClass)                      == 0xDF8);
 
 #endif  // GG_MATCH_LAYOUT_TECHNO_TYPE_CLASS_H
