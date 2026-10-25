@@ -9,50 +9,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// A one-word heap string handle (the Obj_007B4620 layout of
-// match/core/string_class.h) seen here as a constructed/destroyed object:
-// file-scope instances are built by 0x7B4620 and torn down at exit by
-// 0x7B46F0. Members are declared only; their bodies live elsewhere.
-class String_007B4620
-{
-public:
-    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc)
-    String_007B4620();
-    // FUNCTION: GAMEMD 0x7B4630 (decl; reloc)
-    String_007B4620(const char* text);
-    // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc)
-    ~String_007B4620();
-    // FUNCTION: GAMEMD 0x7B4780 (decl; reloc)
-    bool operator==(const String_007B4620& other) const;
-    // FUNCTION: GAMEMD 0x7B48D0 (decl; reloc)
-    String_007B4620& operator=(const char* text);
-    // FUNCTION: GAMEMD 0x7B4940 (decl; reloc)
-    String_007B4620& operator=(const String_007B4620& other);
-    // FUNCTION: GAMEMD 0x7B4710 (decl; reloc)
-    bool FUN_007B4710(const char* text) const;
-    // FUNCTION: GAMEMD 0x7B54B0 (decl; reloc)
-    int Length() const;
-    // FUNCTION: GAMEMD 0x7B5400 (decl; reloc)
-    const char* FUN_007B5400();
-    // FUNCTION: GAMEMD 0x7B5440 (decl; reloc)
-    const char* FUN_007B5440();
-    // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc)
-    void FUN_007B5B30();
-    // FUNCTION: GAMEMD 0x7B5F10 (decl; reloc)
-    int FUN_007B5F10(int index, const char* separators, String_007B4620* out);
-    // FUNCTION: GAMEMD 0x7B5020 (decl; reloc)
-    void FUN_007B5020(int start, int count);
-    // FUNCTION: GAMEMD 0x7B4690 (decl; reloc)
-    String_007B4620(const String_007B4620& other);
-
-    char* unknown_00;   // +0x00
-};
-GG_STATIC_ASSERT(sizeof(String_007B4620) == 4);
+#include "../core/string_class.h"
 
 // GLOBAL: GAMEMD 0xB73E40 -- the stored login holder; defined in wonline.cpp (its cleanup is 0x77DA10).
-extern String_007B4620 DAT_00B73E40;
+extern Wstring DAT_00B73E40;
 // GLOBAL: GAMEMD 0xB7778C -- the stored password holder; defined in wonline.cpp (its cleanup is 0x77DA40).
-extern String_007B4620 DAT_00B7778C;
+extern Wstring DAT_00B7778C;
 
 // The one-word wide string handle (the Obj_007B66D0 layout of
 // match/core/wide_string_class.h, which declares no default constructor or

@@ -17,8 +17,7 @@
 
 // Retail TD 0x83F5D8 names the element of table 0x7F12B4 as class Wstring.
 // Move the existing Session owner here; its four-byte layout and real
-// construction/destruction declarations are unchanged. The manual-lifetime
-// legacy receiver below still requires caller-by-caller conversion.
+// construction/destruction declarations use this single narrow owner.
 class Wstring
 {
 public:
@@ -57,6 +56,8 @@ public:
     Wstring& operator=(const char* text);
     // Declaration: GAMEMD 0x7B5340 -- release held storage and return to null.
     void FUN_007B5340();
+    // Declaration: GAMEMD 0x7B5020 -- two stack ints, RET 8; AL reports success.
+    bool FUN_007B5020(int start, int count);
     // Declaration: GAMEMD 0x7B50F0
     bool FUN_007B50F0(char ch);
     // Declaration: GAMEMD 0x7B51B0
@@ -70,47 +71,5 @@ public:
 };
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
-
-class Obj_007B4620
-{
-public:
-    // FUNCTION: GAMEMD 0x7B4690
-    Obj_007B4620(const Obj_007B4620& other);
-    // FUNCTION: GAMEMD 0x7B4780
-    bool operator==(const Obj_007B4620& other) const;
-    // FUNCTION: GAMEMD 0x7B54B0
-    int Length() const;
-
-    // Further members reached from other translation units, declared under
-    // their call-site names; no body for them is recovered yet.
-    // FUNCTION: GAMEMD 0x7B4620 (decl; reloc) — the empty construction.
-    void Init();
-    // An empty-bodied default construction: it stores nothing, so callers that
-    // hand the object to a constructing call (0x7B4630, or a hidden-pointer
-    // return) can declare one.
-    Obj_007B4620() {}
-    // FUNCTION: GAMEMD 0x7B4630 (decl; reloc) — construct a copy of a C string
-    // in place (a null pointer leaves the string empty); __thiscall, RET 4.
-    void Construct(const char* text);
-    // FUNCTION: GAMEMD 0x7B4710 (decl; reloc) — compare with a C string (two
-    // empty strings are equal); __thiscall, RET 4.
-    bool FUN_007B4710(const char* text) const;
-    // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) — release the copy.
-    void Destruct();
-    // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) -- C-string inequality;
-    // null/null is false, exactly one null is true.
-    bool FUN_007B47F0(const char* text) const;
-    // FUNCTION: GAMEMD 0x7B5340 (decl; reloc) — drop whatever is held and go
-    // back to empty.
-    void Reset();
-    // FUNCTION: GAMEMD 0x7B48D0 (decl; reloc) — assign from a C string.
-    void FUN_007B48D0(const char* src);
-    // FUNCTION: GAMEMD 0x7B5B30 (decl; reloc) — lower-case in place.
-    void FUN_007B5B30();
-
-    char* Str;   // +0x00
-};
-GG_STATIC_ASSERT(sizeof(Obj_007B4620) == 4
-              && offsetof(Obj_007B4620, Str) == 0x00);
 
 #endif // GG_MATCH_CORE_STRING_CLASS_H

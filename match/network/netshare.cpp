@@ -676,11 +676,11 @@ wchar_t* __cdecl wcscat(wchar_t* dst, const wchar_t* src);
 
 // FUNCTION: GAMEMD 0x5EDEF0 (decl; reloc) -- the slot-kind token of a node,
 // returned through the hidden first argument (netshare_slot_names_005edef0.cpp).
-Obj_007B4620* FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node);
+Wstring FUN_005EDEF0(NodeNameType* node);
 
 // FUNCTION: GAMEMD 0x7B7ED0 (decl; reloc) -- the wide copy of a narrow string,
 // returned through the hidden first argument.
-Obj_007B66D0 FUN_007B7ED0(const Obj_007B4620* narrow);
+Obj_007B66D0 FUN_007B7ED0(const Wstring& narrow);
 
 // STRING: GAMEMD 0x8304FC -- L","
 extern const wchar_t DAT_008304FC[];
@@ -815,7 +815,7 @@ extern char* DAT_0083171C;
 // FUNCTION: GAMEMD 0x7B7F90 (decl; reloc) -- __fastcall: build the narrow copy
 // of a wide string in the object the hidden first argument points at (which it
 // also returns).
-Obj_007B4620* FUN_007B7F90(Obj_007B4620* out, const Obj_007B66D0* text);
+Wstring FUN_007B7F90(const Obj_007B66D0& text);
 
 // ---- from the former netshare_slot_queries_005e9580.cpp ----
 //   Bytes matched against the user's retail gamemd.exe v1.001, 0x5E9580..0x5E9950.
@@ -1813,10 +1813,8 @@ void FUN_005E8DC0(wchar_t* out)
         if (node == 0 || node == OpenNode || node == ClosedNode || node == WaitingNode ||
             node == ObserverNode || node == EasyAINode || node == MediumAINode ||
             node == HardAINode) {
-            Obj_007B4620 token;
-            FUN_005EDEF0(&token, node);
-            name = FUN_007B7ED0(&token);
-            token.Destruct();
+            Wstring token = FUN_005EDEF0(node);
+            name = FUN_007B7ED0(token);
         } else {
             name = node->Name;
         }
@@ -2718,38 +2716,30 @@ void FUN_005EDDE0(HWND dialog, unsigned char enable)
 //
 // The token for a slot node: the six singletons name themselves and anything
 // else reads as waiting.
-Obj_007B4620* FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node)
+Wstring FUN_005EDEF0(NodeNameType* node)
 {
     if (node == OpenNode) {
-        out->Construct(DAT_00831704);
-        return out;
+        return Wstring(DAT_00831704);
     }
     if (node == ClosedNode) {
-        out->Construct(DAT_00831708);
-        return out;
+        return Wstring(DAT_00831708);
     }
     if (node == WaitingNode) {
-        out->Construct(DAT_0083170C);
-        return out;
+        return Wstring(DAT_0083170C);
     }
     if (node == EasyAINode) {
-        out->Construct(DAT_00831710);
-        return out;
+        return Wstring(DAT_00831710);
     }
     if (node == MediumAINode) {
-        out->Construct(DAT_00831714);
-        return out;
+        return Wstring(DAT_00831714);
     }
     if (node == HardAINode) {
-        out->Construct(DAT_00831718);
-        return out;
+        return Wstring(DAT_00831718);
     }
     if (node == ObserverNode) {
-        out->Construct(DAT_0083171C);
-        return out;
+        return Wstring(DAT_0083171C);
     }
-    out->Construct(DAT_0083170C);
-    return out;
+    return Wstring(DAT_0083170C);
 }
 
 // FUNCTION: GAMEMD 0x5EDFC0
@@ -2759,44 +2749,35 @@ Obj_007B4620* FUN_005EDEF0(Obj_007B4620* out, NodeNameType* node)
 NodeNameType* FUN_005EDFC0(Obj_007B66D0* token)
 {
     if (token->FUN_007B7D90()) {
-        Obj_007B4620 narrow;
-        FUN_007B7F90(&narrow, token);
+        Wstring narrow = FUN_007B7F90(*token);
         if (narrow.FUN_007B4710(DAT_00831704)) {
             NodeNameType* node = OpenNode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_00831708)) {
             NodeNameType* node = ClosedNode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_0083170C)) {
             NodeNameType* node = WaitingNode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_00831710)) {
             NodeNameType* node = EasyAINode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_00831714)) {
             NodeNameType* node = MediumAINode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_00831718)) {
             NodeNameType* node = HardAINode;
-            narrow.Destruct();
             return node;
         }
         if (narrow.FUN_007B4710(DAT_0083171C)) {
             NodeNameType* node = ObserverNode;
-            narrow.Destruct();
             return node;
         }
-        narrow.Destruct();
     }
     return 0;
 }
@@ -2804,7 +2785,7 @@ NodeNameType* FUN_005EDFC0(Obj_007B66D0* token)
 // FUNCTION: GAMEMD 0x5EE100
 //
 // Is this one of the seven slot-kind tokens?
-int FUN_005EE100(Obj_007B4620* token)
+int FUN_005EE100(Wstring* token)
 {
     if (token->FUN_007B4710(DAT_00831704) || token->FUN_007B4710(DAT_00831708) ||
         token->FUN_007B4710(DAT_0083170C) || token->FUN_007B4710(DAT_00831710) ||

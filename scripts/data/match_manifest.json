@@ -74361,9 +74361,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77D240",
-  "sym": "?FUN_0077D240@@YIHPAVString_007B4620@@@Z",
+  "sym": "?FUN_0077D240@@YIHPAVWstring@@@Z",
   "len": "0x59",
-  "name": "FUN_0077D240",
+  "name": "?FUN_0077D240@@YIHPAVWstring@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -89088,9 +89088,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x786E70",
-  "sym": "?FUN_00786E70@@YIHPAVString_007B4620@@@Z",
+  "sym": "?FUN_00786E70@@YIHPAVWstring@@@Z",
   "len": "0x75",
-  "name": "FUN_00786E70",
+  "name": "?FUN_00786E70@@YIHPAVWstring@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -89152,9 +89152,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x793120",
-  "sym": "?FUN_00793120@@YI_NPAVString_007B4620@@@Z",
+  "sym": "?FUN_00793120@@YI_NPAVWstring@@@Z",
   "len": "0x75",
-  "name": "FUN_00793120",
+  "name": "?FUN_00793120@@YI_NPAVWstring@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -89353,9 +89353,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7A2830",
-  "sym": "?FUN_007A2830@@YIXPAVString_007B4620@@@Z",
+  "sym": "?FUN_007A2830@@YIXPAVWstring@@@Z",
   "len": "0x7f",
-  "name": "FUN_007A2830",
+  "name": "?FUN_007A2830@@YIXPAVWstring@@@Z",
   "status": "partial",
   "pct": 7.5,
   "note": "Aligned 92.5%: retail zeroes the first word of the local record before the loop."
@@ -89435,36 +89435,36 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7ADC60",
-  "sym": "?FUN_007ADC60@Table_007ADC60@@QAE_NABVString_007B4620@@PAPAUEntry_00B77908@@@Z",
+  "sym": "?FUN_007ADC60@Table_007ADC60@@QAE_NABVWstring@@PAPAUEntry_00B77908@@@Z",
   "len": "0x6b",
-  "name": "Table_007ADC60::FUN_007ADC60",
+  "name": "?FUN_007ADC60@Table_007ADC60@@QAE_NABVWstring@@PAPAUEntry_00B77908@@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AE180",
-  "sym": "?FUN_007AE180@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
+  "sym": "?FUN_007AE180@Table_007AE180@@QAE_NABVWstring@@PAPAUValue_007AE180@@@Z",
   "len": "0x6b",
-  "name": "Table_007AE180::FUN_007AE180",
+  "name": "?FUN_007AE180@Table_007AE180@@QAE_NABVWstring@@PAPAUValue_007AE180@@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AE7C0",
-  "sym": "?FUN_007AE7C0@Table_007AE180@@QAE_NABVString_007B4620@@PAPAUValue_007AE180@@@Z",
+  "sym": "?FUN_007AE7C0@Table_007AE180@@QAE_NABVWstring@@PAPAUValue_007AE180@@@Z",
   "len": "0x6b",
-  "name": "Table_007AE180::FUN_007AE7C0",
+  "name": "?FUN_007AE7C0@Table_007AE180@@QAE_NABVWstring@@PAPAUValue_007AE180@@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AE8E0",
-  "sym": "?FUN_007AE8E0@Table_007AE8E0@@QAE_NABVString_007B4620@@PAPAUValue_007AE8E0@@@Z",
+  "sym": "?FUN_007AE8E0@Table_007AE8E0@@QAE_NABVWstring@@PAPAUValue_007AE8E0@@@Z",
   "len": "0x6e",
-  "name": "Table_007AE8E0::FUN_007AE8E0",
+  "name": "?FUN_007AE8E0@Table_007AE8E0@@QAE_NABVWstring@@PAPAUValue_007AE8E0@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -91415,9 +91415,9 @@
  {
   "tu": "match/network/netshare.cpp",
   "addr": "0x5EDEF0",
-  "sym": "?FUN_005EDEF0@@YIPAVObj_007B4620@@PAV1@PAUNodeNameType@@@Z",
+  "sym": "?FUN_005EDEF0@@YI?AVWstring@@PAUNodeNameType@@@Z",
   "len": "0xc7",
-  "name": "FUN_005EDEF0",
+  "name": "?FUN_005EDEF0@@YI?AVWstring@@PAUNodeNameType@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -91433,9 +91433,9 @@
  {
   "tu": "match/network/netshare.cpp",
   "addr": "0x5EE100",
-  "sym": "?FUN_005EE100@@YIHPAVObj_007B4620@@@Z",
+  "sym": "?FUN_005EE100@@YIHPAVWstring@@@Z",
   "len": "0x87",
-  "name": "FUN_005EE100",
+  "name": "?FUN_005EE100@@YIHPAVWstring@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -95981,18 +95981,18 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x77E820",
-  "sym": "?FUN_0077E820@@YIAAVString_007B4620@@PADPAH1111PAV1@@Z",
+  "sym": "?FUN_0077E820@@YIAAVWstring@@PADPAH1111PAV1@@Z",
   "len": "0xd9",
-  "name": "?FUN_0077E820@@YIAAVString_007B4620@@PADPAH1111PAV1@@Z",
+  "name": "?FUN_0077E820@@YIAAVWstring@@PADPAH1111PAV1@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x780D90",
-  "sym": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVString_007B4620@@@Z",
+  "sym": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVWstring@@@Z",
   "len": "0x9d",
-  "name": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVString_007B4620@@@Z",
+  "name": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVWstring@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -96053,9 +96053,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x789630",
-  "sym": "?FUN_00789630@@YI?AVString_007B4620@@PBD@Z",
+  "sym": "?FUN_00789630@@YI?AVWstring@@PBD@Z",
   "len": "0x67",
-  "name": "?FUN_00789630@@YI?AVString_007B4620@@PBD@Z",
+  "name": "?FUN_00789630@@YI?AVWstring@@PBD@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -96143,9 +96143,9 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x79F0A0",
-  "sym": "?FUN_0079F0A0@@YI_NPAVString_007B4620@@PAUVec_0079F0A0@@PAURecord_0079F0A0@@@Z",
+  "sym": "?FUN_0079F0A0@@YI_NPAVWstring@@PAUVec_0079F0A0@@PAURecord_0079F0A0@@@Z",
   "len": "0x98",
-  "name": "?FUN_0079F0A0@@YI_NPAVString_007B4620@@PAUVec_0079F0A0@@PAURecord_0079F0A0@@@Z",
+  "name": "?FUN_0079F0A0@@YI_NPAVWstring@@PAUVec_0079F0A0@@PAURecord_0079F0A0@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -96260,27 +96260,27 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7ACBE0",
-  "sym": "?Insert@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@ABH@Z",
+  "sym": "?Insert@?$HashTable_006249A0@VWstring@@H@@QAE_NABVWstring@@ABH@Z",
   "len": "0x141",
-  "name": "?Insert@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@ABH@Z",
+  "name": "?Insert@?$HashTable_006249A0@VWstring@@H@@QAE_NABVWstring@@ABH@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7ACE60",
-  "sym": "?Clear@?$HashTable_006249A0@VString_007B4620@@H@@QAEXXZ",
+  "sym": "?Clear@?$HashTable_006249A0@VWstring@@H@@QAEXXZ",
   "len": "0x10b",
-  "name": "?Clear@?$HashTable_006249A0@VString_007B4620@@H@@QAEXXZ",
+  "name": "?Clear@?$HashTable_006249A0@VWstring@@H@@QAEXXZ",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7ACF70",
-  "sym": "?Clear@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAEXXZ",
+  "sym": "?Clear@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAEXXZ",
   "len": "0x114",
-  "name": "?Clear@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAEXXZ",
+  "name": "?Clear@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAEXXZ",
   "status": "matched",
   "pct": 100.0
  },
@@ -96323,18 +96323,18 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AE1F0",
-  "sym": "?Remove@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@AAH@Z",
+  "sym": "?Remove@?$HashTable_006249A0@VWstring@@H@@QAE_NABVWstring@@AAH@Z",
   "len": "0x268",
-  "name": "?Remove@?$HashTable_006249A0@VString_007B4620@@H@@QAE_NABVString_007B4620@@AAH@Z",
+  "name": "?Remove@?$HashTable_006249A0@VWstring@@H@@QAE_NABVWstring@@AAH@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x7AE950",
-  "sym": "?Remove@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAE_NABVString_007B4620@@AAUValue_007AE8E0@@@Z",
+  "sym": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z",
   "len": "0x2ac",
-  "name": "?Remove@?$HashTable_006249A0@VString_007B4620@@UValue_007AE8E0@@@@QAE_NABVString_007B4620@@AAUValue_007AE8E0@@@Z",
+  "name": "?Remove@?$HashTable_006249A0@VWstring@@UValue_007AE8E0@@@@QAE_NABVWstring@@AAUValue_007AE8E0@@@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -99018,6 +99018,141 @@
   "sym": "?FUN_007B5B30@Wstring@@QAEXXZ",
   "len": "0x42",
   "name": "Wstring::FUN_007B5B30",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77B8D0",
+  "sym": "_$E13",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B73AE0)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CA00",
+  "sym": "_$E23",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B73ACC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CA30",
+  "sym": "_$E28",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76E24)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF10",
+  "sym": "_$E44",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76AC4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CF70",
+  "sym": "_$E49",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76E34)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CFA0",
+  "sym": "_$E54",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B73B30)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77CFD0",
+  "sym": "_$E59",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B7622C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D000",
+  "sym": "_$E64",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76908)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D030",
+  "sym": "_$E69",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B77794)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D060",
+  "sym": "_$E74",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B778F4)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D090",
+  "sym": "_$E79",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B778FC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D0C0",
+  "sym": "_$E84",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B765EC)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D0F0",
+  "sym": "_$E89",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76900)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D9F0",
+  "sym": "_$E99",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B73E40)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77DA20",
+  "sym": "_$E104",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B7778C)",
   "status": "matched",
   "pct": 100
  }

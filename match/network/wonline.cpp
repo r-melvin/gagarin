@@ -491,13 +491,13 @@ static inline Entry_00B77908* FirstFlaggedRecord()
 // given type: the address of the value is stored through `out`. Layout of the
 // table as in core/hash_table_view.h. Each table type has its own copy.
 template<class VALUE>
-inline bool FindNode_007AE180(HashTable_006249A0<String_007B4620, VALUE>* table,
-                              const String_007B4620& key, VALUE** out)
+inline bool FindNode_007AE180(HashTable_006249A0<Wstring, VALUE>* table,
+                              const Wstring& key, VALUE** out)
 {
     if (table->Count == 0) return false;
 
     int hash = table->Hash(&key);
-    HashNode_006249A0<String_007B4620, VALUE>* node =
+    HashNode_006249A0<Wstring, VALUE>* node =
         table->Buckets[((1 << table->BitWidth) - 1) & hash];
     if (node == NULL) return false;
 
@@ -515,12 +515,12 @@ static const char DAT_0084A430[] = "D:\\ra2mdpost\\wonline.cpp";
 
 // Value of the node filed under `key`, or null (inlined at every use).
 template<class VALUE>
-inline VALUE* FindValue_0079BED0(HashTable_006249A0<String_007B4620, VALUE>& table, const String_007B4620& key)
+inline VALUE* FindValue_0079BED0(HashTable_006249A0<Wstring, VALUE>& table, const Wstring& key)
 {
     if (table.Count == 0) return 0;
 
     int hash = table.Hash(&key);
-    HashNode_006249A0<String_007B4620, VALUE>* node = table.Buckets[((1 << table.BitWidth) - 1) & hash];
+    HashNode_006249A0<Wstring, VALUE>* node = table.Buckets[((1 << table.BitWidth) - 1) & hash];
 
     while (node != 0) {
         if (node->Key == key) break;
@@ -590,9 +590,9 @@ int FUN_006241F0(int id, BOOL (CALLBACK* proc)(HWND, UINT, WPARAM, LPARAM), Owne
 bool FUN_00779940();
 
 // Declaration: GAMEMD 0x79C520 (decl; reloc)
-bool FUN_0079C520(String_007B4620* name);
+bool FUN_0079C520(Wstring* name);
 
-extern String_007B4620 DAT_00B76AC4;
+extern Wstring DAT_00B76AC4;
 extern char DAT_00B77DC2;
 
 // Declaration: GAMEMD 0x780A90 (decl; reloc)
@@ -602,7 +602,7 @@ WideString_007B66C0 FUN_00780A90(const Entry_00B77908* entry);
 bool FUN_0077D4C0(Entry_00B77908* entry);
 
 // Declaration: GAMEMD 0x7B7ED0 (decl; reloc) -- the wide text of a narrow string.
-WideString_007B66C0 FUN_007B7ED0(const String_007B4620& text);
+WideString_007B66C0 FUN_007B7ED0(const Wstring& text);
 
 extern char DAT_00A8B380[];
 extern int DAT_00B779C0;
@@ -633,7 +633,7 @@ int FUN_00788180();   // FUNCTION: GAMEMD 0x788180 (decl; reloc)
 void FUN_00781480();  // FUNCTION: GAMEMD 0x781480 (decl; reloc)
 
 // Declaration: GAMEMD 0x788800 (decl; reloc) -- RET 4: the wide text is a by-value argument.
-int FUN_00788800(GrowListRecord10C* record, const String_007B4620& key, WideString_007B66C0 text);
+int FUN_00788800(GrowListRecord10C* record, const Wstring& key, WideString_007B66C0 text);
 
 extern int DAT_007EEF38;
 // STRING: GAMEMD 0x84AFB0
@@ -656,7 +656,7 @@ void FUN_005EE1B0();   // FUNCTION: GAMEMD 0x5EE1B0 (decl; reloc)
 bool FUN_0079BC80();   // FUNCTION: GAMEMD 0x79BC80 (decl; reloc)
 
 // Declaration: GAMEMD 0x7B54B0 (decl; reloc) -- the length of a string, unsigned.
-unsigned int FUN_007B54B0(const String_007B4620* text);
+unsigned int FUN_007B54B0(const Wstring* text);
 
 void FUN_005EE190();   // FUNCTION: GAMEMD 0x5EE190 (decl; reloc)
 
@@ -679,7 +679,7 @@ struct Obj_00AC1174
 };
 extern Obj_00AC1174* DAT_00AC1174;
 void FUN_00779830(bool value);                   // FUNCTION: GAMEMD 0x779830 (decl; reloc)
-void FUN_00779C90(String_007B4620* name);        // FUNCTION: GAMEMD 0x779C90 (decl; reloc)
+void FUN_00779C90(Wstring* name);        // FUNCTION: GAMEMD 0x779C90 (decl; reloc)
 class DialogOwner_0079AE00
 {
 public:
@@ -689,7 +689,7 @@ public:
 void FUN_005E2AC0();   // FUNCTION: GAMEMD 0x5E2AC0 (decl; reloc)
 
 // Declaration: GAMEMD 0x7B7F90 (decl; reloc) -- the narrow text of a wide string.
-String_007B4620 FUN_007B7F90(const WideString_007B66C0& text);
+Wstring FUN_007B7F90(const WideString_007B66C0& text);
 
 // Connection-state table: the pair of player slots of each connection, and the state
 // each side holds.
@@ -1049,12 +1049,12 @@ struct Value_00B76608
 };
 GG_STATIC_ASSERT(sizeof(Value_00B76608) == 0x10C);
 
-typedef HashTable_006249A0<String_007B4620, Value_00B76640>  Table_00B76640;
-typedef HashTable_006249A0<String_007B4620, Value_00B76608> Table_00B76608;
-typedef HashTable_006249A0<String_007B4620, Entry_00B77908>  Table_00B77D80;
-typedef HashNode_006249A0<String_007B4620, Value_00B76640>  Node_00B76640;
-typedef HashNode_006249A0<String_007B4620, Value_00B76608> Node_00B76608;
-typedef HashNode_006249A0<String_007B4620, Entry_00B77908>  Node_00B77D80;
+typedef HashTable_006249A0<Wstring, Value_00B76640>  Table_00B76640;
+typedef HashTable_006249A0<Wstring, Value_00B76608> Table_00B76608;
+typedef HashTable_006249A0<Wstring, Entry_00B77908>  Table_00B77D80;
+typedef HashNode_006249A0<Wstring, Value_00B76640>  Node_00B76640;
+typedef HashNode_006249A0<Wstring, Value_00B76608> Node_00B76608;
+typedef HashNode_006249A0<Wstring, Entry_00B77908>  Node_00B77D80;
 GG_STATIC_ASSERT(sizeof(Node_00B76640) == 0x4C);
 GG_STATIC_ASSERT(sizeof(Node_00B76608) == 0x114);
 GG_STATIC_ASSERT(sizeof(Node_00B77D80) == 0x74);
@@ -1133,13 +1133,13 @@ extern bool DAT_00B73AD0;
 // GLOBAL: GAMEMD 0xB73AA8
 
 // GLOBAL: GAMEMD 0xB73AB0
-extern String_007B4620* DAT_00B73AB0;
+extern Wstring* DAT_00B73AB0;
 
 // Whether the record's +0x24 name is in the list at 0xB73AB0.
 static inline bool FUN_0077D4C0_InList(Entry_00B77908* entry)
 {
     int count = DAT_00B73AA8.count;
-    String_007B4620 name;
+    Wstring name;
     for (int i = 0; i < count; i++) {
         if (i >= 0 && i < DAT_00B73AA8.count) name = DAT_00B73AB0[i];
         if (strcmp(name.FUN_007B5400(), entry->unknown_24) == 0) return true;
@@ -1250,9 +1250,9 @@ inline VALUE* HashFind_0077DA50(HashTable_006249A0<KEY, VALUE>& table, const KEY
 
 
 // Declaration: GAMEMD 0x5EDEF0 (decl; reloc)
-String_007B4620 FUN_005EDEF0(NodeNameType* node);
+Wstring FUN_005EDEF0(NodeNameType* node);
 // Declaration: GAMEMD 0x7B7F90 (decl; reloc)
-String_007B4620 FUN_007B7F90(const WideString_007B66C0& text);
+Wstring FUN_007B7F90(const WideString_007B66C0& text);
 // LIBRARY: GAMEMD 0x7CB550 -- CRT strncat.
 
 // GLOBAL: GAMEMD 0xA8DA90
@@ -1296,8 +1296,9 @@ double DAT_00B778E8 = 1.0 / DAT_00B77CD8;
 HeaderCoordInit DAT_00B779F8(128, 128, 0);
 
 // GLOBAL: GAMEMD 0xB73AE0
+// SYNTHETIC: GAMEMD 0x77B8D0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77B8F0 -- atexit cleanup of DAT_00B73AE0.
-String_007B4620 DAT_00B73AE0;
+Wstring DAT_00B73AE0;
 
 // FUNCTION: GAMEMD 0x0077B920
 void FUN_0077B920()
@@ -1466,12 +1467,14 @@ void FUN_0077C9C0()
 }
 
 // GLOBAL: GAMEMD 0xB73ACC
+// SYNTHETIC: GAMEMD 0x77CA00 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CA20 -- atexit cleanup of DAT_00B73ACC.
-String_007B4620 DAT_00B73ACC;
+Wstring DAT_00B73ACC;
 
 // GLOBAL: GAMEMD 0xB76E24
+// SYNTHETIC: GAMEMD 0x77CA30 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CA50 -- atexit cleanup of DAT_00B76E24.
-String_007B4620 DAT_00B76E24;
+Wstring DAT_00B76E24;
 
 // GLOBAL: GAMEMD 0xB76608
 // SYNTHETIC: GAMEMD 0x77CCD0 -- atexit cleanup of DAT_00B76608 (inlined destructor).
@@ -1507,8 +1510,9 @@ void FUN_0077CED0()
 }
 
 // GLOBAL: GAMEMD 0xB76AC4
+// SYNTHETIC: GAMEMD 0x77CF10 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CF30 -- atexit cleanup of DAT_00B76AC4.
-String_007B4620 DAT_00B76AC4;
+Wstring DAT_00B76AC4;
 
 // FUNCTION: GAMEMD 0x77CF40
 int FUN_0077CF40()
@@ -1523,40 +1527,49 @@ int FUN_0077CF60()
 }
 
 // GLOBAL: GAMEMD 0xB76E34
+// SYNTHETIC: GAMEMD 0x77CF70 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CF90 -- atexit cleanup of DAT_00B76E34.
-String_007B4620 DAT_00B76E34;
+Wstring DAT_00B76E34;
 
 // GLOBAL: GAMEMD 0xB73B30
+// SYNTHETIC: GAMEMD 0x77CFA0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CFC0 -- atexit cleanup of DAT_00B73B30.
-String_007B4620 DAT_00B73B30;
+Wstring DAT_00B73B30;
 
 // GLOBAL: GAMEMD 0xB7622C
+// SYNTHETIC: GAMEMD 0x77CFD0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77CFF0 -- atexit cleanup of DAT_00B7622C.
-String_007B4620 DAT_00B7622C;
+Wstring DAT_00B7622C;
 
 // GLOBAL: GAMEMD 0xB76908
+// SYNTHETIC: GAMEMD 0x77D000 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D020 -- atexit cleanup of DAT_00B76908.
-String_007B4620 DAT_00B76908;
+Wstring DAT_00B76908;
 
 // GLOBAL: GAMEMD 0xB77794
+// SYNTHETIC: GAMEMD 0x77D030 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D050 -- atexit cleanup of DAT_00B77794.
-String_007B4620 DAT_00B77794;
+Wstring DAT_00B77794;
 
 // GLOBAL: GAMEMD 0xB778F4
+// SYNTHETIC: GAMEMD 0x77D060 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D080 -- atexit cleanup of DAT_00B778F4.
-String_007B4620 DAT_00B778F4;
+Wstring DAT_00B778F4;
 
 // GLOBAL: GAMEMD 0xB778FC
+// SYNTHETIC: GAMEMD 0x77D090 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D0B0 -- atexit cleanup of DAT_00B778FC.
-String_007B4620 DAT_00B778FC;
+Wstring DAT_00B778FC;
 
 // GLOBAL: GAMEMD 0xB765EC
+// SYNTHETIC: GAMEMD 0x77D0C0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D0E0 -- atexit cleanup of DAT_00B765EC.
-String_007B4620 DAT_00B765EC;
+Wstring DAT_00B765EC;
 
 // GLOBAL: GAMEMD 0xB76900
+// SYNTHETIC: GAMEMD 0x77D0F0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D110 -- atexit cleanup of DAT_00B76900.
-String_007B4620 DAT_00B76900;
+Wstring DAT_00B76900;
 
 // FUNCTION: GAMEMD 0x77D190
 void FUN_0077D190()
@@ -1591,7 +1604,7 @@ void FUN_0077D210(char* text)
 
 // FUNCTION: GAMEMD 0x77D240
 // Index of the record whose +0x24 name equals `name` (case-insensitive), or -1.
-int FUN_0077D240(String_007B4620* name)
+int FUN_0077D240(Wstring* name)
 {
     Entry_00B77908* entry = NULL;
 
@@ -1801,12 +1814,14 @@ bool FUN_0077D9D0(Obj_0077D910* flags)
     return flags->unknown_20_12;
 }
 
+// SYNTHETIC: GAMEMD 0x77D9F0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77DA10 -- atexit cleanup of DAT_00B73E40.
-String_007B4620 DAT_00B73E40;
+Wstring DAT_00B73E40;
 
 // GLOBAL: GAMEMD 0xB7778C
+// SYNTHETIC: GAMEMD 0x77DA20 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77DA40 -- atexit cleanup of DAT_00B7778C.
-String_007B4620 DAT_00B7778C;
+Wstring DAT_00B7778C;
 
 // FUNCTION: GAMEMD 0x77DA50
 //   Not exact (94% aligned): retail re-tests the value pointer after adding
@@ -1815,7 +1830,7 @@ String_007B4620 DAT_00B7778C;
 // one when it is absent; null when allocation fails.
 Entry_00B77908* FUN_0077DA50(const wchar_t* name)
 {
-    String_007B4620 key(NarrowName_007350C0(name));
+    Wstring key(NarrowName_007350C0(name));
     key.FUN_007B5B30();
 
     Entry_00B77908* copy = new Entry_00B77908;
@@ -1840,7 +1855,7 @@ void FUN_0077DB90()
 
     for (int i = 0; i < 8; i++) {
         NodeNameType* item = Slots[i];
-        String_007B4620 name;
+        Wstring name;
         if (FUN_005E93F0(item)) {
             WideString_007B66C0 wide(item->Name);
             name = FUN_007B7F90(wide);
@@ -1966,7 +1981,7 @@ void FUN_0077E110()
 
 // FUNCTION: GAMEMD 0x77E820
 // Splits `text` at commas into five numbers and a name.
-String_007B4620& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, String_007B4620* name)
+Wstring& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, Wstring* name)
 {
     char* token = strtok(text, DAT_00817F70);
     *a = token ? atol(token) : 0;
@@ -1983,7 +1998,7 @@ String_007B4620& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e
 
 // FUNCTION: GAMEMD 0x780D90
 // The description of a map by name.
-WideString_007B66C0 FUN_00780D90(String_007B4620* name)
+WideString_007B66C0 FUN_00780D90(Wstring* name)
 {
     if (_stricmp(name->FUN_007B5440(), DAT_0082BC30) == 0) {
         return WideString_007B66C0(FUN_00734E60("TXT_RANDOM_MAP_DESCRIPTION", NULL, DAT_0084A430, 0xB9A));
@@ -2329,7 +2344,7 @@ bool FUN_00786D90()
 
 // FUNCTION: GAMEMD 0x786E70
 // Index of the record whose text after the ':' at +0x18 equals the name, or -1.
-int FUN_00786E70(String_007B4620* name)
+int FUN_00786E70(Wstring* name)
 {
     if (name->Length() != 0) {
         for (int i = 1; i < DAT_00B778D8.count; i++) {
@@ -2430,7 +2445,7 @@ int FUN_00788A30()
         }
         int failed;
         {
-            String_007B4620 key(DAT_0084B698);
+            Wstring key(DAT_0084B698);
             failed = FUN_00788800(&record, key, FUN_00734E60("TXT_JOINLOB", NULL, DAT_0084A430, 0x2A01));
         }
         if (failed == 0) {
@@ -2448,10 +2463,10 @@ int FUN_00788A30()
 
 // FUNCTION: GAMEMD 0x789630
 // The text of a record after its first ':' (the whole text when there is none).
-String_007B4620 FUN_00789630(const char* record)
+Wstring FUN_00789630(const char* record)
 {
-    String_007B4620 text(record + 0x18);
-    String_007B4620 rest;
+    Wstring text(record + 0x18);
+    Wstring rest;
     int colon = text.FUN_007B5F10(0, DAT_008318B8, &rest);
     if (colon >= 0) {
         text.FUN_007B5020(0, colon + 1);
@@ -2646,7 +2661,7 @@ bool FUN_007930A0()
 }
 
 // FUNCTION: GAMEMD 0x793120
-bool FUN_00793120(String_007B4620* name)
+bool FUN_00793120(Wstring* name)
 {
     Entry_00B77908* record = FirstFlaggedRecord();
     if (record == NULL) return false;
@@ -2980,7 +2995,7 @@ bool FUN_0079BED0()
 
 // FUNCTION: GAMEMD 0x79F0A0
 // Finds the record named like `name`, copying it to `out`; clears `out` when none.
-bool FUN_0079F0A0(String_007B4620* name, Vec_0079F0A0* list, Record_0079F0A0* out)
+bool FUN_0079F0A0(Wstring* name, Vec_0079F0A0* list, Record_0079F0A0* out)
 {
     memset(out, 0, sizeof(*out));
     for (int i = 0; i < list->count; i++) {
@@ -3148,7 +3163,7 @@ void FUN_007A2750()
     HWND control = GetDlgItem(dialog, 0x59F);
     bool notOne;
     {
-        String_007B4620 name((const char*)NULL);
+        Wstring name((const char*)NULL);
         notOne = FUN_0077EBA0(&name) != 1;
     }
     if (notOne) {
@@ -3173,7 +3188,7 @@ void FUN_007A2800(int a, int b, int c)
 }
 
 // FUNCTION: GAMEMD 0x7A2830
-void FUN_007A2830(String_007B4620* name)
+void FUN_007A2830(Wstring* name)
 {
     Entry_00B77908 record;
 
@@ -3318,7 +3333,7 @@ int __stdcall FUN_007A8DA0(void* unused, int slot, int unused2, Entry_00B77908* 
         } else {
             bool shown;
             {
-                String_007B4620 name(text);
+                Wstring name(text);
                 if (entry == NULL) {
                     shown = false;
                 } else if (entry->unknown_00[0] & 1) {
@@ -3358,7 +3373,7 @@ int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const 
         } else {
             bool shown;
             {
-                String_007B4620 name(text);
+                Wstring name(text);
                 if (entry == NULL) {
                     shown = false;
                 } else if (entry->unknown_00[0] & 1) {
@@ -3391,7 +3406,7 @@ int __stdcall FUN_007AAFB0(void* unused, int slot, Entry_00B77908* entry, const 
     if (!DAT_00B77DC1 && slot >= 0) {
         bool shown;
         {
-            String_007B4620 name(text);
+            Wstring name(text);
             if (entry == NULL) {
                 shown = false;
             } else if (entry->unknown_00[0] & 1) {
@@ -3446,7 +3461,7 @@ int __stdcall FUN_007AB170(void* unused, int slot, int unused2, Entry_00B77908* 
     if (!DAT_00B77DC1 && slot >= 0) {
         bool shown;
         {
-            String_007B4620 name(text);
+            Wstring name(text);
             if (entry == NULL) {
                 shown = false;
             } else if (entry->unknown_00[0] & 1) {
@@ -3661,22 +3676,22 @@ void FUN_007ACBD0(ConstStoreObject* self)
 }
 
 // FUNCTION: GAMEMD 0x7ACBE0
-template struct HashTable_006249A0<String_007B4620, int>;
+template struct HashTable_006249A0<Wstring, int>;
 
 // FUNCTION: GAMEMD 0x7ACD30
 void Obj_007ACD30::FUN_007ACD30()
 {
     for (int i = 0; i < Count; i++) {
-        Items[i].~String_007B4620();
+        Items[i].~Wstring();
     }
     Count = 0;
 }
 
 // FUNCTION: GAMEMD 0x7ACE60
-template struct HashTable_006249A0<String_007B4620, int>;
+template struct HashTable_006249A0<Wstring, int>;
 
 // FUNCTION: GAMEMD 0x7ACF70
-template struct HashTable_006249A0<String_007B4620, Value_007AE8E0>;
+template struct HashTable_006249A0<Wstring, Value_007AE8E0>;
 
 // FUNCTION: GAMEMD 0x7AD2F0
 void* Obj_7AD2F0::FUN_7AD2F0(unsigned int flags)
@@ -3823,7 +3838,7 @@ template struct GrowList<int>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7ADC60
-bool Table_007ADC60::FUN_007ADC60(const String_007B4620& key, Entry_00B77908** out)
+bool Table_007ADC60::FUN_007ADC60(const Wstring& key, Entry_00B77908** out)
 {
     return FindNode_007AE180(this, key, out);
 }
@@ -3845,14 +3860,14 @@ int HashTableIndex::FUN_007AE0C0(const void* key)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE180
-bool Table_007AE180::FUN_007AE180(const String_007B4620& key, Value_007AE180** out)
+bool Table_007AE180::FUN_007AE180(const Wstring& key, Value_007AE180** out)
 {
     return FindNode_007AE180(this, key, out);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE1F0
-template struct HashTable_006249A0<String_007B4620, int>;
+template struct HashTable_006249A0<Wstring, int>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -3891,21 +3906,21 @@ bool Obj_007AE730::FUN_007AE730()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE7C0
-bool Table_007AE180::FUN_007AE7C0(const String_007B4620& key, Value_007AE180** out)
+bool Table_007AE180::FUN_007AE7C0(const Wstring& key, Value_007AE180** out)
 {
     return FindNode_007AE180(this, key, out);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE8E0
-bool Table_007AE8E0::FUN_007AE8E0(const String_007B4620& key, Value_007AE8E0** out)
+bool Table_007AE8E0::FUN_007AE8E0(const Wstring& key, Value_007AE8E0** out)
 {
     return FindNode_007AE180(this, key, out);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x7AE950
-template struct HashTable_006249A0<String_007B4620, Value_007AE8E0>;
+template struct HashTable_006249A0<Wstring, Value_007AE8E0>;
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x007AEC00

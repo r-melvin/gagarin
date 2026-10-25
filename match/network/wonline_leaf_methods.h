@@ -170,7 +170,7 @@ struct Obj_007ACD30
 {
     int Count;                  // +0x00
     int unknown_04;             // +0x04
-    String_007B4620* Items;     // +0x08
+    Wstring* Items;     // +0x08
 
     void FUN_007ACD30();
 };
@@ -218,20 +218,20 @@ struct Value_007AE8E0
 
 GG_STATIC_ASSERT(sizeof(Value_007AE8E0) == 0x10C);
 
-struct Table_007AE180 : public HashTable_006249A0<String_007B4620, Value_007AE180>
+struct Table_007AE180 : public HashTable_006249A0<Wstring, Value_007AE180>
 {
-    bool FUN_007AE180(const String_007B4620& key, Value_007AE180** out);
-    bool FUN_007AE7C0(const String_007B4620& key, Value_007AE180** out);
+    bool FUN_007AE180(const Wstring& key, Value_007AE180** out);
+    bool FUN_007AE7C0(const Wstring& key, Value_007AE180** out);
 };
 
-struct Table_007ADC60 : public HashTable_006249A0<String_007B4620, Entry_00B77908>
+struct Table_007ADC60 : public HashTable_006249A0<Wstring, Entry_00B77908>
 {
-    bool FUN_007ADC60(const String_007B4620& key, Entry_00B77908** out);
+    bool FUN_007ADC60(const Wstring& key, Entry_00B77908** out);
 };
 
-struct Table_007AE8E0 : public HashTable_006249A0<String_007B4620, Value_007AE8E0>
+struct Table_007AE8E0 : public HashTable_006249A0<Wstring, Value_007AE8E0>
 {
-    bool FUN_007AE8E0(const String_007B4620& key, Value_007AE8E0** out);
+    bool FUN_007AE8E0(const Wstring& key, Value_007AE8E0** out);
 };
 
 // FUNCTION: GAMEMD 0x734E60 (decl; reloc)
@@ -287,7 +287,7 @@ int FUN_005E2CD0(const wchar_t* text, int a, DialogIdleProc_007759E0 proc, bool 
 const wchar_t* FUN_00735120(const char* text);
 
 // FUNCTION: GAMEMD 0x77EBA0 (decl; reloc)
-int FUN_0077EBA0(String_007B4620* name);
+int FUN_0077EBA0(Wstring* name);
 
 // LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
 extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
@@ -302,10 +302,10 @@ extern int DAT_007EEF28;
 extern HANDLE DAT_00B73684[];
 
 // GLOBAL: GAMEMD 0xB76E24
-extern String_007B4620 DAT_00B76E24;
+extern Wstring DAT_00B76E24;
 
 // GLOBAL: GAMEMD 0xB76990
-extern HashTable_006249A0<String_007B4620, int> DAT_00B76990;
+extern HashTable_006249A0<Wstring, int> DAT_00B76990;
 
 
 
