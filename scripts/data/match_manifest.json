@@ -25067,11 +25067,11 @@
  {
   "tu": "match/movement/facing_set_desired_methods.cpp",
   "addr": "0x4C9220",
-  "sym": "?SetDesired@Facing_004C9220@@QAE_NABUDir_004C9220@@@Z",
+  "sym": "?SetDesired@FacingClass@@QAE_NABUDirStruct@@@Z",
   "len": "0xdf",
-  "name": "Facing::SetDesired",
+  "name": "FacingClass::SetDesired",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/movement/flight_path_step_methods.cpp",

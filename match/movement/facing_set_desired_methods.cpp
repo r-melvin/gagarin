@@ -3,7 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4C9220.
 
 #include <stdlib.h>   // abs (the /O2 intrinsic: CDQ; XOR; SUB)
-#include "facing_set_desired_methods.h"
+#include "../_layout/facing_class.h"
 
 // FUNCTION: GAMEMD 0x4C9220
 //
@@ -12,7 +12,7 @@
 // had got to (Current() becomes StartFacing), the new target is recorded, and
 // when a rate of turn is set the timer is restarted with the number of ROT
 // steps between the two facings.
-bool Facing_004C9220::SetDesired(const Dir_004C9220& facing)
+bool FacingClass::SetDesired(const DirStruct& facing)
 {
     if (this->DesiredFacing.Raw != facing.Raw) {
         this->StartFacing = this->Current();
@@ -20,7 +20,7 @@ bool Facing_004C9220::SetDesired(const Dir_004C9220& facing)
 
         if ((short)this->ROT.Raw > 0) {
             short diff = (short)(this->DesiredFacing.Raw - this->StartFacing.Raw);
-            this->RotationTimer = Timer_004C9220(abs(diff) / (short)this->ROT.Raw);
+            this->RotationTimer = CDTimerClass(abs(diff) / (short)this->ROT.Raw);
         }
         return true;
     }

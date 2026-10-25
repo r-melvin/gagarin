@@ -5,6 +5,7 @@
 #ifndef GG_MATCH_LAYOUT_FACING_CLASS_H
 #define GG_MATCH_LAYOUT_FACING_CLASS_H
 #include <stddef.h>
+#include <stdlib.h>
 #include "../_rt/gg_static_assert.h"
 #include "frame_timer.h"
 
@@ -23,6 +24,27 @@ struct FacingClass
     DirStruct StartFacing;
     CDTimerClass RotationTimer;
     DirStruct ROT;
+
+    // Declaration: GAMEMD 0x4C9220 -- word key argument, RET 4.
+    bool SetDesired(const DirStruct& facing);
+
+    // FUNCTION: GAMEMD 0x4C93D0
+    // Native 0x4C93D0 copies a four-byte result to the caller-provided slot
+    // and returns its address (RET 4). This value-return inline preserves
+    // both direction words; SetDesired at 0x4C9220 inlines the same arithmetic.
+    DirStruct Current() const
+    {
+        if ((short)this->ROT.Raw > 0 && this->RotationTimer.GetTimeLeft() != 0) {
+            short diff  = (short)(this->DesiredFacing.Raw - this->StartFacing.Raw);
+            short steps = (short)(abs(diff) / (short)this->ROT.Raw);
+            DirStruct ret = this->DesiredFacing;
+            if (steps > 0) {
+                ret.Raw = (unsigned short)(ret.Raw - (diff / steps) * this->RotationTimer.GetTimeLeft());
+            }
+            return ret;
+        }
+        return this->DesiredFacing;
+    }
 
     bool IsRotating() const;    // 0x4C9480
     bool IsRotatingCW() const;  // 0x4C94B0
