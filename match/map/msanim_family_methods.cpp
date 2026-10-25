@@ -727,7 +727,7 @@ MSPCXAnim* MSPCXAnim::ConstructCentred(MSStringClass* name,
     SeatOwnVptr();
     Enabled = true;
 
-    if (name->At(0)) {
+    if (name->FUN_007B47F0(0)) {
         MSStringClass stem;
         stem.Init();
         name->Split(0, ".", &stem);
@@ -790,7 +790,7 @@ MSPCXAnim* MSPCXAnim::ConstructAt(MSStringClass* name, MSAnimVector* owner,
     SeatOwnVptr();
     Enabled = true;
 
-    if (name->At(0)) {
+    if (name->FUN_007B47F0(0)) {
         MSStringClass stem;
         stem.Init();
         name->Split(0, ".", &stem);

@@ -357,7 +357,9 @@ public:
 
     void Init();                                  // FUNCTION: GAMEMD 0x7B4620
     void Destruct();                              // FUNCTION: GAMEMD 0x7B46F0
-    char At(int index);                           // FUNCTION: GAMEMD 0x7B47F0
+    // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) -- C-string inequality;
+    // null/null is false, exactly one null is true.
+    bool FUN_007B47F0(const char* text) const;
     // 0x7B5F10, reached at 0x5CE532 and 0x5CE6D2 with (0, ".", &out): the
     // index-th piece of this string once it is split on the given separators.
     void Split(int index, const char* separators, MSStringClass* out);

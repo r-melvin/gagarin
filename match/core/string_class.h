@@ -97,8 +97,9 @@ public:
     bool FUN_007B4710(const char* text) const;
     // FUNCTION: GAMEMD 0x7B46F0 (decl; reloc) — release the copy.
     void Destruct();
-    // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) — indexed character.
-    char At(int index);
+    // FUNCTION: GAMEMD 0x7B47F0 (decl; reloc) -- C-string inequality;
+    // null/null is false, exactly one null is true.
+    bool FUN_007B47F0(const char* text) const;
     // FUNCTION: GAMEMD 0x7B5340 (decl; reloc) — drop whatever is held and go
     // back to empty.
     void Reset();

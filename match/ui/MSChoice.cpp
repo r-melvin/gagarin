@@ -442,7 +442,7 @@ void MapStageList::ClearAll()
 // hit and the miss path.
 MapStage* MapStageList::FindByName(Obj_007B4620* key)
 {
-    if (key->At(0) != 0) {
+    if (key->FUN_007B47F0(0)) {
         for (int i = 0; i < Stages.Count; ++i) {
             Obj_007B4620 wanted(*key);
             wanted.FUN_007B5B30();
@@ -471,7 +471,7 @@ MapStage* MapStageList::FindByName(Obj_007B4620* key)
 // difference in retail is the `ADD ECX,4` that steps to the second string.
 MapStage* MapStageList::FindByTitle(Obj_007B4620* key)
 {
-    if (key->At(0) != 0) {
+    if (key->FUN_007B47F0(0)) {
         for (int i = 0; i < Stages.Count; ++i) {
             Obj_007B4620 wanted(*key);
             wanted.FUN_007B5B30();
