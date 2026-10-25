@@ -61149,7 +61149,7 @@
   "addr": "0x65AD30",
   "sym": "?FUN_0065AD30@RadioClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0x10",
-  "name": "Obj_0065AD30::FUN_0065AD30",
+  "name": "RadioClass::FUN_0065AD30",
   "status": "matched",
   "pct": 100.0
  },
@@ -83251,7 +83251,7 @@
   "addr": "0x65AAA0",
   "sym": "?vf_158@RadioClass@@UAEHHPAV1@@Z",
   "len": "0x1a",
-  "name": "Obj_0065AAA0::FUN_0065AAA0",
+  "name": "RadioClass::vf_158",
   "status": "matched",
   "pct": 100.0
  },
@@ -93839,7 +93839,7 @@
   "addr": "0x65AD40",
   "sym": "?FUN_0065AD40@RadioClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0x10",
-  "name": "Obj_0065AD40::FUN_0065AD40",
+  "name": "RadioClass::FUN_0065AD40",
   "status": "matched",
   "pct": 100.0
  },
