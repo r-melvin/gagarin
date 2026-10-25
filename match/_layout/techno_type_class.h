@@ -420,6 +420,12 @@ public:
 };
 
 // --- Representative offset asserts (spanning the struct) + final sizeof ------
+// Native constructor byte stores: 0x710FE4 (+0x5E4), 0x711363 (+0x805).
+// FootClass::RemoveFirstPassenger reads the Gunner byte at 0x4DE72E.
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OpenTopped) == 0x5E4);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->OpenTopped) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Gunner) == 0x805);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Gunner) == 1);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TechLevel) == 0x634); // 0x6886B0 accesses
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OwnerFlags) == 0x6CC); // 0x6886B0 accesses
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, AllowedToStartInMultiplayer) == 0x6D5); // 0x6886B0 accesses
