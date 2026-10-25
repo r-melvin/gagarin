@@ -50851,63 +50851,63 @@
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4780",
-  "sym": "??8Obj_007B4620@@QBE_NABV0@@Z",
+  "sym": "??8Wstring@@QBE_NABV0@@Z",
   "len": "0x66",
-  "name": "Obj_007B4620::operator==",
+  "name": "Wstring::operator==",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B4860",
-  "sym": "??9Obj_007B4620@@QBE_NABV0@@Z",
+  "sym": "??9Wstring@@QBE_NABV0@@Z",
   "len": "0x66",
-  "name": "Obj_007B4620::operator!=",
+  "name": "Wstring::operator!=",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B50F0",
-  "sym": "?FUN_007B50F0@Obj_007B4620@@QAE_ND@Z",
+  "sym": "?FUN_007B50F0@Wstring@@QAE_ND@Z",
   "len": "0xb7",
-  "name": "Obj_007B4620::FUN_007B50F0",
+  "name": "Wstring::FUN_007B50F0",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B51B0",
-  "sym": "?FUN_007B51B0@Obj_007B4620@@QAEXXZ",
+  "sym": "?FUN_007B51B0@Wstring@@QAEXXZ",
   "len": "0x15",
-  "name": "Obj_007B4620::FUN_007B51B0",
+  "name": "Wstring::FUN_007B51B0",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B53B0",
-  "sym": "?Copy_Padded@Obj_007B4620@@QBEXPADI@Z",
+  "sym": "?Copy_Padded@Wstring@@QBEXPADI@Z",
   "len": "0x50",
-  "name": "Obj_007B4620::Copy_Padded",
+  "name": "Wstring::Copy_Padded",
   "status": "partial",
   "pct": 88.9
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B54B0",
-  "sym": "?Length@Obj_007B4620@@QBEHXZ",
+  "sym": "?Length@Wstring@@QBEHXZ",
   "len": "0x19",
-  "name": "Obj_007B4620::Length",
+  "name": "Wstring::Length",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5AB0",
-  "sym": "?FUN_007B5AB0@Obj_007B4620@@QAE_NDI@Z",
+  "sym": "?FUN_007B5AB0@Wstring@@QAE_NDI@Z",
   "len": "0x29",
-  "name": "Obj_007B4620::FUN_007B5AB0",
+  "name": "Wstring::FUN_007B5AB0",
   "status": "matched",
   "pct": 100
  },

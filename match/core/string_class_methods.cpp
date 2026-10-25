@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Canonical Wstring and remaining legacy bodies, ascending by retail address. The class and the
+// Canonical Wstring bodies, ascending by retail address. The class and the
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
@@ -53,66 +53,66 @@ bool Wstring::FUN_007B4710(const char* text) const
 }
 
 // FUNCTION: GAMEMD 0x7B4780
-bool Obj_007B4620::operator==(const Obj_007B4620& other) const
+bool Wstring::operator==(const Wstring& other) const
 {
-    if (Str == 0 && other.Str == 0) {
+    if (unknown_00 == 0 && other.unknown_00 == 0) {
         return true;
     }
-    if (Str == 0 || other.Str == 0) {
+    if (unknown_00 == 0 || other.unknown_00 == 0) {
         return false;
     }
-    return strcmp(Str, other.Str) ? false : true;
+    return strcmp(unknown_00, other.unknown_00) ? false : true;
 }
 
 // FUNCTION: GAMEMD 0x7B4860
-bool Obj_007B4620::operator!=(const Obj_007B4620& other) const
+bool Wstring::operator!=(const Wstring& other) const
 {
-    if (Str == 0 && other.Str == 0) {
+    if (unknown_00 == 0 && other.unknown_00 == 0) {
         return false;
     }
-    if (Str == 0 || other.Str == 0) {
+    if (unknown_00 == 0 || other.unknown_00 == 0) {
         return true;
     }
-    return strcmp(Str, other.Str) ? true : false;
+    return strcmp(unknown_00, other.unknown_00) ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x7B50F0
-bool Obj_007B4620::FUN_007B50F0(char ch)
+bool Wstring::FUN_007B50F0(char ch)
 {
     bool removed = false;
-    if (Str == 0) {
+    if (unknown_00 == 0) {
         return false;
     }
-    int len = strlen(Str);
-    char* found = strchr(Str, ch);
+    int len = strlen(unknown_00);
+    char* found = strchr(unknown_00, ch);
     if (found != 0) {
         removed = true;
         do {
-            memmove(found, found + 1, Str - found + len - 1);
+            memmove(found, found + 1, unknown_00 - found + len - 1);
             len--;
-            Str[len] = '\0';
-            found = strchr(Str, ch);
+            unknown_00[len] = '\0';
+            found = strchr(unknown_00, ch);
         } while (found != 0);
-        char* copy = new char[strlen(Str) + 1];
-        strcpy(copy, Str);
-        delete Str;
-        Str = copy;
+        char* copy = new char[strlen(unknown_00) + 1];
+        strcpy(copy, unknown_00);
+        delete unknown_00;
+        unknown_00 = copy;
     }
     return removed;
 }
 
 // FUNCTION: GAMEMD 0x7B51B0
-void Obj_007B4620::FUN_007B51B0()
+void Wstring::FUN_007B51B0()
 {
     FUN_007B50F0(' ');
     FUN_007B50F0('\t');
 }
 
 // FUNCTION: GAMEMD 0x7B53B0
-void Obj_007B4620::Copy_Padded(char* dest, unsigned int size) const
+void Wstring::Copy_Padded(char* dest, unsigned int size) const
 {
-    strncpy(dest, Str, size);
-    unsigned int len = strlen(Str);
+    strncpy(dest, unknown_00, size);
+    unsigned int len = strlen(unknown_00);
     if (len < size) {
         memset(dest + len, ' ', size - len);
     }
@@ -120,20 +120,20 @@ void Obj_007B4620::Copy_Padded(char* dest, unsigned int size) const
 }
 
 // FUNCTION: GAMEMD 0x7B54B0
-int Obj_007B4620::Length() const
+int Wstring::Length() const
 {
-    if (Str == 0) {
+    if (unknown_00 == 0) {
         return 0;
     }
-    return strlen(Str);
+    return strlen(unknown_00);
 }
 
 // FUNCTION: GAMEMD 0x7B5AB0
-bool Obj_007B4620::FUN_007B5AB0(char ch, unsigned int index)
+bool Wstring::FUN_007B5AB0(char ch, unsigned int index)
 {
-    if (index >= strlen(Str)) {
+    if (index >= strlen(unknown_00)) {
         return false;
     }
-    Str[index] = ch;
+    unknown_00[index] = ch;
     return true;
 }

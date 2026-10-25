@@ -49,6 +49,14 @@ public:
     bool operator!=(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4940
     Wstring& operator=(const Wstring& other);
+    // Declaration: GAMEMD 0x7B50F0
+    bool FUN_007B50F0(char ch);
+    // Declaration: GAMEMD 0x7B51B0
+    void FUN_007B51B0();
+    // Declaration: GAMEMD 0x7B53B0
+    void Copy_Padded(char* dest, unsigned int size) const;
+    // Declaration: GAMEMD 0x7B5AB0
+    bool FUN_007B5AB0(char ch, unsigned int index);
 };
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);
@@ -60,18 +68,8 @@ public:
     Obj_007B4620(const Obj_007B4620& other);
     // FUNCTION: GAMEMD 0x7B4780
     bool operator==(const Obj_007B4620& other) const;
-    // FUNCTION: GAMEMD 0x7B4860
-    bool operator!=(const Obj_007B4620& other) const;
-    // FUNCTION: GAMEMD 0x7B50F0
-    bool FUN_007B50F0(char ch);
-    // FUNCTION: GAMEMD 0x7B51B0
-    void FUN_007B51B0();
-    // FUNCTION: GAMEMD 0x7B53B0
-    void Copy_Padded(char* dest, unsigned int size) const;
     // FUNCTION: GAMEMD 0x7B54B0
     int Length() const;
-    // FUNCTION: GAMEMD 0x7B5AB0
-    bool FUN_007B5AB0(char ch, unsigned int index);
 
     // Further members reached from other translation units, declared under
     // their call-site names; no body for them is recovered yet.
