@@ -6,6 +6,7 @@
 //   OleSaveToStream through the import at 0x7E15F4.
 
 #include <new.h>
+#include "../../_layout/swizzle_manager_class.h"
 #include "mouse_mouse_class.h"
 
 // SYNTHETIC: GAMEMD 0x40D290
@@ -76,11 +77,11 @@ long MouseClass::vf_30(IStream* stream)
 
     for (i = 0; i < 4; i++) {
         for (int j = 0; j < 75; j++)
-            MouseSwizzle.Swizzle(&Strips[i].Cameos[j].Pointer);
+            DAT_00B0C110.SwizzleManagerClass::vf_4(&Strips[i].Cameos[j].Pointer);
     }
-    MouseSwizzle.Swizzle((void**)&Pending);
-    MouseSwizzle.Swizzle((void**)&unknown_11A8);
-    MouseSwizzle.Swizzle(&unknown_11A0);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Pending);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_11A8);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_11A0);
 
     vf_22();
     vf_24();

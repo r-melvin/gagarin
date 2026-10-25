@@ -149,15 +149,7 @@ public:
 // GLOBAL: GAMEMD 0x887180 - the art INI reader object (read-only here; its address is `this`).
 extern MapObjIniView MapObjArtIni;
 
-// GLOBAL: GAMEMD 0xB0C110 - the pointer-swizzle manager object used by every Load (read-only here).
-// The entry below is __stdcall with the manager as the first stack argument (`this`).
-class MapObjSwizzleView
-{
-public:
-    // FUNCTION: GAMEMD 0x6CF240 (decl; reloc) - registers one pointer field for fix-up after a load.
-    void __stdcall Swizzle(void** pointerField);
-};
-extern MapObjSwizzleView MapObjSwizzle;
+
 
 // FUNCTION: GAMEMD 0x7258D0 (decl; reloc) - announces that a pointer is going away. __fastcall: the
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone) to tell each

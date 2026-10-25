@@ -8,6 +8,7 @@
 // TerrainClass entries (layout and evidence: terrain_class.h).
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include <stdlib.h>
 #include "terrain_objects/terrain_class.h"
 #include "terrain_objects/overlay_type_class.h"
@@ -440,7 +441,7 @@ HRESULT __stdcall TerrainClass::Load(IStream* pStm)
         new (this) TerrainClass(AbstractNoInit());
         int id = vf_rtti_4();
         TerrainAbstractIndex.AddIndexOutOfLine(id, this);
-        MapObjSwizzle.Swizzle((void**)&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
 }

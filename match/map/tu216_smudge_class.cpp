@@ -9,6 +9,7 @@
 // SmudgeClass entries (layout and evidence: smudge_class.h).
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/smudge_class.h"
 #include "terrain_objects/smudge_type_class.h"
 
@@ -101,7 +102,7 @@ HRESULT __stdcall SmudgeClass::Load(IStream* pStm)
     HRESULT hr = MapObjClassView::Load(pStm);
     if (hr >= 0) {
         new (this) SmudgeClass(MapObjNoInit());
-        MapObjSwizzle.Swizzle((void**)&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
 }

@@ -105,14 +105,7 @@ extern MouseSceneTarget* MouseLastTarget;
 // GLOBAL: GAMEMD 0x007F7C90 - the interface id the saved owned objects are loaded as.
 extern const IID MouseObjectIid;
 
-// The pointer-swizzle manager at 0xB0C110 (0x6CF240; the object's address is `this`, __stdcall).
-class MouseSwizzleView
-{
-public:
-    long __stdcall Swizzle(void** pointerField);
-};
-// GLOBAL: GAMEMD 0x00B0C110
-extern MouseSwizzleView MouseSwizzle;
+
 
 // ---- MouseClass -----------------------------------------------------------------------------------------------
 // MouseClass and its whole base chain are declared in ui_display_chain.h. Its scalar deleting destructor:

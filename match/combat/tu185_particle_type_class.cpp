@@ -90,6 +90,7 @@
 // STRING: GAMEMD 0x837240 "ColorList"
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include <string.h>
 #include "particles/particle_type_class.h"
 
@@ -886,7 +887,7 @@ HRESULT __stdcall ParticleTypeClass::Load(IStream* pStm)
         return hr;
 
     new (this) ParticleTypeClass(ParticleNoInit());
-    ParticleSwizzle.Swizzle((void**)&Warhead);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Warhead);
 
     int count = 0;
     hr = pStm->Read(&count, 4, 0);

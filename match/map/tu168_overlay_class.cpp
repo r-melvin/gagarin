@@ -8,6 +8,7 @@
 // OverlayClass entries (layout and evidence: overlay_class.h).
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include <stdlib.h>
 #include "terrain_objects/overlay_class.h"
 
@@ -443,7 +444,7 @@ HRESULT __stdcall OverlayClass::Load(IStream* pStm)
     HRESULT hr = MapObjClassView::Load(pStm);
     if (hr >= 0) {
         new (this) OverlayClass(MapObjNoInit());
-        MapObjSwizzle.Swizzle((void**)&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
 }

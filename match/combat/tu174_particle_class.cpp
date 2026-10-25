@@ -8,6 +8,7 @@
 // ParticleClass entries (layout and evidence: particle_class.h).
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include <stdlib.h>
 #include "particles/particle_class.h"
 
@@ -234,8 +235,8 @@ HRESULT __stdcall ParticleClass::Load(IStream* pStm)
     HRESULT hr = ParticleObjectView::Load(pStm);
     if (hr >= 0) {
         new (this) ParticleClass(ParticleNoInit());
-        ParticleSwizzle.Swizzle((void**)&Type);
-        ParticleSwizzle.Swizzle((void**)&Owner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
         hr = 0;
     }
     return hr;

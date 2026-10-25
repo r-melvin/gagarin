@@ -112,15 +112,7 @@ public:
     ParticleColorList ReadColors(const char* section, const char* key, ParticleColorList defaultValue);
 };
 
-// GLOBAL: GAMEMD 0xB0C110 - the pointer-swizzle manager object used by every Load (read-only here).
-// The entry below is __stdcall with the manager as the first stack argument (`this`).
-class ParticleSwizzleView
-{
-public:
-    // FUNCTION: GAMEMD 0x6CF240 (read-only here) - registers one pointer field for fix-up after a load.
-    void __stdcall Swizzle(void** pointerField);
-};
-extern ParticleSwizzleView ParticleSwizzle;
+
 
 // FUNCTION: GAMEMD 0x7258D0 (read-only here) - announces that a pointer is going away. __fastcall:
 // the object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone) to tell

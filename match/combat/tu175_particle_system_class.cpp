@@ -22,6 +22,7 @@
 //   The call at 0x62B5E0 targets ParticleClass::ParticleClass, whose reconstruction remains capped elsewhere.
 
 #include "particles/system_class.h"
+#include "../_layout/swizzle_manager_class.h"
 #include "particles/particle_system_type_class.h"
 #include "particles/particle_class.h"
 
@@ -256,9 +257,9 @@ HRESULT __stdcall ParticleSystemClass::Load(IStream* pStm)
     HRESULT hr = ParticleObjectView::Load(pStm);
     if (hr >= 0) {
         new (this) ParticleSystemClass(ParticleNoInit());
-        ParticleSwizzle.Swizzle((void**)&Type);
-        ParticleSwizzle.Swizzle((void**)&unknown_E4);
-        ParticleSwizzle.Swizzle((void**)&unknown_E0);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E4);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E0);
         int count = 0;
         hr = pStm->Read(&count, 4, 0);
         if (hr >= 0) {
@@ -272,7 +273,7 @@ HRESULT __stdcall ParticleSystemClass::Load(IStream* pStm)
                 Particles.AddItem(particle);
             }
             for (int i = 0; i < Particles.Count; ++i) {
-                ParticleSwizzle.Swizzle((void**)&Particles.Items[i]);
+                DAT_00B0C110.SwizzleManagerClass::vf_4(&Particles.Items[i]);
             }
             hr = 0;
         }

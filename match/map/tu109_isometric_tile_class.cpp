@@ -9,6 +9,7 @@
 // IsometricTileClass entries (layout and evidence: isometric_tile_class.h).
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/isometric_tile_class.h"
 
 // Globals read by this TU's static initialisers (placeholder names).
@@ -49,7 +50,7 @@ HRESULT __stdcall IsometricTileClass::Load(IStream* pStm)
     HRESULT hr = MapObjClassView::Load(pStm);
     if (hr >= 0) {
         new (this) IsometricTileClass(MapObjNoInit());
-        MapObjSwizzle.Swizzle((void**)&Type);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     }
     return hr;
 }

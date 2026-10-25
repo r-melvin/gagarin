@@ -20,6 +20,7 @@
 //   STRING:   GAMEMD 0x81834C  ".SHP"
 
 #include <new.h>
+#include "../_layout/swizzle_manager_class.h"
 #include "terrain_objects/overlay_type_class.h"
 #include "terrain_objects/overlay_class.h"
 
@@ -303,7 +304,7 @@ HRESULT __stdcall OverlayTypeClass::Load(IStream* pStm)
         new (this) OverlayTypeClass(MapObjNoInit());
         LoadFixup();
         PostLoad();
-        MapObjSwizzle.Swizzle((void**)&CellAnim);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&CellAnim);
         if (!unknown_2AF) {
             char path[0x200];
             if (Theater) {
