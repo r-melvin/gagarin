@@ -27,23 +27,6 @@
 // caller's count (`MOV dword ptr [ECX+0x800],0x200` @0x749061).
 #define UNIT_TRACKER_MAX_TYPES 0x200
 
-struct UnitTrackerClass
-{
-    int UnitTotals[UNIT_TRACKER_MAX_TYPES];  // +0x0000  (INC [ECX+EAX*4] @0x74902E)
-    int UnitCount;                           // +0x0800  (CMP [ECX+0x800]  @0x749024)
-    int InNetworkFormat;                     // +0x0804  (cleared by the ctor @0x748FF5)
-
-    // Declared ascending by retail address.
-    void IncrementUnitTotal(int unitType);   // GAMEMD 0x749020
-    void Init(int unitCount);                // GAMEMD 0x749060
-    int  GetTotalOfAll();                    // GAMEMD 0x7490A0
-    int* GetAllTotals();                     // GAMEMD 0x7490C0
-    void ClearUnitTotal();                   // GAMEMD 0x7490D0
-};
-
-GG_STATIC_ASSERT(offsetof(UnitTrackerClass, UnitTotals)      == 0x000);
-GG_STATIC_ASSERT(offsetof(UnitTrackerClass, UnitCount)       == 0x800);
-GG_STATIC_ASSERT(offsetof(UnitTrackerClass, InNetworkFormat) == 0x804);
-GG_STATIC_ASSERT(sizeof(UnitTrackerClass) == 0x808);
+#include "../_layout/unit_tracker_class.h"
 
 #endif  // GG_MATCH_NETWORK_UNIT_TRACKER_CLASS_METHODS_H

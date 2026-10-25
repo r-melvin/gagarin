@@ -22,6 +22,8 @@
 // ---------------------------------------------------------------------------
 struct StorageClass
 {
+    // Declaration: GAMEMD 0x6C95E0 -- native writes four zero dwords, RET.
+    StorageClass();
     // Declared ascending by retail address (reccmp/isle TU discipline).
     int   GetTotalValue() const;                     // GAMEMD 0x6C9600 __thiscall
     float GetTotalAmount() const;                    // GAMEMD 0x6C9650 __thiscall

@@ -8,7 +8,7 @@
 //     IPublicHouse table 0x7EA80C: slots 3-4 are adjustor thunks 0x510AB0 /
 //     0x510AC0 onto IHouse 3-4 (0x4F6E60 / 0x4F6950: one shared override),
 //     5-7 RET 8, 8 RET 4.
-//   IHouse slot 8 (0x4F6A00, returns the dword at object +0x5380) and
+//   IHouse slot 8 (0x4F6A00, returns the dword at interface +0x5380 = House +0x53A4) and
 //   IPublicHouse slot 8 (0x4F6910, a different body) are two implementations,
 //   so the two slots carry interface-specific names and a class overrides each
 //   separately. IPublicHouse 5-7 are named per interface for the same reason.

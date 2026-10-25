@@ -15,6 +15,7 @@ class WaypointPathClass;
 class WaypointClass;
 #include <string.h>
 #include "house_views.h"
+#include "../../_layout/cell.h"
 #include "house_building_views.h"
 #include "house_techno_view.h"
 
@@ -158,7 +159,7 @@ class HouseMapView
 {
 public:
     // FUNCTION: GAMEMD 0x5657A0 (read-only here)
-    HouseCellView* GetCellAt(const HBCell& cell);
+    HouseCellView* GetCellAt(const CellStruct& cell);
 };
 // GLOBAL: GAMEMD 0x87F7E8 - the map.
 extern HouseMapView HouseMap;
@@ -169,7 +170,7 @@ extern HBCoord HouseEmptyCoord;
 
 // The coordinate of a cell: the default coordinate while the cell is unset, else the map's lookup.
 // Retail expands it inline per use.
-inline HBCoord HouseCellCoord(HBCell cell)
+inline HBCoord HouseCellCoord(CellStruct cell)
 {
     if (cell.X == HouseEmptyCell.X && cell.Y == HouseEmptyCell.Y)
         return HouseEmptyCoord;
@@ -610,14 +611,6 @@ public:
 
     // FUNCTION: GAMEMD 0x50BF60 (read-only here; matched elsewhere)
     void CalculateCostMultipliers();
-
-    // The base cell: the base centre cell, or the spawn cell while that is unset.
-    HBCell HouseBaseCell() const
-    {
-        if (BaseCenter.X == HouseEmptyCell.X && BaseCenter.Y == HouseEmptyCell.Y)
-            return BaseSpawnCell;
-        return BaseCenter;
-    }
 
     // ---- members (complete-object offsets) ---------------------------------------------------------
     int    ArrayIndex;                     // +0x30 ctor MOV [EBP+0x30],-1 @0x004F54B8

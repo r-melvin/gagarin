@@ -7,7 +7,7 @@
 // Three tiny accessors grouped by subsystem (economy):
 //   HouseClass::AcquiredThreatNode            @0x509130  (__thiscall)
 //   HouseClass::IonSensitivesShouldBeOffline  @0x53A130  (__thiscall)
-//   UnitTrackerClass::GetArray                @0x7490C0  (__thiscall)
+//   UnitTrackerClass::GetAllTotals                @0x7490C0  (__thiscall)
 // (0x7490C0 is the UnitTrackerClass accessor that YRpp groups near HouseClass;
 //  confirmed from disasm to be a plain `const int*` of `this`.)
 #ifndef GG_MATCH_ECONOMY_HOUSE_CLASS_METHODS_H
@@ -34,21 +34,6 @@ public:
 
 GG_STATIC_ASSERT(offsetof(HouseClass, HasThreatNode) == 0x1FB);
 
-// ---------------------------------------------------------------------------
-// UnitTrackerClass — GetArray returns `const int*` to the head of the unit
-// totals table. Confirmed from 0x7490C0 (`MOV EAX,ECX; RET`): the returned
-// pointer IS `this`, i.e. &UnitTotals[0] at offset 0. YRpp UnitTrackerClass.
-// ---------------------------------------------------------------------------
-struct UnitTrackerClass
-{
-    const int* GetArray();                           // GAMEMD 0x7490C0 __thiscall
-
-    int  UnitTotals[0x200];     // +0x000
-    int  UnitCount;             // +0x800
-    int  InNetworkFormat;       // +0x804  (BOOL)
-};
-
-GG_STATIC_ASSERT(offsetof(UnitTrackerClass, UnitTotals) == 0x000);
-GG_STATIC_ASSERT(offsetof(UnitTrackerClass, UnitCount)  == 0x800);
+#include "../_layout/unit_tracker_class.h"
 
 #endif  // GG_MATCH_ECONOMY_HOUSE_CLASS_METHODS_H

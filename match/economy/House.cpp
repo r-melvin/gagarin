@@ -68,6 +68,8 @@
 //
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol  (CRT double->long; the (int) casts; reloc)
 
+#include "../_layout/house_class.h"
+#include "../_layout/house_type_class.h"
 #include "../ai/house_class_anger_nodes_methods.h"
 
 #include "../ai/house_class_find_building_methods.h"
@@ -458,10 +460,6 @@ template class DynamicVectorClass<DiscreteDistributionClass<AITriggerTypeClass>:
 
 #include "../core/vector_class_operations.h"
 
-class HouseClass {
-public:
-    struct BuildChoiceClass;
-};
 
 template class DynamicVectorClass<HouseClass::BuildChoiceClass*>;
 
@@ -666,6 +664,14 @@ void __cdecl FUN_004F50D0()
 // load near +0x214, the five byte stores near +0x3BB, a push near +0x69F, one add operand order near
 // +0xBC6, two fill-setup orders). Variants tried: memset vs element loops for the fills, vector ctor with
 // init list vs body assignments (body kept), AddItem shapes.
+// Existing coordinate choice, now expressed on the actual House owner.
+inline CellStruct HouseClass::HouseBaseCell() const
+{
+    if (BaseCenter.X == HouseEmptyCell.X && BaseCenter.Y == HouseEmptyCell.Y)
+        return BaseSpawnCell;
+    return BaseCenter;
+}
+
 // FUNCTION: GAMEMD 0x4F54A0
 HouseClusterView::HouseClusterView(HouseTypeView* type)
     : ArrayIndex(-1),
@@ -937,7 +943,7 @@ HouseClusterView::HouseClusterView(HouseTypeView* type)
 }
 
 // FUNCTION: GAMEMD 0x4F6830
-HRESULT __stdcall HouseClusterView::QueryInterface(REFIID riid, void** ppv)
+HRESULT __stdcall HouseClass::QueryInterface(REFIID riid, void** ppv)
 {
     if (ppv == 0)
         return E_POINTER;
@@ -946,9 +952,9 @@ HRESULT __stdcall HouseClusterView::QueryInterface(REFIID riid, void** ppv)
     if (memcmp(&riid, &IID_IUnknown, sizeof(IID)) == 0)
         *ppv = this;
     if (memcmp(&riid, &IID_IHouse, sizeof(IID)) == 0)
-        *ppv = static_cast<HouseIHouseBase*>(this);
+        *ppv = static_cast<IHouse*>(this);
     if (memcmp(&riid, &IID_IPublicHouse, sizeof(IID)) == 0)
-        *ppv = static_cast<HousePublicHouseBase*>(this);
+        *ppv = static_cast<IPublicHouse*>(this);
     if (memcmp(&riid, &IID_IConnectionPointContainer, sizeof(IID)) == 0)
         *ppv = static_cast<IConnectionPointContainer*>(this);
     if (memcmp(&riid, &IID_IPersist, sizeof(IID)) == 0)
@@ -964,13 +970,13 @@ HRESULT __stdcall HouseClusterView::QueryInterface(REFIID riid, void** ppv)
 }
 
 // FUNCTION: GAMEMD 0x4F6910
-bool __stdcall HouseClusterView::HasEnoughPower()
+bool __stdcall HouseClass::IPublicHouse_vf_08()
 {
     return PowerOutput >= PowerDrain;
 }
 
 // FUNCTION: GAMEMD 0x4F6930
-IUnknown* __stdcall HouseClusterView::GetMainInterface()
+IUnknown* __stdcall HouseClass::vf_05()
 {
     IUnknown* result;
     HouseQueryObjectInterface(&HouseMainObject, &DAT_007E36C0, (void**)&result);
@@ -978,40 +984,40 @@ IUnknown* __stdcall HouseClusterView::GetMainInterface()
 }
 
 // FUNCTION: GAMEMD 0x4F6950
-BSTR __stdcall HouseClusterView::GetName()
+BSTR __stdcall HouseClass::vf_04()
 {
     WCHAR buffer[32];
-    MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, Type->NameBuffer, -1, buffer, 32);
+    MultiByteToWideChar(CP_ACP, MB_PRECOMPOSED, Type->Name, -1, buffer, 32);
     return SysAllocString(buffer);
 }
 
 // FUNCTION: GAMEMD 0x4F6990
-int __stdcall HouseClusterView::GetCredits()
+HRESULT __stdcall HouseClass::vf_06()
 {
-    float multiplier = Type->ValueMultiplier;
+    float multiplier = Type->IncomeMult;
     return (int)(OwnedTiberium.GetTotalValue() * multiplier + Balance);
 }
 
 // FUNCTION: GAMEMD 0x4F69D0
-int __stdcall HouseClusterView::GetTiberiumStored()
+HRESULT __stdcall HouseClass::vf_07()
 {
     return TotalStorage - (int)OwnedTiberium.GetTotalAmount();
 }
 
 // FUNCTION: GAMEMD 0x4F6A00
-int __stdcall HouseClusterView::GetPowerOutput()
+HRESULT __stdcall HouseClass::IHouse_vf_08()
 {
     return PowerOutput;
 }
 
 // FUNCTION: GAMEMD 0x4F6A10
-int __stdcall HouseClusterView::GetPowerDrain()
+HRESULT __stdcall HouseClass::vf_09()
 {
     return PowerDrain;
 }
 
 // FUNCTION: GAMEMD 0x4F6A20
-int __stdcall HouseClusterView::CountOwnedOfCategory(int category)
+HRESULT __stdcall HouseClass::vf_10(int category)
 {
     int count = 0;
     for (int i = 0; i < HouseTechnoArray.Count; i++) {
@@ -1023,7 +1029,7 @@ int __stdcall HouseClusterView::CountOwnedOfCategory(int category)
 }
 
 // FUNCTION: GAMEMD 0x4F6A80
-int __stdcall HouseClusterView::PublicCountOwnedOfCategory(int category)
+HRESULT __stdcall HouseClass::IPublicHouse_vf_05(int category)
 {
     int count = 0;
     for (int i = 0; i < HouseTechnoArray.Count; i++) {
@@ -1035,7 +1041,7 @@ int __stdcall HouseClusterView::PublicCountOwnedOfCategory(int category)
 }
 
 // FUNCTION: GAMEMD 0x4F6AE0
-int __stdcall HouseClusterView::SumScoreOfCategory(int category)
+HRESULT __stdcall HouseClass::vf_11(int category)
 {
     int total = 0;
     for (int i = 0; i < HouseTechnoArray.Count; i++) {
@@ -1048,7 +1054,7 @@ int __stdcall HouseClusterView::SumScoreOfCategory(int category)
 }
 
 // FUNCTION: GAMEMD 0x4F6B50
-int __stdcall HouseClusterView::PublicSumScoreOfCategory(int category)
+HRESULT __stdcall HouseClass::IPublicHouse_vf_06(int category)
 {
     int total = 0;
     for (int i = 0; i < HouseTechnoArray.Count; i++) {
@@ -1061,27 +1067,27 @@ int __stdcall HouseClusterView::PublicSumScoreOfCategory(int category)
 }
 
 // FUNCTION: GAMEMD 0x4F6BC0
-void* __stdcall HouseClusterView::GetBaseCenter(void* cell)
+void* __stdcall HouseClass::vf_12(void* cell)
 {
-    HBCell center;
+    CellStruct center;
     center.X = HouseCellCoord(HouseBaseCell()).X / 256;
     center.Y = HouseCellCoord(HouseBaseCell()).Y / 256;
-    *(HBCell*)cell = center;
+    *(CellStruct*)cell = center;
     return cell;
 }
 
 // FUNCTION: GAMEMD 0x4F6D10
-void* __stdcall HouseClusterView::PublicGetBaseCenter(void* cell)
+void* __stdcall HouseClass::IPublicHouse_vf_07(void* cell)
 {
-    HBCell center;
+    CellStruct center;
     center.X = HouseCellCoord(HouseBaseCell()).X / 256;
     center.Y = HouseCellCoord(HouseBaseCell()).Y / 256;
-    *(HBCell*)cell = center;
+    *(CellStruct*)cell = center;
     return cell;
 }
 
 // FUNCTION: GAMEMD 0x4F6E60
-int __stdcall HouseClusterView::GetIndex()
+HRESULT __stdcall HouseClass::vf_03()
 {
     return ArrayIndex;
 }
@@ -1378,7 +1384,7 @@ int ObjectTypeClass::IsBuildCat5(int abstractID, int idx)
 }
 
 // FUNCTION: GAMEMD 0x5013A0
-int __stdcall HouseClusterView::SellAllBuildings()
+HRESULT __stdcall HouseClass::vf_13()
 {
     if (OwnedBuildings > 0) {
         int count = Buildings.Count;
@@ -1393,7 +1399,7 @@ int __stdcall HouseClusterView::SellAllBuildings()
 }
 
 // FUNCTION: GAMEMD 0x501400
-int __stdcall HouseClusterView::DestroyAllTechnos()
+HRESULT __stdcall HouseClass::IHouse_vf_14()
 {
     for (int i = HouseTechnoArray.Count - 1; i >= 0; i--) {
         HouseTechnoView* techno = HouseTechnoArray.Items[i];
@@ -1418,7 +1424,7 @@ int __stdcall HouseClusterView::DestroyAllTechnos()
 }
 
 // FUNCTION: GAMEMD 0x5024F0
-HRESULT __stdcall HouseClusterView::EnumConnectionPoints(IEnumConnectionPoints** ppEnum)
+HRESULT __stdcall HouseClass::EnumConnectionPoints(IEnumConnectionPoints** ppEnum)
 {
     if (ppEnum == 0)
         return E_POINTER;
@@ -1433,7 +1439,7 @@ HRESULT __stdcall HouseClusterView::EnumConnectionPoints(IEnumConnectionPoints**
 }
 
 // FUNCTION: GAMEMD 0x502550
-HRESULT __stdcall HouseClusterView::FindConnectionPoint(REFIID riid, IConnectionPoint** ppCP)
+HRESULT __stdcall HouseClass::FindConnectionPoint(REFIID riid, IConnectionPoint** ppCP)
 {
     if (ppCP == 0)
         return E_POINTER;
@@ -2001,7 +2007,7 @@ HRESULT __stdcall HouseClusterView::Save(IStream* pStm, BOOL fClearDirty)
 }
 
 // FUNCTION: GAMEMD 0x5046F0
-HRESULT __stdcall HouseClusterView::GetClassID(CLSID* pClassID)
+HRESULT __stdcall HouseClass::GetClassID(CLSID* pClassID)
 {
     if (pClassID == 0)
         return E_POINTER;
@@ -2011,9 +2017,9 @@ HRESULT __stdcall HouseClusterView::GetClassID(CLSID* pClassID)
 }
 
 // FUNCTION: GAMEMD 0x504730
-int HouseClusterView::Size()
+int HouseClass::vf_12()
 {
-    return sizeof(HouseClusterView);
+    return sizeof(HouseClass);
 }
 
 // FUNCTION: GAMEMD 0x504790
@@ -2396,28 +2402,28 @@ void House_0050E0E0::LostPoweredCenter(Type_0050E0E0* type)
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E340
-ULONG __stdcall HouseClusterView::AddRef()
+ULONG __stdcall HouseClass::AddRef()
 {
     return 1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E350
-ULONG __stdcall HouseClusterView::Release()
+ULONG __stdcall HouseClass::Release()
 {
     return 1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E360
-int HouseClusterView::WhatAmI()
+int HouseClass::vf_11()
 {
     return 13;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x50E370
-int HouseClusterView::vf_16()
+int HouseClass::vf_16()
 {
     return ArrayIndex;
 }

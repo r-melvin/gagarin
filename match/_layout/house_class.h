@@ -59,25 +59,29 @@ class BuildingClass;
 // --- opaque blocks whose SIZE is proven but whose fields are not named -------
 // Each size is proven by closure between two confirmed neighbours in the ctor.
 
-// UnitTrackerClass — 0x808. Ten of them run 0x328..0x5378 at stride 0x808
-// (ctor LEA ECX sites 0x004F58E9..0x004F594C).
-#ifndef GG_MATCH_LAYOUT_UNITTRACKERCLASS_DEFINED
-#define GG_MATCH_LAYOUT_UNITTRACKERCLASS_DEFINED
-struct UnitTrackerClass { unsigned char unknown_00[0x808]; };
-GG_STATIC_ASSERT(sizeof(UnitTrackerClass) == 0x808);
-#endif
+#include "unit_tracker_class.h"
 
 // CounterClass — 0x14. Twelve of them run 0x5500..0x55F0 at stride 0x14
 // (ctor LEA ECX sites 0x004F5AAB..0x004F5B2E).
 #ifndef GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
 #define GG_MATCH_LAYOUT_COUNTERCLASS_DEFINED
-class CounterClass
+class CounterClass : public VectorClass<int>
 {
 public:
-    unsigned char unknown_00[0x14];
+    // External native49F9B0; RTTI7FF690 proves the zero-offset VectorClass<int> base.
+    CounterClass();
+    // Native slot3 at7E5C60 points49FB40; remaining six slots are inherited.
+    virtual void Clear();
+    // Native ctor stores zero at+10;49FB60 reads the cached total here.
+    int Total;
+    // Declarations from existing House Load/Save/count call sites.
+    int GetCount(int typeIndex);
+    void Save(IStream* stream);
+    void Load(IStream* stream);
     // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
     int FUN_0049FB60() const;
 };
+GG_STATIC_ASSERT(offsetof(CounterClass, Total) == 0x10);
 GG_STATIC_ASSERT(sizeof(CounterClass) == 0x14);
 #endif
 
@@ -85,7 +89,13 @@ GG_STATIC_ASSERT(sizeof(CounterClass) == 0x14);
 // @0x004F5BFF; next confirmed member CurrentDropshipIndex @0x56F4).
 #ifndef GG_MATCH_LAYOUT_DROPSHIPSTRUCT_DEFINED
 #define GG_MATCH_LAYOUT_DROPSHIPSTRUCT_DEFINED
-struct DropshipStruct { unsigned char unknown_00[0x2C]; };
+struct DropshipStruct {
+    // Declaration: GAMEMD 0x4B69B0 -- native frame/delay/flag initialization.
+    DropshipStruct();
+    // Declaration: GAMEMD 0x4B6BB0 -- called by503040 with this member receiver.
+    void Swizzle();
+    unsigned char unknown_00[0x2C];
+};
 GG_STATIC_ASSERT(sizeof(DropshipStruct) == 0x2C);
 #endif
 
@@ -95,9 +105,17 @@ GG_STATIC_ASSERT(sizeof(DropshipStruct) == 0x2C);
 #define GG_MATCH_LAYOUT_BASECLASS_DEFINED
 class BaseClass {
 public:
-    unsigned char unknown_00[0x74];
+    // External native constructor42E6F0 installs7E3880. RTTI has no base.
+    BaseClass();
+    // Slots0/1: receiver and stream are stack arguments, RET8.
+    virtual void __stdcall LoadFromStream(IStream* stream);
+    virtual void __stdcall SaveToStream(IStream* stream);
+    // Slot2: ECX receiver and one checksum pointer, RET4.
+    virtual void ComputeCrc(Obj_004A1D30* crc);
+    unsigned char unknown_04[0x70];
     HouseClass* unknown_74; // 0x6869DB writes containing House at +0x5774
 };
+GG_STATIC_ASSERT(offsetof(BaseClass, unknown_04) == 4);
 GG_STATIC_ASSERT(offsetof(BaseClass, unknown_74) == 0x74);
 GG_STATIC_ASSERT(sizeof(BaseClass) == 0x78);
 #endif
@@ -125,6 +143,45 @@ template<class T> class DynamicVectorClass;
 class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
+    // Declaration: GAMEMD 0x4F54A0 -- recovered body currently on legacy owner.
+    HouseClass(HouseTypeClass* type);
+    // Declaration: GAMEMD 0x4F5190 -- forwards this opaque argument to4101C0.
+    HouseClass(const AbstractNoInit& noInit);
+    // External ordinary destructor: the native deleting provider50E380 calls4F7140.
+    virtual ~HouseClass();
+    virtual HRESULT __stdcall QueryInterface(REFIID riid, void** ppv);
+    virtual ULONG __stdcall AddRef();
+    virtual ULONG __stdcall Release();
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
+    virtual HRESULT __stdcall Load(IStream* pStm);
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    virtual HRESULT __stdcall EnumConnectionPoints(IEnumConnectionPoints** ppEnum);
+    virtual HRESULT __stdcall FindConnectionPoint(REFIID riid, IConnectionPoint** ppCP);
+    virtual int vf_11();
+    virtual int vf_12();
+    virtual int vf_16();
+
+    // Existing interface slots in native order; placeholder identities are retained.
+    virtual HRESULT __stdcall vf_03();
+    virtual BSTR __stdcall vf_04();
+    virtual IUnknown* __stdcall vf_05();
+    virtual HRESULT __stdcall vf_06();
+    virtual HRESULT __stdcall vf_07();
+    virtual HRESULT __stdcall IHouse_vf_08();
+    virtual HRESULT __stdcall vf_09();
+    virtual HRESULT __stdcall vf_10(int a1);
+    virtual HRESULT __stdcall vf_11(int a1);
+    virtual void* __stdcall vf_12(void* a1);
+    virtual HRESULT __stdcall vf_13();
+    virtual HRESULT __stdcall IHouse_vf_14();
+    virtual HRESULT __stdcall IPublicHouse_vf_05(int a1);
+    virtual HRESULT __stdcall IPublicHouse_vf_06(int a1);
+    virtual void* __stdcall IPublicHouse_vf_07(void* a1);
+    virtual bool __stdcall IPublicHouse_vf_08();
+
+    // Coordinate helper expanded by native4F6BC0/4F6D10.
+    CellStruct HouseBaseCell() const;
+
     // Declaration: GAMEMD 0x501640 -- ECX house at 0x64CA0D.
     void AllyAIHouses();
 
@@ -391,7 +448,7 @@ public:
     int    StartingPoint;                  // +0x16058 NOT written by the ctor (union with a CellStruct)
     unsigned int StartingAllies;           // +0x1605C NOT written by the ctor
     unsigned int unknown_16060;            // +0x16060 ctor @0x004F5D5D
-    DynamicVectorClassLayout WaypointPath;       // +0x16064 ctor LEA ESI @0x004F5D47
+    DynamicVectorClass<IConnectionPoint*> ConnectionPoints;       // +0x16064 ctor LEA ESI @0x004F5D47
     unsigned int unknown_1607C;            // +0x1607C ctor @0x004F5D74
     unsigned int unknown_16080;            // +0x16080 ctor @0x004F5D7A
     unsigned int unknown_16084;            // +0x16084 NOT written by the ctor
@@ -536,7 +593,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, UINameString)               == 0x16009);
 GG_STATIC_ASSERT(offsetof(HouseClass, UIName)                     == 0x1602A);
 GG_STATIC_ASSERT(offsetof(HouseClass, ColorSchemeIndex)           == 0x16054);
 GG_STATIC_ASSERT(offsetof(HouseClass, unknown_16060)              == 0x16060);
-GG_STATIC_ASSERT(offsetof(HouseClass, WaypointPath)               == 0x16064);
+GG_STATIC_ASSERT(offsetof(HouseClass, ConnectionPoints)               == 0x16064);
 GG_STATIC_ASSERT(offsetof(HouseClass, unknown_1607C)              == 0x1607C);
 GG_STATIC_ASSERT(offsetof(HouseClass, unused_16088)               == 0x16088);
 GG_STATIC_ASSERT(offsetof(HouseClass, unused_16090)               == 0x16090);
@@ -557,5 +614,15 @@ GG_STATIC_ASSERT(sizeof(HouseClass)                               == 0x160B8);
 GG_STATIC_ASSERT(offsetof(HouseClass, MapIsClear) == 0x241);
 GG_STATIC_ASSERT(offsetof(HouseClass, StartingPoint) == 0x16058);
 GG_STATIC_ASSERT(offsetof(HouseClass, StartingAllies) == 0x1605C);
+
+// Existing body field reads/writes: interface receivers are at House+0x24.
+// 501400 stores [interface+225];4F69D0 reads [interface+2EC].
+GG_STATIC_ASSERT(offsetof(HouseClass, AllToHunt) == 0x249);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedBuildings) == 0x2F0);
+GG_STATIC_ASSERT(offsetof(HouseClass, TotalStorage) == 0x310);
+GG_STATIC_ASSERT(offsetof(HouseClass, PowerDrain) == 0x53A8);
+
+GG_STATIC_ASSERT(offsetof(HouseClass, BaseSpawnCell) == 0x5490);
+GG_STATIC_ASSERT(offsetof(HouseClass, BaseCenter) == 0x5494);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H

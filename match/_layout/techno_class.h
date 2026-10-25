@@ -77,17 +77,7 @@ struct RectangleStruct;
 
 // StorageClass — four-tiberium-type cargo cells (sizeof = 0x10). Owns the
 // matched StorageClass::GetTotalValue @0x6C9600 family.
-#ifndef GG_MATCH_LAYOUT_STORAGECLASS_DEFINED
-#define GG_MATCH_LAYOUT_STORAGECLASS_DEFINED
-struct StorageClass
-{
-    float Tiberium1;   // +0x00
-    float Tiberium2;   // +0x04
-    float Tiberium3;   // +0x08
-    float Tiberium4;   // +0x0C
-};
-GG_STATIC_ASSERT(sizeof(StorageClass) == 0x10);
-#endif
+#include "../economy/storage_class.h"
 
 // TransitionTimer — deploy/unload cycle timer (sizeof = 0x20; 8-aligned due to
 // the leading double). Ctor FUN_0x004A50F0.
