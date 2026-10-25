@@ -7488,6 +7488,7 @@
  "match/core/tu165_object_class.cpp::_?none@?1??vf_66@ObjectClass@@UAEPAXH@Z@4UCellPair_5F5B90@@A": "0x00AC139C",
  "match/core/voxel_unit_block_00754940.cpp::_DAT_007F6940": "0x007F6940",
  "match/economy/House.cpp::?AddRef@HouseClusterView@@UAGKXZ": "0x0050E340",
+ "match/economy/House.cpp::?ComputeCrc@HouseClusterView@@UAEXPAVHouseCrcView@@@Z": "0x00502D60",
  "match/economy/House.cpp::?CountOwnedOfCategory@HouseClusterView@@UAGHH@Z": "0x004F6A20",
  "match/economy/House.cpp::?DestroyAllTechnos@HouseClusterView@@UAGHXZ": "0x00501400",
  "match/economy/House.cpp::?EnumConnectionPoints@HouseClusterView@@UAGJPAPAUIEnumConnectionPoints@@@Z": "0x005024F0",

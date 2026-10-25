@@ -70,6 +70,9 @@
 
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
+#include "../_layout/obj_004a1d30.h"
+// Native502D60 reads the country second index through this actual field.
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xB8);
 #include "../ai/house_class_anger_nodes_methods.h"
 
 #include "../ai/house_class_find_building_methods.h"
@@ -1462,48 +1465,48 @@ HRESULT __stdcall HouseClass::FindConnectionPoint(REFIID riid, IConnectionPoint*
 // retail, the reverse here (18 register-only differences, multiset identical). Variants: conditional
 // form, early-return form, local-copy form, ternary form.
 // FUNCTION: GAMEMD 0x502D60
-void HouseClusterView::ComputeCrc(HouseCrcView* crc)
+void HouseClass::vf_13(Obj_004A1D30* crc)
 {
-    HouseAbstractView::ComputeCrc(crc);
-    crc->AddInt(AIDifficulty);
-    crc->AddInt(Type->ArrayIndex2);
-    crc->AddDouble(FirepowerMultiplier);
-    crc->AddDouble(GroundspeedMultiplier);
-    crc->AddDouble(AirspeedMultiplier);
-    crc->AddDouble(ArmorMultiplier);
-    crc->AddDouble(ROFMultiplier);
-    crc->AddDouble(CostMultiplier);
-    crc->AddDouble(BuildTimeMultiplier);
-    crc->AddDouble(RepairDelay);
-    crc->AddDouble(BuildDelay);
-    crc->AddBool(IsHumanPlayer);
-    crc->AddBool(Production);
-    crc->AddBool(AutocreateAllowed);
-    crc->AddBool(AITriggersActive);
-    crc->AddBool(Defeated);
-    crc->AddInt(IQLevel2);
-    crc->AddInt(AIMode);
-    crc->AddInt(AllowWinBlocks);
-    crc->AddInt(RepairTimer.GetTimeLeft());
-    crc->AddInt(AlertTimer.GetTimeLeft());
-    crc->AddInt(BorrowedTime.GetTimeLeft());
-    crc->AddInt(OwnedUnits);
-    crc->AddInt(OwnedBuildings);
-    crc->AddInt(OwnedInfantry);
-    crc->AddInt(OwnedAircraft);
-    crc->AddInt(Balance);
-    crc->AddInt(TotalStorage);
-    crc->AddInt(NumAirpads);
-    crc->AddInt(NumBarracks);
-    crc->AddInt(NumWarFactories);
-    crc->AddInt(NumShipyards);
-    crc->AddInt(NumConYards);
-    crc->AddInt(NumOrePurifiers);
-    crc->AddInt(PowerOutput);
-    crc->AddInt(PowerDrain);
-    crc->AddBool(MapIsClear);
-    crc->AddInt(WhoLastHurtMe);
-    crc->AddInt(EnemyHouseIndex);
+    AbstractClass::vf_13(crc);
+    crc->FUN_004A1D50(AIDifficulty);
+    crc->FUN_004A1D50(Type->ArrayIndex2);
+    crc->FUN_004A1D90(FirepowerMultiplier);
+    crc->FUN_004A1D90(GroundspeedMultiplier);
+    crc->FUN_004A1D90(AirspeedMultiplier);
+    crc->FUN_004A1D90(ArmorMultiplier);
+    crc->FUN_004A1D90(ROFMultiplier);
+    crc->FUN_004A1D90(CostMultiplier);
+    crc->FUN_004A1D90(BuildTimeMultiplier);
+    crc->FUN_004A1D90(RepairDelay);
+    crc->FUN_004A1D90(BuildDelay);
+    crc->FUN_004A1CA0(IsHumanPlayer);
+    crc->FUN_004A1CA0(Production);
+    crc->FUN_004A1CA0(AutocreateAllowed);
+    crc->FUN_004A1CA0(AITriggersActive);
+    crc->FUN_004A1CA0(Defeated);
+    crc->FUN_004A1D50(IQLevel2);
+    crc->FUN_004A1D50(AIMode);
+    crc->FUN_004A1D50(AllowWinBlocks);
+    crc->FUN_004A1D50(RepairTimer.GetTimeLeft());
+    crc->FUN_004A1D50(AlertTimer.GetTimeLeft());
+    crc->FUN_004A1D50(BorrowedTime.GetTimeLeft());
+    crc->FUN_004A1D50(OwnedUnits);
+    crc->FUN_004A1D50(OwnedBuildings);
+    crc->FUN_004A1D50(OwnedInfantry);
+    crc->FUN_004A1D50(OwnedAircraft);
+    crc->FUN_004A1D50(Balance);
+    crc->FUN_004A1D50(TotalStorage);
+    crc->FUN_004A1D50(NumAirpads);
+    crc->FUN_004A1D50(NumBarracks);
+    crc->FUN_004A1D50(NumWarFactories);
+    crc->FUN_004A1D50(NumShipyards);
+    crc->FUN_004A1D50(NumConYards);
+    crc->FUN_004A1D50(NumOrePurifiers);
+    crc->FUN_004A1D50(PowerOutput);
+    crc->FUN_004A1D50(PowerDrain);
+    crc->FUN_004A1CA0(MapIsClear);
+    crc->FUN_004A1D50(WhoLastHurtMe);
+    crc->FUN_004A1D50(EnemyHouseIndex);
     Base.ComputeCrc(crc);
 }
 

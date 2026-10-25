@@ -50140,11 +50140,11 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x502D60",
-  "sym": "?ComputeCrc@HouseClusterView@@UAEXPAVHouseCrcView@@@Z",
+  "sym": "?vf_13@HouseClass@@UAEXPAUObj_004A1D30@@@Z",
   "len": "0x2de",
-  "name": "HouseClass::ComputeCrc",
-  "status": "partial",
-  "pct": 91.7
+  "name": "HouseClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
  },
  {
   "tu": "match/economy/House.cpp",

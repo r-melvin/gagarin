@@ -160,6 +160,7 @@ public:
     virtual int vf_11();
     virtual int vf_12();
     virtual int vf_16();
+    virtual void vf_13(Obj_004A1D30* crc);
 
     // Existing interface slots in native order; placeholder identities are retained.
     virtual HRESULT __stdcall vf_03();
@@ -250,16 +251,16 @@ public:
     int    StartingEdge;                   // +0x1E0 ctor @0x004F56D9
     unsigned int AIState_1E4;              // +0x1E4 ctor @0x004F56DF (name anchor confirmed)
     int    SideIndex;                      // +0x1E8 ctor MOV [EBP+0x1E8],-1 @0x004F6455
-    unsigned char IsHumanPlayer;           // +0x1EC ctor @0x004F56E5
+    bool IsHumanPlayer;           // +0x1EC ctor @0x004F56E5
     unsigned char IsInPlayerControl;       // +0x1ED ctor @0x004F56EB
-    unsigned char Production;              // +0x1EE ctor @0x004F56F1
-    unsigned char AutocreateAllowed;       // +0x1EF ctor @0x004F56F7
+    bool Production;              // +0x1EE ctor @0x004F56F1
+    bool AutocreateAllowed;       // +0x1EF ctor @0x004F56F7
     unsigned char NodeLogic_1F0;           // +0x1F0 ctor MOV byte,1 @0x004F56FD (name anchor confirmed)
     unsigned char ShipYardConst_1F1;       // +0x1F1 ctor @0x004F5704 (name anchor confirmed)
-    unsigned char AITriggersActive;        // +0x1F2 ctor @0x004F570A
+    bool AITriggersActive;        // +0x1F2 ctor @0x004F570A
     unsigned char AutoBaseBuilding;        // +0x1F3 ctor @0x004F5710
     unsigned char DiscoveredByPlayer;      // +0x1F4 ctor @0x004F5716
-    unsigned char Defeated;                // +0x1F5 ctor @0x004F571C
+    bool Defeated;                // +0x1F5 ctor @0x004F571C
     unsigned char IsGameOver;              // +0x1F6 ctor @0x004F5722
     unsigned char IsWinner;                // +0x1F7 ctor @0x004F5728
     unsigned char IsLoser;                 // +0x1F8 ctor @0x004F572E
@@ -275,7 +276,7 @@ public:
     int    SelectedPathIndex;              // +0x20C ctor @0x004F575F
     WaypointPathClass* PlanningPaths[12];              // +0x210 .. 0x23F ctor LEA EDI @0x004F643B (12 dwords = 0x30)
     signed char   Visionary;               // +0x240 ctor @0x004F5765
-    unsigned char MapIsClear;              // +0x241 ctor @0x004F576B
+    bool MapIsClear;              // +0x241 ctor @0x004F576B
     unsigned char IsTiberiumShort;         // +0x242 ctor @0x004F5771
     unsigned char HasBeenSpied;            // +0x243 ctor @0x004F5777
     unsigned char HasBeenThieved;          // +0x244 ctor @0x004F577D
@@ -624,5 +625,29 @@ GG_STATIC_ASSERT(offsetof(HouseClass, PowerDrain) == 0x53A8);
 
 GG_STATIC_ASSERT(offsetof(HouseClass, BaseSpawnCell) == 0x5490);
 GG_STATIC_ASSERT(offsetof(HouseClass, BaseCenter) == 0x5494);
+
+// Existing502D60 field reads; complete-object offsets.
+GG_STATIC_ASSERT(offsetof(HouseClass, GroundspeedMultiplier) == 0x190);
+GG_STATIC_ASSERT(offsetof(HouseClass, AirspeedMultiplier) == 0x198);
+GG_STATIC_ASSERT(offsetof(HouseClass, ArmorMultiplier) == 0x1A0);
+GG_STATIC_ASSERT(offsetof(HouseClass, ROFMultiplier) == 0x1A8);
+GG_STATIC_ASSERT(offsetof(HouseClass, CostMultiplier) == 0x1B0);
+GG_STATIC_ASSERT(offsetof(HouseClass, BuildTimeMultiplier) == 0x1B8);
+GG_STATIC_ASSERT(offsetof(HouseClass, RepairDelay) == 0x1C0);
+GG_STATIC_ASSERT(offsetof(HouseClass, Production) == 0x1EE);
+GG_STATIC_ASSERT(offsetof(HouseClass, AutocreateAllowed) == 0x1EF);
+GG_STATIC_ASSERT(offsetof(HouseClass, AITriggersActive) == 0x1F2);
+GG_STATIC_ASSERT(offsetof(HouseClass, Defeated) == 0x1F5);
+GG_STATIC_ASSERT(offsetof(HouseClass, AlertTimer) == 0x28C);
+GG_STATIC_ASSERT(offsetof(HouseClass, BorrowedTime) == 0x298);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedUnits) == 0x2E8);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedInfantry) == 0x2F4);
+GG_STATIC_ASSERT(offsetof(HouseClass, NumBarracks) == 0x537C);
+GG_STATIC_ASSERT(offsetof(HouseClass, NumWarFactories) == 0x5380);
+GG_STATIC_ASSERT(offsetof(HouseClass, NumShipyards) == 0x5388);
+GG_STATIC_ASSERT(offsetof(HouseClass, NumConYards) == 0x5384);
+GG_STATIC_ASSERT(offsetof(HouseClass, NumOrePurifiers) == 0x538C);
+
+GG_STATIC_ASSERT(sizeof(bool) == 1);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H
