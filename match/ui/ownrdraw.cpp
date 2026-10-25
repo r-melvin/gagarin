@@ -2713,20 +2713,20 @@ int FUN_00623E00(GG_HWND hList)
 }
 
 // FUNCTION: GAMEMD 0x623E40  FUN_00623E40
-int FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut)
+int FUN_00623E40(GG_HWND hWnd, Wstring* pOut)
 {
     int nLength = SendMessageA(hWnd, 0xE, 0, 0);
 
     if (nLength <= 0)
     {
-        pOut->Reset();
+        pOut->FUN_007B5340();
         return 0;
     }
 
     char* pszBuffer = new char[nLength + 2];
     int nCopied = SendMessageA(hWnd, 0x4B5, nLength + 1, (long)pszBuffer);
 
-    pOut->FUN_007B48D0(pszBuffer);
+    *pOut = pszBuffer;
     delete pszBuffer;
     return nCopied;
 }
@@ -2751,17 +2751,17 @@ int FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623F00  FUN_00623F00
-int FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
+int FUN_00623F00(GG_HWND hWnd, int nIndex, Wstring* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x18A, nIndex, 0);
 
     if (nLength <= 0)
-        pOut->Reset();
+        pOut->FUN_007B5340();
 
     char* pszBuffer = new char[nLength + 2];
     int nCopied = SendMessageA(hWnd, 0x4B7, nIndex, (long)pszBuffer);
 
-    pOut->FUN_007B48D0(pszBuffer);
+    *pOut = pszBuffer;
     delete pszBuffer;
     return nCopied;
 }
@@ -2783,17 +2783,17 @@ int FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut)
 }
 
 // FUNCTION: GAMEMD 0x623FC0  FUN_00623FC0
-int FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut)
+int FUN_00623FC0(GG_HWND hWnd, int nIndex, Wstring* pOut)
 {
     int nLength = SendMessageA(hWnd, 0x149, nIndex, 0);
 
     if (nLength <= 0)
-        pOut->Reset();
+        pOut->FUN_007B5340();
 
     char* pszBuffer = new char[nLength + 2];
     int nCopied = SendMessageA(hWnd, 0x4BD, nIndex, (long)pszBuffer);
 
-    pOut->FUN_007B48D0(pszBuffer);
+    *pOut = pszBuffer;
     delete pszBuffer;
     return nCopied;
 }

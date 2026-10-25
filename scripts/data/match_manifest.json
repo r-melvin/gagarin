@@ -9753,11 +9753,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/pointer_release_family_methods.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x007b5340",
-  "sym": "?FUN_00007B5340@@YIXPAUHolder_007B46F0@@@Z",
+  "sym": "?FUN_007B5340@Wstring@@QAEXXZ",
   "len": "0x1a",
-  "name": "FUN_00007B5340",
+  "name": "Wstring::FUN_007B5340",
   "status": "matched",
   "pct": 100
  },
@@ -88832,7 +88832,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x623E40",
-  "sym": "?FUN_00623E40@@YIHPAXPAVObj_007B4620@@@Z",
+  "sym": "?FUN_00623E40@@YIHPAXPAVWstring@@@Z",
   "len": "0x5f",
   "name": "FUN_00623E40",
   "status": "matched",
@@ -88850,7 +88850,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x623F00",
-  "sym": "?FUN_00623F00@@YIHPAXHPAVObj_007B4620@@@Z",
+  "sym": "?FUN_00623F00@@YIHPAXHPAVWstring@@@Z",
   "len": "0x5e",
   "name": "FUN_00623F00",
   "status": "matched",
@@ -88868,7 +88868,7 @@
  {
   "tu": "match/ui/ownrdraw.cpp",
   "addr": "0x623FC0",
-  "sym": "?FUN_00623FC0@@YIHPAXHPAVObj_007B4620@@@Z",
+  "sym": "?FUN_00623FC0@@YIHPAXHPAVWstring@@@Z",
   "len": "0x5e",
   "name": "FUN_00623FC0",
   "status": "matched",
@@ -98993,5 +98993,14 @@
   "name": "FUN_005AF980",
   "status": "partial",
   "pct": 3.7
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B48D0",
+  "sym": "??4Wstring@@QAEAAV0@PBD@Z",
+  "len": "0x6D",
+  "name": "Wstring::operator=(const char*)",
+  "status": "matched",
+  "pct": 100
  }
 ]

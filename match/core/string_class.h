@@ -49,6 +49,10 @@ public:
     bool operator!=(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4940
     Wstring& operator=(const Wstring& other);
+    // Declaration: GAMEMD 0x7B48D0 -- returns this in EAX; original method name unknown.
+    Wstring& operator=(const char* text);
+    // Declaration: GAMEMD 0x7B5340 -- release held storage and return to null.
+    void FUN_007B5340();
     // Declaration: GAMEMD 0x7B50F0
     bool FUN_007B50F0(char ch);
     // Declaration: GAMEMD 0x7B51B0

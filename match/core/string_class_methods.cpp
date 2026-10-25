@@ -76,6 +76,22 @@ bool Wstring::operator!=(const Wstring& other) const
     return strcmp(unknown_00, other.unknown_00) ? true : false;
 }
 
+// FUNCTION: GAMEMD 0x7B48D0
+// Native releases the old buffer before reading text; no alias check.
+Wstring& Wstring::operator=(const char* text)
+{
+    if (unknown_00 != 0) {
+        delete[] unknown_00;
+    }
+    unknown_00 = 0;
+    unknown_00 = new char[text ? strlen(text) + 1 : 1];
+    unknown_00[0] = 0;
+    if (text) {
+        strcpy(unknown_00, text);
+    }
+    return *this;
+}
+
 // FUNCTION: GAMEMD 0x7B50F0
 bool Wstring::FUN_007B50F0(char ch)
 {
@@ -106,6 +122,15 @@ void Wstring::FUN_007B51B0()
 {
     FUN_007B50F0(' ');
     FUN_007B50F0('\t');
+}
+
+// FUNCTION: GAMEMD 0x7B5340
+void Wstring::FUN_007B5340()
+{
+    if (unknown_00 != 0) {
+        delete[] unknown_00;
+    }
+    unknown_00 = 0;
 }
 
 // FUNCTION: GAMEMD 0x7B53B0

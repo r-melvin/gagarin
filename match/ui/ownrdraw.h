@@ -317,15 +317,15 @@ GG_STATIC_ASSERT(offsetof(Obj_00623420, TextList) == 0x34);
 // FUNCTION: GAMEMD 0x623E00 (__fastcall)
 int FUN_00623E00(GG_HWND hList);
 // FUNCTION: GAMEMD 0x623E40 (__fastcall)
-int FUN_00623E40(GG_HWND hWnd, Obj_007B4620* pOut);
+int FUN_00623E40(GG_HWND hWnd, Wstring* pOut);
 // FUNCTION: GAMEMD 0x623EA0 (__fastcall)
 int FUN_00623EA0(GG_HWND hWnd, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x623F00 (__fastcall)
-int FUN_00623F00(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
+int FUN_00623F00(GG_HWND hWnd, int nIndex, Wstring* pOut);
 // FUNCTION: GAMEMD 0x623F60 (__fastcall)
 int FUN_00623F60(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x623FC0 (__fastcall)
-int FUN_00623FC0(GG_HWND hWnd, int nIndex, Obj_007B4620* pOut);
+int FUN_00623FC0(GG_HWND hWnd, int nIndex, Wstring* pOut);
 // FUNCTION: GAMEMD 0x624020 (__fastcall)
 int FUN_00624020(GG_HWND hWnd, int nIndex, Obj_007B66D0* pOut);
 // FUNCTION: GAMEMD 0x6240A0 (__stdcall)
