@@ -7509,6 +7509,8 @@
  "match/network/NullMgr.cpp::_?com_ids@?1??Init@NullModemInitView@@QAEHHHPADHDHH@Z@4PAY04DA": "0x00832310",
  "match/network/PhoneEd.cpp::_$E2": "0x006309D0",
  "match/network/PhoneEd.cpp::_$E5": "0x006309F0",
+ "match/network/SendFile.cpp::_$E2": "0x00693990",
+ "match/network/SendFile.cpp::_$E5": "0x006939B0",
  "match/network/SerialEd.cpp::_$E2": "0x00695510",
  "match/network/SerialEd.cpp::_$E5": "0x00695530",
  "match/network/netshare.cpp::?FUN_007B7ED0@@YI?AVObj_007B66D0@@ABVWstring@@@Z": "0x007B7ED0",

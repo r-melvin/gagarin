@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit SendFile.CPP. The name is the source-file string at 0x83e9c8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x6942b7 inside this object's
 //   code range (0x693960-0x6954df). Functions are in ascending retail address order.
@@ -26,19 +27,17 @@ extern int DAT_00B05730;
 // GLOBAL: GAMEMD 0xB05738
 extern double DAT_00B05738;
 
-// FUNCTION: GAMEMD 0x693990
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00693990()
-{
-    DAT_00B05738 = DAT_00B056E8 / DAT_007F1170;
-}
+// SYNTHETIC: GAMEMD 0x00693990
+// dynamic initializer for DAT_00B05738
 
-// FUNCTION: GAMEMD 0x6939B0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_006939B0()
-{
-    DAT_00B05720 = DAT_007E1718 / DAT_00B05738;
-}
+// GLOBAL: GAMEMD 0x00B05738
+double DAT_00B05738 = DAT_00B056E8 / DAT_007F1170;
+
+// SYNTHETIC: GAMEMD 0x006939B0
+// dynamic initializer for DAT_00B05720
+
+// GLOBAL: GAMEMD 0x00B05720
+double DAT_00B05720 = DAT_007E1718 / DAT_00B05738;
 
 // FUNCTION: GAMEMD 0x693B30
 // Static-initialiser shape: stores constants to adjacent globals.

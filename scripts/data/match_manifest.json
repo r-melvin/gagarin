@@ -87461,18 +87461,18 @@
  {
   "tu": "match/network/SendFile.cpp",
   "addr": "0x693990",
-  "sym": "?FUN_00693990@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_00693990",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/SendFile.cpp",
   "addr": "0x6939B0",
-  "sym": "?FUN_006939B0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_006939B0",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },
