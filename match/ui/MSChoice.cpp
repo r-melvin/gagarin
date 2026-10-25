@@ -52,7 +52,7 @@
 // entry-origin spans plus both address-point tables were confirmed directly.
 // The dynamic deleting-dtor full span needs /GX disabled; with /GX, only that
 // emitted wrapper is short. The base deleting dtor also matches with /GX.
-// Vtable checks use recorded weak defaults and are conditional, not final-link proof.
+// Actual selected-provider checks remain separate from the conditional template checks.
 //
 // Paired flag probes: /GX shortens the dynamic deleting entry to 0x20
 // bytes; no-GX matches its full 0x49-byte span. Other 11 bodies match both.
@@ -302,7 +302,7 @@ GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, unknown_0E) == 0x0E);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(GgMSSfxEntryDynamicVector, CapacityIncrement) == 0x14);
 
-#include "../map/map_stage_list_methods.h"
+#include "../_layout/map_stage_list.h"
 
 
 // Retail PAVMSTextEntry RTTI establishes the pointer element type and zero-offset
@@ -356,17 +356,11 @@ GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Point2D>) == 0x18);
 // in declaration order, and then the body empties the two the constructor
 // bothers to empty -- retail leaves the third alone, which is the direct
 // evidence that the body is three statements and not a call to ClearAll.
-MapStageList* MapStageList::Construct()
+MapStageList::MapStageList()
 {
-    Stages.Init();
-    Name.Text.Init();
-    Strings.Init();
-    Titles.Init();
-
     Stages.Clear();
-    Name.Text.Reset();
+    Name.FUN_007B5340();
     Strings.Clear();
-    return this;
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
@@ -374,7 +368,7 @@ MapStageList* MapStageList::Construct()
 // Tear the container down: empty it first, then let the three vectors and the
 // name string go in reverse declaration order, which is the order retail's
 // stores walk back through (+0x44, +0x2C, +0x28, +0x00).
-MapStageList::~MapStageList() throw()
+MapStageList::~MapStageList()
 {
     ClearAll();
 }
@@ -396,11 +390,10 @@ void MapStageList::ClearAll()
     int i;
 
     for (i = 0; i < Titles.Count; ++i) {
-        Obj_007B4620* title = Titles.Vector[i];
+        MSSfxEntry* title = Titles.Items[i];
 
         if (title != 0) {
-            title->Destruct();
-            ::operator delete(title);
+            delete title;
         }
     }
 
@@ -412,22 +405,20 @@ void MapStageList::ClearAll()
     BoundsH = 400;
 
     for (i = 0; i < Strings.Count; ++i) {
-        Obj_007B4620* text = Strings.Vector[i];
+        MSAnimEntry* text = Strings.Items[i];
 
         if (text != 0) {
-            text->Destruct();
-            ::operator delete(text);
+            delete text;
         }
     }
 
     Strings.Clear();
 
     for (i = 0; i < Stages.Count; ++i) {
-        MapStage* stage = Stages.Vector[i];
+        MapStage* stage = Stages.Items[i];
 
         if (stage != 0) {
-            stage->Destruct();
-            ::operator delete(stage);
+            delete stage;
         }
     }
 
@@ -440,25 +431,20 @@ void MapStageList::ClearAll()
 // lower-cased into temporaries inside the loop, so the key is rebuilt on every
 // turn exactly as retail does it; the two temporaries are released on both the
 // hit and the miss path.
-MapStage* MapStageList::FindByName(Obj_007B4620* key)
+MapStage* MapStageList::FindByName(Wstring* key)
 {
     if (key->FUN_007B47F0(0)) {
         for (int i = 0; i < Stages.Count; ++i) {
-            Obj_007B4620 wanted(*key);
+            Wstring wanted(*key);
             wanted.FUN_007B5B30();
 
-            Obj_007B4620 candidate(Stages.Vector[i]->Name);
+            Wstring candidate(Stages.Items[i]->Name);
             candidate.FUN_007B5B30();
 
             if (wanted == candidate) {
-                MapStage* hit = Stages.Vector[i];
-                candidate.Destruct();
-                wanted.Destruct();
+                MapStage* hit = Stages.Items[i];
                 return hit;
             }
-
-            candidate.Destruct();
-            wanted.Destruct();
         }
     }
 
@@ -469,25 +455,20 @@ MapStage* MapStageList::FindByName(Obj_007B4620* key)
 // FUNCTION: GAMEMD 0x5CF760
 // The same search against each stage's title rather than its name. The only
 // difference in retail is the `ADD ECX,4` that steps to the second string.
-MapStage* MapStageList::FindByTitle(Obj_007B4620* key)
+MapStage* MapStageList::FindByTitle(Wstring* key)
 {
     if (key->FUN_007B47F0(0)) {
         for (int i = 0; i < Stages.Count; ++i) {
-            Obj_007B4620 wanted(*key);
+            Wstring wanted(*key);
             wanted.FUN_007B5B30();
 
-            Obj_007B4620 candidate(Stages.Vector[i]->Title);
+            Wstring candidate(Stages.Items[i]->Title);
             candidate.FUN_007B5B30();
 
             if (wanted == candidate) {
-                MapStage* hit = Stages.Vector[i];
-                candidate.Destruct();
-                wanted.Destruct();
+                MapStage* hit = Stages.Items[i];
                 return hit;
             }
-
-            candidate.Destruct();
-            wanted.Destruct();
         }
     }
 
@@ -505,17 +486,16 @@ MapStage* MapStageList::GetAt(unsigned short index)
         return 0;
     }
 
-    return Stages.Vector[index];
+    return Stages.Items[index];
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5CF830
-// Append through the vector's own virtual Add, which takes its argument by
-// reference; the whole body is the address of the parameter and the indirect
-// call.
-int MapStageList::AddStage(MapStage* stage)
+// Query the vector through virtual slot 4, FindItemIndex. The caller passes
+// the address of its pointer parameter; native does not append an element.
+int MapStageList::FUN_005CF830(MapStage* stage)
 {
-    return Stages.Add(stage);
+    return Stages.FindItemIndex(stage);
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
@@ -524,28 +504,23 @@ int MapStageList::AddStage(MapStage* stage)
 // the two stage searches this one lower-cases the stored line first and the
 // caller's key second, which is the order retail's two constructor calls run
 // in.
-Obj_007B4620* MapStageList::FindTitle(Obj_007B4620* key)
+Wstring* MapStageList::FindTitle(Wstring* key)
 {
     if (SessionExists()) {
         int i;
 
-    for (i = 0; i < Titles.Count; ++i) {
-            Obj_007B4620* line = Titles.Vector[i];
+        for (i = 0; i < Titles.Count; ++i) {
+            MSSfxEntry* line = Titles.Items[i];
 
-            Obj_007B4620 stored(*line);
+            Wstring stored(line->Name);
             stored.FUN_007B5B30();
 
-            Obj_007B4620 wanted(*key);
+            Wstring wanted(*key);
             wanted.FUN_007B5B30();
 
             if (stored == wanted) {
-                wanted.Destruct();
-                stored.Destruct();
-                return line;
+                return &line->Name;
             }
-
-            wanted.Destruct();
-            stored.Destruct();
         }
     }
 

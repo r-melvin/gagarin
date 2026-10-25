@@ -38,12 +38,7 @@ public:
     void* Data;
 };
 
-// MapStageList::~MapStageList is the out-of-line destructor at 0x5CEE60.
-class MapStageList
-{
-public:
-    ~MapStageList();
-};
+#include "../_layout/map_stage_list.h"
 
 namespace OwnerDraw {
 
@@ -100,7 +95,7 @@ class MapSelect : public MSEngine
 public:
     virtual void* DeletingDtor(unsigned int flags);
     MapStageList Stages;        // +0x50
-    char unknown_51[0x77];      // +0x51
+    char unknown_AC[0x1C];      // +0x51
     Member_7B46F0 Member_C8;    // +0xC8
 };
 

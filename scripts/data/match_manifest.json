@@ -24300,9 +24300,9 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5CEDD0",
-  "sym": "?Construct@MapStageList@@QAEPAV1@XZ",
+  "sym": "??0MapStageList@@QAE@XZ",
   "len": "0x86",
-  "name": "?Construct@MapStageList@@QAEPAV1@XZ",
+  "name": "??0MapStageList@@QAE@XZ",
   "status": "matched",
   "pct": 100
  },
@@ -24328,18 +24328,18 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5CF6B0",
-  "sym": "?FindByName@MapStageList@@QAEPAVMapStage@@PAVObj_007B4620@@@Z",
+  "sym": "?FindByName@MapStageList@@QAEPAVMapStage@@PAVWstring@@@Z",
   "len": "0xa2",
-  "name": "MapStageList",
+  "name": "?FindByName@MapStageList@@QAEPAVMapStage@@PAVWstring@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5CF760",
-  "sym": "?FindByTitle@MapStageList@@QAEPAVMapStage@@PAVObj_007B4620@@@Z",
+  "sym": "?FindByTitle@MapStageList@@QAEPAVMapStage@@PAVWstring@@@Z",
   "len": "0xa5",
-  "name": "MapStageList",
+  "name": "?FindByTitle@MapStageList@@QAEPAVMapStage@@PAVWstring@@@Z",
   "status": "matched",
   "pct": 100
  },
@@ -24355,18 +24355,18 @@
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5CF830",
-  "sym": "?AddStage@MapStageList@@QAEHPAVMapStage@@@Z",
+  "sym": "?FUN_005CF830@MapStageList@@QAEHPAVMapStage@@@Z",
   "len": "0xd",
-  "name": "MapStageList",
+  "name": "?FUN_005CF830@MapStageList@@QAEHPAVMapStage@@@Z",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/MSChoice.cpp",
   "addr": "0x5CF840",
-  "sym": "?FindTitle@MapStageList@@QAEPAVObj_007B4620@@PAV2@@Z",
+  "sym": "?FindTitle@MapStageList@@QAEPAVWstring@@PAV2@@Z",
   "len": "0x97",
-  "name": "MapStageList",
+  "name": "?FindTitle@MapStageList@@QAEPAVWstring@@PAV2@@Z",
   "status": "matched",
   "pct": 100
  },

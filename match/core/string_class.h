@@ -8,7 +8,7 @@
 // strncpy 0x7C91D0 and memmove 0x7CA090 are calls.
 // Method names are descriptive or placeholders. sizeof 4: the map stage
 // container holds instances at +0x00/+0x04 of MapStage and at +0x28 of its
-// list (see match/map/map_stage_list_methods.h).
+// list (see match/_layout/map_stage_list.h).
 #ifndef GG_MATCH_CORE_STRING_CLASS_H
 #define GG_MATCH_CORE_STRING_CLASS_H
 
