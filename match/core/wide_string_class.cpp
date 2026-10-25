@@ -6,6 +6,12 @@
 
 #include "wide_string_class.h"
 
+// FUNCTION: GAMEMD 0x7B66C0
+// Default construction stores the null buffer and returns this.
+Obj_007B66D0::Obj_007B66D0() : Buffer(0)
+{
+}
+
 // FUNCTION: GAMEMD 0x7B66D0
 //
 // Construct from a raw wide string. The buffer slot is nulled first, then the
@@ -29,6 +35,13 @@ Obj_007B66D0::Obj_007B66D0(const Obj_007B66D0& other)
         Buffer = (wchar_t*)::operator new(wcslen(other.Buffer) * 2 + 2);
         wcscpy(Buffer, other.Buffer);
     }
+}
+
+// FUNCTION: GAMEMD 0x7B6760
+// Ordinary wide-owner destruction releases its buffer and clears the member.
+Obj_007B66D0::~Obj_007B66D0()
+{
+    Release();
 }
 
 // FUNCTION: GAMEMD 0x7B6780
@@ -160,6 +173,13 @@ void Obj_007B66D0::FUN_007B6EC0()
 {
     FUN_007B6E20(' ');
     FUN_007B6E20('\t');
+}
+
+// FUNCTION: GAMEMD 0x7B7040
+// Clear a live wide owner without ending its lifetime.
+void Obj_007B66D0::FUN_007B7040()
+{
+    Release();
 }
 
 // FUNCTION: GAMEMD 0x7B7060

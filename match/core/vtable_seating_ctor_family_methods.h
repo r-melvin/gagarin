@@ -186,10 +186,6 @@ GG_SEATNULL_DECL(0074FF30);
 GG_STATIC_ASSERT(offsetof(SeatNull_0074FF30, unknown_00) == 0x0 &&
                  sizeof(SeatNull_0074FF30) == 0x4);
 
-GG_SEATNULL_DECL(007B66C0);
-GG_STATIC_ASSERT(offsetof(SeatNull_007B66C0, unknown_00) == 0x0 &&
-                 sizeof(SeatNull_007B66C0) == 0x4);
-
 // Address -> class map. A constructor cannot be redeclared at namespace scope,
 // so the reccmp `// FUNCTION:` annotations live on the bodies in the .cpp; this
 // is the index.
@@ -212,6 +208,5 @@ GG_STATIC_ASSERT(offsetof(SeatNull_007B66C0, unknown_00) == 0x0 &&
 //   0x0075E6A0  ->  Seat0A_007E4DD8
 //   0x0076F090  ->  Seat2_007F72C4
 //   0x0076F0C0  ->  Seat2_007F72D8
-//   0x007B66C0  ->  SeatNull_007B66C0
 
 #endif  // GG_MATCH_CORE_VTABLE_SEATING_CTOR_FAMILY_METHODS_H

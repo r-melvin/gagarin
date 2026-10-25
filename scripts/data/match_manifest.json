@@ -9762,20 +9762,20 @@
   "pct": 100
  },
  {
-  "tu": "match/core/pointer_release_family_methods.cpp",
-  "addr": "0x007b6760",
-  "sym": "?FUN_00007B6760@@YIXPAUHolder_007B46F0@@@Z",
+  "tu": "match/core/wide_string_class.cpp",
+  "addr": "0x7B6760",
+  "sym": "??1Obj_007B66D0@@QAE@XZ",
   "len": "0x1a",
-  "name": "FUN_00007B6760",
+  "name": "??1Obj_007B66D0@@QAE@XZ",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/pointer_release_family_methods.cpp",
-  "addr": "0x007b7040",
-  "sym": "?FUN_00007B7040@@YIXPAUHolder_007B46F0@@@Z",
+  "tu": "match/core/wide_string_class.cpp",
+  "addr": "0x7B7040",
+  "sym": "?FUN_007B7040@Obj_007B66D0@@QAEXXZ",
   "len": "0x1a",
-  "name": "FUN_00007B7040",
+  "name": "?FUN_007B7040@Obj_007B66D0@@QAEXXZ",
   "status": "matched",
   "pct": 100
  },
@@ -22246,11 +22246,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/vtable_seating_ctor_family_methods.cpp",
+  "tu": "match/core/wide_string_class.cpp",
   "addr": "0x7B66C0",
-  "sym": "??0SeatNull_007B66C0@@QAE@XZ",
+  "sym": "??0Obj_007B66D0@@QAE@XZ",
   "len": "0x9",
-  "name": "SeatNull_007B66C0::ctor",
+  "name": "??0Obj_007B66D0@@QAE@XZ",
   "status": "matched",
   "pct": 100
  },
@@ -95990,18 +95990,18 @@
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x780D90",
-  "sym": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVWstring@@@Z",
+  "sym": "?FUN_00780D90@@YI?AVObj_007B66D0@@PAVWstring@@@Z",
   "len": "0x9d",
-  "name": "?FUN_00780D90@@YI?AVWideString_007B66C0@@PAVWstring@@@Z",
+  "name": "?FUN_00780D90@@YI?AVObj_007B66D0@@PAVWstring@@@Z",
   "status": "matched",
   "pct": 100.0
  },
  {
   "tu": "match/network/wonline.cpp",
   "addr": "0x781090",
-  "sym": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAXH@Z",
+  "sym": "?FUN_00781090@@YI?AVObj_007B66D0@@PAXH@Z",
   "len": "0x99",
-  "name": "?FUN_00781090@@YI?AVWideString_007B66C0@@PAUHWND__@@H@Z",
+  "name": "?FUN_00781090@@YI?AVObj_007B66D0@@PAXH@Z",
   "status": "matched",
   "pct": 100.0
  },
@@ -99153,6 +99153,15 @@
   "sym": "_$E104",
   "len": "0x16",
   "name": "dynamic initializer (DAT_00B7778C)",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/wonline.cpp",
+  "addr": "0x77D1A0",
+  "sym": "_$E94",
+  "len": "0x16",
+  "name": "dynamic initializer (DAT_00B76230)",
   "status": "matched",
   "pct": 100
  }

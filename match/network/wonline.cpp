@@ -596,13 +596,13 @@ extern Wstring DAT_00B76AC4;
 extern char DAT_00B77DC2;
 
 // Declaration: GAMEMD 0x780A90 (decl; reloc)
-WideString_007B66C0 FUN_00780A90(const Entry_00B77908* entry);
+Obj_007B66D0 FUN_00780A90(const Entry_00B77908* entry);
 
 // Declaration: GAMEMD 0x77D4C0 (decl; reloc)
 bool FUN_0077D4C0(Entry_00B77908* entry);
 
 // Declaration: GAMEMD 0x7B7ED0 (decl; reloc) -- the wide text of a narrow string.
-WideString_007B66C0 FUN_007B7ED0(const Wstring& text);
+Obj_007B66D0 FUN_007B7ED0(const Wstring& text);
 
 extern char DAT_00A8B380[];
 extern int DAT_00B779C0;
@@ -633,7 +633,7 @@ int FUN_00788180();   // FUNCTION: GAMEMD 0x788180 (decl; reloc)
 void FUN_00781480();  // FUNCTION: GAMEMD 0x781480 (decl; reloc)
 
 // Declaration: GAMEMD 0x788800 (decl; reloc) -- RET 4: the wide text is a by-value argument.
-int FUN_00788800(GrowListRecord10C* record, const Wstring& key, WideString_007B66C0 text);
+int FUN_00788800(GrowListRecord10C* record, const Wstring& key, Obj_007B66D0 text);
 
 extern int DAT_007EEF38;
 // STRING: GAMEMD 0x84AFB0
@@ -689,7 +689,7 @@ public:
 void FUN_005E2AC0();   // FUNCTION: GAMEMD 0x5E2AC0 (decl; reloc)
 
 // Declaration: GAMEMD 0x7B7F90 (decl; reloc) -- the narrow text of a wide string.
-Wstring FUN_007B7F90(const WideString_007B66C0& text);
+Wstring FUN_007B7F90(const Obj_007B66D0& text);
 
 // Connection-state table: the pair of player slots of each connection, and the state
 // each side holds.
@@ -1252,7 +1252,7 @@ inline VALUE* HashFind_0077DA50(HashTable_006249A0<KEY, VALUE>& table, const KEY
 // Declaration: GAMEMD 0x5EDEF0 (decl; reloc)
 Wstring FUN_005EDEF0(NodeNameType* node);
 // Declaration: GAMEMD 0x7B7F90 (decl; reloc)
-Wstring FUN_007B7F90(const WideString_007B66C0& text);
+Wstring FUN_007B7F90(const Obj_007B66D0& text);
 // LIBRARY: GAMEMD 0x7CB550 -- CRT strncat.
 
 // GLOBAL: GAMEMD 0xA8DA90
@@ -1577,8 +1577,9 @@ void FUN_0077D190()
 }
 
 // GLOBAL: GAMEMD 0xB76230
+// SYNTHETIC: GAMEMD 0x77D1A0 -- compiler-generated dynamic initializer.
 // SYNTHETIC: GAMEMD 0x77D1C0 -- atexit cleanup of DAT_00B76230.
-WideString_007B66C0 DAT_00B76230;
+Obj_007B66D0 DAT_00B76230;
 
 // FUNCTION: GAMEMD 0x77D1D0
 
@@ -1857,7 +1858,7 @@ void FUN_0077DB90()
         NodeNameType* item = Slots[i];
         Wstring name;
         if (FUN_005E93F0(item)) {
-            WideString_007B66C0 wide(item->Name);
+            Obj_007B66D0 wide(item->Name);
             name = FUN_007B7F90(wide);
         } else {
             name = FUN_005EDEF0(item);
@@ -1998,27 +1999,27 @@ Wstring& FUN_0077E820(char* text, int* a, int* b, int* c, int* d, int* e, Wstrin
 
 // FUNCTION: GAMEMD 0x780D90
 // The description of a map by name.
-WideString_007B66C0 FUN_00780D90(Wstring* name)
+Obj_007B66D0 FUN_00780D90(Wstring* name)
 {
     if (_stricmp(name->FUN_007B5440(), DAT_0082BC30) == 0) {
-        return WideString_007B66C0(FUN_00734E60("TXT_RANDOM_MAP_DESCRIPTION", NULL, DAT_0084A430, 0xB9A));
+        return Obj_007B66D0(FUN_00734E60("TXT_RANDOM_MAP_DESCRIPTION", NULL, DAT_0084A430, 0xB9A));
     }
     for (int i = 0; i < DAT_00A8B8D8; i++) {
         MapEntry_00A8B8CC* entry = DAT_00A8B8CC[i];
         if (_stricmp(name->FUN_007B5440(), entry->Name) == 0) {
-            return WideString_007B66C0(entry->Description);
+            return Obj_007B66D0(entry->Description);
         }
     }
-    return WideString_007B66C0(DAT_00887734);
+    return Obj_007B66D0(DAT_00887734);
 }
 
 // FUNCTION: GAMEMD 0x781090
 // Text for the list entry `index` of the lobby list box; the result is returned through
 // the hidden return pointer (ECX under /Gr).
-WideString_007B66C0 FUN_00781090(HWND list, int index)
+Obj_007B66D0 FUN_00781090(HWND list, int index)
 {
     if (index == -1) {
-        return WideString_007B66C0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEA));
+        return Obj_007B66D0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEA));
     }
     int record = SendMessageA(list, 0x199, index, 0);
     if (record >= 0 && record < DAT_00B77900.count) {
@@ -2027,7 +2028,7 @@ WideString_007B66C0 FUN_00781090(HWND list, int index)
         entry = DAT_00B77900.data[record];
         return FUN_00780A90(&entry);
     }
-    return WideString_007B66C0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEF));
+    return Obj_007B66D0(FUN_00734E60("STT:LobbyListUsers", NULL, DAT_0084A430, 0xBEF));
 }
 
 // FUNCTION: GAMEMD 0x781380
@@ -2411,7 +2412,7 @@ bool FUN_00788710(int mode, int flag)
         FUN_004068E0("Leave_Channel, channel %s type %d\n", DAT_00B76B44, DAT_00B76B10[0]);
         DAT_00AC116C->Vtbl->At_24(DAT_00AC116C);
         {
-            WideString_007B66C0 text(FUN_00734E60("WOL:LeavingChannel", NULL, DAT_0084A430, 0x29D0));
+            Obj_007B66D0 text(FUN_00734E60("WOL:LeavingChannel", NULL, DAT_0084A430, 0x29D0));
             FUN_00792BE0(mode, &text, flag);
         }
         for (int i = 0; DAT_00B77DD0 != 0 && i < 150; i++) {
@@ -2478,7 +2479,7 @@ Wstring FUN_00789630(const char* record)
 void FUN_0078ABF0(char flag, const wchar_t* text)
 {
     DAT_00B77E40 = flag;
-    DAT_00B76230.FUN_007B7600(text);
+    DAT_00B76230.Set(text);
 }
 
 // FUNCTION: GAMEMD 0x78DA30
@@ -2868,7 +2869,7 @@ void FUN_007975E0()
 {
     const wchar_t* label = FUN_00734E60("TXT_FETCHING_SERVLIST", NULL, DAT_0084A430, 0x5EEC);
     {
-        WideString_007B66C0 text(label);
+        Obj_007B66D0 text(label);
         FUN_00792BE0(0x10, &text, 0);
     }
     int mode = 0x2300;
@@ -3347,7 +3348,7 @@ int __stdcall FUN_007A8DA0(void* unused, int slot, int unused2, Entry_00B77908* 
                 }
             }
             if (shown && FUN_0077D4C0(entry)) {
-                WideString_007B66C0 wide = FUN_007B7ED0(text);
+                Obj_007B66D0 wide = FUN_007B7ED0(text);
                 int channel = DAT_007EEF2C;
                 if (entry->unknown_00[0] & 1)
                     channel = DAT_007EEF3C;
@@ -3387,7 +3388,7 @@ int __stdcall FUN_007A8FC0(void* unused, int slot, Entry_00B77908* entry, const 
                 }
             }
             if (shown && FUN_0077D4C0(entry)) {
-                WideString_007B66C0 wide = FUN_007B7ED0(text);
+                Obj_007B66D0 wide = FUN_007B7ED0(text);
                 int channel = DAT_007EEF30;
                 if (entry->unknown_00[0] & 1)
                     channel = DAT_007EEF3C;
@@ -3420,7 +3421,7 @@ int __stdcall FUN_007AAFB0(void* unused, int slot, Entry_00B77908* entry, const 
             }
         }
         if (shown && FUN_0077D4C0(entry)) {
-            WideString_007B66C0 wide = FUN_007B7ED0(text);
+            Obj_007B66D0 wide = FUN_007B7ED0(text);
             if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
                 FUN_005E2700(DAT_007EEF34, DAT_0084B224, entry->unknown_24, wide.FUN_007B7100());
             }
@@ -3435,7 +3436,7 @@ int __stdcall FUN_007AB0A0(void* unused, int slot, Entry_00B77908* entry, const 
     if (!DAT_00B77DC1 && slot >= 0) {
         bool shown;
         {
-            WideString_007B66C0 name(text);
+            Obj_007B66D0 name(text);
             if (entry == NULL) {
                 shown = false;
             } else if (entry->unknown_00[0] & 1) {
@@ -3475,7 +3476,7 @@ int __stdcall FUN_007AB170(void* unused, int slot, int unused2, Entry_00B77908* 
             }
         }
         if (shown && FUN_0077D4C0(entry)) {
-            WideString_007B66C0 wide = FUN_007B7ED0(text);
+            Obj_007B66D0 wide = FUN_007B7ED0(text);
             if (_stricmp(DAT_00A8B380, entry->unknown_24) != 0) {
                 FUN_005E2700(DAT_007EEF38, DAT_0084B224, entry->unknown_24, wide.FUN_007B7100());
             }
@@ -3490,7 +3491,7 @@ int __stdcall FUN_007AB260(void* unused, int slot, int unused2, Entry_00B77908* 
     if (!DAT_00B77DC1 && slot >= 0) {
         bool shown;
         {
-            WideString_007B66C0 name(text);
+            Obj_007B66D0 name(text);
             if (entry == NULL) {
                 shown = false;
             } else if (entry->unknown_00[0] & 1) {

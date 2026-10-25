@@ -16,29 +16,7 @@ extern Wstring DAT_00B73E40;
 // GLOBAL: GAMEMD 0xB7778C -- the stored password holder; defined in wonline.cpp (its cleanup is 0x77DA40).
 extern Wstring DAT_00B7778C;
 
-// The one-word wide string handle (the Obj_007B66D0 layout of
-// match/core/wide_string_class.h, which declares no default constructor or
-// destructor) seen as a constructed/destroyed object: constructors 0x7B66C0
-// and 0x7B66D0, destructor 0x7B6760.
-class WideString_007B66C0
-{
-public:
-    // FUNCTION: GAMEMD 0x7B66C0 (decl; reloc)
-    WideString_007B66C0();
-    // FUNCTION: GAMEMD 0x7B66D0 (decl; reloc)
-    WideString_007B66C0(const wchar_t* text);
-    // FUNCTION: GAMEMD 0x7B6760 (decl; reloc)
-    ~WideString_007B66C0();
-    // FUNCTION: GAMEMD 0x7B7600 (decl; reloc)
-    void FUN_007B7600(const wchar_t* text);
-    // FUNCTION: GAMEMD 0x7B7100 (decl; reloc)
-    const wchar_t* FUN_007B7100();
-    // FUNCTION: GAMEMD 0x7B7D90 (decl; reloc)
-    bool FUN_007B7D90();
-
-    void* unknown_00;   // +0x00
-};
-GG_STATIC_ASSERT(sizeof(WideString_007B66C0) == 4);
+#include "../core/wide_string_class.h"
 
 // The 0x6C-byte record of the table at 0xB77900 (count) / 0xB77908 (items).
 struct Entry_00B77908

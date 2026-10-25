@@ -330,7 +330,7 @@ void FUN_007A0EA0(const char* name, int value);
 extern int DAT_00B76440[8];
 
 // FUNCTION: GAMEMD 0x792BE0 (decl; reloc)
-void FUN_00792BE0(int mode, WideString_007B66C0* text, int flag);
+void FUN_00792BE0(int mode, Obj_007B66D0* text, int flag);
 
 // FUNCTION: GAMEMD 0x797640 (decl; reloc)
 void FUN_00797640(int mode);
@@ -369,7 +369,7 @@ void __cdecl FUN_006C6DE0();
 extern char DAT_00B77E40;
 
 // GLOBAL: GAMEMD 0xB76230
-extern WideString_007B66C0 DAT_00B76230;
+extern Obj_007B66D0 DAT_00B76230;
 
 // A 0x10C-byte record of the table at 0xB76AE8 (count 0xB76AE0); the word at
 // +0x28 is the sort key.
