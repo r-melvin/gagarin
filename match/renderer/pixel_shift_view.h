@@ -6,11 +6,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// Address view beginning at 0x8A0DD0 over the six DWORD shift operands used by
-// WriteAlpha. These bytes share storage with the six scalar shift globals used
-// elsewhere; this declaration does not claim separate storage or a full owner.
-// The access order follows the instructions in this method; no channel identity
-// or enclosing-object extent is asserted here.
+// Canonical reconstruction representation of six observed DWORD cells at
+// 0x8A0DD0..0x8A0DE4. Native writer 0x4BA770 stores each complete DWORD;
+// the existing reconstruction accessor uses an eight-byte pair stride.
+// Original declaration form is unknown: six independent globals also fit this
+// footprint. Only this reconstructed 24-byte storage representation is owned.
+// Existing pos/loss field names retain the verified blitter access order.
 struct BTranslucentPixelFormat
 {
     int pos0;   // +0x00  0x8A0DD0
@@ -21,6 +22,7 @@ struct BTranslucentPixelFormat
     int loss1;  // +0x14  0x8A0DE4
 };
 
+GG_STATIC_ASSERT(sizeof(int) == 4);
 GG_STATIC_ASSERT(offsetof(BTranslucentPixelFormat, pos0) == 0);
 GG_STATIC_ASSERT(offsetof(BTranslucentPixelFormat, loss0) == 4);
 GG_STATIC_ASSERT(offsetof(BTranslucentPixelFormat, pos2) == 8);

@@ -81,9 +81,9 @@ void PreviewClass_006425F0::CreatePreviewSurface(PreviewData_006425F0* data)
             cursor = cursor + 1;
             unsigned int v = (unsigned int)pal[index] & 0xFFFF;
             int colour =
-                (int)((((v >> 4) & 0xF0) >> DAT_008A0DD4) << DAT_008A0DD0
-                      | ((v & 0xF0) >> DAT_008A0DE4) << DAT_008A0DE0
-                      | (unsigned int)((int)((v & 0xF) << 4) >> DAT_008A0DDC) << DAT_008A0DD8);
+                (int)((((v >> 4) & 0xF0) >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0
+                      | ((v & 0xF0) >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1
+                      | (unsigned int)((int)((v & 0xF) << 4) >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2);
             pt.Y = y;
             (this->ImageSurface->*this->ImageSurface->Vtbl->At_088)(
                 &pt, colour,

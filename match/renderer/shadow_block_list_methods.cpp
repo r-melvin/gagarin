@@ -242,9 +242,9 @@ void FUN_005FF420()
         for (int i = 0; i < 0x10000; ++i)
         {
             unsigned short lo = (unsigned short)i;
-            unsigned char redSample  = (unsigned char)((char)(lo >> RedShiftLeft)   << RedShiftRight);
-            unsigned char grnSample  = (unsigned char)((char)(lo >> GreenShiftLeft) << GreenShiftRight);
-            unsigned char bluSample  = (unsigned char)((char)(lo >> BlueShiftLeft)  << BlueShiftRight);
+            unsigned char redSample  = (unsigned char)((char)(lo >> gg_b_translucent_pixel_format.pos0)   << gg_b_translucent_pixel_format.loss0);
+            unsigned char grnSample  = (unsigned char)((char)(lo >> gg_b_translucent_pixel_format.pos1) << gg_b_translucent_pixel_format.loss1);
+            unsigned char bluSample  = (unsigned char)((char)(lo >> gg_b_translucent_pixel_format.pos2)  << gg_b_translucent_pixel_format.loss2);
             ((unsigned*)DAT_00AC1838)[i] =
                 ((unsigned)redSample << 8 | grnSample) << 8 | bluSample;
         }

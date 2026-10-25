@@ -4,29 +4,17 @@
 //   vtable slot and global reconfirmed below from the member-access disassembly;
 //   names cross-checked against YRpp.
 //
-// reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x410E50   ABuffer::ReleaseSurface  (__thiscall)
-//   FUNCTION: GAMEMD 0x4112D0   ABuffer::Fill            (__thiscall)
-//   FUNCTION: GAMEMD 0x411310   ABuffer::FillRect        (__thiscall)
-//   FUNCTION: GAMEMD 0x4114B0   ABuffer::GetBuffer       (__thiscall)
-//   FUNCTION: GAMEMD 0x4355D0   Drawing::RGB_To_Int      (__fastcall)
-//   GLOBAL:   GAMEMD 0x8A0DD0   Drawing::RedShiftLeft
-//   GLOBAL:   GAMEMD 0x8A0DD4   Drawing::RedShiftRight
-//   GLOBAL:   GAMEMD 0x8A0DD8   Drawing::BlueShiftLeft
-//   GLOBAL:   GAMEMD 0x8A0DDC   Drawing::BlueShiftRight
-//   GLOBAL:   GAMEMD 0x8A0DE0   Drawing::GreenShiftLeft
-//   GLOBAL:   GAMEMD 0x8A0DE4   Drawing::GreenShiftRight
+// Function address overview (definitions below carry reccmp markers):
+//   0x410E50   ABuffer::ReleaseSurface  (__thiscall)
+//   0x4112D0   ABuffer::Fill            (__thiscall)
+//   0x411310   ABuffer::FillRect        (__thiscall)
+//   0x4114B0   ABuffer::GetBuffer       (__thiscall)
+//   0x4355D0   Drawing::RGB_To_Int      (__fastcall)
 
+#include "pixel_shift_view.h"
 #include "drawing.h"
 
-// GLOBALs: the engine's per-channel RGB565 shift amounts (set by the primary
-// surface's colour mode). Confirmed from the absolute loads in 0x4355D0.
-extern int RedShiftLeft;    // GAMEMD 0x8A0DD0
-extern int RedShiftRight;   // GAMEMD 0x8A0DD4
-extern int BlueShiftLeft;   // GAMEMD 0x8A0DD8
-extern int BlueShiftRight;  // GAMEMD 0x8A0DDC
-extern int GreenShiftLeft;  // GAMEMD 0x8A0DE0
-extern int GreenShiftRight; // GAMEMD 0x8A0DE4
+// Pixel shift cells are owned by the shared reconstruction storage.
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x410E50  (__thiscall)
@@ -88,7 +76,7 @@ void* ABuffer::GetBuffer(int X, int Y)
 // ---------------------------------------------------------------------------
 int Drawing::RGB_To_Int(int red, int green, int blue)
 {
-    return (red >> RedShiftRight << RedShiftLeft)
-         | (green >> GreenShiftRight << GreenShiftLeft)
-         | (blue >> BlueShiftRight << BlueShiftLeft);
+    return (red >> gg_b_translucent_pixel_format.loss0 << gg_b_translucent_pixel_format.pos0)
+         | (green >> gg_b_translucent_pixel_format.loss1 << gg_b_translucent_pixel_format.pos1)
+         | (blue >> gg_b_translucent_pixel_format.loss2 << gg_b_translucent_pixel_format.pos2);
 }

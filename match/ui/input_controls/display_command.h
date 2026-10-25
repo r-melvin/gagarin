@@ -12,6 +12,7 @@
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_COMMAND_H
 #define GG_MATCH_UI_INPUT_CONTROLS_DISPLAY_COMMAND_H
 
+#include "../../renderer/pixel_shift_view.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
@@ -173,26 +174,14 @@ public:
 
 // The 3-byte colour the palette code unpacks (ColorStruct, ui_display_chain.h).
 
-// GLOBALs: the surface pixel-format shifts (Drawing::RedShiftLeft ... GreenShiftRight, see match/renderer/drawing.cpp).
-// GLOBAL: GAMEMD 0x8A0DD0
-extern int DisplayCmdRedShiftLeft_008A0DD0;
-// GLOBAL: GAMEMD 0x8A0DD4
-extern int DisplayCmdRedShiftRight_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8
-extern int DisplayCmdBlueShiftLeft_008A0DD8;
-// GLOBAL: GAMEMD 0x8A0DDC
-extern int DisplayCmdBlueShiftRight_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0
-extern int DisplayCmdGreenShiftLeft_008A0DE0;
-// GLOBAL: GAMEMD 0x8A0DE4
-extern int DisplayCmdGreenShiftRight_008A0DE4;
+// Shared pixel-format shift cells are declared by pixel_shift_view.h.
 
 // Drawing::RGB_To_Int expanded inline (the retail body ORs green, blue, red in that order).
 inline unsigned short DisplayCmdPack(unsigned char r, unsigned char g, unsigned char b)
 {
-    return (unsigned short)((g >> DisplayCmdGreenShiftRight_008A0DE4 << DisplayCmdGreenShiftLeft_008A0DE0)
-                          | (b >> DisplayCmdBlueShiftRight_008A0DDC << DisplayCmdBlueShiftLeft_008A0DD8)
-                          | (r >> DisplayCmdRedShiftRight_008A0DD4 << DisplayCmdRedShiftLeft_008A0DD0));
+    return (unsigned short)((g >> gg_b_translucent_pixel_format.loss1 << gg_b_translucent_pixel_format.pos1)
+                          | (b >> gg_b_translucent_pixel_format.loss2 << gg_b_translucent_pixel_format.pos2)
+                          | (r >> gg_b_translucent_pixel_format.loss0 << gg_b_translucent_pixel_format.pos0));
 }
 
 // GLOBAL: GAMEMD 0x885180 -- the 256-entry highlight colour ring (3 bytes each).

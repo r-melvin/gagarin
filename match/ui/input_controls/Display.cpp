@@ -729,9 +729,9 @@ void DisplayClass::vf_46(CellStruct* cell, int a2, DisplayCmdAbstract* target, i
     {
         unsigned short pixel = static_cast<unsigned short*>(DAT_0087F6C8->ColorTable)[1];
         ColorStruct c;
-        c.R = (pixel >> DisplayCmdRedShiftLeft_008A0DD0) << DisplayCmdRedShiftRight_008A0DD4;
-        c.G = (pixel >> DisplayCmdGreenShiftLeft_008A0DE0) << DisplayCmdGreenShiftRight_008A0DE4;
-        c.B = (pixel >> DisplayCmdBlueShiftLeft_008A0DD8) << DisplayCmdBlueShiftRight_008A0DDC;
+        c.R = (pixel >> gg_b_translucent_pixel_format.pos0) << gg_b_translucent_pixel_format.loss0;
+        c.G = (pixel >> gg_b_translucent_pixel_format.pos1) << gg_b_translucent_pixel_format.loss1;
+        c.B = (pixel >> gg_b_translucent_pixel_format.pos2) << gg_b_translucent_pixel_format.loss2;
         SavedColor = c;
     }
 

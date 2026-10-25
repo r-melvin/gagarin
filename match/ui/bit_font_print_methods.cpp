@@ -4,6 +4,7 @@
 //   (0x4355B0), blends it towards the colour at 0xA80220 (0x6612C0) and packs
 //   it with Drawing::RGB_To_Int (0x4355D0) through the six pixel-format shift
 //   globals at 0x8A0DD0..0x8A0DE4.
+#include "../renderer/pixel_shift_view.h"
 #include "bit_font_print_methods.h"
 #include "../renderer/drawing.h"
 #include "../core/small_struct_ctor_methods.h"
@@ -19,26 +20,14 @@ struct BlendColor : Obj_004355B0
 
 // GLOBAL: GAMEMD 0xA80220 -- colour the fade blends towards.
 extern Obj_004355B0 DAT_00A80220;
-// GLOBAL: GAMEMD 0x8A0DD0 -- red channel right shift.
-extern int DAT_008A0DD0;
-// GLOBAL: GAMEMD 0x8A0DD4 -- red channel left shift.
-extern int DAT_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8 -- blue channel right shift.
-extern int DAT_008A0DD8;
-// GLOBAL: GAMEMD 0x8A0DDC -- blue channel left shift.
-extern int DAT_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0 -- green channel right shift.
-extern int DAT_008A0DE0;
-// GLOBAL: GAMEMD 0x8A0DE4 -- green channel left shift.
-extern int DAT_008A0DE4;
 
 // Colour for the glyph being drawn: the font colour, or while inside the fade
 // window the font colour blended towards DAT_00A80220.
 static __forceinline int FadedColor(unsigned short color, int remaining, int step, int fadeLength)
 {
-    unsigned char red   = (unsigned char)(color >> DAT_008A0DD0 << DAT_008A0DD4);
-    unsigned char green = (unsigned char)(color >> DAT_008A0DE0 << DAT_008A0DE4);
-    unsigned char blue  = (unsigned char)(color >> DAT_008A0DD8 << DAT_008A0DDC);
+    unsigned char red   = (unsigned char)(color >> gg_b_translucent_pixel_format.pos0 << gg_b_translucent_pixel_format.loss0);
+    unsigned char green = (unsigned char)(color >> gg_b_translucent_pixel_format.pos1 << gg_b_translucent_pixel_format.loss1);
+    unsigned char blue  = (unsigned char)(color >> gg_b_translucent_pixel_format.pos2 << gg_b_translucent_pixel_format.loss2);
     BlendColor rgb(red, green, blue);
     rgb.FUN_006612C0(255 / fadeLength * step, &DAT_00A80220);
     return Drawing::RGB_To_Int(rgb.unknown_00, rgb.unknown_01, rgb.unknown_02);

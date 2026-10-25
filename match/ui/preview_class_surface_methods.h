@@ -26,6 +26,7 @@
 #ifndef GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 #define GG_MATCH_UI_PREVIEW_CLASS_SURFACE_METHODS_H
 
+#include "../renderer/pixel_shift_view.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
@@ -37,18 +38,6 @@ extern "C" void* __cdecl FUN_007C8E17(unsigned int size);
 // The pixel-format shift table at 0x8A0DD0 (six consecutive dwords). The two
 // right-shift counts are read as bytes by retail, the other four as dwords.
 // ---------------------------------------------------------------------------
-// GLOBAL: GAMEMD 0x8A0DD0 — red left-shift.
-extern int DAT_008A0DD0;
-// GLOBAL: GAMEMD 0x8A0DD4 — red right-shift.
-extern unsigned char DAT_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8 — blue left-shift.
-extern int DAT_008A0DD8;
-// GLOBAL: GAMEMD 0x8A0DDC — blue right-shift (arithmetic).
-extern int DAT_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0 — green left-shift.
-extern int DAT_008A0DE0;
-// GLOBAL: GAMEMD 0x8A0DE4 — green right-shift.
-extern unsigned char DAT_008A0DE4;
 
 // The 2-int point handed to surface slot 0x88.
 struct Point_006425F0

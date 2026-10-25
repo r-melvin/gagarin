@@ -60,6 +60,7 @@
 #ifndef GG_MATCH_RENDERER_SHADOW_BLOCK_LIST_METHODS_H
 #define GG_MATCH_RENDERER_SHADOW_BLOCK_LIST_METHODS_H
 
+#include "pixel_shift_view.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/vector_class.h"
@@ -279,16 +280,10 @@ extern char* DAT_008871E0;
 // Retail's FMUL at 0x5FF68C reads a qword, so the bias factor is a double.
 extern double DAT_007EF6F8;
 
-// GLOBAL: GAMEMD 0x8A0DD0/D4/D8/DC/E0/E4 -- six observed shift operands.
-// Shared declarations from
-// match/renderer/drawing.cpp (RedShiftLeft/Right, BlueShiftLeft/Right) plus
-// the two green-channel globals this file adds.
-extern int RedShiftLeft;     // GAMEMD 0x8A0DD0
-extern int RedShiftRight;    // GAMEMD 0x8A0DD4
-extern int BlueShiftLeft;    // GAMEMD 0x8A0DD8
-extern int BlueShiftRight;   // GAMEMD 0x8A0DDC
-extern int GreenShiftLeft;   // GAMEMD 0x8A0DE0
-extern int GreenShiftRight;  // GAMEMD 0x8A0DE4
+// Pixel shift cells 0x8A0DD0..0x8A0DE4 use the shared representation
+// declared by pixel_shift_view.h. Their reconstruction storage is defined in
+// pixel_shift_globals_008a0dd0.cpp; the original declaration form remains
+// unknown.
 
 // FUNCTION: GAMEMD 0x5FF390
 void FUN_005FF390();

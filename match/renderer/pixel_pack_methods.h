@@ -11,18 +11,6 @@
 #ifndef GG_MATCH_RENDERER_PIXEL_PACK_METHODS_H
 #define GG_MATCH_RENDERER_PIXEL_PACK_METHODS_H
 
-// GLOBAL: GAMEMD 0x8A0DD0 -- red left-shift.
-extern int DAT_008A0DD0;
-// GLOBAL: GAMEMD 0x8A0DD4 -- red right-shift.
-extern int DAT_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8 -- blue left-shift.
-extern int DAT_008A0DD8;
-// GLOBAL: GAMEMD 0x8A0DDC -- blue right-shift.
-extern int DAT_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0 -- green left-shift.
-extern int DAT_008A0DE0;
-// GLOBAL: GAMEMD 0x8A0DE4 -- green right-shift.
-extern int DAT_008A0DE4;
 
 // FUNCTION: GAMEMD 0x63DAD0
 //
@@ -31,16 +19,17 @@ extern int DAT_008A0DE4;
 // ECX.
 unsigned int PackPixel_0063DAD0(const unsigned char* rgb);
 
+#include "pixel_shift_view.h"
 #include "../_layout/components.h"
 
 // The same packing for a ColorStruct, expanded in place where retail expands it
 // (0x63D0F0).
 inline unsigned int PackPixel(const ColorStruct& color)
 {
-    unsigned char red = color.R >> DAT_008A0DD4;
-    unsigned char green = color.G >> DAT_008A0DE4;
-    unsigned char blue = color.B >> DAT_008A0DDC;
-    return (red << DAT_008A0DD0) | (green << DAT_008A0DE0) | (blue << DAT_008A0DD8);
+    unsigned char red = color.R >> gg_b_translucent_pixel_format.loss0;
+    unsigned char green = color.G >> gg_b_translucent_pixel_format.loss1;
+    unsigned char blue = color.B >> gg_b_translucent_pixel_format.loss2;
+    return (red << gg_b_translucent_pixel_format.pos0) | (green << gg_b_translucent_pixel_format.pos1) | (blue << gg_b_translucent_pixel_format.pos2);
 }
 
 #endif  // GG_MATCH_RENDERER_PIXEL_PACK_METHODS_H

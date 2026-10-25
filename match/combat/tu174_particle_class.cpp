@@ -195,9 +195,9 @@ void ParticleClass::vf_69(void* where, ParticleRect* clip)
         g = g * light >> 7;
         b = b * light >> 7;
     }
-    unsigned int color = ((b >> ParticleBlueRight << ParticleBlueLeft) & 0xFFFF) |
-                         ((g >> ParticleGreenRight << ParticleGreenLeft) & 0xFFFF) |
-                         ((r >> ParticleRedRight << ParticleRedLeft) & 0xFFFF);
+    unsigned int color = ((b >> gg_b_translucent_pixel_format.loss2 << gg_b_translucent_pixel_format.pos2) & 0xFFFF) |
+                         ((g >> gg_b_translucent_pixel_format.loss1 << gg_b_translucent_pixel_format.pos1) & 0xFFFF) |
+                         ((r >> gg_b_translucent_pixel_format.loss0 << gg_b_translucent_pixel_format.pos0) & 0xFFFF);
     ParticleSurface->PlotPixel(&point, color);
 }
 

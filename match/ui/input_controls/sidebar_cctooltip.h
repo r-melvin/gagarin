@@ -16,6 +16,7 @@
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_SIDEBAR_CCTOOLTIP_H
 #define GG_MATCH_UI_INPUT_CONTROLS_SIDEBAR_CCTOOLTIP_H
 
+#include "../../renderer/pixel_shift_view.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../tooltip_manager_shared.h"
@@ -68,15 +69,6 @@ struct TipRGB_00478E30
 };
 // GLOBAL: GAMEMD 0xB0FA1C -- current tooltip colour (R, G, B bytes).
 extern TipRGB_00478E30 TipColor_00B0FA1C;
-// GLOBAL: GAMEMD 0x8A0DD0/0x8A0DD4 -- red left/right shift.
-extern int RedLeft_008A0DD0;
-extern unsigned char RedRight_008A0DD4;
-// GLOBAL: GAMEMD 0x8A0DD8/0x8A0DDC -- blue left/right shift.
-extern int BlueLeft_008A0DD8;
-extern unsigned char BlueRight_008A0DDC;
-// GLOBAL: GAMEMD 0x8A0DE0/0x8A0DE4 -- green left/right shift.
-extern int GreenLeft_008A0DE0;
-extern unsigned char GreenRight_008A0DE4;
 
 // Surface reached through DSurface::Composite (0x88731C) / DSurface::Sidebar
 // (0x887300). Slots used: +0x14 (rect, 0), +0x58 (rect, colour), +0x7C ().

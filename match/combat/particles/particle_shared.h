@@ -5,6 +5,7 @@
 #ifndef GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H
 #define GG_MATCH_EFFECTS_PARTICLES_PARTICLE_SHARED_H
 
+#include "../../renderer/pixel_shift_view.h"
 #include "particle_common_types.h"
 #include "particle_common_vectors.h"
 #include "particle_common_views.h"
@@ -129,8 +130,6 @@ extern void* ParticleDrawContext;
 void ParticleDrawShape(ParticleSurfaceView* surface, void* context, void* object, int frame,
                        void* where, ParticleRect* clip, int flags, int a6, int zAdjust,
                        int a8, int a9, int a10, int a11, int a12, ParticleScreenPoint offset);
-// GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 - the pixel format's colour shifts (red right/left, blue, green).
-extern int ParticleRedRight, ParticleRedLeft, ParticleBlueRight, ParticleBlueLeft, ParticleGreenRight, ParticleGreenLeft;
 
 
 

@@ -228,9 +228,9 @@ GG_STATIC_ASSERT(sizeof(DAT_0089E418) == 4);
 // The display's pixel packer, expanded inline (see sidebar_cctooltip.h).
 inline unsigned int PackColor(const TipRGB_00478E30& c)
 {
-    unsigned int blue = (c.B >> BlueRight_008A0DDC) << BlueLeft_008A0DD8;
-    unsigned int green = (c.G >> GreenRight_008A0DE4) << GreenLeft_008A0DE0;
-    unsigned int red = (c.R >> RedRight_008A0DD4) << RedLeft_008A0DD0;
+    unsigned int blue = (c.B >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2;
+    unsigned int green = (c.G >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1;
+    unsigned int red = (c.R >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0;
     return blue | green | red;
 }
 

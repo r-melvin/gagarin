@@ -2289,9 +2289,9 @@ int FUN_00621040(Surface* pSurface, const unsigned short* pText, BitFontBounds* 
     unsigned char red = (unsigned char)nColor;
     unsigned char green = (unsigned char)((unsigned short)nColor >> 8);
     unsigned char blue = (unsigned char)(nColor >> 16);
-    unsigned nPixel = ((green >> DAT_008A0DE4) << DAT_008A0DE0)
-                    | ((blue >> DAT_008A0DDC) << DAT_008A0DD8)
-                    | ((red >> DAT_008A0DD4) << DAT_008A0DD0);
+    unsigned nPixel = ((green >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1)
+                    | ((blue >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2)
+                    | ((red >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0);
 
     int x = pBounds->Left;
     int y = pBounds->Top;

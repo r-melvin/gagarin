@@ -773,42 +773,42 @@ bool DSurface::unknown_1C(RectangleStruct* rect, RectangleStruct* colorBytes, in
 // FUNCTION: GAMEMD 0x004BBC30
 int FUN_004BBC30()
 {
-    return DAT_008A0DD0;
+    return gg_b_translucent_pixel_format.pos0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004BBC40
 int FUN_004BBC40()
 {
-    return DAT_008A0DD4;
+    return gg_b_translucent_pixel_format.loss0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004BBC50
 int FUN_004BBC50()
 {
-    return DAT_008A0DE0;
+    return gg_b_translucent_pixel_format.pos1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004BBC60
 int FUN_004BBC60()
 {
-    return DAT_008A0DE4;
+    return gg_b_translucent_pixel_format.loss1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004BBC70
 int FUN_004BBC70()
 {
-    return DAT_008A0DD8;
+    return gg_b_translucent_pixel_format.pos2;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x004BBC80
 int FUN_004BBC80()
 {
-    return DAT_008A0DDC;
+    return gg_b_translucent_pixel_format.loss2;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

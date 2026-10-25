@@ -2085,10 +2085,10 @@ int FUN_0063D540(Obj_0063D540* a1, int a2)
 // format: each channel is shifted right into a byte, then left into place.
 unsigned int PackPixel_0063DAD0(const unsigned char* rgb)
 {
-    unsigned char red = rgb[0] >> DAT_008A0DD4;
-    unsigned char green = rgb[1] >> DAT_008A0DE4;
-    unsigned char blue = rgb[2] >> DAT_008A0DDC;
-    return (red << DAT_008A0DD0) | (green << DAT_008A0DE0) | (blue << DAT_008A0DD8);
+    unsigned char red = rgb[0] >> gg_b_translucent_pixel_format.loss0;
+    unsigned char green = rgb[1] >> gg_b_translucent_pixel_format.loss1;
+    unsigned char blue = rgb[2] >> gg_b_translucent_pixel_format.loss2;
+    return (red << gg_b_translucent_pixel_format.pos0) | (green << gg_b_translucent_pixel_format.pos1) | (blue << gg_b_translucent_pixel_format.pos2);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

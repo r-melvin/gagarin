@@ -29646,7 +29646,7 @@
   "len": "0x14D",
   "name": "PreviewClass::CreatePreviewSurface",
   "status": "partial",
-  "pct": 97.3
+  "pct": 87.3
  },
  {
   "tu": "match/ui/progress_screen_class.cpp",
