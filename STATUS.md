@@ -1,13 +1,13 @@
 # Project status
 
-At source snapshot **`b60bed51` (2026-10-25)**, the manifest holds
-**10,978 rows: 10,235 matched and 743 partial**, in 1,260 manifest translation
+At source snapshot **`a66e55ac` (2026-10-25)**, the manifest holds
+**10,980 rows: 10,236 matched and 744 partial**, in 1,260 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
-bytes. Matched rows represent 51.7% of the census and **708,870 bytes (18.3%)**;
+bytes. Matched rows represent 51.8% of the census and **708,892 bytes (18.3%)**;
 partials represent 3.8%. These are function measurements, not executable completion.
 
-The full gate compiles **1,269 tracked translation units**, checks **134 layout
-headers**, re-proves all 10,235 matched rows and compile-checks all 743 partials,
+The full gate compiles **1,271 tracked translation units**, checks **134 layout
+headers**, re-proves all 10,236 matched rows and compile-checks all 744 partials,
 with no matched-function regressions. Affected exact functions also pass explicit
 relocation checks. Earlier strict-check repairs are recorded in the historical
 snapshots below; final link selection, RTTI data and whole-image layout require
@@ -32,7 +32,20 @@ existing matched bodies.
 The PlanMgr cleanup shares the Tactical, Techno, planning-token and node
 contracts and preserves its existing exact functions. The full PlanMgr source
 merge remains held: ordinary canonical forms do not preserve two existing
-100% bodies. Pixel-global and CompositeSurface consolidation remain in progress.
+100% bodies. House interface return and calling-convention declarations are
+corrected; its implementation-owner migration remains in progress.
+
+The six pixel-shift cells now share one zero-filled storage owner. The preview
+constructor remains partial, changing from 97.3% to 87.3% under that natural field
+representation; existing exacts are preserved. CompositeSurface and its swap
+partner now have real pointer storage and canonical drawing consumers. Their
+native data spacing is not reproduced by the diagnostic image.
+
+Seven narrow string methods now use the actual Wstring owner. Its existing
+Copy_Padded partial remains 88.9%; the wider string families still need work.
+HoverMatrixView is retired in favor of Matrix3D without changing any existing
+body or score. Its recovered copy routine at 0x5AE610 matches 100%; the new affine
+product at 0x5AF980 is explicitly partial at 3.7%. DrawMatrix remains 78.6%.
 
 Initializer verification now distinguishes a matching inner helper from the
 actual callback registered in the CRT table. Of the 60 generated float claims
@@ -54,8 +67,8 @@ Link milestones (diagnostic images do not run):
 
 | Milestone | State | Measurement |
 | --- | --- | --- |
-| M0 diagnostic link | historical | At `2a00ae5d`: 1,310 objects, 8,291 unresolved externals and 0 duplicate definitions, using `/FORCE` |
-| M1 address-faithful stub link | verified at `b60bed51` | Exit 0 without `/FORCE`, 0 unresolved after 8,974 placed int3 stubs, 0 duplicate definitions; all 10,235 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M0 diagnostic link | measured at `a66e55ac` | 1,271 objects, 8,689 unresolved externals and 0 duplicate definitions, using `/FORCE`; this is an unresolved-symbol diagnostic, not a working engine |
+| M1 address-faithful stub link | verified at `a66e55ac` | Exit 0 without `/FORCE`, 0 unresolved after 8,973 placed int3 stubs, 0 duplicate definitions; all 10,236 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |
@@ -76,6 +89,12 @@ PlanMgr dynamic-vector tables and all 14 native slot targets. Separate
 retention of the three RGB container tables proves their 21 native targets;
 the ordinary link retains two of those tables. These scoped checks do not
 establish complete vtable, RTTI or initializer-table identity.
+
+The DSurface table still has 37 of 38 native pointer values, 14 diagnostic-stub
+slots and an existing deleting-destructor provider mismatch. It is not a fully
+matched source vtable. M1 substitutes stubs for partial functions, including
+Hover DrawMatrix and the new affine product; original-object M0 call-operand
+checks are separate and do not establish a working engine.
 
 ## Historical integration archive
 
