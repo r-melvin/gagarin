@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/swizzle_manager_class.h"
 
 // The COM stream: only slot +0x0C (Read) is called, __stdcall.
 struct IStream_0054E7B0
@@ -28,16 +29,6 @@ struct IStream_0054E7B0
     virtual long          __stdcall Read(void* pv, unsigned long cb,
                                          unsigned long* pcbRead) = 0;                 // +0x0C
 };
-
-// The swizzle manager at 0xB0C110; __stdcall with the manager as the first
-// stacked argument.
-struct Swizzle_0054E7B0
-{
-    // FUNCTION: GAMEMD 0x6CF240 (decl; reloc) — queue a pointer for fix-up.
-    long __stdcall FUN_006CF240(void** pointer);
-};
-// GLOBAL: GAMEMD 0xB0C110 — SwizzleManagerClass::Instance.
-extern Swizzle_0054E7B0 DAT_00B0C110;
 
 // Per-aircraft node: Item at +0, Target at +4 — both swizzled after the read.
 struct KamikazeControl_0054E7B0

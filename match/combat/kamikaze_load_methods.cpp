@@ -27,8 +27,8 @@ long Kamikaze::Load(IStream_0054E7B0* stream)
         if (hr < 0) {
             return hr;
         }
-        DAT_00B0C110.FUN_006CF240(&node->Item);
-        DAT_00B0C110.FUN_006CF240(&node->Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&node->Item);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&node->Target);
         this->Nodes.AddItem(node);
     }
 

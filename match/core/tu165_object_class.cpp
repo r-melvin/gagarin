@@ -48,6 +48,7 @@
 // the slot-call view does not establish the original virtual declaring class.
 
 #include "../_layout/object_class.h"
+#include "../_layout/swizzle_manager_class.h"
 
 // CellStruct — 2D short cell coordinate (sizeof = 4). Self-guarded for reuse.
 #include "../_layout/cell.h"
@@ -92,16 +93,6 @@ struct ObjectRulesView_5F4360
 GG_STATIC_ASSERT(offsetof(ObjectRulesView_5F4360, unknown_16F8) == 0x16F8);
 // GLOBAL: GAMEMD 0x8871E0
 extern ObjectRulesView_5F4360* DAT_008871E0;
-
-// The pointer fix-up manager at 0xB0C110 (the manager is the first stacked
-// argument).
-struct Swizzle_5F5E80
-{
-    // CALLEE: GAMEMD 0x6CF240 (declaration) -- queue a pointer for fix-up.
-    HRESULT __stdcall FUN_006CF240(void** pointer);
-};
-// GLOBAL: GAMEMD 0xB0C110
-extern Swizzle_5F5E80 DAT_00B0C110;
 
 // The audio controller's initialiser (0x405BE0, __thiscall, no arguments),
 // rerun over each controller a load brings in.
@@ -734,11 +725,11 @@ HRESULT __stdcall ObjectClass::Load(IStream* pStm)
     if (FAILED(hr)) {
         return hr;
     }
-    DAT_00B0C110.FUN_006CF240(&NextObject);
-    DAT_00B0C110.FUN_006CF240((void**)&AttachedTag);
-    DAT_00B0C110.FUN_006CF240(&AttachedBomb);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_18);
-    DAT_00B0C110.FUN_006CF240((void**)&Parachute);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&NextObject);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&AttachedTag);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&AttachedBomb);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_18);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Parachute);
     ((AudioControllerInit*)&AmbientSoundController)->FUN_00405BE0();
     ((AudioControllerInit*)&CustomSoundController)->FUN_00405BE0();
     LineTrailer = 0;

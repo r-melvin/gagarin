@@ -38,7 +38,7 @@ HRESULT LayerClass::Load(IStream_00551B90* pStm)
     }
 
     for (int j = 0; j < count; j++) {
-        DAT_00B0C110.FUN_006CF240(&this->Items[j]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&this->Items[j]);
     }
 
     return 0;

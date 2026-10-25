@@ -18,6 +18,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/swizzle_manager_class.h"
 
 typedef long HRESULT;
 
@@ -31,17 +32,6 @@ struct IStream_00551B90
     virtual long          __stdcall Read(void* pv, unsigned long cb,
                                          unsigned long* pcbRead) = 0;                 // +0x0C
 };
-
-// The swizzle manager at 0xB0C110; __stdcall with the manager as the first
-// stacked argument.
-struct Swizzle_00551B90
-{
-    // FUNCTION: GAMEMD 0x6CF240 (decl; reloc) — queue a pointer for fix-up.
-    HRESULT __stdcall FUN_006CF240(void** pointer);
-};
-
-// GLOBAL: GAMEMD 0xB0C110
-extern Swizzle_00551B90 DAT_00B0C110;
 
 // LayerClass, a DynamicVectorClass<ObjectClass*>. Slot +0x08 is
 // Resize(newCapacity, array).

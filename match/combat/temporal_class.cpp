@@ -14,6 +14,7 @@
 
 #include <new.h>
 #include "../_layout/temporal_class.h"
+#include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
 #include "../core/header_tuning_globals.h"
 
@@ -37,15 +38,6 @@ double DAT_00B0ECB0 = 1.0 / DAT_00B0ECC8;
 // SYNTHETIC: GAMEMD 0x71A390
 // GLOBAL: GAMEMD 0xB0ECB8
 TuningCoordInit DAT_00B0ECB8(128, 128, 0);
-
-// The pointer-swizzle manager at 0xB0C110 (__stdcall, the object pushed).
-struct TemporalSwizzleView
-{
-    // FUNCTION: GAMEMD 0x6CF240 (decl; reloc)
-    long __stdcall FUN_006CF240(void** pointer);
-};
-// GLOBAL: GAMEMD 0xB0C110
-extern TemporalSwizzleView DAT_00B0C110;
 
 // The append to TemporalClass::Array, the inlined DynamicVectorClass::AddItem
 // in the same free-function shape as EMPulse_AddItem (combat/empulse_class.cpp).
@@ -187,12 +179,12 @@ HRESULT __stdcall TemporalClass::Load(IStream* pStm)
     HRESULT hr = AbstractClass::Load(pStm);
     if (hr >= 0) {
         new (this) TemporalClass(AbstractNoInit());
-        DAT_00B0C110.FUN_006CF240((void**)&Owner);
-        DAT_00B0C110.FUN_006CF240((void**)&Target);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_40);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_44);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_38);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_3C);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_40);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_44);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_38);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_3C);
     }
     return hr;
 }
