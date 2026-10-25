@@ -1,11 +1,18 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// Native7B5B30 expands Length; /Ob2 preserves all existing complete sections.
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Canonical Wstring bodies, ascending by retail address. The class and the
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
 // GLOBAL: GAMEMD 0x889F64
 extern char GLOBAL_00889F64[];
+
+// LIBRARY: GAMEMD 0x007CAFF4
+// _tolower
+// Narrow CRT declaration; implementation remains in the toolchain library.
+extern "C" int __cdecl tolower(int ch);
 
 // FUNCTION: GAMEMD 0x7B4620
 Wstring::Wstring() : unknown_00(0)
@@ -64,6 +71,18 @@ bool Wstring::operator==(const Wstring& other) const
         return false;
     }
     return strcmp(unknown_00, other.unknown_00) ? false : true;
+}
+
+// FUNCTION: GAMEMD 0x7B47F0
+bool Wstring::FUN_007B47F0(const char* text) const
+{
+    if (unknown_00 == 0 && text == 0) {
+        return false;
+    }
+    if (unknown_00 == 0 || text == 0) {
+        return true;
+    }
+    return strcmp(unknown_00, text) ? true : false;
 }
 
 // FUNCTION: GAMEMD 0x7B4860
@@ -172,4 +191,15 @@ bool Wstring::FUN_007B5AB0(char ch, unsigned int index)
     }
     unknown_00[index] = ch;
     return true;
+}
+
+// FUNCTION: GAMEMD 0x7B5B30
+void Wstring::FUN_007B5B30()
+{
+    for (unsigned int i = 0; i < Length(); ++i) {
+        char ch = unknown_00[i];
+        if (ch >= 'A' && ch <= 'Z') {
+            unknown_00[i] = tolower(ch);
+        }
+    }
 }

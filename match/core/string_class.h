@@ -47,6 +47,8 @@ public:
     bool FUN_007B4710(const char* text) const;
     // Declaration: GAMEMD 0x7B4780
     bool operator==(const Wstring& other) const;
+    // Declaration: GAMEMD 0x7B47F0 -- inequality against a C string.
+    bool FUN_007B47F0(const char* text) const;
     // Declaration: GAMEMD 0x7B4860
     bool operator!=(const Wstring& other) const;
     // Declaration: GAMEMD 0x7B4940
@@ -63,6 +65,8 @@ public:
     void Copy_Padded(char* dest, unsigned int size) const;
     // Declaration: GAMEMD 0x7B5AB0
     bool FUN_007B5AB0(char ch, unsigned int index);
+    // Declaration: GAMEMD 0x7B5B30 -- lower-case ASCII uppercase characters.
+    void FUN_007B5B30();
 };
 GG_STATIC_ASSERT(sizeof(Wstring) == 4);
 GG_STATIC_ASSERT(offsetof(Wstring, unknown_00) == 0);

@@ -99002,5 +99002,23 @@
   "name": "Wstring::operator=(const char*)",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B47F0",
+  "sym": "?FUN_007B47F0@Wstring@@QBE_NPBD@Z",
+  "len": "0x63",
+  "name": "Wstring::FUN_007B47F0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/core/string_class_methods.cpp",
+  "addr": "0x7B5B30",
+  "sym": "?FUN_007B5B30@Wstring@@QAEXXZ",
+  "len": "0x42",
+  "name": "Wstring::FUN_007B5B30",
+  "status": "matched",
+  "pct": 100
  }
 ]
