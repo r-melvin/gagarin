@@ -110,6 +110,7 @@ static inline bool TagTypeCtorAdd(TagTypeCtorVector* vector, TagTypeClass* item)
 
 // Native construction under GX adds exception cleanup absent from retail.
 #include "tag_type_class_load_list_methods.h"
+#include "../_layout/swizzle_manager_class.h"
 
 #include "tag_type_class_methods.h"
 
@@ -198,7 +199,7 @@ void TagTypeClass::LoadFromINIList(CCINI_006E5ED0* ini)
                 tag = new TagTypeClass(key);
             }
         have:
-            FUN_006CF2C0(&DAT_00B0C110, FUN_00412610(key), tag);
+            DAT_00B0C110.SwizzleManagerClass::vf_6(FUN_00412610(key), tag);
             TagTypeLoadCallView* view = reinterpret_cast<TagTypeLoadCallView*>(tag);
             (view->*view->Vtable->Method)(ini);
         }

@@ -53,13 +53,6 @@ struct Subject_00410320
 GG_STATIC_ASSERT(offsetof(Subject_00410320, Restored) == 0x1C);
 GG_STATIC_ASSERT(offsetof(Subject_00410320, Dirty) == 0x20);
 
-// GLOBAL: GAMEMD 0xB0C110 — the registry the loader hands the identity word to.
-extern char DAT_00B0C110;
-
-// FUNCTION: GAMEMD 0x6CF2C0 — records the identity word against the object,
-// __stdcall.
-void __stdcall FUN_006CF2C0(void* registry, void* identity, Subject_00410320* subject);
-
 // FUNCTION: GAMEMD 0x410320 — save.
 long __stdcall FUN_00410320(Subject_00410320* subject, Stream_00410320* stream,
                             int clearDirty);

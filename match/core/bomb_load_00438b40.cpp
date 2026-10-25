@@ -8,14 +8,12 @@
 #include "small_misc18_methods.h"
 #include "small_misc2_methods.h"
 #include "stream_persist_methods.h"
+#include "../_layout/swizzle_manager_class.h"
 #include "bomb_class_vtables_004386f0.h"
 
 // Standard caller-storage construction; no allocation occurs.
 inline void* __cdecl operator new(size_t, void* p) { return p; }
 inline void __cdecl operator delete(void*, void*) {}
-
-// FUNCTION: GAMEMD 0x006CF240 (decl; reloc)
-extern "C" long __stdcall FUN_006CF240(void* registry, void** pointer);
 
 // Prefix through the fields reset by this load method.
 struct BombLoadView_00438B40 {
@@ -61,9 +59,9 @@ extern "C" long __stdcall FUN_00438B40(BombLoadView_00438B40* self, Stream_00410
         new (self) BombLoadView_00438B40((int)&stream);
         self->unknown_3C.FUN_00405BE0();
         self->unknown_54 = 0;
-        FUN_006CF240(&DAT_00B0C110, &self->unknown_28);
-        FUN_006CF240(&DAT_00B0C110, &self->unknown_24);
-        FUN_006CF240(&DAT_00B0C110, &self->unknown_2C);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&self->unknown_28);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&self->unknown_24);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&self->unknown_2C);
     }
     return result;
 }

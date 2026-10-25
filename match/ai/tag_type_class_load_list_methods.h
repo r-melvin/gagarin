@@ -59,9 +59,5 @@ GG_STATIC_ASSERT(offsetof(TagTypeLoadCallViewVtable, Method) == 0x64);
 
 // FUNCTION: GAMEMD 0x412610 (decl; reloc) — the name's registry key.
 int FUN_00412610(const char* name);
-// GLOBAL: GAMEMD 0xB0C110 — the name registry.
-extern char DAT_00B0C110;
-// FUNCTION: GAMEMD 0x6CF2C0 (decl; reloc) — register a tag type by name.
-void __stdcall FUN_006CF2C0(void* registry, int key, TagTypeClass* tag);
 
 #endif  // GG_MATCH_AI_TAG_TYPE_CLASS_LOAD_LIST_METHODS_H

@@ -8,12 +8,7 @@
 //   0x006CF240 and the global at 0x00B0C110.
 
 #include "persisted_pair_vectors_004391c0.h"
-
-// DAT_00B0C110 is declared and binary-annotated by stream_persist_methods.h.
-// FUNCTION: GAMEMD 0x006CF240 (decl; reloc) -- external direct call.
-// Its __stdcall ABI and (registry, pointer-address) argument order are also
-// visible in the matched load paths at 0x438B40 and 0x439260.
-extern "C" long __stdcall FUN_006CF240(void* registry, void** pointer);
+#include "../_layout/swizzle_manager_class.h"
 
 // FUNCTION: GAMEMD 0x004391C0
 long PairVectorOwnerView_004391C0::Save(Stream_00410320* stream)
@@ -75,7 +70,7 @@ long PairVectorOwnerView_004391C0::Load(Stream_00410320* stream)
 
     {
         for (int firstSwizzleIndex = 0; firstSwizzleIndex < count; ++firstSwizzleIndex)
-            FUN_006CF240(&DAT_00B0C110, &first.items[firstSwizzleIndex]);
+            DAT_00B0C110.SwizzleManagerClass::vf_4(&first.items[firstSwizzleIndex]);
     }
 
     result = STREAM_READ(stream, &count, 4);
@@ -103,7 +98,7 @@ long PairVectorOwnerView_004391C0::Load(Stream_00410320* stream)
 
     {
         for (int secondSwizzleIndex = 0; secondSwizzleIndex < count; ++secondSwizzleIndex)
-            FUN_006CF240(&DAT_00B0C110, &second.items[secondSwizzleIndex]);
+            DAT_00B0C110.SwizzleManagerClass::vf_4(&second.items[secondSwizzleIndex]);
     }
 
     return result;

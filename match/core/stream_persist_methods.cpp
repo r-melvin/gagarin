@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x410320 and 0x410380.
 
 #include "stream_persist_methods.h"
+#include "../_layout/swizzle_manager_class.h"
 
 // FUNCTION: GAMEMD 0x410320
 //
@@ -62,12 +63,12 @@ long __stdcall FUN_00410380(Subject_00410320* subject, Stream_00410320* stream)
         return 0x80004003;
     }
 
-    void* identity;
+    int identity;
 
     long hr = STREAM_READ(stream, &identity, 4);
 
     if (hr >= 0) {
-        FUN_006CF2C0(&DAT_00B0C110, identity, subject);
+        DAT_00B0C110.SwizzleManagerClass::vf_6(identity, subject);
 
         void* restored = subject->Restored;
 
