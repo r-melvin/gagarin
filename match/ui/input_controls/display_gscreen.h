@@ -19,6 +19,7 @@
 #include "../../_rt/gg_static_assert.h"
 #include "ui_display_chain.h"
 #include "mouse_ww_mouse_class.h"
+#include "../../renderer/composite_surface.h"
 
 // GLOBAL: GAMEMD 0x7F7C90 -- IID_IUnknown.
 extern const DisplayGuid IID_IUnknown_007F7C90;
@@ -42,19 +43,13 @@ struct DisplayKeyboard
 // GLOBAL: GAMEMD 0x87F770
 extern DisplayKeyboard* DisplayKeyboard_0087F770;
 
-// A drawing surface: only the pointers matter here, plus the dword at +0x1C that 0x4F45B0 hands to the batch.
-struct DisplaySurface
-{
-    char unknown_00[0x1C];   // +0x00
-    int  unknown_1C;         // +0x1C
-};
-GG_STATIC_ASSERT(offsetof(DisplaySurface, unknown_1C) == 0x1C);
+// Pointer-only peers use the existing polymorphic Surface contract.
+class Surface;
+struct DDSurface;
 // GLOBAL: GAMEMD 0x88730C
-extern DisplaySurface* DisplaySurface_0088730C;
+extern Surface* DAT_0088730C;
 // GLOBAL: GAMEMD 0x887314
-extern DisplaySurface* DisplaySurface_00887314;
-// GLOBAL: GAMEMD 0x88731C -- DSurface::Composite.
-extern DisplaySurface* DisplaySurface_0088731C;
+extern Surface* DAT_00887314;
 
 // The Direct3D-style device the overlay pass brackets with two stdcall slots (0x28 and 0x2C, `this` pushed).
 class DisplayDevice
@@ -96,7 +91,7 @@ struct DisplayLayer
     // FUNCTION: GAMEMD 0x4A33A0 (decl; reloc)
     int FUN_004A33A0(int arg);
     // FUNCTION: GAMEMD 0x4A3660 (decl; reloc)
-    void FUN_004A3660(int arg);
+    void FUN_004A3660(DDSurface* surface);
     // FUNCTION: GAMEMD 0x4A3840 (decl; reloc)
     void FUN_004A3840(DisplayTriangle* batch);
 };
@@ -113,8 +108,8 @@ extern bool DisplayFlag_00A9FA94;
 // GLOBAL: GAMEMD 0xA8ED84 -- Unsorted::CurrentFrame.
 extern int DisplayCurrentFrame_00A8ED84;
 
-// FUNCTION: GAMEMD 0x4F4780 (decl; reloc) -- __fastcall: bool in CL, surface in EDX, one stacked int.
-void FUN_004F4780(bool flag, DisplaySurface* surface, int arg);
+// FUNCTION: GAMEMD 0x4F4780 (decl; reloc) -- bool in CL, Surface in EDX, stacked rectangle pointer.
+void FUN_004F4780(bool flag, Surface* surface, RectangleStruct* rectangle);
 
 // GScreenClass itself is declared in ui_display_chain.h.
 

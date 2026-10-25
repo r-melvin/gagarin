@@ -25,14 +25,13 @@
 #include "../_rt/gg_static_assert.h"
 #include "../_rt/gg_vslot.h"
 
-struct Surface_004F4480 { char opaque[4]; };
+class Surface;
+#include "../renderer/composite_surface.h"
 
 // GLOBAL: GAMEMD 0x887300 — DSurface::Sidebar.
-extern Surface_004F4480* DAT_00887300;
+extern Surface* DAT_00887300;
 // GLOBAL: GAMEMD 0x887314 — DSurface::Temp.
-extern Surface_004F4480* DAT_00887314;
-// GLOBAL: GAMEMD 0x88731C — DSurface::Composite.
-extern Surface_004F4480* DAT_0088731C;
+extern Surface* DAT_00887314;
 
 // GLOBAL: GAMEMD 0xA8ED6B — Unsorted::ArmageddonMode (byte).
 extern bool DAT_00A8ED6B;
@@ -52,7 +51,7 @@ struct Mouse_004F4480
 {
     MouseVtbl_004F4480* Vtbl;      // +0x0000
 };
-typedef void (Mouse_004F4480::*MouseFn_004F4480)(Surface_004F4480* surface, bool flag);
+typedef void (Mouse_004F4480::*MouseFn_004F4480)(Surface* surface, bool flag);
 struct MouseVtbl_004F4480
 {
     char              _pad000[0x3C];   // +0x0000
@@ -70,7 +69,7 @@ struct Tactical_004F4480
     char          _pad000[0xD7D];  // +0x0000
     unsigned char NeedsRedraw;     // +0x0D7D
     // FUNCTION: GAMEMD 0x6D3D10 (decl; reloc) — Tactical::Render.
-    void Render(Surface_004F4480* surface, bool flag, int mode);
+    void Render(Surface* surface, bool flag, int mode);
 };
 GG_STATIC_ASSERT(offsetof(Tactical_004F4480, NeedsRedraw) == 0xD7D);
 // GLOBAL: GAMEMD 0x887324 — Tactical::Instance.

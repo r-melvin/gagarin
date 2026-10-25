@@ -17,25 +17,19 @@
 #define GG_MATCH_UI_INPUT_CONTROLS_SIDEBAR_CCTOOLTIP_H
 
 #include "../../renderer/pixel_shift_view.h"
+#include "../../renderer/composite_surface.h"
+#include "../../_layout/geometry2d.h"
+#include "../../_layout/rgb_class.h"
+#include "../bit_font_print_methods.h"
 #include <stddef.h>
 #include "../../_rt/gg_static_assert.h"
 #include "../tooltip_manager_shared.h"
 #include "mouse_ww_mouse_class.h"
 
-// Rectangle stored as {X, Y, Width, Height}: the sidebar rectangle at 0x886F90
-// and the tactical view rectangle at 0x886FA0 (reads of +0, +4, +8, +C).
-struct TipRect_00478BA0
-{
-    int X;
-    int Y;
-    int Width;
-    int Height;
-};
-
 // GLOBAL: GAMEMD 0x886F90 -- sidebar rectangle.
-extern TipRect_00478BA0 SidebarRect_00886F90;
+extern RectangleStruct SidebarRect_00886F90;
 // GLOBAL: GAMEMD 0x886FA0 -- tactical view rectangle.
-extern TipRect_00478BA0 TacticalRect_00886FA0;
+extern RectangleStruct TacticalRect_00886FA0;
 // GLOBAL: GAMEMD 0xA8EB7C -- compared against 1; picks which side the sidebar is on.
 extern unsigned char SidebarSideFlag_00A8EB7C;
 // GLOBAL: GAMEMD 0x884B8E -- set when a tooltip touches the sidebar (byte store).
@@ -59,80 +53,12 @@ struct TipMap_00478DB0
 // GLOBAL: GAMEMD 0x87F7E8 -- MapClass::Instance.
 extern TipMap_00478DB0 MapInstance_0087F7E8;
 
-// The 16-bit pixel packer (inlined at 0x478F65): three bytes at 0xB0FA1C are
-// shifted by the six pixel-format globals at 0x8A0DD0..0x8A0DE4.
-struct TipRGB_00478E30
-{
-    unsigned char R;
-    unsigned char G;
-    unsigned char B;
-};
-// GLOBAL: GAMEMD 0xB0FA1C -- current tooltip colour (R, G, B bytes).
-extern TipRGB_00478E30 TipColor_00B0FA1C;
-
-// Surface reached through DSurface::Composite (0x88731C) / DSurface::Sidebar
-// (0x887300). Slots used: +0x14 (rect, 0), +0x58 (rect, colour), +0x7C ().
-struct TipRectLTRB_00478E30
-{
-    int Left;
-    int Top;
-    int Right;
-    int Bottom;
-};
-struct TipSurface_00478E30;
-struct TipSurfaceVtbl_00478E30;
-struct TipSurface_00478E30
-{
-    TipSurfaceVtbl_00478E30* Vtbl;
-};
-typedef int (TipSurface_00478E30::*TipSurfaceFn14_00478E30)(TipRect_00478BA0* rect, int arg);
-typedef int (TipSurface_00478E30::*TipSurfaceFn58_00478E30)(TipRect_00478BA0* rect, int color);
-typedef int (TipSurface_00478E30::*TipSurfaceFn7C_00478E30)();
-struct TipSurfaceVtbl_00478E30
-{
-    char _pad000[0x14];
-    TipSurfaceFn14_00478E30 At_14;
-    char _pad018[0x58 - 0x18];
-    TipSurfaceFn58_00478E30 At_58;
-    char _pad05C[0x7C - 0x5C];
-    TipSurfaceFn7C_00478E30 At_7C;
-};
-GG_STATIC_ASSERT(offsetof(TipSurfaceVtbl_00478E30, At_14) == 0x14);
-GG_STATIC_ASSERT(offsetof(TipSurfaceVtbl_00478E30, At_58) == 0x58);
-GG_STATIC_ASSERT(offsetof(TipSurfaceVtbl_00478E30, At_7C) == 0x7C);
-// GLOBAL: GAMEMD 0x88731C -- DSurface::Composite.
-extern TipSurface_00478E30* CompositeSurface_0088731C;
-// GLOBAL: GAMEMD 0x887300 -- DSurface::Sidebar.
-extern TipSurface_00478E30* SidebarSurface_00887300;
-
-// The object at 0x89C4D0 (text/font state). __thiscall members read off the
-// callers at 0x478BA0 and 0x478E30.
-struct TipFont_00478BA0
-{
-    // FUNCTION: GAMEMD 0x433C70 (decl; reloc) -- stores a word at +0x24.
-    void FUN_00433C70(unsigned short value);
-    // FUNCTION: GAMEMD 0x433C90 (decl; reloc) -- stores a byte at +0x41.
-    void FUN_00433C90(unsigned char value);
-    // FUNCTION: GAMEMD 0x433CA0 (decl; reloc) -- takes a rectangle pointer.
-    void FUN_00433CA0(TipRectLTRB_00478E30* rect);
-    // FUNCTION: GAMEMD 0x433CF0 (decl; reloc) -- measure text: (text, out width,
-    // out height, maximum width), __thiscall, RET 0x10.
-    void FUN_00433CF0(const wchar_t* text, int* width, int* height, int maxWidth);
-};
-// GLOBAL: GAMEMD 0x89C4D0
-extern TipFont_00478BA0* FontInstance_0089C4D0;
-
-// The object at 0x89C4B8 whose 0x434CD0 prints text (ten stack arguments,
-// RET 0x28). Declared here only as a call target.
-struct TipPrinter_00478E30
-{
-    // FUNCTION: GAMEMD 0x434CD0 (decl; reloc) -- text print.
-    int FUN_00434CD0(TipFont_00478BA0* font, TipSurface_00478E30* surface,
-                     const wchar_t* text, int x, int y, int width, int height,
-                     int a8, int a9, int a10);
-};
-// GLOBAL: GAMEMD 0x89C4B8
-extern TipPrinter_00478E30* PrinterInstance_0089C4B8;
+// GLOBAL: GAMEMD 0xB0FA1C -- tooltip component bytes at offsets 0, 1, 2.
+extern RGBClass TipColor_00B0FA1C;
+// GLOBAL: GAMEMD 0x887300 -- polymorphic sidebar surface; concrete type not inferred.
+extern Surface* DAT_00887300;
+// GLOBAL: GAMEMD 0x89C4D0 -- the existing BitFont state pointer.
+extern BitFont* DAT_0089C4D0;
 
 // RTTI (COL 0x80E560): CCToolTip derives from ToolTipManager at offset 0.
 class CCToolTip : public ToolTipManager

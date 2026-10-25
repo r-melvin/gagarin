@@ -10,15 +10,8 @@
 #ifndef GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H
 #define GG_MATCH_RENDERER_YRDDRAW_DISPOSE_METHODS_H
 
-#include <stddef.h>
-#include "../_rt/gg_static_assert.h"
-
-// A DirectDraw surface wrapper. Only its virtual destructor (vtable slot 0) is
-// reached here: `delete p` lowers to the scalar-deleting-destructor call.
-struct Surface_006BB8E0
-{
-    virtual ~Surface_006BB8E0();   // slot 0 -- declared only
-};
+#include "dsurface_class.h"
+#include "composite_surface.h"
 
 // GLOBAL: GAMEMD 0x8A0DEF -- set once the sidebar/tab surfaces were built.
 extern char DAT_008A0DEF;
@@ -27,12 +20,10 @@ extern char DAT_00B0BCF5;
 
 // GLOBAL: GAMEMD 0x88730C / 0x887310 / 0x8872FC / 0x887300 / 0x88731C /
 // 0x887308 -- the six DirectDraw surfaces released in this order.
-extern Surface_006BB8E0* DAT_0088730C;
-extern Surface_006BB8E0* DAT_00887310;
-extern Surface_006BB8E0* DAT_008872FC;
-extern Surface_006BB8E0* DAT_00887300;
-extern Surface_006BB8E0* DAT_0088731C;
-extern Surface_006BB8E0* DAT_00887308;
+extern Surface* DAT_0088730C;
+extern Surface* DAT_00887310;
+extern Surface* DAT_00887300;
+extern Surface* DAT_00887308;
 
 // FUNCTION: GAMEMD 0x4C19B0 (decl; reloc) -- free the sidebar/tab surfaces.
 void FUN_004C19B0();

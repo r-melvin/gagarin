@@ -5,6 +5,7 @@
 
 #include <string.h>
 #include "display_gscreen.h"
+#include "../../renderer/dsurface_class.h"
 
 #pragma intrinsic(memcmp)
 
@@ -60,10 +61,10 @@ void GScreenClass::Input(int* key, int* x, int* y)
     {
         if (DisplayButtonList_00A8EF54->IsActive())
             FlagToRedraw(0);
-        DisplaySurface* saved = DisplaySurface_00887314;
-        DisplaySurface_00887314 = DisplaySurface_0088730C;
+        Surface* saved = DAT_00887314;
+        DAT_00887314 = DAT_0088730C;
         *key = DisplayButtonList_00A8EF54->Input();
-        DisplaySurface_00887314 = saved;
+        DAT_00887314 = saved;
     }
     else
     {
@@ -130,7 +131,7 @@ void GScreenClass::vf_17()
                         DisplayLayer_008A0E10->FUN_004A3840(&first);
                         DisplayLayer_008A0E10->FUN_004A3840(&second);
                     }
-                    DisplayLayer_008A0E10->FUN_004A3660(DisplaySurface_0088731C->unknown_1C);
+                    DisplayLayer_008A0E10->FUN_004A3660(DAT_0088731C->DDSurf);
                 }
             }
         endScene:
@@ -139,7 +140,7 @@ void GScreenClass::vf_17()
     }
     if (!DisplayFlag_00A9FA94)
     {
-        FUN_004F4780(false, DisplaySurface_0088731C, 0);
+        FUN_004F4780(false, DAT_0088731C, 0);
         DisplayFlag_00A9FA94 = false;
     }
 }

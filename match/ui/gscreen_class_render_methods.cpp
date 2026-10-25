@@ -3,6 +3,7 @@
 //   Bytes matched against retail gamemd.exe v1.001 at 0x4F42F0 and 0x4F4480.
 
 #include "gscreen_class_render_methods.h"
+#include "../renderer/dsurface_class.h"
 
 // FUNCTION: GAMEMD 0x4F42F0
 //
@@ -37,7 +38,7 @@ void GScreen_004F4480::FlagToRedraw(int mode)
 // put back, this object's +0x44 pass runs and the temp surface is restored.
 void GScreen_004F4480::Render()
 {
-    Surface_004F4480* saved = DAT_00887314;
+    Surface* saved = DAT_00887314;
     DAT_00887314 = DAT_0088731C;
     (DAT_00887640->*DAT_00887640->Vtbl->At_40)(DAT_0088731C, false);
 

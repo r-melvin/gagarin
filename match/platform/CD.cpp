@@ -224,13 +224,14 @@ GG_STATIC_ASSERT(sizeof(DAT_0089E418) == 4);
 #include "ccfile_class.h"
 
 #include "../ui/input_controls/sidebar_cctooltip.h"
+#include "../renderer/dsurface_class.h"
 
 // The display's pixel packer, expanded inline (see sidebar_cctooltip.h).
-inline unsigned int PackColor(const TipRGB_00478E30& c)
+inline unsigned int PackColor(const RGBClass& c)
 {
-    unsigned int blue = (c.B >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2;
-    unsigned int green = (c.G >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1;
-    unsigned int red = (c.R >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0;
+    unsigned int blue = (c.Blue >> gg_b_translucent_pixel_format.loss2) << gg_b_translucent_pixel_format.pos2;
+    unsigned int green = (c.Green >> gg_b_translucent_pixel_format.loss1) << gg_b_translucent_pixel_format.pos1;
+    unsigned int red = (c.Red >> gg_b_translucent_pixel_format.loss0) << gg_b_translucent_pixel_format.pos0;
     return blue | green | red;
 }
 
@@ -249,8 +250,8 @@ inline unsigned int PackColor(const TipRGB_00478E30& c)
 bool CCToolTip::Update(ToolTipManagerData& from)
 {
     if (WWMouseClassInstance->GetHideCount() >= 0) {
-    TipFont_00478BA0* font = FontInstance_0089C4D0;
-    const TipRect_00478BA0* area;
+    BitFont* font = DAT_0089C4D0;
+    const RectangleStruct* area;
     if (SidebarSideFlag_00A8EB7C == 1) {
         if (from.X > TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width) {
             area = &SidebarRect_00886F90;
@@ -359,64 +360,64 @@ void CCToolTip::Draw(bool onSidebar)
 // FUNCTION: GAMEMD 0x478E30
 void CCToolTip::DrawText(ToolTipManagerData& from)
 {
-    TipSurface_00478E30* surface;
+    Surface* surface;
     unsigned char side = SidebarSideFlag_00A8EB7C;
     int x = from.X;
     int y = from.Y;
     if (side == 1) {
         int limit = TacticalRect_00886FA0.X + TacticalRect_00886FA0.Width;
         if (from.X + from.Width <= limit) {
-            surface = CompositeSurface_0088731C;
+            surface = DAT_0088731C;
         } else {
             if (OnSidebar != 1 || from.X < limit) return;
-            surface = SidebarSurface_00887300;
+            surface = DAT_00887300;
             x = from.X - limit;
             SidebarSurfaceUsed_00B0B518 = 1;
         }
     } else {
         int limit = SidebarRect_00886F90.X + SidebarRect_00886F90.Width;
         if (from.X >= limit) {
-            surface = CompositeSurface_0088731C;
+            surface = DAT_0088731C;
             x = from.X - limit;
         } else {
             if (OnSidebar != 1 || from.X + from.Width >= limit) return;
-            surface = SidebarSurface_00887300;
+            surface = DAT_00887300;
             SidebarSurfaceUsed_00B0B518 = 1;
         }
     }
     if (!surface) return;
 
     const wchar_t* text = from.HelpText;
-    TipFont_00478BA0* font = FontInstance_0089C4D0;
-    TipRectLTRB_00478E30 box;
+    BitFont* font = DAT_0089C4D0;
+    BitFontBounds box;
     box.Top = y;
     box.Bottom = y;
     box.Left = x;
     box.Right = x;
     int w;
     int h;
-    font->FUN_00433CF0(text, &w, &h, (surface->*surface->Vtbl->At_7C)());
+    font->FUN_00433CF0(text, &w, &h, surface->GetWidth());
     box.Bottom = box.Top + h;
     box.Right = box.Left + w;
     int boxH = box.Bottom - box.Top + 4;
     int boxW = box.Right - box.Left + 8;
-    if (box.Left + boxW > (surface->*surface->Vtbl->At_7C)()) {
-        box.Left = (surface->*surface->Vtbl->At_7C)() - boxW;
+    if (box.Left + boxW > surface->GetWidth()) {
+        box.Left = surface->GetWidth() - boxW;
     }
     box.Right = box.Left + boxW;
     box.Bottom = box.Top + boxH;
     unsigned int color = PackColor(TipColor_00B0FA1C);
-    TipRect_00478BA0 fill;
+    RectangleStruct fill;
     fill.X = box.Left;
     fill.Y = box.Top;
     fill.Width = boxW;
     fill.Height = boxH;
-    (surface->*surface->Vtbl->At_14)(&fill, 0);
-    (surface->*surface->Vtbl->At_58)(&fill, color);
+    surface->FillRect(&fill, 0);
+    surface->DrawRect(&fill, color);
     font->FUN_00433C90(1);
     font->FUN_00433CA0(&box);
     font->FUN_00433C70((unsigned short)color);
-    PrinterInstance_0089C4B8->FUN_00434CD0(font, surface, text, box.Left + 4, box.Top + 2,
+    DAT_0089C4B8->FUN_00434CD0(font, surface, text, box.Left + 4, box.Top + 2,
                                            box.Right - box.Left, box.Bottom - box.Top, 0, 0, 0);
 }
 

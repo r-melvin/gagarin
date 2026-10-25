@@ -1316,10 +1316,8 @@ void Tactical::FUN_006D3AC0(const RectangleStruct* first, const RectangleStruct*
 extern int DAT_00B0CE28;
 // GLOBAL: GAMEMD 0x887314
 extern Surface* DAT_00887314;
-// GLOBAL: GAMEMD 0x88731C
-extern Surface* DAT_0088731C;
-// GLOBAL: GAMEMD 0x8872FC
-extern Surface* DAT_008872FC;
+#include "../../renderer/dsurface_class.h"
+#include "../../renderer/composite_surface.h"
 // GLOBAL: GAMEMD 0xB0E63C
 extern bool DAT_00B0E63C;
 // GLOBAL: GAMEMD 0xA8EC78
@@ -1445,7 +1443,7 @@ void Tactical::FUN_006D3D10(Surface* surface, bool full, int mode)
             if (mode == 0 || mode == 3)
                 ABuffer_0087E8A4->FUN_00410ED0(-dx, -dy, 0x7F); // dependency: existing buffer owner
             if (mode == 0 || mode == 3) {
-                Surface* previous = DAT_0088731C;
+                DSurface* previous = DAT_0088731C;
                 DAT_0088731C = DAT_008872FC;
                 DAT_008872FC = previous;
                 surface = DAT_0088731C;

@@ -996,8 +996,7 @@ void PlanningNodeClass::FUN_00635310()
 
 // FUNCTION: GAMEMD 0x72AD20 (decl; reloc) -- the tactical view's screen rectangle (written to `out`).
 RectangleStruct* FUN_0072AD20(RectangleStruct* out);
-// GLOBAL: GAMEMD 0x88731C -- the composite surface.
-extern DSurface* DAT_0088731C;
+#include "../renderer/composite_surface.h"
 
 // FUNCTION: GAMEMD 0x635560
 // PARTIAL: best 44.2%. Retail keeps the 0x634510 result pointer in ESI and
