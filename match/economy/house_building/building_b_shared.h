@@ -97,8 +97,7 @@ public:
         return false;
     }
 };
-// GLOBAL: GAMEMD 0xB0C110
-extern HBSwizzleView BuildingBSwizzle;
+
 
 // The pointer index of every ObjectClass (global IndexClass at 0xB0E840).
 struct BuildingBIndexNode

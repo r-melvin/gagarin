@@ -65,6 +65,7 @@
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol  (CRT double->long; the (int) cast; reloc)
 
 #include "house_building/building_a_views.h"
+#include "../_layout/swizzle_manager_class.h"
 #include "../_layout/building_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/tactical.h"
@@ -2009,15 +2010,15 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
     new (this) BuildingBView(HBNoInit());
     int newId = Rtti.Fetch_ID();
     BuildingBAbstractIndex.AddIndexOutOfLine(newId, this);
-    BuildingBSwizzle.Swizzle(&Type);
-    BuildingBSwizzle.Swizzle(&Factory);
-    BuildingBSwizzle.Swizzle(&C4AppliedBy);
-    BuildingBSwizzle.Swizzle(&FirestormAnim);
-    BuildingBSwizzle.Swizzle(&PsiWarnAnim);
-    BuildingBSwizzle.Swizzle(&Spotlight);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Factory);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&C4AppliedBy);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&FirestormAnim);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&PsiWarnAnim);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Spotlight);
     Audio7.Func_405BE0();
     Audio8.Func_405BE0();
-    BuildingBSwizzle.Swizzle(&SecretProduction);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretProduction);
     int count;
     int i;
     HRESULT r = pStm->Read(&count, 4, 0);
@@ -2031,7 +2032,7 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
         Overpowerers.AddItem(item);
     }
     for (i = 0; i < count; i++)
-        BuildingBSwizzle.Swizzle(&Overpowerers.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Overpowerers.Items[i]);
     r = pStm->Read(&count, 4, 0);
     if (r < 0)
         return r;
@@ -2043,13 +2044,13 @@ HRESULT __stdcall BuildingBView::Load(IStream* pStm)
         Occupants.AddItem(item);
     }
     for (i = 0; i < count; i++)
-        BuildingBSwizzle.Swizzle(&Occupants.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Occupants.Items[i]);
     for (i = 0; i < 21; i++)
-        BuildingBSwizzle.Swizzle(&Anims[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Anims[i]);
     for (i = 0; i < 3; i++)
-        BuildingBSwizzle.Swizzle(&Upgrades[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Upgrades[i]);
     for (i = 0; i < 8; i++)
-        BuildingBSwizzle.Swizzle(&DamageFireAnims[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&DamageFireAnims[i]);
     LightSource = 0;
     return hr;
 }

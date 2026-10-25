@@ -15,6 +15,7 @@
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new(size_t), ??2@YAPAXI@Z.
 
 #include "house_building/types_house_type_class.h"
+#include "../_layout/swizzle_manager_class.h"
 
 // GLOBAL: GAMEMD 0x8B4120 - SideClass::Array (read-only here).
 extern DynamicVectorClass<TypesSideView*> TypesSideArray;
@@ -45,7 +46,7 @@ template <class T> inline void TypesLoadList(IStream* stream, TypesTypeList<T>* 
 template <class T> inline void TypesSwizzleList(TypesTypeList<T>* list)
 {
     for (int i = 0; i < list->Count; ++i)
-        TypesSwizzle.Swizzle((void**)&list->Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&list->Items[i]);
 }
 
 // Reads one veteran list: the names after the key, split at commas, resolved through the finder and

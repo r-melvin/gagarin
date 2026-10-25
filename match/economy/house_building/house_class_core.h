@@ -262,8 +262,7 @@ extern char HouseTypeDesc_AbstractClass[];
 // GLOBAL: GAMEMD 0x8249E8   .?AVTagClass@@
 extern char HouseTypeDesc_TagClass[];
 
-// GLOBAL: GAMEMD 0xB0C110
-extern HBSwizzleView HouseSwizzle;
+
 
 
 

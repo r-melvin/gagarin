@@ -47,6 +47,7 @@
 // and ActiveAnimThree); TYPES_READ_ANIM_QUIRK reproduces that.
 
 #include "house_building/types_building_shared.h"
+#include "../_layout/swizzle_manager_class.h"
 
 // LIBRARY: GAMEMD 0x7C8B3D - CRT free.
 extern "C" void __cdecl gg_free(void*);
@@ -1410,11 +1411,11 @@ HRESULT __stdcall BuildingTypeClass::Load(IStream* pStm)
     FoundationData = &TypesFoundationCells[Foundation];
     FoundationOutside = &TypesFoundationOutsideCells[Foundation];
     ToTile = 0;
-    TypesSwizzle.Swizzle(&ToOverlay);
-    TypesSwizzle.Swizzle(&FreeUnit);
-    TypesSwizzle.Swizzle(&SecretInfantry);
-    TypesSwizzle.Swizzle(&SecretUnit);
-    TypesSwizzle.Swizzle(&SecretBuilding);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&ToOverlay);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&FreeUnit);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretInfantry);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretUnit);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretBuilding);
     LoadFixup();
     Buildup = 0;
     BuildupLoaded = false;

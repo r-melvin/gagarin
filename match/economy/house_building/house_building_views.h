@@ -30,16 +30,6 @@
 
 #include "house_building_common_types.h"
 
-// The pointer-swizzle manager used by every Load (global 0xB0C110). Swizzle is __stdcall with the
-// manager as the first stack argument. Both pointer spellings are declared; they bind the same address.
-class HBSwizzleView
-{
-public:
-    // FUNCTION: GAMEMD 0x6CF240 (read-only here) - registers one pointer field for fix-up after a load.
-    void __stdcall Swizzle(void* pointerField);
-    void __stdcall Swizzle(void** pointerField);
-};
-
 // The random generator embedded in the source object at +0x218 (partial).
 struct HBCounterView
 {

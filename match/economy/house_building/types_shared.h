@@ -85,7 +85,7 @@ public:
     int ReadString(const char* section, const char* key, const char* defaultValue, char* buffer, int size);
 };
 
-extern HBSwizzleView TypesSwizzle;
+
 
 // FUNCTION: GAMEMD 0x7258D0 (read-only here) - announces that a pointer is going away. __fastcall: the
 // object in ECX, the flag in DL. Every destructor calls it with 1 (the object is gone).
