@@ -125,7 +125,7 @@ HRESULT __stdcall AlphaShapeClass::Load(IStream* pStm)
     HRESULT hr = AbstractClass::Load(pStm);
     if (hr >= 0) {
         new (this) AlphaShapeClass(AbstractNoInit());
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_24);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_24);
         unknown_38 = 0;
     }
     return hr;

@@ -121,7 +121,7 @@ HRESULT __stdcall TagTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) TagTypeClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&FirstTrigger);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&FirstTrigger);
     return 0;
 }
 

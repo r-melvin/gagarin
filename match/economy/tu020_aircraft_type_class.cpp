@@ -191,7 +191,7 @@ HRESULT __stdcall AircraftTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) AircraftTypeClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&Trailer);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Trailer);
     FUN_005F8110();
     FUN_005F9070();
     return 0;

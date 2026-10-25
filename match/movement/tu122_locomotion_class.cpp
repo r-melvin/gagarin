@@ -229,14 +229,14 @@ HRESULT __stdcall LocomotionClass::Load(IStream* pStm)
         return hr;
     }
 
-    DAT_00B0C110.FUN_006CF2C0(id, this);
+    DAT_00B0C110.SwizzleManagerClass::vf_6(id, this);
 
     LONG keep = RefCount;
     hr = pStm->Read(this, (unsigned long)Size(), 0);
     RefCount = keep;
 
-    DAT_00B0C110.FUN_006CF240((void**)&LinkedTo);
-    DAT_00B0C110.FUN_006CF240((void**)&Owner);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&LinkedTo);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Owner);
 
     return hr;
 }

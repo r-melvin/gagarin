@@ -134,9 +134,9 @@ HRESULT __stdcall TriggerClass::Load(IStream* pStm)
         return hr;
     }
     new (this) TriggerClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&Type);
-    DAT_00B0C110.FUN_006CF240((void**)&NextTrigger);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_2C);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&NextTrigger);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_2C);
     return 0;
 }
 

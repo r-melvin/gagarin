@@ -1348,10 +1348,10 @@ HRESULT __stdcall TActionClass::Load(IStream* pStm)
         return hr;
     }
     new (this) TActionClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_28);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_30);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_4C);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_50);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_28);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_30);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_4C);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_50);
     return 0;
 }
 

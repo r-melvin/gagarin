@@ -222,9 +222,9 @@ HRESULT __stdcall AITriggerTypeClass::Load(IStream* pStm)
         return hr;
     }
     new (this) AITriggerTypeClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&ConditionObject);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_DC);
-    DAT_00B0C110.FUN_006CF240((void**)&unknown_E0);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&ConditionObject);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_DC);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_E0);
     return 0;
 }
 

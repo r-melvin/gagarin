@@ -78,7 +78,7 @@ HRESULT __stdcall ScriptClass::Load(IStream* pStm)
         return hr;
     }
     new (this) ScriptClass(AbstractNoInit());
-    DAT_00B0C110.FUN_006CF240((void**)&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
     return 0;
 }
 

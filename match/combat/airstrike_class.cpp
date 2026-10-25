@@ -49,11 +49,11 @@ HRESULT __stdcall AirstrikeClass::Load(IStream* pStm)
     HRESULT hr = AbstractClass::Load(pStm);
     if (hr >= 0) {
         new (this) AirstrikeClass(AbstractNoInit());
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_4C);
-        DAT_00B0C110.FUN_006CF240((void**)&Target);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_54);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_58);
-        DAT_00B0C110.FUN_006CF240((void**)&unknown_5C);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_4C);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Target);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_54);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_58);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&unknown_5C);
     }
     return hr;
 }
