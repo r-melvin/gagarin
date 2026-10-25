@@ -692,7 +692,7 @@ struct HoverMatrixView : Matrix3D
     void RotateY(float angle);
 };
 GG_STATIC_ASSERT(sizeof(HoverMatrixView) == 0x30);
-HoverMatrixView HoverSlopeMatrix(int index); // FUNCTION: GAMEMD 0x7559B0 (decl; reloc)
+#include "matrix3d_native_helpers.h"
 HoverMatrixView HoverMatrixMultiply(const Matrix3D& left, const Matrix3D& right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
 HoverMatrixView HoverMatrixMultiply(const Matrix3D* left, const Matrix3D* right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
 double __cdecl HoverSqrt(double value); // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)

@@ -144,9 +144,7 @@ struct FootVtbl_004CF610
 GG_STATIC_ASSERT(offsetof(FootVtbl_004CF610, At_84) == 0x84 &&
                  offsetof(FootVtbl_004CF610, At_1C8) == 0x1C8);
 
-// FUNCTION: GAMEMD 0x7559B0 (decl; reloc) — copies VoxelRampMatrices[index]
-// (0xB45188, 0x30-byte stride) out through the hidden pointer.
-Matrix3D FUN_007559B0_M(int index);
+#include "matrix3d_native_helpers.h"
 
 // FlyLocomotionClass seen through its locomotor interface at object +0x04.
 // Packed to four, because the interface pointer sits four into the object, so

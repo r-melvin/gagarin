@@ -96,8 +96,6 @@ extern int DAT_00ABCD3C;
 // float arithmetic and a `_ftol` return (ShadowPoint's Y).
 int FUN_006D20E0(int value);
 
-// FUNCTION: GAMEMD 0x7559B0 (decl; reloc) - slope-index matrix lookup. A
-// non-POD hidden return pointer arrives in ECX and the slope index in EDX.
-Matrix3D FUN_007559B0(int index);
+#include "matrix3d_native_helpers.h"
 
 #endif  // GG_MATCH_MOVEMENT_LOCOMOTION_LOCO_FOOT_H

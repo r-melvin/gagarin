@@ -236,7 +236,7 @@ Matrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
         if (!IsPowered()) {
             LocoCoord location = HoverFoot(LinkedTo)->Location;
             int slope = HoverMap().GetCellAt(&location)->SlopeIndex;
-            Matrix3D m = HoverSlopeMatrix(slope);
+            Matrix3D m = FUN_007559B0(slope);
             m.RotateZ((float)(((int)((((HoverFoot(LinkedTo)->PrimaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                               * -0.19634954084936207));
             if (key != 0 && *key != 0xFFFFFFFF) {

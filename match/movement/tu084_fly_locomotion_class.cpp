@@ -590,7 +590,7 @@ Matrix3D __stdcall FlyLocoMatrix::Shadow_Matrix(unsigned int* key)
     if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->IsFlatOnGround != 0) {
         slope = 0;
     }
-    Matrix3D m = FUN_007559B0_M(slope);
+    Matrix3D m = FUN_007559B0(slope);
 
     m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                       * gg_locomotion_facing_step));

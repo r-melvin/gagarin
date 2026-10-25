@@ -325,20 +325,13 @@ void FUN_00753620()
     }
 }
 
-struct Record_007559B0
-{
-    int unknown_0[12];
-};
-
-// GLOBAL: GAMEMD 0x00B45188 (48-byte records)
-extern "C" Record_007559B0 DAT_00B45188[];
+#include "../movement/matrix3d_native_helpers.h"
 
 // FUNCTION: GAMEMD 0x007559B0
-// Copy record `index` out; the destination arrives in ECX and is returned.
-Record_007559B0* FUN_007559B0(Record_007559B0* out, int index)
+// Native ECX is the hidden result, EDX is the full index; copy twelve dwords.
+Matrix3D FUN_007559B0(int index)
 {
-    *out = DAT_00B45188[index];
-    return out;
+    return DAT_00B45188[index];
 }
 
 // GLOBAL: GAMEMD 0x007E5210 (eleven string pointers)

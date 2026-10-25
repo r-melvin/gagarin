@@ -61462,7 +61462,7 @@
  {
   "tu": "match/core/unowned_leaf_sweep_c.cpp",
   "addr": "0x7559B0",
-  "sym": "?FUN_007559B0@@YIPAURecord_007559B0@@PAU1@H@Z",
+  "sym": "?FUN_007559B0@@YI?AUMatrix3D@@H@Z",
   "len": "0x1c",
   "name": "FUN_007559B0",
   "status": "matched",
