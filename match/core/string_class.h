@@ -27,6 +27,8 @@ public:
     Wstring();
     // Declaration: GAMEMD 0x7B4630
     Wstring(const char* text);
+    // Declaration: GAMEMD 0x7B5400 -- returns fallback 0x889F64 when null.
+    const char* FUN_007B5400() const;
     // Declaration: GAMEMD 0x7B5440 -- fallback pointer 0x889F64 when null.
     const char* FUN_007B5440() const;
     // Declaration: GAMEMD 0x7B54B0

@@ -9,15 +9,13 @@
 
 #include "string_class.h"
 
-// FUNCTION: GAMEMD 0x7B5400 (decl; reloc) -- character data of the string object.
-extern const signed char* FUN_007B5400(const Obj_007B4620* self);
 
 // FUNCTION: GAMEMD 0x006B94E0
-unsigned int FUN_006B94E0(const Obj_007B4620* key)
+unsigned int FUN_006B94E0(const Wstring* key)
 {
     unsigned int hash = key->Length();
     for (unsigned int i = 0; i < (unsigned int)key->Length(); ++i) {
-        hash += FUN_007B5400(key)[i] + i;
+        hash += key->FUN_007B5400()[i] + i;
         hash = (hash << 8) ^ (hash >> 24);
     }
     return hash;

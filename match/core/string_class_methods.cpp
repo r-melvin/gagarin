@@ -4,6 +4,8 @@
 // evidence for its single member are in string_class.h.
 #include <string.h>
 #include "string_class.h"
+// GLOBAL: GAMEMD 0x889F64
+extern char GLOBAL_00889F64[];
 
 // FUNCTION: GAMEMD 0x7B4620
 Wstring::Wstring() : unknown_00(0)
@@ -142,6 +144,15 @@ void Wstring::Copy_Padded(char* dest, unsigned int size) const
         memset(dest + len, ' ', size - len);
     }
     dest[size] = '\0';
+}
+
+// FUNCTION: GAMEMD 0x7B5400
+const char* Wstring::FUN_007B5400() const
+{
+    if (unknown_00 != 0) {
+        return unknown_00;
+    }
+    return GLOBAL_00889F64;
 }
 
 // FUNCTION: GAMEMD 0x7B54B0

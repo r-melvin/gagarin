@@ -8997,11 +8997,11 @@
   "pct": 100
  },
  {
-  "tu": "match/core/member_or_default_sweep.cpp",
+  "tu": "match/core/string_class_methods.cpp",
   "addr": "0x7B5400",
-  "sym": "?FUN_007B5400@@YIPAXPAUDefaultingHolder@@@Z",
+  "sym": "?FUN_007B5400@Wstring@@QBEPBDXZ",
   "len": "0xc",
-  "name": "FUN_007b5400",
+  "name": "Wstring::FUN_007B5400",
   "status": "matched",
   "pct": 100
  },
@@ -93594,11 +93594,11 @@
  {
   "tu": "match/network/netshare.cpp",
   "addr": "0x5E2620",
-  "sym": "?FUN_005E2620@@YIIPBVObj_007B4620@@@Z",
+  "sym": "?FUN_005E2620@@YIIPBVWstring@@@Z",
   "len": "0x44",
   "name": "FUN_005E2620",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/network/NullMgr.cpp",
@@ -93999,11 +93999,11 @@
  {
   "tu": "match/core/string_hash_methods.cpp",
   "addr": "0x6B94E0",
-  "sym": "?FUN_006B94E0@@YIIPBVObj_007B4620@@@Z",
+  "sym": "?FUN_006B94E0@@YIIPBVWstring@@@Z",
   "len": "0x44",
   "name": "FUN_006B94E0",
   "status": "matched",
-  "pct": 100.0
+  "pct": 100
  },
  {
   "tu": "match/core/Startup.cpp",

@@ -13,10 +13,12 @@
 #include <string.h>
 #include "../_rt/gg_static_assert.h"
 
-// FUNCTION: GAMEMD 0x6B94E0 (decl; reloc) -- key hash, key pointer in ECX.
-unsigned int FUN_006B94E0(const void* key);
+class Wstring;
 
-typedef unsigned int (* HashFunction)(const void* key);
+// FUNCTION: GAMEMD 0x6B94E0 (decl; reloc) -- key hash, key pointer in ECX.
+unsigned int FUN_006B94E0(const Wstring* key);
+
+typedef unsigned int (* HashFunction)(const Wstring* key);
 
 class StringHashTable_00AC4848
 {

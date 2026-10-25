@@ -2,21 +2,10 @@
 // Provenance: own-binary-via-Ghidra
 //   Bytes matched against retail gamemd.exe v1.001 at each address below.
 //
-// The four defaulting accessors, ordered ascending by retail address.
+// The remaining defaulting accessors, ordered ascending by retail address.
 
 #include "member_or_default_sweep.h"
 #include "string_class.h"
-
-// FUNCTION: GAMEMD 0x7B5400
-// GLOBAL: GAMEMD 0x889F64
-void* FUN_007B5400(DefaultingHolder* self)
-{
-    if (self->Object != 0) {
-        return self->Object;
-    }
-
-    return GLOBAL_00889F64;
-}
 
 // FUNCTION: GAMEMD 0x7B5440
 // GLOBAL: GAMEMD 0x889F64

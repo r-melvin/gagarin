@@ -17,7 +17,8 @@
 // 0x7B5440 is the narrow Wstring getter: native CCFile construction at
 // 0x473A5C calls it on its string argument, supplied from mode member +0x2C
 // at 0x5D5C2D..0x5D5C35; that member is copied by 0x7B4690 and released
-// by 0x7B46F0. The other three receivers retain their placeholder model.
+// by 0x7B46F0. The narrow getter at 0x7B5400 is also canonical Wstring.
+// The two remaining receivers retain their placeholder model.
 // No common class identity is claimed for those remaining accessors.
 #ifndef GG_MATCH_CORE_MEMBER_OR_DEFAULT_SWEEP_H
 #define GG_MATCH_CORE_MEMBER_OR_DEFAULT_SWEEP_H
@@ -36,7 +37,6 @@ struct DefaultingHolder
 };
 GG_STATIC_ASSERT(offsetof(DefaultingHolder, Object) == 0x0);
 
-void* FUN_007B5400(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B5400
 void* FUN_007B7100(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7100
 void* FUN_007B7140(DefaultingHolder* self);   // FUNCTION: GAMEMD 0x7B7140
 
