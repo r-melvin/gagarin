@@ -55,6 +55,9 @@ class WaypointClass;
 #include "components.h"       // ColorStruct
 #include "../core/vector_class.h"
 class BuildingClass;
+class TagClass;
+class SuperClass;
+#include "anger_scout_struct.h"
 
 // --- opaque blocks whose SIZE is proven but whose fields are not named -------
 // Each size is proven by closure between two confirmed neighbours in the ctor.
@@ -76,7 +79,8 @@ public:
     int Total;
     // Declarations from existing House Load/Save/count call sites.
     int GetCount(int typeIndex);
-    void Save(IStream* stream);
+    // Native49FB70 returns the stream HRESULT or zero; ECX receiver, RET4.
+    HRESULT Save(IStream* stream);
     void Load(IStream* stream);
     // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
     int FUN_0049FB60() const;
@@ -209,31 +213,36 @@ public:
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc)
     bool IsControlledByHuman() const;
     // Nested pointer spelling confirmed by RTTI at tables 0x7EA964/0x7EA944.
-    // Its element fields and complete size remain unknown.
-    struct StartingTechnoStruct;
+    // Native Load stores DWORD0/WORD4/WORD6 into an eight-byte allocation.
+    struct StartingTechnoStruct
+    {
+        int unknown_00;
+        short unknown_04;
+        short unknown_06;
+    };
     struct BuildChoiceClass;    // RTTI: .?AUBuildChoiceClass@HouseClass@@ (vector element)
     // +0x24/+0x28/+0x2C: IHouse, IPublicHouse, IConnectionPointContainer vptrs
     //   (ctor stores 0x7EA834 @0x004F5DE8, 0x7EA80C @0x004F5DEF, 0x7EA7F4 @0x004F5DFB).
     int    ArrayIndex;                     // +0x30 ctor MOV [EBP+0x30],-1 @0x004F54B8
     HouseTypeClass* Type;                  // +0x34 ctor MOV [EBP+0x34],EAX(=arg) @0x004F54C2
-    DynamicVectorClassLayout RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
-    DynamicVectorClassLayout ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
+    DynamicVectorClass<TagClass*> RelatedTags;                 // +0x38  ctor LEA ESI @0x004F54B4 (vptr 0x7EA5A4)
+    DynamicVectorClass<BuildingClass*> ConYards;                    // +0x50  ctor LEA ESI @0x004F54DB
     DynamicVectorClass<BuildingClass*> Buildings;                   // +0x68  ctor LEA ESI @0x004F54F3
-    DynamicVectorClassLayout UnitRepairStations;          // +0x80  ctor LEA ESI @0x004F550B
-    DynamicVectorClassLayout Grinders;                    // +0x98  ctor LEA ESI @0x004F5526
-    DynamicVectorClassLayout Absorbers;                   // +0xB0  ctor LEA ESI @0x004F5541
-    DynamicVectorClassLayout Bunkers;                     // +0xC8  ctor LEA ESI @0x004F555C
-    DynamicVectorClassLayout Occupiables;                 // +0xE0  ctor LEA ESI @0x004F5577
-    DynamicVectorClassLayout CloningVats;                 // +0xF8  ctor LEA ESI @0x004F5592
-    DynamicVectorClassLayout SecretLabs;                  // +0x110 ctor LEA ESI @0x004F55AD
-    DynamicVectorClassLayout PsychicDetectionBuildings;   // +0x128 ctor LEA ESI @0x004F55C8
-    DynamicVectorClassLayout FactoryPlants;               // +0x140 ctor LEA ESI @0x004F55E3
+    DynamicVectorClass<BuildingClass*> UnitRepairStations;          // +0x80  ctor LEA ESI @0x004F550B
+    DynamicVectorClass<BuildingClass*> Grinders;                    // +0x98  ctor LEA ESI @0x004F5526
+    DynamicVectorClass<BuildingClass*> Absorbers;                   // +0xB0  ctor LEA ESI @0x004F5541
+    DynamicVectorClass<BuildingClass*> Bunkers;                     // +0xC8  ctor LEA ESI @0x004F555C
+    DynamicVectorClass<BuildingClass*> Occupiables;                 // +0xE0  ctor LEA ESI @0x004F5577
+    DynamicVectorClass<BuildingClass*> CloningVats;                 // +0xF8  ctor LEA ESI @0x004F5592
+    DynamicVectorClass<BuildingClass*> SecretLabs;                  // +0x110 ctor LEA ESI @0x004F55AD
+    DynamicVectorClass<BuildingClass*> PsychicDetectionBuildings;   // +0x128 ctor LEA ESI @0x004F55C8
+    DynamicVectorClass<BuildingClass*> FactoryPlants;               // +0x140 ctor LEA ESI @0x004F55E3
     int    CountResourceGatherers;         // +0x158 ctor @0x004F55FE
     int    CountResourceDestinations;      // +0x15C ctor @0x004F5604
     int    CountWarfactories;              // +0x160 ctor @0x004F5610
     int    InfantrySelfHeal;               // +0x164 ctor @0x004F5617
     int    UnitsSelfHeal;                  // +0x168 ctor @0x004F5620
-    DynamicVectorClassLayout StartingUnits;      // +0x16C ctor LEA ESI @0x004F560A
+    DynamicVectorClass<StartingTechnoStruct*> StartingUnits;      // +0x16C ctor LEA ESI @0x004F560A
     int    AIDifficulty;                   // +0x184 ctor @0x004F5648 (0 == Hard)
     double FirepowerMultiplier;            // +0x188 ctor halves @0x004F564E/0x004F5654
     double GroundspeedMultiplier;          // +0x190 ctor @0x004F565A/0x004F5660
@@ -289,7 +298,7 @@ public:
     unsigned char IsToLook;                // +0x24B ctor MOV byte,1 @0x004F57A7
     int    IQLevel2;                       // +0x24C ctor @0x004F57BB
     int    AIMode;                         // +0x250 ctor @0x004F57C4
-    DynamicVectorClassLayout Supers;             // +0x254 ctor LEA ESI @0x004F57B4
+    DynamicVectorClass<SuperClass*> Supers;             // +0x254 ctor LEA ESI @0x004F57B4
     int    LastBuiltBuildingType;          // +0x26C ctor @0x004F57DE
     int    LastBuiltInfantryType;          // +0x270 ctor @0x004F57E4
     int    LastBuiltAircraftType;          // +0x274 ctor @0x004F57EA
@@ -404,8 +413,8 @@ public:
     CDTimerClass AttackTimer;              // +0x55F0 ctor @0x004F5B40/0x004F637D
     int    InitialAttackDelay;             // +0x55FC ctor @0x004F5B4C
     int    EnemyHouseIndex;                // +0x5600 ctor @0x004F5B59
-    DynamicVectorClassLayout AngerNodes;         // +0x5604 ctor LEA ECX @0x004F5B52
-    DynamicVectorClassLayout ScoutNodes;         // +0x561C ctor LEA ECX @0x004F5B65
+    DynamicVectorClass<AngerStruct> AngerNodes;         // +0x5604 ctor LEA ECX @0x004F5B52
+    DynamicVectorClass<ScoutStruct> ScoutNodes;         // +0x561C ctor LEA ECX @0x004F5B65
     CDTimerClass AITimer;                  // +0x5634 ctor @0x004F5BA2/0x004F5BA8
     CDTimerClass Unknown_Timer_5640;       // +0x5640 ctor @0x004F5BBA/0x004F5BB4 (name anchor confirmed)
     int    ProducingBuildingTypeIndex;     // +0x564C ctor @0x004F5BC0
@@ -439,7 +448,7 @@ public:
     CDTimerClass SpeakPowerDelayTimer;     // +0x57BC ctor @0x004F5D0B/0x004F5D11
     CDTimerClass SpeakMoneyDelayTimer;     // +0x57C8 ctor @0x004F5D23/0x004F5D1D
     CDTimerClass SpeakMaxedDelayTimer;     // +0x57D4 ctor @0x004F5D2F/0x004F5D35
-    void*  AIGeneral;                      // +0x57E0 IAIHouse*; ctor @0x004F5D3B
+    IUnknown* AIGeneral;                      // +0x57E0 nativeSave queries IUnknown slot0; ctor @0x004F5D3B
     unsigned int ThreatPosedEstimates[130][130]; // +0x57E4 .. 0x15FF3 ctor LEA EDI @0x004F61F6;
                                            //   0x10810 bytes, closing exactly on PlainName
     char   PlainName[21];                  // +0x15FF4 ctor MOV byte [EBP+0x15FF4],BL @0x004F5D41
@@ -649,5 +658,12 @@ GG_STATIC_ASSERT(offsetof(HouseClass, NumConYards) == 0x5384);
 GG_STATIC_ASSERT(offsetof(HouseClass, NumOrePurifiers) == 0x538C);
 
 GG_STATIC_ASSERT(sizeof(bool) == 1);
+
+
+// Native503D98/503DA0/503DA9 field stores; stream record extent eight bytes.
+GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_00) == 0);
+GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_04) == 4);
+GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_06) == 6);
+GG_STATIC_ASSERT(sizeof(HouseClass::StartingTechnoStruct) == 8);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H

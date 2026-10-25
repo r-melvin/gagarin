@@ -50158,7 +50158,7 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x504080",
-  "sym": "?Save@HouseClusterView@@UAGJPAUIStream@@H@Z",
+  "sym": "?Save@HouseClass@@UAGJPAUIStream@@H@Z",
   "len": "0x665",
   "name": "HouseClass::Save",
   "status": "matched",

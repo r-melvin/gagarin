@@ -1816,9 +1816,9 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
 }
 
 // FUNCTION: GAMEMD 0x504080
-HRESULT __stdcall HouseClusterView::Save(IStream* pStm, BOOL fClearDirty)
+HRESULT __stdcall HouseClass::Save(IStream* pStm, BOOL fClearDirty)
 {
-    HRESULT result = HouseAbstractView::Save(pStm, fClearDirty);
+    HRESULT result = AbstractClass::Save(pStm, fClearDirty);
 
     if (result >= 0) {
     Base.SaveToStream(pStm);
@@ -1976,14 +1976,14 @@ HRESULT __stdcall HouseClusterView::Save(IStream* pStm, BOOL fClearDirty)
     if (hr < 0)
         return hr;
     for (i = 0; i < count; i++) {
-        HouseStartingUnit* unit = StartingUnits.Items[i];
+        StartingTechnoStruct* unit = StartingUnits.Items[i];
         hr = pStm->Write(unit, 4, 0);
         if (hr < 0)
             return hr;
-        hr = pStm->Write(&unit->X, 2, 0);
+        hr = pStm->Write(&unit->unknown_04, 2, 0);
         if (hr < 0)
             return hr;
-        hr = pStm->Write(&unit->Y, 2, 0);
+        hr = pStm->Write(&unit->unknown_06, 2, 0);
         if (hr < 0)
             return hr;
     }

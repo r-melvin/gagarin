@@ -7514,6 +7514,8 @@
  "match/economy/House.cpp::?PublicSumScoreOfCategory@HouseClusterView@@UAGHH@Z": "0x004F6B50",
  "match/economy/House.cpp::?QueryInterface@HouseClusterView@@UAGJABU_GUID@@PAPAX@Z": "0x004F6830",
  "match/economy/House.cpp::?Release@HouseClusterView@@UAGKXZ": "0x0050E350",
+ "match/economy/House.cpp::?Save@CounterClass@@QAEJPAUIStream@@@Z": "0x0049FB70",
+ "match/economy/House.cpp::?Save@HouseClusterView@@UAGJPAUIStream@@H@Z": "0x00504080",
  "match/economy/House.cpp::?SellAllBuildings@HouseClusterView@@UAGHXZ": "0x005013A0",
  "match/economy/House.cpp::?Size@HouseClusterView@@UAEHXZ": "0x00504730",
  "match/economy/House.cpp::?SumScoreOfCategory@HouseClusterView@@UAGHH@Z": "0x004F6AE0",

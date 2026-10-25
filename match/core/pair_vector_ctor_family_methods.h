@@ -26,22 +26,8 @@
 // with LEA and copies the members through it, and 0x40B120 copies +4 as a
 // byte. 0x6CF540 copies SwizzlePointerClass as two dwords with no LEA, which
 // is cl's implicit bitwise copy.
-struct AngerStruct {
-    AngerStruct() : A(0), B(0) {}
-    AngerStruct(const AngerStruct& o) : A(o.A), B(o.B) {}
-    bool operator==(const AngerStruct& o) const { return A == o.A && B == o.B; }
-    bool operator!=(const AngerStruct& o) const { return !(*this == o); }
-    int A;  // +0x0
-    int B;  // +0x4
-};
-struct ScoutStruct {
-    ScoutStruct() : A(0), B(0) {}
-    ScoutStruct(const ScoutStruct& o) : A(o.A), B(o.B) {}
-    bool operator==(const ScoutStruct& o) const { return A == o.A && B == o.B; }
-    bool operator!=(const ScoutStruct& o) const { return !(*this == o); }
-    int A;   // +0x0
-    char B;  // +0x4
-};
+#include "../_layout/anger_scout_struct.h"
+
 struct SubzoneConnectionStruct {
     SubzoneConnectionStruct() : A(0), B(0) {}
     SubzoneConnectionStruct(const SubzoneConnectionStruct& o) : A(o.A), B(o.B) {}
@@ -58,8 +44,6 @@ public:
     int A;  // +0x0
     int B;  // +0x4
 };
-GG_STATIC_ASSERT(sizeof(AngerStruct) == 8 && sizeof(ScoutStruct) == 8);
 GG_STATIC_ASSERT(sizeof(SubzoneConnectionStruct) == 8 && sizeof(SwizzlePointerClass) == 8);
-GG_STATIC_ASSERT(offsetof(ScoutStruct, B) == 4 && offsetof(AngerStruct, B) == 4);
 
 #endif  // GG_MATCH_CORE_PAIR_VECTOR_CTOR_FAMILY_METHODS_H
