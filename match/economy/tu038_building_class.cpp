@@ -1593,13 +1593,21 @@ HBCoord* BuildingBView::vf_45(HBCoord* out, int)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// FUNCTION: GAMEMD 0x4500A0
-HBCoord* BuildingBView::vf_41(HBCoord* out)
+// Component addition inlined by the retail body at 0x4500CB..0x4500E0.
+static inline CoordStruct operator+(const CoordStruct& a, const CoordStruct& b)
 {
-    HBCoord tmp;
-    HBCoord c = *vf_18(&tmp);
-    *out = c + Type->CoordEBC;
-    return out;
+    CoordStruct result;
+    result.X = a.X + b.X;
+    result.Y = a.Y + b.Y;
+    result.Z = a.Z + b.Z;
+    return result;
+}
+
+// FUNCTION: GAMEMD 0x4500A0
+CoordStruct BuildingClass::vf_41()
+{
+    CoordStruct c = vf_18();
+    return c + Type->TargetCoordOffset;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

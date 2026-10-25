@@ -1200,7 +1200,7 @@ public:
     virtual void unused_slot_38();
     virtual void unused_slot_39();
     virtual bool vf_40();   // slot 40 (+0xA0)
-    virtual HBCoord* vf_41(HBCoord* out);   // slot 41 (+0xA4)
+    virtual HBCoord* unused_slot_41(HBCoord* out);   // slot 41 (+0xA4); canonical BuildingClass owns 0x4500A0
     virtual void unused_slot_42();
     virtual HBCoord* vf_43(HBCoord* out);   // slot 43 (+0xAC)
     virtual void unused_slot_44();

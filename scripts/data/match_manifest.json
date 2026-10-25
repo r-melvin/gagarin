@@ -49348,7 +49348,7 @@
  {
   "tu": "match/economy/tu038_building_class.cpp",
   "addr": "0x4500A0",
-  "sym": "?vf_41@BuildingBView@@UAEPAUHBCoord@@PAU2@@Z",
+  "sym": "?vf_41@BuildingClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x4e",
   "name": "BuildingClass::vf_41",
   "status": "matched",

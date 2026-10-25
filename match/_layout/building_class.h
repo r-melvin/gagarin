@@ -118,6 +118,7 @@ public:
     virtual ObjectTypeClass* vf_34();                                   // 34  0x459EE0: the type
     virtual bool vf_37();                                               // 37  0x452630
     virtual bool vf_40();                                               // 40  0x44F5C0
+    virtual CoordStruct vf_41();                                       // 41  0x4500A0
     virtual void vf_60(CoordStruct* coord);                             // 60  0x453D60: sets cell flag 0x80
     virtual void vf_61(CoordStruct* coord);                             // 61  0x453DC0: clears it
     virtual const wchar_t* vf_36();                                     // 36  0x459ED0: the type's UIName
