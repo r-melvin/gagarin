@@ -310,14 +310,6 @@ struct Obj_00656580
     Record_00656580* FUN_00656580(const Key_00656580* key);
 };
 
-struct Obj_0065AD30
-{
-    char Pad_00[0xE4];
-    int* unknown_E4;
-
-    int FUN_0065AD30(int index) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0065AD30, unknown_E4) == 0xE4);
 
 struct Pair_0065C890
 {

@@ -297,21 +297,6 @@ struct Obj_00656580
 };
 
 
-struct Obj_0065AD30
-{
-    char Pad_00[0xE4];
-    int* unknown_E4;
-
-    int FUN_0065AD30(int index) const;
-};
-GG_STATIC_ASSERT(offsetof(Obj_0065AD30, unknown_E4) == 0xE4);
-
-// FUNCTION: GAMEMD 0x0065AD30
-int Obj_0065AD30::FUN_0065AD30(int index) const
-{
-    return unknown_E4[index];
-}
-
 struct Pair_0065C890
 {
     int unknown_0;

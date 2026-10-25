@@ -98,18 +98,6 @@ struct Obj_00645D10 {
     float FUN_00645D10(int index) const;
 };
 
-struct Obj_0065AD40 {
-    unsigned char unknown_00[0xE4];
-    int* unknown_E4;
-    int FUN_0065AD40(int index);
-};
-GG_STATIC_ASSERT(offsetof(Obj_0065AD40, unknown_E4) == 0xE4);
-// FUNCTION: GAMEMD 0x0065AD40
-int Obj_0065AD40::FUN_0065AD40(int index)
-{
-    return unknown_E4[index];
-}
-
 // Run a handler over every entry of a global table of objects.
 struct Obj_0065FE00 {
     // FUNCTION: GAMEMD 0x65FE00 (decl; reloc)

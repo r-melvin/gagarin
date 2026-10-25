@@ -9834,58 +9834,58 @@
   "pct": 100
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AD50",
   "sym": "?ContainsLink@RadioClass@@QBE_NPBVTechnoClass@@@Z",
   "len": "0x38",
   "name": "RadioClass::ContainsLink",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AD90",
   "sym": "?FindLinkIndex@RadioClass@@QBEHPBVTechnoClass@@@Z",
   "len": "0x2E",
   "name": "RadioClass::FindLinkIndex",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65ADC0",
   "sym": "?HasFreeLink@RadioClass@@QBE_NXZ",
   "len": "0x25",
   "name": "RadioClass::HasFreeLink",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65ADF0",
   "sym": "?HasFreeLinkFor@RadioClass@@QBE_NPAV1@@Z",
   "len": "0x38",
   "name": "RadioClass::HasFreeLinkFor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AE30",
   "sym": "?HasAnyLink@RadioClass@@QBE_NXZ",
   "len": "0x25",
   "name": "RadioClass::HasAnyLink",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/radio_class_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AE60",
   "sym": "?SetLinkCount@RadioClass@@QAEXH@Z",
   "len": "0x44",
   "name": "RadioClass::SetLinkCount",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/ram_file_class.cpp",
@@ -61145,13 +61145,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/unowned_leaf_sweep_b.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AD30",
-  "sym": "?FUN_0065AD30@Obj_0065AD30@@QBEHH@Z",
+  "sym": "?FUN_0065AD30@RadioClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0x10",
   "name": "Obj_0065AD30::FUN_0065AD30",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/unowned_leaf_sweep_b.cpp",
@@ -83247,13 +83247,13 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu189_methods.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AAA0",
-  "sym": "?FUN_0065AAA0@Obj_0065AAA0@@QAEXHH@Z",
+  "sym": "?vf_158@RadioClass@@UAEHHPAV1@@Z",
   "len": "0x1a",
   "name": "Obj_0065AAA0::FUN_0065AAA0",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu190_methods.cpp",
@@ -93835,9 +93835,9 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/leaf_stub_methods_c.cpp",
+  "tu": "match/core/tu189_radio_class.cpp",
   "addr": "0x65AD40",
-  "sym": "?FUN_0065AD40@Obj_0065AD40@@QAEHH@Z",
+  "sym": "?FUN_0065AD40@RadioClass@@QAEPAVTechnoClass@@H@Z",
   "len": "0x10",
   "name": "Obj_0065AD40::FUN_0065AD40",
   "status": "matched",
