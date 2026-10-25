@@ -81,7 +81,8 @@ public:
     int GetCount(int typeIndex);
     // Native49FB70 returns the stream HRESULT or zero; ECX receiver, RET4.
     HRESULT Save(IStream* stream);
-    void Load(IStream* stream);
+    // Native49FBE0: ECX receiver, stream argument, HRESULT result, RET4.
+    HRESULT Load(IStream* stream);
     // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
     int FUN_0049FB60() const;
 };
@@ -667,3 +668,32 @@ GG_STATIC_ASSERT(offsetof(HouseClass::StartingTechnoStruct, unknown_06) == 6);
 GG_STATIC_ASSERT(sizeof(HouseClass::StartingTechnoStruct) == 8);
 
 #endif  // GG_MATCH_LAYOUT_HOUSE_CLASS_H
+
+// House Load (0x00503040): native member receivers and swizzle address operands.
+GG_STATIC_ASSERT(offsetof(HouseClass, UnitRepairStations) == 0x80);
+GG_STATIC_ASSERT(offsetof(HouseClass, Grinders) == 0x98);
+GG_STATIC_ASSERT(offsetof(HouseClass, Absorbers) == 0xB0);
+GG_STATIC_ASSERT(offsetof(HouseClass, Bunkers) == 0xC8);
+GG_STATIC_ASSERT(offsetof(HouseClass, Occupiables) == 0xE0);
+GG_STATIC_ASSERT(offsetof(HouseClass, CloningVats) == 0xF8);
+GG_STATIC_ASSERT(offsetof(HouseClass, SecretLabs) == 0x110);
+GG_STATIC_ASSERT(offsetof(HouseClass, PsychicDetectionBuildings) == 0x128);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForInfantry) == 0x53B0);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForVehicles) == 0x53B4);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForShips) == 0x53B8);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForBuildings) == 0x53BC);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_Unused1) == 0x53C0);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_Unused2) == 0x53C4);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_Unused3) == 0x53C8);
+GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForDefenses) == 0x53CC);
+GG_STATIC_ASSERT(offsetof(HouseClass, ToCapture) == 0x54E0);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedUnitTypes) == 0x5514);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedInfantryTypes) == 0x5528);
+GG_STATIC_ASSERT(offsetof(HouseClass, OwnedAircraftTypes) == 0x553C);
+GG_STATIC_ASSERT(offsetof(HouseClass, ActiveBuildingTypes) == 0x5550);
+GG_STATIC_ASSERT(offsetof(HouseClass, ActiveUnitTypes) == 0x5564);
+GG_STATIC_ASSERT(offsetof(HouseClass, ActiveInfantryTypes) == 0x5578);
+GG_STATIC_ASSERT(offsetof(HouseClass, ActiveAircraftTypes) == 0x558C);
+GG_STATIC_ASSERT(offsetof(HouseClass, FactoryProducedBuildingTypes) == 0x55A0);
+GG_STATIC_ASSERT(offsetof(HouseClass, FactoryProducedUnitTypes) == 0x55B4);
+GG_STATIC_ASSERT(offsetof(HouseClass, FactoryProducedInfantryTypes) == 0x55C8);

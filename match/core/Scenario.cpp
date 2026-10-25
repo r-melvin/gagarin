@@ -225,8 +225,6 @@ void __fastcall FUN_00722E50(); // GAMEMD 0x722E50
 void __fastcall FUN_006370B0(); // GAMEMD 0x6370B0
 void __fastcall FUN_0052CB90(); // GAMEMD 0x52CB90
 
-// GLOBAL: GAMEMD 0x00B0C110
-extern SwizzleManagerClass DAT_00B0C110;
 extern const char STR_0083DDF8[]; // STRING: GAMEMD 0x0083DDF8 (decl)
 extern const char STR_0083DD20[]; // STRING: GAMEMD 0x0083DD20 (decl)
 extern const char STR_0083DCD4[]; // STRING: GAMEMD 0x0083DCD4 (decl)

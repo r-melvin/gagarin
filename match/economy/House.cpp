@@ -68,6 +68,8 @@
 //
 //   LIBRARY: GAMEMD 0x7C5F00  __ftol  (CRT double->long; the (int) casts; reloc)
 
+#include "../_layout/swizzle_manager_class.h"
+#include "../_layout/super_class.h"
 #include "../_layout/house_class.h"
 #include "../_layout/house_type_class.h"
 #include "../_layout/obj_004a1d30.h"
@@ -1461,9 +1463,7 @@ HRESULT __stdcall HouseClass::FindConnectionPoint(REFIID riid, IConnectionPoint*
     return CONNECT_E_CANNOTCONNECT;
 }
 
-// CAPPED at 91.7%: the three inlined timer reads load the start into EDX and the frame into ECX in
-// retail, the reverse here (18 register-only differences, multiset identical). Variants: conditional
-// form, early-return form, local-copy form, ternary form.
+// Native boolean-member and checksum-sink contracts preserve this exact CRC body.
 // FUNCTION: GAMEMD 0x502D60
 void HouseClass::vf_13(Obj_004A1D30* crc)
 {
@@ -1510,11 +1510,11 @@ void HouseClass::vf_13(Obj_004A1D30* crc)
     Base.ComputeCrc(crc);
 }
 
-// CAPPED at 99.6%: six instructions differ, the grown-capacity add at the ConYards / Buildings /
-// UnitRepairStations loads is `add ecx,eax` in retail and `add eax,ecx` here (multiset identical).
-// Variants: cap+inc, inc+cap, Capacity member without a local, grown-capacity temporary.
+// Partial 98.3%: twelve canonical AddItem growth arguments use EAX where retail
+// uses ECX (24 ADD/PUSH instruction differences, identical mnemonic multiset).
+// Keep the shared operation; no per-container arithmetic-order variants.
 // FUNCTION: GAMEMD 0x503040
-HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
+HRESULT __stdcall HouseClass::Load(IStream* pStm)
 {
     int i;
     int count;
@@ -1549,10 +1549,10 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
         }
     }
 
-    hr = HouseAbstractView::Load(pStm);
+    hr = AbstractClass::Load(pStm);
     if (hr < 0)
         return hr;
-    new (this) HouseClusterView(HBNoInit());
+    new (this) HouseClass(AbstractNoInit());
     Base.LoadFromStream(pStm);
     OwnedBuildingTypes.Load(pStm);
     OwnedUnitTypes.Load(pStm);
@@ -1566,19 +1566,19 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     FactoryProducedUnitTypes.Load(pStm);
     FactoryProducedInfantryTypes.Load(pStm);
     FactoryProducedAircraftTypes.Load(pStm);
-    HouseSwizzle.Swizzle(&Type);
-    HouseSwizzle.Swizzle(&Primary_ForInfantry);
-    HouseSwizzle.Swizzle(&Primary_ForVehicles);
-    HouseSwizzle.Swizzle(&Primary_ForAircraft);
-    HouseSwizzle.Swizzle(&Primary_ForShips);
-    HouseSwizzle.Swizzle(&Primary_ForBuildings);
-    HouseSwizzle.Swizzle(&Primary_Unused1);
-    HouseSwizzle.Swizzle(&Primary_Unused2);
-    HouseSwizzle.Swizzle(&Primary_Unused3);
-    HouseSwizzle.Swizzle(&Primary_ForDefenses);
-    HouseSwizzle.Swizzle(&ToCapture);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Type);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForInfantry);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForVehicles);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForAircraft);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForShips);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForBuildings);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_Unused1);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_Unused2);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_Unused3);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&Primary_ForDefenses);
+    DAT_00B0C110.SwizzleManagerClass::vf_4(&ToCapture);
     for (i = 0; i < 12; i++)
-        HouseSwizzle.Swizzle(&PlanningPaths[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&PlanningPaths[i]);
     for (i = 0; i < 3; i++)
         DropshipData[i].Swizzle();
 
@@ -1587,7 +1587,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseSuperRef* item = 0;
+        SuperClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1598,7 +1598,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseTagRef* item = 0;
+        TagClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1609,70 +1609,70 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseAngerNode node;
-        node.House = 0;
-        node.Value = 0;
+        AngerStruct node;
+        node.A = 0;
+        node.B = 0;
         hr = pStm->Read(&node, 8, 0);
         if (hr < 0)
             return hr;
         AngerNodes.AddItem(node);
     }
     for (i = 0; i < AngerNodes.Count; i++)
-        HouseSwizzle.Swizzle(&AngerNodes.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&AngerNodes.Items[i]);
     count = 0;
     hr = pStm->Read(&count, 4, 0);
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseScoutNode node;
-        node.Cell = 0;
-        node.Flag = false;
+        ScoutStruct node;
+        node.A = 0;
+        node.B = 0;
         hr = pStm->Read(&node, 8, 0);
         if (hr < 0)
             return hr;
         ScoutNodes.AddItem(node);
     }
     for (i = 0; i < ScoutNodes.Count; i++)
-        HouseSwizzle.Swizzle(&ScoutNodes.Items[ScoutNodes.Count - 1]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&ScoutNodes.Items[ScoutNodes.Count - 1]);
     count = 0;
     hr = pStm->Read(&count, 4, 0);
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
-        ConYards.AddItemCapFirst(item);
+        ConYards.AddItem(item);
     }
     count = 0;
     hr = pStm->Read(&count, 4, 0);
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
-        Buildings.AddItemCapFirst(item);
+        Buildings.AddItem(item);
     }
     count = 0;
     hr = pStm->Read(&count, 4, 0);
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
-        UnitRepairStations.AddItemCapFirst(item);
+        UnitRepairStations.AddItem(item);
     }
     count = 0;
     hr = pStm->Read(&count, 4, 0);
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1683,7 +1683,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1694,7 +1694,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1705,7 +1705,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1716,7 +1716,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1727,7 +1727,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1738,7 +1738,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1749,7 +1749,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseBuildingRef* item = 0;
+        BuildingClass* item = 0;
         hr = pStm->Read(&item, 4, 0);
         if (hr < 0)
             return hr;
@@ -1760,7 +1760,7 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
     if (hr < 0)
         return hr;
     while (count--) {
-        HouseStartingUnit* unit = new HouseStartingUnit;
+        StartingTechnoStruct* unit = new StartingTechnoStruct;
         int type = 0;
         short x;
         short y;
@@ -1773,40 +1773,40 @@ HRESULT __stdcall HouseClusterView::Load(IStream* pStm)
         hr = pStm->Read(&y, 2, 0);
         if (hr < 0)
             return hr;
-        unit->Type = type;
-        unit->X = x;
-        unit->Y = y;
+        unit->unknown_00 = type;
+        unit->unknown_04 = x;
+        unit->unknown_06 = y;
         StartingUnits.AddItem(unit);
     }
 
     for (i = 0; i < Supers.Count; i++)
-        HouseSwizzle.Swizzle(&Supers.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Supers.Items[i]);
     for (i = 0; i < RelatedTags.Count; i++)
-        HouseSwizzle.Swizzle(&RelatedTags.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&RelatedTags.Items[i]);
     for (i = 0; i < ConYards.Count; i++)
-        HouseSwizzle.Swizzle(&ConYards.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&ConYards.Items[i]);
     for (i = 0; i < Buildings.Count; i++)
-        HouseSwizzle.Swizzle(&Buildings.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Buildings.Items[i]);
     for (i = 0; i < UnitRepairStations.Count; i++)
-        HouseSwizzle.Swizzle(&UnitRepairStations.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&UnitRepairStations.Items[i]);
     for (i = 0; i < Grinders.Count; i++)
-        HouseSwizzle.Swizzle(&Grinders.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Grinders.Items[i]);
     for (i = 0; i < Absorbers.Count; i++)
-        HouseSwizzle.Swizzle(&Absorbers.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Absorbers.Items[i]);
     for (i = 0; i < Bunkers.Count; i++)
-        HouseSwizzle.Swizzle(&Bunkers.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Bunkers.Items[i]);
     for (i = 0; i < Occupiables.Count; i++)
-        HouseSwizzle.Swizzle(&Occupiables.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&Occupiables.Items[i]);
     for (i = 0; i < CloningVats.Count; i++)
-        HouseSwizzle.Swizzle(&CloningVats.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&CloningVats.Items[i]);
     for (i = 0; i < SecretLabs.Count; i++)
-        HouseSwizzle.Swizzle(&SecretLabs.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&SecretLabs.Items[i]);
     for (i = 0; i < PsychicDetectionBuildings.Count; i++)
-        HouseSwizzle.Swizzle(&PsychicDetectionBuildings.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&PsychicDetectionBuildings.Items[i]);
     for (i = 0; i < FactoryPlants.Count; i++)
-        HouseSwizzle.Swizzle(&FactoryPlants.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(&FactoryPlants.Items[i]);
     for (i = 0; i < StartingUnits.Count; i++)
-        HouseSwizzle.Swizzle(StartingUnits.Items[i]);
+        DAT_00B0C110.SwizzleManagerClass::vf_4(StartingUnits.Items[i]);
 
     int hasAIGeneral = 0;
     hr = pStm->Read(&hasAIGeneral, 4, 0);

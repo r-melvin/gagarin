@@ -50149,11 +50149,11 @@
  {
   "tu": "match/economy/House.cpp",
   "addr": "0x503040",
-  "sym": "?Load@HouseClusterView@@UAGJPAUIStream@@@Z",
+  "sym": "?Load@HouseClass@@UAGJPAUIStream@@@Z",
   "len": "0x1033",
   "name": "HouseClass::Load",
   "status": "partial",
-  "pct": 99.6
+  "pct": 98.3
  },
  {
   "tu": "match/economy/House.cpp",

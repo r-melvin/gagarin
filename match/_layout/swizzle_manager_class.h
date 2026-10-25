@@ -62,4 +62,9 @@ GG_STATIC_ASSERT(offsetof(SwizzleManagerClass, unknown_29) == 0x29);
 GG_STATIC_ASSERT(offsetof(SwizzleManagerClass, unknown_2C) == 0x2C);
 GG_STATIC_ASSERT(offsetof(SwizzleManagerClass, unknown_30) == 0x30);
 
+// GLOBAL: GAMEMD 0xB0C110
+// Native CRT6CF070 installs7F4108 and registers external teardown6CF0F0.
+// Existing storage and initialization remain external; no new definition here.
+extern SwizzleManagerClass DAT_00B0C110;
+
 #endif  // GG_MATCH_LAYOUT_SWIZZLE_MANAGER_CLASS_H

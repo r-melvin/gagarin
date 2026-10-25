@@ -4185,8 +4185,6 @@ bool Tactical::vf_24(const CoordStruct* first, const CoordStruct* second,
     return true; // Native ignores the Surface result and returnsAL1.
 }
 
-// GLOBAL: GAMEMD 0xB0C110
-extern SwizzleManagerClass DAT_00B0C110;
 
 // FUNCTION: GAMEMD 0x6DBD20
 HRESULT __stdcall Tactical::Load(IStream* stream)
