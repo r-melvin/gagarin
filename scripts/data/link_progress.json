@@ -12,17 +12,17 @@
   "unresolved": 8291
  },
  "m1": {
-  "bytes_at_retail_address": 3884823,
+  "bytes_at_retail_address": 3884816,
   "drift_events": 4,
   "duplicates": 0,
   "entries_at_retail_address": 19250,
   "entry_point_delta": -8044,
   "link_exit_code": 0,
-  "matched_at_retail_address": 10234,
-  "matched_functions": 10234,
-  "ordered_bytes": 3885495,
+  "matched_at_retail_address": 10235,
+  "matched_functions": 10235,
+  "ordered_bytes": 3885488,
   "ordered_entries": 19252,
-  "stubs_placed": 8975,
+  "stubs_placed": 8974,
   "unresolved_after_stubs": 0
  },
  "milestones": [
@@ -59,6 +59,6 @@
  ],
  "snapshots": {
   "m0": "2a00ae5d (historical; not remeasured)",
-  "m1": "cc54c42d"
+  "m1": "b60bed51"
  }
 }

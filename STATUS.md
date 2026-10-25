@@ -1,12 +1,12 @@
 # Project status
 
-At source snapshot **`cc54c42d` (2026-10-24)**, the manifest holds
-**10,978 rows: 10,235 matched and 743 partial**, in 1,261 manifest translation
+At source snapshot **`b60bed51` (2026-10-25)**, the manifest holds
+**10,978 rows: 10,235 matched and 743 partial**, in 1,260 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
 bytes. Matched rows represent 51.7% of the census and **708,870 bytes (18.3%)**;
 partials represent 3.8%. These are function measurements, not executable completion.
 
-The full gate compiles **1,270 tracked translation units**, checks **133 layout
+The full gate compiles **1,269 tracked translation units**, checks **134 layout
 headers**, re-proves all 10,235 matched rows and compile-checks all 743 partials,
 with no matched-function regressions. Affected exact functions also pass explicit
 relocation checks. Earlier strict-check repairs are recorded in the historical
@@ -21,10 +21,23 @@ existing exact generic provider. Existing exact bodies are preserved; an
 incidental Scenario partial improves from 6.8% to 7.9% through ordinary template
 inlining. Canonical owner work remains unfinished elsewhere.
 
+RGB now has one shared class definition and uses the actual vector and list
+owners. Wonline's split source is consolidated into its original translation
+unit, with its shared window and callback contracts reconciled. Twenty unused
+Matrix bindings are retired after a complete object-symbol inventory. Three
+allocator owners now call ordinary operator delete, and the remaining free
+binding identifies the actual CRT free function. These changes preserve the
+existing matched bodies.
+
+The PlanMgr cleanup shares the Tactical, Techno, planning-token and node
+contracts and preserves its existing exact functions. The full PlanMgr source
+merge remains held: ordinary canonical forms do not preserve two existing
+100% bodies. Pixel-global and CompositeSurface consolidation remain in progress.
+
 Initializer verification now distinguishes a matching inner helper from the
 actual callback registered in the CRT table. Of the 60 generated float claims
-in the historical initializer subset, **18 are direct native-matching CRT roots**;
-42 still sit behind compiler jump wrappers. That subset also retains 176 manual
+in the historical initializer subset, **20 are direct native-matching CRT roots**;
+40 still sit behind compiler jump wrappers. That subset also retains 176 manual
 initializer claims and 354 unclaimed entries. These counts do not cover every
 initializer in the image. Native table ordering is incomplete where source
 entries are still missing; matching a component does not establish whole-table
@@ -42,7 +55,7 @@ Link milestones (diagnostic images do not run):
 | Milestone | State | Measurement |
 | --- | --- | --- |
 | M0 diagnostic link | historical | At `2a00ae5d`: 1,310 objects, 8,291 unresolved externals and 0 duplicate definitions, using `/FORCE` |
-| M1 address-faithful stub link | verified at `cc54c42d` | Exit 0 without `/FORCE`, 0 unresolved after 8,975 placed int3 stubs, 0 duplicate definitions; all 10,234 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M1 address-faithful stub link | verified at `b60bed51` | Exit 0 without `/FORCE`, 0 unresolved after 8,974 placed int3 stubs, 0 duplicate definitions; all 10,235 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |
@@ -57,6 +70,12 @@ The ordinary M1 link also discards two unused dynamic-vector tables. A separate
 link that retains the four actual Cell/BaseNode tables verifies their 28 target
 pointers and genuine destructor selection; this is not a runtime or full-image
 identity check. RTTI emitted by the reconstructed build remains separate work.
+
+The ordinary link also selects the actual project providers for the two
+PlanMgr dynamic-vector tables and all 14 native slot targets. Separate
+retention of the three RGB container tables proves their 21 native targets;
+the ordinary link retains two of those tables. These scoped checks do not
+establish complete vtable, RTTI or initializer-table identity.
 
 ## Historical integration archive
 
