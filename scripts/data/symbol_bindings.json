@@ -7502,6 +7502,8 @@
  "match/network/MPSiege.cpp::_DAT_007EE6E8": "0x007EE6E8",
  "match/network/MPSiegeTeam.cpp::_DAT_007EE7D0": "0x007EE7D0",
  "match/network/Multiplayer.cpp::_?modes@?1??Modes_005D5F30@@YIAAV?$DynamicVectorClass@PAVMultiplayerGameMode@@@@XZ@4V2@A": "0x00ABFDA0",
+ "match/network/NullDlg.cpp::_$E2": "0x005EF320",
+ "match/network/NullDlg.cpp::_$E5": "0x005EF340",
  "match/network/NullMgr.cpp::_?comNames@?1??FUN_005F19E0@NullModemClass@@QAEHPAUSerialSettings_005F19E0@@@Z@4PAY04DA": "0x00832340",
  "match/network/NullMgr.cpp::_?com_ids@?1??Init@NullModemInitView@@QAEHHHPADHDHH@Z@4PAY04DA": "0x00832310",
  "match/network/PhoneEd.cpp::_$E2": "0x006309D0",
