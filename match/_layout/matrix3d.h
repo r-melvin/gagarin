@@ -35,6 +35,10 @@ struct Matrix3D
         Row[2][0] = m20; Row[2][1] = m21; Row[2][2] = m22; Row[2][3] = m23;
     }
 
+    // Native 0x5AE610: copy twelve dwords from source, returning this.
+    // A placeholder avoids asserting constructor versus assignment identity.
+    Matrix3D& FUN_005AE610(const Matrix3D& source);
+
     void MakeIdentity();                                  // 0x5AE860
     void Translate(float x, float y, float z);            // 0x5AE890
     void Translate(const Vector3D& vec);                  // 0x5AE8F0

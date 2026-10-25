@@ -9,4 +9,6 @@
 extern "C" Matrix3D DAT_00B45188[];
 // Native function 0x7559B0; annotated definition in core/unowned_leaf_sweep_c.cpp.
 Matrix3D FUN_007559B0(int index);
+// Native 0x5AF980: hidden ECX result, EDX left matrix, right matrix on stack.
+Matrix3D FUN_005AF980(const Matrix3D& left, const Matrix3D& right);
 #endif

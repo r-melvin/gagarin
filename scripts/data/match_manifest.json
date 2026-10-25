@@ -98975,5 +98975,23 @@
   "name": "ObjectTypeClass no-init constructor",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/matrix3d_methods.cpp",
+  "addr": "0x5AE610",
+  "sym": "?FUN_005AE610@Matrix3D@@QAEAAU1@ABU1@@Z",
+  "len": "0x16",
+  "name": "Matrix3D::FUN_005AE610",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/movement/matrix3d_methods.cpp",
+  "addr": "0x5AF980",
+  "sym": "?FUN_005AF980@@YI?AUMatrix3D@@ABU1@0@Z",
+  "len": "0x1fc",
+  "name": "FUN_005AF980",
+  "status": "partial",
+  "pct": 3.7
  }
 ]

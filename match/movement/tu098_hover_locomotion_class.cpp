@@ -249,9 +249,9 @@ Matrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
     }
     if (key != 0)
         *key = 0xFFFFFFFF;
-    HoverMatrixView lift;
+    Matrix3D lift;
     lift.MakeIdentity();
-    HoverMatrixView tilt;
+    Matrix3D tilt;
     tilt.MakeIdentity();
     float t0 = (float)HoverFoot(LinkedTo)->Slot_084()->unknown_360;
     float t1 = (float)HoverFoot(LinkedTo)->Slot_084()->unknown_368;
@@ -272,9 +272,9 @@ Matrix3D __stdcall HoverLocomotionClass::DrawMatrix(unsigned int* key)
     tilt.TranslateY((float)dy);
     tilt.RotateX(HoverFoot(LinkedTo)->AngleSideways);
     tilt.RotateY(HoverFoot(LinkedTo)->AngleForwards);
-    HoverMatrixView base;
-    base = LocomotionClass::DrawMatrix(key);
-    return HoverMatrixMultiply(&HoverMatrixMultiply(&lift, &base), &tilt);
+    Matrix3D base;
+    base.FUN_005AE610(LocomotionClass::DrawMatrix(key));
+    return FUN_005AF980(FUN_005AF980(lift, base), tilt);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

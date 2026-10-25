@@ -676,25 +676,7 @@ GG_STATIC_ASSERT(offsetof(HoverFootSlotOffsets, slot_538) == 0x538);
 GG_STATIC_ASSERT(offsetof(HoverFootSlotOffsets, slot_544) == 0x544);
 GG_STATIC_ASSERT(sizeof(HoverFootSlotOffsets) == 0x548);
 
-// Matrix wrapper: retained only for Hover code that calls these operations.
-struct HoverMatrixView : Matrix3D
-{
-    HoverMatrixView() {}
-    // FUNCTION: GAMEMD 0x5AE610 (decl; reloc)
-    HoverMatrixView(const Matrix3D& src);
-    HoverMatrixView& operator=(const Matrix3D& src);
-    // FUNCTION: GAMEMD 0x5AE980 / 0x5AE9B0 / 0x5AE9E0 (decl; reloc)
-    void TranslateX(float x);
-    void TranslateY(float y);
-    void TranslateZ(float z);
-    // FUNCTION: GAMEMD 0x5AEF60 / 0x5AF080 (decl; reloc)
-    void RotateX(float angle);
-    void RotateY(float angle);
-};
-GG_STATIC_ASSERT(sizeof(HoverMatrixView) == 0x30);
 #include "matrix3d_native_helpers.h"
-HoverMatrixView HoverMatrixMultiply(const Matrix3D& left, const Matrix3D& right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
-HoverMatrixView HoverMatrixMultiply(const Matrix3D* left, const Matrix3D* right); // FUNCTION: GAMEMD 0x5AF980 (decl; reloc)
 double __cdecl HoverSqrt(double value); // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc)
 double __cdecl HoverSin(double angle); // FUNCTION: GAMEMD 0x4CACB0 (decl; reloc)
 double __cdecl HoverCos(double angle); // FUNCTION: GAMEMD 0x4CAD00 (decl; reloc)
