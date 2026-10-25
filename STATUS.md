@@ -1,74 +1,69 @@
 # Project status
 
-At source snapshot **`a66e55ac` (2026-10-25)**, the manifest holds
-**10,980 rows: 10,236 matched and 744 partial**, in 1,260 manifest translation
+At source snapshot **`64c8edb4` (2026-10-25)**, the manifest holds
+**10,998 rows: 10,255 matched and 743 partial**, in 1,260 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
-bytes. Matched rows represent 51.8% of the census and **708,892 bytes (18.3%)**;
-partials represent 3.8%. These are function measurements, not executable completion.
+bytes. Matched rows represent **51.9%** of the census and **710,230 bytes
+(18.3%)**; partials represent 3.8%. These are function measurements, not
+executable completion.
 
-The full gate compiles **1,271 tracked translation units**, checks **134 layout
-headers**, re-proves all 10,236 matched rows and compile-checks all 744 partials,
-with no matched-function regressions. Affected exact functions also pass explicit
-relocation checks. Earlier strict-check repairs are recorded in the historical
-snapshots below; final link selection, RTTI data and whole-image layout require
-separate evidence.
+The full gate compiles **1,271 tracked translation units**, checks **137 layout
+headers**, re-proves all 10,255 matched rows and compile-checks all 743 partials,
+with no matched-function regressions. Recent affected exact functions also have
+explicit relocation and actual selected-provider checks. Compiling, matching
+functions and linking remain separate from complete vtable, RTTI, data layout
+and whole-image verification.
 
-Recent restructuring consolidates the ColorList and List receivers onto their
-real UI hierarchy, and shares the Cell coordinate and BaseNode declarations.
-Eight vector destructor/Clear stand-ins now use genuine compiler-generated
-methods. The redundant Cell assignment specialization is retired onto the
-existing exact generic provider. Existing exact bodies are preserved; an
-incidental Scenario partial improves from 6.8% to 7.9% through ordinary template
-inlining. Canonical owner work remains unfinished elsewhere.
+The narrow string family now has one Wstring owner. Despite its retail name,
+this is the four-byte, heap-owning **narrow** string; the wide families remain
+separate work. Netshare constructs returned values through their actual value
+ABI, and Wonline's members, hash keys and 15 narrow globals use Wstring shared
+with their consumers. Both narrow stand-in classes are retired. A scan of all
+1,271 project objects proves their old symbol names are absent, and 56 unused
+binding aliases have been removed. Existing function scores are preserved;
+Copy_Padded remains partial at 88.9%.
 
-RGB now has one shared class definition and uses the actual vector and list
-owners. Wonline's split source is consolidated into its original translation
-unit, with its shared window and callback contracts reconciled. Twenty unused
-Matrix bindings are retired after a complete object-symbol inventory. Three
-allocator owners now call ordinary operator delete, and the remaining free
-binding identifies the actual CRT free function. These changes preserve the
-existing matched bodies.
+MapStageList now uses an ordinary constructor, real vector specializations,
+actual string members and scope destruction. MapSel and Wonline share its
+complete container layout. The two entry types remain distinct 16-byte records;
+MapStage's unmodelled trailing region remains explicit. Seven stand-in classes
+and six obsolete vtables are retired without changing any existing match score.
+The slot-4 query is correctly identified as FindItemIndex, rather than append.
 
-The PlanMgr cleanup shares the Tactical, Techno, planning-token and node
-contracts and preserves its existing exact functions. The full PlanMgr source
-merge remains held: ordinary canonical forms do not preserve two existing
-100% bodies. House interface return and calling-convention declarations are
-corrected; its implementation-owner migration remains in progress.
+House methods and persistence routines now use their actual owner and shared
+value types. Its checksum and Save bodies match 100%. Load is partial at 98.3%,
+versus the former view's 99.6%, under the ordinary shared vector operations.
+The normal constructor migration is held with its existing 98.3% body retained;
+PointerExpired retains its existing 100% implementation. The full PlanMgr
+merge is also held because the tested canonical forms do not preserve its
+existing exact functions. Its verified shared prefix remains adopted.
 
-The six pixel-shift cells now share one zero-filled storage owner. The preview
-constructor remains partial, changing from 97.3% to 87.3% under that natural field
-representation; existing exacts are preserved. CompositeSurface and its swap
-partner now have real pointer storage and canonical drawing consumers. Their
-native data spacing is not reproduced by the diagnostic image.
+Earlier consolidation shares the List/ColorList hierarchy, Cell, BaseNode and
+RGB declarations and actual container owners. HoverMatrixView is retired onto
+Matrix3D; its recovered copy matches 100%, while the affine product remains
+partial at 3.7% and Hover DrawMatrix at 78.6%. CompositeSurface has canonical
+pointer storage and drawing consumers; six pixel-shift cells share one storage
+owner. These source ownership changes do not reproduce native data placement.
+Further original-TU boundaries, class/interface adoption and global layouts
+remain unfinished; unsupported source filenames remain placeholders.
 
-Seven narrow string methods now use the actual Wstring owner. Its existing
-Copy_Padded partial remains 88.9%; the wider string families still need work.
-HoverMatrixView is retired in favor of Matrix3D without changing any existing
-body or score. Its recovered copy routine at 0x5AE610 matches 100%; the new affine
-product at 0x5AF980 is explicitly partial at 3.7%. DrawMatrix remains 78.6%.
-
-Initializer verification now distinguishes a matching inner helper from the
-actual callback registered in the CRT table. Of the 60 generated float claims
-in the historical initializer subset, **20 are direct native-matching CRT roots**;
-40 still sit behind compiler jump wrappers. That subset also retains 176 manual
-initializer claims and 354 unclaimed entries. These counts do not cover every
-initializer in the image. Native table ordering is incomplete where source
-entries are still missing; matching a component does not establish whole-table
-identity.
-
-The current source build still needs further original-TU ownership and boundary
-reconciliation, canonical class and interface adoption, global/layout/allocator
-repairs, and initializer reconstruction. Unsupported original source filenames
-remain placeholders. Held work keeps its existing exact functions: the
-SpawnManager initializer flag trial, for example, is not adopted because it
-regresses an exact method.
+Initializer verification distinguishes an inner helper from the actual CRT
+callback. In the historical float-initializer subset, 60 generated claims
+comprise **20 direct native-matching CRT roots** and 40 inner helpers behind
+jump wrappers. That subset retains 176 manual claims and 354 unclaimed entries.
+A separate Wonline audit now verifies **15 natural string initializer roots**:
+their compiler-generated bodies match, actual project CRT entries select those
+source bodies, and registered source cleanups and relative order agree with
+native evidence. These separately scoped counts have not been summed into a
+unified initializer census. Native whole-table ordering and identity remain
+incomplete.
 
 Link milestones (diagnostic images do not run):
 
 | Milestone | State | Measurement |
 | --- | --- | --- |
-| M0 diagnostic link | measured at `a66e55ac` | 1,271 objects, 8,689 unresolved externals and 0 duplicate definitions, using `/FORCE`; this is an unresolved-symbol diagnostic, not a working engine |
-| M1 address-faithful stub link | verified at `a66e55ac` | Exit 0 without `/FORCE`, 0 unresolved after 8,973 placed int3 stubs, 0 duplicate definitions; all 10,236 distinct matched entries at retail addresses. Four local drift events remain around the two oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M0 diagnostic link | measured at `64c8edb4` | 1,271 objects, 8,663 unresolved externals and 0 duplicate definitions, using `/FORCE`; an unresolved-symbol diagnostic, not a working engine |
+| M1 address-faithful stub link | verified at `64c8edb4` | Exit 0 without `/FORCE`, 0 unresolved after 8,954 placed int3 stubs, 0 duplicate definitions; all 10,255 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |
@@ -76,25 +71,19 @@ Link milestones (diagnostic images do not run):
 
 ![gagarin link milestones](.github/assets/link_progress.svg)
 
-Native pointer values alone do not prove source-body selection. For example,
-the List and ColorList tables include two existing diagnostic-stub slots;
-49 of 51 and 51 of 53 slots respectively use real native source providers.
-The ordinary M1 link also discards two unused dynamic-vector tables. A separate
-link that retains the four actual Cell/BaseNode tables verifies their 28 target
-pointers and genuine destructor selection; this is not a runtime or full-image
-identity check. RTTI emitted by the reconstructed build remains separate work.
+Native pointer values alone do not prove source-body selection. The current
+List and ColorList tables retain two diagnostic-stub slots each: 49 of 51 and
+51 of 53 slots respectively select real native source providers. DSurface has
+37 of 38 native pointer values, 14 diagnostic-stub slots and an existing
+deleting-destructor provider mismatch. It is not a fully matched source table.
+MapStage's six vector tables have 42 native pointer values with actual source
+providers verified. These scoped checks do not establish complete vtable,
+RTTI or initializer-table identity. Other Cell/BaseNode, RGB and PlanMgr table
+checks have their own earlier scopes and retention conditions.
 
-The ordinary link also selects the actual project providers for the two
-PlanMgr dynamic-vector tables and all 14 native slot targets. Separate
-retention of the three RGB container tables proves their 21 native targets;
-the ordinary link retains two of those tables. These scoped checks do not
-establish complete vtable, RTTI or initializer-table identity.
-
-The DSurface table still has 37 of 38 native pointer values, 14 diagnostic-stub
-slots and an existing deleting-destructor provider mismatch. It is not a fully
-matched source vtable. M1 substitutes stubs for partial functions, including
-Hover DrawMatrix and the new affine product; original-object M0 call-operand
-checks are separate and do not establish a working engine.
+M1 substitutes stubs for partial functions, including House Load, Hover
+DrawMatrix and the affine product. Actual original-object checks are separate;
+neither those checks nor the diagnostic links establish a working engine.
 
 ## Historical integration archive
 

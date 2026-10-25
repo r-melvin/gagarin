@@ -2,27 +2,27 @@
  "m0": {
   "by_kind": {
    "crt": 24,
-   "data": 4349,
-   "function": 4226,
+   "data": 4348,
+   "function": 4201,
    "import": 0,
    "vtable": 90
   },
   "duplicate_definitions": 0,
   "objects": 1271,
-  "unresolved": 8689
+  "unresolved": 8663
  },
  "m1": {
-  "bytes_at_retail_address": 3884806,
+  "bytes_at_retail_address": 3884624,
   "drift_events": 4,
   "duplicates": 0,
   "entries_at_retail_address": 19250,
   "entry_point_delta": -8044,
   "link_exit_code": 0,
-  "matched_at_retail_address": 10236,
-  "matched_functions": 10236,
-  "ordered_bytes": 3885478,
+  "matched_at_retail_address": 10255,
+  "matched_functions": 10255,
+  "ordered_bytes": 3885296,
   "ordered_entries": 19252,
-  "stubs_placed": 8973,
+  "stubs_placed": 8954,
   "unresolved_after_stubs": 0
  },
  "milestones": [
@@ -58,7 +58,7 @@
   }
  ],
  "snapshots": {
-  "m0": "a66e55ac",
-  "m1": "a66e55ac"
+  "m0": "64c8edb4",
+  "m1": "64c8edb4"
  }
 }
