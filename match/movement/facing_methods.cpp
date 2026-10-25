@@ -10,6 +10,23 @@
 
 #include "facing_methods.h"
 
+// FUNCTION: GAMEMD 0x4C93D0
+// Four-byte direction value: copy the complete desired representation, adjust
+// only its low direction word, and return through the caller's value slot.
+DirStruct FacingClass::FUN_004C93D0() const
+{
+    if ((short)ROT.Raw > 0 && RotationTimer.GetTimeLeft() != 0) {
+        short diff = (short)(DesiredFacing.Raw - StartFacing.Raw);
+        short steps = (short)(abs(diff) / (short)ROT.Raw);
+        DirStruct result = DesiredFacing;
+        if (steps > 0) {
+            result.Raw = (unsigned short)(result.Raw - (diff / steps) * RotationTimer.GetTimeLeft());
+        }
+        return result;
+    }
+    return DesiredFacing;
+}
+
 // FUNCTION: GAMEMD 0x4C9480  (__thiscall)
 // Rotating == the rate-of-turn is positive AND the count-down timer still has
 // frames left.

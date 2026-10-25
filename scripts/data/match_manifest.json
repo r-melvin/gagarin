@@ -99272,5 +99272,14 @@
   "name": "LocomotionClass::Release adjustor thunk",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/movement/facing_methods.cpp",
+  "addr": "0x4C93D0",
+  "sym": "?FUN_004C93D0@FacingClass@@QBE?AUDirStruct@@XZ",
+  "len": "0x99",
+  "name": "FacingClass::FUN_004C93D0",
+  "status": "matched",
+  "pct": 100
  }
 ]
