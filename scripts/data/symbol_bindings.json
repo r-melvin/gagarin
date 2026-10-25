@@ -7539,6 +7539,8 @@
  "match/ui/MSChoice.cpp::??_7?$DynamicVectorClass@PAVMSAnimEntry@@@@6B@": "0x007EEA74",
  "match/ui/MSChoice.cpp::??_7?$DynamicVectorClass@PAVMSSfxEntry@@@@6B@": "0x007EEA54",
  "match/ui/MSChoice.cpp::??_7?$DynamicVectorClass@PAVMapStage@@@@6B@": "0x007EEA94",
+ "match/ui/MainOpt.cpp::_$E2": "0x0055F7B0",
+ "match/ui/MainOpt.cpp::_$E5": "0x0055F7D0",
  "match/ui/Score.cpp::_$E2": "0x00690150",
  "match/ui/Score.cpp::_?$S1@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4EA": "0x00B054F0",
  "match/ui/Score.cpp::_?blink@?1??FUN_0068FFE0@BlinkCursorHost_0068FFE0@@QAEXHH@Z@4VCountdownTimer_0068FFE0@@A": "0x00B05528",

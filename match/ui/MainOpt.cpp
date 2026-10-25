@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 //   Original translation unit MainOpt.cpp. The name is the source-file string at 0x82a2a8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x55f9c4 inside this object's
 //   code range (0x55f780-0x56170f). Functions are in ascending retail address order.
@@ -28,19 +29,17 @@ extern int DAT_00ABCF40;
 // GLOBAL: GAMEMD 0xABCF48
 extern double DAT_00ABCF48;
 
-// FUNCTION: GAMEMD 0x55F7B0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0055F7B0()
-{
-    DAT_00ABCF48 = DAT_00ABCE40 / DAT_007ED3B0;
-}
+// SYNTHETIC: GAMEMD 0x0055F7B0
+// dynamic initializer for DAT_00ABCF48
 
-// FUNCTION: GAMEMD 0x55F7D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0055F7D0()
-{
-    DAT_00ABCF30 = DAT_007E1718 / DAT_00ABCF48;
-}
+// GLOBAL: GAMEMD 0x00ABCF48
+double DAT_00ABCF48 = DAT_00ABCE40 / DAT_007ED3B0;
+
+// SYNTHETIC: GAMEMD 0x0055F7D0
+// dynamic initializer for DAT_00ABCF30
+
+// GLOBAL: GAMEMD 0x00ABCF30
+double DAT_00ABCF30 = DAT_007E1718 / DAT_00ABCF48;
 
 // FUNCTION: GAMEMD 0x55F950
 // Static-initialiser shape: stores constants to adjacent globals.
