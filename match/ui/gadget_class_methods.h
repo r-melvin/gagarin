@@ -12,7 +12,7 @@
 // node (LinkClass: Next@0x4, Previous@0x8) plus a screen rectangle and flags.
 //
 // Member names: X/Y/Width/Height/IsSticky/IsDisabled/Flags are YRpp-cross-checked
-// against the accesses below. RedrawPending (+0x1C) is descriptive: it is set by
+// against the accesses below. IsToRepaint (+0x1C) is descriptive: it is set by
 // Enable/Disable/Action/MarkRedraw and consumed by Draw. The slot map below is
 // derived from the binary's 0x7E92BC table.
 //
@@ -98,11 +98,11 @@ public:
     int          Y;          // +0x10
     int          Width;      // +0x14
     int          Height;     // +0x18
-    unsigned char RedrawPending; // +0x1C
+    unsigned char IsToRepaint; // +0x1C
     unsigned char IsSticky;    // +0x1D
     unsigned char IsDisabled;  // +0x1E
     unsigned char _pad1F;      // +0x1F
-    int          Flags;      // +0x20
+    unsigned int Flags;      // +0x20
 };
 
 GG_STATIC_ASSERT(offsetof(GadgetClass, Next)        == 0x04);  // inherited from LinkClass
@@ -111,7 +111,7 @@ GG_STATIC_ASSERT(offsetof(GadgetClass, X)           == 0x0C);  // SetPosition  [
 GG_STATIC_ASSERT(offsetof(GadgetClass, Y)           == 0x10);  // SetPosition  [ECX+0x10]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Width)       == 0x14);  // SetDimension [ECX+0x14]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Height)      == 0x18);  // SetDimension [ECX+0x18]
-GG_STATIC_ASSERT(offsetof(GadgetClass, RedrawPending) == 0x1C);  // MarkRedraw   [ECX+0x1C]
+GG_STATIC_ASSERT(offsetof(GadgetClass, IsToRepaint) == 0x1C);  // MarkRedraw   [ECX+0x1C]
 GG_STATIC_ASSERT(offsetof(GadgetClass, IsSticky)    == 0x1D);  // StickyProcess[ECX+0x1D]
 GG_STATIC_ASSERT(offsetof(GadgetClass, IsDisabled)  == 0x1E);  // Enable       [ECX+0x1E]
 GG_STATIC_ASSERT(offsetof(GadgetClass, Flags)       == 0x20);  // KillFocus    [ECX+0x20]

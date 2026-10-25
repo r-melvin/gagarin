@@ -32,7 +32,7 @@ extern GadgetClass* GadgetClass_StuckOn;    // 0x008B3E88
 void GadgetClass::Enable()
 {
     IsDisabled = 0;
-    RedrawPending = 1;
+    IsToRepaint = 1;
     KillFocus();
 }
 
@@ -42,7 +42,7 @@ void GadgetClass::Enable()
 void GadgetClass::Disable()
 {
     IsDisabled = 1;
-    RedrawPending = 1;
+    IsToRepaint = 1;
     KillFocus();
 }
 
@@ -100,7 +100,7 @@ void GadgetClass::DeleteList()
 int GadgetClass::Action(unsigned flags, unsigned* key, int modifier)
 {
     if (flags != 0) {
-        RedrawPending = 1;
+        IsToRepaint = 1;
         StickyProcess(flags);
         return 1;
     }
@@ -112,8 +112,8 @@ int GadgetClass::Action(unsigned flags, unsigned* key, int modifier)
 // DrawAll below widens its own bool argument with `and edi,0xff` before pushing.
 int GadgetClass::Draw(int forced)
 {
-    if (forced || RedrawPending) {
-        RedrawPending = 0;
+    if (forced || IsToRepaint) {
+        IsToRepaint = 0;
         return 1;
     }
     return 0;
@@ -195,7 +195,7 @@ GadgetClass* GadgetClass::ExtractGadgetAt(int x, int y)
 // FUNCTION: GAMEMD 0x4E1960  GadgetClass::MarkRedraw (__thiscall)
 void GadgetClass::MarkRedraw()
 {
-    RedrawPending = 1;
+    IsToRepaint = 1;
 }
 
 // FUNCTION: GAMEMD 0x4E1970  GadgetClass::StickyProcess (__thiscall, ret 0x4)
@@ -252,7 +252,7 @@ int GadgetClass::IsListToRedraw()
 {
     GadgetClass* g = this;
     while (g != 0) {
-        if (g->RedrawPending) {
+        if (g->IsToRepaint) {
             return 1;
         }
         g = (GadgetClass*)g->GetNext();

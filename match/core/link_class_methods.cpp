@@ -14,6 +14,18 @@ void LinkClass::Zap()
     Previous = 0;
 }
 
+// FUNCTION: GAMEMD 0x556620
+LinkClass* LinkClass::GetNext()
+{
+    return Next;
+}
+
+// FUNCTION: GAMEMD 0x556630
+LinkClass* LinkClass::GetPrev()
+{
+    return Previous;
+}
+
 // FUNCTION: GAMEMD 0x556640  LinkClass::HeadOfList (__thiscall)
 //   Walk the Previous chain to the head; stop if we loop back to `this`.
 LinkClass* LinkClass::HeadOfList()

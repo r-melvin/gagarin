@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
+// /Ob2 retains the ordinary destructor body in the scalar deleting wrapper.
 // Retail 0x4E12F0..0x4E133E establishes all stores and the conditional flag OR.
 // Exact once Next/Previous come from the inline LinkClass constructor: the base
 // stores them first, ahead of the member initialisers.
@@ -12,7 +14,7 @@ extern GadgetClass* GadgetClass_Focused;    // 0x008B3E90
 // FUNCTION: GAMEMD 0x4E12F0
 GadgetClass::GadgetClass(int x, int y, int width, int height,
                          unsigned int flags, char sticky)
-    : X(x), Y(y), Width(width), Height(height), RedrawPending(0),
+    : X(x), Y(y), Width(width), Height(height), IsToRepaint(0),
       IsSticky(sticky), IsDisabled(0), Flags(flags)
 {
     if (sticky != 0) {
@@ -20,11 +22,8 @@ GadgetClass::GadgetClass(int x, int y, int width, int height,
     }
 }
 
-// FUNCTION: GAMEMD 0x4E1A60
-// GadgetClass scalar deleting destructor (slot 0): drops the focus / sticky / list globals that point at this
-// gadget, then runs the LinkClass destructor. Compiler-emitted from the inline destructor below; this TU also
-// emits the GadgetClass vtable through the constructor above.
-inline GadgetClass::~GadgetClass()
+// FUNCTION: GAMEMD 0x4E1390
+GadgetClass::~GadgetClass()
 {
     if (this == GadgetClass_Focused) {
         Flags &= ~0x100u;
@@ -40,3 +39,6 @@ inline GadgetClass::~GadgetClass()
         GadgetClass_Focused = 0;
     }
 }
+
+// SYNTHETIC: GAMEMD 0x4E1A60
+// GadgetClass scalar deleting destructor, emitted from the ordinary destructor.

@@ -81789,22 +81789,22 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu119_methods.cpp",
+  "tu": "match/core/link_class_methods.cpp",
   "addr": "0x556620",
-  "sym": "?FUN_00556620@Obj_00556620@@QBEHXZ",
+  "sym": "?GetNext@LinkClass@@UAEPAV1@XZ",
   "len": "0x4",
-  "name": "Obj_00556620::FUN_00556620",
+  "name": "LinkClass::GetNext",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/core/trivial_tu119_methods.cpp",
+  "tu": "match/core/link_class_methods.cpp",
   "addr": "0x556630",
-  "sym": "?FUN_00556630@Obj_00556630@@QBEHXZ",
+  "sym": "?GetPrev@LinkClass@@UAEPAV1@XZ",
   "len": "0x4",
-  "name": "Obj_00556630::FUN_00556630",
+  "name": "LinkClass::GetPrev",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu120_methods.cpp",
@@ -99227,5 +99227,14 @@
   "name": "?vf_8@SwizzleManagerClass@@UAGJHHH@Z",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/ui/gadget_class_ctor.cpp",
+  "addr": "0x4E1390",
+  "sym": "??1GadgetClass@@UAE@XZ",
+  "len": "0x52",
+  "name": "GadgetClass::~GadgetClass",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

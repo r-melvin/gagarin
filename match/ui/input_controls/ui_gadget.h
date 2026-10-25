@@ -19,8 +19,8 @@
 //   the lists_* and controls_* sources.
 //
 //   This header supersedes the per-cluster copies of these classes; it is not to be included together with
-//   match/ui/gadget_class_methods.h, control_class.h, toggle_class_methods.h, shape_button_class.h or the
-//   list headers there, which model the same classes with opaque slots (see the patch proposal for those).
+//   control_class.h, toggle_class_methods.h, shape_button_class.h or the
+//   list headers there, which retain separate derived-class declarations. GadgetClass is shared below.
 #ifndef GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 #define GG_MATCH_UI_INPUT_CONTROLS_UI_GADGET_H
 
@@ -42,64 +42,8 @@ extern GadgetClass* GadgetClass_Focused;
 // GLOBAL: GAMEMD 0x8B3E94 -- the gadget under the pointer.
 extern GadgetClass* GadgetClass_Hovered;
 
-// VTABLE: GAMEMD 0x007E92BC
-class GadgetClass : public LinkClass
-{
-public:
-    GadgetClass(int x, int y, int width, int height, unsigned flags, char sticky);   // 0x4E12F0
-    // 0x4E1A60 is the compiler's scalar deleting destructor with this body expanded in it (lists_gadget.cpp); the
-    // out-of-line copy lives at 0x4E1390, which the derived destructors call.
-    virtual ~GadgetClass();                                     // 0x00  0x4E1A60
-    virtual LinkClass* GetNext();                               // 0x04  0x4E14A0
-    virtual LinkClass* GetPrev();                               // 0x08  0x4E14B0
-    // 0x0C..0x20: LinkClass Add, AddTail, AddHead, HeadOfList, TailOfList, Zap
-    virtual LinkClass* Remove();                                // 0x24  0x4E1480
-    virtual unsigned   Input();                                 // 0x28  0x4E1640
-    virtual void       DrawAll(bool forced);                    // 0x2C  0x4E1570
-    virtual void       DeleteList();                            // 0x30  0x4E14C0
-    virtual GadgetClass* ExtractGadget(unsigned id);            // 0x34  0x4E1920
-    virtual void       MarkListToRedraw();                      // 0x38  0x488690
-    virtual void       Disable();                               // 0x3C  0x4E1460
-    virtual void       Enable();                                // 0x40  0x4E1450
-    virtual unsigned   GetID();                                 // 0x44  0x4AEBA0
-    virtual void       MarkRedraw();                            // 0x48  0x4E1960
-    virtual void       PeerToPeer(unsigned flags, unsigned* key, GadgetClass* source);  // 0x4C  0x48E650
-    virtual void       SetFocus();                              // 0x50  0x4E19A0
-    virtual void       KillFocus();                             // 0x54  0x4E19D0
-    virtual bool       IsFocused();                             // 0x58  0x4E19F0
-    virtual int        IsListToRedraw();                        // 0x5C  0x4E1A00
-    virtual unsigned char IsToRedraw();                         // 0x60  0x4886A0
-    virtual void       SetPosition(int x, int y);               // 0x64  0x4E1A20
-    virtual void       SetDimension(int w, int h);              // 0x68  0x4E1A40
-    virtual int        Draw(int forced);                        // 0x6C  0x4E1550
-    virtual void       OnMouseEnter();                          // 0x70  0x4E1510
-    virtual void       OnMouseLeave();                          // 0x74  0x4E1520
-    virtual void       StickyProcess(unsigned flags);           // 0x78  0x4E1970
-    virtual int        Action(unsigned flags, unsigned* key, int modifier);  // 0x7C  0x4E1530
-    virtual int        Clicked(unsigned* key, unsigned flags, int x, int y, int modifier);  // 0x80  0x4E13F0
-
-    GadgetClass* ExtractGadgetAt(int x, int y);   // 0x4E15A0 (non-virtual)
-    static int GetColorScheme();       // 0x4E12D0
-
-    int           X;           // +0x0C
-    int           Y;           // +0x10
-    int           Width;       // +0x14
-    int           Height;      // +0x18
-    unsigned char IsToRepaint; // +0x1C
-    unsigned char IsSticky;    // +0x1D
-    unsigned char IsDisabled;  // +0x1E
-    unsigned char unknown_1F;  // +0x1F
-    unsigned      Flags;       // +0x20
-};
-GG_STATIC_ASSERT(offsetof(GadgetClass, X) == 0x0C);
-GG_STATIC_ASSERT(offsetof(GadgetClass, Y) == 0x10);
-GG_STATIC_ASSERT(offsetof(GadgetClass, Width) == 0x14);
-GG_STATIC_ASSERT(offsetof(GadgetClass, Height) == 0x18);
-GG_STATIC_ASSERT(offsetof(GadgetClass, IsToRepaint) == 0x1C);
-GG_STATIC_ASSERT(offsetof(GadgetClass, IsSticky) == 0x1D);
-GG_STATIC_ASSERT(offsetof(GadgetClass, IsDisabled) == 0x1E);
-GG_STATIC_ASSERT(offsetof(GadgetClass, Flags) == 0x20);
-GG_STATIC_ASSERT(sizeof(GadgetClass) == 0x24);   // ControlClass::ID is the next member at +0x24
+// GadgetClass uses the shared canonical declaration.
+#include "../gadget_class_methods.h"
 
 // VTABLE: GAMEMD 0x007E528C
 class ControlClass : public GadgetClass
