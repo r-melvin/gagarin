@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 140 remaining 73-byte deleting-destructor bodies are bound here through
-// 74 VectorClass<T> base-destruction views. The vptr written at body+6,
+// 77 remaining 73-byte deleting-destructor bodies are bound here through
+// 44 canonical VectorClass<T> instantiations. The vptr written at body+6,
 // its retail COL and its type descriptor establish that base and element T.
 // Instructions confirm Items+4, Capacity+8 and ownership byte+D; the low
 // deleting flag controls the final free of the object.
@@ -17,9 +17,6 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
-
-// LIBRARY: GAMEMD 0x7C8B3D (decl; reloc) -- CRT free.
-extern "C" void __cdecl gg_free(void* block);
 
 // The shared template declares all seven confirmed virtual slots.
 #include "vector_class.h"
@@ -108,8 +105,6 @@ extern char VT_007F36D4;
 extern char VT_007F3604;
 // VTABLE: GAMEMD 0x007F3748 -- VectorClass<unsigned long>
 extern char VT_007F3748;
-// VTABLE: GAMEMD 0x007F4154 -- VectorClass<SwizzlePointerClass>
-extern char VT_007F4154;
 // VTABLE: GAMEMD 0x007F42BC -- VectorClass<DirtyAreaStruct>
 extern char VT_007F42BC;
 // VTABLE: GAMEMD 0x007F65F4 -- VectorClass<unsigned char>

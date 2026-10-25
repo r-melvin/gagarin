@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// 46 base-template instantiations reproduce 82 remaining retail destructor
+// 44 base-template instantiations reproduce 77 remaining retail destructor
 // bodies. Each group's written vptr and RTTI identify its base-destruction
 // element type, not necessarily the wrapper's original declaring class.
 // Multiple FUNCTION markers bind relocation-identical bodies to this model;
@@ -145,7 +145,6 @@ class SubTitle;
 struct SubzoneConnectionStruct;
 class SuperClass;
 class SuperWeaponTypeClass;
-class SwizzlePointerClass;
 class TActionClass;
 class TEventClass;
 template<class T0> class TRect;
@@ -452,11 +451,6 @@ template class VectorClass<SpawnManagerClass*>;
 // VectorClass<unsigned long> -- reseats retail vtable 0x007F3748; locator 0x00809C18 -> type descriptor 0x00840A88
 //   `.?AV?$VectorClass@K@@`.
 template class VectorClass<unsigned long>;
-
-// FUNCTION: GAMEMD 0x006CF850
-// VectorClass<SwizzlePointerClass> -- reseats retail vtable 0x007F4154; locator 0x0080B7C8 -> type descriptor 0x00842758
-//   `.?AV?$VectorClass@VSwizzlePointerClass@@@@`.
-template class VectorClass<SwizzlePointerClass>;
 
 // FUNCTION: GAMEMD 0x006DCC30
 // FUNCTION: GAMEMD 0x006DCC80

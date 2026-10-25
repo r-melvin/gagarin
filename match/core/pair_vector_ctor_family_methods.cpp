@@ -74,6 +74,8 @@
 // VectorClass<SwizzlePointerClass>::FindItemIndex (slot 4)
 // FUNCTION: GAMEMD 0x006CF700
 // VectorClass<SwizzlePointerClass>::Slot5 (slot 5)
+// SYNTHETIC: GAMEMD 0x006CF850
+// VectorClass<SwizzlePointerClass>::scalar deleting destructor (slot 0).
 // FUNCTION: GAMEMD 0x006CF8F0
 // VectorClass<SwizzlePointerClass>::VectorClass(int, SwizzlePointerClass*)
 
