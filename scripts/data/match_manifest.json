@@ -12906,7 +12906,7 @@
  {
   "tu": "match/core/techno_class_mission_gate_methods.cpp",
   "addr": "0x6F3280",
-  "sym": "?FUN_006F3280@TechnoClass@@QAE_NXZ",
+  "sym": "?FUN_006F3280@TechnoClass@@UAE_NXZ",
   "len": "0x49",
   "name": "TechnoClass::FUN_006F3280",
   "status": "matched",
@@ -12915,7 +12915,7 @@
  {
   "tu": "match/core/techno_class_mission_gate_methods.cpp",
   "addr": "0x6F4A70",
-  "sym": "?FUN_006F4A70@TechnoClass@@QAE_NH@Z",
+  "sym": "?vf_73@TechnoClass@@UAE_NH@Z",
   "len": "0x33",
   "name": "TechnoClass::FUN_006F4A70",
   "status": "matched",

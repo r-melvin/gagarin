@@ -5,9 +5,15 @@
 //
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x6F3280  TechnoClass::FUN_006F3280  (__thiscall)
-//   FUNCTION: GAMEMD 0x6F4A70  TechnoClass::FUN_006F4A70  (__thiscall)
+//   FUNCTION: GAMEMD 0x6F4A70  TechnoClass::vf_73  (__thiscall)
 
-#include "techno_class_mission_gate_methods.h"
+#include "../_layout/techno_class.h"
+#include "../_layout/techno_type_class.h"
+
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 8 == 0xC94);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[8]) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsTether) == 0x418);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->IsTether) == 1);
 
 // FUNCTION: GAMEMD 0x6F3280  (__thiscall)
 // A mission gate: true when the object's current mission is none of 0, 6 and
@@ -21,10 +27,10 @@
 // returns the last gate folds into a SET and the constant disappears.
 bool TechnoClass::FUN_006F3280()
 {
-    if ((this->*this->Vfptr->At_184)() != 0) {
-        if ((this->*this->Vfptr->At_184)() != 6) {
-            if ((this->*this->Vfptr->At_184)() != 0x10) {
-                if (!(this->*this->Vfptr->At_84)()->unknown_C94) {
+    if (vf_97() != 0) {
+        if (vf_97() != 6) {
+            if (vf_97() != 0x10) {
+                if (!vf_33()->bools_C8C[8]) {
                     return true;
                 }
             }
@@ -46,11 +52,11 @@ bool TechnoClass::FUN_006F3280()
 // early `if (!base) return false;` cl inverts the branch and inlines a second
 // `POP ESI; RET 4` where retail has one shared `XOR AL,AL; POP ESI; RET 4`
 // cold tail (30.0%, multiset off by a jump polarity and the XOR).
-bool TechnoClass::FUN_006F4A70(int param)
+bool TechnoClass::vf_73(int mode)
 {
-    if (this->BaseStep_005F5850(param)) {
+    if (ObjectClass::vf_73(mode)) {
         if (this->IsTether) {
-            (this->*this->Vfptr->At_274)(0xD);
+            vf_157(0xD);
         }
         return true;
     }
