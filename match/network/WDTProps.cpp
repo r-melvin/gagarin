@@ -28,36 +28,29 @@ extern const char STR_00889F64[];
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F7280
 extern const double DAT_007F7280;
 // GLOBAL: GAMEMD 0xB729B0
 extern double DAT_00B729B0;
-// GLOBAL: GAMEMD 0xB729E8
-extern double DAT_00B729E8;
 // GLOBAL: GAMEMD 0xB729F0
 extern int DAT_00B729F0;
 // GLOBAL: GAMEMD 0xB729F4
 extern int DAT_00B729F4;
 // GLOBAL: GAMEMD 0xB729F8
 extern int DAT_00B729F8;
-// GLOBAL: GAMEMD 0xB72A00
-extern double DAT_00B72A00;
 
-// FUNCTION: GAMEMD 0x76BCD0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0076BCD0()
-{
-    DAT_00B72A00 = DAT_00B729B0 / DAT_007F7280;
-}
+// SYNTHETIC: GAMEMD 0x0076BCD0
+// dynamic initializer for DAT_00B72A00
+// GLOBAL: GAMEMD 0x00B72A00
+double DAT_00B72A00 = DAT_00B729B0 / DAT_007F7280;
 
-// FUNCTION: GAMEMD 0x76BCF0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0076BCF0()
-{
-    DAT_00B729E8 = DAT_007E1718 / DAT_00B72A00;
-}
+// SYNTHETIC: GAMEMD 0x0076BCF0
+// dynamic initializer for DAT_00B729E8
+// GLOBAL: GAMEMD 0x00B729E8
+double DAT_00B729E8 = 1.0 / DAT_00B72A00;
+
+GG_STATIC_ASSERT(sizeof(DAT_00B72A00) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00B729E8) == 8);
 
 // FUNCTION: GAMEMD 0x76BE70
 // Static-initialiser shape: stores constants to adjacent globals.

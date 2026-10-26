@@ -7531,6 +7531,8 @@
  "match/network/SerialEd.cpp::_$E5": "0x00695530",
  "match/network/Skirmish.cpp::_$E2": "0x006AC9A0",
  "match/network/Skirmish.cpp::_$E5": "0x006AC9C0",
+ "match/network/WDTProps.cpp::_$E2": "0x0076BCD0",
+ "match/network/WDTProps.cpp::_$E5": "0x0076BCF0",
  "match/network/netshare.cpp::?FUN_007B7ED0@@YI?AVObj_007B66D0@@ABVWstring@@@Z": "0x007B7ED0",
  "match/network/netshare.cpp::?FUN_007B7F90@@YI?AVWstring@@ABVObj_007B66D0@@@Z": "0x007B7F90",
  "match/network/tu108_ipx_manager_class.cpp::_DAT_007EC158": "0x007EC158",
