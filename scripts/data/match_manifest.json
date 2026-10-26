@@ -99362,5 +99362,23 @@
   "name": "BulletClass::Release",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x716290",
+  "sym": "?vf_29@TechnoTypeClass@@UAEHXZ",
+  "len": "0x60",
+  "name": "TechnoTypeClass::vf_29",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x7170A0",
+  "sym": "?GetSizeMax@TechnoTypeClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
+  "len": "0xff",
+  "name": "TechnoTypeClass::GetSizeMax",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

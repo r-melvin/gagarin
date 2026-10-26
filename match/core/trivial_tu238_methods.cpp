@@ -4,6 +4,7 @@
 // This retained filename is provisional grouping, not attested original TU ownership.
 #include "../_layout/techno_type_class.h"
 #include "../_layout/rules_class.h"
+#include "../combat/weapon_type_class.h"
 
 // GLOBAL: GAMEMD 0xA8B238
 extern int DAT_00A8B238;
@@ -33,6 +34,54 @@ int TechnoTypeClass::vf_28()
 int TechnoTypeClass::vf_45()
 {
     return RulesInstance->unknown_16CC;
+}
+
+// FUNCTION: GAMEMD 0x716290
+int TechnoTypeClass::vf_29()
+{
+    switch (PipScale) {
+    case 4:
+        return 10;
+    case 1:
+        return Ammo;
+    case 5:
+        return Weapon[0].WeaponType->Damage;
+    case 2:
+        return vf_11() == 0x10 ? 3 : 5;
+    case 3:
+        return Passengers;
+    default:
+        return 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x7170A0
+HRESULT __stdcall TechnoTypeClass::GetSizeMax(ULARGE_INTEGER* size)
+{
+    HRESULT result = ObjectTypeClass::GetSizeMax(size);
+    if (result < 0) {
+        return result;
+    }
+
+    size->LowPart = size->LowPart + 4 + VoiceSelect.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceSelectEnslaved.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceSelectDeactivated.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceMove.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceAttack.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceSpecialAttack.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceDie.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + VoiceFeedback.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + MoveSound.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DieSound.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + Explosion.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DestroyAnim.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DebrisTypes.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DebrisAnims.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + Dock.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DebrisMaximums.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DamageParticleSystems.Vector.Count * 4;
+    size->LowPart = size->LowPart + 4 + DestroyParticleSystems.Vector.Count * 4;
+    return S_OK;
 }
 
 // FUNCTION: GAMEMD 0x717800

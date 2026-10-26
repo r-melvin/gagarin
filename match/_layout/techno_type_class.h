@@ -104,6 +104,8 @@ public:
     ~TechnoTypeClass();
     // Native711EC0 overrides ObjectType slot28; full EAX integer, no args.
     virtual int vf_28();
+    // FUNCTION: GAMEMD 0x716290; overrides ObjectType slot29.
+    virtual int vf_29();
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
@@ -469,6 +471,72 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Palette)           == 0xDF0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_DF4)         == 0xDF4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, FlightLevel) == 0x618);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PreventAttackMove) == 0x6C8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PipScale) == 0x3D4);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->PipScale) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Passengers) == 0x5E0);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Passengers) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Ammo) == 0x684);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Ammo) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
+                 offsetof(WeaponStruct, WeaponType) == 0x898);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Weapon[0].WeaponType) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
+                 offsetof(WeaponStruct, WeaponType) +
+                 0xA4 == 0x93C); // WeaponTypeClass::Damage is asserted in its canonical header.
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelect) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x424);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectEnslaved) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x440);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectDeactivated) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x45C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceMove) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x478);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceAttack) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x494);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSpecialAttack) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x4B0);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceDie) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x4CC);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceFeedback) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x4E8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MoveSound) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x504);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DieSound) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x520);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Explosion) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x73C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyAnim) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x758);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisTypes) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x324);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisAnims) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x5D4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Dock) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x3F8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisMaximums) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x340);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DamageParticleSystems) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x788);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyParticleSystems) +
+                 offsetof(TypeListLayout, Vector) +
+                 offsetof(DynamicVectorClassLayout, Count) == 0x7A4);
 GG_STATIC_ASSERT(offsetof(WeaponStruct, WeaponType) == 0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 13 == 0xC99);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[0]) == 1);
