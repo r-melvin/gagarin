@@ -17,6 +17,7 @@
 
 #include "../_layout/building_type_class_layout.h"
 #include <new.h>
+#include "foundation_dimensions.h"
 
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Foundation) == 0xEF0);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Buildup) == 0xE00);
@@ -25,10 +26,15 @@ GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1570) == 0x1570);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1760) + 2 == 0x1762);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto) == 0x408);
 
-// GLOBAL: GAMEMD 0x8192B8 / 0x819310 — foundation dimension lookup tables,
-// indexed by the Foundation enum. Scaled index *4 in the disasm => int[].
-extern int FoundationWidth[];   // GLOBAL 0x8192B8
-extern int FoundationHeight[];  // GLOBAL 0x819310
+// Foundation enum dimensions, in cells. Native storage is writable .data.
+// GLOBAL: GAMEMD 0x8192B8
+int FoundationWidth[22] = {
+    1, 2, 1, 2, 2, 3, 3, 3, 4, 3, 1, 3, 4, 1, 1, 2, 2, 5, 4, 3, 6, 0
+};
+// GLOBAL: GAMEMD 0x819310
+int FoundationHeight[22] = {
+    1, 1, 2, 2, 3, 2, 3, 5, 2, 3, 3, 1, 3, 4, 5, 6, 5, 3, 4, 4, 4, 0
+};
 
 // LIBRARY: GAMEMD 0x7C8B3D — scalar operator delete; also called by the
 // compiler-generated deleting destructor at 0x4D03A0.

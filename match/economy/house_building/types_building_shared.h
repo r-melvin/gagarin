@@ -70,9 +70,7 @@ GG_STATIC_ASSERT(sizeof(TypesFoundationEntry) == 0x78);
 extern TypesFoundationEntry TypesFoundationCells[22];
 extern TypesFoundationEntry TypesFoundationOutsideCells[22];
 
-// GLOBAL: GAMEMD 0x8192B8 / 0x819310 - the width and height, in cells, of each of the 22 foundations.
-extern const int TypesFoundationWidth[22];
-extern const int TypesFoundationHeight[22];
+#include "../foundation_dimensions.h"
 // GLOBAL: GAMEMD 0x89DDB8 - the height of one level in leptons.
 extern int TypesLevelHeight;
 

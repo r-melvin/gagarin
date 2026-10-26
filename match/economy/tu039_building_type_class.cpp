@@ -583,7 +583,7 @@ void __cdecl FUN_0045EC80()
 // FUNCTION: GAMEMD 0x45ECE0
 int BuildingTypeClass::vf_29()
 {
-    int pips = TypesFoundationWidth[Foundation] * 60 / 8;
+    int pips = FoundationWidth[Foundation] * 60 / 8;
     switch (unknown_3D4) {
     case 2:
         if (Weeder) {
@@ -1235,8 +1235,8 @@ bool BuildingTypeClass::vf_42(void* arg1, void* arg2)
 HBCoord BuildingTypeClass::vf_31()
 {
     HBCoord coord;
-    coord.X = TypesFoundationWidth[Foundation] << 8;
-    coord.Y = TypesFoundationHeight[Foundation] << 8;
+    coord.X = FoundationWidth[Foundation] << 8;
+    coord.Y = FoundationHeight[Foundation] << 8;
     coord.Z = Height * TypesLevelHeight;
     return coord;
 }
