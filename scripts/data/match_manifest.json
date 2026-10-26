@@ -86642,18 +86642,18 @@
  {
   "tu": "match/network/Event.cpp",
   "addr": "0x4C6390",
-  "sym": "?FUN_004C6390@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_004C6390",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/Event.cpp",
   "addr": "0x4C63B0",
-  "sym": "?FUN_004C63B0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_004C63B0",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },
@@ -86669,18 +86669,18 @@
  {
   "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E3160",
-  "sym": "?FUN_004E3160@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_004E3160",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/network/GDlgSupp.cpp",
   "addr": "0x4E3180",
-  "sym": "?FUN_004E3180@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_004E3180",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },
@@ -86831,18 +86831,18 @@
  {
   "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x552880",
-  "sym": "?FUN_00552880@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_00552880",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/LdPrgMgr.cpp",
   "addr": "0x5528A0",
-  "sym": "?FUN_005528A0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_005528A0",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },
@@ -86858,18 +86858,18 @@
  {
   "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x558580",
-  "sym": "?FUN_00558580@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_00558580",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/LoadDlg.cpp",
   "addr": "0x5585A0",
-  "sym": "?FUN_005585A0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_005585A0",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },

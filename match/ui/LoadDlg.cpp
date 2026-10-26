@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -95,36 +96,29 @@ static const char LoadDlgFile[] = "D:\\ra2mdpost\\LoadDlg.CPP";
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7ED2D0
 extern const double DAT_007ED2D0;
 // GLOBAL: GAMEMD 0xABCBE0
 extern double DAT_00ABCBE0;
-// GLOBAL: GAMEMD 0xABCC18
-extern double DAT_00ABCC18;
 // GLOBAL: GAMEMD 0xABCC20
 extern int DAT_00ABCC20;
 // GLOBAL: GAMEMD 0xABCC24
 extern int DAT_00ABCC24;
 // GLOBAL: GAMEMD 0xABCC28
 extern int DAT_00ABCC28;
-// GLOBAL: GAMEMD 0xABCC30
-extern double DAT_00ABCC30;
 
-// FUNCTION: GAMEMD 0x558580
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00558580()
-{
-    DAT_00ABCC30 = DAT_00ABCBE0 / DAT_007ED2D0;
-}
+// SYNTHETIC: GAMEMD 0x00558580
+// dynamic initializer for DAT_00ABCC30
+// GLOBAL: GAMEMD 0x00ABCC30
+double DAT_00ABCC30 = DAT_00ABCBE0 / DAT_007ED2D0;
 
-// FUNCTION: GAMEMD 0x5585A0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005585A0()
-{
-    DAT_00ABCC18 = DAT_007E1718 / DAT_00ABCC30;
-}
+// SYNTHETIC: GAMEMD 0x005585A0
+// dynamic initializer for DAT_00ABCC18
+// GLOBAL: GAMEMD 0x00ABCC18
+double DAT_00ABCC18 = 1.0 / DAT_00ABCC30;
+
+GG_STATIC_ASSERT(sizeof(DAT_00ABCC30) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00ABCC18) == 8);
 
 // FUNCTION: GAMEMD 0x558720
 // Static-initialiser shape: stores constants to adjacent globals.

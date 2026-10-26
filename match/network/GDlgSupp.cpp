@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit GDlgSupp.cpp. The name is the source-file string at 0x8229c0
@@ -266,36 +267,29 @@ struct Obj_004F4C20
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7E94E0
 extern const double DAT_007E94E0;
 // GLOBAL: GAMEMD 0x8B3FA8
 extern double DAT_008B3FA8;
-// GLOBAL: GAMEMD 0x8B40A0
-extern double DAT_008B40A0;
 // GLOBAL: GAMEMD 0x8B40A8
 extern int DAT_008B40A8;
 // GLOBAL: GAMEMD 0x8B40AC
 extern int DAT_008B40AC;
 // GLOBAL: GAMEMD 0x8B40B0
 extern int DAT_008B40B0;
-// GLOBAL: GAMEMD 0x8B40B8
-extern double DAT_008B40B8;
 
-// FUNCTION: GAMEMD 0x4E3160
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004E3160()
-{
-    DAT_008B40B8 = DAT_008B3FA8 / DAT_007E94E0;
-}
+// SYNTHETIC: GAMEMD 0x004E3160
+// dynamic initializer for DAT_008B40B8
+// GLOBAL: GAMEMD 0x008B40B8
+double DAT_008B40B8 = DAT_008B3FA8 / DAT_007E94E0;
 
-// FUNCTION: GAMEMD 0x4E3180
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004E3180()
-{
-    DAT_008B40A0 = DAT_007E1718 / DAT_008B40B8;
-}
+// SYNTHETIC: GAMEMD 0x004E3180
+// dynamic initializer for DAT_008B40A0
+// GLOBAL: GAMEMD 0x008B40A0
+double DAT_008B40A0 = 1.0 / DAT_008B40B8;
+
+GG_STATIC_ASSERT(sizeof(DAT_008B40B8) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_008B40A0) == 8);
 
 // FUNCTION: GAMEMD 0x4E3300
 // Static-initialiser shape: stores constants to adjacent globals.
