@@ -86804,7 +86804,7 @@
  {
   "tu": "match/combat/Ion.cpp",
   "addr": "0x539380",
-  "sym": "?FUN_00539380@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "FUN_00539380",
   "status": "matched",
@@ -86813,7 +86813,7 @@
  {
   "tu": "match/combat/Ion.cpp",
   "addr": "0x5393A0",
-  "sym": "?FUN_005393A0@@YAXXZ",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "FUN_005393A0",
   "status": "matched",
@@ -99294,6 +99294,15 @@
  {
   "tu": "match/ui/Dropship.cpp",
   "addr": "0x4B67A0",
+  "sym": "_$E2",
+  "len": "0x28",
+  "name": "compiler-generated initializer",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/combat/Ion.cpp",
+  "addr": "0x539350",
   "sym": "_$E2",
   "len": "0x28",
   "name": "compiler-generated initializer",

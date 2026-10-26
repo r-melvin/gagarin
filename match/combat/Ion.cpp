@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Op /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Ion.cpp. The name is the source-file string at 0x828034
@@ -17,6 +18,8 @@
 // Small leaves (64 bytes or less) between 0x500000 and 0x6B0000 that other
 // translation units already declared as callees but nothing defined.
 
+#include <math.h>
+#pragma intrinsic(pow)
 #include "lightning_storm_methods.h"
 
 #include "../core/techno_class_mindcontrol_query_methods.h"
@@ -315,22 +318,12 @@ extern "C" Type_006A46D0** DAT_008B4124;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
-// GLOBAL: GAMEMD 0x7EBFB8
-extern const double DAT_007EBFB8;
-// GLOBAL: GAMEMD 0xA9FA00
-extern double DAT_00A9FA00;
-// GLOBAL: GAMEMD 0xA9FA58
-extern double DAT_00A9FA58;
 // GLOBAL: GAMEMD 0xA9FA78
 extern int DAT_00A9FA78;
 // GLOBAL: GAMEMD 0xA9FA7C
 extern int DAT_00A9FA7C;
 // GLOBAL: GAMEMD 0xA9FA80
 extern int DAT_00A9FA80;
-// GLOBAL: GAMEMD 0xA9FA88
-extern double DAT_00A9FA88;
 
 
 // Raw PBVAnimClass RTTI identifies const pointer elements and the
@@ -364,19 +357,20 @@ GG_STATIC_ASSERT(offsetof(GgAnimDynamicVectorClass, CapacityIncrement) == 0x14);
 
 GG_STATIC_ASSERT(sizeof(const AnimClass*) == 4);
 
-// FUNCTION: GAMEMD 0x539380
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00539380()
-{
-    DAT_00A9FA88 = DAT_00A9FA00 / DAT_007EBFB8;
-}
+// Declaration: GAMEMD 0x4CAC40 -- engine helper, stacked double/ST0 result.
+double __cdecl FUN_004CAC40(double value);
 
-// FUNCTION: GAMEMD 0x5393A0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_005393A0()
-{
-    DAT_00A9FA58 = DAT_007E1718 / DAT_00A9FA88;
-}
+// SYNTHETIC: GAMEMD 0x539350
+// GLOBAL: GAMEMD 0xA9FA00
+double DAT_00A9FA00 = FUN_004CAC40(2.0 * pow(256.0, 2.0));
+
+// SYNTHETIC: GAMEMD 0x539380
+// GLOBAL: GAMEMD 0xA9FA88
+double DAT_00A9FA88 = DAT_00A9FA00 / 60.0;
+
+// SYNTHETIC: GAMEMD 0x5393A0
+// GLOBAL: GAMEMD 0xA9FA58
+double DAT_00A9FA58 = 1.0 / DAT_00A9FA88;
 
 // FUNCTION: GAMEMD 0x539520
 // Static-initialiser shape: stores constants to adjacent globals.
