@@ -79818,18 +79818,18 @@
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu019_methods.cpp",
+  "tu": "match/core/abstract_class_forward_methods.cpp",
   "addr": "0x41B840",
-  "sym": "?FUN_0041B840@Obj_0041B840@@QBE_NPAUArg1_0041B840@@@Z",
+  "sym": "?vf_07@AircraftClass@@UAGHXZ",
   "len": "0x17",
   "name": "Obj_0041B840::FUN_0041B840",
   "status": "matched",
   "pct": 100
  },
  {
-  "tu": "match/core/trivial_tu019_methods.cpp",
+  "tu": "match/core/abstract_class_forward_methods.cpp",
   "addr": "0x41B860",
-  "sym": "?FUN_0041B860@Obj_0041B860@@QBEHPAUArg1_0041B860@@@Z",
+  "sym": "?vf_08@AircraftClass@@UAGHXZ",
   "len": "0xc",
   "name": "Obj_0041B860::FUN_0041B860",
   "status": "matched",

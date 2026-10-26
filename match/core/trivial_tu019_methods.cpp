@@ -18,20 +18,6 @@ void __cdecl FUN_0041A140()
 {
 }
 
-// FUNCTION: GAMEMD 0x41B840
-// Returns a comparison result; pops its stack arguments. Vtable slot 7 of AircraftClass (RTTI).
-bool Obj_0041B840::FUN_0041B840(Arg1_0041B840* a1) const
-{
-    return a1->unknown_04->unknown_E0E != 0;
-}
-
-// FUNCTION: GAMEMD 0x41B860
-// Member getter (byte zx); pops its stack arguments. Vtable slot 8 of AircraftClass (RTTI).
-int Obj_0041B860::FUN_0041B860(Arg1_0041B860* a1) const
-{
-    return a1->unknown_12;
-}
-
 // FUNCTION: GAMEMD 0x41B900
 // Empty function. Vtable slot 228 of AircraftClass (RTTI).
 void Obj_0041B900::FUN_0041B900()

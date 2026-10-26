@@ -9,12 +9,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Arg1_0041B840;
-struct Arg1_0041B840_4;
-struct Arg1_0041B860;
 struct Arg1_0041C150;
-struct Obj_0041B840;
-struct Obj_0041B860;
 struct Obj_0041B900;
 struct Obj_0041B910;
 struct Obj_0041B9E0;
@@ -36,26 +31,8 @@ struct Obj_0041C1D0;
 struct Obj_0041C1D0_6C4;
 struct Obj_0041C200;
 
-struct Arg1_0041B840
-{
-    char unknown_00[0x4];
-    Arg1_0041B840_4* unknown_04;   // +0x0004
-};
-GG_STATIC_ASSERT(offsetof(Arg1_0041B840, unknown_04) == 0x4);
 
-struct Arg1_0041B840_4
-{
-    char unknown_00[0xE0E];
-    unsigned char unknown_E0E;   // +0x0E0E
-};
-GG_STATIC_ASSERT(offsetof(Arg1_0041B840_4, unknown_E0E) == 0xE0E);
 
-struct Arg1_0041B860
-{
-    char unknown_00[0x12];
-    unsigned char unknown_12;   // +0x0012
-};
-GG_STATIC_ASSERT(offsetof(Arg1_0041B860, unknown_12) == 0x12);
 
 struct Arg1_0041C150
 {
@@ -63,17 +40,7 @@ struct Arg1_0041C150
 };
 GG_STATIC_ASSERT(offsetof(Arg1_0041C150, unknown_00) == 0x0);
 
-struct Obj_0041B840
-{
-    // FUNCTION: GAMEMD 0x41B840
-    bool FUN_0041B840(Arg1_0041B840* a1) const;
-};
 
-struct Obj_0041B860
-{
-    // FUNCTION: GAMEMD 0x41B860
-    int FUN_0041B860(Arg1_0041B860* a1) const;
-};
 
 struct Obj_0041B900
 {

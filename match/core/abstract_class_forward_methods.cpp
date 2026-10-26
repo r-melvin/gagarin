@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Classes that override an AbstractClass slot with a body that only forwards to
+// Aircraft IFlyControl field queries and classes that override an AbstractClass
+// slot with a body that only forwards to
 // the base body: AircraftClass AddRef/Release (slots 1, 2: 0x410300, 0x410310)
 // and the checksum slot 13 of Airstrike, DiskLaser, LightSource, RadSite and
 // Temporal (0x410410). The owning class of each address is read from the
@@ -8,6 +9,7 @@
 // the remaining local classes model only these virtuals (no new layout claim).
 #include "../_layout/abstract_class.h"
 #include "../_layout/aircraft_class.h"
+#include "../_layout/aircraft_type_class.h"
 
 class AirstrikeClass : public AbstractClass
 {
@@ -49,6 +51,18 @@ ULONG __stdcall AircraftClass::AddRef()
 ULONG __stdcall AircraftClass::Release()
 {
     return AbstractClass::Release();
+}
+
+// FUNCTION: GAMEMD 0x0041B840
+int __stdcall AircraftClass::vf_07()
+{
+    return Type->Fighter != 0;
+}
+
+// FUNCTION: GAMEMD 0x0041B860
+int __stdcall AircraftClass::vf_08()
+{
+    return IsLocked;
 }
 
 // FUNCTION: GAMEMD 0x0041D6E0
