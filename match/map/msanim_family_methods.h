@@ -651,64 +651,34 @@ GG_STATIC_ASSERT(sizeof(MSShapeAnim) == 0x40
               && offsetof(MSShapeAnim, Buffer) == 0x1C
               && offsetof(MSShapeAnim, OwnsBuffer) == 0x3C);
 
-// MSFadeAnim and MSOverlayAnim add no member this file can see: their deleting
-// destructors (0x5CEBD0, 0x5CEC20) are byte-identical to MSShapeAnim's,
-// including the vtable constant. That identity is itself the evidence — each
-// one seats its own vptr first, cl kills that store as dead against the base's
-// store that immediately follows, and what survives is MSShapeAnim's release.
-// In retail both derive from MSShapeAnim; they are modelled as siblings
-// carrying the same members because the surviving vptr store in each body is
-// MSShapeAnim's, not their own -- their own seat is a dead store cl kills
-// against the base's -- and because a base with a user-declared destructor
-// blocks the inlining this shape depends on. The vtable relocation normalises,
-// so the stand-in's own vtable stands in for MSShapeAnim's exactly.
-class MSFadeAnim : public MSAnim
+// Native RTTI: Fade derives Shape and Overlay derives Fade at offset zero.
+// Constructor/factory evidence proves Fade's two DWORD fields and size0x48,
+// then Overlay's byte at0x48 and allocation size0x4C. Resource cleanup is
+// inherited once from Shape; these added storage fields have no cleanup.
+class MSFadeAnim : public MSShapeAnim
 {
 public:
-    void* Buffer;            // +0x1C
-    char  unknown_20[0x1C];  // +0x20
-    bool  OwnsBuffer;        // +0x3C
+    unsigned int unknown_40;
+    unsigned int unknown_44;
 
-    __forceinline ~MSFadeAnim() throw()
-    {
-        if (Buffer != 0 && OwnsBuffer) {
-            ::operator delete(Buffer);
-            Buffer = 0;
-            OwnsBuffer = false;
-        }
-
-        SeatBaseVptr();
-    }
-
+    ~MSFadeAnim() throw() {}
     void* DeletingDtor(unsigned int f);   // 0x5CEBD0
 };
-GG_STATIC_ASSERT(sizeof(MSFadeAnim) == 0x40
-              && offsetof(MSFadeAnim, Buffer) == 0x1C
-              && offsetof(MSFadeAnim, OwnsBuffer) == 0x3C);
+GG_STATIC_ASSERT(sizeof(MSFadeAnim) == 0x48
+              && offsetof(MSFadeAnim, unknown_40) == 0x40
+              && offsetof(MSFadeAnim, unknown_44) == 0x44);
 
-class MSOverlayAnim : public MSAnim
+class MSOverlayAnim : public MSFadeAnim
 {
 public:
-    void* Buffer;            // +0x1C
-    char  unknown_20[0x1C];  // +0x20
-    bool  OwnsBuffer;        // +0x3C
+    unsigned char unknown_48;
+    unsigned char unknown_49[3];
 
-    __forceinline ~MSOverlayAnim() throw()
-    {
-        if (Buffer != 0 && OwnsBuffer) {
-            ::operator delete(Buffer);
-            Buffer = 0;
-            OwnsBuffer = false;
-        }
-
-        SeatBaseVptr();
-    }
-
+    ~MSOverlayAnim() throw() {}
     void* DeletingDtor(unsigned int f);   // 0x5CEC20
 };
-GG_STATIC_ASSERT(sizeof(MSOverlayAnim) == 0x40
-              && offsetof(MSOverlayAnim, Buffer) == 0x1C
-              && offsetof(MSOverlayAnim, OwnsBuffer) == 0x3C);
+GG_STATIC_ASSERT(sizeof(MSOverlayAnim) == 0x4C
+              && offsetof(MSOverlayAnim, unknown_48) == 0x48);
 
 // MSBinkAnim owns one Bink player at +0x1C and plainly deletes it.
 class MSBinkAnim : public MSAnim

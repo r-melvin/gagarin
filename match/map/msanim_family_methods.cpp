@@ -1022,9 +1022,7 @@ void* MSShapeAnim::DeletingDtor(unsigned int f)
 }
 
 // FUNCTION: GAMEMD 0x5CEBD0
-// MSFadeAnim adds nothing, so its destructor reduces to MSShapeAnim's: its own
-// vptr seat is a dead store cl kills against the base's, and the three bodies
-// come out byte-identical, which is what the binary shows.
+// Fade adds only trivial storage; resource cleanup is inherited from Shape.
 void* MSFadeAnim::DeletingDtor(unsigned int f)
 {
     this->MSFadeAnim::~MSFadeAnim();
