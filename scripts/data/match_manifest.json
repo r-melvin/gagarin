@@ -99308,5 +99308,32 @@
   "name": "compiler-generated initializer",
   "status": "matched",
   "pct": 100
+ },
+ {
+  "tu": "match/core/tu189_radio_class.cpp",
+  "addr": "0x65A970",
+  "sym": "?vf_159@RadioClass@@UAEHHPAXPAV1@@Z",
+  "len": "0x105",
+  "name": "RadioClass::vf_159",
+  "status": "partial",
+  "pct": 89.3
+ },
+ {
+  "tu": "match/core/tu189_radio_class.cpp",
+  "addr": "0x65ACB0",
+  "sym": "?vf_157@RadioClass@@UAEHH@Z",
+  "len": "0x27",
+  "name": "RadioClass::vf_157",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/tu189_radio_class.cpp",
+  "addr": "0x65ACE0",
+  "sym": "?vf_160@RadioClass@@UAEXH@Z",
+  "len": "0x44",
+  "name": "RadioClass::vf_160",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
