@@ -210,14 +210,7 @@ extern Scenario_005D6790* ScenarioInstance_00A8B230;
 // GLOBAL: GAMEMD 0xA8B8C8 (Items 0xA8B8CC, Count 0xA8B8D8).
 extern DynamicVectorClass<MultiMission*> DAT_00A8B8C8;
 
-struct Session_005D6430
-{
-    // FUNCTION: GAMEMD 0x69B670 (decl; reloc)
-    int FUN_0069B670();
-};
-
-// GLOBAL: GAMEMD 0xA8B238 -- SessionClass::Instance.
-extern Session_005D6430 SessionInstance_00A8B238;
+#include "../_layout/session_class.h"
 
 // One node of the player list at 0xA8DA74: the name first, a dword at the
 // odd offset +0x6B (-1 marks an observer here), hence packed.
@@ -601,7 +594,7 @@ int MultiplayerGameMode::vf_17()
 // FUNCTION: GAMEMD 0x5D6430
 int MultiplayerGameMode::vf_27()
 {
-    return SessionInstance_00A8B238.FUN_0069B670();
+    return Session_00A8B238.FUN_0069B670();
 }
 
 // FUNCTION: GAMEMD 0x5D6440
