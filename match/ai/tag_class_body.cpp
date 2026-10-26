@@ -216,6 +216,12 @@ bool TagClass::FUN_006E53A0(int event, ObjectClass* object, CellStruct cell, boo
     return result;
 }
 
+// FUNCTION: GAMEMD 0x6E5560
+void TagClass::FUN_006E5560(CellStruct value)
+{
+    DefaultCoords = value;
+}
+
 // FUNCTION: GAMEMD 0x6E55A0
 void TagClass::FUN_006E55A0(int index)
 {

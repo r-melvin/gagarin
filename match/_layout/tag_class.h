@@ -62,6 +62,8 @@ public:
     bool ContainsTrigger(TriggerClass* trigger) const;
     // FUNCTION: GAMEMD 0x6E53A0
     bool FUN_006E53A0(int event, ObjectClass* object, CellStruct cell, bool flag, int arg);
+    // FUNCTION: GAMEMD 0x6E5560
+    void FUN_006E5560(CellStruct value);
     // FUNCTION: GAMEMD 0x6E5570
     static void __stdcall DeleteAll();
     // FUNCTION: GAMEMD 0x6E55A0
@@ -93,6 +95,8 @@ GG_STATIC_ASSERT(offsetof(TagClass, Type)          == 0x24);
 GG_STATIC_ASSERT(offsetof(TagClass, FirstTrigger)  == 0x28);
 GG_STATIC_ASSERT(offsetof(TagClass, InstanceCount) == 0x2C);
 GG_STATIC_ASSERT(offsetof(TagClass, DefaultCoords) == 0x30);
+// Setter 0x6E5560 stores its packed coordinate argument as one DWORD.
+GG_STATIC_ASSERT(sizeof(((TagClass*)0)->DefaultCoords) == 4);
 GG_STATIC_ASSERT(offsetof(TagClass, Destroyed)     == 0x34);
 GG_STATIC_ASSERT(offsetof(TagClass, IsExecuting)   == 0x35);
 GG_STATIC_ASSERT(sizeof(TagClass)                  == 0x38);

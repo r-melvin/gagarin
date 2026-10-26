@@ -35,19 +35,6 @@ int Obj_006A3E50::FUN_006A3E50(void*)
     return 2;
 }
 
-// vtable owner / slot: -
-struct Obj_006E5560 {
-    unsigned char unknown_00[0x30];
-    int unknown_30;
-    void FUN_006E5560(int value);
-};
-GG_STATIC_ASSERT(offsetof(Obj_006E5560, unknown_30) == 0x30);
-// FUNCTION: GAMEMD 0x006E5560
-void Obj_006E5560::FUN_006E5560(int value)
-{
-    unknown_30 = value;
-}
-
 // vtable owner / slot: TeleportLocomotionClass+4/s29
 struct Obj_00719E20 {
     int FUN_00719E20(void*);

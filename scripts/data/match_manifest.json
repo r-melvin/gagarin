@@ -78486,11 +78486,11 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/class_leaf_member_methods.cpp",
+  "tu": "match/ai/tag_class_body.cpp",
   "addr": "0x6E5560",
-  "sym": "?FUN_006E5560@Obj_006E5560@@QAEXH@Z",
+  "sym": "?FUN_006E5560@TagClass@@QAEXUCellStruct@@@Z",
   "len": "0xa",
-  "name": "FUN_006E5560",
+  "name": "TagClass::FUN_006E5560",
   "status": "matched",
   "pct": 100.0
  },
