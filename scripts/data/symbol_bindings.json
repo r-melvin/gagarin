@@ -7400,6 +7400,8 @@
  "match/combat/tu174_particle_class.cpp::_$E2": "0x0062D760",
  "match/combat/tu174_particle_class.cpp::_?$S7@?1??vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z@4EA": "0x00AC4998",
  "match/combat/tu174_particle_class.cpp::_?invalidCell@?1??vf_66@ParticleClass@@UAEPAUParticleCellCoord@@PAX@Z@4U3@A": "0x00AC49D0",
+ "match/core/AbsType.cpp::_$E2": "0x00410640",
+ "match/core/AbsType.cpp::_$E5": "0x00410660",
  "match/core/abstract_index_cast_sweep.cpp::_DAT_007F4630": "0x007F4630",
  "match/core/global_objects_004e62d0.cpp::_$E17": "0x004E7D30",
  "match/core/global_objects_004e62d0.cpp::_$E22": "0x004E7DE0",
