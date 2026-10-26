@@ -2396,7 +2396,7 @@ void __cdecl FUN_004068E0(const void* arg);
 // GLOBAL: GAMEMD 0x7E9A50 / 0x7E9A90 / 0x7E9A30 - class ids of locomotors, and the interface id at 0x819088
 extern const unsigned char DAT_007E9A50[16];
 extern const unsigned char DAT_007E9A90[16];
-extern const unsigned char DAT_007E9A30[16];
+#include "../../_layout/drive_guid_data.h"
 extern const unsigned char DAT_00819088[16];
 
 // The announcement that closes most states: a name picked by the health of the building (two name slots of the

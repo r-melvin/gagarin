@@ -18,10 +18,16 @@
 #include <new.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
+#include "../_layout/drive_guid_data.h"
 #include "drive_locomotion.h"
 
-// GLOBAL: GAMEMD 0x007E9A30
-extern const CLSID DAT_007E9A30;
+// GLOBAL: GAMEMD 0x7E9A30
+const unsigned char DAT_007E9A30[16] = {
+    0x41, 0x27, 0x58, 0x4A, 0x39, 0x98, 0xD1, 0x11,
+    0xB7, 0x09, 0x00, 0xA0, 0x24, 0xDD, 0xAF, 0xD1
+};
+GG_STATIC_ASSERT(sizeof(DAT_007E9A30) == 16);
 
 // LIBRARY: OLE32!OleLoadFromStream, IAT 0x7E15F8 (declared by <ole2.h>).
 
@@ -426,7 +432,7 @@ HRESULT __stdcall DriveLocomotionClass::GetClassID(CLSID* pClassID)
 {
     if (pClassID == 0)
         return E_POINTER;
-    *pClassID = DAT_007E9A30;
+    memcpy(pClassID, DAT_007E9A30, sizeof(DAT_007E9A30));
     return S_OK;
 }
 
