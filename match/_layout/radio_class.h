@@ -26,6 +26,20 @@ class TechnoClass;  // RadioLinks element type (used by-pointer only)
 class RadioClass : public MissionClass
 {
 public:
+    // Native Radio overrides. Declaration-only external bodies remain unclaimed.
+    // Declaration: GAMEMD 0x65AB80 -- primary slot5, stdcall this+stream.
+    virtual HRESULT __stdcall Load(IStream* pStm);
+    // Declaration: GAMEMD 0x65AC40 -- primary slot6, stdcall this+stream+BOOL.
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty);
+    // Declaration: GAMEMD 0x65AAC0 -- primary slot10, ECX receiver/RET8.
+    virtual void vf_10(void* a1, bool a2);
+    // Declaration: GAMEMD 0x65AB10 -- primary slot13, ECX receiver/RET4.
+    virtual void vf_13(Obj_004A1D30* crc);
+    // Declaration: GAMEMD 0x65AA80 -- primary slot53, byte result/RET.
+    virtual bool vf_53();
+    // Declaration: GAMEMD 0x65A820 -- primary slot101, three DWORD ABI arguments.
+    virtual int vf_101(int a1, int event, int a3);
+
     // Radio-link queries/mutators (defined in core/tu189_radio_class.cpp).
     // Non-virtual; declaring them here does not change the layout.
     TechnoClass* FUN_0065AD30(int index);               // GAMEMD 0x65AD30: RadioLinks item `index` (RET 4)
