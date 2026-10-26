@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Original translation unit Beacon.CPP. The name is the source-file string at 0x818ad8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x430d11 inside this object's
@@ -63,36 +64,29 @@ extern "C" void __cdecl GameDelete(void* pMem);
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7E3A18
 extern const double DAT_007E3A18;
 // GLOBAL: GAMEMD 0x89C398
 extern double DAT_0089C398;
-// GLOBAL: GAMEMD 0x89C450
-extern double DAT_0089C450;
 // GLOBAL: GAMEMD 0x89C458
 extern int DAT_0089C458;
 // GLOBAL: GAMEMD 0x89C45C
 extern int DAT_0089C45C;
 // GLOBAL: GAMEMD 0x89C460
 extern int DAT_0089C460;
-// GLOBAL: GAMEMD 0x89C468
-extern double DAT_0089C468;
 
-// FUNCTION: GAMEMD 0x42FFD0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0042FFD0()
-{
-    DAT_0089C468 = DAT_0089C398 / DAT_007E3A18;
-}
+// SYNTHETIC: GAMEMD 0x0042FFD0
+// dynamic initializer for DAT_0089C468
+// GLOBAL: GAMEMD 0x0089C468
+double DAT_0089C468 = DAT_0089C398 / DAT_007E3A18;
 
-// FUNCTION: GAMEMD 0x42FFF0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0042FFF0()
-{
-    DAT_0089C450 = DAT_007E1718 / DAT_0089C468;
-}
+// SYNTHETIC: GAMEMD 0x0042FFF0
+// dynamic initializer for DAT_0089C450
+// GLOBAL: GAMEMD 0x0089C450
+double DAT_0089C450 = 1.0 / DAT_0089C468;
+
+GG_STATIC_ASSERT(sizeof(DAT_0089C468) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_0089C450) == 8);
 
 // FUNCTION: GAMEMD 0x430170
 // Static-initialiser shape: stores constants to adjacent globals.

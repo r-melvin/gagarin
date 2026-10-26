@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Ob2
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit GOptions.CPP. The name is the source-file string at 0x8240bc
 //   in retail gamemd.exe v1.001, passed by the assert at 0x4f1277 inside this object's
@@ -55,22 +56,16 @@ public:
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7EA5E0
 extern const double DAT_007EA5E0;
 // GLOBAL: GAMEMD 0xA8EE00
 extern double DAT_00A8EE00;
-// GLOBAL: GAMEMD 0xA8EE58
-extern double DAT_00A8EE58;
 // GLOBAL: GAMEMD 0xA8EE60
 extern int DAT_00A8EE60;
 // GLOBAL: GAMEMD 0xA8EE64
 extern int DAT_00A8EE64;
 // GLOBAL: GAMEMD 0xA8EE68
 extern int DAT_00A8EE68;
-// GLOBAL: GAMEMD 0xA8EE70
-extern double DAT_00A8EE70;
 
 
 // Retail PAVGraphicMenuItem RTTI establishes the pointer element type and zero-offset
@@ -104,19 +99,18 @@ GG_STATIC_ASSERT(offsetof(GgGraphicMenuItemDynamicVectorClass, CapacityIncrement
 
 GG_STATIC_ASSERT(sizeof(GraphicMenuItem*) == 4);
 
-// FUNCTION: GAMEMD 0x4F0F20
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004F0F20()
-{
-    DAT_00A8EE70 = DAT_00A8EE00 / DAT_007EA5E0;
-}
+// SYNTHETIC: GAMEMD 0x004F0F20
+// dynamic initializer for DAT_00A8EE70
+// GLOBAL: GAMEMD 0x00A8EE70
+double DAT_00A8EE70 = DAT_00A8EE00 / DAT_007EA5E0;
 
-// FUNCTION: GAMEMD 0x4F0F40
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004F0F40()
-{
-    DAT_00A8EE58 = DAT_007E1718 / DAT_00A8EE70;
-}
+// SYNTHETIC: GAMEMD 0x004F0F40
+// dynamic initializer for DAT_00A8EE58
+// GLOBAL: GAMEMD 0x00A8EE58
+double DAT_00A8EE58 = 1.0 / DAT_00A8EE70;
+
+GG_STATIC_ASSERT(sizeof(DAT_00A8EE70) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00A8EE58) == 8);
 
 // FUNCTION: GAMEMD 0x4F10C0
 // Static-initialiser shape: stores constants to adjacent globals.

@@ -86426,20 +86426,20 @@
  {
   "tu": "match/network/Beacon.cpp",
   "addr": "0x42FFD0",
-  "sym": "?FUN_0042FFD0@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_0042FFD0",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Beacon.cpp",
   "addr": "0x42FFF0",
-  "sym": "?FUN_0042FFF0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_0042FFF0",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Beacon.cpp",
@@ -86696,20 +86696,20 @@
  {
   "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F0F20",
-  "sym": "?FUN_004F0F20@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_004F0F20",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/GOptions.cpp",
   "addr": "0x4F0F40",
-  "sym": "?FUN_004F0F40@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_004F0F40",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/GOptions.cpp",
@@ -87182,20 +87182,20 @@
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1400",
-  "sym": "?FUN_005F1400@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_005F1400",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/NullMgr.cpp",
   "addr": "0x5F1420",
-  "sym": "?FUN_005F1420@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_005F1420",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/NullMgr.cpp",
@@ -87209,20 +87209,20 @@
  {
   "tu": "match/ui/Options.cpp",
   "addr": "0x5FA100",
-  "sym": "?FUN_005FA100@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_005FA100",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Options.cpp",
   "addr": "0x5FA120",
-  "sym": "?FUN_005FA120@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_005FA120",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Options.cpp",
