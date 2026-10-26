@@ -4,16 +4,10 @@
 // the base body: AircraftClass AddRef/Release (slots 1, 2: 0x410300, 0x410310)
 // and the checksum slot 13 of Airstrike, DiskLaser, LightSource, RadSite and
 // Temporal (0x410410). The owning class of each address is read from the
-// RTTI-named vtable that holds it; each class is declared only as far as these
-// virtuals (no layout is claimed).
+// RTTI-named vtable that holds it. Aircraft uses the canonical MI declaration;
+// the remaining local classes model only these virtuals (no new layout claim).
 #include "../_layout/abstract_class.h"
-
-class AircraftClass : public AbstractClass
-{
-public:
-    virtual ULONG __stdcall AddRef();
-    virtual ULONG __stdcall Release();
-};
+#include "../_layout/aircraft_class.h"
 
 class AirstrikeClass : public AbstractClass
 {
