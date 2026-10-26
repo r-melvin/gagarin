@@ -26,6 +26,8 @@
 #include "radio_class.h"      // RadioClass spine + CDTimerClass + CoordStruct + AudioController
 #include "vector_class.h"     // VectorClass / DynamicVectorClass
 
+class TemporalClass;
+
 // --- TechnoClass-side leaf components ---------------------------------------
 // Self-guarded so a downstream layer (FootClass and the leaf classes) can reuse
 // them. CDTimerClass / CoordStruct / AudioController come from the included
@@ -435,7 +437,7 @@ public:
     unsigned char      WarpingOut;               // +0x271 (bool)
     unsigned char      unknown_bool_272;         // +0x272 (bool)
     unsigned char      unused_273;               // +0x273
-    void*              TemporalImUsing;          // +0x274 TemporalClass*
+    TemporalClass*     TemporalImUsing;          // +0x274 TemporalClass*
     void*              TemporalTargetingMe;      // +0x278 TemporalClass*
     unsigned char      IsImmobilized;            // +0x27C (bool)
     unsigned char      align_27D[3];             // +0x27D

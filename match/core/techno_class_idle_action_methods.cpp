@@ -9,7 +9,15 @@
 //   FUNCTION: GAMEMD 0x709A40  TechnoClass::EnterIdleMode       (__thiscall)
 //   GLOBAL:   GAMEMD 0xA8ED84  Unsorted::CurrentFrame
 
-#include "techno_class_idle_action_methods.h"
+#include "../_layout/techno_class.h"
+#include "../_layout/temporal_class.h"
+
+GG_STATIC_ASSERT(offsetof(TechnoClass, IdleActionTimer) == 0x168);
+GG_STATIC_ASSERT(offsetof(TechnoClass, IdleActionTimer) + offsetof(CDTimerClass, TimeLeft) == 0x170);
+GG_STATIC_ASSERT(offsetof(TechnoClass, TemporalImUsing) == 0x274);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->TemporalImUsing) == 4);
+GG_STATIC_ASSERT(offsetof(TemporalClass, Target) == 0x28);
+GG_STATIC_ASSERT(sizeof(((TemporalClass*)0)->Target) == 4);
 
 // FUNCTION: GAMEMD 0x7099E0  (__thiscall)
 // Has the idle-action countdown run out? CDTimerClass::GetTimeLeft is
@@ -45,8 +53,8 @@ bool TechnoClass::EnterIdleMode(bool initial, bool unused)
     if (temporal != 0 && temporal->Target != 0) {
         temporal->FUN_0071ABC0();
     }
-    if (!(this->*this->Vfptr->At_4D0)()) {
-        if ((this->*this->Vfptr->At_430)()) {
+    if (!vf_308()) {
+        if (vf_268()) {
             this->TryNextPlanningTokenNode();
         }
     }

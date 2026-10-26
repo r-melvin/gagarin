@@ -6374,7 +6374,6 @@
  "?TranslateX@Matrix3D@@QAEXM@Z": "0x005AE980",
  "?TranslateY@Matrix3D@@QAEXM@Z": "0x005AE9B0",
  "?TranslateZ@Matrix3D@@QAEXM@Z": "0x005AE9E0",
- "?TryNextPlanningTokenNode@TechnoClass@@QAEXXZ": "0x006385C0",
  "?Tuning@@3UFlightTuning@@A": "0x00ABEF10",
  "?TunnelArrayCount@@3HA": "0x008B4148",
  "?TunnelArrayItems@@3PAPAUTunnelClass@@A": "0x008B413C",

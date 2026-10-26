@@ -12834,7 +12834,7 @@
  {
   "tu": "match/core/techno_class_idle_action_methods.cpp",
   "addr": "0x7099E0",
-  "sym": "?IsTimeForIdleAction@TechnoClass@@QAE_NXZ",
+  "sym": "?IsTimeForIdleAction@TechnoClass@@UAE_NXZ",
   "len": "0x35",
   "name": "TechnoClass::IsTimeForIdleAction",
   "status": "matched",
@@ -12843,7 +12843,7 @@
  {
   "tu": "match/core/techno_class_idle_action_methods.cpp",
   "addr": "0x709A30",
-  "sym": "?SetDestination@TechnoClass@@QAEXPAVAbstractClass@@_N@Z",
+  "sym": "?SetDestination@TechnoClass@@UAEXPAVAbstractClass@@_N@Z",
   "len": "0x3",
   "name": "TechnoClass::SetDestination",
   "status": "matched",
@@ -12852,7 +12852,7 @@
  {
   "tu": "match/core/techno_class_idle_action_methods.cpp",
   "addr": "0x709A40",
-  "sym": "?EnterIdleMode@TechnoClass@@QAE_N_N0@Z",
+  "sym": "?EnterIdleMode@TechnoClass@@UAE_N_N0@Z",
   "len": "0x42",
   "name": "TechnoClass::EnterIdleMode",
   "status": "matched",
