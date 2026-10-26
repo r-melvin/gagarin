@@ -30,6 +30,8 @@ struct SequenceStruct;
 class InfantryTypeClass : public TechnoTypeClass
 {
 public:
+    // Declaration: GAMEMD 0x524790 -- slot45, full EAX scalar, no args.
+    virtual int vf_45();
     int             ArrayIndex;          // +0xDF8
     int             Pip;                 // +0xDFC (PipIndex enum)
     int             OccupyPip;           // +0xE00 (PipIndex enum)

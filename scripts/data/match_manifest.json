@@ -81420,13 +81420,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/Ini.cpp",
+  "tu": "match/network/trivial_tu259_methods.cpp",
   "addr": "0x524790",
-  "sym": "?FUN_00524790@Obj_00524790@@QBEHXZ",
-  "len": "0xc",
-  "name": "Obj_00524790::FUN_00524790",
+  "sym": "?vf_45@InfantryTypeClass@@UAEHXZ",
+  "len": "0xC",
+  "name": "InfantryTypeClass::vf_45",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/Ini.cpp",
@@ -85256,11 +85256,11 @@
  {
   "tu": "match/network/trivial_tu259_methods.cpp",
   "addr": "0x747F20",
-  "sym": "?FUN_00747F20@Obj_00747F20@@QBEHXZ",
-  "len": "0xc",
-  "name": "Obj_00747F20::FUN_00747F20",
+  "sym": "?vf_45@UnitTypeClass@@UAEHXZ",
+  "len": "0xC",
+  "name": "UnitTypeClass::vf_45",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/trivial_tu259_methods.cpp",

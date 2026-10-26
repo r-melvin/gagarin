@@ -9,8 +9,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-struct Gptr_008871E0;
-struct Obj_00524790;
 struct Obj_005247A0;
 struct Obj_005247B0;
 struct Obj_005247C0;
@@ -19,24 +17,11 @@ struct Obj_00524D50;
 struct Obj_00524D60;
 struct Obj_00524EC0;
 
-// GLOBAL: GAMEMD 0x8871E0
-extern Gptr_008871E0* DAT_008871E0;
 
 // FUNCTION: GAMEMD 0x711E80 (declaration)
 void __cdecl FUN_00711E80();
 
-struct Gptr_008871E0
-{
-    char unknown_00[0x16D8];
-    int unknown_16D8;   // +0x16D8
-};
-GG_STATIC_ASSERT(offsetof(Gptr_008871E0, unknown_16D8) == 0x16D8);
 
-struct Obj_00524790
-{
-    // FUNCTION: GAMEMD 0x524790
-    int FUN_00524790() const;
-};
 
 struct Obj_005247A0
 {

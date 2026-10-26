@@ -5,6 +5,17 @@
 //   Ordered ascending by retail address.
 
 #include "trivial_tu259_methods.h"
+#include "../_layout/infantry_type_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/rules_class.h"
+
+// The two Rules-backed type getters share this existing source provisionally;
+// this placement does not attest an original TU boundary or source filename.
+// FUNCTION: GAMEMD 0x524790
+int InfantryTypeClass::vf_45()
+{
+    return RulesInstance->unknown_16D8;
+}
 
 // FUNCTION: GAMEMD 0x7473C0
 // Tail-forwards to another function. Vtable slot 40 of UnitTypeClass (RTTI).
@@ -22,9 +33,9 @@ void Obj_007473D0::FUN_007473D0()
 
 // FUNCTION: GAMEMD 0x747F20
 // Member getter (dword). Vtable slot 45 of UnitTypeClass (RTTI).
-int Obj_00747F20::FUN_00747F20() const
+int UnitTypeClass::vf_45()
 {
-    return DAT_008871E0->unknown_16CC;
+    return RulesInstance->unknown_16CC;
 }
 
 // FUNCTION: GAMEMD 0x748160

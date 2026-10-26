@@ -26,6 +26,8 @@
 class UnitTypeClass : public TechnoTypeClass
 {
 public:
+    // Declaration: GAMEMD 0x747F20 -- slot45, full EAX scalar, no args.
+    virtual int vf_45();
     int          ArrayIndex;               // +0xDF8
     int          MovementRestrictedTo;     // +0xDFC (LandType enum)
     CoordStruct  HalfDamageSmokeLocation;  // +0xE00 (0xC)

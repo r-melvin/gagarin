@@ -713,14 +713,6 @@ void __cdecl FUN_00523C80()
 }
 
 // TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
-// FUNCTION: GAMEMD 0x524790
-// Member getter (dword). Vtable slot 45 of InfantryTypeClass (RTTI).
-int Obj_00524790::FUN_00524790() const
-{
-    return DAT_008871E0->unknown_16D8;
-}
-
-// TU-WINDOW: before the proven start of this TU; it may belong to the previous object.
 // FUNCTION: GAMEMD 0x5247A0
 // Returns zero. Vtable slot 44 of InfantryTypeClass (RTTI).
 int Obj_005247A0::FUN_005247A0() const
