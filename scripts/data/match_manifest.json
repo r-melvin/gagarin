@@ -28182,13 +28182,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/raw_file_class_read_bytes_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65CCE0",
   "sym": "?ReadBytes@RawFileClass@@UAEHPAXH@Z",
   "len": "0xEE",
   "name": "RawFileClass::ReadBytes",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
