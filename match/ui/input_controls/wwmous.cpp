@@ -7,8 +7,6 @@
 //   them with the canonical class re-mangles their symbols, so that is left to
 //   a separate rename-only change.
 //
-// The parameters keep the canonical Pipe/Straw int ABI view (pointer, count).
-//
 //   Entry-point disassembly of retail gamemd.exe v1.001 at 0x7B89F0, 0x7B9D70, 0x7B9D90 and 0x7BA320..0x7BA38E,
 //   all reached through the WWMouseClass vtable 0x7F7B2C (layout and slot evidence: mouse_ww_mouse_class.h).
 //
@@ -19,7 +17,6 @@
 #include "../../core/trivial_tu293_methods.h"
 
 
-#include "../../platform/buffer_straws.h"
 
 #include "mouse_ww_mouse_lock.h"
 
@@ -357,21 +354,3 @@ void WWMouseClass::vf_14(int x, int y)
 // SYNTHETIC: GAMEMD 0x7BA3A0
 // WWMouseClass scalar deleting destructor.
 
-// FUNCTION: GAMEMD 0x7BA3C0
-int BufferPipe::FUN_00631D10(int first, int second)
-{
-    int total = 0;
-    if (Buffer.Buffer != 0 && first != 0 && second > 0) {
-        int len = second;
-        if (Buffer.Size != 0) {
-            int avail = Buffer.Size - Index;
-            len = (second < avail) ? second : avail;
-        }
-        if (len > 0) {
-            memmove((char*)Buffer.Buffer + Index, (const void*)first, len);
-        }
-        Index += len;
-        total = len;
-    }
-    return total;
-}
