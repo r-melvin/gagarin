@@ -27030,22 +27030,22 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_name_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65CAC0",
   "sym": "?SetFileName@RawFileClass@@UAEPBDPBD@Z",
   "len": "0x6f",
   "name": "RawFileClass::SetFileName",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_name_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65D2B0",
   "sym": "?Bias@RawFileClass@@QAEXHH@Z",
   "len": "0x6a",
   "name": "RawFileClass::Bias",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class_open_methods.cpp",
@@ -28191,13 +28191,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/raw_file_class_size_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65D0D0",
   "sym": "?GetFileSize@RawFileClass@@UAEHXZ",
   "len": "0x76",
   "name": "RawFileClass::GetFileSize",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/raw_file_class_time_methods.cpp",
