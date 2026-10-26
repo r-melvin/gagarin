@@ -127,6 +127,7 @@ class BufferIOFileClass : public RawFileClass
 public:
     virtual const char* SetFileName(const char* name); // 0x431E80, slot2
 
+    bool Commit(); // 0x431DD0: ECX receiver, AL-only return tails.
     void FUN_00431D90(); // 0x431D90, release/reset the buffer
     virtual ~BufferIOFileClass();                                 // GAMEMD 0x431B80 (decl; reloc)
     virtual bool Exists(bool writeShared);                        // GAMEMD 0x431F10 (matched)
@@ -288,6 +289,16 @@ GG_STATIC_ASSERT(offsetof(FileClass, SkipCDCheck) == 4);
 GG_STATIC_ASSERT(sizeof(((FileClass*)0)->SkipCDCheck) == 1);
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 GG_STATIC_ASSERT(sizeof(BufferIOFileClass) == 0x54);
+// Native 0x4324DC/0x4324F7/0x432516/0x43251E scalar accesses.
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_38) == 0x38);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_38) == 4);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_3C) == 0x3C);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_3C) == 4);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_4C) == 0x4C);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_4C) == 4);
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_50) == 0x50);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_50) == 4);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_int_48) == 4);
 // Native 0x47AE26 / 0x47AF2D access the CD search-disable byte.
 GG_STATIC_ASSERT(offsetof(CDFileClass, IsDisabled) == 0x54);
 GG_STATIC_ASSERT(sizeof(((CDFileClass*)0)->IsDisabled) == 1);

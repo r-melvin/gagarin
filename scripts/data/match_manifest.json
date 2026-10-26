@@ -26859,22 +26859,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/buffer_io_file_class_name_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x431E80",
   "sym": "?SetFileName@BufferIOFileClass@@UAEPBDPBD@Z",
   "len": "0x83",
   "name": "BufferIOFileClass::SetFileName",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/buffer_io_file_class_name_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x4324B0",
   "sym": "?Seek@BufferIOFileClass@@UAEHHH@Z",
   "len": "0xea",
   "name": "BufferIOFileClass::Seek",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/buffer_io_file_class_open_methods.cpp",
