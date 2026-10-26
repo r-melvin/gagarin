@@ -195,17 +195,6 @@ int BufferIOFileClass::GetFileSize()
     return this->RawFileClass::GetFileSize();
 }
 
-// FUNCTION: GAMEMD 0x4739F0  (__thiscall)
-// Construct the CD-file base and an empty buffer, then name the file through
-// CDFileClass's SetFileName (a direct call to 0x47AE10, not the slot).
-CCFileClass::CCFileClass(const char* pFileName) :
-    Buffer(0, 0),
-    Position(0)
-{
-    Availability = 0;
-    CDFileClass::SetFileName(pFileName);
-}
-
 // FUNCTION: GAMEMD 0x473A30
 CCFileClass::CCFileClass(const Wstring& name) : Buffer(0, 0), Position(0)
 {

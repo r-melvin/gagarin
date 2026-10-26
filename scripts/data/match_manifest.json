@@ -11302,13 +11302,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class.cpp",
-  "addr": "0x4739f0",
+  "tu": "match/platform/ccfile_class_file_time_methods.cpp",
+  "addr": "0x4739F0",
   "sym": "??0CCFileClass@@QAE@PBD@Z",
-  "len": "0x3a",
+  "len": "0x3A",
   "name": "CCFileClass::CCFileClass",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
@@ -26978,11 +26978,11 @@
  {
   "tu": "match/platform/ccfile_class_file_time_methods.cpp",
   "addr": "0x473E50",
-  "sym": "?GetFileTime@CCFileClass@@QAEKXZ",
-  "len": "0xaf",
+  "sym": "?GetFileTime@CCFileClass@@UAEKXZ",
+  "len": "0xAF",
   "name": "CCFileClass::GetFileTime",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 59.0
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
@@ -27138,13 +27138,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_set_file_time_methods.cpp",
+  "tu": "match/platform/ccfile_class_file_time_methods.cpp",
   "addr": "0x473F00",
-  "sym": "?SetFileTime@CCFileClass@@QAE_NK@Z",
+  "sym": "?SetFileTime@CCFileClass@@UAE_NK@Z",
   "len": "0xB6",
   "name": "CCFileClass::SetFileTime",
-  "status": "matched",
-  "pct": 100
+  "status": "partial",
+  "pct": 64.4
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
