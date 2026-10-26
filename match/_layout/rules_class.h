@@ -156,7 +156,9 @@ struct RulesClass
     char unknown_16DC[0x1700 - 0x16DC];
     double ConditionYellow;
     double ConditionRed;
-    char unknown_1710[0x1804 - 0x1710];
+    char unknown_1710[0x1734 - 0x1710];
+    int unknown_1734;
+    char unknown_1738[0x1804 - 0x1738];
     int RadDurationMultiple;
     char unknown_1808[0x186C - 0x1808];
     int unknown_186C; // random upper bound minus one0x68508F
@@ -237,6 +239,7 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B4) == 0x7B4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16CC) == 0x16CC);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1734) == 0x1734);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D8) == 0x16D8);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D8) == 4);
 GG_STATIC_ASSERT(sizeof(RulesClass)              == 0x18C0);

@@ -12,8 +12,6 @@
 struct Obj_0046AFD0;
 struct Obj_0046B030;
 struct Obj_0046B030_AC;
-struct Obj_0046B540;
-struct Obj_0046B550;
 struct Obj_0046B5A0;
 struct Obj_0046B5B0;
 
@@ -44,18 +42,6 @@ struct Obj_0046B030_AC
     int unknown_2DC;   // +0x02DC
 };
 GG_STATIC_ASSERT(offsetof(Obj_0046B030_AC, unknown_2DC) == 0x2DC);
-
-struct Obj_0046B540
-{
-    // FUNCTION: GAMEMD 0x46B540
-    int FUN_0046B540() const;
-};
-
-struct Obj_0046B550
-{
-    // FUNCTION: GAMEMD 0x46B550
-    int FUN_0046B550() const;
-};
 
 struct Obj_0046B5A0
 {

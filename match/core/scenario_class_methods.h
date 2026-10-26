@@ -389,6 +389,7 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_34CC) == 0x34CC);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_35A2) == 0x35A2);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0000) == 0x0000);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x0218);
+GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 0x3F4);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_11F4) == 0x11F4);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_11F8) == 0x11F8);
 GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_1218) == 0x1218);

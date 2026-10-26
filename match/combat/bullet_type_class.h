@@ -1,96 +1,97 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
-// Provenance: own-binary-via-Ghidra | YRpp-cross-check
-//   Offsets derived from the user's retail gamemd.exe v1.001 via the local
-//   Ghidra CLI (member-access disassembly at 0x46C790 / 0x46C840), cross-checked
-//   against YRpp (every offset and
-//   address reconfirmed numerically below).
-//
-// BulletTypeClass — a projectile *type* (rules-driven template for bullets).
-// Only the two methods in this TU are modelled here: the static type-array
-// lookup/allocate factory (FindOrAllocate) and the ScaledSpawnDelay setter.
-// The full BulletTypeClass layout (every Rules field) is P2 work; here the
-// class is padded to its confirmed retail size (0x2F8) so `operator new` emits
-// the exact `push 0x2F8` allocation seen in FindOrAllocate.
+// Provenance: own-binary-via-Ghidra | RTTI-confirmed-inheritance
+// Retail RTTI CHD identifies ObjectTypeClass as the direct base; field widths
+// and accessed tail offsets are pinned below from the native Bullet methods.
 #ifndef GG_MATCH_COMBAT_BULLET_TYPE_CLASS_H
 #define GG_MATCH_COMBAT_BULLET_TYPE_CLASS_H
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "../_layout/object_type_class.h"
 
-// BulletTypeClass — partial model (only the touched members are named).
-//   * ID         char[] @ 0x24 — confirmed by `MOV ECX,[EAX+ESI*4]; ADD ECX,0x24`
-//                in the FindOrAllocate match loop (the `add ecx,0x24` immediate
-//                pins ID to +0x24); strcmpi'd against the query id.
-//   * ScaledSpawnDelay int @ 0x2E8 — `MOV [ECX+0x2E8],EAX` in SetScaledSpawnDelay.
-//   * sizeof == 0x2F8 — `PUSH 0x2F8` before `operator new` in FindOrAllocate.
-class BulletTypeClass
+class HouseClass;
+
+class BulletTypeClass : public ObjectTypeClass
 {
 public:
-    // STATIC: GAMEMD 0x46C790  (__fastcall)
+    // STATIC: GAMEMD 0x46C790 (__fastcall)
     static BulletTypeClass* FindOrAllocate(const char* id);
-    // FUNCTION: GAMEMD 0x46C840  (__thiscall)
+    // FUNCTION: GAMEMD 0x46C840 (__thiscall)
     void SetScaledSpawnDelay(int delay);
 
-    // GAMEMD 0x46BBC0  BulletTypeClass::BulletTypeClass(const char*) (__thiscall;
-    // returns `this` in EAX). Declared (no body) so FindOrAllocate emits the
-    // reloc'd construct call; matched in its own TU.
+    // Constructor target is recovered in its owning source TU.
     BulletTypeClass* Construct(const char* id);
 
-    char          _base[0x24];               // +0x000  AbstractType/ObjectType base (P2)
-    char          ID[0x18];                  // +0x024  type id string (strcmpi key)
-    char          unknown_3C[0x2A1 - 0x3C]; // +0x03C
-    unsigned char unknown_2A1;               // +0x2A1
-    char          unknown_2A2[0x2E8 - 0x2A2]; // +0x2A2
-    int           ScaledSpawnDelay;          // +0x2E8
-    char          unknown_2EC[0x2F4 - 0x2EC]; // +0x2EC
-    unsigned char unknown_2F4;               // +0x2F4
-    unsigned char unknown_2F5;               // +0x2F5
-    unsigned char unknown_2F6;               // +0x2F6
-    unsigned char unknown_2F7;               // +0x2F7
+    // ObjectTypeClass's two pure slots have concrete BulletType table entries.
+    virtual bool vf_32(const CellStruct* cell, HouseClass* house); // slot 32, table 0x7E4948
+    virtual void* vf_35(void* house);                             // slot 35, table 0x7E4948
+
+    unsigned char unknown_294[6];
+    unsigned char unknown_29A;
+    unsigned char unknown_29B[3];
+    unsigned char unknown_29E;
+    unsigned char unknown_29F[2];
+    unsigned char unknown_2A1;
+    unsigned char unknown_2A2;
+    unsigned char unknown_2A3;
+    unsigned char unknown_2A4[4];
+    unsigned char unknown_2A8;
+    unsigned char unknown_2A9;
+    unsigned char unknown_2AA[0x2DC - 0x2AA];
+    int unknown_2DC;
+    unsigned char unknown_2E0[4];
+    int unknown_2E4;
+    int ScaledSpawnDelay;
+    unsigned char unknown_2EC;
+    unsigned char unknown_2ED[3];
+    int unknown_2F0;
+    unsigned char unknown_2F4;
+    unsigned char unknown_2F5;
+    unsigned char unknown_2F6;
+    unsigned char unknown_2F7;
 };
 
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, ID)               == 0x024);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, _base)             == 0x000);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->_base)         == 0x024);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ID)            == 0x018);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A1)       == 0x2A1);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_3C)         == 0x03C);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_3C)     == 0x265);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A2)        == 0x2A2);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A2)    == 0x046);
+GG_STATIC_ASSERT(sizeof(ObjectTypeClass) == 0x294);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_294) == 0x294);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29A) == 0x29A);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29A) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29E) == 0x29E);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29E) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A1) == 0x2A1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A1) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A3) == 0x2A3);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A3) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A8) == 0x2A8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A8) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A9) == 0x2A9);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A9) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2DC) == 0x2DC);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2DC) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2EC) == 0x2EC);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2EC) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F0) == 0x2F0);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F0) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, ScaledSpawnDelay) == 0x2E8);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ScaledSpawnDelay) == 4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2EC)        == 0x2EC);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2EC)    == 8);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F4)       == 0x2F4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F5)       == 0x2F5);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F6)       == 0x2F6);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F7)       == 0x2F7);
-GG_STATIC_ASSERT(sizeof(BulletTypeClass)                     == 0x2F8);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A1)  == 1);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F4)  == 1);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F5)  == 1);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F6)  == 1);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F7)  == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F4) == 0x2F4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F5) == 0x2F5);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F6) == 0x2F6);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F7) == 0x2F7);
+GG_STATIC_ASSERT(sizeof(BulletTypeClass) == 0x2F8);
 
-// VectorClass head for BulletTypeClass::Array. Items @ +0x04, Count @ +0x10.
-//   Array @ 0xA83C80  =>  &Items == 0xA83C84, &Count == 0xA83C90 (both confirmed
-//   by the absolute loads in FindOrAllocate).
+// VectorClass head for BulletTypeClass::Array.
 struct BulletTypeVector
 {
-    void*              vtable;        // +0x00
-    BulletTypeClass**  Items;        // +0x04
-    int                Capacity;     // +0x08
-    int                IsAllocated;  // +0x0C
-    int                Count;        // +0x10
+    void* vtable;
+    BulletTypeClass** Items;
+    int Capacity;
+    int IsAllocated;
+    int Count;
 };
-
 #if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(BulletTypeVector, Items) == 0x04);  // pointer-width-sensitive
+GG_STATIC_ASSERT(offsetof(BulletTypeVector, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(BulletTypeVector, Count) == 0x10);
 #endif
-
-// GLOBAL: GAMEMD 0xA83C80 — BulletTypeClass::Array.
+// GLOBAL: GAMEMD 0xA83C80
 extern BulletTypeVector BulletTypeClass_Array;
 
 #endif  // GG_MATCH_COMBAT_BULLET_TYPE_CLASS_H

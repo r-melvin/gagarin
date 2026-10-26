@@ -63,6 +63,8 @@ struct IStream;
 
 // Views defined by the module headers that dereference them.
 class DisplayHouse;           // display_reveal.h  (HouseClass)
+class HouseClass;
+class ObjectClass;
 class DisplayCell;            // display_reveal.h  (CellClass)
 struct DisplayScCellObject;   // display_scenario.h (CellClass)
 struct DisplayScIni;          // display_scenario.h (CCINIClass)
@@ -296,6 +298,13 @@ public:
 
     // FUNCTION: GAMEMD 0x00565730 (decl; reloc)
     CellClass* FUN_00565730(const CoordStruct& coord);
+    // FUNCTION: GAMEMD 0x5865E0 (decl; reloc), __thiscall, RET 4.
+    bool IsLocationFogged(const CoordStruct* coord) const;
+    // FUNCTION: GAMEMD 0x578080 (decl; reloc), __thiscall, RET 4.
+    int FUN_00578080(CoordStruct* where);
+    // FUNCTION: GAMEMD 0x5880A0 (decl; hidden CoordStruct result, RET 16).
+    CoordStruct FUN_005880A0(const CoordStruct& from,
+                             const CoordStruct& to, HouseClass* house);
 public:
     virtual void vf_03();                    // 3   0x5656D0
     // The scalar deleting destructor is 0x588BF0; the destructor body is not modelled.
@@ -378,6 +387,10 @@ public:
     DisplayClass();
     // FUNCTION: GAMEMD 0x6AC840 -- tagged load constructor; forwards noInit to MapClass and clears SavedColor.
     DisplayClass(const Obj_005BDF70& noInit);
+
+    // FUNCTION: GAMEMD 0x4A9720 / 0x4A9770 (decl; reloc).
+    void Submit(ObjectClass* object);
+    void Remove(ObjectClass* object);
 
     virtual void vf_05();                                // 5   0x4A8850
     virtual void vf_07();                                // 7   0x4A88C0

@@ -7,6 +7,7 @@
 //
 // Small leaves (64 bytes or less) between 0x470000 and 0x500000 that other
 // translation units already declared as callees but nothing defined.
+#include "../_layout/bullet_class.h"
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
@@ -289,34 +290,13 @@ extern "C" double __cdecl FUN_004CAD50(double value)
     return DAT_0085D0A4[index];
 }
 
-struct Obj_004E1100
-{
-    int unknown_0;
-    int unknown_4;
-    int unknown_8;
-    int unknown_C;
-    int unknown_10;
-    int unknown_14;
-    int unknown_18;
-    int unknown_1C;
-    int unknown_20;
-    int unknown_24;
-
-    Obj_004E1100();
-};
-GG_STATIC_ASSERT(sizeof(Obj_004E1100) == 0x28);
-
 // FUNCTION: GAMEMD 0x004E1100
-Obj_004E1100::Obj_004E1100()
+BulletData::BulletData()
+    : unknown_18(0), unknown_1C(0), unknown_20(0), unknown_24(0)
 {
-    unknown_0 = DAT_00A8ED84;
-    unknown_8 = 0;
-    unknown_C = DAT_00A8ED84;
-    unknown_14 = 0;
-    unknown_18 = 0;
-    unknown_1C = 0;
-    unknown_20 = 0;
-    unknown_24 = 0;
+    // The two timer members initialize to CurrentFrame/zero through their
+    // binary-supported inline default construction; the trailing dwords are
+    // explicitly zeroed here as observed at +0x18..+0x24.
 }
 
 struct Obj_004D2790;

@@ -46,8 +46,16 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"     // ObjectClass spine + CoordStruct
 #include "foot_class.h"       // CellStruct
+#include "../core/small_struct_ctor_methods.h"
 
 class BulletTypeClass;
+class TechnoClass;
+class WeaponTypeClass;
+class AnimClass;
+struct Matrix3D;
+struct Point2D;
+struct RectangleStruct;
+struct VoxelStruct;
 
 // BulletData — the flight-state block embedded at BulletClass+0xB8. Size 0x28,
 // proven by closure: the ctor takes ECX = this+0xB8 and calls its constructor
@@ -57,8 +65,25 @@ class BulletTypeClass;
 #define GG_MATCH_LAYOUT_BULLETDATA_DEFINED
 struct BulletData
 {
-    unsigned char unknown_00[0x28];   // +0x00 .. 0x27
+    Obj_0046B600 unknown_00;          // +0x00..+0x0B, frame/time-left block
+    Obj_0046B600 unknown_0C;          // +0x0C..+0x17, frame/time-left block
+    unsigned int unknown_18;
+    unsigned int unknown_1C;
+    unsigned int unknown_20;
+    unsigned int unknown_24;
+
+    BulletData();
+    BulletData(const AbstractNoInit&) : unknown_00(0), unknown_0C(0) {}
+    // FUNCTION: GAMEMD 0x4E1130 (decl; reloc)
+    void FUN_004E1130(const CoordStruct& from, const CoordStruct& to,
+                      int value, int limit);
 };
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_20) == 0x20);
+GG_STATIC_ASSERT(offsetof(BulletData, unknown_24) == 0x24);
 GG_STATIC_ASSERT(sizeof(BulletData) == 0x28);
 #endif
 
@@ -77,19 +102,47 @@ GG_STATIC_ASSERT(offsetof(BulletVelocity, X) == 0x00);
 GG_STATIC_ASSERT(sizeof(BulletVelocity)      == 0x18);
 #endif
 
+// VTABLE: GAMEMD 0x007E46E4  BulletClass            (COL base 0)
+// VTABLE: GAMEMD 0x007E46C8  BulletClass::(+0x04)
+// VTABLE: GAMEMD 0x007E46C0  BulletClass::(+0x08)
+// VTABLE: GAMEMD 0x007E46B8  BulletClass::(+0x0C)
 class BulletClass : public ObjectClass
 {
 public:
-    // Slots 122-124, introduced by BulletClass (125 slots in all; retail table 0x7E46E4).
-    // Names are placeholders; argument counts come from RET n, return types are not recovered.
-    virtual int vf_122();                                          // 122 0x468000
-    virtual void vf_123(int a1);                                   // 123 0x46B5A0
-    virtual void vf_124(int a1, int a2);                           // 124 0x468670
-    virtual int vf_30();                                           // 30  0x468B90
-    virtual ULONG __stdcall Release();                            // 2   0x46AFF0
+    // No separate entry: Load's placement construction starts the native
+    // ObjectClass no-init chain and invokes the two embedded timer writers.
+    BulletClass(const AbstractNoInit& noInit)
+        : ObjectClass(noInit), Data(noInit) {}
+
+    // Native primary table 0x7E46E4, 125 entries; slot changes are based on
+    // the complete native slot census and their entry bodies.
+    virtual ULONG __stdcall AddRef();                               // 1  0x46AFD0
+    virtual ULONG __stdcall Release();                              // 2  0x46AFF0
+    virtual HRESULT __stdcall GetClassID(CLSID* id);                // 3  0x46B560
+    virtual HRESULT __stdcall Load(IStream* stream);                // 5  0x46AE70
+    virtual HRESULT __stdcall Save(IStream* stream, BOOL clearDirty); // 6  0x46AFB0
+    virtual ~BulletClass();                                         // 8  body 0x466560; deleting 0x46B5C0
+    virtual void vf_10(void* expired, bool removed);                // 10 0x4684E0
+    virtual int vf_11();                                            // 11 0x46B550
+    virtual int vf_12();                                            // 12 0x46B540
+    virtual void vf_23();                                           // 23 0x4666E0
+    virtual int vf_30();                                            // 30 0x468B90
+    virtual ObjectTypeClass* vf_34();                               // 34 0x46B5B0
+    virtual void* vf_66(int a1);                                    // 66 0x466660
+    virtual void vf_69(Point2D* point, RectangleStruct* clip);      // 69 0x468090
+    virtual bool vf_73(int a1);                                     // 73 0x4666C0
+    virtual int vf_122();                                           // 122 0x468000
+    virtual void vf_123(int a1);                                    // 123 0x46B5A0
+    virtual bool vf_124(const CoordStruct& source,
+                        const BulletVelocity& velocity);            // 124 0x468670
+
+    // FUNCTION: GAMEMD 0x46B0C0 (decl; reloc), BulletClass receiver, RET 0x1C.
+    void FUN_0046B0C0(const VoxelStruct* voxel, const Matrix3D& matrix,
+                      Point2D* point, RectangleStruct* clip,
+                      int frame, int flags, int tint);
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
-    void*          Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
+    TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
     unsigned char  unknown_B4;          // +0xB4 ctor MOV byte [ESI+0xB4],BL @0x0046639D
     unsigned char  align_B5[3];         // +0xB5
     BulletData     Data;                // +0xB8 (0x28) ctor LEA ECX,[ESI+0xB8]; CALL 0x004E1100
@@ -102,7 +155,7 @@ public:
     unsigned char  CourseLock;          // +0x105 ctor MOV byte [ESI+0x105],AL(=1) @0x004663B6
     unsigned char  align_106[2];        // +0x106
     int            CourseLockCounter;   // +0x108 ctor @0x004663CB
-    void*          Target;              // +0x10C AbstractClass*; ctor @0x004663D1;
+    AbstractClass* Target;              // +0x10C AbstractClass*; ctor @0x004663D1;
                                         //   setter MOV [ECX+0x10C],EDX @0x004664C8
     int            Speed;               // +0x110 ctor @0x004663D7; setter @0x004664D2
     int            InheritedColor;      // +0x114 ctor @0x004663DD (=-1); also @0x00466533
@@ -115,14 +168,14 @@ public:
     unsigned char  AnimFrame;           // +0x12C ctor @0x004663F5; also @0x00466507
     unsigned char  AnimRateCounter;     // +0x12D ctor @0x004663FB; also @0x00466513
     unsigned char  align_12E[2];        // +0x12E
-    void*          WeaponType;          // +0x130 WeaponTypeClass*; ctor @0x00466401
+    WeaponTypeClass* WeaponType;          // +0x130 WeaponTypeClass*; ctor @0x00466401
     CoordStruct    SourceCoords;        // +0x134 (0xC) ctor @0x00466444/0x0046644A/0x00466450
     CoordStruct    TargetCoords;        // +0x140 (0xC) ctor @0x00466456/0x0046645C/0x00466462
     CellStruct     LastMapCoords;       // +0x14C (4) ctor two word stores @0x00466407/0x0046640E
     int            DamageMultiplier;    // +0x150 read at 0x004697FC and IMUL'd against
                                         //   ObjectClass::Health [ESI+0x6C] — same receiver, so this
                                         //   really is a damage scale on the bullet
-    void*          NextAnim;            // +0x154 AnimClass*; ctor @0x00466419
+    AnimClass*     NextAnim;            // +0x154 AnimClass*; ctor @0x00466419
     unsigned char  SpawnNextAnim;       // +0x158 ctor @0x0046641F
     unsigned char  align_159[3];        // +0x159
     int            unknown_15C;         // +0x15C NOT confirmed (YRpp calls it Range); closes at 0x160
@@ -158,12 +211,8 @@ GG_STATIC_ASSERT(offsetof(BulletClass, LastMapCoords)     == 0x14C);
 GG_STATIC_ASSERT(offsetof(BulletClass, DamageMultiplier)  == 0x150);
 GG_STATIC_ASSERT(offsetof(BulletClass, NextAnim)          == 0x154);
 GG_STATIC_ASSERT(offsetof(BulletClass, SpawnNextAnim)     == 0x158);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->SpawnNextAnim) == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_15C)       == 0x15C);
 GG_STATIC_ASSERT(sizeof(BulletClass)                      == 0x160);
-
-// VTABLE: GAMEMD 0x007E46E4  BulletClass            (COL base 0)
-// VTABLE: GAMEMD 0x007E46C8  BulletClass::(+0x04)
-// VTABLE: GAMEMD 0x007E46C0  BulletClass::(+0x08)
-// VTABLE: GAMEMD 0x007E46B8  BulletClass::(+0x0C)
 
 #endif  // GG_MATCH_LAYOUT_BULLET_CLASS_H

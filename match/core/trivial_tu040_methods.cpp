@@ -27,20 +27,6 @@ bool Obj_0046B030::FUN_0046B030() const
     return (unknown_AC->unknown_2DC > 0) ? true : false;
 }
 
-// FUNCTION: GAMEMD 0x46B540
-// Returns a constant. Vtable slot 12 of BulletClass (RTTI).
-int Obj_0046B540::FUN_0046B540() const
-{
-    return 0x160;
-}
-
-// FUNCTION: GAMEMD 0x46B550
-// Returns a constant. Vtable slot 11 of BulletClass (RTTI).
-int Obj_0046B550::FUN_0046B550() const
-{
-    return 8;
-}
-
 // FUNCTION: GAMEMD 0x46B5A0
 // Stores its argument in a member; pops its stack arguments. Vtable slot 123 of BulletClass (RTTI).
 void Obj_0046B5A0::FUN_0046B5A0(int a1)

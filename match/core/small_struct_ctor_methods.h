@@ -56,7 +56,9 @@ struct Obj_0042D400
     // FUNCTION: GAMEMD 0x42D470
     Obj_0042D400(short a, short b);
 };
+GG_STATIC_ASSERT(offsetof(Obj_0042D400, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(Obj_0042D400, unknown_02) == 0x02);
+GG_STATIC_ASSERT(sizeof(Obj_0042D400) == 0x04);
 
 // Swap-setters: store the new value, hand back the old one.
 struct Obj_00433C00
@@ -106,9 +108,14 @@ struct Obj_0046B600
     char _pad04[0x4];
     int  unknown_08;   // +0x0008
 
+    // Synthetic inline initialization observed through BulletData's 0x4E1100
+    // constructor stores: each timer starts at the current frame with zero left.
+    Obj_0046B600() : unknown_00(CurrentFrame), unknown_08(0) {}
     // FUNCTION: GAMEMD 0x46B640
     Obj_0046B600(int value);
 };
+GG_STATIC_ASSERT(offsetof(Obj_0046B600, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(Obj_0046B600, unknown_08) == 0x08);
+GG_STATIC_ASSERT(sizeof(Obj_0046B600) == 0x0C);
 
 #endif  // GG_MATCH_CORE_SMALL_STRUCT_CTOR_METHODS_H

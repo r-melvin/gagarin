@@ -90,6 +90,7 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage)     == 0xA4);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed)      == 0xA8);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range)      == 0xB4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
