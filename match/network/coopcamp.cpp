@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Op /Ob2
+// Measured /Op retains the native divide-by-60 instruction; /Ob2 emits the
+// three dynamic initializers directly. All existing owner rows remain exact.
 //   Original translation unit coopcamp.cpp. The name is the source-file string at 0x81f370
 //   in retail gamemd.exe v1.001, passed by the assert at 0x49dc91 inside this object's
 //   code range (0x49b180-0x49f0df). Functions are in ascending retail address order.
@@ -26,6 +29,8 @@
 // address-bound PodElem4 stand-ins; no complete pointee-layout or original-TU
 // claim is made.
 
+#include <math.h>
+#pragma intrinsic(pow)
 #include "../_layout/ini_class.h"
 
 // VTABLE: GAMEMD 0x7E1AFC -- List<INIClass::INISection*>.
@@ -101,36 +106,28 @@ GG_STATIC_ASSERT(offsetof(GgNestedCharDynamicVector, CapacityIncrement) == 0x14)
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
-// GLOBAL: GAMEMD 0x7E5BB0
-extern const double DAT_007E5BB0;
-// GLOBAL: GAMEMD 0x89F5A0
-extern double DAT_0089F5A0;
-// GLOBAL: GAMEMD 0x89F658
-extern double DAT_0089F658;
+// Declaration: GAMEMD 0x4CAC40 -- engine table helper; stacked double, ST0 result.
+double __cdecl FUN_004CAC40(double value);
+
 // GLOBAL: GAMEMD 0x89F660
 extern int DAT_0089F660;
 // GLOBAL: GAMEMD 0x89F664
 extern int DAT_0089F664;
 // GLOBAL: GAMEMD 0x89F668
 extern int DAT_0089F668;
+
+// SYNTHETIC: GAMEMD 0x49B180
+// Compiler-generated dynamic initializer for the native double storage.
+// GLOBAL: GAMEMD 0x89F5A0
+double DAT_0089F5A0 = FUN_004CAC40(2.0 * pow(256.0, 2.0));
+
+// SYNTHETIC: GAMEMD 0x49B1B0
 // GLOBAL: GAMEMD 0x89F670
-extern double DAT_0089F670;
+double DAT_0089F670 = DAT_0089F5A0 / 60.0;
 
-// FUNCTION: GAMEMD 0x49B1B0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0049B1B0()
-{
-    DAT_0089F670 = DAT_0089F5A0 / DAT_007E5BB0;
-}
-
-// FUNCTION: GAMEMD 0x49B1D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0049B1D0()
-{
-    DAT_0089F658 = DAT_007E1718 / DAT_0089F670;
-}
+// SYNTHETIC: GAMEMD 0x49B1D0
+// GLOBAL: GAMEMD 0x89F658
+double DAT_0089F658 = 1.0 / DAT_0089F670;
 
 // FUNCTION: GAMEMD 0x49B350
 // Static-initialiser shape: stores constants to adjacent globals.

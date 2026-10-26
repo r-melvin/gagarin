@@ -86534,7 +86534,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B1B0",
-  "sym": "?FUN_0049B1B0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
   "name": "FUN_0049B1B0",
   "status": "matched",
@@ -86543,7 +86543,7 @@
  {
   "tu": "match/network/coopcamp.cpp",
   "addr": "0x49B1D0",
-  "sym": "?FUN_0049B1D0@@YAXXZ",
+  "sym": "_$E8",
   "len": "0x13",
   "name": "FUN_0049B1D0",
   "status": "matched",
@@ -99279,6 +99279,15 @@
   "sym": "?FUN_004C93D0@FacingClass@@QBE?AUDirStruct@@XZ",
   "len": "0x99",
   "name": "FacingClass::FUN_004C93D0",
+  "status": "matched",
+  "pct": 100
+ },
+ {
+  "tu": "match/network/coopcamp.cpp",
+  "addr": "0x49B180",
+  "sym": "_$E2",
+  "len": "0x28",
+  "name": "compiler-generated initializer",
   "status": "matched",
   "pct": 100
  }
