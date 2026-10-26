@@ -50,7 +50,6 @@
 //   GLOBAL:   GAMEMD 0x87F7E8   RadarClass::Instance
 
 #include "../core/deleting_dtor_sweep.h"
-#include "../network/transport/winsock_interface_class.h"
 #include "../_layout/pipe.h"
 #include "../_layout/straw.h"
 
@@ -64,8 +63,25 @@
 #include "../_rt/gg_static_assert.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
+extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 #include "radar_class.h"
+#include "input_controls/ui_common.h"
+#include "shape_button_class.h"
+#include "../platform/ccini_class_small_readers_methods.h"
+#include "../platform/file_system_load_whole_methods.h"
+#include "../renderer/pixel_shift_view.h"
+#include "../network/multiplayer_game_mode.h"
+
+// The native vptr at RadarClass+0x1224 is 0x7E3890, whose retail RTTI type
+// is DynamicVectorClass<Cell>. Serialization reads the element's dword at +0;
+// Elem_0042F670 is the existing four-byte ABI view for that value.
+typedef DynamicVectorClass<Cell> RadarCellVector;
+GG_STATIC_ASSERT(sizeof(RadarCellVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(Elem_0042F670) == 4);
+GG_STATIC_ASSERT(offsetof(Elem_0042F670, Value) == 0);
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -81,6 +97,114 @@ extern "C" short DAT_00AA0168[256];
 extern "C" int DAT_00B45B68;
 // GLOBAL: GAMEMD 0x008B4130
 extern "C" int DAT_008B4130;
+
+// STRING: GAMEMD 0x008392DC
+extern const char DAT_008392DC[]; // "RadarClass::One_Time()\n"
+// STRING: GAMEMD 0x008392C0
+extern const char DAT_008392C0[]; // "EVA_IncomingTransmission"
+// STRING: GAMEMD 0x00839314
+extern const char DAT_00839314[]; // "RadarClass::Init_Clear\n"
+// STRING: GAMEMD 0x008392F4
+extern const char DAT_008392F4[]; // "RadarClass::Init_Clear done\n"
+// STRING: GAMEMD 0x0083932C
+extern const char DAT_0083932C[]; // "RadarClass::Init_For_House()\n"
+// GLOBAL: GAMEMD 0x008391F4 (pointer to the string at 0x839288)
+extern const char* DAT_008391F4;
+// GLOBAL: GAMEMD 0x008391F8 (pointer to the string at 0x83927C)
+extern const char* DAT_008391F8;
+
+// GLOBAL: GAMEMD 0x007F5BF8
+extern int DAT_007F5BF8;
+// GLOBAL: GAMEMD 0x00886FA8
+extern int DAT_00886FA8;
+// GLOBAL: GAMEMD 0x00A8EB7C
+extern unsigned char DAT_00A8EB7C;
+// GLOBAL: GAMEMD 0x00A8EDA0
+extern int DAT_00A8EDA0;
+// GLOBAL: GAMEMD 0x00A8B238
+extern int DAT_00A8B238;
+// GLOBAL: GAMEMD 0x00A8B230 -- scenario object pointer, used at native offset +0x34B8.
+extern char* DAT_00A8B230;
+// GLOBAL: GAMEMD 0x00A8B23C -- game-mode object pointer.
+extern MultiplayerGameMode* DAT_00A8B23C;
+// GLOBAL: GAMEMD 0x00A8ED6B
+extern bool DisplayFlag_00A8ED6B;
+// GLOBAL: GAMEMD 0x0087F6CC -- value stored as ShapeButtonClass::Convert.
+extern int DAT_0087F6CC;
+// GLOBAL: GAMEMD 0x00B04A20
+extern int DAT_00B04A20;
+// GLOBAL: GAMEMD 0x00B04A24
+extern int DAT_00B04A24;
+// GLOBAL: GAMEMD 0x00B04A28
+extern int DAT_00B04A28;
+// GLOBAL: GAMEMD 0x00B04A30
+extern int DAT_00B04A30;
+// GLOBAL: GAMEMD 0x00B04A00
+extern int DAT_00B04A00;
+// GLOBAL: GAMEMD 0x00B04A04
+extern int DAT_00B04A04;
+// GLOBAL: GAMEMD 0x00B04A08
+extern int DAT_00B04A08;
+// GLOBAL: GAMEMD 0x00B04A0C
+extern int DAT_00B04A0C;
+// GLOBAL: GAMEMD 0x00B04A1C
+extern int DAT_00B04A1C;
+// GLOBAL: GAMEMD 0x00B048C8
+extern int DAT_00B048C8;
+// GLOBAL: GAMEMD 0x00B048CC
+extern int DAT_00B048CC;
+// GLOBAL: GAMEMD 0x00B048D0
+extern int DAT_00B048D0;
+// GLOBAL: GAMEMD 0x00B048D4
+extern int DAT_00B048D4;
+// GLOBAL: GAMEMD 0x00B048E0
+extern void* DAT_00B048E0;
+// GLOBAL: GAMEMD 0x00B048AC
+extern void* DAT_00B048AC;
+// GLOBAL: GAMEMD 0x00B048F9
+extern unsigned char DAT_00B048F9;
+// GLOBAL: GAMEMD 0x00B048F8
+extern unsigned char DAT_00B048F8;
+// GLOBAL: GAMEMD 0x00B04A38
+extern ShapeHeader* DAT_00B04A38;
+// GLOBAL: GAMEMD 0x00B0F9E0
+extern ShapeHeader* DAT_00B0F9E0;
+// GLOBAL: GAMEMD 0x00B0FA68
+extern ShapeHeader* DAT_00B0FA68;
+// GLOBAL: GAMEMD 0x00B049CC
+extern unsigned char DAT_00B049CC;
+// GLOBAL: GAMEMD 0x00B04964
+extern unsigned char DAT_00B04964;
+// GLOBAL: GAMEMD 0x00B049A5
+extern unsigned char DAT_00B049A5;
+// GLOBAL: GAMEMD 0x00B0493D
+extern unsigned char DAT_00B0493D;
+// GLOBAL: GAMEMD 0x00B04978
+extern ShapeButtonClass RadarButtonF2_00B04978;
+// GLOBAL: GAMEMD 0x00B04910
+extern ShapeButtonClass RadarButtonF3_00B04910;
+// GLOBAL: GAMEMD 0x00B0B3A0
+extern ShapeButtonClass RepairButton_00B0B3A0;
+// GLOBAL: GAMEMD 0x00B07DF8
+extern ShapeButtonClass SellButton_00B07DF8;
+// GLOBAL: GAMEMD 0x00B0B518
+extern unsigned char SidebarTouched_00B0B518;
+// GLOBAL: GAMEMD 0x00B0FA1C (three channel bytes at +0..+2; accessed as a dword and byte fields)
+struct RadarColorSamples_00B0FA1C { unsigned char Red, Green, Blue, unknown_03; };
+GG_STATIC_ASSERT(offsetof(RadarColorSamples_00B0FA1C, Green) == 1);
+GG_STATIC_ASSERT(offsetof(RadarColorSamples_00B0FA1C, Blue) == 2);
+GG_STATIC_ASSERT(sizeof(RadarColorSamples_00B0FA1C) == 4);
+extern RadarColorSamples_00B0FA1C DAT_00B0FA1C;
+// FUNCTION: GAMEMD 0x406060 (decl; reloc) -- end the loop on Radar's +0x14C0 audio handle.
+void __fastcall FUN_00406060(Obj_00405B00* handle);
+// FUNCTION: GAMEMD 0x53BAE0 (decl; reloc)
+bool __cdecl FUN_0053BAE0();
+// FUNCTION: GAMEMD 0x753580 (decl; reloc)
+void FUN_00753580();
+// FUNCTION: GAMEMD 0x65FDD0 (decl; reloc)
+void FUN_0065FDD0();
+// FUNCTION: GAMEMD 0x72F510 (decl; reloc)
+int FUN_0072F510();
 
 // ---------------------------------------------------------------------------
 
@@ -499,7 +623,6 @@ class VoxClass;
 class VoxelAnimTypeClass;
 class WaveClass;
 class WaypointPathClass;
-#include "../network/transport/winsock_interface_class.h"
 namespace WorldDominationTour
 {
     class Centroid;
@@ -652,14 +775,25 @@ void Obj_00652CD0::FUN_00652CD0()
     unknown_14FC = 0x19;
 }
 
-// GLOBAL: GAMEMD 0x00B048E0
-extern void* DAT_00B048E0;
-// GLOBAL: GAMEMD 0x00B048AC
-extern void* DAT_00B048AC;
-// GLOBAL: GAMEMD 0x00B048F9
-extern unsigned char DAT_00B048F9;
-// GLOBAL: GAMEMD 0x00B048F8
-extern unsigned char DAT_00B048F8;
+// FUNCTION: GAMEMD 0x652CF0
+void RadarClass::vf_05()
+{
+    FUN_004068E0(DAT_008392DC);
+    unknown_1200 = 0x8C;
+    unknown_11F8 = 0x8C;
+    unknown_11E4 = 0;
+    unknown_11E8 = 0x10;
+    unknown_11EC = 0x30;
+    unknown_1204 = 0x6C;
+    unknown_11FC = 0x6C;
+    unknown_11F4 = 0x31;
+    DisplayClass::vf_05();
+    DAT_00B04A20 = unknown_11F4;
+    DAT_00B04A24 = unknown_1200;
+    DAT_00B04A28 = unknown_1204;
+    DAT_00B04A30 = 0xDF;
+    unknown_14D4 = FUN_00753250(DAT_008392C0);
+}
 
 // FUNCTION: GAMEMD 0x00652D90
 void RadarClass::vf_50()
@@ -676,6 +810,285 @@ void RadarClass::vf_50()
     DAT_00B048AC = 0;
 }
 
+// FUNCTION: GAMEMD 0x652DE0
+void RadarClass::vf_07()
+{
+    DisplayClass::vf_07();
+    FUN_004068E0(DAT_00839314);
+    unknown_14AC = 0;
+    unknown_14B0 = 0;
+    unknown_14BD = 0;
+    unknown_14BC = 0;
+    unknown_14FC = 0;
+    unknown_14D8 = 0;
+    unknown_14D9 = 1;
+    unknown_1224.Clear();
+    unknown_125C.Clear();
+    FUN_004068E0(DAT_008392F4);
+}
+
+// FUNCTION: GAMEMD 0x652E90
+void RadarClass::vf_53()
+{
+    FUN_004068E0(DAT_0083932C);
+    vf_50();
+    if (*(int*)(DAT_00A8B230 + 0x34B8) == 0) {
+        unknown_11F0 = (DAT_007F5BF8 - 0x90) / 2 + 4;
+        DAT_00B04A00 = unknown_11E4 + 0x0B;
+        DAT_00B048CC = unknown_11E8 + 4;
+        DAT_00B048C8 = unknown_11E4 + 0x53;
+    } else {
+        unknown_11F0 = (DAT_007F5BF8 - 0x91) / 2 + 5;
+        DAT_00B04A00 = unknown_11E4 + 0x0E;
+        DAT_00B048CC = unknown_11E8 + 5;
+        DAT_00B048C8 = unknown_11E4 + 0x56;
+    }
+    DAT_00B04A1C = unknown_11F0;
+    DAT_00B04A04 = DAT_00B048CC;
+    DAT_00B048E0 = FileSystem_LoadWholeFileEx(DAT_008391F4, (bool*)&DAT_00B048F9);
+    DAT_00B048AC = FileSystem_LoadWholeFileEx(DAT_008391F8, (bool*)&DAT_00B048F8);
+    DAT_00B04A08 = (int)*(short*)((char*)DAT_00B048E0 + 2);
+    DAT_00B04A0C = (int)*(short*)((char*)DAT_00B048E0 + 4);
+    DAT_00B048D0 = (int)*(short*)((char*)DAT_00B048AC + 2);
+    DAT_00B048D4 = (int)*(short*)((char*)DAT_00B048AC + 4);
+    DAT_00B04A38 = DAT_00B0FA68;
+    unknown_1208 = (((unsigned int)DAT_00B0FA1C.Blue >> (gg_b_translucent_pixel_format.loss2 & 31))
+                      << (gg_b_translucent_pixel_format.pos2 & 31))
+        | (((unsigned int)DAT_00B0FA1C.Green >> (gg_b_translucent_pixel_format.loss1 & 31))
+                      << (gg_b_translucent_pixel_format.pos1 & 31))
+        | (((unsigned int)DAT_00B0FA1C.Red >> (gg_b_translucent_pixel_format.loss0 & 31))
+                      << (gg_b_translucent_pixel_format.pos0 & 31));
+}
+
+// FUNCTION: GAMEMD 0x653010
+void RadarClass::vf_08()
+{
+    DisplayClass::vf_08();
+    if (!DisplayFlag_00A8ED6B) {
+        ShapeButtonClass& f2 = RadarButtonF2_00B04978;
+        f2.ID = 0xF2;
+        f2.UsesSidebarSurface = 1;
+        f2.Convert = (ColorConvert*)DAT_0087F6CC;
+        DAT_00B049A5 = 0;
+        f2.unknown_30 = 0;
+        f2.Flags = 5;
+        f2.GadgetClass::SetPosition(DAT_00B04A00, DAT_00B04A04);
+        f2.ShapeButtonClass::vf_34((ShapeHeader*)DAT_00B048E0, 0, 0);
+        f2.GadgetClass::MarkRedraw();
+
+        ShapeButtonClass& f3 = RadarButtonF3_00B04910;
+        f3.Convert = (ColorConvert*)DAT_0087F6CC;
+        f3.ID = 0xF3;
+        f3.UsesSidebarSurface = 1;
+        DAT_00B0493D = 0;
+        f3.unknown_30 = 0;
+        f3.Flags = 5;
+        f3.GadgetClass::SetPosition(DAT_00B048C8, DAT_00B048CC);
+        f3.ShapeButtonClass::vf_34((ShapeHeader*)DAT_00B048AC, 0, 0);
+        f3.GadgetClass::MarkRedraw();
+    }
+}
+
+// FUNCTION: GAMEMD 0x653100
+void RadarClass::vf_16(bool forced)
+{
+    if (DisplayFlag_00A8ED6B) {
+        unknown_14DA = 0;
+        unknown_14D9 = 0;
+        return;
+    }
+
+    unknown_14DA = (unknown_14DA == 1 || forced == 1) ? 1 : 0;
+    unknown_14D9 = (unknown_14D9 == 1 || unknown_14DA == 1) ? 1 : 0;
+    bool timerExpired = false;
+
+    if (unknown_14D9 == 1) {
+        Point2D pos(unknown_11E4, unknown_11E8);
+        Rect clip = DAT_00887300->GetRect();
+        FUN_004AED70(DAT_00887300, (ColorConvert*)DAT_0087F6CC, DAT_00B0F9E0, 0,
+                     &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
+                     Point2D(0, 0));
+        RadarButtonF2_00B04978.ShapeButtonClass::Draw(1);
+        RadarButtonF3_00B04910.ShapeButtonClass::Draw(1);
+    }
+
+    if (unknown_14AC != 0 && unknown_14AC != 1) {
+        int remaining = unknown_1500.unknown_08;
+        if (unknown_1500.unknown_00 != -1) {
+            int elapsed = unknown_1500.unknown_04.GetTime()
+                - unknown_1500.unknown_00;
+            if (elapsed < remaining)
+                remaining -= elapsed;
+            else
+                remaining = 0;
+        }
+
+        if (remaining == 0) {
+            unknown_1500.unknown_00 = unknown_1500.unknown_04.GetTime();
+            unknown_1500.unknown_08 = 4;
+            timerExpired = true;
+
+            if (unknown_14AC == 2) {
+                --unknown_14FC;
+                if (unknown_14FC < 1) {
+                    unknown_14AC = 0;
+                    FUN_00406060(&unknown_14C0);
+                    unknown_14FC = 0;
+                }
+            } else {
+                ++unknown_14FC;
+                if (unknown_14FC >= 32) {
+                    FUN_00406060(&unknown_14C0);
+                    unknown_14AC = 1;
+                    unknown_14DA = 1;
+                    unknown_14FC = 32;
+                }
+            }
+        }
+    }
+
+    if (unknown_14AC != 1 &&
+        (unknown_14D9 == 1 || timerExpired) &&
+        unknown_14FC >= 0 &&
+        unknown_14FC < (int)DAT_00B04A38->Frames) {
+        ColorConvert* convert = (ColorConvert*)FUN_0072F510();
+        Point2D pos(unknown_11E4, unknown_11EC);
+        Rect clip = DAT_00887300->GetRect();
+        FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, unknown_14FC,
+                     &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
+                     Point2D(0, 0));
+        unknown_120C = unknown_11E4;
+        unknown_1210 = unknown_11EC;
+        unknown_1214 = DAT_007F5BF8;
+        unknown_1218 = 0x6E;
+    }
+
+    FUN_0065FDD0();
+    FUN_00656EC0();
+
+    if (unknown_14AC != 1) {
+        switch (unknown_14B0) {
+        case 1:
+        case 4:
+            break;
+        case 2:
+            if (unknown_14D9 == 1) {
+                unknown_14D9 = 0;
+                if (unknown_14DA != 0) {
+                    ColorConvert* convert = (ColorConvert*)FUN_0072F510();
+                    Point2D pos(unknown_11E4, unknown_11EC);
+                    Rect clip = DAT_00887300->GetRect();
+                    FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, 0x20,
+                                 &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
+                                 Point2D(0, 0));
+                    FUN_00653FA0();
+                    unknown_120C = unknown_11E4;
+                    unknown_1210 = unknown_11EC;
+                    unknown_1214 = 0xA8;
+                    unknown_1218 = 0x6E;
+                } else {
+                    FUN_00653FA0();
+                    unknown_120C = unknown_11F0;
+                    unknown_1210 = unknown_11F4;
+                    unknown_1214 = unknown_1200;
+                    unknown_1218 = unknown_1204;
+                }
+            }
+            break;
+        case 3:
+            FUN_006579E0();
+            break;
+        default:
+            if (unknown_14D9 == 1) {
+                unknown_14D9 = 0;
+                ColorConvert* convert = (ColorConvert*)FUN_0072F510();
+                Point2D pos(unknown_11E4, unknown_11EC);
+                Rect clip = DAT_00887300->GetRect();
+                FUN_004AED70(DAT_00887300, convert, DAT_00B04A38, 0,
+                             &pos, &clip, 0, 0, 0, 0, 1000, 0, 0, 0,
+                             Point2D(0, 0));
+                unknown_120C = unknown_11E4;
+                unknown_1210 = unknown_11EC;
+                unknown_1214 = 0xA8;
+                unknown_1218 = 0x6E;
+            }
+            break;
+        }
+    }
+
+    if (unknown_14DA != 0) {
+        unknown_14DA = 0;
+        RepairButton_00B0B3A0.ShapeButtonClass::Draw(1);
+        SellButton_00B07DF8.ShapeButtonClass::Draw(1);
+    }
+
+    if (DAT_00B049CC != 0) {
+        int x = unknown_120C;
+        int y = unknown_1210;
+        int width = unknown_1214;
+        int height = unknown_1218;
+        if (width > 0 && height > 0) {
+            if (DAT_00B04A08 >= 1 && DAT_00B04A0C >= 1) {
+                if (DAT_00B04A00 < x) {
+                    width += x - DAT_00B04A00;
+                    x = DAT_00B04A00;
+                }
+                if (DAT_00B04A04 < y) {
+                    height += y - DAT_00B04A04;
+                    y = DAT_00B04A04;
+                }
+                if (x + width < DAT_00B04A08 + DAT_00B04A00)
+                    width = DAT_00B04A08 - x + 1 + DAT_00B04A00;
+                if (y + height < DAT_00B04A0C + DAT_00B04A04)
+                    height = DAT_00B04A04 - y + 1 + DAT_00B04A0C;
+            }
+        } else {
+            x = DAT_00B04A00;
+            y = DAT_00B04A04;
+            width = DAT_00B04A08;
+            height = DAT_00B04A0C;
+        }
+        unknown_120C = x;
+        unknown_1210 = y;
+        unknown_1214 = width;
+        unknown_1218 = height;
+        SidebarTouched_00B0B518 = 1;
+    }
+
+    if (DAT_00B04964 != 0) {
+        int x = unknown_120C;
+        int y = unknown_1210;
+        int width = unknown_1214;
+        int height = unknown_1218;
+        if (width > 0 && height > 0) {
+            if (DAT_00B048D0 >= 1 && DAT_00B048D4 >= 1) {
+                if (DAT_00B048C8 < x) {
+                    width += x - DAT_00B048C8;
+                    x = DAT_00B048C8;
+                }
+                if (DAT_00B048CC < y) {
+                    height += y - DAT_00B048CC;
+                    y = DAT_00B048CC;
+                }
+                if (x + width < DAT_00B048D0 + DAT_00B048C8)
+                    width = DAT_00B048D0 - x + 1 + DAT_00B048C8;
+                if (y + height < DAT_00B048D4 + DAT_00B048CC)
+                    height = DAT_00B048D4 - y + 1 + DAT_00B048CC;
+            }
+        } else {
+            x = DAT_00B048C8;
+            y = DAT_00B048CC;
+            width = DAT_00B048D0;
+            height = DAT_00B048D4;
+        }
+        unknown_120C = x;
+        unknown_1210 = y;
+        unknown_1214 = width;
+        unknown_1218 = height;
+        SidebarTouched_00B0B518 = 1;
+    }
+}
+
 // FUNCTION: GAMEMD 0x653750
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00653750(int a1, int a2)
@@ -688,6 +1101,50 @@ bool Obj_00653830::FUN_00653830(int a1, int a2, int a3)
 {
     return (FUN_004A9CA0(this, a2, a1, a2, a3) != 0) ? true : false;
 }
+
+// FUNCTION: GAMEMD 0x653850
+void RadarClass::vf_10(int* key, Point2D* where)
+{
+    DisplayClass::vf_10(key, where);
+    int offset = DAT_00A8EB7C ? DAT_00886FA8 : 0;
+    if (DAT_00B04A00 + offset <= where->X &&
+        where->X < DAT_00B04A00 + offset + DAT_00B04A08 &&
+        DAT_00B04A04 <= where->Y &&
+        where->Y < DAT_00B04A04 + DAT_00B04A0C)
+        Map_0087F7E8.MouseClass::vf_19(0, false);
+    if (DAT_00B048C8 + offset <= where->X &&
+        where->X < DAT_00B048C8 + offset + DAT_00B048D0 &&
+        DAT_00B048CC <= where->Y &&
+        where->Y < DAT_00B048CC + DAT_00B048D4)
+        Map_0087F7E8.MouseClass::vf_19(0, false);
+
+    if (*key == 0x80F2) {
+        if (DAT_00A8B238 == 0) {
+            DAT_00A8EDA0 = 9;
+        } else if ((DAT_00A8B238 == 3 || DAT_00A8B238 == 4) &&
+                   DAT_00A8B23C != 0 && DAT_00A8B23C->vf_2() &&
+                   DAT_00A8B23C->vf_1()) {
+            DAT_00A8EDA0 = 9;
+        } else {
+            DAT_00A8EDA0 = 8;
+        }
+    } else if (*key == 0x80F3) {
+        DAT_00A8EDA0 = 1;
+    }
+
+    if (DAT_00B45B68 > 0 && unknown_14B0 != 3 && unknown_14B0 != 4) {
+        unknown_14B4 = unknown_14B0;
+        FUN_00656CB0(4, 0);
+        unknown_14B8 = 0;
+    }
+    if (unknown_14B0 == 4) {
+        FUN_006578F0();
+        return;
+    }
+    if (!FUN_0053BAE0())
+        FUN_00753580();
+}
+
 
 // FUNCTION: GAMEMD 0x653F50  (__thiscall)
 // RadarClass override of MapClass::CreateEmptyMap — a pure forward to the base
@@ -804,6 +1261,40 @@ Record_00656580* Obj_00656580::FUN_00656580(const Key_00656580* key)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x656AC0
+long RadarClass::vf_31(IStream* stream)
+{
+    long hr = DisplayClass::vf_31(stream);
+    if (hr < 0)
+        return hr;
+
+    int pointCount = unknown_125C.Count;
+    hr = stream->Write(&pointCount, 4, 0);
+    if (hr < 0) return hr;
+    int i;
+    for (i = 0; i < pointCount; ++i) {
+        hr = stream->Write(&unknown_125C.Items[i], 8, 0);
+        if (hr < 0) return hr;
+    }
+
+    int valueCount = unknown_1224.Count;
+    hr = stream->Write(&valueCount, 4, 0);
+    if (hr < 0) return hr;
+    for (i = 0; i < valueCount; ++i) {
+        hr = stream->Write(&reinterpret_cast<Elem_0042F670*>(unknown_1224.Items)[i].Value, 4, 0);
+        if (hr < 0) return hr;
+    }
+
+    hr = stream->Write(&unknown_14B0, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&unknown_14AC, 4, 0);
+    if (hr < 0) return hr;
+    hr = stream->Write(&unknown_14B4, 4, 0);
+    if (hr < 0) return hr;
+    return stream->Write(&unknown_14B8, 4, 0);
+}
+
+
 // FUNCTION: GAMEMD 0x656CA0
 // Returns a comparison result.
 bool Obj_00656CA0::FUN_00656CA0() const

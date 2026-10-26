@@ -545,27 +545,81 @@ public:
     virtual void vf_52();                                // 52  0x653F70
     virtual void vf_53();                                // 53  0x652E90 (load the art)
 
+    // FUNCTION: GAMEMD 0x656EC0 (decl; reloc)
+    void FUN_00656EC0();
+    // FUNCTION: GAMEMD 0x653FA0 (decl; reloc)
+    void FUN_00653FA0();
+    // FUNCTION: GAMEMD 0x6579E0 (decl; reloc)
+    void FUN_006579E0();
+    // FUNCTION: GAMEMD 0x656CB0 (decl; reloc)
+    void FUN_00656CB0(int, int);
+    // FUNCTION: GAMEMD 0x6578F0 (decl; reloc)
+    void FUN_006578F0();
+
     // FUNCTION: GAMEMD 0x652E50 (decl; reloc) -- RET 4.
     void FUN_00652E50(bool on);
 
     // Retail constructor 0x6A4F20: vector members at +0x1224/+0x125C/+0x1278,
     // followed by the timer at +0x1500. Other bytes remain unclassified.
-    char unknown_11E4[0x1224 - 0x11E4];
-    DynamicVectorClass_0042F670 unknown_1224;
+    int unknown_11E4;
+    int unknown_11E8;
+    int unknown_11EC;
+    int unknown_11F0;
+    int unknown_11F4;
+    int unknown_11F8;
+    int unknown_11FC;
+    int unknown_1200;
+    int unknown_1204;
+    int unknown_1208;
+    int unknown_120C;
+    int unknown_1210;
+    int unknown_1214;
+    int unknown_1218;
+    void* unknown_121C;
+    void* unknown_1220;
+    DynamicVectorClass<Cell> unknown_1224;
     char unknown_123C[0x125C - 0x123C];
     DynamicVectorClass<Point2D> unknown_125C;
-    char unknown_1274[0x1278 - 0x1274];
+    char unknown_1274[4];
     DynamicVectorClass<Point2D> unknown_1278[0x16];
-    char unknown_1488[0x1490 - 0x1488];
+    char unknown_1488[8];
     int unknown_1490;                         // +0x1490 [Radar] SetVisibleRect state
     int unknown_1494;                         // +0x1494 [Radar] SetVisibleRect state
     int unknown_1498;                         // +0x1498 [Radar] tracking sentinel
     RectangleStruct RadarBounds;             // +0x149C [Radar] visible-cell bounds
-    char unknown_14AC[0x14C0 - 0x14AC];
+    int unknown_14AC;
+    int unknown_14B0;
+    int unknown_14B4;
+    int unknown_14B8;
+    char unknown_14BC;
+    unsigned char unknown_14BD;
+    char unknown_14BE[2];
     Obj_00405B00 unknown_14C0;
-    char unknown_14D0[0x1500 - 0x14D0];
+    char unknown_14D0[4];
+    int unknown_14D4;
+    unsigned char unknown_14D8;
+    unsigned char unknown_14D9;
+    unsigned char unknown_14DA;
+    char unknown_14DB[0x21];
+    int unknown_14FC;
     ScenarioElapsedTimer unknown_1500;
 };
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11E4) == 0x11E4);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11E8) == 0x11E8);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11EC) == 0x11EC);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11F0) == 0x11F0);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11F4) == 0x11F4);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11F8) == 0x11F8);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_11FC) == 0x11FC);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1200) == 0x1200);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1204) == 0x1204);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1208) == 0x1208);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_120C) == 0x120C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1210) == 0x1210);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1214) == 0x1214);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1218) == 0x1218);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_121C) == 0x121C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1220) == 0x1220);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1224) == 0x1224);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_125C) == 0x125C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1278) == 0x1278);
@@ -574,6 +628,17 @@ GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1490) == 0x1490);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1494) == 0x1494);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1498) == 0x1498);
 GG_STATIC_ASSERT(offsetof(RadarClass, RadarBounds) == 0x149C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14AC) == 0x14AC);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14B0) == 0x14B0);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14B4) == 0x14B4);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14B8) == 0x14B8);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14BC) == 0x14BC);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14BD) == 0x14BD);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D4) == 0x14D4);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D8) == 0x14D8);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D9) == 0x14D9);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14DA) == 0x14DA);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14FC) == 0x14FC);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1500) == 0x1500);
 GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);
 
