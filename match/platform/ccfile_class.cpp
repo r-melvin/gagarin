@@ -27,6 +27,10 @@
 #include "ccfile_class.h"
 #include "../core/string_class.h"
 #include <string.h>
+#include "../_layout/cd_search_path.h"
+#include <windows.h>
+// Preserve the native RawFile method name; call the Win32 import explicitly.
+#undef DeleteFile
 
 #pragma function(memcpy)
 
@@ -221,6 +225,56 @@ void CCFileClass::Close()
     this->BufferIOFileClass::Close();
 }
 
+// FUNCTION: GAMEMD 0x47AE10  CDFileClass::SetFileName (__thiscall, slot 2)
+//
+// Binds the file name, then, unless CD searching is disabled for this file,
+// there is no search path list, or the bare name already exists, tries the
+// name under each search-path prefix in turn until one exists. If none does
+// the bare name is restored. Either way the (virtual) bound name is returned.
+const char* CDFileClass::SetFileName(const char* name)
+{
+    char buffer[260];
+
+    BufferIOFileClass::SetFileName(name);
+
+    if (this->IsDisabled || DAT_0089E410 == 0 || BufferIOFileClass::Exists(0)) {
+        return this->GetFileName();
+    }
+
+    for (SearchPath_0047AE10* node = DAT_0089E410; node != 0; node = node->Next) {
+        strcpy(buffer, node->Path);
+        strcat(buffer, name);
+        BufferIOFileClass::SetFileName(buffer);
+        if (BufferIOFileClass::Exists(0)) {
+            return this->GetFileName();
+        }
+    }
+    BufferIOFileClass::SetFileName(name);
+
+    return this->GetFileName();
+}
+
+// FUNCTION: GAMEMD 0x47AF10  (__thiscall)
+// CDFileClass::OpenEx — close any open file, reject a null name via the CD
+// error path, then bind the name + open. When the CD file is live (not disabled)
+// and the request is read-only (access != write/2), the name is set virtually so
+// a derived override can intercept; otherwise the buffered-file name is set
+// directly. Either way the open forwards to BufferIOFileClass::Open.
+int CDFileClass::OpenEx(const char* pFileName, FileAccessMode access)
+{
+    this->BufferIOFileClass::Close();
+    if (pFileName == 0) {
+        this->CDCheck(2, false, pFileName);
+    }
+    if (this->IsDisabled == false && access != 2) {
+        this->SetFileName(pFileName);
+        return this->BufferIOFileClass::Open(access);
+    }
+    this->BufferIOFileClass::SetFileName(pFileName);
+    return this->BufferIOFileClass::Open(access);
+}
+
+
 // RawFile name/size/bias methods. Provisional shared ownership, preserving
 // the contributors' default VC6 flags and existing body spellings.
 // LIBRARY: GAMEMD 0x007C93E8
@@ -299,6 +353,28 @@ int RawFileClass::GetFileSize()
     }
 
     return this->FileSize;
+}
+
+// FUNCTION: GAMEMD 0x65D190  (__thiscall)
+// RawFileClass::DeleteFile — close, validate the name, ensure the file exists,
+// then ask Win32 to delete it. A null name or a Win32 failure routes through the
+// CD/error virtual (CDCheck); only a successful DeleteFileA returns true.
+int RawFileClass::DeleteFile()
+{
+    this->Close();
+    if (this->FileName == 0) {
+        this->CDCheck(2, false, 0);
+        return 0;
+    }
+    if (!this->Exists(false)) {
+        return 0;
+    }
+    BOOL ok = ::DeleteFileA(this->FileName);
+    if (ok == 0) {
+        this->CDCheck(GetLastError(), ok != 0, this->FileName);
+        return 0;
+    }
+    return 1;
 }
 
 // FUNCTION: GAMEMD 0x65D2B0  (__thiscall)

@@ -27111,7 +27111,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_ops_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x47AF10",
   "sym": "?OpenEx@CDFileClass@@UAEHPBDI@Z",
   "len": "0x59",
@@ -27120,13 +27120,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_ops_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65D190",
   "sym": "?DeleteFile@RawFileClass@@UAEHXZ",
   "len": "0x5F",
   "name": "RawFileClass::DeleteFile",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class.cpp",
@@ -27147,13 +27147,13 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_set_name_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x47AE10",
   "sym": "?SetFileName@CDFileClass@@UAEPBDPBD@Z",
   "len": "0xF4",
   "name": "CDFileClass::SetFileName",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccini_class_abilities_methods.cpp",

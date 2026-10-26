@@ -288,6 +288,10 @@ GG_STATIC_ASSERT(offsetof(FileClass, SkipCDCheck) == 4);
 GG_STATIC_ASSERT(sizeof(((FileClass*)0)->SkipCDCheck) == 1);
 GG_STATIC_ASSERT(sizeof(RawFileClass) == 0x24);
 GG_STATIC_ASSERT(sizeof(BufferIOFileClass) == 0x54);
+// Native 0x47AE26 / 0x47AF2D access the CD search-disable byte.
+GG_STATIC_ASSERT(offsetof(CDFileClass, IsDisabled) == 0x54);
+GG_STATIC_ASSERT(sizeof(((CDFileClass*)0)->IsDisabled) == 1);
+GG_STATIC_ASSERT(sizeof(CDFileClass) == 0x58);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_24) == 0x24);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_27) == 0x27);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_28) == 0x28);
