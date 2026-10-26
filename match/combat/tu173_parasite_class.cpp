@@ -142,8 +142,6 @@ extern const CLSID DAT_007E9900;
 extern const CLSID DAT_007E9930;
 // GLOBAL: GAMEMD 0x007E9890 -- CLSID of DiskLaserClass.
 extern const CLSID DAT_007E9890;
-// GLOBAL: GAMEMD 0x007E9A30 -- CLSID of DriveLocomotionClass.
-extern const CLSID DAT_007E9A30;
 // GLOBAL: GAMEMD 0x007E9940 -- CLSID of EMPulseClass.
 extern const CLSID DAT_007E9940;
 // GLOBAL: GAMEMD 0x007E9820 -- CLSID of FactoryClass.
