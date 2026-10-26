@@ -49,6 +49,14 @@
 #include "../_layout/aircraft_class.h"
 #include "../_layout/aircraft_type_class.h"
 
+// Native DrawMatrix fields: 0x4CF610 entry-origin instruction offsets.
+GG_STATIC_ASSERT(offsetof(TechnoClass, AngleRotatedSideways) == 0x328);
+GG_STATIC_ASSERT(offsetof(TechnoClass, AngleRotatedForwards) == 0x32C);
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsCrashing) == 0x425);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, RollAngle) == 0x3A0);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PitchSpeed) == 0x3A8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PitchAngle) == 0x3B0);
+
 // Native DrawPoint 0x4CF8CB tests type +0xC95.
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 9 == 0xC95);
 GG_STATIC_ASSERT(sizeof(IID) == 16);
@@ -58,7 +66,7 @@ GG_STATIC_ASSERT(sizeof(IID) == 16);
 // GLOBAL: GAMEMD 0x8B3C78 — the engine's unset coordinate.
 // GLOBAL: GAMEMD 0xA8B230 — the scenario object.
 
-#include "fly_locomotion_matrix_methods.h"
+#include "../_layout/matrix3d.h"
 #include "locomotion_rotation_step.h"
 
 // VTABLE: GAMEMD 0x7E89F4 — the locomotor interface vtable (base offset 4).
@@ -348,52 +356,55 @@ char FlyLocoApproach::Approach()
 // pitched and rolled by its type's own angles. The voxel index key collects
 // the facing and, on each tilt arm, the bit that names it.
 // FUNCTION: GAMEMD 0x4CF610
-Matrix3D __stdcall FlyLocoMatrix::Draw_Matrix(int* key)
+// PARTIAL: retained form1 canonical owner replay, 154/159 (96.9%) instructions.
+// Word loads preserve the masked 5-bit direction for any upper word;
+// the post-SHR10 INC range also makes SAR1 and SHR1 equivalent.
+Matrix3D __stdcall FlyLocomotionClass::DrawMatrix(unsigned int* key)
 {
     Matrix3D m;
     m.MakeIdentity();
 
     if (key != 0) {
-        *key |= (int)(((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) << 3);
+        *key |= (int)(((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1) >> 1) & 0x1F) << 3);
     }
 
-    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
+    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.FUN_004C93D0().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
                       * gg_locomotion_facing_step));
 
-    if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_1C8)() > 0) {
-        if (this->LinkedTo->IsTilting != 0) {
-            m.RotateX(this->LinkedTo->unknown_328);
-            if (this->Height > (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchHeight) {
-                m.RotateY((float)(this->LinkedTo->unknown_32C +
-                                  (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchAngle));
+    if (this->LinkedTo->vf_114() > 0) {
+        if (this->LinkedTo->IsCrashing != 0) {
+            m.RotateX(this->LinkedTo->AngleRotatedSideways);
+            if (this->CurrentSpeed > this->LinkedTo->vf_33()->PitchSpeed) {
+                m.RotateY((float)(this->LinkedTo->AngleRotatedForwards +
+                                  this->LinkedTo->vf_33()->PitchAngle));
             } else {
-                m.RotateY(this->LinkedTo->unknown_32C);
+                m.RotateY(this->LinkedTo->AngleRotatedForwards);
             }
             if (key != 0) {
                 *key = -1;
             }
-        } else if (this->Height > (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchHeight) {
-            if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchAngle != 0.0) {
+        } else if (this->CurrentSpeed > this->LinkedTo->vf_33()->PitchSpeed) {
+            if (this->LinkedTo->vf_33()->PitchAngle != 0.0) {
                 if (key != 0) {
                     *key |= 4;
                 }
-                m.RotateY((float)(this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->PitchAngle);
+                m.RotateY((float)this->LinkedTo->vf_33()->PitchAngle);
             }
-            if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->RollAngle != 0.0) {
+            if (this->LinkedTo->vf_33()->RollAngle != 0.0) {
                 double roll;
-                if (this->LinkedTo->SecondaryFacing.IsTurningA()) {
+                if (this->LinkedTo->SecondaryFacing.IsRotatingCW()) {
                     if (key != 0) {
                         *key |= 1;
                     }
-                    roll = (this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->RollAngle;
+                    roll = this->LinkedTo->vf_33()->RollAngle;
                 } else {
-                    if (!this->LinkedTo->SecondaryFacing.IsTurningB()) {
+                    if (!this->LinkedTo->SecondaryFacing.IsRotatingCCW()) {
                         goto done;
                     }
                     if (key != 0) {
                         *key |= 2;
                     }
-                    roll = -(this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->RollAngle;
+                    roll = -this->LinkedTo->vf_33()->RollAngle;
                 }
                 m.RotateX((float)roll);
             }
@@ -565,33 +576,6 @@ void FlyLocoSpin::BeginLanding()
         Unknown52 = 0;
         FlightLevel = 0;
     }
-}
-
-// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
-// ILocomotion slot +0x28 — the shadow matrix for a flyer: the voxel ramp
-// matrix for the slope of the cell under the client, flattened to slope zero
-// for a type that lies flat on the ground, then rotated about Z by the
-// client's secondary facing. The key folds the slope and the facing into its
-// low eleven bits.
-// FUNCTION: GAMEMD 0x4CFB00
-Matrix3D __stdcall FlyLocoMatrix::Shadow_Matrix(unsigned int* key)
-{
-    Coord_004CF610 coord = this->LinkedTo->Location;
-    int slope = MapInstance_004CF610.GetCellAt(coord)->SlopeIndex;
-    if ((this->LinkedTo->*this->LinkedTo->Vtbl->At_84)()->IsFlatOnGround != 0) {
-        slope = 0;
-    }
-    Matrix3D m = FUN_007559B0(slope);
-
-    m.RotateZ((float)(((int)((((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F) - 8)
-                      * gg_locomotion_facing_step));
-
-    if (key != 0 && *key != 0xFFFFFFFF) {
-        *key = ((*key << 6) + slope) << 5;
-        *key |= (((this->LinkedTo->SecondaryFacing.Current().Raw >> 10) + 1) >> 1) & 0x1F;
-    }
-
-    return m;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

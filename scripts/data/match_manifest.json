@@ -25382,20 +25382,20 @@
  {
   "tu": "match/movement/tu084_fly_locomotion_class.cpp",
   "addr": "0x4CF610",
-  "sym": "?Draw_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D@@PAH@Z",
+  "sym": "?DrawMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x212",
-  "name": "FlyLocomotionClass::Draw_Matrix",
-  "status": "matched",
-  "pct": 100.0
+  "name": "FlyLocomotionClass::DrawMatrix",
+  "status": "partial",
+  "pct": 96.9
  },
  {
-  "tu": "match/movement/tu084_fly_locomotion_class.cpp",
+  "tu": "match/movement/fly_locomotion_com_methods.cpp",
   "addr": "0x4CFB00",
-  "sym": "?Shadow_Matrix@FlyLocoMatrix@@QAG?AUMatrix3D@@PAI@Z",
+  "sym": "?ShadowMatrix@FlyLocomotionClass@@UAG?AUMatrix3D@@PAI@Z",
   "len": "0x109",
-  "name": "FlyLocomotionClass::Shadow_Matrix",
-  "status": "matched",
-  "pct": 100.0
+  "name": "FlyLocomotionClass::ShadowMatrix",
+  "status": "partial",
+  "pct": 95.4
  },
  {
   "tu": "match/movement/fly_locomotion_move_to_methods.cpp",
