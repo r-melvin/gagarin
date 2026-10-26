@@ -51,7 +51,7 @@ extern const double GG_RADIANS_TO_DIR16;
 extern const double GG_QUARTER_TURN;
 
 extern "C" {
-double __cdecl gamemd_sqrt(double);                // LIBRARY: GAMEMD 0x004CAC40
+double __cdecl gamemd_sqrt(double);                // Declaration: GAMEMD 0x004CAC40 (decl; reloc)
 double __cdecl gamemd_sin(double);                 // LIBRARY: GAMEMD 0x004CACB0
 double __cdecl gamemd_cos(double);                 // LIBRARY: GAMEMD 0x004CAD00
 double __cdecl gamemd_atan2(double, double);       // LIBRARY: GAMEMD 0x004CAE30

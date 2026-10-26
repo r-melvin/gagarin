@@ -4,12 +4,11 @@
 //   retail gamemd.exe v1.001.
 #include "velocity_class_set_pitch_methods.h"
 
-// The CRT entry points retail calls out of line. They carry distinct names
-// (the tree's convention for CRT thunks) so that /O2 does not expand `sqrt`
-// and friends as intrinsics. The diff harness normalises the call relocation,
-// so only the call shape matters.
+// These math callees retain their existing ABI-view spellings.
+// The 0x4CAC40 table helper remains unresolved engine code; the neighboring
+// callee classifications are unchanged here.
 extern "C" {
-// LIBRARY: GAMEMD 0x004CAC40 sqrt
+// Declaration: GAMEMD 0x004CAC40 -- unresolved engine table helper (decl; reloc)
 double __cdecl gamemd_sqrt(double);
 // LIBRARY: GAMEMD 0x004CACB0 sin
 double __cdecl gamemd_sin(double);

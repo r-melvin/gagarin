@@ -9,7 +9,7 @@
 //   FUNCTION: GAMEMD 0x7178C0  TechnoTypeClass::GetParticleSysOffset (__thiscall)
 //   FUNCTION: GAMEMD 0x6D2070  <projector>::CoordsToClient (referenced; reloc)
 //   GLOBAL:   GAMEMD 0x887324  <projector instance pointer> (referenced; reloc)
-//   LIBRARY:  GAMEMD 0x4CAC40  sqrt-helper (referenced; reloc)
+//   Declaration: GAMEMD 0x4CAC40 -- unresolved engine table helper (decl; reloc)
 //   LIBRARY:  GAMEMD 0x7C5F00  __ftol      (referenced; reloc)
 
 #include "techno_type_getters.h"

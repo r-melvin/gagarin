@@ -63,7 +63,7 @@ static inline unsigned short* WrapStep(LineBuffer_004BDF00* buffer, unsigned sho
     return p;
 }
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- LIBRARY: CRT sqrt (cdecl, double on the stack, result in ST0).
+// Declaration: GAMEMD 0x4CAC40 (decl; reloc) -- unresolved engine table helper; stacked argument, ST0 result.
 double __cdecl LibrarySqrt(double value);
 
 static inline int Distance(int dx, int dy)

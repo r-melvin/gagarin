@@ -337,7 +337,8 @@ GG_STATIC_ASSERT(offsetof(WrapBuffer_004BFD30, RowStride) == 0x28);
 GG_STATIC_ASSERT(sizeof(WrapBuffer_004BFD30) == 0x2C);
 
 // GLOBAL: GAMEMD 0x8A0DD0..0x8A0DE4 -- see dsurface.h (pair 0 = byte 0, pair 2 = byte 1, pair 1 = byte 2).
-// LIBRARY: sqrt (0x4CAC40), _ftol (0x7C5F00).
+// Declaration: GAMEMD 0x4CAC40 (decl; reloc) -- unresolved engine table helper.
+// LIBRARY: _ftol (0x7C5F00).
 
 static inline unsigned short* WrapRow(WrapBuffer_004BFD30* buf, unsigned short* p, int step)
 {
@@ -417,8 +418,8 @@ struct LengthVector : public Point2D
     int Length() const;
 };
 
-// FUNCTION: GAMEMD 0x4CAC40 (decl; LIBRARY). cdecl square root wrapper: returns 0.0 for non-positive input
-// (compares against the float at 0x7E1748). Takes the double on the stack, result in ST0.
+// Declaration: GAMEMD 0x4CAC40 (decl; reloc). Engine table helper; stacked argument, ST0 result.
+// Zero takes the equality path; negative input follows sign adjustment and table lookup.
 double __cdecl FUN_004CAC40(double value);
 
 static inline void StepRowUp(unsigned short*& zp, int step, ZBufferLike_004BBCA0* zb)

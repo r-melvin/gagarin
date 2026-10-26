@@ -26,11 +26,10 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// The CRT/engine math entry points these bodies call. Distinct names, the
-// tree's convention for library thunks: the diff harness normalises the call
-// relocation, so only the call shape matters.
+// Existing math-call ABI views; original helper names are not recovered.
+// The 0x4CAC40 table helper remains unresolved engine code.
 extern "C" {
-double __cdecl gamemd_sqrt(double);                 // LIBRARY: GAMEMD 0x004CAC40
+double __cdecl gamemd_sqrt(double);                 // Declaration: GAMEMD 0x004CAC40 (decl; reloc)
 double __cdecl gamemd_tabletrig(double);            // LIBRARY: GAMEMD 0x004CAD50
 double __cdecl gamemd_tablescale(double);           // LIBRARY: GAMEMD 0x004CADE0
 }
