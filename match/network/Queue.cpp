@@ -1655,7 +1655,7 @@ LRESULT __stdcall FUN_0064AE50(HWND window, unsigned message, WPARAM wparam, LPA
     case 0x113:
         if (DAT_00A8B238 == 4 && wparam == 1 && DAT_00AC1170) {
             if (DAT_00B77780 < 5) {
-                DAT_00AC1170->Vptr->At_18(DAT_00AC1170, DAT_00B77930, 1000, &window);
+                DAT_00AC1170->Vtbl->At_18(DAT_00AC1170, DAT_00B77930, 1000, &window);
                 ++DAT_00B77780;
             }
             ++DAT_00B04890;

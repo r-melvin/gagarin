@@ -23,75 +23,9 @@ void FUN_007757E0(void* object, int flag);
 
 
 
-// FUNCTION: GAMEMD 0x4068E0 (decl; reloc)
+// Shared COM declarations use the canonical projection header below.
 
-// The COM-style object at 0xAC116C: a vtable pointer whose slots take the
-// object as their first stack argument.
-struct Obj_00AC116C;
-
-struct Vtbl_00AC116C
-{
-    char unknown_00[0x24];
-    long (__stdcall* At_24)(Obj_00AC116C* self);                     // +0x24
-    char unknown_28[4];
-    long (__stdcall* At_2C)(Obj_00AC116C* self, const char* text);   // +0x2C
-    char unknown_30[8];
-    long (__stdcall* At_38)(Obj_00AC116C* self, Entry_00B77908* entry, const char* text);   // +0x38
-    long (__stdcall* At_3C)(Obj_00AC116C* self, const char* text);   // +0x3C
-    char unknown_40[0x14];
-    long (__stdcall* At_54)(Obj_00AC116C* self, void* record);       // +0x54
-    char unknown_58[0x10];
-    long (__stdcall* At_68)(Obj_00AC116C* self, int a, int b);       // +0x68
-    char unknown_6C[0x10];
-    long (__stdcall* At_7C)(Obj_00AC116C* self, int a);              // +0x7C
-    char unknown_80[0x0C];
-    long (__stdcall* At_8C)(Obj_00AC116C* self, unsigned long value); // +0x8C  given the SKU by 0x786270
-};
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_24) == 0x24);
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_2C) == 0x2C);
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_38) == 0x38);
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_3C) == 0x3C);
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_54) == 0x54);
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_68) == 0x68);
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_7C) == 0x7C);
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC116C, At_8C) == 0x8C);
-
-struct Obj_00AC116C
-{
-    Vtbl_00AC116C* Vtbl;   // +0x00
-};
-
-// GLOBAL: GAMEMD 0xAC116C
-extern Obj_00AC116C* DAT_00AC116C;
-
-// The second COM-style object, at 0xAC1170; same calling shape.
-struct Obj_00AC1170;
-
-struct Vtbl_00AC1170
-{
-    char unknown_00[0x20];
-    // +0x20: given a record's +0x18 value and an out int (the ping) by 0x7A0F40.
-    long (__stdcall* At_20)(Obj_00AC1170* self, int value, int* out);
-    char unknown_24[0x08];
-    // +0x2C: given a host name, a port and 3 by 0x786270.
-    long (__stdcall* At_2C)(Obj_00AC1170* self, const char* host, int port, int a);
-};
-
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_20) == 0x20);
-GG_STATIC_ASSERT(offsetof(Vtbl_00AC1170, At_2C) == 0x2C);
-
-struct Obj_00AC1170
-{
-    Vtbl_00AC1170* Vtbl;   // +0x00
-};
-
-// GLOBAL: GAMEMD 0xAC1170
-extern Obj_00AC1170* DAT_00AC1170;
+#include "../_layout/com_0048d080.h"
 
 // GLOBAL: GAMEMD 0x84D690 -- a record: a dword (0x47) then the string "WOL:AddBuddyQuery".
 extern char DAT_0084D690[];

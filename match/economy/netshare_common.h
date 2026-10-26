@@ -70,32 +70,7 @@ void __cdecl FUN_0048D080();
 // FUNCTION: GAMEMD 0x7350C0 (decl; reloc) -- ANSI form of a wide name (already
 // declared as Narrow_007350C0 in netshare_slot_nodes.h).
 
-// The link object at 0xAC116C: reached only through its virtual slots 14 and
-// 15 here. Slot positions are the displacements 0x38 and 0x3C of the calls at
-// 0x5E3759 and 0x5E38A3; both push `this` as the first stacked argument and
-// pop their own arguments, so the slots are __stdcall.
-class Obj_00AC116C
-{
-public:
-    virtual void __stdcall vf_0();
-    virtual void __stdcall vf_1();
-    virtual void __stdcall vf_2();
-    virtual void __stdcall vf_3();
-    virtual void __stdcall vf_4();
-    virtual void __stdcall vf_5();
-    virtual void __stdcall vf_6();
-    virtual void __stdcall vf_7();
-    virtual void __stdcall vf_8();
-    virtual void __stdcall vf_9();
-    virtual void __stdcall vf_10();
-    virtual void __stdcall vf_11();
-    virtual void __stdcall vf_12();
-    virtual void __stdcall vf_13();
-    virtual void __stdcall vf_14(void* message, const char* text);
-    virtual void __stdcall vf_15(const char* text);
-};
-// GLOBAL: GAMEMD 0xAC116C
-extern Obj_00AC116C* DAT_00AC116C;
+#include "../_layout/com_0048d080.h"
 
 // The message handed to the link's slot 14: 0x6C bytes, the sender's name
 // copied in at +0x24.

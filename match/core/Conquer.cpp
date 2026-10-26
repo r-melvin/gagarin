@@ -388,10 +388,10 @@ void __cdecl Unsorted_CallBack()
 guard:
     if (DAT_00A8B238 == 4 && !DAT_00B77DC2 && gg_time(0) != DAT_0089E9B0) {
         if (DAT_00AC116C != 0 && DAT_00B77DCC == 0) {
-            DAT_00AC116C->Vptr->At_0C(DAT_00AC116C);
+            DAT_00AC116C->Vtbl->At_0C(DAT_00AC116C);
         }
         if (DAT_00AC1170 != 0) {
-            DAT_00AC1170->Vptr->At_1C(DAT_00AC1170);
+            DAT_00AC1170->Vtbl->At_1C(DAT_00AC1170);
         }
         DAT_0089E9B0 = gg_time(0);
     }

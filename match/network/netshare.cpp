@@ -1386,7 +1386,7 @@ void FUN_005E3720(const char* text)
     if (DAT_00AC116C != 0) {
         char line[0x400];
         strncpy(line, text, 0x3FF);
-        DAT_00AC116C->vf_15(line);
+        DAT_00AC116C->Vtbl->At_3C(DAT_00AC116C, line);
         return;
     }
     NetsharePacket packet;
@@ -1414,7 +1414,7 @@ void FUN_005E3850(const char* name, const char* text)
         NetshareLinkMessage message;
         memset(&message, 0, sizeof(message));
         strcpy(message.Name, name);
-        DAT_00AC116C->vf_14(&message, text);
+        DAT_00AC116C->Vtbl->At_38(DAT_00AC116C, &message, text);
         return;
     }
     NetsharePacket packet;

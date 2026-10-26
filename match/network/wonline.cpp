@@ -21,6 +21,15 @@
 #include "../ui/ui_begin_dialog_methods.h"
 #include "../ui/ui_updated_methods.h"
 #include "../ui/gscreen_class_render_methods.h"
+#include "../_layout/com_0048d080.h"
+
+// Provisional source storage owner; original definition TU is not attested.
+// Native globals are pointer slots in the PE zero-filled data tail.
+// GLOBAL: GAMEMD 0xAC116C
+Obj_00AC116C* DAT_00AC116C;
+// GLOBAL: GAMEMD 0xAC1170
+Obj_00AC1170* DAT_00AC1170;
+
 
 // LIBRARY: GAMEMD 0x7CA564 -- CRT swprintf.
 extern "C" int __cdecl swprintf(wchar_t* buffer, const wchar_t* format, ...);
