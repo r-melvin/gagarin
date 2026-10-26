@@ -194,7 +194,6 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x0087F658
 
 #include "../core/vector_resize_family_methods.h"
 

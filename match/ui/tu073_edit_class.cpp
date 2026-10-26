@@ -178,7 +178,6 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x0087F658
 
 // Globals read by this TU's static initialisers (placeholder names).
 // GLOBAL: GAMEMD 0x7E1718

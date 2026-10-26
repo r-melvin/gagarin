@@ -193,7 +193,6 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x0087F658
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"

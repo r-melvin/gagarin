@@ -535,7 +535,6 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x0087F658
 
 #include "../movement/foot_class_wakes_methods.h"
 

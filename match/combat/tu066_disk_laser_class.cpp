@@ -209,7 +209,6 @@ class WaypointPathClass;
 class WeaponTypeClass;
 struct HWND__;
 
-// GLOBAL: GAMEMD 0x0087F658
 
 #include "../platform/system_query_methods.h"
 
