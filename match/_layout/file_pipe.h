@@ -8,26 +8,11 @@
 #include "pipe.h"
 #include "../_rt/gg_static_assert.h"
 
-// Slot-only call view. These signatures are inferred from the call-site
-// register/stack use in FilePipe bodies, not from a recovered pointee type.
-class FilePipeFileView
-{
-public:
-    virtual void FUN_slot00() = 0;
-    virtual void FUN_slot04() = 0;
-    virtual void FUN_slot08() = 0;
-    virtual void FUN_slot0C() = 0;
-    virtual void FUN_slot10() = 0;
-    virtual void FUN_slot14() = 0;
-    virtual bool FUN_slot18() = 0;
-    virtual void FUN_slot1C(int arg) = 0;
-    virtual void FUN_slot20() = 0;
-    virtual void FUN_slot24() = 0;
-    virtual void FUN_slot28() = 0;
-    virtual void FUN_slot2C() = 0;
-    virtual int FUN_slot30(int first, int second) = 0;
-    virtual void FUN_slot34() = 0;
-};
+// Constructor-established native input is a canonical file: RawFileClass
+// at 0x5EE1BC -> FilePipe +0x0C at 0x47443E, and CCFileClass
+// at 0x49BE70 -> FileStraw +0x0C at 0x47421B. Both RTTI chains
+// contain FileClass at offset zero; original member spelling remains unknown.
+class FileClass;
 
 class FilePipe : public Pipe
 {
@@ -45,7 +30,7 @@ public:
     // FUNCTION: GAMEMD 0x7BA480
     virtual int FUN_00631D10(int first, int second);
 
-    FilePipeFileView* File; // +0x0C
+    FileClass* File; // +0x0C
     char HasOpened;          // +0x10
     char unknown_11[3]; // modeled prefix padding; full object size unproven
 };

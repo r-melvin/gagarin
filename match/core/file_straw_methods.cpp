@@ -4,6 +4,7 @@
 // The ordinary destructor at 0x7BA590 matches with /GX omitted; /GX adds
 // exception-handler setup. All three entry spans below match using this set.
 #include "../_layout/file_straw.h"
+#include "../platform/ccfile_class.h"
 
 // SYNTHETIC: GAMEMD 0x477770 -- compiler-generated FileStraw scalar deleting
 // destructor. Full span 0x1E includes RET 4; its two call fields are COFF
@@ -16,23 +17,23 @@ int FileStraw::FUN_006C98E0(int buffer, int size)
         return 0;
     }
 
-    if (!File->FUN_slot18()) {
+    if (!File->HasHandle()) {
         HasOpened = 1;
-        if (!File->FUN_slot14(0)) {
+        if (!File->Exists(0)) {
             return 0;
         }
-        if (!File->FUN_slot1C(1)) {
+        if (!File->Open(1)) {
             return 0;
         }
     }
-    return File->FUN_slot24(buffer, size);
+    return File->ReadBytes((void*)buffer, size);
 }
 
 // FUNCTION: GAMEMD 0x7BA590
 FileStraw::~FileStraw()
 {
     if (File != 0 && HasOpened != 0) {
-        File->FUN_slot34();
+        File->Close();
         HasOpened = 0;
         File = 0;
     }
