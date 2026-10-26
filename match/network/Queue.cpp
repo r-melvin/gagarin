@@ -90,22 +90,16 @@ extern void* DAT_00B77F60;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F0290
 extern const double DAT_007F0290;
 // GLOBAL: GAMEMD 0xAC6650
 extern double DAT_00AC6650;
-// GLOBAL: GAMEMD 0xAFA410
-extern double DAT_00AFA410;
 // GLOBAL: GAMEMD 0xAFA420
 extern int DAT_00AFA420;
 // GLOBAL: GAMEMD 0xAFA424
 extern int DAT_00AFA424;
 // GLOBAL: GAMEMD 0xAFA428
 extern int DAT_00AFA428;
-// GLOBAL: GAMEMD 0xAFA460
-extern double DAT_00AFA460;
 // GLOBAL: GAMEMD 0xB04878
 extern unsigned char DAT_00B04878;
 // GLOBAL: GAMEMD 0xB04884
@@ -885,19 +879,18 @@ static inline void QueueDumpObject(FILE* file, const Obj_00646CE0* log,
 extern const char STR_00838AD4[];
 // Declaration: GAMEMD 0x838A54 -- string reference
 extern const char STR_00838A54[];
-// FUNCTION: GAMEMD 0x646AB0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00646AB0()
-{
-    DAT_00AFA460 = DAT_00AC6650 / DAT_007F0290;
-}
+// SYNTHETIC: GAMEMD 0x00646AB0
+// dynamic initializer for DAT_00AFA460
+// GLOBAL: GAMEMD 0x00AFA460
+double DAT_00AFA460 = DAT_00AC6650 / DAT_007F0290;
 
-// FUNCTION: GAMEMD 0x646AD0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00646AD0()
-{
-    DAT_00AFA410 = DAT_007E1718 / DAT_00AFA460;
-}
+// SYNTHETIC: GAMEMD 0x00646AD0
+// dynamic initializer for DAT_00AFA410
+// GLOBAL: GAMEMD 0x00AFA410
+double DAT_00AFA410 = 1.0 / DAT_00AFA460;
+
+GG_STATIC_ASSERT(sizeof(DAT_00AFA460) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00AFA410) == 8);
 
 // FUNCTION: GAMEMD 0x646C50
 // Static-initialiser shape: stores constants to adjacent globals.

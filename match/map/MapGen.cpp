@@ -404,22 +404,16 @@ static inline CellStruct_005A7250 InlineCell_005A7250(int x, int y)
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7ED620
 extern const double DAT_007ED620;
 // GLOBAL: GAMEMD 0xABE368
 extern double DAT_00ABE368;
-// GLOBAL: GAMEMD 0xABECE0
-extern double DAT_00ABECE0;
 // GLOBAL: GAMEMD 0xABECE8
 extern int DAT_00ABECE8;
 // GLOBAL: GAMEMD 0xABECEC
 extern int DAT_00ABECEC;
 // GLOBAL: GAMEMD 0xABECF0
 extern int DAT_00ABECF0;
-// GLOBAL: GAMEMD 0xABECF8
-extern double DAT_00ABECF8;
 
 
 // ---- from the former MapGen.cpp ----
@@ -440,19 +434,18 @@ extern double DAT_00ABECF8;
 // LIBRARY: GAMEMD 0x7C8B3D -- operator delete(void*), ??3@YAXPAX@Z.
 // LIBRARY: GAMEMD 0x7C5F00 -- __ftol (the double to integer conversion).
 
-// FUNCTION: GAMEMD 0x58B560
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0058B560()
-{
-    DAT_00ABECF8 = DAT_00ABE368 / DAT_007ED620;
-}
+// SYNTHETIC: GAMEMD 0x0058B560
+// dynamic initializer for DAT_00ABECF8
+// GLOBAL: GAMEMD 0x00ABECF8
+double DAT_00ABECF8 = DAT_00ABE368 / DAT_007ED620;
 
-// FUNCTION: GAMEMD 0x58B580
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_0058B580()
-{
-    DAT_00ABECE0 = DAT_007E1718 / DAT_00ABECF8;
-}
+// SYNTHETIC: GAMEMD 0x0058B580
+// dynamic initializer for DAT_00ABECE0
+// GLOBAL: GAMEMD 0x00ABECE0
+double DAT_00ABECE0 = 1.0 / DAT_00ABECF8;
+
+GG_STATIC_ASSERT(sizeof(DAT_00ABECF8) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00ABECE0) == 8);
 
 // FUNCTION: GAMEMD 0x58B700
 // Static-initialiser shape: stores constants to adjacent globals.

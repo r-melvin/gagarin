@@ -86480,20 +86480,20 @@
  {
   "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BCA0",
-  "sym": "?FUN_0048BCA0@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_0048BCA0",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/transport/Connect.cpp",
   "addr": "0x48BCC0",
-  "sym": "?FUN_0048BCC0@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_0048BCC0",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/transport/Connect.cpp",
@@ -86939,20 +86939,20 @@
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x58B560",
-  "sym": "?FUN_0058B560@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_0058B560",
+  "name": "_$E2",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
   "addr": "0x58B580",
-  "sym": "?FUN_0058B580@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_0058B580",
+  "name": "_$E5",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/MapGen.cpp",
@@ -87317,20 +87317,20 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646AB0",
-  "sym": "?FUN_00646AB0@@YAXXZ",
+  "sym": "_$E6",
   "len": "0x13",
-  "name": "FUN_00646AB0",
+  "name": "_$E6",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646AD0",
-  "sym": "?FUN_00646AD0@@YAXXZ",
+  "sym": "_$E9",
   "len": "0x13",
-  "name": "FUN_00646AD0",
+  "name": "_$E9",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Queue.cpp",
@@ -87515,20 +87515,20 @@
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x696D50",
-  "sym": "?FUN_00696D50@@YAXXZ",
+  "sym": "_$E4",
   "len": "0x13",
-  "name": "FUN_00696D50",
+  "name": "_$E4",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Session.cpp",
   "addr": "0x696D70",
-  "sym": "?FUN_00696D70@@YAXXZ",
+  "sym": "_$E7",
   "len": "0x13",
-  "name": "FUN_00696D70",
+  "name": "_$E7",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/network/Session.cpp",
@@ -97710,9 +97710,9 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646D20",
-  "sym": "_$E6",
+  "sym": "_$E12",
   "len": "0x28",
-  "name": "_$E6",
+  "name": "_$E12",
   "status": "matched",
   "pct": 100.0
  },
@@ -97728,9 +97728,9 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646DC0",
-  "sym": "_$E9",
+  "sym": "_$E15",
   "len": "0x28",
-  "name": "_$E9",
+  "name": "_$E15",
   "status": "matched",
   "pct": 100.0
  },
@@ -97746,18 +97746,18 @@
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646E10",
-  "sym": "_$E14",
+  "sym": "_$E20",
   "len": "0x4e",
-  "name": "_$E14",
+  "name": "_$E20",
   "status": "partial",
   "pct": 92.6
  },
  {
   "tu": "match/network/Queue.cpp",
   "addr": "0x646E60",
-  "sym": "_$E12",
+  "sym": "_$E18",
   "len": "0x2b",
-  "name": "_$E12",
+  "name": "_$E18",
   "status": "matched",
   "pct": 100.0
  },

@@ -1613,36 +1613,29 @@ template class DynamicVectorClass<Wstring>;
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F1190
 extern const double DAT_007F1190;
 // GLOBAL: GAMEMD 0xB057E8
 extern double DAT_00B057E8;
-// GLOBAL: GAMEMD 0xB07760
-extern double DAT_00B07760;
 // GLOBAL: GAMEMD 0xB07768
 extern int DAT_00B07768;
 // GLOBAL: GAMEMD 0xB0776C
 extern int DAT_00B0776C;
 // GLOBAL: GAMEMD 0xB07770
 extern int DAT_00B07770;
-// GLOBAL: GAMEMD 0xB07778
-extern double DAT_00B07778;
 
-// FUNCTION: GAMEMD 0x696D50
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00696D50()
-{
-    DAT_00B07778 = DAT_00B057E8 / DAT_007F1190;
-}
+// SYNTHETIC: GAMEMD 0x00696D50
+// dynamic initializer for DAT_00B07778
+// GLOBAL: GAMEMD 0x00B07778
+double DAT_00B07778 = DAT_00B057E8 / DAT_007F1190;
 
-// FUNCTION: GAMEMD 0x696D70
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_00696D70()
-{
-    DAT_00B07760 = DAT_007E1718 / DAT_00B07778;
-}
+// SYNTHETIC: GAMEMD 0x00696D70
+// dynamic initializer for DAT_00B07760
+// GLOBAL: GAMEMD 0x00B07760
+double DAT_00B07760 = 1.0 / DAT_00B07778;
+
+GG_STATIC_ASSERT(sizeof(DAT_00B07778) == 8);
+GG_STATIC_ASSERT(sizeof(DAT_00B07760) == 8);
 
 // FUNCTION: GAMEMD 0x696EF0
 // Static-initialiser shape: stores constants to adjacent globals.
