@@ -76,7 +76,7 @@ public:
     virtual const char* SetFileName(const char* filename);
     virtual int CreateFile();
     virtual int DeleteFile();
-    virtual bool Exists(bool forced);
+    virtual bool Exists(int forced);
     virtual bool HasHandle();
     virtual int Open(FileAccessMode rights);
     virtual int OpenEx(const char* filename, FileAccessMode rights);

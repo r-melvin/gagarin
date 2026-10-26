@@ -71,7 +71,7 @@ int RAMFileClass::DeleteFile()
 // A RAM file is always present. The exit is `MOV AL,1`, so the result is one
 // byte wide.
 // FUNCTION: GAMEMD 0x65C320
-bool RAMFileClass::Exists(bool)
+bool RAMFileClass::Exists(int)
 {
     return true;
 }

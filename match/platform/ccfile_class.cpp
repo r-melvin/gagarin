@@ -105,7 +105,7 @@ const char* BufferIOFileClass::SetFileName(const char* pFileName)
 
 // FUNCTION: GAMEMD 0x431F10  (__thiscall)
 // BufferIOFileClass::Exists — already-open shortcut, else defer to the raw file.
-bool BufferIOFileClass::Exists(bool writeShared)
+bool BufferIOFileClass::Exists(int writeShared)
 {
     if (this->unknown_bool_29)
         return true;

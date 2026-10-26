@@ -59,7 +59,7 @@ public:
     virtual const char* SetFileName(const char* pFileName) = 0;        // slot 2  (+0x08)
     virtual int  CreateFile() = 0;                                     // slot 3  (+0x0C)
     virtual int  DeleteFile() = 0;                                     // slot 4  (+0x10)
-    virtual bool Exists(bool writeShared) = 0;                         // slot 5  (+0x14)
+    virtual bool Exists(int writeShared) = 0;                         // slot 5  (+0x14)
     virtual bool HasHandle() = 0;                                      // slot 6  (+0x18)
     virtual int Open(FileAccessMode access) = 0;                      // slot 7  (+0x1C)
     virtual int OpenEx(const char* pFileName, FileAccessMode a) = 0;  // slot 8  (+0x20)
@@ -97,7 +97,7 @@ public:
     virtual int WriteBytes(void* buffer, int size); // 0x65CDD0
     virtual void Close(); // 0x65CCA0
     void Bias(int offset, int length); // 0x65D2B0
-    virtual bool Exists(bool writeShared);      // GAMEMD 0x65CBF0 (decl; base call)
+    virtual bool Exists(int writeShared);      // GAMEMD 0x65CBF0 (decl; base call)
     virtual int  GetFileSize();                 // GAMEMD 0x65D0D0 (decl; base call)
     virtual bool HasHandle();                   // GAMEMD 0x65D420 (matched)
     virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x65CB30 (matched)
@@ -130,7 +130,7 @@ public:
     bool Commit(); // 0x431DD0: ECX receiver, AL-only return tails.
     void FUN_00431D90(); // 0x431D90, release/reset the buffer
     virtual ~BufferIOFileClass();                                 // GAMEMD 0x431B80 (decl; reloc)
-    virtual bool Exists(bool writeShared);                        // GAMEMD 0x431F10 (matched)
+    virtual bool Exists(int writeShared);                        // GAMEMD 0x431F10 (matched)
     virtual int Open(FileAccessMode access);                     // GAMEMD 0x431F70 (decl; base call)
     virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x431F50 (matched)
     virtual int  GetFileSize();                                   // GAMEMD 0x4325A0 (matched)
@@ -209,7 +209,7 @@ public:
     // and calls ~BufferIOFileClass (0x431B80).
     ~CCFileClass() { Position = 0; }
 
-    virtual bool Exists(bool writeShared);                        // GAMEMD 0x473C50 (matched)
+    virtual bool Exists(int writeShared);                        // GAMEMD 0x473C50 (matched)
     virtual const char* SetFileName(const char* pFileName);       // GAMEMD 0x473FC0 (matched)
     virtual int Open(FileAccessMode access);                     // GAMEMD 0x473D10 (decl)
     virtual int OpenEx(const char* pFileName, FileAccessMode a); // GAMEMD 0x401980 (matched)

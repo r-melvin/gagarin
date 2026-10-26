@@ -9926,7 +9926,7 @@
  {
   "tu": "match/core/ram_file_class.cpp",
   "addr": "0x65C320",
-  "sym": "?Exists@RAMFileClass@@UAE_N_N@Z",
+  "sym": "?Exists@RAMFileClass@@UAE_NH@Z",
   "len": "0x5",
   "name": "Exists",
   "status": "matched",
@@ -26906,7 +26906,7 @@
  {
   "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x431F10",
-  "sym": "?Exists@BufferIOFileClass@@UAE_N_N@Z",
+  "sym": "?Exists@BufferIOFileClass@@UAE_NH@Z",
   "len": "0x16",
   "name": "BufferIOFileClass::Exists",
   "status": "matched",
@@ -26967,7 +26967,7 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_exists_methods.cpp",
+  "tu": "match/platform/ccfile_class_open_methods.cpp",
   "addr": "0x65CBF0",
   "sym": "?Exists@RawFileClass@@UAE_NH@Z",
   "len": "0xAB",
@@ -27050,7 +27050,7 @@
  {
   "tu": "match/platform/ccfile_class_open_methods.cpp",
   "addr": "0x473C50",
-  "sym": "?Exists@CCFileClass@@UAE_N_N@Z",
+  "sym": "?Exists@CCFileClass@@UAE_NH@Z",
   "len": "0x73",
   "name": "CCFileClass::Exists",
   "status": "matched",
