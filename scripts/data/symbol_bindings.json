@@ -6405,8 +6405,6 @@
  "?TypeDesc_TriggerTypeClass@@3PADA": "0x00842D08",
  "?TypeDesc_UnitClass@@3PADA": "0x00842D80",
  "?TypesAnnouncePointerExpired@@YIXPAX_N@Z": "0x007258D0",
- "?TypesFoundationHeight@@3QBHB": "0x00819310",
- "?TypesFoundationWidth@@3QBHB": "0x008192B8",
  "?TypesHouseTypeArray@@3V?$DynamicVectorClass@PAVHouseTypeClass@@@@A": "0x00A83C98",
  "?TypesLevelHeight@@3HA": "0x0089DDB8",
  "?TypesMap@@3VTypesMapView@@A": "0x0087F7E8",
