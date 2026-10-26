@@ -59,24 +59,13 @@
 #include "../core/trivial_tu187_methods.h"
 
 #include <windows.h>
+#include <new>
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
 extern "C" int __cdecl _stricmp(const char* a, const char* b);
 
-// A two-short cell value copied as one dword.
-struct Cell_0050DEF0
-{
-    short X;
-    short Y;
-
-    Cell_0050DEF0() {}
-    bool operator==(const Cell_0050DEF0& other) const
-    {
-        return X == other.X && Y == other.Y;
-    }
-};
-GG_STATIC_ASSERT(sizeof(Cell_0050DEF0) == 4);
+#include "radar_class.h"
 
 // GLOBAL: GAMEMD 0x008B40F8
 extern "C" int DAT_008B40F8;
@@ -598,8 +587,6 @@ struct UndoInfoStruct { int unknown_00; int unknown_04; int unknown_08; UndoInfo
 
 template class DynamicVectorClass<UndoInfoStruct>;
 
-#include "radar_class.h"
-
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
 #include <stddef.h>
@@ -665,6 +652,30 @@ void Obj_00652CD0::FUN_00652CD0()
     unknown_14FC = 0x19;
 }
 
+// GLOBAL: GAMEMD 0x00B048E0
+extern void* DAT_00B048E0;
+// GLOBAL: GAMEMD 0x00B048AC
+extern void* DAT_00B048AC;
+// GLOBAL: GAMEMD 0x00B048F9
+extern unsigned char DAT_00B048F9;
+// GLOBAL: GAMEMD 0x00B048F8
+extern unsigned char DAT_00B048F8;
+
+// FUNCTION: GAMEMD 0x00652D90
+void RadarClass::vf_50()
+{
+    if (DAT_00B048F9) {
+        ::operator delete(DAT_00B048E0);
+        DAT_00B048F9 = 0;
+    }
+    DAT_00B048E0 = 0;
+    if (DAT_00B048F8) {
+        ::operator delete(DAT_00B048AC);
+        DAT_00B048F8 = 0;
+    }
+    DAT_00B048AC = 0;
+}
+
 // FUNCTION: GAMEMD 0x653750
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00653750(int a1, int a2)
@@ -681,10 +692,10 @@ bool Obj_00653830::FUN_00653830(int a1, int a2, int a3)
 // FUNCTION: GAMEMD 0x653F50  (__thiscall)
 // RadarClass override of MapClass::CreateEmptyMap — a pure forward to the base
 // (0x565C10) with the same four arguments and the same `this`.
-void RadarClass::CreateEmptyMap(const RectangleStruct& mapRect, bool reuse,
-                               char nLevel, bool bUnk2)
+void RadarClass::vf_28(RectangleStruct* mapRect, int reuse,
+                       int nLevel, int bUnk2)
 {
-    Map_CreateEmptyMap(mapRect, reuse, nLevel, bUnk2);
+    MapClass::vf_28(mapRect, reuse, nLevel, bUnk2);
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
@@ -720,38 +731,43 @@ void RadarClass::CreateEmptyMap(const RectangleStruct& mapRect, bool reuse,
 // before the two SUBs (no change, 78.9%), and the `a`/`b` declarations
 // swapped (76.4%) — cl gives the *first-used* struct the higher slot, which is
 // the opposite of retail, where the first-stored struct is at [ESP+0xC].
-void RadarClass::SetVisibleRect(const RectangleStruct& mapRect)
+void RadarClass::vf_29(RectangleStruct* mapRect)
 {
-    Base_SetVisibleRect(mapRect);
+    MapClass::vf_29(mapRect);
     RadarBounds.Height = 0;
     RadarBounds.Y      = 10000;
     RadarBounds.X      = 10000;
 
-    CellStruct b;
-    CellStruct a;
-    int ax = MapCellTop + MapCellLeft + 1;                 // [0x100] + [0xFC] + 1
-    int ay = (MapSizeX - MapCellLeft) + MapCellTop;        // [0xF4]
+    Cell_0050DEF0 b;
+    Cell_0050DEF0 a;
+    int ax = LocalRect.Y + LocalRect.X + 1;                // [0x100] + [0xFC] + 1
+    int ay = (MapRect.Width - LocalRect.X) + LocalRect.Y;  // [0xF4]
     a.X = (short)ax;
     a.Y = (short)ay;
     RadarBounds.Width = 0;
-    int bx = unknown_104 - 1;                             // [0x104]
-    int by = 1 - unknown_104;
+    int bx = LocalRect.Width - 1;                         // [0x104]
+    int by = 1 - LocalRect.Width;
     b.X = (short)bx;
     b.Y = (short)by;
     unknown_1498 = -1;
-    CellStruct c = a + b;
+    Cell_0050DEF0 c = a + b;
     unknown_1494 = c.X - c.Y;
     unknown_1490 = a.Y - a.X;
 
-    Instance.Func_578350();
-    RadarTrackNode* node = Iterate_578290();
+    Instance.FUN_00578350();
+    // The iterator's returned record is read at +0x24 as two shorts by this
+    // native body, so view that proven record as the TU's tracking node.
+    RadarTrackNode* node = (RadarTrackNode*)FUN_00578290();
     while (node != 0)
     {
-        if (Func_578460(node->GetCell(), true))
+        // 0x578460 receives the address of the same two-short cell. The
+        // canonical MapClass declaration names that ABI-compatible value
+        // CellStruct; the native accesses confirm X at +0 and Y at +2.
+        if (FUN_00578460(reinterpret_cast<const CellStruct&>(node->GetCell()), true))
         {
             if (unknown_1498 == -1)
                 unknown_1498 = node->Cell.Y + node->Cell.X;
-            CellStruct cell = node->GetCell();
+            Cell_0050DEF0 cell = node->GetCell();
             int x = (unknown_1490 - cell.Y) + cell.X;
             int y = (cell.Y - unknown_1498) + cell.X;
             int span = 2;
@@ -760,7 +776,7 @@ void RadarClass::SetVisibleRect(const RectangleStruct& mapRect)
                 x = 0;
                 span = 1;
             }
-            else if (x == unknown_104 * 2 - 1)
+            else if (x == LocalRect.Width * 2 - 1)
             {
                 span = 1;
             }
@@ -775,7 +791,7 @@ void RadarClass::SetVisibleRect(const RectangleStruct& mapRect)
             else if (y + 1 > top + RadarBounds.Height)
                 RadarBounds.Height = (y - top) + 1;
         }
-        node = Iterate_578290();
+        node = (RadarTrackNode*)FUN_00578290();
     }
 }
 

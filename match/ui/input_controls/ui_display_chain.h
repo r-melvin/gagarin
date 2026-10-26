@@ -543,7 +543,12 @@ public:
     DynamicVectorClass<Point2D> unknown_125C;
     char unknown_1274[0x1278 - 0x1274];
     DynamicVectorClass<Point2D> unknown_1278[0x16];
-    char unknown_1488[0x14C0 - 0x1488];
+    char unknown_1488[0x1490 - 0x1488];
+    int unknown_1490;                         // +0x1490 [Radar] SetVisibleRect state
+    int unknown_1494;                         // +0x1494 [Radar] SetVisibleRect state
+    int unknown_1498;                         // +0x1498 [Radar] tracking sentinel
+    RectangleStruct RadarBounds;             // +0x149C [Radar] visible-cell bounds
+    char unknown_14AC[0x14C0 - 0x14AC];
     Obj_00405B00 unknown_14C0;
     char unknown_14D0[0x1500 - 0x14D0];
     ScenarioElapsedTimer unknown_1500;
@@ -552,6 +557,10 @@ GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1224) == 0x1224);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_125C) == 0x125C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1278) == 0x1278);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14C0) == 0x14C0);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1490) == 0x1490);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1494) == 0x1494);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1498) == 0x1498);
+GG_STATIC_ASSERT(offsetof(RadarClass, RadarBounds) == 0x149C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1500) == 0x1500);
 GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);
 

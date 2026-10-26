@@ -29669,18 +29669,18 @@
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x653F50",
-  "sym": "?CreateEmptyMap@RadarClass@@QAEXABURectangleStruct@@_ND1@Z",
+  "sym": "?vf_28@RadarClass@@UAEXPAURectangleStruct@@HHH@Z",
   "len": "0x1C",
-  "name": "CreateEmptyMap",
+  "name": "RadarClass::vf_28",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ui/Radar.cpp",
   "addr": "0x654490",
-  "sym": "?SetVisibleRect@RadarClass@@QAEXABURectangleStruct@@@Z",
+  "sym": "?vf_29@RadarClass@@UAEXPAURectangleStruct@@@Z",
   "len": "0x1B7",
-  "name": "SetVisibleRect",
+  "name": "RadarClass::vf_29",
   "status": "partial",
   "pct": 78.9
  },
@@ -99378,6 +99378,15 @@
   "sym": "?GetSizeMax@TechnoTypeClass@@UAGJPAT_ULARGE_INTEGER@@@Z",
   "len": "0xff",
   "name": "TechnoTypeClass::GetSizeMax",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x652D90",
+  "sym": "?vf_50@RadarClass@@UAEXXZ",
+  "len": "0x4C",
+  "name": "RadarClass::vf_50",
   "status": "matched",
   "pct": 100.0
  }
