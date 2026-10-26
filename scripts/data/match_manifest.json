@@ -5198,11 +5198,11 @@
   "pct": 100
  },
  {
-  "tu": "match/ai/tag_class_delete_methods.cpp",
+  "tu": "match/ai/tag_class_body.cpp",
   "addr": "0x6E58B0",
-  "sym": "?FUN_006E58B0@TagClass@@QAEPAXI@Z",
+  "sym": "??_GTagClass@@UAEPAXI@Z",
   "len": "0x1e",
-  "name": "TagClass::FUN_006E58B0",
+  "name": "TagClass scalar deleting destructor",
   "status": "matched",
   "pct": 100
  },

@@ -77,9 +77,6 @@ public:
     // FUNCTION: GAMEMD 0x6E5850
     bool IsOnlyInstanceOfType() const;
 
-    // FUNCTION: GAMEMD 0x6E58B0
-    void* FUN_006E58B0(unsigned int flags);
-
     TagTypeClass* Type;            // +0x24 ctor = arg1 @0x006E4DF0
     TriggerClass* FirstTrigger;    // +0x28 ctor @0x006E4DF3
     int           InstanceCount;   // +0x2C ctor @0x006E4DF6

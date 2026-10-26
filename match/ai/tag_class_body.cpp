@@ -278,3 +278,6 @@ int TagClass::vf_11()
 {
     return 0x2C;
 }
+
+// SYNTHETIC: GAMEMD 0x6E58B0
+// TagClass scalar deleting destructor, emitted by the compiler.
