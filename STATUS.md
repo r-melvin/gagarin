@@ -1,14 +1,14 @@
 # Project status
 
-At source snapshot **`286b0ae1` (2026-10-25)**, the manifest holds
-**11,011 rows: 10,268 matched and 743 partial**, in 1,259 manifest translation
+At source snapshot **`7a9e8ee4` (2026-10-26)**, the manifest holds
+**11,012 rows: 10,269 matched and 743 partial**, in 1,246 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
-bytes. Matched rows represent **51.9%** of the census and **710,680 bytes
+bytes. Matched rows represent **51.9%** of the census and **710,833 bytes
 (18.3%)**; partials represent 3.8%. These are function measurements, not
 executable completion.
 
-The full gate compiles **1,270 tracked translation units**, checks **138 layout
-headers**, re-proves all 10,268 matched rows and compile-checks all 743 partials,
+The full gate compiles **1,257 tracked translation units**, checks **139 layout
+headers**, re-proves all 10,269 matched rows and compile-checks all 743 partials,
 with no matched-function regressions. Recent affected exact functions also have
 explicit relocation and actual selected-provider checks. Compiling, matching
 functions and linking remain separate from complete vtable, RTTI, data layout
@@ -55,6 +55,14 @@ so that method adoption does not establish a complete Building table.
 MissionControl's constructor, accessor and 32-element array now share their
 canonical record; duplicate views and three unused array bindings are retired.
 
+The File hierarchy shares canonical full-width Exists flags across six classes.
+Four existing Exists bodies remain exact, and the completed Raw contributor
+and its duplicate declarations are retired. Six 17-slot table checks preserve
+native pointer values while recording existing partial and diagnostic providers.
+Tag's packed cell setter uses its canonical owner; its scalar deleting helper
+is compiler generated, with the registry migration still held pending its
+separate static-storage prerequisite.
+
 Earlier consolidation shares the List/ColorList hierarchy, Cell, BaseNode and
 RGB declarations and actual container owners. HoverMatrixView is retired onto
 Matrix3D; its recovered copy matches 100%, while the affine product remains
@@ -63,14 +71,14 @@ pointer storage and drawing consumers; six pixel-shift cells share one storage
 owner. These source ownership changes do not reproduce native data placement.
 Further original-TU boundaries, class/interface adoption and global layouts
 remain unfinished; unsupported source filenames remain placeholders. The
-historical medium-confidence set still has 79 groups, only seven with a
+historical medium-confidence set still has 79 groups, only eight with a
 corresponding numbered TU filename. Filename presence is an organization
 measurement, not evidence that the original TU has been recovered.
 
 Initializer verification distinguishes an inner helper from the actual CRT
-callback. In the historical float-initializer subset, 72 generated claims
-comprise **32 direct native-matching CRT roots** and 40 inner helpers behind
-jump wrappers. That subset retains 164 manual claims and 354 unclaimed entries.
+callback. In the historical float-initializer subset, 100 generated claims
+comprise **60 direct native-matching CRT roots** and 40 inner helpers behind
+jump wrappers. That subset retains 136 manual claims and 354 unclaimed entries.
 Separate Wonline audits verify **15 natural narrow string initializer roots**
 and **one natural wide string initializer root**, including their actual
 selected constructors, registered cleanups and CRT order. These separately
@@ -82,7 +90,7 @@ Link milestones (diagnostic images do not run):
 | Milestone | State | Measurement |
 | --- | --- | --- |
 | M0 diagnostic link | measured at `286b0ae1` | 1,270 objects, 8,621 unresolved externals and 0 duplicate definitions, using `/FORCE`; an unresolved-symbol diagnostic, not a working engine |
-| M1 address-faithful stub link | verified at `286b0ae1` | Exit 0 without `/FORCE`, 0 unresolved after 8,941 placed int3 stubs, 0 duplicate definitions; all 10,268 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M1 address-faithful stub link | verified at `7a9e8ee4` | Exit 0 without `/FORCE`, 0 unresolved after 8,940 placed int3 stubs, 0 duplicate definitions; all 10,269 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |

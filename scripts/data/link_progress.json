@@ -12,17 +12,17 @@
   "unresolved": 8621
  },
  "m1": {
-  "bytes_at_retail_address": 3884546,
+  "bytes_at_retail_address": 3884539,
   "drift_events": 4,
   "duplicates": 0,
   "entries_at_retail_address": 19250,
   "entry_point_delta": -8044,
   "link_exit_code": 0,
-  "matched_at_retail_address": 10268,
-  "matched_functions": 10268,
-  "ordered_bytes": 3885218,
+  "matched_at_retail_address": 10269,
+  "matched_functions": 10269,
+  "ordered_bytes": 3885211,
   "ordered_entries": 19252,
-  "stubs_placed": 8941,
+  "stubs_placed": 8940,
   "unresolved_after_stubs": 0
  },
  "milestones": [
@@ -59,6 +59,6 @@
  ],
  "snapshots": {
   "m0": "286b0ae1",
-  "m1": "286b0ae1"
+  "m1": "7a9e8ee4"
  }
 }
