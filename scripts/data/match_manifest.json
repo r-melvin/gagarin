@@ -28200,13 +28200,13 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/raw_file_class_time_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65D240",
-  "sym": "?SetFileTime@RawFileClass@@QAE_NK@Z",
+  "sym": "?SetFileTime@RawFileClass@@UAE_NK@Z",
   "len": "0x65",
   "name": "RawFileClass::SetFileTime",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/raw_file_class_write_bytes_methods.cpp",

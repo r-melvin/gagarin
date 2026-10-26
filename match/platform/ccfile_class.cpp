@@ -39,6 +39,13 @@
 // retail emits LEA &Buffer / TEST / JZ / CALL ctor at 0x473CE0).
 inline void* operator new(size_t, void* p) throw() { return p; }
 
+// Native 0x65D240 local-frame and imported Win32 record layout.
+GG_STATIC_ASSERT(sizeof(FILETIME) == 8);
+GG_STATIC_ASSERT(offsetof(FILETIME, dwLowDateTime) == 0);
+GG_STATIC_ASSERT(offsetof(FILETIME, dwHighDateTime) == 4);
+GG_STATIC_ASSERT(sizeof(BY_HANDLE_FILE_INFORMATION) == 0x34);
+GG_STATIC_ASSERT(offsetof(BY_HANDLE_FILE_INFORMATION, ftCreationTime) == 4);
+
 // FUNCTION: GAMEMD 0x401940  (__thiscall)
 // Return the stored file-name pointer (RawFileClass::FileName @ +0x18).
 const char* RawFileClass::GetFileName() const
@@ -462,6 +469,35 @@ int RawFileClass::DeleteFile()
         return 0;
     }
     return 1;
+}
+
+// FUNCTION: GAMEMD 0x65D240  RawFileClass::SetFileTime (__thiscall, ret 0x4)
+// Stamp a DOS date/time pair onto the open file, keeping whatever creation time
+// the file already had — which is why the existing information is fetched first
+// and its ftCreationTime handed straight back.
+//
+// The method shadows the Win32 API of the same name, hence the `::`. The return
+// successful API result uses full-width NEG/SBB/NEG; the failure tail clears
+// only AL. Keep the existing direct != 0 expression and bool return contract.
+//
+// All three failure paths share one trailing epilogue in retail, so the guards
+// nest positively rather than returning early; the early-return spelling
+// inlines three separate epilogues and scores 14.6%.
+bool RawFileClass::SetFileTime(unsigned long fileTime)
+{
+    FILETIME                   ft;
+    BY_HANDLE_FILE_INFORMATION info;
+
+    if (Handle != (void*)-1) {
+        if (GetFileInformationByHandle(Handle, &info)) {
+            if (DosDateTimeToFileTime((unsigned short)(fileTime >> 16),
+                                      (unsigned short)fileTime, &ft)) {
+                return ::SetFileTime(Handle, &info.ftCreationTime, &ft, &ft) != 0;
+            }
+        }
+    }
+
+    return false;
 }
 
 // FUNCTION: GAMEMD 0x65D2B0  (__thiscall)
