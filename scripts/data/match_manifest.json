@@ -86453,18 +86453,18 @@
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D150",
-  "sym": "?FUN_0046D150@@YAXXZ",
+  "sym": "_$E2",
   "len": "0x13",
-  "name": "FUN_0046D150",
+  "name": "_$E2",
   "status": "matched",
   "pct": 100
  },
  {
   "tu": "match/ui/CampScor.cpp",
   "addr": "0x46D170",
-  "sym": "?FUN_0046D170@@YAXXZ",
+  "sym": "_$E5",
   "len": "0x13",
-  "name": "FUN_0046D170",
+  "name": "_$E5",
   "status": "matched",
   "pct": 100
  },

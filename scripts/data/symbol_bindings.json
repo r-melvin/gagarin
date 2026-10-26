@@ -7575,6 +7575,8 @@
  "match/renderer/pcx_get_surface_methods.cpp::_?entry@?1??GetSurface@PCX@@QAEPAXPBDPAUBytePalette_006BA140@@@Z@4UPCXStatic_006BA140@@A": "0x00B0B948",
  "match/renderer/screen_resource_methods.cpp::_DAT_007F5BD0": "0x007F5BD0",
  "match/renderer/screen_resource_methods.cpp::_DAT_007F5BD8": "0x007F5BD8",
+ "match/ui/CampScor.cpp::_$E2": "0x0046D150",
+ "match/ui/CampScor.cpp::_$E5": "0x0046D170",
  "match/ui/GOptions.cpp::_$E2": "0x004F0F20",
  "match/ui/GOptions.cpp::_$E5": "0x004F0F40",
  "match/ui/LdPrgMgr.cpp::_$E2": "0x00552880",
