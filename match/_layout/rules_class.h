@@ -95,7 +95,9 @@ struct RulesClass
     int unknown_78C;
     char unknown_790[0x7A8 - 0x790];
     int unknown_7A8;
-    char unknown_7AC[0xB20 - 0x7AC];
+    char unknown_7AC[0x7B4 - 0x7AC];
+    int unknown_7B4; // native717810 reads fallback scalar via pointer8871E0
+    char unknown_7B8[0xB20 - 0x7B8];
     DynamicVectorClass<UnitTypeClass*> unknown_B20; // constructor-type list0x688B55
     char unknown_B38[0xD04 - 0xB38];
     // Three pointer collections selected at 0x68C164..0x68C1A5.
@@ -147,7 +149,9 @@ struct RulesClass
     double unknown_14C0;
     char unknown_14C8[8];
     int unknown_14D0;
-    char unknown_14D4[0x1700 - 0x14D4];
+    char unknown_14D4[0x16CC - 0x14D4];
+    int unknown_16CC; // native712125 reads scalar via pointer8871E0
+    char unknown_16D0[0x1700 - 0x16D0];
     double ConditionYellow;
     double ConditionRed;
     char unknown_1710[0x1804 - 0x1710];
@@ -229,6 +233,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14BA) == 0x14BA);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1A0)  == 0x1A0);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B4) == 0x7B4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16CC) == 0x16CC);
 GG_STATIC_ASSERT(sizeof(RulesClass)              == 0x18C0);
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0

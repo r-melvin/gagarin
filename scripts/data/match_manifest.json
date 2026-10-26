@@ -84698,38 +84698,38 @@
  {
   "tu": "match/core/trivial_tu238_methods.cpp",
   "addr": "0x711E90",
-  "sym": "?FUN_00711E90@Obj_00711E90@@QAE_NXZ",
-  "len": "0x1a",
-  "name": "Obj_00711E90::FUN_00711E90",
+  "sym": "?vf_41@TechnoTypeClass@@UAE_NXZ",
+  "len": "0x1A",
+  "name": "TechnoTypeClass::vf_41",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu238_methods.cpp",
   "addr": "0x711EC0",
-  "sym": "?FUN_00711EC0@Obj_00711EC0@@QAEHXZ",
-  "len": "0x1f",
-  "name": "Obj_00711EC0::FUN_00711EC0",
+  "sym": "?vf_28@TechnoTypeClass@@UAEHXZ",
+  "len": "0x1F",
+  "name": "TechnoTypeClass::vf_28",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu238_methods.cpp",
   "addr": "0x712120",
-  "sym": "?FUN_00712120@Obj_00712120@@QBEHXZ",
+  "sym": "?vf_45@TechnoTypeClass@@UAEHXZ",
   "len": "0xc",
-  "name": "Obj_00712120::FUN_00712120",
+  "name": "TechnoTypeClass::vf_45",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/trivial_tu238_methods.cpp",
   "addr": "0x717800",
-  "sym": "?FUN_00717800@Obj_00717800@@QAEHXZ",
+  "sym": "?vf_47@TechnoTypeClass@@UAEHXZ",
   "len": "0x17",
-  "name": "Obj_00717800::FUN_00717800",
+  "name": "TechnoTypeClass::vf_47",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/tu243_terrain_type_class.cpp",

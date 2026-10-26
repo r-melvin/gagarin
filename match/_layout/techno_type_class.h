@@ -102,6 +102,8 @@ public:
     TechnoTypeClass(const AbstractNoInit& noInit);
     // FUNCTION: GAMEMD 0x711AE0 (declaration; destructor)
     ~TechnoTypeClass();
+    // Native711EC0 overrides ObjectType slot28; full EAX integer, no args.
+    virtual int vf_28();
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
@@ -118,7 +120,8 @@ public:
     virtual bool vf_42(CellStruct* cell, HouseClass* owner);       // 42 0x716150; BuildingClass 0x449440 passes the cell and its owner, tests AL
     virtual int vf_43(); // 43 0x711EB0; EAX summed at caller0x688793
     virtual void vf_44();                                          // 44 0x7120D0
-    virtual void vf_45();                                          // 45 0x712120
+    // Native712120 returns a dword; caller6F4D14 compares full EAX signed.
+    virtual int vf_45();                                           // 45 0x712120
     virtual void vf_46(int a1, int a2);                            // 46 0x711F60
     // Native717800 returns field618 or the fallback dword in EAX; Process4CCB81
     // stores it whole and MoveTo4CCE6C adds it as an integer.
@@ -465,6 +468,10 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PaletteFile)       == 0xDD0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Palette)           == 0xDF0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_DF4)         == 0xDF4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, FlightLevel) == 0x618);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PreventAttackMove) == 0x6C8);
+GG_STATIC_ASSERT(offsetof(WeaponStruct, WeaponType) == 0);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 13 == 0xC99);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[0]) == 1);
 GG_STATIC_ASSERT(sizeof(TechnoTypeClass)                      == 0xDF8);
 
 #endif  // GG_MATCH_LAYOUT_TECHNO_TYPE_CLASS_H
