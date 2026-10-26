@@ -57,11 +57,13 @@ jobs:
           path: toolchain/MSVC600
           key: vc6-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('scripts/vc6/fetch_toolchain.sh') }}
 
+      # Cache restores belong to the runner; Wine requires its prefix parent to
+      # belong to the process UID. Keep both containers on that same UID.
       - name: Fetch the period MSVC6 toolchain (never committed)
-        run: docker run --rm -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/fetch_toolchain.sh
+        run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/fetch_toolchain.sh
 
       - name: Binary-free layout / compile regression gate
-        run: docker run --rm -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/compile_all.sh
+        run: docker run --rm --user "$(id -u):$(id -g)" --env HOME=/tmp -v "$PWD:/workspace" gagarin-vc6-ci:latest bash scripts/vc6/compile_all.sh
 
       - name: Export ByteMatch progress
         if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
