@@ -4,7 +4,7 @@
 //   LIBRARY: IAT 0x7E11A0 KERNEL32!WriteFile, IAT 0x7E1200
 //   KERNEL32!GetLastError, IAT 0x7E11C0 KERNEL32!SetFilePointer.
 
-#include "raw_file_class_write_bytes_methods.h"
+#include "ccfile_class.h"
 
 // Win32 imports reached through the IAT.
 extern "C" __declspec(dllimport) int __stdcall WriteFile(
@@ -36,7 +36,7 @@ inline int RawFileClass::RawSeek(int offset, int mode)
 // raises CDCheck with the Win32 error. When the file carries a bias (a MIX
 // sub-file extent) and the write ran past its end, the bias length is grown
 // to the new raw position; both raw seeks are expanded inline.
-int RawFileClass::WriteBytes(const void* buffer, int size)
+int RawFileClass::WriteBytes(void* buffer, int size)
 {
     int bytes_written = 0;
     int opened = 0;
@@ -52,9 +52,9 @@ int RawFileClass::WriteBytes(const void* buffer, int size)
         this->CDCheck(GetLastError(), 0, this->FileName);
     }
 
-    if (this->unknown_10 != -1) {
-        if (this->RawSeek(0, 1) > this->unknown_0C + this->unknown_10) {
-            this->unknown_10 = this->RawSeek(0, 1) - this->unknown_0C;
+    if (this->FileSize != -1) {
+        if (this->RawSeek(0, 1) > this->FilePointer + this->FileSize) {
+            this->FileSize = this->RawSeek(0, 1) - this->FilePointer;
         }
     }
 

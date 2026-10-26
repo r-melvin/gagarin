@@ -28211,7 +28211,7 @@
  {
   "tu": "match/platform/raw_file_class_write_bytes_methods.cpp",
   "addr": "0x65CDD0",
-  "sym": "?WriteBytes@RawFileClass@@UAEHPBXH@Z",
+  "sym": "?WriteBytes@RawFileClass@@UAEHPAXH@Z",
   "len": "0x130",
   "name": "RawFileClass::WriteBytes",
   "status": "matched",

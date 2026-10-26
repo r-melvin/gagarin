@@ -117,6 +117,9 @@ public:
     bool  FileNameAllocated;     // +0x20
 private:
     char  padding_21[3];         // +0x21
+    // Direct-handle seek expanded in WriteBytes at 0x65CDD0; no outlined
+    // native helper entry is recovered. The public Seek has bias semantics.
+    int RawSeek(int offset, int mode);
 };
 
 // ---------------------------------------------------------------------------
