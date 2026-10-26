@@ -10,8 +10,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7F3138
 extern const double DAT_007F3138;
 // GLOBAL: GAMEMD 0xB0B540
@@ -37,7 +35,7 @@ double DAT_00B0B590 = DAT_00B0B540 / DAT_007F3138;
 // dynamic initializer for DAT_00B0B578
 
 // GLOBAL: GAMEMD 0x00B0B578
-double DAT_00B0B578 = DAT_007E1718 / DAT_00B0B590;
+double DAT_00B0B578 = 1.0 / DAT_00B0B590;
 
 // FUNCTION: GAMEMD 0x6ACB40
 // Static-initialiser shape: stores constants to adjacent globals.
