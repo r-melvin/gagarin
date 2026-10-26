@@ -1,9 +1,12 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /MT /Op /Ob2
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
 //   Original translation unit Dropship.cpp. The name is the source-file string at 0x8204a8
 //   in retail gamemd.exe v1.001, passed by the assert at 0x4b8c61 inside this object's
 //   code range (0x4b67a0-0x4ba3af). Functions are in ascending retail address order.
 
+#include <math.h>
+#pragma intrinsic(pow)
 #include "../core/empty_function_family_methods.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
@@ -11,22 +14,12 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// GLOBAL: GAMEMD 0x7E1718
-extern const double DAT_007E1718;
-// GLOBAL: GAMEMD 0x7E8370
-extern const double DAT_007E8370;
-// GLOBAL: GAMEMD 0x8A08A8
-extern double DAT_008A08A8;
-// GLOBAL: GAMEMD 0x8A0900
-extern double DAT_008A0900;
 // GLOBAL: GAMEMD 0x8A0908
 extern int DAT_008A0908;
 // GLOBAL: GAMEMD 0x8A090C
 extern int DAT_008A090C;
 // GLOBAL: GAMEMD 0x8A0910
 extern int DAT_008A0910;
-// GLOBAL: GAMEMD 0x8A0918
-extern double DAT_008A0918;
 
 
 // Retail PAUButtonFadeEffect RTTI establishes the pointer element type and zero-offset
@@ -91,19 +84,20 @@ GG_STATIC_ASSERT(offsetof(GgCrossdissolveeffectDynamicVectorClass, CapacityIncre
 
 GG_STATIC_ASSERT(sizeof(CrossDissolveEffect*) == 4);
 
-// FUNCTION: GAMEMD 0x4B67D0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004B67D0()
-{
-    DAT_008A0918 = DAT_008A08A8 / DAT_007E8370;
-}
+// Declaration: GAMEMD 0x4CAC40 -- engine helper, stacked double/ST0 result.
+double __cdecl FUN_004CAC40(double value);
 
-// FUNCTION: GAMEMD 0x4B67F0
-// Static-initialiser shape: stores a floating-point expression of globals.
-void __cdecl FUN_004B67F0()
-{
-    DAT_008A0900 = DAT_007E1718 / DAT_008A0918;
-}
+// SYNTHETIC: GAMEMD 0x4B67A0
+// GLOBAL: GAMEMD 0x8A08A8
+double DAT_008A08A8 = FUN_004CAC40(2.0 * pow(256.0, 2.0));
+
+// SYNTHETIC: GAMEMD 0x4B67D0
+// GLOBAL: GAMEMD 0x8A0918
+double DAT_008A0918 = DAT_008A08A8 / 60.0;
+
+// SYNTHETIC: GAMEMD 0x4B67F0
+// GLOBAL: GAMEMD 0x8A0900
+double DAT_008A0900 = 1.0 / DAT_008A0918;
 
 // FUNCTION: GAMEMD 0x4B6970
 // Static-initialiser shape: stores constants to adjacent globals.
