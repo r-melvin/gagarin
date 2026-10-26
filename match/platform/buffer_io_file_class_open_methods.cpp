@@ -1,3 +1,4 @@
+// VC6FLAGS: /nologo /c /O2 /Gr /DNDEBUG /Gy /Ob2 /MT
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | YRpp-cross-check
 //   Bytes matched against retail gamemd.exe v1.001 at 0x431F70.
@@ -5,7 +6,7 @@
 //   FUNCTION: GAMEMD 0x65CB50   RawFileClass::Open          (callee; reloc)
 //   FUNCTION: GAMEMD 0x65CCA0   RawFileClass::Close         (callee; reloc)
 
-#include "buffer_io_file_class_open_methods.h"
+#include "ccfile_class.h"
 
 // FUNCTION: GAMEMD 0x431F70  BufferIOFileClass::Open (__thiscall, slot 7)
 //
@@ -61,3 +62,30 @@ reset:
 
     return RawFileClass::Open(access);
 }
+
+// FUNCTION: GAMEMD 0x4325C0  (__thiscall)
+// BufferIOFileClass::Close — flush the write buffer, then close the underlying
+// raw file. When still buffered and the buffer carries a tail (unknown_50), the
+// commit re-enters virtually (clearing unknown_bool_29 so the re-entry takes the plain
+// raw-close path).
+void BufferIOFileClass::Close()
+{
+    if (this->unknown_bool_29) {
+        this->Commit();
+        if (this->unknown_bool_26) {
+            if (this->unknown_50 != 0) {
+                this->unknown_bool_29 = false;
+                this->Close();                 // virtual self-dispatch (slot 13)
+                this->unknown_bool_29 = true;
+            } else {
+                this->RawFileClass::Close();
+            }
+            this->unknown_bool_26 = false;
+        }
+        this->unknown_bool_25 = false;
+    } else {
+        this->RawFileClass::Close();
+    }
+}
+
+

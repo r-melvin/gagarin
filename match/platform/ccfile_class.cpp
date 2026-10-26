@@ -195,32 +195,6 @@ int BufferIOFileClass::GetFileSize()
     return this->RawFileClass::GetFileSize();
 }
 
-// FUNCTION: GAMEMD 0x4325C0  (__thiscall)
-// BufferIOFileClass::Close — flush the write buffer, then close the underlying
-// raw file. When still buffered and the buffer carries a tail (unknown_50), the
-// commit re-enters virtually (clearing unknown_bool_29 so the re-entry takes the plain
-// raw-close path).
-void BufferIOFileClass::Close()
-{
-    if (this->unknown_bool_29) {
-        this->Commit();
-        if (this->unknown_bool_26) {
-            if (this->unknown_50 != 0) {
-                this->unknown_bool_29 = false;
-                this->Close();                 // virtual self-dispatch (slot 13)
-                this->unknown_bool_29 = true;
-            } else {
-                this->RawFileClass::Close();
-            }
-            this->unknown_bool_26 = false;
-        }
-        this->unknown_bool_25 = false;
-    } else {
-        this->RawFileClass::Close();
-    }
-}
-
-
 // FUNCTION: GAMEMD 0x4739F0  (__thiscall)
 // Construct the CD-file base and an empty buffer, then name the file through
 // CDFileClass's SetFileName (a direct call to 0x47AE10, not the slot).
