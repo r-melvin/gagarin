@@ -1648,7 +1648,7 @@ int BuildingBView::vf_180()
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x4513D0
-int BuildingBView::vf_27()
+void* BuildingClass::vf_27()
 {
     if (BState && ActuallyPlacedOnMap)
         return Type->vf_39();

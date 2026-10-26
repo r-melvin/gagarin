@@ -1186,7 +1186,7 @@ public:
     virtual void unused_slot_24();
     virtual void unused_slot_25();
     virtual int vf_26(bool a, BuildingBTargetView* target);   // slot 26 (+0x68)
-    virtual int vf_27();   // slot 27 (+0x6C)
+    virtual void* unused_slot_27();   // slot 27 (+0x6C); canonical BuildingClass owns 0x4513D0
     virtual void unused_slot_28();
     virtual void unused_slot_29();
     virtual void unused_slot_30();

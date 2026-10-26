@@ -89,6 +89,8 @@ public:
     // FUNCTION: GAMEMD 0x43FB20 (slot 23; the per-frame update)
     virtual void vf_23();
 
+    virtual void* vf_27();                                             // 27  0x4513D0
+
     // Non-virtual BuildingClass members called by vf_23; bodies not recovered here.
     // FUNCTION: GAMEMD 0x43C0D0 (decl; reloc)
     void FUN_0043C0D0();
@@ -301,6 +303,9 @@ public:
 GG_STATIC_ASSERT(offsetof(BuildingClass, Type)                == 0x520);
 GG_STATIC_ASSERT(offsetof(BuildingClass, Factory)             == 0x524);
 GG_STATIC_ASSERT(offsetof(BuildingClass, C4Timer)             == 0x528);
+// 0x4513DA reads this byte at +0x6E4.
+GG_STATIC_ASSERT(offsetof(BuildingClass, ActuallyPlacedOnMap) == 0x6E4);
+GG_STATIC_ASSERT(sizeof(((BuildingClass*)0)->ActuallyPlacedOnMap) == 1);
 GG_STATIC_ASSERT(offsetof(BuildingClass, BState)              == 0x534);
 GG_STATIC_ASSERT(offsetof(BuildingClass, QueueBState)         == 0x538);
 GG_STATIC_ASSERT(offsetof(BuildingClass, OwnerCountryIndex)   == 0x53C);

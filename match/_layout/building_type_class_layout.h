@@ -76,6 +76,9 @@ class IsometricTileTypeClass;
 class BuildingTypeClass : public TechnoTypeClass
 {
 public:
+    // Native introduced slot 48, after TechnoTypeClass slots 0..47; 0x465960.
+    virtual void* vf_48();
+
     // FUNCTION: GAMEMD 0x45EC90 (decl; reloc)
     int GetFoundationWidth() const;
     // FUNCTION: GAMEMD 0x45ECA0 (decl; reloc) -- one stack argument (RET 4)
