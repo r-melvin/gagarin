@@ -99335,5 +99335,32 @@
   "name": "RadioClass::vf_160",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x468000",
+  "sym": "?vf_122@BulletClass@@UAEHXZ",
+  "len": "0x89",
+  "name": "BulletClass::vf_122",
+  "status": "partial",
+  "pct": 2.5
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x468B90",
+  "sym": "?vf_30@BulletClass@@UAEHXZ",
+  "len": "0x16",
+  "name": "BulletClass::vf_30",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x46AFF0",
+  "sym": "?Release@BulletClass@@UAGKXZ",
+  "len": "0x37",
+  "name": "BulletClass::Release",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

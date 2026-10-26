@@ -38,14 +38,40 @@ public:
 
     char          _base[0x24];               // +0x000  AbstractType/ObjectType base (P2)
     char          ID[0x18];                  // +0x024  type id string (strcmpi key)
-    char          _members[0x2E8 - 0x3C];    // +0x03C  remaining Rules fields (P2)
+    char          unknown_3C[0x2A1 - 0x3C]; // +0x03C
+    unsigned char unknown_2A1;               // +0x2A1
+    char          unknown_2A2[0x2E8 - 0x2A2]; // +0x2A2
     int           ScaledSpawnDelay;          // +0x2E8
-    char          _tail[0x2F8 - 0x2EC];      // +0x2EC  remaining fields (P2)
+    char          unknown_2EC[0x2F4 - 0x2EC]; // +0x2EC
+    unsigned char unknown_2F4;               // +0x2F4
+    unsigned char unknown_2F5;               // +0x2F5
+    unsigned char unknown_2F6;               // +0x2F6
+    unsigned char unknown_2F7;               // +0x2F7
 };
 
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, ID)               == 0x024);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, _base)             == 0x000);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->_base)         == 0x024);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ID)            == 0x018);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A1)       == 0x2A1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_3C)         == 0x03C);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_3C)     == 0x265);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A2)        == 0x2A2);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A2)    == 0x046);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, ScaledSpawnDelay) == 0x2E8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ScaledSpawnDelay) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2EC)        == 0x2EC);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2EC)    == 8);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F4)       == 0x2F4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F5)       == 0x2F5);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F6)       == 0x2F6);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F7)       == 0x2F7);
 GG_STATIC_ASSERT(sizeof(BulletTypeClass)                     == 0x2F8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A1)  == 1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F4)  == 1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F5)  == 1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F6)  == 1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F7)  == 1);
 
 // VectorClass head for BulletTypeClass::Array. Items @ +0x04, Count @ +0x10.
 //   Array @ 0xA83C80  =>  &Items == 0xA83C84, &Count == 0xA83C90 (both confirmed

@@ -47,6 +47,8 @@
 #include "object_class.h"     // ObjectClass spine + CoordStruct
 #include "foot_class.h"       // CellStruct
 
+class BulletTypeClass;
+
 // BulletData — the flight-state block embedded at BulletClass+0xB8. Size 0x28,
 // proven by closure: the ctor takes ECX = this+0xB8 and calls its constructor
 // FUN_0x004E1100 (@0x0046638B/0x004663A3); the next confirmed member (Bright)
@@ -71,6 +73,7 @@ struct BulletVelocity
 };
 GG_STATIC_ASSERT(offsetof(BulletVelocity, Y) == 0x08);
 GG_STATIC_ASSERT(offsetof(BulletVelocity, Z) == 0x10);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, X) == 0x00);
 GG_STATIC_ASSERT(sizeof(BulletVelocity)      == 0x18);
 #endif
 
@@ -79,11 +82,13 @@ class BulletClass : public ObjectClass
 public:
     // Slots 122-124, introduced by BulletClass (125 slots in all; retail table 0x7E46E4).
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
-    virtual void vf_122();                                         // 122 0x468000
+    virtual int vf_122();                                          // 122 0x468000
     virtual void vf_123(int a1);                                   // 123 0x46B5A0
     virtual void vf_124(int a1, int a2);                           // 124 0x468670
+    virtual int vf_30();                                           // 30  0x468B90
+    virtual ULONG __stdcall Release();                            // 2   0x46AFF0
 
-    void*          Type;                // +0xAC BulletTypeClass*; ctor @0x00466391
+    BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     void*          Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
     unsigned char  unknown_B4;          // +0xB4 ctor MOV byte [ESI+0xB4],BL @0x0046639D
     unsigned char  align_B5[3];         // +0xB5
@@ -124,6 +129,7 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(BulletClass, Type)              == 0xAC);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Type)           == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Owner)             == 0xB0);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_B4)        == 0xB4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Data)              == 0xB8);
@@ -143,6 +149,7 @@ GG_STATIC_ASSERT(offsetof(BulletClass, unknown_120)       == 0x120);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_124)       == 0x124);
 GG_STATIC_ASSERT(offsetof(BulletClass, WH)                == 0x128);
 GG_STATIC_ASSERT(offsetof(BulletClass, AnimFrame)         == 0x12C);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->AnimFrame)      == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, AnimRateCounter)   == 0x12D);
 GG_STATIC_ASSERT(offsetof(BulletClass, WeaponType)        == 0x130);
 GG_STATIC_ASSERT(offsetof(BulletClass, SourceCoords)      == 0x134);
