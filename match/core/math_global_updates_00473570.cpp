@@ -26,8 +26,6 @@ extern "C" double DAT_0089E200;
 extern "C" const double DAT_007E4BF0;
 // GLOBAL: GAMEMD 0x007E4BF8 (read-only .rdata double 0.017453292519943295)
 extern "C" const double DAT_007E4BF8;
-// GLOBAL: GAMEMD 0x007E1718 (read-only .rdata double 1.0)
-extern "C" const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x007E1720 (read-only .rdata double 45.0)
 extern "C" const double DAT_007E1720;
 // GLOBAL: GAMEMD 0x007E1728 (read-only .rdata double 60.0)
@@ -86,7 +84,7 @@ extern "C" void FUN_00473570()
 // FUNCTION: GAMEMD 0x00473590
 extern "C" void FUN_00473590()
 {
-    DAT_0089E258 = DAT_007E1718 / DAT_0089E270;
+    DAT_0089E258 = 1.0 / DAT_0089E270;
 }
 
 // FUNCTION: GAMEMD 0x004735B0

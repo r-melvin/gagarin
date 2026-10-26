@@ -15,8 +15,6 @@ extern double __cdecl FUN_004CAC40(double value);
 extern "C" const double DAT_007E1708;
 // GLOBAL: GAMEMD 0x007E1710
 extern "C" const double DAT_007E1710;
-// GLOBAL: GAMEMD 0x007E1718
-extern "C" const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x007E1720
 extern "C" const double DAT_007E1720;
 // GLOBAL: GAMEMD 0x007E1728
@@ -56,7 +54,7 @@ extern "C" void FUN_00438370()
 // FUNCTION: GAMEMD 0x00438390
 extern "C" void FUN_00438390()
 {
-    DAT_0089C6D8 = DAT_007E1718 / DAT_0089C6F0;
+    DAT_0089C6D8 = 1.0 / DAT_0089C6F0;
 }
 
 // FUNCTION: GAMEMD 0x004383B0

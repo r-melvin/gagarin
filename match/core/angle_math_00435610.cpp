@@ -15,8 +15,6 @@ extern "C" const double DAT_007E1710;
 extern "C" const double DAT_007E1708;
 // GLOBAL: GAMEMD 0x007E3A88 — constant 60.0.
 extern "C" const double DAT_007E3A88;
-// GLOBAL: GAMEMD 0x007E1718 — constant 1.0.
-extern "C" const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x007E3A90 — radians per degree (0.017453292519943295).
 extern "C" const double DAT_007E3A90;
 // GLOBAL: GAMEMD 0x007E1720 — constant 45.0.
@@ -54,7 +52,7 @@ extern "C" void FUN_00435640()
 // FUNCTION: GAMEMD 0x435660
 extern "C" void FUN_00435660()
 {
-    DAT_0089C530 = DAT_007E1718 / DAT_0089C548;
+    DAT_0089C530 = 1.0 / DAT_0089C548;
 }
 
 // FUNCTION: GAMEMD 0x435680
