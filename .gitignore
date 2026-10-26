@@ -6,6 +6,7 @@
 /toolchain
 
 # --- Build output / match artifacts ---
+/build/
 build-vc6/
 *.obj
 *.o

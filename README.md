@@ -1,5 +1,7 @@
 # gagarin
 
+[![Progress](https://bytematch.dev/r-melvin/gagarin.svg)](https://bytematch.dev/r-melvin/gagarin)
+
 **gagarin** is reconstructing the *Command & Conquer: Red Alert 2 — Yuri's
 Revenge* engine from retail `gamemd.exe` v1.001. The aim is a buildable,
 structured, human-readable C++ project whose classes and organization follow
@@ -55,6 +57,26 @@ updates the link figures from their output. See
 for setup, the per-function matching workflow and file conventions; [AGENTS.md](AGENTS.md)
 defines the evidence and engineering rules; [LEGAL.md](LEGAL.md) defines the
 legal scope and provenance restrictions.
+
+### ByteMatch reports
+
+After the compile gate, default-branch push builds upload a
+`GAMEMD_1.001_report` artifact for [ByteMatch](https://bytematch.dev/r-melvin/gagarin).
+Generate the same report locally with:
+
+```bash
+python3 scripts/vc6/bytematch_report.py --output build/GAMEMD_1.001/report.json
+```
+
+The exporter writes objdiff-format version 2 JSON from the checked-in match
+manifest and function census. It does not run an objdiff comparison or replace
+the retail verification gate. Known functions use their manifest lengths;
+unclaimed functions use census lengths. `report-context.json` records any
+differences from the older census. Partial functions receive no matched credit,
+and every unit remains marked incomplete. Data progress is not measured.
+Source units follow the repository paths; unrecovered functions have no invented
+source path. Existing function address annotations support source lookup.
+Only JSON reports are uploaded; no game bytes, objects or toolchain files.
 
 ## Evidence and legal scope
 
