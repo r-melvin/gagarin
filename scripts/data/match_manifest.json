@@ -26949,22 +26949,22 @@
   "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_close_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x4325C0",
   "sym": "?Close@BufferIOFileClass@@UAEXXZ",
   "len": "0x4E",
   "name": "BufferIOFileClass::Close",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
-  "tu": "match/platform/ccfile_class_close_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x65D1F0",
   "sym": "?GetFileTime@RawFileClass@@UAEKXZ",
   "len": "0x4D",
   "name": "RawFileClass::GetFileTime",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/platform/ccfile_class_exists_methods.cpp",

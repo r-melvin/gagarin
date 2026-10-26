@@ -45,6 +45,10 @@ GG_STATIC_ASSERT(offsetof(FILETIME, dwLowDateTime) == 0);
 GG_STATIC_ASSERT(offsetof(FILETIME, dwHighDateTime) == 4);
 GG_STATIC_ASSERT(sizeof(BY_HANDLE_FILE_INFORMATION) == 0x34);
 GG_STATIC_ASSERT(offsetof(BY_HANDLE_FILE_INFORMATION, ftCreationTime) == 4);
+// Native 0x65D20F addresses lastWriteTime; DOS outputs use WORDs.
+GG_STATIC_ASSERT(offsetof(BY_HANDLE_FILE_INFORMATION, ftLastWriteTime) == 0x14);
+GG_STATIC_ASSERT(sizeof(WORD) == 2);
+GG_STATIC_ASSERT(sizeof(DWORD) == 4);
 
 // FUNCTION: GAMEMD 0x401940  (__thiscall)
 // Return the stored file-name pointer (RawFileClass::FileName @ +0x18).
@@ -186,6 +190,32 @@ int BufferIOFileClass::GetFileSize()
         return this->unknown_int_48;
     return this->RawFileClass::GetFileSize();
 }
+
+// FUNCTION: GAMEMD 0x4325C0  (__thiscall)
+// BufferIOFileClass::Close — flush the write buffer, then close the underlying
+// raw file. When still buffered and the buffer carries a tail (unknown_50), the
+// commit re-enters virtually (clearing unknown_bool_29 so the re-entry takes the plain
+// raw-close path).
+void BufferIOFileClass::Close()
+{
+    if (this->unknown_bool_29) {
+        this->Commit();
+        if (this->unknown_bool_26) {
+            if (this->unknown_50 != 0) {
+                this->unknown_bool_29 = false;
+                this->Close();                 // virtual self-dispatch (slot 13)
+                this->unknown_bool_29 = true;
+            } else {
+                this->RawFileClass::Close();
+            }
+            this->unknown_bool_26 = false;
+        }
+        this->unknown_bool_25 = false;
+    } else {
+        this->RawFileClass::Close();
+    }
+}
+
 
 // FUNCTION: GAMEMD 0x4739F0  (__thiscall)
 // Construct the CD-file base and an empty buffer, then name the file through
@@ -469,6 +499,23 @@ int RawFileClass::DeleteFile()
         return 0;
     }
     return 1;
+}
+
+// FUNCTION: GAMEMD 0x65D1F0  (__thiscall)
+// RawFileClass::GetFileTime — query the file's last-write time and fold it into
+// a packed DOS date/time word: (FatDate << 16) | FatTime. Returns 0 when the
+// handle cannot be queried.
+unsigned long RawFileClass::GetFileTime()
+{
+    BY_HANDLE_FILE_INFORMATION info;
+    unsigned short dosDate;
+    unsigned short dosTime;
+
+    if (GetFileInformationByHandle(this->Handle, &info)) {
+        FileTimeToDosDateTime(&info.ftLastWriteTime, &dosDate, &dosTime);
+        return (dosDate << 16) | dosTime;
+    }
+    return 0;
 }
 
 // FUNCTION: GAMEMD 0x65D240  RawFileClass::SetFileTime (__thiscall, ret 0x4)

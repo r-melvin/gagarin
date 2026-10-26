@@ -304,6 +304,9 @@ GG_STATIC_ASSERT(offsetof(CDFileClass, IsDisabled) == 0x54);
 GG_STATIC_ASSERT(sizeof(((CDFileClass*)0)->IsDisabled) == 1);
 GG_STATIC_ASSERT(sizeof(CDFileClass) == 0x58);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_24) == 0x24);
+// Native 0x4325CF reads and 0x4325EC clears byte26.
+GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_26) == 0x26);
+GG_STATIC_ASSERT(sizeof(((BufferIOFileClass*)0)->unknown_bool_26) == 1);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_27) == 0x27);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_28) == 0x28);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_30) == 0x30);
