@@ -1,22 +1,23 @@
 # Project status
 
-At source snapshot **`7a9e8ee4` (2026-10-26)**, the manifest holds
-**11,012 rows: 10,269 matched and 743 partial**, in 1,246 manifest translation
+At source snapshot **`7f489c73` (2026-10-26)**, the manifest holds
+**11,013 rows: 10,270 matched and 743 partial**, in 1,246 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
-bytes. Matched rows represent **51.9%** of the census and **710,833 bytes
+bytes. Matched rows represent **51.9%** of the census and **710,873 bytes
 (18.3%)**; partials represent 3.8%. These are function measurements, not
 executable completion.
 
 The full gate compiles **1,257 tracked translation units**, checks **139 layout
-headers**, re-proves all 10,269 matched rows and compile-checks all 743 partials,
+headers**, re-proves all 10,270 matched rows and compile-checks all 743 partials,
 with no matched-function regressions. Recent affected exact functions also have
 explicit relocation and actual selected-provider checks. Compiling, matching
 functions and linking remain separate from complete vtable, RTTI, data layout
 and whole-image verification.
 
 The narrow string family now has one Wstring owner. Despite its retail name,
-this is the four-byte, heap-owning **narrow** string; the wide families remain
-separate work. Netshare constructs returned values through their actual value
+this is the four-byte, heap-owning **narrow** string. The separate wide owner
+also has canonical by-value AsLower/AsUpper methods; animation-owned duplicate
+wide-string views still need consolidation. Netshare constructs returned values through their actual value
 ABI, and Wonline's members, hash keys and 15 narrow globals use Wstring shared
 with their consumers. Both narrow stand-in classes are retired. An earlier scan of all
 1,271 project objects proved their old symbol names are absent, and 56 unused
@@ -55,10 +56,18 @@ so that method adoption does not establish a complete Building table.
 MissionControl's constructor, accessor and 32-element array now share their
 canonical record; duplicate views and three unused array bindings are retired.
 
+Aircraft AddRef/Release and two IFly field queries now use the canonical
+multiple-inheritance class. Five obsolete IFly views are retired. This does not
+establish a source-backed Aircraft table, constructor or destructor.
+
 The File hierarchy shares canonical full-width Exists flags across six classes.
 Four existing Exists bodies remain exact, and the completed Raw contributor
 and its duplicate declarations are retired. Six 17-slot table checks preserve
 native pointer values while recording existing partial and diagnostic providers.
+Additional Raw/Buffer/CD methods and FilePipe/FileStraw consumers now use
+canonical owners. Two private CCFile timestamp class definitions remain; their
+Get/Set migration is held after three compiler forms failed to preserve exact
+virtual dispatch.
 Tag's packed cell setter uses its canonical owner; its scalar deleting helper
 is compiler generated, with the registry migration still held pending its
 separate static-storage prerequisite.
@@ -71,14 +80,16 @@ pointer storage and drawing consumers; six pixel-shift cells share one storage
 owner. These source ownership changes do not reproduce native data placement.
 Further original-TU boundaries, class/interface adoption and global layouts
 remain unfinished; unsupported source filenames remain placeholders. The
-historical medium-confidence set still has 79 groups, only eight with a
-corresponding numbered TU filename. Filename presence is an organization
-measurement, not evidence that the original TU has been recovered.
+historical medium-confidence set has 79 groups. Numbered filename presence
+is an organization measurement, not evidence that an original TU is recovered.
 
 Initializer verification distinguishes an inner helper from the actual CRT
-callback. In the historical float-initializer subset, 100 generated claims
-comprise **60 direct native-matching CRT roots** and 40 inner helpers behind
-jump wrappers. That subset retains 136 manual claims and 354 unclaimed entries.
+callback. In the historical float-initializer subset, 104 generated claims
+comprise **64 direct native-matching CRT roots** and 40 inner helpers behind
+jump wrappers. That subset retains 132 manual claims and 354 unclaimed entries.
+Coopcamp also has a newly recovered 40-byte producer outside that historical
+subset. Its three ordinary double definitions have real source storage and
+consecutive native initializer roots; their engine math helper remains diagnostic.
 Separate Wonline audits verify **15 natural narrow string initializer roots**
 and **one natural wide string initializer root**, including their actual
 selected constructors, registered cleanups and CRT order. These separately
@@ -90,7 +101,7 @@ Link milestones (diagnostic images do not run):
 | Milestone | State | Measurement |
 | --- | --- | --- |
 | M0 diagnostic link | measured at `286b0ae1` | 1,270 objects, 8,621 unresolved externals and 0 duplicate definitions, using `/FORCE`; an unresolved-symbol diagnostic, not a working engine |
-| M1 address-faithful stub link | verified at `7a9e8ee4` | Exit 0 without `/FORCE`, 0 unresolved after 8,940 placed int3 stubs, 0 duplicate definitions; all 10,269 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M1 address-faithful stub link | verified at `7f489c73` | Exit 0 without `/FORCE`, 0 unresolved after 8,939 placed int3 stubs, 0 duplicate definitions; all 10,270 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |
