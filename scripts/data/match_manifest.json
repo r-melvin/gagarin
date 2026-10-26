@@ -75543,16 +75543,16 @@
   "pct": 100.0
  },
  {
-  "tu": "match/core/class_leaf_member_methods.cpp",
+  "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4820",
-  "sym": "?FUN_004B4820@Obj_004B4820@@QAEHPAX@Z",
+  "sym": "?InWhichLayer@DriveLocomotionClass@@UAGHXZ",
   "len": "0x8",
-  "name": "FUN_004B4820",
+  "name": "DriveLocomotionClass::InWhichLayer",
   "status": "matched",
   "pct": 100.0
  },
  {
-  "tu": "match/core/persist_class_id_methods.cpp",
+  "tu": "match/movement/drive_locomotion.cpp",
   "addr": "0x4B4830",
   "sym": "?GetClassID@DriveLocomotionClass@@UAGJPAU_GUID@@@Z",
   "len": "0x38",

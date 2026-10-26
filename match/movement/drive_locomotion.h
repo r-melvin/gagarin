@@ -168,3 +168,6 @@ GG_STATIC_ASSERT(sizeof(DriveLocomotionClass) == 0x70);   // allocation 0x6C403C
 void __cdecl FUN_004B4770();
 
 #endif  // GG_MATCH_MOVEMENT_DRIVE_LOCOMOTION_H
+
+// Native 0x4B4830 copies four dwords to the CLSID output.
+GG_STATIC_ASSERT(sizeof(CLSID) == 16);

@@ -9,9 +9,9 @@
 // evidence are in drive_locomotion.h; the address-local views of the linked
 // foot, cells and track tables are in drive_support_views.h.
 //
-// Declared here but not defined (other batches): Save 0x4AF800, InWhichLayer
-// 0x4B4820, GetClassID 0x4B4830, ZGradient 0x4B4880, Lock 0x4B4BE0, Unlock
-// 0x4B4BF0, the large track bodies DrawMatrix 0x4AFF60 and Process 0x4B0500.
+// Declared here but not defined (other batches): Save 0x4AF800,
+// ZGradient 0x4B4880, and the large track bodies DrawMatrix 0x4AFF60
+// and Process 0x4B0500.
 // The destructor body 0x4AF5E0 stays scored by ComRel_004AF5E0
 // (match/core/multi_vtable_dtor_family_methods.cpp).
 
@@ -19,6 +19,9 @@
 #include <math.h>
 #include <stdlib.h>
 #include "drive_locomotion.h"
+
+// GLOBAL: GAMEMD 0x007E9A30
+extern const CLSID DAT_007E9A30;
 
 // LIBRARY: OLE32!OleLoadFromStream, IAT 0x7E15F8 (declared by <ole2.h>).
 
@@ -410,6 +413,21 @@ void DriveLocomotionClass::FUN_004B4800(int arg)
 int __stdcall DriveLocomotionClass::ZAdjust()
 {
     return 0;
+}
+
+// FUNCTION: GAMEMD 0x4B4820
+int __stdcall DriveLocomotionClass::InWhichLayer()
+{
+    return 2;
+}
+
+// FUNCTION: GAMEMD 0x004B4830
+HRESULT __stdcall DriveLocomotionClass::GetClassID(CLSID* pClassID)
+{
+    if (pClassID == 0)
+        return E_POINTER;
+    *pClassID = DAT_007E9A30;
+    return S_OK;
 }
 
 // FUNCTION: GAMEMD 0x4B4890

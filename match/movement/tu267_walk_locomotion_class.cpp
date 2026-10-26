@@ -44,10 +44,6 @@ TuningCoordInit DAT_00B45C10(128, 128, 0);
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// vtable owner / slot: DriveLocomotionClass+4/s29
-struct Obj_004B4820 {
-    int FUN_004B4820(void*);
-};
 
 // vtable owner / slot: -
 struct Obj_00681060 {

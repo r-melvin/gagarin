@@ -12,16 +12,6 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
-// vtable owner / slot: DriveLocomotionClass+4/s29
-struct Obj_004B4820 {
-    int FUN_004B4820(void*);
-};
-// FUNCTION: GAMEMD 0x004B4820
-int Obj_004B4820::FUN_004B4820(void*)
-{
-    return 2;
-}
-
 // vtable owner / slot: -
 struct Obj_00681060 {
     unsigned char unknown_00[0x4];
