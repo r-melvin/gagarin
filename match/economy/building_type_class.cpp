@@ -13,17 +13,25 @@
 //   FUNCTION: GAMEMD 0x465D40   BuildingTypeClass::IsVehicle            (__thiscall)
 //   GLOBAL:   GAMEMD 0x8192B8   FoundationWidth   (int[] indexed by Foundation)
 //   GLOBAL:   GAMEMD 0x819310   FoundationHeight  (int[] indexed by Foundation)
-//   LIBRARY:  GAMEMD 0x7C8B3D   operator delete / free (CRT; excluded from match)
+//   LIBRARY:  GAMEMD 0x7C8B3D   scalar operator delete (CRT; excluded from recovery)
 
-#include "building_type_class.h"
+#include "../_layout/building_type_class_layout.h"
+#include <new.h>
+
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Foundation) == 0xEF0);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Buildup) == 0xE00);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupLoaded) == 0xE04);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1570) == 0x1570);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1760) + 2 == 0x1762);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto) == 0x408);
 
 // GLOBAL: GAMEMD 0x8192B8 / 0x819310 — foundation dimension lookup tables,
 // indexed by the Foundation enum. Scaled index *4 in the disasm => int[].
 extern int FoundationWidth[];   // GLOBAL 0x8192B8
 extern int FoundationHeight[];  // GLOBAL 0x819310
 
-// LIBRARY: GAMEMD 0x7C8B3D — CRT operator delete / free (push ptr; call; add esp,4).
-extern "C" void __cdecl gamemd_free(void* block);
+// LIBRARY: GAMEMD 0x7C8B3D — scalar operator delete; also called by the
+// compiler-generated deleting destructor at 0x4D03A0.
 
 // ---------------------------------------------------------------------------
 // FUNCTION: GAMEMD 0x45EC90  (__thiscall)
@@ -41,7 +49,7 @@ int BuildingTypeClass::GetFoundationWidth() const
 int BuildingTypeClass::GetFoundationHeight(bool bIncludeBib) const
 {
     return FoundationHeight[this->Foundation]
-        + ((bIncludeBib && this->Bib) ? 1 : 0);
+        + ((bIncludeBib && this->bools_1570[0]) ? 1 : 0);
 }
 
 // ---------------------------------------------------------------------------
@@ -50,9 +58,9 @@ int BuildingTypeClass::GetFoundationHeight(bool bIncludeBib) const
 // ---------------------------------------------------------------------------
 void BuildingTypeClass::ClearBuildUp()
 {
-    if (this->FreeBuildup && this->Buildup)
+    if (this->bools_1760[2] && this->Buildup)
     {
-        gamemd_free(this->Buildup);
+        ::operator delete(this->Buildup);
         this->Buildup = 0;
         this->BuildupLoaded = false;
     }

@@ -80,6 +80,11 @@ public:
     int GetFoundationWidth() const;
     // FUNCTION: GAMEMD 0x45ECA0 (decl; reloc) -- one stack argument (RET 4)
     int GetFoundationHeight(bool includeBib) const;
+    // FUNCTION: GAMEMD 0x465AF0 -- releases the owned buildup image.
+    void ClearBuildUp();
+    // FUNCTION: GAMEMD 0x465D40 -- const predicate; existing external spelling
+    // below remains for callers whose source ownership is not recovered here.
+    bool IsVehicle() const;
     // FUNCTION: GAMEMD 0x465D40 (decl; reloc) -- no stack arguments, result in AL; BuildingClass slot 32 (0x457620) returns it.
     bool FUN_00465D40();
 
