@@ -26985,7 +26985,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_io_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473AE0",
   "sym": "?WriteBytes@CCFileClass@@UAEHPAXH@Z",
   "len": "0x30",
@@ -26994,7 +26994,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_io_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473BA0",
   "sym": "?Seek@CCFileClass@@UAEHHH@Z",
   "len": "0x5B",
@@ -27003,7 +27003,7 @@
   "pct": 90.6
  },
  {
-  "tu": "match/platform/ccfile_class_io_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473C00",
   "sym": "?GetFileSize@CCFileClass@@UAEHXZ",
   "len": "0x50",
@@ -27129,7 +27129,7 @@
   "pct": 100
  },
  {
-  "tu": "match/platform/ccfile_class_read_bytes_methods.cpp",
+  "tu": "match/platform/ccfile_class.cpp",
   "addr": "0x473B10",
   "sym": "?ReadBytes@CCFileClass@@UAEHPAXH@Z",
   "len": "0x8e",

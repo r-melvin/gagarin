@@ -225,7 +225,7 @@ public:
     virtual void CDCheck(unsigned long code, bool b, const char* f); // GAMEMD 0x473AB0, slot 16
 
     MemoryBuffer Buffer;      // +0x58
-    unsigned int Position;    // +0x64
+    int Position;    // +0x64
     unsigned int Availability;// +0x68
 };
 
@@ -278,6 +278,9 @@ GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_bool_29) == 0x29);
 GG_STATIC_ASSERT(offsetof(BufferIOFileClass, unknown_int_48)  == 0x48);
 GG_STATIC_ASSERT(offsetof(CCFileClass, Buffer)              == 0x58);
 GG_STATIC_ASSERT(offsetof(CCFileClass, Position)            == 0x64);
+// Native 0x473BD2 SETS and 0x473BE3 JLE prove signed32 position clamping.
+GG_STATIC_ASSERT(sizeof(((CCFileClass*)0)->Position) == 4);
+GG_STATIC_ASSERT(sizeof(CCFileClass) == 0x6C);
 GG_STATIC_ASSERT(offsetof(CCFileClass, Availability)        == 0x68);
 GG_STATIC_ASSERT(offsetof(RawFileClass, Handle)             == 0x14);
 GG_STATIC_ASSERT(sizeof(FileClass) == 8);

@@ -26,6 +26,9 @@
 
 #include "ccfile_class.h"
 #include "../core/string_class.h"
+#include <string.h>
+
+#pragma function(memcpy)
 
 // Standard placement new: returns the placement pointer unchanged. Used by
 // CCFileClass::Close to re-construct its MemoryBuffer in place (which is how
@@ -110,6 +113,102 @@ CCFileClass::CCFileClass(const Wstring& name) : Buffer(0, 0), Position(0)
 CCFileClass::CCFileClass() : Buffer(0, 0), Position(0)
 {
     Availability = 0;
+}
+
+// FUNCTION: GAMEMD 0x473AE0  (__thiscall)
+// CCFileClass::WriteBytes — when the file is buffered in memory, fire the
+// CD-protection check (error 0xD) against the file name, then forward the write
+// to the underlying buffered file.
+int CCFileClass::WriteBytes(void* pBuffer, int nNumBytes)
+{
+    if (this->Buffer.Buffer) {
+        this->CDCheck(0xD, false, this->GetFileName());
+    }
+    return this->BufferIOFileClass::WriteBytes(pBuffer, nNumBytes);
+}
+
+
+// FUNCTION: GAMEMD 0x473B10
+//
+// Read from a MIX-resident file. If the file is not open it is opened for
+// reading here and closed again on the way out. With an in-memory buffer the
+// read is a bounded memcpy from the current position; without one it is handed
+// to the BufferIOFileClass base.
+int CCFileClass::ReadBytes(void* pBuffer, int nBytes)
+{
+    bool opened = false;
+
+    if (!this->HasHandle()) {
+        if (this->Open(1)) {
+            opened = true;
+        }
+    }
+
+    if (this->Buffer.Buffer != 0) {
+        int available = this->Buffer.Size - this->Position;
+        if (available < nBytes) {
+            nBytes = available;
+        }
+        if (nBytes != 0) {
+            memcpy(pBuffer, (char*)this->Buffer.Buffer + this->Position, nBytes);
+            this->Position = this->Position + nBytes;
+        }
+        if (opened) {
+            this->Close();
+        }
+        return nBytes;
+    }
+
+    nBytes = BufferIOFileClass::ReadBytes(pBuffer, nBytes);
+    if (opened) {
+        this->Close();
+    }
+    return nBytes;
+}
+
+// FUNCTION: GAMEMD 0x473BA0  (__thiscall)
+// CCFileClass::Seek — seek within the in-memory buffer (clamped to [0, Size]);
+// otherwise defer to the buffered file.
+//
+// PARTIAL, 90.6% (29/32). Three transposed instructions in the clamp tail:
+// retail stores the low-clamped position and only then loads Buffer.Size for
+// the high clamp, while cl hoists the size load above the store. Writing both
+// clamps as `if` statements scores 5.9%.
+int CCFileClass::Seek(int offset, int mode)
+{
+    if (this->Buffer.Buffer) {
+        switch (mode) {
+        case 0:  // SEEK_SET
+            this->Position = 0;
+            break;
+        case 2:  // SEEK_END
+            this->Position = this->Buffer.Size;
+            break;
+        }
+        this->Position += offset;
+        this->Position = this->Position < 0 ? 0 : this->Position;
+        this->Position = this->Position > this->Buffer.Size ? this->Buffer.Size : this->Position;
+        return this->Position;
+    }
+    return this->BufferIOFileClass::Seek(offset, mode);
+}
+
+
+// FUNCTION: GAMEMD 0x473C00  (__thiscall)
+// CCFileClass::GetFileSize — buffered size when loaded; else, if the underlying
+// file isn't available, look the size up by name in the MIX index; otherwise
+// return the buffered file's size.
+int CCFileClass::GetFileSize()
+{
+    if (this->Buffer.Buffer) {
+        return this->Buffer.Size;
+    }
+    if (!this->BufferIOFileClass::Exists(false)) {
+        int length = 0;
+        MixFileClass_Offset(this->GetFileName(), 0, 0, 0, &length);
+        return length;
+    }
+    return this->BufferIOFileClass::GetFileSize();
 }
 
 // FUNCTION: GAMEMD 0x473CE0  (__thiscall)
