@@ -119,6 +119,8 @@ public:
     virtual int vf_33(HouseClass* owner);
     virtual int vf_34();                                          // 34 0x711EE0
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
+    // Declaration: GAMEMD 0x716DC0, overrides ObjectTypeClass COM slot 6.
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL clearDirty);
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
     // FUNCTION: GAMEMD 0x717880 (decl; reloc) -- non-virtual; ECX = the type.

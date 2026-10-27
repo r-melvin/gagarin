@@ -20,6 +20,11 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include <objidl.h>
+#include "type_list.h"
+
+class AnimTypeClass;
+class ParticleSystemTypeClass;
 
 struct Stream_0067A3C0;
 
@@ -43,19 +48,26 @@ struct SaveVector_0067A3C0
     int   CapacityIncrement;  // +0x0014
 
     int FUN_0067A3C0(Stream_0067A3C0* stream);
-    int FUN_0067A4A0(Stream_0067A3C0* stream);
-    int FUN_0067A520(Stream_0067A3C0* stream);
     int FUN_0067A630(Stream_0067A3C0* stream);
     int FUN_0067A6E0(Stream_0067A3C0* stream);
     int FUN_0067A770(Stream_0067A3C0* stream);
     int FUN_0067A7D0(Stream_0067A3C0* stream);
     int FUN_0067A850(Stream_0067A3C0* stream);
     int FUN_0067A8E0(Stream_0067A3C0* stream);
-    int FUN_00717B20(Stream_0067A3C0* stream);
 };
 GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Items) == 0x04);
 GG_STATIC_ASSERT(offsetof(SaveVector_0067A3C0, Count) == 0x10);
 GG_STATIC_ASSERT(sizeof(SaveVector_0067A3C0) == 0x18);
+
+// The native callsites pass a typed list as ECX and an IStream* on the stack.
+// These are declarations only; the existing provider TU defines the three
+// matched helper bodies below as explicit TypeList specializations.
+// Declaration: GAMEMD 0x0067A4A0, TypeList<const AnimTypeClass*> helper.
+template<> int TypeList<const AnimTypeClass*>::FUN_0067A4A0(IStream* stream);
+// Declaration: GAMEMD 0x0067A520, TypeList<int> helper.
+template<> int TypeList<int>::FUN_0067A520(IStream* stream);
+// Declaration: GAMEMD 0x00717B20, TypeList<const ParticleSystemTypeClass*> helper.
+template<> int TypeList<const ParticleSystemTypeClass*>::FUN_00717B20(IStream* stream);
 
 // The one shared body: write the element count, then each element.
 //

@@ -21,10 +21,26 @@
 GG_VECTOR_STREAM_SAVE_BODY(0067A3C0)
 
 // FUNCTION: GAMEMD 0x0067A4A0
-GG_VECTOR_STREAM_SAVE_BODY(0067A4A0)
+template<> int TypeList<const AnimTypeClass*>::FUN_0067A4A0(IStream* stream)
+{
+    int count = Count;
+    stream->Write(&count, 4, 0);
+    for (int i = 0; i < count; ++i) {
+        stream->Write(&Items[i], 4, 0);
+    }
+    return count;
+}
 
 // FUNCTION: GAMEMD 0x0067A520
-GG_VECTOR_STREAM_SAVE_BODY(0067A520)
+template<> int TypeList<int>::FUN_0067A520(IStream* stream)
+{
+    int count = Count;
+    stream->Write(&count, 4, 0);
+    for (int i = 0; i < count; ++i) {
+        stream->Write(&Items[i], 4, 0);
+    }
+    return count;
+}
 
 // FUNCTION: GAMEMD 0x0067A630
 GG_VECTOR_STREAM_SAVE_BODY(0067A630)
@@ -45,4 +61,12 @@ GG_VECTOR_STREAM_SAVE_BODY(0067A850)
 GG_VECTOR_STREAM_SAVE_BODY(0067A8E0)
 
 // FUNCTION: GAMEMD 0x00717B20
-GG_VECTOR_STREAM_SAVE_BODY(00717B20)
+template<> int TypeList<const ParticleSystemTypeClass*>::FUN_00717B20(IStream* stream)
+{
+    int count = Count;
+    stream->Write(&count, 4, 0);
+    for (int i = 0; i < count; ++i) {
+        stream->Write(&Items[i], 4, 0);
+    }
+    return count;
+}

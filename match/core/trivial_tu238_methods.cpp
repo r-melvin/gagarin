@@ -12,6 +12,7 @@
 #include "../platform/ccini_class_methods.h"
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/type_list.h"
+#include "../core/vector_stream_save_family_methods.h"
 
 
 
@@ -252,6 +253,51 @@ HRESULT __stdcall TechnoTypeClass::Load(IStream* stream)
     if (PaletteFile[0] != 0) {
         Palette = FUN_006263D0(PaletteFile);
     }
+    return S_OK;
+}
+
+#define SAVE_TYPED_LIST(field) do { \
+        int listCount = (field).Count; \
+        stream->Write(&listCount, 4, 0); \
+        for (int listIndex = 0; listIndex < listCount; ++listIndex) \
+            stream->Write(&(field).Items[listIndex], 4, 0); \
+    } while (0)
+
+// FUNCTION: GAMEMD 0x716DC0
+HRESULT __stdcall TechnoTypeClass::Save(IStream* stream, BOOL clearDirty)
+{
+    HRESULT result = ObjectTypeClass::Save(stream, clearDirty);
+    if (result < 0) {
+        return result;
+    }
+
+    SAVE_TYPED_LIST(Dock);
+    SAVE_TYPED_LIST(DebrisTypes);
+    SAVE_TYPED_LIST(DebrisAnims);
+    SAVE_TYPED_LIST(VoiceSelect);
+    SAVE_TYPED_LIST(VoiceSelectEnslaved);
+    SAVE_TYPED_LIST(VoiceSelectDeactivated);
+    SAVE_TYPED_LIST(VoiceMove);
+    SAVE_TYPED_LIST(VoiceAttack);
+    SAVE_TYPED_LIST(VoiceSpecialAttack);
+
+    // The nonvirtual TypeList specializations retain the native thiscall ABI:
+    // typed list in ECX, IStream* as the one stack argument, and the helper
+    // result ignored by this caller.
+#define SAVE_NATIVE_LIST(field, helper) (field).helper(stream)
+    SAVE_NATIVE_LIST(VoiceDie, FUN_0067A520);
+    SAVE_NATIVE_LIST(VoiceFeedback, FUN_0067A520);
+    SAVE_NATIVE_LIST(MoveSound, FUN_0067A520);
+    SAVE_NATIVE_LIST(DieSound, FUN_0067A520);
+    SAVE_NATIVE_LIST(Explosion, FUN_0067A4A0);
+    SAVE_NATIVE_LIST(DestroyAnim, FUN_0067A4A0);
+    SAVE_NATIVE_LIST(DebrisMaximums, FUN_0067A520);
+    SAVE_NATIVE_LIST(Prerequisite, FUN_0067A520);
+    SAVE_NATIVE_LIST(PrerequisiteOverride, FUN_0067A520);
+    SAVE_NATIVE_LIST(DamageParticleSystems, FUN_00717B20);
+    SAVE_NATIVE_LIST(DestroyParticleSystems, FUN_00717B20);
+#undef SAVE_NATIVE_LIST
+#undef SAVE_TYPED_LIST
     return S_OK;
 }
 

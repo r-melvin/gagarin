@@ -21159,20 +21159,20 @@
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A4A0",
-  "sym": "?FUN_0067A4A0@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A4A0@?$TypeList@PBVAnimTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A4A0",
+  "name": "?FUN_0067A4A0@?$TypeList@PBVAnimTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x67A520",
-  "sym": "?FUN_0067A520@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_0067A520@?$TypeList@H@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_0067A520",
+  "name": "?FUN_0067A520@?$TypeList@H@@QAEHPAUIStream@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
@@ -21231,11 +21231,11 @@
  {
   "tu": "match/core/vector_stream_save_family_methods.cpp",
   "addr": "0x717B20",
-  "sym": "?FUN_00717B20@SaveVector_0067A3C0@@QAEHPAUStream_0067A3C0@@@Z",
+  "sym": "?FUN_00717B20@?$TypeList@PBVParticleSystemTypeClass@@@@QAEHPAUIStream@@@Z",
   "len": "0x4b",
-  "name": "SaveVector_0067A3C0::FUN_00717B20",
+  "name": "?FUN_00717B20@?$TypeList@PBVParticleSystemTypeClass@@@@QAEHPAUIStream@@@Z",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/vector_virtual_dtor_family_methods.cpp",
@@ -99632,5 +99632,14 @@
   "name": "BulletClass::vf_23",
   "status": "partial",
   "pct": 3.4
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x716DC0",
+  "sym": "?Save@TechnoTypeClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x2D9",
+  "name": "TechnoTypeClass::Save",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

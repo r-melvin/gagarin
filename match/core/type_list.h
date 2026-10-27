@@ -10,12 +10,19 @@
 #define GG_MATCH_CORE_TYPE_LIST_H
 #include "vector_class.h"
 
+struct IStream;
+
 template<class T> class TypeList : public DynamicVectorClass<T>
 {
 public:
     // Default-constructor stores are verified in the int and pointer TUs.
     TypeList() : DynamicVectorClass<T>() {}
     TypeList(const TypeList<T>& other) : DynamicVectorClass<T>(other) {}
+    // Nonvirtual stream helper declarations; selected specializations and
+    // native entry addresses are declared in vector_stream_save_family_methods.h.
+    int FUN_0067A4A0(IStream* stream);
+    int FUN_0067A520(IStream* stream);
+    int FUN_00717B20(IStream* stream);
     unsigned char unknown_18[4]; // observed storage, no scalar meaning or initialization claim
 };
 #if GG_TARGET_ABI_32
