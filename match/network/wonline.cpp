@@ -2241,7 +2241,7 @@ int __cdecl FUN_007836E0(const Item_007835C0* a, const Item_007835C0* b)
     return _stricmp(first.unknown_24, second.unknown_24);
 }
 
-// FUNCTION: GAMEMD 0x783A90
+// FUNCTION: GAMEMD 0x783A90 -- complete 0xF0 extent includes inline dispatch data.
 // The digit picture for 0..9.
 void* FUN_00783A90(int digit)
 {
@@ -2371,7 +2371,7 @@ int FUN_00786E70(Wstring* name)
     return -1;
 }
 
-// FUNCTION: GAMEMD 0x786EF0
+// FUNCTION: GAMEMD 0x786EF0 -- complete 0x114 extent includes inline dispatch data.
 // Shows the stored error text. For the six serial/account error codes the box
 // offers a support link, opened when the user answers 6 (IDYES).
 bool FUN_00786EF0()
@@ -2588,7 +2588,7 @@ void FUN_00791AA0(void* window)
     }
 }
 
-// FUNCTION: GAMEMD 0x792CF0
+// FUNCTION: GAMEMD 0x792CF0 -- complete 0x196 extent includes inline dispatch data.
 BOOL CALLBACK FUN_00792CF0(HWND window, UINT message, WPARAM wparam, LPARAM lparam)
 {
     switch (message) {

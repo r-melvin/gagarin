@@ -96018,7 +96018,7 @@
   "tu": "match/network/wonline.cpp",
   "addr": "0x783A90",
   "sym": "?FUN_00783A90@@YIPAXH@Z",
-  "len": "0xc7",
+  "len": "0xF0",
   "name": "?FUN_00783A90@@YIPAXH@Z",
   "status": "matched",
   "pct": 100.0
@@ -96081,7 +96081,7 @@
   "tu": "match/network/wonline.cpp",
   "addr": "0x792CF0",
   "sym": "?FUN_00792CF0@@YGHPAXIIJ@Z",
-  "len": "0x155",
+  "len": "0x196",
   "name": "?FUN_00792CF0@@YGHPAUHWND__@@IIJ@Z",
   "status": "matched",
   "pct": 100.0
@@ -96360,7 +96360,7 @@
   "tu": "match/network/wonline.cpp",
   "addr": "0x786EF0",
   "sym": "?FUN_00786EF0@@YI_NXZ",
-  "len": "0xf6",
+  "len": "0x114",
   "name": "?FUN_00786EF0@@YI_NXZ",
   "status": "matched",
   "pct": 100.0
