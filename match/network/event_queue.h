@@ -12,13 +12,15 @@
 #include "../_rt/gg_static_assert.h"
 #include "event_class_ctors.h"
 
+typedef EventClass EventQueueItem;
+
 template<int N>
 struct EventQueue
 {
     int           Count;        // +0x00
     int           unknown_04;   // +0x04
     int           Head;         // +0x08
-    EventClass    List[N];      // +0x0C
+    EventQueueItem List[N];      // +0x0C
     unsigned long Time[N];      // +0x0C + N * 0x6F
 
     // FUNCTION: GAMEMD 0x652540 (decl; reloc)
@@ -32,5 +34,7 @@ struct EventQueue
         Head = 0;
     }
 };
+
+typedef EventQueue<128> EventQueue128;
 
 #endif  // GG_MATCH_NETWORK_EVENT_QUEUE_H

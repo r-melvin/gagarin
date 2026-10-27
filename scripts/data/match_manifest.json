@@ -99830,5 +99830,32 @@
   "name": "TechnoClass::vf_166",
   "status": "partial",
   "pct": 70.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6FB010",
+  "sym": "?vf_265@TechnoClass@@UAEXXZ",
+  "len": "0x61",
+  "name": "TechnoClass::vf_265",
+  "status": "partial",
+  "pct": 66.7
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6FFE00",
+  "sym": "?vf_221@TechnoClass@@UAE_NH@Z",
+  "len": "0xB7",
+  "name": "TechnoClass::vf_221",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x700C40",
+  "sym": "?vf_40@TechnoClass@@UAE_NXZ",
+  "len": "0xC8",
+  "name": "TechnoClass::vf_40",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -202,6 +202,8 @@ public:
     void KillPassengers(TechnoClass* killer);
     void MarkPassengersAsExited();   // GAMEMD 0x7104C0
     void SetArchiveTarget(AbstractClass* target); // GAMEMD 0x70C610 (matched in core/techno_class_setters.cpp)
+    // Declaration: GAMEMD 0x6FB080. Scoped native alias to the existing StartReloading provider.
+    void StartReloading();
     // FUNCTION: GAMEMD 0x705E00 (decl; reloc) -- draws one shape at a screen
     // point inside a clip rectangle; sixteen stack arguments (RET 0x40).
     void FUN_00705E00(SHPStruct* shape, int frame, Point2D* point, RectangleStruct* clip,
@@ -213,6 +215,7 @@ public:
     virtual bool vf_25();                                          // 25  0x6F32D0
     virtual bool vf_37();                                          // 37  0x701140 (table 0x7F4960 + 0x94)
     virtual bool vf_39();                                          // 39  0x7010D0: guarding with a live weapon
+    virtual bool vf_40();                                          // 40  0x700C40
     virtual CoordStruct vf_44(int a1, int a2, int a3, int a4);     // 44  0x6F3AD0
     virtual bool vf_49();                                          // 49  0x41C010: returns Disguised
     virtual bool vf_50(HouseClass* house);                         // 50  0x41C020: returns Disguised
@@ -588,7 +591,9 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, Veterancy)                == 0x150);
 GG_STATIC_ASSERT(offsetof(TechnoClass, ArmorMultiplier)          == 0x158);
 GG_STATIC_ASSERT(offsetof(TechnoClass, TargetingTimer)           == 0x180);
 GG_STATIC_ASSERT(offsetof(TechnoClass, IronTintStage)            == 0x1A4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Deactivated)              == 0x1C8);
 GG_STATIC_ASSERT(offsetof(TechnoClass, ReloadTimer)              == 0x1FC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, ReloadTimer) + offsetof(CDTimerClass, TimeLeft) == 0x204);
 GG_STATIC_ASSERT(offsetof(TechnoClass, RadarPosition)            == 0x208);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Group)                    == 0x214);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner)                    == 0x21C);
@@ -599,6 +604,8 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, LastSightCoords)          == 0x254);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Target)                   == 0x2B4);
 GG_STATIC_ASSERT(offsetof(TechnoClass, MindControlledBy)         == 0x2C0);
 GG_STATIC_ASSERT(offsetof(TechnoClass, SpawnManager)             == 0x2D0);
+GG_STATIC_ASSERT(offsetof(TechnoClass, SlaveOwner)                == 0x2DC);
+GG_STATIC_ASSERT(offsetof(TechnoClass, BunkerLinkedItem)          == 0x2E4);
 GG_STATIC_ASSERT(offsetof(TechnoClass, RearmTimer)               == 0x2EC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Ammo)                     == 0x2FC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, FireParticleSystem)       == 0x304);

@@ -80,8 +80,11 @@
 #include "techno_class_passive_acquire_methods.h"
 
 #include "techno_class_reloading_methods.h"
+#include "spawn_manager_class_count_methods.h"
 
 #include "../core/abstract_class_untargetable_methods.h"
+#include "../network/event_class_ctors.h"
+#include "../network/event_queue.h"
 
 #include <string.h>
 
@@ -280,7 +283,7 @@ extern "C" const char* const DAT_007E5210[11];
 extern "C" const char DAT_008497A4[];
 
 // 0x4068E0: cdecl text sink taking a format string (callee only).
-void __cdecl FUN_004068E0(const char* format, ...);
+extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 struct Obj_00774950
 {
@@ -355,6 +358,15 @@ extern double DAT_00B0EB28;
 #include "../core/frame_counter.h"
 #include "../_layout/cell_class.h"
 #include "../_layout/house_class.h"
+
+// Declaration: GAMEMD 0x00637AA0
+char FUN_00637AA0();
+// Declaration: GAMEMD 0x00639FD0; bound through this packet's scoped symbol map.
+void __fastcall FUN_00639FD0(char* event);
+// WinMM import: GAMEMD 0x007E1530 (timeGetTime).
+extern "C" __declspec(dllimport) unsigned long __stdcall timeGetTime();
+// GLOBAL: GAMEMD 0x00A802C8
+extern EventQueue<128> DAT_00A802C8;
 
 // Offsets this TU relies on, each read from an instruction in the matched bodies.
 GG_STATIC_ASSERT(offsetof(TechnoClass, CurrentTurretNumber)       == 0x124);  // 0x70DD00
@@ -732,6 +744,37 @@ bool TechnoClass::vf_166()
     return ((const unsigned char*)type->MainVoxel.unknown_00)[0] == 0;
 }
 
+// FUNCTION: GAMEMD 0x6FB010
+void TechnoClass::vf_265()
+{
+    TechnoTypeClass* type = this->vf_33();
+    int typeAmmo = type->Ammo;
+    if (typeAmmo == -1) {
+        return;
+    }
+
+    int ammo = this->Ammo;
+    if (ammo >= typeAmmo) {
+        return;
+    }
+
+    int timeLeft = this->ReloadTimer.TimeLeft;
+    int startTime = this->ReloadTimer.StartTime;
+    if (startTime != -1) {
+        int elapsed = CurrentFrame - startTime;
+        if (elapsed >= timeLeft) goto ready_to_reload;
+        timeLeft -= elapsed;
+    }
+    if (timeLeft != 0) {
+        return;
+    }
+
+ready_to_reload:
+    this->Ammo++;
+    this->vf_73(2);
+    this->StartReloading();
+}
+
 // FUNCTION: GAMEMD 0x6FB080
 //
 // (Re)arm the reload countdown when the clip is not full. An empty clip with a
@@ -783,6 +826,70 @@ void Obj_006FC090::FUN_006FC090(int a1, int a2)
 // Empty function.
 void __cdecl FUN_006FF950()
 {
+}
+
+// FUNCTION: GAMEMD 0x6FFE00
+bool TechnoClass::vf_221(int eventType)
+{
+    TargetClass target;
+    EventClass event(CurrentPlayer->ArrayIndex, eventType,
+                     *target.FUN_006E6AB0(this));
+
+    if (FUN_00637AA0()) {
+        FUN_00639FD0(reinterpret_cast<char*>(&event));
+        return false;
+    }
+
+    if (DAT_00A802C8.Count < 128) {
+        DAT_00A802C8.List[DAT_00A802C8.Head] = event;
+        DAT_00A802C8.Time[DAT_00A802C8.Head] = timeGetTime();
+        DAT_00A802C8.Head = (DAT_00A802C8.Head + 1) & 0x7F;
+        DAT_00A802C8.Count++;
+    }
+    return true;
+}
+
+// FUNCTION: GAMEMD 0x700C40
+bool TechnoClass::vf_40()
+{
+    if (!this->Owner->IsControlledByCurrentPlayer()) {
+        return false;
+    }
+    if (this->IsUnderEMP()) {
+        return false;
+    }
+    if (this->BunkerLinkedItem != 0) {
+        return false;
+    }
+
+    TechnoTypeClass* type = this->vf_33();
+    if (type->Spawned) {
+        return false;
+    }
+    if (this->vf_224()) {
+        return false;
+    }
+    if (!this->vf_120()) {
+        return false;
+    }
+    if (this->SlaveOwner != 0) {
+        return false;
+    }
+    if (this->Deactivated) {
+        return false;
+    }
+
+    if (this->SpawnManager != 0) {
+        int launching = static_cast<SpawnManagerClass*>(this->SpawnManager)->CountLaunchingSpawns();
+        if (launching > 0) {
+            type = this->vf_33();
+            launching = static_cast<SpawnManagerClass*>(this->SpawnManager)->CountLaunchingSpawns();
+            if (launching < type->SpawnsNumber) {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x7010D0  (__thiscall)
@@ -2167,3 +2274,10 @@ int __cdecl FUN_00710860(const void* a, const void* b)
         return -1;
     return 1;
 }
+
+// Queue layout used by vf_221, confirmed by the retail stores at 0x6FFE8C-0x6FFF43.
+GG_STATIC_ASSERT(offsetof(EventQueue128, Count) == 0x00);
+GG_STATIC_ASSERT(offsetof(EventQueue128, Head) == 0x08);
+GG_STATIC_ASSERT(offsetof(EventQueue128, List) == 0x0C);
+GG_STATIC_ASSERT(offsetof(EventQueue128, Time) == 0x378C);
+GG_STATIC_ASSERT(sizeof(EventQueue128) == 0x398C);

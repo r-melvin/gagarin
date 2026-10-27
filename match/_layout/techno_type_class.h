@@ -512,6 +512,10 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Passengers) == 0x5E0);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Passengers) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Ammo) == 0x684);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Ammo) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Spawned) == 0xD54);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Spawned) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SpawnsNumber) == 0xD5C);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->SpawnsNumber) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
                  offsetof(WeaponStruct, WeaponType) == 0x898);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Weapon[0].WeaponType) == 4);
@@ -831,5 +835,9 @@ GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DestroyAnim) == 0x1C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyAnim) + offsetof(TechnoTypeListAnim, Count) == 0x758);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Locomotor) == 0x34C);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Locomotor) == 0x10);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xCCE);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Naval) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Underwater) == 0xD69);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Underwater) == 1);
 
 #endif  // GG_MATCH_LAYOUT_TECHNO_TYPE_CLASS_H
