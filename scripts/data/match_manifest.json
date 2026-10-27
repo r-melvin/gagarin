@@ -99641,5 +99641,14 @@
   "name": "TechnoTypeClass::Save",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x466380",
+  "sym": "??0BulletClass@@QAE@XZ",
+  "len": "0x13f",
+  "name": "BulletClass::BulletClass",
+  "status": "partial",
+  "pct": 49.3
  }
 ]

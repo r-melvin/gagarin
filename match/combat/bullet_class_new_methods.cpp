@@ -173,6 +173,46 @@ static Vector3D BulletTransformDirection(const Matrix3D& matrix,
     return result;
 }
 
+// FUNCTION: GAMEMD 0x466380
+BulletClass::BulletClass()
+    : ObjectClass(), Data()
+{
+    // The native entry calls BulletData at +0xB8 before these three stores.
+    Type = 0;
+    Owner = 0;
+    unknown_B4 = 0;
+
+    Bright = 0;
+    unknown_100 = 0;
+    unknown_104 = 1;
+    CourseLock = 1;
+    CourseLockCounter = 0;
+    Target = 0;
+    Speed = 0;
+    InheritedColor = -1;
+    unknown_118 = 0;
+    unknown_120 = 0.0;
+    WH = 0;
+    AnimFrame = 0;
+    AnimRateCounter = 0;
+    WeaponType = 0;
+    LastMapCoords.X = -1;
+    LastMapCoords.Y = -1;
+    NextAnim = 0;
+    SpawnNextAnim = 0;
+
+    AbstractClass::vf_rtti_5();
+
+    SourceCoords.X = 0;
+    SourceCoords.Y = 0;
+    SourceCoords.Z = 0;
+    TargetCoords.X = 0;
+    TargetCoords.Y = 0;
+    TargetCoords.Z = 0;
+
+    DAT_00A8ED40.AddItem(this);
+}
+
 // FUNCTION: GAMEMD 0x466560
 BulletClass::~BulletClass()
 {

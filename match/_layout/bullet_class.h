@@ -108,6 +108,9 @@ GG_STATIC_ASSERT(sizeof(BulletVelocity)      == 0x18);
 class BulletClass : public ObjectClass
 {
 public:
+    // CALLEE: GAMEMD 0x466380 -- default constructor, implemented below in the Bullet TU.
+    BulletClass();
+
     // No separate entry: Load's placement construction starts the native
     // ObjectClass no-init chain and invokes the two embedded timer writers.
     BulletClass(const AbstractNoInit& noInit)
@@ -186,32 +189,51 @@ public:
 GG_STATIC_ASSERT(offsetof(BulletClass, Type)              == 0xAC);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Type)           == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Owner)             == 0xB0);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Owner)          == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_B4)        == 0xB4);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_B4)     == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, Data)              == 0xB8);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Data)            == 0x28);
 GG_STATIC_ASSERT(offsetof(BulletClass, Bright)            == 0xE0);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Bright)          == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_E4)        == 0xE4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Velocity)          == 0xE8);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_100)       == 0x100);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_100)    == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_104)       == 0x104);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_104)    == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, CourseLock)        == 0x105);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->CourseLock)     == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, CourseLockCounter) == 0x108);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->CourseLockCounter) == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Target)            == 0x10C);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Target)          == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, Speed)             == 0x110);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Speed)           == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, InheritedColor)    == 0x114);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->InheritedColor) == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_118)       == 0x118);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_118)   == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_11C)       == 0x11C);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_120)       == 0x120);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_120)    == 8);
 GG_STATIC_ASSERT(offsetof(BulletClass, WH)                == 0x128);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->WH)             == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, AnimFrame)         == 0x12C);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->AnimFrame)      == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, AnimRateCounter)   == 0x12D);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->AnimRateCounter) == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, WeaponType)        == 0x130);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->WeaponType)     == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, SourceCoords)      == 0x134);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->SourceCoords)   == 0x0C);
 GG_STATIC_ASSERT(offsetof(BulletClass, TargetCoords)      == 0x140);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->TargetCoords)   == 0x0C);
 GG_STATIC_ASSERT(offsetof(BulletClass, LastMapCoords)     == 0x14C);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->LastMapCoords)  == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, DamageMultiplier)  == 0x150);
 GG_STATIC_ASSERT(offsetof(BulletClass, NextAnim)          == 0x154);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->NextAnim)       == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, SpawnNextAnim)     == 0x158);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->SpawnNextAnim) == 1);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_15C)       == 0x15C);
