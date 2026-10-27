@@ -213,8 +213,10 @@ public:
     virtual bool vf_50(HouseClass* house);                         // 50  0x41C020: returns Disguised
     virtual void vf_71();                                          // 71  0x6F4A40
     virtual bool vf_73(int mode);                                  // 73  0x6F4A70
+    virtual void vf_82(int a1);                                    // 82  0x6F9DD0
     virtual void vf_86();                                          // 86  0x70E340
     virtual bool vf_88();                                          // 88  0x41BF40: IronCurtainTimer running
+    virtual bool vf_89(const CoordStruct& coord, int a2);          // 89  0x6F7970
     virtual bool vf_102(HouseClass* house);                        // 102 0x6F4960
     virtual void vf_125(int mission, int a2, int a3);              // 125 0x7013A0
 

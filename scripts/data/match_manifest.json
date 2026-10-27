@@ -99803,5 +99803,32 @@
   "name": "TechnoTypeClass::FUN_00712130",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6F7970",
+  "sym": "?vf_89@TechnoClass@@UAE_NABUCoordStruct@@H@Z",
+  "len": "0x28",
+  "name": "TechnoClass::vf_89",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6F9DD0",
+  "sym": "?vf_82@TechnoClass@@UAEXH@Z",
+  "len": "0x36",
+  "name": "TechnoClass::vf_82",
+  "status": "partial",
+  "pct": 94.7
+ },
+ {
+  "tu": "match/combat/Techno.cpp",
+  "addr": "0x6F9E10",
+  "sym": "?vf_166@TechnoClass@@UAE_NXZ",
+  "len": "0x31",
+  "name": "TechnoClass::vf_166",
+  "status": "partial",
+  "pct": 70.0
  }
 ]

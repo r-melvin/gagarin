@@ -689,6 +689,12 @@ void TechnoClass::vf_236(CoordStruct* a1)
     this->vf_234(cell, this->vf_185(cell));
 }
 
+// FUNCTION: GAMEMD 0x6F7970
+bool TechnoClass::vf_89(const CoordStruct& coord, int weapon)
+{
+    return this->vf_234(MapClass_Instance.GetTargetCell(coord), weapon);
+}
+
 // FUNCTION: GAMEMD 0x6F9DB0
 // Member getter (dword). Vtable slot 14 of TechnoClass (RTTI) and 5 derived vtable(s).
 int Obj_006F9DB0::FUN_006F9DB0() const
@@ -701,6 +707,29 @@ int Obj_006F9DB0::FUN_006F9DB0() const
 int Obj_006F9DC0::FUN_006F9DC0() const
 {
     return unknown_21C;
+}
+
+// FUNCTION: GAMEMD 0x6F9DD0
+void TechnoClass::vf_82(int a1)
+{
+    if (this->vf_50(CurrentPlayer)) {
+        if (this->vf_52(true)) {
+            return;
+        }
+    }
+    this->DurationRemaining = a1;
+}
+
+// FUNCTION: GAMEMD 0x6F9E10
+bool TechnoClass::vf_166()
+{
+    TechnoTypeClass* type = this->vf_33();
+    if (!type->MainVoxel.unknown_00) {
+        return false;
+    }
+
+    type = this->vf_33();
+    return ((const unsigned char*)type->MainVoxel.unknown_00)[0] == 0;
 }
 
 // FUNCTION: GAMEMD 0x6FB080
