@@ -99596,5 +99596,14 @@
   "name": "SubzoneTrackingStruct::SubzoneTrackingStruct",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/small_misc2_methods.cpp",
+  "addr": "0x48ACE0",
+  "sym": "?FUN_0048ACE0@@YGHHHH@Z",
+  "len": "0x8",
+  "name": "FUN_0048ACE0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

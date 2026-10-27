@@ -103,3 +103,10 @@ const char* FUN_00473960(unsigned int index)
 
     return STR_00817474b;
 }
+
+// FUNCTION: GAMEMD 0x48ACE0
+// Native ignores the three four-byte stack inputs and returns with RET 0xC.
+int __stdcall FUN_0048ACE0(int, int, int)
+{
+    return -15;
+}
