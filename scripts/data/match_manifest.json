@@ -99623,5 +99623,14 @@
   "name": "TechnoTypeClass::Load",
   "status": "partial",
   "pct": 13.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x4666E0",
+  "sym": "?vf_23@BulletClass@@UAEXXZ",
+  "len": "0x1916",
+  "name": "BulletClass::vf_23",
+  "status": "partial",
+  "pct": 3.4
  }
 ]

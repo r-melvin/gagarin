@@ -17,6 +17,7 @@
 #include "../_layout/swizzle_manager_class.h"
 #include "../core/vector_class_operations.h"
 #include "../core/header_tuning_globals.h"
+#include "temporal_cell.h"
 
 // LIBRARY: GAMEMD 0x7C8E17 -- operator new (CRT), called by the new-expressions.
 // LIBRARY: GAMEMD 0x7C5F00 -- _ftol (CRT), the double-to-int conversions.
@@ -86,13 +87,6 @@ GG_STATIC_ASSERT(sizeof(TemporalAnimView) == 0x1C8);
 
 // FUNCTION: GAMEMD 0x4CAC40 (decl; reloc) -- the square root of a double.
 double __cdecl FUN_004CAC40(double value);
-
-struct TemporalCell
-{
-    short X;   // +0x00
-    short Y;   // +0x02
-};
-GG_STATIC_ASSERT(sizeof(TemporalCell) == 4);
 
 // The cell of a coordinate (lepton / 256 per axis), read through the reference.
 inline TemporalCell TemporalCellOf(const TemporalCoord& where)

@@ -25,14 +25,11 @@
 //       [reg+0xE4] in BulletClass code (@0x0046A3E0) is taken off a virtual
 //       call's return value, not off the bullet.
 //     * 0x11C: YRpp claims a DWORD. No store or load found anywhere.
-//     * 0x120..0x127: YRpp claims a single `double unknown_120`. The ctor
-//       zeroes 0x120 (@0x004663AA) and 0x124 (@0x004663E9) as two separate
-//       dword stores, 0x3F bytes apart in the instruction stream — which is
-//       how VC6 would zero two ints, not how it zeroes a double. We record two
-//       unnamed dwords; the offsets are identical either way, so no matching
-//       attempt is blocked by the ambiguity. (`FLD float [EAX+0x124]`
-//       @0x00469180 is NOT evidence for a float here: EAX is loaded from
-//       [ECX+0xAC], i.e. it is the BulletTypeClass, not the bullet.)
+//     * 0x120..0x127: BulletClass::vf_23 proves this is a double accumulator:
+//       FADD/FSTP qword [EBP+0x120] at 0x466FCA/0x466FD0 and FLD qword at
+//       0x466FD8. The ctor's two dword zero stores at 0x4663AA/0x4663E9
+//       initialize both halves. (`FLD float [EAX+0x124]` @0x469180 is not
+//       evidence for this member: EAX is BulletTypeClass at that site.)
 //     * 0x15C: YRpp calls it `int Range`. No access found.
 //
 //   Cross-read against YRpp: 28 named members claimed, 24
@@ -77,6 +74,8 @@ struct BulletData
     // FUNCTION: GAMEMD 0x4E1130 (decl; reloc)
     void FUN_004E1130(const CoordStruct& from, const CoordStruct& to,
                       int value, int limit);
+    // Binary contract at 0x4E11F0: ECX receiver, CoordStruct reference.
+    int FUN_004E11F0(const CoordStruct& where);
 };
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_00) == 0x00);
 GG_STATIC_ASSERT(offsetof(BulletData, unknown_0C) == 0x0C);
@@ -140,6 +139,10 @@ public:
     void FUN_0046B0C0(const VoxelStruct* voxel, const Matrix3D& matrix,
                       Point2D* point, RectangleStruct* clip,
                       int frame, int flags, int tint);
+    // Binary contract at 0x468BB0: one coordinate pointer.
+    bool FUN_00468BB0(CoordStruct* where);
+    // Binary contract at 0x468D80: one stack int.
+    void FUN_00468D80(int impact);
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397
@@ -161,8 +164,7 @@ public:
     int            InheritedColor;      // +0x114 ctor @0x004663DD (=-1); also @0x00466533
     unsigned int   unknown_118;         // +0x118 ctor @0x004663E3
     unsigned int   unknown_11C;         // +0x11C NOT confirmed — see header note
-    unsigned int   unknown_120;         // +0x120 ctor @0x004663AA (=0)
-    unsigned int   unknown_124;         // +0x124 ctor @0x004663E9 (=0)
+    double         unknown_120;         // +0x120..+0x127, FLD/FSTP qword in vf_23
     void*          WH;                  // +0x128 WarheadTypeClass*; ctor @0x004663EF;
                                         //   setter MOV [ECX+0x128],EDX @0x004664DC
     unsigned char  AnimFrame;           // +0x12C ctor @0x004663F5; also @0x00466507
@@ -199,7 +201,7 @@ GG_STATIC_ASSERT(offsetof(BulletClass, InheritedColor)    == 0x114);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_118)       == 0x118);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_11C)       == 0x11C);
 GG_STATIC_ASSERT(offsetof(BulletClass, unknown_120)       == 0x120);
-GG_STATIC_ASSERT(offsetof(BulletClass, unknown_124)       == 0x124);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->unknown_120)    == 8);
 GG_STATIC_ASSERT(offsetof(BulletClass, WH)                == 0x128);
 GG_STATIC_ASSERT(offsetof(BulletClass, AnimFrame)         == 0x12C);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->AnimFrame)      == 1);

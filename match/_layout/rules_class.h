@@ -75,7 +75,9 @@ struct RulesClass
     int At_54C;
     char unknown_550[0x580 - 0x550];
     int unknown_580;
-    char unknown_584[0x5A4 - 0x584];
+    char unknown_584[0x598 - 0x584];
+    double unknown_598;
+    int unknown_5A0;
     WeaponTypeClass* Weapon; // +0x5A4
     int unknown_5A8;
     int MinFall; // +0x5AC
@@ -149,7 +151,9 @@ struct RulesClass
     double unknown_14C0;
     char unknown_14C8[8];
     int unknown_14D0;
-    char unknown_14D4[0x16CC - 0x14D4];
+    char unknown_14D4[0x16B8 - 0x14D4];
+    int unknown_16B8;
+    char unknown_16BC[0x16CC - 0x16BC];
     int unknown_16CC; // native712125 reads scalar via pointer8871E0
     double unknown_16D0; // native 0x7120D0 loads the full 8-byte value
     int unknown_16D8; // native524795 reads dword via pointer8871E0
@@ -220,6 +224,10 @@ extern RulesClass* RulesInstance;
 
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_08C) == 0x08C);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_580) == 0x580);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_598) == 0x598);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_598) == 8);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_5A0) == 0x5A0);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_5A0) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_724) == 0x724);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_728) == 0x728);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_72C) == 0x72C);
@@ -241,6 +249,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B4) == 0x7B4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16CC) == 0x16CC);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16B8) == 0x16B8);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16B8) == 4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D0) == 0x16D0);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D0) == 8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1734) == 0x1734);

@@ -149,6 +149,8 @@ template<class T> class DynamicVectorClass;
 class HouseClass : public AbstractClass, public IHouse, public IPublicHouse, public IConnectionPointContainer
 {
 public:
+    // FUNCTION: GAMEMD 0x4F9A90 (decl; reloc), ECX receiver, one AbstractClass*.
+    bool FUN_004F9A90(AbstractClass* object);
     // Declaration: GAMEMD 0x4F54A0 -- recovered body currently on legacy owner.
     HouseClass(HouseTypeClass* type);
     // Declaration: GAMEMD 0x4F5190 -- forwards this opaque argument to4101C0.
