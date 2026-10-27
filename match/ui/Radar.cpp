@@ -67,6 +67,7 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 
 #include "radar_class.h"
 #include "input_controls/ui_common.h"
+#include "tooltip_manager_shared.h"
 #include "shape_button_class.h"
 #include "../_layout/rules_class.h"
 #include "../_layout/techno_class.h"
@@ -138,6 +139,19 @@ extern const char DAT_00839314[]; // "RadarClass::Init_Clear\n"
 extern const char DAT_008392F4[]; // "RadarClass::Init_Clear done\n"
 // STRING: GAMEMD 0x0083932C
 extern const char DAT_0083932C[]; // "RadarClass::Init_For_House()\n"
+// STRING: GAMEMD 0x008393C8
+extern const char DAT_008393C8[]; // "Tip:BriefingButton"
+// STRING: GAMEMD 0x008393B4
+extern const char DAT_008393B4[]; // "Tip:DiplomacyButton"
+// STRING: GAMEMD 0x008393A0
+extern const char DAT_008393A0[]; // "Tip:OptionsButton"
+// GLOBAL: GAMEMD 0x00887368
+extern ToolTipManager* ToolTipManager_Instance;
+// Opaque declaration of the existing sidebar storage view; only its address
+// is used, after reinterpretation to the binary-proven GadgetClass base.
+struct SidebarButton;
+// GLOBAL: GAMEMD 0x00B04A10
+extern SidebarButton ExtraGadget_00B04A10;
 // GLOBAL: GAMEMD 0x008391F4 (pointer to the string at 0x839288)
 extern const char* DAT_008391F4;
 // GLOBAL: GAMEMD 0x008391F8 (pointer to the string at 0x83927C)
@@ -1281,6 +1295,57 @@ void RadarClass::vf_28(RectangleStruct* mapRect, int reuse,
                        int nLevel, int bUnk2)
 {
     MapClass::vf_28(mapRect, reuse, nLevel, bUnk2);
+}
+
+// FUNCTION: GAMEMD 0x654320 RadarClass::vf_34 (__thiscall)
+void RadarClass::vf_34()
+{
+    // Native CALL 0x4AE6B0 is DisplayClass::vf_34, not a virtual dispatch.
+    DisplayClass::vf_34();
+
+    const int shift = DAT_00A8EB7C ? DAT_00886FA8 : 0;
+
+    // These stores are the two ShapeButtonClass::OffsetX fields at +0x44.
+    RadarButtonF2_00B04978.OffsetX = -shift;
+    RadarButtonF2_00B04978.GadgetClass::SetPosition(
+        DAT_00B04A00 + shift, DAT_00B04A04);
+    RadarButtonF2_00B04978.GadgetClass::MarkRedraw();
+
+    RadarButtonF3_00B04910.OffsetX = -shift;
+    RadarButtonF3_00B04910.GadgetClass::SetPosition(
+        DAT_00B048C8 + shift, DAT_00B048CC);
+    RadarButtonF3_00B04910.GadgetClass::MarkRedraw();
+
+    // RTTI at the vtable installed on 0xB04A10 proves a zero-offset
+    // GadgetClass base for RadarClass::RTacticalClass. The source global keeps
+    // its existing storage view; this cast selects that binary-confirmed base.
+    reinterpret_cast<GadgetClass&>(ExtraGadget_00B04A10).GadgetClass::SetPosition(
+        unknown_11F0 + shift, unknown_11F4);
+    reinterpret_cast<GadgetClass&>(ExtraGadget_00B04A10).GadgetClass::MarkRedraw();
+
+    ToolTip tip;
+    tip.field_18 = false;
+    tip.GadgetID = 0xF2;
+    tip.Text = DAT_008393C8;
+    if (DAT_00A8B238 != 0)
+        tip.Text = DAT_008393B4;
+    tip.Bounds.X = RadarButtonF2_00B04978.X;
+    tip.Bounds.Y = RadarButtonF2_00B04978.Y;
+    tip.Bounds.Width = RadarButtonF2_00B04978.Width;
+    tip.Bounds.Height = RadarButtonF2_00B04978.Height;
+    ToolTipManager_Instance->Remove(0xF2);
+    ToolTipManager_Instance->Add(tip);
+
+    tip.Bounds.X = RadarButtonF3_00B04910.X;
+    tip.Bounds.Y = RadarButtonF3_00B04910.Y;
+    tip.GadgetID = 0xF3;
+    tip.Text = DAT_008393A0;
+    tip.Bounds.Width = RadarButtonF3_00B04910.Width;
+    tip.Bounds.Height = RadarButtonF3_00B04910.Height;
+    ToolTipManager_Instance->Remove(0xF3);
+    ToolTipManager_Instance->Add(tip);
+
+    unknown_14DA = 1;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

@@ -99731,5 +99731,14 @@
   "name": "RadarClass::FUN_00655B20",
   "status": "partial",
   "pct": 23.4
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x654320",
+  "sym": "?vf_34@RadarClass@@UAEXXZ",
+  "len": "0x16c",
+  "name": "RadarClass::vf_34",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
