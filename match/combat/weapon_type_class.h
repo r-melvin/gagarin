@@ -86,6 +86,8 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Burst)      == 0x9C);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Burst)  == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage)     == 0xA4);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed)      == 0xA8);

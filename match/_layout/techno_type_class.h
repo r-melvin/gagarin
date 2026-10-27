@@ -126,6 +126,8 @@ public:
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
     // FUNCTION: GAMEMD 0x717880 (decl; reloc) -- non-virtual; ECX = the type.
     bool FUN_00717880();
+    // FUNCTION: GAMEMD 0x712130 -- non-virtual; ECX = this.
+    bool FUN_00712130();
     // FUNCTION: GAMEMD 0x7177C0 (decl; reloc) -- the weapon in slot `index`.
     WeaponStruct* GetWeapon(int index);
     // FUNCTION: GAMEMD 0x7177E0 (decl; reloc) -- the elite weapon in slot `index`.
@@ -513,6 +515,8 @@ GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Ammo) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
                  offsetof(WeaponStruct, WeaponType) == 0x898);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Weapon[0].WeaponType) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) + sizeof(WeaponStruct) +
+                 offsetof(WeaponStruct, WeaponType) == 0x8B4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
                  offsetof(WeaponStruct, WeaponType) +
                  0xA4 == 0x93C); // WeaponTypeClass::Damage is asserted in its canonical header.

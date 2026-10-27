@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Five TechnoTypeClass member bodies, independently checked at their entries.
+// TechnoTypeClass helper bodies, independently checked at their entries.
 // This retained filename is provisional grouping, not attested original TU ownership.
 #include "../_layout/techno_type_class.h"
 #include "../_layout/obj_004a1d30.h"
@@ -101,6 +101,22 @@ int TechnoTypeClass::vf_44()
 int TechnoTypeClass::vf_45()
 {
     return RulesInstance->unknown_16CC;
+}
+
+// FUNCTION: GAMEMD 0x712130
+bool TechnoTypeClass::FUN_00712130()
+{
+    WeaponTypeClass* first = Weapon[0].WeaponType;
+    if (first == 0) {
+        return false;
+    }
+
+    WeaponTypeClass* second = Weapon[1].WeaponType;
+    if (first != second && first->Burst <= 1 &&
+        (second == 0 || second->Burst <= 1)) {
+        return false;
+    }
+    return true;
 }
 
 // FUNCTION: GAMEMD 0x716290

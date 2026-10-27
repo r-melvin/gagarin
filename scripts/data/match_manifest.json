@@ -99794,5 +99794,14 @@
   "name": "RadarClass::FUN_00654650",
   "status": "partial",
   "pct": 20.3
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x712130",
+  "sym": "?FUN_00712130@TechnoTypeClass@@QAE_NXZ",
+  "len": "0x34",
+  "name": "TechnoTypeClass::FUN_00712130",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
