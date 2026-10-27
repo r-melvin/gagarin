@@ -99947,5 +99947,14 @@
   "name": "FootClass::vf_332",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46BDE0",
+  "sym": "??0BulletTypeClass@@QAE@ABUAbstractNoInit@@@Z",
+  "len": "0x2E",
+  "name": "BulletTypeClass no-init constructor",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

@@ -13,6 +13,12 @@
 
 #include "bullet_type_class.h"
 
+// FUNCTION: GAMEMD 0x46BDE0
+BulletTypeClass::BulletTypeClass(const AbstractNoInit& noInit)
+    : ObjectTypeClass(noInit)
+{
+}
+
 // CRT case-insensitive compare (_strcmpi @ GAMEMD 0x7C8D20). Declared (no body)
 // so the call is a reloc; excluded from the match target.
 int __cdecl gg_strcmpi(const char* a, const char* b);

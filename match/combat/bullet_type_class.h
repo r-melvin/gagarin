@@ -16,9 +16,36 @@ class WeaponTypeClass;
 class BulletTypeClass : public ObjectTypeClass
 {
 public:
+    // The four native primary/COM tables have complete-object offsets 0, 4,
+    // 8 and 0xC, respectively.  The offsets and targets are checked against
+    // the retail RTTI and table contents by the constructor evidence packet.
+    // VTABLE: GAMEMD 0x7E4948
+    // VTABLE: GAMEMD 0x7E492C
+    // VTABLE: GAMEMD 0x7E4924
+    // VTABLE: GAMEMD 0x7E491C
+
+    // Native no-init construction forwards this argument to ObjectTypeClass.
+    BulletTypeClass(const AbstractNoInit& noInit);
+
+    // Slot 8 in the primary table is the native scalar-deleting entry at
+    // 0x46C890.  The ordinary destructor body remains a separate provider.
+    virtual ~BulletTypeClass();
+
+    // Native overrides are declared here to preserve the four emitted tables.
+    // Their source bodies remain in their existing providers or unclaimed.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // slot 3, 0x46C750
+    virtual HRESULT __stdcall Load(IStream* pStm);         // slot 5, 0x46C6A0
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL clearDirty); // slot 6, 0x46C730
+    virtual void vf_10(void* target, bool removed);        // slot 10, 0x46C820
+    virtual int vf_11();                                   // slot 11, 0x46C850
+    virtual int vf_12();                                   // slot 12, 0x46C860
+    virtual void vf_13(Obj_004A1D30* crc);                 // slot 13, 0x46C560
+    virtual bool vf_25(CCINIClass* ini);                   // slot 25, 0x46BEE0
+    virtual CoordStruct vf_27(const CoordStruct& coord);   // slot 27, 0x46C4F0
+
     // STATIC: GAMEMD 0x46C790 (__fastcall)
     static BulletTypeClass* FindOrAllocate(const char* id);
-    // FUNCTION: GAMEMD 0x46C840 (__thiscall)
+    // Implemented at the native address 0x46C840 in the owning source TU.
     void SetScaledSpawnDelay(int delay);
 
     // Constructor target is recovered in its owning source TU.
