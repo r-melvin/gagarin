@@ -11,6 +11,7 @@
 
 class HouseClass;
 class AnimTypeClass;
+class WeaponTypeClass;
 
 class BulletTypeClass : public ObjectTypeClass
 {
@@ -50,7 +51,12 @@ public:
     unsigned char unknown_2A9;
     unsigned char unknown_2AA[2];
     int unknown_2AC;
-    unsigned char unknown_2B0[0x2BC - 0x2B0];
+    // FUNCTION 0x46BEE0 reads the AirburstWeapon INI key at 0x81B04C,
+    // resolves it through the WeaponTypeClass factory at 0x772FA0, and writes
+    // its result here at 0x46C2DB.
+    WeaponTypeClass* AirburstWeapon; // +0x2B0
+    int unknown_2B4;                 // +0x2B4
+    unsigned char unknown_2B8[4];    // +0x2B8..+0x2BB
     int unknown_2BC;
     unsigned char unknown_2C0;
     unsigned char unknown_2C1[7];
@@ -112,6 +118,12 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A9) == 0x2A9);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A9) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2AC) == 0x2AC);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2AC) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, AirburstWeapon) == 0x2B0);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->AirburstWeapon) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2B4) == 0x2B4);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2B4) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2B8) == 0x2B8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2B8) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2BC) == 0x2BC);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2BC) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C0) == 0x2C0);

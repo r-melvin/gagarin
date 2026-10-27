@@ -16,33 +16,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "../_layout/abstract_type_class.h"
+#include "bullet_type_class.h"
 #include "../core/vector_class.h"
-
-// ---------------------------------------------------------------------------
-// BulletTypeClass — partial model of the Projectile pointee (only the members
-// the weapon methods touch). Confirmed numerically:
-//   * Flag295  @0x295  — `MOV CL,[EAX+0x295]` in CalculateSpeed (gates the
-//                        Func_0048ACF0 path vs the gravity baseline).
-//   * Flag2A4  @0x2A4  — `MOV DL,[ECX+0x2A4]` in AllowedThreats.
-//   * Flag2A5  @0x2A5  — `MOV DL,[ECX+0x2A5]` in AllowedThreats.
-//   * Field2DC @0x2DC  — `MOV ECX,[EAX+0x2DC]; TEST; JNZ` gate in CalculateSpeed.
-// ---------------------------------------------------------------------------
-class BulletTypeClass
-{
-public:
-    char          _pad0[0x295];          // +0x000
-    unsigned char Flag295;               // +0x295
-    char          _pad1[0x2A4 - 0x296];  // +0x296
-    unsigned char Flag2A4;               // +0x2A4
-    unsigned char Flag2A5;               // +0x2A5
-    char          _pad2[0x2DC - 0x2A6];  // +0x2A6
-    int           Field2DC;              // +0x2DC
-};
-
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, Flag295)  == 0x295);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, Flag2A4)  == 0x2A4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, Flag2A5)  == 0x2A5);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, Field2DC) == 0x2DC);
 
 class WarheadTypeClass;  // Warhead member is only stored as a pointer here.
 
@@ -82,7 +57,9 @@ public:
     DynamicVectorClass<int> Reports;           // +0xBC (items +0xC0, count +0xCC)
     char              _tail[0x150 - 0xD4];    // +0xD4  remaining Rules fields (P2)
     bool              unknown_150;            // +0x150 (bool; read by TechnoClass slot 248 @0x70DD50)
-    char              _tail2[0x160 - 0x151];  // +0x151 remaining Rules fields (P2)
+    char              _tail2[0x158 - 0x151];  // +0x151..+0x157
+    int               unknown_158;            // +0x158 (signed test at 0x46913E)
+    char              _tail3[0x160 - 0x15C];  // +0x15C..+0x15F
 };
 
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
@@ -97,6 +74,8 @@ GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_150) == 0x150);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_158) == 0x158);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_158) == 4);
 GG_STATIC_ASSERT(sizeof(WeaponTypeClass)               == 0x160);
 
 // VectorClass head for WeaponTypeClass::Array (DynamicVectorClass of pointers).

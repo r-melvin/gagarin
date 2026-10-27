@@ -22,30 +22,30 @@ int __cdecl gg_strcmpi(const char* a, const char* b);
 // FUNCTION: GAMEMD 0x7729F0  (__thiscall)
 // Recompute the launch Speed of this weapon: if the projectile exists and its
 // gating field @0x2DC is clear, take the gravity baseline (Rules int @0x16B8)
-// — or the Func_0048ACF0 value when the projectile's Flag295 is set — and feed
+// — or the Func_0048ACF0 value when the projectile byte at +0x295 is set — and feed
 // it with the weapon Range to Func_0048AB90, storing the result in Speed.
 void WeaponTypeClass::CalculateSpeed()
 {
     BulletTypeClass* proj = this->Projectile;
-    if (proj != 0 && proj->Field2DC == 0)
+    if (proj != 0 && proj->unknown_2DC == 0)
     {
         double v = (double)GameRulesPtr->Field16B8;
-        if (proj->Flag295 != 0)
+        if (proj->unknown_295 != 0)
             v = Func_0048ACF0();
         this->Speed = (int)Func_0048AB90(this->Range, v);
     }
 }
 
 // FUNCTION: GAMEMD 0x772A90  (__thiscall)
-// Build the projectile's allowed-threat flag mask: +0x04 when Flag2A4 is set,
-// |0xB8 when Flag2A5 is set (the `or al,0xB8` byte op the retail emits).
+// Build the projectile threat mask from native byte fields +0x2A4 and +0x2A5;
+// the second condition corresponds to the retail `or al,0xB8` operation.
 int WeaponTypeClass::AllowedThreats()
 {
     BulletTypeClass* proj = this->Projectile;
     int threats = 0;
-    if (proj->Flag2A4)
+    if (proj->unknown_2A4[0])
         threats = 4;
-    if (proj->Flag2A5)
+    if (proj->unknown_2A4[1])
         threats |= 0xB8;
     return threats;
 }
