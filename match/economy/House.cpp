@@ -483,6 +483,7 @@ template class DynamicVectorClass<double>;
 
 #include <string.h>
 #include <new.h>
+#include "../_layout/building_type_class_layout.h"
 #include "house_building/house_class_core.h"
 
 #pragma intrinsic(memcmp)
@@ -2088,6 +2089,45 @@ int Obj_005095D0::FUN_005095D0(int kind)
 // Empty function that pops its stack arguments.
 void __stdcall FUN_00509CC0(int a1)
 {
+}
+
+// GLOBAL: GAMEMD 0x7E2AC8 -- default multiplier used by both native helpers.
+extern const float DAT_007E2AC8;
+
+// FUNCTION: GAMEMD 0x50BDF0
+float HouseClass::FUN_0050BDF0(TechnoTypeClass* type)
+{
+    switch (type->vf_11()) {
+    case 16:
+        return Type->CostInfantryMult;
+    case 40:
+        return Type->CostUnitsMult;
+    case 3:
+        return Type->CostAircraftMult;
+    case 7:
+        if (static_cast<BuildingTypeClass*>(type)->BuildCat == 5)
+            return Type->CostDefensesMult;
+        return Type->CostBuildingsMult;
+    }
+    return DAT_007E2AC8;
+}
+
+// FUNCTION: GAMEMD 0x50BEB0
+float HouseClass::FUN_0050BEB0(TechnoTypeClass* type)
+{
+    switch (type->vf_11()) {
+    case 16:
+        return CostInfantryMult;
+    case 40:
+        return CostUnitsMult;
+    case 3:
+        return CostAircraftMult;
+    case 7:
+        if (static_cast<BuildingTypeClass*>(type)->BuildCat == 5)
+            return CostDefensesMult;
+        return CostBuildingsMult;
+    }
+    return DAT_007E2AC8;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

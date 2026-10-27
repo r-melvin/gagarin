@@ -136,6 +136,7 @@ GG_STATIC_ASSERT(sizeof(ZoneInfoStruct) == 0xC);
 
 class BuildingTypeClass;
 class HouseTypeClass;
+class TechnoTypeClass;
 class UnitTypeClass;
 template<class T> class DynamicVectorClass;
 
@@ -490,6 +491,11 @@ public:
     bool IsAlliedWith(const HouseClass* house) const;
     // FUNCTION: GAMEMD 0x50B730 (decl; reloc) -- no arguments, bool.
     bool FUN_0050B730();
+    // FUNCTION: GAMEMD 0x50BDF0 -- ECX=House, one TechnoType* stack argument,
+    // float result in ST0, RET 4. Native body switches on slot 11.
+    float FUN_0050BDF0(TechnoTypeClass* type);
+    // FUNCTION: GAMEMD 0x50BEB0 -- same native ABI as 0x50BDF0.
+    float FUN_0050BEB0(TechnoTypeClass* type);
     // FUNCTION: GAMEMD 0x4F9B70 (decl; reloc) -- RET 8.
     void FUN_004F9B70(HouseClass* other, bool flag);
     // FUNCTION: GAMEMD 0x4F9F90 (decl; reloc) -- RET 8.
@@ -560,6 +566,11 @@ GG_STATIC_ASSERT(offsetof(HouseClass, BuiltAircraftTypes)         == 0x328);
 GG_STATIC_ASSERT(offsetof(HouseClass, CollectedCrates)            == 0x4B70);
 GG_STATIC_ASSERT(offsetof(HouseClass, NumAirpads)                 == 0x5378);
 GG_STATIC_ASSERT(offsetof(HouseClass, CostInfantryMult)           == 0x5390);
+GG_STATIC_ASSERT(offsetof(HouseClass, CostUnitsMult)              == 0x5394);
+GG_STATIC_ASSERT(offsetof(HouseClass, CostAircraftMult)           == 0x5398);
+GG_STATIC_ASSERT(offsetof(HouseClass, CostBuildingsMult)          == 0x539C);
+GG_STATIC_ASSERT(offsetof(HouseClass, CostDefensesMult)           == 0x53A0);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->Type)                   == 4);
 GG_STATIC_ASSERT(offsetof(HouseClass, PowerOutput)                == 0x53A4);
 GG_STATIC_ASSERT(offsetof(HouseClass, Primary_ForAircraft)        == 0x53AC);
 GG_STATIC_ASSERT(offsetof(HouseClass, AircraftType_53D0)          == 0x53D0);

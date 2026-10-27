@@ -99524,5 +99524,23 @@
   "name": "RadarClass::vf_30",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50BDF0",
+  "sym": "?FUN_0050BDF0@HouseClass@@QAEMPAVTechnoTypeClass@@@Z",
+  "len": "0xBA",
+  "name": "HouseClass::FUN_0050BDF0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/economy/House.cpp",
+  "addr": "0x50BEB0",
+  "sym": "?FUN_0050BEB0@HouseClass@@QAEMPAVTechnoTypeClass@@@Z",
+  "len": "0xAE",
+  "name": "HouseClass::FUN_0050BEB0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
