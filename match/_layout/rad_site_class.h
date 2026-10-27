@@ -29,6 +29,30 @@ GG_STATIC_ASSERT(sizeof(TintStruct) == 0xC);
 class RadSiteClass : public AbstractClass
 {
 public:
+    // The primary retail table at 0x7F0810 points to these addresses for the
+    // listed slots. Each target is a table entry; this comment does not bind
+    // an otherwise unimplemented member body to that address.
+    virtual HRESULT __stdcall GetClassID(CLSID* pClassID); // 0x65B470, slot 3
+    virtual HRESULT __stdcall Load(IStream* pStm);         // 0x65B3D0, slot 5
+    virtual HRESULT __stdcall Save(IStream* pStm, BOOL clearDirty); // 0x65B450, slot 6
+    // Slot 8 points to the native deleting-destructor entry at 0x65BED0.
+    // The ordinary destructor body has not been separately identified.
+    virtual ~RadSiteClass();
+    virtual int vf_11();                                   // 0x65B3C0
+    virtual int vf_12();                                   // 0x65B3A0
+    virtual void vf_13(Obj_004A1D30* crc);                 // 0x65B3B0
+    virtual void vf_23();                                  // 0x65B800
+
+    // Native default constructor is 0x65B1E0 (thiscall, no stack arguments).
+    RadSiteClass();
+
+    // Native call contracts used by BulletClass::FUN_004690B0.
+    void SetBaseCell(CellStruct* cell);  // target 0x65B4C0, thiscall RET 4
+    void SetSpread(int spread);          // target 0x65B4D0, thiscall RET 4
+    void SetRadLevel(int level);         // target 0x65B4F0, thiscall RET 4
+    void Add(int level);                 // target 0x65B530, thiscall RET 4
+    void Activate();                     // target 0x65B580, thiscall RET 0
+
     void*        LightSource;         // +0x24 LightSourceClass*; ctor @0x0065B1EA
     CDTimerClass RadLevelTimer;       // +0x28 ctor StartTime=[0x00A8ED84] @0x0065B1F3, TimeLeft @0x0065B1F6
     CDTimerClass RadLightTimer;       // +0x34 ctor StartTime=[0x00A8ED84] @0x0065B202, TimeLeft @0x0065B1FF

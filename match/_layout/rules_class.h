@@ -125,7 +125,9 @@ struct RulesClass
     int unknown_D54;
     char unknown_D58[0xE04 - 0xD58];
     int unknown_E04;
-    char unknown_E08[0x0FA8 - 0xE08];
+    char unknown_E08[0xF8C - 0xE08];
+    WarheadTypeClass* unknown_F8C; // 469CA7 compares this pointer with Bullet.WH
+    char unknown_F90[0xFA8 - 0xF90];
     WarheadTypeClass* C4Warhead;
     char unknown_FAC[0x1178 - 0xFAC];
     int* unknown_1178; // 0x686A17/0x686A23 indexes by House AIDifficulty
@@ -278,6 +280,8 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1434) == 0x1434);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C0) == 0x14C0);
 
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->C4Warhead) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F8C) == 0xF8C);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_F8C) == 4);
 
 // Bullet impact caller layout closure, native 4690B0 entry-origin assembly.
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_140) == 0x140);

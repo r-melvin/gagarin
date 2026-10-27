@@ -1,10 +1,19 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra | RTTI-confirmed-inheritance
 // Retail method contracts, member accesses, and callees were read from the
-// pinned v1.001 image; see the associated private source-recovery evidence.
+// pinned v1.001 image; native call contracts are noted at the relevant sites.
 #include "../_layout/bullet_class.h"
 #include "bullet_type_class.h"
 #include "weapon_type_class.h"
+#include "../_layout/capture_manager_class.h"
+#include "../_layout/house_type_class.h"
+#include "../_layout/temporal_class.h"
+#include "../_layout/unit_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/voxel_anim_class.h"
+#include "../_layout/rad_site_class.h"
+#include "../_layout/tag_class.h"
+#include "../core/object_class_uninit_methods.h"
 #include "temporal_cell.h"
 #include "../_layout/techno_class.h"
 #include "../_layout/house_class.h"
@@ -22,6 +31,9 @@
 #include "../core/vec3d_layout.h"
 #include "../core/vector_class_operations.h"
 #include "../renderer/color_scheme_find_methods.h"
+#include "airstrike_class_methods.h"
+#include "parasite_class_infect_methods.h"
+#include "../core/small_misc35_methods.h"
 #include <new>
 #include <windows.h>
 #include <string.h>
@@ -108,6 +120,13 @@ extern const double DAT_007E48F8;
 extern const double DAT_007E1718;
 // GLOBAL: GAMEMD 0x7E48F0
 extern const double DAT_007E48F0;
+// Native writes at 0x4690FA and 0x46912B; each is a four-byte EAX store.
+// GLOBAL: GAMEMD 0x87F7EC
+extern int DAT_0087F7EC;
+// GLOBAL: GAMEMD 0x87F7F0
+extern int DAT_0087F7F0;
+// GLOBAL: GAMEMD 0x87F5D8
+extern Obj_00439110 DAT_0087F5D8;
 // GLOBAL: GAMEMD 0x7E48E0
 extern const double DAT_007E48E0;
 // GLOBAL: GAMEMD 0x7E1738
@@ -271,6 +290,12 @@ BulletClass::~BulletClass()
     Owner = 0;
     NextAnim = 0;
     DAT_00A8ED40.RemoveItem(this);
+}
+
+// FUNCTION: GAMEMD 0x4666C0
+bool BulletClass::vf_73(int mode)
+{
+    return ObjectClass::vf_73(mode) != false;
 }
 
 // FUNCTION: GAMEMD 0x004666E0
@@ -1393,6 +1418,947 @@ GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x218);
 GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 0x3F4);
 GG_STATIC_ASSERT(sizeof(DAT_007ED3D0[0]) == 4);
 GG_STATIC_ASSERT(sizeof(DAT_00ABD490[0]) == 4);
+
+// Native caller APIs used by BulletClass::FUN_004690B0. These declarations
+// describe observed transports; original source-level spellings remain unknown.
+int FUN_00489280(const CoordStruct* where, int damage, TechnoClass* owner,
+    WarheadTypeClass* warhead, int unknown_arg4, HouseClass* house);
+AnimTypeClass* FUN_0048A4F0(int health, WarheadTypeClass* warhead,
+    int selected, const CoordStruct* location);
+void FUN_0048A620(int health, WarheadTypeClass* warhead,
+    CoordStruct location, char unknown_arg3, unsigned int mask);
+void FUN_007509E0(int sound, CoordStruct* location, void* unknown_arg2);
+// Existing native helper at 0x4251F0; use the mapped provider signature.
+void FUN_004251F0(int unused, const short* cell);
+
+// GLOBAL: GAMEMD 0x87F7EC; native EAX store at 0x4690FA.
+extern int DAT_0087F7EC;
+// GLOBAL: GAMEMD 0x87F7F0; native EAX store at 0x46912B.
+extern int DAT_0087F7F0;
+// GLOBAL: GAMEMD 0x87F5D8; native fixed receiver at 0x46936B.
+extern Obj_00439110 DAT_0087F5D8;
+// Existing globals bound at the same native addresses.
+extern const char rclsid_007E96E0[16];
+extern const char riid_007F7C90[16];
+
+// Provenance: own-binary-via-Ghidra, entry assembly and slice reviews.
+namespace {
+// Nested list contracts: native 469D40/469E02 reads +19C,
+// 469D62 reads +1AC, and 469DB9 reads +190. Warhead ctor RTTI
+// proves TypeList<const VoxelAnimTypeClass*> and TypeList<int>.
+typedef TypeList<const VoxelAnimTypeClass*> BulletDebrisTypeList;
+typedef TypeList<int> BulletDebrisMaximumList;
+GG_STATIC_ASSERT(sizeof(BulletDebrisTypeList) == 0x1C);
+GG_STATIC_ASSERT(offsetof(BulletDebrisTypeList, Items) == 4);
+GG_STATIC_ASSERT(sizeof(((BulletDebrisTypeList*)0)->Items) == 4);
+GG_STATIC_ASSERT(sizeof(*((BulletDebrisTypeList*)0)->Items) == 4);
+GG_STATIC_ASSERT(offsetof(BulletDebrisTypeList, Count) == 0x10);
+GG_STATIC_ASSERT(sizeof(((BulletDebrisTypeList*)0)->Count) == 4);
+GG_STATIC_ASSERT(sizeof(BulletDebrisMaximumList) == 0x1C);
+GG_STATIC_ASSERT(offsetof(BulletDebrisMaximumList, Items) == 4);
+GG_STATIC_ASSERT(sizeof(((BulletDebrisMaximumList*)0)->Items) == 4);
+GG_STATIC_ASSERT(sizeof(*((BulletDebrisMaximumList*)0)->Items) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CellSpread) == 0x124);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CellSpread) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DirectRocker) == 0x14f);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->DirectRocker) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableRed) == 0x151);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableRed) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableGreen) == 0x152);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableGreen) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableBlue) == 0x153);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableBlue) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, MindControl) == 0x155);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->MindControl) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, IvanBomb) == 0x157);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->IvanBomb) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ElectricAssault) == 0x158);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->ElectricAssault) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Parasite) == 0x159);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->Parasite) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Temporal) == 0x15a);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->Temporal) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, IsLocomotor) == 0x15b);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->IsLocomotor) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Locomotor) == 0x15c);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->Locomotor) == 16);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Airstrike) == 0x16c);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->Airstrike) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, BombDisarm) == 0x16e);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->BombDisarm) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, MakesDisguise) == 0x175);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->MakesDisguise) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, NukeMaker) == 0x176);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->NukeMaker) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ShakeXlo) == 0x17c);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->ShakeXlo) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ShakeXhi) == 0x180);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->ShakeXhi) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ShakeYlo) == 0x184);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->ShakeYlo) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ShakeYhi) == 0x188);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->ShakeYhi) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisTypes) == 0x18c);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->DebrisTypes) == 28);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisMaximums) == 0x1a8);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->DebrisMaximums) == 28);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, MaxDebris) == 0x1c4);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->MaxDebris) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, MinDebris) == 0x1c8);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->MinDebris) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21c);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->Owner) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, TemporalImUsing) == 0x274);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->TemporalImUsing) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Airstrike) == 0x294);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->Airstrike) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, DirectRockerLinkedUnit) == 0x2a8);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->DirectRockerLinkedUnit) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, LocomotorTarget) == 0x2ac);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->LocomotorTarget) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, LocomotorSource) == 0x2b0);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->LocomotorSource) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, CaptureManager) == 0x2bc);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->CaptureManager) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoClass, BunkerLinkedItem) == 0x2e4);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->BunkerLinkedItem) == 4);
+GG_STATIC_ASSERT(offsetof(FootClass, ParasiteImUsing) == 0x69c);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->ParasiteImUsing) == 4);
+GG_STATIC_ASSERT(offsetof(FootClass, IsAttackedByLocomotor) == 0x6ad);
+GG_STATIC_ASSERT(sizeof(((FootClass*)0)->IsAttackedByLocomotor) == 1);
+GG_STATIC_ASSERT(offsetof(BulletClass, Type) == 0xac);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, Owner) == 0xb0);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Owner) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, Bright) == 0xe0);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Bright) == 1);
+GG_STATIC_ASSERT(offsetof(BulletClass, Target) == 0x10c);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Target) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, WH) == 0x128);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->WH) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, WeaponType) == 0x130);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->WeaponType) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, DamageMultiplier) == 0x150);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->DamageMultiplier) == 4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, AttachedTag) == 0x34);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->AttachedTag) == 4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, AttachedBomb) == 0x38);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->AttachedBomb) == 4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, Health) == 0x6c);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->Health) == 4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, IsAlive) == 0x90);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->IsAlive) == 1);
+GG_STATIC_ASSERT(offsetof(ObjectClass, Location) == 0x9c);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->Location) == 12);
+GG_STATIC_ASSERT(offsetof(AbstractClass, Flags) == 0x14);
+GG_STATIC_ASSERT(sizeof(((AbstractClass*)0)->Flags) == 1);
+GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xe4);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->FirstObject) == 4);
+GG_STATIC_ASSERT(offsetof(CellClass, LandType) == 0xec);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->LandType) == 4);
+GG_STATIC_ASSERT(offsetof(CellClass, RadSite) == 0xf8);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->RadSite) == 4);
+GG_STATIC_ASSERT(offsetof(HouseClass, Type) == 0x34);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(HouseTypeClass, ArrayIndex2) == 0xb8);
+GG_STATIC_ASSERT(sizeof(((HouseTypeClass*)0)->ArrayIndex2) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xa0);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Projectile) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage) == 0xa4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed) == 0xa8);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Speed) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Warhead) == 0xac);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Warhead) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_158) == 0x158);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_158) == 4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Size) == 0x380);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Size) == 8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Naval) == 0xcce);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Naval) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Underwater) == 0xd69);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Underwater) == 1);
+GG_STATIC_ASSERT(offsetof(UnitClass, Type) == 0x6c4);
+GG_STATIC_ASSERT(sizeof(((UnitClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(BuildingClass, Type) == 0x520);
+GG_STATIC_ASSERT(sizeof(((BuildingClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_140) == 0x140);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_140) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C) == 0x14c);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_14C) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_214) == 0x214);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_214) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_350) == 0x350);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_350) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_F8C) == 0xf8c);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_F8C) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18B4) == 0x18b4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_18B4) == 4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x218);
+GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 1012);
+GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x0);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->X) == 4);
+GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 0x4);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->Y) == 4);
+GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x8);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->Z) == 4);
+GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0x0);
+GG_STATIC_ASSERT(sizeof(((CellStruct*)0)->X) == 2);
+GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 0x2);
+GG_STATIC_ASSERT(sizeof(((CellStruct*)0)->Y) == 2);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, X) == 0x0);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->X) == 8);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, Y) == 0x8);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Y) == 8);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, Z) == 0x10);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Z) == 8);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_294) == 0x294);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_294) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29E) == 0x29e);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29E) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, AirburstWeapon) == 0x2b0);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->AirburstWeapon) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelWeapon) == 0x2b4);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelWeapon) == 4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + 25 == 0x16BD);
+GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->bools_16A4[25]) == 1);
+}
+
+// FUNCTION: GAMEMD 0x4690B0
+void BulletClass::FUN_004690B0(const CoordStruct* impact)
+{
+    int areaDamageResult = 1; // native stack dword initialized at 0x4690C1
+    bool impactSpecialResult = false; // native stack byte initialized false
+    // Dispatch locals end before the shared impact continuation. Forward
+    // branches leave this scope instead of bypassing local initializations.
+    {
+    WarheadTypeClass* warhead = static_cast<WarheadTypeClass*>(WH);
+
+    if (warhead->ShakeXlo != 0 || warhead->ShakeXhi != 0) {
+        DAT_0087F7EC = DAT_00886B88.RandomRanged(
+            warhead->ShakeXlo, warhead->ShakeXhi);
+    }
+    // Native 4690FF reloads WH after the preceding random callback.
+    warhead = static_cast<WarheadTypeClass*>(WH);
+    if (warhead->ShakeYlo != 0 || warhead->ShakeYhi != 0) {
+        DAT_0087F7F0 = DAT_00886B88.RandomRanged(
+            warhead->ShakeYlo, warhead->ShakeYhi);
+    }
+
+    // The native signed DWORD at WeaponType+0x158 is tested with JLE.
+    if (WeaponType != 0) {
+      // Native 46913E/469146 saves this value across the calls below.
+      const int radLevel = WeaponType->unknown_158;
+      if (radLevel > 0) {
+        CellStruct impactCell;
+        impactCell.X = static_cast<short>(impact->X / 0x100);
+        impactCell.Y = static_cast<short>(impact->Y / 0x100);
+
+        const int spread = static_cast<int>(WeaponType->Warhead->CellSpread);
+        CellClass* cell = reinterpret_cast<CellClass*>(
+            Map_0087F7E8.FUN_005657A0(&impactCell));
+        RadSiteClass* site = static_cast<RadSiteClass*>(cell->RadSite);
+
+        if (site == 0) {
+            site = new RadSiteClass();
+            site->SetBaseCell(&impactCell);
+            site->SetSpread(spread);
+            site->SetRadLevel(radLevel);
+            site->Activate();
+            cell->RadSite = site;
+        } else {
+            site->Add(radLevel);
+        }
+      }
+    }
+
+
+// Feature predicates and call transports follow the pinned entry instructions.
+// Forward branches join the shared impact continuation at 0x469AA4.
+// AbstractClass.Flags bit 1 remains intentionally unnamed.
+
+    // Native 46920B reloads WH after radiation-site callbacks.
+    warhead = static_cast<WarheadTypeClass*>(WH);
+    // Native 0x469211 tests WarheadTypeClass+0x155 (MindControl).
+    if (warhead->MindControl) {
+        if (Owner == 0)
+            goto common_impact_tail;
+        if (Owner->CaptureManager == 0)
+            goto common_impact_tail;
+
+        AbstractClass* targetWithFlag1 =
+            Target != 0 && Target->Flags.unknown_14_1 ? Target : 0;
+
+        // Independent target-owner predicate: only when AbstractClass flag
+        // bit 0 is set, load TechnoClass::Owner and call 0x50B6F0.
+        bool targetHousePredicate = false;
+        if (Target != 0 && Target->Flags.IsTechno) {
+            TechnoClass* targetTechno = static_cast<TechnoClass*>(Target);
+            targetHousePredicate =
+                targetTechno->Owner->IsControlledByCurrentPlayer();
+        }
+
+        // Native checks normalized target, ObjectClass::IsAlive (+0x90),
+        // and ObjectClass::AttachedTag (+0x34), then invokes two tag events.
+        if (targetWithFlag1 != 0) {
+            ObjectClass* targetObject =
+                static_cast<ObjectClass*>(targetWithFlag1);
+            if (targetObject->IsAlive && targetObject->AttachedTag != 0) {
+                targetObject->AttachedTag->FUN_006E53A0(
+                    6, targetObject, DAT_0089DDF0, false,
+                    reinterpret_cast<int>(Owner));
+                targetObject->AttachedTag->FUN_006E53A0(
+                    0x2C, targetObject, DAT_0089DDF0, false,
+                    reinterpret_cast<int>(Owner));
+            }
+        }
+
+        // FUN_00471D40 is CaptureManagerClass::thiscall with one target
+        // pointer and RET 4. Pass the original Target, including null.
+        // Native 4692BD..4692D0 reloads Owner and its manager after tag callbacks.
+        if (!static_cast<CaptureManagerClass*>(Owner->CaptureManager)
+                 ->FUN_00471D40(Target))
+            goto common_impact_tail;
+        if (Rules->unknown_214 == -1)
+            goto common_impact_tail;
+
+        const bool ownerHousePredicate = Owner->Owner->IsControlledByCurrentPlayer();
+        if (!ownerHousePredicate && !targetHousePredicate)
+            goto common_impact_tail;
+
+        // Native 0x46930D passes Rules+0x214 in ECX, &target.Location in EDX,
+        // and one zero stack argument to 0x7509E0. This is reached only if
+        // targetWithFlag1 survived the original native pointer normalization.
+        // Native 46930D unconditionally advances the saved normalized
+        // pointer to Location and reads it; no extra null guard is present.
+        CoordStruct soundLocation =
+            static_cast<ObjectClass*>(targetWithFlag1)->Location;
+        FUN_007509E0(Rules->unknown_214, &soundLocation, 0);
+        goto common_impact_tail;
+    }
+
+    // No test of WarheadTypeClass+0x156 occurs in this function range.
+    // Native 0x469343 tests +0x157 (IvanBomb).
+    if (warhead->IvanBomb) {
+        TechnoClass* targetTechno =
+            Target != 0 && Target->Flags.IsTechno
+                ? static_cast<TechnoClass*>(Target) : 0;
+        // Native ECX is the fixed object address 0x87F5D8. It pushes Owner
+        // then targetTechno, so stack arguments are (Owner,targetTechno),
+        // callee cleanup is RET 8; precise C++ receiver type is unresolved.
+        DAT_0087F5D8.FUN_00438E70(Owner, targetTechno);
+        goto common_impact_tail;
+    }
+
+    // Native 0x46937A tests +0x158 (ElectricAssault). The virtual call at
+    // +0x2C is AbstractClass slot 11; the full EAX values are compared.
+    if (warhead->ElectricAssault) {
+        if (Target == 0 || Target->vf_11() != 6 || Owner == 0 ||
+            Owner->vf_11() != 0xF)
+            goto common_impact_tail;
+        // Native ECX=Target, one stack arg=Owner, callee RET 4.
+        static_cast<BuildingClass*>(Target)->FUN_00452820(Owner);
+        goto common_impact_tail;
+    }
+
+    // Native 0x4693D3 tests +0x159. Keep this flag as its numeric field;
+    // the call contract is the evidence here, not a guessed feature label.
+    if (warhead->Parasite) {
+        if (Owner == 0)
+            goto common_impact_tail;
+        AbstractClass* normalizedTarget =
+            Target != 0 && Target->Flags.IsFoot ? Target : 0;
+        // Native receiver is dword [Owner+0x69C], one stack argument is the
+        // normalized pointer, callee cleanup RET 4.
+        static_cast<ParasiteClass_0062A8E0*>(
+            static_cast<FootClass*>(Owner)->ParasiteImUsing)
+                ->FUN_0062A980(normalizedTarget);
+        goto common_impact_tail;
+    }
+
+// ABI/call-site ledger:
+// 469267: ECX=Target->Owner; CALL 50B6F0; no args, RET 0 (member-like leaf).
+// 4692A2 / 4692B8: ECX=Target->AttachedTag; stack args (event, target,
+//   CellStruct-by-value, false, Owner-as-dword); callee RET 0x14. Existing
+//   TagClass::FUN_006E53A0 declaration matches this exact five-argument form.
+// 4692D0: ECX=Owner->CaptureManager; stack arg Target; CALL 471D40; RET 4.
+// 4692FC: ECX=Owner->Owner; CALL 50B6F0; no args, RET 0.
+// 469339: ECX=Rules+214, EDX=&target.Location, stack arg 0; CALL 7509E0,
+//   RET 4. Existing fastcall form is int, CoordStruct*, void*.
+// 469370: ECX=absolute receiver 0x87F5D8; stack args Owner,targetTechno;
+//   CALL 438E70, RET 8. Receiver's C++ class/API association is not yet proven.
+// 4693C9: ECX=Target, stack arg Owner; CALL 452820, RET 4. Exact concrete
+//   receiver class association is not yet proven (Target WhatAmI()==6).
+// 469401/419: ECX=dword [Owner+69C], stack arg normalizedTarget; CALL 62A980,
+//   RET 4. Exact concrete receiver class association remains open.
+
+// The range contains the +0x15A Temporal branch, then (when it is false) the
+// +0x15B IsLocomotor branch. Both branches rejoin at common_impact_tail,
+// native 0x469AA4.
+//
+// Narrow prerequisites for a future canonical integration:
+//   * BuildingTypeClass::bools_16A4[25] byte at +0x16BD (native TEST byte).
+//   * TechnoClass::FUN_0070FEE0(int) (ECX Owner, stack int, RET 4).
+//   * TechnoClass::FUN_00710000(RawBlock10, AbstractClass*) (ECX Owner,
+//     16-byte by-value value then target pointer, RET 0x14).
+// Other fields and vslots used below are already present in canonical headers.
+
+    // Native +0x15A (Temporal), 0x469423.
+    if (warhead->Temporal) {
+        if (Owner == 0 || Target == 0)
+            goto common_impact_tail;
+
+        FootClass* targetFoot =
+            Target->Flags.IsFoot ? static_cast<FootClass*>(Target) : 0;
+        if (targetFoot != 0 && targetFoot->vf_30() != 2)
+            goto common_impact_tail;
+
+        // EDI starts as Target when AbstractClass bit 0 is set, otherwise 0.
+        TechnoClass* temporalTarget =
+            Target->Flags.IsTechno ? static_cast<TechnoClass*>(Target) : 0;
+        if (temporalTarget != 0) {
+            if (temporalTarget->BunkerLinkedItem != 0 &&
+                temporalTarget->vf_11() == 1) {
+                // Native reloads +0x2E4 after the virtual callback, then
+                // passes that reloaded pointer to Owner's slot 242 and the
+                // TemporalClass call. Preserve the callback mutation point.
+                temporalTarget = temporalTarget->BunkerLinkedItem;
+                Owner->vf_242(reinterpret_cast<int>(temporalTarget));
+            }
+        }
+        Owner->TemporalImUsing->FUN_0071AF20(
+            reinterpret_cast<TemporalTechnoView*>(temporalTarget));
+        goto common_impact_tail;
+    }
+
+    // Native +0x15B (IsLocomotor), 0x4694CB. This branch checks and updates
+    // locomotor linkage, then re-loads BulletClass::Target after its callback.
+    if (warhead->IsLocomotor) {
+        if (Owner == 0)
+            goto common_impact_tail;
+        if (Owner->LocomotorTarget == Target ||
+            Owner->LocomotorSource != 0)
+            goto common_impact_tail;
+
+        // Native checks the owner (ECX's saved this), not Target, at +0x14
+        // bit 2 and then Owner+0x6AD.
+        FootClass* ownerFoot =
+            Owner->Flags.IsFoot ? static_cast<FootClass*>(Owner) : 0;
+        if (ownerFoot != 0 && ownerFoot->IsAttackedByLocomotor)
+            goto common_impact_tail;
+
+        AbstractClass* initialTarget = Target;
+        bool sameCellBuilding = false;
+        if (initialTarget != 0 && initialTarget->vf_11() == 1) {
+            // Native reloads Target and repeats slot 11 before normalizing the
+            // receiver passed to FUN_0065AD30.
+            AbstractClass* lookupTarget = Target;
+            TechnoClass* lookupTechno = lookupTarget != 0 &&
+                lookupTarget->vf_11() == 1
+                    ? static_cast<TechnoClass*>(lookupTarget) : 0;
+            // Native calls even when this normalized ECX value is zero:
+            // PUSH 0; MOV ECX,normalizedTarget; CALL 0x65AD30.
+            AbstractClass* candidate = lookupTechno->FUN_0065AD30(0);
+            if (candidate != 0 && candidate->vf_11() == 6 &&
+                static_cast<BuildingClass*>(candidate)->Type->bools_16A4[25]) {
+                AbstractClass* currentTarget = Target; // reload at 0x469595
+                TechnoClass* currentTechno = currentTarget != 0 &&
+                    currentTarget->vf_11() == 1
+                        ? static_cast<TechnoClass*>(currentTarget) : 0;
+                const CoordStruct currentLocation =
+                    static_cast<ObjectClass*>(currentTechno)->Location;
+                CellClass* cell =
+                    Map_0087F7E8.FUN_00565730(currentLocation);
+                if (cell->GetBuilding() == candidate)
+                    sameCellBuilding = true;
+            }
+        }
+
+        // Native calls on Owner with one stack zero only when
+        // Owner::LocomotorTarget was non-null.
+        if (Owner->LocomotorTarget != 0)
+            Owner->FUN_0070FEE0(0);
+
+        AbstractClass* currentTarget = Target; // reload at 0x469602
+        if (currentTarget == 0 || sameCellBuilding)
+            goto common_impact_tail;
+        FootClass* currentFoot =
+            currentTarget->Flags.IsFoot
+                ? static_cast<FootClass*>(currentTarget) : 0;
+        if (currentFoot != 0 && currentFoot->vf_30() != 2)
+            goto common_impact_tail;
+
+        currentTarget = Target; // reload at 0x469648
+        if (currentTarget == 0 || !currentTarget->Flags.IsFoot)
+            goto common_impact_tail;
+        currentFoot = static_cast<FootClass*>(currentTarget);
+        if (currentFoot->vf_88())
+            goto common_impact_tail;
+
+        // Native performs two fresh Target loads/tests: first accept kind 1;
+        // only otherwise reload and accept kind 2. EDI/currentFoot remains
+        // the earlier normalized receiver for the following fields/call.
+        AbstractClass* kindTarget = Target;
+        bool supportedKind = kindTarget != 0 && kindTarget->vf_11() == 1;
+        if (!supportedKind) {
+            kindTarget = Target;
+            supportedKind = kindTarget != 0 && kindTarget->vf_11() == 2;
+        }
+        if (!supportedKind)
+            goto common_impact_tail;
+        if (currentFoot->IsAttackedByLocomotor)
+            goto common_impact_tail;
+
+        TechnoTypeClass* targetType = currentFoot->vf_33();
+        if (!(static_cast<double>(Health) > targetType->Size))
+            goto common_impact_tail;
+
+        // Native 0x4696D4 reserves/copies the 16-byte Warhead Locomotor value,
+        // pushes current Target, sets ECX=Owner, then calls 0x710000.
+        Owner->FUN_00710000(
+            static_cast<WarheadTypeClass*>(WH)->Locomotor, currentTarget);
+        goto common_impact_tail;
+    }
+
+    // When +0x15B is false, native control continues at 0x46978E; otherwise
+    // this branch joins at 0x469700.
+
+
+// Branch order is Airstrike (+16C), DirectRocker (+14F), BombDisarm (+16E),
+// MakesDisguise (+175), NukeMaker (+176), then the default damage path.
+// common_impact_tail is native 0x469AA4. The dead-after-damage edge reaches
+// the native epilogue at 0x46A290.
+
+    // The preceding IsLocomotor test branches here only when +0x15B is false.
+    // Airstrike path: require Techno flag and Airstrike helper; reload Target
+    // after its first callback before the second helper call.
+    if (warhead->Airstrike) {
+        if (Owner == 0)
+            goto common_impact_tail;
+        AbstractClass* firstTarget = Target;
+        if (firstTarget == 0 || !firstTarget->Flags.IsTechno)
+            goto common_impact_tail;
+
+        TechnoClass* airstrikeTarget =
+            static_cast<TechnoClass*>(firstTarget);
+        AirstrikeClass* airstrike =
+            static_cast<AirstrikeClass*>(Owner->Airstrike);
+        if (airstrike == 0 ||
+            !airstrike->FUN_0041D7E0(airstrikeTarget))
+            goto common_impact_tail;
+
+        AbstractClass* secondTarget = Target; // native reload @0x469761
+        TechnoClass* secondTechno =
+            secondTarget != 0 && secondTarget->Flags.IsTechno
+                ? static_cast<TechnoClass*>(secondTarget) : 0;
+        static_cast<AirstrikeClass*>(Owner->Airstrike)
+            ->StartMission(secondTechno);
+        goto common_impact_tail;
+    }
+
+    // DirectRocker (+0x14F): the native type check is WhatAmI()==1, then a
+    // normalized Techno pointer must exist. vslot +0x160 (slot 88) vetoes.
+    if (warhead->DirectRocker) {
+        AbstractClass* firstTarget = Target;
+        if (firstTarget != 0 && firstTarget->vf_11() == 1) {
+            AbstractClass* currentTarget = Target; // native reload @0x4697B8
+            TechnoClass* targetTechno =
+                currentTarget != 0 && currentTarget->Flags.IsTechno
+                    ? static_cast<TechnoClass*>(currentTarget) : 0;
+            if (Owner != 0 && targetTechno != 0 &&
+                !targetTechno->vf_88()) {
+                const int scaledDamage =
+                    (DamageMultiplier * Health) >> 8;
+                double movementSpeed =
+                    static_cast<double>(scaledDamage) *
+                    static_cast<double>(Rules->unknown_18B4) / 100.0;
+                if (movementSpeed >= 4.0)
+                    movementSpeed = 4.0;
+
+                // Native subtracts Target.Location from Owner.Location,
+                // converts each signed dword to float, and sums squared
+                // float components before calling the x87 sqrt helper.
+                const CoordStruct targetLocation = targetTechno->Location;
+                const CoordStruct ownerLocation = Owner->Location;
+                float directionX = static_cast<float>(
+                    ownerLocation.X - targetLocation.X);
+                float directionY = static_cast<float>(
+                    ownerLocation.Y - targetLocation.Y);
+                float directionZ = static_cast<float>(
+                    ownerLocation.Z - targetLocation.Z);
+                const double squaredDistance =
+                    directionX * directionX +
+                    directionY * directionY +
+                    directionZ * directionZ;
+                const double distance = FUN_004CAC40(squaredDistance);
+
+                if (distance != 0.0) {
+                    directionX = static_cast<float>(directionX / distance);
+                    directionY = static_cast<float>(directionY / distance);
+                    directionZ = static_cast<float>(directionZ / distance);
+                }
+
+                // Three native 0x7C5F00 conversions consume, in order, x,
+                // y, then z after multiplication by the float constant 10.0.
+                const int offsetX = static_cast<int>(directionX * 10.0f);
+                const int offsetY = static_cast<int>(directionY * 10.0f);
+                const int offsetZ = static_cast<int>(directionZ * 10.0f);
+                CoordStruct destination = targetLocation;
+                destination.X += offsetX;
+                destination.Y += offsetY;
+                destination.Z += offsetZ;
+
+                // Native slot 246 (+0x3D8), ECX target, stack args
+                // (CoordStruct*, float, bool), callee RET 0xC.
+                targetTechno->vf_246(
+                    &destination, static_cast<float>(movementSpeed), true);
+
+                // Both owner reads occur after the virtual callback in retail.
+                targetTechno->DirectRockerLinkedUnit = Owner;
+                Owner->DirectRockerLinkedUnit = targetTechno;
+                goto common_impact_tail;
+            }
+        }
+    }
+
+    // BombDisarm (+0x16E): test target flag bit 1, then the ObjectClass
+    // AttachedBomb pointer at +0x38 and call its existing Disarm method.
+    // Native 4699C4 reloads WH at this dispatch continuation.
+    warhead = static_cast<WarheadTypeClass*>(WH);
+    if (warhead->BombDisarm) {
+        AbstractClass* target = Target;
+        if (target != 0 && target->Flags.unknown_14_1) {
+            UnInitBomb* bomb =
+                static_cast<UnInitBomb*>(
+                    static_cast<ObjectClass*>(target)->AttachedBomb);
+            if (bomb != 0)
+                bomb->Disarm();
+        }
+        goto common_impact_tail;
+    }
+
+    // MakesDisguise (+0x175): Owner slot 283, DisguiseAs(Target). Target is
+    // passed as-is, including null; the return value is ignored.
+    if (warhead->MakesDisguise) {
+        if (Owner != 0)
+            Owner->DisguiseAs(Target);
+        goto common_impact_tail;
+    }
+
+    if (warhead->NukeMaker) {
+        FUN_0046B310(); // BulletClass receiver, no stack arguments
+        goto common_impact_tail;
+    }
+
+    if (Type->ShrapnelWeapon != 0)
+        FUN_0046A310(); // BulletClass receiver, no stack arguments
+
+    const int damage = (DamageMultiplier * Health) >> 8;
+    HouseClass* ownerHouse = Owner != 0 ? Owner->Owner : 0;
+
+    // Native /Gr fastcall transport: ECX=impact, EDX=damage, then stack args
+    // Owner, Warhead, 1, House. This call reads the integer status in EAX.
+    const int result = FUN_00489280(
+        impact, damage, Owner, static_cast<WarheadTypeClass*>(WH), 1,
+        ownerHouse);
+    areaDamageResult = result;
+    if (!IsAlive)
+        return; // native 0x46A290 epilogue; RET 4 caller cleanup.
+    if (result == 2)
+        impactSpecialResult = true;
+    goto common_impact_tail;
+
+
+// Shared impact continuation beginning at native 0x469AA4.
+    } // feature dispatch
+common_impact_tail:
+    const CoordStruct impactBase = *impact;
+    CoordStruct impactPosition = impactBase;
+    if (Type->unknown_29E) {
+        // 0x49F420: output in ECX, base in EDX, stack args (0x20, 0).
+        FUN_0049F420(&impactPosition, &impactBase, 0x20, 0);
+    }
+
+    int impactCellKind = -1;
+    if (vf_114() < DAT_0089DE70 * 2) {
+        CellClass* impactCell = Map_0087F7E8.FUN_00565730(Location);
+        impactCellKind = impactCell->LandType;
+        if (impactCellKind == 2 && areaDamageResult == 0) {
+            CellClass* sameImpactCell =
+                Map_0087F7E8.FUN_00565730(Location);
+            AbstractClass* firstObject =
+                static_cast<AbstractClass*>(sameImpactCell->FirstObject);
+            if (firstObject != 0 && firstObject->vf_11() == 1) {
+                // Unit RTTI is primary table 0x7F5C70; its slot 11 target
+                // 0x746E20 returns 1. AircraftClass's corresponding slot
+                // returns 2, so the native comparison justifies this cast.
+                UnitClass* unit = static_cast<UnitClass*>(firstObject);
+                UnitTypeClass* unitType =
+                    static_cast<UnitTypeClass*>(unit->Type);
+                if (unitType->Naval && !unitType->Underwater)
+                    impactCellKind = -1;
+            }
+        }
+    }
+
+    // Native copies Bullet.Location into a separate, by-reference local for
+    // the selector call. The selector's native call ABI is ECX=Health,
+    // EDX=Warhead, stack (selected index, CoordStruct*), RET 8.
+    const CoordStruct bulletLocation = Location;
+    WarheadTypeClass* impactWarhead =
+        static_cast<WarheadTypeClass*>(WH); // native reload @0x469BC4
+    AnimTypeClass* selectedImpactAnimation =
+        FUN_0048A4F0(Health, impactWarhead, impactCellKind, &bulletLocation);
+
+    // Special area-damage result branches to 0x46A2A1 regardless of Bright.
+    // It creates Rules+0x350's animation and returns before ordinary weapon
+    // effects, selected-impact allocation, or the debris tail.
+    if (impactSpecialResult) {
+        AnimTypeClass* specialAnimation = Rules->unknown_350;
+        if (specialAnimation == 0)
+            return;
+        new AnimClass(specialAnimation, impactPosition, 0, 1, 0x2600,
+            FUN_0048ACE0(impactPosition.X, impactPosition.Y,
+                         impactPosition.Z), false);
+        return;
+    }
+
+    // The weapon effect is only emitted when Bright is set and the preceding
+    // area-damage result was not 2. CoordStruct is passed by value (three
+    // DWORDs) to 0x48A620; the remaining stack args are 1 and the three-bit
+    // warhead disable mask.
+    if (Bright) {
+        WarheadTypeClass* effectWarhead =
+            static_cast<WarheadTypeClass*>(WH); // native reload @0x469BF0
+        unsigned int disableMask = 0;
+        if (effectWarhead->CLDisableRed)
+            disableMask |= 2;
+        if (effectWarhead->CLDisableGreen)
+            disableMask |= 4;
+        if (effectWarhead->CLDisableBlue)
+            disableMask |= 8;
+        FUN_0048A620(Health, effectWarhead, impactPosition, 1, disableMask);
+    }
+
+    if (selectedImpactAnimation != 0) {
+        // The native heap-failure branch is observable: when the 0x1C8-byte
+        // AnimClass allocation fails, it conditionally emits the cell-center
+        // fallback only for the Rules Warhead at +0xF8C.
+        AnimClass* animation = new AnimClass(
+            selectedImpactAnimation,
+            impactPosition, 0, 1, 0x2600,
+            FUN_0048ACE0(impactPosition.X, impactPosition.Y,
+                         impactPosition.Z), false);
+        if (animation == 0 &&
+            static_cast<WarheadTypeClass*>(WH) == Rules->unknown_F8C) {
+            int color = -1;
+            if (Owner != 0)
+                color = Owner->Owner->Type->ArrayIndex2;
+
+            // Native signed rounding to cell coordinates is (v + 255 when
+            // negative) >> 8, then truncation to a 16-bit cell component.
+            CellStruct fallbackCell;
+            fallbackCell.X = static_cast<short>(
+                (impactPosition.X + (impactPosition.X < 0 ? 255 : 0)) >> 8);
+            fallbackCell.Y = static_cast<short>(
+                (impactPosition.Y + (impactPosition.Y < 0 ? 255 : 0)) >> 8);
+            // 0x4251F0 is a /Gr free function: color in ECX and CellStruct*
+            // in EDX. The retained canonical API spells these two arguments.
+            FUN_004251F0(color, &fallbackCell.X);
+        }
+    }
+
+    // Native fall-through boundary: 0x469D06 loads Type+0x1C4 and begins the
+    // debris-count loop. That complete remainder is the next source slice.
+
+// Exact native range 0x469D06..0x46A302; all returns clean the one caller
+// coordinate argument with RET 4 at 0x46A296 or 0x46A301.
+debris_phase_469d06:
+    WarheadTypeClass* debrisWarhead =
+        static_cast<WarheadTypeClass*>(WH); // native reload at 0x469D06
+    if (debrisWarhead->MaxDebris > 0) {
+        int remainingDebris = DAT_00A8B230->unknown_0218.RandomRanged(
+            debrisWarhead->MinDebris, debrisWarhead->MaxDebris - 1);
+        debrisWarhead = static_cast<WarheadTypeClass*>(WH);
+        int debrisTypeCount = debrisWarhead->DebrisTypes.Count;
+
+        if (debrisTypeCount > 0 && remainingDebris > 0) {
+            int debrisTypeIndex = 0;
+            while (remainingDebris > 0) {
+                int* maximums = debrisWarhead->DebrisMaximums.Items;
+                const int randomValue = DAT_00A8B230->unknown_0218.Random();
+                const int perTypeMaximum = maximums[debrisTypeIndex];
+                const unsigned int randomBits =
+                    static_cast<unsigned int>(randomValue);
+                const int absoluteRandom = randomValue < 0
+                    ? static_cast<int>(0u - randomBits) : randomValue;
+                int selectedCount = absoluteRandom % (perTypeMaximum + 1);
+                if (selectedCount >= remainingDebris)
+                    selectedCount = remainingDebris;
+
+                int allocationsLeft = selectedCount;
+                while (allocationsLeft > 0) {
+                    // Native 469D99..469DAA allocates before touching WH's
+                    // list. Only success captures the element ADDRESS at
+                    // 469DAC..469DC1; its VALUE is read after vf_18 at469DCF.
+                    // Keeping that address across the callback is observable
+                    // if the callback changes either the list or its entry.
+                    void* debrisStorage = ::operator new(sizeof(VoxelAnimClass));
+                    if (debrisStorage != 0) {
+                        const VoxelAnimTypeClass* const* debrisSlot =
+                            &static_cast<WarheadTypeClass*>(WH)->
+                                DebrisTypes.Items[debrisTypeIndex];
+                        const CoordStruct debrisPosition = vf_18();
+                        new (debrisStorage) VoxelAnimClass(
+                            *debrisSlot, debrisPosition, 0);
+                    }
+                    --allocationsLeft;
+                }
+
+                remainingDebris -= selectedCount;
+                debrisWarhead = static_cast<WarheadTypeClass*>(WH);
+                debrisTypeCount = debrisWarhead->DebrisTypes.Count;
+                ++debrisTypeIndex;
+                if (debrisTypeIndex >= debrisTypeCount)
+                    debrisTypeIndex = 0;
+            }
+        }
+
+        // If there are no typed debris entries, fill the remaining count with
+        // one of Rules+0x140's animation types. Native allocates before asking
+        // for the coordinate or advancing the randomizer.
+        debrisWarhead = static_cast<WarheadTypeClass*>(WH);
+        debrisTypeCount = debrisWarhead->DebrisTypes.Count;
+        if (debrisTypeCount == 0 && remainingDebris > 0) {
+            do {
+                void* storage = ::operator new(sizeof(AnimClass));
+                if (storage != 0) {
+                    CoordStruct animationPosition = vf_18();
+                    animationPosition.Z += 0x14;
+                    const int animationIndex =
+                        DAT_00A8B230->unknown_0218.RandomRanged(
+                            0, Rules->unknown_14C - 1);
+                    new (storage) AnimClass(
+                        Rules->unknown_140[animationIndex],
+                        animationPosition, 0, 1, 0x600, 0, false);
+                }
+                --remainingDebris;
+            } while (remainingDebris != 0);
+        }
+    }
+
+    // Native 469ECE captures the INI AirburstWeapon pointer once. Its
+    // WeaponTypeClass identity is proved by the loader/factory/RTTI chain.
+    if (Type->unknown_294) {
+        WeaponTypeClass* effectConfig = Type->AirburstWeapon;
+        BulletTypeClass* extraType = effectConfig->Projectile;
+        CellClass* originalCell = vf_111();
+
+        // The native loop advances an independent 3-bit phase and performs
+        // eight CoCreateInstance attempts. A successful HRESULT is followed
+        // by the setter unconditionally; the pointer null check occurs only
+        // after that call in the retail instruction stream.
+        int attemptsLeft = 8;
+        int phase = 0;
+        do {
+            // Native 469EF6..469F43 selects the next neighbor and snapshots
+            // setter arguments before each COM callback, not before the loop.
+            CellClass* neighboringCell = originalCell->FUN_00481810(phase);
+            const int originalHealth = effectConfig->Damage;
+            WarheadTypeClass* originalWarhead = effectConfig->Warhead;
+            TechnoClass* originalOwner = Owner;
+            phase = (phase + 1) & 7;
+            BulletClass* createdBullet = 0;
+            const HRESULT createResult = CoCreateInstance(
+                *reinterpret_cast<const CLSID*>(rclsid_007E96E0), 0, 7,
+                *reinterpret_cast<const IID*>(riid_007F7C90),
+                reinterpret_cast<void**>(&createdBullet));
+            if (createResult >= 0) {
+                createdBullet->FUN_004664C0(
+                    extraType, neighboringCell, originalOwner, originalHealth,
+                    originalWarhead, 0x32, 0);
+
+                if (createdBullet != 0) {
+                    const int randomDirection =
+                        DAT_00A8B230->unknown_0218.RandomRanged(0, 0x20);
+                    const int magnitude =
+                        effectConfig->Speed / 10;
+                    const short phaseWord = static_cast<short>(
+                        static_cast<unsigned short>(randomDirection) << 8);
+                    const double azimuth =
+                        (static_cast<int>(phaseWord) - 0x3FFF) *
+                        DAT_007E2810;
+                    const double elevation = 4.712436918747274;
+
+                    // Native components are assembled in this order:
+                    // sin(azimuth), cos(elevation), cos(azimuth),
+                    // cos(elevation), sin(elevation). BulletVelocity is the
+                    // canonical three-double value passed by reference.
+                    const double sinAzimuth = FUN_004CACB0(azimuth);
+                    const double y = FUN_004CAD00(elevation) *
+                        sinAzimuth * magnitude;
+                    const double cosAzimuth = FUN_004CAD00(azimuth);
+                    const double x = FUN_004CAD00(elevation) *
+                        cosAzimuth * magnitude;
+                    const double z = FUN_004CACB0(elevation) * magnitude;
+                    BulletVelocity velocity;
+                    velocity.X = x;
+                    velocity.Y = y;
+                    velocity.Z = z;
+                    const CoordStruct launchPosition = Location;
+                    createdBullet->vf_124(launchPosition, velocity);
+                }
+            }
+
+            --attemptsLeft;
+        } while (attemptsLeft != 0);
+
+        // The ninth object targets the original cell, not its neighbor. These
+        // config/owner values are reloaded after the eight COM callbacks as in
+        // the native sequence at 0x46A0EE..0x46A150.
+        // Native 46A0EE..46A117 snapshots these before CoCreateInstance.
+        const int finalHealth = effectConfig->Damage;
+        WarheadTypeClass* finalWarhead = effectConfig->Warhead;
+        TechnoClass* finalOwner = Owner;
+        BulletClass* finalBullet = 0;
+        const HRESULT finalCreateResult = CoCreateInstance(
+            *reinterpret_cast<const CLSID*>(rclsid_007E96E0), 0, 7,
+            *reinterpret_cast<const IID*>(riid_007F7C90),
+            reinterpret_cast<void**>(&finalBullet));
+        if (finalCreateResult >= 0) {
+            finalBullet->FUN_004664C0(
+                extraType, originalCell, finalOwner, finalHealth,
+                finalWarhead, 0x32, 0);
+
+            if (finalBullet != 0) {
+                const int randomDirection =
+                    DAT_00A8B230->unknown_0218.RandomRanged(0, 0x20);
+                const int magnitude =
+                    effectConfig->Speed / 10;
+                const short phaseWord = static_cast<short>(
+                    static_cast<unsigned short>(randomDirection) << 8);
+                const double azimuth =
+                    (static_cast<int>(phaseWord) - 0x3FFF) * DAT_007E2810;
+                const double elevation = 4.712436918747274;
+                const double sinAzimuth = FUN_004CACB0(azimuth);
+                const double y = FUN_004CAD00(elevation) *
+                    sinAzimuth * magnitude;
+                const double cosAzimuth = FUN_004CAD00(azimuth);
+                const double x = FUN_004CAD00(elevation) *
+                    cosAzimuth * magnitude;
+                const double z = FUN_004CACB0(elevation) * magnitude;
+                BulletVelocity velocity;
+                velocity.X = x;
+                velocity.Y = y;
+                velocity.Z = z;
+                const CoordStruct launchPosition = Location;
+                finalBullet->vf_124(launchPosition, velocity);
+            }
+        }
+    }
+
+    return; // native epilogue 0x46A290..0x46A301; caller cleanup is RET 4.
+}
 
 // FUNCTION: GAMEMD 0x46A310
 // The entry and all call contracts are documented in the private binary review.
