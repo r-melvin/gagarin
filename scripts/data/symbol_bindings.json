@@ -325,6 +325,7 @@
  "??_7?$DynamicVectorClass@UHSVClass@@@@6B@": "0x007EF750",
  "??_7?$DynamicVectorClass@UPoint2D@@@@6B@": "0x7EEB54",
  "??_7?$DynamicVectorClass@URGBClass@@@@6B@": "0x007F022C",
+ "??_7?$DynamicVectorClass@USubzoneConnectionStruct@@@@6B@": "0x7ED5A0",
  "??_7?$DynamicVectorClass@VCell@@@@6B@": "0x7E3890",
  "??_7?$DynamicVectorClass@VRGBClass@@@@6B@": "0x007F022C",
  "??_7?$DynamicVectorClass@VSwizzlePointerClass@@@@6B@": "0x007F4134",

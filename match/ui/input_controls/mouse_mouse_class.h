@@ -61,8 +61,8 @@ extern MouseCursorTimer MouseTimer;
 // FUNCTION: GAMEMD 0x4A38D0 (decl; reloc) - FileSystem::LoadWholeFileEx, __fastcall (name in ECX, flag byte in EDX).
 void* FUN_004A38D0(const char* name, char* flag);
 
-// The MapClass containers Load rebuilds (MapVectorView, MapBucketTable, MapWordEntry, MapOwned) are declared in
-// ui_display_chain.h with the class chain.
+// The MapClass containers Load rebuilds (canonical vector specializations, MapBucketTable and MapWordEntry) are
+// declared in ui_display_chain.h with the class chain.
 
 // An element the cell iteration (MapClass 0x578290) yields: an IPersistStream-fronted object whose +0x24 holds a
 // packed cell.

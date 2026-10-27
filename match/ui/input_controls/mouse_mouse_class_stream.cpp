@@ -6,8 +6,24 @@
 //   OleSaveToStream through the import at 0x7E15F4.
 
 #include <new.h>
+#include <string.h>
+#include "../../_layout/cell_class.h"
+#include "../../core/pair_vector_ctor_family_methods.h"
 #include "../../_layout/swizzle_manager_class.h"
 #include "mouse_mouse_class.h"
+
+// The stream stores a 0x10-byte value record. Its in-memory vector element is
+// ZoneConnectionClass; this temporary represents only the serialized fields.
+struct MapSaveItem
+{
+    CellStruct a;
+    CellStruct b;
+    unsigned char c;
+    int d;
+};
+GG_STATIC_ASSERT(offsetof(MapSaveItem, c) == 0x08);
+GG_STATIC_ASSERT(offsetof(MapSaveItem, d) == 0x0C);
+GG_STATIC_ASSERT(sizeof(MapSaveItem) == 0x10);
 
 // SYNTHETIC: GAMEMD 0x40D290
 // MouseClass scalar deleting destructor, emitted from the inline destructor (partial; see mouse_mouse_class.h).
@@ -103,7 +119,7 @@ long MouseClass::vf_30(IStream* stream)
     for (i = 1; i < 4; i++) {
         int scale = 1 << i;
         Rings[i - 1].Clear();
-        Rings[i - 1].Growth = (MapRect.Width * MapRect.Height * 4) / (scale * scale);
+        Rings[i - 1].CapacityIncrement = (MapRect.Width * MapRect.Height * 4) / (scale * scale);
         BucketsB[i - 1] = new MapBucketTable<MapBucketB>;
     }
 
@@ -125,7 +141,7 @@ long MouseClass::vf_30(IStream* stream)
     {
         int n;
         for (n = 0; n < itemCount; n++) {
-            MapSaveItem item = { { 0, 0 }, { 0, 0 }, false, -1 };
+            ZoneConnectionClass item;
             hr = stream->Read(&item, 0x10, 0);
             if (hr < 0)
                 return hr;
@@ -158,7 +174,7 @@ long MouseClass::vf_30(IStream* stream)
     {
         int n;
         for (n = 0; n < count; n++) {
-            CellStruct cell;
+            Cell cell;
             hr = stream->Read(&cell, 4, 0);
             if (hr < 0)
                 return hr;
@@ -172,7 +188,7 @@ long MouseClass::vf_30(IStream* stream)
     {
         int n;
         for (n = 0; n < count; n++) {
-            int value;
+            Cell value;
             hr = stream->Read(&value, 4, 0);
             if (hr < 0)
                 return hr;
@@ -228,12 +244,12 @@ long MouseClass::vf_31(IStream* stream)
         return hr;
 
     for (i = 0; i < itemCount; i++) {
-        const MapSaveItem& source = SaveItems.Items[i];
+        const ZoneConnectionClass& source = SaveItems.Items[i];
         MapSaveItem item;
-        item.a = source.a;
-        item.b = source.b;
-        item.c = source.c;
-        item.d = source.d;
+        memcpy(&item.a, &source.unknown_00, 4);
+        memcpy(&item.b, &source.unknown_04, 4);
+        item.c = source.unknown_08;
+        item.d = source.unknown_0C;
         hr = stream->Write(&item, 0x10, 0);
         if (hr < 0)
             return hr;

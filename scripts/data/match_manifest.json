@@ -57794,7 +57794,7 @@
   "len": "0x964",
   "name": "DisplayClass::vf_32",
   "status": "partial",
-  "pct": 30.0
+  "pct": 42.1
  },
  {
   "tu": "match/ui/input_controls/Display.cpp",
@@ -58514,7 +58514,7 @@
   "len": "0x752",
   "name": "MouseClass::vf_30",
   "status": "partial",
-  "pct": 84.8
+  "pct": 84.1
  },
  {
   "tu": "match/ui/input_controls/mouse_mouse_class_stream.cpp",
@@ -99576,6 +99576,24 @@
   "sym": "?vf_33@TechnoTypeClass@@UAEHPAVHouseClass@@@Z",
   "len": "0x60",
   "name": "TechnoTypeClass::vf_33",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/map/map_class_lifecycle_methods.cpp",
+  "addr": "0x5652C0",
+  "sym": "??1MapClass@@UAE@XZ",
+  "len": "0x1ad",
+  "name": "MapClass::~MapClass",
+  "status": "partial",
+  "pct": 40.6
+ },
+ {
+  "tu": "match/map/map_class_lifecycle_methods.cpp",
+  "addr": "0x589BD0",
+  "sym": "??0SubzoneTrackingStruct@@QAE@XZ",
+  "len": "0x38",
+  "name": "SubzoneTrackingStruct::SubzoneTrackingStruct",
   "status": "matched",
   "pct": 100.0
  }

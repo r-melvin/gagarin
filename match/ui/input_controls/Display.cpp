@@ -23,6 +23,7 @@
 
 #include "../../_layout/object_class.h"
 #include "../../_layout/house_class.h"
+#include "../../_layout/cell.h"
 #include "../../core/leftover_trivial_leaf_sweep.h"
 
 #include "../../map/map_class_next_object_methods.h"
@@ -1451,7 +1452,7 @@ void DisplayClass::vf_32(DisplayScIni* ini)
             {
                 instance->FUN_006E5560(cell);
                 FUN_005657A0(&cell)->ReplaceTag(instance);
-                CellTags.AddItem(cell);
+                CellTags.AddItem(Cell(cell.X, cell.Y));
             }
         }
     }

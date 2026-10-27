@@ -36,6 +36,8 @@
 #include "../../_layout/geometry2d.h"
 #include "../../core/dynamic_vector_ctor_methods.h"
 #include "../../core/vector_class_operations.h"
+#include "../../core/pair_vector_ctor_family_methods.h"
+#include "../../core/zone_connection_class.h"
 #include "../../core/small_misc2_methods.h"
 #include "../../_layout/elapsed_timer.h"
 
@@ -106,55 +108,31 @@ public:
     virtual int IsActive();                            // 0x5C
 };
 
-// ---- MapClass containers (layout views; DynamicVectorClass shape, sizeof 0x18) ----------------------------------
+// ---- MapClass containers -----------------------------------------------------------------------------------------
 
-template <class T>
-class MapVectorView
+// The SaveItems vector element type is declared canonically in zone_connection_class.h.
+struct SubzoneTrackingStruct
 {
-public:
-    virtual ~MapVectorView();                             // slot 0
-    virtual void vf_01();                                 // slot 1
-    virtual bool SetCapacity(int newCapacity, int arg);   // slot 2 (+0x08)
-    virtual void Clear();                                 // slot 3 (+0x0C)
+    DynamicVectorClass<SubzoneConnectionStruct> unknown_00; // +0x00
+    unsigned short unknown_18;                              // +0x18
+    unsigned char unknown_1A[2];                            // +0x1A
+    int unknown_1C;                                         // +0x1C
+    int unknown_20;                                         // +0x20
 
-    T& operator[](int index) { return Items[index]; }
-
-    // The inline shape of DynamicVectorClass::AddItem: room, or a successful grow, then append.
-    bool AddItem(const T& item)
+    // FUNCTION: GAMEMD 0x589BD0
+    SubzoneTrackingStruct();
+    bool operator==(const SubzoneTrackingStruct& o) const
     {
-        int cap = Capacity;
-        if (Count < cap || ((IsAllocated || cap == 0) && Growth > 0 && SetCapacity(Growth + cap, 0))) {
-            (*this)[Count++] = item;
-            return true;
-        }
-        return false;
+        return unknown_18 == o.unknown_18 && unknown_1C == o.unknown_1C;
     }
-
-    T*   Items;           // +0x04
-    int  Capacity;        // +0x08
-    bool IsInitialized;   // +0x0C
-    bool IsAllocated;     // +0x0D
-    int  Count;           // +0x10
-    int  Growth;          // +0x14
+    bool operator!=(const SubzoneTrackingStruct& o) const { return !(*this == o); }
 };
-GG_STATIC_ASSERT(sizeof(MapVectorView<int>) == 0x18);
-GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Capacity) == 0x08);
-GG_STATIC_ASSERT(offsetof(MapVectorView<int>, IsAllocated) == 0x0D);
-GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Count) == 0x10);
-GG_STATIC_ASSERT(offsetof(MapVectorView<int>, Growth) == 0x14);
-
-// One saved record of the vector at MapClass +0x50.
-struct MapSaveItem
-{
-    CellStruct a;    // +0x00
-    CellStruct b;    // +0x04
-    bool c;          // +0x08
-    int  d;          // +0x0C
-};
-GG_STATIC_ASSERT(offsetof(MapSaveItem, c) == 0x08);
-GG_STATIC_ASSERT(offsetof(MapSaveItem, d) == 0x0C);
-GG_STATIC_ASSERT(sizeof(MapSaveItem) == 0x10);
+GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_18) == 0x18);
+GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_1A) == 0x1A);
+GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_1C) == 0x1C);
+GG_STATIC_ASSERT(offsetof(SubzoneTrackingStruct, unknown_20) == 0x20);
+GG_STATIC_ASSERT(sizeof(SubzoneTrackingStruct) == 0x24);
 
 // Vector-shaped buckets (0x18 bytes, vptr first); both kinds are built by an out-of-line two-argument constructor
 // and carry their growth increment at +0x14.
@@ -226,20 +204,6 @@ struct MapWordEntry
 };
 GG_STATIC_ASSERT(sizeof(MapWordEntry) == 4);
 
-// A pointer-owning object released through slot 8 (`PUSH 1; CALL [vtbl+0x20]`).
-class MapOwned
-{
-public:
-    virtual void vf_00();
-    virtual void vf_01();
-    virtual void vf_02();
-    virtual void vf_03();
-    virtual void vf_04();
-    virtual void vf_05();
-    virtual void vf_06();
-    virtual void vf_07();
-    virtual ~MapOwned();   // slot 8
-};
 
 // ---- GScreenClass ------------------------------------------------------------------------------------------------
 
@@ -287,6 +251,7 @@ GG_STATIC_ASSERT(sizeof(GScreenClass) == 0x10);
 
 // VTABLE: GAMEMD 0x7ED404 (30 slots)
 class CellClass;
+struct SubzoneConnectionStruct;
 struct CoordStruct;
 class DSurface;
 class BSurface;
@@ -326,7 +291,7 @@ public:
                              const CoordStruct& to, HouseClass* house);
 public:
     virtual void vf_03();                    // 3   0x5656D0
-    // The scalar deleting destructor is 0x588BF0; the destructor body is not modelled.
+    // FUNCTION: GAMEMD 0x5652C0 (body); scalar deleting wrapper 0x588BF0.
     virtual ~MapClass();                     // 4   0x588BF0 (??_G)
     virtual void vf_05();                    // 5   0x565800
     virtual void vf_07();                    // 7   0x5659F0
@@ -365,20 +330,24 @@ public:
     MapBucketTable<MapBucketA>* BucketsA;            // +0x0014
     void* Buffers[13];                               // +0x0018 13 tables of BufferShorts 16-bit entries
     int   BufferShorts;                              // +0x004C
-    MapVectorView<MapSaveItem> SaveItems;            // +0x0050
+    DynamicVectorClass<ZoneConnectionClass> SaveItems; // +0x0050
     MapWordEntry* Words;                             // +0x0068
     int   WordCount;                                 // +0x006C
     char* Records;                                   // +0x0070 ten bytes per word
     char  unknown_74[0x80 - 0x74];                   // +0x0074
     MapBucketTable<MapBucketB>* BucketsB[3];         // +0x0080
-    MapVectorView<void*> Rings[3];                   // +0x008C stride 0x18
-    MapVectorView<int> ListA;                        // +0x00D4
+    DynamicVectorClass<SubzoneTrackingStruct> Rings[3]; // +0x008C stride 0x18
+    DynamicVectorClass<Cell> ListA; // +0x00D4
     RectangleStruct MapRect;                         // +0x00EC [Map] Size (its address is the first argument of slot 28)
     RectangleStruct LocalRect;                       // +0x00FC [Map] LocalSize
     char  unknown_10C[0x138 - 0x10C];                // +0x010C
-    MapVectorView<MapOwned*> Owned;                  // +0x0138
-    char  unknown_150[0x115C - 0x150];               // +0x0150
-    MapVectorView<CellStruct> CellTags;              // +0x115C
+    VectorClass<CellClass*> Owned; // +0x0138
+    int unknown_148; // +0x0148
+    int unknown_14C; // +0x014C
+    int unknown_150; // +0x0150
+    int unknown_154; // +0x0154
+    char unknown_158[0x115C - 0x158]; // +0x0158
+    DynamicVectorClass<Cell> CellTags; // +0x115C
 };
 GG_STATIC_ASSERT(offsetof(MapClass, BucketsA) == 0x14);
 GG_STATIC_ASSERT(offsetof(MapClass, Buffers) == 0x18);
@@ -393,7 +362,16 @@ GG_STATIC_ASSERT(offsetof(MapClass, ListA) == 0xD4);
 GG_STATIC_ASSERT(offsetof(MapClass, MapRect) == 0xEC);
 GG_STATIC_ASSERT(offsetof(MapClass, LocalRect) == 0xFC);
 GG_STATIC_ASSERT(offsetof(MapClass, Owned) == 0x138);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_148) == 0x148);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_14C) == 0x14C);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_150) == 0x150);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_154) == 0x154);
+GG_STATIC_ASSERT(offsetof(MapClass, unknown_158) == 0x158);
 GG_STATIC_ASSERT(offsetof(MapClass, CellTags) == 0x115C);
+GG_STATIC_ASSERT(sizeof(VectorClass<CellClass*>) == 0x10);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<ZoneConnectionClass>) == 0x18);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<SubzoneTrackingStruct>) == 0x18);
+GG_STATIC_ASSERT(sizeof(DynamicVectorClass<Cell>) == 0x18);
 GG_STATIC_ASSERT(sizeof(MapClass) == 0x1174);
 
 // ---- DisplayClass ------------------------------------------------------------------------------------------------
