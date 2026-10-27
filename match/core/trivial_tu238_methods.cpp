@@ -21,6 +21,8 @@
 extern int DAT_00A8B238;
 // GLOBAL: GAMEMD 0xA83D4C — current House/player pointer (HouseClass*).
 extern HouseClass* DAT_00A83D4C;
+// GLOBAL: GAMEMD 0xA8EB00
+extern DynamicVectorClass<TechnoTypeClass*> DAT_00A8EB00;
 
 // FUNCTION: GAMEMD 0x711E90
 bool TechnoTypeClass::vf_41()
@@ -472,4 +474,51 @@ int TechnoTypeClass::vf_47()
         return RulesInstance->unknown_7B4;
     }
     return FlightLevel;
+}
+
+// FUNCTION: GAMEMD 0x717820
+void TechnoTypeClass::FUN_00717820()
+{
+    if (PaletteFile[0] != 0) {
+        Palette = FUN_006263D0(PaletteFile);
+    }
+}
+
+// FUNCTION: GAMEMD 0x717840
+void FUN_00717840()
+{
+    int count = DAT_00A8EB00.Count;
+    int index = 0;
+    if (count > 0) {
+        do {
+            TechnoTypeClass** items = DAT_00A8EB00.Items;
+            TechnoTypeClass* type = items[index];
+            if (type->PaletteFile[0] != 0) {
+                type->Palette = FUN_006263D0(type->PaletteFile);
+            }
+            count = DAT_00A8EB00.Count;
+            ++index;
+        } while (index < count);
+    }
+}
+
+// FUNCTION: GAMEMD 0x717890
+void TechnoTypeClass::FUN_00717890(int value, int index)
+{
+    TurretWeapon[index] = value;
+}
+
+// FUNCTION: GAMEMD 0x7178B0
+int TechnoTypeClass::FUN_007178B0(int index)
+{
+    return TurretWeapon[index];
+}
+
+// FUNCTION: GAMEMD 0x7179D0
+AbilitiesStruct AbilitiesStruct::FUN_007179D0(const AbilitiesStruct& source)
+{
+    if (this != &source) {
+        *this = source;
+    }
+    return *this;
 }

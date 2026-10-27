@@ -99740,5 +99740,50 @@
   "name": "RadarClass::vf_34",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x717820",
+  "sym": "?FUN_00717820@TechnoTypeClass@@QAEXXZ",
+  "len": "0x20",
+  "name": "TechnoTypeClass::FUN_00717820",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x717840",
+  "sym": "?FUN_00717840@@YIXXZ",
+  "len": "0x3d",
+  "name": "?FUN_00717840@@YIXXZ",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x717890",
+  "sym": "?FUN_00717890@TechnoTypeClass@@QAEXHH@Z",
+  "len": "0x12",
+  "name": "TechnoTypeClass::FUN_00717890",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x7178B0",
+  "sym": "?FUN_007178B0@TechnoTypeClass@@QAEHH@Z",
+  "len": "0xe",
+  "name": "TechnoTypeClass::FUN_007178B0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x7179D0",
+  "sym": "?FUN_007179D0@AbilitiesStruct@@QAE?AU1@ABU1@@Z",
+  "len": "0x51",
+  "name": "AbilitiesStruct::FUN_007179D0",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

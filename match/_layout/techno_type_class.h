@@ -130,6 +130,12 @@ public:
     WeaponStruct* GetWeapon(int index);
     // FUNCTION: GAMEMD 0x7177E0 (decl; reloc) -- the elite weapon in slot `index`.
     WeaponStruct* GetEliteWeapon(int index);
+    // Declaration: GAMEMD 0x717820; resolve this type's PaletteFile if set.
+    void FUN_00717820();
+    // Declaration: GAMEMD 0x717890; indexed TurretWeapon store.
+    void FUN_00717890(int value, int index);
+    // Declaration: GAMEMD 0x7178B0; indexed TurretWeapon load.
+    int FUN_007178B0(int index);
     virtual bool vf_40();                                                 // 40
     virtual bool vf_41();                                                 // 41
     // Slots 42-47, introduced by TechnoTypeClass (48 slots in all; retail table 0x7F4ED8).
@@ -489,8 +495,13 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_D20)         == 0xD20);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Enslaves)          == 0xD40);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, SecondSpawnOffset) == 0xDB0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PaletteFile)       == 0xDD0);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->PaletteFile) == 0x20);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Palette)           == 0xDF0);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Palette) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_DF4)         == 0xDF4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TurretWeapon) == 0x814);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->TurretWeapon[0]) == 4);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->TurretWeapon) == 0x48);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, FlightLevel) == 0x618);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PreventAttackMove) == 0x6C8);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PipScale) == 0x3D4);

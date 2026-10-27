@@ -38,8 +38,12 @@ GG_STATIC_ASSERT(sizeof(VoxelStruct)              == 8);
 struct AbilitiesStruct
 {
     unsigned char _raw[0x12];   // +0x00..0x11
+
+    // Declaration: GAMEMD 0x7179D0; returns this 0x12-byte block by value.
+    AbilitiesStruct FUN_007179D0(const AbilitiesStruct& source);
 };
 
+GG_STATIC_ASSERT(offsetof(AbilitiesStruct, _raw) == 0x00);
 GG_STATIC_ASSERT(sizeof(AbilitiesStruct) == 0x12);
 
 // IndexClass — key->index hash/lookup object (size = 0x14, independent
