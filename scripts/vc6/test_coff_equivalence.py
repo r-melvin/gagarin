@@ -123,6 +123,45 @@ class FoldTests(unittest.TestCase):
         self.assertEqual(rows['_alias'][1], 0)
         self.assertGreater(rows['__dead'][1], 0)
 
+    def duplicate_plan(self, second_code, alias_code):
+        p = self.obj('p.obj', '_provider')
+        q = self.obj('q.obj', '_provider', second_code)
+        a = self.obj('a.obj', '_alias', alias_code)
+        (self.root / 'objects.json').write_text(json.dumps({'objects': [
+            {'source': n + '.cpp', 'object': path.name}
+            for n, path in [('p', p), ('q', q), ('a', a)]]}))
+        return stubgen.plan(self.root, set(), self.root / 'out',
+            manifest=[{'tu': n + '.cpp', 'addr': addr, 'sym': '_provider',
+                       'len': '0x6', 'status': 'matched'}
+                      for n, addr in [('p', '0x401000'), ('q', '0x401010')]],
+            extents=[[addr, '0x6', '0xA', 'nop', 'engine', []]
+                     for addr in ['0x401000', '0x401010']],
+            symbol_bindings={'_alias': '0x401010', '_target': '0x402000'})
+
+    def test_duplicate_provider_alias_uses_row_specific_definition(self):
+        # The original spelling is shared, but only q.obj is renamed to the
+        # second address. Its body must be the one used for equivalence.
+        code = b'\xe8\0\0\0\0\x90'
+        result = self.duplicate_plan(code, code)
+        fold, = result['collocated_comdats']
+        self.assertEqual(fold['provider'], '?dup_00401010@@YAXXZ')
+        path = self.root / 'out/objects/q.obj'
+        self.assertIn('?dup_00401010@@YAXXZ',
+                      {n for _, n, *_ in coffgen.read_symbols(path.read_bytes())})
+        data = (self.root / 'out/stubs.obj').read_bytes()
+        rows = {n: (i, scl) for i, n, _, _, scl, _ in coffgen.read_symbols(data)}
+        self.assertEqual(rows['_alias'][1], 105)
+        symptr = struct.unpack_from('<I', data, 8)[0]
+        default = struct.unpack_from('<I', data, symptr + 18 * (rows['_alias'][0] + 1))[0]
+        self.assertEqual(default, rows['?dup_00401010@@YAXXZ'][0])
+
+    def test_duplicate_provider_does_not_use_first_address_body(self):
+        result = self.duplicate_plan(b'\xe8\0\0\0\0\x90',
+                                     b'\xe8\0\0\0\0\xc3')
+        self.assertFalse(result['collocated_comdats'])
+        self.assertEqual(result['collocated_comdats_rejected'][0]['provider'],
+                         '?dup_00401010@@YAXXZ')
+
 
 if __name__ == '__main__':
     unittest.main()

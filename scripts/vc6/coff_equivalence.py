@@ -56,20 +56,26 @@ def fingerprint(path, name, extent, address, bindings, cache):
     return bytes(raw), tuple(relocations)
 
 
-def plan_folds(providers, defined_in, bindings):
+def plan_folds(providers, defined_in, bindings, provider_definitions=None):
     """Return object renames and evidence for explicit same-address aliases.
 
     Every candidate and provider definition must agree, since LINK can select
     any COMDAT. Ambiguity fails closed and leaves the existing plan unchanged.
     providers maps an address to (matched symbol, full validated byte extent).
+    For a row-specific renamed duplicate, provider_definitions supplies its
+    original COFF symbol and the objects whose definitions will receive that
+    public provider name. Fingerprints still use the unmodified build objects.
     """
     renames, accepted, rejected, cache = {}, [], [], {}
+    provider_definitions = provider_definitions or {}
     provider_names = {sym for sym, _ in providers.values()}
     for alias, (address, source) in sorted(bindings.items()):
         if source != 'symbol_bindings' or address not in providers or alias in provider_names or alias not in defined_in:
             continue
         provider, extent = providers[address]
-        if provider not in defined_in:
+        definition, provider_paths = provider_definitions.get(
+            address, (provider, defined_in.get(provider, [])))
+        if not provider_paths:
             continue
         # Weak externals already resolve through LINK; only strong code is folded.
         paths = []
@@ -89,9 +95,9 @@ def plan_folds(providers, defined_in, bindings):
         try:
             if competing_definition:
                 raise VerifyError('candidate also has a weak or common definition')
-            proof = fingerprint(defined_in[provider][0], provider, extent, address, bindings, cache)
-            for path in defined_in[provider]:
-                if fingerprint(path, provider, extent, address, bindings, cache) != proof:
+            proof = fingerprint(provider_paths[0], definition, extent, address, bindings, cache)
+            for path in provider_paths:
+                if fingerprint(path, definition, extent, address, bindings, cache) != proof:
                     raise VerifyError('provider definitions differ')
             for path in paths:
                 if fingerprint(path, alias, extent, address, bindings, cache) != proof:

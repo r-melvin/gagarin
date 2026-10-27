@@ -196,6 +196,7 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
     for r in manifest:
         by_addr.setdefault(hx(r["addr"]), []).append(r)
     provider = {}
+    provider_rows = {}
     own_rename = {}   # object path -> {old: new} (with references)
     static_rename = {}
     missing_matched, reused, promoted = [], [], []
@@ -225,13 +226,22 @@ def plan(objdir, library_names, out, extra_unresolved=(), manifest=None, extents
                 missing_matched.append({"addr": f"0x{va:X}", "symbol": sym})
                 continue
             used.add(sym)
+            provider_rows[va] = r
             break
 
     # Model explicit same-address COMDAT sharing only after full code and
     # relocation equivalence to an existing matched provider is established.
-    fold_providers = {va: (name, hx(row['len'])) for va, name in provider.items()
-                      for row in by_addr[va] if row['status'] == 'matched' and row['sym'] == name}
-    fold_rename, folded, fold_rejected = plan_folds(fold_providers, defined_in, bindings)
+    fold_providers, fold_definitions = {}, {}
+    for va, name in provider.items():
+        row = provider_rows[va]
+        obj = tu_object.get(row['tu'])
+        if name == row['sym']:
+            fold_providers[va] = (name, hx(row['len']))
+        elif own_rename.get(obj, {}).get(row['sym']) == name:
+            fold_providers[va] = (name, hx(row['len']))
+            fold_definitions[va] = (row['sym'], [obj])
+    fold_rename, folded, fold_rejected = plan_folds(
+        fold_providers, defined_in, bindings, fold_definitions)
     folded_names = {row['symbol'] for row in folded}
 
     # Every name bound to an address that no matched row provides belongs to
