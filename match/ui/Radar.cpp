@@ -779,6 +779,13 @@ void __cdecl FUN_00652910()
 {
 }
 
+// FUNCTION: GAMEMD 0x652C00
+RadarClass::~RadarClass()
+{
+    unknown_14C0.FUN_00405C00();
+    FUN_00655A90();
+}
+
 // FUNCTION: GAMEMD 0x652CD0
 // Stores several members.
 void Obj_00652CD0::FUN_00652CD0()
@@ -1261,6 +1268,37 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
                 RadarBounds.Height = (y - top) + 1;
         }
         node = (RadarTrackNode*)FUN_00578290();
+    }
+}
+
+// FUNCTION: GAMEMD 0x655A90
+void RadarClass::FUN_00655A90()
+{
+    if (unknown_121C != 0) {
+        // RTTI-backed primary bases begin at offset zero. ui_common.h supplies
+        // the existing slot-0 deleting-destructor ABI view; renderer headers
+        // cannot be included here because they redefine that separate view.
+        reinterpret_cast<Surface*>(unknown_121C)->vf_00(1);
+        unknown_121C = 0;
+    }
+    if (unknown_1220 != 0) {
+        reinterpret_cast<Surface*>(unknown_1220)->vf_00(1);
+        unknown_1220 = 0;
+    }
+    if (unknown_123C != 0) {
+        ::operator delete(unknown_123C);
+        unknown_123C = 0;
+    }
+    RadarArrayHolder* holder = unknown_1258;
+    if (holder != 0) {
+        if (holder->items != 0)
+            delete[] holder->items;
+        ::operator delete(holder);
+        unknown_1258 = 0;
+    }
+    if (unknown_1274 != 0) {
+        ::operator delete(unknown_1274);
+        unknown_1274 = 0;
     }
 }
 

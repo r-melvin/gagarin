@@ -99542,5 +99542,32 @@
   "name": "HouseClass::FUN_0050BEB0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/core/small_misc2_methods.cpp",
+  "addr": "0x405C00",
+  "sym": "?FUN_00405C00@Obj_00405B00@@QAEXXZ",
+  "len": "0x13b",
+  "name": "Obj_00405B00::FUN_00405C00",
+  "status": "partial",
+  "pct": 63.4
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x652C00",
+  "sym": "??1RadarClass@@UAE@XZ",
+  "len": "0xcf",
+  "name": "RadarClass::~RadarClass",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x655A90",
+  "sym": "?FUN_00655A90@RadarClass@@QAEXXZ",
+  "len": "0x8e",
+  "name": "RadarClass::FUN_00655A90",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

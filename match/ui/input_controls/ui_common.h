@@ -53,11 +53,13 @@ GG_STATIC_ASSERT(sizeof(Box) == 0x10);
 // The surface behind [0x887314] (and [0x887300]). Slots read in this module: +0x14 (rectangle, colour), +0x58
 // (box, colour), +0x70 (no arguments), +0x78 (returns a rectangle through the hidden return pointer) and +0x7C
 // (no arguments). The lists copy declared +0x14 as returning void; no caller reads the result, the controls
-// copy's int is kept.
+// copy's int is kept. Native deleting-destructor entries 0x411650 and 0x4C1AC0
+// establish slot 0's flags word, returned this pointer, and callee cleanup.
+// This view has no no-argument slot-0 callers.
 class Surface
 {
 public:
-    virtual void vf_00();
+    virtual void* vf_00(unsigned int flags);
     virtual void vf_04();
     virtual void vf_08();
     virtual void HideCursor();             // +0x0C

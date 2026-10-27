@@ -5,6 +5,9 @@
 // Ordered ascending by retail address.
 
 #include "small_misc2_methods.h"
+#include "../audio/audio_stop_methods.h"
+#include "dispatch_state_methods.h"
+#include "leaf_accessor_methods.h"
 
 // FUNCTION: GAMEMD 0x405BE0
 void Obj_00405B00::FUN_00405BE0()
@@ -13,6 +16,45 @@ void Obj_00405B00::FUN_00405BE0()
     unknown_00 = 0;
     unknown_04 = 0;
     unknown_08 = 0;
+}
+
+// FUNCTION: GAMEMD 0x405C00
+void Obj_00405B00::FUN_00405C00()
+{
+    if (DAT_0087E2A0 != 0 && this->unknown_0C == (void*)DAT_0087E294) {
+        Voice_00405D40* voice = this->unknown_00;
+        if (voice != 0) {
+            if (this->unknown_08 == voice->Token && this->unknown_04 == voice->Serial
+                && (voice->Flags & 1) == 0) {
+                Peer_00405D40* peer = voice->Peer;
+                if (peer != 0 && voice == peer->Voice) {
+                    if ((voice->FlagsWord & 2) != 0)
+                        peer->FUN_004025B0();
+                    voice->Peer->FUN_004026F0();
+                    voice->Peer->Voice = 0;
+                    voice->Peer->At_BC = 0;
+                    voice->Peer->At_B4 = 0;
+                    voice->Peer->At_B8 = 0;
+                    voice->Peer->At_90 = 0;
+                    voice->Peer->At_98 = 0;
+                    voice->Peer->At_9C = 0;
+                    voice->Peer = 0;
+                }
+                for (int i = 0; i < voice->SubCount; ++i) {
+                    FUN_00401F90(voice->Subs[i]);
+                    voice->Subs[i] = 0;
+                }
+                voice->SubCount = 0;
+                voice->State = 4;
+                voice->Serial = 0;
+                voice->At_278 = 0;
+                voice->Flags = voice->Flags | 1;
+            }
+            this->unknown_00 = 0;
+        }
+    }
+    this->unknown_08 = 0;
+    this->unknown_0C = 0;
 }
 
 // FUNCTION: GAMEMD 0x406650

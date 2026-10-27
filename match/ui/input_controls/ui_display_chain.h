@@ -288,6 +288,25 @@ GG_STATIC_ASSERT(sizeof(GScreenClass) == 0x10);
 // VTABLE: GAMEMD 0x7ED404 (30 slots)
 class CellClass;
 struct CoordStruct;
+class DSurface;
+class BSurface;
+template<class Key, class Value> struct HashObject;
+struct RadarTrackingStruct;
+class TechnoClass;
+// Address-scoped holder shape established by Radar constructor 0x652960.
+struct RadarArrayHolder
+{
+    // Native element table 0x7F042C and constructor 0x658DE0 identify this array.
+    DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> >* items;
+    void* unknown_04;          // +0x04
+    int unknown_08;            // +0x08
+    int unknown_0C;            // +0x0C
+};
+GG_STATIC_ASSERT(offsetof(RadarArrayHolder, items) == 0x00);
+GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_08) == 0x08);
+GG_STATIC_ASSERT(offsetof(RadarArrayHolder, unknown_0C) == 0x0C);
+GG_STATIC_ASSERT(sizeof(RadarArrayHolder) == 0x10);
 class MapClass : public GScreenClass
 {
 public:
@@ -547,6 +566,8 @@ public:
 
     // FUNCTION: GAMEMD 0x656EC0 (decl; reloc)
     void FUN_00656EC0();
+    // FUNCTION: GAMEMD 0x655A90
+    void FUN_00655A90();
     // FUNCTION: GAMEMD 0x653FA0 (decl; reloc)
     void FUN_00653FA0();
     // FUNCTION: GAMEMD 0x6579E0 (decl; reloc)
@@ -575,12 +596,14 @@ public:
     int unknown_1210;
     int unknown_1214;
     int unknown_1218;
-    void* unknown_121C;
-    void* unknown_1220;
+    DSurface* unknown_121C;                         // +0x121C RTTI .?AVDSurface@@, primary base at 0
+    BSurface* unknown_1220;                         // +0x1220 RTTI .?AVBSurface@@, primary base at 0
     DynamicVectorClass<Cell> unknown_1224;
-    char unknown_123C[0x125C - 0x123C];
+    void* unknown_123C;                             // +0x123C operator-delete allocation
+    char unknown_1240[0x1258 - 0x1240];
+    RadarArrayHolder* unknown_1258;                 // +0x1258 holder for the 256-vector allocation
     DynamicVectorClass<Point2D> unknown_125C;
-    char unknown_1274[4];
+    void* unknown_1274;                             // +0x1274 operator-delete allocation
     DynamicVectorClass<Point2D> unknown_1278[0x16];
     char unknown_1488[8];
     int unknown_1490;                         // +0x1490 [Radar] SetVisibleRect state
@@ -620,8 +643,13 @@ GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1214) == 0x1214);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1218) == 0x1218);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_121C) == 0x121C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1220) == 0x1220);
+GG_STATIC_ASSERT(sizeof(DSurface*) == 4);
+GG_STATIC_ASSERT(sizeof(BSurface*) == 4);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1224) == 0x1224);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_123C) == 0x123C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1258) == 0x1258);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_125C) == 0x125C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1274) == 0x1274);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1278) == 0x1278);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14C0) == 0x14C0);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1490) == 0x1490);

@@ -29,6 +29,8 @@ const char* FUN_00473960(unsigned int index);
 
 #include "flag_object_00407100.h"
 
+struct Voice_00405D40;
+
 struct Obj_004072D0
 {
     void* a;   // +0x0000
@@ -41,15 +43,21 @@ struct Obj_004072D0
 
 struct Obj_00405B00
 {
-    int   unknown_00;  // +0x0000
+    Voice_00405D40* unknown_00;  // +0x0000
     int   unknown_04;  // +0x0004
-    int   unknown_08;  // +0x0008
+    void* unknown_08;  // +0x0008
     char* unknown_0C;  // +0x000C
 
     // FUNCTION: GAMEMD 0x405BE0
     void FUN_00405BE0();
+    // FUNCTION: GAMEMD 0x405C00
+    void FUN_00405C00();
 };
+GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_00) == 0x0);
+GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_04) == 0x4);
+GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_08) == 0x8);
 GG_STATIC_ASSERT(offsetof(Obj_00405B00, unknown_0C) == 0xC);
+GG_STATIC_ASSERT(sizeof(Obj_00405B00) == 0x10);
 
 // Callee-cleanup: no `ADD ESP` after the call, so __stdcall.
 void __stdcall FUN_00432E40(int a, int b, int c);
