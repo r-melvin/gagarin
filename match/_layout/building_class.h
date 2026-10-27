@@ -301,6 +301,7 @@ public:
 };
 
 GG_STATIC_ASSERT(offsetof(BuildingClass, Type)                == 0x520);
+GG_STATIC_ASSERT(sizeof(((BuildingClass*)0)->Type)               == 4);
 GG_STATIC_ASSERT(offsetof(BuildingClass, Factory)             == 0x524);
 GG_STATIC_ASSERT(offsetof(BuildingClass, C4Timer)             == 0x528);
 // 0x4513DA reads this byte at +0x6E4.

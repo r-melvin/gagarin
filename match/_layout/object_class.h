@@ -97,6 +97,9 @@ public:
     int GetCellLevel() const;
     // FUNCTION: GAMEMD 0x5F6220 (original name unconfirmed)
     bool FUN_005F6220(ObjectClass* other);
+    // CALLEE: GAMEMD 0x5F6360 (decl; Bullet's native call passes an
+    // AbstractClass target and receives the scalar distance in EAX.
+    int FUN_005F6360(AbstractClass* target);
     // FUNCTION: GAMEMD 0x5F6CD0
     bool IsCrushable(ObjectClass* crusher);
 
@@ -279,9 +282,11 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, NeedsRedraw)            == 0x80);
 GG_STATIC_ASSERT(offsetof(ObjectClass, InLimbo)               == 0x81);
 GG_STATIC_ASSERT(offsetof(ObjectClass, Parachute)              == 0x88);
 GG_STATIC_ASSERT(offsetof(ObjectClass, IsAlive)                == 0x90);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->IsAlive)              == 1);
 GG_STATIC_ASSERT(offsetof(ObjectClass, LastLayer)              == 0x94);
 GG_STATIC_ASSERT(offsetof(ObjectClass, IsVisible)              == 0x99);
 GG_STATIC_ASSERT(offsetof(ObjectClass, Location)               == 0x9C);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->Location)             == 0x0C);
 GG_STATIC_ASSERT(offsetof(ObjectClass, LineTrailer)            == 0xA8);
 GG_STATIC_ASSERT(sizeof(ObjectClass)                           == 0xAC);
 

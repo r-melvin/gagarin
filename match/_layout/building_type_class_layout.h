@@ -248,6 +248,7 @@ GG_STATIC_ASSERT(offsetof(BuildingTypeClass, GateCloseDelay)    == 0xE28);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildupFile)       == 0xE5C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, SecretBuilding)    == 0xEAC);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, TargetCoordOffset) == 0xEBC);
+GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->TargetCoordOffset) == 0x0C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildingAnimFrame) == 0xF04);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, BuildingAnim)      == 0xF4C);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, Upgrades)          == 0x14E0);

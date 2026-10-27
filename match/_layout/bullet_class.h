@@ -151,6 +151,8 @@ public:
     bool FUN_00468BB0(CoordStruct* where);
     // Binary contract at 0x468D80: one stack int.
     void FUN_00468D80(int impact);
+    // Native helper call: this in ECX, coordinate pointer on the stack.
+    void FUN_004690B0(const CoordStruct* position);
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397

@@ -17,6 +17,7 @@
 #include "../movement/matrix3d_native_helpers.h"
 #include "../ui/input_controls/ui_display_chain.h"
 #include "../core/randomizer.h"
+#include "../core/scenario_class_methods.h"
 #include "../core/vector_class_operations.h"
 #include "../renderer/color_scheme_find_methods.h"
 #include <new>
@@ -57,7 +58,6 @@ void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
 
 // GLOBAL: GAMEMD 0x7F4890
 extern int DAT_007F4890[32];
-struct ScenarioClass;
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xA83D4C -- native reads House color-scheme index at16054.
@@ -121,6 +121,16 @@ struct BulletDir16Storage { short Raw; short Spare; };
 extern const char DAT_0081AF8C[];
 // Address: GAMEMD 0x81AF98
 extern const char DAT_0081AF98[];
+
+// CALLEE: GAMEMD 0x4CC360 (decl; source/target in ECX/EDX; remaining
+// native arguments occupy 0x18 stack bytes.
+CellClass* __fastcall FUN_004CC360(CellClass* source, CellClass* target,
+    CellClass* last, CoordStruct where, BulletTypeClass* type,
+    HouseClass* house);
+// CALLEE: GAMEMD 0x49F420 (decl; output/base in ECX/EDX, then two stack DWORDs.
+CoordStruct* __fastcall FUN_0049F420(CoordStruct* output,
+    const CoordStruct* base, int spread, int mode);
+// CALLEE: GAMEMD 0x4690B0 (decl; Bullet receiver, coordinate pointer on stack).
 
 
 // Pinned native readonly operands; declarations only, no invented storage.
@@ -1190,6 +1200,134 @@ bool BulletClass::vf_124(const CoordStruct& source,
 int BulletClass::vf_30()
 {
     return Type->unknown_2F7 ? 1 : 3;
+}
+
+// FUNCTION: GAMEMD 0x468BB0
+bool BulletClass::FUN_00468BB0(CoordStruct* where)
+{
+    *where = Location;
+
+    CellClass* currentCell = Map_0087F7E8.FUN_00565730(*where);
+    if (Type->unknown_296 || Type->unknown_298) {
+        CellClass* sourceCell = Map_0087F7E8.FUN_00565730(SourceCoords);
+        CellClass* targetCell = Map_0087F7E8.FUN_00565730(TargetCoords);
+        // Native 0x5657A0 returns the actual zero-offset CellClass object;
+        // this UI declaration retains its legacy DisplayScCellObject view.
+        CellClass* lastCell = reinterpret_cast<CellClass*>(
+            Map_0087F7E8.FUN_005657A0(&LastMapCoords));
+        HouseClass* owner = Owner != 0 ? Owner->Owner : 0;
+
+        // ECX/EDX carry sourceCell/targetCell; stack carries lastCell,
+        // CoordStruct (three dwords), Type, and owner. EAX is a cell pointer
+        // or null; the caller tests it as a boolean.
+        if (FUN_004CC360(sourceCell, targetCell, lastCell, *where, Type, owner) != 0) {
+            return true;
+        }
+    }
+
+    if (vf_114() <= -4 * DAT_0089DE70) {
+        return true;
+    }
+
+    if (Target != 0 && Type->unknown_2A3) {
+        const int sourceZ = Location.Z;
+        CoordStruct targetCoords = Target->vf_22();
+        if (sourceZ < targetCoords.Z && vf_114() < 0) {
+            return true;
+        }
+    }
+
+    if (Type->unknown_29D && currentCell->IsOnFloor()) {
+        return true;
+    }
+
+    if (Type->unknown_2A4[0] && Target != 0 && Target->IsInAir() &&
+        this->FUN_005F6360(Target) < 0x80) {
+        return true;
+    }
+
+    return false;
+}
+
+
+// FUNCTION: GAMEMD 0x468D80
+void BulletClass::FUN_00468D80(int mode)
+{
+    CoordStruct effectPosition = Location;
+    AbstractClass* airborneTarget = 0;
+
+    if (Target != 0 && Target->IsInAir())
+        airborneTarget = Target;
+    ObjectClass* airborneObject = static_cast<ObjectClass*>(airborneTarget);
+
+    // Native branches directly to final emission when Type+0x2A2 is set.
+    if (!Type->unknown_2A2) {
+        if (Target != 0) {
+            const CoordStruct targetCoords = Target->vf_18();
+            CoordStruct difference;
+            difference.FUN_0041C230(Location.X - targetCoords.X,
+                                    Location.Y - targetCoords.Y,
+                                    Location.Z - targetCoords.Z);
+            const double squaredDistance =
+                static_cast<double>(difference.X) * difference.X +
+                static_cast<double>(difference.Z) * difference.Z +
+                static_cast<double>(difference.Y) * difference.Y;
+            // Native 0x468E4F returns sqrt in ST(0), immediately consumed by
+            // the __ftol call at 0x468E57.
+            const int distance = static_cast<int>(FUN_004CAC40(squaredDistance));
+
+            if (distance < 0x20 && !Type->unknown_294 && !Type->unknown_2A2)
+                effectPosition = Target->vf_18();
+        }
+
+        WarheadTypeClass* warhead = static_cast<WarheadTypeClass*>(WH);
+        if (!warhead->EMEffect && !Type->unknown_294 &&
+            static_cast<unsigned char>(mode) == 0 && !Type->unknown_29B &&
+            Type->unknown_2DC <= 0 &&
+            (Data.unknown_18 != DAT_0089DE30.X ||
+             Data.unknown_1C != DAT_0089DE30.Y ||
+             Data.unknown_20 != DAT_0089DE30.Z)) {
+            effectPosition.X = Data.unknown_18;
+            effectPosition.Y = Data.unknown_1C;
+            effectPosition.Z = Data.unknown_20;
+        }
+
+        if (!warhead->EMEffect && !Type->unknown_294) {
+            if (airborneTarget == 0 || airborneObject->vf_30() == 2) {
+                if (Target != 0 && this->FUN_005F6360(Target) < 0x2A) {
+                    effectPosition = Target->vf_22();
+                    if (Target->vf_11() == 6) {
+                        BuildingClass* building = static_cast<BuildingClass*>(Target);
+                        const CoordStruct& offset = building->Type->TargetCoordOffset;
+                        if (offset.X != 0 || offset.Y != 0 || offset.Z != 0)
+                            effectPosition = static_cast<ObjectClass*>(Target)->vf_41();
+                    }
+                }
+            } else if (this->FUN_005F6360(Target) < 0x80) {
+                effectPosition = airborneObject->vf_41();
+            }
+        }
+    }
+
+    if (Type->unknown_294) {
+        this->FUN_004690B0(&effectPosition);
+    } else {
+        const CoordStruct emissionOrigin = effectPosition;
+        int emitted = 0;
+        while (emitted < Type->unknown_2AC) {
+            this->FUN_004690B0(&effectPosition);
+            if (!IsAlive)
+                break;
+
+            // The native code randomizes and computes the next coordinate
+            // after every live emission, even when this was the last one.
+            const int spread = DAT_00A8B230->unknown_0218.RandomRanged(0x100, 0x200);
+            CoordStruct nextPosition;
+            FUN_0049F420(&nextPosition, &emissionOrigin, spread, 0);
+            effectPosition = nextPosition;
+            ++emitted;
+        }
+    }
 }
 
 // FUNCTION: GAMEMD 0x46AE70

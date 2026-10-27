@@ -119,6 +119,8 @@ GG_STATIC_ASSERT(offsetof(WarheadTypeClass, AnimList)        == 0x104);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Particle)        == 0x140);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Wall)            == 0x144);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unknown_bool_149)== 0x149);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, EMEffect)       == 0x154);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->EMEffect)     == 1);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Locomotor)       == 0x15C);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, Paralyzes)       == 0x170);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, ShakeXlo)        == 0x17C);

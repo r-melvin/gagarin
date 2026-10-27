@@ -99677,5 +99677,23 @@
   "name": "TechnoTypeClass::vf_13",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x468BB0",
+  "sym": "?FUN_00468BB0@BulletClass@@QAE_NPAUCoordStruct@@@Z",
+  "len": "0x1cf",
+  "name": "BulletClass::FUN_00468BB0",
+  "status": "partial",
+  "pct": 25.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x468D80",
+  "sym": "?FUN_00468D80@BulletClass@@QAEXH@Z",
+  "len": "0x32f",
+  "name": "BulletClass::FUN_00468D80",
+  "status": "partial",
+  "pct": 3.2
  }
 ]
