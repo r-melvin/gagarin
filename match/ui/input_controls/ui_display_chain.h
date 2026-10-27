@@ -578,12 +578,18 @@ public:
     BSurface* unknown_1220;                         // +0x1220 RTTI .?AVBSurface@@, primary base at 0
     DynamicVectorClass<Cell> unknown_1224;
     void* unknown_123C;                             // +0x123C operator-delete allocation
-    char unknown_1240[0x1258 - 0x1240];
+    int unknown_1240;
+    int unknown_1244;
+    int unknown_1248;
+    int unknown_124C;
+    int unknown_1250;
+    int unknown_1254;
     RadarArrayHolder* unknown_1258;                 // +0x1258 holder for the 256-vector allocation
     DynamicVectorClass<Point2D> unknown_125C;
     void* unknown_1274;                             // +0x1274 operator-delete allocation
     DynamicVectorClass<Point2D> unknown_1278[0x16];
-    char unknown_1488[8];
+    int unknown_1488;
+    int unknown_148C;
     int unknown_1490;                         // +0x1490 [Radar] SetVisibleRect state
     int unknown_1494;                         // +0x1494 [Radar] SetVisibleRect state
     int unknown_1498;                         // +0x1498 [Radar] tracking sentinel
@@ -601,7 +607,12 @@ public:
     unsigned char unknown_14D8;
     unsigned char unknown_14D9;
     unsigned char unknown_14DA;
-    char unknown_14DB[0x21];
+    char unknown_14DB;
+    int unknown_14DC;
+    int unknown_14E0;
+    int unknown_14E4;
+    int unknown_14E8;
+    char unknown_14EC[0x14FC - 0x14EC];
     int unknown_14FC;
     ScenarioElapsedTimer unknown_1500;
 };
@@ -625,12 +636,21 @@ GG_STATIC_ASSERT(sizeof(DSurface*) == 4);
 GG_STATIC_ASSERT(sizeof(BSurface*) == 4);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1224) == 0x1224);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_123C) == 0x123C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1240) == 0x1240);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1244) == 0x1244);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1248) == 0x1248);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_124C) == 0x124C);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1250) == 0x1250);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1254) == 0x1254);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1258) == 0x1258);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_125C) == 0x125C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1274) == 0x1274);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1278) == 0x1278);
+GG_STATIC_ASSERT(sizeof(((RadarClass*)0)->unknown_1278) / sizeof(DynamicVectorClass<Point2D>) == 0x16);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14C0) == 0x14C0);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1490) == 0x1490);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1488) == 0x1488);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_148C) == 0x148C);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1494) == 0x1494);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1498) == 0x1498);
 GG_STATIC_ASSERT(offsetof(RadarClass, RadarBounds) == 0x149C);
@@ -644,6 +664,12 @@ GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D4) == 0x14D4);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D8) == 0x14D8);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14D9) == 0x14D9);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14DA) == 0x14DA);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14DB) == 0x14DB);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14DC) == 0x14DC);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14E0) == 0x14E0);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14E4) == 0x14E4);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14E8) == 0x14E8);
+GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14EC) == 0x14EC);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_14FC) == 0x14FC);
 GG_STATIC_ASSERT(offsetof(RadarClass, unknown_1500) == 0x1500);
 GG_STATIC_ASSERT(sizeof(RadarClass) == 0x150C);

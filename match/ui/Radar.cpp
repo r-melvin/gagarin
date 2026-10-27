@@ -110,6 +110,18 @@ extern "C" int DAT_00B45B68;
 // GLOBAL: GAMEMD 0x008B4130
 extern "C" int DAT_008B4130;
 
+// GLOBAL: GAMEMD 0x00B048B0
+extern int DAT_00B048B0;
+// GLOBAL: GAMEMD 0x00B048B4
+extern int DAT_00B048B4;
+// GLOBAL: GAMEMD 0x00B048B8
+extern int DAT_00B048B8;
+// GLOBAL: GAMEMD 0x00B048BC
+extern int DAT_00B048BC;
+
+// FUNCTION: GAMEMD 0x6558B0 (decl; reloc) -- address stored in RadarArrayHolder.
+void stub_006558B0();
+
 // STRING: GAMEMD 0x008392DC
 extern const char DAT_008392DC[]; // "RadarClass::One_Time()\n"
 // STRING: GAMEMD 0x008392C0
@@ -777,6 +789,76 @@ void __cdecl FUN_006528C0()
 // Empty function.
 void __cdecl FUN_00652910()
 {
+}
+
+// FUNCTION: GAMEMD 0x652960
+RadarClass::RadarClass()
+    : DisplayClass(),
+      unknown_11E8(0),
+      unknown_11EC(0),
+      unknown_11F0(0),
+      unknown_11F4(0),
+      unknown_11F8(0),
+      unknown_11FC(0),
+      unknown_1200(0),
+      unknown_1204(0),
+      unknown_120C(DAT_00B048B0),
+      unknown_1210(DAT_00B048B4),
+      unknown_1214(DAT_00B048B8),
+      unknown_1218(DAT_00B048BC),
+      unknown_121C(0),
+      unknown_1220(0),
+      unknown_1224(0, 0),
+      unknown_123C(0),
+      unknown_1240(0),
+      unknown_1244(0),
+      unknown_1248(0),
+      unknown_124C(0),
+      unknown_1250(0),
+      unknown_1254(0),
+      unknown_1258(0),
+      unknown_125C(0, 0),
+      unknown_1274(0),
+      unknown_1488(0),
+      unknown_148C(1),
+      unknown_1490(0),
+      unknown_1494(0),
+      unknown_1498(0),
+      RadarBounds(),
+      unknown_14AC(0),
+      unknown_14B0(0),
+      unknown_14B4(0),
+      unknown_14BC(0),
+      unknown_14BD(0),
+      unknown_14D4(-1),
+      unknown_14D8(0),
+      unknown_14D9(0),
+      unknown_14DA(0),
+      unknown_14DC(DAT_00B048B0),
+      unknown_14E0(DAT_00B048B4),
+      unknown_14E4(DAT_00B048B8),
+      unknown_14E8(DAT_00B048BC),
+      unknown_14FC(0)
+{
+    RadarBounds.X = DAT_00B048B0;
+    RadarBounds.Y = DAT_00B048B4;
+    RadarBounds.Width = DAT_00B048B8;
+    RadarBounds.Height = DAT_00B048BC;
+
+    RadarArrayHolder* holder = new RadarArrayHolder;
+    if (holder != 0) {
+        // The binary stores this code address, but its call contract is not
+        // established; retain it as an opaque address in the existing field.
+        holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
+        holder->unknown_08 = 0x100;
+        holder->unknown_0C = 10;
+
+        typedef DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> > RadarTrackingVector;
+        holder->items = new RadarTrackingVector[0x100];
+    }
+    unknown_1258 = holder;
+    unknown_125C.CapacityIncrement = 500;
+    unknown_14C0.FUN_00405BE0();
 }
 
 // FUNCTION: GAMEMD 0x652C00

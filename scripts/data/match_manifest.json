@@ -99605,5 +99605,14 @@
   "name": "FUN_0048ACE0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x652960",
+  "sym": "??0RadarClass@@QAE@XZ",
+  "len": "0x29e",
+  "name": "RadarClass::RadarClass()",
+  "status": "partial",
+  "pct": 2.5
  }
 ]
