@@ -66,8 +66,8 @@ public:
     virtual void vf_328(int a1);                                   // 328 0x41C120
     virtual void vf_329();                                         // 329 0x4D9C00
     virtual void vf_330(int a1, int a2, int a3);                   // 330 0x4DF040
-    virtual void vf_331(int a1, int a2, int a3, int a4);           // 331 0x4DEE80
-    virtual void vf_332(int a1, int a2, int a3);                   // 332 0x4DEE50
+    virtual void* vf_331(void* a1, int a2, int a3, int* a4);      // 331 0x4DEE80
+    virtual void* vf_332(void* a1, int a2, int a3);                // 332 0x4DEE50
     virtual void vf_333(int a1, int a2);                           // 333 0x41C130
     virtual void vf_334();                                         // 334 0x4DB1A0
     virtual void vf_335(int a1);                                   // 335 0x4D5690
@@ -190,6 +190,8 @@ public:
     virtual int vf_138();                                          // 138 0x4D5350
     virtual int vf_139();                                          // 139 0x4D4200
     virtual AbstractClass* vf_241(unsigned int threat, CoordStruct* coord, bool a3); // 241 0x4D9920 (IsScanLimited @0x688 wrapper of 0x6F8DF0)
+    // Native primary slot 288: RET 8; this override receives the target and flag.
+    virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x4D94B0
 };
 
 GG_STATIC_ASSERT(offsetof(FootClass, PlanningPathIdx)            == 0x520);

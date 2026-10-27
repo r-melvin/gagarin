@@ -48,6 +48,8 @@ public:
     virtual void vf_60(CoordStruct* coord);                        // 60  0x5217C0
     virtual void vf_61(CoordStruct* coord);                        // 61  0x521850
     virtual int vf_185(AbstractClass* target);                     // 185 0x5218E0
+    // Native primary slot 242: one stack dword.
+    virtual void vf_242(int a1);                                   // 242 0x51B1F0
     virtual int vf_243(int a1, int a2);                            // 243 0x51DF60
     virtual ObjectTypeClass* vf_51(bool a1);                       // 51  0x522640
     virtual HouseClass* vf_52(bool a1);                            // 52  0x5226C0
@@ -55,6 +57,8 @@ public:
     virtual int vf_139();                                          // 139 0x51F660
     virtual bool vf_225();                                         // 225 0x522BC0
     virtual void vf_284();                                         // 284 0x522780
+    // Native primary slot 288: two stack dwords, target pointer and flag.
+    virtual void SetDestination(AbstractClass* target, bool a2);   // 288 0x51AA40
     virtual void vf_326();                                         // 326 0x521C10
     virtual void vf_328(int a1);                                   // 328 0x521C60
 

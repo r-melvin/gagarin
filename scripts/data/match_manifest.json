@@ -99929,5 +99929,23 @@
   "name": "CellClass::vf_22",
   "status": "partial",
   "pct": 24.4
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4DC030",
+  "sym": "?vf_317@FootClass@@UAEXXZ",
+  "len": "0x2c",
+  "name": "FootClass::vf_317",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x4DEE50",
+  "sym": "?vf_332@FootClass@@UAEPAXPAXHH@Z",
+  "len": "0x29",
+  "name": "FootClass::vf_332",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

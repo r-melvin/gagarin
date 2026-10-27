@@ -7,6 +7,8 @@
 // reccmp annotations (ascending by retail address within this TU):
 //   FUNCTION: GAMEMD 0x41C090  FootClass::vf_323 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DA1C0  FootClass::ClearNavigationList (__thiscall)
+//   FUNCTION: GAMEMD 0x4DC030  FootClass::vf_317 (__thiscall)
+//   FUNCTION: GAMEMD 0x4DEE50  FootClass::vf_332 (__thiscall)
 //   FUNCTION: GAMEMD 0x4DF0D0  FootClass::AbortMotion         (__thiscall)
 
 #include "foot_class_methods.h"
@@ -30,6 +32,22 @@ void FootClass::vf_323(SHPStruct* a1, int a2, Point2D* a3,
 void FootClass::ClearNavigationList()
 {
     ((NavVector*)&this->NavQueue)->Clear();
+}
+
+// FUNCTION: GAMEMD 0x4DC030
+void FootClass::vf_317()
+{
+    if (this->vf_97() == 0xF) {
+        this->vf_242(0);
+        this->SetDestination(0, true);
+    }
+}
+
+// FUNCTION: GAMEMD 0x4DEE50
+void* FootClass::vf_332(void* a1, int a2, int a3)
+{
+    int output = -1;
+    return this->vf_331(a1, a2, a3, &output);
 }
 
 // FUNCTION: GAMEMD 0x4DF0D0  (__thiscall)
