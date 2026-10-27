@@ -6769,6 +6769,8 @@
  "?vf_29@TypesBuildingTypeTechnoView@@UAEHXZ": "0x00716290",
  "?vf_30@ObjectTypeClass@@UAE?AUCoordStruct@@XZ": "0x005F75C0",
  "?vf_31@SidebarClass@@UAEJPAUIStream@@@Z": "0x006AC5E0",
+ "?vf_33@MapObjTypeClassView@@UAEHPAVHouseClass@@@Z": "0x5F7610",
+ "?vf_33@ParticleTypeObjectView@@UAEHPAVHouseClass@@@Z": "0x5F7610",
  "?vf_33@RadarClass@@UAEPBGH@Z": "0x658770",
  "?vf_33@Sidebar_006D1800@@QAEXPAX@Z": "0x006AC210",
  "?vf_34@BulletClass@@UAEPAVObjectTypeClass@@XZ": "0x0046B5B0",

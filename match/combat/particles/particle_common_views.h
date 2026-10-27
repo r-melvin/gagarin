@@ -120,6 +120,7 @@ public:
 void ParticleAnnouncePointerExpired(void* object, bool removed);
 
 // HouseClass (partial): only the field ParticleSystemClass reads.
+class HouseClass;
 struct ParticleHouseView
 {
     unsigned char unknown_00[0x2B4];
@@ -361,7 +362,7 @@ public:
     virtual void vf_30();                                                    // 30  0x5F75C0
     virtual void vf_31();                                                    // 31  0x5F75E0
     virtual bool vf_32(int a, int b);                                        // 32  overridden by both module classes (base body not recovered)
-    virtual void vf_33();                                                    // 33  0x5F7610
+    virtual int vf_33(HouseClass* owner);                                    // 33  0x5F7610
     virtual void vf_34();                                                    // 34  0x5F7620
     virtual int vf_35(int a);                                                // 35  overridden by both module classes (base body not recovered)
     virtual void vf_36();                                                    // 36  0x5F7640

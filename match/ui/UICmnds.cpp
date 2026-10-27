@@ -626,9 +626,8 @@ void FUN_00731D90(wchar_t* text, const wchar_t* value)
         for (int i = 0; i < count; ++i) {
             TechnoClass* object = DAT_00A8ECB8.Items[i];
             if (object && object->Flags.IsTechno)
-                // The canonical slot still has an opaque int argument; retail
-                // 0x731E2B/0x731E3B passes the 32-bit Owner pointer there.
-                total += object->vf_34()->vf_33(reinterpret_cast<int>(object->Owner));
+                // Retail 0x731E2B/0x731E3B passes the House owner pointer to slot 33.
+                total += object->vf_34()->vf_33(object->Owner);
         }
         swprintf(text, FUN_00734E60(DAT_008455EC, 0, DAT_00845598, 0x41C), count, buffer, total);
     } else {
@@ -1312,7 +1311,7 @@ char* FUN_00733E10(UICmndsVector* list, const char* previous, int limit, int* va
         for (int j = 0; j < types->Count; ++j)
             if (strcmp(text, types->Items[j]) == 0) { index = j; break; }
         int prior = totals->Items[index];
-        totals->Items[index] = object->vf_34()->vf_33(reinterpret_cast<int>(object->Owner)) + prior;
+        totals->Items[index] = object->vf_34()->vf_33(object->Owner) + prior;
     }
     int best = -1;
     *value = 0;

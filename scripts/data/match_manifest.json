@@ -49807,7 +49807,7 @@
  {
   "tu": "match/economy/tu039_building_type_class.cpp",
   "addr": "0x45EDD0",
-  "sym": "?vf_33@BuildingTypeClass@@UAEHH@Z",
+  "sym": "?vf_33@BuildingTypeClass@@UAEHPAVHouseClass@@@Z",
   "len": "0x91",
   "name": "BuildingTypeClass::vf_33",
   "status": "partial",
@@ -68257,11 +68257,11 @@
  {
   "tu": "match/core/object_type_class_slots.cpp",
   "addr": "0x5F7610",
-  "sym": "?vf_33@ObjectTypeClass@@UAEHH@Z",
+  "sym": "?vf_33@ObjectTypeClass@@UAEHPAVHouseClass@@@Z",
   "len": "0x5",
   "name": "ObjectTypeClass::vf_33",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_type_class_slots.cpp",
@@ -99567,6 +99567,15 @@
   "sym": "?FUN_00655A90@RadarClass@@QAEXXZ",
   "len": "0x8e",
   "name": "RadarClass::FUN_00655A90",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x711F00",
+  "sym": "?vf_33@TechnoTypeClass@@UAEHPAVHouseClass@@@Z",
+  "len": "0x60",
+  "name": "TechnoTypeClass::vf_33",
   "status": "matched",
   "pct": 100.0
  }

@@ -106,6 +106,8 @@ public:
     virtual int vf_28();
     // FUNCTION: GAMEMD 0x716290; overrides ObjectType slot29.
     virtual int vf_29();
+    // FUNCTION: GAMEMD 0x711F00; slot 33 consumes the House owner pointer.
+    virtual int vf_33(HouseClass* owner);
     virtual int vf_34();                                          // 34 0x711EE0
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0

@@ -22,6 +22,7 @@
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 struct CellStruct;
+class HouseClass;
 
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
 // VTABLE: GAMEMD 0x7EF2D8 (IPersistStream side, slots 0-39)
@@ -49,7 +50,7 @@ public:
     virtual CoordStruct vf_30();                                          // 30  0x5F75C0
     virtual CoordStruct vf_31();                                          // 31  0x5F75E0
     virtual bool vf_32(const CellStruct* cell, HouseClass* house) = 0;                               // 32  pure (__purecall 0x4C9150)
-    virtual int vf_33(int a1);                                            // 33  0x5F7610
+    virtual int vf_33(HouseClass* owner);                                 // 33  0x5F7610
     virtual int vf_34();                                                  // 34  0x5F7620
     virtual void* vf_35(void* house) = 0;                                 // 35  pure (__purecall 0x4C9150; creates an object)
     virtual void* vf_36(int a1);                                          // 36  0x5F7640: RET 4, a1 unused

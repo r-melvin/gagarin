@@ -42,7 +42,7 @@ CoordStruct ObjectTypeClass::vf_31()
 }
 
 // FUNCTION: GAMEMD 0x5F7610
-int ObjectTypeClass::vf_33(int a1)
+int ObjectTypeClass::vf_33(HouseClass*)
 {
     return 0;
 }

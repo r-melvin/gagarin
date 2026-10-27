@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // Provenance: own-binary-via-Ghidra
-// Four TechnoTypeClass member bodies, independently checked at their entries.
+// Five TechnoTypeClass member bodies, independently checked at their entries.
 // This retained filename is provisional grouping, not attested original TU ownership.
 #include "../_layout/techno_type_class.h"
+#include "../_layout/house_class.h"
 #include "../_layout/rules_class.h"
 #include "../combat/weapon_type_class.h"
 
@@ -34,6 +35,17 @@ int TechnoTypeClass::vf_28()
 int TechnoTypeClass::vf_34()
 {
     return (int)(Cost * RulesInstance->unknown_1748 * 0.9);
+}
+
+// FUNCTION: GAMEMD 0x711F00
+int TechnoTypeClass::vf_33(HouseClass* house)
+{
+    if (house != 0) {
+        const float typeCost = house->FUN_0050BDF0(this);
+        const float houseCost = house->FUN_0050BEB0(this);
+        return (int)(vf_43() * houseCost * typeCost);
+    }
+    return vf_43();
 }
 
 // FUNCTION: GAMEMD 0x7120D0

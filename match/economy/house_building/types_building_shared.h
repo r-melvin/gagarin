@@ -111,7 +111,7 @@ public:
     virtual void vf_30();
     virtual void vf_31();
     virtual void vf_32();
-    virtual int GetCost(int house);   // slot 33 (+0x84)
+    virtual int GetCost(HouseClass* house);   // slot 33 (+0x84), receives House owner
 
     unsigned char unknown_04[0x3EC - 4];   // +0x04..+0x3EB
     BuildingTypeClass** DockItems;         // +0x3EC  (Items of the TypeList at +0x3E8)

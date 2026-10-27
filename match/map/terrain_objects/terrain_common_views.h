@@ -60,6 +60,7 @@
 
 class MapObjTypeClassView;
 class MapObjSurfaceView;
+class HouseClass;
 struct MapObjHouseView;
 
 // An object asking about a placement (partial): the cell it stands on is at +0x24.
@@ -400,7 +401,7 @@ public:
     virtual void vf_30();                                                                        // 30  base 0x5F75C0
     virtual void vf_31();                                                                        // 31  base 0x5F75E0
     virtual bool vf_32(const MapObjCell* cell, MapObjHouseView* house);                          // 32  base body not recovered; overridden by Overlay 0x5FE530, Smudge 0x6B5550, Terrain 0x71DDD0
-    virtual void vf_33();                                                                        // 33  base 0x5F7610
+    virtual int vf_33(HouseClass* owner);                                                        // 33  base 0x5F7610
     virtual void vf_34();                                                                        // 34  base 0x5F7620
     virtual void* vf_35(MapObjHouseView* house);                                                 // 35  base body not recovered; overridden by Overlay 0x5FE570, Smudge 0x6B55C0, Terrain 0x71DE10
     virtual MapObjCell* vf_36(int arg);                                                          // 36  base 0x5F7640; overridden by Overlay 0x5FE4C0, Terrain 0x71DE40

@@ -19,6 +19,7 @@
 #include "types_shared.h"
 
 class BuildingTypeClass;
+class HouseClass;
 
 // Not HBPoint2D: the constructors change how the 8-byte value is returned (see house_building_views.h).
 struct TypesPoint2D
@@ -139,7 +140,7 @@ public:
     virtual HBCoord vf_30();                                              // 30  overridden (0x45EBD0)
     virtual HBCoord vf_31();                                              // 31  overridden (0x464AF0)
     virtual bool vf_32(void* where, void* owner);                            // 32  overridden (0x45E800)
-    virtual int vf_33(int arg);                                              // 33  overridden (0x45EDD0)
+    virtual int vf_33(HouseClass* owner);                                    // 33  overridden (0x45EDD0)
     virtual void vf_34();                                                    // 34  0x711EE0
     virtual void* vf_35(void* owner);                                        // 35  overridden (0x45E880)
     virtual void* vf_36(bool arg);                                           // 36  overridden (0x45EC20)
@@ -314,7 +315,7 @@ public:
     virtual HBCoord vf_30();                                              // 30  0x45EBD0
     virtual HBCoord vf_31();                                              // 31  0x464AF0
     virtual bool vf_32(void* where, void* owner);                            // 32  0x45E800
-    virtual int vf_33(int arg);                                              // 33  0x45EDD0
+    virtual int vf_33(HouseClass* owner);                                    // 33  0x45EDD0
     virtual void* vf_35(void* owner);                                        // 35  0x45E880
     virtual void* vf_36(bool arg);                                           // 36  0x45EC20
     virtual void* vf_39();                                                   // 39  0x45F040

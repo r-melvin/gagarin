@@ -675,7 +675,7 @@ int BuildingTypeClass_0045ED50::FUN_0045ED50()
 // (cached rules pointer or not, second-first and first-first call order, an explicit temporary for each cost,
 // early-return and fall-through tails, `freeUnit` loaded early or late).
 // FUNCTION: GAMEMD 0x45EDD0
-int BuildingTypeClass::vf_33(int house)
+int BuildingTypeClass::vf_33(HouseClass* house)
 {
     int cost = TypesBuildingTypeTechnoView::vf_33(house);
     TypesCostTypeView** padAircraft = TypesRules->PadAircraft;
