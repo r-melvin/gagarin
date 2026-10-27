@@ -546,12 +546,16 @@ public:
 
     // FUNCTION: GAMEMD 0x654650 (decl; reloc) -- helper uses ECX=this, RET.
     void FUN_00654650();
+    // FUNCTION: GAMEMD 0x6547C0 (decl; reloc) -- aggregate result, two rectangle pointers, bool.
+    RectangleStruct FUN_006547C0(const RectangleStruct* source, RectangleStruct* output, bool flag);
     // FUNCTION: GAMEMD 0x6558D0
     void FUN_006558D0();
     // FUNCTION: GAMEMD 0x655990
     void FUN_00655990();
     // FUNCTION: GAMEMD 0x655B20
     void FUN_00655B20();
+    // FUNCTION: GAMEMD 0x6563B0 (decl; reloc) -- helper uses ECX=this, RET.
+    void FUN_006563B0();
 
     // FUNCTION: GAMEMD 0x656EC0 (decl; reloc)
     void FUN_00656EC0();

@@ -99785,5 +99785,14 @@
   "name": "AbilitiesStruct::FUN_007179D0",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/ui/radar_surface_setup_methods.cpp",
+  "addr": "0x654650",
+  "sym": "?FUN_00654650@RadarClass@@QAEXXZ",
+  "len": "0x16a",
+  "name": "RadarClass::FUN_00654650",
+  "status": "partial",
+  "pct": 20.3
  }
 ]
