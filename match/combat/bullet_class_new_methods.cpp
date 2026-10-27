@@ -213,6 +213,30 @@ BulletClass::BulletClass()
     DAT_00A8ED40.AddItem(this);
 }
 
+// FUNCTION: GAMEMD 0x4664C0
+void BulletClass::FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
+                                TechnoClass* owner, int health,
+                                WarheadTypeClass* warhead,
+                                int speed, unsigned char bright)
+{
+    Target = target;
+    Speed = speed;
+    WH = warhead;
+    Bright = bright;
+    Health = health;
+    Type = type;
+    Owner = owner;
+    AnimFrame = 0;
+    AnimRateCounter = Type->unknown_2F6;
+    if (Type->unknown_2A9 && Owner)
+        InheritedColor = Owner->Owner->ColorSchemeIndex;
+    else
+        InheritedColor = -1;
+    DamageMultiplier = 0x100;
+    NextAnim = 0;
+    SpawnNextAnim = 0;
+}
+
 // FUNCTION: GAMEMD 0x466560
 BulletClass::~BulletClass()
 {

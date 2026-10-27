@@ -584,6 +584,7 @@ GG_STATIC_ASSERT(offsetof(TechnoClass, ReloadTimer)              == 0x1FC);
 GG_STATIC_ASSERT(offsetof(TechnoClass, RadarPosition)            == 0x208);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Group)                    == 0x214);
 GG_STATIC_ASSERT(offsetof(TechnoClass, Owner)                    == 0x21C);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->Owner)                  == 4);
 GG_STATIC_ASSERT(offsetof(TechnoClass, CloakState)               == 0x220);
 GG_STATIC_ASSERT(offsetof(TechnoClass, CloakProgress)            == 0x224);
 GG_STATIC_ASSERT(offsetof(TechnoClass, LastSightCoords)          == 0x254);

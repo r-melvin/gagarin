@@ -99659,5 +99659,14 @@
   "name": "TechnoTypeClass::vf_38",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x4664C0",
+  "sym": "?FUN_004664C0@BulletClass@@QAEXPAVBulletTypeClass@@PAVAbstractClass@@PAVTechnoClass@@HPAVWarheadTypeClass@@HE@Z",
+  "len": "0xa0",
+  "name": "BulletClass::FUN_004664C0",
+  "status": "partial",
+  "pct": 63.9
  }
 ]

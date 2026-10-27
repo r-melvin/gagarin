@@ -616,6 +616,7 @@ GG_STATIC_ASSERT(offsetof(HouseClass, PlainName)                  == 0x15FF4);
 GG_STATIC_ASSERT(offsetof(HouseClass, UINameString)               == 0x16009);
 GG_STATIC_ASSERT(offsetof(HouseClass, UIName)                     == 0x1602A);
 GG_STATIC_ASSERT(offsetof(HouseClass, ColorSchemeIndex)           == 0x16054);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->ColorSchemeIndex)         == 4);
 GG_STATIC_ASSERT(offsetof(HouseClass, unknown_16060)              == 0x16060);
 GG_STATIC_ASSERT(offsetof(HouseClass, ConnectionPoints)               == 0x16064);
 GG_STATIC_ASSERT(offsetof(HouseClass, unknown_1607C)              == 0x1607C);

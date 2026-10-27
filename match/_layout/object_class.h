@@ -271,6 +271,7 @@ GG_STATIC_ASSERT(offsetof(ObjectClass, CustomSoundController)  == 0x50);
 GG_STATIC_ASSERT(offsetof(ObjectClass, CustomSound)            == 0x64);
 GG_STATIC_ASSERT(offsetof(ObjectClass, BombVisible)            == 0x68);
 GG_STATIC_ASSERT(offsetof(ObjectClass, Health)                 == 0x6C);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->Health)               == 4);
 GG_STATIC_ASSERT(offsetof(ObjectClass, EstimatedHealth)        == 0x70);
 GG_STATIC_ASSERT(offsetof(ObjectClass, IsOnMap)                == 0x74);
 GG_STATIC_ASSERT(offsetof(ObjectClass, unknown_78)             == 0x78);

@@ -46,6 +46,7 @@
 #include "../core/small_struct_ctor_methods.h"
 
 class BulletTypeClass;
+class WarheadTypeClass;
 class TechnoClass;
 class WeaponTypeClass;
 class AnimClass;
@@ -142,6 +143,10 @@ public:
     void FUN_0046B0C0(const VoxelStruct* voxel, const Matrix3D& matrix,
                       Point2D* point, RectangleStruct* clip,
                       int frame, int flags, int tint);
+    // Native setter implemented at the address-marked definition in the Bullet TU.
+    void FUN_004664C0(BulletTypeClass* type, AbstractClass* target,
+                      TechnoClass* owner, int health, WarheadTypeClass* warhead,
+                      int speed, unsigned char bright);
     // Binary contract at 0x468BB0: one coordinate pointer.
     bool FUN_00468BB0(CoordStruct* where);
     // Binary contract at 0x468D80: one stack int.
@@ -232,6 +237,7 @@ GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->TargetCoords)   == 0x0C);
 GG_STATIC_ASSERT(offsetof(BulletClass, LastMapCoords)     == 0x14C);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->LastMapCoords)  == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, DamageMultiplier)  == 0x150);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->DamageMultiplier) == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, NextAnim)          == 0x154);
 GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->NextAnim)       == 4);
 GG_STATIC_ASSERT(offsetof(BulletClass, SpawnNextAnim)     == 0x158);
