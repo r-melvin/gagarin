@@ -22,6 +22,7 @@
 GG_STATIC_ASSERT(sizeof(CoordStruct) == 0xC);
 
 struct CellStruct;
+struct SHPStruct;
 class HouseClass;
 
 // ObjectTypeClass  (0x98..0x293, sizeof = 0x294)
@@ -55,7 +56,7 @@ public:
     virtual void* vf_35(void* house) = 0;                                 // 35  pure (__purecall 0x4C9150; creates an object)
     virtual void* vf_36(int a1);                                          // 36  0x5F7640: RET 4, a1 unused
     virtual void* vf_37(bool a1, bool a2, bool a3, void* house);          // 37  0x5F7900
-    virtual int vf_38();                                                  // 38  0x5F7630
+    virtual SHPStruct* vf_38();                                          // 38  0x5F7630
     virtual void* vf_39();                                                // 39  0x41CFA0
     // FUNCTION: GAMEMD 0x5004E0 (existing static member, native category lookup).
     static int IsBuildCat5(int abstractID, int idx);

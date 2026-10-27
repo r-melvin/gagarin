@@ -18,6 +18,8 @@
 
 // GLOBAL: GAMEMD 0xA8B238
 extern int DAT_00A8B238;
+// GLOBAL: GAMEMD 0xA83D4C — current House/player pointer (HouseClass*).
+extern HouseClass* DAT_00A83D4C;
 
 // FUNCTION: GAMEMD 0x711E90
 bool TechnoTypeClass::vf_41()
@@ -55,6 +57,29 @@ int TechnoTypeClass::vf_33(HouseClass* house)
         return (int)(vf_43() * houseCost * typeCost);
     }
     return vf_43();
+}
+
+// FUNCTION: GAMEMD 0x712040
+SHPStruct* TechnoTypeClass::vf_38()
+{
+    if (DAT_00A83D4C != 0 &&
+        DAT_00A83D4C->BarracksInfiltrated != 0 &&
+        vf_11() == 0x10 &&
+        AltCameo != 0 &&
+        bools_C8C[2] != 0) {
+        return AltCameo;
+    }
+
+    if (DAT_00A83D4C != 0 &&
+        DAT_00A83D4C->WarFactoryInfiltrated != 0 &&
+        (vf_11() == 0x28 ||
+         (vf_11() == 0x7 && UndeploysInto != 0)) &&
+        AltCameo != 0 &&
+        bools_C8C[2] != 0) {
+        return AltCameo;
+    }
+
+    return Cameo;
 }
 
 // FUNCTION: GAMEMD 0x7120D0

@@ -54,7 +54,7 @@ int ObjectTypeClass::vf_34()
 }
 
 // FUNCTION: GAMEMD 0x5F7630
-int ObjectTypeClass::vf_38()
+SHPStruct* ObjectTypeClass::vf_38()
 {
     return 0;
 }

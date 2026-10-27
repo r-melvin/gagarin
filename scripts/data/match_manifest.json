@@ -68275,11 +68275,11 @@
  {
   "tu": "match/core/object_type_class_slots.cpp",
   "addr": "0x5F7630",
-  "sym": "?vf_38@ObjectTypeClass@@UAEHXZ",
+  "sym": "?vf_38@ObjectTypeClass@@UAEPAUSHPStruct@@XZ",
   "len": "0x3",
   "name": "ObjectTypeClass::vf_38",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/ai/tag_class_body.cpp",
@@ -99650,5 +99650,14 @@
   "name": "BulletClass::BulletClass",
   "status": "partial",
   "pct": 49.3
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x712040",
+  "sym": "?vf_38@TechnoTypeClass@@UAEPAUSHPStruct@@XZ",
+  "len": "0x87",
+  "name": "TechnoTypeClass::vf_38",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

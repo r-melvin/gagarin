@@ -118,6 +118,7 @@ public:
     // FUNCTION: GAMEMD 0x711F00; slot 33 consumes the House owner pointer.
     virtual int vf_33(HouseClass* owner);
     virtual int vf_34();                                          // 34 0x711EE0
+    virtual SHPStruct* vf_38();                                   // 38 0x712040
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     // Declaration: GAMEMD 0x716DC0, overrides ObjectTypeClass COM slot 6.
     virtual HRESULT __stdcall Save(IStream* pStm, BOOL clearDirty);
@@ -465,11 +466,19 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MindClearedSound)  == 0x5B0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Cost)              == 0x610);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Reload)            == 0x698);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, CameoFile)         == 0x6D6);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, UndeploysInto)     == 0x408);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->UndeploysInto) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_6EF)         == 0x6EF);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Cameo)              == 0x6F0);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Cameo)          == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_70E)         == 0x70E);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, AltCameo)           == 0x710);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->AltCameo)       == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon)            == 0x898);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, EliteWeapon)       == 0xA94);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C)         == 0xC8C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 2     == 0xC8E);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[2])   == 1);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, TurretAnimData)    == 0xCA4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_bool_CB4)  == 0xCB4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, BarrelAnimData)    == 0xCB8);

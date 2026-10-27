@@ -636,6 +636,10 @@ GG_STATIC_ASSERT(sizeof(HouseClass)                               == 0x160B8);
 
 // Queue 0x64E250/0x64E25D/0x64E264 field accesses.
 GG_STATIC_ASSERT(offsetof(HouseClass, MapIsClear) == 0x241);
+GG_STATIC_ASSERT(offsetof(HouseClass, BarracksInfiltrated) == 0x2BF);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->BarracksInfiltrated) == 1);
+GG_STATIC_ASSERT(offsetof(HouseClass, WarFactoryInfiltrated) == 0x2C0);
+GG_STATIC_ASSERT(sizeof(((HouseClass*)0)->WarFactoryInfiltrated) == 1);
 GG_STATIC_ASSERT(offsetof(HouseClass, StartingPoint) == 0x16058);
 GG_STATIC_ASSERT(offsetof(HouseClass, StartingAllies) == 0x1605C);
 
