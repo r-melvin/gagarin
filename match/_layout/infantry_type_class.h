@@ -30,6 +30,8 @@ struct SequenceStruct;
 class InfantryTypeClass : public TechnoTypeClass
 {
 public:
+    // Declaration: GAMEMD 0x5247A0 -- InfantryTypeClass slot 44 returns EAX.
+    virtual int vf_44();
     // Declaration: GAMEMD 0x524790 -- slot45, full EAX scalar, no args.
     virtual int vf_45();
     int             ArrayIndex;          // +0xDF8

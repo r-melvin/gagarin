@@ -106,6 +106,7 @@ public:
     virtual int vf_28();
     // FUNCTION: GAMEMD 0x716290; overrides ObjectType slot29.
     virtual int vf_29();
+    virtual int vf_34();                                          // 34 0x711EE0
     virtual HRESULT __stdcall Load(IStream* pStm);                        // 5   0x7162F0
     virtual void vf_13(Obj_004A1D30* crc);                                // 13  0x7171A0
     virtual bool vf_25(CCINIClass* ini);                                  // 25  0x712170
@@ -121,7 +122,7 @@ public:
     // Names are placeholders; argument counts come from RET n, return types are not recovered.
     virtual bool vf_42(CellStruct* cell, HouseClass* owner);       // 42 0x716150; BuildingClass 0x449440 passes the cell and its owner, tests AL
     virtual int vf_43(); // 43 0x711EB0; EAX summed at caller0x688793
-    virtual void vf_44();                                          // 44 0x7120D0
+    virtual int vf_44();                                           // 44 0x7120D0
     // Native712120 returns a dword; caller6F4D14 compares full EAX signed.
     virtual int vf_45();                                           // 45 0x712120
     virtual void vf_46(int a1, int a2);                            // 46 0x711F60

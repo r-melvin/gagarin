@@ -151,14 +151,16 @@ struct RulesClass
     int unknown_14D0;
     char unknown_14D4[0x16CC - 0x14D4];
     int unknown_16CC; // native712125 reads scalar via pointer8871E0
-    char unknown_16D0[0x16D8 - 0x16D0];
+    double unknown_16D0; // native 0x7120D0 loads the full 8-byte value
     int unknown_16D8; // native524795 reads dword via pointer8871E0
     char unknown_16DC[0x1700 - 0x16DC];
     double ConditionYellow;
     double ConditionRed;
     char unknown_1710[0x1734 - 0x1710];
     int unknown_1734;
-    char unknown_1738[0x1804 - 0x1738];
+    char unknown_1738[0x1748 - 0x1738];
+    double unknown_1748; // native 0x711EE0 loads the full 8-byte value
+    char unknown_1750[0x1804 - 0x1750];
     int RadDurationMultiple;
     char unknown_1808[0x186C - 0x1808];
     int unknown_186C; // random upper bound minus one0x68508F
@@ -239,9 +241,13 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_6C4)  == 0x6C4);
 GG_STATIC_ASSERT(offsetof(RulesClass, C4Warhead) == 0xFA8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_7B4) == 0x7B4);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16CC) == 0x16CC);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D0) == 0x16D0);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D0) == 8);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1734) == 0x1734);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_16D8) == 0x16D8);
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_16D8) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1748) == 0x1748);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_1748) == 8);
 GG_STATIC_ASSERT(sizeof(RulesClass)              == 0x18C0);
 
 extern RulesClass* Rules;   // GLOBAL: GAMEMD 0x8871E0

@@ -30,6 +30,24 @@ int TechnoTypeClass::vf_28()
     return OwnerFlags;
 }
 
+// FUNCTION: GAMEMD 0x711EE0
+int TechnoTypeClass::vf_34()
+{
+    return (int)(Cost * RulesInstance->unknown_1748 * 0.9);
+}
+
+// FUNCTION: GAMEMD 0x7120D0
+int TechnoTypeClass::vf_44()
+{
+    int quotient = vf_43();
+    quotient /= Strength / RulesInstance->unknown_16CC;
+    const int scaled = (int)(quotient * RulesInstance->unknown_16D0);
+    if (scaled <= 1) {
+        return 1;
+    }
+    return scaled;
+}
+
 // FUNCTION: GAMEMD 0x712120
 int TechnoTypeClass::vf_45()
 {
