@@ -34,25 +34,9 @@
 #include "../_rt/gg_static_assert.h"
 #include "object_class.h"     // ObjectClass spine + CoordStruct + AudioController
 #include "techno_class.h"     // StageClass
+#include "../movement/bounce_class.h"
 
 class AnimTypeClass;
-
-// BounceClass — the projectile-bounce physics block embedded in AnimClass at
-// 0x128. Size 0x50, proven by closure: the ctor takes EDI = this+0x128, stores
-// through [EDI+0x04]/[EDI+0x08]/[EDI+0x0C]/[EDI+0x10]/[EDI+0x14]
-// (@0x00421F73..0x00421F86) and runs FUN_0x00645C30 on [EDI+0x30] and
-// [EDI+0x40] (@0x00421F7A..0x00421F96); the next member the ctor touches is at
-// 0x178 == 0x128 + 0x50. Individual field names are NOT established, so the
-// block goes in as opaque storage rather than as named members.
-#ifndef GG_MATCH_LAYOUT_BOUNCECLASS_DEFINED
-#define GG_MATCH_LAYOUT_BOUNCECLASS_DEFINED
-class BounceClass
-{
-public:
-    unsigned char unknown_00[0x50];   // +0x00 .. 0x4F
-};
-GG_STATIC_ASSERT(sizeof(BounceClass) == 0x50);
-#endif
 
 class AnimClass : public ObjectClass, public StageClass
 {
