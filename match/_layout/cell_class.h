@@ -85,15 +85,16 @@ public:
     virtual int vf_11();
     // FUNCTION: GAMEMD 0x487E70 (decl; slot 12)
     virtual int vf_12();
+    // FUNCTION: GAMEMD 0x4867E0 (decl; primary slot 20)
+    virtual bool IsOnFloor() const;
+    // FUNCTION: GAMEMD 0x486890 (decl; primary slot 22)
+    virtual CoordStruct vf_22();
 
     // FUNCTION: GAMEMD 0x485250
     void ReplaceTag(TagClass* tag);
 
-    // FUNCTION: GAMEMD 0x486840
-    // Primary retail vtable slot +0x48. This layout currently represents vptrs
-    // explicitly; the entry body is bound as a const method until the full
-    // virtual hierarchy is reconstructed. CoordStruct uses a hidden result.
-    CoordStruct GetCoords() const;
+    // FUNCTION: GAMEMD 0x486840 (primary vtable slot 18)
+    virtual CoordStruct vf_18();
     // Declaration: GAMEMD 0x480A30 -- hidden result pointer, RET4.
     CoordStruct* GetCellCoords(CoordStruct* result) const;
     // Declaration: GAMEMD 0x480180 -- point and clip pointers, RET8.

@@ -34170,11 +34170,11 @@
  {
   "tu": "match/map/cell_class_get_coords.cpp",
   "addr": "0x486840",
-  "sym": "?GetCoords@CellClass@@QBE?AUCoordStruct@@XZ",
+  "sym": "?vf_18@CellClass@@UAE?AUCoordStruct@@XZ",
   "len": "0x49",
-  "name": "CellClass::GetCoords (explicit-vptr layout)",
+  "name": "CellClass::vf_18",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/core/object_class_health_methods.cpp",
@@ -80583,13 +80583,13 @@
   "pct": 100
  },
  {
-  "tu": "match/map/trivial_tu050_methods.cpp",
+  "tu": "match/map/cell_class_get_coords.cpp",
   "addr": "0x4867E0",
-  "sym": "?FUN_004867E0@Obj_004867E0@@QAE_NXZ",
+  "sym": "?IsOnFloor@CellClass@@UBE_NXZ",
   "len": "0x1a",
-  "name": "Obj_004867E0::FUN_004867E0",
+  "name": "CellClass::IsOnFloor",
   "status": "matched",
-  "pct": 100
+  "pct": 100.0
  },
  {
   "tu": "match/map/trivial_tu050_methods.cpp",
@@ -99911,5 +99911,23 @@
   "name": "BulletClass::FUN_004690B0",
   "status": "partial",
   "pct": 3.8
+ },
+ {
+  "tu": "match/map/cell_class_get_coords.cpp",
+  "addr": "0x483C10",
+  "sym": "?Save@CellClass@@UAGJPAUIStream@@H@Z",
+  "len": "0x6f",
+  "name": "CellClass::Save",
+  "status": "partial",
+  "pct": 88.0
+ },
+ {
+  "tu": "match/map/cell_class_get_coords.cpp",
+  "addr": "0x486890",
+  "sym": "?vf_22@CellClass@@UAE?AUCoordStruct@@XZ",
+  "len": "0x6b",
+  "name": "CellClass::vf_22",
+  "status": "partial",
+  "pct": 24.4
  }
 ]

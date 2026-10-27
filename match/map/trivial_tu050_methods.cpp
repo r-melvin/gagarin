@@ -96,17 +96,6 @@ bool Obj_00486730::FUN_00486730()
     return true;
 }
 
-// FUNCTION: GAMEMD 0x4867E0
-// Branching. Vtable slot 20 of CellClass (RTTI).
-bool Obj_004867E0::FUN_004867E0()
-{
-    if (unknown_38 < DAT_00AA0738 || unknown_38 >= DAT_00AA0738 + 0xE)
-    {
-        return true;
-    }
-    return false;
-}
-
 // FUNCTION: GAMEMD 0x486900
 // Branching.
 unsigned char Obj_00486900::FUN_00486900()
