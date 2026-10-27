@@ -855,6 +855,10 @@ RadarClass::RadarClass()
 
         typedef DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> > RadarTrackingVector;
         holder->items = new RadarTrackingVector[0x100];
+        // Native 0x652BC4..0x652BD3 runs this separate pass even when the
+        // array allocation returned null; it is not a guarded reset.
+        for (int i = 0; i < holder->unknown_08; ++i)
+            holder->items[i].CapacityIncrement = holder->unknown_0C;
     }
     unknown_1258 = holder;
     unknown_125C.CapacityIncrement = 500;
