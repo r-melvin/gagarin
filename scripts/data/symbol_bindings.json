@@ -1138,6 +1138,7 @@
  "?BuildingType_FindOrAllocate@@YIHPBD@Z": "0x004653C0",
  "?BuildingTypesSection@@3PADA": "0x007F0CC0",
  "?BulletTypeClass_Array@@3UBulletTypeVector@@A": "0x00A83C80",
+ "?BulletTypeClass_Array@@3V?$DynamicVectorClass@PAVBulletTypeClass@@@@A": "0x00A83C80",
  "?ButtonArray@@3PAVShapeButtonClass@@A": "0x00B0C1C0",
  "?ButtonIndexTable@@3PAHA": "0x00B0CB78",
  "?ButtonListDefault@@3PADA": "0x007F0CF4",

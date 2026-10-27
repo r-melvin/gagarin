@@ -26,6 +26,9 @@ public:
 
     // Native no-init construction forwards this argument to ObjectTypeClass.
     BulletTypeClass(const AbstractNoInit& noInit);
+    // Native construction with an identifier delegates to ObjectTypeClass(id)
+    // and registers the completed object in the two native pointer vectors.
+    BulletTypeClass(const char* id);
 
     // Slot 8 in the primary table is the native scalar-deleting entry at
     // 0x46C890.  The ordinary destructor body remains a separate provider.
@@ -132,6 +135,8 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29D) == 0x29D);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29D) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29E) == 0x29E);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29E) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_29F) == 0x29F);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_29F) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A0) == 0x2A0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A0) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A1) == 0x2A1);
@@ -144,6 +149,8 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A4) == 0x2A4);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A4) == 2);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A6) == 0x2A6);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A6) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A7) == 0x2A7);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A7) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A8) == 0x2A8);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2A8) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2A9) == 0x2A9);
@@ -160,10 +167,18 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2BC) == 0x2BC);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2BC) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C0) == 0x2C0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2C0) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C1) == 0x2C1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2C1) == 7);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C1) + 0 == 0x2C1);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2C1[0]) == 1);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C1) + 1 == 0x2C2);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C1) + 2 == 0x2C3);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C8) == 0x2C8);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2C8) == 8);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2D0) == 0x2D0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2D0) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2D4) == 0x2D4);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2D4) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2D8) == 0x2D8);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2D8) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2DC) == 0x2DC);
@@ -187,20 +202,10 @@ GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2F6) == 1);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2F7) == 0x2F7);
 GG_STATIC_ASSERT(sizeof(BulletTypeClass) == 0x2F8);
 
-// VectorClass head for BulletTypeClass::Array.
-struct BulletTypeVector
-{
-    void* vtable;
-    BulletTypeClass** Items;
-    int Capacity;
-    int IsAllocated;
-    int Count;
-};
-#if GG_TARGET_ABI_32
-GG_STATIC_ASSERT(offsetof(BulletTypeVector, Items) == 0x04);
-GG_STATIC_ASSERT(offsetof(BulletTypeVector, Count) == 0x10);
-#endif
-// GLOBAL: GAMEMD 0xA83C80
+template<class T> class DynamicVectorClass;
+typedef DynamicVectorClass<BulletTypeClass*> BulletTypeVector;
+// This typed declaration aliases the storage emitted as DAT_00A83C80 in
+// static_vector_dtor_stubs.cpp, where the canonical GLOBAL annotation lives.
 extern BulletTypeVector BulletTypeClass_Array;
 
 #endif  // GG_MATCH_COMBAT_BULLET_TYPE_CLASS_H

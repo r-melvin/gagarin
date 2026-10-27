@@ -99983,5 +99983,14 @@
   "name": "CellClass RTTI slot 3",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/bullet_type_class.cpp",
+  "addr": "0x46BBC0",
+  "sym": "??0BulletTypeClass@@QAE@PBD@Z",
+  "len": "0x21E",
+  "name": "BulletTypeClass named constructor",
+  "status": "partial",
+  "pct": 4.8
  }
 ]

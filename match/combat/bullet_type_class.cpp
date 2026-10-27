@@ -3,15 +3,83 @@
 //   Target bytes: user's retail gamemd.exe v1.001 (Ghidra disasm). Names
 //   cross-checked against YRpp.
 //
-// reccmp annotations (ascending by retail address within this TU):
-//   FUNCTION: GAMEMD 0x46C790  BulletTypeClass::FindOrAllocate      (__fastcall)
-//   FUNCTION: GAMEMD 0x46C840  BulletTypeClass::SetScaledSpawnDelay (__thiscall)
-//   FUNCTION: GAMEMD 0x46BBC0  BulletTypeClass::Construct (ctor; referenced, matched elsewhere)
-//   GLOBAL:   GAMEMD 0xA83C80  BulletTypeClass::Array
-//   STRING:   GAMEMD 0x817474  "<none>"
-//   STRING:   GAMEMD 0x817694  "none"
+// Function claims in this TU are ordered by their retail entry addresses.
 
 #include "bullet_type_class.h"
+#include "../core/abstract_registry.h"
+#include "../core/vector_class_operations.h"
+
+// FUNCTION: GAMEMD 0x46BBC0
+BulletTypeClass::BulletTypeClass(const char* id)
+    : ObjectTypeClass(id)
+{
+    unknown_294 = 0;
+    unknown_295 = 0;
+    unknown_296 = 0;
+    unknown_297 = 0;
+    unknown_298 = 0;
+    unknown_299 = 0;
+    unknown_29A = 1;
+    unknown_29B = 0;
+    unknown_29C = 0;
+    unknown_29D = 0;
+    unknown_29E = 0;
+    unknown_29F = 0;
+    unknown_2A0 = 0;
+    unknown_2A1 = 1;
+    unknown_2A2 = 0;
+    unknown_2A3 = 0;
+    unknown_2A4[0] = 0;
+    unknown_2A4[1] = 1;
+
+    unknown_2D0 = 3;
+    unknown_2E4 = 3;
+
+    unknown_2A6 = 0;
+    unknown_2A7 = 0;
+    unknown_2A8 = 0;
+    unknown_2A9 = 0;
+    unknown_2AC = 1;
+    AirburstWeapon = 0;
+    ShrapnelWeapon = 0;
+    ShrapnelCount = 0;
+    unknown_2BC = 0;
+    unknown_2C0 = 0;
+    unknown_2C1[0] = 0;
+    unknown_2C1[1] = 0;
+    unknown_2C1[2] = 0;
+    unknown_2C8 = 0.75;
+    unknown_2D4[0] = 0;
+    unknown_2D4[1] = 0;
+    unknown_2D4[2] = 0;
+    unknown_2D4[3] = 0;
+    unknown_2D8 = 0;
+    unknown_2DC = 0;
+    unknown_2E0 = 0;
+    ScaledSpawnDelay = 0;
+    unknown_2EC = 0;
+    unknown_2F0 = 0;
+    unknown_2F4 = 0;
+    unknown_2F5 = 0;
+    unknown_2F6 = 0;
+    unknown_2F7 = 0;
+
+    // The native call targets AbstractClass's RTTI-interface slot 5.
+    AbstractClass::vf_rtti_5();
+
+    IsLogic = true;
+    RadarInvisible = true;
+    Selectable = false;
+    LegalTarget = false;
+    Insignificant = true;
+    Immune = true;
+    AllowCellContent = false;
+
+    BulletTypeClass_Array.AddItem(this);
+    // Native instructions at 0x46BD84..0x46BDD4 treat 0xB0F670 as a
+    // pointer-valued DynamicVectorClass and append this through slot +8.
+    reinterpret_cast<DynamicVectorClass<void*>*>(&DAT_00B0F670)->AddItem((void*)this);
+}
 
 // FUNCTION: GAMEMD 0x46BDE0
 BulletTypeClass::BulletTypeClass(const AbstractNoInit& noInit)
