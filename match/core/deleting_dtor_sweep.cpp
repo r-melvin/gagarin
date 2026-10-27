@@ -24,18 +24,6 @@ void* Obj_477750::FUN_477750(unsigned int flags)
     return this;
 }
 
-// FUNCTION: GAMEMD 0x487E80
-void* Obj_487E80::FUN_487E80(unsigned int flags)
-{
-    FUN_0047BB60(this);
-
-    if (flags & 1) {
-        FUN_007C8B3D(this);
-    }
-
-    return this;
-}
-
 // FUNCTION: GAMEMD 0x48BB00
 void* Obj_48BB00::FUN_48BB00(unsigned int flags)
 {

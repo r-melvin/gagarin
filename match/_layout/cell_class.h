@@ -33,6 +33,7 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_class.h"
+#include "../core/vector_class.h"
 #include "foot_class.h"        // CellStruct
 #include "building_class.h"    // RectangleStruct
 
@@ -42,10 +43,18 @@ class PixelFXClass;
 class BuildingClass;
 class BuildingTypeClass;
 class HouseClass;
+class FoggedObjectClass;
 
 class CellClass : public AbstractClass
 {
 public:
+    // Native constructor at 0x47BBF0; declaration only.
+    CellClass();
+    // Native no-init constructor at 0x47B360; body is in cell_class_get_coords.cpp.
+    CellClass(const AbstractNoInit& noInit);
+    // Native ordinary destructor at 0x47BB60; declaration only.
+    virtual ~CellClass();
+
     // Declarations: hidden RectangleStruct output, RET4; cell receiver in ECX.
     RectangleStruct FUN_0047FF80(); // 0x47FF80, hidden result, RET4
     // Declaration: GAMEMD 0x4802A0; read-only point/clip, receiver ECX, RET8.
@@ -85,6 +94,8 @@ public:
     virtual int vf_11();
     // FUNCTION: GAMEMD 0x487E70 (decl; slot 12)
     virtual int vf_12();
+    // Native RTTI side-table slot 3 target at 0x487E50.
+    virtual int __stdcall vf_rtti_3();
     // FUNCTION: GAMEMD 0x4867E0 (decl; primary slot 20)
     virtual bool IsOnFloor() const;
     // FUNCTION: GAMEMD 0x486890 (decl; primary slot 22)
@@ -128,7 +139,7 @@ public:
     struct Rec_0058C800Ret* FUN_0058C800();
 
     CellStruct      MapCoords;               // +0x24 ctor MOV [ESI+0x24],EAX(=[0x0089E748]) @0x0047BC02
-    void*           FoggedObjects;           // +0x28 ctor @0x0047BC05 (=0)
+    DynamicVectorClass<FoggedObjectClass*>* FoggedObjects; // +0x28 RTTI .?AV?$DynamicVectorClass@PAVFoggedObjectClass@@@@
     void*           BridgeOwnerCell;         // +0x2C CellClass*; ctor @0x0047BC08
     unsigned int    unknown_30;              // +0x30 ctor @0x0047BC0B
     void*           LightConvert;            // +0x34 LightConvertClass*; ctor @0x0047BC0E
