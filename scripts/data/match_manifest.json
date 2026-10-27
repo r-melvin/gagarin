@@ -99614,5 +99614,14 @@
   "name": "RadarClass::RadarClass()",
   "status": "partial",
   "pct": 2.5
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x7162F0",
+  "sym": "?Load@TechnoTypeClass@@UAGJPAUIStream@@@Z",
+  "len": "0xAC9",
+  "name": "TechnoTypeClass::Load",
+  "status": "partial",
+  "pct": 13.0
  }
 ]

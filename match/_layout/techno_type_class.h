@@ -25,7 +25,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "object_type_class.h"   // ObjectTypeClass (sizeof 0x294), AbilitiesStruct
-#include "vector_class.h"        // DynamicVectorClass (sizeof 0x18)
+#include "vector_class.h"        // DynamicVectorClassLayout (sizeof 0x18)
+#include "../core/type_list.h"  // RTTI-backed TypeList<T> hierarchy and typed fields
 
 // ---------------------------------------------------------------------------
 // Local component structs (sizes proven by the oracle doc).
@@ -86,6 +87,14 @@ class WeaponTypeClass;
 struct ColorScheme;
 class HouseClass;
 struct CellStruct;
+
+// TypeList specializations used by TechnoTypeClass fields. Aliases keep VC6
+// offsetof expressions simple and provide actual-type layout anchors.
+typedef TypeList<int> TechnoTypeListInt;
+typedef TypeList<const BuildingTypeClass*> TechnoTypeListBuilding;
+typedef TypeList<const VoxelAnimTypeClass*> TechnoTypeListVoxelAnim;
+typedef TypeList<const AnimTypeClass*> TechnoTypeListAnim;
+typedef TypeList<const ParticleSystemTypeClass*> TechnoTypeListParticleSystem;
 
 // ---------------------------------------------------------------------------
 // TechnoTypeClass  (0x294..0xDF7, sizeof = 0xDF8)
@@ -148,8 +157,8 @@ public:
     double          DecelerationFactor;             // +0x300
     double          AccelerationFactor;             // +0x308
     int             CloakingSpeed;                  // +0x310
-    TypeListLayout  DebrisTypes;                    // +0x314 (TypeList<VoxelAnimTypeClass*>)
-    TypeListLayout  DebrisMaximums;                 // +0x330 (TypeList<int>)
+    TypeList<const VoxelAnimTypeClass*> DebrisTypes;                    // +0x314
+    TypeList<int> DebrisMaximums;                 // +0x330 (TypeList<int>)
     GUIDStruct      Locomotor;                      // +0x34C (0x10)
     unsigned char   align_35C[4];                   // +0x35C
     double          VoxelScaleX;                    // +0x360
@@ -178,22 +187,22 @@ public:
     int             LeptonMindControlOffset;        // +0x3DC
     int             PixelSelectionBracketDelta;     // +0x3E0
     int             PipWrap;                        // +0x3E4
-    TypeListLayout  Dock;                           // +0x3E8 (TypeList<BuildingTypeClass*>)
+    TypeList<const BuildingTypeClass*> Dock;                           // +0x3E8
     BuildingTypeClass* DeploysInto;                 // +0x404
     UnitTypeClass*  UndeploysInto;                  // +0x408
     UnitTypeClass*  PowersUnit;                     // +0x40C
     bool            PoweredUnit;                    // +0x410
     unsigned char   _pad_411[3];                    // +0x411
-    TypeListLayout  VoiceSelect;                    // +0x414
-    TypeListLayout  VoiceSelectEnslaved;            // +0x430
-    TypeListLayout  VoiceSelectDeactivated;         // +0x44C
-    TypeListLayout  VoiceMove;                      // +0x468
-    TypeListLayout  VoiceAttack;                    // +0x484
-    TypeListLayout  VoiceSpecialAttack;             // +0x4A0
-    TypeListLayout  VoiceDie;                       // +0x4BC
-    TypeListLayout  VoiceFeedback;                  // +0x4D8
-    TypeListLayout  MoveSound;                      // +0x4F4
-    TypeListLayout  DieSound;                       // +0x510
+    TypeList<int> VoiceSelect;                    // +0x414
+    TypeList<int> VoiceSelectEnslaved;            // +0x430
+    TypeList<int> VoiceSelectDeactivated;         // +0x44C
+    TypeList<int> VoiceMove;                      // +0x468
+    TypeList<int> VoiceAttack;                    // +0x484
+    TypeList<int> VoiceSpecialAttack;             // +0x4A0
+    TypeList<int> VoiceDie;                       // +0x4BC
+    TypeList<int> VoiceFeedback;                  // +0x4D8
+    TypeList<int> MoveSound;                      // +0x4F4
+    TypeList<int> DieSound;                       // +0x510
     int             AuxSound1;                      // +0x52C
     int             AuxSound2;                      // +0x530
     int             CreateSound;                    // +0x534
@@ -232,7 +241,7 @@ public:
     int             GuardRange;                     // +0x5B8
     int             MaxDebris;                      // +0x5BC
     int             MinDebris;                      // +0x5C0
-    TypeListLayout  DebrisAnims;                    // +0x5C4 (TypeList<AnimTypeClass*>)
+    TypeList<const AnimTypeClass*> DebrisAnims;                    // +0x5C4
     int             Passengers;                     // +0x5E0
     bool            OpenTopped;                     // +0x5E4
     unsigned char   _pad_5E5[3];                    // +0x5E5
@@ -259,8 +268,8 @@ public:
     int             AirstrikeRechargeTime;          // +0x62C
     int             EliteAirstrikeRechargeTime;     // +0x630
     int             TechLevel;                      // +0x634
-    TypeListLayout  Prerequisite;                   // +0x638 (TypeList<int>)
-    TypeListLayout  PrerequisiteOverride;           // +0x654 (TypeList<int>)
+    TypeList<int> Prerequisite;                   // +0x638 (TypeList<int>)
+    TypeList<int> PrerequisiteOverride;           // +0x654 (TypeList<int>)
     int             ThreatPosed;                    // +0x670
     int             Points;                         // +0x674
     int             Speed;                          // +0x678
@@ -316,13 +325,13 @@ public:
     bool            CanBeHidden;                    // +0x724
     unsigned char   _pad_725[3];                    // +0x725
     int             Points2;                        // +0x728
-    TypeListLayout  Explosion;                      // +0x72C (TypeList<AnimTypeClass*>)
-    TypeListLayout  DestroyAnim;                    // +0x748 (TypeList<AnimTypeClass*>)
+    TypeList<const AnimTypeClass*> Explosion;                      // +0x72C
+    TypeList<const AnimTypeClass*> DestroyAnim;                    // +0x748
     ParticleSystemTypeClass* NaturalParticleSystem; // +0x764
     CoordStruct     NaturalParticleSystemLocation;  // +0x768 (0xC)
     ParticleSystemTypeClass* RefinerySmokeParticleSystem; // +0x774
-    TypeListLayout  DamageParticleSystems;          // +0x778
-    TypeListLayout  DestroyParticleSystems;         // +0x794
+    TypeList<const ParticleSystemTypeClass*> DamageParticleSystems;          // +0x778
+    TypeList<const ParticleSystemTypeClass*> DestroyParticleSystems;         // +0x794
     CoordStruct     DamageSmokeOffset;              // +0x7B0 (0xC)
     bool            DamSmkOffScrnRel;               // +0x7BC
     unsigned char   _pad_7BD[3];                    // +0x7BD
@@ -449,7 +458,6 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_int_398)   == 0x398);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_39C)         == 0x39C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, unknown_3C0)       == 0x3C0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, align_3C4)         == 0x3C4);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Dock)              == 0x3E8);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, AuxSound1)         == 0x52C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MindClearedSound)  == 0x5B0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Cost)              == 0x610);
@@ -486,60 +494,86 @@ GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Weapon[0].WeaponType) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Weapon) +
                  offsetof(WeaponStruct, WeaponType) +
                  0xA4 == 0x93C); // WeaponTypeClass::Damage is asserted in its canonical header.
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelect) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x424);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectEnslaved) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x440);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectDeactivated) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x45C);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceMove) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x478);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceAttack) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x494);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSpecialAttack) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x4B0);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceDie) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x4CC);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceFeedback) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x4E8);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MoveSound) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x504);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DieSound) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x520);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Explosion) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x73C);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyAnim) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x758);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisTypes) == 0x314);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DebrisTypes) == 0x1C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisTypes) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x324);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisAnims) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x5D4);
-GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Dock) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x3F8);
+                 offsetof(TechnoTypeListVoxelAnim, Count) == 0x324);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisMaximums) == 0x330);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DebrisMaximums) == 0x1C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisMaximums) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x340);
+                 offsetof(TechnoTypeListInt, Count) == 0x340);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Dock) == 0x3E8);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Dock) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Dock) +
+                 offsetof(TechnoTypeListBuilding, Count) == 0x3F8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelect) == 0x414);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceSelect) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelect) +
+                 offsetof(TechnoTypeListInt, Count) == 0x424);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectEnslaved) == 0x430);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceSelectEnslaved) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectEnslaved) +
+                 offsetof(TechnoTypeListInt, Count) == 0x440);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectDeactivated) == 0x44C);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceSelectDeactivated) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSelectDeactivated) +
+                 offsetof(TechnoTypeListInt, Count) == 0x45C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceMove) == 0x468);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceMove) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceMove) +
+                 offsetof(TechnoTypeListInt, Count) == 0x478);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceAttack) == 0x484);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceAttack) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceAttack) +
+                 offsetof(TechnoTypeListInt, Count) == 0x494);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSpecialAttack) == 0x4A0);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceSpecialAttack) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceSpecialAttack) +
+                 offsetof(TechnoTypeListInt, Count) == 0x4B0);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceDie) == 0x4BC);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceDie) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceDie) +
+                 offsetof(TechnoTypeListInt, Count) == 0x4CC);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceFeedback) == 0x4D8);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->VoiceFeedback) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, VoiceFeedback) +
+                 offsetof(TechnoTypeListInt, Count) == 0x4E8);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MoveSound) == 0x4F4);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->MoveSound) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MoveSound) +
+                 offsetof(TechnoTypeListInt, Count) == 0x504);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DieSound) == 0x510);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DieSound) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DieSound) +
+                 offsetof(TechnoTypeListInt, Count) == 0x520);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisAnims) == 0x5C4);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DebrisAnims) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DebrisAnims) +
+                 offsetof(TechnoTypeListAnim, Count) == 0x5D4);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Prerequisite) == 0x638);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Prerequisite) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Prerequisite) +
+                 offsetof(TechnoTypeListInt, Count) == 0x648);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PrerequisiteOverride) == 0x654);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->PrerequisiteOverride) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, PrerequisiteOverride) +
+                 offsetof(TechnoTypeListInt, Count) == 0x664);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Explosion) == 0x72C);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->Explosion) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, Explosion) +
+                 offsetof(TechnoTypeListAnim, Count) == 0x73C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyAnim) == 0x748);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DestroyAnim) == 0x1C);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyAnim) +
+                 offsetof(TechnoTypeListAnim, Count) == 0x758);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DamageParticleSystems) == 0x778);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DamageParticleSystems) == 0x1C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DamageParticleSystems) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x788);
+                 offsetof(TechnoTypeListParticleSystem, Count) == 0x788);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyParticleSystems) == 0x794);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DestroyParticleSystems) == 0x1C);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DestroyParticleSystems) +
-                 offsetof(TypeListLayout, Vector) +
-                 offsetof(DynamicVectorClassLayout, Count) == 0x7A4);
+                 offsetof(TechnoTypeListParticleSystem, Count) == 0x7A4);
 GG_STATIC_ASSERT(offsetof(WeaponStruct, WeaponType) == 0);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, bools_C8C) + 13 == 0xC99);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->bools_C8C[0]) == 1);
