@@ -25,7 +25,9 @@ class VoxelAnimClass : public ObjectClass, public BounceClass
 {
 public:
     // CALLEE: GAMEMD 0x7493B0
-    VoxelAnimClass(VoxelAnimTypeClass* type, const CoordStruct& location, int unknown_arg2);
+    // The native constructor transports a type pointer; its original const qualification is unknown.
+    // This const-qualified API preserves the type-list item qualification at this caller.
+    VoxelAnimClass(const VoxelAnimTypeClass* type, const CoordStruct& location, int unknown_arg2);
 
     // Primary-table override declarations retain canonical base signatures.
     // Their native targets are documented here; this header supplies no bodies.

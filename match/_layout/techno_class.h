@@ -27,6 +27,7 @@
 #include "vector_class.h"     // VectorClass / DynamicVectorClass
 
 class TemporalClass;
+struct RawBlock10; // exact 16-byte value type defined by WarheadTypeClass layout
 
 // --- TechnoClass-side leaf components ---------------------------------------
 // Self-guarded so a downstream layer (FootClass and the leaf classes) can reuse
@@ -157,6 +158,10 @@ class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 public:
     bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
     void FUN_004DC340(); // ECX receiver, RET; render6D478E
+    // CALLEE: GAMEMD 0x70FEE0 -- existing matched Techno_0070FEE0 provider; one bool arg, RET 4.
+    void FUN_0070FEE0(bool clearTarget);
+    // CALLEE: GAMEMD 0x710000 -- thiscall, RawBlock10 by value plus AbstractClass*, RET 0x14.
+    void FUN_00710000(RawBlock10 locomotor, AbstractClass* target);
     // FUNCTION: GAMEMD 0x734270 (decl; reloc)
     // TechnoClass::ClearSidebarTabObject
     void ClearSidebarTabObject();
@@ -309,7 +314,8 @@ public:
     virtual int vf_243(int a1, int a2);                            // 243 0x6FDD50
     virtual void CancelAndGoIdle();                                // 244 0x70F850
     virtual bool vf_245(HouseClass* house, bool a2);               // 245 0x7014A0 (RET 8)
-    virtual void vf_246(int a1, int a2, int a3);                   // 246 0x70B280
+    // CALLEE: GAMEMD 0x70B280 -- slot 246, CoordStruct* / float / bool, RET 0xC.
+    virtual void vf_246(const CoordStruct* coord, float unknown1, bool unknown2);
     virtual bool vf_247(int a1);                                   // 247 0x459E50
     virtual bool vf_248();                                         // 248 0x70DD50
     virtual int vf_249();                                          // 249 0x70DD70

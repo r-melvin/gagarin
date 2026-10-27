@@ -59,17 +59,24 @@ struct RulesClass
     int unknown_08C;
     char unknown_090[0x108 - 0x090];
     AnimTypeClass** TouchdownAnims; // +0x108
-    char unknown_10C[0x1A0 - 0x10C];
+    char unknown_10C[0x140 - 0x10C];
+    AnimTypeClass** unknown_140; // 469EA2: Items pointer; indexing by random selection
+    char unknown_144[8];
+    int unknown_14C; // 469E70: array count, decremented before RandomRanged
+    char unknown_150[0x1A0 - 0x150];
     int unknown_1A0;
     char unknown_1A4[0x1D4 - 0x1A4];
     int unknown_1D4;    // +0x1D4 sound played on entering planning mode
     char unknown_1D8[0x1E0 - 0x1D8];
     int unknown_1E0;    // +0x1E0 sound played on leaving it
-    char unknown_1E4[0x244 - 0x1E4];
+    char unknown_1E4[0x214 - 0x1E4];
+    int unknown_214; // 4692E3: signed sentinel; 469333: sound argument
+    char unknown_218[0x244 - 0x218];
     int BunkerSound;
     char unknown_248[0x344 - 0x248];
     AnimTypeClass* unknown_344;
-    char unknown_348[0x354 - 0x348];
+    char unknown_348[0x350 - 0x348];
+    AnimTypeClass* unknown_350; // 46A2A1 special-impact animation constructor argument
     AnimTypeClass* SpawnAnim; // +0x354
     char unknown_358[0x54C - 0x358];
     int At_54C;
@@ -169,7 +176,9 @@ struct RulesClass
     char unknown_1808[0x186C - 0x1808];
     int unknown_186C; // random upper bound minus one0x68508F
     AnimTypeClass* unknown_1870; // 0x6850D9 -> AnimClass constructor0x421EA0
-    char unknown_1874[0x18C0 - 0x1874];
+    char unknown_1874[0x18B4 - 0x1874];
+    float unknown_18B4; // 0x469817: FMUL float ptr [ECX + 0x18b4]
+    char unknown_18B8[8];
 };
 
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_050) == 0x50);
@@ -269,4 +278,17 @@ GG_STATIC_ASSERT(offsetof(RulesClass, unknown_1434) == 0x1434);
 GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C0) == 0x14C0);
 
 GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->C4Warhead) == 4);
+
+// Bullet impact caller layout closure, native 4690B0 entry-origin assembly.
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_140) == 0x140);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_140) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_14C) == 0x14C);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_14C) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_214) == 0x214);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_214) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_350) == 0x350);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_350) == 4);
+GG_STATIC_ASSERT(offsetof(RulesClass, unknown_18B4) == 0x18B4);
+GG_STATIC_ASSERT(sizeof(((RulesClass*)0)->unknown_18B4) == 4);
+
 #endif

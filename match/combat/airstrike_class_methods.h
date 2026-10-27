@@ -43,6 +43,9 @@ public:
     virtual int vf_12();                                                  // 12  0x41DD30
     virtual void vf_23();                                                 // 23  0x41DC50
 
+    // CALLEE: GAMEMD 0x41D7E0 -- thiscall, ObjectClass* stack argument, bool result.
+    bool FUN_0041D7E0(ObjectClass* candidate);
+
     // Declared ascending by retail address.
     void StartMission(ObjectClass* target);   // GAMEMD 0x41D830 (matched)
 

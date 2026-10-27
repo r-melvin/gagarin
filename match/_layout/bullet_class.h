@@ -153,6 +153,11 @@ public:
     void FUN_00468D80(int impact);
     // Native helper call: this in ECX, coordinate pointer on the stack.
     void FUN_004690B0(const CoordStruct* position);
+    // Native caller contract (GAMEMD 0x46A310): ECX Bullet receiver, no stack args.
+    void FUN_0046A310();
+    // Native caller contract (GAMEMD 0x46B310): ECX Bullet receiver, no stack args.
+    // Body recovery is held; this adds only the observed caller contract.
+    void FUN_0046B310();
 
     BulletTypeClass* Type;               // +0xAC; ctor @0x00466391
     TechnoClass*   Owner;               // +0xB0 TechnoClass*;     ctor @0x00466397

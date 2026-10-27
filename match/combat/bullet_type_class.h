@@ -55,8 +55,13 @@ public:
     // resolves it through the WeaponTypeClass factory at 0x772FA0, and writes
     // its result here at 0x46C2DB.
     WeaponTypeClass* AirburstWeapon; // +0x2B0
-    int unknown_2B4;                 // +0x2B4
-    unsigned char unknown_2B8[4];    // +0x2B8..+0x2BB
+    // The native INI writer at 0x46C2E1..0x46C31F reads key "ShrapnelWeapon"
+    // (STRING 0x81B03C), resolves it with WeaponTypeClass::FindOrAllocate
+    // (0x772FA0), and stores its returned pointer here.
+    WeaponTypeClass* ShrapnelWeapon;  // +0x2B4
+    // The native INI writer at 0x46C310..0x46C32A reads/writes the DWORD value for
+    // INI key "ShrapnelCount" (STRING 0x81B02C).
+    int ShrapnelCount;               // +0x2B8
     int unknown_2BC;
     unsigned char unknown_2C0;
     unsigned char unknown_2C1[7];
@@ -120,10 +125,10 @@ GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2AC) == 0x2AC);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2AC) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, AirburstWeapon) == 0x2B0);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->AirburstWeapon) == 4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2B4) == 0x2B4);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2B4) == 4);
-GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2B8) == 0x2B8);
-GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2B8) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelWeapon) == 0x2B4);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelWeapon) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelCount) == 0x2B8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelCount) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2BC) == 0x2BC);
 GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->unknown_2BC) == 4);
 GG_STATIC_ASSERT(offsetof(BulletTypeClass, unknown_2C0) == 0x2C0);

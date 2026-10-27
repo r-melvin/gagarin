@@ -78,6 +78,10 @@ class CellClass;
 class BuildingClass : public TechnoClass
 {
 public:
+    // Declaration: GAMEMD 0x456E00 -- native BuildingClass primary slot82.
+    // Overrides the inherited Techno slot; existing implementation remains in
+    // BuildingBView and is not migrated or claimed matched by this declaration.
+    virtual void vf_82(int value);
     // FUNCTION: GAMEMD 0x43B740 (decl; reloc) -- (type, owner), RET 8; allocated
     // with PUSH 0x720 / operator new (e.g. 0x5CAB4B).
     BuildingClass(BuildingTypeClass* type, HouseClass* owner);
@@ -182,6 +186,8 @@ public:
     void DisableTemporal();              // GAMEMD 0x4521C0
     void EnableTemporal();               // GAMEMD 0x452210
     bool IsTraversable();                // GAMEMD 0x4525F0
+    // CALLEE: GAMEMD 0x452820 -- thiscall, one TechnoClass* stack argument, RET 4.
+    void FUN_00452820(TechnoClass* owner);
     int  FirstActiveSWIdx();             // GAMEMD 0x457630
     int  SecondActiveSWIdx();            // GAMEMD 0x457690
     void ToggleDamagedAnims(bool damaged); // GAMEMD 0x451EE0

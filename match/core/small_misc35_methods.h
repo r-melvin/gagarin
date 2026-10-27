@@ -8,6 +8,8 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 
+class TechnoClass;
+
 // Only four vtable slots are needed here, so the slot-shaped class is small:
 // +0x08 takes two stack arguments and +0x0C takes none.
 struct Node_00439110
@@ -29,6 +31,9 @@ struct Obj_00439110 : Node_00439110
     Node_00439110 Sub;          // +0x0018
     char          _pad24[0x30 - 0x24];
     int           unknown_30;   // +0x0030
+
+    // CALLEE: GAMEMD 0x438E70 -- thiscall, two TechnoClass pointers, RET 8.
+    void FUN_00438E70(TechnoClass* owner, TechnoClass* target);
 
     // FUNCTION: GAMEMD 0x439110
     void FUN_00439110();

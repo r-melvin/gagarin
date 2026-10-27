@@ -82,6 +82,10 @@ struct ParasiteClass_0062A8E0
 
     // FUNCTION: GAMEMD 0x62A8E0
     bool CanInfect(FootInfect* target);
+
+    // CALLEE: GAMEMD 0x62A980 -- thiscall, one pointer stack argument, RET 4.
+    // Native proves pointer transport only; retain an opaque caller-facing type.
+    void FUN_0062A980(void* target);
 };
 GG_STATIC_ASSERT(offsetof(ParasiteClass_0062A8E0, Owner) == 0x24);
 

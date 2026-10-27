@@ -12,11 +12,13 @@
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
 #include "abstract_type_class.h"
+#include "../core/type_list.h"
 
 // Pointer / TypeList / GUID members read as undefined4 / fixed-size blocks in
 // the decomp. Pointers become real 4-byte pointers to opaque forward decls;
 // the TypeList<T> (DynamicVectorClass + trailing dword, 0x1C) and the Locomotor
 // _GUID (0x10) are modelled here as exact-size byte blocks.
+class VoxelAnimTypeClass;
 class AnimTypeClass;        // opaque (4-byte ptr target)
 class ParticleTypeClass;    // opaque (4-byte ptr target)
 
@@ -105,8 +107,8 @@ public:
     int ShakeYlo;                // +0x184
     int ShakeYhi;                // +0x188
 
-    RawBlock1C DebrisTypes;         // +0x18C (TypeList<VoxelAnimTypeClass*>)
-    RawBlock1C DebrisMaximums;      // +0x1A8 (TypeList<int>)
+    TypeList<const VoxelAnimTypeClass*> DebrisTypes; // +0x18C; ctor75D08C / RTTI7F0D3C
+    TypeList<int> DebrisMaximums;      // +0x1A8 (TypeList<int>)
     int               MaxDebris;           // +0x1C4
     int               MinDebris;           // +0x1C8
     unsigned long     unused_1CC;          // +0x1CC (DWORD)
@@ -128,5 +130,25 @@ GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisTypes)     == 0x18C);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisMaximums)  == 0x1A8);
 GG_STATIC_ASSERT(offsetof(WarheadTypeClass, unused_1CC)      == 0x1CC);
 GG_STATIC_ASSERT(sizeof(WarheadTypeClass)                    == 0x1D0);
+
+
+// Native ctor75D08C/75D0A7 installs TypeList<const VoxelAnimTypeClass*> /
+// TypeList<int> tables7F0D3C/7E4DD8, independently identified by retail RTTI.
+typedef TypeList<const VoxelAnimTypeClass*> WarheadDebrisTypeList;
+typedef TypeList<int> WarheadDebrisMaximumList;
+GG_STATIC_ASSERT(sizeof(WarheadDebrisTypeList) == 0x1C);
+GG_STATIC_ASSERT(sizeof(WarheadDebrisMaximumList) == 0x1C);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisTypes) + offsetof(WarheadDebrisTypeList, Items) == 0x190);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisTypes) + offsetof(WarheadDebrisTypeList, Count) == 0x19C);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, DebrisMaximums) + offsetof(WarheadDebrisMaximumList, Items) == 0x1AC);
+GG_STATIC_ASSERT(sizeof(((WarheadDebrisTypeList*)0)->Items) == 4);
+GG_STATIC_ASSERT(sizeof(((WarheadDebrisTypeList*)0)->Count) == 4);
+GG_STATIC_ASSERT(sizeof(((WarheadDebrisMaximumList*)0)->Items) == 4);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableRed) == 0x151);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableRed) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableGreen) == 0x152);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableGreen) == 1);
+GG_STATIC_ASSERT(offsetof(WarheadTypeClass, CLDisableBlue) == 0x153);
+GG_STATIC_ASSERT(sizeof(((WarheadTypeClass*)0)->CLDisableBlue) == 1);
 
 #endif  // GG_MATCH_LAYOUT_WARHEAD_TYPE_CLASS_H

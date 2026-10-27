@@ -43,6 +43,8 @@ public:
     CaptureManagerClass(void* owner, int maxControlNodes, bool infiniteMindControl);
     // FUNCTION: GAMEMD 0x471C90
     bool CanCapture(Techno_00471C90* target) const;
+    // CALLEE: GAMEMD 0x471D40 -- thiscall, mutable AbstractClass* stack argument, bool result.
+    bool FUN_00471D40(AbstractClass* target);
     // FUNCTION: GAMEMD 0x471FF0
     bool FreeUnit(TechnoClass* unit);
     // FUNCTION: GAMEMD 0x472140
