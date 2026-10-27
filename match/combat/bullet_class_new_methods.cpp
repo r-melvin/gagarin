@@ -4,6 +4,7 @@
 // pinned v1.001 image; see the associated private source-recovery evidence.
 #include "../_layout/bullet_class.h"
 #include "bullet_type_class.h"
+#include "weapon_type_class.h"
 #include "temporal_cell.h"
 #include "../_layout/techno_class.h"
 #include "../_layout/house_class.h"
@@ -18,6 +19,7 @@
 #include "../ui/input_controls/ui_display_chain.h"
 #include "../core/randomizer.h"
 #include "../core/scenario_class_methods.h"
+#include "../core/vec3d_layout.h"
 #include "../core/vector_class_operations.h"
 #include "../renderer/color_scheme_find_methods.h"
 #include <new>
@@ -56,8 +58,15 @@ void __fastcall FUN_004AED70(void* surface, void* conversion, void* shape,
     int a8, int z, int a10, int intensity, int a12, int a13, int a14,
     Point2D offset);
 
+// GLOBAL: GAMEMD 0x7E96E0 -- CLSID requested by the native spawn path.
+extern const CLSID DAT_007E96E0;
+// GLOBAL: GAMEMD 0x7ED3D0 -- signed DWORD ring-bound table; extent not asserted here.
+extern int DAT_007ED3D0[];
+GG_STATIC_ASSERT(sizeof(DAT_007ED3D0[0]) == 4);
 // GLOBAL: GAMEMD 0x7F4890
 extern int DAT_007F4890[32];
+// GLOBAL: GAMEMD 0x7F7C90 -- IID requested by the native spawn path.
+extern const IID DAT_007F7C90;
 // GLOBAL: GAMEMD 0xA8B230
 extern ScenarioClass* DAT_00A8B230;
 // GLOBAL: GAMEMD 0xA83D4C -- native reads House color-scheme index at16054.
@@ -86,6 +95,9 @@ extern void* DAT_0087F6C4;
 extern void* DAT_00887314;
 // GLOBAL: GAMEMD 0xABCD3C
 extern int DAT_00ABCD3C;
+// GLOBAL: GAMEMD 0xABD490 -- four-byte CellStruct offset records; extent not asserted here.
+extern CellStruct DAT_00ABD490[];
+GG_STATIC_ASSERT(sizeof(DAT_00ABD490[0]) == 4);
 // GLOBAL: GAMEMD 0xA8ED84
 extern int DAT_00A8ED84;
 // GLOBAL: GAMEMD 0x89DE70
@@ -1329,6 +1341,338 @@ void BulletClass::FUN_00468D80(int mode)
         }
     }
 }
+
+// Native 46A310 member accesses and the canonical ABI views used by this caller.
+GG_STATIC_ASSERT(offsetof(BulletClass, Type) == 0xAC);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Type) == 4);
+GG_STATIC_ASSERT(offsetof(BulletClass, Owner) == 0xB0);
+GG_STATIC_ASSERT(sizeof(((BulletClass*)0)->Owner) == 4);
+GG_STATIC_ASSERT(offsetof(ObjectClass, Location) == 0x9C);
+GG_STATIC_ASSERT(sizeof(((ObjectClass*)0)->Location) == 0x0C);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelWeapon) == 0x2B4);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelWeapon) == 4);
+GG_STATIC_ASSERT(offsetof(BulletTypeClass, ShrapnelCount) == 0x2B8);
+GG_STATIC_ASSERT(sizeof(((BulletTypeClass*)0)->ShrapnelCount) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Projectile) == 0xA0);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Projectile) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Damage) == 0xA4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Damage) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Speed) == 0xA8);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Speed) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Range) == 0xB4);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Warhead) == 0xAC);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Warhead) == 4);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12F) == 0x12F);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_12F) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_149) == 0x149);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_149) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_151) == 0x151);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_151) == 1);
+GG_STATIC_ASSERT(offsetof(CellClass, FirstObject) == 0xE4);
+GG_STATIC_ASSERT(sizeof(((CellClass*)0)->FirstObject) == 4);
+GG_STATIC_ASSERT(offsetof(CellStruct, X) == 0x00);
+GG_STATIC_ASSERT(sizeof(((CellStruct*)0)->X) == 2);
+GG_STATIC_ASSERT(offsetof(CellStruct, Y) == 0x02);
+GG_STATIC_ASSERT(sizeof(((CellStruct*)0)->Y) == 2);
+GG_STATIC_ASSERT(offsetof(CoordStruct, X) == 0x00);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->X) == 4);
+GG_STATIC_ASSERT(offsetof(CoordStruct, Y) == 0x04);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->Y) == 4);
+GG_STATIC_ASSERT(offsetof(CoordStruct, Z) == 0x08);
+GG_STATIC_ASSERT(sizeof(((CoordStruct*)0)->Z) == 4);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, X) == 0x00);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->X) == 8);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, Y) == 0x08);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Y) == 8);
+GG_STATIC_ASSERT(offsetof(BulletVelocity, Z) == 0x10);
+GG_STATIC_ASSERT(sizeof(((BulletVelocity*)0)->Z) == 8);
+GG_STATIC_ASSERT(offsetof(TechnoClass, Owner) == 0x21C);
+GG_STATIC_ASSERT(sizeof(((TechnoClass*)0)->Owner) == 4);
+GG_STATIC_ASSERT(offsetof(ScenarioClass, unknown_0218) == 0x218);
+GG_STATIC_ASSERT(sizeof(((ScenarioClass*)0)->unknown_0218) == 0x3F4);
+GG_STATIC_ASSERT(sizeof(DAT_007ED3D0[0]) == 4);
+GG_STATIC_ASSERT(sizeof(DAT_00ABD490[0]) == 4);
+
+// FUNCTION: GAMEMD 0x46A310
+// The entry and all call contracts are documented in the private binary review.
+//
+// Address blocks are noted inline.  Global and byte fields still need the
+// canonical declarations/asserts listed in full-body-review.md.
+void BulletClass::FUN_0046A310()
+{
+    // 46A320-46A3D2: negative ShrapnelCount is reduced by the range to Owner.
+    int requested = Type->ShrapnelCount;
+    if (requested < 0) {
+        if (Owner == 0) {
+            requested = 3;
+        } else {
+            // Native captures this Location before calling Owner's slot18.
+            const CoordStruct origin = Location;
+            CoordStruct ownerPosition = Owner->vf_18();
+            CoordStruct difference;
+            difference.FUN_0041C230(ownerPosition.X - origin.X,
+                                   ownerPosition.Y - origin.Y,
+                                   ownerPosition.Z - origin.Z);
+            int distance = difference.FUN_0041C380();
+            // Native CDQ / AND 0xff / ADD / SAR sequence rounds signed
+            // distance/256 toward zero; it is not an x87 conversion.
+            int cellDistance = (distance + (distance < 0 ? 0xFF : 0)) >> 8;
+            requested = -requested - cellDistance;
+            if (requested <= 0)
+                return;
+        }
+    }
+
+    // 46A3D6-46A406: abort when the bullet's current cell has no object, or
+    // its FirstObject reports abstract kind 6.
+    CellClass* initialCell = vf_111();
+    if (initialCell->FirstObject == 0)
+        return;
+    // Native 46A3F2 calls slot111 again; it does not repeat the null guard.
+    AbstractClass* initialObject =
+        static_cast<AbstractClass*>(vf_111()->FirstObject);
+    if (initialObject->vf_11() == 6)
+        return;
+
+    // 46A40C-46A47E: compute the WeaponType's cell range and initialize the
+    // first-pass ring scan.  Range bounds are half-open pairs at 0x7ED3D0.
+    WeaponTypeClass* weapon = Type->ShrapnelWeapon;
+    // 46A41F snapshots Projectile once before either scan loop.
+    BulletTypeClass* projectile = weapon->Projectile;
+    CellStruct baseCell = vf_110();
+    int rangeInCells = (weapon->Range + (weapon->Range < 0 ? 0xFF : 0)) >> 8;
+    int attempted = 0;
+
+    // 46A473-46A914: scan each ring's [begin,end) cell-offset records at
+    // 0xABD490.  Eligibility is checked before CoCreateInstance.  An eligible
+    // cell consumes one requested attempt even if COM creation fails.
+    for (int ring = 1; ring <= rangeInCells; ++ring) {
+        int begin = DAT_007ED3D0[ring - 1];
+        int end = DAT_007ED3D0[ring];
+        for (int offsetIndex = begin; offsetIndex < end; ++offsetIndex) {
+            CellStruct offset = DAT_00ABD490[offsetIndex];
+            CellStruct candidateCell;
+            candidateCell.X = static_cast<short>(baseCell.X + offset.X);
+            candidateCell.Y = static_cast<short>(baseCell.Y + offset.Y);
+            // Native 0x5657A0 returns a CellClass*; the shared header's
+            // existing pointer overload retains a display-cell alias.  This
+            // zero-offset ABI conversion is the same native object pointer.
+            CellClass* candidate = reinterpret_cast<CellClass*>(
+                Map_0087F7E8.FUN_005657A0(&candidateCell));
+
+            AbstractClass* target =
+                static_cast<AbstractClass*>(candidate->FirstObject);
+            TechnoClass* owner = Owner;
+            if (target == 0 || target == owner || owner == 0)
+                continue;
+            if (owner->Owner->FUN_004F9A90(target))
+                continue;
+
+            // 46A50F-46A555 snapshots these fields before CoCreateInstance;
+            // keep the pre-call values if COM invokes code that mutates them.
+            WarheadTypeClass* spawnWarhead = weapon->Warhead;
+            unsigned char spawnFlag = weapon->unknown_12F;
+            int spawnDamage = weapon->Damage;
+            int spawnSpeed = weapon->Speed;
+            TechnoClass* spawnOwner = Owner;
+
+            // 46A50F-46A5AC: the COM output is cleared before the call.  On
+            // success, initialize the new bullet from the selected weapon's
+            // Projectile, Damage, Warhead and Speed plus this target/owner.
+            BulletClass* created = 0;
+            HRESULT result = CoCreateInstance(
+                (REFCLSID)DAT_007E96E0, 0, 7,
+                (REFIID)DAT_007F7C90,
+                reinterpret_cast<void**>(&created));
+            if (result >= 0) {
+                created->FUN_004664C0(projectile, target, spawnOwner,
+                                      spawnDamage, spawnWarhead, spawnSpeed,
+                                      spawnFlag);
+
+                // 46A5AC-46A875: aim the new bullet from this Bullet's current
+                // Location at the target object's returned CoordStruct, then
+                // pass the source coordinate and three-double velocity to
+                // Bullet slot 124.  Native uses atan2/table trig and x87
+                // conversions. The native 100.0 fallback, cosine rescaling,
+                // and fixed-angle component sequence are represented below.
+                if (created != 0) {
+                    CoordStruct sourcePosition = Location;
+                    CoordStruct targetPosition = target->vf_18();
+                    double dx = static_cast<double>(targetPosition.X) - sourcePosition.X;
+                    double dy = static_cast<double>(targetPosition.Y) - sourcePosition.Y;
+                    short yaw = static_cast<short>(static_cast<int>(
+                        (FUN_004CAE30(-dy, dx) - DAT_007E2820) * DAT_007E2818));
+                    BulletVelocity velocity;
+                    velocity.X = 0.0;
+                    velocity.Y = 0.0;
+                    velocity.Z = 0.0;
+                    if (velocity.X == 0.0 && velocity.Y == 0.0)
+                        velocity.X = 100.0;
+                    // ABI view only: BulletVelocity and Vec3d are both three
+                    // adjacent doubles (0/8/10, size 18); the native helpers
+                    // receive this exact local address and read those offsets.
+                    Vec3d& vectorView = reinterpret_cast<Vec3d&>(velocity);
+                    double yawLength = vectorView.FUN_0041C430();
+                    double yawRadians = (yaw - 0x3FFF) * DAT_007E2810;
+                    velocity.X = FUN_004CAD00(yawRadians) * yawLength;
+                    velocity.Y = -FUN_004CACB0(yawRadians) * yawLength;
+                    // Native's second atan2 uses the third vector component
+                    // and planar length after the yaw results. Z remains the
+                    // zeroed input through this first direction stage.
+                    double planarLength = vectorView.FUN_0041C350();
+                    short pitch = static_cast<short>(static_cast<int>(
+                        (FUN_004CAE30(velocity.Z, planarLength) - DAT_007E2820) *
+                         DAT_007E2818));
+                    double pitchRadians = (pitch - 0x3FFF) * DAT_007E2810;
+                    double preSpreadLength = vectorView.FUN_0041C3C0();
+                    if (pitchRadians != 0.0) {
+                        velocity.X /= FUN_004CAD00(pitchRadians);
+                        velocity.Y /= FUN_004CAD00(pitchRadians);
+                    }
+                    // Native stack constants at 46A787..46A7BF encode this
+                    // angle as the exact double 0.7853262558535721.
+                    const double spreadAngle = 0.7853262558535721;
+                    velocity.X *= FUN_004CAD00(spreadAngle);
+                    velocity.Y *= FUN_004CAD00(spreadAngle);
+                    velocity.Z = FUN_004CACB0(spreadAngle) * preSpreadLength;
+                    if (velocity.X == 0.0 && velocity.Y == 0.0 && velocity.Z == 0.0)
+                        velocity.X = 100.0;
+                    double finalLength = vectorView.FUN_0041C3C0();
+                    double velocityScale = weapon->Speed / finalLength;
+                    velocity.X *= velocityScale;
+                    velocity.Y *= velocityScale;
+                    velocity.Z *= velocityScale;
+                    CoordStruct launchPosition = Location;
+                    created->vf_124(launchPosition, velocity);
+                    CoordStruct callbackPosition = Location;
+
+                    // 46A887-46A8CC: read the flags at WeaponType+149/+151 at
+                    // their respective use sites and reload Bullet.Owner for
+                    // each call.  The first callback receives FirstObject,
+                    // zero, WeaponType, and the cell coordinate; the second
+                    // receives FirstObject, WeaponType, and the coordinate.
+                    if (weapon->unknown_149 != 0 && Owner != 0)
+                        Owner->FUN_006FD210(target, 0, weapon, &callbackPosition);
+                    if (weapon->unknown_151 != 0 && Owner != 0)
+                        Owner->FUN_006FD460(target, weapon, &callbackPosition);
+                }
+            }
+
+            ++attempted;
+            if (attempted == requested)
+                return;
+        }
+    }
+
+    // 46A92C-46A942: remaining requests use randomized cells around this
+    // Bullet's virtual CellStruct position.
+    int remaining = requested - attempted;
+    while (remaining > 0) {
+        CellStruct randomCell = vf_110();
+        randomCell.X = static_cast<short>(
+            randomCell.X + DAT_00A8B230->unknown_0218.RandomRanged(-2, 2));
+        randomCell.Y = static_cast<short>(
+            randomCell.Y + DAT_00A8B230->unknown_0218.RandomRanged(-2, 2));
+        // Native 46A985-46A9B0 snapshots the setter inputs and Owner before
+        // the Map lookup and CoCreateInstance calls.
+        unsigned char spawnFlag = weapon->unknown_12F;
+        TechnoClass* spawnOwner = Owner;
+        int spawnDamage = weapon->Damage;
+        int spawnSpeed = weapon->Speed;
+        WarheadTypeClass* spawnWarhead = weapon->Warhead;
+        CellClass* candidate = reinterpret_cast<CellClass*>(
+            Map_0087F7E8.FUN_005657A0(&randomCell));
+
+        // 46A985-46AA21: unlike the first pass, the random branch does not
+        // filter an occupant or alliance.  COM failure still consumes one
+        // remaining attempt.
+        BulletClass* created = 0;
+        HRESULT result = CoCreateInstance(
+            (REFCLSID)DAT_007E96E0, 0, 7,
+            (REFIID)DAT_007F7C90,
+            reinterpret_cast<void**>(&created));
+        if (result >= 0) {
+            AbstractClass* target = candidate;
+            created->FUN_004664C0(projectile, target, spawnOwner,
+                                  spawnDamage, spawnWarhead, spawnSpeed,
+                                  spawnFlag);
+
+            // 46AA27-46AD29: the randomized-cell aim path uses the same
+            // zero-vector yaw construction, then applies Speed normalization
+            // before pitch correction and the fixed-angle transform.
+            if (created != 0) {
+                // Native 46AA61 repeats the cell lookup after the setter.
+                CellClass* aimCell = reinterpret_cast<CellClass*>(
+                    Map_0087F7E8.FUN_005657A0(&randomCell));
+                CoordStruct sourcePosition = Location;
+                CoordStruct targetPosition = aimCell->vf_18();
+                double dx = static_cast<double>(targetPosition.X) - sourcePosition.X;
+                double dy = static_cast<double>(targetPosition.Y) - sourcePosition.Y;
+                short yaw = static_cast<short>(static_cast<int>(
+                    (FUN_004CAE30(-dy, dx) - DAT_007E2820) * DAT_007E2818));
+                BulletVelocity velocity;
+                velocity.X = 0.0;
+                velocity.Y = 0.0;
+                velocity.Z = 0.0;
+                if (velocity.X == 0.0 && velocity.Y == 0.0)
+                    velocity.X = 100.0;
+                double yawLength = FUN_004CAC40(
+                    velocity.X * velocity.X + velocity.Y * velocity.Y);
+                double yawRadians = (yaw - 0x3FFF) * DAT_007E2810;
+                velocity.X = FUN_004CAD00(yawRadians) * yawLength;
+                velocity.Y = -FUN_004CACB0(yawRadians) * yawLength;
+                if (velocity.X == 0.0 && velocity.Y == 0.0 && velocity.Z == 0.0)
+                    velocity.X = 100.0;
+                double preScaleLength = FUN_004CAC40(
+                    velocity.X * velocity.X + velocity.Y * velocity.Y +
+                    velocity.Z * velocity.Z);
+                double velocityScale = weapon->Speed / preScaleLength;
+                velocity.X *= velocityScale;
+                velocity.Y *= velocityScale;
+                velocity.Z *= velocityScale;
+                double planarLength =
+                    reinterpret_cast<Vec3d&>(velocity).FUN_0041C350();
+                short pitch = static_cast<short>(static_cast<int>(
+                    (FUN_004CAE30(velocity.Z, planarLength) - DAT_007E2820) *
+                     DAT_007E2818));
+                double pitchRadians = (pitch - 0x3FFF) * DAT_007E2810;
+                double preSpreadLength = FUN_004CAC40(
+                    velocity.X * velocity.X + velocity.Y * velocity.Y +
+                    velocity.Z * velocity.Z);
+                if (pitchRadians != 0.0) {
+                    velocity.X /= FUN_004CAD00(pitchRadians);
+                    velocity.Y /= FUN_004CAD00(pitchRadians);
+                }
+                const double spreadAngle = 0.7853262558535721;
+                velocity.X *= FUN_004CAD00(spreadAngle);
+                velocity.Y *= FUN_004CAD00(spreadAngle);
+                velocity.Z = FUN_004CACB0(spreadAngle) * preSpreadLength;
+                CoordStruct launchPosition = Location;
+                    created->vf_124(launchPosition, velocity);
+                    CoordStruct callbackPosition = Location;
+
+                // 46AD37-46ADB9: both callbacks are conditional on the
+                // corresponding WeaponType byte and a non-null reloaded
+                // Bullet.Owner.  The first Map lookup's returned CellClass*
+                // is argument 1 at 46AD81; the second is argument 1 at
+                // 46ADB9.  Neither argument is an assumed FirstObject.
+                if (weapon->unknown_149 != 0 && Owner != 0) {
+                    CellClass* callbackCell = reinterpret_cast<CellClass*>(
+                        Map_0087F7E8.FUN_005657A0(&randomCell));
+                    Owner->FUN_006FD210(callbackCell, 0, weapon, &callbackPosition);
+                }
+                if (weapon->unknown_151 != 0 && Owner != 0) {
+                    CellClass* callbackCell = reinterpret_cast<CellClass*>(
+                        Map_0087F7E8.FUN_005657A0(&randomCell));
+                    Owner->FUN_006FD460(callbackCell, weapon, &callbackPosition);
+                }
+            }
+        }
+        --remaining;
+    }
+}
+
 
 // FUNCTION: GAMEMD 0x46AE70
 HRESULT __stdcall BulletClass::Load(IStream* stream)

@@ -55,9 +55,14 @@ public:
     int               Range;                  // +0xB4
     unsigned int      unknown_B8;             // +0xB8
     DynamicVectorClass<int> Reports;           // +0xBC (items +0xC0, count +0xCC)
-    char              _tail[0x150 - 0xD4];    // +0xD4  remaining Rules fields (P2)
+    char              _tail[0x12F - 0xD4];   // +0xD4..+0x12E
+    unsigned char     unknown_12F;            // +0x12F; byte load at Bullet 0x46A515/0x46A985
+    char              _tail_130[0x149 - 0x130]; // +0x130..+0x148
+    unsigned char     unknown_149;            // +0x149; byte loads at Bullet 0x46A887/0x46AD3E
+    char              _tail_14A[0x150 - 0x14A]; // +0x14A..+0x14F
     bool              unknown_150;            // +0x150 (bool; read by TechnoClass slot 248 @0x70DD50)
-    char              _tail2[0x158 - 0x151];  // +0x151..+0x157
+    unsigned char     unknown_151;            // +0x151; byte loads at Bullet 0x46A8B1/0x46AD86
+    char              _tail2[0x158 - 0x152];  // +0x152..+0x157
     int               unknown_158;            // +0x158 (signed test at 0x46913E)
     char              _tail3[0x160 - 0x15C];  // +0x15C..+0x15F
 };
@@ -73,6 +78,12 @@ GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->Range) == 4);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports)    == 0xBC);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x04 == 0xC0);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, Reports) + 0x10 == 0xCC);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_12F) == 0x12F);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_12F) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_149) == 0x149);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_149) == 1);
+GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_151) == 0x151);
+GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_151) == 1);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_150) == 0x150);
 GG_STATIC_ASSERT(offsetof(WeaponTypeClass, unknown_158) == 0x158);
 GG_STATIC_ASSERT(sizeof(((WeaponTypeClass*)0)->unknown_158) == 4);

@@ -99875,5 +99875,14 @@
   "name": "UnitClass::vf_313",
   "status": "partial",
   "pct": 43.6
+ },
+ {
+  "tu": "match/combat/bullet_class_new_methods.cpp",
+  "addr": "0x46A310",
+  "sym": "?FUN_0046A310@BulletClass@@QAEXXZ",
+  "len": "0xAC5",
+  "name": "BulletClass::FUN_0046A310",
+  "status": "partial",
+  "pct": 2.4
  }
 ]

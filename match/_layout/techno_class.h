@@ -27,6 +27,7 @@
 #include "vector_class.h"     // VectorClass / DynamicVectorClass
 
 class TemporalClass;
+class WeaponTypeClass;
 struct RawBlock10; // exact 16-byte value type defined by WarheadTypeClass layout
 
 // --- TechnoClass-side leaf components ---------------------------------------
@@ -156,6 +157,19 @@ class HouseClass;
 class TechnoClass : public RadioClass, public FlasherClass, public StageClass
 {
 public:
+    // Native call contract at 0x6FD210 (Bullet call site 0x46A8AC): thiscall,
+    // four stack DWORDs (RET 0x10). Bullet passes AbstractClass*, int,
+    // WeaponTypeClass*, CoordStruct*. The caller ignores EAX, so its original
+    // source return type remains unknown.
+    void FUN_006FD210(AbstractClass* target, int unknownStackArg1,
+                      WeaponTypeClass* weapon, const CoordStruct* source);
+    // Native call contract at 0x6FD460 (Bullet call site 0x46A8CC): thiscall,
+    // three stack DWORDs (RET 0x0C). Bullet passes AbstractClass*,
+    // WeaponTypeClass*, CoordStruct*. The caller ignores EAX, so its original
+    // source return type remains unknown.
+    void FUN_006FD460(AbstractClass* target, WeaponTypeClass* weapon,
+                      const CoordStruct* source);
+
     bool FUN_0043B150(); // ECX receiver, AL result, RET; render6D4766
     void FUN_004DC340(); // ECX receiver, RET; render6D478E
     // CALLEE: GAMEMD 0x70FEE0 -- existing matched Techno_0070FEE0 provider; one bool arg, RET 4.

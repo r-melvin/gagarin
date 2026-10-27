@@ -7,6 +7,7 @@
 
 #include <stddef.h>
 #include "../_rt/gg_static_assert.h"
+#include "vec3d_layout.h"
 
 // GLOBAL: GAMEMD 0x89E008 / 0x89E020 / 0x89DFD4 — reset with the record.
 extern int  DAT_0089E008;
@@ -28,27 +29,6 @@ struct Obj_004036C0
 // Takes its argument as a double and returns one — the value is marshalled
 // through the stack (`SUB ESP,8; FSTP qword ptr [ESP]`), not the FPU stack.
 double __cdecl FUN_004CAC40(double v);   // GAMEMD 0x4CAC40
-
-// A three-double vector. 0x41C350 and 0x41C430 are byte-identical and are
-// written out separately per the family rule. Both use the fields at +0x00 and
-// +0x08 - the first two - and skip the third.
-struct Vec3d
-{
-    double x;   // +0x0000
-    double y;   // +0x0008
-    double z;   // +0x0010
-
-    // FUNCTION: GAMEMD 0x41C350
-    double FUN_0041C350() const;
-    // FUNCTION: GAMEMD 0x41C430
-    double FUN_0041C430() const;
-    // FUNCTION: GAMEMD 0x41C3C0 — the full three-component length, against
-    // 0x41C350's two-component one.
-    double FUN_0041C3C0() const;
-    // FUNCTION: GAMEMD 0x46B960
-    Vec3d* FUN_0046B960(const Vec3d* other);
-};
-GG_STATIC_ASSERT(offsetof(Vec3d, z) == 0x10);
 
 struct Obj_00470C00
 {
