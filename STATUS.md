@@ -1,18 +1,29 @@
 # Project status
 
-At source snapshot **`7f489c73` (2026-10-26)**, the manifest holds
-**11,013 rows: 10,270 matched and 743 partial**, in 1,246 manifest translation
+At source snapshot **`ce91a761` (2026-10-27)**, the manifest holds
+**11,091 rows: 10,307 matched and 784 partial**, in 1,249 manifest translation
 units. The extent census contains **19,778 functions** and 3,878,653 function
-bytes. Matched rows represent **51.9%** of the census and **710,873 bytes
-(18.3%)**; partials represent 3.8%. These are function measurements, not
+bytes. Matched rows represent **52.1%** of the census and **716,425 bytes
+(18.5%)**; partials represent 4.0%. These are function measurements, not
 executable completion.
 
-The full gate compiles **1,257 tracked translation units**, checks **139 layout
-headers**, re-proves all 10,270 matched rows and compile-checks all 743 partials,
+The full gate compiles **1,260 tracked translation units**, checks **140 layout
+headers**, re-proves all 10,307 matched rows and compile-checks all 784 partials,
 with no matched-function regressions. Recent affected exact functions also have
 explicit relocation and actual selected-provider checks. Compiling, matching
 functions and linking remain separate from complete vtable, RTTI, data layout
 and whole-image verification.
+
+Recent source recovery adds Foot virtual methods, Bullet and BulletType
+methods, and Cell persistence code. The latest batch recovers Cell's no-init
+constructor and RTTI query exactly, records Cell Load and the BulletType named
+constructor as partials, and promotes Cell Save from 88% to 100% after adopting
+its binary-attested vector type. Cell's deleting helper now comes from the
+compiler, with its existing exact score preserved. All 80 pointer values in
+the four Cell and four BulletType tables were checked in the actual diagnostic
+link. Partial table targets still select stubs; these checks do not establish
+complete class recovery. Further work prioritizes new source recovery, with
+held migrations left intact.
 
 The narrow string family now has one Wstring owner. Despite its retail name,
 this is the four-byte, heap-owning **narrow** string. The separate wide owner
@@ -101,7 +112,7 @@ Link milestones (diagnostic images do not run):
 | Milestone | State | Measurement |
 | --- | --- | --- |
 | M0 diagnostic link | measured at `286b0ae1` | 1,270 objects, 8,621 unresolved externals and 0 duplicate definitions, using `/FORCE`; an unresolved-symbol diagnostic, not a working engine |
-| M1 address-faithful stub link | verified at `7f489c73` | Exit 0 without `/FORCE`, 0 unresolved after 8,939 placed int3 stubs, 0 duplicate definitions; all 10,270 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
+| M1 address-faithful stub link | verified at `ce91a761` | Exit 0 without `/FORCE`, 0 unresolved after 8,902 placed int3 stubs, 0 duplicate definitions; all 10,307 distinct matched entries at retail addresses. Four local drift events remain around the oversized object sections at `0x49F620` and `0x4A80D0`. The library tail remains unordered; the entry point is 8,044 bytes before retail |
 | M2 hybrid runnable build | next | not started |
 | M3 matched objects swap in | not started | |
 | M4 pure-source playable | not started | |
