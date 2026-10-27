@@ -77,9 +77,21 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 // is DynamicVectorClass<Cell>. Serialization reads the element's dword at +0;
 // Elem_0042F670 is the existing four-byte ABI view for that value.
 typedef DynamicVectorClass<Cell> RadarCellVector;
+typedef DynamicVectorClass<Point2D> RadarPointVector;
 GG_STATIC_ASSERT(sizeof(RadarCellVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarCellVector, IsAllocated) == 0x0D);
 GG_STATIC_ASSERT(offsetof(RadarCellVector, Count) == 0x10);
 GG_STATIC_ASSERT(offsetof(RadarCellVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(sizeof(RadarPointVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(RadarPointVector, CapacityIncrement) == 0x14);
 GG_STATIC_ASSERT(sizeof(Elem_0042F670) == 4);
 GG_STATIC_ASSERT(offsetof(Elem_0042F670, Value) == 0);
 
@@ -1258,6 +1270,67 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
 Record_00656580* Obj_00656580::FUN_00656580(const Key_00656580* key)
 {
     return &unknown_0[key->unknown_EF0 + 0xC5];
+}
+
+// FUNCTION: GAMEMD 0x6568A0
+long RadarClass::vf_30(IStream* stream)
+{
+    int i;
+    long hr = DisplayClass::vf_30(stream);
+    if (hr < 0)
+        return hr;
+
+    int count;
+    hr = stream->Read(&count, 4, 0);
+    if (hr < 0)
+        return hr;
+
+    unknown_14C0.FUN_00405BE0();
+
+    // Native resets each vector by replacing its object lifetime with a zero-capacity
+    // dynamic vector: the base constructor receives (0, 0), then retail installs the
+    // derived-table state. Placement construction expresses the same stores without
+    // freeing any old backing block (0x658D60 and 0x42FCB0 native paths).
+    new ((void*)&unknown_125C) DynamicVectorClass<Point2D>(0, 0);
+    for (i = 0; i < count; ++i) {
+        Point2D point;
+        hr = stream->Read(&point, 8, 0);
+        if (hr < 0)
+            return hr;
+        unknown_125C.AddItem(point);
+    }
+
+    hr = stream->Read(&count, 4, 0);
+    if (hr < 0)
+        return hr;
+
+    new ((void*)&unknown_1224) DynamicVectorClass<Cell>(0, 0);
+    for (i = 0; i < count; ++i) {
+        Cell cell;
+        hr = stream->Read(&cell, 4, 0);
+        if (hr < 0)
+            return hr;
+        unknown_1224.AddItem(cell);
+    }
+
+    for (i = 0; i < 0x16; ++i)
+        new ((void*)&unknown_1278[i]) DynamicVectorClass<Point2D>(0, 0);
+
+    hr = stream->Read(&unknown_14B0, 4, 0);
+    if (hr < 0)
+        return hr;
+    hr = stream->Read(&unknown_14AC, 4, 0);
+    if (hr < 0)
+        return hr;
+    hr = stream->Read(&unknown_14B4, 4, 0);
+    if (hr < 0)
+        return hr;
+    hr = stream->Read(&unknown_14B8, 4, 0);
+    if (hr < 0)
+        return hr;
+
+    unknown_14C0.FUN_00405BE0();
+    return 0;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

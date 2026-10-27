@@ -99515,5 +99515,14 @@
   "name": "TechnoTypeClass::vf_44",
   "status": "partial",
   "pct": 69.2
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x6568A0",
+  "sym": "?vf_30@RadarClass@@UAEJPAUIStream@@@Z",
+  "len": "0x21d",
+  "name": "RadarClass::vf_30",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
