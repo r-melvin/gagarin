@@ -99884,5 +99884,14 @@
   "name": "BulletClass::FUN_0046A310",
   "status": "partial",
   "pct": 2.4
+ },
+ {
+  "tu": "match/movement/foot_class_methods.cpp",
+  "addr": "0x41C090",
+  "sym": "?vf_323@FootClass@@UAEXPAUSHPStruct@@HPAUPoint2D@@PAURectangleStruct@@HHHHHHHHHHHH@Z",
+  "len": "0x58",
+  "name": "FootClass::vf_323",
+  "status": "matched",
+  "pct": 100.0
  }
 ]

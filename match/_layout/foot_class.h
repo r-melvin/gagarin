@@ -39,8 +39,8 @@ class FootClass : public TechnoClass
 {
 public:
     // Slots 309-340, introduced by FootClass (341 slots in all; retail table 0x7E8C94).
-    // Names are placeholders; argument counts come from RET n, return types are not recovered. Slots 323 and 324
-    // pop 0x40 and 0x28 bytes, so some of those words are by-value structures.
+    // Names are placeholders; argument widths come from native RET n cleanup.
+    // Slot 323 forwards its sixteen dwords to TechnoClass::FUN_00705E00.
     virtual void vf_309(int a1);                                   // 309 0x4DE750
     virtual void vf_310(FootClass* passenger);                     // 310 0x4DE760; 0x4DE742 passes the FootClass* that 0x473430 returned
     virtual void vf_311();                                         // 311 0x4DC790
@@ -55,7 +55,10 @@ public:
     virtual void vf_320();                                         // 320 0x4D55C0
     virtual void vf_321();                                         // 321 0x4DB9B0
     virtual void vf_322(int a1, int a2, int a3);                   // 322 0x4DF7F0
-    virtual void vf_323(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, int a13, int a14, int a15, int a16);// 323 0x41C090
+    // Native slot 323 forwards 16 dwords to the typed TechnoClass helper at 0x41C090.
+    virtual void vf_323(SHPStruct* a1, int a2, Point2D* a3, RectangleStruct* a4,
+                        int a5, int a6, int a7, int a8, int a9, int a10,
+                        int a11, int a12, int a13, int a14, int a15, int a16); // 323 0x41C090
     virtual void vf_324(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10);// 324 0x4DAF10
     virtual void vf_325();                                         // 325 0x41C0F0
     virtual void vf_326();                                         // 326 0x41C100
