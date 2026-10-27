@@ -99704,5 +99704,32 @@
   "name": "TechnoTypeClass::vf_42",
   "status": "partial",
   "pct": 12.5
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x6558D0",
+  "sym": "?FUN_006558D0@RadarClass@@QAEXXZ",
+  "len": "0xbb",
+  "name": "RadarClass::FUN_006558D0",
+  "status": "partial",
+  "pct": 17.6
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x655990",
+  "sym": "?FUN_00655990@RadarClass@@QAEXXZ",
+  "len": "0xf5",
+  "name": "RadarClass::FUN_00655990",
+  "status": "partial",
+  "pct": 9.8
+ },
+ {
+  "tu": "match/ui/Radar.cpp",
+  "addr": "0x655B20",
+  "sym": "?FUN_00655B20@RadarClass@@QAEXXZ",
+  "len": "0x125",
+  "name": "RadarClass::FUN_00655B20",
+  "status": "partial",
+  "pct": 23.4
  }
 ]

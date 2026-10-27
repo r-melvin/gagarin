@@ -68,6 +68,12 @@ extern "C" int __cdecl FUN_004068E0(const char* format, ...);
 #include "radar_class.h"
 #include "input_controls/ui_common.h"
 #include "shape_button_class.h"
+#include "../_layout/rules_class.h"
+#include "../_layout/techno_class.h"
+#include "../core/leftover_trivial_leaf_sweep.h"
+
+// GLOBAL: GAMEMD 0x00A8EC78
+extern DynamicVectorClass<TechnoClass*> DAT_00A8EC78;
 #include "../platform/ccini_class_small_readers_methods.h"
 #include "../platform/file_system_load_whole_methods.h"
 #include "../renderer/pixel_shift_view.h"
@@ -724,6 +730,23 @@ template class DynamicVectorClass<HashObject<unsigned int,SubzoneConnectionStruc
 
 struct RadarTrackingStruct { int unknown_00; int unknown_04; int unknown_08; RadarTrackingStruct() {} RadarTrackingStruct(const RadarTrackingStruct& o) : unknown_00(o.unknown_00), unknown_04(o.unknown_04), unknown_08(o.unknown_08) {} bool operator==(const RadarTrackingStruct& o) const { return unknown_00==o.unknown_00 && unknown_04==o.unknown_04 && unknown_08==o.unknown_08; } bool operator!=(const RadarTrackingStruct& o) const { return !(*this==o); } }; class TechnoClass; 
 
+typedef DynamicVectorClass<HashObject<RadarTrackingStruct, TechnoClass*> > RadarTrackingVector;
+GG_STATIC_ASSERT(sizeof(RadarTrackingStruct) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_00) == 0x00);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_04) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarTrackingStruct, unknown_08) == 0x08);
+GG_STATIC_ASSERT(sizeof(RadarTrackingVector) == 0x18);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Items) == 0x04);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Capacity) == 0x08);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsInitialized) == 0x0C);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, IsAllocated) == 0x0D);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, Count) == 0x10);
+GG_STATIC_ASSERT(offsetof(RadarTrackingVector, CapacityIncrement) == 0x14);
+GG_STATIC_ASSERT(offsetof(TechnoClass, IsRadarTracked) == 0x423);
+GG_STATIC_ASSERT(sizeof(TechnoClass) == 0x520);
+GG_STATIC_ASSERT(sizeof(TechnoClass*) == 4);
+GG_STATIC_ASSERT(sizeof(void*) == 4);
+
 template class DynamicVectorClass<HashObject<RadarTrackingStruct,TechnoClass*> >;
 
 struct AcceleratorTracker { int A; int B; AcceleratorTracker() : A(0), B(0) {} bool operator==(const AcceleratorTracker& o) const { return A==o.A && B==o.B; } bool operator!=(const AcceleratorTracker& o) const { return !(*this==o); } };
@@ -1357,6 +1380,59 @@ void RadarClass::vf_29(RectangleStruct* mapRect)
     }
 }
 
+// FUNCTION: GAMEMD 0x6558D0
+void RadarClass::FUN_006558D0()
+{
+    RadarArrayHolder* holder = new RadarArrayHolder;
+    if (holder == 0) {
+        unknown_1258 = 0;
+        return;
+    }
+
+    holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
+    holder->unknown_08 = 0x100;
+    holder->unknown_0C = 10;
+    holder->items = new RadarTrackingVector[0x100];
+
+    // Native executes this second pass even when the array allocation fails.
+    // Keep the loop unguarded: the resulting null dereference is part of the
+    // observed allocation-failure path.
+    for (int i = 0; i < holder->unknown_08; ++i)
+        holder->items[i].CapacityIncrement = holder->unknown_0C;
+
+    unknown_1258 = holder;
+}
+
+// FUNCTION: GAMEMD 0x655990
+void RadarClass::FUN_00655990()
+{
+    RadarArrayHolder* oldHolder = unknown_1258;
+    if (oldHolder != 0) {
+        if (oldHolder->items != 0)
+            delete[] oldHolder->items;
+        delete oldHolder;
+    }
+
+    RadarArrayHolder* holder = new RadarArrayHolder;
+    if (holder != 0) {
+        holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
+        holder->unknown_08 = 0x100;
+        holder->unknown_0C = 10;
+        holder->items = new RadarTrackingVector[0x100];
+
+        // Keep the separate native pass unguarded after array allocation.
+        for (int i = 0; i < holder->unknown_08; ++i)
+            holder->items[i].CapacityIncrement = holder->unknown_0C;
+    }
+    unknown_1258 = holder;
+
+    Map_0087F7E8.RadarClass::vf_29(&Map_0087F7E8.LocalRect);
+    FUN_00654650();
+
+    for (int i = 0; i < DAT_00A8EC78.Count; ++i)
+        DAT_00A8EC78.Items[i]->IsRadarTracked = 0;
+}
+
 // FUNCTION: GAMEMD 0x655A90
 void RadarClass::FUN_00655A90()
 {
@@ -1385,6 +1461,42 @@ void RadarClass::FUN_00655A90()
     if (unknown_1274 != 0) {
         ::operator delete(unknown_1274);
         unknown_1274 = 0;
+    }
+}
+
+// FUNCTION: GAMEMD 0x655B20
+void RadarClass::FUN_00655B20()
+{
+    unknown_121C = 0;
+    unknown_1220 = 0;
+    unknown_123C = 0;
+    unknown_1258 = 0;
+    unknown_1274 = 0;
+
+    RadarArrayHolder* holder = new RadarArrayHolder;
+    if (holder != 0) {
+        holder->unknown_04 = reinterpret_cast<void*>(&stub_006558B0);
+        holder->unknown_08 = 0x100;
+        holder->unknown_0C = 10;
+        holder->items = new RadarTrackingVector[0x100];
+
+        // Keep the separate native pass unguarded after array allocation.
+        for (int i = 0; i < holder->unknown_08; ++i)
+            holder->items[i].CapacityIncrement = holder->unknown_0C;
+    }
+    unknown_1258 = holder;
+
+    Map_0087F7E8.RadarClass::vf_29(&Map_0087F7E8.LocalRect);
+    FUN_00654650();
+
+    for (int i = 0; i < DAT_00A8EC78.Count; ++i)
+        DAT_00A8EC78.Items[i]->IsRadarTracked = 0;
+
+    if (unknown_14B0 == 3) {
+        int value = unknown_14B4;
+        unknown_14AC = 5;
+        FUN_00656CB0(value, 0);
+        FUN_0055AF40(RulesInstance->unknown_000);
     }
 }
 

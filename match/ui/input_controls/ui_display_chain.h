@@ -544,6 +544,15 @@ public:
     virtual void vf_52();                                // 52  0x653F70
     virtual void vf_53();                                // 53  0x652E90 (load the art)
 
+    // FUNCTION: GAMEMD 0x654650 (decl; reloc) -- helper uses ECX=this, RET.
+    void FUN_00654650();
+    // FUNCTION: GAMEMD 0x6558D0
+    void FUN_006558D0();
+    // FUNCTION: GAMEMD 0x655990
+    void FUN_00655990();
+    // FUNCTION: GAMEMD 0x655B20
+    void FUN_00655B20();
+
     // FUNCTION: GAMEMD 0x656EC0 (decl; reloc)
     void FUN_00656EC0();
     // FUNCTION: GAMEMD 0x655A90
