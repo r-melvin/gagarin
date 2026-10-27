@@ -64,6 +64,9 @@ public:
     // FUNCTION: GAMEMD 0x480510 (decl; reloc), ECX receiver, two dword args.
     bool ConnectsToOverlay(int overlay, int direction);
     bool FUN_0047C620(int speedType, BuildingTypeClass* type, HouseClass* owner); // GAMEMD 0x47C620 (RET 0xC); BuildingClass 0x449440
+    // FUNCTION: GAMEMD 0x4834A0 (decl; reloc) -- canonical caller API alias; scoped provider remains in Cell_Class_004834A0.
+    bool IsClearToMove(int speedType, bool ignoreInfantry, bool ignoreVehicles,
+                       int zone, int movementZone, int level, bool isBridge);
     int FUN_00485020(); // GAMEMD 0x485020; caller0x685078 tests EAX
     void FUN_0047D2B0(int value); // GAMEMD 0x47D2B0; caller0x684FAB
     void RecalcAttributes_484680(); // GAMEMD 0x484680, __thiscall

@@ -99695,5 +99695,14 @@
   "name": "BulletClass::FUN_00468D80",
   "status": "partial",
   "pct": 3.2
+ },
+ {
+  "tu": "match/core/technotype_vf42_methods.cpp",
+  "addr": "0x716150",
+  "sym": "?vf_42@TechnoTypeClass@@UAE_NPAUCellStruct@@PAVHouseClass@@@Z",
+  "len": "0x139",
+  "name": "TechnoTypeClass::vf_42",
+  "status": "partial",
+  "pct": 12.5
  }
 ]
