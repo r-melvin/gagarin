@@ -726,6 +726,8 @@ GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DisableShadowCache) == 0xDBF);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DisableShadowCache) == 1);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, MobileFire) == 0x6AE);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->MobileFire) == 1);
+GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DeploysInto) == 0x404);
+GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->DeploysInto) == 4);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, OpportunityFire) == 0x6AF);
 GG_STATIC_ASSERT(sizeof(((TechnoTypeClass*)0)->OpportunityFire) == 1);
 GG_STATIC_ASSERT(offsetof(TechnoTypeClass, DistributedFire) == 0x6B0);

@@ -72,6 +72,8 @@ GG_STATIC_ASSERT(offsetof(UnitTypeClass, MovementRestrictedTo)   == 0xDFC);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, HalfDamageSmokeLocation)== 0xE00);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, Passive)                == 0xE0C);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, unknown_E10)            == 0xE10);
+GG_STATIC_ASSERT(offsetof(UnitTypeClass, DeployToFire)            == 0xE12);
+GG_STATIC_ASSERT(sizeof(((UnitTypeClass*)0)->DeployToFire)        == 1);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, NonVehicle)             == 0xE1B);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, StandingFrames)         == 0xE1C);
 GG_STATIC_ASSERT(offsetof(UnitTypeClass, MaxDeathCounter)        == 0xE38);

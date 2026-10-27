@@ -46,6 +46,10 @@ public:
     virtual HRESULT __stdcall Save(IStream* stream, BOOL clear); // slot6 0x744600
     virtual int vf_11(); // slot11 0x746E20
     virtual int vf_12(); // slot12 0x746DD0
+    // Native UnitClass slot 265 at 0x736CA0 overrides TechnoClass slot 265.
+    virtual void vf_265();
+    // Native UnitClass slot 313 at 0x736D50 overrides FootClass slot 313.
+    virtual bool vf_313();
     // FUNCTION: GAMEMD 0x00746D90 (decl; reloc)
     // UnitClass::FUN_00746D90
     int FUN_00746D90();

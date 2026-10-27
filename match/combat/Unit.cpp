@@ -34,6 +34,7 @@
 #include "../movement/unit_class_astar_attempt_methods.h"
 
 #include "../movement/unit_class_occupation_methods.h"
+#include "../ui/input_controls/ui_display_chain.h"
 
 // Globals written by this TU's static initialisers (placeholder names; no
 // canonical header declares them yet).
@@ -60,6 +61,13 @@ extern double DAT_00B1D0B0;
 
 
 #include "../_layout/unit_class.h"
+#include "../_layout/unit_type_class.h"
+#include "../_layout/building_type_class_layout.h"
+#include "../_layout/cell_class.h"
+#include "../_layout/house_class.h"
+
+// Native error helper at 0x7DC720; the Unit call passes 0x80004003.
+void __stdcall FUN_007DC720(unsigned int hr);
 
 // FUNCTION: GAMEMD 0x7351B0
 // Static-initialiser shape: stores a floating-point expression of globals.
@@ -82,6 +90,60 @@ void __cdecl FUN_00735350()
     DAT_00B1D0A8 = 0;
     DAT_00B1D0A0 = 0x80;
     DAT_00B1D0A4 = 0x80;
+}
+
+// FUNCTION: GAMEMD 0x736CA0
+void UnitClass::vf_265()
+{
+    UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
+    if (!type->MobileFire) {
+        if (!this->Locomotor) {
+            FUN_007DC720(0x80004003u);
+        }
+
+        ILocomotion* locomotor = static_cast<ILocomotion*>(this->Locomotor);
+        if (locomotor->IsMoving()) {
+            const int remaining = this->ReloadTimer.GetTimeLeft();
+            if (remaining > 0) {
+                this->ReloadTimer = CDTimerClass(remaining + 1);
+            }
+        }
+    }
+
+    TechnoClass::vf_265();
+}
+
+// FUNCTION: GAMEMD 0x736D50
+bool UnitClass::vf_313()
+{
+    UnitTypeClass* type = static_cast<UnitTypeClass*>(this->Type);
+    if (type->DeployToFire) {
+        return true;
+    }
+
+    BuildingTypeClass* deploysInto = type->DeploysInto;
+    if (!deploysInto || deploysInto->bools_16A4[0x20]) {
+        return false;
+    }
+
+    if (this->Owner->FUN_0050B730()) {
+        return false;
+    }
+
+    AbstractClass* target = this->Target;
+    if (!target) {
+        return false;
+    }
+
+    IRTTITypeInfo* typeInfo = static_cast<IRTTITypeInfo*>(target);
+    const int targetType = typeInfo->vf_rtti_3();
+    if (targetType != 1 && targetType != 6 && targetType != 15) {
+        return false;
+    }
+
+    CoordStruct location = this->Location;
+    CellClass* cell = Map_0087F7E8.FUN_00565730(location);
+    return cell->FUN_00487C10();
 }
 
 // FUNCTION: GAMEMD 0x7393B0

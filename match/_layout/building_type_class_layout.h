@@ -259,6 +259,8 @@ GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_1570)        == 0x1570);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, MuzzleFlash)       == 0x1588);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, AddOccupy)         == 0x1664);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4)        == 0x16A4);
+GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + 0x20 == 0x16C4);
+GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->bools_16A4[0]) == 1);
 GG_STATIC_ASSERT(sizeof(((BuildingTypeClass*)0)->bools_16A4[0]) == 0x01);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, bools_16A4) + 25   == 0x16BD);
 GG_STATIC_ASSERT(offsetof(BuildingTypeClass, ChargedAnimTime)   == 0x16E8);

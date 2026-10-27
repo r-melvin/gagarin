@@ -99857,5 +99857,23 @@
   "name": "TechnoClass::vf_40",
   "status": "matched",
   "pct": 100.0
+ },
+ {
+  "tu": "match/combat/Unit.cpp",
+  "addr": "0x736CA0",
+  "sym": "?vf_265@UnitClass@@UAEXXZ",
+  "len": "0xa9",
+  "name": "UnitClass::vf_265",
+  "status": "partial",
+  "pct": 34.0
+ },
+ {
+  "tu": "match/combat/Unit.cpp",
+  "addr": "0x736D50",
+  "sym": "?vf_313@UnitClass@@UAE_NXZ",
+  "len": "0xa0",
+  "name": "UnitClass::vf_313",
+  "status": "partial",
+  "pct": 43.6
  }
 ]

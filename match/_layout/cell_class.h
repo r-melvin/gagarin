@@ -52,6 +52,8 @@ public:
     void FUN_004802A0(const Point2D* point, const RectangleStruct* clip);
     void FUN_00480350(const Point2D* point, const RectangleStruct* clip, int mode); // 0x480350, RET12
     bool FUN_00487950(); // 0x487950, AL result, no stack arguments
+    // Declaration: GAMEMD 0x487C10; cell receiver in ECX, bool result in AL.
+    bool FUN_00487C10();
     RectangleStruct FUN_0047FB90(); // 0x47FB90
     RectangleStruct FUN_0047FDE0(); // 0x47FDE0
     // Declarations: point and clip pointers, RET8.

@@ -33,16 +33,16 @@ GG_STATIC_ASSERT(offsetof(OccCellClass, OccupationFlags)    == 0x124);
 GG_STATIC_ASSERT(offsetof(OccCellClass, AltOccupationFlags) == 0x128);
 GG_STATIC_ASSERT(offsetof(OccCellClass, Flags)              == 0x140);
 
-// MapClass singleton — the two retail helpers the (un)mark methods forward to,
-// declared (no body) so cl emits relocatable __thiscall calls. The retail
-// singleton object lives at the fixed address 0x0087F7E8.
-class MapClass
+// Address-local implementation view used only by the occupation methods below;
+// this placeholder is not a recovered original class name. The two retail
+// helpers are declared without bodies so cl emits relocatable __thiscall calls.
+class UnitOccupationMapView
 {
 public:
     OccCellClass* GetTargetCell(CoordStruct const& crd) const;     // 0x565730
     int           GetCellFloorHeight(CoordStruct const& crd) const; // 0x578080
 };
-#define MapInstance (reinterpret_cast<MapClass*>(0x0087F7E8))
+#define MapInstance (reinterpret_cast<UnitOccupationMapView*>(0x0087F7E8))
 
 // Bridge cell height delta added to the floor height before the on-bridge test.
 #define BridgeCellHeight (*reinterpret_cast<int*>(0x00B1D0AC))

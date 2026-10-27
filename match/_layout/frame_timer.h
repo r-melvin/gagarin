@@ -59,6 +59,7 @@ struct CDTimerClass
     void SetTimeLeft(int value) { this->TimeLeft = value; }
 };
 GG_STATIC_ASSERT(offsetof(CDTimerClass, StartTime) == 0x0);
+GG_STATIC_ASSERT(offsetof(CDTimerClass, CurrentTime) == 0x4);
 GG_STATIC_ASSERT(offsetof(CDTimerClass, TimeLeft) == 0x8);
 GG_STATIC_ASSERT(sizeof(CDTimerClass) == 0xC);
 

@@ -45,7 +45,7 @@ public:
     virtual void vf_310(FootClass* passenger);                     // 310 0x4DE760; 0x4DE742 passes the FootClass* that 0x473430 returned
     virtual void vf_311();                                         // 311 0x4DC790
     virtual void vf_312();                                         // 312 0x4DBFD0
-    virtual void vf_313();                                         // 313 0x41C060
+    virtual bool vf_313();                                         // 313 0x41C060, native AL=false
     virtual void vf_314(int a1);                                   // 314 0x4DE7B0
     virtual void vf_315(int a1);                                   // 315 0x4DE940
     virtual void vf_316(int a1);                                   // 316 0x4D9FF0
