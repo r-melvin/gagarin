@@ -3,6 +3,7 @@
 // Five TechnoTypeClass member bodies, independently checked at their entries.
 // This retained filename is provisional grouping, not attested original TU ownership.
 #include "../_layout/techno_type_class.h"
+#include "../_layout/obj_004a1d30.h"
 #include "../_layout/house_class.h"
 #include "../_layout/rules_class.h"
 #include "../combat/weapon_type_class.h"
@@ -353,6 +354,115 @@ HRESULT __stdcall TechnoTypeClass::GetSizeMax(ULARGE_INTEGER* size)
     size->LowPart = size->LowPart + 4 + DamageParticleSystems.Count * 4;
     size->LowPart = size->LowPart + 4 + DestroyParticleSystems.Count * 4;
     return S_OK;
+}
+
+// FUNCTION: GAMEMD 0x7171A0
+void TechnoTypeClass::vf_13(Obj_004A1D30* crc)
+{
+    ObjectTypeClass::vf_13(crc);
+    crc->FUN_004A1D90(ThreatAvoidanceCoefficient);
+    crc->FUN_004A1D50(SlowdownDistance);
+    crc->FUN_004A1D90(DecelerationFactor);
+    crc->FUN_004A1D90(AccelerationFactor);
+    crc->FUN_004A1D50(CloakingSpeed);
+    crc->FUN_004A1D50(DebrisTypes.Count);
+    crc->FUN_004A1D50(DebrisAnims.Count);
+    crc->FUN_004A1D50(Dock.Count);
+    crc->FUN_004A1D50(DebrisMaximums.Count);
+    crc->FUN_004A1DE0(&Locomotor, 0x10);
+    crc->FUN_004A1D90(VoxelScaleX);
+    crc->FUN_004A1D90(VoxelScaleY);
+    crc->FUN_004A1D90(Weight);
+    crc->FUN_004A1D90(PhysicalSize);
+    crc->FUN_004A1D90(Size);
+    crc->FUN_004A1D90(SizeLimit);
+    crc->FUN_004A1CA0(HoverAttack);
+    crc->FUN_004A1D50(unknown_int_398);
+    crc->FUN_004A1CA0(bools_C8C[5]);
+    crc->FUN_004A1CA0(bools_C8C[6]);
+    crc->FUN_004A1CA0(bools_C8C[4]);
+    crc->FUN_004A1D90(RollAngle);
+    crc->FUN_004A1D90(PitchAngle);
+    crc->FUN_004A1D90(PitchSpeed);
+    crc->FUN_004A1D50(FlightLevel);
+    crc->FUN_004A1D50(BuildLimit);
+    crc->FUN_004A1D50(Category);
+    crc->FUN_004A1D90(DeployTime);
+    crc->FUN_004A1D50(FireAngle);
+    crc->FUN_004A1D50(PipScale);
+    crc->FUN_004A1D50(VoiceSelect.Count);
+    crc->FUN_004A1D50(VoiceSelectEnslaved.Count);
+    crc->FUN_004A1D50(VoiceMove.Count);
+    crc->FUN_004A1D50(VoiceAttack.Count);
+    crc->FUN_004A1D50(VoiceSpecialAttack.Count);
+    crc->FUN_004A1D50(VoiceDie.Count);
+    crc->FUN_004A1D50(VoiceFeedback.Count);
+    crc->FUN_004A1D50(MoveSound.Count);
+    crc->FUN_004A1D50(DieSound.Count);
+    crc->FUN_004A1D50(DamageParticleSystems.Count);
+    crc->FUN_004A1D50(DestroyParticleSystems.Count);
+    crc->FUN_004A1D50(MovementZone);
+    crc->FUN_004A1D50(GuardRange);
+    crc->FUN_004A1D50(MaxDebris);
+    crc->FUN_004A1D50(MinDebris);
+    crc->FUN_004A1D50(Passengers);
+    crc->FUN_004A1D50(Sight);
+    crc->FUN_004A1D50(Cost);
+    crc->FUN_004A1D50(Soylent);
+    crc->FUN_004A1D50(TechLevel);
+    crc->FUN_004A1D50(Prerequisite.Count);
+    crc->FUN_004A1D50(PrerequisiteOverride.Count);
+    crc->FUN_004A1D50(ThreatPosed);
+    crc->FUN_004A1D50(Points);
+    crc->FUN_004A1D50(Speed);
+    crc->FUN_004A1D50(SpeedType);
+    crc->FUN_004A1D50(Ammo);
+    crc->FUN_004A1D50(AirRangeBonus);
+    crc->FUN_004A1D50(OwnerFlags);
+    crc->FUN_004A1D50(AIBasePlanningSide);
+    crc->FUN_004A1D50(RotCount);
+    crc->FUN_004A1D50(ROT);
+    crc->FUN_004A1D50(TurretOffset);
+    crc->FUN_004A1D50(Points2);
+    crc->FUN_004A1D50(Explosion.Count);
+    crc->FUN_004A1D50(DestroyAnim.Count);
+    crc->FUN_004A1D50(ShadowIndex);
+    crc->FUN_004A1D50(Storage);
+    crc->FUN_004A1CA0(bools_C8C[8]);
+    crc->FUN_004A1CA0(bools_C8C[9]);
+    crc->FUN_004A1CA0(bools_C8C[10]);
+    crc->FUN_004A1CA0(bools_C8C[11]);
+    crc->FUN_004A1CA0(bools_C8C[12]);
+    crc->FUN_004A1CA0(bools_C8C[13]);
+    crc->FUN_004A1CA0(bools_C8C[14]);
+    crc->FUN_004A1CA0(bools_C8C[15]);
+    crc->FUN_004A1CA0(bools_C8C[16]);
+    crc->FUN_004A1CA0(bools_C8C[17]);
+    crc->FUN_004A1CA0(bools_C8C[18]);
+    crc->FUN_004A1CA0(bools_C8C[19]);
+    crc->FUN_004A1CA0(bools_C8C[20]);
+    crc->FUN_004A1CA0(bools_C8C[21]);
+    crc->FUN_004A1CA0(Repairable);
+    crc->FUN_004A1CA0(Crewed);
+    crc->FUN_004A1CA0(Remapable);
+    crc->FUN_004A1CA0(Cloakable);
+    crc->FUN_004A1CA0(GapGenerator);
+    crc->FUN_004A1C10(GapRadiusInCells);
+    crc->FUN_004A1C10(SuperGapRadiusInCells);
+    crc->FUN_004A1CA0(Teleporter);
+    crc->FUN_004A1CA0(SelfHealing);
+    crc->FUN_004A1CA0(Explodes);
+    crc->FUN_004A1CA0(bools_D20[0]);
+    crc->FUN_004A1CA0(bools_D20[1]);
+    crc->FUN_004A1CA0(bools_D20[3]);
+    crc->FUN_004A1CA0(bools_D20[4]);
+    crc->FUN_004A1CA0(bools_D20[5]);
+    crc->FUN_004A1CA0(bools_D20[6]);
+    crc->FUN_004A1CA0(DisableVoxelCache);
+    crc->FUN_004A1CA0(DisableShadowCache);
+    crc->FUN_004A1CA0(MobileFire);
+    crc->FUN_004A1CA0(OpportunityFire);
+    crc->FUN_004A1CA0(DistributedFire);
 }
 
 // FUNCTION: GAMEMD 0x717800

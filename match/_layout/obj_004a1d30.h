@@ -23,6 +23,8 @@ struct Obj_004A1D30
     //64F2C5/C7/CA zero stores. Original constructor source spelling is unknown.
     Obj_004A1D30() : unknown_00(0), unknown_04(0), unknown_08(0) {}
 
+    // FUNCTION: GAMEMD 0x4A1C10 (decl; reloc) -- append the unnormalized byte.
+    void FUN_004A1C10(unsigned char value);
     // FUNCTION: GAMEMD 0x4A1CA0 (decl; reloc) -- add one byte.
     void FUN_004A1CA0(bool value);
     // FUNCTION: GAMEMD 0x4A1D30 (decl; reloc) -- add one word.
@@ -35,6 +37,8 @@ struct Obj_004A1D30
     void FUN_004A1D90(double value);
     // FUNCTION: GAMEMD 0x4A1DB0 (decl; reloc) -- add a NUL-terminated string.
     void FUN_004A1DB0(const char* text);
+    // FUNCTION: GAMEMD 0x4A1DE0 (decl; reloc) -- append a byte span.
+    void FUN_004A1DE0(const void* data, int length);
 };
 
 GG_STATIC_ASSERT(offsetof(Obj_004A1D30, unknown_00) == 0);

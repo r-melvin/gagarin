@@ -99668,5 +99668,14 @@
   "name": "BulletClass::FUN_004664C0",
   "status": "partial",
   "pct": 63.9
+ },
+ {
+  "tu": "match/core/trivial_tu238_methods.cpp",
+  "addr": "0x7171A0",
+  "sym": "?vf_13@TechnoTypeClass@@UAEXPAUObj_004A1D30@@@Z",
+  "len": "0x612",
+  "name": "TechnoTypeClass::vf_13",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
