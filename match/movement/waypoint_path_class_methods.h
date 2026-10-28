@@ -35,6 +35,9 @@ public:
     virtual void vf_13(Obj_004A1D30* crc); // slot13,763C00
     WaypointClass* GetWaypoint(int idx) const;                     // 0x763980
     WaypointClass* GetWaypointAfter(WaypointClass* pWaypoint) const;// 0x763BA0
+    void SetWaypoint(int idx, const WaypointClass* pWaypoint);     // 0x763AF0
+    void RemoveWaypoint(int idx);                                  // 0x763B30
+    void ClearWaypoints();                                         // 0x763BE0
 
     int            CurrentWaypointIndex; // +0x24
     DynamicVectorClass<WaypointClass> Waypoints;            // +0x28

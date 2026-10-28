@@ -71,6 +71,9 @@ public:
     virtual void vf_95();                                                   // 95  0x71C6B0
     virtual int vf_107(CellClass* who, int a2, int a3, int a4, int a5);       // 107 0x71C4D0
 
+    // FUNCTION: GAMEMD 0x71C8E0 - flags the terrain object to be removed and restarts its stage timer.
+    void StartDying();
+
     // ---- members (complete-object offsets) ---------------------------------------------------
     TerrainTypeClass* Type;          // +0xC8
     bool              IsBurning;     // +0xCC
