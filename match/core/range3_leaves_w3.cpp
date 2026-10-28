@@ -109,7 +109,7 @@ void __fastcall FUN_0075A7F0(int bit)
     DAT_00B45BA8[i] &= ~mask;
 }
 
-// FUNCTION: GAMEMD 0x75A810
+// Unmatched (best 22%): retail moves AL to CL before masking; GAMEMD 0x75A810
 bool __fastcall FUN_0075A810(int bit)
 {
     unsigned char mask = (unsigned char)(1 << (bit & 7));

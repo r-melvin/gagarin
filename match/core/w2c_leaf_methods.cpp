@@ -447,21 +447,6 @@ void __fastcall FUN_00660B80(int* value)
     DAT_00B04DD8 = i;
 }
 
-// GLOBAL: GAMEMD 0xABFB00 (low), 0xABFAFC (high)
-extern unsigned int DAT_00ABFB00;
-extern unsigned int DAT_00ABFAFC;
-
-// FUNCTION: GAMEMD 0x005CAFB0
-// Remember the processor's time-stamp counter.
-void FUN_005CAFB0()
-{
-    __asm {
-        rdtsc
-        mov DAT_00ABFB00, eax
-        mov DAT_00ABFAFC, edx
-    }
-}
-
 // A record of fourteen ints; the table at 0xB07E80 holds sixty per group.
 struct Rec_00B07E80 {
     int v[14];
