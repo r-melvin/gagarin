@@ -450,7 +450,7 @@ class MechLocomotionClass : public LocomotionClass {
 public:
     MechLocomotionClass();
     MechLocomotionClass(int) : LocomotionClass(0) {}
-    virtual ~MechLocomotionClass() {}
+    virtual ~MechLocomotionClass();
     virtual HRESULT __stdcall GetClassID(CLSID* pClassID);
     virtual HRESULT __stdcall Load(IStream* pStm);
     virtual int Size();

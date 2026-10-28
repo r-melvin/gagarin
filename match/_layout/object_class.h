@@ -97,6 +97,8 @@ public:
     int GetCellLevel() const;
     // FUNCTION: GAMEMD 0x5F6220 (original name unconfirmed)
     bool FUN_005F6220(ObjectClass* other);
+    bool FUN_005F61F0(ObjectClass* other);
+    void FUN_005F6060(int z);
     // CALLEE: GAMEMD 0x5F6360 (decl; Bullet's native call passes an
     // AbstractClass target and receives the scalar distance in EAX.
     int FUN_005F6360(AbstractClass* target);

@@ -35,6 +35,19 @@
 //   STRING:   GAMEMD 0x889F64  ""   (shared default)
 
 #include "rules_class_readtypes_more_methods.h"
+#include "type_find_or_allocate_family_methods.h"
+
+// Dispatch-only view of a team type's primary vtable: LoadFromINI is slot 25 (offset 0x64).
+struct ILoad_00672740 {
+    virtual void _s00(); virtual void _s01(); virtual void _s02(); virtual void _s03();
+    virtual void _s04(); virtual void _s05(); virtual void _s06(); virtual void _s07();
+    virtual void _s08(); virtual void _s09(); virtual void _s10(); virtual void _s11();
+    virtual void _s12(); virtual void _s13(); virtual void _s14(); virtual void _s15();
+    virtual void _s16(); virtual void _s17(); virtual void _s18(); virtual void _s19();
+    virtual void _s20(); virtual void _s21(); virtual void _s22(); virtual void _s23();
+    virtual void _s24();
+    virtual void LoadFromINI(CCINIClass* ini);
+};
 
 // FUNCTION: GAMEMD 0x6722F0  RulesClass::Read_Countries  (__thiscall)
 bool RulesClass::Read_Countries(CCINIClass* pINI)
@@ -208,6 +221,22 @@ bool RulesClass::Read_ParticleSystems(CCINIClass* pINI)
         {
             ParticleSystemType_FindOrAllocate(buffer);
         }
+    }
+    return count > 0;
+}
+
+// FUNCTION: GAMEMD 0x672740  RulesClass::Read_Teams  (__thiscall)
+// For every key of the section, finds (or creates) the named team type and has it load itself.
+bool RulesClass::Read_Teams(CCINIClass* pINI)
+{
+    int count = pINI->GetKeyCount(TeamsSection);
+    char buffer[0x80];
+    for (int i = 0; i < count; ++i)
+    {
+        const char* key = pINI->GetKeyName(TeamsSection, i);
+        TypeClass_006F1920* item = pINI->FUN_00528A10(TeamsSection, key, "", buffer, 0x80) != 0
+            ? TypeClass_006F1920::FindOrAllocate(buffer) : 0;
+        ((ILoad_00672740*)item)->LoadFromINI(pINI);
     }
     return count > 0;
 }

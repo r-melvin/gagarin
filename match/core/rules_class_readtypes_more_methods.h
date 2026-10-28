@@ -55,6 +55,7 @@ extern char* BuildingTypesSection;  // GLOBAL: GAMEMD 0x7F0CC0
 extern char* TerrainTypesSection;   // GLOBAL: GAMEMD 0x7F0CC4
 extern char* SmudgeTypesSection;    // GLOBAL: GAMEMD 0x7F0CCC
 extern char* OverlayTypesSection;   // GLOBAL: GAMEMD 0x7F0CD0
+extern char* TeamsSection;          // GLOBAL: GAMEMD 0x7F0CC8
 
 
 

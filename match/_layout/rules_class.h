@@ -47,6 +47,8 @@ struct RulesClass
     bool Read_Particles(CCINIClass* pINI);
     // Declaration: GAMEMD 0x672A70 -- thiscall, one INI pointer, RET4.
     bool Read_ParticleSystems(CCINIClass* pINI);
+    // Declaration: GAMEMD 0x672740 -- thiscall, one INI pointer, RET4.
+    bool Read_Teams(CCINIClass* pINI);
 
 
     int unknown_000; // 0x6850FB -> fastcall55AF40

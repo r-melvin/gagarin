@@ -97,6 +97,25 @@ HRESULT __stdcall ShipLocomotionClass::Load(IStream* pStm)
     return hr;
 }
 
+// FUNCTION: GAMEMD 0x69EF10
+HRESULT __stdcall ShipLocomotionClass::Save(IStream* pStm, BOOL fClearDirty)
+{
+    HRESULT hr = LocomotionClass::Save(pStm, fClearDirty);
+    if (hr >= 0) {
+        bool hasPiggyback;
+        if (Piggybackee != 0) {
+            hasPiggyback = true;
+            pStm->Write(&hasPiggyback, 1, 0);
+            IPersistStreamPtr persist(Piggybackee);
+            hr = OleSaveToStream(persist, pStm);
+        } else {
+            hasPiggyback = false;
+            pStm->Write(&hasPiggyback, 1, 0);
+        }
+    }
+    return hr;
+}
+
 // FUNCTION: GAMEMD 0x69EFF0
 HRESULT __stdcall ShipLocomotionClass::BeginPiggyback(ILocomotion* loco)
 {
@@ -130,6 +149,17 @@ static inline bool ShipIsSet(const LocoCoord& c)
 static inline bool ShipIsEmpty(const LocoCoord& c)
 {
     return c.X == DAT_00B077F8.X && c.Y == DAT_00B077F8.Y && c.Z == DAT_00B077F8.Z;
+}
+
+// FUNCTION: GAMEMD 0x6A3EC0
+bool ShipLocomotionClass::FUN_006A3EC0()
+{
+    if (ShipFoot(this)->unknown_598 == 0) {
+        ShipFoot(this)->vf_480(0, 1);
+        return false;
+    }
+    ShipFoot(this)->FUN_004DF0D0();
+    return ShipFoot(this)->vf_484(0, 1);
 }
 
 // FUNCTION: GAMEMD 0x6A4230
@@ -330,6 +360,23 @@ static inline int ShipTimeLeft(const CDTimerClass& timer)
 static inline double ShipSlopeFraction(const RateTimer& timer)
 {
     return timer.Rate != 0 ? (double)(timer.Rate - ShipTimeLeft(timer)) / timer.Rate : 1.0;
+}
+
+// FUNCTION: GAMEMD 0x69F1B0
+double ShipLocomotionClass::FUN_0069F1B0()
+{
+    return SlopeTimer.Rate == 0 ? 1.0 : (double)(SlopeTimer.Rate - ShipTimeLeft(SlopeTimer)) / SlopeTimer.Rate;
+}
+
+// FUNCTION: GAMEMD 0x69F210
+// Starts a slope transition to a new ramp when it differs from the current one.
+void ShipLocomotionClass::FUN_0069F210(int ramp)
+{
+    if (ramp != unknown_1C) {
+        unknown_20 = unknown_1C;
+        unknown_1C = ramp;
+        SlopeTimer = RateTimer(3);
+    }
 }
 
 // FUNCTION: GAMEMD 0x69FB20 (partial: retail branches on Rate != 0 into the compute block and loads key after the FPU test)

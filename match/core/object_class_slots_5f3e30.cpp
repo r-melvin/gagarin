@@ -83,6 +83,13 @@ void* ObjectClass::vf_27()
     return vf_34()->vf_39();
 }
 
+// FUNCTION: GAMEMD 0x5F3E50
+// True when the object's type has the given ID text.
+bool ObjectClass::FUN_005F3E50(const char* name)
+{
+    return vf_34()->FUN_00410A40(name);
+}
+
 // FUNCTION: GAMEMD 0x5F3E70
 // PARTIAL 68.9%: retail's frame is 0x10 (one 12-byte slot shared by every
 // coordinate temporary plus the damage word); cl gives the raised landing

@@ -39,6 +39,19 @@ extern "C" const IID IID_IPiggyback =
 
 #include "locomotion_class_save_methods.h"
 
+// FUNCTION: GAMEMD 0x55A6C0
+LocomotionClass::LocomotionClass()
+    : Owner(0), LinkedTo(0), Powered(true), Dirty(true), RefCount(0)
+{
+}
+
+// FUNCTION: GAMEMD 0x55A6F0
+// Destructor body: reseats the base vptrs and drops the linked object.
+LocomotionClass::~LocomotionClass()
+{
+    LinkedTo = 0;
+}
+
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x55A710
 // migrated from match/movement/locomotion_class_iloco_methods.cpp; integrator retires the old row

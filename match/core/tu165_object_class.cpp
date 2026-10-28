@@ -789,6 +789,21 @@ void ObjectClass::vf_115(int height)
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F6060
+// Set Location.Z, taking the object off the map (slot 73 with 0) and back on (with 1) around the
+// change while it is on the map.
+void ObjectClass::FUN_005F6060(int z)
+{
+    if (IsOnMap) {
+        vf_73(0);
+        Location.Z = z;
+        vf_73(1);
+    } else {
+        Location.Z = z;
+    }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x5F60A0
 // Set bit 6 of the cell's occupation word: the bridge word when the
 // coordinate is at bridge height over a bridge cell, else the ground word.
@@ -813,6 +828,18 @@ void ObjectClass::vf_61(CoordStruct* coord)
     } else {
         DAT_0087F7E8.FUN_00565730(coord)->OccupationFlags &= ~0x40;
     }
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x5F61F0
+// Sibling of FUN_005F6220 with the comparison reversed.
+bool ObjectClass::FUN_005F61F0(ObjectClass* other)
+{
+    ObjectClassSortCallView* otherView = (ObjectClassSortCallView*)other;
+    int otherValue = otherView->unknown_B8();
+    ObjectClassSortCallView* thisView = (ObjectClassSortCallView*)this;
+    int thisValue = thisView->unknown_B8();
+    return thisValue < otherValue;
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.

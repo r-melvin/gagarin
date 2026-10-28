@@ -142,6 +142,13 @@ RocketLocomotionClass::RocketLocomotionClass()
 }
 
 // TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
+// FUNCTION: GAMEMD 0x661F30
+// Destructor body: reseats Rocket's vptrs, then relays to the base destructor body.
+RocketLocomotionClass::~RocketLocomotionClass()
+{
+}
+
+// TU-WINDOW: past the proven bound of this TU; it may belong to a later header-less object.
 // FUNCTION: GAMEMD 0x661F50
 bool __stdcall RocketLocomotionClass::IsMoving()
 {
