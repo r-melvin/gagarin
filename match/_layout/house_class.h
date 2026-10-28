@@ -85,6 +85,14 @@ public:
     HRESULT Load(IStream* stream);
     // FUNCTION: GAMEMD 0x49FB60 (decl; reloc) -- the sum over every type (ECX = the counter, no arguments).
     int FUN_0049FB60() const;
+    // FUNCTION: GAMEMD 0x49FA00 (decl) -- grow to hold the index, bump it and the total; ECX receiver, RET4.
+    int FUN_0049FA00(int index);
+    // FUNCTION: GAMEMD 0x49FA70 (decl) -- as 0x49FA00 but decrements; ECX receiver, RET4.
+    int FUN_0049FA70(int index);
+    // FUNCTION: GAMEMD 0x49FAE0 (decl) -- grow to hold the index and read it; ECX receiver, RET4.
+    int FUN_0049FAE0(int index);
+    // FUNCTION: GAMEMD 0x49FC80 (decl) -- grow to hold the index; ECX receiver, RET4.
+    bool FUN_0049FC80(int index);
 };
 GG_STATIC_ASSERT(offsetof(CounterClass, Total) == 0x10);
 GG_STATIC_ASSERT(sizeof(CounterClass) == 0x14);
@@ -525,6 +533,30 @@ public:
     void FUN_0050D290(HouseClass* other);
     // FUNCTION: GAMEMD 0x50D2D0 (decl; reloc)
     void FUN_0050D2D0(HouseClass* other);
+    // FUNCTION: GAMEMD 0x50D250 (decl) -- hand a packed short pair to every base node, last to first; RET 4.
+    void FUN_0050D250(unsigned delta);
+    // FUNCTION: GAMEMD 0x4FA2E0 (decl) -- spread a signed amount over nine threat cells; RET 8.
+    void FUN_004FA2E0(int index, int amount);
+    // FUNCTION: GAMEMD 0x4FBD00 (decl) -- any other non-allied house with that building type active; RET 4.
+    bool FUN_004FBD00(int typeIndex);
+    // FUNCTION: GAMEMD 0x4FBD80 (decl) -- the type object this house is producing for an RTTI class; RET 8.
+    void* FUN_004FBD80(int rtti, int unused);
+    // FUNCTION: GAMEMD 0x5005B0 (decl) -- set the per-class flag for an RTTI class; RET 0xC.
+    void FUN_005005B0(int rtti, bool naval, int kind);
+    // FUNCTION: GAMEMD 0x500660 (decl) -- clear the per-class flag; RET 0xC.
+    void FUN_00500660(int rtti, bool naval, int kind);
+    // FUNCTION: GAMEMD 0x500700 (decl) -- read the per-class flag; RET 0xC.
+    unsigned char FUN_00500700(int rtti, bool naval, int kind);
+    // FUNCTION: GAMEMD 0x5007A0 (decl) -- store a value into the per-class flag; RET 0x10.
+    void FUN_005007A0(int rtti, bool naval, int kind, bool value);
+    // FUNCTION: GAMEMD 0x500910 (decl) -- the factory count for an RTTI class; RET 8.
+    int FUN_00500910(int rtti, bool naval);
+    // FUNCTION: GAMEMD 0x4FD940 (decl) -- 4 when no live, on-map building makes a factory type; else 0.
+    int FUN_004FD940();
+    // FUNCTION: GAMEMD 0x4F9700 (decl) -- add one unit of a tiberium type, up to `count` times, while below capacity; RET 8.
+    void FUN_004F9700(int count, int index);
+    // FUNCTION: GAMEMD 0x4F9670 (decl) -- the placed building with the most free storage room, or null.
+    BuildingClass* FUN_004F9670();
     // FUNCTION: GAMEMD 0x50D6D0 (decl; reloc) -- takes a cell by value.
     void FUN_0050D610(); // FUNCTION: GAMEMD 0x50D610 (decl; primary RET at0x50D6C1)
     void MarkScoutNode(HouseClass* house);                    // FUNCTION: GAMEMD 0x504860
