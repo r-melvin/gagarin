@@ -26,3 +26,20 @@ rc_ptr_base::~rc_ptr_base()
 
 // SYNTHETIC: GAMEMD 0x65D4D0
 // rc_ptr_base scalar deleting destructor, the destructor body inlined.
+
+// FUNCTION: GAMEMD 0x65D4B0
+// Copy constructor: share the pointee and count the new reference.
+rc_ptr_base::rc_ptr_base(const rc_ptr_base& other)
+    : Pointer(other.Pointer)
+{
+    if (Pointer != 0)
+        ++((ReferenceCounted*)Pointer)->RefCount;
+}
+
+// FUNCTION: GAMEMD 0x65D670
+// Drop one reference; the last one deletes the object.
+void ReferenceCounted::vf_2()
+{
+    if (--RefCount == 0 && this != 0)
+        delete this;
+}

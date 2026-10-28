@@ -141,6 +141,10 @@ public:
 
     // FUNCTION: GAMEMD 0x5D6620 (decl; reloc) -- non-virtual; RET 4, returns an MPTeam.
     MPTeam* FUN_005D6620(int index);
+    // FUNCTION: GAMEMD 0x5D63E0 -- non-virtual; RET 4.
+    bool FUN_005D63E0(class MultiMission* entry);
+    // FUNCTION: GAMEMD 0x5D6750 -- non-virtual.
+    void FUN_005D6750();
 
     bool  unknown_04;                                 // +0x04
     DynamicVectorClass<MultiplayerTeam*> Teams;       // +0x08

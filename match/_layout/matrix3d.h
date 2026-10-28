@@ -26,14 +26,12 @@ struct Matrix3D
     float Row[3][4];   // +0x00, row stride 0x10
 
     Matrix3D() {}
+    // 0x5AE630: out of line in retail.
     Matrix3D(float m00, float m01, float m02, float m03,
              float m10, float m11, float m12, float m13,
-             float m20, float m21, float m22, float m23)
-    {
-        Row[0][0] = m00; Row[0][1] = m01; Row[0][2] = m02; Row[0][3] = m03;
-        Row[1][0] = m10; Row[1][1] = m11; Row[1][2] = m12; Row[1][3] = m13;
-        Row[2][0] = m20; Row[2][1] = m21; Row[2][2] = m22; Row[2][3] = m23;
-    }
+             float m20, float m21, float m22, float m23);
+    // 0x5AE690: rows 0..2 from x/y/z axis vectors, translation column from t.
+    Matrix3D(const Vector3D& x, const Vector3D& y, const Vector3D& z, const Vector3D& t);
 
     // Native 0x5AE5E0 copies the twelve contiguous scalar components.
     // Placeholder avoids asserting constructor versus assignment identity.
@@ -66,6 +64,17 @@ struct Matrix3D
     static Matrix3D TransposeMatrix(const Matrix3D& mat); // 0x5AFC20
     static Quaternion FromAxis(const Vector3D& axis, float angle); // 0x646480
     static Matrix3D FromQuaternion(const Quaternion& q);  // 0x646980
+    void Scale(float x, float y, float z);                // 0x5AEA70
+    void Shear0(float a, float b);                        // 0x5AEB50
+    void Shear2(float a, float b);                        // 0x5AEBA0
+    void Shear1(float a, float b);                        // 0x5AEBF0
+    void RotateZ(float Sin, float Cos);                   // 0x5AF240
+    float GetTransX();                                    // 0x5AF2C0
+    float GetTransY();                                    // 0x5AF310
+    float GetTransZ();                                    // 0x5AF360
+    double GetAxisHeading();                              // 0x5AF3B0
+    double GetAxisHeadingX();                             // 0x5AF470
+    Vector3D* RotateVector(Vector3D* out, const Vector3D* in);   // 0x5AF4D0
 };
 GG_STATIC_ASSERT(offsetof(Matrix3D, Row) == 0x00);
 GG_STATIC_ASSERT(sizeof(((Matrix3D*)0)->Row[0]) == 0x10);

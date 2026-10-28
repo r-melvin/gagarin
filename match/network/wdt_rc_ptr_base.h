@@ -20,6 +20,8 @@ public:
     virtual ~rc_ptr_base();
     // FUNCTION: GAMEMD 0x65D480 (decl; reloc) -- RET 4.
     void Assign(void* pointer);
+    // FUNCTION: GAMEMD 0x65D4B0 -- copy constructor; RET 4.
+    rc_ptr_base(const rc_ptr_base& other);
 
     void* Pointer;   // +0x04
 };

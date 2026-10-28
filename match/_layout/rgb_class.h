@@ -10,6 +10,7 @@
 #include "../_rt/gg_static_assert.h"
 #include <stddef.h>
 struct HSVClass;
+struct IStream_004C6320;
 class RGBClass
 {
 public:
@@ -21,6 +22,8 @@ public:
     { return Red == other.Red && Green == other.Green && Blue == other.Blue; }
     bool operator!=(const RGBClass& other) const { return !(*this == other); }
     HSVClass FUN_006613A0() const;
+    long Save(IStream_004C6320* stream);   // 0x6614F0
+    long Load(IStream_004C6320* stream);   // 0x661510
 };
 GG_STATIC_ASSERT(offsetof(RGBClass, Red) == 0);
 GG_STATIC_ASSERT(offsetof(RGBClass, Green) == 1);
