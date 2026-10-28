@@ -137304,5 +137304,374 @@
   "name": "Lookup",
   "status": "partial",
   "pct": 80
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5DAF20",
+  "sym": "?FUN_005DAF20@@YA_NXZ",
+  "len": "0xd",
+  "name": "FUN_005DAF20",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x69E070",
+  "sym": "?FUN_0069E070@@YAXXZ",
+  "len": "0x17",
+  "name": "FUN_0069E070",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5DA040",
+  "sym": "?FUN_005DA040@@YGHE@Z",
+  "len": "0x39",
+  "name": "FUN_005DA040",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5DA080",
+  "sym": "?FUN_005DA080@@YGHE@Z",
+  "len": "0x2a",
+  "name": "FUN_005DA080",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5FA440",
+  "sym": "?FUN_005FA440@ScoreOptions_005FA440@@QAEXD@Z",
+  "len": "0x2e",
+  "name": "FUN_005FA440",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5FA470",
+  "sym": "?FUN_005FA470@ScoreOptions_005FA440@@QAEXD@Z",
+  "len": "0x2e",
+  "name": "FUN_005FA470",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x660BB0",
+  "sym": "?FUN_00660BB0@IntBox_00660BB0@@QAEPAU1@XZ",
+  "len": "0x26",
+  "name": "FUN_00660BB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x660C50",
+  "sym": "?FUN_00660C50@@YAXXZ",
+  "len": "0x21",
+  "name": "FUN_00660C50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5BB260",
+  "sym": "?FUN_005BB260@@YA_NXZ",
+  "len": "0x26",
+  "name": "FUN_005BB260",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5CB400",
+  "sym": "?FUN_005CB400@@YGHH@Z",
+  "len": "0x24",
+  "name": "FUN_005CB400",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x6ABD10",
+  "sym": "?FUN_006ABD10@SlotTable_006ABD10@@QAEHXZ",
+  "len": "0x1d",
+  "name": "FUN_006ABD10",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5FA2E0",
+  "sym": "?FUN_005FA2E0@@YIII@Z",
+  "len": "0x2b",
+  "name": "FUN_005FA2E0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5FA310",
+  "sym": "?FUN_005FA310@@YIII@Z",
+  "len": "0x31",
+  "name": "FUN_005FA310",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5F0010",
+  "sym": "?FUN_005F0010@Req_005F0010@@QAE_NXZ",
+  "len": "0x25",
+  "name": "FUN_005F0010",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_leaf_r12.cpp",
+  "addr": "0x5F0040",
+  "sym": "?FUN_005F0040@@YAXXZ",
+  "len": "0x26",
+  "name": "FUN_005F0040",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632BC0",
+  "sym": "??OBigInt_00632740@@QBE_NABV0@@Z",
+  "len": "0x17",
+  "name": "??OBigInt_00632740@@QBE_NABV0@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632A70",
+  "sym": "?Randomize@BigInt_00632740@@QAEXPAVStraw@@ABV1@1@Z",
+  "len": "0x24",
+  "name": "Randomize",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632AA0",
+  "sym": "??YBigInt_00632740@@QAEAAV0@ABV0@@Z",
+  "len": "0x1e",
+  "name": "??YBigInt_00632740@@QAEAAV0@ABV0@@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x6329C0",
+  "sym": "??GBigInt_00632740@@QBE?AV0@H@Z",
+  "len": "0x52",
+  "name": "??GBigInt_00632740@@QBE?AV0@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632A20",
+  "sym": "?Inverse@BigInt_00632740@@QBE?AV1@ABV1@@Z",
+  "len": "0x4b",
+  "name": "Inverse",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632AC0",
+  "sym": "??HBigInt_00632740@@QBE?AV0@H@Z",
+  "len": "0x57",
+  "name": "??HBigInt_00632740@@QBE?AV0@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632B20",
+  "sym": "??DBigInt_00632740@@QBE?AV0@H@Z",
+  "len": "0x50",
+  "name": "??DBigInt_00632740@@QBE?AV0@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_pkbig_r12.cpp",
+  "addr": "0x632B70",
+  "sym": "??6BigInt_00632740@@QBE?AV0@H@Z",
+  "len": "0x46",
+  "name": "??6BigInt_00632740@@QBE?AV0@H@Z",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x645BB0",
+  "sym": "?FUN_00645BB0@@YIHH@Z",
+  "len": "0x48",
+  "name": "FUN_00645BB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x6ACB60",
+  "sym": "?FUN_006ACB60@@YIHH@Z",
+  "len": "0x55",
+  "name": "FUN_006ACB60",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x664390",
+  "sym": "?FUN_00664390@KeyedList_00663D60@@QAEFPBD@Z",
+  "len": "0x48",
+  "name": "FUN_00664390",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x664400",
+  "sym": "?FUN_00664400@KeyedList_00663D60@@QAEXHF@Z",
+  "len": "0x3e",
+  "name": "FUN_00664400",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x690F70",
+  "sym": "?FUN_00690F70@CountdownView_00690F70@@QAEXXZ",
+  "len": "0x41",
+  "name": "FUN_00690F70",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x68CA50",
+  "sym": "?FUN_0068CA50@@YIPAUSchemeRec_0068CA50@@PBDH@Z",
+  "len": "0x5a",
+  "name": "FUN_0068CA50",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x68CAB0",
+  "sym": "?FUN_0068CAB0@@YIHPBDH@Z",
+  "len": "0x56",
+  "name": "FUN_0068CAB0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5D26C0",
+  "sym": "?FUN_005D26C0@ItemList_005D26C0@@QAEXH@Z",
+  "len": "0x2c",
+  "name": "FUN_005D26C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x65D480",
+  "sym": "?FUN_0065D480@RefHolder_0065D480@@QAEXPAVRefObj_0065D480@@@Z",
+  "len": "0x2f",
+  "name": "FUN_0065D480",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x642E40",
+  "sym": "?FUN_00642E40@@YGXPAH0@Z",
+  "len": "0x3f",
+  "name": "FUN_00642E40",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5D4ED0",
+  "sym": "?FUN_005D4ED0@@YIXPAX@Z",
+  "len": "0x4c",
+  "name": "FUN_005D4ED0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5AE4C0",
+  "sym": "?FUN_005AE4C0@Named_005AE4C0@@QAEHXZ",
+  "len": "0x2a",
+  "name": "FUN_005AE4C0",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5AE500",
+  "sym": "?FUN_005AE500@Named_005AE4C0@@QAEXPBUNameStr_005AE4C0@@@Z",
+  "len": "0x2e",
+  "name": "FUN_005AE500",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5AE530",
+  "sym": "?FUN_005AE530@Named_005AE4C0@@QAEXPBDH@Z",
+  "len": "0x3c",
+  "name": "FUN_005AE530",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/w2_misc_r12.cpp",
+  "addr": "0x5AE460",
+  "sym": "?FUN_005AE460@Owner_005AE460@@QAEXXZ",
+  "len": "0x5b",
+  "name": "FUN_005AE460",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/w2_bignum_r12.cpp",
+  "addr": "0x5C6500",
+  "sym": "?BytesToWordsSigned@@YIXPAEPBEHH@Z",
+  "len": "0x44",
+  "name": "BytesToWordsSigned",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/w2_bignum_r12.cpp",
+  "addr": "0x5C6550",
+  "sym": "?BytesToWords@@YIXPAEPBEHH@Z",
+  "len": "0x36",
+  "name": "BytesToWords",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/network/w2_bignum_r12.cpp",
+  "addr": "0x5C8930",
+  "sym": "?FUN_005C8930@@YI_NPAIH@Z",
+  "len": "0x4a",
+  "name": "FUN_005C8930",
+  "status": "matched",
+  "pct": 100.0
  }
 ]
