@@ -96862,6 +96862,51 @@
   "pct": 100.0
  },
  {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54B6E0",
+  "sym": "?DoTurn@JumpjetLocomotionClass@@UAGXK@Z",
+  "len": "0x22",
+  "name": "JumpjetLocomotionClass::DoTurn",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DB00",
+  "sym": "?IsOkToEnd@JumpjetLocomotionClass@@UAG_NXZ",
+  "len": "0x44",
+  "name": "JumpjetLocomotionClass::IsOkToEnd",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54D9B0",
+  "sym": "?HeadToCoord@JumpjetLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x4E",
+  "name": "JumpjetLocomotionClass::HeadToCoord",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54AE60",
+  "sym": "?Destination@JumpjetLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x51",
+  "name": "JumpjetLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/jumpjet_locomotion.cpp",
+  "addr": "0x54DA50",
+  "sym": "?EndPiggyback@JumpjetLocomotionClass@@UAGJPAPAUILocomotion@@@Z",
+  "len": "0xA2",
+  "name": "JumpjetLocomotionClass::EndPiggyback",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
   "tu": "match/movement/ship_locomotion.cpp",
   "addr": "0x69EC50",
   "sym": "??0ShipLocomotionClass@@QAE@XZ",
@@ -96966,6 +97011,132 @@
   "sym": "?Release@ShipLocomotionClass@@WBI@AGKXZ",
   "len": "0xa",
   "name": "ShipLocomotionClass::Release (IPiggyback adjustor)",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4230",
+  "sym": "?GetTrackNumber@ShipLocomotionClass@@UAGHXZ",
+  "len": "0xA",
+  "name": "ShipLocomotionClass::GetTrackNumber",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4240",
+  "sym": "?GetTrackIndex@ShipLocomotionClass@@UAGHXZ",
+  "len": "0xA",
+  "name": "ShipLocomotionClass::GetTrackIndex",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4210",
+  "sym": "?Lock@ShipLocomotionClass@@UAGXXZ",
+  "len": "0xB",
+  "name": "ShipLocomotionClass::Lock",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A4220",
+  "sym": "?Unlock@ShipLocomotionClass@@UAGXXZ",
+  "len": "0xB",
+  "name": "ShipLocomotionClass::Unlock",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A3EB0",
+  "sym": "?ZGradient@ShipLocomotionClass@@UAGHXZ",
+  "len": "0xD",
+  "name": "ShipLocomotionClass::ZGradient",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A05C0",
+  "sym": "?DoTurn@ShipLocomotionClass@@UAGXK@Z",
+  "len": "0x22",
+  "name": "ShipLocomotionClass::DoTurn",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F3A0",
+  "sym": "?Destination@ShipLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x24",
+  "name": "ShipLocomotionClass::Destination",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69FBE0",
+  "sym": "?Unlimbo@ShipLocomotionClass@@UAGXXZ",
+  "len": "0x25",
+  "name": "ShipLocomotionClass::Unlimbo",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F250",
+  "sym": "?ForceNewSlope@ShipLocomotionClass@@UAGXH@Z",
+  "len": "0x35",
+  "name": "ShipLocomotionClass::ForceNewSlope",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F080",
+  "sym": "?IsOkToEnd@ShipLocomotionClass@@UAG_NXZ",
+  "len": "0x3A",
+  "name": "ShipLocomotionClass::IsOkToEnd",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x6A3F00",
+  "sym": "?MarkAllOccupationBits@ShipLocomotionClass@@UAGXH@Z",
+  "len": "0x41",
+  "name": "ShipLocomotionClass::MarkAllOccupationBits",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F290",
+  "sym": "?IsMoving@ShipLocomotionClass@@UAG_NXZ",
+  "len": "0x96",
+  "name": "ShipLocomotionClass::IsMoving",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F3D0",
+  "sym": "?HeadToCoord@ShipLocomotionClass@@UAG?AULocoCoord@@XZ",
+  "len": "0x71",
+  "name": "ShipLocomotionClass::HeadToCoord",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/movement/ship_locomotion.cpp",
+  "addr": "0x69F510",
+  "sym": "?StopMoving@ShipLocomotionClass@@UAGXXZ",
+  "len": "0xC8",
+  "name": "ShipLocomotionClass::StopMoving",
   "status": "matched",
   "pct": 100.0
  },
@@ -100692,6 +100863,123 @@
   "sym": "?Save@SideClass@@UAGJPAUIStream@@H@Z",
   "len": "0x61",
   "name": "SideClass::Save",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x6F78D0",
+  "sym": "?vf_237@TechnoClass@@UAE_NPAVAbstractClass@@@Z",
+  "len": "0x56",
+  "name": "TechnoClass::vf_237",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x6FCD40",
+  "sym": "?vf_232@TechnoClass@@UAEXXZ",
+  "len": "0x6D",
+  "name": "TechnoClass::vf_232",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x700D10",
+  "sym": "?vf_196@TechnoClass@@UAE_NXZ",
+  "len": "0x3F",
+  "name": "TechnoClass::vf_196",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x701140",
+  "sym": "?vf_37@TechnoClass@@UAE_NXZ",
+  "len": "0x47",
+  "name": "TechnoClass::vf_37",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x701410",
+  "sym": "?vf_259@TechnoClass@@UAEXXZ",
+  "len": "0x8E",
+  "name": "TechnoClass::vf_259",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x7036C0",
+  "sym": "?vf_279@TechnoClass@@UAEX_N@Z",
+  "len": "0xAD",
+  "name": "TechnoClass::vf_279",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x708B40",
+  "sym": "?vf_176@TechnoClass@@UAEHXZ",
+  "len": "0x71",
+  "name": "TechnoClass::vf_176",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x708BC0",
+  "sym": "?vf_173@TechnoClass@@UAENXZ",
+  "len": "0x4B",
+  "name": "TechnoClass::vf_173",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x708C10",
+  "sym": "?vf_193@TechnoClass@@UAEHHPAH@Z",
+  "len": "0x11",
+  "name": "TechnoClass::vf_193",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x708FC0",
+  "sym": "?vf_218@TechnoClass@@UAEXXZ",
+  "len": "0x56",
+  "name": "TechnoClass::vf_218",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x70ADA0",
+  "sym": "?vf_175@TechnoClass@@UAEXXZ",
+  "len": "0x20",
+  "name": "TechnoClass::vf_175",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x70C620",
+  "sym": "?vf_172@TechnoClass@@UAE_NXZ",
+  "len": "0x70",
+  "name": "TechnoClass::vf_172",
+  "status": "matched",
+  "pct": 100.0
+ },
+ {
+  "tu": "match/core/techno_class_vslot_batch.cpp",
+  "addr": "0x710670",
+  "sym": "?vf_229@TechnoClass@@UAEXPAVFootClass@@@Z",
+  "len": "0x6D",
+  "name": "TechnoClass::vf_229",
   "status": "matched",
   "pct": 100.0
  }
